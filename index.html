@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KnockoutNotes | Anaesthesia • Critical Care • Viva</title>
+
+<meta name="description"
+content="KnockoutNotes — high-yield anaesthesia, critical care and viva notes for medical learners.">
+
+<style>
+
+:root {
+    --bg: #f6f8fb;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #64748b;
+    --accent: #2563eb;
+    --accent2: #7c3aed;
+    --border: #e2e8f0;
+    --soft: #eef4ff;
+    --shadow: 0 10px 30px rgba(15,23,42,0.08);
+}
+
+.dark {
+    --bg: #0b1120;
+    --card: #111827;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --accent: #60a5fa;
+    --accent2: #a78bfa;
+    --border: #1e293b;
+    --soft: #172554;
+    --shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+                 "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.25s ease;
+}
+
+/* NAVIGATION */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(14px);
+    background: rgba(246,248,251,0.88);
+    border-bottom: 1px solid var(--border);
+}
+
+.dark nav {
+    background: rgba(11,17,32,0.88);
+}
+
+.nav-inner {
+    max-width: 1150px;
+    margin: auto;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.nav-links button {
+    border: none;
+    background: transparent;
+    color: var(--text);
+    padding: 9px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.nav-links button:hover {
+    background: var(--soft);
+}
+
+.theme-btn {
+    font-size: 18px;
+}
+
+/* HERO */
+
+.hero {
+    max-width: 1150px;
+    margin: auto;
+    padding: 80px 20px 55px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: var(--soft);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(46px, 7vw, 82px);
+    line-height: 0.95;
+    margin: 0 0 20px;
+    letter-spacing: -4px;
+}
+
+.hero h1 span {
+    color: var(--accent);
+}
+
+.hero p {
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 650px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.primary {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 10px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.secondary {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 13px 20px;
+    border-radius: 10px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* HERO CARD */
+
+.hero-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+}
+
+.hero-card .mini-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    font-weight: 900;
+}
+
+.hero-card h3 {
+    font-size: 23px;
+    margin: 10px 0;
+}
+
+.hero-card p {
+    font-size: 15px;
+}
+
+/* SECTIONS */
+
+section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 55px 20px;
+}
+
+.section-title {
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    margin: 0 0 8px;
+}
+
+.section-title p {
+    color: var(--muted);
+    margin: 0;
+}
+
+/* TABS */
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.tab {
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.tab.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+/* SEARCH */
+
+.search-box {
+    margin-bottom: 25px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px 18px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    font-size: 16px;
+    outline: none;
+}
+
+.search-box input:focus {
+    border-color: var(--accent);
+}
+
+/* CARDS */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card-tag {
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+}
+
+.card h3 {
+    margin: 8px 0;
+    font-size: 20px;
+}
+
+.card p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.expand {
+    margin-top: 12px;
+    border: none;
+    background: var(--soft);
+    color: var(--accent);
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.answer {
+    display: none;
+    margin-top: 15px;
+    padding: 14px;
+    background: var(--soft);
+    border-radius: 10px;
+    line-height: 1.6;
+}
+
+.answer.show {
+    display: block;
+}
+
+/* FEATURE STRIP */
+
+.feature-strip {
+    background: linear-gradient(
+        135deg,
+        var(--accent),
+        var(--accent2)
+    );
+    color: white;
+    border-radius: 22px;
+    padding: 35px;
+    margin: 20px;
+}
+
+.feature-strip h2 {
+    margin-top: 0;
+}
+
+.feature-strip p {
+    max-width: 700px;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+}
+
+.footer-inner {
+    max-width: 1150px;
+    margin: auto;
+    padding: 35px 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-inner p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* MOBILE */
+
+@media(max-width: 800px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 55px;
+    }
+
+    .hero h1 {
+        font-size: 58px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 40px 18px;
+    }
+
+    .feature-strip {
+        margin: 10px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<div class="nav-inner">
+
+<div class="logo">
+Knockout<span>Notes</span>
+</div>
+
+<div class="nav-links">
+
+<button onclick="goTo('home')">Home</button>
+<button onclick="goTo('pearls')">Pearls</button>
+<button onclick="goTo('notes')">Notes</button>
+<button onclick="goTo('viva')">Viva Classics</button>
+<button onclick="goTo('resources')">Resources</button>
+
+<button class="theme-btn" onclick="toggleTheme()">◐</button>
+
+</div>
+
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<div id="home">
+
+<div class="hero">
+
+<div>
+
+<div class="badge">
+ANAESTHESIA • CRITICAL CARE • VIVA
+</div>
+
+<h1>
+Knockout<br>
+<span>Notes.</span>
+</h1>
+
+<p>
+High-yield medical knowledge, distilled for the moments
+when you need to remember it — not just read it.
+</p>
+
+<div class="hero-buttons">
+
+<button class="primary" onclick="goTo('pearls')">
+Explore Pearls
+</button>
+
+<button class="secondary" onclick="goTo('viva')">
+Test Yourself
+</button>
+
+</div>
+
+</div>
+
+
+<div class="hero-card">
+
+<div class="mini-label">
+Today's Knockout
+</div>
+
+<h3>
+Why does propofol cause hypotension?
+</h3>
+
+<p>
+Primarily through reduced systemic vascular resistance,
+venodilation and attenuation of sympathetic compensatory
+responses.
+</p>
+
+<button class="expand"
+onclick="toggleAnswer('todayAnswer')">
+Reveal Pearl
+</button>
+
+<div id="todayAnswer" class="answer">
+
+<strong>Knockout Pearl:</strong><br><br>
+
+Propofol decreases sympathetic tone and causes
+arteriolar and venous vasodilation → ↓ SVR and
+↓ venous return → hypotension.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PEARLS -->
+
+<section id="pearls">
+
+<div class="section-title">
+
+<h2>⚡ Pearls</h2>
+
+<p>
+One concept. One takeaway. Remember it when it matters.
+</p>
+
+</div>
+
+
+<div class="tabs">
+
+<button class="tab active"
+onclick="filterCards('all', this)">
+All
+</button>
+
+<button class="tab"
+onclick="filterCards('pharmacology', this)">
+Pharmacology
+</button>
+
+<button class="tab"
+onclick="filterCards('physiology', this)">
+Physiology
+</button>
+
+<button class="tab"
+onclick="filterCards('airway', this)">
+Airway
+</button>
+
+<button class="tab"
+onclick="filterCards('critical', this)">
+Critical Care
+</button>
+
+</div>
+
+
+<div class="search-box">
+
+<input
+id="pearlSearch"
+type="text"
+placeholder="Search pearls..."
+onkeyup="searchPearls()">
+
+</div>
+
+
+<div class="grid" id="pearlGrid">
+
+
+<div class="card pearl pharmacology">
+
+<div class="card-tag">
+Pharmacology
+</div>
+
+<h3>
+Succinylcholine
+</h3>
+
+<p>
+Rapid onset because it reaches the neuromuscular
+junction rapidly and acts as a depolarizing agonist.
+</p>
+
+<button class="expand"
+onclick="toggleAnswer('p1')">
+Knockout Pearl
+</button>
+
+<div id="p1" class="answer">
+
+Onset is approximately 30–60 seconds after IV
+administration.
+
+<strong>Viva:</strong>
+Why is onset faster than rocuronium?
+
+</div>
+
+</div>
+
+
+<div class="card pearl physiology">
+
+<div class="card-tag">
+Physiology
+</div>
+
+<h3>
+FRC matters
+</h3>
+
+<p>
+Preoxygenation increases the oxygen reservoir mainly
+by replacing nitrogen in the FRC with oxygen.
+</p>
+
+<button class="expand"
+onclick="toggleAnswer('p2')">
+Knockout Pearl
+</button>
+
+<div id="p2" class="answer">
+
+The functional residual capacity acts as an oxygen
+reservoir during apnoea.
+
+More FRC → greater oxygen reservoir → longer
+safe apnoea time.
+
+</div>
+
+</div>
+
+
+<div class="card pearl airway">
+
+<div class="card-tag">
+Airway
+</div>
+
+<h3>
+Can't intubate, can't oxygenate
+</h3>
+
+<p>
+This is a time-critical airway emergency — don't
+persist indefinitely with repeated attempts.
+</p>
+
+<button class="expand"
+onclick="toggleAnswer('p3')">
+Knockout Pearl
+</button>
+
+<div id="p3" class="answer">
+
+Recognise failure early, declare the emergency,
+optimise oxygenation and proceed according to the
+applicable difficult-airway algorithm.
+
+</div>
+
+</div>
+
+
+<div class="card pearl critical">
+
+<div class="card-tag">
+Critical Care
+</div>
+
+<h3>
+Sudden loss of ETCO₂
+</h3>
+
+<p>
+Think immediately about disconnection, airway problems,
+circulatory collapse and equipment failure.
+</p>
+
+<button class="expand"
+onclick="toggleAnswer('p4')">
+Knockout Pearl
+</button>
+
+<div id="p4" class="answer">
+
+A sudden abrupt loss of ETCO₂ can occur with
+disconnection, oesophageal intubation, complete airway
+obstruction, cardiac arrest or pulmonary embolism,
+among other causes.
+
+</div>
+
+</div>
+
+
+<div class="card pearl physiology">
+
+<div class="card-tag">
+Physiology
+</div>
+
+<h3>
+Hypoxic pulmonary vasoconstriction
+</h3>
+
+<p>
+The pulmonary circulation constricts vessels supplying
+poorly ventilated alveoli.
+</p>
+
+<button class="expand"
+onclick="toggleAnswer('p5')">
+Knockout Pearl
+</button>
+
+<div id="p5" class="answer">
+
+HPV diverts pulmonary blood flow away from poorly
+ventilated regions toward better ventilated alveoli,
+helping reduce V/Q mismatch.
+
+</div>
+
+</div>
+
+
+<div class="card pearl pharmacology">
+
+<div class="card-tag">
+Pharmacology
+</div>
+
+<h3>
+Sugammadex
+</h3>
+
+<p>
+It reverses aminosteroid neuromuscular blockade by
+encapsulating the steroidal NMBA molecule.
+</p>
+
+<button class="expand"
+onclick="toggleAnswer('p6')">
+Knockout Pearl
+</button>
+
+<div id="p6" class="answer">
+
+Sugammadex forms a tight complex with rocuronium
+and other aminosteroid neuromuscular blockers,
+reducing free drug concentration at the NMJ.
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FEATURE -->
+
+<div class="feature-strip">
+
+<h2>
+💥 KnockoutNotes Philosophy
+</h2>
+
+<p>
+Don't memorise everything. Know what matters,
+understand why it matters, and remember it when
+the patient is on the table.
+</p>
+
+</div>
+
+
+<!-- NOTES -->
+
+<section id="notes">
+
+<div class="section-title">
+
+<h2>📚 Notes</h2>
+
+<p>
+Concepts worth understanding before trying to memorise them.
+</p>
+
+</div>
+
+
+<div class="grid">
+
+
+<div class="card">
+
+<div class="card-tag">
+Cardiovascular
+</div>
+
+<h3>
+Mitral Stenosis
+</h3>
+
+<p>
+Understand the haemodynamic consequences of reduced
+mitral valve area and the importance of heart rate,
+rhythm and pulmonary vascular resistance.
+</p>
+
+<button class="expand"
+onclick="toggleAnswer('n1')">
+Open Note
+</button>
+
+<div id="n1" class="answer">
+
+<strong>Core goals:</strong>
+
+<ul>
+
+<li>Maintain sinus rhythm.</li>
+
+<li>Avoid tachycardia.</li>
+
+<li>Maintain adequate preload without volume overload.</li>
+
+<li>Avoid increases in PVR.</li>
+
+<li>Maintain contractility and systemic perfusion.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-tag">
+Respiratory
+</div>
+
+<h3>
+V/Q Mismatch
+</h3>
+
+<p>
+The most common mechanism of hypoxaemia in many
+clinical pulmonary disorders.
+</p>
+
+<button class="expand"
+onclick="toggleAnswer('n2')">
+Open Note
+</button>
+
+<div id="n2" class="answer">
+
+Low V/Q regions receive blood flow but insufficient
+ventilation.
+
+High V/Q regions receive ventilation but relatively
+less perfusion.
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-tag">
+Airway
+</div>
+
+<h3>
+Preoxygenation
+</h3>
+
+<p>
+The goal isn't simply increasing SpO₂ — it is increasing
+the oxygen reserve available during apnoea.
+</p>
+
+<button class="expand"
+onclick="toggleAnswer('n3')">
+Open Note
+</button>
+
+<div id="n3" class="answer">
+
+Effective preoxygenation reduces alveolar nitrogen
+and increases the oxygen fraction within the FRC.
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- VIVA -->
+
+<section id="viva">
+
+<div class="section-title">
+
+<h2>🧠 Viva Classics</h2>
+
+<p>
+The questions that keep coming back.
+</p>
+
+</div>
+
+
+<div class="grid">
+
+
+<div class="card">
+
+<div class="card-tag">
+Viva #001
+</div>
+
+<h3>
+Why does N₂O expand a pneumothorax?
+</h3>
+
+<button class="expand"
+onclick="toggleAnswer('v1')">
+Reveal Answer
+</button>
+
+<div id="v1" class="answer">
+
+N₂O diffuses into closed gas spaces faster than
+nitrogen diffuses out, increasing the volume and/or
+pressure of the gas space.
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-tag">
+Viva #002
+</div>
+
+<h3>
+What determines cerebral perfusion pressure?
+</h3>
+
+<button class="expand"
+onclick="toggleAnswer('v2')">
+Reveal Answer
+</button>
+
+<div id="v2" class="answer">
+
+<strong>CPP = MAP − ICP</strong>
+
+When CVP exceeds ICP, the effective downstream pressure
+may instead be influenced by CVP.
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-tag">
+Viva #003
+</div>
+
+<h3>
+Why is etomidate haemodynamically stable?
+</h3>
+
+<button class="expand"
+onclick="toggleAnswer('v3')">
+Reveal Answer
+</button>
+
+<div id="v3" class="answer">
+
+Etomidate generally produces less cardiovascular
+depression than propofol, with relatively preserved
+sympathetic tone and baroreflex function.
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-tag">
+Viva #004
+</div>
+
+<h3>
+What is the difference between shunt and dead space?
+</h3>
+
+<button class="expand"
+onclick="toggleAnswer('v4')">
+Reveal Answer
+</button>
+
+<div id="v4" class="answer">
+
+<strong>Shunt:</strong>
+Perfusion without adequate ventilation.
+
+<br><br>
+
+<strong>Dead space:</strong>
+Ventilation without adequate perfusion.
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-tag">
+Viva #005
+</div>
+
+<h3>
+What is the most important determinant of MAC?
+</h3>
+
+<button class="expand"
+onclick="toggleAnswer('v5')">
+Reveal Answer
+</button>
+
+<div id="v5" class="answer">
+
+Age is one of the most important clinically relevant
+determinants of MAC, with MAC generally decreasing
+with increasing age.
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-tag">
+Viva #006
+</div>
+
+<h3>
+Why does spinal anaesthesia cause hypotension?
+</h3>
+
+<button class="expand"
+onclick="toggleAnswer('v6')">
+Reveal Answer
+</button>
+
+<div id="v6" class="answer">
+
+Sympathetic blockade causes arterial and venous
+vasodilation → reduced SVR and venous capacitance
+changes → reduced venous return and cardiac output.
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- RESOURCES -->
+
+<section id="resources">
+
+<div class="section-title">
+
+<h2>📖 Resources</h2>
+
+<p>
+Evidence-based learning resources for anaesthesia and critical care.
+</p>
+
+</div>
+
+
+<div class="grid">
+
+
+<div class="card">
+
+<div class="card-tag">
+Coming Soon
+</div>
+
+<h3>
+💊 Anaesthesia Drug Cards
+</h3>
+
+<p>
+High-yield dose, onset, duration, mechanism,
+indications and contraindications.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-tag">
+Coming Soon
+</div>
+
+<h3>
+🚨 Emergency Algorithms
+</h3>
+
+<p>
+Rapid-reference algorithms for emergencies encountered
+in the operating room and critical care.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-tag">
+Coming Soon
+</div>
+
+<h3>
+📄 Viva Handbook
+</h3>
+
+<p>
+A downloadable collection of high-yield anaesthesia
+viva questions and answers.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-inner">
+
+<div>
+
+<div class="logo">
+Knockout<span>Notes</span>
+</div>
+
+<p>
+Anaesthesia • Critical Care • Viva
+</p>
+
+</div>
+
+<div>
+
+<p>
+Educational content only. Always verify clinical
+decisions against current guidelines, institutional
+protocols and patient-specific factors.
+</p>
+
+<p>
+© 2026 KnockoutNotes
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* NAVIGATION */
+
+function goTo(id) {
+
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* DARK MODE */
+
+function toggleTheme() {
+
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+
+        localStorage.setItem("theme", "dark");
+
+    } else {
+
+        localStorage.setItem("theme", "light");
+
+    }
+
+}
+
+
+/* LOAD SAVED THEME */
+
+if (localStorage.getItem("theme") === "dark") {
+
+    document.body.classList.add("dark");
+
+}
+
+
+/* EXPAND ANSWERS */
+
+function toggleAnswer(id) {
+
+    const element = document.getElementById(id);
+
+    element.classList.toggle("show");
+
+}
+
+
+/* PEARL FILTER */
+
+function filterCards(category, button) {
+
+    const cards = document.querySelectorAll(".pearl");
+
+    document.querySelectorAll(".tab").forEach(
+        tab => tab.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+    cards.forEach(card => {
+
+        if (category === "all") {
+
+            card.style.display = "block";
+
+        } else {
+
+            if (card.classList.contains(category)) {
+
+                card.style.display = "block";
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        }
+
+    });
+
+}
+
+
+/* SEARCH */
+
+function searchPearls() {
+
+    const search =
+        document.getElementById("pearlSearch")
+        .value
+        .toLowerCase();
+
+    const cards =
+        document.querySelectorAll(".pearl");
+
+    cards.forEach(card => {
+
+        const text =
+            card.innerText.toLowerCase();
+
+        if (text.includes(search)) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
