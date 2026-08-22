@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pearls | KnockoutNotes</title><meta name="description" content="High-yield anaesthesia pearls with exact values and references.">
+<link rel="stylesheet" href="styles.css"></head><body data-content-page="pearls">
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="KnockoutNotes home">
+      <img src="knockoutnotes_icon.png" alt="KnockoutNotes logo">
+      <div class="brand-name">Knockout<span>Notes</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="pearls.html">Pearls</a>
+      <a href="notes.html">Notes</a>
+      <a href="viva.html">Viva</a>
+      <a href="drugs.html">Drugs</a>
+      <a href="critical-care.html">Critical Care</a>
+      <a href="resources.html">Resources</a>
+    </div>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">☾</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a data-close-menu href="index.html">Home</a>
+    <a data-close-menu href="pearls.html">Pearls</a>
+    <a data-close-menu href="notes.html">Notes</a>
+    <a data-close-menu href="viva.html">Viva</a>
+    <a data-close-menu href="drugs.html">Drugs</a>
+    <a data-close-menu href="critical-care.html">Critical Care</a>
+    <a data-close-menu href="resources.html">Resources</a>
+  </div>
+</nav>
+
+<main class="container">
+<section class="section">
+<div class="section-head fade"><span class="kicker">⚡ HIGH-YIELD</span><h2>Pearls</h2><p>One concept. One takeaway. Exact numbers where they matter.</p></div>
+<input class="search fade" id="search" placeholder="Search pearls...">
+<div class="filters fade"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="pharm">Pharmacology</button><button class="filter" data-filter="phys">Physiology</button><button class="filter" data-filter="airway">Airway</button><button class="filter" data-filter="cardiac">Cardiac</button><button class="filter" data-filter="icu">Critical Care</button></div>
+<div class="grid">
+<div class="card filter-card fade" data-category="pharm"><div class="tag">Pharmacology</div><h3>Succinylcholine</h3><p><strong>IV intubating dose: 1–1.5 mg/kg</strong> in adults.</p><button class="reveal" data-target="p1">Reveal Answer</button><div class="answer" id="p1">Depolarizing NMBA with rapid onset. It produces fasciculations followed by flaccid paralysis.<small class="reference">Reference: Miller's Anesthesia, 10th ed.; Stoelting 6th ed.</small></div></div>
+<div class="card filter-card fade" data-category="pharm"><div class="tag">Pharmacology</div><h3>Sugammadex</h3><p>Dose according to depth of rocuronium/vecuronium block.</p><button class="reveal" data-target="p2">Reveal Answer</button><div class="answer" id="p2"><strong>2 mg/kg</strong> for moderate block; <strong>4 mg/kg</strong> for deep block; <strong>16 mg/kg</strong> for immediate reversal after a 1.2 mg/kg rocuronium dose in the relevant setting.<small class="reference">Reference: Miller's Anesthesia, 10th ed.; Stoelting 6th ed.; current product prescribing information.</small></div></div>
+<div class="card filter-card fade" data-category="phys"><div class="tag">Physiology</div><h3>FRC as an oxygen reservoir</h3><p>Preoxygenation replaces alveolar nitrogen with oxygen and increases oxygen reserve during apnoea.</p><button class="reveal" data-target="p3">Reveal Answer</button><div class="answer" id="p3">The goal is denitrogenation and maximisation of oxygen stores, not merely achieving an SpO₂ of 100%.<small class="reference">Reference: Miller's Anesthesia, 10th ed.; Barash, Cullen & Stoelting's Clinical Anesthesia, 9th ed.</small></div></div>
+<div class="card filter-card fade" data-category="airway"><div class="tag">Airway</div><h3>Can't intubate, can't oxygenate</h3><p>Recognise failure early and move to the rescue pathway rather than repeating unsuccessful attempts indefinitely.</p><button class="reveal" data-target="p4">Reveal Answer</button><div class="answer" id="p4">Priorities are oxygenation, declaration of the emergency, optimisation of rescue attempts and progression through the applicable difficult-airway algorithm.<small class="reference">Reference: Current difficult-airway guidance; Miller's Anesthesia, 10th ed.</small></div></div>
+<div class="card filter-card fade" data-category="cardiac"><div class="tag">Cardiac</div><h3>Mitral stenosis: rate matters</h3><p>Tachycardia shortens diastole and reduces LV filling across a stenotic mitral valve.</p><button class="reveal" data-target="p5">Reveal Answer</button><div class="answer" id="p5">Aim for controlled heart rate, sinus rhythm when possible, adequate but not excessive preload, and avoidance of acute rises in pulmonary vascular resistance.<small class="reference">Reference: Miller's Anesthesia, 10th ed.; Barash, Cullen & Stoelting's Clinical Anesthesia, 9th ed.</small></div></div>
+<div class="card filter-card fade" data-category="icu"><div class="tag">Critical Care</div><h3>Sudden loss of ETCO₂</h3><p>Think patient, airway, circuit and circulation immediately.</p><button class="reveal" data-target="p6">Reveal Answer</button><div class="answer" id="p6">Consider disconnection, airway obstruction, oesophageal intubation, sampling/circuit failure, pulmonary embolism and abrupt reduction in pulmonary blood flow such as cardiac arrest.<small class="reference">Reference: Miller's Anesthesia, 10th ed.; Barash, Cullen & Stoelting's Clinical Anesthesia, 9th ed.</small></div></div>
+</div></section>
+</main>
+<section class="section">
+<div class="section-head fade"><h2>Latest from KnockoutNotes</h2><p>Edit the Google Sheet to update this section.</p></div>
+<div id="sheetContent" class="grid"></div>
+</section>
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="brand"><img src="knockoutnotes_icon.png" alt=""><div class="brand-name">Knockout<span>Notes</span></div></div>
+      <p>Anaesthesia • Critical Care • Viva</p>
+      <p class="disclaimer">Educational content for medical professionals and trainees. Always verify current guidelines, institutional protocols, drug labels and patient-specific factors before clinical use.</p>
+    </div>
+    <div>
+      <p><strong>Connect</strong></p>
+      <div class="socials">
+        <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
+        <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
+      </div>
+      <p>© 2026 KnockoutNotes</p>
+    </div>
+  </div>
+</footer>
+
+<script src="sheet-config.js"></script><script src="script.js"></script></body></html>
