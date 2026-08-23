@@ -1,7 +1,40 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Resources | KnockoutNotes</title><meta name="description" content="Reference shelf for KnockoutNotes medical education.">
-<link rel="stylesheet" href="styles.css"></head><body>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* KnockoutNotes — subtle bubble hover */
+.card{
+  position:relative;
+  overflow:hidden;
+  transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,border-color .28s ease;
+}
+.card::after{
+  content:"";
+  position:absolute;
+  width:115px;height:115px;
+  right:-55px;top:-55px;
+  border-radius:50%;
+  background:var(--soft);
+  opacity:0;
+  transform:scale(.45);
+  transition:opacity .28s ease,transform .35s ease;
+  pointer-events:none;
+}
+.card:hover{
+  transform:translateY(-7px) scale(1.012);
+  box-shadow:0 16px 36px rgba(15,23,42,.14);
+}
+.card:hover::after{
+  opacity:.65;
+  transform:scale(1);
+}
+@media(max-width:640px){
+  .card:hover{transform:none}
+  .card:active{transform:scale(.985)}
+}
+</style>
+</head><body>
 <nav class="site-nav">
   <div class="nav-inner">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
@@ -15,7 +48,7 @@
       <a href="viva.html">Viva</a>
       <a href="drugs.html">Drugs</a>
       <a href="critical-care.html">Critical Care</a>
-      <a href="resources.html">Resources</a>
+      <a href="resources.html">Resources</a><a href="recent-updates.html">Recent Updates</a>
     </div>
     <div class="nav-actions">
       <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">☾</button>
@@ -29,7 +62,7 @@
     <a data-close-menu href="viva.html">Viva</a>
     <a data-close-menu href="drugs.html">Drugs</a>
     <a data-close-menu href="critical-care.html">Critical Care</a>
-    <a data-close-menu href="resources.html">Resources</a>
+    <a data-close-menu href="resources.html">Resources</a><a data-close-menu href="recent-updates.html">Recent Updates</a>
   </div>
 </nav>
 

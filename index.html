@@ -1,7 +1,40 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anaesthesia • Critical Care • Viva | KnockoutNotes</title><meta name="description" content="High-yield anaesthesia, critical care and viva notes for MD Anaesthesia learners.">
-<link rel="stylesheet" href="styles.css"></head><body>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* KnockoutNotes — subtle bubble hover */
+.card{
+  position:relative;
+  overflow:hidden;
+  transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,border-color .28s ease;
+}
+.card::after{
+  content:"";
+  position:absolute;
+  width:115px;height:115px;
+  right:-55px;top:-55px;
+  border-radius:50%;
+  background:var(--soft);
+  opacity:0;
+  transform:scale(.45);
+  transition:opacity .28s ease,transform .35s ease;
+  pointer-events:none;
+}
+.card:hover{
+  transform:translateY(-7px) scale(1.012);
+  box-shadow:0 16px 36px rgba(15,23,42,.14);
+}
+.card:hover::after{
+  opacity:.65;
+  transform:scale(1);
+}
+@media(max-width:640px){
+  .card:hover{transform:none}
+  .card:active{transform:scale(.985)}
+}
+</style>
+</head><body>
 <nav class="site-nav">
   <div class="nav-inner">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
@@ -15,7 +48,7 @@
       <a href="viva.html">Viva</a>
       <a href="drugs.html">Drugs</a>
       <a href="critical-care.html">Critical Care</a>
-      <a href="resources.html">Resources</a>
+      <a href="resources.html">Resources</a><a href="recent-updates.html">Recent Updates</a>
     </div>
     <div class="nav-actions">
       <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">☾</button>
@@ -29,7 +62,7 @@
     <a data-close-menu href="viva.html">Viva</a>
     <a data-close-menu href="drugs.html">Drugs</a>
     <a data-close-menu href="critical-care.html">Critical Care</a>
-    <a data-close-menu href="resources.html">Resources</a>
+    <a data-close-menu href="resources.html">Resources</a><a data-close-menu href="recent-updates.html">Recent Updates</a>
   </div>
 </nav>
 
@@ -83,4 +116,73 @@
   </div>
 </footer>
 
-<script src="sheet-config.js"></script><script src="script.js"></script></body></html>
+<script src="sheet-config.js"></script><script src="script.js"></script>
+<style>
+.kn-updates-fab{
+  position:fixed;right:20px;bottom:20px;z-index:1200;
+  width:min(330px,calc(100vw - 30px));
+  border:1px solid var(--border);border-radius:15px;
+  background:var(--card);color:var(--text);
+  box-shadow:0 18px 45px rgba(15,23,42,.20);
+  overflow:hidden;
+}
+.kn-updates-fab-head{
+  display:flex;align-items:center;gap:8px;padding:10px 12px;
+  font-size:11px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;
+  color:var(--accent);border-bottom:1px solid var(--border);
+}
+.kn-blink{
+  width:8px;height:8px;border-radius:50%;background:var(--accent);
+  animation:knBlink 1.25s ease-in-out infinite;
+}
+@keyframes knBlink{0%,100%{opacity:.35;box-shadow:0 0 0 0 rgba(37,99,235,0)}50%{opacity:1;box-shadow:0 0 0 6px rgba(37,99,235,.10)}}
+.kn-updates-fab-body{max-height:180px;overflow:auto}
+.kn-update-row{display:block;padding:9px 12px;border-bottom:1px solid var(--border)}
+.kn-update-row:last-child{border-bottom:0}
+.kn-update-row strong{display:block;font-size:12px;line-height:1.35}
+.kn-update-row small{color:var(--muted);font-size:10px}
+.kn-updates-fab-foot{display:block;padding:8px 12px;color:var(--accent);font-size:11px;font-weight:850;border-top:1px solid var(--border)}
+@media(max-width:640px){
+  .kn-updates-fab{right:10px;bottom:10px;width:calc(100vw - 20px)}
+}
+</style>
+
+<div class="kn-updates-fab" aria-label="Recent KnockoutNotes updates">
+  <div class="kn-updates-fab-head"><span class="kn-blink"></span> Recent Updates</div>
+  <div class="kn-updates-fab-body" id="knHomeUpdates">
+    <div class="kn-update-row"><strong>Loading latest updates…</strong></div>
+  </div>
+  <a class="kn-updates-fab-foot" href="recent-updates.html">View all recent updates →</a>
+</div>
+<script>
+(function(){
+  const box=document.getElementById("knHomeUpdates");
+  const url=(typeof KNOCKOUTNOTES_SHEET_CSV!=="undefined")?KNOCKOUTNOTES_SHEET_CSV:"";
+  if(!box||!url.trim())return;
+  function parseCSV(t){const rows=[];let row=[],cell="",q=false;for(let i=0;i<t.length;i++){const c=t[i],n=t[i+1];if(c=='"'&&q&&n=='"'){cell+='"';i++;continue}if(c=='"'){q=!q;continue}if(c===','&&!q){row.push(cell.trim());cell="";continue}if((c==='\n'||c==='\r')&&!q){if(c==='\r'&&n==='\n')i++;row.push(cell.trim());cell="";if(row.some(v=>v!==""))rows.push(row);row=[];continue}cell+=c}if(cell!==""||row.length){row.push(cell.trim());if(row.some(v=>v!==""))rows.push(row)}return rows}
+  function norm(s){return(s||"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim()}
+  function esc(s){return String(s||"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]))}
+  function dv(s,i){const d=Date.parse(s||"");return Number.isNaN(d)?i:d}
+  fetch(url+(url.includes("?")?"&":"?")+"_="+Date.now(),{cache:"no-store"}).then(r=>r.text()).then(t=>{
+    const rows=parseCSV(t);if(rows.length<2)throw 0;
+    const h=rows[0].map(norm),ix=n=>h.indexOf(norm(n));
+    const data=rows.slice(1).map((r,i)=>({
+      type:ix("Type")>=0?r[ix("Type")]:"",
+      title:ix("Title")>=0?r[ix("Title")]:"",
+      date:ix("Date")>=0?r[ix("Date")]:"",
+      order:i
+    })).filter(x=>x.title);
+    data.sort((a,b)=>dv(b.date,b.order)-dv(a.date,a.order));
+    const latest=data.slice(0,5);  // latest 5 published KnockoutNotes cards
+    if(!latest.length)throw 0;
+    box.innerHTML=latest.map(x=>`
+      <a class="kn-update-row" href="recent-updates.html">
+        <strong>${esc(x.title)}</strong>
+        <small>${esc(x.type||"Update")}${x.date?" • "+esc(x.date):""}</small>
+      </a>`).join("");
+  }).catch(()=>{
+    box.innerHTML='<div class="kn-update-row"><strong>Add content to the Google Sheet to see latest published cards here.</strong></div>';
+  });
+})();
+</script>
+</body></html>

@@ -1,7 +1,52 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Drug Cards | KnockoutNotes</title><meta name="description" content="High-yield anaesthesia drug cards with doses and references.">
-<link rel="stylesheet" href="styles.css"></head><body data-content-page="drugs">
+<link rel="stylesheet" href="styles.css"><style>
+.kn-ticker-wrap{width:100%;overflow:hidden;margin:18px 0 8px;border:1px solid var(--border);border-radius:12px;background:var(--card);box-shadow:0 6px 18px rgba(15,23,42,.05)}
+.kn-ticker-head{display:flex;align-items:center;gap:8px;padding:8px 12px 0;color:var(--accent);font-size:10px;font-weight:900;letter-spacing:1px;text-transform:uppercase}
+.kn-ticker-window{overflow:hidden;width:100%;padding:8px 0 10px}
+.kn-ticker-track{display:inline-flex;width:max-content;white-space:nowrap;animation:knTickerLTR 30s linear infinite}
+.kn-ticker-wrap:hover .kn-ticker-track,.kn-ticker-wrap:focus-within .kn-ticker-track{animation-play-state:paused}
+.kn-ticker-item{display:inline-flex;align-items:center;gap:8px;margin-right:42px;color:var(--text);font-size:13px}
+.kn-ticker-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
+.kn-ticker-type{color:var(--accent);font-weight:850}
+.kn-ticker-title{font-weight:700}.kn-ticker-date{color:var(--muted);font-size:11px}
+@keyframes knTickerLTR{from{transform:translateX(-100%)}to{transform:translateX(100vw)}}
+@media(max-width:640px){.kn-ticker-wrap{margin:14px 0 6px;border-radius:10px}.kn-ticker-head{font-size:9px;padding:7px 10px 0}.kn-ticker-item{font-size:12px;margin-right:30px}}
+</style>
+<style>
+/* KnockoutNotes — subtle bubble hover */
+.card{
+  position:relative;
+  overflow:hidden;
+  transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,border-color .28s ease;
+}
+.card::after{
+  content:"";
+  position:absolute;
+  width:115px;height:115px;
+  right:-55px;top:-55px;
+  border-radius:50%;
+  background:var(--soft);
+  opacity:0;
+  transform:scale(.45);
+  transition:opacity .28s ease,transform .35s ease;
+  pointer-events:none;
+}
+.card:hover{
+  transform:translateY(-7px) scale(1.012);
+  box-shadow:0 16px 36px rgba(15,23,42,.14);
+}
+.card:hover::after{
+  opacity:.65;
+  transform:scale(1);
+}
+@media(max-width:640px){
+  .card:hover{transform:none}
+  .card:active{transform:scale(.985)}
+}
+</style>
+</head><body data-content-page="drugs">
 <nav class="site-nav">
   <div class="nav-inner">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
@@ -15,7 +60,7 @@
       <a href="viva.html">Viva</a>
       <a href="drugs.html">Drugs</a>
       <a href="critical-care.html">Critical Care</a>
-      <a href="resources.html">Resources</a>
+      <a href="resources.html">Resources</a><a href="recent-updates.html">Recent Updates</a>
     </div>
     <div class="nav-actions">
       <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">☾</button>
@@ -29,11 +74,16 @@
     <a data-close-menu href="viva.html">Viva</a>
     <a data-close-menu href="drugs.html">Drugs</a>
     <a data-close-menu href="critical-care.html">Critical Care</a>
-    <a data-close-menu href="resources.html">Resources</a>
+    <a data-close-menu href="resources.html">Resources</a><a data-close-menu href="recent-updates.html">Recent Updates</a>
   </div>
 </nav>
 
 <main class="container">
+<div class="kn-ticker-wrap" aria-label="Latest from KnockoutNotes">
+<div class="kn-ticker-head">✦ Latest from KnockoutNotes</div>
+<div class="kn-ticker-window"><div class="kn-ticker-track" id="knLatestTicker">
+<span class="kn-ticker-item"><span class="kn-ticker-dot"></span><span class="kn-ticker-title">Loading latest notes…</span></span>
+</div></div></div>
 <section class="section"><div class="section-head fade"><span class="kicker">💊 PHARMACOLOGY</span><h2>Drug Cards</h2><p>High-yield adult anaesthesia doses. Dose must always be checked against patient factors and the current product information.</p></div>
 <div class="grid">
 <div class="card fade"><div class="tag">Induction</div><h3>Propofol</h3><p><strong>Adult IV induction: 1.5–2.5 mg/kg</strong>, titrated to effect; lower doses are commonly required in elderly/frail or haemodynamically compromised patients.</p><button class="reveal" data-target="d1">More</button><div class="answer" id="d1">Mechanism: potentiates GABA-A receptor-mediated inhibition. Major concerns include dose-related hypotension and respiratory depression/apnoea.<small class="reference">Reference: Miller's Anesthesia, 10th ed.; Stoelting 6th ed.; current prescribing information.</small></div></div>
@@ -44,10 +94,6 @@
 <div class="card fade"><div class="tag">Anticholinesterase</div><h3>Neostigmine</h3><p>Use with an antimuscarinic and titrate to residual block; do not treat a deep block as if it were minimal residual block.</p><button class="reveal" data-target="d6">More</button><div class="answer" id="d6">Increases acetylcholine at the NMJ by inhibiting acetylcholinesterase. Effect is limited by the depth of neuromuscular block and ceiling effect.<small class="reference">Reference: Miller's Anesthesia, 10th ed.; Stoelting 6th ed.</small></div></div>
 </div></section>
 </main>
-<section class="section">
-<div class="section-head fade"><h2>Latest from KnockoutNotes</h2><p>Edit the Google Sheet to update this section.</p></div>
-<div id="sheetContent" class="grid"></div>
-</section>
 <footer class="footer">
   <div class="footer-inner">
     <div>
@@ -66,4 +112,40 @@
   </div>
 </footer>
 
-<script src="sheet-config.js"></script><script src="script.js"></script></body></html>
+<script src="sheet-config.js"></script><script src="script.js"></script><script>
+(function(){
+  const ticker=document.getElementById("knLatestTicker");
+  const url=(typeof KNOCKOUTNOTES_SHEET_CSV!=="undefined")?KNOCKOUTNOTES_SHEET_CSV:"";
+  if(!ticker||!url.trim())return;
+  function parseCSV(t){const rows=[];let row=[],cell="",q=false;for(let i=0;i<t.length;i++){const c=t[i],n=t[i+1];if(c=='"'&&q&&n=='"'){cell+='"';i++;continue}if(c=='"'){q=!q;continue}if(c===','&&!q){row.push(cell.trim());cell="";continue}if((c==='\n'||c==='\r')&&!q){if(c==='\r'&&n==='\n')i++;row.push(cell.trim());cell="";if(row.some(v=>v!==""))rows.push(row);row=[];continue}cell+=c}if(cell!==""||row.length){row.push(cell.trim());if(row.some(v=>v!==""))rows.push(row)}return rows}
+  function norm(s){return(s||"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim()}
+  function esc(s){return String(s||"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]))}
+  function dv(s,i){const d=Date.parse(s||"");return Number.isNaN(d)?i:d}
+  fetch(url+(url.includes("?")?"&":"?")+"_="+Date.now(),{cache:"no-store"})
+    .then(r=>{if(!r.ok)throw 0;return r.text()})
+    .then(t=>{
+      const rows=parseCSV(t);if(rows.length<2)throw 0;
+      const h=rows[0].map(norm),ix=n=>h.indexOf(norm(n));
+      const data=rows.slice(1).map((r,i)=>({
+        type:ix("Type")>=0?r[ix("Type")]:"",
+        title:ix("Title")>=0?r[ix("Title")]:"",
+        date:ix("Date")>=0?r[ix("Date")]:"",
+        order:i
+      })).filter(x=>x.title);
+      data.sort((a,b)=>dv(b.date,b.order)-dv(a.date,a.order));
+      const latest=data.slice(0,5);   // ONLY 5 latest published KnockoutNotes cards
+      if(!latest.length)throw 0;
+      const items=latest.map(x=>`
+        <span class="kn-ticker-item">
+          <span class="kn-ticker-dot"></span>
+          <span class="kn-ticker-type">${esc(x.type||"Note")}</span>
+          <span class="kn-ticker-title">${esc(x.title)}</span>
+          ${x.date?`<span class="kn-ticker-date">${esc(x.date)}</span>`:""}
+        </span>`).join("");
+      ticker.innerHTML=items+items;
+    })
+    .catch(()=>{
+      ticker.innerHTML='<span class="kn-ticker-item"><span class="kn-ticker-dot"></span><span class="kn-ticker-title">Latest KnockoutNotes will appear here.</span></span>';
+    });
+})();
+</script></body></html>
