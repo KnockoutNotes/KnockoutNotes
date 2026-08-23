@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Recent Updates | KnockoutNotes</title><meta name="description" content="Recent guideline and practice updates in anaesthesia and critical care.">
-<link rel="stylesheet" href="styles.css"></head><body>
+<link rel="stylesheet" href="styles.css"><script src="sheet-config.js"></script><script src="script.js"></script></head><body>
 <nav class="site-nav">
   <div class="nav-inner">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
@@ -34,7 +34,6 @@
 </nav>
 
 <main class="container">
-<script src="sheet-config.js"></script><script src="script.js"></script>
 <section class="section">
   <div class="section-head fade">
     <span class="kicker">🚨 GUIDELINE WATCH</span>
@@ -53,49 +52,7 @@
   </div>
 </section>
 
-<script>
-(function(){
-  const root=document.getElementById("recentUpdatesGrid");
-  const url=(typeof KNOCKOUTNOTES_SHEET_CSV!=="undefined")?KNOCKOUTNOTES_SHEET_CSV:"";
-  if(!root||!url.trim())return;
-  function parseCSV(t){const rows=[];let row=[],cell="",q=false;for(let i=0;i<t.length;i++){const c=t[i],n=t[i+1];if(c=='"'&&q&&n=='"'){cell+='"';i++;continue}if(c=='"'){q=!q;continue}if(c===','&&!q){row.push(cell.trim());cell="";continue}if((c==='\\n'||c==='\\r')&&!q){if(c==='\\r'&&n==='\\n')i++;row.push(cell.trim());cell="";if(row.some(v=>v!==""))rows.push(row);row=[];continue}cell+=c}if(cell!==""||row.length){row.push(cell.trim());if(row.some(v=>v!==""))rows.push(row)}return rows}
-  function norm(s){return(s||"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim()}
-  function esc(s){return String(s||"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]))}
-  function dv(s,i){const d=Date.parse(s||"");return Number.isNaN(d)?i:d}
-  fetch(url+(url.includes("?")?"&":"?")+"_="+Date.now(),{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.text()}).then(t=>{
-    const rows=parseCSV(t);if(rows.length<2)throw 0;
-    const h=rows[0].map(norm),ix=n=>h.indexOf(norm(n));
-    const data=rows.slice(1).map((r,i)=>({
-      type:ix("Type")>=0?r[ix("Type")]:"",
-      category:ix("Category")>=0?r[ix("Category")]:"",
-      title:ix("Title")>=0?r[ix("Title")]:"",
-      summary:ix("Summary")>=0?r[ix("Summary")]:"",
-      answer:ix("Answer")>=0?r[ix("Answer")]:"",
-      reference:ix("Reference")>=0?r[ix("Reference")]:"",
-      date:ix("Date")>=0?r[ix("Date")]:"",
-      order:i
-    })).filter(x=>{
-      const t=norm(x.type);
-      return x.title && (t==="update" || t==="recent update" || t==="guideline update" || t==="guideline");
-    });
-    data.sort((a,b)=>dv(b.date,b.order)-dv(a.date,a.order));
-    const latest=data.slice(0,30);
-    if(!latest.length){
-      root.innerHTML='<div class="card"><p>No guideline or practice updates have been added yet. Add a row with <strong>Type = Update</strong>.</p></div>';
-      return;
-    }
-    root.innerHTML=latest.map(x=>`
-      <article class="card fade visible">
-        <div class="tag">🚨 ${esc(x.category||"Clinical Update")}${x.date?" • "+esc(x.date):""}</div>
-        <h3>${esc(x.title)}</h3>
-        ${x.summary?`<p>${esc(x.summary)}</p>`:""}
-        ${x.answer?`<div class="answer open">${esc(x.answer)}${x.reference?`<small class="reference">Reference: ${esc(x.reference)}</small>`:""}</div>`:""}
-      </article>`).join("");
-  }).catch(()=>{
-    root.innerHTML='<div class="card"><p>Recent updates could not be loaded right now.</p></div>';
-  });
-})();
-</script>
+
 </main><footer class="footer">
   <div class="footer-inner">
     <div>

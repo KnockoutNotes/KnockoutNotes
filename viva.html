@@ -46,7 +46,7 @@
   .card:active{transform:scale(.985)}
 }
 </style>
-</head><body data-content-page="viva">
+<script src="sheet-config.js"></script><script src="script.js"></script></head><body data-content-page="viva">
 <nav class="site-nav">
   <div class="nav-inner">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
@@ -112,40 +112,4 @@
   </div>
 </footer>
 
-<script src="sheet-config.js"></script><script src="script.js"></script><script>
-(function(){
-  const ticker=document.getElementById("knLatestTicker");
-  const url=(typeof KNOCKOUTNOTES_SHEET_CSV!=="undefined")?KNOCKOUTNOTES_SHEET_CSV:"";
-  if(!ticker||!url.trim())return;
-  function parseCSV(t){const rows=[];let row=[],cell="",q=false;for(let i=0;i<t.length;i++){const c=t[i],n=t[i+1];if(c=='"'&&q&&n=='"'){cell+='"';i++;continue}if(c=='"'){q=!q;continue}if(c===','&&!q){row.push(cell.trim());cell="";continue}if((c==='\n'||c==='\r')&&!q){if(c==='\r'&&n==='\n')i++;row.push(cell.trim());cell="";if(row.some(v=>v!==""))rows.push(row);row=[];continue}cell+=c}if(cell!==""||row.length){row.push(cell.trim());if(row.some(v=>v!==""))rows.push(row)}return rows}
-  function norm(s){return(s||"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim()}
-  function esc(s){return String(s||"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]))}
-  function dv(s,i){const d=Date.parse(s||"");return Number.isNaN(d)?i:d}
-  fetch(url+(url.includes("?")?"&":"?")+"_="+Date.now(),{cache:"no-store"})
-    .then(r=>{if(!r.ok)throw 0;return r.text()})
-    .then(t=>{
-      const rows=parseCSV(t);if(rows.length<2)throw 0;
-      const h=rows[0].map(norm),ix=n=>h.indexOf(norm(n));
-      const data=rows.slice(1).map((r,i)=>({
-        type:ix("Type")>=0?r[ix("Type")]:"",
-        title:ix("Title")>=0?r[ix("Title")]:"",
-        date:ix("Date")>=0?r[ix("Date")]:"",
-        order:i
-      })).filter(x=>x.title);
-      data.sort((a,b)=>dv(b.date,b.order)-dv(a.date,a.order));
-      const latest=data.slice(0,5);   // ONLY 5 latest published KnockoutNotes cards
-      if(!latest.length)throw 0;
-      const items=latest.map(x=>`
-        <span class="kn-ticker-item">
-          <span class="kn-ticker-dot"></span>
-          <span class="kn-ticker-type">${esc(x.type||"Note")}</span>
-          <span class="kn-ticker-title">${esc(x.title)}</span>
-          ${x.date?`<span class="kn-ticker-date">${esc(x.date)}</span>`:""}
-        </span>`).join("");
-      ticker.innerHTML=items+items;
-    })
-    .catch(()=>{
-      ticker.innerHTML='<span class="kn-ticker-item"><span class="kn-ticker-dot"></span><span class="kn-ticker-title">Latest KnockoutNotes will appear here.</span></span>';
-    });
-})();
-</script></body></html>
+</body></html>

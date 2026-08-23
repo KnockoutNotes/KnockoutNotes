@@ -1,3 +1,3 @@
-// KnockoutNotes Google Sheets data source
-const KNOCKOUTNOTES_SHEET_CSV =
-  "https://docs.google.com/spreadsheets/d/1tRt6Q3FadXqB-mmVGMRcOWUxSnWEazN2fXmqQT69dso/gviz/tq?tqx=out:csv&gid=0";
+// KnockoutNotes live content API
+const KNOCKOUTNOTES_API =
+  "https://script.google.com/macros/s/AKfycbzS4wg6AKdKvMYCDxyHMb8wKtEIqNZLddhKyqq0MKUh_pDjYUqLklq2TYnPA2W_-gE/exec";
