@@ -1,0 +1,99 @@
+KNOCKOUTNOTES — SIMPLE CONTENT WORKFLOW
+
+AFTER INSTALLING THESE REPLACEMENT FILES:
+You will NOT normally edit drugs.html, critical-care.html, pearls.html or notes.html again just to add content.
+
+1) ADD MORE IMAGES TO AN EXISTING CATEGORY
+------------------------------------------
+Upload images into that category's folder.
+Use numbered names:
+  category_01.jpg
+  category_02.jpg
+  category_03.jpg
+
+The system also accepts category_1.jpg, category_2.jpg, etc.
+Supported: JPG, JPEG, PNG, WEBP and PDF.
+
+Example — Muscle Relaxants:
+  assets/drugs/muscle-relaxants/muscle-relaxant_01.jpg
+  assets/drugs/muscle-relaxants/muscle-relaxant_02.jpg
+
+Example — Critical Care / Shock:
+  assets/critical-care/shock/shock_01.jpg
+  assets/critical-care/shock/shock_02.jpg
+
+2) ADD A PDF TO AN EXISTING CATEGORY
+------------------------------------
+Use the same numbering convention:
+  category_01.pdf
+  category_02.pdf
+
+PDFs appear as clickable PDF cards.
+Images appear in a swipeable gallery.
+You can mix images and PDFs in one category.
+
+3) ADD A NEW CATEGORY
+---------------------
+You only edit ONE file:
+  content-config.js
+
+Find the relevant page:
+  drugs
+  criticalCare
+  pearls
+  notes
+
+Copy one category entry and change:
+  id        = unique folder-safe name
+  title     = tab name shown on website
+  kicker    = small heading
+  description = short description
+  folder    = GitHub folder where the files will live
+  prefix    = filename prefix
+
+Then create that folder in GitHub and upload the numbered images/PDFs.
+
+Example:
+  Category: Local Anaesthetics
+  Folder: assets/drugs/local-anaesthetics/
+  Prefix: local-anaesthetic
+
+Files:
+  local-anaesthetic_01.jpg
+  local-anaesthetic_02.jpg
+  local-anaesthetic_03.pdf
+
+IMPORTANT:
+Do NOT modify the HTML page when adding a new category.
+Do NOT change the existing API/deployment URL.
+Do NOT delete the existing asset folders.
+
+4) EXISTING CATEGORIES INCLUDED
+--------------------------------
+DRUGS:
+  Induction Agents
+  Opioid Agents
+  Muscle Relaxants
+
+CRITICAL CARE:
+  ICU Scoring Pearls
+  Shock & Haemodynamics
+  Mechanical Ventilation
+
+PEARLS:
+  Cardiology Pearls
+  Airway Pearls
+  Physiology Pearls
+
+NOTES:
+  Cardiology Notes
+  Airway Notes
+  Critical Care Notes
+
+5) IF YOU WANT ME TO ADD A CATEGORY FOR YOU
+--------------------------------------------
+Just tell me:
+  Page: Drugs / Critical Care / Pearls / Notes
+  Category name: ______
+
+Then upload the images/PDFs. I can prepare the updated content-config.js file for you.
