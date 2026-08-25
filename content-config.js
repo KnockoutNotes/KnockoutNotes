@@ -4,7 +4,7 @@ window.KNOCKOUTNOTES_CONTENT = {
       categories: [
         {id:'induction', title:'Induction Agents', kicker:'INDUCTION', description:'High-yield induction drug pearls.', folder:'assets/drugs/induction', prefix:'induction', max:30},
         {id:'opioids', title:'Opioid Agents', kicker:'OPIOIDS', description:'High-yield opioid pharmacology and anaesthesia pearls.', folder:'assets/drugs/opioids', prefix:'opioid', max:30, files:[{url:'assets/drugs/opioids/opioid_01_intro.jpg',title:'Opioids — introduction'},{url:'assets/drugs/opioids/opioid_02_overview.jpg',title:'Opioid overview'},{url:'assets/drugs/opioids/opioid_03_morphine.jpg',title:'Morphine'},{url:'assets/drugs/opioids/opioid_04_fentanyl.jpg',title:'Fentanyl'},{url:'assets/drugs/opioids/opioid_05_remifentanil.jpg',title:'Remifentanil'},{url:'assets/drugs/opioids/opioid_06_nalbuphine.jpg',title:'Nalbuphine'},{url:'assets/drugs/opioids/opioid_07_tramadol.jpg',title:'Tramadol'},{url:'assets/drugs/opioids/opioid_08_pethidine.jpg',title:'Pethidine'},{url:'assets/drugs/opioids/opioid_09_buprenorphine.jpg',title:'Buprenorphine'},{url:'assets/drugs/opioids/opioid_10_naloxone.jpg',title:'Naloxone'}]},
-        {id:'muscle-relaxant', title:'Muscle Relaxants', kicker:'NEUROMUSCULAR BLOCKERS', description:'Add your NMBA pearls here.', folder:'assets/drugs/muscle-relaxant', prefix:'muscle-relaxant', max:30}
+        {id:'muscle-relaxant', title:'Muscle Relaxants', kicker:'NEUROMUSCULAR BLOCKERS', description:'High-yield muscle-relaxant pharmacology and anaesthesia pearls.', folder:'assets/drugs/muscle-relaxant', prefix:'muscle-relaxant', max:30}
       ]
     },
     criticalCare: {
