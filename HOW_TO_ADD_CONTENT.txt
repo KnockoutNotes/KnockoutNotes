@@ -28,8 +28,8 @@ Use the same numbering convention:
   category_01.pdf
   category_02.pdf
 
-PDFs appear as clickable PDF cards.
-Images appear in a swipeable gallery.
+PDFs and images appear as fast, lightweight clickable list bars.
+Clicking any item opens the original file directly in a new tab.
 You can mix images and PDFs in one category.
 
 3) ADD A NEW CATEGORY
