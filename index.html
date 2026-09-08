@@ -1,44 +1,24 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anaesthesia • Critical Care • Viva | KnockoutNotes</title><meta name="description" content="High-yield anaesthesia, critical care and viva notes for MD Anaesthesia learners.">
-<link rel="stylesheet" href="styles.css">
-<style>
-/* KnockoutNotes — subtle bubble hover */
-.card{
-  position:relative;
-  overflow:hidden;
-  transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,border-color .28s ease;
-}
-.card::after{
-  content:"";
-  position:absolute;
-  width:115px;height:115px;
-  right:-55px;top:-55px;
-  border-radius:50%;
-  background:var(--soft);
-  opacity:0;
-  transform:scale(.45);
-  transition:opacity .28s ease,transform .35s ease;
-  pointer-events:none;
-}
-.card:hover{
-  transform:translateY(-7px) scale(1.012);
-  box-shadow:0 16px 36px rgba(15,23,42,.14);
-}
-.card:hover::after{
-  opacity:.65;
-  transform:scale(1);
-}
-@media(max-width:640px){
-  .card:hover{transform:none}
-  .card:active{transform:scale(.985)}
-}
-</style>
-<script src="sheet-config.js"></script><script src="script.js"></script></head><body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anaesthesia • Critical Care • Viva | KnockoutNotes</title>
+  <meta name="description" content="High-yield anaesthesia, critical care and viva notes for MD Anaesthesia learners.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page-common.css">
+  <script src="sheet-config.js"></script>
+  <script src="content-config.js"></script>
+  <script src="script.js"></script>
+  <script src="kn-site-search.js"></script>
+</head>
+<body>
+
+<!-- Navigation Header -->
 <nav class="site-nav">
   <div class="nav-inner">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
-      <img src="knockoutnotes_icon.png" alt="KnockoutNotes logo">
+      <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
       <div class="brand-name">Knockout<span>Notes</span></div>
     </a>
     <div class="nav-links">
@@ -48,111 +28,244 @@
       <a href="viva.html">Viva</a>
       <a href="drugs.html">Drugs</a>
       <a href="critical-care.html">Critical Care</a>
-      <a href="resources.html">Resources</a><a href="recent-updates.html">Recent Updates</a>
+      <a href="resources.html">Resources</a>
+      <a href="recent-updates.html">Recent Updates</a>
     </div>
     <div class="nav-actions">
-      <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">☾</button>
+      <button class="nav-search-trigger" data-open-search aria-label="Open search">
+        <span>⌕ Search</span>
+        <kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a data-close-menu href="index.html">Home</a>
-    <a data-close-menu href="pearls.html">Pearls</a>
-    <a data-close-menu href="notes.html">Notes</a>
-    <a data-close-menu href="viva.html">Viva</a>
-    <a data-close-menu href="drugs.html">Drugs</a>
-    <a data-close-menu href="critical-care.html">Critical Care</a>
-    <a data-close-menu href="resources.html">Resources</a><a data-close-menu href="recent-updates.html">Recent Updates</a>
+    <a data-close-menu href="index.html">Home <span>→</span></a>
+    <a data-close-menu href="pearls.html">Pearls <span>→</span></a>
+    <a data-close-menu href="notes.html">Notes <span>→</span></a>
+    <a data-close-menu href="viva.html">Viva <span>→</span></a>
+    <a data-close-menu href="drugs.html">Drugs <span>→</span></a>
+    <a data-close-menu href="critical-care.html">Critical Care <span>→</span></a>
+    <a data-close-menu href="resources.html">Resources <span>→</span></a>
+    <a data-close-menu href="recent-updates.html">Recent Updates <span>→</span></a>
   </div>
 </nav>
 
 <main class="container">
-<section class="hero">
-  <div class="fade">
-    <span class="kicker">ANAESTHESIA • CRITICAL CARE • VIVA</span>
-    <h1>Knockout<br><span>Notes.</span></h1>
-    <p>High-yield medical knowledge, distilled for the moments when you need to remember it — not just read it.</p>
-    <div class="actions"><a class="btn primary" href="pearls.html">Explore Pearls</a><a class="btn secondary" href="viva.html">Test Yourself</a></div>
-  </div>
-  <div class="fade"><img class="hero-logo" src="knockoutnotes_wordmark.png" alt="KnockoutNotes logo"></div>
-</section>
-<div class="feature fade"><h2>💥 KnockoutNotes Philosophy</h2><p>Don't memorise everything. Understand what matters, know the exact numbers when they matter, and keep a source attached to every answer.</p></div>
-<section class="section">
-  <div class="section-head fade"><h2>Today's Knockout</h2><p>One high-yield concept. One clinically useful takeaway.</p></div>
-  <div class="card fade">
-    <div class="tag">Pharmacology</div><h3>Succinylcholine — IV intubating dose</h3>
-    <p>For adult tracheal intubation, a commonly cited IV dose is <strong>1–1.5 mg/kg</strong>.</p>
-    <button class="reveal" data-target="today">Reveal Answer</button>
-    <div class="answer" id="today"><strong>Viva point:</strong> Rapid onset follows rapid access to the neuromuscular junction and depolarizing activation of nicotinic acetylcholine receptors.
-      <small class="reference">Reference: Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 6th ed.</small>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="fade">
+      <span class="kicker">⚡ ANAESTHESIA • CRITICAL CARE • VIVA</span>
+      <h1>Knockout<br><span>Notes.</span></h1>
+      <p>High-yield medical knowledge, distilled for the moments when you need to remember it — not just read it.</p>
+      <div class="actions">
+        <a class="btn primary" href="pearls.html">Explore Pearls →</a>
+        <a class="btn secondary" href="viva.html">Test Yourself</a>
+        <button class="btn secondary" data-open-search>⌕ Search Database</button>
+      </div>
     </div>
+    <div class="hero-visual fade">
+      <div class="hero-visual-box">
+        <img class="hero-logo" src="knockoutnotes_wordmark.png" alt="KnockoutNotes">
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">32+</div>
+            <div class="stat-label">Visual Pearls</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Referenced</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">2025/26</div>
+            <div class="stat-label">Guidelines</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy Feature Banner -->
+  <div class="feature fade">
+    <h2>💥 KnockoutNotes Philosophy</h2>
+    <p>Don't memorise everything. Understand what matters, know the exact numbers when they matter, and keep a peer-reviewed source attached to every answer.</p>
   </div>
-</section>
-<section class="section"><div class="section-head fade"><h2>Explore</h2><p>Built around the way an MD Anaesthesia resident actually studies.</p></div>
-<div class="grid">
-  <a class="card fade" href="pearls.html"><div class="tag">⚡ Pearls</div><h3>High-yield takeaways</h3><p>Short concepts with exact values and a reference attached.</p></a>
-  <a class="card fade" href="drugs.html"><div class="tag">💊 Drugs</div><h3>Drug cards</h3><p>Dose, onset, mechanism, indications, contraindications and viva points.</p></a>
-  <a class="card fade" href="critical-care.html"><div class="tag">🚨 Critical Care</div><h3>ICU essentials</h3><p>Ventilation, haemodynamics, shock, sepsis and emergency medicine.</p></a>
-  <a class="card fade" href="viva.html"><div class="tag">🧠 Viva</div><h3>Viva classics</h3><p>Questions that keep coming back — with concise answers.</p></a>
-  <a class="card fade" href="notes.html"><div class="tag">📚 Notes</div><h3>Concept notes</h3><p>Longer explanations when a pearl is not enough.</p></a>
-  <a class="card fade" href="resources.html"><div class="tag">📖 Resources</div><h3>Reference shelf</h3><p>Guidelines, textbooks, algorithms and downloadable resources.</p></a>
-</div></section>
+
+  <!-- Medical Bento Grid -->
+  <section class="section">
+    <div class="section-head fade">
+      <span class="kicker">HIGH-YIELD CORE</span>
+      <h2>Today's Knockout & Live Feeds</h2>
+      <p>Instant clinical takeaways, active recall questions, and real-time guideline monitoring.</p>
+    </div>
+
+    <div class="bento-grid">
+      <!-- Bento 1: Today's Knockout -->
+      <article class="card bento-span-7 fade">
+        <div class="card-top">
+          <div class="tag">⚡ Daily High-Yield</div>
+          <span class="card-date">Pharmacology</span>
+        </div>
+        <h3>Succinylcholine — IV intubating dose</h3>
+        <p>For adult tracheal intubation, standard rapid sequence induction dose is commonly cited as <strong>1–1.5 mg/kg IV</strong>.</p>
+        <div>
+          <span class="formula">Dose: 1.0 – 1.5 mg/kg IV</span>
+        </div>
+        <button class="reveal" data-target="dailyAnswer">Reveal Answer</button>
+        <div class="answer" id="dailyAnswer">
+          <strong>Viva point:</strong> Rapid onset follows rapid access to the neuromuscular junction and depolarizing activation of nicotinic acetylcholine receptors.
+          <small class="reference">Reference: Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 6th ed.</small>
+        </div>
+      </article>
+
+      <!-- Bento 2: Guideline Watch Widget -->
+      <article class="card bento-span-5 fade">
+        <div class="card-top">
+          <div class="tag">🚨 Guideline Watch</div>
+          <a class="card-date" href="recent-updates.html">View All →</a>
+        </div>
+        <h3 style="margin-bottom:6px;">Recent Practice Updates</h3>
+        <p style="margin-bottom:14px;">Curated consensus updates from major international societies.</p>
+        <div id="knHomeUpdates">
+          <div class="kn-search-result" style="padding:10px 14px;">
+            <p style="margin:0;font-size:12px;color:var(--text-muted);">Loading latest guideline alerts…</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Bento 3: Quick Viva Drill -->
+      <article class="card bento-span-6 fade">
+        <div class="card-top">
+          <div class="tag">🧠 Viva Classics</div>
+          <span class="card-date">Physics & Physiology</span>
+        </div>
+        <h3>Why does N₂O expand a closed gas space?</h3>
+        <p>A classic exam question testing diffusion physics across body cavities.</p>
+        <button class="reveal" data-target="vivaQuick">Reveal Answer</button>
+        <div class="answer" id="vivaQuick">
+          N₂O diffuses into closed gas spaces approximately 34 times faster than nitrogen leaves, causing rapid expansion of volume and/or pressure.
+          <small class="reference">Reference: Miller's Anesthesia, 10th ed.; Barash 9th ed.</small>
+        </div>
+      </article>
+
+      <!-- Bento 4: Critical Care Focus -->
+      <article class="card bento-span-6 fade">
+        <div class="card-top">
+          <div class="tag">🚨 Critical Care</div>
+          <span class="card-date">ICU Ventilation</span>
+        </div>
+        <h3>Low Tidal Volume Strategy in ARDS</h3>
+        <p>Lung-protective ventilation target based on predicted body weight (PBW).</p>
+        <div>
+          <span class="formula">Target: 4 – 8 mL/kg PBW</span>
+        </div>
+        <button class="reveal" data-target="icuQuick">Reveal Answer</button>
+        <div class="answer" id="icuQuick">
+          A commonly used target is <strong>4–8 mL/kg predicted body weight</strong>, adjusted according to plateau pressure (&le; 30 cmH₂O) and driving pressure goals.
+          <small class="reference">Reference: Surviving Sepsis & ARDS Guidelines 2026.</small>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Explore Directory -->
+  <section class="section">
+    <div class="section-head fade">
+      <span class="kicker">SYSTEMATIC REVISION</span>
+      <h2>Explore by Section</h2>
+      <p>Built around the way an MD Anaesthesia resident actually prepares for clinical rounds and exams.</p>
+    </div>
+    <div class="grid">
+      <a class="card explore-card fade" href="pearls.html">
+        <div class="tag">⚡ Pearls</div>
+        <h3>High-yield takeaways</h3>
+        <p>Short clinical concepts with exact values, pharmacology tables, and references attached.</p>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card explore-card fade" href="drugs.html">
+        <div class="tag">💊 Drugs</div>
+        <h3>Pharmacology cards</h3>
+        <p>Dose, onset, receptor mechanics, indications, contraindications, and viva points.</p>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card explore-card fade" href="critical-care.html">
+        <div class="tag">🚨 Critical Care</div>
+        <h3>ICU essentials</h3>
+        <p>Mechanical ventilation, hemodynamic monitoring, shock algorithms, and sepsis resuscitation.</p>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card explore-card fade" href="viva.html">
+        <div class="tag">🧠 Viva</div>
+        <h3>Viva classics</h3>
+        <p>High-frequency viva questions that examiners repeat, paired with concise bulleted answers.</p>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card explore-card fade" href="notes.html">
+        <div class="tag">📚 Notes</div>
+        <h3>Study notes</h3>
+        <p>Structured visual summaries and downloadable PDF study sheets for deep revision.</p>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card explore-card fade" href="resources.html">
+        <div class="tag">📖 Resources</div>
+        <h3>Reference shelf</h3>
+        <p>Standard textbook editions, international resuscitation guidelines, and citation policy.</p>
+        <div class="card-arrow">→</div>
+      </a>
+    </div>
+  </section>
 </main>
-<footer class="footer">
-  <div class="footer-inner">
-    <div>
-      <div class="brand"><img src="knockoutnotes_icon.png" alt=""><div class="brand-name">Knockout<span>Notes</span></div></div>
-      <p>Anaesthesia • Critical Care • Viva</p>
-      <p class="disclaimer">Educational content for medical professionals and trainees. Always verify current guidelines, institutional protocols, drug labels and patient-specific factors before clinical use.</p>
+
+<!-- Floating Updates Pill -->
+<a class="kn-updates-pill" href="recent-updates.html" aria-label="Recent KnockoutNotes updates">
+  <span class="kn-blink"></span>
+  <span class="kn-updates-pill-text">Recent Updates</span>
+  <span class="kn-updates-pill-badge">Live</span>
+</a>
+
+<!-- Universal Command Palette Search Modal -->
+<div class="kn-modal" id="knSearchModal" role="dialog" aria-modal="true" aria-label="Search KnockoutNotes">
+  <div class="kn-modal-backdrop" data-close-modal></div>
+  <div class="kn-modal-box">
+    <div class="kn-modal-header">
+      <span class="kn-search-icon">⌕</span>
+      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search pearls, drugs, scores, viva questions..." autocomplete="off">
+      <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
+      <button class="kn-modal-close" data-close-modal>ESC</button>
     </div>
-    <div>
-      <p><strong>Connect</strong></p>
+    <div class="kn-modal-body">
+      <div id="knModalSearchStatus" class="kn-search-status">Start typing to search the medical database.</div>
+      <div id="knModalSearchResults" class="kn-search-results"></div>
+    </div>
+    <div class="kn-modal-footer">
+      <span>Pro-tip: Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
+      <span>KnockoutNotes Search</span>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="brand">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        <div class="brand-name">Knockout<span>Notes</span></div>
+      </div>
+      <p>Anaesthesia • Critical Care • Viva</p>
+      <p class="disclaimer">Educational content for medical professionals and trainees. Always verify current guidelines, institutional protocols, drug labels, and patient-specific factors before clinical use.</p>
+    </div>
+    <div class="footer-connect">
+      <strong>Connect & Follow</strong>
       <div class="socials">
         <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
         <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
       </div>
-      <p>© 2026 KnockoutNotes</p>
+      <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
     </div>
   </div>
 </footer>
 
-
-<style>
-.kn-updates-fab{
-  position:fixed;right:20px;bottom:20px;z-index:1200;
-  width:min(330px,calc(100vw - 30px));
-  border:1px solid var(--border);border-radius:15px;
-  background:var(--card);color:var(--text);
-  box-shadow:0 18px 45px rgba(15,23,42,.20);
-  overflow:hidden;
-}
-.kn-updates-fab-head{
-  display:flex;align-items:center;gap:8px;padding:10px 12px;
-  font-size:11px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;
-  color:var(--accent);border-bottom:1px solid var(--border);
-}
-.kn-blink{
-  width:8px;height:8px;border-radius:50%;background:var(--accent);
-  animation:knBlink 1.25s ease-in-out infinite;
-}
-@keyframes knBlink{0%,100%{opacity:.35;box-shadow:0 0 0 0 rgba(37,99,235,0)}50%{opacity:1;box-shadow:0 0 0 6px rgba(37,99,235,.10)}}
-.kn-updates-fab-body{max-height:180px;overflow:auto}
-.kn-update-row{display:block;padding:9px 12px;border-bottom:1px solid var(--border)}
-.kn-update-row:last-child{border-bottom:0}
-.kn-update-row strong{display:block;font-size:12px;line-height:1.35}
-.kn-update-row small{color:var(--muted);font-size:10px}
-.kn-updates-fab-foot{display:block;padding:8px 12px;color:var(--accent);font-size:11px;font-weight:850;border-top:1px solid var(--border)}
-@media(max-width:640px){
-  .kn-updates-fab{right:10px;bottom:10px;width:calc(100vw - 20px)}
-}
-</style>
-
-<div class="kn-updates-fab" aria-label="Recent KnockoutNotes updates">
-  <div class="kn-updates-fab-head"><span class="kn-blink"></span> Recent Updates</div>
-  <div class="kn-updates-fab-body" id="knHomeUpdates">
-    <div class="kn-update-row"><strong>Loading latest updates…</strong></div>
-  </div>
-  <a class="kn-updates-fab-foot" href="recent-updates.html">View all recent updates →</a>
-</div>
-
-</body></html>
+</body>
+</html>

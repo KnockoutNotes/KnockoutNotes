@@ -1,2 +1,340 @@
-.kn-search-section{margin:24px 0 20px}.kn-search-card{padding:22px 24px;background:var(--card);border:1px solid var(--border);border-radius:20px;box-shadow:0 10px 30px rgba(15,23,42,.07)}.kn-search-kicker{font-size:11px;font-weight:900;letter-spacing:1.2px;color:var(--accent);margin-bottom:6px}.kn-search-card h1{margin:0 0 6px;font-size:clamp(28px,4vw,42px)}.kn-search-card>p{margin:0 0 17px;color:var(--muted)}.kn-site-search{display:flex;align-items:center;gap:10px;border:1px solid var(--border);background:var(--bg);border-radius:14px;padding:0 12px}.kn-site-search input{flex:1;border:0;outline:0;background:transparent;color:var(--text);font:inherit;font-size:15px;padding:15px 0;min-width:0}.kn-search-icon{font-size:24px;color:var(--accent)}#knSearchClear{border:0;background:transparent;color:var(--muted);font-size:22px;cursor:pointer;padding:4px 7px;display:none}.kn-search-status{color:var(--muted);font-size:12px;margin-top:10px}.kn-search-results{display:grid;gap:8px;margin-top:10px}.kn-search-result{display:block;padding:13px 14px;border:1px solid var(--border);border-radius:13px;background:var(--bg);text-decoration:none;color:var(--text)}.kn-search-result:hover{border-color:var(--accent)}.kn-search-result-top{display:flex;gap:8px;flex-wrap:wrap}.kn-search-type{font-size:10px;font-weight:900;letter-spacing:.7px;color:var(--accent);text-transform:uppercase}.kn-search-result h4{margin:4px 0 3px;font-size:15px}.kn-search-result p{margin:0;color:var(--muted);font-size:12px}.kn-search-empty{padding:14px;border:1px dashed var(--border);border-radius:13px;color:var(--muted)}
-.kn-fda-note{display:block;margin:0 0 28px;padding:15px 17px;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:14px;background:var(--card);color:var(--text)}.kn-fda-note strong{font-size:13px}.kn-fda-note p{margin:5px 0 0;color:var(--muted);font-size:12px}.kn-fda-note a{color:var(--accent);font-weight:800;text-decoration:underline}
+/* ==========================================================================
+   KNOCKOUTNOTES — Page Common Styles
+   Search UI, Command Palette Modal, & Medical Disclaimers
+   ========================================================================== */
+
+/* In-Page Sitewide Search Section */
+.kn-search-section {
+  margin: 28px 0 24px;
+}
+
+.kn-search-card {
+  padding: 28px 32px;
+  background: var(--card-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+.kn-search-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.5), transparent);
+}
+
+.kn-search-kicker {
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 1.2px;
+  color: var(--accent);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.kn-search-card h1 {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 850;
+  letter-spacing: -1.2px;
+}
+
+.kn-search-card > p {
+  margin: 0 0 20px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.kn-site-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  border-radius: var(--radius-md);
+  padding: 0 16px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+
+.kn-site-search:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+.kn-site-search input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 15.5px;
+  padding: 16px 0;
+  min-width: 0;
+}
+
+.kn-site-search input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+.kn-search-icon {
+  font-size: 20px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+#knSearchClear, .kn-modal-clear {
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 22px;
+  cursor: pointer;
+  padding: 4px 8px;
+  display: none;
+  line-height: 1;
+  border-radius: 6px;
+  transition: all var(--transition);
+}
+
+#knSearchClear:hover, .kn-modal-clear:hover {
+  color: var(--text);
+  background: var(--soft);
+}
+
+.kn-search-status {
+  color: var(--text-muted);
+  font-size: 12.5px;
+  margin-top: 12px;
+  font-weight: 550;
+}
+
+.kn-search-results {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.kn-search-result {
+  display: block;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--card-surface);
+  text-decoration: none;
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+
+.kn-search-result:hover {
+  border-color: var(--accent);
+  transform: translateX(4px);
+  box-shadow: var(--shadow), 0 0 15px rgba(56, 189, 248, 0.08);
+}
+
+.kn-search-result-top {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.kn-search-type {
+  font-size: 10.5px;
+  font-weight: 850;
+  letter-spacing: 0.8px;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.kn-search-result h4 {
+  margin: 6px 0 4px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.kn-search-result p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.kn-search-empty {
+  padding: 24px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  text-align: center;
+  font-size: 14px;
+  background: var(--card-surface);
+}
+
+/* FDA Official Drug Label Notice */
+.kn-fda-note {
+  display: block;
+  margin: 0 0 32px;
+  padding: 18px 22px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-md);
+  background: var(--card-surface);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.kn-fda-note strong {
+  font-size: 14px;
+  font-weight: 800;
+  display: block;
+  color: var(--text);
+}
+
+.kn-fda-note p {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.kn-fda-note a {
+  color: var(--accent);
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.kn-fda-note a:hover {
+  color: var(--accent-hover);
+}
+
+/* ==========================================================================
+   Universal Command Palette / Search Modal Dialog
+   ========================================================================== */
+.kn-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 80px 20px 20px;
+}
+
+.kn-modal.open {
+  display: flex;
+}
+
+.kn-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 10, 18, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.kn-modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  background: var(--card);
+  border: 1px solid var(--border-specular);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), var(--glow);
+  overflow: hidden;
+  z-index: 10;
+  animation: modalEnter 0.25s var(--ease-out);
+  max-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+}
+
+.kn-modal-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.kn-modal-input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 600;
+  min-width: 0;
+}
+
+.kn-modal-close {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text-muted);
+  padding: 5px 9px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all var(--transition);
+}
+
+.kn-modal-close:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.kn-modal-body {
+  padding: 16px 20px;
+  overflow-y: auto;
+  max-height: 480px;
+}
+
+.kn-modal-footer {
+  padding: 10px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.kn-modal-footer kbd {
+  font-family: 'JetBrains Mono', monospace;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

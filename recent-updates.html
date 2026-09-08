@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Recent Updates | KnockoutNotes</title><meta name="description" content="Recent guideline and practice updates in anaesthesia and critical care.">
-<link rel="stylesheet" href="styles.css"><script src="sheet-config.js"></script><script src="script.js"></script></head><body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recent Updates | KnockoutNotes</title>
+  <meta name="description" content="Recent guideline and clinical practice updates in anaesthesia and critical care.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page-common.css">
+  <script src="sheet-config.js"></script>
+  <script src="content-config.js"></script>
+  <script src="script.js"></script>
+  <script src="kn-site-search.js"></script>
+</head>
+<body data-content-page="recent-updates">
+
+<!-- Navigation Header -->
 <nav class="site-nav">
   <div class="nav-inner">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
-      <img src="knockoutnotes_icon.png" alt="KnockoutNotes logo">
+      <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
       <div class="brand-name">Knockout<span>Notes</span></div>
     </a>
     <div class="nav-links">
@@ -15,60 +28,100 @@
       <a href="viva.html">Viva</a>
       <a href="drugs.html">Drugs</a>
       <a href="critical-care.html">Critical Care</a>
-      <a href="resources.html">Resources</a><a href="recent-updates.html">Recent Updates</a>
+      <a href="resources.html">Resources</a>
+      <a href="recent-updates.html">Recent Updates</a>
     </div>
     <div class="nav-actions">
-      <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">☾</button>
+      <button class="nav-search-trigger" data-open-search aria-label="Open search">
+        <span>⌕ Search</span>
+        <kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a data-close-menu href="index.html">Home</a>
-    <a data-close-menu href="pearls.html">Pearls</a>
-    <a data-close-menu href="notes.html">Notes</a>
-    <a data-close-menu href="viva.html">Viva</a>
-    <a data-close-menu href="drugs.html">Drugs</a>
-    <a data-close-menu href="critical-care.html">Critical Care</a>
-    <a data-close-menu href="resources.html">Resources</a><a data-close-menu href="recent-updates.html">Recent Updates</a>
+    <a data-close-menu href="index.html">Home <span>→</span></a>
+    <a data-close-menu href="pearls.html">Pearls <span>→</span></a>
+    <a data-close-menu href="notes.html">Notes <span>→</span></a>
+    <a data-close-menu href="viva.html">Viva <span>→</span></a>
+    <a data-close-menu href="drugs.html">Drugs <span>→</span></a>
+    <a data-close-menu href="critical-care.html">Critical Care <span>→</span></a>
+    <a data-close-menu href="resources.html">Resources <span>→</span></a>
+    <a data-close-menu href="recent-updates.html">Recent Updates <span>→</span></a>
   </div>
 </nav>
 
 <main class="container">
-<section class="section">
-  <div class="section-head fade">
-    <span class="kicker">🚨 GUIDELINE WATCH</span>
-    <h2>Recent Updates</h2>
-    <p>Important recent changes in anaesthesia and critical care — guidelines, consensus statements, recommendations and major practice updates.</p>
-  </div>
-
-  <div class="card fade" style="margin-bottom:20px">
-    <div class="tag">How this works</div>
-    <p>This section is intentionally separate from <strong>Latest from KnockoutNotes</strong>. It is a curated feed of important changes in clinical practice, not simply the newest articles published on this website.</p>
-    <small class="reference">Update entries should be added to the Google Sheet with Type = Update.</small>
-  </div>
-
-  <div id="recentUpdatesGrid" class="grid">
-    <div class="card"><p>Loading recent guideline updates…</p></div>
-  </div>
-</section>
-
-
-</main><footer class="footer">
-  <div class="footer-inner">
-    <div>
-      <div class="brand"><img src="knockoutnotes_icon.png" alt=""><div class="brand-name">Knockout<span>Notes</span></div></div>
-      <p>Anaesthesia • Critical Care • Viva</p>
-      <p class="disclaimer">Educational content for medical professionals and trainees. Always verify current guidelines, institutional protocols, drug labels and patient-specific factors before clinical use.</p>
+  <section class="section">
+    <div class="section-head fade">
+      <span class="kicker">🚨 CLINICAL EVIDENCE WATCH</span>
+      <h2>Recent Practice Updates</h2>
+      <p>Major international consensus statements, clinical practice guidelines, algorithm revisions, and safety communications.</p>
     </div>
-    <div>
-      <p><strong>Connect</strong></p>
+
+    <!-- Explanation Card -->
+    <div class="card fade" style="margin-bottom:28px;">
+      <div class="card-top">
+        <div class="tag">Editorial Policy</div>
+        <span class="card-date">Curated Evidence</span>
+      </div>
+      <h3>How This Guideline Feed Works</h3>
+      <p>This feed is intentionally distinguished from generic site additions. It tracks major shifts in clinical recommendations (e.g., DAS Difficult Airway 2025, Surviving Sepsis 2026, AHA CPR & ECC 2025). Items are published in real-time through the editorial Google Sheet.</p>
+      <small class="reference">Editorial workflow: Add rows with Type = Update in the connected Google Sheet.</small>
+    </div>
+
+    <!-- Live Grid -->
+    <div id="recentUpdatesGrid" class="grid">
+      <div class="card bento-span-12">
+        <p style="margin:0;color:var(--text-muted);">Loading recent guideline updates from Google Sheets API…</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Universal Command Palette Search Modal -->
+<div class="kn-modal" id="knSearchModal" role="dialog" aria-modal="true" aria-label="Search KnockoutNotes">
+  <div class="kn-modal-backdrop" data-close-modal></div>
+  <div class="kn-modal-box">
+    <div class="kn-modal-header">
+      <span class="kn-search-icon">⌕</span>
+      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search guidelines, scores, drugs..." autocomplete="off">
+      <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
+      <button class="kn-modal-close" data-close-modal>ESC</button>
+    </div>
+    <div class="kn-modal-body">
+      <div id="knModalSearchStatus" class="kn-search-status">Start typing to search the medical database.</div>
+      <div id="knModalSearchResults" class="kn-search-results"></div>
+    </div>
+    <div class="kn-modal-footer">
+      <span>Pro-tip: Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
+      <span>KnockoutNotes Search</span>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="brand">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        <div class="brand-name">Knockout<span>Notes</span></div>
+      </div>
+      <p>Anaesthesia • Critical Care • Viva</p>
+      <p class="disclaimer">Educational content for medical professionals and trainees. Always verify current guidelines, institutional protocols, drug labels, and patient-specific factors before clinical use.</p>
+    </div>
+    <div class="footer-connect">
+      <strong>Connect & Follow</strong>
       <div class="socials">
         <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
         <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
       </div>
-      <p>© 2026 KnockoutNotes</p>
+      <p class="footer-copy">© 2026 KnockoutNotes</p>
     </div>
   </div>
 </footer>
 
-</body></html>
+</body>
+</html>
