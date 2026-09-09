@@ -56,6 +56,79 @@
     });
   }
 
+  // Clean line-art medical pictograms for the 3D carousel cards — never the
+  // actual cropped teaching image (that stays reserved for the real
+  // document viewer, opened when the centred card is clicked). Three
+  // rotate for image items so a row of cards doesn't look identical; PDFs
+  // always get the monograph glyph.
+  const PICTOGRAMS = {
+    vial: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="24" y="8" width="16" height="9" rx="2" stroke="currentColor" stroke-width="2"/>
+      <path d="M23 17h18l-2 6.5v27a4 4 0 0 1-4 4H29a4 4 0 0 1-4-4v-27z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M25.6 34h12.8v14a2 2 0 0 1-2 2h-8.8a2 2 0 0 1-2-2z" fill="currentColor" opacity="0.16"/>
+      <line x1="21" y1="34" x2="43" y2="34" stroke="currentColor" stroke-width="1.4" opacity="0.5"/>
+      <line x1="21" y1="41" x2="43" y2="41" stroke="currentColor" stroke-width="1.4" opacity="0.5"/>
+    </svg>`,
+    syringe: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="14" y="14" width="30" height="13" rx="2.5" transform="rotate(45 29 20.5)" stroke="currentColor" stroke-width="2"/>
+      <line x1="8" y1="10" x2="17" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line x1="42" y1="30" x2="52" y2="40" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="47" y1="35" x2="56" y2="44" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M24 24l-9 9" stroke="currentColor" stroke-width="1.4" opacity="0.55"/>
+      <path d="M28 28l-9 9" stroke="currentColor" stroke-width="1.4" opacity="0.55"/>
+    </svg>`,
+    ampoule: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M29 8h6v9h-6z" stroke="currentColor" stroke-width="2"/>
+      <line x1="24" y1="14" x2="40" y2="14" stroke="currentColor" stroke-width="2"/>
+      <path d="M26 17c-4 4-5 9-5 15v13a11 11 0 0 0 22 0V32c0-6-1-11-5-15z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M23.2 34c1.6 3.6 5 6 8.8 6s7.2-2.4 8.8-6z" fill="currentColor" opacity="0.16"/>
+    </svg>`,
+    document: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18 10h20l8 8v36a2 2 0 0 1-2 2H18a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M38 10v8h8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <line x1="22" y1="32" x2="38" y2="32" stroke="currentColor" stroke-width="1.6" opacity="0.6"/>
+      <line x1="22" y1="39" x2="38" y2="39" stroke="currentColor" stroke-width="1.6" opacity="0.6"/>
+      <line x1="22" y1="46" x2="33" y2="46" stroke="currentColor" stroke-width="1.6" opacity="0.6"/>
+    </svg>`
+  };
+  const IMAGE_ICON_CYCLE = ['vial', 'syringe', 'ampoule'];
+
+  // 3D View only: give each topic row a clean medical pictogram (never the
+  // actual cropped teaching image — that stays reserved for the real
+  // document viewer), a short category descriptor, and a "View Monograph"
+  // call to action, then hand the list to the generic carousel engine.
+  // Lite's identical .kn-file-row markup never goes through this, so it
+  // stays the original flat list untouched.
+  function carouselizePanel(panel){
+    const fileList = panel.querySelector('.kn-file-list');
+    if (!fileList || !window.KnCarousel) return;
+    const descriptor = panel.querySelector('.kn-library-head h3')?.textContent || '';
+
+    fileList.querySelectorAll('.kn-file-row').forEach((row, i) => {
+      if (!row.querySelector('.kn-file-thumb')) {
+        const thumb = document.createElement('div');
+        thumb.className = 'kn-file-thumb';
+        const isPdf = !row.querySelector('.kn-badge-image');
+        const iconKey = isPdf ? 'document' : IMAGE_ICON_CYCLE[i % IMAGE_ICON_CYCLE.length];
+        thumb.innerHTML = PICTOGRAMS[iconKey];
+        row.insertBefore(thumb, row.firstChild);
+      }
+      if (!row.querySelector('.kn-file-descriptor')) {
+        const desc = document.createElement('span');
+        desc.className = 'kn-file-descriptor';
+        desc.textContent = descriptor;
+        const titleEl = row.querySelector('.kn-file-title');
+        if (titleEl) titleEl.insertAdjacentElement('afterend', desc);
+      }
+      const arrow = row.querySelector('.kn-file-arrow');
+      if (arrow) arrow.textContent = 'View Monograph →';
+    });
+
+    const existing = window.KnCarousel.list.find(c => c.container === fileList);
+    if (existing) existing.refresh();
+    else window.KnCarousel.mount(fileList);
+  }
+
   function renderCategory(cat){
     const files = resolveCategoryFiles(cat);
     const count = files.length;
@@ -103,7 +176,7 @@
   async function initLibrary(page){
     const cfg = await cfgPromise;
     const categories = cfg.pages?.[page]?.categories || [];
-    const mounts = document.querySelectorAll('#knLibrary, .kn-library-mount');
+    const mounts = document.querySelectorAll('#knLibrary, #knLibrary3d, .kn-library-mount');
     if (!mounts.length) return;
 
     mounts.forEach(mount => {
@@ -142,10 +215,29 @@
             y.hidden = k !== i;
             y.classList.toggle('active', k === i);
           });
+
+          // 3D View only: give the newly-selected category a brief "drill
+          // forward from depth" entrance so moving CATEGORY -> ITEMS reads
+          // as spatial navigation. Lite View never gets this class.
+          if (mount.closest('.view-layer-3d')) {
+            const activePanel = panels.querySelector('.kn-library-panel.active');
+            if (activePanel) {
+              activePanel.classList.remove('kn-panel-drill');
+              // eslint-disable-next-line no-unused-expressions
+              activePanel.offsetWidth; // force reflow to restart the animation
+              activePanel.classList.add('kn-panel-drill');
+              carouselizePanel(activePanel);
+            }
+          }
         });
 
         const content = renderCategory(cat);
         panel.appendChild(content);
+      }
+
+      if (mount.closest('.view-layer-3d')) {
+        const firstPanel = panels.querySelector('.kn-library-panel');
+        if (firstPanel) carouselizePanel(firstPanel);
       }
     });
 

@@ -42,7 +42,7 @@
 
     <div class="hud-path-indicator">
       <span class="hud-pulse-dot"></span>
-      <span id="knHudPath">KN // PHARMACOLOGY</span>
+      <span id="knHudPath3d">KN // PHARMACOLOGY</span>
     </div>
 
     <div class="nav-links">
@@ -61,11 +61,11 @@
         <span>Search</span>
         <kbd>⌘K</kbd>
       </button>
-      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
+      <button class="icon-btn" id="themeBtn3d" aria-label="Toggle theme">☾</button>
+      <button class="menu-btn" id="menuBtn3d" aria-label="Open menu" aria-expanded="false">⋮</button>
     </div>
   </div>
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu3d">
     <a data-close-menu href="index.html">Home <span>→</span></a>
     <a data-close-menu href="pearls.html">Pearls <span>→</span></a>
     <a data-close-menu href="notes.html">Notes <span>→</span></a>
@@ -87,11 +87,11 @@
           <p>Search induction agents, opioids, neuromuscular blockers, dosages, and mechanisms.</p>
           <div class="kn-site-search">
             <span class="kn-search-icon">⌕</span>
-            <input id="knSiteSearch" type="search" placeholder="Search propofol, rocuronium, remifentanil, sugammadex…">
-            <button id="knSearchClear">×</button>
+            <input id="knSiteSearch3d" type="search" placeholder="Search propofol, rocuronium, remifentanil, sugammadex…">
+            <button id="knSearchClear3d">×</button>
           </div>
-          <div id="knSearchStatus" class="kn-search-status">Start typing to search the site.</div>
-          <div id="knSearchResults" class="kn-search-results"></div>
+          <div id="knSearchStatus3d" class="kn-search-status">Start typing to search the site.</div>
+          <div id="knSearchResults3d" class="kn-search-results"></div>
         </div>
       </section>
 
@@ -108,7 +108,7 @@
         <p>Select a pharmacological class below to inspect in the 3D Holographic Viewer.</p>
       </div>
       <section class="section" style="padding-top:0;">
-        <div id="knLibrary"></div>
+        <div id="knLibrary3d"></div>
       </section>
 
       <!-- Live Dynamic Drug Cards (from Google Sheets) -->
@@ -118,7 +118,7 @@
           <h2>Published Pharmacology Cards</h2>
           <p>Pharmacology summaries synced directly from the KnockoutNotes editorial sheet.</p>
         </div>
-        <div class="grid" id="sheetContent">
+        <div class="grid" id="sheetContent3d">
           <div class="card bento-span-12">
             <p style="margin:0;color:var(--text-muted);">Loading live drug cards…</p>
           </div>
@@ -310,6 +310,7 @@
 
 <script src="spatial-bg.js"></script>
 <script src="spatial-camera.js"></script>
+<script src="spatial-scroll.js"></script>
 <script src="spatial-viewer.js"></script>
 <script src="script.js"></script>
 <script src="kn-site-search.js"></script>

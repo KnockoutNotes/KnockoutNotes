@@ -41,7 +41,7 @@
 
     <div class="hud-path-indicator">
       <span class="hud-pulse-dot"></span>
-      <span id="knHudPath">KN // OR WORKSTATION</span>
+      <span id="knHudPath3d">KN // OR WORKSTATION</span>
     </div>
 
     <div class="nav-links">
@@ -60,11 +60,11 @@
         <span>Search</span>
         <kbd>⌘K</kbd>
       </button>
-      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
+      <button class="icon-btn" id="themeBtn3d" aria-label="Toggle theme">☾</button>
+      <button class="menu-btn" id="menuBtn3d" aria-label="Open menu" aria-expanded="false">⋮</button>
     </div>
   </div>
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu3d">
     <a data-close-menu href="index.html">Home <span>→</span></a>
     <a data-close-menu href="pearls.html">Pearls <span>→</span></a>
     <a data-close-menu href="notes.html">Notes <span>→</span></a>
@@ -112,7 +112,7 @@
             </div>
 
             <div class="ecg-screen">
-              <canvas id="knEcgCanvas"></canvas>
+              <canvas id="knEcgCanvas3d"></canvas>
             </div>
 
             <div class="telemetry-vitals-grid">
@@ -201,8 +201,8 @@
             <div>
               <span class="formula">Dose: 1.0 – 1.5 mg/kg IV</span>
             </div>
-            <button class="reveal" data-target="dailyAnswer">Reveal Answer</button>
-            <div class="answer" id="dailyAnswer">
+            <button class="reveal" data-target="dailyAnswer3d">Reveal Answer</button>
+            <div class="answer" id="dailyAnswer3d">
               <strong>Viva point:</strong> Rapid onset (30–60s) follows rapid access to neuromuscular junction nicotinic acetylcholine receptors, producing initial phase I depolarisation block.
               <small class="reference">Reference: Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology, 6th ed.</small>
             </div>
@@ -215,7 +215,7 @@
             </div>
             <h3>Recent Practice Updates</h3>
             <p>Curated international consensus updates synced from the editorial sheet.</p>
-            <div id="knHomeUpdates">
+            <div id="knHomeUpdates3d">
               <div class="kn-search-result" style="padding:14px 18px;">
                 <p style="margin:0;font-size:13px;color:var(--text-muted);">Loading latest guideline alerts…</p>
               </div>
@@ -229,8 +229,8 @@
             </div>
             <h3>Why does N₂O expand a closed gas space?</h3>
             <p>A classic exam question testing differential diffusion coefficients across body cavities.</p>
-            <button class="reveal" data-target="vivaQuick">Reveal Answer</button>
-            <div class="answer" id="vivaQuick">
+            <button class="reveal" data-target="vivaQuick3d">Reveal Answer</button>
+            <div class="answer" id="vivaQuick3d">
               N₂O is 34 times more soluble in blood than nitrogen. It diffuses into closed gas cavities far faster than nitrogen leaves, causing rapid expansion of volume or pressure.
               <small class="reference">Reference: Miller's Anesthesia, 10th ed.; Barash 9th ed.</small>
             </div>
@@ -246,8 +246,8 @@
             <div>
               <span class="formula">Target: 4 – 8 mL/kg PBW</span>
             </div>
-            <button class="reveal" data-target="icuQuick">Reveal Answer</button>
-            <div class="answer" id="icuQuick">
+            <button class="reveal" data-target="icuQuick3d">Reveal Answer</button>
+            <div class="answer" id="icuQuick3d">
               Target <strong>4–8 mL/kg predicted body weight</strong>, maintain plateau pressure &le; 30 cmH₂O, and titrate PEEP according to driving pressure goals (&Delta;P &le; 14 cmH₂O).
               <small class="reference">Reference: Surviving Sepsis & ARDS Guidelines 2026.</small>
             </div>
@@ -665,6 +665,7 @@
 
 <script src="spatial-bg.js"></script>
 <script src="spatial-camera.js"></script>
+<script src="spatial-scroll.js"></script>
 <script src="spatial-viewer.js"></script>
 <script src="script.js"></script>
 <script src="kn-site-search.js"></script>

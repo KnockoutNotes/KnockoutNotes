@@ -129,8 +129,6 @@ body {
 .spatial-world {
   width: 100%;
   transform-style: preserve-3d;
-  transform: rotateX(var(--cam-pitch)) rotateY(var(--cam-yaw));
-  transition: transform 0.08s linear;
 }
 
 .container {
@@ -539,8 +537,18 @@ img {
    ========================================================================== */
 .hero-visual {
   position: relative;
+  min-width: 0;
   transform-style: preserve-3d;
   transform: translateZ(var(--z-fore));
+}
+
+.hero > .fade {
+  min-width: 0;
+}
+
+.telemetry-channel,
+.telemetry-status {
+  min-width: 0;
 }
 
 .telemetry-card {
@@ -1757,6 +1765,285 @@ img {
   box-shadow: 0 0 14px rgba(251, 191, 36, 0.3);
 }
 
+/* Below ~1040px the nav capsule narrows and centers, which brings it under
+   the fixed top-left dock. Drop the dock into normal document flow instead
+   so it never overlaps the brand/nav — placed after the base fixed-position
+   rule above so it actually wins at these widths (a rule inside a media
+   query carries no extra specificity; only source order decided it, and the
+   base rule used to come later, silently overriding this). */
+@media (max-width: 1040px) {
+  .kn-mode-switch-dock {
+    position: static;
+    margin: 10px auto 0;
+    width: fit-content;
+    left: auto;
+    top: auto;
+  }
+}
+
+/* ==========================================================================
+   3D VIEW — Card Carousel Engine (spatial-scroll.js)
+   Applies ONLY to designated card collections (home High-Yield Core, the
+   drug/pearl/note/critical-care topic library, sheet-driven grids, recent
+   updates). Everything else on the page — hero, headings, nav, prose —
+   stays completely static. Custom properties are written per-frame by JS;
+   the transform composition lives here so it composes with click/hover.
+   ========================================================================== */
+.view-layer-3d .kn-carousel {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  perspective: 1200px;
+  perspective-origin: 50% 42%;
+}
+
+.view-layer-3d .kn-carousel-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(480px, 78%);
+  transform: translate3d(calc(-50% + var(--cx, 0px)), 0, var(--cz, 0px))
+             rotateY(var(--cry, 0deg)) scale(var(--cs, 1));
+  opacity: var(--cop, 1);
+  filter: blur(var(--cbl, 0px));
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  will-change: transform, opacity, filter;
+  cursor: pointer;
+}
+
+.view-layer-3d .kn-carousel-card[data-centered="true"] {
+  cursor: default;
+  box-shadow: var(--shadow-lg), 0 0 55px rgba(56, 189, 248, 0.28);
+  border-color: var(--accent-cyan);
+}
+
+/* Sits in the reserved strip below the cards (see --carousel-h in JS), well
+   above even the closest card's z-index, so it's always reachable — a
+   stacking bug here used to make the Next arrow unclickable. */
+.view-layer-3d .kn-carousel-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.view-layer-3d .kn-carousel-arrow {
+  pointer-events: auto;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-glass);
+  color: var(--text-main);
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  cursor: pointer;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all var(--transition-fast);
+}
+
+.view-layer-3d .kn-carousel-arrow:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.3);
+}
+
+.view-layer-3d .kn-carousel-dots {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.view-layer-3d .kn-carousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  opacity: 0.5;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.view-layer-3d .kn-carousel-dot.active {
+  background: var(--accent-cyan);
+  opacity: 1;
+  box-shadow: 0 0 8px var(--accent-cyan);
+  transform: scale(1.3);
+}
+
+@media (max-width: 720px) {
+  .view-layer-3d .kn-carousel-card {
+    width: 85%;
+    filter: none;
+  }
+}
+
+/* ==========================================================================
+   LITE VIEW — Flat Clinical Presentation Override
+   Same markup, same data as the 3D View, but the cinematic spatial skin
+   (camera perspective, glass blur, glow, gradients, 3D hover tilt) is
+   switched off so Lite reads as the plain, familiar clinical interface.
+   Nothing here changes Lite's content, structure, or data — presentation only.
+   ========================================================================== */
+.view-layer-lite .spatial-stage {
+  perspective: none;
+}
+
+.view-layer-lite .spatial-world {
+  transform: none !important;
+  transition: none;
+}
+
+.view-layer-lite .site-hud {
+  transform: none;
+}
+
+.view-layer-lite .hud-capsule {
+  border-radius: var(--radius-md);
+  max-width: 1220px;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: var(--bg-void);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+.view-layer-lite .site-hud.scrolled .hud-capsule {
+  box-shadow: var(--shadow-sm);
+}
+
+.view-layer-lite .nav-links a.active {
+  box-shadow: none;
+}
+
+.view-layer-lite .nav-search-trigger:hover,
+.view-layer-lite .icon-btn:hover,
+.view-layer-lite .menu-btn:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+.view-layer-lite .mobile-menu {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.view-layer-lite .kicker-pill {
+  box-shadow: none;
+}
+
+.view-layer-lite .hero h1 .gradient-text {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: var(--accent-cyan);
+  filter: none;
+}
+
+.view-layer-lite .btn-cinematic.primary {
+  box-shadow: none;
+}
+
+.view-layer-lite .btn-cinematic.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: none;
+}
+
+.view-layer-lite .btn-cinematic.glass {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: var(--bg-card);
+}
+
+.view-layer-lite .btn-cinematic.glass:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.view-layer-lite .hero-visual {
+  transform: none;
+}
+
+.view-layer-lite .telemetry-card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.view-layer-lite .telemetry-card:hover {
+  transform: none;
+}
+
+.view-layer-lite .kn-search-section,
+.view-layer-lite .kn-fda-note {
+  transform: none;
+}
+
+.view-layer-lite .kn-search-card,
+.view-layer-lite .kn-fda-note {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.view-layer-lite .fastpath-section {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.view-layer-lite .fastpath-link:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.view-layer-lite .card,
+.view-layer-lite .explore-card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.view-layer-lite .card:hover,
+.view-layer-lite .explore-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.view-layer-lite .reveal:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.view-layer-lite .formula {
+  box-shadow: none;
+}
+
+.view-layer-lite .kn-search-result:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.view-layer-lite .kn-file-row:hover {
+  transform: none;
+}
+
 /* Dual Mode Visibility Rules */
 body.mode-3d .view-layer-lite {
   display: none !important;
@@ -1768,6 +2055,10 @@ body.mode-lite .view-layer-3d {
 
 body.mode-lite .view-layer-lite {
   display: block !important;
+}
+
+body.mode-lite #knSpatialCanvas {
+  display: none !important;
 }
 
 body.mode-3d {

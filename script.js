@@ -49,7 +49,7 @@
       const isDark = theme === "dark";
       body.classList.toggle("dark", isDark);
       try { localStorage.setItem("kn-theme", theme); } catch (_) {}
-      document.querySelectorAll("#themeBtn, .theme-btn, [data-theme-btn]").forEach(btn => {
+      document.querySelectorAll("#themeBtn, #themeBtn3d, .theme-btn, [data-theme-btn]").forEach(btn => {
         btn.textContent = isDark ? "☀" : "☾";
         btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
       });
@@ -59,7 +59,7 @@
     try { savedTheme = localStorage.getItem("kn-theme"); } catch (_) {}
     applyTheme(savedTheme || "dark");
 
-    document.querySelectorAll("#themeBtn, .theme-btn, [data-theme-btn]").forEach(btn => {
+    document.querySelectorAll("#themeBtn, #themeBtn3d, .theme-btn, [data-theme-btn]").forEach(btn => {
       btn.addEventListener("click", () => {
         applyTheme(body.classList.contains("dark") ? "light" : "dark");
       });
@@ -459,7 +459,7 @@
     // ------------------------------------------------------------------------
     // 13. Populate Home Bento Guideline Watch Widget
     // ------------------------------------------------------------------------
-    const homeUpdatesList = document.querySelectorAll("#knHomeUpdates, .kn-home-updates");
+    const homeUpdatesList = document.querySelectorAll("#knHomeUpdates, #knHomeUpdates3d, .kn-home-updates");
     if (homeUpdatesList.length) {
       loadData().then(data => {
         const updates = newest(data.filter(x => {
@@ -493,7 +493,7 @@
     // ------------------------------------------------------------------------
     // 14. Populate Section Pages (Drugs, Critical Care, etc.)
     // ------------------------------------------------------------------------
-    const sheetContents = document.querySelectorAll("#sheetContent, .sheet-content");
+    const sheetContents = document.querySelectorAll("#sheetContent, #sheetContent3d, .sheet-content");
     if (sheetContents.length) {
       const page = norm(body.dataset.contentPage || "");
       const typeMap = {
@@ -536,6 +536,9 @@
 
           wireRevealButtons(sheetContent);
           if (observer) sheetContent.querySelectorAll(".fade").forEach(el => observer.observe(el));
+          if (window.KnCarousel && sheetContent.closest(".view-layer-3d")) {
+            window.KnCarousel.mount(sheetContent);
+          }
         });
       }).catch(err => {
         console.error("KnockoutNotes API Error:", err);
@@ -586,6 +589,9 @@
 
           wireRevealButtons(recentGrid);
           if (observer) recentGrid.querySelectorAll(".fade").forEach(el => observer.observe(el));
+          if (window.KnCarousel && recentGrid.closest(".view-layer-3d")) {
+            window.KnCarousel.mount(recentGrid);
+          }
         });
       }).catch(err => {
         console.error("KnockoutNotes Recent Updates:", err);

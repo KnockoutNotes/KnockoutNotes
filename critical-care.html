@@ -42,7 +42,7 @@
 
     <div class="hud-path-indicator">
       <span class="hud-pulse-dot"></span>
-      <span id="knHudPath">KN // ICU TELEMETRY</span>
+      <span id="knHudPath3d">KN // ICU TELEMETRY</span>
     </div>
 
     <div class="nav-links">
@@ -61,11 +61,11 @@
         <span>Search</span>
         <kbd>⌘K</kbd>
       </button>
-      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
+      <button class="icon-btn" id="themeBtn3d" aria-label="Toggle theme">☾</button>
+      <button class="menu-btn" id="menuBtn3d" aria-label="Open menu" aria-expanded="false">⋮</button>
     </div>
   </div>
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu3d">
     <a data-close-menu href="index.html">Home <span>→</span></a>
     <a data-close-menu href="pearls.html">Pearls <span>→</span></a>
     <a data-close-menu href="notes.html">Notes <span>→</span></a>
@@ -87,11 +87,11 @@
           <p>Search ICU scoring calculators, ventilator protocols, septic shock pathways, and monitoring algorithms.</p>
           <div class="kn-site-search">
             <span class="kn-search-icon">⌕</span>
-            <input id="knSiteSearch" type="search" placeholder="Search SOFA, ARDS, septic shock, vasopressors, ECMO…">
-            <button id="knSearchClear">×</button>
+            <input id="knSiteSearch3d" type="search" placeholder="Search SOFA, ARDS, septic shock, vasopressors, ECMO…">
+            <button id="knSearchClear3d">×</button>
           </div>
-          <div id="knSearchStatus" class="kn-search-status">Start typing to search the site.</div>
-          <div id="knSearchResults" class="kn-search-results"></div>
+          <div id="knSearchStatus3d" class="kn-search-status">Start typing to search the site.</div>
+          <div id="knSearchResults3d" class="kn-search-results"></div>
         </div>
       </section>
 
@@ -102,7 +102,7 @@
       </div>
 
       <section class="section" style="padding-top:0;">
-        <div id="knLibrary"></div>
+        <div id="knLibrary3d"></div>
       </section>
 
       <section class="section">
@@ -120,8 +120,8 @@
             </div>
             <h3>2025 AHA ALS Guidelines</h3>
             <p>The standard adult advanced life support framework is the <strong>2025 AHA Guidelines for CPR and ECC</strong>.</p>
-            <button class="reveal" data-target="c1">Reveal Answer</button>
-            <div class="answer" id="c1">
+            <button class="reveal" data-target="c13d">Reveal Answer</button>
+            <div class="answer" id="c13d">
               Covers adult cardiac arrest, peri-arrest tachy- and brady-arrhythmias, high-energy defibrillation, early airway intervention, and targeted temperature management post-ROSC.
               <small class="reference">Reference: 2025 American Heart Association Guidelines for CPR and ECC.</small>
             </div>
@@ -137,8 +137,8 @@
             <div>
               <span class="formula">Target: 4 – 8 mL/kg PBW</span>
             </div>
-            <button class="reveal" data-target="c2">Reveal Answer</button>
-            <div class="answer" id="c2">
+            <button class="reveal" data-target="c23d">Reveal Answer</button>
+            <div class="answer" id="c23d">
               Calculate PBW from patient height and sex. Target tidal volume <strong>4–8 mL/kg PBW</strong>, maintain plateau pressure &le; 30 cmH₂O, titrate PEEP according to FiO₂ tables or driving pressure (&Delta;P &le; 14 cmH₂O).
               <small class="reference">Reference: ARDSNet Protocols; Surviving Sepsis Guidelines 2026.</small>
             </div>
@@ -151,8 +151,8 @@
             </div>
             <h3>ETCO₂ Suddenly Disappears in the ICU</h3>
             <p>Never assume monitor failure before patient safety is confirmed.</p>
-            <button class="reveal" data-target="c3">Reveal Answer</button>
-            <div class="answer" id="c3">
+            <button class="reveal" data-target="c33d">Reveal Answer</button>
+            <div class="answer" id="c33d">
               Immediately palpate central pulse and confirm chest rise. Differential: Disconnection of ventilator circuit, accidental extubation/oesophageal displacement, total airway obstruction (mucus plug), massive pulmonary embolism, or abrupt cardiac arrest.
               <small class="reference">Reference: Principles of Critical Care, 5th ed.</small>
             </div>
@@ -165,8 +165,8 @@
             </div>
             <h3>Shock Framework</h3>
             <p>Classify hemodynamic physiology before selecting vasopressors or inotropes.</p>
-            <button class="reveal" data-target="c4">Reveal Answer</button>
-            <div class="answer" id="c4">
+            <button class="reveal" data-target="c43d">Reveal Answer</button>
+            <div class="answer" id="c43d">
               Four primary phenotypes: <strong>Distributive</strong> (low SVR, high/normal CO), <strong>Hypovolaemic</strong> (low preload, high SVR), <strong>Cardiogenic</strong> (low CO, elevated filling pressures), and <strong>Obstructive</strong> (tamponade, tension pneumothorax, massive PE). Use bedside ultrasound and dynamic fluid responsiveness measures.
               <small class="reference">Reference: The ICU Book, Paul Marino, 5th ed.</small>
             </div>
@@ -408,6 +408,7 @@
 
 <script src="spatial-bg.js"></script>
 <script src="spatial-camera.js"></script>
+<script src="spatial-scroll.js"></script>
 <script src="spatial-viewer.js"></script>
 <script src="script.js"></script>
 <script src="kn-site-search.js"></script>

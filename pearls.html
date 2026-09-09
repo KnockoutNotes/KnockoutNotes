@@ -42,7 +42,7 @@
 
     <div class="hud-path-indicator">
       <span class="hud-pulse-dot"></span>
-      <span id="knHudPath">KN // CLINICAL PEARLS</span>
+      <span id="knHudPath3d">KN // CLINICAL PEARLS</span>
     </div>
 
     <div class="nav-links">
@@ -61,11 +61,11 @@
         <span>Search</span>
         <kbd>⌘K</kbd>
       </button>
-      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
+      <button class="icon-btn" id="themeBtn3d" aria-label="Toggle theme">☾</button>
+      <button class="menu-btn" id="menuBtn3d" aria-label="Open menu" aria-expanded="false">⋮</button>
     </div>
   </div>
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu3d">
     <a data-close-menu href="index.html">Home <span>→</span></a>
     <a data-close-menu href="pearls.html">Pearls <span>→</span></a>
     <a data-close-menu href="notes.html">Notes <span>→</span></a>
@@ -87,11 +87,11 @@
           <p>Search visual infographics, pharmacological parameters, and high-yield active recall points.</p>
           <div class="kn-site-search">
             <span class="kn-search-icon">⌕</span>
-            <input id="knSiteSearch" type="search" placeholder="Search propofol, sugammadex, mitral stenosis, ARDS...">
-            <button id="knSearchClear">×</button>
+            <input id="knSiteSearch3d" type="search" placeholder="Search propofol, sugammadex, mitral stenosis, ARDS...">
+            <button id="knSearchClear3d">×</button>
           </div>
-          <div id="knSearchStatus" class="kn-search-status">Start typing to search the site.</div>
-          <div id="knSearchResults" class="kn-search-results"></div>
+          <div id="knSearchStatus3d" class="kn-search-status">Start typing to search the site.</div>
+          <div id="knSearchResults3d" class="kn-search-results"></div>
         </div>
       </section>
 
@@ -102,7 +102,7 @@
       </div>
 
       <section class="section" style="padding-top:0;">
-        <div id="knLibrary"></div>
+        <div id="knLibrary3d"></div>
       </section>
 
       <section class="section">
@@ -112,7 +112,7 @@
           <p>Instant clinical numbers and mechanism takeaways for rapid revision.</p>
         </div>
 
-        <input class="search fade" id="pearlSearch" placeholder="Filter text pearls by topic, drug, or keyword...">
+        <input class="search fade" id="pearlSearch3d" placeholder="Filter text pearls by topic, drug, or keyword...">
 
         <div class="filters fade">
           <button class="filter active" data-filter="all">All Topics</button>
@@ -131,8 +131,8 @@
             </div>
             <h3>Succinylcholine</h3>
             <p><strong>IV intubating dose: 1–1.5 mg/kg</strong> in adults.</p>
-            <button class="reveal" data-target="p1">Reveal Answer</button>
-            <div class="answer" id="p1">
+            <button class="reveal" data-target="p13d">Reveal Answer</button>
+            <div class="answer" id="p13d">
               Depolarizing NMBA with rapid onset (30–60s) and brief duration (5–10 mins). Produces fasciculations followed by flaccid paralysis.
               <small class="reference">Reference: Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology, 6th ed.</small>
             </div>
@@ -145,8 +145,8 @@
             </div>
             <h3>Sugammadex</h3>
             <p>Dose according to depth of rocuronium or vecuronium block.</p>
-            <button class="reveal" data-target="p2">Reveal Answer</button>
-            <div class="answer" id="p2">
+            <button class="reveal" data-target="p23d">Reveal Answer</button>
+            <div class="answer" id="p23d">
               <strong>2 mg/kg</strong> for moderate block (reappearance of T2); <strong>4 mg/kg</strong> for deep block (1–2 post-tetanic counts); <strong>16 mg/kg</strong> for immediate reversal 3 minutes after 1.2 mg/kg rocuronium.
               <small class="reference">Reference: Stoelting's Pharmacology & Physiology in Anesthetic Practice, 6th ed.</small>
             </div>
@@ -159,8 +159,8 @@
             </div>
             <h3>FRC as an Oxygen Reservoir</h3>
             <p>Preoxygenation replaces alveolar nitrogen with oxygen to prolong safe apnoea time.</p>
-            <button class="reveal" data-target="p3">Reveal Answer</button>
-            <div class="answer" id="p3">
+            <button class="reveal" data-target="p33d">Reveal Answer</button>
+            <div class="answer" id="p33d">
               The primary goal is denitrogenation and maximisation of the functional residual capacity (FRC) oxygen store (~2100 mL in a 70kg adult breathing 100% O₂), not merely achieving an SpO₂ of 100%.
               <small class="reference">Reference: West's Respiratory Physiology; Miller's Anesthesia, 10th ed.</small>
             </div>
@@ -173,8 +173,8 @@
             </div>
             <h3>Can't Intubate, Can't Oxygenate (CICO)</h3>
             <p>Recognise failure early and immediately progress to emergency front-of-neck access.</p>
-            <button class="reveal" data-target="p4">Reveal Answer</button>
-            <div class="answer" id="p4">
+            <button class="reveal" data-target="p43d">Reveal Answer</button>
+            <div class="answer" id="p43d">
               Declare CICO emergency. Call for senior help, attempt 100% O₂ rescue via supraglottic airway / facemask, and if uncorrected, perform emergency scalpel-bougie-tube cricothyroidotomy immediately.
               <small class="reference">Reference: Difficult Airway Society (DAS) Guidelines.</small>
             </div>
@@ -187,8 +187,8 @@
             </div>
             <h3>Mitral Stenosis: Rate Matters</h3>
             <p>Tachycardia shortens diastole and critically impairs LV filling across a stenotic valve.</p>
-            <button class="reveal" data-target="p5">Reveal Answer</button>
-            <div class="answer" id="p5">
+            <button class="reveal" data-target="p53d">Reveal Answer</button>
+            <div class="answer" id="p53d">
               Haemodynamic goals: Maintain sinus rhythm, control ventricular rate (60–75 bpm), ensure adequate but cautious preload, preserve contractility, and avoid acute elevations in pulmonary vascular resistance (PVR).
               <small class="reference">Reference: Kaplan's Cardiac Anesthesia, 8th ed.</small>
             </div>
@@ -201,8 +201,8 @@
             </div>
             <h3>Sudden Loss of ETCO₂</h3>
             <p>Rapidly differentiate equipment disconnections from catastrophic circulatory failure.</p>
-            <button class="reveal" data-target="p6">Reveal Answer</button>
-            <div class="answer" id="p6">
+            <button class="reveal" data-target="p63d">Reveal Answer</button>
+            <div class="answer" id="p63d">
               Rule out circuit disconnection, endotracheal tube displacement/obstruction, sensor failure, massive pulmonary embolism, and sudden circulatory arrest. Check pulse and blood pressure immediately.
               <small class="reference">Reference: Miller's Anesthesia, 10th ed.</small>
             </div>
@@ -480,6 +480,7 @@
 
 <script src="spatial-bg.js"></script>
 <script src="spatial-camera.js"></script>
+<script src="spatial-scroll.js"></script>
 <script src="spatial-viewer.js"></script>
 <script src="script.js"></script>
 <script src="kn-site-search.js"></script>

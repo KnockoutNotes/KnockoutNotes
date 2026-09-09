@@ -1,6 +1,9 @@
 // ==========================================================================
-// KNOCKOUTNOTES — Controlled 3D Spatial Camera Engine (spatial-camera.js)
-// Subtle Scroll Depth Parallax, Section Environmental Triggering, Zero Erratic Zoom
+// KNOCKOUTNOTES — Section Environment Tracker (spatial-camera.js)
+// The page itself never rotates or moves — this only swaps the ambient
+// background palette/waveforms and the HUD path label as the user scrolls
+// past each named section. All spatial motion lives in the card carousels
+// (spatial-scroll.js), scoped to their own card collections.
 // ==========================================================================
 
 (function () {
@@ -10,30 +13,6 @@
     return;
   }
 
-  let currentZ = 0;
-  let targetZ = 0;
-  let pitch = 0;
-  let targetPitch = 0;
-  let yaw = 0;
-  let targetYaw = 0;
-
-  // Gentle cursor parallax (max 3 degrees)
-  window.addEventListener("pointermove", (e) => {
-    const normX = (e.clientX / window.innerWidth) - 0.5;
-    const normY = (e.clientY / window.innerHeight) - 0.5;
-    targetPitch = -normY * 2.8;
-    targetYaw = normX * 2.8;
-  }, { passive: true });
-
-  // Native scroll tracking: gentle depth translation
-  function onScroll() {
-    targetZ = window.scrollY * 0.18; // Controlled 0.18px per scroll px
-  }
-
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-
-  // Section environmental tracking
   const sections = document.querySelectorAll("[data-env-state]");
   let activeState = "";
 
@@ -63,7 +42,7 @@
       if (window.KnockoutSpatialBg && typeof window.KnockoutSpatialBg.setEnvironment === "function") {
         window.KnockoutSpatialBg.setEnvironment(found);
       }
-      document.querySelectorAll("#knHudPath, .kn-hud-path").forEach(hudPath => {
+      document.querySelectorAll("#knHudPath, #knHudPath3d, .kn-hud-path").forEach(hudPath => {
         if (secNameMap[found]) {
           hudPath.textContent = secNameMap[found];
         }
@@ -72,23 +51,5 @@
   }
 
   window.addEventListener("scroll", checkEnvironments, { passive: true });
-
-  // Camera loop
-  function updateCamera() {
-    currentZ += (targetZ - currentZ) * 0.08;
-    pitch += (targetPitch - pitch) * 0.08;
-    yaw += (targetYaw - yaw) * 0.08;
-
-    document.documentElement.style.setProperty("--cam-pitch", `${pitch.toFixed(2)}deg`);
-    document.documentElement.style.setProperty("--cam-yaw", `${yaw.toFixed(2)}deg`);
-    document.documentElement.style.setProperty("--cam-z", `${currentZ.toFixed(1)}px`);
-
-    requestAnimationFrame(updateCamera);
-  }
-
-  updateCamera();
-
-  window.KnockoutSpatialCamera = {
-    warpToZ: (z) => { targetZ = z; }
-  };
+  checkEnvironments();
 })();
