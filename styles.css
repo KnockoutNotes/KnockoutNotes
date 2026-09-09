@@ -539,8 +539,18 @@ img {
    ========================================================================== */
 .hero-visual {
   position: relative;
+  min-width: 0;
   transform-style: preserve-3d;
   transform: translateZ(var(--z-fore));
+}
+
+.hero > .fade {
+  min-width: 0;
+}
+
+.telemetry-channel,
+.telemetry-status {
+  min-width: 0;
 }
 
 .telemetry-card {
@@ -1696,6 +1706,17 @@ img {
   .viewer-hud-status {
     display: none;
   }
+
+  /* The persistent mode-switch dock is fixed/floating on desktop, but on
+     narrow screens it collides with the centered nav capsule. Drop it into
+     normal document flow as a small bar above the header instead. */
+  .kn-mode-switch-dock {
+    position: static;
+    margin: 10px auto 0;
+    width: fit-content;
+    left: auto;
+    top: auto;
+  }
 }
 
 
@@ -1757,6 +1778,185 @@ img {
   box-shadow: 0 0 14px rgba(251, 191, 36, 0.3);
 }
 
+/* ==========================================================================
+   3D VIEW — Scroll-Driven Spatial Depth Staging (spatial-scroll.js)
+   Custom properties are written per-frame by JS; the transform composition
+   lives here so it can compose cleanly with existing hover states.
+   ========================================================================== */
+.view-layer-3d .depth-block {
+  transform: translateZ(var(--dz, 0px)) rotateX(var(--drot, 0deg)) scale(var(--dscale, 1));
+  opacity: var(--dop, 1);
+  filter: blur(var(--dblur, 0px));
+  will-change: transform, opacity, filter;
+}
+
+.view-layer-3d .card.depth-card,
+.view-layer-3d .explore-card.depth-card {
+  transform: translateZ(var(--cdz, 0px)) rotateX(var(--cdrot, 0deg)) scale(var(--cdscale, 1));
+  opacity: var(--cdop, 1);
+  will-change: transform, opacity;
+}
+
+.view-layer-3d .card.depth-card:hover,
+.view-layer-3d .explore-card.depth-card:hover {
+  transform: translateY(-6px) translateZ(24px) scale(1.01);
+}
+
+@media (max-width: 720px) {
+  .view-layer-3d .depth-block {
+    filter: none;
+  }
+}
+
+/* ==========================================================================
+   LITE VIEW — Flat Clinical Presentation Override
+   Same markup, same data as the 3D View, but the cinematic spatial skin
+   (camera perspective, glass blur, glow, gradients, 3D hover tilt) is
+   switched off so Lite reads as the plain, familiar clinical interface.
+   Nothing here changes Lite's content, structure, or data — presentation only.
+   ========================================================================== */
+.view-layer-lite .spatial-stage {
+  perspective: none;
+}
+
+.view-layer-lite .spatial-world {
+  transform: none !important;
+  transition: none;
+}
+
+.view-layer-lite .site-hud {
+  transform: none;
+}
+
+.view-layer-lite .hud-capsule {
+  border-radius: var(--radius-md);
+  max-width: 1220px;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: var(--bg-void);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+.view-layer-lite .site-hud.scrolled .hud-capsule {
+  box-shadow: var(--shadow-sm);
+}
+
+.view-layer-lite .nav-links a.active {
+  box-shadow: none;
+}
+
+.view-layer-lite .nav-search-trigger:hover,
+.view-layer-lite .icon-btn:hover,
+.view-layer-lite .menu-btn:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+.view-layer-lite .mobile-menu {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.view-layer-lite .kicker-pill {
+  box-shadow: none;
+}
+
+.view-layer-lite .hero h1 .gradient-text {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: var(--accent-cyan);
+  filter: none;
+}
+
+.view-layer-lite .btn-cinematic.primary {
+  box-shadow: none;
+}
+
+.view-layer-lite .btn-cinematic.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: none;
+}
+
+.view-layer-lite .btn-cinematic.glass {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: var(--bg-card);
+}
+
+.view-layer-lite .btn-cinematic.glass:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.view-layer-lite .hero-visual {
+  transform: none;
+}
+
+.view-layer-lite .telemetry-card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.view-layer-lite .telemetry-card:hover {
+  transform: none;
+}
+
+.view-layer-lite .kn-search-section,
+.view-layer-lite .kn-fda-note {
+  transform: none;
+}
+
+.view-layer-lite .kn-search-card,
+.view-layer-lite .kn-fda-note {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.view-layer-lite .fastpath-section {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.view-layer-lite .fastpath-link:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.view-layer-lite .card,
+.view-layer-lite .explore-card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.view-layer-lite .card:hover,
+.view-layer-lite .explore-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.view-layer-lite .reveal:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.view-layer-lite .formula {
+  box-shadow: none;
+}
+
+.view-layer-lite .kn-search-result:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.view-layer-lite .kn-file-row:hover {
+  transform: none;
+}
+
 /* Dual Mode Visibility Rules */
 body.mode-3d .view-layer-lite {
   display: none !important;
@@ -1768,6 +1968,10 @@ body.mode-lite .view-layer-3d {
 
 body.mode-lite .view-layer-lite {
   display: block !important;
+}
+
+body.mode-lite #knSpatialCanvas {
+  display: none !important;
 }
 
 body.mode-3d {

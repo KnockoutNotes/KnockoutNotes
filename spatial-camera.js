@@ -63,7 +63,7 @@
       if (window.KnockoutSpatialBg && typeof window.KnockoutSpatialBg.setEnvironment === "function") {
         window.KnockoutSpatialBg.setEnvironment(found);
       }
-      document.querySelectorAll("#knHudPath, .kn-hud-path").forEach(hudPath => {
+      document.querySelectorAll("#knHudPath, #knHudPath3d, .kn-hud-path").forEach(hudPath => {
         if (secNameMap[found]) {
           hudPath.textContent = secNameMap[found];
         }

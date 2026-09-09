@@ -103,7 +103,7 @@
   async function initLibrary(page){
     const cfg = await cfgPromise;
     const categories = cfg.pages?.[page]?.categories || [];
-    const mounts = document.querySelectorAll('#knLibrary, .kn-library-mount');
+    const mounts = document.querySelectorAll('#knLibrary, #knLibrary3d, .kn-library-mount');
     if (!mounts.length) return;
 
     mounts.forEach(mount => {
@@ -142,6 +142,19 @@
             y.hidden = k !== i;
             y.classList.toggle('active', k === i);
           });
+
+          // 3D View only: give the newly-selected category a brief "drill
+          // forward from depth" entrance so moving CATEGORY -> ITEMS reads
+          // as spatial navigation. Lite View never gets this class.
+          if (mount.closest('.view-layer-3d')) {
+            const activePanel = panels.querySelector('.kn-library-panel.active');
+            if (activePanel) {
+              activePanel.classList.remove('kn-panel-drill');
+              // eslint-disable-next-line no-unused-expressions
+              activePanel.offsetWidth; // force reflow to restart the animation
+              activePanel.classList.add('kn-panel-drill');
+            }
+          }
         });
 
         const content = renderCategory(cat);

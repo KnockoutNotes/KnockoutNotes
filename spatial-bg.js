@@ -115,10 +115,13 @@
     }
   }, { passive: true });
 
+  const isSmallScreen = () => window.innerWidth <= 720;
+
   let particles = [];
   function initParticles() {
     particles = [];
-    const count = Math.min(env.density, Math.floor(width / 55));
+    const densityCap = isSmallScreen() ? Math.ceil(env.density * 0.5) : env.density;
+    const count = Math.min(densityCap, Math.floor(width / 55));
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * width,
@@ -240,8 +243,9 @@
     }
     ctx.stroke();
 
-    // 2. Breathing Circuit Geometry Motifs (Soft outline)
-    if (env.circuitRings) {
+    // 2. Breathing Circuit Geometry Motifs (Soft outline) — skipped on small
+    // screens to keep the canvas lightweight on mobile browsers.
+    if (env.circuitRings && !isSmallScreen()) {
       const cx = width * 0.84 + (mouse.x - width * 0.5) * 0.025;
       const cy = height * 0.45 + (mouse.y - height * 0.5) * 0.025;
 

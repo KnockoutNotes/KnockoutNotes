@@ -180,9 +180,12 @@
       else if (e.key === "ArrowRight") document.getElementById("knViewerNext").click();
     });
 
-    // Intercept clicks on clinical asset links
+    // Intercept clicks on clinical asset links — 3D View only. Lite View must
+    // keep its plain link behaviour untouched.
     document.addEventListener("click", (e) => {
+      if (!document.body.classList.contains("mode-3d")) return;
       const link = e.target.closest("a[href*='assets/']");
+      if (link && link.closest(".view-layer-lite")) return;
       if (link && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
         const href = link.getAttribute("href");
         if (/\.(?:jpg|jpeg|png|webp|pdf|ppt|pptx)(?:$|\?)/i.test(href)) {
