@@ -73,12 +73,7 @@
       return [];
     }
 
-    function wireSearchInstance(inputId, clearId, resultsId, statusId) {
-      const input = document.getElementById(inputId);
-      const clear = document.getElementById(clearId);
-      const results = document.getElementById(resultsId);
-      const status = document.getElementById(statusId);
-
+    function wireSearchElement(input, clear, results, status) {
       if (!input || !results) return null;
 
       let timer = null;
@@ -160,15 +155,31 @@
       return { executeSearch };
     }
 
-    // In-page search bar
-    const inPageSearch = wireSearchInstance("knSiteSearch", "knSearchClear", "knSearchResults", "knSearchStatus");
+    // Wire all in-page search containers
+    const inPageInstances = [];
+    document.querySelectorAll(".kn-site-search").forEach(wrap => {
+      const input = wrap.querySelector("input[type='search'], input");
+      const clear = wrap.querySelector("button");
+      const section = wrap.closest(".kn-search-card, .kn-search-section, section");
+      const results = section ? section.querySelector(".kn-search-results") : null;
+      const status = section ? section.querySelector(".kn-search-status") : null;
+      if (input && results) {
+        const inst = wireSearchElement(input, clear, results, status);
+        if (inst) inPageInstances.push(inst);
+      }
+    });
+
     // Global Command Palette Modal search bar
-    const modalSearch = wireSearchInstance("knModalSearchInput", "knModalSearchClear", "knModalSearchResults", "knModalSearchStatus");
+    const modalInput = document.getElementById("knModalSearchInput");
+    const modalClear = document.getElementById("knModalSearchClear");
+    const modalResults = document.getElementById("knModalSearchResults");
+    const modalStatus = document.getElementById("knModalSearchStatus");
+    const modalSearch = wireSearchElement(modalInput, modalClear, modalResults, modalStatus);
 
     window.KnockoutNotesSiteSearch = {
       trigger: (query = "") => {
         if (modalSearch) modalSearch.executeSearch(query);
-        if (inPageSearch) inPageSearch.executeSearch(query);
+        inPageInstances.forEach(inst => inst.executeSearch(query));
       }
     };
   }

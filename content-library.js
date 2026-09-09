@@ -103,49 +103,51 @@
   async function initLibrary(page){
     const cfg = await cfgPromise;
     const categories = cfg.pages?.[page]?.categories || [];
-    const mount = document.getElementById('knLibrary');
-    if (!mount) return;
+    const mounts = document.querySelectorAll('#knLibrary, .kn-library-mount');
+    if (!mounts.length) return;
 
-    mount.innerHTML = `
-      <div class="kn-library-tabs" role="tablist" aria-label="Categories"></div>
-      <div class="kn-library-panels"></div>
-    `;
+    mounts.forEach(mount => {
+      mount.innerHTML = `
+        <div class="kn-library-tabs" role="tablist" aria-label="Categories"></div>
+        <div class="kn-library-panels"></div>
+      `;
 
-    const tabs = mount.querySelector('.kn-library-tabs');
-    const panels = mount.querySelector('.kn-library-panels');
+      const tabs = mount.querySelector('.kn-library-tabs');
+      const panels = mount.querySelector('.kn-library-panels');
 
-    for (let i = 0; i < categories.length; i++) {
-      const cat = categories[i];
-      const files = resolveCategoryFiles(cat);
-      const tab = document.createElement('button');
-      tab.className = 'kn-library-tab' + (i === 0 ? ' active' : '');
-      tab.innerHTML = `${esc(cat.title)} <span class="kn-tab-count">${files.length}</span>`;
-      tab.setAttribute('role', 'tab');
-      tab.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-      tab.dataset.index = i;
-      tabs.appendChild(tab);
+      for (let i = 0; i < categories.length; i++) {
+        const cat = categories[i];
+        const files = resolveCategoryFiles(cat);
+        const tab = document.createElement('button');
+        tab.className = 'kn-library-tab' + (i === 0 ? ' active' : '');
+        tab.innerHTML = `${esc(cat.title)} <span class="kn-tab-count">${files.length}</span>`;
+        tab.setAttribute('role', 'tab');
+        tab.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+        tab.dataset.index = i;
+        tabs.appendChild(tab);
 
-      const panel = document.createElement('div');
-      panel.className = 'kn-library-panel' + (i === 0 ? ' active' : '');
-      panel.hidden = i !== 0;
-      panel.dataset.index = i;
-      panels.appendChild(panel);
+        const panel = document.createElement('div');
+        panel.className = 'kn-library-panel' + (i === 0 ? ' active' : '');
+        panel.hidden = i !== 0;
+        panel.dataset.index = i;
+        panels.appendChild(panel);
 
-      tab.addEventListener('click', () => {
-        tabs.querySelectorAll('.kn-library-tab').forEach((x, j) => {
-          const on = j === i;
-          x.classList.toggle('active', on);
-          x.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.addEventListener('click', () => {
+          tabs.querySelectorAll('.kn-library-tab').forEach((x, j) => {
+            const on = j === i;
+            x.classList.toggle('active', on);
+            x.setAttribute('aria-selected', on ? 'true' : 'false');
+          });
+          panels.querySelectorAll('.kn-library-panel').forEach((y, k) => {
+            y.hidden = k !== i;
+            y.classList.toggle('active', k === i);
+          });
         });
-        panels.querySelectorAll('.kn-library-panel').forEach((y, k) => {
-          y.hidden = k !== i;
-          y.classList.toggle('active', k === i);
-        });
-      });
 
-      const content = renderCategory(cat);
-      panel.appendChild(content);
-    }
+        const content = renderCategory(cat);
+        panel.appendChild(content);
+      }
+    });
 
     window.KNOCKOUTNOTES_LIBRARY = cfg;
     document.dispatchEvent(new CustomEvent('knLibraryReady', { detail: { page, categories } }));

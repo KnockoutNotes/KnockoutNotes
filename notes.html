@@ -10,22 +10,41 @@
   <link rel="stylesheet" href="library-styles.css">
   <script src="content-config.js"></script>
   <script src="sheet-config.js"></script>
-  <script src="script.js"></script>
 </head>
-<body data-content-page="notes">
+<body data-content-page="notes" class="mode-3d">
 
-<!-- Background Ambient Particle Canvas -->
-<canvas id="knParticleCanvas"></canvas>
+<!-- Procedural Anaesthesia Background Canvas (Active for both views) -->
+<canvas id="knSpatialCanvas"></canvas>
 
-<!-- Floating Island Capsule Navigation -->
-<nav class="site-nav">
-  <div class="nav-capsule">
+<!-- Persistent Top-Left Mode Switch Dock (3D View vs Lite View) -->
+<div class="kn-mode-switch-dock" id="knModeSwitch" role="group" aria-label="Interface View Mode">
+  <button class="kn-mode-btn active" data-mode="3d" title="Switch to Cinematic 3D Spatial Experience">
+    <span>✦ 3D VIEW</span>
+  </button>
+  <button class="kn-mode-btn" data-mode="lite" title="Switch to Familiar Clinical Lite View">
+    <span>⚡ LITE VIEW</span>
+  </button>
+</div>
+
+
+<!-- ==========================================================================
+     PRESENTATION LAYER 1: IMMERSIVE 3D VIEW (Active on body.mode-3d)
+     ========================================================================== -->
+<div class="view-layer-3d">
+  <header class="site-hud">
+  <div class="hud-capsule">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
       <div class="brand-icon-wrap">
         <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
       </div>
       <div class="brand-name">Knockout<span>Notes</span></div>
     </a>
+
+    <div class="hud-path-indicator">
+      <span class="hud-pulse-dot"></span>
+      <span id="knHudPath">KN // STUDY REPOSITORY</span>
+    </div>
+
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="pearls.html">Pearls</a>
@@ -34,8 +53,9 @@
       <a href="drugs.html">Drugs</a>
       <a href="critical-care.html">Critical Care</a>
       <a href="resources.html">Resources</a>
-      <a href="recent-updates.html">Recent Updates</a>
+      <a href="recent-updates.html">Updates</a>
     </div>
+
     <div class="nav-actions">
       <button class="nav-search-trigger" data-open-search aria-label="Open search">
         <span>Search</span>
@@ -53,70 +73,42 @@
     <a data-close-menu href="drugs.html">Drugs <span>→</span></a>
     <a data-close-menu href="critical-care.html">Critical Care <span>→</span></a>
     <a data-close-menu href="resources.html">Resources <span>→</span></a>
-    <a data-close-menu href="recent-updates.html">Recent Updates <span>→</span></a>
+    <a data-close-menu href="recent-updates.html">Updates <span>→</span></a>
   </div>
-</nav>
+</header>
 
-<main class="container">
-  <!-- In-Page Sitewide Search Section -->
-  <section class="kn-search-section">
-    <div class="kn-search-card">
-      <div class="kn-search-kicker">⌕ CLINICAL NOTES DATABASE</div>
-      <h1>Search Study Notes</h1>
-      <p>Search topic summaries, valvular heart disease goals, airway algorithms, and downloadable PDF sheets.</p>
-      <div class="kn-site-search">
-        <span class="kn-search-icon">⌕</span>
-        <input id="knSiteSearch" type="search" placeholder="Search aortic stenosis, airway, pediatric, regional...">
-        <button id="knSearchClear">×</button>
+  <div class="spatial-stage">
+    <div class="spatial-world">
+      <main class="container">
+      <section class="kn-search-section">
+        <div class="kn-search-card">
+          <div class="kn-search-kicker">⌕ CLINICAL NOTES DATABASE</div>
+          <h1>Search Study Notes</h1>
+          <p>Search topic summaries, valvular heart disease goals, airway algorithms, and downloadable PDF sheets.</p>
+          <div class="kn-site-search">
+            <span class="kn-search-icon">⌕</span>
+            <input id="knSiteSearch" type="search" placeholder="Search aortic stenosis, airway, pediatric, regional...">
+            <button id="knSearchClear">×</button>
+          </div>
+          <div id="knSearchStatus" class="kn-search-status">Start typing to search the site.</div>
+          <div id="knSearchResults" class="kn-search-results"></div>
+        </div>
+      </section>
+
+      <div class="section-head fade">
+        <div class="kicker-pill">📚 STRUCTURED REVISION</div>
+        <h2>Study Notes Library</h2>
+        <p>Comprehensive topic summaries and visual diagrams. Click any item to inspect in the 3D Holographic Viewer.</p>
       </div>
-      <div id="knSearchStatus" class="kn-search-status">Start typing to search the site.</div>
-      <div id="knSearchResults" class="kn-search-results"></div>
-    </div>
-  </section>
 
-  <!-- Page Header -->
-  <div class="section-head fade">
-    <div class="kicker-pill">📚 STRUCTURED REVISION</div>
-    <h2>Study Notes Library</h2>
-    <p>Comprehensive topic summaries and visual diagrams. Tabbed categories update automatically as new assets are added.</p>
-  </div>
-
-  <!-- Tabbed Content Library Mount -->
-  <section class="section" style="padding-top:0;">
-    <div id="knLibrary"></div>
-  </section>
-</main>
-
-<!-- Floating Updates Pill -->
-<a class="kn-updates-pill" href="recent-updates.html" aria-label="Recent KnockoutNotes updates">
-  <span class="kn-blink"></span>
-  <span class="kn-updates-pill-text">Recent Updates</span>
-  <span class="kn-updates-pill-badge">Live</span>
-</a>
-
-<!-- Universal Command Palette Search Modal -->
-<div class="kn-modal" id="knSearchModal" role="dialog" aria-modal="true" aria-label="Search KnockoutNotes">
-  <div class="kn-modal-backdrop" data-close-modal></div>
-  <div class="kn-modal-box">
-    <div class="kn-modal-header">
-      <span class="kn-search-icon">⌕</span>
-      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search pearls, drugs, scores, viva questions..." autocomplete="off">
-      <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
-      <button class="kn-modal-close" data-close-modal>ESC</button>
-    </div>
-    <div class="kn-modal-body">
-      <div id="knModalSearchStatus" class="kn-search-status">Start typing to search the medical database.</div>
-      <div id="knModalSearchResults" class="kn-search-results"></div>
-    </div>
-    <div class="kn-modal-footer">
-      <span>Pro-tip: Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
-      <span>KnockoutNotes Precision Search</span>
+      <section class="section" style="padding-top:0;">
+        <div id="knLibrary"></div>
+      </section>
+    </main>
     </div>
   </div>
-</div>
 
-<!-- Footer -->
-<footer class="footer">
+  <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-brand">
       <div class="brand">
@@ -138,11 +130,155 @@
     </div>
   </div>
 </footer>
+</div>
 
-<script src="content-library.js"></script>
+<!-- ==========================================================================
+     PRESENTATION LAYER 2: LITE VIEW (Active on body.mode-lite)
+     Exact code and animations copied 1:1 from 3D View
+     ========================================================================== -->
+<div class="view-layer-lite">
+  <header class="site-hud">
+  <div class="hud-capsule">
+    <a class="brand" href="index.html" aria-label="KnockoutNotes home">
+      <div class="brand-icon-wrap">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      </div>
+      <div class="brand-name">Knockout<span>Notes</span></div>
+    </a>
+
+    <div class="hud-path-indicator">
+      <span class="hud-pulse-dot"></span>
+      <span id="knHudPath">KN // STUDY REPOSITORY</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="pearls.html">Pearls</a>
+      <a href="notes.html">Notes</a>
+      <a href="viva.html">Viva</a>
+      <a href="drugs.html">Drugs</a>
+      <a href="critical-care.html">Critical Care</a>
+      <a href="resources.html">Resources</a>
+      <a href="recent-updates.html">Updates</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="nav-search-trigger" data-open-search aria-label="Open search">
+        <span>Search</span>
+        <kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a data-close-menu href="index.html">Home <span>→</span></a>
+    <a data-close-menu href="pearls.html">Pearls <span>→</span></a>
+    <a data-close-menu href="notes.html">Notes <span>→</span></a>
+    <a data-close-menu href="viva.html">Viva <span>→</span></a>
+    <a data-close-menu href="drugs.html">Drugs <span>→</span></a>
+    <a data-close-menu href="critical-care.html">Critical Care <span>→</span></a>
+    <a data-close-menu href="resources.html">Resources <span>→</span></a>
+    <a data-close-menu href="recent-updates.html">Updates <span>→</span></a>
+  </div>
+</header>
+
+  <div class="spatial-stage">
+    <div class="spatial-world">
+      <main class="container">
+      <section class="kn-search-section">
+        <div class="kn-search-card">
+          <div class="kn-search-kicker">⌕ CLINICAL NOTES DATABASE</div>
+          <h1>Search Study Notes</h1>
+          <p>Search topic summaries, valvular heart disease goals, airway algorithms, and downloadable PDF sheets.</p>
+          <div class="kn-site-search">
+            <span class="kn-search-icon">⌕</span>
+            <input id="knSiteSearch" type="search" placeholder="Search aortic stenosis, airway, pediatric, regional...">
+            <button id="knSearchClear">×</button>
+          </div>
+          <div id="knSearchStatus" class="kn-search-status">Start typing to search the site.</div>
+          <div id="knSearchResults" class="kn-search-results"></div>
+        </div>
+      </section>
+
+      <div class="section-head fade">
+        <div class="kicker-pill">📚 STRUCTURED REVISION</div>
+        <h2>Study Notes Library</h2>
+        <p>Comprehensive topic summaries and visual diagrams. Click any item to inspect in the 3D Holographic Viewer.</p>
+      </div>
+
+      <section class="section" style="padding-top:0;">
+        <div id="knLibrary"></div>
+      </section>
+    </main>
+    </div>
+  </div>
+
+  <footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="brand">
+        <div class="brand-icon-wrap">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        </div>
+        <div class="brand-name">Knockout<span>Notes</span></div>
+      </div>
+      <p>Anaesthesia • Critical Care • Viva</p>
+      <p class="disclaimer">Educational content for medical professionals and trainees. Always verify current guidelines, institutional protocols, drug labels, and patient-specific factors before clinical use.</p>
+    </div>
+    <div class="footer-connect">
+      <strong>Connect & Follow</strong>
+      <div class="socials">
+        <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
+        <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
+      </div>
+      <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
+    </div>
+  </div>
+</footer>
+</div>
+
+<!-- Floating Updates Pill -->
+<a class="kn-updates-pill" href="recent-updates.html" aria-label="Recent KnockoutNotes updates">
+  <span class="kn-blink"></span>
+  <span class="kn-updates-pill-text">Recent Updates</span>
+  <span class="kn-updates-pill-badge">Live</span>
+</a>
+
+
+<!-- Universal Command Palette Search Modal -->
+<div class="kn-modal" id="knSearchModal" role="dialog" aria-modal="true" aria-label="Search KnockoutNotes">
+  <div class="kn-modal-backdrop" data-close-modal></div>
+  <div class="kn-modal-box">
+    <div class="kn-modal-header">
+      <span class="kn-search-icon">⌕</span>
+      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search pearls, drugs, scores, viva questions..." autocomplete="off">
+      <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
+      <button class="kn-modal-close" data-close-modal>ESC</button>
+    </div>
+    <div class="kn-modal-body">
+      <div id="knModalSearchStatus" class="kn-search-status">Start typing to search the medical database.</div>
+      <div id="knModalSearchResults" class="kn-search-results"></div>
+    </div>
+    <div class="kn-modal-footer">
+      <span>Pro-tip: Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
+      <span>KnockoutNotes Spatial Search</span>
+    </div>
+  </div>
+</div>
+
+
+<script src="spatial-bg.js"></script>
+<script src="spatial-camera.js"></script>
+<script src="spatial-viewer.js"></script>
+<script src="script.js"></script>
 <script src="kn-site-search.js"></script>
+<script src="content-library.js"></script>
 <script>
-  KnockoutNotesLibrary.init('notes');
+  if (window.KnockoutNotesLibrary) {
+    window.KnockoutNotesLibrary.init('notes');
+  }
 </script>
+
 </body>
 </html>

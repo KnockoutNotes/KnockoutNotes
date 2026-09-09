@@ -1,23 +1,26 @@
 /* ==========================================================================
-   KNOCKOUTNOTES — Page Common Styles
+   KNOCKOUTNOTES — 3D Spatial Page Common Styles (page-common.css)
    Search UI, Command Palette Modal, & Medical Disclaimers
    ========================================================================== */
 
 /* In-Page Sitewide Search Section */
 .kn-search-section {
-  margin: 32px 0 28px;
+  margin: 36px 0 32px;
+  transform-style: preserve-3d;
+  transform: translateZ(var(--z-content));
 }
 
 .kn-search-card {
-  padding: 34px 38px;
+  padding: 38px 44px;
   background: var(--bg-surface);
   border: 1px solid var(--border-specular);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
   position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
 }
 
 .kn-search-card::before {
@@ -33,7 +36,7 @@
 .kn-search-kicker {
   font-size: 11px;
   font-weight: 850;
-  letter-spacing: 1.4px;
+  letter-spacing: 1.5px;
   color: var(--accent-cyan);
   margin-bottom: 8px;
   text-transform: uppercase;
@@ -42,7 +45,7 @@
 
 .kn-search-card h1 {
   margin: 0 0 10px;
-  font-size: clamp(30px, 4.4vw, 44px);
+  font-size: clamp(32px, 4.6vw, 46px);
   font-weight: 900;
   letter-spacing: -1.6px;
   line-height: 1.1;
@@ -50,27 +53,27 @@
 }
 
 .kn-search-card > p {
-  margin: 0 0 24px;
+  margin: 0 0 26px;
   color: var(--text-secondary);
-  font-size: 15.5px;
-  max-width: 680px;
+  font-size: 16px;
+  max-width: 720px;
 }
 
 .kn-site-search {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   border: 1px solid var(--border-subtle);
   background: var(--bg-card);
   border-radius: var(--radius-lg);
-  padding: 0 20px;
+  padding: 0 22px;
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-fast);
 }
 
 .kn-site-search:focus-within {
   border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2), 0 0 25px rgba(56, 189, 248, 0.15);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25), 0 0 30px rgba(56, 189, 248, 0.2);
 }
 
 .kn-site-search input {
@@ -79,7 +82,7 @@
   outline: 0;
   background: transparent;
   color: var(--text-main);
-  font-size: 16px;
+  font-size: 16.5px;
   padding: 18px 0;
   min-width: 0;
 }
@@ -90,7 +93,7 @@
 }
 
 .kn-search-icon {
-  font-size: 20px;
+  font-size: 22px;
   color: var(--accent-cyan);
   flex-shrink: 0;
 }
@@ -117,19 +120,19 @@
   color: var(--text-muted);
   font-size: 13px;
   margin-top: 14px;
-  font-weight: 600;
+  font-weight: 650;
   font-family: 'JetBrains Mono', monospace;
 }
 
 .kn-search-results {
   display: grid;
-  gap: 12px;
-  margin-top: 18px;
+  gap: 14px;
+  margin-top: 20px;
 }
 
 .kn-search-result {
   display: block;
-  padding: 18px 22px;
+  padding: 20px 24px;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   background: var(--bg-card);
@@ -137,12 +140,13 @@
   color: var(--text-main);
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-fast);
+  transform-style: preserve-3d;
 }
 
 .kn-search-result:hover {
   border-color: var(--accent-cyan);
-  transform: translateX(6px);
-  box-shadow: var(--shadow-md), 0 0 25px rgba(56, 189, 248, 0.12);
+  transform: translateX(8px) translateZ(14px);
+  box-shadow: var(--shadow-md), 0 0 30px rgba(56, 189, 248, 0.16);
 }
 
 .kn-search-result-top {
@@ -155,7 +159,7 @@
 .kn-search-type {
   font-size: 10.5px;
   font-weight: 850;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   color: var(--accent-cyan);
   text-transform: uppercase;
   font-family: 'JetBrains Mono', monospace;
@@ -163,7 +167,7 @@
 
 .kn-search-result h4 {
   margin: 6px 0 4px;
-  font-size: 17px;
+  font-size: 17.5px;
   font-weight: 800;
   letter-spacing: -0.4px;
   color: var(--text-main);
@@ -172,38 +176,40 @@
 .kn-search-result p {
   margin: 0;
   color: var(--text-secondary);
-  font-size: 13.5px;
-  line-height: 1.55;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .kn-search-empty {
-  padding: 32px;
+  padding: 36px;
   border: 1px dashed var(--border-subtle);
   border-radius: var(--radius-md);
   color: var(--text-muted);
   text-align: center;
-  font-size: 14.5px;
+  font-size: 15px;
   background: var(--bg-card);
 }
 
 /* FDA Official Drug Label Notice */
 .kn-fda-note {
   display: block;
-  margin: 0 0 36px;
-  padding: 20px 26px;
+  margin: 0 0 40px;
+  padding: 22px 28px;
   border: 1px solid var(--border-specular);
   border-left: 4px solid var(--accent-amber);
   border-radius: var(--radius-lg);
   background: var(--bg-surface);
   color: var(--text-main);
   box-shadow: var(--shadow-sm);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transform-style: preserve-3d;
+  transform: translateZ(var(--z-content));
 }
 
 .kn-fda-note strong {
-  font-size: 14.5px;
-  font-weight: 800;
+  font-size: 15px;
+  font-weight: 850;
   display: block;
   color: var(--text-main);
 }
@@ -211,8 +217,8 @@
 .kn-fda-note p {
   margin: 6px 0 0;
   color: var(--text-secondary);
-  font-size: 13.5px;
-  line-height: 1.55;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .kn-fda-note a {
@@ -227,13 +233,13 @@
 }
 
 /* ==========================================================================
-   Universal Command Palette / Search Modal Dialog (Active Theory Style)
+   Universal Command Palette / Search Modal Dialog (3D Glass at Z: +400px)
    ========================================================================== */
 .kn-modal {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 2000;
+  z-index: 2400;
   align-items: flex-start;
   justify-content: center;
   padding: 90px 20px 24px;
@@ -246,35 +252,35 @@
 .kn-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(3, 7, 18, 0.78);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(3, 7, 18, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   animation: fadeIn 0.2s ease-out;
 }
 
 .kn-modal-box {
   position: relative;
   width: 100%;
-  max-width: 680px;
+  max-width: 700px;
   background: var(--bg-surface);
   border: 1px solid var(--border-specular);
   border-radius: var(--radius-xl);
-  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.65), 0 0 50px rgba(56, 189, 248, 0.25);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.75), 0 0 60px rgba(56, 189, 248, 0.3);
   overflow: hidden;
   z-index: 10;
-  animation: modalEnter 0.28s var(--ease-out-expo);
+  animation: modalEnter 0.28s var(--ease-expo);
   max-height: calc(100vh - 140px);
   display: flex;
   flex-direction: column;
 }
 
 .kn-modal-header {
-  padding: 18px 24px;
+  padding: 20px 26px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   border-bottom: 1px solid var(--border-subtle);
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.15);
 }
 
 .kn-modal-input {
@@ -283,8 +289,8 @@
   outline: 0;
   background: transparent;
   color: var(--text-main);
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 18.5px;
+  font-weight: 650;
   min-width: 0;
 }
 
@@ -292,7 +298,7 @@
   border: 1px solid var(--border-subtle);
   background: var(--bg-card);
   color: var(--text-muted);
-  padding: 6px 11px;
+  padding: 6px 12px;
   border-radius: var(--radius-sm);
   font-size: 11px;
   font-weight: 800;
@@ -307,15 +313,15 @@
 }
 
 .kn-modal-body {
-  padding: 20px 24px;
+  padding: 22px 26px;
   overflow-y: auto;
-  max-height: 500px;
+  max-height: 520px;
 }
 
 .kn-modal-footer {
-  padding: 12px 24px;
+  padding: 14px 26px;
   border-top: 1px solid var(--border-subtle);
-  background: rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -325,25 +331,20 @@
 }
 
 .kn-modal-footer kbd {
-  padding: 3px 6px;
+  padding: 3px 7px;
   border-radius: 4px;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   color: var(--accent-cyan);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 @keyframes modalEnter {
   from {
     opacity: 0;
-    transform: translateY(-20px) scale(0.97);
+    transform: translateY(-24px) scale(0.96) translateZ(-100px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1) translateZ(0);
   }
 }

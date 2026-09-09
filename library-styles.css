@@ -1,5 +1,5 @@
 /* ==========================================================================
-   KNOCKOUTNOTES — Content Library Styles
+   KNOCKOUTNOTES — 3D Spatial Content Library Styles (library-styles.css)
    Tabbed high-yield asset repository (Images & PDFs)
    ========================================================================== */
 
@@ -7,9 +7,10 @@
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  margin: 16px 0 32px;
-  padding-bottom: 20px;
+  margin: 18px 0 34px;
+  padding-bottom: 22px;
   border-bottom: 1px solid var(--border-subtle);
+  transform-style: preserve-3d;
 }
 
 .kn-library-tab {
@@ -20,28 +21,29 @@
   background: var(--bg-card);
   color: var(--text-secondary);
   border-radius: var(--radius-full);
-  padding: 10px 20px;
+  padding: 10px 22px;
   font-size: 13.5px;
   font-weight: 700;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   transition: all var(--transition-fast);
+  transform-style: preserve-3d;
 }
 
 .kn-library-tab:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) translateZ(10px);
   border-color: var(--accent-cyan);
   color: var(--text-main);
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.2);
 }
 
 .kn-library-tab.active {
   background: var(--soft-accent);
   border-color: var(--accent-cyan);
   color: var(--accent-cyan);
-  box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
 }
 
 .kn-tab-count {
@@ -52,7 +54,7 @@
   font-weight: 800;
   padding: 2px 8px;
   border-radius: var(--radius-full);
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.2);
   border: 1px solid var(--border-subtle);
   color: var(--text-muted);
   font-family: 'JetBrains Mono', monospace;
@@ -70,22 +72,23 @@
 }
 
 .kn-library-panel.active {
-  animation: knLibFade 0.28s var(--ease-out-expo);
+  animation: knLibFade 0.3s var(--ease-expo);
 }
 
 @keyframes knLibFade {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px) translateZ(-50px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0);
   }
 }
 
 .kn-library-category {
-  margin: 12px 0 40px;
+  margin: 12px 0 44px;
+  transform-style: preserve-3d;
 }
 
 .kn-library-head {
@@ -93,14 +96,14 @@
   justify-content: space-between;
   gap: 20px;
   align-items: flex-end;
-  margin-bottom: 24px;
+  margin-bottom: 26px;
 }
 
 .kn-library-head h3 {
   margin: 6px 0 6px;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 850;
-  letter-spacing: -0.8px;
+  letter-spacing: -0.9px;
   line-height: 1.2;
   color: var(--text-main);
 }
@@ -108,8 +111,8 @@
 .kn-library-head p {
   margin: 0;
   color: var(--text-secondary);
-  font-size: 15px;
-  max-width: 720px;
+  font-size: 15.5px;
+  max-width: 740px;
 }
 
 .kn-library-count {
@@ -119,54 +122,56 @@
   color: var(--accent-cyan);
   background: var(--soft-accent);
   border: 1px solid var(--border-glow);
-  padding: 6px 16px;
+  padding: 6px 18px;
   border-radius: var(--radius-full);
   font-family: 'JetBrains Mono', monospace;
   letter-spacing: 0.5px;
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.12);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.15);
 }
 
 .kn-file-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
+  transform-style: preserve-3d;
 }
 
 .kn-file-row {
   display: flex;
   align-items: center;
   gap: 18px;
-  padding: 16px 24px;
+  padding: 16px 26px;
   background: var(--bg-card);
   border: 1px solid var(--border-specular);
   border-radius: var(--radius-md);
   color: var(--text-main);
   text-decoration: none;
   box-shadow: var(--shadow-sm);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  min-height: 60px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  min-height: 64px;
   transition: all var(--transition-fast);
+  transform-style: preserve-3d;
 }
 
 .kn-file-row:hover {
-  transform: translateX(8px);
+  transform: translateX(8px) translateZ(16px);
   border-color: var(--accent-cyan);
-  box-shadow: var(--shadow-md), 0 0 30px rgba(56, 189, 248, 0.15);
+  box-shadow: var(--shadow-md), 0 0 35px rgba(56, 189, 248, 0.18);
 }
 
 .kn-file-num {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 36px;
-  height: 32px;
+  min-width: 38px;
+  height: 34px;
   padding: 0 8px;
   border-radius: var(--radius-sm);
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.2);
   border: 1px solid var(--border-subtle);
   font-size: 12px;
-  font-weight: 750;
+  font-weight: 800;
   font-family: 'JetBrains Mono', monospace;
   color: var(--text-muted);
   flex-shrink: 0;
@@ -182,8 +187,8 @@
 .kn-file-title {
   flex: 1;
   min-width: 0;
-  font-size: 15.5px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 750;
   color: var(--text-main);
   letter-spacing: -0.2px;
   overflow: hidden;
@@ -195,7 +200,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 10px;
+  padding: 4px 11px;
   border-radius: 6px;
   font-size: 11px;
   font-weight: 850;
@@ -230,7 +235,7 @@
 
 .kn-file-row:hover .kn-file-arrow {
   color: var(--accent-cyan);
-  transform: translateX(4px);
+  transform: translateX(5px);
 }
 
 .kn-empty-library {
@@ -239,23 +244,23 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 56px 24px;
+  padding: 60px 24px;
   border: 1px dashed var(--border-subtle);
   border-radius: var(--radius-lg);
   color: var(--text-muted);
   background: var(--bg-card);
-  gap: 10px;
+  gap: 12px;
 }
 
 .kn-empty-library strong {
   color: var(--text-main);
-  font-size: 17px;
-  font-weight: 800;
+  font-size: 17.5px;
+  font-weight: 850;
 }
 
 .kn-empty-library span {
   font-size: 14px;
-  max-width: 440px;
+  max-width: 460px;
 }
 
 @media (max-width: 680px) {
