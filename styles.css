@@ -42,6 +42,12 @@
   --shadow-md: 0 16px 36px rgba(15, 23, 42, 0.09);
   --shadow-lg: 0 30px 70px rgba(15, 23, 42, 0.14);
   --shadow-glow: 0 0 50px rgba(2, 132, 199, 0.18);
+  /* Nested-panel tints (telemetry bars, answer/formula boxes, viewer bars).
+     Light mode: a faint slate wash so panels read as clean off-white, not
+     the muddy grey a flat black-alpha overlay produces on a light card. */
+  --panel-tint-1: rgba(15, 23, 42, 0.035);
+  --panel-tint-2: rgba(15, 23, 42, 0.045);
+  --panel-tint-3: rgba(15, 23, 42, 0.06);
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 22px;
@@ -76,6 +82,9 @@
   --shadow-md: 0 18px 45px rgba(0, 0, 0, 0.65);
   --shadow-lg: 0 35px 90px rgba(0, 0, 0, 0.85);
   --shadow-glow: 0 0 60px rgba(56, 189, 248, 0.28);
+  --panel-tint-1: rgba(0, 0, 0, 0.18);
+  --panel-tint-2: rgba(0, 0, 0, 0.2);
+  --panel-tint-3: rgba(0, 0, 0, 0.28);
 }
 
 /* ==========================================================================
@@ -255,7 +264,7 @@ img {
   gap: 6px;
   padding: 4px 10px;
   border-radius: var(--radius-sm);
-  background: rgba(0, 0, 0, 0.18);
+  background: var(--panel-tint-1);
   border: 1px solid var(--border-subtle);
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
@@ -576,7 +585,7 @@ img {
   justify-content: space-between;
   padding: 14px 22px;
   border-bottom: 1px solid var(--border-subtle);
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--panel-tint-2);
 }
 
 .telemetry-channel {
@@ -671,7 +680,7 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 12px 22px;
-  background: rgba(0, 0, 0, 0.15);
+  background: var(--panel-tint-1);
   border-top: 1px solid var(--border-subtle);
 }
 
@@ -904,6 +913,26 @@ img {
   color: var(--text-main);
 }
 
+/* Recent Updates: the whole card is the link when the sheet row has a real
+   URL/PDF/Slides field (never a fabricated destination for rows without one). */
+a.kn-update-card {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.kn-update-open {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: 10px;
+  color: var(--accent-cyan);
+  font-weight: 750;
+  font-size: 13.5px;
+}
+
+a.kn-update-card:hover .kn-update-open {
+  text-decoration: underline;
+}
+
 /* ==========================================================================
    Active Recall Mechanics (Reveal Accordion & Formulas)
    ========================================================================== */
@@ -937,7 +966,7 @@ img {
   margin-top: 18px;
   padding: 20px 22px;
   border-radius: var(--radius-md);
-  background: rgba(0, 0, 0, 0.18);
+  background: var(--panel-tint-1);
   border: 1px solid var(--border-subtle);
   border-left: 3px solid var(--accent-cyan);
   line-height: 1.72;
@@ -965,7 +994,7 @@ img {
 
 .formula {
   font-family: 'JetBrains Mono', monospace;
-  background: rgba(0, 0, 0, 0.28);
+  background: var(--panel-tint-3);
   border: 1px solid var(--border-glow);
   padding: 8px 16px;
   border-radius: var(--radius-sm);
@@ -1265,7 +1294,7 @@ img {
   justify-content: space-between;
   padding: 16px 24px;
   border-bottom: 1px solid var(--border-subtle);
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--panel-tint-2);
   gap: 16px;
 }
 
@@ -1384,7 +1413,7 @@ img {
   justify-content: space-between;
   padding: 12px 24px;
   border-top: 1px solid var(--border-subtle);
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--panel-tint-2);
   font-family: 'JetBrains Mono', monospace;
   font-size: 11.5px;
   color: var(--text-muted);
@@ -1711,41 +1740,56 @@ img {
    KNOCKOUTNOTES — Persistent Dual Mode (3D View vs Lite View)
    ========================================================================== */
 
-/* Persistent Top-Left Mode Switch Dock */
+/* Tiny fixed corner control — two icon-only buttons, no text labels eating
+   space. Top-right, clear of the nav capsule (which never reaches the true
+   corner on desktop) and clear of the bottom-right "Recent Updates" pill. */
 .kn-mode-switch-dock {
   position: fixed;
-  top: 14px;
-  left: 18px;
+  top: 12px;
+  right: 14px;
+  left: auto;
   z-index: 10000;
   display: flex;
   align-items: center;
   gap: 2px;
   background: rgba(10, 16, 31, 0.85);
-  border: 1px solid rgba(56, 189, 248, 0.35);
+  border: 1px solid rgba(56, 189, 248, 0.3);
   border-radius: 9999px;
   padding: 3px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45), 0 0 15px rgba(56, 189, 248, 0.2);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .kn-mode-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border-radius: 9999px;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
   border: 1px solid transparent;
   background: transparent;
   color: #94a3b8;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 750;
-  letter-spacing: 0.5px;
+  font-size: 14px;
+  line-height: 1;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kn-mode-btn span {
+  /* Text kept for screen readers only — visually replaced by the icon set
+     via ::before so the dock never grows to fit "3D VIEW" / "LITE VIEW". */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+.kn-mode-btn[data-mode="3d"]::before { content: "\25C8"; }
+.kn-mode-btn[data-mode="lite"]::before { content: "\25A4"; }
 
 .kn-mode-btn:hover {
   color: #f8fafc;
@@ -1755,28 +1799,26 @@ img {
   background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(96, 165, 250, 0.22));
   border-color: rgba(56, 189, 248, 0.55);
   color: #38bdf8;
-  box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
 }
 
 .kn-mode-btn[data-mode="lite"].active {
   background: linear-gradient(135deg, rgba(251, 191, 36, 0.25), rgba(245, 158, 11, 0.18));
   border-color: rgba(251, 191, 36, 0.55);
   color: #fbbf24;
-  box-shadow: 0 0 14px rgba(251, 191, 36, 0.3);
 }
 
-/* Below ~1040px the nav capsule narrows and centers, which brings it under
-   the fixed top-left dock. Drop the dock into normal document flow instead
-   so it never overlaps the brand/nav — placed after the base fixed-position
-   rule above so it actually wins at these widths (a rule inside a media
-   query carries no extra specificity; only source order decided it, and the
-   base rule used to come later, silently overriding this). */
+/* Below ~1040px the nav capsule widens toward the edges, which can bring it
+   under the fixed top-right dock. Drop the dock into normal document flow
+   instead so it never overlaps the brand/nav — placed after the base
+   fixed-position rule above so it actually wins at these widths (a rule
+   inside a media query carries no extra specificity; only source order
+   decides it). */
 @media (max-width: 1040px) {
   .kn-mode-switch-dock {
     position: static;
     margin: 10px auto 0;
     width: fit-content;
-    left: auto;
+    right: auto;
     top: auto;
   }
 }
@@ -1790,20 +1832,28 @@ img {
    the transform composition lives here so it composes with click/hover.
    ========================================================================== */
 .view-layer-3d .kn-carousel {
+  box-sizing: border-box;
   display: block;
   position: relative;
   overflow: hidden;
+  max-width: 100%;
+  min-width: 0;
   perspective: 1200px;
   perspective-origin: 50% 42%;
 }
 
 .view-layer-3d .kn-carousel-card {
+  box-sizing: border-box;
   position: absolute;
   top: 0;
   left: 50%;
-  width: min(480px, 78%);
-  transform: translate3d(calc(-50% + var(--cx, 0px)), 0, var(--cz, 0px))
-             rotateY(var(--cry, 0deg)) scale(var(--cs, 1));
+  width: min(480px, 74%);
+  max-width: 100%;
+  min-width: 0;
+  transform: translate3d(calc(-50% + var(--cx, 0px)), 0, calc(var(--cz, 0px) + var(--hz, 0px)))
+             rotateX(var(--hrx, 0deg))
+             rotateY(calc(var(--cry, 0deg) + var(--hry, 0deg)))
+             scale(var(--cs, 1));
   opacity: var(--cop, 1);
   filter: blur(var(--cbl, 0px));
   transition: box-shadow 0.25s ease, border-color 0.25s ease;
@@ -1817,81 +1867,67 @@ img {
   border-color: var(--accent-cyan);
 }
 
-/* Sits in the reserved strip below the cards (see --carousel-h in JS), well
-   above even the closest card's z-index, so it's always reachable — a
-   stacking bug here used to make the Next arrow unclickable. */
+.view-layer-3d .kn-carousel-card.kc-pressed {
+  --hz: 10px;
+  --hrx: 1deg;
+}
+
+/* Small, unobtrusive side arrows that sit outside the central card rather
+   than in a control bar under it — a stacking bug there used to make the
+   Next arrow unclickable, so these also carry a z-index well above any
+   card's. */
 .view-layer-3d .kn-carousel-controls {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 4px;
+  inset: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
+  justify-content: space-between;
+  padding: 0 4px;
   z-index: 1000;
   pointer-events: none;
 }
 
 .view-layer-3d .kn-carousel-arrow {
   pointer-events: auto;
-  width: 38px;
-  height: 38px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border: 1px solid var(--border-subtle);
   background: var(--bg-glass);
-  color: var(--text-main);
+  color: var(--text-secondary);
   display: grid;
   place-items: center;
-  font-size: 15px;
+  font-size: 17px;
+  line-height: 1;
   cursor: pointer;
+  opacity: 0.7;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   transition: all var(--transition-fast);
 }
 
 .view-layer-3d .kn-carousel-arrow:hover {
+  opacity: 1;
   border-color: var(--accent-cyan);
   color: var(--accent-cyan);
-  box-shadow: 0 0 18px rgba(56, 189, 248, 0.3);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
 }
 
-.view-layer-3d .kn-carousel-dots {
-  pointer-events: auto;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 6px 12px;
-  border-radius: var(--radius-full);
-  background: var(--bg-glass);
-  border: 1px solid var(--border-subtle);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-.view-layer-3d .kn-carousel-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--text-muted);
-  opacity: 0.5;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.view-layer-3d .kn-carousel-dot.active {
-  background: var(--accent-cyan);
-  opacity: 1;
-  box-shadow: 0 0 8px var(--accent-cyan);
-  transform: scale(1.3);
+@media (max-width: 1024px) {
+  .view-layer-3d .kn-carousel-card {
+    width: min(420px, 80%);
+  }
 }
 
 @media (max-width: 720px) {
   .view-layer-3d .kn-carousel-card {
-    width: 85%;
+    width: 84%;
     filter: none;
+  }
+  .view-layer-3d .kn-carousel-arrow {
+    width: 26px;
+    height: 26px;
+    font-size: 15px;
   }
 }
 
