@@ -377,8 +377,9 @@
         }
       } catch (_) {}
 
-      const apiUrl = (window.KNOCKOUTNOTES_CONFIG && window.KNOCKOUTNOTES_CONFIG.API_URL)
-        || "https://script.google.com/macros/s/AKfycbz_9eFvFqJ5X8n9_WfOq2u7C3L1M5g9Qk/exec";
+      const apiUrl = window.KNOCKOUTNOTES_API
+        || (window.KNOCKOUTNOTES_CONFIG && window.KNOCKOUTNOTES_CONFIG.API_URL)
+        || "https://script.google.com/macros/s/AKfycbzS4wg6AKdKvMYCDxyHMb8wKtEIqNZLddhKyqq0MKUh_pDjYUqLklq2TYnPA2W_-gE/exec";
 
       return fetch(apiUrl)
         .then(r => {
@@ -433,8 +434,8 @@
     // ------------------------------------------------------------------------
     // 12. Populate Marquee Ticker (Viva & Home)
     // ------------------------------------------------------------------------
-    const ticker = document.getElementById("knLatestTicker");
-    if (ticker) {
+    const tickers = document.querySelectorAll("#knLatestTicker, .kn-latest-ticker");
+    if (tickers.length) {
       loadData().then(data => {
         const latest = newest(data).slice(0, 8);
         if (!latest.length) throw new Error("Empty ticker");
@@ -445,49 +446,55 @@
             <span class="kn-ticker-title">${esc(x.title)}</span>
             ${x.date ? `<span class="kn-ticker-date">${esc(x.date)}</span>` : ""}
           </span>`).join("");
-        ticker.innerHTML = items + items;
+        tickers.forEach(t => { t.innerHTML = items + items; });
       }).catch(() => {
-        ticker.innerHTML =
-          '<span class="kn-ticker-item"><span class="kn-ticker-dot"></span>' +
-          '<span class="kn-ticker-title">High-yield anaesthesia, critical care & viva updates.</span></span>';
+        tickers.forEach(t => {
+          t.innerHTML =
+            '<span class="kn-ticker-item"><span class="kn-ticker-dot"></span>' +
+            '<span class="kn-ticker-title">High-yield anaesthesia, critical care & viva updates.</span></span>';
+        });
       });
     }
 
     // ------------------------------------------------------------------------
     // 13. Populate Home Bento Guideline Watch Widget
     // ------------------------------------------------------------------------
-    const homeUpdates = document.getElementById("knHomeUpdates");
-    if (homeUpdates) {
+    const homeUpdatesList = document.querySelectorAll("#knHomeUpdates, .kn-home-updates");
+    if (homeUpdatesList.length) {
       loadData().then(data => {
         const updates = newest(data.filter(x => {
           const t = norm(x.type);
           return ["update", "recent update", "guideline update", "guideline"].includes(t);
         })).slice(0, 4);
 
-        if (!updates.length) {
-          homeUpdates.innerHTML = '<p style="margin:0;font-size:13.5px;color:var(--text-muted);">No new guideline alerts today.</p>';
-          return;
-        }
+        homeUpdatesList.forEach(homeUpdates => {
+          if (!updates.length) {
+            homeUpdates.innerHTML = '<p style="margin:0;font-size:13.5px;color:var(--text-muted);">No new guideline alerts today.</p>';
+            return;
+          }
 
-        homeUpdates.innerHTML = updates.map(x => `
-          <a class="kn-search-result" style="padding:14px 18px;margin-bottom:10px;" href="recent-updates.html">
-            <div class="kn-search-result-top">
-              <span class="kn-search-type">🚨 ${esc(x.category || "Guideline")}</span>
-              ${x.date ? `<span class="card-date">• ${esc(x.date)}</span>` : ""}
-            </div>
-            <h4 style="margin:6px 0 4px;font-size:15px;">${esc(x.title)}</h4>
-            ${x.summary ? `<p style="font-size:13px;margin:0;color:var(--text-secondary);">${esc(x.summary)}</p>` : ""}
-          </a>`).join("");
+          homeUpdates.innerHTML = updates.map(x => `
+            <a class="kn-search-result" style="padding:14px 18px;margin-bottom:10px;" href="recent-updates.html">
+              <div class="kn-search-result-top">
+                <span class="kn-search-type">🚨 ${esc(x.category || "Guideline")}</span>
+                ${x.date ? `<span class="card-date">• ${esc(x.date)}</span>` : ""}
+              </div>
+              <h4 style="margin:6px 0 4px;font-size:15px;">${esc(x.title)}</h4>
+              ${x.summary ? `<p style="font-size:13px;margin:0;color:var(--text-secondary);">${esc(x.summary)}</p>` : ""}
+            </a>`).join("");
+        });
       }).catch(() => {
-        homeUpdates.innerHTML = '<p style="font-size:13px;color:var(--text-muted);margin:0;">Recent guideline alerts will appear here.</p>';
+        homeUpdatesList.forEach(homeUpdates => {
+          homeUpdates.innerHTML = '<p style="font-size:13px;color:var(--text-muted);margin:0;">Recent guideline alerts will appear here.</p>';
+        });
       });
     }
 
     // ------------------------------------------------------------------------
     // 14. Populate Section Pages (Drugs, Critical Care, etc.)
     // ------------------------------------------------------------------------
-    const sheetContent = document.getElementById("sheetContent");
-    if (sheetContent) {
+    const sheetContents = document.querySelectorAll("#sheetContent, .sheet-content");
+    if (sheetContents.length) {
       const page = norm(body.dataset.contentPage || "");
       const typeMap = {
         pearls: ["pearl", "pearls"],
@@ -500,83 +507,92 @@
 
       loadData().then(data => {
         const items = newest(data.filter(x => allowed.includes(norm(x.type))));
-        if (!items.length) {
-          sheetContent.innerHTML =
-            '<div class="card bento-span-12"><p>No published entries for this section yet. Add a row in your Google Sheet.</p></div>';
-          return;
-        }
+        sheetContents.forEach((sheetContent, idx) => {
+          if (!items.length) {
+            sheetContent.innerHTML =
+              '<div class="card bento-span-12"><p>No published entries for this section yet. Add a row in your Google Sheet.</p></div>';
+            return;
+          }
 
-        sheetContent.innerHTML = items.map((x, i) => {
-          const ansId = `sheet-answer-${page}-${i}`;
-          return `
-            <article class="card filter-card fade visible" data-category="${esc(norm(x.category))}">
-              <div class="card-top">
-                <div class="tag">💊 ${esc(x.category || x.type)}</div>
-                ${x.date ? `<span class="card-date">${esc(x.date)}</span>` : ""}
-              </div>
-              <h3>${esc(x.title)}</h3>
-              ${x.summary ? `<p>${esc(x.summary)}</p>` : ""}
-              ${x.answer ? `
-                <button class="reveal" data-target="${ansId}">Reveal Answer</button>
-                <div class="answer" id="${ansId}">
-                  <div>${esc(x.answer)}</div>
-                  ${x.reference ? `<small class="reference">Reference: ${esc(x.reference)}</small>` : ""}
-                </div>` : ""}
-              ${resourceLinks(x)}
-            </article>`;
-        }).join("");
+          sheetContent.innerHTML = items.map((x, i) => {
+            const ansId = `sheet-answer-${page}-${idx}-${i}`;
+            return `
+              <article class="card filter-card fade visible" data-category="${esc(norm(x.category))}">
+                <div class="card-top">
+                  <div class="tag">💊 ${esc(x.category || x.type)}</div>
+                  ${x.date ? `<span class="card-date">${esc(x.date)}</span>` : ""}
+                </div>
+                <h3>${esc(x.title)}</h3>
+                ${x.summary ? `<p>${esc(x.summary)}</p>` : ""}
+                ${x.answer ? `
+                  <button class="reveal" data-target="${ansId}">Reveal Answer</button>
+                  <div class="answer" id="${ansId}">
+                    <div>${esc(x.answer)}</div>
+                    ${x.reference ? `<small class="reference">Reference: ${esc(x.reference)}</small>` : ""}
+                  </div>` : ""}
+                ${resourceLinks(x)}
+              </article>`;
+          }).join("");
 
-        wireRevealButtons(sheetContent);
-        if (observer) sheetContent.querySelectorAll(".fade").forEach(el => observer.observe(el));
+          wireRevealButtons(sheetContent);
+          if (observer) sheetContent.querySelectorAll(".fade").forEach(el => observer.observe(el));
+        });
       }).catch(err => {
         console.error("KnockoutNotes API Error:", err);
-        sheetContent.innerHTML =
-          '<div class="card bento-span-12"><p>Content could not be loaded right now. Please try again shortly.</p></div>';
+        sheetContents.forEach(sheetContent => {
+          sheetContent.innerHTML =
+            '<div class="card bento-span-12"><p>Content could not be loaded right now. Please try again shortly.</p></div>';
+        });
       });
     }
 
     // ------------------------------------------------------------------------
     // 15. Populate Recent Updates Grid (recent-updates.html)
     // ------------------------------------------------------------------------
-    const recentGrid = document.getElementById("recentUpdatesGrid");
-    if (recentGrid) {
+    const recentGrids = document.querySelectorAll("#recentUpdatesGrid, #recentUpdatesGrid3d, #recentUpdatesGridLite, .recent-updates-grid");
+    if (recentGrids.length) {
       loadData().then(data => {
         const items = newest(data.filter(x => {
           const t = norm(x.type);
           return ["update", "recent update", "guideline update", "guideline"].includes(t);
         })).slice(0, 30);
 
-        if (!items.length) {
-          recentGrid.innerHTML =
-            '<div class="card bento-span-12"><p>No guideline updates have been added yet. Add a row in Google Sheets with <strong>Type = Update</strong>.</p></div>';
-          return;
-        }
+        recentGrids.forEach(recentGrid => {
+          if (!items.length) {
+            recentGrid.innerHTML =
+              '<div class="card bento-span-12"><p>No guideline updates have been added yet. Add a row in Google Sheets with <strong>Type = Update</strong>.</p></div>';
+            return;
+          }
 
-        recentGrid.innerHTML = items.map((x, i) => {
-          const ansId = `update-ans-${i}`;
-          return `
-            <article class="card fade visible">
-              <div class="card-top">
-                <div class="tag">🚨 ${esc(x.category || "Clinical Update")}</div>
-                ${x.date ? `<span class="card-date">${esc(x.date)}</span>` : ""}
-              </div>
-              <h3>${esc(x.title)}</h3>
-              ${x.summary ? `<p>${esc(x.summary)}</p>` : ""}
-              ${x.answer ? `
-                <div class="answer open" id="${ansId}" style="margin-top:10px;">
-                  <div>${esc(x.answer)}</div>
-                  ${x.reference ? `<small class="reference">Reference: ${esc(x.reference)}</small>` : ""}
-                </div>` : ""}
-              ${resourceLinks(x)}
-            </article>`;
-        }).join("");
+          const prefix = recentGrid.id || (recentGrid.closest(".view-layer-lite") ? "lite" : "3d");
+          recentGrid.innerHTML = items.map((x, i) => {
+            const ansId = `update-ans-${prefix}-${i}`;
+            return `
+              <article class="card fade visible">
+                <div class="card-top">
+                  <div class="tag">🚨 ${esc(x.category || "Clinical Update")}</div>
+                  ${x.date ? `<span class="card-date">${esc(x.date)}</span>` : ""}
+                </div>
+                <h3>${esc(x.title)}</h3>
+                ${x.summary ? `<p>${esc(x.summary)}</p>` : ""}
+                ${x.answer ? `
+                  <div class="answer open" id="${ansId}" style="margin-top:10px;">
+                    <div>${esc(x.answer)}</div>
+                    ${x.reference ? `<small class="reference">Reference: ${esc(x.reference)}</small>` : ""}
+                  </div>` : ""}
+                ${resourceLinks(x)}
+              </article>`;
+          }).join("");
 
-        wireRevealButtons(recentGrid);
-        if (observer) recentGrid.querySelectorAll(".fade").forEach(el => observer.observe(el));
+          wireRevealButtons(recentGrid);
+          if (observer) recentGrid.querySelectorAll(".fade").forEach(el => observer.observe(el));
+        });
       }).catch(err => {
         console.error("KnockoutNotes Recent Updates:", err);
-        recentGrid.innerHTML =
-          '<div class="card bento-span-12"><p>Recent updates could not be loaded right now.</p></div>';
+        recentGrids.forEach(recentGrid => {
+          recentGrid.innerHTML =
+            '<div class="card bento-span-12"><p>Recent updates could not be loaded right now.</p></div>';
+        });
       });
     }
 

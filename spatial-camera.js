@@ -63,10 +63,11 @@
       if (window.KnockoutSpatialBg && typeof window.KnockoutSpatialBg.setEnvironment === "function") {
         window.KnockoutSpatialBg.setEnvironment(found);
       }
-      const hudPath = document.getElementById("knHudPath");
-      if (hudPath && secNameMap[found]) {
-        hudPath.textContent = secNameMap[found];
-      }
+      document.querySelectorAll("#knHudPath, .kn-hud-path").forEach(hudPath => {
+        if (secNameMap[found]) {
+          hudPath.textContent = secNameMap[found];
+        }
+      });
     }
   }
 
