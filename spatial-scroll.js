@@ -26,6 +26,43 @@
     return a + (b - a) * t;
   }
 
+  // Depth "stops" the centred-outward falloff is interpolated between, so
+  // translateZ/rotateY/scale/opacity/blur all move together as one card
+  // becomes the centre and its neighbours fall away — a real stack of
+  // cards in space, not a flat row with a fade applied.
+  const STOPS_DESKTOP = [
+    { at: 0, tz: 170, rot: 0, scale: 1.00, op: 1.00, blur: 0 },
+    { at: 1, tz: -115, rot: 27, scale: 0.85, op: 0.74, blur: 1.0 },
+    { at: 2, tz: -300, rot: 41, scale: 0.70, op: 0.10, blur: 2.4 },
+    { at: 3, tz: -320, rot: 44, scale: 0.64, op: 0.00, blur: 3.0 }
+  ];
+  const STOPS_MOBILE = [
+    { at: 0, tz: 90, rot: 0, scale: 1.00, op: 1.00, blur: 0 },
+    { at: 1, tz: -80, rot: 22, scale: 0.86, op: 0.46, blur: 0 },
+    { at: 2, tz: -160, rot: 32, scale: 0.74, op: 0.00, blur: 0 }
+  ];
+
+  function interpStops(aoff, stops) {
+    const maxAt = stops[stops.length - 1].at;
+    const t = clamp(aoff, 0, maxAt);
+    let a = stops[0], b = stops[stops.length - 1];
+    for (let i = 0; i < stops.length - 1; i++) {
+      if (t >= stops[i].at && t <= stops[i + 1].at) {
+        a = stops[i]; b = stops[i + 1];
+        break;
+      }
+    }
+    const span = b.at - a.at || 1;
+    const localT = (t - a.at) / span;
+    return {
+      tz: lerp(a.tz, b.tz, localT),
+      rot: lerp(a.rot, b.rot, localT),
+      scale: lerp(a.scale, b.scale, localT),
+      op: lerp(a.op, b.op, localT),
+      blur: lerp(a.blur, b.blur, localT)
+    };
+  }
+
   let uid = 0;
 
   function Carousel(container, opts) {
@@ -36,8 +73,10 @@
     this.currentIndex = 0;
     this.targetIndex = 0;
     this.manual = false;
+    this.manualBaselineScrollY = 0;
     this.dragging = false;
     this.destroyed = false;
+    this.settled = true;
     this.dotsEl = null;
     this._build();
   }
@@ -48,6 +87,10 @@
     );
   };
 
+  Carousel.prototype._controlsReserve = function () {
+    return isMobile() ? 46 : 56;
+  };
+
   Carousel.prototype._build = function () {
     const children = this._directChildren();
     if (!children.length) {
@@ -55,18 +98,25 @@
       return;
     }
 
-    let maxH = 0;
-    children.forEach(c => { maxH = Math.max(maxH, c.offsetHeight); });
-    if (maxH < 40) maxH = 340;
-
     this.container.classList.add("kn-carousel");
-    this.container.style.setProperty("--carousel-h", maxH + "px");
-    this.container.style.height = "var(--carousel-h)";
 
+    // The carousel-card class switches a card from its flat-list layout to
+    // the taller vertical card layout (thumbnail + name + descriptor + CTA)
+    // — apply it *before* measuring, or offsetHeight reports the old flat
+    // row's height and the reserved space ends up too short, clipping the
+    // CTA under the controls bar.
     children.forEach((card, i) => {
       card.classList.add("kn-carousel-card");
       card.dataset.kcIndex = String(i);
     });
+
+    let maxH = 0;
+    children.forEach(c => { maxH = Math.max(maxH, c.offsetHeight); });
+    if (maxH < 40) maxH = 340;
+    maxH += this._controlsReserve();
+    this.container.style.setProperty("--carousel-h", maxH + "px");
+    this.container.style.height = "var(--carousel-h)";
+
     this.cards = children;
 
     this.currentIndex = clamp(this.currentIndex, 0, this.cards.length - 1);
@@ -92,6 +142,7 @@
     prev.setAttribute("aria-label", "Previous card");
     prev.textContent = "←";
     prev.addEventListener("click", e => {
+      e.preventDefault();
       e.stopPropagation();
       this.goTo(Math.round(this.targetIndex) - 1);
     });
@@ -104,6 +155,7 @@
       dot.className = "kn-carousel-dot" + (i === Math.round(this.targetIndex) ? " active" : "");
       dot.setAttribute("aria-label", "Go to card " + (i + 1));
       dot.addEventListener("click", e => {
+        e.preventDefault();
         e.stopPropagation();
         this.goTo(i);
       });
@@ -116,6 +168,7 @@
     next.setAttribute("aria-label", "Next card");
     next.textContent = "→";
     next.addEventListener("click", e => {
+      e.preventDefault();
       e.stopPropagation();
       this.goTo(Math.round(this.targetIndex) + 1);
     });
@@ -151,21 +204,24 @@
     this.container.dataset.kcDragWired = "1";
     this.container.style.touchAction = "pan-y";
 
-    let startX = 0, startIdx = 0, active = false;
+    let startX = 0, startIdx = 0, active = false, moved = false;
 
     const onDown = e => {
       if (e.pointerType === "mouse" && e.button !== 0) return;
       active = true;
+      moved = false;
       this.dragging = true;
-      this.manual = true;
       startX = e.clientX;
       startIdx = this.targetIndex;
     };
     const onMove = e => {
       if (!active) return;
       const w = this.container.getBoundingClientRect().width || 560;
-      const step = w * this.opts.stepFactor;
+      const step = w * this.opts.stepFactor * (isMobile() ? 0.78 : 1);
       const dx = e.clientX - startX;
+      if (Math.abs(dx) > 6) moved = true;
+      if (!moved) return;
+      this.manual = true;
       this.targetIndex = clamp(startIdx - dx / step, 0, this.cards.length - 1);
       this._updateDots();
     };
@@ -173,7 +229,7 @@
       if (!active) return;
       active = false;
       this.dragging = false;
-      this.goTo(Math.round(this.targetIndex));
+      if (moved) this.goTo(Math.round(this.targetIndex));
     };
 
     this.container.addEventListener("pointerdown", onDown);
@@ -190,13 +246,18 @@
 
   Carousel.prototype.goTo = function (i) {
     this.manual = true;
+    this.manualBaselineScrollY = window.scrollY;
     this.targetIndex = clamp(Math.round(i), 0, this.cards.length - 1);
     this._updateDots();
   };
 
   Carousel.prototype.setScrollProgress = function (t) {
     if (this.manual || this.cards.length < 2) return;
-    this.targetIndex = clamp(t, 0, 1) * (this.cards.length - 1);
+    const raw = clamp(t, 0, 1) * (this.cards.length - 1);
+    // While the page is actively scrolling, track continuously (cards drift
+    // through one another mid-gesture); once scrolling settles, snap to the
+    // nearest whole card so the active one comes to rest exactly centred.
+    this.targetIndex = this.settled ? Math.round(raw) : raw;
   };
 
   Carousel.prototype._updateDots = function () {
@@ -209,21 +270,22 @@
     const mobile = isMobile();
     const rect = this.container.getBoundingClientRect();
     const w = rect.width || 560;
-    const stepPx = w * this.opts.stepFactor * (mobile ? 0.82 : 1);
-    const maxVisible = mobile ? 1.1 : 2.2;
+    const stepPx = w * this.opts.stepFactor * (mobile ? 0.78 : 1);
+    const stops = mobile ? STOPS_MOBILE : STOPS_DESKTOP;
 
     this.cards.forEach((card, i) => {
       const off = i - this.currentIndex;
-      const aoff = Math.min(Math.abs(off), 3);
-      const centered = Math.abs(off) < 0.02;
+      const aoff = Math.abs(off);
+      const dir = off >= 0 ? 1 : -1;
+      const centered = aoff < 0.03;
 
+      const d = interpStops(aoff, stops);
       const cx = off * stepPx;
-      const cz = -aoff * (mobile ? 50 : 92);
-      const cry = clamp(-off * (mobile ? 9 : 15), -44, 44);
-      const cs = Math.max(0.42, 1 - aoff * (mobile ? 0.17 : 0.13));
-      let cop = aoff <= maxVisible ? 1 - (aoff / maxVisible) * 0.75 : 0;
-      if (centered) cop = 1;
-      const cbl = mobile ? 0 : Math.min(aoff, 2) * 1.1;
+      const cz = d.tz;
+      const cry = clamp(-dir * d.rot, -44, 44);
+      const cs = d.scale;
+      const cop = centered ? 1 : d.op;
+      const cbl = d.blur;
 
       card.style.setProperty("--cx", cx.toFixed(1) + "px");
       card.style.setProperty("--cz", cz.toFixed(1) + "px");
@@ -231,9 +293,9 @@
       card.style.setProperty("--cs", cs.toFixed(3));
       card.style.setProperty("--cop", clamp(cop, 0, 1).toFixed(3));
       card.style.setProperty("--cbl", cbl.toFixed(2) + "px");
-      card.style.zIndex = String(200 - Math.round(aoff * 10));
+      card.style.zIndex = String(100 - Math.round(aoff * 10));
       card.dataset.centered = centered ? "true" : "false";
-      card.style.pointerEvents = aoff > maxVisible ? "none" : "";
+      card.style.pointerEvents = cop < 0.04 ? "none" : "";
     });
   };
 
@@ -242,7 +304,7 @@
     if (reduceMotion) {
       this.currentIndex = this.targetIndex;
     } else {
-      this.currentIndex += (this.targetIndex - this.currentIndex) * 0.16;
+      this.currentIndex += (this.targetIndex - this.currentIndex) * 0.14;
       if (Math.abs(this.targetIndex - this.currentIndex) < 0.001) this.currentIndex = this.targetIndex;
     }
     this._layout();
@@ -257,7 +319,7 @@
     }
     let maxH = 0;
     this.cards.forEach(c => { maxH = Math.max(maxH, c.scrollHeight); });
-    if (maxH > 40) this.container.style.setProperty("--carousel-h", maxH + "px");
+    if (maxH > 40) this.container.style.setProperty("--carousel-h", (maxH + this._controlsReserve()) + "px");
     this._layout();
   };
 
@@ -284,13 +346,26 @@
     return (1 - norm) / 2;
   }
 
-  let lastScrollY = window.scrollY;
+  // A manual interaction (click / drag / arrow / dot) should stick until the
+  // user actually scrolls the page a meaningful distance — not the first
+  // incidental pixel of scroll a click itself can cause (focus, layout
+  // settling). That incidental-scroll false-clear was the "Next never
+  // works" bug: the very next animation frame would silently snap the
+  // target back to the scroll-computed position.
+  const MANUAL_RELEASE_DISTANCE = 70;
+
+  let scrollIdleTimer = null;
   window.addEventListener("scroll", () => {
-    const dy = window.scrollY - lastScrollY;
-    lastScrollY = window.scrollY;
-    if (Math.abs(dy) > 2) {
-      carousels.forEach(c => { if (!c.dragging) c.manual = false; });
-    }
+    carousels.forEach(c => {
+      if (c.manual && !c.dragging && Math.abs(window.scrollY - c.manualBaselineScrollY) > MANUAL_RELEASE_DISTANCE) {
+        c.manual = false;
+      }
+      c.settled = false;
+    });
+    clearTimeout(scrollIdleTimer);
+    scrollIdleTimer = setTimeout(() => {
+      carousels.forEach(c => { c.settled = true; });
+    }, 150);
   }, { passive: true });
 
   window.addEventListener("resize", () => {

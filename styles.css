@@ -1793,15 +1793,15 @@ img {
   display: block;
   position: relative;
   overflow: hidden;
-  perspective: 1400px;
-  perspective-origin: 50% 50%;
+  perspective: 1200px;
+  perspective-origin: 50% 42%;
 }
 
 .view-layer-3d .kn-carousel-card {
   position: absolute;
   top: 0;
   left: 50%;
-  width: min(560px, 88%);
+  width: min(480px, 78%);
   transform: translate3d(calc(-50% + var(--cx, 0px)), 0, var(--cz, 0px))
              rotateY(var(--cry, 0deg)) scale(var(--cs, 1));
   opacity: var(--cop, 1);
@@ -1813,20 +1813,23 @@ img {
 
 .view-layer-3d .kn-carousel-card[data-centered="true"] {
   cursor: default;
-  box-shadow: var(--shadow-lg), 0 0 45px rgba(56, 189, 248, 0.22);
-  border-color: var(--border-glow);
+  box-shadow: var(--shadow-lg), 0 0 55px rgba(56, 189, 248, 0.28);
+  border-color: var(--accent-cyan);
 }
 
+/* Sits in the reserved strip below the cards (see --carousel-h in JS), well
+   above even the closest card's z-index, so it's always reachable — a
+   stacking bug here used to make the Next arrow unclickable. */
 .view-layer-3d .kn-carousel-controls {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 6px;
+  bottom: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
-  z-index: 5;
+  z-index: 1000;
   pointer-events: none;
 }
 
@@ -1887,7 +1890,7 @@ img {
 
 @media (max-width: 720px) {
   .view-layer-3d .kn-carousel-card {
-    width: 82%;
+    width: 85%;
     filter: none;
   }
 }
