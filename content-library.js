@@ -58,9 +58,10 @@
 
   // Clean line-art medical pictograms for the 3D carousel cards — never the
   // actual cropped teaching image (that stays reserved for the real
-  // document viewer, opened when the centred card is clicked). Three
-  // rotate for image items so a row of cards doesn't look identical; PDFs
-  // always get the monograph glyph.
+  // document viewer, opened when the centred card is clicked). Selected by
+  // CATEGORY (see CATEGORY_ICONS below) so the visual communicates the
+  // topic immediately, with a generic fallback cycle for categories with no
+  // dedicated composition yet.
   const PICTOGRAMS = {
     vial: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="24" y="8" width="16" height="9" rx="2" stroke="currentColor" stroke-width="2"/>
@@ -89,7 +90,63 @@
       <line x1="22" y1="32" x2="38" y2="32" stroke="currentColor" stroke-width="1.6" opacity="0.6"/>
       <line x1="22" y1="39" x2="38" y2="39" stroke="currentColor" stroke-width="1.6" opacity="0.6"/>
       <line x1="22" y1="46" x2="33" y2="46" stroke="currentColor" stroke-width="1.6" opacity="0.6"/>
+    </svg>`,
+    // Induction Agents: vial + ampoule drug-preparation composition.
+    "vial-ampoule": `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="14" width="13" height="7.5" rx="1.6" stroke="currentColor" stroke-width="1.7"/>
+      <path d="M9.3 21.5h14.4l-1.6 5.2v19.5a3 3 0 0 1-3 3h-5.2a3 3 0 0 1-3-3V26.7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+      <line x1="8" y1="34" x2="22" y2="34" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+      <path d="M40 8h6v8h-6z" stroke="currentColor" stroke-width="1.9"/>
+      <line x1="36" y1="14" x2="50" y2="14" stroke="currentColor" stroke-width="1.9"/>
+      <path d="M37.4 16.6c-3.4 3.4-4.2 7.6-4.2 12.6v11a9.8 9.8 0 0 0 19.6 0v-11c0-5-.8-9.2-4.2-12.6z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+      <path d="M35 29.6c1.6 3 4.6 5 8 5s6.4-2 8-5z" fill="currentColor" opacity="0.16"/>
+    </svg>`,
+    // Opioids: ampoule + molecular dose-marker composition.
+    opioid: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M26 8h6v8h-6z" stroke="currentColor" stroke-width="1.9"/>
+      <line x1="22" y1="14" x2="36" y2="14" stroke="currentColor" stroke-width="1.9"/>
+      <path d="M23.4 16.6c-3.4 3.4-4.2 7.6-4.2 12.6v13.6a9.8 9.8 0 0 0 19.6 0V29.2c0-5-.8-9.2-4.2-12.6z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+      <path d="M21 29.8c1.7 3.2 5 5.4 8.6 5.4s6.9-2.2 8.6-5.4z" fill="currentColor" opacity="0.16"/>
+      <circle cx="49" cy="20" r="5" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="49" cy="33" r="3.4" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="49" y1="25" x2="49" y2="29.6" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
+    </svg>`,
+    // Muscle Relaxants: neuromuscular fibre bundle + pharmaceutical vial.
+    "muscle-relaxant": `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 20c6-4 10-4 16 0s10 4 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M8 27c6-4 10-4 16 0s10 4 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>
+      <path d="M8 34c6-4 10-4 16 0s10 4 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/>
+      <rect x="41" y="12" width="14" height="8" rx="1.8" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M40.3 20h15.4l-1.8 5.6v20.6a3.2 3.2 0 0 1-3.2 3.2H45.3a3.2 3.2 0 0 1-3.2-3.2V25.6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <line x1="39" y1="33" x2="56" y2="33" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+      <line x1="39" y1="40" x2="56" y2="40" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+    </svg>`,
+    // Cardiology: heart with a valve leaflet motif.
+    heart: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M32 50S12 37.6 12 23.6C12 15.9 18 10 25.4 10c3.2 0 6.2 1.4 8.4 3.9L32 16.4l1.8-2.5A11.2 11.2 0 0 1 38.6 10C46 10 52 15.9 52 23.6 52 37.6 32 50 32 50z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M22 26c3-3 6-3 10 0s7 3 10 0" stroke="currentColor" stroke-width="1.6" opacity="0.65"/>
+      <path d="M20 33h7l3-6 4 11 3-7h7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg>`,
+    // Critical Care / ICU: bedside monitor with a live waveform trace.
+    monitor: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="14" width="48" height="32" rx="3" stroke="currentColor" stroke-width="2"/>
+      <path d="M13 32h7l3-9 5 18 4-13 3 4h9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="46" cy="22" r="2.2" fill="currentColor" opacity="0.7"/>
+      <line x1="22" y1="52" x2="42" y2="52" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line x1="32" y1="46" x2="32" y2="52" stroke="currentColor" stroke-width="2"/>
     </svg>`
+  };
+  // Category id -> dedicated pictogram. Anything not listed falls back to a
+  // rotating generic cycle so an unmapped category still varies row-to-row.
+  const CATEGORY_ICONS = {
+    induction: 'vial-ampoule',
+    opioids: 'opioid',
+    'muscle-relaxant': 'muscle-relaxant',
+    cardiology: 'heart',
+    'icu-scoring': 'monitor',
+    shock: 'monitor',
+    ventilation: 'monitor',
+    'critical-care': 'monitor'
   };
   const IMAGE_ICON_CYCLE = ['vial', 'syringe', 'ampoule'];
 
@@ -99,7 +156,7 @@
   // call to action, then hand the list to the generic carousel engine.
   // Lite's identical .kn-file-row markup never goes through this, so it
   // stays the original flat list untouched.
-  function carouselizePanel(panel){
+  function carouselizePanel(panel, catId){
     const fileList = panel.querySelector('.kn-file-list');
     if (!fileList || !window.KnCarousel) return;
     const descriptor = panel.querySelector('.kn-library-head h3')?.textContent || '';
@@ -108,8 +165,9 @@
       if (!row.querySelector('.kn-file-thumb')) {
         const thumb = document.createElement('div');
         thumb.className = 'kn-file-thumb';
+        if (catId) thumb.dataset.cat = catId;
         const isPdf = !row.querySelector('.kn-badge-image');
-        const iconKey = isPdf ? 'document' : IMAGE_ICON_CYCLE[i % IMAGE_ICON_CYCLE.length];
+        const iconKey = isPdf ? 'document' : (CATEGORY_ICONS[catId] || IMAGE_ICON_CYCLE[i % IMAGE_ICON_CYCLE.length]);
         thumb.innerHTML = PICTOGRAMS[iconKey];
         row.insertBefore(thumb, row.firstChild);
       }
@@ -226,7 +284,7 @@
               // eslint-disable-next-line no-unused-expressions
               activePanel.offsetWidth; // force reflow to restart the animation
               activePanel.classList.add('kn-panel-drill');
-              carouselizePanel(activePanel);
+              carouselizePanel(activePanel, categories[i]?.id);
             }
           }
         });
@@ -237,7 +295,7 @@
 
       if (mount.closest('.view-layer-3d')) {
         const firstPanel = panels.querySelector('.kn-library-panel');
-        if (firstPanel) carouselizePanel(firstPanel);
+        if (firstPanel) carouselizePanel(firstPanel, categories[0]?.id);
       }
     });
 

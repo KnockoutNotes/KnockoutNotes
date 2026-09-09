@@ -62,10 +62,25 @@
 .view-layer-3d #knLibrary3d .kn-library-tabs {
   order: 2;
   justify-content: center;
-  margin: 30px 0 8px;
-  padding: 22px 0 0;
+  margin: 20px 0 4px;
+  padding: 14px 0 0;
   border-bottom: 0;
   border-top: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 560px) {
+  .view-layer-3d #knLibrary3d .kn-library-tabs {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 12px 4px 0;
+  }
+  .view-layer-3d #knLibrary3d .kn-library-tabs::-webkit-scrollbar { display: none; }
+  .view-layer-3d #knLibrary3d .kn-library-tab {
+    flex-shrink: 0;
+  }
 }
 
 .kn-tab-count {
@@ -323,10 +338,24 @@
   flex-direction: column;
   align-items: stretch;
   gap: 0;
-  padding: 0 0 16px;
+  padding: 0 0 12px;
   min-height: 0;
   overflow: hidden;
 }
+
+/* Per-category accent tint for the visual region — drives the richer
+   pictogram composition above (glow, ring, gridlines all read var(--cat-r/g/b)
+   from the thumb, so this is the only place a category's colour lives). */
+.kn-file-thumb[data-cat="induction"]   { --cat-r: 129; --cat-g: 140; --cat-b: 248; }
+.kn-file-thumb[data-cat="opioids"]     { --cat-r: 244; --cat-g: 63;  --cat-b: 94;  }
+.kn-file-thumb[data-cat="muscle-relaxant"] { --cat-r: 45; --cat-g: 212; --cat-b: 191; }
+.kn-file-thumb[data-cat="cardiology"]  { --cat-r: 244; --cat-g: 63;  --cat-b: 94;  }
+.kn-file-thumb[data-cat="airway"]      { --cat-r: 56;  --cat-g: 189; --cat-b: 248; }
+.kn-file-thumb[data-cat="physiology"]  { --cat-r: 167; --cat-g: 139; --cat-b: 250; }
+.kn-file-thumb[data-cat="icu-scoring"],
+.kn-file-thumb[data-cat="shock"],
+.kn-file-thumb[data-cat="ventilation"],
+.kn-file-thumb[data-cat="critical-care"] { --cat-r: 251; --cat-g: 191; --cat-b: 36; }
 
 .view-layer-3d .kn-file-row.kn-carousel-card:hover {
   transform: translate3d(calc(-50% + var(--cx, 0px)), 0, var(--cz, 0px))
@@ -336,16 +365,31 @@
 .kn-file-thumb {
   position: relative;
   width: 100%;
-  height: 138px;
+  height: clamp(100px, 16vw, 136px);
   flex-shrink: 0;
+  --cat-r: 56; --cat-g: 189; --cat-b: 248;
   background:
-    radial-gradient(circle at 50% 42%, rgba(56, 189, 248, 0.16), transparent 68%),
-    rgba(0, 0, 0, 0.25);
+    radial-gradient(circle at 50% 38%, rgba(var(--cat-r), var(--cat-g), var(--cat-b), 0.22), transparent 70%),
+    repeating-linear-gradient(135deg, rgba(var(--cat-r), var(--cat-g), var(--cat-b), 0.05) 0px, rgba(var(--cat-r), var(--cat-g), var(--cat-b), 0.05) 1px, transparent 1px, transparent 14px),
+    rgba(0, 0, 0, 0.28);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   border-bottom: 1px solid var(--border-subtle);
+}
+
+.kn-file-thumb::after {
+  /* Faint oversized backdrop ring behind the pictogram so the visual region
+     reads as a composed illustration, not a small icon floating in an empty
+     box. */
+  content: "";
+  position: absolute;
+  width: 148%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--cat-r), var(--cat-g), var(--cat-b), 0.14);
+  pointer-events: none;
 }
 
 .kn-file-thumb img {
@@ -355,10 +399,11 @@
 }
 
 .kn-file-thumb svg {
-  width: 58px;
-  height: 58px;
-  color: var(--accent-cyan);
-  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.35));
+  position: relative;
+  width: clamp(50px, 9vw, 68px);
+  height: clamp(50px, 9vw, 68px);
+  color: rgb(var(--cat-r), var(--cat-g), var(--cat-b));
+  filter: drop-shadow(0 0 14px rgba(var(--cat-r), var(--cat-g), var(--cat-b), 0.4));
 }
 
 .kn-file-thumb-icon {
@@ -381,19 +426,19 @@
 }
 
 .view-layer-3d .kn-file-row.kn-carousel-card .kn-file-title {
-  padding: 18px 20px 2px;
+  padding: 14px 20px 1px;
   white-space: normal;
-  font-size: 21px;
+  font-size: 18.5px;
   font-weight: 850;
   letter-spacing: -0.3px;
-  line-height: 1.25;
+  line-height: 1.22;
   text-align: center;
 }
 
 .kn-file-descriptor {
   display: block;
-  padding: 4px 20px 8px;
-  font-size: 11px;
+  padding: 2px 20px 4px;
+  font-size: 10.5px;
   font-weight: 750;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -403,9 +448,9 @@
 }
 
 .view-layer-3d .kn-file-row.kn-carousel-card .kn-file-arrow {
-  margin: auto 20px 4px;
+  margin: 10px 20px 2px;
   align-self: center;
-  padding: 8px 18px;
+  padding: 9px 20px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border-glow);
   background: var(--soft-accent);

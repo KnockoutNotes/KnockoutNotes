@@ -87,6 +87,18 @@
     this.currentIndex = 0;
     this.targetIndex = 0;
     this.destroyed = false;
+    // Snap-animation state (goTo() sets these; tick() eases toward them).
+    this._animFrom = 0;
+    this._animStart = 0;
+    this._animDur = 320;
+    // True while the user is actively dragging/wheeling: currentIndex then
+    // tracks targetIndex closely with no easing lag, so input feels 1:1.
+    // Once input stops, a released goTo() takes over with a timed ease.
+    this._trackingRaw = false;
+    this._velocity = 0;
+    this._lastMoveT = 0;
+    this._lastMoveX = 0;
+    this._lastMeasuredH = 0;
     this._build();
   }
 
@@ -114,25 +126,48 @@
       card.dataset.kcIndex = String(i);
     });
 
-    // Height is driven purely by the tallest card's real rendered height —
-    // no reserved strip for controls, since the arrows now float beside the
-    // stage rather than occupying dedicated vertical space.
-    let maxH = 0;
-    children.forEach(c => { maxH = Math.max(maxH, c.offsetHeight); });
-    if (maxH < 40) maxH = 340;
-    this.container.style.setProperty("--carousel-h", maxH + "px");
     this.container.style.height = "var(--carousel-h)";
-
     this.cards = children;
 
     this.currentIndex = clamp(this.currentIndex, 0, this.cards.length - 1);
     this.targetIndex = this.currentIndex;
+
+    // Height is driven purely by the tallest card's real rendered height —
+    // no reserved strip for controls, since the arrows now float beside the
+    // stage rather than occupying dedicated vertical space. A ResizeObserver
+    // (rather than a one-off measurement) keeps this correct as content
+    // changes after mount — late web-font swaps, or a card growing when an
+    // "answer" reveal inside it is toggled open — instead of the container
+    // clipping content that has since grown taller than the last measurement.
+    this._measureHeight();
+    if (window.ResizeObserver) {
+      if (this._resizeObserver) this._resizeObserver.disconnect();
+      this._resizeObserver = new ResizeObserver(() => {
+        if (this._roScheduled) return;
+        this._roScheduled = true;
+        requestAnimationFrame(() => {
+          this._roScheduled = false;
+          this._measureHeight();
+        });
+      });
+      this.cards.forEach(c => this._resizeObserver.observe(c));
+    }
 
     this._buildControls();
     this._wireCardClicks();
     this._wireHorizontalInput();
     this._wireHoverDepth();
     this._layout();
+  };
+
+  Carousel.prototype._measureHeight = function () {
+    let maxH = 0;
+    this.cards.forEach(c => { maxH = Math.max(maxH, c.scrollHeight); });
+    if (maxH < 40) maxH = 340;
+    if (Math.abs(maxH - this._lastMeasuredH) > 1) {
+      this._lastMeasuredH = maxH;
+      this.container.style.setProperty("--carousel-h", maxH + "px");
+    }
   };
 
   Carousel.prototype._buildControls = function () {
@@ -146,8 +181,8 @@
     const prev = document.createElement("button");
     prev.type = "button";
     prev.className = "kn-carousel-arrow kn-carousel-prev";
-    prev.setAttribute("aria-label", "Previous card");
-    prev.innerHTML = "&#8249;";
+    prev.setAttribute("aria-label", "Previous item");
+    prev.innerHTML = '<span aria-hidden="true">&#8249;</span>';
     prev.addEventListener("click", e => {
       e.preventDefault();
       e.stopPropagation();
@@ -157,8 +192,8 @@
     const next = document.createElement("button");
     next.type = "button";
     next.className = "kn-carousel-arrow kn-carousel-next";
-    next.setAttribute("aria-label", "Next card");
-    next.innerHTML = "&#8250;";
+    next.setAttribute("aria-label", "Next item");
+    next.innerHTML = '<span aria-hidden="true">&#8250;</span>';
     next.addEventListener("click", e => {
       e.preventDefault();
       e.stopPropagation();
@@ -234,9 +269,11 @@
       const delta = Math.abs(e.deltaX) >= Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
       const w = this.container.getBoundingClientRect().width || 560;
       const step = w * this.opts.stepFactor * (isMobile() ? 0.78 : 1);
+      this._trackingRaw = true;
       this.targetIndex = clamp(this.targetIndex + delta / step, 0, this.cards.length - 1);
       clearTimeout(wheelIdleTimer);
       wheelIdleTimer = setTimeout(() => {
+        this._trackingRaw = false;
         this.goTo(Math.round(this.targetIndex));
       }, 140);
     }, { passive: false });
@@ -252,6 +289,9 @@
       startX = e.clientX;
       startY = e.clientY;
       startIdx = this.targetIndex;
+      this._velocity = 0;
+      this._lastMoveT = performance.now();
+      this._lastMoveX = e.clientX;
     };
     const onMove = e => {
       if (!active) return;
@@ -264,6 +304,13 @@
       }
       if (axisLocked !== "x") return;
       moved = true;
+      this._trackingRaw = true;
+      const now = performance.now();
+      const dt = Math.max(1, now - this._lastMoveT);
+      const instVel = (e.clientX - this._lastMoveX) / dt; // px/ms
+      this._velocity = this._velocity * 0.5 + instVel * 0.5;
+      this._lastMoveT = now;
+      this._lastMoveX = e.clientX;
       const w = this.container.getBoundingClientRect().width || 560;
       const step = w * this.opts.stepFactor * (isMobile() ? 0.78 : 1);
       this.targetIndex = clamp(startIdx - dx / step, 0, this.cards.length - 1);
@@ -272,7 +319,18 @@
       if (!active) return;
       active = false;
       this.dragging = false;
-      if (moved) this.goTo(Math.round(this.targetIndex));
+      this._trackingRaw = false;
+      if (moved) {
+        // Physical "fling": a fast short flick projects a little extra
+        // momentum onto the release point before rounding to the nearest
+        // card, so a quick swipe advances even when the raw drag distance
+        // was under half a card-width — like flicking a real card.
+        const w = this.container.getBoundingClientRect().width || 560;
+        const step = w * this.opts.stepFactor * (isMobile() ? 0.78 : 1);
+        const flingMs = 170;
+        const projected = this.targetIndex - clamp((this._velocity * flingMs) / step, -0.9, 0.9);
+        this.goTo(projected);
+      }
     };
 
     this.container.addEventListener("pointerdown", onDown);
@@ -334,7 +392,15 @@
   };
 
   Carousel.prototype.goTo = function (i) {
-    this.targetIndex = clamp(Math.round(i), 0, this.cards.length - 1);
+    const newTarget = clamp(Math.round(i), 0, this.cards.length - 1);
+    const dist = Math.abs(newTarget - this.currentIndex);
+    this._animFrom = this.currentIndex;
+    this._animStart = performance.now();
+    // ~250-450ms for a normal single-item snap; a longer jump (e.g.
+    // clicking a far-off card) eases a little slower, capped so it never
+    // feels sluggish.
+    this._animDur = clamp(260 + dist * 60, 260, 460);
+    this.targetIndex = newTarget;
   };
 
   Carousel.prototype._layout = function () {
@@ -374,9 +440,19 @@
     if (this.destroyed || !this.cards.length) return;
     if (reduceMotion) {
       this.currentIndex = this.targetIndex;
+    } else if (this._trackingRaw) {
+      // Actively dragging/wheeling: follow the input closely (light
+      // smoothing only, no timed easing) so the gesture feels 1:1.
+      this.currentIndex += (this.targetIndex - this.currentIndex) * 0.4;
+      if (Math.abs(this.targetIndex - this.currentIndex) < 0.002) this.currentIndex = this.targetIndex;
     } else {
-      this.currentIndex += (this.targetIndex - this.currentIndex) * 0.16;
-      if (Math.abs(this.targetIndex - this.currentIndex) < 0.001) this.currentIndex = this.targetIndex;
+      // Settled/snapping: ease from where input left off to the target
+      // card on a fixed timeline (see goTo) instead of an open-ended lerp,
+      // so repeated Next clicks retarget cleanly with no animation queue.
+      const t = clamp((performance.now() - this._animStart) / this._animDur, 0, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      this.currentIndex = lerp(this._animFrom, this.targetIndex, eased);
+      if (t >= 1) this.currentIndex = this.targetIndex;
     }
     this._layout();
   };
@@ -388,9 +464,7 @@
       this._build();
       return;
     }
-    let maxH = 0;
-    this.cards.forEach(c => { maxH = Math.max(maxH, c.scrollHeight); });
-    if (maxH > 40) this.container.style.setProperty("--carousel-h", maxH + "px");
+    this._measureHeight();
     this._layout();
   };
 

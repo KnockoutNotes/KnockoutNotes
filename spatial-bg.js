@@ -33,7 +33,8 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.35,
-      density: 18                 // ~70% reduction in particles
+      density: 26,
+      glowPoints: 4
     },
     pearls: {
       accent: [56, 189, 248],     // Cyan
@@ -43,7 +44,8 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.3,
-      density: 16
+      density: 24,
+      glowPoints: 3
     },
     drugs: {
       accent: [129, 140, 248],    // Indigo #818cf8
@@ -53,7 +55,8 @@
       pleth: false,
       circuitRings: false,
       particleSpeed: 0.25,
-      density: 18
+      density: 26,
+      glowPoints: 3
     },
     criticalCare: {
       accent: [251, 191, 36],    // Amber #fbbf24
@@ -63,7 +66,8 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.45,
-      density: 20
+      density: 28,
+      glowPoints: 4
     },
     viva: {
       accent: [167, 139, 250],   // Violet #a78bfa
@@ -73,7 +77,8 @@
       pleth: false,
       circuitRings: false,
       particleSpeed: 0.3,
-      density: 16
+      density: 22,
+      glowPoints: 3
     },
     resources: {
       accent: [56, 189, 248],    // Cyan
@@ -83,7 +88,8 @@
       pleth: false,
       circuitRings: true,
       particleSpeed: 0.2,
-      density: 14
+      density: 18,
+      glowPoints: 2
     }
   };
 
@@ -127,10 +133,11 @@
   const isSmallScreen = () => window.innerWidth <= 720;
 
   let particles = [];
+  let glowOrbs = [];
   function initParticles() {
     particles = [];
     const densityCap = isSmallScreen() ? Math.ceil(env.density * 0.5) : env.density;
-    const count = Math.min(densityCap, Math.floor(width / 55));
+    const count = Math.min(densityCap, Math.floor(width / 48));
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * width,
@@ -138,8 +145,23 @@
         z: Math.random() * 600 - 300,
         vx: (Math.random() - 0.5) * env.particleSpeed,
         vy: (Math.random() - 0.5) * env.particleSpeed,
-        size: Math.random() * 1.8 + 0.6,
-        alpha: Math.random() * 0.45 + 0.15
+        size: Math.random() * 1.9 + 0.7,
+        alpha: Math.random() * 0.5 + 0.2
+      });
+    }
+
+    // A handful of larger, softly-blurred "light points" — bounded, slow,
+    // never a busy starfield — that read as ambient depth rather than icons.
+    glowOrbs = [];
+    const orbCount = isSmallScreen() ? Math.max(1, Math.floor((env.glowPoints || 2) * 0.5)) : (env.glowPoints || 2);
+    for (let i = 0; i < orbCount; i++) {
+      glowOrbs.push({
+        x: width * (0.15 + Math.random() * 0.7),
+        y: height * (0.15 + Math.random() * 0.7),
+        vx: (Math.random() - 0.5) * env.particleSpeed * 0.4,
+        vy: (Math.random() - 0.5) * env.particleSpeed * 0.4,
+        r: 70 + Math.random() * 90,
+        useSecondary: i % 2 === 1
       });
     }
   }
@@ -234,8 +256,8 @@
     const [r, g, b] = env.accent;
     const [r2, g2, b2] = env.secondary;
 
-    // 1. Subtle Engineering Grid Layer (Extremely faint)
-    ctx.strokeStyle = isDark ? `rgba(${r}, ${g}, ${b}, 0.018)` : `rgba(${r}, ${g}, ${b}, 0.025)`;
+    // 1. Subtle Engineering Grid Layer (faint, pointer-parallaxed)
+    ctx.strokeStyle = isDark ? `rgba(${r}, ${g}, ${b}, 0.032)` : `rgba(${r}, ${g}, ${b}, 0.04)`;
     ctx.lineWidth = 1;
     const gridSize = 56;
     const offsetX = (mouse.x - width * 0.5) * 0.02;
@@ -251,6 +273,30 @@
       ctx.lineTo(width, y);
     }
     ctx.stroke();
+
+    // 1b. Ambient light points — bounded, slow-drifting soft glows with a
+    // gentle pointer-parallax, standing in for "medical knowledge in a
+    // spatial environment" without any sci-fi starfield noise.
+    for (let i = 0; i < glowOrbs.length; i++) {
+      const orb = glowOrbs[i];
+      orb.x += orb.vx;
+      orb.y += orb.vy;
+      if (orb.x < -orb.r) orb.x = width + orb.r;
+      else if (orb.x > width + orb.r) orb.x = -orb.r;
+      if (orb.y < -orb.r) orb.y = height + orb.r;
+      else if (orb.y > height + orb.r) orb.y = -orb.r;
+
+      const px = orb.x + (mouse.x - width * 0.5) * 0.03;
+      const py = orb.y + (mouse.y - height * 0.5) * 0.03;
+      const [gr, gg, gb] = orb.useSecondary ? env.secondary : env.accent;
+      const grad = ctx.createRadialGradient(px, py, 0, px, py, orb.r);
+      grad.addColorStop(0, `rgba(${gr}, ${gg}, ${gb}, ${isDark ? 0.10 : 0.06})`);
+      grad.addColorStop(1, `rgba(${gr}, ${gg}, ${gb}, 0)`);
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(px, py, orb.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
 
     // 2. Breathing Circuit Geometry Motifs (Soft outline) — skipped on small
     // screens to keep the canvas lightweight on mobile browsers.
@@ -350,7 +396,7 @@
 
       ctx.beginPath();
       ctx.arc(px, py, p.size * depthFactor, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${p.alpha * (isDark ? 0.55 : 0.28)})`;
+      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${p.alpha * (isDark ? 0.7 : 0.38)})`;
       ctx.fill();
     }
 
