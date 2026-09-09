@@ -570,8 +570,14 @@
           const prefix = recentGrid.id || (recentGrid.closest(".view-layer-lite") ? "lite" : "3d");
           recentGrid.innerHTML = items.map((x, i) => {
             const ansId = `update-ans-${prefix}-${i}`;
+            // A real destination URL only ever comes from the sheet's own
+            // URL/PDF/Slides fields (never invented). Rows without one stay
+            // a plain, non-clickable card.
+            const link = x.url || x.pdf || x.slides || "";
+            const tag = link ? "a" : "div";
+            const linkAttrs = link ? ` href="${esc(link)}" target="_blank" rel="noopener noreferrer"` : "";
             return `
-              <article class="card fade visible">
+              <${tag} class="card fade visible kn-update-card"${linkAttrs}>
                 <div class="card-top">
                   <div class="tag">🚨 ${esc(x.category || "Clinical Update")}</div>
                   ${x.date ? `<span class="card-date">${esc(x.date)}</span>` : ""}
@@ -583,8 +589,8 @@
                     <div>${esc(x.answer)}</div>
                     ${x.reference ? `<small class="reference">Reference: ${esc(x.reference)}</small>` : ""}
                   </div>` : ""}
-                ${resourceLinks(x)}
-              </article>`;
+                ${link ? `<span class="kn-update-open">→ Open update</span>` : ""}
+              </${tag}>`;
           }).join("");
 
           wireRevealButtons(recentGrid);

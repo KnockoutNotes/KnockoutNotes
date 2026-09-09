@@ -10,6 +10,15 @@
   const canvas = document.getElementById("knSpatialCanvas");
   if (!canvas) return;
 
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) {
+    // Respect the user's preference: no waveform animation, no particle
+    // drift, no pointer reactivity. Leave the canvas blank rather than
+    // rendering a single static frame that still competes visually.
+    window.KnockoutSpatialBg = { setEnvironment: () => {}, triggerRipple: () => {} };
+    return;
+  }
+
   const ctx = canvas.getContext("2d");
   let width = (canvas.width = window.innerWidth);
   let height = (canvas.height = window.innerHeight);
