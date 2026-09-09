@@ -285,6 +285,82 @@
   max-width: 460px;
 }
 
+/* ==========================================================================
+   3D View only: individual topics inside a category become carousel cards
+   instead of a flat list. Same .kn-file-row anchors (same href, same
+   .kn-file-title used by the viewer) — just restyled and repositioned by
+   spatial-scroll.js. Lite View never adds the .kn-carousel-card class, so
+   its .kn-file-row keeps the original flat-list styling above untouched.
+   ========================================================================== */
+.view-layer-3d .kn-file-list.kn-carousel {
+  height: var(--carousel-h, 360px);
+  margin-bottom: 8px;
+}
+
+.view-layer-3d .kn-file-row.kn-carousel-card {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 0 0 16px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.view-layer-3d .kn-file-row.kn-carousel-card:hover {
+  transform: translate3d(calc(-50% + var(--cx, 0px)), 0, var(--cz, 0px))
+             rotateY(var(--cry, 0deg)) scale(var(--cs, 1));
+}
+
+.kn-file-thumb {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.kn-file-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kn-file-thumb-icon {
+  font-size: 40px;
+  opacity: 0.5;
+}
+
+.view-layer-3d .kn-file-row.kn-carousel-card .kn-file-num {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+}
+
+.view-layer-3d .kn-file-row.kn-carousel-card .kn-file-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+}
+
+.view-layer-3d .kn-file-row.kn-carousel-card .kn-file-title {
+  padding: 16px 20px 6px;
+  white-space: normal;
+  font-size: 16.5px;
+  line-height: 1.35;
+}
+
+.view-layer-3d .kn-file-row.kn-carousel-card .kn-file-arrow {
+  padding: 4px 20px 0;
+  align-self: flex-end;
+}
+
 @media (max-width: 680px) {
   .kn-library-head {
     align-items: flex-start;

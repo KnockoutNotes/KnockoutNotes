@@ -56,6 +56,36 @@
     });
   }
 
+  // 3D View only: give each topic row a thumbnail (image preview, or a
+  // document glyph for PDFs) using the same file URL already on the anchor,
+  // then hand the list to the generic carousel engine. Lite's identical
+  // .kn-file-row markup never goes through this, so it stays a flat list.
+  function carouselizePanel(panel){
+    const fileList = panel.querySelector('.kn-file-list');
+    if (!fileList || !window.KnCarousel) return;
+    fileList.querySelectorAll('.kn-file-row').forEach(row => {
+      if (row.querySelector('.kn-file-thumb')) return;
+      const thumb = document.createElement('div');
+      thumb.className = 'kn-file-thumb';
+      if (row.querySelector('.kn-badge-image')) {
+        const img = document.createElement('img');
+        img.src = row.getAttribute('href');
+        img.loading = 'lazy';
+        img.alt = '';
+        thumb.appendChild(img);
+      } else {
+        const icon = document.createElement('span');
+        icon.className = 'kn-file-thumb-icon';
+        icon.textContent = '📄';
+        thumb.appendChild(icon);
+      }
+      row.insertBefore(thumb, row.firstChild);
+    });
+    const existing = window.KnCarousel.list.find(c => c.container === fileList);
+    if (existing) existing.refresh();
+    else window.KnCarousel.mount(fileList);
+  }
+
   function renderCategory(cat){
     const files = resolveCategoryFiles(cat);
     const count = files.length;
@@ -153,12 +183,18 @@
               // eslint-disable-next-line no-unused-expressions
               activePanel.offsetWidth; // force reflow to restart the animation
               activePanel.classList.add('kn-panel-drill');
+              carouselizePanel(activePanel);
             }
           }
         });
 
         const content = renderCategory(cat);
         panel.appendChild(content);
+      }
+
+      if (mount.closest('.view-layer-3d')) {
+        const firstPanel = panels.querySelector('.kn-library-panel');
+        if (firstPanel) carouselizePanel(firstPanel);
       }
     });
 

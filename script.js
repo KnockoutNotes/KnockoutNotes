@@ -536,6 +536,9 @@
 
           wireRevealButtons(sheetContent);
           if (observer) sheetContent.querySelectorAll(".fade").forEach(el => observer.observe(el));
+          if (window.KnCarousel && sheetContent.closest(".view-layer-3d")) {
+            window.KnCarousel.mount(sheetContent);
+          }
         });
       }).catch(err => {
         console.error("KnockoutNotes API Error:", err);
@@ -586,6 +589,9 @@
 
           wireRevealButtons(recentGrid);
           if (observer) recentGrid.querySelectorAll(".fade").forEach(el => observer.observe(el));
+          if (window.KnCarousel && recentGrid.closest(".view-layer-3d")) {
+            window.KnCarousel.mount(recentGrid);
+          }
         });
       }).catch(err => {
         console.error("KnockoutNotes Recent Updates:", err);
