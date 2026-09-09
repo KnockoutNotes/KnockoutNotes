@@ -5,43 +5,43 @@
 
 .kn-library-tabs {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin: 12px 0 28px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--border);
+  margin: 16px 0 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .kn-library-tab {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  border: 1px solid var(--border);
-  background: var(--card-surface);
-  color: var(--text-muted);
+  gap: 10px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  color: var(--text-secondary);
   border-radius: var(--radius-full);
-  padding: 10px 18px;
+  padding: 10px 20px;
   font-size: 13.5px;
   font-weight: 700;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: all var(--transition);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all var(--transition-fast);
 }
 
 .kn-library-tab:hover {
   transform: translateY(-2px);
-  border-color: var(--accent);
-  color: var(--text);
-  box-shadow: var(--shadow);
+  border-color: var(--accent-cyan);
+  color: var(--text-main);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
 }
 
 .kn-library-tab.active {
-  background: var(--accent-light);
-  border-color: var(--accent);
-  color: var(--accent);
-  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.15);
+  background: var(--soft-accent);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
 }
 
 .kn-tab-count {
@@ -50,19 +50,19 @@
   justify-content: center;
   font-size: 11px;
   font-weight: 800;
-  padding: 2px 7px;
+  padding: 2px 8px;
   border-radius: var(--radius-full);
-  background: var(--soft);
-  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-subtle);
   color: var(--text-muted);
   font-family: 'JetBrains Mono', monospace;
-  transition: all var(--transition);
+  transition: all var(--transition-fast);
 }
 
 .kn-library-tab.active .kn-tab-count {
-  background: var(--card);
-  border-color: var(--accent);
-  color: var(--accent);
+  background: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  color: #ffffff;
 }
 
 .kn-library-panel[hidden] {
@@ -70,120 +70,121 @@
 }
 
 .kn-library-panel.active {
-  animation: knLibFade 0.25s var(--ease-out);
+  animation: knLibFade 0.28s var(--ease-out-expo);
 }
 
 @keyframes knLibFade {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
-    transform: none;
+    transform: translateY(0);
   }
 }
 
 .kn-library-category {
-  margin: 8px 0 36px;
+  margin: 12px 0 40px;
 }
 
 .kn-library-head {
   display: flex;
   justify-content: space-between;
-  gap: 16px;
+  gap: 20px;
   align-items: flex-end;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .kn-library-head h3 {
-  margin: 6px 0 4px;
-  font-size: 24px;
+  margin: 6px 0 6px;
+  font-size: 26px;
   font-weight: 850;
-  letter-spacing: -0.6px;
-  line-height: 1.25;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+  color: var(--text-main);
 }
 
 .kn-library-head p {
   margin: 0;
-  color: var(--text-muted);
-  font-size: 14.5px;
-  max-width: 680px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  max-width: 720px;
 }
 
 .kn-library-count {
   white-space: nowrap;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 800;
-  color: var(--text-muted);
-  background: var(--card-surface);
-  border: 1px solid var(--border);
-  padding: 6px 14px;
+  color: var(--accent-cyan);
+  background: var(--soft-accent);
+  border: 1px solid var(--border-glow);
+  padding: 6px 16px;
   border-radius: var(--radius-full);
   font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.3px;
-  box-shadow: var(--shadow-sm);
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.12);
 }
 
 .kn-file-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .kn-file-row {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 14px 20px;
-  background: var(--card-surface);
-  border: 1px solid var(--border);
+  gap: 18px;
+  padding: 16px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-specular);
   border-radius: var(--radius-md);
-  color: var(--text);
+  color: var(--text-main);
   text-decoration: none;
   box-shadow: var(--shadow-sm);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  min-height: 56px;
-  transition: all var(--transition);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  min-height: 60px;
+  transition: all var(--transition-fast);
 }
 
 .kn-file-row:hover {
-  transform: translateX(6px);
-  border-color: var(--accent);
-  box-shadow: var(--shadow), 0 0 20px rgba(56, 189, 248, 0.08);
+  transform: translateX(8px);
+  border-color: var(--accent-cyan);
+  box-shadow: var(--shadow-md), 0 0 30px rgba(56, 189, 248, 0.15);
 }
 
 .kn-file-num {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 34px;
-  height: 30px;
-  padding: 0 6px;
-  border-radius: 8px;
-  background: var(--soft);
-  border: 1px solid var(--border);
+  min-width: 36px;
+  height: 32px;
+  padding: 0 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-subtle);
   font-size: 12px;
   font-weight: 750;
   font-family: 'JetBrains Mono', monospace;
   color: var(--text-muted);
   flex-shrink: 0;
-  transition: all var(--transition);
+  transition: all var(--transition-fast);
 }
 
 .kn-file-row:hover .kn-file-num {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-light);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  background: var(--soft-accent);
 }
 
 .kn-file-title {
   flex: 1;
   min-width: 0;
-  font-size: 15px;
+  font-size: 15.5px;
   font-weight: 700;
-  color: var(--text);
+  color: var(--text-main);
   letter-spacing: -0.2px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -194,32 +195,26 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 9px;
+  padding: 4px 10px;
   border-radius: 6px;
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 850;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   flex-shrink: 0;
   font-family: 'JetBrains Mono', monospace;
 }
 
 .kn-badge-image {
-  background: var(--accent-light);
-  color: var(--accent);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: var(--soft-accent);
+  color: var(--accent-cyan);
+  border: 1px solid var(--border-glow);
 }
 
 .kn-badge-pdf {
-  background: rgba(239, 68, 68, 0.1);
-  color: #dc2626;
-  border: 1px solid rgba(239, 68, 68, 0.25);
-}
-
-.dark .kn-badge-pdf {
-  color: #f87171;
-  border-color: rgba(248, 113, 113, 0.35);
-  background: rgba(239, 68, 68, 0.15);
+  background: rgba(244, 63, 94, 0.12);
+  color: var(--accent-rose);
+  border: 1px solid rgba(244, 63, 94, 0.3);
 }
 
 .kn-file-arrow {
@@ -227,14 +222,14 @@
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-muted);
   flex-shrink: 0;
-  transition: transform var(--transition), color var(--transition);
+  transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
 .kn-file-row:hover .kn-file-arrow {
-  color: var(--accent);
+  color: var(--accent-cyan);
   transform: translateX(4px);
 }
 
@@ -244,37 +239,37 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 48px 24px;
-  border: 1px dashed var(--border);
+  padding: 56px 24px;
+  border: 1px dashed var(--border-subtle);
   border-radius: var(--radius-lg);
   color: var(--text-muted);
-  background: var(--card-surface);
-  gap: 8px;
+  background: var(--bg-card);
+  gap: 10px;
 }
 
 .kn-empty-library strong {
-  color: var(--text);
-  font-size: 16px;
+  color: var(--text-main);
+  font-size: 17px;
   font-weight: 800;
 }
 
 .kn-empty-library span {
-  font-size: 13.5px;
-  max-width: 420px;
+  font-size: 14px;
+  max-width: 440px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 680px) {
   .kn-library-head {
     align-items: flex-start;
     flex-direction: column;
-    gap: 10px;
-  }
-  .kn-file-row {
-    padding: 12px 16px;
     gap: 12px;
   }
+  .kn-file-row {
+    padding: 14px 18px;
+    gap: 14px;
+  }
   .kn-file-title {
-    font-size: 14px;
+    font-size: 14.5px;
     white-space: normal;
     word-break: break-word;
   }

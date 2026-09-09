@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anaesthesia • Critical Care • Viva | KnockoutNotes</title>
-  <meta name="description" content="High-yield anaesthesia, critical care and viva notes for MD Anaesthesia learners.">
+  <title>KnockoutNotes — Anaesthesia • Critical Care • Viva</title>
+  <meta name="description" content="Cinematic high-yield medical education for anaesthesia trainees and intensivists.">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="page-common.css">
   <script src="sheet-config.js"></script>
@@ -12,13 +12,18 @@
   <script src="script.js"></script>
   <script src="kn-site-search.js"></script>
 </head>
-<body>
+<body data-content-page="home">
 
-<!-- Navigation Header -->
+<!-- Background Ambient Particle Canvas -->
+<canvas id="knParticleCanvas"></canvas>
+
+<!-- Floating Island Capsule Navigation -->
 <nav class="site-nav">
-  <div class="nav-inner">
+  <div class="nav-capsule">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
-      <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      <div class="brand-icon-wrap">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      </div>
       <div class="brand-name">Knockout<span>Notes</span></div>
     </a>
     <div class="nav-links">
@@ -33,7 +38,7 @@
     </div>
     <div class="nav-actions">
       <button class="nav-search-trigger" data-open-search aria-label="Open search">
-        <span>⌕ Search</span>
+        <span>Search</span>
         <kbd>⌘K</kbd>
       </button>
       <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
@@ -53,51 +58,115 @@
 </nav>
 
 <main class="container">
-  <!-- Hero Section -->
+  <!-- Cinematic Hero Section -->
   <section class="hero">
     <div class="fade">
-      <span class="kicker">⚡ ANAESTHESIA • CRITICAL CARE • VIVA</span>
-      <h1>Knockout<br><span>Notes.</span></h1>
-      <p>High-yield medical knowledge, distilled for the moments when you need to remember it — not just read it.</p>
-      <div class="actions">
-        <a class="btn primary" href="pearls.html">Explore Pearls →</a>
-        <a class="btn secondary" href="viva.html">Test Yourself</a>
-        <button class="btn secondary" data-open-search>⌕ Search Database</button>
+      <div class="kicker-pill">
+        <span class="kicker-dot"></span>
+        <span>ANAESTHESIA • CRITICAL CARE • VIVA</span>
+      </div>
+      <h1>
+        Knockout<br>
+        <span class="gradient-text">Precision.</span>
+      </h1>
+      <p class="hero-lead">
+        High-yield clinical knowledge distilled for high-stakes moments — operating theatres, intensive care rounds, and viva examinations.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-cinematic primary" href="pearls.html">Explore Pearls →</a>
+        <a class="btn-cinematic glass" href="viva.html">Test Viva Classics</a>
+        <button class="btn-cinematic glass" data-open-search>⌕ Search Database</button>
       </div>
     </div>
+
+    <!-- Living Medical Visualization: ICU Telemetry & Real-Time ECG -->
     <div class="hero-visual fade">
-      <div class="hero-visual-box">
-        <img class="hero-logo" src="knockoutnotes_wordmark.png" alt="KnockoutNotes">
-        <div class="hero-stats">
-          <div class="stat-item">
-            <div class="stat-num">32+</div>
-            <div class="stat-label">Visual Pearls</div>
+      <div class="telemetry-card">
+        <div class="telemetry-header">
+          <div class="telemetry-channel">
+            <span class="telemetry-channel-dot"></span>
+            <span>LEAD II • ECG RHYTHM</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-num">100%</div>
-            <div class="stat-label">Referenced</div>
+          <div class="telemetry-status">25 mm/s • 10 mm/mV</div>
+        </div>
+
+        <div class="ecg-screen">
+          <canvas id="knEcgCanvas"></canvas>
+        </div>
+
+        <div class="telemetry-vitals-grid">
+          <div class="vital-box green">
+            <div class="vital-label">HR</div>
+            <div class="vital-val">72<span class="vital-unit">bpm</span></div>
           </div>
-          <div class="stat-item">
-            <div class="stat-num">2025/26</div>
-            <div class="stat-label">Guidelines</div>
+          <div class="vital-box cyan">
+            <div class="vital-label">SpO₂</div>
+            <div class="vital-val">99<span class="vital-unit">%</span></div>
+          </div>
+          <div class="vital-box amber">
+            <div class="vital-label">MAP</div>
+            <div class="vital-val">85<span class="vital-unit">mmHg</span></div>
+          </div>
+          <div class="vital-box indigo">
+            <div class="vital-label">ETCO₂</div>
+            <div class="vital-val">38<span class="vital-unit">mmHg</span></div>
+          </div>
+        </div>
+
+        <div class="telemetry-footer">
+          <div class="telemetry-badge">
+            <span>32+</span> Visual Infographics
+          </div>
+          <div class="telemetry-badge">
+            <span>100%</span> Textbook Citations
+          </div>
+          <div class="telemetry-badge">
+            <span>2025/26</span> Standards
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Active Theory Fast-Path Clinical Index -->
+  <section class="fastpath-section fade">
+    <div class="fastpath-lead">
+      <span class="kicker-pill">FAST TRACK</span>
+      <h3>Where are you heading today?</h3>
+      <p>Instant clinical pathways curated for the daily workflow of MD Anaesthesia and Critical Care trainees.</p>
+    </div>
+    <div class="fastpath-links">
+      <a class="fastpath-link" href="pearls.html">
+        <span>⚡ High-Yield Visual Pearls</span>
+        <span class="link-arrow">→</span>
+      </a>
+      <a class="fastpath-link" href="drugs.html">
+        <span>💊 Structured Drug Monographs</span>
+        <span class="link-arrow">→</span>
+      </a>
+      <a class="fastpath-link" href="critical-care.html">
+        <span>🚨 ICU Telemetry & Scoring</span>
+        <span class="link-arrow">→</span>
+      </a>
+      <a class="fastpath-link" href="viva.html">
+        <span>🧠 Viva Exam Drill Chamber</span>
+        <span class="link-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
   <!-- Philosophy Feature Banner -->
-  <div class="feature fade">
-    <h2>💥 KnockoutNotes Philosophy</h2>
-    <p>Don't memorise everything. Understand what matters, know the exact numbers when they matter, and keep a peer-reviewed source attached to every answer.</p>
+  <div class="feature-banner fade">
+    <h2>💥 The KnockoutNotes Standard</h2>
+    <p>Never rely on vague memory. Understand the physiological mechanism, memorize the exact clinical number when it matters, and keep a peer-reviewed standard citation attached to every single answer.</p>
   </div>
 
-  <!-- Medical Bento Grid -->
+  <!-- Medical Bento Grid (Today's Knockout & Guideline Watch) -->
   <section class="section">
     <div class="section-head fade">
-      <span class="kicker">HIGH-YIELD CORE</span>
-      <h2>Today's Knockout & Live Feeds</h2>
-      <p>Instant clinical takeaways, active recall questions, and real-time guideline monitoring.</p>
+      <div class="kicker-pill">CLINICAL RADAR</div>
+      <h2>Today's High-Yield Core</h2>
+      <p>Instant active recall points, bedside formulas, and real-time guideline monitoring.</p>
     </div>
 
     <div class="bento-grid">
@@ -107,29 +176,29 @@
           <div class="tag">⚡ Daily High-Yield</div>
           <span class="card-date">Pharmacology</span>
         </div>
-        <h3>Succinylcholine — IV intubating dose</h3>
-        <p>For adult tracheal intubation, standard rapid sequence induction dose is commonly cited as <strong>1–1.5 mg/kg IV</strong>.</p>
+        <h3>Succinylcholine — IV Intubating Dose</h3>
+        <p>For adult tracheal intubation, the standard rapid sequence induction dose is commonly cited as <strong>1–1.5 mg/kg IV</strong>.</p>
         <div>
           <span class="formula">Dose: 1.0 – 1.5 mg/kg IV</span>
         </div>
         <button class="reveal" data-target="dailyAnswer">Reveal Answer</button>
         <div class="answer" id="dailyAnswer">
-          <strong>Viva point:</strong> Rapid onset follows rapid access to the neuromuscular junction and depolarizing activation of nicotinic acetylcholine receptors.
-          <small class="reference">Reference: Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 6th ed.</small>
+          <strong>Viva point:</strong> Rapid onset (30–60s) follows rapid access to neuromuscular junction nicotinic acetylcholine receptors, producing initial phase I depolarisation block.
+          <small class="reference">Reference: Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology, 6th ed.</small>
         </div>
       </article>
 
       <!-- Bento 2: Guideline Watch Widget -->
       <article class="card bento-span-5 fade">
         <div class="card-top">
-          <div class="tag">🚨 Guideline Watch</div>
-          <a class="card-date" href="recent-updates.html">View All →</a>
+          <div class="tag">🚨 Guideline Radar</div>
+          <a class="card-date" href="recent-updates.html" style="color:var(--accent-cyan);">View All →</a>
         </div>
-        <h3 style="margin-bottom:6px;">Recent Practice Updates</h3>
-        <p style="margin-bottom:14px;">Curated consensus updates from major international societies.</p>
+        <h3>Recent Practice Updates</h3>
+        <p>Curated international consensus updates synced from the editorial sheet.</p>
         <div id="knHomeUpdates">
-          <div class="kn-search-result" style="padding:10px 14px;">
-            <p style="margin:0;font-size:12px;color:var(--text-muted);">Loading latest guideline alerts…</p>
+          <div class="kn-search-result" style="padding:12px 16px;">
+            <p style="margin:0;font-size:12.5px;color:var(--text-muted);">Loading latest guideline alerts…</p>
           </div>
         </div>
       </article>
@@ -137,14 +206,14 @@
       <!-- Bento 3: Quick Viva Drill -->
       <article class="card bento-span-6 fade">
         <div class="card-top">
-          <div class="tag">🧠 Viva Classics</div>
-          <span class="card-date">Physics & Physiology</span>
+          <div class="tag">🧠 Viva Drill</div>
+          <span class="card-date">Physics & Gas Exchange</span>
         </div>
         <h3>Why does N₂O expand a closed gas space?</h3>
-        <p>A classic exam question testing diffusion physics across body cavities.</p>
+        <p>A classic exam question testing differential diffusion coefficients across body cavities.</p>
         <button class="reveal" data-target="vivaQuick">Reveal Answer</button>
         <div class="answer" id="vivaQuick">
-          N₂O diffuses into closed gas spaces approximately 34 times faster than nitrogen leaves, causing rapid expansion of volume and/or pressure.
+          N₂O is 34 times more soluble in blood than nitrogen. It diffuses into closed gas cavities far faster than nitrogen leaves, causing rapid expansion of volume or pressure.
           <small class="reference">Reference: Miller's Anesthesia, 10th ed.; Barash 9th ed.</small>
         </div>
       </article>
@@ -153,7 +222,7 @@
       <article class="card bento-span-6 fade">
         <div class="card-top">
           <div class="tag">🚨 Critical Care</div>
-          <span class="card-date">ICU Ventilation</span>
+          <span class="card-date">ICU Ventilation Protocol</span>
         </div>
         <h3>Low Tidal Volume Strategy in ARDS</h3>
         <p>Lung-protective ventilation target based on predicted body weight (PBW).</p>
@@ -162,7 +231,7 @@
         </div>
         <button class="reveal" data-target="icuQuick">Reveal Answer</button>
         <div class="answer" id="icuQuick">
-          A commonly used target is <strong>4–8 mL/kg predicted body weight</strong>, adjusted according to plateau pressure (&le; 30 cmH₂O) and driving pressure goals.
+          Target <strong>4–8 mL/kg predicted body weight</strong>, maintain plateau pressure &le; 30 cmH₂O, and titrate PEEP according to driving pressure goals (&Delta;P &le; 14 cmH₂O).
           <small class="reference">Reference: Surviving Sepsis & ARDS Guidelines 2026.</small>
         </div>
       </article>
@@ -172,45 +241,45 @@
   <!-- Explore Directory -->
   <section class="section">
     <div class="section-head fade">
-      <span class="kicker">SYSTEMATIC REVISION</span>
-      <h2>Explore by Section</h2>
-      <p>Built around the way an MD Anaesthesia resident actually prepares for clinical rounds and exams.</p>
+      <div class="kicker-pill">SYSTEMATIC REVISION</div>
+      <h2>Explore by Specialty Area</h2>
+      <p>Built around the exact way an anaesthesia trainee prepares for operating lists and exams.</p>
     </div>
     <div class="grid">
       <a class="card explore-card fade" href="pearls.html">
         <div class="tag">⚡ Pearls</div>
-        <h3>High-yield takeaways</h3>
-        <p>Short clinical concepts with exact values, pharmacology tables, and references attached.</p>
+        <h3>High-Yield Visuals</h3>
+        <p>Clinical takeaways with exact parameters, pharmacology tables, and high-res infographics.</p>
         <div class="card-arrow">→</div>
       </a>
       <a class="card explore-card fade" href="drugs.html">
         <div class="tag">💊 Drugs</div>
-        <h3>Pharmacology cards</h3>
-        <p>Dose, onset, receptor mechanics, indications, contraindications, and viva points.</p>
+        <h3>Pharmacology Dossier</h3>
+        <p>Dose, onset, receptor affinity, metabolism, indications, and examiners' viva points.</p>
         <div class="card-arrow">→</div>
       </a>
       <a class="card explore-card fade" href="critical-care.html">
         <div class="tag">🚨 Critical Care</div>
-        <h3>ICU essentials</h3>
+        <h3>ICU Telemetry & Scoring</h3>
         <p>Mechanical ventilation, hemodynamic monitoring, shock algorithms, and sepsis resuscitation.</p>
         <div class="card-arrow">→</div>
       </a>
       <a class="card explore-card fade" href="viva.html">
         <div class="tag">🧠 Viva</div>
-        <h3>Viva classics</h3>
-        <p>High-frequency viva questions that examiners repeat, paired with concise bulleted answers.</p>
+        <h3>Viva Exam Classics</h3>
+        <p>High-frequency viva questions repeated by examiners, paired with concise referenced answers.</p>
         <div class="card-arrow">→</div>
       </a>
       <a class="card explore-card fade" href="notes.html">
         <div class="tag">📚 Notes</div>
-        <h3>Study notes</h3>
+        <h3>Study Notes Library</h3>
         <p>Structured visual summaries and downloadable PDF study sheets for deep revision.</p>
         <div class="card-arrow">→</div>
       </a>
       <a class="card explore-card fade" href="resources.html">
         <div class="tag">📖 Resources</div>
-        <h3>Reference shelf</h3>
-        <p>Standard textbook editions, international resuscitation guidelines, and citation policy.</p>
+        <h3>Reference Shelf</h3>
+        <p>Standard textbook editions, international resuscitation standards, and citation policy.</p>
         <div class="card-arrow">→</div>
       </a>
     </div>
@@ -240,7 +309,7 @@
     </div>
     <div class="kn-modal-footer">
       <span>Pro-tip: Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
-      <span>KnockoutNotes Search</span>
+      <span>KnockoutNotes Precision Search</span>
     </div>
   </div>
 </div>
@@ -250,7 +319,9 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <div class="brand">
-        <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        <div class="brand-icon-wrap">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        </div>
         <div class="brand-name">Knockout<span>Notes</span></div>
       </div>
       <p>Anaesthesia • Critical Care • Viva</p>

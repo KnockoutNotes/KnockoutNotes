@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pearls | KnockoutNotes</title>
-  <meta name="description" content="High-yield anaesthesia and critical care pearls.">
+  <title>Visual Pearls | KnockoutNotes</title>
+  <meta name="description" content="High-yield anaesthesia and critical care visual infographics and text pearls.">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="page-common.css">
   <link rel="stylesheet" href="library-styles.css">
@@ -14,11 +14,16 @@
 </head>
 <body data-content-page="pearls">
 
-<!-- Navigation Header -->
+<!-- Background Ambient Particle Canvas -->
+<canvas id="knParticleCanvas"></canvas>
+
+<!-- Floating Island Capsule Navigation -->
 <nav class="site-nav">
-  <div class="nav-inner">
+  <div class="nav-capsule">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
-      <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      <div class="brand-icon-wrap">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      </div>
       <div class="brand-name">Knockout<span>Notes</span></div>
     </a>
     <div class="nav-links">
@@ -33,7 +38,7 @@
     </div>
     <div class="nav-actions">
       <button class="nav-search-trigger" data-open-search aria-label="Open search">
-        <span>⌕ Search</span>
+        <span>Search</span>
         <kbd>⌘K</kbd>
       </button>
       <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
@@ -56,12 +61,12 @@
   <!-- In-Page Sitewide Search Section -->
   <section class="kn-search-section">
     <div class="kn-search-card">
-      <div class="kn-search-kicker">⌕ SITEWIDE CLINICAL DATABASE</div>
-      <h1>Search KnockoutNotes</h1>
-      <p>Search pearls, notes, drugs, viva classics, and critical care guidelines from one place.</p>
+      <div class="kn-search-kicker">⌕ CLINICAL DATABASE SEARCH</div>
+      <h1>Search Pearls & Knowledge</h1>
+      <p>Search visual infographics, pharmacological parameters, and high-yield active recall points.</p>
       <div class="kn-site-search">
         <span class="kn-search-icon">⌕</span>
-        <input id="knSiteSearch" type="search" placeholder="Search propofol, SOFA score, ARDS, mitral stenosis…">
+        <input id="knSiteSearch" type="search" placeholder="Search propofol, sugammadex, mitral stenosis, ARDS...">
         <button id="knSearchClear">×</button>
       </div>
       <div id="knSearchStatus" class="kn-search-status">Start typing to search the site.</div>
@@ -71,9 +76,9 @@
 
   <!-- Page Header -->
   <div class="section-head fade">
-    <span class="kicker">⚡ HIGH-YIELD VISUALS</span>
-    <h2>Visual Pearls</h2>
-    <p>Curated high-resolution infographics. Click any item to inspect or download the original high-resolution graphic.</p>
+    <div class="kicker-pill">⚡ HIGH-YIELD VISUALS</div>
+    <h2>Curated Visual Pearls</h2>
+    <p>High-resolution clinical infographics. Click any row to open or inspect the original high-resolution graphic.</p>
   </div>
 
   <!-- Tabbed Content Library Mount -->
@@ -84,13 +89,13 @@
   <!-- Text Pearls Section -->
   <section class="section">
     <div class="section-head fade">
-      <span class="kicker">QUICK REVISION</span>
+      <div class="kicker-pill">ACTIVE RECALL</div>
       <h2>High-Yield Text Pearls</h2>
-      <p>Instant clinical numbers and mechanism takeaways for active study.</p>
+      <p>Instant clinical numbers and mechanism takeaways for rapid revision.</p>
     </div>
 
     <!-- Filter input -->
-    <input class="search fade" id="pearlSearch" placeholder="Filter text pearls by topic, drug or keyword...">
+    <input class="search fade" id="pearlSearch" placeholder="Filter text pearls by topic, drug, or keyword...">
 
     <div class="filters fade">
       <button class="filter active" data-filter="all">All Topics</button>
@@ -139,7 +144,7 @@
         <p>Preoxygenation replaces alveolar nitrogen with oxygen to prolong safe apnoea time.</p>
         <button class="reveal" data-target="p3">Reveal Answer</button>
         <div class="answer" id="p3">
-          The primary goal is denitrogenation and maximisation of the functional residual capacity (FRC) oxygen store (~2100 mL in an 70kg adult breathing 100% O₂), not merely achieving an SpO₂ of 100%.
+          The primary goal is denitrogenation and maximisation of the functional residual capacity (FRC) oxygen store (~2100 mL in a 70kg adult breathing 100% O₂), not merely achieving an SpO₂ of 100%.
           <small class="reference">Reference: West's Respiratory Physiology; Miller's Anesthesia, 10th ed.</small>
         </div>
       </article>
@@ -212,7 +217,7 @@
     </div>
     <div class="kn-modal-footer">
       <span>Pro-tip: Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
-      <span>KnockoutNotes Search</span>
+      <span>KnockoutNotes Precision Search</span>
     </div>
   </div>
 </div>
@@ -222,7 +227,9 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <div class="brand">
-        <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        <div class="brand-icon-wrap">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        </div>
         <div class="brand-name">Knockout<span>Notes</span></div>
       </div>
       <p>Anaesthesia • Critical Care • Viva</p>
@@ -234,7 +241,7 @@
         <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
         <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
       </div>
-      <p class="footer-copy">© 2026 KnockoutNotes</p>
+      <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
     </div>
   </div>
 </footer>

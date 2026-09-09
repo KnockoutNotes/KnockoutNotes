@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drugs | KnockoutNotes</title>
-  <meta name="description" content="High-yield anaesthesia drug pearls and pharmacology cards.">
+  <title>Drugs & Pharmacology | KnockoutNotes</title>
+  <meta name="description" content="High-yield anaesthesia drug monographs, receptor mechanics and pharmacology pearls.">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="page-common.css">
   <link rel="stylesheet" href="library-styles.css">
@@ -14,11 +14,16 @@
 </head>
 <body data-content-page="drugs">
 
-<!-- Navigation Header -->
+<!-- Background Ambient Particle Canvas -->
+<canvas id="knParticleCanvas"></canvas>
+
+<!-- Floating Island Capsule Navigation -->
 <nav class="site-nav">
-  <div class="nav-inner">
+  <div class="nav-capsule">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
-      <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      <div class="brand-icon-wrap">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      </div>
       <div class="brand-name">Knockout<span>Notes</span></div>
     </a>
     <div class="nav-links">
@@ -33,7 +38,7 @@
     </div>
     <div class="nav-actions">
       <button class="nav-search-trigger" data-open-search aria-label="Open search">
-        <span>⌕ Search</span>
+        <span>Search</span>
         <kbd>⌘K</kbd>
       </button>
       <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
@@ -56,9 +61,9 @@
   <!-- In-Page Sitewide Search Section -->
   <section class="kn-search-section">
     <div class="kn-search-card">
-      <div class="kn-search-kicker">⌕ SITEWIDE CLINICAL DATABASE</div>
-      <h1>Search KnockoutNotes</h1>
-      <p>Search drugs, pearls, notes, viva and critical care from one place.</p>
+      <div class="kn-search-kicker">⌕ PHARMACOLOGY DATABASE SEARCH</div>
+      <h1>Search Drug Monographs</h1>
+      <p>Search induction agents, opioids, neuromuscular blockers, dosages, and mechanisms.</p>
       <div class="kn-site-search">
         <span class="kn-search-icon">⌕</span>
         <input id="knSiteSearch" type="search" placeholder="Search propofol, rocuronium, remifentanil, sugammadex…">
@@ -71,15 +76,15 @@
 
   <!-- FDA Drug Label Notice Banner -->
   <section class="kn-fda-note">
-    <strong>For official prescribing information, please verify the current FDA / EMA product label.</strong>
-    <p>Dosages, contraindications, warnings and black-box recommendations change. <a href="https://www.accessdata.fda.gov/scripts/cder/daf/" target="_blank" rel="noopener">Access FDA Drug Database &rarr;</a></p>
+    <strong>For official prescribing information, please verify current FDA / EMA product labeling.</strong>
+    <p>Dosages, contraindications, warnings and black-box recommendations change over time. <a href="https://www.accessdata.fda.gov/scripts/cder/daf/" target="_blank" rel="noopener">Access FDA Drug Database &rarr;</a></p>
   </section>
 
   <!-- Visual Drug Pearls Library -->
   <div class="section-head fade">
-    <span class="kicker">💊 PHARMACOLOGY REPOSITORY</span>
-    <h2>Visual Drug Pearls</h2>
-    <p>Select a pharmacological class to explore high-resolution visual infographics.</p>
+    <div class="kicker-pill">💊 PHARMACOLOGY REPOSITORY</div>
+    <h2>Visual Drug Monographs</h2>
+    <p>Select a pharmacological class below to inspect high-resolution visual cards.</p>
   </div>
   <section class="section" style="padding-top:0;">
     <div id="knLibrary"></div>
@@ -88,8 +93,8 @@
   <!-- Live Dynamic Drug Cards (from Google Sheets) -->
   <section class="section">
     <div class="section-head fade">
-      <span class="kicker">LIVE CMS FEED</span>
-      <h2>Published Drug Cards</h2>
+      <div class="kicker-pill">LIVE CMS DOSSIER</div>
+      <h2>Published Pharmacology Cards</h2>
       <p>Pharmacology summaries synced directly from the KnockoutNotes editorial sheet.</p>
     </div>
     <div class="grid" id="sheetContent">
@@ -113,7 +118,7 @@
   <div class="kn-modal-box">
     <div class="kn-modal-header">
       <span class="kn-search-icon">⌕</span>
-      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search drugs, dosages, pearls..." autocomplete="off">
+      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search pearls, drugs, scores, viva questions..." autocomplete="off">
       <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
       <button class="kn-modal-close" data-close-modal>ESC</button>
     </div>
@@ -123,7 +128,7 @@
     </div>
     <div class="kn-modal-footer">
       <span>Pro-tip: Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
-      <span>KnockoutNotes Search</span>
+      <span>KnockoutNotes Precision Search</span>
     </div>
   </div>
 </div>
@@ -133,7 +138,9 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <div class="brand">
-        <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        <div class="brand-icon-wrap">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        </div>
         <div class="brand-name">Knockout<span>Notes</span></div>
       </div>
       <p>Anaesthesia • Critical Care • Viva</p>
@@ -145,7 +152,7 @@
         <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
         <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
       </div>
-      <p class="footer-copy">© 2026 KnockoutNotes</p>
+      <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
     </div>
   </div>
 </footer>

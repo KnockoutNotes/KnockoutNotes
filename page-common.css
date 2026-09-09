@@ -5,17 +5,17 @@
 
 /* In-Page Sitewide Search Section */
 .kn-search-section {
-  margin: 28px 0 24px;
+  margin: 32px 0 28px;
 }
 
 .kn-search-card {
-  padding: 28px 32px;
-  background: var(--card-surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  padding: 34px 38px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-specular);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
   position: relative;
   overflow: hidden;
 }
@@ -27,46 +27,50 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-indigo), transparent);
 }
 
 .kn-search-kicker {
   font-size: 11px;
   font-weight: 850;
-  letter-spacing: 1.2px;
-  color: var(--accent);
+  letter-spacing: 1.4px;
+  color: var(--accent-cyan);
   margin-bottom: 8px;
   text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .kn-search-card h1 {
-  margin: 0 0 8px;
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 850;
-  letter-spacing: -1.2px;
+  margin: 0 0 10px;
+  font-size: clamp(30px, 4.4vw, 44px);
+  font-weight: 900;
+  letter-spacing: -1.6px;
+  line-height: 1.1;
+  color: var(--text-main);
 }
 
 .kn-search-card > p {
-  margin: 0 0 20px;
-  color: var(--text-muted);
-  font-size: 15px;
+  margin: 0 0 24px;
+  color: var(--text-secondary);
+  font-size: 15.5px;
+  max-width: 680px;
 }
 
 .kn-site-search {
   display: flex;
   align-items: center;
-  gap: 12px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  border-radius: var(--radius-md);
-  padding: 0 16px;
+  gap: 14px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 0 20px;
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition);
+  transition: all var(--transition-fast);
 }
 
 .kn-site-search:focus-within {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2), 0 0 25px rgba(56, 189, 248, 0.15);
 }
 
 .kn-site-search input {
@@ -74,9 +78,9 @@
   border: 0;
   outline: 0;
   background: transparent;
-  color: var(--text);
-  font-size: 15.5px;
-  padding: 16px 0;
+  color: var(--text-main);
+  font-size: 16px;
+  padding: 18px 0;
   min-width: 0;
 }
 
@@ -87,7 +91,7 @@
 
 .kn-search-icon {
   font-size: 20px;
-  color: var(--accent);
+  color: var(--accent-cyan);
   flex-shrink: 0;
 }
 
@@ -101,48 +105,49 @@
   display: none;
   line-height: 1;
   border-radius: 6px;
-  transition: all var(--transition);
+  transition: all var(--transition-fast);
 }
 
 #knSearchClear:hover, .kn-modal-clear:hover {
-  color: var(--text);
-  background: var(--soft);
+  color: var(--text-main);
+  background: var(--soft-accent);
 }
 
 .kn-search-status {
   color: var(--text-muted);
-  font-size: 12.5px;
-  margin-top: 12px;
-  font-weight: 550;
+  font-size: 13px;
+  margin-top: 14px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .kn-search-results {
   display: grid;
-  gap: 10px;
-  margin-top: 14px;
+  gap: 12px;
+  margin-top: 18px;
 }
 
 .kn-search-result {
   display: block;
-  padding: 16px 20px;
-  border: 1px solid var(--border);
+  padding: 18px 22px;
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  background: var(--card-surface);
+  background: var(--bg-card);
   text-decoration: none;
-  color: var(--text);
+  color: var(--text-main);
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition);
+  transition: all var(--transition-fast);
 }
 
 .kn-search-result:hover {
-  border-color: var(--accent);
-  transform: translateX(4px);
-  box-shadow: var(--shadow), 0 0 15px rgba(56, 189, 248, 0.08);
+  border-color: var(--accent-cyan);
+  transform: translateX(6px);
+  box-shadow: var(--shadow-md), 0 0 25px rgba(56, 189, 248, 0.12);
 }
 
 .kn-search-result-top {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -150,77 +155,79 @@
 .kn-search-type {
   font-size: 10.5px;
   font-weight: 850;
-  letter-spacing: 0.8px;
-  color: var(--accent);
+  letter-spacing: 1px;
+  color: var(--accent-cyan);
   text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .kn-search-result h4 {
   margin: 6px 0 4px;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 800;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.4px;
+  color: var(--text-main);
 }
 
 .kn-search-result p {
   margin: 0;
-  color: var(--text-muted);
-  font-size: 13px;
+  color: var(--text-secondary);
+  font-size: 13.5px;
   line-height: 1.55;
 }
 
 .kn-search-empty {
-  padding: 24px;
-  border: 1px dashed var(--border);
+  padding: 32px;
+  border: 1px dashed var(--border-subtle);
   border-radius: var(--radius-md);
   color: var(--text-muted);
   text-align: center;
-  font-size: 14px;
-  background: var(--card-surface);
+  font-size: 14.5px;
+  background: var(--bg-card);
 }
 
 /* FDA Official Drug Label Notice */
 .kn-fda-note {
   display: block;
-  margin: 0 0 32px;
-  padding: 18px 22px;
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--accent);
-  border-radius: var(--radius-md);
-  background: var(--card-surface);
-  color: var(--text);
+  margin: 0 0 36px;
+  padding: 20px 26px;
+  border: 1px solid var(--border-specular);
+  border-left: 4px solid var(--accent-amber);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  color: var(--text-main);
   box-shadow: var(--shadow-sm);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .kn-fda-note strong {
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 800;
   display: block;
-  color: var(--text);
+  color: var(--text-main);
 }
 
 .kn-fda-note p {
   margin: 6px 0 0;
-  color: var(--text-muted);
-  font-size: 13px;
+  color: var(--text-secondary);
+  font-size: 13.5px;
   line-height: 1.55;
 }
 
 .kn-fda-note a {
-  color: var(--accent);
+  color: var(--accent-cyan);
   font-weight: 750;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .kn-fda-note a:hover {
-  color: var(--accent-hover);
+  color: var(--accent-blue);
 }
 
 /* ==========================================================================
-   Universal Command Palette / Search Modal Dialog
+   Universal Command Palette / Search Modal Dialog (Active Theory Style)
    ========================================================================== */
 .kn-modal {
   display: none;
@@ -229,7 +236,7 @@
   z-index: 2000;
   align-items: flex-start;
   justify-content: center;
-  padding: 80px 20px 20px;
+  padding: 90px 20px 24px;
 }
 
 .kn-modal.open {
@@ -239,34 +246,35 @@
 .kn-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(7, 10, 18, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(3, 7, 18, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   animation: fadeIn 0.2s ease-out;
 }
 
 .kn-modal-box {
   position: relative;
   width: 100%;
-  max-width: 640px;
-  background: var(--card);
+  max-width: 680px;
+  background: var(--bg-surface);
   border: 1px solid var(--border-specular);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), var(--glow);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.65), 0 0 50px rgba(56, 189, 248, 0.25);
   overflow: hidden;
   z-index: 10;
-  animation: modalEnter 0.25s var(--ease-out);
-  max-height: calc(100vh - 120px);
+  animation: modalEnter 0.28s var(--ease-out-expo);
+  max-height: calc(100vh - 140px);
   display: flex;
   flex-direction: column;
 }
 
 .kn-modal-header {
-  padding: 16px 20px;
+  padding: 18px 24px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  border-bottom: 1px solid var(--border);
+  gap: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .kn-modal-input {
@@ -274,53 +282,54 @@
   border: 0;
   outline: 0;
   background: transparent;
-  color: var(--text);
-  font-size: 17px;
+  color: var(--text-main);
+  font-size: 18px;
   font-weight: 600;
   min-width: 0;
 }
 
 .kn-modal-close {
-  border: 1px solid var(--border);
-  background: var(--card);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
   color: var(--text-muted);
-  padding: 5px 9px;
-  border-radius: 8px;
+  padding: 6px 11px;
+  border-radius: var(--radius-sm);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   font-family: 'JetBrains Mono', monospace;
-  transition: all var(--transition);
+  transition: all var(--transition-fast);
 }
 
 .kn-modal-close:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
 }
 
 .kn-modal-body {
-  padding: 16px 20px;
+  padding: 20px 24px;
   overflow-y: auto;
-  max-height: 480px;
+  max-height: 500px;
 }
 
 .kn-modal-footer {
-  padding: 10px 20px;
-  border-top: 1px solid var(--border);
-  background: var(--soft);
+  padding: 12px 24px;
+  border-top: 1px solid var(--border-subtle);
+  background: rgba(0, 0, 0, 0.12);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 11px;
+  font-size: 11.5px;
   color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .kn-modal-footer kbd {
-  font-family: 'JetBrains Mono', monospace;
-  padding: 2px 5px;
+  padding: 3px 6px;
   border-radius: 4px;
-  background: var(--card);
-  border: 1px solid var(--border);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--accent-cyan);
 }
 
 @keyframes fadeIn {
@@ -331,7 +340,7 @@
 @keyframes modalEnter {
   from {
     opacity: 0;
-    transform: translateY(-16px) scale(0.98);
+    transform: translateY(-20px) scale(0.97);
   }
   to {
     opacity: 1;

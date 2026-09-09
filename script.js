@@ -1,5 +1,6 @@
 // ==========================================================================
-// KnockoutNotes — Live Google Sheets API + Medical UI Interactions
+// KNOCKOUTNOTES — Unified Core JavaScript Engine
+// Theme, ECG Telemetry, Ambient Particles, API Client & UI Interactions
 // ==========================================================================
 
 (function () {
@@ -10,23 +11,24 @@
     if (!body) return;
 
     // ------------------------------------------------------------------------
-    // 1. Theme Engine (Obsidian Dark vs Clean Light)
+    // 1. Theme Engine (Obsidian Dark default vs Clean Light)
     // ------------------------------------------------------------------------
     const themeBtn = document.getElementById("themeBtn");
 
     function applyTheme(theme) {
       const isDark = theme === "dark";
       body.classList.toggle("dark", isDark);
-      localStorage.setItem("kn-theme", theme);
+      try { localStorage.setItem("kn-theme", theme); } catch (_) {}
       if (themeBtn) {
         themeBtn.textContent = isDark ? "☀" : "☾";
         themeBtn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
       }
     }
 
-    const savedTheme = localStorage.getItem("kn-theme");
-    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    applyTheme(savedTheme || (prefersDark ? "dark" : "light"));
+    let savedTheme = null;
+    try { savedTheme = localStorage.getItem("kn-theme"); } catch (_) {}
+    // Default to dark theme for Active Theory aesthetic if no preference stored
+    applyTheme(savedTheme || "dark");
 
     if (themeBtn) {
       themeBtn.addEventListener("click", () => {
@@ -35,8 +37,15 @@
     }
 
     // ------------------------------------------------------------------------
-    // 2. Active Nav Link Highlighting
+    // 2. Floating Navigation Scroll State & Active Links
     // ------------------------------------------------------------------------
+    const nav = document.querySelector(".site-nav");
+    if (nav) {
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 24);
+      }, { passive: true });
+    }
+
     const currentPath = window.location.pathname.split("/").pop() || "index.html";
     document.querySelectorAll(".nav-links a, .mobile-menu a").forEach(link => {
       const href = link.getAttribute("href");
@@ -155,7 +164,7 @@
       searchModal.classList.add("open");
       if (modalInput) {
         modalInput.value = "";
-        setTimeout(() => modalInput.focus(), 50);
+        setTimeout(() => modalInput.focus(), 60);
       }
       if (window.KnockoutNotesSiteSearch && typeof window.KnockoutNotesSiteSearch.trigger === "function") {
         window.KnockoutNotesSiteSearch.trigger("");
@@ -184,7 +193,205 @@
     });
 
     // ------------------------------------------------------------------------
-    // 9. Google Sheets API Client with SessionStorage Caching
+    // 9. Ambient Canvas Particle Network (Active Theory Inspiration)
+    // ------------------------------------------------------------------------
+    const particleCanvas = document.getElementById("knParticleCanvas");
+    if (particleCanvas && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const ctx = particleCanvas.getContext("2d");
+      let width = (particleCanvas.width = window.innerWidth);
+      let height = (particleCanvas.height = window.innerHeight);
+
+      window.addEventListener("resize", () => {
+        width = particleCanvas.width = window.innerWidth;
+        height = particleCanvas.height = window.innerHeight;
+      });
+
+      const numParticles = Math.min(45, Math.floor(width / 30));
+      const particles = [];
+
+      for (let i = 0; i < numParticles; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          radius: Math.random() * 1.8 + 0.8,
+          alpha: Math.random() * 0.5 + 0.2
+        });
+      }
+
+      let animId = null;
+
+      function renderParticles() {
+        if (document.hidden) {
+          animId = requestAnimationFrame(renderParticles);
+          return;
+        }
+
+        ctx.clearRect(0, 0, width, height);
+
+        const isDark = body.classList.contains("dark");
+        const dotColor = isDark ? "56, 189, 248" : "2, 132, 199";
+
+        // Update & draw particles
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0) p.x = width;
+          else if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          else if (p.y > height) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${dotColor}, ${p.alpha * (isDark ? 0.8 : 0.4)})`;
+          ctx.fill();
+
+          // Connect nearby particles
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 110) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(${dotColor}, ${(1 - dist / 110) * 0.14})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+
+        animId = requestAnimationFrame(renderParticles);
+      }
+
+      renderParticles();
+    }
+
+    // ------------------------------------------------------------------------
+    // 10. Live Animated ECG Waveform Monitor (Hero Visualization)
+    // ------------------------------------------------------------------------
+    const ecgCanvas = document.getElementById("knEcgCanvas");
+    if (ecgCanvas && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const eCtx = ecgCanvas.getContext("2d");
+      let ecgW = (ecgCanvas.width = ecgCanvas.offsetWidth || 500);
+      let ecgH = (ecgCanvas.height = ecgCanvas.offsetHeight || 170);
+
+      window.addEventListener("resize", () => {
+        if (ecgCanvas.offsetWidth) {
+          ecgW = ecgCanvas.width = ecgCanvas.offsetWidth;
+          ecgH = ecgCanvas.height = ecgCanvas.offsetHeight;
+        }
+      });
+
+      // Authentic P-Q-R-S-T waveform pattern
+      // Values between -1.0 and +1.0
+      function getEcgY(progress) {
+        const p = progress % 1;
+        // Baseline flat
+        if (p < 0.12) return 0;
+        // P wave
+        if (p < 0.22) {
+          const t = (p - 0.12) / 0.1;
+          return Math.sin(t * Math.PI) * 0.2;
+        }
+        // PR segment
+        if (p < 0.32) return 0;
+        // Q dip
+        if (p < 0.36) {
+          const t = (p - 0.32) / 0.04;
+          return -Math.sin(t * Math.PI) * 0.15;
+        }
+        // R spike (dramatic upward deflection)
+        if (p < 0.44) {
+          const t = (p - 0.36) / 0.08;
+          return Math.sin(t * Math.PI) * 0.95;
+        }
+        // S dip
+        if (p < 0.50) {
+          const t = (p - 0.44) / 0.06;
+          return -Math.sin(t * Math.PI) * 0.28;
+        }
+        // ST segment
+        if (p < 0.60) return 0;
+        // T wave (repolarization)
+        if (p < 0.78) {
+          const t = (p - 0.60) / 0.18;
+          return Math.sin(t * Math.PI) * 0.35;
+        }
+        // TP baseline
+        return 0;
+      }
+
+      let scanX = 0;
+      const speed = 2.2;
+      const scanWidth = 35;
+      const history = new Array(Math.ceil(ecgW)).fill(0);
+      const midY = ecgH * 0.58;
+
+      function renderEcg() {
+        if (document.hidden) {
+          requestAnimationFrame(renderEcg);
+          return;
+        }
+
+        const isDark = body.classList.contains("dark");
+        const traceColor = isDark ? "#38bdf8" : "#0284c7";
+        const glowColor = isDark ? "rgba(56, 189, 248, 0.4)" : "rgba(2, 132, 199, 0.3)";
+
+        // Clear scan beam zone
+        eCtx.clearRect(scanX, 0, scanWidth, ecgH);
+
+        // Compute current sample
+        const cycleLength = 220; // pixels per cardiac cycle
+        const progress = (scanX % cycleLength) / cycleLength;
+        const sampleVal = getEcgY(progress);
+        const curY = midY - sampleVal * (ecgH * 0.42);
+
+        history[Math.floor(scanX)] = curY;
+
+        // Draw line segment
+        const prevX = scanX > 0 ? scanX - speed : 0;
+        const prevY = history[Math.floor(prevX)] || midY;
+
+        eCtx.beginPath();
+        eCtx.moveTo(prevX, prevY);
+        eCtx.lineTo(scanX, curY);
+        eCtx.strokeStyle = traceColor;
+        eCtx.lineWidth = 2.2;
+        eCtx.lineCap = "round";
+        eCtx.shadowColor = glowColor;
+        eCtx.shadowBlur = 10;
+        eCtx.stroke();
+        eCtx.shadowBlur = 0;
+
+        // Glowing cursor head
+        eCtx.beginPath();
+        eCtx.arc(scanX, curY, 3.5, 0, Math.PI * 2);
+        eCtx.fillStyle = "#ffffff";
+        eCtx.shadowColor = traceColor;
+        eCtx.shadowBlur = 14;
+        eCtx.fill();
+        eCtx.shadowBlur = 0;
+
+        scanX += speed;
+        if (scanX >= ecgW) {
+          scanX = 0;
+        }
+
+        requestAnimationFrame(renderEcg);
+      }
+
+      renderEcg();
+    }
+
+    // ------------------------------------------------------------------------
+    // 11. Google Sheets API Client with SessionStorage Caching
     // ------------------------------------------------------------------------
     function esc(s) {
       return String(s || "").replace(/[&<>"']/g, ch => ({
@@ -202,8 +409,8 @@
     }
 
     const api = window.KNOCKOUTNOTES_API;
-    const CACHE_KEY = "kn_api_data_v2";
-    const CACHE_TTL = 5 * 60 * 1000; // 5 minutes cache
+    const CACHE_KEY = "kn_api_data_v3";
+    const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
     function loadData() {
       if (!api) return Promise.reject(new Error("KnockoutNotes API missing"));
@@ -259,19 +466,19 @@
     function resourceLinks(x) {
       let links = "";
       if (x.url) {
-        links += `<a class="btn secondary" style="padding:7px 12px;font-size:12px;" href="${esc(x.url)}" target="_blank" rel="noopener">🔗 Official Source</a>`;
+        links += `<a class="btn-cinematic glass" style="padding:7px 14px;font-size:12px;" href="${esc(x.url)}" target="_blank" rel="noopener">🔗 Source</a>`;
       }
       if (x.pdf) {
-        links += `<a class="btn secondary" style="padding:7px 12px;font-size:12px;" href="${esc(x.pdf)}" target="_blank" rel="noopener">📄 PDF</a>`;
+        links += `<a class="btn-cinematic glass" style="padding:7px 14px;font-size:12px;" href="${esc(x.pdf)}" target="_blank" rel="noopener">📄 PDF</a>`;
       }
       if (x.slides) {
-        links += `<a class="btn secondary" style="padding:7px 12px;font-size:12px;" href="${esc(x.slides)}" target="_blank" rel="noopener">🎞 Slides</a>`;
+        links += `<a class="btn-cinematic glass" style="padding:7px 14px;font-size:12px;" href="${esc(x.slides)}" target="_blank" rel="noopener">🎞 Slides</a>`;
       }
-      return links ? `<div class="actions" style="margin-top:14px;gap:8px;">${links}</div>` : "";
+      return links ? `<div class="hero-actions" style="margin-top:16px;gap:8px;">${links}</div>` : "";
     }
 
     // ------------------------------------------------------------------------
-    // 10. Populate Marquee Ticker (Viva & Home)
+    // 12. Populate Marquee Ticker (Viva & Home)
     // ------------------------------------------------------------------------
     const ticker = document.getElementById("knLatestTicker");
     if (ticker) {
@@ -285,17 +492,16 @@
             <span class="kn-ticker-title">${esc(x.title)}</span>
             ${x.date ? `<span class="kn-ticker-date">${esc(x.date)}</span>` : ""}
           </span>`).join("");
-        // Duplicate for seamless continuous CSS marquee scroll
         ticker.innerHTML = items + items;
       }).catch(() => {
         ticker.innerHTML =
           '<span class="kn-ticker-item"><span class="kn-ticker-dot"></span>' +
-          '<span class="kn-ticker-title">Latest high-yield notes and guideline updates.</span></span>';
+          '<span class="kn-ticker-title">High-yield anaesthesia, critical care & viva updates.</span></span>';
       });
     }
 
     // ------------------------------------------------------------------------
-    // 11. Populate Home Bento Guideline Watch Widget
+    // 13. Populate Home Bento Guideline Watch Widget
     // ------------------------------------------------------------------------
     const homeUpdates = document.getElementById("knHomeUpdates");
     if (homeUpdates) {
@@ -306,26 +512,26 @@
         })).slice(0, 4);
 
         if (!updates.length) {
-          homeUpdates.innerHTML = '<p class="text-muted" style="margin:0;font-size:13px;">No new alerts today.</p>';
+          homeUpdates.innerHTML = '<p style="margin:0;font-size:13.5px;color:var(--text-muted);">No new guideline alerts today.</p>';
           return;
         }
 
         homeUpdates.innerHTML = updates.map(x => `
-          <a class="kn-search-result" style="padding:10px 14px;margin-bottom:8px;" href="recent-updates.html">
+          <a class="kn-search-result" style="padding:12px 16px;margin-bottom:10px;" href="recent-updates.html">
             <div class="kn-search-result-top">
               <span class="kn-search-type">🚨 ${esc(x.category || "Guideline")}</span>
               ${x.date ? `<span class="card-date">• ${esc(x.date)}</span>` : ""}
             </div>
-            <h4 style="margin:4px 0 2px;font-size:14px;">${esc(x.title)}</h4>
-            ${x.summary ? `<p style="font-size:12px;margin:0;color:var(--text-muted);">${esc(x.summary)}</p>` : ""}
+            <h4 style="margin:6px 0 4px;font-size:14.5px;">${esc(x.title)}</h4>
+            ${x.summary ? `<p style="font-size:12.5px;margin:0;color:var(--text-secondary);">${esc(x.summary)}</p>` : ""}
           </a>`).join("");
       }).catch(() => {
-        homeUpdates.innerHTML = '<p style="font-size:13px;color:var(--text-muted);margin:0;">Recent guideline updates will appear here.</p>';
+        homeUpdates.innerHTML = '<p style="font-size:13px;color:var(--text-muted);margin:0;">Recent guideline alerts will appear here.</p>';
       });
     }
 
     // ------------------------------------------------------------------------
-    // 12. Populate Section Pages (Drugs, Critical Care, etc.)
+    // 14. Populate Section Pages (Drugs, Critical Care, etc.)
     // ------------------------------------------------------------------------
     const sheetContent = document.getElementById("sheetContent");
     if (sheetContent) {
@@ -377,7 +583,7 @@
     }
 
     // ------------------------------------------------------------------------
-    // 13. Populate Recent Updates Grid (recent-updates.html)
+    // 15. Populate Recent Updates Grid (recent-updates.html)
     // ------------------------------------------------------------------------
     const recentGrid = document.getElementById("recentUpdatesGrid");
     if (recentGrid) {
@@ -404,7 +610,7 @@
               <h3>${esc(x.title)}</h3>
               ${x.summary ? `<p>${esc(x.summary)}</p>` : ""}
               ${x.answer ? `
-                <div class="answer open" id="${ansId}" style="margin-top:8px;">
+                <div class="answer open" id="${ansId}" style="margin-top:10px;">
                   <div>${esc(x.answer)}</div>
                   ${x.reference ? `<small class="reference">Reference: ${esc(x.reference)}</small>` : ""}
                 </div>` : ""}
@@ -421,7 +627,6 @@
       });
     }
 
-    // Expose data loader for search module
     window.KnockoutNotesData = { loadData, newest };
   }
 

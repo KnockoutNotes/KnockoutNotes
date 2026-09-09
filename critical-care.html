@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Critical Care | KnockoutNotes</title>
-  <meta name="description" content="Critical care and ICU learning for anaesthesia trainees.">
+  <title>Critical Care & ICU | KnockoutNotes</title>
+  <meta name="description" content="Critical care and ICU learning: ventilation protocols, hemodynamic monitoring, and resuscitation.">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="page-common.css">
   <link rel="stylesheet" href="library-styles.css">
@@ -14,11 +14,16 @@
 </head>
 <body data-content-page="critical-care">
 
-<!-- Navigation Header -->
+<!-- Background Ambient Particle Canvas -->
+<canvas id="knParticleCanvas"></canvas>
+
+<!-- Floating Island Capsule Navigation -->
 <nav class="site-nav">
-  <div class="nav-inner">
+  <div class="nav-capsule">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
-      <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      <div class="brand-icon-wrap">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      </div>
       <div class="brand-name">Knockout<span>Notes</span></div>
     </a>
     <div class="nav-links">
@@ -33,7 +38,7 @@
     </div>
     <div class="nav-actions">
       <button class="nav-search-trigger" data-open-search aria-label="Open search">
-        <span>⌕ Search</span>
+        <span>Search</span>
         <kbd>⌘K</kbd>
       </button>
       <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
@@ -56,9 +61,9 @@
   <!-- In-Page Sitewide Search Section -->
   <section class="kn-search-section">
     <div class="kn-search-card">
-      <div class="kn-search-kicker">⌕ SITEWIDE CLINICAL DATABASE</div>
-      <h1>Search KnockoutNotes</h1>
-      <p>Search ICU pearls, notes, drugs, scoring systems, and resuscitation guidelines.</p>
+      <div class="kn-search-kicker">⌕ ICU DATABASE SEARCH</div>
+      <h1>Search Critical Care Knowledge</h1>
+      <p>Search ICU scoring calculators, ventilator protocols, septic shock pathways, and monitoring algorithms.</p>
       <div class="kn-site-search">
         <span class="kn-search-icon">⌕</span>
         <input id="knSiteSearch" type="search" placeholder="Search SOFA, ARDS, septic shock, vasopressors, ECMO…">
@@ -71,9 +76,9 @@
 
   <!-- Page Header -->
   <div class="section-head fade">
-    <span class="kicker">🚨 INTENSIVE CARE UNIT</span>
+    <div class="kicker-pill">🚨 INTENSIVE CARE UNIT</div>
     <h2>Critical Care Visuals & Scoring</h2>
-    <p>Ventilation mechanics, ICU scoring systems (SOFA, NEWS2, MEWS), hemodynamic shock algorithms, and resuscitation.</p>
+    <p>Ventilation mechanics, ICU scoring systems (SOFA, NEWS2, MEWS), hemodynamic shock algorithms, and resuscitation protocols.</p>
   </div>
 
   <!-- Tabbed Content Library Mount -->
@@ -84,7 +89,7 @@
   <!-- High Yield ICU Pearls -->
   <section class="section">
     <div class="section-head fade">
-      <span class="kicker">HIGH-YIELD ICU</span>
+      <div class="kicker-pill">ICU ESSENTIALS</div>
       <h2>Clinical ICU Pearls</h2>
       <p>Core evidence-based algorithms and physiological frameworks.</p>
     </div>
@@ -165,7 +170,7 @@
   <div class="kn-modal-box">
     <div class="kn-modal-header">
       <span class="kn-search-icon">⌕</span>
-      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search ICU scores, drugs, ventilator protocols..." autocomplete="off">
+      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search pearls, drugs, scores, viva questions..." autocomplete="off">
       <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
       <button class="kn-modal-close" data-close-modal>ESC</button>
     </div>
@@ -175,7 +180,7 @@
     </div>
     <div class="kn-modal-footer">
       <span>Pro-tip: Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
-      <span>KnockoutNotes Search</span>
+      <span>KnockoutNotes Precision Search</span>
     </div>
   </div>
 </div>
@@ -185,7 +190,9 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <div class="brand">
-        <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        <div class="brand-icon-wrap">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        </div>
         <div class="brand-name">Knockout<span>Notes</span></div>
       </div>
       <p>Anaesthesia • Critical Care • Viva</p>
@@ -197,7 +204,7 @@
         <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
         <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
       </div>
-      <p class="footer-copy">© 2026 KnockoutNotes</p>
+      <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
     </div>
   </div>
 </footer>

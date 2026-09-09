@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resources | KnockoutNotes</title>
-  <meta name="description" content="Reference shelf and editorial citation standards for KnockoutNotes.">
+  <title>Reference Shelf | KnockoutNotes</title>
+  <meta name="description" content="Reference textbooks, international guideline sources, and editorial standards for KnockoutNotes.">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="page-common.css">
   <script src="sheet-config.js"></script>
@@ -14,11 +14,16 @@
 </head>
 <body data-content-page="resources">
 
-<!-- Navigation Header -->
+<!-- Background Ambient Particle Canvas -->
+<canvas id="knParticleCanvas"></canvas>
+
+<!-- Floating Island Capsule Navigation -->
 <nav class="site-nav">
-  <div class="nav-inner">
+  <div class="nav-capsule">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
-      <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      <div class="brand-icon-wrap">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      </div>
       <div class="brand-name">Knockout<span>Notes</span></div>
     </a>
     <div class="nav-links">
@@ -33,7 +38,7 @@
     </div>
     <div class="nav-actions">
       <button class="nav-search-trigger" data-open-search aria-label="Open search">
-        <span>⌕ Search</span>
+        <span>Search</span>
         <kbd>⌘K</kbd>
       </button>
       <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
@@ -55,7 +60,7 @@
 <main class="container">
   <section class="section">
     <div class="section-head fade">
-      <span class="kicker">📖 REFERENCE SHELF</span>
+      <div class="kicker-pill">📖 REFERENCE SHELF</div>
       <h2>Textbooks & Standards</h2>
       <p>KnockoutNotes strictly prioritises current international guidelines, clinical consensus statements, and standard post-graduate anaesthesia textbooks.</p>
     </div>
@@ -68,7 +73,7 @@
         </div>
         <h3>Core Curriculum Textbooks</h3>
         <p>Current editions referenced across all content:</p>
-        <ul style="padding-left:18px;margin:0 0 12px;color:var(--text-muted);font-size:14px;line-height:1.7;">
+        <ul style="padding-left:18px;margin:0 0 14px;color:var(--text-secondary);font-size:14px;line-height:1.75;">
           <li><strong>Miller's Anesthesia</strong>, 10th Edition</li>
           <li><strong>Barash, Cullen & Stoelting's Clinical Anesthesia</strong>, 9th Edition</li>
           <li><strong>Stoelting's Pharmacology & Physiology in Anesthetic Practice</strong>, 6th Edition</li>
@@ -94,7 +99,7 @@
         </div>
         <h3>Difficult Airway & Sepsis</h3>
         <p>Guideline citations for emergency algorithms:</p>
-        <ul style="padding-left:18px;margin:0 0 12px;color:var(--text-muted);font-size:14px;line-height:1.7;">
+        <ul style="padding-left:18px;margin:0 0 14px;color:var(--text-secondary);font-size:14px;line-height:1.75;">
           <li><strong>Difficult Airway Society (DAS)</strong> 2025 Guidelines</li>
           <li><strong>Surviving Sepsis Campaign</strong> 2026 International Guidelines</li>
           <li><strong>NYSORA</strong> Regional Anesthesia Protocols</li>
@@ -106,8 +111,8 @@
     <!-- Editorial Policy Section -->
     <section class="section" style="padding-bottom:0;">
       <div class="section-head fade">
-        <span class="kicker">EDITORIAL TRANSPARENCY</span>
-        <h2>Source Policy</h2>
+        <div class="kicker-pill">EDITORIAL INTEGRITY</div>
+        <h2>Evidence Hierarchy Policy</h2>
         <p>Every clinical answer carries a verified source citation.</p>
       </div>
       <div class="card fade">
@@ -115,7 +120,7 @@
           <div class="tag">Policy Hierarchy</div>
           <span class="card-date">Evidence-Based</span>
         </div>
-        <p style="font-size:15px;line-height:1.7;"><strong>Order of Evidence Priority:</strong> Major clinical society guidelines and consensus statements (ASA, DAS, ESAIC, AHA, SCCM) take precedence for procedural algorithms and dosage recommendations. Core physiology and pharmacology mechanisms reference the standard textbooks above. In clinical practice, always verify current product labelling, institutional protocols, and patient-specific variables.</p>
+        <p style="font-size:15px;line-height:1.75;"><strong>Order of Evidence Priority:</strong> Major clinical society guidelines and consensus statements (ASA, DAS, ESAIC, AHA, SCCM) take precedence for procedural algorithms and dosage recommendations. Core physiology and pharmacology mechanisms reference the standard textbooks above. In clinical practice, always verify current product labelling, institutional protocols, and patient-specific variables.</p>
         <small class="reference">Editorial governance: KnockoutNotes Medical Education Board.</small>
       </div>
     </section>
@@ -135,7 +140,7 @@
   <div class="kn-modal-box">
     <div class="kn-modal-header">
       <span class="kn-search-icon">⌕</span>
-      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search textbooks, guidelines, policies..." autocomplete="off">
+      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search pearls, drugs, scores, viva questions..." autocomplete="off">
       <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
       <button class="kn-modal-close" data-close-modal>ESC</button>
     </div>
@@ -145,7 +150,7 @@
     </div>
     <div class="kn-modal-footer">
       <span>Pro-tip: Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
-      <span>KnockoutNotes Search</span>
+      <span>KnockoutNotes Precision Search</span>
     </div>
   </div>
 </div>
@@ -155,7 +160,9 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <div class="brand">
-        <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        <div class="brand-icon-wrap">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        </div>
         <div class="brand-name">Knockout<span>Notes</span></div>
       </div>
       <p>Anaesthesia • Critical Care • Viva</p>
@@ -167,7 +174,7 @@
         <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
         <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
       </div>
-      <p class="footer-copy">© 2026 KnockoutNotes</p>
+      <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
     </div>
   </div>
 </footer>

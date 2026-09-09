@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viva | KnockoutNotes</title>
-  <meta name="description" content="MD Anaesthesia viva questions with concise referenced answers.">
+  <title>Viva Classics | KnockoutNotes</title>
+  <meta name="description" content="MD Anaesthesia viva exam preparation: high-frequency questions with referenced model answers.">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="page-common.css">
   <script src="sheet-config.js"></script>
@@ -14,11 +14,16 @@
 </head>
 <body data-content-page="viva">
 
-<!-- Navigation Header -->
+<!-- Background Ambient Particle Canvas -->
+<canvas id="knParticleCanvas"></canvas>
+
+<!-- Floating Island Capsule Navigation -->
 <nav class="site-nav">
-  <div class="nav-inner">
+  <div class="nav-capsule">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
-      <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      <div class="brand-icon-wrap">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      </div>
       <div class="brand-name">Knockout<span>Notes</span></div>
     </a>
     <div class="nav-links">
@@ -33,7 +38,7 @@
     </div>
     <div class="nav-actions">
       <button class="nav-search-trigger" data-open-search aria-label="Open search">
-        <span>⌕ Search</span>
+        <span>Search</span>
         <kbd>⌘K</kbd>
       </button>
       <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
@@ -68,9 +73,9 @@
 
   <!-- Page Header -->
   <div class="section-head fade">
-    <span class="kicker">🧠 EXAM REVISION</span>
-    <h2>Viva Classics</h2>
-    <p>Concise answers, exact values, and standard textbook citations beneath every answer.</p>
+    <div class="kicker-pill">🧠 EXAM PREPARATION CHAMBER</div>
+    <h2>Viva Exam Classics</h2>
+    <p>Concise answers, exact values, and standard textbook citations beneath every challenge.</p>
   </div>
 
   <div class="grid">
@@ -178,7 +183,7 @@
   <div class="kn-modal-box">
     <div class="kn-modal-header">
       <span class="kn-search-icon">⌕</span>
-      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search viva, drugs, pearls, scores..." autocomplete="off">
+      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search pearls, drugs, scores, viva questions..." autocomplete="off">
       <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
       <button class="kn-modal-close" data-close-modal>ESC</button>
     </div>
@@ -188,7 +193,7 @@
     </div>
     <div class="kn-modal-footer">
       <span>Pro-tip: Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
-      <span>KnockoutNotes Search</span>
+      <span>KnockoutNotes Precision Search</span>
     </div>
   </div>
 </div>
@@ -198,7 +203,9 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <div class="brand">
-        <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        <div class="brand-icon-wrap">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        </div>
         <div class="brand-name">Knockout<span>Notes</span></div>
       </div>
       <p>Anaesthesia • Critical Care • Viva</p>
@@ -210,7 +217,7 @@
         <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
         <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
       </div>
-      <p class="footer-copy">© 2026 KnockoutNotes</p>
+      <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
     </div>
   </div>
 </footer>

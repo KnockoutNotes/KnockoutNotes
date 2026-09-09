@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recent Updates | KnockoutNotes</title>
-  <meta name="description" content="Recent guideline and clinical practice updates in anaesthesia and critical care.">
+  <title>Recent Practice Updates | KnockoutNotes</title>
+  <meta name="description" content="Recent guideline alerts, consensus statements and clinical practice updates in anaesthesia and critical care.">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="page-common.css">
   <script src="sheet-config.js"></script>
@@ -14,11 +14,16 @@
 </head>
 <body data-content-page="recent-updates">
 
-<!-- Navigation Header -->
+<!-- Background Ambient Particle Canvas -->
+<canvas id="knParticleCanvas"></canvas>
+
+<!-- Floating Island Capsule Navigation -->
 <nav class="site-nav">
-  <div class="nav-inner">
+  <div class="nav-capsule">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
-      <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      <div class="brand-icon-wrap">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      </div>
       <div class="brand-name">Knockout<span>Notes</span></div>
     </a>
     <div class="nav-links">
@@ -33,7 +38,7 @@
     </div>
     <div class="nav-actions">
       <button class="nav-search-trigger" data-open-search aria-label="Open search">
-        <span>⌕ Search</span>
+        <span>Search</span>
         <kbd>⌘K</kbd>
       </button>
       <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
@@ -55,20 +60,20 @@
 <main class="container">
   <section class="section">
     <div class="section-head fade">
-      <span class="kicker">🚨 CLINICAL EVIDENCE WATCH</span>
+      <div class="kicker-pill">🚨 CLINICAL EVIDENCE RADAR</div>
       <h2>Recent Practice Updates</h2>
       <p>Major international consensus statements, clinical practice guidelines, algorithm revisions, and safety communications.</p>
     </div>
 
     <!-- Explanation Card -->
-    <div class="card fade" style="margin-bottom:28px;">
+    <div class="card fade" style="margin-bottom:32px;">
       <div class="card-top">
         <div class="tag">Editorial Policy</div>
-        <span class="card-date">Curated Evidence</span>
+        <span class="card-date">Evidence Radar</span>
       </div>
       <h3>How This Guideline Feed Works</h3>
-      <p>This feed is intentionally distinguished from generic site additions. It tracks major shifts in clinical recommendations (e.g., DAS Difficult Airway 2025, Surviving Sepsis 2026, AHA CPR & ECC 2025). Items are published in real-time through the editorial Google Sheet.</p>
-      <small class="reference">Editorial workflow: Add rows with Type = Update in the connected Google Sheet.</small>
+      <p>This feed tracks major shifts in clinical practice standards (e.g., DAS Difficult Airway 2025, Surviving Sepsis 2026, AHA CPR & ECC 2025). Items are published in real-time through the editorial Google Sheet.</p>
+      <small class="reference">Editorial workflow: Rows marked with Type = Update in Google Sheets appear here automatically.</small>
     </div>
 
     <!-- Live Grid -->
@@ -80,13 +85,20 @@
   </section>
 </main>
 
+<!-- Floating Updates Pill -->
+<a class="kn-updates-pill" href="recent-updates.html" aria-label="Recent KnockoutNotes updates">
+  <span class="kn-blink"></span>
+  <span class="kn-updates-pill-text">Recent Updates</span>
+  <span class="kn-updates-pill-badge">Live</span>
+</a>
+
 <!-- Universal Command Palette Search Modal -->
 <div class="kn-modal" id="knSearchModal" role="dialog" aria-modal="true" aria-label="Search KnockoutNotes">
   <div class="kn-modal-backdrop" data-close-modal></div>
   <div class="kn-modal-box">
     <div class="kn-modal-header">
       <span class="kn-search-icon">⌕</span>
-      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search guidelines, scores, drugs..." autocomplete="off">
+      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search pearls, drugs, scores, viva questions..." autocomplete="off">
       <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
       <button class="kn-modal-close" data-close-modal>ESC</button>
     </div>
@@ -96,7 +108,7 @@
     </div>
     <div class="kn-modal-footer">
       <span>Pro-tip: Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
-      <span>KnockoutNotes Search</span>
+      <span>KnockoutNotes Precision Search</span>
     </div>
   </div>
 </div>
@@ -106,7 +118,9 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <div class="brand">
-        <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        <div class="brand-icon-wrap">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        </div>
         <div class="brand-name">Knockout<span>Notes</span></div>
       </div>
       <p>Anaesthesia • Critical Care • Viva</p>
@@ -118,7 +132,7 @@
         <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
         <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
       </div>
-      <p class="footer-copy">© 2026 KnockoutNotes</p>
+      <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
     </div>
   </div>
 </footer>
