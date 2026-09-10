@@ -71,7 +71,7 @@ export function createInteractions(engine, machine) {
     const data = componentById(mesh.userData.componentId);
     if (data) renderInfoPanel(data);
     // Drawer components toggle open/closed on click, in addition to the info panel.
-    if (mesh.userData.componentId && mesh.userData.subsystem === "drawer") {
+    if (mesh.userData.componentId && mesh.userData.system === "drawer") {
       const isOpen = mesh.userData.opening;
       engine.openDrawer(mesh.userData.componentId, !isOpen);
       document.dispatchEvent(new CustomEvent("vent:drawer-toggled", { detail: { id: mesh.userData.componentId, open: !isOpen } }));

@@ -337,6 +337,31 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.vent-placeholder-banner[hidden] { display: none; }
+.vent-placeholder-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(251, 191, 36, 0.22) 0px, rgba(251, 191, 36, 0.22) 10px,
+    rgba(15, 23, 42, 0.92) 10px, rgba(15, 23, 42, 0.92) 20px
+  );
+  border-bottom: 1px solid rgba(251, 191, 36, 0.5);
+  color: #fde68a;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.4;
+  text-align: center;
+  justify-content: center;
+}
+
 /* ---- Info panel (floating card, desktop) ---- */
 .vent-info-panel {
   position: absolute;

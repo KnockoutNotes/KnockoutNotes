@@ -1,479 +1,145 @@
 /* ==========================================================================
    KNOCKOUTNOTES — Ventilator 3D Engine (ventilator-3d.js)
-   Real WebGL/Three.js scene: camera, controls, raycasting, machine builders.
+   Real WebGL/Three.js scene: camera, controls, raycasting.
 
-   Placeholder-geometry architecture: each machine is built from simple
-   primitives, but every interactive part is a uniquely-named Object3D
-   (mesh.name === componentId, matching ventilator-data.js) with
-   mesh.userData populated the same way a real GLB's named nodes would be.
-   buildMachine() tries to load assets/ventilators/<id>/model.glb first and
-   falls back to the procedural placeholder if none exists, so a real model
-   can be dropped in later without touching the interaction/animation code —
-   only the node names in the .glb need to match the componentId values.
+   ASSET-READY ARCHITECTURE — read this before touching this file.
+
+   This engine has ZERO knowledge of what a Boyle's machine or a modern
+   workstation actually looks like. It only knows how to:
+     1. load a named 3D model for a given machineId (loadMachineModel),
+     2. join every node whose name matches a componentId in
+        ventilator-data.js with that component's metadata
+        (annotateFromData),
+     3. group tagged nodes by their "system" field into synthetic groups
+        for exploded view (groupBySystem),
+     4. raycast, highlight, focus the camera, tween the camera, animate a
+        gas-flow particle system along named nodes' world positions, and
+        toggle exploded/X-ray view — all driven purely by componentId /
+        system / internal metadata, never by hard-coded mesh names.
+
+   loadMachineModel(machineId) is the ONE place that decides where geometry
+   comes from: it tries assets/ventilators/<machineId>/model.glb first, and
+   falls back to the honest, clearly-labelled development placeholder in
+   ventilator-placeholder.js if no real model exists yet. Dropping in a
+   real .glb whose mesh names match the componentId values in
+   ventilator-data.js requires NO changes to this file. See
+   VENTILATOR_3D_ASSET_SPEC.md for the full node/metadata contract and the
+   exact node list required per machine.
    ========================================================================== */
 
 import * as THREE from "./vendor/three/build/three.module.js";
 import { OrbitControls } from "./vendor/three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "./vendor/three/examples/jsm/loaders/GLTFLoader.js";
+import { buildPlaceholderMachine } from "./ventilator-placeholder.js";
 
 const CYAN = 0x38bdf8;
 const AMBER = 0xfbbf24;
-const HOUSING_GREY = 0xdfe4ec;
-const BOYLES_BLUE = 0x2f5fa8;
-const VAPORIZER_A = 0xf0c419; // agent-colour convention varies by manufacturer/agent — illustrative only
-const VAPORIZER_B = 0xcc3a3a;
-const ABSORBENT_COLOR = 0xf1d9d6; // fresh soda-lime granule tone — colour-change indicator is product-dependent
-const CYLINDER_COLORS = { O2: 0xe7ecf3, N2O: 0x4f7dd6, AIR: 0x2c333d };
 
 function easeInOutCubic(t) {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
 
 // ---------------------------------------------------------------------------
-// Machine builders — placeholder geometry, uniquely-named nodes.
+// Asset-loading layer — the only code that knows about .glb paths or the
+// placeholder fallback. Everything below (the engine) just receives a
+// THREE.Group of correctly-named nodes and doesn't care where it came from.
 // ---------------------------------------------------------------------------
 
-function labelSprite(text) {
-  const canvas = document.createElement("canvas");
-  canvas.width = 256; canvas.height = 64;
-  const ctx = canvas.getContext("2d");
-  ctx.font = "700 28px 'JetBrains Mono', monospace";
-  ctx.fillStyle = "#020617";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillText(text, 128, 34);
-  const tex = new THREE.CanvasTexture(canvas);
-  return tex;
+function tryLoadGLB(machineId) {
+  return new Promise(resolve => {
+    const loader = new GLTFLoader();
+    const url = "assets/ventilators/" + machineId + "/model.glb";
+    loader.load(url, gltf => resolve(gltf.scene), undefined, () => resolve(null));
+  });
 }
 
-function mkMesh(geo, color, opts) {
-  opts = opts || {};
-  const mat = new THREE.MeshStandardMaterial({
-    color, metalness: opts.metalness != null ? opts.metalness : 0.35,
-    roughness: opts.roughness != null ? opts.roughness : 0.55,
-    transparent: !!opts.transparent, opacity: opts.opacity != null ? opts.opacity : 1
+/**
+ * Resolves to { group, isPlaceholder }. Real .glb nodes may carry their own
+ * userData via glTF "extras" (GLTFLoader maps a node's extras object onto
+ * object.userData automatically) — annotateFromData() below still applies
+ * ventilator-data.js as the source of truth for every field except
+ * componentId itself (read from extras.componentId if present, else the
+ * node's name), so a modelling tool that can't author custom extras can
+ * rely on node NAMING ALONE and still work correctly.
+ */
+function loadMachineModel(machineId) {
+  return tryLoadGLB(machineId).then(gltfGroup => {
+    if (gltfGroup) return { group: gltfGroup, isPlaceholder: false };
+    return { group: buildPlaceholderMachine(machineId), isPlaceholder: true };
   });
-  const mesh = new THREE.Mesh(geo, mat);
-  mesh.userData.baseColor = color;
-  mesh.userData.baseOpacity = mat.opacity;
-  mesh.userData.baseEmissive = 0x000000;
-  return mesh;
 }
 
-function tagComponent(mesh, data) {
-  mesh.name = data.id;
-  mesh.userData.componentId = data.id;
-  mesh.userData.subsystem = data.subsystem || "frame";
-  mesh.userData.isHousing = !!data.isHousing;
-  mesh.userData.internal = !!data.internal;
-  return mesh;
+/** Joins every named node to its ventilator-data.js component record. */
+function annotateFromData(root, machineId) {
+  const machine = window.VentilatorData.machines[machineId];
+  const byId = {};
+  (machine ? machine.components : []).forEach(c => { byId[c.id] = c; });
+  root.traverse(o => {
+    if (!o.isMesh) return;
+    const id = o.userData.componentId || o.name;
+    const data = byId[id];
+    if (!data) return; // decorative/non-interactive node — never raycastable
+    o.name = id;
+    o.userData.componentId = id;
+    o.userData.system = data.system || "frame";
+    o.userData.internal = !!data.internal;
+    o.userData.isHousing = !!data.isHousing;
+    o.userData.rearView = !!data.rearView;
+    o.userData.animationId = data.animationId || null;
+    if (o.userData.baseOpacity == null) o.userData.baseOpacity = o.material.opacity != null ? o.material.opacity : 1;
+    if (o.userData.baseEmissive == null) o.userData.baseEmissive = 0x000000;
+  });
 }
 
-function addLabelDot(group, position) {
-  // Small always-present index dot at each component's anchor, purely
-  // cosmetic — the real identification affordance is hover/click, this just
-  // helps a bare placeholder scene read as "a real machine" from a distance.
-  const dot = new THREE.Mesh(
-    new THREE.SphereGeometry(0.015, 8, 8),
-    new THREE.MeshBasicMaterial({ color: CYAN, transparent: true, opacity: 0.55 })
-  );
-  dot.position.copy(position);
-  dot.raycast = () => {}; // decorative only, never intercepts picking
-  group.add(dot);
+/**
+ * Regroups every annotated mesh under a synthetic per-system THREE.Group
+ * (created fresh each load, attached directly under root) using
+ * Object3D.attach(), which preserves each mesh's world transform during
+ * reparenting — so this works identically whether the source hierarchy is
+ * the flat placeholder or an arbitrarily-nested real .glb. Exploded view
+ * then just translates these groups; nothing else needs to know how the
+ * model was originally organised.
+ */
+function groupBySystem(root) {
+  const groups = {};
+  const meshes = [];
+  root.traverse(o => { if (o.isMesh && o.userData.componentId) meshes.push(o); });
+  meshes.forEach(mesh => {
+    const key = mesh.userData.system || "frame";
+    if (!groups[key]) {
+      const g = new THREE.Group();
+      g.name = "sys_" + key;
+      root.add(g);
+      groups[key] = g;
+    }
+    groups[key].attach(mesh);
+  });
+  Object.values(groups).forEach(g => { g.userData.homePosition = g.position.clone(); });
+  return groups;
 }
 
-function buildBoylesMachine() {
-  const root = new THREE.Group();
-  root.name = "boyles_root";
-
-  const subsystems = {};
-  function sub(name, pos) {
-    const g = new THREE.Group();
-    g.name = "sys_" + name;
-    g.position.set(pos[0], pos[1], pos[2]);
-    g.userData.homePosition = g.position.clone();
-    root.add(g);
-    subsystems[name] = g;
-    return g;
-  }
-  const gasSupply = sub("gasSupply", [0, 0, -0.55]);
-  const pressure = sub("pressure", [0, 0, -0.3]);
-  const flow = sub("flow", [0, 0, 0.15]);
-  const vaporizer = sub("vaporizer", [0, 0, 0.4]);
-  const breathing = sub("breathing", [0.55, 0, 0.55]);
-  const absorber = sub("absorber", [0.55, 0, 0.55]);
-  const scavenging = sub("scavenging", [0.55, -0.3, 0.75]);
-
-  // Frame — blue trolley body, light-grey base cart (reference: classic
-  // blue Boyle's-style trolley with a canopy/hood over the flowmeter bank).
-  const base = mkMesh(new THREE.BoxGeometry(1.0, 0.08, 0.9), HOUSING_GREY, { metalness: 0.4, roughness: 0.55 });
-  base.position.set(0, 0.04, 0);
-  tagComponent(base, { id: "frame_boyles", subsystem: "frame", isHousing: true });
-  root.add(base);
-  const casterGeo = new THREE.CylinderGeometry(0.05, 0.05, 0.04, 12);
-  [[-0.42, -0.38], [0.42, -0.38], [-0.42, 0.38], [0.42, 0.38]].forEach(([x, z]) => {
-    const c = mkMesh(casterGeo, 0x0f172a, { roughness: 0.7 });
-    c.position.set(x, 0.02, z);
-    c.rotation.x = Math.PI / 2;
-    c.raycast = () => {};
-    root.add(c);
+/**
+ * Fills in generic per-node animation state that a real .glb's own extras
+ * could override but doesn't have to: a "drawer" node gets a default
+ * open/close slide offset, and any node whose animationId is
+ * "ventilator-cycle" gets its resting Y position captured so the breathing
+ * animation has a baseline to oscillate around. Collected into
+ * root.userData for the render loop to consume without re-traversing.
+ */
+function setupDefaultAnimationState(root) {
+  const ventilatorCycleMeshes = [];
+  root.traverse(o => {
+    if (!o.isMesh || !o.userData.componentId) return;
+    if (o.userData.system === "drawer" && !o.userData.openOffset) {
+      o.userData.homePosition = o.position.clone();
+      o.userData.openOffset = new THREE.Vector3(0, 0, 0.4);
+    }
+    if (o.userData.animationId === "ventilator-cycle") {
+      o.userData.homeY = o.position.y;
+      ventilatorCycleMeshes.push(o);
+    }
   });
-  const column = mkMesh(new THREE.BoxGeometry(0.16, 0.75, 0.35), BOYLES_BLUE, { metalness: 0.35, roughness: 0.45 });
-  column.position.set(0, 0.46, -0.15);
-  tagComponent(column, { id: "frame_boyles", subsystem: "frame", isHousing: true });
-  root.add(column);
-  const shelf = mkMesh(new THREE.BoxGeometry(0.9, 0.04, 0.5), BOYLES_BLUE, { metalness: 0.4, roughness: 0.45 });
-  shelf.position.set(0, 0.85, 0.05);
-  tagComponent(shelf, { id: "frame_boyles", subsystem: "frame", isHousing: true });
-  root.add(shelf);
-  const canopy = mkMesh(new THREE.BoxGeometry(0.36, 0.03, 0.45), BOYLES_BLUE, { metalness: 0.4, roughness: 0.45 });
-  canopy.position.set(0, 1.22, 0.18);
-  canopy.raycast = () => {};
-  root.add(canopy);
-
-  // ---- Gas supply: cylinders (rear) ----
-  function cylinderRig(gas, x) {
-    const g = gasSupply;
-    const body = mkMesh(new THREE.CylinderGeometry(0.055, 0.055, 0.55, 16), CYLINDER_COLORS[gas], { metalness: 0.3, roughness: 0.4 });
-    body.position.set(x, 0.42, -0.3);
-    tagComponent(body, window.VentilatorData.machines.boyles.components.find(c => c.id === "cylinder_" + gas + "_boyles"));
-    g.add(body);
-    const shoulder = mkMesh(new THREE.SphereGeometry(0.055, 12, 8, 0, Math.PI * 2, 0, Math.PI / 2), CYLINDER_COLORS[gas], { metalness: 0.3 });
-    shoulder.position.set(x, 0.695, -0.3);
-    shoulder.raycast = () => {};
-    g.add(shoulder);
-    const valve = mkMesh(new THREE.CylinderGeometry(0.02, 0.02, 0.06, 10), 0x1e293b, { metalness: 0.6 });
-    valve.position.set(x, 0.75, -0.3);
-    valve.raycast = () => {};
-    g.add(valve);
-    const yoke = mkMesh(new THREE.BoxGeometry(0.1, 0.06, 0.08), 0x1e293b, { metalness: 0.6, roughness: 0.35 });
-    yoke.position.set(x, 0.2, -0.16);
-    tagComponent(yoke, window.VentilatorData.machines.boyles.components.find(c => c.id === "yoke_" + gas + "_boyles"));
-    g.add(yoke);
-    const gauge = mkMesh(new THREE.CylinderGeometry(0.035, 0.035, 0.02, 16), 0xf8fafc, { metalness: 0.2, roughness: 0.3 });
-    gauge.position.set(x, 0.3, -0.13);
-    gauge.rotation.x = Math.PI / 2;
-    tagComponent(gauge, window.VentilatorData.machines.boyles.components.find(c => c.id === "gauge_cylinder_" + gas + "_boyles"));
-    g.add(gauge);
-    addLabelDot(g, new THREE.Vector3(x, 0.42, -0.3));
-    return { body, yoke, gauge };
-  }
-  cylinderRig("O2", -0.28);
-  cylinderRig("N2O", 0.28);
-
-  // Pipeline inlets (rear-bottom)
-  function pipelineInlet(gas, x) {
-    const g = pressure;
-    const inlet = mkMesh(new THREE.CylinderGeometry(0.025, 0.025, 0.05, 10), 0x334155, { metalness: 0.6 });
-    inlet.position.set(x, 0.12, -0.44);
-    inlet.rotation.x = Math.PI / 2;
-    tagComponent(inlet, window.VentilatorData.machines.boyles.components.find(c => c.id === "pipeline_inlet_" + gas + "_boyles"));
-    g.add(inlet);
-    const gauge = mkMesh(new THREE.CylinderGeometry(0.03, 0.03, 0.018, 16), 0xf8fafc, { roughness: 0.3 });
-    gauge.position.set(x, 0.55, -0.16);
-    gauge.rotation.z = Math.PI / 2;
-    tagComponent(gauge, window.VentilatorData.machines.boyles.components.find(c => c.id === "gauge_pipeline_" + gas + "_boyles"));
-    g.add(gauge);
-    const regulator = mkMesh(new THREE.CylinderGeometry(0.03, 0.04, 0.1, 12), 0x475569, { metalness: 0.5 });
-    regulator.position.set(x, 0.3, -0.3);
-    tagComponent(regulator, window.VentilatorData.machines.boyles.components.find(c => c.id === "pressure_regulator_" + gas + "_boyles"));
-    g.add(regulator);
-    return { inlet, gauge, regulator };
-  }
-  pipelineInlet("O2", -0.28);
-  pipelineInlet("N2O", 0.28);
-
-  // Flowmeter block (front-top, on shelf)
-  const flowBlockCase = mkMesh(new THREE.BoxGeometry(0.32, 0.32, 0.06), 0xe2e8f0, { transparent: true, opacity: 0.28, roughness: 0.15, metalness: 0.1 });
-  flowBlockCase.position.set(0, 1.05, 0.18);
-  tagComponent(flowBlockCase, { id: "flowmeter_block_boyles", subsystem: "flow" });
-  flow.add(flowBlockCase);
-  function flowTube(gas, x) {
-    const tube = mkMesh(new THREE.CylinderGeometry(0.018, 0.018, 0.26, 12), 0xbfdbfe, { transparent: true, opacity: 0.5, roughness: 0.1 });
-    tube.position.set(x, 1.05, 0.19);
-    tagComponent(tube, window.VentilatorData.machines.boyles.components.find(c => c.id === "flowmeter_" + gas + "_boyles"));
-    flow.add(tube);
-    const bobbin = mkMesh(new THREE.SphereGeometry(0.014, 10, 8), 0x0f172a, { metalness: 0.6 });
-    bobbin.position.set(x, 1.0, 0.19);
-    bobbin.raycast = () => {};
-    bobbin.userData.isBobbin = true;
-    flow.add(bobbin);
-    return { tube, bobbin };
-  }
-  const bobbinO2 = flowTube("O2", -0.06);
-  const bobbinN2O = flowTube("N2O", 0.06);
-
-  // Vaporizer
-  const vap = mkMesh(new THREE.BoxGeometry(0.18, 0.22, 0.16), VAPORIZER_A, { metalness: 0.3, roughness: 0.4 });
-  vap.position.set(0, 1.02, 0.4);
-  tagComponent(vap, { id: "vaporizer_boyles", subsystem: "vaporizer" });
-  vaporizer.add(vap);
-  const vapDial = mkMesh(new THREE.CylinderGeometry(0.035, 0.035, 0.02, 16), 0xf8fafc, {});
-  vapDial.position.set(0, 1.1, 0.49);
-  vapDial.rotation.x = Math.PI / 2;
-  vapDial.raycast = () => {};
-  vaporizer.add(vapDial);
-
-  const cgo = mkMesh(new THREE.CylinderGeometry(0.02, 0.02, 0.05, 10), 0x1e293b, { metalness: 0.6 });
-  cgo.position.set(0, 0.95, 0.5);
-  tagComponent(cgo, { id: "common_gas_outlet_boyles", subsystem: "vaporizer" });
-  vaporizer.add(cgo);
-
-  // Breathing system: hose -> absorber -> bag, APL valve, scavenging
-  const hose = mkMesh(new THREE.CylinderGeometry(0.02, 0.02, 0.32, 10), 0x475569, { roughness: 0.6 });
-  hose.position.set(0.3, 0.85, 0.55);
-  hose.rotation.z = Math.PI / 2.2;
-  tagComponent(hose, { id: "breathing_hose_boyles", subsystem: "breathing" });
-  breathing.add(hose);
-
-  const absorberCanister = mkMesh(new THREE.CylinderGeometry(0.09, 0.09, 0.28, 16), 0xeef2f6, { transparent: true, opacity: 0.55, roughness: 0.15 });
-  absorberCanister.position.set(0.55, 0.62, 0.55);
-  tagComponent(absorberCanister, { id: "co2_absorber_boyles", subsystem: "absorber" });
-  absorber.add(absorberCanister);
-  const absorbentFill = mkMesh(new THREE.CylinderGeometry(0.075, 0.075, 0.2, 16), ABSORBENT_COLOR, { roughness: 0.9 });
-  absorbentFill.position.set(0.55, 0.6, 0.55);
-  absorbentFill.raycast = () => {};
-  absorber.add(absorbentFill);
-
-  const apl = mkMesh(new THREE.CylinderGeometry(0.045, 0.045, 0.03, 16), 0x334155, { metalness: 0.5 });
-  apl.position.set(0.55, 0.78, 0.55);
-  tagComponent(apl, { id: "apl_valve_boyles", subsystem: "breathing" });
-  breathing.add(apl);
-
-  const bag = mkMesh(new THREE.SphereGeometry(0.11, 16, 12), 0x0f766e, { transparent: true, opacity: 0.85, roughness: 0.55 });
-  bag.scale.set(1, 1.3, 1);
-  bag.position.set(0.72, 0.5, 0.55);
-  tagComponent(bag, { id: "reservoir_bag_boyles", subsystem: "breathing" });
-  breathing.add(bag);
-
-  const scavHose = mkMesh(new THREE.CylinderGeometry(0.015, 0.015, 0.4, 10), 0x475569, { roughness: 0.6 });
-  scavHose.position.set(0.55, 0.35, 0.7);
-  scavHose.rotation.x = Math.PI / 5;
-  tagComponent(scavHose, { id: "scavenging_hose_boyles", subsystem: "scavenging" });
-  scavenging.add(scavHose);
-
-  root.userData.subsystems = subsystems;
-  root.userData.machineId = "boyles";
-  return root;
-}
-
-function buildModernWorkstation() {
-  const root = new THREE.Group();
-  root.name = "modern_root";
-
-  const subsystems = {};
-  function sub(name, pos) {
-    const g = new THREE.Group();
-    g.name = "sys_" + name;
-    g.position.set(pos[0], pos[1], pos[2]);
-    g.userData.homePosition = g.position.clone();
-    root.add(g);
-    subsystems[name] = g;
-    return g;
-  }
-  const gasSupply = sub("gasSupply", [-0.5, 0, -0.5]);
-  const pressure = sub("pressure", [0, 0, -0.35]);
-  const flow = sub("flow", [0, 0, 0.05]);
-  const vaporizer = sub("vaporizer", [0, 0, 0.3]);
-  const breathing = sub("breathing", [0.45, 0, 0.55]);
-  const absorber = sub("absorber", [0.45, 0, 0.55]);
-  const ventilator = sub("ventilator", [-0.55, 0, 0.35]);
-  const monitor = sub("monitor", [0, 0.55, -0.05]);
-  const scavenging = sub("scavenging", [0.45, -0.3, 0.75]);
-  const power = sub("power", [-0.45, 0.9, -0.3]);
-  const drawer = sub("drawer", [0, -0.3, 0.2]);
-
-  const M = window.VentilatorData.machines.modern.components;
-  const find = id => M.find(c => c.id === id);
-
-  // Cart body — light clinical white/grey shell with a blue accent trim,
-  // matching typical modern integrated-workstation colour language.
-  const cartBase = mkMesh(new THREE.BoxGeometry(1.15, 0.1, 0.95), 0x3b4a63, { metalness: 0.4, roughness: 0.5 });
-  cartBase.position.set(0, 0.05, 0);
-  tagComponent(cartBase, { id: "frame_modern", subsystem: "frame", isHousing: true });
-  root.add(cartBase);
-  const casterGeo = new THREE.CylinderGeometry(0.055, 0.055, 0.04, 12);
-  [[-0.48, -0.4], [0.48, -0.4], [-0.48, 0.4], [0.48, 0.4]].forEach(([x, z]) => {
-    const c = mkMesh(casterGeo, 0x0f172a, { roughness: 0.7 });
-    c.position.set(x, 0.02, z);
-    c.rotation.x = Math.PI / 2;
-    c.raycast = () => {};
-    root.add(c);
-  });
-  const column = mkMesh(new THREE.BoxGeometry(0.9, 0.55, 0.5), HOUSING_GREY, { metalness: 0.2, roughness: 0.5 });
-  column.position.set(0, 0.4, -0.05);
-  tagComponent(column, { id: "frame_modern", subsystem: "frame", isHousing: true });
-  root.add(column);
-  const head = mkMesh(new THREE.BoxGeometry(0.75, 0.5, 0.4), 0xeef1f5, { metalness: 0.15, roughness: 0.5 });
-  head.position.set(0, 0.9, 0.1);
-  tagComponent(head, { id: "frame_modern", subsystem: "frame", isHousing: true });
-  root.add(head);
-  const accentTrim = mkMesh(new THREE.BoxGeometry(0.75, 0.03, 0.41), 0x2f5fa8, { metalness: 0.3, roughness: 0.4 });
-  accentTrim.position.set(0, 0.66, 0.1);
-  accentTrim.raycast = () => {};
-  root.add(accentTrim);
-
-  // Drawers
-  ["drawer_1_modern", "drawer_2_modern", "drawer_3_modern"].forEach((id, i) => {
-    const d = mkMesh(new THREE.BoxGeometry(0.85, 0.12, 0.42), 0xe4e8ee, { metalness: 0.15, roughness: 0.55 });
-    d.position.set(0, 0.13 + i * 0.14, 0.22);
-    tagComponent(d, find(id));
-    d.userData.homePosition = d.position.clone();
-    d.userData.openOffset = new THREE.Vector3(0, 0, 0.45);
-    drawer.add(d);
-    const handle = mkMesh(new THREE.BoxGeometry(0.3, 0.02, 0.02), 0x94a3b8, { metalness: 0.7 });
-    handle.position.set(0, 0.03, 0.22);
-    handle.raycast = () => {};
-    d.add(handle);
-  });
-
-  // Backup cylinders (side/rear of cart)
-  function cylinderRig(gas, x) {
-    const g = gasSupply;
-    const body = mkMesh(new THREE.CylinderGeometry(0.04, 0.04, 0.42, 14), CYLINDER_COLORS[gas], { metalness: 0.3 });
-    body.position.set(x, 0.36, -0.32);
-    tagComponent(body, find("cylinder_" + gas + "_modern"));
-    g.add(body);
-    const yoke = mkMesh(new THREE.BoxGeometry(0.08, 0.05, 0.06), 0x1e293b, { metalness: 0.6 });
-    yoke.position.set(x, 0.16, -0.2);
-    tagComponent(yoke, find("yoke_" + gas + "_modern"));
-    g.add(yoke);
-    const gauge = mkMesh(new THREE.CylinderGeometry(0.028, 0.028, 0.016, 14), 0xf8fafc, {});
-    gauge.position.set(x, 0.24, -0.17);
-    gauge.rotation.x = Math.PI / 2;
-    tagComponent(gauge, find("gauge_cylinder_" + gas + "_modern") || { id: "cylinder_" + gas + "_modern", subsystem: "gasSupply" });
-    g.add(gauge);
-    addLabelDot(g, new THREE.Vector3(x, 0.36, -0.32));
-    return { body, yoke, gauge };
-  }
-  cylinderRig("O2", -0.22);
-  cylinderRig("air", 0.22);
-
-  // Pipeline inlets
-  ["O2", "air", "N2O"].forEach((gas, i) => {
-    const x = -0.3 + i * 0.15;
-    const inlet = mkMesh(new THREE.CylinderGeometry(0.02, 0.02, 0.045, 10), 0x334155, { metalness: 0.6 });
-    inlet.position.set(x, 0.66, -0.28);
-    inlet.rotation.x = Math.PI / 2;
-    tagComponent(inlet, find("pipeline_inlet_" + gas + "_modern"));
-    pressure.add(inlet);
-    const gauge = mkMesh(new THREE.CylinderGeometry(0.024, 0.024, 0.014, 14), 0xf8fafc, {});
-    gauge.position.set(x, 0.78, -0.05);
-    gauge.rotation.x = Math.PI / 2;
-    tagComponent(gauge, find("gauge_pipeline_" + gas + "_modern"));
-    pressure.add(gauge);
-  });
-  const regBlock = mkMesh(new THREE.BoxGeometry(0.3, 0.1, 0.12), 0x475569, { metalness: 0.5 });
-  regBlock.position.set(0, 0.55, -0.28);
-  tagComponent(regBlock, find("pressure_regulator_block_modern"));
-  pressure.add(regBlock);
-
-  // Flow control + display
-  const flowPanel = mkMesh(new THREE.BoxGeometry(0.28, 0.14, 0.03), 0x1f2937, { metalness: 0.4 });
-  flowPanel.position.set(-0.15, 1.0, 0.32);
-  tagComponent(flowPanel, find("flow_control_module_modern"));
-  flow.add(flowPanel);
-  const flowDisplay = mkMesh(new THREE.PlaneGeometry(0.22, 0.1), 0x0ea5e9, { emissive: undefined });
-  flowDisplay.material.emissive = new THREE.Color(0x0ea5e9);
-  flowDisplay.material.emissiveIntensity = 0.4;
-  flowDisplay.position.set(-0.15, 1.0, 0.335);
-  tagComponent(flowDisplay, find("flowmeter_display_modern"));
-  flow.add(flowDisplay);
-
-  // Vaporizers — two agent-specific units side by side (colour illustrative
-  // only; real vaporizer colour conventions vary by manufacturer/agent).
-  [["vaporizer_1_modern", 0.05, VAPORIZER_A], ["vaporizer_2_modern", 0.22, VAPORIZER_B]].forEach(([id, x, color]) => {
-    const v = mkMesh(new THREE.BoxGeometry(0.14, 0.2, 0.16), color, { metalness: 0.25, roughness: 0.4 });
-    v.position.set(x, 0.98, 0.32);
-    tagComponent(v, find(id));
-    vaporizer.add(v);
-  });
-  const cgo = mkMesh(new THREE.CylinderGeometry(0.018, 0.018, 0.05, 10), 0x1e293b, { metalness: 0.6 });
-  cgo.position.set(0.15, 0.92, 0.42);
-  tagComponent(cgo, find("common_gas_outlet_modern"));
-  vaporizer.add(cgo);
-
-  // Breathing circuit + absorber + APL + bag
-  const circuit = mkMesh(new THREE.CylinderGeometry(0.018, 0.018, 0.3, 10), 0x475569, { roughness: 0.6 });
-  circuit.position.set(0.3, 0.8, 0.5);
-  circuit.rotation.z = Math.PI / 2.3;
-  tagComponent(circuit, find("breathing_circuit_modern"));
-  breathing.add(circuit);
-  const inspValve = mkMesh(new THREE.CylinderGeometry(0.03, 0.03, 0.025, 12), 0x334155, {});
-  inspValve.position.set(0.42, 0.72, 0.5);
-  tagComponent(inspValve, find("inspiratory_valve_modern"));
-  breathing.add(inspValve);
-  const expValve = mkMesh(new THREE.CylinderGeometry(0.03, 0.03, 0.025, 12), 0x334155, {});
-  expValve.position.set(0.5, 0.72, 0.45);
-  tagComponent(expValve, find("expiratory_valve_modern"));
-  breathing.add(expValve);
-  const absorberCanister = mkMesh(new THREE.CylinderGeometry(0.08, 0.08, 0.26, 16), 0xeef2f6, { transparent: true, opacity: 0.55, roughness: 0.15 });
-  absorberCanister.position.set(0.45, 0.55, 0.55);
-  tagComponent(absorberCanister, find("co2_absorber_modern"));
-  absorber.add(absorberCanister);
-  const absorbentFillModern = mkMesh(new THREE.CylinderGeometry(0.066, 0.066, 0.18, 16), ABSORBENT_COLOR, { roughness: 0.9 });
-  absorbentFillModern.position.set(0.45, 0.53, 0.55);
-  absorbentFillModern.raycast = () => {};
-  absorber.add(absorbentFillModern);
-  const apl = mkMesh(new THREE.CylinderGeometry(0.04, 0.04, 0.03, 16), 0x334155, { metalness: 0.5 });
-  apl.position.set(0.45, 0.7, 0.55);
-  tagComponent(apl, find("apl_valve_modern"));
-  breathing.add(apl);
-  const bag = mkMesh(new THREE.SphereGeometry(0.1, 16, 12), 0x0f766e, { transparent: true, opacity: 0.85 });
-  bag.scale.set(1, 1.3, 1);
-  bag.position.set(0.6, 0.42, 0.55);
-  tagComponent(bag, find("reservoir_bag_modern"));
-  breathing.add(bag);
-
-  // Ventilator module + bellows
-  const ventBox = mkMesh(new THREE.BoxGeometry(0.28, 0.4, 0.3), 0x1f2937, { metalness: 0.35 });
-  ventBox.position.set(-0.55, 0.55, 0.35);
-  tagComponent(ventBox, find("ventilator_unit_modern"));
-  ventilator.add(ventBox);
-  const bellowsHousing = mkMesh(new THREE.CylinderGeometry(0.08, 0.08, 0.22, 16), 0xcbd5e1, { transparent: true, opacity: 0.3 });
-  bellowsHousing.position.set(-0.55, 0.78, 0.35);
-  bellowsHousing.raycast = () => {};
-  ventilator.add(bellowsHousing);
-  const bellows = mkMesh(new THREE.CylinderGeometry(0.065, 0.065, 0.16, 16), 0x38bdf8, { transparent: true, opacity: 0.55 });
-  bellows.position.set(-0.55, 0.74, 0.35);
-  tagComponent(bellows, find("ventilator_bellows_modern"));
-  bellows.userData.homeY = bellows.position.y;
-  ventilator.add(bellows);
-  const ventControls = mkMesh(new THREE.BoxGeometry(0.24, 0.1, 0.02), 0x111827, { metalness: 0.4 });
-  ventControls.position.set(-0.55, 0.4, 0.5);
-  tagComponent(ventControls, find("ventilator_controls_modern"));
-  ventilator.add(ventControls);
-
-  // Monitor — mounted on an arm at the top-left of the workstation, tilted
-  // toward the user (reference: integrated monitor arm on modern machines).
-  const monArm = mkMesh(new THREE.CylinderGeometry(0.015, 0.015, 0.4, 8), 0x475569, { metalness: 0.6 });
-  monArm.position.set(-0.32, 1.35, 0.15);
-  monArm.raycast = () => {};
-  monitor.add(monArm);
-  const monScreen = mkMesh(new THREE.BoxGeometry(0.36, 0.26, 0.03), 0x0b1220, { metalness: 0.3, roughness: 0.4 });
-  monScreen.position.set(-0.32, 1.58, 0.22);
-  monScreen.rotation.x = -0.15;
-  tagComponent(monScreen, find("monitor_screen_modern"));
-  monitor.add(monScreen);
-
-  // Power/battery
-  const battery = mkMesh(new THREE.SphereGeometry(0.02, 10, 8), 0x22c55e, {});
-  battery.material.emissive = new THREE.Color(0x22c55e);
-  battery.material.emissiveIntensity = 0.6;
-  battery.position.set(-0.4, 1.02, 0.31);
-  tagComponent(battery, find("battery_indicator_modern"));
-  power.add(battery);
-
-  const scavHose = mkMesh(new THREE.CylinderGeometry(0.014, 0.014, 0.4, 10), 0x475569, { roughness: 0.6 });
-  scavHose.position.set(0.45, 0.3, 0.7);
-  scavHose.rotation.x = Math.PI / 5;
-  tagComponent(scavHose, find("scavenging_interface_modern"));
-  scavenging.add(scavHose);
-
-  root.userData.subsystems = subsystems;
-  root.userData.machineId = "modern";
-  root.userData.bellowsMesh = bellows;
-  return root;
+  root.userData.ventilatorCycleMeshes = ventilatorCycleMeshes;
 }
 
 // ---------------------------------------------------------------------------
@@ -723,7 +389,7 @@ export function createEngine(container) {
   function setExploded(on) {
     exploded = on;
     if (!machineGroup) return;
-    const subs = machineGroup.userData.subsystems;
+    const subs = machineGroup.userData.systems;
     const center = new THREE.Vector3(0, 0.5, 0);
     Object.values(subs).forEach(g => {
       const home = g.userData.homePosition;
@@ -816,19 +482,26 @@ export function createEngine(container) {
     machineGroup = null;
   }
 
+  let machineIsPlaceholder = false;
+
   function init(id) {
     clearMachine();
     machineId = id;
-    return tryLoadGLB(id).then(gltfGroup => {
-      machineGroup = gltfGroup || (id === "boyles" ? buildBoylesMachine() : buildModernWorkstation());
+    return loadMachineModel(id).then(({ group, isPlaceholder }) => {
+      machineGroup = group;
+      machineIsPlaceholder = isPlaceholder;
       machineGroup.userData.machineId = id;
-      // The subsystem layout isn't symmetric around the local origin (gas
-      // supply/absorber/bag sit off to one side), so recentre the whole
-      // group in X/Z on its actual bounding box — otherwise the camera
-      // presets (which target world 0,y,0) frame empty space next to the
-      // machine instead of the machine itself. Floor (Y) is left alone so
-      // the model still stands on the grid at y=0. This also transparently
-      // handles a future real GLB whose own origin isn't centred.
+      annotateFromData(machineGroup, id);
+      machineGroup.userData.systems = groupBySystem(machineGroup);
+      setupDefaultAnimationState(machineGroup);
+
+      // The system layout isn't symmetric around the local origin (gas
+      // supply/absorber/bag sit off to one side on the placeholder, and a
+      // real .glb's own origin is unknown in advance), so recentre the
+      // whole group in X/Z on its actual bounding box — otherwise the
+      // camera presets (which target world 0,y,0) frame empty space next
+      // to the machine instead of the machine itself. Floor (Y) is left
+      // alone so the model still stands on the grid at y=0.
       const box = new THREE.Box3().setFromObject(machineGroup);
       const center = new THREE.Vector3();
       box.getCenter(center);
@@ -837,25 +510,6 @@ export function createEngine(container) {
       scene.add(machineGroup);
       resetView();
       return machineGroup;
-    });
-  }
-
-  function tryLoadGLB(id) {
-    return new Promise(resolve => {
-      const loader = new GLTFLoader();
-      const url = "assets/ventilators/" + id + "/model.glb";
-      loader.load(url, gltf => {
-        const group = gltf.scene;
-        group.userData.subsystems = {};
-        group.traverse(o => {
-          if (o.isMesh) {
-            o.userData.componentId = o.name;
-            o.userData.baseOpacity = o.material.opacity != null ? o.material.opacity : 1;
-            o.userData.baseEmissive = 0x000000;
-          }
-        });
-        resolve(group);
-      }, undefined, () => resolve(null));
     });
   }
 
@@ -877,7 +531,7 @@ export function createEngine(container) {
     lastT = now;
     stepTween();
     if (machineGroup) {
-      Object.values(machineGroup.userData.subsystems || {}).forEach(g => {
+      Object.values(machineGroup.userData.systems || {}).forEach(g => {
         if (g.userData.explodeTarget) {
           const t = Math.min(1, (now - g.userData.explodeT0) / 600);
           g.position.lerpVectors(g.userData.explodeStart, g.userData.explodeTarget, easeInOutCubic(t));
@@ -891,13 +545,16 @@ export function createEngine(container) {
           o.position.lerpVectors(o.userData.slideFrom, target, easeInOutCubic(t));
         }
       });
-      // Bellows breathing motion (modern only, when ventilator running)
-      if (machineGroup.userData.bellowsMesh && machineGroup.userData.ventilatorRunning) {
-        const b = machineGroup.userData.bellowsMesh;
+      // Ventilator breathing motion — drives every node tagged
+      // animationId:"ventilator-cycle" (e.g. a bellows or piston), found
+      // generically at load time, not a hard-coded mesh reference.
+      if (machineGroup.userData.ventilatorRunning) {
         const phase = (now / 1000) * (machineGroup.userData.ventRate || 0.25);
         const cycle = phase % 1;
         const insp = cycle < 0.4 ? cycle / 0.4 : 1 - (cycle - 0.4) / 0.6;
-        b.position.y = b.userData.homeY - insp * 0.05;
+        (machineGroup.userData.ventilatorCycleMeshes || []).forEach(b => {
+          b.position.y = b.userData.homeY - insp * 0.05;
+        });
       }
     }
     flowSystems.forEach(fn => fn(dt));
@@ -940,6 +597,7 @@ export function createEngine(container) {
       return { x: rect.left + (proj.x * 0.5 + 0.5) * rect.width, y: rect.top + (-proj.y * 0.5 + 0.5) * rect.height };
     },
     getMachineId: () => machineId,
+    isPlaceholder: () => machineIsPlaceholder,
     getMachineGroup: () => machineGroup
   };
 }

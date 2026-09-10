@@ -37,6 +37,14 @@ function loadMachine(id) {
 
   engine.init(id).then(() => {
     loadingEl.hidden = true;
+
+    // Never let a placeholder be mistaken for a real, medically-accurate
+    // model — this banner is not dismissible and reappears on every load
+    // until a real assets/ventilators/<id>/model.glb exists for this
+    // machine (see VENTILATOR_3D_ASSET_SPEC.md).
+    const placeholderBanner = document.getElementById("ventPlaceholderBanner");
+    if (placeholderBanner) placeholderBanner.hidden = !engine.isPlaceholder();
+
     const interactions = createInteractions(engine, machineData);
     createUI(engine, interactions, machineData);
 

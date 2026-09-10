@@ -88,185 +88,185 @@
   const boylesComponents = [
     {
       id: "frame_boyles", name: "Machine Frame", category: "Structure",
-      subsystem: "frame", internal: false,
-      description: "The trolley/frame carrying every subsystem: gas supply, flowmeters, vaporizer and breathing system attachment point.",
-      function: "Provides a stable mobile base and mounting points for all machine subsystems.",
+      system: "frame", internal: false,
+      description: "The trolley/frame carrying every system: gas supply, flowmeters, vaporizer and breathing system attachment point.",
+      function: "Provides a stable mobile base and mounting points for all machine systems.",
       vivaPoints: ["Classic Boyle's design mounts the cylinders at the rear and the flowmeter/vaporizer block at the front, roughly following the direction of gas flow."],
-      animation: null, relatedComponents: []
+      animationId: null, relatedComponents: []
     },
     {
       id: "cylinder_O2_boyles", name: "Oxygen Cylinder", category: "Gas Supply",
-      subsystem: "gasSupply", internal: false, gas: "O2",
+      system: "gasSupply", internal: false, gas: "O2",
       description: "Backup/primary oxygen supply cylinder mounted on the rear yoke.",
       function: "Supplies oxygen at high pressure (full cylinder pressure, commonly ~137 bar for a size-E cylinder, model-dependent) when pipeline supply is unavailable or as the primary source on a stand-alone machine.",
       vivaPoints: ["This is part of the HIGH-PRESSURE system, upstream of the pressure regulator.", CYLINDER_COLOR_CAVEAT],
-      animation: "highlight-pulse", relatedComponents: ["yoke_O2_boyles", "gauge_cylinder_O2_boyles", "pressure_regulator_O2_boyles"]
+      animationId: "highlight-pulse", relatedComponents: ["yoke_O2_boyles", "gauge_cylinder_O2_boyles", "pressure_regulator_O2_boyles"]
     },
     {
       id: "cylinder_N2O_boyles", name: "Nitrous Oxide Cylinder", category: "Gas Supply",
-      subsystem: "gasSupply", internal: false, gas: "N2O",
+      system: "gasSupply", internal: false, gas: "N2O",
       description: "Backup/primary nitrous oxide supply cylinder mounted on the rear yoke, where fitted.",
       function: "Supplies N2O; because N2O is stored partly as liquid, cylinder pressure does not fall linearly with content and is not a reliable content gauge (model-dependent, see cylinder physics).",
       vivaPoints: ["N2O cylinder contents are better estimated by weighing the cylinder than by reading pressure alone, unlike a purely gaseous cylinder such as O2.", CYLINDER_COLOR_CAVEAT],
-      animation: "highlight-pulse", relatedComponents: ["yoke_N2O_boyles", "gauge_cylinder_N2O_boyles", "pressure_regulator_N2O_boyles"]
+      animationId: "highlight-pulse", relatedComponents: ["yoke_N2O_boyles", "gauge_cylinder_N2O_boyles", "pressure_regulator_N2O_boyles"]
     },
     {
       id: "yoke_O2_boyles", name: "Oxygen Cylinder Yoke (PISS)", category: "Safety / Gas Supply",
-      subsystem: "gasSupply", internal: false,
+      system: "gasSupply", internal: false,
       description: "The yoke that clamps the O2 cylinder to the frame, incorporating the Pin Index Safety System.",
       function: "Mechanically ensures only an oxygen cylinder can be seated correctly on this yoke.",
-      vivaPoints: ["Pin Index Safety System — see Safety Features mode."], animation: "pin-index-demo",
+      vivaPoints: ["Pin Index Safety System — see Safety Features mode."], animationId: "pin-index-demo",
       relatedComponents: ["cylinder_O2_boyles"]
     },
     {
       id: "yoke_N2O_boyles", name: "Nitrous Oxide Cylinder Yoke (PISS)", category: "Safety / Gas Supply",
-      subsystem: "gasSupply", internal: false,
+      system: "gasSupply", internal: false,
       description: "The yoke that clamps the N2O cylinder to the frame, incorporating the Pin Index Safety System.",
       function: "Mechanically ensures only an N2O cylinder can be seated correctly on this yoke.",
-      vivaPoints: ["Pin Index Safety System — see Safety Features mode."], animation: "pin-index-demo",
+      vivaPoints: ["Pin Index Safety System — see Safety Features mode."], animationId: "pin-index-demo",
       relatedComponents: ["cylinder_N2O_boyles"]
     },
     {
       id: "gauge_cylinder_O2_boyles", name: "O2 Cylinder Pressure Gauge", category: "Monitoring",
-      subsystem: "gasSupply", internal: false,
+      system: "gasSupply", internal: false,
       description: "Bourdon-type gauge reading the pressure inside the mounted O2 cylinder.",
       function: "Lets the operator estimate remaining O2 cylinder content before switching to it or when pipeline supply fails.",
       vivaPoints: ["Because O2 is a true gas at room temperature, its cylinder pressure falls roughly linearly with content — unlike N2O."],
-      animation: null, relatedComponents: ["cylinder_O2_boyles"]
+      animationId: null, relatedComponents: ["cylinder_O2_boyles"]
     },
     {
       id: "gauge_cylinder_N2O_boyles", name: "N2O Cylinder Pressure Gauge", category: "Monitoring",
-      subsystem: "gasSupply", internal: false,
+      system: "gasSupply", internal: false,
       description: "Gauge reading the pressure inside the mounted N2O cylinder.",
       function: "Reads high while liquid N2O remains and only starts to fall once all liquid has vaporised, so a steady high reading does not guarantee a full cylinder.",
       vivaPoints: ["Classic viva point: N2O cylinder pressure is a poor guide to content until the cylinder is nearly empty."],
-      animation: null, relatedComponents: ["cylinder_N2O_boyles"]
+      animationId: null, relatedComponents: ["cylinder_N2O_boyles"]
     },
     {
       id: "pipeline_inlet_O2_boyles", name: "O2 Pipeline Inlet", category: "Gas Supply",
-      subsystem: "gasSupply", internal: false,
+      system: "gasSupply", internal: false,
       description: "Colour/index-coded pipeline connection (Diameter Index Safety System) for hospital central oxygen supply.",
       function: "Accepts a gas-specific hose from the wall/central manifold at pipeline pressure (commonly ~4 bar / 400 kPa, model-dependent).",
-      vivaPoints: ["DISS prevents a pipeline hose being connected to the wrong gas inlet."], animation: "diss-demo",
+      vivaPoints: ["DISS prevents a pipeline hose being connected to the wrong gas inlet."], animationId: "diss-demo",
       relatedComponents: ["gauge_pipeline_O2_boyles"]
     },
     {
       id: "pipeline_inlet_N2O_boyles", name: "N2O Pipeline Inlet", category: "Gas Supply",
-      subsystem: "gasSupply", internal: false,
+      system: "gasSupply", internal: false,
       description: "Diameter Index Safety System pipeline connection for hospital central N2O supply, where fitted.",
       function: "Accepts a gas-specific hose from the central N2O manifold at pipeline pressure.",
       vivaPoints: ["Central pipeline supply is generally preferred over cylinder supply for routine use; cylinders remain as backup."],
-      animation: "diss-demo", relatedComponents: ["gauge_pipeline_N2O_boyles"]
+      animationId: "diss-demo", relatedComponents: ["gauge_pipeline_N2O_boyles"]
     },
     {
       id: "gauge_pipeline_O2_boyles", name: "O2 Pipeline Pressure Gauge", category: "Monitoring",
-      subsystem: "gasSupply", internal: false,
+      system: "gasSupply", internal: false,
       description: "Gauge reading incoming pipeline oxygen pressure.",
       function: "Confirms pipeline supply is present and at an adequate pressure before relying on it.",
       vivaPoints: ["A falling pipeline pressure gauge is one of the first clues to a pipeline supply problem."],
-      animation: null, relatedComponents: ["pipeline_inlet_O2_boyles"]
+      animationId: null, relatedComponents: ["pipeline_inlet_O2_boyles"]
     },
     {
       id: "gauge_pipeline_N2O_boyles", name: "N2O Pipeline Pressure Gauge", category: "Monitoring",
-      subsystem: "gasSupply", internal: false,
+      system: "gasSupply", internal: false,
       description: "Gauge reading incoming pipeline nitrous oxide pressure.",
       function: "Confirms pipeline N2O supply is present at an adequate pressure.",
-      vivaPoints: [], animation: null, relatedComponents: ["pipeline_inlet_N2O_boyles"]
+      vivaPoints: [], animationId: null, relatedComponents: ["pipeline_inlet_N2O_boyles"]
     },
     {
       id: "pressure_regulator_O2_boyles", name: "O2 Pressure Regulator", category: "Pressure Regulation",
-      subsystem: "pressure", internal: false,
+      system: "pressure", internal: false,
       description: "Reduces variable, high cylinder pressure down to a steady intermediate pressure.",
       function: "Delivers a constant intermediate pressure (commonly ~4 bar, model-dependent) to the flow control stage regardless of how full the cylinder is.",
       vivaPoints: ["This is the boundary between the HIGH-PRESSURE system (cylinder side) and the INTERMEDIATE-PRESSURE system."],
-      animation: "pressure-drop-demo", relatedComponents: ["cylinder_O2_boyles", "flowmeter_O2_boyles"]
+      animationId: "pressure-drop-demo", relatedComponents: ["cylinder_O2_boyles", "flowmeter_O2_boyles"]
     },
     {
       id: "pressure_regulator_N2O_boyles", name: "N2O Pressure Regulator", category: "Pressure Regulation",
-      subsystem: "pressure", internal: false,
+      system: "pressure", internal: false,
       description: "Reduces variable N2O cylinder pressure down to a steady intermediate pressure.",
       function: "Delivers a constant intermediate pressure to the N2O flow control stage.",
-      vivaPoints: [], animation: "pressure-drop-demo",
+      vivaPoints: [], animationId: "pressure-drop-demo",
       relatedComponents: ["cylinder_N2O_boyles", "flowmeter_N2O_boyles"]
     },
     {
       id: "flowmeter_block_boyles", name: "Flowmeter Block", category: "Flow Control",
-      subsystem: "flow", internal: false,
+      system: "flow", internal: false,
       description: "Bank of tapered glass flow tubes (rotameters), one per gas, each with a bobbin/float indicating flow rate.",
       function: "Lets the operator set and read individual gas flows before they mix into the fresh gas stream.",
       vivaPoints: ["Classic rotameters are gas-specific and not interchangeable — each tube is calibrated for one gas's viscosity/density."],
-      animation: "flow-bobbin", relatedComponents: ["flowmeter_O2_boyles", "flowmeter_N2O_boyles"]
+      animationId: "flow-bobbin", relatedComponents: ["flowmeter_O2_boyles", "flowmeter_N2O_boyles"]
     },
     {
       id: "flowmeter_O2_boyles", name: "O2 Flow Control & Tube", category: "Flow Control",
-      subsystem: "flow", internal: false,
+      system: "flow", internal: false,
       description: "Needle valve and rotameter tube controlling/displaying O2 flow.",
       function: "Sets the oxygen component of fresh gas flow.",
       vivaPoints: ["The O2 control knob is typically distinctively shaped/fluted so it can be identified by touch."],
-      animation: "flow-bobbin", relatedComponents: ["flowmeter_block_boyles"]
+      animationId: "flow-bobbin", relatedComponents: ["flowmeter_block_boyles"]
     },
     {
       id: "flowmeter_N2O_boyles", name: "N2O Flow Control & Tube", category: "Flow Control",
-      subsystem: "flow", internal: false,
+      system: "flow", internal: false,
       description: "Needle valve and rotameter tube controlling/displaying N2O flow.",
       function: "Sets the nitrous oxide component of fresh gas flow.",
       vivaPoints: ["Linked to the O2 control via the hypoxic guard on machines fitted with one — see Safety Features mode."],
-      animation: "flow-bobbin", relatedComponents: ["flowmeter_block_boyles"]
+      animationId: "flow-bobbin", relatedComponents: ["flowmeter_block_boyles"]
     },
     {
       id: "vaporizer_boyles", name: "Vaporizer", category: "Vaporizer",
-      subsystem: "vaporizer", internal: false,
+      system: "vaporizer", internal: false,
       description: "Agent-specific vaporizer sitting downstream of the flowmeters, adding a controlled concentration of volatile anaesthetic agent to the fresh gas.",
       function: "Vaporizes liquid volatile agent into the fresh gas stream at the concentration set on its dial.",
       vivaPoints: ["Agent-specific — the filling port is keyed so the wrong agent cannot easily be poured in.", "On a Boyle's-style back-bar, only one vaporizer is normally switched on at a time (interlock, model-dependent)."],
-      animation: "vaporizer-dial", relatedComponents: ["flowmeter_block_boyles", "common_gas_outlet_boyles"]
+      animationId: "vaporizer-dial", relatedComponents: ["flowmeter_block_boyles", "common_gas_outlet_boyles"]
     },
     {
       id: "common_gas_outlet_boyles", name: "Common Gas Outlet", category: "Gas Delivery",
-      subsystem: "vaporizer", internal: false,
+      system: "vaporizer", internal: false,
       description: "The single outlet where all mixed, vaporized fresh gas leaves the machine toward the breathing system.",
       function: "Delivers final fresh gas mixture to the breathing system hose.",
       vivaPoints: ["This is the boundary between the LOW-PRESSURE system and the breathing system."],
-      animation: null, relatedComponents: ["breathing_hose_boyles"]
+      animationId: null, relatedComponents: ["breathing_hose_boyles"]
     },
     {
       id: "breathing_hose_boyles", name: "Breathing System Hose", category: "Breathing System",
-      subsystem: "breathing", internal: false,
+      system: "breathing", internal: false,
       description: "Fresh gas delivery hose/manifold connecting the common gas outlet to the circle breathing system.",
       function: "Carries fresh gas into the circle system for the patient.",
-      vivaPoints: [], animation: "gas-flow-pulse",
+      vivaPoints: [], animationId: "gas-flow-pulse",
       relatedComponents: ["co2_absorber_boyles", "reservoir_bag_boyles"]
     },
     {
       id: "co2_absorber_boyles", name: "CO2 Absorber Canister", category: "Breathing System",
-      subsystem: "absorber", internal: false,
+      system: "absorber", internal: false,
       description: "Canister containing a CO2-absorbing medium (traditionally soda lime) as part of a circle breathing system.",
       function: "Removes exhaled CO2 so gas can be safely rebreathed, allowing low fresh-gas-flow anaesthesia.",
       vivaPoints: ["Absorbent colour-change indicators show exhaustion (model/product-dependent — not universal across all absorbents)."],
-      animation: "absorber-glow", relatedComponents: ["breathing_hose_boyles", "apl_valve_boyles"]
+      animationId: "absorber-glow", relatedComponents: ["breathing_hose_boyles", "apl_valve_boyles"]
     },
     {
       id: "apl_valve_boyles", name: "APL Valve", category: "Safety / Breathing System",
-      subsystem: "breathing", internal: false,
+      system: "breathing", internal: false,
       description: "Adjustable pressure-limiting valve on the breathing system.",
       function: APL_PRINCIPLE,
       vivaPoints: ["Left fully open during spontaneous ventilation to minimise resistance; adjusted for manual ventilation."],
-      animation: "apl-vent", relatedComponents: ["reservoir_bag_boyles", "scavenging_hose_boyles"]
+      animationId: "apl-vent", relatedComponents: ["reservoir_bag_boyles", "scavenging_hose_boyles"]
     },
     {
       id: "reservoir_bag_boyles", name: "Reservoir Bag", category: "Breathing System",
-      subsystem: "breathing", internal: false,
+      system: "breathing", internal: false,
       description: "Compliant bag on the breathing system used for manual ventilation and as a visual/tactile monitor of the patient's own breathing.",
       function: "Acts as a gas reservoir and lets the operator manually ventilate or feel spontaneous breathing effort.",
       vivaPoints: ["Bag movement is a simple, immediate way to notice apnoea or a circuit disconnection at the bedside."],
-      animation: "bag-breathe", relatedComponents: ["apl_valve_boyles"]
+      animationId: "bag-breathe", relatedComponents: ["apl_valve_boyles"]
     },
     {
       id: "scavenging_hose_boyles", name: "Scavenging Connection", category: "Scavenging",
-      subsystem: "scavenging", internal: false,
+      system: "scavenging", internal: false,
       description: "Tubing carrying gas vented from the APL valve to the scavenging/disposal system.",
       function: SCAVENGING_PRINCIPLE,
-      vivaPoints: [], animation: "gas-flow-pulse", relatedComponents: ["apl_valve_boyles"]
+      vivaPoints: [], animationId: "gas-flow-pulse", relatedComponents: ["apl_valve_boyles"]
     }
   ];
 
@@ -396,117 +396,117 @@
   // MODERN ANAESTHESIA WORKSTATION
   // ==========================================================================
   const modernComponents = [
-    { id: "frame_modern", name: "Workstation Cart", category: "Structure", subsystem: "frame", internal: false,
+    { id: "frame_modern", name: "Workstation Cart", category: "Structure", system: "frame", internal: false,
       description: "The mobile cart body integrating gas supply, electronic flow control, vaporizers, ventilator, monitor and drawers into a single workstation.",
-      function: "Provides a stable mobile platform and mounting for all subsystems.", vivaPoints: [], animation: null, relatedComponents: [] },
-    { id: "cylinder_O2_modern", name: "Backup O2 Cylinder", category: "Gas Supply", subsystem: "gasSupply", internal: false, gas: "O2",
+      function: "Provides a stable mobile platform and mounting for all systems.", vivaPoints: [], animationId: null, relatedComponents: [] },
+    { id: "cylinder_O2_modern", name: "Backup O2 Cylinder", category: "Gas Supply", system: "gasSupply", internal: false, gas: "O2",
       description: "Emergency backup oxygen cylinder mounted on the cart, used if pipeline supply fails.",
       function: "Provides O2 at high pressure as a backup to pipeline supply.", vivaPoints: ["Part of the HIGH-PRESSURE system.", CYLINDER_COLOR_CAVEAT],
-      animation: "highlight-pulse", relatedComponents: ["yoke_O2_modern", "gauge_cylinder_O2_modern"] },
-    { id: "cylinder_air_modern", name: "Backup Air Cylinder", category: "Gas Supply", subsystem: "gasSupply", internal: false, gas: "AIR",
+      animationId: "highlight-pulse", relatedComponents: ["yoke_O2_modern", "gauge_cylinder_O2_modern"] },
+    { id: "cylinder_air_modern", name: "Backup Air Cylinder", category: "Gas Supply", system: "gasSupply", internal: false, gas: "AIR",
       description: "Emergency backup medical air cylinder, where fitted.",
       function: "Provides medical air as backup to pipeline air supply.", vivaPoints: [CYLINDER_COLOR_CAVEAT],
-      animation: "highlight-pulse", relatedComponents: ["yoke_air_modern"] },
-    { id: "yoke_O2_modern", name: "O2 Cylinder Yoke (PISS)", category: "Safety / Gas Supply", subsystem: "gasSupply", internal: false,
+      animationId: "highlight-pulse", relatedComponents: ["yoke_air_modern"] },
+    { id: "yoke_O2_modern", name: "O2 Cylinder Yoke (PISS)", category: "Safety / Gas Supply", system: "gasSupply", internal: false,
       description: "Pin-indexed yoke for the backup O2 cylinder.", function: "Mechanically ensures only an O2 cylinder seats here.",
-      vivaPoints: ["Pin Index Safety System."], animation: "pin-index-demo", relatedComponents: ["cylinder_O2_modern"] },
-    { id: "yoke_air_modern", name: "Air Cylinder Yoke (PISS)", category: "Safety / Gas Supply", subsystem: "gasSupply", internal: false,
+      vivaPoints: ["Pin Index Safety System."], animationId: "pin-index-demo", relatedComponents: ["cylinder_O2_modern"] },
+    { id: "yoke_air_modern", name: "Air Cylinder Yoke (PISS)", category: "Safety / Gas Supply", system: "gasSupply", internal: false,
       description: "Pin-indexed yoke for the backup air cylinder, where fitted.", function: "Mechanically ensures only an air cylinder seats here.",
-      vivaPoints: ["Pin Index Safety System."], animation: "pin-index-demo", relatedComponents: ["cylinder_air_modern"] },
-    { id: "gauge_cylinder_O2_modern", name: "O2 Cylinder Pressure Gauge", category: "Monitoring", subsystem: "gasSupply", internal: false,
+      vivaPoints: ["Pin Index Safety System."], animationId: "pin-index-demo", relatedComponents: ["cylinder_air_modern"] },
+    { id: "gauge_cylinder_O2_modern", name: "O2 Cylinder Pressure Gauge", category: "Monitoring", system: "gasSupply", internal: false,
       description: "Displays backup O2 cylinder pressure (often on an electronic gas-supply status panel, model-dependent).",
-      function: "Lets the operator check backup O2 content.", vivaPoints: [], animation: null, relatedComponents: ["cylinder_O2_modern"] },
-    { id: "pipeline_inlet_O2_modern", name: "O2 Pipeline Inlet", category: "Gas Supply", subsystem: "gasSupply", internal: false,
+      function: "Lets the operator check backup O2 content.", vivaPoints: [], animationId: null, relatedComponents: ["cylinder_O2_modern"] },
+    { id: "pipeline_inlet_O2_modern", name: "O2 Pipeline Inlet", category: "Gas Supply", system: "gasSupply", internal: false,
       description: "DISS pipeline connection for central O2 supply.", function: "Accepts hospital pipeline O2 at pipeline pressure.",
-      vivaPoints: ["Diameter Index Safety System."], animation: "diss-demo", relatedComponents: ["gauge_pipeline_O2_modern"] },
-    { id: "pipeline_inlet_air_modern", name: "Air Pipeline Inlet", category: "Gas Supply", subsystem: "gasSupply", internal: false,
+      vivaPoints: ["Diameter Index Safety System."], animationId: "diss-demo", relatedComponents: ["gauge_pipeline_O2_modern"] },
+    { id: "pipeline_inlet_air_modern", name: "Air Pipeline Inlet", category: "Gas Supply", system: "gasSupply", internal: false,
       description: "DISS pipeline connection for central medical air supply.", function: "Accepts hospital pipeline medical air.",
-      vivaPoints: [], animation: "diss-demo", relatedComponents: ["gauge_pipeline_air_modern"] },
-    { id: "pipeline_inlet_N2O_modern", name: "N2O Pipeline Inlet", category: "Gas Supply", subsystem: "gasSupply", internal: false,
+      vivaPoints: [], animationId: "diss-demo", relatedComponents: ["gauge_pipeline_air_modern"] },
+    { id: "pipeline_inlet_N2O_modern", name: "N2O Pipeline Inlet", category: "Gas Supply", system: "gasSupply", internal: false,
       description: "DISS pipeline connection for central N2O supply, where fitted.", function: "Accepts hospital pipeline N2O.",
       vivaPoints: ["Many modern workstations omit routine N2O in favour of air/O2 — presence is model/institution-dependent."],
-      animation: "diss-demo", relatedComponents: ["gauge_pipeline_N2O_modern"] },
-    { id: "gauge_pipeline_O2_modern", name: "O2 Pipeline Pressure", category: "Monitoring", subsystem: "gasSupply", internal: false,
+      animationId: "diss-demo", relatedComponents: ["gauge_pipeline_N2O_modern"] },
+    { id: "gauge_pipeline_O2_modern", name: "O2 Pipeline Pressure", category: "Monitoring", system: "gasSupply", internal: false,
       description: "Electronic/mechanical display of pipeline O2 pressure.", function: "Confirms pipeline O2 supply status.",
-      vivaPoints: [], animation: null, relatedComponents: ["pipeline_inlet_O2_modern"] },
-    { id: "gauge_pipeline_air_modern", name: "Air Pipeline Pressure", category: "Monitoring", subsystem: "gasSupply", internal: false,
+      vivaPoints: [], animationId: null, relatedComponents: ["pipeline_inlet_O2_modern"] },
+    { id: "gauge_pipeline_air_modern", name: "Air Pipeline Pressure", category: "Monitoring", system: "gasSupply", internal: false,
       description: "Display of pipeline medical air pressure.", function: "Confirms pipeline air supply status.",
-      vivaPoints: [], animation: null, relatedComponents: ["pipeline_inlet_air_modern"] },
-    { id: "gauge_pipeline_N2O_modern", name: "N2O Pipeline Pressure", category: "Monitoring", subsystem: "gasSupply", internal: false,
+      vivaPoints: [], animationId: null, relatedComponents: ["pipeline_inlet_air_modern"] },
+    { id: "gauge_pipeline_N2O_modern", name: "N2O Pipeline Pressure", category: "Monitoring", system: "gasSupply", internal: false,
       description: "Display of pipeline N2O pressure, where fitted.", function: "Confirms pipeline N2O supply status.",
-      vivaPoints: [], animation: null, relatedComponents: ["pipeline_inlet_N2O_modern"] },
-    { id: "pressure_regulator_block_modern", name: "Pressure Regulator Block", category: "Pressure Regulation", subsystem: "pressure", internal: true,
+      vivaPoints: [], animationId: null, relatedComponents: ["pipeline_inlet_N2O_modern"] },
+    { id: "pressure_regulator_block_modern", name: "Pressure Regulator Block", category: "Pressure Regulation", system: "pressure", internal: true,
       description: "Houses the regulators that step down cylinder/pipeline pressure to a steady intermediate pressure for each gas.",
       function: "Delivers steady intermediate pressure to electronic flow control.", vivaPoints: ["Boundary between HIGH-PRESSURE and INTERMEDIATE-PRESSURE systems."],
-      animation: "pressure-drop-demo", relatedComponents: ["flow_control_module_modern"] },
-    { id: "flow_control_module_modern", name: "Electronic Flow Control", category: "Flow Control", subsystem: "flow", internal: false,
+      animationId: "pressure-drop-demo", relatedComponents: ["flow_control_module_modern"] },
+    { id: "flow_control_module_modern", name: "Electronic Flow Control", category: "Flow Control", system: "flow", internal: false,
       description: "Electronically metered flow control replacing traditional needle valves on many modern workstations (model-dependent implementation).",
       function: "Sets fresh gas composition and total flow, read out on the flowmeter display.", vivaPoints: ["Still conceptually the LOW-PRESSURE system stage, just electronically implemented."],
-      animation: "flow-bobbin", relatedComponents: ["flowmeter_display_modern"] },
-    { id: "flowmeter_display_modern", name: "Flow / Gas Display", category: "Monitoring", subsystem: "flow", internal: false,
+      animationId: "flow-bobbin", relatedComponents: ["flowmeter_display_modern"] },
+    { id: "flowmeter_display_modern", name: "Flow / Gas Display", category: "Monitoring", system: "flow", internal: false,
       description: "Digital display of set/measured flows and fresh gas composition.", function: "Shows the operator the current flow settings and O2 percentage.",
-      vivaPoints: [], animation: null, relatedComponents: ["flow_control_module_modern"] },
-    { id: "vaporizer_1_modern", name: "Vaporizer 1", category: "Vaporizer", subsystem: "vaporizer", internal: false,
+      vivaPoints: [], animationId: null, relatedComponents: ["flow_control_module_modern"] },
+    { id: "vaporizer_1_modern", name: "Vaporizer 1", category: "Vaporizer", system: "vaporizer", internal: false,
       description: "Agent-specific vaporizer, one of typically two mounted side-by-side on the manifold.",
       function: "Adds a controlled concentration of its designated volatile agent to fresh gas.", vivaPoints: ["Interlocked with the second vaporizer so only one can be active at a time (model-dependent)."],
-      animation: "vaporizer-dial", relatedComponents: ["vaporizer_2_modern", "common_gas_outlet_modern"] },
-    { id: "vaporizer_2_modern", name: "Vaporizer 2", category: "Vaporizer", subsystem: "vaporizer", internal: false,
+      animationId: "vaporizer-dial", relatedComponents: ["vaporizer_2_modern", "common_gas_outlet_modern"] },
+    { id: "vaporizer_2_modern", name: "Vaporizer 2", category: "Vaporizer", system: "vaporizer", internal: false,
       description: "Second agent-specific vaporizer position, where fitted.", function: "Adds a controlled concentration of a different volatile agent to fresh gas.",
-      vivaPoints: ["Interlocked with Vaporizer 1."], animation: "vaporizer-dial", relatedComponents: ["vaporizer_1_modern", "common_gas_outlet_modern"] },
-    { id: "common_gas_outlet_modern", name: "Common Gas Outlet", category: "Gas Delivery", subsystem: "vaporizer", internal: false,
-      description: "Point where mixed fresh gas leaves the gas-delivery subsystem toward the breathing circuit.",
-      function: "Delivers final fresh gas mixture to the breathing circuit.", vivaPoints: [], animation: null, relatedComponents: ["breathing_circuit_modern"] },
-    { id: "breathing_circuit_modern", name: "Breathing Circuit", category: "Breathing System", subsystem: "breathing", internal: false,
+      vivaPoints: ["Interlocked with Vaporizer 1."], animationId: "vaporizer-dial", relatedComponents: ["vaporizer_1_modern", "common_gas_outlet_modern"] },
+    { id: "common_gas_outlet_modern", name: "Common Gas Outlet", category: "Gas Delivery", system: "vaporizer", internal: false,
+      description: "Point where mixed fresh gas leaves the gas-delivery system toward the breathing circuit.",
+      function: "Delivers final fresh gas mixture to the breathing circuit.", vivaPoints: [], animationId: null, relatedComponents: ["breathing_circuit_modern"] },
+    { id: "breathing_circuit_modern", name: "Breathing Circuit", category: "Breathing System", system: "breathing", internal: false,
       description: "Circle breathing system with separate inspiratory and expiratory limbs.", function: "Carries fresh/inspired gas to the patient and exhaled gas back through the absorber.",
-      vivaPoints: [], animation: "gas-flow-pulse", relatedComponents: ["inspiratory_valve_modern", "expiratory_valve_modern", "co2_absorber_modern"] },
-    { id: "inspiratory_valve_modern", name: "Inspiratory One-Way Valve", category: "Breathing System", subsystem: "breathing", internal: true,
+      vivaPoints: [], animationId: "gas-flow-pulse", relatedComponents: ["inspiratory_valve_modern", "expiratory_valve_modern", "co2_absorber_modern"] },
+    { id: "inspiratory_valve_modern", name: "Inspiratory One-Way Valve", category: "Breathing System", system: "breathing", internal: true,
       description: "Unidirectional valve ensuring inspired gas flows only toward the patient.", function: "Prevents rebreathing of gas straight from the inspiratory limb without absorber passage.",
       vivaPoints: ["A stuck/incompetent unidirectional valve is a classic circle-system fault to know for viva."],
-      animation: "valve-flap", relatedComponents: ["expiratory_valve_modern"] },
-    { id: "expiratory_valve_modern", name: "Expiratory One-Way Valve", category: "Breathing System", subsystem: "breathing", internal: true,
+      animationId: "valve-flap", relatedComponents: ["expiratory_valve_modern"] },
+    { id: "expiratory_valve_modern", name: "Expiratory One-Way Valve", category: "Breathing System", system: "breathing", internal: true,
       description: "Unidirectional valve ensuring expired gas flows only away from the patient toward the absorber.", function: "Directs exhaled gas through the absorber, not back to the patient directly.",
-      vivaPoints: [], animation: "valve-flap", relatedComponents: ["inspiratory_valve_modern"] },
-    { id: "co2_absorber_modern", name: "CO2 Absorber Canister", category: "Breathing System", subsystem: "absorber", internal: false,
+      vivaPoints: [], animationId: "valve-flap", relatedComponents: ["inspiratory_valve_modern"] },
+    { id: "co2_absorber_modern", name: "CO2 Absorber Canister", category: "Breathing System", system: "absorber", internal: false,
       description: "Canister of CO2-absorbing medium in the circle system.", function: "Removes CO2 from rebreathed gas.",
-      vivaPoints: ["Exhaustion indicators are absorbent/model-dependent."], animation: "absorber-glow", relatedComponents: ["breathing_circuit_modern"] },
-    { id: "apl_valve_modern", name: "APL Valve", category: "Safety / Breathing System", subsystem: "breathing", internal: false,
+      vivaPoints: ["Exhaustion indicators are absorbent/model-dependent."], animationId: "absorber-glow", relatedComponents: ["breathing_circuit_modern"] },
+    { id: "apl_valve_modern", name: "APL Valve", category: "Safety / Breathing System", system: "breathing", internal: false,
       description: "Adjustable pressure-limiting valve for manual/spontaneous ventilation modes.", function: APL_PRINCIPLE,
       vivaPoints: ["Usually bypassed automatically when the ventilator is switched to mechanical modes (model-dependent bag/vent switch)."],
-      animation: "apl-vent", relatedComponents: ["reservoir_bag_modern", "ventilator_unit_modern"] },
-    { id: "reservoir_bag_modern", name: "Reservoir Bag", category: "Breathing System", subsystem: "breathing", internal: false,
+      animationId: "apl-vent", relatedComponents: ["reservoir_bag_modern", "ventilator_unit_modern"] },
+    { id: "reservoir_bag_modern", name: "Reservoir Bag", category: "Breathing System", system: "breathing", internal: false,
       description: "Manual ventilation bag, used when the bag/ventilator selector is set to manual/spontaneous.", function: "Allows manual ventilation and tactile/visual monitoring of breathing.",
-      vivaPoints: [], animation: "bag-breathe", relatedComponents: ["apl_valve_modern"] },
-    { id: "ventilator_unit_modern", name: "Ventilator Unit", category: "Ventilator", subsystem: "ventilator", internal: false,
+      vivaPoints: [], animationId: "bag-breathe", relatedComponents: ["apl_valve_modern"] },
+    { id: "ventilator_unit_modern", name: "Ventilator Unit", category: "Ventilator", system: "ventilator", internal: false,
       description: "Integrated mechanical ventilator module.", function: "Automates inspiration/expiration once switched from manual/spontaneous mode.",
       vivaPoints: ["Bellows or piston-driven, model-dependent — see Ventilator Mode for the educational visualisation."],
-      animation: "ventilator-cycle", relatedComponents: ["ventilator_bellows_modern", "ventilator_controls_modern"] },
-    { id: "ventilator_bellows_modern", name: "Bellows / Piston Mechanism", category: "Ventilator", subsystem: "ventilator", internal: true,
+      animationId: "ventilator-cycle", relatedComponents: ["ventilator_bellows_modern", "ventilator_controls_modern"] },
+    { id: "ventilator_bellows_modern", name: "Bellows / Piston Mechanism", category: "Ventilator", system: "ventilator", internal: true,
       description: "The moving element (bellows or piston, model-dependent) that drives gas into the breathing circuit during mechanical inspiration.",
       function: "Physically displaces gas into the circuit each mechanical breath.", vivaPoints: ["An ascending bellows that fails to rise during expiration can indicate a leak or disconnection (bellows-type ventilators)."],
-      animation: "ventilator-cycle", relatedComponents: ["ventilator_unit_modern"] },
-    { id: "ventilator_controls_modern", name: "Ventilator Control Panel", category: "Ventilator", subsystem: "ventilator", internal: false,
+      animationId: "ventilator-cycle", relatedComponents: ["ventilator_unit_modern"] },
+    { id: "ventilator_controls_modern", name: "Ventilator Control Panel", category: "Ventilator", system: "ventilator", internal: false,
       description: "Panel of controls/soft-keys for setting ventilator mode and parameters.", function: "Lets the operator select ventilation mode and set VT/RR/PEEP/FiO2/I:E.",
-      vivaPoints: [], animation: null, relatedComponents: ["ventilator_unit_modern"] },
-    { id: "scavenging_interface_modern", name: "Scavenging Interface", category: "Scavenging", subsystem: "scavenging", internal: false,
+      vivaPoints: [], animationId: null, relatedComponents: ["ventilator_unit_modern"] },
+    { id: "scavenging_interface_modern", name: "Scavenging Interface", category: "Scavenging", system: "scavenging", internal: false,
       description: "Connection carrying vented/excess gas away from the breathing system and ventilator relief.", function: SCAVENGING_PRINCIPLE,
-      vivaPoints: [], animation: "gas-flow-pulse", relatedComponents: ["apl_valve_modern", "ventilator_unit_modern"] },
-    { id: "monitor_screen_modern", name: "Patient Monitor", category: "Monitoring", subsystem: "monitor", internal: false,
+      vivaPoints: [], animationId: "gas-flow-pulse", relatedComponents: ["apl_valve_modern", "ventilator_unit_modern"] },
+    { id: "monitor_screen_modern", name: "Patient Monitor", category: "Monitoring", system: "monitor", internal: false,
       description: "Integrated or attached physiological monitor displaying ASA-standard basic anaesthetic monitoring parameters.",
       function: "Displays ECG, SpO2, NIBP, EtCO2/capnography, respiratory rate, temperature and (where applicable) inspired/expired gas and airway pressure data.",
-      vivaPoints: ["See Monitor mode for full interactive detail."], animation: null, relatedComponents: [] },
-    { id: "battery_indicator_modern", name: "Battery / Power Indicator", category: "Power", subsystem: "power", internal: false,
+      vivaPoints: ["See Monitor mode for full interactive detail."], animationId: null, relatedComponents: [] },
+    { id: "battery_indicator_modern", name: "Battery / Power Indicator", category: "Power", system: "power", internal: false,
       description: "Indicates mains power status and internal battery backup charge.", function: "Warns the operator before battery backup is exhausted during a power failure.",
       vivaPoints: ["Internal battery backup duration is model-dependent — always know your specific machine's rated backup time."],
-      animation: "battery-blink", relatedComponents: [] },
-    { id: "drawer_1_modern", name: "Drawer 1", category: "Storage", subsystem: "drawer", internal: false,
+      animationId: "battery-blink", relatedComponents: [] },
+    { id: "drawer_1_modern", name: "Drawer 1", category: "Storage", system: "drawer", internal: false,
       description: "Storage drawer — example contents only (see Phase 10 note below).", function: "Bedside storage for commonly used airway/IV items.",
-      vivaPoints: [], animation: "drawer-slide", relatedComponents: [] },
-    { id: "drawer_2_modern", name: "Drawer 2", category: "Storage", subsystem: "drawer", internal: false,
+      vivaPoints: [], animationId: "drawer-slide", relatedComponents: [] },
+    { id: "drawer_2_modern", name: "Drawer 2", category: "Storage", system: "drawer", internal: false,
       description: "Storage drawer — example contents only.", function: "Bedside storage for commonly used items.",
-      vivaPoints: [], animation: "drawer-slide", relatedComponents: [] },
-    { id: "drawer_3_modern", name: "Drawer 3", category: "Storage", subsystem: "drawer", internal: false,
+      vivaPoints: [], animationId: "drawer-slide", relatedComponents: [] },
+    { id: "drawer_3_modern", name: "Drawer 3", category: "Storage", system: "drawer", internal: false,
       description: "Storage drawer — example contents only.", function: "Bedside storage for commonly used items.",
-      vivaPoints: [], animation: "drawer-slide", relatedComponents: [] }
+      vivaPoints: [], animationId: "drawer-slide", relatedComponents: [] }
   ];
 
   const modernSafety = [
@@ -705,7 +705,38 @@
     { label: "Breathing circuit", componentMatch: "breathing" }
   ];
 
-  window.VentilatorData = {
+  // ---- Node/metadata contract normalization -------------------------------
+  // Every component gets the full documented contract (see
+  // VENTILATOR_3D_ASSET_SPEC.md): id, name, category, description,
+  // function, system, safetyFeature, vivaPoints, tourStep, animationId,
+  // internal, rearView, flowPath. isHousing/rearView/safetyFeature/
+  // tourStep/flowPath are DERIVED here from the arrays already defined
+  // above (safetyFeatures[].componentIds, tourSteps[].componentId,
+  // flowPaths) rather than hand-duplicated on every component literal, so
+  // there is exactly one place that can get out of sync with the other.
+  function normalizeMachine(machine) {
+    const byId = {};
+    machine.components.forEach(c => {
+      c.isHousing = !!c.isHousing || /^frame_/.test(c.id);
+      c.rearView = !!c.rearView || /^(cylinder_|yoke_|gauge_cylinder_|pipeline_inlet_|gauge_pipeline_)/.test(c.id);
+      c.safetyFeature = [];
+      c.tourStep = [];
+      c.flowPath = [];
+      byId[c.id] = c;
+    });
+    (machine.safetyFeatures || []).forEach(f => {
+      (f.componentIds || []).forEach(id => { if (byId[id]) byId[id].safetyFeature.push(f.id); });
+    });
+    (machine.tourSteps || []).forEach((step, i) => {
+      if (step.componentId && byId[step.componentId]) byId[step.componentId].tourStep.push(i);
+    });
+    Object.entries(machine.flowPaths || {}).forEach(([gasKey, ids]) => {
+      ids.forEach(id => { if (byId[id]) byId[id].flowPath.push(gasKey); });
+    });
+    return machine;
+  }
+
+  const ventilatorData = {
     machines: {
       boyles: {
         id: "boyles",
@@ -727,6 +758,7 @@
         vivaQuestions: boylesViva,
         drawers: [],
         ventilatorModes: [],
+        monitorConfig: null,
         cameraPresets: {
           front: { position: [0, 1.35, 3.1], target: [0, 0.85, 0] },
           rear: { position: [0, 1.4, -3.1], target: [0, 0.85, 0] },
@@ -753,6 +785,7 @@
         vivaQuestions: modernViva,
         drawers: modernDrawers,
         ventilatorModes: modernVentilatorModes,
+        monitorConfig: { params: monitorParams, alarms: alarmScenarios },
         cameraPresets: {
           front: { position: [0, 1.4, 3.3], target: [0, 0.9, 0] },
           rear: { position: [0, 1.5, -3.3], target: [0, 0.9, 0] },
@@ -760,8 +793,6 @@
         }
       }
     },
-    monitorParams: monitorParams,
-    alarmScenarios: alarmScenarios,
     showMeIndex: showMeIndex,
     pressureSystemLabels: {
       high: "HIGH-PRESSURE SYSTEM",
@@ -779,4 +810,9 @@
       return m.components.find(c => c.id === componentId) || null;
     }
   };
+
+  normalizeMachine(ventilatorData.machines.boyles);
+  normalizeMachine(ventilatorData.machines.modern);
+
+  window.VentilatorData = ventilatorData;
 })();

@@ -21,7 +21,7 @@ export function createUI(engine, interactions, machine) {
   root.classList.toggle("has-monitor", !!machine.hasMonitor);
   root.classList.toggle("has-drawers", !!machine.hasDrawers);
 
-  // ---- Sidebar: subsystem taxonomy ----
+  // ---- Sidebar: system taxonomy ----
   const SUBSYSTEM_LABELS = {
     frame: "Overview", gasSupply: "Gas Supply", pressure: "Pressure Systems", flow: "Flowmeters / Flow Control",
     vaporizer: "Vaporizers", breathing: "Breathing Circuit", absorber: "CO2 Absorber", ventilator: "Ventilator",
@@ -30,20 +30,20 @@ export function createUI(engine, interactions, machine) {
   function buildSidebar() {
     const bySystem = {};
     machine.components.forEach(c => {
-      const key = c.subsystem || "frame";
+      const key = c.system || "frame";
       (bySystem[key] = bySystem[key] || []).push(c);
     });
     const order = ["frame", "gasSupply", "pressure", "flow", "vaporizer", "breathing", "absorber", "ventilator", "monitor", "scavenging", "power", "drawer"];
     sidebarList.innerHTML = order.filter(k => bySystem[k]).map(k => `
-      <button class="vent-sidebar-item" data-subsystem="${esc(k)}">
+      <button class="vent-sidebar-item" data-system="${esc(k)}">
         <span>${esc(SUBSYSTEM_LABELS[k] || k)}</span>
         <span class="vent-sidebar-count">${bySystem[k].length}</span>
       </button>
     `).join("");
-    sidebarList.querySelectorAll("[data-subsystem]").forEach(btn => {
+    sidebarList.querySelectorAll("[data-system]").forEach(btn => {
       btn.addEventListener("click", () => {
         sidebarList.querySelectorAll(".vent-sidebar-item").forEach(b => b.classList.toggle("active", b === btn));
-        selectSubsystem(btn.dataset.subsystem, bySystem[btn.dataset.subsystem]);
+        selectSubsystem(btn.dataset.system, bySystem[btn.dataset.system]);
       });
     });
   }
@@ -373,7 +373,7 @@ function initMonitor(engine, machine) {
   }
   requestAnimationFrame(render);
 
-  const params = window.VentilatorData.monitorParams;
+  const params = machine.monitorConfig.params;
   const values = { ecg: () => `${state.hr} bpm`, hr: () => state.hr, spo2: () => state.spo2 + "%", nibp: () => `${state.sbp}/${state.dbp}`, etco2: () => state.etco2 + " mmHg", rr: () => state.rr + " /min", temp: () => state.temp.toFixed(1) + "°C", fio2: () => state.fio2 + "%", agent: () => "MAC " + state.mac.toFixed(1), paw: () => state.paw + " cmH2O", peep: () => state.peep + " cmH2O", vt: () => state.vt + " mL", mv: () => (state.vt * state.rr / 1000).toFixed(1) + " L/min" };
   paramGrid.innerHTML = params.map(p => `
     <button class="vent-monitor-param" data-param="${esc(p.id)}">
@@ -412,11 +412,12 @@ function initMonitor(engine, machine) {
 
   // ---- Alarm mode ----
   const alarmList = document.getElementById("ventAlarmList");
-  alarmList.innerHTML = window.VentilatorData.alarmScenarios.map(a => `<button class="vent-list-item" data-alarm-id="${esc(a.id)}"><span>${esc(a.name)}</span></button>`).join("");
+  const alarms = machine.monitorConfig.alarms;
+  alarmList.innerHTML = alarms.map(a => `<button class="vent-list-item" data-alarm-id="${esc(a.id)}"><span>${esc(a.name)}</span></button>`).join("");
   const alarmDetail = document.getElementById("ventAlarmDetail");
   alarmList.querySelectorAll("[data-alarm-id]").forEach(btn => {
     btn.addEventListener("click", () => {
-      const a = window.VentilatorData.alarmScenarios.find(x => x.id === btn.dataset.alarmId);
+      const a = alarms.find(x => x.id === btn.dataset.alarmId);
       alarm = a.parameter;
       alarmBanner.hidden = false;
       alarmBanner.textContent = "🚨 " + a.name.toUpperCase();
