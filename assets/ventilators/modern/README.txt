@@ -1,0 +1,1 @@
+Drop a real .glb model here (e.g. model.glb) to replace the procedural placeholder geometry. See ventilator-3d.js buildMachine() — it tries GLTFLoader first at this path and falls back to the named-node placeholder build if none is found. Node names in a real model should match the componentId values in ventilator-data.js so raycasting/metadata keep working unmodified.

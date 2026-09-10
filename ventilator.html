@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ventilator & Anaesthesia Workstations | KnockoutNotes</title>
+  <meta name="description" content="Interactive 3D anaesthesia machine explorer: Boyle's machine and a modern anaesthesia workstation, gas systems, safety features, ventilator and monitor simulation.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page-common.css">
+  <link rel="stylesheet" href="ventilator.css">
+</head>
+<body class="mode-3d dark">
+
+<header class="site-hud">
+  <div class="hud-capsule">
+    <a class="brand" href="index.html" aria-label="KnockoutNotes home">
+      <div class="brand-icon-wrap">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      </div>
+      <div class="brand-name">Knockout<span>Notes</span></div>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="pearls.html">Pearls</a>
+      <a href="notes.html">Notes</a>
+      <a href="viva.html">Viva</a>
+      <a href="drugs.html">Drugs</a>
+      <a href="critical-care.html">Critical Care</a>
+      <a href="ventilator.html" class="active">Ventilators</a>
+      <a href="resources.html">Resources</a>
+      <a href="recent-updates.html">Updates</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="menu-btn" id="ventMenuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="ventMobileMenu">
+    <a href="index.html">Home <span>→</span></a>
+    <a href="pearls.html">Pearls <span>→</span></a>
+    <a href="notes.html">Notes <span>→</span></a>
+    <a href="viva.html">Viva <span>→</span></a>
+    <a href="drugs.html">Drugs <span>→</span></a>
+    <a href="critical-care.html">Critical Care <span>→</span></a>
+    <a href="ventilator.html">Ventilators <span>→</span></a>
+    <a href="resources.html">Resources <span>→</span></a>
+    <a href="recent-updates.html">Updates <span>→</span></a>
+  </div>
+</header>
+
+<!-- ============================== MACHINE SELECTOR ============================== -->
+<div id="ventSelectorScreen" class="vent-selector">
+  <div class="vent-selector-inner">
+    <span class="vent-kicker">3D INTERACTIVE EXPLORER — WEBGL</span>
+    <h1>Ventilator &amp; Anaesthesia Workstations</h1>
+    <p class="vent-selector-lead">Explore two completely separate anaesthesia delivery systems in real interactive 3D: rotate, zoom, inspect every component, trace the gas pathway, and learn the safety systems that protect the patient.</p>
+
+    <div class="vent-machine-cards">
+      <button class="vent-machine-card" data-select-machine="boyles">
+        <span class="vent-machine-num">01</span>
+        <div class="vent-machine-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none"><rect x="20" y="8" width="10" height="30" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="34" y="8" width="10" height="30" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="38" width="36" height="18" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="60" r="3" stroke="currentColor" stroke-width="2"/><circle cx="42" cy="60" r="3" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <h3>Boyle's Anaesthesia Machine</h3>
+        <p>The classic pneumatic delivery system — cylinders, rotameters, an agent-specific vaporizer and a circle breathing system.</p>
+        <span class="vent-machine-cta">Explore in 3D →</span>
+      </button>
+      <button class="vent-machine-card" data-select-machine="modern">
+        <span class="vent-machine-num">02</span>
+        <div class="vent-machine-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none"><rect x="16" y="20" width="32" height="26" rx="2" stroke="currentColor" stroke-width="2"/><rect x="20" y="46" width="24" height="8" stroke="currentColor" stroke-width="2"/><rect x="20" y="54" width="24" height="4" stroke="currentColor" stroke-width="2"/><rect x="24" y="6" width="16" height="12" rx="1.5" stroke="currentColor" stroke-width="2"/><line x1="32" y1="18" x2="32" y2="20" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <h3>Modern Anaesthesia Workstation</h3>
+        <p>An integrated electronic workstation — gas delivery, ventilator, patient monitor, alarms, battery backup and drawers.</p>
+        <span class="vent-machine-cta">Explore in 3D →</span>
+      </button>
+    </div>
+
+    <p class="vent-selector-footnote">Educational prototype. Component descriptions use generic, textbook-standard anaesthesia machine concepts and are not a substitute for a specific machine's manufacturer manual. Content requires review by a qualified anaesthesiologist before clinical teaching use.</p>
+  </div>
+</div>
+
+<!-- ============================== WORKSTATION APP ============================== -->
+<div id="ventApp" class="vent-app" hidden>
+
+  <div class="vent-app-header">
+    <div>
+      <span id="ventMachineKicker" class="vent-kicker"></span>
+      <h2 id="ventMachineTitle"></h2>
+      <p id="ventMachineDesc" class="vent-machine-desc"></p>
+    </div>
+    <button id="ventChangeMachineBtn" class="btn-hud">⇄ Change Machine</button>
+  </div>
+
+  <div class="vent-layout">
+    <aside class="vent-sidebar">
+      <h4 class="vent-sidebar-heading">Components</h4>
+      <div id="ventSidebarList" class="vent-sidebar-list"></div>
+    </aside>
+
+    <div class="vent-main">
+      <div class="vent-tabs" role="tablist">
+        <button class="vent-tab active" data-tab="explore" role="tab">Explore</button>
+        <button class="vent-tab" data-tab="xray" role="tab">X-Ray View</button>
+        <button class="vent-tab" data-tab="flow" role="tab">Flow Path</button>
+        <button class="vent-tab" data-tab="clinical" role="tab">Clinical Modes</button>
+        <button class="vent-tab" data-tab="quiz" role="tab">Quiz</button>
+      </div>
+
+      <div class="vent-action-bar">
+        <button id="ventStartMachineBtn" class="btn-hud primary">▶ Start Machine</button>
+        <button id="ventStartRestartBtn" class="btn-hud" title="Restart start-up sequence">↺</button>
+        <button id="ventStartStepBtn" class="btn-hud" title="Step forward one stage">Step</button>
+        <span class="vent-action-spacer"></span>
+        <button id="ventResetViewBtn" class="btn-hud" aria-label="Reset camera view">Reset View</button>
+        <button id="ventRearViewBtn" class="btn-hud" aria-label="Move camera to rear view">Rear View</button>
+        <button id="ventSideViewBtn" class="btn-hud" aria-label="Move camera to side view">Side View</button>
+        <button id="ventFullscreenBtn" class="btn-hud" aria-label="Toggle fullscreen">⛶</button>
+      </div>
+      <div id="ventStartCaption" class="vent-caption-banner" hidden></div>
+      <div id="ventAlarmBanner" class="vent-alarm-banner" hidden></div>
+
+      <div class="vent-stage" id="ventStageOuter">
+        <div id="ventStage" class="vent-canvas-host"></div>
+        <div id="ventLoading" class="vent-loading">Loading machine…</div>
+        <div id="ventHoverLabel" class="vent-hover-label" hidden></div>
+
+        <div id="ventTourPanel" class="vent-tour-panel" hidden>
+          <span id="ventTourStep" class="vent-tour-step"></span>
+          <strong id="ventTourName"></strong>
+          <p id="ventTourCaption"></p>
+          <div class="vent-tour-controls">
+            <button id="ventTourPrevBtn" class="btn-hud">← Prev</button>
+            <button id="ventTourPauseBtn" class="btn-hud">⏸ Pause</button>
+            <button id="ventTourNextBtn" class="btn-hud">Next →</button>
+            <button id="ventTourExitBtn" class="btn-hud">Exit</button>
+          </div>
+        </div>
+
+        <div id="ventInfoPanel" class="vent-info-panel"></div>
+        <div id="ventDrawerPanel" class="vent-drawer-panel" hidden></div>
+      </div>
+
+      <div class="vent-panels">
+
+        <div id="ventPanelExplore" class="vent-panel">
+          <div class="vent-toggle-row">
+            <label class="vent-toggle"><input type="checkbox" id="ventExplodeToggle"><span>💥 Exploded View</span></label>
+            <button id="ventTourStartBtn" class="btn-hud">🧭 Guided Tour</button>
+            <button id="ventCylinderPipelineBtn" class="btn-hud">🛢 Cylinder &amp; Pipeline Supply</button>
+            <select id="ventShowMeSelect" class="vent-select" aria-label="Show me"></select>
+          </div>
+          <p class="vent-panel-hint">Rotate: drag / one-finger swipe · Zoom: scroll / pinch · Click any component to inspect it.</p>
+        </div>
+
+        <div id="ventPanelXray" class="vent-panel" hidden>
+          <label class="vent-toggle large"><input type="checkbox" id="ventXrayToggle"><span>🩻 X-Ray / Internal View</span></label>
+          <p class="vent-panel-hint">Makes the outer housing semi-transparent so internal components (valves, regulators) become visible and remain clickable.</p>
+        </div>
+
+        <div id="ventPanelFlow" class="vent-panel" hidden>
+          <div class="vent-subsection">
+            <h4>Gas System Explorer</h4>
+            <div class="vent-chip-row">
+              <button class="vent-chip level" data-gas-level="high">HIGH-PRESSURE SYSTEM</button>
+              <button class="vent-chip level" data-gas-level="intermediate">INTERMEDIATE-PRESSURE SYSTEM</button>
+              <button class="vent-chip level" data-gas-level="low">LOW-PRESSURE SYSTEM</button>
+            </div>
+            <div id="ventGasExplain" class="vent-explain-box" hidden></div>
+          </div>
+          <div class="vent-subsection">
+            <h4>Flow Visualization</h4>
+            <div class="vent-chip-row" id="ventFlowGasRow">
+              <button class="vent-chip" data-flow-gas="O2">O2</button>
+              <button class="vent-chip" data-flow-gas="AIR" data-requires-modern-air>AIR</button>
+              <button class="vent-chip" data-flow-gas="N2O">N2O</button>
+              <button class="vent-chip" data-flow-gas="FRESH_GAS">FRESH GAS</button>
+              <button class="vent-chip" data-flow-gas="VOLATILE">VOLATILE AGENT</button>
+              <button class="vent-chip" data-flow-gas="INSPIRATORY">INSPIRATORY GAS</button>
+              <button class="vent-chip" data-flow-gas="EXPIRATORY">EXPIRATORY GAS</button>
+              <button class="vent-chip" data-flow-gas="CO2">CO2</button>
+            </div>
+            <div class="vent-flow-controls">
+              <button id="ventFlowPlay" class="btn-hud">▶ Play</button>
+              <button id="ventFlowPause" class="btn-hud">⏸ Pause</button>
+              <button id="ventFlowSlow" class="btn-hud">🐢 Slow</button>
+              <button id="ventFlowReset" class="btn-hud">↺ Reset</button>
+            </div>
+            <div id="ventFlowExplain" class="vent-explain-box" hidden></div>
+            <p class="vent-disclaimer">Educational visualization — not a physically exact CFD simulation.</p>
+          </div>
+        </div>
+
+        <div id="ventPanelClinical" class="vent-panel" hidden>
+          <div class="vent-subsection">
+            <h4>🛡 Safety Features</h4>
+            <div id="ventSafetyList" class="vent-list"></div>
+            <div id="ventSafetyDetail" class="vent-explain-box" hidden></div>
+            <div id="ventFailureSteps" class="vent-failure-box" hidden></div>
+          </div>
+          <div class="vent-subsection">
+            <h4>⚠ Troubleshoot</h4>
+            <div id="ventTroubleshootList" class="vent-list"></div>
+            <div id="ventTroubleshootPrompt" class="vent-explain-box" hidden></div>
+          </div>
+          <div class="vent-subsection" data-requires-ventilator hidden>
+            <h4>Ventilator Mode <span class="vent-disclaimer-inline">Educational simulation — not a clinical controller</span></h4>
+            <select id="ventVentModeSelect" class="vent-select"></select>
+            <p id="ventVentModeSummary" class="vent-panel-hint"></p>
+            <div class="vent-slider-grid">
+              <label>VT (mL) <input type="range" id="ventParamVT" min="200" max="800" value="450" step="10"><span id="ventParamVTValue">450</span></label>
+              <label>RR (/min) <input type="range" id="ventParamRR" min="6" max="30" value="14" step="1"><span id="ventParamRRValue">14</span></label>
+              <label>PEEP (cmH2O) <input type="range" id="ventParamPEEP" min="0" max="15" value="5" step="1"><span id="ventParamPEEPValue">5</span></label>
+              <label>FiO2 (%) <input type="range" id="ventParamFiO2" min="21" max="100" value="40" step="1"><span id="ventParamFiO2Value">40</span></label>
+            </div>
+          </div>
+          <div class="vent-subsection" data-requires-monitor hidden>
+            <h4>Patient Monitor <span class="vent-disclaimer-inline">Educational simulation — values illustrative</span></h4>
+            <canvas id="ventMonitorCanvas" width="520" height="160" class="vent-monitor-canvas"></canvas>
+            <div id="ventMonitorParams" class="vent-monitor-params"></div>
+            <div id="ventMonitorDetail" class="vent-explain-box" hidden></div>
+            <h4>🚨 Alarm Mode</h4>
+            <div id="ventAlarmList" class="vent-list"></div>
+            <div id="ventAlarmDetail" class="vent-explain-box" hidden></div>
+          </div>
+        </div>
+
+        <div id="ventPanelQuiz" class="vent-panel" hidden>
+          <div id="ventQuizBody" class="vent-quiz-body"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="ventilator-data.js"></script>
+<!-- The vendored OrbitControls/GLTFLoader files (from npm's three package)
+     import the bare specifier "three", meant for a bundler/import map rather
+     than a raw relative path — this import map resolves it to our vendored
+     build for plain browser ESM. -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three/build/three.module.js"
+  }
+}
+</script>
+<script type="module" src="ventilator.js"></script>
+
+</body>
+</html>
