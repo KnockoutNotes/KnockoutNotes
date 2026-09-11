@@ -33,7 +33,7 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.35,
-      density: 42,
+      density: 84,
       glowPoints: 4
     },
     pearls: {
@@ -44,7 +44,7 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.3,
-      density: 38,
+      density: 76,
       glowPoints: 3
     },
     drugs: {
@@ -55,7 +55,7 @@
       pleth: false,
       circuitRings: false,
       particleSpeed: 0.25,
-      density: 40,
+      density: 80,
       glowPoints: 3
     },
     criticalCare: {
@@ -66,7 +66,7 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.45,
-      density: 44,
+      density: 88,
       glowPoints: 4
     },
     viva: {
@@ -77,7 +77,7 @@
       pleth: false,
       circuitRings: false,
       particleSpeed: 0.3,
-      density: 36,
+      density: 72,
       glowPoints: 3
     },
     resources: {
@@ -88,7 +88,7 @@
       pleth: false,
       circuitRings: true,
       particleSpeed: 0.2,
-      density: 30,
+      density: 60,
       glowPoints: 2
     }
   };
@@ -137,7 +137,7 @@
   function initParticles() {
     particles = [];
     const densityCap = isSmallScreen() ? Math.ceil(env.density * 0.6) : env.density;
-    const count = Math.min(densityCap, Math.floor(width / 26));
+    const count = Math.min(densityCap, Math.floor(width / 14));
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * width,

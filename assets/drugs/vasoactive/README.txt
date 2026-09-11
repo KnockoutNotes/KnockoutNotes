@@ -1,21 +1,21 @@
-Vasoactive Agents — image drop folder
-======================================
+Vasoactive Agents — image asset folder
+========================================
 
-content-config.js already references the 9 filenames below for the
-"Vasoactive Agents" drug category. Upload matching JPGs here (same
-crop/style as the other drug categories, e.g. assets/drugs/opioids) and
-they will appear automatically — no code changes needed.
+content-config.js references the 11 images below for the "Vasoactive
+Agents" drug category. All are populated.
 
-  vasoactive_01_intro.jpg          Vasoactive agents — introduction
-  vasoactive_02_overview.jpg       Vasoactive agent overview
-  vasoactive_03_noradrenaline.jpg  Noradrenaline
-  vasoactive_04_adrenaline.jpg     Adrenaline
-  vasoactive_05_dopamine.jpg       Dopamine
-  vasoactive_06_dobutamine.jpg     Dobutamine
-  vasoactive_07_vasopressin.jpg    Vasopressin
-  vasoactive_08_phenylephrine.jpg  Phenylephrine
-  vasoactive_09_milrinone.jpg      Milrinone
+  vasoactive_01_intro.png            Introduction to vasoactive agents
+  vasoactive_02_ionotropes.png       Inotropes — classification & receptors
+  vasoactive_03_noradrenaline.png    Noradrenaline
+  vasoactive_04_adrenaline.png       Adrenaline
+  vasoactive_05_dopamine.png         Dopamine
+  vasoactive_06_dobutamine.png       Dobutamine
+  vasoactive_07_vasopressin.png      Vasopressin
+  vasoactive_08_phenylephrine.png    Phenylephrine
+  vasoactive_09_milrinone.png        Milrinone
+  vasoactive_10_nitroglycerin.png    Nitroglycerin
+  vasoactive_11_methylene-blue.png   Methylene blue
 
-Until an image is uploaded, that card falls back to a generic line-art
-pictogram — the category itself, its title, and its "View Monograph"
-link already work.
+To add more agents later, drop a new PNG/JPG here and add a matching
+{url, title} entry to the vasoactive category's `files` array in
+content-config.js — no other code changes needed.
