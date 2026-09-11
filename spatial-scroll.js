@@ -29,6 +29,23 @@
     return a + (b - a) * t;
   }
 
+  // Cinematic overshoot curve used only for the one-time "deploy" animation
+  // (cards rising out of the dock) — a normal ease would read as a fade-in,
+  // this gives the brief physical overshoot-then-settle the brief asks for.
+  function easeOutBack(t) {
+    const c1 = 1.70158, c3 = c1 + 1;
+    const x = t - 1;
+    return 1 + c3 * x * x * x + c1 * x * x;
+  }
+
+  // The pose every card starts from before its section has ever entered the
+  // viewport: hidden low behind the dock, deep in Z, small and transparent.
+  // _deploy() blends each card from here to its normal computed depth-stop
+  // pose over DEPLOY_DURATION_MS, staggered outward from the centre.
+  const DOCK_POSE = { cy: 130, cz: -260, cry: 0, cs: 0.32, cop: 0, cbl: 3 };
+  const DEPLOY_DURATION_MS = 620;
+  const DEPLOY_STAGGER_MS = 70;
+
   // Depth "stops" the centred-outward falloff is interpolated between, so
   // translateZ/rotateY/scale/opacity/blur all move together as one card
   // becomes the centre and its neighbours fall away — a real stack of
@@ -99,6 +116,12 @@
     this._lastMoveT = 0;
     this._lastMoveX = 0;
     this._lastMeasuredH = 0;
+    // Deployment state: cards start docked/hidden and rise into their real
+    // depth-stop positions once this carousel's section first scrolls into
+    // view (see _wireDeployObserver/_deploy). Vertical page scroll never
+    // drives this — it only ever fires once, from IntersectionObserver.
+    this.deployed = false;
+    this._deploying = false;
     this._build();
   }
 
@@ -124,6 +147,7 @@
     children.forEach((card, i) => {
       card.classList.add("kn-carousel-card");
       card.dataset.kcIndex = String(i);
+      if (card.dataset.deployT === undefined) card.dataset.deployT = "0";
     });
 
     this.container.style.height = "var(--carousel-h)";
@@ -154,10 +178,75 @@
     }
 
     this._buildControls();
+    this._buildDock();
     this._wireCardClicks();
     this._wireHorizontalInput();
     this._wireHoverDepth();
+    this._wireDeployObserver();
     this._layout();
+  };
+
+  // A small glowing origin point placed in normal document flow right after
+  // the card stage — purely decorative, never intercepts pointer/keyboard
+  // input. Cards animate as if rising out of it the first time this
+  // carousel's section enters the viewport (see _wireDeployObserver).
+  Carousel.prototype._buildDock = function () {
+    let dock = this.container.parentElement && this.container.parentElement.querySelector(":scope > .kn-carousel-dock");
+    if (dock) { this._dockEl = dock; return; }
+    dock = document.createElement("div");
+    dock.className = "kn-carousel-dock";
+    dock.setAttribute("aria-hidden", "true");
+    dock.innerHTML =
+      '<span class="kn-dock-ring kn-dock-ring-2"></span>' +
+      '<span class="kn-dock-ring kn-dock-ring-1"></span>' +
+      '<span class="kn-dock-core"></span>';
+    this.container.insertAdjacentElement("afterend", dock);
+    this._dockEl = dock;
+  };
+
+  // Deployment fires exactly once per carousel instance, driven only by
+  // section visibility — never by ongoing scroll position, and never
+  // re-armed by a category-tab switch (existing already-deployed carousels
+  // just get re-shown/refreshed as before). An immediate bounding-box check
+  // covers content that's already on screen at build time (e.g. an
+  // above-the-fold home grid); the observer covers scrolling down to it.
+  Carousel.prototype._wireDeployObserver = function () {
+    if (this.deployed || this._deploying) return;
+    if (reduceMotion || typeof IntersectionObserver === "undefined") {
+      this.deployed = true;
+      return;
+    }
+    if (!this._deployObserver) {
+      this._deployObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) this._deploy();
+        });
+      }, { threshold: 0.15 });
+      this._deployObserver.observe(this.container);
+    }
+    requestAnimationFrame(() => {
+      if (this.deployed || this._deploying || this.destroyed) return;
+      const r = this.container.getBoundingClientRect();
+      if (r.width > 0 && r.top < window.innerHeight && r.bottom > 0) this._deploy();
+    });
+  };
+
+  Carousel.prototype._deploy = function () {
+    if (this.deployed || this._deploying) return;
+    if (this._deployObserver) { this._deployObserver.disconnect(); this._deployObserver = null; }
+    if (reduceMotion) { this.deployed = true; this.cards.forEach(c => { c.dataset.deployT = "1"; }); this._layout(); return; }
+    this._deploying = true;
+    const now = performance.now();
+    // Stagger outward from whichever card starts centred, so the active
+    // card is the first to rise and side cards follow outward from it.
+    const order = this.cards.slice().sort((a, b) =>
+      Math.abs(Number(a.dataset.kcIndex) - this.currentIndex) - Math.abs(Number(b.dataset.kcIndex) - this.currentIndex)
+    );
+    order.forEach((card, i) => {
+      card._deployStart = now + i * DEPLOY_STAGGER_MS;
+      card.dataset.deployT = "0";
+    });
+    if (this._dockEl) this._dockEl.classList.add("active");
   };
 
   Carousel.prototype._measureHeight = function () {
@@ -418,26 +507,58 @@
 
       const d = interpStops(aoff, stops);
       const cx = off * stepPx;
-      const cz = d.tz;
-      const cry = clamp(-dir * d.rot, -44, 44);
-      const cs = d.scale;
-      const cop = centered ? 1 : d.op;
-      const cbl = d.blur;
+      let cz = d.tz;
+      let cry = clamp(-dir * d.rot, -44, 44);
+      let cs = d.scale;
+      let cop = centered ? 1 : d.op;
+      let cbl = d.blur;
+      let cy = 0;
+
+      // Deployment blend: before this carousel's section has ever entered
+      // the viewport, every card renders as a lerp from the dock pose
+      // toward this same real depth-stop target — never a separate visual
+      // state, just this pose animated in from below. deployT can briefly
+      // exceed 1 (easeOutBack overshoot), which is the intended spring
+      // settle, so it's only clamped for opacity (a >1 opacity is invalid).
+      if (!this.deployed) {
+        const t = parseFloat(card.dataset.deployT) || 0;
+        cy = lerp(DOCK_POSE.cy, 0, t);
+        cz = lerp(DOCK_POSE.cz, cz, t);
+        cry = lerp(DOCK_POSE.cry, cry, t);
+        cs = lerp(DOCK_POSE.cs, cs, t);
+        cop = lerp(DOCK_POSE.cop, cop, t);
+        cbl = lerp(DOCK_POSE.cbl, cbl, t);
+      }
 
       card.style.setProperty("--cx", cx.toFixed(1) + "px");
+      card.style.setProperty("--cy", cy.toFixed(1) + "px");
       card.style.setProperty("--cz", cz.toFixed(1) + "px");
       card.style.setProperty("--cry", cry.toFixed(1) + "deg");
-      card.style.setProperty("--cs", cs.toFixed(3));
+      card.style.setProperty("--cs", Math.max(0, cs).toFixed(3));
       card.style.setProperty("--cop", clamp(cop, 0, 1).toFixed(3));
-      card.style.setProperty("--cbl", cbl.toFixed(2) + "px");
+      card.style.setProperty("--cbl", Math.max(0, cbl).toFixed(2) + "px");
       card.style.zIndex = String(100 - Math.round(aoff * 10));
       card.dataset.centered = centered ? "true" : "false";
-      card.style.pointerEvents = cop < 0.04 ? "none" : "";
+      card.style.pointerEvents = (cop < 0.04 || this._deploying) ? "none" : "";
     });
   };
 
   Carousel.prototype.tick = function () {
     if (this.destroyed || !this.cards.length) return;
+    if (this._deploying) {
+      const now = performance.now();
+      let allDone = true;
+      this.cards.forEach(card => {
+        const raw = clamp((now - card._deployStart) / DEPLOY_DURATION_MS, 0, 1);
+        card.dataset.deployT = String(easeOutBack(raw));
+        if (raw < 1) allDone = false;
+      });
+      if (allDone) {
+        this.deployed = true;
+        this._deploying = false;
+        if (this._dockEl) this._dockEl.classList.remove("active");
+      }
+    }
     if (reduceMotion) {
       this.currentIndex = this.targetIndex;
     } else if (this._trackingRaw) {

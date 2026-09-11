@@ -1869,7 +1869,7 @@ a.kn-update-card:hover .kn-update-open {
   width: min(480px, 74%);
   max-width: 100%;
   min-width: 0;
-  transform: translate3d(calc(-50% + var(--cx, 0px)), 0, calc(var(--cz, 0px) + var(--hz, 0px)))
+  transform: translate3d(calc(-50% + var(--cx, 0px)), var(--cy, 0px), calc(var(--cz, 0px) + var(--hz, 0px)))
              rotateX(var(--hrx, 0deg))
              rotateY(calc(var(--cry, 0deg) + var(--hry, 0deg)))
              scale(var(--cs, 1));
@@ -1972,6 +1972,63 @@ a.kn-update-card:hover .kn-update-open {
     font-size: 21px;
     opacity: 0.72;
   }
+}
+
+/* Cinematic deployment dock — a small glowing origin point sitting just
+   below the card stack that the cards visually "rise from" the first time
+   the carousel's section scrolls into view (see spatial-scroll.js
+   _wireDeployObserver/_deploy). Purely decorative; never intercepts input. */
+.view-layer-3d .kn-carousel-dock {
+  position: relative;
+  height: 34px;
+  width: min(180px, 46%);
+  margin: 2px auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.kn-dock-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(56, 189, 248, 0.32);
+  border-radius: 50%;
+}
+
+.kn-dock-ring-1 { width: 42px; height: 42px; }
+.kn-dock-ring-2 { width: 78px; height: 14px; opacity: 0.55; }
+
+.kn-dock-core {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 12px 2px rgba(56, 189, 248, 0.55);
+}
+
+.view-layer-3d .kn-carousel-dock.active .kn-dock-core {
+  animation: knDockPulse 0.9s ease-out;
+}
+.view-layer-3d .kn-carousel-dock.active .kn-dock-ring-1 {
+  animation: knDockRingPulse 0.9s ease-out;
+}
+
+@keyframes knDockPulse {
+  0% { box-shadow: 0 0 8px 1px rgba(56, 189, 248, 0.4); transform: scale(0.8); }
+  40% { box-shadow: 0 0 30px 10px rgba(56, 189, 248, 0.55); transform: scale(1.35); }
+  100% { box-shadow: 0 0 12px 2px rgba(56, 189, 248, 0.55); transform: scale(1); }
+}
+@keyframes knDockRingPulse {
+  0% { transform: translate(-50%, -50%) scale(0.6); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .view-layer-3d .kn-carousel-dock * { animation: none !important; }
 }
 
 /* ==========================================================================

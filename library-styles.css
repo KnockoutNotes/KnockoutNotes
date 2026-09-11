@@ -335,12 +335,25 @@
 }
 
 .view-layer-3d .kn-file-row.kn-carousel-card {
+  /* Compact "cinematic module" size — much narrower than the generic
+     .kn-carousel-card default (which other carousels, e.g. the home
+     high-yield grid, still use unchanged), scoped here since only these
+     library topic cards use the short thumb+title+CTA template that fits
+     comfortably at this width. */
+  width: min(260px, 60%);
   flex-direction: column;
   align-items: stretch;
   gap: 0;
-  padding: 0 0 12px;
+  padding: 0 0 8px;
   min-height: 0;
   overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .view-layer-3d .kn-file-row.kn-carousel-card { width: min(225px, 66%); }
+}
+@media (max-width: 720px) {
+  .view-layer-3d .kn-file-row.kn-carousel-card { width: 72%; }
 }
 
 /* Per-category accent tint for the visual region — drives the richer
@@ -358,14 +371,16 @@
 .kn-file-thumb[data-cat="critical-care"] { --cat-r: 251; --cat-g: 191; --cat-b: 36; }
 
 .view-layer-3d .kn-file-row.kn-carousel-card:hover {
-  transform: translate3d(calc(-50% + var(--cx, 0px)), 0, var(--cz, 0px))
-             rotateY(var(--cry, 0deg)) scale(var(--cs, 1));
+  transform: translate3d(calc(-50% + var(--cx, 0px)), var(--cy, 0px), calc(var(--cz, 0px) + var(--hz, 0px)))
+             rotateX(var(--hrx, 0deg))
+             rotateY(calc(var(--cry, 0deg) + var(--hry, 0deg)))
+             scale(var(--cs, 1));
 }
 
 .kn-file-thumb {
   position: relative;
   width: 100%;
-  height: clamp(100px, 16vw, 136px);
+  height: clamp(72px, 14vw, 98px);
   flex-shrink: 0;
   --cat-r: 56; --cat-g: 189; --cat-b: 248;
   background:
@@ -400,8 +415,8 @@
 
 .kn-file-thumb svg {
   position: relative;
-  width: clamp(50px, 9vw, 68px);
-  height: clamp(50px, 9vw, 68px);
+  width: clamp(38px, 7vw, 52px);
+  height: clamp(38px, 7vw, 52px);
   color: rgb(var(--cat-r), var(--cat-g), var(--cat-b));
   filter: drop-shadow(0 0 14px rgba(var(--cat-r), var(--cat-g), var(--cat-b), 0.4));
 }
@@ -413,34 +428,39 @@
 
 .view-layer-3d .kn-file-row.kn-carousel-card .kn-file-num {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: 8px;
+  left: 8px;
   z-index: 2;
+  min-width: 30px;
+  height: 26px;
+  font-size: 10.5px;
 }
 
 .view-layer-3d .kn-file-row.kn-carousel-card .kn-file-badge {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 8px;
+  right: 8px;
   z-index: 2;
+  padding: 3px 8px;
+  font-size: 9.5px;
 }
 
 .view-layer-3d .kn-file-row.kn-carousel-card .kn-file-title {
-  padding: 14px 20px 1px;
+  padding: 9px 14px 1px;
   white-space: normal;
-  font-size: 18.5px;
+  font-size: 14.5px;
   font-weight: 850;
-  letter-spacing: -0.3px;
-  line-height: 1.22;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
   text-align: center;
 }
 
 .kn-file-descriptor {
   display: block;
-  padding: 2px 20px 4px;
-  font-size: 10.5px;
+  padding: 1px 14px 3px;
+  font-size: 9.5px;
   font-weight: 750;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   color: var(--text-muted);
   text-align: center;
@@ -448,14 +468,14 @@
 }
 
 .view-layer-3d .kn-file-row.kn-carousel-card .kn-file-arrow {
-  margin: 10px 20px 2px;
+  margin: 7px 14px 2px;
   align-self: center;
-  padding: 9px 20px;
+  padding: 6px 15px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border-glow);
   background: var(--soft-accent);
   color: var(--accent-cyan);
-  font-size: 12px;
+  font-size: 10.5px;
   font-weight: 750;
   letter-spacing: 0.2px;
   white-space: nowrap;

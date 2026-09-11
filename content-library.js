@@ -182,9 +182,14 @@
       if (arrow) arrow.textContent = 'View Monograph →';
     });
 
+    // Compact library cards (see library-styles.css) are much narrower than
+    // the generic .kn-carousel-card default, so they need a proportionally
+    // tighter step spacing — passed here rather than changed globally, so
+    // other .kn-carousel consumers (home high-yield grid, critical-care/
+    // viva/resources grids) keep their original, wider-card spacing.
     const existing = window.KnCarousel.list.find(c => c.container === fileList);
     if (existing) existing.refresh();
-    else window.KnCarousel.mount(fileList);
+    else window.KnCarousel.mount(fileList, { stepFactor: 0.4 });
   }
 
   function renderCategory(cat){
