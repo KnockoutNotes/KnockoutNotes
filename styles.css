@@ -53,9 +53,21 @@
   --radius-lg: 22px;
   --radius-xl: 30px;
   --radius-full: 9999px;
+  /* Site-wide motion language: three named curves, used consistently
+     everywhere instead of one-off cubic-beziers per component.
+     --ease-expo   fast-out/slow-settle — the default for reveals, hovers,
+                   page/tab transitions; almost everything uses this one.
+     --ease-bounce a deliberate overshoot, reserved for the tab jump-and-
+                   roll accent — never used for ordinary UI motion.
+     --ease-pulse  symmetric ease-in-out, for ambient breathing/looping
+                   glows where a one-directional settle would look wrong. */
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-pulse: cubic-bezier(0.45, 0, 0.2, 1);
   --transition-fast: 0.18s var(--ease-expo);
   --transition-smooth: 0.35s var(--ease-expo);
+  --transition-slow: 0.6s var(--ease-expo);
+  --transition-page: 0.32s var(--ease-expo);
 }
 
 .dark {
@@ -110,7 +122,7 @@ body {
   flex-direction: column;
   overflow-x: hidden;
   position: relative;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color var(--transition-smooth), color var(--transition-smooth);
 }
 
 /* Interactive Procedural Physiological Background Canvas */
@@ -1269,7 +1281,7 @@ a.kn-update-card:hover .kn-update-open {
   background: rgba(2, 6, 18, 0.85);
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
-  animation: fadeIn 0.25s ease-out;
+  animation: fadeIn 0.25s var(--ease-expo);
 }
 
 .spatial-viewer-hud {
@@ -1609,7 +1621,8 @@ a.kn-update-card:hover .kn-update-open {
 .fade {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.6s var(--ease-expo), transform 0.6s var(--ease-expo);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+  transition-delay: var(--fade-delay, 0s);
 }
 
 .fade.visible {
@@ -1633,12 +1646,50 @@ a.kn-update-card:hover .kn-update-open {
   to { opacity: 1; }
 }
 
+/* ==========================================================================
+   Loading Skeletons — script.js writes these into API-fed containers the
+   instant the page loads, so a slow Google Sheets fetch never reads as a
+   blank/broken section; real content simply overwrites them on arrival.
+   Shimmer animates background-position only (paint, not layout).
+   ========================================================================== */
+.kn-skeleton-card {
+  overflow: hidden;
+}
+
+.kn-skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg,
+    var(--border-subtle) 0%,
+    var(--panel-tint-3) 50%,
+    var(--border-subtle) 100%);
+  background-size: 200% 100%;
+  animation: knSkeletonShimmer 1.6s ease-in-out infinite;
+}
+
+.kn-skeleton-line.kn-sk-tag { height: 10px; width: 32%; margin-bottom: 18px; }
+.kn-skeleton-line.kn-sk-title { height: 17px; width: 64%; }
+.kn-skeleton-line.kn-sk-body { width: 92%; }
+.kn-skeleton-line.kn-sk-body:last-child { width: 74%; margin-bottom: 0; }
+
+@keyframes knSkeletonShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.kn-skeleton-ticker-item .kn-skeleton-line {
+  margin-bottom: 0;
+  width: 170px;
+}
+
 /* Reduced Motion Compliance */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0.01ms !important;
     scroll-behavior: auto !important;
   }
   #knSpatialCanvas {
@@ -1778,7 +1829,7 @@ a.kn-update-card:hover .kn-update-open {
   font-size: 15px;
   line-height: 1;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s var(--ease-expo);
 }
 
 .kn-mode-btn span {
@@ -1875,7 +1926,7 @@ a.kn-update-card:hover .kn-update-open {
              scale(var(--cs, 1));
   opacity: var(--cop, 1);
   filter: blur(var(--cbl, 0px));
-  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: box-shadow var(--transition-smooth), border-color var(--transition-smooth);
   will-change: transform, opacity, filter;
   cursor: pointer;
 }
@@ -1901,31 +1952,23 @@ a.kn-update-card:hover .kn-update-open {
    fired on pointer hover-in / touch tap, for a lighter always-available
    response to interaction. */
 .view-layer-3d .kn-carousel-card.kn-neon-activate {
-  animation: knNeonActivate 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: knNeonActivate 0.85s var(--ease-expo);
 }
 
+/* A single clean rise-and-settle — one bloom, not a multi-peak flash —
+   so it reads as "the light lands on this card" rather than stacking a
+   strobe on top of the perimeter sweep (.kn-card-illuminate) that fires
+   at the same moment on a category-tab hand-off. */
 @keyframes knNeonActivate {
   0% {
     box-shadow: var(--shadow-lg), 0 0 0 rgba(56, 189, 248, 0);
     border-color: var(--border-subtle);
     filter: brightness(1);
   }
-  18% {
-    box-shadow: var(--shadow-lg), 0 0 95px 8px rgba(94, 213, 255, 0.9);
-    border-color: rgba(165, 234, 255, 0.95);
-    filter: brightness(1.3);
-  }
-  30% {
-    box-shadow: var(--shadow-lg), 0 0 30px rgba(56, 189, 248, 0.35);
-    filter: brightness(0.96);
-  }
-  46% {
-    box-shadow: var(--shadow-lg), 0 0 75px 4px rgba(56, 189, 248, 0.7);
-    filter: brightness(1.16);
-  }
-  62% {
-    box-shadow: var(--shadow-lg), 0 0 45px rgba(56, 189, 248, 0.35);
-    filter: brightness(1);
+  40% {
+    box-shadow: var(--shadow-lg), 0 0 60px 4px rgba(94, 213, 255, 0.5);
+    border-color: rgba(165, 234, 255, 0.8);
+    filter: brightness(1.1);
   }
   100% {
     box-shadow: var(--shadow-lg), 0 0 55px rgba(56, 189, 248, 0.28);
@@ -1935,26 +1978,19 @@ a.kn-update-card:hover .kn-update-open {
 }
 
 .view-layer-3d .kn-carousel-card.kn-neon-flicker {
-  animation: knNeonFlicker 0.65s linear;
+  animation: knNeonFlicker 1.1s var(--ease-pulse);
 }
 
-/* Same hard-cut "unstable tube" language as knTabHorrorFlicker, just on
-   brightness/box-shadow instead of opacity — the jump cuts (no smooth
-   easing between stops) read as horror-flicker rather than a gentle
-   pulse, matching the tab beam's language. One-shot per trigger. */
+/* A soft double-breath of light rather than a hard-cut strobe: brightness
+   and glow rise and fall smoothly with no full on/off jump cuts, so the
+   card reads as a living, gently pulsing light source instead of a
+   flickering tube. One-shot per trigger. */
 @keyframes knNeonFlicker {
-  0%   { filter: brightness(1); box-shadow: none; }
-  4%   { filter: brightness(1.55); box-shadow: 0 0 40px rgba(125, 227, 255, 0.5); }
-  8%   { filter: brightness(0.85); box-shadow: none; }
-  13%  { filter: brightness(1.4); box-shadow: 0 0 30px rgba(125, 227, 255, 0.4); }
-  17%  { filter: brightness(0.95); box-shadow: none; }
-  30%  { filter: brightness(0.95); box-shadow: none; }
-  34%  { filter: brightness(1.5); box-shadow: 0 0 45px rgba(125, 227, 255, 0.55); }
-  39%  { filter: brightness(0.9); box-shadow: none; }
-  55%  { filter: brightness(0.9); box-shadow: none; }
-  58%  { filter: brightness(1.3); box-shadow: 0 0 25px rgba(125, 227, 255, 0.35); }
-  64%  { filter: brightness(1); box-shadow: none; }
-  100% { filter: brightness(1); box-shadow: none; }
+  0%   { filter: brightness(1); box-shadow: 0 0 18px rgba(125, 227, 255, 0.16); }
+  32%  { filter: brightness(1.2); box-shadow: 0 0 44px rgba(125, 227, 255, 0.42); }
+  58%  { filter: brightness(1.04); box-shadow: 0 0 24px rgba(125, 227, 255, 0.22); }
+  80%  { filter: brightness(1.13); box-shadow: 0 0 34px rgba(125, 227, 255, 0.32); }
+  100% { filter: brightness(1); box-shadow: 0 0 18px rgba(125, 227, 255, 0.16); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1964,16 +2000,17 @@ a.kn-update-card:hover .kn-update-open {
   }
 }
 
-/* Corner-tracing illumination: a single bright arc runs once around the
-   card's own border — visiting every corner in turn — as if the light
-   projected up from the topic tab is now tracing the edges of the box it
-   illuminated. Fired by content-library.js the instant a category switch
-   lands on a new active card, alongside the tab's own beam/flicker.
-   A rotating conic-gradient masked down to a thin ring (the standard
-   "spinning gradient border" technique) rather than 4 separate corner
-   elements — cards only get ::before/::after, and a single rotating arc
-   reads as one continuous light travelling the perimeter, matching what
-   was asked for more literally than 4 independently-timed corners would. */
+/* Perimeter light-sweep: a soft, wide band of glow travels once around the
+   card's own border, as if the light projected up from the topic tab is
+   now gliding along the edges of the box it illuminated. Fired by
+   content-library.js the instant a category switch lands on a new active
+   card, alongside the tab's own beam/flicker. A rotating conic-gradient
+   masked down to a thin ring (the standard "spinning gradient border"
+   technique) rather than 4 separate corner elements — cards only get
+   ::before/::after, and a single travelling band reads as one continuous
+   sweep of light rather than a spinning sparkle. The arc is deliberately
+   wide (~150deg) with a gradual, capped-below-white falloff so it reads
+   as a smooth glide rather than a glinting point. */
 .view-layer-3d .kn-carousel-card.kn-card-illuminate::before {
   content: "";
   position: absolute;
@@ -1982,9 +2019,11 @@ a.kn-update-card:hover .kn-update-open {
   padding: 3px;
   background: conic-gradient(
     rgba(125, 227, 255, 0) 0deg,
-    rgba(125, 227, 255, 0) 290deg,
-    rgba(190, 240, 255, 0.5) 320deg,
-    rgba(220, 248, 255, 1) 345deg,
+    rgba(125, 227, 255, 0) 200deg,
+    rgba(94, 200, 255, 0.16) 250deg,
+    rgba(140, 220, 255, 0.42) 300deg,
+    rgba(178, 232, 255, 0.72) 335deg,
+    rgba(140, 220, 255, 0.42) 355deg,
     rgba(125, 227, 255, 0) 360deg
   );
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
@@ -1993,13 +2032,13 @@ a.kn-update-card:hover .kn-update-open {
   opacity: 0;
   pointer-events: none;
   z-index: 4;
-  animation: knCardIlluminateSpin 1.3s linear;
+  animation: knCardIlluminateSpin 2s var(--ease-pulse);
 }
 
 @keyframes knCardIlluminateSpin {
   0%   { opacity: 0; transform: rotate(0deg); }
-  5%   { opacity: 1; }
-  90%  { opacity: 1; }
+  10%  { opacity: 0.9; }
+  88%  { opacity: 0.9; }
   100% { opacity: 0; transform: rotate(360deg); }
 }
 
@@ -2322,6 +2361,34 @@ body.mode-3d {
 
 body.mode-lite {
   overflow-y: auto !important;
+}
+
+/* ==========================================================================
+   Cross-Page Transitions (page-motion.js) — every page's <body> already
+   carries mode-3d or mode-lite from first paint, so hanging the entrance
+   animation off that selector needs no extra markup and runs immediately
+   on load. The exit animation is a one-off class page-motion.js adds right
+   before navigating away, giving nav clicks a soft outward motion instead
+   of an instant jump-cut. Both are opacity+transform only.
+   ========================================================================== */
+body.mode-3d,
+body.mode-lite {
+  animation: knPageEnter var(--transition-page) both;
+}
+
+@keyframes knPageEnter {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+body.kn-page-exit {
+  animation: knPageExit var(--transition-page) forwards;
+  pointer-events: none;
+}
+
+@keyframes knPageExit {
+  from { opacity: 1; transform: none; }
+  to   { opacity: 0; transform: translateY(-10px) scale(0.99); }
 }
 
 /* Viewer fallback styles for PPT and downloadables */

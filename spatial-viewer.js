@@ -39,7 +39,7 @@
 
           <div class="viewer-stage" id="knViewerStage">
             <div class="viewer-content-plane" id="knViewerContentPlane">
-              <img id="knViewerImg" src="" alt="Clinical Document" style="display:none;">
+              <img id="knViewerImg" src="" alt="Clinical Document" decoding="async" style="display:none;">
               <iframe id="knViewerFrame" src="" style="display:none;" title="Document Preview"></iframe>
               <div id="knViewerFallback" class="viewer-fallback" style="display:none;">
                 <div class="viewer-fallback-icon">📄</div>

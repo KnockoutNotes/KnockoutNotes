@@ -255,7 +255,7 @@
   background: rgba(3, 7, 18, 0.82);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  animation: fadeIn 0.2s ease-out;
+  animation: fadeIn 0.2s var(--ease-expo);
 }
 
 .kn-modal-box {

@@ -150,6 +150,26 @@
     // ------------------------------------------------------------------------
     // 6. Scroll Entrance Animations (IntersectionObserver)
     // ------------------------------------------------------------------------
+    // Staggered cascade: siblings that share a parent (a row of bento cards,
+    // a grid of pearls) get an incremental --fade-delay so they rise in as a
+    // wave rather than all popping in on the same frame. Computed once from
+    // static DOM order — no layout thrashing, just a custom-property write.
+    function applyFadeStagger(root = document) {
+      const groups = new Map();
+      root.querySelectorAll(".fade").forEach(el => {
+        if (el.style.getPropertyValue("--fade-delay")) return;
+        const parent = el.parentElement;
+        if (!groups.has(parent)) groups.set(parent, []);
+        groups.get(parent).push(el);
+      });
+      groups.forEach(siblings => {
+        siblings.forEach((el, i) => {
+          el.style.setProperty("--fade-delay", (Math.min(i, 5) * 90) + "ms");
+        });
+      });
+    }
+    applyFadeStagger();
+
     const observer = ("IntersectionObserver" in window)
       ? new IntersectionObserver(entries => {
           entries.forEach(e => {
@@ -158,7 +178,7 @@
               observer.unobserve(e.target);
             }
           });
-        }, { threshold: 0.08 })
+        }, { threshold: 0.08, rootMargin: "0px 0px -6% 0px" })
       : null;
 
     if (observer) {
@@ -346,7 +366,35 @@
     }
 
     // ------------------------------------------------------------------------
-    // 11. Google Sheets API Client & Data Cache
+    // 11. Loading Skeletons — written synchronously, before any fetch, so a
+    // slow API response never reads as a blank/broken section. Overwritten
+    // wholesale the moment real content arrives via the existing innerHTML
+    // assignments below.
+    // ------------------------------------------------------------------------
+    function skeletonCards(n) {
+      let html = "";
+      for (let i = 0; i < n; i++) {
+        html += `
+          <div class="card kn-skeleton-card" aria-hidden="true">
+            <div class="kn-skeleton-line kn-sk-tag"></div>
+            <div class="kn-skeleton-line kn-sk-title"></div>
+            <div class="kn-skeleton-line kn-sk-body"></div>
+            <div class="kn-skeleton-line kn-sk-body"></div>
+          </div>`;
+      }
+      return html;
+    }
+
+    function skeletonTickerItems(n) {
+      let html = "";
+      for (let i = 0; i < n; i++) {
+        html += '<span class="kn-ticker-item kn-skeleton-ticker-item" aria-hidden="true"><span class="kn-skeleton-line"></span></span>';
+      }
+      return html;
+    }
+
+    // ------------------------------------------------------------------------
+    // 12. Google Sheets API Client & Data Cache
     // ------------------------------------------------------------------------
     const CACHE_KEY = "kn_sheet_cache_v4";
     const CACHE_TTL_MS = 60 * 1000;
@@ -432,10 +480,11 @@
     }
 
     // ------------------------------------------------------------------------
-    // 12. Populate Marquee Ticker (Viva & Home)
+    // 13. Populate Marquee Ticker (Viva & Home)
     // ------------------------------------------------------------------------
     const tickers = document.querySelectorAll("#knLatestTicker, .kn-latest-ticker");
     if (tickers.length) {
+      tickers.forEach(t => { t.innerHTML = skeletonTickerItems(6); });
       loadData().then(data => {
         const latest = newest(data).slice(0, 8);
         if (!latest.length) throw new Error("Empty ticker");
@@ -457,10 +506,11 @@
     }
 
     // ------------------------------------------------------------------------
-    // 13. Populate Home Bento Guideline Watch Widget
+    // 14. Populate Home Bento Guideline Watch Widget
     // ------------------------------------------------------------------------
     const homeUpdatesList = document.querySelectorAll("#knHomeUpdates, #knHomeUpdates3d, .kn-home-updates");
     if (homeUpdatesList.length) {
+      homeUpdatesList.forEach(el => { el.innerHTML = skeletonCards(2); });
       loadData().then(data => {
         const updates = newest(data.filter(x => {
           const t = norm(x.type);
@@ -491,7 +541,7 @@
     }
 
     // ------------------------------------------------------------------------
-    // 14. Populate Section Pages (Drugs, Critical Care, etc.)
+    // 15. Populate Section Pages (Drugs, Critical Care, etc.)
     // ------------------------------------------------------------------------
     const sheetContents = document.querySelectorAll("#sheetContent, #sheetContent3d, .sheet-content");
     if (sheetContents.length) {
@@ -505,6 +555,7 @@
       };
       const allowed = (typeMap[page] || []).map(norm);
 
+      sheetContents.forEach(el => { el.innerHTML = skeletonCards(3); });
       loadData().then(data => {
         const items = newest(data.filter(x => allowed.includes(norm(x.type))));
         sheetContents.forEach((sheetContent, idx) => {
@@ -550,10 +601,11 @@
     }
 
     // ------------------------------------------------------------------------
-    // 15. Populate Recent Updates Grid (recent-updates.html)
+    // 16. Populate Recent Updates Grid (recent-updates.html)
     // ------------------------------------------------------------------------
     const recentGrids = document.querySelectorAll("#recentUpdatesGrid, #recentUpdatesGrid3d, #recentUpdatesGridLite, .recent-updates-grid");
     if (recentGrids.length) {
+      recentGrids.forEach(el => { el.innerHTML = skeletonCards(4); });
       loadData().then(data => {
         const items = newest(data.filter(x => {
           const t = norm(x.type);
