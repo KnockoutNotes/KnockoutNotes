@@ -21,15 +21,25 @@
   const isMobile = () => window.matchMedia("(max-width: 720px)").matches;
   const isTablet = () => window.matchMedia("(max-width: 1024px)").matches;
 
+  // Must match .kn-carousel's CSS `perspective` value (styles.css) — used
+  // to derive exactly how much the active card's perspective foreshortening
+  // grows it beyond its own layout box.
+  const PERSPECTIVE_PX = 1200;
+
   // The active card sits closest to the camera (largest translateZ), and
   // CSS perspective foreshortening makes it render visibly larger than its
   // own layout box — growing outward from its centre in every direction,
-  // top included. Left unaccounted for, that extra height above the card's
-  // nominal top edge gets clipped by the carousel's overflow:hidden. Every
-  // card is shifted down by this fixed amount (and the container measured
-  // taller to match) so the enlarged top edge always has clearance.
-  function topPad() {
-    return isMobile() ? 10 : (isTablet() ? 16 : 20);
+  // top included. Computed per-instance from the actual card height rather
+  // than a flat guess: a fixed px value tuned against one card template
+  // (e.g. the compact library cards) undershoots taller ones (the home
+  // page's richer bento content), clipping their top edge. Every card is
+  // shifted down by this amount (and the container measured taller to
+  // match) so the enlarged top edge always has clearance, on any content.
+  function topPadFor(rawCardH) {
+    const activeTz = stopsFor()[0].tz;
+    const scaleFactor = PERSPECTIVE_PX / (PERSPECTIVE_PX - activeTz);
+    const bulge = (rawCardH / 2) * (scaleFactor - 1);
+    return Math.ceil(bulge) + 6;
   }
 
   function clamp(v, min, max) {
@@ -145,8 +155,39 @@
     this.deployed = false;
     this._deploying = false;
     this._lastCenteredCard = null;
+    this._ambientScheduled = false;
     this._build();
+    this._scheduleAmbientFlicker();
   }
+
+  // Ambient horror-flicker: the neon flash shouldn't only ever react to
+  // hover/tap/navigation — periodically re-fire it on whichever card is
+  // currently active so the stack reads as a living, slightly unstable
+  // light rather than something that only responds when touched. Spaced
+  // 7-15s apart, well under any seizure-risk flash frequency (WCAG's
+  // threshold is 3 flashes/sec; this is roughly one every ten seconds),
+  // and skipped entirely under prefers-reduced-motion. Started once per
+  // instance regardless of how many times _build()/refresh() re-run.
+  Carousel.prototype._scheduleAmbientFlicker = function () {
+    if (reduceMotion || this._ambientScheduled) return;
+    this._ambientScheduled = true;
+    const tick = () => {
+      if (this.destroyed) return;
+      const visible = document.body.classList.contains("mode-3d") && this.container.offsetParent !== null;
+      if (visible && this.cards.length) {
+        const idx = clamp(Math.round(this.currentIndex), 0, this.cards.length - 1);
+        const card = this.cards[idx];
+        if (card) {
+          card.classList.remove("kn-neon-flicker");
+          // eslint-disable-next-line no-unused-expressions
+          card.offsetWidth;
+          card.classList.add("kn-neon-flicker");
+        }
+      }
+      setTimeout(tick, 7000 + Math.random() * 8000);
+    };
+    setTimeout(tick, 7000 + Math.random() * 8000);
+  };
 
   Carousel.prototype._directChildren = function () {
     return Array.from(this.container.children).filter(
@@ -276,6 +317,7 @@
     let maxH = 0;
     this.cards.forEach(c => { maxH = Math.max(maxH, c.scrollHeight); });
     if (maxH < 40) maxH = 340;
+    this._topPad = topPadFor(maxH);
     // Non-active cards now sit visibly lower (translateY toward the dock,
     // see STOPS_*'s y field) as part of the genuine radial arc — add
     // headroom below the tallest card's own box so that vertical spread
@@ -286,10 +328,10 @@
     // so clipping it is invisible) plus a few px of safety margin, not the
     // full theoretical spread of every named stop.
     const arcBuffer = isMobile() ? 16 : (isTablet() ? 38 : 50);
-    maxH += arcBuffer + topPad();
-    if (Math.abs(maxH - this._lastMeasuredH) > 1) {
-      this._lastMeasuredH = maxH;
-      this.container.style.setProperty("--carousel-h", maxH + "px");
+    const total = maxH + arcBuffer + this._topPad;
+    if (Math.abs(total - this._lastMeasuredH) > 1) {
+      this._lastMeasuredH = total;
+      this.container.style.setProperty("--carousel-h", total + "px");
     }
   };
 
@@ -555,7 +597,7 @@
 
   Carousel.prototype._layout = function () {
     const stops = stopsFor();
-    const pad = topPad();
+    const pad = this._topPad || 20;
     let newCentered = null;
 
     this.cards.forEach((card, i) => {
