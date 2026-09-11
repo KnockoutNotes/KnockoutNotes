@@ -125,6 +125,13 @@ body {
   transition: background-color var(--transition-smooth), color var(--transition-smooth);
 }
 
+/* Applied by script.js while the mobile nav drawer or the search modal is
+   open, so the page behind the overlay can't be scrolled at the same time. */
+html.kn-scroll-locked,
+body.kn-scroll-locked {
+  overflow: hidden;
+}
+
 /* Interactive Procedural Physiological Background Canvas */
 #knSpatialCanvas {
   position: fixed;
@@ -1710,6 +1717,18 @@ a.kn-update-card:hover .kn-update-open {
   .menu-btn {
     display: grid;
   }
+  /* .hud-capsule and .mobile-menu are flex siblings inside .site-hud;
+     without wrapping, an open mobile-menu was laying out BESIDE the
+     capsule instead of below it — shoved off the right edge of the
+     viewport and clipped. flex-basis:100% forces it onto its own row. */
+  .site-hud {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+  .mobile-menu {
+    width: 100%;
+    flex-basis: 100%;
+  }
   .hero {
     grid-template-columns: 1fr;
     padding: 48px 0 36px;
@@ -1742,11 +1761,25 @@ a.kn-update-card:hover .kn-update-open {
   .brand-name {
     font-size: 17px;
   }
+  /* With the label and shortcut hint hidden, the trigger used to render
+     as a bare empty pill — replace it with a proper circular icon button
+     (matching .icon-btn/.menu-btn) carrying its own glyph. */
   .nav-search-trigger span, .nav-search-trigger kbd {
     display: none;
   }
   .nav-search-trigger {
-    padding: 7px 10px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    gap: 0;
+  }
+  .nav-search-trigger::before {
+    content: "⌕";
+    font-size: 16px;
+    line-height: 1;
   }
   .mobile-menu.open {
     grid-template-columns: 1fr;
