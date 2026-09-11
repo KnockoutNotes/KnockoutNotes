@@ -348,3 +348,41 @@
     transform: translateY(0) scale(1) translateZ(0);
   }
 }
+
+/* ==========================================================================
+   Search modal — mobile
+   The "ESC" close button and the keyboard-shortcut pro-tip only make sense
+   with a physical keyboard; on a touch screen they just ate width the
+   input needed (the typed query was clipping behind the ESC pill) and
+   crowded the footer. ESC becomes a plain × icon; the shortcut tip is
+   dropped and the remaining brand label centers on its own.
+   ========================================================================== */
+@media (max-width: 680px) {
+  .kn-modal {
+    padding: 64px 14px 16px;
+  }
+  .kn-modal-header {
+    padding: 16px 18px;
+    gap: 10px;
+  }
+  .kn-modal-close {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 0;
+    flex-shrink: 0;
+  }
+  .kn-modal-close::before {
+    content: "×";
+    font-size: 18px;
+  }
+  .kn-modal-footer span:first-child {
+    display: none;
+  }
+  .kn-modal-footer {
+    justify-content: center;
+  }
+}

@@ -87,6 +87,23 @@
     });
 
     // ------------------------------------------------------------------------
+    // 3b. Background Scroll Lock (mobile drawer / search modal)
+    // ------------------------------------------------------------------------
+    // Reference-counted so the drawer and the search modal (which can, in
+    // principle, both want the lock at once — e.g. ⌘K fired while the menu
+    // is open) don't clobber each other's unlock. Without this, the page
+    // kept scrolling underneath an open mobile menu or search modal, which
+    // is exactly the kind of "unoptimized" mobile page behaviour that lets
+    // the overlay and the content behind it drift out of sync.
+    const scrollLockReasons = new Set();
+    function setScrollLock(id, locked) {
+      if (locked) scrollLockReasons.add(id); else scrollLockReasons.delete(id);
+      const active = scrollLockReasons.size > 0;
+      document.documentElement.classList.toggle("kn-scroll-locked", active);
+      document.body.classList.toggle("kn-scroll-locked", active);
+    }
+
+    // ------------------------------------------------------------------------
     // 4. Mobile Navigation Drawer
     // ------------------------------------------------------------------------
     document.querySelectorAll(".menu-btn, #menuBtn").forEach(btn => {
@@ -97,6 +114,7 @@
           const open = mobileMenu.classList.toggle("open");
           btn.setAttribute("aria-expanded", open ? "true" : "false");
           btn.textContent = open ? "✕" : "⋮";
+          setScrollLock("menu", open);
         }
       });
     });
@@ -108,6 +126,7 @@
           b.setAttribute("aria-expanded", "false");
           b.textContent = "⋮";
         });
+        setScrollLock("menu", false);
       });
     });
 
@@ -226,6 +245,7 @@
     function openSearchModal() {
       if (!searchModal) return;
       searchModal.classList.add("open");
+      setScrollLock("search", true);
       if (modalInput) {
         modalInput.value = "";
         setTimeout(() => modalInput.focus(), 60);
@@ -238,6 +258,7 @@
     function closeSearchModal() {
       if (!searchModal) return;
       searchModal.classList.remove("open");
+      setScrollLock("search", false);
     }
 
     searchTriggers.forEach(btn => btn.addEventListener("click", openSearchModal));
