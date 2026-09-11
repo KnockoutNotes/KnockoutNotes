@@ -5,6 +5,8 @@
 (function(){
   'use strict';
 
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({
     '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;'
   }[c]));
@@ -142,6 +144,7 @@
     induction: 'vial-ampoule',
     opioids: 'opioid',
     'muscle-relaxant': 'muscle-relaxant',
+    vasoactive: 'heart',
     cardiology: 'heart',
     'icu-scoring': 'monitor',
     shock: 'monitor',
@@ -386,6 +389,36 @@
           const activeTab = tabs.querySelector('.kn-library-tab.active');
           moveTabIndicator(activeTab, false);
         });
+
+        // Ambient horror-flicker: the beam/illumination shouldn't only ever
+        // react to a click — periodically re-fire them on whichever card is
+        // currently active, so the projection reads as a living, slightly
+        // unstable light rather than a one-off. Spaced 7-15s apart, well
+        // under any seizure-risk flash frequency (WCAG's threshold is 3
+        // flashes/sec; this is roughly one every ten seconds) and skipped
+        // entirely under prefers-reduced-motion. Only fires while this
+        // mount is actually visible in 3D mode, not Lite View or
+        // scrolled off past a display:none ancestor.
+        const scheduleAmbientFlicker = () => {
+          if (reduceMotion) return;
+          setTimeout(() => {
+            const visible = document.body.classList.contains('mode-3d') && mount.offsetParent !== null;
+            if (visible) {
+              const activeTab = tabs.querySelector('.kn-library-tab.active');
+              const activePanel = panels.querySelector('.kn-library-panel.active');
+              const activeCard = activePanel && activePanel.querySelector('.kn-carousel-card[data-centered="true"]');
+              if (activeTab) fireTabBeam(activeTab);
+              if (activeCard) {
+                activeCard.classList.remove('kn-card-illuminate');
+                // eslint-disable-next-line no-unused-expressions
+                activeCard.offsetWidth;
+                activeCard.classList.add('kn-card-illuminate');
+              }
+            }
+            scheduleAmbientFlicker();
+          }, 7000 + Math.random() * 8000);
+        };
+        scheduleAmbientFlicker();
       }
     });
 

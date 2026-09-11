@@ -33,7 +33,7 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.35,
-      density: 26,
+      density: 42,
       glowPoints: 4
     },
     pearls: {
@@ -44,7 +44,7 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.3,
-      density: 24,
+      density: 38,
       glowPoints: 3
     },
     drugs: {
@@ -55,7 +55,7 @@
       pleth: false,
       circuitRings: false,
       particleSpeed: 0.25,
-      density: 26,
+      density: 40,
       glowPoints: 3
     },
     criticalCare: {
@@ -66,7 +66,7 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.45,
-      density: 28,
+      density: 44,
       glowPoints: 4
     },
     viva: {
@@ -77,7 +77,7 @@
       pleth: false,
       circuitRings: false,
       particleSpeed: 0.3,
-      density: 22,
+      density: 36,
       glowPoints: 3
     },
     resources: {
@@ -88,7 +88,7 @@
       pleth: false,
       circuitRings: true,
       particleSpeed: 0.2,
-      density: 18,
+      density: 30,
       glowPoints: 2
     }
   };
@@ -136,8 +136,8 @@
   let glowOrbs = [];
   function initParticles() {
     particles = [];
-    const densityCap = isSmallScreen() ? Math.ceil(env.density * 0.5) : env.density;
-    const count = Math.min(densityCap, Math.floor(width / 48));
+    const densityCap = isSmallScreen() ? Math.ceil(env.density * 0.6) : env.density;
+    const count = Math.min(densityCap, Math.floor(width / 26));
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * width,
@@ -145,6 +145,8 @@
         z: Math.random() * 600 - 300,
         vx: (Math.random() - 0.5) * env.particleSpeed,
         vy: (Math.random() - 0.5) * env.particleSpeed,
+        repelVx: 0,
+        repelVy: 0,
         size: Math.random() * 1.9 + 0.7,
         alpha: Math.random() * 0.5 + 0.2
       });
@@ -379,11 +381,31 @@
       ctx.stroke();
     }
 
-    // 4. Subtle Ambient Gas Drift (NO filaments, NO glitter)
+    // 4. Ambient Gas Drift — each dot keeps its own steady ambient
+    // wander (vx/vy, set once at init and never decayed) plus a
+    // separate scatter velocity (repelVx/repelVy) that a nearby pointer
+    // or touch adds to and that decays back to zero on its own, so dots
+    // visibly scatter from a cursor/finger passing near them and drift
+    // back to roaming once it moves away, without the ambient drift
+    // itself ever stalling out.
+    const repelRadius = isSmallScreen() ? 90 : 140;
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
-      p.x += p.vx;
-      p.y += p.vy;
+
+      const dx = p.x - mouse.x;
+      const dy = p.y - mouse.y;
+      const distSq = dx * dx + dy * dy;
+      if (distSq < repelRadius * repelRadius && distSq > 4) {
+        const dist = Math.sqrt(distSq);
+        const force = (1 - dist / repelRadius) * 1.1;
+        p.repelVx += (dx / dist) * force;
+        p.repelVy += (dy / dist) * force;
+      }
+      p.repelVx *= 0.94;
+      p.repelVy *= 0.94;
+
+      p.x += p.vx + p.repelVx;
+      p.y += p.vy + p.repelVy;
 
       if (p.x < 0) p.x = width;
       else if (p.x > width) p.x = 0;
