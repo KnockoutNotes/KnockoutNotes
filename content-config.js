@@ -35,7 +35,15 @@ window.KNOCKOUTNOTES_CONTENT = {
           {url:'assets/cardiology/cardiology_pearl_4_of_4.jpg',title:'Mitral regurgitation'}
         ]},
         {id:'airway', title:'Airway Pearls', kicker:'AIRWAY', description:'Add airway visual pearls here.', folder:'assets/pearls/airway', prefix:'airway', max:30},
-        {id:'physiology', title:'Physiology Pearls', kicker:'PHYSIOLOGY', description:'Add physiology visual pearls here.', folder:'assets/pearls/physiology', prefix:'physiology', max:30}
+        {id:'physiology', title:'Physiology Pearls', kicker:'PHYSIOLOGY', description:'Add physiology visual pearls here.', folder:'assets/pearls/physiology', prefix:'physiology', max:30},
+        {id:'pft', title:'Pulmonary Function Tests', kicker:'PFT', description:'A stepwise guide to reading PFTs with confidence — from spirometry quality checks to obstructive, restrictive and mixed patterns.', folder:'assets/pearls/pft', prefix:'pft', max:30, files:[
+          {url:'assets/pearls/pft/pft_01_intro.png', title:'Pulmonary Function Tests (PFT) — Interpret, Understand, Apply'},
+          {url:'assets/pearls/pft/pft_02_start-here.png', title:'PFT Interpretation 1 — Start Here: Is the Test Reliable?'},
+          {url:'assets/pearls/pft/pft_03_obstructive.png', title:'PFT Interpretation 2 — Obstructive Ventilatory Defect'},
+          {url:'assets/pearls/pft/pft_04_restrictive-mixed.png', title:'PFT Interpretation 3 — Restrictive & Mixed Patterns'},
+          {url:'assets/pearls/pft/pft_05_lung-volumes-dlco.png', title:'PFT Interpretation 4 — Lung Volumes & DLCO'},
+          {url:'assets/pearls/pft/pft_06_putting-it-together.png', title:'PFT Interpretation 5 — Putting It All Together'}
+        ]}
       ]
     },
     notes: {

@@ -145,6 +145,15 @@
       <ellipse cx="33.5" cy="41" rx="6.4" ry="9.4" transform="rotate(35 33.5 41)" stroke="currentColor" stroke-width="1.8" fill="currentColor" fill-opacity="0.14"/>
       <path d="M41 45c3.4 2.2 5.4 5.4 5.4 9.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/>
       <circle cx="48" cy="56" r="2.8" stroke="currentColor" stroke-width="1.5"/>
+    </svg>`,
+    // Pulmonary Function Tests: paired lung lobes off a central trachea,
+    // with a light flow-volume-loop swoop beneath to nod at spirometry.
+    lungs: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M32 7v15" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+      <path d="M32 21c-2 3-5 4-9 4M32 21c2 3 5 4 9 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+      <path d="M23.5 25c-7.4 2-11.5 9.4-11.5 18.4 0 7 3.9 10.8 7.8 10.8 5 0 8.2-5 9.2-12 1-6.2 1-12.4-1-17.6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" fill="currentColor" fill-opacity="0.12"/>
+      <path d="M40.5 25c7.4 2 11.5 9.4 11.5 18.4 0 7-3.9 10.8-7.8 10.8-5 0-8.2-5-9.2-12-1-6.2-1-12.4 1-17.6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" fill="currentColor" fill-opacity="0.12"/>
+      <path d="M13 47c9 5 14-4 10-11" stroke="currentColor" stroke-width="1.3" opacity="0.55" stroke-linecap="round"/>
     </svg>`
   };
   // Category id -> dedicated pictogram. Anything not listed falls back to a
@@ -156,6 +165,7 @@
     vasoactive: 'heart',
     cardiology: 'heart',
     airway: 'airway-tube',
+    pft: 'lungs',
     'icu-scoring': 'monitor',
     shock: 'monitor',
     ventilation: 'monitor',
@@ -468,34 +478,14 @@
           positionTabBeam(activeTab);
         });
 
-        // Ambient horror-flicker: the card illumination shouldn't only
-        // ever react to a click — periodically re-fire it on whichever
-        // card is currently active, so it reads as a living, slightly
-        // unstable presence rather than a one-off (the tab beam itself no
-        // longer needs this: it now animates continuously on its own).
-        // Spaced 7-15s apart, well under any seizure-risk flash frequency
-        // (WCAG's threshold is 3 flashes/sec; this is roughly one every
-        // ten seconds) and skipped entirely under prefers-reduced-motion.
-        // Only fires while this mount is actually visible in 3D mode, not
-        // Lite View or scrolled off past a display:none ancestor.
-        const scheduleAmbientFlicker = () => {
-          if (reduceMotion) return;
-          setTimeout(() => {
-            const visible = document.body.classList.contains('mode-3d') && mount.offsetParent !== null;
-            if (visible) {
-              const activePanel = panels.querySelector('.kn-library-panel.active');
-              const activeCard = activePanel && activePanel.querySelector('.kn-carousel-card[data-centered="true"]');
-              if (activeCard) {
-                activeCard.classList.remove('kn-card-illuminate');
-                // eslint-disable-next-line no-unused-expressions
-                activeCard.offsetWidth;
-                activeCard.classList.add('kn-card-illuminate');
-              }
-            }
-            scheduleAmbientFlicker();
-          }, 15000 + Math.random() * 12000);
-        };
-        scheduleAmbientFlicker();
+        // The perimeter illuminate sweep (.kn-card-illuminate) fires only
+        // on a deliberate category-tab switch, above — it used to also
+        // re-fire ambiently every 15-27s, but that stacked with the
+        // carousel's own ambient kn-neon-flicker breathing pulse (spatial-
+        // scroll.js, 7-15s) into two independent "living" cues running at
+        // once, which read as busy/glittery rather than calm. One ambient
+        // cue (the flicker) is enough; the sweep stays reserved as a
+        // one-shot "you just changed topic" signal.
       }
     });
 
