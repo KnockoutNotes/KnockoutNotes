@@ -251,6 +251,45 @@
       const tabs = mount.querySelector('.kn-library-tabs');
       const panels = mount.querySelector('.kn-library-panels');
 
+      // 3D View only: a small glowing pill that slides beneath the tab row
+      // to track the active category, so switching categories reads as a
+      // light physically moving from one dock position to the next rather
+      // than an instant class swap. Lite View never gets this element.
+      const is3D = !!mount.closest('.view-layer-3d');
+      let indicator = null;
+      const moveTabIndicator = (tab, animate) => {
+        if (!indicator || !tab) return;
+        if (!animate) indicator.style.transition = 'none';
+        indicator.style.left = tab.offsetLeft + 'px';
+        indicator.style.width = tab.offsetWidth + 'px';
+        indicator.classList.add('kn-tab-indicator-ready');
+        if (!animate) {
+          // eslint-disable-next-line no-unused-expressions
+          indicator.offsetWidth; // flush the transition:none before restoring it
+          indicator.style.transition = '';
+        }
+      };
+
+      // The projection beam is a real element positioned against `mount`
+      // (not a ::after on the tab) so it can rise above .kn-library-tabs
+      // without being clipped by that row's own overflow — on phones the
+      // row scrolls horizontally via overflow-x:auto, which the CSS
+      // overflow spec quietly turns into overflow-y:auto too, clipping
+      // anything poking out the top. Positioning against the non-scrolling
+      // mount instead sidesteps that entirely, on every viewport.
+      let beam = null;
+      const fireTabBeam = tab => {
+        if (!beam || !tab) return;
+        const mountRect = mount.getBoundingClientRect();
+        const tabRect = tab.getBoundingClientRect();
+        beam.style.left = (tabRect.left + tabRect.width / 2 - mountRect.left) + 'px';
+        beam.style.top = (tabRect.top - mountRect.top) + 'px';
+        beam.classList.remove('kn-tab-projecting');
+        // eslint-disable-next-line no-unused-expressions
+        beam.offsetWidth; // force reflow to restart the flicker
+        beam.classList.add('kn-tab-projecting');
+      };
+
       for (let i = 0; i < categories.length; i++) {
         const cat = categories[i];
         const files = resolveCategoryFiles(cat);
@@ -282,7 +321,14 @@
           // 3D View only: give the newly-selected category a brief "drill
           // forward from depth" entrance so moving CATEGORY -> ITEMS reads
           // as spatial navigation. Lite View never gets this class.
-          if (mount.closest('.view-layer-3d')) {
+          if (is3D) {
+            moveTabIndicator(tab, true);
+            fireTabBeam(tab);
+            tab.classList.remove('kn-neon-activate');
+            // eslint-disable-next-line no-unused-expressions
+            tab.offsetWidth; // force reflow to restart the animation
+            tab.classList.add('kn-neon-activate');
+
             const activePanel = panels.querySelector('.kn-library-panel.active');
             if (activePanel) {
               activePanel.classList.remove('kn-panel-drill');
@@ -290,6 +336,17 @@
               activePanel.offsetWidth; // force reflow to restart the animation
               activePanel.classList.add('kn-panel-drill');
               carouselizePanel(activePanel, categories[i]?.id);
+
+              // The card the tab's beam is now "illuminating" — carouselizePanel
+              // runs its layout synchronously, so the newly-active card is
+              // already resolvable right here.
+              const litCard = activePanel.querySelector('.kn-carousel-card[data-centered="true"]');
+              if (litCard) {
+                litCard.classList.remove('kn-card-illuminate');
+                // eslint-disable-next-line no-unused-expressions
+                litCard.offsetWidth;
+                litCard.classList.add('kn-card-illuminate');
+              }
             }
           }
         });
@@ -298,9 +355,37 @@
         panel.appendChild(content);
       }
 
-      if (mount.closest('.view-layer-3d')) {
+      if (is3D) {
+        // Appended last, after every tab button, so it never shifts the
+        // tabs' own DOM order (nth-child-based selectors, existing or
+        // future, keep addressing the real tab buttons).
+        indicator = document.createElement('div');
+        indicator.className = 'kn-tab-indicator';
+        indicator.setAttribute('aria-hidden', 'true');
+        tabs.appendChild(indicator);
+
+        // Appended to `mount` itself, not `tabs` — see fireTabBeam above
+        // for why it needs to live outside the horizontally-scrolling row.
+        beam = document.createElement('div');
+        beam.className = 'kn-tab-beam';
+        beam.setAttribute('aria-hidden', 'true');
+        mount.appendChild(beam);
+
         const firstPanel = panels.querySelector('.kn-library-panel');
         if (firstPanel) carouselizePanel(firstPanel, categories[0]?.id);
+
+        // Position the indicator once layout has actually settled (widths
+        // are 0 on the same tick the tabs are inserted), with no transition
+        // for this first placement so it doesn't slide in from the left.
+        const placeInitialIndicator = () => {
+          const activeTab = tabs.querySelector('.kn-library-tab.active');
+          moveTabIndicator(activeTab, false);
+        };
+        requestAnimationFrame(placeInitialIndicator);
+        window.addEventListener('resize', () => {
+          const activeTab = tabs.querySelector('.kn-library-tab.active');
+          moveTabIndicator(activeTab, false);
+        });
       }
     });
 

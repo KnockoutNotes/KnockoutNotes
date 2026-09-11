@@ -21,6 +21,17 @@
   const isMobile = () => window.matchMedia("(max-width: 720px)").matches;
   const isTablet = () => window.matchMedia("(max-width: 1024px)").matches;
 
+  // The active card sits closest to the camera (largest translateZ), and
+  // CSS perspective foreshortening makes it render visibly larger than its
+  // own layout box — growing outward from its centre in every direction,
+  // top included. Left unaccounted for, that extra height above the card's
+  // nominal top edge gets clipped by the carousel's overflow:hidden. Every
+  // card is shifted down by this fixed amount (and the container measured
+  // taller to match) so the enlarged top edge always has clearance.
+  function topPad() {
+    return isMobile() ? 10 : (isTablet() ? 16 : 20);
+  }
+
   function clamp(v, min, max) {
     return Math.max(min, Math.min(max, v));
   }
@@ -133,6 +144,7 @@
     // drives this — it only ever fires once, from IntersectionObserver.
     this.deployed = false;
     this._deploying = false;
+    this._lastCenteredCard = null;
     this._build();
   }
 
@@ -269,8 +281,12 @@
     // headroom below the tallest card's own box so that vertical spread
     // settles inside the container instead of being clipped by its
     // overflow:hidden edge.
-    const arcBuffer = isMobile() ? 24 : (isTablet() ? 42 : 64);
-    maxH += arcBuffer;
+    // Only needs to clear the deepest card that's still actually visible
+    // (FAR's y-offset — anything past that, OFFSCREEN, renders at opacity 0
+    // so clipping it is invisible) plus a few px of safety margin, not the
+    // full theoretical spread of every named stop.
+    const arcBuffer = isMobile() ? 16 : (isTablet() ? 38 : 50);
+    maxH += arcBuffer + topPad();
     if (Math.abs(maxH - this._lastMeasuredH) > 1) {
       this._lastMeasuredH = maxH;
       this.container.style.setProperty("--carousel-h", maxH + "px");
@@ -468,6 +484,31 @@
       card.style.removeProperty("--hz");
     };
 
+    // A quick neon-tube flicker on the moment a card is first touched by
+    // the pointer (hover-in on desktop, tap on touch) — restarted from
+    // scratch each time via the remove/reflow/add dance so rapid re-entry
+    // (e.g. sweeping across the stack) always replays it.
+    const flicker = card => {
+      card.classList.remove("kn-neon-flicker");
+      // eslint-disable-next-line no-unused-expressions
+      card.offsetWidth;
+      card.classList.add("kn-neon-flicker");
+    };
+
+    let hoveredCard = null;
+    this.container.addEventListener("pointerover", e => {
+      if (e.pointerType === "touch") return;
+      const card = e.target.closest(".kn-carousel-card");
+      if (!card || card === hoveredCard) return;
+      hoveredCard = card;
+      flicker(card);
+    }, { passive: true });
+
+    this.container.addEventListener("pointerout", e => {
+      const card = e.target.closest(".kn-carousel-card");
+      if (card === hoveredCard) hoveredCard = null;
+    }, { passive: true });
+
     this.container.addEventListener("pointermove", e => {
       if (e.pointerType === "touch" || this.dragging) return;
       const card = e.target.closest(".kn-carousel-card");
@@ -489,7 +530,9 @@
     this.container.addEventListener("pointerdown", e => {
       if (e.pointerType !== "touch") return;
       const card = e.target.closest(".kn-carousel-card");
-      if (card && card.dataset.centered === "true") card.classList.add("kc-pressed");
+      if (!card) return;
+      if (card.dataset.centered === "true") card.classList.add("kc-pressed");
+      flicker(card);
     });
     ["pointerup", "pointercancel"].forEach(evt => {
       this.container.addEventListener(evt, () => {
@@ -512,6 +555,8 @@
 
   Carousel.prototype._layout = function () {
     const stops = stopsFor();
+    const pad = topPad();
+    let newCentered = null;
 
     this.cards.forEach((card, i) => {
       const off = i - this.currentIndex;
@@ -553,6 +598,7 @@
         cop = lerp(DOCK_POSE.cop, cop, t);
         cbl = lerp(DOCK_POSE.cbl, cbl, t);
       }
+      cy += pad;
 
       card.style.setProperty("--cx", cx.toFixed(1) + "px");
       card.style.setProperty("--cy", cy.toFixed(1) + "px");
@@ -565,7 +611,22 @@
       card.style.zIndex = String(100 - Math.round(aoff * 10));
       card.dataset.centered = centered ? "true" : "false";
       card.style.pointerEvents = (cop < 0.04 || this._deploying) ? "none" : "";
+      if (centered) newCentered = card;
     });
+
+    // A card newly becoming the centred/active one — whether from Prev/
+    // Next, a swipe, or a category-tab switch handing this carousel a
+    // fresh set of cards — gets a one-shot neon "activate" flash so the
+    // hand-off reads as a deliberate spatial event, not a static swap.
+    // Gated on this.deployed so the carousel's own initial deploy-in
+    // (already its own cinematic moment) never doubles up with this.
+    if (!reduceMotion && this.deployed && newCentered && newCentered !== this._lastCenteredCard) {
+      newCentered.classList.remove("kn-neon-activate");
+      // eslint-disable-next-line no-unused-expressions
+      newCentered.offsetWidth; // restart the animation
+      newCentered.classList.add("kn-neon-activate");
+    }
+    this._lastCenteredCard = newCentered;
   };
 
   Carousel.prototype.tick = function () {
