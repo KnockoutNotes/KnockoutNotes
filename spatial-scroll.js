@@ -21,6 +21,17 @@
   const isMobile = () => window.matchMedia("(max-width: 720px)").matches;
   const isTablet = () => window.matchMedia("(max-width: 1024px)").matches;
 
+  // The active card sits closest to the camera (largest translateZ), and
+  // CSS perspective foreshortening makes it render visibly larger than its
+  // own layout box — growing outward from its centre in every direction,
+  // top included. Left unaccounted for, that extra height above the card's
+  // nominal top edge gets clipped by the carousel's overflow:hidden. Every
+  // card is shifted down by this fixed amount (and the container measured
+  // taller to match) so the enlarged top edge always has clearance.
+  function topPad() {
+    return isMobile() ? 10 : (isTablet() ? 16 : 20);
+  }
+
   function clamp(v, min, max) {
     return Math.max(min, Math.min(max, v));
   }
@@ -29,25 +40,50 @@
     return a + (b - a) * t;
   }
 
+  // Cinematic overshoot curve used only for the one-time "deploy" animation
+  // (cards rising out of the dock) — a normal ease would read as a fade-in,
+  // this gives the brief physical overshoot-then-settle the brief asks for.
+  function easeOutBack(t) {
+    const c1 = 1.70158, c3 = c1 + 1;
+    const x = t - 1;
+    return 1 + c3 * x * x * x + c1 * x * x;
+  }
+
+  // The pose every card starts from before its section has ever entered the
+  // viewport: hidden low behind the dock, deep in Z, small and transparent.
+  // _deploy() blends each card from here to its normal computed depth-stop
+  // pose over DEPLOY_DURATION_MS, staggered outward from the centre.
+  const DOCK_POSE = { cy: 130, cz: -260, cry: 0, cs: 0.32, cop: 0, cbl: 3 };
+  const DEPLOY_DURATION_MS = 620;
+  const DEPLOY_STAGGER_MS = 70;
+
   // Depth "stops" the centred-outward falloff is interpolated between, so
-  // translateZ/rotateY/scale/opacity/blur all move together as one card
-  // becomes the centre and its neighbours fall away — a real stack of
-  // cards in space, not a flat row with a fade applied.
+  // Explicit spatial-position states, not a flat row with perspective
+  // applied: ACTIVE (at:0) sits closest to the viewer and dead centre;
+  // NEAR (at:1) and FAR (at:2, desktop only: at:3 OFFSCREEN) sit
+  // increasingly further out in X, DEEPER in Z (translateZ falls, even
+  // going negative — genuinely behind the active card, not just smaller),
+  // LOWER in Y (translateY rises toward the dock beneath the stack, so the
+  // whole arrangement reads as cards fanning up and out of one origin
+  // point rather than sliding along a horizontal line), and tilted on
+  // BOTH axes — rotateY toward the centre plus a slight rotateX lean —
+  // for a genuine shallow radial arc. x/rot get their left/right sign
+  // applied in _layout(); every other field here is symmetric.
   const STOPS_DESKTOP = [
-    { at: 0, tz: 170, rot: 0, scale: 1.00, op: 1.00, blur: 0 },
-    { at: 1, tz: -115, rot: 27, scale: 0.85, op: 0.74, blur: 1.0 },
-    { at: 2, tz: -300, rot: 41, scale: 0.70, op: 0.10, blur: 2.4 },
-    { at: 3, tz: -320, rot: 44, scale: 0.64, op: 0.00, blur: 3.0 }
+    { at: 0, x: 0,   y: 0,  tz: 150,  rx: 0, ry: 0,  scale: 1.00, op: 1.00, blur: 0 },
+    { at: 1, x: 185, y: 22, tz: 42,   rx: 4, ry: 24, scale: 0.80, op: 0.90, blur: 0.4 },
+    { at: 2, x: 310, y: 46, tz: -60,  rx: 7, ry: 36, scale: 0.68, op: 0.58, blur: 1.1 },
+    { at: 3, x: 390, y: 60, tz: -100, rx: 9, ry: 42, scale: 0.55, op: 0.00, blur: 3.0 }
   ];
   const STOPS_TABLET = [
-    { at: 0, tz: 130, rot: 0, scale: 1.00, op: 1.00, blur: 0 },
-    { at: 1, tz: -95, rot: 25, scale: 0.85, op: 0.68, blur: 0.6 },
-    { at: 2, tz: -220, rot: 36, scale: 0.72, op: 0.08, blur: 1.6 }
+    { at: 0, x: 0,   y: 0,  tz: 120, rx: 0, ry: 0,  scale: 1.00, op: 1.00, blur: 0 },
+    { at: 1, x: 150, y: 18, tz: 32,  rx: 3, ry: 22, scale: 0.80, op: 0.72, blur: 0.5 },
+    { at: 2, x: 245, y: 36, tz: -50, rx: 6, ry: 32, scale: 0.66, op: 0.12, blur: 1.6 }
   ];
   const STOPS_MOBILE = [
-    { at: 0, tz: 90, rot: 0, scale: 1.00, op: 1.00, blur: 0 },
-    { at: 1, tz: -80, rot: 22, scale: 0.86, op: 0.46, blur: 0 },
-    { at: 2, tz: -160, rot: 32, scale: 0.74, op: 0.00, blur: 0 }
+    { at: 0, x: 0,   y: 0,  tz: 85,  rx: 0, ry: 0,  scale: 1.00, op: 1.00, blur: 0 },
+    { at: 1, x: 100, y: 12, tz: 18,  rx: 3, ry: 20, scale: 0.84, op: 0.5,  blur: 0 },
+    { at: 2, x: 155, y: 22, tz: -30, rx: 5, ry: 30, scale: 0.72, op: 0.0,  blur: 0 }
   ];
 
   function stopsFor() {
@@ -69,8 +105,11 @@
     const span = b.at - a.at || 1;
     const localT = (t - a.at) / span;
     return {
+      x: lerp(a.x, b.x, localT),
+      y: lerp(a.y, b.y, localT),
       tz: lerp(a.tz, b.tz, localT),
-      rot: lerp(a.rot, b.rot, localT),
+      rx: lerp(a.rx, b.rx, localT),
+      ry: lerp(a.ry, b.ry, localT),
       scale: lerp(a.scale, b.scale, localT),
       op: lerp(a.op, b.op, localT),
       blur: lerp(a.blur, b.blur, localT)
@@ -87,6 +126,25 @@
     this.currentIndex = 0;
     this.targetIndex = 0;
     this.destroyed = false;
+    // Snap-animation state (goTo() sets these; tick() eases toward them).
+    this._animFrom = 0;
+    this._animStart = 0;
+    this._animDur = 320;
+    // True while the user is actively dragging/wheeling: currentIndex then
+    // tracks targetIndex closely with no easing lag, so input feels 1:1.
+    // Once input stops, a released goTo() takes over with a timed ease.
+    this._trackingRaw = false;
+    this._velocity = 0;
+    this._lastMoveT = 0;
+    this._lastMoveX = 0;
+    this._lastMeasuredH = 0;
+    // Deployment state: cards start docked/hidden and rise into their real
+    // depth-stop positions once this carousel's section first scrolls into
+    // view (see _wireDeployObserver/_deploy). Vertical page scroll never
+    // drives this — it only ever fires once, from IntersectionObserver.
+    this.deployed = false;
+    this._deploying = false;
+    this._lastCenteredCard = null;
     this._build();
   }
 
@@ -112,27 +170,127 @@
     children.forEach((card, i) => {
       card.classList.add("kn-carousel-card");
       card.dataset.kcIndex = String(i);
+      if (card.dataset.deployT === undefined) card.dataset.deployT = "0";
     });
 
-    // Height is driven purely by the tallest card's real rendered height —
-    // no reserved strip for controls, since the arrows now float beside the
-    // stage rather than occupying dedicated vertical space.
-    let maxH = 0;
-    children.forEach(c => { maxH = Math.max(maxH, c.offsetHeight); });
-    if (maxH < 40) maxH = 340;
-    this.container.style.setProperty("--carousel-h", maxH + "px");
     this.container.style.height = "var(--carousel-h)";
-
     this.cards = children;
 
     this.currentIndex = clamp(this.currentIndex, 0, this.cards.length - 1);
     this.targetIndex = this.currentIndex;
 
+    // Height is driven purely by the tallest card's real rendered height —
+    // no reserved strip for controls, since the arrows now float beside the
+    // stage rather than occupying dedicated vertical space. A ResizeObserver
+    // (rather than a one-off measurement) keeps this correct as content
+    // changes after mount — late web-font swaps, or a card growing when an
+    // "answer" reveal inside it is toggled open — instead of the container
+    // clipping content that has since grown taller than the last measurement.
+    this._measureHeight();
+    if (window.ResizeObserver) {
+      if (this._resizeObserver) this._resizeObserver.disconnect();
+      this._resizeObserver = new ResizeObserver(() => {
+        if (this._roScheduled) return;
+        this._roScheduled = true;
+        requestAnimationFrame(() => {
+          this._roScheduled = false;
+          this._measureHeight();
+        });
+      });
+      this.cards.forEach(c => this._resizeObserver.observe(c));
+    }
+
     this._buildControls();
+    this._buildDock();
     this._wireCardClicks();
     this._wireHorizontalInput();
     this._wireHoverDepth();
+    this._wireDeployObserver();
     this._layout();
+  };
+
+  // A small glowing origin point placed in normal document flow right after
+  // the card stage — purely decorative, never intercepts pointer/keyboard
+  // input. Cards animate as if rising out of it the first time this
+  // carousel's section enters the viewport (see _wireDeployObserver).
+  Carousel.prototype._buildDock = function () {
+    let dock = this.container.parentElement && this.container.parentElement.querySelector(":scope > .kn-carousel-dock");
+    if (dock) { this._dockEl = dock; return; }
+    dock = document.createElement("div");
+    dock.className = "kn-carousel-dock";
+    dock.setAttribute("aria-hidden", "true");
+    dock.innerHTML =
+      '<span class="kn-dock-ring kn-dock-ring-2"></span>' +
+      '<span class="kn-dock-ring kn-dock-ring-1"></span>' +
+      '<span class="kn-dock-core"></span>';
+    this.container.insertAdjacentElement("afterend", dock);
+    this._dockEl = dock;
+  };
+
+  // Deployment fires exactly once per carousel instance, driven only by
+  // section visibility — never by ongoing scroll position, and never
+  // re-armed by a category-tab switch (existing already-deployed carousels
+  // just get re-shown/refreshed as before). An immediate bounding-box check
+  // covers content that's already on screen at build time (e.g. an
+  // above-the-fold home grid); the observer covers scrolling down to it.
+  Carousel.prototype._wireDeployObserver = function () {
+    if (this.deployed || this._deploying) return;
+    if (reduceMotion || typeof IntersectionObserver === "undefined") {
+      this.deployed = true;
+      return;
+    }
+    if (!this._deployObserver) {
+      this._deployObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) this._deploy();
+        });
+      }, { threshold: 0.15 });
+      this._deployObserver.observe(this.container);
+    }
+    requestAnimationFrame(() => {
+      if (this.deployed || this._deploying || this.destroyed) return;
+      const r = this.container.getBoundingClientRect();
+      if (r.width > 0 && r.top < window.innerHeight && r.bottom > 0) this._deploy();
+    });
+  };
+
+  Carousel.prototype._deploy = function () {
+    if (this.deployed || this._deploying) return;
+    if (this._deployObserver) { this._deployObserver.disconnect(); this._deployObserver = null; }
+    if (reduceMotion) { this.deployed = true; this.cards.forEach(c => { c.dataset.deployT = "1"; }); this._layout(); return; }
+    this._deploying = true;
+    const now = performance.now();
+    // Stagger outward from whichever card starts centred, so the active
+    // card is the first to rise and side cards follow outward from it.
+    const order = this.cards.slice().sort((a, b) =>
+      Math.abs(Number(a.dataset.kcIndex) - this.currentIndex) - Math.abs(Number(b.dataset.kcIndex) - this.currentIndex)
+    );
+    order.forEach((card, i) => {
+      card._deployStart = now + i * DEPLOY_STAGGER_MS;
+      card.dataset.deployT = "0";
+    });
+    if (this._dockEl) this._dockEl.classList.add("active");
+  };
+
+  Carousel.prototype._measureHeight = function () {
+    let maxH = 0;
+    this.cards.forEach(c => { maxH = Math.max(maxH, c.scrollHeight); });
+    if (maxH < 40) maxH = 340;
+    // Non-active cards now sit visibly lower (translateY toward the dock,
+    // see STOPS_*'s y field) as part of the genuine radial arc — add
+    // headroom below the tallest card's own box so that vertical spread
+    // settles inside the container instead of being clipped by its
+    // overflow:hidden edge.
+    // Only needs to clear the deepest card that's still actually visible
+    // (FAR's y-offset — anything past that, OFFSCREEN, renders at opacity 0
+    // so clipping it is invisible) plus a few px of safety margin, not the
+    // full theoretical spread of every named stop.
+    const arcBuffer = isMobile() ? 16 : (isTablet() ? 38 : 50);
+    maxH += arcBuffer + topPad();
+    if (Math.abs(maxH - this._lastMeasuredH) > 1) {
+      this._lastMeasuredH = maxH;
+      this.container.style.setProperty("--carousel-h", maxH + "px");
+    }
   };
 
   Carousel.prototype._buildControls = function () {
@@ -146,8 +304,8 @@
     const prev = document.createElement("button");
     prev.type = "button";
     prev.className = "kn-carousel-arrow kn-carousel-prev";
-    prev.setAttribute("aria-label", "Previous card");
-    prev.innerHTML = "&#8249;";
+    prev.setAttribute("aria-label", "Previous item");
+    prev.innerHTML = '<span aria-hidden="true">&#8249;</span>';
     prev.addEventListener("click", e => {
       e.preventDefault();
       e.stopPropagation();
@@ -157,8 +315,8 @@
     const next = document.createElement("button");
     next.type = "button";
     next.className = "kn-carousel-arrow kn-carousel-next";
-    next.setAttribute("aria-label", "Next card");
-    next.innerHTML = "&#8250;";
+    next.setAttribute("aria-label", "Next item");
+    next.innerHTML = '<span aria-hidden="true">&#8250;</span>';
     next.addEventListener("click", e => {
       e.preventDefault();
       e.stopPropagation();
@@ -234,9 +392,11 @@
       const delta = Math.abs(e.deltaX) >= Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
       const w = this.container.getBoundingClientRect().width || 560;
       const step = w * this.opts.stepFactor * (isMobile() ? 0.78 : 1);
+      this._trackingRaw = true;
       this.targetIndex = clamp(this.targetIndex + delta / step, 0, this.cards.length - 1);
       clearTimeout(wheelIdleTimer);
       wheelIdleTimer = setTimeout(() => {
+        this._trackingRaw = false;
         this.goTo(Math.round(this.targetIndex));
       }, 140);
     }, { passive: false });
@@ -252,6 +412,9 @@
       startX = e.clientX;
       startY = e.clientY;
       startIdx = this.targetIndex;
+      this._velocity = 0;
+      this._lastMoveT = performance.now();
+      this._lastMoveX = e.clientX;
     };
     const onMove = e => {
       if (!active) return;
@@ -264,6 +427,13 @@
       }
       if (axisLocked !== "x") return;
       moved = true;
+      this._trackingRaw = true;
+      const now = performance.now();
+      const dt = Math.max(1, now - this._lastMoveT);
+      const instVel = (e.clientX - this._lastMoveX) / dt; // px/ms
+      this._velocity = this._velocity * 0.5 + instVel * 0.5;
+      this._lastMoveT = now;
+      this._lastMoveX = e.clientX;
       const w = this.container.getBoundingClientRect().width || 560;
       const step = w * this.opts.stepFactor * (isMobile() ? 0.78 : 1);
       this.targetIndex = clamp(startIdx - dx / step, 0, this.cards.length - 1);
@@ -272,7 +442,18 @@
       if (!active) return;
       active = false;
       this.dragging = false;
-      if (moved) this.goTo(Math.round(this.targetIndex));
+      this._trackingRaw = false;
+      if (moved) {
+        // Physical "fling": a fast short flick projects a little extra
+        // momentum onto the release point before rounding to the nearest
+        // card, so a quick swipe advances even when the raw drag distance
+        // was under half a card-width — like flicking a real card.
+        const w = this.container.getBoundingClientRect().width || 560;
+        const step = w * this.opts.stepFactor * (isMobile() ? 0.78 : 1);
+        const flingMs = 170;
+        const projected = this.targetIndex - clamp((this._velocity * flingMs) / step, -0.9, 0.9);
+        this.goTo(projected);
+      }
     };
 
     this.container.addEventListener("pointerdown", onDown);
@@ -303,6 +484,31 @@
       card.style.removeProperty("--hz");
     };
 
+    // A quick neon-tube flicker on the moment a card is first touched by
+    // the pointer (hover-in on desktop, tap on touch) — restarted from
+    // scratch each time via the remove/reflow/add dance so rapid re-entry
+    // (e.g. sweeping across the stack) always replays it.
+    const flicker = card => {
+      card.classList.remove("kn-neon-flicker");
+      // eslint-disable-next-line no-unused-expressions
+      card.offsetWidth;
+      card.classList.add("kn-neon-flicker");
+    };
+
+    let hoveredCard = null;
+    this.container.addEventListener("pointerover", e => {
+      if (e.pointerType === "touch") return;
+      const card = e.target.closest(".kn-carousel-card");
+      if (!card || card === hoveredCard) return;
+      hoveredCard = card;
+      flicker(card);
+    }, { passive: true });
+
+    this.container.addEventListener("pointerout", e => {
+      const card = e.target.closest(".kn-carousel-card");
+      if (card === hoveredCard) hoveredCard = null;
+    }, { passive: true });
+
     this.container.addEventListener("pointermove", e => {
       if (e.pointerType === "touch" || this.dragging) return;
       const card = e.target.closest(".kn-carousel-card");
@@ -324,7 +530,9 @@
     this.container.addEventListener("pointerdown", e => {
       if (e.pointerType !== "touch") return;
       const card = e.target.closest(".kn-carousel-card");
-      if (card && card.dataset.centered === "true") card.classList.add("kc-pressed");
+      if (!card) return;
+      if (card.dataset.centered === "true") card.classList.add("kc-pressed");
+      flicker(card);
     });
     ["pointerup", "pointercancel"].forEach(evt => {
       this.container.addEventListener(evt, () => {
@@ -334,15 +542,21 @@
   };
 
   Carousel.prototype.goTo = function (i) {
-    this.targetIndex = clamp(Math.round(i), 0, this.cards.length - 1);
+    const newTarget = clamp(Math.round(i), 0, this.cards.length - 1);
+    const dist = Math.abs(newTarget - this.currentIndex);
+    this._animFrom = this.currentIndex;
+    this._animStart = performance.now();
+    // ~250-450ms for a normal single-item snap; a longer jump (e.g.
+    // clicking a far-off card) eases a little slower, capped so it never
+    // feels sluggish.
+    this._animDur = clamp(260 + dist * 60, 260, 460);
+    this.targetIndex = newTarget;
   };
 
   Carousel.prototype._layout = function () {
-    const mobile = isMobile();
-    const rect = this.container.getBoundingClientRect();
-    const w = rect.width || 560;
-    const stepPx = w * this.opts.stepFactor * (mobile ? 0.78 : 1);
     const stops = stopsFor();
+    const pad = topPad();
+    let newCentered = null;
 
     this.cards.forEach((card, i) => {
       const off = i - this.currentIndex;
@@ -350,33 +564,102 @@
       const dir = off >= 0 ? 1 : -1;
       const centered = aoff < 0.03;
 
+      // Explicit spatial state, interpolated by offset-from-centre: X/Z/Y/
+      // rotateX/rotateY/scale/opacity/blur all come from the same named
+      // stop (ACTIVE/NEAR/FAR/OFFSCREEN — see STOPS_DESKTOP), so a card
+      // moving between them travels through a real 3D arc, not a flat row
+      // with perspective sprinkled on. X and rotateY flip sign for the
+      // left/right side; Y (toward the dock) and rotateX (lean) do not —
+      // every non-active card leans/lowers the same way regardless of side.
       const d = interpStops(aoff, stops);
-      const cx = off * stepPx;
-      const cz = d.tz;
-      const cry = clamp(-dir * d.rot, -44, 44);
-      const cs = d.scale;
-      const cop = centered ? 1 : d.op;
-      const cbl = d.blur;
+      let cx = dir * d.x;
+      let cy = d.y;
+      let cz = d.tz;
+      let crx = d.rx;
+      let cry = clamp(-dir * d.ry, -46, 46);
+      let cs = d.scale;
+      let cop = centered ? 1 : d.op;
+      let cbl = d.blur;
+
+      // Deployment blend: before this carousel's section has ever entered
+      // the viewport, every card renders as a lerp from the dock pose
+      // toward this same real spatial-state target — never a separate
+      // visual state, just this pose animated in from below. deployT can
+      // briefly exceed 1 (easeOutBack overshoot), the intended spring
+      // settle, so it's only clamped for opacity (a >1 opacity is invalid).
+      if (!this.deployed) {
+        const t = parseFloat(card.dataset.deployT) || 0;
+        cx = lerp(0, cx, t);
+        cy = lerp(DOCK_POSE.cy, cy, t);
+        cz = lerp(DOCK_POSE.cz, cz, t);
+        crx = lerp(0, crx, t);
+        cry = lerp(DOCK_POSE.cry, cry, t);
+        cs = lerp(DOCK_POSE.cs, cs, t);
+        cop = lerp(DOCK_POSE.cop, cop, t);
+        cbl = lerp(DOCK_POSE.cbl, cbl, t);
+      }
+      cy += pad;
 
       card.style.setProperty("--cx", cx.toFixed(1) + "px");
+      card.style.setProperty("--cy", cy.toFixed(1) + "px");
       card.style.setProperty("--cz", cz.toFixed(1) + "px");
+      card.style.setProperty("--crx", crx.toFixed(1) + "deg");
       card.style.setProperty("--cry", cry.toFixed(1) + "deg");
-      card.style.setProperty("--cs", cs.toFixed(3));
+      card.style.setProperty("--cs", Math.max(0, cs).toFixed(3));
       card.style.setProperty("--cop", clamp(cop, 0, 1).toFixed(3));
-      card.style.setProperty("--cbl", cbl.toFixed(2) + "px");
+      card.style.setProperty("--cbl", Math.max(0, cbl).toFixed(2) + "px");
       card.style.zIndex = String(100 - Math.round(aoff * 10));
       card.dataset.centered = centered ? "true" : "false";
-      card.style.pointerEvents = cop < 0.04 ? "none" : "";
+      card.style.pointerEvents = (cop < 0.04 || this._deploying) ? "none" : "";
+      if (centered) newCentered = card;
     });
+
+    // A card newly becoming the centred/active one — whether from Prev/
+    // Next, a swipe, or a category-tab switch handing this carousel a
+    // fresh set of cards — gets a one-shot neon "activate" flash so the
+    // hand-off reads as a deliberate spatial event, not a static swap.
+    // Gated on this.deployed so the carousel's own initial deploy-in
+    // (already its own cinematic moment) never doubles up with this.
+    if (!reduceMotion && this.deployed && newCentered && newCentered !== this._lastCenteredCard) {
+      newCentered.classList.remove("kn-neon-activate");
+      // eslint-disable-next-line no-unused-expressions
+      newCentered.offsetWidth; // restart the animation
+      newCentered.classList.add("kn-neon-activate");
+    }
+    this._lastCenteredCard = newCentered;
   };
 
   Carousel.prototype.tick = function () {
     if (this.destroyed || !this.cards.length) return;
+    if (this._deploying) {
+      const now = performance.now();
+      let allDone = true;
+      this.cards.forEach(card => {
+        const raw = clamp((now - card._deployStart) / DEPLOY_DURATION_MS, 0, 1);
+        card.dataset.deployT = String(easeOutBack(raw));
+        if (raw < 1) allDone = false;
+      });
+      if (allDone) {
+        this.deployed = true;
+        this._deploying = false;
+        if (this._dockEl) this._dockEl.classList.remove("active");
+      }
+    }
     if (reduceMotion) {
       this.currentIndex = this.targetIndex;
+    } else if (this._trackingRaw) {
+      // Actively dragging/wheeling: follow the input closely (light
+      // smoothing only, no timed easing) so the gesture feels 1:1.
+      this.currentIndex += (this.targetIndex - this.currentIndex) * 0.4;
+      if (Math.abs(this.targetIndex - this.currentIndex) < 0.002) this.currentIndex = this.targetIndex;
     } else {
-      this.currentIndex += (this.targetIndex - this.currentIndex) * 0.16;
-      if (Math.abs(this.targetIndex - this.currentIndex) < 0.001) this.currentIndex = this.targetIndex;
+      // Settled/snapping: ease from where input left off to the target
+      // card on a fixed timeline (see goTo) instead of an open-ended lerp,
+      // so repeated Next clicks retarget cleanly with no animation queue.
+      const t = clamp((performance.now() - this._animStart) / this._animDur, 0, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      this.currentIndex = lerp(this._animFrom, this.targetIndex, eased);
+      if (t >= 1) this.currentIndex = this.targetIndex;
     }
     this._layout();
   };
@@ -388,9 +671,7 @@
       this._build();
       return;
     }
-    let maxH = 0;
-    this.cards.forEach(c => { maxH = Math.max(maxH, c.scrollHeight); });
-    if (maxH > 40) this.container.style.setProperty("--carousel-h", maxH + "px");
+    this._measureHeight();
     this._layout();
   };
 

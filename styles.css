@@ -1740,14 +1740,16 @@ a.kn-update-card:hover .kn-update-open {
    KNOCKOUTNOTES — Persistent Dual Mode (3D View vs Lite View)
    ========================================================================== */
 
-/* Tiny fixed corner control — two icon-only buttons, no text labels eating
-   space. Top-right, clear of the nav capsule (which never reaches the true
-   corner on desktop) and clear of the bottom-right "Recent Updates" pill. */
+/* Compact fixed corner control — small icon + tiny label per button, never
+   the full "3D VIEW" / "LITE VIEW" text. Bottom-left, clear of the header,
+   search, carousel, category selector and the bottom-right "Recent
+   Updates" pill (which owns the opposite corner). */
 .kn-mode-switch-dock {
   position: fixed;
-  top: 12px;
-  right: 14px;
-  left: auto;
+  bottom: 16px;
+  left: 16px;
+  top: auto;
+  right: auto;
   z-index: 10000;
   display: flex;
   align-items: center;
@@ -1765,21 +1767,23 @@ a.kn-update-card:hover .kn-update-open {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+  gap: 5px;
+  min-width: 44px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 9999px;
   border: 1px solid transparent;
   background: transparent;
   color: #94a3b8;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .kn-mode-btn span {
-  /* Text kept for screen readers only — visually replaced by the icon set
-     via ::before so the dock never grows to fit "3D VIEW" / "LITE VIEW". */
+  /* Text kept for screen readers only — visually replaced by the compact
+     icon + label pair via ::before/::after so the dock stays small. */
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1788,11 +1792,25 @@ a.kn-update-card:hover .kn-update-open {
   white-space: nowrap;
 }
 
-.kn-mode-btn[data-mode="3d"]::before { content: "\25C8"; }
-.kn-mode-btn[data-mode="lite"]::before { content: "\25A4"; }
+.kn-mode-btn[data-mode="3d"]::before { content: "\25C7"; }
+.kn-mode-btn[data-mode="lite"]::before { content: "\2630"; font-size: 13px; }
+
+.kn-mode-btn::after {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.kn-mode-btn[data-mode="3d"]::after { content: "3D"; }
+.kn-mode-btn[data-mode="lite"]::after { content: "2D"; }
 
 .kn-mode-btn:hover {
   color: #f8fafc;
+}
+
+.kn-mode-btn:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
 }
 
 .kn-mode-btn.active {
@@ -1807,19 +1825,15 @@ a.kn-update-card:hover .kn-update-open {
   color: #fbbf24;
 }
 
-/* Below ~1040px the nav capsule widens toward the edges, which can bring it
-   under the fixed top-right dock. Drop the dock into normal document flow
-   instead so it never overlaps the brand/nav — placed after the base
-   fixed-position rule above so it actually wins at these widths (a rule
-   inside a media query carries no extra specificity; only source order
-   decides it). */
-@media (max-width: 1040px) {
+@media (max-width: 480px) {
   .kn-mode-switch-dock {
-    position: static;
-    margin: 10px auto 0;
-    width: fit-content;
-    right: auto;
-    top: auto;
+    bottom: 12px;
+    left: 12px;
+  }
+  .kn-mode-btn {
+    min-width: 40px;
+    height: 38px;
+    padding: 0 9px;
   }
 }
 
@@ -1842,6 +1856,11 @@ a.kn-update-card:hover .kn-update-open {
   perspective-origin: 50% 42%;
 }
 
+.view-layer-3d .kn-carousel:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 4px;
+}
+
 .view-layer-3d .kn-carousel-card {
   box-sizing: border-box;
   position: absolute;
@@ -1850,8 +1869,8 @@ a.kn-update-card:hover .kn-update-open {
   width: min(480px, 74%);
   max-width: 100%;
   min-width: 0;
-  transform: translate3d(calc(-50% + var(--cx, 0px)), 0, calc(var(--cz, 0px) + var(--hz, 0px)))
-             rotateX(var(--hrx, 0deg))
+  transform: translate3d(calc(-50% + var(--cx, 0px)), var(--cy, 0px), calc(var(--cz, 0px) + var(--hz, 0px)))
+             rotateX(calc(var(--crx, 0deg) + var(--hrx, 0deg)))
              rotateY(calc(var(--cry, 0deg) + var(--hry, 0deg)))
              scale(var(--cs, 1));
   opacity: var(--cop, 1);
@@ -1872,50 +1891,180 @@ a.kn-update-card:hover .kn-update-open {
   --hrx: 1deg;
 }
 
-/* Small, unobtrusive side arrows that sit outside the central card rather
-   than in a control bar under it — a stacking bug there used to make the
-   Next arrow unclickable, so these also carry a z-index well above any
-   card's. */
+/* Neon interaction cinematics — layered on top of the steady-state
+   border/box-shadow above, never replacing it: each animation always
+   returns to whatever that steady state currently is, so it composes
+   cleanly whether the card is centred or not. kn-neon-activate is a one-
+   shot "light projection" flash fired by spatial-scroll.js the moment a
+   card becomes the new centred/active card (Prev/Next, swipe, or a
+   category-tab hand-off); kn-neon-flicker is a shorter neon-tube flicker
+   fired on pointer hover-in / touch tap, for a lighter always-available
+   response to interaction. */
+.view-layer-3d .kn-carousel-card.kn-neon-activate {
+  animation: knNeonActivate 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes knNeonActivate {
+  0% {
+    box-shadow: var(--shadow-lg), 0 0 0 rgba(56, 189, 248, 0);
+    border-color: var(--border-subtle);
+    filter: brightness(1);
+  }
+  18% {
+    box-shadow: var(--shadow-lg), 0 0 95px 8px rgba(94, 213, 255, 0.9);
+    border-color: rgba(165, 234, 255, 0.95);
+    filter: brightness(1.3);
+  }
+  30% {
+    box-shadow: var(--shadow-lg), 0 0 30px rgba(56, 189, 248, 0.35);
+    filter: brightness(0.96);
+  }
+  46% {
+    box-shadow: var(--shadow-lg), 0 0 75px 4px rgba(56, 189, 248, 0.7);
+    filter: brightness(1.16);
+  }
+  62% {
+    box-shadow: var(--shadow-lg), 0 0 45px rgba(56, 189, 248, 0.35);
+    filter: brightness(1);
+  }
+  100% {
+    box-shadow: var(--shadow-lg), 0 0 55px rgba(56, 189, 248, 0.28);
+    border-color: var(--accent-cyan);
+    filter: brightness(1);
+  }
+}
+
+.view-layer-3d .kn-carousel-card.kn-neon-flicker {
+  animation: knNeonFlicker 0.5s ease-out;
+}
+
+@keyframes knNeonFlicker {
+  0%   { filter: brightness(1); }
+  10%  { filter: brightness(1.32); }
+  18%  { filter: brightness(0.92); }
+  28%  { filter: brightness(1.28); }
+  38%  { filter: brightness(0.97); }
+  50%  { filter: brightness(1.12); }
+  100% { filter: brightness(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .view-layer-3d .kn-carousel-card.kn-neon-activate,
+  .view-layer-3d .kn-carousel-card.kn-neon-flicker {
+    animation: none !important;
+  }
+}
+
+/* Corner-tracing illumination: a single bright arc runs once around the
+   card's own border — visiting every corner in turn — as if the light
+   projected up from the topic tab is now tracing the edges of the box it
+   illuminated. Fired by content-library.js the instant a category switch
+   lands on a new active card, alongside the tab's own beam/flicker.
+   A rotating conic-gradient masked down to a thin ring (the standard
+   "spinning gradient border" technique) rather than 4 separate corner
+   elements — cards only get ::before/::after, and a single rotating arc
+   reads as one continuous light travelling the perimeter, matching what
+   was asked for more literally than 4 independently-timed corners would. */
+.view-layer-3d .kn-carousel-card.kn-card-illuminate::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  padding: 3px;
+  background: conic-gradient(
+    rgba(125, 227, 255, 0) 0deg,
+    rgba(125, 227, 255, 0) 290deg,
+    rgba(190, 240, 255, 0.5) 320deg,
+    rgba(220, 248, 255, 1) 345deg,
+    rgba(125, 227, 255, 0) 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4;
+  animation: knCardIlluminateSpin 1.3s linear;
+}
+
+@keyframes knCardIlluminateSpin {
+  0%   { opacity: 0; transform: rotate(0deg); }
+  5%   { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { opacity: 0; transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .view-layer-3d .kn-carousel-card.kn-card-illuminate::before {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+}
+
+/* Large, easy-to-discover edge navigation — visually inspired by premium
+   streaming carousels: big translucent circular buttons sitting near the
+   stage edges, well inside the viewport (never flush against the browser
+   edge), that brighten sharply on hover/focus. A stacking bug used to make
+   the Next arrow unclickable when it sat under the card, so these carry a
+   z-index well above any card's and float beside the stage instead. */
 .view-layer-3d .kn-carousel-controls {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 4px;
+  padding: 0 clamp(4px, 3vw, 28px);
   z-index: 1000;
   pointer-events: none;
 }
 
 .view-layer-3d .kn-carousel-arrow {
   pointer-events: auto;
-  width: 30px;
-  height: 30px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   border: 1px solid var(--border-subtle);
-  background: var(--bg-glass);
+  background: rgba(6, 12, 26, 0.4);
   color: var(--text-secondary);
   display: grid;
   place-items: center;
-  font-size: 17px;
+  font-size: 26px;
   line-height: 1;
   cursor: pointer;
-  opacity: 0.7;
+  opacity: 0.62;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 6px 20px rgba(2, 6, 23, 0.25);
   transition: all var(--transition-fast);
 }
 
-.view-layer-3d .kn-carousel-arrow:hover {
+.view-layer-3d .kn-carousel-arrow span {
+  transform: translateY(-1px);
+}
+
+.view-layer-3d .kn-carousel-arrow:hover,
+.view-layer-3d .kn-carousel-arrow:focus-visible {
   opacity: 1;
+  transform: scale(1.06);
   border-color: var(--accent-cyan);
   color: var(--accent-cyan);
-  box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+  background: rgba(6, 12, 26, 0.62);
+  box-shadow: 0 8px 28px rgba(2, 6, 23, 0.35), 0 0 22px rgba(56, 189, 248, 0.32);
+}
+
+.view-layer-3d .kn-carousel-arrow:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
 }
 
 @media (max-width: 1024px) {
   .view-layer-3d .kn-carousel-card {
     width: min(420px, 80%);
+  }
+  .view-layer-3d .kn-carousel-arrow {
+    width: 46px;
+    height: 46px;
+    font-size: 23px;
   }
 }
 
@@ -1924,11 +2073,72 @@ a.kn-update-card:hover .kn-update-open {
     width: 84%;
     filter: none;
   }
-  .view-layer-3d .kn-carousel-arrow {
-    width: 26px;
-    height: 26px;
-    font-size: 15px;
+  .view-layer-3d .kn-carousel-controls {
+    padding: 0 2px;
   }
+  .view-layer-3d .kn-carousel-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 21px;
+    opacity: 0.72;
+  }
+}
+
+/* Cinematic deployment dock — a small glowing origin point sitting just
+   below the card stack that the cards visually "rise from" the first time
+   the carousel's section scrolls into view (see spatial-scroll.js
+   _wireDeployObserver/_deploy). Purely decorative; never intercepts input. */
+.view-layer-3d .kn-carousel-dock {
+  position: relative;
+  height: 34px;
+  width: min(180px, 46%);
+  margin: 0 auto 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.kn-dock-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(56, 189, 248, 0.32);
+  border-radius: 50%;
+}
+
+.kn-dock-ring-1 { width: 42px; height: 42px; }
+.kn-dock-ring-2 { width: 78px; height: 14px; opacity: 0.55; }
+
+.kn-dock-core {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 12px 2px rgba(56, 189, 248, 0.55);
+}
+
+.view-layer-3d .kn-carousel-dock.active .kn-dock-core {
+  animation: knDockPulse 0.9s ease-out;
+}
+.view-layer-3d .kn-carousel-dock.active .kn-dock-ring-1 {
+  animation: knDockRingPulse 0.9s ease-out;
+}
+
+@keyframes knDockPulse {
+  0% { box-shadow: 0 0 8px 1px rgba(56, 189, 248, 0.4); transform: scale(0.8); }
+  40% { box-shadow: 0 0 30px 10px rgba(56, 189, 248, 0.55); transform: scale(1.35); }
+  100% { box-shadow: 0 0 12px 2px rgba(56, 189, 248, 0.55); transform: scale(1); }
+}
+@keyframes knDockRingPulse {
+  0% { transform: translate(-50%, -50%) scale(0.6); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .view-layer-3d .kn-carousel-dock * { animation: none !important; }
 }
 
 /* ==========================================================================
