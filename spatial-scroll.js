@@ -47,24 +47,32 @@
   const DEPLOY_STAGGER_MS = 70;
 
   // Depth "stops" the centred-outward falloff is interpolated between, so
-  // translateZ/rotateY/scale/opacity/blur all move together as one card
-  // becomes the centre and its neighbours fall away — a real stack of
-  // cards in space, not a flat row with a fade applied.
+  // Explicit spatial-position states, not a flat row with perspective
+  // applied: ACTIVE (at:0) sits closest to the viewer and dead centre;
+  // NEAR (at:1) and FAR (at:2, desktop only: at:3 OFFSCREEN) sit
+  // increasingly further out in X, DEEPER in Z (translateZ falls, even
+  // going negative — genuinely behind the active card, not just smaller),
+  // LOWER in Y (translateY rises toward the dock beneath the stack, so the
+  // whole arrangement reads as cards fanning up and out of one origin
+  // point rather than sliding along a horizontal line), and tilted on
+  // BOTH axes — rotateY toward the centre plus a slight rotateX lean —
+  // for a genuine shallow radial arc. x/rot get their left/right sign
+  // applied in _layout(); every other field here is symmetric.
   const STOPS_DESKTOP = [
-    { at: 0, tz: 170, rot: 0, scale: 1.00, op: 1.00, blur: 0 },
-    { at: 1, tz: -115, rot: 27, scale: 0.85, op: 0.74, blur: 1.0 },
-    { at: 2, tz: -300, rot: 41, scale: 0.70, op: 0.10, blur: 2.4 },
-    { at: 3, tz: -320, rot: 44, scale: 0.64, op: 0.00, blur: 3.0 }
+    { at: 0, x: 0,   y: 0,  tz: 150,  rx: 0, ry: 0,  scale: 1.00, op: 1.00, blur: 0 },
+    { at: 1, x: 185, y: 22, tz: 42,   rx: 4, ry: 24, scale: 0.80, op: 0.90, blur: 0.4 },
+    { at: 2, x: 310, y: 46, tz: -60,  rx: 7, ry: 36, scale: 0.68, op: 0.58, blur: 1.1 },
+    { at: 3, x: 390, y: 60, tz: -100, rx: 9, ry: 42, scale: 0.55, op: 0.00, blur: 3.0 }
   ];
   const STOPS_TABLET = [
-    { at: 0, tz: 130, rot: 0, scale: 1.00, op: 1.00, blur: 0 },
-    { at: 1, tz: -95, rot: 25, scale: 0.85, op: 0.68, blur: 0.6 },
-    { at: 2, tz: -220, rot: 36, scale: 0.72, op: 0.08, blur: 1.6 }
+    { at: 0, x: 0,   y: 0,  tz: 120, rx: 0, ry: 0,  scale: 1.00, op: 1.00, blur: 0 },
+    { at: 1, x: 150, y: 18, tz: 32,  rx: 3, ry: 22, scale: 0.80, op: 0.72, blur: 0.5 },
+    { at: 2, x: 245, y: 36, tz: -50, rx: 6, ry: 32, scale: 0.66, op: 0.12, blur: 1.6 }
   ];
   const STOPS_MOBILE = [
-    { at: 0, tz: 90, rot: 0, scale: 1.00, op: 1.00, blur: 0 },
-    { at: 1, tz: -80, rot: 22, scale: 0.86, op: 0.46, blur: 0 },
-    { at: 2, tz: -160, rot: 32, scale: 0.74, op: 0.00, blur: 0 }
+    { at: 0, x: 0,   y: 0,  tz: 85,  rx: 0, ry: 0,  scale: 1.00, op: 1.00, blur: 0 },
+    { at: 1, x: 100, y: 12, tz: 18,  rx: 3, ry: 20, scale: 0.84, op: 0.5,  blur: 0 },
+    { at: 2, x: 155, y: 22, tz: -30, rx: 5, ry: 30, scale: 0.72, op: 0.0,  blur: 0 }
   ];
 
   function stopsFor() {
@@ -86,8 +94,11 @@
     const span = b.at - a.at || 1;
     const localT = (t - a.at) / span;
     return {
+      x: lerp(a.x, b.x, localT),
+      y: lerp(a.y, b.y, localT),
       tz: lerp(a.tz, b.tz, localT),
-      rot: lerp(a.rot, b.rot, localT),
+      rx: lerp(a.rx, b.rx, localT),
+      ry: lerp(a.ry, b.ry, localT),
       scale: lerp(a.scale, b.scale, localT),
       op: lerp(a.op, b.op, localT),
       blur: lerp(a.blur, b.blur, localT)
@@ -253,6 +264,13 @@
     let maxH = 0;
     this.cards.forEach(c => { maxH = Math.max(maxH, c.scrollHeight); });
     if (maxH < 40) maxH = 340;
+    // Non-active cards now sit visibly lower (translateY toward the dock,
+    // see STOPS_*'s y field) as part of the genuine radial arc — add
+    // headroom below the tallest card's own box so that vertical spread
+    // settles inside the container instead of being clipped by its
+    // overflow:hidden edge.
+    const arcBuffer = isMobile() ? 24 : (isTablet() ? 42 : 64);
+    maxH += arcBuffer;
     if (Math.abs(maxH - this._lastMeasuredH) > 1) {
       this._lastMeasuredH = maxH;
       this.container.style.setProperty("--carousel-h", maxH + "px");
@@ -493,10 +511,6 @@
   };
 
   Carousel.prototype._layout = function () {
-    const mobile = isMobile();
-    const rect = this.container.getBoundingClientRect();
-    const w = rect.width || 560;
-    const stepPx = w * this.opts.stepFactor * (mobile ? 0.78 : 1);
     const stops = stopsFor();
 
     this.cards.forEach((card, i) => {
@@ -505,25 +519,35 @@
       const dir = off >= 0 ? 1 : -1;
       const centered = aoff < 0.03;
 
+      // Explicit spatial state, interpolated by offset-from-centre: X/Z/Y/
+      // rotateX/rotateY/scale/opacity/blur all come from the same named
+      // stop (ACTIVE/NEAR/FAR/OFFSCREEN — see STOPS_DESKTOP), so a card
+      // moving between them travels through a real 3D arc, not a flat row
+      // with perspective sprinkled on. X and rotateY flip sign for the
+      // left/right side; Y (toward the dock) and rotateX (lean) do not —
+      // every non-active card leans/lowers the same way regardless of side.
       const d = interpStops(aoff, stops);
-      const cx = off * stepPx;
+      let cx = dir * d.x;
+      let cy = d.y;
       let cz = d.tz;
-      let cry = clamp(-dir * d.rot, -44, 44);
+      let crx = d.rx;
+      let cry = clamp(-dir * d.ry, -46, 46);
       let cs = d.scale;
       let cop = centered ? 1 : d.op;
       let cbl = d.blur;
-      let cy = 0;
 
       // Deployment blend: before this carousel's section has ever entered
       // the viewport, every card renders as a lerp from the dock pose
-      // toward this same real depth-stop target — never a separate visual
-      // state, just this pose animated in from below. deployT can briefly
-      // exceed 1 (easeOutBack overshoot), which is the intended spring
+      // toward this same real spatial-state target — never a separate
+      // visual state, just this pose animated in from below. deployT can
+      // briefly exceed 1 (easeOutBack overshoot), the intended spring
       // settle, so it's only clamped for opacity (a >1 opacity is invalid).
       if (!this.deployed) {
         const t = parseFloat(card.dataset.deployT) || 0;
-        cy = lerp(DOCK_POSE.cy, 0, t);
+        cx = lerp(0, cx, t);
+        cy = lerp(DOCK_POSE.cy, cy, t);
         cz = lerp(DOCK_POSE.cz, cz, t);
+        crx = lerp(0, crx, t);
         cry = lerp(DOCK_POSE.cry, cry, t);
         cs = lerp(DOCK_POSE.cs, cs, t);
         cop = lerp(DOCK_POSE.cop, cop, t);
@@ -533,6 +557,7 @@
       card.style.setProperty("--cx", cx.toFixed(1) + "px");
       card.style.setProperty("--cy", cy.toFixed(1) + "px");
       card.style.setProperty("--cz", cz.toFixed(1) + "px");
+      card.style.setProperty("--crx", crx.toFixed(1) + "deg");
       card.style.setProperty("--cry", cry.toFixed(1) + "deg");
       card.style.setProperty("--cs", Math.max(0, cs).toFixed(3));
       card.style.setProperty("--cop", clamp(cop, 0, 1).toFixed(3));

@@ -1870,7 +1870,7 @@ a.kn-update-card:hover .kn-update-open {
   max-width: 100%;
   min-width: 0;
   transform: translate3d(calc(-50% + var(--cx, 0px)), var(--cy, 0px), calc(var(--cz, 0px) + var(--hz, 0px)))
-             rotateX(var(--hrx, 0deg))
+             rotateX(calc(var(--crx, 0deg) + var(--hrx, 0deg)))
              rotateY(calc(var(--cry, 0deg) + var(--hry, 0deg)))
              scale(var(--cs, 1));
   opacity: var(--cop, 1);
