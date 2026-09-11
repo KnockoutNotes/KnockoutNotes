@@ -254,11 +254,27 @@
       const tabs = mount.querySelector('.kn-library-tabs');
       const panels = mount.querySelector('.kn-library-panels');
 
+      // 3D View only: the actual tab buttons live in this inner track,
+      // not directly in `tabs` — `tabs` is a fixed clipping viewport
+      // (overflow:hidden) and the track is what gets translateX'd so
+      // whichever tab was just selected always lands exactly centred in
+      // that viewport (which is also the dock/card stack's own
+      // horizontal centre, both being centred within the same parent).
+      // Lite View keeps the plain wrapping row — tabButtons appends
+      // straight to `tabs` there, and `track` stays null.
+      const is3D = !!mount.closest('.view-layer-3d');
+      let track = null;
+      if (is3D) {
+        track = document.createElement('div');
+        track.className = 'kn-library-tabs-track';
+        tabs.appendChild(track);
+      }
+      const tabButtons = track || tabs;
+
       // 3D View only: a small glowing pill that slides beneath the tab row
       // to track the active category, so switching categories reads as a
       // light physically moving from one dock position to the next rather
       // than an instant class swap. Lite View never gets this element.
-      const is3D = !!mount.closest('.view-layer-3d');
       let indicator = null;
       const moveTabIndicator = (tab, animate) => {
         if (!indicator || !tab) return;
@@ -275,22 +291,52 @@
 
       // The projection beam is a real element positioned against `mount`
       // (not a ::after on the tab) so it can rise above .kn-library-tabs
-      // without being clipped by that row's own overflow — on phones the
-      // row scrolls horizontally via overflow-x:auto, which the CSS
-      // overflow spec quietly turns into overflow-y:auto too, clipping
-      // anything poking out the top. Positioning against the non-scrolling
-      // mount instead sidesteps that entirely, on every viewport.
+      // without being clipped by that row's own overflow:hidden.
+      // Its horizontal position is a constant, not read from the tab at
+      // all: centerActiveTab always slides the active tab to the exact
+      // centre of the `tabs` viewport, so that centre point — fixed
+      // regardless of which tab it is — is where the beam belongs. Only
+      // the vertical position needs the tab's own (transform-immune)
+      // offsetTop.
       let beam = null;
-      const fireTabBeam = tab => {
+      const positionTabBeam = tab => {
         if (!beam || !tab) return;
-        const mountRect = mount.getBoundingClientRect();
+        beam.style.left = (tabs.offsetLeft + tabs.clientWidth / 2) + 'px';
+        beam.style.top = (tabs.offsetTop + tab.offsetTop) + 'px';
+      };
+
+      // Slides the whole track so the newly active tab's centre lands on
+      // the viewport's centre, clamped so the track never overscrolls
+      // past either end and reveals blank space beyond its own content.
+      // A plain CSS flex `order` reorder was tried first and does NOT
+      // work for this: order only ever affects relative sibling ranking,
+      // so a tab already in natural sequence renders in that same
+      // sequence no matter which one is "active" — nothing to animate.
+      // Sliding one continuous track is what "this tab moves to the
+      // middle" actually requires.
+      const centerActiveTab = tab => {
+        if (!track) return;
+        // Measured via getBoundingClientRect against a momentarily-
+        // neutralised transform, not offsetLeft/offsetWidth — an
+        // offsetLeft-based version of this (relative to track, on the
+        // assumption track sits flush at x:0 inside `tabs`) measured
+        // consistently correct-looking inputs but produced a track that
+        // settled visibly off-window; viewport-relative rects sidestep
+        // whatever in that offsetParent chain was actually wrong, using
+        // only absolute page coordinates instead.
+        const prevTransition = track.style.transition;
+        track.style.transition = 'none';
+        track.style.transform = 'none';
+        const viewportRect = tabs.getBoundingClientRect();
         const tabRect = tab.getBoundingClientRect();
-        beam.style.left = (tabRect.left + tabRect.width / 2 - mountRect.left) + 'px';
-        beam.style.top = (tabRect.top - mountRect.top) + 'px';
-        beam.classList.remove('kn-tab-projecting');
+        const trackW = track.scrollWidth;
+        const ideal = (viewportRect.left + viewportRect.width / 2) - (tabRect.left + tabRect.width / 2);
+        const minOffset = Math.min(0, viewportRect.width - trackW);
+        const offset = Math.max(minOffset, Math.min(0, ideal));
         // eslint-disable-next-line no-unused-expressions
-        beam.offsetWidth; // force reflow to restart the flicker
-        beam.classList.add('kn-tab-projecting');
+        track.offsetWidth; // flush transform:none/transition:none before animating
+        track.style.transition = prevTransition;
+        track.style.transform = `translateX(${offset}px)`;
       };
 
       for (let i = 0; i < categories.length; i++) {
@@ -302,7 +348,7 @@
         tab.setAttribute('role', 'tab');
         tab.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
         tab.dataset.index = i;
-        tabs.appendChild(tab);
+        tabButtons.appendChild(tab);
 
         const panel = document.createElement('div');
         panel.className = 'kn-library-panel' + (i === 0 ? ' active' : '');
@@ -325,12 +371,12 @@
           // forward from depth" entrance so moving CATEGORY -> ITEMS reads
           // as spatial navigation. Lite View never gets this class.
           if (is3D) {
+            centerActiveTab(tab);
             moveTabIndicator(tab, true);
-            fireTabBeam(tab);
-            tab.classList.remove('kn-neon-activate');
+            tab.classList.remove('kn-neon-activate', 'kn-tab-jump-roll');
             // eslint-disable-next-line no-unused-expressions
-            tab.offsetWidth; // force reflow to restart the animation
-            tab.classList.add('kn-neon-activate');
+            tab.offsetWidth; // force reflow to restart both animations
+            tab.classList.add('kn-neon-activate', 'kn-tab-jump-roll');
 
             const activePanel = panels.querySelector('.kn-library-panel.active');
             if (activePanel) {
@@ -339,6 +385,15 @@
               activePanel.offsetWidth; // force reflow to restart the animation
               activePanel.classList.add('kn-panel-drill');
               carouselizePanel(activePanel, categories[i]?.id);
+
+              // positionTabBeam's vertical position depends on `tabs`'
+              // own offsetTop within `mount`, which shifts with however
+              // tall the active panel renders (they're both flex children
+              // of `mount`, panel before tabs) — call it only after
+              // carouselizePanel has collapsed the panel from its raw,
+              // pre-carousel flat-list height down to the actual compact
+              // carousel height, not before.
+              positionTabBeam(tab);
 
               // The card the tab's beam is now "illuminating" — carouselizePanel
               // runs its layout synchronously, so the newly-active card is
@@ -361,53 +416,65 @@
       if (is3D) {
         // Appended last, after every tab button, so it never shifts the
         // tabs' own DOM order (nth-child-based selectors, existing or
-        // future, keep addressing the real tab buttons).
+        // future, keep addressing the real tab buttons). Lives inside
+        // `track` (not `tabs`) so it slides together with the tabs it's
+        // tracking, needing no extra math of its own.
         indicator = document.createElement('div');
         indicator.className = 'kn-tab-indicator';
         indicator.setAttribute('aria-hidden', 'true');
-        tabs.appendChild(indicator);
+        track.appendChild(indicator);
 
-        // Appended to `mount` itself, not `tabs` — see fireTabBeam above
-        // for why it needs to live outside the horizontally-scrolling row.
+        // Appended to `mount` itself, not `tabs` — see positionTabBeam
+        // above for why it needs to live outside the horizontally-
+        // scrolling row. Always visible (its own slow always-on
+        // dim/bright CSS animation, see library-styles.css) rather than a
+        // one-shot triggered flash — the "projection" is meant to be a
+        // permanent, continuously breathing light under the active topic.
         beam = document.createElement('div');
-        beam.className = 'kn-tab-beam';
+        beam.className = 'kn-tab-beam kn-tab-beam-on';
         beam.setAttribute('aria-hidden', 'true');
         mount.appendChild(beam);
 
         const firstPanel = panels.querySelector('.kn-library-panel');
         if (firstPanel) carouselizePanel(firstPanel, categories[0]?.id);
 
-        // Position the indicator once layout has actually settled (widths
-        // are 0 on the same tick the tabs are inserted), with no transition
-        // for this first placement so it doesn't slide in from the left.
+        // Position the indicator/beam once layout has actually settled
+        // (widths are 0 on the same tick the tabs are inserted), with no
+        // transition for this first placement so nothing slides in from
+        // the left/edge on page load. The default active (first) tab
+        // starts at the track's natural left-aligned position rather than
+        // being pre-centred — centerActiveTab only kicks in once the
+        // visitor actually picks a category.
         const placeInitialIndicator = () => {
           const activeTab = tabs.querySelector('.kn-library-tab.active');
           moveTabIndicator(activeTab, false);
+          positionTabBeam(activeTab);
         };
         requestAnimationFrame(placeInitialIndicator);
         window.addEventListener('resize', () => {
           const activeTab = tabs.querySelector('.kn-library-tab.active');
+          centerActiveTab(activeTab);
           moveTabIndicator(activeTab, false);
+          positionTabBeam(activeTab);
         });
 
-        // Ambient horror-flicker: the beam/illumination shouldn't only ever
-        // react to a click — periodically re-fire them on whichever card is
-        // currently active, so the projection reads as a living, slightly
-        // unstable light rather than a one-off. Spaced 7-15s apart, well
-        // under any seizure-risk flash frequency (WCAG's threshold is 3
-        // flashes/sec; this is roughly one every ten seconds) and skipped
-        // entirely under prefers-reduced-motion. Only fires while this
-        // mount is actually visible in 3D mode, not Lite View or
-        // scrolled off past a display:none ancestor.
+        // Ambient horror-flicker: the card illumination shouldn't only
+        // ever react to a click — periodically re-fire it on whichever
+        // card is currently active, so it reads as a living, slightly
+        // unstable presence rather than a one-off (the tab beam itself no
+        // longer needs this: it now animates continuously on its own).
+        // Spaced 7-15s apart, well under any seizure-risk flash frequency
+        // (WCAG's threshold is 3 flashes/sec; this is roughly one every
+        // ten seconds) and skipped entirely under prefers-reduced-motion.
+        // Only fires while this mount is actually visible in 3D mode, not
+        // Lite View or scrolled off past a display:none ancestor.
         const scheduleAmbientFlicker = () => {
           if (reduceMotion) return;
           setTimeout(() => {
             const visible = document.body.classList.contains('mode-3d') && mount.offsetParent !== null;
             if (visible) {
-              const activeTab = tabs.querySelector('.kn-library-tab.active');
               const activePanel = panels.querySelector('.kn-library-panel.active');
               const activeCard = activePanel && activePanel.querySelector('.kn-carousel-card[data-centered="true"]');
-              if (activeTab) fireTabBeam(activeTab);
               if (activeCard) {
                 activeCard.classList.remove('kn-card-illuminate');
                 // eslint-disable-next-line no-unused-expressions

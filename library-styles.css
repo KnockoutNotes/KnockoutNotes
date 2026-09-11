@@ -71,27 +71,49 @@
   animation: knNeonActivate 0.75s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* The "jump and roll" a tab plays the instant it's clicked, layered on
+   top of the whole track's own slide-to-centre transition — a physical
+   hop with a partial roll-style tilt, not a full 180°/360° flip (that
+   would mirror the label text illegibly at the midpoint). */
+.kn-library-tab.kn-tab-jump-roll {
+  animation: knTabJumpRoll 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes knTabJumpRoll {
+  0%   { transform: translateY(0) rotateY(0deg) scale(1); }
+  30%  { transform: translateY(-14px) rotateY(-22deg) scale(1.06); }
+  60%  { transform: translateY(4px) rotateY(14deg) scale(0.98); }
+  100% { transform: translateY(0) rotateY(0deg) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kn-library-tab.kn-tab-jump-roll { animation: none !important; }
+}
+
 /* 3D View only: the mount is the positioning root for .kn-tab-beam below
    — it needs to sit OUTSIDE .kn-library-tabs so it is never subject to
-   that row's own overflow (mobile scrolls it horizontally via
-   overflow-x:auto, which per the CSS overflow spec silently forces
-   overflow-y to a computed 'auto' too, clipping anything that pokes
-   above the row — exactly what this beam needs to do). */
+   that row's own overflow:hidden (the sliding track above needs that
+   clip to hide tabs that have scrolled past the visible window, but the
+   beam rising above the row is exactly what such a clip would also cut
+   off if it lived inside there). */
 .view-layer-3d #knLibrary3d {
   position: relative;
 }
 
-/* An inverted-cone hologram beam rising out of the newly-active topic —
-   narrow at the tab (its projector origin), flaring wide as it climbs
-   toward the card stack — tilted back in 3D via perspective()+rotateX
-   rather than sitting flat, so it reads as a spatial projection cone, not
-   a 2D decal. A real element positioned by content-library.js
-   (moveTabBeam), not a ::after on the tab itself, specifically so it can
-   escape the tabs row's clipping described above and reach all the way
-   up to the card it's illuminating on every viewport, phones included.
-   Same unstable, unevenly-timed "dying fluorescent tube" flicker as
-   before (hard opacity cuts, not a smooth fade), then settles fully off.
-   One-shot per activation, fired alongside kn-neon-activate/kn-tab-indicator. */
+/* An inverted-cone hologram beam rising out of the active topic — narrow
+   at the tab (its projector origin), flaring wide as it climbs toward the
+   card stack — tilted back in 3D via perspective()+rotateX rather than
+   sitting flat, so it reads as a spatial projection cone, not a 2D decal.
+   A real element positioned by content-library.js (positionTabBeam), not
+   a ::after on the tab itself, specifically so it can escape the tabs
+   row's clipping described above and reach all the way up to the card
+   it's illuminating on every viewport, phones included.
+
+   Permanently on rather than a one-shot triggered flash: a slow (8s),
+   mostly bright/dim breathing cycle with a single brief near-off dip per
+   loop — a sustained, faintly unstable presence ("horror" read as an
+   uneasy light that's always there, rarely as a rapid strobe) instead of
+   the sharp hard-cut flicker used for the card/tab activation flash. */
 .kn-tab-beam {
   position: absolute;
   left: 0;
@@ -119,41 +141,26 @@
   .kn-tab-beam { width: 190px; height: 220px; filter: none; }
 }
 
-.kn-tab-beam.kn-tab-projecting {
-  animation: knTabHorrorFlicker 1.1s linear;
+.kn-tab-beam.kn-tab-beam-on {
+  animation: knTabAmbientGlow 8s ease-in-out infinite;
 }
 
-@keyframes knTabHorrorFlicker {
-  0%   { opacity: 0; }
-  3%   { opacity: 0.9; }
-  6%   { opacity: 0.08; }
-  9%   { opacity: 0.85; }
-  12%  { opacity: 0; }
-  18%  { opacity: 0; }
-  21%  { opacity: 0.8; }
-  24%  { opacity: 0.1; }
-  28%  { opacity: 1; }
-  33%  { opacity: 0.05; }
-  38%  { opacity: 0.7; }
-  42%  { opacity: 0; }
-  50%  { opacity: 0; }
-  53%  { opacity: 0.95; }
-  57%  { opacity: 0.15; }
-  62%  { opacity: 0.85; }
-  68%  { opacity: 0; }
-  74%  { opacity: 0; }
-  77%  { opacity: 1; }
-  82%  { opacity: 0.1; }
-  87%  { opacity: 0.6; }
-  92%  { opacity: 0; }
-  100% { opacity: 0; }
+@keyframes knTabAmbientGlow {
+  0%   { opacity: 0.55; }
+  12%  { opacity: 0.85; }
+  25%  { opacity: 0.5; }
+  38%  { opacity: 1; }
+  50%  { opacity: 0.62; }
+  64%  { opacity: 0.9; }
+  76%  { opacity: 0.12; }
+  82%  { opacity: 0.5; }
+  100% { opacity: 0.55; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .kn-tab-beam,
-  .kn-tab-beam.kn-tab-projecting {
+  .kn-tab-beam.kn-tab-beam-on {
     animation: none !important;
-    opacity: 0 !important;
+    opacity: 0.6 !important;
   }
 }
 
@@ -193,28 +200,51 @@
   margin-bottom: 8px;
 }
 
+/* The tab row itself is a fixed-size clipping viewport on every
+   breakpoint — no native scroll, no flex-wrap — with all the actual
+   buttons living in .kn-library-tabs-track, a plain flex row that
+   content-library.js slides via translateX so whichever tab was just
+   selected always lands centred here (which is also the dock/card
+   stack's own horizontal centre, since both are centred within the same
+   parent). This replaces an earlier attempt that reordered the tabs
+   themselves via CSS flex `order` to fake centring: that fought the
+   row's own layout in ways that were hard to reason about (a native
+   horizontal scroll container on mobile, `order` only ever affecting
+   relative sibling ranking, never an actual "put this at position X")
+   and needed a workaround for a stale-offset read on nearby elements) —
+   sliding one continuous track is both the simpler mental model and the
+   one that actually is what "the selected tab moves to the middle"
+   means. */
 .view-layer-3d #knLibrary3d .kn-library-tabs {
   order: 2;
-  justify-content: center;
-  margin: 4px 0 4px;
+  overflow: hidden;
+  /* A deliberately narrow, centred window rather than full-width: at
+     full width every tab already fits with room to spare, so there is
+     nothing for centerActiveTab to actually slide (the clamp that stops
+     the track overscrolling past its own ends collapses to a no-op).
+     Capping the width means the row behaves like a real windowed
+     selector — usually only 2-3 tabs visible at once — matching the
+     card stack above it and giving "the selected one moves to the
+     middle" something to actually do on every breakpoint, not just
+     narrow ones. */
+  width: min(560px, 92%);
+  margin: 4px auto 4px;
   padding: 6px 0 0;
   border-bottom: 0;
   border-top: 1px solid var(--border-subtle);
 }
 
-@media (max-width: 560px) {
-  .view-layer-3d #knLibrary3d .kn-library-tabs {
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-    padding: 12px 4px 0;
-  }
-  .view-layer-3d #knLibrary3d .kn-library-tabs::-webkit-scrollbar { display: none; }
-  .view-layer-3d #knLibrary3d .kn-library-tab {
-    flex-shrink: 0;
-  }
+.view-layer-3d #knLibrary3d .kn-library-tabs-track {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  flex-wrap: nowrap;
+  width: max-content;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .view-layer-3d #knLibrary3d .kn-library-tabs-track { transition: none; }
 }
 
 .kn-tab-count {
