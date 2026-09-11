@@ -30,8 +30,8 @@
   pointer-events: none;
   z-index: 0;
   opacity: 0;
-  transition: left 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: left 0.45s var(--ease-expo),
+              width 0.45s var(--ease-expo),
               opacity 0.2s ease;
 }
 
@@ -68,7 +68,7 @@
    triggers this one) so switching categories and switching cards read as
    the same cinematic language. */
 .kn-library-tab.kn-neon-activate {
-  animation: knNeonActivate 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: knNeonActivate 0.75s var(--ease-expo);
 }
 
 /* The "jump and roll" a tab plays the instant it's clicked, layered on
@@ -76,7 +76,7 @@
    hop with a partial roll-style tilt, not a full 180°/360° flip (that
    would mirror the label text illegibly at the midpoint). */
 .kn-library-tab.kn-tab-jump-roll {
-  animation: knTabJumpRoll 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: knTabJumpRoll 0.6s var(--ease-bounce);
 }
 
 @keyframes knTabJumpRoll {
@@ -240,7 +240,7 @@
   gap: 14px;
   flex-wrap: nowrap;
   width: max-content;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.6s var(--ease-expo);
 }
 
 @media (prefers-reduced-motion: reduce) {

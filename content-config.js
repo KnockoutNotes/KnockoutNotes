@@ -46,8 +46,15 @@ window.KNOCKOUTNOTES_CONTENT = {
           {url:'assets/cardiology/cardiology_pearl_3_of_4.jpg',title:'Mitral stenosis'},
           {url:'assets/cardiology/cardiology_pearl_4_of_4.jpg',title:'Mitral regurgitation'}
         ]},
-        {id:'airway', title:'Airway Notes', kicker:'AIRWAY', description:'Image notes and PDFs.', folder:'assets/notes/airway', prefix:'airway-note', max:30},
-        {id:'critical-care', title:'Critical Care Notes', kicker:'CRITICAL CARE', description:'Image notes and PDFs.', folder:'assets/notes/critical-care', prefix:'critical-care-note', max:30}
+        {id:'airway', title:'Airway Notes', kicker:'AIRWAY', description:'Percutaneous tracheostomy and cricothyroidotomy — essential front-of-neck airway procedures.', folder:'assets/notes/airway', prefix:'airway-note', max:30, files:[
+          {url:'assets/notes/airway/airway_01_pct-cric-intro.png', title:'Percutaneous Tracheostomy & Cricothyroidotomy — Introduction'},
+          {url:'assets/notes/airway/airway_02_pct-basics.png', title:'Percutaneous Tracheostomy — The Basics'},
+          {url:'assets/notes/airway/airway_03_pct-procedure.png', title:'Percutaneous Tracheostomy — The Procedure (Step by Step)'},
+          {url:'assets/notes/airway/airway_04_pct-equipment.png', title:'Percutaneous Tracheostomy — Equipment and Types'},
+          {url:'assets/notes/airway/airway_05_pct-complications.png', title:'Percutaneous Tracheostomy — Complications'},
+          {url:'assets/notes/airway/airway_06_cricothyroidotomy.png', title:'Cricothyroidotomy — The Emergency Front of Neck Airway'},
+          {url:'assets/notes/airway/airway_07_pct-vs-cric.png', title:'Percutaneous Tracheostomy vs Cricothyroidotomy — Key Differences'}
+        ]}
       ]
     }
   }

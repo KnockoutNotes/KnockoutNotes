@@ -136,6 +136,15 @@
       <circle cx="46" cy="22" r="2.2" fill="currentColor" opacity="0.7"/>
       <line x1="22" y1="52" x2="42" y2="52" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       <line x1="32" y1="46" x2="32" y2="52" stroke="currentColor" stroke-width="2"/>
+    </svg>`,
+    // Airway: an endotracheal/tracheostomy tube — 15mm connector, curved
+    // shaft, inflated cuff, and pilot line + balloon.
+    "airway-tube": `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8.5" y="6.5" width="15" height="10" rx="2.2" transform="rotate(-16 16 11.5)" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M18 15c9 3 16 11 18 20 1.2 5.6-.3 11-3.6 15" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      <ellipse cx="33.5" cy="41" rx="6.4" ry="9.4" transform="rotate(35 33.5 41)" stroke="currentColor" stroke-width="1.8" fill="currentColor" fill-opacity="0.14"/>
+      <path d="M41 45c3.4 2.2 5.4 5.4 5.4 9.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/>
+      <circle cx="48" cy="56" r="2.8" stroke="currentColor" stroke-width="1.5"/>
     </svg>`
   };
   // Category id -> dedicated pictogram. Anything not listed falls back to a
@@ -146,6 +155,7 @@
     'muscle-relaxant': 'muscle-relaxant',
     vasoactive: 'heart',
     cardiology: 'heart',
+    airway: 'airway-tube',
     'icu-scoring': 'monitor',
     shock: 'monitor',
     ventilation: 'monitor',
@@ -483,7 +493,7 @@
               }
             }
             scheduleAmbientFlicker();
-          }, 7000 + Math.random() * 8000);
+          }, 15000 + Math.random() * 12000);
         };
         scheduleAmbientFlicker();
       }
