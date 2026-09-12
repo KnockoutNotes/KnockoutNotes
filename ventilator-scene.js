@@ -1,7 +1,7 @@
 /* ==========================================================================
    KNOCKOUTNOTES — Anaesthesia Workstation 3D scene (ventilator-scene.js)
 
-   A small, self-contained Three.js scene: loads assets/models/ventilator.glb
+   A small, self-contained Three.js scene: loads assets/models/ventilatormodel.glb
    if present, falls back to a clearly-labelled generic stand-in silhouette
    if it is missing or fails to load. Hotspots are NOT dependent on named
    mesh nodes inside the .glb — the supplied model may be a single, unnamed,
@@ -16,6 +16,14 @@
 import * as THREE from "three";
 import { OrbitControls } from "./vendor/three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "./vendor/three/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "./vendor/three/examples/jsm/loaders/DRACOLoader.js";
+
+// The real workstation .glb is exported with required Draco geometry
+// compression (KHR_draco_mesh_compression) — GLTFLoader refuses to load it
+// without a DRACOLoader attached. One decoder instance is shared across
+// loads; the decoder files are vendored locally, same as the rest of Three.js.
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath("./vendor/three/examples/jsm/libs/draco/gltf/");
 
 const MARKER_COLOR = 0x38bdf8;
 const MARKER_ACTIVE_COLOR = 0xfbbf24;
@@ -186,16 +194,54 @@ export function createWorkstationScene(container, opts) {
     object3D.position.y -= box.min.y;
   }
 
+  // ---------------------------------------------------------------------
+  // Branding concealment — the supplied .glb's texture carries a faint,
+  // largely illegible manufacturer-style decal baked into the top-surface
+  // artwork. Per instructions we must not re-export/edit the source asset,
+  // so this adds small opaque, colour-matched patch meshes ON TOP of the
+  // known decal regions — a concealment overlay, not a modification of the
+  // GLB itself. Coordinates were obtained via the calibration mode
+  // (?calibrate=1, see pickSurface()/onClick below), which reports the
+  // raycast hit point in the same normalized world space that hotspot
+  // marker positions use (ventilator-data.js) — NOT the real .glb's own
+  // local space, which frameModel() below rescales/repositions on load.
+  // Patches are therefore added to modelGroup (untransformed), not to the
+  // loaded root (which carries frameModel's scale/offset).
+  // ---------------------------------------------------------------------
+  const BRAND_PATCHES = [
+    // Top-surface decal region, located via repeated ?calibrate=1 raycasts
+    // (cluster of hits between x -0.10..0.13, z -0.33..-0.39, all at the
+    // same y=1.58 top-surface height) — sized generously beyond that
+    // cluster so the concealment fully covers it with margin.
+    { position: { x: 0.01, y: 1.586, z: -0.36 }, size: { w: 0.46, d: 0.2 } }
+  ];
+
+  function addBrandConcealment() {
+    if (!BRAND_PATCHES.length) return;
+    const patchMat = new THREE.MeshStandardMaterial({ color: 0xf1f5f9, roughness: 0.75, metalness: 0.05 });
+    BRAND_PATCHES.forEach(p => {
+      const geo = new THREE.PlaneGeometry(p.size.w, p.size.d);
+      const mesh = new THREE.Mesh(geo, patchMat);
+      mesh.position.set(p.position.x, p.position.y, p.position.z);
+      mesh.rotation.set(p.rotation?.x ?? -Math.PI / 2, p.rotation?.y || 0, p.rotation?.z || 0);
+      mesh.renderOrder = 1;
+      mesh.raycast = () => {}; // decorative only — never intercepts hotspot/calibration picking
+      modelGroup.add(mesh);
+    });
+  }
+
   function loadModel() {
     return new Promise(resolve => {
       if (!modelUrl) { resolve({ isPlaceholder: true }); return; }
       const loader = new GLTFLoader();
+      loader.setDRACOLoader(dracoLoader);
       loader.load(
         modelUrl,
         gltf => {
           const root = gltf.scene || gltf.scenes[0];
           frameModel(root);
           modelGroup.add(root);
+          addBrandConcealment();
           resolve({ isPlaceholder: false, root });
         },
         undefined,
@@ -212,7 +258,26 @@ export function createWorkstationScene(container, opts) {
   const pointer = new THREE.Vector2();
 
   function hitTargets() {
-    return Array.from(markers.values()).map(m => m.hit);
+    return Array.from(markers.values()).filter(m => m.sprite.visible).map(m => m.hit);
+  }
+
+  // A marker for a front-tagged (resp. rear-tagged) component only makes
+  // sense while the camera is actually looking from roughly that side —
+  // otherwise (sprites ignore depth testing so they stay visible/clickable
+  // through the mesh) it would appear to sit on top of whatever unrelated
+  // geometry happens to be facing the camera instead. Side-on views keep
+  // everything visible since both faces are reasonably in view there.
+  const SIDE_DEADZONE = 0.35;
+  function updateMarkerVisibility() {
+    const camZ = camera.position.z - defaultTarget.z;
+    markers.forEach(m => {
+      const view = m.comp.view;
+      let visible = true;
+      if (view === "front") visible = camZ > -SIDE_DEADZONE;
+      else if (view === "rear") visible = camZ < SIDE_DEADZONE;
+      m.sprite.visible = visible;
+      m.hit.visible = visible;
+    });
   }
 
   function setPointer(e) {
@@ -364,6 +429,7 @@ export function createWorkstationScene(container, opts) {
     raf = requestAnimationFrame(animate);
     stepTween();
     controls.update();
+    updateMarkerVisibility();
     markers.forEach((m, id) => {
       const scale = m.sprite.userData.baseScale * (id === activeId ? 1.25 + Math.sin(performance.now() / 220) * 0.08 : 1);
       m.sprite.scale.set(scale, scale, 1);

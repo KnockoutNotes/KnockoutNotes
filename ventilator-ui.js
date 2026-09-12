@@ -4,8 +4,51 @@
    ========================================================================== */
 
 import { createWorkstationScene } from "./ventilator-scene.js";
+import { SCHEMATICS } from "./ventilator-schematics.js";
 
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c]));
+
+// ---- Contextual schematic modal (shared by hotspots + Systems Guide) ----
+function initSchematicModal() {
+  const modal = document.getElementById("ventSchematicModal");
+  const titleEl = document.getElementById("ventSchematicTitle");
+  const bodyEl = document.getElementById("ventSchematicBody");
+  if (!modal) return { open: () => {} };
+  let lastFocused = null;
+
+  function highlightZone(zone) {
+    if (!zone) return;
+    bodyEl.querySelectorAll("[data-zone]").forEach(el => {
+      el.style.opacity = el.dataset.zone === zone ? "0.32" : "0.06";
+      el.style.strokeWidth = el.dataset.zone === zone ? "2.5" : "1";
+    });
+  }
+
+  function open(id, opts) {
+    const schematic = SCHEMATICS[id];
+    if (!schematic) return;
+    lastFocused = document.activeElement;
+    titleEl.textContent = schematic.title;
+    bodyEl.innerHTML = schematic.svg;
+    if (opts && opts.zone) highlightZone(opts.zone);
+    modal.hidden = false;
+    const closeBtn = modal.querySelector(".vent-schematic-close");
+    closeBtn.focus();
+  }
+
+  function close() {
+    modal.hidden = true;
+    bodyEl.innerHTML = "";
+    if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+  }
+
+  modal.querySelectorAll("[data-schematic-close]").forEach(el => el.addEventListener("click", close));
+  window.addEventListener("keydown", e => {
+    if (e.key === "Escape" && !modal.hidden) close();
+  });
+
+  return { open, close };
+}
 
 export function initVentilatorPage() {
   const data = window.VentilatorData;
@@ -23,9 +66,10 @@ export function initVentilatorPage() {
   };
 
   const calibrate = new URLSearchParams(location.search).has("calibrate");
+  const schematicModal = initSchematicModal();
 
   const scene = createWorkstationScene(stageHost, {
-    modelUrl: "assets/models/ventilator.glb",
+    modelUrl: "assets/models/ventilatormodel.glb",
     components: data.components,
     onSelect: (id, comp) => renderInfoPanel(comp),
     onHover: (id, comp) => {
@@ -81,11 +125,15 @@ export function initVentilatorPage() {
       <p>${esc(comp.function)}</p>
       ${comp.safety ? `<h4>Safety Note</h4><p class="vent-info-safety">${esc(comp.safety)}</p>` : ""}
       ${comp.viva ? `<h4>Viva Point</h4><p class="vent-info-viva"><strong>Q:</strong> ${esc(comp.viva.prompt)}</p><details><summary>Reveal answer</summary><p>${esc(comp.viva.answer)}</p></details>` : ""}
+      ${(comp.schematics || []).map(sid => `<button class="btn-hud vent-schematic-btn" data-open-schematic="${esc(sid)}">📐 ${esc(SCHEMATICS[sid]?.title.split(" — ")[0] || "View Schematic")}</button>`).join("")}
     `;
     document.getElementById("ventInfoClose").addEventListener("click", () => {
       infoPanel.classList.remove("open");
       scene.clearSelection();
       markSidebarActive(null);
+    });
+    infoPanel.querySelectorAll("[data-open-schematic]").forEach(btn => {
+      btn.addEventListener("click", () => schematicModal.open(btn.dataset.openSchematic, { zone: comp.gasZone }));
     });
   }
 
@@ -137,17 +185,28 @@ export function initVentilatorPage() {
       guideBody.querySelectorAll(".vent-guide-stage").forEach(b => b.classList.toggle("active", b === btn));
       const stage = data.systemsGuide.find(s => s.id === btn.dataset.stageId);
       const comps = stage.componentIds.map(id => data.components.find(c => c.id === id)).filter(Boolean);
+      const concepts = stage.concepts || [];
       guideExplain.hidden = false;
       guideExplain.innerHTML = `
         <h4>${esc(stage.label)}</h4>
         <p>${esc(stage.explain)}</p>
-        <div class="vent-chip-row">${comps.map(c => `<button class="vent-chip" data-jump-id="${esc(c.id)}">${esc(c.name)}</button>`).join("")}</div>
+        ${comps.length ? `<div class="vent-chip-row">${comps.map(c => `<button class="vent-chip" data-jump-id="${esc(c.id)}">${esc(c.name)}</button>`).join("")}</div>` : ""}
+        ${concepts.length ? `<ul class="vent-guide-concepts">${concepts.map(c => `
+          <li class="vent-guide-concept">
+            <div><span class="vent-guide-concept-label">${esc(c.label)}</span><p class="vent-guide-concept-note">${esc(c.note)}</p></div>
+            <span class="vent-guide-concept-tag" ${c.schematic ? `data-open-schematic="${esc(c.schematic)}" style="cursor:pointer;"` : ""}>${c.schematic ? "📐 Diagram" : "Not a separate 3D hotspot"}</span>
+          </li>
+        `).join("")}</ul>` : ""}
+        ${stage.schematic ? `<button class="btn-hud vent-schematic-btn" data-open-schematic="${esc(stage.schematic)}" data-zone="${esc(stage.id)}">📐 View Schematic</button>` : ""}
       `;
       guideExplain.querySelectorAll("[data-jump-id]").forEach(chip => {
         chip.addEventListener("click", () => {
           activateTab("explore");
           scene.selectComponent(chip.dataset.jumpId);
         });
+      });
+      guideExplain.querySelectorAll("[data-open-schematic]").forEach(el => {
+        el.addEventListener("click", () => schematicModal.open(el.dataset.openSchematic, { zone: el.dataset.zone }));
       });
       if (comps[0]) scene.selectComponent(comps[0].id);
     });
@@ -192,7 +251,11 @@ export function initVentilatorPage() {
 
   // ---- Keyboard ----
   window.addEventListener("keydown", e => {
-    if (e.key === "Escape") { infoPanel.classList.remove("open"); scene.clearSelection(); markSidebarActive(null); }
+    if (e.key !== "Escape") return;
+    if (!document.getElementById("ventSchematicModal").hidden) return; // schematic modal handles its own Escape
+    infoPanel.classList.remove("open");
+    scene.clearSelection();
+    markSidebarActive(null);
   });
 
   return scene;

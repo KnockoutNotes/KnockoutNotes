@@ -16,6 +16,10 @@
      function     - short paragraph on what it does / why it matters
      safety       - a generic safety/practice note (standard teaching, not machine-specific)
      viva         - { prompt, answer } — a classic viva-style Q&A for the Quiz mode
+     schematics   - optional array of schematic ids (see ventilator-schematics.js)
+                    that this component has contextual educational diagrams for.
+     gasZone      - optional "high" | "intermediate" | "low", used to highlight the
+                    matching zone in the gas-system schematic when opened from here.
      position     - {x,y,z} approximate marker anchor in the scene's local model
                     space (metres, roughly a 0-1.8m tall workstation centred at
                     the origin). These are placeholder anchors for the stand-in
@@ -29,7 +33,7 @@
 window.VentilatorData = {
   machineName: "Anaesthesia Workstation",
   machineKicker: "GENERIC / REPRESENTATIVE — 3D INTERACTIVE EXPLORER",
-  disclaimer: "Generic, representative anaesthesia workstation for teaching purposes. Not modelled on, and not a substitute for, any specific manufacturer's device or manual. Verify against your own department's equipment and current departmental protocols before clinical use.",
+  disclaimer: "Generic educational anaesthesia workstation representation. Appearance and component arrangement may vary between manufacturers and models. Not a substitute for any specific manufacturer's device or manual — verify against your own department's equipment and current departmental protocols before clinical use.",
 
   systems: {
     gasSupply: "Gas Supply",
@@ -46,10 +50,11 @@ window.VentilatorData = {
   components: [
     {
       id: "cylinder-yoke", name: "Cylinder Yoke Area", view: "rear", system: "gasSupply",
-      summary: "Mounting yokes that hold the back-up gas cylinders against the machine frame.",
+      summary: "Mounting yokes (often an optional fitting, depending on machine configuration) that hold the back-up gas cylinders against the machine frame.",
       function: "Each yoke uses a pin-index safety system (PISS) so a cylinder can only be seated on the yoke matching its gas, preventing an O2 cylinder from being fitted where N2O/air belongs, and vice versa.",
       safety: "Always check the cylinder contents label and pressure gauge before use — pin-index prevents wrong-gas fitting, but does not confirm cylinder content is correct or verify remaining volume.",
       viva: { prompt: "What safety system prevents an incorrect cylinder being fitted to a yoke, and what does it NOT protect against?", answer: "The pin-index safety system (PISS) — two pins on the yoke correspond to specific holes on the cylinder valve block for each gas. It prevents physical mis-connection, but does not prevent a cylinder being mislabelled or a yoke washer being removed to force a wrong fit." },
+      schematics: ["cylinder-connection", "yoke-check-valve"], gasZone: "high",
       position: { x: -0.32, y: 0.62, z: -0.38 }
     },
     {
@@ -58,6 +63,7 @@ window.VentilatorData = {
       function: "Provide gas supply if the piped hospital supply fails. Cylinder pressure falls roughly linearly with content for a gas stored purely as a compressed gas (e.g. O2), so pressure can estimate remaining volume; for a liquefied gas the pressure stays near-constant until the liquid phase is nearly exhausted.",
       safety: "Cylinders should be checked and left closed during normal pipeline-supplied operation, opened only to confirm reserve availability or when the pipeline fails — habitually running from cylinder can deplete the reserve unnoticed.",
       viva: { prompt: "Why can't cylinder pressure be used to estimate remaining volume for N2O the way it can for O2?", answer: "O2 is stored as a compressed gas, so Boyle's law applies and pressure falls proportionally with content. N2O is stored partly as liquid; while liquid remains, pressure stays roughly constant (reflecting vapour pressure), only falling once all the liquid has vaporised — so a normal-looking gauge can precede a sudden empty cylinder." },
+      schematics: ["cylinder-connection"], gasZone: "high",
       position: { x: 0.0, y: 0.55, z: -0.42 }
     },
     {
@@ -66,6 +72,7 @@ window.VentilatorData = {
       function: "Each gas (O2, N2O, Air) uses a non-interchangeable Schrader-type probe and colour-coded hose (per local/international standard) so the correct hose can only physically connect to its matching wall or pendant outlet.",
       safety: "Non-interchangeable connectors are a passive safety feature — they should never be adapted, forced, or bypassed to make a hose fit a mismatched outlet.",
       viva: { prompt: "What is the purpose of non-interchangeable (gas-specific) pipeline connectors?", answer: "They physically prevent a hose for one gas from being connected to the pipeline outlet for a different gas, protecting against delivery of the wrong gas at the pipeline-to-machine interface." },
+      schematics: ["gas-system"], gasZone: "intermediate",
       position: { x: -0.05, y: 0.75, z: -0.42 }
     },
     {
@@ -99,7 +106,8 @@ window.VentilatorData = {
       function: "Operator adjusts flow-control knobs for each gas here; the resulting fresh gas mixture (O2 ± Air/N2O) passes onward to the vaporizer(s) and then to the common gas outlet or breathing circuit.",
       safety: "Modern workstations electronically or mechanically link O2 flow so the fresh-gas mixture cannot fall below roughly 21-25% O2 — know how your specific machine indicates and enforces this before relying on it.",
       viva: { prompt: "What minimum-FiO2 safety feature is expected on a modern flowmeter/flow-control system?", answer: "An O2:N2O (or O2:other gas) proportioning/anti-hypoxia linkage that mechanically or electronically prevents the total fresh gas mixture falling below a safe minimum FiO2 (commonly around 21–25%), regardless of how the individual flow controls are set." },
-      position: { x: 0.0, y: 1.05, z: 0.28 }
+      schematics: ["gas-system"], gasZone: "low",
+      position: { x: 0.0, y: 0.9, z: 0.28 }
     },
     {
       id: "gauge-pipeline", name: "Pipeline Pressure Gauges", view: "front", system: "pressure",
@@ -107,7 +115,8 @@ window.VentilatorData = {
       function: "Normal hospital pipeline pressure is typically around 400–420 kPa (roughly 4 bar); a reading outside this range suggests a pipeline supply problem upstream of the machine.",
       safety: "Checking pipeline pressures is a standard part of the pre-use machine check — a low or absent reading should prompt switching to cylinder back-up and reporting the fault.",
       viva: { prompt: "What pipeline pressure is expected on the pipeline pressure gauges in a normally functioning system?", answer: "Approximately 400–420 kPa (about 4 bar/60 psi) for a standard hospital medical gas pipeline system; the exact expected value should be checked against local standards." },
-      position: { x: -0.18, y: 1.12, z: 0.3 }
+      schematics: ["gas-system"], gasZone: "intermediate",
+      position: { x: -0.18, y: 0.86, z: 0.3 }
     },
     {
       id: "gauge-cylinder", name: "Cylinder Pressure Gauges", view: "front", system: "pressure",
@@ -115,15 +124,16 @@ window.VentilatorData = {
       function: "Used to confirm a reserve gas supply is present and adequate, and to monitor cylinder use if the machine is running from cylinder supply.",
       safety: "Check at the start of every list — a cylinder found empty only when the pipeline fails intraoperatively is a preventable critical incident.",
       viva: null,
-      position: { x: 0.18, y: 1.12, z: 0.3 }
+      schematics: ["gas-system"], gasZone: "high",
+      position: { x: 0.18, y: 0.86, z: 0.3 }
     },
     {
-      id: "paw-gauge", name: "PAW Gauge", view: "front", system: "pressure",
+      id: "paw-gauge", name: "PAW Gauge", view: "front", system: "breathing",
       summary: "Displays proximal/peak airway pressure (PAW) measured in the breathing circuit near the patient connection.",
-      function: "Continuous PAW monitoring helps detect circuit disconnection (sudden fall), obstruction, breath-stacking, or excessive pressure (sudden rise) during ventilation.",
+      function: "Continuous PAW monitoring helps detect circuit disconnection (sudden fall), obstruction, breath-stacking, or excessive pressure (sudden rise) during ventilation. This is part of the breathing system, not the low-pressure fresh-gas supply chain.",
       safety: "A high-pressure alarm threshold should always be set appropriately for the patient — both for detecting barotrauma risk and for detecting a stuck APL/scavenging pathway.",
       viva: { prompt: "Name two circuit problems that a sudden change in PAW can reveal, one for a sudden fall and one for a sudden rise.", answer: "A sudden fall in PAW suggests circuit disconnection or a major leak; a sudden rise suggests obstruction, breath-stacking, or a blocked/misconfigured exhaust (APL valve or scavenging) pathway." },
-      position: { x: 0.05, y: 1.18, z: 0.29 }
+      position: { x: 0.05, y: 0.95, z: 0.29 }
     },
     {
       id: "system-switch", name: "System Switch", view: "front", system: "power",
@@ -147,14 +157,16 @@ window.VentilatorData = {
       function: "The interlock mechanism ensures only one vaporizer can be switched 'on' at a time, and that a vaporizer cannot be removed while switched on, preventing simultaneous or accidental delivery of two volatile agents.",
       safety: "Check vaporizers are correctly seated and locked, filled with the correct agent, and that the interlock prevents more than one being active — this is a standard pre-use check item.",
       viva: { prompt: "What does the Selectatec-type interlock mechanism specifically prevent?", answer: "It prevents more than one vaporizer being switched on simultaneously, and prevents a vaporizer being removed from the manifold while it is switched on — protecting against delivery of two agents at once or an open, unmounted vaporizer leaking agent." },
+      schematics: ["gas-system"], gasZone: "low",
       position: { x: 0.0, y: 0.78, z: 0.3 }
     },
     {
       id: "o2-flush", name: "Oxygen Flush", view: "front", system: "flowControl",
       summary: "A control that delivers high-flow (commonly 35–75 L/min) O2 directly to the common gas outlet, bypassing the flowmeters and vaporizer(s).",
-      function: "Used to rapidly fill/flush the breathing circuit with pure O2, e.g. before induction or to quickly increase circuit volume/FiO2.",
+      function: "Used to rapidly fill/flush the breathing circuit with pure O2, e.g. before induction or to quickly increase circuit volume/FiO2. It taps the intermediate-pressure O2 supply directly, upstream of the flow-control valves and vaporizer(s).",
       safety: "Because O2 flush bypasses the vaporizer, it delivers no anaesthetic agent — do not use it as a substitute for adequate anaesthetic depth, and be aware that flushing at high fresh gas flow can transiently increase circuit pressure if used with the circuit occluded.",
       viva: { prompt: "Why does using the oxygen flush not affect anaesthetic depth?", answer: "The O2 flush routes gas directly to the common gas outlet, bypassing both the flow-control/vaporizer pathway — so it delivers 100% O2 with no volatile agent, diluting rather than deepening anaesthesia if used carelessly." },
+      schematics: ["gas-system"], gasZone: "intermediate",
       position: { x: -0.28, y: 0.82, z: 0.3 }
     },
     {
@@ -171,7 +183,7 @@ window.VentilatorData = {
       function: "Displays settings such as tidal volume, respiratory rate, PEEP and FiO2, and monitored values such as measured PAW, minute volume and, on integrated systems, capnography.",
       safety: "Confirm ventilator settings against the intended plan at the start of ventilation and after any mode change — an unnoticed unit or mode mismatch is a recognised source of ventilation incidents.",
       viva: null,
-      position: { x: 0.0, y: 1.15, z: 0.05 }
+      position: { x: 0.0, y: 1.0, z: 0.15 }
     },
     {
       id: "handle", name: "Ergonomic Handle", view: "front", system: "mobility",
@@ -198,20 +210,20 @@ window.VentilatorData = {
       position: { x: 0.0, y: 0.35, z: 0.34 }
     },
     {
-      id: "aux-power", name: "Auxiliary Power & Switch", view: "front", system: "power",
+      id: "aux-power", name: "Auxiliary Power & Switch", view: "rear", system: "power",
       summary: "A backup electrical power supply (internal battery) and its associated switch/indicator.",
       function: "Maintains power to the ventilator, monitor and displays for a limited time if mains electrical power is lost, so ventilation and monitoring are not immediately interrupted.",
       safety: "Battery back-up has a finite runtime — know your machine's rated back-up duration and treat a mains power failure as time-critical, not as a non-event.",
       viva: { prompt: "What should prompt concern immediately after a mains power failure on a workstation with battery back-up?", answer: "That battery back-up is time-limited — ventilation/monitoring continuing on battery is not a reason to delay restoring mains power or escalating, since the back-up will eventually be exhausted." },
-      position: { x: -0.2, y: 0.55, z: 0.32 }
+      position: { x: -0.28, y: 0.95, z: -0.38 }
     },
     {
-      id: "flip-shelf", name: "Flip-up Shelf", view: "front", system: "storage",
+      id: "flip-shelf", name: "Flip-up Shelf", view: "rear", system: "storage",
       summary: "A hinged worktop surface that can be flipped up out of the way or down for use as a working surface.",
       function: "Provides a temporary flat surface (e.g. for a laryngoscope, drugs tray, or notes) close to the machine without permanently occupying space.",
       safety: "Do not load beyond the manufacturer's rated weight, and ensure it is fully latched down before placing equipment on it.",
       viva: null,
-      position: { x: 0.3, y: 0.5, z: 0.3 }
+      position: { x: 0.3, y: 0.6, z: -0.35 }
     },
     {
       id: "task-light", name: "Task Light", view: "front", system: "mobility",
@@ -225,28 +237,52 @@ window.VentilatorData = {
 
   // Generic gas-pathway staging used by the "Systems Guide" panel — standard
   // anaesthesia-machine physiology (high/intermediate/low pressure systems),
-  // expressed only in terms of the components already listed above.
+  // expressed only in terms of the components already listed above, plus a
+  // small set of standard concepts that this particular model does not expose
+  // as its own selectable hotspot (marked "conceptual" — see ventilator-ui.js,
+  // which renders these without a 3D jump-to-component action and instead
+  // offers the schematic diagram as the "where this fits" reference).
   systemsGuide: [
     {
       id: "high", label: "High-Pressure System", range: "Cylinder pressure, up to ~13,700 kPa (O2)",
-      explain: "From the gas cylinder to the pressure regulator. Gas here is at full cylinder pressure, stepped down by a regulator before entering the intermediate-pressure system.",
-      componentIds: ["rear-cylinders", "cylinder-yoke"]
+      explain: "From the gas cylinder, through the cylinder valve and pin-index safety system, to the pressure regulator. Gas here is at full cylinder pressure, stepped down by the regulator before entering the intermediate-pressure system.",
+      componentIds: ["rear-cylinders", "cylinder-yoke", "gauge-cylinder"],
+      concepts: [
+        { label: "Cylinder valve", note: "The on/off valve fitted to each cylinder, opened to allow gas into the yoke." },
+        { label: "Pin-index safety system (PISS)", note: "Pins on the yoke and matching holes on the cylinder valve block prevent a cylinder being fitted to the wrong gas yoke." },
+        { label: "Cylinder-yoke check valve", note: "A one-way (floating) valve inside the yoke that prevents backflow/gas loss when a cylinder is removed or absent.", schematic: "yoke-check-valve" }
+      ],
+      schematic: "cylinder-connection"
     },
     {
       id: "intermediate", label: "Intermediate-Pressure System", range: "~400 kPa (pipeline / post-regulator)",
-      explain: "From the pipeline inlet (or the cylinder pressure regulator outlet) to the flow-control valves. This is the pressure delivered by the hospital pipeline, and the regulated pressure downstream of a cylinder regulator.",
-      componentIds: ["pipeline-conn", "gauge-pipeline", "gauge-cylinder"]
+      explain: "From the pipeline inlet (or the cylinder pressure regulator outlet) to the flow-control valves. This is the pressure delivered by the hospital pipeline, and the regulated pressure downstream of a cylinder regulator. The O2 flush valve taps this system directly, bypassing the flow-control valves entirely.",
+      componentIds: ["pipeline-conn", "gauge-pipeline", "o2-flush"],
+      concepts: [
+        { label: "Primary & secondary pressure regulators", note: "Reduce cylinder or pipeline pressure to a steady ~400 kPa working pressure before it reaches the flow-control valves." },
+        { label: "O2 supply-pressure monitoring / low-pressure alarm", note: "Monitors the intermediate-pressure O2 supply and alarms if it falls, since this pressure also typically drives the anti-hypoxia linkage and ventilator." }
+      ],
+      schematic: "gas-system"
     },
     {
       id: "low", label: "Low-Pressure System", range: "Just above atmospheric, downstream of the flow-control valves",
-      explain: "From the flow-control valves through the flowmeters, vaporizer(s), and out through the common gas outlet to the breathing circuit — the pressure the patient's airway actually experiences.",
-      componentIds: ["flowhead", "selectatec", "o2-flush", "breathing-circuit", "paw-gauge"]
+      explain: "From the flow-control (needle) valves, through the flowmeters and vaporizer(s), to the common gas outlet. This is where the low-pressure system ends — the breathing circuit itself is a separate system (see Breathing System & Scavenging below), even though gas flows from one into the other.",
+      componentIds: ["flowhead", "selectatec"],
+      concepts: [
+        { label: "Flow-control / needle valves", note: "Operator-set valves that meter each gas from intermediate pressure down into the low-pressure fresh-gas flow." },
+        { label: "Flowmeter / rotameter tubes", note: "Show the flow rate of each gas as a bobbin position in a tapered tube." },
+        { label: "Vaporizer interlock concept", note: "An interlock (e.g. Selectatec-type) prevents more than one vaporizer being active at once." },
+        { label: "Common gas outlet & outlet check valve", note: "Where the fresh-gas mixture leaves the machine; some workstations add an outlet check/retaining device to resist backflow and accidental disconnection." },
+        { label: "Connection toward the breathing system", note: "The low-pressure system's endpoint — not itself part of the breathing circuit." }
+      ],
+      schematic: "gas-system"
     },
     {
-      id: "exhaust", label: "Exhaust / Scavenging",
-      range: "Waste gas leaving the breathing circuit",
-      explain: "Excess and expired gas leaves the circuit via the APL valve or ventilator exhaust and is carried away by the scavenging system, rather than venting into theatre.",
-      componentIds: ["scavenging"]
+      id: "breathing", label: "Breathing System & Scavenging", range: "Patient-side circuit and waste-gas removal",
+      explain: "Carries fresh gas to and from the patient and removes excess/expired gas. This is a distinct system from the low-pressure fresh-gas supply above — it is not itself classified as \"low pressure\" in the pneumatic sense, even though it receives gas from the common gas outlet.",
+      componentIds: ["breathing-circuit", "paw-gauge", "scavenging"],
+      concepts: [],
+      schematic: null
     }
   ]
 };

@@ -90,7 +90,7 @@
         <div id="ventHoverLabel" class="vent-hover-label" hidden></div>
         <div id="ventCalibrateBanner" class="vent-calibrate-banner" hidden>Calibration mode active — click the model to log a local-space coordinate.</div>
         <div id="ventPlaceholderBanner" class="vent-placeholder-banner" hidden role="status">
-          🚧 STAND-IN GEOMETRY — no ventilator.glb found at assets/models/. This is a generic placeholder shape, not the actual workstation. Component data and interactions are already fully wired and will apply to the real model once it is added.
+          🚧 STAND-IN GEOMETRY — no ventilatormodel.glb found at assets/models/. This is a generic placeholder shape, not the actual workstation. Component data and interactions are already fully wired and will apply to the real model once it is added.
         </div>
         <div id="ventInfoPanel" class="vent-info-panel"></div>
       </div>
@@ -111,10 +111,10 @@
         </div>
 
         <div id="ventPanelGuide" class="vent-panel" hidden>
-          <h4 style="margin:0 0 10px;color:var(--text-main);">Gas Pathway — High → Intermediate → Low Pressure</h4>
+          <h4 style="margin:0 0 10px;color:var(--text-main);">Gas Pathway — High → Intermediate → Low Pressure → Breathing System</h4>
           <div id="ventGuideBody" class="vent-guide-stages"></div>
           <div id="ventGuideExplain" class="vent-explain-box" hidden></div>
-          <p class="vent-panel-hint">Generic anaesthesia-machine gas-system staging, not a physically exact flow simulation.</p>
+          <p class="vent-panel-hint">Generic, conceptual anaesthesia-machine gas-system staging — not a physically exact flow simulation, and not a claim that every listed concept is a separately modelled part of this 3D model.</p>
         </div>
 
         <div id="ventPanelQuiz" class="vent-panel" hidden>
@@ -147,6 +147,17 @@
     </div>
   </div>
 </footer>
+
+<!-- Contextual Schematic Modal (opened from a hotspot or Systems Guide item) -->
+<div id="ventSchematicModal" class="vent-schematic-modal" hidden role="dialog" aria-modal="true" aria-labelledby="ventSchematicTitle">
+  <div class="vent-schematic-backdrop" data-schematic-close></div>
+  <div class="vent-schematic-box">
+    <button class="vent-schematic-close" data-schematic-close aria-label="Close schematic">&times;</button>
+    <h3 id="ventSchematicTitle"></h3>
+    <div class="vent-schematic-svg-wrap" id="ventSchematicBody"></div>
+    <p class="vent-schematic-footnote">Simplified educational schematic — an original diagram, not a reproduction of any manufacturer's documentation. Actual architecture varies by workstation manufacturer and model.</p>
+  </div>
+</div>
 
 <!-- Floating Updates Pill -->
 <a class="kn-updates-pill" href="recent-updates.html" aria-label="Recent KnockoutNotes updates">
