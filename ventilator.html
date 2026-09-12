@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anaesthesia Workstation | KnockoutNotes</title>
+  <meta name="description" content="Interactive 3D Anaesthesia Workstation explorer: identify and understand every major workstation component, generic gas-system pathways, and viva-style questions.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page-common.css">
+  <link rel="stylesheet" href="ventilator.css">
+</head>
+<body data-content-page="ventilator">
+
+<header class="site-hud">
+  <div class="hud-capsule">
+    <a class="brand" href="index.html" aria-label="KnockoutNotes home">
+      <div class="brand-icon-wrap">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      </div>
+      <div class="brand-name">Knockout<span>Notes</span></div>
+    </a>
+
+    <div class="hud-path-indicator">
+      <span class="hud-pulse-dot"></span>
+      <span>KN // ANAESTHESIA WORKSTATION</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="pearls.html">Pearls</a>
+      <a href="notes.html">Notes</a>
+      <a href="viva.html">Viva</a>
+      <a href="ventilator.html" class="active">Workstation</a>
+      <a href="drugs.html">Drugs</a>
+      <a href="critical-care.html">Critical Care</a>
+      <a href="recent-updates.html">Updates</a>
+      <a href="resources.html">About</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="icon-btn theme-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a data-close-menu href="index.html">Home <span>→</span></a>
+    <a data-close-menu href="pearls.html">Pearls <span>→</span></a>
+    <a data-close-menu href="notes.html">Notes <span>→</span></a>
+    <a data-close-menu href="viva.html">Viva <span>→</span></a>
+    <a data-close-menu href="ventilator.html">Workstation <span>→</span></a>
+    <a data-close-menu href="drugs.html">Drugs <span>→</span></a>
+    <a data-close-menu href="critical-care.html">Critical Care <span>→</span></a>
+    <a data-close-menu href="recent-updates.html">Updates <span>→</span></a>
+    <a data-close-menu href="resources.html">About <span>→</span></a>
+  </div>
+</header>
+
+<main class="container vent-page">
+  <section class="vent-hero">
+    <div class="kicker-pill">⚙ 3D INTERACTIVE EXPLORER</div>
+    <h1>Anaesthesia Workstation</h1>
+    <p class="vent-subtitle">Explore, identify and understand every major workstation component in 3D.</p>
+    <p class="vent-disclaimer-banner" id="ventDisclaimer"></p>
+  </section>
+
+  <div id="ventApp" class="vent-app">
+    <aside class="vent-sidebar">
+      <div id="ventSidebarList"></div>
+    </aside>
+
+    <div class="vent-main">
+      <div class="vent-tabs" role="tablist">
+        <button class="vent-tab active" data-tab="explore" role="tab">Explore</button>
+        <button class="vent-tab" data-tab="inspect" role="tab">Inspect</button>
+        <button class="vent-tab" data-tab="guide" role="tab">Systems Guide</button>
+        <button class="vent-tab" data-tab="quiz" role="tab">Viva Quiz</button>
+      </div>
+
+      <div class="vent-action-bar">
+        <button id="ventResetViewBtn" class="btn-hud">Reset View</button>
+        <button id="ventFrontViewBtn" class="btn-hud">Front View</button>
+        <button id="ventRearViewBtn" class="btn-hud">Rear View</button>
+        <button id="ventSideViewBtn" class="btn-hud">Side View</button>
+        <button id="ventFullscreenBtn" class="btn-hud" aria-label="Toggle fullscreen">⛶ Fullscreen</button>
+      </div>
+
+      <div class="vent-stage">
+        <div id="ventStage" class="vent-canvas-host"></div>
+        <div id="ventLoading" class="vent-loading">Loading workstation…</div>
+        <div id="ventHoverLabel" class="vent-hover-label" hidden></div>
+        <div id="ventCalibrateBanner" class="vent-calibrate-banner" hidden>Calibration mode active — click the model to log a local-space coordinate.</div>
+        <div id="ventPlaceholderBanner" class="vent-placeholder-banner" hidden role="status">
+          🚧 STAND-IN GEOMETRY — no ventilator.glb found at assets/models/. This is a generic placeholder shape, not the actual workstation. Component data and interactions are already fully wired and will apply to the real model once it is added.
+        </div>
+        <div id="ventInfoPanel" class="vent-info-panel"></div>
+      </div>
+
+      <div class="vent-panels">
+        <div id="ventPanelExplore" class="vent-panel">
+          <p class="vent-panel-hint">Rotate: drag / one-finger swipe · Zoom: scroll / pinch · Click any numbered marker, or a component in the sidebar, to inspect it.</p>
+        </div>
+
+        <div id="ventPanelInspect" class="vent-panel" hidden>
+          <div class="vent-toggle-row">
+            <label class="vent-toggle">Housing translucency
+              <input type="range" id="ventTranslucentRange" min="0" max="1" step="0.05" value="0">
+            </label>
+            <label class="vent-toggle"><input type="checkbox" id="ventAutoRotateToggle"><span>Auto-rotate</span></label>
+          </div>
+          <p class="vent-panel-hint">Reduces the housing's opacity so you can look past the outer casing. This workstation model does not have separately modelled internal components, so it is a visual aid rather than a true internal/X-ray view.</p>
+        </div>
+
+        <div id="ventPanelGuide" class="vent-panel" hidden>
+          <h4 style="margin:0 0 10px;color:var(--text-main);">Gas Pathway — High → Intermediate → Low Pressure</h4>
+          <div id="ventGuideBody" class="vent-guide-stages"></div>
+          <div id="ventGuideExplain" class="vent-explain-box" hidden></div>
+          <p class="vent-panel-hint">Generic anaesthesia-machine gas-system staging, not a physically exact flow simulation.</p>
+        </div>
+
+        <div id="ventPanelQuiz" class="vent-panel" hidden>
+          <div id="ventQuizBody"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="brand">
+        <div class="brand-icon-wrap">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        </div>
+        <div class="brand-name">Knockout<span>Notes</span></div>
+      </div>
+      <p>Anaesthesia • Critical Care • Viva</p>
+      <p class="disclaimer">Educational content for medical professionals and trainees. Always verify current guidelines, institutional protocols, drug labels, and patient-specific factors before clinical use.</p>
+    </div>
+    <div class="footer-connect">
+      <strong>Connect & Follow</strong>
+      <div class="socials">
+        <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
+        <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
+      </div>
+      <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Updates Pill -->
+<a class="kn-updates-pill" href="recent-updates.html" aria-label="Recent KnockoutNotes updates">
+  <span class="kn-blink"></span>
+  <span class="kn-updates-pill-text">Recent Updates</span>
+  <span class="kn-updates-pill-badge">Live</span>
+</a>
+
+<script src="ventilator-data.js"></script>
+<script>
+  document.getElementById("ventDisclaimer").textContent = window.VentilatorData.disclaimer;
+</script>
+<!-- The vendored GLTFLoader/OrbitControls (from the npm "three" package) import
+     the bare specifier "three", meant for a bundler/import map rather than a
+     plain relative path — this import map resolves it to our vendored build
+     for plain-browser ESM, since this site has no bundler. -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three/build/three.module.js"
+  }
+}
+</script>
+<script type="module">
+  import { initVentilatorPage } from "./ventilator-ui.js";
+  initVentilatorPage();
+</script>
+<script src="script.js"></script>
+<script src="page-motion.js"></script>
+
+</body>
+</html>
