@@ -92,12 +92,19 @@
         <div id="ventPlaceholderBanner" class="vent-placeholder-banner" hidden role="status">
           🚧 STAND-IN GEOMETRY — no ventilatormodel.glb found at assets/models/. This is a generic placeholder shape, not the actual workstation. Component data and interactions are already fully wired and will apply to the real model once it is added.
         </div>
+        <div id="ventRotateIndicator" class="vent-rotate-indicator" hidden>🔄 Rotation active — drag to rotate</div>
+        <div class="vent-zoom-bar" role="group" aria-label="Zoom controls">
+          <button id="ventZoomInBtn" class="vent-zoom-btn" aria-label="Zoom in">+</button>
+          <input type="range" id="ventZoomRange" class="vent-zoom-slider" min="0" max="100" value="0" step="1" aria-label="Zoom level">
+          <button id="ventZoomOutBtn" class="vent-zoom-btn" aria-label="Zoom out">−</button>
+          <button id="ventZoomFitBtn" class="vent-zoom-btn vent-zoom-fit" aria-label="Reset zoom to fit the whole workstation">⤢</button>
+        </div>
         <div id="ventInfoPanel" class="vent-info-panel"></div>
       </div>
 
       <div class="vent-panels">
         <div id="ventPanelExplore" class="vent-panel">
-          <p class="vent-panel-hint">Rotate: drag / one-finger swipe · Zoom: scroll / pinch · Click any numbered marker, or a component in the sidebar, to inspect it.</p>
+          <p class="vent-panel-hint">Rotate: double-click/double-tap the model, then drag · Zoom: scroll / pinch / the zoom bar · Click any blue marker, or a component in the sidebar, to inspect it.</p>
         </div>
 
         <div id="ventPanelInspect" class="vent-panel" hidden>

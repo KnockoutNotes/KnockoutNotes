@@ -69,6 +69,11 @@ export function initVentilatorPage() {
   const calibrate = new URLSearchParams(location.search).has("calibrate");
   const schematicModal = initSchematicModal();
 
+  const zoomRange = document.getElementById("ventZoomRange");
+  const zoomInBtn = document.getElementById("ventZoomInBtn");
+  const zoomOutBtn = document.getElementById("ventZoomOutBtn");
+  const zoomFitBtn = document.getElementById("ventZoomFitBtn");
+
   const scene = createWorkstationScene(stageHost, {
     modelUrl: "assets/models/ventilatormodel.glb",
     components: data.components,
@@ -82,6 +87,11 @@ export function initVentilatorPage() {
     onLoaded: ({ isPlaceholder }) => {
       loadingEl.hidden = true;
       if (placeholderBanner) placeholderBanner.hidden = !isPlaceholder;
+      if (zoomRange) zoomRange.value = String(Math.round(scene.getZoomPercent()));
+    },
+    onRotationArmChange: on => {
+      const indicator = document.getElementById("ventRotateIndicator");
+      if (indicator) indicator.hidden = !on;
     }
   });
 
@@ -153,6 +163,21 @@ export function initVentilatorPage() {
   document.getElementById("ventRearViewBtn").addEventListener("click", () => scene.rearView());
   document.getElementById("ventSideViewBtn").addEventListener("click", () => scene.sideView());
   document.getElementById("ventFullscreenBtn").addEventListener("click", () => scene.toggleFullscreen());
+
+  // ---- Zoom bar (compact vertical control alongside wheel/pinch zoom) ----
+  const ZOOM_STEP = 8;
+  if (zoomRange) {
+    zoomRange.addEventListener("input", () => scene.setZoomPercent(Number(zoomRange.value)));
+  }
+  if (zoomInBtn) zoomInBtn.addEventListener("click", () => scene.zoomStep(ZOOM_STEP));
+  if (zoomOutBtn) zoomOutBtn.addEventListener("click", () => scene.zoomStep(-ZOOM_STEP));
+  if (zoomFitBtn) zoomFitBtn.addEventListener("click", () => scene.resetView());
+  // Keeps the slider in sync while zoom changes via mouse wheel, pinch, or
+  // a camera tween (view buttons, hotspot selection) rather than the bar itself.
+  (function syncZoomSlider() {
+    if (zoomRange) zoomRange.value = String(Math.round(scene.getZoomPercent()));
+    requestAnimationFrame(syncZoomSlider);
+  })();
 
   // ---- Inspect panel: translucency + auto-rotate ----
   const translucentRange = document.getElementById("ventTranslucentRange");
