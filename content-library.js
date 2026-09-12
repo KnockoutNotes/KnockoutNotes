@@ -166,6 +166,23 @@
       <rect x="24.5" y="42" width="9" height="4.4" rx="1.6" stroke="currentColor" stroke-width="1.5"/>
       <path d="M40 29c6.6 0 9.6 3.2 9.6 8.4S52.6 45.8 50 46" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/>
       <path d="M40 33.4c4.2 0 6.2 2 6.2 5.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+    </svg>`,
+    // Local anaesthetics: a needle blocking conduction along a nerve fibre —
+    // the wavy line is the nerve, the angled barrel is the syringe, and the
+    // slashed circle at the tip marks the site of blocked signal.
+    "local-anaesthetic": `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 42c9-13 18-13 27 0s18 13 25 2" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+      <rect x="32" y="6.5" width="22" height="9.5" rx="2" transform="rotate(35 43 11.25)" stroke="currentColor" stroke-width="1.7"/>
+      <line x1="28.5" y1="24" x2="34.5" y2="30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="35" cy="33.5" r="6.4" stroke="currentColor" stroke-width="1.7"/>
+      <line x1="30.9" y1="29.4" x2="39.1" y2="37.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+    </svg>`,
+    // Non-opioid analgesics: a split tablet — the plain, universal pill
+    // pictogram, distinct from the injectable vial/syringe/ampoule cycle.
+    tablet: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="9" y="23" width="46" height="18" rx="9" stroke="currentColor" stroke-width="1.9"/>
+      <line x1="32" y1="23" x2="32" y2="41" stroke="currentColor" stroke-width="1.9"/>
+      <path d="M14 27.5h11" stroke="currentColor" stroke-width="1.3" opacity="0.5" stroke-linecap="round"/>
     </svg>`
   };
   // Category id -> dedicated pictogram. Anything not listed falls back to a
@@ -181,7 +198,9 @@
     'icu-scoring': 'monitor',
     ventilation: 'ventilator',
     'ventilator-modes': 'ventilator',
-    'critical-care': 'monitor'
+    'critical-care': 'monitor',
+    'local-anaesthetics': 'local-anaesthetic',
+    'non-opioid-analgesics': 'tablet'
   };
   const IMAGE_ICON_CYCLE = ['vial', 'syringe', 'ampoule'];
 
@@ -370,6 +389,113 @@
         track.style.transition = prevTransition;
         track.style.transform = `translateX(${offset}px)`;
       };
+
+      // Manual browsing of the tab strip: previously the only way to move
+      // .kn-library-tabs-track was centerActiveTab() snapping to whichever
+      // tab was just clicked — there was no way to preview neighbouring
+      // tabs without picking one, i.e. the strip "didn't move on drag".
+      // Two input modes share the same clamp centerActiveTab uses (never
+      // lets the track overscroll past either end):
+      //   - pointer drag (mouse, touch, pen — one handler covers all
+      //     three via Pointer Events): the track follows the pointer 1:1
+      //     while held, on desktop and touch/mobile alike.
+      //   - desktop hover-to-edge: resting the cursor near either edge of
+      //     the viewport for 0.8s starts a smooth continuous pan toward
+      //     that side, stopping the moment the cursor leaves the edge
+      //     zone, the strip, or a drag begins.
+      if (track) {
+        const getOffset = () => {
+          const m = /translateX\((-?\d+(?:\.\d+)?)px\)/.exec(track.style.transform || '');
+          return m ? parseFloat(m[1]) : 0;
+        };
+        const clampOffset = off => {
+          const minOffset = Math.min(0, tabs.clientWidth - track.scrollWidth);
+          return Math.max(minOffset, Math.min(0, off));
+        };
+        const setOffset = (off, animate) => {
+          track.style.transition = animate ? '' : 'none';
+          track.style.transform = `translateX(${clampOffset(off)}px)`;
+          if (!animate) {
+            // eslint-disable-next-line no-unused-expressions
+            track.offsetWidth; // flush transition:none before restoring it
+            track.style.transition = '';
+          }
+        };
+
+        let dragging = false;
+        let dragMoved = false;
+        let dragStartX = 0;
+        let dragStartOffset = 0;
+
+        const stopAutoScroll = () => {
+          if (edgeHoverTimer) { clearTimeout(edgeHoverTimer); edgeHoverTimer = null; }
+          if (edgeScrollRAF) { cancelAnimationFrame(edgeScrollRAF); edgeScrollRAF = null; }
+          hoverDir = 0;
+        };
+        let edgeHoverTimer = null;
+        let edgeScrollRAF = null;
+        let hoverDir = 0;
+        const EDGE_ZONE = 36;
+        const EDGE_HOVER_DELAY_MS = 800;
+        const runAutoScroll = () => {
+          if (!hoverDir) return;
+          setOffset(getOffset() - hoverDir * 3.2, false);
+          edgeScrollRAF = requestAnimationFrame(runAutoScroll);
+        };
+
+        tabs.addEventListener('pointerdown', e => {
+          if (e.button !== undefined && e.button !== 0 && e.pointerType === 'mouse') return;
+          stopAutoScroll();
+          dragging = true;
+          dragMoved = false;
+          dragStartX = e.clientX;
+          dragStartOffset = getOffset();
+          track.style.transition = 'none';
+          tabs.classList.add('kn-tabs-dragging');
+          try { tabs.setPointerCapture(e.pointerId); } catch (_) {}
+        });
+        tabs.addEventListener('pointermove', e => {
+          if (!dragging) return;
+          const dx = e.clientX - dragStartX;
+          if (Math.abs(dx) > 4) dragMoved = true;
+          if (dragMoved) setOffset(dragStartOffset + dx, false);
+        });
+        const endDrag = () => {
+          if (!dragging) return;
+          dragging = false;
+          track.style.transition = '';
+          tabs.classList.remove('kn-tabs-dragging');
+        };
+        tabs.addEventListener('pointerup', endDrag);
+        tabs.addEventListener('pointercancel', endDrag);
+        // A drag that actually moved the strip shouldn't also fire the
+        // tab it started or ended on top of as a category switch.
+        tabs.addEventListener('click', e => {
+          if (dragMoved) { e.stopPropagation(); e.preventDefault(); dragMoved = false; }
+        }, true);
+
+        if (!reduceMotion) {
+          tabs.addEventListener('mousemove', e => {
+            if (dragging) return;
+            const rect = tabs.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            let dir = 0;
+            if (x < EDGE_ZONE) dir = -1;
+            else if (x > rect.width - EDGE_ZONE) dir = 1;
+            if (dir === hoverDir) return;
+            stopAutoScroll();
+            hoverDir = dir;
+            if (dir) {
+              edgeHoverTimer = setTimeout(() => {
+                edgeScrollRAF = requestAnimationFrame(runAutoScroll);
+              }, EDGE_HOVER_DELAY_MS);
+            }
+          });
+          tabs.addEventListener('mouseleave', stopAutoScroll);
+        }
+
+        tabs.style.touchAction = 'pan-y';
+      }
 
       for (let i = 0; i < categories.length; i++) {
         const cat = categories[i];

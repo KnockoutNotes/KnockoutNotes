@@ -218,6 +218,7 @@
 .view-layer-3d #knLibrary3d .kn-library-tabs {
   order: 2;
   overflow: hidden;
+  cursor: grab;
   /* A deliberately narrow, centred window rather than full-width: at
      full width every tab already fits with room to spare, so there is
      nothing for centerActiveTab to actually slide (the clamp that stops
@@ -241,6 +242,17 @@
   flex-wrap: nowrap;
   width: max-content;
   transition: transform 0.6s var(--ease-expo);
+}
+
+/* Applied by content-library.js for the duration of a pointer drag on the
+   tab strip — grabbing cursor, and each tab's own hover-lift/transition
+   suppressed so it doesn't fight the 1:1 drag tracking. */
+.view-layer-3d #knLibrary3d .kn-library-tabs.kn-tabs-dragging {
+  cursor: grabbing;
+}
+
+.kn-tabs-dragging .kn-library-tab {
+  transition: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
