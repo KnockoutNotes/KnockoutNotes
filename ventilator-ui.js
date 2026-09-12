@@ -8,7 +8,11 @@ import { SCHEMATICS } from "./ventilator-schematics.js";
 
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c]));
 
-// ---- Contextual schematic modal (shared by hotspots + Systems Guide) ----
+// ---- Contextual reference-diagram modal (shared by hotspots + Systems Guide) ----
+// Renders the user-supplied reference images unmodified — no redrawing, no
+// colour inversion (would misrepresent the diagram's own colour-coding), no
+// cropping. The image sits on a light card so its original colours/labels
+// stay exactly as supplied, inside the site's dark modal chrome.
 function initSchematicModal() {
   const modal = document.getElementById("ventSchematicModal");
   const titleEl = document.getElementById("ventSchematicTitle");
@@ -16,21 +20,18 @@ function initSchematicModal() {
   if (!modal) return { open: () => {} };
   let lastFocused = null;
 
-  function highlightZone(zone) {
-    if (!zone) return;
-    bodyEl.querySelectorAll("[data-zone]").forEach(el => {
-      el.style.opacity = el.dataset.zone === zone ? "0.32" : "0.06";
-      el.style.strokeWidth = el.dataset.zone === zone ? "2.5" : "1";
-    });
-  }
-
-  function open(id, opts) {
-    const schematic = SCHEMATICS[id];
-    if (!schematic) return;
+  function open(id) {
+    const ref = SCHEMATICS[id];
+    if (!ref) return;
     lastFocused = document.activeElement;
-    titleEl.textContent = schematic.title;
-    bodyEl.innerHTML = schematic.svg;
-    if (opts && opts.zone) highlightZone(opts.zone);
+    titleEl.textContent = ref.title;
+    bodyEl.innerHTML = `
+      <span class="vent-ref-kicker">📎 REFERENCE DIAGRAM</span>
+      <a href="${esc(ref.image)}" target="_blank" rel="noopener" class="vent-ref-image-link" aria-label="Open full-size in a new tab">
+        <img src="${esc(ref.image)}" alt="${esc(ref.alt)}" class="vent-ref-image">
+      </a>
+      <p class="vent-ref-open-hint">Tap or click the image to open it full-size in a new tab (pinch-to-zoom on mobile).</p>
+    `;
     modal.hidden = false;
     const closeBtn = modal.querySelector(".vent-schematic-close");
     closeBtn.focus();
@@ -125,7 +126,7 @@ export function initVentilatorPage() {
       <p>${esc(comp.function)}</p>
       ${comp.safety ? `<h4>Safety Note</h4><p class="vent-info-safety">${esc(comp.safety)}</p>` : ""}
       ${comp.viva ? `<h4>Viva Point</h4><p class="vent-info-viva"><strong>Q:</strong> ${esc(comp.viva.prompt)}</p><details><summary>Reveal answer</summary><p>${esc(comp.viva.answer)}</p></details>` : ""}
-      ${(comp.schematics || []).map(sid => `<button class="btn-hud vent-schematic-btn" data-open-schematic="${esc(sid)}">📐 ${esc(SCHEMATICS[sid]?.title.split(" — ")[0] || "View Schematic")}</button>`).join("")}
+      ${(comp.schematics || []).map(sid => `<button class="btn-hud vent-schematic-btn" data-open-schematic="${esc(sid)}">📎 ${esc(SCHEMATICS[sid]?.title.split(" — ")[0] || "Reference Diagram")}</button>`).join("")}
     `;
     document.getElementById("ventInfoClose").addEventListener("click", () => {
       infoPanel.classList.remove("open");
@@ -133,7 +134,7 @@ export function initVentilatorPage() {
       markSidebarActive(null);
     });
     infoPanel.querySelectorAll("[data-open-schematic]").forEach(btn => {
-      btn.addEventListener("click", () => schematicModal.open(btn.dataset.openSchematic, { zone: comp.gasZone }));
+      btn.addEventListener("click", () => schematicModal.open(btn.dataset.openSchematic));
     });
   }
 
@@ -194,10 +195,10 @@ export function initVentilatorPage() {
         ${concepts.length ? `<ul class="vent-guide-concepts">${concepts.map(c => `
           <li class="vent-guide-concept">
             <div><span class="vent-guide-concept-label">${esc(c.label)}</span><p class="vent-guide-concept-note">${esc(c.note)}</p></div>
-            <span class="vent-guide-concept-tag" ${c.schematic ? `data-open-schematic="${esc(c.schematic)}" style="cursor:pointer;"` : ""}>${c.schematic ? "📐 Diagram" : "Not a separate 3D hotspot"}</span>
+            <span class="vent-guide-concept-tag" ${c.schematic ? `data-open-schematic="${esc(c.schematic)}" style="cursor:pointer;"` : ""}>${c.schematic ? "📎 Reference" : "Not a separate 3D hotspot"}</span>
           </li>
         `).join("")}</ul>` : ""}
-        ${stage.schematic ? `<button class="btn-hud vent-schematic-btn" data-open-schematic="${esc(stage.schematic)}" data-zone="${esc(stage.id)}">📐 View Schematic</button>` : ""}
+        ${stage.schematic ? `<button class="btn-hud vent-schematic-btn" data-open-schematic="${esc(stage.schematic)}">📎 View Reference Diagram</button>` : ""}
       `;
       guideExplain.querySelectorAll("[data-jump-id]").forEach(chip => {
         chip.addEventListener("click", () => {
@@ -206,7 +207,7 @@ export function initVentilatorPage() {
         });
       });
       guideExplain.querySelectorAll("[data-open-schematic]").forEach(el => {
-        el.addEventListener("click", () => schematicModal.open(el.dataset.openSchematic, { zone: el.dataset.zone }));
+        el.addEventListener("click", () => schematicModal.open(el.dataset.openSchematic));
       });
       if (comps[0]) scene.selectComponent(comps[0].id);
     });

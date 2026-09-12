@@ -429,6 +429,39 @@
   padding: 12px;
 }
 .vent-schematic-svg-wrap svg { width: 100%; height: auto; display: block; }
+
+.vent-ref-kicker {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--accent-cyan);
+  margin-bottom: 10px;
+}
+/* The reference image keeps its own (light) native background — we do not
+   invert or recolour it, since that could misrepresent its colour-coded
+   labels/arrows. Instead it sits on a light "paper" card, itself inside the
+   modal's dark chrome, so the diagram's own colours stay exactly as supplied. */
+.vent-ref-image-link {
+  display: block;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  cursor: zoom-in;
+}
+.vent-ref-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.vent-ref-open-hint {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin: 10px 0 0;
+  text-align: center;
+}
 .vent-schematic-footnote {
   font-size: 0.76rem;
   color: var(--text-muted);

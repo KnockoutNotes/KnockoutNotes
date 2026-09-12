@@ -195,38 +195,38 @@ export function createWorkstationScene(container, opts) {
   }
 
   // ---------------------------------------------------------------------
-  // Branding concealment — the supplied .glb's texture carries a faint,
-  // largely illegible manufacturer-style decal baked into the top-surface
-  // artwork. Per instructions we must not re-export/edit the source asset,
-  // so this adds small opaque, colour-matched patch meshes ON TOP of the
-  // known decal regions — a concealment overlay, not a modification of the
-  // GLB itself. Coordinates were obtained via the calibration mode
-  // (?calibrate=1, see pickSurface()/onClick below), which reports the
-  // raycast hit point in the same normalized world space that hotspot
-  // marker positions use (ventilator-data.js) — NOT the real .glb's own
-  // local space, which frameModel() below rescales/repositions on load.
-  // Patches are therefore added to modelGroup (untransformed), not to the
-  // loaded root (which carries frameModel's scale/offset).
+  // Branding concealment — the supplied .glb's texture carries a faint
+  // manufacturer-style decal baked into the artwork on the beveled edge
+  // between the top and front faces of the housing (confirmed by directly
+  // raycasting the visible decal in the model's own, untransformed local
+  // space — NOT a flat top-down guess). Per instructions we must not
+  // re-export/edit the source asset, so this adds small opaque, colour-
+  // matched patch meshes ON TOP of the known decal regions — a concealment
+  // overlay, not a modification of the GLB itself.
+  //
+  // Coordinates and surface normals below are in the loaded root's OWN
+  // local space (i.e. added as children of `root`, before frameModel's
+  // scale/recentre is applied) so they scale and move with the model
+  // automatically — no manual space conversion required.
   // ---------------------------------------------------------------------
   const BRAND_PATCHES = [
-    // Top-surface decal region, located via repeated ?calibrate=1 raycasts
-    // (cluster of hits between x -0.10..0.13, z -0.33..-0.39, all at the
-    // same y=1.58 top-surface height) — sized generously beyond that
-    // cluster so the concealment fully covers it with margin.
-    { position: { x: 0.01, y: 1.586, z: -0.36 }, size: { w: 0.46, d: 0.2 } }
+    // Main decal/text, on the ~45° bevel between top and front faces.
+    { position: { x: 0.158, y: 0.865, z: 0.033 }, size: { w: 0.13, d: 0.09 }, tiltX: -Math.PI / 4 },
+    // Smaller circular logo mark, slightly further forward-facing (~17° off vertical).
+    { position: { x: -0.064, y: 0.860, z: 0.038 }, size: { w: 0.07, d: 0.07 }, tiltX: -0.30 }
   ];
 
-  function addBrandConcealment() {
+  function addBrandConcealment(root) {
     if (!BRAND_PATCHES.length) return;
-    const patchMat = new THREE.MeshStandardMaterial({ color: 0xf1f5f9, roughness: 0.75, metalness: 0.05 });
+    const patchMat = new THREE.MeshStandardMaterial({ color: 0xf1f5f9, roughness: 0.75, metalness: 0.05, side: THREE.DoubleSide });
     BRAND_PATCHES.forEach(p => {
       const geo = new THREE.PlaneGeometry(p.size.w, p.size.d);
       const mesh = new THREE.Mesh(geo, patchMat);
       mesh.position.set(p.position.x, p.position.y, p.position.z);
-      mesh.rotation.set(p.rotation?.x ?? -Math.PI / 2, p.rotation?.y || 0, p.rotation?.z || 0);
+      mesh.rotation.x = p.tiltX;
       mesh.renderOrder = 1;
       mesh.raycast = () => {}; // decorative only — never intercepts hotspot/calibration picking
-      modelGroup.add(mesh);
+      root.add(mesh);
     });
   }
 
@@ -239,9 +239,9 @@ export function createWorkstationScene(container, opts) {
         modelUrl,
         gltf => {
           const root = gltf.scene || gltf.scenes[0];
+          addBrandConcealment(root);
           frameModel(root);
           modelGroup.add(root);
-          addBrandConcealment();
           resolve({ isPlaceholder: false, root });
         },
         undefined,
