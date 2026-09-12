@@ -79,21 +79,26 @@
   // BOTH axes — rotateY toward the centre plus a slight rotateX lean —
   // for a genuine shallow radial arc. x/rot get their left/right sign
   // applied in _layout(); every other field here is symmetric.
+  // Depth spread widened site-wide (active pops further forward, far cards
+  // recede further back, with blur added on mobile's near/far stops where
+  // there previously was none) so the sense of z-depth reads clearly on
+  // every breakpoint, not just desktop. topPadFor() reads stops[0].tz live,
+  // so the perspective top-clip compensation adapts automatically here.
   const STOPS_DESKTOP = [
-    { at: 0, x: 0,   y: 0,  tz: 150,  rx: 0, ry: 0,  scale: 1.00, op: 1.00, blur: 0 },
-    { at: 1, x: 185, y: 22, tz: 42,   rx: 4, ry: 24, scale: 0.80, op: 0.90, blur: 0.4 },
-    { at: 2, x: 310, y: 46, tz: -60,  rx: 7, ry: 36, scale: 0.68, op: 0.58, blur: 1.1 },
-    { at: 3, x: 390, y: 60, tz: -100, rx: 9, ry: 42, scale: 0.55, op: 0.00, blur: 3.0 }
+    { at: 0, x: 0,   y: 0,  tz: 175,  rx: 0, ry: 0,  scale: 1.00, op: 1.00, blur: 0 },
+    { at: 1, x: 185, y: 22, tz: 35,   rx: 4, ry: 24, scale: 0.80, op: 0.90, blur: 0.5 },
+    { at: 2, x: 310, y: 46, tz: -85,  rx: 7, ry: 36, scale: 0.68, op: 0.58, blur: 1.4 },
+    { at: 3, x: 390, y: 60, tz: -140, rx: 9, ry: 42, scale: 0.55, op: 0.00, blur: 3.6 }
   ];
   const STOPS_TABLET = [
-    { at: 0, x: 0,   y: 0,  tz: 120, rx: 0, ry: 0,  scale: 1.00, op: 1.00, blur: 0 },
-    { at: 1, x: 150, y: 18, tz: 32,  rx: 3, ry: 22, scale: 0.80, op: 0.72, blur: 0.5 },
-    { at: 2, x: 245, y: 36, tz: -50, rx: 6, ry: 32, scale: 0.66, op: 0.12, blur: 1.6 }
+    { at: 0, x: 0,   y: 0,  tz: 140, rx: 0, ry: 0,  scale: 1.00, op: 1.00, blur: 0 },
+    { at: 1, x: 150, y: 18, tz: 24,  rx: 3, ry: 22, scale: 0.80, op: 0.72, blur: 0.6 },
+    { at: 2, x: 245, y: 36, tz: -75, rx: 6, ry: 32, scale: 0.66, op: 0.12, blur: 1.9 }
   ];
   const STOPS_MOBILE = [
-    { at: 0, x: 0,   y: 0,  tz: 85,  rx: 0, ry: 0,  scale: 1.00, op: 1.00, blur: 0 },
-    { at: 1, x: 100, y: 12, tz: 18,  rx: 3, ry: 20, scale: 0.84, op: 0.5,  blur: 0 },
-    { at: 2, x: 155, y: 22, tz: -30, rx: 5, ry: 30, scale: 0.72, op: 0.0,  blur: 0 }
+    { at: 0, x: 0,   y: 0,  tz: 105, rx: 0, ry: 0,  scale: 1.00, op: 1.00, blur: 0 },
+    { at: 1, x: 100, y: 14, tz: -5,  rx: 4, ry: 22, scale: 0.78, op: 0.5,  blur: 0.4 },
+    { at: 2, x: 155, y: 26, tz: -65, rx: 6, ry: 32, scale: 0.62, op: 0.0,  blur: 1.0 }
   ];
 
   function stopsFor() {

@@ -38,9 +38,14 @@
   --border-glow: rgba(2, 132, 199, 0.35);
   --soft-accent: #e0f2fe;
   --nav-bg: rgba(248, 250, 252, 0.82);
-  --shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.06);
-  --shadow-md: 0 16px 36px rgba(15, 23, 42, 0.09);
-  --shadow-lg: 0 30px 70px rgba(15, 23, 42, 0.14);
+  /* Each token layers a tight near-shadow with a soft, wide far-shadow —
+     one flat blur reads as a thin outline; two stacked at different
+     spreads/opacities is what actually sells "this is elevated off the
+     page" instead of just "this has a shadow". Used everywhere via
+     var(--shadow-*), so this one change deepens elevation site-wide. */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05), 0 6px 16px rgba(15, 23, 42, 0.07);
+  --shadow-md: 0 2px 6px rgba(15, 23, 42, 0.06), 0 18px 40px rgba(15, 23, 42, 0.11);
+  --shadow-lg: 0 6px 14px rgba(15, 23, 42, 0.08), 0 40px 90px rgba(15, 23, 42, 0.16);
   --shadow-glow: 0 0 50px rgba(2, 132, 199, 0.18);
   /* Nested-panel tints (telemetry bars, answer/formula boxes, viewer bars).
      Light mode: a faint slate wash so panels read as clean off-white, not
@@ -90,9 +95,9 @@
   --border-glow: rgba(56, 189, 248, 0.45);
   --soft-accent: rgba(56, 189, 248, 0.12);
   --nav-bg: rgba(6, 10, 22, 0.82);
-  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.45);
-  --shadow-md: 0 18px 45px rgba(0, 0, 0, 0.65);
-  --shadow-lg: 0 35px 90px rgba(0, 0, 0, 0.85);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 18px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.45), 0 22px 50px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 6px 14px rgba(0, 0, 0, 0.5), 0 45px 100px rgba(0, 0, 0, 0.7);
   --shadow-glow: 0 0 60px rgba(56, 189, 248, 0.28);
   --panel-tint-1: rgba(0, 0, 0, 0.18);
   --panel-tint-2: rgba(0, 0, 0, 0.2);
@@ -126,9 +131,19 @@ body {
 }
 
 /* Applied by script.js while the mobile nav drawer or the search modal is
-   open, so the page behind the overlay can't be scrolled at the same time. */
-html.kn-scroll-locked,
+   open, so the page behind the overlay can't be scrolled at the same time.
+   Pins the body at its current scroll offset via position:fixed rather
+   than toggling overflow:hidden on <html> — the latter corrupts WebKit's
+   position:sticky containing-block for descendants (the site's own
+   sticky header), which is what made the mobile drawer work once and
+   then freeze/stop responding on the very next open. `top` is set
+   inline by script.js to the negative scroll offset before this class
+   is added. */
 body.kn-scroll-locked {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -1627,7 +1642,11 @@ a.kn-update-card:hover .kn-update-open {
    ========================================================================== */
 .fade {
   opacity: 0;
-  transform: translateY(24px);
+  /* A slight scale-in alongside the rise/fade reads as the element
+     drifting forward out of the page toward the viewer, not just sliding
+     up — a cheap depth cue (transform-only) layered onto the existing
+     reveal. */
+  transform: translateY(24px) scale(0.97);
   transition: opacity var(--transition-slow), transform var(--transition-slow);
   transition-delay: var(--fade-delay, 0s);
 }

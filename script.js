@@ -92,15 +92,32 @@
     // Reference-counted so the drawer and the search modal (which can, in
     // principle, both want the lock at once — e.g. ⌘K fired while the menu
     // is open) don't clobber each other's unlock. Without this, the page
-    // kept scrolling underneath an open mobile menu or search modal, which
-    // is exactly the kind of "unoptimized" mobile page behaviour that lets
-    // the overlay and the content behind it drift out of sync.
+    // kept scrolling underneath an open mobile menu or search modal.
+    //
+    // Deliberately NOT `overflow: hidden` on <html>/<body>: toggling
+    // overflow on the root breaks WebKit's position:sticky containing-
+    // block bookkeeping for descendants (the site's own sticky header),
+    // which is exactly what made the mobile drawer open fine once and then
+    // "stick"/stop responding on the very next open — the header's sticky
+    // context got corrupted by the first lock/unlock cycle. Locking the
+    // BODY to position:fixed at its current scroll offset avoids touching
+    // <html> or its overflow entirely, which is the standard robust
+    // technique for this on mobile Safari/WebKit.
     const scrollLockReasons = new Set();
+    let scrollLockY = 0;
     function setScrollLock(id, locked) {
+      const wasActive = scrollLockReasons.size > 0;
       if (locked) scrollLockReasons.add(id); else scrollLockReasons.delete(id);
       const active = scrollLockReasons.size > 0;
-      document.documentElement.classList.toggle("kn-scroll-locked", active);
-      document.body.classList.toggle("kn-scroll-locked", active);
+      if (active && !wasActive) {
+        scrollLockY = window.scrollY || window.pageYOffset || 0;
+        body.style.top = (-scrollLockY) + "px";
+        body.classList.add("kn-scroll-locked");
+      } else if (!active && wasActive) {
+        body.classList.remove("kn-scroll-locked");
+        body.style.top = "";
+        window.scrollTo(0, scrollLockY);
+      }
     }
 
     // ------------------------------------------------------------------------
@@ -111,10 +128,19 @@
         const header = btn.closest(".site-hud, .site-nav, header") || document;
         const mobileMenu = header.querySelector(".mobile-menu") || document.getElementById("mobileMenu");
         if (mobileMenu) {
-          const open = mobileMenu.classList.toggle("open");
-          btn.setAttribute("aria-expanded", open ? "true" : "false");
-          btn.textContent = open ? "✕" : "⋮";
-          setScrollLock("menu", open);
+          const willOpen = !mobileMenu.classList.contains("open");
+          // Snapshot/lock scroll BEFORE the menu's own class toggle grows
+          // .site-hud's height (it's a flow sibling of the header capsule,
+          // not an overlay) — capturing scrollY after that point picks up
+          // whatever the browser's scroll-anchoring already shifted it by
+          // to compensate for ~500px of new content appearing above the
+          // fold, which was the actual cause of the drawer "sticking":
+          // each open/close cycle restored to a wrong, drifting offset.
+          if (willOpen) setScrollLock("menu", true);
+          mobileMenu.classList.toggle("open", willOpen);
+          btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+          btn.textContent = willOpen ? "✕" : "⋮";
+          if (!willOpen) setScrollLock("menu", false);
         }
       });
     });

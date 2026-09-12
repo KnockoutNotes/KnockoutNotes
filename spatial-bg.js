@@ -33,7 +33,7 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.35,
-      density: 84,
+      density: 294,
       glowPoints: 4
     },
     pearls: {
@@ -44,7 +44,7 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.3,
-      density: 76,
+      density: 266,
       glowPoints: 3
     },
     drugs: {
@@ -55,7 +55,7 @@
       pleth: false,
       circuitRings: false,
       particleSpeed: 0.25,
-      density: 80,
+      density: 280,
       glowPoints: 3
     },
     criticalCare: {
@@ -66,7 +66,7 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.45,
-      density: 88,
+      density: 308,
       glowPoints: 4
     },
     viva: {
@@ -77,7 +77,7 @@
       pleth: false,
       circuitRings: false,
       particleSpeed: 0.3,
-      density: 72,
+      density: 252,
       glowPoints: 3
     },
     resources: {
@@ -88,7 +88,7 @@
       pleth: false,
       circuitRings: true,
       particleSpeed: 0.2,
-      density: 60,
+      density: 210,
       glowPoints: 2
     }
   };
@@ -118,6 +118,13 @@
   }, { passive: true });
 
   window.addEventListener("pointerdown", (e) => {
+    // Snap the repulsion point straight to the tap/click location instead
+    // of only nudging targetX/Y — mouse.x/y otherwise eases toward it at
+    // 4%/frame (see the tick() lerp below), which reads fine for a moving
+    // cursor but meant a plain tap (no drag, so no pointermove) barely
+    // registered with nearby dots even though the ripple still fired.
+    mouse.x = mouse.targetX = e.clientX;
+    mouse.y = mouse.targetY = e.clientY;
     if (ripples.length < 4) {
       ripples.push({
         x: e.clientX,
@@ -136,8 +143,14 @@
   let glowOrbs = [];
   function initParticles() {
     particles = [];
+    // The width-based ceiling existed to keep dot spacing sane on very
+    // narrow canvases, but at its old /14 divisor it silently clamped
+    // desktop counts to ~100-110 regardless of density — capping out well
+    // below the density values above once those were raised ~3.5x. /4
+    // gives those values real headroom on typical viewports while still
+    // tapering off on genuinely narrow ones.
     const densityCap = isSmallScreen() ? Math.ceil(env.density * 0.6) : env.density;
-    const count = Math.min(densityCap, Math.floor(width / 14));
+    const count = Math.min(densityCap, Math.floor(width / 4));
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * width,
