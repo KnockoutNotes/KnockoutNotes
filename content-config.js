@@ -15,15 +15,26 @@ window.KNOCKOUTNOTES_CONTENT = {
     },
     criticalCare: {
       categories: [
-        {id:'icu-scoring', title:'ICU Scoring Pearls', kicker:'ICU SCORING', description:'SOFA, NEWS2, MEWS, qSOFA and scoring-system recommendations.', files:[
+        {id:'icu-scoring', title:'ICU Scoring Pearl', kicker:'ICU SCORING', description:'SOFA, NEWS2, MEWS, qSOFA and scoring-system recommendations.', files:[
           {url:'assets/critical-care/icu_scoring_1_of_5.jpg', title:'ICU Scoring — 1 of 5'},
           {url:'assets/critical-care/icu_scoring_2_of_5.jpg', title:'ICU Scoring — 2 of 5'},
           {url:'assets/critical-care/icu_scoring_3_of_5.jpg', title:'ICU Scoring — 3 of 5'},
           {url:'assets/critical-care/icu_scoring_4_of_5.jpg', title:'ICU Scoring — 4 of 5'},
           {url:'assets/critical-care/icu_scoring_5_of_5.jpg', title:'ICU Scoring — 5 of 5'}
         ]},
-        {id:'shock', title:'Shock & Haemodynamics', kicker:'SHOCK', description:'Add shock and haemodynamic pearls here.', folder:'assets/critical-care/shock', prefix:'shock', max:30},
-        {id:'ventilation', title:'Mechanical Ventilation', kicker:'VENTILATION', description:'Add ventilation and ARDS pearls here.', folder:'assets/critical-care/ventilation', prefix:'ventilation', max:30}
+        {id:'ventilation', title:'Mechanical Ventilation', kicker:'VENTILATION', description:'A guide to modes, mechanics and mindful ventilation — from conventional volume/pressure control through adaptive, patient-centred and specialist strategies.', folder:'assets/critical-care/ventilation', prefix:'ventilation', max:30, files:[
+          {url:'assets/critical-care/ventilation/ventilation_01_modes-overview.png', title:'Modes of Mechanical Ventilation — Overview'},
+          {url:'assets/critical-care/ventilation/ventilation_02_vcv.png', title:'Volume Control Ventilation (VCV)'},
+          {url:'assets/critical-care/ventilation/ventilation_03_pcv.png', title:'Pressure Control Ventilation (PCV)'},
+          {url:'assets/critical-care/ventilation/ventilation_04_simv.png', title:'Synchronized Intermittent Mandatory Ventilation (SIMV)'},
+          {url:'assets/critical-care/ventilation/ventilation_05_psv.png', title:'Pressure Support Ventilation (PSV)'},
+          {url:'assets/critical-care/ventilation/ventilation_06_asv.png', title:'Adaptive Support Ventilation (ASV)'},
+          {url:'assets/critical-care/ventilation/ventilation_07_prvc.png', title:'Pressure Regulated Volume Control (PRVC)'},
+          {url:'assets/critical-care/ventilation/ventilation_08_cpap-niv.png', title:'CPAP / Noninvasive Ventilation (NIV)'},
+          {url:'assets/critical-care/ventilation/ventilation_09_aprv.png', title:'Airway Pressure Release Ventilation (APRV)'},
+          {url:'assets/critical-care/ventilation/ventilation_10_hfov.png', title:'High-Frequency Oscillatory Ventilation (HFOV)'},
+          {url:'assets/critical-care/ventilation/ventilation_11_pav-vaps.png', title:'PAV+ & VAPS — Advanced Ventilation Modes'}
+        ]}
       ]
     },
     pearls: {
@@ -62,6 +73,19 @@ window.KNOCKOUTNOTES_CONTENT = {
           {url:'assets/notes/pft/pft_04_restrictive-mixed.png', title:'PFT Interpretation 3 — Restrictive & Mixed Patterns'},
           {url:'assets/notes/pft/pft_05_lung-volumes-dlco.png', title:'PFT Interpretation 4 — Lung Volumes & DLCO'},
           {url:'assets/notes/pft/pft_06_putting-it-together.png', title:'PFT Interpretation 5 — Putting It All Together'}
+        ]},
+        {id:'ventilator-modes', title:'Ventilator Modes', kicker:'VENTILATION', description:'A guide to modes, mechanics and mindful ventilation — from conventional volume/pressure control through adaptive, patient-centred and specialist strategies.', folder:'assets/critical-care/ventilation', prefix:'ventilation', max:30, files:[
+          {url:'assets/critical-care/ventilation/ventilation_01_modes-overview.png', title:'Modes of Mechanical Ventilation — Overview'},
+          {url:'assets/critical-care/ventilation/ventilation_02_vcv.png', title:'Volume Control Ventilation (VCV)'},
+          {url:'assets/critical-care/ventilation/ventilation_03_pcv.png', title:'Pressure Control Ventilation (PCV)'},
+          {url:'assets/critical-care/ventilation/ventilation_04_simv.png', title:'Synchronized Intermittent Mandatory Ventilation (SIMV)'},
+          {url:'assets/critical-care/ventilation/ventilation_05_psv.png', title:'Pressure Support Ventilation (PSV)'},
+          {url:'assets/critical-care/ventilation/ventilation_06_asv.png', title:'Adaptive Support Ventilation (ASV)'},
+          {url:'assets/critical-care/ventilation/ventilation_07_prvc.png', title:'Pressure Regulated Volume Control (PRVC)'},
+          {url:'assets/critical-care/ventilation/ventilation_08_cpap-niv.png', title:'CPAP / Noninvasive Ventilation (NIV)'},
+          {url:'assets/critical-care/ventilation/ventilation_09_aprv.png', title:'Airway Pressure Release Ventilation (APRV)'},
+          {url:'assets/critical-care/ventilation/ventilation_10_hfov.png', title:'High-Frequency Oscillatory Ventilation (HFOV)'},
+          {url:'assets/critical-care/ventilation/ventilation_11_pav-vaps.png', title:'PAV+ & VAPS — Advanced Ventilation Modes'}
         ]}
       ]
     }

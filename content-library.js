@@ -154,6 +154,18 @@
       <path d="M23.5 25c-7.4 2-11.5 9.4-11.5 18.4 0 7 3.9 10.8 7.8 10.8 5 0 8.2-5 9.2-12 1-6.2 1-12.4-1-17.6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" fill="currentColor" fill-opacity="0.12"/>
       <path d="M40.5 25c7.4 2 11.5 9.4 11.5 18.4 0 7-3.9 10.8-7.8 10.8-5 0-8.2-5-9.2-12-1-6.2-1-12.4 1-17.6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" fill="currentColor" fill-opacity="0.12"/>
       <path d="M13 47c9 5 14-4 10-11" stroke="currentColor" stroke-width="1.3" opacity="0.55" stroke-linecap="round"/>
+    </svg>`,
+    // Mechanical ventilation: a bedside ventilator console — waveform
+    // screen, status light and dials — with its circuit tubing curving
+    // off toward the patient side.
+    ventilator: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="9" y="13" width="31" height="25" rx="3" stroke="currentColor" stroke-width="1.9"/>
+      <circle cx="35.5" cy="18.5" r="1.7" fill="currentColor"/>
+      <path d="M14 25h4.5l2.4-6.4 3 12.8 2.4-8.2 2 4.2h6.2" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <rect x="12.5" y="42" width="9" height="4.4" rx="1.6" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="24.5" y="42" width="9" height="4.4" rx="1.6" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M40 29c6.6 0 9.6 3.2 9.6 8.4S52.6 45.8 50 46" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/>
+      <path d="M40 33.4c4.2 0 6.2 2 6.2 5.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
     </svg>`
   };
   // Category id -> dedicated pictogram. Anything not listed falls back to a
@@ -167,8 +179,8 @@
     airway: 'airway-tube',
     pft: 'lungs',
     'icu-scoring': 'monitor',
-    shock: 'monitor',
-    ventilation: 'monitor',
+    ventilation: 'ventilator',
+    'ventilator-modes': 'ventilator',
     'critical-care': 'monitor'
   };
   const IMAGE_ICON_CYCLE = ['vial', 'syringe', 'ampoule'];
