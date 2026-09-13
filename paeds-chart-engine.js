@@ -104,6 +104,60 @@
       maxSingleDose: 5,
       notes: "IV dose: 0.05–0.1 mg/kg. Oral premedication: 0.5 mg/kg (max 15–20 mg)."
     },
+    {
+      id: "dexmedetomidine_iv",
+      category: "Sedation",
+      name: "Dexmedetomidine (IV)",
+      doseFormula: (wt) => [wt * 0.5, wt * 1.0],
+      doseDisplay: (wt) => `${round(wt * 0.5, 2)}–${round(wt * 1.0, 2)} mcg`,
+      doseBasis: "0.5–1 mcg/kg IV loading (over 10 min)",
+      unit: "mcg",
+      route: "IV Infusion",
+      defaultConcentration: 4, // 4 mcg/mL (200 mcg in 50 mL saline)
+      concentrationLabel: "4 mcg/mL (200 mcg / 50 mL)",
+      availableConcentrations: [
+        { label: "4 mcg/mL (200 mcg / 50 mL)", value: 4, unit: "mcg/mL" },
+        { label: "2 mcg/mL (100 mcg / 50 mL)", value: 2, unit: "mcg/mL" },
+        { label: "100 mcg/mL (neat ampoule)", value: 100, unit: "mcg/mL" }
+      ],
+      maxSingleDose: 50,
+      notes: "Alpha-2 agonist. Infuse loading dose over 10 min to avoid transient hypertension and reflex bradycardia. Maintenance: 0.2–0.7 mcg/kg/hr."
+    },
+    {
+      id: "dexmedetomidine_in",
+      category: "Sedation",
+      name: "Dexmedetomidine (Intranasal)",
+      doseFormula: (wt) => [wt * 2, wt * 3],
+      doseDisplay: (wt) => `${round(wt * 2, 1)}–${round(wt * 3, 1)} mcg`,
+      doseBasis: "2–3 mcg/kg IN (via MAD)",
+      unit: "mcg",
+      route: "Intranasal (IN)",
+      defaultConcentration: 100, // 100 mcg/mL neat ampoule (200 mcg/2 mL)
+      concentrationLabel: "100 mcg/mL (neat 200 mcg/2 mL)",
+      availableConcentrations: [
+        { label: "100 mcg/mL (neat ampoule)", value: 100, unit: "mcg/mL" }
+      ],
+      maxSingleDose: 100,
+      notes: "Administer neat 100 mcg/mL solution via mucosal atomisation device (MAD). Divide between both nares (max 0.5 mL/nostril). Onset 25–45 min."
+    },
+    {
+      id: "ketamine_oral",
+      category: "Sedation",
+      name: "Ketamine (Oral Premedication)",
+      doseFormula: (wt) => [wt * 5, wt * 8],
+      doseDisplay: (wt) => `${round(wt * 5, 1)}–${round(wt * 8, 1)} mg`,
+      doseBasis: "5–8 mg/kg Oral (mixed with syrup/juice)",
+      unit: "mg",
+      route: "Oral",
+      defaultConcentration: 50, // 50 mg/mL
+      concentrationLabel: "50 mg/mL (neat liquid)",
+      availableConcentrations: [
+        { label: "50 mg/mL (neat)", value: 50, unit: "mg/mL" },
+        { label: "10 mg/mL (diluted)", value: 10, unit: "mg/mL" }
+      ],
+      maxSingleDose: 250,
+      notes: "Oral sedative for separation anxiety. Mix with 2–5 mL sweet syrup or juice to mask bitterness. Onset 15–20 min."
+    },
 
     // Induction
     {
@@ -231,6 +285,62 @@
       maxSingleDose: 50,
       notes: "Avoid in dehydration, active bleeding, renal impairment or infants < 6 months."
     },
+    {
+      id: "remifentanil",
+      category: "Analgesia",
+      name: "Remifentanil",
+      doseFormula: (wt) => [wt * 0.5, wt * 1.0],
+      doseDisplay: (wt) => `${round(wt * 0.5, 2)}–${round(wt * 1.0, 2)} mcg`,
+      doseBasis: "0.5–1 mcg/kg IV bolus (slow 30–60s)",
+      unit: "mcg",
+      route: "IV / Infusion",
+      defaultConcentration: 20, // 20 mcg/mL (1 mg in 50 mL saline)
+      concentrationLabel: "20 mcg/mL (1 mg in 50 mL)",
+      availableConcentrations: [
+        { label: "20 mcg/mL (1 mg in 50 mL)", value: 20, unit: "mcg/mL" },
+        { label: "50 mcg/mL (2 mg in 40 mL)", value: 50, unit: "mcg/mL" }
+      ],
+      maxSingleDose: 100,
+      notes: "Non-specific blood and tissue esterase metabolism. Rapid offset in 3–5 min. Bolus slowly over 30–60s to prevent chest rigidity. Infusion: 0.1–0.5 mcg/kg/min."
+    },
+    {
+      id: "ibuprofen",
+      category: "Analgesia",
+      name: "Ibuprofen",
+      doseFormula: (wt) => wt * 10,
+      doseDisplay: (wt) => `${round(wt * 10, 1)} mg`,
+      doseBasis: "10 mg/kg Oral / IV (max 400 mg)",
+      unit: "mg",
+      route: "Oral / IV",
+      defaultConcentration: 20, // 20 mg/mL (100 mg / 5 mL oral suspension)
+      concentrationLabel: "20 mg/mL (100 mg / 5 mL)",
+      availableConcentrations: [
+        { label: "20 mg/mL (100 mg / 5 mL oral susp)", value: 20, unit: "mg/mL" },
+        { label: "10 mg/mL (IV infusion bottle)", value: 10, unit: "mg/mL" },
+        { label: "40 mg/mL (200 mg / 5 mL oral susp)", value: 40, unit: "mg/mL" }
+      ],
+      maxSingleDose: 400,
+      notes: "NSAID for mild-to-moderate inflammatory pain. Max 40 mg/kg/day (or 1200 mg/day). Avoid in infants < 3 months, dehydration, or active bleeding."
+    },
+    {
+      id: "ketorolac",
+      category: "Analgesia",
+      name: "Ketorolac (Toradol)",
+      doseFormula: (wt) => wt * 0.5,
+      doseDisplay: (wt) => `${round(wt * 0.5, 2)} mg`,
+      doseBasis: "0.5 mg/kg IV / IM (max 15 mg)",
+      unit: "mg",
+      route: "IV / IM",
+      defaultConcentration: 15, // 15 mg/mL (30 mg in 2 mL ampoule)
+      concentrationLabel: "15 mg/mL (30 mg / 2 mL)",
+      availableConcentrations: [
+        { label: "15 mg/mL (30 mg in 2 mL)", value: 15, unit: "mg/mL" },
+        { label: "5 mg/mL (diluted 1:3)", value: 5, unit: "mg/mL" },
+        { label: "30 mg/mL (neat ampoule)", value: 30, unit: "mg/mL" }
+      ],
+      maxSingleDose: 15,
+      notes: "Potent parenteral NSAID for acute post-op pain in children ≥ 2 yrs. Max single dose 15 mg (30 mg if >50 kg). Max duration ≤ 48–72 hours."
+    },
 
     // Paralysis
     {
@@ -302,6 +412,25 @@
       ],
       maxSingleDose: 100,
       notes: "Onset 60s at 1.2 mg/kg. Reversible with Sugammadex (2–16 mg/kg)."
+    },
+    {
+      id: "cisatracurium",
+      category: "Paralysis",
+      name: "Cisatracurium",
+      doseFormula: (wt) => wt * 0.15,
+      doseDisplay: (wt) => `${round(wt * 0.15, 2)} mg`,
+      doseBasis: "0.15 mg/kg IV (intubation)",
+      unit: "mg",
+      route: "IV",
+      defaultConcentration: 2, // 2 mg/mL (neat ampoule)
+      concentrationLabel: "2 mg/mL (neat ampoule)",
+      availableConcentrations: [
+        { label: "2 mg/mL (neat ampoule)", value: 2, unit: "mg/mL" },
+        { label: "1 mg/mL (diluted 1:2)", value: 1, unit: "mg/mL" },
+        { label: "10 mg/mL (concentrated vial)", value: 10, unit: "mg/mL" }
+      ],
+      maxSingleDose: 10,
+      notes: "Organ-independent Hofmann elimination. Excellent in pediatric hepatic/renal disease. Negligible histamine release. Maintenance: 0.03 mg/kg."
     },
 
     // Steroids
@@ -379,6 +508,134 @@
       ],
       maxSingleDose: 2.5,
       notes: "MUST administer with Glycopyrrolate (10 mcg/kg) or Atropine (20 mcg/kg) to prevent bradycardia."
+    },
+    {
+      id: "sugammadex",
+      category: "Reversal",
+      name: "Sugammadex",
+      doseFormula: (wt) => [wt * 2, wt * 4],
+      doseDisplay: (wt) => `${round(wt * 2, 1)}–${round(wt * 4, 1)} mg (Rescue: ${round(wt * 16, 1)} mg)`,
+      doseBasis: "2–4 mg/kg (routine) | 16 mg/kg (immediate rescue)",
+      unit: "mg",
+      route: "IV",
+      defaultConcentration: 100, // 100 mg/mL (Bridion vial: 200 mg/2 mL or 500 mg/5 mL)
+      concentrationLabel: "100 mg/mL (neat vial)",
+      availableConcentrations: [
+        { label: "100 mg/mL (neat vial)", value: 100, unit: "mg/mL" },
+        { label: "20 mg/mL (diluted 1:5)", value: 20, unit: "mg/mL" }
+      ],
+      maxSingleDose: 1500,
+      notes: "Selective relaxant binding agent for rocuronium and vecuronium. Routine: 2 mg/kg (moderate block TOF ≥ 2), 4 mg/kg (deep block PTC 1–2). Rescue: 16 mg/kg."
+    },
+
+    // Others
+    {
+      id: "tranexamic_acid",
+      category: "Others",
+      name: "Tranexamic Acid (TXA)",
+      doseFormula: (wt) => [wt * 10, wt * 20],
+      doseDisplay: (wt) => `${round(wt * 10, 1)}–${round(wt * 20, 1)} mg`,
+      doseBasis: "10–20 mg/kg IV load (max 1000 mg)",
+      unit: "mg",
+      route: "IV Infusion",
+      defaultConcentration: 100, // 100 mg/mL (500 mg / 5 mL ampoule)
+      concentrationLabel: "100 mg/mL (neat 500 mg / 5 mL)",
+      availableConcentrations: [
+        { label: "100 mg/mL (neat)", value: 100, unit: "mg/mL" },
+        { label: "20 mg/mL (diluted 1:5)", value: 20, unit: "mg/mL" }
+      ],
+      maxSingleDose: 1000,
+      notes: "Antifibrinolytic for major surgical bleeding / trauma. Infuse slowly over 15–20 minutes to prevent transient hypotension. Maintenance: 5–10 mg/kg/hr."
+    },
+    {
+      id: "magnesium_sulphate",
+      category: "Others",
+      name: "Magnesium Sulphate",
+      doseFormula: (wt) => [wt * 25, wt * 50],
+      doseDisplay: (wt) => `${round(wt * 25, 1)}–${round(wt * 50, 1)} mg`,
+      doseBasis: "25–50 mg/kg IV (max 2000 mg)",
+      unit: "mg",
+      route: "IV Infusion",
+      defaultConcentration: 100, // 100 mg/mL (diluted 1:5 from 50% ampoule)
+      concentrationLabel: "100 mg/mL (diluted 10%)",
+      availableConcentrations: [
+        { label: "100 mg/mL (diluted 10%)", value: 100, unit: "mg/mL" },
+        { label: "50 mg/mL (diluted 5%)", value: 50, unit: "mg/mL" },
+        { label: "500 mg/mL (50% neat ampoule)", value: 500, unit: "mg/mL" }
+      ],
+      maxSingleDose: 2000,
+      notes: "Indicated for severe refractory bronchospasm / status asthmaticus, torsades de pointes, and hypomagnesemia. Dilute to ≤100 mg/mL and infuse over 20–30 min."
+    },
+    {
+      id: "sodium_bicarbonate",
+      category: "Others",
+      name: "Sodium Bicarbonate",
+      doseFormula: (wt) => wt * 1.0,
+      doseDisplay: (wt) => `${round(wt * 1.0, 1)} mEq (mmol)`,
+      doseBasis: "1 mEq/kg (1 mmol/kg) IV slow push",
+      unit: "mEq",
+      route: "IV",
+      defaultConcentration: 1, // 1 mEq/mL (8.4% solution = 1 mmol/mL)
+      concentrationLabel: "8.4% (1 mEq/mL)",
+      availableConcentrations: [
+        { label: "8.4% (1 mEq/mL - children >2y)", value: 1, unit: "mEq/mL" },
+        { label: "4.2% (0.5 mEq/mL - neonates/infants)", value: 0.5, unit: "mEq/mL" }
+      ],
+      maxSingleDose: 50,
+      notes: "Indicated in documented severe metabolic acidosis, hyperkalemia, or TCA overdose. For neonates and infants < 2 yrs, use 4.2% (0.5 mEq/mL) to avoid hyperosmolar IVH."
+    },
+    {
+      id: "calcium_gluconate",
+      category: "Others",
+      name: "Calcium Gluconate 10%",
+      doseFormula: (wt) => [wt * 50, wt * 100],
+      doseDisplay: (wt) => `${round(wt * 50, 1)}–${round(wt * 100, 1)} mg (${round(wt * 0.5, 2)}–${round(wt * 1.0, 2)} mL)`,
+      doseBasis: "50–100 mg/kg (0.5–1 mL/kg of 10%)",
+      unit: "mg",
+      route: "IV Infusion",
+      defaultConcentration: 100, // 10% = 100 mg/mL
+      concentrationLabel: "10% (100 mg/mL)",
+      availableConcentrations: [
+        { label: "10% (100 mg/mL)", value: 100, unit: "mg/mL" }
+      ],
+      maxSingleDose: 2000,
+      notes: "Preferred over CaCl2 for peripheral IV access due to lower extravasation necrosis risk. Infuse slowly over 10–20 min with continuous ECG monitoring."
+    },
+    {
+      id: "naloxone",
+      category: "Others",
+      name: "Naloxone",
+      doseFormula: (wt) => [wt * 2, wt * 10],
+      doseDisplay: (wt) => `${round(wt * 2, 1)}–${round(wt * 10, 1)} mcg (Arrest: ${round(wt * 100, 0)} mcg)`,
+      doseBasis: "2–10 mcg/kg (reversal) | 100 mcg/kg (arrest)",
+      unit: "mcg",
+      route: "IV / IM / SC / IN",
+      defaultConcentration: 40, // 40 mcg/mL (0.4 mg/mL diluted 1:10)
+      concentrationLabel: "40 mcg/mL (diluted 1:10)",
+      availableConcentrations: [
+        { label: "40 mcg/mL (diluted 1:10)", value: 40, unit: "mcg/mL" },
+        { label: "400 mcg/mL (0.4 mg/mL neat)", value: 400, unit: "mcg/mL" }
+      ],
+      maxSingleDose: 2000,
+      notes: "Titrate 2–10 mcg/kg slowly every 2–3 min to restore respiratory drive without triggering acute pain/sympathetic surge. In total opioid arrest: 100 mcg/kg (max 2 mg)."
+    },
+    {
+      id: "amiodarone",
+      category: "Others",
+      name: "Amiodarone",
+      doseFormula: (wt) => wt * 5.0,
+      doseDisplay: (wt) => `${round(wt * 5.0, 1)} mg`,
+      doseBasis: "5 mg/kg IV / IO (max 300 mg)",
+      unit: "mg",
+      route: "IV / IO",
+      defaultConcentration: 50, // 50 mg/mL (150 mg / 3 mL neat ampoule)
+      concentrationLabel: "50 mg/mL (neat 150 mg / 3 mL)",
+      availableConcentrations: [
+        { label: "50 mg/mL (neat ampoule)", value: 50, unit: "mg/mL" },
+        { label: "5 mg/mL (diluted in D5W)", value: 5, unit: "mg/mL" }
+      ],
+      maxSingleDose: 300,
+      notes: "PALS refractory VF/pVT arrest: 5 mg/kg rapid IV/IO push. Stable tachyarrhythmia: infuse 5 mg/kg over 20–60 min in D5W (monitor for hypotension and bradycardia)."
     }
   ];
 
@@ -540,11 +797,131 @@
     });
   }
 
+  // WHO Child Growth Standards (0–5 yrs) and WHO Growth Reference (5–19 yrs)
+  const WHO_GROWTH_DATA = [
+    { age: 0, wt: 3.3, ht: 50 },
+    { age: 0.25, wt: 6.0, ht: 60 },
+    { age: 0.5, wt: 7.5, ht: 67 },
+    { age: 0.75, wt: 8.6, ht: 72 },
+    { age: 1, wt: 9.6, ht: 75 },
+    { age: 1.5, wt: 10.9, ht: 82 },
+    { age: 2, wt: 12.2, ht: 87 },
+    { age: 3, wt: 14.3, ht: 96 },
+    { age: 4, wt: 16.3, ht: 103 },
+    { age: 5, wt: 18.3, ht: 110 },
+    { age: 6, wt: 20.5, ht: 116 },
+    { age: 7, wt: 23.0, ht: 122 },
+    { age: 8, wt: 25.5, ht: 128 },
+    { age: 9, wt: 28.5, ht: 133 },
+    { age: 10, wt: 32.0, ht: 138 },
+    { age: 11, wt: 36.0, ht: 144 },
+    { age: 12, wt: 41.0, ht: 150 },
+    { age: 13, wt: 46.0, ht: 156 },
+    { age: 14, wt: 51.0, ht: 162 },
+    { age: 15, wt: 56.0, ht: 167 },
+    { age: 16, wt: 60.0, ht: 170 },
+    { age: 17, wt: 63.0, ht: 172 },
+    { age: 18, wt: 65.0, ht: 174 }
+  ];
+
+  function interpolateGrowth(ageYears) {
+    if (ageYears <= 0) return { wt: WHO_GROWTH_DATA[0].wt, ht: WHO_GROWTH_DATA[0].ht };
+    const last = WHO_GROWTH_DATA[WHO_GROWTH_DATA.length - 1];
+    if (ageYears >= last.age) return { wt: last.wt, ht: last.ht };
+
+    for (let i = 0; i < WHO_GROWTH_DATA.length - 1; i++) {
+      const p1 = WHO_GROWTH_DATA[i];
+      const p2 = WHO_GROWTH_DATA[i + 1];
+      if (ageYears >= p1.age && ageYears <= p2.age) {
+        const span = p2.age - p1.age;
+        const ratio = (ageYears - p1.age) / span;
+        return {
+          wt: p1.wt + (p2.wt - p1.wt) * ratio,
+          ht: p1.ht + (p2.ht - p1.ht) * ratio
+        };
+      }
+    }
+    return { wt: 20, ht: 115 };
+  }
+
+  function computeGrowth(ageYears, weightKg) {
+    if (ageYears === null || ageYears === undefined || isNaN(ageYears) || ageYears < 0) {
+      return {
+        wfaDisplay: "Enter age",
+        wfaSub: "WHO Child Standards",
+        wfhDisplay: "Enter age",
+        wfhSub: "WHO P50 Stature",
+        bmiDisplay: "Enter age & wt",
+        bmiSub: "WHO Growth Reference"
+      };
+    }
+
+    const med = interpolateGrowth(ageYears);
+    const medianWt = med.wt;
+    const medianHt = med.ht;
+
+    let wfaDisplay = `P50: ${round(medianWt, 1)} kg`;
+    let wfaSub = "WHO P50 Benchmark";
+    let bmiDisplay = "—";
+    let bmiSub = "WHO Growth Reference";
+
+    if (weightKg !== null && weightKg !== undefined && weightKg > 0 && !isNaN(weightKg)) {
+      const pctMed = Math.round((weightKg / medianWt) * 100);
+      wfaDisplay = `P50: ${round(medianWt, 1)} kg (${pctMed}%)`;
+
+      let wfaCategory = "Normal range";
+      if (pctMed < 75) wfaCategory = "<P3 (Underweight)";
+      else if (pctMed < 85) wfaCategory = "P3–P15 (Mild low)";
+      else if (pctMed > 130) wfaCategory = ">P97 (High for age)";
+      else if (pctMed > 115) wfaCategory = "P85–P97 (Above avg)";
+      wfaSub = `${wfaCategory} (WHO)`;
+
+      // BMI computation using height-for-age
+      const heightM = medianHt / 100;
+      const bmi = weightKg / (heightM * heightM);
+
+      // Age-adjusted BMI percentiles (WHO Reference)
+      let bmiCategory = "Healthy weight";
+      let p85 = 17.5;
+      let p95 = 19.5;
+      let p5 = 13.8;
+
+      if (ageYears < 2) { p5 = 14.5; p85 = 18.5; p95 = 20.0; }
+      else if (ageYears <= 5) { p5 = 13.8; p85 = 17.2; p95 = 18.5; }
+      else if (ageYears <= 10) { p5 = 13.5; p85 = 18.5; p95 = 21.0; }
+      else if (ageYears <= 14) { p5 = 14.8; p85 = 21.5; p95 = 25.0; }
+      else { p5 = 17.0; p85 = 24.5; p95 = 28.0; }
+
+      if (bmi < p5) bmiCategory = "<P5 (Underweight)";
+      else if (bmi > p95) bmiCategory = ">P95 (Obese)";
+      else if (bmi > p85) bmiCategory = "P85–P95 (Overweight)";
+      else bmiCategory = "Healthy weight (P5–P85)";
+
+      bmiDisplay = `${round(bmi, 1)} kg/m²`;
+      bmiSub = bmiCategory;
+    }
+
+    const wfhDisplay = `Est. Ht: ${round(medianHt, 0)} cm`;
+    const wfhSub = `WHO P50 Stature for ${ageYears}y`;
+
+    return {
+      medianWeightKg: medianWt,
+      medianHeightCm: medianHt,
+      wfaDisplay,
+      wfaSub,
+      wfhDisplay,
+      wfhSub,
+      bmiDisplay,
+      bmiSub
+    };
+  }
+
   // Export as reusable global module
   window.KnockoutPaedsChart = {
     definitions: DRUG_DEFINITIONS,
     computeAirway,
     computeDrugChart,
+    computeGrowth,
     round
   };
 })();

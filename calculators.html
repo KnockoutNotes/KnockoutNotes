@@ -124,7 +124,7 @@
               <div class="calc-hero-badge">⭐ FEATURED CLINICAL ENGINE</div>
               <h2 style="font-size:1.85rem; margin:0.4rem 0 0.2rem 0; color:#fff;">Paediatric Drug Chart & Airway Sizer</h2>
               <p style="margin:0; font-size:0.92rem; color:#94a3b8;">
-                Imported directly from clinical reference spreadsheet (<code>PedsDrugChart.xlsx</code>). Computes 16 emergency, induction, analgesic, and paralytic drugs with equipment sizing.
+                Comprehensive evidence-based pediatric dosing engine with equipment sizing and WHO child growth standards. Computes 28 emergency, sedative, induction, analgesic, paralytic, steroid, reversal, and resuscitation drugs.
               </p>
             </div>
             <div>
@@ -202,6 +202,22 @@
               <span class="label">i-gel Supraglottic Size</span>
               <span class="val" id="paedsIgel3d">Size 2 (Grey / 12–25 kg)</span>
               <span class="sub">Manufacturer weight bracket</span>
+            </div>
+            <!-- WHO Child Growth Standards (Compact) -->
+            <div class="airway-box growth-box">
+              <span class="label">Weight-for-Age (WHO)</span>
+              <span class="val" id="paedsWfa3d">P50: 23 kg</span>
+              <span class="sub" id="paedsWfaSub3d">WHO Child Growth</span>
+            </div>
+            <div class="airway-box growth-box">
+              <span class="label">Weight-for-Height (WHO)</span>
+              <span class="val" id="paedsWfh3d">Est. Ht: 122 cm</span>
+              <span class="sub" id="paedsWfhSub3d">WHO P50 Stature</span>
+            </div>
+            <div class="airway-box growth-box">
+              <span class="label">Paediatric BMI (WHO)</span>
+              <span class="val" id="paedsBmi3d">15.5 kg/m²</span>
+              <span class="sub" id="paedsBmiSub3d">WHO Growth Reference</span>
             </div>
           </div>
 
@@ -1077,7 +1093,7 @@
               <div class="calc-hero-badge">⭐ FEATURED CLINICAL ENGINE</div>
               <h2 style="font-size:1.85rem; margin:0.4rem 0 0.2rem 0; color:#fff;">Paediatric Drug Chart & Airway Sizer</h2>
               <p style="margin:0; font-size:0.92rem; color:#94a3b8;">
-                Imported directly from clinical reference spreadsheet (<code>PedsDrugChart.xlsx</code>). Computes 16 emergency, induction, analgesic, and paralytic drugs with equipment sizing.
+                Comprehensive evidence-based pediatric dosing engine with equipment sizing and WHO child growth standards. Computes 28 emergency, sedative, induction, analgesic, paralytic, steroid, reversal, and resuscitation drugs.
               </p>
             </div>
             <div>
@@ -1155,6 +1171,22 @@
               <span class="label">i-gel Supraglottic Size</span>
               <span class="val" id="paedsIgel">Size 2 (Grey / 12–25 kg)</span>
               <span class="sub">Manufacturer weight bracket</span>
+            </div>
+            <!-- WHO Child Growth Standards (Compact) -->
+            <div class="airway-box growth-box">
+              <span class="label">Weight-for-Age (WHO)</span>
+              <span class="val" id="paedsWfa">P50: 23 kg</span>
+              <span class="sub" id="paedsWfaSub">WHO Child Growth</span>
+            </div>
+            <div class="airway-box growth-box">
+              <span class="label">Weight-for-Height (WHO)</span>
+              <span class="val" id="paedsWfh">Est. Ht: 122 cm</span>
+              <span class="sub" id="paedsWfhSub">WHO P50 Stature</span>
+            </div>
+            <div class="airway-box growth-box">
+              <span class="label">Paediatric BMI (WHO)</span>
+              <span class="val" id="paedsBmi">15.5 kg/m²</span>
+              <span class="sub" id="paedsBmiSub">WHO Growth Reference</span>
             </div>
           </div>
 
@@ -1914,6 +1946,8 @@
 
     // 1. Airway Sizing (Table 42-6 + ETT Formulas)
     const airway = window.KnockoutPaedsChart.computeAirway(age, wt);
+    const growth = window.KnockoutPaedsChart.computeGrowth ? window.KnockoutPaedsChart.computeGrowth(age, wt) : null;
+
     ["3d", ""].forEach(suffix => {
       const uEl = document.getElementById("paedsEttUncuffed" + suffix);
       const cEl = document.getElementById("paedsEttCuffed" + suffix);
@@ -1932,6 +1966,22 @@
       if (sEl) sEl.textContent = airway.suctionFr;
       if (gEl) gEl.textContent = airway.oralAirway;
       if (mEl) mEl.textContent = airway.maskSize;
+
+      if (growth) {
+        const wfaEl = document.getElementById("paedsWfa" + suffix);
+        const wfaSub = document.getElementById("paedsWfaSub" + suffix);
+        const wfhEl = document.getElementById("paedsWfh" + suffix);
+        const wfhSub = document.getElementById("paedsWfhSub" + suffix);
+        const bmiEl = document.getElementById("paedsBmi" + suffix);
+        const bmiSub = document.getElementById("paedsBmiSub" + suffix);
+
+        if (wfaEl) wfaEl.textContent = growth.wfaDisplay;
+        if (wfaSub) wfaSub.textContent = growth.wfaSub;
+        if (wfhEl) wfhEl.textContent = growth.wfhDisplay;
+        if (wfhSub) wfhSub.textContent = growth.wfhSub;
+        if (bmiEl) bmiEl.textContent = growth.bmiDisplay;
+        if (bmiSub) bmiSub.textContent = growth.bmiSub;
+      }
     });
 
     // 2. Drug Table
@@ -2017,6 +2067,7 @@
     }
 
     const airway = window.KnockoutPaedsChart.computeAirway(age, wt);
+    const growth = window.KnockoutPaedsChart.computeGrowth ? window.KnockoutPaedsChart.computeGrowth(age, wt) : null;
     const chart = window.KnockoutPaedsChart.computeDrugChart(wt, paedsConcentrationOverrides);
 
     window.KnockoutPaedsPdf.generate(chart, {
@@ -2031,7 +2082,10 @@
       bladeSize: airway.bladeSize,
       suctionFr: airway.suctionFr,
       oralAirway: airway.oralAirway,
-      maskSize: airway.maskSize
+      maskSize: airway.maskSize,
+      wfa: growth?.wfaDisplay,
+      wfh: growth?.wfhDisplay,
+      bmi: growth ? `${growth.bmiDisplay} (${growth.bmiSub})` : ""
     });
   }
 

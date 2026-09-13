@@ -491,6 +491,29 @@
   color: var(--muted, #94a3b8);
 }
 
+.airway-box.growth-box {
+  background: rgba(168, 85, 247, 0.08);
+  border-color: rgba(168, 85, 247, 0.28);
+}
+
+.airway-box.growth-box:hover {
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 6px 18px rgba(168, 85, 247, 0.2), 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.airway-box.growth-box .label {
+  color: #c084fc;
+}
+
+.airway-box.growth-box .val {
+  font-size: 1.05rem;
+}
+
+.airway-box.growth-box .sub {
+  font-size: 0.72rem;
+  color: #cbd5e1;
+}
+
 .paeds-table-wrapper {
   overflow-x: auto;
   border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
@@ -752,6 +775,23 @@ body:not(.dark) .paeds-chart-table td {
 body:not(.dark) .paeds-chart-table tr.category-header td {
   background: #e0f2fe !important;
   color: #0369a1 !important;
+}
+
+body:not(.dark) .airway-box.growth-box {
+  background: #faf5ff !important;
+  border-color: #d8b4fe !important;
+}
+
+body:not(.dark) .airway-box.growth-box .label {
+  color: #7e22ce !important;
+}
+
+body:not(.dark) .airway-box.growth-box .val {
+  color: #1e1b4b !important;
+}
+
+body:not(.dark) .airway-box.growth-box .sub {
+  color: #64748b !important;
 }
 
 body:not(.dark) .paeds-chart-table td.drug-name {

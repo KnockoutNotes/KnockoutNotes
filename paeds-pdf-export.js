@@ -49,7 +49,7 @@
 
     // 2. Patient & Airway Summary Box
     const boxY = 78;
-    const boxHeight = 76;
+    const boxHeight = 90;
     doc.setFillColor(248, 250, 252);
     doc.setDrawColor(226, 232, 240);
     doc.roundedRect(margin, boxY, pageWidth - (margin * 2), boxHeight, 4, 4, "FD");
@@ -63,22 +63,25 @@
     const bracketText = `Class: ${patientMeta.categoryBracket || "Paediatric"}`;
     const caseText = `Ref ID: ${patientMeta.caseId || "N/A"}`;
 
-    doc.text(wtText, margin + 12, boxY + 16);
-    doc.text(ageText, margin + 130, boxY + 16);
-    doc.text(bracketText, margin + 240, boxY + 16);
-    doc.text(caseText, pageWidth - margin - 12, boxY + 16, { align: "right" });
+    doc.text(wtText, margin + 12, boxY + 15);
+    doc.text(ageText, margin + 130, boxY + 15);
+    doc.text(bracketText, margin + 240, boxY + 15);
+    doc.text(caseText, pageWidth - margin - 12, boxY + 15, { align: "right" });
 
     doc.setFont("helvetica", "bold");
     doc.setTextColor(14, 116, 144);
-    doc.text("AIRWAY & RESUSCITATION EQUIPMENT SIZING (CALCULATED):", margin + 12, boxY + 34);
+    doc.text("AIRWAY & RESUSCITATION EQUIPMENT SIZING (CALCULATED):", margin + 12, boxY + 31);
 
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(8.5);
+    doc.setFontSize(8.2);
     doc.setTextColor(51, 65, 85);
     const airwayLine1 = `ETT Uncuffed: ${patientMeta.ettUncuffed || "—"}  |  ETT Cuffed: ${patientMeta.ettCuffed || "—"}  |  Depth at Lips: ${patientMeta.etDepth || "—"}  |  i-gel: ${patientMeta.igel || "—"}`;
     const airwayLine2 = `Laryngoscope Blade: ${patientMeta.bladeSize || "—"}  |  Suction: ${patientMeta.suctionFr || "—"}  |  Oral Airway: ${patientMeta.oralAirway || "—"}  |  Mask: ${patientMeta.maskSize || "—"}`;
-    doc.text(airwayLine1, margin + 12, boxY + 48);
-    doc.text(airwayLine2, margin + 12, boxY + 62);
+    const growthLine = `WHO Growth Standards: Wt-for-Age: ${patientMeta.wfa || "—"}  |  Height-for-Age: ${patientMeta.wfh || "—"}  |  BMI: ${patientMeta.bmi || "—"}`;
+    doc.text(airwayLine1, margin + 12, boxY + 45);
+    doc.text(airwayLine2, margin + 12, boxY + 58);
+    doc.setTextColor(100, 116, 139);
+    doc.text(growthLine, margin + 12, boxY + 72);
 
     // 3. Table Rows
     const tableBody = [];
