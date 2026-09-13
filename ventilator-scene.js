@@ -112,7 +112,7 @@ function buildPlaceholderMachine() {
 }
 
 export function createWorkstationScene(container, opts) {
-  const { modelUrl, components, onSelect, onHover, onLoaded, onRotationArmChange } = opts;
+  const { modelUrl, components, onSelect, onHover, onLoaded } = opts;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const scene = new THREE.Scene();
@@ -138,9 +138,9 @@ export function createWorkstationScene(container, opts) {
   controls.maxDistance = 5.5;
   controls.maxPolarAngle = Math.PI * 0.49 + 0.35;
   controls.target.copy(defaultTarget);
-  // Rotation is gated to an explicit double-click/double-tap "arm" step
-  // (see the gesture-gating block below) — plain drag must not rotate.
-  controls.enableRotate = false;
+  // Plain click/touch-and-drag rotates the model, in any direction —
+  // OrbitControls' own default behaviour.
+  controls.enableRotate = true;
   // Zoom is handled ONLY by the side zoom bar (setZoomPercent/zoomStep
   // below), which sets camera.position directly and doesn't go through
   // OrbitControls at all — so this is permanently off, not toggled.
@@ -155,14 +155,10 @@ export function createWorkstationScene(container, opts) {
   // above, makes a two-finger touch a full no-op (see OrbitControls'
   // TOUCH.DOLLY_PAN handling: both must be false for it to bail out).
   controls.enablePan = false;
-  // Left at the browser default (pan-y) so a one-finger touch that starts on
-  // the canvas still scrolls the page like anywhere else on the site; the
-  // gesture-gating block below switches this to "none" only while a
-  // double-click/double-tap has just armed rotation, so that gesture's own
-  // drag isn't also interpreted as a page scroll. "pan-y" (rather than
-  // "auto"/"manipulation") also already disables the browser's own native
-  // pinch-zoom on this element, so a two-finger touch does nothing at all
-  // while unarmed, consistent with zoom being zoom-bar-only.
+  // "pan-y" lets a vertical one-finger touch keep scrolling the page
+  // normally (a horizontal one-finger drag still reaches OrbitControls to
+  // rotate); it also already disables the browser's own native pinch-zoom
+  // on this element, consistent with zoom being zoom-bar-only.
   renderer.domElement.style.touchAction = "pan-y";
 
   scene.add(new THREE.HemisphereLight(0xdbeafe, 0x0f172a, 0.9));
@@ -248,7 +244,7 @@ export function createWorkstationScene(container, opts) {
     const hFov = 2 * Math.atan(Math.tan(vFov / 2) * camera.aspect);
     const distV = radius / Math.sin(vFov / 2);
     const distH = radius / Math.sin(hFov / 2);
-    const margin = 1.3; // comfortable headroom around the model
+    const margin = 1.7; // headroom around the model — starts more zoomed out
     fitDistance = Math.max(distV, distH) * margin;
 
     // A fixed 3/4-elevated viewing direction, applied at the computed distance.
@@ -442,69 +438,36 @@ export function createWorkstationScene(container, opts) {
   renderer.domElement.addEventListener("click", onClick);
 
   // -----------------------------------------------------------------------
-  // Rotation gating — rotation must only happen via an explicit
-  // double-click (desktop) / double-tap (mobile) followed by a drag, never
-  // from an ordinary single drag, a normal mouse-wheel scroll, or a normal
-  // one-finger page swipe passing over the canvas. Zoom (wheel/pinch) is
-  // left enabled throughout — only rotation is gated.
+  // Click-vs-drag tracking — rotation itself is a plain, always-on
+  // click/touch-and-drag (OrbitControls' own default), but a drag that
+  // ends over a hotspot marker must not ALSO select it: a native "click"
+  // still fires on release even after real pointer movement, so this just
+  // distinguishes "the user dragged to rotate" from "the user clicked" for
+  // onClick below.
   // -----------------------------------------------------------------------
-  let rotationArmed = false;
-  let armIdleTimer = null;
-  let lastTapTime = 0;
-  let lastTapX = 0;
-  let lastTapY = 0;
   let gestureStartX = 0;
   let gestureStartY = 0;
-  let gestureTracking = false;
   let gestureDidDrag = false;
-  const DOUBLE_TAP_MS = 400;
-  const DOUBLE_TAP_PX = 28;
   const DRAG_THRESHOLD_PX = 6;
-  const ARM_IDLE_MS = 4000;
 
-  function setRotationArmed(on) {
-    if (rotationArmed === on) return;
-    rotationArmed = on;
-    controls.enableRotate = on;
-    renderer.domElement.style.touchAction = on ? "none" : "pan-y";
-    if (onRotationArmChange) onRotationArmChange(on);
-    clearTimeout(armIdleTimer);
-    if (on) armIdleTimer = setTimeout(() => setRotationArmed(false), ARM_IDLE_MS);
-  }
-
-  // Runs before OrbitControls' own pointerdown handler (capture phase fires
-  // first on the same element) so that arming rotation here takes effect in
-  // time for OrbitControls to see enableRotate=true on THIS pointerdown.
   function onStagePointerDownCapture(e) {
-    const now = performance.now();
-    const dx = e.clientX - lastTapX;
-    const dy = e.clientY - lastTapY;
-    const isDoubleTap = (now - lastTapTime) < DOUBLE_TAP_MS && Math.hypot(dx, dy) < DOUBLE_TAP_PX;
-    lastTapTime = isDoubleTap ? 0 : now; // consume, so a 3rd tap isn't misread as another double-tap
-    lastTapX = e.clientX;
-    lastTapY = e.clientY;
     gestureStartX = e.clientX;
     gestureStartY = e.clientY;
-    gestureTracking = true;
     gestureDidDrag = false;
-    if (isDoubleTap) setRotationArmed(!rotationArmed);
   }
 
   function onStagePointerMoveCapture(e) {
-    if (!gestureTracking || gestureDidDrag) return;
+    if (gestureDidDrag) return;
     const dx = e.clientX - gestureStartX;
     const dy = e.clientY - gestureStartY;
     if (Math.hypot(dx, dy) > DRAG_THRESHOLD_PX) gestureDidDrag = true;
   }
 
   function onGesturePointerUp() {
-    gestureTracking = false;
-    if (rotationArmed && gestureDidDrag) setRotationArmed(false);
     // gestureDidDrag also gates onClick's drag-vs-click check, for the
     // click that normally follows this same pointerup synchronously — so
     // it must still read true there (hence the deferred clear, not an
-    // immediate one). It's already reset unconditionally on the next
-    // pointerdown, but a pointercancel produces no click at all, so
+    // immediate one). A pointercancel produces no click at all, so
     // without this a canvas click dispatched with no intervening
     // pointerdown (e.g. a synthetic/programmatic one) would be silently
     // swallowed by a stale flag from an earlier cancelled gesture.
@@ -659,7 +622,17 @@ export function createWorkstationScene(container, opts) {
     if (rect.width < 1 || rect.height < 1) return;
     camera.aspect = rect.width / rect.height;
     camera.updateProjectionMatrix();
-    renderer.setSize(rect.width, rect.height, false);
+    // The trailing `false` here used to skip setting the canvas's own CSS
+    // width/height, leaving it sized by its width/height ATTRIBUTES (which
+    // setPixelRatio scales up, e.g. 2x on a Retina/HiDPI screen) instead of
+    // the container's actual CSS size. With no CSS rule forcing the canvas
+    // to 100%/100% either, a HiDPI canvas ended up rendered at twice the
+    // container's size and got clipped by .vent-stage's overflow:hidden —
+    // showing only its top-left quadrant, which put the (correctly
+    // centred) model at the bottom-right corner of that visible crop. Omit
+    // the flag so Three.js keeps the canvas's CSS size in sync with the
+    // container on every device-pixel ratio.
+    renderer.setSize(rect.width, rect.height);
   }
   const ro = new ResizeObserver(resize);
   ro.observe(container);
@@ -704,11 +677,9 @@ export function createWorkstationScene(container, opts) {
     setZoomPercent,
     getZoomPercent,
     zoomStep,
-    isRotationArmed: () => rotationArmed,
     dispose() {
       cancelAnimationFrame(raf);
       ro.disconnect();
-      clearTimeout(armIdleTimer);
       renderer.domElement.removeEventListener("pointermove", onPointerMove);
       renderer.domElement.removeEventListener("click", onClick);
       renderer.domElement.removeEventListener("pointerdown", onStagePointerDownCapture, { capture: true });

@@ -88,10 +88,6 @@ export function initVentilatorPage() {
       loadingEl.hidden = true;
       if (placeholderBanner) placeholderBanner.hidden = !isPlaceholder;
       if (zoomRange) zoomRange.value = String(Math.round(scene.getZoomPercent()));
-    },
-    onRotationArmChange: on => {
-      const indicator = document.getElementById("ventRotateIndicator");
-      if (indicator) indicator.hidden = !on;
     }
   });
 
