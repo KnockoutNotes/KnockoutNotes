@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resuscitation Chamber | KnockoutNotes</title>
+  <meta name="description" content="AHA ACLS & PALS Interactive 3D Resuscitation Chamber: official decision flowcharts, animated mechanical CPR metronome, 2-minute cycle timer, and 5H/5T reversible causes checklist.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page-common.css">
+  <link rel="stylesheet" href="resuscitation-chamber.css">
+</head>
+<body data-content-page="resuscitation-chamber" class="mode-3d">
+
+<!-- Procedural Anaesthesia Background Canvas -->
+<canvas id="knSpatialCanvas"></canvas>
+
+<!-- Persistent Top-Left Mode Switch Dock (3D View vs Lite View) -->
+<div class="kn-mode-switch-dock" id="knModeSwitch" role="group" aria-label="Interface View Mode">
+  <button class="kn-mode-btn active" data-mode="3d" title="Switch to Cinematic 3D Spatial Experience" aria-label="3D View">
+    <span>✦ 3D VIEW</span>
+  </button>
+  <button class="kn-mode-btn" data-mode="lite" title="Switch to Familiar Clinical Lite View" aria-label="Lite View">
+    <span>⚡ LITE VIEW</span>
+  </button>
+</div>
+
+<header class="site-hud">
+  <div class="hud-capsule">
+    <a class="brand" href="index.html" aria-label="KnockoutNotes home">
+      <div class="brand-icon-wrap">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      </div>
+      <div class="brand-name">Knockout<span>Notes</span></div>
+    </a>
+
+    <div class="hud-path-indicator">
+      <span class="hud-pulse-dot" style="background: #ef4444; box-shadow: 0 0 10px #ef4444;"></span>
+      <span id="knHudPath">KN // RESUSCITATION CHAMBER</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="notes.html#pearls">Pearls</a>
+      <a href="notes.html">Notes</a>
+      <a href="calculators.html">Calculators</a>
+      <a href="viva.html">Viva</a>
+      <a href="ventilator.html">Workstation</a>
+      <a href="drugs.html">Drugs</a>
+      <a href="critical-care.html">Critical Care and Code</a>
+      <a href="recent-updates.html">Updates</a>
+      <a href="resources.html">About</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="nav-search-trigger" data-open-search aria-label="Open search">
+        <span>Search</span>
+        <kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn theme-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
+    </div>
+  </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a data-close-menu href="index.html">Home <span>→</span></a>
+      <a data-close-menu href="notes.html#pearls">Pearls <span>→</span></a>
+      <a data-close-menu href="notes.html">Notes <span>→</span></a>
+      <a data-close-menu href="calculators.html">Calculators <span>→</span></a>
+      <a data-close-menu href="viva.html">Viva <span>→</span></a>
+      <a data-close-menu href="ventilator.html">Workstation <span>→</span></a>
+      <a data-close-menu href="drugs.html">Drugs <span>→</span></a>
+      <a data-close-menu href="critical-care.html">Critical Care and Code <span>→</span></a>
+      <a data-close-menu href="resuscitation-chamber.html" style="color: #ef4444; font-weight: 700;">Resuscitation Chamber <span>→</span></a>
+      <a data-close-menu href="recent-updates.html">Updates <span>→</span></a>
+      <a data-close-menu href="resources.html">About <span>→</span></a>
+    </div>
+  </header>
+
+  <div class="spatial-stage">
+    <div class="spatial-world">
+      <main class="container chamber-page">
+
+        <!-- Chamber Hero Header -->
+        <section class="chamber-hero">
+          <div class="chamber-hero-top">
+            <div class="chamber-hero-text">
+              <div class="chamber-kicker-row">
+                <span class="chamber-pill-red">🚨 AHA ACLS / BLS / PALS</span>
+                <span class="chamber-pill-cyan">2025/2026 EVIDENCE STANDARDS</span>
+              </div>
+              <h1>Resuscitation Chamber</h1>
+              <p class="chamber-hero-lead">
+                Interactive 3D decision flowcharts for adult & pediatric resuscitation with active mechanical CPR metronome, 2-minute cycle countdown, rescuer management, and 5H/5T differential checklist.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Primary Top Tabs Navigation -->
+        <nav class="chamber-tabs-nav" aria-label="Resuscitation Category Selection">
+          <div class="chamber-tab-group" role="tablist">
+            <button class="chamber-tab-btn active" data-patient="adult" role="tab" aria-selected="true">
+              <span>👨</span> Adult ACLS
+            </button>
+            <button class="chamber-tab-btn" data-patient="paeds" role="tab" aria-selected="false">
+              <span>👶</span> Paediatric PALS
+            </button>
+          </div>
+
+          <!-- Clinical Subtabs / Scenarios -->
+          <div class="chamber-subtabs" role="tablist" aria-label="Clinical Scenario Selection">
+            <button class="chamber-subtab-btn active" data-scenario="arrest" role="tab" aria-selected="true">
+              🚨 Cardiac Arrest
+            </button>
+            <button class="chamber-subtab-btn" data-scenario="tachy" role="tab" aria-selected="false">
+              ⚡ Tachyarrhythmia
+            </button>
+            <button class="chamber-subtab-btn" data-scenario="brady" role="tab" aria-selected="false">
+              🐢 Bradyarrhythmia
+            </button>
+          </div>
+        </nav>
+
+        <!-- Main Resuscitation Workspace Grid -->
+        <div class="chamber-grid">
+
+          <!-- Left Column: Interactive 3D Flowchart Canvas -->
+          <section class="flowchart-viewport" aria-label="AHA Clinical Decision Flowchart">
+            <div class="flowchart-info-banner">
+              <div>
+                <div class="flowchart-kicker" id="flowchartKicker">AHA ACLS 2025/2026 GUIDELINES // CARDIAC ARREST ALGORITHM</div>
+                <h2 class="flowchart-title" id="flowchartTitle">Adult Cardiac Arrest Decision Flowchart</h2>
+              </div>
+              <div class="flowchart-aha-badge">
+                <span>Exact AHA Clinical Decision Flow</span>
+              </div>
+            </div>
+
+            <!-- Dynamic Flowchart Tree Nodes -->
+            <div class="flowchart-canvas" id="flowchartCanvas"></div>
+          </section>
+
+          <!-- Right Column: Command HUD (Metronome + 2-Min Timer + 5H/5T) -->
+          <aside class="chamber-command-hud" aria-label="Resuscitation Command Telemetry">
+
+            <!-- 1. Real Animated Mechanical Pendulum Metronome (Upper Right) -->
+            <div class="metronome-box">
+              <div class="metronome-title-bar">
+                <span class="metronome-label">CPR Metronome (110 BPM)</span>
+                <div class="metronome-led" id="metronomeLed" title="Visual Beat Indicator"></div>
+              </div>
+
+              <!-- Graphic Pendulum Frame -->
+              <div class="metronome-visual-body">
+                <div class="metronome-pivot"></div>
+                <div class="metronome-arm" id="metronomeArm">
+                  <div class="metronome-weight"></div>
+                </div>
+              </div>
+
+              <div class="metronome-readout">
+                <div>
+                  <div style="font-size: 0.65rem; color: var(--text-muted);">TEMPO</div>
+                  <div class="metronome-bpm-val">110 <span style="font-size: 0.65rem; color: var(--text-secondary);">BPM</span></div>
+                </div>
+                <div>
+                  <div style="font-size: 0.65rem; color: var(--text-muted);">COMPRESSIONS</div>
+                  <div class="metronome-count-val" id="metronomeCount">0</div>
+                </div>
+              </div>
+
+              <button class="btn-cinematic primary metronome-btn-toggle" id="btnToggleMetronome">
+                <span>▶</span> Start Metronome (110 BPM)
+              </button>
+            </div>
+
+            <!-- 2. Interactive 2-Minute CPR Cycle Timer & Rescuer Switch Manager -->
+            <div class="cycle-timer-box">
+              <div class="cycle-timer-title">⏱ 2-Min CPR Cycle Timer</div>
+              <div class="cycle-countdown" id="cycleCountdown">2:00</div>
+
+              <div class="cycle-progress-track">
+                <div class="cycle-progress-bar" id="cycleProgressBar"></div>
+              </div>
+
+              <div class="cycle-stats-row">
+                <span id="currentCycleCount">Cycle #1</span>
+                <span>Total: <strong id="totalCodeTime" style="color: var(--text-main);">0:00</strong></span>
+              </div>
+
+              <div class="cycle-actions-row">
+                <button class="btn-timer-action" id="btnToggleTimer" title="Pause or Resume the 2-Minute CPR cycle timer">
+                  <span id="timerToggleIcon">⏸</span> <span id="timerToggleText">Pause Timer</span>
+                </button>
+                <button class="btn-timer-action btn-timer-reset" id="btnResetTimer" title="Reset cycle back to 2:00 and pause">
+                  <span>⏹</span> Reset
+                </button>
+              </div>
+
+              <button class="btn-switch-rescuer" id="btnSwitchRescuer">
+                <span>🔄</span> Switch Rescuers / Rhythm Check
+              </button>
+            </div>
+
+            <!-- 3. Interactive 5 H's & 5 T's Checklist -->
+            <div class="checklist-box">
+              <div class="checklist-header">
+                <span class="checklist-title">⚠️ 5 H's & 5 T's Checklist</span>
+                <button class="checklist-reset-btn" id="btnResetChecklist">Clear All</button>
+              </div>
+
+              <div class="checklist-section-title">The 5 H's (Metabolic & Physiologic)</div>
+              <div class="checklist-list">
+                <label class="check-item">
+                  <input type="checkbox">
+                  <span><strong>Hypovolemia:</strong> IV fluids / blood products</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox">
+                  <span><strong>Hypoxia:</strong> 100% O₂, airway verification</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox">
+                  <span><strong>Hydrogen Ion:</strong> Acidosis / ventilation</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox">
+                  <span><strong>Hypo- / Hyperkalemia:</strong> Calcium, insulin/D50</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox">
+                  <span><strong>Hypothermia:</strong> Active core rewarming</span>
+                </label>
+              </div>
+
+              <div class="checklist-section-title" style="margin-top: 14px;">The 5 T's (Anatomic & Toxicologic)</div>
+              <div class="checklist-list">
+                <label class="check-item">
+                  <input type="checkbox">
+                  <span><strong>Tension Pneumo:</strong> Needle decompression</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox">
+                  <span><strong>Tamponade (Cardiac):</strong> Pericardiocentesis</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox">
+                  <span><strong>Toxins:</strong> Antidotes (Naloxone, Intralipid)</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox">
+                  <span><strong>Thrombosis (PE):</strong> Thrombolytic therapy</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox">
+                  <span><strong>Thrombosis (Coronary):</strong> Urgent PCI transfer</span>
+                </label>
+              </div>
+            </div>
+
+          </aside>
+
+        </div>
+
+        <!-- Official Guidelines Attribution Footer -->
+        <footer class="chamber-footer-ref">
+          <div>
+            📚 <strong>Official Evidence Attribution:</strong> 2025/2026 American Heart Association (AHA) Guidelines for Cardiopulmonary Resuscitation (CPR) & Emergency Cardiovascular Care (ECC).
+          </div>
+          <a href="https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines" target="_blank" rel="noopener" class="chamber-ref-link">
+            <span>↗</span> Official AHA Guidelines Science Portal
+          </a>
+        </footer>
+
+      </main>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="brand-icon-wrap">
+            <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+          </div>
+          <div class="brand-name">Knockout<span>Notes</span></div>
+        </div>
+        <p>Anaesthesia • Critical Care • Viva</p>
+        <p class="disclaimer">Educational content for medical professionals and trainees. Always verify current guidelines, institutional protocols, drug labels, and patient-specific factors before clinical use.</p>
+      </div>
+      <div class="footer-connect">
+        <strong>Connect & Follow</strong>
+        <div class="socials">
+          <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
+          <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
+        </div>
+        <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
+      </div>
+    </div>
+  </footer>
+
+<!-- Search Modal -->
+<div class="kn-modal" id="knSearchModal" role="dialog" aria-modal="true" aria-label="Search KnockoutNotes">
+  <div class="kn-modal-backdrop" data-close-modal></div>
+  <div class="kn-modal-box">
+    <div class="kn-modal-header">
+      <span class="kn-search-icon">⌕</span>
+      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search resuscitation, drugs, pearls..." autocomplete="off">
+      <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
+      <button class="kn-modal-close" data-close-modal>ESC</button>
+    </div>
+    <div class="kn-modal-body">
+      <div id="knModalSearchStatus" class="kn-search-status">Start typing to search the medical database.</div>
+      <div id="knModalSearchResults" class="kn-search-results"></div>
+    </div>
+    <div class="kn-modal-footer">
+      <span>Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
+      <span>KnockoutNotes Spatial Search</span>
+    </div>
+  </div>
+</div>
+
+<script src="spatial-bg.js"></script>
+<script src="script.js"></script>
+<script src="page-motion.js"></script>
+<script src="kn-site-search.js"></script>
+<script src="resuscitation-chamber.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,923 @@
+/* ==========================================================================
+   KNOCKOUTNOTES — Resuscitation Chamber Styles (resuscitation-chamber.css)
+   Interactive 3D Flowcharts, Mechanical Pendulum Metronome, 2-Min Timer & 5H/5T
+   ========================================================================== */
+
+.chamber-page {
+  padding-top: 28px;
+  padding-bottom: 80px;
+  max-width: 1400px;
+}
+
+/* Hero & Header */
+.chamber-hero {
+  margin-bottom: 24px;
+}
+
+.chamber-hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.chamber-hero-text {
+  max-width: 780px;
+}
+
+.chamber-kicker-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.chamber-pill-red {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  padding: 3px 12px;
+  border-radius: var(--radius-full);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.chamber-pill-cyan {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--soft-accent);
+  color: var(--accent-cyan);
+  border: 1px solid var(--border-glow);
+  padding: 3px 12px;
+  border-radius: var(--radius-full);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.chamber-hero h1 {
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin: 0.25rem 0 0.5rem;
+  color: var(--text-main);
+}
+
+.chamber-hero-lead {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Primary Tabs (Adult ACLS vs Paediatric PALS vs Post-ROSC) */
+.chamber-tabs-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 8px 12px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.chamber-tab-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chamber-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.chamber-tab-btn:hover {
+  color: var(--text-main);
+  background: var(--soft-accent);
+}
+
+.chamber-tab-btn.active {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(37, 99, 235, 0.14));
+  color: var(--accent-cyan);
+  border-color: var(--border-glow);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
+}
+
+/* Sub-tabs / Scenario selector */
+.chamber-subtabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.chamber-subtab-btn {
+  padding: 7px 14px;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.chamber-subtab-btn:hover {
+  color: var(--text-main);
+  border-color: var(--border-glow);
+}
+
+.chamber-subtab-btn.active {
+  background: rgba(239, 68, 68, 0.16);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.45);
+  font-weight: 700;
+}
+
+/* Main Workspace Grid (Left: Flowchart Engine, Right: Command HUD) */
+.chamber-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1080px) {
+  .chamber-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Flowchart Main Area */
+.flowchart-viewport {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  box-shadow: var(--shadow-md);
+  perspective: 1200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.flowchart-viewport::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ef4444, var(--accent-cyan), var(--accent-indigo));
+}
+
+.flowchart-info-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 18px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.flowchart-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--accent-cyan);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.flowchart-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.flowchart-aha-badge {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: var(--panel-tint-1);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Flowchart Node Canvas (Interactive 3D Boxes & Connectors) */
+.flowchart-canvas {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transform-style: preserve-3d;
+}
+
+/* 3D Flowchart Node */
+.flow-node {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  position: relative;
+  transition: transform 0.16s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+  cursor: pointer;
+}
+
+.flow-node:hover, .flow-node:focus-visible {
+  transform: translateY(-4px) scale(1.012) translateZ(16px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 24px rgba(56, 189, 248, 0.25);
+  border-color: var(--accent-cyan);
+}
+
+/* Node Variants */
+.flow-node.node-start {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.18), rgba(15, 23, 42, 0.8));
+  border-color: rgba(239, 68, 68, 0.4);
+  border-left: 5px solid #ef4444;
+}
+
+.flow-node.node-decision {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.14), rgba(15, 23, 42, 0.8));
+  border-color: rgba(251, 191, 36, 0.4);
+  border-left: 5px solid #fbbf24;
+}
+
+.flow-node.node-shock {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.22), rgba(15, 23, 42, 0.85));
+  border-color: rgba(239, 68, 68, 0.55);
+  border-left: 5px solid #ef4444;
+}
+
+.flow-node.node-cpr {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(15, 23, 42, 0.8));
+  border-color: rgba(56, 189, 248, 0.4);
+  border-left: 5px solid #38bdf8;
+}
+
+.flow-node.node-drug {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.16), rgba(15, 23, 42, 0.8));
+  border-color: rgba(168, 85, 247, 0.4);
+  border-left: 5px solid #a855f7;
+}
+
+.flow-node.node-success {
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.16), rgba(15, 23, 42, 0.8));
+  border-color: rgba(52, 211, 153, 0.4);
+  border-left: 5px solid #34d399;
+}
+
+/* Node Contents */
+.node-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 10px;
+}
+
+.node-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+}
+
+.node-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.node-body {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.node-body strong {
+  color: var(--text-main);
+}
+
+.node-body ul {
+  margin: 6px 0 0;
+  padding-left: 1.25rem;
+}
+
+.node-body li {
+  margin-bottom: 4px;
+}
+
+/* Connecting Arrow */
+.flow-arrow-down {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: var(--accent-cyan);
+  opacity: 0.75;
+  font-size: 1rem;
+  user-select: none;
+}
+
+.flow-arrow-down::before {
+  content: "";
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(180deg, var(--border-glow), var(--accent-cyan));
+}
+
+.flow-arrow-branch-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: var(--radius-full);
+  margin-bottom: 2px;
+}
+
+/* Branching 2-Column Split in Flowcharts */
+.flow-branch-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .flow-branch-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.branch-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.branch-col-header {
+  text-align: center;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.branch-col.shockable .branch-col-header {
+  background: rgba(239, 68, 68, 0.18);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.branch-col.non-shockable .branch-col-header {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+/* ==========================================================================
+   RIGHT SIDEBAR COMMAND HUD
+   - Mechanical Animated Pendulum Metronome
+   - 2-Minute Cycle Timer & Rescuer Switch
+   - 5 H's & 5 T's Checklist
+   ========================================================================== */
+.chamber-command-hud {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 90px;
+}
+
+/* Mechanical Metronome Chamber */
+.metronome-box {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(8, 14, 28, 0.98));
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  box-shadow: var(--shadow-lg), 0 0 35px rgba(56, 189, 248, 0.15);
+  perspective: 1000px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.metronome-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.metronome-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+}
+
+.metronome-led {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #334155;
+  transition: all 0.08s ease;
+}
+
+.metronome-led.active-pulse {
+  background: #ef4444;
+  box-shadow: 0 0 16px #ef4444, 0 0 30px #ef4444;
+  transform: scale(1.3);
+}
+
+/* Physical Metronome Graphic Frame */
+.metronome-visual-body {
+  width: 140px;
+  height: 130px;
+  margin: 0 auto 14px;
+  position: relative;
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px 20px 8px 8px;
+  clip-path: polygon(25% 0%, 75% 0%, 95% 100%, 5% 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Center Pivot */
+.metronome-pivot {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  background: #94a3b8;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+/* Swinging Arm */
+.metronome-arm {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  width: 3px;
+  height: 100px;
+  background: linear-gradient(180deg, #cbd5e1, #94a3b8);
+  transform-origin: bottom center;
+  transform: translateX(-50%) rotate(0deg);
+  transition: transform 0.05s linear;
+  z-index: 4;
+}
+
+/* Weight Bob on arm */
+.metronome-weight {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 14px;
+  background: #fbbf24;
+  border: 1px solid #d97706;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Swinging Animation Class */
+.metronome-arm.swinging {
+  animation: pendulumSwing 0.545s ease-in-out infinite alternate; /* 110 BPM */
+}
+
+@keyframes pendulumSwing {
+  0% {
+    transform: translateX(-50%) rotate(-28deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(28deg);
+  }
+}
+
+/* Metronome Readout & Controls */
+.metronome-readout {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  margin-bottom: 12px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.metronome-bpm-val {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+.metronome-count-val {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+.metronome-btn-toggle {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius-full);
+  font-weight: 800;
+  font-size: 0.88rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all var(--transition-fast);
+}
+
+.metronome-btn-toggle.running {
+  background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+}
+
+/* 2-Minute CPR Cycle Timer Card */
+.cycle-timer-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.cycle-timer-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--accent-amber);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.cycle-countdown {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #fbbf24;
+  margin: 4px 0 8px;
+}
+
+.cycle-progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.cycle-progress-bar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #fbbf24, #ef4444);
+  transition: width 1s linear;
+}
+
+.cycle-stats-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cycle-actions-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.btn-timer-action {
+  padding: 8px 12px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: var(--accent-cyan);
+  border-radius: var(--radius-full);
+  font-weight: 750;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.btn-timer-action:hover {
+  background: rgba(56, 189, 248, 0.22);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+}
+
+.btn-timer-action.is-paused {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+.btn-timer-reset {
+  background: rgba(148, 163, 184, 0.1);
+  border-color: rgba(148, 163, 184, 0.3);
+  color: var(--text-secondary);
+}
+
+.btn-timer-reset:hover {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.25);
+}
+
+.btn-switch-rescuer {
+  width: 100%;
+  padding: 8px 12px;
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  color: #fbbf24;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-switch-rescuer:hover {
+  background: rgba(251, 191, 36, 0.28);
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.3);
+}
+
+/* 5 H's and 5 T's Checklist Card */
+.checklist-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.checklist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.checklist-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+}
+
+.checklist-reset-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.checklist-reset-btn:hover {
+  color: var(--accent-cyan);
+}
+
+.checklist-section-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  margin: 10px 0 6px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 4px;
+}
+
+.checklist-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.check-item:hover {
+  background: var(--soft-accent);
+  color: var(--text-main);
+}
+
+.check-item input[type="checkbox"] {
+  margin-top: 3px;
+  accent-color: var(--accent-cyan);
+  cursor: pointer;
+}
+
+.check-item.checked {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+/* Official Guidelines Attribution Footer */
+.chamber-footer-ref {
+  margin-top: 36px;
+  padding: 18px 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.chamber-ref-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-cyan);
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--soft-accent);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-glow);
+  transition: all var(--transition-fast);
+}
+
+.chamber-ref-link:hover {
+  background: rgba(56, 189, 248, 0.25);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.3);
+}
+
+/* ==========================================================================
+   Mobile & Responsive Optimization (<768px & <480px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .chamber-hero {
+    padding: 16px 0 10px;
+  }
+  .chamber-title-row {
+    margin-bottom: 12px;
+  }
+  .chamber-title {
+    font-size: 1.55rem;
+  }
+  .chamber-tabs-nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: var(--radius-lg);
+  }
+  .chamber-patient-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+  .chamber-tab-btn {
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+  .chamber-subtabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 4px;
+  }
+  .chamber-subtab-btn {
+    text-align: center;
+    padding: 8px 4px;
+    font-size: 0.74rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .flowchart-viewport {
+    padding: 16px 12px;
+  }
+  .flowchart-title {
+    font-size: 1.2rem;
+  }
+  .flow-node {
+    padding: 14px 14px;
+  }
+  .node-title {
+    font-size: 0.96rem;
+  }
+  .node-body {
+    font-size: 0.85rem;
+  }
+  .chamber-command-hud {
+    position: static;
+    top: auto;
+  }
+  .cycle-countdown {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chamber-patient-tabs {
+    grid-template-columns: 1fr;
+  }
+  .chamber-subtabs {
+    grid-template-columns: 1fr;
+  }
+  .cycle-actions-row {
+    grid-template-columns: 1fr;
+  }
+  .chamber-footer-ref {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .chamber-ref-link {
+    justify-content: center;
+  }
+}
+

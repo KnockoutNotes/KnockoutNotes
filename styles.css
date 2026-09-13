@@ -237,6 +237,78 @@ img {
   box-shadow: var(--shadow-lg), 0 0 45px rgba(56, 189, 248, 0.22);
 }
 
+/* ==========================================================================
+   Compact Medical HUD for Sub-Pages (All pages except Home)
+   Shrinks vertical and horizontal bulk smoothly, freeing workspace viewport
+   ========================================================================== */
+body:not([data-content-page="home"]) .site-hud {
+  top: 8px;
+  transition: top 0.28s var(--ease-expo);
+}
+
+body:not([data-content-page="home"]) .hud-capsule {
+  padding: 4px 10px 4px 14px;
+  gap: 10px;
+  max-width: 1040px;
+  transition: all 0.28s var(--ease-expo);
+}
+
+body:not([data-content-page="home"]) .brand-icon-wrap {
+  width: 28px;
+  height: 28px;
+}
+
+body:not([data-content-page="home"]) .brand img {
+  width: 28px;
+  height: 28px;
+}
+
+body:not([data-content-page="home"]) .brand-name {
+  font-size: 15.5px;
+  letter-spacing: -0.4px;
+}
+
+body:not([data-content-page="home"]) .hud-path-indicator {
+  padding: 2px 7px;
+  font-size: 9.5px;
+  gap: 4px;
+}
+
+body:not([data-content-page="home"]) .hud-pulse-dot {
+  width: 5px;
+  height: 5px;
+}
+
+body:not([data-content-page="home"]) .nav-links {
+  gap: 1px;
+  margin-left: 2px;
+}
+
+body:not([data-content-page="home"]) .nav-links a {
+  padding: 4.5px 8.5px;
+  font-size: 11.5px;
+  letter-spacing: -0.2px;
+}
+
+body:not([data-content-page="home"]) .nav-links a.active::after {
+  bottom: 2px;
+  width: 12px;
+  height: 2px;
+}
+
+body:not([data-content-page="home"]) .nav-search-trigger {
+  padding: 4px 10px;
+  font-size: 11.5px;
+  gap: 6px;
+}
+
+body:not([data-content-page="home"]) .icon-btn,
+body:not([data-content-page="home"]) .menu-btn {
+  width: 29px;
+  height: 29px;
+  font-size: 13px;
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -324,12 +396,13 @@ img {
 }
 
 .nav-links a {
-  padding: 8px 14px;
+  padding: 7px 11px;
   border-radius: var(--radius-full);
   font-weight: 600;
   color: var(--text-secondary);
-  font-size: 13.5px;
+  font-size: 13px;
   letter-spacing: -0.2px;
+  white-space: nowrap;
   position: relative;
   transition: all var(--transition-fast);
 }
@@ -2415,6 +2488,25 @@ body.mode-lite {
   overflow-y: auto !important;
 }
 
+/* Hardened Lite Mode: complete animation & 3D tilt suppression */
+body.mode-lite * {
+  animation: none !important;
+  transform: none !important;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body.mode-lite .flow-node:hover,
+body.mode-lite .flow-node:active,
+body.mode-lite .calc-box:hover,
+body.mode-lite .calc-box:active,
+body.mode-lite .card:hover,
+body.mode-lite .card:active {
+  transform: none !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
 /* ==========================================================================
    Cross-Page Transitions (page-motion.js) — every page's <body> already
    carries mode-3d or mode-lite from first paint, so hanging the entrance
@@ -2466,3 +2558,121 @@ body.kn-page-exit {
   font-size: 15px;
   margin: 0 0 24px;
 }
+
+/* ==========================================================================
+   RESUSCITATION CHAMBER PORTAL CARD STYLES
+   ========================================================================== */
+.chamber-portal-card {
+  display: block;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(8, 14, 28, 0.95));
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  border-radius: var(--radius-xl);
+  padding: 2rem 2.4rem;
+  margin: 1.5rem 0 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 35px rgba(239, 68, 68, 0.18);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.34, 1.4, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.chamber-portal-card:hover {
+  transform: translateY(-5px) scale(1.01) translateZ(12px);
+  border-color: #ef4444;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 50px rgba(239, 68, 68, 0.35);
+}
+
+.chamber-portal-glow {
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+.chamber-portal-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap;
+}
+
+.chamber-portal-left {
+  max-width: 820px;
+}
+
+.chamber-portal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.chamber-portal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 10px #ef4444;
+  animation: pulse 1.2s infinite alternate;
+}
+
+.chamber-portal-title {
+  font-size: clamp(1.4rem, 2.8vw, 1.85rem);
+  font-weight: 900;
+  color: var(--text-main);
+  margin: 0 0 0.5rem;
+}
+
+.chamber-portal-desc {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.chamber-portal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  font-weight: 800;
+  font-size: 0.92rem;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  white-space: nowrap;
+}
+
+.chamber-portal-card:hover .chamber-portal-btn {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.6);
+}
+
+.chamber-portal-arrow {
+  font-size: 1.1rem;
+  transition: transform var(--transition-fast);
+}
+
+.chamber-portal-card:hover .chamber-portal-arrow {
+  transform: translateX(4px);
+}
+

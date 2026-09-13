@@ -435,12 +435,25 @@
   border-radius: 12px;
   padding: 1.25rem;
   margin: 1.5rem 0;
+  perspective: 800px;
 }
 
 .airway-box {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  padding: 0.85rem 1rem;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 10px;
+  transition: transform 0.22s cubic-bezier(0.34, 1.4, 0.64, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+  will-change: transform;
+}
+
+.airway-box:hover {
+  transform: translateY(-3px) scale(1.018) translateZ(12px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.18), 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .airway-box .label {
@@ -468,6 +481,12 @@
   border-radius: 12px;
   margin: 1.5rem 0;
   background: rgba(15, 23, 42, 0.4);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.paeds-table-wrapper:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.12);
 }
 
 .paeds-chart-table {
@@ -555,6 +574,71 @@
   font-size: 0.82rem;
   color: #fef08a;
   line-height: 1.5;
+}
+
+/* ==========================================================================
+   Mobile & Responsive Optimization (<768px & <480px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .calc-hero-card {
+    padding: 1.25rem 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .calc-hero-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .calc-hero-header h2 {
+    font-size: 1.45rem !important;
+  }
+  .calc-form-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 1rem !important;
+  }
+  .paeds-airway-strip {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    padding: 0.85rem;
+  }
+  .airway-box {
+    padding: 0.65rem 0.75rem;
+  }
+  .airway-box .val {
+    font-size: 1.05rem;
+  }
+  .paeds-actions-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  .calc-hub-nav {
+    gap: 0.4rem;
+    margin: 1rem 0 1.5rem 0;
+  }
+  .calc-nav-pill {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .paeds-airway-strip {
+    grid-template-columns: 1fr;
+  }
+  .calc-card-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .calc-box {
+    padding: 1.1rem;
+  }
+  .calc-primary-val {
+    font-size: 1.5rem;
+  }
 }
 
 /* Print Stylesheet */
