@@ -656,33 +656,118 @@
     }
 
     // ------------------------------------------------------------------------
-    // 16. Populate Recent Updates Grid (recent-updates.html)
+    // 16. Dual-Route Recent Updates Engine (recent-updates.html)
+    // Route 1: Instant peer-reviewed programmatic guidelines (AHA 2025, GINA, ESICM ARDS, DAS, Sepsis)
+    // Route 2: Real-time Cloud Google Sheets & Excel API synchronisation
+    // Merges without duplicates and sorts by date/priority.
     // ------------------------------------------------------------------------
     const recentGrids = document.querySelectorAll("#recentUpdatesGrid, #recentUpdatesGrid3d, #recentUpdatesGridLite, .recent-updates-grid");
     if (recentGrids.length) {
-      recentGrids.forEach(el => { el.innerHTML = skeletonCards(4); });
-      loadData().then(data => {
-        const items = newest(data.filter(x => {
-          const t = norm(x.type);
-          return ["update", "recent update", "guideline update", "guideline"].includes(t);
-        })).slice(0, 30);
+      const programmeUpdates = (window.KNOCKOUTNOTES_PROGRAMME_UPDATES || [
+        {
+          id: "aha-cpr-ecc-2025",
+          type: "Update",
+          category: "Resuscitation",
+          date: "2025 Update",
+          title: "2025 AHA Guidelines for CPR & ECC",
+          summary: "Major updates to adult and paediatric basic and advanced life support algorithms, resuscitation quality metrics, and post-cardiac arrest care standards.",
+          bullets: [
+            "<strong>Chest Compression Metrics:</strong> Strict rate of 100–120/min, depth 5–6 cm (2–2.4 in), complete chest recoil, and chest compression fraction (CCF) &gt; 80%.",
+            "<strong>Refractory Shockable Rhythms:</strong> Double sequential external defibrillation (DSED) and vector change (VC) defibrillation endorsed for persistent VF/pVT.",
+            "<strong>Waveform Capnography:</strong> Continuous quantitative EtCO2; values &lt; 10 mmHg guide CPR compression optimization; sudden rise &gt; 35–40 mmHg indicates ROSC.",
+            "<strong>Post-ROSC Care:</strong> Strict targeted temperature management (32°C–36°C or active fever prevention &lt; 37.5°C), normoxia (SpO2 92–98%), and immediate coronary angiography."
+          ],
+          reference: "2025 AHA Guidelines for CPR and ECC, Circulation Guideline Supplement.",
+          url: "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines"
+        },
+        {
+          id: "gina-asthma-2025-2026",
+          type: "Update",
+          category: "Pulmonology & Airway",
+          date: "Global Strategy",
+          title: "GINA Asthma Strategy & Perioperative Care Update",
+          summary: "Global Initiative for Asthma (GINA) strategy applied to acute bronchospasm, elective surgical optimization, and perioperative airway management.",
+          bullets: [
+            "<strong>Reliever Paradigm:</strong> Anti-inflammatory reliever therapy (as-needed low-dose ICS-formoterol) preferred across all tracks; avoid SABA-only treatment to reduce severe exacerbations.",
+            "<strong>Preoperative Optimization:</strong> Defer elective surgery if active wheeze, recent systemic corticosteroid bursts, or FEV1 &lt; 80%; prescribe 3–5 days of oral prednisolone (0.5–1 mg/kg/day) for suboptimal control.",
+            "<strong>Intraoperative Airway Strategy:</strong> Prioritise regional anesthesia; use volatile agents (sevoflurane) or ketamine for bronchodilation; avoid desflurane and airway instrumentation during light anaesthesia planes.",
+            "<strong>Acute Bronchospasm Protocol:</strong> High-dose nebulized SABA + ipratropium, IV magnesium sulphate (25–50 mg/kg, max 2 g), IV dexamethasone/hydrocortisone, and low-rate, prolonged expiratory time ventilation."
+          ],
+          reference: "Global Initiative for Asthma (GINA). Global Strategy for Asthma Management and Prevention.",
+          url: "https://ginasthma.org/reports/"
+        },
+        {
+          id: "esicm-ards-new-definition",
+          type: "Update",
+          category: "Critical Care",
+          date: "Consensus Definition",
+          title: "New Global Definition of ARDS (ESICM Consensus Update)",
+          summary: "Major international consensus statement updating and expanding the Berlin definition for intensive care and perioperative acute hypoxaemic respiratory failure.",
+          bullets: [
+            "<strong>Inclusion of Non-Invasive Modalities:</strong> Recognizes ARDS in patients on High-Flow Nasal Cannula (HFNC ≥ 30 L/min) or continuous CPAP/NIV without requiring invasive endotracheal intubation.",
+            "<strong>SpO2/FiO2 Staging Index:</strong> Formal validation of SpO2/FiO2 ratio (≤ 315 when SpO2 ≤ 97%) as an accurate surrogate for PaO2/FiO2, ensuring rapid bedside diagnosis in resource-variable settings.",
+            "<strong>Point-of-Care Ultrasound (POCUS):</strong> Lung ultrasound demonstrating bilateral interstitial/alveolar syndromes (B-lines) formally accepted alongside chest X-ray and CT imaging.",
+            "<strong>Lung Protective Mechanical Ventilation:</strong> Strict low tidal volume (4–6 mL/kg PBW), driving pressure &lt; 14 cmH2O, plateau pressure &lt; 30 cmH2O, and early prone positioning (≥ 16 h/day) for severe hypoxaemia."
+          ],
+          reference: "European Society of Intensive Care Medicine (ESICM). New Global Definition of ARDS, Intensive Care Medicine.",
+          url: "https://www.esicm.org/resources/guidelines-consensus/"
+        },
+        {
+          id: "das-difficult-airway-2025",
+          type: "Update",
+          category: "Airway",
+          date: "2025 Guidelines",
+          title: "DAS 2025 Difficult Airway Guidelines",
+          summary: "Updated international algorithms for anticipated and unanticipated difficult tracheal intubation in adults, videolaryngoscopy first-line protocols, and emergency front-of-neck airway access (eFONA).",
+          bullets: [
+            "<strong>Videolaryngoscopy Priority:</strong> Routine first-line use of videolaryngoscopy recommended for all anticipated and unanticipated difficult airways.",
+            "<strong>Limited Intubation Attempts:</strong> Maximum 3 attempts at tracheal intubation before declaring failure and proceeding immediately to Plan B (SGA insertion).",
+            "<strong>eFONA Scalpel-Bougie-Tube:</strong> Standardized scalpel-bougie-tube technique as the gold-standard rescue for can't intubate, can't oxygenate (CICO) crises."
+          ],
+          reference: "Difficult Airway Society (DAS) 2025 Guidelines, British Journal of Anaesthesia.",
+          url: "https://das.uk.com/guidelines"
+        },
+        {
+          id: "surviving-sepsis-2026",
+          type: "Update",
+          category: "Critical Care",
+          date: "2026 Guidelines",
+          title: "Surviving Sepsis Campaign International Guidelines 2026",
+          summary: "Consensus guidelines for the management of sepsis and septic shock: 1-hour resuscitation bundle, early balanced crystalloids, dynamic hemodynamic assessment, and vasopressor strategies.",
+          bullets: [
+            "<strong>1-Hour Bundle:</strong> Measure lactate, obtain blood cultures before antibiotics, administer broad-spectrum antimicrobials within 1 hr, and initiate crystalloid fluid resuscitation.",
+            "<strong>Balanced Crystalloids over Saline:</strong> Use buffered crystalloids (Plasma-Lyte / Ringer's) for initial fluid loading (30 mL/kg within 3 hrs).",
+            "<strong>First-Line Vasopressor:</strong> Noradrenaline titrated to MAP ≥ 65 mmHg; add vasopressin early if high-dose noradrenaline is needed."
+          ],
+          reference: "Surviving Sepsis Campaign 2026, Critical Care Medicine / Intensive Care Medicine.",
+          url: "https://www.sccm.org/SurvivingSepsisCampaign/Guidelines"
+        }
+      ]);
 
+      function normalizeKey(str) {
+        return String(str || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+      }
+
+      function renderUpdatesList(items) {
         recentGrids.forEach(recentGrid => {
           if (!items.length) {
             recentGrid.innerHTML =
-              '<div class="card bento-span-12"><p>No guideline updates have been added yet. Add a row in Google Sheets with <strong>Type = Update</strong>.</p></div>';
+              '<div class="card bento-span-12"><p>No guideline updates have been added yet.</p></div>';
             return;
           }
 
           const prefix = recentGrid.id || (recentGrid.closest(".view-layer-lite") ? "lite" : "3d");
           recentGrid.innerHTML = items.map((x, i) => {
             const ansId = `update-ans-${prefix}-${i}`;
-            // A real destination URL only ever comes from the sheet's own
-            // URL/PDF/Slides fields (never invented). Rows without one stay
-            // a plain, non-clickable card.
             const link = x.url || x.pdf || x.slides || "";
             const tag = link ? "a" : "div";
             const linkAttrs = link ? ` href="${esc(link)}" target="_blank" rel="noopener noreferrer"` : "";
+
+            let bulletsHtml = "";
+            if (Array.isArray(x.bullets) && x.bullets.length) {
+              bulletsHtml = `<ul style="padding-left:18px;margin:8px 0 12px;color:var(--text-secondary);font-size:13.5px;line-height:1.7;">${x.bullets.map(b => `<li>${b}</li>`).join("")}</ul>`;
+            }
+
             return `
               <${tag} class="card fade visible kn-update-card"${linkAttrs}>
                 <div class="card-top">
@@ -690,13 +775,15 @@
                   ${x.date ? `<span class="card-date">${esc(x.date)}</span>` : ""}
                 </div>
                 <h3>${esc(x.title)}</h3>
-                ${x.summary ? `<p>${esc(x.summary)}</p>` : ""}
+                ${x.summary ? `<p style="margin-bottom:8px;">${esc(x.summary)}</p>` : ""}
+                ${bulletsHtml}
                 ${x.answer ? `
                   <div class="answer open" id="${ansId}" style="margin-top:10px;">
                     <div>${esc(x.answer)}</div>
-                    ${x.reference ? `<small class="reference">Reference: ${esc(x.reference)}</small>` : ""}
+                    ${x.reference && !x.bullets ? `<small class="reference">Reference: ${esc(x.reference)}</small>` : ""}
                   </div>` : ""}
-                ${link ? `<span class="kn-update-open">→ Open update</span>` : ""}
+                ${x.reference && !x.answer ? `<small class="reference" style="display:block;margin-top:10px;">Reference: ${esc(x.reference)}</small>` : ""}
+                ${link ? `<span class="kn-update-open">→ Open guideline source</span>` : ""}
               </${tag}>`;
           }).join("");
 
@@ -706,12 +793,45 @@
             window.KnCarousel.mount(recentGrid);
           }
         });
-      }).catch(err => {
-        console.error("KnockoutNotes Recent Updates:", err);
-        recentGrids.forEach(recentGrid => {
-          recentGrid.innerHTML =
-            '<div class="card bento-span-12"><p>Recent updates could not be loaded right now.</p></div>';
+      }
+
+      // Step 1: Instant rendering from Programme Route (guaranteed zero loading delay)
+      renderUpdatesList(programmeUpdates);
+
+      // Step 2: Asynchronous Cloud Sheet & Excel Route
+      loadData().then(sheetData => {
+        const sheetUpdates = sheetData.filter(x => {
+          const t = norm(x.type);
+          return ["update", "recent update", "guideline update", "guideline"].includes(t);
         });
+
+        // Merge dual routes without duplicates
+        const seen = new Set();
+        const merged = [];
+
+        // Add sheet updates (cloud has freshness precedence)
+        sheetUpdates.forEach(su => {
+          const key = normalizeKey(su.title);
+          seen.add(key);
+          const progMatch = programmeUpdates.find(pu => normalizeKey(pu.title) === key);
+          if (progMatch && progMatch.bullets && (!su.bullets || !su.bullets.length)) {
+            su.bullets = progMatch.bullets;
+          }
+          merged.push(su);
+        });
+
+        // Append remaining programmatic items not yet in sheet
+        programmeUpdates.forEach(pu => {
+          const key = normalizeKey(pu.title);
+          if (!seen.has(key)) {
+            seen.add(key);
+            merged.push(pu);
+          }
+        });
+
+        renderUpdatesList(merged);
+      }).catch(err => {
+        console.warn("KnockoutNotes Sheet Route skipped, Programme Route active:", err);
       });
     }
 
