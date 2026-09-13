@@ -1,0 +1,601 @@
+/* KnockoutNotes — Anaesthesia Calculators & Paediatric Hub Styles */
+
+/* Hub Layout & Cards */
+.calc-hub-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.5rem 0 2.5rem 0;
+  justify-content: center;
+}
+
+.calc-nav-pill {
+  background: var(--card, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+  color: var(--muted, #94a3b8);
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.calc-nav-pill:hover,
+.calc-nav-pill.active {
+  background: var(--accent, #38bdf8);
+  color: #030712;
+  border-color: var(--accent, #38bdf8);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+  transform: translateY(-1px);
+}
+
+.calc-group-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 3rem 0 1.25rem 0;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--fg, #f8fafc);
+}
+
+.calc-group-title span.badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--accent, #38bdf8);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+/* Featured Hero Card (Paediatric Drug Chart) */
+.calc-hero-card {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(14, 165, 233, 0.03) 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.calc-hero-card::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.calc-hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.calc-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(234, 179, 8, 0.15);
+  color: #facc15;
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Calculator Card Grid */
+.calc-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 640px) {
+  .calc-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tabs & Section Visibility */
+.calc-tab-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.calc-tab-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3D Haptic Depth & Tilt Container Styles */
+.calc-perspective-root {
+  perspective: 1200px;
+}
+
+.calc-box, .airway-box {
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease, box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+}
+
+.calc-box:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.5), 0 0 24px rgba(56, 189, 248, 0.15);
+}
+
+/* Reduced animation on paediatric drug chart hero card: stable, clean, no tilt */
+.calc-hero-card {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.calc-hero-card:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* Micro tactile haptic press feedback for standard boxes */
+.calc-box:active {
+  transform: scale(0.99) translateZ(-4px) !important;
+  transition: transform 0.08s ease !important;
+}
+
+/* Haptic glossy light reflection highlight */
+.calc-box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle 320px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.06), transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.calc-box:hover::after, .calc-hero-card:hover::after {
+  opacity: 1;
+}
+
+.calc-box-header h3 {
+  margin: 0 0 0.35rem 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--fg, #f8fafc);
+}
+
+.calc-box-header p.when-to-use {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted, #94a3b8);
+  line-height: 1.45;
+}
+
+/* Form Controls */
+.calc-form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.calc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.calc-field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted, #94a3b8);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.calc-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.calc-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.15));
+  color: var(--fg, #f8fafc);
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calc-input:focus {
+  outline: none;
+  border-color: var(--accent, #38bdf8);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+}
+
+.calc-input-unit {
+  position: absolute;
+  right: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--muted, #94a3b8);
+  pointer-events: none;
+}
+
+.calc-select {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.15));
+  color: var(--fg, #f8fafc);
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.calc-select:focus {
+  outline: none;
+  border-color: var(--accent, #38bdf8);
+}
+
+/* Radio & Checkbox Groups */
+.calc-choice-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.calc-choice-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.calc-choice-item:hover {
+  background: rgba(56, 189, 248, 0.06);
+}
+
+.calc-choice-item input[type="radio"],
+.calc-choice-item input[type="checkbox"] {
+  margin-top: 0.25rem;
+  accent-color: var(--accent, #38bdf8);
+}
+
+.calc-choice-label {
+  font-size: 0.88rem;
+  color: var(--fg, #e2e8f0);
+  line-height: 1.35;
+}
+
+.calc-choice-points {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent, #38bdf8);
+  white-space: nowrap;
+}
+
+/* Result Area */
+.calc-result-area {
+  margin-top: auto;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.calc-result-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.calc-result-badge.good {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.calc-result-badge.warn {
+  background: rgba(234, 179, 8, 0.15);
+  color: #facc15;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+.calc-result-badge.alert {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.calc-primary-val {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--fg, #f8fafc);
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.calc-primary-val span.unit {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--muted, #94a3b8);
+  margin-left: 0.25rem;
+}
+
+.calc-formula-display {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  color: var(--muted, #94a3b8);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  margin: 0.5rem 0;
+  overflow-x: auto;
+}
+
+.calc-interp {
+  font-size: 0.85rem;
+  color: var(--fg, #cbd5e1);
+  line-height: 1.45;
+  margin: 0.5rem 0 0 0;
+}
+
+.calc-box-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+
+.btn-calc-reset {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--muted, #94a3b8);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-calc-reset:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--fg, #f8fafc);
+}
+
+.calc-source-link {
+  font-size: 0.75rem;
+  color: var(--accent, #38bdf8);
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.calc-source-link:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   PAEDIATRIC DRUG CHART TABLE STYLES
+   ========================================================================== */
+.paeds-airway-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  background: rgba(56, 189, 248, 0.06);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.airway-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.airway-box .label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent, #38bdf8);
+}
+
+.airway-box .val {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--fg, #f8fafc);
+}
+
+.airway-box .sub {
+  font-size: 0.75rem;
+  color: var(--muted, #94a3b8);
+}
+
+.paeds-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.paeds-chart-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.86rem;
+  min-width: 780px;
+}
+
+.paeds-chart-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--fg, #f8fafc);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border, rgba(255, 255, 255, 0.15));
+}
+
+.paeds-chart-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--fg, #cbd5e1);
+  vertical-align: middle;
+}
+
+.paeds-chart-table tr.category-header td {
+  background: rgba(56, 189, 248, 0.08);
+  font-weight: 700;
+  color: var(--accent, #38bdf8);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+}
+
+.paeds-chart-table td.drug-name {
+  font-weight: 600;
+  color: #fff;
+}
+
+.paeds-chart-table td.calculated-dose {
+  font-weight: 700;
+  color: #38bdf8;
+  font-size: 0.95rem;
+}
+
+.paeds-chart-table td.calculated-vol {
+  font-weight: 700;
+  color: #4ade80;
+  font-size: 0.95rem;
+}
+
+.paeds-chart-table .cap-warning {
+  display: inline-block;
+  font-size: 0.7rem;
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  margin-top: 0.25rem;
+}
+
+.paeds-actions-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+}
+
+.paeds-disclaimer-card {
+  background: rgba(234, 179, 8, 0.08);
+  border: 1px solid rgba(234, 179, 8, 0.25);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.5rem;
+  font-size: 0.82rem;
+  color: #fef08a;
+  line-height: 1.5;
+}
+
+/* Print Stylesheet */
+@media print {
+  .site-hud,
+  .kn-mode-switch-dock,
+  .kn-updates-pill,
+  .calc-hub-nav,
+  .paeds-actions-bar,
+  .footer,
+  #knSpatialCanvas {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .calc-hero-card,
+  .paeds-table-wrapper {
+    background: #fff !important;
+    border: 1px solid #000 !important;
+    color: #000 !important;
+    box-shadow: none !important;
+  }
+
+  .paeds-chart-table th,
+  .paeds-chart-table td {
+    color: #000 !important;
+    border-color: #ccc !important;
+  }
+
+  .paeds-chart-table tr.category-header td {
+    background: #f0f0f0 !important;
+    color: #000 !important;
+  }
+
+  .paeds-chart-table td.calculated-dose,
+  .paeds-chart-table td.calculated-vol {
+    color: #000 !important;
+    font-weight: bold !important;
+  }
+}

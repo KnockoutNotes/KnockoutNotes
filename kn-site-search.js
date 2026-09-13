@@ -14,7 +14,9 @@
 
   const pageForType = type => {
     const t = norm(type);
-    if (t.includes("pearl")) return "pearls.html";
+    if (t.includes("calc")) return "calculators.html";
+    if (t.includes("pearl")) return "notes.html#pearls";
+    if (t.includes("valve")) return "notes.html";
     if (t.includes("note")) return "notes.html";
     if (t.includes("viva")) return "viva.html";
     if (t.includes("drug")) return "drugs.html";
@@ -58,8 +60,36 @@
               });
             });
           }
-        }
-      }
+      // Index Calculators
+      const calcEntries = [
+        { Type: "Calculator", Category: "Emergency & Resuscitation", Title: "Paediatric Drug Chart & Airway Sizer", Summary: "Interactive paediatric resuscitation dosing, ETT sizing, Table 42-6 equipment, and i-gel selector from PedsDrugChart.xlsx with PDF export.", href: "calculators.html#paedsHero" },
+        { Type: "Calculator", Category: "Emergency & Resuscitation", Title: "COPUR Paediatric Airway Score", Summary: "Colorado paediatric difficult airway score assessing Chin, Opening, Previous/OSA, Uvula, Range.", href: "calculators.html#calcCopur" },
+        { Type: "Calculator", Category: "Emergency & Resuscitation", Title: "Parkland Burn Resuscitation Calculator", Summary: "Baxter/Parkland crystalloid burn resuscitation formula for first 24 hours.", href: "calculators.html#calcParkland" },
+        { Type: "Calculator", Category: "Perioperative Assessment", Title: "Wilson Risk Score (Difficult Intubation)", Summary: "5-factor risk score predicting difficult direct laryngoscopy (weight, mobility, buck teeth, jaw movement, retrognathia).", href: "calculators.html#calcWilson" },
+        { Type: "Calculator", Category: "Perioperative Assessment", Title: "Child-Pugh Score (Cirrhosis & Periop Mortality)", Summary: "Surgical risk and mortality stratification in liver disease (bilirubin, albumin, INR, ascites, encephalopathy).", href: "calculators.html#calcChildPugh" },
+        { Type: "Calculator", Category: "Perioperative Assessment", Title: "Body Mass Index (BMI)", Summary: "WHO adult body mass index calculation and nutritional classification.", href: "calculators.html#calcBmi" },
+        { Type: "Calculator", Category: "Perioperative Assessment", Title: "METs Functional Capacity", Summary: "ACC/AHA and ESAIC perioperative cardiac functional reserve stratification.", href: "calculators.html#calcMets" },
+        { Type: "Calculator", Category: "Perioperative Assessment", Title: "Duke Activity Status Index (DASI)", Summary: "Validated 12-item cardiorespiratory functional capacity and peak VO2 score.", href: "calculators.html#calcDasi" },
+        { Type: "Calculator", Category: "Perioperative Assessment", Title: "STOP-Bang OSA Screening", Summary: "Obstructive sleep apnoea perioperative screening questionnaire.", href: "calculators.html#calcStopBang" },
+        { Type: "Calculator", Category: "Renal & Acid–Base", Title: "Creatinine Clearance (Cockcroft–Gault)", Summary: "Estimated renal clearance with Actual, Ideal, and Adjusted body weight options.", href: "calculators.html#calcCrCl" },
+        { Type: "Calculator", Category: "Renal & Acid–Base", Title: "Serum Anion Gap & Albumin Correction", Summary: "Evaluation of metabolic acidosis and unmeasured anions with Figge albumin formula.", href: "calculators.html#calcAnionGap" },
+        { Type: "Calculator", Category: "Renal & Acid–Base", Title: "Winter's Formula (Expected PaCO₂)", Summary: "Respiratory compensation evaluator for primary metabolic acidosis.", href: "calculators.html#calcWinters" },
+        { Type: "Calculator", Category: "Renal & Acid–Base", Title: "Delta Gap & Delta Ratio", Summary: "Evaluation of mixed metabolic acidosis and alkalosis.", href: "calculators.html#calcDelta" }
+      ];
+
+      // Index Text Pearls in Notes
+      const pearlEntries = [
+        { Type: "Pearls", Category: "Valve Lesions", Title: "Mitral Stenosis: Rate Matters", Summary: "Tachycardia shortens diastole and impairs LV filling. Haemodynamic goals in MS.", href: "notes.html#pearls" },
+        { Type: "Pearls", Category: "Valve Lesions", Title: "Aortic Stenosis: Fixed Output State", Summary: "Fixed LV outflow tract obstruction and coronary perfusion pressure goals in AS.", href: "notes.html#pearls" },
+        { Type: "Pearls", Category: "Valve Lesions", Title: "Aortic & Mitral Regurgitation: Forward Flow", Summary: "Fast, forward, full: haemodynamic goals in AR and MR.", href: "notes.html#pearls" },
+        { Type: "Pearls", Category: "Pharmacology", Title: "Succinylcholine Intubating Dose", Summary: "1–1.5 mg/kg depolarizing NMBA mechanism and duration.", href: "notes.html#pearls" },
+        { Type: "Pearls", Category: "Pharmacology", Title: "Sugammadex Block Reversal Dosing", Summary: "2 mg/kg moderate block, 4 mg/kg deep block, 16 mg/kg immediate reversal.", href: "notes.html#pearls" },
+        { Type: "Pearls", Category: "Physiology", Title: "FRC as an Oxygen Reservoir", Summary: "Denitrogenation and maximisation of functional residual capacity.", href: "notes.html#pearls" },
+        { Type: "Pearls", Category: "Airway", Title: "Can't Intubate, Can't Oxygenate (CICO)", Summary: "Immediate progression to emergency scalpel-bougie-tube front-of-neck access.", href: "notes.html#pearls" },
+        { Type: "Pearls", Category: "Critical Care", Title: "Sudden Loss of ETCO₂", Summary: "Differentiating circuit disconnection, displacement, PE, and cardiac arrest.", href: "notes.html#pearls" }
+      ];
+
+      out.push(...calcEntries, ...pearlEntries);
       localCache = out;
       return out;
     }

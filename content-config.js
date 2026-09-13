@@ -68,7 +68,7 @@ window.KNOCKOUTNOTES_CONTENT = {
     },
     notes: {
       categories: [
-        {id:'cardiology', title:'Valvular Lesions & Anaesthetic Goals', kicker:'CARDIOLOGY', description:'Valvular heart disease — haemodynamic goals for anaesthesia.', files:[
+        {id:'cardiology', title:'Valve Lesions — Cardiology Pearls', kicker:'VALVE LESIONS', description:'Valvular heart disease — haemodynamic goals for anaesthesia.', files:[
           {url:'assets/cardiology/cardiology_pearl_1_of_4.jpg',title:'Aortic stenosis'},
           {url:'assets/cardiology/cardiology_pearl_2_of_4.jpg',title:'Aortic regurgitation'},
           {url:'assets/cardiology/cardiology_pearl_3_of_4.jpg',title:'Mitral stenosis'},

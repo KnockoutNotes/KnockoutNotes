@@ -47,8 +47,9 @@
 
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="pearls.html">Pearls</a>
+      <a href="notes.html#pearls">Pearls</a>
       <a href="notes.html">Notes</a>
+      <a href="calculators.html">Calculators</a>
       <a href="viva.html">Viva</a>
       <a href="ventilator.html">Workstation</a>
       <a href="drugs.html">Drugs</a>
@@ -68,8 +69,9 @@
   </div>
   <div class="mobile-menu" id="mobileMenu3d">
     <a data-close-menu href="index.html">Home <span>→</span></a>
-    <a data-close-menu href="pearls.html">Pearls <span>→</span></a>
+    <a data-close-menu href="notes.html#pearls">Pearls <span>→</span></a>
     <a data-close-menu href="notes.html">Notes <span>→</span></a>
+    <a data-close-menu href="calculators.html">Calculators <span>→</span></a>
     <a data-close-menu href="viva.html">Viva <span>→</span></a>
     <a data-close-menu href="ventilator.html">Workstation <span>→</span></a>
     <a data-close-menu href="drugs.html">Drugs <span>→</span></a>
@@ -105,6 +107,150 @@
 
       <section class="section" style="padding-top:0;">
         <div id="knLibrary3d"></div>
+      </section>
+
+      <!-- ================================================================
+           NOTES SUBSECTION: CLINICAL PEARLS & ACTIVE RECALL
+           ================================================================ -->
+      <section class="section" id="pearls3d">
+        <div class="section-head fade">
+          <div class="kicker-pill">⚡ HIGH-YIELD CLINICAL RECALL</div>
+          <h2>Clinical Pearls</h2>
+          <p>Instant clinical numbers, valvular disease haemodynamics, and core mechanisms for rapid revision.</p>
+        </div>
+
+        <input class="search fade" id="pearlSearch3d" placeholder="Filter pearls by drug, valve lesion, mechanism, or topic...">
+
+        <div class="filters fade">
+          <button class="filter active" data-filter="all">All Topics</button>
+          <button class="filter" data-filter="valves">Valve Lesions</button>
+          <button class="filter" data-filter="pharm">Pharmacology</button>
+          <button class="filter" data-filter="phys">Physiology</button>
+          <button class="filter" data-filter="airway">Airway</button>
+          <button class="filter" data-filter="icu">Critical Care</button>
+        </div>
+
+        <div class="grid">
+          <!-- Valve Lesion Pearl 1: Mitral Stenosis -->
+          <article class="card filter-card fade" data-category="valves">
+            <div class="card-top">
+              <div class="tag">Valve Lesions</div>
+              <span class="card-date">Mitral Stenosis</span>
+            </div>
+            <h3>Mitral Stenosis: Rate Matters</h3>
+            <p>Tachycardia shortens diastole and critically impairs LV filling across a stenotic valve.</p>
+            <button class="reveal" data-target="p-ms-3d">Reveal Answer</button>
+            <div class="answer" id="p-ms-3d">
+              <strong>Haemodynamic goals:</strong> Maintain sinus rhythm, control ventricular rate (60–75 bpm), ensure adequate but cautious preload, preserve contractility, and avoid acute elevations in pulmonary vascular resistance (PVR).
+              <small class="reference">Reference: Kaplan's Cardiac Anesthesia, 8th ed.</small>
+            </div>
+          </article>
+
+          <!-- Valve Lesion Pearl 2: Aortic Stenosis -->
+          <article class="card filter-card fade" data-category="valves">
+            <div class="card-top">
+              <div class="tag">Valve Lesions</div>
+              <span class="card-date">Aortic Stenosis</span>
+            </div>
+            <h3>Aortic Stenosis: Fixed Output State</h3>
+            <p>Fixed LV outflow tract obstruction sensitive to sudden reductions in SVR and preload.</p>
+            <button class="reveal" data-target="p-as-3d">Reveal Answer</button>
+            <div class="answer" id="p-as-3d">
+              <strong>Haemodynamic goals:</strong> Maintain normal sinus rhythm (atrial kick contributes ~30–40% of LVEDV), avoid tachycardia (shortens coronary perfusion time) and extreme bradycardia (fixed stroke volume), maintain high-normal SVR to preserve coronary perfusion pressure, and maintain generous preload.
+              <small class="reference">Reference: Kaplan's Cardiac Anesthesia, 8th ed.; ACC/AHA Valvular Heart Disease Guidelines.</small>
+            </div>
+          </article>
+
+          <!-- Valve Lesion Pearl 3: Regurgitant Lesions -->
+          <article class="card filter-card fade" data-category="valves">
+            <div class="card-top">
+              <div class="tag">Valve Lesions</div>
+              <span class="card-date">Regurgitation</span>
+            </div>
+            <h3>Aortic & Mitral Regurgitation: Forward Flow</h3>
+            <p>Minimise backwards regurgitant fraction and promote forward systemic cardiac output.</p>
+            <button class="reveal" data-target="p-reg-3d">Reveal Answer</button>
+            <div class="answer" id="p-reg-3d">
+              <strong>Haemodynamic goals:</strong> Faster heart rate (80–100 bpm) shortens diastolic regurgitant time (AR) and systolic emptying time (MR); lower afterload (reduced SVR) promotes forward flow; maintain adequate preload and preserve myocardial contractility. Avoid bradycardia.
+              <small class="reference">Reference: Kaplan's Cardiac Anesthesia, 8th ed.</small>
+            </div>
+          </article>
+
+          <!-- Pharmacology: Succinylcholine -->
+          <article class="card filter-card fade" data-category="pharm">
+            <div class="card-top">
+              <div class="tag">Pharmacology</div>
+              <span class="card-date">NMBA</span>
+            </div>
+            <h3>Succinylcholine</h3>
+            <p><strong>IV intubating dose: 1–1.5 mg/kg</strong> in adults.</p>
+            <button class="reveal" data-target="p13d">Reveal Answer</button>
+            <div class="answer" id="p13d">
+              Depolarizing NMBA with rapid onset (30–60s) and brief duration (5–10 mins). Produces fasciculations followed by flaccid paralysis.
+              <small class="reference">Reference: Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology, 6th ed.</small>
+            </div>
+          </article>
+
+          <!-- Pharmacology: Sugammadex -->
+          <article class="card filter-card fade" data-category="pharm">
+            <div class="card-top">
+              <div class="tag">Pharmacology</div>
+              <span class="card-date">Reversal</span>
+            </div>
+            <h3>Sugammadex</h3>
+            <p>Dose according to depth of rocuronium or vecuronium block.</p>
+            <button class="reveal" data-target="p23d">Reveal Answer</button>
+            <div class="answer" id="p23d">
+              <strong>2 mg/kg</strong> for moderate block (reappearance of T2); <strong>4 mg/kg</strong> for deep block (1–2 post-tetanic counts); <strong>16 mg/kg</strong> for immediate reversal 3 minutes after 1.2 mg/kg rocuronium.
+              <small class="reference">Reference: Stoelting's Pharmacology & Physiology in Anesthetic Practice, 6th ed.</small>
+            </div>
+          </article>
+
+          <!-- Physiology: FRC -->
+          <article class="card filter-card fade" data-category="phys">
+            <div class="card-top">
+              <div class="tag">Physiology</div>
+              <span class="card-date">Oxygenation</span>
+            </div>
+            <h3>FRC as an Oxygen Reservoir</h3>
+            <p>Preoxygenation replaces alveolar nitrogen with oxygen to prolong safe apnoea time.</p>
+            <button class="reveal" data-target="p33d">Reveal Answer</button>
+            <div class="answer" id="p33d">
+              The primary goal is denitrogenation and maximisation of the functional residual capacity (FRC) oxygen store (~2100 mL in a 70kg adult breathing 100% O₂), not merely achieving an SpO₂ of 100%.
+              <small class="reference">Reference: West's Respiratory Physiology; Miller's Anesthesia, 10th ed.</small>
+            </div>
+          </article>
+
+          <!-- Airway: CICO -->
+          <article class="card filter-card fade" data-category="airway">
+            <div class="card-top">
+              <div class="tag">Airway</div>
+              <span class="card-date">Emergency</span>
+            </div>
+            <h3>Can't Intubate, Can't Oxygenate (CICO)</h3>
+            <p>Recognise failure early and immediately progress to emergency front-of-neck access.</p>
+            <button class="reveal" data-target="p43d">Reveal Answer</button>
+            <div class="answer" id="p43d">
+              Declare CICO emergency. Call for senior help, attempt 100% O₂ rescue via supraglottic airway / facemask, and if uncorrected, perform emergency scalpel-bougie-tube cricothyroidotomy immediately.
+              <small class="reference">Reference: Difficult Airway Society (DAS) Guidelines.</small>
+            </div>
+          </article>
+
+          <!-- Critical Care: ETCO2 -->
+          <article class="card filter-card fade" data-category="icu">
+            <div class="card-top">
+              <div class="tag">Critical Care</div>
+              <span class="card-date">Monitoring</span>
+            </div>
+            <h3>Sudden Loss of ETCO₂</h3>
+            <p>Rapidly differentiate equipment disconnections from catastrophic circulatory failure.</p>
+            <button class="reveal" data-target="p63d">Reveal Answer</button>
+            <div class="answer" id="p63d">
+              Rule out circuit disconnection, endotracheal tube displacement/obstruction, sensor failure, massive pulmonary embolism, and sudden circulatory arrest. Check pulse and blood pressure immediately.
+              <small class="reference">Reference: Miller's Anesthesia, 10th ed.</small>
+            </div>
+          </article>
+        </div>
       </section>
     </main>
     </div>
@@ -155,8 +301,9 @@
 
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="pearls.html">Pearls</a>
+      <a href="notes.html#pearls">Pearls</a>
       <a href="notes.html">Notes</a>
+      <a href="calculators.html">Calculators</a>
       <a href="viva.html">Viva</a>
       <a href="ventilator.html">Workstation</a>
       <a href="drugs.html">Drugs</a>
@@ -176,8 +323,9 @@
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <a data-close-menu href="index.html">Home <span>→</span></a>
-    <a data-close-menu href="pearls.html">Pearls <span>→</span></a>
+    <a data-close-menu href="notes.html#pearls">Pearls <span>→</span></a>
     <a data-close-menu href="notes.html">Notes <span>→</span></a>
+    <a data-close-menu href="calculators.html">Calculators <span>→</span></a>
     <a data-close-menu href="viva.html">Viva <span>→</span></a>
     <a data-close-menu href="ventilator.html">Workstation <span>→</span></a>
     <a data-close-menu href="drugs.html">Drugs <span>→</span></a>
@@ -213,6 +361,150 @@
 
       <section class="section" style="padding-top:0;">
         <div id="knLibrary"></div>
+      </section>
+
+      <!-- ================================================================
+           NOTES SUBSECTION: CLINICAL PEARLS & ACTIVE RECALL (Lite View)
+           ================================================================ -->
+      <section class="section" id="pearls">
+        <div class="section-head fade">
+          <div class="kicker-pill">⚡ HIGH-YIELD CLINICAL RECALL</div>
+          <h2>Clinical Pearls</h2>
+          <p>Instant clinical numbers, valvular disease haemodynamics, and core mechanisms for rapid revision.</p>
+        </div>
+
+        <input class="search fade" id="pearlSearch" placeholder="Filter pearls by drug, valve lesion, mechanism, or topic...">
+
+        <div class="filters fade">
+          <button class="filter active" data-filter="all">All Topics</button>
+          <button class="filter" data-filter="valves">Valve Lesions</button>
+          <button class="filter" data-filter="pharm">Pharmacology</button>
+          <button class="filter" data-filter="phys">Physiology</button>
+          <button class="filter" data-filter="airway">Airway</button>
+          <button class="filter" data-filter="icu">Critical Care</button>
+        </div>
+
+        <div class="grid">
+          <!-- Valve Lesion Pearl 1: Mitral Stenosis -->
+          <article class="card filter-card fade" data-category="valves">
+            <div class="card-top">
+              <div class="tag">Valve Lesions</div>
+              <span class="card-date">Mitral Stenosis</span>
+            </div>
+            <h3>Mitral Stenosis: Rate Matters</h3>
+            <p>Tachycardia shortens diastole and critically impairs LV filling across a stenotic valve.</p>
+            <button class="reveal" data-target="p-ms">Reveal Answer</button>
+            <div class="answer" id="p-ms">
+              <strong>Haemodynamic goals:</strong> Maintain sinus rhythm, control ventricular rate (60–75 bpm), ensure adequate but cautious preload, preserve contractility, and avoid acute elevations in pulmonary vascular resistance (PVR).
+              <small class="reference">Reference: Kaplan's Cardiac Anesthesia, 8th ed.</small>
+            </div>
+          </article>
+
+          <!-- Valve Lesion Pearl 2: Aortic Stenosis -->
+          <article class="card filter-card fade" data-category="valves">
+            <div class="card-top">
+              <div class="tag">Valve Lesions</div>
+              <span class="card-date">Aortic Stenosis</span>
+            </div>
+            <h3>Aortic Stenosis: Fixed Output State</h3>
+            <p>Fixed LV outflow tract obstruction sensitive to sudden reductions in SVR and preload.</p>
+            <button class="reveal" data-target="p-as">Reveal Answer</button>
+            <div class="answer" id="p-as">
+              <strong>Haemodynamic goals:</strong> Maintain normal sinus rhythm (atrial kick contributes ~30–40% of LVEDV), avoid tachycardia (shortens coronary perfusion time) and extreme bradycardia (fixed stroke volume), maintain high-normal SVR to preserve coronary perfusion pressure, and maintain generous preload.
+              <small class="reference">Reference: Kaplan's Cardiac Anesthesia, 8th ed.; ACC/AHA Valvular Heart Disease Guidelines.</small>
+            </div>
+          </article>
+
+          <!-- Valve Lesion Pearl 3: Regurgitant Lesions -->
+          <article class="card filter-card fade" data-category="valves">
+            <div class="card-top">
+              <div class="tag">Valve Lesions</div>
+              <span class="card-date">Regurgitation</span>
+            </div>
+            <h3>Aortic & Mitral Regurgitation: Forward Flow</h3>
+            <p>Minimise backwards regurgitant fraction and promote forward systemic cardiac output.</p>
+            <button class="reveal" data-target="p-reg">Reveal Answer</button>
+            <div class="answer" id="p-reg">
+              <strong>Haemodynamic goals:</strong> Faster heart rate (80–100 bpm) shortens diastolic regurgitant time (AR) and systolic emptying time (MR); lower afterload (reduced SVR) promotes forward flow; maintain adequate preload and preserve myocardial contractility. Avoid bradycardia.
+              <small class="reference">Reference: Kaplan's Cardiac Anesthesia, 8th ed.</small>
+            </div>
+          </article>
+
+          <!-- Pharmacology: Succinylcholine -->
+          <article class="card filter-card fade" data-category="pharm">
+            <div class="card-top">
+              <div class="tag">Pharmacology</div>
+              <span class="card-date">NMBA</span>
+            </div>
+            <h3>Succinylcholine</h3>
+            <p><strong>IV intubating dose: 1–1.5 mg/kg</strong> in adults.</p>
+            <button class="reveal" data-target="p1">Reveal Answer</button>
+            <div class="answer" id="p1">
+              Depolarizing NMBA with rapid onset (30–60s) and brief duration (5–10 mins). Produces fasciculations followed by flaccid paralysis.
+              <small class="reference">Reference: Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology, 6th ed.</small>
+            </div>
+          </article>
+
+          <!-- Pharmacology: Sugammadex -->
+          <article class="card filter-card fade" data-category="pharm">
+            <div class="card-top">
+              <div class="tag">Pharmacology</div>
+              <span class="card-date">Reversal</span>
+            </div>
+            <h3>Sugammadex</h3>
+            <p>Dose according to depth of rocuronium or vecuronium block.</p>
+            <button class="reveal" data-target="p2">Reveal Answer</button>
+            <div class="answer" id="p2">
+              <strong>2 mg/kg</strong> for moderate block (reappearance of T2); <strong>4 mg/kg</strong> for deep block (1–2 post-tetanic counts); <strong>16 mg/kg</strong> for immediate reversal 3 minutes after 1.2 mg/kg rocuronium.
+              <small class="reference">Reference: Stoelting's Pharmacology & Physiology in Anesthetic Practice, 6th ed.</small>
+            </div>
+          </article>
+
+          <!-- Physiology: FRC -->
+          <article class="card filter-card fade" data-category="phys">
+            <div class="card-top">
+              <div class="tag">Physiology</div>
+              <span class="card-date">Oxygenation</span>
+            </div>
+            <h3>FRC as an Oxygen Reservoir</h3>
+            <p>Preoxygenation replaces alveolar nitrogen with oxygen to prolong safe apnoea time.</p>
+            <button class="reveal" data-target="p3">Reveal Answer</button>
+            <div class="answer" id="p3">
+              The primary goal is denitrogenation and maximisation of the functional residual capacity (FRC) oxygen store (~2100 mL in a 70kg adult breathing 100% O₂), not merely achieving an SpO₂ of 100%.
+              <small class="reference">Reference: West's Respiratory Physiology; Miller's Anesthesia, 10th ed.</small>
+            </div>
+          </article>
+
+          <!-- Airway: CICO -->
+          <article class="card filter-card fade" data-category="airway">
+            <div class="card-top">
+              <div class="tag">Airway</div>
+              <span class="card-date">Emergency</span>
+            </div>
+            <h3>Can't Intubate, Can't Oxygenate (CICO)</h3>
+            <p>Recognise failure early and immediately progress to emergency front-of-neck access.</p>
+            <button class="reveal" data-target="p4">Reveal Answer</button>
+            <div class="answer" id="p4">
+              Declare CICO emergency. Call for senior help, attempt 100% O₂ rescue via supraglottic airway / facemask, and if uncorrected, perform emergency scalpel-bougie-tube cricothyroidotomy immediately.
+              <small class="reference">Reference: Difficult Airway Society (DAS) Guidelines.</small>
+            </div>
+          </article>
+
+          <!-- Critical Care: ETCO2 -->
+          <article class="card filter-card fade" data-category="icu">
+            <div class="card-top">
+              <div class="tag">Critical Care</div>
+              <span class="card-date">Monitoring</span>
+            </div>
+            <h3>Sudden Loss of ETCO₂</h3>
+            <p>Rapidly differentiate equipment disconnections from catastrophic circulatory failure.</p>
+            <button class="reveal" data-target="p6">Reveal Answer</button>
+            <div class="answer" id="p6">
+              Rule out circuit disconnection, endotracheal tube displacement/obstruction, sensor failure, massive pulmonary embolism, and sudden circulatory arrest. Check pulse and blood pressure immediately.
+              <small class="reference">Reference: Miller's Anesthesia, 10th ed.</small>
+            </div>
+          </article>
+        </div>
       </section>
     </main>
     </div>

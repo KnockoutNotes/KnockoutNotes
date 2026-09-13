@@ -1,0 +1,2655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anaesthesia Calculators | KnockoutNotes</title>
+  <meta name="description" content="Clinical anaesthesia calculators, interactive paediatric drug chart, acid-base tools, and perioperative risk scores.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page-common.css">
+  <link rel="stylesheet" href="library-styles.css">
+  <link rel="stylesheet" href="calculators.css">
+  <script src="sheet-config.js"></script>
+  <script src="content-config.js"></script>
+</head>
+<body data-content-page="calculators" class="mode-3d">
+
+<!-- Procedural Anaesthesia Background Canvas -->
+<canvas id="knSpatialCanvas"></canvas>
+
+<!-- Persistent Top-Left Mode Switch Dock (3D View vs Lite View) -->
+<div class="kn-mode-switch-dock" id="knModeSwitch" role="group" aria-label="Interface View Mode">
+  <button class="kn-mode-btn active" data-mode="3d" title="Switch to Cinematic 3D Spatial Experience" aria-label="3D View">
+    <span>✦ 3D VIEW</span>
+  </button>
+  <button class="kn-mode-btn" data-mode="lite" title="Switch to Familiar Clinical Lite View" aria-label="Lite View">
+    <span>⚡ LITE VIEW</span>
+  </button>
+</div>
+
+<!-- ==========================================================================
+     PRESENTATION LAYER 1: IMMERSIVE 3D VIEW (Active on body.mode-3d)
+     ========================================================================== -->
+<div class="view-layer-3d">
+  <header class="site-hud">
+    <div class="hud-capsule">
+      <a class="brand" href="index.html" aria-label="KnockoutNotes home">
+        <div class="brand-icon-wrap">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+        </div>
+        <div class="brand-name">Knockout<span>Notes</span></div>
+      </a>
+
+      <div class="hud-path-indicator">
+        <span class="hud-pulse-dot"></span>
+        <span id="knHudPath3d">KN // ANAESTHESIA CALCULATORS</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="notes.html#pearls">Pearls</a>
+        <a href="notes.html">Notes</a>
+        <a href="calculators.html" class="active" style="color:var(--accent,#38bdf8);">Calculators</a>
+        <a href="viva.html">Viva</a>
+        <a href="ventilator.html">Workstation</a>
+        <a href="drugs.html">Drugs</a>
+        <a href="critical-care.html">Critical Care</a>
+        <a href="recent-updates.html">Updates</a>
+        <a href="resources.html">About</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="nav-search-trigger" data-open-search aria-label="Open search">
+          <span>Search</span>
+          <kbd>⌘K</kbd>
+        </button>
+        <button class="icon-btn" id="themeBtn3d" aria-label="Toggle theme">☾</button>
+        <button class="menu-btn" id="menuBtn3d" aria-label="Open menu" aria-expanded="false">⋮</button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu3d">
+      <a data-close-menu href="index.html">Home <span>→</span></a>
+      <a data-close-menu href="notes.html#pearls">Pearls <span>→</span></a>
+      <a data-close-menu href="notes.html">Notes <span>→</span></a>
+      <a data-close-menu href="calculators.html">Calculators <span>→</span></a>
+      <a data-close-menu href="viva.html">Viva <span>→</span></a>
+      <a data-close-menu href="ventilator.html">Workstation <span>→</span></a>
+      <a data-close-menu href="drugs.html">Drugs <span>→</span></a>
+      <a data-close-menu href="critical-care.html">Critical Care <span>→</span></a>
+      <a data-close-menu href="recent-updates.html">Updates <span>→</span></a>
+      <a data-close-menu href="resources.html">About <span>→</span></a>
+    </div>
+  </header>
+
+  <div class="spatial-stage">
+    <div class="spatial-world">
+      <main class="container">
+        
+        <!-- Search Section -->
+        <section class="kn-search-section">
+          <div class="kn-search-card">
+            <div class="kn-search-kicker">🧮 CLINICAL UTILITY SUITE</div>
+            <h1>Anaesthesia Calculators</h1>
+            <p>Evidence-based dosing formulas, paediatric airway sizing, renal clearances, and perioperative assessment tools.</p>
+            <div class="kn-site-search">
+              <span class="kn-search-icon">⌕</span>
+              <input id="knSiteSearch3d" type="search" placeholder="Search paediatric chart, Parkland, Cockcroft-Gault, DASI, Winter's...">
+              <button id="knSearchClear3d">×</button>
+            </div>
+            <div id="knSearchStatus3d" class="kn-search-status">Start typing to filter calculators.</div>
+            <div id="knSearchResults3d" class="kn-search-results"></div>
+          </div>
+        </section>
+
+        <!-- Category Switcher Tabs -->
+        <div class="calc-hub-nav fade" role="tablist" aria-label="Calculator Categories">
+          <button class="calc-nav-pill active" data-calc-tab="paeds" role="tab" aria-selected="true">⚡ Paediatric (Chart &amp; Airway)</button>
+          <button class="calc-nav-pill" data-calc-tab="periop" role="tab" aria-selected="false">📋 Perioperative Assessment</button>
+          <button class="calc-nav-pill" data-calc-tab="emergency" role="tab" aria-selected="false">🚨 Emergency &amp; Resuscitation</button>
+          <button class="calc-nav-pill" data-calc-tab="renal" role="tab" aria-selected="false">🧪 Renal &amp; Acid–Base</button>
+          <button class="calc-nav-pill" data-calc-tab="all" role="tab" aria-selected="false">✦ View All</button>
+        </div>
+
+        <!-- TAB CONTENT: PAEDIATRIC (DRUG CHART, AIRWAY SIZER & COPUR) -->
+        <div class="calc-tab-content active" id="tabPaeds3d" data-tab-name="paeds">
+        <div class="calc-group-title fade" id="groupPaeds3d">
+          <span>Paediatric Resuscitation &amp; Airway</span>
+          <span class="badge">Interactive Chart Engine</span>
+        </div>
+
+        <!-- HERO HIGHLIGHT: PAEDIATRIC DRUG CHART -->
+        <section class="calc-hero-card fade" id="paedsHero3d">
+          <div class="calc-hero-header">
+            <div>
+              <div class="calc-hero-badge">⭐ FEATURED CLINICAL ENGINE</div>
+              <h2 style="font-size:1.85rem; margin:0.4rem 0 0.2rem 0; color:#fff;">Paediatric Drug Chart & Airway Sizer</h2>
+              <p style="margin:0; font-size:0.92rem; color:#94a3b8;">
+                Imported directly from clinical reference spreadsheet (<code>PedsDrugChart.xlsx</code>). Computes 16 emergency, induction, analgesic, and paralytic drugs with equipment sizing.
+              </p>
+            </div>
+            <div>
+              <button class="btn-cinematic primary" id="btnPaedsPdf3d" style="padding:0.65rem 1.25rem;">
+                📄 Generate PDF Drug Chart
+              </button>
+            </div>
+          </div>
+
+          <!-- Patient Input Form -->
+          <div class="calc-form-row" style="background:rgba(0,0,0,0.3); padding:1.25rem; border-radius:10px; border:1px solid rgba(255,255,255,0.08);">
+            <div class="calc-field">
+              <label for="paedsWt3d">Weight (kg) *</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="paedsWt3d" type="number" step="0.1" min="0.5" max="120" placeholder="e.g. 14.3" value="14.3">
+                <span class="calc-input-unit">kg</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="paedsAge3d">Age (years) *</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="paedsAge3d" type="number" step="0.1" min="0" max="18" placeholder="e.g. 7" value="7">
+                <span class="calc-input-unit">yrs</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="paedsCase3d">Case / Ref No. (Optional)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="paedsCase3d" type="text" placeholder="e.g. OR-4" maxlength="20">
+              </div>
+            </div>
+            <div class="calc-field" style="justify-content:flex-end;">
+              <button class="btn-calc-reset" id="btnPaedsReset3d" style="height:40px;">Reset Inputs</button>
+            </div>
+          </div>
+
+          <!-- Airway Sizing Strip (Table 42-6 Sizing of Airway Equipment in Children) -->
+          <div class="paeds-airway-strip" id="paedsAirwayStrip3d">
+            <div class="airway-box">
+              <span class="label">ETT Size (Uncuffed)</span>
+              <span class="val" id="paedsEttUncuffed3d">5.75 mm ID</span>
+              <span class="sub">Formula: (Age / 4) + 4 mm</span>
+            </div>
+            <div class="airway-box">
+              <span class="label">ETT Size (Cuffed)</span>
+              <span class="val" id="paedsEttCuffed3d">5.25 mm ID</span>
+              <span class="sub">Formula: (Age / 4) + 3.5 mm</span>
+            </div>
+            <div class="airway-box">
+              <span class="label">ET Depth at Lips</span>
+              <span class="val" id="paedsDepth3d">15.5 cm at lips</span>
+              <span class="sub">Formula: (Age / 2) + 12 cm</span>
+            </div>
+            <div class="airway-box">
+              <span class="label">Laryngoscope Blade</span>
+              <span class="val" id="paedsBlade3d">Size 2 (Mac)</span>
+              <span class="sub">Table 42-6 bracket</span>
+            </div>
+            <div class="airway-box">
+              <span class="label">Suction Catheter</span>
+              <span class="val" id="paedsSuction3d">10 Fr</span>
+              <span class="sub">Table 42-6 bracket</span>
+            </div>
+            <div class="airway-box">
+              <span class="label">Oral Airway (Guedel)</span>
+              <span class="val" id="paedsGuedel3d">Size 2 (70 mm)</span>
+              <span class="sub">Table 42-6 bracket</span>
+            </div>
+            <div class="airway-box">
+              <span class="label">Face Mask</span>
+              <span class="val" id="paedsMask3d">Size 2</span>
+              <span class="sub">Table 42-6 bracket</span>
+            </div>
+            <div class="airway-box">
+              <span class="label">i-gel Supraglottic Size</span>
+              <span class="val" id="paedsIgel3d">Size 2 (Grey / 12–25 kg)</span>
+              <span class="sub">Manufacturer weight bracket</span>
+            </div>
+          </div>
+
+          <!-- Table of 16 Drugs -->
+          <div class="paeds-table-wrapper">
+            <table class="paeds-chart-table" id="paedsTable3d">
+              <thead>
+                <tr>
+                  <th>Drug</th>
+                  <th>Dose Basis</th>
+                  <th>Calculated Dose</th>
+                  <th>Route</th>
+                  <th>Concentration</th>
+                  <th>Volume to Draw</th>
+                  <th>Clinical Notes / Preparation</th>
+                </tr>
+              </thead>
+              <tbody id="paedsTableBody3d">
+                <!-- Injected live by paeds-chart-engine.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Action bar -->
+          <div class="paeds-actions-bar">
+            <div style="font-size:0.85rem; color:#94a3b8;">
+              <span>Source: imported paediatric drug-chart spreadsheet (<code>PedsDrugChart.xlsx</code>)</span>
+            </div>
+            <div>
+              <button class="btn-cinematic primary" id="btnPaedsPdfBottom3d">
+                📄 Generate PDF Drug Chart
+              </button>
+            </div>
+          </div>
+
+          <!-- Safety Disclaimer Card -->
+          <div class="paeds-disclaimer-card">
+            <strong>⚠️ IMPORTANT PAEDIATRIC SAFETY NOTICE:</strong>
+            This calculator is an educational calculation aid derived from the uploaded reference spreadsheet and does not replace clinical judgment, institutional paediatric protocols, or independent double-check verification. Verify all doses and dilutions before administration.
+          </div>
+        </section>
+
+                  <div style="margin-top:2rem;">
+          <!-- Colorado Paediatric Airway Score (COPUR) -->
+          <article class="calc-box fade" id="calcCopur3d" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Paediatric Airway Score</div>
+              <h3>COPUR Paediatric Airway Score (Colorado Score)</h3>
+              <p class="when-to-use">Specialized paediatric airway risk scoring tool assessing Chin, Opening, Previous intubations/OSA, Uvula, Range of motion, plus phenotypic modifiers.</p>
+            </div>
+
+            <div class="calc-form-row" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+              <div class="calc-field">
+                <label for="copurChin3d">C — Chin (Side view)</label>
+                <select class="calc-select" id="copurChin3d">
+                  <option value="1" selected>Normal size (1 pt)</option>
+                  <option value="2">Small, moderately hypoplastic (2 pts)</option>
+                  <option value="3">Markedly recessive (3 pts)</option>
+                  <option value="4">Extremely hypoplastic (4 pts)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="copurOpening3d">O — Opening (Interdental)</label>
+                <select class="calc-select" id="copurOpening3d">
+                  <option value="1" selected>&gt; 40 mm (1 pt)</option>
+                  <option value="2">20 – 40 mm (2 pts)</option>
+                  <option value="3">10 – 20 mm (3 pts)</option>
+                  <option value="4">&lt; 10 mm (4 pts)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="copurPrev3d">P — Previous / OSA</label>
+                <select class="calc-select" id="copurPrev3d">
+                  <option value="1" selected>Previous intubation without difficulty (1 pt)</option>
+                  <option value="2">No past intubations, no OSA evidence (2 pts)</option>
+                  <option value="3">Previous difficult intubation or OSA (3 pts)</option>
+                  <option value="4">Extreme/failed intubation or tracheostomy (4 pts)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="copurUvula3d">U — Uvula (Mouth open, tongue out)</label>
+                <select class="calc-select" id="copurUvula3d">
+                  <option value="1" selected>Tip of uvula visible (1 pt)</option>
+                  <option value="2">Uvula partially visible (2 pts)</option>
+                  <option value="3">Uvula concealed, soft palate visible (3 pts)</option>
+                  <option value="4">Soft palate not visible at all (4 pts)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="copurRange3d">R — Range (Ear to orbit angle)</label>
+                <select class="calc-select" id="copurRange3d">
+                  <option value="1" selected>&gt; 120° (1 pt)</option>
+                  <option value="2">60° – 120° (2 pts)</option>
+                  <option value="3">30° – 60° (3 pts)</option>
+                  <option value="4">&lt; 30° (4 pts)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- COPUR Modifiers -->
+            <div style="margin-top:0.5rem; margin-bottom:1rem;">
+              <label style="font-size:0.8rem; font-weight:700; color:#94a3b8; text-transform:uppercase;">Clinical Modifiers (Select all that apply):</label>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.6rem; margin-top:0.4rem;">
+                <label class="calc-choice-item">
+                  <input type="checkbox" id="copurModBuck3d">
+                  <span class="calc-choice-label">Prominent buck teeth (+1 pt)</span>
+                </label>
+                <label class="calc-choice-item">
+                  <input type="checkbox" id="copurModMacro3d">
+                  <span class="calc-choice-label">Macroglossia / Large tongue (+1 pt)</span>
+                </label>
+                <label class="calc-choice-item">
+                  <input type="checkbox" id="copurModObese3d">
+                  <span class="calc-choice-label">Extreme paediatric obesity (+1 pt)</span>
+                </label>
+                <label class="calc-choice-item">
+                  <input type="checkbox" id="copurModMps3d">
+                  <span class="calc-choice-label">Mucopolysaccharidosis (+2 pts)</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="copurResult3d">
+              <div class="calc-result-badge good" id="copurBadge3d">Easy Intubation</div>
+              <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:baseline;">
+                <div class="calc-primary-val" id="copurVal3d">5 <span class="unit">Points</span></div>
+                <div class="calc-primary-val" id="copurGlotticVal3d" style="font-size:1.15rem; color:#38bdf8;">Cormack-Lehane Grade 1 Expected</div>
+              </div>
+              <div class="calc-formula-display">5–7: Easy | 8–10: More difficult (laryngeal pressure) | 11–13: Difficult | 14–15: Advanced airway | ≥ 16: Dangerous</div>
+              <div class="calc-interp" id="copurInterp3d">Conventional direct laryngoscopy or standard paediatric videolaryngoscope indicated.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnCopurReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/39124561/" target="_blank" rel="noopener">Source: Petrov et al. (J Clin Med 2024;13:4294) ↗</a>
+            </div>
+          </article>
+          </div>
+        </div><!-- /#tabPaeds3d -->
+
+        <!-- TAB CONTENT: EMERGENCY & RESUSCITATION -->
+        <div class="calc-tab-content active" id="tabEmergency3d" data-tab-name="emergency">
+        <div class="calc-group-title fade" id="groupEmergency3d">
+          <span>Emergency &amp; Resuscitation</span>
+          <span class="badge">Critical Utilities</span>
+        </div>
+
+        <div class="calc-card-grid">
+          <!-- Parkland Burn Formula -->
+          <article class="calc-box fade" id="calcParkland3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Resuscitation</div>
+              <h3>Parkland Burn Resuscitation</h3>
+              <p class="when-to-use">Calculates crystalloid fluid requirements in the first 24 hours for patients with significant 2nd and 3rd degree burns.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="parklandWt3d">Body Weight (kg)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="parklandWt3d" type="number" step="1" min="1" max="250" placeholder="70" value="70">
+                  <span class="calc-input-unit">kg</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="parklandTbsa3d">% TBSA Burned (2nd/3rd°)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="parklandTbsa3d" type="number" step="1" min="1" max="100" placeholder="30" value="30">
+                  <span class="calc-input-unit">%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="parklandHrs3d">Time Since Burn (hours)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="parklandHrs3d" type="number" step="0.5" min="0" max="24" placeholder="2" value="2">
+                  <span class="calc-input-unit">hrs</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="parklandGiven3d">Fluids Given So Far</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="parklandGiven3d" type="number" step="50" min="0" max="20000" placeholder="1000" value="1000">
+                  <span class="calc-input-unit">mL</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="parklandResult3d">
+              <div class="calc-result-badge good">Baxter / Parkland Formula</div>
+              <div class="calc-primary-val" id="parklandTotalVal3d">8,400 <span class="unit">mL / 24h</span></div>
+              <div class="calc-formula-display">4 mL × Weight (kg) × % TBSA</div>
+              <div class="calc-interp" id="parklandInterp3d">
+                <strong>1st 8h window (remaining 6.0 hrs):</strong> 3,200 mL remaining → <strong>533 mL/hr</strong>.<br>
+                <strong>Next 16h window:</strong> 4,200 mL total → <strong>263 mL/hr</strong>.<br>
+                <em>Fluid: Ringer's Lactate / Hartmann's solution. Target adult urine output: 0.5 mL/kg/h.</em>
+              </div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnParklandReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/5688005/" target="_blank" rel="noopener">Source: Baxter & Shires (1968) ↗</a>
+            </div>
+          </article>
+        </div>
+
+        </div>
+        </div><!-- /#tabEmergency3d -->
+
+        <!-- TAB CONTENT: PERIOPERATIVE ASSESSMENT -->
+        <div class="calc-tab-content active" id="tabPeriop3d" data-tab-name="periop">
+        <div class="calc-group-title fade" id="groupPeriop3d">
+          <span>Perioperative Assessment</span>
+          <span class="badge">Risk Stratification</span>
+        </div>
+
+        <div class="calc-card-grid">
+          <!-- Wilson Risk Score for Difficult Intubation -->
+          <article class="calc-box fade" id="calcWilson3d" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Airway Risk Score</div>
+              <h3>Wilson Risk Score (Difficult Intubation)</h3>
+              <p class="when-to-use">Validated 5-factor risk scoring system predicting difficult direct laryngoscopy based on weight, neck mobility, buck teeth, jaw subluxation, and retrognathia.</p>
+            </div>
+
+            <div class="calc-form-row" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+              <div class="calc-field">
+                <label for="wilsonWt3d">1) Patient Weight</label>
+                <select class="calc-select" id="wilsonWt3d">
+                  <option value="0" selected>&lt; 90 kg (0 pts)</option>
+                  <option value="1">90 – 110 kg (1 pt)</option>
+                  <option value="2">&gt; 110 kg (2 pts)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="wilsonMobility3d">2) Head &amp; Neck Mobility</label>
+                <select class="calc-select" id="wilsonMobility3d">
+                  <option value="0" selected>&gt; 90° full range (0 pts)</option>
+                  <option value="1">~90° moderate reduction (1 pt)</option>
+                  <option value="2">&lt; 90° severe reduction (2 pts)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="wilsonJaw3d">3) Jaw Movement / Subluxation</label>
+                <select class="calc-select" id="wilsonJaw3d">
+                  <option value="0" selected>IO &gt; 5 cm or SLux &gt; 0 (0 pts)</option>
+                  <option value="1">IO = 5 cm or SLux = 0 (1 pt)</option>
+                  <option value="2">IO &lt; 5 cm or SLux &lt; 0 (2 pts)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="wilsonBuck3d">4) Buck Teeth / Incisors</label>
+                <select class="calc-select" id="wilsonBuck3d">
+                  <option value="0" selected>Absent (0 pts)</option>
+                  <option value="1">Moderate prominence (1 pt)</option>
+                  <option value="2">Severe prominence (2 pts)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="wilsonRetro3d">5) Retrognathia / Receding Chin</label>
+                <select class="calc-select" id="wilsonRetro3d">
+                  <option value="0" selected>Absent (0 pts)</option>
+                  <option value="1">Moderate retrognathia (1 pt)</option>
+                  <option value="2">Severe retrognathia (2 pts)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="wilsonResult3d">
+              <div class="calc-result-badge good" id="wilsonBadge3d">Easy Intubation</div>
+              <div class="calc-primary-val" id="wilsonVal3d">0 <span class="unit">/ 10 Points</span></div>
+              <div class="calc-formula-display">0–1: Easy | 2–3: Possibly difficult intubation | ≥ 4: Often difficult intubation</div>
+              <div class="calc-interp" id="wilsonInterp3d">Low likelihood of difficult direct laryngoscopy. Standard airway management indicated.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnWilsonReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/3415886/" target="_blank" rel="noopener">Source: Wilson ME et al. (Br J Anaesth 1988) ↗</a>
+            </div>
+          </article>
+          <!-- Child-Pugh Score for Cirrhosis -->
+          <article class="calc-box fade" id="calcChildPugh3d" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Hepatic &amp; Periop Mortality</div>
+              <h3>Child-Pugh Score (Hepatic Disease &amp; Surgical Risk)</h3>
+              <p class="when-to-use">Stratifies the severity of liver dysfunction, prognosis, and perioperative mortality in patients undergoing surgical procedures.</p>
+            </div>
+
+            <div class="calc-form-row" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+              <div class="calc-field">
+                <label for="cpBili3d">Total Bilirubin (mg/dL)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="cpBili3d" type="number" step="0.1" min="0.1" max="50" placeholder="1.2" value="1.2">
+                  <span class="calc-input-unit">mg/dL</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="cpAlb3d">Serum Albumin (g/dL)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="cpAlb3d" type="number" step="0.1" min="0.5" max="6.0" placeholder="3.8" value="3.8">
+                  <span class="calc-input-unit">g/dL</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="cpInr3d">INR / Prothrombin Time</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="cpInr3d" type="number" step="0.05" min="0.8" max="10" placeholder="1.1" value="1.1">
+                  <span class="calc-input-unit">INR</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="cpAscites3d">Ascites</label>
+                <select class="calc-select" id="cpAscites3d">
+                  <option value="1" selected>None (1 pt)</option>
+                  <option value="2">Mild / Controlled on diuretics (2 pts)</option>
+                  <option value="3">Moderate / Severe / Refractory (3 pts)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="cpEnceph3d">Hepatic Encephalopathy</label>
+                <select class="calc-select" id="cpEnceph3d">
+                  <option value="1" selected>None / Grade 0 (1 pt)</option>
+                  <option value="2">Grade 1–2 (Mild confusion/sleep inversion) (2 pts)</option>
+                  <option value="3">Grade 3–4 (Somnolence to coma) (3 pts)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="cpResult3d">
+              <div class="calc-result-badge good" id="cpBadge3d">Child Class A</div>
+              <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:baseline;">
+                <div class="calc-primary-val" id="cpVal3d">5 <span class="unit">/ 15 Points</span></div>
+                <div class="calc-primary-val" id="cpClassVal3d" style="font-size:1.25rem; color:#4ade80;">Class A (5–6 pts)</div>
+              </div>
+              <div class="calc-formula-display">Class A: 5–6 pts | Class B: 7–9 pts | Class C: 10–15 pts</div>
+              <div class="calc-interp" id="cpInterp3d">100% 1-year survival. Approx. 10% perioperative mortality. Elective surgery generally well tolerated with careful fluid and coagulopathy management.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnCpReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/4541913/" target="_blank" rel="noopener">Source: Pugh RN et al. (Br J Surg 1973) ↗</a>
+            </div>
+          </article>
+          <!-- BMI -->
+          <article class="calc-box fade" id="calcBmi3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Anthropometry</div>
+              <h3>Body Mass Index (BMI)</h3>
+              <p class="when-to-use">Standard WHO international classification of adult nutritional and body mass status.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="bmiWt3d">Weight (kg)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="bmiWt3d" type="number" step="0.5" min="20" max="300" placeholder="70" value="70">
+                  <span class="calc-input-unit">kg</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="bmiHt3d">Height (cm)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="bmiHt3d" type="number" step="1" min="100" max="250" placeholder="175" value="175">
+                  <span class="calc-input-unit">cm</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="bmiResult3d">
+              <div class="calc-result-badge good" id="bmiBadge3d">Normal Weight</div>
+              <div class="calc-primary-val" id="bmiVal3d">22.9 <span class="unit">kg/m²</span></div>
+              <div class="calc-formula-display">BMI = Weight (kg) ÷ [Height (m)]²</div>
+              <div class="calc-interp" id="bmiInterp3d">WHO adult classification: 18.5 – 24.9 kg/m². Low anaesthetic risk related to body habitus.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnBmiReset3d">Reset</button>
+              <a class="calc-source-link" href="https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight" target="_blank" rel="noopener">Source: WHO Technical Report ↗</a>
+            </div>
+          </article>
+
+          <!-- METs -->
+          <article class="calc-box fade" id="calcMets3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Functional Reserve</div>
+              <h3>METs Functional Capacity</h3>
+              <p class="when-to-use">Preoperative functional capacity assessment derived from ACC/AHA and ESAIC guidelines.</p>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:1.25rem;">
+              <label for="metsSelect3d">Highest Achievable Physical Activity</label>
+              <select class="calc-select" id="metsSelect3d">
+                <option value="poor">&lt; 4 METs: Unable to climb 1 flight of stairs or walk 2 blocks</option>
+                <option value="moderate" selected>4 – 6 METs: Can climb 1–2 flights of stairs, walk up a hill, carry groceries</option>
+                <option value="good">7 – 10 METs: Can jog, swim, participate in tennis or heavy yard work</option>
+                <option value="excellent">&gt; 10 METs: Strenuous athletics, competitive sports, vigorous cycling</option>
+              </select>
+            </div>
+
+            <div class="calc-result-area" id="metsResult3d">
+              <div class="calc-result-badge warn" id="metsBadge3d">Moderate Reserve</div>
+              <div class="calc-primary-val" id="metsVal3d">4 – 6 <span class="unit">METs</span></div>
+              <div class="calc-formula-display">1 MET = 3.5 mL O₂ / kg / min (resting metabolic rate)</div>
+              <div class="calc-interp" id="metsInterp3d">Sufficient functional capacity for most low-to-intermediate risk surgeries without further invasive cardiac testing if clinically stable.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnMetsReset3d">Reset</button>
+              <a class="calc-source-link" href="https://www.ahajournals.org/doi/10.1161/CIR.0000000000000106" target="_blank" rel="noopener">Source: ACC/AHA Guidelines ↗</a>
+            </div>
+          </article>
+
+          <!-- DASI -->
+          <article class="calc-box fade" id="calcDasi3d" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Cardiorespiratory Score</div>
+              <h3>Duke Activity Status Index (DASI)</h3>
+              <p class="when-to-use">Validated 12-item questionnaire quantifying functional capacity, peak VO₂, and 30-day perioperative cardiac risk (METS Study, Lancet 2018).</p>
+            </div>
+
+            <div class="calc-choice-group" id="dasiItemsContainer3d" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+              <!-- Checkboxes rendered dynamically by calculators.js -->
+            </div>
+
+            <div class="calc-result-area" id="dasiResult3d">
+              <div class="calc-result-badge good" id="dasiBadge3d">DASI Score</div>
+              <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:baseline;">
+                <div class="calc-primary-val" id="dasiScoreVal3d">0.0 <span class="unit">/ 58.2</span></div>
+                <div class="calc-primary-val" id="dasiVo2Val3d" style="font-size:1.3rem; color:#38bdf8;">Peak VO₂: 9.6 <span class="unit">mL/kg/min</span></div>
+                <div class="calc-primary-val" id="dasiMetsVal3d" style="font-size:1.3rem; color:#4ade80;">Est. METs: 2.7 <span class="unit">METs</span></div>
+              </div>
+              <div class="calc-formula-display">Peak VO₂ = (0.43 × DASI) + 9.6 | Estimated METs = Peak VO₂ ÷ 3.5</div>
+              <div class="calc-interp" id="dasiInterp3d">Select the activities the patient can perform without significant chest pain or breathlessness.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnDasiReset3d">Deselect All</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/2782356/" target="_blank" rel="noopener">Source: Hlatky et al. (1989) & METS Study (Lancet 2018) ↗</a>
+            </div>
+          </article>
+
+          <!-- STOP-Bang -->
+          <article class="calc-box fade" id="calcStopBang3d" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Airway & Sleep</div>
+              <h3>STOP-Bang OSA Screening</h3>
+              <p class="when-to-use">Validated questionnaire identifying patients at risk of obstructive sleep apnoea for perioperative airway and monitoring planning.</p>
+            </div>
+
+            <div class="calc-choice-group" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbSnore3d">
+                <span class="calc-choice-label"><strong>S — Snoring:</strong> Do you snore loudly (louder than talking or heard through closed doors)?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbTired3d">
+                <span class="calc-choice-label"><strong>T — Tiredness:</strong> Do you often feel tired, fatigued, or sleepy during the daytime?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbObserved3d">
+                <span class="calc-choice-label"><strong>O — Observed:</strong> Has anyone observed you stop breathing or choking during sleep?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbPressure3d">
+                <span class="calc-choice-label"><strong>P — Pressure:</strong> Do you have or are being treated for high blood pressure?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbBmi3d">
+                <span class="calc-choice-label"><strong>B — BMI:</strong> Body Mass Index &gt; 35 kg/m²?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbAge3d">
+                <span class="calc-choice-label"><strong>A — Age:</strong> Age &gt; 50 years old?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbNeck3d">
+                <span class="calc-choice-label"><strong>N — Neck:</strong> Neck circumference &gt; 40 cm (female) or &gt; 43 cm (male)?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbMale3d">
+                <span class="calc-choice-label"><strong>G — Gender:</strong> Male sex?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="sbResult3d">
+              <div class="calc-result-badge good" id="sbBadge3d">Low Risk of OSA</div>
+              <div class="calc-primary-val" id="sbVal3d">0 <span class="unit">/ 8 Yes</span></div>
+              <div class="calc-formula-display">Low: 0–2 | Intermediate: 3–4 | High: 5–8 or STOP score ≥ 2 + (Male / BMI &gt; 35 / Neck)</div>
+              <div class="calc-interp" id="sbInterp3d">Screening questionnaire only. Not a formal diagnostic polysomnogram. High-risk patients require opioid caution and airway vigilance.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnSbReset3d">Clear</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/18431114/" target="_blank" rel="noopener">Source: Chung et al. (Anesthesiology 2008) ↗</a>
+            </div>
+          </article>
+        </div>
+
+        </div>
+        </div><!-- /#tabPeriop3d -->
+
+        <!-- TAB CONTENT: RENAL & ACID-BASE -->
+        <div class="calc-tab-content active" id="tabRenal3d" data-tab-name="renal">
+        <div class="calc-group-title fade" id="groupRenal3d">
+          <span>Renal &amp; Acid–Base</span>
+          <span class="badge">Biochemical Equations</span>
+        </div>
+
+        <div class="calc-card-grid">
+          <!-- Cockcroft-Gault -->
+          <article class="calc-box fade" id="calcCrCl3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Renal Clearance</div>
+              <h3>Creatinine Clearance (Cockcroft–Gault)</h3>
+              <p class="when-to-use">Estimates creatinine clearance for renal drug dosing adjustments in adult patients.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="cgAge3d">Age (years)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="cgAge3d" type="number" step="1" min="18" max="110" placeholder="65" value="65">
+                  <span class="calc-input-unit">yrs</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="cgSex3d">Sex</label>
+                <select class="calc-select" id="cgSex3d">
+                  <option value="male" selected>Male (Factor 1.0)</option>
+                  <option value="female">Female (Factor 0.85)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="cgWeight3d">Weight (kg)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="cgWeight3d" type="number" step="0.5" min="25" max="250" placeholder="70" value="70">
+                  <span class="calc-input-unit">kg</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="cgHeight3d">Height (cm) — for IBW</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="cgHeight3d" type="number" step="1" min="100" max="230" placeholder="175" value="175">
+                  <span class="calc-input-unit">cm</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="cgScr3d">Serum Creatinine</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="cgScr3d" type="number" step="0.01" min="0.1" max="20" placeholder="1.0" value="1.0">
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="cgScrUnit3d">Creatinine Unit</label>
+                <select class="calc-select" id="cgScrUnit3d">
+                  <option value="mg/dL" selected>mg/dL</option>
+                  <option value="umol/L">µmol/L</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:1.25rem;">
+              <label for="cgWeightType3d">Weight Basis for Calculation</label>
+              <select class="calc-select" id="cgWeightType3d">
+                <option value="actual" selected>Actual Body Weight (ABW)</option>
+                <option value="ibw">Ideal Body Weight (IBW, Devine formula)</option>
+                <option value="adjbw">Adjusted Body Weight (AdjBW, for obesity)</option>
+              </select>
+            </div>
+
+            <div class="calc-result-area" id="cgResult3d">
+              <div class="calc-result-badge good" id="cgBadge3d">Normal Clearance</div>
+              <div class="calc-primary-val" id="cgVal3d">72.9 <span class="unit">mL/min</span></div>
+              <div class="calc-formula-display">CrCl = [(140 - Age) × Weight] ÷ [72 × SCr] × (0.85 if female)</div>
+              <div class="calc-interp" id="cgInterp3d">Mildly decreased (60–89 mL/min). Not interchangeable with CKD-EPI eGFR. Adjust dose for renally excreted drugs.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnCgReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/1244564/" target="_blank" rel="noopener">Source: Cockcroft & Gault (1976) ↗</a>
+            </div>
+          </article>
+
+          <!-- Anion Gap -->
+          <article class="calc-box fade" id="calcAnionGap3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Acid–Base</div>
+              <h3>Serum Anion Gap</h3>
+              <p class="when-to-use">Evaluates metabolic acidosis and unmeasured anions, with optional Figge albumin correction.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="agNa3d">Sodium (Na⁺)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="agNa3d" type="number" step="1" min="90" max="190" placeholder="140" value="140">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="agCl3d">Chloride (Cl⁻)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="agCl3d" type="number" step="1" min="50" max="150" placeholder="102" value="102">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="agHco33d">Bicarbonate (HCO₃⁻)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="agHco33d" type="number" step="1" min="1" max="60" placeholder="24" value="24">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="agAlb3d">Albumin (Optional)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="agAlb3d" type="number" step="0.1" min="0.5" max="6.0" placeholder="4.0" value="4.0">
+                  <span class="calc-input-unit">g/dL</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="agResult3d">
+              <div class="calc-result-badge good" id="agBadge3d">Normal Anion Gap</div>
+              <div class="calc-primary-val" id="agVal3d">14.0 <span class="unit">mEq/L</span></div>
+              <div class="calc-formula-display">AG = Na⁺ - (Cl⁻ + HCO₃⁻) | Corrected = AG + 2.5 × (4.0 - Albumin)</div>
+              <div class="calc-interp" id="agInterp3d">Normal uncorrected reference range: 4 – 12 mEq/L (without potassium). Excludes K⁺ by convention.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnAgReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/9824071/" target="_blank" rel="noopener">Source: Figge et al. (Crit Care Med 1998) ↗</a>
+            </div>
+          </article>
+
+          <!-- Winter's Formula -->
+          <article class="calc-box fade" id="calcWinters3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Acid–Base</div>
+              <h3>Winter's Formula</h3>
+              <p class="when-to-use">Evaluates respiratory compensation in metabolic acidosis. Compares expected vs measured PaCO₂.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="winHco33d">Serum Bicarbonate (HCO₃⁻)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="winHco33d" type="number" step="1" min="1" max="40" placeholder="12" value="12">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="winPaco23d">Measured PaCO₂ (Optional)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="winPaco23d" type="number" step="1" min="10" max="120" placeholder="26" value="26">
+                  <span class="calc-input-unit">mmHg</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="winResult3d">
+              <div class="calc-result-badge good" id="winBadge3d">Expected Compensation</div>
+              <div class="calc-primary-val" id="winVal3d">24.0 – 28.0 <span class="unit">mmHg</span></div>
+              <div class="calc-formula-display">Expected PaCO₂ = (1.5 × [HCO₃⁻]) + 8 ± 2 mmHg</div>
+              <div class="calc-interp" id="winInterp3d">Measured PaCO₂ (26 mmHg) matches expected range. Demonstrates appropriate simple respiratory compensation.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnWinReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/6016545/" target="_blank" rel="noopener">Source: Albert & Winters (1967) ↗</a>
+            </div>
+          </article>
+
+          <!-- Delta Gap / Delta Ratio -->
+          <article class="calc-box fade" id="calcDelta3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Mixed Disorders</div>
+              <h3>Delta Gap & Delta Ratio</h3>
+              <p class="when-to-use">Detects mixed high anion gap and normal anion gap acidoses or concurrent metabolic alkalosis.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="delNa3d">Sodium (Na⁺)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="delNa3d" type="number" step="1" min="90" max="190" value="140">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="delCl3d">Chloride (Cl⁻)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="delCl3d" type="number" step="1" min="50" max="150" value="95">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="delHco33d">Bicarbonate (HCO₃⁻)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="delHco33d" type="number" step="1" min="1" max="50" value="15">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="delAlb3d">Albumin (Optional)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="delAlb3d" type="number" step="0.1" min="0.5" max="6.0" value="4.0">
+                  <span class="calc-input-unit">g/dL</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="delResult3d">
+              <div class="calc-result-badge good" id="delBadge3d">Pure HAGMA</div>
+              <div class="calc-primary-val" id="delVal3d">Delta Ratio: 2.0 <span class="unit">| Gap: 9.0</span></div>
+              <div class="calc-formula-display">ΔAG = AG - 12 | ΔHCO₃ = 24 - [HCO₃⁻] | Delta Ratio = ΔAG ÷ ΔHCO₃</div>
+              <div class="calc-interp" id="delInterp3d">Ratio 0.8 – 2.0 suggests an uncomplicated High Anion Gap Metabolic Acidosis (e.g. DKA or lactic acidosis).</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnDelReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/2240728/" target="_blank" rel="noopener">Source: Wrenn (Ann Emerg Med 1990) ↗</a>
+            </div>
+          </article>
+        </div>
+        </div><!-- /#tabRenal3d -->
+
+      </main>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="brand-icon-wrap">
+            <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+          </div>
+          <div class="brand-name">Knockout<span>Notes</span></div>
+        </div>
+        <p>Anaesthesia • Critical Care • Viva</p>
+        <p class="disclaimer">Educational calculation aids for medical professionals and trainees. All clinical calculators must not replace clinical judgment, institutional protocols, official drug references, or patient-specific medical advice.</p>
+      </div>
+      <div class="footer-connect">
+        <strong>Connect & Follow</strong>
+        <div class="socials">
+          <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
+          <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
+        </div>
+        <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ==========================================================================
+     PRESENTATION LAYER 2: LITE VIEW (Active on body.mode-lite)
+     Exact code and animations mirrored for Lite View
+     ========================================================================== -->
+<div class="view-layer-lite">
+  <header class="site-hud">
+    <div class="hud-capsule">
+      <a class="brand" href="index.html" aria-label="KnockoutNotes home">
+        <div class="brand-icon-wrap">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+        </div>
+        <div class="brand-name">Knockout<span>Notes</span></div>
+      </a>
+
+      <div class="hud-path-indicator">
+        <span class="hud-pulse-dot"></span>
+        <span id="knHudPath">KN // ANAESTHESIA CALCULATORS</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="notes.html#pearls">Pearls</a>
+        <a href="notes.html">Notes</a>
+        <a href="calculators.html" class="active" style="color:var(--accent,#38bdf8);">Calculators</a>
+        <a href="viva.html">Viva</a>
+        <a href="ventilator.html">Workstation</a>
+        <a href="drugs.html">Drugs</a>
+        <a href="critical-care.html">Critical Care</a>
+        <a href="recent-updates.html">Updates</a>
+        <a href="resources.html">About</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="nav-search-trigger" data-open-search aria-label="Open search">
+          <span>Search</span>
+          <kbd>⌘K</kbd>
+        </button>
+        <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a data-close-menu href="index.html">Home <span>→</span></a>
+      <a data-close-menu href="notes.html#pearls">Pearls <span>→</span></a>
+      <a data-close-menu href="notes.html">Notes <span>→</span></a>
+      <a data-close-menu href="calculators.html">Calculators <span>→</span></a>
+      <a data-close-menu href="viva.html">Viva <span>→</span></a>
+      <a data-close-menu href="ventilator.html">Workstation <span>→</span></a>
+      <a data-close-menu href="drugs.html">Drugs <span>→</span></a>
+      <a data-close-menu href="critical-care.html">Critical Care <span>→</span></a>
+      <a data-close-menu href="recent-updates.html">Updates <span>→</span></a>
+      <a data-close-menu href="resources.html">About <span>→</span></a>
+    </div>
+  </header>
+
+  <div class="spatial-stage">
+    <div class="spatial-world">
+      <main class="container">
+        
+        <!-- Search Section -->
+        <section class="kn-search-section">
+          <div class="kn-search-card">
+            <div class="kn-search-kicker">🧮 CLINICAL UTILITY SUITE</div>
+            <h1>Anaesthesia Calculators</h1>
+            <p>Evidence-based dosing formulas, paediatric airway sizing, renal clearances, and perioperative assessment tools.</p>
+            <div class="kn-site-search">
+              <span class="kn-search-icon">⌕</span>
+              <input id="knSiteSearch" type="search" placeholder="Search paediatric chart, Parkland, Cockcroft-Gault, DASI, Winter's...">
+              <button id="knSearchClear">×</button>
+            </div>
+            <div id="knSearchStatus" class="kn-search-status">Start typing to filter calculators.</div>
+            <div id="knSearchResults" class="kn-search-results"></div>
+          </div>
+        </section>
+
+        <!-- Category Switcher Tabs -->
+        <div class="calc-hub-nav fade" role="tablist" aria-label="Calculator Categories">
+          <button class="calc-nav-pill active" data-calc-tab="paeds" role="tab" aria-selected="true">⚡ Paediatric (Chart &amp; Airway)</button>
+          <button class="calc-nav-pill" data-calc-tab="periop" role="tab" aria-selected="false">📋 Perioperative Assessment</button>
+          <button class="calc-nav-pill" data-calc-tab="emergency" role="tab" aria-selected="false">🚨 Emergency &amp; Resuscitation</button>
+          <button class="calc-nav-pill" data-calc-tab="renal" role="tab" aria-selected="false">🧪 Renal &amp; Acid–Base</button>
+          <button class="calc-nav-pill" data-calc-tab="all" role="tab" aria-selected="false">✦ View All</button>
+        </div>
+
+        <!-- TAB CONTENT: PAEDIATRIC (Lite View) -->
+        <div class="calc-tab-content active" id="tabPaeds" data-tab-name="paeds">
+        <div class="calc-group-title fade" id="groupPaeds">
+          <span>Paediatric Resuscitation &amp; Airway</span>
+          <span class="badge">Interactive Chart Engine</span>
+        </div>
+
+        <!-- HERO HIGHLIGHT: PAEDIATRIC DRUG CHART (Lite View) -->
+        <section class="calc-hero-card fade" id="paedsHero">
+          <div class="calc-hero-header">
+            <div>
+              <div class="calc-hero-badge">⭐ FEATURED CLINICAL ENGINE</div>
+              <h2 style="font-size:1.85rem; margin:0.4rem 0 0.2rem 0; color:#fff;">Paediatric Drug Chart & Airway Sizer</h2>
+              <p style="margin:0; font-size:0.92rem; color:#94a3b8;">
+                Imported directly from clinical reference spreadsheet (<code>PedsDrugChart.xlsx</code>). Computes 16 emergency, induction, analgesic, and paralytic drugs with equipment sizing.
+              </p>
+            </div>
+            <div>
+              <button class="btn-cinematic primary" id="btnPaedsPdf" style="padding:0.65rem 1.25rem;">
+                📄 Generate PDF Drug Chart
+              </button>
+            </div>
+          </div>
+
+          <!-- Patient Input Form -->
+          <div class="calc-form-row" style="background:rgba(0,0,0,0.3); padding:1.25rem; border-radius:10px; border:1px solid rgba(255,255,255,0.08);">
+            <div class="calc-field">
+              <label for="paedsWt">Weight (kg) *</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="paedsWt" type="number" step="0.1" min="0.5" max="120" placeholder="e.g. 14.3" value="14.3">
+                <span class="calc-input-unit">kg</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="paedsAge">Age (years) *</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="paedsAge" type="number" step="0.1" min="0" max="18" placeholder="e.g. 7" value="7">
+                <span class="calc-input-unit">yrs</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="paedsCase">Case / Ref No. (Optional)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="paedsCase" type="text" placeholder="e.g. OR-4" maxlength="20">
+              </div>
+            </div>
+            <div class="calc-field" style="justify-content:flex-end;">
+              <button class="btn-calc-reset" id="btnPaedsReset" style="height:40px;">Reset Inputs</button>
+            </div>
+          </div>
+
+          <!-- Airway Sizing Strip (Table 42-6 Sizing of Airway Equipment in Children) -->
+          <div class="paeds-airway-strip" id="paedsAirwayStrip">
+            <div class="airway-box">
+              <span class="label">ETT Size (Uncuffed)</span>
+              <span class="val" id="paedsEttUncuffed">5.75 mm ID</span>
+              <span class="sub">Formula: (Age / 4) + 4 mm</span>
+            </div>
+            <div class="airway-box">
+              <span class="label">ETT Size (Cuffed)</span>
+              <span class="val" id="paedsEttCuffed">5.25 mm ID</span>
+              <span class="sub">Formula: (Age / 4) + 3.5 mm</span>
+            </div>
+            <div class="airway-box">
+              <span class="label">ET Depth at Lips</span>
+              <span class="val" id="paedsDepth">15.5 cm at lips</span>
+              <span class="sub">Formula: (Age / 2) + 12 cm</span>
+            </div>
+            <div class="airway-box">
+              <span class="label">Laryngoscope Blade</span>
+              <span class="val" id="paedsBlade">Size 2 (Mac)</span>
+              <span class="sub">Table 42-6 bracket</span>
+            </div>
+            <div class="airway-box">
+              <span class="label">Suction Catheter</span>
+              <span class="val" id="paedsSuction">10 Fr</span>
+              <span class="sub">Table 42-6 bracket</span>
+            </div>
+            <div class="airway-box">
+              <span class="label">Oral Airway (Guedel)</span>
+              <span class="val" id="paedsGuedel">Size 2 (70 mm)</span>
+              <span class="sub">Table 42-6 bracket</span>
+            </div>
+            <div class="airway-box">
+              <span class="label">Face Mask</span>
+              <span class="val" id="paedsMask">Size 2</span>
+              <span class="sub">Table 42-6 bracket</span>
+            </div>
+            <div class="airway-box">
+              <span class="label">i-gel Supraglottic Size</span>
+              <span class="val" id="paedsIgel">Size 2 (Grey / 12–25 kg)</span>
+              <span class="sub">Manufacturer weight bracket</span>
+            </div>
+          </div>
+
+          <!-- Table of 16 Drugs -->
+          <div class="paeds-table-wrapper">
+            <table class="paeds-chart-table" id="paedsTable">
+              <thead>
+                <tr>
+                  <th>Drug</th>
+                  <th>Dose Basis</th>
+                  <th>Calculated Dose</th>
+                  <th>Route</th>
+                  <th>Concentration</th>
+                  <th>Volume to Draw</th>
+                  <th>Clinical Notes / Preparation</th>
+                </tr>
+              </thead>
+              <tbody id="paedsTableBody">
+                <!-- Injected live by paeds-chart-engine.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Action bar -->
+          <div class="paeds-actions-bar">
+            <div style="font-size:0.85rem; color:#94a3b8;">
+              <span>Source: imported paediatric drug-chart spreadsheet (<code>PedsDrugChart.xlsx</code>)</span>
+            </div>
+            <div>
+              <button class="btn-cinematic primary" id="btnPaedsPdfBottom">
+                📄 Generate PDF Drug Chart
+              </button>
+            </div>
+          </div>
+
+          <!-- Safety Disclaimer Card -->
+          <div class="paeds-disclaimer-card">
+            <strong>⚠️ IMPORTANT PAEDIATRIC SAFETY NOTICE:</strong>
+            This calculator is an educational calculation aid derived from the uploaded reference spreadsheet and does not replace clinical judgment, institutional paediatric protocols, or independent double-check verification. Verify all doses and dilutions before administration.
+          </div>
+        </section>
+
+        <!-- Parkland Formula (Lite View) -->
+        <div class="calc-card-grid">
+          <article class="calc-box fade" id="calcParkland">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Resuscitation</div>
+              <h3>Parkland Burn Resuscitation</h3>
+              <p class="when-to-use">Calculates crystalloid fluid requirements in the first 24 hours for patients with significant 2nd and 3rd degree burns.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="parklandWt">Body Weight (kg)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="parklandWt" type="number" step="1" min="1" max="250" placeholder="70" value="70">
+                  <span class="calc-input-unit">kg</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="parklandTbsa">% TBSA Burned (2nd/3rd°)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="parklandTbsa" type="number" step="1" min="1" max="100" placeholder="30" value="30">
+                  <span class="calc-input-unit">%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="parklandHrs">Time Since Burn (hours)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="parklandHrs" type="number" step="0.5" min="0" max="24" placeholder="2" value="2">
+                  <span class="calc-input-unit">hrs</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="parklandGiven">Fluids Given So Far</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="parklandGiven" type="number" step="50" min="0" max="20000" placeholder="1000" value="1000">
+                  <span class="calc-input-unit">mL</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="parklandResult">
+              <div class="calc-result-badge good">Baxter / Parkland Formula</div>
+              <div class="calc-primary-val" id="parklandTotalVal">8,400 <span class="unit">mL / 24h</span></div>
+              <div class="calc-formula-display">4 mL × Weight (kg) × % TBSA</div>
+              <div class="calc-interp" id="parklandInterp">
+                <strong>1st 8h window (remaining 6.0 hrs):</strong> 3,200 mL remaining → <strong>533 mL/hr</strong>.<br>
+                <strong>Next 16h window:</strong> 4,200 mL total → <strong>263 mL/hr</strong>.<br>
+                <em>Fluid: Ringer's Lactate / Hartmann's solution. Target adult urine output: 0.5 mL/kg/h.</em>
+              </div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnParklandReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/5688005/" target="_blank" rel="noopener">Source: Baxter & Shires (1968) ↗</a>
+            </div>
+          </article>
+        </div>
+
+        </div>
+        </div><!-- /#tabEmergency -->
+
+        <!-- TAB CONTENT: PERIOPERATIVE ASSESSMENT (Lite View) -->
+        <div class="calc-tab-content active" id="tabPeriop" data-tab-name="periop">
+        <div class="calc-group-title fade" id="groupPeriop">
+          <span>Perioperative Assessment</span>
+          <span class="badge">Risk Stratification</span>
+        </div>
+
+        <div class="calc-card-grid">
+          <!-- Wilson Risk Score for Difficult Intubation -->
+          <article class="calc-box fade" id="calcWilson" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Airway Risk Score</div>
+              <h3>Wilson Risk Score (Difficult Intubation)</h3>
+              <p class="when-to-use">Validated 5-factor risk scoring system predicting difficult direct laryngoscopy based on weight, neck mobility, buck teeth, jaw subluxation, and retrognathia.</p>
+            </div>
+
+            <div class="calc-form-row" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+              <div class="calc-field">
+                <label for="wilsonWt">1) Patient Weight</label>
+                <select class="calc-select" id="wilsonWt">
+                  <option value="0" selected>&lt; 90 kg (0 pts)</option>
+                  <option value="1">90 – 110 kg (1 pt)</option>
+                  <option value="2">&gt; 110 kg (2 pts)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="wilsonMobility">2) Head &amp; Neck Mobility</label>
+                <select class="calc-select" id="wilsonMobility">
+                  <option value="0" selected>&gt; 90° full range (0 pts)</option>
+                  <option value="1">~90° moderate reduction (1 pt)</option>
+                  <option value="2">&lt; 90° severe reduction (2 pts)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="wilsonJaw">3) Jaw Movement / Subluxation</label>
+                <select class="calc-select" id="wilsonJaw">
+                  <option value="0" selected>IO &gt; 5 cm or SLux &gt; 0 (0 pts)</option>
+                  <option value="1">IO = 5 cm or SLux = 0 (1 pt)</option>
+                  <option value="2">IO &lt; 5 cm or SLux &lt; 0 (2 pts)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="wilsonBuck">4) Buck Teeth / Incisors</label>
+                <select class="calc-select" id="wilsonBuck">
+                  <option value="0" selected>Absent (0 pts)</option>
+                  <option value="1">Moderate prominence (1 pt)</option>
+                  <option value="2">Severe prominence (2 pts)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="wilsonRetro">5) Retrognathia / Receding Chin</label>
+                <select class="calc-select" id="wilsonRetro">
+                  <option value="0" selected>Absent (0 pts)</option>
+                  <option value="1">Moderate retrognathia (1 pt)</option>
+                  <option value="2">Severe retrognathia (2 pts)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="wilsonResult">
+              <div class="calc-result-badge good" id="wilsonBadge">Easy Intubation</div>
+              <div class="calc-primary-val" id="wilsonVal">0 <span class="unit">/ 10 Points</span></div>
+              <div class="calc-formula-display">0–1: Easy | 2–3: Possibly difficult intubation | ≥ 4: Often difficult intubation</div>
+              <div class="calc-interp" id="wilsonInterp">Low likelihood of difficult direct laryngoscopy. Standard airway management indicated.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnWilsonReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/3415886/" target="_blank" rel="noopener">Source: Wilson ME et al. (Br J Anaesth 1988) ↗</a>
+            </div>
+          </article>
+          <!-- Child-Pugh Score for Cirrhosis -->
+          <article class="calc-box fade" id="calcChildPugh" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Hepatic &amp; Periop Mortality</div>
+              <h3>Child-Pugh Score (Hepatic Disease &amp; Surgical Risk)</h3>
+              <p class="when-to-use">Stratifies the severity of liver dysfunction, prognosis, and perioperative mortality in patients undergoing surgical procedures.</p>
+            </div>
+
+            <div class="calc-form-row" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+              <div class="calc-field">
+                <label for="cpBili">Total Bilirubin (mg/dL)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="cpBili" type="number" step="0.1" min="0.1" max="50" placeholder="1.2" value="1.2">
+                  <span class="calc-input-unit">mg/dL</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="cpAlb">Serum Albumin (g/dL)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="cpAlb" type="number" step="0.1" min="0.5" max="6.0" placeholder="3.8" value="3.8">
+                  <span class="calc-input-unit">g/dL</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="cpInr">INR / Prothrombin Time</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="cpInr" type="number" step="0.05" min="0.8" max="10" placeholder="1.1" value="1.1">
+                  <span class="calc-input-unit">INR</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="cpAscites">Ascites</label>
+                <select class="calc-select" id="cpAscites">
+                  <option value="1" selected>None (1 pt)</option>
+                  <option value="2">Mild / Controlled on diuretics (2 pts)</option>
+                  <option value="3">Moderate / Severe / Refractory (3 pts)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="cpEnceph">Hepatic Encephalopathy</label>
+                <select class="calc-select" id="cpEnceph">
+                  <option value="1" selected>None / Grade 0 (1 pt)</option>
+                  <option value="2">Grade 1–2 (Mild confusion/sleep inversion) (2 pts)</option>
+                  <option value="3">Grade 3–4 (Somnolence to coma) (3 pts)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="cpResult">
+              <div class="calc-result-badge good" id="cpBadge">Child Class A</div>
+              <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:baseline;">
+                <div class="calc-primary-val" id="cpVal">5 <span class="unit">/ 15 Points</span></div>
+                <div class="calc-primary-val" id="cpClassVal" style="font-size:1.25rem; color:#4ade80;">Class A (5–6 pts)</div>
+              </div>
+              <div class="calc-formula-display">Class A: 5–6 pts | Class B: 7–9 pts | Class C: 10–15 pts</div>
+              <div class="calc-interp" id="cpInterp">100% 1-year survival. Approx. 10% perioperative mortality. Elective surgery generally well tolerated with careful fluid and coagulopathy management.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnCpReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/4541913/" target="_blank" rel="noopener">Source: Pugh RN et al. (Br J Surg 1973) ↗</a>
+            </div>
+          </article>
+          <!-- BMI -->
+          <article class="calc-box fade" id="calcBmi">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Anthropometry</div>
+              <h3>Body Mass Index (BMI)</h3>
+              <p class="when-to-use">Standard WHO international classification of adult nutritional and body mass status.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="bmiWt">Weight (kg)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="bmiWt" type="number" step="0.5" min="20" max="300" placeholder="70" value="70">
+                  <span class="calc-input-unit">kg</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="bmiHt">Height (cm)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="bmiHt" type="number" step="1" min="100" max="250" placeholder="175" value="175">
+                  <span class="calc-input-unit">cm</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="bmiResult">
+              <div class="calc-result-badge good" id="bmiBadge">Normal Weight</div>
+              <div class="calc-primary-val" id="bmiVal">22.9 <span class="unit">kg/m²</span></div>
+              <div class="calc-formula-display">BMI = Weight (kg) ÷ [Height (m)]²</div>
+              <div class="calc-interp" id="bmiInterp">WHO adult classification: 18.5 – 24.9 kg/m². Low anaesthetic risk related to body habitus.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnBmiReset">Reset</button>
+              <a class="calc-source-link" href="https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight" target="_blank" rel="noopener">Source: WHO Technical Report ↗</a>
+            </div>
+          </article>
+
+          <!-- METs -->
+          <article class="calc-box fade" id="calcMets">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Functional Reserve</div>
+              <h3>METs Functional Capacity</h3>
+              <p class="when-to-use">Preoperative functional capacity assessment derived from ACC/AHA and ESAIC guidelines.</p>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:1.25rem;">
+              <label for="metsSelect">Highest Achievable Physical Activity</label>
+              <select class="calc-select" id="metsSelect">
+                <option value="poor">&lt; 4 METs: Unable to climb 1 flight of stairs or walk 2 blocks</option>
+                <option value="moderate" selected>4 – 6 METs: Can climb 1–2 flights of stairs, walk up a hill, carry groceries</option>
+                <option value="good">7 – 10 METs: Can jog, swim, participate in tennis or heavy yard work</option>
+                <option value="excellent">&gt; 10 METs: Strenuous athletics, competitive sports, vigorous cycling</option>
+              </select>
+            </div>
+
+            <div class="calc-result-area" id="metsResult">
+              <div class="calc-result-badge warn" id="metsBadge">Moderate Reserve</div>
+              <div class="calc-primary-val" id="metsVal">4 – 6 <span class="unit">METs</span></div>
+              <div class="calc-formula-display">1 MET = 3.5 mL O₂ / kg / min (resting metabolic rate)</div>
+              <div class="calc-interp" id="metsInterp">Sufficient functional capacity for most low-to-intermediate risk surgeries without further invasive cardiac testing if clinically stable.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnMetsReset">Reset</button>
+              <a class="calc-source-link" href="https://www.ahajournals.org/doi/10.1161/CIR.0000000000000106" target="_blank" rel="noopener">Source: ACC/AHA Guidelines ↗</a>
+            </div>
+          </article>
+
+          <!-- DASI (Lite View) -->
+          <article class="calc-box fade" id="calcDasi" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Cardiorespiratory Score</div>
+              <h3>Duke Activity Status Index (DASI)</h3>
+              <p class="when-to-use">Validated 12-item questionnaire quantifying functional capacity, peak VO₂, and 30-day perioperative cardiac risk (METS Study, Lancet 2018).</p>
+            </div>
+
+            <div class="calc-choice-group" id="dasiItemsContainer" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+              <!-- Checkboxes rendered dynamically -->
+            </div>
+
+            <div class="calc-result-area" id="dasiResult">
+              <div class="calc-result-badge good" id="dasiBadge">DASI Score</div>
+              <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:baseline;">
+                <div class="calc-primary-val" id="dasiScoreVal">0.0 <span class="unit">/ 58.2</span></div>
+                <div class="calc-primary-val" id="dasiVo2Val" style="font-size:1.3rem; color:#38bdf8;">Peak VO₂: 9.6 <span class="unit">mL/kg/min</span></div>
+                <div class="calc-primary-val" id="dasiMetsVal" style="font-size:1.3rem; color:#4ade80;">Est. METs: 2.7 <span class="unit">METs</span></div>
+              </div>
+              <div class="calc-formula-display">Peak VO₂ = (0.43 × DASI) + 9.6 | Estimated METs = Peak VO₂ ÷ 3.5</div>
+              <div class="calc-interp" id="dasiInterp">Select the activities the patient can perform without significant chest pain or breathlessness.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnDasiReset">Deselect All</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/2782356/" target="_blank" rel="noopener">Source: Hlatky et al. (1989) & METS Study (Lancet 2018) ↗</a>
+            </div>
+          </article>
+
+          <!-- STOP-Bang (Lite View) -->
+          <article class="calc-box fade" id="calcStopBang" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Airway & Sleep</div>
+              <h3>STOP-Bang OSA Screening</h3>
+              <p class="when-to-use">Validated questionnaire identifying patients at risk of obstructive sleep apnoea for perioperative airway and monitoring planning.</p>
+            </div>
+
+            <div class="calc-choice-group" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbSnore">
+                <span class="calc-choice-label"><strong>S — Snoring:</strong> Do you snore loudly (louder than talking or heard through closed doors)?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbTired">
+                <span class="calc-choice-label"><strong>T — Tiredness:</strong> Do you often feel tired, fatigued, or sleepy during the daytime?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbObserved">
+                <span class="calc-choice-label"><strong>O — Observed:</strong> Has anyone observed you stop breathing or choking during sleep?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbPressure">
+                <span class="calc-choice-label"><strong>P — Pressure:</strong> Do you have or are being treated for high blood pressure?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbBmi">
+                <span class="calc-choice-label"><strong>B — BMI:</strong> Body Mass Index &gt; 35 kg/m²?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbAge">
+                <span class="calc-choice-label"><strong>A — Age:</strong> Age &gt; 50 years old?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbNeck">
+                <span class="calc-choice-label"><strong>N — Neck:</strong> Neck circumference &gt; 40 cm (female) or &gt; 43 cm (male)?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="sbMale">
+                <span class="calc-choice-label"><strong>G — Gender:</strong> Male sex?</span>
+                <span class="calc-choice-points">1 pt</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="sbResult">
+              <div class="calc-result-badge good" id="sbBadge">Low Risk of OSA</div>
+              <div class="calc-primary-val" id="sbVal">0 <span class="unit">/ 8 Yes</span></div>
+              <div class="calc-formula-display">Low: 0–2 | Intermediate: 3–4 | High: 5–8 or STOP score ≥ 2 + (Male / BMI &gt; 35 / Neck)</div>
+              <div class="calc-interp" id="sbInterp">Screening questionnaire only. Not a formal diagnostic polysomnogram. High-risk patients require opioid caution and airway vigilance.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnSbReset">Clear</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/18431114/" target="_blank" rel="noopener">Source: Chung et al. (Anesthesiology 2008) ↗</a>
+            </div>
+          </article>
+        </div>
+
+        </div>
+        </div><!-- /#tabPeriop -->
+
+        <!-- TAB CONTENT: RENAL & ACID-BASE (Lite View) -->
+        <div class="calc-tab-content active" id="tabRenal" data-tab-name="renal">
+        <div class="calc-group-title fade" id="groupRenal">
+          <span>Renal &amp; Acid–Base</span>
+          <span class="badge">Biochemical Equations</span>
+        </div>
+
+        <div class="calc-card-grid">
+          <!-- Cockcroft-Gault -->
+          <article class="calc-box fade" id="calcCrCl">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Renal Clearance</div>
+              <h3>Creatinine Clearance (Cockcroft–Gault)</h3>
+              <p class="when-to-use">Estimates creatinine clearance for renal drug dosing adjustments in adult patients.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="cgAge">Age (years)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="cgAge" type="number" step="1" min="18" max="110" placeholder="65" value="65">
+                  <span class="calc-input-unit">yrs</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="cgSex">Sex</label>
+                <select class="calc-select" id="cgSex">
+                  <option value="male" selected>Male (Factor 1.0)</option>
+                  <option value="female">Female (Factor 0.85)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="cgWeight">Weight (kg)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="cgWeight" type="number" step="0.5" min="25" max="250" placeholder="70" value="70">
+                  <span class="calc-input-unit">kg</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="cgHeight">Height (cm) — for IBW</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="cgHeight" type="number" step="1" min="100" max="230" placeholder="175" value="175">
+                  <span class="calc-input-unit">cm</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="cgScr">Serum Creatinine</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="cgScr" type="number" step="0.01" min="0.1" max="20" placeholder="1.0" value="1.0">
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="cgScrUnit">Creatinine Unit</label>
+                <select class="calc-select" id="cgScrUnit">
+                  <option value="mg/dL" selected>mg/dL</option>
+                  <option value="umol/L">µmol/L</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:1.25rem;">
+              <label for="cgWeightType">Weight Basis for Calculation</label>
+              <select class="calc-select" id="cgWeightType">
+                <option value="actual" selected>Actual Body Weight (ABW)</option>
+                <option value="ibw">Ideal Body Weight (IBW, Devine formula)</option>
+                <option value="adjbw">Adjusted Body Weight (AdjBW, for obesity)</option>
+              </select>
+            </div>
+
+            <div class="calc-result-area" id="cgResult">
+              <div class="calc-result-badge good" id="cgBadge">Normal Clearance</div>
+              <div class="calc-primary-val" id="cgVal">72.9 <span class="unit">mL/min</span></div>
+              <div class="calc-formula-display">CrCl = [(140 - Age) × Weight] ÷ [72 × SCr] × (0.85 if female)</div>
+              <div class="calc-interp" id="cgInterp">Mildly decreased (60–89 mL/min). Not interchangeable with CKD-EPI eGFR. Adjust dose for renally excreted drugs.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnCgReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/1244564/" target="_blank" rel="noopener">Source: Cockcroft & Gault (1976) ↗</a>
+            </div>
+          </article>
+
+          <!-- Anion Gap -->
+          <article class="calc-box fade" id="calcAnionGap">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Acid–Base</div>
+              <h3>Serum Anion Gap</h3>
+              <p class="when-to-use">Evaluates metabolic acidosis and unmeasured anions, with optional Figge albumin correction.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="agNa">Sodium (Na⁺)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="agNa" type="number" step="1" min="90" max="190" placeholder="140" value="140">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="agCl">Chloride (Cl⁻)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="agCl" type="number" step="1" min="50" max="150" placeholder="102" value="102">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="agHco3">Bicarbonate (HCO₃⁻)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="agHco3" type="number" step="1" min="1" max="60" placeholder="24" value="24">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="agAlb">Albumin (Optional)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="agAlb" type="number" step="0.1" min="0.5" max="6.0" placeholder="4.0" value="4.0">
+                  <span class="calc-input-unit">g/dL</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="agResult">
+              <div class="calc-result-badge good" id="agBadge">Normal Anion Gap</div>
+              <div class="calc-primary-val" id="agVal">14.0 <span class="unit">mEq/L</span></div>
+              <div class="calc-formula-display">AG = Na⁺ - (Cl⁻ + HCO₃⁻) | Corrected = AG + 2.5 × (4.0 - Albumin)</div>
+              <div class="calc-interp" id="agInterp">Normal uncorrected reference range: 4 – 12 mEq/L (without potassium). Excludes K⁺ by convention.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnAgReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/9824071/" target="_blank" rel="noopener">Source: Figge et al. (Crit Care Med 1998) ↗</a>
+            </div>
+          </article>
+
+          <!-- Winter's Formula -->
+          <article class="calc-box fade" id="calcWinters">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Acid–Base</div>
+              <h3>Winter's Formula</h3>
+              <p class="when-to-use">Evaluates respiratory compensation in metabolic acidosis. Compares expected vs measured PaCO₂.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="winHco3">Serum Bicarbonate (HCO₃⁻)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="winHco3" type="number" step="1" min="1" max="40" placeholder="12" value="12">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="winPaco2">Measured PaCO₂ (Optional)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="winPaco2" type="number" step="1" min="10" max="120" placeholder="26" value="26">
+                  <span class="calc-input-unit">mmHg</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="winResult">
+              <div class="calc-result-badge good" id="winBadge">Expected Compensation</div>
+              <div class="calc-primary-val" id="winVal">24.0 – 28.0 <span class="unit">mmHg</span></div>
+              <div class="calc-formula-display">Expected PaCO₂ = (1.5 × [HCO₃⁻]) + 8 ± 2 mmHg</div>
+              <div class="calc-interp" id="winInterp">Measured PaCO₂ (26 mmHg) matches expected range. Demonstrates appropriate simple respiratory compensation.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnWinReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/6016545/" target="_blank" rel="noopener">Source: Albert & Winters (1967) ↗</a>
+            </div>
+          </article>
+
+          <!-- Delta Gap / Delta Ratio -->
+          <article class="calc-box fade" id="calcDelta">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Mixed Disorders</div>
+              <h3>Delta Gap & Delta Ratio</h3>
+              <p class="when-to-use">Detects mixed high anion gap and normal anion gap acidoses or concurrent metabolic alkalosis.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="delNa">Sodium (Na⁺)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="delNa" type="number" step="1" min="90" max="190" value="140">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="delCl">Chloride (Cl⁻)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="delCl" type="number" step="1" min="50" max="150" value="95">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="delHco3">Bicarbonate (HCO₃⁻)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="delHco3" type="number" step="1" min="1" max="50" value="15">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="delAlb">Albumin (Optional)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="delAlb" type="number" step="0.1" min="0.5" max="6.0" value="4.0">
+                  <span class="calc-input-unit">g/dL</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="delResult">
+              <div class="calc-result-badge good" id="delBadge">Pure HAGMA</div>
+              <div class="calc-primary-val" id="delVal">Delta Ratio: 2.0 <span class="unit">| Gap: 9.0</span></div>
+              <div class="calc-formula-display">ΔAG = AG - 12 | ΔHCO₃ = 24 - [HCO₃⁻] | Delta Ratio = ΔAG ÷ ΔHCO₃</div>
+              <div class="calc-interp" id="delInterp">Ratio 0.8 – 2.0 suggests an uncomplicated High Anion Gap Metabolic Acidosis (e.g. DKA or lactic acidosis).</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnDelReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/2240728/" target="_blank" rel="noopener">Source: Wrenn (Ann Emerg Med 1990) ↗</a>
+            </div>
+          </article>
+        </div>
+        </div><!-- /#tabRenal -->
+
+      </main>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="brand-icon-wrap">
+            <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+          </div>
+          <div class="brand-name">Knockout<span>Notes</span></div>
+        </div>
+        <p>Anaesthesia • Critical Care • Viva</p>
+        <p class="disclaimer">Educational calculation aids for medical professionals and trainees. All clinical calculators must not replace clinical judgment, institutional protocols, official drug references, or patient-specific medical advice.</p>
+      </div>
+      <div class="footer-connect">
+        <strong>Connect & Follow</strong>
+        <div class="socials">
+          <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
+          <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
+        </div>
+        <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- Floating Updates Pill -->
+<a class="kn-updates-pill" href="recent-updates.html" aria-label="Recent KnockoutNotes updates">
+  <span class="kn-blink"></span>
+  <span class="kn-updates-pill-text">Recent Updates</span>
+  <span class="kn-updates-pill-badge">Live</span>
+</a>
+
+<!-- Universal Command Palette Search Modal -->
+<div class="kn-modal" id="knSearchModal" role="dialog" aria-modal="true" aria-label="Search KnockoutNotes">
+  <div class="kn-modal-backdrop" data-close-modal></div>
+  <div class="kn-modal-box">
+    <div class="kn-modal-header">
+      <span class="kn-search-icon">⌕</span>
+      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search calculators, pearls, drugs, scores..." autocomplete="off">
+      <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
+      <button class="kn-modal-close" data-close-modal>ESC</button>
+    </div>
+    <div class="kn-modal-body">
+      <div id="knModalSearchStatus" class="kn-search-status">Start typing to search the medical database.</div>
+      <div id="knModalSearchResults" class="kn-search-results"></div>
+    </div>
+    <div class="kn-modal-footer">
+      <span>Pro-tip: Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
+      <span>KnockoutNotes Spatial Search</span>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="spatial-bg.js"></script>
+<script src="spatial-camera.js"></script>
+<script src="spatial-scroll.js"></script>
+<script src="spatial-viewer.js"></script>
+<script src="script.js"></script>
+<script src="page-motion.js"></script>
+<script src="kn-site-search.js"></script>
+
+<!-- Vendor PDF libraries (Local, 100% offline) -->
+<script src="vendor/jspdf/jspdf.umd.min.js"></script>
+<script src="vendor/jspdf/jspdf.plugin.autotable.min.js"></script>
+
+<!-- Calculator Engines -->
+<script src="paeds-chart-engine.js"></script>
+<script src="paeds-pdf-export.js"></script>
+<script src="calculators.js"></script>
+
+<!-- UI Controller Script wiring 3D and Lite Views -->
+<script>
+(function () {
+  "use strict";
+
+  function syncPair(id3d, idLite, onChange) {
+    const el3d = document.getElementById(id3d);
+    const elLite = document.getElementById(idLite);
+    if (!el3d && !elLite) return;
+
+    function handler(src, other) {
+      if (other && (src.type === "checkbox" || src.type === "radio")) {
+        other.checked = src.checked;
+      } else if (other) {
+        other.value = src.value;
+      }
+      if (typeof onChange === "function") onChange();
+    }
+
+    if (el3d) el3d.addEventListener("input", () => handler(el3d, elLite));
+    if (elLite) elLite.addEventListener("input", () => handler(elLite, el3d));
+    if (el3d) el3d.addEventListener("change", () => handler(el3d, elLite));
+    if (elLite) elLite.addEventListener("change", () => handler(elLite, el3d));
+  }
+
+  // ------------------------------------------------------------------------
+  // PAEDIATRIC DRUG CHART CONTROLLER
+  // ------------------------------------------------------------------------
+  let paedsConcentrationOverrides = {};
+
+  function updatePaedsChart() {
+    const wtInput = document.getElementById("paedsWt3d") || document.getElementById("paedsWt");
+    const ageInput = document.getElementById("paedsAge3d") || document.getElementById("paedsAge");
+    const caseInput = document.getElementById("paedsCase3d") || document.getElementById("paedsCase");
+
+    const wt = parseFloat(wtInput?.value);
+    const age = parseFloat(ageInput?.value);
+    const caseId = caseInput?.value || "";
+
+    // 1. Airway Sizing (Table 42-6 + ETT Formulas)
+    const airway = window.KnockoutPaedsChart.computeAirway(age, wt);
+    ["3d", ""].forEach(suffix => {
+      const uEl = document.getElementById("paedsEttUncuffed" + suffix);
+      const cEl = document.getElementById("paedsEttCuffed" + suffix);
+      const iEl = document.getElementById("paedsIgel" + suffix);
+      const dEl = document.getElementById("paedsDepth" + suffix);
+      const bEl = document.getElementById("paedsBlade" + suffix);
+      const sEl = document.getElementById("paedsSuction" + suffix);
+      const gEl = document.getElementById("paedsGuedel" + suffix);
+      const mEl = document.getElementById("paedsMask" + suffix);
+
+      if (uEl) uEl.textContent = airway.uncuffedDisplay;
+      if (cEl) cEl.textContent = airway.cuffedDisplay;
+      if (iEl) iEl.textContent = airway.igelDisplay;
+      if (dEl) dEl.textContent = airway.etDepthDisplay;
+      if (bEl) bEl.textContent = airway.bladeSize;
+      if (sEl) sEl.textContent = airway.suctionFr;
+      if (gEl) gEl.textContent = airway.oralAirway;
+      if (mEl) mEl.textContent = airway.maskSize;
+    });
+
+    // 2. Drug Table
+    const chart = window.KnockoutPaedsChart.computeDrugChart(wt, paedsConcentrationOverrides);
+    let html = "";
+    let lastCat = "";
+
+    chart.forEach(item => {
+      if (item.category !== lastCat) {
+        lastCat = item.category;
+        html += `<tr class="category-header"><td colspan="7">● ${lastCat}</td></tr>`;
+      }
+
+      const cappedBadge = item.isCapped
+        ? `<div class="cap-warning">⚠️ Calculated dose exceeds standard max single dose (${item.maxSingleDose} ${item.unit})</div>`
+        : "";
+
+      html += `
+        <tr>
+          <td class="drug-name">${item.name}</td>
+          <td>${item.doseBasis}</td>
+          <td class="calculated-dose">${item.calculatedDoseText} ${cappedBadge}</td>
+          <td><span style="font-size:0.8rem; background:rgba(255,255,255,0.06); padding:0.2rem 0.5rem; border-radius:4px;">${item.route}</span></td>
+          <td>
+            <select class="calc-select paeds-conc-sel" data-drug-id="${item.id}" style="padding:0.35rem 0.5rem; font-size:0.82rem;">
+              ${item.availableConcentrations.map(c => `
+                <option value="${c.value}" ${c.value === item.concentration ? 'selected' : ''}>${c.label}</option>
+              `).join('')}
+            </select>
+          </td>
+          <td class="calculated-vol">${item.calculatedVolumeText || '—'}</td>
+          <td style="font-size:0.82rem; color:#94a3b8;">${item.notes}</td>
+        </tr>`;
+    });
+
+    ["paedsTableBody3d", "paedsTableBody"].forEach(bodyId => {
+      const el = document.getElementById(bodyId);
+      if (el) {
+        el.innerHTML = html;
+        el.querySelectorAll(".paeds-conc-sel").forEach(sel => {
+          sel.addEventListener("change", (e) => {
+            const drugId = e.target.dataset.drugId;
+            const newConc = parseFloat(e.target.value);
+            const chosen = e.target.options[e.target.selectedIndex].text;
+            paedsConcentrationOverrides[drugId] = { concentration: newConc, label: chosen };
+            updatePaedsChart();
+          });
+        });
+      }
+    });
+  }
+
+  // Wire sync for paediatric inputs
+  syncPair("paedsWt3d", "paedsWt", updatePaedsChart);
+  syncPair("paedsAge3d", "paedsAge", updatePaedsChart);
+  syncPair("paedsCase3d", "paedsCase", updatePaedsChart);
+
+  function resetPaedsChart() {
+    ["paedsWt3d", "paedsWt"].forEach(id => { const el = document.getElementById(id); if (el) el.value = "14.3"; });
+    ["paedsAge3d", "paedsAge"].forEach(id => { const el = document.getElementById(id); if (el) el.value = "7"; });
+    ["paedsCase3d", "paedsCase"].forEach(id => { const el = document.getElementById(id); if (el) el.value = ""; });
+    paedsConcentrationOverrides = {};
+    updatePaedsChart();
+  }
+
+  ["btnPaedsReset3d", "btnPaedsReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", resetPaedsChart);
+  });
+
+  function exportPaedsPdf() {
+    const wtInput = document.getElementById("paedsWt3d") || document.getElementById("paedsWt");
+    const ageInput = document.getElementById("paedsAge3d") || document.getElementById("paedsAge");
+    const caseInput = document.getElementById("paedsCase3d") || document.getElementById("paedsCase");
+
+    const wt = parseFloat(wtInput?.value);
+    const age = parseFloat(ageInput?.value);
+    const caseId = caseInput?.value || "";
+
+    if (!wt || wt <= 0 || isNaN(wt)) {
+      alert("Please enter a valid patient weight before generating the PDF.");
+      return;
+    }
+
+    const airway = window.KnockoutPaedsChart.computeAirway(age, wt);
+    const chart = window.KnockoutPaedsChart.computeDrugChart(wt, paedsConcentrationOverrides);
+
+    window.KnockoutPaedsPdf.generate(chart, {
+      weight: wt,
+      age: age,
+      caseId: caseId,
+      ettUncuffed: airway.uncuffedDisplay,
+      ettCuffed: airway.cuffedDisplay,
+      igel: airway.igelDisplay,
+      etDepth: airway.etDepthDisplay,
+      categoryBracket: airway.categoryBracket,
+      bladeSize: airway.bladeSize,
+      suctionFr: airway.suctionFr,
+      oralAirway: airway.oralAirway,
+      maskSize: airway.maskSize
+    });
+  }
+
+  ["btnPaedsPdf3d", "btnPaedsPdf", "btnPaedsPdfBottom3d", "btnPaedsPdfBottom"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", exportPaedsPdf);
+  });
+
+  // ------------------------------------------------------------------------
+  // PARKLAND CONTROLLER
+  // ------------------------------------------------------------------------
+  function updateParkland() {
+    const wt = parseFloat(document.getElementById("parklandWt3d")?.value || document.getElementById("parklandWt")?.value);
+    const tbsa = parseFloat(document.getElementById("parklandTbsa3d")?.value || document.getElementById("parklandTbsa")?.value);
+    const hrs = parseFloat(document.getElementById("parklandHrs3d")?.value || document.getElementById("parklandHrs")?.value);
+    const given = parseFloat(document.getElementById("parklandGiven3d")?.value || document.getElementById("parklandGiven")?.value);
+
+    const res = window.KnockoutCalculators.calculateParkland(wt, tbsa, hrs, given);
+    if (res.error) return;
+
+    ["3d", ""].forEach(s => {
+      const tot = document.getElementById("parklandTotalVal" + s);
+      const interp = document.getElementById("parklandInterp" + s);
+      if (tot) tot.innerHTML = `${res.total24h.toLocaleString()} <span class="unit">mL / 24h</span>`;
+      if (interp) {
+        interp.innerHTML = `
+          <strong>1st 8h window (${res.remainingHoursInFirst8.toFixed(1)} hrs left):</strong> ${res.remainingFirst8hVolume.toLocaleString()} mL remaining → <strong>${res.first8hRate ? res.first8hRate.toLocaleString() + ' mL/hr' : 'Completed'}</strong>.<br>
+          <strong>Next 16h window:</strong> ${res.next16hTotal.toLocaleString()} mL total → <strong>${res.next16hRate.toLocaleString()} mL/hr</strong>.<br>
+          <em>${res.fluidType}. ${res.clinicalEndpoints}</em>`;
+      }
+    });
+  }
+
+  syncPair("parklandWt3d", "parklandWt", updateParkland);
+  syncPair("parklandTbsa3d", "parklandTbsa", updateParkland);
+  syncPair("parklandHrs3d", "parklandHrs", updateParkland);
+  syncPair("parklandGiven3d", "parklandGiven", updateParkland);
+
+  // ------------------------------------------------------------------------
+  // BMI CONTROLLER
+  // ------------------------------------------------------------------------
+  function updateBmi() {
+    const wt = parseFloat(document.getElementById("bmiWt3d")?.value || document.getElementById("bmiWt")?.value);
+    const ht = parseFloat(document.getElementById("bmiHt3d")?.value || document.getElementById("bmiHt")?.value);
+    const res = window.KnockoutCalculators.calculateBMI(wt, ht);
+    if (res.error) return;
+
+    ["3d", ""].forEach(s => {
+      const val = document.getElementById("bmiVal" + s);
+      const badge = document.getElementById("bmiBadge" + s);
+      const interp = document.getElementById("bmiInterp" + s);
+      if (val) val.innerHTML = `${res.bmi} <span class="unit">kg/m²</span>`;
+      if (badge) {
+        badge.className = `calc-result-badge ${res.riskClass}`;
+        badge.textContent = res.category;
+      }
+      if (interp) interp.textContent = `${res.classificationSystem}: ${res.category}. ${res.paediatricAlert}`;
+    });
+  }
+
+  syncPair("bmiWt3d", "bmiWt", updateBmi);
+  syncPair("bmiHt3d", "bmiHt", updateBmi);
+
+  // ------------------------------------------------------------------------
+  // METS CONTROLLER
+  // ------------------------------------------------------------------------
+  function updateMets() {
+    const selVal = (document.getElementById("metsSelect3d") || document.getElementById("metsSelect"))?.value;
+    const res = window.KnockoutCalculators.calculateMETs(selVal);
+    if (!res) return;
+
+    ["3d", ""].forEach(s => {
+      const val = document.getElementById("metsVal" + s);
+      const badge = document.getElementById("metsBadge" + s);
+      const interp = document.getElementById("metsInterp" + s);
+      if (val) val.innerHTML = `${res.range} <span class="unit">METs</span>`;
+      if (badge) {
+        badge.className = `calc-result-badge ${res.riskClass}`;
+        badge.textContent = res.label;
+      }
+      if (interp) interp.textContent = `${res.anaestheticConsiderations} (${res.risk})`;
+    });
+  }
+
+  syncPair("metsSelect3d", "metsSelect", updateMets);
+
+  // ------------------------------------------------------------------------
+  // DASI CONTROLLER
+  // ------------------------------------------------------------------------
+  function renderDasiItems() {
+    const items = window.KnockoutCalculators.DASI_ITEMS;
+    ["dasiItemsContainer3d", "dasiItemsContainer"].forEach(containerId => {
+      const c = document.getElementById(containerId);
+      if (!c) return;
+      const is3d = containerId.endsWith("3d");
+      c.innerHTML = items.map(it => `
+        <label class="calc-choice-item">
+          <input type="checkbox" class="dasi-chk" data-id="${it.id}" data-is-3d="${is3d ? '1':'0'}">
+          <span class="calc-choice-label">${it.text}</span>
+          <span class="calc-choice-points">+${it.weight.toFixed(2)}</span>
+        </label>
+      `).join('');
+    });
+
+    document.querySelectorAll(".dasi-chk").forEach(chk => {
+      chk.addEventListener("change", (e) => {
+        const id = e.target.dataset.id;
+        const checked = e.target.checked;
+        document.querySelectorAll(`.dasi-chk[data-id="${id}"]`).forEach(other => {
+          other.checked = checked;
+        });
+        updateDasi();
+      });
+    });
+  }
+
+  function updateDasi() {
+    const selected = [];
+    document.querySelectorAll('.dasi-chk[data-is-3d="1"]:checked').forEach(chk => {
+      selected.push(chk.dataset.id);
+    });
+    const res = window.KnockoutCalculators.calculateDASI(selected);
+
+    ["3d", ""].forEach(s => {
+      const sVal = document.getElementById("dasiScoreVal" + s);
+      const vVal = document.getElementById("dasiVo2Val" + s);
+      const mVal = document.getElementById("dasiMetsVal" + s);
+      const badge = document.getElementById("dasiBadge" + s);
+      const interp = document.getElementById("dasiInterp" + s);
+
+      if (sVal) sVal.innerHTML = `${res.dasiScore} <span class="unit">/ 58.2</span>`;
+      if (vVal) vVal.innerHTML = `Peak VO₂: ${res.peakVO2} <span class="unit">mL/kg/min</span>`;
+      if (mVal) mVal.innerHTML = `Est. METs: ${res.estimatedMETs} <span class="unit">METs</span>`;
+      if (badge) {
+        badge.className = `calc-result-badge ${res.riskClass}`;
+        badge.textContent = res.metsStudyCutoff ? "DASI < 34 (Higher 30-Day Risk)" : "DASI ≥ 34 (Favourable Reserve)";
+      }
+      if (interp) interp.textContent = res.interpretation;
+    });
+  }
+
+  ["btnDasiReset3d", "btnDasiReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      document.querySelectorAll(".dasi-chk").forEach(c => { c.checked = false; });
+      updateDasi();
+    });
+  });
+
+  // ------------------------------------------------------------------------
+  // STOP-BANG CONTROLLER
+  // ------------------------------------------------------------------------
+  function updateStopBang() {
+    const keys = ["Snore", "Tired", "Observed", "Pressure", "Bmi", "Age", "Neck", "Male"];
+    const resp = {};
+    keys.forEach(k => {
+      const el = document.getElementById("sb" + k + "3d") || document.getElementById("sb" + k);
+      resp[k.toLowerCase()] = el ? el.checked : false;
+    });
+
+    const res = window.KnockoutCalculators.calculateStopBang({
+      snoring: resp.snore,
+      tired: resp.tired,
+      observed: resp.observed,
+      pressure: resp.pressure,
+      bmi35: resp.bmi,
+      age50: resp.age,
+      neck: resp.neck,
+      male: resp.male
+    });
+
+    ["3d", ""].forEach(s => {
+      const val = document.getElementById("sbVal" + s);
+      const badge = document.getElementById("sbBadge" + s);
+      const interp = document.getElementById("sbInterp" + s);
+      if (val) val.innerHTML = `${res.score} <span class="unit">/ 8 Yes</span>`;
+      if (badge) {
+        badge.className = `calc-result-badge ${res.riskClass}`;
+        badge.textContent = res.riskLevel;
+      }
+      if (interp) interp.innerHTML = `<strong>${res.criteriaDetail}</strong> ${res.anaesthesiaNotes}`;
+    });
+  }
+
+  ["Snore", "Tired", "Observed", "Pressure", "Bmi", "Age", "Neck", "Male"].forEach(k => {
+    syncPair("sb" + k + "3d", "sb" + k, updateStopBang);
+  });
+
+  ["btnSbReset3d", "btnSbReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["Snore", "Tired", "Observed", "Pressure", "Bmi", "Age", "Neck", "Male"].forEach(k => {
+        ["3d", ""].forEach(s => {
+          const el = document.getElementById("sb" + k + s);
+          if (el) el.checked = false;
+        });
+      });
+      updateStopBang();
+    });
+  });
+
+  // ------------------------------------------------------------------------
+  // COCKCROFT-GAULT CONTROLLER
+  // ------------------------------------------------------------------------
+  function updateCockcroftGault() {
+    const age = document.getElementById("cgAge3d")?.value || document.getElementById("cgAge")?.value;
+    const sex = document.getElementById("cgSex3d")?.value || document.getElementById("cgSex")?.value;
+    const weight = document.getElementById("cgWeight3d")?.value || document.getElementById("cgWeight")?.value;
+    const heightCm = document.getElementById("cgHeight3d")?.value || document.getElementById("cgHeight")?.value;
+    const sCr = document.getElementById("cgScr3d")?.value || document.getElementById("cgScr")?.value;
+    const crUnit = document.getElementById("cgScrUnit3d")?.value || document.getElementById("cgScrUnit")?.value;
+    const weightType = document.getElementById("cgWeightType3d")?.value || document.getElementById("cgWeightType")?.value;
+
+    const res = window.KnockoutCalculators.calculateCockcroftGault({
+      age, sex, weight, heightCm, sCr, crUnit, weightType
+    });
+    if (res.error) return;
+
+    ["3d", ""].forEach(s => {
+      const val = document.getElementById("cgVal" + s);
+      const badge = document.getElementById("cgBadge" + s);
+      const interp = document.getElementById("cgInterp" + s);
+      if (val) val.innerHTML = `${res.crCl} <span class="unit">mL/min</span>`;
+      if (badge) {
+        badge.className = `calc-result-badge ${res.riskClass}`;
+        badge.textContent = res.stage.split('(')[0].trim();
+      }
+      if (interp) interp.innerHTML = `<strong>${res.stage}.</strong> ${res.weightExplanation} ${res.limitations}`;
+    });
+  }
+
+  syncPair("cgAge3d", "cgAge", updateCockcroftGault);
+  syncPair("cgSex3d", "cgSex", updateCockcroftGault);
+  syncPair("cgWeight3d", "cgWeight", updateCockcroftGault);
+  syncPair("cgHeight3d", "cgHeight", updateCockcroftGault);
+  syncPair("cgScr3d", "cgScr", updateCockcroftGault);
+  syncPair("cgScrUnit3d", "cgScrUnit", updateCockcroftGault);
+  syncPair("cgWeightType3d", "cgWeightType", updateCockcroftGault);
+
+  // ------------------------------------------------------------------------
+  // ANION GAP CONTROLLER
+  // ------------------------------------------------------------------------
+  function updateAnionGap() {
+    const na = document.getElementById("agNa3d")?.value || document.getElementById("agNa")?.value;
+    const cl = document.getElementById("agCl3d")?.value || document.getElementById("agCl")?.value;
+    const hco3 = document.getElementById("agHco33d")?.value || document.getElementById("agHco3")?.value;
+    const alb = document.getElementById("agAlb3d")?.value || document.getElementById("agAlb")?.value;
+
+    const res = window.KnockoutCalculators.calculateAnionGap({ na, cl, hco3, albumin: alb, albUnit: "g/dL" });
+    if (res.error) return;
+
+    ["3d", ""].forEach(s => {
+      const val = document.getElementById("agVal" + s);
+      const badge = document.getElementById("agBadge" + s);
+      const interp = document.getElementById("agInterp" + s);
+      if (val) {
+        const corrText = res.correctedAG !== null ? ` (Corrected: ${res.correctedAG})` : '';
+        val.innerHTML = `${res.ag}${corrText} <span class="unit">mEq/L</span>`;
+      }
+      if (badge) {
+        badge.className = `calc-result-badge ${res.riskClass}`;
+        badge.textContent = res.effectiveAG > 12 ? "High Anion Gap" : (res.effectiveAG < 4 ? "Low Anion Gap" : "Normal Anion Gap");
+      }
+      if (interp) {
+        const corrDetail = res.albCorrectionDetails ? `<strong>${res.albCorrectionDetails}</strong><br>` : '';
+        interp.innerHTML = corrDetail + res.interpretation;
+      }
+    });
+  }
+
+  syncPair("agNa3d", "agNa", updateAnionGap);
+  syncPair("agCl3d", "agCl", updateAnionGap);
+  syncPair("agHco33d", "agHco3", updateAnionGap);
+  syncPair("agAlb3d", "agAlb", updateAnionGap);
+
+  // ------------------------------------------------------------------------
+  // WINTER'S FORMULA CONTROLLER
+  // ------------------------------------------------------------------------
+  function updateWinters() {
+    const hco3 = document.getElementById("winHco33d")?.value || document.getElementById("winHco3")?.value;
+    const paco2 = document.getElementById("winPaco23d")?.value || document.getElementById("winPaco2")?.value;
+
+    const res = window.KnockoutCalculators.calculateWinters(hco3, paco2);
+    if (res.error) return;
+
+    ["3d", ""].forEach(s => {
+      const val = document.getElementById("winVal" + s);
+      const badge = document.getElementById("winBadge" + s);
+      const interp = document.getElementById("winInterp" + s);
+      if (val) val.innerHTML = `${res.rangeText}`;
+      if (badge) {
+        badge.className = `calc-result-badge ${res.riskClass}`;
+        badge.textContent = res.comparison ? (res.comparison.includes("HIGHER") ? "Resp Acidosis" : (res.comparison.includes("LOWER") ? "Resp Alkalosis" : "Appropriate")) : "Expected PaCO₂";
+      }
+      if (interp) {
+        const compText = res.comparison ? `<strong>${res.comparison}</strong><br>` : '';
+        interp.innerHTML = compText + `Indication: ${res.indication}`;
+      }
+    });
+  }
+
+  syncPair("winHco33d", "winHco3", updateWinters);
+  syncPair("winPaco23d", "winPaco2", updateWinters);
+
+  // ------------------------------------------------------------------------
+  // DELTA GAP / DELTA RATIO CONTROLLER
+  // ------------------------------------------------------------------------
+  function updateDelta() {
+    const na = document.getElementById("delNa3d")?.value || document.getElementById("delNa")?.value;
+    const cl = document.getElementById("delCl3d")?.value || document.getElementById("delCl")?.value;
+    const hco3 = document.getElementById("delHco33d")?.value || document.getElementById("delHco3")?.value;
+    const alb = document.getElementById("delAlb3d")?.value || document.getElementById("delAlb")?.value;
+
+    const res = window.KnockoutCalculators.calculateDeltaGap({ na, cl, hco3, albumin: alb });
+    if (res.error) return;
+
+    ["3d", ""].forEach(s => {
+      const val = document.getElementById("delVal" + s);
+      const badge = document.getElementById("delBadge" + s);
+      const interp = document.getElementById("delInterp" + s);
+      if (val) {
+        const rText = res.deltaRatio !== null ? `Ratio: ${res.deltaRatio}` : 'Ratio: N/A';
+        val.innerHTML = `${rText} <span class="unit">| ΔAG: ${res.deltaAG} | ΔGap: ${res.deltaGap}</span>`;
+      }
+      if (badge) {
+        badge.className = `calc-result-badge ${res.riskClass}`;
+        badge.textContent = res.deltaRatio !== null ? (res.deltaRatio < 0.4 ? "NAGMA" : (res.deltaRatio < 0.8 ? "Mixed HAGMA/NAGMA" : (res.deltaRatio <= 2.0 ? "Pure HAGMA" : "HAGMA + Alkalosis"))) : "Delta Analysis";
+      }
+      if (interp) interp.innerHTML = `<strong>${res.interpretation}</strong> (Assumed baseline AG: ${res.normalAG}, HCO₃: ${res.normalHco3} mEq/L).`;
+    });
+  }
+
+  syncPair("delNa3d", "delNa", updateDelta);
+  syncPair("delCl3d", "delCl", updateDelta);
+  syncPair("delHco33d", "delHco3", updateDelta);
+  syncPair("delAlb3d", "delAlb", updateDelta);
+
+
+  // ------------------------------------------------------------------------
+  // WILSON RISK SCORE CONTROLLER
+  // ------------------------------------------------------------------------
+  function updateWilson() {
+    const wt = document.getElementById("wilsonWt3d")?.value || document.getElementById("wilsonWt")?.value;
+    const mob = document.getElementById("wilsonMobility3d")?.value || document.getElementById("wilsonMobility")?.value;
+    const jaw = document.getElementById("wilsonJaw3d")?.value || document.getElementById("wilsonJaw")?.value;
+    const buck = document.getElementById("wilsonBuck3d")?.value || document.getElementById("wilsonBuck")?.value;
+    const retro = document.getElementById("wilsonRetro3d")?.value || document.getElementById("wilsonRetro")?.value;
+
+    const res = window.KnockoutCalculators.calculateWilsonScore({
+      weight: wt,
+      mobility: mob,
+      jawMovement: jaw,
+      buckTeeth: buck,
+      retrognathia: retro
+    });
+
+    ["3d", ""].forEach(s => {
+      const val = document.getElementById("wilsonVal" + s);
+      const badge = document.getElementById("wilsonBadge" + s);
+      const interp = document.getElementById("wilsonInterp" + s);
+      if (val) val.innerHTML = `${res.totalScore} <span class="unit">/ 10 Points</span>`;
+      if (badge) {
+        badge.className = `calc-result-badge ${res.riskClass}`;
+        badge.textContent = res.prediction.split(':')[0].trim();
+      }
+      if (interp) interp.innerHTML = `<strong>${res.prediction}.</strong> ${res.recommendation}`;
+    });
+  }
+
+  ["wilsonWt", "wilsonMobility", "wilsonJaw", "wilsonBuck", "wilsonRetro"].forEach(k => {
+    syncPair(k + "3d", k, updateWilson);
+  });
+
+  ["btnWilsonReset3d", "btnWilsonReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["wilsonWt", "wilsonMobility", "wilsonJaw", "wilsonBuck", "wilsonRetro"].forEach(k => {
+        ["3d", ""].forEach(s => {
+          const el = document.getElementById(k + s);
+          if (el) el.value = "0";
+        });
+      });
+      updateWilson();
+    });
+  });
+
+  // ------------------------------------------------------------------------
+  // CHILD-PUGH SCORE CONTROLLER
+  // ------------------------------------------------------------------------
+  function updateChildPugh() {
+    const bili = document.getElementById("cpBili3d")?.value || document.getElementById("cpBili")?.value;
+    const alb = document.getElementById("cpAlb3d")?.value || document.getElementById("cpAlb")?.value;
+    const inr = document.getElementById("cpInr3d")?.value || document.getElementById("cpInr")?.value;
+    const asc = document.getElementById("cpAscites3d")?.value || document.getElementById("cpAscites")?.value;
+    const enc = document.getElementById("cpEnceph3d")?.value || document.getElementById("cpEnceph")?.value;
+
+    const res = window.KnockoutCalculators.calculateChildPugh({
+      bilirubin: bili,
+      albumin: alb,
+      inr: inr,
+      ascites: asc,
+      encephalopathy: enc
+    });
+
+    ["3d", ""].forEach(s => {
+      const val = document.getElementById("cpVal" + s);
+      const classVal = document.getElementById("cpClassVal" + s);
+      const badge = document.getElementById("cpBadge" + s);
+      const interp = document.getElementById("cpInterp" + s);
+      if (val) val.innerHTML = `${res.totalScore} <span class="unit">/ 15 Points</span>`;
+      if (classVal) {
+        classVal.textContent = res.childClass.split('(')[0].trim();
+        classVal.style.color = res.riskClass === 'good' ? '#4ade80' : (res.riskClass === 'warn' ? '#facc15' : '#f87171');
+      }
+      if (badge) {
+        badge.className = `calc-result-badge ${res.riskClass}`;
+        badge.textContent = res.childClass.split('(')[0].trim();
+      }
+      if (interp) interp.innerHTML = `<strong>${res.childClass}.</strong> ${res.survival}. ${res.periopMortality}.`;
+    });
+  }
+
+  syncPair("cpBili3d", "cpBili", updateChildPugh);
+  syncPair("cpAlb3d", "cpAlb", updateChildPugh);
+  syncPair("cpInr3d", "cpInr", updateChildPugh);
+  syncPair("cpAscites3d", "cpAscites", updateChildPugh);
+  syncPair("cpEnceph3d", "cpEnceph", updateChildPugh);
+
+  ["btnCpReset3d", "btnCpReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const b = document.getElementById("cpBili" + s); if (b) b.value = "1.2";
+        const a = document.getElementById("cpAlb" + s); if (a) a.value = "3.8";
+        const i = document.getElementById("cpInr" + s); if (i) i.value = "1.1";
+        const as = document.getElementById("cpAscites" + s); if (as) as.value = "1";
+        const en = document.getElementById("cpEnceph" + s); if (en) en.value = "1";
+      });
+      updateChildPugh();
+    });
+  });
+
+  // ------------------------------------------------------------------------
+  // COPUR PAEDIATRIC AIRWAY SCORE CONTROLLER
+  // ------------------------------------------------------------------------
+  function updateCOPUR() {
+    const chin = document.getElementById("copurChin3d")?.value || document.getElementById("copurChin")?.value;
+    const op = document.getElementById("copurOpening3d")?.value || document.getElementById("copurOpening")?.value;
+    const prev = document.getElementById("copurPrev3d")?.value || document.getElementById("copurPrev")?.value;
+    const uv = document.getElementById("copurUvula3d")?.value || document.getElementById("copurUvula")?.value;
+    const rng = document.getElementById("copurRange3d")?.value || document.getElementById("copurRange")?.value;
+
+    const modBuck = (document.getElementById("copurModBuck3d") || document.getElementById("copurModBuck"))?.checked;
+    const modMacro = (document.getElementById("copurModMacro3d") || document.getElementById("copurModMacro"))?.checked;
+    const modObese = (document.getElementById("copurModObese3d") || document.getElementById("copurModObese"))?.checked;
+    const modMps = (document.getElementById("copurModMps3d") || document.getElementById("copurModMps"))?.checked;
+
+    const res = window.KnockoutCalculators.calculateCOPUR({
+      chin,
+      opening: op,
+      previousOSA: prev,
+      uvula: uv,
+      range: rng,
+      modBuck,
+      modMacro,
+      modObese,
+      modMps
+    });
+
+    ["3d", ""].forEach(s => {
+      const val = document.getElementById("copurVal" + s);
+      const glotticVal = document.getElementById("copurGlotticVal" + s);
+      const badge = document.getElementById("copurBadge" + s);
+      const interp = document.getElementById("copurInterp" + s);
+      if (val) val.innerHTML = `${res.totalScore} <span class="unit">Points</span>`;
+      if (glotticVal) {
+        glotticVal.textContent = res.glotticView;
+        glotticVal.style.color = res.riskClass === 'good' ? '#4ade80' : (res.riskClass === 'warn' ? '#facc15' : '#f87171');
+      }
+      if (badge) {
+        badge.className = `calc-result-badge ${res.riskClass}`;
+        badge.textContent = res.difficultyText.split(':')[0].trim();
+      }
+      if (interp) interp.innerHTML = `<strong>${res.difficultyText}.</strong> ${res.management}`;
+    });
+  }
+
+  ["copurChin", "copurOpening", "copurPrev", "copurUvula", "copurRange"].forEach(k => {
+    syncPair(k + "3d", k, updateCOPUR);
+  });
+  ["copurModBuck", "copurModMacro", "copurModObese", "copurModMps"].forEach(k => {
+    syncPair(k + "3d", k, updateCOPUR);
+  });
+
+  ["btnCopurReset3d", "btnCopurReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["copurChin", "copurOpening", "copurPrev", "copurUvula", "copurRange"].forEach(k => {
+        ["3d", ""].forEach(s => {
+          const el = document.getElementById(k + s);
+          if (el) el.value = "1";
+        });
+      });
+      ["copurModBuck", "copurModMacro", "copurModObese", "copurModMps"].forEach(k => {
+        ["3d", ""].forEach(s => {
+          const el = document.getElementById(k + s);
+          if (el) el.checked = false;
+        });
+      });
+      updateCOPUR();
+    });
+  });
+
+  // ------------------------------------------------------------------------
+  // TAB SWITCHING CONTROLLER (FAST TABS)
+  // ------------------------------------------------------------------------
+  function setupTabs() {
+    const tabButtons = document.querySelectorAll(".calc-nav-pill[data-calc-tab]");
+
+    function activateTab(tabName) {
+      // Update active tab buttons in both views
+      tabButtons.forEach(b => {
+        const isTarget = b.getAttribute("data-calc-tab") === tabName;
+        b.classList.toggle("active", isTarget);
+        b.setAttribute("aria-selected", isTarget ? "true" : "false");
+      });
+
+      // Toggle tab sections
+      const allSections = document.querySelectorAll(".calc-tab-content");
+      allSections.forEach(sec => {
+        const secName = sec.getAttribute("data-tab-name");
+        if (tabName === "all" || secName === tabName) {
+          sec.classList.add("active");
+          sec.style.display = "block";
+        } else {
+          sec.classList.remove("active");
+          sec.style.display = "none";
+        }
+      });
+    }
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const tabName = btn.getAttribute("data-calc-tab");
+        activateTab(tabName);
+      });
+    });
+
+    // Default to 'paeds' tab on load so the page is focused, not a long continuous scroll
+    activateTab("paeds");
+  }
+
+  // ------------------------------------------------------------------------
+  // 3D HAPTIC TILT & DEPTH CONTROLLER
+  // ------------------------------------------------------------------------
+  function setup3DHapticDepth() {
+    // Interactive 3D tilt tracking for standard cards and airway boxes
+    // Notice: .calc-hero-card (Paediatric Drug Chart) is intentionally excluded from tilt animation to keep it rock-solid and stable.
+    const depthCards = document.querySelectorAll(".calc-box, .airway-box");
+
+    depthCards.forEach(card => {
+      let bounds = null;
+
+      function onMouseEnter() {
+        bounds = card.getBoundingClientRect();
+      }
+
+      function onMouseMove(e) {
+        if (!bounds) bounds = card.getBoundingClientRect();
+        const x = e.clientX - bounds.left;
+        const y = e.clientY - bounds.top;
+
+        // Normalize between -1 and 1
+        const xPct = (x / bounds.width) * 2 - 1;
+        const yPct = (y / bounds.height) * 2 - 1;
+
+        // Subtle 3D tilt angles (-5 to +5 deg)
+        const tiltX = -yPct * 4;
+        const tiltY = xPct * 4;
+
+        card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(4px)`;
+        card.style.setProperty("--mouse-x", `${(x / bounds.width) * 100}%`);
+        card.style.setProperty("--mouse-y", `${(y / bounds.height) * 100}%`);
+      }
+
+      function onMouseLeave() {
+        card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)";
+        bounds = null;
+      }
+
+      card.addEventListener("mouseenter", onMouseEnter);
+      card.addEventListener("mousemove", onMouseMove);
+      card.addEventListener("mouseleave", onMouseLeave);
+    });
+  }
+
+  // Initialize all calculators on DOM load
+  document.addEventListener("DOMContentLoaded", () => {
+    updatePaedsChart();
+    updateParkland();
+    updateBmi();
+    updateMets();
+    renderDasiItems();
+    updateDasi();
+    updateStopBang();
+    updateWilson();
+    updateChildPugh();
+    updateCOPUR();
+    updateCockcroftGault();
+    updateAnionGap();
+    updateWinters();
+    updateDelta();
+    setupTabs();
+    setup3DHapticDepth();
+  });
+})();
+</script>
+
+</body>
+</html>
