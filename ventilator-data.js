@@ -92,15 +92,6 @@ window.VentilatorData = {
       position: { x: 0.28, y: 0.68, z: -0.4 }
     },
     {
-      id: "usb-rs232", name: "USB / Software-Update & RS-232 Area", view: "rear", system: "power",
-      summary: "Connectivity area used for software/firmware updates and for interfacing monitored data (RS-232 serial or USB) to external systems.",
-      function: "Allows biomedical/service engineers to update device software and allows the workstation to export monitored parameters to a hospital data or anaesthesia information management system (AIMS).",
-      safety: "Software updates and data interfacing are a servicing function, not a routine anaesthetist task — this area should not be accessed intraoperatively.",
-      viva: null,
-      position: { x: -0.3, y: 0.95, z: -0.35 }
-    },
-
-    {
       id: "flowhead", name: "Flowhead Assembly", view: "front", system: "flowControl",
       summary: "The front control head housing the flow-control valves/flowmeters that set the fresh gas mixture.",
       function: "Operator adjusts flow-control knobs for each gas here; the resulting fresh gas mixture (O2 ± Air/N2O) passes onward to the vaporizer(s) and then to the common gas outlet or breathing circuit.",
@@ -184,6 +175,14 @@ window.VentilatorData = {
       safety: "Confirm ventilator settings against the intended plan at the start of ventilation and after any mode change — an unnoticed unit or mode mismatch is a recognised source of ventilation incidents.",
       viva: null,
       position: { x: 0.0, y: 1.0, z: 0.15 }
+    },
+    {
+      id: "usb-rs232", name: "USB / Software-Update & RS-232 Area", view: "front", system: "power",
+      summary: "Connectivity area used for software/firmware updates and for interfacing monitored data (RS-232 serial or USB) to external systems.",
+      function: "Allows biomedical/service engineers to update device software and allows the workstation to export monitored parameters to a hospital data or anaesthesia information management system (AIMS).",
+      safety: "Software updates and data interfacing are a servicing function, not a routine anaesthetist task — this area should not be accessed intraoperatively.",
+      viva: null,
+      position: { x: 0.12, y: 0.97, z: 0.22 }
     },
     {
       id: "handle", name: "Ergonomic Handle", view: "front", system: "mobility",

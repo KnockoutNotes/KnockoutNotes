@@ -366,7 +366,12 @@
       // Sliding one continuous track is what "this tab moves to the
       // middle" actually requires.
       const centerActiveTab = tab => {
-        if (!track) return;
+        // A category with an empty files/categories list (content-config.js
+        // is edited directly as the normal, non-developer content workflow —
+        // see HOW_TO_ADD_CONTENT.txt) renders no tab buttons at all, so the
+        // resize handler's `tabs.querySelector('.kn-library-tab.active')`
+        // can hand this `null` on every window resize.
+        if (!track || !tab) return;
         // Measured via getBoundingClientRect against a momentarily-
         // neutralised transform, not offsetLeft/offsetWidth — an
         // offsetLeft-based version of this (relative to track, on the
@@ -427,10 +432,56 @@
         let dragStartX = 0;
         let dragStartOffset = 0;
 
+        // A manual drag or the edge-hover auto-scroll below can come to
+        // rest at an arbitrary pixel offset, with no guarantee that every
+        // tab still on screen is fully on screen — one can be left
+        // straddling the row's own clipping edge, its label visibly
+        // sliced. Most noticeably this is whichever tab is nearest the
+        // end just been scrolled TOWARD (that's exactly how someone finds
+        // it), so only that leading edge is snapped clean — fully showing
+        // or fully hiding the straddling tab there, whichever is the
+        // smaller move. The trailing edge is left alone on purpose: when
+        // three adjacent tabs together are wider than the viewport,
+        // there is no offset that leaves both ends clean at once (fixing
+        // one can only re-straddle the other), so this always resolves
+        // in favour of the tab the gesture was actually heading toward.
+        // clampOffset()-based on purpose (via setOffset), so it can never
+        // itself introduce overscroll past either end of the track.
+        const settleOffset = (movingRight) => {
+          const off = getOffset();
+          const viewportW = tabs.clientWidth;
+          const left = -off;
+          const right = left + viewportW;
+          let target = off;
+          const tabEls = tabButtons.querySelectorAll('.kn-library-tab');
+          for (let i = 0; i < tabEls.length; i++) {
+            const t = tabEls[i];
+            const tabLeft = t.offsetLeft;
+            const tabRight = tabLeft + t.offsetWidth;
+            if (movingRight && tabLeft < right - 0.5 && tabRight > right + 0.5) {
+              const visible = right - tabLeft;
+              target = visible > t.offsetWidth / 2 ? (viewportW - tabRight) : (viewportW - tabLeft);
+              break;
+            }
+            if (!movingRight && tabLeft < left - 0.5 && tabRight > left + 0.5) {
+              const visible = tabRight - left;
+              target = visible > t.offsetWidth / 2 ? -tabLeft : -tabRight;
+              break;
+            }
+          }
+          if (Math.abs(target - off) > 0.5) setOffset(target, true);
+        };
+
         const stopAutoScroll = () => {
+          const wasScrolling = !!edgeScrollRAF;
+          const dir = hoverDir;
           if (edgeHoverTimer) { clearTimeout(edgeHoverTimer); edgeHoverTimer = null; }
           if (edgeScrollRAF) { cancelAnimationFrame(edgeScrollRAF); edgeScrollRAF = null; }
           hoverDir = 0;
+          // hoverDir > 0 is a right-edge hover, which scrolls the track
+          // toward LATER tabs (offset decreasing) — the same "moving
+          // right" sense settleOffset expects.
+          if (wasScrolling) settleOffset(dir > 0);
         };
         let edgeHoverTimer = null;
         let edgeScrollRAF = null;
@@ -465,6 +516,27 @@
           dragging = false;
           track.style.transition = '';
           tabs.classList.remove('kn-tabs-dragging');
+          if (dragMoved) {
+            // Offset decreasing means the track slid toward later tabs
+            // (the same "moving right" sense settleOffset expects) —
+            // derived from the drag's net direction, not just its last
+            // pixel of movement, so a drag that overshot and eased back
+            // still snaps toward where it was actually headed overall.
+            settleOffset(getOffset() < dragStartOffset);
+            // dragMoved also gates the click-suppression handler just below,
+            // for the click that (on most input paths) immediately follows
+            // this same pointerup/pointercancel and fires synchronously
+            // right after it — so it must still read true there. But a
+            // pointercancel (the browser handing this gesture to native
+            // page scroll mid-swipe) never produces a click at all, and
+            // some browsers suppress the click outright after enough
+            // pointer movement even without a cancel — on either path
+            // nothing would ever reset dragMoved, permanently swallowing
+            // every future tap on any tab. Clearing it on a deferred tick
+            // guarantees cleanup either way while still letting a
+            // same-tick click see the flag set.
+            setTimeout(() => { dragMoved = false; }, 0);
+          }
         };
         tabs.addEventListener('pointerup', endDrag);
         tabs.addEventListener('pointercancel', endDrag);

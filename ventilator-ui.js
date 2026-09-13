@@ -69,6 +69,11 @@ export function initVentilatorPage() {
   const calibrate = new URLSearchParams(location.search).has("calibrate");
   const schematicModal = initSchematicModal();
 
+  const zoomRange = document.getElementById("ventZoomRange");
+  const zoomInBtn = document.getElementById("ventZoomInBtn");
+  const zoomOutBtn = document.getElementById("ventZoomOutBtn");
+  const zoomFitBtn = document.getElementById("ventZoomFitBtn");
+
   const scene = createWorkstationScene(stageHost, {
     modelUrl: "assets/models/ventilatormodel.glb",
     components: data.components,
@@ -82,6 +87,11 @@ export function initVentilatorPage() {
     onLoaded: ({ isPlaceholder }) => {
       loadingEl.hidden = true;
       if (placeholderBanner) placeholderBanner.hidden = !isPlaceholder;
+      if (zoomRange) zoomRange.value = String(Math.round(scene.getZoomPercent()));
+    },
+    onRotationArmChange: on => {
+      const indicator = document.getElementById("ventRotateIndicator");
+      if (indicator) indicator.hidden = !on;
     }
   });
 
@@ -154,6 +164,21 @@ export function initVentilatorPage() {
   document.getElementById("ventSideViewBtn").addEventListener("click", () => scene.sideView());
   document.getElementById("ventFullscreenBtn").addEventListener("click", () => scene.toggleFullscreen());
 
+  // ---- Zoom bar (compact vertical control alongside wheel/pinch zoom) ----
+  const ZOOM_STEP = 8;
+  if (zoomRange) {
+    zoomRange.addEventListener("input", () => scene.setZoomPercent(Number(zoomRange.value)));
+  }
+  if (zoomInBtn) zoomInBtn.addEventListener("click", () => scene.zoomStep(ZOOM_STEP));
+  if (zoomOutBtn) zoomOutBtn.addEventListener("click", () => scene.zoomStep(-ZOOM_STEP));
+  if (zoomFitBtn) zoomFitBtn.addEventListener("click", () => scene.resetView());
+  // Keeps the slider in sync while zoom changes via mouse wheel, pinch, or
+  // a camera tween (view buttons, hotspot selection) rather than the bar itself.
+  (function syncZoomSlider() {
+    if (zoomRange) zoomRange.value = String(Math.round(scene.getZoomPercent()));
+    requestAnimationFrame(syncZoomSlider);
+  })();
+
   // ---- Inspect panel: translucency + auto-rotate ----
   const translucentRange = document.getElementById("ventTranslucentRange");
   translucentRange.addEventListener("input", () => scene.setTranslucent(Number(translucentRange.value)));
@@ -203,13 +228,13 @@ export function initVentilatorPage() {
       guideExplain.querySelectorAll("[data-jump-id]").forEach(chip => {
         chip.addEventListener("click", () => {
           activateTab("explore");
-          scene.selectComponent(chip.dataset.jumpId);
+          scene.focusComponent(chip.dataset.jumpId);
         });
       });
       guideExplain.querySelectorAll("[data-open-schematic]").forEach(el => {
         el.addEventListener("click", () => schematicModal.open(el.dataset.openSchematic));
       });
-      if (comps[0]) scene.selectComponent(comps[0].id);
+      if (comps[0]) scene.focusComponent(comps[0].id);
     });
   });
 
@@ -241,7 +266,7 @@ export function initVentilatorPage() {
       a.hidden = false;
       a.innerHTML = `<strong>${esc(comp.name)}</strong><p>${esc(comp.viva.answer)}</p>`;
       activateTab("quiz");
-      scene.selectComponent(comp.id);
+      scene.focusComponent(comp.id);
     });
     document.getElementById("ventQuizNext").addEventListener("click", () => { quizIndex = (quizIndex + 1) % quizPool.length; renderQuiz(); });
     document.getElementById("ventQuizPrev").addEventListener("click", () => { quizIndex = (quizIndex - 1 + quizPool.length) % quizPool.length; renderQuiz(); });

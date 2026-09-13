@@ -34,7 +34,10 @@ function easeInOutCubic(t) {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
 
-function makeMarkerSprite(index) {
+// Small dot-style marker — deliberately carries no numeral or text: a
+// number or invented value rendered over real equipment (especially the
+// ventilator's own screen) would read as fabricated data.
+function makeMarkerSprite() {
   const canvas = document.createElement("canvas");
   const scale = 4;
   canvas.width = 64 * scale;
@@ -42,23 +45,22 @@ function makeMarkerSprite(index) {
   const ctx = canvas.getContext("2d");
   ctx.scale(scale, scale);
   ctx.beginPath();
-  ctx.arc(32, 32, 26, 0, Math.PI * 2);
-  ctx.fillStyle = "rgba(15, 23, 42, 0.85)";
+  ctx.arc(32, 32, 12, 0, Math.PI * 2);
+  ctx.fillStyle = "rgba(15, 23, 42, 0.55)";
   ctx.fill();
-  ctx.lineWidth = 3;
-  ctx.strokeStyle = "#38bdf8";
+  ctx.beginPath();
+  ctx.arc(32, 32, 7, 0, Math.PI * 2);
+  ctx.fillStyle = "#38bdf8";
+  ctx.fill();
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = "#e0f2fe";
   ctx.stroke();
-  ctx.font = "700 26px 'JetBrains Mono', monospace";
-  ctx.fillStyle = "#e0f2fe";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillText(String(index + 1), 32, 34);
   const tex = new THREE.CanvasTexture(canvas);
   tex.needsUpdate = true;
   const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false, sizeAttenuation: true });
   const sprite = new THREE.Sprite(mat);
-  sprite.scale.set(0.11, 0.11, 1);
-  sprite.userData.baseScale = 0.11;
+  sprite.scale.set(0.075, 0.075, 1);
+  sprite.userData.baseScale = 0.075;
   return sprite;
 }
 
@@ -110,14 +112,19 @@ function buildPlaceholderMachine() {
 }
 
 export function createWorkstationScene(container, opts) {
-  const { modelUrl, components, onSelect, onHover, onLoaded } = opts;
+  const { modelUrl, components, onSelect, onHover, onLoaded, onRotationArmChange } = opts;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(42, 1, 0.05, 50);
-  const defaultCamPos = new THREE.Vector3(1.55, 1.15, 1.85);
-  const defaultTarget = new THREE.Vector3(0, 0.75, 0);
+  // Placeholder values only — overwritten by fitCameraToModel() once the
+  // model has loaded and its real bounding box is known (see below). The
+  // canvas is hidden behind the loading overlay until then, so nothing
+  // visible is ever framed using these guesses.
+  const defaultCamPos = new THREE.Vector3(1.8, 1.2, 2.1);
+  const defaultTarget = new THREE.Vector3(0, 0.85, 0);
   camera.position.copy(defaultCamPos);
+  let fitDistance = 2.6;
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -131,6 +138,32 @@ export function createWorkstationScene(container, opts) {
   controls.maxDistance = 5.5;
   controls.maxPolarAngle = Math.PI * 0.49 + 0.35;
   controls.target.copy(defaultTarget);
+  // Rotation is gated to an explicit double-click/double-tap "arm" step
+  // (see the gesture-gating block below) — plain drag must not rotate.
+  controls.enableRotate = false;
+  // Zoom is handled ONLY by the side zoom bar (setZoomPercent/zoomStep
+  // below), which sets camera.position directly and doesn't go through
+  // OrbitControls at all — so this is permanently off, not toggled.
+  // OrbitControls' own onMouseWheel bails out before calling
+  // preventDefault() once enableZoom is false, which is what leaves normal
+  // page-scroll-by-wheel working over the canvas as a side effect.
+  controls.enableZoom = false;
+  // No panning control is exposed anywhere in this UI (no pan reset, the
+  // zoom bar only changes distance) — disabling it removes an entire class
+  // of "the model silently drifted off-centre" reports from a stray
+  // right-click-drag or two-finger pan, and combined with enableZoom=false
+  // above, makes a two-finger touch a full no-op (see OrbitControls'
+  // TOUCH.DOLLY_PAN handling: both must be false for it to bail out).
+  controls.enablePan = false;
+  // Left at the browser default (pan-y) so a one-finger touch that starts on
+  // the canvas still scrolls the page like anywhere else on the site; the
+  // gesture-gating block below switches this to "none" only while a
+  // double-click/double-tap has just armed rotation, so that gesture's own
+  // drag isn't also interpreted as a page scroll. "pan-y" (rather than
+  // "auto"/"manipulation") also already disables the browser's own native
+  // pinch-zoom on this element, so a two-finger touch does nothing at all
+  // while unarmed, consistent with zoom being zoom-bar-only.
+  renderer.domElement.style.touchAction = "pan-y";
 
   scene.add(new THREE.HemisphereLight(0xdbeafe, 0x0f172a, 0.9));
   const key = new THREE.DirectionalLight(0xffffff, 1.6);
@@ -163,8 +196,8 @@ export function createWorkstationScene(container, opts) {
   function buildMarkers() {
     markerGroup.clear();
     markers.clear();
-    components.forEach((comp, i) => {
-      const sprite = makeMarkerSprite(i);
+    components.forEach((comp) => {
+      const sprite = makeMarkerSprite();
       sprite.position.set(comp.position.x, comp.position.y, comp.position.z);
       const hit = new THREE.Mesh(
         new THREE.SphereGeometry(0.045, 12, 12),
@@ -194,6 +227,43 @@ export function createWorkstationScene(container, opts) {
     object3D.position.y -= box.min.y;
   }
 
+  // Computes an initial camera position/target from the LOADED model's
+  // actual bounding box (post frameModel scale/recentre), instead of a
+  // hand-tuned guess — so the whole workstation is framed on first load
+  // regardless of the real .glb's proportions, and regardless of viewport
+  // aspect ratio (desktop vs mobile). Fits both the vertical and horizontal
+  // field of view against the box's bounding-sphere radius (half its
+  // diagonal — a deliberately conservative fit so no corner of the model
+  // is clipped from a 3/4 angle), then backs off an extra margin so the
+  // model isn't framed edge-to-edge.
+  function fitCameraToModel() {
+    const box = new THREE.Box3().setFromObject(modelGroup);
+    if (box.isEmpty()) return;
+    const size = new THREE.Vector3();
+    box.getSize(size);
+    const center = new THREE.Vector3();
+    box.getCenter(center);
+    const radius = size.length() / 2;
+    const vFov = THREE.MathUtils.degToRad(camera.fov);
+    const hFov = 2 * Math.atan(Math.tan(vFov / 2) * camera.aspect);
+    const distV = radius / Math.sin(vFov / 2);
+    const distH = radius / Math.sin(hFov / 2);
+    const margin = 1.3; // comfortable headroom around the model
+    fitDistance = Math.max(distV, distH) * margin;
+
+    // A fixed 3/4-elevated viewing direction, applied at the computed distance.
+    const dir = new THREE.Vector3(0.62, 0.4, 0.68).normalize();
+    defaultCamPos.copy(center).addScaledVector(dir, fitDistance);
+    defaultTarget.copy(center);
+
+    controls.minDistance = fitDistance * 0.35;
+    controls.maxDistance = fitDistance * 2.6;
+
+    camera.position.copy(defaultCamPos);
+    controls.target.copy(defaultTarget);
+    controls.update();
+  }
+
   // ---------------------------------------------------------------------
   // Branding concealment — the supplied .glb's texture carries a faint
   // manufacturer-style decal baked into the artwork on the beveled edge
@@ -211,14 +281,40 @@ export function createWorkstationScene(container, opts) {
   // ---------------------------------------------------------------------
   const BRAND_PATCHES = [
     // Main decal/text, on the ~45° bevel between top and front faces.
-    { position: { x: 0.158, y: 0.865, z: 0.033 }, size: { w: 0.13, d: 0.09 }, tiltX: -Math.PI / 4 },
+    // Sized tightly to the decal itself (shrunk from an earlier, visibly
+    // oversized rectangle — see the soft-edged texture below) so as little
+    // of the surrounding housing as possible is covered.
+    { position: { x: 0.158, y: 0.865, z: 0.033 }, size: { w: 0.1, d: 0.07 }, tiltX: -Math.PI / 4 },
     // Smaller circular logo mark, slightly further forward-facing (~17° off vertical).
-    { position: { x: -0.064, y: 0.860, z: 0.038 }, size: { w: 0.07, d: 0.07 }, tiltX: -0.30 }
+    { position: { x: -0.064, y: 0.860, z: 0.038 }, size: { w: 0.055, d: 0.055 }, tiltX: -0.30 }
   ];
+
+  // A soft radial-fade alpha map, rather than a hard-edged opaque plane, so
+  // the patch blends into the surrounding housing instead of reading as a
+  // visible rectangular sticker — the flat opaque version was clearly
+  // visible as an artificial patch from a normal 3/4 viewing angle.
+  function makeSoftPatchTexture() {
+    const size = 128;
+    const canvas = document.createElement("canvas");
+    canvas.width = canvas.height = size;
+    const ctx = canvas.getContext("2d");
+    const grad = ctx.createRadialGradient(size / 2, size / 2, size * 0.18, size / 2, size / 2, size * 0.5);
+    grad.addColorStop(0, "rgba(238, 241, 244, 1)");
+    grad.addColorStop(0.7, "rgba(238, 241, 244, 0.9)");
+    grad.addColorStop(1, "rgba(238, 241, 244, 0)");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, size, size);
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.needsUpdate = true;
+    return tex;
+  }
 
   function addBrandConcealment(root) {
     if (!BRAND_PATCHES.length) return;
-    const patchMat = new THREE.MeshStandardMaterial({ color: 0xf1f5f9, roughness: 0.75, metalness: 0.05, side: THREE.DoubleSide });
+    const patchTex = makeSoftPatchTexture();
+    const patchMat = new THREE.MeshStandardMaterial({
+      map: patchTex, transparent: true, roughness: 0.7, metalness: 0.05, side: THREE.DoubleSide, depthWrite: false
+    });
     BRAND_PATCHES.forEach(p => {
       const geo = new THREE.PlaneGeometry(p.size.w, p.size.d);
       const mesh = new THREE.Mesh(geo, patchMat);
@@ -324,6 +420,10 @@ export function createWorkstationScene(container, opts) {
   }
 
   function onClick(e) {
+    // A completed drag (rotation gesture) still fires a native "click" on
+    // release — treat that as a drag, not a selection, so dragging never
+    // also selects whatever hotspot happened to end up under the cursor.
+    if (gestureDidDrag) { gestureDidDrag = false; return; }
     setPointer(e);
     const id = pick();
     if (id) { selectComponent(id); return; }
@@ -340,6 +440,115 @@ export function createWorkstationScene(container, opts) {
 
   renderer.domElement.addEventListener("pointermove", onPointerMove);
   renderer.domElement.addEventListener("click", onClick);
+
+  // -----------------------------------------------------------------------
+  // Rotation gating — rotation must only happen via an explicit
+  // double-click (desktop) / double-tap (mobile) followed by a drag, never
+  // from an ordinary single drag, a normal mouse-wheel scroll, or a normal
+  // one-finger page swipe passing over the canvas. Zoom (wheel/pinch) is
+  // left enabled throughout — only rotation is gated.
+  // -----------------------------------------------------------------------
+  let rotationArmed = false;
+  let armIdleTimer = null;
+  let lastTapTime = 0;
+  let lastTapX = 0;
+  let lastTapY = 0;
+  let gestureStartX = 0;
+  let gestureStartY = 0;
+  let gestureTracking = false;
+  let gestureDidDrag = false;
+  const DOUBLE_TAP_MS = 400;
+  const DOUBLE_TAP_PX = 28;
+  const DRAG_THRESHOLD_PX = 6;
+  const ARM_IDLE_MS = 4000;
+
+  function setRotationArmed(on) {
+    if (rotationArmed === on) return;
+    rotationArmed = on;
+    controls.enableRotate = on;
+    renderer.domElement.style.touchAction = on ? "none" : "pan-y";
+    if (onRotationArmChange) onRotationArmChange(on);
+    clearTimeout(armIdleTimer);
+    if (on) armIdleTimer = setTimeout(() => setRotationArmed(false), ARM_IDLE_MS);
+  }
+
+  // Runs before OrbitControls' own pointerdown handler (capture phase fires
+  // first on the same element) so that arming rotation here takes effect in
+  // time for OrbitControls to see enableRotate=true on THIS pointerdown.
+  function onStagePointerDownCapture(e) {
+    const now = performance.now();
+    const dx = e.clientX - lastTapX;
+    const dy = e.clientY - lastTapY;
+    const isDoubleTap = (now - lastTapTime) < DOUBLE_TAP_MS && Math.hypot(dx, dy) < DOUBLE_TAP_PX;
+    lastTapTime = isDoubleTap ? 0 : now; // consume, so a 3rd tap isn't misread as another double-tap
+    lastTapX = e.clientX;
+    lastTapY = e.clientY;
+    gestureStartX = e.clientX;
+    gestureStartY = e.clientY;
+    gestureTracking = true;
+    gestureDidDrag = false;
+    if (isDoubleTap) setRotationArmed(!rotationArmed);
+  }
+
+  function onStagePointerMoveCapture(e) {
+    if (!gestureTracking || gestureDidDrag) return;
+    const dx = e.clientX - gestureStartX;
+    const dy = e.clientY - gestureStartY;
+    if (Math.hypot(dx, dy) > DRAG_THRESHOLD_PX) gestureDidDrag = true;
+  }
+
+  function onGesturePointerUp() {
+    gestureTracking = false;
+    if (rotationArmed && gestureDidDrag) setRotationArmed(false);
+    // gestureDidDrag also gates onClick's drag-vs-click check, for the
+    // click that normally follows this same pointerup synchronously — so
+    // it must still read true there (hence the deferred clear, not an
+    // immediate one). It's already reset unconditionally on the next
+    // pointerdown, but a pointercancel produces no click at all, so
+    // without this a canvas click dispatched with no intervening
+    // pointerdown (e.g. a synthetic/programmatic one) would be silently
+    // swallowed by a stale flag from an earlier cancelled gesture.
+    if (gestureDidDrag) setTimeout(() => { gestureDidDrag = false; }, 0);
+  }
+
+  renderer.domElement.addEventListener("pointerdown", onStagePointerDownCapture, { capture: true });
+  renderer.domElement.addEventListener("pointermove", onStagePointerMoveCapture, { capture: true });
+  window.addEventListener("pointerup", onGesturePointerUp, { capture: true });
+  window.addEventListener("pointercancel", onGesturePointerUp, { capture: true });
+
+  // -----------------------------------------------------------------------
+  // Zoom bar support — camera distance from target, expressed as a 0-100
+  // percentage between controls.maxDistance (0) and controls.minDistance
+  // (100), so the UI slider doesn't need to know actual scene units.
+  // -----------------------------------------------------------------------
+  function currentDistance() {
+    return camera.position.distanceTo(controls.target);
+  }
+  function distanceToZoomPercent(dist) {
+    const t = (controls.maxDistance - dist) / (controls.maxDistance - controls.minDistance);
+    return THREE.MathUtils.clamp(t, 0, 1) * 100;
+  }
+  function zoomPercentToDistance(pct) {
+    const t = THREE.MathUtils.clamp(pct, 0, 100) / 100;
+    return THREE.MathUtils.lerp(controls.maxDistance, controls.minDistance, t);
+  }
+  function setZoomDistance(dist) {
+    // Cancel any in-flight camera tween (a view-button press, or a hotspot
+    // focus from the Systems Guide/Quiz) first — otherwise the tween's own
+    // next step would overwrite the position this is about to set, on
+    // whichever frame it happens to land on. The zoom bar must always be
+    // the final word on camera distance.
+    tween = null;
+    const clamped = THREE.MathUtils.clamp(dist, controls.minDistance, controls.maxDistance);
+    const dir = camera.position.clone().sub(controls.target);
+    if (dir.lengthSq() < 1e-6) dir.set(0, 0, 1);
+    dir.setLength(clamped);
+    camera.position.copy(controls.target).add(dir);
+    controls.update();
+  }
+  function setZoomPercent(pct) { setZoomDistance(zoomPercentToDistance(pct)); }
+  function getZoomPercent() { return distanceToZoomPercent(currentDistance()); }
+  function zoomStep(deltaPct) { setZoomPercent(getZoomPercent() + deltaPct); }
 
   // --- Camera tweening ---
   let tween = null;
@@ -359,14 +568,31 @@ export function createWorkstationScene(container, opts) {
     if (t >= 1) tween = null;
   }
 
+  // Selecting a hotspot (clicking its 3D marker, or the matching sidebar
+  // entry) marks it active and opens its info panel — nothing else. It
+  // must NEVER move the camera: a click changing the view out from under
+  // the user (and, as a direct consequence, silently nudging the zoom-bar
+  // reading) is exactly the "unpredictable interaction" this page used to
+  // be reported for.
   function selectComponent(id) {
     setActive(id);
+    const m = markers.get(id);
+    if (!m) return;
+    if (onSelect) onSelect(id, m.comp);
+  }
+
+  // Distinct from selectComponent above: an explicit "take me there"
+  // action (Systems Guide's jump-to-component chip, Viva Quiz's reveal),
+  // not a hotspot click — flying the camera to frame the component IS the
+  // point of those, so this is the one place that still tweens the camera
+  // on selection.
+  function focusComponent(id) {
+    selectComponent(id);
     const m = markers.get(id);
     if (!m) return;
     const dir = m.sprite.position.clone().sub(defaultTarget).normalize();
     const toPos = m.sprite.position.clone().add(dir.multiplyScalar(0.75)).add(new THREE.Vector3(0, 0.15, 0));
     tweenCamera(toPos, m.sprite.position.clone(), 850);
-    if (onSelect) onSelect(id, m.comp);
   }
 
   function clearSelection() {
@@ -379,25 +605,39 @@ export function createWorkstationScene(container, opts) {
     tweenCamera(defaultCamPos.clone(), defaultTarget.clone(), 700);
   }
   function frontView() {
-    tweenCamera(new THREE.Vector3(0, 1.1, 2.2), new THREE.Vector3(0, 0.75, 0), 700);
+    const dir = new THREE.Vector3(0, 0.32, 1).normalize();
+    tweenCamera(defaultTarget.clone().addScaledVector(dir, fitDistance), defaultTarget.clone(), 700);
   }
   function rearView() {
-    tweenCamera(new THREE.Vector3(0, 1.1, -2.2), new THREE.Vector3(0, 0.75, 0), 700);
+    const dir = new THREE.Vector3(0, 0.32, -1).normalize();
+    tweenCamera(defaultTarget.clone().addScaledVector(dir, fitDistance), defaultTarget.clone(), 700);
   }
   function sideView() {
-    tweenCamera(new THREE.Vector3(2.3, 1.05, 0), new THREE.Vector3(0, 0.75, 0), 700);
+    const dir = new THREE.Vector3(1, 0.28, 0).normalize();
+    tweenCamera(defaultTarget.clone().addScaledVector(dir, fitDistance), defaultTarget.clone(), 700);
   }
 
+  // NOTE: found during a visual-quality audit — activateTab("explore") in
+  // ventilator-ui.js calls this with amount=0 on every page load (not just
+  // when the Inspect slider is touched). The old `amount < 0.999` check
+  // treated that as "translucent", forcing transparent=true and
+  // depthWrite=false on the ENTIRE model at rest — depth writes disabled on
+  // an otherwise fully opaque model breaks correct draw-order between its
+  // own overlapping geometry, which is what made the live model look
+  // flatter/lower quality than the source GLB. `amount > 0.001` instead
+  // treats exact 0 as "fully opaque, untouched" and only switches into the
+  // transparent/no-depth-write mode once the slider has actually moved.
   function setTranslucent(amount) {
+    const active = amount > 0.001;
     modelGroup.traverse(o => {
       if (!o.isMesh) return;
       if (!o.userData._origOpacity) {
         o.userData._origOpacity = o.material.opacity != null ? o.material.opacity : 1;
         o.userData._origTransparent = !!o.material.transparent;
       }
-      o.material.transparent = amount < 0.999 ? true : o.userData._origTransparent;
+      o.material.transparent = active ? true : o.userData._origTransparent;
       o.material.opacity = THREE.MathUtils.lerp(o.userData._origOpacity, 0.18, amount);
-      o.material.depthWrite = amount < 0.999 ? false : true;
+      o.material.depthWrite = active ? false : true;
     });
   }
 
@@ -440,6 +680,7 @@ export function createWorkstationScene(container, opts) {
   let ready = loadModel().then(res => {
     isPlaceholder = res.isPlaceholder;
     resize();
+    fitCameraToModel();
     animate();
     if (onLoaded) onLoaded({ isPlaceholder });
     return res;
@@ -453,17 +694,27 @@ export function createWorkstationScene(container, opts) {
     rearView,
     sideView,
     selectComponent,
+    focusComponent,
     clearSelection,
     setTranslucent,
     setAutoRotate,
     setCalibrateMode,
     toggleFullscreen,
     isPlaceholder: () => isPlaceholder,
+    setZoomPercent,
+    getZoomPercent,
+    zoomStep,
+    isRotationArmed: () => rotationArmed,
     dispose() {
       cancelAnimationFrame(raf);
       ro.disconnect();
+      clearTimeout(armIdleTimer);
       renderer.domElement.removeEventListener("pointermove", onPointerMove);
       renderer.domElement.removeEventListener("click", onClick);
+      renderer.domElement.removeEventListener("pointerdown", onStagePointerDownCapture, { capture: true });
+      renderer.domElement.removeEventListener("pointermove", onStagePointerMoveCapture, { capture: true });
+      window.removeEventListener("pointerup", onGesturePointerUp, { capture: true });
+      window.removeEventListener("pointercancel", onGesturePointerUp, { capture: true });
       renderer.dispose();
       if (renderer.domElement.parentNode) renderer.domElement.parentNode.removeChild(renderer.domElement);
     }

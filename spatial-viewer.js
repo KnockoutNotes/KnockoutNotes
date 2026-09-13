@@ -9,6 +9,18 @@
   let activeItemIndex = -1;
   let currentItemsList = [];
   let currentScale = 1.0;
+  let lastFocused = null;
+
+  function lockScroll(locked) {
+    // No same-file fallback on purpose: this viewer only ever opens from a
+    // user click, well after script.js has run and defined this on
+    // DOMContentLoaded, and a plain `overflow: hidden` fallback would just
+    // reintroduce the exact sticky-header corruption bug this shared,
+    // reference-counted lock exists to avoid (see script.js).
+    if (window.KnockoutScrollLock && typeof window.KnockoutScrollLock.set === "function") {
+      window.KnockoutScrollLock.set("spatial-viewer", locked);
+    }
+  }
 
   function initSpatialViewer() {
     let viewer = document.getElementById("knSpatialViewer");
@@ -81,6 +93,8 @@
 
     function openItem(item, itemsList, index) {
       if (!item) return;
+      const wasOpen = modal.classList.contains("open");
+      if (!wasOpen) lastFocused = document.activeElement;
       currentItemsList = itemsList || [item];
       activeItemIndex = index !== undefined ? index : currentItemsList.indexOf(item);
       currentScale = 1.0;
@@ -123,7 +137,16 @@
       };
 
       modal.classList.add("open");
-      document.body.style.overflow = "hidden";
+      if (!wasOpen) {
+        lockScroll(true);
+        // Move focus into the modal so keyboard users don't keep tabbing
+        // through the now visually-hidden page underneath it — the close
+        // button is always present and is the safest universal landing
+        // spot (Prev/Next/zoom controls can be absent or mid-transition
+        // depending on the item type).
+        const closeBtn = modal.querySelector(".close-btn");
+        if (closeBtn) closeBtn.focus();
+      }
 
       if (window.KnockoutSpatialBg && typeof window.KnockoutSpatialBg.triggerRipple === "function") {
         window.KnockoutSpatialBg.triggerRipple(window.innerWidth * 0.5, window.innerHeight * 0.5);
@@ -132,9 +155,11 @@
 
     function closeViewer() {
       modal.classList.remove("open");
-      document.body.style.overflow = "";
+      lockScroll(false);
       if (img) img.src = "";
       if (frame) frame.src = "";
+      if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+      lastFocused = null;
     }
 
     modal.querySelectorAll("[data-close-viewer]").forEach(btn => {
@@ -173,11 +198,22 @@
       }
     });
 
+    const FOCUSABLE_SEL = 'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])';
     window.addEventListener("keydown", (e) => {
       if (!modal.classList.contains("open")) return;
-      if (e.key === "Escape") closeViewer();
-      else if (e.key === "ArrowLeft") document.getElementById("knViewerPrev").click();
-      else if (e.key === "ArrowRight") document.getElementById("knViewerNext").click();
+      if (e.key === "Escape") { closeViewer(); return; }
+      if (e.key === "ArrowLeft") { document.getElementById("knViewerPrev").click(); return; }
+      if (e.key === "ArrowRight") { document.getElementById("knViewerNext").click(); return; }
+      // Focus trap: without this, Tab walks off the last control here and
+      // into the underlying page, which is still in the tab order even
+      // though this overlay visually covers it.
+      if (e.key !== "Tab") return;
+      const focusable = Array.from(modal.querySelectorAll(FOCUSABLE_SEL)).filter(el => el.offsetParent !== null);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
 
     // Intercept clicks on clinical asset links — 3D View only. Lite View must

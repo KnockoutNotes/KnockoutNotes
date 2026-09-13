@@ -119,6 +119,14 @@
         window.scrollTo(0, scrollLockY);
       }
     }
+    // Exposed so other independently-loaded scripts (e.g. spatial-viewer.js's
+    // document viewer) share this SAME reference-counted lock instead of
+    // reinventing their own — a second, uncoordinated lock could unlock the
+    // page while another overlay still needs it locked, and (worse) any
+    // reimplementation that reaches for plain `overflow: hidden` on
+    // <html>/<body> reintroduces the exact sticky-header corruption bug this
+    // technique exists to avoid (see the comment above setScrollLock).
+    window.KnockoutScrollLock = { set: setScrollLock };
 
     // ------------------------------------------------------------------------
     // 4. Mobile Navigation Drawer
