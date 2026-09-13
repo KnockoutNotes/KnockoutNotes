@@ -228,13 +228,13 @@ export function initVentilatorPage() {
       guideExplain.querySelectorAll("[data-jump-id]").forEach(chip => {
         chip.addEventListener("click", () => {
           activateTab("explore");
-          scene.selectComponent(chip.dataset.jumpId);
+          scene.focusComponent(chip.dataset.jumpId);
         });
       });
       guideExplain.querySelectorAll("[data-open-schematic]").forEach(el => {
         el.addEventListener("click", () => schematicModal.open(el.dataset.openSchematic));
       });
-      if (comps[0]) scene.selectComponent(comps[0].id);
+      if (comps[0]) scene.focusComponent(comps[0].id);
     });
   });
 
@@ -266,7 +266,7 @@ export function initVentilatorPage() {
       a.hidden = false;
       a.innerHTML = `<strong>${esc(comp.name)}</strong><p>${esc(comp.viva.answer)}</p>`;
       activateTab("quiz");
-      scene.selectComponent(comp.id);
+      scene.focusComponent(comp.id);
     });
     document.getElementById("ventQuizNext").addEventListener("click", () => { quizIndex = (quizIndex + 1) % quizPool.length; renderQuiz(); });
     document.getElementById("ventQuizPrev").addEventListener("click", () => { quizIndex = (quizIndex - 1 + quizPool.length) % quizPool.length; renderQuiz(); });

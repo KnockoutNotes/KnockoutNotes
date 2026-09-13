@@ -141,11 +141,28 @@ export function createWorkstationScene(container, opts) {
   // Rotation is gated to an explicit double-click/double-tap "arm" step
   // (see the gesture-gating block below) — plain drag must not rotate.
   controls.enableRotate = false;
+  // Zoom is handled ONLY by the side zoom bar (setZoomPercent/zoomStep
+  // below), which sets camera.position directly and doesn't go through
+  // OrbitControls at all — so this is permanently off, not toggled.
+  // OrbitControls' own onMouseWheel bails out before calling
+  // preventDefault() once enableZoom is false, which is what leaves normal
+  // page-scroll-by-wheel working over the canvas as a side effect.
+  controls.enableZoom = false;
+  // No panning control is exposed anywhere in this UI (no pan reset, the
+  // zoom bar only changes distance) — disabling it removes an entire class
+  // of "the model silently drifted off-centre" reports from a stray
+  // right-click-drag or two-finger pan, and combined with enableZoom=false
+  // above, makes a two-finger touch a full no-op (see OrbitControls'
+  // TOUCH.DOLLY_PAN handling: both must be false for it to bail out).
+  controls.enablePan = false;
   // Left at the browser default (pan-y) so a one-finger touch that starts on
   // the canvas still scrolls the page like anywhere else on the site; the
   // gesture-gating block below switches this to "none" only while a
   // double-click/double-tap has just armed rotation, so that gesture's own
-  // drag isn't also interpreted as a page scroll.
+  // drag isn't also interpreted as a page scroll. "pan-y" (rather than
+  // "auto"/"manipulation") also already disables the browser's own native
+  // pinch-zoom on this element, so a two-finger touch does nothing at all
+  // while unarmed, consistent with zoom being zoom-bar-only.
   renderer.domElement.style.touchAction = "pan-y";
 
   scene.add(new THREE.HemisphereLight(0xdbeafe, 0x0f172a, 0.9));
@@ -516,6 +533,12 @@ export function createWorkstationScene(container, opts) {
     return THREE.MathUtils.lerp(controls.maxDistance, controls.minDistance, t);
   }
   function setZoomDistance(dist) {
+    // Cancel any in-flight camera tween (a view-button press, or a hotspot
+    // focus from the Systems Guide/Quiz) first — otherwise the tween's own
+    // next step would overwrite the position this is about to set, on
+    // whichever frame it happens to land on. The zoom bar must always be
+    // the final word on camera distance.
+    tween = null;
     const clamped = THREE.MathUtils.clamp(dist, controls.minDistance, controls.maxDistance);
     const dir = camera.position.clone().sub(controls.target);
     if (dir.lengthSq() < 1e-6) dir.set(0, 0, 1);
@@ -545,14 +568,31 @@ export function createWorkstationScene(container, opts) {
     if (t >= 1) tween = null;
   }
 
+  // Selecting a hotspot (clicking its 3D marker, or the matching sidebar
+  // entry) marks it active and opens its info panel — nothing else. It
+  // must NEVER move the camera: a click changing the view out from under
+  // the user (and, as a direct consequence, silently nudging the zoom-bar
+  // reading) is exactly the "unpredictable interaction" this page used to
+  // be reported for.
   function selectComponent(id) {
     setActive(id);
+    const m = markers.get(id);
+    if (!m) return;
+    if (onSelect) onSelect(id, m.comp);
+  }
+
+  // Distinct from selectComponent above: an explicit "take me there"
+  // action (Systems Guide's jump-to-component chip, Viva Quiz's reveal),
+  // not a hotspot click — flying the camera to frame the component IS the
+  // point of those, so this is the one place that still tweens the camera
+  // on selection.
+  function focusComponent(id) {
+    selectComponent(id);
     const m = markers.get(id);
     if (!m) return;
     const dir = m.sprite.position.clone().sub(defaultTarget).normalize();
     const toPos = m.sprite.position.clone().add(dir.multiplyScalar(0.75)).add(new THREE.Vector3(0, 0.15, 0));
     tweenCamera(toPos, m.sprite.position.clone(), 850);
-    if (onSelect) onSelect(id, m.comp);
   }
 
   function clearSelection() {
@@ -577,16 +617,27 @@ export function createWorkstationScene(container, opts) {
     tweenCamera(defaultTarget.clone().addScaledVector(dir, fitDistance), defaultTarget.clone(), 700);
   }
 
+  // NOTE: found during a visual-quality audit — activateTab("explore") in
+  // ventilator-ui.js calls this with amount=0 on every page load (not just
+  // when the Inspect slider is touched). The old `amount < 0.999` check
+  // treated that as "translucent", forcing transparent=true and
+  // depthWrite=false on the ENTIRE model at rest — depth writes disabled on
+  // an otherwise fully opaque model breaks correct draw-order between its
+  // own overlapping geometry, which is what made the live model look
+  // flatter/lower quality than the source GLB. `amount > 0.001` instead
+  // treats exact 0 as "fully opaque, untouched" and only switches into the
+  // transparent/no-depth-write mode once the slider has actually moved.
   function setTranslucent(amount) {
+    const active = amount > 0.001;
     modelGroup.traverse(o => {
       if (!o.isMesh) return;
       if (!o.userData._origOpacity) {
         o.userData._origOpacity = o.material.opacity != null ? o.material.opacity : 1;
         o.userData._origTransparent = !!o.material.transparent;
       }
-      o.material.transparent = amount < 0.999 ? true : o.userData._origTransparent;
+      o.material.transparent = active ? true : o.userData._origTransparent;
       o.material.opacity = THREE.MathUtils.lerp(o.userData._origOpacity, 0.18, amount);
-      o.material.depthWrite = amount < 0.999 ? false : true;
+      o.material.depthWrite = active ? false : true;
     });
   }
 
@@ -643,6 +694,7 @@ export function createWorkstationScene(container, opts) {
     rearView,
     sideView,
     selectComponent,
+    focusComponent,
     clearSelection,
     setTranslucent,
     setAutoRotate,
