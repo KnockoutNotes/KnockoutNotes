@@ -43,7 +43,7 @@
 
 .kn-library-tab {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -51,8 +51,8 @@
   background: var(--bg-card);
   color: var(--text-secondary);
   border-radius: var(--radius-full);
-  padding: 12px 24px;
-  font-size: 14.5px;
+  padding: 11px 22px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
@@ -60,6 +60,43 @@
   -webkit-backdrop-filter: blur(20px);
   transition: all var(--transition-fast);
   transform-style: preserve-3d;
+  user-select: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.kn-library-tab:hover {
+  color: var(--text-main);
+  border-color: var(--accent-cyan);
+  background: var(--soft-accent);
+  transform: translateY(-2px);
+}
+
+.kn-library-tab.active {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: var(--soft-accent);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+body:not(.dark) .kn-library-tab {
+  background: #ffffff;
+  color: #334155;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+body:not(.dark) .kn-library-tab:hover {
+  color: #0284c7;
+  border-color: #0284c7;
+  background: #f0f9ff;
+}
+
+body:not(.dark) .kn-library-tab.active {
+  color: #0369a1;
+  border-color: #0284c7;
+  background: #e0f2fe;
+  box-shadow: 0 0 16px rgba(2, 132, 199, 0.25);
 }
 
 /* One-shot neon "projection" flash the instant a tab becomes active —
@@ -217,31 +254,29 @@
    means. */
 .view-layer-3d #knLibrary3d .kn-library-tabs {
   order: 2;
+  position: relative;
   overflow: hidden;
   cursor: grab;
-  /* A deliberately narrow, centred window rather than full-width: at
-     full width every tab already fits with room to spare, so there is
-     nothing for centerActiveTab to actually slide (the clamp that stops
-     the track overscrolling past its own ends collapses to a no-op).
-     Capping the width means the row behaves like a real windowed
-     selector — usually only 2-3 tabs visible at once — matching the
-     card stack above it and giving "the selected one moves to the
-     middle" something to actually do on every breakpoint, not just
-     narrow ones. */
-  width: min(560px, 92%);
-  margin: 4px auto 4px;
-  padding: 6px 0 0;
+  width: min(1100px, 96%);
+  margin: 10px auto 4px;
+  padding: 8px 48px 6px;
   border-bottom: 0;
   border-top: 1px solid var(--border-subtle);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 48px, #000 calc(100% - 48px), transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 48px, #000 calc(100% - 48px), transparent 100%);
+  touch-action: pan-y;
+  user-select: none;
 }
 
 .view-layer-3d #knLibrary3d .kn-library-tabs-track {
   position: relative;
   display: flex;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: nowrap;
   width: max-content;
-  transition: transform 0.6s var(--ease-expo);
+  align-items: center;
+  transition: transform 0.52s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
 /* Applied by content-library.js for the duration of a pointer drag on the
@@ -679,3 +714,70 @@
     word-break: break-word;
   }
 }
+
+/* ==========================================================================
+   Day Mode (Light Theme) Overrides for 3D Content Library & Carousel
+   ========================================================================== */
+body:not(.dark) .kn-file-row {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+  color: #0f172a;
+}
+
+body:not(.dark) .kn-file-row.kn-carousel-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(15, 23, 42, 0.14);
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.09);
+}
+
+body:not(.dark) .kn-file-row.kn-carousel-card:hover {
+  border-color: #0284c7;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.14), 0 0 20px rgba(2, 132, 199, 0.2);
+}
+
+body:not(.dark) .kn-file-title {
+  color: #0f172a;
+}
+
+body:not(.dark) .kn-file-descriptor {
+  color: #64748b;
+}
+
+body:not(.dark) .kn-file-num {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #475569;
+}
+
+body:not(.dark) .kn-file-thumb {
+  background:
+    radial-gradient(circle at 50% 38%, rgba(var(--cat-r), var(--cat-g), var(--cat-b), 0.18), transparent 70%),
+    repeating-linear-gradient(135deg, rgba(var(--cat-r), var(--cat-g), var(--cat-b), 0.04) 0px, rgba(var(--cat-r), var(--cat-g), var(--cat-b), 0.04) 1px, transparent 1px, transparent 14px),
+    #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+body:not(.dark) .kn-file-arrow {
+  color: #475569;
+}
+
+body:not(.dark) .view-layer-3d .kn-file-row.kn-carousel-card .kn-file-arrow {
+  background: #e0f2fe;
+  color: #0284c7;
+  border-color: #38bdf8;
+}
+
+body:not(.dark) .view-layer-3d .kn-file-row.kn-carousel-card[data-centered="true"] .kn-file-arrow {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+}
+
+body:not(.dark) .kn-tab-beam {
+  background: linear-gradient(to top,
+    rgba(2, 132, 199, 0.55),
+    rgba(56, 189, 248, 0.2) 40%,
+    rgba(56, 189, 248, 0) 100%);
+}
+

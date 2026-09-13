@@ -184,72 +184,98 @@
 
   let waveTime = 0;
 
-  // Lead II ECG
+  // Lead II ECG (P, Q, R, S, T complex)
   function getEcgY(t) {
     const cycle = t % 1;
     if (cycle < 0.12) return 0;
     if (cycle < 0.20) {
       const p = (cycle - 0.12) / 0.08;
-      return Math.sin(p * Math.PI) * 0.18;
+      return Math.sin(p * Math.PI) * 0.18; // P wave
     }
-    if (cycle < 0.30) return 0;
+    if (cycle < 0.30) return 0; // PR segment
     if (cycle < 0.33) {
       const p = (cycle - 0.30) / 0.03;
-      return -Math.sin(p * Math.PI) * 0.14;
+      return -Math.sin(p * Math.PI) * 0.14; // Q wave
     }
     if (cycle < 0.39) {
       const p = (cycle - 0.33) / 0.06;
-      return Math.sin(p * Math.PI) * 1.0;
+      return Math.sin(p * Math.PI) * 1.0; // R wave peak
     }
     if (cycle < 0.44) {
       const p = (cycle - 0.39) / 0.05;
-      return -Math.sin(p * Math.PI) * 0.25;
+      return -Math.sin(p * Math.PI) * 0.25; // S wave
     }
-    if (cycle < 0.54) return 0;
+    if (cycle < 0.54) return 0; // ST segment
     if (cycle < 0.70) {
       const p = (cycle - 0.54) / 0.16;
-      return Math.sin(p * Math.PI) * 0.32;
+      return Math.sin(p * Math.PI) * 0.32; // T wave
     }
-    return 0;
+    return 0; // TP baseline
   }
 
-  // Capnography CO2 (Square waveform)
+  // Arterial Blood Pressure (ABP / Invasive Arterial Line) with Dicrotic Notch
+  function getAbpY(t) {
+    const cycle = t % 1;
+    // Systolic rapid upstroke
+    if (cycle < 0.16) {
+      const p = cycle / 0.16;
+      return Math.sin(p * Math.PI * 0.5) * 1.0;
+    }
+    // Peak systolic decline to dicrotic notch
+    if (cycle < 0.32) {
+      const p = (cycle - 0.16) / 0.16;
+      return 1.0 - p * 0.48; // drops to 0.52
+    }
+    // Dicrotic notch & secondary wave (aortic valve closure recoil)
+    if (cycle < 0.44) {
+      const p = (cycle - 0.32) / 0.12;
+      return 0.52 + Math.sin(p * Math.PI) * 0.12;
+    }
+    // Diastolic runoff
+    if (cycle < 0.88) {
+      const p = (cycle - 0.44) / 0.44;
+      return 0.52 * Math.exp(-p * 2.2);
+    }
+    return 0.52 * Math.exp(-2.2);
+  }
+
+  // Capnography CO2 (Phase I baseline, Phase II upstroke, Phase III plateau, Phase IV inspiration)
   function getCapnoY(t) {
     const cycle = t % 1;
-    if (cycle < 0.35) return 0;
-    if (cycle < 0.45) {
-      const p = (cycle - 0.35) / 0.10;
-      return Math.sin(p * Math.PI * 0.5) * 0.75;
+    if (cycle < 0.32) return 0; // Phase I: inspiratory baseline
+    if (cycle < 0.42) {
+      const p = (cycle - 0.32) / 0.10;
+      return Math.sin(p * Math.PI * 0.5) * 0.75; // Phase II: expiratory upstroke
     }
-    if (cycle < 0.75) {
-      const p = (cycle - 0.45) / 0.30;
-      return 0.75 + p * 0.20;
+    if (cycle < 0.76) {
+      const p = (cycle - 0.42) / 0.34;
+      return 0.75 + p * 0.22; // Phase III: alveolar plateau with alpha angle
     }
-    if (cycle < 0.82) {
-      const p = (cycle - 0.75) / 0.07;
-      return 0.95 * (1 - p);
+    if (cycle < 0.84) {
+      const p = (cycle - 0.76) / 0.08;
+      return 0.97 * (1 - p); // Phase IV: rapid inspiratory downstroke
     }
     return 0;
   }
 
-  // SpO2 Plethysmograph
+  // SpO2 Photoplethysmograph
   function getPlethY(t) {
     const cycle = t % 1;
     if (cycle < 0.18) {
       const p = cycle / 0.18;
       return Math.sin(p * Math.PI * 0.5);
     }
-    if (cycle < 0.32) {
-      const p = (cycle - 0.18) / 0.14;
-      return 1.0 - p * 0.45;
+    if (cycle < 0.34) {
+      const p = (cycle - 0.18) / 0.16;
+      return 1.0 - p * 0.42;
     }
-    if (cycle < 0.42) {
-      const p = (cycle - 0.32) / 0.10;
-      return 0.55 + Math.sin(p * Math.PI) * 0.12;
+    if (cycle < 0.44) {
+      const p = (cycle - 0.34) / 0.10;
+      return 0.58 + Math.sin(p * Math.PI) * 0.12;
     }
-    if (cycle < 0.85) {
-      const p = (cycle - 0.42) / 0.43;
-      return 0.55 * (1 - p * p);
+    if (cycle < 0.86) {
+      const p = (cycle - 0.44) / 0.42;
+      return 0.58 * (1 - p * p);
     }
     return 0;
   }
@@ -271,12 +297,12 @@
     const [r, g, b] = env.accent;
     const [r2, g2, b2] = env.secondary;
 
-    // 1. Subtle Engineering Grid Layer (faint, pointer-parallaxed)
-    ctx.strokeStyle = isDark ? `rgba(${r}, ${g}, ${b}, 0.032)` : `rgba(${r}, ${g}, ${b}, 0.04)`;
+    // 1. Clinical Telemetry Grid Layer (Clean calibration grid)
+    ctx.strokeStyle = isDark ? `rgba(${r}, ${g}, ${b}, 0.038)` : `rgba(2, 132, 199, 0.07)`;
     ctx.lineWidth = 1;
-    const gridSize = 56;
-    const offsetX = (mouse.x - width * 0.5) * 0.02;
-    const offsetY = (mouse.y - height * 0.5) * 0.02;
+    const gridSize = 54;
+    const offsetX = (mouse.x - width * 0.5) * 0.018;
+    const offsetY = (mouse.y - height * 0.5) * 0.018;
 
     ctx.beginPath();
     for (let x = (offsetX % gridSize); x < width; x += gridSize) {
@@ -289,9 +315,7 @@
     }
     ctx.stroke();
 
-    // 1b. Ambient light points — bounded, slow-drifting soft glows with a
-    // gentle pointer-parallax, standing in for "medical knowledge in a
-    // spatial environment" without any sci-fi starfield noise.
+    // 1b. Ambient Knowledge Glow Orbs
     for (let i = 0; i < glowOrbs.length; i++) {
       const orb = glowOrbs[i];
       orb.x += orb.vx;
@@ -301,11 +325,11 @@
       if (orb.y < -orb.r) orb.y = height + orb.r;
       else if (orb.y > height + orb.r) orb.y = -orb.r;
 
-      const px = orb.x + (mouse.x - width * 0.5) * 0.03;
-      const py = orb.y + (mouse.y - height * 0.5) * 0.03;
+      const px = orb.x + (mouse.x - width * 0.5) * 0.025;
+      const py = orb.y + (mouse.y - height * 0.5) * 0.025;
       const [gr, gg, gb] = orb.useSecondary ? env.secondary : env.accent;
       const grad = ctx.createRadialGradient(px, py, 0, px, py, orb.r);
-      grad.addColorStop(0, `rgba(${gr}, ${gg}, ${gb}, ${isDark ? 0.10 : 0.06})`);
+      grad.addColorStop(0, `rgba(${gr}, ${gg}, ${gb}, ${isDark ? 0.09 : 0.05})`);
       grad.addColorStop(1, `rgba(${gr}, ${gg}, ${gb}, 0)`);
       ctx.fillStyle = grad;
       ctx.beginPath();
@@ -313,21 +337,20 @@
       ctx.fill();
     }
 
-    // 2. Breathing Circuit Geometry Motifs (Soft outline) — skipped on small
-    // screens to keep the canvas lightweight on mobile browsers.
+    // 2. Breathing Circuit Geometry Motifs (Rotary Anesthetic Vaporizer Dial Accent)
     if (env.circuitRings && !isSmallScreen()) {
-      const cx = width * 0.84 + (mouse.x - width * 0.5) * 0.025;
-      const cy = height * 0.45 + (mouse.y - height * 0.5) * 0.025;
+      const cx = width * 0.86 + (mouse.x - width * 0.5) * 0.02;
+      const cy = height * 0.42 + (mouse.y - height * 0.5) * 0.02;
 
       ctx.save();
       ctx.translate(cx, cy);
-      ctx.rotate(waveTime * 0.12);
+      ctx.rotate(waveTime * 0.10);
 
       for (let ring = 1; ring <= 2; ring++) {
-        const rad = ring * 95;
+        const rad = ring * 90;
         ctx.beginPath();
         ctx.arc(0, 0, rad, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${0.025 * ring})`;
+        ctx.strokeStyle = isDark ? `rgba(${r}, ${g}, ${b}, ${0.03 * ring})` : `rgba(2, 132, 199, ${0.05 * ring})`;
         ctx.setLineDash([6, 16]);
         ctx.lineWidth = 1.0;
         ctx.stroke();
@@ -336,21 +359,25 @@
       ctx.restore();
     }
 
-    // 3. Real-Time Waveforms (Anchored gracefully near bottom)
-    waveTime += 0.010;
-    const baseY = height * 0.82;
+    // 3. Multi-Channel Physiological Monitoring Telemetry (Anchored near viewport base)
+    waveTime += 0.011;
+    const baseY = height * 0.84;
+    const sweepProgress = (waveTime * 1.5) % 1;
+    const sweepHeadX = sweepProgress * width;
 
-    // A. Lead II ECG
+    // A. Lead II ECG (Green/Cyan CRT phosphor)
     if (env.ecg) {
       ctx.beginPath();
-      ctx.strokeStyle = isDark ? `rgba(${r}, ${g}, ${b}, 0.35)` : `rgba(${r}, ${g}, ${b}, 0.22)`;
+      ctx.strokeStyle = isDark ? "rgba(56, 189, 248, 0.45)" : "rgba(2, 132, 199, 0.65)";
       ctx.lineWidth = 1.6;
-      ctx.shadowColor = `rgba(${r}, ${g}, ${b}, 0.4)`;
-      ctx.shadowBlur = 6;
+      if (isDark) {
+        ctx.shadowColor = "rgba(56, 189, 248, 0.55)";
+        ctx.shadowBlur = 6;
+      }
 
       const ecgWaveLength = 220;
       for (let x = 0; x <= width; x += 3) {
-        const progress = (x / ecgWaveLength - waveTime * 1.6);
+        const progress = (x / ecgWaveLength - waveTime * 1.5);
         const yOffset = getEcgY(progress) * 44;
         const y = baseY - yOffset;
         if (x === 0) ctx.moveTo(x, y);
@@ -358,50 +385,82 @@
       }
       ctx.stroke();
       ctx.shadowBlur = 0;
+
+      // Soft glowing phosphor sweep head on ECG
+      if (isDark) {
+        const sweepY = baseY - getEcgY(sweepHeadX / ecgWaveLength - waveTime * 1.5) * 44;
+        ctx.beginPath();
+        ctx.arc(sweepHeadX, sweepY, 3, 0, Math.PI * 2);
+        ctx.fillStyle = "#38bdf8";
+        ctx.shadowColor = "#38bdf8";
+        ctx.shadowBlur = 10;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
     }
 
-    // B. Capnography Waveform (EtCO2)
+    // B. Arterial Blood Pressure (ABP / Invasive Arterial Line, Ruby / Coral Red)
+    if (env.ecg && !isSmallScreen()) {
+      ctx.beginPath();
+      ctx.strokeStyle = isDark ? "rgba(244, 63, 94, 0.35)" : "rgba(225, 29, 72, 0.55)";
+      ctx.lineWidth = 1.4;
+      if (isDark) {
+        ctx.shadowColor = "rgba(244, 63, 94, 0.45)";
+        ctx.shadowBlur = 5;
+      }
+
+      const abpWaveLength = 220;
+      for (let x = 0; x <= width; x += 3) {
+        // Synchronized with ECG with physiologic ~120ms electromechanical delay
+        const progress = ((x - 28) / abpWaveLength - waveTime * 1.5);
+        const yOffset = getAbpY(progress) * 36;
+        const y = (baseY - 45) - yOffset;
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+    }
+
+    // C. Capnography Waveform (EtCO2, Amber / Yellow Plateau)
     if (env.capno) {
       ctx.beginPath();
-      ctx.strokeStyle = isDark ? `rgba(${r2}, ${g2}, ${b2}, 0.20)` : `rgba(${r2}, ${g2}, ${b2}, 0.12)`;
+      ctx.strokeStyle = isDark ? "rgba(251, 191, 36, 0.32)" : "rgba(217, 119, 6, 0.52)";
       ctx.lineWidth = 1.3;
 
-      const capnoWaveLength = 340;
+      const capnoWaveLength = 360;
       for (let x = 0; x <= width; x += 4) {
-        const progress = (x / capnoWaveLength - waveTime * 0.8);
+        const progress = (x / capnoWaveLength - waveTime * 0.75);
         const yOffset = getCapnoY(progress) * 32;
-        const y = (baseY - 60) - yOffset;
+        const y = (baseY - 95) - yOffset;
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
       ctx.stroke();
     }
 
-    // C. SpO2 Plethysmograph
+    // D. SpO2 Plethysmograph (Emerald Green)
     if (env.pleth) {
       ctx.beginPath();
-      ctx.strokeStyle = `rgba(52, 211, 153, ${isDark ? 0.18 : 0.10})`;
-      ctx.lineWidth = 1.1;
+      ctx.strokeStyle = isDark ? "rgba(52, 211, 153, 0.30)" : "rgba(5, 150, 105, 0.55)";
+      ctx.lineWidth = 1.2;
 
       const plethWaveLength = 190;
       for (let x = 0; x <= width; x += 4) {
-        const progress = (x / plethWaveLength - waveTime * 1.4);
-        const yOffset = getPlethY(progress) * 24;
-        const y = (baseY + 45) - yOffset;
+        const progress = (x / plethWaveLength - waveTime * 1.35);
+        const yOffset = getPlethY(progress) * 22;
+        const y = (baseY + 44) - yOffset;
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
       ctx.stroke();
     }
 
-    // 4. Ambient Gas Drift — each dot keeps its own steady ambient
-    // wander (vx/vy, set once at init and never decayed) plus a
-    // separate scatter velocity (repelVx/repelVy) that a nearby pointer
-    // or touch adds to and that decays back to zero on its own, so dots
-    // visibly scatter from a cursor/finger passing near them and drift
-    // back to roaming once it moves away, without the ambient drift
-    // itself ever stalling out.
-    const repelRadius = isSmallScreen() ? 90 : 140;
+    // 4. Volatile Anaesthetic Vapor & Alveolar Gas Dispersion Physics
+    // Simulated mechanical ventilation tidal breathing rhythm (~12 bpm)
+    const tidalBreathing = Math.sin(waveTime * 0.9) * 0.15;
+    const repelRadius = isSmallScreen() ? 90 : 150;
+
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
 
@@ -410,14 +469,15 @@
       const distSq = dx * dx + dy * dy;
       if (distSq < repelRadius * repelRadius && distSq > 4) {
         const dist = Math.sqrt(distSq);
-        const force = (1 - dist / repelRadius) * 1.1;
+        const force = (1 - dist / repelRadius) * 1.3;
         p.repelVx += (dx / dist) * force;
         p.repelVy += (dy / dist) * force;
       }
-      p.repelVx *= 0.94;
-      p.repelVy *= 0.94;
+      p.repelVx *= 0.93;
+      p.repelVy *= 0.93;
 
-      p.x += p.vx + p.repelVx;
+      // Laminar gas flow with tidal breathing modulation
+      p.x += p.vx * (1 + tidalBreathing) + p.repelVx;
       p.y += p.vy + p.repelVy;
 
       if (p.x < 0) p.x = width;
@@ -431,11 +491,13 @@
 
       ctx.beginPath();
       ctx.arc(px, py, p.size * depthFactor, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${p.alpha * (isDark ? 0.7 : 0.38)})`;
+      ctx.fillStyle = isDark
+        ? `rgba(${r}, ${g}, ${b}, ${p.alpha * 0.72})`
+        : `rgba(2, 132, 199, ${p.alpha * 0.55})`;
       ctx.fill();
     }
 
-    // 5. Tactile Click Ripples
+    // 5. Tactile Acoustic Transducer Pressure Ripples
     for (let i = ripples.length - 1; i >= 0; i--) {
       const rip = ripples[i];
       rip.radius += rip.speed;
@@ -443,10 +505,14 @@
 
       ctx.beginPath();
       ctx.arc(rip.x, rip.y, rip.radius, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${rip.alpha})`;
+      ctx.strokeStyle = isDark
+        ? `rgba(${r}, ${g}, ${b}, ${rip.alpha})`
+        : `rgba(2, 132, 199, ${rip.alpha * 0.8})`;
       ctx.lineWidth = 1.5;
-      ctx.shadowColor = `rgba(${r}, ${g}, ${b}, 0.5)`;
-      ctx.shadowBlur = 8;
+      if (isDark) {
+        ctx.shadowColor = `rgba(${r}, ${g}, ${b}, 0.5)`;
+        ctx.shadowBlur = 8;
+      }
       ctx.stroke();
       ctx.shadowBlur = 0;
 
@@ -481,3 +547,4 @@
     }
   };
 })();
+

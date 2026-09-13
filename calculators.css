@@ -1,5 +1,21 @@
 /* KnockoutNotes — Anaesthesia Calculators & Paediatric Hub Styles */
 
+:root {
+  --fg: #0f172a;
+  --muted: #475569;
+  --card: #ffffff;
+  --border: rgba(15, 23, 42, 0.12);
+  --accent: #0284c7;
+}
+
+.dark {
+  --fg: #f8fafc;
+  --muted: #94a3b8;
+  --card: rgba(11, 18, 36, 0.72);
+  --border: rgba(255, 255, 255, 0.12);
+  --accent: #38bdf8;
+}
+
 /* Hub Layout & Cards */
 .calc-hub-nav {
   display: flex;
@@ -641,12 +657,152 @@
   }
 }
 
+/* ==========================================================================
+   Day Mode (Light Theme) Overrides for Calculators & Paediatric Hub
+   ========================================================================== */
+body:not(.dark) .calc-hero-card {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.06) 0%, rgba(255, 255, 255, 0.96) 100%);
+  border: 1.5px solid rgba(2, 132, 199, 0.35);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+body:not(.dark) .calc-hero-header h2,
+body:not(.dark) .calc-box-header h3,
+body:not(.dark) .calc-group-title,
+body:not(.dark) .calc-primary-val {
+  color: #0f172a !important;
+}
+
+body:not(.dark) .calc-box {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+body:not(.dark) .calc-box:hover {
+  border-color: rgba(2, 132, 199, 0.45);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1), 0 0 18px rgba(2, 132, 199, 0.12);
+}
+
+body:not(.dark) .calc-input,
+body:not(.dark) .calc-select {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+body:not(.dark) .calc-input:focus,
+body:not(.dark) .calc-select:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+}
+
+body:not(.dark) .calc-result-area {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+body:not(.dark) .calc-formula-display {
+  background: #e2e8f0 !important;
+  color: #334155 !important;
+}
+
+body:not(.dark) .calc-interp {
+  color: #334155 !important;
+}
+
+body:not(.dark) .btn-calc-reset {
+  border-color: #cbd5e1;
+  color: #475569;
+}
+
+body:not(.dark) .btn-calc-reset:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-color: #94a3b8;
+}
+
+body:not(.dark) .airway-box {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+body:not(.dark) .airway-box .val {
+  color: #0f172a !important;
+}
+
+body:not(.dark) .paeds-table-wrapper {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+}
+
+body:not(.dark) .paeds-chart-table th {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+}
+
+body:not(.dark) .paeds-chart-table td {
+  color: #334155 !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+}
+
+body:not(.dark) .paeds-chart-table tr.category-header td {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+}
+
+body:not(.dark) .paeds-chart-table td.drug-name {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+body:not(.dark) .paeds-chart-table td.calculated-dose {
+  color: #0284c7 !important;
+  font-weight: 800 !important;
+}
+
+body:not(.dark) .paeds-chart-table td.calculated-vol {
+  color: #059669 !important;
+  font-weight: 800 !important;
+}
+
+body:not(.dark) .calc-choice-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+body:not(.dark) .calc-choice-label {
+  color: #1e293b !important;
+}
+
+body:not(.dark) .calc-nav-pill {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+}
+
+body:not(.dark) .calc-nav-pill:hover,
+body:not(.dark) .calc-nav-pill.active {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+}
+
+body:not(.dark) .paeds-actions-bar {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
 /* Print Stylesheet */
 @media print {
   .site-hud,
-  .kn-mode-switch-dock,
-  .kn-updates-pill,
   .calc-hub-nav,
+  .calc-actions,
   .paeds-actions-bar,
   .footer,
   #knSpatialCanvas {

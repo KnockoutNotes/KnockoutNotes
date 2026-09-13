@@ -21,11 +21,11 @@
 
   /* Light Clinical Palette */
   --bg-void: #f8fafc;
-  --bg-surface: rgba(255, 255, 255, 0.82);
-  --bg-card: rgba(255, 255, 255, 0.92);
-  --bg-glass: rgba(255, 255, 255, 0.7);
-  --text-main: #060913;
-  --text-secondary: #475569;
+  --bg-surface: rgba(255, 255, 255, 0.94);
+  --bg-card: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.88);
+  --text-main: #090d16;
+  --text-secondary: #334155;
   --text-muted: #64748b;
   --accent-cyan: #0284c7;
   --accent-blue: #2563eb;
@@ -33,11 +33,11 @@
   --accent-emerald: #059669;
   --accent-amber: #d97706;
   --accent-rose: #e11d48;
-  --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-specular: rgba(255, 255, 255, 0.95);
-  --border-glow: rgba(2, 132, 199, 0.35);
+  --border-subtle: rgba(15, 23, 42, 0.12);
+  --border-specular: rgba(15, 23, 42, 0.16);
+  --border-glow: rgba(2, 132, 199, 0.45);
   --soft-accent: #e0f2fe;
-  --nav-bg: rgba(248, 250, 252, 0.82);
+  --nav-bg: rgba(255, 255, 255, 0.92);
   /* Each token layers a tight near-shadow with a soft, wide far-shadow —
      one flat blur reads as a thin outline; two stacked at different
      spreads/opacities is what actually sells "this is elevated off the
@@ -2675,4 +2675,160 @@ body.kn-page-exit {
 .chamber-portal-card:hover .chamber-portal-arrow {
   transform: translateX(4px);
 }
+
+/* ==========================================================================
+   KNOCKOUTNOTES — Comprehensive Day Mode (Light Theme) Contrast Engine
+   Ensures pristine medical clarity, high legibility & sharp borders in daylight
+   ========================================================================== */
+body:not(.dark) {
+  background-color: var(--bg-void);
+  color: var(--text-main);
+}
+
+body:not(.dark) .hud-capsule {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.07), 0 0 20px rgba(2, 132, 199, 0.1);
+}
+
+body:not(.dark) .site-hud.scrolled .hud-capsule {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(2, 132, 199, 0.3);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.1), 0 0 25px rgba(2, 132, 199, 0.15);
+}
+
+body:not(.dark) .brand-name {
+  color: #0f172a;
+}
+
+body:not(.dark) .hud-path-indicator {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #0284c7;
+}
+
+body:not(.dark) .nav-links a {
+  color: #334155;
+}
+
+body:not(.dark) .nav-links a:hover {
+  color: #0284c7;
+  background: #e0f2fe;
+}
+
+body:not(.dark) .nav-links a.active {
+  color: #0369a1;
+  background: #e0f2fe;
+  border-color: #0284c7;
+  box-shadow: 0 0 12px rgba(2, 132, 199, 0.2);
+}
+
+body:not(.dark) .icon-btn,
+body:not(.dark) .menu-btn {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: #334155;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+}
+
+body:not(.dark) .icon-btn:hover,
+body:not(.dark) .menu-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-color: #0284c7;
+}
+
+body:not(.dark) .nav-search-trigger {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+}
+
+body:not(.dark) .nav-search-trigger:hover {
+  border-color: #0284c7;
+  color: #0f172a;
+}
+
+body:not(.dark) .kn-mode-btn {
+  color: #475569;
+}
+
+body:not(.dark) .kn-mode-btn:hover {
+  color: #0f172a;
+}
+
+body:not(.dark) .kn-mode-btn.active {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.35);
+}
+
+body:not(.dark) .btn-cinematic.glass {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  color: #0f172a;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+body:not(.dark) .btn-cinematic.glass:hover {
+  background: #f8fafc;
+  border-color: #0284c7;
+  color: #0284c7;
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.15);
+}
+
+body:not(.dark) .hero-title,
+body:not(.dark) .section-title,
+body:not(.dark) .card-title {
+  color: #0f172a;
+}
+
+body:not(.dark) .hero-subtitle {
+  color: #334155;
+}
+
+body:not(.dark) .chamber-portal-card {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.06) 0%, rgba(255, 255, 255, 0.96) 100%);
+  border: 1.5px solid rgba(239, 68, 68, 0.3);
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.08);
+}
+
+body:not(.dark) .chamber-portal-title {
+  color: #0f172a;
+}
+
+body:not(.dark) .chamber-portal-desc {
+  color: #334155;
+}
+
+body:not(.dark) .kn-search-box {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.18);
+}
+
+body:not(.dark) .kn-search-input {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+}
+
+body:not(.dark) .kn-search-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+}
+
+body:not(.dark) .kn-search-item:hover {
+  background: #f0f9ff;
+  border-color: #38bdf8;
+}
+
+body:not(.dark) .site-footer {
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid #e2e8f0;
+  color: #475569;
+}
+
 

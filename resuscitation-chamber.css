@@ -921,3 +921,183 @@
   }
 }
 
+/* ==========================================================================
+   Day Mode (Light Theme) Overrides for Resuscitation Chamber
+   ========================================================================== */
+body:not(.dark) .chamber-tabs-nav {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+body:not(.dark) .chamber-tab-btn {
+  color: #475569;
+}
+
+body:not(.dark) .chamber-tab-btn:hover {
+  color: #0f172a;
+  background: #f1f5f9;
+}
+
+body:not(.dark) .chamber-tab-btn.active {
+  background: #e0f2fe;
+  color: #0284c7;
+  border-color: #38bdf8;
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.2);
+}
+
+body:not(.dark) .chamber-subtab-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+}
+
+body:not(.dark) .chamber-subtab-btn:hover {
+  color: #0f172a;
+  background: #f8fafc;
+}
+
+body:not(.dark) .chamber-subtab-btn.active {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
+}
+
+body:not(.dark) .flowchart-viewport {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
+}
+
+body:not(.dark) .flowchart-title {
+  color: #0f172a !important;
+}
+
+body:not(.dark) .flow-node {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  color: #0f172a;
+}
+
+body:not(.dark) .flow-node:hover {
+  border-color: #0284c7;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12), 0 0 16px rgba(2, 132, 199, 0.15);
+}
+
+body:not(.dark) .flow-node.node-start {
+  background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+  border-color: #fca5a5;
+  border-left: 5px solid #ef4444;
+}
+
+body:not(.dark) .flow-node.node-decision {
+  background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);
+  border-color: #fde68a;
+  border-left: 5px solid #f59e0b;
+}
+
+body:not(.dark) .flow-node.node-shock {
+  background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+  border-color: #fecaca;
+  border-left: 5px solid #dc2626;
+}
+
+body:not(.dark) .flow-node.node-cpr {
+  background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+  border-color: #bae6fd;
+  border-left: 5px solid #0284c7;
+}
+
+body:not(.dark) .flow-node.node-drug {
+  background: linear-gradient(135deg, #faf5ff 0%, #ffffff 100%);
+  border-color: #e9d5ff;
+  border-left: 5px solid #9333ea;
+}
+
+body:not(.dark) .flow-node.node-success {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+  border-color: #bbf7d0;
+  border-left: 5px solid #16a34a;
+}
+
+body:not(.dark) .node-title {
+  color: #0f172a !important;
+}
+
+body:not(.dark) .node-body {
+  color: #334155 !important;
+}
+
+body:not(.dark) .node-body strong {
+  color: #0f172a !important;
+}
+
+body:not(.dark) .node-tag {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+}
+
+body:not(.dark) .metronome-box,
+body:not(.dark) .cycle-timer-box,
+body:not(.dark) .checklist-box {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+}
+
+body:not(.dark) .metronome-title,
+body:not(.dark) .timer-title,
+body:not(.dark) .checklist-title {
+  color: #0f172a !important;
+}
+
+body:not(.dark) .metronome-bpm-val,
+body:not(.dark) .cycle-countdown {
+  color: #0f172a !important;
+}
+
+body:not(.dark) .metronome-housing {
+  background: linear-gradient(180deg, #f8fafc, #e2e8f0);
+  border: 2px solid #cbd5e1;
+}
+
+body:not(.dark) .metronome-pendulum-arm {
+  background: linear-gradient(90deg, #94a3b8, #64748b);
+}
+
+body:not(.dark) .checklist-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+}
+
+body:not(.dark) .checklist-item:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+body:not(.dark) .checklist-item.checked {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+body:not(.dark) .checklist-item span.item-text {
+  color: #0f172a;
+}
+
+body:not(.dark) .btn-resuscitation {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  color: #0f172a;
+}
+
+body:not(.dark) .btn-resuscitation:hover {
+  background: #f8fafc;
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+

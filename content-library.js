@@ -365,206 +365,84 @@
       // sequence no matter which one is "active" — nothing to animate.
       // Sliding one continuous track is what "this tab moves to the
       // middle" actually requires.
-      const centerActiveTab = tab => {
-        // A category with an empty files/categories list (content-config.js
-        // is edited directly as the normal, non-developer content workflow —
-        // see HOW_TO_ADD_CONTENT.txt) renders no tab buttons at all, so the
-        // resize handler's `tabs.querySelector('.kn-library-tab.active')`
-        // can hand this `null` on every window resize.
+      let currentTrackOffset = 0;
+
+      // Slides the track so the newly active tab's centre lands on
+      // the viewport's exact centre in a silky-smooth animated manner.
+      const centerActiveTab = (tab, animate = true) => {
         if (!track || !tab) return;
-        // Measured via getBoundingClientRect against a momentarily-
-        // neutralised transform, not offsetLeft/offsetWidth — an
-        // offsetLeft-based version of this (relative to track, on the
-        // assumption track sits flush at x:0 inside `tabs`) measured
-        // consistently correct-looking inputs but produced a track that
-        // settled visibly off-window; viewport-relative rects sidestep
-        // whatever in that offsetParent chain was actually wrong, using
-        // only absolute page coordinates instead.
-        const prevTransition = track.style.transition;
-        track.style.transition = 'none';
-        track.style.transform = 'none';
         const viewportRect = tabs.getBoundingClientRect();
         const tabRect = tab.getBoundingClientRect();
-        const trackW = track.scrollWidth;
-        const ideal = (viewportRect.left + viewportRect.width / 2) - (tabRect.left + tabRect.width / 2);
-        const minOffset = Math.min(0, viewportRect.width - trackW);
-        const offset = Math.max(minOffset, Math.min(0, ideal));
-        // eslint-disable-next-line no-unused-expressions
-        track.offsetWidth; // flush transform:none/transition:none before animating
-        track.style.transition = prevTransition;
-        track.style.transform = `translateX(${offset}px)`;
+        const viewportCenter = viewportRect.left + viewportRect.width / 2;
+        const tabCenter = tabRect.left + tabRect.width / 2;
+        const delta = viewportCenter - tabCenter;
+        const targetOffset = currentTrackOffset + delta;
+
+        currentTrackOffset = targetOffset;
+        track.style.transition = animate ? 'transform 0.52s cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
+        track.style.transform = `translateX(${targetOffset}px)`;
+        if (!animate) {
+          // eslint-disable-next-line no-unused-expressions
+          track.offsetWidth;
+          track.style.transition = '';
+        }
       };
 
-      // Manual browsing of the tab strip: previously the only way to move
-      // .kn-library-tabs-track was centerActiveTab() snapping to whichever
-      // tab was just clicked — there was no way to preview neighbouring
-      // tabs without picking one, i.e. the strip "didn't move on drag".
-      // Two input modes share the same clamp centerActiveTab uses (never
-      // lets the track overscroll past either end):
-      //   - pointer drag (mouse, touch, pen — one handler covers all
-      //     three via Pointer Events): the track follows the pointer 1:1
-      //     while held, on desktop and touch/mobile alike.
-      //   - desktop hover-to-edge: resting the cursor near either edge of
-      //     the viewport for 0.8s starts a smooth continuous pan toward
-      //     that side, stopping the moment the cursor leaves the edge
-      //     zone, the strip, or a drag begins.
+      // Manual browsing of the tab strip via smooth drag and mouse-wheel:
       if (track) {
-        const getOffset = () => {
-          const m = /translateX\((-?\d+(?:\.\d+)?)px\)/.exec(track.style.transform || '');
-          return m ? parseFloat(m[1]) : 0;
-        };
-        const clampOffset = off => {
-          const minOffset = Math.min(0, tabs.clientWidth - track.scrollWidth);
-          return Math.max(minOffset, Math.min(0, off));
-        };
-        const setOffset = (off, animate) => {
-          track.style.transition = animate ? '' : 'none';
-          track.style.transform = `translateX(${clampOffset(off)}px)`;
-          if (!animate) {
-            // eslint-disable-next-line no-unused-expressions
-            track.offsetWidth; // flush transition:none before restoring it
-            track.style.transition = '';
-          }
-        };
-
-        let dragging = false;
+        let isPointerDown = false;
         let dragMoved = false;
         let dragStartX = 0;
         let dragStartOffset = 0;
 
-        // A manual drag or the edge-hover auto-scroll below can come to
-        // rest at an arbitrary pixel offset, with no guarantee that every
-        // tab still on screen is fully on screen — one can be left
-        // straddling the row's own clipping edge, its label visibly
-        // sliced. Most noticeably this is whichever tab is nearest the
-        // end just been scrolled TOWARD (that's exactly how someone finds
-        // it), so only that leading edge is snapped clean — fully showing
-        // or fully hiding the straddling tab there, whichever is the
-        // smaller move. The trailing edge is left alone on purpose: when
-        // three adjacent tabs together are wider than the viewport,
-        // there is no offset that leaves both ends clean at once (fixing
-        // one can only re-straddle the other), so this always resolves
-        // in favour of the tab the gesture was actually heading toward.
-        // clampOffset()-based on purpose (via setOffset), so it can never
-        // itself introduce overscroll past either end of the track.
-        const settleOffset = (movingRight) => {
-          const off = getOffset();
-          const viewportW = tabs.clientWidth;
-          const left = -off;
-          const right = left + viewportW;
-          let target = off;
-          const tabEls = tabButtons.querySelectorAll('.kn-library-tab');
-          for (let i = 0; i < tabEls.length; i++) {
-            const t = tabEls[i];
-            const tabLeft = t.offsetLeft;
-            const tabRight = tabLeft + t.offsetWidth;
-            if (movingRight && tabLeft < right - 0.5 && tabRight > right + 0.5) {
-              const visible = right - tabLeft;
-              target = visible > t.offsetWidth / 2 ? (viewportW - tabRight) : (viewportW - tabLeft);
-              break;
-            }
-            if (!movingRight && tabLeft < left - 0.5 && tabRight > left + 0.5) {
-              const visible = tabRight - left;
-              target = visible > t.offsetWidth / 2 ? -tabLeft : -tabRight;
-              break;
-            }
-          }
-          if (Math.abs(target - off) > 0.5) setOffset(target, true);
-        };
-
-        const stopAutoScroll = () => {
-          const wasScrolling = !!edgeScrollRAF;
-          const dir = hoverDir;
-          if (edgeHoverTimer) { clearTimeout(edgeHoverTimer); edgeHoverTimer = null; }
-          if (edgeScrollRAF) { cancelAnimationFrame(edgeScrollRAF); edgeScrollRAF = null; }
-          hoverDir = 0;
-          // hoverDir > 0 is a right-edge hover, which scrolls the track
-          // toward LATER tabs (offset decreasing) — the same "moving
-          // right" sense settleOffset expects.
-          if (wasScrolling) settleOffset(dir > 0);
-        };
-        let edgeHoverTimer = null;
-        let edgeScrollRAF = null;
-        let hoverDir = 0;
-        const EDGE_ZONE = 36;
-        const EDGE_HOVER_DELAY_MS = 800;
-        const runAutoScroll = () => {
-          if (!hoverDir) return;
-          setOffset(getOffset() - hoverDir * 3.2, false);
-          edgeScrollRAF = requestAnimationFrame(runAutoScroll);
-        };
+        tabs.addEventListener('wheel', e => {
+          const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+          if (Math.abs(delta) < 1) return;
+          e.preventDefault();
+          currentTrackOffset -= delta * 0.9;
+          track.style.transition = 'none';
+          track.style.transform = `translateX(${currentTrackOffset}px)`;
+        }, { passive: false });
 
         tabs.addEventListener('pointerdown', e => {
           if (e.button !== undefined && e.button !== 0 && e.pointerType === 'mouse') return;
-          stopAutoScroll();
-          dragging = true;
+          isPointerDown = true;
           dragMoved = false;
           dragStartX = e.clientX;
-          dragStartOffset = getOffset();
+          dragStartOffset = currentTrackOffset;
           track.style.transition = 'none';
-          tabs.classList.add('kn-tabs-dragging');
-          try { tabs.setPointerCapture(e.pointerId); } catch (_) {}
         });
-        tabs.addEventListener('pointermove', e => {
-          if (!dragging) return;
-          const dx = e.clientX - dragStartX;
-          if (Math.abs(dx) > 4) dragMoved = true;
-          if (dragMoved) setOffset(dragStartOffset + dx, false);
-        });
-        const endDrag = () => {
-          if (!dragging) return;
-          dragging = false;
-          track.style.transition = '';
-          tabs.classList.remove('kn-tabs-dragging');
-          if (dragMoved) {
-            // Offset decreasing means the track slid toward later tabs
-            // (the same "moving right" sense settleOffset expects) —
-            // derived from the drag's net direction, not just its last
-            // pixel of movement, so a drag that overshot and eased back
-            // still snaps toward where it was actually headed overall.
-            settleOffset(getOffset() < dragStartOffset);
-            // dragMoved also gates the click-suppression handler just below,
-            // for the click that (on most input paths) immediately follows
-            // this same pointerup/pointercancel and fires synchronously
-            // right after it — so it must still read true there. But a
-            // pointercancel (the browser handing this gesture to native
-            // page scroll mid-swipe) never produces a click at all, and
-            // some browsers suppress the click outright after enough
-            // pointer movement even without a cancel — on either path
-            // nothing would ever reset dragMoved, permanently swallowing
-            // every future tap on any tab. Clearing it on a deferred tick
-            // guarantees cleanup either way while still letting a
-            // same-tick click see the flag set.
-            setTimeout(() => { dragMoved = false; }, 0);
-          }
-        };
-        tabs.addEventListener('pointerup', endDrag);
-        tabs.addEventListener('pointercancel', endDrag);
-        // A drag that actually moved the strip shouldn't also fire the
-        // tab it started or ended on top of as a category switch.
-        tabs.addEventListener('click', e => {
-          if (dragMoved) { e.stopPropagation(); e.preventDefault(); dragMoved = false; }
-        }, true);
 
-        if (!reduceMotion) {
-          tabs.addEventListener('mousemove', e => {
-            if (dragging) return;
-            const rect = tabs.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            let dir = 0;
-            if (x < EDGE_ZONE) dir = -1;
-            else if (x > rect.width - EDGE_ZONE) dir = 1;
-            if (dir === hoverDir) return;
-            stopAutoScroll();
-            hoverDir = dir;
-            if (dir) {
-              edgeHoverTimer = setTimeout(() => {
-                edgeScrollRAF = requestAnimationFrame(runAutoScroll);
-              }, EDGE_HOVER_DELAY_MS);
-            }
-          });
-          tabs.addEventListener('mouseleave', stopAutoScroll);
-        }
+        window.addEventListener('pointermove', e => {
+          if (!isPointerDown) return;
+          const dx = e.clientX - dragStartX;
+          if (Math.abs(dx) > 8) {
+            dragMoved = true;
+            tabs.classList.add('kn-tabs-dragging');
+          }
+          if (dragMoved) {
+            currentTrackOffset = dragStartOffset + dx;
+            track.style.transform = `translateX(${currentTrackOffset}px)`;
+          }
+        });
+
+        const handlePointerEnd = () => {
+          if (!isPointerDown) return;
+          isPointerDown = false;
+          tabs.classList.remove('kn-tabs-dragging');
+          track.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+          setTimeout(() => { dragMoved = false; }, 80);
+        };
+
+        window.addEventListener('pointerup', handlePointerEnd);
+        window.addEventListener('pointercancel', handlePointerEnd);
+
+        tabs.addEventListener('click', e => {
+          if (dragMoved) {
+            e.stopPropagation();
+            e.preventDefault();
+          }
+        }, true);
 
         tabs.style.touchAction = 'pan-y';
       }
@@ -677,15 +555,21 @@
         // visitor actually picks a category.
         const placeInitialIndicator = () => {
           const activeTab = tabs.querySelector('.kn-library-tab.active');
-          moveTabIndicator(activeTab, false);
-          positionTabBeam(activeTab);
+          if (activeTab) {
+            centerActiveTab(activeTab, false);
+            moveTabIndicator(activeTab, false);
+            positionTabBeam(activeTab);
+          }
         };
         requestAnimationFrame(placeInitialIndicator);
+        setTimeout(placeInitialIndicator, 120);
         window.addEventListener('resize', () => {
           const activeTab = tabs.querySelector('.kn-library-tab.active');
-          centerActiveTab(activeTab);
-          moveTabIndicator(activeTab, false);
-          positionTabBeam(activeTab);
+          if (activeTab) {
+            centerActiveTab(activeTab, false);
+            moveTabIndicator(activeTab, false);
+            positionTabBeam(activeTab);
+          }
         });
 
         // The perimeter illuminate sweep (.kn-card-illuminate) fires only
