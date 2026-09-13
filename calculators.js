@@ -754,7 +754,7 @@
   }
 
   // Export module
-  window.KnockoutCalculators = {
+  window.KnockoutCalculators = Object.assign(window.KnockoutCalculators || {}, {
     calculateBMI,
     calculateMETs,
     calculateDASI,
@@ -768,5 +768,6 @@
     calculateChildPugh,
     calculateCOPUR,
     DASI_ITEMS
-  };
+  });
 })();
+

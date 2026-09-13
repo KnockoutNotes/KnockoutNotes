@@ -106,7 +106,8 @@
           <button class="calc-nav-pill active" data-calc-tab="paeds" role="tab" aria-selected="true">⚡ Paediatric (Chart &amp; Airway)</button>
           <button class="calc-nav-pill" data-calc-tab="periop" role="tab" aria-selected="false">📋 Perioperative Assessment</button>
           <button class="calc-nav-pill" data-calc-tab="emergency" role="tab" aria-selected="false">🚨 Emergency &amp; Resuscitation</button>
-          <button class="calc-nav-pill" data-calc-tab="renal" role="tab" aria-selected="false">🧪 Renal &amp; Acid–Base</button>
+          <button class="calc-nav-pill" data-calc-tab="abg" role="tab" aria-selected="false">🩸 ABG &amp; Acid–Base</button>
+          <button class="calc-nav-pill" data-calc-tab="renal" role="tab" aria-selected="false">🧪 Renal Clearance</button>
           <button class="calc-nav-pill" data-calc-tab="all" role="tab" aria-selected="false">✦ View All</button>
         </div>
 
@@ -732,8 +733,8 @@
         <!-- TAB CONTENT: RENAL & ACID-BASE -->
         <div class="calc-tab-content active" id="tabRenal3d" data-tab-name="renal">
         <div class="calc-group-title fade" id="groupRenal3d">
-          <span>Renal &amp; Acid–Base</span>
-          <span class="badge">Biochemical Equations</span>
+          <span>Renal Clearance</span>
+          <span class="badge">Cockcroft–Gault</span>
         </div>
 
         <div class="calc-card-grid">
@@ -817,155 +818,224 @@
             </div>
           </article>
 
-          <!-- Anion Gap -->
-          <article class="calc-box fade" id="calcAnionGap3d">
-            <div class="calc-box-header">
-              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Acid–Base</div>
-              <h3>Serum Anion Gap</h3>
-              <p class="when-to-use">Evaluates metabolic acidosis and unmeasured anions, with optional Figge albumin correction.</p>
-            </div>
-
-            <div class="calc-form-row">
-              <div class="calc-field">
-                <label for="agNa3d">Sodium (Na⁺)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="agNa3d" type="number" step="1" min="90" max="190" placeholder="140" value="140">
-                  <span class="calc-input-unit">mEq/L</span>
-                </div>
-              </div>
-              <div class="calc-field">
-                <label for="agCl3d">Chloride (Cl⁻)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="agCl3d" type="number" step="1" min="50" max="150" placeholder="102" value="102">
-                  <span class="calc-input-unit">mEq/L</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="calc-form-row">
-              <div class="calc-field">
-                <label for="agHco33d">Bicarbonate (HCO₃⁻)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="agHco33d" type="number" step="1" min="1" max="60" placeholder="24" value="24">
-                  <span class="calc-input-unit">mEq/L</span>
-                </div>
-              </div>
-              <div class="calc-field">
-                <label for="agAlb3d">Albumin (Optional)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="agAlb3d" type="number" step="0.1" min="0.5" max="6.0" placeholder="4.0" value="4.0">
-                  <span class="calc-input-unit">g/dL</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="calc-result-area" id="agResult3d">
-              <div class="calc-result-badge good" id="agBadge3d">Normal Anion Gap</div>
-              <div class="calc-primary-val" id="agVal3d">14.0 <span class="unit">mEq/L</span></div>
-              <div class="calc-formula-display">AG = Na⁺ - (Cl⁻ + HCO₃⁻) | Corrected = AG + 2.5 × (4.0 - Albumin)</div>
-              <div class="calc-interp" id="agInterp3d">Normal uncorrected reference range: 4 – 12 mEq/L (without potassium). Excludes K⁺ by convention.</div>
-            </div>
-
-            <div class="calc-box-actions">
-              <button class="btn-calc-reset" id="btnAgReset3d">Reset</button>
-              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/9824071/" target="_blank" rel="noopener">Source: Figge et al. (Crit Care Med 1998) ↗</a>
-            </div>
-          </article>
-
-          <!-- Winter's Formula -->
-          <article class="calc-box fade" id="calcWinters3d">
-            <div class="calc-box-header">
-              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Acid–Base</div>
-              <h3>Winter's Formula</h3>
-              <p class="when-to-use">Evaluates respiratory compensation in metabolic acidosis. Compares expected vs measured PaCO₂.</p>
-            </div>
-
-            <div class="calc-form-row">
-              <div class="calc-field">
-                <label for="winHco33d">Serum Bicarbonate (HCO₃⁻)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="winHco33d" type="number" step="1" min="1" max="40" placeholder="12" value="12">
-                  <span class="calc-input-unit">mEq/L</span>
-                </div>
-              </div>
-              <div class="calc-field">
-                <label for="winPaco23d">Measured PaCO₂ (Optional)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="winPaco23d" type="number" step="1" min="10" max="120" placeholder="26" value="26">
-                  <span class="calc-input-unit">mmHg</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="calc-result-area" id="winResult3d">
-              <div class="calc-result-badge good" id="winBadge3d">Expected Compensation</div>
-              <div class="calc-primary-val" id="winVal3d">24.0 – 28.0 <span class="unit">mmHg</span></div>
-              <div class="calc-formula-display">Expected PaCO₂ = (1.5 × [HCO₃⁻]) + 8 ± 2 mmHg</div>
-              <div class="calc-interp" id="winInterp3d">Measured PaCO₂ (26 mmHg) matches expected range. Demonstrates appropriate simple respiratory compensation.</div>
-            </div>
-
-            <div class="calc-box-actions">
-              <button class="btn-calc-reset" id="btnWinReset3d">Reset</button>
-              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/6016545/" target="_blank" rel="noopener">Source: Albert & Winters (1967) ↗</a>
-            </div>
-          </article>
-
-          <!-- Delta Gap / Delta Ratio -->
-          <article class="calc-box fade" id="calcDelta3d">
-            <div class="calc-box-header">
-              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Mixed Disorders</div>
-              <h3>Delta Gap & Delta Ratio</h3>
-              <p class="when-to-use">Detects mixed high anion gap and normal anion gap acidoses or concurrent metabolic alkalosis.</p>
-            </div>
-
-            <div class="calc-form-row">
-              <div class="calc-field">
-                <label for="delNa3d">Sodium (Na⁺)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="delNa3d" type="number" step="1" min="90" max="190" value="140">
-                  <span class="calc-input-unit">mEq/L</span>
-                </div>
-              </div>
-              <div class="calc-field">
-                <label for="delCl3d">Chloride (Cl⁻)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="delCl3d" type="number" step="1" min="50" max="150" value="95">
-                  <span class="calc-input-unit">mEq/L</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="calc-form-row">
-              <div class="calc-field">
-                <label for="delHco33d">Bicarbonate (HCO₃⁻)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="delHco33d" type="number" step="1" min="1" max="50" value="15">
-                  <span class="calc-input-unit">mEq/L</span>
-                </div>
-              </div>
-              <div class="calc-field">
-                <label for="delAlb3d">Albumin (Optional)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="delAlb3d" type="number" step="0.1" min="0.5" max="6.0" value="4.0">
-                  <span class="calc-input-unit">g/dL</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="calc-result-area" id="delResult3d">
-              <div class="calc-result-badge good" id="delBadge3d">Pure HAGMA</div>
-              <div class="calc-primary-val" id="delVal3d">Delta Ratio: 2.0 <span class="unit">| Gap: 9.0</span></div>
-              <div class="calc-formula-display">ΔAG = AG - 12 | ΔHCO₃ = 24 - [HCO₃⁻] | Delta Ratio = ΔAG ÷ ΔHCO₃</div>
-              <div class="calc-interp" id="delInterp3d">Ratio 0.8 – 2.0 suggests an uncomplicated High Anion Gap Metabolic Acidosis (e.g. DKA or lactic acidosis).</div>
-            </div>
-
-            <div class="calc-box-actions">
-              <button class="btn-calc-reset" id="btnDelReset3d">Reset</button>
-              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/2240728/" target="_blank" rel="noopener">Source: Wrenn (Ann Emerg Med 1990) ↗</a>
-            </div>
-          </article>
-        </div>
+          </div>
         </div><!-- /#tabRenal3d -->
+
+        <!-- TAB CONTENT: ABG & ACID-BASE (CLINICAL DIAGNOSTIC SUITE) -->
+        <div class="calc-tab-content" id="tabAbg3d" data-tab-name="abg">
+        <div class="calc-group-title fade" id="groupAbg3d">
+          <span>Arterial Blood Gas (ABG) Clinical Analysis</span>
+          <span class="badge">Comprehensive Step-by-Step Diagnostic Suite</span>
+        </div>
+
+        <!-- HERO HIGHLIGHT: INTERACTIVE ABG & ACID-BASE ENGINE -->
+        <section class="abg-hero-card fade" id="abgHero3d">
+          <div class="calc-hero-header">
+            <div>
+              <div class="calc-hero-badge">🩸 MULTI-AXIS DIAGNOSTIC ENGINE</div>
+              <h2 style="font-size:1.85rem; margin:0.4rem 0 0.2rem 0; color:#fff;">Step-by-Step Blood Gas Analysis &amp; Oxygenation</h2>
+              <p style="margin:0; font-size:0.92rem; color:#94a3b8;">
+                Structured 6-step clinical evaluation of acid–base equilibrium, Winter's respiratory compensation, Figge albumin-corrected anion gap, delta ratio, and alveolar oxygenation (P/F ratio, expected PaO₂, A-a gradient).
+              </p>
+            </div>
+            <div>
+              <button class="btn-cinematic primary" id="btnAbgReset3d" style="padding:0.65rem 1.25rem;">
+                🔄 Reset ABG Inputs
+              </button>
+            </div>
+          </div>
+
+          <!-- Clinical Preset Scenarios -->
+          <div class="abg-preset-btns">
+            <span style="font-size:0.8rem; font-weight:600; color:var(--muted); align-self:center; margin-right:0.25rem;">Preset Scenarios:</span>
+            <button class="abg-preset-btn" data-preset="dka" data-suffix="3d">Severe DKA (Pure HAGMA)</button>
+            <button class="abg-preset-btn" data-preset="copd" data-suffix="3d">COPD Retainer (Chronic Resp Acidosis)</button>
+            <button class="abg-preset-btn" data-preset="ards" data-suffix="3d">Sepsis &amp; ARDS (Low P/F + Lactic)</button>
+            <button class="abg-preset-btn" data-preset="salicylate" data-suffix="3d">Salicylate Toxicity (Mixed HAGMA + Resp Alk)</button>
+            <button class="abg-preset-btn" data-preset="vomiting" data-suffix="3d">Severe Vomiting (Met Alkalosis)</button>
+            <button class="abg-preset-btn" data-preset="vbg" data-suffix="3d">Venous Blood Gas (VBG Check)</button>
+          </div>
+
+          <!-- Step 0: Blood Gas Parameters Form -->
+          <div class="abg-grid-inputs">
+            <div class="calc-field">
+              <label for="abgSampleType3d">Sample Type</label>
+              <select class="calc-select" id="abgSampleType3d">
+                <option value="abg" selected>Arterial (ABG)</option>
+                <option value="vbg">Venous (VBG)</option>
+              </select>
+            </div>
+            <div class="calc-field">
+              <label for="abgChronicity3d">Respiratory Timing</label>
+              <select class="calc-select" id="abgChronicity3d">
+                <option value="acute" selected>Acute (&lt; 24h)</option>
+                <option value="chronic">Chronic (&gt; 48-72h)</option>
+              </select>
+            </div>
+            <div class="calc-field">
+              <label for="abgPh3d">pH *</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgPh3d" type="number" step="0.01" min="6.80" max="7.80" placeholder="7.40" value="7.25">
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgPaco23d">PaCO₂ / PvCO₂ *</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgPaco23d" type="number" step="1" min="10" max="150" placeholder="40" value="26">
+                <span class="calc-input-unit">mmHg</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgPao23d">PaO₂ (Optional)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgPao23d" type="number" step="1" min="20" max="700" placeholder="95" value="85">
+                <span class="calc-input-unit">mmHg</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgHco33d">HCO₃⁻ (Serum/Gas)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgHco33d" type="number" step="0.5" min="2" max="60" placeholder="24" value="11">
+                <span class="calc-input-unit">mEq/L</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgFio23d">Inspired FiO₂ (%)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgFio23d" type="number" step="1" min="21" max="100" placeholder="21" value="21">
+                <span class="calc-input-unit">%</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgNa3d">Sodium (Na⁺)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgNa3d" type="number" step="1" min="90" max="190" placeholder="140" value="138">
+                <span class="calc-input-unit">mEq/L</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgCl3d">Chloride (Cl⁻)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgCl3d" type="number" step="1" min="50" max="150" placeholder="102" value="98">
+                <span class="calc-input-unit">mEq/L</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgAlb3d">Albumin (Optional)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgAlb3d" type="number" step="0.1" min="0.5" max="6.0" placeholder="4.0" value="4.0">
+                <span class="calc-input-unit">g/dL</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgAge3d">Patient Age (yrs)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgAge3d" type="number" step="1" min="1" max="120" placeholder="50" value="45">
+                <span class="calc-input-unit">yrs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- VBG Notice Banner (Conditional) -->
+          <div id="abgVbgBanner3d" style="display:none; background:rgba(234, 179, 8, 0.12); border:1px solid rgba(234, 179, 8, 0.35); border-radius:8px; padding:0.85rem 1rem; margin-bottom:1.25rem; font-size:0.85rem; color:#facc15; line-height:1.5;">
+          </div>
+
+          <!-- Step-by-Step Clinical Pipeline Cards -->
+          <div class="abg-pipeline-strip">
+            
+            <!-- Step 1: pH & Base Excess -->
+            <div class="abg-step-card">
+              <div class="abg-step-head">
+                <span class="abg-step-num">Step 1</span>
+                <div class="calc-result-badge alert" id="abgPhBadge3d">Acidaemia</div>
+              </div>
+              <h4 class="abg-step-title">Acid–Base Status &amp; Base Excess</h4>
+              <div class="abg-step-mainval" id="abgPhVal3d">pH 7.25 <span class="sub-unit">| SBE: -14.2 mEq/L</span></div>
+              <div class="calc-formula-display">SBE = 0.9287 × (HCO₃⁻ - 24.4 + 14.83 × (pH - 7.4))</div>
+              <p class="abg-step-desc" id="abgPhDesc3d">Primary acidaemia. Severe negative base excess confirms profound metabolic acid accumulation.</p>
+            </div>
+
+            <!-- Step 2: Primary Disturbance -->
+            <div class="abg-step-card">
+              <div class="abg-step-head">
+                <span class="abg-step-num">Step 2</span>
+                <div class="calc-result-badge alert" id="abgPrimaryBadge3d">Metabolic Acidosis</div>
+              </div>
+              <h4 class="abg-step-title">Primary Disturbance</h4>
+              <div class="abg-step-mainval" id="abgPrimaryVal3d">Primary Metabolic Acidosis</div>
+              <div class="calc-formula-display">Direction: pH &lt; 7.35 with HCO₃⁻ 11 mEq/L (Normal 22–26)</div>
+              <p class="abg-step-desc" id="abgPrimaryDesc3d">Both pH and HCO₃⁻ are reduced in the same direction, defining a primary metabolic acidosis.</p>
+            </div>
+
+            <!-- Step 3: Respiratory Compensation (Winter's Formula) -->
+            <div class="abg-step-card">
+              <div class="abg-step-head">
+                <span class="abg-step-num">Step 3 (Winter's)</span>
+                <div class="calc-result-badge good" id="abgCompBadge3d">Appropriate</div>
+              </div>
+              <h4 class="abg-step-title">Expected Compensation</h4>
+              <div class="abg-step-mainval" id="abgCompVal3d">Expected PaCO₂: 22.5 – 26.5 <span class="sub-unit">mmHg</span></div>
+              <div class="calc-formula-display" id="abgCompFormula3d">Winter's Formula: Expected PaCO₂ = (1.5 × [HCO₃⁻]) + 8 ± 2</div>
+              <p class="abg-step-desc" id="abgCompDesc3d">Measured PaCO₂ (26 mmHg) matches expected Winter's compensation, confirming simple respiratory response without secondary respiratory failure.</p>
+            </div>
+
+            <!-- Step 4: Anion Gap & Albumin Correction -->
+            <div class="abg-step-card">
+              <div class="abg-step-head">
+                <span class="abg-step-num">Step 4</span>
+                <div class="calc-result-badge alert" id="abgAgBadge3d">High Anion Gap</div>
+              </div>
+              <h4 class="abg-step-title">Serum Anion Gap &amp; Albumin</h4>
+              <div class="abg-step-mainval" id="abgAgVal3d">AG: 29.0 <span class="sub-unit">mEq/L</span></div>
+              <div class="calc-formula-display" id="abgAgFormula3d">AG = Na⁺ - (Cl⁻ + HCO₃⁻) | Figge Corr = AG + 2.5 × (4.0 - Alb)</div>
+              <p class="abg-step-desc" id="abgAgDesc3d">High anion gap (&gt; 12 mEq/L) signals unmeasured anions: ketoacids, lactate, toxins, or uraemic acids.</p>
+            </div>
+
+            <!-- Step 5: Delta Ratio & Delta Gap -->
+            <div class="abg-step-card">
+              <div class="abg-step-head">
+                <span class="abg-step-num">Step 5</span>
+                <div class="calc-result-badge good" id="abgDeltaBadge3d">Pure HAGMA</div>
+              </div>
+              <h4 class="abg-step-title">Delta Gap &amp; Delta Ratio</h4>
+              <div class="abg-step-mainval" id="abgDeltaVal3d">Ratio: 1.31 <span class="sub-unit">| ΔAG: 17.0 | ΔHCO₃: 13.0</span></div>
+              <div class="calc-formula-display">ΔAG = AG - 12 | ΔHCO₃ = 24 - HCO₃⁻ | Ratio = ΔAG ÷ ΔHCO₃</div>
+              <p class="abg-step-desc" id="abgDeltaDesc3d">Delta ratio between 0.8 and 2.0 indicates an uncomplicated High Anion Gap Metabolic Acidosis (DKA or lactic acidosis).</p>
+            </div>
+
+            <!-- Step 6: Oxygenation (P/F Ratio & Expected PaO2) -->
+            <div class="abg-step-card">
+              <div class="abg-step-head">
+                <span class="abg-step-num">Step 6 (Oxygenation)</span>
+                <div class="calc-result-badge good" id="abgOxBadge3d">P/F: 405 (Normal)</div>
+              </div>
+              <h4 class="abg-step-title">P/F Ratio &amp; Alveolar Gradient</h4>
+              <div class="abg-step-mainval" id="abgOxVal3d">P/F: 404.8 <span class="sub-unit">| Expected PaO₂: 92.0 mmHg</span></div>
+              <div class="calc-formula-display" id="abgOxFormula3d">P/F = PaO₂ ÷ FiO₂ | PAO₂ = [FiO₂ × (760 - 47)] - (PaCO₂ ÷ 0.8)</div>
+              <p class="abg-step-desc" id="abgOxDesc3d">Normal oxygenation on room air. A-a gradient is within normal age-adjusted limits.</p>
+            </div>
+
+          </div>
+
+          <!-- Final Diagnostic Impression Banner -->
+          <div class="abg-banner-impression" id="abgImpressionCard3d">
+            <h4>🩺 Integrated Diagnostic Impression</h4>
+            <div style="font-size:1.05rem; font-weight:700; color:var(--fg); margin-bottom:0.4rem;" id="abgImpressionText3d">
+              Primary High Anion Gap Metabolic Acidosis (HAGMA) with Appropriate Winter's Respiratory Compensation
+            </div>
+            <div style="font-size:0.83rem; color:var(--muted); line-height:1.6;" id="abgImpressionSub3d">
+              No secondary respiratory disorder or concurrent non-gap acidosis detected. Oxygen transfer is intact without acute pulmonary shunting.
+            </div>
+          </div>
+
+          <div class="calc-box-actions" style="margin-top:1.25rem;">
+            <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/6016545/" target="_blank" rel="noopener">
+              References: Narins &amp; Emmett (Medicine 1980); Albert &amp; Winters (Ann Intern Med 1967); Berlin ARDS Definition (JAMA 2012) ↗
+            </a>
+          </div>
+        </section>
+        </div><!-- /#tabAbg3d -->
+
 
       </main>
     </div>
@@ -1075,7 +1145,8 @@
           <button class="calc-nav-pill active" data-calc-tab="paeds" role="tab" aria-selected="true">⚡ Paediatric (Chart &amp; Airway)</button>
           <button class="calc-nav-pill" data-calc-tab="periop" role="tab" aria-selected="false">📋 Perioperative Assessment</button>
           <button class="calc-nav-pill" data-calc-tab="emergency" role="tab" aria-selected="false">🚨 Emergency &amp; Resuscitation</button>
-          <button class="calc-nav-pill" data-calc-tab="renal" role="tab" aria-selected="false">🧪 Renal &amp; Acid–Base</button>
+          <button class="calc-nav-pill" data-calc-tab="abg" role="tab" aria-selected="false">🩸 ABG &amp; Acid–Base</button>
+          <button class="calc-nav-pill" data-calc-tab="renal" role="tab" aria-selected="false">🧪 Renal Clearance</button>
           <button class="calc-nav-pill" data-calc-tab="all" role="tab" aria-selected="false">✦ View All</button>
         </div>
 
@@ -1596,8 +1667,8 @@
         <!-- TAB CONTENT: RENAL & ACID-BASE (Lite View) -->
         <div class="calc-tab-content active" id="tabRenal" data-tab-name="renal">
         <div class="calc-group-title fade" id="groupRenal">
-          <span>Renal &amp; Acid–Base</span>
-          <span class="badge">Biochemical Equations</span>
+          <span>Renal Clearance</span>
+          <span class="badge">Cockcroft–Gault</span>
         </div>
 
         <div class="calc-card-grid">
@@ -1681,155 +1752,224 @@
             </div>
           </article>
 
-          <!-- Anion Gap -->
-          <article class="calc-box fade" id="calcAnionGap">
-            <div class="calc-box-header">
-              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Acid–Base</div>
-              <h3>Serum Anion Gap</h3>
-              <p class="when-to-use">Evaluates metabolic acidosis and unmeasured anions, with optional Figge albumin correction.</p>
-            </div>
-
-            <div class="calc-form-row">
-              <div class="calc-field">
-                <label for="agNa">Sodium (Na⁺)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="agNa" type="number" step="1" min="90" max="190" placeholder="140" value="140">
-                  <span class="calc-input-unit">mEq/L</span>
-                </div>
-              </div>
-              <div class="calc-field">
-                <label for="agCl">Chloride (Cl⁻)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="agCl" type="number" step="1" min="50" max="150" placeholder="102" value="102">
-                  <span class="calc-input-unit">mEq/L</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="calc-form-row">
-              <div class="calc-field">
-                <label for="agHco3">Bicarbonate (HCO₃⁻)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="agHco3" type="number" step="1" min="1" max="60" placeholder="24" value="24">
-                  <span class="calc-input-unit">mEq/L</span>
-                </div>
-              </div>
-              <div class="calc-field">
-                <label for="agAlb">Albumin (Optional)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="agAlb" type="number" step="0.1" min="0.5" max="6.0" placeholder="4.0" value="4.0">
-                  <span class="calc-input-unit">g/dL</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="calc-result-area" id="agResult">
-              <div class="calc-result-badge good" id="agBadge">Normal Anion Gap</div>
-              <div class="calc-primary-val" id="agVal">14.0 <span class="unit">mEq/L</span></div>
-              <div class="calc-formula-display">AG = Na⁺ - (Cl⁻ + HCO₃⁻) | Corrected = AG + 2.5 × (4.0 - Albumin)</div>
-              <div class="calc-interp" id="agInterp">Normal uncorrected reference range: 4 – 12 mEq/L (without potassium). Excludes K⁺ by convention.</div>
-            </div>
-
-            <div class="calc-box-actions">
-              <button class="btn-calc-reset" id="btnAgReset">Reset</button>
-              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/9824071/" target="_blank" rel="noopener">Source: Figge et al. (Crit Care Med 1998) ↗</a>
-            </div>
-          </article>
-
-          <!-- Winter's Formula -->
-          <article class="calc-box fade" id="calcWinters">
-            <div class="calc-box-header">
-              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Acid–Base</div>
-              <h3>Winter's Formula</h3>
-              <p class="when-to-use">Evaluates respiratory compensation in metabolic acidosis. Compares expected vs measured PaCO₂.</p>
-            </div>
-
-            <div class="calc-form-row">
-              <div class="calc-field">
-                <label for="winHco3">Serum Bicarbonate (HCO₃⁻)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="winHco3" type="number" step="1" min="1" max="40" placeholder="12" value="12">
-                  <span class="calc-input-unit">mEq/L</span>
-                </div>
-              </div>
-              <div class="calc-field">
-                <label for="winPaco2">Measured PaCO₂ (Optional)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="winPaco2" type="number" step="1" min="10" max="120" placeholder="26" value="26">
-                  <span class="calc-input-unit">mmHg</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="calc-result-area" id="winResult">
-              <div class="calc-result-badge good" id="winBadge">Expected Compensation</div>
-              <div class="calc-primary-val" id="winVal">24.0 – 28.0 <span class="unit">mmHg</span></div>
-              <div class="calc-formula-display">Expected PaCO₂ = (1.5 × [HCO₃⁻]) + 8 ± 2 mmHg</div>
-              <div class="calc-interp" id="winInterp">Measured PaCO₂ (26 mmHg) matches expected range. Demonstrates appropriate simple respiratory compensation.</div>
-            </div>
-
-            <div class="calc-box-actions">
-              <button class="btn-calc-reset" id="btnWinReset">Reset</button>
-              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/6016545/" target="_blank" rel="noopener">Source: Albert & Winters (1967) ↗</a>
-            </div>
-          </article>
-
-          <!-- Delta Gap / Delta Ratio -->
-          <article class="calc-box fade" id="calcDelta">
-            <div class="calc-box-header">
-              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Mixed Disorders</div>
-              <h3>Delta Gap & Delta Ratio</h3>
-              <p class="when-to-use">Detects mixed high anion gap and normal anion gap acidoses or concurrent metabolic alkalosis.</p>
-            </div>
-
-            <div class="calc-form-row">
-              <div class="calc-field">
-                <label for="delNa">Sodium (Na⁺)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="delNa" type="number" step="1" min="90" max="190" value="140">
-                  <span class="calc-input-unit">mEq/L</span>
-                </div>
-              </div>
-              <div class="calc-field">
-                <label for="delCl">Chloride (Cl⁻)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="delCl" type="number" step="1" min="50" max="150" value="95">
-                  <span class="calc-input-unit">mEq/L</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="calc-form-row">
-              <div class="calc-field">
-                <label for="delHco3">Bicarbonate (HCO₃⁻)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="delHco3" type="number" step="1" min="1" max="50" value="15">
-                  <span class="calc-input-unit">mEq/L</span>
-                </div>
-              </div>
-              <div class="calc-field">
-                <label for="delAlb">Albumin (Optional)</label>
-                <div class="calc-input-wrap">
-                  <input class="calc-input" id="delAlb" type="number" step="0.1" min="0.5" max="6.0" value="4.0">
-                  <span class="calc-input-unit">g/dL</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="calc-result-area" id="delResult">
-              <div class="calc-result-badge good" id="delBadge">Pure HAGMA</div>
-              <div class="calc-primary-val" id="delVal">Delta Ratio: 2.0 <span class="unit">| Gap: 9.0</span></div>
-              <div class="calc-formula-display">ΔAG = AG - 12 | ΔHCO₃ = 24 - [HCO₃⁻] | Delta Ratio = ΔAG ÷ ΔHCO₃</div>
-              <div class="calc-interp" id="delInterp">Ratio 0.8 – 2.0 suggests an uncomplicated High Anion Gap Metabolic Acidosis (e.g. DKA or lactic acidosis).</div>
-            </div>
-
-            <div class="calc-box-actions">
-              <button class="btn-calc-reset" id="btnDelReset">Reset</button>
-              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/2240728/" target="_blank" rel="noopener">Source: Wrenn (Ann Emerg Med 1990) ↗</a>
-            </div>
-          </article>
-        </div>
+          </div>
         </div><!-- /#tabRenal -->
+
+        <!-- TAB CONTENT: ABG & ACID-BASE (CLINICAL DIAGNOSTIC SUITE) -->
+        <div class="calc-tab-content" id="tabAbg" data-tab-name="abg">
+        <div class="calc-group-title fade" id="groupAbg">
+          <span>Arterial Blood Gas (ABG) Clinical Analysis</span>
+          <span class="badge">Comprehensive Step-by-Step Diagnostic Suite</span>
+        </div>
+
+        <!-- HERO HIGHLIGHT: INTERACTIVE ABG & ACID-BASE ENGINE -->
+        <section class="abg-hero-card fade" id="abgHero">
+          <div class="calc-hero-header">
+            <div>
+              <div class="calc-hero-badge">🩸 MULTI-AXIS DIAGNOSTIC ENGINE</div>
+              <h2 style="font-size:1.85rem; margin:0.4rem 0 0.2rem 0; color:#fff;">Step-by-Step Blood Gas Analysis &amp; Oxygenation</h2>
+              <p style="margin:0; font-size:0.92rem; color:#94a3b8;">
+                Structured 6-step clinical evaluation of acid–base equilibrium, Winter's respiratory compensation, Figge albumin-corrected anion gap, delta ratio, and alveolar oxygenation (P/F ratio, expected PaO₂, A-a gradient).
+              </p>
+            </div>
+            <div>
+              <button class="btn-cinematic primary" id="btnAbgReset" style="padding:0.65rem 1.25rem;">
+                🔄 Reset ABG Inputs
+              </button>
+            </div>
+          </div>
+
+          <!-- Clinical Preset Scenarios -->
+          <div class="abg-preset-btns">
+            <span style="font-size:0.8rem; font-weight:600; color:var(--muted); align-self:center; margin-right:0.25rem;">Preset Scenarios:</span>
+            <button class="abg-preset-btn" data-preset="dka" data-suffix="">Severe DKA (Pure HAGMA)</button>
+            <button class="abg-preset-btn" data-preset="copd" data-suffix="">COPD Retainer (Chronic Resp Acidosis)</button>
+            <button class="abg-preset-btn" data-preset="ards" data-suffix="">Sepsis &amp; ARDS (Low P/F + Lactic)</button>
+            <button class="abg-preset-btn" data-preset="salicylate" data-suffix="">Salicylate Toxicity (Mixed HAGMA + Resp Alk)</button>
+            <button class="abg-preset-btn" data-preset="vomiting" data-suffix="">Severe Vomiting (Met Alkalosis)</button>
+            <button class="abg-preset-btn" data-preset="vbg" data-suffix="">Venous Blood Gas (VBG Check)</button>
+          </div>
+
+          <!-- Step 0: Blood Gas Parameters Form -->
+          <div class="abg-grid-inputs">
+            <div class="calc-field">
+              <label for="abgSampleType">Sample Type</label>
+              <select class="calc-select" id="abgSampleType">
+                <option value="abg" selected>Arterial (ABG)</option>
+                <option value="vbg">Venous (VBG)</option>
+              </select>
+            </div>
+            <div class="calc-field">
+              <label for="abgChronicity">Respiratory Timing</label>
+              <select class="calc-select" id="abgChronicity">
+                <option value="acute" selected>Acute (&lt; 24h)</option>
+                <option value="chronic">Chronic (&gt; 48-72h)</option>
+              </select>
+            </div>
+            <div class="calc-field">
+              <label for="abgPh">pH *</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgPh" type="number" step="0.01" min="6.80" max="7.80" placeholder="7.40" value="7.25">
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgPaco2">PaCO₂ / PvCO₂ *</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgPaco2" type="number" step="1" min="10" max="150" placeholder="40" value="26">
+                <span class="calc-input-unit">mmHg</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgPao2">PaO₂ (Optional)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgPao2" type="number" step="1" min="20" max="700" placeholder="95" value="85">
+                <span class="calc-input-unit">mmHg</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgHco3">HCO₃⁻ (Serum/Gas)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgHco3" type="number" step="0.5" min="2" max="60" placeholder="24" value="11">
+                <span class="calc-input-unit">mEq/L</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgFio2">Inspired FiO₂ (%)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgFio2" type="number" step="1" min="21" max="100" placeholder="21" value="21">
+                <span class="calc-input-unit">%</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgNa">Sodium (Na⁺)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgNa" type="number" step="1" min="90" max="190" placeholder="140" value="138">
+                <span class="calc-input-unit">mEq/L</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgCl">Chloride (Cl⁻)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgCl" type="number" step="1" min="50" max="150" placeholder="102" value="98">
+                <span class="calc-input-unit">mEq/L</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgAlb">Albumin (Optional)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgAlb" type="number" step="0.1" min="0.5" max="6.0" placeholder="4.0" value="4.0">
+                <span class="calc-input-unit">g/dL</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="abgAge">Patient Age (yrs)</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input" id="abgAge" type="number" step="1" min="1" max="120" placeholder="50" value="45">
+                <span class="calc-input-unit">yrs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- VBG Notice Banner (Conditional) -->
+          <div id="abgVbgBanner" style="display:none; background:rgba(234, 179, 8, 0.12); border:1px solid rgba(234, 179, 8, 0.35); border-radius:8px; padding:0.85rem 1rem; margin-bottom:1.25rem; font-size:0.85rem; color:#facc15; line-height:1.5;">
+          </div>
+
+          <!-- Step-by-Step Clinical Pipeline Cards -->
+          <div class="abg-pipeline-strip">
+            
+            <!-- Step 1: pH & Base Excess -->
+            <div class="abg-step-card">
+              <div class="abg-step-head">
+                <span class="abg-step-num">Step 1</span>
+                <div class="calc-result-badge alert" id="abgPhBadge">Acidaemia</div>
+              </div>
+              <h4 class="abg-step-title">Acid–Base Status &amp; Base Excess</h4>
+              <div class="abg-step-mainval" id="abgPhVal">pH 7.25 <span class="sub-unit">| SBE: -14.2 mEq/L</span></div>
+              <div class="calc-formula-display">SBE = 0.9287 × (HCO₃⁻ - 24.4 + 14.83 × (pH - 7.4))</div>
+              <p class="abg-step-desc" id="abgPhDesc">Primary acidaemia. Severe negative base excess confirms profound metabolic acid accumulation.</p>
+            </div>
+
+            <!-- Step 2: Primary Disturbance -->
+            <div class="abg-step-card">
+              <div class="abg-step-head">
+                <span class="abg-step-num">Step 2</span>
+                <div class="calc-result-badge alert" id="abgPrimaryBadge">Metabolic Acidosis</div>
+              </div>
+              <h4 class="abg-step-title">Primary Disturbance</h4>
+              <div class="abg-step-mainval" id="abgPrimaryVal">Primary Metabolic Acidosis</div>
+              <div class="calc-formula-display">Direction: pH &lt; 7.35 with HCO₃⁻ 11 mEq/L (Normal 22–26)</div>
+              <p class="abg-step-desc" id="abgPrimaryDesc">Both pH and HCO₃⁻ are reduced in the same direction, defining a primary metabolic acidosis.</p>
+            </div>
+
+            <!-- Step 3: Respiratory Compensation (Winter's Formula) -->
+            <div class="abg-step-card">
+              <div class="abg-step-head">
+                <span class="abg-step-num">Step 3 (Winter's)</span>
+                <div class="calc-result-badge good" id="abgCompBadge">Appropriate</div>
+              </div>
+              <h4 class="abg-step-title">Expected Compensation</h4>
+              <div class="abg-step-mainval" id="abgCompVal">Expected PaCO₂: 22.5 – 26.5 <span class="sub-unit">mmHg</span></div>
+              <div class="calc-formula-display" id="abgCompFormula">Winter's Formula: Expected PaCO₂ = (1.5 × [HCO₃⁻]) + 8 ± 2</div>
+              <p class="abg-step-desc" id="abgCompDesc">Measured PaCO₂ (26 mmHg) matches expected Winter's compensation, confirming simple respiratory response without secondary respiratory failure.</p>
+            </div>
+
+            <!-- Step 4: Anion Gap & Albumin Correction -->
+            <div class="abg-step-card">
+              <div class="abg-step-head">
+                <span class="abg-step-num">Step 4</span>
+                <div class="calc-result-badge alert" id="abgAgBadge">High Anion Gap</div>
+              </div>
+              <h4 class="abg-step-title">Serum Anion Gap &amp; Albumin</h4>
+              <div class="abg-step-mainval" id="abgAgVal">AG: 29.0 <span class="sub-unit">mEq/L</span></div>
+              <div class="calc-formula-display" id="abgAgFormula">AG = Na⁺ - (Cl⁻ + HCO₃⁻) | Figge Corr = AG + 2.5 × (4.0 - Alb)</div>
+              <p class="abg-step-desc" id="abgAgDesc">High anion gap (&gt; 12 mEq/L) signals unmeasured anions: ketoacids, lactate, toxins, or uraemic acids.</p>
+            </div>
+
+            <!-- Step 5: Delta Ratio & Delta Gap -->
+            <div class="abg-step-card">
+              <div class="abg-step-head">
+                <span class="abg-step-num">Step 5</span>
+                <div class="calc-result-badge good" id="abgDeltaBadge">Pure HAGMA</div>
+              </div>
+              <h4 class="abg-step-title">Delta Gap &amp; Delta Ratio</h4>
+              <div class="abg-step-mainval" id="abgDeltaVal">Ratio: 1.31 <span class="sub-unit">| ΔAG: 17.0 | ΔHCO₃: 13.0</span></div>
+              <div class="calc-formula-display">ΔAG = AG - 12 | ΔHCO₃ = 24 - HCO₃⁻ | Ratio = ΔAG ÷ ΔHCO₃</div>
+              <p class="abg-step-desc" id="abgDeltaDesc">Delta ratio between 0.8 and 2.0 indicates an uncomplicated High Anion Gap Metabolic Acidosis (DKA or lactic acidosis).</p>
+            </div>
+
+            <!-- Step 6: Oxygenation (P/F Ratio & Expected PaO2) -->
+            <div class="abg-step-card">
+              <div class="abg-step-head">
+                <span class="abg-step-num">Step 6 (Oxygenation)</span>
+                <div class="calc-result-badge good" id="abgOxBadge">P/F: 405 (Normal)</div>
+              </div>
+              <h4 class="abg-step-title">P/F Ratio &amp; Alveolar Gradient</h4>
+              <div class="abg-step-mainval" id="abgOxVal">P/F: 404.8 <span class="sub-unit">| Expected PaO₂: 92.0 mmHg</span></div>
+              <div class="calc-formula-display" id="abgOxFormula">P/F = PaO₂ ÷ FiO₂ | PAO₂ = [FiO₂ × (760 - 47)] - (PaCO₂ ÷ 0.8)</div>
+              <p class="abg-step-desc" id="abgOxDesc">Normal oxygenation on room air. A-a gradient is within normal age-adjusted limits.</p>
+            </div>
+
+          </div>
+
+          <!-- Final Diagnostic Impression Banner -->
+          <div class="abg-banner-impression" id="abgImpressionCard">
+            <h4>🩺 Integrated Diagnostic Impression</h4>
+            <div style="font-size:1.05rem; font-weight:700; color:var(--fg); margin-bottom:0.4rem;" id="abgImpressionText">
+              Primary High Anion Gap Metabolic Acidosis (HAGMA) with Appropriate Winter's Respiratory Compensation
+            </div>
+            <div style="font-size:0.83rem; color:var(--muted); line-height:1.6;" id="abgImpressionSub">
+              No secondary respiratory disorder or concurrent non-gap acidosis detected. Oxygen transfer is intact without acute pulmonary shunting.
+            </div>
+          </div>
+
+          <div class="calc-box-actions" style="margin-top:1.25rem;">
+            <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/6016545/" target="_blank" rel="noopener">
+              References: Narins &amp; Emmett (Medicine 1980); Albert &amp; Winters (Ann Intern Med 1967); Berlin ARDS Definition (JAMA 2012) ↗
+            </a>
+          </div>
+        </section>
+        </div><!-- /#tabAbg -->
+
 
       </main>
     </div>
@@ -1903,6 +2043,7 @@
 <!-- Calculator Engines -->
 <script src="paeds-chart-engine.js"></script>
 <script src="paeds-pdf-export.js"></script>
+<script src="abg-engine.js"></script>
 <script src="calculators.js"></script>
 
 <!-- UI Controller Script wiring 3D and Lite Views -->
@@ -2326,102 +2467,235 @@
   syncPair("cgWeightType3d", "cgWeightType", updateCockcroftGault);
 
   // ------------------------------------------------------------------------
-  // ANION GAP CONTROLLER
+  // ARTERIAL & VENOUS BLOOD GAS (ABG/VBG) CONTROLLER
   // ------------------------------------------------------------------------
-  function updateAnionGap() {
-    const na = document.getElementById("agNa3d")?.value || document.getElementById("agNa")?.value;
-    const cl = document.getElementById("agCl3d")?.value || document.getElementById("agCl")?.value;
-    const hco3 = document.getElementById("agHco33d")?.value || document.getElementById("agHco3")?.value;
-    const alb = document.getElementById("agAlb3d")?.value || document.getElementById("agAlb")?.value;
+  function updateABG() {
+    const sampleType = (document.getElementById("abgSampleType3d") || document.getElementById("abgSampleType"))?.value || "abg";
+    const chronicity = (document.getElementById("abgChronicity3d") || document.getElementById("abgChronicity"))?.value || "acute";
+    const ph = (document.getElementById("abgPh3d") || document.getElementById("abgPh"))?.value;
+    const paco2 = (document.getElementById("abgPaco23d") || document.getElementById("abgPaco2"))?.value;
+    const pao2 = (document.getElementById("abgPao23d") || document.getElementById("abgPao2"))?.value;
+    const hco3 = (document.getElementById("abgHco33d") || document.getElementById("abgHco3"))?.value;
+    const fio2 = (document.getElementById("abgFio23d") || document.getElementById("abgFio2"))?.value;
+    const na = (document.getElementById("abgNa3d") || document.getElementById("abgNa"))?.value;
+    const cl = (document.getElementById("abgCl3d") || document.getElementById("abgCl"))?.value;
+    const alb = (document.getElementById("abgAlb3d") || document.getElementById("abgAlb"))?.value;
+    const age = (document.getElementById("abgAge3d") || document.getElementById("abgAge"))?.value;
 
-    const res = window.KnockoutCalculators.calculateAnionGap({ na, cl, hco3, albumin: alb, albUnit: "g/dL" });
+    const res = window.KnockoutCalculators.analyzeABG({
+      sampleType, chronicity, ph, paco2, pao2, hco3, fio2, na, cl, albumin: alb, age
+    });
+
     if (res.error) return;
 
     ["3d", ""].forEach(s => {
-      const val = document.getElementById("agVal" + s);
-      const badge = document.getElementById("agBadge" + s);
-      const interp = document.getElementById("agInterp" + s);
-      if (val) {
-        const corrText = res.correctedAG !== null ? ` (Corrected: ${res.correctedAG})` : '';
-        val.innerHTML = `${res.ag}${corrText} <span class="unit">mEq/L</span>`;
+      // Step 0: VBG Banner
+      const vbgBanner = document.getElementById("abgVbgBanner" + s);
+      if (vbgBanner) {
+        if (res.vbgNote) {
+          vbgBanner.style.display = "block";
+          vbgBanner.textContent = res.vbgNote;
+        } else {
+          vbgBanner.style.display = "none";
+        }
       }
-      if (badge) {
-        badge.className = `calc-result-badge ${res.riskClass}`;
-        badge.textContent = res.effectiveAG > 12 ? "High Anion Gap" : (res.effectiveAG < 4 ? "Low Anion Gap" : "Normal Anion Gap");
+
+      // Step 1: pH & Base Excess
+      const phVal = document.getElementById("abgPhVal" + s);
+      const phBadge = document.getElementById("abgPhBadge" + s);
+      const phDesc = document.getElementById("abgPhDesc" + s);
+      if (phVal) phVal.innerHTML = `pH ${res.ph} <span class="sub-unit">| SBE: ${res.sbe} mEq/L</span>`;
+      if (phBadge) {
+        phBadge.className = `calc-result-badge ${res.phClass}`;
+        phBadge.textContent = res.phStatus;
       }
-      if (interp) {
-        const corrDetail = res.albCorrectionDetails ? `<strong>${res.albCorrectionDetails}</strong><br>` : '';
-        interp.innerHTML = corrDetail + res.interpretation;
+      if (phDesc) phDesc.textContent = res.sbeInterp;
+
+      // Step 2: Primary Disturbance
+      const primVal = document.getElementById("abgPrimaryVal" + s);
+      const primBadge = document.getElementById("abgPrimaryBadge" + s);
+      const primDesc = document.getElementById("abgPrimaryDesc" + s);
+      if (primVal) primVal.textContent = res.primaryDisorders.join(" + ") || "Nominal";
+      if (primBadge) {
+        primBadge.className = `calc-result-badge ${res.phClass}`;
+        primBadge.textContent = res.primaryDisorders[0] ? res.primaryDisorders[0].replace("Primary ", "") : "Normal";
+      }
+      if (primDesc) {
+        primDesc.textContent = `Direction: pH ${res.ph} with HCO₃⁻ ${res.hco3} mEq/L (${res.hco3Calculated ? 'Calculated' : 'Measured'}) and PaCO₂ ${res.paco2} mmHg.`;
+      }
+
+      // Step 3: Expected Compensation (Winter's / Respiratory / Metabolic)
+      const compVal = document.getElementById("abgCompVal" + s);
+      const compBadge = document.getElementById("abgCompBadge" + s);
+      const compFormula = document.getElementById("abgCompFormula" + s);
+      const compDesc = document.getElementById("abgCompDesc" + s);
+      if (compVal) compVal.innerHTML = `Expected: ${res.compensation.expected}`;
+      if (compFormula) compFormula.textContent = res.compensation.rule;
+      if (compBadge) {
+        compBadge.className = `calc-result-badge ${res.compensation.riskClass}`;
+        compBadge.textContent = res.compensation.riskClass === "good" ? "Appropriate" : (res.compensation.status.includes("ACIDOSIS") ? "Concurrent Acidosis" : "Concurrent Alkalosis");
+      }
+      if (compDesc) compDesc.textContent = res.compensation.status;
+
+      // Step 4: Anion Gap & Albumin Correction
+      const agVal = document.getElementById("abgAgVal" + s);
+      const agBadge = document.getElementById("abgAgBadge" + s);
+      const agDesc = document.getElementById("abgAgDesc" + s);
+      const agFormula = document.getElementById("abgAgFormula" + s);
+      if (res.anionGap) {
+        if (agVal) {
+          const corrText = res.anionGap.albDetails ? ` (Corrected: ${res.anionGap.effectiveAG})` : '';
+          agVal.innerHTML = `AG: ${res.anionGap.rawAG}${corrText} <span class="sub-unit">mEq/L</span>`;
+        }
+        if (agBadge) {
+          agBadge.className = `calc-result-badge ${res.anionGap.riskClass}`;
+          agBadge.textContent = res.anionGap.category;
+        }
+        if (agFormula && res.anionGap.albDetails) {
+          agFormula.textContent = res.anionGap.albDetails;
+        }
+        if (agDesc) {
+          agDesc.textContent = res.anionGap.effectiveAG > 12 
+            ? "High anion gap (> 12 mEq/L) signals unmeasured anions: ketoacids, lactate, toxic alcohols, uraemic acids, or salicylates."
+            : (res.anionGap.effectiveAG < 4 ? "Low anion gap (< 4 mEq/L): Severe hypoalbuminaemia, lithium toxicity, or paraproteinaemia." : "Normal anion gap (4–12 mEq/L). In metabolic acidosis, indicates NAGMA/hyperchloraemic acidosis.");
+        }
+      } else {
+        if (agVal) agVal.innerHTML = `AG: N/A <span class="sub-unit">(Enter Na⁺ &amp; Cl⁻)</span>`;
+        if (agBadge) { agBadge.className = "calc-result-badge"; agBadge.textContent = "Electrolytes needed"; }
+        if (agDesc) agDesc.textContent = "Enter Sodium and Chloride to calculate unmeasured anion gap and delta ratio.";
+      }
+
+      // Step 5: Delta Ratio & Delta Gap
+      const delVal = document.getElementById("abgDeltaVal" + s);
+      const delBadge = document.getElementById("abgDeltaBadge" + s);
+      const delDesc = document.getElementById("abgDeltaDesc" + s);
+      if (res.deltaGap && res.deltaGap.deltaRatio !== null) {
+        if (delVal) delVal.innerHTML = `Ratio: ${res.deltaGap.deltaRatio} <span class="sub-unit">| ΔAG: ${res.deltaGap.deltaAG} | ΔHCO₃: ${res.deltaGap.deltaHco3}</span>`;
+        if (delBadge) {
+          delBadge.className = `calc-result-badge ${res.deltaGap.riskClass}`;
+          delBadge.textContent = res.deltaGap.deltaRatio < 0.4 ? "NAGMA" : (res.deltaGap.deltaRatio < 0.8 ? "Mixed HAGMA/NAGMA" : (res.deltaGap.deltaRatio <= 2.0 ? "Pure HAGMA" : "HAGMA + Alkalosis"));
+        }
+        if (delDesc) delDesc.textContent = res.deltaGap.interpretation;
+      } else {
+        if (delVal) delVal.innerHTML = `Ratio: N/A <span class="sub-unit">| ΔGap: N/A</span>`;
+        if (delBadge) { delBadge.className = "calc-result-badge"; delBadge.textContent = "Awaiting AG"; }
+        if (delDesc) delDesc.textContent = "Requires Sodium, Chloride, and Bicarbonate inputs.";
+      }
+
+      // Step 6: Oxygenation (P/F Ratio & Alveolar Gradient)
+      const oxVal = document.getElementById("abgOxVal" + s);
+      const oxBadge = document.getElementById("abgOxBadge" + s);
+      const oxDesc = document.getElementById("abgOxDesc" + s);
+      const oxFormula = document.getElementById("abgOxFormula" + s);
+      if (res.oxygenation) {
+        if (oxVal) oxVal.innerHTML = `P/F: ${res.oxygenation.pfRatio} <span class="sub-unit">| Exp PaO₂: ${res.oxygenation.expectedPao2RoomAir} mmHg</span>`;
+        if (oxBadge) {
+          oxBadge.className = `calc-result-badge ${res.oxygenation.ardsClass}`;
+          oxBadge.textContent = res.oxygenation.ardsTier.split('(')[0].trim();
+        }
+        if (oxFormula) {
+          oxFormula.textContent = `P/F = PaO₂ ÷ (${res.oxygenation.fio2Frac}) | PAO₂ = ${res.oxygenation.paO2Alveolar} mmHg | A-a Gradient = ${res.oxygenation.aaGradient} mmHg`;
+        }
+        if (oxDesc) oxDesc.textContent = res.oxygenation.aaInterp;
+      } else {
+        if (oxVal) oxVal.innerHTML = `P/F: N/A <span class="sub-unit">(Enter PaO₂ &amp; FiO₂)</span>`;
+        if (oxBadge) { oxBadge.className = "calc-result-badge"; oxBadge.textContent = "PaO₂ required"; }
+        if (oxDesc) oxDesc.textContent = "Enter PaO₂ and FiO₂ fraction to evaluate arterial hypoxaemia, Berlin ARDS criteria, and A-a gradient.";
+      }
+
+      // Final Integrated Impression Banner
+      const impText = document.getElementById("abgImpressionText" + s);
+      const impSub = document.getElementById("abgImpressionSub" + s);
+      if (impText) impText.textContent = res.diagnosticImpression || "Normal Arterial Acid–Base Status";
+      if (impSub) {
+        let subDetails = [];
+        if (res.compensation.status) subDetails.push(res.compensation.status);
+        if (res.anionGap && res.anionGap.effectiveAG > 12 && res.deltaGap) subDetails.push(res.deltaGap.interpretation);
+        if (res.oxygenation) subDetails.push(`Oxygenation: ${res.oxygenation.ardsTier}.`);
+        impSub.textContent = subDetails.join(" ");
       }
     });
   }
 
-  syncPair("agNa3d", "agNa", updateAnionGap);
-  syncPair("agCl3d", "agCl", updateAnionGap);
-  syncPair("agHco33d", "agHco3", updateAnionGap);
-  syncPair("agAlb3d", "agAlb", updateAnionGap);
+  // Synchronize all ABG inputs across 3D and Lite presentation layers
+  syncPair("abgSampleType3d", "abgSampleType", updateABG);
+  syncPair("abgChronicity3d", "abgChronicity", updateABG);
+  syncPair("abgPh3d", "abgPh", updateABG);
+  syncPair("abgPaco23d", "abgPaco2", updateABG);
+  syncPair("abgPao23d", "abgPao2", updateABG);
+  syncPair("abgHco33d", "abgHco3", updateABG);
+  syncPair("abgFio23d", "abgFio2", updateABG);
+  syncPair("abgNa3d", "abgNa", updateABG);
+  syncPair("abgCl3d", "abgCl", updateABG);
+  syncPair("abgAlb3d", "abgAlb", updateABG);
+  syncPair("abgAge3d", "abgAge", updateABG);
 
-  // ------------------------------------------------------------------------
-  // WINTER'S FORMULA CONTROLLER
-  // ------------------------------------------------------------------------
-  function updateWinters() {
-    const hco3 = document.getElementById("winHco33d")?.value || document.getElementById("winHco3")?.value;
-    const paco2 = document.getElementById("winPaco23d")?.value || document.getElementById("winPaco2")?.value;
+  // Preset Scenarios Handler
+  const abgPresets = {
+    dka: { ph: "7.15", paco2: "22", pao2: "95", hco3: "8", fio2: "21", na: "135", cl: "98", alb: "4.0", sample: "abg", chron: "acute" },
+    copd: { ph: "7.36", paco2: "65", pao2: "62", hco3: "36", fio2: "28", na: "140", cl: "94", alb: "4.0", sample: "abg", chron: "chronic" },
+    ards: { ph: "7.28", paco2: "48", pao2: "60", hco3: "20", fio2: "60", na: "138", cl: "102", alb: "2.8", sample: "abg", chron: "acute" },
+    salicylate: { ph: "7.46", paco2: "20", pao2: "98", hco3: "14", fio2: "21", na: "142", cl: "100", alb: "4.0", sample: "abg", chron: "acute" },
+    vomiting: { ph: "7.52", paco2: "48", pao2: "88", hco3: "38", fio2: "21", na: "138", cl: "86", alb: "4.0", sample: "abg", chron: "acute" },
+    vbg: { ph: "7.32", paco2: "50", pao2: "40", hco3: "25", fio2: "21", na: "140", cl: "104", alb: "4.0", sample: "vbg", chron: "acute" }
+  };
 
-    const res = window.KnockoutCalculators.calculateWinters(hco3, paco2);
-    if (res.error) return;
+  function setupABGControls() {
+    document.querySelectorAll(".abg-preset-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const pKey = btn.getAttribute("data-preset");
+        const p = abgPresets[pKey];
+        if (!p) return;
 
-    ["3d", ""].forEach(s => {
-      const val = document.getElementById("winVal" + s);
-      const badge = document.getElementById("winBadge" + s);
-      const interp = document.getElementById("winInterp" + s);
-      if (val) val.innerHTML = `${res.rangeText}`;
-      if (badge) {
-        badge.className = `calc-result-badge ${res.riskClass}`;
-        badge.textContent = res.comparison ? (res.comparison.includes("HIGHER") ? "Resp Acidosis" : (res.comparison.includes("LOWER") ? "Resp Alkalosis" : "Appropriate")) : "Expected PaCO₂";
-      }
-      if (interp) {
-        const compText = res.comparison ? `<strong>${res.comparison}</strong><br>` : '';
-        interp.innerHTML = compText + `Indication: ${res.indication}`;
+        ["3d", ""].forEach(s => {
+          const setVal = (id, val) => {
+            const el = document.getElementById(id + s);
+            if (el) el.value = val;
+          };
+          setVal("abgPh", p.ph);
+          setVal("abgPaco2", p.paco2);
+          setVal("abgPao2", p.pao2);
+          setVal("abgHco3", p.hco3);
+          setVal("abgFio2", p.fio2);
+          setVal("abgNa", p.na);
+          setVal("abgCl", p.cl);
+          setVal("abgAlb", p.alb);
+          setVal("abgSampleType", p.sample);
+          setVal("abgChronicity", p.chron);
+        });
+        updateABG();
+      });
+    });
+
+    // Reset ABG Inputs Handler
+    ["btnAbgReset3d", "btnAbgReset"].forEach(btnId => {
+      const btn = document.getElementById(btnId);
+      if (btn) {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          ["3d", ""].forEach(s => {
+            const setVal = (id, val) => {
+              const el = document.getElementById(id + s);
+              if (el) el.value = val;
+            };
+            setVal("abgPh", "7.40");
+            setVal("abgPaco2", "40");
+            setVal("abgPao2", "95");
+            setVal("abgHco3", "24");
+            setVal("abgFio2", "21");
+            setVal("abgNa", "140");
+            setVal("abgCl", "102");
+            setVal("abgAlb", "4.0");
+            setVal("abgAge", "45");
+            setVal("abgSampleType", "abg");
+            setVal("abgChronicity", "acute");
+          });
+          updateABG();
+        });
       }
     });
   }
-
-  syncPair("winHco33d", "winHco3", updateWinters);
-  syncPair("winPaco23d", "winPaco2", updateWinters);
-
-  // ------------------------------------------------------------------------
-  // DELTA GAP / DELTA RATIO CONTROLLER
-  // ------------------------------------------------------------------------
-  function updateDelta() {
-    const na = document.getElementById("delNa3d")?.value || document.getElementById("delNa")?.value;
-    const cl = document.getElementById("delCl3d")?.value || document.getElementById("delCl")?.value;
-    const hco3 = document.getElementById("delHco33d")?.value || document.getElementById("delHco3")?.value;
-    const alb = document.getElementById("delAlb3d")?.value || document.getElementById("delAlb")?.value;
-
-    const res = window.KnockoutCalculators.calculateDeltaGap({ na, cl, hco3, albumin: alb });
-    if (res.error) return;
-
-    ["3d", ""].forEach(s => {
-      const val = document.getElementById("delVal" + s);
-      const badge = document.getElementById("delBadge" + s);
-      const interp = document.getElementById("delInterp" + s);
-      if (val) {
-        const rText = res.deltaRatio !== null ? `Ratio: ${res.deltaRatio}` : 'Ratio: N/A';
-        val.innerHTML = `${rText} <span class="unit">| ΔAG: ${res.deltaAG} | ΔGap: ${res.deltaGap}</span>`;
-      }
-      if (badge) {
-        badge.className = `calc-result-badge ${res.riskClass}`;
-        badge.textContent = res.deltaRatio !== null ? (res.deltaRatio < 0.4 ? "NAGMA" : (res.deltaRatio < 0.8 ? "Mixed HAGMA/NAGMA" : (res.deltaRatio <= 2.0 ? "Pure HAGMA" : "HAGMA + Alkalosis"))) : "Delta Analysis";
-      }
-      if (interp) interp.innerHTML = `<strong>${res.interpretation}</strong> (Assumed baseline AG: ${res.normalAG}, HCO₃: ${res.normalHco3} mEq/L).`;
-    });
-  }
-
-  syncPair("delNa3d", "delNa", updateDelta);
-  syncPair("delCl3d", "delCl", updateDelta);
-  syncPair("delHco33d", "delHco3", updateDelta);
-  syncPair("delAlb3d", "delAlb", updateDelta);
 
 
   // ------------------------------------------------------------------------
@@ -2696,9 +2970,8 @@
     updateChildPugh();
     updateCOPUR();
     updateCockcroftGault();
-    updateAnionGap();
-    updateWinters();
-    updateDelta();
+    updateABG();
+    setupABGControls();
     setupTabs();
     setup3DHapticDepth();
   });

@@ -879,3 +879,185 @@ body:not(.dark) .paeds-actions-bar {
     font-weight: bold !important;
   }
 }
+
+
+/* ==========================================================================
+   ABG / VBG CLINICAL ANALYSIS ENGINE STYLES
+   ========================================================================== */
+.abg-hero-card {
+  background: var(--card, rgba(15, 23, 42, 0.75));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  border-radius: 16px;
+  padding: 1.75rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 189, 248, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.abg-hero-card::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.abg-grid-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.85rem;
+  background: rgba(0, 0, 0, 0.32);
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+body:not(.dark) .abg-grid-inputs {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.abg-pipeline-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.abg-step-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  position: relative;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.abg-step-card:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
+}
+
+body:not(.dark) .abg-step-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.abg-step-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.abg-step-num {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent, #38bdf8);
+}
+
+.abg-step-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--fg, #f8fafc);
+  margin: 0;
+}
+
+.abg-step-mainval {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--fg, #f8fafc);
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.abg-step-mainval .sub-unit {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted, #94a3b8);
+}
+
+.abg-step-desc {
+  font-size: 0.82rem;
+  color: var(--muted, #94a3b8);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.abg-banner-impression {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(14, 165, 233, 0.04));
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+
+body:not(.dark) .abg-banner-impression {
+  background: #f0f9ff;
+  border-color: #7dd3fc;
+}
+
+.abg-banner-impression h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: var(--accent, #38bdf8);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+body:not(.dark) .abg-banner-impression h4 {
+  color: #0369a1;
+}
+
+.abg-preset-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.abg-preset-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--fg, #e2e8f0);
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.abg-preset-btn:hover {
+  background: var(--accent, #38bdf8);
+  color: #000;
+  border-color: var(--accent, #38bdf8);
+}
+
+body:not(.dark) .abg-preset-btn {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+body:not(.dark) .abg-preset-btn:hover {
+  background: #0284c7;
+  color: #fff;
+  border-color: #0284c7;
+}

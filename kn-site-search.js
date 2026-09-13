@@ -71,10 +71,12 @@
         { Type: "Calculator", Category: "Perioperative Assessment", Title: "METs Functional Capacity", Summary: "ACC/AHA and ESAIC perioperative cardiac functional reserve stratification.", href: "calculators.html#calcMets" },
         { Type: "Calculator", Category: "Perioperative Assessment", Title: "Duke Activity Status Index (DASI)", Summary: "Validated 12-item cardiorespiratory functional capacity and peak VO2 score.", href: "calculators.html#calcDasi" },
         { Type: "Calculator", Category: "Perioperative Assessment", Title: "STOP-Bang OSA Screening", Summary: "Obstructive sleep apnoea perioperative screening questionnaire.", href: "calculators.html#calcStopBang" },
-        { Type: "Calculator", Category: "Renal & Acid–Base", Title: "Creatinine Clearance (Cockcroft–Gault)", Summary: "Estimated renal clearance with Actual, Ideal, and Adjusted body weight options.", href: "calculators.html#calcCrCl" },
-        { Type: "Calculator", Category: "Renal & Acid–Base", Title: "Serum Anion Gap & Albumin Correction", Summary: "Evaluation of metabolic acidosis and unmeasured anions with Figge albumin formula.", href: "calculators.html#calcAnionGap" },
-        { Type: "Calculator", Category: "Renal & Acid–Base", Title: "Winter's Formula (Expected PaCO₂)", Summary: "Respiratory compensation evaluator for primary metabolic acidosis.", href: "calculators.html#calcWinters" },
-        { Type: "Calculator", Category: "Renal & Acid–Base", Title: "Delta Gap & Delta Ratio", Summary: "Evaluation of mixed metabolic acidosis and alkalosis.", href: "calculators.html#calcDelta" }
+        { Type: "Calculator", Category: "Renal Clearance", Title: "Creatinine Clearance (Cockcroft–Gault)", Summary: "Estimated renal clearance with Actual, Ideal, and Adjusted body weight options.", href: "calculators.html#calcCrCl" },
+        { Type: "Calculator", Category: "ABG & Acid–Base", Title: "Arterial Blood Gas (ABG) Clinical Analysis", Summary: "Step-by-step blood gas analysis: pH, SBE, PaCO₂, Winter's formula compensation, Figge anion gap, delta ratio, and oxygenation.", href: "calculators.html#abgHero" },
+        { Type: "Calculator", Category: "ABG & Acid–Base", Title: "Serum Anion Gap & Albumin Correction", Summary: "Evaluation of metabolic acidosis and unmeasured anions with Figge albumin formula in ABG suite.", href: "calculators.html#abgHero" },
+        { Type: "Calculator", Category: "ABG & Acid–Base", Title: "Winter's Formula (Expected PaCO₂)", Summary: "Respiratory compensation evaluator for primary metabolic acidosis in ABG suite.", href: "calculators.html#abgHero" },
+        { Type: "Calculator", Category: "ABG & Acid–Base", Title: "Delta Gap & Delta Ratio", Summary: "Evaluation of mixed metabolic acidosis and alkalosis in ABG suite.", href: "calculators.html#abgHero" },
+        { Type: "Calculator", Category: "ABG & Acid–Base", Title: "P/F Ratio & Berlin ARDS Classification", Summary: "Arterial oxygenation ratio (PaO₂/FiO₂), expected PaO₂, and alveolar-arterial (A-a) gradient.", href: "calculators.html#abgHero" }
       ];
 
       // Index Text Pearls in Notes
