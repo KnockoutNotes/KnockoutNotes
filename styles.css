@@ -2831,4 +2831,19 @@ body:not(.dark) .site-footer {
   color: #475569;
 }
 
+body:not(.dark) .view-layer-3d .kn-carousel-arrow {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(15, 23, 42, 0.16);
+  color: #0f172a;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.12);
+}
+
+body:not(.dark) .view-layer-3d .kn-carousel-arrow:hover,
+body:not(.dark) .view-layer-3d .kn-carousel-arrow:focus-visible {
+  background: #ffffff;
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.16), 0 0 16px rgba(2, 132, 199, 0.25);
+}
+
 

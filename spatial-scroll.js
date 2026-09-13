@@ -277,12 +277,11 @@
   // section visibility — never by ongoing scroll position, and never
   // re-armed by a category-tab switch (existing already-deployed carousels
   // just get re-shown/refreshed as before). An immediate bounding-box check
-  // covers content that's already on screen at build time (e.g. an
-  // above-the-fold home grid); the observer covers scrolling down to it.
   Carousel.prototype._wireDeployObserver = function () {
     if (this.deployed || this._deploying) return;
     if (reduceMotion || typeof IntersectionObserver === "undefined") {
       this.deployed = true;
+      this.cards.forEach(c => { c.dataset.deployT = "1"; });
       return;
     }
     if (!this._deployObserver) {
@@ -290,14 +289,19 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) this._deploy();
         });
-      }, { threshold: 0.15 });
+      }, { threshold: 0.1 });
       this._deployObserver.observe(this.container);
     }
-    requestAnimationFrame(() => {
+    // Check immediately and in next frame: if carousel container is present in viewport, deploy immediately
+    const checkNow = () => {
       if (this.deployed || this._deploying || this.destroyed) return;
       const r = this.container.getBoundingClientRect();
-      if (r.width > 0 && r.top < window.innerHeight && r.bottom > 0) this._deploy();
-    });
+      if (r.width > 0 && r.top < (window.innerHeight || 800) && r.bottom > 0) {
+        this._deploy();
+      }
+    };
+    checkNow();
+    requestAnimationFrame(checkNow);
   };
 
   Carousel.prototype._deploy = function () {
@@ -714,8 +718,13 @@
   Carousel.prototype.refresh = function () {
     const children = this._directChildren();
     const changed = children.length !== this.cards.length || children.some((c, i) => c !== this.cards[i]);
+    const wasDeployed = this.deployed;
     if (changed) {
       this._build();
+      if (wasDeployed) {
+        this.deployed = true;
+        this.cards.forEach(c => { c.dataset.deployT = "1"; });
+      }
       return;
     }
     this._measureHeight();

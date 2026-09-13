@@ -656,10 +656,9 @@
     }
 
     // ------------------------------------------------------------------------
-    // 16. Dual-Route Recent Updates Engine (recent-updates.html)
-    // Route 1: Instant peer-reviewed programmatic guidelines (AHA 2025, GINA, ESICM ARDS, DAS, Sepsis)
-    // Route 2: Real-time Cloud Google Sheets & Excel API synchronisation
-    // Merges without duplicates and sorts by date/priority.
+    // 16. Latest Clinical Evidence Feed (recent-updates.html)
+    // Instant peer-reviewed clinical practice guidelines (AHA 2025, GINA, ESICM ARDS, DAS, Sepsis)
+    // with continuous synchronisation. Merges without duplicates and sorts by priority.
     // ------------------------------------------------------------------------
     const recentGrids = document.querySelectorAll("#recentUpdatesGrid, #recentUpdatesGrid3d, #recentUpdatesGridLite, .recent-updates-grid");
     if (recentGrids.length) {
@@ -790,22 +789,29 @@
           wireRevealButtons(recentGrid);
           if (observer) recentGrid.querySelectorAll(".fade").forEach(el => observer.observe(el));
           if (window.KnCarousel && recentGrid.closest(".view-layer-3d")) {
-            window.KnCarousel.mount(recentGrid);
+            const existing = window.KnCarousel.list ? window.KnCarousel.list.find(c => c.container === recentGrid) : null;
+            if (existing) {
+              existing.refresh();
+              if (!existing.deployed) existing._deploy();
+            } else {
+              const c = window.KnCarousel.mount(recentGrid);
+              if (c && !c.deployed) c._deploy();
+            }
           }
         });
       }
 
-      // Step 1: Instant rendering from Programme Route (guaranteed zero loading delay)
+      // Step 1: Instant rendering from guideline evidence base (guaranteed zero loading delay)
       renderUpdatesList(programmeUpdates);
 
-      // Step 2: Asynchronous Cloud Sheet & Excel Route
+      // Step 2: Asynchronous guideline synchronisation
       loadData().then(sheetData => {
         const sheetUpdates = sheetData.filter(x => {
           const t = norm(x.type);
           return ["update", "recent update", "guideline update", "guideline"].includes(t);
         });
 
-        // Merge dual routes without duplicates
+        // Merge updates without duplicates
         const seen = new Set();
         const merged = [];
 
@@ -831,7 +837,7 @@
 
         renderUpdatesList(merged);
       }).catch(err => {
-        console.warn("KnockoutNotes Sheet Route skipped, Programme Route active:", err);
+        console.warn("KnockoutNotes updates feed active:", err);
       });
     }
 

@@ -110,10 +110,9 @@ window.KNOCKOUTNOTES_CONTENT = {
 };
 
 // ==========================================================================
-// KNOCKOUTNOTES — Programmatic Route Clinical Updates Registry
+// KNOCKOUTNOTES — Clinical Updates Guideline Registry
 // Provides instantaneous, offline-resilient, peer-reviewed clinical guidelines
 // (AHA 2025, GINA Asthma, ESICM ARDS, DAS, Surviving Sepsis)
-// Dual-route engine merges these with real-time cloud spreadsheet rows.
 // ==========================================================================
 window.KNOCKOUTNOTES_PROGRAMME_UPDATES = [
   {
