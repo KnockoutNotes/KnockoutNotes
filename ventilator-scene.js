@@ -483,6 +483,15 @@ export function createWorkstationScene(container, opts) {
   function onGesturePointerUp() {
     gestureTracking = false;
     if (rotationArmed && gestureDidDrag) setRotationArmed(false);
+    // gestureDidDrag also gates onClick's drag-vs-click check, for the
+    // click that normally follows this same pointerup synchronously — so
+    // it must still read true there (hence the deferred clear, not an
+    // immediate one). It's already reset unconditionally on the next
+    // pointerdown, but a pointercancel produces no click at all, so
+    // without this a canvas click dispatched with no intervening
+    // pointerdown (e.g. a synthetic/programmatic one) would be silently
+    // swallowed by a stale flag from an earlier cancelled gesture.
+    if (gestureDidDrag) setTimeout(() => { gestureDidDrag = false; }, 0);
   }
 
   renderer.domElement.addEventListener("pointerdown", onStagePointerDownCapture, { capture: true });

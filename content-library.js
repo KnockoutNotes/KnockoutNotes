@@ -366,7 +366,12 @@
       // Sliding one continuous track is what "this tab moves to the
       // middle" actually requires.
       const centerActiveTab = tab => {
-        if (!track) return;
+        // A category with an empty files/categories list (content-config.js
+        // is edited directly as the normal, non-developer content workflow —
+        // see HOW_TO_ADD_CONTENT.txt) renders no tab buttons at all, so the
+        // resize handler's `tabs.querySelector('.kn-library-tab.active')`
+        // can hand this `null` on every window resize.
+        if (!track || !tab) return;
         // Measured via getBoundingClientRect against a momentarily-
         // neutralised transform, not offsetLeft/offsetWidth — an
         // offsetLeft-based version of this (relative to track, on the
