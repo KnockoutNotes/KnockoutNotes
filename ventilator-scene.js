@@ -224,14 +224,8 @@ export function createWorkstationScene(container, opts) {
   }
 
   // Computes an initial camera position/target from the LOADED model's
-  // actual bounding box (post frameModel scale/recentre), instead of a
-  // hand-tuned guess — so the whole workstation is framed on first load
-  // regardless of the real .glb's proportions, and regardless of viewport
-  // aspect ratio (desktop vs mobile). Fits both the vertical and horizontal
-  // field of view against the box's bounding-sphere radius (half its
-  // diagonal — a deliberately conservative fit so no corner of the model
-  // is clipped from a 3/4 angle), then backs off an extra margin so the
-  // model isn't framed edge-to-edge.
+  // actual bounding box (post frameModel scale/recentre), so the entire
+  // workstation (from casters to monitor arm) is framed cleanly with generous padding.
   function fitCameraToModel() {
     const box = new THREE.Box3().setFromObject(modelGroup);
     if (box.isEmpty()) return;
@@ -239,21 +233,26 @@ export function createWorkstationScene(container, opts) {
     box.getSize(size);
     const center = new THREE.Vector3();
     box.getCenter(center);
-    const radius = size.length() / 2;
+    // Visual center of mass of workstation (balancing high swing-arm monitor with wheeled base)
+    defaultTarget.set(0, 0.78, 0);
+
     const vFov = THREE.MathUtils.degToRad(camera.fov);
     const hFov = 2 * Math.atan(Math.tan(vFov / 2) * camera.aspect);
-    const distV = radius / Math.sin(vFov / 2);
-    const distH = radius / Math.sin(hFov / 2);
-    const margin = 1.7; // headroom around the model — starts more zoomed out
+
+    // Frame the vertical height (1.70m) and effective width with generous padding
+    const halfH = size.y * 0.52;
+    const halfW = Math.hypot(size.x, size.z) * 0.52;
+    const distV = halfH / Math.tan(vFov / 2);
+    const distH = halfW / Math.tan(hFov / 2);
+    const margin = 1.40; // generous breathing room around the workstation
     fitDistance = Math.max(distV, distH) * margin;
 
-    // A fixed 3/4-elevated viewing direction, applied at the computed distance.
-    const dir = new THREE.Vector3(0.62, 0.4, 0.68).normalize();
-    defaultCamPos.copy(center).addScaledVector(dir, fitDistance);
-    defaultTarget.copy(center);
+    // A balanced front-three-quarters elevated viewing perspective
+    const dir = new THREE.Vector3(0.55, 0.26, 0.80).normalize();
+    defaultCamPos.copy(defaultTarget).addScaledVector(dir, fitDistance);
 
-    controls.minDistance = fitDistance * 0.35;
-    controls.maxDistance = fitDistance * 2.6;
+    controls.minDistance = Math.max(1.35, fitDistance * 0.40);
+    controls.maxDistance = fitDistance * 1.85;
 
     camera.position.copy(defaultCamPos);
     controls.target.copy(defaultTarget);
@@ -531,31 +530,48 @@ export function createWorkstationScene(container, opts) {
     if (t >= 1) tween = null;
   }
 
-  // Selecting a hotspot (clicking its 3D marker, or the matching sidebar
-  // entry) marks it active and opens its info panel — nothing else. It
-  // must NEVER move the camera: a click changing the view out from under
-  // the user (and, as a direct consequence, silently nudging the zoom-bar
-  // reading) is exactly the "unpredictable interaction" this page used to
-  // be reported for.
-  function selectComponent(id) {
+  // Selecting a component (either by clicking a 3D marker or via the sidebar/panel)
+  // highlights the marker, renders the info panel, and gently focuses the camera
+  // without disorienting macro-zooms or compounding zoom levels.
+  function focusComponent(id) {
     setActive(id);
     const m = markers.get(id);
     if (!m) return;
     if (onSelect) onSelect(id, m.comp);
+
+    // Contextual target: gently bias target towards the component's Y height
+    // while keeping X clamped near the machine centerline so the machine stays centered.
+    const targetY = THREE.MathUtils.lerp(defaultTarget.y, m.sprite.position.y, 0.60);
+    const targetX = THREE.MathUtils.clamp(m.sprite.position.x * 0.30, -0.16, 0.16);
+    const targetZ = m.comp.view === "rear" ? -0.06 : 0.06;
+    const toTarget = new THREE.Vector3(targetX, targetY, targetZ);
+
+    // Gentle focus distance: maintains complete workstation context
+    const targetDist = THREE.MathUtils.clamp(fitDistance * 0.72, 1.85, 2.35);
+
+    // Camera orientation: if component is on front/rear and user is currently looking
+    // from the opposite side, rotate to the appropriate front/rear 3/4 view.
+    // Otherwise, preserve the user's current azimuth so the camera doesn't spin jarringly.
+    const currentOffset = camera.position.clone().sub(controls.target);
+    let dir = currentOffset.clone().normalize();
+
+    if (m.comp.view === "front" && dir.z < 0.2) {
+      const side = m.sprite.position.x >= 0 ? 0.45 : -0.45;
+      dir.set(side, 0.22, 0.85).normalize();
+    } else if (m.comp.view === "rear" && dir.z > -0.2) {
+      const side = m.sprite.position.x >= 0 ? 0.45 : -0.45;
+      dir.set(side, 0.22, -0.85).normalize();
+    } else {
+      dir.y = THREE.MathUtils.clamp(dir.y, 0.12, 0.35);
+      dir.normalize();
+    }
+
+    const toPos = toTarget.clone().addScaledVector(dir, targetDist);
+    tweenCamera(toPos, toTarget, 750);
   }
 
-  // Distinct from selectComponent above: an explicit "take me there"
-  // action (Systems Guide's jump-to-component chip, Viva Quiz's reveal),
-  // not a hotspot click — flying the camera to frame the component IS the
-  // point of those, so this is the one place that still tweens the camera
-  // on selection.
-  function focusComponent(id) {
-    selectComponent(id);
-    const m = markers.get(id);
-    if (!m) return;
-    const dir = m.sprite.position.clone().sub(defaultTarget).normalize();
-    const toPos = m.sprite.position.clone().add(dir.multiplyScalar(0.75)).add(new THREE.Vector3(0, 0.15, 0));
-    tweenCamera(toPos, m.sprite.position.clone(), 850);
+  function selectComponent(id) {
+    focusComponent(id);
   }
 
   function clearSelection() {
@@ -568,15 +584,18 @@ export function createWorkstationScene(container, opts) {
     tweenCamera(defaultCamPos.clone(), defaultTarget.clone(), 700);
   }
   function frontView() {
-    const dir = new THREE.Vector3(0, 0.32, 1).normalize();
+    clearSelection();
+    const dir = new THREE.Vector3(0, 0.18, 1).normalize();
     tweenCamera(defaultTarget.clone().addScaledVector(dir, fitDistance), defaultTarget.clone(), 700);
   }
   function rearView() {
-    const dir = new THREE.Vector3(0, 0.32, -1).normalize();
+    clearSelection();
+    const dir = new THREE.Vector3(0, 0.18, -1).normalize();
     tweenCamera(defaultTarget.clone().addScaledVector(dir, fitDistance), defaultTarget.clone(), 700);
   }
   function sideView() {
-    const dir = new THREE.Vector3(1, 0.28, 0).normalize();
+    clearSelection();
+    const dir = new THREE.Vector3(1, 0.16, 0.12).normalize();
     tweenCamera(defaultTarget.clone().addScaledVector(dir, fitDistance), defaultTarget.clone(), 700);
   }
 
@@ -658,6 +677,8 @@ export function createWorkstationScene(container, opts) {
     if (onLoaded) onLoaded({ isPlaceholder });
     return res;
   });
+
+  window.__ventDebug = { scene, camera, controls, modelGroup, markers, defaultTarget, defaultCamPos };
 
   return {
     ready,

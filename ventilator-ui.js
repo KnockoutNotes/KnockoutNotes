@@ -154,24 +154,32 @@ export function initVentilatorPage() {
   activateTab("explore");
 
   // ---- View controls (shared action bar) ----
-  document.getElementById("ventResetViewBtn").addEventListener("click", () => { scene.resetView(); infoPanel.classList.remove("open"); markSidebarActive(null); });
-  document.getElementById("ventFrontViewBtn").addEventListener("click", () => scene.frontView());
-  document.getElementById("ventRearViewBtn").addEventListener("click", () => scene.rearView());
-  document.getElementById("ventSideViewBtn").addEventListener("click", () => scene.sideView());
+  function clearActiveUI() {
+    infoPanel.classList.remove("open");
+    markSidebarActive(null);
+  }
+  document.getElementById("ventResetViewBtn").addEventListener("click", () => { scene.resetView(); clearActiveUI(); });
+  document.getElementById("ventFrontViewBtn").addEventListener("click", () => { scene.frontView(); clearActiveUI(); });
+  document.getElementById("ventRearViewBtn").addEventListener("click", () => { scene.rearView(); clearActiveUI(); });
+  document.getElementById("ventSideViewBtn").addEventListener("click", () => { scene.sideView(); clearActiveUI(); });
   document.getElementById("ventFullscreenBtn").addEventListener("click", () => scene.toggleFullscreen());
 
-  // ---- Zoom bar (compact vertical control alongside wheel/pinch zoom) ----
+  // ---- Zoom bar (compact vertical control with smooth synchronization) ----
   const ZOOM_STEP = 8;
+  let isDraggingZoom = false;
   if (zoomRange) {
+    zoomRange.addEventListener("pointerdown", () => { isDraggingZoom = true; });
+    window.addEventListener("pointerup", () => { isDraggingZoom = false; });
     zoomRange.addEventListener("input", () => scene.setZoomPercent(Number(zoomRange.value)));
   }
   if (zoomInBtn) zoomInBtn.addEventListener("click", () => scene.zoomStep(ZOOM_STEP));
   if (zoomOutBtn) zoomOutBtn.addEventListener("click", () => scene.zoomStep(-ZOOM_STEP));
-  if (zoomFitBtn) zoomFitBtn.addEventListener("click", () => scene.resetView());
-  // Keeps the slider in sync while zoom changes via mouse wheel, pinch, or
-  // a camera tween (view buttons, hotspot selection) rather than the bar itself.
+  if (zoomFitBtn) zoomFitBtn.addEventListener("click", () => { scene.resetView(); clearActiveUI(); });
+  // Keeps the slider in sync with camera distance, pausing while the user is dragging it
   (function syncZoomSlider() {
-    if (zoomRange) zoomRange.value = String(Math.round(scene.getZoomPercent()));
+    if (zoomRange && !isDraggingZoom) {
+      zoomRange.value = String(Math.round(scene.getZoomPercent()));
+    }
     requestAnimationFrame(syncZoomSlider);
   })();
 

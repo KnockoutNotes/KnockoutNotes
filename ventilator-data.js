@@ -36,201 +36,225 @@ window.VentilatorData = {
   disclaimer: "Generic educational anaesthesia workstation representation. Appearance and component arrangement may vary between manufacturers and models. Not a substitute for any specific manufacturer's device or manual — verify against your own department's equipment and current departmental protocols before clinical use.",
 
   systems: {
-    gasSupply: "Gas Supply",
+    gasSupply: "Gas Supply & Cylinders",
     pressure: "Pressure Monitoring",
-    flowControl: "Flow Control & Vaporizers",
-    breathing: "Breathing Circuit",
-    ventilator: "Ventilator & Displays",
-    auxOutlet: "Auxiliary Outlet",
-    power: "Power",
-    mobility: "Mobility & Frame",
-    storage: "Storage"
+    flowControl: "Flowmeters & Vaporizers",
+    breathing: "Breathing System & Scavenging",
+    ventilator: "Ventilator & Monitors",
+    auxOutlet: "Auxiliary Outlets & Emergency",
+    power: "Power & Electronics",
+    mobility: "Frame & Mobility",
+    storage: "Storage & Accessories"
   },
 
   components: [
     {
-      id: "cylinder-yoke", name: "Cylinder Yoke Area", view: "rear", system: "gasSupply",
-      summary: "Mounting yokes (often an optional fitting, depending on machine configuration) that hold the back-up gas cylinders against the machine frame.",
-      function: "Each yoke uses a pin-index safety system (PISS) so a cylinder can only be seated on the yoke matching its gas, preventing an O2 cylinder from being fitted where N2O/air belongs, and vice versa.",
-      safety: "Always check the cylinder contents label and pressure gauge before use — pin-index prevents wrong-gas fitting, but does not confirm cylinder content is correct or verify remaining volume.",
-      viva: { prompt: "What safety system prevents an incorrect cylinder being fitted to a yoke, and what does it NOT protect against?", answer: "The pin-index safety system (PISS) — two pins on the yoke correspond to specific holes on the cylinder valve block for each gas. It prevents physical mis-connection, but does not prevent a cylinder being mislabelled or a yoke washer being removed to force a wrong fit." },
-      schematics: ["cylinder-connection", "yoke-check-valve"], gasZone: "high",
-      position: { x: -0.32, y: 0.62, z: -0.38 }
+      id: "patient-monitor", name: "Patient Monitor (Physiological Monitor)", view: "front", system: "ventilator",
+      summary: "Multi-parameter physiological monitor mounted on an articulated swing arm, displaying vital signs and continuous gas analysis.",
+      function: "Displays real-time patient parameters including ECG, SpO2, NIBP, invasive arterial/CVP pressures, core temperature, and continuous gas analysis (EtCO2, inspired O2, and end-tidal volatile anaesthetic agent concentrations).",
+      safety: "Must be positioned within clear line of sight throughout the case. Disconnection or silenced alarms must be investigated immediately.",
+      viva: { prompt: "What are the mandatory clinical monitoring standards recommended by the AAGBI / ASA during anaesthesia?", answer: "Continuous presence of an anaesthetist, pulse oximetry (SpO2), non-invasive blood pressure, ECG, continuous capnography (EtCO2), inspired oxygen concentration, and airway pressure monitoring. Temperature and volatile agent concentration monitoring are required for all general anaesthetics." },
+      position: { x: -0.32, y: 1.46, z: 0.18 }
     },
     {
-      id: "rear-cylinders", name: "Rear Cylinders", view: "rear", system: "gasSupply",
-      summary: "The back-up gas cylinders (typically O2 ± N2O/Air) carried on the machine as a reserve supply.",
-      function: "Provide gas supply if the piped hospital supply fails. Cylinder pressure falls roughly linearly with content for a gas stored purely as a compressed gas (e.g. O2), so pressure can estimate remaining volume; for a liquefied gas the pressure stays near-constant until the liquid phase is nearly exhausted.",
-      safety: "Cylinders should be checked and left closed during normal pipeline-supplied operation, opened only to confirm reserve availability or when the pipeline fails — habitually running from cylinder can deplete the reserve unnoticed.",
-      viva: { prompt: "Why can't cylinder pressure be used to estimate remaining volume for N2O the way it can for O2?", answer: "O2 is stored as a compressed gas, so Boyle's law applies and pressure falls proportionally with content. N2O is stored partly as liquid; while liquid remains, pressure stays roughly constant (reflecting vapour pressure), only falling once all the liquid has vaporised — so a normal-looking gauge can precede a sudden empty cylinder." },
-      schematics: ["cylinder-connection"], gasZone: "high",
-      position: { x: 0.0, y: 0.55, z: -0.42 }
-    },
-    {
-      id: "pipeline-conn", name: "Pipeline Connections", view: "rear", system: "gasSupply",
-      summary: "Hose connections to the hospital's piped medical gas supply.",
-      function: "Each gas (O2, N2O, Air) uses a non-interchangeable Schrader-type probe and colour-coded hose (per local/international standard) so the correct hose can only physically connect to its matching wall or pendant outlet.",
-      safety: "Non-interchangeable connectors are a passive safety feature — they should never be adapted, forced, or bypassed to make a hose fit a mismatched outlet.",
-      viva: { prompt: "What is the purpose of non-interchangeable (gas-specific) pipeline connectors?", answer: "They physically prevent a hose for one gas from being connected to the pipeline outlet for a different gas, protecting against delivery of the wrong gas at the pipeline-to-machine interface." },
-      schematics: ["gas-system"], gasZone: "intermediate",
-      position: { x: -0.05, y: 0.75, z: -0.42 }
-    },
-    {
-      id: "hose-hooks", name: "Hose Hooks", view: "rear", system: "storage",
-      summary: "Hooks on the rear/side of the frame for coiling and storing spare hoses.",
-      function: "Keep spare gas or suction hoses tidy and off the floor when not connected, reducing trip hazards and hose damage.",
-      safety: "Inspect stored hoses periodically for kinks, cracking or perishing — a hose that looks fine coiled on a hook can still be degraded internally.",
-      viva: null,
-      position: { x: 0.34, y: 0.9, z: -0.34 }
-    },
-    {
-      id: "scavenging", name: "Scavenging System", view: "rear", system: "breathing",
-      summary: "Removes excess and expired anaesthetic gas from the breathing circuit (via the APL valve/ventilator exhaust) to a disposal or exhaust route.",
-      function: "Reduces theatre staff exposure to trace anaesthetic gases by actively or passively conducting waste gas away from the breathing system, typically to a hospital extraction system.",
-      safety: "A disconnected, blocked, or incorrectly assembled scavenging system can cause either environmental gas leakage (if disconnected) or dangerous circuit pressurisation (if the exhaust path is blocked) — check patency at machine check.",
-      viva: { prompt: "What are the two main failure modes of a scavenging system, and why is a blocked exhaust the more dangerous of the two?", answer: "Disconnection (waste gas vents into theatre — occupational exposure risk but not usually a direct patient hazard) versus obstruction (waste gas cannot escape, raising circuit and airway pressure — a direct barotrauma risk to the patient)." },
-      position: { x: 0.28, y: 0.68, z: -0.4 }
-    },
-    {
-      id: "flowhead", name: "Flowhead Assembly", view: "front", system: "flowControl",
-      summary: "The front control head housing the flow-control valves/flowmeters that set the fresh gas mixture.",
-      function: "Operator adjusts flow-control knobs for each gas here; the resulting fresh gas mixture (O2 ± Air/N2O) passes onward to the vaporizer(s) and then to the common gas outlet or breathing circuit.",
-      safety: "Modern workstations electronically or mechanically link O2 flow so the fresh-gas mixture cannot fall below roughly 21-25% O2 — know how your specific machine indicates and enforces this before relying on it.",
-      viva: { prompt: "What minimum-FiO2 safety feature is expected on a modern flowmeter/flow-control system?", answer: "An O2:N2O (or O2:other gas) proportioning/anti-hypoxia linkage that mechanically or electronically prevents the total fresh gas mixture falling below a safe minimum FiO2 (commonly around 21–25%), regardless of how the individual flow controls are set." },
+      id: "flowhead", name: "Flowmeters (O2, N2O & Air Rotameter Bank)", view: "front", system: "flowControl",
+      summary: "Dual-tapered flowmeter tubes (rotameters) and needle control valves for setting fresh gas mixture flow rates.",
+      function: "Individually meters Oxygen, Nitrous Oxide, and Medical Air flows. The bobbin or float indicates flow rate in L/min. Oxygen is always placed downstream (furthest right in UK/ISO convention) to reduce the risk of hypoxic gas delivery if an upstream tube leaks.",
+      safety: "Modern machines feature a mechanical (e.g. Link-25) or pneumatic anti-hypoxia proportioning device preventing delivery of less than 21–25% O2 when N2O is used.",
+      viva: { prompt: "Why is the oxygen flowmeter always positioned downstream of all other gas flowmeters in the rotameter bank?", answer: "To minimise the risk of a hypoxic mixture: if a crack or leak develops in an upstream tube (e.g. N2O), gas leaks out before reaching the patient; if O2 were upstream, O2 would escape while N2O continued to the patient." },
       schematics: ["gas-system"], gasZone: "low",
-      position: { x: 0.0, y: 0.9, z: 0.28 }
+      position: { x: -0.15, y: 1.30, z: 0.22 }
     },
     {
-      id: "gauge-pipeline", name: "Pipeline Pressure Gauges", view: "front", system: "pressure",
-      summary: "Display the supply pressure being delivered from the hospital pipeline system for each gas.",
-      function: "Normal hospital pipeline pressure is typically around 400–420 kPa (roughly 4 bar); a reading outside this range suggests a pipeline supply problem upstream of the machine.",
-      safety: "Checking pipeline pressures is a standard part of the pre-use machine check — a low or absent reading should prompt switching to cylinder back-up and reporting the fault.",
-      viva: { prompt: "What pipeline pressure is expected on the pipeline pressure gauges in a normally functioning system?", answer: "Approximately 400–420 kPa (about 4 bar/60 psi) for a standard hospital medical gas pipeline system; the exact expected value should be checked against local standards." },
+      id: "gauge-pipeline", name: "Pipeline Pressure Gauges (400–420 kPa)", view: "front", system: "pressure",
+      summary: "Bourdon tube pressure gauges monitoring supply pressure from the central hospital piped medical gas pipeline system.",
+      function: "Indicates pipeline supply pressure for Oxygen, Nitrous Oxide, and Air. Normal hospital pipeline operating pressure is 400–420 kPa (~4 bar or 50–60 psi). A pressure drop indicates upstream pipeline failure.",
+      safety: "Checking pipeline supply pressure is the first step of the pre-use machine check. If pipeline pressure drops below 280 kPa, an audible low-pressure whistle/alarm sounds and fail-safe valves cut off N2O flow.",
+      viva: { prompt: "What happens to the anaesthesia machine when pipeline oxygen supply pressure drops below ~280 kPa?", answer: "An audible low-oxygen-pressure warning whistle or alarm is triggered, the oxygen failure protection device (fail-safe valve) shuts off Nitrous Oxide and other gases to prevent hypoxic delivery, and the operator must switch to cylinder back-up supply." },
       schematics: ["gas-system"], gasZone: "intermediate",
-      position: { x: -0.18, y: 0.86, z: 0.3 }
+      position: { x: -0.14, y: 1.05, z: 0.24 }
     },
     {
-      id: "gauge-cylinder", name: "Cylinder Pressure Gauges", view: "front", system: "pressure",
-      summary: "Display the pressure remaining in the back-up reserve cylinders.",
-      function: "Used to confirm a reserve gas supply is present and adequate, and to monitor cylinder use if the machine is running from cylinder supply.",
-      safety: "Check at the start of every list — a cylinder found empty only when the pipeline fails intraoperatively is a preventable critical incident.",
-      viva: null,
+      id: "gauge-cylinder", name: "Cylinder Pressure Gauges (High Pressure)", view: "front", system: "pressure",
+      summary: "High-pressure dial gauges displaying the pressure of the back-up gas cylinders mounted on the machine yokes.",
+      function: "Displays reserve cylinder contents before and during clinical use. For Oxygen (compressed gas), pressure falls linearly from ~13,700 kPa (137 bar) to 0 kPa as volume is consumed (Boyle's Law). For N2O (liquefied gas), pressure remains at ~5100 kPa until all liquid has vaporised.",
+      safety: "Check cylinder pressures at the start of every operating list, then leave cylinder valves TURNED OFF during normal pipeline use so that a depleted reserve cylinder does not go unnoticed.",
+      viva: { prompt: "Why does an O2 cylinder pressure gauge reflect remaining volume linearly, whereas an N2O gauge does not?", answer: "Oxygen remains entirely in gaseous phase below its critical temperature (-118°C), so pressure is directly proportional to volume. Nitrous oxide has a critical temperature of 36.4°C and exists as a liquid-vapour equilibrium at room temperature; its gauge reads vapour pressure (~5100 kPa) until all liquid is exhausted." },
       schematics: ["gas-system"], gasZone: "high",
-      position: { x: 0.18, y: 0.86, z: 0.3 }
+      position: { x: -0.14, y: 0.95, z: 0.24 }
     },
     {
-      id: "paw-gauge", name: "PAW Gauge", view: "front", system: "breathing",
-      summary: "Displays proximal/peak airway pressure (PAW) measured in the breathing circuit near the patient connection.",
-      function: "Continuous PAW monitoring helps detect circuit disconnection (sudden fall), obstruction, breath-stacking, or excessive pressure (sudden rise) during ventilation. This is part of the breathing system, not the low-pressure fresh-gas supply chain.",
-      safety: "A high-pressure alarm threshold should always be set appropriately for the patient — both for detecting barotrauma risk and for detecting a stuck APL/scavenging pathway.",
-      viva: { prompt: "Name two circuit problems that a sudden change in PAW can reveal, one for a sudden fall and one for a sudden rise.", answer: "A sudden fall in PAW suggests circuit disconnection or a major leak; a sudden rise suggests obstruction, breath-stacking, or a blocked/misconfigured exhaust (APL valve or scavenging) pathway." },
-      position: { x: 0.05, y: 0.95, z: 0.29 }
-    },
-    {
-      id: "system-switch", name: "System Switch", view: "front", system: "power",
-      summary: "The master on/off control for the workstation's pneumatic and/or electronic systems.",
-      function: "Powers up the workstation's electronic displays, ventilator, and monitoring; on some workstations also arms pneumatic subsystems.",
-      safety: "Should be part of a documented start-up/pre-use checklist sequence (e.g. following AAGBI/WFSA-style checks), not simply flicked on assuming all subsystems self-verify silently.",
-      viva: null,
-      position: { x: -0.34, y: 0.95, z: 0.25 }
-    },
-    {
-      id: "acgo", name: "ACGO Port & Switch", view: "front", system: "auxOutlet",
-      summary: "Auxiliary Common Gas Outlet and its selector switch, used to deliver fresh gas to a system other than the machine's integrated breathing circuit (e.g. a separate circuit, Mapleson system, or resuscitation device).",
-      function: "Selecting the ACGO diverts fresh gas away from the ventilator/breathing circuit path to the auxiliary outlet; some workstations mechanically disable the ventilator while ACGO is selected to prevent it cycling against a closed or absent circuit.",
-      safety: "Always confirm which outlet (integrated circuit vs ACGO) is active before connecting a breathing system — using the wrong outlet can mean gas is delivered nowhere useful, or the ventilator cycles with no circuit attached.",
-      viva: { prompt: "Why do many workstations automatically disable the ventilator when the ACGO is selected?", answer: "Because gas flow is diverted away from the integrated breathing circuit to the auxiliary outlet — if the ventilator continued cycling against the now-disconnected circuit path, it could cycle against a closed system or deliver no ventilation at all, so disabling it removes that hazard." },
-      position: { x: 0.32, y: 0.95, z: 0.26 }
-    },
-    {
-      id: "selectatec", name: "Selectatec Manifold & Vaporizers", view: "front", system: "flowControl",
-      summary: "The mounting rail and interlock manifold holding the anaesthetic vaporizer(s) in the fresh gas pathway.",
-      function: "The interlock mechanism ensures only one vaporizer can be switched 'on' at a time, and that a vaporizer cannot be removed while switched on, preventing simultaneous or accidental delivery of two volatile agents.",
-      safety: "Check vaporizers are correctly seated and locked, filled with the correct agent, and that the interlock prevents more than one being active — this is a standard pre-use check item.",
-      viva: { prompt: "What does the Selectatec-type interlock mechanism specifically prevent?", answer: "It prevents more than one vaporizer being switched on simultaneously, and prevents a vaporizer being removed from the manifold while it is switched on — protecting against delivery of two agents at once or an open, unmounted vaporizer leaking agent." },
+      id: "selectatec", name: "Vaporizers (Sevoflurane & Isoflurane / Selectatec)", view: "front", system: "flowControl",
+      summary: "Temperature-compensated, concentration-calibrated volatile agent vaporizers mounted on an interlocking Selectatec manifold.",
+      function: "Delivers a precise, calibrated percentage of volatile anaesthetic (Sevoflurane [yellow] or Isoflurane [purple]) into the fresh gas stream. Uses variable bypass geometry where fresh gas splits between a bypass channel and a temperature-compensated vaporizing chamber. The Selectatec interlock system physically prevents turning on more than one vaporizer simultaneously.",
+      safety: "Only use keyed, agent-specific filler adapters to eliminate wrong-agent filling errors. Always check liquid level in the sight glass before inducing anaesthesia.",
+      viva: { prompt: "How does a modern variable-bypass vaporizer maintain a constant output concentration across varying theatre temperatures?", answer: "It incorporates a temperature-compensating valve (bimetallic strip or expanding bellows) that automatically expands or contracts: as temperature drops (and vapour pressure falls), it routes a higher proportion of gas through the vaporizing chamber; as temperature rises, more gas is diverted through the bypass." },
       schematics: ["gas-system"], gasZone: "low",
-      position: { x: 0.0, y: 0.78, z: 0.3 }
+      position: { x: 0.20, y: 0.98, z: 0.24 }
     },
     {
-      id: "o2-flush", name: "Oxygen Flush", view: "front", system: "flowControl",
-      summary: "A control that delivers high-flow (commonly 35–75 L/min) O2 directly to the common gas outlet, bypassing the flowmeters and vaporizer(s).",
-      function: "Used to rapidly fill/flush the breathing circuit with pure O2, e.g. before induction or to quickly increase circuit volume/FiO2. It taps the intermediate-pressure O2 supply directly, upstream of the flow-control valves and vaporizer(s).",
-      safety: "Because O2 flush bypasses the vaporizer, it delivers no anaesthetic agent — do not use it as a substitute for adequate anaesthetic depth, and be aware that flushing at high fresh gas flow can transiently increase circuit pressure if used with the circuit occluded.",
-      viva: { prompt: "Why does using the oxygen flush not affect anaesthetic depth?", answer: "The O2 flush routes gas directly to the common gas outlet, bypassing both the flow-control/vaporizer pathway — so it delivers 100% O2 with no volatile agent, diluting rather than deepening anaesthesia if used carelessly." },
+      id: "vent-display", name: "Ventilator Display & Waveform Screen", view: "front", system: "ventilator",
+      summary: "Integrated ventilator control screen showing ventilation modes, parameter settings, and respiratory waveforms.",
+      function: "Displays ventilator operating mode (VCV, PCV, SIMV, PSVPro, Manual/Spontaneous) alongside continuous scalar waveforms (Airway Pressure vs Time, Flow vs Time) and spirometry loops (Pressure-Volume, Flow-Volume). Allows precision adjustment of VT, RR, PEEP, I:E ratio, and pressure limits.",
+      safety: "Ensure high and low airway pressure alarm limits (Pmax and Pmin) are set correctly for every patient to guard against barotrauma and circuit disconnection.",
+      viva: { prompt: "In Volume-Controlled Ventilation (VCV), what does a gradual upward climb in peak inspiratory pressure (PIP) with stable plateau pressure indicate?", answer: "An increase in airway resistance (e.g. bronchospasm, secretions, kinked ETT), because airway resistance affects dynamic peak pressure without altering static compliance (plateau pressure)." },
+      position: { x: 0.20, y: 1.35, z: 0.20 }
+    },
+    {
+      id: "paw-gauge", name: "Airway Pressure Gauge (PAW Gauge)", view: "front", system: "breathing",
+      summary: "Mechanical analog dial gauge indicating real-time airway pressure in the patient breathing circuit (-10 to +100 cmH2O).",
+      function: "Provides an immediate mechanical measurement of circuit pressure, remaining functional even during total electrical power failure. Essential for monitoring peak inspiratory pressure, positive end-expiratory pressure (PEEP), and confirming circuit depressurisation during expiration.",
+      safety: "A sudden drop to zero cmH2O indicates circuit disconnection or large leak; a sustained high pressure indicates APL valve obstruction, ventilator malfunction, or patient coughing/bucking.",
+      viva: { prompt: "Why is having a mechanical analog airway pressure gauge essential even when digital electronic pressure waveforms are present?", answer: "Because it operates purely pneumatically without mains or battery power, ensuring that circuit overpressure or complete loss of pressure can be immediately detected during an electrical blackout or electronic monitor failure." },
+      position: { x: -0.06, y: 0.83, z: 0.26 }
+    },
+    {
+      id: "system-switch", name: "System Power Switch", view: "front", system: "power",
+      summary: "Master control switch powering electrical monitoring, electronic ventilator, and pneumatic safety subsystems.",
+      function: "Engages machine electronics, powers displays, arms the low-oxygen supply alarm, and opens the master pneumatic shutoff valve. Turning off initiates a controlled shutdown sequence.",
+      safety: "Must be part of the standardized pre-use checklist sequence, confirming that battery backup test and self-diagnostic routines complete without error.",
+      viva: null,
+      position: { x: -0.18, y: 0.83, z: 0.26 }
+    },
+    {
+      id: "acgo", name: "ACGO (Auxiliary Common Gas Outlet) & Selector", view: "front", system: "auxOutlet",
+      summary: "Dedicated 22mm male / 15mm female outlet and selector switch for directing fresh gas to external non-circle circuits.",
+      function: "Diverts the metered fresh gas flow away from the integrated circle system to an external circuit such as a Mapleson F (Jackson-Rees) for paediatric anaesthesia, a Bain circuit, or a manual resuscitation bag.",
+      safety: "When ACGO is selected, the mechanical ventilator is automatically disabled or isolated to prevent cycling against an unattached circuit. Always confirm switch position before inducing anaesthesia.",
+      viva: { prompt: "Why do modern anaesthesia machines interlock the ventilator when ACGO is selected?", answer: "To prevent the mechanical ventilator from cycling against a disconnected circuit or closed system, since fresh gas is entirely diverted to the auxiliary outlet instead of the internal absorber circuit." },
+      position: { x: -0.08, y: 0.76, z: 0.33 }
+    },
+    {
+      id: "o2-flush", name: "Oxygen Flush Button (O2 Flush, 35–75 L/min)", view: "front", system: "auxOutlet",
+      summary: "Emergency high-flow push button delivering unmetered 100% pure oxygen directly to the common gas outlet at 35–75 L/min.",
+      function: "Provides rapid flushing and refilling of the breathing circuit with pure Oxygen. Taps the intermediate-pressure O2 line (~400 kPa) upstream of the flowmeters and vaporizers, delivering 35–75 L/min directly to the circuit.",
+      safety: "NEVER press the O2 flush button during the inspiratory phase of mechanical ventilation: the combination of high flow (up to 1250 mL/sec) and a closed ventilator exhalation valve can generate extreme circuit pressures, causing severe pulmonary barotrauma. Also note that flushing dilutes volatile anaesthetic agent, potentially lightening anaesthetic depth.",
+      viva: { prompt: "Why is activating the oxygen flush during the inspiratory phase of mechanical ventilation hazardous?", answer: "During inspiration, the ventilator exhalation valve is closed. Delivering 35–75 L/min (approx. 600–1200 mL/s) of gas into a closed system exceeds the venting capacity, transmitting extreme pressure directly to the patient's lungs and causing pneumothorax or alveolar rupture." },
       schematics: ["gas-system"], gasZone: "intermediate",
-      position: { x: -0.28, y: 0.82, z: 0.3 }
+      position: { x: 0.04, y: 0.76, z: 0.33 }
     },
     {
-      id: "breathing-circuit", name: "Breathing Circuit (with CO2 bypass)", view: "front", system: "breathing",
-      summary: "The patient-side circuit that carries inspiratory and expiratory gas, including a CO2 absorber bypass pathway.",
-      function: "In circle-system workstations, exhaled gas normally passes through a CO2 absorber (soda lime or similar) so it can be rebreathed; a bypass allows the absorber to be taken out of the gas path (e.g. for absorber changes) without breaking the circuit.",
-      safety: "Monitor inspired/end-tidal CO2 continuously — a bypassed or exhausted absorber allows CO2 rebreathing, which will present as a rising inspired CO2 on capnography before it is otherwise obvious.",
-      viva: { prompt: "What is the earliest reliable sign that CO2 absorption has failed or been bypassed?", answer: "A rise in inspired CO2 (the baseline of the capnography trace failing to return to zero) — this precedes clinical signs and is the reason continuous capnography is a mandatory monitoring standard." },
-      position: { x: 0.0, y: 0.9, z: 0.35 }
+      id: "breathing-circuit", name: "CO2 Absorber Canister (Soda Lime)", view: "front", system: "breathing",
+      summary: "Rebreathing carbon dioxide absorption canister containing soda lime, with transparent housing and CO2 bypass.",
+      function: "Removes expired CO2 by chemical reaction: CO2 + H2O -> H2CO3; H2CO3 + 2NaOH -> Na2CO3 + 2H2O + heat; Na2CO3 + Ca(OH)2 -> CaCO3 + 2NaOH. Contains ethyl violet pH indicator which turns purple when soda lime is exhausted. The CO2 bypass feature allows canister replacement during surgery without opening the circuit to air.",
+      safety: "Monitor inspired CO2 (FiCO2) continuously on capnography. An elevation of baseline capnography above 2–3 mmHg indicates absorber exhaustion or valve channeling.",
+      viva: { prompt: "What chemical reaction occurs in soda lime, and what causes the ethyl violet indicator to turn purple?", answer: "CO2 reacts with water to form carbonic acid, which is neutralized by sodium/calcium hydroxides into calcium carbonate, releasing water and heat. As hydroxide is consumed, pH falls below 10.3, causing the colorless ethyl violet dye to convert to its purple quinoid form." },
+      position: { x: -0.38, y: 0.82, z: 0.16 }
     },
     {
-      id: "vent-display", name: "Ventilator Display", view: "front", system: "ventilator",
-      summary: "Shows the ventilator's set parameters and the patient's monitored respiratory values.",
-      function: "Displays settings such as tidal volume, respiratory rate, PEEP and FiO2, and monitored values such as measured PAW, minute volume and, on integrated systems, capnography.",
-      safety: "Confirm ventilator settings against the intended plan at the start of ventilation and after any mode change — an unnoticed unit or mode mismatch is a recognised source of ventilation incidents.",
+      id: "apl-valve", name: "APL Valve (Adjustable Pressure Limiting) & Bag Mount", view: "front", system: "breathing",
+      summary: "Spring-loaded pressure relief valve calibrated from 0 to 70 cmH2O and mount for the 2-litre reservoir bag.",
+      function: "Used during manual and spontaneous breathing to release excess gas from the circuit into the scavenging system. Clockwise rotation increases opening pressure (for manual bag-assisted ventilation); fully anticlockwise leaves it open (<1 cmH2O) for spontaneous breathing.",
+      safety: "Must be turned FULLY OPEN before switching a patient to spontaneous breathing, otherwise high pressure accumulates in the circuit, impairing venous return and risking barotrauma.",
+      viva: { prompt: "What is the consequence of forgetting to open the APL valve when transitioning a patient from manual ventilation to spontaneous breathing?", answer: "Excess fresh gas cannot escape and rapidly pressurizes the circuit, causing continuous positive airway pressure that impedes venous return to the right atrium (causing severe hypotension) and risks pulmonary barotrauma." },
+      position: { x: -0.38, y: 1.00, z: 0.16 }
+    },
+    {
+      id: "circuit-ports", name: "Patient Breathing Circuit (Inspiratory & Expiratory Limbs)", view: "front", system: "breathing",
+      summary: "Dual 22mm conical ports for inspiratory and expiratory corrugated limbs with unidirectional flutter valves.",
+      function: "Connects the patient's Y-piece and endotracheal tube to the circle system. Unidirectional disk/dome valves ensure gas travels in one direction: through the absorber on expiration and from the fresh gas inlet on inspiration.",
+      safety: "Incompetence or sticking of unidirectional valves leads to massive rebreathing of expired gas, visible as a rising baseline on the capnograph.",
       viva: null,
-      position: { x: 0.0, y: 1.0, z: 0.15 }
+      position: { x: -0.42, y: 0.70, z: 0.22 }
     },
     {
-      id: "usb-rs232", name: "USB / Software-Update & RS-232 Area", view: "front", system: "power",
-      summary: "Connectivity area used for software/firmware updates and for interfacing monitored data (RS-232 serial or USB) to external systems.",
-      function: "Allows biomedical/service engineers to update device software and allows the workstation to export monitored parameters to a hospital data or anaesthesia information management system (AIMS).",
-      safety: "Software updates and data interfacing are a servicing function, not a routine anaesthetist task — this area should not be accessed intraoperatively.",
+      id: "storage", name: "Storage Drawers (Airway & Emergency Equipment)", view: "front", system: "storage",
+      summary: "Integrated sliding storage drawers for airway consumables, laryngoscopes, tracheal tubes, and circuit adapters.",
+      function: "Houses essential consumables organized by tier: top drawer for immediate intubation gear (laryngoscopes, blades, video laryngoscopes, endotracheal tubes, stylets), lower drawers for supraglottic airways, suction catheters, and backup circuits.",
+      safety: "Drawers must be kept closed during machine movement to prevent tipping or catching on doors and pendants.",
       viva: null,
-      position: { x: 0.12, y: 0.97, z: 0.22 }
+      position: { x: 0.00, y: 0.45, z: 0.26 }
     },
     {
-      id: "handle", name: "Ergonomic Handle", view: "front", system: "mobility",
-      summary: "A handle designed for manoeuvring the workstation between locations.",
-      function: "Allows safe, controlled repositioning of the (often heavy, gas-cylinder-laden) machine without pulling on hoses, cables or the monitor arm.",
-      safety: "Disconnect or account for trailing hoses/cables before moving the machine, and move slowly — cylinders and integrated monitors add significant mass and a raised centre of gravity.",
+      id: "casters", name: "Wheel Casters & Individual Brake Levers", view: "front", system: "mobility",
+      summary: "Antistatic, large-diameter wheels with foot-operated locking levers on the front casters.",
+      function: "Enables smooth mobility across theatre floors. Brakes firmly lock both rotation and rolling swivel.",
+      safety: "Always lock the caster brakes once the workstation is positioned before induction to prevent accidental machine movement and circuit disconnect.",
       viva: null,
-      position: { x: 0.0, y: 0.55, z: 0.36 }
+      position: { x: 0.25, y: 0.06, z: 0.28 }
     },
     {
-      id: "casters", name: "Wheel Caster & Brake", view: "front", system: "mobility",
-      summary: "Mobility wheels with locking brakes at the base of the machine.",
-      function: "Allow the machine to be moved and then locked securely in position during use.",
-      safety: "Always engage brakes before use — an unlocked machine can roll during patient positioning or if leant on, risking line/circuit disconnection or the machine itself tipping.",
+      id: "flip-shelf", name: "Flip-up Auxiliary Worktop Shelf", view: "front", system: "storage",
+      summary: "Hinged side work surface providing additional space for drug trays, documentation, or airway devices.",
+      function: "Folds out horizontally when required and locks securely into position; folds flat against the right machine column when stowed.",
+      safety: "Observe maximum rated weight limit (typically 12 kg); never use the shelf as a handle to move the workstation.",
       viva: null,
-      position: { x: 0.22, y: 0.08, z: 0.3 }
+      position: { x: 0.36, y: 0.76, z: 0.12 }
     },
     {
-      id: "storage", name: "Storage Space", view: "front", system: "storage",
-      summary: "Drawer or shelf space built into the machine frame for consumables and accessories.",
-      function: "Keeps commonly needed airway/circuit consumables and accessories within immediate reach during a case.",
-      safety: "Avoid overloading drawers, which can affect the machine's stability, and keep contents organised so emergency equipment (e.g. a spare circuit or airway device) can be found without delay.",
+      id: "handle", name: "Ergonomic Manoeuvring Handle", view: "front", system: "mobility",
+      summary: "Heavy-duty tubular grab handle running along the right pillar for controlled repositioning.",
+      function: "Allows two-handed steering and transport of the workstation without pushing on delicate monitors, vaporizers, or flowmeters.",
+      safety: "Always verify all pipeline hoses, suction tubing, and power cables are detached or cleared before moving the workstation.",
       viva: null,
-      position: { x: 0.0, y: 0.35, z: 0.34 }
+      position: { x: 0.32, y: 1.15, z: 0.16 }
     },
     {
-      id: "aux-power", name: "Auxiliary Power & Switch", view: "rear", system: "power",
-      summary: "A backup electrical power supply (internal battery) and its associated switch/indicator.",
-      function: "Maintains power to the ventilator, monitor and displays for a limited time if mains electrical power is lost, so ventilation and monitoring are not immediately interrupted.",
-      safety: "Battery back-up has a finite runtime — know your machine's rated back-up duration and treat a mains power failure as time-critical, not as a non-event.",
-      viva: { prompt: "What should prompt concern immediately after a mains power failure on a workstation with battery back-up?", answer: "That battery back-up is time-limited — ventilation/monitoring continuing on battery is not a reason to delay restoring mains power or escalating, since the back-up will eventually be exhausted." },
-      position: { x: -0.28, y: 0.95, z: -0.38 }
-    },
-    {
-      id: "flip-shelf", name: "Flip-up Shelf", view: "rear", system: "storage",
-      summary: "A hinged worktop surface that can be flipped up out of the way or down for use as a working surface.",
-      function: "Provides a temporary flat surface (e.g. for a laryngoscope, drugs tray, or notes) close to the machine without permanently occupying space.",
-      safety: "Do not load beyond the manufacturer's rated weight, and ensure it is fully latched down before placing equipment on it.",
+      id: "usb-rs232", name: "USB & RS-232 Data Interface Ports", view: "front", system: "power",
+      summary: "Biomedical service ports and data export interfaces for electronic anaesthesia record-keeping (AIMS/EMR).",
+      function: "Provides high-speed telemetry export of measured ventilation parameters, airway pressures, and gas concentrations to hospital information systems.",
+      safety: "Only hospital-approved medical-grade IT equipment may be connected to prevent ground-fault electrical leakage.",
       viva: null,
-      position: { x: 0.3, y: 0.6, z: -0.35 }
+      position: { x: 0.25, y: 1.18, z: 0.21 }
     },
     {
-      id: "task-light", name: "Task Light", view: "front", system: "mobility",
-      summary: "A light fitted to the machine to illuminate the working area.",
-      function: "Improves visibility of the airway/working field, particularly useful in a darkened theatre or during out-of-hours work.",
-      safety: "Check it is functional as part of the pre-use check if your practice relies on it for airway work.",
+      id: "task-light", name: "Task Light / Canopy Illuminator", view: "front", system: "mobility",
+      summary: "Under-canopy LED illumination bar providing shadow-free lighting of the rotameter bank and vaporizers.",
+      function: "Illuminates the workstation controls and drug preparation surface during darkened theatre conditions (e.g. laparoscopic, robotic, or ophthalmic surgery).",
+      safety: "Verify operational state prior to cases requiring darkened theatre lighting.",
       viva: null,
-      position: { x: 0.0, y: 1.3, z: 0.15 }
+      position: { x: 0.00, y: 1.54, z: 0.20 }
+    },
+    {
+      id: "rear-cylinders", name: "Reserve Gas Cylinders (O2, N2O, Air - High Pressure)", view: "rear", system: "gasSupply",
+      summary: "Back-up high-pressure medical gas cylinders mounted vertically on the rear carriage of the workstation.",
+      function: "Supplies emergency back-up gas if hospital piped gas fails. In standard configurations carries Size E cylinders: Oxygen (black with white shoulders [UK] or solid green [US], 13,700 kPa), Nitrous Oxide (French blue, 5100 kPa), and Medical Air (white with black/white quarters [UK] or yellow [US], 13,700 kPa).",
+      safety: "Always ensure cylinder valves are opened to verify pressure at the start of every operating session, then CLOSED during pipeline use to prevent accidental depletion of reserves.",
+      viva: { prompt: "Why must backup cylinder valves be left closed during routine pipeline gas operation?", answer: "Because if the pipeline pressure fluctuates below cylinder regulator pressure (approx. 400 kPa), the cylinder will silently supply gas until empty, leaving no backup supply when an actual pipeline failure occurs." },
+      schematics: ["cylinder-connection"], gasZone: "high",
+      position: { x: 0.00, y: 0.60, z: -0.25 }
+    },
+    {
+      id: "cylinder-yoke", name: "Cylinder Yokes & Pin-Index Safety System (PISS)", view: "rear", system: "gasSupply",
+      summary: "Clamping yokes with Bodok seals, check valves, and gas-specific indexing pins (PISS).",
+      function: "Secures each cylinder flush against the machine manifold. Uses the Pin-Index Safety System (PISS) with two stainless steel pins matching holes on the cylinder valve: O2 is pin position 2-5, N2O is 3-5, Air is 1-5. Internal floating check valves prevent gas escaping if one cylinder of a pair is removed.",
+      safety: "Always use a fresh Bodok seal (neoprene washer with metal rim) to prevent high-pressure gas leaks. Never use more than one washer, which could bypass the pin-index mechanism.",
+      viva: { prompt: "What are the Pin-Index Safety System (PISS) pin positions for Oxygen, Nitrous Oxide, and Medical Air?", answer: "Oxygen: 2 and 5; Nitrous Oxide: 3 and 5; Medical Air: 1 and 5 (numbered 1 through 6 on a 9/16-inch radius arc below the gas port)." },
+      schematics: ["cylinder-connection", "yoke-check-valve"], gasZone: "high",
+      position: { x: 0.00, y: 0.98, z: -0.24 }
+    },
+    {
+      id: "pipeline-conn", name: "Pipeline Gas Inlets (Schrader / NIST Connections)", view: "rear", system: "gasSupply",
+      summary: "Gas-specific pipeline inlet assemblies with non-interchangeable probe connections, filters, and check valves.",
+      function: "Connects the workstation to hospital piped wall or pendant supply hoses. Uses diameter-indexed (DISS) or non-interchangeable screw-threaded (NIST) connectors, or British Standard Schrader quick-connect probes. Contains 100-micron filters and one-way check valves to prevent gas backflow into the pipeline.",
+      safety: "Non-interchangeable gas connectors must never be modified or forced. Check hoses for colour-coding, gas designation, and expiry/test date.",
+      viva: { prompt: "What two safety mechanisms are built into every pipeline gas inlet on the back of an anaesthesia machine?", answer: "1. A gas-specific mechanical indexing geometry (NIST/DISS/Schrader) preventing connection of the wrong gas hose. 2. An internal one-way check valve preventing backflow of gas from a cylinder or other pipeline into the hospital pipe network." },
+      schematics: ["gas-system"], gasZone: "intermediate",
+      position: { x: -0.22, y: 1.25, z: -0.24 }
+    },
+    {
+      id: "aux-power", name: "Auxiliary Electrical Outlets & Circuit Breakers", view: "rear", system: "power",
+      summary: "Rear electrical panel with multiple isolated power sockets, individual circuit breakers, and battery backup.",
+      function: "Powers auxiliary monitors, syringe drivers, and warming blankets from the machine's mains line. Includes an internal uninterruptible power supply (UPS battery) that provides a minimum of 30–90 minutes of emergency electrical power to the ventilator and displays if mains power fails.",
+      safety: "Never plug high-current inductive heating devices (e.g. forced-air warming units) into auxiliary outlets unless explicitly rated, as this can trip the master machine breaker.",
+      viva: { prompt: "What components of the anaesthesia workstation are powered by the internal backup battery during a mains electrical failure?", answer: "The essential life-support components: the electronic ventilator, the ventilator display, airway pressure monitoring, and electronic fresh gas flow sensors. High-draw auxiliary sockets and external devices are generally not battery-backed." },
+      position: { x: 0.00, y: 1.48, z: -0.24 }
+    },
+    {
+      id: "scavenging", name: "Scavenging System (AGSS - Active Gas Scavenging)", view: "rear", system: "breathing",
+      summary: "Anaesthetic Gas Scavenging System receiver collecting waste gas from the APL valve and ventilator exhaust.",
+      function: "Safely removes expired and vented volatile anaesthetic agents from the operating theatre. Connects via dedicated 30mm conical fittings (distinguishing it from the 22mm patient circuit). Active systems incorporate an air break receiver with a bobbin or float flow indicator (25–50 L/min extraction rate) and positive/negative pressure relief valves.",
+      safety: "A blocked scavenging pathway causes circuit overpressurization and fatal barotrauma; a disconnected system leaks potent halogenated agents into the theatre environment.",
+      viva: { prompt: "Why is the connection between the breathing circuit/APL valve and the scavenging receiver 30 mm, unlike standard 22 mm circuit connections?", answer: "To prevent accidental cross-connection between the patient breathing circuit (22 mm male/15 mm female) and the scavenging exhaust (30 mm male), ensuring that breathing hoses cannot be mistakenly connected to the waste suction system." },
+      position: { x: -0.38, y: 0.60, z: -0.05 }
+    },
+    {
+      id: "hose-hooks", name: "Hose & Power Cable Storage Brackets", view: "rear", system: "storage",
+      summary: "Rear brackets for securing and coiling medical gas pipeline hoses and electrical mains cords during transport.",
+      function: "Keeps bulky gas hoses (O2, N2O, Air) and mains cable neatly stowed off the floor, eliminating tripping hazards and protecting hose fittings from damage.",
+      safety: "Inspect coiled hoses periodically for kinks, abrasion, or stress fractures near the connector crimps.",
+      viva: null,
+      position: { x: 0.16, y: 1.28, z: -0.22 }
     }
   ],
 
@@ -279,7 +303,7 @@ window.VentilatorData = {
     {
       id: "breathing", label: "Breathing System & Scavenging", range: "Patient-side circuit and waste-gas removal",
       explain: "Carries fresh gas to and from the patient and removes excess/expired gas. This is a distinct system from the low-pressure fresh-gas supply above — it is not itself classified as \"low pressure\" in the pneumatic sense, even though it receives gas from the common gas outlet.",
-      componentIds: ["breathing-circuit", "paw-gauge", "scavenging"],
+      componentIds: ["breathing-circuit", "apl-valve", "circuit-ports", "paw-gauge", "scavenging"],
       concepts: [],
       schematic: null
     }
