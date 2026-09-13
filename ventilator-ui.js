@@ -132,6 +132,27 @@ export function initVentilatorPage() {
       <p>${esc(comp.function)}</p>
       ${comp.safety ? `<h4>Safety Note</h4><p class="vent-info-safety">${esc(comp.safety)}</p>` : ""}
       ${comp.viva ? `<h4>Viva Point</h4><p class="vent-info-viva"><strong>Q:</strong> ${esc(comp.viva.prompt)}</p><details><summary>Reveal answer</summary><p>${esc(comp.viva.answer)}</p></details>` : ""}
+      ${comp.video ? `
+        <div class="vent-info-video-card">
+          <div class="vent-info-video-header">
+            <span class="vent-video-tag">🎬 EDUCATIONAL VIDEO</span>
+            <span class="vent-video-title">${esc(comp.video.title || "Video Demonstration")}</span>
+          </div>
+          ${comp.video.src ? `
+            <div class="vent-video-wrap">
+              <video class="vent-info-video" controls playsinline preload="metadata" muted>
+                <source src="${esc(comp.video.src)}" type="video/mp4">
+                Your browser does not support HTML5 video playback.
+              </video>
+            </div>
+          ` : ""}
+          ${comp.video.externalUrl ? `
+            <a href="${esc(comp.video.externalUrl)}" target="_blank" rel="noopener" class="vent-video-ext-link">
+              <span>↗</span> ${esc(comp.video.externalLabel || "Watch on Instagram Reel")}
+            </a>
+          ` : ""}
+        </div>
+      ` : ""}
       ${(comp.schematics || []).map(sid => `<button class="btn-hud vent-schematic-btn" data-open-schematic="${esc(sid)}">📎 ${esc(SCHEMATICS[sid]?.title.split(" — ")[0] || "Reference Diagram")}</button>`).join("")}
     `;
     document.getElementById("ventInfoClose").addEventListener("click", () => {

@@ -256,10 +256,55 @@
   .vent-zoom-slider { -webkit-appearance: slider-vertical; appearance: slider-vertical; }
 }
 
+.vent-stage-legend {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 22;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(10, 16, 32, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 6px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  pointer-events: none;
+  box-shadow: var(--shadow-sm);
+}
+.vent-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.vent-legend-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.vent-legend-dot-hotspot {
+  background: #38bdf8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+}
+.vent-legend-dot-active {
+  background: #fbbf24;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.8);
+}
+.vent-legend-icon {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
 @media (max-width: 860px) {
-  .vent-zoom-bar { left: 8px; bottom: 10px; padding: 6px 5px; }
+  .vent-zoom-bar { left: 8px; bottom: 44px; padding: 6px 5px; }
   .vent-zoom-slider { height: 68px; }
   .vent-rotate-indicator { font-size: 0.64rem; padding: 4px 9px; left: 8px; top: 8px; }
+  .vent-stage-legend { left: 8px; bottom: 8px; gap: 8px; padding: 4px 10px; font-size: 0.62rem; }
 }
 
 .vent-calibrate-banner {
@@ -321,6 +366,66 @@
 .vent-info-viva { font-style: italic; }
 .vent-info-panel details { margin-top: 6px; }
 .vent-info-panel summary { cursor: pointer; color: var(--accent-cyan); font-size: 0.82rem; }
+
+/* ---- Educational video card ---- */
+.vent-info-video-card {
+  margin-top: 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-md);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+}
+.vent-info-video-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.vent-video-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+.vent-video-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+.vent-video-wrap {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 16 / 9;
+}
+.vent-info-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.vent-video-ext-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-cyan);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--soft-accent);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.vent-video-ext-link:hover {
+  background: rgba(56, 189, 248, 0.22);
+  color: #fff;
+}
 
 /* ---- Panels below stage ---- */
 .vent-panels { margin-top: 4px; }

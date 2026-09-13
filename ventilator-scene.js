@@ -126,9 +126,11 @@ export function createWorkstationScene(container, opts) {
   camera.position.copy(defaultCamPos);
   let fitDistance = 2.6;
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.15;
   container.appendChild(renderer.domElement);
 
   const controls = new OrbitControls(camera, renderer.domElement);
@@ -161,17 +163,34 @@ export function createWorkstationScene(container, opts) {
   // on this element, consistent with zoom being zoom-bar-only.
   renderer.domElement.style.touchAction = "pan-y";
 
-  scene.add(new THREE.HemisphereLight(0xdbeafe, 0x0f172a, 0.9));
-  const key = new THREE.DirectionalLight(0xffffff, 1.6);
-  key.position.set(2.5, 4, 2.5);
+  // Physically balanced multi-point studio lighting for clean clinical workstation presentation
+  const hemiLight = new THREE.HemisphereLight(0xe0f2fe, 0x0a101f, 0.85);
+  scene.add(hemiLight);
+
+  // Key light: crisp warm-white directional illumination from upper-front-right
+  const key = new THREE.DirectionalLight(0xffffff, 1.75);
+  key.position.set(3.0, 4.5, 3.5);
   scene.add(key);
-  const rim = new THREE.DirectionalLight(0x38bdf8, 0.5);
-  rim.position.set(-3, 1.5, -2);
+
+  // Soft fill light: neutral cool-grey fill from front-left to soften harsh shadows on breathing circuit
+  const fill = new THREE.DirectionalLight(0x94a3b8, 0.95);
+  fill.position.set(-3.5, 2.5, 2.5);
+  scene.add(fill);
+
+  // Rim / edge accent: clinical cyan rim light separating dark silhouette from void background
+  const rim = new THREE.DirectionalLight(0x38bdf8, 0.85);
+  rim.position.set(-2.5, 3.0, -3.5);
   scene.add(rim);
 
+  // Overhead downlight: gentle soft illumination on monitor arm, top shelf, and flowmeter bank
+  const topLight = new THREE.DirectionalLight(0xffffff, 0.45);
+  topLight.position.set(0, 4.5, 0);
+  scene.add(topLight);
+
+  // Ground pedestal / shadow catcher circle
   const floor = new THREE.Mesh(
-    new THREE.CircleGeometry(2.6, 48),
-    new THREE.MeshStandardMaterial({ color: 0x0b1120, roughness: 0.95, metalness: 0 })
+    new THREE.CircleGeometry(2.8, 64),
+    new THREE.MeshStandardMaterial({ color: 0x070c18, roughness: 0.95, metalness: 0.05 })
   );
   floor.rotation.x = -Math.PI / 2;
   floor.receiveShadow = false;
@@ -330,6 +349,21 @@ export function createWorkstationScene(container, opts) {
         modelUrl,
         gltf => {
           const root = gltf.scene || gltf.scenes[0];
+          const maxAniso = renderer.capabilities.getMaxAnisotropy ? renderer.capabilities.getMaxAnisotropy() : 8;
+          root.traverse(child => {
+            if (child.isMesh && child.material) {
+              const mat = child.material;
+              if (mat.map) {
+                mat.map.colorSpace = THREE.SRGBColorSpace;
+                mat.map.anisotropy = Math.min(maxAniso, 8);
+              }
+              if (mat.roughnessMap) mat.roughnessMap.anisotropy = Math.min(maxAniso, 4);
+              if (mat.metalnessMap) mat.metalnessMap.anisotropy = Math.min(maxAniso, 4);
+              if (mat.normalMap) mat.normalMap.anisotropy = Math.min(maxAniso, 4);
+              // Ensure plastics and metals have realistic specular response without washing out
+              mat.envMapIntensity = 0.9;
+            }
+          });
           addBrandConcealment(root);
           frameModel(root);
           modelGroup.add(root);

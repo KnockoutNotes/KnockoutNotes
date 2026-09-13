@@ -90,6 +90,12 @@ window.VentilatorData = {
       safety: "Only use keyed, agent-specific filler adapters to eliminate wrong-agent filling errors. Always check liquid level in the sight glass before inducing anaesthesia.",
       viva: { prompt: "How does a modern variable-bypass vaporizer maintain a constant output concentration across varying theatre temperatures?", answer: "It incorporates a temperature-compensating valve (bimetallic strip or expanding bellows) that automatically expands or contracts: as temperature drops (and vapour pressure falls), it routes a higher proportion of gas through the vaporizing chamber; as temperature rises, more gas is diverted through the bypass." },
       schematics: ["gas-system"], gasZone: "low",
+      video: {
+        src: "assets/videos/vapourizer.mp4",
+        title: "Vaporizer Mechanism & Selectatec Interlock",
+        externalUrl: "https://www.instagram.com/reel/DdNw5fIB_jl/?stkn=MW1tN2NrbXF3a25zNQ==",
+        externalLabel: "Watch on Instagram Reel"
+      },
       position: { x: 0.20, y: 0.98, z: 0.24 }
     },
     {
