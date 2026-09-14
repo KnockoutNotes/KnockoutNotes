@@ -38,15 +38,13 @@
   --border-glow: rgba(2, 132, 199, 0.45);
   --soft-accent: #e0f2fe;
   --nav-bg: rgba(255, 255, 255, 0.92);
-  /* Each token layers a tight near-shadow with a soft, wide far-shadow —
-     one flat blur reads as a thin outline; two stacked at different
-     spreads/opacities is what actually sells "this is elevated off the
-     page" instead of just "this has a shadow". Used everywhere via
-     var(--shadow-*), so this one change deepens elevation site-wide. */
-  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05), 0 6px 16px rgba(15, 23, 42, 0.07);
-  --shadow-md: 0 2px 6px rgba(15, 23, 42, 0.06), 0 18px 40px rgba(15, 23, 42, 0.11);
-  --shadow-lg: 0 6px 14px rgba(15, 23, 42, 0.08), 0 40px 90px rgba(15, 23, 42, 0.16);
-  --shadow-glow: 0 0 50px rgba(2, 132, 199, 0.18);
+  /* Multi-tiered 3D Spatial elevation tokens: contact AO, directional mid-shadow, and ambient diffuse elevation */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.07), 0 6px 18px -2px rgba(15, 23, 42, 0.09);
+  --shadow-md: 0 2px 4px rgba(15, 23, 42, 0.05), 0 10px 26px -4px rgba(15, 23, 42, 0.12), 0 22px 50px -8px rgba(15, 23, 42, 0.16);
+  --shadow-lg: 0 4px 8px rgba(15, 23, 42, 0.06), 0 18px 40px -4px rgba(15, 23, 42, 0.15), 0 48px 100px -12px rgba(15, 23, 42, 0.22);
+  --shadow-glow: 0 0 50px rgba(2, 132, 199, 0.24);
+  --box-3d-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(15, 23, 42, 0.06);
+  --box-depth-hover: translateY(-5px) translateZ(16px) scale(1.006);
   /* Nested-panel tints (telemetry bars, answer/formula boxes, viewer bars).
      Light mode: a faint slate wash so panels read as clean off-white, not
      the muddy grey a flat black-alpha overlay produces on a light card. */
@@ -95,13 +93,15 @@
   --border-glow: rgba(56, 189, 248, 0.45);
   --soft-accent: rgba(56, 189, 248, 0.12);
   --nav-bg: rgba(6, 10, 22, 0.82);
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 18px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.45), 0 22px 50px rgba(0, 0, 0, 0.55);
-  --shadow-lg: 0 6px 14px rgba(0, 0, 0, 0.5), 0 45px 100px rgba(0, 0, 0, 0.7);
-  --shadow-glow: 0 0 60px rgba(56, 189, 248, 0.28);
-  --panel-tint-1: rgba(0, 0, 0, 0.18);
-  --panel-tint-2: rgba(0, 0, 0, 0.2);
-  --panel-tint-3: rgba(0, 0, 0, 0.28);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5), 0 8px 22px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 2px 5px rgba(0, 0, 0, 0.45), 0 12px 30px -4px rgba(0, 0, 0, 0.6), 0 28px 64px -8px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.55), 0 20px 48px -4px rgba(0, 0, 0, 0.75), 0 55px 120px -12px rgba(0, 0, 0, 0.88);
+  --shadow-glow: 0 0 60px rgba(56, 189, 248, 0.32);
+  --box-3d-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.04), inset 0 -1px 0 rgba(0, 0, 0, 0.45);
+  --box-depth-hover: translateY(-5px) translateZ(18px) scale(1.008);
+  --panel-tint-1: rgba(0, 0, 0, 0.22);
+  --panel-tint-2: rgba(0, 0, 0, 0.26);
+  --panel-tint-3: rgba(0, 0, 0, 0.32);
 }
 
 /* ==========================================================================
@@ -942,7 +942,7 @@ body:not([data-content-page="home"]) .menu-btn {
   border: 1px solid var(--border-specular);
   border-radius: var(--radius-lg);
   padding: 30px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--box-3d-bevel), var(--shadow-sm);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
@@ -950,6 +950,15 @@ body:not([data-content-page="home"]) .menu-btn {
   display: flex;
   flex-direction: column;
   transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+}
+
+.dark .card, .dark .quick-card, .dark .bento-card {
+  background: linear-gradient(180deg, rgba(14, 23, 44, 0.85) 0%, rgba(9, 15, 30, 0.78) 100%);
+}
+
+body:not(.dark) .card, body:not(.dark) .quick-card, body:not(.dark) .bento-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
 }
 
 .card::after {
@@ -965,9 +974,9 @@ body:not([data-content-page="home"]) .menu-btn {
 }
 
 .card:hover {
-  transform: translateY(-6px) translateZ(24px);
+  transform: var(--box-depth-hover);
   border-color: var(--border-glow);
-  box-shadow: var(--shadow-md), 0 0 40px rgba(56, 189, 248, 0.16);
+  box-shadow: var(--box-3d-bevel), var(--shadow-md), 0 0 40px rgba(56, 189, 248, 0.22);
 }
 
 .card:hover::after {
@@ -988,32 +997,39 @@ body:not([data-content-page="home"]) .menu-btn {
   gap: 6px;
   font-size: 11px;
   font-weight: 850;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
-  letter-spacing: 1px;
   color: var(--accent-cyan);
+  background: var(--soft-accent);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-glow);
   font-family: 'JetBrains Mono', monospace;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 .card-date {
   font-size: 11.5px;
   color: var(--text-muted);
+  font-weight: 700;
   font-family: 'JetBrains Mono', monospace;
 }
 
 .card h3 {
-  margin: 4px 0 12px;
-  font-size: 22px;
-  font-weight: 850;
-  letter-spacing: -0.7px;
-  line-height: 1.26;
+  margin: 0 0 12px;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  line-height: 1.25;
   color: var(--text-main);
 }
 
 .card p {
-  color: var(--text-secondary);
-  line-height: 1.7;
   margin: 0 0 20px;
-  font-size: 15px;
+  color: var(--text-secondary);
+  font-size: 14.5px;
+  line-height: 1.62;
+  flex: 1;
 }
 
 .card p strong {
@@ -1043,25 +1059,25 @@ a.kn-update-card:hover .kn-update-open {
 /* ==========================================================================
    Active Recall Mechanics (Reveal Accordion & Formulas)
    ========================================================================== */
-.reveal {
+.card .reveal {
   align-self: flex-start;
-  margin-top: auto;
-  border: 1px solid var(--border-glow);
-  background: var(--soft-accent);
-  color: var(--accent-cyan);
-  padding: 9px 20px;
-  border-radius: var(--radius-full);
-  font-weight: 750;
+  padding: 9px 18px;
   font-size: 12.5px;
+  font-weight: 750;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-specular);
+  background: var(--bg-surface);
+  color: var(--text-main);
   cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--box-3d-bevel), 0 2px 6px rgba(0, 0, 0, 0.2);
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: all var(--transition-fast);
   font-family: 'JetBrains Mono', monospace;
 }
 
-.reveal:hover {
+.card .reveal:hover {
   background: var(--accent-cyan);
   color: #ffffff;
   border-color: var(--accent-cyan);
@@ -1075,16 +1091,23 @@ a.kn-update-card:hover .kn-update-open {
   border-radius: var(--radius-md);
   background: var(--panel-tint-1);
   border: 1px solid var(--border-subtle);
-  border-left: 3px solid var(--accent-cyan);
+  border-left: 3.5px solid var(--accent-cyan);
   line-height: 1.72;
   font-size: 14px;
   color: var(--text-main);
   display: none;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.22), 0 1px 2px rgba(255, 255, 255, 0.04);
+  transform-style: preserve-3d;
+}
+
+.dark .answer {
+  background: linear-gradient(180deg, rgba(7, 12, 24, 0.9) 0%, rgba(4, 8, 18, 0.95) 100%);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
 }
 
 .answer.open {
   display: block;
-  animation: fadeSlideDown 0.28s var(--ease-expo);
+  animation: fadeSlideDown 0.32s var(--ease-expo);
 }
 
 .reference {
@@ -1110,7 +1133,30 @@ a.kn-update-card:hover .kn-update-open {
   font-weight: 750;
   color: var(--accent-cyan);
   margin: 8px 0 16px;
-  box-shadow: 0 0 18px rgba(56, 189, 248, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 2px 8px rgba(0, 0, 0, 0.25), 0 0 18px rgba(56, 189, 248, 0.18);
+  transform-style: preserve-3d;
+}
+
+/* 3D Specular Highlight Pulse on search selection */
+@keyframes knHighlightPulse {
+  0% {
+    box-shadow: var(--box-3d-bevel), var(--shadow-md), 0 0 0 0 rgba(56, 189, 248, 0.8);
+    border-color: var(--accent-cyan);
+  }
+  50% {
+    box-shadow: var(--box-3d-bevel), var(--shadow-lg), 0 0 0 8px rgba(56, 189, 248, 0.35), 0 0 45px rgba(56, 189, 248, 0.45);
+    border-color: var(--accent-cyan);
+    transform: translateY(-4px) scale(1.01);
+  }
+  100% {
+    box-shadow: var(--box-3d-bevel), var(--shadow-md);
+    border-color: var(--border-specular);
+    transform: none;
+  }
+}
+
+.kn-highlight-pulse {
+  animation: knHighlightPulse 1.4s var(--ease-expo) !important;
 }
 
 /* ==========================================================================
@@ -1840,6 +1886,10 @@ a.kn-update-card:hover .kn-update-open {
 }
 
 @media (max-width: 680px) {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
   .site-hud {
     top: 10px;
     padding: 0 10px;
@@ -1860,51 +1910,109 @@ a.kn-update-card:hover .kn-update-open {
     display: none;
   }
   .nav-search-trigger {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     padding: 0;
     border-radius: 50%;
     display: grid;
     place-items: center;
     gap: 0;
   }
+  .menu-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
   .nav-search-trigger::before {
     content: "⌕";
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1;
   }
   .mobile-menu.open {
     grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 18px 16px;
+  }
+  .mobile-menu a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+  .hero {
+    padding: 32px 0 24px;
+    gap: 28px;
   }
   .hero h1 {
-    font-size: clamp(38px, 11vw, 54px);
-    letter-spacing: -2px;
+    font-size: clamp(34px, 10vw, 48px);
+    letter-spacing: -1.5px;
   }
   .hero p.hero-lead {
-    font-size: 15.5px;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .card {
+    padding: 20px 18px;
+    border-radius: 18px;
+  }
+  .card h3 {
+    font-size: 19px;
+  }
+  .answer {
+    padding: 16px 16px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin-top: 14px;
+  }
+  .filters {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+    gap: 8px;
+    scrollbar-width: none;
+  }
+  .filters::-webkit-scrollbar {
+    display: none;
+  }
+  .filter {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    min-height: 40px;
+    font-size: 13px;
   }
   .grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
   .bento-grid {
-    gap: 16px;
+    gap: 14px;
   }
   .fastpath-links {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
   .feature-banner {
-    padding: 32px 24px;
+    padding: 24px 18px;
   }
   .telemetry-vitals-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
   .kn-updates-pill {
-    right: 18px;
-    bottom: 18px;
-    padding: 8px 16px;
+    right: 14px;
+    bottom: 14px;
+    padding: 8px 14px;
+    font-size: 12px;
   }
   .viewer-title {
-    max-width: 220px;
+    max-width: 200px;
+    font-size: 14px;
   }
   .viewer-hud-status {
     display: none;

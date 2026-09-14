@@ -201,6 +201,33 @@
     wireRevealButtons();
 
     // ------------------------------------------------------------------------
+    // 5b. Hash Navigation & Answer Auto-Reveal
+    // ------------------------------------------------------------------------
+    function handleHashReveal() {
+      const hash = window.location.hash.replace(/^#/, "");
+      if (!hash) return;
+      const target = document.getElementById(hash);
+      if (!target) return;
+      const answer = target.classList.contains("answer") ? target : target.querySelector(".answer");
+      if (answer) {
+        answer.classList.add("open");
+        const btn = target.closest(".card, .quick-card")?.querySelector(".reveal");
+        if (btn) {
+          btn.textContent = "Hide Answer";
+          btn.setAttribute("aria-expanded", "true");
+        }
+      }
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+        target.classList.remove("kn-highlight-pulse");
+        void target.offsetWidth;
+        target.classList.add("kn-highlight-pulse");
+      }, 150);
+    }
+    handleHashReveal();
+    window.addEventListener("hashchange", handleHashReveal);
+
+    // ------------------------------------------------------------------------
     // 6. Scroll Entrance Animations (IntersectionObserver)
     // ------------------------------------------------------------------------
     // Staggered cascade: siblings that share a parent (a row of bento cards,
@@ -255,15 +282,28 @@
     });
 
     // ------------------------------------------------------------------------
-    // 8. In-Page Card Filter Search
+    // 8. In-Page Card Filter Search (Supports Titles, Tags, & Answers)
     // ------------------------------------------------------------------------
-    const searchInputs = document.querySelectorAll("#search, #pearlSearch, .search");
+    const searchInputs = document.querySelectorAll("#search, #pearlSearch, #pearlSearch3d, .search");
     searchInputs.forEach(input => {
       input.addEventListener("input", () => {
         const q = input.value.toLowerCase().trim();
         document.querySelectorAll(".filter-card").forEach(card => {
-          const matches = card.innerText.toLowerCase().includes(q);
+          const content = (card.textContent || "").toLowerCase();
+          const matches = !q || content.includes(q);
           card.style.display = matches ? "flex" : "none";
+          // If query matched text specifically in answer, auto reveal the answer for active recall convenience
+          if (q && matches) {
+            const ans = card.querySelector(".answer");
+            if (ans && ans.textContent.toLowerCase().includes(q)) {
+              ans.classList.add("open");
+              const btn = card.querySelector(".reveal");
+              if (btn) {
+                btn.textContent = "Hide Answer";
+                btn.setAttribute("aria-expanded", "true");
+              }
+            }
+          }
         });
       });
     });

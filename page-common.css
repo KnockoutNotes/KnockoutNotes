@@ -1,6 +1,6 @@
 /* ==========================================================================
    KNOCKOUTNOTES — 3D Spatial Page Common Styles (page-common.css)
-   Search UI, Command Palette Modal, & Medical Disclaimers
+   Search UI, Command Palette Modal, 3D Depth & Medical Disclaimers
    ========================================================================== */
 
 /* In-Page Sitewide Search Section */
@@ -11,16 +11,25 @@
 }
 
 .kn-search-card {
-  padding: 38px 44px;
+  padding: 36px 42px;
   background: var(--bg-surface);
   border: 1px solid var(--border-specular);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--box-3d-bevel), var(--shadow-md);
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
   position: relative;
   overflow: hidden;
   transform-style: preserve-3d;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.dark .kn-search-card {
+  background: linear-gradient(180deg, rgba(13, 22, 42, 0.88) 0%, rgba(7, 13, 26, 0.82) 100%);
+}
+
+body:not(.dark) .kn-search-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
 }
 
 .kn-search-card::before {
@@ -45,7 +54,7 @@
 
 .kn-search-card h1 {
   margin: 0 0 10px;
-  font-size: clamp(32px, 4.6vw, 46px);
+  font-size: clamp(30px, 4.4vw, 44px);
   font-weight: 900;
   letter-spacing: -1.6px;
   line-height: 1.1;
@@ -67,13 +76,13 @@
   background: var(--bg-card);
   border-radius: var(--radius-lg);
   padding: 0 22px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(255, 255, 255, 0.05);
   transition: all var(--transition-fast);
 }
 
 .kn-site-search:focus-within {
   border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25), 0 0 30px rgba(56, 189, 248, 0.2);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 0 0 3px rgba(56, 189, 248, 0.25), 0 0 30px rgba(56, 189, 248, 0.2);
 }
 
 .kn-site-search input {
@@ -132,21 +141,30 @@
 
 .kn-search-result {
   display: block;
-  padding: 20px 24px;
+  padding: 18px 22px;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   background: var(--bg-card);
   text-decoration: none;
   color: var(--text-main);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--box-3d-bevel), var(--shadow-sm);
   transition: all var(--transition-fast);
   transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+}
+
+.dark .kn-search-result {
+  background: linear-gradient(180deg, rgba(14, 23, 44, 0.9) 0%, rgba(9, 15, 30, 0.85) 100%);
+}
+
+body:not(.dark) .kn-search-result {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
 }
 
 .kn-search-result:hover {
   border-color: var(--accent-cyan);
-  transform: translateX(8px) translateZ(14px);
-  box-shadow: var(--shadow-md), 0 0 30px rgba(56, 189, 248, 0.16);
+  transform: translateY(-3px) translateX(4px) translateZ(12px) scale(1.006);
+  box-shadow: var(--box-3d-bevel), var(--shadow-md), 0 0 32px rgba(56, 189, 248, 0.2);
 }
 
 .kn-search-result-top {
@@ -159,14 +177,75 @@
 .kn-search-type {
   font-size: 10.5px;
   font-weight: 850;
-  letter-spacing: 1.2px;
-  color: var(--accent-cyan);
+  letter-spacing: 0.8px;
+  padding: 2px 8px;
+  border-radius: 4px;
   text-transform: uppercase;
   font-family: 'JetBrains Mono', monospace;
 }
 
+/* Search Badges */
+.kn-badge-drug { background: rgba(56, 189, 248, 0.16); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.35); }
+.kn-badge-calc { background: rgba(234, 179, 8, 0.16); color: #fbbf24; border: 1px solid rgba(234, 179, 8, 0.35); }
+.kn-badge-pearl { background: rgba(168, 85, 247, 0.16); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.35); }
+.kn-badge-guideline { background: rgba(244, 63, 94, 0.16); color: var(--accent-rose); border: 1px solid rgba(244, 63, 94, 0.35); }
+.kn-badge-image-asset { background: rgba(16, 185, 129, 0.16); color: var(--accent-emerald); border: 1px solid rgba(16, 185, 129, 0.35); }
+.kn-badge-chamber { background: rgba(239, 68, 68, 0.18); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+.kn-badge-default { background: var(--panel-tint-2); color: var(--text-muted); border: 1px solid var(--border-subtle); }
+
+/* Search Match Snippets & Highlights */
+.kn-search-highlight {
+  background: rgba(56, 189, 248, 0.28);
+  color: var(--text-main);
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-weight: 750;
+  box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.4);
+}
+
+.kn-search-answer-snippet {
+  margin-top: 8px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  background: var(--panel-tint-1);
+  border-left: 3px solid var(--accent-cyan);
+  padding: 8px 12px;
+  border-radius: 6px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.kn-search-img-snippet {
+  margin-top: 8px;
+  font-size: 12.5px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-secondary);
+  background: var(--panel-tint-2);
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+}
+
+.kn-badge-ans {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 850;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-right: 4px;
+}
+
+.kn-badge-img {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 850;
+  text-transform: uppercase;
+  color: var(--accent-emerald);
+  margin-right: 4px;
+}
+
 .kn-search-result h4 {
-  margin: 6px 0 4px;
+  margin: 8px 0 4px;
   font-size: 17.5px;
   font-weight: 800;
   letter-spacing: -0.4px;
@@ -186,7 +265,8 @@
   border-radius: var(--radius-md);
   color: var(--text-muted);
   text-align: center;
-  font-size: 15px;
+  font-size: 14.5px;
+  line-height: 1.6;
   background: var(--bg-card);
 }
 
@@ -200,7 +280,7 @@
   border-radius: var(--radius-lg);
   background: var(--bg-surface);
   color: var(--text-main);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--box-3d-bevel), var(--shadow-sm);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   transform-style: preserve-3d;
@@ -265,13 +345,17 @@
   background: var(--bg-surface);
   border: 1px solid var(--border-specular);
   border-radius: var(--radius-xl);
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.75), 0 0 60px rgba(56, 189, 248, 0.3);
+  box-shadow: var(--box-3d-bevel), 0 30px 90px rgba(0, 0, 0, 0.85), 0 0 70px rgba(56, 189, 248, 0.35);
   overflow: hidden;
   z-index: 10;
   animation: modalEnter 0.28s var(--ease-expo);
   max-height: calc(100vh - 140px);
   display: flex;
   flex-direction: column;
+}
+
+.dark .kn-modal-box {
+  background: linear-gradient(180deg, rgba(12, 20, 40, 0.94) 0%, rgba(6, 11, 24, 0.92) 100%);
 }
 
 .kn-modal-header {
@@ -305,6 +389,8 @@
   cursor: pointer;
   font-family: 'JetBrains Mono', monospace;
   transition: all var(--transition-fast);
+  min-width: 36px;
+  min-height: 36px;
 }
 
 .kn-modal-close:hover {
@@ -316,6 +402,7 @@
   padding: 22px 26px;
   overflow-y: auto;
   max-height: 520px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .kn-modal-footer {
@@ -341,7 +428,7 @@
 @keyframes modalEnter {
   from {
     opacity: 0;
-    transform: translateY(-24px) scale(0.96) translateZ(-100px);
+    transform: translateY(-20px) scale(0.97) translateZ(-80px);
   }
   to {
     opacity: 1;
@@ -350,24 +437,45 @@
 }
 
 /* ==========================================================================
-   Search modal — mobile
-   The "ESC" close button and the keyboard-shortcut pro-tip only make sense
-   with a physical keyboard; on a touch screen they just ate width the
-   input needed (the typed query was clipping behind the ESC pill) and
-   crowded the footer. ESC becomes a plain × icon; the shortcut tip is
-   dropped and the remaining brand label centers on its own.
+   Search modal & search card — mobile responsive optimization
    ========================================================================== */
 @media (max-width: 680px) {
+  .kn-search-card {
+    padding: 22px 18px;
+    border-radius: 20px;
+  }
+  .kn-search-card h1 {
+    font-size: clamp(26px, 8vw, 36px);
+  }
+  .kn-search-card > p {
+    font-size: 14.5px;
+    margin-bottom: 20px;
+  }
+  .kn-site-search {
+    padding: 0 14px;
+    gap: 12px;
+  }
+  .kn-site-search input {
+    font-size: 16px;
+    padding: 14px 0;
+  }
   .kn-modal {
-    padding: 64px 14px 16px;
+    padding: 36px 12px calc(14px + env(safe-area-inset-bottom, 14px));
+  }
+  .kn-modal-box {
+    max-height: calc(100vh - 60px);
+    border-radius: 18px;
   }
   .kn-modal-header {
-    padding: 16px 18px;
+    padding: 14px 16px;
     gap: 10px;
   }
+  .kn-modal-input {
+    font-size: 16px;
+  }
   .kn-modal-close {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     padding: 0;
     border-radius: 50%;
     display: grid;
@@ -377,12 +485,28 @@
   }
   .kn-modal-close::before {
     content: "×";
-    font-size: 18px;
+    font-size: 20px;
+    line-height: 1;
+  }
+  .kn-modal-body {
+    padding: 16px 14px;
+    max-height: calc(100vh - 160px);
   }
   .kn-modal-footer span:first-child {
     display: none;
   }
   .kn-modal-footer {
     justify-content: center;
+    padding: 10px 16px;
+  }
+  .kn-search-result {
+    padding: 14px 16px;
+  }
+  .kn-search-result h4 {
+    font-size: 16px;
+  }
+  .kn-search-answer-snippet {
+    font-size: 12.5px;
+    padding: 6px 10px;
   }
 }
