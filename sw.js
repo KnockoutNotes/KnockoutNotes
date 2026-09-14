@@ -1,35 +1,39 @@
 // ==========================================================================
 // KnockoutNotes — Service Worker (sw.js)
-// Cache-First strategy with network fallback for offline medical access
+// Production PWA Service Worker:
+// - Network-First for HTML navigation requests (with cached & offline fallback)
+// - Stale-While-Revalidate with safe response cloning for static app shell assets
 // ==========================================================================
 
-const CACHE_NAME = "knockoutnotes-cache-v1";
+const CACHE_NAME = "knockoutnotes-cache-v2";
 
 const PRECACHE_ASSETS = [
-  "./",
-  "./index.html",
-  "./notes.html",
-  "./drugs.html",
-  "./critical-care.html",
-  "./calculators.html",
-  "./ventilator.html",
-  "./viva.html",
-  "./resuscitation-chamber.html",
-  "./recent-updates.html",
-  "./resources.html",
-  "./styles.css",
-  "./page-common.css",
-  "./calculators.css",
-  "./library-styles.css",
-  "./script.js",
-  "./kn-site-search.js",
-  "./content-library.js",
-  "./content-config.js",
-  "./sheet-config.js",
-  "./ventilator-scene.js",
-  "./spatial-viewer.js",
-  "./knockoutnotes_icon.png",
-  "./manifest.json"
+  "/",
+  "/index.html",
+  "/notes.html",
+  "/drugs.html",
+  "/critical-care.html",
+  "/calculators.html",
+  "/ventilator.html",
+  "/viva.html",
+  "/resuscitation-chamber.html",
+  "/recent-updates.html",
+  "/resources.html",
+  "/styles.css",
+  "/page-common.css",
+  "/calculators.css",
+  "/library-styles.css",
+  "/ventilator.css",
+  "/script.js",
+  "/kn-site-search.js",
+  "/content-library.js",
+  "/content-config.js",
+  "/sheet-config.js",
+  "/page-motion.js",
+  "/ventilator-scene.js",
+  "/spatial-viewer.js",
+  "/knockoutnotes_icon.png",
+  "/manifest.json"
 ];
 
 self.addEventListener("install", (event) => {
@@ -62,19 +66,57 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Cache-first, network fallback
+  const isNavigation = event.request.mode === "navigate" ||
+    (event.request.headers.get("accept") && event.request.headers.get("accept").includes("text/html"));
+
+  // 1. Navigation Requests: Network-First
+  // Prevents "site not available" loops when navigating between pages on deployed site and installed PWA
+  if (isNavigation) {
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const responseToCache = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseToCache);
+            });
+          }
+          return networkResponse;
+        })
+        .catch(async () => {
+          // Fallback to cache for the exact requested URL
+          const cachedResponse = await caches.match(event.request);
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+          // Try pathname match if query string was present
+          const cachedPath = await caches.match(requestUrl.pathname);
+          if (cachedPath) {
+            return cachedPath;
+          }
+          // Last-resort offline fallback: index.html
+          return (await caches.match("/index.html")) || (await caches.match("/"));
+        })
+    );
+    return;
+  }
+
+  // 2. Static Assets: Cache-First / Stale-While-Revalidate with safe response cloning
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
-        // Return cached resource, then fetch updated copy in background (stale-while-revalidate for local assets)
+        // Return cached resource, then revalidate in background for local origin
         if (requestUrl.origin === location.origin) {
-          fetch(event.request).then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200) {
-              caches.open(CACHE_NAME).then((cache) => {
-                cache.put(event.request, networkResponse);
-              });
-            }
-          }).catch(() => {});
+          fetch(event.request)
+            .then((networkResponse) => {
+              if (networkResponse && networkResponse.status === 200) {
+                const responseToCache = networkResponse.clone();
+                caches.open(CACHE_NAME).then((cache) => {
+                  cache.put(event.request, responseToCache);
+                });
+              }
+            })
+            .catch(() => {});
         }
         return cachedResponse;
       }
@@ -90,11 +132,6 @@ self.addEventListener("fetch", (event) => {
         });
 
         return networkResponse;
-      }).catch(() => {
-        // Offline fallback for HTML navigation requests
-        if (event.request.headers.get("accept")?.includes("text/html")) {
-          return caches.match("./index.html");
-        }
       });
     })
   );

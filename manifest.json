@@ -1,8 +1,10 @@
 {
+  "id": "/",
   "name": "KnockoutNotes — Anaesthesia Knowledge Engine",
   "short_name": "KnockoutNotes",
   "description": "Futuristic Anaesthesia & Critical Care Knowledge Engine, Clinical Calculators & 3D Interactive Workstation",
-  "start_url": "./index.html",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#070c18",
   "theme_color": "#0284c7",

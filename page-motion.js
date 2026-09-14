@@ -29,6 +29,14 @@
     if (a.dataset.noTransition !== undefined) return false;
     var target = (a.getAttribute("target") || "").toLowerCase();
     if (target && target !== "_self") return false;
+    // In standalone PWA mode, rely on native navigation to prevent any interception hiccups
+    if (window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone) {
+      return false;
+    }
+    // Skip mobile drawer close links or elements with explicit data-close-menu
+    if (a.hasAttribute("data-close-menu") || a.closest(".mobile-menu")) {
+      return false;
+    }
     var url = resolveUrl(a.href);
     if (!url || url.origin !== window.location.origin) return false;
     if (url.protocol !== "http:" && url.protocol !== "https:") return false;
