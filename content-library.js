@@ -456,12 +456,14 @@
         tab.setAttribute('role', 'tab');
         tab.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
         tab.dataset.index = i;
+        tab.dataset.catId = cat.id || '';
         tabButtons.appendChild(tab);
 
         const panel = document.createElement('div');
         panel.className = 'kn-library-panel' + (i === 0 ? ' active' : '');
         panel.hidden = i !== 0;
         panel.dataset.index = i;
+        panel.dataset.catId = cat.id || '';
         panels.appendChild(panel);
 
         tab.addEventListener('click', () => {
@@ -553,6 +555,21 @@
         // starts at the track's natural left-aligned position rather than
         // being pre-centred — centerActiveTab only kicks in once the
         // visitor actually picks a category.
+        // If a URL hash points to a category id (e.g. #pft, #induction, #ventilation),
+        // activate that tab automatically so search results and direct links land right on target.
+        const activateTabByHash = () => {
+          const rawHash = (window.location.hash || '').replace(/^#/, '').toLowerCase();
+          if (!rawHash) return;
+          const matchingTab = Array.from(tabs.querySelectorAll('.kn-library-tab')).find(
+            t => (t.dataset.catId || '').toLowerCase() === rawHash
+          );
+          if (matchingTab && !matchingTab.classList.contains('active')) {
+            matchingTab.click();
+          }
+        };
+        activateTabByHash();
+        window.addEventListener('hashchange', activateTabByHash);
+
         const placeInitialIndicator = () => {
           const activeTab = tabs.querySelector('.kn-library-tab.active');
           if (activeTab) {

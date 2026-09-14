@@ -166,14 +166,89 @@
       btn.addEventListener("click", closeViewer);
     });
 
+    let panX = 0;
+    let panY = 0;
+    let isPanning = false;
+    let panStartX = 0;
+    let panStartY = 0;
+    let stagePinchDist = null;
+    let stagePinchScale = 1.0;
+
+    function applyTransform() {
+      if (plane) {
+        plane.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${currentScale})`;
+      }
+    }
+
+    const stage = document.getElementById("knViewerStage");
+    if (stage) {
+      stage.style.touchAction = "none";
+
+      stage.addEventListener("pointerdown", (e) => {
+        if (e.target.closest(".viewer-actions, button, a")) return;
+        if (currentScale > 1.0) {
+          isPanning = true;
+          panStartX = e.clientX - panX;
+          panStartY = e.clientY - panY;
+          stage.style.cursor = "grabbing";
+        }
+      });
+
+      window.addEventListener("pointermove", (e) => {
+        if (isPanning) {
+          panX = e.clientX - panStartX;
+          panY = e.clientY - panStartY;
+          applyTransform();
+        }
+      });
+
+      window.addEventListener("pointerup", () => {
+        isPanning = false;
+        if (stage) stage.style.cursor = currentScale > 1.0 ? "grab" : "default";
+      });
+
+      // Pinch zoom on mobile devices
+      stage.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 2) {
+          stagePinchDist = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+          );
+          stagePinchScale = currentScale;
+        }
+      }, { passive: true });
+
+      stage.addEventListener("touchmove", (e) => {
+        if (e.touches.length === 2 && stagePinchDist) {
+          const newDist = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+          );
+          if (stagePinchDist > 10) {
+            const factor = newDist / stagePinchDist;
+            currentScale = Math.min(3.5, Math.max(0.6, stagePinchScale * factor));
+            applyTransform();
+            if (e.cancelable) e.preventDefault();
+          }
+        }
+      }, { passive: false });
+
+      stage.addEventListener("touchend", (e) => {
+        if (e.touches.length < 2) stagePinchDist = null;
+      }, { passive: true });
+    }
+
     document.getElementById("knViewerZoomIn").addEventListener("click", () => {
-      currentScale = Math.min(2.5, currentScale + 0.2);
-      if (plane) plane.style.transform = `scale(${currentScale})`;
+      currentScale = Math.min(3.5, currentScale + 0.25);
+      applyTransform();
+      if (stage) stage.style.cursor = "grab";
     });
 
     document.getElementById("knViewerZoomOut").addEventListener("click", () => {
-      currentScale = Math.max(0.7, currentScale - 0.2);
-      if (plane) plane.style.transform = `scale(${currentScale})`;
+      currentScale = Math.max(0.6, currentScale - 0.25);
+      if (currentScale <= 1.0) { panX = 0; panY = 0; }
+      applyTransform();
+      if (stage) stage.style.cursor = currentScale > 1.0 ? "grab" : "default";
     });
 
     document.getElementById("knViewerFullscreen").addEventListener("click", () => {

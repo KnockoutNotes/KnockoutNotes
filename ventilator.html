@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anaesthesia Workstation | KnockoutNotes</title>
   <meta name="description" content="Interactive 3D Anaesthesia Workstation explorer: identify and understand every major workstation component, generic gas-system pathways, and viva-style questions.">
+  <meta name="theme-color" content="#0284c7">
+  <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="page-common.css">
   <link rel="stylesheet" href="ventilator.css">
@@ -39,6 +41,10 @@
     </div>
 
     <div class="nav-actions">
+      <button class="nav-search-trigger" data-open-search aria-label="Open search">
+        <span>Search</span>
+        <kbd>⌘K</kbd>
+      </button>
       <button class="icon-btn theme-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
     </div>
@@ -181,6 +187,27 @@
   <span class="kn-updates-pill-badge">Live</span>
 </a>
 
+<!-- Universal Command Palette Search Modal -->
+<div class="kn-modal" id="knSearchModal" role="dialog" aria-modal="true" aria-label="Search KnockoutNotes">
+  <div class="kn-modal-backdrop" data-close-modal></div>
+  <div class="kn-modal-box">
+    <div class="kn-modal-header">
+      <span class="kn-search-icon">⌕</span>
+      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search pearls, drugs, scores, viva questions..." autocomplete="off">
+      <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
+      <button class="kn-modal-close" data-close-modal>ESC</button>
+    </div>
+    <div class="kn-modal-body">
+      <div id="knModalSearchStatus" class="kn-search-status">Start typing to search the medical database.</div>
+      <div id="knModalSearchResults" class="kn-search-results"></div>
+    </div>
+    <div class="kn-modal-footer">
+      <span>Pro-tip: Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
+      <span>KnockoutNotes Spatial Search</span>
+    </div>
+  </div>
+</div>
+
 <script src="ventilator-data.js"></script>
 <script>
   document.getElementById("ventDisclaimer").textContent = window.VentilatorData.disclaimer;
@@ -202,6 +229,7 @@
 </script>
 <script src="script.js"></script>
 <script src="page-motion.js"></script>
+<script src="kn-site-search.js"></script>
 
 </body>
 </html>

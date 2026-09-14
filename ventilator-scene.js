@@ -143,25 +143,50 @@ export function createWorkstationScene(container, opts) {
   // Plain click/touch-and-drag rotates the model, in any direction —
   // OrbitControls' own default behaviour.
   controls.enableRotate = true;
-  // Zoom is handled ONLY by the side zoom bar (setZoomPercent/zoomStep
-  // below), which sets camera.position directly and doesn't go through
-  // OrbitControls at all — so this is permanently off, not toggled.
-  // OrbitControls' own onMouseWheel bails out before calling
-  // preventDefault() once enableZoom is false, which is what leaves normal
-  // page-scroll-by-wheel working over the canvas as a side effect.
+  // Zoom is handled by the side zoom bar in normal mode, and by native pinch
+  // gestures / mouse wheel when in fullscreen mode.
   controls.enableZoom = false;
-  // No panning control is exposed anywhere in this UI (no pan reset, the
-  // zoom bar only changes distance) — disabling it removes an entire class
-  // of "the model silently drifted off-centre" reports from a stray
-  // right-click-drag or two-finger pan, and combined with enableZoom=false
-  // above, makes a two-finger touch a full no-op (see OrbitControls'
-  // TOUCH.DOLLY_PAN handling: both must be false for it to bail out).
   controls.enablePan = false;
-  // "pan-y" lets a vertical one-finger touch keep scrolling the page
-  // normally (a horizontal one-finger drag still reaches OrbitControls to
-  // rotate); it also already disables the browser's own native pinch-zoom
-  // on this element, consistent with zoom being zoom-bar-only.
   renderer.domElement.style.touchAction = "pan-y";
+
+  // Dedicated pinch-zoom gesture recognizer for touch devices (essential in fullscreen mode)
+  let initialPinchDistance = null;
+  let initialZoomPercent = 0;
+
+  function getPinchDistance(e) {
+    if (e.touches && e.touches.length >= 2) {
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      return Math.hypot(dx, dy);
+    }
+    return null;
+  }
+
+  renderer.domElement.addEventListener("touchstart", (e) => {
+    if (e.touches.length === 2) {
+      initialPinchDistance = getPinchDistance(e);
+      initialZoomPercent = getZoomPercent();
+    }
+  }, { passive: true });
+
+  renderer.domElement.addEventListener("touchmove", (e) => {
+    if (e.touches.length === 2 && initialPinchDistance) {
+      const currentDist = getPinchDistance(e);
+      if (currentDist && initialPinchDistance > 10) {
+        const factor = currentDist / initialPinchDistance;
+        // Map pinch scale to zoom percent delta: spreading fingers (pinch out) zooms in
+        const deltaPercent = (factor - 1) * 60;
+        setZoomPercent(initialZoomPercent + deltaPercent);
+        if (e.cancelable) e.preventDefault();
+      }
+    }
+  }, { passive: false });
+
+  renderer.domElement.addEventListener("touchend", (e) => {
+    if (e.touches.length < 2) {
+      initialPinchDistance = null;
+    }
+  }, { passive: true });
 
   // Physically balanced multi-point studio lighting for clean clinical workstation presentation
   const hemiLight = new THREE.HemisphereLight(0xe0f2fe, 0x0a101f, 0.85);
@@ -664,10 +689,39 @@ export function createWorkstationScene(container, opts) {
 
   function setCalibrateMode(on) { calibrateMode = on; }
 
+  function onFullscreenWheel(e) {
+    e.preventDefault();
+    const delta = e.deltaY < 0 ? 5 : -5;
+    zoomStep(delta);
+  }
+
+  function handleFullscreenState() {
+    const isFs = !!document.fullscreenElement;
+    if (isFs) {
+      renderer.domElement.style.touchAction = "none";
+      renderer.domElement.addEventListener("wheel", onFullscreenWheel, { passive: false });
+    } else {
+      renderer.domElement.style.touchAction = "pan-y";
+      renderer.domElement.removeEventListener("wheel", onFullscreenWheel);
+    }
+  }
+  document.addEventListener("fullscreenchange", handleFullscreenState);
+
   function toggleFullscreen() {
     const el = container.closest(".vent-stage") || container;
-    if (!document.fullscreenElement) { el.requestFullscreen && el.requestFullscreen().catch(() => {}); }
-    else { document.exitFullscreen && document.exitFullscreen().catch(() => {}); }
+    if (!document.fullscreenElement) {
+      if (el.requestFullscreen) {
+        el.requestFullscreen().catch(() => {});
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(() => {});
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
   }
 
   function resize() {

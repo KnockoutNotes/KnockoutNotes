@@ -48,6 +48,7 @@
     if (t.includes("drug")) return "drugs.html";
     if (t.includes("critical") || t.includes("icu")) return "critical-care.html";
     if (t.includes("chamber") || t.includes("resuscitation") || t.includes("acls")) return "resuscitation-chamber.html";
+    if (t.includes("workstation") || t.includes("ventilator") || t.includes("machine")) return "ventilator.html";
     if (t.includes("update") || t.includes("guideline")) return "recent-updates.html";
     if (t.includes("resource")) return "resources.html";
     return "index.html";
@@ -719,8 +720,100 @@
       Title: "Surviving Sepsis Campaign International Guidelines 2026",
       Summary: "1-hour resuscitation bundle: measure lactate, blood cultures before antibiotics, broad-spectrum antimicrobials, 30 mL/kg balanced crystalloids (Plasma-Lyte / Ringer's), first-line noradrenaline for MAP >= 65 mmHg.",
       href: "recent-updates.html#surviving-sepsis-2026"
+    },
+
+    // --- ANAESTHESIA WORKSTATION 3D COMPONENTS & SAFETY SYSTEMS ---
+    {
+      Type: "Workstation",
+      Category: "Workstation • Gas Supply",
+      Title: "Oxygen Flush Button (O2 Flush, 35–75 L/min)",
+      Summary: "Delivers unmetered 100% O2 directly to common gas outlet at 35–75 L/min (approx 600–1200 mL/s). Never press during inspiratory phase of mechanical ventilation due to extreme barotrauma risk.",
+      href: "ventilator.html#o2-flush",
+      targetId: "o2-flush"
+    },
+    {
+      Type: "Workstation",
+      Category: "Workstation • Flowmeters & Vaporizers",
+      Title: "Flowmeters (O2, N2O & Air Rotameter Bank)",
+      Summary: "Dual-tapered flowmeter tubes with rotameter bobbins. Oxygen is positioned downstream to minimise hypoxic delivery in event of tube crack.",
+      href: "ventilator.html#flowhead",
+      targetId: "flowhead"
+    },
+    {
+      Type: "Workstation",
+      Category: "Workstation • Flowmeters & Vaporizers",
+      Title: "Vaporizers (Sevoflurane & Isoflurane / Selectatec Interlock)",
+      Summary: "Temperature-compensated variable-bypass vaporizers with Selectatec interlock preventing simultaneous opening of more than one agent.",
+      href: "ventilator.html#selectatec",
+      targetId: "selectatec"
+    },
+    {
+      Type: "Workstation",
+      Category: "Workstation • Pressure Monitoring",
+      Title: "Pipeline Pressure Gauges (400–420 kPa)",
+      Summary: "Monitors central hospital medical gas pipeline operating pressure at 400–420 kPa (approx 4 bar). Audible whistle sounds if pressure drops below 280 kPa.",
+      href: "ventilator.html#gauge-pipeline",
+      targetId: "gauge-pipeline"
+    },
+    {
+      Type: "Workstation",
+      Category: "Workstation • Breathing System",
+      Title: "APL Valve (Adjustable Pressure Limiting) & Reservoir Bag",
+      Summary: "Spring-loaded pressure relief valve (0–70 cmH2O). Must be turned fully open before transitioning patient to spontaneous breathing to prevent high-pressure accumulation.",
+      href: "ventilator.html#apl-valve",
+      targetId: "apl-valve"
+    },
+    {
+      Type: "Workstation",
+      Category: "Workstation • Breathing System",
+      Title: "CO2 Absorber Canister (Soda Lime Reaction)",
+      Summary: "Exothermic chemical CO2 absorption using soda lime. Ethyl violet dye turns purple below pH 10.3 when absorbency is exhausted.",
+      href: "ventilator.html#breathing-circuit",
+      targetId: "breathing-circuit"
+    },
+    {
+      Type: "Workstation",
+      Category: "Workstation • Breathing System",
+      Title: "Scavenging System (AGSS - Active Gas Scavenging)",
+      Summary: "Removes waste anaesthetic gases from theatre via dedicated 30mm fittings (preventing cross-connection with 22mm patient circuit).",
+      href: "ventilator.html#scavenging",
+      targetId: "scavenging"
+    },
+    {
+      Type: "Workstation",
+      Category: "Workstation • Gas Supply",
+      Title: "Pin-Index Safety System (PISS) & Cylinder Yokes",
+      Summary: "Geometric pin indexing for medical gas cylinders: O2 is 2-5, N2O is 3-5, Medical Air is 1-5. Requires fresh Bodok neoprene seal.",
+      href: "ventilator.html#cylinder-yoke",
+      targetId: "cylinder-yoke"
+    },
+    {
+      Type: "Workstation",
+      Category: "Workstation • Aux Outlets",
+      Title: "ACGO (Auxiliary Common Gas Outlet) & Selector",
+      Summary: "Diverts metered fresh gas flow to external circuits (Mapleson F / Bain / Jackson-Rees). Interlocks mechanical ventilator when selected.",
+      href: "ventilator.html#acgo",
+      targetId: "acgo"
     }
   ];
+
+  const RECENT_KEY = "kn_recent_searches";
+  function getRecentSearches() {
+    try { return JSON.parse(localStorage.getItem(RECENT_KEY) || "[]"); } catch(_) { return []; }
+  }
+  function addRecentSearch(term) {
+    if (!term || typeof term !== "string") return;
+    const clean = term.trim();
+    if (!clean) return;
+    try {
+      let recents = getRecentSearches().filter(t => t.toLowerCase() !== clean.toLowerCase());
+      recents.unshift(clean);
+      localStorage.setItem(RECENT_KEY, JSON.stringify(recents.slice(0, 6)));
+    } catch(_) {}
+  }
+  function clearRecentSearches() {
+    try { localStorage.removeItem(RECENT_KEY); } catch(_) {}
+  }
 
   async function initSearch() {
     let memoryCatalog = null;
@@ -897,6 +990,7 @@
       if (!input || !results) return null;
 
       let timer = null;
+      let selectedIndex = -1;
 
       async function executeSearch(query) {
         const q = norm(query !== undefined ? query : input.value);
@@ -965,7 +1059,7 @@
 
         if (status) status.textContent = `${topMatches.length} matching result${topMatches.length === 1 ? "" : "s"} found`;
 
-        results.innerHTML = topMatches.map(({ item, matchContext }) => {
+        results.innerHTML = topMatches.map(({ item, matchContext }, idx) => {
           const typeName = item.Type || "Clinical Note";
           const catName = item.Category || "";
           const title = item.Title || "Untitled";
@@ -992,9 +1086,10 @@
           else if (tLower.includes("guide")) badgeClass = "kn-badge-guideline";
           else if (tLower.includes("image")) badgeClass = "kn-badge-image-asset";
           else if (tLower.includes("chamber")) badgeClass = "kn-badge-chamber";
+          else if (tLower.includes("workstation") || tLower.includes("ventilator")) badgeClass = "kn-badge-workstation";
 
           return `
-            <a class="kn-search-result" href="${esc(href)}" ${isExternalOrFile ? 'target="_blank" rel="noopener"' : ""} data-target-id="${esc(item.targetId || "")}">
+            <a class="kn-search-result" href="${esc(href)}" ${isExternalOrFile ? 'target="_blank" rel="noopener"' : ""} data-target-id="${esc(item.targetId || "")}" data-index="${idx}">
               <div class="kn-search-result-top">
                 <span class="kn-search-type ${badgeClass}">${esc(typeName)}</span>
                 ${catName ? `<span class="card-date">• ${esc(catName)}${esc(imgName)}</span>` : ""}
@@ -1004,11 +1099,14 @@
             </a>`;
         }).join("");
 
+        selectedIndex = -1;
+
         // Wire result click interception for smooth in-page action
         results.querySelectorAll(".kn-search-result").forEach((resEl, idx) => {
           resEl.addEventListener("click", e => {
             const match = topMatches[idx];
             if (match && match.item) {
+              addRecentSearch(match.item.Title || q);
               const currentPath = window.location.pathname.split("/").pop() || "index.html";
               const [targetPage] = (match.item.href || "").split("#");
               const isSamePage = !targetPage || targetPage === currentPath || (currentPath === "" && targetPage === "index.html");
@@ -1022,6 +1120,85 @@
         });
       }
 
+      // Render recent searches if available when input is empty
+      function showRecentSearches() {
+        if (input.value.trim()) return;
+        const recents = getRecentSearches();
+        if (!recents.length) {
+          if (status) status.textContent = "Start typing to search topics, subtopics, image files, clinical calculators, and active recall answers.";
+          results.innerHTML = "";
+          return;
+        }
+
+        if (status) status.textContent = "Recent searches on this device:";
+        results.innerHTML = `
+          <div class="kn-recent-searches">
+            <div class="kn-recent-header">
+              <span>Recent Searches</span>
+              <button type="button" class="kn-recent-clear-btn" id="knClearRecents">Clear</button>
+            </div>
+            <div class="kn-recent-chips">
+              ${recents.map(r => `<button type="button" class="kn-recent-chip" data-query="${esc(r)}">⌕ ${esc(r)}</button>`).join("")}
+            </div>
+          </div>
+        `;
+
+        results.querySelectorAll(".kn-recent-chip").forEach(chip => {
+          chip.addEventListener("click", () => {
+            input.value = chip.dataset.query;
+            executeSearch(chip.dataset.query);
+            input.focus();
+          });
+        });
+
+        const clearBtn = results.querySelector("#knClearRecents");
+        if (clearBtn) {
+          clearBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            clearRecentSearches();
+            showRecentSearches();
+          });
+        }
+      }
+
+      function updateSelection(newIdx) {
+        const items = results.querySelectorAll(".kn-search-result");
+        if (!items.length) return;
+        items.forEach(el => el.classList.remove("selected"));
+        if (newIdx >= 0 && newIdx < items.length) {
+          selectedIndex = newIdx;
+          items[selectedIndex].classList.add("selected");
+          items[selectedIndex].scrollIntoView({ block: "nearest", behavior: "smooth" });
+        } else {
+          selectedIndex = -1;
+        }
+      }
+
+      // Keyboard navigation (ArrowDown / ArrowUp / Enter)
+      input.addEventListener("keydown", (e) => {
+        const items = results.querySelectorAll(".kn-search-result");
+        if (!items.length) return;
+
+        if (e.key === "ArrowDown") {
+          e.preventDefault();
+          const next = selectedIndex + 1 < items.length ? selectedIndex + 1 : 0;
+          updateSelection(next);
+        } else if (e.key === "ArrowUp") {
+          e.preventDefault();
+          const prev = selectedIndex - 1 >= 0 ? selectedIndex - 1 : items.length - 1;
+          updateSelection(prev);
+        } else if (e.key === "Enter") {
+          if (selectedIndex >= 0 && items[selectedIndex]) {
+            e.preventDefault();
+            items[selectedIndex].click();
+          }
+        }
+      });
+
+      input.addEventListener("focus", () => {
+        if (!input.value.trim()) showRecentSearches();
+      });
+
       input.addEventListener("input", () => {
         clearTimeout(timer);
         timer = setTimeout(() => executeSearch(), 180);
@@ -1030,7 +1207,7 @@
       if (clear) {
         clear.addEventListener("click", () => {
           input.value = "";
-          executeSearch("");
+          showRecentSearches();
           input.focus();
         });
       }

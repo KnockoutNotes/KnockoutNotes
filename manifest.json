@@ -1,0 +1,25 @@
+{
+  "name": "KnockoutNotes — Anaesthesia Knowledge Engine",
+  "short_name": "KnockoutNotes",
+  "description": "Futuristic Anaesthesia & Critical Care Knowledge Engine, Clinical Calculators & 3D Interactive Workstation",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#070c18",
+  "theme_color": "#0284c7",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "knockoutnotes_icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "knockoutnotes_icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["medical", "education", "productivity"]
+}

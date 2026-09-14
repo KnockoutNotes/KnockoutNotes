@@ -167,7 +167,65 @@
     // ------------------------------------------------------------------------
     // 5. Active Recall Mechanics (Accordion / Answer Reveal)
     // ------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
+    // 4b. Progressive Web App (PWA) Service Worker Registration
+    // ------------------------------------------------------------------------
+    if ("serviceWorker" in navigator && window.location.protocol.startsWith("http")) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch(() => {});
+      });
+    }
+
+    // ------------------------------------------------------------------------
+    // 5. Active Recall Answer Reveal & Mastery Helpers
+    // ------------------------------------------------------------------------
+    const UNDERSTOOD_KEY = "kn_understood_cards";
+    function getUnderstoodCards() {
+      try { return JSON.parse(localStorage.getItem(UNDERSTOOD_KEY) || "[]"); } catch(_) { return []; }
+    }
+    function toggleUnderstoodCard(id) {
+      if (!id) return false;
+      try {
+        let list = getUnderstoodCards();
+        const exists = list.includes(id);
+        if (exists) {
+          list = list.filter(item => item !== id);
+        } else {
+          list.push(id);
+        }
+        localStorage.setItem(UNDERSTOOD_KEY, JSON.stringify(list));
+        return !exists;
+      } catch(_) { return false; }
+    }
+
     function wireRevealButtons(root = document) {
+      // Wire active recall mastery toggles in all answers
+      root.querySelectorAll(".answer").forEach((ans, idx) => {
+        const card = ans.closest(".card, .quick-card");
+        const cardId = ans.id || (card && card.id) || `ans_${idx}`;
+        if (!ans.querySelector(".kn-answer-actions")) {
+          const understoodList = getUnderstoodCards();
+          const isUnderstood = understoodList.includes(cardId);
+
+          const actions = document.createElement("div");
+          actions.className = "kn-answer-actions";
+          actions.innerHTML = `
+            <button type="button" class="kn-action-btn ${isUnderstood ? "understood-active" : ""}" data-card-id="${cardId}">
+              <span>${isUnderstood ? "✓ Understood" : "○ Mark as Understood"}</span>
+            </button>
+          `;
+          ans.appendChild(actions);
+
+          const actionBtn = actions.querySelector(".kn-action-btn");
+          actionBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const nowUnderstood = toggleUnderstoodCard(cardId);
+            actionBtn.classList.toggle("understood-active", nowUnderstood);
+            actionBtn.querySelector("span").textContent = nowUnderstood ? "✓ Understood" : "○ Mark as Understood";
+          });
+        }
+      });
+
       root.querySelectorAll(".reveal").forEach(btn => {
         if (btn.dataset.wired) return;
         btn.dataset.wired = "1";
