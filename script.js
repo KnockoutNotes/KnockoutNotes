@@ -168,13 +168,181 @@
     // 5. Active Recall Mechanics (Accordion / Answer Reveal)
     // ------------------------------------------------------------------------
     // ------------------------------------------------------------------------
-    // 4b. Progressive Web App (PWA) Service Worker Registration
+    // 4b. Progressive Web App (PWA) Engine:
+    // - Full offline support & background update checks
+    // - One-click Install app button for Android and PC/Desktop
+    // - Online/Offline status banner
+    // - Seamless "Update Available — Reload to update" toast
     // ------------------------------------------------------------------------
+    let deferredPrompt = null;
+    let newWorker = null;
+
+    function showNetworkPill(isOnline) {
+      let pill = document.getElementById("knNetworkPill");
+      if (!pill) {
+        pill = document.createElement("div");
+        pill.id = "knNetworkPill";
+        pill.className = "kn-network-pill";
+        document.body.appendChild(pill);
+      }
+      pill.textContent = isOnline ? "● Online — Up to date" : "● Offline Mode — Working Offline";
+      pill.className = `kn-network-pill ${isOnline ? "online" : "offline"} show`;
+      window.setTimeout(() => {
+        pill.classList.remove("show");
+      }, 3500);
+    }
+
+    window.addEventListener("online", () => showNetworkPill(true));
+    window.addEventListener("offline", () => showNetworkPill(false));
+
+    function createUpdateToast() {
+      let toast = document.getElementById("knUpdateToast");
+      if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "knUpdateToast";
+        toast.className = "kn-pwa-toast";
+        toast.setAttribute("role", "alert");
+        toast.innerHTML = `
+          <div class="kn-pwa-toast-icon">⚡</div>
+          <div class="kn-pwa-toast-content">
+            <div class="kn-pwa-toast-title">Update Available</div>
+            <div class="kn-pwa-toast-desc">A fresh clinical update is ready to load.</div>
+            <div class="kn-pwa-toast-actions">
+              <button class="kn-pwa-btn primary" id="knPwaUpdateBtn">Update Now</button>
+              <button class="kn-pwa-btn ghost" id="knPwaDismissBtn">Later</button>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(toast);
+
+        toast.querySelector("#knPwaUpdateBtn").addEventListener("click", () => {
+          if (newWorker) {
+            newWorker.postMessage({ action: "skipWaiting" });
+          } else {
+            window.location.reload();
+          }
+        });
+
+        toast.querySelector("#knPwaDismissBtn").addEventListener("click", () => {
+          toast.classList.remove("show");
+        });
+      }
+      toast.classList.add("show");
+    }
+
     if ("serviceWorker" in navigator && window.location.protocol.startsWith("http")) {
       window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./sw.js").catch(() => {});
+        navigator.serviceWorker.register("./sw.js").then((reg) => {
+          // Check for background updates periodically when online
+          reg.addEventListener("updatefound", () => {
+            const installingWorker = reg.installing;
+            if (!installingWorker) return;
+            installingWorker.addEventListener("statechange", () => {
+              if (installingWorker.state === "installed" && navigator.serviceWorker.controller) {
+                newWorker = installingWorker;
+                createUpdateToast();
+              }
+            });
+          });
+
+          // Check for service worker updates whenever the page gains focus or online
+          window.addEventListener("online", () => reg.update().catch(() => {}));
+          document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "visible") {
+              reg.update().catch(() => {});
+            }
+          });
+        }).catch(() => {});
+
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener("controllerchange", () => {
+          if (!refreshing) {
+            refreshing = true;
+            window.location.reload();
+          }
+        });
       });
     }
+
+    // Capture install prompt for Android and PC desktop Chrome/Edge
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+
+      // Show install button in HUD if not already installed and not in standalone mode
+      const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
+      if (isStandalone) return;
+
+      const isCalcPage = window.location.pathname.includes("calculators");
+      const appTitle = isCalcPage ? "Install Calculators App" : "Install App";
+      const appDesc = isCalcPage
+        ? "Add offline Clinical Calculators & Paediatric Sizer to your home screen or PC desktop."
+        : "Add KnockoutNotes to your device for instant offline access and updates.";
+
+      // 1. Inject subtle Install button in navigation HUDs
+      document.querySelectorAll(".nav-actions").forEach((actions) => {
+        if (!actions.querySelector(".hud-install-btn")) {
+          const btn = document.createElement("button");
+          btn.className = "hud-install-btn";
+          btn.title = isCalcPage ? "Install Offline Calculators App" : "Install KnockoutNotes App";
+          btn.innerHTML = `<span>⤓</span> <span>${isCalcPage ? "Install Calc" : "Install"}</span>`;
+          btn.addEventListener("click", () => promptInstall());
+          actions.insertBefore(btn, actions.firstChild);
+        }
+      });
+
+      // 2. Also inject install option in mobile menus
+      document.querySelectorAll(".mobile-menu").forEach((menu) => {
+        if (!menu.querySelector(".menu-install-link")) {
+          const a = document.createElement("a");
+          a.className = "menu-install-link";
+          a.href = "#";
+          a.innerHTML = `<span>⤓ ${isCalcPage ? "Install Calculators App" : "Install App (Offline)"}</span> <span>✦</span>`;
+          a.addEventListener("click", (evt) => {
+            evt.preventDefault();
+            promptInstall();
+          });
+          menu.insertBefore(a, menu.firstChild);
+        }
+      });
+
+      // 3. Wire any in-page banner install buttons
+      document.querySelectorAll("#btnInstallCalcBanner3d, #btnInstallCalcBanner").forEach((btn) => {
+        btn.addEventListener("click", () => promptInstall());
+      });
+
+      function promptInstall() {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then(() => {
+            deferredPrompt = null;
+            document.querySelectorAll(".hud-install-btn, .menu-install-link").forEach(el => el.remove());
+          });
+        }
+      }
+    });
+
+    // Fallback click handler for static banner buttons if clicked before beforeinstallprompt
+    document.querySelectorAll("#btnInstallCalcBanner3d, #btnInstallCalcBanner").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+        } else {
+          // Check if already installed
+          if (window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone) {
+            showNetworkPill(navigator.onLine);
+          } else {
+            alert("To install on PC: Click the 'Install' icon (⤓) in your browser address bar.\n\nTo install on Android: Tap browser menu (⋮) -> 'Install app' or 'Add to Home screen'.\n\nTo install on iOS: Tap Share (⬆) -> 'Add to Home Screen'.");
+          }
+        }
+      });
+    });
+
+    window.addEventListener("appinstalled", () => {
+      deferredPrompt = null;
+      document.querySelectorAll(".hud-install-btn, .menu-install-link").forEach(el => el.remove());
+      showNetworkPill(true);
+    });
 
     // ------------------------------------------------------------------------
     // 5. Active Recall Answer Reveal & Mastery Helpers

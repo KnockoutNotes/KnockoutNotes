@@ -23,5 +23,28 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["medical", "education", "productivity"]
+  "categories": ["medical", "education", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Clinical Calculators",
+      "short_name": "Calculators",
+      "description": "Evidence-based Anaesthesia Calculators, Paediatric Dosing & ABG Engine",
+      "url": "/calculators.html",
+      "icons": [{ "src": "knockoutnotes_icon.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "3D Workstation",
+      "short_name": "Workstation",
+      "description": "Interactive 3D Anaesthesia Workstation & Gas Systems",
+      "url": "/ventilator.html",
+      "icons": [{ "src": "knockoutnotes_icon.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Clinical Notes",
+      "short_name": "Notes",
+      "description": "Structured Anaesthesia & Critical Care Monograph Library",
+      "url": "/notes.html",
+      "icons": [{ "src": "knockoutnotes_icon.png", "sizes": "192x192" }]
+    }
+  ]
 }

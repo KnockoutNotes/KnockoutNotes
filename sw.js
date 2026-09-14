@@ -5,7 +5,7 @@
 // - Stale-While-Revalidate with safe response cloning for static app shell assets
 // ==========================================================================
 
-const CACHE_NAME = "knockoutnotes-cache-v2";
+const CACHE_NAME = "knockoutnotes-cache-v3";
 
 const PRECACHE_ASSETS = [
   "/",
@@ -30,10 +30,20 @@ const PRECACHE_ASSETS = [
   "/content-config.js",
   "/sheet-config.js",
   "/page-motion.js",
-  "/ventilator-scene.js",
+  "/spatial-bg.js",
+  "/spatial-camera.js",
+  "/spatial-scroll.js",
   "/spatial-viewer.js",
+  "/ventilator-scene.js",
+  "/calculators.js",
+  "/paeds-chart-engine.js",
+  "/paeds-pdf-export.js",
+  "/abg-engine.js",
+  "/vendor/jspdf/jspdf.umd.min.js",
+  "/vendor/jspdf/jspdf.plugin.autotable.min.js",
   "/knockoutnotes_icon.png",
-  "/manifest.json"
+  "/manifest.json",
+  "/manifest-calculators.json"
 ];
 
 self.addEventListener("install", (event) => {
@@ -42,6 +52,12 @@ self.addEventListener("install", (event) => {
       return cache.addAll(PRECACHE_ASSETS);
     }).then(() => self.skipWaiting())
   );
+});
+
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.action === "skipWaiting") {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener("activate", (event) => {
