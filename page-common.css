@@ -609,3 +609,54 @@ body:not(.dark) .kn-search-result {
   color: #4ade80;
 }
 
+/* ---- Small Policy Mention Pills (About Section) ---- */
+.policy-pill-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.policy-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 15px;
+  border-radius: 9999px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Space Grotesk', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 550;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+body:not(.dark) .policy-tab-btn {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.policy-tab-btn:hover,
+.policy-tab-btn:focus-visible {
+  color: var(--accent-cyan);
+  background: var(--soft-accent);
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+  outline: none;
+}
+
+body:not(.dark) .policy-tab-btn:hover,
+body:not(.dark) .policy-tab-btn:focus-visible {
+  color: #0284c7;
+  border-color: rgba(2, 132, 199, 0.3);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.1);
+}
+
+

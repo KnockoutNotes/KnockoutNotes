@@ -1,7 +1,7 @@
 import os
 import re
 
-print("Running Policy Pages Comprehensive Test Suite...")
+print("Running Policy Pages & About Section Comprehensive Test Suite...")
 
 POLICY_PAGES = [
     "shipping-policy.html",
@@ -21,14 +21,18 @@ print("[OK] All 6 policy HTML files exist on disk.")
 with open("resources.html", "r", encoding="utf-8") as f:
     resources = f.read()
 
+# Must have Policies & Information with small tabs
 assert "Policies & Information" in resources, "Policies & Information section missing from resources.html"
-assert "Support Knockout Notes" in resources, "Support Knockout Notes section missing from resources.html"
-assert "Buy Me a Coffee" in resources, "Buy Me a Coffee CTA missing from resources.html"
-assert "https://razorpay.me/@anaesthesia" in resources, "Razorpay payment link missing from resources.html"
+assert "policy-pill-tabs" in resources, "policy-pill-tabs container missing from resources.html"
+assert "policy-tab-btn" in resources, "policy-tab-btn missing from resources.html"
+
+# Buy Me a Coffee section must NOT be in resources.html
+assert "Buy Me a Coffee" not in resources, "Buy Me a Coffee must NOT be in resources.html"
+assert "Support Knockout Notes ☕" not in resources, "Support Knockout Notes section must NOT be in resources.html"
 
 for p in POLICY_PAGES:
     assert f'href="{p}"' in resources, f"Link to {p} missing from resources.html"
-print("[OK] resources.html correctly integrates Policies & Information grid and Buy Me a Coffee CTA.")
+print("[OK] resources.html correctly integrates Policies & Information small tabs and Buy Me a Coffee is removed.")
 
 # 3. Check each policy page for strict privacy and legal compliance
 FORBIDDEN_PATTERNS = [
@@ -55,15 +59,7 @@ for p in POLICY_PAGES:
 
 print("[OK] All 6 policy pages pass privacy, placeholder, and legal entity tests.")
 
-# 4. Check policy-config.js
-assert os.path.exists("policy-config.js"), "policy-config.js missing"
-with open("policy-config.js", "r", encoding="utf-8") as f:
-    cfg = f.read()
-assert "https://razorpay.me/@anaesthesia" in cfg, "Config missing supportUrl"
-assert "knockoutnotes.anaesthesia@gmail.com" in cfg, "Config missing contactEmail"
-print("[OK] policy-config.js verified.")
-
-# 5. Check sw.js includes policy files in precache
+# 4. Check sw.js includes policy files in precache
 with open("sw.js", "r", encoding="utf-8") as f:
     sw = f.read()
 for p in POLICY_PAGES:
