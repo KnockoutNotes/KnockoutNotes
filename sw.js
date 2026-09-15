@@ -97,6 +97,11 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  // Bypass range requests and video streaming from service worker cache
+  if (event.request.headers.get("range") || requestUrl.pathname.endsWith(".mp4")) {
+    return;
+  }
+
   const isNavigation = event.request.mode === "navigate" ||
     (event.request.headers.get("accept") && event.request.headers.get("accept").includes("text/html"));
 

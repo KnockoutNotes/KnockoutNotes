@@ -20,7 +20,7 @@ const KNOCKOUT_POLICY_CONFIG = {
   lastUpdated: "March 15, 2026",
   
   // Voluntary Support ("Buy Me a Coffee") Public Destination Link
-  supportUrl: "https://razorpay.me/@anaesthesia",
+  supportUrl: "https://bondin.io/@knockoutnotes/support",
   supportNote: "Voluntary peer-to-peer contributions help support hosting, 3D modeling, and educational authoring. Contributions are entirely optional and do not purchase a commercial service or constitute tax-deductible charitable donations.",
   
   // Commercial Status

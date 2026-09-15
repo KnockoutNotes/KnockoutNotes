@@ -687,13 +687,14 @@ body:not(.dark) .policy-tab-btn:focus-visible {
 
 .kn-coffee-big-box {
   position: relative;
+  overflow: hidden;
   z-index: 2;
   width: 100%;
   box-sizing: border-box;
   border-radius: 24px;
   padding: 38px 44px;
-  background: linear-gradient(135deg, rgba(32, 16, 8, 0.90) 0%, rgba(18, 9, 5, 0.94) 55%, rgba(10, 5, 2, 0.98) 100%) !important;
-  border: 1px solid rgba(245, 158, 11, 0.38) !important;
+  background: linear-gradient(135deg, rgba(32, 16, 8, 0.94) 0%, rgba(18, 9, 5, 0.96) 55%, rgba(10, 5, 2, 0.98) 100%) !important;
+  border: 1px solid rgba(245, 158, 11, 0.42) !important;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65),
               inset 0 1.5px 0 rgba(255, 255, 255, 0.16),
               0 0 50px rgba(245, 158, 11, 0.16) !important;
@@ -708,10 +709,60 @@ body:not(.dark) .policy-tab-btn:focus-visible {
 
 .kn-coffee-big-box:hover {
   transform: translateY(-2px);
-  border-color: rgba(245, 158, 11, 0.55) !important;
+  border-color: rgba(245, 158, 11, 0.58) !important;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.72),
               inset 0 1.5px 0 rgba(255, 255, 255, 0.22),
-              0 0 65px rgba(245, 158, 11, 0.24) !important;
+              0 0 65px rgba(245, 158, 11, 0.26) !important;
+}
+
+/* In-Box Ambient Video Background: blended seamlessly with card background */
+.kn-coffee-box-video-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.kn-coffee-box-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  object-position: center right;
+  opacity: 0.36;
+  mix-blend-mode: screen;
+  filter: contrast(118%) saturate(140%) brightness(0.92);
+  pointer-events: none;
+}
+
+.kn-coffee-box-video-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: 
+    radial-gradient(ellipse at 80% 50%, rgba(245, 158, 11, 0.16) 0%, transparent 65%),
+    linear-gradient(90deg, rgba(20, 10, 5, 0.90) 0%, rgba(16, 8, 4, 0.72) 42%, rgba(12, 6, 2, 0.85) 100%);
+  pointer-events: none;
+}
+
+.kn-coffee-box-content {
+  position: relative;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kn-coffee-box-video {
+    display: none !important;
+  }
 }
 
 .kn-coffee-box-header {
@@ -879,6 +930,75 @@ body:not(.dark) .policy-tab-btn:focus-visible {
 
 .kn-coffee-direct-link:hover .arrow {
   transform: translateX(3px);
+}
+
+/* ==========================================================================
+   Bondin Checkout Modal Alignment & Scroll Fix
+   Ensures pop up appears in middle / slightly up with full box visible & scrollable
+   ========================================================================== */
+div[data-bondin-overlay] {
+  position: fixed !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px !important;
+  background: rgba(10, 8, 6, 0.78) !important;
+  backdrop-filter: blur(8px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(140%) !important;
+  z-index: 2147483647 !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  box-sizing: border-box !important;
+}
+
+div[data-bondin-overlay] > div[role="dialog"] {
+  position: relative !important;
+  margin: auto !important;
+  width: min(640px, calc(100vw - 32px)) !important;
+  max-width: 96vw !important;
+  height: min(740px, calc(100dvh - 48px)) !important;
+  max-height: calc(100dvh - 48px) !important;
+  top: -24px !important; /* Positioned in middle of screen / slightly up */
+  transform: none !important;
+  border-radius: 20px !important;
+  background: #ffffff !important;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.12) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+div[data-bondin-overlay] iframe {
+  width: 100% !important;
+  height: 100% !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  border: 0 !important;
+}
+
+@media (max-width: 640px) {
+  div[data-bondin-overlay] {
+    padding: 10px !important;
+    align-items: flex-start !important;
+    padding-top: max(14px, env(safe-area-inset-top, 14px)) !important;
+  }
+
+  div[data-bondin-overlay] > div[role="dialog"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: calc(100dvh - 28px) !important;
+    max-height: calc(100dvh - 28px) !important;
+    top: 0 !important;
+    border-radius: 16px !important;
+  }
 }
 
 /* ==========================================================================
