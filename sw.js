@@ -5,7 +5,7 @@
 // - Stale-While-Revalidate with safe response cloning for static app shell assets
 // ==========================================================================
 
-const CACHE_NAME = "knockoutnotes-cache-v3";
+const CACHE_NAME = "knockoutnotes-cache-v5";
 
 const PRECACHE_ASSETS = [
   "/",
@@ -24,6 +24,8 @@ const PRECACHE_ASSETS = [
   "/calculators.css",
   "/library-styles.css",
   "/ventilator.css",
+  "/bubble-menu.css",
+  "/border-glow.css",
   "/script.js",
   "/kn-site-search.js",
   "/content-library.js",
@@ -39,6 +41,9 @@ const PRECACHE_ASSETS = [
   "/paeds-chart-engine.js",
   "/paeds-pdf-export.js",
   "/abg-engine.js",
+  "/bubble-menu.js",
+  "/border-glow.js",
+  "/vendor/gsap/gsap.min.js",
   "/vendor/jspdf/jspdf.umd.min.js",
   "/vendor/jspdf/jspdf.plugin.autotable.min.js",
   "/knockoutnotes_icon.png",

@@ -44,7 +44,7 @@
     if (t.includes("pearl")) return "notes.html#pearls";
     if (t.includes("valve")) return "notes.html";
     if (t.includes("note")) return "notes.html";
-    if (t.includes("viva")) return "viva.html";
+    if (t.includes("viva")) return "notes.html#viva";
     if (t.includes("drug")) return "drugs.html";
     if (t.includes("critical") || t.includes("icu")) return "critical-care.html";
     if (t.includes("chamber") || t.includes("resuscitation") || t.includes("acls")) return "resuscitation-chamber.html";
@@ -636,7 +636,7 @@
       Title: "Why does N2O expand a closed gas space?",
       Summary: "Physical mechanism of nitrous oxide diffusion into air-filled body cavities.",
       Answer: "N2O is 34 times more soluble in blood than nitrogen. It diffuses into air-containing closed gas cavities far faster than nitrogen can diffuse out, causing a rapid increase in gas volume (in compliant walls like bowel) or pressure (in rigid spaces like middle ear or pneumothorax). Miller's Anesthesia, 10th ed.",
-      href: "viva.html#v13d",
+      href: "notes.html#v13d",
       targetId: "v13d"
     },
     {
@@ -645,7 +645,7 @@
       Title: "Formula for Cerebral Perfusion Pressure (CPP)",
       Summary: "Standard physiological formula and downstream pressure gradient considerations.",
       Answer: "Standard equation: CPP = Mean Arterial Pressure (MAP) − Intracranial Pressure (ICP). When central venous pressure (CVP) or jugular venous pressure exceeds ICP, the effective downstream venous pressure may be substituted: CPP = MAP − CVP. Miller's Anesthesia, 10th ed.",
-      href: "viva.html#v23d",
+      href: "notes.html#v23d",
       targetId: "v23d"
     },
     {
@@ -654,7 +654,7 @@
       Title: "Why is etomidate relatively haemodynamically stable?",
       Summary: "Cardiovascular autonomic and baroreflex profile compared to propofol.",
       Answer: "Unlike propofol, etomidate causes minimal myocardial depression and does not inhibit sympathetic autonomic outflow or peripheral vascular tone. Baroreceptor reflexes remain largely intact, preserving cardiac output and MAP. Stoelting's Pharmacology & Physiology in Anesthetic Practice, 6th ed.",
-      href: "viva.html#v33d",
+      href: "notes.html#v33d",
       targetId: "v33d"
     },
     {
@@ -663,7 +663,7 @@
       Title: "Physiological Shunt vs Dead Space",
       Summary: "West lung zone gas-exchange mismatch definitions.",
       Answer: "Shunt (V/Q = 0): Perfusion of unventilated alveoli (e.g., atelectasis, consolidation, pulmonary AVM). Causes hypoxemia refractory to 100% O2. Dead Space (V/Q = infinity): Ventilation of unperfused alveoli (e.g., pulmonary embolism, severe hypovolaemia). Impairs CO2 elimination. West's Respiratory Physiology.",
-      href: "viva.html#v43d",
+      href: "notes.html#v43d",
       targetId: "v43d"
     },
     {
@@ -672,7 +672,7 @@
       Title: "What happens to Minimum Alveolar Concentration (MAC) with age?",
       Summary: "Age-dependent pharmacodynamic changes in volatile anaesthetics.",
       Answer: "MAC decreases by approximately 6% per decade of age beyond 40 years. This decline is attributed to reduced neuronal density, decreased CNS neurotransmitter activity, and alterations in brain lipid composition. Miller's Anesthesia, 10th ed.",
-      href: "viva.html#v53d",
+      href: "notes.html#v53d",
       targetId: "v53d"
     },
     {
@@ -681,7 +681,7 @@
       Title: "Why does spinal anaesthesia cause hypotension?",
       Summary: "Sympathectomy mechanisms and preganglionic B-fibre blockade.",
       Answer: "Blockade of preganglionic sympathetic B-fibers produces arteriolar and massive venous vasodilation (venous pooling). This significantly decreases effective circulating blood volume and right atrial venous return, reducing preload and cardiac output. High blocks (T1–T4) block cardioaccelerator fibers, causing bradycardia. NYSORA Textbook of Regional Anesthesia.",
-      href: "viva.html#v63d",
+      href: "notes.html#v63d",
       targetId: "v63d"
     },
 

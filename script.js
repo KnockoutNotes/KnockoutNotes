@@ -432,7 +432,13 @@
     function handleHashReveal() {
       const hash = window.location.hash.replace(/^#/, "");
       if (!hash) return;
-      const target = document.getElementById(hash);
+      const is3D = body.classList.contains("mode-3d");
+      let target = null;
+      if (is3D) {
+        target = document.getElementById(hash + "3d") || document.getElementById(hash);
+      } else {
+        target = document.getElementById(hash) || document.getElementById(hash.replace(/3d$/, ""));
+      }
       if (!target) return;
       const answer = target.classList.contains("answer") ? target : target.querySelector(".answer");
       if (answer) {

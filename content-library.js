@@ -601,6 +601,9 @@
     });
 
     window.KNOCKOUTNOTES_LIBRARY = cfg;
+    if (typeof window.initBorderGlow === 'function') {
+      window.initBorderGlow();
+    }
     document.dispatchEvent(new CustomEvent('knLibraryReady', { detail: { page, categories } }));
   }
 

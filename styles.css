@@ -2295,7 +2295,7 @@ a.kn-update-card:hover .kn-update-open {
   align-items: center;
   justify-content: space-between;
   padding: 0 clamp(4px, 3vw, 28px);
-  z-index: 1000;
+  z-index: 1050;
   pointer-events: none;
 }
 
