@@ -171,6 +171,26 @@
   </div>
 </footer>
 
+<!-- Workstation Beta Notice Pop-up Modal -->
+<div id="ventBetaModal" class="vent-beta-modal" role="dialog" aria-modal="true" aria-labelledby="ventBetaTitle" aria-describedby="ventBetaDesc">
+  <div class="vent-beta-backdrop" id="ventBetaBackdrop"></div>
+  <div class="vent-beta-card">
+    <div class="vent-beta-header">
+      <span class="vent-beta-badge">⚠️ BETA MODE • UNDER DEVELOPMENT</span>
+      <button type="button" class="vent-beta-close-icon" id="ventBetaCloseIcon" aria-label="Close notification">✕</button>
+    </div>
+    <div class="vent-beta-body">
+      <h3 id="ventBetaTitle" class="vent-beta-title">Anaesthesia Workstation 3D</h3>
+      <p id="ventBetaDesc" class="vent-beta-desc">
+        This 3D module is currently in <strong>beta mode</strong> and under development. <strong>Accurate pointing of parts will be available soon.</strong> Please do not use this interactive model for clinical or medical knowledge.
+      </p>
+    </div>
+    <div class="vent-beta-footer">
+      <button type="button" class="vent-beta-btn" id="ventBetaDismissBtn">Got It, Continue</button>
+    </div>
+  </div>
+</div>
+
 <!-- Contextual Schematic Modal (opened from a hotspot or Systems Guide item) -->
 <div id="ventSchematicModal" class="vent-schematic-modal" hidden role="dialog" aria-modal="true" aria-labelledby="ventSchematicTitle">
   <div class="vent-schematic-backdrop" data-schematic-close></div>

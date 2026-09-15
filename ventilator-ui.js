@@ -51,7 +51,40 @@ function initSchematicModal() {
   return { open, close };
 }
 
+// ---- Workstation Beta Notice Pop-up Modal ----
+function initBetaNoticePopup() {
+  const modal = document.getElementById("ventBetaModal");
+  if (!modal) return;
+  const dismissBtn = document.getElementById("ventBetaDismissBtn");
+  const closeIcon = document.getElementById("ventBetaCloseIcon");
+  const backdrop = document.getElementById("ventBetaBackdrop");
+
+  function show() {
+    modal.classList.add("visible");
+    if (dismissBtn) dismissBtn.focus();
+  }
+
+  function hide() {
+    modal.classList.remove("visible");
+  }
+
+  if (dismissBtn) dismissBtn.addEventListener("click", hide);
+  if (closeIcon) closeIcon.addEventListener("click", hide);
+  if (backdrop) backdrop.addEventListener("click", hide);
+
+  window.addEventListener("keydown", e => {
+    if (e.key === "Escape" && modal.classList.contains("visible")) {
+      hide();
+    }
+  });
+
+  // Small delay after page load for smooth pop-up entrance
+  setTimeout(show, 350);
+}
+
 export function initVentilatorPage() {
+  initBetaNoticePopup();
+
   const data = window.VentilatorData;
   const stageHost = document.getElementById("ventStage");
   const loadingEl = document.getElementById("ventLoading");
