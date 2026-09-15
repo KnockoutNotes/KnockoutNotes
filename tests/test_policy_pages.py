@@ -26,13 +26,14 @@ assert "Policies & Information" in resources, "Policies & Information section mi
 assert "policy-pill-tabs" in resources, "policy-pill-tabs container missing from resources.html"
 assert "policy-tab-btn" in resources, "policy-tab-btn missing from resources.html"
 
-# Buy Me a Coffee section must NOT be in resources.html
-assert "Buy Me a Coffee" not in resources, "Buy Me a Coffee must NOT be in resources.html"
-assert "Support Knockout Notes ☕" not in resources, "Support Knockout Notes section must NOT be in resources.html"
+# Verify innovative Buy Me a Coffee / Bondin support card is present
+assert "kn-coffee-card" in resources, "kn-coffee-card missing from resources.html"
+assert "bondin-support" in resources, "bondin-support widget missing from resources.html"
+assert 'username="knockoutnotes"' in resources, "knockoutnotes username missing in bondin widget"
 
 for p in POLICY_PAGES:
     assert f'href="{p}"' in resources, f"Link to {p} missing from resources.html"
-print("[OK] resources.html correctly integrates Policies & Information small tabs and Buy Me a Coffee is removed.")
+print("[OK] resources.html correctly integrates Policies & Information tabs and innovative Buy Me a Coffee card.")
 
 # 3. Check each policy page for strict privacy and legal compliance
 FORBIDDEN_PATTERNS = [

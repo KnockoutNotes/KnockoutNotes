@@ -659,4 +659,260 @@ body:not(.dark) .policy-tab-btn:focus-visible {
   box-shadow: 0 4px 12px rgba(2, 132, 199, 0.1);
 }
 
+/* ==========================================================================
+   Innovative Anaesthesia "Buy Me a Coffee" Card & Support Telemetry
+   ========================================================================== */
+.kn-coffee-card {
+  grid-column: 1 / -1 !important;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(15, 23, 42, 0.88) 55%, rgba(10, 16, 30, 0.94) 100%) !important;
+  border: 1px solid rgba(245, 158, 11, 0.35) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45),
+              inset 0 1.5px 0 rgba(255, 255, 255, 0.16),
+              0 0 35px rgba(245, 158, 11, 0.14) !important;
+  padding: 32px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+body:not(.dark) .kn-coffee-card {
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.85) 0%, rgba(255, 255, 255, 0.95) 50%, rgba(240, 249, 255, 0.92) 100%) !important;
+  border: 1px solid rgba(217, 119, 6, 0.32) !important;
+  box-shadow: 0 14px 34px rgba(217, 119, 6, 0.12),
+              inset 0 1.5px 0 #ffffff,
+              0 2px 6px rgba(0, 0, 0, 0.04) !important;
+}
+
+.kn-coffee-card:hover {
+  transform: translateY(-3px) scale(1.006) !important;
+  border-color: rgba(245, 158, 11, 0.55) !important;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.5),
+              inset 0 1.5px 0 rgba(255, 255, 255, 0.22),
+              0 0 50px rgba(245, 158, 11, 0.25) !important;
+}
+
+body:not(.dark) .kn-coffee-card:hover {
+  border-color: rgba(217, 119, 6, 0.45) !important;
+  box-shadow: 0 18px 40px rgba(217, 119, 6, 0.18),
+              inset 0 1.5px 0 #ffffff,
+              0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+.kn-coffee-tag {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #fbbf24 !important;
+  border-color: rgba(245, 158, 11, 0.45) !important;
+}
+
+body:not(.dark) .kn-coffee-tag {
+  background: #fef3c7 !important;
+  color: #b45309 !important;
+  border-color: rgba(217, 119, 6, 0.35) !important;
+}
+
+.kn-coffee-badge {
+  color: #fbbf24 !important;
+}
+
+body:not(.dark) .kn-coffee-badge {
+  color: #b45309 !important;
+}
+
+.kn-coffee-content {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+@media (max-width: 860px) {
+  .kn-coffee-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.kn-coffee-text h3 {
+  margin: 0 0 10px;
+  font-size: 23px;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  color: #f8fafc;
+}
+
+body:not(.dark) .kn-coffee-text h3 {
+  color: #090d16;
+}
+
+.kn-coffee-text p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 10px;
+}
+
+.kn-coffee-subtext {
+  color: var(--text-muted) !important;
+  font-size: 13.5px !important;
+  line-height: 1.62 !important;
+  margin: 0 0 16px !important;
+}
+
+.kn-caffeine-telemetry {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.caffeine-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 11.5px;
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: #cbd5e1;
+}
+
+body:not(.dark) .caffeine-pill {
+  background: rgba(254, 243, 199, 0.65);
+  border-color: rgba(217, 119, 6, 0.25);
+  color: #1e293b;
+}
+
+.caffeine-pill strong {
+  color: #fbbf24;
+}
+
+body:not(.dark) .caffeine-pill strong {
+  color: #b45309;
+}
+
+.kn-coffee-widget-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-width: 220px;
+  padding: 16px 20px;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.38);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+body:not(.dark) .kn-coffee-widget-box {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(217, 119, 6, 0.22);
+  box-shadow: 0 4px 16px rgba(217, 119, 6, 0.08);
+}
+
+.kn-bondin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 44px;
+}
+
+.kn-coffee-direct-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 9999px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.kn-coffee-direct-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(245, 158, 11, 0.45);
+}
+
+.kn-coffee-direct-link .arrow {
+  transition: transform 0.2s ease;
+}
+
+.kn-coffee-direct-link:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   Small Floating Bottom Corner "Buy Me a Coffee" Text Hyperlink
+   Applied to Home, Notes, Resuscitation Chamber, and Calculator
+   ========================================================================== */
+.kn-corner-support {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 900;
+  pointer-events: auto;
+}
+
+@media (max-width: 767px) {
+  .kn-corner-support {
+    bottom: 14px;
+    right: 12px;
+  }
+}
+
+.kn-corner-support-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px;
+  border-radius: 9999px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Space Grotesk', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 650;
+  text-decoration: none;
+  background: rgba(18, 18, 26, 0.82);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body:not(.dark) .kn-corner-support-link {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(217, 119, 6, 0.32);
+  color: #b45309;
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.12), inset 0 1px 0 #ffffff;
+}
+
+.kn-corner-support-link:hover,
+.kn-corner-support-link:focus-visible {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+  border-color: rgba(245, 158, 11, 0.6) !important;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
+  outline: none;
+}
+
+.kn-corner-support-link:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.kn-corner-coffee-icon {
+  font-size: 13px;
+}
+
+
 

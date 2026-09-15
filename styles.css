@@ -130,6 +130,35 @@ body {
   transition: background-color var(--transition-smooth), color var(--transition-smooth);
 }
 
+/* ==========================================================================
+   Cinematic Animated Operating Theatre Atmosphere (Day Mode)
+   Flowing clinical anaesthesia vapor & cerulean ambient gradients
+   ========================================================================== */
+@keyframes knDayAtmosphere {
+  0% {
+    background-position: 0% 40%, 100% 60%, 40% 100%;
+  }
+  50% {
+    background-position: 100% 60%, 0% 40%, 60% 0%;
+  }
+  100% {
+    background-position: 0% 40%, 100% 60%, 40% 100%;
+  }
+}
+
+body:not(.dark) {
+  background-color: #f8fafc;
+  background-image:
+    radial-gradient(ellipse 70% 60% at 15% 20%, rgba(186, 230, 253, 0.42) 0%, transparent 68%),
+    radial-gradient(ellipse 65% 55% at 85% 75%, rgba(199, 210, 254, 0.32) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 50% at 50% 95%, rgba(224, 242, 254, 0.38) 0%, transparent 70%);
+  background-size: 160% 160%, 150% 150%, 140% 140%;
+  animation: knDayAtmosphere 24s ease-in-out infinite alternate;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
 /* Applied by script.js while the mobile nav drawer or the search modal is
    open, so the page behind the overlay can't be scrolled at the same time.
    Pins the body at its current scroll offset via position:fixed rather
@@ -958,7 +987,35 @@ body:not([data-content-page="home"]) .menu-btn {
 }
 
 body:not(.dark) .card, body:not(.dark) .quick-card, body:not(.dark) .bento-card {
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.90) 100%);
+  border: 1px solid rgba(2, 132, 199, 0.18);
+  box-shadow: inset 0 1.5px 0 #ffffff,
+              inset 0 -1.5px 2px rgba(2, 132, 199, 0.06),
+              0 10px 28px -4px rgba(2, 132, 199, 0.10),
+              0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+body:not(.dark) .card:hover, body:not(.dark) .quick-card:hover, body:not(.dark) .bento-card:hover {
+  transform: translateY(-3px) scale(1.006) !important;
+  border-color: rgba(2, 132, 199, 0.38) !important;
+  box-shadow: inset 0 1.5px 0 #ffffff,
+              inset 0 -1.5px 2px rgba(2, 132, 199, 0.10),
+              0 16px 36px -4px rgba(2, 132, 199, 0.18),
+              0 4px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+body:not(.dark) .card:active, body:not(.dark) .quick-card:active, body:not(.dark) .bento-card:active {
+  transform: translateY(1px) scale(0.994) !important;
+  box-shadow: inset 0 2px 4px rgba(2, 132, 199, 0.12),
+              0 4px 12px rgba(2, 132, 199, 0.08) !important;
+}
+
+body:not(.dark) .card h3 {
+  color: #090d16 !important;
+}
+
+body:not(.dark) .card p {
+  color: #1e293b !important;
 }
 
 .card::after {

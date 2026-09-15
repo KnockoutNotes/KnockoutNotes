@@ -298,7 +298,7 @@
     const [r2, g2, b2] = env.secondary;
 
     // 1. Clinical Telemetry Grid Layer (Clean calibration grid)
-    ctx.strokeStyle = isDark ? `rgba(${r}, ${g}, ${b}, 0.038)` : `rgba(2, 132, 199, 0.07)`;
+    ctx.strokeStyle = isDark ? `rgba(${r}, ${g}, ${b}, 0.038)` : `rgba(2, 132, 199, 0.08)`;
     ctx.lineWidth = 1;
     const gridSize = 54;
     const offsetX = (mouse.x - width * 0.5) * 0.018;
@@ -315,7 +315,7 @@
     }
     ctx.stroke();
 
-    // 1b. Ambient Knowledge Glow Orbs
+    // 1b. Ambient Knowledge Glow Orbs (Cinematic anaesthetic vapor glow in Day Mode)
     for (let i = 0; i < glowOrbs.length; i++) {
       const orb = glowOrbs[i];
       orb.x += orb.vx;
@@ -329,7 +329,7 @@
       const py = orb.y + (mouse.y - height * 0.5) * 0.025;
       const [gr, gg, gb] = orb.useSecondary ? env.secondary : env.accent;
       const grad = ctx.createRadialGradient(px, py, 0, px, py, orb.r);
-      grad.addColorStop(0, `rgba(${gr}, ${gg}, ${gb}, ${isDark ? 0.09 : 0.05})`);
+      grad.addColorStop(0, isDark ? `rgba(${gr}, ${gg}, ${gb}, 0.09)` : `rgba(2, 132, 199, 0.08)`);
       grad.addColorStop(1, `rgba(${gr}, ${gg}, ${gb}, 0)`);
       ctx.fillStyle = grad;
       ctx.beginPath();
@@ -350,7 +350,7 @@
         const rad = ring * 90;
         ctx.beginPath();
         ctx.arc(0, 0, rad, 0, Math.PI * 2);
-        ctx.strokeStyle = isDark ? `rgba(${r}, ${g}, ${b}, ${0.03 * ring})` : `rgba(2, 132, 199, ${0.05 * ring})`;
+        ctx.strokeStyle = isDark ? `rgba(${r}, ${g}, ${b}, ${0.03 * ring})` : `rgba(2, 132, 199, ${0.07 * ring})`;
         ctx.setLineDash([6, 16]);
         ctx.lineWidth = 1.0;
         ctx.stroke();
@@ -365,14 +365,17 @@
     const sweepProgress = (waveTime * 1.5) % 1;
     const sweepHeadX = sweepProgress * width;
 
-    // A. Lead II ECG (Green/Cyan CRT phosphor)
+    // A. Lead II ECG (Green/Cyan CRT phosphor in dark, vivid cerulean in day)
     if (env.ecg) {
       ctx.beginPath();
-      ctx.strokeStyle = isDark ? "rgba(56, 189, 248, 0.45)" : "rgba(2, 132, 199, 0.65)";
-      ctx.lineWidth = 1.6;
+      ctx.strokeStyle = isDark ? "rgba(56, 189, 248, 0.45)" : "rgba(2, 132, 199, 0.85)";
+      ctx.lineWidth = isDark ? 1.6 : 1.8;
       if (isDark) {
         ctx.shadowColor = "rgba(56, 189, 248, 0.55)";
         ctx.shadowBlur = 6;
+      } else {
+        ctx.shadowColor = "rgba(2, 132, 199, 0.4)";
+        ctx.shadowBlur = 4;
       }
 
       const ecgWaveLength = 220;
@@ -386,27 +389,28 @@
       ctx.stroke();
       ctx.shadowBlur = 0;
 
-      // Soft glowing phosphor sweep head on ECG
-      if (isDark) {
-        const sweepY = baseY - getEcgY(sweepHeadX / ecgWaveLength - waveTime * 1.5) * 44;
-        ctx.beginPath();
-        ctx.arc(sweepHeadX, sweepY, 3, 0, Math.PI * 2);
-        ctx.fillStyle = "#38bdf8";
-        ctx.shadowColor = "#38bdf8";
-        ctx.shadowBlur = 10;
-        ctx.fill();
-        ctx.shadowBlur = 0;
-      }
+      // Soft glowing phosphor sweep head on ECG (Both Dark and Day Mode)
+      const sweepY = baseY - getEcgY(sweepHeadX / ecgWaveLength - waveTime * 1.5) * 44;
+      ctx.beginPath();
+      ctx.arc(sweepHeadX, sweepY, isDark ? 3 : 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = isDark ? "#38bdf8" : "#0284c7";
+      ctx.shadowColor = isDark ? "#38bdf8" : "rgba(2, 132, 199, 0.8)";
+      ctx.shadowBlur = isDark ? 10 : 8;
+      ctx.fill();
+      ctx.shadowBlur = 0;
     }
 
     // B. Arterial Blood Pressure (ABP / Invasive Arterial Line, Ruby / Coral Red)
     if (env.ecg && !isSmallScreen()) {
       ctx.beginPath();
-      ctx.strokeStyle = isDark ? "rgba(244, 63, 94, 0.35)" : "rgba(225, 29, 72, 0.55)";
-      ctx.lineWidth = 1.4;
+      ctx.strokeStyle = isDark ? "rgba(244, 63, 94, 0.35)" : "rgba(225, 29, 72, 0.78)";
+      ctx.lineWidth = isDark ? 1.4 : 1.6;
       if (isDark) {
         ctx.shadowColor = "rgba(244, 63, 94, 0.45)";
         ctx.shadowBlur = 5;
+      } else {
+        ctx.shadowColor = "rgba(225, 29, 72, 0.35)";
+        ctx.shadowBlur = 3;
       }
 
       const abpWaveLength = 220;
@@ -425,8 +429,8 @@
     // C. Capnography Waveform (EtCO2, Amber / Yellow Plateau)
     if (env.capno) {
       ctx.beginPath();
-      ctx.strokeStyle = isDark ? "rgba(251, 191, 36, 0.32)" : "rgba(217, 119, 6, 0.52)";
-      ctx.lineWidth = 1.3;
+      ctx.strokeStyle = isDark ? "rgba(251, 191, 36, 0.32)" : "rgba(217, 119, 6, 0.75)";
+      ctx.lineWidth = isDark ? 1.3 : 1.5;
 
       const capnoWaveLength = 360;
       for (let x = 0; x <= width; x += 4) {
@@ -442,8 +446,8 @@
     // D. SpO2 Plethysmograph (Emerald Green)
     if (env.pleth) {
       ctx.beginPath();
-      ctx.strokeStyle = isDark ? "rgba(52, 211, 153, 0.30)" : "rgba(5, 150, 105, 0.55)";
-      ctx.lineWidth = 1.2;
+      ctx.strokeStyle = isDark ? "rgba(52, 211, 153, 0.30)" : "rgba(5, 150, 105, 0.75)";
+      ctx.lineWidth = isDark ? 1.2 : 1.5;
 
       const plethWaveLength = 190;
       for (let x = 0; x <= width; x += 4) {
@@ -493,7 +497,7 @@
       ctx.arc(px, py, p.size * depthFactor, 0, Math.PI * 2);
       ctx.fillStyle = isDark
         ? `rgba(${r}, ${g}, ${b}, ${p.alpha * 0.72})`
-        : `rgba(2, 132, 199, ${p.alpha * 0.55})`;
+        : `rgba(2, 132, 199, ${p.alpha * 0.68})`;
       ctx.fill();
     }
 

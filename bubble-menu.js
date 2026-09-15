@@ -214,6 +214,7 @@
       '    <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem" class="bubble-logo">',
       '  </a>',
       '  <div class="bubble-nav-links" role="menubar">',
+      '    <div class="kn-mobile-indicator" aria-hidden="true"></div>',
       primaryLinksHtml,
       '  </div>',
       '  <div class="bubble-nav-actions">',
@@ -283,7 +284,69 @@
     document.body.appendChild(bubbleNav);
     document.body.appendChild(overlay);
 
+    setupMobileIndicator(bubbleNav);
     bindMobileEvents(bubbleNav, overlay);
+  }
+
+  // ------------------------------------------------------------------------
+  // Apple iOS-Themed 3D Glass Shifting Indicator for Mobile Main Menu
+  // Strictly applies ONLY to the primary navigation links (Home, Notes, Calc)
+  // NEVER applies to the 3-dot menu or utility buttons
+  // ------------------------------------------------------------------------
+  function setupMobileIndicator(bubbleNav) {
+    var linksContainer = bubbleNav.querySelector(".bubble-nav-links");
+    var indicator = bubbleNav.querySelector(".kn-mobile-indicator");
+    if (!linksContainer || !indicator) return;
+
+    var links = Array.from(linksContainer.querySelectorAll(".bubble-nav-link"));
+    var activeLink = linksContainer.querySelector(".bubble-nav-link.active");
+
+    function setIndicatorTo(el) {
+      if (!el) {
+        indicator.style.opacity = "0";
+        return;
+      }
+      var left = el.offsetLeft;
+      var width = el.offsetWidth;
+      indicator.style.transform = "translateX(" + left + "px)";
+      indicator.style.width = width + "px";
+      indicator.style.opacity = "1";
+    }
+
+    if (activeLink) {
+      setTimeout(function () {
+        setIndicatorTo(activeLink);
+      }, 60);
+    } else {
+      indicator.style.opacity = "0";
+    }
+
+    links.forEach(function (link) {
+      link.addEventListener("click", function () {
+        links.forEach(function (l) { l.classList.remove("active"); });
+        link.classList.add("active");
+        setIndicatorTo(link);
+      });
+      link.addEventListener("mouseenter", function () {
+        setIndicatorTo(link);
+      });
+    });
+
+    linksContainer.addEventListener("mouseleave", function () {
+      var curActive = linksContainer.querySelector(".bubble-nav-link.active");
+      if (curActive) {
+        setIndicatorTo(curActive);
+      } else {
+        indicator.style.opacity = "0";
+      }
+    });
+
+    window.addEventListener("resize", function () {
+      var curActive = linksContainer.querySelector(".bubble-nav-link.active");
+      if (curActive) {
+        setIndicatorTo(curActive);
+      }
+    }, { passive: true });
   }
 
   // ------------------------------------------------------------------------

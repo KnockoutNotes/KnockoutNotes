@@ -57,9 +57,12 @@ print(f"[OK] MOBILE_MORE_ITEMS verified (no Home/Notes/Calc): {mob_more_labels}"
 # 4. Check CSS for 2-column grid and Apple iOS glass aesthetics
 assert "grid-template-columns: repeat(2, 1fr)" in css, "Mobile more menu must be a 2-column grid"
 assert ".kn-desktop-indicator" in css, "Desktop sliding pill indicator missing"
+assert ".kn-mobile-indicator" in css, "Mobile 3D sliding pill indicator missing from CSS"
+assert "setupMobileIndicator" in js, "Mobile indicator setup function missing from JS"
+assert "kn-mobile-indicator" in js, "Mobile indicator DOM node missing from JS"
 assert ".bubble-bar-capsule" in css, "Mobile floating capsule missing"
 assert "backdrop-filter" in css, "Glassmorphism backdrop-filter missing"
-print("[OK] CSS verified: 2-column grid, iOS glassmorphism, and sliding pill indicator present.")
+print("[OK] CSS & JS verified: 2-column grid, iOS glassmorphism, and 3D sliding pill indicators (PC & mobile) present.")
 
 # 5. Check notes.html: Valve Lesions, Pearls, and Viva preserved
 assert "valves" in notes_html, "Valve Lesions content must NOT be removed from notes.html"

@@ -36,21 +36,26 @@
   gap: 12px;
   padding: 5px 12px 5px 10px;
   border-radius: 9999px;
-  background: rgba(18, 18, 22, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: rgba(15, 18, 28, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45),
+              inset 0 1.5px 0 rgba(255, 255, 255, 0.22),
+              inset 0 -1.5px 2px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(28px) saturate(190%);
   -webkit-backdrop-filter: blur(28px) saturate(190%);
   pointer-events: auto;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
   max-width: 1240px;
   box-sizing: border-box;
 }
 
 body:not(.dark) .kn-desktop-nav-capsule {
-  background: rgba(255, 255, 255, 0.86);
-  border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(2, 132, 199, 0.18);
+  box-shadow: 0 16px 36px rgba(2, 132, 199, 0.12),
+              0 2px 6px rgba(0, 0, 0, 0.04),
+              inset 0 1.5px 0 #ffffff,
+              inset 0 -1.5px 2px rgba(2, 132, 199, 0.08);
 }
 
 /* Brand Emblem & Wordmark */
@@ -113,37 +118,44 @@ body:not(.dark) .kn-desktop-brand-name span {
   padding: 3px;
   border-radius: 9999px;
   background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   flex-wrap: nowrap;
 }
 
 body:not(.dark) .kn-desktop-links {
   background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 0, 0, 0.04);
+  border-color: rgba(2, 132, 199, 0.08);
 }
 
-/* Apple iOS Sliding Pill Indicator */
+/* 3D Convex Glass Sliding Pill Indicator */
 .kn-desktop-indicator {
   position: absolute;
   top: 3px;
   left: 0;
   height: calc(100% - 6px);
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.08) 55%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.6),
+              inset 0 -1px 2px rgba(0, 0, 0, 0.3),
+              0 4px 14px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   pointer-events: none;
   z-index: 1;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: transform 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+              width 0.34s cubic-bezier(0.16, 1, 0.3, 1),
               opacity 0.2s ease;
   opacity: 0;
 }
 
 body:not(.dark) .kn-desktop-indicator {
-  background: #ffffff;
-  border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.78) 50%, rgba(240, 249, 255, 0.65) 100%);
+  border-color: rgba(2, 132, 199, 0.28);
+  box-shadow: inset 0 1.5px 1px #ffffff,
+              inset 0 -1px 2px rgba(2, 132, 199, 0.1),
+              0 4px 14px rgba(2, 132, 199, 0.16),
+              0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .kn-desktop-link {
@@ -319,20 +331,26 @@ body:not(.dark) .kn-desktop-search-btn kbd {
   gap: 6px;
   padding: 4px 8px 4px 6px;
   border-radius: 9999px;
-  background: rgba(18, 18, 22, 0.84);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: rgba(15, 18, 28, 0.70);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45),
+              inset 0 1.5px 0 rgba(255, 255, 255, 0.22),
+              inset 0 -1.5px 2px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(28px) saturate(190%);
   -webkit-backdrop-filter: blur(28px) saturate(190%);
   pointer-events: auto;
   max-width: 100%;
   box-sizing: border-box;
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body:not(.dark) .bubble-bar-capsule {
-  background: rgba(255, 255, 255, 0.88);
-  border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.74);
+  border-color: rgba(2, 132, 199, 0.20);
+  box-shadow: 0 14px 32px rgba(2, 132, 199, 0.12),
+              0 2px 6px rgba(0, 0, 0, 0.04),
+              inset 0 1.5px 0 #ffffff,
+              inset 0 -1.5px 2px rgba(2, 132, 199, 0.08);
 }
 
 .bubble-logo-link {
@@ -354,35 +372,69 @@ body:not(.dark) .bubble-bar-capsule {
 
 /* Primary Mobile Links: Home, Notes, Calculator */
 .bubble-nav-links {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 3px;
+  gap: 2px;
   padding: 2px 3px;
   border-radius: 9999px;
   background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 body:not(.dark) .bubble-nav-links {
   background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 0, 0, 0.04);
+  border-color: rgba(2, 132, 199, 0.08);
+}
+
+/* 3D Convex Glass Sliding Pill Indicator for Mobile Main Menu (Home, Notes, Calc) */
+.kn-mobile-indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: calc(100% - 4px);
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.08) 55%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.6),
+              inset 0 -1px 2px rgba(0, 0, 0, 0.3),
+              0 4px 12px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+              width 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s ease;
+  opacity: 0;
+}
+
+body:not(.dark) .kn-mobile-indicator {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.78) 50%, rgba(240, 249, 255, 0.65) 100%);
+  border-color: rgba(2, 132, 199, 0.28);
+  box-shadow: inset 0 1.5px 1px #ffffff,
+              inset 0 -1px 2px rgba(2, 132, 199, 0.1),
+              0 4px 14px rgba(2, 132, 199, 0.16),
+              0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .bubble-nav-link {
-  padding: 5px 9px;
+  position: relative;
+  z-index: 2;
+  padding: 5px 10px;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Space Grotesk', system-ui, sans-serif;
   font-size: 12.5px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.65);
   text-decoration: none;
   border-radius: 9999px;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
   white-space: nowrap;
   line-height: 1.25;
 }
 
 body:not(.dark) .bubble-nav-link {
-  color: #64748b;
+  color: #475569;
 }
 
 .bubble-nav-link:hover,
@@ -395,20 +447,15 @@ body:not(.dark) .bubble-nav-link:active {
   color: #0f172a;
 }
 
-/* Active Pill Highlight (matches reference image) */
+/* Active Pill Highlight - styled to let the moving 3D indicator glow through */
 .bubble-nav-link.active {
   color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.14) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12);
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 body:not(.dark) .bubble-nav-link.active {
   color: #0f172a !important;
-  background: #ffffff !important;
-  border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  font-weight: 600;
 }
 
 /* Responsive Calc label */
