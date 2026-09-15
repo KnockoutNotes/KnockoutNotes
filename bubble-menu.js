@@ -1,44 +1,51 @@
 // ==========================================================================
 // KNOCKOUTNOTES — Unified Navigation Controller (bubble-menu.js)
-// Desktop & Tablet (>= 768px): Minimalist Horizontal Pill Navbar
-// Mobile (< 768px): React Bits BubbleMenu Floating Capsule & Staggered Reveal
+// Desktop & Tablet (>= 768px): Apple iOS-Themed Glass Floating Capsule with Smooth Shifting Pill Indicator
+// Mobile (< 768px): Minimalist Floating Capsule Bar (Home, Notes, Calculator, Search, 3-Dot, Theme)
+//                  + 2-Column Glass Card Overlay for Secondary Sections
 // ==========================================================================
 
 (function () {
   "use strict";
 
+  // Desktop Navigation Links (>= 768px)
+  // Cleaned: Valve Lesions, Pearls, and Viva removed (available inside Notes)
   var DESKTOP_LINKS = [
     { label: 'Home', href: 'index.html', ariaLabel: 'Home' },
     { label: 'Notes', href: 'notes.html', ariaLabel: 'Clinical Notes' },
-    { label: 'Pearls', href: 'pearls.html', ariaLabel: 'Clinical Pearls' },
-    { label: 'Valve Lesions', href: 'notes.html#valves', ariaLabel: 'Valve Lesions Haemodynamics' },
     { label: 'Calculators', href: 'calculators.html', ariaLabel: 'Anaesthesia Calculators' },
     { label: '3D Workstation', href: 'ventilator.html', ariaLabel: '3D Anaesthesia Workstation' },
     { label: 'Drugs', href: 'drugs.html', ariaLabel: 'Pharmacology Library' },
     { label: 'Critical Care', href: 'critical-care.html', ariaLabel: 'Critical Care & Code' },
-    { label: 'Viva', href: 'notes.html#viva', ariaLabel: 'Viva Exam Drills in Notes' },
     { label: 'About', href: 'resources.html', ariaLabel: 'About KnockoutNotes' }
   ];
 
-  var MOBILE_ITEMS = [
-    { label: 'Home', href: 'index.html', ariaLabel: 'Home', hoverColor: '#0284c7' },
-    { label: 'Notes', href: 'notes.html', ariaLabel: 'Clinical Notes', hoverColor: '#0ea5e9' },
-    { label: 'Pearls', href: 'pearls.html', ariaLabel: 'Clinical Pearls', hoverColor: '#06b6d4' },
-    { label: 'Valve Lesions', href: 'notes.html#valves', ariaLabel: 'Valve Lesions Haemodynamics', hoverColor: '#0d9488' },
-    { label: 'Calculators', href: 'calculators.html', ariaLabel: 'Anaesthesia Calculators', hoverColor: '#2563eb' },
-    { label: '3D Workstation', href: 'ventilator.html', ariaLabel: '3D Anaesthesia Workstation', hoverColor: '#7c3aed' },
-    { label: 'Drugs', href: 'drugs.html', ariaLabel: 'Drug Library', hoverColor: '#0891b2' },
-    { label: 'Critical Care & Code', href: 'critical-care.html', ariaLabel: 'Critical Care & Code', hoverColor: '#dc2626' },
-    { label: 'Viva Drills', href: 'notes.html#viva', ariaLabel: 'Viva Exam Drills in Notes', hoverColor: '#9333ea' },
-    { label: 'Recent Updates', href: 'recent-updates.html', ariaLabel: 'Recent Updates', hoverColor: '#0284c7' },
-    { label: 'About & Evidence', href: 'resources.html', ariaLabel: 'About KnockoutNotes', hoverColor: '#059669' }
+  // Mobile Primary Bar Links (< 768px)
+  // Minimalist: Home, Notes, Calculator
+  var MOBILE_PRIMARY_LINKS = [
+    { label: 'Home', href: 'index.html', ariaLabel: 'Home' },
+    { label: 'Notes', href: 'notes.html', ariaLabel: 'Clinical Notes' },
+    { label: 'Calculator', href: 'calculators.html', ariaLabel: 'Anaesthesia Calculators', shortLabel: 'Calc' }
+  ];
+
+  // Mobile 3-Dot Drawer Items (2-Column Grid)
+  // Strictly excludes Home, Notes, and Calculator (and removed Valve Lesions, Pearls, Viva)
+  var MOBILE_MORE_ITEMS = [
+    { label: '3D Workstation', href: 'ventilator.html', ariaLabel: '3D Anaesthesia Workstation', icon: '🫁', desc: 'Interactive Machine' },
+    { label: 'Drugs Library', href: 'drugs.html', ariaLabel: 'Pharmacology Library', icon: '💊', desc: 'Dosing & Kinetics' },
+    { label: 'Critical Care', href: 'critical-care.html', ariaLabel: 'Critical Care & Code Blue', icon: '⚡', desc: 'ICU & Resuscitation' },
+    { label: 'Resuscitation', href: 'resuscitation-chamber.html', ariaLabel: 'Resuscitation Chamber', icon: '🚨', desc: 'ALS Protocols' },
+    { label: 'Recent Updates', href: 'recent-updates.html', ariaLabel: 'Recent Updates & Changelog', icon: '✨', desc: 'Latest Features' },
+    { label: 'About & Evidence', href: 'resources.html', ariaLabel: 'About KnockoutNotes', icon: '📖', desc: 'Evidence & Methodology' }
   ];
 
   var isMobileMenuOpen = false;
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function getCurrentPath() {
-    return window.location.pathname.split("/").pop() || "index.html";
+    var path = window.location.pathname.split("/").pop() || "index.html";
+    if (path === "") path = "index.html";
+    return path;
   }
 
   // ------------------------------------------------------------------------
@@ -68,7 +75,7 @@
         '  ' + item.label,
         '</a>'
       ].join("");
-    }).join("");
+    }).join("\n");
 
     nav.innerHTML = [
       '<div class="kn-desktop-nav-capsule">',
@@ -77,11 +84,13 @@
       '    <span class="kn-desktop-brand-name">Knockout<span>Notes</span></span>',
       '  </a>',
       '  <div class="kn-desktop-links" role="menubar">',
+      '    <div class="kn-desktop-indicator" aria-hidden="true"></div>',
       linksHtml,
       '  </div>',
       '  <div class="kn-desktop-actions">',
       '    <button type="button" class="kn-desktop-action-btn kn-desktop-search-btn" data-open-search title="Search Database (⌘K)" aria-label="Open search">',
-      '      <span>Search</span>',
+      '      <span class="kn-icon-search">⌕</span>',
+      '      <span class="kn-search-text">Search</span>',
       '      <kbd>⌘K</kbd>',
       '    </button>',
       '    <button type="button" class="kn-desktop-action-btn kn-desktop-theme-btn" id="knDesktopThemeToggle" title="Toggle theme" aria-label="Toggle theme">',
@@ -91,7 +100,7 @@
       '</div>'
     ].join("\n");
 
-    // Insert at the top of the body or active presentation layer
+    // Insert at the top of the body
     var firstChild = document.body.firstChild;
     document.body.insertBefore(nav, firstChild);
 
@@ -100,10 +109,69 @@
     if (themeBtn) {
       themeBtn.addEventListener("click", toggleTheme);
     }
+
+    // Setup smooth Apple iOS sliding indicator
+    setupDesktopIndicator(nav);
   }
 
   // ------------------------------------------------------------------------
-  // 2. Render Mobile BubbleMenu (< 768px)
+  // Apple iOS-Themed Smooth Shifting Indicator for Desktop
+  // ------------------------------------------------------------------------
+  function setupDesktopIndicator(nav) {
+    var linksContainer = nav.querySelector(".kn-desktop-links");
+    var indicator = nav.querySelector(".kn-desktop-indicator");
+    if (!linksContainer || !indicator) return;
+
+    var links = Array.from(linksContainer.querySelectorAll(".kn-desktop-link"));
+    var activeLink = linksContainer.querySelector(".kn-desktop-link.active");
+
+    function setIndicatorTo(el) {
+      if (!el) {
+        indicator.style.opacity = "0";
+        return;
+      }
+      var left = el.offsetLeft;
+      var width = el.offsetWidth;
+      indicator.style.transform = "translateX(" + left + "px)";
+      indicator.style.width = width + "px";
+      indicator.style.opacity = "1";
+    }
+
+    // Initial positioning with slight delay for font render
+    if (activeLink) {
+      setTimeout(function () {
+        setIndicatorTo(activeLink);
+      }, 50);
+    } else {
+      indicator.style.opacity = "0";
+    }
+
+    links.forEach(function (link) {
+      link.addEventListener("mouseenter", function () {
+        setIndicatorTo(link);
+      });
+      link.addEventListener("focus", function () {
+        setIndicatorTo(link);
+      });
+    });
+
+    linksContainer.addEventListener("mouseleave", function () {
+      if (activeLink) {
+        setIndicatorTo(activeLink);
+      } else {
+        indicator.style.opacity = "0";
+      }
+    });
+
+    window.addEventListener("resize", function () {
+      if (activeLink) {
+        setIndicatorTo(activeLink);
+      }
+    }, { passive: true });
+  }
+
+  // ------------------------------------------------------------------------
+  // 2. Render Mobile Navigation (< 768px): Minimalist Capsule & 2-Col 3-Dot Drawer
   // ------------------------------------------------------------------------
   function renderMobileBubbleMenu() {
     if (document.getElementById("knBubbleNav")) return;
@@ -111,64 +179,105 @@
     var currentPath = getCurrentPath();
     var currentHash = window.location.hash;
 
-    // Mobile Header Bar
+    // Check if current page is one of the secondary 3-dot items
+    var isMoreActive = MOBILE_MORE_ITEMS.some(function (item) {
+      return item.href === currentPath;
+    });
+
+    // Mobile Header Floating Capsule Bar
     var bubbleNav = document.createElement("nav");
     bubbleNav.id = "knBubbleNav";
     bubbleNav.className = "bubble-menu";
     bubbleNav.setAttribute("aria-label", "KnockoutNotes mobile navigation");
 
+    var primaryLinksHtml = MOBILE_PRIMARY_LINKS.map(function (item) {
+      var isCurPage = item.href === currentPath || (currentPath === "index.html" && item.href === "index.html");
+      var isActive = (!item.href.includes("#") && isCurPage);
+
+      var labelHtml = item.shortLabel
+        ? '<span class="calc-label-full">' + item.label + '</span><span class="calc-label-short">' + item.shortLabel + '</span>'
+        : item.label;
+
+      return [
+        '<a href="' + item.href + '"',
+        '   class="bubble-nav-link' + (isActive ? ' active' : '') + '"',
+        '   role="menuitem"',
+        '   aria-label="' + item.ariaLabel + '">',
+        '  ' + labelHtml,
+        '</a>'
+      ].join("");
+    }).join("\n");
+
     bubbleNav.innerHTML = [
-      '<a class="bubble logo-bubble" href="index.html" aria-label="KnockoutNotes Home">',
-      '  <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem" class="bubble-logo">',
-      '  <span class="bubble-brand-name">Knockout<span>Notes</span></span>',
-      '</a>',
-      '<div class="bubble-actions">',
-      '  <button type="button" class="bubble-action-btn" id="knBubbleSearchBtn" data-open-search title="Search (⌘K)" aria-label="Open search">',
-      '    <span>⌕</span>',
-      '  </button>',
-      '  <button type="button" class="bubble-action-btn" id="knBubbleThemeBtn" title="Toggle Theme" aria-label="Toggle dark/light theme">',
-      '    <span class="kn-theme-icon-slot">☾</span>',
-      '  </button>',
-      '  <button type="button" class="bubble toggle-bubble menu-btn" id="knBubbleMenuToggle" aria-label="Open mobile navigation" aria-expanded="false">',
-      '    <span class="menu-line"></span>',
-      '    <span class="menu-line"></span>',
-      '  </button>',
+      '<div class="bubble-bar-capsule">',
+      '  <a class="bubble-logo-link" href="index.html" aria-label="KnockoutNotes Home">',
+      '    <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem" class="bubble-logo">',
+      '  </a>',
+      '  <div class="bubble-nav-links" role="menubar">',
+      primaryLinksHtml,
+      '  </div>',
+      '  <div class="bubble-nav-actions">',
+      '    <button type="button" class="bubble-action-btn kn-bubble-search-btn" id="knBubbleSearchBtn" data-open-search title="Search Database (⌘K)" aria-label="Open search">',
+      '      <span>⌕</span>',
+      '    </button>',
+      '    <button type="button" class="bubble-action-btn kn-more-toggle-btn' + (isMoreActive ? ' has-active' : '') + '" id="knBubbleMenuToggle" title="More sections" aria-label="More navigation options" aria-expanded="false">',
+      '      <span class="kn-dots-icon">⋮</span>',
+      '      <span class="kn-active-dot" aria-hidden="true"></span>',
+      '    </button>',
+      '    <button type="button" class="bubble-action-btn kn-bubble-theme-btn" id="knBubbleThemeBtn" title="Toggle dark/light theme" aria-label="Toggle theme">',
+      '      <span class="kn-theme-icon-slot">☾</span>',
+      '    </button>',
+      '  </div>',
       '</div>'
     ].join("\n");
 
-    // Mobile Fullscreen Staggered Overlay
+    // Mobile 2-Column Glass Overlay for Extended Sections
     var overlay = document.createElement("div");
     overlay.id = "knBubbleOverlay";
     overlay.className = "bubble-menu-items";
     overlay.setAttribute("aria-hidden", "true");
     overlay.setAttribute("role", "dialog");
-    overlay.setAttribute("aria-label", "Mobile navigation menu");
+    overlay.setAttribute("aria-label", "More navigation options");
 
-    var pillsHtml = MOBILE_ITEMS.map(function (item, idx) {
-      var isCurPage = item.href === currentPath || (currentPath === "index.html" && item.href === "index.html");
+    var moreCardsHtml = MOBILE_MORE_ITEMS.map(function (item, idx) {
+      var isCurPage = item.href === currentPath;
       var isCurHash = item.href.indexOf("#") !== -1 && (currentPath + currentHash).indexOf(item.href) !== -1;
       var isActive = isCurHash || (!item.href.includes("#") && isCurPage);
 
       return [
-        '<li class="pill-col" role="none">',
-        '  <a class="pill-link' + (isActive ? ' active-route' : '') + '"',
+        '<li class="kn-more-item" role="none">',
+        '  <a class="kn-more-card' + (isActive ? ' active-route' : '') + '"',
         '     role="menuitem"',
         '     href="' + item.href + '"',
-        '     data-pill-index="' + idx + '"',
-        '     aria-label="' + item.ariaLabel + '"',
-        '     style="--hover-bg: ' + item.hoverColor + ';">',
-        '    <span class="pill-label">' + item.label + '</span>',
-        '    <span class="pill-arrow" aria-hidden="true">→</span>',
+        '     data-card-index="' + idx + '"',
+        '     aria-label="' + item.ariaLabel + '">',
+        '    <div class="kn-more-card-top">',
+        '      <span class="kn-more-card-icon" aria-hidden="true">' + item.icon + '</span>',
+        '      <span class="kn-more-card-arrow" aria-hidden="true">→</span>',
+        '    </div>',
+        '    <div class="kn-more-card-body">',
+        '      <span class="kn-more-card-label">' + item.label + '</span>',
+        '      <span class="kn-more-card-desc">' + item.desc + '</span>',
+        '    </div>',
         '  </a>',
         '</li>'
       ].join("\n");
     }).join("\n");
 
     overlay.innerHTML = [
-      '<ul class="pill-list" role="menu" aria-label="Menu links">',
-      pillsHtml,
-      '</ul>',
-      '<div class="pill-close-hint">Tap outside or press <kbd>ESC</kbd> to close</div>'
+      '<div class="kn-more-container">',
+      '  <div class="kn-more-header">',
+      '    <div class="kn-more-heading">',
+      '      <span class="kn-more-title">More Sections</span>',
+      '      <span class="kn-more-sub">KnockoutNotes Suite</span>',
+      '    </div>',
+      '    <button type="button" class="kn-more-close-btn" id="knBubbleCloseBtn" aria-label="Close menu">✕</button>',
+      '  </div>',
+      '  <ul class="kn-more-grid" role="menu" aria-label="Extended menu links">',
+      moreCardsHtml,
+      '  </ul>',
+      '  <div class="pill-close-hint">Tap outside or press <kbd>ESC</kbd> to close</div>',
+      '</div>'
     ].join("\n");
 
     document.body.appendChild(bubbleNav);
@@ -178,7 +287,7 @@
   }
 
   // ------------------------------------------------------------------------
-  // 3. Mobile Open/Close State & Robust Scroll-Lock Handling
+  // 3. Mobile Open/Close State & Smooth Animation
   // ------------------------------------------------------------------------
   function setMobileMenuState(open) {
     var overlay = document.getElementById("knBubbleOverlay");
@@ -206,49 +315,48 @@
       document.body.style.top = "";
     }
 
-    var bubbles = Array.from(overlay.querySelectorAll(".pill-link"));
-    var labels = Array.from(overlay.querySelectorAll(".pill-label"));
+    var cards = Array.from(overlay.querySelectorAll(".kn-more-card"));
+    var header = overlay.querySelector(".kn-more-header");
     var gsap = window.gsap;
 
     if (open) {
       overlay.style.display = "flex";
 
       if (gsap && !prefersReducedMotion) {
-        gsap.killTweensOf(bubbles.concat(labels));
-        gsap.set(bubbles, { scale: 0, transformOrigin: "50% 50%" });
-        gsap.set(labels, { y: 16, autoAlpha: 0 });
+        gsap.killTweensOf(cards);
+        if (header) gsap.killTweensOf(header);
 
-        bubbles.forEach(function (bubble, i) {
-          var tl = gsap.timeline({ delay: i * 0.05 });
-          tl.to(bubble, {
-            scale: 1,
-            duration: 0.35,
-            ease: "back.out(1.5)"
-          });
-          if (labels[i]) {
-            tl.to(labels[i], {
-              y: 0,
-              autoAlpha: 1,
-              duration: 0.28,
-              ease: "power3.out"
-            }, "-=0.25");
-          }
-        });
+        gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.22, ease: "power2.out" });
+
+        if (header) {
+          gsap.fromTo(header, { y: -10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power2.out" });
+        }
+
+        gsap.fromTo(cards,
+          { scale: 0.88, y: 16, opacity: 0 },
+          { scale: 1, y: 0, opacity: 1, duration: 0.32, stagger: 0.04, ease: "back.out(1.4)" }
+        );
       } else {
-        bubbles.forEach(function (b) { b.style.opacity = "1"; b.style.transform = "none"; });
-        labels.forEach(function (l) { l.style.opacity = "1"; l.style.transform = "none"; });
+        overlay.style.opacity = "1";
+        cards.forEach(function (c) { c.style.opacity = "1"; c.style.transform = "none"; });
       }
 
-      var firstLink = overlay.querySelector(".pill-link");
-      if (firstLink) firstLink.focus();
+      var firstCard = overlay.querySelector(".kn-more-card");
+      if (firstCard) firstCard.focus();
     } else {
       if (gsap && !prefersReducedMotion) {
-        gsap.killTweensOf(bubbles.concat(labels));
-        gsap.to(labels, { y: 12, autoAlpha: 0, duration: 0.15, ease: "power3.in" });
-        gsap.to(bubbles, {
-          scale: 0,
-          duration: 0.15,
-          ease: "power3.in",
+        gsap.killTweensOf(cards);
+        gsap.to(cards, {
+          scale: 0.92,
+          y: 8,
+          opacity: 0,
+          duration: 0.16,
+          ease: "power2.in"
+        });
+        gsap.to(overlay, {
+          opacity: 0,
+          duration: 0.18,
+          ease: "power2.in",
           onComplete: function () {
             overlay.style.display = "none";
           }
@@ -270,14 +378,22 @@
       });
     }
 
+    var closeBtn = document.getElementById("knBubbleCloseBtn");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        setMobileMenuState(false);
+      });
+    }
+
     var themeBtn = document.getElementById("knBubbleThemeBtn");
     if (themeBtn) {
       themeBtn.addEventListener("click", toggleTheme);
     }
 
-    // Click outside to close
+    // Click outside overlay container to close
     overlay.addEventListener("click", function (e) {
-      if (e.target === overlay) {
+      if (e.target === overlay || e.target.classList.contains("kn-more-container")) {
         setMobileMenuState(false);
       }
     });
@@ -289,10 +405,10 @@
       }
     });
 
-    // Pill link clicks
-    overlay.querySelectorAll(".pill-link").forEach(function (link) {
-      link.addEventListener("click", function (e) {
-        var href = link.getAttribute("href");
+    // Card clicks
+    overlay.querySelectorAll(".kn-more-card").forEach(function (card) {
+      card.addEventListener("click", function (e) {
+        var href = card.getAttribute("href");
         if (!href) return;
 
         var curPath = getCurrentPath();
