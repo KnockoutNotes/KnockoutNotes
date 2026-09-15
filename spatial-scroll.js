@@ -775,8 +775,7 @@
   const STATIC_TARGETS = {
     "home": [".bento-grid"],
     "critical-care": [".grid"],
-    "viva": [".grid"],
-    "resources": [".grid"]
+    "viva": [".grid"]
   };
 
   function autoInit() {

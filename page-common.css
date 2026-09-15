@@ -660,157 +660,187 @@ body:not(.dark) .policy-tab-btn:focus-visible {
 }
 
 /* ==========================================================================
-   Innovative Anaesthesia "Buy Me a Coffee" Card & Support Telemetry
+   Upper About Coffee Section: Live Vapor Background & Single Big Box
+   Dark Themed Only — Fades to normal spatial telemetry canvas on scroll
    ========================================================================== */
-.kn-coffee-card {
-  grid-column: 1 / -1 !important;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(15, 23, 42, 0.88) 55%, rgba(10, 16, 30, 0.94) 100%) !important;
-  border: 1px solid rgba(245, 158, 11, 0.35) !important;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45),
-              inset 0 1.5px 0 rgba(255, 255, 255, 0.16),
-              0 0 35px rgba(245, 158, 11, 0.14) !important;
-  padding: 32px 36px;
+.kn-about-coffee-hero-section {
   position: relative;
+  width: 100%;
+  padding: 44px 0 36px;
+  margin-bottom: 24px;
   overflow: hidden;
+  border-radius: 28px;
+  mask-image: linear-gradient(180deg, #000 78%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 78%, transparent 100%);
+}
+
+.kn-coffee-vapor-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 28px;
+  transition: opacity 0.25s ease;
+}
+
+.kn-coffee-big-box {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 24px;
+  padding: 38px 44px;
+  background: linear-gradient(135deg, rgba(32, 16, 8, 0.90) 0%, rgba(18, 9, 5, 0.94) 55%, rgba(10, 5, 2, 0.98) 100%) !important;
+  border: 1px solid rgba(245, 158, 11, 0.38) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65),
+              inset 0 1.5px 0 rgba(255, 255, 255, 0.16),
+              0 0 50px rgba(245, 158, 11, 0.16) !important;
+  color: #f8fafc !important;
+  color-scheme: dark;
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-body:not(.dark) .kn-coffee-card {
-  background: linear-gradient(135deg, rgba(254, 243, 199, 0.85) 0%, rgba(255, 255, 255, 0.95) 50%, rgba(240, 249, 255, 0.92) 100%) !important;
-  border: 1px solid rgba(217, 119, 6, 0.32) !important;
-  box-shadow: 0 14px 34px rgba(217, 119, 6, 0.12),
-              inset 0 1.5px 0 #ffffff,
-              0 2px 6px rgba(0, 0, 0, 0.04) !important;
-}
-
-.kn-coffee-card:hover {
-  transform: translateY(-3px) scale(1.006) !important;
+.kn-coffee-big-box:hover {
+  transform: translateY(-2px);
   border-color: rgba(245, 158, 11, 0.55) !important;
-  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.5),
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.72),
               inset 0 1.5px 0 rgba(255, 255, 255, 0.22),
-              0 0 50px rgba(245, 158, 11, 0.25) !important;
+              0 0 65px rgba(245, 158, 11, 0.24) !important;
 }
 
-body:not(.dark) .kn-coffee-card:hover {
-  border-color: rgba(217, 119, 6, 0.45) !important;
-  box-shadow: 0 18px 40px rgba(217, 119, 6, 0.18),
-              inset 0 1.5px 0 #ffffff,
-              0 4px 12px rgba(0, 0, 0, 0.05) !important;
+.kn-coffee-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
-.kn-coffee-tag {
-  background: rgba(245, 158, 11, 0.15) !important;
-  color: #fbbf24 !important;
-  border-color: rgba(245, 158, 11, 0.45) !important;
+.kn-coffee-box-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 850;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.14);
+  padding: 5px 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(245, 158, 11, 0.4);
 }
 
-body:not(.dark) .kn-coffee-tag {
-  background: #fef3c7 !important;
-  color: #b45309 !important;
-  border-color: rgba(217, 119, 6, 0.35) !important;
+.kn-coffee-box-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: rgba(245, 158, 11, 0.85);
 }
 
-.kn-coffee-badge {
-  color: #fbbf24 !important;
-}
-
-body:not(.dark) .kn-coffee-badge {
-  color: #b45309 !important;
-}
-
-.kn-coffee-content {
+.kn-coffee-box-body {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 32px;
+  gap: 36px;
   align-items: center;
-  margin-top: 8px;
 }
 
 @media (max-width: 860px) {
-  .kn-coffee-content {
+  .kn-coffee-box-body {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 22px;
+  }
+  .kn-coffee-big-box {
+    padding: 26px 24px;
   }
 }
 
-.kn-coffee-text h3 {
-  margin: 0 0 10px;
-  font-size: 23px;
+.kn-coffee-box-text h2 {
+  margin: 0 0 12px;
+  font-size: clamp(24px, 3.2vw, 32px);
   font-weight: 850;
-  letter-spacing: -0.02em;
-  color: #f8fafc;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  color: #ffffff !important;
 }
 
-body:not(.dark) .kn-coffee-text h3 {
-  color: #090d16;
-}
-
-.kn-coffee-text p {
-  color: var(--text-secondary);
-  font-size: 15px;
+.kn-coffee-lead {
+  font-size: 16px;
   line-height: 1.7;
-  margin: 0 0 10px;
+  color: #f1f5f9 !important;
+  margin: 0 0 12px;
 }
 
-.kn-coffee-subtext {
-  color: var(--text-muted) !important;
-  font-size: 13.5px !important;
-  line-height: 1.62 !important;
-  margin: 0 0 16px !important;
-}
-
-.kn-caffeine-telemetry {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.caffeine-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 12px;
-  border-radius: 9999px;
-  font-size: 11.5px;
-  font-family: 'JetBrains Mono', monospace;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  color: #cbd5e1;
-}
-
-body:not(.dark) .caffeine-pill {
-  background: rgba(254, 243, 199, 0.65);
-  border-color: rgba(217, 119, 6, 0.25);
-  color: #1e293b;
-}
-
-.caffeine-pill strong {
+.kn-coffee-lead strong {
   color: #fbbf24;
 }
 
-body:not(.dark) .caffeine-pill strong {
-  color: #b45309;
+.kn-coffee-desc {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #94a3b8 !important;
+  margin: 0;
 }
 
-.kn-coffee-widget-box {
+.kn-coffee-box-action {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  min-width: 220px;
-  padding: 16px 20px;
-  border-radius: 18px;
-  background: rgba(0, 0, 0, 0.38);
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  min-width: 230px;
+  padding: 18px 22px;
+  border-radius: 20px;
+  background: rgba(10, 5, 2, 0.55);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
-body:not(.dark) .kn-coffee-widget-box {
-  background: rgba(255, 255, 255, 0.88);
-  border-color: rgba(217, 119, 6, 0.22);
-  box-shadow: 0 4px 16px rgba(217, 119, 6, 0.08);
+/* ==========================================================================
+   Simple Small Sized Cards for Textbooks & Standards
+   ========================================================================== */
+.kn-simple-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.kn-small-card {
+  padding: 22px 24px !important;
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px !important;
+}
+
+.kn-small-card h3 {
+  font-size: 17.5px !important;
+  font-weight: 750 !important;
+  margin: 0 0 10px !important;
+  letter-spacing: -0.015em;
+}
+
+.kn-small-card p {
+  font-size: 13.5px !important;
+  line-height: 1.6 !important;
+  margin: 0 0 12px !important;
+}
+
+.kn-small-list {
+  padding-left: 18px;
+  margin: 0 0 14px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.kn-small-card .reference {
+  font-size: 11px !important;
+  margin-top: auto;
+  opacity: 0.85;
 }
 
 .kn-bondin-container {

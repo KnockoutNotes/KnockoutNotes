@@ -5,7 +5,7 @@
 // - Stale-While-Revalidate with safe response cloning for static app shell assets
 // ==========================================================================
 
-const CACHE_NAME = "knockoutnotes-cache-v10";
+const CACHE_NAME = "knockoutnotes-cache-v11";
 
 const PRECACHE_ASSETS = [
   "/",
@@ -51,6 +51,7 @@ const PRECACHE_ASSETS = [
   "/abg-engine.js",
   "/bubble-menu.js",
   "/border-glow.js",
+  "/coffee-bg.js",
   "/vendor/gsap/gsap.min.js",
   "/vendor/jspdf/jspdf.umd.min.js",
   "/vendor/jspdf/jspdf.plugin.autotable.min.js",
