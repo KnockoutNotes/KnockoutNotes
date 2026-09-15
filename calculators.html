@@ -2969,8 +2969,8 @@
     });
   }
 
-  // Initialize all calculators on DOM load
-  document.addEventListener("DOMContentLoaded", () => {
+  // Initialize all calculators on DOM load or client-side navigation
+  function initAllCalculators() {
     updatePaedsChart();
     updateParkland();
     updateBmi();
@@ -2986,7 +2986,17 @@
     setupABGControls();
     setupTabs();
     setup3DHapticDepth();
-  });
+  }
+
+  window.KnockoutCalculators = {
+    init: initAllCalculators
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initAllCalculators);
+  } else {
+    initAllCalculators();
+  }
 })();
 </script>
 
@@ -2999,6 +3009,7 @@
 </aside>
 
 <script src="vendor/gsap/gsap.min.js"></script>
+<script src="spa-router.js"></script>
 <script src="bubble-menu.js"></script>
 <script src="border-glow.js"></script>
 

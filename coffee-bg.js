@@ -164,6 +164,10 @@
     render();
   }
 
+  window.KnockoutCoffeeBg = {
+    init: initCoffeeBg
+  };
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initCoffeeBg);
   } else {

@@ -42,6 +42,11 @@
   var isMobileMenuOpen = false;
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  var currentActiveDesktopLink = null;
+  var setDesktopIndicatorTo = null;
+  var currentActiveMobileLink = null;
+  var setMobileIndicatorTo = null;
+
   function getCurrentPath() {
     var path = window.location.pathname.split("/").pop() || "index.html";
     if (path === "") path = "index.html";
@@ -123,9 +128,9 @@
     if (!linksContainer || !indicator) return;
 
     var links = Array.from(linksContainer.querySelectorAll(".kn-desktop-link"));
-    var activeLink = linksContainer.querySelector(".kn-desktop-link.active");
+    currentActiveDesktopLink = linksContainer.querySelector(".kn-desktop-link.active");
 
-    function setIndicatorTo(el) {
+    setDesktopIndicatorTo = function (el) {
       if (!el) {
         indicator.style.opacity = "0";
         return;
@@ -135,12 +140,12 @@
       indicator.style.transform = "translateX(" + left + "px)";
       indicator.style.width = width + "px";
       indicator.style.opacity = "1";
-    }
+    };
 
     // Initial positioning with slight delay for font render
-    if (activeLink) {
+    if (currentActiveDesktopLink) {
       setTimeout(function () {
-        setIndicatorTo(activeLink);
+        setDesktopIndicatorTo(currentActiveDesktopLink);
       }, 50);
     } else {
       indicator.style.opacity = "0";
@@ -148,24 +153,24 @@
 
     links.forEach(function (link) {
       link.addEventListener("mouseenter", function () {
-        setIndicatorTo(link);
+        setDesktopIndicatorTo(link);
       });
       link.addEventListener("focus", function () {
-        setIndicatorTo(link);
+        setDesktopIndicatorTo(link);
       });
     });
 
     linksContainer.addEventListener("mouseleave", function () {
-      if (activeLink) {
-        setIndicatorTo(activeLink);
+      if (currentActiveDesktopLink) {
+        setDesktopIndicatorTo(currentActiveDesktopLink);
       } else {
         indicator.style.opacity = "0";
       }
     });
 
     window.addEventListener("resize", function () {
-      if (activeLink) {
-        setIndicatorTo(activeLink);
+      if (currentActiveDesktopLink) {
+        setDesktopIndicatorTo(currentActiveDesktopLink);
       }
     }, { passive: true });
   }
@@ -299,9 +304,9 @@
     if (!linksContainer || !indicator) return;
 
     var links = Array.from(linksContainer.querySelectorAll(".bubble-nav-link"));
-    var activeLink = linksContainer.querySelector(".bubble-nav-link.active");
+    currentActiveMobileLink = linksContainer.querySelector(".bubble-nav-link.active");
 
-    function setIndicatorTo(el) {
+    setMobileIndicatorTo = function (el) {
       if (!el) {
         indicator.style.opacity = "0";
         return;
@@ -311,11 +316,11 @@
       indicator.style.transform = "translateX(" + left + "px)";
       indicator.style.width = width + "px";
       indicator.style.opacity = "1";
-    }
+    };
 
-    if (activeLink) {
+    if (currentActiveMobileLink) {
       setTimeout(function () {
-        setIndicatorTo(activeLink);
+        setMobileIndicatorTo(currentActiveMobileLink);
       }, 60);
     } else {
       indicator.style.opacity = "0";
@@ -325,26 +330,25 @@
       link.addEventListener("click", function () {
         links.forEach(function (l) { l.classList.remove("active"); });
         link.classList.add("active");
-        setIndicatorTo(link);
+        currentActiveMobileLink = link;
+        setMobileIndicatorTo(link);
       });
       link.addEventListener("mouseenter", function () {
-        setIndicatorTo(link);
+        setMobileIndicatorTo(link);
       });
     });
 
     linksContainer.addEventListener("mouseleave", function () {
-      var curActive = linksContainer.querySelector(".bubble-nav-link.active");
-      if (curActive) {
-        setIndicatorTo(curActive);
+      if (currentActiveMobileLink) {
+        setMobileIndicatorTo(currentActiveMobileLink);
       } else {
         indicator.style.opacity = "0";
       }
     });
 
     window.addEventListener("resize", function () {
-      var curActive = linksContainer.querySelector(".bubble-nav-link.active");
-      if (curActive) {
-        setIndicatorTo(curActive);
+      if (currentActiveMobileLink) {
+        setMobileIndicatorTo(currentActiveMobileLink);
       }
     }, { passive: true });
   }
@@ -596,6 +600,73 @@
   var themeObserver = new MutationObserver(syncThemeIcons);
   themeObserver.observe(document.body, { attributes: true, attributeFilter: ["class"] });
 
+  function setActiveRoute(targetPath, targetHash) {
+    targetPath = targetPath || getCurrentPath();
+    targetHash = targetHash !== undefined ? targetHash : window.location.hash;
+
+    // Desktop
+    var desktopNav = document.getElementById("knDesktopNav");
+    if (desktopNav) {
+      var dLinks = Array.from(desktopNav.querySelectorAll(".kn-desktop-link"));
+      var dActive = null;
+      dLinks.forEach(function (link) {
+        var href = link.getAttribute("href") || "";
+        var isMatch = false;
+        if (href.indexOf("#") !== -1) {
+          isMatch = (targetPath + targetHash).indexOf(href) !== -1;
+        } else {
+          isMatch = (href === targetPath || (targetPath === "index.html" && href === "index.html"));
+        }
+        if (isMatch) {
+          link.classList.add("active");
+          dActive = link;
+        } else {
+          link.classList.remove("active");
+        }
+      });
+      currentActiveDesktopLink = dActive;
+      if (typeof setDesktopIndicatorTo === "function" && dActive) {
+        setDesktopIndicatorTo(dActive);
+      }
+    }
+
+    // Mobile Primary Bar
+    var bubbleNav = document.getElementById("knBubbleNav");
+    if (bubbleNav) {
+      var mLinks = Array.from(bubbleNav.querySelectorAll(".bubble-nav-link"));
+      var mActive = null;
+      mLinks.forEach(function (link) {
+        var href = link.getAttribute("href") || "";
+        var isMatch = (href === targetPath || (targetPath === "index.html" && href === "index.html"));
+        if (isMatch) {
+          link.classList.add("active");
+          mActive = link;
+        } else {
+          link.classList.remove("active");
+        }
+      });
+      currentActiveMobileLink = mActive;
+      if (typeof setMobileIndicatorTo === "function" && mActive) {
+        setMobileIndicatorTo(mActive);
+      }
+    }
+
+    // HUD path indicator
+    var hudPath = document.getElementById("knHudPath3d");
+    if (hudPath) {
+      var labels = {
+        "index.html": "KN // OR WORKSTATION",
+        "notes.html": "KN // STUDY REPOSITORY",
+        "calculators.html": "KN // ANAESTHESIA CALCULATORS",
+        "ventilator.html": "KN // ANAESTHESIA WORKSTATION",
+        "drugs.html": "KN // PHARMACOLOGY LIBRARY",
+        "critical-care.html": "KN // CRITICAL CARE & CODE",
+        "resources.html": "KN // EVIDENCE & POLICIES"
+      };
+      if (labels[targetPath]) hudPath.textContent = labels[targetPath];
+    }
+  }
+
   function initNavigation() {
     renderDesktopNav();
     renderMobileBubbleMenu();
@@ -606,7 +677,9 @@
   window.KnockoutNavigation = {
     init: initNavigation,
     openMobileMenu: function () { setMobileMenuState(true); },
-    closeMobileMenu: function () { setMobileMenuState(false); }
+    closeMobileMenu: function () { setMobileMenuState(false); },
+    setActiveRoute: setActiveRoute,
+    handleHashRoute: handleHashRoute
   };
 
   if (document.readyState === "loading") {

@@ -944,5 +944,32 @@ body:not(.dark) .kn-corner-support-link {
   font-size: 13px;
 }
 
+/* ==========================================================================
+   KnockoutNotes Instant Client-Side SPA Page Stage
+   ========================================================================== */
+#knPageStage {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  opacity: 1;
+  transition: opacity 0.12s cubic-bezier(0.16, 1, 0.3, 1), transform 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
 
+#knPageStage.kn-stage-transitioning {
+  opacity: 0.18;
+  transform: translateY(2px);
+}
 
+.kn-page-view {
+  width: 100%;
+  min-height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #knPageStage,
+  #knPageStage.kn-stage-transitioning {
+    transition: none !important;
+    transform: none !important;
+  }
+}
