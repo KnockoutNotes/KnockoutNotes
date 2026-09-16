@@ -1093,3 +1093,28 @@ body:not(.dark) .kn-corner-support-link {
     transform: none !important;
   }
 }
+
+/* ==========================================================================
+   Footer Connect, Follow & Support Styling
+   ========================================================================== */
+.footer-support-sub {
+  display: inline-block;
+  text-transform: none;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: normal;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+
+.social.social-coffee {
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.social.social-coffee:hover {
+  border-color: #f59e0b;
+  color: #f59e0b;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.28);
+  transform: translateY(-2px);
+}

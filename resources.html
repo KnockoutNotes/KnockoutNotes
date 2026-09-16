@@ -117,7 +117,7 @@
               <div class="kn-coffee-box-action">
                 <div class="kn-bondin-container">
                   <script async src="https://bondin.io/embed/v1.js"></script>
-                  <bondin-support username="knockoutnotes" label="Support me"></bondin-support>
+                  <bondin-support username="@knockoutnotes" label="Support me"></bondin-support>
                 </div>
                 <a class="kn-coffee-direct-link" href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" aria-label="Support KnockoutNotes with coffee on Bondin">
                   <span>☕ Buy me a coffee on Bondin</span>
@@ -236,10 +236,11 @@
       </div>
     </div>
     <div class="footer-connect">
-      <strong>Connect & Follow</strong>
+      <strong>Connect, Follow &amp; Support <span class="footer-support-sub">(by buying me a coffee)</span></strong>
       <div class="socials">
-        <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
-        <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
+        <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes" title="Email KnockoutNotes">✉</a>
+        <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes" title="Instagram">◎</a>
+        <a class="social social-coffee" href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" aria-label="Support KnockoutNotes (by buying me a coffee)" title="Buy me a coffee">☕</a>
       </div>
       <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
     </div>
@@ -334,7 +335,7 @@
               <div class="kn-coffee-box-action">
                 <div class="kn-bondin-container">
                   <script async src="https://bondin.io/embed/v1.js"></script>
-                  <bondin-support username="knockoutnotes" label="Support me"></bondin-support>
+                  <bondin-support username="@knockoutnotes" label="Support me"></bondin-support>
                 </div>
                 <a class="kn-coffee-direct-link" href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" aria-label="Support KnockoutNotes with coffee on Bondin">
                   <span>☕ Buy me a coffee on Bondin</span>
@@ -453,10 +454,11 @@
       </div>
     </div>
     <div class="footer-connect">
-      <strong>Connect & Follow</strong>
+      <strong>Connect, Follow &amp; Support <span class="footer-support-sub">(by buying me a coffee)</span></strong>
       <div class="socials">
-        <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes">✉</a>
-        <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
+        <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes" title="Email KnockoutNotes">✉</a>
+        <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes" title="Instagram">◎</a>
+        <a class="social social-coffee" href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" aria-label="Support KnockoutNotes (by buying me a coffee)" title="Buy me a coffee">☕</a>
       </div>
       <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
     </div>
@@ -506,6 +508,15 @@
 <script src="bubble-menu.js"></script>
 <script src="border-glow.js"></script>
 <script src="coffee-bg.js"></script>
+<script>
+  // Safeguard: Ensure all Bondin modal and checkout links strictly resolve to @knockoutnotes
+  document.addEventListener('click', function(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="bondin.io"]') : null;
+    if (a && a.href && a.href.includes('bondin.io') && !a.href.includes('@knockoutnotes') && !a.href.includes('%40knockoutnotes')) {
+      a.href = 'https://bondin.io/@knockoutnotes/support';
+    }
+  }, true);
+</script>
 
 </body>
 </html>

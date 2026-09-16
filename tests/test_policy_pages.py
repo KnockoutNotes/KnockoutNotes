@@ -29,7 +29,7 @@ assert "policy-tab-btn" in resources, "policy-tab-btn missing from resources.htm
 # Verify innovative Buy Me a Coffee / Bondin support card is present
 assert "kn-coffee-card" in resources, "kn-coffee-card missing from resources.html"
 assert "bondin-support" in resources, "bondin-support widget missing from resources.html"
-assert 'username="knockoutnotes"' in resources, "knockoutnotes username missing in bondin widget"
+assert 'username="@knockoutnotes"' in resources, "@knockoutnotes username missing in bondin widget"
 
 for p in POLICY_PAGES:
     assert f'href="{p}"' in resources, f"Link to {p} missing from resources.html"

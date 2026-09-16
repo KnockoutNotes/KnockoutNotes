@@ -982,11 +982,11 @@ body:not([data-content-page="home"]) .menu-btn {
   will-change: transform, box-shadow;
 }
 
-.dark .card, .dark .quick-card, .dark .bento-card {
+.dark .card, .dark .quick-card, .dark .bento-card, .dark .explore-card {
   background: linear-gradient(180deg, rgba(14, 23, 44, 0.85) 0%, rgba(9, 15, 30, 0.78) 100%);
 }
 
-body:not(.dark) .card, body:not(.dark) .quick-card, body:not(.dark) .bento-card {
+body:not(.dark) .card, body:not(.dark) .quick-card, body:not(.dark) .bento-card, body:not(.dark) .explore-card {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.90) 100%);
   border: 1px solid rgba(2, 132, 199, 0.18);
   box-shadow: inset 0 1.5px 0 #ffffff,
@@ -995,7 +995,7 @@ body:not(.dark) .card, body:not(.dark) .quick-card, body:not(.dark) .bento-card 
               0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
-body:not(.dark) .card:hover, body:not(.dark) .quick-card:hover, body:not(.dark) .bento-card:hover {
+body:not(.dark) .card:hover, body:not(.dark) .quick-card:hover, body:not(.dark) .bento-card:hover, body:not(.dark) .explore-card:hover {
   transform: translateY(-3px) scale(1.006) !important;
   border-color: rgba(2, 132, 199, 0.38) !important;
   box-shadow: inset 0 1.5px 0 #ffffff,
@@ -1004,7 +1004,7 @@ body:not(.dark) .card:hover, body:not(.dark) .quick-card:hover, body:not(.dark) 
               0 4px 12px rgba(0, 0, 0, 0.06) !important;
 }
 
-body:not(.dark) .card:active, body:not(.dark) .quick-card:active, body:not(.dark) .bento-card:active {
+body:not(.dark) .card:active, body:not(.dark) .quick-card:active, body:not(.dark) .bento-card:active, body:not(.dark) .explore-card:active {
   transform: translateY(1px) scale(0.994) !important;
   box-shadow: inset 0 2px 4px rgba(2, 132, 199, 0.12),
               0 4px 12px rgba(2, 132, 199, 0.08) !important;
@@ -1228,20 +1228,20 @@ a.kn-update-card:hover .kn-update-open {
 
 .explore-card {
   text-decoration: none;
-  border-radius: var(--radius-lg);
-  background: var(--bg-card);
-  border: 1px solid var(--border-specular);
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-smooth);
+  cursor: pointer;
 }
 
-.explore-card:hover {
-  transform: translateY(-6px) translateZ(24px);
-  border-color: var(--accent-cyan);
-  box-shadow: var(--shadow-md), 0 0 35px rgba(56, 189, 248, 0.18);
+.explore-card .card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.explore-card .tag {
+  align-self: flex-start;
+  width: fit-content;
 }
 
 .explore-card .card-arrow {
