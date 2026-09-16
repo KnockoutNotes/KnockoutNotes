@@ -588,49 +588,42 @@
     // ------------------------------------------------------------------------
     const ecgCanvases = Array.from(document.querySelectorAll("#knEcgCanvas, #knEcgCanvas3d, .ecg-screen canvas"));
     if (ecgCanvases.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      // Dynamic state tracked per canvas to support full PC screen widths and multi-layers
+      // Dynamic state tracked per canvas to ensure 100% full box coverage across PC and mobile
       const canvasStates = new Map();
 
       function resizeCanvas(cvs) {
         const parent = cvs.parentElement;
         if (!parent) return;
         const rect = parent.getBoundingClientRect();
-        if (rect.width <= 0 || rect.height <= 0) return;
+        const w = Math.round(parent.clientWidth || rect.width || 520);
+        const h = Math.round(parent.clientHeight || rect.height || 180);
+        if (w <= 0 || h <= 0) return;
 
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        const cssW = Math.floor(rect.width);
-        const cssH = Math.floor(rect.height);
-
-        if (cvs.width !== Math.round(cssW * dpr) || cvs.height !== Math.round(cssH * dpr)) {
-          cvs.width = Math.round(cssW * dpr);
-          cvs.height = Math.round(cssH * dpr);
+        if (cvs.width !== w || cvs.height !== h) {
+          cvs.width = w;
+          cvs.height = h;
         }
-        cvs.style.width = cssW + "px";
-        cvs.style.height = cssH + "px";
-
-        const ctx = cvs.getContext("2d");
-        if (ctx) {
-          ctx.setTransform(dpr, 0, 0, dpr, 0, 0); // Scale context to CSS pixels
-        }
+        cvs.style.width = "100%";
+        cvs.style.height = "100%";
 
         let state = canvasStates.get(cvs);
         if (!state) {
           state = {
             scanX: 0,
-            history: new Float32Array(cssW + 120).fill(0),
-            cssW: cssW,
-            cssH: cssH
+            history: new Float32Array(w + 120).fill(0),
+            w: w,
+            h: h
           };
           canvasStates.set(cvs, state);
         } else {
-          if (state.history.length < cssW + 120) {
-            const newHist = new Float32Array(cssW + 120);
-            newHist.set(state.history.subarray(0, Math.min(state.history.length, cssW)));
+          if (state.history.length < w + 120) {
+            const newHist = new Float32Array(w + 120);
+            newHist.set(state.history.subarray(0, Math.min(state.history.length, w)));
             state.history = newHist;
           }
-          state.cssW = cssW;
-          state.cssH = cssH;
-          if (state.scanX >= cssW) {
+          state.w = w;
+          state.h = h;
+          if (state.scanX >= w) {
             state.scanX = 0;
           }
         }
@@ -644,8 +637,11 @@
       window.addEventListener("resize", resizeAllCanvases, { passive: true });
 
       if (window.ResizeObserver) {
-        const ro = new ResizeObserver(() => {
-          resizeAllCanvases();
+        const ro = new ResizeObserver((entries) => {
+          for (const entry of entries) {
+            const cvs = entry.target.querySelector("canvas");
+            if (cvs) resizeCanvas(cvs);
+          }
         });
         document.querySelectorAll(".ecg-screen").forEach(el => ro.observe(el));
       }
@@ -692,59 +688,134 @@
         return 0;
       }
 
-      // Live Physiological Vitals Simulator (Drifts smoothly within clinical normal targets)
-      const vitalsData = {
+      // Live Physiological Vitals Simulator (HR, SpO2, MAP, MAC, ETCO2, Temp)
+      const currentVitals = {
         hr: 72,
         spo2: 99,
         map: 85,
+        mac: 1.05,
         etco2: 38,
-        mac: 1.05
+        temp: 36.8
       };
 
-      function updateVitalsDisplay(tickEl) {
-        document.querySelectorAll(".kn-vital-hr, .hud-hr-val").forEach(el => { el.textContent = vitalsData.hr; });
-        document.querySelectorAll(".kn-vital-spo2").forEach(el => { el.textContent = vitalsData.spo2; });
-        document.querySelectorAll(".kn-vital-map").forEach(el => { el.textContent = vitalsData.map; });
-        document.querySelectorAll(".kn-vital-etco2, .hud-etco2-val").forEach(el => { el.textContent = vitalsData.etco2; });
-        document.querySelectorAll(".kn-vital-mac, .hud-mac-val").forEach(el => { el.textContent = vitalsData.mac.toFixed(2); });
+      const targetVitals = { ...currentVitals };
 
-        if (tickEl) {
-          document.querySelectorAll(".vital-box .vital-val").forEach(el => {
-            el.classList.add("vital-tick");
-            setTimeout(() => el.classList.remove("vital-tick"), 260);
-          });
+      // Backwards-compatible vitalsData proxy object
+      const vitalsData = targetVitals;
+
+      function updateVitalsDisplay() {
+        document.querySelectorAll(".kn-vital-hr, .hud-hr-val").forEach(el => { el.textContent = Math.round(currentVitals.hr); });
+        document.querySelectorAll(".kn-vital-spo2").forEach(el => { el.textContent = Math.round(currentVitals.spo2); });
+        document.querySelectorAll(".kn-vital-map").forEach(el => { el.textContent = Math.round(currentVitals.map); });
+        document.querySelectorAll(".kn-vital-mac, .hud-mac-val").forEach(el => { el.textContent = currentVitals.mac.toFixed(2); });
+        document.querySelectorAll(".kn-vital-etco2, .hud-etco2-val").forEach(el => { el.textContent = Math.round(currentVitals.etco2); });
+        document.querySelectorAll(".kn-vital-temp").forEach(el => { el.textContent = currentVitals.temp.toFixed(1); });
+      }
+
+      // Smooth gradual numerical animation step
+      let vitalAnimFrame = null;
+      function stepVitalsAnimation() {
+        let isChanging = false;
+
+        const hrDelta = targetVitals.hr - currentVitals.hr;
+        if (Math.abs(hrDelta) > 0.05) {
+          currentVitals.hr += hrDelta * 0.08;
+          isChanging = true;
+        } else {
+          currentVitals.hr = targetVitals.hr;
+        }
+
+        const spo2Delta = targetVitals.spo2 - currentVitals.spo2;
+        if (Math.abs(spo2Delta) > 0.05) {
+          currentVitals.spo2 += spo2Delta * 0.08;
+          isChanging = true;
+        } else {
+          currentVitals.spo2 = targetVitals.spo2;
+        }
+
+        const mapDelta = targetVitals.map - currentVitals.map;
+        if (Math.abs(mapDelta) > 0.05) {
+          currentVitals.map += mapDelta * 0.08;
+          isChanging = true;
+        } else {
+          currentVitals.map = targetVitals.map;
+        }
+
+        const macDelta = targetVitals.mac - currentVitals.mac;
+        if (Math.abs(macDelta) > 0.002) {
+          currentVitals.mac += macDelta * 0.06;
+          isChanging = true;
+        } else {
+          currentVitals.mac = targetVitals.mac;
+        }
+
+        const etco2Delta = targetVitals.etco2 - currentVitals.etco2;
+        if (Math.abs(etco2Delta) > 0.05) {
+          currentVitals.etco2 += etco2Delta * 0.08;
+          isChanging = true;
+        } else {
+          currentVitals.etco2 = targetVitals.etco2;
+        }
+
+        const tempDelta = targetVitals.temp - currentVitals.temp;
+        if (Math.abs(tempDelta) > 0.01) {
+          currentVitals.temp += tempDelta * 0.06;
+          isChanging = true;
+        } else {
+          currentVitals.temp = targetVitals.temp;
+        }
+
+        updateVitalsDisplay();
+
+        if (isChanging) {
+          vitalAnimFrame = requestAnimationFrame(stepVitalsAnimation);
+        } else {
+          vitalAnimFrame = null;
         }
       }
 
       function tickVitals() {
         if (document.hidden) return;
-        // Natural physiological drift
-        const hrDrift = Math.floor(Math.random() * 3) - 1; // -1, 0, or +1
-        vitalsData.hr = Math.max(69, Math.min(75, vitalsData.hr + hrDrift));
 
-        const rSpo2 = Math.random();
-        vitalsData.spo2 = rSpo2 > 0.85 ? 100 : (rSpo2 < 0.08 ? 98 : 99);
+        // Natural slow physiological drift
+        const hrDrift = (Math.random() < 0.45 ? (Math.random() < 0.5 ? 1 : -1) : 0);
+        targetVitals.hr = Math.max(69, Math.min(75, targetVitals.hr + hrDrift));
 
-        const mapDrift = Math.floor(Math.random() * 3) - 1;
-        vitalsData.map = Math.max(83, Math.min(88, vitalsData.map + mapDrift));
+        if (Math.random() < 0.3) {
+          targetVitals.spo2 = Math.random() < 0.85 ? 99 : (Math.random() < 0.5 ? 98 : 100);
+        }
 
-        const etco2Drift = Math.floor(Math.random() * 3) - 1;
-        vitalsData.etco2 = Math.max(36, Math.min(39, vitalsData.etco2 + etco2Drift));
+        const mapDrift = (Math.random() < 0.4 ? (Math.random() < 0.5 ? 1 : -1) : 0);
+        targetVitals.map = Math.max(83, Math.min(88, targetVitals.map + mapDrift));
 
         const macDrift = (Math.random() - 0.5) * 0.02;
-        vitalsData.mac = +(Math.max(1.02, Math.min(1.08, vitalsData.mac + macDrift))).toFixed(2);
+        targetVitals.mac = +(Math.max(1.02, Math.min(1.08, targetVitals.mac + macDrift))).toFixed(2);
 
-        updateVitalsDisplay(true);
+        const etco2Drift = (Math.random() < 0.4 ? (Math.random() < 0.5 ? 1 : -1) : 0);
+        targetVitals.etco2 = Math.max(36, Math.min(39, targetVitals.etco2 + etco2Drift));
+
+        const tempDrift = (Math.random() < 0.35 ? (Math.random() < 0.5 ? 0.1 : -0.1) : 0);
+        targetVitals.temp = +(Math.max(36.6, Math.min(37.0, targetVitals.temp + tempDrift))).toFixed(1);
+
+        if (!vitalAnimFrame) {
+          vitalAnimFrame = requestAnimationFrame(stepVitalsAnimation);
+        }
+
+        // Soft visual pulse on updated vitals
+        document.querySelectorAll(".vital-box .vital-val").forEach(el => {
+          el.classList.add("vital-tick");
+          setTimeout(() => el.classList.remove("vital-tick"), 380);
+        });
       }
 
-      // Automatically animate values every 3 seconds
-      setInterval(tickVitals, 3000);
-      updateVitalsDisplay(false);
+      // Automatically animate values slowly and smoothly every 4 seconds
+      setInterval(tickVitals, 4000);
+      updateVitalsDisplay();
 
       // Smooth calibrated sweep parameters: ~68 px/sec (calm, authentic 25 mm/s clinical sweep)
       let lastTime = performance.now();
       const sweepPixelsPerSecond = 68;
-      const scanWidth = 26; // Erase bar ahead of sweep head
+      const scanWidth = 24; // Erase bar ahead of sweep head
 
       function renderEcg(now) {
         if (document.hidden) {
@@ -773,13 +844,15 @@
           const eCtx = cvs.getContext("2d");
           if (!eCtx) return;
 
-          const w = state.cssW;
-          const h = state.cssH;
+          const w = state.w;
+          const h = state.h;
           if (w <= 0 || h <= 0) return;
 
-          const cycleLength = 175; // Diagnostic wave cycle width
-          const midY = h * 0.58;
-          const amp = h * 0.40;
+          // Seamless beat cycles across the full box width
+          const beatsAcross = Math.max(2, Math.round(w / 175));
+          const cycleLength = w / beatsAcross;
+          const midY = h * 0.56;
+          const amp = h * 0.38;
 
           const startX = state.scanX;
           const endX = startX + step;
@@ -822,7 +895,7 @@
           eCtx.fill();
           eCtx.shadowBlur = 0;
 
-          // Advance scanX across the FULL WIDTH of the canvas without artificial caps
+          // Advance scanX across the 100% FULL WIDTH of the canvas without artificial caps
           state.scanX = endX;
           if (state.scanX >= w) {
             state.scanX = 0;

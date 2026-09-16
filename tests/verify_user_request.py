@@ -46,26 +46,34 @@ print("[PASS] Explore cards in index.html wrap .tag inside .card-top!")
 # 4. ECG Canvas & Telemetry Grid in index.html
 assert "knEcgCanvas3d" in index_html, "knEcgCanvas3d missing in index.html 3D view"
 assert "knEcgCanvas" in index_html, "knEcgCanvas missing in index.html Lite view"
-assert "ecg-monitor-hud" in index_html, "ecg-monitor-hud missing in index.html"
+assert "ecg-monitor-hud" not in index_html, "ecg-monitor-hud must be removed from ECG screen in index.html"
 assert "kn-vital-hr" in index_html, "kn-vital-hr class missing in index.html"
 assert "kn-vital-spo2" in index_html, "kn-vital-spo2 class missing in index.html"
 assert "kn-vital-map" in index_html, "kn-vital-map class missing in index.html"
-assert "kn-vital-etco2" in index_html, "kn-vital-etco2 class missing in index.html"
 assert "kn-vital-mac" in index_html, "kn-vital-mac class missing in index.html"
-assert "hud-etco2-val" in index_html, "hud-etco2-val missing in ecg monitor hud"
-assert "hud-mac-val" in index_html, "hud-mac-val missing in ecg monitor hud"
-print("[PASS] index.html telemetry HUD & 5-parameter grid (HR, SpO2, MAP, ETCO2, MAC) verified!")
+assert "kn-vital-etco2" in index_html, "kn-vital-etco2 class missing in index.html"
+assert "kn-vital-temp" in index_html, "kn-vital-temp class missing in index.html"
+
+# Verify exact order: HR -> SpO2 -> MAP -> MAC -> ETCO2 -> Temp
+pos_hr = index_html.find("kn-vital-hr")
+pos_spo2 = index_html.find("kn-vital-spo2")
+pos_map = index_html.find("kn-vital-map")
+pos_mac = index_html.find("kn-vital-mac")
+pos_etco2 = index_html.find("kn-vital-etco2")
+pos_temp = index_html.find("kn-vital-temp")
+assert pos_hr < pos_spo2 < pos_map < pos_mac < pos_etco2 < pos_temp, "Vitals must be ordered HR -> SpO2 -> MAP -> MAC -> ETCO2 -> Temp"
+print("[PASS] index.html telemetry clean screen & 6-parameter grid in exact order (HR, SpO2, MAP, MAC, ETCO2, Temp) verified!")
 
 # 5. CSS Rules in styles.css
 with open("styles.css", "r", encoding="utf-8") as f:
     styles_css = f.read()
 
 assert "#knEcgCanvas3d" in styles_css, "styles.css must include #knEcgCanvas3d in canvas sizing"
-assert "grid-template-columns: repeat(5, 1fr)" in styles_css, "styles.css must support 5 columns for vitals grid"
+assert "grid-template-columns: repeat(6, 1fr)" in styles_css, "styles.css must support 6 columns for vitals grid"
 assert ".vital-box.violet" in styles_css, "styles.css must include violet style for MAC"
-assert ".ecg-monitor-hud" in styles_css, "styles.css must style .ecg-monitor-hud"
+assert ".vital-box.teal" in styles_css, "styles.css must include teal style for Temp"
 assert ".explore-card .tag" in styles_css, "styles.css must constrain .explore-card .tag"
-print("[PASS] styles.css telemetry HUD, canvas 100% width, and vital colors verified!")
+print("[PASS] styles.css 6-column vitals grid, canvas 100% width, and vital colors verified!")
 
 # 6. script.js Full Width & Animation Engine
 with open("script.js", "r", encoding="utf-8") as f:
@@ -76,7 +84,9 @@ assert "sweepPixelsPerSecond" in script_js, "script.js must use calibrated smoot
 assert "vitalsData" in script_js, "script.js must have vitalsData state"
 assert "kn-vital-mac" in script_js, "script.js must update kn-vital-mac"
 assert "kn-vital-etco2" in script_js, "script.js must update kn-vital-etco2"
+assert "kn-vital-temp" in script_js, "script.js must update kn-vital-temp"
+assert "stepVitalsAnimation" in script_js, "script.js must have smooth step animation for slowly drifting vitals"
 assert "maxW = 600" not in script_js, "script.js must NOT have hardcoded maxW = 600"
-print("[PASS] script.js smooth full-width sweep & live vitals simulator verified!")
+print("[PASS] script.js smooth full-width sweep & live vitals simulator with slow animation verified!")
 
 print("\nALL VERIFICATION CRITERIA PASSED 100% SUCCESSFULLY! [OK]")
