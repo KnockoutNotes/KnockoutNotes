@@ -584,112 +584,255 @@
     });
 
     // ------------------------------------------------------------------------
-    // 10. Live Animated ECG Waveform Monitor (Hero Visualization)
+    // 10. Live Animated ECG Waveform Monitor & Vitals Engine (Hero Centerpiece)
     // ------------------------------------------------------------------------
-    const ecgCanvases = Array.from(document.querySelectorAll("#knEcgCanvas, .ecg-screen canvas"));
+    const ecgCanvases = Array.from(document.querySelectorAll("#knEcgCanvas, #knEcgCanvas3d, .ecg-screen canvas"));
     if (ecgCanvases.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      function resizeCanvases() {
-        ecgCanvases.forEach(cvs => {
-          if (cvs.offsetWidth) {
-            cvs.width = cvs.offsetWidth;
-            cvs.height = cvs.offsetHeight;
-          }
-        });
-      }
-      resizeCanvases();
-      window.addEventListener("resize", resizeCanvases);
+      // Dynamic state tracked per canvas to support full PC screen widths and multi-layers
+      const canvasStates = new Map();
 
+      function resizeCanvas(cvs) {
+        const parent = cvs.parentElement;
+        if (!parent) return;
+        const rect = parent.getBoundingClientRect();
+        if (rect.width <= 0 || rect.height <= 0) return;
+
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const cssW = Math.floor(rect.width);
+        const cssH = Math.floor(rect.height);
+
+        if (cvs.width !== Math.round(cssW * dpr) || cvs.height !== Math.round(cssH * dpr)) {
+          cvs.width = Math.round(cssW * dpr);
+          cvs.height = Math.round(cssH * dpr);
+        }
+        cvs.style.width = cssW + "px";
+        cvs.style.height = cssH + "px";
+
+        const ctx = cvs.getContext("2d");
+        if (ctx) {
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0); // Scale context to CSS pixels
+        }
+
+        let state = canvasStates.get(cvs);
+        if (!state) {
+          state = {
+            scanX: 0,
+            history: new Float32Array(cssW + 120).fill(0),
+            cssW: cssW,
+            cssH: cssH
+          };
+          canvasStates.set(cvs, state);
+        } else {
+          if (state.history.length < cssW + 120) {
+            const newHist = new Float32Array(cssW + 120);
+            newHist.set(state.history.subarray(0, Math.min(state.history.length, cssW)));
+            state.history = newHist;
+          }
+          state.cssW = cssW;
+          state.cssH = cssH;
+          if (state.scanX >= cssW) {
+            state.scanX = 0;
+          }
+        }
+      }
+
+      function resizeAllCanvases() {
+        ecgCanvases.forEach(resizeCanvas);
+      }
+
+      resizeAllCanvases();
+      window.addEventListener("resize", resizeAllCanvases, { passive: true });
+
+      if (window.ResizeObserver) {
+        const ro = new ResizeObserver(() => {
+          resizeAllCanvases();
+        });
+        document.querySelectorAll(".ecg-screen").forEach(el => ro.observe(el));
+      }
+
+      // Smooth continuous Lead II ECG waveform model (physiological P, Q, R, S, T, U)
       function getEcgY(progress) {
-        const p = progress % 1;
-        if (p < 0.12) return 0;
-        if (p < 0.22) {
-          const t = (p - 0.12) / 0.1;
-          return Math.sin(t * Math.PI) * 0.2;
+        const p = ((progress % 1) + 1) % 1;
+        // Baseline
+        if (p < 0.14) return 0;
+        // P-wave (Atrial depolarisation)
+        if (p < 0.24) {
+          const t = (p - 0.14) / 0.10;
+          return Math.sin(t * Math.PI) * 0.18;
         }
-        if (p < 0.32) return 0;
-        if (p < 0.36) {
-          const t = (p - 0.32) / 0.04;
-          return -Math.sin(t * Math.PI) * 0.15;
+        // PR segment
+        if (p < 0.34) return 0;
+        // Q-wave (Septal depolarisation)
+        if (p < 0.37) {
+          const t = (p - 0.34) / 0.03;
+          return -Math.sin(t * Math.PI) * 0.14;
         }
-        if (p < 0.44) {
-          const t = (p - 0.36) / 0.08;
-          return Math.sin(t * Math.PI) * 0.95;
+        // R-wave (Sharp QRS ventricular depolarisation spike)
+        if (p < 0.43) {
+          const t = (p - 0.37) / 0.06;
+          return Math.sin(t * Math.PI) * 1.05;
         }
-        if (p < 0.50) {
-          const t = (p - 0.44) / 0.06;
-          return -Math.sin(t * Math.PI) * 0.28;
+        // S-wave (Late ventricular depolarisation)
+        if (p < 0.47) {
+          const t = (p - 0.43) / 0.04;
+          return -Math.sin(t * Math.PI) * 0.32;
         }
-        if (p < 0.60) return 0;
-        if (p < 0.78) {
-          const t = (p - 0.60) / 0.18;
-          return Math.sin(t * Math.PI) * 0.35;
+        // ST segment
+        if (p < 0.56) return 0;
+        // T-wave (Ventricular repolarisation)
+        if (p < 0.76) {
+          const t = (p - 0.56) / 0.20;
+          return Math.pow(Math.sin(t * Math.PI), 1.25) * 0.32;
+        }
+        // U-wave (Purkinje repolarisation)
+        if (p < 0.82) {
+          const t = (p - 0.76) / 0.06;
+          return Math.sin(t * Math.PI) * 0.04;
         }
         return 0;
       }
 
-      let scanX = 0;
-      const speed = 2.2;
-      const scanWidth = 35;
-      const maxW = 600;
-      const history = new Array(maxW).fill(0);
+      // Live Physiological Vitals Simulator (Drifts smoothly within clinical normal targets)
+      const vitalsData = {
+        hr: 72,
+        spo2: 99,
+        map: 85,
+        etco2: 38,
+        mac: 1.05
+      };
 
-      function renderEcg() {
+      function updateVitalsDisplay(tickEl) {
+        document.querySelectorAll(".kn-vital-hr, .hud-hr-val").forEach(el => { el.textContent = vitalsData.hr; });
+        document.querySelectorAll(".kn-vital-spo2").forEach(el => { el.textContent = vitalsData.spo2; });
+        document.querySelectorAll(".kn-vital-map").forEach(el => { el.textContent = vitalsData.map; });
+        document.querySelectorAll(".kn-vital-etco2, .hud-etco2-val").forEach(el => { el.textContent = vitalsData.etco2; });
+        document.querySelectorAll(".kn-vital-mac, .hud-mac-val").forEach(el => { el.textContent = vitalsData.mac.toFixed(2); });
+
+        if (tickEl) {
+          document.querySelectorAll(".vital-box .vital-val").forEach(el => {
+            el.classList.add("vital-tick");
+            setTimeout(() => el.classList.remove("vital-tick"), 260);
+          });
+        }
+      }
+
+      function tickVitals() {
+        if (document.hidden) return;
+        // Natural physiological drift
+        const hrDrift = Math.floor(Math.random() * 3) - 1; // -1, 0, or +1
+        vitalsData.hr = Math.max(69, Math.min(75, vitalsData.hr + hrDrift));
+
+        const rSpo2 = Math.random();
+        vitalsData.spo2 = rSpo2 > 0.85 ? 100 : (rSpo2 < 0.08 ? 98 : 99);
+
+        const mapDrift = Math.floor(Math.random() * 3) - 1;
+        vitalsData.map = Math.max(83, Math.min(88, vitalsData.map + mapDrift));
+
+        const etco2Drift = Math.floor(Math.random() * 3) - 1;
+        vitalsData.etco2 = Math.max(36, Math.min(39, vitalsData.etco2 + etco2Drift));
+
+        const macDrift = (Math.random() - 0.5) * 0.02;
+        vitalsData.mac = +(Math.max(1.02, Math.min(1.08, vitalsData.mac + macDrift))).toFixed(2);
+
+        updateVitalsDisplay(true);
+      }
+
+      // Automatically animate values every 3 seconds
+      setInterval(tickVitals, 3000);
+      updateVitalsDisplay(false);
+
+      // Smooth calibrated sweep parameters: ~68 px/sec (calm, authentic 25 mm/s clinical sweep)
+      let lastTime = performance.now();
+      const sweepPixelsPerSecond = 68;
+      const scanWidth = 26; // Erase bar ahead of sweep head
+
+      function renderEcg(now) {
         if (document.hidden) {
+          lastTime = now;
           requestAnimationFrame(renderEcg);
           return;
         }
 
+        const dt = Math.min((now - lastTime) / 1000, 0.05);
+        lastTime = now;
+        const step = sweepPixelsPerSecond * dt;
+
         const isDark = body.classList.contains("dark");
         const traceColor = isDark ? "#38bdf8" : "#0284c7";
-        const glowColor = isDark ? "rgba(56, 189, 248, 0.4)" : "rgba(2, 132, 199, 0.3)";
-
-        const cycleLength = 220;
-        const progress = (scanX % cycleLength) / cycleLength;
-        const sampleVal = getEcgY(progress);
+        const glowColor = isDark ? "rgba(56, 189, 248, 0.45)" : "rgba(2, 132, 199, 0.35)";
 
         ecgCanvases.forEach(cvs => {
-          if (cvs.offsetParent === null) return; // Skip hidden canvas
+          if (cvs.offsetParent === null) return;
+          let state = canvasStates.get(cvs);
+          if (!state) {
+            resizeCanvas(cvs);
+            state = canvasStates.get(cvs);
+            if (!state) return;
+          }
+
           const eCtx = cvs.getContext("2d");
-          const ecgW = cvs.width || 500;
-          const ecgH = cvs.height || 170;
-          const midY = ecgH * 0.58;
-          const curY = midY - sampleVal * (ecgH * 0.42);
+          if (!eCtx) return;
 
-          eCtx.clearRect(scanX, 0, scanWidth, ecgH);
+          const w = state.cssW;
+          const h = state.cssH;
+          if (w <= 0 || h <= 0) return;
 
-          history[Math.floor(scanX)] = curY;
-          const prevX = scanX > 0 ? scanX - speed : 0;
-          const prevY = history[Math.floor(prevX)] || midY;
+          const cycleLength = 175; // Diagnostic wave cycle width
+          const midY = h * 0.58;
+          const amp = h * 0.40;
+
+          const startX = state.scanX;
+          const endX = startX + step;
+
+          // Erase ahead (sweep gap) with wrap-around support for smooth edge transition
+          eCtx.clearRect(startX, 0, scanWidth, h);
+          if (startX + scanWidth > w) {
+            eCtx.clearRect(0, 0, (startX + scanWidth) - w, h);
+          }
+
+          // Sample waveform position and draw segment
+          const progress = (startX % cycleLength) / cycleLength;
+          const sampleVal = getEcgY(progress);
+          const curY = midY - sampleVal * amp;
+
+          const prevIndex = Math.floor(startX);
+          state.history[prevIndex] = curY;
+
+          const prevX = startX > 0 ? startX - step : 0;
+          const prevY = state.history[Math.floor(prevX)] || curY;
 
           eCtx.beginPath();
           eCtx.moveTo(prevX, prevY);
-          eCtx.lineTo(scanX, curY);
+          eCtx.lineTo(startX, curY);
           eCtx.strokeStyle = traceColor;
           eCtx.lineWidth = 2.2;
           eCtx.lineCap = "round";
+          eCtx.lineJoin = "round";
           eCtx.shadowColor = glowColor;
-          eCtx.shadowBlur = 10;
+          eCtx.shadowBlur = 8;
           eCtx.stroke();
           eCtx.shadowBlur = 0;
 
+          // Glowing phosphor sweep head dot
           eCtx.beginPath();
-          eCtx.arc(scanX, curY, 3.4, 0, Math.PI * 2);
+          eCtx.arc(startX, curY, 3.2, 0, Math.PI * 2);
           eCtx.fillStyle = isDark ? "#ffffff" : traceColor;
           eCtx.shadowColor = glowColor;
           eCtx.shadowBlur = 12;
           eCtx.fill();
           eCtx.shadowBlur = 0;
-        });
 
-        scanX += speed;
-        if (scanX >= maxW) {
-          scanX = 0;
-        }
+          // Advance scanX across the FULL WIDTH of the canvas without artificial caps
+          state.scanX = endX;
+          if (state.scanX >= w) {
+            state.scanX = 0;
+          }
+        });
 
         requestAnimationFrame(renderEcg);
       }
 
-      renderEcg();
+      requestAnimationFrame(renderEcg);
     }
 
     // ------------------------------------------------------------------------

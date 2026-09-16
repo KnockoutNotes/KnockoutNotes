@@ -753,7 +753,7 @@ body:not([data-content-page="home"]) .menu-btn {
 .ecg-screen {
   position: relative;
   width: 100%;
-  height: 175px;
+  height: 180px;
   background: 
     linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
@@ -761,29 +761,130 @@ body:not([data-content-page="home"]) .menu-btn {
   overflow: hidden;
 }
 
-#knEcgCanvas {
+.ecg-screen canvas,
+#knEcgCanvas,
+#knEcgCanvas3d {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: block;
 }
 
+.ecg-monitor-hud {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 3;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.ecg-hud-lead {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--accent-emerald);
+  text-shadow: 0 0 8px rgba(52, 211, 153, 0.4);
+}
+
+.ecg-lead-filter {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.ecg-hud-readouts {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ecg-hud-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(10, 16, 32, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+body:not(.dark) .ecg-hud-pill {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(2, 132, 199, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.ecg-hud-pill.green {
+  color: var(--accent-emerald);
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.ecg-hud-pill.indigo {
+  color: var(--accent-indigo);
+  border-color: rgba(129, 140, 248, 0.3);
+}
+
+.ecg-hud-pill.violet {
+  color: #c084fc;
+  border-color: rgba(192, 132, 252, 0.3);
+}
+
+body:not(.dark) .ecg-hud-pill.violet {
+  color: #9333ea;
+}
+
+.ecg-hud-pill small {
+  font-size: 8.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
 .telemetry-vitals-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 1px;
   background: var(--border-subtle);
   border-top: 1px solid var(--border-subtle);
 }
 
+@media (max-width: 640px) {
+  .telemetry-vitals-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .telemetry-vitals-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .vital-box {
   background: var(--bg-surface);
-  padding: 14px 16px;
+  padding: 12px 14px;
   text-align: center;
 }
 
 .vital-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -792,20 +893,31 @@ body:not([data-content-page="home"]) .menu-btn {
 
 .vital-val {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 850;
   line-height: 1.1;
   margin-top: 4px;
   color: var(--text-main);
+  transition: transform 0.25s ease-out;
+}
+
+.vital-val.vital-tick {
+  transform: scale(1.08);
 }
 
 .vital-box.green .vital-val { color: var(--accent-emerald); text-shadow: 0 0 16px rgba(52, 211, 153, 0.45); }
 .vital-box.cyan .vital-val { color: var(--accent-cyan); text-shadow: 0 0 16px rgba(56, 189, 248, 0.45); }
 .vital-box.amber .vital-val { color: var(--accent-amber); text-shadow: 0 0 16px rgba(251, 191, 36, 0.45); }
 .vital-box.indigo .vital-val { color: var(--accent-indigo); text-shadow: 0 0 16px rgba(129, 140, 248, 0.45); }
+.vital-box.violet .vital-val { color: #c084fc; text-shadow: 0 0 16px rgba(192, 132, 252, 0.45); }
+
+body:not(.dark) .vital-box.violet .vital-val {
+  color: #9333ea !important;
+  text-shadow: none;
+}
 
 .vital-unit {
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 600;
   color: var(--text-muted);
   margin-left: 3px;
