@@ -149,6 +149,15 @@
   transform: translateY(0);
 }
 
+.calc-tab-content.active .fade,
+.calc-tab-content.active .calc-group-title,
+.calc-tab-content.active .abg-hero-card,
+.calc-tab-content.active .calc-box,
+.calc-tab-content.active .calc-hero-card {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 /* 3D Haptic Depth & Tilt Container Styles */
 .calc-perspective-root {
   perspective: 1200px;

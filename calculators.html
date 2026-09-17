@@ -368,7 +368,7 @@
         </div><!-- /#tabPaeds3d -->
 
         <!-- TAB CONTENT: EMERGENCY & RESUSCITATION -->
-        <div class="calc-tab-content active" id="tabEmergency3d" data-tab-name="emergency">
+        <div class="calc-tab-content" id="tabEmergency3d" data-tab-name="emergency">
         <div class="calc-group-title fade" id="groupEmergency3d">
           <span>Emergency &amp; Resuscitation</span>
           <span class="badge">Critical Utilities</span>
@@ -434,12 +434,10 @@
             </div>
           </article>
         </div>
-
-        </div>
         </div><!-- /#tabEmergency3d -->
 
         <!-- TAB CONTENT: PERIOPERATIVE ASSESSMENT -->
-        <div class="calc-tab-content active" id="tabPeriop3d" data-tab-name="periop">
+        <div class="calc-tab-content" id="tabPeriop3d" data-tab-name="periop">
         <div class="calc-group-title fade" id="groupPeriop3d">
           <span>Perioperative Assessment</span>
           <span class="badge">Risk Stratification</span>
@@ -734,12 +732,10 @@
             </div>
           </article>
         </div>
-
-        </div>
         </div><!-- /#tabPeriop3d -->
 
         <!-- TAB CONTENT: RENAL & ACID-BASE -->
-        <div class="calc-tab-content active" id="tabRenal3d" data-tab-name="renal">
+        <div class="calc-tab-content" id="tabRenal3d" data-tab-name="renal">
         <div class="calc-group-title fade" id="groupRenal3d">
           <span>Renal Clearance</span>
           <span class="badge">Cockcroft–Gault</span>
@@ -1312,6 +1308,14 @@
             This calculator is an educational calculation aid derived from the uploaded reference spreadsheet and does not replace clinical judgment, institutional paediatric protocols, or independent double-check verification. Verify all doses and dilutions before administration.
           </div>
         </section>
+        </div><!-- /#tabPaeds -->
+
+        <!-- TAB CONTENT: EMERGENCY & RESUSCITATION (Lite View) -->
+        <div class="calc-tab-content" id="tabEmergency" data-tab-name="emergency">
+        <div class="calc-group-title fade" id="groupEmergency">
+          <span>Emergency &amp; Resuscitation</span>
+          <span class="badge">Critical Utilities</span>
+        </div>
 
         <!-- Parkland Formula (Lite View) -->
         <div class="calc-card-grid">
@@ -1373,12 +1377,10 @@
             </div>
           </article>
         </div>
-
-        </div>
         </div><!-- /#tabEmergency -->
 
         <!-- TAB CONTENT: PERIOPERATIVE ASSESSMENT (Lite View) -->
-        <div class="calc-tab-content active" id="tabPeriop" data-tab-name="periop">
+        <div class="calc-tab-content" id="tabPeriop" data-tab-name="periop">
         <div class="calc-group-title fade" id="groupPeriop">
           <span>Perioperative Assessment</span>
           <span class="badge">Risk Stratification</span>
@@ -1673,12 +1675,10 @@
             </div>
           </article>
         </div>
-
-        </div>
         </div><!-- /#tabPeriop -->
 
         <!-- TAB CONTENT: RENAL & ACID-BASE (Lite View) -->
-        <div class="calc-tab-content active" id="tabRenal" data-tab-name="renal">
+        <div class="calc-tab-content" id="tabRenal" data-tab-name="renal">
         <div class="calc-group-title fade" id="groupRenal">
           <span>Renal Clearance</span>
           <span class="badge">Cockcroft–Gault</span>
@@ -2908,6 +2908,7 @@
         if (tabName === "all" || secName === tabName) {
           sec.classList.add("active");
           sec.style.display = "block";
+          sec.querySelectorAll(".fade").forEach(el => el.classList.add("visible"));
         } else {
           sec.classList.remove("active");
           sec.style.display = "none";
@@ -2923,8 +2924,18 @@
       });
     });
 
-    // Default to 'paeds' tab on load so the page is focused, not a long continuous scroll
-    activateTab("paeds");
+    // Handle hash on initial load or default to 'paeds'
+    let initialTab = "paeds";
+    const hash = (window.location.hash || "").replace("#", "").toLowerCase();
+    if (hash) {
+      if (hash === "all") initialTab = "all";
+      else if (hash.includes("abg")) initialTab = "abg";
+      else if (hash.includes("emerg") || hash.includes("parkland")) initialTab = "emergency";
+      else if (hash.includes("periop") || hash.includes("wilson") || hash.includes("dasi") || hash.includes("stop") || hash.includes("bmi") || hash.includes("child") || hash.includes("mets")) initialTab = "periop";
+      else if (hash.includes("renal") || hash.includes("cockcroft") || hash.includes("crcl")) initialTab = "renal";
+      else if (hash.includes("paed") || hash.includes("airway") || hash.includes("copur")) initialTab = "paeds";
+    }
+    activateTab(initialTab);
   }
 
   // ------------------------------------------------------------------------

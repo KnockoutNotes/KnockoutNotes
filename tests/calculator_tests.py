@@ -263,11 +263,78 @@ def test_table_42_6_airway_equipment():
     print(">>> Table 42-6 Paediatric Airway Equipment: 100% VERIFIED!\n")
 
 
+def test_calculator_tabs_and_sections():
+    print("==================================================")
+    print("4. VERIFYING CALCULATOR TABS, HEADINGS & ABG SECTION")
+    print("==================================================")
+    from html.parser import HTMLParser
+
+    with open("calculators.html", "r", encoding="utf-8") as f:
+        content = f.read()
+
+    # 1. HTML tag balance verification
+    class TagChecker(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.stack = []
+            self.errors = []
+        def handle_starttag(self, tag, attrs):
+            if tag not in ['img', 'input', 'br', 'hr', 'meta', 'link']:
+                self.stack.append((tag, self.getpos()))
+        def handle_endtag(self, tag):
+            if tag in ['img', 'input', 'br', 'hr', 'meta', 'link']:
+                return
+            if not self.stack:
+                self.errors.append(('Extra closing tag', tag, self.getpos()))
+                return
+            last_tag, pos = self.stack.pop()
+            if last_tag != tag:
+                self.errors.append(('Mismatched tag', last_tag, tag, pos, self.getpos()))
+
+    checker = TagChecker()
+    checker.feed(content)
+    assert len(checker.errors) == 0, f"HTML tag mismatch errors found: {checker.errors}"
+    assert len(checker.stack) == 0, f"Unclosed tags found in calculators.html: {checker.stack}"
+    print("[OK] calculators.html HTML tag balance is 100% clean (0 errors, 0 unclosed).")
+
+    # 2. Section containers in 3D and Lite views
+    tabs_3d = ["tabPaeds3d", "tabEmergency3d", "tabPeriop3d", "tabRenal3d", "tabAbg3d"]
+    for t in tabs_3d:
+        assert f'id="{t}"' in content, f"Missing 3D tab container: {t}"
+    tabs_lite = ["tabPaeds", "tabEmergency", "tabPeriop", "tabRenal", "tabAbg"]
+    for t in tabs_lite:
+        assert f'id="{t}"' in content, f"Missing Lite tab container: {t}"
+    print("[OK] All 5 tab content sections exist in both 3D View and Lite View.")
+
+    # 3. Respective section headings
+    titles_3d = ["groupPaeds3d", "groupEmergency3d", "groupPeriop3d", "groupRenal3d", "groupAbg3d"]
+    for g in titles_3d:
+        assert f'id="{g}"' in content, f"Missing 3D heading: {g}"
+    titles_lite = ["groupPaeds", "groupEmergency", "groupPeriop", "groupRenal", "groupAbg"]
+    for g in titles_lite:
+        assert f'id="{g}"' in content, f"Missing Lite heading: {g}"
+    print("[OK] All 5 sections have their respective headings.")
+
+    # 4. ABG Engine presence
+    assert 'id="abgHero3d"' in content, "ABG hero engine missing in 3D View"
+    assert 'id="abgHero"' in content, "ABG hero engine missing in Lite View"
+    assert 'data-tab-name="abg"' in content, "data-tab-name='abg' attribute missing"
+    print("[OK] ABG multi-axis clinical analysis section verified in both views.")
+
+    # 5. Initially active tab
+    import re
+    active_tabs = re.findall(r'<div class="calc-tab-content active" id="([^"]+)"', content)
+    assert active_tabs == ["tabPaeds3d", "tabPaeds"], f"Only Paeds should be initially active, found: {active_tabs}"
+    print("[OK] Only Paeds tab is initially active; other tabs hidden until selected.")
+    print(">>> Calculator Tabs & ABG Section Verification: 100% PASSED!\n")
+
+
 if __name__ == "__main__":
     try:
         test_excel_paeds_chart()
         test_clinical_calculators()
         test_table_42_6_airway_equipment()
+        test_calculator_tabs_and_sections()
         print("ALL DETERMINISTIC TESTS PASSED SUCCESSFULLY! [OK]")
     except Exception as e:
         print(f"TEST FAILURE: {e}", file=sys.stderr)
