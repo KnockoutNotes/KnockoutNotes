@@ -753,6 +753,1088 @@
     };
   }
 
+  // ==========================================================================
+  // 13. CHA2DS2-VASc & CHADS2 ATRIAL FIBRILLATION STROKE RISK
+  // ==========================================================================
+  function calculateCHA2DS2VASc(criteria) {
+    const c = criteria || {};
+    let pts = 0;
+    if (c.chf) pts += 1;
+    if (c.htn) pts += 1;
+    const age = num(c.age) || 0;
+    if (age >= 75) pts += 2;
+    else if (age >= 65) pts += 1;
+    if (c.diabetes) pts += 1;
+    if (c.stroke) pts += 2;
+    if (c.vascular) pts += 1;
+    const isFemale = (c.sex === "female" || c.isFemale);
+    if (isFemale) pts += 1;
+
+    const rates = [0.2, 0.6, 2.2, 3.2, 4.8, 7.2, 9.7, 11.2, 10.8, 12.2];
+    const strokeRate = rates[Math.min(pts, 9)];
+
+    let riskClass = "good";
+    let riskTier = "Low Risk";
+    let recommendation = "";
+
+    if (!isFemale) {
+      if (pts === 0) {
+        riskTier = "Low Risk (0.2% / yr)";
+        riskClass = "good";
+        recommendation = "No antithrombotic therapy recommended (ESC 2020 Guidelines).";
+      } else if (pts === 1) {
+        riskTier = "Moderate Risk (0.6% / yr)";
+        riskClass = "warn";
+        recommendation = "Oral anticoagulation (DOAC preferred over VKA) should be considered (Class IIa).";
+      } else {
+        riskTier = `High Risk (${strokeRate}% / yr)`;
+        riskClass = "alert";
+        recommendation = "Oral anticoagulation (DOAC preferred) is strongly recommended (Class I).";
+      }
+    } else {
+      if (pts === 1) {
+        riskTier = "Low Risk (0.2% / yr)";
+        riskClass = "good";
+        recommendation = "No antithrombotic therapy recommended (isolated female sex criterion, ESC 2020).";
+      } else if (pts === 2) {
+        riskTier = "Moderate Risk (0.6% / yr)";
+        riskClass = "warn";
+        recommendation = "Oral anticoagulation (DOAC preferred) should be considered (Class IIa).";
+      } else {
+        riskTier = `High Risk (${strokeRate}% / yr)`;
+        riskClass = "alert";
+        recommendation = "Oral anticoagulation (DOAC preferred) is strongly recommended (Class I).";
+      }
+    }
+
+    return {
+      score: pts,
+      strokeRate,
+      riskTier,
+      riskClass,
+      recommendation,
+      source: "Lip GY et al. Chest 2010;137(2):263-272; ESC AF Guidelines 2020."
+    };
+  }
+
+  function calculateCHADS2(criteria) {
+    const c = criteria || {};
+    let pts = 0;
+    if (c.chf) pts += 1;
+    if (c.htn) pts += 1;
+    const age = num(c.age) || 0;
+    if (age >= 75) pts += 1;
+    if (c.diabetes) pts += 1;
+    if (c.stroke) pts += 2;
+
+    const rates = [1.9, 2.8, 4.0, 5.9, 8.5, 12.5, 18.2];
+    const strokeRate = rates[Math.min(pts, 6)];
+
+    let riskClass = "good";
+    let riskTier = "Low Risk";
+    let recommendation = "";
+
+    if (pts === 0) {
+      riskTier = "Low Risk (1.9% / yr)";
+      riskClass = "good";
+      recommendation = "Aspirin or no antithrombotic therapy.";
+    } else if (pts === 1) {
+      riskTier = "Intermediate Risk (2.8% / yr)";
+      riskClass = "warn";
+      recommendation = "Oral anticoagulation (DOAC or warfarin) or aspirin considered.";
+    } else {
+      riskTier = `High Risk (${strokeRate}% / yr)`;
+      riskClass = "alert";
+      recommendation = "Oral anticoagulation (DOAC or warfarin) indicated unless contraindicated.";
+    }
+
+    return {
+      score: pts,
+      strokeRate,
+      riskTier,
+      riskClass,
+      recommendation,
+      source: "Gage BF et al. JAMA 2001;285(22):2864-2870."
+    };
+  }
+
+  // ==========================================================================
+  // 14. REVISED CARDIAC RISK INDEX (RCRI / LEE CRITERIA)
+  // ==========================================================================
+  function calculateRCRI(criteria) {
+    const c = criteria || {};
+    let pts = 0;
+    if (c.highRiskSurgery) pts += 1;
+    if (c.ischemicHeartDisease) pts += 1;
+    if (c.heartFailure) pts += 1;
+    if (c.cerebrovascularDisease) pts += 1;
+    if (c.diabetesInsulin) pts += 1;
+    if (c.creatinineHigh) pts += 1;
+
+    let rcriClass = "Class I";
+    let complicationRate = "3.9%";
+    let majorEventRate = "0.4%";
+    let riskClass = "good";
+    let recommendation = "";
+
+    if (pts === 0) {
+      rcriClass = "Class I";
+      complicationRate = "3.9%";
+      majorEventRate = "0.4%";
+      riskClass = "good";
+      recommendation = "Very low perioperative cardiac risk. Proceed without routine noninvasive cardiac stress testing.";
+    } else if (pts === 1) {
+      rcriClass = "Class II";
+      complicationRate = "6.0%";
+      majorEventRate = "0.9%";
+      riskClass = "warn";
+      recommendation = "Low perioperative cardiac risk. Ensure functional capacity (METs) assessment; cardiology consultation if functional status poor.";
+    } else if (pts === 2) {
+      rcriClass = "Class III";
+      complicationRate = "10.1%";
+      majorEventRate = "6.6%";
+      riskClass = "alert";
+      recommendation = "Moderate perioperative cardiac risk. Consider preoperative ECG, troponin surveillance, and echocardiography for high-risk procedures.";
+    } else {
+      rcriClass = "Class IV";
+      complicationRate = "15.0%";
+      majorEventRate = "11.0%";
+      riskClass = "alert";
+      recommendation = "High perioperative cardiac risk. Multidisciplinary heart team review, invasive hemodynamic monitoring, and postoperative ICU/HDU care recommended.";
+    }
+
+    return {
+      score: pts,
+      rcriClass,
+      complicationRate,
+      majorEventRate,
+      riskClass,
+      recommendation,
+      source: "Lee TH et al. Circulation 1999;100(10):1043-1049; ACC/AHA & ESC/ESAIC Perioperative Guidelines."
+    };
+  }
+
+  // ==========================================================================
+  // 15. WELLS' CRITERIA FOR PULMONARY EMBOLISM (PE)
+  // ==========================================================================
+  function calculateWellsPE(criteria) {
+    const c = criteria || {};
+    let pts = 0;
+    if (c.signsDVT) pts += 3.0;
+    if (c.peLikely) pts += 3.0;
+    if (c.hrOver100) pts += 1.5;
+    if (c.immobilOrSurgery) pts += 1.5;
+    if (c.priorPEorDVT) pts += 1.5;
+    if (c.hemoptysis) pts += 1.0;
+    if (c.malignancy) pts += 1.0;
+
+    pts = round(pts, 1);
+
+    const isLikely = pts > 4.0;
+    const twoTier = isLikely ? "PE Likely (>4.0 points)" : "PE Unlikely (≤4.0 points)";
+    let threeTier = "Low Risk (<2 points)";
+    let riskClass = "good";
+    let recommendation = "";
+
+    if (pts < 2.0) {
+      threeTier = "Low Risk (<2 points, 1.3%–3.4% incidence)";
+      riskClass = "good";
+      recommendation = "PE Unlikely. Consider high-sensitivity D-dimer testing to rule out PE without imaging.";
+    } else if (pts <= 6.0) {
+      threeTier = "Moderate Risk (2–6 points, ~16.2% incidence)";
+      riskClass = "warn";
+      if (pts > 4.0) {
+        recommendation = "PE Likely by two-tier model. CT Pulmonary Angiography (CTPA) recommended.";
+      } else {
+        recommendation = "PE Unlikely by two-tier model. High-sensitivity D-dimer or CTPA based on clinical context.";
+      }
+    } else {
+      threeTier = "High Risk (>6 points, 37.5%–40.6% incidence)";
+      riskClass = "alert";
+      recommendation = "PE Highly Likely. Immediate CTPA indicated. Consider therapeutic anticoagulation while awaiting imaging if no bleeding contraindications.";
+    }
+
+    return {
+      score: pts,
+      twoTier,
+      isLikely,
+      threeTier,
+      riskClass,
+      recommendation,
+      source: "Wells PS et al. Thromb Haemost 2000;83(3):416-420; Ann Intern Med 2001;135(2):98-107."
+    };
+  }
+
+  // ==========================================================================
+  // 16. PESI & SIMPLIFIED PESI (PULMONARY EMBOLISM SEVERITY INDEX)
+  // ==========================================================================
+  function calculatePESI(params) {
+    const p = params || {};
+    const age = num(p.age) || 0;
+    let score = age;
+
+    if (p.sex === "male" || p.isMale) score += 10;
+    if (p.cancer) score += 30;
+    if (p.heartFailure) score += 10;
+    if (p.chronicLung) score += 10;
+    if (p.pulseGte110) score += 20;
+    if (p.sbpLt100) score += 30;
+    if (p.rrGte30) score += 20;
+    if (p.tempLt36) score += 20;
+    if (p.alteredMental) score += 60;
+    if (p.spo2Lt90) score += 20;
+
+    let pesiClass = "Class I";
+    let mortality30d = "0% – 1.6%";
+    let riskClass = "good";
+    let disposition = "Very low mortality risk. Candidate for outpatient treatment or early discharge.";
+
+    if (score <= 65) {
+      pesiClass = "Class I (≤65 pts)";
+      mortality30d = "0.0% – 1.6%";
+      riskClass = "good";
+      disposition = "Very Low Risk. Candidate for early hospital discharge or home treatment.";
+    } else if (score <= 85) {
+      pesiClass = "Class II (66–85 pts)";
+      mortality30d = "1.7% – 3.5%";
+      riskClass = "good";
+      disposition = "Low Risk. Candidate for brief inpatient stay or outpatient care.";
+    } else if (score <= 105) {
+      pesiClass = "Class III (86–105 pts)";
+      mortality30d = "3.2% – 7.1%";
+      riskClass = "warn";
+      disposition = "Intermediate Risk. Inpatient hospital admission indicated.";
+    } else if (score <= 125) {
+      pesiClass = "Class IV (106–125 pts)";
+      mortality30d = "4.0% – 11.4%";
+      riskClass = "alert";
+      disposition = "High Risk. Inpatient admission, close cardiopulmonary monitoring.";
+    } else {
+      pesiClass = "Class V (>125 pts)";
+      mortality30d = "10.0% – 23.9%";
+      riskClass = "alert";
+      disposition = "Very High Risk. Intensive care unit (ICU) admission and hemodynamic support.";
+    }
+
+    // Simplified PESI (sPESI)
+    let spesi = 0;
+    if (age > 80) spesi += 1;
+    if (p.cancer) spesi += 1;
+    if (p.heartFailure || p.chronicLung) spesi += 1;
+    if (p.pulseGte110) spesi += 1;
+    if (p.sbpLt100) spesi += 1;
+    if (p.spo2Lt90) spesi += 1;
+
+    const spesiCategory = spesi === 0 ? "Low Risk (1.0% 30-day mortality)" : `High Risk (10.9% 30-day mortality, score = ${spesi})`;
+
+    return {
+      score,
+      pesiClass,
+      mortality30d,
+      riskClass,
+      disposition,
+      spesiScore: spesi,
+      spesiCategory,
+      source: "Aujesky D et al. Am J Respir Crit Care Med 2005;172:1041-1046; Jiménez D et al. Arch Intern Med 2010;170:1383-1389."
+    };
+  }
+
+  // ==========================================================================
+  // 17. PAEDIATRIC PAIN SCORES: FLACC & CHEOPS
+  // ==========================================================================
+  function calculateFLACC(params) {
+    const p = params || {};
+    const face = parseInt(p.face, 10) || 0;
+    const legs = parseInt(p.legs, 10) || 0;
+    const act = parseInt(p.activity, 10) || 0;
+    const cry = parseInt(p.cry, 10) || 0;
+    const cons = parseInt(p.consolability, 10) || 0;
+
+    const total = face + legs + act + cry + cons;
+
+    let category = "Relaxed and comfortable";
+    let riskClass = "good";
+    let intervention = "No analgesic intervention needed. Maintain routine comfort measures.";
+
+    if (total === 0) {
+      category = "Relaxed & Comfortable (Score 0)";
+      riskClass = "good";
+      intervention = "Patient comfortable. Continue routine postoperative observation.";
+    } else if (total <= 3) {
+      category = "Mild Discomfort / Pain (Score 1–3)";
+      riskClass = "good";
+      intervention = "Provide non-pharmacological comfort (distraction, swaddling, parental presence). Reassess in 15–30 min.";
+    } else if (total <= 6) {
+      category = "Moderate Pain (Score 4–6)";
+      riskClass = "warn";
+      intervention = "Analgesic intervention indicated: consider paracetamol, NSAID, or mild opioid according to protocol. Re-evaluate post-dose.";
+    } else {
+      category = "Severe Discomfort / Pain (Score 7–10)";
+      riskClass = "alert";
+      intervention = "Urgent analgesia required: titrate intravenous opioids (e.g. morphine/fentanyl) and examine for surgical/positional complications.";
+    }
+
+    return {
+      total,
+      category,
+      riskClass,
+      intervention,
+      breakdown: { face, legs, activity: act, cry, consolability: cons },
+      source: "Merkel SI et al. Pediatr Nurs 1997;23(3):293-297; Voepel-Lewis T et al. Anesth Analg 2010;110(4):1139-1144."
+    };
+  }
+
+  function calculateCHEOPS(params) {
+    const p = params || {};
+    const cry = parseInt(p.cry, 10) || 1;
+    const facial = parseInt(p.facial, 10) || 1;
+    const verbal = parseInt(p.verbal, 10) || 1;
+    const torso = parseInt(p.torso, 10) || 1;
+    const touch = parseInt(p.touch, 10) || 1;
+    const legs = parseInt(p.legs, 10) || 1;
+
+    const total = cry + facial + verbal + torso + touch + legs;
+
+    let category = "Acceptable Comfort (Score < 8)";
+    let riskClass = "good";
+    let clinicalAction = "Pain is controlled. Comfort measures and routine observations.";
+
+    if (total < 8) {
+      category = `Acceptable Comfort (Score ${total}/14)`;
+      riskClass = "good";
+      clinicalAction = "Score < 8: Mild or absent pain. Analgesia not acutely required.";
+    } else {
+      category = `Significant Postoperative Pain (Score ${total}/14)`;
+      riskClass = "alert";
+      clinicalAction = "Score ≥ 8: Clinically significant post-op pain. Requires active analgesic rescue and reassessment.";
+    }
+
+    return {
+      total,
+      category,
+      riskClass,
+      clinicalAction,
+      source: "McGrath PJ et al. Adv Pain Res Ther 1985;9:395-402."
+    };
+  }
+
+  // ==========================================================================
+  // 18. IDEAL & ADJUSTED BODY WEIGHT (IBW & ABW) + ANAESTHETIC DOSING MATRIX
+  // ==========================================================================
+  function calculateBodyWeights(heightCm, actualWeightKg, sex) {
+    const ht = num(heightCm);
+    const wt = num(actualWeightKg);
+    const isMale = (sex === "male" || sex === "m");
+
+    if (!ht || ht <= 0 || !wt || wt <= 0) {
+      return { error: "Please enter valid height and weight values." };
+    }
+
+    const heightInches = ht / 2.54;
+    const inchesOver5Ft = heightInches - 60;
+
+    // Devine Formula
+    const baseIbw = isMale ? 50.0 : 45.5;
+    const ibw = baseIbw + (2.3 * inchesOver5Ft);
+
+    // Adjusted Body Weight (ABW) with 0.4 factor
+    const abw = ibw + 0.4 * (wt - ibw);
+
+    // Percent of IBW
+    const pctIbw = (wt / ibw) * 100;
+
+    // Boer Lean Body Weight (LBW)
+    let lbw = isMale
+      ? (0.407 * wt) + (0.267 * ht) - 19.2
+      : (0.252 * wt) + (0.473 * ht) - 48.3;
+    if (lbw > wt) lbw = wt;
+
+    let category = "Normal weight ratio";
+    let riskClass = "good";
+    if (pctIbw > 130) {
+      category = "Obese (>130% IBW)";
+      riskClass = "alert";
+    } else if (pctIbw > 115) {
+      category = "Overweight (115%–130% IBW)";
+      riskClass = "warn";
+    } else if (pctIbw < 90) {
+      category = "Underweight (<90% IBW)";
+      riskClass = "warn";
+    }
+
+    return {
+      ibw: round(Math.max(ibw, 10), 1),
+      abw: round(Math.max(abw, 10), 1),
+      lbw: round(Math.max(lbw, 10), 1),
+      actualWeight: round(wt, 1),
+      pctIbw: round(pctIbw, 1),
+      category,
+      riskClass,
+      dosingRules: {
+        propofolInduction: "Dose based on Lean Body Weight (LBW) or Adjusted Weight to prevent profound hypotension.",
+        propofolMaintenance: "Dose based on Total Body Weight (TBW) due to high clearance and metabolic capacity.",
+        succinylcholine: "Dose on Total Body Weight (TBW 1.0–1.5 mg/kg) to overcome increased pseudocholinesterase enzyme pool.",
+        rocuroniumVecuronium: "Dose strictly on Ideal Body Weight (IBW) to prevent prolonged paralysis.",
+        sugammadex: "Dose on Total Body Weight (TBW) for 1:1 molecular encapsulation of neuromuscular blocker.",
+        fentanylRemifentanil: "Dose lipophilic opioids on Lean Body Weight (LBW) to avoid delayed awakening."
+      },
+      source: "Devine BJ. Drug Intell Clin Pharm 1974;8:650-655; Ingrande J, Lemmens HJ. Br J Anaesth 2010;105(S1):i16-i23."
+    };
+  }
+
+  // ==========================================================================
+  // 19. CALCIUM CORRECTION FOR ALBUMIN (PAYNE FORMULA)
+  // ==========================================================================
+  function calculateCorrectedCalcium(calciumVal, albuminVal, unit = "mg/dL") {
+    const ca = num(calciumVal);
+    const alb = num(albuminVal);
+
+    if (ca === null || alb === null) {
+      return { error: "Please enter valid calcium and albumin concentrations." };
+    }
+
+    let corrected = 0;
+    let normalMin = 8.5;
+    let normalMax = 10.2;
+    let unitLabel = "mg/dL";
+
+    if (unit === "mmol/L") {
+      // SI: Corrected Ca = Measured Ca + 0.02 * (40 - Albumin g/L)
+      corrected = ca + 0.02 * (40 - alb);
+      normalMin = 2.15;
+      normalMax = 2.55;
+      unitLabel = "mmol/L";
+    } else {
+      // Conventional US: Corrected Ca = Measured Ca + 0.8 * (4.0 - Albumin g/dL)
+      corrected = ca + 0.8 * (4.0 - alb);
+      unitLabel = "mg/dL";
+    }
+
+    corrected = round(corrected, 2);
+
+    let status = "Normocalcemia";
+    let riskClass = "good";
+    let notes = "";
+
+    if (corrected < normalMin) {
+      status = "Corrected Hypocalcemia";
+      riskClass = "alert";
+      notes = `Corrected calcium is below reference range (${normalMin}–${normalMax} ${unitLabel}). Assess for tetany, Chvostek's/Trousseau's sign, prolonged QTc on ECG, and verify with ionized calcium (Ca²⁺).`;
+    } else if (corrected > normalMax) {
+      status = "Corrected Hypercalcemia";
+      riskClass = "alert";
+      notes = `Corrected calcium is above reference range (${normalMin}–${normalMax} ${unitLabel}). Monitor for shortened QTc, arrhythmias, dehydration, and altered mental status.`;
+    } else {
+      status = "Normal Corrected Calcium";
+      riskClass = "good";
+      notes = `Corrected calcium is within normal physiological limits (${normalMin}–${normalMax} ${unitLabel}).`;
+    }
+
+    return {
+      correctedCalcium: corrected,
+      unit: unitLabel,
+      status,
+      riskClass,
+      notes,
+      source: "Payne RB et al. Br Med J 1973;4(5894):643-646."
+    };
+  }
+
+  // ==========================================================================
+  // 20. SODIUM CORRECTION FOR HYPERGLYCEMIA (KATZ & HILLIER FORMULAS)
+  // ==========================================================================
+  function calculateCorrectedSodium(sodiumVal, glucoseVal, glucoseUnit = "mg/dL") {
+    const na = num(sodiumVal);
+    const gluRaw = num(glucoseVal);
+
+    if (na === null || gluRaw === null) {
+      return { error: "Please enter valid sodium and glucose concentrations." };
+    }
+
+    // Convert glucose to mg/dL for standard calculation
+    const gluMgDl = (glucoseUnit === "mmol/L") ? gluRaw * 18.0182 : gluRaw;
+    const excess100 = Math.max(gluMgDl - 100, 0);
+
+    // Katz (1973): +1.6 mEq/L per 100 mg/dL glucose over 100
+    const katz = na + (0.016 * excess100);
+
+    // Hillier (1999 consensus): +2.4 mEq/L per 100 mg/dL glucose over 100
+    const hillier = na + (0.024 * excess100);
+
+    // Effective serum osmolality = 2*Na + Glucose(mg/dL)/18
+    const effOsm = (2 * na) + (gluMgDl / 18);
+
+    let status = "Eunatremic after correction";
+    let riskClass = "good";
+
+    if (hillier < 135) {
+      status = "True Hyponatremia (Hypotonic state)";
+      riskClass = "warn";
+    } else if (hillier > 145) {
+      status = "Hypernatremia unmasked by glucose correction";
+      riskClass = "alert";
+    }
+
+    return {
+      hillierNa: round(hillier, 1),
+      katzNa: round(katz, 1),
+      effectiveOsmolality: round(effOsm, 1),
+      status,
+      riskClass,
+      glucoseMgDl: round(gluMgDl, 1),
+      explanation: "Hyperglycemia causes osmotic water shift from ICF to ECF, diluting serum sodium. Hillier consensus is preferred for marked hyperglycemia (>400 mg/dL / 22 mmol/L).",
+      source: "Katz MA. N Engl J Med 1973;289:843-844; Hillier TA et al. Am J Med 1999;106(4):399-403."
+    };
+  }
+
+  // ==========================================================================
+  // 21. MELD-Na (MODEL FOR END-STAGE LIVER DISEASE WITH SODIUM - UNOS 2016)
+  // ==========================================================================
+  function calculateMELDNa(bilirubinVal, inrVal, creatinineVal, sodiumVal, onDialysis) {
+    let bili = num(bilirubinVal);
+    let inr = num(inrVal);
+    let cr = num(creatinineVal);
+    let na = num(sodiumVal);
+
+    if (bili === null || inr === null || cr === null || na === null) {
+      return { error: "Please enter valid values for Bilirubin, INR, Creatinine, and Sodium." };
+    }
+
+    // Dialysis rule: If dialysis >= 2 times in past 7 days or CVVH, Cr is set to 4.0
+    if (onDialysis) cr = 4.0;
+
+    // UNOS bounds
+    cr = Math.min(Math.max(cr, 1.0), 4.0);
+    bili = Math.max(bili, 1.0);
+    inr = Math.max(inr, 1.0);
+    const naBounded = Math.min(Math.max(na, 125.0), 137.0);
+
+    // Initial MELD (MELD(i))
+    const meld_i = (9.57 * Math.log(cr)) + (3.78 * Math.log(bili)) + (11.20 * Math.log(inr)) + 6.43;
+
+    let meldNa = meld_i;
+    if (meld_i > 11) {
+      meldNa = meld_i + 1.32 * (137 - naBounded) - (0.033 * meld_i * (137 - naBounded));
+    }
+
+    // Bounded between 6 and 40
+    meldNa = Math.min(Math.max(meldNa, 6.0), 40.0);
+    const roundedMeld = Math.round(meldNa);
+
+    let mortality90d = "1.9%";
+    let riskClass = "good";
+
+    if (roundedMeld <= 9) {
+      mortality90d = "1.9%";
+      riskClass = "good";
+    } else if (roundedMeld <= 19) {
+      mortality90d = "6.0%";
+      riskClass = "good";
+    } else if (roundedMeld <= 29) {
+      mortality90d = "19.6%";
+      riskClass = "warn";
+    } else if (roundedMeld <= 39) {
+      mortality90d = "52.6%";
+      riskClass = "alert";
+    } else {
+      mortality90d = "71.3%";
+      riskClass = "alert";
+    }
+
+    return {
+      meldNa: roundedMeld,
+      meldInitial: round(meld_i, 1),
+      mortality90d,
+      riskClass,
+      interpretation: `Score: ${roundedMeld}. Estimated 90-day waitlist mortality: ${mortality90d}.`,
+      perioperativeRisk: roundedMeld >= 15 ? "Substantially elevated perioperative liver failure and bleeding risk. High-level critical care and liver transplant center backup recommended." : "Lower perioperative decompensation risk.",
+      source: "Kamath PS et al. Hepatology 2001;33:464-470; Kim WR et al. N Engl J Med 2008;359(10):1018-1026; OPTN/UNOS 2016."
+    };
+  }
+
+  // ==========================================================================
+  // 22. CURB-65 PNEUMONIA SEVERITY SCORE
+  // ==========================================================================
+  function calculateCURB65(criteria) {
+    const c = criteria || {};
+    let pts = 0;
+    if (c.confusion) pts += 1;
+    if (c.ureaHigh) pts += 1;
+    if (c.rrGte30) pts += 1;
+    if (c.bpLow) pts += 1;
+    if (c.ageGte65) pts += 1;
+
+    let tier = "Low Risk";
+    let mortality = "0.7% – 2.1%";
+    let siteOfCare = "Outpatient treatment usually suitable.";
+    let riskClass = "good";
+
+    if (pts <= 1) {
+      tier = "Low Risk (Score 0–1)";
+      mortality = "< 3%";
+      siteOfCare = "Outpatient therapy candidate. Re-evaluate if condition fails to improve within 48h.";
+      riskClass = "good";
+    } else if (pts === 2) {
+      tier = "Moderate Risk (Score 2)";
+      mortality = "~9%";
+      siteOfCare = "Short hospital inpatient stay or supervised outpatient treatment.";
+      riskClass = "warn";
+    } else if (pts === 3) {
+      tier = "Severe Risk (Score 3)";
+      mortality = "15% – 20%";
+      siteOfCare = "Hospital inpatient admission indicated. Monitor for clinical deterioration.";
+      riskClass = "alert";
+    } else {
+      tier = `Very Severe Risk (Score ${pts})`;
+      mortality = "27% – 40%";
+      siteOfCare = "Urgent inpatient admission; evaluate immediately for Intensive Care Unit (ICU) care.";
+      riskClass = "alert";
+    }
+
+    return {
+      score: pts,
+      tier,
+      mortality,
+      siteOfCare,
+      riskClass,
+      source: "Lim WS et al. Thorax 2003;58(5):377-382; British Thoracic Society (BTS) Guidelines."
+    };
+  }
+
+  // ==========================================================================
+  // 23. GLASGOW COMA SCALE (GCS)
+  // ==========================================================================
+  function calculateGCS(eye, verbal, motor) {
+    const e = parseInt(eye, 10) || 4;
+    const v = parseInt(verbal, 10) || 5;
+    const m = parseInt(motor, 10) || 6;
+
+    const total = e + v + m;
+
+    let injuryClass = "Mild Brain Injury";
+    let riskClass = "good";
+    let airwayAdvice = "Airway reflexes typically intact. Monitor neurological status.";
+
+    if (total >= 13) {
+      injuryClass = "Mild Brain Injury (GCS 13–15)";
+      riskClass = "good";
+      airwayAdvice = "Airway reflexes intact. Perform frequent serial neurological examinations.";
+    } else if (total >= 9) {
+      injuryClass = "Moderate Brain Injury (GCS 9–12)";
+      riskClass = "warn";
+      airwayAdvice = "Intermediate risk of airway loss or aspiration. Urgent non-contrast CT brain indicated.";
+    } else {
+      injuryClass = "Severe Brain Injury (GCS 3–8)";
+      riskClass = "alert";
+      airwayAdvice = "CRITICAL: Loss of protective airway reflexes (GCS ≤ 8 mandates endotracheal intubation). Avoid hypoxia and hypotension (maintain SBP > 100 mmHg).";
+    }
+
+    return {
+      total,
+      breakdown: `E${e} V${v} M${m}`,
+      injuryClass,
+      riskClass,
+      airwayAdvice,
+      source: "Teasdale G, Jennett B. Lancet 1974;2(7872):81-84; Teasdale G et al. Lancet Neurol 2014;13(8):844-854."
+    };
+  }
+
+  // ==========================================================================
+  // 24. MEWS & NEWS2 EARLY WARNING SCORES
+  // ==========================================================================
+  function calculateMEWS(sbpVal, hrVal, rrVal, tempVal, avpuVal) {
+    const sbp = num(sbpVal);
+    const hr = num(hrVal);
+    const rr = num(rrVal);
+    const temp = num(tempVal);
+    const avpu = avpuVal || "A";
+
+    let score = 0;
+
+    // SBP
+    if (sbp !== null) {
+      if (sbp <= 70) score += 3;
+      else if (sbp <= 80) score += 2;
+      else if (sbp <= 100) score += 1;
+      else if (sbp >= 200) score += 2;
+    }
+
+    // HR
+    if (hr !== null) {
+      if (hr < 40) score += 2;
+      else if (hr <= 50) score += 1;
+      else if (hr <= 100) score += 0;
+      else if (hr <= 110) score += 1;
+      else if (hr <= 129) score += 2;
+      else score += 3;
+    }
+
+    // RR
+    if (rr !== null) {
+      if (rr < 9) score += 2;
+      else if (rr <= 14) score += 0;
+      else if (rr <= 20) score += 1;
+      else if (rr <= 29) score += 2;
+      else score += 3;
+    }
+
+    // Temp
+    if (temp !== null) {
+      if (temp < 35.0) score += 2;
+      else if (temp < 38.5) score += 0;
+      else score += 2;
+    }
+
+    // AVPU
+    if (avpu === "V") score += 1;
+    else if (avpu === "P") score += 2;
+    else if (avpu === "U") score += 3;
+
+    let tier = "Low Clinical Risk (Score 0–2)";
+    let riskClass = "good";
+    let action = "Continue routine ward observation (minimum 12-hourly).";
+
+    if (score >= 5) {
+      tier = `High Clinical Risk (Score ${score} ≥ 5)`;
+      riskClass = "alert";
+      action = "CRITICAL: Immediate medical review. Call Medical Emergency Team / Critical Care Outreach. Assess for ICU transfer.";
+    } else if (score >= 3) {
+      tier = `Intermediate Clinical Risk (Score ${score})`;
+      riskClass = "warn";
+      action = "Increase observation frequency to 2–4 hourly. Inform primary medical team.";
+    }
+
+    return {
+      score,
+      tier,
+      riskClass,
+      action,
+      source: "Subbe CP et al. QJM 2001;94(10):521-526."
+    };
+  }
+
+  function calculateNEWS2(params) {
+    const p = params || {};
+    const rr = num(p.rr);
+    const spo2 = num(p.spo2);
+    const isScale2 = !!p.hypercapnicTarget; // SpO2 Scale 2
+    const onO2 = !!p.supplementalOxygen;
+    const sbp = num(p.sbp);
+    const hr = num(p.hr);
+    const cvpu = p.consciousness || "A"; // A, C, V, P, U
+    const temp = num(p.temp);
+
+    let score = 0;
+    let hasRedScore3 = false;
+
+    // Respiration Rate
+    if (rr !== null) {
+      let rPts = 0;
+      if (rr <= 8) rPts = 3;
+      else if (rr <= 11) rPts = 1;
+      else if (rr <= 20) rPts = 0;
+      else if (rr <= 24) rPts = 2;
+      else rPts = 3;
+      if (rPts === 3) hasRedScore3 = true;
+      score += rPts;
+    }
+
+    // SpO2
+    if (spo2 !== null) {
+      let spPts = 0;
+      if (!isScale2) {
+        // Scale 1 (standard)
+        if (spo2 <= 91) spPts = 3;
+        else if (spo2 <= 93) spPts = 2;
+        else if (spo2 <= 95) spPts = 1;
+        else spPts = 0;
+      } else {
+        // Scale 2 (hypercapnic target 88–92%)
+        if (spo2 <= 83) spPts = 3;
+        else if (spo2 <= 85) spPts = 2;
+        else if (spo2 <= 87) spPts = 1;
+        else if (spo2 <= 92) spPts = 0;
+        else if (spo2 <= 94) spPts = onO2 ? 1 : 0;
+        else if (spo2 <= 96) spPts = onO2 ? 2 : 0;
+        else spPts = onO2 ? 3 : 0;
+      }
+      if (spPts === 3) hasRedScore3 = true;
+      score += spPts;
+    }
+
+    // Supplemental Oxygen
+    if (onO2) score += 2;
+
+    // Systolic Blood Pressure
+    if (sbp !== null) {
+      let bpPts = 0;
+      if (sbp <= 90) bpPts = 3;
+      else if (sbp <= 100) bpPts = 2;
+      else if (sbp <= 110) bpPts = 1;
+      else if (sbp <= 219) bpPts = 0;
+      else bpPts = 3;
+      if (bpPts === 3) hasRedScore3 = true;
+      score += bpPts;
+    }
+
+    // Pulse
+    if (hr !== null) {
+      let hrPts = 0;
+      if (hr <= 40) hrPts = 3;
+      else if (hr <= 50) hrPts = 1;
+      else if (hr <= 90) hrPts = 0;
+      else if (hr <= 110) hrPts = 1;
+      else if (hr <= 130) hrPts = 2;
+      else hrPts = 3;
+      if (hrPts === 3) hasRedScore3 = true;
+      score += hrPts;
+    }
+
+    // Consciousness
+    if (cvpu !== "A") {
+      score += 3;
+      hasRedScore3 = true;
+    }
+
+    // Temperature
+    if (temp !== null) {
+      let tPts = 0;
+      if (temp <= 35.0) tPts = 3;
+      else if (temp <= 36.0) tPts = 1;
+      else if (temp <= 38.0) tPts = 0;
+      else if (temp <= 39.0) tPts = 1;
+      else tPts = 2;
+      if (tPts === 3) hasRedScore3 = true;
+      score += tPts;
+    }
+
+    let riskClass = "good";
+    let trigger = "Low Clinical Risk (Score 0–4)";
+    let response = "Routine ward observation (minimum 4–6 hourly). Continue current care plan.";
+
+    if (score >= 7) {
+      riskClass = "alert";
+      trigger = `High Clinical Risk (Total Score ${score} ≥ 7)`;
+      response = "EMERGENCY: Immediate assessment by critical care specialist or emergency outreach team with advanced airway skills. Transfer to ICU/HDU.";
+    } else if (score >= 5 || hasRedScore3) {
+      riskClass = "warn";
+      trigger = hasRedScore3 && score < 5 ? `Low-Medium Risk (Single parameter RED score 3)` : `Medium Clinical Risk (Score ${score})`;
+      response = "Urgent review by clinician / doctor within 1 hour. Increase observation frequency to minimum hourly. Continuous vital signs monitoring.";
+    }
+
+    return {
+      score,
+      hasRedScore3,
+      trigger,
+      riskClass,
+      response,
+      source: "Royal College of Physicians. National Early Warning Score (NEWS) 2, London: RCP, 2017."
+    };
+  }
+
+  // ==========================================================================
+  // 25. qSOFA (QUICK SEPSIS-RELATED ORGAN FAILURE ASSESSMENT)
+  // ==========================================================================
+  function calculateQSOFA(criteria) {
+    const c = criteria || {};
+    let pts = 0;
+    if (c.rrGte22) pts += 1;
+    if (c.alteredMentation) pts += 1;
+    if (c.sbpLte100) pts += 1;
+
+    let status = "Negative Screening (Score 0–1)";
+    let riskClass = "good";
+    let recommendation = "Low likelihood of sepsis-related in-hospital mortality or prolonged ICU stay. Continue routine clinical monitoring.";
+
+    if (pts >= 2) {
+      status = `Positive qSOFA (Score ${pts} ≥ 2)`;
+      riskClass = "alert";
+      recommendation = "HIGH RISK: Sepsis-related in-hospital mortality and prolonged ICU stay significantly increased. Promptly assess for organ dysfunction (full SOFA), measure serum lactate, draw blood cultures, initiate empiric broad-spectrum antibiotics, and start IV crystalloid resuscitation.";
+    }
+
+    return {
+      score: pts,
+      status,
+      riskClass,
+      recommendation,
+      source: "Singer M et al. Sepsis-3 Guidelines. JAMA 2016;315(8):801-810."
+    };
+  }
+
+  // ==========================================================================
+  // 26. FRAIL SCALE & CLINICAL FRAILTY SCALE (ROCKWOOD CFS 1–9)
+  // ==========================================================================
+  function calculateFRAIL(criteria) {
+    const c = criteria || {};
+    let pts = 0;
+    if (c.fatigue) pts += 1;
+    if (c.resistance) pts += 1;
+    if (c.ambulation) pts += 1;
+    if (c.illness) pts += 1;
+    if (c.lossOfWeight) pts += 1;
+
+    let category = "Robust / Non-frail (Score 0)";
+    let riskClass = "good";
+    let clinicalImpact = "Normal physiological reserve. Standard perioperative pathways suitable.";
+
+    if (pts >= 3) {
+      category = `Frail (Score ${pts}/5)`;
+      riskClass = "alert";
+      clinicalImpact = "Substantially increased risk of postoperative delirium, cardiopulmonary complications, loss of independence, and extended ICU/hospital stay. Implement multimodal prehabilitation, delirium precautions, and opioid-sparing anaesthesia.";
+    } else if (pts >= 1) {
+      category = `Pre-frail (Score ${pts}/5)`;
+      riskClass = "warn";
+      clinicalImpact = "Mildly diminished physiological reserve. Targeted pre-assessment and nutrition/mobility support recommended.";
+    }
+
+    return {
+      score: pts,
+      category,
+      riskClass,
+      clinicalImpact,
+      source: "Morley JE et al. J Am Med Dir Assoc 2012;13(8):678-681."
+    };
+  }
+
+  function calculateClinicalFrailtyScale(scoreVal) {
+    const s = parseInt(scoreVal, 10) || 1;
+    const clamped = Math.min(Math.max(s, 1), 9);
+
+    const levels = {
+      1: {
+        title: "1. Very Fit",
+        descriptor: "People who are robust, active, energetic and motivated. These people commonly exercise regularly. They are among the fittest for their age.",
+        riskClass: "good",
+        isFrail: false
+      },
+      2: {
+        title: "2. Well",
+        descriptor: "People who have no active disease symptoms but are less fit than category 1. Often, they exercise or are occasionally very active.",
+        riskClass: "good",
+        isFrail: false
+      },
+      3: {
+        title: "3. Managing Well",
+        descriptor: "People whose medical problems are well controlled, but are not regularly active beyond routine walking.",
+        riskClass: "good",
+        isFrail: false
+      },
+      4: {
+        title: "4. Vulnerable",
+        descriptor: "While not dependent on others for daily help, often symptoms limit activities. A common complaint is being 'slowed up', and/or being tired during the day.",
+        riskClass: "warn",
+        isFrail: false
+      },
+      5: {
+        title: "5. Mildly Frail",
+        descriptor: "These people often have more evident slowing, and need help in high order IADLs (finances, transportation, heavy housework, medications).",
+        riskClass: "alert",
+        isFrail: true
+      },
+      6: {
+        title: "6. Moderately Frail",
+        descriptor: "People who need help with all outside activities and with keeping house. Inside, they often have problems with stairs and need help with bathing and may need minimal assistance with dressing.",
+        riskClass: "alert",
+        isFrail: true
+      },
+      7: {
+        title: "7. Severely Frail",
+        descriptor: "Completely dependent for personal care, from whatever cause (physical or cognitive). Even so, they seem stable and not at high risk of dying (within ~6 months).",
+        riskClass: "alert",
+        isFrail: true
+      },
+      8: {
+        title: "8. Very Severely Frail",
+        descriptor: "Completely dependent, approaching the end of life. Typically, they could not recover even from a minor illness.",
+        riskClass: "alert",
+        isFrail: true
+      },
+      9: {
+        title: "9. Terminally Ill",
+        descriptor: "Approaching the end of life. This category applies to people with a life expectancy < 6 months, who are not otherwise evidently frail.",
+        riskClass: "alert",
+        isFrail: true
+      }
+    };
+
+    const lvl = levels[clamped];
+
+    return {
+      score: clamped,
+      title: lvl.title,
+      descriptor: lvl.descriptor,
+      riskClass: lvl.riskClass,
+      isFrail: lvl.isFrail,
+      anaestheticGuidance: lvl.isFrail
+        ? "CFS ≥ 5: Patient is frail. High risk for postoperative delirium, ICU admission, and functional decline. Plan multimodal opioid-sparing analgesia, maintain normothermia and cerebral perfusion, and avoid centrally acting anticholinergics and benzodiazepines."
+        : "CFS 1–4: Non-frail. Standard age-adjusted anaesthetic conduct indicated.",
+      source: "Rockwood K et al. CMAJ 2005;173(5):489-495; Dalhousie University Geriatric Medicine."
+    };
+  }
+
+  // ==========================================================================
+  // 27. REVISED TRAUMA SCORE (RTS - TRIAGE & TRISS PHYSIOLOGICAL)
+  // ==========================================================================
+  function calculateRevisedTraumaScore(gcsVal, sbpVal, rrVal) {
+    const gcs = num(gcsVal) || 15;
+    const sbp = num(sbpVal) !== null ? num(sbpVal) : 120;
+    const rr = num(rrVal) !== null ? num(rrVal) : 16;
+
+    // Coded values (0 to 4)
+    let gcsC = 4;
+    if (gcs >= 13) gcsC = 4;
+    else if (gcs >= 9) gcsC = 3;
+    else if (gcs >= 6) gcsC = 2;
+    else if (gcs >= 4) gcsC = 1;
+    else gcsC = 0;
+
+    let sbpC = 4;
+    if (sbp > 89) sbpC = 4;
+    else if (sbp >= 76) sbpC = 3;
+    else if (sbp >= 50) sbpC = 2;
+    else if (sbp >= 1) sbpC = 1;
+    else sbpC = 0;
+
+    let rrC = 4;
+    if (rr >= 10 && rr <= 29) rrC = 4;
+    else if (rr > 29) rrC = 3;
+    else if (rr >= 6) rrC = 2;
+    else if (rr >= 1) rrC = 1;
+    else rrC = 0;
+
+    // Triage RTS (0 to 12)
+    const triageRts = gcsC + sbpC + rrC;
+
+    // Physiological RTS (TRISS weighted formula: 0.9368 GCS + 0.7326 SBP + 0.2908 RR)
+    const physRts = (0.9368 * gcsC) + (0.7326 * sbpC) + (0.2908 * rrC);
+
+    // Probability of survival: Ps = 1 / (1 + e^-b), where b = -3.5718 + physRts
+    const b = -3.5718 + physRts;
+    const ps = 1 / (1 + Math.exp(-b));
+    const survivalPct = round(ps * 100, 1);
+
+    let triageCategory = "Triage RTS: Normal / Minor Trauma (Score 12)";
+    let riskClass = "good";
+    let recommendation = "Routine trauma assessment. Monitor for occult injury.";
+
+    if (triageRts <= 11) {
+      triageCategory = `Triage RTS: Severe Trauma (Score ${triageRts} ≤ 11)`;
+      riskClass = "alert";
+      recommendation = "Score ≤ 11 indicates high mortality risk and trauma center criteria. Immediate transport to Level 1 / Major Trauma Center and activate Massive Transfusion Protocol (MTP) if indicated.";
+    }
+
+    return {
+      triageScore: triageRts,
+      physiologicalScore: round(physRts, 3),
+      survivalProbabilityPct: survivalPct,
+      coded: { gcs: gcsC, sbp: sbpC, rr: rrC },
+      triageCategory,
+      riskClass,
+      recommendation,
+      source: "Champion HR et al. J Trauma 1989;29(5):623-629."
+    };
+  }
+
   // Export module
   window.KnockoutCalculators = Object.assign(window.KnockoutCalculators || {}, {
     calculateBMI,
@@ -767,6 +1849,25 @@
     calculateWilsonScore,
     calculateChildPugh,
     calculateCOPUR,
+    calculateCHA2DS2VASc,
+    calculateCHADS2,
+    calculateRCRI,
+    calculateWellsPE,
+    calculatePESI,
+    calculateFLACC,
+    calculateCHEOPS,
+    calculateBodyWeights,
+    calculateCorrectedCalcium,
+    calculateCorrectedSodium,
+    calculateMELDNa,
+    calculateCURB65,
+    calculateGCS,
+    calculateMEWS,
+    calculateNEWS2,
+    calculateQSOFA,
+    calculateFRAIL,
+    calculateClinicalFrailtyScale,
+    calculateRevisedTraumaScore,
     DASI_ITEMS
   });
 })();

@@ -364,6 +364,149 @@
               <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/39124561/" target="_blank" rel="noopener">Source: Petrov et al. (J Clin Med 2024;13:4294) ↗</a>
             </div>
           </article>
+
+          <!-- FLACC Paediatric Pain Score -->
+          <article class="calc-box fade" id="calcFlacc3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Paediatric Pain</div>
+              <h3>FLACC Paediatric Pain Scale</h3>
+              <p class="when-to-use">Observational behavioral pain assessment for infants and children (2 months to 7 years) or non-verbal postoperative patients.</p>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="flaccFace3d">Face Expression</label>
+              <select class="calc-select" id="flaccFace3d">
+                <option value="0">0 — No particular expression or smile</option>
+                <option value="1">1 — Occasional grimace or frown, withdrawn, disinterested</option>
+                <option value="2">2 — Frequent to constant quivering chin, clenched jaw</option>
+              </select>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="flaccLegs3d">Legs Position</label>
+              <select class="calc-select" id="flaccLegs3d">
+                <option value="0">0 — Normal position or relaxed</option>
+                <option value="1">1 — Uneasy, restless, tense</option>
+                <option value="2">2 — Kicking, or legs drawn up</option>
+              </select>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="flaccAct3d">Activity</label>
+              <select class="calc-select" id="flaccAct3d">
+                <option value="0">0 — Lying quietly, normal position, moves easily</option>
+                <option value="1">1 — Squirming, shifting back and forth, tense</option>
+                <option value="2">2 — Arched, rigid or jerking</option>
+              </select>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="flaccCry3d">Cry</label>
+              <select class="calc-select" id="flaccCry3d">
+                <option value="0">0 — No cry (awake or asleep)</option>
+                <option value="1">1 — Moans or whimpers, occasional complaint</option>
+                <option value="2">2 — Crying steadily, screams or sobs, frequent complaints</option>
+              </select>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="flaccCons3d">Consolability</label>
+              <select class="calc-select" id="flaccCons3d">
+                <option value="0">0 — Content, relaxed</option>
+                <option value="1">1 — Reassured by occasional touching or talking, distractible</option>
+                <option value="2">2 — Difficult to console or comfort</option>
+              </select>
+            </div>
+
+            <div class="calc-result-area" id="flaccResult3d">
+              <div class="calc-result-badge good" id="flaccBadge3d">Score: 0 / 10</div>
+              <div class="calc-primary-val" id="flaccVal3d">0 <span class="unit">/ 10 Points</span></div>
+              <div class="calc-formula-display">0: Relaxed | 1–3: Mild discomfort | 4–6: Moderate pain | 7–10: Severe pain</div>
+              <div class="calc-interp" id="flaccInterp3d">Patient relaxed and comfortable. Maintain routine comfort measures.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnFlaccReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/9165865/" target="_blank" rel="noopener">Source: Merkel et al. (1997) ↗</a>
+            </div>
+          </article>
+
+          <!-- CHEOPS Paediatric Pain Score -->
+          <article class="calc-box fade" id="calcCheops3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Post-Op Analgesia</div>
+              <h3>CHEOPS Paediatric Pain Scale</h3>
+              <p class="when-to-use">Children's Hospital of Eastern Ontario Pain Scale for monitoring acute post-surgical pain in children aged 1–7 years.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="cheopsCry3d">Cry</label>
+                <select class="calc-select" id="cheopsCry3d">
+                  <option value="1">1 — No cry</option>
+                  <option value="2">2 — Whimpering</option>
+                  <option value="3">3 — Crying / Screaming</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="cheopsFacial3d">Facial Expression</label>
+                <select class="calc-select" id="cheopsFacial3d">
+                  <option value="1">1 — Smiling / Neutral</option>
+                  <option value="2">2 — Grimace</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="cheopsVerbal3d">Child Verbal</label>
+                <select class="calc-select" id="cheopsVerbal3d">
+                  <option value="1">1 — Positive or other complaints</option>
+                  <option value="2">2 — Pain complaints</option>
+                  <option value="3">3 — Both pain and other complaints</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="cheopsTorso3d">Torso</label>
+                <select class="calc-select" id="cheopsTorso3d">
+                  <option value="1">1 — Neutral</option>
+                  <option value="2">2 — Shifting / Tense / Upright</option>
+                  <option value="3">3 — Restrained</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="cheopsTouch3d">Touch</label>
+                <select class="calc-select" id="cheopsTouch3d">
+                  <option value="1">1 — Not touching</option>
+                  <option value="2">2 — Reach / Touch / Grab / Restrained</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="cheopsLegs3d">Legs</label>
+                <select class="calc-select" id="cheopsLegs3d">
+                  <option value="1">1 — Neutral / Relaxed</option>
+                  <option value="2">2 — Squirming / Kicking / Drawn up</option>
+                  <option value="3">3 — Restrained</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="cheopsResult3d">
+              <div class="calc-result-badge good" id="cheopsBadge3d">Score: 6 / 14</div>
+              <div class="calc-primary-val" id="cheopsVal3d">6 <span class="unit">/ 14 Points</span></div>
+              <div class="calc-formula-display">Score range 4 to 14 | Score ≥ 8 indicates clinically significant pain requiring opioid/analgesic rescue</div>
+              <div class="calc-interp" id="cheopsInterp3d">Score &lt; 8: Mild or absent pain. Comfort measures and routine observations.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnCheopsReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/4077774/" target="_blank" rel="noopener">Source: McGrath et al. (1985) ↗</a>
+            </div>
+          </article>
+
           </div>
         </div><!-- /#tabPaeds3d -->
 
@@ -433,6 +576,489 @@
               <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/5688005/" target="_blank" rel="noopener">Source: Baxter & Shires (1968) ↗</a>
             </div>
           </article>
+
+          <!-- Glasgow Coma Scale (GCS) -->
+          <article class="calc-box fade" id="calcGcs3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Neuro &amp; Airway</div>
+              <h3>Glasgow Coma Scale (GCS)</h3>
+              <p class="when-to-use">Defines level of consciousness, head injury severity, and urgent requirement for endotracheal intubation.</p>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="gcsEye3d">Eye Opening (E)</label>
+              <select class="calc-select" id="gcsEye3d">
+                <option value="4" selected>4 — Spontaneous</option>
+                <option value="3">3 — To sound / speech</option>
+                <option value="2">2 — To pressure / pain</option>
+                <option value="1">1 — None</option>
+              </select>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="gcsVerbal3d">Verbal Response (V)</label>
+              <select class="calc-select" id="gcsVerbal3d">
+                <option value="5" selected>5 — Oriented</option>
+                <option value="4">4 — Confused</option>
+                <option value="3">3 — Inappropriate words</option>
+                <option value="2">2 — Incomprehensible sounds</option>
+                <option value="1">1 — None</option>
+              </select>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="gcsMotor3d">Motor Response (M)</label>
+              <select class="calc-select" id="gcsMotor3d">
+                <option value="6" selected>6 — Obeys commands</option>
+                <option value="5">5 — Localizing pain</option>
+                <option value="4">4 — Normal flexion (withdrawal)</option>
+                <option value="3">3 — Abnormal flexion (decorticate posturing)</option>
+                <option value="2">2 — Extension (decerebrate posturing)</option>
+                <option value="1">1 — None (flaccid)</option>
+              </select>
+            </div>
+
+            <div class="calc-result-area" id="gcsResult3d">
+              <div class="calc-result-badge good" id="gcsBadge3d">Mild Brain Injury</div>
+              <div class="calc-primary-val" id="gcsVal3d">15 <span class="unit">/ 15 (E4 V5 M6)</span></div>
+              <div class="calc-formula-display">13–15: Mild | 9–12: Moderate | 3–8: Severe (Intubation Indicated)</div>
+              <div class="calc-interp" id="gcsInterp3d">Airway reflexes intact. Perform frequent serial neurological examinations.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnGcsReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/4136544/" target="_blank" rel="noopener">Source: Teasdale &amp; Jennett (Lancet 1974) ↗</a>
+            </div>
+          </article>
+
+          <!-- Revised Trauma Score (RTS) -->
+          <article class="calc-box fade" id="calcRts3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Trauma Resuscitation</div>
+              <h3>Revised Trauma Score (RTS)</h3>
+              <p class="when-to-use">Physiological scoring tool for field triage and survival probability estimation in major trauma.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="rtsGcs3d">GCS Score (3–15)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="rtsGcs3d" type="number" min="3" max="15" step="1" value="14">
+                  <span class="calc-input-unit">pts</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="rtsSbp3d">Systolic BP (mmHg)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="rtsSbp3d" type="number" min="0" max="300" step="1" value="110">
+                  <span class="calc-input-unit">mmHg</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="rtsRr3d">Respiratory Rate</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="rtsRr3d" type="number" min="0" max="80" step="1" value="18">
+                  <span class="calc-input-unit">/min</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="rtsResult3d">
+              <div class="calc-result-badge good" id="rtsBadge3d">Triage RTS: 12</div>
+              <div class="calc-primary-val" id="rtsVal3d">12 <span class="unit">/ 12 (TRISS RTS: 7.841)</span></div>
+              <div class="calc-formula-display" id="rtsSurvivalVal3d">Estimated Survival Probability: 98.6%</div>
+              <div class="calc-interp" id="rtsInterp3d">Triage RTS &gt; 11 indicates normal physiological parameters. Routine trauma protocol.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnRtsReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/2657085/" target="_blank" rel="noopener">Source: Champion et al. (J Trauma 1989) ↗</a>
+            </div>
+          </article>
+
+          <!-- Wells' Score for Pulmonary Embolism -->
+          <article class="calc-box fade" id="calcWellsPe3d" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Thromboembolism</div>
+              <h3>Wells' Criteria for Pulmonary Embolism</h3>
+              <p class="when-to-use">Clinical decision rule establishing pre-test probability of acute pulmonary embolism to guide D-dimer vs CTPA.</p>
+            </div>
+
+            <div class="calc-choice-group" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="wellsDvt3d">
+                <span class="calc-choice-label">Clinical signs &amp; symptoms of DVT (leg swelling, tenderness)</span>
+                <span class="calc-choice-points">+3.0 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="wellsPeLikely3d">
+                <span class="calc-choice-label">PE is #1 diagnosis OR equally likely to alternative</span>
+                <span class="calc-choice-points">+3.0 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="wellsHr3d">
+                <span class="calc-choice-label">Heart rate &gt; 100 beats/min</span>
+                <span class="calc-choice-points">+1.5 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="wellsImmobil3d">
+                <span class="calc-choice-label">Immobilization ≥ 3 days OR surgery in previous 4 weeks</span>
+                <span class="calc-choice-points">+1.5 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="wellsPrior3d">
+                <span class="calc-choice-label">Previous objectively documented DVT or PE</span>
+                <span class="calc-choice-points">+1.5 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="wellsHemo3d">
+                <span class="calc-choice-label">Hemoptysis</span>
+                <span class="calc-choice-points">+1.0 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="wellsMalign3d">
+                <span class="calc-choice-label">Malignancy (under active treatment or palliation)</span>
+                <span class="calc-choice-points">+1.0 pt</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="wellsResult3d">
+              <div class="calc-result-badge good" id="wellsBadge3d">PE Unlikely (≤ 4.0 pts)</div>
+              <div class="calc-primary-val" id="wellsVal3d">0.0 <span class="unit">Points</span></div>
+              <div class="calc-formula-display" id="wellsTierDisplay3d">Two-Tier: PE Unlikely (≤ 4.0) | Three-Tier: Low (&lt; 2), Moderate (2–6), High (&gt; 6)</div>
+              <div class="calc-interp" id="wellsInterp3d">PE Unlikely (~12% risk). Consider high-sensitivity D-dimer testing to rule out PE without imaging.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnWellsReset3d">Deselect All</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/11427139/" target="_blank" rel="noopener">Source: Wells et al. (Ann Intern Med 2001) ↗</a>
+            </div>
+          </article>
+
+          <!-- PESI & Simplified PESI -->
+          <article class="calc-box fade" id="calcPesi3d" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">PE Risk Stratification</div>
+              <h3>Pulmonary Embolism Severity Index (PESI &amp; sPESI)</h3>
+              <p class="when-to-use">30-day all-cause mortality prediction in confirmed acute pulmonary embolism to distinguish low-risk outpatient candidates from high-risk ICU admissions.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="pesiAge3d">Patient Age (years)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pesiAge3d" type="number" min="18" max="120" step="1" value="65">
+                  <span class="calc-input-unit">yrs</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="pesiSex3d">Biological Sex</label>
+                <select class="calc-select" id="pesiSex3d">
+                  <option value="male">Male (+10 pts)</option>
+                  <option value="female" selected>Female (0 pts)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-choice-group" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiCancer3d">
+                <span class="calc-choice-label">Altered mental status (disoriented, lethargic)</span>
+                <span class="calc-choice-points">+60 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiSbp3d">
+                <span class="calc-choice-label">Systolic BP &lt; 100 mmHg</span>
+                <span class="calc-choice-points">+30 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiCancerHist3d">
+                <span class="calc-choice-label">History of cancer / malignancy</span>
+                <span class="calc-choice-points">+30 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiPulse3d">
+                <span class="calc-choice-label">Pulse ≥ 110 beats/min</span>
+                <span class="calc-choice-points">+20 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiRr3d">
+                <span class="calc-choice-label">Respiratory rate ≥ 30 breaths/min</span>
+                <span class="calc-choice-points">+20 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiTemp3d">
+                <span class="calc-choice-label">Temperature &lt; 36.0°C (96.8°F)</span>
+                <span class="calc-choice-points">+20 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiSpo23d">
+                <span class="calc-choice-label">Arterial oxygen saturation SpO₂ &lt; 90%</span>
+                <span class="calc-choice-points">+20 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiHf3d">
+                <span class="calc-choice-label">Chronic heart failure</span>
+                <span class="calc-choice-points">+10 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiLung3d">
+                <span class="calc-choice-label">Chronic lung disease (COPD, asthma, fibrosis)</span>
+                <span class="calc-choice-points">+10 pts</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="pesiResult3d">
+              <div class="calc-result-badge good" id="pesiBadge3d">Class I (≤65 pts)</div>
+              <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:baseline;">
+                <div class="calc-primary-val" id="pesiVal3d">65 <span class="unit">Points (Class I)</span></div>
+                <div class="calc-primary-val" id="spesiVal3d" style="font-size:1.25rem; color:#38bdf8;">sPESI: 0 (Low Risk)</div>
+              </div>
+              <div class="calc-formula-display" id="pesiMortalityVal3d">30-day mortality: 0.0% – 1.6% | sPESI: 1.0% mortality</div>
+              <div class="calc-interp" id="pesiInterp3d">Very Low Risk. Candidate for early hospital discharge or home anticoagulation treatment.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnPesiReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/16020800/" target="_blank" rel="noopener">Source: Aujesky et al. (2005) &amp; Jiménez et al. (2010) ↗</a>
+            </div>
+          </article>
+
+          <!-- qSOFA -->
+          <article class="calc-box fade" id="calcQsofa3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Sepsis Screening</div>
+              <h3>qSOFA (Quick Sepsis Organ Failure)</h3>
+              <p class="when-to-use">Rapid bedside identification of adult patients with suspected infection at high risk of in-hospital mortality or ICU stay &gt; 3 days (Sepsis-3).</p>
+            </div>
+
+            <div class="calc-choice-group" style="display:flex; flex-direction:column; gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="qsofaRr3d">
+                <span class="calc-choice-label">Respiratory rate ≥ 22 breaths/min</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="qsofaMental3d">
+                <span class="calc-choice-label">Altered mentation (Glasgow Coma Scale &lt; 15)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="qsofaSbp3d">
+                <span class="calc-choice-label">Systolic blood pressure ≤ 100 mmHg</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="qsofaResult3d">
+              <div class="calc-result-badge good" id="qsofaBadge3d">Score: 0 / 3</div>
+              <div class="calc-primary-val" id="qsofaVal3d">0 <span class="unit">/ 3 Points (Negative)</span></div>
+              <div class="calc-formula-display">Score ≥ 2 indicates high risk of poor clinical outcome in sepsis</div>
+              <div class="calc-interp" id="qsofaInterp3d">Negative screening. Continue routine clinical monitoring.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnQsofaReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/26903338/" target="_blank" rel="noopener">Source: Singer et al. (JAMA 2016) ↗</a>
+            </div>
+          </article>
+
+          <!-- CURB-65 Pneumonia Severity Score -->
+          <article class="calc-box fade" id="calcCurb653d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Respiratory &amp; Triage</div>
+              <h3>CURB-65 Pneumonia Severity Score</h3>
+              <p class="when-to-use">Estimates 30-day mortality in community-acquired pneumonia to guide outpatient vs inpatient vs ICU admission.</p>
+            </div>
+
+            <div class="calc-choice-group" style="display:flex; flex-direction:column; gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="curbC3d">
+                <span class="calc-choice-label"><strong>C — Confusion:</strong> New disorientation in person, place, or time</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="curbU3d">
+                <span class="calc-choice-label"><strong>U — Urea:</strong> BUN &gt; 19 mg/dL (or serum urea &gt; 7 mmol/L)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="curbR3d">
+                <span class="calc-choice-label"><strong>R — Respiratory rate:</strong> ≥ 30 breaths/min</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="curbB3d">
+                <span class="calc-choice-label"><strong>B — Blood pressure:</strong> Systolic &lt; 90 mmHg OR Diastolic ≤ 60 mmHg</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="curb653d">
+                <span class="calc-choice-label"><strong>65 — Age:</strong> Age ≥ 65 years</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="curbResult3d">
+              <div class="calc-result-badge good" id="curbBadge3d">Low Risk (Score 0)</div>
+              <div class="calc-primary-val" id="curbVal3d">0 <span class="unit">/ 5 Points</span></div>
+              <div class="calc-formula-display" id="curbMortalityVal3d">30-day mortality: &lt; 3% | Outpatient treatment suitable</div>
+              <div class="calc-interp" id="curbInterp3d">Outpatient therapy candidate. Re-evaluate if condition fails to improve within 48h.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnCurbReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/12728159/" target="_blank" rel="noopener">Source: Lim et al. (Thorax 2003) ↗</a>
+            </div>
+          </article>
+
+          <!-- National Early Warning Score 2 (NEWS2) -->
+          <article class="calc-box fade" id="calcNews23d" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Early Warning</div>
+              <h3>National Early Warning Score 2 (NEWS2)</h3>
+              <p class="when-to-use">Royal College of Physicians early warning tool detecting acute clinical deterioration and triggering rapid response escalation.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="newsRr3d">Respiratory Rate</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="newsRr3d" type="number" min="0" max="60" step="1" value="16">
+                  <span class="calc-input-unit">/min</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="newsSpo23d">Oxygen Saturation (SpO₂)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="newsSpo23d" type="number" min="50" max="100" step="1" value="98">
+                  <span class="calc-input-unit">%</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="newsScale3d">SpO₂ Scale Target</label>
+                <select class="calc-select" id="newsScale3d">
+                  <option value="1" selected>Scale 1: Standard (≥ 96%)</option>
+                  <option value="2">Scale 2: Hypercapnic (88–92%)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="newsO23d">Air or Supplemental O₂</label>
+                <select class="calc-select" id="newsO23d">
+                  <option value="0" selected>Room Air (0 pts)</option>
+                  <option value="2">Supplemental Oxygen (+2 pts)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="newsSbp3d">Systolic Blood Pressure</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="newsSbp3d" type="number" min="40" max="300" step="1" value="120">
+                  <span class="calc-input-unit">mmHg</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="newsPulse3d">Pulse / Heart Rate</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="newsPulse3d" type="number" min="20" max="250" step="1" value="75">
+                  <span class="calc-input-unit">bpm</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="newsAvpu3d">Consciousness Level</label>
+                <select class="calc-select" id="newsAvpu3d">
+                  <option value="A" selected>Alert (A) — 0 pts</option>
+                  <option value="CVPU">CVPU (Confusion, Voice, Pain, Unresponsive) — 3 pts</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="newsTemp3d">Temperature (°C)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="newsTemp3d" type="number" min="30" max="45" step="0.1" value="37.0">
+                  <span class="calc-input-unit">°C</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="newsResult3d">
+              <div class="calc-result-badge good" id="newsBadge3d">Low Clinical Risk (Score 0)</div>
+              <div class="calc-primary-val" id="newsVal3d">0 <span class="unit">/ 20 Points</span></div>
+              <div class="calc-formula-display">0–4: Low | Single RED 3: Low-Medium | 5–6: Medium | ≥ 7: High (Emergency Escalation)</div>
+              <div class="calc-interp" id="newsInterp3d">Ward-based monitoring minimum 4–6 hourly. Continue routine clinical care.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnNewsReset3d">Reset</button>
+              <a class="calc-source-link" href="https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news-2" target="_blank" rel="noopener">Source: Royal College of Physicians (2017) ↗</a>
+            </div>
+          </article>
+
+          <!-- MEWS (Modified Early Warning Score) -->
+          <article class="calc-box fade" id="calcMews3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Early Warning</div>
+              <h3>Modified Early Warning Score (MEWS)</h3>
+              <p class="when-to-use">Identifies hospitalized adult patients at risk of catastrophic clinical deterioration, ICU admission, or cardiac arrest.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="mewsSbp3d">Systolic BP (mmHg)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="mewsSbp3d" type="number" min="40" max="300" step="1" value="120">
+                  <span class="calc-input-unit">mmHg</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="mewsHr3d">Heart Rate (bpm)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="mewsHr3d" type="number" min="20" max="250" step="1" value="75">
+                  <span class="calc-input-unit">bpm</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="mewsRr3d">Respiratory Rate</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="mewsRr3d" type="number" min="0" max="60" step="1" value="16">
+                  <span class="calc-input-unit">/min</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="mewsTemp3d">Temperature (°C)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="mewsTemp3d" type="number" min="30" max="45" step="0.1" value="37.0">
+                  <span class="calc-input-unit">°C</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="mewsAvpu3d">AVPU Consciousness</label>
+                <select class="calc-select" id="mewsAvpu3d">
+                  <option value="A" selected>Alert (A) — 0 pts</option>
+                  <option value="V">Reacts to Voice (V) — 1 pt</option>
+                  <option value="P">Reacts to Pain (P) — 2 pts</option>
+                  <option value="U">Unresponsive (U) — 3 pts</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="mewsResult3d">
+              <div class="calc-result-badge good" id="mewsBadge3d">Low Risk (Score 0)</div>
+              <div class="calc-primary-val" id="mewsVal3d">0 <span class="unit">/ 14 Points</span></div>
+              <div class="calc-formula-display">Score ≥ 5 is a critical threshold triggering immediate Medical Emergency Team review</div>
+              <div class="calc-interp" id="mewsInterp3d">Continue routine ward observation (minimum 12-hourly).</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnMewsReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/11588210/" target="_blank" rel="noopener">Source: Subbe et al. (QJM 2001) ↗</a>
+            </div>
+          </article>
+
         </div>
         </div><!-- /#tabEmergency3d -->
 
@@ -731,6 +1357,332 @@
               <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/18431114/" target="_blank" rel="noopener">Source: Chung et al. (Anesthesiology 2008) ↗</a>
             </div>
           </article>
+
+          <!-- Ideal & Adjusted Body Weight (IBW & ABW) -->
+          <article class="calc-box fade" id="calcWeights3d" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Anaesthetic Dosing</div>
+              <h3>Ideal &amp; Adjusted Body Weight (IBW, ABW, LBW)</h3>
+              <p class="when-to-use">Computes Devine Ideal Weight, Adjusted Weight (0.4 factor), and Boer Lean Body Mass with anaesthetic drug dosing rules.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="weightHt3d">Height (cm)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="weightHt3d" type="number" min="100" max="250" step="1" value="175">
+                  <span class="calc-input-unit">cm</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="weightWt3d">Actual Weight (kg)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="weightWt3d" type="number" min="20" max="300" step="1" value="110">
+                  <span class="calc-input-unit">kg</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="weightSex3d">Biological Sex</label>
+                <select class="calc-select" id="weightSex3d">
+                  <option value="male" selected>Male (Base 50 kg)</option>
+                  <option value="female">Female (Base 45.5 kg)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="weightsResult3d">
+              <div class="calc-result-badge alert" id="weightsBadge3d">Obese (&gt;130% IBW)</div>
+              <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:baseline;">
+                <div class="calc-primary-val" id="weightsIbwVal3d">IBW: 70.5 <span class="unit">kg</span></div>
+                <div class="calc-primary-val" id="weightsAbwVal3d" style="font-size:1.3rem; color:#38bdf8;">ABW: 86.3 <span class="unit">kg</span></div>
+                <div class="calc-primary-val" id="weightsLbwVal3d" style="font-size:1.3rem; color:#4ade80;">LBW: 69.8 <span class="unit">kg</span></div>
+              </div>
+              <div class="calc-formula-display" id="weightsPctVal3d">Patient is 156.0% of Ideal Body Weight (39.5 kg excess weight)</div>
+              <div class="calc-interp" id="weightsInterp3d">
+                <strong>Propofol Induction:</strong> Dose on LBW / Adjusted Weight to prevent hypotension.<br>
+                <strong>Succinylcholine:</strong> Dose on Total Body Weight (TBW 1.0–1.5 mg/kg) to overcome expanded pseudocholinesterase enzyme pool.<br>
+                <strong>Rocuronium / Vecuronium:</strong> Dose strictly on Ideal Body Weight (IBW) to prevent prolonged blockade.<br>
+                <strong>Sugammadex:</strong> Dose on Total Body Weight (TBW) for 1:1 molecular encapsulation.<br>
+                <strong>Fentanyl / Remifentanil:</strong> Dose lipophilic opioids on LBW to avoid delayed emergence.
+              </div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnWeightsReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/21115654/" target="_blank" rel="noopener">Source: Devine (1974) &amp; Ingrande &amp; Lemmens (BJA 2010) ↗</a>
+            </div>
+          </article>
+
+          <!-- Revised Cardiac Risk Index (RCRI / Lee Criteria) -->
+          <article class="calc-box fade" id="calcRcri3d" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Cardiac Assessment</div>
+              <h3>Revised Cardiac Risk Index (RCRI / Lee Criteria)</h3>
+              <p class="when-to-use">Estimates perioperative risk of major adverse cardiac events (cardiac death, nonfatal arrest, MI, complete heart block) after elective noncardiac surgery.</p>
+            </div>
+
+            <div class="calc-choice-group" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="rcriHighRisk3d">
+                <span class="calc-choice-label">High-risk surgery (intraperitoneal, intrathoracic, suprainguinal vascular)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="rcriIhd3d">
+                <span class="calc-choice-label">History of ischemic heart disease (prior MI, positive stress test, current angina)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="rcriChf3d">
+                <span class="calc-choice-label">History of congestive heart failure (PND, rales, S3, pulmonary edema)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="rcriCvd3d">
+                <span class="calc-choice-label">History of cerebrovascular disease (stroke, TIA)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="rcriInsulin3d">
+                <span class="calc-choice-label">Preoperative insulin therapy for diabetes mellitus</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="rcriCr3d">
+                <span class="calc-choice-label">Preoperative serum creatinine &gt; 2.0 mg/dL (177 µmol/L)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="rcriResult3d">
+              <div class="calc-result-badge good" id="rcriBadge3d">Class I (0 pts)</div>
+              <div class="calc-primary-val" id="rcriVal3d">0 <span class="unit">/ 6 Points (Class I)</span></div>
+              <div class="calc-formula-display" id="rcriRatesVal3d">Complication Rate: 3.9% | Major Cardiac Event Risk: 0.4%</div>
+              <div class="calc-interp" id="rcriInterp3d">Very low perioperative cardiac risk. Proceed without routine noninvasive cardiac stress testing.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnRcriReset3d">Deselect All</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/10477528/" target="_blank" rel="noopener">Source: Lee et al. (Circulation 1999) ↗</a>
+            </div>
+          </article>
+
+          <!-- CHA2DS2-VASc & CHADS2 -->
+          <article class="calc-box fade" id="calcCha2ds23d" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Anticoagulation</div>
+              <h3>CHA₂DS₂-VASc &amp; CHADS₂ Score</h3>
+              <p class="when-to-use">Thromboembolic stroke risk stratification in non-valvular atrial fibrillation to guide perioperative anticoagulation, bridging, and DOAC interruptions.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="chaAge3d">Patient Age (years)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="chaAge3d" type="number" min="18" max="120" step="1" value="70">
+                  <span class="calc-input-unit">yrs</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="chaSex3d">Biological Sex</label>
+                <select class="calc-select" id="chaSex3d">
+                  <option value="male" selected>Male (0 pts)</option>
+                  <option value="female">Female (+1 pt)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-choice-group" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="chaChf3d">
+                <span class="calc-choice-label">Congestive heart failure (signs/symptoms or LVEF ≤ 40%)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="chaHtn3d">
+                <span class="calc-choice-label">Hypertension (BP &gt; 140/90 or on antihypertensive medication)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="chaDm3d">
+                <span class="calc-choice-label">Diabetes mellitus (fasting glucose &gt; 125 mg/dL or on oral agents/insulin)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="chaStroke3d">
+                <span class="calc-choice-label">Prior Stroke, TIA, or systemic thromboembolism</span>
+                <span class="calc-choice-points">+2 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="chaVascular3d">
+                <span class="calc-choice-label">Vascular disease (prior MI, peripheral artery disease, aortic plaque)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="chaResult3d">
+              <div class="calc-result-badge warn" id="chaBadge3d">Moderate Risk (1 pt)</div>
+              <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:baseline;">
+                <div class="calc-primary-val" id="chaVascVal3d">CHA₂DS₂-VASc: 1 <span class="unit">Point</span></div>
+                <div class="calc-primary-val" id="chadsVal3d" style="font-size:1.25rem; color:#38bdf8;">CHADS₂: 0 <span class="unit">Points</span></div>
+              </div>
+              <div class="calc-formula-display" id="chaStrokeRateVal3d">Annual Adjusted Stroke Rate: 0.6% / year</div>
+              <div class="calc-interp" id="chaInterp3d">Oral anticoagulation (DOAC preferred over VKA) should be considered (ESC 2020 Class IIa).</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnChaReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/20008668/" target="_blank" rel="noopener">Source: Lip et al. (Chest 2010) &amp; ESC AF Guidelines 2020 ↗</a>
+            </div>
+          </article>
+
+          <!-- MELD-Na (UNOS 2016) -->
+          <article class="calc-box fade" id="calcMeldNa3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Hepatic Reserve</div>
+              <h3>MELD-Na Score (UNOS 2016)</h3>
+              <p class="when-to-use">Model for End-Stage Liver Disease with Sodium: predicts 90-day waitlist mortality and perioperative liver decompensation.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="meldBili3d">Total Bilirubin</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="meldBili3d" type="number" min="0.1" max="50" step="0.1" value="2.5">
+                  <span class="calc-input-unit">mg/dL</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="meldInr3d">INR</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="meldInr3d" type="number" min="0.8" max="20" step="0.1" value="1.8">
+                  <span class="calc-input-unit">INR</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="meldCr3d">Serum Creatinine</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="meldCr3d" type="number" min="0.2" max="20" step="0.1" value="1.6">
+                  <span class="calc-input-unit">mg/dL</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="meldNa3d">Serum Sodium</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="meldNa3d" type="number" min="100" max="160" step="1" value="130">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-choice-group" style="margin-bottom:0.75rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="meldDialysis3d">
+                <span class="calc-choice-label">Hemodialysis / CVVH ≥ 2 times in the past 7 days (sets Cr to 4.0 mg/dL)</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="meldResult3d">
+              <div class="calc-result-badge warn" id="meldBadge3d">Score: 25</div>
+              <div class="calc-primary-val" id="meldVal3d">25 <span class="unit">Points (Initial MELD: 21.0)</span></div>
+              <div class="calc-formula-display" id="meldMortalityVal3d">Estimated 90-Day Mortality: 19.6%</div>
+              <div class="calc-interp" id="meldInterp3d">Substantially elevated perioperative liver failure and bleeding risk. High-level critical care and liver transplant center backup recommended.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnMeldReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/18768944/" target="_blank" rel="noopener">Source: Kim et al. (NEJM 2008) &amp; OPTN/UNOS 2016 ↗</a>
+            </div>
+          </article>
+
+          <!-- FRAIL Scale -->
+          <article class="calc-box fade" id="calcFrail3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Geriatric Assessment</div>
+              <h3>FRAIL Scale (5-Item Frailty)</h3>
+              <p class="when-to-use">Validated 5-item questionnaire predicting postoperative complications, delirium, and loss of functional independence.</p>
+            </div>
+
+            <div class="calc-choice-group" style="display:flex; flex-direction:column; gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="frailF3d">
+                <span class="calc-choice-label"><strong>F — Fatigue:</strong> Felt fatigued or exhausted most of the time in past month</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="frailR3d">
+                <span class="calc-choice-label"><strong>R — Resistance:</strong> Difficulty climbing 10 stairs without resting and without aids</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="frailA3d">
+                <span class="calc-choice-label"><strong>A — Ambulation:</strong> Difficulty walking 100–200 meters without aids</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="frailI3d">
+                <span class="calc-choice-label"><strong>I — Illness:</strong> 5 or more chronic diseases (HTN, DM, CAD, CHF, stroke, COPD, etc.)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="frailL3d">
+                <span class="calc-choice-label"><strong>L — Loss of weight:</strong> Unintentional weight loss &gt; 5% in past year</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="frailResult3d">
+              <div class="calc-result-badge good" id="frailBadge3d">Robust (0 pts)</div>
+              <div class="calc-primary-val" id="frailVal3d">0 <span class="unit">/ 5 Points</span></div>
+              <div class="calc-formula-display">0: Robust | 1–2: Pre-frail | 3–5: Frail (High Delirium &amp; Morbidity Risk)</div>
+              <div class="calc-interp" id="frailInterp3d">Normal physiological reserve. Standard perioperative pathways suitable.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnFrailReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/22967664/" target="_blank" rel="noopener">Source: Morley et al. (JAMDA 2012) ↗</a>
+            </div>
+          </article>
+
+          <!-- Clinical Frailty Scale (Rockwood CFS 1–9) -->
+          <article class="calc-box fade" id="calcCfs3d" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Geriatric Assessment</div>
+              <h3>Clinical Frailty Scale (Rockwood CFS 1–9)</h3>
+              <p class="when-to-use">Dalhousie University 9-point visual frailty scale summarizing physiological vulnerability and cognitive/physical dependence.</p>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="cfsSelect3d">Clinical Frailty Level (Rockwood CFS)</label>
+              <select class="calc-select" id="cfsSelect3d">
+                <option value="1">1. Very Fit — Robust, active, energetic, motivated; commonly exercises regularly</option>
+                <option value="2">2. Well — No active disease symptoms, less fit than 1; exercises occasionally</option>
+                <option value="3" selected>3. Managing Well — Medical problems controlled; not active beyond routine walking</option>
+                <option value="4">4. Vulnerable — Not dependent for daily help, but symptoms limit activities; 'slowed down'</option>
+                <option value="5">5. Mildly Frail — Evident slowing; needs help in heavy IADLs (finances, transport, meds)</option>
+                <option value="6">6. Moderately Frail — Needs help with outside activities and housekeeping; bathing/stairs issues</option>
+                <option value="7">7. Severely Frail — Completely dependent for personal care (eating, dressing, mobility)</option>
+                <option value="8">8. Very Severely Frail — Completely dependent, approaching end of life; cannot recover from minor illness</option>
+                <option value="9">9. Terminally Ill — Life expectancy &lt; 6 months, not otherwise evidently frail</option>
+              </select>
+            </div>
+
+            <div class="calc-result-area" id="cfsResult3d">
+              <div class="calc-result-badge good" id="cfsBadge3d">CFS 3: Managing Well</div>
+              <div class="calc-primary-val" id="cfsVal3d">Level 3 <span class="unit">/ 9 (Non-frail)</span></div>
+              <div class="calc-formula-display">CFS ≥ 5 denotes frailty and mandates comprehensive perioperative prehabilitation</div>
+              <div class="calc-interp" id="cfsInterp3d">CFS 1–4: Non-frail. Standard age-adjusted anaesthetic conduct indicated.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnCfsReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/16129869/" target="_blank" rel="noopener">Source: Rockwood et al. (CMAJ 2005) ↗</a>
+            </div>
+          </article>
+
         </div>
         </div><!-- /#tabPeriop3d -->
 
@@ -1038,6 +1990,102 @@
             </a>
           </div>
         </section>
+
+        <div class="calc-card-grid" style="margin-top:2.5rem;">
+          <!-- Calcium Correction for Albumin -->
+          <article class="calc-box fade" id="calcCorrectedCa3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Electrolytes</div>
+              <h3>Calcium Correction for Albumin (Payne Formula)</h3>
+              <p class="when-to-use">Adjusts total serum calcium for abnormal albumin concentrations to detect true ionized hypocalcemia or hypercalcemia.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="caMeasured3d">Measured Total Calcium</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="caMeasured3d" type="number" min="1" max="25" step="0.1" value="8.0">
+                  <span class="calc-input-unit" id="caUnitLabel3d">mg/dL</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="caAlbumin3d">Serum Albumin</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="caAlbumin3d" type="number" min="0.5" max="8" step="0.1" value="2.5">
+                  <span class="calc-input-unit" id="caAlbUnitLabel3d">g/dL</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="caUnit3d">Units of Measurement</label>
+                <select class="calc-select" id="caUnit3d">
+                  <option value="mg/dL" selected>mg/dL &amp; g/dL (US Standard)</option>
+                  <option value="mmol/L">mmol/L &amp; g/L (SI Units)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="caResult3d">
+              <div class="calc-result-badge good" id="caBadge3d">Normal Corrected Calcium</div>
+              <div class="calc-primary-val" id="caVal3d">9.2 <span class="unit">mg/dL</span></div>
+              <div class="calc-formula-display">Corrected Ca = Measured Ca + 0.8 × (4.0 - Albumin g/dL)</div>
+              <div class="calc-interp" id="caInterp3d">Corrected calcium is within normal physiological limits (8.5–10.2 mg/dL).</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnCaReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/4758544/" target="_blank" rel="noopener">Source: Payne et al. (BMJ 1973) ↗</a>
+            </div>
+          </article>
+
+          <!-- Sodium Correction for Hyperglycemia -->
+          <article class="calc-box fade" id="calcCorrectedNa3d">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Electrolytes</div>
+              <h3>Sodium Correction for Hyperglycemia</h3>
+              <p class="when-to-use">Corrects serum sodium for osmotic fluid shift induced by severe hyperglycemia (DKA, HHS, hyperosmolar states).</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="naMeasured3d">Measured Serum Sodium</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="naMeasured3d" type="number" min="90" max="180" step="1" value="130">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="naGlucose3d">Serum Glucose</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="naGlucose3d" type="number" min="20" max="2500" step="1" value="600">
+                  <span class="calc-input-unit" id="naGluUnitLabel3d">mg/dL</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="naGluUnit3d">Glucose Unit</label>
+                <select class="calc-select" id="naGluUnit3d">
+                  <option value="mg/dL" selected>mg/dL (US Standard)</option>
+                  <option value="mmol/L">mmol/L (SI Units)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="naResult3d">
+              <div class="calc-result-badge good" id="naBadge3d">Eunatremic after correction</div>
+              <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:baseline;">
+                <div class="calc-primary-val" id="naHillierVal3d">Hillier: 142.0 <span class="unit">mEq/L</span></div>
+                <div class="calc-primary-val" id="naKatzVal3d" style="font-size:1.25rem; color:#38bdf8;">Katz: 138.0 <span class="unit">mEq/L</span></div>
+              </div>
+              <div class="calc-formula-display" id="naOsmVal3d">Effective Serum Osmolality: 293.3 mOsm/kg</div>
+              <div class="calc-interp" id="naInterp3d">Hyperglycemia causes osmotic water shift from ICF to ECF, diluting serum sodium. Hillier consensus (+2.4 factor) is preferred for glucose &gt; 400 mg/dL.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnNaReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/10190415/" target="_blank" rel="noopener">Source: Katz (NEJM 1973) &amp; Hillier et al. (Am J Med 1999) ↗</a>
+            </div>
+          </article>
+        </div>
+
         </div><!-- /#tabAbg3d -->
 
 
@@ -1308,6 +2356,153 @@
             This calculator is an educational calculation aid derived from the uploaded reference spreadsheet and does not replace clinical judgment, institutional paediatric protocols, or independent double-check verification. Verify all doses and dilutions before administration.
           </div>
         </section>
+
+        <div class="calc-card-grid" style="margin-top:2rem;">
+
+          <!-- FLACC Paediatric Pain Score -->
+          <article class="calc-box fade" id="calcFlacc">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Paediatric Pain</div>
+              <h3>FLACC Paediatric Pain Scale</h3>
+              <p class="when-to-use">Observational behavioral pain assessment for infants and children (2 months to 7 years) or non-verbal postoperative patients.</p>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="flaccFace">Face Expression</label>
+              <select class="calc-select" id="flaccFace">
+                <option value="0">0 — No particular expression or smile</option>
+                <option value="1">1 — Occasional grimace or frown, withdrawn, disinterested</option>
+                <option value="2">2 — Frequent to constant quivering chin, clenched jaw</option>
+              </select>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="flaccLegs">Legs Position</label>
+              <select class="calc-select" id="flaccLegs">
+                <option value="0">0 — Normal position or relaxed</option>
+                <option value="1">1 — Uneasy, restless, tense</option>
+                <option value="2">2 — Kicking, or legs drawn up</option>
+              </select>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="flaccAct">Activity</label>
+              <select class="calc-select" id="flaccAct">
+                <option value="0">0 — Lying quietly, normal position, moves easily</option>
+                <option value="1">1 — Squirming, shifting back and forth, tense</option>
+                <option value="2">2 — Arched, rigid or jerking</option>
+              </select>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="flaccCry">Cry</label>
+              <select class="calc-select" id="flaccCry">
+                <option value="0">0 — No cry (awake or asleep)</option>
+                <option value="1">1 — Moans or whimpers, occasional complaint</option>
+                <option value="2">2 — Crying steadily, screams or sobs, frequent complaints</option>
+              </select>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="flaccCons">Consolability</label>
+              <select class="calc-select" id="flaccCons">
+                <option value="0">0 — Content, relaxed</option>
+                <option value="1">1 — Reassured by occasional touching or talking, distractible</option>
+                <option value="2">2 — Difficult to console or comfort</option>
+              </select>
+            </div>
+
+            <div class="calc-result-area" id="flaccResult">
+              <div class="calc-result-badge good" id="flaccBadge">Score: 0 / 10</div>
+              <div class="calc-primary-val" id="flaccVal">0 <span class="unit">/ 10 Points</span></div>
+              <div class="calc-formula-display">0: Relaxed | 1–3: Mild discomfort | 4–6: Moderate pain | 7–10: Severe pain</div>
+              <div class="calc-interp" id="flaccInterp">Patient relaxed and comfortable. Maintain routine comfort measures.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnFlaccReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/9165865/" target="_blank" rel="noopener">Source: Merkel et al. (1997) ↗</a>
+            </div>
+          </article>
+
+          <!-- CHEOPS Paediatric Pain Score -->
+          <article class="calc-box fade" id="calcCheops">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Post-Op Analgesia</div>
+              <h3>CHEOPS Paediatric Pain Scale</h3>
+              <p class="when-to-use">Children's Hospital of Eastern Ontario Pain Scale for monitoring acute post-surgical pain in children aged 1–7 years.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="cheopsCry">Cry</label>
+                <select class="calc-select" id="cheopsCry">
+                  <option value="1">1 — No cry</option>
+                  <option value="2">2 — Whimpering</option>
+                  <option value="3">3 — Crying / Screaming</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="cheopsFacial">Facial Expression</label>
+                <select class="calc-select" id="cheopsFacial">
+                  <option value="1">1 — Smiling / Neutral</option>
+                  <option value="2">2 — Grimace</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="cheopsVerbal">Child Verbal</label>
+                <select class="calc-select" id="cheopsVerbal">
+                  <option value="1">1 — Positive or other complaints</option>
+                  <option value="2">2 — Pain complaints</option>
+                  <option value="3">3 — Both pain and other complaints</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="cheopsTorso">Torso</label>
+                <select class="calc-select" id="cheopsTorso">
+                  <option value="1">1 — Neutral</option>
+                  <option value="2">2 — Shifting / Tense / Upright</option>
+                  <option value="3">3 — Restrained</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="cheopsTouch">Touch</label>
+                <select class="calc-select" id="cheopsTouch">
+                  <option value="1">1 — Not touching</option>
+                  <option value="2">2 — Reach / Touch / Grab / Restrained</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="cheopsLegs">Legs</label>
+                <select class="calc-select" id="cheopsLegs">
+                  <option value="1">1 — Neutral / Relaxed</option>
+                  <option value="2">2 — Squirming / Kicking / Drawn up</option>
+                  <option value="3">3 — Restrained</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="cheopsResult">
+              <div class="calc-result-badge good" id="cheopsBadge">Score: 6 / 14</div>
+              <div class="calc-primary-val" id="cheopsVal">6 <span class="unit">/ 14 Points</span></div>
+              <div class="calc-formula-display">Score range 4 to 14 | Score ≥ 8 indicates clinically significant pain requiring opioid/analgesic rescue</div>
+              <div class="calc-interp" id="cheopsInterp">Score &lt; 8: Mild or absent pain. Comfort measures and routine observations.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnCheopsReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/4077774/" target="_blank" rel="noopener">Source: McGrath et al. (1985) ↗</a>
+            </div>
+          </article>
+
+        </div>
+
         </div><!-- /#tabPaeds -->
 
         <!-- TAB CONTENT: EMERGENCY & RESUSCITATION (Lite View) -->
@@ -1376,6 +2571,489 @@
               <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/5688005/" target="_blank" rel="noopener">Source: Baxter & Shires (1968) ↗</a>
             </div>
           </article>
+
+          <!-- Glasgow Coma Scale (GCS) -->
+          <article class="calc-box fade" id="calcGcs">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Neuro &amp; Airway</div>
+              <h3>Glasgow Coma Scale (GCS)</h3>
+              <p class="when-to-use">Defines level of consciousness, head injury severity, and urgent requirement for endotracheal intubation.</p>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="gcsEye">Eye Opening (E)</label>
+              <select class="calc-select" id="gcsEye">
+                <option value="4" selected>4 — Spontaneous</option>
+                <option value="3">3 — To sound / speech</option>
+                <option value="2">2 — To pressure / pain</option>
+                <option value="1">1 — None</option>
+              </select>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="gcsVerbal">Verbal Response (V)</label>
+              <select class="calc-select" id="gcsVerbal">
+                <option value="5" selected>5 — Oriented</option>
+                <option value="4">4 — Confused</option>
+                <option value="3">3 — Inappropriate words</option>
+                <option value="2">2 — Incomprehensible sounds</option>
+                <option value="1">1 — None</option>
+              </select>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="gcsMotor">Motor Response (M)</label>
+              <select class="calc-select" id="gcsMotor">
+                <option value="6" selected>6 — Obeys commands</option>
+                <option value="5">5 — Localizing pain</option>
+                <option value="4">4 — Normal flexion (withdrawal)</option>
+                <option value="3">3 — Abnormal flexion (decorticate posturing)</option>
+                <option value="2">2 — Extension (decerebrate posturing)</option>
+                <option value="1">1 — None (flaccid)</option>
+              </select>
+            </div>
+
+            <div class="calc-result-area" id="gcsResult">
+              <div class="calc-result-badge good" id="gcsBadge">Mild Brain Injury</div>
+              <div class="calc-primary-val" id="gcsVal">15 <span class="unit">/ 15 (E4 V5 M6)</span></div>
+              <div class="calc-formula-display">13–15: Mild | 9–12: Moderate | 3–8: Severe (Intubation Indicated)</div>
+              <div class="calc-interp" id="gcsInterp">Airway reflexes intact. Perform frequent serial neurological examinations.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnGcsReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/4136544/" target="_blank" rel="noopener">Source: Teasdale &amp; Jennett (Lancet 1974) ↗</a>
+            </div>
+          </article>
+
+          <!-- Revised Trauma Score (RTS) -->
+          <article class="calc-box fade" id="calcRts">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Trauma Resuscitation</div>
+              <h3>Revised Trauma Score (RTS)</h3>
+              <p class="when-to-use">Physiological scoring tool for field triage and survival probability estimation in major trauma.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="rtsGcs">GCS Score (3–15)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="rtsGcs" type="number" min="3" max="15" step="1" value="14">
+                  <span class="calc-input-unit">pts</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="rtsSbp">Systolic BP (mmHg)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="rtsSbp" type="number" min="0" max="300" step="1" value="110">
+                  <span class="calc-input-unit">mmHg</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="rtsRr">Respiratory Rate</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="rtsRr" type="number" min="0" max="80" step="1" value="18">
+                  <span class="calc-input-unit">/min</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="rtsResult">
+              <div class="calc-result-badge good" id="rtsBadge">Triage RTS: 12</div>
+              <div class="calc-primary-val" id="rtsVal">12 <span class="unit">/ 12 (TRISS RTS: 7.841)</span></div>
+              <div class="calc-formula-display" id="rtsSurvivalVal">Estimated Survival Probability: 98.6%</div>
+              <div class="calc-interp" id="rtsInterp">Triage RTS &gt; 11 indicates normal physiological parameters. Routine trauma protocol.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnRtsReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/2657085/" target="_blank" rel="noopener">Source: Champion et al. (J Trauma 1989) ↗</a>
+            </div>
+          </article>
+
+          <!-- Wells' Score for Pulmonary Embolism -->
+          <article class="calc-box fade" id="calcWellsPe" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Thromboembolism</div>
+              <h3>Wells' Criteria for Pulmonary Embolism</h3>
+              <p class="when-to-use">Clinical decision rule establishing pre-test probability of acute pulmonary embolism to guide D-dimer vs CTPA.</p>
+            </div>
+
+            <div class="calc-choice-group" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="wellsDvt">
+                <span class="calc-choice-label">Clinical signs &amp; symptoms of DVT (leg swelling, tenderness)</span>
+                <span class="calc-choice-points">+3.0 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="wellsPeLikely">
+                <span class="calc-choice-label">PE is #1 diagnosis OR equally likely to alternative</span>
+                <span class="calc-choice-points">+3.0 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="wellsHr">
+                <span class="calc-choice-label">Heart rate &gt; 100 beats/min</span>
+                <span class="calc-choice-points">+1.5 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="wellsImmobil">
+                <span class="calc-choice-label">Immobilization ≥ 3 days OR surgery in previous 4 weeks</span>
+                <span class="calc-choice-points">+1.5 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="wellsPrior">
+                <span class="calc-choice-label">Previous objectively documented DVT or PE</span>
+                <span class="calc-choice-points">+1.5 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="wellsHemo">
+                <span class="calc-choice-label">Hemoptysis</span>
+                <span class="calc-choice-points">+1.0 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="wellsMalign">
+                <span class="calc-choice-label">Malignancy (under active treatment or palliation)</span>
+                <span class="calc-choice-points">+1.0 pt</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="wellsResult">
+              <div class="calc-result-badge good" id="wellsBadge">PE Unlikely (≤ 4.0 pts)</div>
+              <div class="calc-primary-val" id="wellsVal">0.0 <span class="unit">Points</span></div>
+              <div class="calc-formula-display" id="wellsTierDisplay">Two-Tier: PE Unlikely (≤ 4.0) | Three-Tier: Low (&lt; 2), Moderate (2–6), High (&gt; 6)</div>
+              <div class="calc-interp" id="wellsInterp">PE Unlikely (~12% risk). Consider high-sensitivity D-dimer testing to rule out PE without imaging.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnWellsReset">Deselect All</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/11427139/" target="_blank" rel="noopener">Source: Wells et al. (Ann Intern Med 2001) ↗</a>
+            </div>
+          </article>
+
+          <!-- PESI & Simplified PESI -->
+          <article class="calc-box fade" id="calcPesi" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">PE Risk Stratification</div>
+              <h3>Pulmonary Embolism Severity Index (PESI &amp; sPESI)</h3>
+              <p class="when-to-use">30-day all-cause mortality prediction in confirmed acute pulmonary embolism to distinguish low-risk outpatient candidates from high-risk ICU admissions.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="pesiAge">Patient Age (years)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pesiAge" type="number" min="18" max="120" step="1" value="65">
+                  <span class="calc-input-unit">yrs</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="pesiSex">Biological Sex</label>
+                <select class="calc-select" id="pesiSex">
+                  <option value="male">Male (+10 pts)</option>
+                  <option value="female" selected>Female (0 pts)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-choice-group" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiCancer">
+                <span class="calc-choice-label">Altered mental status (disoriented, lethargic)</span>
+                <span class="calc-choice-points">+60 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiSbp">
+                <span class="calc-choice-label">Systolic BP &lt; 100 mmHg</span>
+                <span class="calc-choice-points">+30 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiCancerHist">
+                <span class="calc-choice-label">History of cancer / malignancy</span>
+                <span class="calc-choice-points">+30 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiPulse">
+                <span class="calc-choice-label">Pulse ≥ 110 beats/min</span>
+                <span class="calc-choice-points">+20 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiRr">
+                <span class="calc-choice-label">Respiratory rate ≥ 30 breaths/min</span>
+                <span class="calc-choice-points">+20 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiTemp">
+                <span class="calc-choice-label">Temperature &lt; 36.0°C (96.8°F)</span>
+                <span class="calc-choice-points">+20 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiSpo2">
+                <span class="calc-choice-label">Arterial oxygen saturation SpO₂ &lt; 90%</span>
+                <span class="calc-choice-points">+20 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiHf">
+                <span class="calc-choice-label">Chronic heart failure</span>
+                <span class="calc-choice-points">+10 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="pesiLung">
+                <span class="calc-choice-label">Chronic lung disease (COPD, asthma, fibrosis)</span>
+                <span class="calc-choice-points">+10 pts</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="pesiResult">
+              <div class="calc-result-badge good" id="pesiBadge">Class I (≤65 pts)</div>
+              <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:baseline;">
+                <div class="calc-primary-val" id="pesiVal">65 <span class="unit">Points (Class I)</span></div>
+                <div class="calc-primary-val" id="spesiVal" style="font-size:1.25rem; color:#38bdf8;">sPESI: 0 (Low Risk)</div>
+              </div>
+              <div class="calc-formula-display" id="pesiMortalityVal">30-day mortality: 0.0% – 1.6% | sPESI: 1.0% mortality</div>
+              <div class="calc-interp" id="pesiInterp">Very Low Risk. Candidate for early hospital discharge or home anticoagulation treatment.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnPesiReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/16020800/" target="_blank" rel="noopener">Source: Aujesky et al. (2005) &amp; Jiménez et al. (2010) ↗</a>
+            </div>
+          </article>
+
+          <!-- qSOFA -->
+          <article class="calc-box fade" id="calcQsofa">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Sepsis Screening</div>
+              <h3>qSOFA (Quick Sepsis Organ Failure)</h3>
+              <p class="when-to-use">Rapid bedside identification of adult patients with suspected infection at high risk of in-hospital mortality or ICU stay &gt; 3 days (Sepsis-3).</p>
+            </div>
+
+            <div class="calc-choice-group" style="display:flex; flex-direction:column; gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="qsofaRr">
+                <span class="calc-choice-label">Respiratory rate ≥ 22 breaths/min</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="qsofaMental">
+                <span class="calc-choice-label">Altered mentation (Glasgow Coma Scale &lt; 15)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="qsofaSbp">
+                <span class="calc-choice-label">Systolic blood pressure ≤ 100 mmHg</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="qsofaResult">
+              <div class="calc-result-badge good" id="qsofaBadge">Score: 0 / 3</div>
+              <div class="calc-primary-val" id="qsofaVal">0 <span class="unit">/ 3 Points (Negative)</span></div>
+              <div class="calc-formula-display">Score ≥ 2 indicates high risk of poor clinical outcome in sepsis</div>
+              <div class="calc-interp" id="qsofaInterp">Negative screening. Continue routine clinical monitoring.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnQsofaReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/26903338/" target="_blank" rel="noopener">Source: Singer et al. (JAMA 2016) ↗</a>
+            </div>
+          </article>
+
+          <!-- CURB-65 Pneumonia Severity Score -->
+          <article class="calc-box fade" id="calcCurb65">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Respiratory &amp; Triage</div>
+              <h3>CURB-65 Pneumonia Severity Score</h3>
+              <p class="when-to-use">Estimates 30-day mortality in community-acquired pneumonia to guide outpatient vs inpatient vs ICU admission.</p>
+            </div>
+
+            <div class="calc-choice-group" style="display:flex; flex-direction:column; gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="curbC">
+                <span class="calc-choice-label"><strong>C — Confusion:</strong> New disorientation in person, place, or time</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="curbU">
+                <span class="calc-choice-label"><strong>U — Urea:</strong> BUN &gt; 19 mg/dL (or serum urea &gt; 7 mmol/L)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="curbR">
+                <span class="calc-choice-label"><strong>R — Respiratory rate:</strong> ≥ 30 breaths/min</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="curbB">
+                <span class="calc-choice-label"><strong>B — Blood pressure:</strong> Systolic &lt; 90 mmHg OR Diastolic ≤ 60 mmHg</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="curb65">
+                <span class="calc-choice-label"><strong>65 — Age:</strong> Age ≥ 65 years</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="curbResult">
+              <div class="calc-result-badge good" id="curbBadge">Low Risk (Score 0)</div>
+              <div class="calc-primary-val" id="curbVal">0 <span class="unit">/ 5 Points</span></div>
+              <div class="calc-formula-display" id="curbMortalityVal">30-day mortality: &lt; 3% | Outpatient treatment suitable</div>
+              <div class="calc-interp" id="curbInterp">Outpatient therapy candidate. Re-evaluate if condition fails to improve within 48h.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnCurbReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/12728159/" target="_blank" rel="noopener">Source: Lim et al. (Thorax 2003) ↗</a>
+            </div>
+          </article>
+
+          <!-- National Early Warning Score 2 (NEWS2) -->
+          <article class="calc-box fade" id="calcNews2" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Early Warning</div>
+              <h3>National Early Warning Score 2 (NEWS2)</h3>
+              <p class="when-to-use">Royal College of Physicians early warning tool detecting acute clinical deterioration and triggering rapid response escalation.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="newsRr">Respiratory Rate</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="newsRr" type="number" min="0" max="60" step="1" value="16">
+                  <span class="calc-input-unit">/min</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="newsSpo2">Oxygen Saturation (SpO₂)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="newsSpo2" type="number" min="50" max="100" step="1" value="98">
+                  <span class="calc-input-unit">%</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="newsScale">SpO₂ Scale Target</label>
+                <select class="calc-select" id="newsScale">
+                  <option value="1" selected>Scale 1: Standard (≥ 96%)</option>
+                  <option value="2">Scale 2: Hypercapnic (88–92%)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="newsO2">Air or Supplemental O₂</label>
+                <select class="calc-select" id="newsO2">
+                  <option value="0" selected>Room Air (0 pts)</option>
+                  <option value="2">Supplemental Oxygen (+2 pts)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="newsSbp">Systolic Blood Pressure</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="newsSbp" type="number" min="40" max="300" step="1" value="120">
+                  <span class="calc-input-unit">mmHg</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="newsPulse">Pulse / Heart Rate</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="newsPulse" type="number" min="20" max="250" step="1" value="75">
+                  <span class="calc-input-unit">bpm</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="newsAvpu">Consciousness Level</label>
+                <select class="calc-select" id="newsAvpu">
+                  <option value="A" selected>Alert (A) — 0 pts</option>
+                  <option value="CVPU">CVPU (Confusion, Voice, Pain, Unresponsive) — 3 pts</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label for="newsTemp">Temperature (°C)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="newsTemp" type="number" min="30" max="45" step="0.1" value="37.0">
+                  <span class="calc-input-unit">°C</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="newsResult">
+              <div class="calc-result-badge good" id="newsBadge">Low Clinical Risk (Score 0)</div>
+              <div class="calc-primary-val" id="newsVal">0 <span class="unit">/ 20 Points</span></div>
+              <div class="calc-formula-display">0–4: Low | Single RED 3: Low-Medium | 5–6: Medium | ≥ 7: High (Emergency Escalation)</div>
+              <div class="calc-interp" id="newsInterp">Ward-based monitoring minimum 4–6 hourly. Continue routine clinical care.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnNewsReset">Reset</button>
+              <a class="calc-source-link" href="https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news-2" target="_blank" rel="noopener">Source: Royal College of Physicians (2017) ↗</a>
+            </div>
+          </article>
+
+          <!-- MEWS (Modified Early Warning Score) -->
+          <article class="calc-box fade" id="calcMews">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Early Warning</div>
+              <h3>Modified Early Warning Score (MEWS)</h3>
+              <p class="when-to-use">Identifies hospitalized adult patients at risk of catastrophic clinical deterioration, ICU admission, or cardiac arrest.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="mewsSbp">Systolic BP (mmHg)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="mewsSbp" type="number" min="40" max="300" step="1" value="120">
+                  <span class="calc-input-unit">mmHg</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="mewsHr">Heart Rate (bpm)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="mewsHr" type="number" min="20" max="250" step="1" value="75">
+                  <span class="calc-input-unit">bpm</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="mewsRr">Respiratory Rate</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="mewsRr" type="number" min="0" max="60" step="1" value="16">
+                  <span class="calc-input-unit">/min</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="mewsTemp">Temperature (°C)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="mewsTemp" type="number" min="30" max="45" step="0.1" value="37.0">
+                  <span class="calc-input-unit">°C</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="mewsAvpu">AVPU Consciousness</label>
+                <select class="calc-select" id="mewsAvpu">
+                  <option value="A" selected>Alert (A) — 0 pts</option>
+                  <option value="V">Reacts to Voice (V) — 1 pt</option>
+                  <option value="P">Reacts to Pain (P) — 2 pts</option>
+                  <option value="U">Unresponsive (U) — 3 pts</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="mewsResult">
+              <div class="calc-result-badge good" id="mewsBadge">Low Risk (Score 0)</div>
+              <div class="calc-primary-val" id="mewsVal">0 <span class="unit">/ 14 Points</span></div>
+              <div class="calc-formula-display">Score ≥ 5 is a critical threshold triggering immediate Medical Emergency Team review</div>
+              <div class="calc-interp" id="mewsInterp">Continue routine ward observation (minimum 12-hourly).</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnMewsReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/11588210/" target="_blank" rel="noopener">Source: Subbe et al. (QJM 2001) ↗</a>
+            </div>
+          </article>
+
         </div>
         </div><!-- /#tabEmergency -->
 
@@ -1674,6 +3352,332 @@
               <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/18431114/" target="_blank" rel="noopener">Source: Chung et al. (Anesthesiology 2008) ↗</a>
             </div>
           </article>
+
+          <!-- Ideal & Adjusted Body Weight (IBW & ABW) -->
+          <article class="calc-box fade" id="calcWeights" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Anaesthetic Dosing</div>
+              <h3>Ideal &amp; Adjusted Body Weight (IBW, ABW, LBW)</h3>
+              <p class="when-to-use">Computes Devine Ideal Weight, Adjusted Weight (0.4 factor), and Boer Lean Body Mass with anaesthetic drug dosing rules.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="weightHt">Height (cm)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="weightHt" type="number" min="100" max="250" step="1" value="175">
+                  <span class="calc-input-unit">cm</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="weightWt">Actual Weight (kg)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="weightWt" type="number" min="20" max="300" step="1" value="110">
+                  <span class="calc-input-unit">kg</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="weightSex">Biological Sex</label>
+                <select class="calc-select" id="weightSex">
+                  <option value="male" selected>Male (Base 50 kg)</option>
+                  <option value="female">Female (Base 45.5 kg)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="weightsResult">
+              <div class="calc-result-badge alert" id="weightsBadge">Obese (&gt;130% IBW)</div>
+              <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:baseline;">
+                <div class="calc-primary-val" id="weightsIbwVal">IBW: 70.5 <span class="unit">kg</span></div>
+                <div class="calc-primary-val" id="weightsAbwVal" style="font-size:1.3rem; color:#38bdf8;">ABW: 86.3 <span class="unit">kg</span></div>
+                <div class="calc-primary-val" id="weightsLbwVal" style="font-size:1.3rem; color:#4ade80;">LBW: 69.8 <span class="unit">kg</span></div>
+              </div>
+              <div class="calc-formula-display" id="weightsPctVal">Patient is 156.0% of Ideal Body Weight (39.5 kg excess weight)</div>
+              <div class="calc-interp" id="weightsInterp">
+                <strong>Propofol Induction:</strong> Dose on LBW / Adjusted Weight to prevent hypotension.<br>
+                <strong>Succinylcholine:</strong> Dose on Total Body Weight (TBW 1.0–1.5 mg/kg) to overcome expanded pseudocholinesterase enzyme pool.<br>
+                <strong>Rocuronium / Vecuronium:</strong> Dose strictly on Ideal Body Weight (IBW) to prevent prolonged blockade.<br>
+                <strong>Sugammadex:</strong> Dose on Total Body Weight (TBW) for 1:1 molecular encapsulation.<br>
+                <strong>Fentanyl / Remifentanil:</strong> Dose lipophilic opioids on LBW to avoid delayed emergence.
+              </div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnWeightsReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/21115654/" target="_blank" rel="noopener">Source: Devine (1974) &amp; Ingrande &amp; Lemmens (BJA 2010) ↗</a>
+            </div>
+          </article>
+
+          <!-- Revised Cardiac Risk Index (RCRI / Lee Criteria) -->
+          <article class="calc-box fade" id="calcRcri" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Cardiac Assessment</div>
+              <h3>Revised Cardiac Risk Index (RCRI / Lee Criteria)</h3>
+              <p class="when-to-use">Estimates perioperative risk of major adverse cardiac events (cardiac death, nonfatal arrest, MI, complete heart block) after elective noncardiac surgery.</p>
+            </div>
+
+            <div class="calc-choice-group" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="rcriHighRisk">
+                <span class="calc-choice-label">High-risk surgery (intraperitoneal, intrathoracic, suprainguinal vascular)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="rcriIhd">
+                <span class="calc-choice-label">History of ischemic heart disease (prior MI, positive stress test, current angina)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="rcriChf">
+                <span class="calc-choice-label">History of congestive heart failure (PND, rales, S3, pulmonary edema)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="rcriCvd">
+                <span class="calc-choice-label">History of cerebrovascular disease (stroke, TIA)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="rcriInsulin">
+                <span class="calc-choice-label">Preoperative insulin therapy for diabetes mellitus</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="rcriCr">
+                <span class="calc-choice-label">Preoperative serum creatinine &gt; 2.0 mg/dL (177 µmol/L)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="rcriResult">
+              <div class="calc-result-badge good" id="rcriBadge">Class I (0 pts)</div>
+              <div class="calc-primary-val" id="rcriVal">0 <span class="unit">/ 6 Points (Class I)</span></div>
+              <div class="calc-formula-display" id="rcriRatesVal">Complication Rate: 3.9% | Major Cardiac Event Risk: 0.4%</div>
+              <div class="calc-interp" id="rcriInterp">Very low perioperative cardiac risk. Proceed without routine noninvasive cardiac stress testing.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnRcriReset">Deselect All</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/10477528/" target="_blank" rel="noopener">Source: Lee et al. (Circulation 1999) ↗</a>
+            </div>
+          </article>
+
+          <!-- CHA2DS2-VASc & CHADS2 -->
+          <article class="calc-box fade" id="calcCha2ds2" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Anticoagulation</div>
+              <h3>CHA₂DS₂-VASc &amp; CHADS₂ Score</h3>
+              <p class="when-to-use">Thromboembolic stroke risk stratification in non-valvular atrial fibrillation to guide perioperative anticoagulation, bridging, and DOAC interruptions.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="chaAge">Patient Age (years)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="chaAge" type="number" min="18" max="120" step="1" value="70">
+                  <span class="calc-input-unit">yrs</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="chaSex">Biological Sex</label>
+                <select class="calc-select" id="chaSex">
+                  <option value="male" selected>Male (0 pts)</option>
+                  <option value="female">Female (+1 pt)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-choice-group" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="chaChf">
+                <span class="calc-choice-label">Congestive heart failure (signs/symptoms or LVEF ≤ 40%)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="chaHtn">
+                <span class="calc-choice-label">Hypertension (BP &gt; 140/90 or on antihypertensive medication)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="chaDm">
+                <span class="calc-choice-label">Diabetes mellitus (fasting glucose &gt; 125 mg/dL or on oral agents/insulin)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="chaStroke">
+                <span class="calc-choice-label">Prior Stroke, TIA, or systemic thromboembolism</span>
+                <span class="calc-choice-points">+2 pts</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="chaVascular">
+                <span class="calc-choice-label">Vascular disease (prior MI, peripheral artery disease, aortic plaque)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="chaResult">
+              <div class="calc-result-badge warn" id="chaBadge">Moderate Risk (1 pt)</div>
+              <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:baseline;">
+                <div class="calc-primary-val" id="chaVascVal">CHA₂DS₂-VASc: 1 <span class="unit">Point</span></div>
+                <div class="calc-primary-val" id="chadsVal" style="font-size:1.25rem; color:#38bdf8;">CHADS₂: 0 <span class="unit">Points</span></div>
+              </div>
+              <div class="calc-formula-display" id="chaStrokeRateVal">Annual Adjusted Stroke Rate: 0.6% / year</div>
+              <div class="calc-interp" id="chaInterp">Oral anticoagulation (DOAC preferred over VKA) should be considered (ESC 2020 Class IIa).</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnChaReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/20008668/" target="_blank" rel="noopener">Source: Lip et al. (Chest 2010) &amp; ESC AF Guidelines 2020 ↗</a>
+            </div>
+          </article>
+
+          <!-- MELD-Na (UNOS 2016) -->
+          <article class="calc-box fade" id="calcMeldNa">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Hepatic Reserve</div>
+              <h3>MELD-Na Score (UNOS 2016)</h3>
+              <p class="when-to-use">Model for End-Stage Liver Disease with Sodium: predicts 90-day waitlist mortality and perioperative liver decompensation.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="meldBili">Total Bilirubin</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="meldBili" type="number" min="0.1" max="50" step="0.1" value="2.5">
+                  <span class="calc-input-unit">mg/dL</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="meldInr">INR</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="meldInr" type="number" min="0.8" max="20" step="0.1" value="1.8">
+                  <span class="calc-input-unit">INR</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="meldCr">Serum Creatinine</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="meldCr" type="number" min="0.2" max="20" step="0.1" value="1.6">
+                  <span class="calc-input-unit">mg/dL</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="meldNa">Serum Sodium</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="meldNa" type="number" min="100" max="160" step="1" value="130">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-choice-group" style="margin-bottom:0.75rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="meldDialysis">
+                <span class="calc-choice-label">Hemodialysis / CVVH ≥ 2 times in the past 7 days (sets Cr to 4.0 mg/dL)</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="meldResult">
+              <div class="calc-result-badge warn" id="meldBadge">Score: 25</div>
+              <div class="calc-primary-val" id="meldVal">25 <span class="unit">Points (Initial MELD: 21.0)</span></div>
+              <div class="calc-formula-display" id="meldMortalityVal">Estimated 90-Day Mortality: 19.6%</div>
+              <div class="calc-interp" id="meldInterp">Substantially elevated perioperative liver failure and bleeding risk. High-level critical care and liver transplant center backup recommended.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnMeldReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/18768944/" target="_blank" rel="noopener">Source: Kim et al. (NEJM 2008) &amp; OPTN/UNOS 2016 ↗</a>
+            </div>
+          </article>
+
+          <!-- FRAIL Scale -->
+          <article class="calc-box fade" id="calcFrail">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Geriatric Assessment</div>
+              <h3>FRAIL Scale (5-Item Frailty)</h3>
+              <p class="when-to-use">Validated 5-item questionnaire predicting postoperative complications, delirium, and loss of functional independence.</p>
+            </div>
+
+            <div class="calc-choice-group" style="display:flex; flex-direction:column; gap:0.6rem;">
+              <label class="calc-choice-item">
+                <input type="checkbox" id="frailF">
+                <span class="calc-choice-label"><strong>F — Fatigue:</strong> Felt fatigued or exhausted most of the time in past month</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="frailR">
+                <span class="calc-choice-label"><strong>R — Resistance:</strong> Difficulty climbing 10 stairs without resting and without aids</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="frailA">
+                <span class="calc-choice-label"><strong>A — Ambulation:</strong> Difficulty walking 100–200 meters without aids</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="frailI">
+                <span class="calc-choice-label"><strong>I — Illness:</strong> 5 or more chronic diseases (HTN, DM, CAD, CHF, stroke, COPD, etc.)</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+              <label class="calc-choice-item">
+                <input type="checkbox" id="frailL">
+                <span class="calc-choice-label"><strong>L — Loss of weight:</strong> Unintentional weight loss &gt; 5% in past year</span>
+                <span class="calc-choice-points">+1 pt</span>
+              </label>
+            </div>
+
+            <div class="calc-result-area" id="frailResult">
+              <div class="calc-result-badge good" id="frailBadge">Robust (0 pts)</div>
+              <div class="calc-primary-val" id="frailVal">0 <span class="unit">/ 5 Points</span></div>
+              <div class="calc-formula-display">0: Robust | 1–2: Pre-frail | 3–5: Frail (High Delirium &amp; Morbidity Risk)</div>
+              <div class="calc-interp" id="frailInterp">Normal physiological reserve. Standard perioperative pathways suitable.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnFrailReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/22967664/" target="_blank" rel="noopener">Source: Morley et al. (JAMDA 2012) ↗</a>
+            </div>
+          </article>
+
+          <!-- Clinical Frailty Scale (Rockwood CFS 1–9) -->
+          <article class="calc-box fade" id="calcCfs" style="grid-column: 1 / -1;">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Geriatric Assessment</div>
+              <h3>Clinical Frailty Scale (Rockwood CFS 1–9)</h3>
+              <p class="when-to-use">Dalhousie University 9-point visual frailty scale summarizing physiological vulnerability and cognitive/physical dependence.</p>
+            </div>
+
+            <div class="calc-field" style="margin-bottom:0.75rem;">
+              <label for="cfsSelect">Clinical Frailty Level (Rockwood CFS)</label>
+              <select class="calc-select" id="cfsSelect">
+                <option value="1">1. Very Fit — Robust, active, energetic, motivated; commonly exercises regularly</option>
+                <option value="2">2. Well — No active disease symptoms, less fit than 1; exercises occasionally</option>
+                <option value="3" selected>3. Managing Well — Medical problems controlled; not active beyond routine walking</option>
+                <option value="4">4. Vulnerable — Not dependent for daily help, but symptoms limit activities; 'slowed down'</option>
+                <option value="5">5. Mildly Frail — Evident slowing; needs help in heavy IADLs (finances, transport, meds)</option>
+                <option value="6">6. Moderately Frail — Needs help with outside activities and housekeeping; bathing/stairs issues</option>
+                <option value="7">7. Severely Frail — Completely dependent for personal care (eating, dressing, mobility)</option>
+                <option value="8">8. Very Severely Frail — Completely dependent, approaching end of life; cannot recover from minor illness</option>
+                <option value="9">9. Terminally Ill — Life expectancy &lt; 6 months, not otherwise evidently frail</option>
+              </select>
+            </div>
+
+            <div class="calc-result-area" id="cfsResult">
+              <div class="calc-result-badge good" id="cfsBadge">CFS 3: Managing Well</div>
+              <div class="calc-primary-val" id="cfsVal">Level 3 <span class="unit">/ 9 (Non-frail)</span></div>
+              <div class="calc-formula-display">CFS ≥ 5 denotes frailty and mandates comprehensive perioperative prehabilitation</div>
+              <div class="calc-interp" id="cfsInterp">CFS 1–4: Non-frail. Standard age-adjusted anaesthetic conduct indicated.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnCfsReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/16129869/" target="_blank" rel="noopener">Source: Rockwood et al. (CMAJ 2005) ↗</a>
+            </div>
+          </article>
+
         </div>
         </div><!-- /#tabPeriop -->
 
@@ -1981,6 +3985,102 @@
             </a>
           </div>
         </section>
+
+        <div class="calc-card-grid" style="margin-top:2.5rem;">
+          <!-- Calcium Correction for Albumin -->
+          <article class="calc-box fade" id="calcCorrectedCa">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Electrolytes</div>
+              <h3>Calcium Correction for Albumin (Payne Formula)</h3>
+              <p class="when-to-use">Adjusts total serum calcium for abnormal albumin concentrations to detect true ionized hypocalcemia or hypercalcemia.</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="caMeasured">Measured Total Calcium</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="caMeasured" type="number" min="1" max="25" step="0.1" value="8.0">
+                  <span class="calc-input-unit" id="caUnitLabel">mg/dL</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="caAlbumin">Serum Albumin</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="caAlbumin" type="number" min="0.5" max="8" step="0.1" value="2.5">
+                  <span class="calc-input-unit" id="caAlbUnitLabel">g/dL</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="caUnit">Units of Measurement</label>
+                <select class="calc-select" id="caUnit">
+                  <option value="mg/dL" selected>mg/dL &amp; g/dL (US Standard)</option>
+                  <option value="mmol/L">mmol/L &amp; g/L (SI Units)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="caResult">
+              <div class="calc-result-badge good" id="caBadge">Normal Corrected Calcium</div>
+              <div class="calc-primary-val" id="caVal">9.2 <span class="unit">mg/dL</span></div>
+              <div class="calc-formula-display">Corrected Ca = Measured Ca + 0.8 × (4.0 - Albumin g/dL)</div>
+              <div class="calc-interp" id="caInterp">Corrected calcium is within normal physiological limits (8.5–10.2 mg/dL).</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnCaReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/4758544/" target="_blank" rel="noopener">Source: Payne et al. (BMJ 1973) ↗</a>
+            </div>
+          </article>
+
+          <!-- Sodium Correction for Hyperglycemia -->
+          <article class="calc-box fade" id="calcCorrectedNa">
+            <div class="calc-box-header">
+              <div class="calc-hero-badge" style="margin-bottom:0.5rem;">Electrolytes</div>
+              <h3>Sodium Correction for Hyperglycemia</h3>
+              <p class="when-to-use">Corrects serum sodium for osmotic fluid shift induced by severe hyperglycemia (DKA, HHS, hyperosmolar states).</p>
+            </div>
+
+            <div class="calc-form-row">
+              <div class="calc-field">
+                <label for="naMeasured">Measured Serum Sodium</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="naMeasured" type="number" min="90" max="180" step="1" value="130">
+                  <span class="calc-input-unit">mEq/L</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="naGlucose">Serum Glucose</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="naGlucose" type="number" min="20" max="2500" step="1" value="600">
+                  <span class="calc-input-unit" id="naGluUnitLabel">mg/dL</span>
+                </div>
+              </div>
+              <div class="calc-field">
+                <label for="naGluUnit">Glucose Unit</label>
+                <select class="calc-select" id="naGluUnit">
+                  <option value="mg/dL" selected>mg/dL (US Standard)</option>
+                  <option value="mmol/L">mmol/L (SI Units)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-result-area" id="naResult">
+              <div class="calc-result-badge good" id="naBadge">Eunatremic after correction</div>
+              <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:baseline;">
+                <div class="calc-primary-val" id="naHillierVal">Hillier: 142.0 <span class="unit">mEq/L</span></div>
+                <div class="calc-primary-val" id="naKatzVal" style="font-size:1.25rem; color:#38bdf8;">Katz: 138.0 <span class="unit">mEq/L</span></div>
+              </div>
+              <div class="calc-formula-display" id="naOsmVal">Effective Serum Osmolality: 293.3 mOsm/kg</div>
+              <div class="calc-interp" id="naInterp">Hyperglycemia causes osmotic water shift from ICF to ECF, diluting serum sodium. Hillier consensus (+2.4 factor) is preferred for glucose &gt; 400 mg/dL.</div>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnNaReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/10190415/" target="_blank" rel="noopener">Source: Katz (NEJM 1973) &amp; Hillier et al. (Am J Med 1999) ↗</a>
+            </div>
+          </article>
+        </div>
+
         </div><!-- /#tabAbg -->
 
 
@@ -2887,6 +4987,757 @@
     });
   });
 
+
+  // ========================================================================
+  // NEW CLINICAL CALCULATORS CONTROLLERS
+  // ========================================================================
+
+  // --- 1. FLACC ---
+  function updateFlacc() {
+    const face = (document.getElementById("flaccFace3d") || document.getElementById("flaccFace"))?.value;
+    const legs = (document.getElementById("flaccLegs3d") || document.getElementById("flaccLegs"))?.value;
+    const act = (document.getElementById("flaccAct3d") || document.getElementById("flaccAct"))?.value;
+    const cry = (document.getElementById("flaccCry3d") || document.getElementById("flaccCry"))?.value;
+    const cons = (document.getElementById("flaccCons3d") || document.getElementById("flaccCons"))?.value;
+
+    const res = window.KnockoutCalculators.calculateFLACC({ face, legs, activity: act, cry, consolability: cons });
+    if (!res) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("flaccBadge" + s);
+      const v = document.getElementById("flaccVal" + s);
+      const i = document.getElementById("flaccInterp" + s);
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = res.category; }
+      if (v) v.innerHTML = `${res.total} <span class="unit">/ 10 Points</span>`;
+      if (i) i.textContent = res.intervention;
+    });
+  }
+
+  ["flaccFace", "flaccLegs", "flaccAct", "flaccCry", "flaccCons"].forEach(k => {
+    syncPair(k + "3d", k, updateFlacc);
+  });
+  ["btnFlaccReset3d", "btnFlaccReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["flaccFace", "flaccLegs", "flaccAct", "flaccCry", "flaccCons"].forEach(k => {
+        ["3d", ""].forEach(s => { const el = document.getElementById(k + s); if (el) el.value = "0"; });
+      });
+      updateFlacc();
+    });
+  });
+
+  // --- 2. CHEOPS ---
+  function updateCheops() {
+    const cry = (document.getElementById("cheopsCry3d") || document.getElementById("cheopsCry"))?.value;
+    const facial = (document.getElementById("cheopsFacial3d") || document.getElementById("cheopsFacial"))?.value;
+    const verbal = (document.getElementById("cheopsVerbal3d") || document.getElementById("cheopsVerbal"))?.value;
+    const torso = (document.getElementById("cheopsTorso3d") || document.getElementById("cheopsTorso"))?.value;
+    const touch = (document.getElementById("cheopsTouch3d") || document.getElementById("cheopsTouch"))?.value;
+    const legs = (document.getElementById("cheopsLegs3d") || document.getElementById("cheopsLegs"))?.value;
+
+    const res = window.KnockoutCalculators.calculateCHEOPS({ cry, facial, verbal, torso, touch, legs });
+    if (!res) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("cheopsBadge" + s);
+      const v = document.getElementById("cheopsVal" + s);
+      const i = document.getElementById("cheopsInterp" + s);
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = res.category; }
+      if (v) v.innerHTML = `${res.total} <span class="unit">/ 14 Points</span>`;
+      if (i) i.textContent = res.clinicalAction;
+    });
+  }
+
+  ["cheopsCry", "cheopsFacial", "cheopsVerbal", "cheopsTorso", "cheopsTouch", "cheopsLegs"].forEach(k => {
+    syncPair(k + "3d", k, updateCheops);
+  });
+  ["btnCheopsReset3d", "btnCheopsReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["cheopsCry", "cheopsFacial", "cheopsVerbal", "cheopsTorso", "cheopsTouch", "cheopsLegs"].forEach(k => {
+        ["3d", ""].forEach(s => { const el = document.getElementById(k + s); if (el) el.value = "1"; });
+      });
+      updateCheops();
+    });
+  });
+
+  // --- 3. WEIGHTS (IBW, ABW, LBW) ---
+  function updateWeights() {
+    const ht = (document.getElementById("weightHt3d") || document.getElementById("weightHt"))?.value;
+    const wt = (document.getElementById("weightWt3d") || document.getElementById("weightWt"))?.value;
+    const sex = (document.getElementById("weightSex3d") || document.getElementById("weightSex"))?.value;
+
+    const res = window.KnockoutCalculators.calculateBodyWeights(ht, wt, sex);
+    if (!res || res.error) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("weightsBadge" + s);
+      const ibw = document.getElementById("weightsIbwVal" + s);
+      const abw = document.getElementById("weightsAbwVal" + s);
+      const lbw = document.getElementById("weightsLbwVal" + s);
+      const pct = document.getElementById("weightsPctVal" + s);
+      const i = document.getElementById("weightsInterp" + s);
+
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = res.category; }
+      if (ibw) ibw.innerHTML = `IBW: ${res.ibw} <span class="unit">kg</span>`;
+      if (abw) abw.innerHTML = `ABW: ${res.abw} <span class="unit">kg</span>`;
+      if (lbw) lbw.innerHTML = `LBW: ${res.lbw} <span class="unit">kg</span>`;
+      if (pct) pct.textContent = `Patient is ${res.pctIbw}% of Ideal Body Weight (${(res.actualWeight - res.ibw).toFixed(1)} kg difference)`;
+      if (i) {
+        i.innerHTML = `
+          <strong>Propofol Induction:</strong> ${res.dosingRules.propofolInduction}<br>
+          <strong>Succinylcholine:</strong> ${res.dosingRules.succinylcholine}<br>
+          <strong>Rocuronium / Vecuronium:</strong> ${res.dosingRules.rocuroniumVecuronium}<br>
+          <strong>Sugammadex:</strong> ${res.dosingRules.sugammadex}<br>
+          <strong>Fentanyl / Remifentanil:</strong> ${res.dosingRules.fentanylRemifentanil}
+        `;
+      }
+    });
+  }
+
+  syncPair("weightHt3d", "weightHt", updateWeights);
+  syncPair("weightWt3d", "weightWt", updateWeights);
+  syncPair("weightSex3d", "weightSex", updateWeights);
+  ["btnWeightsReset3d", "btnWeightsReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const ht = document.getElementById("weightHt" + s); if (ht) ht.value = "175";
+        const wt = document.getElementById("weightWt" + s); if (wt) wt.value = "110";
+        const sex = document.getElementById("weightSex" + s); if (sex) sex.value = "male";
+      });
+      updateWeights();
+    });
+  });
+
+  // --- 4. RCRI ---
+  function updateRcri() {
+    const highRisk = (document.getElementById("rcriHighRisk3d") || document.getElementById("rcriHighRisk"))?.checked;
+    const ihd = (document.getElementById("rcriIhd3d") || document.getElementById("rcriIhd"))?.checked;
+    const chf = (document.getElementById("rcriChf3d") || document.getElementById("rcriChf"))?.checked;
+    const cvd = (document.getElementById("rcriCvd3d") || document.getElementById("rcriCvd"))?.checked;
+    const insulin = (document.getElementById("rcriInsulin3d") || document.getElementById("rcriInsulin"))?.checked;
+    const cr = (document.getElementById("rcriCr3d") || document.getElementById("rcriCr"))?.checked;
+
+    const res = window.KnockoutCalculators.calculateRCRI({
+      highRiskSurgery: highRisk,
+      ischemicHeartDisease: ihd,
+      heartFailure: chf,
+      cerebrovascularDisease: cvd,
+      diabetesInsulin: insulin,
+      creatinineHigh: cr
+    });
+    if (!res) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("rcriBadge" + s);
+      const v = document.getElementById("rcriVal" + s);
+      const rates = document.getElementById("rcriRatesVal" + s);
+      const i = document.getElementById("rcriInterp" + s);
+
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = `${res.rcriClass} (${res.score} pts)`; }
+      if (v) v.innerHTML = `${res.score} <span class="unit">/ 6 Points (${res.rcriClass})</span>`;
+      if (rates) rates.textContent = `Complication Rate: ${res.complicationRate} | Major Cardiac Event Risk: ${res.majorEventRate}`;
+      if (i) i.textContent = res.recommendation;
+    });
+  }
+
+  ["rcriHighRisk", "rcriIhd", "rcriChf", "rcriCvd", "rcriInsulin", "rcriCr"].forEach(k => {
+    syncPair(k + "3d", k, updateRcri);
+  });
+  ["btnRcriReset3d", "btnRcriReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["rcriHighRisk", "rcriIhd", "rcriChf", "rcriCvd", "rcriInsulin", "rcriCr"].forEach(k => {
+        ["3d", ""].forEach(s => { const el = document.getElementById(k + s); if (el) el.checked = false; });
+      });
+      updateRcri();
+    });
+  });
+
+  // --- 5. CHA2DS2-VASc & CHADS2 ---
+  function updateCha2ds2() {
+    const age = (document.getElementById("chaAge3d") || document.getElementById("chaAge"))?.value;
+    const sex = (document.getElementById("chaSex3d") || document.getElementById("chaSex"))?.value;
+    const chf = (document.getElementById("chaChf3d") || document.getElementById("chaChf"))?.checked;
+    const htn = (document.getElementById("chaHtn3d") || document.getElementById("chaHtn"))?.checked;
+    const dm = (document.getElementById("chaDm3d") || document.getElementById("chaDm"))?.checked;
+    const stroke = (document.getElementById("chaStroke3d") || document.getElementById("chaStroke"))?.checked;
+    const vascular = (document.getElementById("chaVascular3d") || document.getElementById("chaVascular"))?.checked;
+
+    const resVasc = window.KnockoutCalculators.calculateCHA2DS2VASc({ age, sex, chf, htn, diabetes: dm, stroke, vascular });
+    const resChads = window.KnockoutCalculators.calculateCHADS2({ age, chf, htn, diabetes: dm, stroke });
+    if (!resVasc) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("chaBadge" + s);
+      const vasc = document.getElementById("chaVascVal" + s);
+      const chads = document.getElementById("chadsVal" + s);
+      const rate = document.getElementById("chaStrokeRateVal" + s);
+      const i = document.getElementById("chaInterp" + s);
+
+      if (b) { b.className = "calc-result-badge " + resVasc.riskClass; b.textContent = `${resVasc.riskTier}`; }
+      if (vasc) vasc.innerHTML = `CHA₂DS₂-VASc: ${resVasc.score} <span class="unit">Point${resVasc.score === 1 ? '' : 's'}</span>`;
+      if (chads) chads.innerHTML = `CHADS₂: ${resChads.score} <span class="unit">Point${resChads.score === 1 ? '' : 's'}</span>`;
+      if (rate) rate.textContent = `Annual Adjusted Stroke Rate: ${resVasc.strokeRate}% / year`;
+      if (i) i.textContent = resVasc.recommendation;
+    });
+  }
+
+  syncPair("chaAge3d", "chaAge", updateCha2ds2);
+  syncPair("chaSex3d", "chaSex", updateCha2ds2);
+  ["chaChf", "chaHtn", "chaDm", "chaStroke", "chaVascular"].forEach(k => {
+    syncPair(k + "3d", k, updateCha2ds2);
+  });
+  ["btnChaReset3d", "btnChaReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const age = document.getElementById("chaAge" + s); if (age) age.value = "70";
+        const sex = document.getElementById("chaSex" + s); if (sex) sex.value = "male";
+      });
+      ["chaChf", "chaHtn", "chaDm", "chaStroke", "chaVascular"].forEach(k => {
+        ["3d", ""].forEach(s => { const el = document.getElementById(k + s); if (el) el.checked = false; });
+      });
+      updateCha2ds2();
+    });
+  });
+
+  // --- 6. MELD-Na ---
+  function updateMeldNa() {
+    const bili = (document.getElementById("meldBili3d") || document.getElementById("meldBili"))?.value;
+    const inr = (document.getElementById("meldInr3d") || document.getElementById("meldInr"))?.value;
+    const cr = (document.getElementById("meldCr3d") || document.getElementById("meldCr"))?.value;
+    const na = (document.getElementById("meldNa3d") || document.getElementById("meldNa"))?.value;
+    const dialysis = (document.getElementById("meldDialysis3d") || document.getElementById("meldDialysis"))?.checked;
+
+    const res = window.KnockoutCalculators.calculateMELDNa(bili, inr, cr, na, dialysis);
+    if (!res || res.error) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("meldBadge" + s);
+      const v = document.getElementById("meldVal" + s);
+      const mort = document.getElementById("meldMortalityVal" + s);
+      const i = document.getElementById("meldInterp" + s);
+
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = `Score: ${res.meldNa}`; }
+      if (v) v.innerHTML = `${res.meldNa} <span class="unit">Points (Initial MELD: ${res.meldInitial})</span>`;
+      if (mort) mort.textContent = `Estimated 90-Day Mortality: ${res.mortality90d}`;
+      if (i) i.textContent = `${res.perioperativeRisk} ${res.interpretation}`;
+    });
+  }
+
+  syncPair("meldBili3d", "meldBili", updateMeldNa);
+  syncPair("meldInr3d", "meldInr", updateMeldNa);
+  syncPair("meldCr3d", "meldCr", updateMeldNa);
+  syncPair("meldNa3d", "meldNa", updateMeldNa);
+  syncPair("meldDialysis3d", "meldDialysis", updateMeldNa);
+  ["btnMeldReset3d", "btnMeldReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const bili = document.getElementById("meldBili" + s); if (bili) bili.value = "2.5";
+        const inr = document.getElementById("meldInr" + s); if (inr) inr.value = "1.8";
+        const cr = document.getElementById("meldCr" + s); if (cr) cr.value = "1.6";
+        const na = document.getElementById("meldNa" + s); if (na) na.value = "130";
+        const dial = document.getElementById("meldDialysis" + s); if (dial) dial.checked = false;
+      });
+      updateMeldNa();
+    });
+  });
+
+  // --- 7. FRAIL SCALE ---
+  function updateFrail() {
+    const f = (document.getElementById("frailF3d") || document.getElementById("frailF"))?.checked;
+    const r = (document.getElementById("frailR3d") || document.getElementById("frailR"))?.checked;
+    const a = (document.getElementById("frailA3d") || document.getElementById("frailA"))?.checked;
+    const i = (document.getElementById("frailI3d") || document.getElementById("frailI"))?.checked;
+    const l = (document.getElementById("frailL3d") || document.getElementById("frailL"))?.checked;
+
+    const res = window.KnockoutCalculators.calculateFRAIL({ fatigue: f, resistance: r, ambulation: a, illness: i, lossOfWeight: l });
+    if (!res) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("frailBadge" + s);
+      const v = document.getElementById("frailVal" + s);
+      const interp = document.getElementById("frailInterp" + s);
+
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = res.category; }
+      if (v) v.innerHTML = `${res.score} <span class="unit">/ 5 Points</span>`;
+      if (interp) interp.textContent = res.clinicalImpact;
+    });
+  }
+
+  ["frailF", "frailR", "frailA", "frailI", "frailL"].forEach(k => {
+    syncPair(k + "3d", k, updateFrail);
+  });
+  ["btnFrailReset3d", "btnFrailReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["frailF", "frailR", "frailA", "frailI", "frailL"].forEach(k => {
+        ["3d", ""].forEach(s => { const el = document.getElementById(k + s); if (el) el.checked = false; });
+      });
+      updateFrail();
+    });
+  });
+
+  // --- 8. CLINICAL FRAILTY SCALE (CFS) ---
+  function updateCfs() {
+    const sel = (document.getElementById("cfsSelect3d") || document.getElementById("cfsSelect"))?.value;
+    const res = window.KnockoutCalculators.calculateClinicalFrailtyScale(sel);
+    if (!res) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("cfsBadge" + s);
+      const v = document.getElementById("cfsVal" + s);
+      const i = document.getElementById("cfsInterp" + s);
+
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = `CFS ${res.score}: ${res.isFrail ? 'Frail' : 'Non-frail'}`; }
+      if (v) v.innerHTML = `Level ${res.score} <span class="unit">/ 9 (${res.isFrail ? 'Frail' : 'Non-frail'})</span>`;
+      if (i) i.innerHTML = `<strong>${res.title}:</strong> ${res.descriptor}<br><br><em>${res.anaestheticGuidance}</em>`;
+    });
+  }
+
+  syncPair("cfsSelect3d", "cfsSelect", updateCfs);
+  ["btnCfsReset3d", "btnCfsReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => { const el = document.getElementById("cfsSelect" + s); if (el) el.value = "3"; });
+      updateCfs();
+    });
+  });
+
+  // --- 9. GCS ---
+  function updateGcs() {
+    const e = (document.getElementById("gcsEye3d") || document.getElementById("gcsEye"))?.value;
+    const v = (document.getElementById("gcsVerbal3d") || document.getElementById("gcsVerbal"))?.value;
+    const m = (document.getElementById("gcsMotor3d") || document.getElementById("gcsMotor"))?.value;
+
+    const res = window.KnockoutCalculators.calculateGCS(e, v, m);
+    if (!res) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("gcsBadge" + s);
+      const val = document.getElementById("gcsVal" + s);
+      const i = document.getElementById("gcsInterp" + s);
+
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = res.injuryClass; }
+      if (val) val.innerHTML = `${res.total} <span class="unit">/ 15 (${res.breakdown})</span>`;
+      if (i) i.textContent = res.airwayAdvice;
+    });
+  }
+
+  syncPair("gcsEye3d", "gcsEye", updateGcs);
+  syncPair("gcsVerbal3d", "gcsVerbal", updateGcs);
+  syncPair("gcsMotor3d", "gcsMotor", updateGcs);
+  ["btnGcsReset3d", "btnGcsReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const e = document.getElementById("gcsEye" + s); if (e) e.value = "4";
+        const v = document.getElementById("gcsVerbal" + s); if (v) v.value = "5";
+        const m = document.getElementById("gcsMotor" + s); if (m) m.value = "6";
+      });
+      updateGcs();
+    });
+  });
+
+  // --- 10. REVISED TRAUMA SCORE (RTS) ---
+  function updateRts() {
+    const gcs = (document.getElementById("rtsGcs3d") || document.getElementById("rtsGcs"))?.value;
+    const sbp = (document.getElementById("rtsSbp3d") || document.getElementById("rtsSbp"))?.value;
+    const rr = (document.getElementById("rtsRr3d") || document.getElementById("rtsRr"))?.value;
+
+    const res = window.KnockoutCalculators.calculateRevisedTraumaScore(gcs, sbp, rr);
+    if (!res) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("rtsBadge" + s);
+      const v = document.getElementById("rtsVal" + s);
+      const surv = document.getElementById("rtsSurvivalVal" + s);
+      const i = document.getElementById("rtsInterp" + s);
+
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = `Triage RTS: ${res.triageScore}`; }
+      if (v) v.innerHTML = `${res.triageScore} <span class="unit">/ 12 (TRISS RTS: ${res.physiologicalScore})</span>`;
+      if (surv) surv.textContent = `Estimated Survival Probability: ${res.survivalProbabilityPct}%`;
+      if (i) i.textContent = res.recommendation;
+    });
+  }
+
+  syncPair("rtsGcs3d", "rtsGcs", updateRts);
+  syncPair("rtsSbp3d", "rtsSbp", updateRts);
+  syncPair("rtsRr3d", "rtsRr", updateRts);
+  ["btnRtsReset3d", "btnRtsReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const gcs = document.getElementById("rtsGcs" + s); if (gcs) gcs.value = "14";
+        const sbp = document.getElementById("rtsSbp" + s); if (sbp) sbp.value = "110";
+        const rr = document.getElementById("rtsRr" + s); if (rr) rr.value = "18";
+      });
+      updateRts();
+    });
+  });
+
+  // --- 11. WELLS' PE ---
+  function updateWellsPe() {
+    const dvt = (document.getElementById("wellsDvt3d") || document.getElementById("wellsDvt"))?.checked;
+    const pe = (document.getElementById("wellsPeLikely3d") || document.getElementById("wellsPeLikely"))?.checked;
+    const hr = (document.getElementById("wellsHr3d") || document.getElementById("wellsHr"))?.checked;
+    const imm = (document.getElementById("wellsImmobil3d") || document.getElementById("wellsImmobil"))?.checked;
+    const prior = (document.getElementById("wellsPrior3d") || document.getElementById("wellsPrior"))?.checked;
+    const hemo = (document.getElementById("wellsHemo3d") || document.getElementById("wellsHemo"))?.checked;
+    const mal = (document.getElementById("wellsMalign3d") || document.getElementById("wellsMalign"))?.checked;
+
+    const res = window.KnockoutCalculators.calculateWellsPE({
+      signsDVT: dvt,
+      peLikely: pe,
+      hrOver100: hr,
+      immobilOrSurgery: imm,
+      priorPEorDVT: prior,
+      hemoptysis: hemo,
+      malignancy: mal
+    });
+    if (!res) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("wellsBadge" + s);
+      const v = document.getElementById("wellsVal" + s);
+      const tier = document.getElementById("wellsTierDisplay" + s);
+      const i = document.getElementById("wellsInterp" + s);
+
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = res.twoTier; }
+      if (v) v.innerHTML = `${res.score.toFixed(1)} <span class="unit">Points</span>`;
+      if (tier) tier.textContent = `Two-Tier: ${res.twoTier} | Three-Tier: ${res.threeTier}`;
+      if (i) i.textContent = res.recommendation;
+    });
+  }
+
+  ["wellsDvt", "wellsPeLikely", "wellsHr", "wellsImmobil", "wellsPrior", "wellsHemo", "wellsMalign"].forEach(k => {
+    syncPair(k + "3d", k, updateWellsPe);
+  });
+  ["btnWellsReset3d", "btnWellsReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["wellsDvt", "wellsPeLikely", "wellsHr", "wellsImmobil", "wellsPrior", "wellsHemo", "wellsMalign"].forEach(k => {
+        ["3d", ""].forEach(s => { const el = document.getElementById(k + s); if (el) el.checked = false; });
+      });
+      updateWellsPe();
+    });
+  });
+
+  // --- 12. PESI ---
+  function updatePesi() {
+    const age = (document.getElementById("pesiAge3d") || document.getElementById("pesiAge"))?.value;
+    const sex = (document.getElementById("pesiSex3d") || document.getElementById("pesiSex"))?.value;
+    const cancer = (document.getElementById("pesiCancerHist3d") || document.getElementById("pesiCancerHist"))?.checked;
+    const sbp = (document.getElementById("pesiSbp3d") || document.getElementById("pesiSbp"))?.checked;
+    const mental = (document.getElementById("pesiCancer3d") || document.getElementById("pesiCancer"))?.checked;
+    const pulse = (document.getElementById("pesiPulse3d") || document.getElementById("pesiPulse"))?.checked;
+    const rr = (document.getElementById("pesiRr3d") || document.getElementById("pesiRr"))?.checked;
+    const temp = (document.getElementById("pesiTemp3d") || document.getElementById("pesiTemp"))?.checked;
+    const spo2 = (document.getElementById("pesiSpo23d") || document.getElementById("pesiSpo2"))?.checked;
+    const hf = (document.getElementById("pesiHf3d") || document.getElementById("pesiHf"))?.checked;
+    const lung = (document.getElementById("pesiLung3d") || document.getElementById("pesiLung"))?.checked;
+
+    const res = window.KnockoutCalculators.calculatePESI({
+      age,
+      sex,
+      cancer,
+      heartFailure: hf,
+      chronicLung: lung,
+      pulseGte110: pulse,
+      sbpLt100: sbp,
+      rrGte30: rr,
+      tempLt36: temp,
+      alteredMental: mental,
+      spo2Lt90: spo2
+    });
+    if (!res) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("pesiBadge" + s);
+      const v = document.getElementById("pesiVal" + s);
+      const sp = document.getElementById("spesiVal" + s);
+      const mort = document.getElementById("pesiMortalityVal" + s);
+      const i = document.getElementById("pesiInterp" + s);
+
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = res.pesiClass; }
+      if (v) v.innerHTML = `${res.score} <span class="unit">Points (${res.pesiClass})</span>`;
+      if (sp) sp.innerHTML = `sPESI: ${res.spesiScore} (${res.spesiCategory.split(' ')[0]} Risk)`;
+      if (mort) mort.textContent = `Original PESI 30d Mortality: ${res.mortality30d} | ${res.spesiCategory}`;
+      if (i) i.textContent = res.disposition;
+    });
+  }
+
+  syncPair("pesiAge3d", "pesiAge", updatePesi);
+  syncPair("pesiSex3d", "pesiSex", updatePesi);
+  ["pesiCancerHist", "pesiSbp", "pesiCancer", "pesiPulse", "pesiRr", "pesiTemp", "pesiSpo2", "pesiHf", "pesiLung"].forEach(k => {
+    syncPair(k + "3d", k, updatePesi);
+  });
+  ["btnPesiReset3d", "btnPesiReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const age = document.getElementById("pesiAge" + s); if (age) age.value = "65";
+        const sex = document.getElementById("pesiSex" + s); if (sex) sex.value = "female";
+      });
+      ["pesiCancerHist", "pesiSbp", "pesiCancer", "pesiPulse", "pesiRr", "pesiTemp", "pesiSpo2", "pesiHf", "pesiLung"].forEach(k => {
+        ["3d", ""].forEach(s => { const el = document.getElementById(k + s); if (el) el.checked = false; });
+      });
+      updatePesi();
+    });
+  });
+
+  // --- 13. qSOFA ---
+  function updateQsofa() {
+    const rr = (document.getElementById("qsofaRr3d") || document.getElementById("qsofaRr"))?.checked;
+    const mental = (document.getElementById("qsofaMental3d") || document.getElementById("qsofaMental"))?.checked;
+    const sbp = (document.getElementById("qsofaSbp3d") || document.getElementById("qsofaSbp"))?.checked;
+
+    const res = window.KnockoutCalculators.calculateQSOFA({ rrGte22: rr, alteredMentation: mental, sbpLte100: sbp });
+    if (!res) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("qsofaBadge" + s);
+      const v = document.getElementById("qsofaVal" + s);
+      const i = document.getElementById("qsofaInterp" + s);
+
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = `Score: ${res.score} / 3`; }
+      if (v) v.innerHTML = `${res.score} <span class="unit">/ 3 Points (${res.score >= 2 ? 'Positive' : 'Negative'})</span>`;
+      if (i) i.textContent = res.recommendation;
+    });
+  }
+
+  ["qsofaRr", "qsofaMental", "qsofaSbp"].forEach(k => {
+    syncPair(k + "3d", k, updateQsofa);
+  });
+  ["btnQsofaReset3d", "btnQsofaReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["qsofaRr", "qsofaMental", "qsofaSbp"].forEach(k => {
+        ["3d", ""].forEach(s => { const el = document.getElementById(k + s); if (el) el.checked = false; });
+      });
+      updateQsofa();
+    });
+  });
+
+  // --- 14. CURB-65 ---
+  function updateCurb65() {
+    const c = (document.getElementById("curbC3d") || document.getElementById("curbC"))?.checked;
+    const u = (document.getElementById("curbU3d") || document.getElementById("curbU"))?.checked;
+    const r = (document.getElementById("curbR3d") || document.getElementById("curbR"))?.checked;
+    const b = (document.getElementById("curbB3d") || document.getElementById("curbB"))?.checked;
+    const age = (document.getElementById("curb653d") || document.getElementById("curb65"))?.checked;
+
+    const res = window.KnockoutCalculators.calculateCURB65({
+      confusion: c,
+      ureaHigh: u,
+      rrGte30: r,
+      bpLow: b,
+      ageGte65: age
+    });
+    if (!res) return;
+
+    ["3d", ""].forEach(s => {
+      const badge = document.getElementById("curbBadge" + s);
+      const v = document.getElementById("curbVal" + s);
+      const mort = document.getElementById("curbMortalityVal" + s);
+      const i = document.getElementById("curbInterp" + s);
+
+      if (badge) { badge.className = "calc-result-badge " + res.riskClass; badge.textContent = res.tier; }
+      if (v) v.innerHTML = `${res.score} <span class="unit">/ 5 Points</span>`;
+      if (mort) mort.textContent = `30-day mortality: ${res.mortality} | ${res.siteOfCare.split('.')[0]}`;
+      if (i) i.textContent = res.siteOfCare;
+    });
+  }
+
+  ["curbC", "curbU", "curbR", "curbB", "curb65"].forEach(k => {
+    syncPair(k + "3d", k, updateCurb65);
+  });
+  ["btnCurbReset3d", "btnCurbReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["curbC", "curbU", "curbR", "curbB", "curb65"].forEach(k => {
+        ["3d", ""].forEach(s => { const el = document.getElementById(k + s); if (el) el.checked = false; });
+      });
+      updateCurb65();
+    });
+  });
+
+  // --- 15. NEWS2 ---
+  function updateNews2() {
+    const rr = (document.getElementById("newsRr3d") || document.getElementById("newsRr"))?.value;
+    const spo2 = (document.getElementById("newsSpo23d") || document.getElementById("newsSpo2"))?.value;
+    const scale = (document.getElementById("newsScale3d") || document.getElementById("newsScale"))?.value === "2";
+    const o2 = (document.getElementById("newsO23d") || document.getElementById("newsO2"))?.value === "2";
+    const sbp = (document.getElementById("newsSbp3d") || document.getElementById("newsSbp"))?.value;
+    const pulse = (document.getElementById("newsPulse3d") || document.getElementById("newsPulse"))?.value;
+    const avpu = (document.getElementById("newsAvpu3d") || document.getElementById("newsAvpu"))?.value;
+    const temp = (document.getElementById("newsTemp3d") || document.getElementById("newsTemp"))?.value;
+
+    const res = window.KnockoutCalculators.calculateNEWS2({
+      rr,
+      spo2,
+      hypercapnicTarget: scale,
+      supplementalOxygen: o2,
+      sbp,
+      hr: pulse,
+      consciousness: avpu,
+      temp
+    });
+    if (!res) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("newsBadge" + s);
+      const v = document.getElementById("newsVal" + s);
+      const i = document.getElementById("newsInterp" + s);
+
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = res.trigger; }
+      if (v) v.innerHTML = `${res.score} <span class="unit">/ 20 Points</span>`;
+      if (i) i.textContent = res.response;
+    });
+  }
+
+  ["newsRr", "newsSpo2", "newsScale", "newsO2", "newsSbp", "newsPulse", "newsAvpu", "newsTemp"].forEach(k => {
+    syncPair(k + "3d", k, updateNews2);
+  });
+  ["btnNewsReset3d", "btnNewsReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const rr = document.getElementById("newsRr" + s); if (rr) rr.value = "16";
+        const spo2 = document.getElementById("newsSpo2" + s); if (spo2) spo2.value = "98";
+        const scale = document.getElementById("newsScale" + s); if (scale) scale.value = "1";
+        const o2 = document.getElementById("newsO2" + s); if (o2) o2.value = "0";
+        const sbp = document.getElementById("newsSbp" + s); if (sbp) sbp.value = "120";
+        const pulse = document.getElementById("newsPulse" + s); if (pulse) pulse.value = "75";
+        const avpu = document.getElementById("newsAvpu" + s); if (avpu) avpu.value = "A";
+        const temp = document.getElementById("newsTemp" + s); if (temp) temp.value = "37.0";
+      });
+      updateNews2();
+    });
+  });
+
+  // --- 16. MEWS ---
+  function updateMews() {
+    const sbp = (document.getElementById("mewsSbp3d") || document.getElementById("mewsSbp"))?.value;
+    const hr = (document.getElementById("mewsHr3d") || document.getElementById("mewsHr"))?.value;
+    const rr = (document.getElementById("mewsRr3d") || document.getElementById("mewsRr"))?.value;
+    const temp = (document.getElementById("mewsTemp3d") || document.getElementById("mewsTemp"))?.value;
+    const avpu = (document.getElementById("mewsAvpu3d") || document.getElementById("mewsAvpu"))?.value;
+
+    const res = window.KnockoutCalculators.calculateMEWS(sbp, hr, rr, temp, avpu);
+    if (!res) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("mewsBadge" + s);
+      const v = document.getElementById("mewsVal" + s);
+      const i = document.getElementById("mewsInterp" + s);
+
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = res.tier; }
+      if (v) v.innerHTML = `${res.score} <span class="unit">/ 14 Points</span>`;
+      if (i) i.textContent = res.action;
+    });
+  }
+
+  ["mewsSbp", "mewsHr", "mewsRr", "mewsTemp", "mewsAvpu"].forEach(k => {
+    syncPair(k + "3d", k, updateMews);
+  });
+  ["btnMewsReset3d", "btnMewsReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const sbp = document.getElementById("mewsSbp" + s); if (sbp) sbp.value = "120";
+        const hr = document.getElementById("mewsHr" + s); if (hr) hr.value = "75";
+        const rr = document.getElementById("mewsRr" + s); if (rr) rr.value = "16";
+        const temp = document.getElementById("mewsTemp" + s); if (temp) temp.value = "37.0";
+        const avpu = document.getElementById("mewsAvpu" + s); if (avpu) avpu.value = "A";
+      });
+      updateMews();
+    });
+  });
+
+  // --- 17. CALCIUM CORRECTION ---
+  function updateCorrectedCa() {
+    const ca = (document.getElementById("caMeasured3d") || document.getElementById("caMeasured"))?.value;
+    const alb = (document.getElementById("caAlbumin3d") || document.getElementById("caAlbumin"))?.value;
+    const unit = (document.getElementById("caUnit3d") || document.getElementById("caUnit"))?.value;
+
+    const res = window.KnockoutCalculators.calculateCorrectedCalcium(ca, alb, unit);
+    if (!res || res.error) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("caBadge" + s);
+      const v = document.getElementById("caVal" + s);
+      const i = document.getElementById("caInterp" + s);
+      const uLabel = document.getElementById("caUnitLabel" + s);
+      const albLabel = document.getElementById("caAlbUnitLabel" + s);
+
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = res.status; }
+      if (v) v.innerHTML = `${res.correctedCalcium} <span class="unit">${res.unit}</span>`;
+      if (i) i.textContent = res.notes;
+      if (uLabel) uLabel.textContent = res.unit;
+      if (albLabel) albLabel.textContent = res.unit === "mmol/L" ? "g/L" : "g/dL";
+    });
+  }
+
+  syncPair("caMeasured3d", "caMeasured", updateCorrectedCa);
+  syncPair("caAlbumin3d", "caAlbumin", updateCorrectedCa);
+  syncPair("caUnit3d", "caUnit", updateCorrectedCa);
+  ["btnCaReset3d", "btnCaReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const ca = document.getElementById("caMeasured" + s); if (ca) ca.value = "8.0";
+        const alb = document.getElementById("caAlbumin" + s); if (alb) alb.value = "2.5";
+        const u = document.getElementById("caUnit" + s); if (u) u.value = "mg/dL";
+      });
+      updateCorrectedCa();
+    });
+  });
+
+  // --- 18. SODIUM CORRECTION ---
+  function updateCorrectedNa() {
+    const na = (document.getElementById("naMeasured3d") || document.getElementById("naMeasured"))?.value;
+    const glu = (document.getElementById("naGlucose3d") || document.getElementById("naGlucose"))?.value;
+    const unit = (document.getElementById("naGluUnit3d") || document.getElementById("naGluUnit"))?.value;
+
+    const res = window.KnockoutCalculators.calculateCorrectedSodium(na, glu, unit);
+    if (!res || res.error) return;
+
+    ["3d", ""].forEach(s => {
+      const b = document.getElementById("naBadge" + s);
+      const hillier = document.getElementById("naHillierVal" + s);
+      const katz = document.getElementById("naKatzVal" + s);
+      const osm = document.getElementById("naOsmVal" + s);
+      const i = document.getElementById("naInterp" + s);
+      const uLabel = document.getElementById("naGluUnitLabel" + s);
+
+      if (b) { b.className = "calc-result-badge " + res.riskClass; b.textContent = res.status; }
+      if (hillier) hillier.innerHTML = `Hillier: ${res.hillierNa} <span class="unit">mEq/L</span>`;
+      if (katz) katz.innerHTML = `Katz: ${res.katzNa} <span class="unit">mEq/L</span>`;
+      if (osm) osm.textContent = `Effective Serum Osmolality: ${res.effectiveOsmolality} mOsm/kg`;
+      if (i) i.textContent = res.explanation;
+      if (uLabel) uLabel.textContent = unit;
+    });
+  }
+
+  syncPair("naMeasured3d", "naMeasured", updateCorrectedNa);
+  syncPair("naGlucose3d", "naGlucose", updateCorrectedNa);
+  syncPair("naGluUnit3d", "naGluUnit", updateCorrectedNa);
+  ["btnNaReset3d", "btnNaReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const na = document.getElementById("naMeasured" + s); if (na) na.value = "130";
+        const glu = document.getElementById("naGlucose" + s); if (glu) glu.value = "600";
+        const u = document.getElementById("naGluUnit" + s); if (u) u.value = "mg/dL";
+      });
+      updateCorrectedNa();
+    });
+  });
+
   // ------------------------------------------------------------------------
   // TAB SWITCHING CONTROLLER (FAST TABS)
   // ------------------------------------------------------------------------
@@ -2998,6 +5849,24 @@
     try { updateCockcroftGault(); } catch (e) { console.error("updateCockcroftGault error:", e); }
     try { updateABG(); } catch (e) { console.error("updateABG error:", e); }
     try { setupABGControls(); } catch (e) { console.error("setupABGControls error:", e); }
+    try { updateFlacc(); } catch (e) { console.error("updateFlacc error:", e); }
+    try { updateCheops(); } catch (e) { console.error("updateCheops error:", e); }
+    try { updateWeights(); } catch (e) { console.error("updateWeights error:", e); }
+    try { updateRcri(); } catch (e) { console.error("updateRcri error:", e); }
+    try { updateCha2ds2(); } catch (e) { console.error("updateCha2ds2 error:", e); }
+    try { updateMeldNa(); } catch (e) { console.error("updateMeldNa error:", e); }
+    try { updateFrail(); } catch (e) { console.error("updateFrail error:", e); }
+    try { updateCfs(); } catch (e) { console.error("updateCfs error:", e); }
+    try { updateGcs(); } catch (e) { console.error("updateGcs error:", e); }
+    try { updateRts(); } catch (e) { console.error("updateRts error:", e); }
+    try { updateWellsPe(); } catch (e) { console.error("updateWellsPe error:", e); }
+    try { updatePesi(); } catch (e) { console.error("updatePesi error:", e); }
+    try { updateQsofa(); } catch (e) { console.error("updateQsofa error:", e); }
+    try { updateCurb65(); } catch (e) { console.error("updateCurb65 error:", e); }
+    try { updateNews2(); } catch (e) { console.error("updateNews2 error:", e); }
+    try { updateMews(); } catch (e) { console.error("updateMews error:", e); }
+    try { updateCorrectedCa(); } catch (e) { console.error("updateCorrectedCa error:", e); }
+    try { updateCorrectedNa(); } catch (e) { console.error("updateCorrectedNa error:", e); }
     try { setup3DHapticDepth(); } catch (e) { console.error("setup3DHapticDepth error:", e); }
   }
 
