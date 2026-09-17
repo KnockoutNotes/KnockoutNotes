@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unsubscribed &bull; KnockoutNotes</title>
+  <link rel="icon" type="image/png" href="knockoutnotes_icon.png">
+  <link rel="stylesheet" href="page-common.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #070a13;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    .status-card {
+      max-width: 520px;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 15, 29, 0.98) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 44px 36px;
+      text-align: center;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(20px);
+    }
+    .icon-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(148, 163, 184, 0.15);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: #94a3b8;
+    }
+    .status-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #f8fafc;
+      margin: 0 0 12px;
+      letter-spacing: -0.5px;
+    }
+    .status-desc {
+      font-size: 15px;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin: 0 0 28px;
+    }
+    .btn-home {
+      display: inline-block;
+      background: #1e293b;
+      color: #cbd5e1 !important;
+      text-decoration: none;
+      padding: 13px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: background 0.2s;
+    }
+    .btn-home:hover {
+      background: #334155;
+      color: #fff !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="status-card" id="statusCard">
+    <div class="icon-circle" id="statusIcon">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 6L6 18M6 6l12 12"></path>
+      </svg>
+    </div>
+    <h1 class="status-title" id="statusTitle">Unsubscribed Successfully</h1>
+    <p class="status-desc" id="statusDesc">
+      You have been unsubscribed from KnockoutNotes email notifications. You will no longer receive updates. If this was a mistake, you can re-subscribe at any time from our website.
+    </p>
+    <a href="/" class="btn-home">Back to KnockoutNotes</a>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get('status') || 'success';
+    const title = document.getElementById('statusTitle');
+    const desc = document.getElementById('statusDesc');
+
+    if (status === 'already') {
+      title.textContent = 'Already Unsubscribed';
+      desc.textContent = 'Your email has already been unsubscribed from our mailing list.';
+    } else if (status === 'invalid') {
+      title.textContent = 'Invalid Unsubscribe Link';
+      desc.textContent = 'We could not process this request. The unsubscribe link may be invalid or expired.';
+    }
+  </script>
+</body>
+</html>

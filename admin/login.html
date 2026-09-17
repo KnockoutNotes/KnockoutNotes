@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Sign In &bull; KnockoutNotes</title>
+  <link rel="icon" type="image/png" href="../knockoutnotes_icon.png">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <span class="login-brand-badge">Clinical Reference Platform</span>
+        <h1 class="login-title">KnockoutNotes Admin</h1>
+        <p class="login-subtitle">Sign in to manage subscribers and broadcast clinical updates</p>
+      </div>
+
+      <div id="loginAlert" class="alert-banner"></div>
+
+      <form id="loginForm" autocomplete="on">
+        <div class="form-group">
+          <label class="form-label" for="username">Username</label>
+          <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            class="form-input" 
+            placeholder="admin.knockoutnotes" 
+            required 
+            autofocus 
+            autocomplete="username"
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <div class="input-wrapper">
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              class="form-input" 
+              placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" 
+              required 
+              autocomplete="current-password"
+            >
+            <button type="button" id="togglePwBtn" class="pw-toggle-btn" aria-label="Toggle password visibility">Show</button>
+          </div>
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn-primary" style="margin-top: 24px;">
+          <span id="btnText">Sign In to Dashboard</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Check if already authenticated
+    (async function checkExistingAuth() {
+      try {
+        const res = await fetch('/api/admin/me');
+        if (res.ok) {
+          window.location.replace('/admin/index.html');
+        }
+      } catch (_) {}
+    })();
+
+    const loginForm = document.getElementById('loginForm');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const togglePwBtn = document.getElementById('togglePwBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const loginAlert = document.getElementById('loginAlert');
+
+    togglePwBtn.addEventListener('click', () => {
+      const isPassword = passwordInput.type === 'password';
+      passwordInput.type = isPassword ? 'text' : 'password';
+      togglePwBtn.textContent = isPassword ? 'Hide' : 'Show';
+    });
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      loginAlert.className = 'alert-banner';
+      loginAlert.style.display = 'none';
+
+      const username = usernameInput.value.trim();
+      const password = passwordInput.value;
+
+      if (!username || !password) {
+        showError('Please enter both username and password.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      btnText.textContent = 'Verifying credentials...';
+
+      try {
+        const res = await fetch('/api/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok || !data.success) {
+          showError(data.error || 'Invalid credentials. Please try again.');
+          submitBtn.disabled = false;
+          btnText.textContent = 'Sign In to Dashboard';
+          return;
+        }
+
+        btnText.textContent = 'Redirecting...';
+        window.location.replace('/admin/index.html');
+      } catch (err) {
+        showError('Network error connecting to authentication server.');
+        submitBtn.disabled = false;
+        btnText.textContent = 'Sign In to Dashboard';
+      }
+    });
+
+    function showError(msg) {
+      loginAlert.textContent = msg;
+      loginAlert.className = 'alert-banner error';
+      loginAlert.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

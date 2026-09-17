@@ -1,7 +1,22 @@
 {
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "knockoutnotes",
+  "main": "worker/index.js",
   "compatibility_date": "2026-09-09",
   "assets": {
-    "directory": "./"
+    "directory": "./",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "knockoutnotes-db",
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID"
+    }
+  ],
+  "vars": {
+    "SITE_URL": "https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev",
+    "ADMIN_USERNAME": "admin.knockoutnotes",
+    "FROM_EMAIL": "KnockoutNotes <notifications@knockoutnotes.com>"
   }
 }

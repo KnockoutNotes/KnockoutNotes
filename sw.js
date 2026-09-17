@@ -52,6 +52,8 @@ const PRECACHE_ASSETS = [
   "/spa-router.js",
   "/bubble-menu.js",
   "/border-glow.js",
+  "/subscribe-widget.css",
+  "/subscribe-widget.js",
   "/coffee-bg.js",
   "/vendor/gsap/gsap.min.js",
   "/vendor/jspdf/jspdf.umd.min.js",
@@ -99,6 +101,14 @@ self.addEventListener("fetch", (event) => {
 
   // Bypass range requests and video streaming from service worker cache
   if (event.request.headers.get("range") || requestUrl.pathname.endsWith(".mp4")) {
+    return;
+  }
+
+  // Bypass API routes, Admin routes, and Verification/Unsubscribe endpoints
+  if (requestUrl.pathname.startsWith("/api/") || 
+      requestUrl.pathname.startsWith("/admin") ||
+      requestUrl.pathname.startsWith("/subscribe/verify") ||
+      requestUrl.pathname.startsWith("/unsubscribe")) {
     return;
   }
 

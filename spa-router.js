@@ -242,6 +242,10 @@
     if (typeof window.initBorderGlow === "function") {
       window.initBorderGlow();
     }
+
+    if (typeof window.initKnockoutSubscriptionWidgets === "function") {
+      window.initKnockoutSubscriptionWidgets();
+    }
   }
 
   // ------------------------------------------------------------------------

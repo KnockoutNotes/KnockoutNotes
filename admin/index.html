@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard &bull; KnockoutNotes</title>
+  <link rel="icon" type="image/png" href="../knockoutnotes_icon.png">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- Top Navigation -->
+  <header class="admin-navbar">
+    <div class="admin-nav-brand">
+      <span class="admin-nav-logo">KnockoutNotes</span>
+      <span class="admin-nav-badge">Admin Dashboard</span>
+    </div>
+    <div class="admin-nav-user">
+      <span>Logged in as: <strong id="adminUsername">admin.knockoutnotes</strong></span>
+      <button id="logoutBtn" class="btn-secondary">Sign Out</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    
+    <!-- Top Stats Cards -->
+    <div class="stats-grid">
+      <div class="stat-card success">
+        <div class="stat-title">Active Subscribers</div>
+        <div class="stat-value" id="statActive">0</div>
+        <div class="stat-subtext">Verified & receiving updates</div>
+      </div>
+      <div class="stat-card warning">
+        <div class="stat-title">Pending Verification</div>
+        <div class="stat-value" id="statPending">0</div>
+        <div class="stat-subtext">Awaiting email confirmation</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">Unsubscribed</div>
+        <div class="stat-value" id="statUnsubscribed">0</div>
+        <div class="stat-subtext">Opted out</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">Emails Delivered</div>
+        <div class="stat-value" id="statEmailsSent">0</div>
+        <div class="stat-subtext" id="statEmailsFailed">0 failed attempts</div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="admin-tabs">
+      <button class="tab-btn active" data-tab="subscribersTab">Subscribers Directory</button>
+      <button class="tab-btn" data-tab="publishTab">Publish &amp; Notify</button>
+      <button class="tab-btn" data-tab="broadcastTab">Manual Broadcast</button>
+      <button class="tab-btn" data-tab="logsTab">Delivery Logs</button>
+    </div>
+
+    <!-- TAB 1: SUBSCRIBERS DIRECTORY -->
+    <section id="subscribersTab" class="tab-pane active">
+      <div class="content-box">
+        <div class="content-box-header">
+          <div class="content-box-title">Subscriber List</div>
+          <div class="table-controls">
+            <input type="text" id="subscriberSearch" class="form-input search-input" placeholder="Search email or name...">
+            <select id="statusFilter" class="form-select" style="width: auto;">
+              <option value="all">All Statuses</option>
+              <option value="active">Active</option>
+              <option value="pending">Pending</option>
+              <option value="unsubscribed">Unsubscribed</option>
+              <option value="banned">Banned</option>
+            </select>
+            <button id="exportCsvBtn" class="btn-secondary">Export CSV</button>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Source</th>
+                <th>Joined</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="subscribersTableBody">
+              <tr>
+                <td colspan="7" style="text-align: center; color: var(--admin-text-muted); padding: 24px;">Loading subscribers...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pagination-bar">
+          <span id="subscribersPageInfo">Showing page 1 of 1</span>
+          <div style="display: flex; gap: 8px;">
+            <button id="prevPageBtn" class="btn-secondary" disabled>&larr; Prev</button>
+            <button id="nextPageBtn" class="btn-secondary" disabled>Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: PUBLISH & NOTIFY -->
+    <section id="publishTab" class="tab-pane">
+      <div class="content-box" style="max-width: 800px;">
+        <div class="content-box-header">
+          <div class="content-box-title">Publish Content &amp; Notify Subscribers</div>
+        </div>
+        <p style="font-size: 13px; color: var(--admin-text-muted); margin-bottom: 20px;">
+          Send an automated email notification to all active subscribers when a new update, clinical note, calculator, or guideline is added.
+        </p>
+
+        <div id="publishAlert" class="alert-banner"></div>
+
+        <form id="publishForm">
+          <div class="form-group">
+            <label class="form-label" for="pubEventType">Content Type</label>
+            <select id="pubEventType" class="form-select" required>
+              <option value="update">Programme Update</option>
+              <option value="notes">Clinical Note / Drug Reference</option>
+              <option value="calculator">Medical Calculator</option>
+              <option value="resource">Clinical Resource / Protocol</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="pubTitle">Title</label>
+            <input type="text" id="pubTitle" class="form-input" placeholder="e.g. New Guideline: Paediatric Difficult Airway Protocol" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="pubSummary">Summary / Description</label>
+            <textarea id="pubSummary" class="form-textarea" rows="4" placeholder="Concise overview of what was added or updated..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="pubUrl">Target Content URL</label>
+            <input type="url" id="pubUrl" class="form-input" placeholder="https://knockoutnotes.com/notes.html#airway">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="pubIdempotency">Idempotency Key (Prevents accidental duplicates)</label>
+            <div class="input-wrapper">
+              <input type="text" id="pubIdempotency" class="form-input" readonly>
+              <button type="button" id="refreshIdempotencyBtn" class="pw-toggle-btn" style="right: 10px;">Regenerate</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-row">
+              <input type="checkbox" id="pubTestEmailCheck">
+              <span>Send test email to admin first (safe mode)</span>
+            </label>
+            <div id="pubTestEmailWrapper" style="display: none; margin-top: 10px;">
+              <input type="email" id="pubTestEmailInput" class="form-input" placeholder="admin@knockoutnotes.com">
+            </div>
+          </div>
+
+          <div style="margin-top: 24px; display: flex; gap: 12px; align-items: center;">
+            <button type="submit" id="publishSubmitBtn" class="btn-primary" style="width: auto; padding: 12px 28px;">
+              Queue &amp; Send Notification
+            </button>
+            <span style="font-size: 13px; color: var(--admin-text-muted);">
+              Active recipients: <strong id="publishRecipientEstimate">0</strong>
+            </span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- TAB 3: MANUAL BROADCAST -->
+    <section id="broadcastTab" class="tab-pane">
+      <div class="content-box" style="max-width: 800px;">
+        <div class="content-box-header">
+          <div class="content-box-title">Manual Email Broadcast</div>
+        </div>
+        <p style="font-size: 13px; color: var(--admin-text-muted); margin-bottom: 20px;">
+          Send a custom announcement or newsletter directly to all active subscribers.
+        </p>
+
+        <div id="broadcastAlert" class="alert-banner"></div>
+
+        <form id="broadcastForm">
+          <div class="form-group">
+            <label class="form-label" for="bcastSubject">Email Subject</label>
+            <input type="text" id="bcastSubject" class="form-input" placeholder="e.g. Major Update: New Ventilator Simulators Live" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="bcastMessage">Message Content</label>
+            <textarea id="bcastMessage" class="form-textarea" rows="7" placeholder="Write your announcement here..." required></textarea>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label" for="bcastActionText">Action Button Label (Optional)</label>
+              <input type="text" id="bcastActionText" class="form-input" placeholder="e.g. Open Ventilator">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="bcastActionUrl">Action URL (Optional)</label>
+              <input type="url" id="bcastActionUrl" class="form-input" placeholder="https://knockoutnotes.com/ventilator.html">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-row">
+              <input type="checkbox" id="bcastTestEmailCheck">
+              <span>Send test broadcast to admin first (safe mode)</span>
+            </label>
+            <div id="bcastTestEmailWrapper" style="display: none; margin-top: 10px;">
+              <input type="email" id="bcastTestEmailInput" class="form-input" placeholder="admin@knockoutnotes.com">
+            </div>
+          </div>
+
+          <div style="margin-top: 24px; display: flex; gap: 12px; align-items: center;">
+            <button type="submit" id="broadcastSubmitBtn" class="btn-primary" style="width: auto; padding: 12px 28px;">
+              Send Broadcast to Subscribers
+            </button>
+            <span style="font-size: 13px; color: var(--admin-text-muted);">
+              Active recipients: <strong id="broadcastRecipientEstimate">0</strong>
+            </span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- TAB 4: DELIVERY LOGS -->
+    <section id="logsTab" class="tab-pane">
+      <div class="content-box">
+        <div class="content-box-header">
+          <div class="content-box-title">Email Delivery History</div>
+          <button id="refreshLogsBtn" class="btn-secondary">Refresh Logs</button>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Recipient</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Resend ID</th>
+                <th>Error Details</th>
+                <th>Timestamp</th>
+              </tr>
+            </thead>
+            <tbody id="logsTableBody">
+              <tr>
+                <td colspan="7" style="text-align: center; color: var(--admin-text-muted); padding: 24px;">Loading delivery logs...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pagination-bar">
+          <span id="logsPageInfo">Showing page 1 of 1</span>
+          <div style="display: flex; gap: 8px;">
+            <button id="logsPrevBtn" class="btn-secondary" disabled>&larr; Prev</button>
+            <button id="logsNextBtn" class="btn-secondary" disabled>Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Confirmation Modal -->
+  <div id="confirmModal" class="admin-modal-backdrop">
+    <div class="admin-modal">
+      <h3 id="modalTitle" class="modal-title">Confirm Action</h3>
+      <p id="modalBody" class="modal-body">Are you sure you want to proceed?</p>
+      <div class="modal-actions">
+        <button id="modalCancelBtn" class="btn-secondary">Cancel</button>
+        <button id="modalConfirmBtn" class="btn-primary" style="width: auto;">Confirm &amp; Proceed</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

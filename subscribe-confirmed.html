@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscription Confirmed &bull; KnockoutNotes</title>
+  <link rel="icon" type="image/png" href="knockoutnotes_icon.png">
+  <link rel="stylesheet" href="page-common.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #070a13;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    .status-card {
+      max-width: 520px;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 15, 29, 0.98) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 20px;
+      padding: 44px 36px;
+      text-align: center;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+    }
+    .icon-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon-circle.success {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+    }
+    .icon-circle.error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171;
+    }
+    .status-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #f8fafc;
+      margin: 0 0 12px;
+      letter-spacing: -0.5px;
+    }
+    .status-desc {
+      font-size: 15px;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin: 0 0 28px;
+    }
+    .btn-home {
+      display: inline-block;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #fff !important;
+      text-decoration: none;
+      padding: 13px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-home:hover {
+      background: #0369a1;
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="status-card" id="statusCard">
+    <div class="icon-circle success" id="statusIcon">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <h1 class="status-title" id="statusTitle">Subscription Confirmed!</h1>
+    <p class="status-desc" id="statusDesc">
+      Thank you for verifying your email address. You will now receive notifications whenever new clinical notes, airway algorithms, or medical calculators are published.
+    </p>
+    <a href="/" class="btn-home">Return to KnockoutNotes</a>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get('status') || 'success';
+
+    const icon = document.getElementById('statusIcon');
+    const title = document.getElementById('statusTitle');
+    const desc = document.getElementById('statusDesc');
+
+    if (status === 'invalid') {
+      icon.className = 'icon-circle error';
+      icon.innerHTML = `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+      title.textContent = 'Invalid Confirmation Link';
+      desc.textContent = 'This verification link is invalid or has already been used. Please try subscribing again from the homepage.';
+    } else if (status === 'expired') {
+      icon.className = 'icon-circle error';
+      icon.innerHTML = `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`;
+      title.textContent = 'Verification Link Expired';
+      desc.textContent = 'This verification link has expired (valid for 48 hours). Please re-enter your email on KnockoutNotes to receive a new link.';
+    }
+  </script>
+</body>
+</html>
