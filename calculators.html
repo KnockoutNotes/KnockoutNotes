@@ -2984,26 +2984,26 @@
 
   // Initialize all calculators on DOM load or client-side navigation
   function initAllCalculators() {
-    updatePaedsChart();
-    updateParkland();
-    updateBmi();
-    updateMets();
-    renderDasiItems();
-    updateDasi();
-    updateStopBang();
-    updateWilson();
-    updateChildPugh();
-    updateCOPUR();
-    updateCockcroftGault();
-    updateABG();
-    setupABGControls();
-    setupTabs();
-    setup3DHapticDepth();
+    try { setupTabs(); } catch (err) { console.error("Error setting up tabs:", err); }
+    try { updatePaedsChart(); } catch (e) { console.error("updatePaedsChart error:", e); }
+    try { updateParkland(); } catch (e) { console.error("updateParkland error:", e); }
+    try { updateBmi(); } catch (e) { console.error("updateBmi error:", e); }
+    try { updateMets(); } catch (e) { console.error("updateMets error:", e); }
+    try { renderDasiItems(); } catch (e) { console.error("renderDasiItems error:", e); }
+    try { updateDasi(); } catch (e) { console.error("updateDasi error:", e); }
+    try { updateStopBang(); } catch (e) { console.error("updateStopBang error:", e); }
+    try { updateWilson(); } catch (e) { console.error("updateWilson error:", e); }
+    try { updateChildPugh(); } catch (e) { console.error("updateChildPugh error:", e); }
+    try { updateCOPUR(); } catch (e) { console.error("updateCOPUR error:", e); }
+    try { updateCockcroftGault(); } catch (e) { console.error("updateCockcroftGault error:", e); }
+    try { updateABG(); } catch (e) { console.error("updateABG error:", e); }
+    try { setupABGControls(); } catch (e) { console.error("setupABGControls error:", e); }
+    try { setup3DHapticDepth(); } catch (e) { console.error("setup3DHapticDepth error:", e); }
   }
 
-  window.KnockoutCalculators = {
+  window.KnockoutCalculators = Object.assign(window.KnockoutCalculators || {}, {
     init: initAllCalculators
-  };
+  });
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initAllCalculators);
