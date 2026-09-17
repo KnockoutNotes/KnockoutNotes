@@ -13,7 +13,7 @@ FROM_EMAIL="KnockoutNotes <notifications@knockoutnotes.com>"
 ADMIN_USERNAME="admin.knockoutnotes"
 
 # PBKDF2-HMAC-SHA256 password hash for admin (generated with scripts/generate_password_hash.py)
-ADMIN_PASSWORD_HASH="pbkdf2:100000:c521f28ef344550eeb88eeb6977cf41b:b2d5adcafe93198ba577eeb814d6ce7e3b6bfa2b377f7933f864985573142826"
+ADMIN_PASSWORD_HASH="pbkdf2:100000:your_generated_salt_hex:your_generated_hash_hex"
 
 # Email to receive automated alerts on new subscriptions/unsubscribes
 ADMIN_NOTIFICATION_EMAIL="admin@knockoutnotes.com"

@@ -86,11 +86,10 @@ def run_all_tests():
     # Group 2: Password Cryptography & WebCrypto Compatibility
     # ----------------------------------------------------
     print("\n--- GROUP 2: PBKDF2 Password Hashing & Auth Verification ---")
-    admin_pw = "Maneesh1997*"
-    known_salt = "c521f28ef344550eeb88eeb6977cf41b"
-    pwd_hash = hash_password(admin_pw, salt_hex=known_salt)
+    admin_pw = "TestSecurePassword123*!"
+    pwd_hash = hash_password(admin_pw)
     test("PBKDF2 hash generation format (pbkdf2:100000:salt:hash)", pwd_hash.startswith("pbkdf2:100000:"))
-    test("Password verification succeeds with correct password", verify_password("Maneesh1997*", pwd_hash))
+    test("Password verification succeeds with correct password", verify_password(admin_pw, pwd_hash))
     test("Password verification fails with incorrect password", not verify_password("WrongPassword123!", pwd_hash))
     test("Password verification handles empty password safely", not verify_password("", pwd_hash))
 
