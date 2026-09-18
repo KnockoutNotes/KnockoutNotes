@@ -23,6 +23,29 @@ import {
 } from './email-templates.js';
 
 import { sendEmail, sendBulkEmails } from './mailersend.js';
+import {
+  listCategories,
+  createCategory,
+  updateCategory,
+  deleteCategory,
+  listContent,
+  getContentById,
+  createContent,
+  updateContent,
+  setContentStatus,
+  deleteContent,
+  listAuditLogs,
+  recordAuditLog
+} from './cms.js';
+import {
+  listFiles,
+  handleFileUpload,
+  deleteFile,
+  serveFile,
+  isR2Configured
+} from './files.js';
+import { getWebAnalytics } from './analytics.js';
+
 
 // Standard CORS headers
 const CORS_HEADERS = {
@@ -75,8 +98,33 @@ export default {
     }
 
     // ==========================================
+    // 0. ADMIN ROUTE INTERCEPTION & AUTH GUARD
+    // ==========================================
+    const isAdminAppRoute = pathname === '/admin' || 
+                            pathname === '/admin/' || 
+                            pathname === '/admin/index.html' || 
+                            (pathname.startsWith('/admin/') && !pathname.includes('.') && pathname !== '/admin/login');
+
+    if (isAdminAppRoute) {
+      const cookies = parseCookies(request);
+      const session = await validateAdminSession(env.DB, cookies.admin_session);
+      const siteUrl = getSiteUrl(request, env);
+
+      if (!session) {
+        return redirectResponse(`${siteUrl}/admin/login.html`);
+      }
+
+      // If authenticated, serve admin/index.html via ASSETS
+      if (env.ASSETS) {
+        const adminIndexReq = new Request(new URL('/admin/index.html', request.url), request);
+        return env.ASSETS.fetch(adminIndexReq);
+      }
+    }
+
+    // ==========================================
     // 1. PUBLIC SUBSCRIPTION ROUTES
     // ==========================================
+
 
     // POST /api/subscribe
     if (pathname === '/api/subscribe' && request.method === 'POST') {
@@ -359,6 +407,8 @@ export default {
             `)
             .bind(sessionId, expectedUsername, expiresAt, ip, ua)
             .run();
+
+          await recordAuditLog(env.DB, expectedUsername, 'login', 'session', sessionId, { ip, ua }, ip);
         }
 
         const cookie = createSessionCookie(sessionId);
@@ -377,6 +427,11 @@ export default {
       const sessionId = cookies.admin_session;
 
       if (sessionId && env.DB) {
+        const session = await validateAdminSession(env.DB, sessionId);
+        if (session) {
+          const ip = request.headers.get('CF-Connecting-IP') || '';
+          await recordAuditLog(env.DB, session.admin_username, 'logout', 'session', sessionId, 'Admin signed out', ip);
+        }
         await env.DB
           .prepare('DELETE FROM admin_sessions WHERE session_id = ?')
           .bind(sessionId)
@@ -387,6 +442,7 @@ export default {
         'Set-Cookie': clearSessionCookie()
       });
     }
+
 
     // GET /api/admin/me
     if (pathname === '/api/admin/me' && request.method === 'GET') {
@@ -420,6 +476,28 @@ export default {
           const emailsSentRow = await env.DB.prepare("SELECT COUNT(*) as count FROM email_logs WHERE status = 'sent'").first();
           const emailsFailedRow = await env.DB.prepare("SELECT COUNT(*) as count FROM email_logs WHERE status = 'failed'").first();
 
+          // CMS Content Counts
+          let contentCounts = { notes: 0, pearls: 0, calculators: 0, updates: 0, total: 0 };
+          let fileCount = 0;
+          try {
+            const noteCountRow = await env.DB.prepare("SELECT COUNT(*) as count FROM content WHERE content_type = 'note'").first();
+            const pearlCountRow = await env.DB.prepare("SELECT COUNT(*) as count FROM content WHERE content_type = 'pearl'").first();
+            const calcCountRow = await env.DB.prepare("SELECT COUNT(*) as count FROM content WHERE content_type = 'calculator'").first();
+            const updateCountRow = await env.DB.prepare("SELECT COUNT(*) as count FROM content WHERE content_type = 'update'").first();
+            const filesCountRow = await env.DB.prepare("SELECT COUNT(*) as count FROM files").first();
+
+            contentCounts = {
+              notes: noteCountRow?.count || 0,
+              pearls: pearlCountRow?.count || 0,
+              calculators: calcCountRow?.count || 0,
+              updates: updateCountRow?.count || 0,
+              total: (noteCountRow?.count || 0) + (pearlCountRow?.count || 0) + (calcCountRow?.count || 0) + (updateCountRow?.count || 0)
+            };
+            fileCount = filesCountRow?.count || 0;
+          } catch (_) {
+            // Migration may be pending in some environments
+          }
+
           const recentEvents = await env.DB
             .prepare('SELECT * FROM notification_events ORDER BY created_at DESC LIMIT 5')
             .all();
@@ -435,6 +513,11 @@ export default {
               sent: emailsSentRow?.count || 0,
               failed: emailsFailedRow?.count || 0
             },
+            content: contentCounts,
+            files: {
+              total: fileCount,
+              r2_configured: isR2Configured(env)
+            },
             recentEvents: recentEvents?.results || []
           });
         } catch (err) {
@@ -442,6 +525,7 @@ export default {
           return jsonResponse({ error: 'Failed to fetch statistics' }, 500);
         }
       }
+
 
       // GET /api/admin/subscribers
       if (pathname === '/api/admin/subscribers' && request.method === 'GET') {
@@ -848,27 +932,213 @@ export default {
           return jsonResponse({ error: 'Failed to send broadcast' }, 500);
         }
       }
+
+      // ----------------------------------------------------
+      // WEB ANALYTICS ENDPOINT (Cloudflare GraphQL aggregate)
+      // ----------------------------------------------------
+      if (pathname === '/api/admin/analytics' && request.method === 'GET') {
+        const period = url.searchParams.get('period') || '7d';
+        const analyticsData = await getWebAnalytics(env, { period });
+        return jsonResponse(analyticsData);
+      }
+
+      // ----------------------------------------------------
+      // CATEGORIES CRUD ENDPOINTS
+      // ----------------------------------------------------
+      if (pathname === '/api/admin/categories' && request.method === 'GET') {
+        try {
+          const type = url.searchParams.get('type') || 'all';
+          const categories = await listCategories(env.DB, { type });
+          return jsonResponse({ categories });
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 500);
+        }
+      }
+
+      if (pathname === '/api/admin/categories' && request.method === 'POST') {
+        try {
+          const data = await request.json();
+          const created = await createCategory(env.DB, data, session.admin_username);
+          return jsonResponse({ success: true, category: created }, 201);
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 400);
+        }
+      }
+
+      if (pathname.startsWith('/api/admin/categories/') && request.method === 'PUT') {
+        try {
+          const catId = pathname.replace('/api/admin/categories/', '');
+          const data = await request.json();
+          const updated = await updateCategory(env.DB, catId, data, session.admin_username);
+          return jsonResponse({ success: true, category: updated });
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 400);
+        }
+      }
+
+      if (pathname.startsWith('/api/admin/categories/') && request.method === 'DELETE') {
+        try {
+          const catId = pathname.replace('/api/admin/categories/', '');
+          const result = await deleteCategory(env.DB, catId, session.admin_username);
+          return jsonResponse(result);
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 400);
+        }
+      }
+
+      // ----------------------------------------------------
+      // CONTENT CRUD ENDPOINTS (Notes, Pearls, Calculators, Updates)
+      // ----------------------------------------------------
+      if (pathname === '/api/admin/content' && request.method === 'GET') {
+        try {
+          const options = {
+            type: url.searchParams.get('type') || 'all',
+            status: url.searchParams.get('status') || 'all',
+            category_id: url.searchParams.get('category_id') || null,
+            q: url.searchParams.get('q') || '',
+            page: url.searchParams.get('page') || '1',
+            limit: url.searchParams.get('limit') || '20'
+          };
+          const data = await listContent(env.DB, options);
+          return jsonResponse(data);
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 500);
+        }
+      }
+
+      if (pathname.startsWith('/api/admin/content/') && request.method === 'GET') {
+        try {
+          const contentId = pathname.replace('/api/admin/content/', '');
+          const item = await getContentById(env.DB, contentId);
+          if (!item) return jsonResponse({ error: 'Content item not found' }, 404);
+          return jsonResponse({ content: item });
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 500);
+        }
+      }
+
+      if (pathname === '/api/admin/content' && request.method === 'POST') {
+        try {
+          const data = await request.json();
+          const created = await createContent(env.DB, data, session.admin_username);
+          return jsonResponse({ success: true, content: created }, 201);
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 400);
+        }
+      }
+
+      if (pathname.startsWith('/api/admin/content/') && pathname.endsWith('/status') && request.method === 'POST') {
+        try {
+          const contentId = pathname.replace('/api/admin/content/', '').replace('/status', '');
+          const { status } = await request.json();
+          const result = await setContentStatus(env.DB, contentId, status, session.admin_username);
+          return jsonResponse({ success: true, ...result });
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 400);
+        }
+      }
+
+      if (pathname.startsWith('/api/admin/content/') && request.method === 'PUT') {
+        try {
+          const contentId = pathname.replace('/api/admin/content/', '');
+          const data = await request.json();
+          const updated = await updateContent(env.DB, contentId, data, session.admin_username);
+          return jsonResponse({ success: true, content: updated });
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 400);
+        }
+      }
+
+      if (pathname.startsWith('/api/admin/content/') && request.method === 'DELETE') {
+        try {
+          const contentId = pathname.replace('/api/admin/content/', '');
+          const result = await deleteContent(env.DB, contentId, session.admin_username);
+          return jsonResponse(result);
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 400);
+        }
+      }
+
+      // ----------------------------------------------------
+      // FILE MANAGER ENDPOINTS (Cloudflare R2 & Metadata)
+      // ----------------------------------------------------
+      if (pathname === '/api/admin/files' && request.method === 'GET') {
+        try {
+          const options = {
+            folder: url.searchParams.get('folder') || 'all',
+            q: url.searchParams.get('q') || '',
+            page: url.searchParams.get('page') || '1',
+            limit: url.searchParams.get('limit') || '30'
+          };
+          const data = await listFiles(env.DB, env, options);
+          return jsonResponse(data);
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 500);
+        }
+      }
+
+      if (pathname === '/api/admin/files/upload' && request.method === 'POST') {
+        try {
+          const result = await handleFileUpload(request, env.DB, env, session.admin_username);
+          await recordAuditLog(env.DB, session.admin_username, 'file_upload', 'file', result.id, { filename: result.filename, storage_key: result.storage_key });
+          return jsonResponse({ success: true, file: result }, 201);
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 400);
+        }
+      }
+
+      if (pathname.startsWith('/api/admin/files/') && request.method === 'DELETE') {
+        try {
+          const fileId = pathname.replace('/api/admin/files/', '');
+          const result = await deleteFile(fileId, env.DB, env, session.admin_username);
+          await recordAuditLog(env.DB, session.admin_username, 'file_delete', 'file', fileId, { filename: result.filename });
+          return jsonResponse(result);
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 400);
+        }
+      }
+
+      // ----------------------------------------------------
+      // AUDIT LOGS ENDPOINT
+      // ----------------------------------------------------
+      if (pathname === '/api/admin/audit-logs' && request.method === 'GET') {
+        try {
+          const options = {
+            page: url.searchParams.get('page') || '1',
+            limit: url.searchParams.get('limit') || '30'
+          };
+          const data = await listAuditLogs(env.DB, options);
+          return jsonResponse(data);
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 500);
+        }
+      }
+
+      // ----------------------------------------------------
+      // SETTINGS & SYSTEM STATUS ENDPOINT
+      // ----------------------------------------------------
+      if (pathname === '/api/admin/settings/status' && request.method === 'GET') {
+        return jsonResponse({
+          database: { connected: Boolean(env.DB), name: 'knockoutnotes-db' },
+          mailersend: { configured: Boolean(env.MAILERSEND_API_TOKEN), from_email: env.FROM_EMAIL || 'Not configured' },
+          r2_storage: { configured: isR2Configured(env), bucket: isR2Configured(env) ? 'Bound' : 'Not bound' },
+          analytics: { configured: Boolean(env.CLOUDFLARE_API_TOKEN && env.CLOUDFLARE_ZONE_ID) },
+          site_url: getSiteUrl(request, env),
+          admin_username: env.ADMIN_USERNAME || 'admin.knockoutnotes'
+        });
+      }
     }
 
     // ==========================================
-    // 4. ADMIN HTML INTERCEPTION & PROTECTION
+    // PUBLIC ASSET SERVING FROM R2 (/api/files/*)
     // ==========================================
-    // Protect /admin and /admin/index.html on the server level
-    if (pathname === '/admin' || pathname === '/admin/' || pathname === '/admin/index.html') {
-      const cookies = parseCookies(request);
-      const session = await validateAdminSession(env.DB, cookies.admin_session);
-      const siteUrl = getSiteUrl(request, env);
-
-      if (!session) {
-        return redirectResponse(`${siteUrl}/admin/login.html`);
-      }
-
-      // If authenticated and path is /admin or /admin/, serve admin/index.html via ASSETS
-      if (env.ASSETS) {
-        const adminIndexReq = new Request(new URL('/admin/index.html', request.url), request);
-        return env.ASSETS.fetch(adminIndexReq);
-      }
+    if (pathname.startsWith('/api/files/')) {
+      const storageKey = pathname.replace('/api/files/', '');
+      return serveFile(storageKey, env, request);
     }
+
+
+
 
     // ==========================================
     // 5. STATIC ASSET FALLBACK (100% OF SITE FILES)

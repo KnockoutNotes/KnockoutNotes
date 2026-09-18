@@ -3,285 +3,744 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard &bull; KnockoutNotes</title>
+  <title>KnockoutNotes Administration &amp; CMS Portal</title>
   <link rel="icon" type="image/png" href="../knockoutnotes_icon.png">
   <link rel="stylesheet" href="admin.css">
 </head>
 <body class="admin-body">
 
-  <!-- Top Navigation -->
-  <header class="admin-navbar">
-    <div class="admin-nav-brand">
-      <span class="admin-nav-logo">KnockoutNotes</span>
-      <span class="admin-nav-badge">Admin Dashboard</span>
-    </div>
-    <div class="admin-nav-user">
-      <span>Logged in as: <strong id="adminUsername">admin.knockoutnotes</strong></span>
-      <button id="logoutBtn" class="btn-secondary">Sign Out</button>
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="admin-main">
+  <div class="adm-layout">
     
-    <!-- Top Stats Cards -->
-    <div class="stats-grid">
-      <div class="stat-card success">
-        <div class="stat-title">Active Subscribers</div>
-        <div class="stat-value" id="statActive">0</div>
-        <div class="stat-subtext">Verified & receiving updates</div>
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="adm-sidebar" id="admSidebar">
+      <div class="adm-sidebar-brand">
+        <span class="adm-brand-name">KnockoutNotes</span>
+        <span class="adm-brand-tag">CMS</span>
       </div>
-      <div class="stat-card warning">
-        <div class="stat-title">Pending Verification</div>
-        <div class="stat-value" id="statPending">0</div>
-        <div class="stat-subtext">Awaiting email confirmation</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-title">Unsubscribed</div>
-        <div class="stat-value" id="statUnsubscribed">0</div>
-        <div class="stat-subtext">Opted out</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-title">Emails Delivered</div>
-        <div class="stat-value" id="statEmailsSent">0</div>
-        <div class="stat-subtext" id="statEmailsFailed">0 failed attempts</div>
-      </div>
-    </div>
 
-    <!-- Navigation Tabs -->
-    <div class="admin-tabs">
-      <button class="tab-btn active" data-tab="subscribersTab">Subscribers Directory</button>
-      <button class="tab-btn" data-tab="publishTab">Publish &amp; Notify</button>
-      <button class="tab-btn" data-tab="broadcastTab">Manual Broadcast</button>
-      <button class="tab-btn" data-tab="logsTab">Delivery Logs</button>
-    </div>
+      <nav class="adm-sidebar-nav">
+        <div class="adm-nav-group-title">Overview</div>
+        <button class="adm-nav-item active" data-view="dashboard">
+          <svg class="adm-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+          Dashboard
+        </button>
+        <button class="adm-nav-item" data-view="analytics">
+          <svg class="adm-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          Analytics
+        </button>
 
-    <!-- TAB 1: SUBSCRIBERS DIRECTORY -->
-    <section id="subscribersTab" class="tab-pane active">
-      <div class="content-box">
-        <div class="content-box-header">
-          <div class="content-box-title">Subscriber List</div>
-          <div class="table-controls">
-            <input type="text" id="subscriberSearch" class="form-input search-input" placeholder="Search email or name...">
-            <select id="statusFilter" class="form-select" style="width: auto;">
-              <option value="all">All Statuses</option>
-              <option value="active">Active</option>
-              <option value="pending">Pending</option>
-              <option value="unsubscribed">Unsubscribed</option>
-              <option value="banned">Banned</option>
-            </select>
-            <button id="exportCsvBtn" class="btn-secondary">Export CSV</button>
-          </div>
+        <div class="adm-nav-group-title">Content &amp; Assets</div>
+        <button class="adm-nav-item" data-view="content">
+          <svg class="adm-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
+          Content Manager
+        </button>
+        <button class="adm-nav-item" data-view="categories">
+          <svg class="adm-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
+          Categories
+        </button>
+        <button class="adm-nav-item" data-view="files">
+          <svg class="adm-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          File Manager
+        </button>
+
+        <div class="adm-nav-group-title">Audience &amp; Comms</div>
+        <button class="adm-nav-item" data-view="subscribers">
+          <svg class="adm-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          Subscribers
+        </button>
+        <button class="adm-nav-item" data-view="email">
+          <svg class="adm-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          Email &amp; Delivery
+        </button>
+
+        <div class="adm-nav-group-title">System</div>
+        <button class="adm-nav-item" data-view="settings">
+          <svg class="adm-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          Settings &amp; Audit
+        </button>
+      </nav>
+
+      <div class="adm-sidebar-footer">
+        <div>KnockoutNotes Portal v2.0</div>
+        <div>Zero tracking cookies</div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTAINER -->
+    <div class="adm-main-container">
+      
+      <!-- HEADER -->
+      <header class="adm-header">
+        <div class="adm-header-left">
+          <button class="adm-mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+          <h1 class="adm-page-title" id="pageTitle">Dashboard</h1>
         </div>
 
-        <div class="table-wrapper">
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Email</th>
-                <th>Name</th>
-                <th>Status</th>
-                <th>Source</th>
-                <th>Joined</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody id="subscribersTableBody">
-              <tr>
-                <td colspan="7" style="text-align: center; color: var(--admin-text-muted); padding: 24px;">Loading subscribers...</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="adm-header-right">
+          <div class="adm-user-info">
+            <span>Admin:</span>
+            <strong id="adminUsername">admin.knockoutnotes</strong>
+          </div>
+          <a href="/" target="_blank" class="btn-secondary" style="text-decoration: none;">View Site</a>
+          <button id="logoutBtn" class="btn-secondary">Sign Out</button>
         </div>
+      </header>
 
-        <div class="pagination-bar">
-          <span id="subscribersPageInfo">Showing page 1 of 1</span>
-          <div style="display: flex; gap: 8px;">
-            <button id="prevPageBtn" class="btn-secondary" disabled>&larr; Prev</button>
-            <button id="nextPageBtn" class="btn-secondary" disabled>Next &rarr;</button>
-          </div>
-        </div>
-      </div>
-    </section>
+      <!-- SCROLLABLE CONTENT -->
+      <div class="adm-content-scroll">
+        
+        <!-- ==========================================
+             VIEW 1: DASHBOARD
+             ========================================== -->
+        <section id="view-dashboard" class="adm-view active">
+          <!-- Summary Stat Cards -->
+          <div class="adm-stats-grid">
+            <div class="adm-stat-card">
+              <div class="adm-stat-header">
+                <span class="adm-stat-title">Active Subscribers</span>
+              </div>
+              <div class="adm-stat-value" id="dashSubscribers">0</div>
+              <div class="adm-stat-subtext">Verified email recipients</div>
+            </div>
 
-    <!-- TAB 2: PUBLISH & NOTIFY -->
-    <section id="publishTab" class="tab-pane">
-      <div class="content-box" style="max-width: 800px;">
-        <div class="content-box-header">
-          <div class="content-box-title">Publish Content &amp; Notify Subscribers</div>
-        </div>
-        <p style="font-size: 13px; color: var(--admin-text-muted); margin-bottom: 20px;">
-          Send an automated email notification to all active subscribers when a new update, clinical note, calculator, or guideline is added.
-        </p>
+            <div class="adm-stat-card">
+              <div class="adm-stat-header">
+                <span class="adm-stat-title">Clinical Notes</span>
+              </div>
+              <div class="adm-stat-value" id="dashNotes">0</div>
+              <div class="adm-stat-subtext">Published monographs &amp; references</div>
+            </div>
 
-        <div id="publishAlert" class="alert-banner"></div>
+            <div class="adm-stat-card">
+              <div class="adm-stat-header">
+                <span class="adm-stat-title">Clinical Pearls</span>
+              </div>
+              <div class="adm-stat-value" id="dashPearls">0</div>
+              <div class="adm-stat-subtext">Rapid-fire exam pearls</div>
+            </div>
 
-        <form id="publishForm">
-          <div class="form-group">
-            <label class="form-label" for="pubEventType">Content Type</label>
-            <select id="pubEventType" class="form-select" required>
-              <option value="update">Programme Update</option>
-              <option value="notes">Clinical Note / Drug Reference</option>
-              <option value="calculator">Medical Calculator</option>
-              <option value="resource">Clinical Resource / Protocol</option>
-            </select>
-          </div>
+            <div class="adm-stat-card">
+              <div class="adm-stat-header">
+                <span class="adm-stat-title">Calculators</span>
+              </div>
+              <div class="adm-stat-value" id="dashCalculators">0</div>
+              <div class="adm-stat-subtext">Validated clinical engines</div>
+            </div>
 
-          <div class="form-group">
-            <label class="form-label" for="pubTitle">Title</label>
-            <input type="text" id="pubTitle" class="form-input" placeholder="e.g. New Guideline: Paediatric Difficult Airway Protocol" required>
-          </div>
+            <div class="adm-stat-card">
+              <div class="adm-stat-header">
+                <span class="adm-stat-title">Files &amp; Assets</span>
+              </div>
+              <div class="adm-stat-value" id="dashFiles">0</div>
+              <div class="adm-stat-subtext" id="dashFilesSub">Cloudflare R2</div>
+            </div>
 
-          <div class="form-group">
-            <label class="form-label" for="pubSummary">Summary / Description</label>
-            <textarea id="pubSummary" class="form-textarea" rows="4" placeholder="Concise overview of what was added or updated..."></textarea>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="pubUrl">Target Content URL</label>
-            <input type="url" id="pubUrl" class="form-input" placeholder="https://knockoutnotes.com/notes.html#airway">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="pubIdempotency">Idempotency Key (Prevents accidental duplicates)</label>
-            <div class="input-wrapper">
-              <input type="text" id="pubIdempotency" class="form-input" readonly>
-              <button type="button" id="refreshIdempotencyBtn" class="pw-toggle-btn" style="right: 10px;">Regenerate</button>
+            <div class="adm-stat-card">
+              <div class="adm-stat-header">
+                <span class="adm-stat-title">Emails Delivered</span>
+              </div>
+              <div class="adm-stat-value" id="dashEmailsSent">0</div>
+              <div class="adm-stat-subtext" id="dashEmailsFailed">0 failed</div>
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="checkbox-row">
-              <input type="checkbox" id="pubTestEmailCheck">
-              <span>Send test email to admin first (safe mode)</span>
-            </label>
-            <div id="pubTestEmailWrapper" style="display: none; margin-top: 10px;">
-              <input type="email" id="pubTestEmailInput" class="form-input" placeholder="admin@knockoutnotes.com">
+          <!-- Quick Actions & Recent Activity -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+            <div class="adm-card" style="margin-bottom: 0;">
+              <div class="adm-card-header">
+                <span class="adm-card-title">Quick Content Actions</span>
+              </div>
+              <div class="adm-card-body" style="display: flex; flex-direction: column; gap: 10px;">
+                <button class="btn-secondary" onclick="openNewContentModal('note')">+ New Clinical Note</button>
+                <button class="btn-secondary" onclick="openNewContentModal('pearl')">+ New Clinical Pearl</button>
+                <button class="btn-secondary" onclick="openNewContentModal('update')">+ New Platform Update</button>
+                <button class="btn-secondary" onclick="switchView('files')">Upload Media Asset</button>
+                <button class="btn-secondary" onclick="switchView('email')">Prepare Email Broadcast</button>
+              </div>
+            </div>
+
+            <div class="adm-card" style="margin-bottom: 0;">
+              <div class="adm-card-header">
+                <span class="adm-card-title">Recent Broadcasts &amp; Notifications</span>
+              </div>
+              <div class="adm-card-body" id="recentEventsList" style="padding: 0;">
+                <div class="adm-empty-state">Loading recent events...</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             VIEW 2: ANALYTICS
+             ========================================== -->
+        <section id="view-analytics" class="adm-view">
+          <div class="adm-card">
+            <div class="adm-card-header">
+              <span class="adm-card-title">Website Visitor Traffic (Cloudflare Web Analytics)</span>
+              <div class="adm-controls-bar">
+                <select id="analyticsPeriod" class="form-select" style="width: auto;">
+                  <option value="today">Last 24 Hours</option>
+                  <option value="7d" selected>Last 7 Days</option>
+                  <option value="30d">Last 30 Days</option>
+                  <option value="90d">Last 90 Days</option>
+                </select>
+                <button id="refreshAnalyticsBtn" class="btn-secondary">Refresh</button>
+              </div>
+            </div>
+            <div class="adm-card-body">
+              <div id="analyticsAlert" class="alert-banner"></div>
+
+              <div class="adm-stats-grid" style="margin-bottom: 20px;">
+                <div class="adm-stat-card">
+                  <div class="adm-stat-header"><span class="adm-stat-title">Page Views</span></div>
+                  <div class="adm-stat-value" id="anaPageviews">--</div>
+                  <div class="adm-stat-subtext">Total requests</div>
+                </div>
+                <div class="adm-stat-card">
+                  <div class="adm-stat-header"><span class="adm-stat-title">Unique Visitors</span></div>
+                  <div class="adm-stat-value" id="anaUniques">--</div>
+                  <div class="adm-stat-subtext">Estimated unique clients</div>
+                </div>
+                <div class="adm-stat-card">
+                  <div class="adm-stat-header"><span class="adm-stat-title">Total Requests</span></div>
+                  <div class="adm-stat-value" id="anaRequests">--</div>
+                  <div class="adm-stat-subtext">Assets &amp; API calls</div>
+                </div>
+              </div>
+
+              <div id="analyticsTableWrapper" class="table-wrapper">
+                <table class="adm-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Page Views</th>
+                      <th>Requests</th>
+                      <th>Unique Visitors</th>
+                    </tr>
+                  </thead>
+                  <tbody id="analyticsTableBody">
+                    <tr><td colspan="4" style="text-align: center; color: var(--adm-text-subtle);">Connect Cloudflare Web Analytics in Settings to view aggregate traffic.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             VIEW 3: CONTENT MANAGER
+             ========================================== -->
+        <section id="view-content" class="adm-view">
+          <div class="adm-card">
+            <div class="adm-card-header">
+              <div class="adm-subnav" style="margin-bottom: 0; border: none;">
+                <button class="adm-subnav-btn active" data-content-type="all">All Items</button>
+                <button class="adm-subnav-btn" data-content-type="note">Notes</button>
+                <button class="adm-subnav-btn" data-content-type="pearl">Pearls</button>
+                <button class="adm-subnav-btn" data-content-type="calculator">Calculators</button>
+                <button class="adm-subnav-btn" data-content-type="update">Updates</button>
+              </div>
+
+              <div class="adm-controls-bar">
+                <input type="text" id="contentSearch" class="form-input adm-search-input" placeholder="Search title or slug...">
+                <select id="contentStatusFilter" class="form-select" style="width: auto;">
+                  <option value="all">All Statuses</option>
+                  <option value="published">Published</option>
+                  <option value="draft">Draft</option>
+                  <option value="archived">Archived</option>
+                </select>
+                <select id="contentCategoryFilter" class="form-select" style="width: auto;">
+                  <option value="">All Categories</option>
+                </select>
+                <button id="newContentBtn" class="btn-primary">+ Add Content</button>
+              </div>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="adm-table">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Published Date</th>
+                    <th>Updated</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="contentTableBody">
+                  <tr><td colspan="7" class="adm-empty-state">Loading content items...</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="adm-pagination" style="padding: 14px 18px;">
+              <span id="contentPageInfo">Showing page 1</span>
+              <div style="display: flex; gap: 8px;">
+                <button id="contentPrevBtn" class="btn-secondary" disabled>&larr; Prev</button>
+                <button id="contentNextBtn" class="btn-secondary" disabled>Next &rarr;</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             VIEW 4: CATEGORIES
+             ========================================== -->
+        <section id="view-categories" class="adm-view">
+          <div class="adm-card">
+            <div class="adm-card-header">
+              <span class="adm-card-title">Category Hierarchy &amp; Topic Structure</span>
+              <button id="newCategoryBtn" class="btn-primary">+ Add Category</button>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="adm-table">
+                <thead>
+                  <tr>
+                    <th>Order</th>
+                    <th>Name</th>
+                    <th>Slug</th>
+                    <th>Type</th>
+                    <th>Kicker / Badge</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="categoriesTableBody">
+                  <tr><td colspan="7" class="adm-empty-state">Loading categories...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             VIEW 5: FILE MANAGER (Cloudflare R2)
+             ========================================== -->
+        <section id="view-files" class="adm-view">
+          <div class="adm-card">
+            <div class="adm-card-header">
+              <span class="adm-card-title">File &amp; Media Assets (Cloudflare R2 Storage)</span>
+              
+              <div class="adm-controls-bar">
+                <select id="fileFolderFilter" class="form-select" style="width: auto;">
+                  <option value="all">All Folders</option>
+                  <option value="general">General</option>
+                  <option value="notes">Notes</option>
+                  <option value="pearls">Pearls</option>
+                  <option value="calculators">Calculators</option>
+                  <option value="updates">Updates</option>
+                  <option value="documents">Documents</option>
+                </select>
+                <input type="text" id="fileSearch" class="form-input adm-search-input" placeholder="Search filenames...">
+                <button id="uploadAssetBtn" class="btn-primary">+ Upload Asset</button>
+              </div>
+            </div>
+
+            <div class="adm-card-body">
+              <div id="fileUploadAlert" class="alert-banner"></div>
+              
+              <div id="r2Notice" style="display: none; padding: 12px; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 6px; margin-bottom: 16px; font-size: 12px; color: #fbbf24;">
+                <strong>Notice:</strong> Cloudflare R2 bucket binding is not yet attached in <code>wrangler.jsonc</code>. Files are currently tracked in D1 metadata mode. To enable direct cloud storage, bind <code>R2_STORAGE</code>.
+              </div>
+
+              <div id="fileGrid" class="adm-file-grid">
+                <!-- Dynamic file cards -->
+              </div>
+            </div>
+
+            <div class="adm-pagination" style="padding: 14px 18px; border-top: 1px solid var(--adm-border);">
+              <span id="filePageInfo">Showing page 1</span>
+              <div style="display: flex; gap: 8px;">
+                <button id="filePrevBtn" class="btn-secondary" disabled>&larr; Prev</button>
+                <button id="fileNextBtn" class="btn-secondary" disabled>Next &rarr;</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             VIEW 6: SUBSCRIBERS DIRECTORY
+             ========================================== -->
+        <section id="view-subscribers" class="adm-view">
+          <div class="adm-card">
+            <div class="adm-card-header">
+              <span class="adm-card-title">Audience &amp; Subscriber Directory</span>
+              <div class="adm-controls-bar">
+                <input type="text" id="subscriberSearch" class="form-input adm-search-input" placeholder="Search email or name...">
+                <select id="subscriberStatusFilter" class="form-select" style="width: auto;">
+                  <option value="all">All Statuses</option>
+                  <option value="active">Active</option>
+                  <option value="pending">Pending</option>
+                  <option value="unsubscribed">Unsubscribed</option>
+                  <option value="banned">Banned</option>
+                </select>
+                <button id="exportCsvBtn" class="btn-secondary">Export CSV</button>
+              </div>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="adm-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Source</th>
+                    <th>Joined</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="subscribersTableBody">
+                  <tr><td colspan="7" class="adm-empty-state">Loading subscribers...</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="adm-pagination" style="padding: 14px 18px;">
+              <span id="subscribersPageInfo">Showing page 1 of 1</span>
+              <div style="display: flex; gap: 8px;">
+                <button id="subscribersPrevBtn" class="btn-secondary" disabled>&larr; Prev</button>
+                <button id="subscribersNextBtn" class="btn-secondary" disabled>Next &rarr;</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             VIEW 7: EMAIL & BROADCAST
+             ========================================== -->
+        <section id="view-email" class="adm-view">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <!-- Broadcast Composer -->
+            <div class="adm-card">
+              <div class="adm-card-header">
+                <span class="adm-card-title">Broadcast Clinical Announcement</span>
+              </div>
+              <div class="adm-card-body">
+                <div id="broadcastAlert" class="alert-banner"></div>
+
+                <form id="broadcastForm">
+                  <div class="form-group">
+                    <label class="form-label" for="bcastSubject">Email Subject</label>
+                    <input type="text" id="bcastSubject" class="form-input" placeholder="e.g. Clinical Update: New Pacing Reference Published" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="bcastMessage">Message Content</label>
+                    <textarea id="bcastMessage" class="form-textarea" rows="5" placeholder="Write the announcement message for subscribers..." required></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="bcastActionUrl">Call to Action URL (Optional)</label>
+                    <input type="url" id="bcastActionUrl" class="form-input" placeholder="https://knockoutnotes.com/notes.html#cardiology">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="bcastActionText">Call to Action Button Text</label>
+                    <input type="text" id="bcastActionText" class="form-input" placeholder="Read Guideline" value="View Reference">
+                  </div>
+
+                  <div class="form-group" style="padding: 10px; background: #141e33; border-radius: 6px;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 12px; color: #cbd5e1;">
+                      <input type="checkbox" id="bcastTestCheck">
+                      Send test email only (does not broadcast to subscribers)
+                    </label>
+                    <div id="bcastTestWrapper" style="display: none; margin-top: 8px;">
+                      <input type="email" id="bcastTestEmail" class="form-input" placeholder="test-recipient@example.com">
+                    </div>
+                  </div>
+
+                  <button type="submit" id="bcastSubmitBtn" class="btn-primary" style="width: 100%;">
+                    Review &amp; Send Broadcast
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Email Logs -->
+            <div class="adm-card">
+              <div class="adm-card-header">
+                <span class="adm-card-title">Recent Delivery Logs</span>
+                <button id="refreshLogsBtn" class="btn-secondary">Refresh</button>
+              </div>
+              <div class="table-wrapper" style="max-height: 480px;">
+                <table class="adm-table">
+                  <thead>
+                    <tr>
+                      <th>Recipient</th>
+                      <th>Type</th>
+                      <th>Status</th>
+                      <th>Timestamp</th>
+                    </tr>
+                  </thead>
+                  <tbody id="logsTableBody">
+                    <tr><td colspan="4" class="adm-empty-state">Loading logs...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             VIEW 8: SETTINGS & AUDIT LOGS
+             ========================================== -->
+        <section id="view-settings" class="adm-view">
+          <div class="adm-card">
+            <div class="adm-card-header">
+              <span class="adm-card-title">Service Connectivity &amp; Architecture Status</span>
+            </div>
+            <div class="adm-card-body">
+              <div class="adm-stats-grid" style="margin-bottom: 0;">
+                <div class="adm-stat-card">
+                  <div class="adm-stat-header"><span class="adm-stat-title">Cloudflare D1 Database</span></div>
+                  <div class="adm-stat-value" id="statusDb" style="font-size: 16px; color: #34d399;">Connected</div>
+                  <div class="adm-stat-subtext">Binding: env.DB</div>
+                </div>
+
+                <div class="adm-stat-card">
+                  <div class="adm-stat-header"><span class="adm-stat-title">MailerSend Delivery</span></div>
+                  <div class="adm-stat-value" id="statusMailerSend" style="font-size: 16px; color: #34d399;">Active</div>
+                  <div class="adm-stat-subtext" id="statusMailerSendDomain">Domain Verified</div>
+                </div>
+
+                <div class="adm-stat-card">
+                  <div class="adm-stat-header"><span class="adm-stat-title">Cloudflare R2 Bucket</span></div>
+                  <div class="adm-stat-value" id="statusR2" style="font-size: 16px;">Checking...</div>
+                  <div class="adm-stat-subtext">Media Storage</div>
+                </div>
+
+                <div class="adm-stat-card">
+                  <div class="adm-stat-header"><span class="adm-stat-title">Web Analytics</span></div>
+                  <div class="adm-stat-value" id="statusAnalytics" style="font-size: 16px;">Checking...</div>
+                  <div class="adm-stat-subtext">GraphQL Metric Service</div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div style="margin-top: 24px; display: flex; gap: 12px; align-items: center;">
-            <button type="submit" id="publishSubmitBtn" class="btn-primary" style="width: auto; padding: 12px 28px;">
-              Queue &amp; Send Notification
-            </button>
-            <span style="font-size: 13px; color: var(--admin-text-muted);">
-              Active recipients: <strong id="publishRecipientEstimate">0</strong>
-            </span>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <!-- TAB 3: MANUAL BROADCAST -->
-    <section id="broadcastTab" class="tab-pane">
-      <div class="content-box" style="max-width: 800px;">
-        <div class="content-box-header">
-          <div class="content-box-title">Manual Email Broadcast</div>
-        </div>
-        <p style="font-size: 13px; color: var(--admin-text-muted); margin-bottom: 20px;">
-          Send a custom announcement or newsletter directly to all active subscribers.
-        </p>
-
-        <div id="broadcastAlert" class="alert-banner"></div>
-
-        <form id="broadcastForm">
-          <div class="form-group">
-            <label class="form-label" for="bcastSubject">Email Subject</label>
-            <input type="text" id="bcastSubject" class="form-input" placeholder="e.g. Major Update: New Ventilator Simulators Live" required>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="bcastMessage">Message Content</label>
-            <textarea id="bcastMessage" class="form-textarea" rows="7" placeholder="Write your announcement here..." required></textarea>
-          </div>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-            <div class="form-group">
-              <label class="form-label" for="bcastActionText">Action Button Label (Optional)</label>
-              <input type="text" id="bcastActionText" class="form-input" placeholder="e.g. Open Ventilator">
+          <div class="adm-card">
+            <div class="adm-card-header">
+              <span class="adm-card-title">Administrative Audit Trail</span>
+              <button id="refreshAuditBtn" class="btn-secondary">Refresh</button>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="bcastActionUrl">Action URL (Optional)</label>
-              <input type="url" id="bcastActionUrl" class="form-input" placeholder="https://knockoutnotes.com/ventilator.html">
+            <div class="table-wrapper">
+              <table class="adm-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Admin</th>
+                    <th>Action</th>
+                    <th>Target</th>
+                    <th>Details</th>
+                    <th>IP Address</th>
+                  </tr>
+                </thead>
+                <tbody id="auditTableBody">
+                  <tr><td colspan="6" class="adm-empty-state">Loading audit logs...</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
+        </section>
 
-          <div class="form-group">
-            <label class="checkbox-row">
-              <input type="checkbox" id="bcastTestEmailCheck">
-              <span>Send test broadcast to admin first (safe mode)</span>
-            </label>
-            <div id="bcastTestEmailWrapper" style="display: none; margin-top: 10px;">
-              <input type="email" id="bcastTestEmailInput" class="form-input" placeholder="admin@knockoutnotes.com">
-            </div>
-          </div>
-
-          <div style="margin-top: 24px; display: flex; gap: 12px; align-items: center;">
-            <button type="submit" id="broadcastSubmitBtn" class="btn-primary" style="width: auto; padding: 12px 28px;">
-              Send Broadcast to Subscribers
-            </button>
-            <span style="font-size: 13px; color: var(--admin-text-muted);">
-              Active recipients: <strong id="broadcastRecipientEstimate">0</strong>
-            </span>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <!-- TAB 4: DELIVERY LOGS -->
-    <section id="logsTab" class="tab-pane">
-      <div class="content-box">
-        <div class="content-box-header">
-          <div class="content-box-title">Email Delivery History</div>
-          <button id="refreshLogsBtn" class="btn-secondary">Refresh Logs</button>
-        </div>
-
-        <div class="table-wrapper">
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Recipient</th>
-                <th>Type</th>
-                <th>Status</th>
-                <th>Resend ID</th>
-                <th>Error Details</th>
-                <th>Timestamp</th>
-              </tr>
-            </thead>
-            <tbody id="logsTableBody">
-              <tr>
-                <td colspan="7" style="text-align: center; color: var(--admin-text-muted); padding: 24px;">Loading delivery logs...</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="pagination-bar">
-          <span id="logsPageInfo">Showing page 1 of 1</span>
-          <div style="display: flex; gap: 8px;">
-            <button id="logsPrevBtn" class="btn-secondary" disabled>&larr; Prev</button>
-            <button id="logsNextBtn" class="btn-secondary" disabled>Next &rarr;</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Confirmation Modal -->
-  <div id="confirmModal" class="admin-modal-backdrop">
-    <div class="admin-modal">
-      <h3 id="modalTitle" class="modal-title">Confirm Action</h3>
-      <p id="modalBody" class="modal-body">Are you sure you want to proceed?</p>
-      <div class="modal-actions">
-        <button id="modalCancelBtn" class="btn-secondary">Cancel</button>
-        <button id="modalConfirmBtn" class="btn-primary" style="width: auto;">Confirm &amp; Proceed</button>
       </div>
     </div>
   </div>
 
+  <!-- ==========================================
+       MODALS
+       ========================================== -->
+  
+  <!-- CONTENT ADD/EDIT MODAL -->
+  <div class="adm-modal-backdrop" id="contentModal">
+    <div class="adm-modal adm-modal-lg">
+      <div class="adm-modal-header">
+        <h3 class="adm-modal-title" id="contentModalTitle">Add Content Item</h3>
+        <button class="adm-modal-close" onclick="closeModal('contentModal')">&times;</button>
+      </div>
+      <div class="adm-modal-body">
+        <div id="contentModalAlert" class="alert-banner"></div>
+        <form id="contentForm">
+          <input type="hidden" id="editContentId">
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="form-group">
+              <label class="form-label" for="contentFormType">Content Type</label>
+              <select id="contentFormType" class="form-select" required>
+                <option value="note">Clinical Note</option>
+                <option value="pearl">Clinical Pearl</option>
+                <option value="calculator">Medical Calculator (Metadata)</option>
+                <option value="update">Platform Update</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contentFormCategory">Category</label>
+              <select id="contentFormCategory" class="form-select">
+                <option value="">(None)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contentFormTitle">Title</label>
+            <input type="text" id="contentFormTitle" class="form-input" placeholder="e.g. Inotropes &amp; Vasopressors in Septic Shock" required>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="form-group">
+              <label class="form-label" for="contentFormSlug">URL Slug</label>
+              <input type="text" id="contentFormSlug" class="form-input" placeholder="auto-generated-if-blank">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contentFormStatus">Status</label>
+              <select id="contentFormStatus" class="form-select">
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
+                <option value="archived">Archived</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contentFormSummary">Summary / Short Description</label>
+            <textarea id="contentFormSummary" class="form-textarea" rows="2" placeholder="Brief clinical overview..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contentFormBody">Body Content (Markdown or Formatted Clinical Text)</label>
+            <textarea id="contentFormBody" class="form-textarea" rows="8" placeholder="Clinical notes, dosing protocols, guidelines, evidence citations..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contentFormImage">Featured Image / Monograph Asset Key</label>
+            <div class="input-wrapper">
+              <input type="text" id="contentFormImage" class="form-input" placeholder="e.g. /api/files/notes/cardiology-chart.png">
+              <button type="button" class="btn-secondary" onclick="openFilePicker('contentFormImage')" style="margin-left: 8px;">Select File</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="adm-modal-footer">
+        <button class="btn-secondary" onclick="closeModal('contentModal')">Cancel</button>
+        <button id="saveContentBtn" class="btn-primary">Save Content Item</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORY ADD/EDIT MODAL -->
+  <div class="adm-modal-backdrop" id="categoryModal">
+    <div class="adm-modal">
+      <div class="adm-modal-header">
+        <h3 class="adm-modal-title" id="categoryModalTitle">Add Category</h3>
+        <button class="adm-modal-close" onclick="closeModal('categoryModal')">&times;</button>
+      </div>
+      <div class="adm-modal-body">
+        <div id="categoryModalAlert" class="alert-banner"></div>
+        <form id="categoryForm">
+          <input type="hidden" id="editCategoryId">
+
+          <div class="form-group">
+            <label class="form-label" for="catFormName">Category Name</label>
+            <input type="text" id="catFormName" class="form-input" placeholder="e.g. Intensive Care Medicine" required>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="form-group">
+              <label class="form-label" for="catFormSlug">Slug</label>
+              <input type="text" id="catFormSlug" class="form-input" placeholder="e.g. intensive-care">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="catFormType">Type</label>
+              <select id="catFormType" class="form-select">
+                <option value="notes">Notes</option>
+                <option value="pearls">Pearls</option>
+                <option value="calculators">Calculators</option>
+                <option value="updates">Updates</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="catFormKicker">Badge / Kicker Text</label>
+            <input type="text" id="catFormKicker" class="form-input" placeholder="e.g. Critical Care">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="catFormDesc">Description</label>
+            <textarea id="catFormDesc" class="form-textarea" rows="3" placeholder="Category overview..."></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="adm-modal-footer">
+        <button class="btn-secondary" onclick="closeModal('categoryModal')">Cancel</button>
+        <button id="saveCategoryBtn" class="btn-primary">Save Category</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPLOAD ASSET MODAL -->
+  <div class="adm-modal-backdrop" id="uploadModal">
+    <div class="adm-modal">
+      <div class="adm-modal-header">
+        <h3 class="adm-modal-title">Upload Asset to Cloudflare R2</h3>
+        <button class="adm-modal-close" onclick="closeModal('uploadModal')">&times;</button>
+      </div>
+      <div class="adm-modal-body">
+        <div id="uploadModalAlert" class="alert-banner"></div>
+        <form id="uploadForm">
+          <div class="form-group">
+            <label class="form-label" for="uploadFolder">Destination Folder</label>
+            <select id="uploadFolder" class="form-select">
+              <option value="general">General Assets</option>
+              <option value="notes">Clinical Notes &amp; Monographs</option>
+              <option value="pearls">Pearls Images</option>
+              <option value="calculators">Calculator Charts</option>
+              <option value="updates">Platform Updates</option>
+              <option value="documents">PDF Protocols &amp; Documents</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="uploadFileInput">Select File (Max 50MB: PNG, JPG, WEBP, SVG, PDF)</label>
+            <input type="file" id="uploadFileInput" class="form-input" required>
+          </div>
+        </form>
+      </div>
+      <div class="adm-modal-footer">
+        <button class="btn-secondary" onclick="closeModal('uploadModal')">Cancel</button>
+        <button id="startUploadBtn" class="btn-primary">Upload File</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFIRM DELETE DIALOG -->
+  <div class="adm-modal-backdrop" id="deleteModal">
+    <div class="adm-modal">
+      <div class="adm-modal-header">
+        <h3 class="adm-modal-title" id="deleteModalTitle">Confirm Deletion</h3>
+        <button class="adm-modal-close" onclick="closeModal('deleteModal')">&times;</button>
+      </div>
+      <div class="adm-modal-body" id="deleteModalBody">
+        Are you sure you want to permanently delete this item?
+      </div>
+      <div class="adm-modal-footer">
+        <button class="btn-secondary" onclick="closeModal('deleteModal')">Cancel</button>
+        <button id="confirmDeleteBtn" class="btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
   <script src="admin.js"></script>
 </body>
 </html>
