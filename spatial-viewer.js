@@ -76,7 +76,12 @@
           </div>
         </div>
       `;
-      document.body.appendChild(viewer);
+      // Mount to documentElement (<html>) so that any CSS transform or scroll-lock
+      // styles applied to document.body never establish an unexpected containing block
+      // that offsets the fixed modal off-screen.
+      (document.documentElement || document.body).appendChild(viewer);
+    } else if (viewer.parentElement && viewer.parentElement !== document.documentElement) {
+      document.documentElement.appendChild(viewer);
     }
 
     const modal = viewer;
@@ -93,14 +98,27 @@
 
     function openItem(item, itemsList, index) {
       if (!item) return;
+      // Ensure viewer is attached directly to documentElement (viewport root)
+      if (modal.parentElement !== document.documentElement) {
+        (document.documentElement || document.body).appendChild(modal);
+      }
       const wasOpen = modal.classList.contains("open");
       if (!wasOpen) lastFocused = document.activeElement;
       currentItemsList = itemsList || [item];
       activeItemIndex = index !== undefined ? index : currentItemsList.indexOf(item);
       currentScale = 1.0;
-      if (plane) plane.style.transform = `scale(${currentScale})`;
+      panX = 0;
+      panY = 0;
+      if (plane) {
+        plane.style.transform = "translate3d(0, 0, 0) scale(1)";
+      }
 
-      const url = item.url || item.href || item;
+      let url = item.url || item.href || item;
+      // Ensure asset URLs have a root slash so relative URLs resolve identically
+      // across routes like /notes, /notes.html, or nested paths.
+      if (typeof url === "string" && !url.startsWith("http://") && !url.startsWith("https://") && !url.startsWith("/") && !url.startsWith("data:") && !url.startsWith("blob:")) {
+        url = "/" + url;
+      }
       const title = item.title || "Clinical Document";
       const isPdf = (typeof item === "object" && item.type === "pdf") || /\.pdf(?:$|\?)/i.test(url);
       const isPpt = (typeof item === "object" && (item.type === "ppt" || item.type === "pptx")) || /\.(?:ppt|pptx)(?:$|\?)/i.test(url);
@@ -129,6 +147,17 @@
         downloadBtn.href = url;
       } else {
         img.style.display = "block";
+        img.style.opacity = "0.85";
+        img.onload = () => {
+          img.style.opacity = "1";
+        };
+        img.onerror = () => {
+          img.style.display = "none";
+          fallback.style.display = "block";
+          fallbackTitle.textContent = title + " (Direct View Available)";
+          downloadBtn.href = url;
+          downloadBtn.textContent = "Open Asset in New Tab →";
+        };
         img.src = url;
       }
 
