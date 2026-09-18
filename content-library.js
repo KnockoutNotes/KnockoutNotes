@@ -242,8 +242,13 @@
     // other .kn-carousel consumers (home high-yield grid, critical-care/
     // viva/resources grids) keep their original, wider-card spacing.
     const existing = window.KnCarousel.list.find(c => c.container === fileList);
-    if (existing) existing.refresh();
-    else window.KnCarousel.mount(fileList, { stepFactor: 0.4 });
+    if (existing) {
+      existing.refresh();
+      if (typeof existing.deployImmediate === 'function') existing.deployImmediate();
+    } else {
+      const c = window.KnCarousel.mount(fileList, { stepFactor: 0.4 });
+      if (c && typeof c.deployImmediate === 'function') c.deployImmediate();
+    }
   }
 
   function renderCategory(cat){

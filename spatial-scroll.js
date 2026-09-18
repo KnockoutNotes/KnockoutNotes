@@ -302,6 +302,13 @@
     };
     checkNow();
     requestAnimationFrame(checkNow);
+
+    // Failsafe timer: guarantee cards are never permanently stuck at opacity 0
+    setTimeout(() => {
+      if (!this.deployed && !this._deploying && !this.destroyed) {
+        this.deployImmediate();
+      }
+    }, 180);
   };
 
   Carousel.prototype._deploy = function () {
@@ -320,6 +327,16 @@
       card.dataset.deployT = "0";
     });
     if (this._dockEl) this._dockEl.classList.add("active");
+  };
+
+  Carousel.prototype.deployImmediate = function () {
+    if (this._deployObserver) { this._deployObserver.disconnect(); this._deployObserver = null; }
+    this.deployed = true;
+    this._deploying = false;
+    this.cards.forEach(c => { c.dataset.deployT = "1"; });
+    this._measureHeight();
+    this._layout();
+    if (this._dockEl) this._dockEl.classList.remove("active");
   };
 
   Carousel.prototype._measureHeight = function () {

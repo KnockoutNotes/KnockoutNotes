@@ -166,6 +166,12 @@
       btn.addEventListener("click", closeViewer);
     });
 
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal || e.target.classList.contains("spatial-viewer-backdrop")) {
+        closeViewer();
+      }
+    });
+
     let panX = 0;
     let panY = 0;
     let isPanning = false;
@@ -183,14 +189,25 @@
     const stage = document.getElementById("knViewerStage");
     if (stage) {
       stage.style.touchAction = "none";
+      let stageDownX = 0, stageDownY = 0;
 
       stage.addEventListener("pointerdown", (e) => {
         if (e.target.closest(".viewer-actions, button, a")) return;
+        stageDownX = e.clientX;
+        stageDownY = e.clientY;
         if (currentScale > 1.0) {
           isPanning = true;
           panStartX = e.clientX - panX;
           panStartY = e.clientY - panY;
           stage.style.cursor = "grabbing";
+        }
+      });
+
+      stage.addEventListener("click", (e) => {
+        // Clicking on stage background outside the image/document closes the lightbox
+        const dist = Math.hypot(e.clientX - stageDownX, e.clientY - stageDownY);
+        if (dist < 8 && (e.target === stage || e.target === plane)) {
+          closeViewer();
         }
       });
 
@@ -279,9 +296,7 @@
       if (e.key === "Escape") { closeViewer(); return; }
       if (e.key === "ArrowLeft") { document.getElementById("knViewerPrev").click(); return; }
       if (e.key === "ArrowRight") { document.getElementById("knViewerNext").click(); return; }
-      // Focus trap: without this, Tab walks off the last control here and
-      // into the underlying page, which is still in the tab order even
-      // though this overlay visually covers it.
+      // Focus trap
       if (e.key !== "Tab") return;
       const focusable = Array.from(modal.querySelectorAll(FOCUSABLE_SEL)).filter(el => el.offsetParent !== null);
       if (!focusable.length) return;
@@ -291,18 +306,39 @@
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
 
-    // Intercept clicks on clinical asset links — 3D View only. Lite View must
-    // keep its plain link behaviour untouched.
+    // Intercept clicks on clinical asset links across both 3D View and Lite View
     document.addEventListener("click", (e) => {
-      if (!document.body.classList.contains("mode-3d")) return;
       const link = e.target.closest("a[href*='assets/']");
-      if (link && link.closest(".view-layer-lite")) return;
-      if (link && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+      if (!link) return;
+      if (!e.ctrlKey && !e.metaKey && !e.shiftKey) {
         const href = link.getAttribute("href");
         if (/\.(?:jpg|jpeg|png|webp|pdf|ppt|pptx)(?:$|\?)/i.test(href)) {
           e.preventDefault();
-          const title = link.querySelector(".kn-file-title")?.textContent || link.textContent.trim();
-          openItem({ url: href, title: title }, [ { url: href, title: title } ], 0);
+          e.stopPropagation();
+          const title = (link.querySelector(".kn-file-title")?.textContent || link.textContent || "").trim();
+
+          // Collect sibling asset links to enable Next/Prev cycling
+          let listItems = [];
+          let activeIdx = 0;
+          const parentContainer = link.closest(".kn-file-list, .grid, .calc-tab-content, .card-grid");
+          if (parentContainer) {
+            const siblingLinks = Array.from(parentContainer.querySelectorAll("a[href*='assets/']")).filter(l =>
+              /\.(?:jpg|jpeg|png|webp|pdf|ppt|pptx)(?:$|\?)/i.test(l.getAttribute("href") || "")
+            );
+            if (siblingLinks.length > 0) {
+              listItems = siblingLinks.map(l => ({
+                url: l.getAttribute("href"),
+                title: (l.querySelector(".kn-file-title")?.textContent || l.textContent || "").trim()
+              }));
+              activeIdx = siblingLinks.indexOf(link);
+              if (activeIdx < 0) activeIdx = 0;
+            }
+          }
+          if (!listItems.length) {
+            listItems = [{ url: href, title: title }];
+          }
+
+          openItem(listItems[activeIdx], listItems, activeIdx);
         }
       }
     });
@@ -311,6 +347,7 @@
       open: openItem,
       close: closeViewer
     };
+    window.KnockoutViewer = window.KnockoutSpatialViewer;
   }
 
   if (document.readyState === "loading") {

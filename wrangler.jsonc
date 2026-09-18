@@ -18,7 +18,8 @@
     "SITE_URL": "https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev",
     "ADMIN_USERNAME": "admin.knockoutnotes",
     "ADMIN_NOTIFICATION_EMAIL": "knockoutnotes.anaesthesia@gmail.com",
-    "FROM_EMAIL": "KnockoutNotes <notifications@knockoutnotes.com>"
+    // TEMPORARY FOR TESTING ONLY: Replace with verified domain sender (e.g. notifications@knockoutnotes.com) in production once domain DNS is configured in Resend.
+    "FROM_EMAIL": "KnockoutNotes <onboarding@resend.dev>"
   }
 }
 

@@ -4132,13 +4132,6 @@
   </footer>
 </div>
 
-<!-- Floating Updates Pill -->
-<a class="kn-updates-pill" href="recent-updates.html" aria-label="Recent KnockoutNotes updates">
-  <span class="kn-blink"></span>
-  <span class="kn-updates-pill-text">Recent Updates</span>
-  <span class="kn-updates-pill-badge">Live</span>
-</a>
-
 <!-- Universal Command Palette Search Modal -->
 <div class="kn-modal" id="knSearchModal" role="dialog" aria-modal="true" aria-label="Search KnockoutNotes">
   <div class="kn-modal-backdrop" data-close-modal></div>
@@ -5852,9 +5845,125 @@
     });
   }
 
+  // ------------------------------------------------------------------------
+  // ACCORDION CONTROLLER: Clean single-expanded calculator view
+  // ------------------------------------------------------------------------
+  function setupAccordion() {
+    const calcBoxes = document.querySelectorAll(".calc-box");
+    const heroCards = document.querySelectorAll(".calc-hero-card");
+    const initialHash = (window.location.hash || "").replace("#", "").toLowerCase();
+
+    calcBoxes.forEach(box => {
+      const header = box.querySelector(".calc-box-header");
+      if (header && !header.querySelector(".calc-accordion-toggle")) {
+        const toggle = document.createElement("span");
+        toggle.className = "calc-accordion-toggle";
+        toggle.setAttribute("aria-hidden", "true");
+        header.appendChild(toggle);
+      }
+
+      const isTarget = initialHash && (box.id.toLowerCase() === initialHash || box.querySelector("#" + initialHash));
+      if (!isTarget) {
+        box.classList.add("calc-collapsed");
+      } else {
+        box.classList.remove("calc-collapsed");
+      }
+
+      if (header && !header.dataset.accordionWired) {
+        header.dataset.accordionWired = "1";
+        header.addEventListener("click", (e) => {
+          if (e.target.closest("a, button")) return;
+          e.preventDefault();
+          const isCollapsed = box.classList.contains("calc-collapsed");
+          if (isCollapsed) {
+            const parentTab = box.closest(".calc-tab-content") || document.body;
+            parentTab.querySelectorAll(".calc-box:not(.calc-collapsed)").forEach(b => {
+              if (b !== box) b.classList.add("calc-collapsed");
+            });
+            parentTab.querySelectorAll(".calc-hero-card:not(.calc-collapsed)").forEach(h => {
+              h.classList.add("calc-collapsed");
+            });
+            box.classList.remove("calc-collapsed");
+            setTimeout(() => {
+              const r = box.getBoundingClientRect();
+              if (r.top < 70 || r.top > window.innerHeight * 0.75) {
+                box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+              }
+            }, 60);
+          } else {
+            box.classList.add("calc-collapsed");
+          }
+        });
+      }
+    });
+
+    heroCards.forEach(hero => {
+      const header = hero.querySelector(".calc-hero-header");
+      if (header && !header.querySelector(".calc-hero-toggle")) {
+        const toggle = document.createElement("span");
+        toggle.className = "calc-hero-toggle";
+        toggle.setAttribute("aria-hidden", "true");
+        header.appendChild(toggle);
+      }
+
+      const isTarget = initialHash && (hero.id.toLowerCase() === initialHash || hero.querySelector("#" + initialHash));
+      if (!isTarget) {
+        hero.classList.add("calc-collapsed");
+      } else {
+        hero.classList.remove("calc-collapsed");
+      }
+
+      if (header && !header.dataset.accordionWired) {
+        header.dataset.accordionWired = "1";
+        header.addEventListener("click", (e) => {
+          if (e.target.closest("a, button:not(.calc-hero-toggle)")) return;
+          e.preventDefault();
+          const isCollapsed = hero.classList.contains("calc-collapsed");
+          if (isCollapsed) {
+            const parentTab = hero.closest(".calc-tab-content") || document.body;
+            parentTab.querySelectorAll(".calc-box:not(.calc-collapsed)").forEach(b => {
+              b.classList.add("calc-collapsed");
+            });
+            hero.classList.remove("calc-collapsed");
+          } else {
+            hero.classList.add("calc-collapsed");
+          }
+        });
+      }
+    });
+
+    const handleHash = () => {
+      const h = (window.location.hash || "").replace("#", "").toLowerCase();
+      if (!h) return;
+      const targetEl = document.getElementById(h) || document.querySelector(`[id*="${h}"]`);
+      if (targetEl) {
+        const tabContent = targetEl.closest(".calc-tab-content");
+        if (tabContent) {
+          const tabName = tabContent.getAttribute("data-tab-name");
+          const tabBtn = document.querySelector(`.calc-nav-pill[data-calc-tab="${tabName}"]`);
+          if (tabBtn && !tabBtn.classList.contains("active")) {
+            tabBtn.click();
+          }
+        }
+        const targetBox = targetEl.closest(".calc-box, .calc-hero-card");
+        if (targetBox) {
+          targetBox.classList.remove("calc-collapsed");
+          setTimeout(() => {
+            targetBox.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 100);
+        }
+      }
+    };
+    window.addEventListener("hashchange", handleHash);
+    if (initialHash) {
+      setTimeout(handleHash, 80);
+    }
+  }
+
   // Initialize all calculators on DOM load or client-side navigation
   function initAllCalculators() {
     try { setupTabs(); } catch (err) { console.error("Error setting up tabs:", err); }
+    try { setupAccordion(); } catch (err) { console.error("Error setting up accordion:", err); }
     try { updatePaedsChart(); } catch (e) { console.error("updatePaedsChart error:", e); }
     try { updateParkland(); } catch (e) { console.error("updateParkland error:", e); }
     try { updateBmi(); } catch (e) { console.error("updateBmi error:", e); }
