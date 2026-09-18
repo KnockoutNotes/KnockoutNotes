@@ -213,22 +213,36 @@
     });
   }
 
+  function ensureNotesLibrary(pageKey) {
+    if (window.KnockoutNotesLibrary && typeof window.KnockoutNotesLibrary.init === "function") {
+      window.KnockoutNotesLibrary.init(pageKey);
+      return;
+    }
+    var existingScript = document.querySelector('script[src="content-library.js"]');
+    if (!existingScript) {
+      var script = document.createElement("script");
+      script.src = "content-library.js";
+      script.onload = function () {
+        if (window.KnockoutNotesLibrary && typeof window.KnockoutNotesLibrary.init === "function") {
+          window.KnockoutNotesLibrary.init(pageKey);
+        }
+      };
+      document.head.appendChild(script);
+    }
+  }
+
   // ------------------------------------------------------------------------
   // Initialize Page-Specific Logic for Newly Mounted Views
   // ------------------------------------------------------------------------
   function initMountedPage(targetPath, viewEl) {
     if (targetPath === "notes.html" || targetPath === "notes") {
-      if (window.KnockoutNotesLibrary && typeof window.KnockoutNotesLibrary.init === "function") {
-        window.KnockoutNotesLibrary.init("notes");
-      }
+      ensureNotesLibrary("notes");
     } else if (targetPath === "drugs.html" || targetPath === "drugs") {
-      if (window.KnockoutNotesLibrary && typeof window.KnockoutNotesLibrary.init === "function") {
-        window.KnockoutNotesLibrary.init("drugs");
-      }
+      ensureNotesLibrary("drugs");
     } else if (targetPath === "critical-care.html") {
-      if (window.KnockoutNotesLibrary && typeof window.KnockoutNotesLibrary.init === "function") {
-        window.KnockoutNotesLibrary.init("criticalCare");
-      }
+      ensureNotesLibrary("criticalCare");
+    } else if (targetPath === "pearls.html" || targetPath === "pearls") {
+      ensureNotesLibrary("pearls");
     } else if (targetPath === "calculators.html") {
       if (window.KnockoutCalculators && typeof window.KnockoutCalculators.init === "function") {
         window.KnockoutCalculators.init();
@@ -401,7 +415,7 @@
 
           completeNavigation(targetPath, targetHash, false);
         }).catch(function (err) {
-          console.warn("[KnockoutRouter] Fallback to full page load:", err);
+          console.error("[KnockoutRouter] Fallback to full page load:", err && err.message, err && err.stack);
           window.location.assign(targetHref);
         });
       }

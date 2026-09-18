@@ -414,31 +414,39 @@
     this.cards.forEach((card, i) => {
       if (card.dataset.kcClickWired) return;
       card.dataset.kcClickWired = "1";
-      // Capture phase: a click on a card that is NOT currently centred just
-      // brings it to the centre and never reaches the card's own link/button
-      // handlers (asset viewer, reveal button, etc).
+      // Capture phase: a click on a card's CTA button ("View Monograph" / thumb)
+      // always opens the holographic viewer immediately for that note.
+      // A click on the general body of a non-centred card brings it to the centre.
       card.addEventListener("click", e => {
         const idx = Number(card.dataset.kcIndex);
+        const isCta = Boolean(e.target && (
+          e.target.closest(".kn-file-arrow, .kn-file-thumb") ||
+          (e.target.classList && (e.target.classList.contains("kn-file-arrow") || e.target.classList.contains("kn-file-thumb")))
+        ));
         const off = idx - Math.round(this.targetIndex);
-        if (off !== 0) {
+
+        if (!isCta && off !== 0) {
           e.preventDefault();
           e.stopPropagation();
           this.goTo(idx);
           return;
         }
-        // Centred card: if it's a link to one of OUR OWN clinical assets
-        // (never an external Recent-Updates URL, even one that happens to
-        // end in .pdf), open the holographic viewer directly with the FULL
-        // collection this carousel holds, so Prev/Next inside the viewer
-        // walks every item in this category — not just the one card that
-        // was clicked (that singleton-list bug is why the viewer used to
-        // show "01 / 01" no matter what).
-        const href = card.getAttribute && card.getAttribute("href");
-        if (href && href.includes("assets/") && ASSET_HREF_RE.test(href) && window.KnockoutSpatialViewer) {
+
+        // CTA clicked or centered card clicked: open the holographic viewer
+        const href = (card.getAttribute && card.getAttribute("href")) || (card.querySelector && card.querySelector("a")?.getAttribute("href")) || "";
+        const viewer = window.KnockoutSpatialViewer || window.KnockoutViewer;
+        if (href && ASSET_HREF_RE.test(href) && viewer && typeof viewer.open === "function") {
           e.preventDefault();
           e.stopPropagation();
+          if (off !== 0) {
+            this.goTo(idx);
+          }
           const items = this._itemsFromCards();
-          window.KnockoutSpatialViewer.open(items[idx], items, idx);
+          viewer.open(items[idx] || { url: href, title: card.textContent.trim() }, items, idx);
+        } else if (off !== 0) {
+          e.preventDefault();
+          e.stopPropagation();
+          this.goTo(idx);
         }
       }, true);
     });
