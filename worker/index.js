@@ -22,7 +22,7 @@ import {
   renderAdminAlertEmail
 } from './email-templates.js';
 
-import { sendEmail, sendBulkEmails } from './resend.js';
+import { sendEmail, sendBulkEmails } from './mailersend.js';
 
 // Standard CORS headers
 const CORS_HEADERS = {
@@ -141,7 +141,7 @@ export default {
         const emailTemplate = renderVerificationEmail({ siteUrl, verificationToken, email });
         ctx.waitUntil(
           sendEmail({
-            apiKey: env.RESEND_API_KEY,
+            apiKey: env.MAILERSEND_API_TOKEN,
             from: env.FROM_EMAIL,
             to: email,
             subject: emailTemplate.subject,
@@ -205,7 +205,7 @@ export default {
 
         ctx.waitUntil(
           sendEmail({
-            apiKey: env.RESEND_API_KEY,
+            apiKey: env.MAILERSEND_API_TOKEN,
             from: env.FROM_EMAIL,
             to: subscriber.email,
             subject: welcome.subject,
@@ -235,7 +235,7 @@ export default {
 
           ctx.waitUntil(
             sendEmail({
-              apiKey: env.RESEND_API_KEY,
+              apiKey: env.MAILERSEND_API_TOKEN,
               from: env.FROM_EMAIL,
               to: adminNotifyEmail,
               subject: adminAlert.subject,
@@ -305,7 +305,7 @@ export default {
 
           ctx.waitUntil(
             sendEmail({
-              apiKey: env.RESEND_API_KEY,
+              apiKey: env.MAILERSEND_API_TOKEN,
               from: env.FROM_EMAIL,
               to: adminNotifyEmail,
               subject: adminAlert.subject,
@@ -617,7 +617,7 @@ export default {
             });
 
             const sendRes = await sendEmail({
-              apiKey: env.RESEND_API_KEY,
+              apiKey: env.MAILERSEND_API_TOKEN,
               from: env.FROM_EMAIL,
               to: recipient,
               subject: `[TEST] ${template.subject}`,
@@ -685,7 +685,7 @@ export default {
           // Dispatch bulk emails in background
           ctx.waitUntil(
             sendBulkEmails({
-              apiKey: env.RESEND_API_KEY,
+              apiKey: env.MAILERSEND_API_TOKEN,
               from: env.FROM_EMAIL,
               recipients,
               renderFn: sub =>
@@ -752,7 +752,7 @@ export default {
             });
 
             const sendRes = await sendEmail({
-              apiKey: env.RESEND_API_KEY,
+              apiKey: env.MAILERSEND_API_TOKEN,
               from: env.FROM_EMAIL,
               to: recipient,
               subject: template.subject,
@@ -819,7 +819,7 @@ export default {
           // Dispatch bulk emails in background
           ctx.waitUntil(
             sendBulkEmails({
-              apiKey: env.RESEND_API_KEY,
+              apiKey: env.MAILERSEND_API_TOKEN,
               from: env.FROM_EMAIL,
               recipients,
               renderFn: sub =>
