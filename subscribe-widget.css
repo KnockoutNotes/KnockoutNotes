@@ -11,6 +11,11 @@
   box-sizing: border-box;
 }
 
+.view-layer-3d .kn-subscribe-section {
+  transform-style: preserve-3d;
+  transform: translateZ(var(--z-content, 0px));
+}
+
 .kn-subscribe-card {
   position: relative;
   background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(10, 15, 29, 0.96) 100%);
@@ -170,5 +175,210 @@
   }
   .kn-subscribe-btn {
     width: 100%;
+  }
+}
+
+/* ==========================================================================
+   Subscription Trigger Pills (Hero & Footer)
+   ========================================================================== */
+.hero-subscribe-wrap {
+  margin: 18px 0 28px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.footer-subscribe-wrap {
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+}
+
+.kn-pill-subscribe {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s,
+              background 0.2s;
+  box-sizing: border-box;
+}
+
+/* Highlighted Hero Pill */
+.kn-pill-subscribe.kn-pill-highlighted {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.16) 0%, rgba(2, 132, 199, 0.28) 100%);
+  color: #38bdf8;
+  border: 1.5px solid rgba(56, 189, 248, 0.55);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.28),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: kn-pulse-glow 3s infinite alternate ease-in-out;
+}
+
+.kn-pill-subscribe.kn-pill-highlighted:hover {
+  transform: translateY(-2px) scale(1.02);
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.28) 0%, rgba(2, 132, 199, 0.45) 100%);
+  border-color: #38bdf8;
+  color: #ffffff;
+  box-shadow: 0 0 28px rgba(56, 189, 248, 0.45),
+              0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.kn-pill-subscribe.kn-pill-highlighted:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* Footer Pill */
+.kn-pill-subscribe.kn-pill-footer {
+  background: rgba(56, 189, 248, 0.08);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-size: 12px;
+  padding: 8px 16px;
+}
+
+.kn-pill-subscribe.kn-pill-footer:hover {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.3);
+}
+
+.kn-pill-icon {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.kn-pill-text {
+  letter-spacing: 0.2px;
+  line-height: 1.3;
+}
+
+.kn-pill-arrow {
+  font-size: 14px;
+  font-weight: 800;
+  color: currentColor;
+  transition: transform 0.2s ease;
+}
+
+.kn-pill-subscribe:hover .kn-pill-arrow {
+  transform: translateX(3px);
+}
+
+@keyframes kn-pulse-glow {
+  0% {
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-color: rgba(56, 189, 248, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 28px rgba(56, 189, 248, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    border-color: rgba(56, 189, 248, 0.75);
+  }
+}
+
+/* ==========================================================================
+   Universal Subscription Modal Dialog (#knSubscribeModal)
+   ========================================================================== */
+.kn-sub-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kn-sub-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.kn-sub-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.kn-sub-modal-box {
+  position: relative;
+  max-width: 580px;
+  width: 100%;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.96) 0%, rgba(9, 14, 28, 0.98) 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 20px;
+  padding: 32px 28px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7),
+              0 0 32px rgba(56, 189, 248, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(16px) scale(0.97);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.kn-sub-modal.open .kn-sub-modal-box {
+  transform: translateY(0) scale(1);
+}
+
+.kn-sub-modal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.kn-sub-modal-close {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.kn-sub-modal-close:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+@media (max-width: 600px) {
+  .hero-subscribe-wrap {
+    justify-content: center;
+  }
+  .kn-pill-subscribe {
+    font-size: 11.5px;
+    padding: 8px 14px;
+    width: 100%;
+    justify-content: center;
+  }
+  .kn-sub-modal-box {
+    padding: 24px 18px;
   }
 }

@@ -1352,14 +1352,22 @@ a.kn-update-card:hover .kn-update-open {
 .explore-card .card-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 12px;
   margin-bottom: 14px;
+  width: 100%;
 }
 
 .explore-card .tag {
-  align-self: flex-start;
-  width: fit-content;
+  display: inline-flex !important;
+  width: auto !important;
+  max-width: max-content !important;
+  align-self: flex-start !important;
+  flex: 0 0 auto !important;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.4px;
 }
 
 .explore-card .card-arrow {
@@ -2746,7 +2754,11 @@ a.kn-update-card:hover .kn-update-open {
   transform: none;
 }
 
-/* Dual Mode Visibility Rules */
+/* Dual Mode Visibility Rules (Hardened Layer Isolation) */
+.view-layer-lite {
+  display: none !important;
+}
+
 body.mode-3d .view-layer-lite {
   display: none !important;
 }

@@ -11,12 +11,14 @@
     {
       "binding": "DB",
       "database_name": "knockoutnotes-db",
-      "database_id": "REPLACE_WITH_D1_DATABASE_ID"
+      "database_id": "c6ca400d-3cd7-4522-9006-7da7161ae301"
     }
   ],
   "vars": {
     "SITE_URL": "https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev",
     "ADMIN_USERNAME": "admin.knockoutnotes",
+    "ADMIN_NOTIFICATION_EMAIL": "knockoutnotes.anaesthesia@gmail.com",
     "FROM_EMAIL": "KnockoutNotes <notifications@knockoutnotes.com>"
   }
 }
+
