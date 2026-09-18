@@ -96,12 +96,20 @@
     const plane = document.getElementById("knViewerContentPlane");
     const simpleViewBtn = document.getElementById("knViewerSimpleView");
 
+    function syncTheme() {
+      const isDark = (document.documentElement && document.documentElement.classList.contains("dark")) ||
+                     (document.body && document.body.classList.contains("dark")) ||
+                     localStorage.getItem("kn-theme") === "dark";
+      modal.classList.toggle("dark", isDark);
+    }
+
     function openItem(item, itemsList, index) {
       if (!item) return;
       // Ensure viewer is attached directly to documentElement (viewport root)
       if (modal.parentElement !== document.documentElement) {
         (document.documentElement || document.body).appendChild(modal);
       }
+      syncTheme();
       const wasOpen = modal.classList.contains("open");
       if (!wasOpen) lastFocused = document.activeElement;
       currentItemsList = itemsList || [item];
@@ -111,6 +119,10 @@
       panY = 0;
       if (plane) {
         plane.style.transform = "translate3d(0, 0, 0) scale(1)";
+      }
+      const stage = document.getElementById("knViewerStage");
+      if (stage) {
+        stage.style.overflow = "hidden";
       }
 
       let url = item.url || item.href || item;
@@ -212,6 +224,10 @@
     function applyTransform() {
       if (plane) {
         plane.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${currentScale})`;
+      }
+      const stage = document.getElementById("knViewerStage");
+      if (stage) {
+        stage.style.overflow = currentScale > 1.05 ? "auto" : "hidden";
       }
     }
 

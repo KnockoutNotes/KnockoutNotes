@@ -48,6 +48,9 @@
     function applyTheme(theme) {
       const isDark = theme === "dark";
       body.classList.toggle("dark", isDark);
+      document.documentElement.classList.toggle("dark", isDark);
+      const viewer = document.getElementById("knSpatialViewer");
+      if (viewer) viewer.classList.toggle("dark", isDark);
       try { localStorage.setItem("kn-theme", theme); } catch (_) {}
       document.querySelectorAll("#themeBtn, #themeBtn3d, .theme-btn, [data-theme-btn]").forEach(btn => {
         btn.textContent = isDark ? "☀" : "☾";

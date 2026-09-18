@@ -73,7 +73,9 @@
   --transition-page: 0.32s var(--ease-expo);
 }
 
-.dark {
+.dark,
+html.dark,
+.spatial-viewer-overlay.dark {
   /* Obsidian Sci-Fi Operating Room Void */
   --bg-void: #030712;
   --bg-surface: rgba(8, 14, 28, 0.74);
@@ -1625,6 +1627,7 @@ a.kn-update-card:hover .kn-update-open {
   width: 100%;
   max-width: 1120px;
   max-height: 92vh;
+  margin: auto;
   background: var(--bg-surface);
   border: 1px solid var(--border-specular);
   border-radius: var(--radius-xl);
@@ -1810,17 +1813,18 @@ a.kn-update-card:hover .kn-update-open {
 
 @media (max-width: 768px) {
   .spatial-viewer-overlay {
-    padding: 6px;
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh;
+    padding: 10px 8px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
   }
   .spatial-viewer-hud {
     width: 100%;
-    max-width: 100%;
-    max-height: 96vh;
-    max-height: calc(100dvh - 12px);
-    border-radius: var(--radius-md);
+    max-width: 440px;
+    margin: auto;
+    max-height: calc(100dvh - 16px);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(56, 189, 248, 0.25);
   }
   .viewer-top-bar {
     padding: 8px 12px;
@@ -1846,11 +1850,15 @@ a.kn-update-card:hover .kn-update-open {
   .viewer-stage {
     min-height: 0;
     flex: 1;
-    max-height: calc(96vh - 90px);
-    max-height: calc(100dvh - 90px);
+    max-height: calc(100dvh - 95px);
     padding: 8px;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
   }
   .viewer-content-plane {
     width: 100%;
@@ -1858,14 +1866,16 @@ a.kn-update-card:hover .kn-update-open {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
   }
   .viewer-content-plane img {
     max-width: 100%;
-    max-height: calc(96vh - 110px);
     max-height: calc(100dvh - 110px);
     width: auto;
     height: auto;
     object-fit: contain;
+    margin: auto;
+    display: block;
   }
   .viewer-bottom-bar {
     padding: 6px 12px;
@@ -1875,6 +1885,73 @@ a.kn-update-card:hover .kn-update-open {
   .viewer-hud-status {
     display: none;
   }
+}
+
+/* Dark Theme Support for Spatial Viewer */
+.dark .spatial-viewer-hud,
+html.dark .spatial-viewer-hud,
+.spatial-viewer-overlay.dark .spatial-viewer-hud {
+  background: rgba(8, 14, 28, 0.95);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.95), 0 0 60px rgba(56, 189, 248, 0.25);
+  color: #f8fafc;
+}
+
+.dark .viewer-top-bar,
+html.dark .viewer-top-bar,
+.spatial-viewer-overlay.dark .viewer-top-bar,
+.dark .viewer-bottom-bar,
+html.dark .viewer-bottom-bar,
+.spatial-viewer-overlay.dark .viewer-bottom-bar {
+  background: rgba(11, 18, 36, 0.92);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+}
+
+.dark .viewer-title,
+html.dark .viewer-title,
+.spatial-viewer-overlay.dark .viewer-title {
+  color: #f8fafc;
+}
+
+.dark .viewer-kicker,
+html.dark .viewer-kicker,
+.spatial-viewer-overlay.dark .viewer-kicker {
+  color: #38bdf8;
+}
+
+.dark .btn-hud,
+html.dark .btn-hud,
+.spatial-viewer-overlay.dark .btn-hud {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+}
+
+.dark .btn-hud:hover,
+html.dark .btn-hud:hover,
+.spatial-viewer-overlay.dark .btn-hud:hover {
+  border-color: #38bdf8;
+  color: #38bdf8;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+}
+
+.dark .btn-hud.simple-view-btn,
+html.dark .btn-hud.simple-view-btn,
+.spatial-viewer-overlay.dark .btn-hud.simple-view-btn {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(96, 165, 250, 0.18));
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #38bdf8;
+}
+
+.dark .viewer-stage,
+html.dark .viewer-stage,
+.spatial-viewer-overlay.dark .viewer-stage {
+  background: 
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(10, 20, 40, 0.6) 0%, rgba(3, 7, 18, 0.96) 100%),
+    linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 24px 24px, 24px 24px;
 }
 
 @media (max-height: 500px) {
