@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     const meRes = await fetch('/api/admin/me');
     if (!meRes.ok) {
-      window.location.replace('/admin/login.html');
+      window.location.replace('/admin/login');
       return;
     }
     const meData = await meRes.json();
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (el) el.textContent = meData.username;
     }
   } catch (_) {
-    window.location.replace('/admin/login.html');
+    window.location.replace('/admin/login');
     return;
   }
 
@@ -168,7 +168,7 @@ function setupEventListeners() {
       try {
         await fetch('/api/admin/logout', { method: 'POST' });
       } catch (_) {}
-      window.location.replace('/admin/login.html');
+      window.location.replace('/admin/login');
     });
   }
 

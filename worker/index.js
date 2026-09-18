@@ -100,24 +100,54 @@ export default {
     // ==========================================
     // 0. ADMIN ROUTE INTERCEPTION & AUTH GUARD
     // ==========================================
-    const isAdminAppRoute = pathname === '/admin' || 
-                            pathname === '/admin/' || 
-                            pathname === '/admin/index.html' || 
-                            (pathname.startsWith('/admin/') && !pathname.includes('.') && pathname !== '/admin/login');
+    // Canonicalize /admin/login.html -> /admin/login
+    if (pathname === '/admin/login.html') {
+      return redirectResponse('/admin/login');
+    }
 
-    if (isAdminAppRoute) {
+    // Login page handling
+    if (pathname === '/admin/login') {
       const cookies = parseCookies(request);
       const session = await validateAdminSession(env.DB, cookies.admin_session);
-      const siteUrl = getSiteUrl(request, env);
-
-      if (!session) {
-        return redirectResponse(`${siteUrl}/admin/login.html`);
+      if (session) {
+        return redirectResponse('/admin/');
       }
-
-      // If authenticated, serve admin/index.html via ASSETS
       if (env.ASSETS) {
-        const adminIndexReq = new Request(new URL('/admin/index.html', request.url), request);
-        return env.ASSETS.fetch(adminIndexReq);
+        return env.ASSETS.fetch(request);
+      }
+    }
+
+    // Canonicalize /admin/index.html -> /admin/
+    if (pathname === '/admin/index.html') {
+      const cookies = parseCookies(request);
+      const session = await validateAdminSession(env.DB, cookies.admin_session);
+      if (!session) {
+        return redirectResponse('/admin/login');
+      }
+      return redirectResponse('/admin/');
+    }
+
+    // Canonicalize /admin (without trailing slash) -> /admin/
+    if (pathname === '/admin') {
+      const cookies = parseCookies(request);
+      const session = await validateAdminSession(env.DB, cookies.admin_session);
+      if (!session) {
+        return redirectResponse('/admin/login');
+      }
+      return redirectResponse('/admin/');
+    }
+
+    // Admin dashboard and sub-routes (/admin/, /admin/content, etc.)
+    // Note: static files with extensions (.css, .js, .png, etc.) pass through directly to ASSETS below
+    if (pathname === '/admin/' || (pathname.startsWith('/admin/') && !pathname.includes('.'))) {
+      const cookies = parseCookies(request);
+      const session = await validateAdminSession(env.DB, cookies.admin_session);
+      if (!session) {
+        return redirectResponse('/admin/login');
+      }
+      if (env.ASSETS) {
+        const adminReq = new Request(new URL('/admin/', request.url), request);
+        return env.ASSETS.fetch(adminReq);
       }
     }
 

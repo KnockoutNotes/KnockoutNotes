@@ -114,14 +114,14 @@ export function parseCookies(request) {
  * Generate a Set-Cookie header string for admin session
  */
 export function createSessionCookie(sessionId, maxAgeSeconds = 60 * 60 * 24 * 7) {
-  return `admin_session=${sessionId}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=${maxAgeSeconds}`;
+  return `admin_session=${sessionId}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=${maxAgeSeconds}`;
 }
 
 /**
  * Generate a clear cookie header string for logout
  */
 export function clearSessionCookie() {
-  return `admin_session=; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+  return `admin_session=; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 }
 
 /**
