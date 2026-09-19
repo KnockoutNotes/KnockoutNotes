@@ -86,6 +86,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 // NAVIGATION & ROUTING
 // ==========================================
 function setupNavigation() {
+  const sidebar = document.getElementById('admSidebar');
+  const backdrop = document.getElementById('admSidebarBackdrop');
+
+  const closeSidebar = () => {
+    if (sidebar) sidebar.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('open');
+  };
+
   // Sidebar navigation items
   document.querySelectorAll('.adm-nav-item').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -93,9 +101,7 @@ function setupNavigation() {
       if (targetView) {
         window.location.hash = targetView;
         switchView(targetView);
-        // On mobile, close sidebar after tap
-        const sidebar = document.getElementById('admSidebar');
-        if (sidebar) sidebar.classList.remove('open');
+        closeSidebar();
       }
     });
   });
@@ -104,9 +110,15 @@ function setupNavigation() {
   const mobileToggle = document.getElementById('mobileToggle');
   if (mobileToggle) {
     mobileToggle.addEventListener('click', () => {
-      const sidebar = document.getElementById('admSidebar');
-      if (sidebar) sidebar.classList.toggle('open');
+      if (sidebar) {
+        sidebar.classList.toggle('open');
+        if (backdrop) backdrop.classList.toggle('open', sidebar.classList.contains('open'));
+      }
     });
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeSidebar);
   }
 
   // Hash change handler

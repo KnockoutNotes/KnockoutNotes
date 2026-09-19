@@ -762,26 +762,236 @@ body.admin-body {
   margin-top: auto;
 }
 
-/* Responsive Breakpoints */
+/* Responsive Breakpoints & Mobile Optimization */
+.adm-sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 99;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.adm-sidebar-backdrop.open {
+  display: block;
+}
+
 @media (max-width: 768px) {
   .adm-sidebar {
     position: fixed;
     top: 0;
     bottom: 0;
     left: -100%;
-    transition: left 0.2s ease;
+    width: 280px;
+    max-width: 82vw;
+    z-index: 100;
+    transition: left 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 6px 0 25px rgba(0, 0, 0, 0.6);
   }
+
   .adm-sidebar.open {
     left: 0;
   }
+
   .adm-mobile-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+    background: #090e1a;
+    border: 1px solid var(--adm-border);
+    border-radius: var(--adm-radius);
+    color: var(--adm-text);
+    cursor: pointer;
   }
+
+  .adm-mobile-toggle:active {
+    background: #1e293b;
+  }
+
   .adm-content-scroll {
-    padding: 14px;
+    padding: 14px 12px;
   }
+
   .adm-header {
-    padding: 0 14px;
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  /* Prevent iOS Safari aggressive auto-zoom on input focus */
+  .form-input,
+  .form-select,
+  .form-textarea,
+  .adm-search-input {
+    font-size: 16px !important;
+    min-height: 42px;
+  }
+
+  /* Touch-friendly buttons */
+  .btn-primary,
+  .btn-secondary {
+    min-height: 40px;
+    padding: 8px 14px;
+  }
+
+  /* Stat cards responsive collapse */
+  .adm-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* File cards responsive collapse */
+  .adm-file-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* Subnav horizontal touch scroll */
+  .adm-subnav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+
+  .adm-subnav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .adm-subnav-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  /* Table horizontal touch scroll */
+  .table-wrapper {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .adm-table th,
+  .adm-table td {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  /* Modals on mobile screens */
+  .adm-modal-backdrop {
+    padding: 8px;
+    align-items: flex-end;
+  }
+
+  .adm-modal {
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: 92vh;
+    border-radius: var(--adm-radius-lg) var(--adm-radius-lg) 0 0;
+  }
+
+  .adm-modal-header {
+    padding: 12px 16px;
+  }
+
+  .adm-modal-close {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+
+  .adm-modal-body {
+    padding: 14px 16px;
+  }
+
+  .adm-modal-footer {
+    padding: 10px 16px;
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .adm-modal-footer button {
+    width: 100%;
+    min-height: 44px;
   }
 }
+
+@media (max-width: 640px) {
+  .adm-header-right {
+    gap: 6px;
+  }
+
+  .adm-user-info span {
+    display: none;
+  }
+
+  .adm-user-info strong {
+    font-size: 11px;
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .adm-header-right .btn-secondary {
+    padding: 6px 8px;
+    font-size: 11px;
+    min-height: 34px;
+  }
+
+  .adm-page-title {
+    font-size: 14px;
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Controls bar stacking */
+  .adm-controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .adm-controls-bar .adm-search-input,
+  .adm-controls-bar select,
+  .adm-controls-bar button {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .adm-card-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .adm-card-header .btn-primary,
+  .adm-card-header .btn-secondary {
+    width: 100%;
+  }
+
+  .adm-pagination {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .adm-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .adm-file-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
