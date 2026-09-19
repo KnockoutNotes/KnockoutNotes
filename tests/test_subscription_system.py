@@ -103,35 +103,26 @@ def run_all_tests():
     test("Invalid email without domain rejected", not is_valid_email("user@"))
 
     # ----------------------------------------------------
-    # Group 4: Subscription Lifecycle (Pending -> Active -> Unsubscribed)
+    # Group 4: Single Opt-In Subscription Lifecycle (Instant Active -> Unsubscribed -> Reactivated)
     # ----------------------------------------------------
-    print("\n--- GROUP 4: Subscription Lifecycle ---")
+    print("\n--- GROUP 4: Single Opt-In Subscription Lifecycle ---")
     
-    # 1. Insert new subscriber
-    v_token = "v_token_123456"
+    # 1. Insert new subscriber (Instant single opt-in)
     u_token = "u_token_123456"
-    future_time = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=48)).isoformat()
-    past_time = (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=1)).isoformat()
-
     db.execute("""
-        INSERT INTO subscribers (email, name, status, verification_token, verification_expires_at, unsubscribe_token, source_page)
-        VALUES ('trainee@anaesthesia.org', 'Dr. Smith', 'pending', ?, ?, ?, 'notes.html')
-    """, (v_token, future_time, u_token))
+        INSERT INTO subscribers (email, name, status, verified_at, unsubscribe_token, source_page)
+        VALUES ('trainee@anaesthesia.org', 'Dr. Smith', 'active', datetime('now'), ?, 'notes.html')
+    """, (u_token,))
     db.commit()
 
     sub = db.execute("SELECT * FROM subscribers WHERE email = 'trainee@anaesthesia.org'").fetchone()
-    test("New subscription creates pending status", sub["status"] == "pending")
+    test("New single opt-in subscription creates active status immediately", sub["status"] == "active" and sub["verified_at"] is not None)
     test("Subscription records source page", sub["source_page"] == "notes.html")
+    test("Subscription generates unsubscribe token", sub["unsubscribe_token"] == u_token)
 
-    # 2. Verify with valid token
-    db.execute("""
-        UPDATE subscribers 
-        SET status = 'active', verified_at = datetime('now'), verification_token = NULL 
-        WHERE verification_token = ?
-    """, (v_token,))
-    db.commit()
-    sub_active = db.execute("SELECT * FROM subscribers WHERE email = 'trainee@anaesthesia.org'").fetchone()
-    test("Token confirmation activates subscriber", sub_active["status"] == "active" and sub_active["verification_token"] is None)
+    # 2. Duplicate submission for active subscriber does not change status
+    duplicate_sub = db.execute("SELECT status FROM subscribers WHERE email = 'trainee@anaesthesia.org'").fetchone()
+    test("Duplicate active subscriber check detects active status", duplicate_sub["status"] == "active")
 
     # 3. Unsubscribe with valid token
     db.execute("""
@@ -143,16 +134,33 @@ def run_all_tests():
     sub_unsub = db.execute("SELECT * FROM subscribers WHERE email = 'trainee@anaesthesia.org'").fetchone()
     test("Unsubscribe token moves status to unsubscribed", sub_unsub["status"] == "unsubscribed" and sub_unsub["unsubscribed_at"] is not None)
 
-    # 4. Resubscribe from unsubscribed
-    new_v_token = "v_token_re_999"
+    # 4. Resubscribe from unsubscribed -> reactivates immediately to active
     db.execute("""
         UPDATE subscribers 
-        SET status = 'pending', verification_token = ?, verification_expires_at = ?, updated_at = datetime('now')
+        SET status = 'active', verified_at = datetime('now'), unsubscribed_at = NULL, updated_at = datetime('now')
         WHERE email = 'trainee@anaesthesia.org'
-    """, (new_v_token, future_time))
+    """)
     db.commit()
     sub_re = db.execute("SELECT * FROM subscribers WHERE email = 'trainee@anaesthesia.org'").fetchone()
-    test("Resubscribing resets to pending with new verification token", sub_re["status"] == "pending" and sub_re["verification_token"] == new_v_token)
+    test("Resubscribing reactivates immediately to active status", sub_re["status"] == "active" and sub_re["unsubscribed_at"] is None)
+
+    # 5. Legacy verification token compatibility test
+    v_token_legacy = "v_token_legacy_123"
+    db.execute("""
+        INSERT INTO subscribers (email, name, status, verification_token, verification_expires_at, unsubscribe_token, source_page)
+        VALUES ('legacy@hospital.org', 'Dr. Legacy', 'pending', ?, datetime('now', '+2 days'), 'u_legacy_1', 'home')
+    """, (v_token_legacy,))
+    db.commit()
+    db.execute("""
+        UPDATE subscribers 
+        SET status = 'active', verified_at = datetime('now'), verification_token = NULL, updated_at = datetime('now')
+        WHERE verification_token = ?
+    """, (v_token_legacy,))
+    db.commit()
+    sub_legacy = db.execute("SELECT * FROM subscribers WHERE email = 'legacy@hospital.org'").fetchone()
+    test("Legacy verification token successfully activates pending subscriber", sub_legacy["status"] == "active" and sub_legacy["verification_token"] is None)
+    db.execute("DELETE FROM subscribers WHERE email = 'legacy@hospital.org'")
+    db.commit()
 
     # ----------------------------------------------------
     # Group 5: Admin Session & Authorization
@@ -160,6 +168,7 @@ def run_all_tests():
     print("\n--- GROUP 5: Admin Session Management & Expiration ---")
     session_id = "sess_active_token_abc"
     sess_expire = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=7)).isoformat()
+    past_time = (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=1)).isoformat()
     db.execute("""
         INSERT INTO admin_sessions (session_id, admin_username, expires_at, ip_address, user_agent)
         VALUES (?, 'admin.knockoutnotes', ?, '127.0.0.1', 'pytest/1.0')

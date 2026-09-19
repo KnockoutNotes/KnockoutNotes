@@ -178,16 +178,13 @@ export default {
           .bind(email)
           .first();
 
-        const verificationToken = generateSecureToken(24);
-        const unsubscribeToken = generateSecureToken(24);
-        // Expiration: 48 hours from now
-        const expiresAt = new Date(Date.now() + 48 * 3600 * 1000).toISOString();
+        let unsubscribeToken;
 
         if (existing) {
           if (existing.status === 'active') {
             return jsonResponse({
               success: true,
-              message: 'You are already subscribed to KnockoutNotes updates!'
+              message: "You're already subscribed to KnockoutNotes."
             });
           }
 
@@ -195,44 +192,84 @@ export default {
             return jsonResponse({ error: 'Unable to subscribe this email address.' }, 403);
           }
 
-          // Existing pending or unsubscribed subscriber -> refresh token and re-send verification
+          // Existing pending or unsubscribed subscriber -> reactivate directly to active
+          unsubscribeToken = existing.unsubscribe_token || generateSecureToken(24);
           await env.DB
             .prepare(`
               UPDATE subscribers 
-              SET verification_token = ?, verification_expires_at = ?, status = 'pending', updated_at = datetime('now')
+              SET status = 'active', verified_at = datetime('now'), unsubscribed_at = NULL, verification_token = NULL, unsubscribe_token = ?, source_page = COALESCE(?, source_page), updated_at = datetime('now')
               WHERE id = ?
             `)
-            .bind(verificationToken, expiresAt, existing.id)
+            .bind(unsubscribeToken, sourcePage, existing.id)
             .run();
         } else {
-          // New subscriber insert
+          // New subscriber insert directly as active
+          unsubscribeToken = generateSecureToken(24);
           await env.DB
             .prepare(`
-              INSERT INTO subscribers (email, name, status, verification_token, verification_expires_at, unsubscribe_token, source_page, created_at, updated_at)
-              VALUES (?, ?, 'pending', ?, ?, ?, ?, datetime('now'), datetime('now'))
+              INSERT INTO subscribers (email, name, status, verified_at, unsubscribe_token, source_page, created_at, updated_at)
+              VALUES (?, ?, 'active', datetime('now'), ?, ?, datetime('now'), datetime('now'))
             `)
-            .bind(email, name || null, verificationToken, expiresAt, unsubscribeToken, sourcePage)
+            .bind(email, name || null, unsubscribeToken, sourcePage)
             .run();
         }
 
-        // Dispatch verification email in background
-        const emailTemplate = renderVerificationEmail({ siteUrl, verificationToken, email });
+        // Dispatch exactly ONE welcome email in background
+        const supportUrl = env.SUPPORT_URL || 'https://bondin.io/@knockoutnotes/support';
+        const welcomeTemplate = renderWelcomeEmail({
+          siteUrl,
+          supportUrl,
+          unsubscribeToken,
+          email
+        });
+
         ctx.waitUntil(
           sendEmail({
             apiKey: env.MAILERSEND_API_TOKEN,
             from: env.FROM_EMAIL,
             to: email,
-            subject: emailTemplate.subject,
-            html: emailTemplate.html,
-            text: emailTemplate.text,
-            emailType: 'confirmation',
+            subject: welcomeTemplate.subject,
+            html: welcomeTemplate.html,
+            text: welcomeTemplate.text,
+            emailType: 'welcome',
             db: env.DB
           })
         );
 
+        // Notify Admin of new active subscriber
+        const adminNotifyEmail = env.ADMIN_NOTIFICATION_EMAIL || env.ADMIN_EMAIL;
+        if (adminNotifyEmail) {
+          const activeCountRow = await env.DB
+            .prepare("SELECT COUNT(*) as count FROM subscribers WHERE status = 'active'")
+            .first();
+
+          const adminAlert = renderAdminAlertEmail({
+            type: 'new_subscriber',
+            email: email,
+            details: {
+              source: sourcePage,
+              date: new Date().toUTCString(),
+              totalActive: activeCountRow?.count || 1
+            }
+          });
+
+          ctx.waitUntil(
+            sendEmail({
+              apiKey: env.MAILERSEND_API_TOKEN,
+              from: env.FROM_EMAIL,
+              to: adminNotifyEmail,
+              subject: adminAlert.subject,
+              html: adminAlert.html,
+              text: adminAlert.text,
+              emailType: 'admin_alert',
+              db: env.DB
+            })
+          );
+        }
+
         return jsonResponse({
           success: true,
-          message: 'Confirmation email sent! Please check your inbox and verify your subscription.'
+          message: "You're in! Check your inbox for a little welcome note."
         });
       } catch (err) {
         console.error('[Subscribe Error]:', err);
@@ -277,6 +314,7 @@ export default {
         // Send Welcome email
         const welcome = renderWelcomeEmail({
           siteUrl,
+          supportUrl: env.SUPPORT_URL,
           unsubscribeToken: subscriber.unsubscribe_token,
           email: subscriber.email
         });

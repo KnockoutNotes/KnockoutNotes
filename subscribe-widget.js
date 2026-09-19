@@ -62,7 +62,7 @@
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
             <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
           </svg>
-          Double opt-in verification required. We respect medical privacy.
+          Instant updates. Zero spam. We respect medical privacy.
         </div>
       </div>
     `;
@@ -81,6 +81,18 @@
     const msgBox = modal.querySelector('.kn-subscribe-message');
     const btnSpan = btn.querySelector('span');
 
+    // Ensure Enter key in input field submits the form
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        if (form.requestSubmit) {
+          form.requestSubmit();
+        } else {
+          form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+        }
+      }
+    });
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       msgBox.className = 'kn-subscribe-message';
@@ -91,7 +103,7 @@
 
       btn.disabled = true;
       const originalText = btnSpan.textContent;
-      btnSpan.textContent = 'Sending confirmation...';
+      btnSpan.textContent = 'Subscribing...';
 
       const pageSource = window.location.pathname.replace(/^\//, '') || 'home';
 
@@ -112,7 +124,7 @@
           msgBox.className = 'kn-subscribe-message error';
           msgBox.style.display = 'block';
         } else {
-          msgBox.textContent = data.message || 'Please check your email to verify your subscription.';
+          msgBox.textContent = data.message || "You're in! Check your inbox for a little welcome note.";
           msgBox.className = 'kn-subscribe-message success';
           msgBox.style.display = 'block';
           input.value = '';
@@ -216,7 +228,7 @@
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
               </svg>
-              Double opt-in verification required. We respect medical privacy.
+              Instant updates. Zero spam. We respect medical privacy.
             </div>
           </div>
         </div>
@@ -228,6 +240,18 @@
       const msgBox = mount.querySelector('.kn-subscribe-message');
       const btnSpan = btn.querySelector('span');
 
+      // Ensure Enter key in input field submits the form
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (form.requestSubmit) {
+            form.requestSubmit();
+          } else {
+            form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+          }
+        }
+      });
+
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         msgBox.className = 'kn-subscribe-message';
@@ -238,7 +262,7 @@
 
         btn.disabled = true;
         const originalText = btnSpan.textContent;
-        btnSpan.textContent = 'Sending confirmation...';
+        btnSpan.textContent = 'Subscribing...';
 
         try {
           const res = await fetch('/api/subscribe', {
@@ -257,7 +281,7 @@
             msgBox.className = 'kn-subscribe-message error';
             msgBox.style.display = 'block';
           } else {
-            msgBox.textContent = data.message || 'Please check your email to verify your subscription.';
+            msgBox.textContent = data.message || "You're in! Check your inbox for a little welcome note.";
             msgBox.className = 'kn-subscribe-message success';
             msgBox.style.display = 'block';
             input.value = '';

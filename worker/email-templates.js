@@ -99,48 +99,57 @@ This link expires in 48 hours. If you did not request this, you can safely ignor
 /**
  * 2. Welcome Email
  */
-export function renderWelcomeEmail({ siteUrl, unsubscribeToken, email }) {
+export function renderWelcomeEmail({ siteUrl, supportUrl, unsubscribeToken, email }) {
   const unsubUrl = `${siteUrl.replace(/\/$/, '')}/unsubscribe?token=${encodeURIComponent(unsubscribeToken)}`;
+  const supportDestination = supportUrl || 'https://bondin.io/@knockoutnotes/support';
 
   const content = `
     <h2>Welcome to KnockoutNotes!</h2>
-    <p>Your subscription is confirmed. You will now receive notifications whenever new peer-reviewed clinical notes, airway algorithms, anaesthesia calculators, and drug references are published.</p>
+    <p>Hi,</p>
+    <p>Thanks for joining KnockoutNotes.</p>
+    <p>I'll occasionally send you updates when new anaesthesia update or on website notes, pearls, calculators or other useful resources are added.</p>
+    <p>If you find KnockoutNotes useful and would like to support the work, you can buy me a coffee ☕</p>
     
-    <div class="highlight-card">
-      <p><strong>Explore Quick Tools:</strong></p>
-      <ul style="margin: 8px 0 0; padding-left: 20px; color: #cbd5e1; font-size: 14px;">
-        <li><a href="${siteUrl}/notes.html" style="color: #38bdf8;">Clinical Notes & Drug Library</a></li>
-        <li><a href="${siteUrl}/calculators.html" style="color: #38bdf8;">Interactive Medical Calculators (ABG, Paediatrics, Infusions)</a></li>
-        <li><a href="${siteUrl}/resuscitation-chamber.html" style="color: #38bdf8;">3D Resuscitation Chamber</a></li>
-        <li><a href="${siteUrl}/ventilator.html" style="color: #38bdf8;">Interactive Mechanical Ventilator</a></li>
-      </ul>
-    </div>
-
     <div class="btn-container">
-      <a href="${siteUrl}" class="btn" target="_blank">Open KnockoutNotes Workstation</a>
+      <a href="${supportDestination}" class="btn" target="_blank" style="background-color: #d97706; box-shadow: 0 4px 14px rgba(217, 119, 6, 0.4);">☕ Support KnockoutNotes</a>
     </div>
 
-    <p style="font-size: 13px; color: #94a3b8;">You can manage your subscription or unsubscribe at any time using the link in the footer below.</p>
+    <p style="font-size: 13px; color: #94a3b8; margin-top: 24px;">Thanks for being here. Remember to check latest guidelines and institutional protocols as knocoutnotes doesnt make any protocols and only a representation and collection of protocols.</p>
+    
+    <p style="margin-top: 20px; color: #f8fafc; font-weight: 700; line-height: 1.3;">
+      KnockoutNotes<br>
+      <span style="font-weight: 400; color: #94a3b8; font-size: 13px;">Anaesthesia made simple.</span>
+    </p>
   `;
 
   const footer = `
     <p>&copy; ${new Date().getFullYear()} KnockoutNotes &bull; Anaesthesia & Critical Care</p>
-    <p><a href="${unsubUrl}">Unsubscribe from all future emails</a></p>
+    <p><a href="${unsubUrl}">Unsubscribe from future updates</a></p>
   `;
 
-  const text = `Welcome to KnockoutNotes!
+  const text = `Hi,
 
-Your subscription is confirmed. You will now receive notifications when new clinical notes and tools are published.
+Thanks for joining KnockoutNotes.
 
-Explore KnockoutNotes: ${siteUrl}
-Clinical Notes: ${siteUrl}/notes.html
-Calculators: ${siteUrl}/calculators.html
+I'll occasionally send you updates when new anaesthesia update or on website notes,
+pearls, calculators or other useful resources are added.
+
+If you find KnockoutNotes useful and would like to support the work,
+you can buy me a coffee ☕
+
+Support KnockoutNotes:
+${supportDestination}
+
+Thanks for being here. Remember to check latest guidelines and institutional protocols as knocoutnotes doesnt make any protocols and only a representation and collection of protocols.
+
+KnockoutNotes
+Anaesthesia made simple.
 
 To unsubscribe: ${unsubUrl}
 `;
 
   return {
-    subject: 'Welcome to KnockoutNotes — Subscription Confirmed',
+    subject: 'Welcome to KnockoutNotes 🩺',
     html: wrapLayout('Welcome to KnockoutNotes', content, footer),
     text
   };

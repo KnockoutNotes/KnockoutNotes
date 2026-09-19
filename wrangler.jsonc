@@ -22,7 +22,8 @@
     // TEMPORARY MAILERSEND SANDBOX TEST SENDER ONLY:
     // Uses the MailerSend verified test domain test-86org8e1w31gew13.mlsender.net.
     // Replace with verified custom domain sender (e.g. notifications@knockoutnotes.com) once domain DNS is configured in MailerSend.
-    "FROM_EMAIL": "KnockoutNotes <notifications@test-86org8e1w31gew13.mlsender.net>"
+    "FROM_EMAIL": "KnockoutNotes <notifications@test-86org8e1w31gew13.mlsender.net>",
+    "SUPPORT_URL": "https://bondin.io/@knockoutnotes/support"
   }
 }
 
