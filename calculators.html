@@ -112,6 +112,8 @@
 
         <!-- Category Switcher Tabs -->
         <div class="calc-hub-nav fade" role="tablist" aria-label="Calculator Categories">
+          <button class="calc-nav-pill" data-calc-tab="advanced" role="tab" aria-selected="false">⚡ Advanced / Dynamic</button>
+          <button class="calc-nav-pill" data-calc-tab="advanced" role="tab" aria-selected="false">⚡ Advanced / Dynamic</button>
           <button class="calc-nav-pill active" data-calc-tab="paeds" role="tab" aria-selected="true">⚡ Paediatric (Chart &amp; Airway)</button>
           <button class="calc-nav-pill" data-calc-tab="periop" role="tab" aria-selected="false">📋 Perioperative Assessment</button>
           <button class="calc-nav-pill" data-calc-tab="emergency" role="tab" aria-selected="false">🚨 Emergency &amp; Resuscitation</button>
@@ -119,6 +121,644 @@
           <button class="calc-nav-pill" data-calc-tab="renal" role="tab" aria-selected="false">🧪 Renal Clearance</button>
           <button class="calc-nav-pill" data-calc-tab="all" role="tab" aria-selected="false">✦ View All</button>
         </div>
+
+        
+        <!-- TAB CONTENT: ADVANCED / DYNAMIC CALCULATORS (3D Layer) -->
+        <div class="calc-tab-content" id="tabAdvanced3d" data-tab-name="advanced">
+          <div class="calc-group-title fade" id="groupAdvanced3d">
+            <span>Advanced / Dynamic Calculation Engines</span>
+            <span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8; border:1px solid rgba(56,189,248,0.35);">⚡ Interactive Workstation</span>
+          </div>
+
+          <!-- Hero Banner & Safety Notice -->
+          <div class="adv-hero-banner fade">
+            <h2 style="font-size:1.65rem; margin:0 0 6px 0; color:#fff;">Interactive Clinical Calculation Engines</h2>
+            <p style="margin:0; font-size:0.92rem; color:#94a3b8; line-height:1.5;">
+              Real-time pharmacokinetic simulators, bidirectional vasopressor titration, mechanical ventilation mechanics, MABL, MTP decision support, and viscoelastic analysis. Calculations update dynamically with instant validation.
+            </p>
+            <div class="adv-safety-disclaimer">
+              <span style="font-size:1.2rem;">⚠️</span>
+              <div>
+                <strong>Clinical Reference Notice:</strong> Educational and clinical reference tool. Verify patient-specific factors, actual drug concentrations, institutional protocols, and manufacturer guidelines before clinical administration.
+              </div>
+            </div>
+          </div>
+
+          <div class="adv-grid">
+
+            <!-- ==========================================
+                 ENGINE 1: VASOACTIVE INFUSION CALCULATOR
+                 ========================================== -->
+            <div class="calc-box fade" id="vasoCard3d">
+              <div class="calc-box-header">
+                <div>
+                  <h3 class="calc-box-title">⚡ Vasoactive Infusion Calculator</h3>
+                  <div class="calc-box-subtitle">Bidirectional Dose ↔ Pump Rate Titration (Norepinephrine, Vasopressin, Dobutamine)</div>
+                </div>
+              </div>
+              <div class="calc-box-body">
+                <div id="vasoErrorAlert3d" class="adv-alert-banner"></div>
+
+                <div class="adv-form-grid">
+                  <div class="adv-field">
+                    <label for="vasoDrug3d">Agent Selection *</label>
+                    <select id="vasoDrug3d" class="adv-select">
+                      <option value="norepinephrine">Norepinephrine (Noradrenaline)</option>
+                      <option value="vasopressin">Vasopressin (AVP / ADH)</option>
+                      <option value="dobutamine">Dobutamine</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field" id="vasoWeightRow3d">
+                    <label for="vasoWeight3d">Patient Weight (kg) *</label>
+                    <div class="adv-input-wrap">
+                      <input id="vasoWeight3d" class="adv-input" type="number" step="0.5" min="1" max="300" value="70">
+                      <span class="adv-input-unit">kg</span>
+                    </div>
+                  </div>
+
+                  <div class="adv-field" style="grid-column: 1 / -1;">
+                    <label for="vasoPreset3d">Concentration Formulation *</label>
+                    <select id="vasoPreset3d" class="adv-select">
+                      <!-- Populated dynamically based on drug -->
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Custom Concentration Fields (Only shown when custom selected) -->
+                <div class="adv-form-grid" id="vasoCustomConcFields3d" style="display:none; background:rgba(0,0,0,0.25); padding:0.9rem; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
+                  <div class="adv-field">
+                    <label for="vasoCustomAmount3d">Drug Amount (mg or units)</label>
+                    <input id="vasoCustomAmount3d" class="adv-input" type="number" step="0.1" value="4">
+                  </div>
+                  <div class="adv-field">
+                    <label for="vasoCustomVol3d">Diluent Volume (mL)</label>
+                    <input id="vasoCustomVol3d" class="adv-input" type="number" step="1" value="50">
+                  </div>
+                </div>
+
+                <!-- Hidden inputs holding active conc in mcg/mL or units/mL -->
+                <input type="hidden" id="vasoConcMcgMl3d" value="80">
+                <input type="hidden" id="vasoConcUnitsMl3d" value="0.4">
+
+                <!-- Bidirectional Titration Panel -->
+                <div style="background:rgba(2,132,199,0.08); border:1px solid rgba(56,189,248,0.25); border-radius:10px; padding:1.1rem; margin:1.25rem 0;">
+                  <div style="font-size:0.82rem; font-weight:700; text-transform:uppercase; color:#38bdf8; margin-bottom:0.75rem; letter-spacing:0.5px;">
+                    ⇄ Live Bidirectional Conversion (Type in either box)
+                  </div>
+                  <div class="adv-form-grid" style="margin-bottom:0;">
+                    <div class="adv-field">
+                      <label for="vasoDoseInput3d">Target Dose Rate (<span id="vasoDoseUnitLabel3d">mcg/kg/min</span>)</label>
+                      <div class="adv-input-wrap">
+                        <input id="vasoDoseInput3d" class="adv-input" type="number" step="0.01" min="0" value="0.05" style="border-color:#38bdf8; font-size:1.1rem;">
+                      </div>
+                      <select id="vasoDoseModeSel3d" class="adv-select" style="margin-top:0.35rem; padding:0.3rem 0.5rem; font-size:0.8rem;">
+                        <option value="mcg_kg_min">mcg/kg/min</option>
+                        <option value="mcg_min">mcg/min</option>
+                      </select>
+                    </div>
+
+                    <div class="adv-field" style="display:flex; justify-content:center; align-items:center;">
+                      <span style="font-size:1.8rem; color:#38bdf8; opacity:0.6;">⇄</span>
+                    </div>
+
+                    <div class="adv-field">
+                      <label for="vasoRateInput3d">Pump Infusion Rate (mL/hr)</label>
+                      <div class="adv-input-wrap">
+                        <input id="vasoRateInput3d" class="adv-input" type="number" step="0.1" min="0" value="2.63" style="border-color:#10b981; font-size:1.1rem;">
+                        <span class="adv-input-unit">mL/hr</span>
+                      </div>
+                      <span style="font-size:0.75rem; color:#94a3b8; margin-top:0.35rem;">Enter mL/hr to back-calculate dose</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Simultaneous Live Output Stat Deck -->
+                <div class="adv-stat-deck">
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Weight-Adjusted</span>
+                    <span class="adv-stat-val" id="vasoOutDoseKg3d">0.05 <span class="unit">mcg/kg/min</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Absolute Mass/Rate</span>
+                    <span class="adv-stat-val" id="vasoOutDoseTotal3d">3.5 <span class="unit">mcg/min</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Volumetric Pump</span>
+                    <span class="adv-stat-val" id="vasoOutRate3d">2.63 <span class="unit">mL/hr</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Concentration</span>
+                    <span class="adv-stat-val" id="vasoOutConc3d">80 <span class="unit">mcg/mL</span></span>
+                  </div>
+                </div>
+
+                <div style="margin-top:1rem; padding:0.75rem 1rem; background:rgba(0,0,0,0.3); border-radius:8px; border-left:3px solid #38bdf8; font-size:0.85rem; line-height:1.5;">
+                  <strong style="color:#f8fafc;">Reference Dosing Range:</strong>
+                  <span id="vasoRefRange3d" style="color:#cbd5e1; margin-left:4px;">Initial: 0.02 – 0.05 mcg/kg/min. Titrate to MAP ≥ 65 mmHg.</span>
+                </div>
+
+                <div style="margin-top:0.6rem; font-size:0.78rem; color:#f59e0b; display:flex; align-items:center; gap:6px;">
+                  <span>⚠️</span>
+                  <span>Verify drug concentration and institutional infusion protocol before starting or changing an infusion.</span>
+                </div>
+
+                <details class="adv-source-drawer">
+                  <summary>Source &amp; Assumptions</summary>
+                  <p style="margin:0.5rem 0 0 0;">
+                    <strong>Authoritative Sources:</strong> <span id="vasoCitation3d">Surviving Sepsis Campaign (SSC) 2021/2026; UK Intensive Care Society (ICS) Infusion Standards 2023; DailyMed FDA.</span><br>
+                    <strong>Assumptions:</strong> Calculations assume accurate volumetric syringe driver or peristaltic infusion pump. Microgram and unit calculations are mathematically distinct. Vasopressin is strictly non-weight-based and never converted to mass.
+                  </p>
+                </details>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 ENGINE 2: TCI PHARMACOKINETIC MODEL SIMULATOR
+                 ========================================== -->
+            <div class="calc-box fade" id="tciCard3d">
+              <div class="calc-box-header">
+                <div>
+                  <h3 class="calc-box-title">🧠 TCI Pharmacokinetic Model Simulator</h3>
+                  <div class="calc-box-subtitle">3-Compartment Propofol (Schnider, Marsh) &amp; Remifentanil (Minto) Analytical Dynamic Simulation</div>
+                </div>
+                <span class="badge" id="tciDrugBadge3d">Propofol (Schnider 1998)</span>
+              </div>
+              <div class="calc-box-body">
+                <div id="tciErrorAlert3d" class="adv-alert-banner"></div>
+
+                <div class="adv-form-grid">
+                  <div class="adv-field">
+                    <label for="tciModel3d">Pharmacokinetic Model *</label>
+                    <select id="tciModel3d" class="adv-select">
+                      <option value="schnider">Propofol — Schnider (1998) [Age, Sex, Ht, Wt, LBM]</option>
+                      <option value="marsh">Propofol — Marsh (1991) [Weight-only]</option>
+                      <option value="minto">Remifentanil — Minto (1997) [Age, Sex, Ht, Wt, LBM]</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field" id="tciCovAgeRow3d">
+                    <label for="tciAge3d">Age (years)</label>
+                    <input id="tciAge3d" class="adv-input" type="number" min="18" max="100" value="40">
+                  </div>
+
+                  <div class="adv-field" id="tciCovSexRow3d">
+                    <label for="tciSex3d">Sex</label>
+                    <select id="tciSex3d" class="adv-select">
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field" id="tciCovHeightRow3d">
+                    <label for="tciHeight3d">Height (cm)</label>
+                    <input id="tciHeight3d" class="adv-input" type="number" min="120" max="220" value="175">
+                  </div>
+
+                  <div class="adv-field" id="tciCovWeightRow3d">
+                    <label for="tciWeight3d">Weight (kg) *</label>
+                    <input id="tciWeight3d" class="adv-input" type="number" min="30" max="250" value="70">
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="tciTargetMode3d">Targeting Mode *</label>
+                    <select id="tciTargetMode3d" class="adv-select">
+                      <option value="plasma">Plasma Target (Cp)</option>
+                      <option value="effect_site">Effect-Site Target (Ce)</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="tciTargetConc3d">Target Concentration (<span id="tciTargetUnit3d">mcg/mL</span>)</label>
+                    <input id="tciTargetConc3d" class="adv-input" type="number" step="0.1" min="0.1" max="20" value="4.0">
+                  </div>
+                </div>
+
+                <!-- Duration Toggles -->
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin:0.75rem 0 0.5rem 0;">
+                  <span style="font-size:0.8rem; font-weight:600; text-transform:uppercase; color:#94a3b8; letter-spacing:0.5px;">Simulation Window:</span>
+                  <div style="display:flex; gap:6px;">
+                    <button class="btn-cinematic" data-tci-duration="5" style="padding:0.25rem 0.65rem; font-size:0.75rem;">5m</button>
+                    <button class="btn-cinematic" data-tci-duration="10" style="padding:0.25rem 0.65rem; font-size:0.75rem;">10m</button>
+                    <button class="btn-cinematic active" data-tci-duration="30" style="padding:0.25rem 0.65rem; font-size:0.75rem;">30m</button>
+                    <button class="btn-cinematic" data-tci-duration="60" style="padding:0.25rem 0.65rem; font-size:0.75rem;">60m</button>
+                  </div>
+                </div>
+
+                <!-- Dynamic Canvas Plot -->
+                <div class="adv-canvas-wrap">
+                  <canvas id="tciCanvas3d" class="adv-canvas"></canvas>
+                </div>
+
+                <!-- Stat Deck: PK Parameters & Bolus Requirement -->
+                <div class="adv-stat-deck">
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Initial Induction Bolus</span>
+                    <span class="adv-stat-val" id="tciBolusOut3d">--</span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">V1 (Central)</span>
+                    <span class="adv-stat-val" id="tciV1Out3d">--</span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">V2 (Rapid Periph)</span>
+                    <span class="adv-stat-val" id="tciV2Out3d">--</span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">V3 (Slow Periph)</span>
+                    <span class="adv-stat-val" id="tciV3Out3d">--</span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">ke0 (Effect Rate)</span>
+                    <span class="adv-stat-val" id="tciKe0Out3d">--</span>
+                  </div>
+                </div>
+
+                <div style="font-size:0.8rem; color:#94a3b8; margin:0.5rem 0;">
+                  <strong style="color:#cbd5e1;">Model Covariates:</strong> <span id="tciCovSummary3d">--</span>
+                </div>
+
+                <div style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.3); border-radius:8px; padding:0.75rem 1rem; font-size:0.82rem; color:#fbbf24; margin-top:0.75rem;">
+                  <strong>Model-Predicted Concentration:</strong> Educational simulation only. TCI models are population estimates. Actual plasma and biophase concentrations vary substantially due to cardiac output, hypovolemia, hypothermia, and organ perfusion.
+                </div>
+
+                <details class="adv-source-drawer">
+                  <summary>Model Specifications &amp; Primary Sources</summary>
+                  <p style="margin:0.5rem 0 0 0;">
+                    <strong>Primary Citation:</strong> <span id="tciCitation3d">Schnider TW, et al. Anesthesiology 1998; 88: 1170–1182.</span><br>
+                    <strong>Known Limitations:</strong> <span id="tciLimitations3d">James LBM formula produces paradoxical drops in calculated LBM in severe obesity (BMI > 35 kg/m²).</span>
+                  </p>
+                </details>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 ENGINE 3: PREDICTED BODY WEIGHT & VENTILATION MECHANICS
+                 ========================================== -->
+            <div class="calc-box fade" id="ventCard3d">
+              <div class="calc-box-header">
+                <div>
+                  <h3 class="calc-box-title">🫁 Ventilation Mechanics &amp; PBW Engine</h3>
+                  <div class="calc-box-subtitle">ARDSNet Predicted Body Weight, 4–8 mL/kg VT Ladder, Driving Pressure &amp; Static Compliance</div>
+                </div>
+              </div>
+              <div class="calc-box-body">
+                <div id="ventErrorAlert3d" class="adv-alert-banner"></div>
+
+                <div class="adv-form-grid">
+                  <div class="adv-field">
+                    <label for="ventSex3d">Biological Sex *</label>
+                    <select id="ventSex3d" class="adv-select">
+                      <option value="male">Male (Devine Base: 50.0 kg)</option>
+                      <option value="female">Female (Devine Base: 45.5 kg)</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="ventHeight3d">Height (cm) *</label>
+                    <div class="adv-input-wrap">
+                      <input id="ventHeight3d" class="adv-input" type="number" min="120" max="230" value="175">
+                      <span class="adv-input-unit">cm</span>
+                    </div>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="ventPplat3d">Plateau Pressure (Pplat, cmH2O)</label>
+                    <div class="adv-input-wrap">
+                      <input id="ventPplat3d" class="adv-input" type="number" step="1" min="0" max="60" placeholder="e.g. 24" value="24">
+                      <span class="adv-input-unit">cmH2O</span>
+                    </div>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="ventPeep3d">Total PEEP (cmH2O)</label>
+                    <div class="adv-input-wrap">
+                      <input id="ventPeep3d" class="adv-input" type="number" step="1" min="0" max="30" placeholder="e.g. 8" value="8">
+                      <span class="adv-input-unit">cmH2O</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tidal Volume Target Slider & Step Buttons -->
+                <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:1rem; margin:1rem 0;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
+                    <label style="font-size:0.82rem; font-weight:700; color:#f8fafc; text-transform:uppercase;">Tidal Volume Ratio:</label>
+                    <span id="ventSliderVal3d" style="font-size:1.1rem; font-weight:800; color:#38bdf8;">6.0 mL/kg PBW</span>
+                  </div>
+
+                  <input type="range" id="ventTargetSlider3d" min="4.0" max="8.0" step="0.5" value="6.0" style="width:100%; cursor:pointer;">
+
+                  <div style="display:flex; justify-content:space-between; gap:4px; margin-top:0.75rem;">
+                    <button class="btn-cinematic" data-vt-step="4.0" style="flex:1; padding:0.35rem 0.2rem; font-size:0.76rem;">4 mL/kg</button>
+                    <button class="btn-cinematic" data-vt-step="5.0" style="flex:1; padding:0.35rem 0.2rem; font-size:0.76rem;">5 mL/kg</button>
+                    <button class="btn-cinematic primary" data-vt-step="6.0" style="flex:1; padding:0.35rem 0.2rem; font-size:0.76rem; border-color:#38bdf8;">6 mL/kg (ARDS)</button>
+                    <button class="btn-cinematic" data-vt-step="7.0" style="flex:1; padding:0.35rem 0.2rem; font-size:0.76rem;">7 mL/kg</button>
+                    <button class="btn-cinematic" data-vt-step="8.0" style="flex:1; padding:0.35rem 0.2rem; font-size:0.76rem;">8 mL/kg</button>
+                  </div>
+                </div>
+
+                <!-- Stat Deck: PBW, Target VT, Driving Pressure, Static Compliance -->
+                <div class="adv-stat-deck">
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Predicted Body Weight</span>
+                    <span class="adv-stat-val" id="ventPbwOut3d">70.6 <span class="unit">kg</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Target Tidal Volume</span>
+                    <span class="adv-stat-val" id="ventTargetVtOut3d">424 <span class="unit">mL</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Driving Pressure (ΔP)</span>
+                    <span class="adv-stat-val" id="ventDpOut3d">16 <span class="unit">cmH2O</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Static Compliance (Crs)</span>
+                    <span class="adv-stat-val" id="ventComplianceOut3d">26.5 <span class="unit">mL/cmH2O</span></span>
+                  </div>
+                </div>
+
+                <div style="font-size:0.83rem; color:#cbd5e1; margin-top:0.5rem; line-height:1.5;">
+                  <strong>Driving Pressure Status:</strong> <span id="ventDpStatus3d">Optimal range is ΔP ≤ 14 cmH2O.</span><br>
+                  <strong>Compliance Assessment:</strong> <span id="ventComplianceStatus3d">Calculated when VT and driving pressure are valid.</span>
+                </div>
+
+                <details class="adv-source-drawer">
+                  <summary>Formula &amp; Clinical Evidence</summary>
+                  <p style="margin:0.5rem 0 0 0;">
+                    <strong>PBW (Devine Formula):</strong> Male = 50 + 0.91 × (Height − 152.4) kg | Female = 45.5 + 0.91 × (Height − 152.4) kg.<br>
+                    <strong>Driving Pressure:</strong> ΔP = Pplat − PEEP. Threshold ≤ 14 cmH2O associated with lower mortality in ARDS (Amato et al. NEJM 2015).<br>
+                    <strong>Compliance:</strong> Crs = VT ÷ (Pplat − PEEP). Assumes passive ventilation without patient effort and adequate inspiratory hold.
+                  </p>
+                </details>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 ENGINE 4: MAXIMUM ALLOWABLE BLOOD LOSS (MABL)
+                 ========================================== -->
+            <div class="calc-box fade" id="mablCard3d">
+              <div class="calc-box-header">
+                <div>
+                  <h3 class="calc-box-title">🩸 Maximum Allowable Blood Loss (MABL)</h3>
+                  <div class="calc-box-subtitle">Validated Gross / Bourke Hemodilution Formulation with Age-Specific Physiological EBV</div>
+                </div>
+              </div>
+              <div class="calc-box-body">
+                <div id="mablErrorAlert3d" class="adv-alert-banner"></div>
+
+                <div class="adv-form-grid">
+                  <div class="adv-field">
+                    <label for="mablWeight3d">Patient Weight (kg) *</label>
+                    <div class="adv-input-wrap">
+                      <input id="mablWeight3d" class="adv-input" type="number" step="0.5" min="0.5" max="300" value="70">
+                      <span class="adv-input-unit">kg</span>
+                    </div>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="mablCategory3d">Patient Population (EBV Factor) *</label>
+                    <select id="mablCategory3d" class="adv-select">
+                      <option value="adult_male" selected>Adult Male (70 mL/kg)</option>
+                      <option value="adult_female">Adult Female (65 mL/kg)</option>
+                      <option value="obese_adult">Obese Adult (60 mL/kg)</option>
+                      <option value="child">Child 1–12 yr (70 mL/kg)</option>
+                      <option value="infant">Infant 1–12 mo (80 mL/kg)</option>
+                      <option value="fullterm_neonate">Full-term Neonate &lt; 1 mo (85 mL/kg)</option>
+                      <option value="premature_neonate">Premature Neonate &lt; 37 wk (95 mL/kg)</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="mablMode3d">Calculation Mode *</label>
+                    <select id="mablMode3d" class="adv-select">
+                      <option value="hb" selected>Hemoglobin (Hb, g/dL)</option>
+                      <option value="hct">Hematocrit (Hct, %)</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="mablInit3d">Initial Value (<span class="mablValUnit3d">g/dL</span>) *</label>
+                    <input id="mablInit3d" class="adv-input" type="number" step="0.1" value="14.0">
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="mablTarget3d">Target Transfusion Trigger (<span class="mablValUnit3d">g/dL</span>) *</label>
+                    <input id="mablTarget3d" class="adv-input" type="number" step="0.1" value="8.0">
+                  </div>
+                </div>
+
+                <!-- Stat Deck -->
+                <div class="adv-stat-deck">
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Estimated Blood Volume</span>
+                    <span class="adv-stat-val" id="mablEbvOut3d">4900 <span class="unit">mL</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Calculated MABL</span>
+                    <span class="adv-stat-val" id="mablLossOut3d" style="color:#10b981;">2100 <span class="unit">mL</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Volume Deficit</span>
+                    <span class="adv-stat-val" id="mablPctOut3d">42.9 <span class="unit">% of EBV</span></span>
+                  </div>
+                </div>
+
+                <div style="font-size:0.83rem; color:#94a3b8; margin:0.75rem 0;">
+                  <strong style="color:#cbd5e1;">Formula Used:</strong> <span id="mablFormula3d">MABL = EBV × [(Hb_initial − Hb_target) ÷ Hb_initial]</span>
+                </div>
+
+                <div style="background:rgba(2,132,199,0.08); border-left:3px solid #38bdf8; border-radius:6px; padding:0.75rem 1rem; font-size:0.82rem; color:#cbd5e1;">
+                  <span id="mablDisclaimer3d">Clinical transfusion decisions should incorporate ongoing blood loss, hemodynamics, tissue perfusion and point-of-care laboratory data.</span>
+                </div>
+
+                <details class="adv-source-drawer">
+                  <summary>Validated Citations</summary>
+                  <p style="margin:0.5rem 0 0 0;">
+                    Gross JB. Estimating allowable blood loss: corrected for dilution. Anesthesiology 1983; 58(3): 277-280; Bourke DL, Smith TC. Estimating allowable hemodilution. Anesthesiology 1974; 41: 609-612.
+                  </p>
+                </details>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 ENGINE 5: MASSIVE TRANSFUSION / MTP SUPPORT
+                 ========================================== -->
+            <div class="calc-box fade" id="mtpCard3d">
+              <div class="calc-box-header">
+                <div>
+                  <h3 class="calc-box-title">🩸 Major Haemorrhage / MTP Support</h3>
+                  <div class="calc-box-subtitle">Population-Specific Trigger Criteria (Trauma, Obstetric, Cardiac) &amp; Balanced Cooler Ratios</div>
+                </div>
+              </div>
+              <div class="calc-box-body">
+                <div class="adv-form-grid">
+                  <div class="adv-field">
+                    <label for="mtpDomain3d">Clinical Domain / Setting *</label>
+                    <select id="mtpDomain3d" class="adv-select">
+                      <option value="trauma" selected>TRAUMA (PROPPR / ABC Score)</option>
+                      <option value="obstetric">OBSTETRIC (PPH / RCOG / WOMAN)</option>
+                      <option value="cardiac">CARDIAC SURGERY (EACTS / Post-CPB)</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="mtpRatio3d">Component Strategy *</label>
+                    <select id="mtpRatio3d" class="adv-select">
+                      <option value="1:1:1" selected>Balanced 1:1:1 (RBC : FFP : Plt)</option>
+                      <option value="2:1:1">2:1:1 Ratio</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="mtpCoolers3d">MTP Coolers / Packs</label>
+                    <input id="mtpCoolers3d" class="adv-input" type="number" min="1" max="10" value="1">
+                  </div>
+                </div>
+
+                <!-- Products Summary Deck -->
+                <div class="adv-stat-deck">
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Packed Red Blood Cells (PRBC)</span>
+                    <span class="adv-stat-val" id="mtpRbcOut3d">4 <span class="unit">units</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Fresh Frozen Plasma (FFP)</span>
+                    <span class="adv-stat-val" id="mtpFfpOut3d">4 <span class="unit">units</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Platelets</span>
+                    <span class="adv-stat-val" id="mtpPltOut3d">1 <span class="unit">adult dose</span></span>
+                  </div>
+                </div>
+
+                <!-- Domain-Specific Triggers & Adjuncts -->
+                <div class="adv-decision-box">
+                  <h5>📋 Major Haemorrhage Activation Criteria:</h5>
+                  <ul id="mtpTriggersList3d">
+                    <li>ABC Score ≥ 2 or Shock Index ≥ 1.0 with active bleeding</li>
+                  </ul>
+                </div>
+
+                <div class="adv-decision-box" style="border-left-color:#f59e0b; margin-top:0.75rem;">
+                  <h5 style="color:#fbbf24;">💉 Mandatory Hemostatic Adjuncts &amp; Targets:</h5>
+                  <ul id="mtpAdjunctsList3d">
+                    <li>Tranexamic Acid (TXA): 1 g IV over 10 min within 3 hours.</li>
+                  </ul>
+                </div>
+
+                <details class="adv-source-drawer">
+                  <summary>Guideline Citations</summary>
+                  <p style="margin:0.5rem 0 0 0;" id="mtpCitation3d">
+                    Holcomb JB, et al. PROPPR Trial. JAMA 2015; 313: 471–482; RCOG Green-top Guideline 52; WOMAN Trial 2017.
+                  </p>
+                </details>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 ENGINE 6: VISCOELASTIC TESTING GUIDE (TEG / ROTEM)
+                 ========================================== -->
+            <div class="calc-box fade" id="viscoCard3d">
+              <div class="calc-box-header">
+                <div>
+                  <h3 class="calc-box-title">📊 Viscoelastic Testing Guide (TEG &amp; ROTEM)</h3>
+                  <div class="calc-box-subtitle">Goal-Directed Coagulopathy Assessment &amp; Targeted Haemostatic Decision Pathways</div>
+                </div>
+              </div>
+              <div class="calc-box-body">
+                <div class="adv-form-grid">
+                  <div class="adv-field" style="grid-column: 1 / -1;">
+                    <label for="viscoModality3d">Testing Modality *</label>
+                    <select id="viscoModality3d" class="adv-select" style="font-weight:700; color:#38bdf8;">
+                      <option value="teg" selected>TEG 5000 / TEG 6s (Citrated Kaolin)</option>
+                      <option value="rotem">ROTEM delta / sigma (EXTEM &amp; FIBTEM)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- TEG Form -->
+                <div id="tegInputSection3d">
+                  <div class="adv-form-grid">
+                    <div class="adv-field">
+                      <label for="tegR3d">R Time (min, normal 5–10)</label>
+                      <input id="tegR3d" class="adv-input" type="number" step="0.1" placeholder="e.g. 7.5">
+                    </div>
+                    <div class="adv-field">
+                      <label for="tegK3d">K Time (min, normal 1–3)</label>
+                      <input id="tegK3d" class="adv-input" type="number" step="0.1" placeholder="e.g. 2.0">
+                    </div>
+                    <div class="adv-field">
+                      <label for="tegAlpha3d">α Angle (°, normal 53–72°)</label>
+                      <input id="tegAlpha3d" class="adv-input" type="number" step="1" placeholder="e.g. 62">
+                    </div>
+                    <div class="adv-field">
+                      <label for="tegMa3d">MA (mm, normal 50–70)</label>
+                      <input id="tegMa3d" class="adv-input" type="number" step="1" placeholder="e.g. 58">
+                    </div>
+                    <div class="adv-field">
+                      <label for="tegLy303d">LY30 (%, normal 0–3%)</label>
+                      <input id="tegLy303d" class="adv-input" type="number" step="0.1" placeholder="e.g. 1.2">
+                    </div>
+                    <div class="adv-field">
+                      <label for="tegFf3d">FF MA (mm, normal 13–24)</label>
+                      <input id="tegFf3d" class="adv-input" type="number" step="1" placeholder="Optional">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ROTEM Form -->
+                <div id="rotemInputSection3d" style="display:none;">
+                  <div class="adv-form-grid">
+                    <div class="adv-field">
+                      <label for="rotemExtemCt3d">EXTEM CT (s, normal 38–79)</label>
+                      <input id="rotemExtemCt3d" class="adv-input" type="number" step="1" placeholder="e.g. 65">
+                    </div>
+                    <div class="adv-field">
+                      <label for="rotemExtemA53d">EXTEM A5 (mm, normal ≥ 35)</label>
+                      <input id="rotemExtemA53d" class="adv-input" type="number" step="1" placeholder="e.g. 38">
+                    </div>
+                    <div class="adv-field">
+                      <label for="rotemExtemMcf3d">EXTEM MCF (mm, normal 50–72)</label>
+                      <input id="rotemExtemMcf3d" class="adv-input" type="number" step="1" placeholder="e.g. 58">
+                    </div>
+                    <div class="adv-field">
+                      <label for="rotemExtemMl3d">EXTEM ML (%, normal &lt; 15%)</label>
+                      <input id="rotemExtemMl3d" class="adv-input" type="number" step="1" placeholder="e.g. 5">
+                    </div>
+                    <div class="adv-field">
+                      <label for="rotemFibtemA53d">FIBTEM A5 (mm, normal ≥ 9)</label>
+                      <input id="rotemFibtemA53d" class="adv-input" type="number" step="1" placeholder="e.g. 12">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Decision Tree Output -->
+                <div class="adv-decision-box" style="border-left-color:#38bdf8;">
+                  <h5>🔍 Identified Coagulopathy Components:</h5>
+                  <ul id="viscoFindingsList3d">
+                    <li>Enter point-of-care viscoelastic parameters above to evaluate.</li>
+                  </ul>
+                </div>
+
+                <div class="adv-decision-box" style="border-left-color:#10b981; margin-top:0.75rem;">
+                  <h5 style="color:#34d399;">🎯 Targeted Haemostatic Interventions:</h5>
+                  <ul id="viscoRecsList3d">
+                    <li>Guideline-directed product selections will appear here.</li>
+                  </ul>
+                </div>
+
+                <details class="adv-source-drawer">
+                  <summary>Guideline Citations &amp; Parameter Rules</summary>
+                  <p style="margin:0.5rem 0 0 0;" id="viscoCitation3d">
+                    ESAIC Guidelines on Management of Severe Perioperative Bleeding 2023; NICE Diagnostic Guidance DG45 (2022).
+                  </p>
+                </details>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    
 
         <!-- TAB CONTENT: PAEDIATRIC (DRUG CHART, AIRWAY SIZER & COPUR) -->
         <div class="calc-tab-content active" id="tabPaeds3d" data-tab-name="paeds">
@@ -2217,6 +2857,644 @@
           <button class="calc-nav-pill" data-calc-tab="all" role="tab" aria-selected="false">✦ View All</button>
         </div>
 
+        
+        <!-- TAB CONTENT: ADVANCED / DYNAMIC CALCULATORS (Lite Layer) -->
+        <div class="calc-tab-content" id="tabAdvanced" data-tab-name="advanced">
+          <div class="calc-group-title fade" id="groupAdvanced">
+            <span>Advanced / Dynamic Calculation Engines</span>
+            <span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8; border:1px solid rgba(56,189,248,0.35);">⚡ Interactive Workstation</span>
+          </div>
+
+          <!-- Hero Banner & Safety Notice -->
+          <div class="adv-hero-banner fade">
+            <h2 style="font-size:1.65rem; margin:0 0 6px 0; color:#fff;">Interactive Clinical Calculation Engines</h2>
+            <p style="margin:0; font-size:0.92rem; color:#94a3b8; line-height:1.5;">
+              Real-time pharmacokinetic simulators, bidirectional vasopressor titration, mechanical ventilation mechanics, MABL, MTP decision support, and viscoelastic analysis. Calculations update dynamically with instant validation.
+            </p>
+            <div class="adv-safety-disclaimer">
+              <span style="font-size:1.2rem;">⚠️</span>
+              <div>
+                <strong>Clinical Reference Notice:</strong> Educational and clinical reference tool. Verify patient-specific factors, actual drug concentrations, institutional protocols, and manufacturer guidelines before clinical administration.
+              </div>
+            </div>
+          </div>
+
+          <div class="adv-grid">
+
+            <!-- ==========================================
+                 ENGINE 1: VASOACTIVE INFUSION CALCULATOR
+                 ========================================== -->
+            <div class="calc-box fade" id="vasoCard">
+              <div class="calc-box-header">
+                <div>
+                  <h3 class="calc-box-title">⚡ Vasoactive Infusion Calculator</h3>
+                  <div class="calc-box-subtitle">Bidirectional Dose ↔ Pump Rate Titration (Norepinephrine, Vasopressin, Dobutamine)</div>
+                </div>
+              </div>
+              <div class="calc-box-body">
+                <div id="vasoErrorAlert" class="adv-alert-banner"></div>
+
+                <div class="adv-form-grid">
+                  <div class="adv-field">
+                    <label for="vasoDrug">Agent Selection *</label>
+                    <select id="vasoDrug" class="adv-select">
+                      <option value="norepinephrine">Norepinephrine (Noradrenaline)</option>
+                      <option value="vasopressin">Vasopressin (AVP / ADH)</option>
+                      <option value="dobutamine">Dobutamine</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field" id="vasoWeightRow">
+                    <label for="vasoWeight">Patient Weight (kg) *</label>
+                    <div class="adv-input-wrap">
+                      <input id="vasoWeight" class="adv-input" type="number" step="0.5" min="1" max="300" value="70">
+                      <span class="adv-input-unit">kg</span>
+                    </div>
+                  </div>
+
+                  <div class="adv-field" style="grid-column: 1 / -1;">
+                    <label for="vasoPreset">Concentration Formulation *</label>
+                    <select id="vasoPreset" class="adv-select">
+                      <!-- Populated dynamically based on drug -->
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Custom Concentration Fields (Only shown when custom selected) -->
+                <div class="adv-form-grid" id="vasoCustomConcFields" style="display:none; background:rgba(0,0,0,0.25); padding:0.9rem; border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
+                  <div class="adv-field">
+                    <label for="vasoCustomAmount">Drug Amount (mg or units)</label>
+                    <input id="vasoCustomAmount" class="adv-input" type="number" step="0.1" value="4">
+                  </div>
+                  <div class="adv-field">
+                    <label for="vasoCustomVol">Diluent Volume (mL)</label>
+                    <input id="vasoCustomVol" class="adv-input" type="number" step="1" value="50">
+                  </div>
+                </div>
+
+                <!-- Hidden inputs holding active conc in mcg/mL or units/mL -->
+                <input type="hidden" id="vasoConcMcgMl" value="80">
+                <input type="hidden" id="vasoConcUnitsMl" value="0.4">
+
+                <!-- Bidirectional Titration Panel -->
+                <div style="background:rgba(2,132,199,0.08); border:1px solid rgba(56,189,248,0.25); border-radius:10px; padding:1.1rem; margin:1.25rem 0;">
+                  <div style="font-size:0.82rem; font-weight:700; text-transform:uppercase; color:#38bdf8; margin-bottom:0.75rem; letter-spacing:0.5px;">
+                    ⇄ Live Bidirectional Conversion (Type in either box)
+                  </div>
+                  <div class="adv-form-grid" style="margin-bottom:0;">
+                    <div class="adv-field">
+                      <label for="vasoDoseInput">Target Dose Rate (<span id="vasoDoseUnitLabel">mcg/kg/min</span>)</label>
+                      <div class="adv-input-wrap">
+                        <input id="vasoDoseInput" class="adv-input" type="number" step="0.01" min="0" value="0.05" style="border-color:#38bdf8; font-size:1.1rem;">
+                      </div>
+                      <select id="vasoDoseModeSel" class="adv-select" style="margin-top:0.35rem; padding:0.3rem 0.5rem; font-size:0.8rem;">
+                        <option value="mcg_kg_min">mcg/kg/min</option>
+                        <option value="mcg_min">mcg/min</option>
+                      </select>
+                    </div>
+
+                    <div class="adv-field" style="display:flex; justify-content:center; align-items:center;">
+                      <span style="font-size:1.8rem; color:#38bdf8; opacity:0.6;">⇄</span>
+                    </div>
+
+                    <div class="adv-field">
+                      <label for="vasoRateInput">Pump Infusion Rate (mL/hr)</label>
+                      <div class="adv-input-wrap">
+                        <input id="vasoRateInput" class="adv-input" type="number" step="0.1" min="0" value="2.63" style="border-color:#10b981; font-size:1.1rem;">
+                        <span class="adv-input-unit">mL/hr</span>
+                      </div>
+                      <span style="font-size:0.75rem; color:#94a3b8; margin-top:0.35rem;">Enter mL/hr to back-calculate dose</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Simultaneous Live Output Stat Deck -->
+                <div class="adv-stat-deck">
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Weight-Adjusted</span>
+                    <span class="adv-stat-val" id="vasoOutDoseKg">0.05 <span class="unit">mcg/kg/min</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Absolute Mass/Rate</span>
+                    <span class="adv-stat-val" id="vasoOutDoseTotal">3.5 <span class="unit">mcg/min</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Volumetric Pump</span>
+                    <span class="adv-stat-val" id="vasoOutRate">2.63 <span class="unit">mL/hr</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Concentration</span>
+                    <span class="adv-stat-val" id="vasoOutConc">80 <span class="unit">mcg/mL</span></span>
+                  </div>
+                </div>
+
+                <div style="margin-top:1rem; padding:0.75rem 1rem; background:rgba(0,0,0,0.3); border-radius:8px; border-left:3px solid #38bdf8; font-size:0.85rem; line-height:1.5;">
+                  <strong style="color:#f8fafc;">Reference Dosing Range:</strong>
+                  <span id="vasoRefRange" style="color:#cbd5e1; margin-left:4px;">Initial: 0.02 – 0.05 mcg/kg/min. Titrate to MAP ≥ 65 mmHg.</span>
+                </div>
+
+                <div style="margin-top:0.6rem; font-size:0.78rem; color:#f59e0b; display:flex; align-items:center; gap:6px;">
+                  <span>⚠️</span>
+                  <span>Verify drug concentration and institutional infusion protocol before starting or changing an infusion.</span>
+                </div>
+
+                <details class="adv-source-drawer">
+                  <summary>Source &amp; Assumptions</summary>
+                  <p style="margin:0.5rem 0 0 0;">
+                    <strong>Authoritative Sources:</strong> <span id="vasoCitation">Surviving Sepsis Campaign (SSC) 2021/2026; UK Intensive Care Society (ICS) Infusion Standards 2023; DailyMed FDA.</span><br>
+                    <strong>Assumptions:</strong> Calculations assume accurate volumetric syringe driver or peristaltic infusion pump. Microgram and unit calculations are mathematically distinct. Vasopressin is strictly non-weight-based and never converted to mass.
+                  </p>
+                </details>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 ENGINE 2: TCI PHARMACOKINETIC MODEL SIMULATOR
+                 ========================================== -->
+            <div class="calc-box fade" id="tciCard">
+              <div class="calc-box-header">
+                <div>
+                  <h3 class="calc-box-title">🧠 TCI Pharmacokinetic Model Simulator</h3>
+                  <div class="calc-box-subtitle">3-Compartment Propofol (Schnider, Marsh) &amp; Remifentanil (Minto) Analytical Dynamic Simulation</div>
+                </div>
+                <span class="badge" id="tciDrugBadge">Propofol (Schnider 1998)</span>
+              </div>
+              <div class="calc-box-body">
+                <div id="tciErrorAlert" class="adv-alert-banner"></div>
+
+                <div class="adv-form-grid">
+                  <div class="adv-field">
+                    <label for="tciModel">Pharmacokinetic Model *</label>
+                    <select id="tciModel" class="adv-select">
+                      <option value="schnider">Propofol — Schnider (1998) [Age, Sex, Ht, Wt, LBM]</option>
+                      <option value="marsh">Propofol — Marsh (1991) [Weight-only]</option>
+                      <option value="minto">Remifentanil — Minto (1997) [Age, Sex, Ht, Wt, LBM]</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field" id="tciCovAgeRow">
+                    <label for="tciAge">Age (years)</label>
+                    <input id="tciAge" class="adv-input" type="number" min="18" max="100" value="40">
+                  </div>
+
+                  <div class="adv-field" id="tciCovSexRow">
+                    <label for="tciSex">Sex</label>
+                    <select id="tciSex" class="adv-select">
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field" id="tciCovHeightRow">
+                    <label for="tciHeight">Height (cm)</label>
+                    <input id="tciHeight" class="adv-input" type="number" min="120" max="220" value="175">
+                  </div>
+
+                  <div class="adv-field" id="tciCovWeightRow">
+                    <label for="tciWeight">Weight (kg) *</label>
+                    <input id="tciWeight" class="adv-input" type="number" min="30" max="250" value="70">
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="tciTargetMode">Targeting Mode *</label>
+                    <select id="tciTargetMode" class="adv-select">
+                      <option value="plasma">Plasma Target (Cp)</option>
+                      <option value="effect_site">Effect-Site Target (Ce)</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="tciTargetConc">Target Concentration (<span id="tciTargetUnit">mcg/mL</span>)</label>
+                    <input id="tciTargetConc" class="adv-input" type="number" step="0.1" min="0.1" max="20" value="4.0">
+                  </div>
+                </div>
+
+                <!-- Duration Toggles -->
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin:0.75rem 0 0.5rem 0;">
+                  <span style="font-size:0.8rem; font-weight:600; text-transform:uppercase; color:#94a3b8; letter-spacing:0.5px;">Simulation Window:</span>
+                  <div style="display:flex; gap:6px;">
+                    <button class="btn-cinematic" data-tci-duration="5" style="padding:0.25rem 0.65rem; font-size:0.75rem;">5m</button>
+                    <button class="btn-cinematic" data-tci-duration="10" style="padding:0.25rem 0.65rem; font-size:0.75rem;">10m</button>
+                    <button class="btn-cinematic active" data-tci-duration="30" style="padding:0.25rem 0.65rem; font-size:0.75rem;">30m</button>
+                    <button class="btn-cinematic" data-tci-duration="60" style="padding:0.25rem 0.65rem; font-size:0.75rem;">60m</button>
+                  </div>
+                </div>
+
+                <!-- Dynamic Canvas Plot -->
+                <div class="adv-canvas-wrap">
+                  <canvas id="tciCanvas" class="adv-canvas"></canvas>
+                </div>
+
+                <!-- Stat Deck: PK Parameters & Bolus Requirement -->
+                <div class="adv-stat-deck">
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Initial Induction Bolus</span>
+                    <span class="adv-stat-val" id="tciBolusOut">--</span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">V1 (Central)</span>
+                    <span class="adv-stat-val" id="tciV1Out">--</span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">V2 (Rapid Periph)</span>
+                    <span class="adv-stat-val" id="tciV2Out">--</span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">V3 (Slow Periph)</span>
+                    <span class="adv-stat-val" id="tciV3Out">--</span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">ke0 (Effect Rate)</span>
+                    <span class="adv-stat-val" id="tciKe0Out">--</span>
+                  </div>
+                </div>
+
+                <div style="font-size:0.8rem; color:#94a3b8; margin:0.5rem 0;">
+                  <strong style="color:#cbd5e1;">Model Covariates:</strong> <span id="tciCovSummary">--</span>
+                </div>
+
+                <div style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.3); border-radius:8px; padding:0.75rem 1rem; font-size:0.82rem; color:#fbbf24; margin-top:0.75rem;">
+                  <strong>Model-Predicted Concentration:</strong> Educational simulation only. TCI models are population estimates. Actual plasma and biophase concentrations vary substantially due to cardiac output, hypovolemia, hypothermia, and organ perfusion.
+                </div>
+
+                <details class="adv-source-drawer">
+                  <summary>Model Specifications &amp; Primary Sources</summary>
+                  <p style="margin:0.5rem 0 0 0;">
+                    <strong>Primary Citation:</strong> <span id="tciCitation">Schnider TW, et al. Anesthesiology 1998; 88: 1170–1182.</span><br>
+                    <strong>Known Limitations:</strong> <span id="tciLimitations">James LBM formula produces paradoxical drops in calculated LBM in severe obesity (BMI > 35 kg/m²).</span>
+                  </p>
+                </details>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 ENGINE 3: PREDICTED BODY WEIGHT & VENTILATION MECHANICS
+                 ========================================== -->
+            <div class="calc-box fade" id="ventCard">
+              <div class="calc-box-header">
+                <div>
+                  <h3 class="calc-box-title">🫁 Ventilation Mechanics &amp; PBW Engine</h3>
+                  <div class="calc-box-subtitle">ARDSNet Predicted Body Weight, 4–8 mL/kg VT Ladder, Driving Pressure &amp; Static Compliance</div>
+                </div>
+              </div>
+              <div class="calc-box-body">
+                <div id="ventErrorAlert" class="adv-alert-banner"></div>
+
+                <div class="adv-form-grid">
+                  <div class="adv-field">
+                    <label for="ventSex">Biological Sex *</label>
+                    <select id="ventSex" class="adv-select">
+                      <option value="male">Male (Devine Base: 50.0 kg)</option>
+                      <option value="female">Female (Devine Base: 45.5 kg)</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="ventHeight">Height (cm) *</label>
+                    <div class="adv-input-wrap">
+                      <input id="ventHeight" class="adv-input" type="number" min="120" max="230" value="175">
+                      <span class="adv-input-unit">cm</span>
+                    </div>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="ventPplat">Plateau Pressure (Pplat, cmH2O)</label>
+                    <div class="adv-input-wrap">
+                      <input id="ventPplat" class="adv-input" type="number" step="1" min="0" max="60" placeholder="e.g. 24" value="24">
+                      <span class="adv-input-unit">cmH2O</span>
+                    </div>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="ventPeep">Total PEEP (cmH2O)</label>
+                    <div class="adv-input-wrap">
+                      <input id="ventPeep" class="adv-input" type="number" step="1" min="0" max="30" placeholder="e.g. 8" value="8">
+                      <span class="adv-input-unit">cmH2O</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tidal Volume Target Slider & Step Buttons -->
+                <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:1rem; margin:1rem 0;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
+                    <label style="font-size:0.82rem; font-weight:700; color:#f8fafc; text-transform:uppercase;">Tidal Volume Ratio:</label>
+                    <span id="ventSliderVal" style="font-size:1.1rem; font-weight:800; color:#38bdf8;">6.0 mL/kg PBW</span>
+                  </div>
+
+                  <input type="range" id="ventTargetSlider" min="4.0" max="8.0" step="0.5" value="6.0" style="width:100%; cursor:pointer;">
+
+                  <div style="display:flex; justify-content:space-between; gap:4px; margin-top:0.75rem;">
+                    <button class="btn-cinematic" data-vt-step="4.0" style="flex:1; padding:0.35rem 0.2rem; font-size:0.76rem;">4 mL/kg</button>
+                    <button class="btn-cinematic" data-vt-step="5.0" style="flex:1; padding:0.35rem 0.2rem; font-size:0.76rem;">5 mL/kg</button>
+                    <button class="btn-cinematic primary" data-vt-step="6.0" style="flex:1; padding:0.35rem 0.2rem; font-size:0.76rem; border-color:#38bdf8;">6 mL/kg (ARDS)</button>
+                    <button class="btn-cinematic" data-vt-step="7.0" style="flex:1; padding:0.35rem 0.2rem; font-size:0.76rem;">7 mL/kg</button>
+                    <button class="btn-cinematic" data-vt-step="8.0" style="flex:1; padding:0.35rem 0.2rem; font-size:0.76rem;">8 mL/kg</button>
+                  </div>
+                </div>
+
+                <!-- Stat Deck: PBW, Target VT, Driving Pressure, Static Compliance -->
+                <div class="adv-stat-deck">
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Predicted Body Weight</span>
+                    <span class="adv-stat-val" id="ventPbwOut">70.6 <span class="unit">kg</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Target Tidal Volume</span>
+                    <span class="adv-stat-val" id="ventTargetVtOut">424 <span class="unit">mL</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Driving Pressure (ΔP)</span>
+                    <span class="adv-stat-val" id="ventDpOut">16 <span class="unit">cmH2O</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Static Compliance (Crs)</span>
+                    <span class="adv-stat-val" id="ventComplianceOut">26.5 <span class="unit">mL/cmH2O</span></span>
+                  </div>
+                </div>
+
+                <div style="font-size:0.83rem; color:#cbd5e1; margin-top:0.5rem; line-height:1.5;">
+                  <strong>Driving Pressure Status:</strong> <span id="ventDpStatus">Optimal range is ΔP ≤ 14 cmH2O.</span><br>
+                  <strong>Compliance Assessment:</strong> <span id="ventComplianceStatus">Calculated when VT and driving pressure are valid.</span>
+                </div>
+
+                <details class="adv-source-drawer">
+                  <summary>Formula &amp; Clinical Evidence</summary>
+                  <p style="margin:0.5rem 0 0 0;">
+                    <strong>PBW (Devine Formula):</strong> Male = 50 + 0.91 × (Height − 152.4) kg | Female = 45.5 + 0.91 × (Height − 152.4) kg.<br>
+                    <strong>Driving Pressure:</strong> ΔP = Pplat − PEEP. Threshold ≤ 14 cmH2O associated with lower mortality in ARDS (Amato et al. NEJM 2015).<br>
+                    <strong>Compliance:</strong> Crs = VT ÷ (Pplat − PEEP). Assumes passive ventilation without patient effort and adequate inspiratory hold.
+                  </p>
+                </details>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 ENGINE 4: MAXIMUM ALLOWABLE BLOOD LOSS (MABL)
+                 ========================================== -->
+            <div class="calc-box fade" id="mablCard">
+              <div class="calc-box-header">
+                <div>
+                  <h3 class="calc-box-title">🩸 Maximum Allowable Blood Loss (MABL)</h3>
+                  <div class="calc-box-subtitle">Validated Gross / Bourke Hemodilution Formulation with Age-Specific Physiological EBV</div>
+                </div>
+              </div>
+              <div class="calc-box-body">
+                <div id="mablErrorAlert" class="adv-alert-banner"></div>
+
+                <div class="adv-form-grid">
+                  <div class="adv-field">
+                    <label for="mablWeight">Patient Weight (kg) *</label>
+                    <div class="adv-input-wrap">
+                      <input id="mablWeight" class="adv-input" type="number" step="0.5" min="0.5" max="300" value="70">
+                      <span class="adv-input-unit">kg</span>
+                    </div>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="mablCategory">Patient Population (EBV Factor) *</label>
+                    <select id="mablCategory" class="adv-select">
+                      <option value="adult_male" selected>Adult Male (70 mL/kg)</option>
+                      <option value="adult_female">Adult Female (65 mL/kg)</option>
+                      <option value="obese_adult">Obese Adult (60 mL/kg)</option>
+                      <option value="child">Child 1–12 yr (70 mL/kg)</option>
+                      <option value="infant">Infant 1–12 mo (80 mL/kg)</option>
+                      <option value="fullterm_neonate">Full-term Neonate &lt; 1 mo (85 mL/kg)</option>
+                      <option value="premature_neonate">Premature Neonate &lt; 37 wk (95 mL/kg)</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="mablMode">Calculation Mode *</label>
+                    <select id="mablMode" class="adv-select">
+                      <option value="hb" selected>Hemoglobin (Hb, g/dL)</option>
+                      <option value="hct">Hematocrit (Hct, %)</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="mablInit">Initial Value (<span class="mablValUnit">g/dL</span>) *</label>
+                    <input id="mablInit" class="adv-input" type="number" step="0.1" value="14.0">
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="mablTarget">Target Transfusion Trigger (<span class="mablValUnit">g/dL</span>) *</label>
+                    <input id="mablTarget" class="adv-input" type="number" step="0.1" value="8.0">
+                  </div>
+                </div>
+
+                <!-- Stat Deck -->
+                <div class="adv-stat-deck">
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Estimated Blood Volume</span>
+                    <span class="adv-stat-val" id="mablEbvOut">4900 <span class="unit">mL</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Calculated MABL</span>
+                    <span class="adv-stat-val" id="mablLossOut" style="color:#10b981;">2100 <span class="unit">mL</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Volume Deficit</span>
+                    <span class="adv-stat-val" id="mablPctOut">42.9 <span class="unit">% of EBV</span></span>
+                  </div>
+                </div>
+
+                <div style="font-size:0.83rem; color:#94a3b8; margin:0.75rem 0;">
+                  <strong style="color:#cbd5e1;">Formula Used:</strong> <span id="mablFormula">MABL = EBV × [(Hb_initial − Hb_target) ÷ Hb_initial]</span>
+                </div>
+
+                <div style="background:rgba(2,132,199,0.08); border-left:3px solid #38bdf8; border-radius:6px; padding:0.75rem 1rem; font-size:0.82rem; color:#cbd5e1;">
+                  <span id="mablDisclaimer">Clinical transfusion decisions should incorporate ongoing blood loss, hemodynamics, tissue perfusion and point-of-care laboratory data.</span>
+                </div>
+
+                <details class="adv-source-drawer">
+                  <summary>Validated Citations</summary>
+                  <p style="margin:0.5rem 0 0 0;">
+                    Gross JB. Estimating allowable blood loss: corrected for dilution. Anesthesiology 1983; 58(3): 277-280; Bourke DL, Smith TC. Estimating allowable hemodilution. Anesthesiology 1974; 41: 609-612.
+                  </p>
+                </details>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 ENGINE 5: MASSIVE TRANSFUSION / MTP SUPPORT
+                 ========================================== -->
+            <div class="calc-box fade" id="mtpCard">
+              <div class="calc-box-header">
+                <div>
+                  <h3 class="calc-box-title">🩸 Major Haemorrhage / MTP Support</h3>
+                  <div class="calc-box-subtitle">Population-Specific Trigger Criteria (Trauma, Obstetric, Cardiac) &amp; Balanced Cooler Ratios</div>
+                </div>
+              </div>
+              <div class="calc-box-body">
+                <div class="adv-form-grid">
+                  <div class="adv-field">
+                    <label for="mtpDomain">Clinical Domain / Setting *</label>
+                    <select id="mtpDomain" class="adv-select">
+                      <option value="trauma" selected>TRAUMA (PROPPR / ABC Score)</option>
+                      <option value="obstetric">OBSTETRIC (PPH / RCOG / WOMAN)</option>
+                      <option value="cardiac">CARDIAC SURGERY (EACTS / Post-CPB)</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="mtpRatio">Component Strategy *</label>
+                    <select id="mtpRatio" class="adv-select">
+                      <option value="1:1:1" selected>Balanced 1:1:1 (RBC : FFP : Plt)</option>
+                      <option value="2:1:1">2:1:1 Ratio</option>
+                    </select>
+                  </div>
+
+                  <div class="adv-field">
+                    <label for="mtpCoolers">MTP Coolers / Packs</label>
+                    <input id="mtpCoolers" class="adv-input" type="number" min="1" max="10" value="1">
+                  </div>
+                </div>
+
+                <!-- Products Summary Deck -->
+                <div class="adv-stat-deck">
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Packed Red Blood Cells (PRBC)</span>
+                    <span class="adv-stat-val" id="mtpRbcOut">4 <span class="unit">units</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Fresh Frozen Plasma (FFP)</span>
+                    <span class="adv-stat-val" id="mtpFfpOut">4 <span class="unit">units</span></span>
+                  </div>
+                  <div class="adv-stat-box">
+                    <span class="adv-stat-label">Platelets</span>
+                    <span class="adv-stat-val" id="mtpPltOut">1 <span class="unit">adult dose</span></span>
+                  </div>
+                </div>
+
+                <!-- Domain-Specific Triggers & Adjuncts -->
+                <div class="adv-decision-box">
+                  <h5>📋 Major Haemorrhage Activation Criteria:</h5>
+                  <ul id="mtpTriggersList">
+                    <li>ABC Score ≥ 2 or Shock Index ≥ 1.0 with active bleeding</li>
+                  </ul>
+                </div>
+
+                <div class="adv-decision-box" style="border-left-color:#f59e0b; margin-top:0.75rem;">
+                  <h5 style="color:#fbbf24;">💉 Mandatory Hemostatic Adjuncts &amp; Targets:</h5>
+                  <ul id="mtpAdjunctsList">
+                    <li>Tranexamic Acid (TXA): 1 g IV over 10 min within 3 hours.</li>
+                  </ul>
+                </div>
+
+                <details class="adv-source-drawer">
+                  <summary>Guideline Citations</summary>
+                  <p style="margin:0.5rem 0 0 0;" id="mtpCitation">
+                    Holcomb JB, et al. PROPPR Trial. JAMA 2015; 313: 471–482; RCOG Green-top Guideline 52; WOMAN Trial 2017.
+                  </p>
+                </details>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 ENGINE 6: VISCOELASTIC TESTING GUIDE (TEG / ROTEM)
+                 ========================================== -->
+            <div class="calc-box fade" id="viscoCard">
+              <div class="calc-box-header">
+                <div>
+                  <h3 class="calc-box-title">📊 Viscoelastic Testing Guide (TEG &amp; ROTEM)</h3>
+                  <div class="calc-box-subtitle">Goal-Directed Coagulopathy Assessment &amp; Targeted Haemostatic Decision Pathways</div>
+                </div>
+              </div>
+              <div class="calc-box-body">
+                <div class="adv-form-grid">
+                  <div class="adv-field" style="grid-column: 1 / -1;">
+                    <label for="viscoModality">Testing Modality *</label>
+                    <select id="viscoModality" class="adv-select" style="font-weight:700; color:#38bdf8;">
+                      <option value="teg" selected>TEG 5000 / TEG 6s (Citrated Kaolin)</option>
+                      <option value="rotem">ROTEM delta / sigma (EXTEM &amp; FIBTEM)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- TEG Form -->
+                <div id="tegInputSection">
+                  <div class="adv-form-grid">
+                    <div class="adv-field">
+                      <label for="tegR">R Time (min, normal 5–10)</label>
+                      <input id="tegR" class="adv-input" type="number" step="0.1" placeholder="e.g. 7.5">
+                    </div>
+                    <div class="adv-field">
+                      <label for="tegK">K Time (min, normal 1–3)</label>
+                      <input id="tegK" class="adv-input" type="number" step="0.1" placeholder="e.g. 2.0">
+                    </div>
+                    <div class="adv-field">
+                      <label for="tegAlpha">α Angle (°, normal 53–72°)</label>
+                      <input id="tegAlpha" class="adv-input" type="number" step="1" placeholder="e.g. 62">
+                    </div>
+                    <div class="adv-field">
+                      <label for="tegMa">MA (mm, normal 50–70)</label>
+                      <input id="tegMa" class="adv-input" type="number" step="1" placeholder="e.g. 58">
+                    </div>
+                    <div class="adv-field">
+                      <label for="tegLy30">LY30 (%, normal 0–3%)</label>
+                      <input id="tegLy30" class="adv-input" type="number" step="0.1" placeholder="e.g. 1.2">
+                    </div>
+                    <div class="adv-field">
+                      <label for="tegFf">FF MA (mm, normal 13–24)</label>
+                      <input id="tegFf" class="adv-input" type="number" step="1" placeholder="Optional">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ROTEM Form -->
+                <div id="rotemInputSection" style="display:none;">
+                  <div class="adv-form-grid">
+                    <div class="adv-field">
+                      <label for="rotemExtemCt">EXTEM CT (s, normal 38–79)</label>
+                      <input id="rotemExtemCt" class="adv-input" type="number" step="1" placeholder="e.g. 65">
+                    </div>
+                    <div class="adv-field">
+                      <label for="rotemExtemA5">EXTEM A5 (mm, normal ≥ 35)</label>
+                      <input id="rotemExtemA5" class="adv-input" type="number" step="1" placeholder="e.g. 38">
+                    </div>
+                    <div class="adv-field">
+                      <label for="rotemExtemMcf">EXTEM MCF (mm, normal 50–72)</label>
+                      <input id="rotemExtemMcf" class="adv-input" type="number" step="1" placeholder="e.g. 58">
+                    </div>
+                    <div class="adv-field">
+                      <label for="rotemExtemMl">EXTEM ML (%, normal &lt; 15%)</label>
+                      <input id="rotemExtemMl" class="adv-input" type="number" step="1" placeholder="e.g. 5">
+                    </div>
+                    <div class="adv-field">
+                      <label for="rotemFibtemA5">FIBTEM A5 (mm, normal ≥ 9)</label>
+                      <input id="rotemFibtemA5" class="adv-input" type="number" step="1" placeholder="e.g. 12">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Decision Tree Output -->
+                <div class="adv-decision-box" style="border-left-color:#38bdf8;">
+                  <h5>🔍 Identified Coagulopathy Components:</h5>
+                  <ul id="viscoFindingsList">
+                    <li>Enter point-of-care viscoelastic parameters above to evaluate.</li>
+                  </ul>
+                </div>
+
+                <div class="adv-decision-box" style="border-left-color:#10b981; margin-top:0.75rem;">
+                  <h5 style="color:#34d399;">🎯 Targeted Haemostatic Interventions:</h5>
+                  <ul id="viscoRecsList">
+                    <li>Guideline-directed product selections will appear here.</li>
+                  </ul>
+                </div>
+
+                <details class="adv-source-drawer">
+                  <summary>Guideline Citations &amp; Parameter Rules</summary>
+                  <p style="margin:0.5rem 0 0 0;" id="viscoCitation">
+                    ESAIC Guidelines on Management of Severe Perioperative Bleeding 2023; NICE Diagnostic Guidance DG45 (2022).
+                  </p>
+                </details>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    
+
         <!-- TAB CONTENT: PAEDIATRIC (Lite View) -->
         <div class="calc-tab-content active" id="tabPaeds" data-tab-name="paeds">
         <div class="calc-group-title fade" id="groupPaeds">
@@ -4171,6 +5449,8 @@
 <script src="paeds-pdf-export.js"></script>
 <script src="abg-engine.js"></script>
 <script src="calculators.js"></script>
+<script src="advanced-calc-engine.js"></script>
+<script src="advanced-calc-ui.js"></script>
 
 <!-- UI Controller Script wiring 3D and Lite Views -->
 <script>
@@ -5792,6 +7072,7 @@
     const hash = (window.location.hash || "").replace("#", "").toLowerCase();
     if (hash) {
       if (hash === "all") initialTab = "all";
+      else if (hash.includes("adv") || hash.includes("vaso") || hash.includes("tci") || hash.includes("vent") || hash.includes("mabl") || hash.includes("mtp") || hash.includes("teg") || hash.includes("rotem")) initialTab = "advanced";
       else if (hash.includes("abg")) initialTab = "abg";
       else if (hash.includes("emerg") || hash.includes("parkland")) initialTab = "emergency";
       else if (hash.includes("periop") || hash.includes("wilson") || hash.includes("dasi") || hash.includes("stop") || hash.includes("bmi") || hash.includes("child") || hash.includes("mets")) initialTab = "periop";

@@ -1209,3 +1209,265 @@ body:not(.dark) .abg-preset-btn:hover {
   color: #fff;
   border-color: #0284c7;
 }
+
+/* ==========================================================================
+   ADVANCED / DYNAMIC ANAESTHESIA CALCULATION ENGINES
+   ========================================================================== */
+.adv-hero-banner {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.adv-safety-disclaimer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  margin-top: 1rem;
+}
+
+.adv-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.adv-card {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.adv-card:hover {
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.adv-card-header {
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.adv-card-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.adv-card-subtitle {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-top: 0.2rem;
+}
+
+.adv-card-body {
+  padding: 1.5rem;
+}
+
+.adv-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.adv-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.adv-field label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #94a3b8;
+}
+
+.adv-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.adv-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+  color: #f8fafc;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  transition: border-color 0.18s;
+}
+
+.adv-input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.adv-input-unit {
+  position: absolute;
+  right: 0.85rem;
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.adv-select {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+  color: #f8fafc;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+.adv-stat-deck {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.85rem;
+  margin: 1.25rem 0;
+}
+
+.adv-stat-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.adv-stat-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #94a3b8;
+  margin-bottom: 0.3rem;
+}
+
+.adv-stat-val {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #38bdf8;
+  letter-spacing: -0.5px;
+}
+
+.adv-stat-val .unit {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-left: 2px;
+}
+
+.adv-canvas-wrap {
+  position: relative;
+  width: 100%;
+  background: #0c1220;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1.25rem 0;
+}
+
+.adv-canvas {
+  width: 100%;
+  height: 260px;
+  display: block;
+}
+
+.adv-alert-banner {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  display: none;
+}
+
+.adv-source-drawer {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-top: 1.25rem;
+  font-size: 0.82rem;
+  color: #94a3b8;
+}
+
+.adv-source-drawer summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #cbd5e1;
+  user-select: none;
+}
+
+.adv-source-drawer summary:hover {
+  color: #38bdf8;
+}
+
+.adv-decision-box {
+  background: rgba(0, 0, 0, 0.25);
+  border-left: 3px solid #38bdf8;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.adv-decision-box h5 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+  color: #f8fafc;
+}
+
+.adv-decision-box ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+@media (max-width: 768px) {
+  .adv-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .adv-stat-deck {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
