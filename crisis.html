@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRISIS MODE • KnockoutNotes Emergency Reference</title>
+  <meta name="description" content="High-contrast clinical emergency reference for anaesthesia crisis management: CICO (DAS 2015), Malignant Hyperthermia (MHAUS), and LAST (ASRA 2020) with weight-based calculators.">
+  <link rel="icon" type="image/png" href="/knockoutnotes_icon.png">
+  <link rel="stylesheet" href="crisis.css">
+</head>
+<body class="crisis-body">
+
+  <!-- TOP EMERGENCY BAR -->
+  <header class="cm-top-bar">
+    <div class="cm-top-inner">
+      <div class="cm-brand-group">
+        <span class="cm-emergency-badge">EMERGENCY</span>
+        <button id="cmBackBtn" class="cm-back-btn" style="display: none;">← Crisis Mode</button>
+        <span class="cm-title">CRISIS MODE</span>
+      </div>
+      <div>
+        <a href="index.html" class="cm-exit-btn">Exit to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="cm-container">
+    
+    <!-- Medical Safety Guardrail Statement -->
+    <div class="cm-disclaimer-banner">
+      <strong>Clinical Emergency Reference:</strong> Follow current institutional protocols, local guidelines, and latest source guidance. Verify drug formulation, concentration, and dose before administration.
+      <div style="margin-top: 4px; font-size: 11px; color: #64748b;">
+        Guideline checked: September 2026 &bull; Last verified against source: September 2026 &bull; Zero patient data stored
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         VIEW 0: CRISIS SELECTION HUB
+         ====================================================================== -->
+    <section id="view-hub" class="cm-view active">
+      <div class="cm-screen-header">
+        <div class="cm-screen-kicker">Immediate Crisis Access</div>
+        <h1 class="cm-screen-title">Select Clinical Emergency</h1>
+        <p class="cm-screen-desc">Tap any emergency below to open verified protocols and weight-based dosing calculators immediately.</p>
+      </div>
+
+      <div class="cm-hub-grid">
+        <!-- Crisis 1: CICO -->
+        <a href="#cico" class="cm-crisis-card" data-crisis-target="cico">
+          <div class="cm-card-header">
+            <span class="cm-card-pill danger">Airway Emergency</span>
+            <span class="cm-card-arrow">→</span>
+          </div>
+          <h2 class="cm-card-title">CICO</h2>
+          <div class="cm-card-subtitle">Can't Intubate, Can't Oxygenate &bull; Difficult Airway Society (DAS) Algorithm &bull; Emergency Front of Neck Access (eFONA)</div>
+        </a>
+
+        <!-- Crisis 2: Malignant Hyperthermia -->
+        <a href="#mh" class="cm-crisis-card" data-crisis-target="mh">
+          <div class="cm-card-header">
+            <span class="cm-card-pill danger">Hypermetabolic Crisis</span>
+            <span class="cm-card-arrow">→</span>
+          </div>
+          <h2 class="cm-card-title">MALIGNANT HYPERTHERMIA</h2>
+          <div class="cm-card-subtitle">MHAUS Protocol &bull; Dantrolene 2.5 mg/kg Actual Weight &bull; Dantrium/Revonto vs Ryanodex Reconstitution Calculator</div>
+        </a>
+
+        <!-- Crisis 3: LAST -->
+        <a href="#last" class="cm-crisis-card" data-crisis-target="last">
+          <div class="cm-card-header">
+            <span class="cm-card-pill danger">Toxicity &bull; Cardiac Arrest</span>
+            <span class="cm-card-arrow">→</span>
+          </div>
+          <h2 class="cm-card-title">LAST</h2>
+          <div class="cm-card-subtitle">Local Anaesthetic Systemic Toxicity &bull; ASRA Checklist &bull; 20% Lipid Emulsion Calculator &bull; Critical ACLS Differences</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         VIEW 1: CICO (CAN'T INTUBATE, CAN'T OXYGENATE)
+         ====================================================================== -->
+    <section id="view-cico" class="cm-view">
+      <div class="cm-screen-header">
+        <div class="cm-screen-kicker">Emergency Protocol &bull; Difficult Airway Society</div>
+        <h1 class="cm-screen-title">CICO: Can't Intubate, Can't Oxygenate</h1>
+        <p class="cm-screen-desc">Management of unanticipated difficult tracheal intubation in adults. Progress systematically through Plans A &rarr; B &rarr; C &rarr; D.</p>
+        <div class="cm-screen-meta">Source: Difficult Airway Society (DAS) 2015 Guidelines</div>
+      </div>
+
+      <!-- Immediate Actions -->
+      <div class="cm-section danger-priority">
+        <div class="cm-section-header">
+          <span class="cm-section-title">⚡ 1. Immediate Actions</span>
+        </div>
+        <div class="cm-section-body">
+          <ul class="cm-checklist">
+            <li class="cm-checklist-item">
+              <div class="cm-check-box"></div>
+              <div class="cm-item-content">
+                <div class="cm-item-title">Declare Airway Emergency to Theatre Team</div>
+                <div class="cm-item-desc">Call explicitly for senior anaesthetic help, ENT/surgical support, and difficult airway trolley.</div>
+              </div>
+            </li>
+            <li class="cm-checklist-item">
+              <div class="cm-check-box"></div>
+              <div class="cm-item-content">
+                <div class="cm-item-title">Ensure 100% Oxygen Delivery</div>
+                <div class="cm-item-desc">High-flow oxygen with verified circuit integrity and flush.</div>
+              </div>
+            </li>
+            <li class="cm-checklist-item">
+              <div class="cm-check-box"></div>
+              <div class="cm-item-content">
+                <div class="cm-item-title">Confirm Full Neuromuscular Blockade</div>
+                <div class="cm-item-desc">Ensure complete paralysis before declaring failure of intubation or facemask ventilation.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- DAS Algorithm Sequence: Plans A, B, C, D -->
+      <div class="cm-section">
+        <div class="cm-section-header">
+          <span class="cm-section-title">📋 2. DAS Guideline Sequence</span>
+        </div>
+        <div class="cm-section-body">
+          
+          <!-- Plan A -->
+          <div class="cm-plan-box cm-plan-a">
+            <div class="cm-plan-header">
+              <span>PLAN A &bull; Tracheal Intubation</span>
+              <span>Max 3 + 1 Attempts</span>
+            </div>
+            <div class="cm-plan-body">
+              <ul style="padding-left: 18px; line-height: 1.6;">
+                <li><strong>Optimize position:</strong> Head and neck positioning (ramped if obese, sniffing position).</li>
+                <li><strong>Equipment:</strong> Videolaryngoscopy recommended early; use bougie or stylet.</li>
+                <li><strong>Relaxation:</strong> Ensure profound neuromuscular paralysis.</li>
+                <li><strong>Limit attempts:</strong> Maximum 3 attempts (plus 1 by an experienced colleague). Maintain oxygenation between attempts.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Plan B -->
+          <div class="cm-plan-box cm-plan-b">
+            <div class="cm-plan-header">
+              <span>PLAN B &bull; SAD Oxygenation &amp; Ventilation</span>
+              <span>Max 3 Attempts</span>
+            </div>
+            <div class="cm-plan-body">
+              <ul style="padding-left: 18px; line-height: 1.6;">
+                <li><strong>Device:</strong> 2nd generation Supraglottic Airway Device (SAD) strongly preferred.</li>
+                <li><strong>Limit attempts:</strong> Maximum 3 attempts. Change size or device if failed.</li>
+                <li><strong>If successful:</strong> Oxygenate, confirm capnography trace. Plan stop and think: Wake patient, intubate via SAD, proceed with SAD, or surgical tracheostomy.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Plan C -->
+          <div class="cm-plan-box cm-plan-c">
+            <div class="cm-plan-header">
+              <span>PLAN C &bull; Facemask Ventilation</span>
+              <span>Final Attempt</span>
+            </div>
+            <div class="cm-plan-body">
+              <ul style="padding-left: 18px; line-height: 1.6;">
+                <li><strong>Technique:</strong> 2-person facemask ventilation with oral (Guedel) and/or nasopharyngeal airway adjuncts.</li>
+                <li><strong>Paralysis check:</strong> Verify complete neuromuscular block. (Reverse rocuronium/vecuronium with Sugammadex 16 mg/kg if waking the patient is immediately possible).</li>
+                <li><strong>If ventilation impossible:</strong> DECLARE "CAN'T INTUBATE, CAN'T OXYGENATE" (CICO).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Plan D: CICO Declared -->
+          <div class="cm-plan-box cm-plan-d">
+            <div class="cm-plan-header">
+              <span>🚨 PLAN D &bull; Emergency Front of Neck Access (eFONA)</span>
+              <span>SCALPEL - BOUGIE - TUBE</span>
+            </div>
+            <div class="cm-plan-body">
+              <p style="color: #fca5a5; font-weight: 700; margin-bottom: 10px;">
+                CICO DECLARED: Immediate scalpel cricothyroidotomy. Do NOT delay for further non-surgical attempts.
+              </p>
+
+              <div class="cm-efona-steps">
+                <div class="cm-efona-step">
+                  <div class="cm-step-num">1</div>
+                  <div class="cm-step-content">
+                    <strong>Position &amp; Laryngeal Handshake</strong>
+                    <p>Extend patient's neck fully. Stabilize larynx with non-dominant hand ("laryngeal handshake") to locate the cricothyroid membrane.</p>
+                  </div>
+                </div>
+
+                <div class="cm-efona-step">
+                  <div class="cm-step-num">2</div>
+                  <div class="cm-step-content">
+                    <strong>Scalpel Stab &amp; Caudal Turn</strong>
+                    <p>Transverse stab incision through cricothyroid membrane using size 10 scalpel. Turn blade 90&deg; so sharp edge points caudally (towards feet).</p>
+                  </div>
+                </div>
+
+                <div class="cm-efona-step">
+                  <div class="cm-step-num">3</div>
+                  <div class="cm-step-content">
+                    <strong>Bougie Insertion</strong>
+                    <p>Slide coud&eacute;-tip bougie into trachea alongside flat of scalpel blade into the lumen (aiming towards carina). Remove scalpel.</p>
+                  </div>
+                </div>
+
+                <div class="cm-efona-step">
+                  <div class="cm-step-num">4</div>
+                  <div class="cm-step-content">
+                    <strong>Railroad Cuffed 6.0 mm Tube</strong>
+                    <p>Railroad a cuffed 6.0 mm (or 5.0 mm) endotracheal tube over bougie into trachea. Inflate cuff, ventilate, and confirm with continuous waveform capnography.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- What to Avoid -->
+      <div class="cm-section">
+        <div class="cm-section-header">
+          <span class="cm-section-title">⚠️ 3. What to Avoid</span>
+        </div>
+        <div class="cm-section-body">
+          <div class="cm-warning-box" style="margin-top: 0;">
+            <div class="cm-warning-title">Pitfalls &amp; Delays to Avoid in CICO</div>
+            <ul class="cm-warning-list">
+              <li>Do NOT make repeated intubation attempts beyond Plan A limits (worsens laryngeal trauma and bleeding).</li>
+              <li>Do NOT delay declaring CICO while waiting for secondary rescue equipment or ENT arrival.</li>
+              <li>Do NOT perform needle cricothyroidotomy if equipment or expertise for scalpel technique is ready (DAS 2015 prioritizes scalpel-bougie-tube).</li>
+              <li>Do NOT release cricoid/laryngeal stabilization until bougie is securely inside tracheal lumen.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ongoing Management -->
+      <div class="cm-section">
+        <div class="cm-section-header">
+          <span class="cm-section-title">🏥 4. Ongoing Management</span>
+        </div>
+        <div class="cm-section-body">
+          <ul style="padding-left: 18px; line-height: 1.6; font-size: 13px;">
+            <li>Secure airway tube mechanically (ties/sutures); maintain 100% oxygenation.</li>
+            <li>Maintain anesthesia and analgesia once oxygenation is re-established.</li>
+            <li>Infiltrate local anesthetic with adrenaline around stoma if not already done.</li>
+            <li>Arrange formal surgical tracheostomy or airway examination in theatre.</li>
+            <li>Postoperative ICU admission; comprehensive airway debrief, clinical incident documentation, and difficult airway registry notification.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- References -->
+      <div class="cm-section">
+        <div class="cm-section-header">
+          <span class="cm-section-title">📖 5. Official References</span>
+        </div>
+        <div class="cm-section-body">
+          <div class="cm-references-box">
+            <div class="cm-ref-item">
+              <div class="cm-ref-org">Difficult Airway Society (DAS)</div>
+              <div class="cm-ref-title">Difficult Airway Society 2015 guidelines for management of unanticipated difficult tracheal intubation in adults</div>
+              <div style="font-size: 11px; color: #64748b;">Frerk C, Mitchell VS, McNarry AF, et al. British Journal of Anaesthesia 2015; 115(6): 827–848.</div>
+              <a href="https://das.uk.com/guidelines/algorithms" target="_blank" rel="noopener noreferrer" class="cm-ref-link">View Official DAS Guideline &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         VIEW 2: MALIGNANT HYPERTHERMIA (MHAUS)
+         ====================================================================== -->
+    <section id="view-mh" class="cm-view">
+      <div class="cm-screen-header">
+        <div class="cm-screen-kicker">Acute Hypermetabolic Emergency &bull; MHAUS Protocol</div>
+        <h1 class="cm-screen-title">Malignant Hyperthermia (MH)</h1>
+        <p class="cm-screen-desc">Triggered by volatile anaesthetics (sevoflurane, desflurane, isoflurane) or succinylcholine. Acute hypermetabolic muscle state.</p>
+        <div class="cm-screen-meta">Source: Malignant Hyperthermia Association of the United States (MHAUS) &bull; MHAUS Hotline: 1-800-644-9737</div>
+      </div>
+
+      <!-- Immediate Actions -->
+      <div class="cm-section danger-priority">
+        <div class="cm-section-header">
+          <span class="cm-section-title">⚡ 1. Immediate Actions</span>
+        </div>
+        <div class="cm-section-body">
+          <ul class="cm-checklist">
+            <li class="cm-checklist-item">
+              <div class="cm-check-box"></div>
+              <div class="cm-item-content">
+                <div class="cm-item-title">Discontinue All Triggering Agents</div>
+                <div class="cm-item-desc">Turn off volatile vaporizers immediately; do NOT give succinylcholine. Maintain anesthesia with IV propofol/opioids.</div>
+              </div>
+            </li>
+            <li class="cm-checklist-item">
+              <div class="cm-check-box"></div>
+              <div class="cm-item-content">
+                <div class="cm-item-title">Hyperventilate with 100% Oxygen</div>
+                <div class="cm-item-desc">High flow (&ge;10 L/min) at 2 to 3 times normal minute ventilation. Insert activated charcoal filters on inspiratory and expiratory limbs if available.</div>
+              </div>
+            </li>
+            <li class="cm-checklist-item">
+              <div class="cm-check-box"></div>
+              <div class="cm-item-content">
+                <div class="cm-item-title">Call for MH Cart &amp; Emergency Help</div>
+                <div class="cm-item-desc">Mobilize theatre staff to start reconstituting dantrolene immediately. Call MHAUS 24/7 Hotline: <strong>1-800-644-9737</strong>.</div>
+              </div>
+            </li>
+            <li class="cm-checklist-item">
+              <div class="cm-check-box"></div>
+              <div class="cm-item-content">
+                <div class="cm-item-title">Administer Dantrolene Immediately</div>
+                <div class="cm-item-desc">Initial dose <strong>2.5 mg/kg IV based on ACTUAL body weight</strong>. Repeat as needed until signs resolve.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Weight-Based Dantrolene Calculator -->
+      <div class="cm-section">
+        <div class="cm-section-header">
+          <span class="cm-section-title">⚖️ 2. Dantrolene Weight-Based Calculator</span>
+          <span style="font-size: 11px; font-weight: 700; color: #38bdf8;">MHAUS Standard: 2.5 mg/kg</span>
+        </div>
+        <div class="cm-section-body">
+          <div class="cm-calc-box">
+            <div class="cm-calc-input-row">
+              <label class="cm-calc-label" for="mhWeightInput">Patient Weight (ACTUAL / True Body Weight):</label>
+              <div class="cm-calc-input-wrap">
+                <input type="number" id="mhWeightInput" class="cm-calc-input" value="70" min="1" max="300" step="0.5">
+                <span class="cm-calc-unit">kg</span>
+              </div>
+              <div class="cm-calc-quick-btns">
+                <button type="button" class="cm-calc-preset-btn" data-mh-preset="50">50 kg</button>
+                <button type="button" class="cm-calc-preset-btn" data-mh-preset="60">60 kg</button>
+                <button type="button" class="cm-calc-preset-btn" data-mh-preset="70">70 kg</button>
+                <button type="button" class="cm-calc-preset-btn" data-mh-preset="80">80 kg</button>
+                <button type="button" class="cm-calc-preset-btn" data-mh-preset="100">100 kg</button>
+              </div>
+            </div>
+
+            <div style="font-size: 12px; color: #94a3b8; margin-bottom: 14px;">
+              * Note: MHAUS explicitly recommends <strong>Actual Body Weight</strong> rather than ideal body weight for initial dantrolene dosing.
+            </div>
+
+            <!-- Calculated Dose -->
+            <div class="cm-dose-grid">
+              <div class="cm-dose-card">
+                <div class="cm-dose-label">Initial Dose (2.5 mg/kg)</div>
+                <div class="cm-dose-value" id="mhOutputDose">175 mg</div>
+                <div class="cm-dose-sub">Repeat 2.5 mg/kg every 5–10 min if tachycardia, rigidity, or hypercarbia persist.</div>
+              </div>
+            </div>
+
+            <!-- Formulation Separation Cards -->
+            <div class="cm-formulation-grid">
+              
+              <!-- Dantrium / Revonto Formulation -->
+              <div class="cm-form-card">
+                <div class="cm-form-name">DANTRIUM &bull; REVONTO</div>
+                <div class="cm-form-vial-strength">20 mg Vial &bull; 60 mL Diluent</div>
+                <div class="cm-form-stat">
+                  <span>Required Vials:</span>
+                  <span class="cm-form-stat-val" id="mhOutputDantriumVials">9 vials</span>
+                </div>
+                <div class="cm-form-stat">
+                  <span>Diluent Required:</span>
+                  <span class="cm-form-stat-val" id="mhOutputDantriumVol">540 mL sterile water</span>
+                </div>
+                <div class="cm-form-stat">
+                  <span>Diluent Type:</span>
+                  <span class="cm-form-stat-val" style="color: #fbbf24;">Sterile Water WITHOUT Bacteriostatic</span>
+                </div>
+                <div class="cm-form-stat">
+                  <span>Volume per Vial:</span>
+                  <span class="cm-form-stat-val">60 mL / vial</span>
+                </div>
+                <div style="font-size: 11px; color: #94a3b8; margin-top: 10px;">
+                  * Vials strictly rounded UP to prevent underdosing. Shake vigorously until clear (approx 1-3 min/vial).
+                </div>
+              </div>
+
+              <!-- Ryanodex Formulation -->
+              <div class="cm-form-card highlight">
+                <div class="cm-form-name">RYANODEX</div>
+                <div class="cm-form-vial-strength">250 mg Vial &bull; 5 mL Diluent</div>
+                <div class="cm-form-stat">
+                  <span>Required Vials:</span>
+                  <span class="cm-form-stat-val" id="mhOutputRyanodexVials">1 vial</span>
+                </div>
+                <div class="cm-form-stat">
+                  <span>Diluent Required:</span>
+                  <span class="cm-form-stat-val" id="mhOutputRyanodexVol">5 mL sterile water</span>
+                </div>
+                <div class="cm-form-stat">
+                  <span>Diluent Type:</span>
+                  <span class="cm-form-stat-val" style="color: #38bdf8;">Sterile Water WITHOUT Bacteriostatic</span>
+                </div>
+                <div class="cm-form-stat">
+                  <span>Volume per Vial:</span>
+                  <span class="cm-form-stat-val">5 mL / vial</span>
+                </div>
+                <div style="font-size: 11px; color: #94a3b8; margin-top: 10px;">
+                  * Nanocrystal suspension: dissolves in &lt;1 minute into orange suspension.
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Critical Warnings / What to Avoid -->
+      <div class="cm-section">
+        <div class="cm-section-header">
+          <span class="cm-section-title">🚫 3. Critical Safety: What to Avoid</span>
+        </div>
+        <div class="cm-section-body">
+          <div class="cm-warning-box" style="margin-top: 0;">
+            <div class="cm-warning-title">MHAUS Safety Warnings</div>
+            <ul class="cm-warning-list">
+              <li><strong>AVOID CALCIUM CHANNEL BLOCKERS (verapamil, diltiazem):</strong> May cause lethal cardiovascular collapse and severe hyperkalemia when combined with dantrolene.</li>
+              <li><strong>DO NOT mix formulations:</strong> Use ONLY the specific formulation available in your hospital (Dantrium 20mg vs Ryanodex 250mg). Do NOT assume vial concentrations.</li>
+              <li><strong>DO NOT use bacteriostatic water:</strong> Reconstitute ONLY with sterile water for injection WITHOUT bacteriostatic agents.</li>
+              <li><strong>AVOID cold saline lavage once core temperature is &lt;38.5&deg;C:</strong> Stop active cooling to avoid hypothermia overshoot.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supportive Management -->
+      <div class="cm-section">
+        <div class="cm-section-header">
+          <span class="cm-section-title">🩺 4. Supportive Management &amp; Complications</span>
+        </div>
+        <div class="cm-section-body">
+          <div class="cm-support-grid">
+            
+            <div class="cm-support-card">
+              <div class="cm-support-title">Hyperkalemia (K &gt; 5.9)</div>
+              <div class="cm-support-text">
+                &bull; <strong>Calcium Chloride:</strong> 10 mg/kg (up to 1,000 mg) OR Calcium Gluconate 30 mg/kg (up to 3,000 mg) IV.<br>
+                &bull; <strong>Insulin + Glucose:</strong> 10 units regular insulin + 50 mL 50% Dextrose (D50W).<br>
+                &bull; <strong>Sodium Bicarbonate:</strong> 1&ndash;2 mEq/kg IV.
+              </div>
+            </div>
+
+            <div class="cm-support-card">
+              <div class="cm-support-title">Cooling Measures</div>
+              <div class="cm-support-text">
+                &bull; Infuse iced cold IV 0.9% saline (up to 1,000 mL/30 min).<br>
+                &bull; Apply ice packs to axillae, groin, and neck.<br>
+                &bull; <strong>STOP active cooling when core temperature &lt;38.5&deg;C</strong> (prevents hypothermia overshoot).
+              </div>
+            </div>
+
+            <div class="cm-support-card">
+              <div class="cm-support-title">Acidosis &amp; Hypercarbia</div>
+              <div class="cm-support-text">
+                &bull; Hyperventilate to normal PaCO2 with 100% O2.<br>
+                &bull; Sodium bicarbonate 1&ndash;2 mEq/kg IV for severe metabolic acidosis (guided by arterial blood gas / base deficit).
+              </div>
+            </div>
+
+            <div class="cm-support-card">
+              <div class="cm-support-title">Renal Protection &amp; Urine Output</div>
+              <div class="cm-support-text">
+                &bull; Target urine output &gt; 1&ndash;2 mL/kg/h to prevent acute kidney injury from rhabdomyolysis/myoglobinuria.<br>
+                &bull; Hydration with IV crystalloid. Consider furosemide 0.5&ndash;1 mg/kg if needed.
+              </div>
+            </div>
+
+            <div class="cm-support-card">
+              <div class="cm-support-title">Arrhythmia Management</div>
+              <div class="cm-support-text">
+                &bull; Correct hyperkalemia and acidosis first.<br>
+                &bull; Standard antiarrhythmics (amiodarone); <strong>NEVER give calcium channel blockers</strong>.
+              </div>
+            </div>
+
+            <div class="cm-support-card">
+              <div class="cm-support-title">Laboratory Monitoring</div>
+              <div class="cm-support-text">
+                &bull; Serial ABG, electrolytes, lactate, CK, urine myoglobin, coagulation profile, core temperature.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- References -->
+      <div class="cm-section">
+        <div class="cm-section-header">
+          <span class="cm-section-title">📖 5. Official References</span>
+        </div>
+        <div class="cm-section-body">
+          <div class="cm-references-box">
+            <div class="cm-ref-item">
+              <div class="cm-ref-org">Malignant Hyperthermia Association of the United States (MHAUS)</div>
+              <div class="cm-ref-title">Emergency Protocol for Malignant Hyperthermia &bull; Dantrolene Dosing and Reconstitution Guidelines</div>
+              <div style="font-size: 11px; color: #64748b;">MHAUS 24/7 Hotline: 1-800-644-9737 (US/Canada) | 001-209-417-3722 (International)</div>
+              <a href="https://www.mhaus.org" target="_blank" rel="noopener noreferrer" class="cm-ref-link">View Official MHAUS Protocol &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         VIEW 3: LAST (LOCAL ANAESTHETIC SYSTEMIC TOXICITY)
+         ====================================================================== -->
+    <section id="view-last" class="cm-view">
+      <div class="cm-screen-header">
+        <div class="cm-screen-kicker">ASRA Pain Medicine Checklist</div>
+        <h1 class="cm-screen-title">LAST: Local Anaesthetic Systemic Toxicity</h1>
+        <p class="cm-screen-desc">Acute central nervous system and cardiovascular toxicity following local anesthetic absorption or inadvertent intravascular injection.</p>
+        <div class="cm-screen-meta">Source: ASRA Pain Medicine Checklist for Treatment of LAST (2020 Update)</div>
+      </div>
+
+      <!-- Immediate Actions -->
+      <div class="cm-section danger-priority">
+        <div class="cm-section-header">
+          <span class="cm-section-title">⚡ 1. Immediate Actions</span>
+        </div>
+        <div class="cm-section-body">
+          <ul class="cm-checklist">
+            <li class="cm-checklist-item">
+              <div class="cm-check-box"></div>
+              <div class="cm-item-content">
+                <div class="cm-item-title">Stop Local Anesthetic Injection Immediately</div>
+                <div class="cm-item-desc">Cease drug administration. Maintain sterile field if feasible.</div>
+              </div>
+            </li>
+            <li class="cm-checklist-item">
+              <div class="cm-check-box"></div>
+              <div class="cm-item-content">
+                <div class="cm-item-title">Call for Help &amp; 20% Lipid Emulsion Kit</div>
+                <div class="cm-item-desc">Alert resuscitation team, airway support, and alert cardiopulmonary bypass / ECMO team early.</div>
+              </div>
+            </li>
+            <li class="cm-checklist-item">
+              <div class="cm-check-box"></div>
+              <div class="cm-item-content">
+                <div class="cm-item-title">Airway &amp; Oxygenation (Prevent Acidosis / Hypoxia)</div>
+                <div class="cm-item-desc">100% O2 with hyperventilation. Hypoxia and acidosis dramatically worsen local anesthetic toxicity.</div>
+              </div>
+            </li>
+            <li class="cm-checklist-item">
+              <div class="cm-check-box"></div>
+              <div class="cm-item-content">
+                <div class="cm-item-title">Suppress Seizures with Benzodiazepines</div>
+                <div class="cm-item-desc">Midazolam (1&ndash;2 mg IV titrations) preferred. Avoid large propofol doses in cardiovascular instability.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 20% Lipid Emulsion Calculator -->
+      <div class="cm-section">
+        <div class="cm-section-header">
+          <span class="cm-section-title">💧 2. 20% Lipid Emulsion Dosing Calculator</span>
+          <span style="font-size: 11px; font-weight: 700; color: #38bdf8;">ASRA 2020 Protocol</span>
+        </div>
+        <div class="cm-section-body">
+          <div class="cm-calc-box">
+            <div class="cm-calc-input-row">
+              <label class="cm-calc-label" for="lastWeightInput">Patient Weight:</label>
+              <div class="cm-calc-input-wrap">
+                <input type="number" id="lastWeightInput" class="cm-calc-input" value="70" min="1" max="300" step="0.5">
+                <span class="cm-calc-unit">kg</span>
+              </div>
+              <div class="cm-calc-quick-btns">
+                <button type="button" class="cm-calc-preset-btn" data-last-preset="50">50 kg</button>
+                <button type="button" class="cm-calc-preset-btn" data-last-preset="60">60 kg</button>
+                <button type="button" class="cm-calc-preset-btn" data-last-preset="70">70 kg</button>
+                <button type="button" class="cm-calc-preset-btn" data-last-preset="80">80 kg</button>
+                <button type="button" class="cm-calc-preset-btn" data-last-preset="100">100 kg</button>
+              </div>
+            </div>
+
+            <div style="font-size: 12px; color: #94a3b8; margin-bottom: 14px;">
+              * ASRA 2020 divides dosing at <strong>70 kg</strong>: weight-based if &lt;70 kg, simplified fixed-dose if &ge;70 kg.
+            </div>
+
+            <div class="cm-dose-grid">
+              
+              <!-- Bolus Card -->
+              <div class="cm-dose-card">
+                <div class="cm-dose-label">1. Initial Bolus (20% Lipid)</div>
+                <div class="cm-dose-value" id="lastOutputBolus">100 mL</div>
+                <div class="cm-dose-sub" id="lastOutputBolusSub">100 mL over 2–3 min (Fixed Dose for ≥70 kg)</div>
+              </div>
+
+              <!-- Infusion Card -->
+              <div class="cm-dose-card warning">
+                <div class="cm-dose-label">2. Continuous Infusion</div>
+                <div class="cm-dose-value" id="lastOutputInfusion">250 mL over 15–20 min</div>
+                <div class="cm-dose-sub" id="lastOutputInfusionSub">Pump / Gravity: ~250 mL bag over 15–20 min</div>
+              </div>
+
+              <!-- Max Dose Card -->
+              <div class="cm-dose-card info">
+                <div class="cm-dose-label">3. Max Cumulative Dose (12 mL/kg)</div>
+                <div class="cm-dose-value" id="lastOutputMax">840 mL</div>
+                <div class="cm-dose-sub">Absolute ceiling dose across all boluses and infusions.</div>
+              </div>
+
+              <!-- Refractory Card -->
+              <div class="cm-dose-card success">
+                <div class="cm-dose-label">4. If Cardiovascularly Unstable</div>
+                <div class="cm-dose-value" style="font-size: 18px;" id="lastOutputRepeat">Repeat bolus: 1–2 times (100 mL) if unstable</div>
+                <div class="cm-dose-sub">Double infusion rate to 0.5 mL/kg/min if persistent hypotension. Continue infusion for &ge;15 min after stability.</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Critical ACLS Differences Box -->
+      <div class="cm-section danger-priority">
+        <div class="cm-section-header">
+          <span class="cm-section-title">🚨 3. Critical: LAST Resuscitation vs Standard ACLS</span>
+        </div>
+        <div class="cm-section-body">
+          <div class="cm-warning-box" style="margin-top: 0;">
+            <div class="cm-warning-title">LAST RESUSCITATION IS DIFFERENT FROM STANDARD ACLS</div>
+            <ul class="cm-warning-list">
+              <li><strong>REDUCE EPINEPHRINE DOSES:</strong> Use small initial doses (&le;1 mcg/kg or 10&ndash;100 mcg boluses in adults). Avoid standard 1 mg ACLS boluses, which impair lipid resuscitation and induce severe arrhythmias.</li>
+              <li><strong>AVOID VASOPRESSIN:</strong> Vasopressin is contraindicated in LAST resuscitation.</li>
+              <li><strong>AVOID CALCIUM CHANNEL BLOCKERS &amp; BETA-BLOCKERS:</strong> Both worsen local anesthetic myocardial depression and precipitate refractory bradycardia/asystole.</li>
+              <li><strong>AVOID LOCAL ANESTHETIC ANTIARRHYTHMICS:</strong> Lidocaine, procainamide, and other class I sodium-channel blockers are strictly contraindicated (additive toxicity).</li>
+              <li><strong>SEIZURE CONTROL:</strong> Benzodiazepines (midazolam) preferred. Propofol should be avoided if hemodynamics are compromised.</li>
+              <li><strong>CARDIOPULMONARY BYPASS / ECMO:</strong> Alert perfusion and surgical teams immediately in severe or refractory arrest. Lipid rescue may require prolonged CPR until bypass is established.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ongoing Management & Monitoring -->
+      <div class="cm-section">
+        <div class="cm-section-header">
+          <span class="cm-section-title">⏱️ 4. Post-Resuscitation Observation</span>
+        </div>
+        <div class="cm-section-body">
+          <ul style="padding-left: 18px; line-height: 1.6; font-size: 13px;">
+            <li><strong>Minor neurotoxicity (seizure only):</strong> Minimum observation of <strong>4 to 6 hours</strong> in a high-dependency setting.</li>
+            <li><strong>Cardiovascular collapse / arrest:</strong> Minimum observation of <strong>12 to 24 hours</strong> in intensive care (risk of delayed recurrent toxicity as lipid is cleared).</li>
+            <li>Do not discharge patient home on day of event.</li>
+            <li>Check for pancreatitis, fat embolism, or laboratory interference (lipemia affects hemoglobin, electrolytes).</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- References -->
+      <div class="cm-section">
+        <div class="cm-section-header">
+          <span class="cm-section-title">📖 5. Official References</span>
+        </div>
+        <div class="cm-section-body">
+          <div class="cm-references-box">
+            <div class="cm-ref-item">
+              <div class="cm-ref-org">American Society of Regional Anesthesia and Pain Medicine (ASRA Pain Medicine)</div>
+              <div class="cm-ref-title">Checklist for Treatment of Local Anesthetic Systemic Toxicity (LAST) &bull; Executive Summary &amp; Guideline Update</div>
+              <div style="font-size: 11px; color: #64748b;">Neal JM, Neal EJ, Weinberg G. Regional Anesthesia and Pain Medicine 2020.</div>
+              <a href="https://www.asra.com/guidelines-articles/original-articles/guideline-item/asra-checklist-for-managing-local-anesthetic-systemic-toxicity" target="_blank" rel="noopener noreferrer" class="cm-ref-link">View Official ASRA LAST Checklist &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="crisis.js"></script>
+</body>
+</html>

@@ -1,3 +1,5 @@
 .wrangler/
 node_modules/
 scratch/
+__pycache__/
+*.pyc
