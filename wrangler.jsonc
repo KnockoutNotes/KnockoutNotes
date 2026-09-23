@@ -15,6 +15,16 @@
       "database_id": "c6ca400d-3cd7-4522-9006-7da7161ae301"
     }
   ],
+  // R2 bucket for the admin File Manager (worker/files.js). Create the bucket once with:
+  //   wrangler r2 bucket create knockoutnotes-media
+  // Until that bucket exists, uploads degrade gracefully to metadata-only records
+  // (see files.js isR2Configured()) rather than failing.
+  "r2_buckets": [
+    {
+      "binding": "R2_STORAGE",
+      "bucket_name": "knockoutnotes-media"
+    }
+  ],
   "vars": {
     "SITE_URL": "https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev",
     "ADMIN_USERNAME": "admin.knockoutnotes",

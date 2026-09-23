@@ -230,6 +230,41 @@
               </div>
             </div>
           </div>
+
+          <div class="adm-card" style="margin-top: 20px;">
+            <div class="adm-card-header">
+              <span class="adm-card-title">Visitor Breakdown (Cloudflare RUM / Web Analytics)</span>
+            </div>
+            <div class="adm-card-body">
+              <div id="analyticsRumAlert" class="alert-banner"></div>
+              <div class="adm-breakdown-grid">
+                <div class="adm-breakdown-panel">
+                  <div class="adm-breakdown-title">Top Pages</div>
+                  <div id="rumTopPaths" class="adm-breakdown-list"></div>
+                </div>
+                <div class="adm-breakdown-panel">
+                  <div class="adm-breakdown-title">Top Countries</div>
+                  <div id="rumTopCountries" class="adm-breakdown-list"></div>
+                </div>
+                <div class="adm-breakdown-panel">
+                  <div class="adm-breakdown-title">Devices</div>
+                  <div id="rumDevices" class="adm-breakdown-list"></div>
+                </div>
+                <div class="adm-breakdown-panel">
+                  <div class="adm-breakdown-title">Browsers</div>
+                  <div id="rumBrowsers" class="adm-breakdown-list"></div>
+                </div>
+                <div class="adm-breakdown-panel">
+                  <div class="adm-breakdown-title">Operating Systems</div>
+                  <div id="rumOperatingSystems" class="adm-breakdown-list"></div>
+                </div>
+                <div class="adm-breakdown-panel">
+                  <div class="adm-breakdown-title">Referrers</div>
+                  <div id="rumReferrers" class="adm-breakdown-list"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!-- ==========================================
@@ -523,6 +558,12 @@
                   <div class="adm-stat-header"><span class="adm-stat-title">Web Analytics</span></div>
                   <div class="adm-stat-value" id="statusAnalytics" style="font-size: 16px;">Checking...</div>
                   <div class="adm-stat-subtext">GraphQL Metric Service</div>
+                </div>
+
+                <div class="adm-stat-card">
+                  <div class="adm-stat-header"><span class="adm-stat-title">Visitor Breakdown (RUM)</span></div>
+                  <div class="adm-stat-value" id="statusRum" style="font-size: 16px;">Checking...</div>
+                  <div class="adm-stat-subtext">Top Pages / Countries / Devices</div>
                 </div>
               </div>
             </div>
