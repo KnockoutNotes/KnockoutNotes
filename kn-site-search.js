@@ -48,6 +48,7 @@
     if (t.includes("drug")) return "drugs.html";
     if (t.includes("critical") || t.includes("icu")) return "critical-care.html";
     if (t.includes("chamber") || t.includes("resuscitation") || t.includes("acls")) return "resuscitation-chamber.html";
+    if (t.includes("regional")) return "regional-anaesthesia.html";
     if (t.includes("workstation") || t.includes("ventilator") || t.includes("machine")) return "ventilator.html";
     if (t.includes("update") || t.includes("guideline")) return "recent-updates.html";
     if (t.includes("resource")) return "resources.html";
@@ -507,6 +508,190 @@
       Title: "PaO2/FiO2 Ratio, Berlin ARDS & A-a Gradient",
       Summary: "Arterial oxygenation ratio (PaO2/FiO2), expected PaO2, alveolar-arterial (A-a) oxygen gradient, and Berlin ARDS severity staging.",
       href: "calculators.html#abgHero"
+    },
+
+    // --- REGIONAL ANAESTHESIA (NERVE BLOCKS) — generated from regional-data.js ---
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia",
+      Title: "Regional Anaesthesia — Nerve Blocks (hub)",
+      Summary: "NYSORA-based nerve blocks: upper & lower limb, chest wall, abdominal wall, head & neck, neuraxial — sono-anatomy, exam line diagrams, 3D spread.",
+      href: "regional-anaesthesia.html"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Upper Limb",
+      Title: "Interscalene Brachial Plexus Block",
+      Summary: "Shoulder & proximal humerus • C5–C7. Local anaesthetic is placed around the superior and middle trunks (C5–C7 roots) between the anterior and middle scalene muscles. It gives reliable anaesthesia of the shoulder and upper arm; the inferior trunk (C8–T1) is usually spared. Tags: Brachial plexus, Roots / trunks, Phrenic risk.",
+      href: "regional-anaesthesia.html?block=interscalene"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Upper Limb",
+      Title: "Supraclavicular Brachial Plexus Block",
+      Summary: "Whole arm below the shoulder • trunks/divisions. Here the trunks and divisions are compact, lying posterolateral to the subclavian artery above the first rib. A single site gives rapid, dense anaesthesia of the arm, elbow, forearm and hand. Tags: Brachial plexus, Trunks / divisions, 'Spinal of the arm'.",
+      href: "regional-anaesthesia.html?block=supraclavicular"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Upper Limb",
+      Title: "Infraclavicular Brachial Plexus Block",
+      Summary: "Arm below the shoulder • cords. The three cords surround the second part of the axillary artery deep to pectoralis major and minor. One injection posterior to the artery (≈6 o'clock) that spreads in a U-shape around it blocks all three cords. Tags: Brachial plexus, Cords, Catheter-friendly.",
+      href: "regional-anaesthesia.html?block=infraclavicular"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Upper Limb",
+      Title: "Axillary Brachial Plexus Block",
+      Summary: "Elbow, forearm & hand • terminal branches. The terminal branches are scattered around the axillary artery: median superficial-lateral, ulnar superficial-medial and radial posterior. The musculocutaneous nerve has already left the sheath and lies between biceps and coracobrachialis — it must be blocked separately. Tags: Brachial plexus, Terminal branches, No phrenic risk.",
+      href: "regional-anaesthesia.html?block=axillary"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Upper Limb",
+      Title: "Suprascapular Nerve Block",
+      Summary: "Shoulder analgesia • diaphragm-sparing. The suprascapular nerve (C5–C6, from the superior trunk) supplies most of the posterior and superior shoulder joint and the supraspinatus/infraspinatus. It is blocked in the floor of the supraspinous fossa (posterior approach) or beneath the omohyoid (anterior approach). Tags: Shoulder analgesia, Diaphragm-sparing.",
+      href: "regional-anaesthesia.html?block=suprascapular"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Lower Limb",
+      Title: "Femoral Nerve Block",
+      Summary: "Anterior thigh, femur & knee • L2–L4. The femoral nerve lies 1–2 cm lateral to the femoral artery at the inguinal crease, deep to the fascia iliaca and on the iliopsoas. Local anaesthetic must reach beneath the fascia iliaca around the nerve. Tags: Lumbar plexus, L2–L4, Quadriceps weakness.",
+      href: "regional-anaesthesia.html?block=femoral"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Lower Limb",
+      Title: "Suprainguinal Fascia Iliaca Block",
+      Summary: "Hip & thigh analgesia • femoral + LFCN. A large volume deep to the fascia iliaca above the inguinal ligament spreads cranially over the iliacus to the femoral and lateral femoral cutaneous nerves (obturator inconsistently). Tags: Fascial plane, Volume-dependent, Hip fracture.",
+      href: "regional-anaesthesia.html?block=fascia-iliaca"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Lower Limb",
+      Title: "Pericapsular Nerve Group (PENG) Block",
+      Summary: "Anterior hip capsule • motor-sparing. Targets the articular branches of the femoral, obturator and accessory obturator nerves to the anterior hip capsule, in the plane between the psoas tendon and the iliopubic eminence. Tags: Hip capsule, Motor-sparing, Fascial plane.",
+      href: "regional-anaesthesia.html?block=peng"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Lower Limb",
+      Title: "Adductor Canal (Saphenous) Block",
+      Summary: "Knee analgesia • quadriceps-sparing. LA lateral to the femoral artery beneath sartorius in the adductor canal blocks the saphenous nerve and nerve to vastus medialis (± medial femoral cutaneous and obturator articular branches) while largely sparing quadriceps strength. Tags: Saphenous, Quadriceps-sparing, Knee.",
+      href: "regional-anaesthesia.html?block=adductor-canal"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Lower Limb",
+      Title: "iPACK Block",
+      Summary: "Posterior knee capsule • motor-sparing. Infiltration of the Interspace between the Popliteal Artery and the Capsule of the posterior Knee blocks articular branches to the posterior capsule without affecting tibial or common peroneal motor function. Tags: Posterior knee, Motor-sparing, Infiltration.",
+      href: "regional-anaesthesia.html?block=ipack"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Lower Limb",
+      Title: "Popliteal Sciatic Nerve Block",
+      Summary: "Below knee (except medial) • foot & ankle. The sciatic nerve is blocked in the popliteal fossa at/near its division into tibial and common peroneal nerves. Injecting inside the common paraneural (Vloka) sheath gives a rapid, dense block. Tags: Sciatic, Foot & ankle, Paraneural sheath.",
+      href: "regional-anaesthesia.html?block=popliteal"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Lower Limb",
+      Title: "Ankle Block",
+      Summary: "Whole foot • five nerves. Five nerves: two deep (tibial and deep peroneal) and three superficial (superficial peroneal, sural and saphenous). All are sciatic branches except the saphenous, which comes from the femoral nerve. Tags: 5 nerves, Foot surgery.",
+      href: "regional-anaesthesia.html?block=ankle"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Chest Wall & Paraspinal",
+      Title: "PECS I & II Blocks",
+      Summary: "Breast & anterior chest wall. PECS I places ~10 mL between pectoralis major and minor (medial and lateral pectoral nerves — no skin). PECS II adds 15–20 mL between pectoralis minor and serratus anterior at the 3rd–4th rib to reach the lateral cutaneous branches of T2–T4, the long thoracic and intercostobrachial nerves. Tags: Fascial plane, Breast surgery.",
+      href: "regional-anaesthesia.html?block=pecs"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Chest Wall & Paraspinal",
+      Title: "Serratus Anterior Plane Block",
+      Summary: "Lateral hemithorax • T2–T9. LA in the plane superficial (latissimus dorsi / serratus anterior) or deep (serratus anterior / ribs) to serratus anterior at the 4th–5th rib in the mid-axillary line blocks the lateral cutaneous branches of the T2–T9 intercostal nerves. Tags: Fascial plane, Rib fractures.",
+      href: "regional-anaesthesia.html?block=serratus"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Chest Wall & Paraspinal",
+      Title: "Erector Spinae Plane Block",
+      Summary: "Thoracic / abdominal analgesia • paraspinal. LA deposited deep to erector spinae on the transverse process spreads craniocaudally over several levels. It consistently blocks dorsal rami (posterior chest wall); spread to ventral rami/paravertebral space — and hence lateral/anterior coverage — is variable. Tags: Fascial plane, Paraspinal, Simple & safe.",
+      href: "regional-anaesthesia.html?block=esp"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Chest Wall & Paraspinal",
+      Title: "Thoracic Paravertebral Block",
+      Summary: "Unilateral segmental somatic + sympathetic. Injection into the wedge-shaped paravertebral space produces ipsilateral, segmental somatic and sympathetic block over several contiguous thoracic dermatomes. Tags: Somatic + sympathetic, Unilateral.",
+      href: "regional-anaesthesia.html?block=tpvb"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Abdominal Wall",
+      Title: "Transversus Abdominis Plane (TAP) Block",
+      Summary: "Anterior abdominal wall • somatic only. LA between the internal oblique and transversus abdominis blocks the thoracolumbar nerves in the TAP. The lateral approach (mid-axillary line) covers T10–T12; the subcostal approach covers T6–T9. Abdominal wall (somatic) analgesia only — no visceral cover. Tags: Fascial plane, Somatic only, Bilateral.",
+      href: "regional-anaesthesia.html?block=tap"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Abdominal Wall",
+      Title: "Rectus Sheath Block",
+      Summary: "Periumbilical / midline • T9–T11. LA between the rectus abdominis and the posterior rectus sheath blocks the terminal anterior branches of T9–T11 as they enter the muscle. Performed bilaterally for midline incisions. Tags: Fascial plane, Midline, Bilateral.",
+      href: "regional-anaesthesia.html?block=rectus-sheath"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Abdominal Wall",
+      Title: "Quadratus Lumborum Block",
+      Summary: "Abdominal wall ± visceral • T7–L1. Injection around the quadratus lumborum: QL1 (lateral), QL2 (posterior — between QL and the thoracolumbar fascia/erector spinae) or transmuscular/QL3 (between QL and psoas, 'shamrock' view). Coverage is wider and longer than TAP, with possible paravertebral spread. Tags: Fascial plane, ± Visceral, Shamrock.",
+      href: "regional-anaesthesia.html?block=ql"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Abdominal Wall",
+      Title: "Ilioinguinal & Iliohypogastric Nerve Block",
+      Summary: "Inguinal region • L1. The ilioinguinal and iliohypogastric nerves (L1) lie between internal oblique and transversus abdominis just superomedial to the ASIS. A small volume blocks the groin, upper medial thigh and anterior scrotum/labia. Tags: L1, Groin, Paediatrics.",
+      href: "regional-anaesthesia.html?block=ilioinguinal"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Head & Neck",
+      Title: "Superficial Cervical Plexus Block",
+      Summary: "Neck, ear & 'cape' • C2–C4. The sensory branches of C2–C4 — lesser occipital, great auricular, transverse cervical and supraclavicular nerves — emerge at the midpoint of the posterior border of the sternocleidomastoid ('nerve point of the neck'). Tags: C2–C4, Carotid endarterectomy.",
+      href: "regional-anaesthesia.html?block=cervical-plexus"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Head & Neck",
+      Title: "Scalp Block",
+      Summary: "Awake craniotomy • six nerves. Infiltration of six nerves on each side: supraorbital and supratrochlear (V1), zygomaticotemporal (V2), auriculotemporal (V3), lesser occipital (C2–C3) and greater occipital (C2). Tags: Awake craniotomy, Landmark.",
+      href: "regional-anaesthesia.html?block=scalp"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Neuraxial",
+      Title: "Spinal (Subarachnoid) Anaesthesia",
+      Summary: "Dense block below a dermatomal level. Local anaesthetic is injected into CSF in the lumbar dural sac below the conus (L1–L2 in adults), usually at L3–4 or L4–5. Block height depends mainly on baricity, dose and patient position. Tags: Subarachnoid, Dense, Baricity.",
+      href: "regional-anaesthesia.html?block=spinal"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Neuraxial",
+      Title: "Epidural Anaesthesia & Analgesia",
+      Summary: "Segmental, titratable • catheter. A Tuohy needle is advanced until loss of resistance as it passes the ligamentum flavum into the epidural space; a catheter allows titratable, segmental block centred on the insertion level. Tags: Segmental, Catheter, Titratable.",
+      href: "regional-anaesthesia.html?block=epidural"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Neuraxial",
+      Title: "Caudal Epidural Block",
+      Summary: "Paediatric sub-umbilical • sacral hiatus. Epidural injection through the sacral hiatus, covered by the sacrococcygeal ligament between the sacral cornua. Armitage volumes: 0.5 mL/kg sacral, 1.0 mL/kg lumbar, 1.25 mL/kg mid-thoracic. Tags: Paediatrics, Sacral hiatus, Armitage.",
+      href: "regional-anaesthesia.html?block=caudal"
     },
 
     // --- RESUSCITATION CHAMBER & ALGORITHMS ---

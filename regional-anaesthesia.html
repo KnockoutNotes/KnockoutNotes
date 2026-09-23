@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regional Anaesthesia — Nerve Blocks | KnockoutNotes</title>
+  <meta name="description" content="NYSORA-based regional anaesthesia nerve blocks: interactive ultrasound sono-anatomy, exam line diagrams, rotatable 3D spread maps, step-by-step procedure, tips, pitfalls and exam pearls.">
+  <meta name="theme-color" content="#0284c7">
+  <link rel="icon" type="image/png" href="knockoutnotes_icon.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page-common.css">
+  <link rel="stylesheet" href="regional.css">
+  <link rel="stylesheet" href="bubble-menu.css">
+  <link rel="stylesheet" href="border-glow.css">
+  <script src="analytics-config.js"></script>
+  <script src="cf-beacon.js"></script>
+</head>
+<body data-content-page="regional" class="mode-3d">
+
+<!-- Procedural Anaesthesia Background Canvas -->
+<canvas id="knSpatialCanvas"></canvas>
+
+<!-- Persistent Top-Left Mode Switch Dock (3D View vs Lite View) -->
+<div class="kn-mode-switch-dock" id="knModeSwitch" role="group" aria-label="Interface View Mode">
+  <button class="kn-mode-btn active" data-mode="3d" title="Switch to Cinematic 3D Spatial Experience" aria-label="3D View">
+    <span>✦ 3D VIEW</span>
+  </button>
+  <button class="kn-mode-btn" data-mode="lite" title="Switch to Familiar Clinical Lite View" aria-label="Lite View">
+    <span>⚡ LITE VIEW</span>
+  </button>
+</div>
+
+<!-- Legacy header (hidden by bubble-menu.css; kept for script.js theme/menu hooks) -->
+<header class="site-hud">
+  <div class="hud-capsule">
+    <a class="brand" href="index.html" aria-label="KnockoutNotes home">
+      <div class="brand-icon-wrap"><img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem"></div>
+      <div class="brand-name">Knockout<span>Notes</span></div>
+    </a>
+    <div class="hud-path-indicator">
+      <span class="hud-pulse-dot"></span>
+      <span id="knHudPath">KN // REGIONAL ANAESTHESIA</span>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-search-trigger" data-open-search aria-label="Open search"><span>Search</span><kbd>⌘K</kbd></button>
+      <button class="icon-btn theme-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"></div>
+</header>
+
+<div class="spatial-stage">
+  <div class="spatial-world">
+    <main class="container rg-page" id="rgApp">
+
+      <!-- ================= LISTING VIEW ================= -->
+      <section id="rgList" class="rg-view" aria-labelledby="rgTitle">
+        <div class="rg-hero">
+          <div class="rg-hero-kickers">
+            <span class="rg-pill rg-pill-cyan">💉 NYSORA-BASED</span>
+            <span class="rg-pill">ULTRASOUND · LINE DIAGRAM · 3D SPREAD</span>
+          </div>
+          <h1 id="rgTitle">Regional Anaesthesia <span>Nerve Blocks</span></h1>
+          <p class="rg-lead">High-yield, exam- and clinically-focused guide to the commonly performed blocks — interactive sono-anatomy, drawable exam diagrams, and a rotatable 3D model of the expected spread.</p>
+          <div class="rg-hero-actions">
+            <div class="rg-search">
+              <span aria-hidden="true">⌕</span>
+              <input id="rgFilter" type="search" placeholder="Filter blocks — e.g. interscalene, TAP, ankle, C5…" autocomplete="off" aria-label="Filter nerve blocks">
+            </div>
+            <button type="button" class="rg-combine-cta" id="rgCombineOpen" data-combine="1">🧩 Combine blocks in 3D <span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+
+        <nav class="rg-cat-nav" id="rgCatNav" role="tablist" aria-label="Block categories"></nav>
+        <div id="rgGrid" class="rg-grid-wrap" aria-live="polite"></div>
+        <p class="rg-source-note" id="rgSourceNote"></p>
+      </section>
+
+      <!-- ================= COMBINE VIEW ================= -->
+      <section id="rgCombine" class="rg-view" hidden aria-labelledby="rgCombineTitle">
+        <div class="rg-crumbs">
+          <button class="rg-btn rg-back" id="rgCombineBack" type="button">← All blocks</button>
+          <span class="rg-crumb-path">🧩 Combine blocks in 3D</span>
+        </div>
+        <header class="rg-detail-head">
+          <div>
+            <div class="rg-detail-kicker">3D COVERAGE PLANNER</div>
+            <h1 id="rgCombineTitle">Combine Blocks</h1>
+            <p class="rg-detail-tagline">Pick up to 4 blocks to see how their areas of coverage add up on one model — each block has its own colour.</p>
+          </div>
+          <div class="rg-show" role="group" aria-label="Show on model">
+            <span class="rg-show-label">Show</span>
+            <button type="button" class="rg-toggle" data-toggle="labels" aria-pressed="false">🏷 All labels</button>
+            <button type="button" class="rg-toggle" data-toggle="needle" aria-pressed="true">💉 Needle</button>
+            <button type="button" class="rg-toggle" data-toggle="spread" aria-pressed="true">💧 Spread</button>
+          </div>
+        </header>
+        <div class="rg-combine" id="rgCombineBody"></div>
+      </section>
+
+      <!-- ================= DETAIL VIEW ================= -->
+      <section id="rgDetail" class="rg-view" hidden aria-labelledby="rgBlockTitle">
+        <div class="rg-crumbs">
+          <button class="rg-btn rg-back" id="rgBack" type="button">← All blocks</button>
+          <span class="rg-crumb-path" id="rgCrumb"></span>
+          <span class="rg-crumb-spacer"></span>
+          <button class="rg-btn" id="rgPrev" type="button" aria-label="Previous block">‹ Prev</button>
+          <button class="rg-btn" id="rgNext" type="button" aria-label="Next block">Next ›</button>
+        </div>
+
+        <header class="rg-detail-head">
+          <div>
+            <div class="rg-detail-kicker" id="rgBlockKicker"></div>
+            <h1 id="rgBlockTitle"></h1>
+            <p class="rg-detail-tagline" id="rgBlockTagline"></p>
+            <div class="rg-tags" id="rgBlockTags"></div>
+          </div>
+          <div class="rg-show" role="group" aria-label="Show on images">
+            <span class="rg-show-label">Show</span>
+            <button type="button" class="rg-toggle" data-toggle="labels" aria-pressed="false">🏷 All labels</button>
+            <button type="button" class="rg-toggle" data-toggle="needle" aria-pressed="true">💉 Needle</button>
+            <button type="button" class="rg-toggle" data-toggle="spread" aria-pressed="true">💧 Spread</button>
+          </div>
+        </header>
+
+        <nav class="rg-tabs" id="rgTabs" role="tablist" aria-label="Block sections">
+          <button role="tab" data-tab="overview">Overview</button>
+          <button role="tab" data-tab="anatomy">Anatomy</button>
+          <button role="tab" data-tab="sono">Sono-Anatomy</button>
+          <button role="tab" data-tab="procedure">Procedure</button>
+          <button role="tab" data-tab="spread">Spread &amp; Coverage</button>
+          <button role="tab" data-tab="tips">Tips &amp; Pitfalls</button>
+          <button role="tab" data-tab="pearls">Exam Pearls</button>
+        </nav>
+
+        <div class="rg-panels" id="rgPanels"></div>
+
+        <footer class="rg-cite" id="rgCite"></footer>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="brand">
+        <div class="brand-icon-wrap"><img src="knockoutnotes_icon.png" alt="KnockoutNotes icon"></div>
+        <div class="brand-name">Knockout<span>Notes</span></div>
+      </div>
+      <p>Anaesthesia • Critical Care • Viva</p>
+      <p class="disclaimer">Educational content for medical professionals and trainees. Always verify current guidelines, institutional protocols, drug labels, and patient-specific factors before clinical use.</p>
+    </div>
+    <div class="footer-connect">
+      <strong>Connect, Follow &amp; Support <span class="footer-support-sub">(by buying me a coffee)</span></strong>
+      <div class="socials">
+        <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes" title="Email KnockoutNotes">✉</a>
+        <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
+        <a class="social social-coffee" href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" aria-label="Support KnockoutNotes (by buying me a coffee)" title="Buy me a coffee">☕</a>
+      </div>
+      <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Search Modal -->
+<div class="kn-modal" id="knSearchModal" role="dialog" aria-modal="true" aria-label="Search KnockoutNotes">
+  <div class="kn-modal-backdrop" data-close-modal></div>
+  <div class="kn-modal-box">
+    <div class="kn-modal-header">
+      <span class="kn-search-icon">⌕</span>
+      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search blocks, drugs, pearls..." autocomplete="off">
+      <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
+      <button class="kn-modal-close" data-close-modal>ESC</button>
+    </div>
+    <div class="kn-modal-body">
+      <div id="knModalSearchStatus" class="kn-search-status">Start typing to search the medical database.</div>
+      <div id="knModalSearchResults" class="kn-search-results"></div>
+    </div>
+    <div class="kn-modal-footer">
+      <span>Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
+      <span>KnockoutNotes Spatial Search</span>
+    </div>
+  </div>
+</div>
+
+<aside class="kn-corner-support" aria-label="Support KnockoutNotes">
+  <a href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" class="kn-corner-support-link" title="Fuel the code with coffee">
+    <span class="kn-corner-coffee-icon">☕</span>
+    <span class="kn-corner-coffee-text">Buy me a coffee</span>
+  </a>
+</aside>
+
+<script src="regional-data.js"></script>
+<script src="regional-usg.js"></script>
+<script src="regional-sono.js"></script>
+<script src="spatial-bg.js"></script>
+<script src="script.js"></script>
+<script src="page-motion.js"></script>
+<script src="kn-site-search.js"></script>
+<script src="vendor/gsap/gsap.min.js"></script>
+<script src="bubble-menu.js"></script>
+<script src="border-glow.js"></script>
+
+<!-- regional-3d.js imports the bare specifier "three" (vendored build) -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three/build/three.module.js"
+  }
+}
+</script>
+<script type="module" src="regional-ui.js"></script>
+
+</body>
+</html>

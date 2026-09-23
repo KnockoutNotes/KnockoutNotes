@@ -14,6 +14,7 @@
     { label: 'Home', href: 'index.html', ariaLabel: 'Home' },
     { label: 'Notes', href: 'notes.html', ariaLabel: 'Clinical Notes' },
     { label: 'Calculators', href: 'calculators.html', ariaLabel: 'Anaesthesia Calculators' },
+    { label: 'Regional', href: 'regional-anaesthesia.html', ariaLabel: 'Regional Anaesthesia — Nerve Blocks' },
     { label: '3D Workstation', href: 'ventilator.html', ariaLabel: '3D Anaesthesia Workstation' },
     { label: 'Drugs', href: 'drugs.html', ariaLabel: 'Pharmacology Library' },
     { label: 'Critical Care', href: 'critical-care.html', ariaLabel: 'Critical Care & Code' },
@@ -32,6 +33,7 @@
   // Mobile 3-Dot Drawer Items (2-Column Grid)
   // Strictly excludes Home, Notes, and Calculator (and removed Valve Lesions, Pearls, Viva)
   var MOBILE_MORE_ITEMS = [
+    { label: 'Regional Blocks', href: 'regional-anaesthesia.html', ariaLabel: 'Regional Anaesthesia — Nerve Blocks', icon: '💉', desc: 'Nerve Blocks · NYSORA' },
     { label: '3D Workstation', href: 'ventilator.html', ariaLabel: '3D Anaesthesia Workstation', icon: '🫁', desc: 'Interactive Machine' },
     { label: 'Drugs Library', href: 'drugs.html', ariaLabel: 'Pharmacology Library', icon: '💊', desc: 'Dosing & Kinetics' },
     { label: 'Critical Care', href: 'critical-care.html', ariaLabel: 'Critical Care & Code Blue', icon: '⚡', desc: 'ICU & Resuscitation' },
