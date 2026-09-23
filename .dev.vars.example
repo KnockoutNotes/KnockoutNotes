@@ -2,11 +2,13 @@
 # Duplicate this file as .dev.vars for local testing with `wrangler dev`
 # For production deployment, set secrets using: wrangler secret put <KEY>
 
-# Resend API Key for outgoing emails
-RESEND_API_KEY="re_your_api_key_here"
+# MailerSend API token for outgoing emails (https://app.mailersend.com -> API Tokens)
+MAILERSEND_API_TOKEN="mlsn.your_api_token_here"
 
-# Sender address configured & verified in your Resend domain settings
-# (During initial testing before domain verification, you can use: "KnockoutNotes <onboarding@resend.dev>")
+# Sender address configured & verified in your MailerSend domain settings.
+# The site currently ships with a temporary MailerSend sandbox test-domain
+# sender in wrangler.jsonc (vars.FROM_EMAIL) — replace it with a verified
+# custom domain sender once DNS is configured in MailerSend.
 FROM_EMAIL="KnockoutNotes <notifications@knockoutnotes.com>"
 
 # Admin portal login username
@@ -20,3 +22,26 @@ ADMIN_NOTIFICATION_EMAIL="admin@knockoutnotes.com"
 
 # Public canonical URL of the site
 SITE_URL="https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev"
+
+# --- Cloudflare Analytics (optional — admin Analytics view degrades gracefully
+#     to "not connected" if any of these are missing) ---
+
+# API token with "Account Analytics Read" + "Zone Analytics Read" permissions
+# (Cloudflare dashboard -> My Profile -> API Tokens)
+CLOUDFLARE_API_TOKEN="your_cloudflare_api_token_here"
+
+# Zone ID for the knockoutnotes domain (Cloudflare dashboard -> domain overview,
+# right sidebar). Powers pageview/request time-series analytics.
+CLOUDFLARE_ZONE_ID="your_zone_id_here"
+
+# Cloudflare account ID (dashboard -> right sidebar of any zone, or Workers &
+# Pages overview). Powers the RUM visitor breakdown (top pages, countries,
+# devices, browsers, operating systems, referrers) together with CF_BEACON_TOKEN.
+CLOUDFLARE_ACCOUNT_ID="your_account_id_here"
+
+# Web Analytics (RUM) site token: Cloudflare dashboard -> Analytics & Logs ->
+# Web Analytics -> Add a site -> copy the "token" value out of the generated
+# <script data-cf-beacon='{"token":"..."}'> snippet. This same value must also
+# be pasted into analytics-config.js (client-side beacon loader) for visitor
+# data to be captured in the first place.
+CF_BEACON_TOKEN="your_web_analytics_site_token_here"

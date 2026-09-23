@@ -1190,7 +1190,10 @@ export default {
           database: { connected: Boolean(env.DB), name: 'knockoutnotes-db' },
           mailersend: { configured: Boolean(env.MAILERSEND_API_TOKEN), from_email: env.FROM_EMAIL || 'Not configured' },
           r2_storage: { configured: isR2Configured(env), bucket: isR2Configured(env) ? 'Bound' : 'Not bound' },
-          analytics: { configured: Boolean(env.CLOUDFLARE_API_TOKEN && env.CLOUDFLARE_ZONE_ID) },
+          analytics: {
+            configured: Boolean(env.CLOUDFLARE_API_TOKEN && env.CLOUDFLARE_ZONE_ID),
+            rum_configured: Boolean(env.CLOUDFLARE_API_TOKEN && env.CLOUDFLARE_ACCOUNT_ID && env.CF_BEACON_TOKEN)
+          },
           site_url: getSiteUrl(request, env),
           admin_username: env.ADMIN_USERNAME || 'admin.knockoutnotes'
         });

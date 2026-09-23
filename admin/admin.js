@@ -526,6 +526,7 @@ async function loadAnalytics() {
           </td></tr>
         `;
       }
+      renderRumBreakdown(data);
       return;
     }
 
@@ -549,6 +550,8 @@ async function loadAnalytics() {
         `).join('');
       }
     }
+
+    renderRumBreakdown(data);
   } catch (err) {
     if (alert) {
       alert.className = 'alert-banner error';
@@ -556,6 +559,56 @@ async function loadAnalytics() {
       alert.style.display = 'block';
     }
   }
+}
+
+// ------------------------------------------------------------------------
+// RUM BREAKDOWN RENDERER (Top Pages / Countries / Devices / Browsers / OS / Referrers)
+// ------------------------------------------------------------------------
+function renderBarList(containerId, rows) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+
+  if (!rows || !rows.length) {
+    el.innerHTML = '<div class="adm-empty-state" style="padding: 12px 0;">No data for this period.</div>';
+    return;
+  }
+
+  const maxCount = Math.max(...rows.map(r => r.count || 0), 1);
+  el.innerHTML = rows.map(r => {
+    const pct = Math.max(2, Math.round(((r.count || 0) / maxCount) * 100));
+    return `
+      <div class="adm-bar-row">
+        <div class="adm-bar-row-labels">
+          <span title="${escapeHtml(r.name)}">${escapeHtml(r.name)}</span>
+          <span>${(r.count || 0).toLocaleString()}</span>
+        </div>
+        <div class="adm-bar-track"><div class="adm-bar-fill" style="width: ${pct}%;"></div></div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderRumBreakdown(data) {
+  const rumAlert = document.getElementById('analyticsRumAlert');
+  const panels = ['rumTopPaths', 'rumTopCountries', 'rumDevices', 'rumBrowsers', 'rumOperatingSystems', 'rumReferrers'];
+
+  if (!data.rumConnected) {
+    if (rumAlert) {
+      rumAlert.className = 'alert-banner warning';
+      rumAlert.textContent = data.rumReason || 'Cloudflare Web Analytics (RUM) is not connected.';
+      rumAlert.style.display = 'block';
+    }
+    panels.forEach(id => renderBarList(id, []));
+    return;
+  }
+
+  if (rumAlert) rumAlert.style.display = 'none';
+  renderBarList('rumTopPaths', data.topPaths);
+  renderBarList('rumTopCountries', data.topCountries);
+  renderBarList('rumDevices', data.devices);
+  renderBarList('rumBrowsers', data.browsers);
+  renderBarList('rumOperatingSystems', data.operatingSystems);
+  renderBarList('rumReferrers', data.referrers);
 }
 
 // ==========================================
@@ -1328,6 +1381,12 @@ async function loadSettingsAndAudit() {
       if (anaEl) {
         anaEl.textContent = data.analytics?.configured ? 'Connected' : 'Not Connected';
         anaEl.style.color = data.analytics?.configured ? '#34d399' : '#fbbf24';
+      }
+
+      const rumEl = document.getElementById('statusRum');
+      if (rumEl) {
+        rumEl.textContent = data.analytics?.rum_configured ? 'Connected' : 'Not Connected';
+        rumEl.style.color = data.analytics?.rum_configured ? '#34d399' : '#fbbf24';
       }
 
       const mailerDomain = document.getElementById('statusMailerSendDomain');
