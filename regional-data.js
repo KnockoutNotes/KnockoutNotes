@@ -1174,7 +1174,7 @@
         probe: "linear", depth: 4, left: "MEDIAL", right: "LATERAL",
         s: [
           { id: "pmaj", t: "muscle", l: "Pectoralis major", d: "Superficial.", p: [[0, 14], [400, 14], [400, 70], [0, 80]], lab: [60, 40] },
-          { id: "tca", t: "artery", l: "Pectoral br. thoracoacromial a.", d: "Landmark for the PECS I plane.", c: [150, 86, 5], lab: [118, 108] },
+          { id: "tca", t: "artery", l: "Pectoral br. thoracoacromial a.", d: "Landmark for the PECS I plane.", c: [150, 86, 5], lab: [118, 108], key: true },
           { id: "pmin", t: "muscle", l: "Pectoralis minor", d: "Middle layer.", p: [[0, 96], [400, 88], [400, 140], [0, 150]], lab: [330, 116] },
           { id: "sa", t: "muscle", l: "Serratus anterior", d: "Deep layer over the ribs.", p: [[0, 166], [400, 158], [400, 198], [0, 208]], lab: [330, 180] },
           { id: "r3", t: "bone", l: "3rd rib", d: "Rounded rib with shadow.", ln: [[40, 234], [90, 224], [150, 236]], lab: [90, 252] },

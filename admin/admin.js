@@ -151,6 +151,7 @@ function switchView(viewName) {
     content: 'Content Management',
     categories: 'Category Hierarchy',
     files: 'File & Asset Manager (R2)',
+    regional: 'Regional Anaesthesia — Real Images',
     subscribers: 'Subscribers Directory',
     email: 'Email Broadcasts & Delivery',
     settings: 'System Status & Audit Logs'
@@ -164,6 +165,7 @@ function switchView(viewName) {
   if (viewName === 'content') loadContent();
   if (viewName === 'categories') renderCategoriesTable();
   if (viewName === 'files') loadFiles();
+  if (viewName === 'regional') loadRegionalImages();
   if (viewName === 'subscribers') loadSubscribers();
   if (viewName === 'email') loadLogs();
   if (viewName === 'settings') loadSettingsAndAudit();
@@ -390,6 +392,11 @@ function setupEventListeners() {
   const broadcastForm = document.getElementById('broadcastForm');
   if (broadcastForm) {
     broadcastForm.addEventListener('submit', handleBroadcastSubmit);
+  }
+
+  const regionalForm = document.getElementById('regionalForm');
+  if (regionalForm) {
+    regionalForm.addEventListener('submit', handleRegionalFormSubmit);
   }
 
   const refreshLogsBtn = document.getElementById('refreshLogsBtn');
@@ -1120,6 +1127,183 @@ window.openFilePicker = function(targetInputId) {
   appState.activePickerTargetInputId = targetInputId;
   switchView('files');
 };
+
+// ==========================================
+// REGIONAL ANAESTHESIA — REAL ULTRASOUND IMAGES
+// Attach a real (or properly licensed reference) ultrasound image URL to a
+// block. Additive to the existing CMS: its own D1 table, its own routes,
+// its own view — does not touch content/files/subscribers/email logic.
+// ==========================================
+
+// Kept in sync by hand with regional-data.js's block list (id/short/cat) —
+// this admin panel only needs id + a readable label, not the full block data.
+const REGIONAL_BLOCKS = [
+  { id: 'interscalene', short: 'Interscalene', cat: 'Upper Limb' },
+  { id: 'supraclavicular', short: 'Supraclavicular', cat: 'Upper Limb' },
+  { id: 'infraclavicular', short: 'Infraclavicular', cat: 'Upper Limb' },
+  { id: 'axillary', short: 'Axillary', cat: 'Upper Limb' },
+  { id: 'suprascapular', short: 'Suprascapular', cat: 'Upper Limb' },
+  { id: 'femoral', short: 'Femoral', cat: 'Lower Limb' },
+  { id: 'fascia-iliaca', short: 'Fascia Iliaca (SIFI)', cat: 'Lower Limb' },
+  { id: 'peng', short: 'PENG', cat: 'Lower Limb' },
+  { id: 'adductor-canal', short: 'Adductor Canal', cat: 'Lower Limb' },
+  { id: 'ipack', short: 'iPACK', cat: 'Lower Limb' },
+  { id: 'popliteal', short: 'Popliteal Sciatic', cat: 'Lower Limb' },
+  { id: 'ankle', short: 'Ankle Block', cat: 'Lower Limb' },
+  { id: 'pecs', short: 'PECS I & II', cat: 'Chest Wall & Paraspinal' },
+  { id: 'serratus', short: 'Serratus Anterior', cat: 'Chest Wall & Paraspinal' },
+  { id: 'esp', short: 'Erector Spinae (ESP)', cat: 'Chest Wall & Paraspinal' },
+  { id: 'tpvb', short: 'Thoracic Paravertebral', cat: 'Chest Wall & Paraspinal' },
+  { id: 'tap', short: 'TAP', cat: 'Abdominal Wall' },
+  { id: 'rectus-sheath', short: 'Rectus Sheath', cat: 'Abdominal Wall' },
+  { id: 'ql', short: 'Quadratus Lumborum', cat: 'Abdominal Wall' },
+  { id: 'ilioinguinal', short: 'Ilioinguinal / Iliohypogastric', cat: 'Abdominal Wall' },
+  { id: 'cervical-plexus', short: 'Superficial Cervical Plexus', cat: 'Head & Neck' },
+  { id: 'scalp', short: 'Scalp Block', cat: 'Head & Neck' },
+  { id: 'spinal', short: 'Spinal', cat: 'Neuraxial' },
+  { id: 'epidural', short: 'Epidural', cat: 'Neuraxial' },
+  { id: 'caudal', short: 'Caudal', cat: 'Neuraxial' }
+];
+
+let regionalImagesCache = {};
+
+function populateRegionalBlockSelect() {
+  const sel = document.getElementById('regBlockSelect');
+  if (!sel || sel.options.length) return;
+  let html = '';
+  let lastCat = null;
+  REGIONAL_BLOCKS.forEach((b) => {
+    if (b.cat !== lastCat) { if (lastCat !== null) html += '</optgroup>'; html += `<optgroup label="${escapeHtml(b.cat)}">`; lastCat = b.cat; }
+    html += `<option value="${b.id}">${escapeHtml(b.short)}</option>`;
+  });
+  html += '</optgroup>';
+  sel.innerHTML = html;
+}
+
+function renderRegionalTable() {
+  const body = document.getElementById('regionalTableBody');
+  if (!body) return;
+  const rows = Object.values(regionalImagesCache).sort((a, b) => a.block_id.localeCompare(b.block_id));
+  if (!rows.length) {
+    body.innerHTML = '<tr><td colspan="5" style="color: var(--adm-text-subtle);">No blocks have a real image set yet.</td></tr>';
+    return;
+  }
+  body.innerHTML = rows.map((r) => {
+    const label = (REGIONAL_BLOCKS.find((b) => b.id === r.block_id) || {}).short || r.block_id;
+    return `<tr>
+      <td style="font-weight: 600; color: #fff;">${escapeHtml(label)}</td>
+      <td>${escapeHtml(r.source || '—')}</td>
+      <td style="font-size: 12px; color: var(--adm-text-subtle);">${escapeHtml([r.orientation, r.probe].filter(Boolean).join(' · ') || '—')}</td>
+      <td style="font-size: 12px; color: var(--adm-text-subtle);">${escapeHtml((r.updated_at || '').replace('T', ' ').slice(0, 16))}</td>
+      <td>
+        <div style="display: flex; gap: 6px;">
+          <a href="${escapeHtml(r.image_url)}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 3px 8px; font-size: 11px;">View</a>
+          <button class="btn-secondary" style="padding: 3px 8px; font-size: 11px;" onclick="editRegionalImage('${r.block_id}')">Edit</button>
+          <button class="btn-danger" style="padding: 3px 8px; font-size: 11px;" onclick="promptDeleteRegionalImage('${r.block_id}', '${escapeHtml(label)}')">Delete</button>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+async function loadRegionalImages() {
+  populateRegionalBlockSelect();
+  const body = document.getElementById('regionalTableBody');
+  if (body) body.innerHTML = '<tr><td colspan="5">Loading…</td></tr>';
+  try {
+    const res = await fetch('/api/admin/regional-images');
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Failed to load');
+    const notice = document.getElementById('regionalMigrationNotice');
+    // A missing table degrades to an empty map server-side (see
+    // worker/regional-images.js) — we can't tell "no rows yet" apart from
+    // "table not migrated" from here, so this stays informational, not blocking.
+    if (notice) notice.style.display = 'none';
+    regionalImagesCache = data.images || {};
+    renderRegionalTable();
+  } catch (err) {
+    if (body) body.innerHTML = `<tr><td colspan="5" style="color: var(--adm-danger, #ef4444);">${escapeHtml(err.message)}</td></tr>`;
+  }
+}
+
+window.editRegionalImage = function(blockId) {
+  const r = regionalImagesCache[blockId];
+  if (!r) return;
+  document.getElementById('regBlockSelect').value = blockId;
+  document.getElementById('regImageUrl').value = r.image_url || '';
+  document.getElementById('regSource').value = r.source || 'KnockoutNotes / user-provided';
+  document.getElementById('regAttribution').value = r.attribution || '';
+  document.getElementById('regOrientation').value = r.orientation || '';
+  document.getElementById('regProbe').value = r.probe || '';
+  document.getElementById('regNotes').value = r.notes || '';
+  document.getElementById('regBlockSelect').scrollIntoView({ behavior: 'smooth', block: 'center' });
+};
+
+window.promptDeleteRegionalImage = function(blockId, label) {
+  document.getElementById('deleteModalTitle').textContent = 'Remove Real Image';
+  document.getElementById('deleteModalBody').textContent = `Remove the real ultrasound image set for "${label}"? The block will fall back to its simulated schematic on the public site.`;
+
+  appState.pendingDeleteAction = async () => {
+    try {
+      const res = await fetch(`/api/admin/regional-images/${encodeURIComponent(blockId)}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Deletion failed');
+      await loadRegionalImages();
+    } catch (err) {
+      alert('Delete failed: ' + err.message);
+    }
+  };
+
+  openModal('deleteModal');
+};
+
+async function handleRegionalFormSubmit(e) {
+  e.preventDefault();
+  const alertEl = document.getElementById('regionalAlert');
+  const btn = document.getElementById('regSubmitBtn');
+  const payload = {
+    block_id: document.getElementById('regBlockSelect').value,
+    image_url: document.getElementById('regImageUrl').value.trim(),
+    source: document.getElementById('regSource').value,
+    attribution: document.getElementById('regAttribution').value.trim(),
+    orientation: document.getElementById('regOrientation').value,
+    probe: document.getElementById('regProbe').value,
+    notes: document.getElementById('regNotes').value.trim()
+  };
+
+  if (alertEl) alertEl.style.display = 'none';
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+
+  try {
+    const res = await fetch('/api/admin/regional-images', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Save failed');
+
+    if (alertEl) {
+      alertEl.className = 'alert-banner success';
+      alertEl.textContent = `Saved. "${(REGIONAL_BLOCKS.find((b) => b.id === payload.block_id) || {}).short || payload.block_id}" now shows this real image on the public site.`;
+      alertEl.style.display = 'block';
+    }
+    document.getElementById('regionalForm').reset();
+    await loadRegionalImages();
+  } catch (err) {
+    const notice = document.getElementById('regionalMigrationNotice');
+    if (notice && /regional_block_images table not found/i.test(err.message)) notice.style.display = 'block';
+    if (alertEl) {
+      alertEl.className = 'alert-banner error';
+      alertEl.textContent = err.message;
+      alertEl.style.display = 'block';
+    }
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Save Image for This Block';
+  }
+}
 
 window.copyToClipboard = function(text) {
   navigator.clipboard.writeText(text).then(() => {

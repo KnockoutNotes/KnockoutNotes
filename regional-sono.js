@@ -32,14 +32,17 @@
     needle: ["#f8fafc", "#0f172a"], spread: ["#0ea5e9", "#fff"]
   };
 
+  // Exam line diagram: black/grey line-art only ("draw this in the exam") —
+  // tissues are told apart by fill shade, line weight and pattern rather
+  // than colour, matching what a student can actually reproduce in pencil.
   const LINE = {
-    muscle: { fill: "#fde2e4", stroke: "#9f1239" },
-    nerve: { fill: "#fde047", stroke: "#854d0e" },
-    artery: { fill: "#fecaca", stroke: "#b91c1c" },
-    vein: { fill: "#bfdbfe", stroke: "#1d4ed8" },
-    tendon: { fill: "#e5e7eb", stroke: "#4b5563" },
-    organ: { fill: "#ede9fe", stroke: "#6d28d9" },
-    bowel: { fill: "#ecfdf5", stroke: "#0f766e" }
+    muscle: { fill: "#f1f1ef", stroke: "#27272a" },
+    nerve: { fill: "#ffffff", stroke: "#18181b" },
+    artery: { fill: "#e4e4e7", stroke: "#18181b" },
+    vein: { fill: "#e4e4e7", stroke: "#52525b" },
+    tendon: { fill: "#eeeeec", stroke: "#3f3f46" },
+    organ: { fill: "#e9e9e7", stroke: "#3f3f46" },
+    bowel: { fill: "#f1f1ef", stroke: "#52525b" }
   };
 
   function centroid(st) {
@@ -215,45 +218,51 @@
       case "bowel":
         return `<g${cls}${sid}>${shapeTag(st, `fill="${col.fill}" stroke="${col.stroke}" stroke-width="1.3"`)}</g>`;
       case "nerve": {
+        // Fascicular dots — the standard hand-drawn convention for a nerve
+        // in cross-section, reproducible in plain pencil.
         const circles = st.cs ? st.cs : (st.c ? [st.c] : null);
         let dots = "";
         if (circles) {
           circles.forEach((c) => {
-            if (c[2] >= 6) dots += `<circle cx="${c[0] - c[2] * 0.3}" cy="${c[1] - c[2] * 0.2}" r="${(c[2] * 0.2).toFixed(1)}" fill="#854d0e"/><circle cx="${c[0] + c[2] * 0.3}" cy="${c[1] + c[2] * 0.25}" r="${(c[2] * 0.2).toFixed(1)}" fill="#854d0e"/>`;
+            if (c[2] >= 6) dots += `<circle cx="${c[0] - c[2] * 0.3}" cy="${c[1] - c[2] * 0.2}" r="${(c[2] * 0.2).toFixed(1)}" fill="#18181b"/><circle cx="${c[0] + c[2] * 0.3}" cy="${c[1] + c[2] * 0.25}" r="${(c[2] * 0.2).toFixed(1)}" fill="#18181b"/>`;
           });
         } else if (st.el) {
-          dots = `<circle cx="${st.el[0] - st.el[2] * 0.3}" cy="${st.el[1]}" r="${(st.el[3] * 0.25).toFixed(1)}" fill="#854d0e"/><circle cx="${st.el[0] + st.el[2] * 0.3}" cy="${st.el[1]}" r="${(st.el[3] * 0.25).toFixed(1)}" fill="#854d0e"/>`;
+          dots = `<circle cx="${st.el[0] - st.el[2] * 0.3}" cy="${st.el[1]}" r="${(st.el[3] * 0.25).toFixed(1)}" fill="#18181b"/><circle cx="${st.el[0] + st.el[2] * 0.3}" cy="${st.el[1]}" r="${(st.el[3] * 0.25).toFixed(1)}" fill="#18181b"/>`;
         }
-        return `<g${cls}${sid}>${shapeTag(st, `fill="${col.fill}" stroke="${col.stroke}" stroke-width="1.3"`)}${dots}</g>`;
+        return `<g${cls}${sid}>${shapeTag(st, `fill="${col.fill}" stroke="${col.stroke}" stroke-width="1.5"`)}${dots}</g>`;
       }
       case "artery":
-        if (st.ln) return `<g${cls}${sid}>${shapeTag(st, `stroke="#b91c1c" stroke-width="1.6" stroke-dasharray="4 3"`)}</g>`;
-        return `<g${cls}${sid}>${shapeTag(st, `fill="${col.fill}" stroke="${col.stroke}" stroke-width="2.2"`)}${st.c ? `<circle cx="${st.c[0]}" cy="${st.c[1]}" r="${Math.max(1.5, st.c[2] - 3)}" fill="none" stroke="#b91c1c" stroke-width="0.8"/>` : ""}</g>`;
+        // Open circle/line = artery (pulsatile); a small inner ring marks it
+        // apart from a vein without needing colour.
+        if (st.ln) return `<g${cls}${sid}>${shapeTag(st, `stroke="${col.stroke}" stroke-width="1.6" stroke-dasharray="4 3"`)}</g>`;
+        return `<g${cls}${sid}>${shapeTag(st, `fill="${col.fill}" stroke="${col.stroke}" stroke-width="2"`)}${st.c ? `<circle cx="${st.c[0]}" cy="${st.c[1]}" r="${Math.max(1.5, st.c[2] - 3)}" fill="none" stroke="${col.stroke}" stroke-width="0.8"/>` : ""}</g>`;
       case "vein":
-        return `<g${cls}${sid}>${shapeTag(st, `fill="${col.fill}" stroke="${col.stroke}" stroke-width="1.2"`)}</g>`;
+        // Thin outline only, no inner ring — distinguishes it from artery.
+        return `<g${cls}${sid}>${shapeTag(st, `fill="${col.fill}" stroke="${col.stroke}" stroke-width="1.1"`)}</g>`;
       case "bone": {
         const band = st.ln.map((p) => [p[0], p[1] + 16]).reverse();
         return `<g${cls}${sid}><polygon points="${pts(st.ln.concat(band))}" fill="url(#hatch-${u})" opacity="0.7"/>` +
           `<polyline points="${pts(st.ln)}" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>`;
       }
       case "pleura":
-        return `<g${cls}${sid}>${shapeTag(st, `stroke="#0f766e" stroke-width="2" stroke-dasharray="6 3"`)}</g>`;
+        return `<g${cls}${sid}>${shapeTag(st, `stroke="#18181b" stroke-width="2" stroke-dasharray="1 3" stroke-linecap="round"`)}</g>`;
       case "fascia":
       case "sheath":
-        return `<g${cls}${sid}>${shapeTag(st, `${st.t === "sheath" ? 'fill="none" ' : ""}stroke="#334155" stroke-width="1.1"`)}</g>`;
+        return `<g${cls}${sid}>${shapeTag(st, `${st.t === "sheath" ? 'fill="none" ' : ""}stroke="#3f3f46" stroke-width="1"`)}</g>`;
       case "ligament":
-        return `<g${cls}${sid}>${shapeTag(st, `stroke="#0f172a" stroke-width="2.2"`)}</g>`;
+        return `<g${cls}${sid}>${shapeTag(st, `stroke="#18181b" stroke-width="2.2"`)}</g>`;
       case "space":
-        return `<g${cls}${sid}>${shapeTag(st, `fill="rgba(2,132,199,0.06)" stroke="#0284c7" stroke-width="1.1" stroke-dasharray="4 3"`)}</g>`;
+        return `<g${cls}${sid}>${shapeTag(st, `fill="rgba(24,24,27,0.05)" stroke="#3f3f46" stroke-width="1.1" stroke-dasharray="4 3"`)}</g>`;
       case "marker": {
+        // Target plane / point — a plain cross, the exam convention for "inject here".
         const c = centroid(st);
-        return `<g${cls}${sid}><path d="M${c[0] - 5},${c[1] - 5} l10,10 M${c[0] + 5},${c[1] - 5} l-10,10" stroke="#15803d" stroke-width="1.8"/></g>`;
+        return `<g${cls}${sid}><path d="M${c[0] - 5},${c[1] - 5} l10,10 M${c[0] + 5},${c[1] - 5} l-10,10" stroke="#18181b" stroke-width="1.8"/></g>`;
       }
       case "outline":
-        return `<g class="rg-outline">${shapeTag(st, `stroke="#1f2937" stroke-width="1.8" stroke-linejoin="round" fill="#fff7ed"`).replace('fill="none" ', "")}</g>`;
+        return `<g class="rg-outline">${shapeTag(st, `stroke="#18181b" stroke-width="1.8" stroke-linejoin="round" fill="#ffffff"`).replace('fill="none" ', "")}</g>`;
       case "point": {
         const c = centroid(st);
-        return `<g${cls}${sid}><circle cx="${c[0]}" cy="${c[1]}" r="4" fill="#e11d48" stroke="#1f2937" stroke-width="1"/></g>`;
+        return `<g${cls}${sid}><circle cx="${c[0]}" cy="${c[1]}" r="4" fill="#18181b" stroke="#18181b" stroke-width="1"/></g>`;
       }
       default:
         return "";
@@ -293,8 +302,10 @@
   }
 
   function spreadTag(s, mode) {
+    // Exam mode keeps spread monochrome too — a light grey dashed pool,
+    // reproducible in pencil, not a colour cue.
     const attrs = mode === "line"
-      ? `fill="rgba(37,99,235,0.14)" stroke="#2563eb" stroke-width="1.3" stroke-dasharray="4 3"`
+      ? `fill="rgba(24,24,27,0.08)" stroke="#18181b" stroke-width="1.3" stroke-dasharray="4 3"`
       : `fill="rgba(56,189,248,0.30)" stroke="rgba(125,211,252,0.95)" stroke-width="1.3" stroke-dasharray="5 3"`;
     if (s.el) return ellipseTag(s.el, attrs);
     if (s.c) return `<circle cx="${s.c[0]}" cy="${s.c[1]}" r="${s.c[2]}" ${attrs}/>`;
@@ -392,19 +403,25 @@
       const placed = [];
       scene.s.forEach((st) => {
         if (!st.l || st.t === "outline" || st.lab === false) return;
+        // Exam line diagram: minimal essential labels only — the target/key
+        // structure(s) and any named point or marker — not every superficial
+        // landmark, so the diagram stays reproducible in an exam rather than
+        // cluttered. The sono view keeps labelling everything (on hover/tap
+        // or "All Labels").
+        if (mode === "line" && !st.key && st.t !== "marker" && st.t !== "point") return;
         const anchor = centroid(st);
         const at = st.lab || [anchor[0], anchor[1] - 16];
         labels += labelTag(st.id, st.l, st.t, at, anchor, mode, st.key ? "rg-key" : "", placed);
       });
-      if (mode === "sono") {
-        (scene.needles || []).forEach((n, i) => {
-          const at = [n.from[0] + (n.to[0] - n.from[0]) * 0.2, n.from[1] + (n.to[1] - n.from[1]) * 0.2 - 12];
-          labels += labelTag("__needle" + i, scene.needles.length > 1 ? `Needle ${i + 1}` : "Needle", "needle", at, null, mode, "rg-lab-needle", placed);
-        });
-        if ((scene.spreads || []).length && !landmark) {
-          const top = spreadTop(scene.spreads[0]);
-          labels += labelTag("__spread", "LA spread", "spread", [top[0] + 36, top[1] - 12], top, mode, "rg-lab-spread", placed);
-        }
+      // Needle and LA spread are always the exam-essential parts of the
+      // diagram, so both views label them.
+      (scene.needles || []).forEach((n, i) => {
+        const at = [n.from[0] + (n.to[0] - n.from[0]) * 0.2, n.from[1] + (n.to[1] - n.from[1]) * 0.2 - 12];
+        labels += labelTag("__needle" + i, scene.needles.length > 1 ? `Needle ${i + 1}` : "Needle", "needle", at, null, mode, "rg-lab-needle", placed);
+      });
+      if ((scene.spreads || []).length && !landmark) {
+        const top = spreadTop(scene.spreads[0]);
+        labels += labelTag("__spread", "LA spread", "spread", [top[0] + 36, top[1] - 12], top, mode, "rg-lab-spread", placed);
       }
     }
 
@@ -460,6 +477,9 @@
       frame += `<text x="7" y="${H - 7}" ${txt} opacity="0.7">${info.mhz} MHz · D ${depth.toFixed(1)} cm · G 54 · DR 60</text>`;
       frame += `<text x="${curvi ? 128 : 16}" y="${curvi ? 12 : 12}" font-size="8" font-weight="800" fill="#e2e8f0" letter-spacing="0.08em" opacity="0.9">${esc(scene.left || "")}</text>`;
       frame += `<text x="${curvi ? 272 : W - 24}" y="12" font-size="8" font-weight="800" fill="#e2e8f0" letter-spacing="0.08em" text-anchor="end" opacity="0.9">${esc(scene.right || "")}</text>`;
+      // Honesty badge: this is a generated schematic, not a real patient scan.
+      frame += `<g class="rg-sim-badge"><rect x="${W - 100}" y="${H - 15}" width="94" height="12" rx="6" fill="rgba(15,23,42,0.72)" stroke="rgba(251,191,36,0.55)" stroke-width="0.8"/>` +
+        `<text x="${W - 53}" y="${H - 6.5}" font-size="6.6" font-weight="800" fill="#fbbf24" letter-spacing="0.03em" text-anchor="middle">SIMULATED — NOT A SCAN</text></g>`;
       // probe orientation marker (screen-left = probe marker side)
       frame += `<path d="M${curvi ? 118 : 6},4 l5,0 l-2.5,5 z" fill="#38bdf8"/>`;
       // depth scale with half-centimetre ticks and focal-zone marker
@@ -514,18 +534,166 @@
     canvas.getContext("2d").drawImage(src, 0, 0);
   }
 
-  const isReal = (scene) => scene.probe !== "landmark" && !!window.KNRegionalUS;
+  const isSimulatable = (scene) => scene.probe !== "landmark" && !!window.KNRegionalUS;
+
+  /* ------------------------------------------------------------------------
+     Real ultrasound photo + annotation overlay. The underlying <img> is
+     never redrawn or altered — the overlay is a separate absolutely
+     positioned SVG with NO viewBox, addressed entirely in percentage
+     coordinates ("42%"/"30%"). SVG resolves each axis's percentages against
+     the element's own rendered box independently, so label/needle/spread
+     positions stay correctly proportioned whatever the photo's aspect ratio
+     is — unlike a square viewBox stretched with preserveAspectRatio="none",
+     which would distort circles/text.
+     ------------------------------------------------------------------------ */
+  const SOURCE_LABEL = { NYSORA: "NYSORA", "KnockoutNotes / user-provided": "User-provided" };
+  const pct = (v) => `${v}%`;
+
+  // Nudge a label's vertical position (in % units) until it stops
+  // overlapping labels already placed — same idea as placeLabel(), scaled
+  // for a 0–100 percentage box instead of the 400x300 pixel scene.
+  function placeLabelPct(x, y, wPct, hPct, placed) {
+    const cx = Math.min(Math.max(x, wPct / 2 + 1), 100 - wPct / 2 - 1);
+    const offsets = [0, -1, 1, -2, 2, -3, 3, -4, 4];
+    for (const k of offsets) {
+      const cy = Math.min(Math.max(y + k * (hPct + 0.6), hPct / 2 + 1), 100 - hPct / 2 - 1);
+      const box = [cx - wPct / 2, cy - hPct / 2, cx + wPct / 2, cy + hPct / 2];
+      const hit = placed.some((b) => box[0] < b[2] && box[2] > b[0] && box[1] < b[3] && box[3] > b[1]);
+      if (!hit) { placed.push(box); return [cx, cy]; }
+    }
+    const cy = Math.min(Math.max(y, hPct / 2 + 1), 100 - hPct / 2 - 1);
+    placed.push([cx - wPct / 2, cy - hPct / 2, cx + wPct / 2, cy + hPct / 2]);
+    return [cx, cy];
+  }
+
+  function realLabelTag(id, text, type, x, y, anchor, placed, extraClass) {
+    const fs = 11;
+    const wPct = Math.min(46, text.length * 0.62 + 3.2);
+    const hPct = 4.2;
+    const [cx, cy] = placeLabelPct(x, y, wPct, hPct, placed);
+    const lead = anchor && Math.hypot(anchor[0] - cx, anchor[1] - cy) > 3
+      ? `<line x1="${pct(cx)}" y1="${pct(cy)}" x2="${pct(anchor[0])}" y2="${pct(anchor[1])}" class="rg-lead rg-real-lead"/><circle cx="${pct(anchor[0])}" cy="${pct(anchor[1])}" r="2.5" class="rg-real-lead-dot"/>`
+      : "";
+    const col = (PILL[type] || PILL.fascia)[0];
+    return `<g class="rg-lab${extraClass ? " " + extraClass : ""}" data-lab="${esc(id)}">${lead}` +
+      `<rect x="${pct(cx - wPct / 2)}" y="${pct(cy - hPct / 2)}" width="${pct(wPct)}" height="${pct(hPct)}" rx="6" fill="${col}" stroke="rgba(255,255,255,0.5)"/>` +
+      `<text x="${pct(cx)}" y="${pct(cy)}" text-anchor="middle" dominant-baseline="central" font-size="${fs}" fill="#fff" font-weight="700">${esc(text)}</text></g>`;
+  }
+
+  function renderReal(container, block, real, opts) {
+    const compact = !!opts.compact;
+    const labels = real.labels || [];
+    const needle = real.needleOverlay || null;
+    const spreads = real.spreadOverlay || [];
+    const hasOverlay = labels.length || needle || spreads.length;
+    const sourceLabel = SOURCE_LABEL[real.source] || real.source || "Reference image";
+
+    let hits = "";
+    const placed = [];
+    labels.forEach((l) => {
+      const col = (PILL[l.type] || PILL.fascia)[0];
+      hits += `<g class="rg-s rg-real-hot" data-sid="${esc(l.id)}" style="--c:${col}"><circle cx="${pct(l.x)}" cy="${pct(l.y)}" r="9" class="rg-hitdot"/><circle cx="${pct(l.x)}" cy="${pct(l.y)}" r="4" class="rg-real-dot"/></g>`;
+    });
+    let labelEls = "";
+    if (!compact) {
+      labels.forEach((l) => { labelEls += realLabelTag(l.id, l.text, l.type, l.x, l.y - 6, [l.x, l.y], placed); });
+      if (needle) labelEls += realLabelTag("__needle", "Needle (educational overlay)", "needle", needle.to[0], Math.max(4, needle.to[1] - 6), needle.to, placed, "rg-lab-needle");
+      if (spreads.length) {
+        const s0 = spreads[0];
+        const sx = s0.x != null ? s0.x : s0.points[0][0];
+        const sy = s0.y != null ? s0.y : s0.points[0][1];
+        labelEls += realLabelTag("__spread", s0.note || "LA spread (educational overlay)", "spread", sx, Math.max(4, sy - 6), [sx, sy], placed, "rg-lab-spread");
+      }
+    }
+
+    const needleSvg = needle
+      ? `<g class="rg-needle" pointer-events="none"><line x1="${pct(needle.from[0])}" y1="${pct(needle.from[1])}" x2="${pct(needle.to[0])}" y2="${pct(needle.to[1])}" class="rg-real-needle-line"/><circle cx="${pct(needle.to[0])}" cy="${pct(needle.to[1])}" r="3.5" class="rg-real-needle-tip"/></g>`
+      : "";
+    const spreadSvg = spreads.length
+      ? `<g class="rg-spread" pointer-events="none">${spreads.map((s) => s.shape === "poly"
+        ? `<polygon points="${s.points.map((p) => `${p[0]}%,${p[1]}%`).join(" ")}" class="rg-real-spread${s.variable ? " rg-real-spread-var" : ""}"/>`
+        : `<ellipse cx="${pct(s.x)}" cy="${pct(s.y)}" rx="${pct(s.rx)}" ry="${pct(s.ry)}" class="rg-real-spread${s.variable ? " rg-real-spread-var" : ""}"/>`).join("")}</g>`
+      : "";
+
+    const overlaySvg = `<svg class="rg-real-overlay" role="img" aria-label="${esc(opts.aria || "Ultrasound annotation overlay")}">` +
+      `<g class="rg-structs">${hits}</g>${spreadSvg}${needleSvg}<g class="rg-labels" pointer-events="none">${labelEls}</g></svg>`;
+
+    // Probe/orientation facts and the source citation are rendered once by
+    // the calling panel template (regional-ui.js) outside this container —
+    // only the small in-image source badge and needle/spread honesty note
+    // belong to the component itself.
+    const badge = `<div class="rg-real-badge">📷 ${esc(sourceLabel)}${real.attribution ? ` — ${esc(real.attribution)}` : ""}</div>`;
+
+    const eduHint = !compact && (needle || spreads.length)
+      ? `<p class="rg-hint rg-real-edu-hint">⚠ Needle path and LA spread are an <strong>educational overlay</strong> drawn on top of the image — they were not present in the original scan.</p>`
+      : "";
+
+    container.innerHTML = `<div class="rg-real-wrap${compact ? " rg-compact" : ""}">` +
+      `<img class="rg-real-photo" src="${esc(real.image)}" alt="${esc(block.name)} — real ultrasound${real.orientation ? `, ${esc(real.orientation)}` : ""}" loading="lazy">` +
+      (compact ? "" : badge) + overlaySvg + `</div>${eduHint}`;
+
+    const svg = container.querySelector(".rg-real-overlay");
+    const setFlag = (cls, on) => svg.classList.toggle(cls, !!on);
+    setFlag("rg-show-labels", opts.labels);
+    setFlag("rg-hide-needle", !opts.needle);
+    setFlag("rg-hide-spread", !opts.spread);
+
+    const listeners = [];
+    let pinned = null;
+    function activate(sid, on) {
+      svg.querySelectorAll(`[data-sid="${CSS.escape(sid)}"]`).forEach((el) => el.classList.toggle("rg-hover", on));
+      const lab = svg.querySelector(`[data-lab="${CSS.escape(sid)}"]`);
+      if (lab) lab.classList.toggle("rg-lab-on", on);
+    }
+    function select(sid) {
+      if (pinned && pinned !== sid) activate(pinned, false);
+      pinned = sid;
+      if (sid) activate(sid, true);
+      listeners.forEach((fn) => fn(sid));
+    }
+    if (!compact && hasOverlay) {
+      svg.addEventListener("pointerover", (e) => {
+        const el = e.target.closest("[data-sid]");
+        if (el && e.pointerType === "mouse") activate(el.dataset.sid, true);
+      });
+      svg.addEventListener("pointerout", (e) => {
+        const el = e.target.closest("[data-sid]");
+        if (el && e.pointerType === "mouse" && el.dataset.sid !== pinned) activate(el.dataset.sid, false);
+      });
+      svg.addEventListener("click", (e) => {
+        const el = e.target.closest("[data-sid]");
+        if (!el) { select(null); return; }
+        select(pinned === el.dataset.sid ? null : el.dataset.sid);
+      });
+    }
+
+    return {
+      svg,
+      real: true,
+      hasOverlay,
+      setLabels: (on) => setFlag("rg-show-labels", on),
+      setNeedle: (on) => setFlag("rg-hide-needle", !on),
+      setSpread: (on) => setFlag("rg-hide-spread", !on),
+      select,
+      onSelect: (fn) => listeners.push(fn)
+    };
+  }
 
   /* ------------------------------------------------------------------------
      Interactive controller
      ------------------------------------------------------------------------ */
   function render(container, block, options) {
-    const opts = Object.assign({ mode: "sono", labels: false, needle: true, spread: true, compact: false }, options || {});
+    const opts = Object.assign({ mode: "sono", labels: false, needle: true, spread: true, compact: false, real: null }, options || {});
+
+    if (opts.mode === "sono" && opts.real && opts.real.image) {
+      return renderReal(container, block, opts.real, opts);
+    }
+
     const scene = block.sono.image;
-    const real = opts.mode === "sono" && isReal(scene);
+    const simMode = opts.mode === "sono" && isSimulatable(scene);
     let canvas = null;
     let scale = 1;
-    if (real) {
+    if (simMode) {
       container.innerHTML = `<canvas class="rg-us-canvas" aria-hidden="true"></canvas>` +
         realOverlaySVG(scene, { compact: opts.compact, aria: `${block.name} — simulated ultrasound image` }, block.id);
       container.classList.add("rg-us-busy");
@@ -541,7 +709,7 @@
     let flags = { needle: opts.needle, spread: opts.spread };
     let pending = 0;
     function repaint() {
-      if (!real) return;
+      if (!simMode) return;
       cancelAnimationFrame(pending);
       container.classList.add("rg-us-busy");
       // let the browser paint the current state first, then simulate
@@ -591,14 +759,15 @@
 
     return {
       svg,
+      real: false,
       setLabels: (on) => setFlag("rg-show-labels", on || opts.mode === "line"),
       setNeedle: (on) => {
         setFlag("rg-hide-needle", !on);
-        if (real && flags.needle !== !!on) { flags.needle = !!on; repaint(); }
+        if (simMode && flags.needle !== !!on) { flags.needle = !!on; repaint(); }
       },
       setSpread: (on) => {
         setFlag("rg-hide-spread", !on);
-        if (real && flags.spread !== !!on) { flags.spread = !!on; repaint(); }
+        if (simMode && flags.spread !== !!on) { flags.spread = !!on; repaint(); }
       },
       select,
       onSelect: (fn) => listeners.push(fn)
@@ -606,7 +775,7 @@
   }
 
   function thumb(block) {
-    if (isReal(block.sono.image)) return `<canvas class="rg-us-thumb" data-us-thumb="${esc(block.id)}" aria-label="${esc(block.name)}"></canvas>`;
+    if (isSimulatable(block.sono.image)) return `<canvas class="rg-us-thumb" data-us-thumb="${esc(block.id)}" aria-label="${esc(block.name)}"></canvas>`;
     return sceneSVG(block.sono.image, "sono", { compact: true, aria: block.name });
   }
 

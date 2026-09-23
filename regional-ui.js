@@ -23,8 +23,41 @@ try {
   if (saved) Object.assign(toggles, saved);
 } catch (_) { /* storage unavailable — defaults are fine */ }
 
+// Real (or properly licensed reference) ultrasound images set from the admin
+// panel — keyed by block id, fetched once at load. A block with an entry
+// here shows that real photo instead of the simulated fallback. See
+// worker/regional-images.js / getReal() below.
+const realOverrides = {};
+fetch("/api/regional-images").then((r) => (r.ok ? r.json() : {})).catch(() => ({})).then((map) => {
+  Object.assign(realOverrides, map || {});
+  // If the current block/tab already rendered before this resolved, re-render
+  // so a newly-available real image shows up without a manual refresh.
+  if (state.block && (state.tab === "overview" || state.tab === "sono")) renderTab();
+});
+
+// Merge an admin-set image (URL/source/attribution/orientation/probe) with
+// any hand-authored, fully-annotated real image on the block itself
+// (b.sono.real — labels/needleOverlay/spreadOverlay), when present.
+function getReal(b) {
+  const authored = (b.sono && b.sono.real) || null;
+  const admin = realOverrides[b.id] || null;
+  if (!admin && !authored) return null;
+  return {
+    image: (admin && admin.image_url) || (authored && authored.image) || null,
+    source: (admin && admin.source) || (authored && authored.source) || null,
+    attribution: (admin && admin.attribution) || (authored && authored.attribution) || null,
+    orientation: (admin && admin.orientation) || (authored && authored.orientation) || null,
+    probe: (admin && admin.probe) || (authored && authored.probe) || null,
+    labels: (authored && authored.labels) || [],
+    needleOverlay: (authored && authored.needleOverlay) || null,
+    spreadOverlay: (authored && authored.spreadOverlay) || []
+  };
+}
+
 const coarse = window.matchMedia("(pointer: coarse)").matches;
 const haptic = () => { if (coarse && navigator.vibrate) navigator.vibrate(8); };
+
+const SOURCE_TEXT = { NYSORA: "NYSORA", "KnockoutNotes / user-provided": "user-provided" };
 
 let state = { cat: "upper", block: null, tab: "overview", filter: "", combo: null };
 const MAX_COMBO = 4;
@@ -157,6 +190,16 @@ function card(title, body, extraClass = "", toolbar = "") {
   return `<section class="rg-card ${extraClass}"><div class="rg-card-head"><h3>${title}</h3>${toolbar}</div><div class="rg-card-body">${body}</div></section>`;
 }
 
+// "All Labels / Needle / Spread" — belongs to the Ultrasound component
+// itself (and, separately, to the 3D card), never the page header.
+function usToolbarHTML(compactClass) {
+  return `<div class="rg-us-toolbar${compactClass ? " " + compactClass : ""}" role="group" aria-label="Show on ultrasound">
+    <button type="button" class="rg-toggle" data-toggle="labels" aria-pressed="false">🏷 All Labels</button>
+    <button type="button" class="rg-toggle" data-toggle="needle" aria-pressed="true">💉 Needle</button>
+    <button type="button" class="rg-toggle" data-toggle="spread" aria-pressed="true">💧 Spread</button>
+  </div>`;
+}
+
 function viewerCard(b, large) {
   const t = b.spread.three;
   const variants = t.variants && t.variants.length
@@ -171,8 +214,8 @@ function viewerCard(b, large) {
         <button type="button" data-zoom="in" aria-label="Zoom in">＋</button><button type="button" data-zoom="out" aria-label="Zoom out">－</button><button type="button" data-view="reset">Reset</button>
       </div>
     </div>`;
-  return card("3D spread / area of coverage",
-    `${variants}<div class="rg-3d-slot${large ? " rg-3d-large" : ""}" data-3d-slot><div class="rg-3d-loading">Loading 3D model…</div></div>
+  return card("3D coverage <small>(where anaesthesia/analgesia is expected)</small>",
+    `${usToolbarHTML("rg-us-toolbar-compact")}${variants}<div class="rg-3d-slot${large ? " rg-3d-large" : ""}" data-3d-slot><div class="rg-3d-loading">Loading 3D model…</div></div>
      ${controls}<div class="rg-legend" data-legend></div>
      <p class="rg-hint">Drag to rotate • use the buttons to zoom or change view. Block shown on the patient's right.</p>
      <a class="rg-btn rg-combo-link" href="?view=combine&amp;blocks=${b.id}" data-combine-with="${b.id}">🧩 Combine with other blocks</a>`,
@@ -182,9 +225,13 @@ function viewerCard(b, large) {
 function panelHTML(b, tab) {
   const k = b.keyInfo;
   switch (tab) {
-    case "overview":
+    case "overview": {
+      const real0 = getReal(b);
+      const usHint0 = real0 && real0.image
+        ? `${coarse ? "Tap" : "Hover over"} a labelled structure to see its name — or switch on “All Labels”. Real image${real0.source ? ` (${esc(SOURCE_TEXT[real0.source] || real0.source)})` : ""}, not AI-generated.`
+        : `${coarse ? "Tap" : "Hover over"} a structure to see its label — or switch on “All Labels”. Simulated schematic — no real scan is loaded for this block yet.`;
       return `<div class="rg-overview">
-        ${card("Ultrasound <small>(interactive)</small>", `<div class="rg-img-frame" data-sono="sono"></div><p class="rg-hint">${coarse ? "Tap" : "Hover over"} a structure to see its label — or switch on “All labels”.</p>`, "rg-card-img")}
+        ${card("Ultrasound — Interactive", `${usToolbarHTML()}<div class="rg-img-frame" data-sono="sono"></div><p class="rg-hint">${usHint0}</p>`, "rg-card-img rg-card-us")}
         ${card("Key information <small>(high-yield)</small>", `<div class="rg-keys">
           ${keyTile("🧍", "Patient positioning", ul(k.position))}
           ${keyTile("🎯", "Approach", ul(k.approach))}
@@ -192,10 +239,11 @@ function panelHTML(b, tab) {
           ${keyTile("🧪", "Volume", `<p>${esc(k.volume)}</p>`)}
           ${keyTile("🗺", "Coverage", `<p>${esc(k.coverage)}</p>`)}
         </div>`, "rg-card-keys")}
-        ${card("Line diagram <small>(for exams)</small>", `<div class="rg-img-frame rg-paper" data-sono="line"></div><p class="rg-hint">Simple labelled cross-section to reproduce in the exam.</p>`, "rg-card-img")}
+        ${card("Exam line diagram", `<div class="rg-img-frame rg-paper" data-sono="line"></div><p class="rg-hint">Draw this in the exam — simplified original artwork, not a copy of any textbook figure.</p>`, "rg-card-img")}
         ${viewerCard(b, false)}
       </div>
       <div class="rg-summary">${card("Overview", `<p>${esc(b.summary)}</p><h4>Indications</h4>${ul(b.indications)}`)}</div>`;
+    }
     case "anatomy": {
       const a = b.anatomy;
       const plexus = a.plexus ? card(`${a.plexus.type === "brachial" ? "Brachial" : "Lumbosacral"} plexus — where this block acts`, `<div class="rg-plexus-frame" data-plexus></div>`) : "";
@@ -206,12 +254,24 @@ function panelHTML(b, tab) {
     }
     case "sono": {
       const s = b.sono;
+      const real1 = getReal(b);
       const structs = s.image.s.filter((x) => x.l && x.d && x.t !== "outline");
+      const title = real1 && real1.image ? "Ultrasound — Interactive" : (s.image.probe === "landmark" ? "Landmark map" : "Ultrasound — Interactive (simulated)");
+      let sonoHint;
+      if (real1 && real1.image) {
+        sonoHint = `Real ultrasound image${real1.source ? ` — ${esc(SOURCE_TEXT[real1.source] || real1.source)}` : ""}${real1.attribution ? ` (${esc(real1.attribution)})` : ""}.`;
+      } else if (s.image.probe === "landmark") {
+        sonoHint = "Landmark map — original artwork.";
+      } else {
+        sonoHint = "Simulated B-mode frame generated from the NYSORA-described sono-anatomy — not a real patient scan. Hypoechoic = dark, hyperechoic = bright, bone casts an acoustic shadow.";
+      }
+      const facts = real1 && real1.image
+        ? `<div class="rg-facts">${real1.probe ? `<span><b>Probe</b> ${esc(real1.probe)}</span>` : ""}${real1.orientation ? `<span><b>Orientation</b> ${esc(real1.orientation)}</span>` : ""}</div>`
+        : `<div class="rg-facts"><span><b>Probe</b> ${esc(s.probe)}</span><span><b>Depth</b> ${esc(s.depth)}</span><span><b>Orientation</b> ${esc(s.orientation)}</span></div>`;
       return `<div class="rg-two rg-two-wide">
-        <div>${card(s.image.probe === "landmark" ? "Landmark map" : "Ultrasound (B-mode)", `
-          <div class="rg-facts"><span><b>Probe</b> ${esc(s.probe)}</span><span><b>Depth</b> ${esc(s.depth)}</span><span><b>Orientation</b> ${esc(s.orientation)}</span></div>
+        <div>${card(title, `${usToolbarHTML()}${facts}
           <div class="rg-img-frame rg-img-large" data-sono="sono"></div>
-          <p class="rg-hint">${s.image.probe === "landmark" ? "Landmark map — original artwork." : "Simulated B-mode frame generated from the NYSORA-described sono-anatomy (not a patient scan): hypoechoic = dark, hyperechoic = bright, bone casts an acoustic shadow."}</p>`, "rg-card-img")}</div>
+          <p class="rg-hint">${sonoHint}</p>`, "rg-card-img rg-card-us")}</div>
         <div>${card("Structure key", `<ol class="rg-structs">${structs.map((x) => `<li data-structure="${esc(x.id)}" tabindex="0"><span class="rg-dot rg-dot-${x.t}"></span><div><strong>${esc(x.l)}</strong><span>${esc(x.d)}</span></div></li>`).join("")}</ol>`)}</div>
       </div>`;
     }
@@ -269,7 +329,11 @@ function showDetail() {
   $("#rgBlockTitle").textContent = b.name;
   $("#rgBlockTagline").textContent = b.tagline;
   $("#rgBlockTags").innerHTML = b.tags.map((t) => `<span class="rg-tag">${esc(t)}</span>`).join("");
-  $("#rgCite").innerHTML = `Based on NYSORA — <a href="${esc(b.source.url)}" target="_blank" rel="noopener noreferrer">${esc(b.source.title)}</a> (summarised and reworded, not verbatim). ${esc(DATA.meta.checked)}. Ultrasound frames are simulated B-mode images and diagrams are original artwork generated for KnockoutNotes. ${esc(DATA.meta.disclaimer)}`;
+  const real2 = getReal(b);
+  const imgNote = real2 && real2.image
+    ? `The ultrasound image is a real${real2.source ? ` (${esc(SOURCE_TEXT[real2.source] || real2.source)})` : ""} scan${real2.attribution ? ` — ${esc(real2.attribution)}` : ""}; needle/spread overlays and the line diagram are original artwork.`
+    : `The ultrasound frame is a simulated B-mode image (not a patient scan) and the line diagram is original artwork.`;
+  $("#rgCite").innerHTML = `Based on NYSORA — <a href="${esc(b.source.url)}" target="_blank" rel="noopener noreferrer">${esc(b.source.title)}</a> (summarised and reworded, not verbatim). ${esc(DATA.meta.checked)}. ${imgNote} ${esc(DATA.meta.disclaimer)}`;
 
   const idx = DATA.blocks.indexOf(b);
   $("#rgPrev").disabled = idx === 0;
@@ -294,7 +358,7 @@ function renderTab() {
   sonoCtrls = [];
   panels.querySelectorAll("[data-sono]").forEach((el) => {
     const mode = el.dataset.sono;
-    const ctrl = SONO.render(el, b, { mode, labels: toggles.labels, needle: toggles.needle, spread: toggles.spread });
+    const ctrl = SONO.render(el, b, { mode, labels: toggles.labels, needle: toggles.needle, spread: toggles.spread, real: mode === "sono" ? getReal(b) : null });
     sonoCtrls.push(ctrl);
     if (mode === "sono") {
       ctrl.onSelect((sid) => {
@@ -315,6 +379,7 @@ function renderTab() {
 
   const slot = panels.querySelector("[data-3d-slot]");
   if (slot) mountViewer(slot, b);
+  syncToggleButtons();
 }
 
 /* ---------------------------------------------------------------- combine */
@@ -585,14 +650,17 @@ function bind() {
     btn.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
   });
 
-  document.querySelectorAll(".rg-toggle").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      haptic();
-      const key = btn.dataset.toggle;
-      toggles[key] = !toggles[key];
-      syncToggleButtons();
-      applyToggles();
-    });
+  // Toggle buttons live inside dynamically re-rendered cards (Ultrasound
+  // card, 3D card), so they're bound once here via delegation rather than
+  // per-element — that keeps working across every renderTab()/showCombine().
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".rg-toggle");
+    if (!btn) return;
+    haptic();
+    const key = btn.dataset.toggle;
+    toggles[key] = !toggles[key];
+    syncToggleButtons();
+    applyToggles();
   });
 
   window.addEventListener("popstate", route);

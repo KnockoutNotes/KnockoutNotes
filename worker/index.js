@@ -45,6 +45,11 @@ import {
   isR2Configured
 } from './files.js';
 import { getWebAnalytics } from './analytics.js';
+import {
+  listRegionalImages,
+  upsertRegionalImage,
+  deleteRegionalImage
+} from './regional-images.js';
 
 
 // Standard CORS headers
@@ -520,6 +525,22 @@ export default {
         return jsonResponse({ authenticated: false }, 401);
       }
       return jsonResponse({ authenticated: true, username: session.admin_username });
+    }
+
+    // ==========================================
+    // REGIONAL ANAESTHESIA — PUBLIC IMAGE OVERRIDES (no auth)
+    // Read-only map of block_id -> real/reference ultrasound image, set from
+    // the admin panel. Regional-anaesthesia.html fetches this to show a real
+    // image instead of the simulated fallback for blocks that have one.
+    // ==========================================
+    if (pathname === '/api/regional-images' && request.method === 'GET') {
+      try {
+        const images = await listRegionalImages(env.DB);
+        return jsonResponse(images);
+      } catch (err) {
+        // Never break the public page over this — degrade to "no overrides".
+        return jsonResponse({});
+      }
     }
 
     // ==========================================
@@ -1160,6 +1181,43 @@ export default {
           const fileId = pathname.replace('/api/admin/files/', '');
           const result = await deleteFile(fileId, env.DB, env, session.admin_username);
           await recordAuditLog(env.DB, session.admin_username, 'file_delete', 'file', fileId, { filename: result.filename });
+          return jsonResponse(result);
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 400);
+        }
+      }
+
+      // ----------------------------------------------------
+      // REGIONAL ANAESTHESIA IMAGE OVERRIDES (admin)
+      // Attach a real / properly-licensed reference ultrasound image URL to
+      // a block. URL + metadata only, in D1 — no R2 dependency.
+      // ----------------------------------------------------
+      if (pathname === '/api/admin/regional-images' && request.method === 'GET') {
+        try {
+          const images = await listRegionalImages(env.DB);
+          return jsonResponse({ images });
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 500);
+        }
+      }
+
+      if (pathname === '/api/admin/regional-images' && request.method === 'PUT') {
+        try {
+          const body = await request.json();
+          const blockId = (body.block_id || '').trim();
+          const result = await upsertRegionalImage(env.DB, blockId, body, session.admin_username);
+          await recordAuditLog(env.DB, session.admin_username, 'regional_image_set', 'regional_block_images', blockId, { image_url: body.image_url, source: body.source });
+          return jsonResponse({ success: true, image: result });
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 400);
+        }
+      }
+
+      if (pathname.startsWith('/api/admin/regional-images/') && request.method === 'DELETE') {
+        try {
+          const blockId = decodeURIComponent(pathname.replace('/api/admin/regional-images/', ''));
+          const result = await deleteRegionalImage(env.DB, blockId);
+          await recordAuditLog(env.DB, session.admin_username, 'regional_image_delete', 'regional_block_images', blockId, {});
           return jsonResponse(result);
         } catch (err) {
           return jsonResponse({ error: err.message }, 400);

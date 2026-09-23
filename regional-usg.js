@@ -583,14 +583,14 @@
     const img = ctx.createImageData(Wp, Hp);
     const px4 = img.data;
     const DR = 50;            // displayed dynamic range, dB
-    const REF = 3.4;          // amplitude that maps to white
+    const REF = 2.3;          // amplitude that maps to white
     const lg = tmpR;          // reuse buffer: log-compressed image
     for (let p = 0; p < N; p++) {
       const db = 20 * Math.log10(out[p] / REF + 1e-6);
       lg[p] = clamp((db + DR) / DR, 0, 1);
     }
     // light speckle-reduction smoothing, as scanners do after log compression
-    const ks = kernel(1.9 * S);
+    const ks = kernel(1.5 * S);
     let ksum = 0;
     for (let i = 0; i < ks.k.length; i++) ksum += ks.k[i];
     const sm = tmpI;
@@ -615,7 +615,7 @@
       }
     }
     // second light smoothing pass (compounds with the first for a soft, low-noise frame)
-    const ks2 = kernel(1.1 * S);
+    const ks2 = kernel(0.8 * S);
     let ksum2 = 0;
     for (let i = 0; i < ks2.k.length; i++) ksum2 += ks2.k[i];
     for (let py = 0; py < Hp; py++) {
@@ -641,7 +641,13 @@
     for (let p = 0; p < N; p++) {
       const q = p * 4;
       let v = 0;
-      if (!curvi || inFan[p]) v = Math.pow(lg[p], 2.35) * 0.92;
+      if (!curvi || inFan[p]) {
+        // S-curve contrast stretch around mid-grey: pulls dark tissue darker and
+        // bright reflectors brighter than a flat gamma would, without the frame
+        // going harsh — closer to how a scanner's own contrast/gain looks.
+        const g = Math.pow(lg[p], 1.55);
+        v = g * g * (3 - 2 * g);
+      }
       const g = v * 255;
       px4[q] = g; px4[q + 1] = g; px4[q + 2] = Math.min(255, g * 1.03 + 1); px4[q + 3] = 255;
     }

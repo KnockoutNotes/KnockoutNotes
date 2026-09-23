@@ -832,6 +832,87 @@
 .rg-real.rg-hide-needle .rg-lab-needle,
 .rg-real.rg-hide-spread .rg-lab-spread { display: none; }
 
+/* ------------------------------------------------------------ ultrasound toolbar (All Labels / Needle / Spread) */
+/* Belongs to the Ultrasound component itself — rendered inside the card,
+   directly above the image, never in the page header. */
+.rg-us-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.rg-us-toolbar-compact { padding-bottom: 10px; margin-bottom: 10px; }
+.rg-us-toolbar .rg-toggle { padding: 6px 11px; font-size: 12px; }
+.rg-card-us .rg-card-body { display: flex; flex-direction: column; }
+
+/* ------------------------------------------------------------ real ultrasound photo + overlay */
+/* A real photo keeps its own aspect ratio (no forced 4:3 crop/stretch). */
+.rg-img-frame:has(.rg-real-wrap) { aspect-ratio: auto; background: #07090d; }
+.rg-real-wrap { position: relative; display: block; line-height: 0; }
+.rg-real-wrap.rg-compact { width: 100%; height: 100%; display: flex; align-items: center; }
+.rg-real-photo { display: block; width: 100%; height: auto; }
+.rg-real-wrap.rg-compact .rg-real-photo { height: 100%; width: 100%; object-fit: cover; }
+
+.rg-real-badge {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #e2e8f0;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  max-width: calc(100% - 16px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rg-real-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+.rg-real-wrap:not(.rg-compact) .rg-real-overlay { pointer-events: auto; }
+
+.rg-real-hot { cursor: pointer; }
+.rg-real-hot .rg-hitdot { fill: transparent; }
+.rg-real-dot {
+  fill: var(--c, #0ea5e9);
+  stroke: #fff;
+  stroke-width: 1.4;
+  opacity: 0.9;
+  transition: r 0.15s ease, opacity 0.15s ease;
+}
+.rg-real-hot.rg-hover .rg-real-dot,
+.rg-real-hot .rg-real-dot.rg-lab-on { opacity: 1; filter: drop-shadow(0 0 4px var(--c, #0ea5e9)); }
+
+.rg-real-needle-line { stroke: #fff; stroke-width: 2; stroke-dasharray: 5 3; stroke-linecap: round; }
+.rg-real-needle-tip { fill: #fff; stroke: #0f172a; stroke-width: 1; }
+.rg-real-spread { fill: rgba(56, 189, 248, 0.28); stroke: rgba(125, 211, 252, 0.95); stroke-width: 1.6; stroke-dasharray: 6 4; }
+.rg-real-spread-var { fill: rgba(148, 163, 184, 0.22); stroke-dasharray: 3 3; }
+.rg-real-lead { stroke: rgba(255, 255, 255, 0.85); stroke-width: 0.9; }
+.rg-real-lead-dot { fill: #fff; }
+
+.rg-real-overlay .rg-lab { opacity: 0; transition: opacity 0.18s ease; }
+.rg-real-overlay.rg-show-labels .rg-lab,
+.rg-real-overlay .rg-lab.rg-lab-on { opacity: 1; }
+.rg-real-overlay.rg-hide-needle .rg-needle,
+.rg-real-overlay.rg-hide-needle .rg-lab-needle,
+.rg-real-overlay.rg-hide-spread .rg-spread,
+.rg-real-overlay.rg-hide-spread .rg-lab-spread { display: none; }
+
+.rg-real-facts { margin-bottom: 10px; }
+.rg-real-edu-hint { color: var(--accent-amber); }
+
 @keyframes rgPulse { 0%, 100% { transform: scale(1); } 45% { transform: scale(1.07); } }
 @keyframes rgBreathe { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
 @keyframes rgLung { 0%, 100% { opacity: 0.85; } 50% { opacity: 0.6; } }
@@ -856,6 +937,14 @@
   .rg-dl { grid-template-columns: 1fr; gap: 2px; }
   .rg-dl dd { margin-bottom: 8px; }
   .rg-crumb-path { order: 3; width: 100%; }
+
+  /* Ultrasound toolbar: full-width, larger tap targets (≥44px) */
+  .rg-us-toolbar { gap: 10px; }
+  .rg-us-toolbar .rg-toggle { flex: 1 1 auto; min-height: 44px; padding: 9px 10px; font-size: 12.5px; text-align: center; }
+  .rg-us-toolbar-compact .rg-toggle { min-height: 40px; }
+  .rg-real-badge { font-size: 10px; max-width: calc(100% - 12px); }
+  .rg-hero-actions { flex-direction: column; align-items: stretch; }
+  .rg-combine-cta { justify-content: center; }
 }
 
 @media (max-width: 420px) {

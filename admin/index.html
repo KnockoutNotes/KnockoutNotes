@@ -42,6 +42,10 @@
           <svg class="adm-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
           File Manager
         </button>
+        <button class="adm-nav-item" data-view="regional">
+          <svg class="adm-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v18M4 7l5-4 5 4M4 17l5 4 5-4m1-14h5v18h-5"></path></svg>
+          Regional Images
+        </button>
 
         <div class="adm-nav-group-title">Audience &amp; Comms</div>
         <button class="adm-nav-item" data-view="subscribers">
@@ -396,6 +400,97 @@
               <div style="display: flex; gap: 8px;">
                 <button id="filePrevBtn" class="btn-secondary" disabled>&larr; Prev</button>
                 <button id="fileNextBtn" class="btn-secondary" disabled>Next &rarr;</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             VIEW: REGIONAL ANAESTHESIA — REAL ULTRASOUND IMAGES
+             Attach a real (or properly licensed reference) ultrasound image
+             URL to a block. URL + attribution only, in D1 — works whether or
+             not the R2 bucket binding is attached. See
+             worker/regional-images.js and migrations/0003_*.sql.
+             ========================================== -->
+        <section id="view-regional" class="adm-view">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="adm-card">
+              <div class="adm-card-header">
+                <span class="adm-card-title">Set a Real Ultrasound Image for a Block</span>
+              </div>
+              <div class="adm-card-body">
+                <div id="regionalAlert" class="alert-banner"></div>
+                <div id="regionalMigrationNotice" style="display: none; padding: 12px; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 6px; margin-bottom: 16px; font-size: 12px; color: #fbbf24;">
+                  <strong>Notice:</strong> The <code>regional_block_images</code> table has not been created yet. Apply <code>migrations/0003_regional_block_images.sql</code> against the D1 database first (<code>wrangler d1 migrations apply knockoutnotes-db --remote</code>), then reload this page.
+                </div>
+
+                <form id="regionalForm">
+                  <div class="form-group">
+                    <label class="form-label" for="regBlockSelect">Block</label>
+                    <select id="regBlockSelect" class="form-select" required></select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="regImageUrl">Image URL</label>
+                    <input type="url" id="regImageUrl" class="form-input" placeholder="https://…/tap-lateral.jpg" required>
+                    <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;">
+                      Must be a direct link you have the right to publish here — your own upload (e.g. via the File Manager, once R2 is bound), or a properly licensed / permissioned reference image. Do not paste a scraped or unlicensed image URL.
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="regSource">Source</label>
+                    <select id="regSource" class="form-select">
+                      <option value="KnockoutNotes / user-provided">KnockoutNotes / user-provided</option>
+                      <option value="NYSORA">NYSORA</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="regAttribution">Attribution</label>
+                    <input type="text" id="regAttribution" class="form-input" placeholder="e.g. Source: NYSORA.COM — required if source is NYSORA">
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div class="form-group">
+                      <label class="form-label" for="regOrientation">Orientation</label>
+                      <select id="regOrientation" class="form-select">
+                        <option value="">—</option>
+                        <option value="transverse">Transverse</option>
+                        <option value="longitudinal">Longitudinal</option>
+                        <option value="oblique">Oblique</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="regProbe">Probe</label>
+                      <select id="regProbe" class="form-select">
+                        <option value="">—</option>
+                        <option value="linear">Linear</option>
+                        <option value="curvilinear">Curvilinear</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="regNotes">Admin notes (not shown publicly)</label>
+                    <textarea id="regNotes" class="form-textarea" rows="2" placeholder="Optional — e.g. where this came from, still needs cropping, etc."></textarea>
+                  </div>
+
+                  <button type="submit" id="regSubmitBtn" class="btn-primary" style="width: 100%;">Save Image for This Block</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="adm-card">
+              <div class="adm-card-header">
+                <span class="adm-card-title">Blocks With a Real Image Set</span>
+              </div>
+              <div class="adm-card-body" style="padding: 0;">
+                <table class="adm-table">
+                  <thead><tr><th>Block</th><th>Source</th><th>Orientation / Probe</th><th>Updated</th><th></th></tr></thead>
+                  <tbody id="regionalTableBody"><tr><td colspan="5">Loading…</td></tr></tbody>
+                </table>
               </div>
             </div>
           </div>
