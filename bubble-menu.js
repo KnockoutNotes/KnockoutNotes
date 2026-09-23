@@ -17,6 +17,7 @@
     { label: '3D Workstation', href: 'ventilator.html', ariaLabel: '3D Anaesthesia Workstation' },
     { label: 'Drugs', href: 'drugs.html', ariaLabel: 'Pharmacology Library' },
     { label: 'Critical Care', href: 'critical-care.html', ariaLabel: 'Critical Care & Code' },
+    { label: 'Resuscitation', href: 'resuscitation-chamber.html', ariaLabel: 'Resuscitation Chamber' },
     { label: 'About', href: 'resources.html', ariaLabel: 'About KnockoutNotes' }
   ];
 
