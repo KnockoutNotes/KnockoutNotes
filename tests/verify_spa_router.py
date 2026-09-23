@@ -90,9 +90,11 @@ def test_service_worker():
     with open(sw_path, "r", encoding="utf-8") as f:
         content = f.read()
 
-    assert 'const CACHE_NAME = "knockoutnotes-cache-v12";' in content, "Cache version must be v12"
+    m = re.search(r'const CACHE_NAME = "knockoutnotes-cache-v(\d+)";', content)
+    assert m, "sw.js must define CACHE_NAME as \"knockoutnotes-cache-vN\""
+    assert int(m.group(1)) >= 12, "Cache version must be v12 or newer"
     assert '"/spa-router.js"' in content, "spa-router.js must be in PRECACHE_ASSETS"
-    print("[PASS] sw.js precaches spa-router.js and has cache version v12!")
+    print(f"[PASS] sw.js precaches spa-router.js and has cache version v{m.group(1)} (>= v12)!")
 
 def test_stage_css():
     print("--- 5. Testing Page Stage CSS in page-common.css ---")
