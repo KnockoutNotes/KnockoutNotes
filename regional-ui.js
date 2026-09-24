@@ -150,7 +150,18 @@ function renderGrid() {
     total += list.length;
     if (!list.length) return;
     if (state.cat === "all" || f) html += `<h2 class="rg-group-title"><span>${c.icon}</span> ${esc(c.label)}</h2>`;
-    html += `<div class="rg-grid">${list.map(tileHTML).join("")}</div>`;
+    const hasSub = state.cat !== "all" && !f && list.some((b) => b.sub);
+    if (hasSub) {
+      const subs = [];
+      list.forEach((b) => { const k = b.sub || ""; if (!subs.includes(k)) subs.push(k); });
+      subs.forEach((sub) => {
+        const subList = list.filter((b) => (b.sub || "") === sub);
+        if (sub) html += `<h3 class="rg-subgroup-title">${esc(sub)}</h3>`;
+        html += `<div class="rg-grid">${subList.map(tileHTML).join("")}</div>`;
+      });
+    } else {
+      html += `<div class="rg-grid">${list.map(tileHTML).join("")}</div>`;
+    }
   });
   grid.innerHTML = total ? html : `<div class="rg-empty">No blocks match “${esc(state.filter)}”.</div>`;
   SONO.hydrateThumbs(grid);

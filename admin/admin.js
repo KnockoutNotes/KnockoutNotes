@@ -1142,6 +1142,8 @@ const REGIONAL_BLOCKS = [
   { id: 'supraclavicular', short: 'Supraclavicular', cat: 'Upper Limb' },
   { id: 'infraclavicular', short: 'Infraclavicular', cat: 'Upper Limb' },
   { id: 'axillary', short: 'Axillary', cat: 'Upper Limb' },
+  { id: 'axillary-nerve', short: 'Axillary Nerve (Quadrilateral Space)', cat: 'Upper Limb' },
+  { id: 'intercostobrachial', short: 'Intercostobrachial (ICBN)', cat: 'Upper Limb' },
   { id: 'suprascapular', short: 'Suprascapular', cat: 'Upper Limb' },
   { id: 'femoral', short: 'Femoral', cat: 'Lower Limb' },
   { id: 'fascia-iliaca', short: 'Fascia Iliaca', cat: 'Lower Limb' },
@@ -1172,7 +1174,14 @@ const REGIONAL_BLOCKS = [
   { id: 'scalp', short: 'Scalp Block', cat: 'Head & Neck' },
   { id: 'spinal', short: 'Spinal', cat: 'Neuraxial' },
   { id: 'epidural', short: 'Epidural', cat: 'Neuraxial' },
-  { id: 'caudal', short: 'Caudal', cat: 'Neuraxial' }
+  { id: 'caudal', short: 'Caudal', cat: 'Neuraxial' },
+  { id: 'paeds-popliteal', short: 'Popliteal Sciatic (Paeds)', cat: 'Paediatric Blocks' },
+  { id: 'paeds-femoral', short: 'Femoral (Paeds)', cat: 'Paediatric Blocks' },
+  { id: 'paeds-penile', short: 'Penile Nerve Block (Paeds)', cat: 'Paediatric Blocks' },
+  { id: 'paeds-caudal', short: 'Caudal (Paeds)', cat: 'Paediatric Blocks' },
+  { id: 'paeds-ql', short: 'Quadratus Lumborum (Paeds)', cat: 'Paediatric Blocks' },
+  { id: 'paeds-rectus-sheath', short: 'Rectus Sheath (Paeds)', cat: 'Paediatric Blocks' },
+  { id: 'paeds-axillary', short: 'Axillary Brachial Plexus (Paeds)', cat: 'Paediatric Blocks' }
 ];
 
 let regionalImagesCache = {};

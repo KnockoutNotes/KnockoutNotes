@@ -549,6 +549,20 @@
     {
       Type: "Regional Block",
       Category: "Regional Anaesthesia • Upper Limb",
+      Title: "Intercostobrachial Nerve Block",
+      Summary: "Medial upper arm & axilla • tourniquet adjunct. The intercostobrachial nerve (T2, ± T3) supplies the skin of the axilla and medial upper arm — territory every brachial plexus block misses. A simple subcutaneous injection blocks it, usually to cover a tourniquet. Tags: T2, Tourniquet pain, Adjunct block.",
+      href: "regional-anaesthesia.html?block=intercostobrachial"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Upper Limb",
+      Title: "Axillary Nerve Block (Quadrilateral Space)",
+      Summary: "Posterior/lateral shoulder & deltoid • diaphragm-sparing. The axillary nerve is blocked as it passes through the quadrilateral space with the posterior circumflex humeral vessels, deep to deltoid — usually paired with a suprascapular nerve block for phrenic-sparing shoulder analgesia. Tags: Shoulder analgesia, Deltoid, Diaphragm-sparing.",
+      href: "regional-anaesthesia.html?block=axillary-nerve"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Upper Limb",
       Title: "Suprascapular Nerve Block",
       Summary: "Shoulder analgesia • diaphragm-sparing. The suprascapular nerve (C5–C6, from the superior trunk) supplies most of the posterior and superior shoulder joint and the supraspinatus/infraspinatus. It is blocked in the floor of the supraspinous fossa (posterior approach) or beneath the omohyoid (anterior approach). Tags: Shoulder analgesia, Diaphragm-sparing.",
       href: "regional-anaesthesia.html?block=suprascapular"
@@ -762,6 +776,55 @@
       Title: "Caudal Epidural Block",
       Summary: "Paediatric sub-umbilical • sacral hiatus. Epidural injection through the sacral hiatus, covered by the sacrococcygeal ligament between the sacral cornua. Armitage volumes: 0.5 mL/kg sacral, 1.0 mL/kg lumbar, 1.25 mL/kg mid-thoracic. Tags: Paediatrics, Sacral hiatus, Armitage.",
       href: "regional-anaesthesia.html?block=caudal"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Paediatric Blocks",
+      Title: "Popliteal Sciatic Nerve Block (Paediatric)",
+      Summary: "Below-knee surgery in children • performed under GA. Same target as the adult popliteal block, performed after induction of general anaesthesia with weight-based volumes and a finer, shorter needle. Tags: Paediatrics, Clubfoot, GA + block.",
+      href: "regional-anaesthesia.html?block=paeds-popliteal"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Paediatric Blocks",
+      Title: "Femoral Nerve Block (Paediatric)",
+      Summary: "Femur fracture & thigh surgery in children • performed under GA. Same target as the adult femoral nerve block, scaled down with a weight-based volume and a fine, short needle. Tags: Paediatrics, Femur fracture, GA + block.",
+      href: "regional-anaesthesia.html?block=paeds-femoral"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Paediatric Blocks",
+      Title: "Dorsal Penile Nerve Block (Paediatric)",
+      Summary: "Circumcision & distal hypospadias • plain LA only. The dorsal nerves of the penis are blocked at the base of the penis, either side of the midline — an alternative to caudal block, with no motor effect on the legs. Tags: Paediatrics, Circumcision, No adrenaline.",
+      href: "regional-anaesthesia.html?block=paeds-penile"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Paediatric Blocks",
+      Title: "Caudal Block (Paediatric)",
+      Summary: "Sub-umbilical surgery • the classic paediatric block. Single-shot epidural injection through the sacral hiatus, dosed by the Armitage formula (0.5 / 1.0 / 1.25 mL/kg), almost always performed under general anaesthesia. Tags: Paediatrics, Sacral hiatus, Armitage.",
+      href: "regional-anaesthesia.html?block=paeds-caudal"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Paediatric Blocks",
+      Title: "Quadratus Lumborum Block (Paediatric)",
+      Summary: "Wide abdominal analgesia in children • performed under GA. Same 'shamrock' target as the adult QL block, increasingly favoured over caudal block for wider or longer sub-umbilical analgesia without motor or urinary effects. Tags: Paediatrics, Wide abdominal coverage, GA + block.",
+      href: "regional-anaesthesia.html?block=paeds-ql"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Paediatric Blocks",
+      Title: "Rectus Sheath Block (Paediatric)",
+      Summary: "Umbilical/midline surgery in children • bilateral. Same target as the adult rectus sheath block, almost always performed bilaterally for umbilical hernia repair and pyloromyotomy. Tags: Paediatrics, Umbilical hernia, Pyloromyotomy.",
+      href: "regional-anaesthesia.html?block=paeds-rectus-sheath"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Paediatric Blocks",
+      Title: "Axillary Brachial Plexus Block (Paediatric)",
+      Summary: "Elbow, forearm & hand surgery in children • performed under GA. Same target as the adult axillary block, scaled down with a weight-based volume and a fine, short needle. Tags: Paediatrics, Hand/forearm surgery, GA + block.",
+      href: "regional-anaesthesia.html?block=paeds-axillary"
     },
 
     // --- RESUSCITATION CHAMBER & ALGORITHMS ---

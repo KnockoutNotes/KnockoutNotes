@@ -33,7 +33,8 @@
     { id: "chest", label: "Chest Wall & Paraspinal", icon: "🫁" },
     { id: "abdo", label: "Abdominal Wall", icon: "🩻" },
     { id: "headneck", label: "Head & Neck", icon: "🧠" },
-    { id: "neuraxial", label: "Neuraxial", icon: "🦴" }
+    { id: "neuraxial", label: "Neuraxial", icon: "🦴" },
+    { id: "paeds", label: "Paediatric Blocks", icon: "🧒" }
   ];
 
   const blocks = [];
@@ -328,6 +329,20 @@
         ],
         needles: [{ from: [2, 40], to: [197, 224] }],
         spreads: [{ el: [200, 204, 46, 40, 0] }]
+      },
+      real: {
+        image: "assets/regional/infraclavicular-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Costoclavicular view, transverse just below the clavicle (medial → lateral) — the cords sit clustered lateral to the artery here, unlike the parasagittal coracoid view above",
+        probe: "Linear",
+        labels: [
+          { id: "aar", text: "Axillary artery", type: "artery", x: 46, y: 55 },
+          { id: "avr", text: "Axillary vein", type: "vein", x: 62, y: 40 },
+          { id: "cordsr", text: "Lateral / posterior / medial cords", type: "nerve", x: 68, y: 48 },
+          { id: "lpnr", text: "Lateral pectoral nerve", type: "nerve", x: 72, y: 32 }
+        ],
+        needleOverlay: { from: [88, 20], to: [55, 50], approach: "in-plane", side: "lateral", target: "the cords clustered lateral to the axillary artery" },
+        spreadOverlay: [{ shape: "ellipse", x: 58, y: 50, rx: 16, ry: 14, variable: false, note: "LA spread around the clustered cords" }]
       }
     },
     procedure: {
@@ -370,7 +385,8 @@
       "Abduction of the arm pulls the plexus superficially and away from the chest wall.",
       "The target is deep — use a longer needle and good ergonomics.",
       "Doppler for the cephalic vein and thoracoacromial branches.",
-      "Ideal site for a catheter: muscle layers hold it securely."
+      "Ideal site for a catheter: muscle layers hold it securely.",
+      "Costoclavicular view (probe more medial, transverse below the clavicle): the cords sit clustered lateral to the artery here, easier to needle in-plane from lateral to medial."
     ],
     pitfalls: ["Spread only anterior to the artery → posterior and medial cords missed.", "Steep angle → poor needle visibility.", "Mistaking the axillary vein for the artery (compress it)."],
     complications: ["Vascular puncture in a non-compressible site", "Pneumothorax (rare)", "LAST"],
@@ -427,6 +443,25 @@
         ],
         needles: [{ from: [2, 68], to: [214, 158] }],
         spreads: [{ el: [222, 124, 52, 42, 0] }, { el: [104, 104, 22, 12, 0] }]
+      },
+      real: {
+        image: "assets/regional/axillary-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse across the axilla (posterior → anterior)",
+        probe: "Linear",
+        labels: [
+          { id: "aaxr", text: "Axillary artery", type: "artery", x: 82, y: 24 },
+          { id: "avxr", text: "Axillary veins", type: "vein", x: 65, y: 30 },
+          { id: "medxr", text: "Median nerve", type: "nerve", x: 50, y: 45 },
+          { id: "ulnxr", text: "Ulnar nerve", type: "nerve", x: 40, y: 56 },
+          { id: "radxr", text: "Radial nerve", type: "nerve", x: 35, y: 66 },
+          { id: "mcnxr", text: "Musculocutaneous nerve", type: "nerve", x: 60, y: 40 }
+        ],
+        needleOverlay: { from: [10, 60], to: [45, 50], approach: "in-plane", side: "lateral", target: "around the median, ulnar and radial nerves surrounding the artery" },
+        spreadOverlay: [
+          { shape: "ellipse", x: 55, y: 45, rx: 22, ry: 18, variable: false, note: "Perivascular LA spread around median/ulnar/radial nerves" },
+          { shape: "ellipse", x: 62, y: 38, rx: 10, ry: 7, variable: false, note: "Separate injection around the musculocutaneous nerve" }
+        ]
       }
     },
     procedure: {
@@ -484,6 +519,183 @@
   });
 
   blocks.push({
+    id: "intercostobrachial",
+    name: "Intercostobrachial Nerve Block",
+    short: "Intercostobrachial (ICBN)",
+    cat: "upper",
+    tags: ["T2", "Tourniquet pain", "Adjunct block"],
+    tagline: "Medial upper arm & axilla • tourniquet adjunct",
+    summary: "The intercostobrachial nerve (T2, with a variable contribution from T3) supplies the skin of the axilla and medial upper arm — territory every brachial plexus block misses. A simple subcutaneous injection across the medial arm blocks it, most often to cover a tourniquet or an axillary incision.",
+    indications: ["Upper-arm tourniquet pain (AV fistula surgery, arm surgery under plexus block)", "Axillary/medial upper arm skin incisions", "Adjunct to any brachial plexus block (interscalene through axillary all spare T2)"],
+    keyInfo: {
+      position: ["Supine, arm abducted"],
+      approach: ["Linear probe transverse, proximal medial upper arm near the axilla", "In-plane or simple subcutaneous fan infiltration"],
+      procedure: ["Identify the nerve subcutaneously, superficial to the deep fascia", "Or infiltrate a subcutaneous band across the medial arm circumference", "No deep structures at risk — very superficial target"],
+      volume: "3–5 mL",
+      coverage: "Skin of the axilla and medial upper arm to the elbow"
+    },
+    anatomy: {
+      text: "The intercostobrachial nerve is the lateral cutaneous branch of the second intercostal nerve (T2), often joined by a branch of T3. It crosses the axilla and pierces the deep fascia of the medial upper arm to become purely cutaneous, supplying the skin of the axilla and medial arm as far as the elbow. It has no connection to the brachial plexus, so no plexus block — interscalene, supraclavicular, infraclavicular or axillary — ever covers it.",
+      relations: ["Subcutaneous, superficial to the deep (brachial) fascia", "Crosses the medial upper arm near the axilla", "Variably joined by a branch of the medial cutaneous nerve of the arm (also not part of the plexus proper)"],
+      targets: "Intercostobrachial nerve (T2 ± T3), in the subcutaneous tissue of the medial upper arm",
+      plexus: { type: "brachial", hi: ["T2"], zone: "Subcutaneous, medial upper arm" }
+    },
+    sono: {
+      probe: "Linear 10–15 MHz (high frequency, superficial)",
+      depth: "0.5–1.5 cm",
+      orientation: "Transverse, proximal medial upper arm · left = posterior, right = anterior",
+      image: {
+        probe: "linear", depth: 2, left: "POSTERIOR", right: "ANTERIOR",
+        s: [
+          { id: "df14", t: "fascia", l: "Deep (brachial) fascia", d: "The nerve lies superficial to it.", ln: [[0, 90], [200, 86], [400, 92]], lab: [340, 106] },
+          { id: "icbnn", t: "nerve", e: "honey", l: "Intercostobrachial nerve", d: "Small, subcutaneous — may be one or several twigs.", el: [200, 60, 10, 6, 0], lab: [200, 34], key: true },
+          { id: "tri14", t: "muscle", l: "Triceps", d: "Deep to the fascia.", el: [200, 160, 190, 70, 0], lab: [200, 190] }
+        ],
+        needles: [{ from: [398, 30], to: [202, 60] }],
+        spreads: [{ el: [200, 62, 160, 14, 0] }]
+      },
+      real: {
+        image: "assets/regional/intercostobrachial-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse, axilla/proximal medial upper arm (posterior → anterior)",
+        probe: "Linear",
+        labels: [
+          { id: "icbnr", text: "Intercostobrachial nerve", type: "nerve", x: 38, y: 48 },
+          { id: "aar14", text: "Axillary artery", type: "artery", x: 78, y: 22 },
+          { id: "medr14", text: "Median nerve", type: "nerve", x: 82, y: 38 },
+          { id: "radr14", text: "Radial / ulnar nerves", type: "nerve", x: 88, y: 55 }
+        ],
+        needleOverlay: { from: [10, 60], to: [35, 50], approach: "in-plane", side: "posterior", target: "the intercostobrachial nerve, subcutaneously" },
+        spreadOverlay: [{ shape: "ellipse", x: 38, y: 50, rx: 14, ry: 10, variable: false, note: "Subcutaneous LA around the nerve" }]
+      }
+    },
+    procedure: {
+      position: "Supine, arm abducted",
+      probe: "Linear, transverse over the proximal medial upper arm",
+      needle: "25G 25–40 mm",
+      approach: "In-plane, or simple subcutaneous fan infiltration",
+      steps: [
+        "Scan the proximal medial upper arm, superficial to the deep fascia.",
+        "Look for the nerve as one or more small subcutaneous hypoechoic structures (often not clearly seen).",
+        "If not clearly visualised, infiltrate a subcutaneous band across the medial arm circumference instead.",
+        "Inject to raise a subcutaneous wheal — no deep structures are at risk."
+      ],
+      volume: "3–5 mL",
+      endpoint: "Subcutaneous wheal across the medial arm, superficial to the deep fascia."
+    },
+    spread: {
+      summary: "Skin of the axilla and medial upper arm only — a small but often-missed patch that causes tourniquet discomfort even with an otherwise dense plexus block.",
+      covered: ["Axillary skin", "Medial upper arm skin to the elbow"],
+      spared: ["Everything else — this is not a substitute for a plexus block"],
+      motor: "None — purely cutaneous.",
+      three: {
+        focus: "upperR", view: "anterior",
+        needle: { a: "icbn", from: "lateral" },
+        regions: [{ k: "exp", seg: "upperArm", side: "R", t: [0, 0.6], th: [240, 300] }],
+        labels: [
+          { x: "Axilla & medial upper arm skin", k: "exp", a: { seg: "upperArm", side: "R", t: 0.2, th: 270 } },
+          { x: "Purely sensory — no motor block", k: "eff", a: { seg: "upperArm", side: "R", t: 0.4, th: 270 } },
+          { x: "Needle: proximal medial arm", k: "needle", a: "icbn" }
+        ]
+      }
+    },
+    tips: ["If the nerve isn't clearly seen, a subcutaneous fan/ring block across the medial arm works just as well.", "Do this after the main plexus block, at the end, so the arm is already numb and comfortable to reposition.", "Remember it whenever a tourniquet is used with any brachial plexus block."],
+    pitfalls: ["Forgetting it entirely — the commonest cause of 'the block worked but the tourniquet still hurt'.", "Injecting too deep — the target is purely subcutaneous.", "Confusing it with the medial cutaneous nerve of the arm (a plexus branch) — both may need blocking for complete medial arm coverage."],
+    complications: ["Essentially none — superficial subcutaneous injection", "Local bruising"],
+    pearls: ["T2 (± T3) — not part of the brachial plexus, so no plexus block ever covers it.", "The classic cause of residual tourniquet pain despite a 'perfect' plexus block.", "A simple subcutaneous fan across the medial arm is as effective as a targeted nerve injection."],
+    source: { title: "Comparing Proximal and Distal Approaches for Intercostobrachial Nerve Block", url: "https://nysora.com/education-news/comparing-proximal-and-distal-approaches-for-intercostobrachial-nerve-block-in-upper-arm-surgery/" }
+  });
+
+  blocks.push({
+    id: "axillary-nerve",
+    name: "Axillary Nerve Block (Quadrilateral Space)",
+    short: "Axillary Nerve",
+    cat: "upper",
+    tags: ["Shoulder analgesia", "Deltoid", "Diaphragm-sparing"],
+    tagline: "Posterior/lateral shoulder & deltoid • diaphragm-sparing",
+    summary: "The axillary nerve (C5–C6) is blocked as it passes through the quadrilateral space with the posterior circumflex humeral vessels, deep to deltoid at the surgical neck of the humerus — usually paired with a suprascapular nerve block for phrenic-sparing shoulder analgesia.",
+    indications: ["Shoulder surgery analgesia when phrenic sparing matters (combined with suprascapular nerve block)", "Proximal humerus fracture analgesia", "Deltoid-region surgery"],
+    keyInfo: {
+      position: ["Sitting or lateral, arm by the side or slightly internally rotated"],
+      approach: ["Linear probe posterior over the surgical neck of the humerus", "In-plane, lateral → medial or superior → inferior"],
+      procedure: ["Identify deltoid, teres minor and the humeral shaft", "Doppler for the posterior circumflex humeral vessels in the quadrilateral space", "Inject around the nerve/vessels, deep to deltoid"],
+      volume: "5–10 mL",
+      coverage: "Posterior/lateral shoulder capsule and deltoid (analgesia, not surgical anaesthesia of the whole shoulder)"
+    },
+    anatomy: {
+      text: "The axillary nerve (posterior cord, C5–C6) passes through the quadrilateral space (teres minor above, teres major below, long head of triceps medially, humeral surgical neck laterally) alongside the posterior circumflex humeral artery, then wraps around the humerus deep to deltoid. It supplies deltoid, teres minor and a patch of skin over the lower deltoid, plus articular branches to the posterior/inferior shoulder capsule.",
+      relations: ["Quadrilateral space borders: teres minor, teres major, long head of triceps, humeral shaft", "Accompanies the posterior circumflex humeral artery — Doppler as a landmark", "Deep to deltoid at the level of the surgical neck"],
+      targets: "Axillary nerve in the quadrilateral space, with the posterior circumflex humeral vessels",
+      plexus: { type: "brachial", hi: ["AXN"], zone: "Quadrilateral space" }
+    },
+    sono: {
+      probe: "Linear 7–13 MHz",
+      depth: "2–4 cm",
+      orientation: "Posterior, over the surgical neck of the humerus · left = cephalad, right = caudad",
+      image: {
+        probe: "linear", depth: 4, left: "CEPHALAD", right: "CAUDAD",
+        s: [
+          { id: "delt15", t: "muscle", l: "Deltoid", d: "Superficial.", p: [[0, 20], [400, 18], [400, 90], [0, 96]], lab: [60, 52] },
+          { id: "tmin15", t: "muscle", l: "Teres minor", d: "Superior border of the quadrilateral space.", el: [130, 120, 110, 40, 0], lab: [110, 100] },
+          { id: "pchv15", t: "artery", l: "Posterior circumflex humeral vessels", d: "Doppler — runs with the nerve.", c: [222, 142, 8], lab: [250, 118] },
+          { id: "axn15", t: "nerve", e: "honey", l: "Axillary nerve", d: "Alongside the vessels, deep to deltoid.", el: [222, 144, 14, 8, 0], lab: [230, 176], key: true },
+          { id: "hum15", t: "bone", l: "Humeral shaft (surgical neck)", d: "Lateral bony landmark.", ln: [[300, 130], [360, 120], [398, 128]], lab: [360, 152] }
+        ],
+        needles: [{ from: [398, 40], to: [224, 144] }],
+        spreads: [{ el: [222, 148, 40, 22, 0] }]
+      },
+      real: {
+        image: "assets/regional/axillary-nerve-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Posterior shoulder, over the surgical neck of the humerus (cephalad → caudad)",
+        probe: "Linear",
+        labels: [
+          { id: "pchvr15", text: "Posterior circumflex humeral vessels", type: "artery", x: 45, y: 58 },
+          { id: "axnr15", text: "Axillary nerve", type: "nerve", x: 42, y: 68 },
+          { id: "humr15", text: "Humeral head/neck cortex", type: "bone", x: 25, y: 78 }
+        ],
+        needleOverlay: { from: [90, 15], to: [44, 62], approach: "in-plane", side: "cephalad", target: "the axillary nerve alongside the posterior circumflex humeral vessels" },
+        spreadOverlay: [{ shape: "ellipse", x: 44, y: 65, rx: 14, ry: 10, variable: false, note: "LA spread around the nerve and vessels" }]
+      }
+    },
+    procedure: {
+      position: "Sitting or lateral decubitus, arm by the side",
+      probe: "Linear, posterior over the surgical neck of the humerus",
+      needle: "22G 50–80 mm",
+      approach: "In-plane, cephalad → caudad (or lateral → medial)",
+      steps: [
+        "Scan the posterior shoulder over the surgical neck of the humerus.",
+        "Identify deltoid and teres minor, then Doppler for the posterior circumflex humeral vessels.",
+        "Find the axillary nerve alongside the vessels, deep to deltoid.",
+        "Inject around the nerve and vessels."
+      ],
+      volume: "5–10 mL",
+      endpoint: "LA spreading around the nerve and posterior circumflex humeral vessels, deep to deltoid."
+    },
+    spread: {
+      summary: "Posterior and lateral shoulder capsule plus the deltoid region — combine with a suprascapular nerve block for more complete, phrenic-sparing shoulder analgesia.",
+      covered: ["Posterior/inferior shoulder capsule (articular branches)", "Deltoid muscle and overlying skin (lower/lateral deltoid)"],
+      spared: ["Anterior/superior shoulder capsule — needs a suprascapular nerve block too", "Full surgical anaesthesia of the shoulder — this is an analgesic adjunct, not a surgical block on its own"],
+      motor: "Deltoid weakness.",
+      three: {
+        focus: "upperR", view: "posterior",
+        needle: { a: "axNerve", from: "cranial" },
+        regions: [{ k: "exp", seg: "upperArm", side: "R", t: [0, 0.25], th: [130, 220] }],
+        labels: [
+          { x: "Deltoid & posterior shoulder skin", k: "exp", a: { seg: "upperArm", side: "R", t: 0.12, th: 170 } },
+          { x: "Deep target: posterior/inferior capsule", k: "eff", a: { seg: "upperArm", side: "R", t: 0.03, th: 170 } },
+          { x: "Needle: posterior, quadrilateral space", k: "needle", a: "axNerve" }
+        ]
+      }
+    },
+    tips: ["Combine with a suprascapular nerve block ('SSNB + ANB') for phrenic-sparing shoulder analgesia comparable to an interscalene block.", "Doppler the posterior circumflex humeral vessels first — the nerve runs right alongside them.", "Useful when interscalene block is relatively contraindicated (respiratory disease, contralateral phrenic palsy)."],
+    pitfalls: ["Mistaking a vein for the artery — use colour Doppler to confirm.", "Too superficial — the target is deep to deltoid, at the surgical neck.", "Expecting complete shoulder anaesthesia from this block alone."],
+    complications: ["Vascular puncture (posterior circumflex humeral vessels)", "Deltoid weakness/discomfort", "Nerve injury (rare)"],
+    pearls: ["Quadrilateral space borders: teres minor, teres major, long head of triceps, humeral shaft.", "Runs with the posterior circumflex humeral artery — Doppler as the key landmark.", "The modern, diaphragm-sparing alternative/adjunct pairing: suprascapular + axillary nerve blocks ≈ interscalene coverage of the shoulder."],
+    source: { title: "Rethinking Shoulder Analgesia: The Evolving Role of the Axillary Nerve in Regional Anesthesia", url: "https://www.nysora.com/education-news/rethinking-shoulder-analgesia-the-evolving-role-of-the-axillary-nerve-in-regional-anesthesia/" }
+  });
+
+  blocks.push({
     id: "suprascapular",
     name: "Suprascapular Nerve Block",
     short: "Suprascapular",
@@ -520,6 +732,20 @@
         ],
         needles: [{ from: [398, 40], to: [232, 196] }],
         spreads: [{ el: [228, 192, 48, 11, 0] }]
+      },
+      real: {
+        image: "assets/regional/suprascapular-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Coronal oblique over the supraspinous fossa (medial → lateral)",
+        probe: "Linear",
+        labels: [
+          { id: "ssprer", text: "Fascia deep to supraspinatus", type: "fascia", x: 42, y: 42 },
+          { id: "floorr", text: "Scapula, suprascapular fossa cortex", type: "bone", x: 55, y: 73 },
+          { id: "ssnr", text: "Suprascapular nerve", type: "nerve", x: 62, y: 68 },
+          { id: "ssar", text: "Suprascapular artery", type: "artery", x: 57, y: 65 }
+        ],
+        needleOverlay: { from: [88, 18], to: [60, 64], approach: "in-plane", side: "lateral", target: "the floor of the fossa, deep to supraspinatus" },
+        spreadOverlay: [{ shape: "ellipse", x: 58, y: 68, rx: 14, ry: 8, variable: false, note: "LA spread along the fossa floor" }]
       }
     },
     procedure: {
@@ -2188,6 +2414,20 @@
         ],
         needles: [{ from: [2, 30], to: [204, 186] }],
         spreads: [{ el: [204, 183, 176, 8, -0.5] }]
+      },
+      real: {
+        image: "assets/regional/esp-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Parasagittal, ~3 cm lateral to the spinous processes (cranial → caudal)",
+        probe: "Linear",
+        labels: [
+          { id: "trapr", text: "Trapezius", type: "muscle", x: 50, y: 12 },
+          { id: "esr", text: "Erector spinae", type: "muscle", x: 50, y: 30 },
+          { id: "espr", text: "Erector spinae plane (target)", type: "fascia", x: 48, y: 46 },
+          { id: "tpr", text: "Transverse process (shadow)", type: "bone", x: 26, y: 62 }
+        ],
+        needleOverlay: { from: [85, 15], to: [48, 44], approach: "in-plane", side: "cranial", target: "deep to erector spinae, on the transverse process" },
+        spreadOverlay: [{ shape: "ellipse", x: 50, y: 46, rx: 34, ry: 6, variable: false, note: "Linear craniocaudal spread deep to erector spinae" }]
       }
     },
     procedure: {
@@ -3340,6 +3580,671 @@
     complications: ["Dural puncture / total spinal", "Intravascular or intraosseous injection", "Motor block, urinary retention", "Infection"],
     pearls: ["Hiatus = unfused S5 laminae between the cornua.", "Equilateral triangle: cornua + both PSISs.", "Dural sac: S2 adult, S3–S4 infants.", "Armitage: 0.5 / 1.0 / 1.25 mL/kg.", "'Frog-eye' sign: cornua on transverse ultrasound."],
     source: { title: "Caudal Anesthesia / Pediatric Epidural and Spinal Anesthesia", url: "https://www.nysora.com/topics/sub-specialties/pediatric-anesthesia/pediatric-epidural-spinal-anesthesia-analgesia/" }
+  });
+
+  /* ======================================================================
+     PAEDIATRIC BLOCKS
+     Same target anatomy as the adult equivalents, but performed under GA
+     (never awake in young children), dosed by weight (mL/kg) rather than a
+     fixed adult volume, and using finer, shorter needles.
+     ====================================================================== */
+
+  blocks.push({
+    id: "paeds-popliteal",
+    name: "Popliteal Sciatic Nerve Block (Paediatric)",
+    short: "Popliteal Sciatic (Paeds)",
+    cat: "paeds",
+    sub: "Lower Limb",
+    tags: ["Paediatrics", "Clubfoot", "GA + block"],
+    tagline: "Below-knee surgery in children • performed under GA",
+    summary: "Same target as the adult popliteal block — the sciatic nerve within its paraneural sheath near the tibial/common peroneal bifurcation — but performed after induction of general anaesthesia, with weight-based volumes and a finer, shorter needle.",
+    indications: ["Clubfoot (talipes) surgery", "Foot and ankle surgery in children", "Achilles tendon procedures", "Postoperative analgesia after below-knee surgery"],
+    keyInfo: {
+      position: ["Prone, or supine with the leg raised — always performed under general anaesthesia in young children"],
+      approach: ["Linear high-frequency probe, transverse in the popliteal fossa", "In-plane, lateral → medial"],
+      procedure: ["Identify the artery, then the nerve(s) superficial/lateral to it", "Trace to the tibial/common peroneal bifurcation", "Inject within the paraneural sheath"],
+      volume: "0.3–0.5 mL/kg, within the maximum LA dose for weight",
+      coverage: "Leg below the knee (except medial strip), ankle, foot"
+    },
+    anatomy: {
+      text: "Identical anatomy to the adult block, just smaller: the sciatic nerve divides into tibial and common peroneal branches within the popliteal fossa, both enclosed in a common paraneural sheath. In small children the nerve and vessels are more superficial and closer together, so a high-frequency probe and a fine needle are used, and the bifurcation is often more proximal than in adults.",
+      relations: ["Same relations as the adult block: artery deepest, vein above it, nerve(s) superficial/lateral", "Bifurcation level is more variable and often more proximal than in adults"],
+      targets: "Tibial and common peroneal nerves within the paraneural sheath",
+      plexus: { type: "lumbosacral", hi: ["SCI", "TIB", "CPN"], zone: "Sciatic bifurcation (paediatric)" }
+    },
+    sono: {
+      probe: "Linear 10–18 MHz (higher frequency for small children)",
+      depth: "1–3 cm",
+      orientation: "Transverse in the popliteal fossa · left = medial, right = lateral",
+      image: {
+        probe: "linear", depth: 3, left: "MEDIAL", right: "LATERAL",
+        s: [
+          { id: "pedsm", t: "muscle", l: "Hamstring muscles", d: "Medial and lateral borders of the fossa.", el: [200, 90, 190, 60, 0], lab: [200, 70] },
+          { id: "pedssheath", t: "sheath", l: "Paraneural sheath", d: "Common sheath — inject inside it.", el: [212, 130, 44, 22, 0], lab: [212, 168] },
+          { id: "pedstn", t: "nerve", e: "honey", l: "Tibial nerve", d: "Medial, larger.", el: [196, 132, 15, 11, 0], lab: [168, 100], key: true },
+          { id: "pedscpn", t: "nerve", e: "honey", l: "Common peroneal nerve", d: "Lateral.", el: [232, 126, 12, 9, 0], lab: [252, 92], key: true },
+          { id: "pedspa", t: "artery", l: "Popliteal artery", d: "Deep to the nerve(s).", c: [214, 178, 10], lab: [190, 198] }
+        ],
+        needles: [{ from: [398, 60], to: [214, 130] }],
+        spreads: [{ el: [212, 130, 36, 18, 0] }]
+      },
+      real: {
+        image: "assets/regional/paeds-popliteal-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse in the popliteal fossa (medial → lateral)",
+        probe: "Linear (paediatric high-frequency)",
+        labels: [
+          { id: "pptr", text: "Popliteal artery", type: "artery", x: 36, y: 70 },
+          { id: "pptvr", text: "Popliteal vein", type: "vein", x: 50, y: 44 },
+          { id: "pptnr", text: "Tibial / common peroneal nerves", type: "nerve", x: 70, y: 38 }
+        ],
+        needleOverlay: { from: [92, 15], to: [62, 36], approach: "in-plane", side: "lateral", target: "within the paraneural sheath, around the tibial/common peroneal nerves" },
+        spreadOverlay: [{ shape: "ellipse", x: 62, y: 38, rx: 12, ry: 9, variable: false, note: "LA spread within the paraneural sheath" }]
+      }
+    },
+    procedure: {
+      position: "Prone, or supine with the leg supported — performed after induction of general anaesthesia",
+      probe: "Linear high-frequency, transverse in the popliteal fossa",
+      needle: "24G 25–50 mm (length chosen for the size of the child)",
+      approach: "In-plane, lateral → medial",
+      steps: [
+        "Identify the popliteal artery and vein, then the tibial and common peroneal nerves superficial/lateral to them.",
+        "Trace proximally/distally to confirm both nerve components within the paraneural sheath.",
+        "Advance in-plane from lateral to medial into the sheath.",
+        "Inject the calculated weight-based volume slowly, confirming circumferential spread."
+      ],
+      volume: "0.3–0.5 mL/kg, within the maximum local anaesthetic dose for weight",
+      endpoint: "Circumferential spread within the paraneural sheath."
+    },
+    spread: {
+      summary: "Same territory as the adult popliteal block — leg below the knee (except the medial strip), ankle and foot — scaled to a child's smaller limb.",
+      covered: ["Posterior and lateral leg", "Ankle and foot (except medial arch)"],
+      spared: ["Medial leg/ankle (saphenous) — supplement for medial coverage", "Posterior thigh"],
+      motor: "Foot drop while the block lasts — protect the heel and take extra care with cast/splint pressure points.",
+      three: {
+        focus: "lowerR", view: "posterior",
+        needle: { a: "pop", from: "lateral" },
+        regions: [
+          { k: "exp", seg: "leg", side: "R", th: [0, 232] },
+          { k: "exp", seg: "foot", side: "R" },
+          { k: "none", seg: "foot", side: "R", th: [238, 302], t: [0, 0.45] }
+        ],
+        labels: [
+          { x: "Posterior & lateral leg, foot", k: "exp", a: { seg: "leg", side: "R", t: 0.5, th: 150 } },
+          { x: "Spared: medial leg (saphenous)", k: "spared", a: { seg: "leg", side: "R", t: 0.5, th: 270 } },
+          { x: "Needle: popliteal fossa (under GA)", k: "needle", a: "pop" }
+        ]
+      }
+    },
+    tips: ["Always performed after induction of GA in young children — never awake.", "A high-frequency (10–18 MHz) probe suits the shallower depth in children.", "A single-shot circumferential ring around the sheath is a reliable fallback if the plane is hard to define in a very small child."],
+    pitfalls: ["Miscalculating the maximum LA dose for weight — always calculate it first, before drawing up.", "Nerve and vessels sit closer together than in adults — advance slowly.", "An insensate foot in a cast needs extra vigilance for pressure injury."],
+    complications: ["Nerve injury", "Vascular puncture", "LAST (weight-based volumes leave less margin than adult fixed doses) — calculate the maximum dose first", "Pressure injury to an insensate foot"],
+    pearls: ["Same anatomy and technique as the adult block, scaled down.", "Performed under GA — the child is never awake for this block.", "Dose by weight (mL/kg), never a fixed adult volume."],
+    source: { title: "Peripheral Nerve Blocks for Children", url: "https://nysora.com/regional-anesthesia/topics/sub-specialties/pediatric-anesthesia/peripheral-nerve-blocks-children/" }
+  });
+
+  blocks.push({
+    id: "paeds-femoral",
+    name: "Femoral Nerve Block (Paediatric)",
+    short: "Femoral (Paeds)",
+    cat: "paeds",
+    sub: "Lower Limb",
+    tags: ["Paediatrics", "Femur fracture", "GA + block"],
+    tagline: "Femur fracture & thigh surgery in children • performed under GA",
+    summary: "Same target as the adult femoral nerve block — lateral to the femoral artery at the inguinal crease, deep to the fascia iliaca — scaled down with a weight-based volume and a fine, short needle, performed under general anaesthesia.",
+    indications: ["Femoral shaft fracture analgesia", "Thigh and knee surgery in children", "Adjunct to general anaesthesia for lower-limb procedures"],
+    keyInfo: {
+      position: ["Supine, leg neutral — always performed under general anaesthesia in young children"],
+      approach: ["Linear high-frequency probe transverse at the inguinal crease", "In-plane, lateral → medial"],
+      procedure: ["Identify the femoral artery, then the nerve just lateral to it", "Needle passes beneath the fascia iliaca", "Inject around the nerve"],
+      volume: "0.2–0.3 mL/kg, within the maximum LA dose for weight",
+      coverage: "Anterior thigh, femur shaft, knee (partial)"
+    },
+    anatomy: {
+      text: "Identical anatomy to the adult block, at smaller scale: the femoral nerve lies lateral to the femoral artery at the inguinal crease, deep to the fascia iliaca and superficial to iliopsoas. In infants the structures are shallow and close together, so a high-frequency probe is essential.",
+      relations: ["Lateral to the femoral artery", "Deep to the fascia iliaca, superficial to iliopsoas", "Femoral vein lies medial to the artery"],
+      targets: "Femoral nerve, lateral to the femoral artery, deep to the fascia iliaca",
+      plexus: { type: "lumbosacral", hi: ["FEM"], zone: "Inguinal crease (paediatric)" }
+    },
+    sono: {
+      probe: "Linear 10–18 MHz (high frequency for small children)",
+      depth: "1–3 cm",
+      orientation: "Transverse at the inguinal crease · left = medial, right = lateral",
+      image: {
+        probe: "linear", depth: 3, left: "MEDIAL", right: "LATERAL",
+        s: [
+          { id: "pedsfi", t: "fascia", l: "Fascia iliaca", d: "Roof — needle passes beneath it.", ln: [[0, 96], [140, 92], [240, 100], [400, 96]], lab: [340, 80] },
+          { id: "pedsfn", t: "nerve", e: "honey", l: "Femoral nerve", d: "Hyperechoic, lateral to the artery.", el: [232, 116, 20, 10, 0], lab: [252, 140], key: true },
+          { id: "pedsfa", t: "artery", l: "Femoral artery", d: "Medial to the nerve.", c: [156, 108, 16], lab: [156, 78] },
+          { id: "pedsfv", t: "vein", l: "Femoral vein", d: "Medial to the artery; compressible.", el: [96, 116, 20, 13, 0], lab: [70, 92] }
+        ],
+        needles: [{ from: [398, 40], to: [234, 116] }],
+        spreads: [{ el: [232, 116, 30, 18, 0] }]
+      },
+      real: {
+        image: "assets/regional/paeds-femoral-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse at the inguinal crease (medial → lateral)",
+        probe: "Linear (paediatric high-frequency)",
+        labels: [
+          { id: "pfar", text: "Femoral artery", type: "artery", x: 42, y: 45 },
+          { id: "pfvr", text: "Femoral vein", type: "vein", x: 30, y: 40 },
+          { id: "pfnr", text: "Iliopsoas", type: "muscle", x: 60, y: 55 }
+        ],
+        needleOverlay: { from: [88, 15], to: [55, 42], approach: "in-plane", side: "lateral", target: "the femoral nerve, lateral to the artery, deep to the fascia iliaca" },
+        spreadOverlay: [{ shape: "ellipse", x: 55, y: 44, rx: 12, ry: 8, variable: false, note: "LA spread around the femoral nerve" }]
+      }
+    },
+    procedure: {
+      position: "Supine, leg neutral — performed after induction of general anaesthesia",
+      probe: "Linear high-frequency, transverse at the inguinal crease",
+      needle: "24G 25–50 mm",
+      approach: "In-plane, lateral → medial",
+      steps: [
+        "Identify the femoral artery and the nerve lateral to it, deep to the fascia iliaca.",
+        "Advance in-plane from lateral to medial toward the nerve.",
+        "Inject the calculated weight-based volume slowly.",
+        "Confirm spread lifting the fascia iliaca and surrounding the nerve."
+      ],
+      volume: "0.2–0.3 mL/kg, within the maximum local anaesthetic dose for weight",
+      endpoint: "Spread deep to the fascia iliaca, surrounding the femoral nerve."
+    },
+    spread: {
+      summary: "Anterior thigh and femur shaft, with partial anterior knee coverage — scaled to a child's smaller limb.",
+      covered: ["Anterior thigh skin and quadriceps", "Femur shaft (periosteal analgesia)", "Partial anterior knee"],
+      spared: ["Posterior thigh and knee (sciatic territory)", "Medial thigh (obturator territory) — variable"],
+      motor: "Quadriceps weakness while the block lasts — a fall/mobility risk once the child is more active postoperatively.",
+      three: {
+        focus: "lowerR", view: "anterior",
+        needle: { a: "fnb", from: "lateral" },
+        regions: [
+          { k: "exp", seg: "thigh", side: "R", th: [330, 90] },
+          { k: "var", seg: "leg", side: "R", th: [340, 20], t: [0, 0.2] }
+        ],
+        labels: [
+          { x: "Anterior thigh & femur", k: "exp", a: { seg: "thigh", side: "R", t: 0.4, th: 0 } },
+          { x: "Variable: anterior knee/proximal shin", k: "var", a: { seg: "leg", side: "R", t: 0.1, th: 0 } },
+          { x: "Needle: inguinal crease (under GA)", k: "needle", a: "fnb" }
+        ]
+      }
+    },
+    tips: ["Always performed after induction of GA in young children — never awake.", "Femoral vessels sit very superficially in infants — use a high-frequency probe and a shallow needle angle.", "Combine with a QL or fascia iliaca–type block for wider hip/thigh coverage when needed."],
+    pitfalls: ["Miscalculating the maximum LA dose for weight — calculate before drawing up.", "Mistaking the vein for the artery in a small, compressible field.", "Overestimating coverage — this does not reach the posterior thigh or knee."],
+    complications: ["Vascular puncture", "Quadriceps weakness / fall risk once mobile", "LAST — calculate the maximum dose first", "Nerve injury (rare)"],
+    pearls: ["Same anatomy as the adult femoral nerve block, scaled down.", "Performed under GA — the child is never awake for this block.", "Dose by weight (mL/kg), never a fixed adult volume."],
+    source: { title: "Peripheral Nerve Blocks for Children", url: "https://nysora.com/regional-anesthesia/topics/sub-specialties/pediatric-anesthesia/peripheral-nerve-blocks-children/" }
+  });
+
+  blocks.push({
+    id: "paeds-penile",
+    name: "Dorsal Penile Nerve Block (Paediatric)",
+    short: "Penile Nerve Block (Paeds)",
+    cat: "paeds",
+    sub: "Genitourinary",
+    tags: ["Paediatrics", "Circumcision", "No adrenaline"],
+    tagline: "Circumcision & distal hypospadias • plain LA only",
+    summary: "The dorsal nerves of the penis (terminal branches of the pudendal nerve) are blocked as they enter the subpubic space at the base of the penis, either side of the midline — an alternative to caudal block for circumcision, with no motor block and no effect on the legs.",
+    indications: ["Circumcision", "Distal hypospadias repair (where a caudal block is relatively contraindicated)", "Alternative to caudal block when motor/leg-sparing analgesia is preferred"],
+    keyInfo: {
+      position: ["Supine — performed under general anaesthesia or deep sedation with spontaneous breathing"],
+      approach: ["High-frequency linear probe transverse at the base of the penis", "In-plane, one side then the other"],
+      procedure: ["Identify the corpora cavernosa and the midline septum", "Find the dorsal nerves/vessels either side of the midline, beneath Buck's fascia", "Inject plain (adrenaline-free) LA beneath the deep fascia, each side"],
+      volume: "0.1 mL/kg per side (plain LA, no adrenaline)",
+      coverage: "Shaft of the penis"
+    },
+    anatomy: {
+      text: "The dorsal nerves of the penis are the terminal branches of the pudendal nerve. They enter the subpubic space at the base of the penis alongside the dorsal vessels, either side of the midline septum, and run distally beneath Buck's fascia (the deep fascia of the penis) on the dorsal aspect of the corpora cavernosa to supply the shaft and glans.",
+      relations: ["Either side of the midline dorsal septum, at the base of the penis", "Deep to Buck's fascia, superficial to the corpora cavernosa", "Accompanied by the dorsal arteries and deep dorsal vein — end arteries, so adrenaline is avoided"],
+      targets: "Dorsal nerves of the penis, beneath the deep (Buck's) fascia, either side of the midline",
+      plexus: { type: "lumbosacral", hi: ["PUD"], zone: "Base of penis, subpubic space" }
+    },
+    sono: {
+      probe: "Linear 15–18 MHz (high frequency, small parts)",
+      depth: "0.5–1.5 cm",
+      orientation: "Transverse dorsal view at the base of the penis · dorsal (top) to ventral (bottom)",
+      image: {
+        probe: "linear", depth: 2, left: "DORSAL", right: "VENTRAL",
+        s: [
+          { id: "buck16", t: "fascia", l: "Buck's fascia", d: "Deep fascia — inject beneath it.", ln: [[60, 70], [200, 62], [340, 70]], lab: [340, 50], key: true },
+          { id: "cc16", t: "organ", l: "Corpora cavernosa", d: "Paired, either side of the septum.", cs: [[150, 130, 60], [250, 130, 60]], lab: [200, 190] },
+          { id: "sept16", t: "fascia", l: "Median septum", d: "Midline division.", ln: [[200, 80], [200, 180]], lab: [200, 70] },
+          { id: "dn16", t: "nerve", e: "honey", l: "Dorsal nerve of the penis", d: "Either side of the septum, beneath Buck's fascia.", cs: [[160, 90, 6], [240, 90, 6]], lab: [200, 40], key: true }
+        ],
+        needles: [{ from: [398, 30], to: [246, 84] }],
+        spreads: [{ el: [160, 90, 20, 12, 0] }, { el: [240, 90, 20, 12, 0] }]
+      },
+      real: {
+        image: "assets/regional/paeds-penile-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse dorsal view at the base of the penis",
+        probe: "Linear (small-parts, high frequency)",
+        labels: [
+          { id: "ccr16", text: "Corpus cavernosum with central arteries", type: "organ", x: 50, y: 40 },
+          { id: "septr16", text: "Tunica albuginea & penile septum", type: "fascia", x: 50, y: 55 },
+          { id: "csr16", text: "Corpus spongiosum", type: "organ", x: 50, y: 75 },
+          { id: "dvr16", text: "Deep dorsal vein / dorsal arteries", type: "vein", x: 58, y: 62 }
+        ],
+        needleOverlay: { from: [82, 12], to: [58, 30], approach: "in-plane", side: "lateral", target: "beneath Buck's fascia, beside the dorsal vessels" },
+        spreadOverlay: [
+          { shape: "ellipse", x: 35, y: 30, rx: 9, ry: 6, variable: false, note: "LA beneath Buck's fascia, one side" },
+          { shape: "ellipse", x: 62, y: 30, rx: 9, ry: 6, variable: false, note: "LA beneath Buck's fascia, other side" }
+        ]
+      }
+    },
+    procedure: {
+      position: "Supine — general anaesthesia or deep sedation with spontaneous breathing maintained",
+      probe: "Linear, high frequency, transverse at the base of the penis",
+      needle: "27G–25G 20–25 mm",
+      approach: "In-plane, one side then the other",
+      steps: [
+        "Scan transversely at the base of the penis; identify the corpora cavernosa, median septum and Buck's fascia.",
+        "Locate the dorsal vessels/nerve either side of the septum, just beneath Buck's fascia.",
+        "Advance in-plane and inject plain (adrenaline-free) LA beneath Buck's fascia on one side.",
+        "Repeat on the other side."
+      ],
+      volume: "0.1 mL/kg per side of plain LA (e.g. 0.5% ropivacaine or bupivacaine, NO adrenaline)",
+      endpoint: "LA spreading beneath Buck's fascia, either side of the septum."
+    },
+    spread: {
+      summary: "The shaft of the penis only — no motor block, no effect on the legs, unlike a caudal block.",
+      covered: ["Shaft and (variably) glans of the penis"],
+      spared: ["Everything else — legs, perineum, motor function are all unaffected"],
+      motor: "None — legs and continence are unaffected, unlike a caudal block.",
+      three: {
+        focus: "full", view: "anterior",
+        needle: { a: "penileN", from: "cranial" },
+        regions: [{ k: "exp", seg: "trunk", side: "both", derm: ["S2", "S4"], th: [0, 20] }],
+        labels: [
+          { x: "Penile shaft", k: "exp", a: { seg: "trunk", side: "R", y: 0.81, th: 10 } },
+          { x: "No motor block — legs unaffected", k: "eff", a: { seg: "trunk", side: "R", y: 0.9, th: 10 } },
+          { x: "Needle: base of penis, each side", k: "needle", a: "penileN" }
+        ]
+      }
+    },
+    tips: ["Never use an adrenaline-containing solution — the penile arteries are end-arteries.", "Ultrasound guidance is more reliable than the blind subpubic (Dalens) landmark technique.", "A good alternative to caudal block when leg motor sparing or avoiding neuraxial risk is preferred."],
+    pitfalls: ["Using LA with adrenaline — a genuine risk of ischaemia.", "Injecting superficial to Buck's fascia — poor spread to the nerve.", "Exceeding the maximum weight-based LA dose when combined with other blocks/infiltration."],
+    complications: ["Vascular injury/haematoma", "Ischaemia if adrenaline is mistakenly used", "Block failure (variable nerve position) — ultrasound reduces this risk versus landmark technique"],
+    pearls: ["Dorsal nerves of the penis = terminal branches of the pudendal nerve.", "Plain LA only — never adrenaline (end-artery territory).", "Unlike a caudal block, this spares leg motor function and continence."],
+    source: { title: "Ultrasound-Guided Dorsal Penile Nerve Block in Children", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10813842/" }
+  });
+
+  blocks.push({
+    id: "paeds-caudal",
+    name: "Caudal Block (Paediatric)",
+    short: "Caudal (Paeds)",
+    cat: "paeds",
+    sub: "Neuraxial",
+    tags: ["Paediatrics", "Sacral hiatus", "Armitage"],
+    tagline: "Sub-umbilical surgery • the classic paediatric block",
+    summary: "The most commonly performed paediatric regional block: single-shot epidural injection through the sacral hiatus, dosed by the Armitage formula (0.5 / 1.0 / 1.25 mL/kg for sacral / lumbar / mid-thoracic spread), almost always performed under general anaesthesia.",
+    indications: ["Circumcision, hypospadias repair", "Inguinal hernia repair, orchidopexy", "Lower limb surgery in children", "Any sub-umbilical paediatric surgery needing intra- and postoperative analgesia"],
+    keyInfo: {
+      position: ["Lateral with hips/knees flexed, or prone — performed after induction of general anaesthesia"],
+      approach: ["Palpate the sacral cornua, or confirm with ultrasound", "Needle at ~45° through the sacrococcygeal ligament, then flattened"],
+      procedure: ["Hiatus at the apex of an equilateral triangle with the two PSISs", "'Pop' through the sacrococcygeal ligament", "Advance only 2–3 mm; aspirate; inject slowly"],
+      volume: "Armitage formula: 0.5 mL/kg (sacral) / 1.0 mL/kg (lumbar) / 1.25 mL/kg (mid-thoracic)",
+      coverage: "Sacral → lumbar → mid-thoracic dermatomes, by volume"
+    },
+    anatomy: {
+      text: "The sacral hiatus results from failure of fusion of the S5 (and sometimes S4) laminae, covered by the sacrococcygeal ligament and bounded by the sacral cornua — palpable as the apex of an equilateral triangle formed with the two posterior superior iliac spines. The dural sac ends lower in infants (around S3–S4) than in adults (S2), so the needle is advanced only a few millimetres past the ligament.",
+      relations: ["Roof: sacrococcygeal ligament, between the sacral cornua", "Floor: posterior surface of the sacral bodies (the sacral canal)", "Cranial: dural sac — lower in infants than adults, so depth of insertion is critical"],
+      targets: "Sacral and lumbar nerve roots within the caudal epidural space",
+      plexus: { type: "lumbosacral", hi: ["S2", "S3", "S4"], zone: "Caudal epidural space" }
+    },
+    sono: {
+      probe: "Linear high-frequency (paediatric)",
+      depth: "1–3 cm",
+      orientation: "Longitudinal (sagittal) over the sacral hiatus · left = cranial, right = caudal",
+      image: {
+        probe: "linear", depth: 3, left: "CRANIAL", right: "CAUDAL",
+        s: [
+          { id: "pedssac", t: "bone", l: "Dorsal surface of sacrum", d: "Ends at the hiatus.", ln: [[0, 118], [120, 112], [248, 110]], lab: [70, 96] },
+          { id: "pedsscl", t: "ligament", l: "Sacrococcygeal ligament", d: "'Pop' through it.", ln: [[248, 110], [300, 128], [336, 150]], lab: [300, 100], key: true },
+          { id: "pedscc", t: "bone", l: "Coccyx", d: "Caudal.", ln: [[336, 152], [400, 164]], lab: [370, 190] },
+          { id: "pedsfloor", t: "bone", l: "Sacral canal floor", d: "Anterior wall of the canal.", ln: [[0, 204], [150, 198], [300, 192]], lab: [80, 226] },
+          { id: "pedscs", t: "space", l: "Caudal epidural space", d: "Between ligament/sacrum and canal floor.", p: [[120, 124], [248, 116], [320, 150], [300, 188], [120, 196]], lab: [196, 160], key: true }
+        ],
+        needles: [{ from: [398, 60], to: [256, 150] }],
+        spreads: [{ el: [190, 160, 84, 14, -2] }]
+      },
+      real: {
+        image: "assets/regional/paeds-caudal-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Sagittal view over the sacral hiatus (cranial → caudal)",
+        probe: "Linear (paediatric high-frequency)",
+        labels: [
+          { id: "psclr", text: "Post. sacrococcygeal ligament", type: "ligament", x: 45, y: 45 },
+          { id: "pedsr", text: "Epidural / dural sac space", type: "space", x: 45, y: 58 },
+          { id: "pcaudar", text: "Cauda equina & filum terminale", type: "nerve", x: 30, y: 40 }
+        ],
+        needleOverlay: { from: [15, 55], to: [45, 46], approach: "in-plane", side: "caudal", target: "through the sacrococcygeal ligament, into the caudal epidural space" },
+        spreadOverlay: [{ shape: "ellipse", x: 42, y: 50, rx: 20, ry: 8, variable: false, note: "LA spreading cranially in the caudal canal" }]
+      }
+    },
+    procedure: {
+      position: "Lateral with hips/knees flexed (performed under GA), or prone",
+      probe: "Linear high-frequency: transverse ('frog-eye' cornua) then longitudinal",
+      needle: "22–24G short-bevel or IV cannula",
+      approach: "Landmark or ultrasound; ~45° to skin at the hiatus, then flattened",
+      steps: [
+        "Palpate the sacral cornua — the hiatus is the apex of an equilateral triangle with the two PSISs.",
+        "Insert at ~45° until a 'pop' through the sacrococcygeal ligament.",
+        "Flatten the angle and advance only 2–3 mm (the dural sac is lower in infants).",
+        "Aspirate, then inject slowly, watching for subcutaneous swelling or, if using an epinephrine-containing test dose, ECG (T-wave/ST) changes."
+      ],
+      volume: "Armitage: 0.5 mL/kg (sacral), 1.0 mL/kg (lumbar), 1.25 mL/kg (mid-thoracic) — within the maximum LA dose for weight",
+      endpoint: "Easy injection with no subcutaneous swelling; on ultrasound, turbulent flow spreading cranially in the canal."
+    },
+    spread: {
+      summary: "Volume determines the height of block: sacral dermatomes at low volume, rising through lumbar to mid-thoracic as volume increases.",
+      covered: ["0.5 mL/kg: sacral (perineum)", "1.0 mL/kg: lumbosacral (up to ~T10)", "1.25 mL/kg: mid-thoracic"],
+      spared: ["Dermatomes above the volume-dependent level reached"],
+      motor: "Transient leg weakness is expected and resolves with the block; urinary retention is uncommon at standard doses.",
+      three: {
+        focus: "full", view: "anterior",
+        needle: { a: "caudal", from: "caudal" },
+        variants: [
+          {
+            id: "s", label: "0.5 mL/kg — sacral",
+            regions: [
+              { k: "exp", seg: "trunk", side: "both", derm: ["S2", "S5"], th: [0, 180] },
+              { k: "var", seg: ["thigh", "leg"], side: "both", th: [150, 210] }
+            ]
+          },
+          { id: "l", label: "1.0 mL/kg — lumbar (≈T10)", regions: lowerBody("T10").concat([{ k: "var", seg: "trunk", side: "both", derm: ["T9", "T9"], th: [0, 180] }]) },
+          { id: "t", label: "1.25 mL/kg — mid-thoracic", regions: lowerBody("T7").concat([{ k: "var", seg: "trunk", side: "both", derm: ["T6", "T6"], th: [0, 180] }]) }
+        ],
+        labels: [
+          { x: "Block height rises with volume", k: "exp", a: { seg: "thigh", side: "R", t: 0.4, th: 0 } },
+          { x: "Needle: sacral hiatus (under GA)", k: "needle", a: "caudal" }
+        ]
+      }
+    },
+    tips: ["Ultrasound confirms needle position and cranial spread, useful for trainees and larger children.", "A test dose with epinephrine (if used) is checked against the ECG for T-wave/ST changes.", "This is the single most commonly performed paediatric regional block worldwide — get comfortable with it early."],
+    pitfalls: ["Advancing too far past the ligament → dural puncture (the dural sac is lower in infants than adults).", "Subcutaneous injection (visible swelling) → block failure.", "Using an adult fixed volume instead of the Armitage weight-based formula."],
+    complications: ["Dural puncture / total spinal", "Intravascular or intraosseous injection", "Transient motor block, occasional urinary retention", "Infection (rare with single-shot technique)"],
+    pearls: ["Hiatus = unfused S5 (± S4) laminae between the cornua.", "Landmark: equilateral triangle formed by the cornua and both PSISs.", "Dural sac ends lower in infants (S3–S4) than adults (S2) — advance only 2–3 mm past the 'pop'.", "Armitage formula: 0.5 / 1.0 / 1.25 mL/kg for sacral / lumbar / mid-thoracic spread.", "'Frog-eye' sign: the two cornua seen together on a transverse scan."],
+    source: { title: "Caudal Anesthesia / Pediatric Epidural and Spinal Anesthesia", url: "https://www.nysora.com/topics/sub-specialties/pediatric-anesthesia/pediatric-epidural-spinal-anesthesia-analgesia/" }
+  });
+
+  blocks.push({
+    id: "paeds-ql",
+    name: "Quadratus Lumborum Block (Paediatric)",
+    short: "Quadratus Lumborum (Paeds)",
+    cat: "paeds",
+    sub: "Abdominal Wall",
+    tags: ["Paediatrics", "Wide abdominal coverage", "GA + block"],
+    tagline: "Wide abdominal analgesia in children • performed under GA",
+    summary: "Same 'shamrock' target as the adult QL block — the plane around quadratus lumborum, between the abdominal wall muscles and psoas — increasingly favoured over caudal block in children needing analgesia above the sub-umbilical dermatomes, or when motor-sparing, longer-acting analgesia is preferred.",
+    indications: ["Pyeloplasty, nephrectomy, other flank/upper abdominal paediatric surgery", "Umbilical and inguinal hernia repair as a caudal alternative", "Hip surgery (anterior/transmuscular approach)", "Analgesia extending above the sub-umbilical level a caudal block reliably reaches"],
+    keyInfo: {
+      position: ["Lateral decubitus, block side up — performed after induction of general anaesthesia"],
+      approach: ["Curvilinear or linear probe (by size of child) transverse in the flank above the iliac crest", "In-plane, posterior → anterior"],
+      procedure: ["Find the 'shamrock': transverse process with psoas, erector spinae and QL", "QL2 (posterior surface of QL) or transmuscular (QL–psoas plane)", "Inject and confirm plane spread, not intramuscular pooling"],
+      volume: "0.3–0.4 mL/kg per side, within the maximum LA dose for weight",
+      coverage: "QL2: wide anterolateral abdominal wall; transmuscular: extends toward the hip"
+    },
+    anatomy: {
+      text: "Identical anatomy to the adult 'shamrock' view, at a smaller scale: quadratus lumborum lies lateral to the transverse process, with psoas anterior and erector spinae posterior. In children the plane is shallower and the transverse process softer/less ossified, so image quality is often excellent.",
+      relations: ["Anterior: psoas major", "Posterior: erector spinae, thoracolumbar fascia", "Lateral: abdominal wall muscles (TA/IO/EO)", "Deep: kidney — closer to the surface in small children, so care is needed"],
+      targets: "Thoracolumbar nerves around quadratus lumborum ± paravertebral spread",
+      plexus: { type: "lumbosacral", hi: ["T10", "L1"], zone: "Quadratus lumborum plane (paediatric)" }
+    },
+    sono: {
+      probe: "Linear or curvilinear (by size of child), 6–13 MHz",
+      depth: "2–5 cm",
+      orientation: "Transverse in the flank ('shamrock') · left = posterior, right = anterior",
+      image: {
+        probe: "curvilinear", depth: 5, left: "POSTERIOR", right: "ANTERIOR",
+        s: [
+          { id: "pedses", t: "muscle", l: "Erector spinae", d: "Posterior leaf.", el: [70, 130, 70, 54, 0], lab: [60, 110] },
+          { id: "pedsql", t: "muscle", l: "Quadratus lumborum", d: "Lateral leaf — the block's target.", el: [204, 126, 58, 34, 0], lab: [204, 104], key: true },
+          { id: "pedsps", t: "muscle", l: "Psoas major", d: "Anterior leaf.", el: [212, 214, 70, 34, 0], lab: [212, 226] },
+          { id: "pedstp", t: "bone", l: "Transverse process", d: "The shamrock's stem.", ln: [[60, 206], [120, 190], [180, 172]], lab: [96, 234] }
+        ],
+        needles: [{ from: [20, 44], to: [214, 166] }],
+        spreads: [{ el: [212, 170, 62, 9, 8] }]
+      },
+      real: {
+        image: "assets/regional/paeds-ql-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse in the flank ('shamrock' view; posterior → anterior)",
+        probe: "Linear (paediatric)",
+        labels: [
+          { id: "peoblr", text: "External oblique", type: "muscle", x: 25, y: 20 },
+          { id: "pioblr", text: "Internal oblique", type: "muscle", x: 40, y: 40 },
+          { id: "ptar", text: "Transversus abdominis", type: "muscle", x: 55, y: 55 },
+          { id: "pqlr", text: "Quadratus lumborum", type: "muscle", x: 30, y: 65 },
+          { id: "ppsr", text: "Psoas", type: "muscle", x: 65, y: 75 }
+        ],
+        needleOverlay: { from: [8, 20], to: [42, 55], approach: "in-plane", side: "posterior", target: "around quadratus lumborum" },
+        spreadOverlay: [{ shape: "ellipse", x: 45, y: 55, rx: 18, ry: 14, variable: false, note: "LA spread around quadratus lumborum" }]
+      }
+    },
+    procedure: {
+      position: "Lateral decubitus, block side up — performed after induction of general anaesthesia",
+      probe: "Curvilinear or linear (by size of child), transverse in the flank above the iliac crest",
+      needle: "22–24G 50–100 mm (by size of child)",
+      approach: "In-plane, posterior → anterior",
+      steps: [
+        "Find the shamrock: transverse process with psoas (anterior), erector spinae (posterior) and QL (lateral).",
+        "QL2: place the tip at the posterior surface of QL.",
+        "Transmuscular: pass through QL to the plane between QL and psoas.",
+        "Inject the calculated weight-based volume, observing spread in the plane."
+      ],
+      volume: "0.3–0.4 mL/kg per side, within the maximum local anaesthetic dose for weight",
+      endpoint: "Plane spread without intramuscular pooling."
+    },
+    spread: {
+      summary: "Wider and typically longer-lasting than a caudal block for the same sub-umbilical territory, with the option of bilateral injection for midline incisions and no urinary/leg motor effects.",
+      covered: ["QL2: broad anterolateral abdominal wall", "Transmuscular: extends toward the hip"],
+      spared: ["Contralateral side unless blocked bilaterally"],
+      motor: "None to minimal — a key advantage over caudal block for procedures needing early mobilisation.",
+      three: {
+        focus: "abdoR", view: "right",
+        needle: { a: "ql", from: "posterior" },
+        regions: [
+          { k: "exp", seg: "trunk", side: "R", derm: ["T10", "L1"], th: [0, 112] },
+          { k: "var", seg: "trunk", side: "R", derm: ["T8", "T9"], th: [0, 112] }
+        ],
+        labels: [
+          { x: "Broad abdominal wall analgesia", k: "exp", a: { seg: "trunk", side: "R", y: 1.05, th: 60 } },
+          { x: "No leg motor block or urinary retention", k: "eff", a: { seg: "trunk", side: "R", y: 1.0, th: 60 } },
+          { x: "Needle: flank (shamrock, under GA)", k: "needle", a: "ql" }
+        ]
+      }
+    },
+    tips: ["Increasingly used in place of caudal block for wider or longer-lasting sub-umbilical analgesia without motor/urinary effects.", "Image quality is often excellent in children — the transverse process is less densely ossified.", "The kidney is closer to the surface than in adults — keep it in view and stay superficial to it."],
+    pitfalls: ["Miscalculating the maximum LA dose for weight, especially if performed bilaterally.", "Intramuscular QL injection instead of the correct plane.", "Needle too anterior → kidney or peritoneal puncture — the margin is smaller in small children."],
+    complications: ["Quadriceps weakness (rare, more with transmuscular spread)", "Renal or peritoneal puncture", "LAST — calculate the maximum dose first, especially if bilateral", "Hypotension (uncommon in healthy children)"],
+    pearls: ["Same 'shamrock' anatomy as the adult QL block.", "A rising alternative to caudal block for wider or longer sub-umbilical coverage.", "No leg motor block or urinary retention — useful when early mobilisation matters."],
+    source: { title: "Ultrasound-Guided TAP and Quadratus Lumborum Blocks", url: "https://www.nysora.com/topics/abdomen/ultrasound-guided-transversus-abdominis-plane-quadratus-lumborum-blocks/" }
+  });
+
+  blocks.push({
+    id: "paeds-rectus-sheath",
+    name: "Rectus Sheath Block (Paediatric)",
+    short: "Rectus Sheath (Paeds)",
+    cat: "paeds",
+    sub: "Abdominal Wall",
+    tags: ["Paediatrics", "Umbilical hernia", "Pyloromyotomy"],
+    tagline: "Umbilical/midline surgery in children • bilateral",
+    summary: "Same target as the adult rectus sheath block — the plane between rectus abdominis and its posterior sheath — scaled down and almost always performed bilaterally for the classic paediatric indications: umbilical hernia repair and pyloromyotomy.",
+    indications: ["Umbilical hernia repair", "Pyloromyotomy", "Any periumbilical/midline incision in children", "Laparoscopic port-site analgesia (umbilical port)"],
+    keyInfo: {
+      position: ["Supine — performed after induction of general anaesthesia"],
+      approach: ["Linear high-frequency probe transverse, lateral to the umbilicus", "In-plane, lateral → medial"],
+      procedure: ["Identify rectus abdominis and the posterior rectus sheath", "Needle tip between muscle and posterior sheath, just lateral to the linea alba", "Inject and confirm spread lifting the muscle off the sheath"],
+      volume: "0.1–0.2 mL/kg per side, within the maximum LA dose for weight",
+      coverage: "Periumbilical/midline skin and peritoneum (T9–T11 terminal branches)"
+    },
+    anatomy: {
+      text: "Identical anatomy to the adult block: the terminal branches of the T9–T11 (and often T12) intercostal nerves run in the plane between rectus abdominis and its posterior sheath before piercing the muscle to supply the periumbilical skin. In infants the rectus muscle is thin, so care is needed not to advance through the posterior sheath into the peritoneal cavity.",
+      relations: ["Anterior: rectus abdominis", "Posterior: posterior rectus sheath, then peritoneum — thin margin in infants", "Nerves run in the plane between muscle and sheath before piercing the muscle"],
+      targets: "Terminal anterior cutaneous branches of T9–T11, between rectus abdominis and its posterior sheath",
+      plexus: { type: "lumbosacral", hi: ["T9", "T11"], zone: "Rectus sheath (paediatric)" }
+    },
+    sono: {
+      probe: "Linear 10–18 MHz (high frequency for a thin abdominal wall)",
+      depth: "0.5–2 cm",
+      orientation: "Transverse, lateral to the umbilicus · left = medial, right = lateral",
+      image: {
+        probe: "linear", depth: 2, left: "MEDIAL", right: "LATERAL",
+        s: [
+          { id: "pedsra", t: "muscle", l: "Rectus abdominis", d: "Thin in infants.", el: [220, 90, 170, 50, 0], lab: [220, 66] },
+          { id: "pedsprs", t: "fascia", l: "Posterior rectus sheath", d: "Target plane just superficial to it.", ln: [[60, 136], [220, 132], [380, 138]], lab: [300, 150], key: true },
+          { id: "pedssea", t: "artery", l: "Superior epigastric artery branch", d: "Within the muscle — Doppler before injecting.", c: [220, 100, 5], lab: [250, 84] },
+          { id: "pedsperi", t: "organ", l: "Peritoneal cavity", d: "Close by — thin margin in infants.", ln: [[60, 156], [220, 154], [380, 158]], lab: [320, 176] }
+        ],
+        needles: [{ from: [398, 50], to: [222, 130] }],
+        spreads: [{ el: [222, 128, 130, 12, 0] }]
+      },
+      real: {
+        image: "assets/regional/paeds-rectus-sheath-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse, lateral to the umbilicus (medial → lateral)",
+        probe: "Linear (paediatric high-frequency)",
+        labels: [
+          { id: "prar", text: "Rectus abdominis", type: "muscle", x: 40, y: 35 },
+          { id: "pseair", text: "Superior epigastric artery branch", type: "artery", x: 60, y: 42 },
+          { id: "pperir", text: "Peritoneal cavity with bowel", type: "organ", x: 65, y: 65 }
+        ],
+        needleOverlay: { from: [88, 20], to: [45, 40], approach: "in-plane", side: "lateral", target: "between rectus abdominis and its posterior sheath" },
+        spreadOverlay: [{ shape: "ellipse", x: 48, y: 42, rx: 24, ry: 6, variable: false, note: "LA spread lifting rectus off the posterior sheath" }]
+      }
+    },
+    procedure: {
+      position: "Supine — performed after induction of general anaesthesia",
+      probe: "Linear high-frequency, transverse, lateral to the umbilicus",
+      needle: "24–25G 25–40 mm",
+      approach: "In-plane, lateral → medial",
+      steps: [
+        "Identify rectus abdominis and the posterior rectus sheath (a thin bright line beneath the muscle).",
+        "Doppler for the superior/inferior epigastric vessels running within the muscle.",
+        "Advance in-plane, keeping the tip clearly visualised, to just superficial to the posterior sheath.",
+        "Inject the calculated weight-based volume; repeat on the other side for midline incisions."
+      ],
+      volume: "0.1–0.2 mL/kg per side, within the maximum local anaesthetic dose for weight",
+      endpoint: "Spread lifting rectus abdominis off the posterior sheath, not through it."
+    },
+    spread: {
+      summary: "Periumbilical/midline skin, muscle and peritoneum (T9–T11) — bilateral injection covers a midline umbilical incision completely.",
+      covered: ["Periumbilical skin and rectus muscle", "Parietal peritoneum at the umbilicus"],
+      spared: ["Anything lateral to the rectus sheath — combine with a TAP block for wider lateral incisions"],
+      motor: "None clinically relevant at analgesic doses.",
+      three: {
+        focus: "full", view: "anterior",
+        needle: { a: "rsb", from: "lateral" },
+        regions: [{ k: "exp", seg: "trunk", side: "both", derm: ["T9", "T11"], th: [0, 40] }],
+        labels: [
+          { x: "Periumbilical skin & peritoneum", k: "exp", a: { seg: "trunk", side: "R", y: 1.09, th: 15 } },
+          { x: "Needle: lateral to umbilicus, each side", k: "needle", a: "rsb" }
+        ]
+      }
+    },
+    tips: ["Always Doppler before injecting — the epigastric vessels run within the rectus muscle itself.", "The rectus muscle is thin in infants; keep the needle tip visualised at all times to avoid peritoneal puncture.", "Bilateral injection is standard for a midline umbilical incision."],
+    pitfalls: ["Advancing through the posterior sheath into the peritoneal cavity — the margin is small in infants.", "Missing the epigastric vessels and causing a rectus sheath haematoma.", "Forgetting the second side for a midline incision."],
+    complications: ["Peritoneal puncture/visceral injury", "Rectus sheath haematoma (epigastric vessel injury)", "LAST if bilateral volumes aren't calculated together"],
+    pearls: ["Same target as the adult rectus sheath block: the plane between rectus abdominis and its posterior sheath.", "The classic block for umbilical hernia repair and pyloromyotomy.", "Almost always bilateral for a midline incision."],
+    source: { title: "Peripheral Nerve Blocks for Children", url: "https://nysora.com/regional-anesthesia/topics/sub-specialties/pediatric-anesthesia/peripheral-nerve-blocks-children/" }
+  });
+
+  blocks.push({
+    id: "paeds-axillary",
+    name: "Axillary Brachial Plexus Block (Paediatric)",
+    short: "Axillary Brachial Plexus (Paeds)",
+    cat: "paeds",
+    sub: "Upper Limb",
+    tags: ["Paediatrics", "Hand/forearm surgery", "GA + block"],
+    tagline: "Elbow, forearm & hand surgery in children • performed under GA",
+    summary: "Same target as the adult axillary block — the terminal branches scattered around the axillary artery — scaled down with a weight-based volume and a fine, short needle, performed after induction of general anaesthesia.",
+    indications: ["Forearm and hand fracture surgery", "Elbow surgery in children", "AV fistula/vascular access procedures in older children"],
+    keyInfo: {
+      position: ["Supine, arm abducted 90°, elbow flexed — performed after induction of general anaesthesia"],
+      approach: ["Linear high-frequency probe transverse in the axilla", "In-plane from the lateral (biceps) side"],
+      procedure: ["Identify the artery and conjoint tendon; light pressure to see the veins", "Radial first (posterior), then median and ulnar", "Separate small injection for the musculocutaneous nerve"],
+      volume: "0.3–0.5 mL/kg total, within the maximum LA dose for weight",
+      coverage: "Elbow, forearm and hand"
+    },
+    anatomy: {
+      text: "Identical anatomy to the adult block, at smaller scale: the median, ulnar and radial nerves lie close to the axillary artery, with the musculocutaneous nerve already having left the sheath to run between biceps and coracobrachialis. In children the structures are shallower and closer together, so a high-frequency probe and very light probe pressure (to avoid collapsing the veins) are important.",
+      relations: ["Median: superficial and lateral to the artery", "Ulnar: superficial and medial", "Radial: posterior to the artery", "Musculocutaneous: between biceps and coracobrachialis, away from the bundle"],
+      targets: "Median, ulnar, radial and musculocutaneous nerves",
+      plexus: { type: "brachial", hi: ["MED", "ULN", "RAD", "MCN"], zone: "Terminal branches (paediatric)" }
+    },
+    sono: {
+      probe: "Linear 10–18 MHz (high frequency for small children)",
+      depth: "1–2 cm",
+      orientation: "Short axis to the humerus at the axillary crease · left = lateral (biceps), right = medial",
+      image: {
+        probe: "linear", depth: 2, left: "LATERAL", right: "MEDIAL",
+        s: [
+          { id: "pedsbic", t: "muscle", l: "Biceps", d: "Superficial, lateral.", el: [70, 58, 72, 38, 0], lab: [52, 44] },
+          { id: "pedscbr", t: "muscle", l: "Coracobrachialis", d: "Deep to biceps.", el: [92, 148, 64, 38, 0], lab: [70, 162] },
+          { id: "pedsmcn", t: "nerve", e: "honey", l: "Musculocutaneous n.", d: "Between biceps and coracobrachialis.", el: [104, 104, 13, 7, 0], lab: [110, 124], key: true },
+          { id: "pedsaa", t: "artery", l: "Axillary artery", d: "Centre of the bundle.", c: [224, 122, 14], lab: [230, 148] },
+          { id: "pedsmed", t: "nerve", e: "honey", l: "Median n.", d: "Superficial-lateral to artery.", c: [196, 98, 9], lab: [178, 76], key: true },
+          { id: "pedsuln", t: "nerve", e: "honey", l: "Ulnar n.", d: "Superficial-medial to artery.", c: [250, 110, 8], lab: [262, 50], key: true },
+          { id: "pedsrad", t: "nerve", e: "honey", l: "Radial n.", d: "Posterior to the artery.", c: [218, 150, 9], lab: [196, 176], key: true }
+        ],
+        needles: [{ from: [2, 68], to: [214, 158] }],
+        spreads: [{ el: [222, 124, 52, 42, 0] }, { el: [104, 104, 22, 12, 0] }]
+      },
+      real: {
+        image: "assets/regional/paeds-axillary-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse across the axilla (posterior → anterior)",
+        probe: "Linear (paediatric high-frequency)",
+        labels: [
+          { id: "paaxr", text: "Axillary artery", type: "artery", x: 82, y: 25 },
+          { id: "pmedr", text: "Median nerve", type: "nerve", x: 55, y: 45 },
+          { id: "pulnr", text: "Ulnar nerve", type: "nerve", x: 40, y: 55 },
+          { id: "pradr", text: "Radial nerve", type: "nerve", x: 35, y: 65 },
+          { id: "pmcnr", text: "Musculocutaneous nerve", type: "nerve", x: 60, y: 38 }
+        ],
+        needleOverlay: { from: [10, 60], to: [42, 50], approach: "in-plane", side: "lateral", target: "around the median, ulnar and radial nerves surrounding the artery" },
+        spreadOverlay: [{ shape: "ellipse", x: 52, y: 45, rx: 20, ry: 16, variable: false, note: "Perivascular LA spread around the nerves" }]
+      }
+    },
+    procedure: {
+      position: "Supine, arm abducted 90°, elbow flexed — performed after induction of general anaesthesia",
+      probe: "Linear high-frequency, transverse across the axilla",
+      needle: "24G 25–50 mm",
+      approach: "In-plane from lateral to medial",
+      steps: [
+        "Use very light probe pressure so the veins remain visible rather than collapsed.",
+        "Find the musculocutaneous nerve between biceps and coracobrachialis first.",
+        "Block the radial nerve first (posterior to the artery), then median and ulnar.",
+        "Give a separate small injection around the musculocutaneous nerve."
+      ],
+      volume: "0.3–0.5 mL/kg total, within the maximum local anaesthetic dose for weight",
+      endpoint: "Perivascular spread surrounding median, ulnar and radial nerves, plus separate musculocutaneous spread."
+    },
+    spread: {
+      summary: "Elbow, forearm and hand — the same territory as the adult axillary block, scaled to a child's smaller arm.",
+      covered: ["Forearm and hand", "Elbow and distal arm", "Lateral forearm once the musculocutaneous nerve is blocked"],
+      spared: ["Shoulder and proximal arm", "Medial upper arm (intercostobrachial nerve territory)"],
+      motor: "Forearm and hand motor block while the block lasts — no phrenic or pneumothorax risk, unlike the more proximal plexus approaches.",
+      three: {
+        focus: "upperR", view: "anterior",
+        needle: { a: "axb", from: "lateral" },
+        regions: [
+          { k: "exp", seg: ["hand", "digit"], side: "R" },
+          { k: "exp", seg: "forearm", side: "R" },
+          { k: "exp", seg: "upperArm", side: "R", t: [0.55, 1] }
+        ],
+        labels: [
+          { x: "Elbow, forearm & hand", k: "exp", a: { seg: "forearm", side: "R", t: 0.4, th: 0 } },
+          { x: "Spared: shoulder & medial arm", k: "spared", a: { seg: "upperArm", side: "R", t: 0.25, th: 280 } },
+          { x: "Needle: axilla (under GA)", k: "needle", a: "axb" }
+        ]
+      }
+    },
+    tips: ["Always performed after induction of GA in young children — never awake.", "Very light probe pressure preserves the veins as landmarks and avoids missing them on withdrawal (risk of intravascular injection).", "The safest brachial plexus approach for children too — no phrenic or pneumothorax risk."],
+    pitfalls: ["Miscalculating the maximum LA dose for weight — always calculate it first.", "Missing the musculocutaneous nerve → lateral forearm sparing.", "Heavy probe pressure collapsing veins, then re-filling with LA on injection — a sign of intravascular spread."],
+    complications: ["Vascular puncture/haematoma", "LAST — calculate the maximum dose first", "Nerve injury (rare)"],
+    pearls: ["Same anatomy as the adult axillary block, scaled down.", "Performed under GA — the child is never awake for this block.", "No phrenic or pneumothorax risk — a good choice in children with respiratory comorbidity."],
+    source: { title: "Ultrasound-Guided Axillary Brachial Plexus Block", url: "https://www.nysora.com/techniques/upper-extremity/axillary/ultrasound-guided-axillary-brachial-plexus-block/" }
   });
 
   // Common clinical combinations for the "Combine blocks in 3D" view.
