@@ -325,7 +325,7 @@ function showDetail() {
   document.title = `${b.name} | Regional Anaesthesia | KnockoutNotes`;
 
   $("#rgCrumb").innerHTML = `<a href="?cat=${b.cat}" data-cat-link="${b.cat}">${cat.icon} ${esc(cat.label)}</a> <span>›</span> ${esc(b.short)}`;
-  $("#rgBlockKicker").textContent = `${cat.label.toUpperCase()} • NYSORA-BASED`;
+  $("#rgBlockKicker").textContent = cat.label.toUpperCase();
   $("#rgBlockTitle").textContent = b.name;
   $("#rgBlockTagline").textContent = b.tagline;
   $("#rgBlockTags").innerHTML = b.tags.map((t) => `<span class="rg-tag">${esc(t)}</span>`).join("");

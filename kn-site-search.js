@@ -563,8 +563,8 @@
     {
       Type: "Regional Block",
       Category: "Regional Anaesthesia • Lower Limb",
-      Title: "Suprainguinal Fascia Iliaca Block",
-      Summary: "Hip & thigh analgesia • femoral + LFCN. A large volume deep to the fascia iliaca above the inguinal ligament spreads cranially over the iliacus to the femoral and lateral femoral cutaneous nerves (obturator inconsistently). Tags: Fascial plane, Volume-dependent, Hip fracture.",
+      Title: "Infrainguinal Fascia Iliaca Block",
+      Summary: "Anterior thigh analgesia • femoral ± LFCN. Performed in the same view as a femoral nerve block, at the inguinal crease, with the needle kept lateral to the nerve and a larger volume injected to spread under the fascia iliaca. Tags: Fascial plane, Volume-dependent, Hip fracture.",
       href: "regional-anaesthesia.html?block=fascia-iliaca"
     },
     {

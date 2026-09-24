@@ -84,6 +84,23 @@
         ],
         needles: [{ from: [398, 64], to: [224, 124] }],
         spreads: [{ el: [210, 142, 28, 56, 0] }]
+      },
+      // Real ultrasound (KnockoutNotes-user-provided, cropped from the
+      // contributor's own captures). Label/needle/spread positions are a
+      // best-effort placement from visual inspection plus standard
+      // sonoanatomy — verify/adjust against the source image if needed.
+      real: {
+        image: "assets/regional/interscalene-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse at C6 (anteromedial → posterolateral)",
+        probe: "Linear",
+        labels: [
+          { id: "c5r", text: "C5 root", type: "nerve", x: 44, y: 33 },
+          { id: "c6r", text: "C6 root", type: "nerve", x: 45, y: 45 },
+          { id: "asmr", text: "Anterior scalene", type: "muscle", x: 32, y: 47 }
+        ],
+        needleOverlay: { from: [88, 22], to: [46, 40], approach: "in-plane", side: "posterolateral", target: "between C5 and C6 roots" },
+        spreadOverlay: [{ shape: "ellipse", x: 45, y: 42, rx: 9, ry: 13, variable: false, note: "LA spread around the roots" }]
       }
     },
     procedure: {
@@ -196,6 +213,19 @@
         ],
         needles: [{ from: [398, 56], to: [206, 176] }],
         spreads: [{ el: [236, 142, 46, 38, 0] }]
+      },
+      real: {
+        image: "assets/regional/supraclavicular-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Coronal oblique above the clavicle (medial → lateral)",
+        probe: "Linear",
+        labels: [
+          { id: "scar", text: "Subclavian artery", type: "artery", x: 17, y: 40 },
+          { id: "bpr", text: "Brachial plexus (trunks)", type: "nerve", x: 38, y: 30 },
+          { id: "ribr", text: "First rib", type: "bone", x: 78, y: 45 }
+        ],
+        needleOverlay: { from: [92, 20], to: [38, 30], approach: "in-plane", side: "lateral", target: "posterolateral to the subclavian artery, above the first rib" },
+        spreadOverlay: [{ shape: "ellipse", x: 33, y: 30, rx: 10, ry: 9, variable: false, note: "LA spread around the plexus" }]
       }
     },
     procedure: {
@@ -581,6 +611,22 @@
         ],
         needles: [{ from: [2, 60], to: [150, 136] }],
         spreads: [{ el: [166, 126, 40, 20, 0] }]
+      },
+      // Note: this real capture has medial on the LEFT and lateral on the
+      // RIGHT — the opposite screen convention to the schematic above — so
+      // the nerve (lateral member of NAV) sits on the right of this photo.
+      real: {
+        image: "assets/regional/femoral-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse at the inguinal crease (medial → lateral)",
+        probe: "Linear",
+        labels: [
+          { id: "far", text: "Femoral artery", type: "artery", x: 18, y: 28 },
+          { id: "fnr", text: "Femoral nerve", type: "nerve", x: 57, y: 33 },
+          { id: "ipsr", text: "Iliopsoas", type: "muscle", x: 55, y: 72 }
+        ],
+        needleOverlay: { from: [92, 18], to: [60, 36], approach: "in-plane", side: "lateral", target: "lateral/deep to the femoral nerve, beneath fascia iliaca" },
+        spreadOverlay: [{ shape: "ellipse", x: 58, y: 36, rx: 11, ry: 9, variable: false, note: "LA spread beneath fascia iliaca" }]
       }
     },
     procedure: {
@@ -633,90 +679,98 @@
 
   blocks.push({
     id: "fascia-iliaca",
-    name: "Suprainguinal Fascia Iliaca Block",
-    short: "Fascia Iliaca (SIFI)",
+    name: "Infrainguinal Fascia Iliaca Block",
+    short: "Fascia Iliaca",
     cat: "lower",
     tags: ["Fascial plane", "Volume-dependent", "Hip fracture"],
-    tagline: "Hip & thigh analgesia • femoral + LFCN",
-    summary: "A large volume deep to the fascia iliaca above the inguinal ligament spreads cranially over the iliacus to the femoral and lateral femoral cutaneous nerves (obturator inconsistently).",
-    indications: ["Hip fracture analgesia (ED and perioperative)", "Hip arthroplasty analgesia", "Femoral shaft fracture"],
+    tagline: "Anterior thigh analgesia • femoral ± LFCN",
+    summary: "Performed in the same transverse view as a femoral nerve block, at the inguinal crease. Rather than aiming at the nerve, the needle tip stays lateral to it, deep to the fascia iliaca, and a larger volume is injected to spread around the femoral nerve and, less reliably than the suprainguinal approach, toward the lateral femoral cutaneous nerve (LFCN).",
+    indications: ["Hip fracture analgesia (ED and perioperative)", "Femoral shaft fracture", "Anterior thigh/knee analgesia when a discrete femoral block is not needed"],
     keyInfo: {
-      position: ["Supine"],
-      approach: ["Linear probe parasagittal medial to the ASIS, above the inguinal ligament", "In-plane, caudad → cephalad"],
-      procedure: ["Iliacus on the ilium with fascia iliaca on top", "'Bow-tie': internal oblique + sartorius", "Pierce fascia iliaca; hydrodissect cranially"],
+      position: ["Supine, leg slightly abducted"],
+      approach: ["Linear probe transverse at the inguinal crease — the same view as a femoral nerve block", "In-plane, lateral → medial"],
+      procedure: ["Identify the femoral artery, then the femoral nerve just lateral to it", "Advance lateral to the nerve, through fascia lata and fascia iliaca", "Inject a larger volume so LA spreads under the fascia both medially (nerve) and laterally"],
       volume: "30–40 mL dilute LA",
-      coverage: "Anterior + lateral thigh; hip analgesia"
+      coverage: "Anterior thigh (femoral); lateral thigh (LFCN) less consistently than the suprainguinal approach"
     },
     anatomy: {
-      text: "The fascia iliaca covers the iliacus; the femoral and lateral femoral cutaneous nerves run beneath it. Above the inguinal ligament the internal oblique (cranial) and sartorius (caudal) meet over the fascia iliaca to form a 'bow-tie'. The deep circumflex iliac artery runs in the same layer — identify it with colour Doppler.",
-      relations: ["Superficial: internal oblique (cranial) and sartorius (caudal) — 'bow-tie'", "Deep: iliacus muscle on the ilium", "In the plane: deep circumflex iliac artery", "Beneath fascia: femoral nerve (medial) and LFCN (lateral)"],
-      targets: "Femoral and lateral femoral cutaneous nerves (obturator variable)",
-      plexus: { type: "lumbosacral", hi: ["FEM", "LFCN"], vari: ["OBT"], zone: "Fascia iliaca compartment" }
+      text: "At the inguinal crease the femoral nerve lies lateral to the femoral artery, deep to the fascia iliaca and superficial to iliopsoas — the same sono-anatomy used for a femoral nerve block. Instead of depositing LA directly around the nerve, the needle tip is kept lateral to it, deep to the fascia iliaca, and a larger volume is injected so it tracks within the fascial plane both medially around the femoral nerve and laterally. Because the lateral femoral cutaneous nerve has often already left the fascia iliaca plane by this level, its coverage here is less reliable than with the suprainguinal (SIFI) approach performed above the inguinal ligament.",
+      relations: ["Lateral → medial: needle entry, femoral nerve, femoral artery, femoral vein", "Nerve and needle tip: deep to fascia iliaca, superficial to iliopsoas", "Vessels: same compartment as the nerve, medial to it", "Fascia lata covers everything superficially"],
+      targets: "Femoral nerve (primary); lateral femoral cutaneous nerve inconsistently",
+      plexus: { type: "lumbosacral", hi: ["FEM"], vari: ["LFCN"], zone: "Fascia iliaca (infrainguinal)" }
     },
     sono: {
-      probe: "Linear 6–13 MHz",
-      depth: "4–5 cm",
-      orientation: "Parasagittal medial to ASIS · left = cephalad, right = caudad",
+      probe: "Linear 10–15 MHz",
+      depth: "3–4 cm",
+      orientation: "Transverse at the inguinal crease · left = medial, right = lateral",
       image: {
-        probe: "linear", depth: 5, left: "CEPHALAD", right: "CAUDAD",
+        probe: "linear", depth: 4, left: "MEDIAL", right: "LATERAL",
         s: [
-          { id: "io", t: "muscle", l: "Internal oblique", d: "Cranial half of the bow-tie.", p: [[0, 30], [200, 96], [0, 124]], lab: [48, 84] },
-          { id: "sar", t: "muscle", l: "Sartorius", d: "Caudal half of the bow-tie.", p: [[400, 30], [200, 96], [400, 114]], lab: [350, 78] },
-          { id: "ili", t: "muscle", l: "Iliacus", d: "Under the fascia iliaca.", p: [[0, 140], [400, 118], [400, 206], [0, 232]], lab: [290, 178] },
-          { id: "fi", t: "fascia", l: "Fascia iliaca", d: "Target plane — pierce it.", ln: [[0, 138], [200, 128], [400, 116]], lab: [118, 112], key: true },
-          { id: "dcia", t: "artery", l: "Deep circumflex iliac a.", d: "Same layer — Doppler before needling.", c: [150, 126, 5], lab: [150, 150] },
-          { id: "ilium", t: "bone", l: "Ilium", d: "Bony floor.", ln: [[0, 244], [240, 226], [400, 210]], lab: [80, 262] }
+          { id: "fl", t: "fascia", l: "Fascia lata", d: "Superficial fascia.", ln: [[0, 42], [400, 44]], lab: [340, 30] },
+          { id: "ips", t: "muscle", l: "Iliopsoas", d: "Nerve and needle tip lie on its surface.", el: [280, 200, 118, 62, 0], lab: [310, 210] },
+          { id: "fi", t: "fascia", l: "Fascia iliaca", d: "Target plane — the needle tip and injectate stay deep to it.", ln: [[0, 150], [60, 152], [160, 146], [190, 110], [260, 104], [400, 106]], lab: [360, 92] },
+          { id: "fn", t: "nerve", e: "honey", l: "Femoral nerve", d: "Hyperechoic, triangular/oval — used as a landmark, not the injection target.", el: [232, 124, 24, 11, 0], lab: [250, 150], key: true },
+          { id: "fa", t: "artery", l: "Femoral artery", d: "Medial to the nerve.", c: [140, 112, 20], lab: [138, 76] },
+          { id: "fv", t: "vein", l: "Femoral vein", d: "Most medial; compressible.", el: [72, 122, 26, 17, 0], lab: [56, 94] },
+          { id: "pec", t: "muscle", l: "Pectineus", d: "Medial, deep to vessels.", el: [48, 214, 60, 40, 0], lab: [50, 226] }
         ],
-        needles: [{ from: [398, 44], to: [150, 140] }],
-        spreads: [{ el: [138, 142, 100, 11, -4] }]
+        needles: [{ from: [398, 60], to: [272, 130] }],
+        spreads: [{ el: [190, 140, 140, 14, -2] }]
+      },
+      real: {
+        image: "assets/regional/fascia-iliaca-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse at the inguinal crease (medial → lateral)",
+        probe: "Linear",
+        labels: [
+          { id: "far2", text: "Femoral artery", type: "artery", x: 18, y: 28 },
+          { id: "fnr2", text: "Femoral nerve (landmark)", type: "nerve", x: 55, y: 33 },
+          { id: "fir2", text: "Fascia iliaca", type: "fascia", x: 45, y: 15 }
+        ],
+        needleOverlay: { from: [92, 20], to: [67, 35], approach: "in-plane", side: "lateral", target: "deep to fascia iliaca, lateral to the femoral nerve (not at it)" },
+        spreadOverlay: [{ shape: "ellipse", x: 58, y: 34, rx: 20, ry: 8, variable: false, note: "Fascial-plane spread (flat, not a pool)" }]
       }
     },
     procedure: {
-      position: "Supine",
-      probe: "Linear, parasagittal just medial to the ASIS above the inguinal ligament",
+      position: "Supine, leg slightly abducted and externally rotated",
+      probe: "Linear at the inguinal crease, transverse — the same view as a femoral nerve block",
       needle: "22G 80 mm short-bevel",
-      approach: "In-plane, caudad → cephalad",
+      approach: "In-plane, lateral → medial",
       steps: [
-        "From the ASIS slide medially to see the iliacus over the ilium with the hyperechoic fascia iliaca on top.",
-        "Identify the 'bow-tie' (internal oblique cranially, sartorius caudally) meeting over the fascia.",
-        "Colour Doppler for the deep circumflex iliac artery.",
-        "Advance caudad → cephalad until the tip pierces the fascia iliaca; inject and watch LA separate fascia from iliacus, tracking cranially."
+        "Identify the femoral artery, then the hyperechoic femoral nerve just lateral to it, deep to the fascia iliaca.",
+        "Advance in-plane from lateral, keeping the trajectory lateral to the nerve rather than aiming at it.",
+        "Pierce fascia lata and fascia iliaca; confirm the tip is deep to the fascia iliaca and superficial to iliopsoas.",
+        "Inject a larger volume and watch it spread under the fascia iliaca, both toward the nerve medially and laterally."
       ],
       volume: "30–40 mL dilute LA (e.g., ropivacaine 0.2–0.25%) — calculate the maximum dose",
-      endpoint: "Cranial hydrodissection deep to fascia iliaca over the iliacus."
+      endpoint: "LA spreading in a flat layer deep to the fascia iliaca, lifting it off iliopsoas around the nerve."
     },
     spread: {
-      summary: "Femoral and lateral femoral cutaneous nerve territories: anterior and lateral thigh with hip analgesia. Obturator coverage is inconsistent.",
-      covered: ["Anterior thigh (femoral)", "Lateral thigh (LFCN)", "Hip analgesia"],
-      spared: ["Obturator territory inconsistently", "Posterior hip capsule/thigh (sacral plexus)"],
-      motor: "Quadriceps weakness similar to a femoral block.",
+      summary: "Anterior thigh (femoral nerve) reliably; lateral thigh (LFCN) inconsistently — less reliable than the suprainguinal (SIFI) approach. No hip capsule analgesia at this level.",
+      covered: ["Anterior thigh (femoral)"],
+      spared: ["Lateral thigh (LFCN) — inconsistent at this level", "Obturator territory", "Hip capsule (better with the suprainguinal approach)"],
+      motor: "Quadriceps weakness, similar to a femoral nerve block.",
       three: {
         focus: "lowerR", view: "anterior",
-        needle: { a: "sifi", from: "caudal" },
+        needle: { a: "sifi", from: "lateral" },
         regions: [
-          { k: "exp", seg: "thigh", side: "R", t: [0.08, 1], th: [300, 60] },
-          { k: "exp", seg: "thigh", side: "R", t: [0.3, 1], th: [245, 300] },
           { k: "exp", seg: "thigh", side: "R", t: [0.04, 0.78], th: [60, 145] },
-          { k: "var", seg: "thigh", side: "R", t: [0.1, 0.55], th: [225, 290] },
-          { k: "exp", seg: "leg", side: "R", th: [215, 320] }
+          { k: "var", seg: "thigh", side: "R", t: [0.1, 0.55], th: [225, 300] }
         ],
-        deep: [{ k: "tgt", at: "hipCapsule", faint: true }],
         labels: [
-          { x: "Lateral thigh (LFCN)", k: "exp", a: { seg: "thigh", side: "R", t: 0.4, th: 100 } },
           { x: "Anterior thigh (femoral)", k: "exp", a: { seg: "thigh", side: "R", t: 0.55, th: 0 } },
-          { x: "Variable: medial thigh (obturator)", k: "var", a: { seg: "thigh", side: "R", t: 0.3, th: 260 } },
-          { x: "Hip analgesia", k: "tgt", a: "hipCapsule" },
-          { x: "Needle: above inguinal ligament", k: "needle", a: "sifi" }
+          { x: "Variable: lateral thigh (LFCN) — less reliable than SIFI", k: "var", a: { seg: "thigh", side: "R", t: 0.3, th: 260 } },
+          { x: "Needle: inguinal crease, lateral to the nerve", k: "needle", a: "sifi" }
         ]
       }
     },
-    tips: ["It is a volume-dependent compartment block — adequate volume matters.", "Confirm cranial spread under the fascia, not into the muscle."],
-    pitfalls: ["Injection into the iliacus muscle.", "Spread superficial to the fascia iliaca."],
-    complications: ["Quadriceps weakness / falls", "LAST (large volumes)", "Vascular puncture (DCIA)"],
+    tips: ["Keep the needle tip lateral to the nerve — this is a fascial-plane block, not a perineural injection.", "A larger volume is what drives spread; watch it lift the fascia iliaca off iliopsoas."],
+    pitfalls: ["Injecting into the iliopsoas muscle instead of the fascial plane.", "Expecting reliable LFCN coverage — it is inconsistent at this level.", "Injection superficial to the fascia iliaca (into the vessel compartment)."],
+    complications: ["Quadriceps weakness / falls", "LAST (large volumes)", "Vascular puncture", "Intraneural injection if the needle strays onto the nerve"],
     pearls: [
-      "Suprainguinal approach gives more reliable LFCN coverage than infrainguinal.",
-      "'Bow-tie' sign = internal oblique + sartorius over the fascia iliaca.",
-      "Obturator coverage is inconsistent."
+      "Infrainguinal fascia iliaca = the femoral nerve block view, needle kept lateral to the nerve, bigger volume.",
+      "Suprainguinal (SIFI) gives more reliable LFCN coverage than this infrainguinal approach.",
+      "Not a substitute for a femoral nerve block when dense femoral anaesthesia (not just analgesia) is needed."
     ],
     source: { title: "Ultrasound-Guided Fascia Iliaca Block", url: "https://www.nysora.com/topics/regional-anesthesia-for-specific-surgical-procedures/lower-extremity-regional-anesthesia-for-specific-surgical-procedures/ultrasound-guided-fascia-iliaca-block/" }
   });
@@ -760,6 +814,21 @@
         ],
         needles: [{ from: [30, 60], to: [204, 192] }],
         spreads: [{ el: [210, 192, 48, 10, 0] }]
+      },
+      // Note: this real capture has medial on the LEFT and lateral on the
+      // RIGHT — the opposite screen convention to the schematic above.
+      real: {
+        image: "assets/regional/peng-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse oblique over AIIS/IPE (medial → lateral)",
+        probe: "Curvilinear",
+        labels: [
+          { id: "far3", text: "Femoral artery", type: "artery", x: 18, y: 27 },
+          { id: "ipsr3", text: "Iliopsoas / psoas tendon", type: "muscle", x: 35, y: 30 },
+          { id: "boner3", text: "Ilium (AIIS → IPE) cortex", type: "bone", x: 62, y: 45 }
+        ],
+        needleOverlay: { from: [88, 18], to: [62, 42], approach: "in-plane", side: "lateral", target: "between the psoas tendon and the iliopubic eminence" },
+        spreadOverlay: [{ shape: "ellipse", x: 58, y: 44, rx: 16, ry: 6, variable: false, note: "LA lifting the tendon off the bone" }]
       }
     },
     procedure: {
@@ -839,6 +908,23 @@
         ],
         needles: [{ from: [2, 40], to: [200, 140] }],
         spreads: [{ el: [214, 142, 40, 22, 0] }]
+      },
+      // Note: this real capture has posteromedial on the LEFT and
+      // anterolateral on the RIGHT — the saphenous nerve position is a
+      // best estimate (it is a small structure, genuinely hard to pinpoint
+      // on a compressed image) — please verify/correct against the source.
+      real: {
+        image: "assets/regional/adductor-canal-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse mid-thigh (posteromedial → anterolateral)",
+        probe: "Linear",
+        labels: [
+          { id: "far4", text: "Femoral artery", type: "artery", x: 52, y: 44 },
+          { id: "snr4", text: "Saphenous nerve (approx.)", type: "nerve", x: 63, y: 37 },
+          { id: "sarr4", text: "Sartorius", type: "muscle", x: 50, y: 18 }
+        ],
+        needleOverlay: { from: [90, 22], to: [61, 38], approach: "in-plane", side: "lateral", target: "lateral to the femoral artery, deep to sartorius" },
+        spreadOverlay: [{ shape: "ellipse", x: 60, y: 40, rx: 9, ry: 7, variable: false, note: "LA spread around the saphenous nerve" }]
       }
     },
     procedure: {
@@ -1002,6 +1088,20 @@
         ],
         needles: [{ from: [398, 60], to: [228, 108] }],
         spreads: [{ el: [226, 106, 40, 20, 0] }]
+      },
+      real: {
+        image: "assets/regional/popliteal-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse in the popliteal fossa (medial → lateral)",
+        probe: "Linear",
+        labels: [
+          { id: "tnr5", text: "Tibial nerve", type: "nerve", x: 44, y: 28 },
+          { id: "cpnr5", text: "Common peroneal nerve", type: "nerve", x: 51, y: 25 },
+          { id: "pvr5", text: "Popliteal vein", type: "vein", x: 48, y: 50 },
+          { id: "par5", text: "Popliteal artery", type: "artery", x: 42, y: 70 }
+        ],
+        needleOverlay: { from: [92, 24], to: [47, 30], approach: "in-plane", side: "lateral", target: "within the paraneural sheath, between tibial and common peroneal nerves" },
+        spreadOverlay: [{ shape: "ellipse", x: 47, y: 32, rx: 11, ry: 9, variable: false, note: "LA spread within the paraneural sheath" }]
       }
     },
     procedure: {

@@ -1144,7 +1144,7 @@ const REGIONAL_BLOCKS = [
   { id: 'axillary', short: 'Axillary', cat: 'Upper Limb' },
   { id: 'suprascapular', short: 'Suprascapular', cat: 'Upper Limb' },
   { id: 'femoral', short: 'Femoral', cat: 'Lower Limb' },
-  { id: 'fascia-iliaca', short: 'Fascia Iliaca (SIFI)', cat: 'Lower Limb' },
+  { id: 'fascia-iliaca', short: 'Fascia Iliaca', cat: 'Lower Limb' },
   { id: 'peng', short: 'PENG', cat: 'Lower Limb' },
   { id: 'adductor-canal', short: 'Adductor Canal', cat: 'Lower Limb' },
   { id: 'ipack', short: 'iPACK', cat: 'Lower Limb' },
