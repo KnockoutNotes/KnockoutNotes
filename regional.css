@@ -944,6 +944,7 @@
   .rg-us-toolbar-compact .rg-toggle { min-height: 40px; }
   .rg-real-badge { font-size: 10px; max-width: calc(100% - 12px); }
   .rg-hero-actions { flex-direction: column; align-items: stretch; }
+  .rg-hero-actions .rg-search { flex: 0 0 auto; max-width: none; width: 100%; }
   .rg-combine-cta { justify-content: center; }
 }
 

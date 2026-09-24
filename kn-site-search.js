@@ -570,9 +570,23 @@
     {
       Type: "Regional Block",
       Category: "Regional Anaesthesia • Lower Limb",
+      Title: "Suprainguinal Fascia Iliaca Block (SIFI)",
+      Summary: "Hip, anterior & lateral thigh • above the inguinal ligament. Injection above the inguinal ligament, deep to the fascia iliaca and superficial to iliacus, spreads cranially toward the lumbar plexus — giving broader coverage than the infrainguinal approach. Tags: Lumbar plexus, Hip fracture, SIFI.",
+      href: "regional-anaesthesia.html?block=fascia-iliaca-suprainguinal"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Lower Limb",
       Title: "Pericapsular Nerve Group (PENG) Block",
       Summary: "Anterior hip capsule • motor-sparing. Targets the articular branches of the femoral, obturator and accessory obturator nerves to the anterior hip capsule, in the plane between the psoas tendon and the iliopubic eminence. Tags: Hip capsule, Motor-sparing, Fascial plane.",
       href: "regional-anaesthesia.html?block=peng"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Lower Limb",
+      Title: "Lateral Femoral Cutaneous Nerve Block",
+      Summary: "Anterolateral thigh skin • purely sensory. The LFCN is blocked where it runs in a fat-filled fascial tunnel between the sartorius and tensor fasciae latae, just medial and inferior to the ASIS. Tags: Sensory only, Meralgia paraesthetica, Fascial tunnel.",
+      href: "regional-anaesthesia.html?block=lfcn"
     },
     {
       Type: "Regional Block",
@@ -639,6 +653,13 @@
     },
     {
       Type: "Regional Block",
+      Category: "Regional Anaesthesia • Lower Limb",
+      Title: "Saphenous Nerve Block at the Ankle",
+      Summary: "Medial ankle/foot skin • adjunct to a sciatic block. The saphenous nerve is blocked subcutaneously near the medial malleolus, beside the great saphenous vein, covering the medial ankle and foot without any motor weakness. Tags: Sensory only, Medial foot/ankle, Adjunct to sciatic.",
+      href: "regional-anaesthesia.html?block=saphenous-ankle"
+    },
+    {
+      Type: "Regional Block",
       Category: "Regional Anaesthesia • Chest Wall & Paraspinal",
       Title: "PECS I & II Blocks",
       Summary: "Breast & anterior chest wall. PECS I places ~10 mL between pectoralis major and minor (medial and lateral pectoral nerves — no skin). PECS II adds 15–20 mL between pectoralis minor and serratus anterior at the 3rd–4th rib to reach the lateral cutaneous branches of T2–T4, the long thoracic and intercostobrachial nerves. Tags: Fascial plane, Breast surgery.",
@@ -675,6 +696,13 @@
     {
       Type: "Regional Block",
       Category: "Regional Anaesthesia • Abdominal Wall",
+      Title: "Subcostal TAP Block",
+      Summary: "Upper/medial abdominal wall • above the umbilicus. The probe runs parallel to the costal margin and the needle passes medial to lateral in the plane between rectus abdominis/posterior rectus sheath and transversus abdominis, covering the upper abdominal wall the lateral TAP misses. Tags: T6–T9, Upper abdominal wall, Midline surgery.",
+      href: "regional-anaesthesia.html?block=subcostal-tap"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Abdominal Wall",
       Title: "Rectus Sheath Block",
       Summary: "Periumbilical / midline • T9–T11. LA between the rectus abdominis and the posterior rectus sheath blocks the terminal anterior branches of T9–T11 as they enter the muscle. Performed bilaterally for midline incisions. Tags: Fascial plane, Midline, Bilateral.",
       href: "regional-anaesthesia.html?block=rectus-sheath"
@@ -685,6 +713,13 @@
       Title: "Quadratus Lumborum Block",
       Summary: "Abdominal wall ± visceral • T7–L1. Injection around the quadratus lumborum: QL1 (lateral), QL2 (posterior — between QL and the thoracolumbar fascia/erector spinae) or transmuscular/QL3 (between QL and psoas, 'shamrock' view). Coverage is wider and longer than TAP, with possible paravertebral spread. Tags: Fascial plane, ± Visceral, Shamrock.",
       href: "regional-anaesthesia.html?block=ql"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Abdominal Wall",
+      Title: "Transversalis Fascia Plane Block",
+      Summary: "Groin & lower abdominal wall • T12–L2. LA is deposited deep to transversus abdominis, superficial to the transversalis fascia, where the iliohypogastric, ilioinguinal and subcostal nerves run together — essentially the same plane as a QL1 block, approached anterolaterally. Tags: T12–L2, Inguinal hernia, QL1-equivalent.",
+      href: "regional-anaesthesia.html?block=transversalis-fascia-plane"
     },
     {
       Type: "Regional Block",

@@ -776,6 +776,96 @@
   });
 
   blocks.push({
+    id: "fascia-iliaca-suprainguinal",
+    name: "Suprainguinal Fascia Iliaca Block (SIFI)",
+    short: "Fascia Iliaca (Suprainguinal)",
+    cat: "lower",
+    tags: ["Lumbar plexus", "Hip fracture", "SIFI"],
+    tagline: "Hip, anterior & lateral thigh • above the inguinal ligament",
+    summary: "Injection above the inguinal ligament, deep to the fascia iliaca and superficial to iliacus, spreads cranially toward the lumbar plexus — giving broader coverage (femoral, obturator and lateral femoral cutaneous territory) than the infrainguinal approach.",
+    indications: ["Hip fracture analgesia", "Hip surgery (total hip arthroplasty)", "Anterior/lateral thigh surgery"],
+    keyInfo: {
+      position: ["Supine"],
+      approach: ["Curvilinear probe parasagittal, just above and medial to the ASIS", "In-plane, caudal → cranial"],
+      procedure: ["Identify sartorius and internal oblique ('crossing muscle sign')", "Needle passes deep to fascia iliaca, superficial to iliacus", "Inject and watch for cranial spread toward the iliac fossa"],
+      volume: "30–40 mL",
+      coverage: "Hip, anterior and lateral thigh (femoral + LFCN + variable obturator)"
+    },
+    anatomy: {
+      text: "Above the inguinal ligament, the probe is placed parasagittal-oblique just medial to the ASIS. Sartorius (superficial) and internal oblique (deep) cross like an 'X' — the 'crossing muscle sign'. Fascia iliaca lies between internal oblique and iliacus; deep circumflex iliac vessels often mark the point where fascia iliaca and transversalis fascia fuse. Injection here spreads cranially in the iliac fossa toward the lumbar plexus, giving broader coverage than an infrainguinal injection.",
+      relations: ["Superficial: internal oblique", "Deep: iliacus", "Landmark: deep circumflex iliac vessels", "Medial to the ASIS, above the inguinal ligament"],
+      targets: "Plane deep to fascia iliaca, superficial to iliacus, above the inguinal ligament",
+      plexus: { type: "lumbosacral", hi: ["FEM", "LFCN", "OBT"], zone: "Suprainguinal iliac fossa" }
+    },
+    sono: {
+      probe: "Curvilinear 2–5 MHz",
+      depth: "4–7 cm",
+      orientation: "Parasagittal oblique, medial to the ASIS · left = cephalad, right = caudal",
+      image: {
+        probe: "curvilinear", depth: 7, left: "CEPHALAD", right: "CAUDAL",
+        s: [
+          { id: "io9", t: "muscle", l: "Internal oblique", d: "Crosses superficially — the 'crossing muscle sign'.", el: [200, 80, 180, 40, 0], lab: [180, 58] },
+          { id: "fi9", t: "fascia", l: "Fascia iliaca", d: "Target plane — deep to internal oblique.", ln: [[40, 120], [160, 116], [280, 122], [380, 110]], lab: [340, 96] },
+          { id: "iliacus9", t: "muscle", l: "Iliacus", d: "Deep to fascia iliaca.", el: [220, 180, 190, 70, 0], lab: [220, 210], key: true },
+          { id: "dcia9", t: "artery", l: "Deep circumflex iliac vessels", d: "Landmark at the fascial fusion point.", c: [300, 124, 10], lab: [320, 100] }
+        ],
+        needles: [{ from: [398, 50], to: [220, 118] }],
+        spreads: [{ p: [[60, 116], [200, 110], [340, 104], [340, 130], [200, 136], [60, 132]] }]
+      },
+      real: {
+        image: "assets/regional/fascia-iliaca-supra-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Parasagittal oblique, above the inguinal ligament, medial to the ASIS (cephalad → caudal)",
+        probe: "Curvilinear",
+        labels: [
+          { id: "fi9r", text: "Fascia iliaca", type: "fascia", x: 38, y: 30 },
+          { id: "iliacus9r", text: "Iliacus", type: "muscle", x: 35, y: 52 },
+          { id: "dcia9r", text: "Deep circumflex iliac vessels", type: "artery", x: 60, y: 40 },
+          { id: "io9r", text: "Internal oblique", type: "muscle", x: 70, y: 70 }
+        ],
+        needleOverlay: { from: [95, 55], to: [40, 32], approach: "in-plane", side: "caudal", target: "deep to fascia iliaca, superficial to iliacus" },
+        spreadOverlay: [{ shape: "ellipse", x: 45, y: 35, rx: 22, ry: 9, variable: false, note: "LA spreads cranially along the iliac fossa" }]
+      }
+    },
+    procedure: {
+      position: "Supine",
+      probe: "Curvilinear, parasagittal, just medial to the ASIS above the inguinal ligament",
+      needle: "22G 80–120 mm",
+      approach: "In-plane, caudal → cranial",
+      steps: [
+        "Place the probe parasagittal, medial to the ASIS, angled slightly medially.",
+        "Identify the 'crossing muscle sign' (sartorius/internal oblique over iliacus).",
+        "Advance in-plane from caudal to cranial, piercing fascia iliaca.",
+        "Inject a large volume and confirm cranial spread along the iliac fossa."
+      ],
+      volume: "30–40 mL",
+      endpoint: "LA spreading cranially in the plane between fascia iliaca and iliacus."
+    },
+    spread: {
+      summary: "Broader than the infrainguinal approach — hip, anterior and lateral thigh, with more reliable lateral femoral cutaneous and variable obturator coverage from cranial spread toward the lumbar plexus.",
+      covered: ["Anterior thigh (femoral)", "Lateral thigh (LFCN) — more reliable than infrainguinal", "Hip joint (articular branches)", "Variable: obturator territory"],
+      spared: ["Posterior thigh/sciatic distribution — combine with a sciatic block"],
+      motor: "Quadriceps weakness (femoral) — fall risk, similar to or greater than a femoral nerve block.",
+      three: {
+        focus: "lowerR", view: "anterior",
+        needle: { a: "sifiSupra", from: "medial" },
+        regions: [{ k: "exp", seg: "thigh", side: "R", th: [280, 80] }],
+        labels: [
+          { x: "Anterior & lateral thigh, hip", k: "exp", a: { seg: "thigh", side: "R", t: 0.3, th: 340 } },
+          { x: "More reliable lateral thigh (LFCN) than infrainguinal", k: "exp", a: { seg: "thigh", side: "R", t: 0.25, th: 60 } },
+          { x: "Spared: posterior thigh/sciatic", k: "spared", a: { seg: "thigh", side: "R", t: 0.5, th: 180 } },
+          { x: "Needle: above the inguinal ligament, medial to ASIS", k: "needle", a: "sifiSupra" }
+        ]
+      }
+    },
+    tips: ["The 'crossing muscle sign' (sartorius over internal oblique) confirms correct probe position.", "Larger volume than the infrainguinal approach — spread needs room to travel cranially.", "Deep circumflex iliac vessels mark where fascia iliaca fuses with transversalis fascia — a useful landmark."],
+    pitfalls: ["Too lateral → misses the fascial plane, ends up in muscle.", "Too medial → risk of femoral vessel puncture or peritoneal spread.", "Confusing internal oblique for iliacus — trace the crossing sign carefully."],
+    complications: ["Femoral nerve palsy/quadriceps weakness", "Vascular puncture", "LAST (large volume)", "Peritoneal puncture if too medial/deep"],
+    pearls: ["More reliable LFCN block than the infrainguinal approach.", "Landmark: deep circumflex iliac vessels at the fascial fusion point.", "Larger volume, more cranial spread than infrainguinal fascia iliaca."],
+    source: { title: "Ultrasound-Guided Suprainguinal Fascia Iliaca Block", url: "https://nysora.com/education-news/effectiveness-of-an-ultrasound-guided-suprainguinal-fascia-iliaca-block/" }
+  });
+
+  blocks.push({
     id: "peng",
     name: "Pericapsular Nerve Group (PENG) Block",
     short: "PENG",
@@ -1711,6 +1801,187 @@
     source: { title: "Ultrasound-Guided Ankle Nerve Block", url: "https://nysora.com/regional-anesthesia/techniques/ultrasound-guided-ankle-block/" }
   });
 
+  blocks.push({
+    id: "lfcn",
+    name: "Lateral Femoral Cutaneous Nerve Block",
+    short: "LFCN",
+    cat: "lower",
+    tags: ["Sensory only", "Meralgia paraesthetica", "Fascial tunnel"],
+    tagline: "Anterolateral thigh skin • purely sensory",
+    summary: "The lateral femoral cutaneous nerve (LFCN) is a purely sensory nerve blocked where it runs in a fat-filled fascial tunnel between the sartorius and tensor fasciae latae, just medial and inferior to the ASIS.",
+    indications: ["Meralgia paraesthetica", "Anterolateral thigh skin surgery / skin grafting", "Muscle biopsy", "Analgesic adjunct for hip surgery"],
+    keyInfo: {
+      position: ["Supine"],
+      approach: ["High-frequency linear probe just medial/inferior to the ASIS", "In-plane, lateral → medial"],
+      procedure: ["Identify sartorius and tensor fasciae latae", "Find the nerve within the fat-filled fascial tunnel between them", "Inject around the nerve, superficial to sartorius"],
+      volume: "5–10 mL",
+      coverage: "Anterolateral thigh skin only (purely sensory, no motor)"
+    },
+    anatomy: {
+      text: "The LFCN emerges from beneath the inguinal ligament 1–2 cm medial and inferior to the ASIS and runs within a fat-filled fascial tunnel between tensor fasciae latae (lateral) and sartorius (medial), roughly 0.5–1 cm deep to the skin. It is purely sensory — there is no motor component to spare or lose.",
+      relations: ["Lateral: tensor fasciae latae", "Medial: sartorius", "Landmark: 1–2 cm medial/inferior to the ASIS", "Superficial — often only 0.5–1 cm deep"],
+      targets: "Lateral femoral cutaneous nerve within the fascial tunnel",
+      plexus: { type: "lumbosacral", hi: ["L2", "L3"], zone: "Fascial tunnel between sartorius and TFL" }
+    },
+    sono: {
+      probe: "Linear 10–18 MHz (high frequency, superficial)",
+      depth: "1–2 cm",
+      orientation: "Transverse, 1–2 cm medial/inferior to the ASIS · left = medial (sartorius), right = lateral (TFL)",
+      image: {
+        probe: "linear", depth: 2, left: "MEDIAL", right: "LATERAL",
+        s: [
+          { id: "tfl12", t: "muscle", l: "Tensor fasciae latae", d: "Lateral.", el: [290, 90, 90, 50, 0], lab: [320, 72] },
+          { id: "sart12", t: "muscle", l: "Sartorius", d: "Medial.", el: [110, 96, 100, 52, 0], lab: [86, 76] },
+          { id: "fffl12", t: "fascia", l: "Fat-filled fascial tunnel", d: "Between the two muscles — the nerve runs here.", el: [200, 84, 34, 14, 0], lab: [200, 58] },
+          { id: "lfcnn12", t: "nerve", e: "honey", l: "Lateral femoral cutaneous nerve", d: "One or more small hypoechoic/honeycomb structures.", el: [200, 86, 10, 6, 0], lab: [200, 120], key: true }
+        ],
+        needles: [{ from: [398, 40], to: [202, 86] }],
+        spreads: [{ el: [200, 86, 26, 14, 0] }]
+      },
+      real: {
+        image: "assets/regional/lfcn-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse, medial/inferior to the ASIS (medial → lateral)",
+        probe: "Linear",
+        labels: [
+          { id: "lfcnr12", text: "Lateral femoral cutaneous nerve", type: "nerve", x: 52, y: 26 },
+          { id: "fffltr12", text: "Fat-filled fascial tunnel", type: "fascia", x: 53, y: 33 },
+          { id: "sartr12", text: "Sartorius", type: "muscle", x: 35, y: 40 },
+          { id: "fllr12", text: "Fascia lata", type: "fascia", x: 60, y: 15 },
+          { id: "scfr12", text: "Subcutaneous fat", type: "fascia", x: 20, y: 12 }
+        ],
+        needleOverlay: { from: [85, 10], to: [53, 28], approach: "in-plane", side: "lateral", target: "the nerve within the fascial tunnel, superficial to sartorius" },
+        spreadOverlay: [{ shape: "ellipse", x: 53, y: 29, rx: 10, ry: 7, variable: false, note: "LA spread within the fascial tunnel" }]
+      }
+    },
+    procedure: {
+      position: "Supine",
+      probe: "Linear, high frequency, 1–2 cm medial/inferior to the ASIS",
+      needle: "25G–22G 40–50 mm",
+      approach: "In-plane, lateral → medial",
+      steps: [
+        "Place the probe just medial and inferior to the ASIS, transverse to the thigh.",
+        "Identify sartorius (medial) and tensor fasciae latae (lateral).",
+        "Find the nerve within the fat-filled fascial tunnel between them, superficial to sartorius.",
+        "Inject to surround the nerve within the tunnel."
+      ],
+      volume: "5–10 mL",
+      endpoint: "LA lifting/expanding the fascial tunnel around the nerve."
+    },
+    spread: {
+      summary: "A small patch of anterolateral thigh skin only — purely sensory, no motor effect.",
+      covered: ["Anterolateral thigh skin (variable extent)"],
+      spared: ["Everything else — knee, medial/posterior thigh, all motor function"],
+      motor: "None — the LFCN is purely sensory.",
+      three: {
+        focus: "lowerR", view: "anterior",
+        needle: { a: "lfcn", from: "lateral" },
+        regions: [{ k: "exp", seg: "thigh", side: "R", t: [0, 0.55], th: [10, 90] }],
+        labels: [
+          { x: "Anterolateral thigh skin", k: "exp", a: { seg: "thigh", side: "R", t: 0.25, th: 45 } },
+          { x: "Purely sensory — no motor block", k: "eff", a: { seg: "thigh", side: "R", t: 0.5, th: 45 } },
+          { x: "Needle: medial/inferior to ASIS", k: "needle", a: "lfcn" }
+        ]
+      }
+    },
+    tips: ["The nerve is often more than one small hypoechoic dot — look for a cluster, not a single round nerve.", "Very superficial — a shallow needle angle and generous gel stand-off help.", "Meralgia paraesthetica patients often localize their pain right over the nerve — correlate with the scan."],
+    pitfalls: ["Injecting too deep, beneath sartorius, misses the nerve.", "Confusing a small branch of the ascending TFL vessels for the nerve — use Doppler.", "Variable course — the nerve can lie lateral to the tunnel in some patients."],
+    complications: ["Nerve injury (rare, superficial target)", "Bruising", "Block failure from variable anatomy"],
+    pearls: ["1–2 cm medial and inferior to the ASIS.", "Fat-filled fascial tunnel between sartorius and TFL.", "Purely sensory — no motor weakness to counsel about."],
+    source: { title: "Ultrasound-Guided Lateral Femoral Cutaneous Nerve Block", url: "https://www.nysora.com/topics/regional-anesthesia-for-specific-surgical-procedures/lower-extremity-regional-anesthesia-for-specific-surgical-procedures/anesthesia-and-analgesia-for-hip-procedures/ultrasound-guided-lateral-femoral-cutaneous-nerve-block/" }
+  });
+
+  blocks.push({
+    id: "saphenous-ankle",
+    name: "Saphenous Nerve Block at the Ankle",
+    short: "Saphenous (Ankle)",
+    cat: "lower",
+    tags: ["Sensory only", "Medial foot/ankle", "Adjunct to sciatic"],
+    tagline: "Medial ankle/foot skin • adjunct to a sciatic block",
+    summary: "The saphenous nerve — the only nerve below the knee that isn't a sciatic branch — is blocked subcutaneously near the medial malleolus, beside the great saphenous vein, to cover the medial ankle and foot without any motor weakness.",
+    indications: ["Medial ankle/foot surgery, combined with a popliteal/ankle sciatic block", "Great saphenous vein procedures", "Medial malleolus fracture surgery/analgesia"],
+    keyInfo: {
+      position: ["Supine, leg slightly externally rotated"],
+      approach: ["High-frequency linear probe anterior to the medial malleolus", "In-plane, or simple subcutaneous infiltration around the vein"],
+      procedure: ["Identify the great saphenous vein anterior to the medial malleolus", "Find the nerve adjacent to the vein", "Inject subcutaneously around both"],
+      volume: "3–5 mL",
+      coverage: "Medial ankle and foot skin only"
+    },
+    anatomy: {
+      text: "The saphenous nerve is the terminal cutaneous branch of the femoral nerve. At the ankle it runs subcutaneously with the great saphenous vein, just anterior to the medial malleolus. It is purely sensory below the knee and supplies the medial leg, ankle and midfoot.",
+      relations: ["Runs alongside the great saphenous vein", "Anterior to the medial malleolus", "Subcutaneous — superficial to the tibia"],
+      targets: "Saphenous nerve, adjacent to the great saphenous vein",
+      plexus: { type: "lumbosacral", hi: ["FEM"], zone: "Subcutaneous, anterior to the medial malleolus" }
+    },
+    sono: {
+      probe: "Linear 15–18 MHz (high frequency, very superficial)",
+      depth: "0.5–1.5 cm",
+      orientation: "Transverse, anterior to the medial malleolus · left = posterior, right = anterior",
+      image: {
+        probe: "linear", depth: 2, left: "POSTERIOR", right: "ANTERIOR",
+        s: [
+          { id: "mmall13", t: "bone", l: "Tibia / medial malleolus", d: "Deep landmark — acoustic shadow.", ln: [[180, 150], [260, 110], [340, 140], [380, 200]], lab: [330, 220] },
+          { id: "gsv13", t: "vein", l: "Great saphenous vein", d: "Anterior to the malleolus — the nerve runs beside it.", el: [190, 90, 20, 14, 0], lab: [170, 60] },
+          { id: "saphn13", t: "nerve", e: "honey", l: "Saphenous nerve", d: "Small, adjacent to the vein.", el: [150, 86, 8, 6, 0], lab: [110, 64], key: true }
+        ],
+        needles: [{ from: [10, 30], to: [152, 86] }],
+        spreads: [{ el: [170, 86, 42, 22, 0] }]
+      },
+      real: {
+        image: "assets/regional/saphenous-ankle-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse, anterior to the medial malleolus (posterior → anterior)",
+        probe: "Linear",
+        labels: [
+          { id: "gsvr13", text: "Great saphenous vein", type: "vein", x: 56, y: 32 },
+          { id: "saphnr13", text: "Saphenous nerve", type: "nerve", x: 47, y: 34 },
+          { id: "mmr13", text: "Tibia / medial malleolus", type: "bone", x: 73, y: 55 }
+        ],
+        needleOverlay: { from: [8, 20], to: [50, 33], approach: "in-plane", side: "posterior", target: "the saphenous nerve beside the great saphenous vein" },
+        spreadOverlay: [{ shape: "ellipse", x: 53, y: 34, rx: 14, ry: 9, variable: false, note: "Subcutaneous LA around the nerve and vein" }]
+      }
+    },
+    procedure: {
+      position: "Supine, leg slightly externally rotated, medial malleolus accessible",
+      probe: "Linear, high frequency, anterior to the medial malleolus",
+      needle: "25G 25–40 mm",
+      approach: "In-plane, or simple subcutaneous infiltration around the vein",
+      steps: [
+        "Identify the great saphenous vein just anterior to the medial malleolus.",
+        "Look for the saphenous nerve immediately adjacent to it.",
+        "Inject subcutaneously to surround the nerve and vein.",
+        "A field/ring infiltration around the vein is also acceptable if the nerve isn't clearly seen."
+      ],
+      volume: "3–5 mL",
+      endpoint: "Subcutaneous wheal surrounding the nerve and vein."
+    },
+    spread: {
+      summary: "Medial ankle and foot skin only — no motor block, always combined with a sciatic-territory block for complete below-knee anaesthesia.",
+      covered: ["Medial ankle skin", "Medial midfoot skin"],
+      spared: ["Everything else below the knee (sciatic territory) — combine with a popliteal/ankle block"],
+      motor: "None — purely sensory below the knee.",
+      three: {
+        focus: "footR", view: [0.55, 0.35, 0.75],
+        needle: { a: "saphAnkle", from: "posterior" },
+        regions: [
+          { k: "exp", seg: "leg", side: "R", t: [0.85, 1], th: [235, 305] },
+          { k: "exp", seg: "foot", side: "R", th: [232, 305], t: [0, 0.5] }
+        ],
+        labels: [
+          { x: "Medial ankle & midfoot skin", k: "exp", a: { seg: "foot", side: "R", t: 0.2, th: 270 } },
+          { x: "Purely sensory — no motor block", k: "eff", a: { seg: "leg", side: "R", t: 0.92, th: 270 } },
+          { x: "Spared: rest of the foot (sciatic territory)", k: "spared", a: { seg: "foot", side: "R", t: 0.5, th: 180 } },
+          { x: "Needle: anterior to medial malleolus", k: "needle", a: "saphAnkle" }
+        ]
+      }
+    },
+    tips: ["If the nerve isn't clearly seen, a simple subcutaneous ring around the great saphenous vein is a reliable fallback.", "Always pair with a popliteal or ankle block for complete below-knee coverage.", "Very superficial — angle the needle shallow to avoid overshooting."],
+    pitfalls: ["Deep injection misses this subcutaneous nerve entirely.", "Venous puncture — aim beside, not into, the vein.", "Assuming this alone covers the whole ankle — it only covers the medial strip."],
+    complications: ["Venous puncture/haematoma", "Nerve injury (rare, small superficial target)", "Block failure if purely landmark-based"],
+    pearls: ["Runs with the great saphenous vein, anterior to the medial malleolus.", "Purely sensory — no motor weakness.", "The 'sixth nerve' completing a full ankle block alongside the classic five."],
+    source: { title: "Ultrasound-Guided Saphenous (Subsartorial/Adductor Canal) Nerve Block", url: "https://www.nysora.com/topics/regional-anesthesia-for-specific-surgical-procedures/lower-extremity-regional-anesthesia-for-specific-surgical-procedures/foot-and-anckle/ultrasound-guided-saphenous-subsartorius-adductor-canal-nerve-block/" }
+  });
+
   /* ======================================================================
      CHEST WALL & PARASPINAL
      ====================================================================== */
@@ -2092,6 +2363,20 @@
         ],
         needles: [{ from: [2, 44], to: [208, 150] }],
         spreads: [{ el: [214, 150, 116, 9, -0.5] }]
+      },
+      real: {
+        image: "assets/regional/tap-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse in the mid-axillary line (posterior/lateral → anterior/medial)",
+        probe: "Linear",
+        labels: [
+          { id: "eotr", text: "External oblique", type: "muscle", x: 50, y: 15 },
+          { id: "iotr", text: "Internal oblique", type: "muscle", x: 50, y: 38 },
+          { id: "tatr", text: "Transversus abdominus", type: "muscle", x: 50, y: 62 },
+          { id: "peritr", text: "Peritoneum", type: "organ", x: 45, y: 85 }
+        ],
+        needleOverlay: { from: [8, 15], to: [48, 46], approach: "in-plane", side: "posterior", target: "the plane between internal oblique and transversus abdominis" },
+        spreadOverlay: [{ shape: "ellipse", x: 50, y: 48, rx: 32, ry: 7, variable: false, note: "LA spread between IO and TA" }]
       }
     },
     procedure: {
@@ -2146,6 +2431,95 @@
     complications: ["Peritoneal/bowel or liver puncture", "LAST (bilateral volumes)", "Transient femoral nerve block"],
     pearls: ["Plane between internal oblique and transversus abdominis.", "Somatic analgesia only.", "TAP ≈ T6–T12 vs QL ≈ T4–L1 coverage.", "Landmark 'double pop' through the triangle of Petit."],
     source: { title: "Ultrasound-Guided TAP and Quadratus Lumborum Blocks", url: "https://www.nysora.com/topics/abdomen/ultrasound-guided-transversus-abdominis-plane-quadratus-lumborum-blocks/" }
+  });
+
+  blocks.push({
+    id: "subcostal-tap",
+    name: "Subcostal TAP Block",
+    short: "Subcostal TAP",
+    cat: "abdo",
+    tags: ["T6–T9", "Upper abdominal wall", "Midline surgery"],
+    tagline: "Upper/medial abdominal wall • above the umbilicus",
+    summary: "A modification of the classic TAP block: the probe runs parallel to the costal margin and the needle passes medial to lateral in the plane between rectus abdominis/posterior rectus sheath and transversus abdominis, covering the upper and medial abdominal wall that the lateral (mid-axillary) TAP misses.",
+    indications: ["Upper abdominal midline incisions (open cholecystectomy, gastric surgery)", "Umbilical/epigastric hernia repair", "Adjunct to a lateral (mid-axillary) TAP for wider coverage"],
+    keyInfo: {
+      position: ["Supine"],
+      approach: ["Linear probe parallel to and just below the costal margin", "In-plane, medial → lateral"],
+      procedure: ["Identify rectus abdominis, posterior rectus sheath and transversus abdominis", "Needle enters near the linea alba, close to the rectus muscle", "Inject in the plane between the posterior rectus sheath/TA as it courses subcostally"],
+      volume: "15–20 mL per side",
+      coverage: "T6–T9 — upper and medial abdominal wall"
+    },
+    anatomy: {
+      text: "Just below the costal margin, the posterior rectus sheath blends with transversus abdominis, and the peritoneum lies close by, especially medially. The subcostal TAP targets the plane between rectus abdominis (and its posterior sheath) and transversus abdominis as the needle is walked laterally along the costal margin, extending coverage above the umbilicus that the classic mid-axillary TAP does not reach.",
+      relations: ["Superficial: rectus abdominis", "Deep: transversus abdominis, then peritoneum (close by, especially medially)", "Landmark: linea semilunaris, where rectus ends and the lateral muscles begin"],
+      targets: "Plane between rectus abdominis/posterior sheath and transversus abdominis, subcostal",
+      plexus: { type: "lumbosacral", hi: ["T6", "T9"], zone: "Subcostal transversus abdominis plane" }
+    },
+    sono: {
+      probe: "Linear 5–12 MHz",
+      depth: "2–4 cm",
+      orientation: "Parallel to the costal margin · left = medial, right = lateral",
+      image: {
+        probe: "linear", depth: 4, left: "MEDIAL", right: "LATERAL",
+        s: [
+          { id: "rect11", t: "muscle", l: "Rectus abdominis", d: "Medial.", el: [110, 90, 110, 60, 0], lab: [90, 66] },
+          { id: "prs11", t: "fascia", l: "Posterior rectus sheath", d: "Deep to rectus, blends with TA laterally.", ln: [[20, 140], [130, 136], [230, 146]], lab: [80, 160] },
+          { id: "ta11", t: "muscle", l: "Transversus abdominis", d: "Target plane superficial to it.", el: [300, 140, 150, 36, 0], lab: [320, 158], key: true },
+          { id: "perit11", t: "organ", l: "Peritoneum / intraperitoneal structures", d: "Close by, especially medially — avoid.", ln: [[20, 180], [150, 178], [300, 182], [380, 176]], lab: [340, 196] }
+        ],
+        needles: [{ from: [10, 50], to: [230, 142] }],
+        spreads: [{ el: [260, 140, 110, 18, 0] }]
+      },
+      real: {
+        image: "assets/regional/subcostal-tap-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Parallel to the costal margin, upper abdominal wall (medial → lateral)",
+        probe: "Linear",
+        labels: [
+          { id: "rect11r", text: "Rectus abdominis", type: "muscle", x: 25, y: 35 },
+          { id: "ta11r", text: "Transversus abdominis", type: "muscle", x: 50, y: 55 },
+          { id: "perit11r", text: "Peritoneum / intraperitoneal structures", type: "organ", x: 45, y: 75 },
+          { id: "ls11r", text: "Linea semilunaris", type: "fascia", x: 65, y: 45 }
+        ],
+        needleOverlay: { from: [8, 25], to: [48, 54], approach: "in-plane", side: "medial", target: "the plane between rectus/posterior sheath and transversus abdominis" },
+        spreadOverlay: [{ shape: "ellipse", x: 52, y: 56, rx: 24, ry: 8, variable: false, note: "LA spread just superficial to transversus abdominis" }]
+      }
+    },
+    procedure: {
+      position: "Supine",
+      probe: "Linear, placed parallel to and just below the costal margin",
+      needle: "22G 80–100 mm",
+      approach: "In-plane, medial → lateral",
+      steps: [
+        "Place the probe parallel to the costal margin, starting near the rectus muscle.",
+        "Identify rectus abdominis, posterior rectus sheath and transversus abdominis.",
+        "Advance in-plane from medial to lateral, aiming for the plane superficial to transversus abdominis.",
+        "Inject incrementally, walking laterally along the costal margin as needed."
+      ],
+      volume: "15–20 mL per side",
+      endpoint: "LA spreading in a long strip along the subcostal plane."
+    },
+    spread: {
+      summary: "T6–T9 — upper and medial abdominal wall, filling the gap the classic (lateral/mid-axillary) TAP block leaves above the umbilicus.",
+      covered: ["Upper abdominal wall (epigastric/subcostal region)", "Medial abdominal wall near the linea alba"],
+      spared: ["Lower abdominal wall — combine with a lateral (mid-axillary) TAP for complete coverage"],
+      motor: "None — sensory abdominal wall block.",
+      three: {
+        focus: "abdoR", view: "anterior",
+        needle: { a: "tapSub", from: "medial" },
+        regions: [{ k: "exp", seg: "trunk", side: "R", derm: ["T6", "T9"], th: [0, 70] }],
+        labels: [
+          { x: "Upper & medial abdominal wall (T6–T9)", k: "exp", a: { seg: "trunk", side: "R", y: 1.19, th: 40 } },
+          { x: "Spared: lower abdominal wall — add a TAP block", k: "spared", a: { seg: "trunk", side: "R", y: 1.0, th: 70 } },
+          { x: "Needle: subcostal margin, near rectus", k: "needle", a: "tapSub" }
+        ]
+      }
+    },
+    tips: ["Walk the needle laterally along the costal margin, injecting incrementally rather than one large bolus in one spot.", "The peritoneum is close, especially medially — keep the needle tip clearly visualised.", "Combine with a lateral (mid-axillary) TAP for complete anterior abdominal wall coverage."],
+    pitfalls: ["Peritoneal puncture — the danger here is greater than with the mid-axillary TAP.", "Injecting too deep to transversus abdominis instead of superficial to it.", "Underestimating how far laterally you need to walk the needle for full coverage."],
+    complications: ["Peritoneal/visceral puncture", "LAST (often done bilaterally, large total volume)", "Incomplete coverage if not walked far enough laterally"],
+    pearls: ["Fills the gap above the umbilicus that the classic (mid-axillary) TAP misses.", "Needle walked laterally along the costal margin for a strip of coverage.", "Higher peritoneal puncture risk than the mid-axillary approach — stay vigilant medially."],
+    source: { title: "Exploring the Sensory Coverage of Subcostal Ultrasound-Guided TAP Blocks", url: "https://nysora.com/education-news/exploring-the-sensory-coverage-of-subcostal-ultrasound-guided-tap-blocks/" }
   });
 
   blocks.push({
@@ -2266,6 +2640,20 @@
         ],
         needles: [{ from: [20, 44], to: [214, 166] }],
         spreads: [{ el: [212, 170, 62, 9, 8] }]
+      },
+      real: {
+        image: "assets/regional/ql-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse in the flank ('shamrock' view; posterior → anterior)",
+        probe: "Curvilinear",
+        labels: [
+          { id: "ioqlr", text: "Internal oblique", type: "muscle", x: 25, y: 20 },
+          { id: "qlr", text: "Quadratus lumborum", type: "muscle", x: 40, y: 55 },
+          { id: "pnfr", text: "Paranephric fat", type: "fascia", x: 60, y: 35 },
+          { id: "psqlr", text: "Psoas", type: "muscle", x: 65, y: 68 }
+        ],
+        needleOverlay: { from: [8, 20], to: [42, 55], approach: "in-plane", side: "posterior", target: "quadratus lumborum, between QL and psoas/paranephric fat" },
+        spreadOverlay: [{ shape: "ellipse", x: 45, y: 55, rx: 18, ry: 14, variable: false, note: "LA spread around quadratus lumborum" }]
       }
     },
     procedure: {
@@ -2323,6 +2711,95 @@
   });
 
   blocks.push({
+    id: "transversalis-fascia-plane",
+    name: "Transversalis Fascia Plane Block",
+    short: "Transversalis Fascia Plane",
+    cat: "abdo",
+    tags: ["T12–L2", "Inguinal hernia", "QL1-equivalent"],
+    tagline: "Groin & lower abdominal wall • T12–L2",
+    summary: "Local anaesthetic is deposited deep to transversus abdominis, superficial to the transversalis fascia, where the iliohypogastric, ilioinguinal and subcostal nerves run together — essentially the same plane as a QL1 block, approached anterolaterally rather than from the posterior flank.",
+    indications: ["Inguinal hernia repair (open and laparoscopic)", "Lower abdominal/groin surgery", "Alternative/adjunct to ilioinguinal or TAP blocks"],
+    keyInfo: {
+      position: ["Supine"],
+      approach: ["Linear or curvilinear probe transverse, lateral abdominal wall near the iliac crest", "In-plane, posterior → anterior"],
+      procedure: ["Identify EO/IO/TA layers converging near the iliac crest", "Find the nerves and transversalis fascia deep to TA", "Inject just deep to TA, superficial to transversalis fascia"],
+      volume: "15–20 mL",
+      coverage: "T12–L2 — groin and lower abdominal wall"
+    },
+    anatomy: {
+      text: "Near the iliac crest, external oblique, internal oblique and transversus abdominis converge. The iliohypogastric, ilioinguinal and subcostal nerves run together in the plane just deep to transversus abdominis, superficial to the transversalis fascia — the same target as a QL1 (lateral) block, but approached from an anterolateral, more classically 'TAP-like' position rather than the posterior flank.",
+      relations: ["Superficial: transversus abdominis", "Deep: transversalis fascia (then peritoneum)", "Nerves: iliohypogastric, ilioinguinal, subcostal (T12–L1) run in this plane"],
+      targets: "Plane between transversus abdominis and transversalis fascia",
+      plexus: { type: "lumbosacral", hi: ["T12", "L1"], zone: "Transversalis fascia plane, lateral abdominal wall" }
+    },
+    sono: {
+      probe: "Linear or curvilinear 5–12 MHz",
+      depth: "3–5 cm",
+      orientation: "Transverse, lateral abdominal wall near the iliac crest · left = posterior, right = anterior",
+      image: {
+        probe: "linear", depth: 5, left: "POSTERIOR", right: "ANTERIOR",
+        s: [
+          { id: "eo10", t: "muscle", l: "External oblique", d: "Most superficial.", el: [200, 60, 190, 30, 0], lab: [200, 44] },
+          { id: "io10", t: "muscle", l: "Internal oblique", d: "Middle layer.", el: [200, 104, 188, 32, 0], lab: [200, 90] },
+          { id: "ta10", t: "muscle", l: "Transversus abdominis", d: "Deepest muscle layer.", el: [200, 146, 186, 28, 0], lab: [200, 164] },
+          { id: "tf10", t: "fascia", l: "Transversalis fascia (before/after LA)", d: "Target plane, just deep to TA.", ln: [[20, 168], [160, 164], [280, 170], [380, 160]], lab: [330, 182], key: true },
+          { id: "nn10", t: "nerve", e: "honey", l: "Iliohypogastric / ilioinguinal / subcostal nerves", d: "Run together in this plane.", cs: [[150, 166, 4], [168, 168, 4], [186, 164, 4]], lab: [130, 144] }
+        ],
+        needles: [{ from: [398, 60], to: [200, 166] }],
+        spreads: [{ el: [200, 170, 140, 14, 0] }]
+      },
+      real: {
+        image: "assets/regional/transversalis-fascia-plane-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse, lateral abdominal wall near the iliac crest (posterior → anterior)",
+        probe: "Linear",
+        labels: [
+          { id: "nn10r", text: "Iliohypogastric / ilioinguinal / subcostal nerves", type: "nerve", x: 46, y: 38 },
+          { id: "tf10r", text: "Transversalis fascia (before LA)", type: "fascia", x: 58, y: 46 },
+          { id: "ta10r", text: "Transversus abdominus", type: "muscle", x: 70, y: 60 },
+          { id: "io10r", text: "Internal oblique", type: "muscle", x: 75, y: 80 }
+        ],
+        needleOverlay: { from: [92, 42], to: [50, 40], approach: "in-plane", side: "posterior", target: "just deep to transversus abdominis, superficial to transversalis fascia" },
+        spreadOverlay: [{ shape: "ellipse", x: 55, y: 46, rx: 26, ry: 8, variable: false, note: "LA spreads along the transversalis fascia plane" }]
+      }
+    },
+    procedure: {
+      position: "Supine",
+      probe: "Linear or curvilinear, transverse, lateral abdominal wall near the iliac crest",
+      needle: "22G 80–100 mm",
+      approach: "In-plane, posterior → anterior",
+      steps: [
+        "Scan the lateral abdominal wall near the iliac crest, identifying EO/IO/TA.",
+        "Look for the nerves running together just deep to TA.",
+        "Advance in-plane, aiming just deep to TA, superficial to transversalis fascia.",
+        "Inject and confirm spread lifting the fascial plane, not within muscle."
+      ],
+      volume: "15–20 mL",
+      endpoint: "LA spreading along the transversalis fascia plane, separating TA from the fascia."
+    },
+    spread: {
+      summary: "T12–L2 — groin and lower abdominal wall, similar territory to a combined ilioinguinal/iliohypogastric block but via a single interfascial-plane injection.",
+      covered: ["Groin and inguinal region (T12–L1)", "Lower abdominal wall"],
+      spared: ["Upper/central abdominal wall — combine with TAP or rectus sheath for wider coverage"],
+      motor: "None — sensory abdominal wall block.",
+      three: {
+        focus: "abdoR", view: "anterior",
+        needle: { a: "tfp", from: "posterior" },
+        regions: [{ k: "exp", seg: "trunk", side: "R", derm: ["T12", "L1"], th: [0, 110] }],
+        labels: [
+          { x: "Groin & lower abdominal wall (T12–L1)", k: "exp", a: { seg: "trunk", side: "R", y: 0.99, th: 60 } },
+          { x: "Needle: lateral wall near iliac crest", k: "needle", a: "tfp" }
+        ]
+      }
+    },
+    tips: ["Same target plane as a QL1 block — think of this as an anterolateral route to the same place.", "Look for the nerves together as small round structures just deep to transversus abdominis.", "Confirm plane, not muscle, spread before injecting the full volume."],
+    pitfalls: ["Injecting within transversus abdominis instead of deep to it.", "Too posterior drifts into QL territory; too anterior loses the nerves.", "Peritoneal puncture if the needle is advanced too deep."],
+    complications: ["Peritoneal puncture/visceral injury", "LAST", "Incomplete block if the nerves aren't clearly visualised"],
+    pearls: ["Functionally identical target to QL1 (lateral quadratus lumborum).", "Nerves: iliohypogastric, ilioinguinal, subcostal (T12–L1).", "Good option for inguinal hernia repair, open or laparoscopic."],
+    source: { title: "Ultrasound-Guided Transversus Abdominis Plane and Quadratus Lumborum Blocks", url: "https://www.nysora.com/topics/abdomen/ultrasound-guided-transversus-abdominis-plane-quadratus-lumborum-blocks/" }
+  });
+
+  blocks.push({
     id: "ilioinguinal",
     name: "Ilioinguinal & Iliohypogastric Nerve Block",
     short: "Ilioinguinal / Iliohypogastric",
@@ -2362,6 +2839,21 @@
         ],
         needles: [{ from: [2, 60], to: [262, 146] }],
         spreads: [{ el: [260, 145, 46, 8, 0] }]
+      },
+      real: {
+        image: "assets/regional/ilioinguinal-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Oblique on the ASIS–umbilicus line (superomedial → inferolateral, toward the ASIS)",
+        probe: "Linear",
+        labels: [
+          { id: "ilnvr", text: "Ilioinguinal & iliohypogastric nerves", type: "nerve", x: 50, y: 30 },
+          { id: "eoir", text: "External oblique", type: "muscle", x: 25, y: 14 },
+          { id: "ioir", text: "Internal oblique", type: "muscle", x: 55, y: 42 },
+          { id: "tair", text: "Transversus abdominus", type: "muscle", x: 65, y: 58 },
+          { id: "perir", text: "Peritoneum & bowel", type: "organ", x: 70, y: 80 }
+        ],
+        needleOverlay: { from: [90, 15], to: [52, 32], approach: "in-plane", side: "medial", target: "between internal oblique and transversus abdominis, around both nerves" },
+        spreadOverlay: [{ shape: "ellipse", x: 52, y: 33, rx: 14, ry: 9, variable: false, note: "LA spread around both nerves" }]
       }
     },
     procedure: {
