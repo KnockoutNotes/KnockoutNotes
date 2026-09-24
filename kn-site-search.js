@@ -598,6 +598,41 @@
     {
       Type: "Regional Block",
       Category: "Regional Anaesthesia • Lower Limb",
+      Title: "Sciatic Nerve Block — Subgluteal (Infragluteal) Approach",
+      Summary: "Below-knee surgery • undivided sciatic trunk. The sciatic nerve is blocked just below the gluteal fold, where it is superficial between the hamstrings and adductor magnus — easier to reach than the classic transgluteal approach and avoids the thick gluteus maximus. Tags: Sciatic, Posterior thigh, Below gluteal fold.",
+      href: "regional-anaesthesia.html?block=sciatic-subgluteal"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Lower Limb",
+      Title: "Sciatic Nerve Block — Transgluteal (Labat) Approach",
+      Summary: "Classic posterior approach • through gluteus maximus. The original Labat approach blocks the sciatic nerve as it exits the pelvis: a flattened hyperechoic band lying in the groove between the ischial tuberosity and the greater trochanter, deep to gluteus maximus. Tags: Sciatic, Classic Labat approach, Through gluteus maximus.",
+      href: "regional-anaesthesia.html?block=sciatic-transgluteal"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Lower Limb",
+      Title: "Sciatic Nerve Block — Anterior Approach",
+      Summary: "Supine positioning • trauma, casts, cannot turn. The sciatic nerve is blocked from the front of the thigh, deep to the adductor muscles and posteromedial to the femur — useful when the patient cannot be turned prone or lateral. Tags: Sciatic, Anterior thigh, Supine positioning.",
+      href: "regional-anaesthesia.html?block=sciatic-anterior"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Lower Limb",
+      Title: "Obturator Nerve Block",
+      Summary: "Hip adductors • obturator reflex, medial thigh/knee. The obturator nerve is blocked in the proximal medial thigh, in the interfascial planes between the adductor muscles — targeting its anterior and posterior branches separately for a reliable block of the hip adductors. Tags: Obturator, Hip adductors, TURBT / obturator reflex.",
+      href: "regional-anaesthesia.html?block=obturator"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Lower Limb",
+      Title: "Lumbar Plexus Block (Shamrock Method)",
+      Summary: "Hip, anterior thigh, knee • posterior approach at L4. The lumbar plexus is blocked within psoas major at the L3–L4 level using the 'shamrock' ultrasound sign — the transverse process shadow as the clover's stem, with quadratus lumborum, erector spinae and psoas major as its three leaves. Tags: Lumbar plexus, Psoas compartment, Hip fracture.",
+      href: "regional-anaesthesia.html?block=lumbar-plexus"
+    },
+    {
+      Type: "Regional Block",
+      Category: "Regional Anaesthesia • Lower Limb",
       Title: "Ankle Block",
       Summary: "Whole foot • five nerves. Five nerves: two deep (tibial and deep peroneal) and three superficial (superficial peroneal, sural and saphenous). All are sciatic branches except the saphenous, which comes from the femoral nerve. Tags: 5 nerves, Foot surgery.",
       href: "regional-anaesthesia.html?block=ankle"

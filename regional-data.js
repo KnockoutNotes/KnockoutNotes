@@ -1147,6 +1147,476 @@
   });
 
   blocks.push({
+    id: "sciatic-subgluteal",
+    name: "Sciatic Nerve Block — Subgluteal (Infragluteal) Approach",
+    short: "Sciatic (Subgluteal)",
+    cat: "lower",
+    tags: ["Sciatic", "Posterior thigh", "Below gluteal fold"],
+    tagline: "Below-knee surgery • undivided sciatic trunk",
+    summary: "The sciatic nerve is blocked just below the gluteal fold, where it is superficial between the hamstrings and adductor magnus — easier to reach than the classic transgluteal approach and avoids the thick gluteus maximus.",
+    indications: ["Below-knee surgery (with a saphenous/adductor canal block)", "Foot and ankle surgery", "Lower-limb trauma analgesia", "Posterior knee analgesia"],
+    keyInfo: {
+      position: ["Prone (most common), or lateral/Sims with the hip flexed"],
+      approach: ["Curvilinear (or linear in slim patients) probe, transverse, just below the gluteal fold", "In-plane, lateral → medial"],
+      procedure: ["Identify the hyperechoic sciatic nerve between biceps femoris (superficial) and adductor magnus/quadratus femoris (deep)", "Needle enters the lateral border, in-plane", "Inject to encircle the nerve"],
+      volume: "15–20 mL",
+      coverage: "Leg below the knee (except medial strip), ankle, foot, plus hamstrings (motor)"
+    },
+    anatomy: {
+      text: "At the subgluteal level, just below the gluteal fold, the sciatic nerve is still a single large trunk (usually undivided), lying superficial to quadratus femoris/adductor magnus and deep to the lower border of gluteus maximus. Because this level is proximal to the nerve's muscular branches, blocking it here also weakens the hamstrings — unlike the more distal popliteal block.",
+      relations: ["Superficial: lower border of gluteus maximus", "Deep: quadratus femoris / adductor magnus", "Medial: ischial tuberosity (may be at the image edge)", "Accompanied by the posterior femoral cutaneous nerve (separate, not always seen)"],
+      targets: "Sciatic nerve trunk (usually undivided) below the gluteal fold",
+      plexus: { type: "lumbosacral", hi: ["SCI"], zone: "Subgluteal sciatic trunk" }
+    },
+    sono: {
+      probe: "Curvilinear 2–5 MHz (linear if slim)",
+      depth: "4–8 cm",
+      orientation: "Transverse, just below the gluteal fold · left = medial, right = lateral",
+      image: {
+        probe: "curvilinear", depth: 8, left: "MEDIAL", right: "LATERAL",
+        s: [
+          { id: "gmaxs", t: "muscle", l: "Gluteus maximus", d: "Superficial — lower border here.", el: [200, 70, 190, 50, 0], lab: [200, 50] },
+          { id: "its", t: "bone", l: "Ischial tuberosity", d: "Medial bony landmark.", ln: [[10, 150], [55, 138], [92, 162]], lab: [40, 184] },
+          { id: "sciats", t: "nerve", e: "honey", l: "Sciatic nerve", d: "Large, flattened oval — still undivided.", el: [212, 150, 36, 15, 0], lab: [212, 196], key: true },
+          { id: "qfs", t: "muscle", l: "Quadratus femoris / adductor magnus", d: "Deep to the nerve.", el: [230, 198, 150, 40, 0], lab: [310, 214] }
+        ],
+        needles: [{ from: [398, 90], to: [214, 150] }],
+        spreads: [{ el: [212, 150, 50, 24, 0] }]
+      },
+      real: {
+        image: "assets/regional/sciatic-infragluteal-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse, just below the gluteal fold (medial → lateral)",
+        probe: "Curvilinear",
+        labels: [
+          { id: "gmaxr6", text: "Gluteus maximus", type: "muscle", x: 45, y: 15 },
+          { id: "sciatr6", text: "Sciatic nerve", type: "nerve", x: 48, y: 48 },
+          { id: "qfr6", text: "Quadratus femoris / hamstring origin", type: "muscle", x: 45, y: 72 }
+        ],
+        needleOverlay: { from: [90, 20], to: [50, 46], approach: "in-plane", side: "lateral", target: "around the sciatic nerve, deep to gluteus maximus" },
+        spreadOverlay: [{ shape: "ellipse", x: 49, y: 50, rx: 14, ry: 9, variable: false, note: "LA spread around the undivided sciatic nerve" }]
+      }
+    },
+    procedure: {
+      position: "Prone (or lateral/Sims with hip and knee flexed)",
+      probe: "Curvilinear, transverse just below the gluteal fold",
+      needle: "22G 80–100 mm",
+      approach: "In-plane, lateral → medial (or out-of-plane)",
+      steps: [
+        "Place the probe transversely just below the gluteal fold, between the ischial tuberosity and greater trochanter.",
+        "Identify the sciatic nerve as a large hyperechoic oval superficial to quadratus femoris/adductor magnus.",
+        "Advance in-plane from lateral to medial toward the nerve.",
+        "Inject to surround the nerve circumferentially."
+      ],
+      volume: "15–20 mL",
+      endpoint: "Circumferential spread around the undivided sciatic trunk."
+    },
+    spread: {
+      summary: "Whole leg below the knee (as with a popliteal block) plus hamstring motor weakness, since the injection is proximal to the nerve's muscular branches.",
+      covered: ["Posterior and lateral leg", "Ankle and foot (except medial arch)", "Hamstrings (motor)"],
+      spared: ["Medial leg/ankle (saphenous)", "Anterior/medial thigh (femoral nerve territory)"],
+      motor: "Complete foot drop and hamstring weakness — unlike a popliteal block, patients cannot flex the knee well.",
+      three: {
+        focus: "lowerR", view: "posterior",
+        needle: { a: "sciaticSub", from: "lateral" },
+        regions: [
+          { k: "exp", seg: "leg", side: "R", th: [0, 232] },
+          { k: "exp", seg: "foot", side: "R" },
+          { k: "none", seg: "foot", side: "R", th: [238, 302], t: [0, 0.45] }
+        ],
+        labels: [
+          { x: "Posterior & lateral leg, foot", k: "exp", a: { seg: "leg", side: "R", t: 0.5, th: 150 } },
+          { x: "Hamstring weakness (motor)", k: "eff", a: { seg: "thigh", side: "R", t: 0.15, th: 180 } },
+          { x: "Spared: medial leg (saphenous)", k: "spared", a: { seg: "leg", side: "R", t: 0.5, th: 270 } },
+          { x: "Needle: subgluteal (below gluteal fold)", k: "needle", a: "sciaticSub" }
+        ]
+      }
+    },
+    tips: ["The nerve is still undivided here — larger and rounder than at the popliteal fossa.", "A curvilinear probe is usually needed; switch to linear only in slim patients.", "Prone positioning gives the most stable, reproducible view."],
+    pitfalls: ["Mistaking the ischial tuberosity shadow for the nerve.", "Injecting too superficially, within gluteus maximus.", "Underestimating depth in larger patients."],
+    complications: ["Nerve injury", "Intramuscular haematoma", "Prolonged motor block (denser than popliteal)"],
+    pearls: ["Still a single trunk — division usually occurs closer to the popliteal fossa.", "Blocks hamstrings as well as everything popliteal covers.", "Add a femoral/adductor canal block for a tourniquet or medial leg surgery."],
+    source: { title: "Ultrasound-Guided Sciatic Nerve Block", url: "https://www.nysora.com/techniques/lower-extremity/ultrasound-guided-sciatic-nerve-block-2/" }
+  });
+
+  blocks.push({
+    id: "sciatic-transgluteal",
+    name: "Sciatic Nerve Block — Transgluteal (Labat) Approach",
+    short: "Sciatic (Transgluteal)",
+    cat: "lower",
+    tags: ["Sciatic", "Classic Labat approach", "Through gluteus maximus"],
+    tagline: "Classic posterior approach • through gluteus maximus",
+    summary: "The original Labat approach blocks the sciatic nerve as it exits the pelvis: a flattened hyperechoic band lying in the groove between the ischial tuberosity and the greater trochanter, deep to gluteus maximus.",
+    indications: ["Hip, posterior thigh, knee and below-knee surgery", "Combined with a femoral or lumbar plexus block for complete lower-limb anaesthesia", "Postoperative analgesia after major knee surgery"],
+    keyInfo: {
+      position: ["Lateral (Sims), or prone"],
+      approach: ["Curvilinear probe, transverse, between the ischial tuberosity and greater trochanter", "In-plane or out-of-plane, through gluteus maximus"],
+      procedure: ["Identify the two bony landmarks (ischial tuberosity medially, greater trochanter laterally)", "Sciatic nerve is the hyperechoic band between them, superficial to quadratus femoris", "Needle passes through gluteus maximus to reach it"],
+      volume: "15–20 mL",
+      coverage: "Whole leg below the knee, hamstrings, part of the posterior hip"
+    },
+    anatomy: {
+      text: "Deep to gluteus maximus, the sciatic nerve crosses the groove between the ischial tuberosity (medial) and greater trochanter (lateral), superficial to quadratus femoris. This is the most proximal common ultrasound approach and blocks the nerve before any of its major branches.",
+      relations: ["Superficial: gluteus maximus (the needle traverses it)", "Medial bony landmark: ischial tuberosity", "Lateral bony landmark: greater trochanter", "Deep: quadratus femoris"],
+      targets: "Sciatic nerve trunk between the ischial tuberosity and greater trochanter",
+      plexus: { type: "lumbosacral", hi: ["SCI"], zone: "Infrapiriform / subgluteal space" }
+    },
+    sono: {
+      probe: "Curvilinear 2–5 MHz",
+      depth: "5–9 cm",
+      orientation: "Transverse between ischial tuberosity and greater trochanter · left = medial, right = lateral",
+      image: {
+        probe: "curvilinear", depth: 9, left: "MEDIAL", right: "LATERAL",
+        s: [
+          { id: "gmaxt", t: "muscle", l: "Gluteus maximus", d: "Needle passes through it.", el: [200, 80, 190, 54, 0], lab: [200, 54] },
+          { id: "itt", t: "bone", l: "Ischial tuberosity", d: "Medial landmark — hyperechoic with shadow.", ln: [[8, 160], [58, 138], [96, 176]], lab: [35, 200] },
+          { id: "gtt", t: "bone", l: "Greater trochanter", d: "Lateral landmark — hyperechoic with shadow.", ln: [[310, 148], [356, 132], [392, 166]], lab: [365, 190] },
+          { id: "sciatt", t: "nerve", e: "honey", l: "Sciatic nerve", d: "Flattened band between the two landmarks.", el: [212, 138, 46, 12, 0], lab: [212, 106], key: true },
+          { id: "qft", t: "muscle", l: "Quadratus femoris", d: "Deep to the nerve.", el: [222, 182, 150, 34, 0], lab: [262, 202] }
+        ],
+        needles: [{ from: [398, 70], to: [214, 138] }],
+        spreads: [{ el: [212, 138, 58, 20, 0] }]
+      },
+      real: {
+        image: "assets/regional/sciatic-transgluteal-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse between the ischial tuberosity and greater trochanter (medial → lateral)",
+        probe: "Curvilinear",
+        labels: [
+          { id: "itr7", text: "Ischial tuberosity", type: "bone", x: 29, y: 74 },
+          { id: "gtr7", text: "Greater trochanter", type: "bone", x: 76, y: 66 },
+          { id: "sciatr7", text: "Sciatic nerve", type: "nerve", x: 52, y: 44 },
+          { id: "gmaxr7", text: "Gluteus maximus", type: "muscle", x: 50, y: 16 }
+        ],
+        needleOverlay: { from: [88, 18], to: [53, 42], approach: "in-plane", side: "lateral", target: "the sciatic nerve between the two bony landmarks" },
+        spreadOverlay: [{ shape: "ellipse", x: 52, y: 45, rx: 16, ry: 8, variable: false, note: "LA spread deep to gluteus maximus, along the nerve" }]
+      }
+    },
+    procedure: {
+      position: "Lateral (Sims) with the hip and knee flexed, or prone",
+      probe: "Curvilinear, transverse between the ischial tuberosity and greater trochanter",
+      needle: "22G 90–120 mm",
+      approach: "In-plane, lateral → medial (or out-of-plane)",
+      steps: [
+        "Identify the ischial tuberosity and greater trochanter as the two bony landmarks.",
+        "Locate the sciatic nerve as a hyperechoic band between them, deep to gluteus maximus.",
+        "Advance the needle through gluteus maximus toward the nerve.",
+        "Inject to spread along and around the nerve."
+      ],
+      volume: "15–20 mL",
+      endpoint: "Spread deep to gluteus maximus, encircling the nerve."
+    },
+    spread: {
+      summary: "The most proximal sciatic approach — whole leg below the knee, plus hamstrings and part of the posterior hip/thigh.",
+      covered: ["Posterior and lateral leg", "Ankle and foot (except medial arch)", "Hamstrings and posterior thigh (motor)"],
+      spared: ["Medial leg/ankle (saphenous)", "Anterior thigh/hip (needs a femoral or lumbar plexus block)"],
+      motor: "Complete foot drop and hamstring weakness — the most proximal, densest sciatic block.",
+      three: {
+        focus: "lowerR", view: "posterior",
+        needle: { a: "sciaticGlute", from: "lateral" },
+        regions: [
+          { k: "exp", seg: "leg", side: "R", th: [0, 232] },
+          { k: "exp", seg: "foot", side: "R" },
+          { k: "none", seg: "foot", side: "R", th: [238, 302], t: [0, 0.45] }
+        ],
+        labels: [
+          { x: "Posterior & lateral leg, foot", k: "exp", a: { seg: "leg", side: "R", t: 0.5, th: 150 } },
+          { x: "Hamstring weakness (motor)", k: "eff", a: { seg: "thigh", side: "R", t: 0.05, th: 180 } },
+          { x: "Spared: medial leg (saphenous)", k: "spared", a: { seg: "leg", side: "R", t: 0.5, th: 270 } },
+          { x: "Needle: between ischial tuberosity & greater trochanter", k: "needle", a: "sciaticGlute" }
+        ]
+      }
+    },
+    tips: ["Rotate the probe to align both bony landmarks in the same image before scanning for the nerve.", "A curvilinear probe is usually needed — the nerve is deep (5–9 cm) at this level.", "Colour Doppler helps identify the inferior gluteal vessels near the nerve."],
+    pitfalls: ["Confusing a bony shadow for the nerve.", "Needle deflection off the dense gluteal fascia — a stiffer needle helps.", "Deep target — losing the needle-tip view is common."],
+    complications: ["Nerve injury", "Intramuscular haematoma (gluteal vessels)", "Prolonged motor block (dense proximal block)"],
+    pearls: ["Classic Labat landmark-based approach — ultrasound simply confirms nerve position between the same two bony points.", "Most proximal common approach — blocks the nerve before any branches.", "Consider adding a lumbar plexus or femoral block for anterior/hip coverage."],
+    source: { title: "Ultrasound-Guided Sciatic Nerve Block", url: "https://www.nysora.com/techniques/lower-extremity/ultrasound-guided-sciatic-nerve-block-2/" }
+  });
+
+  blocks.push({
+    id: "sciatic-anterior",
+    name: "Sciatic Nerve Block — Anterior Approach",
+    short: "Sciatic (Anterior)",
+    cat: "lower",
+    tags: ["Sciatic", "Anterior thigh", "Supine positioning"],
+    tagline: "Supine positioning • trauma, casts, cannot turn",
+    summary: "The sciatic nerve is blocked from the front of the thigh, deep to the adductor muscles and posteromedial to the femur — useful when the patient cannot be turned prone or lateral (trauma, external fixators, severe pain).",
+    indications: ["Below-knee/foot surgery when prone/lateral positioning isn't possible", "Trauma or external fixation preventing turning", "Combined with a femoral/adductor canal block for full lower-limb anaesthesia"],
+    keyInfo: {
+      position: ["Supine, hip neutral or slightly externally rotated"],
+      approach: ["Curvilinear probe, transverse, anteromedial mid-thigh", "In-plane, medial → lateral, deep to the adductor muscles"],
+      procedure: ["Identify the femur (bony shadow)", "Find the sciatic nerve posteromedial to the femur, deep to adductor magnus", "Needle passes between the medial thigh muscles and the femur"],
+      volume: "15–20 mL",
+      coverage: "Same as other sciatic approaches — leg below the knee, ankle, foot (except medial strip)"
+    },
+    anatomy: {
+      text: "From the front of the thigh, the sciatic nerve lies deep and posteromedial to the femoral shaft, sandwiched between adductor magnus (superficial/medial) and the femur. It is usually 8–10 cm deep in an average adult — deeper than any other common sciatic approach.",
+      relations: ["Superficial: adductor longus, vastus medialis", "Deep landmark: femur (nerve lies posteromedial to it)", "Nerve lies just medial to the femoral shaft, deep to adductor magnus"],
+      targets: "Sciatic nerve, anterior mid-thigh, posteromedial to the femur",
+      plexus: { type: "lumbosacral", hi: ["SCI"], zone: "Anterior mid-thigh, deep to adductor magnus" }
+    },
+    sono: {
+      probe: "Curvilinear 2–5 MHz (deep target)",
+      depth: "8–12 cm",
+      orientation: "Transverse, anterior mid-thigh · left = posteromedial, right = anterolateral",
+      image: {
+        probe: "curvilinear", depth: 12, left: "POST.MED", right: "ANT.LAT",
+        s: [
+          { id: "ama", t: "muscle", l: "Adductor magnus", d: "Superficial to the nerve here.", el: [150, 110, 120, 60, 0], lab: [105, 86] },
+          { id: "sciata", t: "nerve", e: "honey", l: "Sciatic nerve", d: "Posteromedial to the femur, deep to adductor magnus.", el: [210, 140, 20, 13, 0], lab: [186, 106], key: true },
+          { id: "fema", t: "bone", l: "Femur", d: "Hyperechoic curve with acoustic shadow.", ln: [[260, 150], [300, 118], [340, 150], [360, 192]], lab: [345, 212] }
+        ],
+        needles: [{ from: [10, 50], to: [206, 140] }],
+        spreads: [{ el: [210, 140, 34, 20, 0] }]
+      },
+      real: {
+        image: "assets/regional/sciatic-anterior-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse, anterior mid-thigh (posteromedial → anterolateral)",
+        probe: "Curvilinear",
+        labels: [
+          { id: "amr8", text: "Adductor magnus", type: "muscle", x: 33, y: 24 },
+          { id: "sciatr8", text: "Sciatic nerve", type: "nerve", x: 47, y: 40 },
+          { id: "femr8", text: "Femur", type: "bone", x: 66, y: 56 }
+        ],
+        needleOverlay: { from: [14, 22], to: [46, 39], approach: "in-plane", side: "posteromedial", target: "the sciatic nerve, posteromedial to the femur" },
+        spreadOverlay: [{ shape: "ellipse", x: 47, y: 42, rx: 11, ry: 9, variable: false, note: "LA spread around the nerve, deep to adductor magnus" }]
+      }
+    },
+    procedure: {
+      position: "Supine, leg neutral or slightly externally rotated",
+      probe: "Curvilinear, transverse over the anteromedial mid-thigh",
+      needle: "22G 100–150 mm",
+      approach: "In-plane, medial → lateral",
+      steps: [
+        "Scan the anteromedial mid-thigh and identify the femur by its bony shadow.",
+        "Look posteromedial to the femur, deep to adductor magnus, for the hyperechoic sciatic nerve.",
+        "Advance in-plane from medial to lateral, staying superficial to the femur.",
+        "Inject to surround the nerve."
+      ],
+      volume: "15–20 mL",
+      endpoint: "Spread around the nerve just posteromedial to the femoral shaft."
+    },
+    spread: {
+      summary: "Same territory as any sciatic block done proximal to the popliteal fossa — leg below the knee, ankle and foot except the medial strip, plus hamstring/posterior thigh motor weakness.",
+      covered: ["Posterior and lateral leg", "Ankle and foot (except medial arch)", "Hamstrings (motor)"],
+      spared: ["Medial leg/ankle (saphenous)", "Anterior thigh (femoral nerve) — often blocked together"],
+      motor: "Foot drop and hamstring weakness, as with any proximal sciatic block.",
+      three: {
+        focus: "lowerR", view: "anterior",
+        needle: { a: "sciaticAnt", from: "medial" },
+        regions: [
+          { k: "exp", seg: "leg", side: "R", th: [0, 232] },
+          { k: "exp", seg: "foot", side: "R" },
+          { k: "none", seg: "foot", side: "R", th: [238, 302], t: [0, 0.45] }
+        ],
+        labels: [
+          { x: "Posterior & lateral leg, foot", k: "exp", a: { seg: "leg", side: "R", t: 0.5, th: 150 } },
+          { x: "Hamstring weakness (motor)", k: "eff", a: { seg: "thigh", side: "R", t: 0.35, th: 180 } },
+          { x: "Spared: medial leg (saphenous)", k: "spared", a: { seg: "leg", side: "R", t: 0.5, th: 270 } },
+          { x: "Needle: anterior mid-thigh (deep to adductors)", k: "needle", a: "sciaticAnt" }
+        ]
+      }
+    },
+    tips: ["Use a lower-frequency curvilinear probe — this is the deepest common sciatic approach.", "Internally rotating the hip can bring the nerve slightly more superficial.", "Colour Doppler helps avoid the profunda femoris branches along the path."],
+    pitfalls: ["Giving up too early — the target is genuinely deep (8–12 cm).", "Mistaking the femoral vessels (more superficial/anterior) for the nerve.", "Needle deflection over a long, deep pass."],
+    complications: ["Nerve injury", "Vascular puncture (profunda femoris branches)", "Prolonged procedure time due to depth"],
+    pearls: ["The only sciatic approach usable fully supine — key for trauma and external fixators.", "Nerve lies posteromedial to the femur, deep to adductor magnus.", "Same distal coverage as subgluteal/transgluteal approaches."],
+    source: { title: "Ultrasound-Guided Sciatic Nerve Block", url: "https://www.nysora.com/techniques/lower-extremity/ultrasound-guided-sciatic-nerve-block-2/" }
+  });
+
+  blocks.push({
+    id: "obturator",
+    name: "Obturator Nerve Block",
+    short: "Obturator",
+    cat: "lower",
+    tags: ["Obturator", "Hip adductors", "TURBT / obturator reflex"],
+    tagline: "Hip adductors • obturator reflex, medial thigh/knee",
+    summary: "The obturator nerve is blocked in the proximal medial thigh, in the interfascial planes between the adductor muscles — targeting its anterior and posterior branches separately for a reliable block of the hip adductors.",
+    indications: ["Preventing the obturator reflex during transurethral bladder tumour resection (TURBT)", "Adductor spasticity", "Analgesia for hip surgery (as a supplement)", "Knee surgery (variable articular/cutaneous contribution)"],
+    keyInfo: {
+      position: ["Supine, hip slightly abducted and externally rotated"],
+      approach: ["Linear probe over the proximal medial thigh, along the adductor muscles", "In-plane, lateral → medial"],
+      procedure: ["Identify pectineus, adductor longus, adductor brevis and adductor magnus in sequence", "Inject between longus/brevis (anterior branch) and between brevis/magnus (posterior branch)"],
+      volume: "5–10 mL per branch (10–20 mL total)",
+      coverage: "Hip adductors (obturator reflex); variable medial thigh/knee skin"
+    },
+    anatomy: {
+      text: "The obturator nerve exits the obturator canal and divides into an anterior branch (running in the plane between adductor longus and adductor brevis, supplying adductor longus/brevis/gracilis and a variable patch of medial thigh skin) and a posterior branch (between adductor brevis and adductor magnus, supplying adductor magnus and often an articular branch to the knee). Both are best seen as thin hyperechoic strands within the interfascial planes rather than as discrete round nerves.",
+      relations: ["Anterior branch: plane between adductor longus and adductor brevis", "Posterior branch: plane between adductor brevis and adductor magnus", "Muscle order, superficial → deep: pectineus/adductor longus, adductor brevis, adductor magnus"],
+      targets: "Anterior and posterior branches of the obturator nerve, each in its own interfascial plane",
+      plexus: { type: "lumbosacral", hi: ["OBT"], zone: "Proximal medial thigh, adductor compartment" }
+    },
+    sono: {
+      probe: "Linear 10–15 MHz",
+      depth: "2–4 cm",
+      orientation: "Longitudinal (oblique) along the adductor septa, proximal medial thigh · left = distal/medial, right = proximal/lateral",
+      image: {
+        probe: "linear", depth: 4, left: "PROXIMAL", right: "DISTAL",
+        s: [
+          { id: "pecto", t: "muscle", l: "Pectineus / adductor longus", d: "Superficial layer.", el: [200, 60, 190, 44, 0], lab: [200, 40] },
+          { id: "obtao", t: "nerve", e: "honey", l: "Obturator n. — anterior branch", d: "Thin strand in the interfascial plane.", el: [150, 108, 16, 7, 0], lab: [110, 130], key: true },
+          { id: "addbo", t: "muscle", l: "Adductor brevis", d: "Middle layer.", el: [210, 150, 190, 44, 0], lab: [210, 166] },
+          { id: "obtpo", t: "nerve", e: "honey", l: "Obturator n. — posterior branch", d: "Thin strand in the interfascial plane.", el: [260, 196, 16, 7, 0], lab: [300, 222], key: true },
+          { id: "addmo", t: "muscle", l: "Adductor magnus", d: "Deep layer.", el: [200, 240, 190, 40, 0], lab: [200, 258] }
+        ],
+        needles: [{ from: [398, 40], to: [150, 108] }, { from: [398, 180], to: [260, 196] }],
+        spreads: [{ el: [150, 108, 40, 16, 0] }, { el: [260, 196, 40, 16, 0] }]
+      },
+      real: {
+        image: "assets/regional/obturator-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Longitudinal (oblique) along the adductor interfascial septa, proximal medial thigh (distal/medial → proximal/lateral)",
+        probe: "Linear",
+        labels: [
+          { id: "pectr9", text: "Pectineus / adductor longus", type: "muscle", x: 30, y: 16 },
+          { id: "obtar9", text: "Obturator n. — anterior branch", type: "nerve", x: 30, y: 38 },
+          { id: "addbr9", text: "Adductor brevis", type: "muscle", x: 52, y: 48 },
+          { id: "obtpr9", text: "Obturator n. — posterior branch", type: "nerve", x: 58, y: 62 },
+          { id: "addmr9", text: "Adductor magnus", type: "muscle", x: 50, y: 82 }
+        ],
+        needleOverlay: { from: [90, 15], to: [32, 36], approach: "in-plane", side: "lateral", target: "the interfascial plane carrying the anterior branch (redirect deeper for the posterior branch)" },
+        spreadOverlay: [
+          { shape: "ellipse", x: 31, y: 38, rx: 9, ry: 6, variable: false, note: "Anterior branch — LA in the interfascial plane" },
+          { shape: "ellipse", x: 58, y: 62, rx: 9, ry: 6, variable: false, note: "Posterior branch — LA in the interfascial plane" }
+        ]
+      }
+    },
+    procedure: {
+      position: "Supine, hip slightly abducted and externally rotated",
+      probe: "Linear, over the proximal medial thigh, along the adductor septa",
+      needle: "22G 50–80 mm",
+      approach: "In-plane, lateral → medial",
+      steps: [
+        "Identify pectineus/adductor longus, adductor brevis and adductor magnus as three muscle layers.",
+        "Inject in the plane between adductor longus and adductor brevis (anterior branch).",
+        "Redirect deeper into the plane between adductor brevis and adductor magnus (posterior branch).",
+        "Confirm fluid spreading along the septum, not within the muscle bellies."
+      ],
+      volume: "5–10 mL per branch",
+      endpoint: "Linear spread along each interfascial plane, lifting the septum."
+    },
+    spread: {
+      summary: "Hip adductors (obturator reflex suppression), with variable medial thigh skin and an inconsistent contribution to medial knee sensation.",
+      covered: ["Adductor longus, brevis, magnus, gracilis (motor)", "Variable: small patch of medial thigh skin", "Variable: articular branch to the medial knee"],
+      spared: ["Most thigh and leg skin — the obturator's cutaneous field is small and inconsistent"],
+      motor: "Weak hip adduction — the primary goal is suppressing the obturator (adductor) reflex, not surgical anaesthesia.",
+      three: {
+        focus: "lowerR", view: "anterior",
+        needle: { a: "obturator", from: "lateral" },
+        regions: [
+          { k: "exp", seg: "thigh", side: "R", th: [255, 300], t: [0, 0.5] },
+          { k: "var", seg: "thigh", side: "R", th: [260, 290], t: [0.5, 0.75] }
+        ],
+        labels: [
+          { x: "Adductor compartment (motor)", k: "exp", a: { seg: "thigh", side: "R", t: 0.2, th: 275 } },
+          { x: "Variable: medial thigh/knee skin", k: "var", a: { seg: "thigh", side: "R", t: 0.65, th: 275 } },
+          { x: "Needle: proximal medial thigh", k: "needle", a: "obturator" }
+        ]
+      }
+    },
+    tips: ["Use the 'three muscle bellies' rule — pectineus/longus, brevis, magnus — the branches run in the planes between them, not within a muscle.", "Hydrodissection often reveals the thin nerve branches better than static B-mode.", "For TURBT, this block reliably prevents the obturator jerk without needing a nerve stimulator."],
+    pitfalls: ["Injecting into muscle instead of the interfascial plane — poor spread.", "Mistaking small vessels for the nerve branches — use colour Doppler.", "Expecting dense cutaneous anaesthesia — the sensory field is small and inconsistent."],
+    complications: ["Vascular puncture (obturator vessels)", "Intrapelvic spread with proximal approaches", "Incomplete adductor reflex suppression if only one branch is blocked"],
+    pearls: ["Anterior branch: between adductor longus and brevis.", "Posterior branch: between adductor brevis and magnus.", "Chiefly a motor block (obturator reflex) — not a substitute for femoral/sciatic for surgical anaesthesia."],
+    source: { title: "Ultrasound-Guided Obturator Nerve Block", url: "https://www.nysora.com/techniques/lower-extremity/obturator/ultrasound-guided-obturator-nerve-block/" }
+  });
+
+  blocks.push({
+    id: "lumbar-plexus",
+    name: "Lumbar Plexus Block (Shamrock Method)",
+    short: "Lumbar Plexus (Shamrock)",
+    cat: "lower",
+    tags: ["Lumbar plexus", "Psoas compartment", "Hip fracture"],
+    tagline: "Hip, anterior thigh, knee • posterior approach at L4",
+    summary: "The lumbar plexus is blocked within psoas major at the L3–L4 level using the 'shamrock' ultrasound sign — the transverse process shadow as the clover's stem, with quadratus lumborum, erector spinae and psoas major as its three leaves.",
+    indications: ["Hip fracture analgesia", "Hip and anterior thigh surgery", "Combined with a sciatic block for complete lower-limb anaesthesia", "Total hip/knee arthroplasty analgesia"],
+    keyInfo: {
+      position: ["Sitting or lateral, spine flexed"],
+      approach: ["Curvilinear probe, transverse, in the flank above the iliac crest at L3–L4", "In-plane, posterior → anterior"],
+      procedure: ["Identify the 'shamrock' — transverse process shadow (stem) with quadratus lumborum, erector spinae and psoas major (leaves)", "Advance into the posterior third of psoas major", "Confirm a quadriceps twitch or visualize spread"],
+      volume: "20–30 mL",
+      coverage: "Hip, anterior and medial thigh, knee (femoral + obturator + lateral cutaneous nerve of thigh territories)"
+    },
+    anatomy: {
+      text: "At L3–L4, the probe placed transversely in the flank, angled slightly caudally, produces the 'shamrock sign': the transverse process casts an acoustic shadow forming the stem, with erector spinae (posteromedial leaf), quadratus lumborum (posterolateral leaf) and psoas major (anterior leaf) arranged around it like a three-leaf clover. The lumbar plexus (L2–L4 roots forming the femoral, obturator and lateral femoral cutaneous nerves) lies within the posterior third of psoas major.",
+      relations: ["Posteromedial leaf: erector spinae", "Posterolateral leaf: quadratus lumborum", "Anterior leaf: psoas major (plexus within its posterior third)", "Stem: transverse process (acoustic shadow)"],
+      targets: "Lumbar plexus (L2–L4 roots) within psoas major",
+      plexus: { type: "lumbosacral", hi: ["L2", "L3", "L4"], zone: "Psoas compartment, posterior third of psoas major" }
+    },
+    sono: {
+      probe: "Curvilinear 2–5 MHz",
+      depth: "6–10 cm",
+      orientation: "Transverse in the flank at L3–L4 ('shamrock' view) · left = posterior, right = anterior",
+      image: {
+        probe: "curvilinear", depth: 10, left: "POSTERIOR", right: "ANTERIOR",
+        s: [
+          { id: "esl", t: "muscle", l: "Erector spinae", d: "Posteromedial leaf.", el: [110, 140, 90, 80, 0], lab: [65, 108] },
+          { id: "tpl", t: "bone", l: "Transverse process", d: "The shamrock's 'stem' — acoustic shadow.", ln: [[190, 60], [200, 140], [192, 220]], lab: [200, 240] },
+          { id: "ql5", t: "muscle", l: "Quadratus lumborum", d: "Posterolateral leaf.", el: [230, 90, 80, 50, 0], lab: [262, 62] },
+          { id: "psoasl", t: "muscle", l: "Psoas major", d: "Anterior leaf — plexus lies in its posterior third.", el: [290, 170, 90, 80, 0], lab: [335, 158] },
+          { id: "lpl", t: "nerve", e: "hypo", l: "Lumbar plexus (L2–L4)", d: "Within the posterior third of psoas.", el: [255, 150, 16, 11, 0], lab: [228, 188], key: true }
+        ],
+        needles: [{ from: [40, 220], to: [255, 150] }],
+        spreads: [{ el: [270, 160, 40, 26, 0] }]
+      },
+      real: {
+        image: "assets/regional/lumbar-plexus-usg.jpg",
+        source: "KnockoutNotes / user-provided",
+        orientation: "Transverse in the flank above the iliac crest at L3–L4 ('shamrock' view; posterior → anterior)",
+        probe: "Curvilinear",
+        labels: [
+          { id: "esr10", text: "Erector spinae", type: "muscle", x: 24, y: 42 },
+          { id: "tpr10", text: "Transverse process (shadow)", type: "bone", x: 46, y: 50 },
+          { id: "qlr10", text: "Quadratus lumborum", type: "muscle", x: 55, y: 22 },
+          { id: "psoasr10", text: "Psoas major (plexus within)", type: "muscle", x: 70, y: 40 }
+        ],
+        needleOverlay: { from: [15, 72], to: [47, 52], approach: "in-plane", side: "posterior", target: "the posterior third of psoas major (lumbar plexus)" },
+        spreadOverlay: [{ shape: "ellipse", x: 66, y: 42, rx: 13, ry: 14, variable: false, note: "LA spread within psoas, around the plexus" }]
+      }
+    },
+    procedure: {
+      position: "Sitting or lateral decubitus, spine flexed",
+      probe: "Curvilinear, transverse in the flank above the iliac crest, angled slightly caudal to find L3–L4",
+      needle: "22G 100–150 mm",
+      approach: "In-plane, posterior → anterior",
+      steps: [
+        "Place the probe transversely in the flank above the iliac crest and identify the 'shamrock' sign.",
+        "Confirm erector spinae, quadratus lumborum, psoas major and the transverse process shadow.",
+        "Advance in-plane from posterior toward the posterior third of psoas major.",
+        "Confirm with a quadriceps twitch (if using a stimulating needle) or visualized spread; inject slowly."
+      ],
+      volume: "20–30 mL",
+      endpoint: "LA spreading within psoas major, expanding the muscle around the plexus."
+    },
+    spread: {
+      summary: "Hip, anterior and medial thigh, and the knee — the same territory as a combined femoral + obturator + lateral femoral cutaneous nerve block, from one posterior injection.",
+      covered: ["Anterior and medial thigh (femoral, obturator)", "Lateral thigh (lateral cutaneous nerve of thigh)", "Hip joint (articular branches)", "Knee (anterior/medial)"],
+      spared: ["Posterior thigh and sciatic distribution — combine with a sciatic block for full lower-limb anaesthesia"],
+      motor: "Quadriceps and hip flexor/adductor weakness — fall risk, similar to a combined femoral + obturator block.",
+      three: {
+        focus: "lowerR", view: "anterior",
+        needle: { a: "lumbarPlexus", from: "posterior" },
+        regions: [
+          { k: "exp", seg: "thigh", side: "R", th: [200, 160] }
+        ],
+        labels: [
+          { x: "Anterior & medial thigh, hip, knee", k: "exp", a: { seg: "thigh", side: "R", t: 0.4, th: 340 } },
+          { x: "Lateral thigh (LFCN)", k: "exp", a: { seg: "thigh", side: "R", t: 0.3, th: 90 } },
+          { x: "Spared: posterior thigh/sciatic — add a sciatic block", k: "spared", a: { seg: "thigh", side: "R", t: 0.5, th: 180 } },
+          { x: "Needle: flank, L3–L4 (shamrock)", k: "needle", a: "lumbarPlexus" }
+        ]
+      }
+    },
+    tips: ["The shamrock sign avoids the transverse process shadow that obscures the classic paramedian sagittal oblique view.", "Angle the probe slightly caudal from a true transverse plane to find the disc space between L3 and L4.", "A nerve stimulator (quadriceps twitch) adds confirmation at this deep, vascular site."],
+    pitfalls: ["Mistaking the kidney (visible more cranially, especially on the right) for psoas.", "Epidural/intrathecal spread if the needle strays too medial.", "Vascular puncture — segmental lumbar arteries run within psoas."],
+    complications: ["Epidural or intrathecal spread", "Renal puncture (especially right side)", "Retroperitoneal haematoma", "LAST — large volume, vascular area"],
+    pearls: ["'Shamrock' = transverse process (stem) + erector spinae, quadratus lumborum, psoas major (three leaves).", "Plexus lies in the posterior third of psoas major.", "Same coverage as femoral + obturator + LFCN combined, from one posterior injection — add a sciatic block for complete lower-limb anaesthesia."],
+    source: { title: "Lumbar Plexus Block (Shamrock Method)", url: "https://www.nysora.com/techniques/lower-extremity/lumbar-plexus/" }
+  });
+
+  blocks.push({
     id: "ankle",
     name: "Ankle Block",
     short: "Ankle Block",
