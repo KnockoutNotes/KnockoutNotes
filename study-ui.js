@@ -197,6 +197,23 @@
 
   function para(text) { return `<p>${highlightKeyValues(esc(text))}</p>`; }
 
+  // Chemical Structure card: an accurate 2D skeletal-formula diagram (RDKit-
+  // generated from a verified SMILES, cross-checked against the known
+  // molecular formula — see study-structures.js) above the descriptive
+  // prose, when one exists for this drug. Several drugs (complex steroidal/
+  // bis-quaternary neuromuscular blockers, morphinan-skeleton opioids,
+  // sugammadex, vasopressin) deliberately have no diagram rather than a
+  // guessed-at one, so those fall back to prose only.
+  function structureBodyHTML(d) {
+    const rec = window.KN_STRUCTURES && window.KN_STRUCTURES[d.id];
+    if (!rec) return para(d.structure);
+    return `<div class="st-structure-wrap">
+        <div class="st-structure-svg">${rec.svg}</div>
+        <span class="st-structure-formula">${esc(rec.formula)}</span>
+      </div>
+      ${para(d.structure)}`;
+  }
+
   // Long-form topic prose is authored with blank-line paragraph breaks and
   // optional callouts — this keeps study-data.js readable as plain prose
   // while still rendering as properly separated paragraphs/boxes.
@@ -218,7 +235,7 @@
           ${d.brand ? `<p><strong>Brand name(s):</strong> ${esc(d.brand)}</p>` : ""}
           <p><strong>Class:</strong> ${esc(catById.get(d.cat).label)}</p>
           ${d.tags && d.tags.length ? `<div class="st-tagrow">${d.tags.map((t) => `<span class="st-chip">${esc(t)}</span>`).join("")}</div>` : ""}`);
-      case "structure": return card("Chemical Structure", para(d.structure));
+      case "structure": return card("Chemical Structure", structureBodyHTML(d));
       case "pd": return card("Pharmacodynamics", para(d.pd));
       case "pk": return card("Pharmacokinetics", para(d.pk));
       case "dosage": return card("Dosage (FDA-Approved)", para(d.dosage));
@@ -459,10 +476,58 @@
     }, { passive: true });
   }
 
+  /* ---------------------------------------------------------------- 3D card tilt */
+  // Same mouse-tracked "3D haptic" tilt the site already uses on
+  // resuscitation-chamber.js's flow nodes — reused here via event
+  // delegation (one pair of listeners covers every .st-card/.st-tile,
+  // including ones rendered after this runs) so the reading cards and
+  // poster tiles feel alive rather than flat, and pop toward the cursor
+  // instead of sitting dead on the page.
+  function initCardTilt() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const SELECTOR = ".st-card, .st-tile";
+    let rAF = null;
+    let activeNode = null;
+
+    document.addEventListener("mousemove", (e) => {
+      const node = e.target.closest ? e.target.closest(SELECTOR) : null;
+      if (node !== activeNode) {
+        if (activeNode) activeNode.style.transform = "";
+        activeNode = node;
+      }
+      if (!node) return;
+      if (rAF) cancelAnimationFrame(rAF);
+      rAF = requestAnimationFrame(() => {
+        const rect = node.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rawRotX = ((y - rect.height / 2) / (rect.height / 2)) * -4;
+        const rawRotY = ((x - rect.width / 2) / (rect.width / 2)) * 4;
+        const rotateX = Math.max(-4, Math.min(4, rawRotX)).toFixed(2);
+        const rotateY = Math.max(-4, Math.min(4, rawRotY)).toFixed(2);
+        const isTile = node.classList.contains("st-tile");
+        const scale = isTile ? 1.06 : 1.012;
+        node.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale}) translateZ(8px)`;
+      });
+    }, { passive: true });
+
+    // mouseleave doesn't bubble, so it can't be delegated from document —
+    // mouseout (which does bubble) plus a relatedTarget check is the
+    // standard way to detect "the pointer left this card" here.
+    document.addEventListener("mouseout", (e) => {
+      if (activeNode && (!e.relatedTarget || !activeNode.contains(e.relatedTarget))) {
+        activeNode.style.transform = "";
+        activeNode = null;
+      }
+    });
+  }
+
   function init() {
     bindListEvents();
     initFullscreen();
     initNavAutoHide();
+    initCardTilt();
     route();
   }
 

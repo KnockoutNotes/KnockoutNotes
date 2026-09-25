@@ -435,6 +435,17 @@ body[data-content-page="study"] .st-page.container {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
+  will-change: transform;
+}
+/* "Pops out" on hover/cursor-tilt (see initCardTilt() in study-ui.js) rather
+   than sitting flat on the page. */
+.st-card:hover {
+  box-shadow: 0 22px 44px -18px rgba(0, 0, 0, 0.5), var(--shadow-md);
+  border-color: var(--accent-cyan);
+}
+@media (prefers-reduced-motion: reduce) {
+  .st-card { transition: none; }
 }
 .st-panel > .st-card:last-child,
 .st-panel-scroll > .st-card:last-child { margin-bottom: 0; }
@@ -457,6 +468,34 @@ body[data-content-page="study"] .st-page.container {
   background: var(--panel-tint-1);
 }
 .st-diagram-caption { margin: 10px 0 0; font-size: 12px; line-height: 1.55; color: var(--text-muted); }
+
+/* Drug chemical-structure diagrams (accurate RDKit-generated 2D skeletal
+   formulas — see study-structures.js) — a framed panel above the prose,
+   with the molecular formula as a small badge underneath. */
+.st-structure-wrap {
+  margin-bottom: 16px;
+  padding: 14px;
+  border-radius: 14px;
+  background: var(--panel-tint-1);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.st-structure-svg { width: 100%; max-width: 340px; }
+.st-structure-svg svg { width: 100%; height: auto; display: block; color: var(--text-main); }
+.st-structure-formula {
+  font-family: "SFMono-Regular", "Courier New", monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--accent-cyan);
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+}
 
 /* callouts — a left rule and a label, no filled box */
 .st-callout { margin-top: 14px; padding-left: 12px; border-left: 2px solid var(--text-muted); }
