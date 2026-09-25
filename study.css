@@ -298,6 +298,22 @@ body[data-content-page="study"] .st-page.container {
 .st-tile-structure svg { width: 100%; height: auto; display: block; }
 .st-tile-has-structure .st-tile-icon { padding-bottom: 30%; align-items: flex-start; padding-top: 14%; }
 
+/* Poster tiles with a verified 3D conformer get the SAME rotating
+   ball-and-stick viewer as the detail view's Chemical Structure card
+   (mounted/disposed on scroll — see observeTileMolecules() in
+   study-ui.js), not just the flat diagram. Its .st-tile-structure child is
+   only the starting/fallback content while the viewer mounts. */
+.st-tile-molecule { width: 100%; aspect-ratio: 4 / 3; position: relative; padding: 0 6px; box-sizing: border-box; }
+.st-tile-molecule .st-molecule-canvas { width: 100%; height: 100%; display: block; cursor: grab; }
+.st-tile-molecule .st-tile-structure { padding: 10px 6px; }
+
+/* Translucent poster background on tiles carrying a structure/molecule
+   visual, so the site's own animated dot background shows through behind
+   it instead of sitting on an opaque colour block — the bottom text strip
+   (.st-tile::after, a separate layer) keeps its own full-strength gradient
+   so name/tag legibility is unaffected. */
+.st-tile-has-structure::before { opacity: 0.4; }
+
 .st-tile-info {
   position: absolute;
   left: 0; right: 0; bottom: 0;

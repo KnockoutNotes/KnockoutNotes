@@ -145,15 +145,27 @@
 
   function tileHTML(item) {
     const cat = catById.get(item.cat);
-    // Drugs with a verified chemical structure diagram show THEIR OWN
-    // structure on the poster tile instead of the shared category icon —
-    // every card in a category no longer looks identical. Topics and
-    // drugs without a diagram (see study-structures.js) keep the icon.
+    // Drugs with a verified chemical structure show THEIR OWN structure on
+    // the poster tile instead of the shared category icon — every card in a
+    // category no longer looks identical. Drugs with a verified 3D conformer
+    // (study-structures-3d.js) get the SAME rotating ball-and-stick viewer
+    // used in the detail view, not just the flat diagram — mounted only
+    // while the tile is actually on/near screen (see observeTileMolecules())
+    // since a grid can show far more tiles at once than the single detail
+    // view ever does, and each viewer is its own WebGL context. Topics and
+    // drugs without any diagram keep the shared category icon.
     const structRec = window.KN_STRUCTURES && window.KN_STRUCTURES[item.id];
-    const iconHTML = structRec
-      ? `<div class="st-tile-structure">${structRec.svg}</div>`
-      : catIconHTML(item.cat, cat);
-    return `<a class="st-tile st-reveal${structRec ? " st-tile-has-structure" : ""}" href="?item=${item.id}" data-item="${item.id}" data-cat="${item.cat}" aria-label="${esc(item.name)}">
+    const has3d = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[item.id];
+    let iconHTML;
+    if (has3d) {
+      iconHTML = `<div class="st-tile-molecule" data-drug="${esc(item.id)}">${structRec ? `<div class="st-tile-structure">${structRec.svg}</div>` : ""}</div>`;
+    } else if (structRec) {
+      iconHTML = `<div class="st-tile-structure">${structRec.svg}</div>`;
+    } else {
+      iconHTML = catIconHTML(item.cat, cat);
+    }
+    const hasVisual = structRec || has3d;
+    return `<a class="st-tile st-reveal${hasVisual ? " st-tile-has-structure" : ""}" href="?item=${item.id}" data-item="${item.id}" data-cat="${item.cat}" aria-label="${esc(item.name)}">
       <div class="st-tile-icon" aria-hidden="true">${iconHTML}</div>
       <div class="st-tile-info">
         <span class="st-tile-cat">${esc(cat.label)}</span>
@@ -163,8 +175,42 @@
     </a>`;
   }
 
+  // Poster-tile 3D molecule mounting. A grid can show far more tiles at
+  // once than the single detail view ever does, and every mounted viewer is
+  // its own WebGL context (browsers cap concurrent contexts at roughly 16),
+  // so tiles mount their rotating viewer only while actually on/near screen
+  // and dispose it the moment they scroll out — capping live contexts to
+  // whatever's visible, not whatever's in the DOM. rootMargin gives a small
+  // pre-mount buffer so tiles are already rotating by the time they're
+  // fully in view.
+  const tileMoleculeObserver = "IntersectionObserver" in window
+    ? new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const node = entry.target;
+          const data = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[node.getAttribute("data-drug")];
+          if (!data) return;
+          if (entry.isIntersecting) {
+            if (typeof window.KNMountMolecule3D === "function") {
+              try { window.KNMountMolecule3D(node, data); } catch (err) { /* leave 2D fallback in place */ }
+            }
+          } else if (typeof window.KNDisposeMolecule3D === "function") {
+            window.KNDisposeMolecule3D(node);
+          }
+        });
+      }, { rootMargin: "120px 0px" })
+    : null;
+
+  function observeTileMolecules(root) {
+    if (!tileMoleculeObserver) return;
+    root.querySelectorAll(".st-tile-molecule[data-drug]").forEach((node) => tileMoleculeObserver.observe(node));
+  }
+
   function renderGrid() {
     const grid = $("#stGrid");
+    // Old tiles are about to be replaced/removed below — stop watching them
+    // (mounted viewers on nodes that leave the DOM still self-dispose via
+    // study-molecule-3d.js's own isConnected check on its next tick).
+    if (tileMoleculeObserver) tileMoleculeObserver.disconnect();
     const f = state.filter.trim().toLowerCase();
     const match = (item) => !f || [item.name, item.short, item.tagline, item.brand]
       .concat(item.tags || []).filter(Boolean).join(" ").toLowerCase().includes(f);
@@ -180,6 +226,7 @@
     });
     grid.innerHTML = total ? html : `<div class="st-empty">No results for “${esc(state.filter)}”.</div>`;
     observeReveal(grid);
+    observeTileMolecules(grid);
   }
 
   function showList() {
