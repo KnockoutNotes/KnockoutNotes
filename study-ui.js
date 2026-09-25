@@ -334,25 +334,20 @@
       ? `<div class="st-panel" id="stPanel">${drugFullPanelHTML(item)}</div>`
       : `<div class="st-panel st-panel-scroll" id="stPanel">${topicPanelHTML(item)}</div>`;
 
-    // Netflix-style collapsing hero: big poster-gradient cover on open,
-    // shrinks into a small pinned title bar as the reader scrolls (driven
-    // by --shrink in study.css, updated from updateHeroShrink() below).
+    // Title renders as a normal in-flow card — same glass-card look and the
+    // same st-reveal scroll-in animation as every other content card below
+    // it, not a separate pinned/fixed bar.
     $("#stDetail").innerHTML = `
-      <div class="st-detail-hero" id="stDetailHero" data-cat="${item.cat}">
-        <div class="st-detail-hero-inner">
-          <a class="st-back" href="${backHref}" data-back>← Back to ${esc(cat.label)}</a>
-          <div class="st-detail-hero-main">
-            <span class="st-detail-hero-icon" aria-hidden="true">${catIconHTML(item.cat, cat)}</span>
-            <div>
-              <h1 class="st-detail-hero-title">${esc(item.name)}</h1>
-              <p class="st-detail-hero-tag">${esc(item.tagline)}</p>
-              ${tagsRow}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="st-hero-spacer" id="stHeroSpacer"></div>
       <div class="st-reading-col">
+        <a class="st-back" href="${backHref}" data-back>← Back to ${esc(cat.label)}</a>
+        <section class="st-card st-title-card st-reveal" data-cat="${item.cat}">
+          <div class="st-title-card-media" aria-hidden="true">${catIconHTML(item.cat, cat)}</div>
+          <div class="st-title-card-body">
+            <h1>${esc(item.name)}</h1>
+            <p class="st-tagline-lg">${esc(item.tagline)}</p>
+            ${tagsRow}
+          </div>
+        </section>
         ${sourceBanner(item.source)}
         ${bodyHTML}
       </div>
@@ -360,8 +355,6 @@
     bindDetailEvents();
     observeReveal($("#stDetail"));
     window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
-    updateHeroShrink();
-    syncHeroSpacer();
   }
 
   function bindDetailEvents() {
@@ -374,42 +367,6 @@
       });
     }
   }
-
-  /* -------------------------------------------------- Netflix-style hero shrink */
-  // As the reader scrolls, --shrink ramps 0 → 1 over HERO_SHRINK_PX and every
-  // dimension in .st-detail-hero (padding, icon size, title size, tagline
-  // opacity) interpolates smoothly via CSS calc() — the big cover collapses
-  // into a small pinned title bar with no discrete "now it's a header" jump.
-  const HERO_SHRINK_PX = 190;
-  let heroShrinkRAF = null;
-  function updateHeroShrink() {
-    heroShrinkRAF = null;
-    const hero = document.getElementById("stDetailHero");
-    if (!hero) return;
-    const t = Math.max(0, Math.min(1, window.scrollY / HERO_SHRINK_PX));
-    hero.style.setProperty("--shrink", t.toFixed(3));
-  }
-  window.addEventListener("scroll", () => {
-    if (heroShrinkRAF) return;
-    heroShrinkRAF = requestAnimationFrame(updateHeroShrink);
-  }, { passive: true });
-
-  // The hero is position:fixed (see study.css for why), so it's out of
-  // document flow — this spacer reserves its natural (unshrunk) height in
-  // the flow so the reading content never renders underneath it. Measured
-  // at --shrink:0 so a resize mid-scroll doesn't capture the collapsed size.
-  function syncHeroSpacer() {
-    const hero = document.getElementById("stDetailHero");
-    const spacer = document.getElementById("stHeroSpacer");
-    if (!hero || !spacer) return;
-    const prevShrink = hero.style.getPropertyValue("--shrink");
-    hero.style.setProperty("--shrink", "0");
-    spacer.style.height = `${hero.getBoundingClientRect().height}px`;
-    hero.style.setProperty("--shrink", prevShrink || "0");
-  }
-  window.addEventListener("resize", () => {
-    if (document.getElementById("stDetailHero")) syncHeroSpacer();
-  }, { passive: true });
 
   /* ---------------------------------------------------------------- events */
   function bindListEvents() {
@@ -472,9 +429,36 @@
     document.addEventListener("webkitfullscreenchange", update);
   }
 
+  /* ---------------------------------------------------------------- nav auto-hide */
+  // Hides the site's top nav bar while scrolling down through a drug/topic
+  // page and reveals it again on scrolling up — scoped to Study Mode only
+  // (this whole file only ever runs on study.html, so nothing else on the
+  // site is affected). See .kn-nav-autohidden in study.css.
+  function initNavAutoHide() {
+    let lastY = window.scrollY;
+    let ticking = false;
+    const IGNORE_BELOW = 90; // stay put near the very top of the page
+    const JITTER = 6; // ignore tiny/momentum scroll noise
+    function update() {
+      ticking = false;
+      const y = Math.max(0, window.scrollY);
+      const delta = y - lastY;
+      if (Math.abs(delta) < JITTER) return;
+      const hide = delta > 0 && y > IGNORE_BELOW;
+      document.body.classList.toggle("kn-nav-autohidden", hide);
+      lastY = y;
+    }
+    window.addEventListener("scroll", () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }, { passive: true });
+  }
+
   function init() {
     bindListEvents();
     initFullscreen();
+    initNavAutoHide();
     route();
   }
 
