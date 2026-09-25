@@ -57,15 +57,20 @@ function parseJsonSafe(text, fallback) {
 
 // Normalises a raw D1 row (which may or may not have the marker columns,
 // depending on migration state) into the shape the public page and admin
-// panel both expect: labels: [], needleOverlay: null, spreadOverlay: [].
+// panel both expect. labels/spreadOverlay come back as `null` — not `[]` —
+// when the column itself is NULL (markers never touched by the marker
+// editor), which is deliberately distinct from an actual empty array (the
+// admin explicitly cleared every marker and saved) — see getReal() in
+// regional-ui.js, which needs to tell "never edited, fall back to the
+// hand-authored labels" apart from "edited down to zero, show none".
 function shapeRow(r) {
   if (!r) return r;
   const { labels_json, needle_json, spread_json, ...rest } = r;
   return {
     ...rest,
-    labels: parseJsonSafe(labels_json, []),
+    labels: parseJsonSafe(labels_json, null),
     needleOverlay: parseJsonSafe(needle_json, null),
-    spreadOverlay: parseJsonSafe(spread_json, [])
+    spreadOverlay: parseJsonSafe(spread_json, null)
   };
 }
 
@@ -244,7 +249,14 @@ export async function upsertRegionalMarkers(db, blockId, markers, adminUsername)
     )
     .run();
 
-  return getRegionalImage(db, blockId);
+  const updated = await getRegionalImage(db, blockId);
+  if (!updated) {
+    // The row was deleted by another request between the existence check
+    // above and this update — surface it clearly instead of returning a
+    // null image the admin UI wouldn't expect.
+    throw new Error('This block\'s image was removed while editing markers — reload and set the image again first.');
+  }
+  return updated;
 }
 
 export async function deleteRegionalImage(db, blockId) {

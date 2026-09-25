@@ -50,11 +50,14 @@ function getReal(b) {
     probe: (admin && admin.probe) || (authored && authored.probe) || null,
     // Admin-edited markers (from the /admin Regional Images marker editor)
     // take priority over hand-authored ones in code, so fixing a wrong
-    // marker from the admin panel actually changes what visitors see —
-    // only fall back to the authored labels when no admin override exists.
-    labels: (admin && admin.labels && admin.labels.length ? admin.labels : null) || (authored && authored.labels) || [],
+    // marker from the admin panel actually changes what visitors see. The
+    // API returns `null` (not `[]`) for labels/spreadOverlay that were
+    // never touched by the marker editor, so an admin who deliberately
+    // clears every marker and saves (an explicit `[]`) is respected here
+    // rather than silently falling back to the wrong authored ones.
+    labels: (admin && admin.labels ? admin.labels : null) || (authored && authored.labels) || [],
     needleOverlay: (admin && admin.needleOverlay) || (authored && authored.needleOverlay) || null,
-    spreadOverlay: (admin && admin.spreadOverlay && admin.spreadOverlay.length ? admin.spreadOverlay : null) || (authored && authored.spreadOverlay) || []
+    spreadOverlay: (admin && admin.spreadOverlay ? admin.spreadOverlay : null) || (authored && authored.spreadOverlay) || []
   };
 }
 
