@@ -1254,252 +1254,273 @@
       Type: "Study Drug",
       Category: "Study Mode • Induction Agents",
       Title: "Propofol",
-      Summary: "IV sedative-hypnotic for induction and maintenance of anaesthesia/sedation",
+      Summary: "The default IV induction agent almost everywhere — fast on, fast off, and pleasant to wake up from",
       href: "study.html?item=propofol"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Induction Agents",
       Title: "Etomidate",
-      Summary: "Haemodynamically stable IV induction agent, imidazole derivative",
+      Summary: "The induction agent you reach for when the heart can't afford much of a hit",
       href: "study.html?item=etomidate"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Induction Agents",
       Title: "Ketamine",
-      Summary: "NMDA-antagonist dissociative anaesthetic with analgesic and bronchodilator properties",
+      Summary: "The odd one out — it provides its own analgesia, keeps the patient breathing, and raises the blood pressure instead of dropping it",
       href: "study.html?item=ketamine"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Induction Agents",
       Title: "Thiopental (Sodium Thiopental)",
-      Summary: "Ultra-short-acting barbiturate induction agent (historic gold standard; discontinued in the US market)",
+      Summary: "The original rapid-acting induction agent — historically important, no longer available in the US",
       href: "study.html?item=thiopental"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Induction Agents",
       Title: "Midazolam",
-      Summary: "Short-acting benzodiazepine used for premedication, sedation, and co-induction",
+      Summary: "The benzodiazepine anaesthetists actually use — for calming nerves before a case, not usually for the induction itself",
       href: "study.html?item=midazolam"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Induction Agents",
+      Title: "Remimazolam",
+      Summary: "A benzodiazepine engineered to be broken down almost instantly — sedation you can turn off nearly as fast as you turned it on",
+      href: "study.html?item=remimazolam"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Induction Agents",
+      Title: "Cipepofol (Ciprofol)",
+      Summary: "The newest FDA-approved general anaesthesia induction agent — a fluorinated propofol relative that works at a fraction of the dose",
+      href: "study.html?item=cipepofol"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Muscle Relaxants",
       Title: "Succinylcholine (Suxamethonium)",
-      Summary: "Depolarising neuromuscular blocker with the fastest onset — first-line for RSI",
+      Summary: "Still the fastest paralytic in the drawer — and the only depolarising one, which explains both its speed and its risks",
       href: "study.html?item=succinylcholine"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Muscle Relaxants",
       Title: "Rocuronium",
-      Summary: "Intermediate-acting aminosteroid non-depolarising NMBA; fastest onset of its class, reversible by sugammadex",
+      Summary: "The non-depolarising relaxant fast enough to substitute for succinylcholine at RSI — and the one sugammadex was built for",
       href: "study.html?item=rocuronium"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Muscle Relaxants",
       Title: "Vecuronium",
-      Summary: "Intermediate-acting aminosteroid non-depolariser with minimal cardiovascular effect",
+      Summary: "Rocuronium's quieter older sibling — same steroid family, gentler on the heart, a bit slower",
       href: "study.html?item=vecuronium"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Muscle Relaxants",
       Title: "Atracurium",
-      Summary: "Intermediate-acting benzylisoquinolinium NMBA cleared independently of organ function",
+      Summary: "The relaxant that breaks itself down chemically, independent of liver or kidney function — at the cost of some histamine release",
       href: "study.html?item=atracurium"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Muscle Relaxants",
       Title: "Cisatracurium",
-      Summary: "A single stereoisomer of atracurium with minimal histamine release; preferred in organ failure and ICU use",
+      Summary: "Atracurium's cleaner isomer — same organ-independent breakdown, almost none of the histamine release",
       href: "study.html?item=cisatracurium"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Muscle Relaxants",
       Title: "Pancuronium",
-      Summary: "Long-acting aminosteroid NMBA with vagolytic (tachycardic) properties",
+      Summary: "The long-acting relaxant that speeds the heart up instead of leaving it alone — occasionally exactly what you want",
       href: "study.html?item=pancuronium"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Muscle Relaxants",
       Title: "Mivacurium",
-      Summary: "Short-acting benzylisoquinolinium NMBA hydrolysed by plasma cholinesterase",
+      Summary: "The shortest-acting non-depolariser ever marketed — cleared by the same enzyme as succinylcholine, and just as vulnerable to its deficiency",
       href: "study.html?item=mivacurium"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Muscle Relaxants",
+      Title: "Gantacurium",
+      Summary: "An experimental relaxant designed to be reversed in seconds by a simple IV amino acid — never actually reached the market",
+      href: "study.html?item=gantacurium"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Reversal Agents",
       Title: "Sugammadex",
-      Summary: "Modified gamma-cyclodextrin that selectively encapsulates rocuronium/vecuronium for rapid reversal at any depth of block",
+      Summary: "It doesn't inhibit an enzyme like neostigmine does — it physically grabs the relaxant molecule and pulls it out of the picture",
       href: "study.html?item=sugammadex"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Reversal Agents",
       Title: "Neostigmine",
-      Summary: "Acetylcholinesterase inhibitor used to reverse non-depolarising neuromuscular blockade",
+      Summary: "The older reversal strategy — flood the neuromuscular junction with acetylcholine and let it out-compete the relaxant",
       href: "study.html?item=neostigmine"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Opioids",
       Title: "Fentanyl",
-      Summary: "Highly lipophilic synthetic opioid; the mainstay perioperative opioid for rapid analgesia",
+      Summary: "The workhorse perioperative opioid — fast on, gentle on the heart, but sneaky with repeated dosing",
       href: "study.html?item=fentanyl"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Opioids",
       Title: "Morphine",
-      Summary: "Prototypical opioid analgesic; slower onset, longer duration, renally-cleared active metabolite",
+      Summary: "The original opioid everything else gets compared to — slower, longer-lasting, and genuinely different in renal failure",
       href: "study.html?item=morphine"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Opioids",
       Title: "Hydromorphone",
-      Summary: "Semi-synthetic mu-opioid roughly 5–7x more potent than morphine, without an active renal metabolite burden of comparable clinical significance",
+      Summary: "Morphine's more potent cousin — often chosen specifically because it lacks morphine's problematic active metabolite",
       href: "study.html?item=hydromorphone"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Opioids",
       Title: "Remifentanil",
-      Summary: "Ultra-short-acting mu-opioid metabolised by non-specific plasma/tissue esterases, independent of organ function",
+      Summary: "An opioid that vanishes within minutes of stopping the infusion — because your own blood and tissue break it down, not your liver",
       href: "study.html?item=remifentanil"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Opioids",
       Title: "Sufentanil",
-      Summary: "Extremely potent fentanyl analogue (~5–10x fentanyl), used in high-dose cardiac/major surgery and neuraxial analgesia",
+      Summary: "One of the most potent opioids in clinical use — small volumes, small margin for dosing error",
       href: "study.html?item=sufentanil"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Opioids",
       Title: "Alfentanil",
-      Summary: "Fast-onset, short-duration fentanyl analogue, less potent than fentanyl but with quicker peak effect",
+      Summary: "The fentanyl-family opioid with the fastest peak effect — useful for very short, very painful moments",
       href: "study.html?item=alfentanil"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • NSAIDs & Analgesics",
       Title: "Ketorolac",
-      Summary: "Potent parenteral NSAID for short-term (≤5 day) moderate-to-severe acute pain, opioid-sparing",
+      Summary: "An NSAID potent enough to substitute for opioids in acute pain — with a strict 5-day clock attached",
       href: "study.html?item=ketorolac"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • NSAIDs & Analgesics",
       Title: "Ibuprofen",
-      Summary: "Propionic-acid NSAID; oral and IV formulations for mild-to-moderate pain and multimodal perioperative analgesia",
+      Summary: "The familiar over-the-counter NSAID, now also available IV as a genuine multimodal analgesia component",
       href: "study.html?item=ibuprofen"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • NSAIDs & Analgesics",
       Title: "Diclofenac",
-      Summary: "Phenylacetic-acid NSAID available in oral, topical, ophthalmic and IV formulations",
+      Summary: "An NSAID available in almost every route imaginable — oral, topical, ophthalmic, and IV",
       href: "study.html?item=diclofenac"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • NSAIDs & Analgesics",
       Title: "Celecoxib",
-      Summary: "Selective COX-2 inhibitor with reduced antiplatelet/GI-ulcer risk relative to non-selective NSAIDs",
+      Summary: "The NSAID that spares platelets — genuinely useful when bleeding risk is the deciding factor",
       href: "study.html?item=celecoxib"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • NSAIDs & Analgesics",
       Title: "Paracetamol (Acetaminophen)",
-      Summary: "Non-opioid, non-NSAID analgesic/antipyretic — core component of multimodal perioperative analgesia",
+      Summary: "Not an NSAID at all — the one analgesic on this list with essentially no bleeding, GI or renal downside",
       href: "study.html?item=paracetamol"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Vasopressors & Inotropes",
       Title: "Phenylephrine",
-      Summary: "Pure alpha-1 agonist vasopressor; first-line for anaesthesia-induced hypotension, especially with tachycardia",
+      Summary: "A pure vasoconstrictor with no direct effect on the heart — which is exactly why it's the obstetric anaesthetist's default pressor",
       href: "study.html?item=phenylephrine"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Vasopressors & Inotropes",
       Title: "Norepinephrine (Noradrenaline)",
-      Summary: "First-line vasopressor in septic and most distributive/vasodilatory shock; potent alpha-1 with modest beta-1 activity",
+      Summary: "The default first-line vasopressor in septic and most distributive shock — raises pressure without much collateral tachycardia",
       href: "study.html?item=norepinephrine"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Vasopressors & Inotropes",
       Title: "Epinephrine (Adrenaline)",
-      Summary: "Endogenous catecholamine with potent alpha and beta activity; first-line in anaphylaxis and cardiac arrest",
+      Summary: "The one drug that works at every dose and every route — anaphylaxis, cardiac arrest, and everything unstable in between",
       href: "study.html?item=epinephrine"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Vasopressors & Inotropes",
       Title: "Vasopressin (Arginine Vasopressin)",
-      Summary: "Non-catecholamine V1-receptor vasopressor; second-line/adjunct in septic and vasodilatory shock",
+      Summary: "A non-catecholamine pressor for the shock that's stopped responding to catecholamines",
       href: "study.html?item=vasopressin"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Vasopressors & Inotropes",
       Title: "Dopamine",
-      Summary: "Dose-dependent dopaminergic/beta/alpha agonist catecholamine; now a second-line agent in most shock states",
+      Summary: "Once the textbook first-line pressor, now mostly second-line — the dose-dependent receptor story is famous, and famously oversimplified",
       href: "study.html?item=dopamine"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Vasopressors & Inotropes",
       Title: "Dobutamine",
-      Summary: "Predominantly beta-1 agonist inotrope for cardiogenic shock/low cardiac output states; minimal vasopressor effect",
+      Summary: "An inotrope, not a vasopressor — it boosts the heart's output without meaningfully raising blood pressure",
       href: "study.html?item=dobutamine"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Local Anaesthetics",
       Title: "Lidocaine",
-      Summary: "Prototypical amide local anaesthetic; intermediate potency/duration, also used IV for analgesia and as an antiarrhythmic",
+      Summary: "The prototype amide local anaesthetic — the one every other local gets compared to, and a drug in its own right IV",
       href: "study.html?item=lidocaine"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Local Anaesthetics",
       Title: "Bupivacaine",
-      Summary: "Long-acting amide local anaesthetic with high potency; historically the most cardiotoxic amide LA",
+      Summary: "Long-acting and high-potency — and the local anaesthetic most likely to stop a heart if it gets into a vein by accident",
       href: "study.html?item=bupivacaine"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Local Anaesthetics",
       Title: "Ropivacaine",
-      Summary: "Long-acting amide LA, single (S)-enantiomer, developed for a wider margin of cardiac safety than bupivacaine",
+      Summary: "Built as a deliberately safer bupivacaine — a single enantiomer with a genuinely wider cardiac safety margin",
       href: "study.html?item=ropivacaine"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Local Anaesthetics",
       Title: "Chloroprocaine",
-      Summary: "Fast-onset, short-acting ester local anaesthetic; hydrolysed rapidly by plasma cholinesterase, favoured in obstetrics for emergency conversion",
+      Summary: "The fastest-clearing local anaesthetic in clinical use — metabolised in the blood itself, not the liver",
       href: "study.html?item=chloroprocaine"
     },
     {
       Type: "Study Drug",
       Category: "Study Mode • Local Anaesthetics",
       Title: "Mepivacaine",
-      Summary: "Intermediate-duration amide LA, similar profile to lidocaine but with less vasodilation and longer duration",
+      Summary: "Similar to lidocaine but with less vasodilation — a plain solution that still lasts a useful while without epinephrine",
       href: "study.html?item=mepivacaine"
     },
   ];
