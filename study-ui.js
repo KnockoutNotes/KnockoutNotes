@@ -139,6 +139,18 @@
 
   function para(text) { return `<p>${esc(text)}</p>`; }
 
+  // Long-form topic prose is authored with blank-line paragraph breaks and
+  // optional callouts — this keeps study-data.js readable as plain prose
+  // while still rendering as properly separated paragraphs/boxes.
+  function paras(text) {
+    if (!text) return "";
+    return text.trim().split(/\n\s*\n/).map((p) => `<p>${esc(p.trim())}</p>`).join("");
+  }
+  function callout(kind, label, text) {
+    if (!text) return "";
+    return `<div class="st-callout st-callout-${kind}"><span class="st-callout-label">${esc(label)}</span>${paras(text)}</div>`;
+  }
+
   function drugTabsHTML(d) {
     return `<div class="st-tabs" role="tablist" aria-label="Drug sections">
       ${DRUG_TABS.map((t) => `<button type="button" role="tab" class="${state.tab === t ? "active" : ""}" data-tab="${t}" aria-selected="${state.tab === t}">${DRUG_TAB_LABEL[t]}</button>`).join("")}
@@ -165,7 +177,11 @@
   function topicPanelHTML(t) {
     return t.sections.map((s) => {
       const diagramHTML = s.diagram === "mapleson-grid" ? maplesonGridHTML() : "";
-      const body = `${s.b ? para(s.b) : ""}${diagramHTML}`;
+      const body = `${s.b ? paras(s.b) : ""}` +
+        callout("example", "🧩 Worked example", s.example) +
+        callout("pitfall", "⚠️ Common pitfall", s.pitfall) +
+        callout("pearl", "💡 Key point", s.pearl) +
+        diagramHTML;
       return card(s.h, body);
     }).join("");
   }

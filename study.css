@@ -340,6 +340,27 @@
 }
 .st-diagram-caption { margin: 10px 0 0; font-size: 12px; line-height: 1.55; color: var(--text-muted); }
 
+/* callouts within long-form topic prose: worked examples, pitfalls, pearls */
+.st-callout {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  border-left-width: 3px;
+}
+.st-callout-label { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; }
+.st-callout p { margin: 0; font-size: 13.5px; line-height: 1.65; color: var(--text-secondary); }
+.st-callout p + p { margin-top: 8px; }
+
+.st-callout-example { background: var(--soft-accent); border-left-color: var(--accent-cyan); }
+.st-callout-example .st-callout-label { color: var(--accent-cyan); }
+
+.st-callout-pitfall { background: rgba(244, 63, 94, 0.08); border-left-color: var(--accent-rose); }
+.st-callout-pitfall .st-callout-label { color: var(--accent-rose); }
+
+.st-callout-pearl { background: rgba(245, 158, 11, 0.08); border-left-color: var(--accent-amber); }
+.st-callout-pearl .st-callout-label { color: var(--accent-amber); }
+
 /* ------------------------------------------------------------ fullscreen */
 .st-fullscreen-active {
   background: var(--bg-body);
