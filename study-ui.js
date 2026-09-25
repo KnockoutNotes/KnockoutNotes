@@ -543,6 +543,17 @@
       ? `<div class="st-panel" id="stPanel">${drugFullPanelHTML(item)}</div>`
       : `<div class="st-panel st-panel-scroll" id="stPanel">${topicPanelHTML(item)}</div>`;
 
+    const structRec = window.KN_STRUCTURES && window.KN_STRUCTURES[item.id];
+    const has3d = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[item.id];
+    let titleMediaHTML;
+    if (!drug && has3d) {
+      titleMediaHTML = `<div class="st-molecule-viewer" data-drug="${esc(item.id)}" aria-label="Rotating 3D model of ${esc(item.name)}">${structRec ? `<div class="st-structure-svg">${structRec.svg}</div>` : ""}</div>`;
+    } else if (!drug && structRec) {
+      titleMediaHTML = `<div class="st-structure-svg">${structRec.svg}</div>`;
+    } else {
+      titleMediaHTML = catIconHTML(item.cat, cat);
+    }
+
     // Title renders as a normal in-flow card — same glass-card look and the
     // same st-reveal scroll-in animation as every other content card below
     // it, not a separate pinned/fixed bar.
@@ -550,7 +561,7 @@
       <div class="st-reading-col">
         <a class="st-back" href="${backHref}" data-back>← Back to ${esc(cat.label)}</a>
         <section class="st-card st-title-card st-reveal" data-cat="${item.cat}">
-          <div class="st-title-card-media" aria-hidden="true">${catIconHTML(item.cat, cat)}</div>
+          <div class="st-title-card-media" aria-hidden="true">${titleMediaHTML}</div>
           <div class="st-title-card-body">
             <h1>${esc(item.name)}</h1>
             <p class="st-tagline-lg">${esc(item.tagline)}</p>

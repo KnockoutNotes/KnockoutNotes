@@ -471,6 +471,23 @@ body[data-content-page="study"] .st-page.container {
   box-shadow: var(--shadow-sm);
 }
 .st-title-card-media svg { width: 66%; height: 66%; }
+.st-title-card-media .st-molecule-viewer {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  aspect-ratio: 1 / 1;
+}
+.st-title-card-media .st-structure-svg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.st-title-card-media .st-structure-svg svg {
+  width: 70%;
+  height: 70%;
+}
 
 .st-title-card-body { min-width: 0; }
 .st-title-card-body h1 {

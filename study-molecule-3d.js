@@ -59,7 +59,9 @@ function disposeMount(container) {
  */
 function mountMolecule3D(container, data, opts) {
   disposeMount(container);
-  if (!data || !data.atoms || !data.atoms.length) return false;
+  const hasAtoms = data && data.atoms && data.atoms.length;
+  const hasParts = data && data.parts && data.parts.length;
+  if (!hasAtoms && !hasParts) return false;
   const fitMargin = (opts && opts.fitMargin) || 1.25;
 
   let renderer;
@@ -89,20 +91,23 @@ function mountMolecule3D(container, data, opts) {
   const scene = new THREE.Scene();
   const fov = 32;
   const camera = new THREE.PerspectiveCamera(fov, 1, 0.1, 200);
-  // Fit the camera distance to THIS molecule's own bounding sphere (max
-  // atom distance from centre + that atom's own drawn radius) rather than
-  // a fixed z — bigger molecules (e.g. the bis-benzylisoquinolinium NMBs,
-  // ~140 atoms) were spilling past the frame edges at a fixed distance
-  // tuned for smaller ones. `fitMargin` adds breathing room around the
-  // molecule; callers mounting into a small poster tile (see
-  // observeTileMolecules() in study-ui.js) pass a larger margin so the
-  // whole structure reads clearly small rather than filling/cropping the
-  // tile, while the bigger detail-view card keeps a closer default fit.
-  let boundingRadius = 0;
-  data.atoms.forEach(([el, x, y, z]) => {
-    const r = Math.sqrt(x * x + y * y + z * z) + (CPK_RADIUS[el] || DEFAULT_RADIUS);
-    if (r > boundingRadius) boundingRadius = r;
-  });
+
+  let boundingRadius = data.boundingRadius || 0;
+  if (hasAtoms) {
+    data.atoms.forEach(([el, x, y, z]) => {
+      const r = Math.sqrt(x * x + y * y + z * z) + (CPK_RADIUS[el] || DEFAULT_RADIUS);
+      if (r > boundingRadius) boundingRadius = r;
+    });
+  }
+  if (hasParts && !data.boundingRadius) {
+    data.parts.forEach((p) => {
+      const [px, py, pz] = p.pos || [0, 0, 0];
+      const maxDim = p.radius || (p.args && Math.max(...p.args)) || 1;
+      const r = Math.sqrt(px * px + py * py + pz * pz) + maxDim;
+      if (r > boundingRadius) boundingRadius = r;
+    });
+  }
+  boundingRadius = Math.max(boundingRadius, 1.5);
   const dist = (boundingRadius * fitMargin) / Math.sin(THREE.MathUtils.degToRad(fov / 2));
   camera.position.set(0, 0, dist);
 
@@ -123,61 +128,128 @@ function mountMolecule3D(container, data, opts) {
   const group = new THREE.Group();
   scene.add(group);
 
-  const sphereGeo = new THREE.SphereGeometry(1, 32, 24);
-  const cylGeo = new THREE.CylinderGeometry(1, 1, 1, 14);
-  // MeshPhysicalMaterial's clearcoat adds the extra glassy highlight layer
-  // that makes CPK spheres read as glossy plastic/glass balls rather than
-  // flat-shaded circles — matching the reference image's look.
-  const bondMat = new THREE.MeshPhysicalMaterial({
-    color: 0xc7d0da, roughness: 0.3, metalness: 0.4, clearcoat: 0.7, clearcoatRoughness: 0.2,
-  });
-  const matCache = new Map();
-
-  data.atoms.forEach(([el, x, y, z]) => {
-    let mat = matCache.get(el);
-    if (!mat) {
-      mat = new THREE.MeshPhysicalMaterial({
-        color: CPK_COLOR[el] || DEFAULT_COLOR,
-        roughness: 0.14, metalness: 0.05,
-        clearcoat: 1, clearcoatRoughness: 0.08,
+  // 1. Procedural 3D device parts (for medical equipment & clinical devices)
+  if (hasParts) {
+    data.parts.forEach((p) => {
+      let geo;
+      const args = p.args || [];
+      switch (p.geo) {
+        case "cylinder":
+          geo = new THREE.CylinderGeometry(...(args.length ? args : [1, 1, 1, 20]));
+          break;
+        case "sphere":
+          geo = new THREE.SphereGeometry(...(args.length ? args : [1, 24, 18]));
+          break;
+        case "box":
+          geo = new THREE.BoxGeometry(...(args.length ? args : [1, 1, 1]));
+          break;
+        case "torus":
+          geo = new THREE.TorusGeometry(...(args.length ? args : [1, 0.25, 16, 32]));
+          break;
+        case "cone":
+          geo = new THREE.ConeGeometry(...(args.length ? args : [1, 1, 20]));
+          break;
+        case "ring":
+          geo = new THREE.RingGeometry(...(args.length ? args : [0.5, 1, 24]));
+          break;
+        case "capsule":
+          if (typeof THREE.CapsuleGeometry === "function") {
+            geo = new THREE.CapsuleGeometry(...(args.length ? args : [0.5, 1, 8, 16]));
+          } else {
+            geo = new THREE.CylinderGeometry(args[0] || 0.5, args[0] || 0.5, args[1] || 1, 16);
+          }
+          break;
+        default:
+          geo = new THREE.BoxGeometry(1, 1, 1);
+      }
+      const mat = new THREE.MeshPhysicalMaterial({
+        color: p.color !== undefined ? p.color : 0x9aa5b0,
+        roughness: p.roughness !== undefined ? p.roughness : 0.25,
+        metalness: p.metalness !== undefined ? p.metalness : 0.25,
+        clearcoat: p.clearcoat !== undefined ? p.clearcoat : 0.85,
+        clearcoatRoughness: p.clearcoatRoughness !== undefined ? p.clearcoatRoughness : 0.1,
+        transparent: !!p.transparent || (p.opacity !== undefined && p.opacity < 1),
+        opacity: p.opacity !== undefined ? p.opacity : 1.0,
+        wireframe: !!p.wireframe,
       });
-      matCache.set(el, mat);
+      const mesh = new THREE.Mesh(geo, mat);
+      if (p.pos) mesh.position.set(...p.pos);
+      if (p.rot) mesh.rotation.set(...p.rot);
+      if (p.scale) {
+        if (Array.isArray(p.scale)) mesh.scale.set(...p.scale);
+        else mesh.scale.setScalar(p.scale);
+      }
+      group.add(mesh);
+    });
+  }
+
+  // 2. CPK Ball-and-stick molecules (for chemical structures and pharmacological topics)
+  if (hasAtoms) {
+    const sphereGeo = new THREE.SphereGeometry(1, 32, 24);
+    const cylGeo = new THREE.CylinderGeometry(1, 1, 1, 14);
+    const bondMat = new THREE.MeshPhysicalMaterial({
+      color: 0xc7d0da, roughness: 0.3, metalness: 0.4, clearcoat: 0.7, clearcoatRoughness: 0.2,
+    });
+    const matCache = new Map();
+
+    data.atoms.forEach(([el, x, y, z]) => {
+      let mat = matCache.get(el);
+      if (!mat) {
+        mat = new THREE.MeshPhysicalMaterial({
+          color: CPK_COLOR[el] || DEFAULT_COLOR,
+          roughness: 0.14, metalness: 0.05,
+          clearcoat: 1, clearcoatRoughness: 0.08,
+        });
+        matCache.set(el, mat);
+      }
+      const mesh = new THREE.Mesh(sphereGeo, mat);
+      mesh.scale.setScalar(CPK_RADIUS[el] || DEFAULT_RADIUS);
+      mesh.position.set(x, y, z);
+      group.add(mesh);
+    });
+
+    if (data.bonds) {
+      const start = new THREE.Vector3();
+      const end = new THREE.Vector3();
+      const up = new THREE.Vector3(0, 1, 0);
+      data.bonds.forEach(([i, j]) => {
+        const a = data.atoms[i];
+        const b = data.atoms[j];
+        if (!a || !b) return;
+        start.set(a[1], a[2], a[3]);
+        end.set(b[1], b[2], b[3]);
+        const len = start.distanceTo(end);
+        if (len < 0.01) return;
+        const mesh = new THREE.Mesh(cylGeo, bondMat);
+        mesh.scale.set(BOND_RADIUS, len, BOND_RADIUS);
+        mesh.position.copy(start).add(end).multiplyScalar(0.5);
+        mesh.quaternion.setFromUnitVectors(up, end.clone().sub(start).normalize());
+        group.add(mesh);
+      });
     }
-    const mesh = new THREE.Mesh(sphereGeo, mat);
-    mesh.scale.setScalar(CPK_RADIUS[el] || DEFAULT_RADIUS);
-    mesh.position.set(x, y, z);
-    group.add(mesh);
-  });
+  }
 
-  const start = new THREE.Vector3();
-  const end = new THREE.Vector3();
-  const up = new THREE.Vector3(0, 1, 0);
-  data.bonds.forEach(([i, j]) => {
-    const a = data.atoms[i];
-    const b = data.atoms[j];
-    if (!a || !b) return;
-    start.set(a[1], a[2], a[3]);
-    end.set(b[1], b[2], b[3]);
-    const len = start.distanceTo(end);
-    if (len < 0.01) return;
-    const mesh = new THREE.Mesh(cylGeo, bondMat);
-    mesh.scale.set(BOND_RADIUS, len, BOND_RADIUS);
-    mesh.position.copy(start).add(end).multiplyScalar(0.5);
-    mesh.quaternion.setFromUnitVectors(up, end.clone().sub(start).normalize());
-    group.add(mesh);
-  });
-
-  // Soft contact shadow: a translucent dark disc a little below the
-  // molecule's lowest atom, always facing the camera side-on relative to
-  // rotation (it's a child of `group` so it spins with the molecule,
-  // reading as a grounding shadow rather than a flat sticker).
+  // Soft contact shadow: a translucent dark disc below the lowest point
   let minY = Infinity;
-  data.atoms.forEach(([, , y]) => { if (y < minY) minY = y; });
-  const shadowGeo = new THREE.CircleGeometry(3.4, 40);
+  if (hasAtoms) {
+    data.atoms.forEach(([, , y]) => { if (y < minY) minY = y; });
+  }
+  if (hasParts) {
+    data.parts.forEach((p) => {
+      const py = (p.pos && p.pos[1]) || 0;
+      const h = (p.args && p.args[1]) || (p.radius || 1);
+      const y = py - h / 2;
+      if (y < minY) minY = y;
+    });
+  }
+  if (minY === Infinity) minY = -2;
+
+  const shadowRadius = Math.max(3.4, boundingRadius * 0.85);
+  const shadowGeo = new THREE.CircleGeometry(shadowRadius, 40);
   const shadowMat = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.22, depthWrite: false });
   const shadowDisc = new THREE.Mesh(shadowGeo, shadowMat);
   shadowDisc.rotation.x = -Math.PI / 2;
-  shadowDisc.position.y = minY - 0.9;
+  shadowDisc.position.y = minY - 0.7;
   group.add(shadowDisc);
 
   const paused = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
