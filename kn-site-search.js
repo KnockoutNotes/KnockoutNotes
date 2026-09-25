@@ -1572,6 +1572,42 @@
       Summary: "Similar to lidocaine but with less vasodilation — a plain solution that still lasts a useful while without epinephrine",
       href: "study.html?item=mepivacaine"
     },
+    // --- STUDY MODE: DRUGS IN PREGNANCY ---
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Drugs in Pregnancy",
+      Title: "Oxytocin",
+      Summary: "First-line uterotonic for labour induction and PPH prophylaxis — rapid onset with dose-dependent vasodilation",
+      href: "study.html?item=oxytocin"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Drugs in Pregnancy",
+      Title: "Carbetocin",
+      Summary: "Long-acting synthetic oxytocin analogue — single-dose PPH prophylaxis with prolonged uterotonic action",
+      href: "study.html?item=carbetocin"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Drugs in Pregnancy",
+      Title: "Carboprost",
+      Summary: "Potent second-line prostaglandin uterotonic — essential rescue for refractory PPH, strictly contraindicated in asthma",
+      href: "study.html?item=carboprost"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Drugs in Pregnancy",
+      Title: "Methergine",
+      Summary: "Ergot alkaloid producing sustained tetanic uterine tone — strictly contraindicated in hypertension and pre-eclampsia",
+      href: "study.html?item=methergine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Drugs in Pregnancy",
+      Title: "Misoprostol",
+      Summary: "Synthetic prostaglandin E1 analogue — temperature-stable uterotonic with versatile oral, sublingual, and rectal routes",
+      href: "study.html?item=misoprostol"
+    },
   ];
 
   const RECENT_KEY = "kn_recent_searches";

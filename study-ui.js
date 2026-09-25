@@ -51,7 +51,8 @@
     opioids: '<svg viewBox="0 0 48 48"><path d="M24 6c9 9 13 16 13 22a13 13 0 0 1-26 0c0-6 4-13 13-22z" fill="currentColor" opacity="0.92"/><path d="M24 10c6 8 9 13 9 18a9 9 0 0 1-9 9" fill="currentColor" opacity="0.32"/><line x1="24" y1="14" x2="24" y2="38" stroke="rgba(0,0,0,0.2)" stroke-width="1"/><line x1="19" y1="17" x2="19" y2="35" stroke="rgba(0,0,0,0.14)" stroke-width="1"/><line x1="29" y1="17" x2="29" y2="35" stroke="rgba(0,0,0,0.14)" stroke-width="1"/><ellipse cx="24" cy="10" rx="3" ry="2" fill="currentColor" opacity="0.7"/></svg>',
     nsaids: '<svg viewBox="0 0 48 48"><g transform="rotate(-30 24 24)"><rect x="8" y="18" width="32" height="14" rx="7" fill="currentColor" opacity="0.5"/><path d="M24 18h9a7 7 0 0 1 7 7 7 7 0 0 1-7 7h-9z" fill="currentColor" opacity="0.95"/><line x1="24" y1="18" x2="24" y2="32" stroke="rgba(0,0,0,0.25)" stroke-width="1.2"/></g><circle cx="35" cy="11" r="5" fill="currentColor" opacity="0.8"/><line x1="35" y1="7" x2="35" y2="15" stroke="rgba(0,0,0,0.2)" stroke-width="1"/></svg>',
     vasopressors: '<svg viewBox="0 0 48 48"><path d="M24 41C9 30 5 21 5 14a10 10 0 0 1 19-4 10 10 0 0 1 19 4c0 7-4 16-19 27z" fill="currentColor" opacity="0.92"/><path d="M8 23h6l3-7 4 15 3-10 2 2h10" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    local: '<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="5" fill="currentColor" opacity="0.9"/><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.85"><line x1="24" y1="24" x2="24" y2="6"/><line x1="24" y1="24" x2="24" y2="42"/><line x1="24" y1="24" x2="6" y2="24"/><line x1="24" y1="24" x2="42" y2="24"/><line x1="24" y1="24" x2="11" y2="11"/><line x1="24" y1="24" x2="37" y2="37"/><line x1="24" y1="24" x2="37" y2="11"/><line x1="24" y1="24" x2="11" y2="37"/></g><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.7"><line x1="24" y1="10" x2="20" y2="14"/><line x1="24" y1="10" x2="28" y2="14"/><line x1="24" y1="38" x2="20" y2="34"/><line x1="24" y1="38" x2="28" y2="34"/><line x1="10" y1="24" x2="14" y2="20"/><line x1="10" y1="24" x2="14" y2="28"/><line x1="38" y1="24" x2="34" y2="20"/><line x1="38" y1="24" x2="34" y2="28"/></g></svg>'
+    local: '<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="5" fill="currentColor" opacity="0.9"/><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.85"><line x1="24" y1="24" x2="24" y2="6"/><line x1="24" y1="24" x2="24" y2="42"/><line x1="24" y1="24" x2="6" y2="24"/><line x1="24" y1="24" x2="42" y2="24"/><line x1="24" y1="24" x2="11" y2="11"/><line x1="24" y1="24" x2="37" y2="37"/><line x1="24" y1="24" x2="37" y2="11"/><line x1="24" y1="24" x2="11" y2="37"/></g><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.7"><line x1="24" y1="10" x2="20" y2="14"/><line x1="24" y1="10" x2="28" y2="14"/><line x1="24" y1="38" x2="20" y2="34"/><line x1="24" y1="38" x2="28" y2="34"/><line x1="10" y1="24" x2="14" y2="20"/><line x1="10" y1="24" x2="14" y2="28"/><line x1="38" y1="24" x2="34" y2="20"/><line x1="38" y1="24" x2="34" y2="28"/></g></svg>',
+    pregnancy: '<svg viewBox="0 0 48 48"><circle cx="24" cy="11" r="5" fill="currentColor" opacity="0.95"/><circle cx="22" cy="10" r="1.5" fill="rgba(255,255,255,0.4)"/><path d="M19 18c-3 0-5 3-5 7 0 6 3 11 5 15l2 3h6l2-3c2-4 5-9 5-15 0-4-2-7-5-7h-10z" fill="currentColor" opacity="0.6"/><path d="M21 21c-2 1-3 3-3 6 0 4 2 8 4 11 1 0 2 0 3-1 2-2 3-5 3-8 0-3-1-5-3-6-1-1-3-2-4-2z" fill="currentColor" opacity="0.95"/><circle cx="24" cy="27" r="2.2" fill="rgba(255,255,255,0.5)"/></svg>'
   };
   function catIconHTML(catId, cat) {
     return CAT_ICON_SVG[catId] || esc(cat.icon);
@@ -183,31 +184,67 @@
   // whatever's visible, not whatever's in the DOM. rootMargin gives a small
   // pre-mount buffer so tiles are already rotating by the time they're
   // fully in view.
+  function mountTileMolecule(node) {
+    if (!node || !node.isConnected) return;
+    const drugId = node.getAttribute("data-drug");
+    const data = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[drugId];
+    if (!data) return;
+    if (typeof window.KNMountMolecule3D === "function") {
+      try {
+        window.KNMountMolecule3D(node, data, { fitMargin: 1.9 });
+      } catch (err) {
+        /* fallback 2D remains safely in place */
+      }
+    }
+  }
+
   const tileMoleculeObserver = "IntersectionObserver" in window
     ? new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           const node = entry.target;
-          const data = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[node.getAttribute("data-drug")];
-          if (!data) return;
           if (entry.isIntersecting) {
-            if (typeof window.KNMountMolecule3D === "function") {
-              // Extra zoom-out margin vs. the detail view's default fit —
-              // a poster tile is small, so the whole structure should read
-              // clearly with room around it rather than filling/cropping
-              // the frame.
-              try { window.KNMountMolecule3D(node, data, { fitMargin: 1.9 }); } catch (err) { /* leave 2D fallback in place */ }
-            }
+            mountTileMolecule(node);
           } else if (typeof window.KNDisposeMolecule3D === "function") {
             window.KNDisposeMolecule3D(node);
           }
         });
-      }, { rootMargin: "120px 0px" })
+      }, { rootMargin: "140px 0px" })
     : null;
+
+  function mountAllVisibleTileMolecules() {
+    const grid = $("#stGrid");
+    if (!grid || grid.closest(".st-view")?.hidden) return;
+    grid.querySelectorAll(".st-tile-molecule[data-drug]").forEach((node) => {
+      const rect = node.getBoundingClientRect();
+      if (rect.bottom >= -140 && rect.top <= window.innerHeight + 140) {
+        mountTileMolecule(node);
+      }
+    });
+  }
 
   function observeTileMolecules(root) {
     if (!tileMoleculeObserver) return;
-    root.querySelectorAll(".st-tile-molecule[data-drug]").forEach((node) => tileMoleculeObserver.observe(node));
+    root.querySelectorAll(".st-tile-molecule[data-drug]").forEach((node) => {
+      tileMoleculeObserver.observe(node);
+      // If 3D module is already ready and tile is within viewport bounds, mount immediately
+      if (typeof window.KNMountMolecule3D === "function") {
+        const rect = node.getBoundingClientRect();
+        if (rect.bottom >= -140 && rect.top <= window.innerHeight + 140) {
+          mountTileMolecule(node);
+        }
+      }
+    });
   }
+
+  // Global listener for when study-molecule-3d.js completes loading and Three.js initialization.
+  // Fixes the page-load race condition where tiles initially evaluated before module readiness.
+  window.addEventListener("kn-molecule3d-ready", () => {
+    mountAllVisibleTileMolecules();
+    const detail = $("#stDetail");
+    if (detail && !detail.hidden) {
+      mountStructureViewers(detail);
+    }
+  });
 
   // Opioid receptor-activity classification chart — shown above the poster
   // grid only for the (unfiltered) Opioids category, not on "all

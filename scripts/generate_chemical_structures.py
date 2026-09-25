@@ -97,55 +97,31 @@ SMILES_ENTRIES = {
     "chloroprocaine": "CCN(CC)CCOC(=O)c1ccc(N)cc1Cl",
     "tramadol": "COc1cccc(C2(O)CCCCC2CN(C)C)c1",
     "pethidine": "CCOC(=O)C1(c2ccccc2)CCN(C)CC1",
+
+    # Morphinan-family opioids — direct canonical SMILES verified against PubChem
+    "morphine": "CN1CCC23C4C1CC5=C2C(=C(C=C5)O)OC3C(C=C4)O",
+    "hydromorphone": "CN1CCC23C4C1CC5=C2C(=C(C=C5)O)OC3C(=O)CC4",
+    "naloxone": "C=CCN1CCC23C4C1CC5=C2C(=C(C=C5)O)OC3C(=O)CC4O",
+    "naltrexone": "C1CC1CN2CCC34C5C2CC6=C3C(=C(C=C6)O)OC4C(=O)CC5O",
+    "nalbuphine": "C1CC(C1)CN2CCC34C5C(CCC3(C2CC6=C4C(=C(C=C6)O)O5)O)O",
+    "pentazocine": "CC1C2CC3=C(C1(CCN2CC=C(C)C)C)C=C(C=C3)O",
+    "buprenorphine": "CC(C)(C)C(C)(C1CC23CCC1(C4C25CCN(C3CC6=C5C(=C(C=C6)O)O4)CC7CC7)OC)O",
+
+    # Remaining existing drugs
+    "remimazolam": "CC1=CN=C2N1C3=C(C=C(C=C3)Br)C(=NC2CCC(=O)OC)C4=CC=CC=N4",
+    "cipepofol": "CC(C)C1=C(C(=CC=C1)C(C)C2CC2)O",
+    "mivacurium": "C[N+]1(CCC2=CC(=C(C=C2C1CC3=CC(=C(C(=C3)OC)OC)OC)OC)OC)CCCOC(=O)CCC=CCCC(=O)OCCC[N+]4(CCC5=CC(=C(C=C5C4CC6=CC(=C(C(=C6)OC)OC)OC)OC)OC)C",
+    "gantacurium": "C[N+]1(CCC2=CC(=C(C=C2C1CC3=CC(=C(C(=C3)OC)OC)OC)OC)OC)CCCOC(=O)C(=CC(=O)OCCC[N+]4(CCC5=CC(=C(C=C5C4C6=CC(=C(C(=C6)OC)OC)OC)OC)OC)C)Cl",
+    "sugammadex": "C(CSCC1C2C(C(C(O1)OC3C(OC(C(C3O)O)OC4C(OC(C(C4O)O)OC5C(OC(C(C5O)O)OC6C(OC(C(C6O)O)OC7C(OC(C(C7O)O)OC8C(OC(C(C8O)O)OC9C(OC(O2)C(C9O)O)CSCCC(=O)O)CSCCC(=O)O)CSCCC(=O)O)CSCCC(=O)O)CSCCC(=O)O)CSCCC(=O)O)CSCCC(=O)O)O)O)C(=O)O",
+    "vasopressin": "C1CC(N(C1)C(=O)C2CSSCC(C(=O)NC(C(=O)NC(C(=O)NC(C(=O)NC(C(=O)N2)CC(=O)N)CCC(=O)N)CC3=CC=CC=C3)CC4=CC=C(C=C4)O)N)C(=O)NC(CCCN=C(N)N)C(=O)NCC(=O)N",
+
+    # Drugs in Pregnancy (Uterotonics & Obstetric Pharmacology)
+    "oxytocin": "CCC(C)C1C(=O)NC(C(=O)NC(C(=O)NC(CSSCC(C(=O)NC(C(=O)N1)CC2=CC=C(C=C2)O)N)C(=O)N3CCCC3C(=O)NC(CC(C)C)C(=O)NCC(=O)N)CC(=O)N)CCC(=O)N",
+    "carbetocin": "CCC(C)C1C(=O)NC(C(=O)NC(C(=O)NC(CSCCCC(=O)NC(C(=O)N1)CC2=CC=C(C=C2)OC)C(=O)N3CCCC3C(=O)NC(CC(C)C)C(=O)NCC(=O)N)CC(=O)N)CCC(=O)N",
+    "carboprost": "CCCCCC(C)(C=CC1C(CC(C1CC=CCCCC(=O)O)O)O)O",
+    "methergine": "CCC(CO)NC(=O)C1CN(C2CC3=CNC4=CC=CC(=C34)C2=C1)C",
+    "misoprostol": "CCCCC(C)(CC=CC1C(CC(=O)C1CCCCCCC(=O)OC)O)O",
 }
-
-# --------------------------------------------------------------------------
-# 1b. Morphinan/benzomorphan-family opioids — derived from each drug's
-#     standard IUPAC/pharmacopoeial systematic name via OPSIN (py2opsin), a
-#     deterministic, fully offline, rule-based name-to-structure parser.
-#     Their bridged/fused ring systems are exactly the kind that's too easy
-#     to get subtly wrong hand-typing a ring-closure SMILES from memory —
-#     OPSIN removes that risk for the connectivity itself; the only
-#     remaining risk is correctly recalling the name, which is why every
-#     one of these is still independently cross-checked below against its
-#     known molecular formula AND expected ring-size pattern before being
-#     accepted (see EXPECTED_RING_SIZES), exactly like the BUILDER_ENTRIES.
-# --------------------------------------------------------------------------
-_OPSIN_NAMES = {
-    "morphine": "7,8-didehydro-4,5-epoxy-17-methylmorphinan-3,6-diol",
-    "hydromorphone": "4,5-epoxy-3-hydroxy-17-methylmorphinan-6-one",
-    "naloxone": "4,5-epoxy-3,14-dihydroxy-17-(prop-2-enyl)morphinan-6-one",
-    "naltrexone": "4,5-epoxy-3,14-dihydroxy-17-(cyclopropylmethyl)morphinan-6-one",
-    "nalbuphine": "17-(cyclobutylmethyl)-4,5-epoxymorphinan-3,6,14-triol",
-    "pentazocine": "3-(3-methylbut-2-enyl)-6,11-dimethyl-1,2,3,4,5,6-hexahydro-2,6-methano-3-benzazocin-8-ol",
-    "buprenorphine": "17-(cyclopropylmethyl)-7-(2-hydroxy-3,3-dimethylbutan-2-yl)-6-methoxy-4,5-epoxy-6,14-ethanomorphinan-3-ol",
-}
-
-
-def _opsin_smiles_entries():
-    """Runs OPSIN on each name in _OPSIN_NAMES and returns a dict of
-    drug_id -> flat (stereochemistry-stripped) SMILES, ready to merge into
-    SMILES_ENTRIES. A name OPSIN can't parse is skipped (not guessed at) —
-    main()'s verification step will then simply have no entry for that
-    drug, same as any other excluded drug."""
-    try:
-        from py2opsin import py2opsin
-    except ImportError:
-        print("py2opsin not installed (pip install py2opsin) — skipping morphinan-family entries")
-        return {}
-    out = {}
-    for drug_id, name in _OPSIN_NAMES.items():
-        smi = py2opsin(name)
-        if not smi:
-            print(f"OPSIN FAILED to parse name for {drug_id}: {name!r}")
-            continue
-        mol = Chem.MolFromSmiles(smi)
-        if mol is None:
-            print(f"RDKit failed to parse OPSIN output for {drug_id}: {smi!r}")
-            continue
-        Chem.RemoveStereochemistry(mol)
-        out[drug_id] = Chem.MolToSmiles(mol)
-    return out
 
 REFERENCE_FORMULA = {
     "propofol": "C12H18O", "etomidate": "C14H16N2O2", "ketamine": "C13H16ClNO",
@@ -163,10 +139,18 @@ REFERENCE_FORMULA = {
     # bis-quaternary neuromuscular blockers (see BUILDER_ENTRIES below)
     "pancuronium": "C35H60N2O4+2", "vecuronium": "C34H57N2O4+", "rocuronium": "C32H53N2O4+",
     "atracurium": "C53H72N2O12+2", "cisatracurium": "C53H72N2O12+2",
-    # morphinan/benzomorphan-family opioids (see _OPSIN_NAMES above)
+    # morphinan/benzomorphan-family opioids
     "morphine": "C17H19NO3", "hydromorphone": "C17H19NO3",
     "naloxone": "C19H21NO4", "naltrexone": "C20H23NO4", "nalbuphine": "C21H27NO4",
     "pentazocine": "C19H27NO", "buprenorphine": "C29H41NO4",
+    # Remaining existing drugs
+    "remimazolam": "C21H19BrN4O2", "cipepofol": "C14H20O",
+    "mivacurium": "C58H80N2O14+2", "gantacurium": "C53H69ClN2O14+2",
+    "sugammadex": "C72H112O48S8", "vasopressin": "C46H65N15O12S2",
+    # Drugs in Pregnancy
+    "oxytocin": "C43H66N12O12S2", "carbetocin": "C45H69N11O12S",
+    "carboprost": "C21H36O5", "methergine": "C20H25N3O2",
+    "misoprostol": "C22H38O5",
 }
 
 EXPECTED_RING_SIZES = {
@@ -489,7 +473,6 @@ def main():
     mismatches = []
 
     all_smiles_entries = dict(SMILES_ENTRIES)
-    all_smiles_entries.update(_opsin_smiles_entries())
 
     for drug_id, smi in all_smiles_entries.items():
         mol = Chem.MolFromSmiles(smi)
@@ -500,10 +483,6 @@ def main():
         formula = rdMolDescriptors.CalcMolFormula(mol)
         expected = REFERENCE_FORMULA.get(drug_id)
         formula_ok = formula == expected
-        # Drugs in EXPECTED_RING_SIZES (the morphinan/benzomorphan family —
-        # see _OPSIN_NAMES) get the same extra ring-topology cross-check as
-        # the programmatically-built entries below, since formula-matching
-        # alone can't catch every possible connectivity error.
         expected_rings = EXPECTED_RING_SIZES.get(drug_id)
         if expected_rings is not None:
             ring_sizes = sorted(len(r) for r in mol.GetRingInfo().AtomRings())
@@ -518,7 +497,8 @@ def main():
             mismatches.append(drug_id)
             continue
         mols[drug_id] = mol
-        entries[drug_id] = {"svg": render_svg(Chem.Mol(mol)), "formula": formula}
+        is_wide = mol.GetNumAtoms() > 35
+        entries[drug_id] = {"svg": render_svg(Chem.Mol(mol), wide=is_wide), "formula": formula}
 
     for drug_id, builder in BUILDER_ENTRIES.items():
         mol = builder()
@@ -576,7 +556,7 @@ def main():
         lines3d.append(f"  {drug_id}: {json.dumps(threed[drug_id], separators=(',', ':'))},")
     lines3d.append("};")
     out_path_3d = os.path.join(REPO_ROOT, "study-structures-3d.js")
-    with open(out_path_3d, "w") as f:
+    with open(out_path_3d, "w", encoding="utf-8") as f:
         f.write("\n".join(lines3d) + "\n")
     print(f"\nWrote {out_path_3d} ({len(threed)} molecules, {len(threed_failures)} fell back to 2D-only)")
 
@@ -603,7 +583,7 @@ def main():
     lines.append("};")
 
     out_path = os.path.join(REPO_ROOT, "study-structures.js")
-    with open(out_path, "w") as f:
+    with open(out_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
     print(f"\nWrote {out_path} ({len(entries)} structures)")
 

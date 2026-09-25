@@ -44,6 +44,10 @@ function disposeMount(container) {
   });
   m.renderer.dispose();
   if (m.renderer.domElement.parentNode) m.renderer.domElement.parentNode.removeChild(m.renderer.domElement);
+  // Restore fallback 2D diagram visibility so cards never turn blank or empty
+  const fallback = container.querySelector(".st-tile-structure, .st-structure-svg");
+  if (fallback) fallback.style.display = "";
+  container.classList.remove("st-has-canvas");
   mounts.delete(container);
 }
 
@@ -69,11 +73,18 @@ function mountMolecule3D(container, data, opts) {
   renderer.setClearColor(0x000000, 0);
   const canvas = renderer.domElement;
   canvas.className = "st-molecule-canvas";
-  // Clears out the flat-2D-SVG fallback content the placeholder started
-  // with (see structureBodyHTML() in study-ui.js) now that the real 3D
-  // viewer is confirmed working.
-  container.innerHTML = "";
+
+  // Hide the flat-2D-SVG fallback without destroying it, so if WebGL context
+  // is ever lost or disposed, the fallback is safely restored.
+  const fallback = container.querySelector(".st-tile-structure, .st-structure-svg");
+  if (fallback) fallback.style.display = "none";
+  container.classList.add("st-has-canvas");
   container.appendChild(canvas);
+
+  canvas.addEventListener("webglcontextlost", (e) => {
+    e.preventDefault();
+    disposeMount(container);
+  }, { once: true });
 
   const scene = new THREE.Scene();
   const fov = 32;
