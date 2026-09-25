@@ -90,6 +90,17 @@
       particleSpeed: 0.2,
       density: 210,
       glowPoints: 2
+    },
+    study: {
+      accent: [56, 189, 248],    // Cyan #38bdf8
+      secondary: [96, 165, 250], // Blue #60a5fa
+      ecg: false,
+      capno: false,
+      pleth: false,
+      circuitRings: false,
+      particleSpeed: 0.18,
+      density: 190,
+      glowPoints: 2
     }
   };
 
@@ -99,6 +110,7 @@
   else if (pageType === "drugs") currentEnvKey = "drugs";
   else if (pageType === "critical-care") currentEnvKey = "criticalCare";
   else if (pageType === "viva") currentEnvKey = "viva";
+  else if (pageType === "study") currentEnvKey = "study";
   else if (pageType === "resources" || pageType === "notes" || pageType === "recent-updates") currentEnvKey = "resources";
 
   let env = Object.assign({}, ENVIRONMENTS[currentEnvKey] || ENVIRONMENTS.hero);

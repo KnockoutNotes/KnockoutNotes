@@ -45,6 +45,11 @@
   <div class="spatial-world">
     <main class="container st-page" id="stStage">
 
+      <!-- Persistent full-screen toggle — lives outside the list/detail
+           views so it stays visible and functional on every screen in
+           Study Mode, not just the category grid. -->
+      <button type="button" class="st-fs-fixed" id="stFullscreen" aria-pressed="false" aria-label="Toggle full screen">⛶</button>
+
       <!-- ================= LISTING VIEW ================= -->
       <section id="stList" class="st-view" aria-labelledby="stTitle">
         <div class="st-hero">
@@ -59,7 +64,6 @@
               <span aria-hidden="true">⌕</span>
               <input id="stSearch" type="search" placeholder="Search topics or drugs — e.g. propofol, sugammadex, RSI, PONV…" autocomplete="off" aria-label="Search study content">
             </div>
-            <button type="button" class="st-fs-btn" id="stFullscreen" aria-pressed="false">⛶ Full Screen</button>
           </div>
         </div>
 
@@ -116,13 +120,6 @@
     </div>
   </div>
 </div>
-
-<aside class="kn-corner-support" aria-label="Support KnockoutNotes">
-  <a href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" class="kn-corner-support-link" title="Fuel the code with coffee">
-    <span class="kn-corner-coffee-icon">☕</span>
-    <span class="kn-corner-coffee-text">Buy me a coffee</span>
-  </a>
-</aside>
 
 <script src="study-data.js"></script>
 <script src="spatial-bg.js"></script>

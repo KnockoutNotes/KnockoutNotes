@@ -1,31 +1,71 @@
 /* ==========================================================================
    KNOCKOUTNOTES — Study Mode (study.css)
-   Deliberately plain: no glass/gradient/bevel treatment like the rest of
-   the site. Flat surfaces, a single accent colour, generous line-height,
-   and a phone-first reading layout — closer to a clean reading app than
-   a dashboard. Uses the site-wide light/dark tokens from styles.css.
+   Netflix-style poster cards over the site's own animated dot canvas
+   (spatial-bg.js "study" environment — same slow cursor-reactive dots as
+   the rest of the site, ECG/capno/pleth waveforms switched off). Cards and
+   reading panels sit on translucent, blurred glass so they stay legible
+   over the moving background. Phone-first, but the list view opens up to
+   a wide multi-column grid on tablet/desktop; the reading view stays a
+   comfortable narrow column at every size.
    ========================================================================== */
 
-/* Study Mode is a plain, flat reading page — hide the site's animated
-   starfield/ECG canvas behind it rather than letting it show through the
-   now-transparent content, and give the page an opaque dark/white
-   background that switches with the theme like any ordinary page. */
-body[data-content-page="study"] .spatial-world { background: var(--bg-void); min-height: 100vh; }
-body[data-content-page="study"] #knSpatialCanvas { display: none; }
+body[data-content-page="study"] { overflow-x: hidden; }
 
 .st-page.container {
-  max-width: 720px;
+  max-width: 1400px;
   padding-top: 88px;
-  padding-bottom: 56px;
+  padding-bottom: 64px;
   padding-left: 20px;
   padding-right: 20px;
-  background: var(--bg-void);
+  transition: max-width 0.25s ease;
 }
+
+/* Detail (reading) view gets a narrower column regardless of viewport —
+   set via JS on #stStage when a drug/topic is open. */
+.st-page.container.st-narrow { max-width: 760px; }
 
 .st-view[hidden] { display: none !important; }
 
+/* ------------------------------------------------------------ persistent full-screen toggle */
+.st-fs-fixed {
+  position: fixed;
+  top: 96px;
+  right: 20px;
+  z-index: 40;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text-main);
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.st-fs-fixed:hover { transform: translateY(-2px) scale(1.05); box-shadow: var(--shadow-md); }
+.st-fs-fixed[aria-pressed="true"] { background: var(--accent-cyan); color: #fff; border-color: transparent; }
+
+.st-fullscreen-active { background: var(--bg-void); overflow-y: auto; padding: 16px 0; }
+.st-fullscreen-active .st-page.container { padding-top: 64px; }
+.st-fullscreen-active .st-fs-fixed { top: 20px; }
+
 /* ------------------------------------------------------------ hero */
-.st-hero { padding: 0 0 18px; border-bottom: 1px solid var(--border-subtle); }
+.st-hero {
+  position: relative;
+  padding: 26px 28px 24px;
+  border-radius: 20px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-md);
+}
 
 .st-hero-kickers { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
 
@@ -40,13 +80,14 @@ body[data-content-page="study"] #knSpatialCanvas { display: none; }
   letter-spacing: 0.03em;
   color: var(--text-muted);
   border: 1px solid var(--border-subtle);
+  background: var(--panel-tint-1);
 }
 
 .st-pill-cyan { color: var(--accent-cyan); border-color: var(--accent-cyan); }
 
 .st-hero h1 {
   margin: 0 0 6px;
-  font-size: clamp(26px, 6vw, 36px);
+  font-size: clamp(26px, 4.5vw, 40px);
   line-height: 1.15;
   letter-spacing: -0.01em;
   font-weight: 800;
@@ -62,7 +103,7 @@ body[data-content-page="study"] #knSpatialCanvas { display: none; }
   margin-top: 2px;
 }
 
-.st-lead { margin: 0 0 16px; color: var(--text-secondary); font-size: 15px; line-height: 1.6; }
+.st-lead { margin: 0 0 18px; max-width: 640px; color: var(--text-secondary); font-size: 15px; line-height: 1.6; }
 
 .st-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 
@@ -70,10 +111,12 @@ body[data-content-page="study"] #knSpatialCanvas { display: none; }
   display: flex;
   align-items: center;
   gap: 8px;
-  flex: 1 1 240px;
+  flex: 1 1 320px;
+  max-width: 480px;
   padding: 10px 14px;
   border-radius: 999px;
   border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
   color: var(--text-muted);
 }
 
@@ -87,28 +130,11 @@ body[data-content-page="study"] #knSpatialCanvas { display: none; }
   min-width: 0;
 }
 
-.st-fs-btn {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--border-subtle);
-  background: transparent;
-  color: var(--text-main);
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.st-fs-btn[aria-pressed="true"] { background: var(--text-main); color: var(--bg-void); border-color: var(--text-main); }
-
 /* ------------------------------------------------------------ category nav — plain pill tabs */
 .st-cat-nav {
   display: flex;
   gap: 8px;
-  margin: 18px 0;
+  margin: 20px 0;
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -124,12 +150,14 @@ body[data-content-page="study"] #knSpatialCanvas { display: none; }
   padding: 8px 14px;
   border-radius: 999px;
   border: 1px solid var(--border-subtle);
-  background: transparent;
+  background: var(--bg-card);
   color: var(--text-secondary);
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
+.st-cat:hover { transform: translateY(-1px); }
 
 .st-cat.active {
   background: var(--accent-cyan);
@@ -147,88 +175,164 @@ body[data-content-page="study"] #knSpatialCanvas { display: none; }
   font-size: 10.5px;
   background: var(--panel-tint-1);
 }
-
 .st-cat.active .st-count { background: rgba(255, 255, 255, 0.25); }
 
-/* ------------------------------------------------------------ tile list */
+/* ------------------------------------------------------------ Netflix-style poster grid */
 .st-group-title {
-  margin: 28px 0 10px;
-  font-size: 13px;
+  margin: 30px 0 14px;
+  font-size: 14px;
   font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.st-grid { display: flex; flex-direction: column; margin-bottom: 8px; }
+.st-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 14px;
+  margin-bottom: 8px;
+}
 
 .st-tile {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 14px 4px;
-  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+  display: block;
+  aspect-ratio: 2 / 3;
+  border-radius: 12px;
+  overflow: hidden;
   text-decoration: none;
   color: inherit;
+  background: var(--poster-a, #1e293b);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.28s cubic-bezier(.2,.8,.2,1), box-shadow 0.28s ease, z-index 0s;
+  will-change: transform;
+}
+
+.st-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg, var(--poster-a, #1e293b), var(--poster-b, #0f172a));
+}
+
+.st-tile::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 62%;
+  background: linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0.35) 55%, transparent);
+}
+
+.st-tile:hover, .st-tile:focus-visible {
+  transform: translateY(-6px) scale(1.045);
+  box-shadow: 0 20px 40px -12px rgba(0,0,0,0.55), 0 0 0 2px var(--poster-a, var(--accent-cyan));
+  z-index: 5;
 }
 
 .st-tile-icon {
-  flex: 0 0 auto;
-  width: 34px;
-  height: 34px;
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
-  border: 1px solid var(--border-subtle);
-  font-size: 16px;
+  font-size: 46px;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.4));
 }
 
-.st-tile-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
-.st-tile-cat { font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; color: var(--text-muted); text-transform: uppercase; }
-.st-tile-name { font-size: 16px; font-weight: 700; color: var(--text-main); }
-.st-tile-tag { font-size: 13.5px; color: var(--text-secondary); line-height: 1.45; }
-.st-tile-brand { font-size: 12px; color: var(--text-muted); font-style: italic; }
+.st-tile-info {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 12px 12px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  z-index: 1;
+}
+.st-tile-cat { font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; color: rgba(255,255,255,0.72); text-transform: uppercase; }
+.st-tile-name { font-size: 14px; font-weight: 800; color: #fff; line-height: 1.25; }
+.st-tile-tag {
+  font-size: 11.5px; color: rgba(255,255,255,0.82); line-height: 1.4;
+  max-height: 0; opacity: 0; overflow: hidden;
+  transition: max-height 0.28s ease, opacity 0.2s ease, margin-top 0.28s ease;
+}
+.st-tile:hover .st-tile-tag, .st-tile:focus-visible .st-tile-tag { max-height: 60px; opacity: 1; margin-top: 2px; }
+.st-tile-brand { display: none; }
 .st-tile-open { display: none; }
 
 .st-empty { padding: 40px 4px; text-align: center; color: var(--text-muted); font-size: 14px; }
+
+/* category poster colour palette */
+.st-tile[data-cat="anaesthesia"]   { --poster-a: #be123c; --poster-b: #4c0519; }
+.st-tile[data-cat="equipment"]     { --poster-a: #0369a1; --poster-b: #082f49; }
+.st-tile[data-cat="induction"]     { --poster-a: #7c3aed; --poster-b: #2e1065; }
+.st-tile[data-cat="relaxants"]     { --poster-a: #0d9488; --poster-b: #042f2e; }
+.st-tile[data-cat="reversal"]      { --poster-a: #d97706; --poster-b: #451a03; }
+.st-tile[data-cat="opioids"]       { --poster-a: #c026d3; --poster-b: #4a044e; }
+.st-tile[data-cat="nsaids"]        { --poster-a: #ea580c; --poster-b: #431407; }
+.st-tile[data-cat="vasopressors"]  { --poster-a: #e11d48; --poster-b: #4c0519; }
+.st-tile[data-cat="local"]         { --poster-a: #0284c7; --poster-b: #0c2d48; }
+
+/* ------------------------------------------------------------ scroll reveal (Netflix-style smooth entrance) */
+.st-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s cubic-bezier(.2,.7,.2,1), transform 0.6s cubic-bezier(.2,.7,.2,1);
+}
+.st-reveal.st-reveal-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .st-reveal { opacity: 1; transform: none; transition: none; }
+  .st-tile { transition: none; }
+}
 
 /* ------------------------------------------------------------ detail view */
 .st-back {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   font-size: 13px;
   font-weight: 700;
   color: var(--text-muted);
   text-decoration: none;
 }
-
 .st-back:hover { color: var(--accent-cyan); }
 
-.st-detail-head { padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--border-subtle); }
+.st-detail-head {
+  padding: 22px 24px;
+  margin-bottom: 18px;
+  border-radius: 18px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-md);
+}
 
 .st-detail-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 999px;
   border: 1px solid var(--border-subtle);
-  font-size: 19px;
-  margin-bottom: 10px;
+  background: var(--panel-tint-1);
+  font-size: 21px;
+  margin-bottom: 12px;
 }
 
-.st-detail-head h1 { margin: 0 0 6px; font-size: clamp(22px, 6vw, 28px); font-weight: 800; line-height: 1.2; color: var(--text-main); }
-.st-detail-tag { margin: 0 0 10px; color: var(--text-secondary); font-size: 14.5px; line-height: 1.5; }
+.st-detail-head h1 { margin: 0 0 6px; font-size: clamp(22px, 5vw, 30px); font-weight: 800; line-height: 1.2; color: var(--text-main); }
+.st-detail-tag { margin: 0 0 12px; color: var(--text-secondary); font-size: 14.5px; line-height: 1.5; }
 
 .st-tagrow { display: flex; flex-wrap: wrap; gap: 6px; }
 .st-chip {
   padding: 3px 10px;
   border-radius: 999px;
   border: 1px solid var(--border-subtle);
+  background: var(--panel-tint-1);
   font-size: 11.5px;
   font-weight: 700;
   color: var(--text-muted);
@@ -236,14 +340,20 @@ body[data-content-page="study"] #knSpatialCanvas { display: none; }
 
 .st-tagline-lg { font-size: 15.5px; color: var(--text-main); font-weight: 600; margin: 0 0 14px; line-height: 1.5; }
 
-/* source line — plain caption, not a boxed banner */
+/* source line — a slim glass strip at the top of the reading content */
 .st-source-banner {
-  display: block;
-  margin: 0 0 24px;
-  padding-left: 12px;
-  border-left: 2px solid var(--border-subtle);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 0 0 20px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
-.st-source-icon { display: none; }
+.st-source-icon { font-size: 15px; line-height: 1.3; opacity: 0.7; }
 .st-source-banner strong { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px; }
 .st-source-banner p { margin: 0; font-size: 12.5px; line-height: 1.55; color: var(--text-muted); font-style: italic; }
 
@@ -251,7 +361,7 @@ body[data-content-page="study"] #knSpatialCanvas { display: none; }
 .st-tabs {
   display: flex;
   gap: 8px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -264,7 +374,7 @@ body[data-content-page="study"] #knSpatialCanvas { display: none; }
   padding: 8px 14px;
   border-radius: 999px;
   border: 1px solid var(--border-subtle);
-  background: transparent;
+  background: var(--bg-card);
   color: var(--text-secondary);
   font-size: 13px;
   font-weight: 700;
@@ -277,17 +387,22 @@ body[data-content-page="study"] #knSpatialCanvas { display: none; }
   border-color: var(--accent-cyan);
 }
 
-/* content sections — plain text, no card box, divided by whitespace + hairline */
+/* content sections — glass cards, readable over the moving background */
 .st-card {
-  padding: 0 0 22px;
-  margin-bottom: 22px;
-  border-bottom: 1px solid var(--border-subtle);
+  padding: 20px 22px;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
 }
 .st-panel > .st-card:last-child,
-.st-panel-scroll > .st-card:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.st-panel-scroll > .st-card:last-child { margin-bottom: 0; }
 
-.st-card h3 { margin: 0 0 10px; font-size: 17px; font-weight: 800; line-height: 1.35; color: var(--text-main); }
-.st-card-body p { margin: 0; font-size: 15.5px; line-height: 1.75; color: var(--text-secondary); }
+.st-card h3 { margin: 0 0 10px; font-size: 16px; font-weight: 800; line-height: 1.35; color: var(--text-main); }
+.st-card-body p { margin: 0; font-size: 15px; line-height: 1.72; color: var(--text-secondary); }
 .st-card-body p + p { margin-top: 12px; }
 
 /* Mapleson circuit diagrams (recreated inline SVG) */
@@ -301,6 +416,7 @@ body[data-content-page="study"] #knSpatialCanvas { display: none; }
   border-radius: 10px;
   padding: 8px;
   box-sizing: border-box;
+  background: var(--panel-tint-1);
 }
 .st-diagram-caption { margin: 10px 0 0; font-size: 12px; line-height: 1.55; color: var(--text-muted); }
 
@@ -319,13 +435,29 @@ body[data-content-page="study"] #knSpatialCanvas { display: none; }
 .st-callout-pearl { border-left-color: var(--accent-amber); }
 .st-callout-pearl .st-callout-label { color: var(--accent-amber); }
 
-/* ------------------------------------------------------------ fullscreen */
-.st-fullscreen-active { background: var(--bg-void); overflow-y: auto; padding: 20px 0; }
-.st-fullscreen-active .st-page.container { padding-top: 8px; }
-
-/* ------------------------------------------------------------ responsive: this page is phone-first by default;
-   these rules widen it back out for tablet/desktop rather than the other way round */
+/* ------------------------------------------------------------ responsive: wider grid + roomier reading on tablet/desktop */
 @media (min-width: 640px) {
   .st-page.container { padding-left: 28px; padding-right: 28px; }
-  .st-tile { padding: 16px 6px; }
+  .st-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+}
+
+@media (min-width: 980px) {
+  .st-page.container { padding-top: 104px; }
+  .st-fs-fixed { top: 112px; }
+  .st-hero { padding: 36px 40px 32px; }
+  .st-grid { grid-template-columns: repeat(auto-fill, minmax(178px, 1fr)); gap: 18px; }
+  .st-tile-name { font-size: 15px; }
+  .st-card { padding: 26px 30px; }
+}
+
+@media (min-width: 1300px) {
+  .st-grid { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 20px; }
+}
+
+/* landscape phones: keep posters from getting too tall/cramped */
+@media (max-height: 480px) and (orientation: landscape) {
+  .st-page.container { padding-top: 72px; }
+  .st-fs-fixed { top: 16px; width: 38px; height: 38px; font-size: 15px; }
+  .st-hero { padding: 18px 20px; }
+  .st-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
 }

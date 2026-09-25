@@ -36,6 +36,33 @@
 
   let state = { cat: "anaesthesia", item: null, tab: "overview", filter: "" };
 
+  /* ---------------------------------------------------------- scroll reveal */
+  // Netflix-style smooth entrance: elements start at opacity:0/translateY
+  // (see .st-reveal in study.css) and fade/slide in the first time they
+  // scroll into view. One shared observer for both the poster grid and the
+  // reading-view cards; each element is only ever animated in once.
+  const revealObserver = "IntersectionObserver" in window
+    ? new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("st-reveal-visible");
+          revealObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" })
+    : null;
+
+  function observeReveal(root) {
+    const els = root.querySelectorAll(".st-reveal");
+    if (!revealObserver) {
+      els.forEach((el) => el.classList.add("st-reveal-visible"));
+      return;
+    }
+    els.forEach((el, i) => {
+      el.style.transitionDelay = `${Math.min(i % 12, 12) * 35}ms`;
+      revealObserver.observe(el);
+    });
+  }
+
   /* ---------------------------------------------------------------- routing */
   function readURL() {
     const q = new URLSearchParams(location.search);
@@ -85,15 +112,12 @@
 
   function tileHTML(item) {
     const cat = catById.get(item.cat);
-    const drug = isDrugCat(item.cat);
-    return `<a class="st-tile" href="?item=${item.id}" data-item="${item.id}" data-cat="${item.cat}" aria-label="${esc(item.name)}">
+    return `<a class="st-tile st-reveal" href="?item=${item.id}" data-item="${item.id}" data-cat="${item.cat}" aria-label="${esc(item.name)}">
       <div class="st-tile-icon" aria-hidden="true">${cat.icon}</div>
       <div class="st-tile-info">
-        <span class="st-tile-cat">${cat.icon} ${esc(cat.label)}</span>
+        <span class="st-tile-cat">${esc(cat.label)}</span>
         <strong class="st-tile-name">${esc(item.short || item.name)}</strong>
         <span class="st-tile-tag">${esc(item.tagline)}</span>
-        ${drug && item.brand ? `<span class="st-tile-brand">Brand: ${esc(item.brand)}</span>` : ""}
-        <span class="st-tile-open">Open →</span>
       </div>
     </a>`;
   }
@@ -114,11 +138,13 @@
       html += `<div class="st-grid">${list.map(tileHTML).join("")}</div>`;
     });
     grid.innerHTML = total ? html : `<div class="st-empty">No results for “${esc(state.filter)}”.</div>`;
+    observeReveal(grid);
   }
 
   function showList() {
     $("#stDetail").hidden = true;
     $("#stList").hidden = false;
+    $("#stStage").classList.remove("st-narrow");
     const cat = catById.get(state.cat);
     document.title = `${cat ? cat.label : "Study Mode"} | Study Mode | KnockoutNotes`;
     renderCatNav();
@@ -134,7 +160,7 @@
   }
 
   function card(title, bodyHTML, extraClass = "") {
-    return `<section class="st-card ${extraClass}"><h3>${esc(title)}</h3><div class="st-card-body">${bodyHTML}</div></section>`;
+    return `<section class="st-card st-reveal ${extraClass}"><h3>${esc(title)}</h3><div class="st-card-body">${bodyHTML}</div></section>`;
   }
 
   function para(text) { return `<p>${esc(text)}</p>`; }
@@ -268,6 +294,7 @@
   function showDetail() {
     $("#stList").hidden = true;
     $("#stDetail").hidden = false;
+    $("#stStage").classList.add("st-narrow");
     const item = itemById(state.item);
     const drug = isDrugCat(item.cat);
     document.title = `${item.name} | Study Mode | KnockoutNotes`;
@@ -297,6 +324,7 @@
       ${bodyHTML}
     `;
     bindDetailEvents();
+    observeReveal($("#stDetail"));
     window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
   }
 
@@ -307,6 +335,7 @@
         writeURL({ item: state.item, tab: state.tab });
         const item = itemById(state.item);
         $("#stPanel").innerHTML = drugPanelHTML(item, state.tab);
+        observeReveal($("#stPanel"));
         $("#stDetail").querySelectorAll("[data-tab]").forEach((b) => {
           const active = b === btn;
           b.classList.toggle("active", active);
@@ -368,7 +397,8 @@
       const active = !!isFs();
       stage.classList.toggle("st-fullscreen-active", active);
       btn.setAttribute("aria-pressed", String(active));
-      btn.innerHTML = active ? "✕ Exit Full Screen" : "⛶ Full Screen";
+      btn.innerHTML = active ? "✕" : "⛶";
+      btn.setAttribute("aria-label", active ? "Exit full screen" : "Enter full screen");
     }
     btn.addEventListener("click", () => {
       if (isFs()) {
