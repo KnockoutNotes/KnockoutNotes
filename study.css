@@ -470,20 +470,33 @@ body[data-content-page="study"] .st-page.container {
 .st-diagram-caption { margin: 10px 0 0; font-size: 12px; line-height: 1.55; color: var(--text-muted); }
 
 /* Drug chemical-structure diagrams (accurate RDKit-generated 2D skeletal
-   formulas — see study-structures.js) — a framed panel above the prose,
-   with the molecular formula as a small badge underneath. */
+   formulas — see study-structures.js). The Chemical Structure card gets its
+   own 3D depth context (transform-style: preserve-3d) so this panel can sit
+   on a raised Z-plane above the card's own surface — as the card tilts
+   toward the cursor (see initCardTilt() in study-ui.js), the diagram
+   visibly floats above the rest of the card face rather than being flat
+   printed text, while the diagram itself stays the same simple 2D skeletal
+   drawing. The molecular formula sits as a small badge underneath. */
+.st-card:has(.st-structure-wrap) { perspective: 900px; transform-style: preserve-3d; }
 .st-structure-wrap {
   margin-bottom: 16px;
-  padding: 14px;
-  border-radius: 14px;
-  background: var(--panel-tint-1);
+  padding: 20px 14px;
+  border-radius: 16px;
+  background: radial-gradient(ellipse at center, var(--panel-tint-1), var(--bg-card) 85%);
   border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-md);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  transform: translateZ(30px);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
 }
-.st-structure-svg { width: 100%; max-width: 340px; }
+.st-card:hover .st-structure-wrap {
+  transform: translateZ(46px);
+  box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.45);
+}
+.st-structure-svg { width: 100%; max-width: 380px; }
 .st-structure-svg svg { width: 100%; height: auto; display: block; color: var(--text-main); }
 .st-structure-formula {
   font-family: "SFMono-Regular", "Courier New", monospace;
@@ -495,6 +508,9 @@ body[data-content-page="study"] .st-page.container {
   border-radius: 999px;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
+}
+@media (prefers-reduced-motion: reduce) {
+  .st-structure-wrap, .st-card:hover .st-structure-wrap { transform: none; transition: none; }
 }
 
 /* callouts — a left rule and a label, no filled box */
