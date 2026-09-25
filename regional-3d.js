@@ -101,6 +101,51 @@ function trunkProfile(y) {
 
 const SE = 2 / 2.5; // superellipse exponent → slightly boxy torso section
 const bump = (y, c, w) => Math.exp(-((y - c) / w) * ((y - c) / w));
+// Angular Gaussian with wraparound (0–360°), for muscle bulges placed at a
+// given compass angle (0 = anterior, 90 = lateral, 180 = posterior, 270 = medial).
+function angBump(thDeg, center, width) {
+  let d = Math.abs(thDeg - center);
+  if (d > 180) d = 360 - d;
+  return Math.exp(-(d / width) * (d / width));
+}
+
+// Surface muscle definition for the limb tubes: each entry adds a smooth
+// radial bulge (fraction of the base radius) centred at a point along the
+// segment (t, 0–1) and a compass angle around it. Purely cosmetic — applied
+// as a multiplier on the cross-section radius, so it never affects the
+// anchor/anatomy data, only how the mannequin's skin is shaped.
+function limbBump(seg, t, thDeg) {
+  let b = 0;
+  if (seg === "upperArm") {
+    b += 0.30 * bump(t, 0.30, 0.14) * angBump(thDeg, 0, 48);    // biceps brachii (anterior)
+    b += 0.26 * bump(t, 0.28, 0.16) * angBump(thDeg, 180, 52);  // triceps (posterior)
+  } else if (seg === "forearm") {
+    b += 0.22 * bump(t, 0.15, 0.13) * angBump(thDeg, 340, 50);  // flexor mass (anteromedial)
+    b += 0.16 * bump(t, 0.13, 0.12) * angBump(thDeg, 90, 40);   // brachioradialis / extensors (lateral)
+  } else if (seg === "thigh") {
+    b += 0.34 * bump(t, 0.40, 0.19) * angBump(thDeg, 0, 50);    // quadriceps (anterior)
+    b += 0.30 * bump(t, 0.35, 0.19) * angBump(thDeg, 180, 55);  // hamstrings (posterior)
+    b += 0.22 * bump(t, 0.04, 0.08) * angBump(thDeg, 185, 65);  // gluteal shelf (proximal posterior)
+    b += 0.16 * bump(t, 0.30, 0.16) * angBump(thDeg, 270, 36);  // adductors (medial)
+  } else if (seg === "leg") {
+    b += 0.36 * bump(t, 0.18, 0.13) * angBump(thDeg, 180, 50);  // gastrocnemius/soleus (posterior)
+    b += 0.14 * bump(t, 0.12, 0.11) * angBump(thDeg, 0, 36);    // tibialis anterior ridge
+  }
+  return b;
+}
+
+// Trunk muscle definition — pectorals, lats and a subtle abdominal ridge —
+// as a fractional outward scale applied radially about the profile centre.
+// Angles here are the absolute (0–180, mirrored L/R) compass convention:
+// 0 = anterior midline, 90 = lateral, 180 = posterior midline.
+function trunkBump(y, psiDeg) {
+  const thAbs = psiDeg <= 180 ? psiDeg : 360 - psiDeg;
+  let b = 0;
+  b += 0.30 * bump(y, 1.365, 0.042) * angBump(thAbs, 42, 28);  // pectoralis major
+  b += 0.22 * bump(y, 1.27, 0.07) * angBump(thAbs, 148, 30);   // latissimus dorsi
+  b += 0.09 * bump(y, 1.15, 0.16) * angBump(thAbs, 6, 18);     // rectus abdominis ridge
+  return b;
+}
 
 function trunkPoint(y, psiDeg) {
   const psi = psiDeg * Math.PI / 180;
@@ -109,8 +154,9 @@ function trunkPoint(y, psiDeg) {
   let rz = rz0;
   if (c < 0) rz += 0.02 * bump(y, 0.865, 0.055) * (-c);
   else rz += 0.008 * bump(y, 1.31, 0.05) * c;
-  const x = rx * Math.sign(s) * Math.pow(Math.abs(s), SE);
-  const z = zc + rz * Math.sign(c) * Math.pow(Math.abs(c), SE);
+  const m = 1 + trunkBump(y, psiDeg);
+  const x = rx * m * Math.sign(s) * Math.pow(Math.abs(s), SE);
+  const z = zc + rz * m * Math.sign(c) * Math.pow(Math.abs(c), SE);
   return new THREE.Vector3(x, y, z);
 }
 
@@ -199,7 +245,8 @@ function tubeDefs() {
 function tubePoint(def, t, thDeg) {
   const th = thDeg * Math.PI / 180;
   const c = def.p0.clone().lerp(def.p1, t);
-  const rA = lerpTable(def.rA, t), rL = lerpTable(def.rL, t);
+  const m = 1 + limbBump(def.seg, t, thDeg);
+  const rA = lerpTable(def.rA, t) * m, rL = lerpTable(def.rL, t) * m;
   const dir = def.frame.A.clone().multiplyScalar(Math.cos(th) * rA).add(def.frame.L.clone().multiplyScalar(Math.sin(th) * rL));
   const n = def.frame.A.clone().multiplyScalar(Math.cos(th) / Math.max(rA, 1e-4)).add(def.frame.L.clone().multiplyScalar(Math.sin(th) / Math.max(rL, 1e-4))).normalize();
   return { p: c.add(dir), n };
@@ -223,7 +270,8 @@ function buildTube(def) {
     for (let i = 0; i < RS; i++) {
       const thDeg = i * 360 / RS;
       const th = thDeg * Math.PI / 180;
-      const rA = lerpTable(def.rA, t) * scale, rL = lerpTable(def.rL, t) * scale;
+      const m = 1 + limbBump(def.seg, tParam, thDeg);
+      const rA = lerpTable(def.rA, t) * scale * m, rL = lerpTable(def.rL, t) * scale * m;
       const c = def.p0.clone().lerp(def.p1, t).add(def.frame.a.clone().multiplyScalar(offset));
       const p = c.add(def.frame.A.clone().multiplyScalar(Math.cos(th) * rA)).add(def.frame.L.clone().multiplyScalar(Math.sin(th) * rL));
       ring.push(positions.length / 3);

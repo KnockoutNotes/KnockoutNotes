@@ -96,12 +96,12 @@
         orientation: "Transverse at C6 (anteromedial → posterolateral)",
         probe: "Linear",
         labels: [
-          { id: "c5r", text: "C5 root", type: "nerve", x: 44, y: 33 },
-          { id: "c6r", text: "C6 root", type: "nerve", x: 45, y: 45 },
-          { id: "asmr", text: "Anterior scalene", type: "muscle", x: 32, y: 47 }
+          { id: "c5r", text: "C5 root", type: "nerve", x: 38, y: 28 },
+          { id: "c6r", text: "C6 root", type: "nerve", x: 45, y: 46 },
+          { id: "asmr", text: "Anterior scalene", type: "muscle", x: 23, y: 54 }
         ],
-        needleOverlay: { from: [88, 22], to: [46, 40], approach: "in-plane", side: "posterolateral", target: "between C5 and C6 roots" },
-        spreadOverlay: [{ shape: "ellipse", x: 45, y: 42, rx: 9, ry: 13, variable: false, note: "LA spread around the roots" }]
+        needleOverlay: { from: [88, 22], to: [42, 38], approach: "in-plane", side: "posterolateral", target: "between C5 and C6 roots" },
+        spreadOverlay: [{ shape: "ellipse", x: 42, y: 38, rx: 9, ry: 13, variable: false, note: "LA spread around the roots" }]
       }
     },
     procedure: {
@@ -221,12 +221,12 @@
         orientation: "Coronal oblique above the clavicle (medial → lateral)",
         probe: "Linear",
         labels: [
-          { id: "scar", text: "Subclavian artery", type: "artery", x: 17, y: 40 },
-          { id: "bpr", text: "Brachial plexus (trunks)", type: "nerve", x: 38, y: 30 },
-          { id: "ribr", text: "First rib", type: "bone", x: 78, y: 45 }
+          { id: "scar", text: "Subclavian artery", type: "artery", x: 31, y: 40 },
+          { id: "bpr", text: "Brachial plexus (trunks)", type: "nerve", x: 54, y: 36 },
+          { id: "ribr", text: "First rib", type: "bone", x: 62, y: 67 }
         ],
-        needleOverlay: { from: [92, 20], to: [38, 30], approach: "in-plane", side: "lateral", target: "posterolateral to the subclavian artery, above the first rib" },
-        spreadOverlay: [{ shape: "ellipse", x: 33, y: 30, rx: 10, ry: 9, variable: false, note: "LA spread around the plexus" }]
+        needleOverlay: { from: [92, 20], to: [55, 34], approach: "in-plane", side: "lateral", target: "posterolateral to the subclavian artery, above the first rib" },
+        spreadOverlay: [{ shape: "ellipse", x: 46, y: 35, rx: 14, ry: 10, variable: false, note: "LA spread around the plexus" }]
       }
     },
     procedure: {
@@ -336,13 +336,13 @@
         orientation: "Costoclavicular view, transverse just below the clavicle (medial → lateral) — the cords sit clustered lateral to the artery here, unlike the parasagittal coracoid view above",
         probe: "Linear",
         labels: [
-          { id: "aar", text: "Axillary artery", type: "artery", x: 46, y: 55 },
-          { id: "avr", text: "Axillary vein", type: "vein", x: 62, y: 40 },
-          { id: "cordsr", text: "Lateral / posterior / medial cords", type: "nerve", x: 68, y: 48 },
-          { id: "lpnr", text: "Lateral pectoral nerve", type: "nerve", x: 72, y: 32 }
+          { id: "aar", text: "Axillary artery", type: "artery", x: 53, y: 38 },
+          { id: "avr", text: "Axillary vein", type: "vein", x: 60, y: 24 },
+          { id: "cordsr", text: "Lateral / posterior / medial cords", type: "nerve", x: 71, y: 33 },
+          { id: "lpnr", text: "Lateral pectoral nerve", type: "nerve", x: 80, y: 14 }
         ],
-        needleOverlay: { from: [88, 20], to: [55, 50], approach: "in-plane", side: "lateral", target: "the cords clustered lateral to the axillary artery" },
-        spreadOverlay: [{ shape: "ellipse", x: 58, y: 50, rx: 16, ry: 14, variable: false, note: "LA spread around the clustered cords" }]
+        needleOverlay: { from: [92, 15], to: [58, 32], approach: "in-plane", side: "lateral", target: "the cords clustered lateral to the axillary artery" },
+        spreadOverlay: [{ shape: "ellipse", x: 63, y: 32, rx: 16, ry: 14, variable: false, note: "LA spread around the clustered cords" }]
       }
     },
     procedure: {
@@ -450,17 +450,17 @@
         orientation: "Transverse across the axilla (posterior → anterior)",
         probe: "Linear",
         labels: [
-          { id: "aaxr", text: "Axillary artery", type: "artery", x: 82, y: 24 },
-          { id: "avxr", text: "Axillary veins", type: "vein", x: 65, y: 30 },
-          { id: "medxr", text: "Median nerve", type: "nerve", x: 50, y: 45 },
-          { id: "ulnxr", text: "Ulnar nerve", type: "nerve", x: 40, y: 56 },
-          { id: "radxr", text: "Radial nerve", type: "nerve", x: 35, y: 66 },
-          { id: "mcnxr", text: "Musculocutaneous nerve", type: "nerve", x: 60, y: 40 }
+          { id: "aaxr", text: "Axillary artery", type: "artery", x: 40, y: 18 },
+          { id: "avxr", text: "Axillary vein", type: "vein", x: 67, y: 20 },
+          { id: "medxr", text: "Median nerve", type: "nerve", x: 47, y: 34 },
+          { id: "ulnxr", text: "Ulnar nerve", type: "nerve", x: 50, y: 56 },
+          { id: "radxr", text: "Radial nerve", type: "nerve", x: 63, y: 42 },
+          { id: "mcnxr", text: "Musculocutaneous nerve", type: "nerve", x: 82, y: 10 }
         ],
-        needleOverlay: { from: [10, 60], to: [45, 50], approach: "in-plane", side: "lateral", target: "around the median, ulnar and radial nerves surrounding the artery" },
+        needleOverlay: { from: [10, 55], to: [38, 25], approach: "in-plane", side: "lateral", target: "around the median, ulnar and radial nerves surrounding the artery" },
         spreadOverlay: [
-          { shape: "ellipse", x: 55, y: 45, rx: 22, ry: 18, variable: false, note: "Perivascular LA spread around median/ulnar/radial nerves" },
-          { shape: "ellipse", x: 62, y: 38, rx: 10, ry: 7, variable: false, note: "Separate injection around the musculocutaneous nerve" }
+          { shape: "ellipse", x: 47, y: 30, rx: 20, ry: 18, variable: false, note: "Perivascular LA spread around median/ulnar/radial nerves" },
+          { shape: "ellipse", x: 82, y: 12, rx: 10, ry: 7, variable: false, note: "Separate injection around the musculocutaneous nerve" }
         ]
       }
     },
@@ -847,12 +847,13 @@
         orientation: "Transverse at the inguinal crease (medial → lateral)",
         probe: "Linear",
         labels: [
-          { id: "far", text: "Femoral artery", type: "artery", x: 18, y: 28 },
-          { id: "fnr", text: "Femoral nerve", type: "nerve", x: 57, y: 33 },
-          { id: "ipsr", text: "Iliopsoas", type: "muscle", x: 55, y: 72 }
+          { id: "fvr", text: "Femoral vein", type: "vein", x: 17, y: 35 },
+          { id: "far", text: "Femoral artery", type: "artery", x: 34, y: 40 },
+          { id: "fnr", text: "Femoral nerve", type: "nerve", x: 66, y: 45 },
+          { id: "ipsr", text: "Iliopsoas", type: "muscle", x: 50, y: 70 }
         ],
-        needleOverlay: { from: [92, 18], to: [60, 36], approach: "in-plane", side: "lateral", target: "lateral/deep to the femoral nerve, beneath fascia iliaca" },
-        spreadOverlay: [{ shape: "ellipse", x: 58, y: 36, rx: 11, ry: 9, variable: false, note: "LA spread beneath fascia iliaca" }]
+        needleOverlay: { from: [92, 18], to: [68, 42], approach: "in-plane", side: "lateral", target: "lateral/deep to the femoral nerve, beneath fascia iliaca" },
+        spreadOverlay: [{ shape: "ellipse", x: 66, y: 44, rx: 11, ry: 9, variable: false, note: "LA spread beneath fascia iliaca" }]
       }
     },
     procedure: {
@@ -949,12 +950,12 @@
         orientation: "Transverse at the inguinal crease (medial → lateral)",
         probe: "Linear",
         labels: [
-          { id: "far2", text: "Femoral artery", type: "artery", x: 18, y: 28 },
-          { id: "fnr2", text: "Femoral nerve (landmark)", type: "nerve", x: 55, y: 33 },
-          { id: "fir2", text: "Fascia iliaca", type: "fascia", x: 45, y: 15 }
+          { id: "far2", text: "Femoral artery", type: "artery", x: 27, y: 44 },
+          { id: "fnr2", text: "Femoral nerve (landmark)", type: "nerve", x: 60, y: 40 },
+          { id: "fir2", text: "Fascia iliaca", type: "fascia", x: 48, y: 27 }
         ],
-        needleOverlay: { from: [92, 20], to: [67, 35], approach: "in-plane", side: "lateral", target: "deep to fascia iliaca, lateral to the femoral nerve (not at it)" },
-        spreadOverlay: [{ shape: "ellipse", x: 58, y: 34, rx: 20, ry: 8, variable: false, note: "Fascial-plane spread (flat, not a pool)" }]
+        needleOverlay: { from: [92, 20], to: [70, 38], approach: "in-plane", side: "lateral", target: "deep to fascia iliaca, lateral to the femoral nerve (not at it)" },
+        spreadOverlay: [{ shape: "ellipse", x: 62, y: 40, rx: 20, ry: 10, variable: false, note: "Fascial-plane spread (flat, not a pool)" }]
       }
     },
     procedure: {
@@ -1044,13 +1045,13 @@
         orientation: "Parasagittal oblique, above the inguinal ligament, medial to the ASIS (cephalad → caudal)",
         probe: "Curvilinear",
         labels: [
-          { id: "fi9r", text: "Fascia iliaca", type: "fascia", x: 38, y: 30 },
-          { id: "iliacus9r", text: "Iliacus", type: "muscle", x: 35, y: 52 },
-          { id: "dcia9r", text: "Deep circumflex iliac vessels", type: "artery", x: 60, y: 40 },
-          { id: "io9r", text: "Internal oblique", type: "muscle", x: 70, y: 70 }
+          { id: "io9r", text: "Internal oblique", type: "muscle", x: 20, y: 15 },
+          { id: "dcia9r", text: "Deep circumflex iliac vessels", type: "artery", x: 15, y: 30 },
+          { id: "fi9r", text: "Fascia iliaca", type: "fascia", x: 55, y: 20 },
+          { id: "iliacus9r", text: "Iliacus", type: "muscle", x: 55, y: 55 }
         ],
-        needleOverlay: { from: [95, 55], to: [40, 32], approach: "in-plane", side: "caudal", target: "deep to fascia iliaca, superficial to iliacus" },
-        spreadOverlay: [{ shape: "ellipse", x: 45, y: 35, rx: 22, ry: 9, variable: false, note: "LA spreads cranially along the iliac fossa" }]
+        needleOverlay: { from: [95, 55], to: [55, 25], approach: "in-plane", side: "caudal", target: "deep to fascia iliaca, superficial to iliacus" },
+        spreadOverlay: [{ shape: "ellipse", x: 50, y: 30, rx: 30, ry: 10, variable: false, note: "LA spreads cranially along the iliac fossa" }]
       }
     },
     procedure: {
@@ -1139,12 +1140,12 @@
         orientation: "Transverse oblique over AIIS/IPE (medial → lateral)",
         probe: "Curvilinear",
         labels: [
-          { id: "far3", text: "Femoral artery", type: "artery", x: 18, y: 27 },
-          { id: "ipsr3", text: "Iliopsoas / psoas tendon", type: "muscle", x: 35, y: 30 },
-          { id: "boner3", text: "Ilium (AIIS → IPE) cortex", type: "bone", x: 62, y: 45 }
+          { id: "far3", text: "Femoral artery", type: "artery", x: 24, y: 20 },
+          { id: "ipsr3", text: "Iliopsoas / psoas tendon", type: "muscle", x: 52, y: 38 },
+          { id: "boner3", text: "Ilium (AIIS → IPE) cortex", type: "bone", x: 68, y: 25 }
         ],
-        needleOverlay: { from: [88, 18], to: [62, 42], approach: "in-plane", side: "lateral", target: "between the psoas tendon and the iliopubic eminence" },
-        spreadOverlay: [{ shape: "ellipse", x: 58, y: 44, rx: 16, ry: 6, variable: false, note: "LA lifting the tendon off the bone" }]
+        needleOverlay: { from: [88, 18], to: [68, 32], approach: "in-plane", side: "lateral", target: "between the psoas tendon and the iliopubic eminence" },
+        spreadOverlay: [{ shape: "ellipse", x: 60, y: 33, rx: 16, ry: 7, variable: false, note: "LA lifting the tendon off the bone" }]
       }
     },
     procedure: {
@@ -2161,7 +2162,7 @@
         labels: [
           { id: "gsvr13", text: "Great saphenous vein", type: "vein", x: 56, y: 32 },
           { id: "saphnr13", text: "Saphenous nerve", type: "nerve", x: 47, y: 34 },
-          { id: "mmr13", text: "Tibia / medial malleolus", type: "bone", x: 73, y: 55 }
+          { id: "mmr13", text: "Tibia / medial malleolus", type: "bone", x: 62, y: 40 }
         ],
         needleOverlay: { from: [8, 20], to: [50, 33], approach: "in-plane", side: "posterior", target: "the saphenous nerve beside the great saphenous vein" },
         spreadOverlay: [{ shape: "ellipse", x: 53, y: 34, rx: 14, ry: 9, variable: false, note: "Subcutaneous LA around the nerve and vein" }]
@@ -2424,7 +2425,7 @@
           { id: "trapr", text: "Trapezius", type: "muscle", x: 50, y: 12 },
           { id: "esr", text: "Erector spinae", type: "muscle", x: 50, y: 30 },
           { id: "espr", text: "Erector spinae plane (target)", type: "fascia", x: 48, y: 46 },
-          { id: "tpr", text: "Transverse process (shadow)", type: "bone", x: 26, y: 62 }
+          { id: "tpr", text: "Transverse process (shadow)", type: "bone", x: 18, y: 72 }
         ],
         needleOverlay: { from: [85, 15], to: [48, 44], approach: "in-plane", side: "cranial", target: "deep to erector spinae, on the transverse process" },
         spreadOverlay: [{ shape: "ellipse", x: 50, y: 46, rx: 34, ry: 6, variable: false, note: "Linear craniocaudal spread deep to erector spinae" }]
@@ -3634,9 +3635,9 @@
         orientation: "Transverse in the popliteal fossa (medial → lateral)",
         probe: "Linear (paediatric high-frequency)",
         labels: [
-          { id: "pptr", text: "Popliteal artery", type: "artery", x: 36, y: 70 },
-          { id: "pptvr", text: "Popliteal vein", type: "vein", x: 50, y: 44 },
-          { id: "pptnr", text: "Tibial / common peroneal nerves", type: "nerve", x: 70, y: 38 }
+          { id: "pptr", text: "Popliteal artery", type: "artery", x: 56, y: 58 },
+          { id: "pptvr", text: "Popliteal vein", type: "vein", x: 52, y: 42 },
+          { id: "pptnr", text: "Tibial / common peroneal nerves", type: "nerve", x: 68, y: 34 }
         ],
         needleOverlay: { from: [92, 15], to: [62, 36], approach: "in-plane", side: "lateral", target: "within the paraneural sheath, around the tibial/common peroneal nerves" },
         spreadOverlay: [{ shape: "ellipse", x: 62, y: 38, rx: 12, ry: 9, variable: false, note: "LA spread within the paraneural sheath" }]
@@ -3727,12 +3728,13 @@
         orientation: "Transverse at the inguinal crease (medial → lateral)",
         probe: "Linear (paediatric high-frequency)",
         labels: [
-          { id: "pfar", text: "Femoral artery", type: "artery", x: 42, y: 45 },
-          { id: "pfvr", text: "Femoral vein", type: "vein", x: 30, y: 40 },
-          { id: "pfnr", text: "Iliopsoas", type: "muscle", x: 60, y: 55 }
+          { id: "pfar", text: "Femoral artery", type: "artery", x: 40, y: 32 },
+          { id: "pfvr", text: "Femoral vein", type: "vein", x: 27, y: 46 },
+          { id: "pfnnr", text: "Femoral nerve", type: "nerve", x: 52, y: 38 },
+          { id: "pfnr", text: "Iliopsoas", type: "muscle", x: 68, y: 55 }
         ],
-        needleOverlay: { from: [88, 15], to: [55, 42], approach: "in-plane", side: "lateral", target: "the femoral nerve, lateral to the artery, deep to the fascia iliaca" },
-        spreadOverlay: [{ shape: "ellipse", x: 55, y: 44, rx: 12, ry: 8, variable: false, note: "LA spread around the femoral nerve" }]
+        needleOverlay: { from: [88, 15], to: [56, 36], approach: "in-plane", side: "lateral", target: "the femoral nerve, lateral to the artery, deep to the fascia iliaca" },
+        spreadOverlay: [{ shape: "ellipse", x: 54, y: 38, rx: 12, ry: 8, variable: false, note: "LA spread around the femoral nerve" }]
       }
     },
     procedure: {
@@ -3915,7 +3917,7 @@
         labels: [
           { id: "psclr", text: "Post. sacrococcygeal ligament", type: "ligament", x: 45, y: 45 },
           { id: "pedsr", text: "Epidural / dural sac space", type: "space", x: 45, y: 58 },
-          { id: "pcaudar", text: "Cauda equina & filum terminale", type: "nerve", x: 30, y: 40 }
+          { id: "pcaudar", text: "Cauda equina & filum terminale", type: "nerve", x: 32, y: 52 }
         ],
         needleOverlay: { from: [15, 55], to: [45, 46], approach: "in-plane", side: "caudal", target: "through the sacrococcygeal ligament, into the caudal epidural space" },
         spreadOverlay: [{ shape: "ellipse", x: 42, y: 50, rx: 20, ry: 8, variable: false, note: "LA spreading cranially in the caudal canal" }]
@@ -4015,7 +4017,7 @@
           { id: "pioblr", text: "Internal oblique", type: "muscle", x: 40, y: 40 },
           { id: "ptar", text: "Transversus abdominis", type: "muscle", x: 55, y: 55 },
           { id: "pqlr", text: "Quadratus lumborum", type: "muscle", x: 30, y: 65 },
-          { id: "ppsr", text: "Psoas", type: "muscle", x: 65, y: 75 }
+          { id: "ppsr", text: "Psoas", type: "muscle", x: 68, y: 58 }
         ],
         needleOverlay: { from: [8, 20], to: [42, 55], approach: "in-plane", side: "posterior", target: "around quadratus lumborum" },
         spreadOverlay: [{ shape: "ellipse", x: 45, y: 55, rx: 18, ry: 14, variable: false, note: "LA spread around quadratus lumborum" }]
