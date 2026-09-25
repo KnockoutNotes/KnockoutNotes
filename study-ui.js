@@ -191,7 +191,11 @@
           if (!data) return;
           if (entry.isIntersecting) {
             if (typeof window.KNMountMolecule3D === "function") {
-              try { window.KNMountMolecule3D(node, data); } catch (err) { /* leave 2D fallback in place */ }
+              // Extra zoom-out margin vs. the detail view's default fit —
+              // a poster tile is small, so the whole structure should read
+              // clearly with room around it rather than filling/cropping
+              // the frame.
+              try { window.KNMountMolecule3D(node, data, { fitMargin: 1.9 }); } catch (err) { /* leave 2D fallback in place */ }
             }
           } else if (typeof window.KNDisposeMolecule3D === "function") {
             window.KNDisposeMolecule3D(node);

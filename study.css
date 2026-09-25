@@ -312,7 +312,7 @@ body[data-content-page="study"] .st-page.container {
    it instead of sitting on an opaque colour block — the bottom text strip
    (.st-tile::after, a separate layer) keeps its own full-strength gradient
    so name/tag legibility is unaffected. */
-.st-tile-has-structure::before { opacity: 0.4; }
+.st-tile-has-structure::before { opacity: 0.28; }
 
 .st-tile-info {
   position: absolute;

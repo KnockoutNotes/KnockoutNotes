@@ -52,9 +52,10 @@ function disposeMount(container) {
  * true on success, false if WebGL isn't available (caller should fall back
  * to the flat 2D diagram).
  */
-function mountMolecule3D(container, data) {
+function mountMolecule3D(container, data, opts) {
   disposeMount(container);
   if (!data || !data.atoms || !data.atoms.length) return false;
+  const fitMargin = (opts && opts.fitMargin) || 1.25;
 
   let renderer;
   try {
@@ -74,8 +75,24 @@ function mountMolecule3D(container, data) {
   container.appendChild(canvas);
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
-  camera.position.set(0, 0, 11);
+  const fov = 32;
+  const camera = new THREE.PerspectiveCamera(fov, 1, 0.1, 200);
+  // Fit the camera distance to THIS molecule's own bounding sphere (max
+  // atom distance from centre + that atom's own drawn radius) rather than
+  // a fixed z — bigger molecules (e.g. the bis-benzylisoquinolinium NMBs,
+  // ~140 atoms) were spilling past the frame edges at a fixed distance
+  // tuned for smaller ones. `fitMargin` adds breathing room around the
+  // molecule; callers mounting into a small poster tile (see
+  // observeTileMolecules() in study-ui.js) pass a larger margin so the
+  // whole structure reads clearly small rather than filling/cropping the
+  // tile, while the bigger detail-view card keeps a closer default fit.
+  let boundingRadius = 0;
+  data.atoms.forEach(([el, x, y, z]) => {
+    const r = Math.sqrt(x * x + y * y + z * z) + (CPK_RADIUS[el] || DEFAULT_RADIUS);
+    if (r > boundingRadius) boundingRadius = r;
+  });
+  const dist = (boundingRadius * fitMargin) / Math.sin(THREE.MathUtils.degToRad(fov / 2));
+  camera.position.set(0, 0, dist);
 
   // Bright, mostly-white studio lighting (several soft-ish sources rather
   // than one hard key light) is what gives glossy CPK renders like the
