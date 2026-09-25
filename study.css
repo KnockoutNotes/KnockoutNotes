@@ -496,6 +496,28 @@ body[data-content-page="study"] .st-page.container {
 .st-card-body p { margin: 0; font-size: 17px; line-height: 1.75; color: var(--text-secondary); }
 .st-card-body p + p { margin-top: 12px; }
 
+/* Drug monograph fields (structure/PD/PK/dosage/off-label/complications —
+   see para() in study-ui.js) render as one bullet per fact instead of a
+   dense prose block, for faster scanning. */
+.st-bullets { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.st-bullets li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.st-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+}
+
 /* Mapleson circuit diagrams (recreated inline SVG) */
 .st-diagram-wrap { margin-top: 14px; }
 .st-diagram-wrap svg {

@@ -254,7 +254,26 @@
     return `<section class="st-card st-reveal ${extraClass}"><h3>${esc(title)}</h3><div class="st-card-body">${bodyHTML}</div></section>`;
   }
 
-  function para(text) { return `<p>${highlightKeyValues(esc(text))}</p>`; }
+  // Drug monograph fields (structure/pd/pk/dosage/offLabel/complications)
+  // are authored as single dense prose paragraphs, but read far faster as a
+  // scannable list of discrete facts — so each one is split into its
+  // constituent sentences and rendered as a bullet per sentence rather than
+  // one long block of text. The split looks for sentence-ending punctuation
+  // followed by whitespace and a capital letter/quote/paren (the next
+  // sentence's start) — every source paragraph in study-data.js writes
+  // in-sentence units without a trailing period (\"mg/kg\", not \"mg./kg.\"),
+  // so this doesn't false-split on abbreviations. General topic prose
+  // (paras() below) is untouched — its worked-example/pitfall/pearl format
+  // already reads as structured content, not a wall of text.
+  function splitSentences(text) {
+    return text.split(/(?<=[.!?])\s+(?=[A-Z“"'(])/).map((s) => s.trim()).filter(Boolean);
+  }
+  function para(text) {
+    if (!text) return "";
+    const sentences = splitSentences(text);
+    if (sentences.length < 2) return `<p>${highlightKeyValues(esc(text))}</p>`;
+    return `<ul class="st-bullets">${sentences.map((s) => `<li>${highlightKeyValues(esc(s))}</li>`).join("")}</ul>`;
+  }
 
   // Chemical Structure card: an accurate 2D skeletal-formula diagram (RDKit-
   // generated from a verified SMILES, cross-checked against the known
