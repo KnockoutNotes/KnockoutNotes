@@ -312,7 +312,14 @@ body[data-content-page="study"] .st-page.container {
    it instead of sitting on an opaque colour block — the bottom text strip
    (.st-tile::after, a separate layer) keeps its own full-strength gradient
    so name/tag legibility is unaffected. */
-.st-tile-has-structure::before { opacity: 0.28; }
+/* .st-tile itself paints an OPAQUE base fill (var(--poster-a)) underneath
+   ::before as a pre-paint fallback — fading only ::before's opacity left
+   that solid layer fully visible underneath it, so the tile never actually
+   looked any more transparent. Clearing the base fill for these tiles (the
+   gradient ::before already covers the full box) is what actually lets the
+   animated background show through. */
+.st-tile-has-structure { background: transparent; }
+.st-tile-has-structure::before { opacity: 0.25; }
 
 .st-tile-info {
   position: absolute;

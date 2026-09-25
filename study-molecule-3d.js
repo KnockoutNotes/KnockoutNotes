@@ -15,20 +15,21 @@
    ========================================================================== */
 import * as THREE from "three";
 
-// Classic CPK ball-and-stick palette (matches the reference render: dark
-// grey carbon, red oxygen, blue nitrogen, near-white hydrogen) — spheres
-// sized noticeably larger relative to the bond sticks than a textbook
-// space-filling model, for that glossy ball-and-stick look.
+// Classic CPK ball-and-stick palette (matches the reference glossy-render
+// look: light brushed-silver carbon, vivid red oxygen, vivid blue nitrogen,
+// near-white hydrogen) — spheres sized large and closely packed relative to
+// the bond sticks (bigger than a textbook ball-and-stick model, short of a
+// full space-filling one) for that dense, chunky product-render look.
 const CPK_COLOR = {
-  H: 0xf1f5f9, C: 0x3f4753, N: 0x2f6fed, O: 0xe23636, S: 0xe6c119,
-  Cl: 0x22c55e, F: 0x8fe38a, Br: 0x9a2f2f,
+  H: 0xf3f6f9, C: 0x9aa5b0, N: 0x2f7fe0, O: 0xf0362a, S: 0xf0c419,
+  Cl: 0x2ecc71, F: 0x8fe38a, Br: 0xb23a3a,
 };
 const CPK_RADIUS = {
-  H: 0.32, C: 0.52, N: 0.5, O: 0.48, S: 0.58, Cl: 0.56, F: 0.46, Br: 0.6,
+  H: 0.4, C: 0.66, N: 0.64, O: 0.62, S: 0.72, Cl: 0.7, F: 0.58, Br: 0.75,
 };
 const DEFAULT_COLOR = 0xa78bfa;
-const DEFAULT_RADIUS = 0.52;
-const BOND_RADIUS = 0.1;
+const DEFAULT_RADIUS = 0.66;
+const BOND_RADIUS = 0.14;
 
 const mounts = new WeakMap();
 
@@ -117,7 +118,7 @@ function mountMolecule3D(container, data, opts) {
   // that makes CPK spheres read as glossy plastic/glass balls rather than
   // flat-shaded circles — matching the reference image's look.
   const bondMat = new THREE.MeshPhysicalMaterial({
-    color: 0xb8c2cf, roughness: 0.45, metalness: 0.15, clearcoat: 0.5, clearcoatRoughness: 0.3,
+    color: 0xc7d0da, roughness: 0.3, metalness: 0.4, clearcoat: 0.7, clearcoatRoughness: 0.2,
   });
   const matCache = new Map();
 
@@ -126,8 +127,8 @@ function mountMolecule3D(container, data, opts) {
     if (!mat) {
       mat = new THREE.MeshPhysicalMaterial({
         color: CPK_COLOR[el] || DEFAULT_COLOR,
-        roughness: 0.22, metalness: 0.05,
-        clearcoat: 0.85, clearcoatRoughness: 0.15,
+        roughness: 0.14, metalness: 0.05,
+        clearcoat: 1, clearcoatRoughness: 0.08,
       });
       matCache.set(el, mat);
     }
