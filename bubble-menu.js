@@ -18,8 +18,7 @@
     { label: 'Regional', href: 'regional-anaesthesia.html', ariaLabel: 'Regional Anaesthesia — Nerve Blocks' },
     { label: '3D Workstation', href: 'ventilator.html', ariaLabel: '3D Anaesthesia Workstation' },
     { label: 'Drugs', href: 'drugs.html', ariaLabel: 'Pharmacology Library' },
-    { label: 'Critical Care', href: 'critical-care.html', ariaLabel: 'Critical Care & Code' },
-    { label: 'Resuscitation', href: 'resuscitation-chamber.html', ariaLabel: 'Resuscitation Chamber' },
+    { label: 'Critical Care', href: 'critical-care.html', ariaLabel: 'Critical Care & Code', matchPaths: ['critical-care.html', 'resuscitation-chamber.html'] },
     { label: 'About', href: 'resources.html', ariaLabel: 'About KnockoutNotes' }
   ];
 
@@ -38,8 +37,7 @@
     { label: 'Regional Blocks', href: 'regional-anaesthesia.html', ariaLabel: 'Regional Anaesthesia — Nerve Blocks', icon: '💉', desc: 'Nerve Blocks · NYSORA' },
     { label: '3D Workstation', href: 'ventilator.html', ariaLabel: '3D Anaesthesia Workstation', icon: '🫁', desc: 'Interactive Machine' },
     { label: 'Drugs Library', href: 'drugs.html', ariaLabel: 'Pharmacology Library', icon: '💊', desc: 'Dosing & Kinetics' },
-    { label: 'Critical Care', href: 'critical-care.html', ariaLabel: 'Critical Care & Code Blue', icon: '⚡', desc: 'ICU & Resuscitation' },
-    { label: 'Resuscitation', href: 'resuscitation-chamber.html', ariaLabel: 'Resuscitation Chamber', icon: '🚨', desc: 'ALS Protocols' },
+    { label: 'Critical Care', href: 'critical-care.html', ariaLabel: 'Critical Care & Code Blue', icon: '⚡', desc: 'ICU & Resuscitation', matchPaths: ['critical-care.html', 'resuscitation-chamber.html'] },
     { label: 'Recent Updates', href: 'recent-updates.html', ariaLabel: 'Recent Updates & Changelog', icon: '✨', desc: 'Latest Features' },
     { label: 'About & Evidence', href: 'resources.html', ariaLabel: 'About KnockoutNotes', icon: '📖', desc: 'Evidence & Methodology' }
   ];
@@ -73,7 +71,8 @@
     nav.setAttribute("aria-label", "KnockoutNotes desktop navigation");
 
     var linksHtml = DESKTOP_LINKS.map(function (item) {
-      var isCurPage = item.href === currentPath || (currentPath === "index.html" && item.href === "index.html");
+      var isCurPage = item.href === currentPath || (currentPath === "index.html" && item.href === "index.html") ||
+        (item.matchPaths && item.matchPaths.indexOf(currentPath) !== -1);
       var isCurHash = item.href.indexOf("#") !== -1 && (currentPath + currentHash).indexOf(item.href) !== -1;
       var isActive = isCurHash || (!item.href.includes("#") && isCurPage);
 
@@ -191,7 +190,7 @@
 
     // Check if current page is one of the secondary 3-dot items
     var isMoreActive = MOBILE_MORE_ITEMS.some(function (item) {
-      return item.href === currentPath;
+      return item.href === currentPath || (item.matchPaths && item.matchPaths.indexOf(currentPath) !== -1);
     });
 
     // Mobile Header Floating Capsule Bar
@@ -251,7 +250,8 @@
     overlay.setAttribute("aria-label", "More navigation options");
 
     var moreCardsHtml = MOBILE_MORE_ITEMS.map(function (item, idx) {
-      var isCurPage = item.href === currentPath;
+      var isCurPage = item.href === currentPath ||
+        (item.matchPaths && item.matchPaths.indexOf(currentPath) !== -1);
       var isCurHash = item.href.indexOf("#") !== -1 && (currentPath + currentHash).indexOf(item.href) !== -1;
       var isActive = isCurHash || (!item.href.includes("#") && isCurPage);
 
@@ -617,10 +617,12 @@
       dLinks.forEach(function (link) {
         var href = link.getAttribute("href") || "";
         var isMatch = false;
+        var linkItem = DESKTOP_LINKS.filter(function (d) { return d.href === href; })[0];
         if (href.indexOf("#") !== -1) {
           isMatch = (targetPath + targetHash).indexOf(href) !== -1;
         } else {
-          isMatch = (href === targetPath || (targetPath === "index.html" && href === "index.html"));
+          isMatch = (href === targetPath || (targetPath === "index.html" && href === "index.html")) ||
+            (linkItem && linkItem.matchPaths && linkItem.matchPaths.indexOf(targetPath) !== -1);
         }
         if (isMatch) {
           link.classList.add("active");

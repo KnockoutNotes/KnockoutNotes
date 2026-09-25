@@ -10,16 +10,48 @@
   "use strict";
 
   const DATA = window.KN_STUDY;
-  const DRUG_TABS = ["overview", "structure", "pd", "pk", "dosage", "offlabel", "complications"];
-  const DRUG_TAB_LABEL = {
-    overview: "Overview", structure: "Chemical Structure", pd: "Pharmacodynamics",
-    pk: "Pharmacokinetics", dosage: "FDA-Approved Dosage", offlabel: "Off-Label Uses",
-    complications: "Complications"
-  };
+  // Every drug section renders in one continuous scroll now (no tabs) —
+  // this list just drives the order of each card in drugFullPanelHTML().
+  const DRUG_SECTIONS = ["overview", "structure", "pd", "pk", "dosage", "offlabel", "complications"];
 
   const $ = (sel, root = document) => root.querySelector(sel);
   const esc = (s) => String(s == null ? "" : s)
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+  // Auto-emphasis for reading content: bold+underline dosages/numeric values
+  // with units, and a short list of safety-critical phrases, so the key
+  // facts jump out of the prose without needing a separate callout box.
+  const HIGHLIGHT_RE = new RegExp(
+    "\\d+(?:\\.\\d+)?(?:\\s?[\\u2013-]\\s?\\d+(?:\\.\\d+)?)?\\s?" +
+      "(?:mg\\/kg\\/min|mcg\\/kg\\/min|mg\\/kg\\/h(?:r)?|mcg\\/kg\\/h(?:r)?|units?\\/kg\\/h(?:r)?|" +
+      "mg\\/kg|mcg\\/kg|mg\\/min|mcg\\/min|mL\\/kg|ml\\/kg|mEq\\/kg|mg|mcg|g\\/kg|g|mL|ml|units?|IU|mEq|" +
+      "mmHg|bpm|minutes?|mins?|hours?|hrs?|seconds?|secs?|%)" +
+      "|\\b(?:contraindicated|black[\\s-]box warning|boxed warning|do not (?:administer|give|use)|" +
+      "never give|never use|avoid in|life-threatening|malignant hyperthermia|anaphylaxis|" +
+      "status epilepticus|FDA-approved|off-label|first-line|second-line)\\b",
+    "gi"
+  );
+  function highlightKeyValues(escapedText) {
+    return escapedText.replace(HIGHLIGHT_RE, (m) => `<strong><u>${m}</u></strong>`);
+  }
+
+  // Simple line-icon set (currentColor, so it tints against each category's
+  // poster gradient) used on grid tiles and the detail hero in place of a
+  // flat emoji glyph.
+  const CAT_ICON_SVG = {
+    anaesthesia: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 9v12"/><path d="M24 21c-2-6-8-6-10-2-2 4-2 14 2 18 3 3 7 1 8-4"/><path d="M24 21c2-6 8-6 10-2 2 4 2 14-2 18-3 3-7 1-8-4"/><circle cx="24" cy="9" r="2.2" fill="currentColor" stroke="none"/></svg>',
+    equipment: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="36" height="23" rx="3"/><path d="M10 24h6l3-8 5 16 4-12 3 4h7"/><path d="M18 40h12"/><path d="M24 33v7"/></svg>',
+    induction: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M30 8l9 9"/><path d="M27 11l9 9-16 16-9 3 3-9z"/><path d="M23 15l9 9"/><path d="M19 19l9 9"/><path d="M11 35l4 4"/></svg>',
+    relaxants: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="5"/><circle cx="34" cy="13" r="5"/><circle cx="23" cy="34" r="5"/><path d="M17 14h13M14 17l6 12M32 17l-6 12"/></svg>',
+    reversal: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M36 15a16 16 0 1 1-4-6"/><path d="M38 6v9h-9"/></svg>',
+    opioids: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6c8 10 12 17 12 23a12 12 0 0 1-24 0c0-6 4-13 12-23z"/><path d="M18 29c0 4 2.5 6 6 6"/></svg>',
+    nsaids: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="15"/><line x1="24" y1="9" x2="24" y2="39"/></svg>',
+    vasopressors: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 40C10 30 6 22 6 15a9 9 0 0 1 18-2 9 9 0 0 1 18 2c0 7-4 15-18 25z"/><path d="M9 22h6l3-7 4 14 3-9 2 2h9"/></svg>',
+    local: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="24" y1="6" x2="24" y2="42"/><line x1="6" y1="24" x2="42" y2="24"/><line x1="11" y1="11" x2="37" y2="37"/><line x1="37" y1="11" x2="11" y2="37"/></svg>'
+  };
+  function catIconHTML(catId, cat) {
+    return CAT_ICON_SVG[catId] || esc(cat.icon);
+  }
 
   const drugById = new Map(DATA.drugs.map((d) => [d.id, d]));
   const topicById = new Map(DATA.topics.map((t) => [t.id, t]));
@@ -34,7 +66,7 @@
       : DATA.drugs.filter((d) => d.cat === catId);
   }
 
-  let state = { cat: "anaesthesia", item: null, tab: "overview", filter: "" };
+  let state = { cat: "anaesthesia", item: null, filter: "" };
 
   /* ---------------------------------------------------------- scroll reveal */
   // Netflix-style smooth entrance: elements start at opacity:0/translateY
@@ -67,11 +99,9 @@
   function readURL() {
     const q = new URLSearchParams(location.search);
     const item = q.get("item");
-    const tab = q.get("tab");
     const cat = q.get("cat");
     return {
       item: item && itemById(item) ? item : null,
-      tab: DRUG_TABS.includes(tab) ? tab : "overview",
       cat: cat === "all" || catById.has(cat) ? cat : null
     };
   }
@@ -88,7 +118,6 @@
     const r = readURL();
     if (r.item) {
       state.item = r.item;
-      state.tab = r.tab;
       const found = itemById(r.item);
       state.cat = found.cat;
       showDetail();
@@ -113,7 +142,7 @@
   function tileHTML(item) {
     const cat = catById.get(item.cat);
     return `<a class="st-tile st-reveal" href="?item=${item.id}" data-item="${item.id}" data-cat="${item.cat}" aria-label="${esc(item.name)}">
-      <div class="st-tile-icon" aria-hidden="true">${cat.icon}</div>
+      <div class="st-tile-icon" aria-hidden="true">${catIconHTML(item.cat, cat)}</div>
       <div class="st-tile-info">
         <span class="st-tile-cat">${esc(cat.label)}</span>
         <strong class="st-tile-name">${esc(item.short || item.name)}</strong>
@@ -144,7 +173,6 @@
   function showList() {
     $("#stDetail").hidden = true;
     $("#stList").hidden = false;
-    $("#stStage").classList.remove("st-narrow");
     const cat = catById.get(state.cat);
     document.title = `${cat ? cat.label : "Study Mode"} | Study Mode | KnockoutNotes`;
     renderCatNav();
@@ -163,28 +191,24 @@
     return `<section class="st-card st-reveal ${extraClass}"><h3>${esc(title)}</h3><div class="st-card-body">${bodyHTML}</div></section>`;
   }
 
-  function para(text) { return `<p>${esc(text)}</p>`; }
+  function para(text) { return `<p>${highlightKeyValues(esc(text))}</p>`; }
 
   // Long-form topic prose is authored with blank-line paragraph breaks and
   // optional callouts — this keeps study-data.js readable as plain prose
   // while still rendering as properly separated paragraphs/boxes.
   function paras(text) {
     if (!text) return "";
-    return text.trim().split(/\n\s*\n/).map((p) => `<p>${esc(p.trim())}</p>`).join("");
+    return text.trim().split(/\n\s*\n/).map((p) => `<p>${highlightKeyValues(esc(p.trim()))}</p>`).join("");
   }
   function callout(kind, label, text) {
     if (!text) return "";
     return `<div class="st-callout st-callout-${kind}"><span class="st-callout-label">${esc(label)}</span>${paras(text)}</div>`;
   }
 
-  function drugTabsHTML(d) {
-    return `<div class="st-tabs" role="tablist" aria-label="Drug sections">
-      ${DRUG_TABS.map((t) => `<button type="button" role="tab" class="${state.tab === t ? "active" : ""}" data-tab="${t}" aria-selected="${state.tab === t}">${DRUG_TAB_LABEL[t]}</button>`).join("")}
-    </div>`;
-  }
-
-  function drugPanelHTML(d, tab) {
-    switch (tab) {
+  // All drug sections render in one continuous scroll — no tabs to click
+  // through, so the full monograph is visible/readable in a single pass.
+  function drugSectionCard(d, section) {
+    switch (section) {
       case "overview":
         return card("Overview", `<p class="st-tagline-lg">${esc(d.tagline)}</p>
           ${d.brand ? `<p><strong>Brand name(s):</strong> ${esc(d.brand)}</p>` : ""}
@@ -198,6 +222,9 @@
       case "complications": return card("Complications", para(d.complications));
       default: return "";
     }
+  }
+  function drugFullPanelHTML(d) {
+    return DRUG_SECTIONS.map((s) => drugSectionCard(d, s)).join("");
   }
 
   function topicPanelHTML(t) {
@@ -294,56 +321,50 @@
   function showDetail() {
     $("#stList").hidden = true;
     $("#stDetail").hidden = false;
-    $("#stStage").classList.add("st-narrow");
     const item = itemById(state.item);
     const drug = isDrugCat(item.cat);
+    const cat = catById.get(item.cat);
     document.title = `${item.name} | Study Mode | KnockoutNotes`;
 
     const backHref = `?cat=${item.cat}`;
     const tagsRow = item.tags && item.tags.length
       ? `<div class="st-tagrow">${item.tags.map((tg) => `<span class="st-chip">${esc(tg)}</span>`).join("")}</div>` : "";
 
-    let bodyHTML;
-    if (drug) {
-      bodyHTML = `${drugTabsHTML(item)}<div class="st-panel" id="stPanel">${drugPanelHTML(item, state.tab)}</div>`;
-    } else {
-      bodyHTML = `<div class="st-panel st-panel-scroll" id="stPanel">${topicPanelHTML(item)}</div>`;
-    }
+    const bodyHTML = drug
+      ? `<div class="st-panel" id="stPanel">${drugFullPanelHTML(item)}</div>`
+      : `<div class="st-panel st-panel-scroll" id="stPanel">${topicPanelHTML(item)}</div>`;
 
+    // Netflix-style collapsing hero: big poster-gradient cover on open,
+    // shrinks into a small pinned title bar as the reader scrolls (driven
+    // by --shrink in study.css, updated from updateHeroShrink() below).
     $("#stDetail").innerHTML = `
-      <a class="st-back" href="${backHref}" data-back>← Back to ${esc(catById.get(item.cat).label)}</a>
-      <header class="st-detail-head">
-        <span class="st-detail-icon" aria-hidden="true">${catById.get(item.cat).icon}</span>
-        <div>
-          <h1>${esc(item.name)}</h1>
-          <p class="st-detail-tag">${esc(item.tagline)}</p>
-          ${tagsRow}
+      <div class="st-detail-hero" id="stDetailHero" data-cat="${item.cat}">
+        <div class="st-detail-hero-inner">
+          <a class="st-back" href="${backHref}" data-back>← Back to ${esc(cat.label)}</a>
+          <div class="st-detail-hero-main">
+            <span class="st-detail-hero-icon" aria-hidden="true">${catIconHTML(item.cat, cat)}</span>
+            <div>
+              <h1 class="st-detail-hero-title">${esc(item.name)}</h1>
+              <p class="st-detail-hero-tag">${esc(item.tagline)}</p>
+              ${tagsRow}
+            </div>
+          </div>
         </div>
-      </header>
-      ${sourceBanner(item.source)}
-      ${bodyHTML}
+      </div>
+      <div class="st-hero-spacer" id="stHeroSpacer"></div>
+      <div class="st-reading-col">
+        ${sourceBanner(item.source)}
+        ${bodyHTML}
+      </div>
     `;
     bindDetailEvents();
     observeReveal($("#stDetail"));
     window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
+    updateHeroShrink();
+    syncHeroSpacer();
   }
 
   function bindDetailEvents() {
-    $("#stDetail").querySelectorAll("[data-tab]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        state.tab = btn.getAttribute("data-tab");
-        writeURL({ item: state.item, tab: state.tab });
-        const item = itemById(state.item);
-        $("#stPanel").innerHTML = drugPanelHTML(item, state.tab);
-        observeReveal($("#stPanel"));
-        $("#stDetail").querySelectorAll("[data-tab]").forEach((b) => {
-          const active = b === btn;
-          b.classList.toggle("active", active);
-          b.setAttribute("aria-selected", String(active));
-        });
-        window.scrollTo({ top: $("#stDetail").offsetTop - 12, behavior: "smooth" });
-      });
-    });
     const back = $("#stDetail [data-back]");
     if (back) {
       back.addEventListener("click", (e) => {
@@ -353,6 +374,42 @@
       });
     }
   }
+
+  /* -------------------------------------------------- Netflix-style hero shrink */
+  // As the reader scrolls, --shrink ramps 0 → 1 over HERO_SHRINK_PX and every
+  // dimension in .st-detail-hero (padding, icon size, title size, tagline
+  // opacity) interpolates smoothly via CSS calc() — the big cover collapses
+  // into a small pinned title bar with no discrete "now it's a header" jump.
+  const HERO_SHRINK_PX = 190;
+  let heroShrinkRAF = null;
+  function updateHeroShrink() {
+    heroShrinkRAF = null;
+    const hero = document.getElementById("stDetailHero");
+    if (!hero) return;
+    const t = Math.max(0, Math.min(1, window.scrollY / HERO_SHRINK_PX));
+    hero.style.setProperty("--shrink", t.toFixed(3));
+  }
+  window.addEventListener("scroll", () => {
+    if (heroShrinkRAF) return;
+    heroShrinkRAF = requestAnimationFrame(updateHeroShrink);
+  }, { passive: true });
+
+  // The hero is position:fixed (see study.css for why), so it's out of
+  // document flow — this spacer reserves its natural (unshrunk) height in
+  // the flow so the reading content never renders underneath it. Measured
+  // at --shrink:0 so a resize mid-scroll doesn't capture the collapsed size.
+  function syncHeroSpacer() {
+    const hero = document.getElementById("stDetailHero");
+    const spacer = document.getElementById("stHeroSpacer");
+    if (!hero || !spacer) return;
+    const prevShrink = hero.style.getPropertyValue("--shrink");
+    hero.style.setProperty("--shrink", "0");
+    spacer.style.height = `${hero.getBoundingClientRect().height}px`;
+    hero.style.setProperty("--shrink", prevShrink || "0");
+  }
+  window.addEventListener("resize", () => {
+    if (document.getElementById("stDetailHero")) syncHeroSpacer();
+  }, { passive: true });
 
   /* ---------------------------------------------------------------- events */
   function bindListEvents() {
@@ -372,7 +429,6 @@
       e.preventDefault();
       const id = a.getAttribute("data-item");
       state.item = id;
-      state.tab = "overview";
       writeURL({ item: id });
       showDetail();
     });

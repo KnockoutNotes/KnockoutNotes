@@ -50,9 +50,19 @@ assert "Valve Lesions" not in mob_more_labels, "Valve Lesions must not be in 3-d
 assert "Pearls" not in mob_more_labels, "Pearls must not be in 3-dot menu"
 assert "Viva" not in mob_more_labels, "Viva must not be in 3-dot menu"
 
-for item in ['3D Workstation', 'Drugs Library', 'Critical Care', 'Resuscitation', 'Recent Updates', 'About & Evidence']:
+for item in ['3D Workstation', 'Drugs Library', 'Critical Care', 'Recent Updates', 'About & Evidence']:
     assert item in mob_more_labels, f"{item} missing from MOBILE_MORE_ITEMS"
-print(f"[OK] MOBILE_MORE_ITEMS verified (no Home/Notes/Calc): {mob_more_labels}")
+
+# Resuscitation is a subsection of Critical Care, not its own top-level tab
+assert "Resuscitation" not in mob_more_labels, "Resuscitation must not be its own top-level MOBILE_MORE_ITEMS entry (it's a Critical Care subsection)"
+assert "Resuscitation" not in desktop_labels, "Resuscitation must not be its own top-level DESKTOP_LINKS entry (it's a Critical Care subsection)"
+print(f"[OK] MOBILE_MORE_ITEMS verified (no Home/Notes/Calc, no standalone Resuscitation): {mob_more_labels}")
+
+# 3b. Resuscitation Chamber must still be reachable as a subsection inside Critical Care
+with open("critical-care.html", "r", encoding="utf-8") as f:
+    critical_care_html = f.read()
+assert "resuscitation-chamber.html" in critical_care_html, "critical-care.html must still link to the Resuscitation Chamber as a subsection"
+print("[OK] Resuscitation Chamber verified reachable as a Critical Care subsection.")
 
 # 4. Check CSS for 2-column grid and Apple iOS glass aesthetics
 assert "grid-template-columns: repeat(2, 1fr)" in css, "Mobile more menu must be a 2-column grid"
