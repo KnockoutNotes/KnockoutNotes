@@ -145,8 +145,16 @@
 
   function tileHTML(item) {
     const cat = catById.get(item.cat);
-    return `<a class="st-tile st-reveal" href="?item=${item.id}" data-item="${item.id}" data-cat="${item.cat}" aria-label="${esc(item.name)}">
-      <div class="st-tile-icon" aria-hidden="true">${catIconHTML(item.cat, cat)}</div>
+    // Drugs with a verified chemical structure diagram show THEIR OWN
+    // structure on the poster tile instead of the shared category icon —
+    // every card in a category no longer looks identical. Topics and
+    // drugs without a diagram (see study-structures.js) keep the icon.
+    const structRec = window.KN_STRUCTURES && window.KN_STRUCTURES[item.id];
+    const iconHTML = structRec
+      ? `<div class="st-tile-structure">${structRec.svg}</div>`
+      : catIconHTML(item.cat, cat);
+    return `<a class="st-tile st-reveal${structRec ? " st-tile-has-structure" : ""}" href="?item=${item.id}" data-item="${item.id}" data-cat="${item.cat}" aria-label="${esc(item.name)}">
+      <div class="st-tile-icon" aria-hidden="true">${iconHTML}</div>
       <div class="st-tile-info">
         <span class="st-tile-cat">${esc(cat.label)}</span>
         <strong class="st-tile-name">${esc(item.short || item.name)}</strong>
