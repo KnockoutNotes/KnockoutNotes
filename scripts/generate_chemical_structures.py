@@ -28,13 +28,27 @@ Two construction methods, chosen per drug by confidence:
      would miss.
 
 Only includes drugs with well-established, confidently-known structures.
-Deliberately excluded: morphine/hydromorphone (bridged pentacyclic
-morphinan skeleton — genuine risk of a wrong bridgehead from memory),
-mivacurium/gantacurium (isomeric enough to the atracurium family that a
-subtle wrong substituent wouldn't be caught by these checks),
-remimazolam/cipepofol (newer, lower confidence), and the biologics
-sugammadex (cyclodextrin macrocycle) / vasopressin (cyclic peptide) — not
-small molecules suited to a skeletal diagram in the first place.
+
+The morphinan-family opioids (morphine, hydromorphone, naloxone,
+naltrexone, nalbuphine, buprenorphine) and the benzomorphan pentazocine
+share the same bridged/fused ring risk that excluded morphine and
+hydromorphone from earlier revisions of this script — but rather than
+hand-typing a fused-ring SMILES from memory (the exact mistake that risk
+is about), these are generated from each drug's standard IUPAC/
+pharmacopoeial systematic name via OPSIN (py2opsin — a deterministic,
+fully offline, rule-based name-to-structure parser; no memory-recall risk
+for the CONNECTIVITY itself, only for correctly recalling the name,
+which is well-documented and independently cross-checked here against
+each drug's known molecular formula AND expected ring-size pattern
+(EXPECTED_RING_SIZES), exactly like the BUILDER_ENTRIES below). See
+`_OPSIN_NAMES` for the exact names used.
+
+Deliberately excluded: mivacurium/gantacurium (isomeric enough to the
+atracurium family that a subtle wrong substituent wouldn't be caught by
+these checks), remimazolam/cipepofol (newer, lower confidence), and the
+biologics sugammadex (cyclodextrin macrocycle) / vasopressin (cyclic
+peptide) — not small molecules suited to a skeletal diagram in the first
+place.
 
 Run from the repo root:
     python3 scripts/generate_chemical_structures.py
@@ -81,7 +95,57 @@ SMILES_ENTRIES = {
     "ropivacaine": "CCCN1CCCCC1C(=O)Nc1c(C)cccc1C",
     "mepivacaine": "CN1CCCCC1C(=O)Nc1c(C)cccc1C",
     "chloroprocaine": "CCN(CC)CCOC(=O)c1ccc(N)cc1Cl",
+    "tramadol": "COc1cccc(C2(O)CCCCC2CN(C)C)c1",
+    "pethidine": "CCOC(=O)C1(c2ccccc2)CCN(C)CC1",
 }
+
+# --------------------------------------------------------------------------
+# 1b. Morphinan/benzomorphan-family opioids — derived from each drug's
+#     standard IUPAC/pharmacopoeial systematic name via OPSIN (py2opsin), a
+#     deterministic, fully offline, rule-based name-to-structure parser.
+#     Their bridged/fused ring systems are exactly the kind that's too easy
+#     to get subtly wrong hand-typing a ring-closure SMILES from memory —
+#     OPSIN removes that risk for the connectivity itself; the only
+#     remaining risk is correctly recalling the name, which is why every
+#     one of these is still independently cross-checked below against its
+#     known molecular formula AND expected ring-size pattern before being
+#     accepted (see EXPECTED_RING_SIZES), exactly like the BUILDER_ENTRIES.
+# --------------------------------------------------------------------------
+_OPSIN_NAMES = {
+    "morphine": "7,8-didehydro-4,5-epoxy-17-methylmorphinan-3,6-diol",
+    "hydromorphone": "4,5-epoxy-3-hydroxy-17-methylmorphinan-6-one",
+    "naloxone": "4,5-epoxy-3,14-dihydroxy-17-(prop-2-enyl)morphinan-6-one",
+    "naltrexone": "4,5-epoxy-3,14-dihydroxy-17-(cyclopropylmethyl)morphinan-6-one",
+    "nalbuphine": "17-(cyclobutylmethyl)-4,5-epoxymorphinan-3,6,14-triol",
+    "pentazocine": "3-(3-methylbut-2-enyl)-6,11-dimethyl-1,2,3,4,5,6-hexahydro-2,6-methano-3-benzazocin-8-ol",
+    "buprenorphine": "17-(cyclopropylmethyl)-7-(2-hydroxy-3,3-dimethylbutan-2-yl)-6-methoxy-4,5-epoxy-6,14-ethanomorphinan-3-ol",
+}
+
+
+def _opsin_smiles_entries():
+    """Runs OPSIN on each name in _OPSIN_NAMES and returns a dict of
+    drug_id -> flat (stereochemistry-stripped) SMILES, ready to merge into
+    SMILES_ENTRIES. A name OPSIN can't parse is skipped (not guessed at) —
+    main()'s verification step will then simply have no entry for that
+    drug, same as any other excluded drug."""
+    try:
+        from py2opsin import py2opsin
+    except ImportError:
+        print("py2opsin not installed (pip install py2opsin) — skipping morphinan-family entries")
+        return {}
+    out = {}
+    for drug_id, name in _OPSIN_NAMES.items():
+        smi = py2opsin(name)
+        if not smi:
+            print(f"OPSIN FAILED to parse name for {drug_id}: {name!r}")
+            continue
+        mol = Chem.MolFromSmiles(smi)
+        if mol is None:
+            print(f"RDKit failed to parse OPSIN output for {drug_id}: {smi!r}")
+            continue
+        Chem.RemoveStereochemistry(mol)
+        out[drug_id] = Chem.MolToSmiles(mol)
+    return out
 
 REFERENCE_FORMULA = {
     "propofol": "C12H18O", "etomidate": "C14H16N2O2", "ketamine": "C13H16ClNO",
@@ -95,9 +159,14 @@ REFERENCE_FORMULA = {
     "dopamine": "C8H11NO2", "dobutamine": "C18H23NO3",
     "lidocaine": "C14H22N2O", "bupivacaine": "C18H28N2O", "ropivacaine": "C17H26N2O",
     "mepivacaine": "C15H22N2O", "chloroprocaine": "C13H19ClN2O2",
+    "tramadol": "C16H25NO2", "pethidine": "C15H21NO2",
     # bis-quaternary neuromuscular blockers (see BUILDER_ENTRIES below)
     "pancuronium": "C35H60N2O4+2", "vecuronium": "C34H57N2O4+", "rocuronium": "C32H53N2O4+",
     "atracurium": "C53H72N2O12+2", "cisatracurium": "C53H72N2O12+2",
+    # morphinan/benzomorphan-family opioids (see _OPSIN_NAMES above)
+    "morphine": "C17H19NO3", "hydromorphone": "C17H19NO3",
+    "naloxone": "C19H21NO4", "naltrexone": "C20H23NO4", "nalbuphine": "C21H27NO4",
+    "pentazocine": "C19H27NO", "buprenorphine": "C29H41NO4",
 }
 
 EXPECTED_RING_SIZES = {
@@ -106,6 +175,18 @@ EXPECTED_RING_SIZES = {
     "pancuronium": [5, 6, 6, 6, 6, 6],       # steroid + 2x piperidinium (6)
     "vecuronium": [5, 6, 6, 6, 6, 6],        # steroid + piperidine(6) + piperidinium(6)
     "rocuronium": [5, 5, 6, 6, 6, 6],        # steroid + morpholino(6) + allylpyrrolidinium(5)
+    # morphinan core: aromatic ring + 3 more fused carbocyclic/N rings (all
+    # 6-membered) + the 4,5-epoxy furan bridge (5-membered) = [5,6,6,6,6].
+    # Extra rings come from an N-substituent (cyclopropyl/cyclobutylmethyl)
+    # or, for buprenorphine, the additional 6,14-ethano bridge ring system.
+    "morphine": [5, 6, 6, 6, 6], "hydromorphone": [5, 6, 6, 6, 6],
+    "naloxone": [5, 6, 6, 6, 6],
+    "naltrexone": [3, 5, 6, 6, 6, 6],       # + N-cyclopropylmethyl (3-ring)
+    "nalbuphine": [4, 5, 6, 6, 6, 6],       # + N-cyclobutylmethyl (4-ring)
+    "buprenorphine": [3, 5, 6, 6, 6, 6, 6, 6],  # + N-cyclopropylmethyl + extra ethano-bridge ring
+    # benzomorphan: aromatic ring + the bridged azabicyclic system (SSSR
+    # reports this bicyclic bridge as two more 6-membered rings).
+    "pentazocine": [6, 6, 6],
     # two benzylisoquinolinium halves: 3 six-membered rings each
     "atracurium": [6, 6, 6, 6, 6, 6],
     "cisatracurium": [6, 6, 6, 6, 6, 6],
@@ -407,7 +488,10 @@ def main():
     mols = {}
     mismatches = []
 
-    for drug_id, smi in SMILES_ENTRIES.items():
+    all_smiles_entries = dict(SMILES_ENTRIES)
+    all_smiles_entries.update(_opsin_smiles_entries())
+
+    for drug_id, smi in all_smiles_entries.items():
         mol = Chem.MolFromSmiles(smi)
         if mol is None:
             print(f"FAILED TO PARSE: {drug_id} -> {smi}")
@@ -415,8 +499,21 @@ def main():
             continue
         formula = rdMolDescriptors.CalcMolFormula(mol)
         expected = REFERENCE_FORMULA.get(drug_id)
-        ok = formula == expected
-        print(f"{drug_id:20s} {formula:20s} {'OK' if ok else f'MISMATCH (expected {expected})'}")
+        formula_ok = formula == expected
+        # Drugs in EXPECTED_RING_SIZES (the morphinan/benzomorphan family —
+        # see _OPSIN_NAMES) get the same extra ring-topology cross-check as
+        # the programmatically-built entries below, since formula-matching
+        # alone can't catch every possible connectivity error.
+        expected_rings = EXPECTED_RING_SIZES.get(drug_id)
+        if expected_rings is not None:
+            ring_sizes = sorted(len(r) for r in mol.GetRingInfo().AtomRings())
+            rings_ok = ring_sizes == expected_rings
+            ok = formula_ok and rings_ok
+            status = "OK" if ok else f"MISMATCH formula={formula} (expected {expected}) rings={ring_sizes} (expected {expected_rings})"
+        else:
+            ok = formula_ok
+            status = "OK" if ok else f"MISMATCH (expected {expected})"
+        print(f"{drug_id:20s} {formula:20s} {status}")
         if not ok:
             mismatches.append(drug_id)
             continue
@@ -449,7 +546,7 @@ def main():
     # card falls back to the flat SVG instead of the rotating model.
     threed = {}
     threed_failures = []
-    ordered_ids_for_3d = list(SMILES_ENTRIES.keys()) + list(BUILDER_ENTRIES.keys())
+    ordered_ids_for_3d = list(all_smiles_entries.keys()) + list(BUILDER_ENTRIES.keys())
     for drug_id in ordered_ids_for_3d:
         if drug_id not in mols:
             continue
@@ -497,7 +594,7 @@ def main():
         "window.KN_STRUCTURES = {",
     ]
     # keep a stable, readable order: SMILES entries first, then builder entries
-    ordered_ids = list(SMILES_ENTRIES.keys()) + list(BUILDER_ENTRIES.keys())
+    ordered_ids = list(all_smiles_entries.keys()) + list(BUILDER_ENTRIES.keys())
     for drug_id in ordered_ids:
         if drug_id not in entries:
             continue

@@ -209,6 +209,43 @@
     root.querySelectorAll(".st-tile-molecule[data-drug]").forEach((node) => tileMoleculeObserver.observe(node));
   }
 
+  // Opioid receptor-activity classification chart — shown above the poster
+  // grid only for the (unfiltered) Opioids category, not on "all
+  // categories" or search views. This is the classification actually
+  // taught for exam purposes: it's what explains why naloxone/naltrexone
+  // fully reverse an opioid while nalbuphine/pentazocine only partially
+  // do, and why buprenorphine has a ceiling on respiratory depression that
+  // a full agonist doesn't. Each chip reuses the existing [data-item]
+  // click delegation already bound on #stGrid (see bindListEvents()) — no
+  // separate event wiring needed since these chips render inside it.
+  const OPIOID_CLASSES = [
+    { label: "Full Agonists — Phenanthrene", desc: "Morphine and its direct chemical relatives.", members: ["morphine", "hydromorphone", "pethidine"] },
+    { label: "Full Agonists — Phenylpiperidine", desc: "The fentanyl family — fast, potent, synthetic.", members: ["fentanyl", "sufentanil", "alfentanil", "remifentanil"] },
+    { label: "Atypical / Weak Agonist", desc: "Opioid effect plus a second, non-opioid mechanism.", members: ["tramadol"] },
+    { label: "Partial Agonist", desc: "Ceiling effect on respiratory depression.", members: ["buprenorphine"] },
+    { label: "Mixed Agonist-Antagonists", desc: "Kappa agonist + mu antagonist/partial agonist.", members: ["nalbuphine", "pentazocine"] },
+    { label: "Pure Antagonists", desc: "No agonist activity of their own — reversal only.", members: ["naloxone", "naltrexone"] },
+  ];
+  function opioidClassificationHTML() {
+    const groups = OPIOID_CLASSES.map((g) => {
+      const chips = g.members.map((id) => {
+        const d = drugById.get(id);
+        if (!d) return "";
+        return `<a class="st-class-chip" href="?item=${id}" data-item="${id}">${esc(d.short || d.name)}</a>`;
+      }).join("");
+      if (!chips) return "";
+      return `<div class="st-class-group">
+        <h3>${esc(g.label)}</h3>
+        <p>${esc(g.desc)}</p>
+        <div class="st-class-chips">${chips}</div>
+      </div>`;
+    }).join("");
+    return `<section class="st-classification st-reveal" aria-label="Opioid classification by receptor activity">
+      <h2 class="st-classification-title">Classification — by Receptor Activity</h2>
+      <div class="st-classification-grid">${groups}</div>
+    </section>`;
+  }
+
   function renderGrid() {
     const grid = $("#stGrid");
     // Old tiles are about to be replaced/removed below — stop watching them
@@ -226,6 +263,7 @@
       total += list.length;
       if (!list.length) return;
       if (state.cat === "all" || f) html += `<h2 class="st-group-title"><span>${c.icon}</span> ${esc(c.label)}</h2>`;
+      if (c.id === "opioids" && state.cat === "opioids" && !f) html += opioidClassificationHTML();
       html += `<div class="st-grid">${list.map(tileHTML).join("")}</div>`;
     });
     grid.innerHTML = total ? html : `<div class="st-empty">No results for “${esc(state.filter)}”.</div>`;

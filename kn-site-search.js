@@ -1413,6 +1413,55 @@
     },
     {
       Type: "Study Drug",
+      Category: "Study Mode • Opioids",
+      Title: "Pethidine (Meperidine)",
+      Summary: "The opioid nobody starts on anymore — kept alive mainly for treating shivering, avoided for everything else",
+      href: "study.html?item=pethidine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Opioids",
+      Title: "Tramadol",
+      Summary: "A weak opioid with a second, independent mechanism bolted on — which is exactly what makes it awkward with antidepressants",
+      href: "study.html?item=tramadol"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Opioids",
+      Title: "Buprenorphine",
+      Summary: "So tightly bound to the mu receptor that it's hard to displace either way — a genuine ceiling on overdose risk, and a genuine headache if you need to reverse it",
+      href: "study.html?item=buprenorphine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Opioids",
+      Title: "Nalbuphine",
+      Summary: "A kappa agonist/mu antagonist combination best known for treating the itch that morphine and fentanyl cause, not for treating pain",
+      href: "study.html?item=nalbuphine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Opioids",
+      Title: "Pentazocine",
+      Summary: "One of the first agonist-antagonist opioids — largely retired now, remembered for causing dysphoria rather than euphoria",
+      href: "study.html?item=pentazocine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Opioids",
+      Title: "Naloxone",
+      Summary: "The opioid antidote — pure antagonism, fast onset, and a duration deliberately shorter than most of the drugs it's reversing",
+      href: "study.html?item=naloxone"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Opioids",
+      Title: "Naltrexone",
+      Summary: "Naloxone's longer-acting, orally active cousin — built for sustained blockade, not emergency reversal",
+      href: "study.html?item=naltrexone"
+    },
+    {
+      Type: "Study Drug",
       Category: "Study Mode • NSAIDs & Analgesics",
       Title: "Ketorolac",
       Summary: "An NSAID potent enough to substitute for opioids in acute pain — with a strict 5-day clock attached",

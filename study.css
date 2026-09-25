@@ -224,6 +224,67 @@ body[data-content-page="study"] .st-page.container {
 }
 .st-cat.active .st-count { background: rgba(255, 255, 255, 0.25); }
 
+/* ------------------------------------------------------------ opioid classification chart
+   Shown above the poster grid only for the unfiltered Opioids category
+   (see renderGrid()/opioidClassificationHTML() in study-ui.js) — groups
+   every opioid on the page by receptor activity, each group given its own
+   accent colour purely for quick visual scanning, not clinical meaning.
+   Chips reuse the existing [data-item] click delegation on #stGrid. */
+.st-classification {
+  margin-bottom: 22px;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+}
+.st-classification-title {
+  margin: 0 0 16px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: var(--text-main);
+}
+.st-classification-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+.st-class-group {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--group-accent, var(--accent-cyan));
+  background: var(--panel-tint-1);
+}
+.st-class-group h3 { margin: 0 0 4px; font-size: 13.5px; font-weight: 800; color: var(--text-main); }
+.st-class-group p { margin: 0 0 10px; font-size: 12.5px; line-height: 1.5; color: var(--text-muted); }
+.st-classification-grid .st-class-group:nth-child(1) { --group-accent: var(--accent-rose); }
+.st-classification-grid .st-class-group:nth-child(2) { --group-accent: var(--accent-blue); }
+.st-classification-grid .st-class-group:nth-child(3) { --group-accent: var(--accent-amber); }
+.st-classification-grid .st-class-group:nth-child(4) { --group-accent: var(--accent-indigo); }
+.st-classification-grid .st-class-group:nth-child(5) { --group-accent: var(--accent-emerald); }
+.st-classification-grid .st-class-group:nth-child(6) { --group-accent: var(--accent-cyan); }
+.st-class-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.st-class-chip {
+  padding: 4px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.st-class-chip:hover, .st-class-chip:focus-visible {
+  color: var(--group-accent, var(--accent-cyan));
+  border-color: var(--group-accent, var(--accent-cyan));
+  transform: translateY(-1px);
+}
+
 /* ------------------------------------------------------------ Netflix-style poster grid */
 .st-group-title {
   margin: 30px 0 14px;
