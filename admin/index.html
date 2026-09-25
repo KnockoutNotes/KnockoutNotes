@@ -494,6 +494,72 @@
               </div>
             </div>
           </div>
+
+          <!-- ==========================================
+               MARKER EDITOR — click-to-place / drag structure labels,
+               needle line and spread ellipse directly on a block's real
+               image. Hidden until "Edit Markers" is clicked on a row above.
+               ========================================== -->
+          <div class="adm-card" id="markerEditorCard" style="display: none; margin-top: 20px;">
+            <div class="adm-card-header">
+              <span class="adm-card-title">Markers — <span id="markerEditorTitle">—</span></span>
+              <button type="button" class="btn-secondary" id="markerEditorClose" style="padding: 4px 10px; font-size: 12px;">Close</button>
+            </div>
+            <div class="adm-card-body">
+              <div id="markerAlert" class="alert-banner"></div>
+              <p style="font-size: 12px; color: var(--adm-text-subtle); margin: 0 0 12px;">
+                This shows exactly what visitors see. <strong>Add marker</strong> then click the image to drop a structure label; drag any existing dot to reposition it. Use the list below each tool for precise numeric editing.
+              </p>
+
+              <div id="markerToolbar" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;">
+                <button type="button" class="btn-secondary marker-mode-btn" data-mode="add">+ Add Marker</button>
+                <button type="button" class="btn-secondary marker-mode-btn" data-mode="needle">📍 Set Needle (2 clicks)</button>
+                <button type="button" class="btn-secondary marker-mode-btn" data-mode="spread">🩸 Set Spread Area</button>
+                <span id="markerModeHint" style="font-size: 12px; color: var(--adm-accent, #38bdf8); align-self: center;"></span>
+              </div>
+
+              <div id="markerStageWrap" style="max-width: 640px;">
+                <div id="markerStage" style="position: relative; width: 100%; min-height: 220px; background: #000; border-radius: 8px; overflow: hidden; line-height: 0; cursor: default;">
+                  <img id="markerImage" src="" alt="" style="width: 100%; height: auto; display: block;">
+                  <svg id="markerOverlaySvg" viewBox="0 0 100 100" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></svg>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 18px;">
+                <div>
+                  <div class="adm-card-title" style="font-size: 13px; margin-bottom: 8px;">Structure Markers</div>
+                  <table class="adm-table">
+                    <thead><tr><th>Text</th><th>Type</th><th>X %</th><th>Y %</th><th></th></tr></thead>
+                    <tbody id="markerListBody"><tr><td colspan="5" style="color: var(--adm-text-subtle);">No markers yet — use “+ Add Marker” above.</td></tr></tbody>
+                  </table>
+                </div>
+
+                <div>
+                  <div class="adm-card-title" style="font-size: 13px; margin-bottom: 8px;">Needle Line</div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                    <label style="font-size: 12px; color: var(--adm-text-subtle);">From X <input type="number" id="needleFromX" class="form-input" style="width: 70px; display: inline-block;" min="0" max="100" step="0.1"></label>
+                    <label style="font-size: 12px; color: var(--adm-text-subtle);">From Y <input type="number" id="needleFromY" class="form-input" style="width: 70px; display: inline-block;" min="0" max="100" step="0.1"></label>
+                    <label style="font-size: 12px; color: var(--adm-text-subtle);">To X <input type="number" id="needleToX" class="form-input" style="width: 70px; display: inline-block;" min="0" max="100" step="0.1"></label>
+                    <label style="font-size: 12px; color: var(--adm-text-subtle);">To Y <input type="number" id="needleToY" class="form-input" style="width: 70px; display: inline-block;" min="0" max="100" step="0.1"></label>
+                    <button type="button" class="btn-secondary" id="needleClearBtn" style="padding: 4px 10px; font-size: 12px;">Clear needle</button>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="adm-card-title" style="font-size: 13px; margin-bottom: 8px;">Spread Area(s)</div>
+                  <table class="adm-table">
+                    <thead><tr><th>X %</th><th>Y %</th><th>RX %</th><th>RY %</th><th>Note</th><th></th></tr></thead>
+                    <tbody id="spreadListBody"><tr><td colspan="6" style="color: var(--adm-text-subtle);">None — use “Set Spread Area” above.</td></tr></tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 10px; margin-top: 18px;">
+                <button type="button" class="btn-primary" id="markerSaveBtn">Save Markers</button>
+                <button type="button" class="btn-secondary" id="markerResetBtn">Revert Changes</button>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!-- ==========================================

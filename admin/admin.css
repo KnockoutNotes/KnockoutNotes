@@ -1062,4 +1062,28 @@ body.admin-body {
   }
 }
 
+/* ==========================================
+   REGIONAL ANAESTHESIA — MARKER EDITOR
+   Click-to-place / drag structure labels, needle line and spread ellipse
+   on top of a block's real ultrasound image. See admin.js openMarkerEditor().
+   ========================================== */
+.marker-mode-btn.active {
+  background: var(--adm-accent, #38bdf8);
+  color: #0f172a;
+  border-color: var(--adm-accent, #38bdf8);
+  font-weight: 700;
+}
+
+#markerOverlaySvg .marker-dot {
+  transition: r 0.1s ease;
+}
+
+#markerOverlaySvg .marker-dot:hover {
+  filter: brightness(1.25);
+}
+
+#markerOverlaySvg .marker-dot:active {
+  cursor: grabbing;
+}
+
 

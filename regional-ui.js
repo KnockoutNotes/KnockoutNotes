@@ -48,9 +48,13 @@ function getReal(b) {
     attribution: (admin && admin.attribution) || (authored && authored.attribution) || null,
     orientation: (admin && admin.orientation) || (authored && authored.orientation) || null,
     probe: (admin && admin.probe) || (authored && authored.probe) || null,
-    labels: (authored && authored.labels) || [],
-    needleOverlay: (authored && authored.needleOverlay) || null,
-    spreadOverlay: (authored && authored.spreadOverlay) || []
+    // Admin-edited markers (from the /admin Regional Images marker editor)
+    // take priority over hand-authored ones in code, so fixing a wrong
+    // marker from the admin panel actually changes what visitors see —
+    // only fall back to the authored labels when no admin override exists.
+    labels: (admin && admin.labels && admin.labels.length ? admin.labels : null) || (authored && authored.labels) || [],
+    needleOverlay: (admin && admin.needleOverlay) || (authored && authored.needleOverlay) || null,
+    spreadOverlay: (admin && admin.spreadOverlay && admin.spreadOverlay.length ? admin.spreadOverlay : null) || (authored && authored.spreadOverlay) || []
   };
 }
 

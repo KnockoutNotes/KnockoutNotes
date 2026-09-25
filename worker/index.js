@@ -48,6 +48,7 @@ import { getWebAnalytics } from './analytics.js';
 import {
   listRegionalImages,
   upsertRegionalImage,
+  upsertRegionalMarkers,
   deleteRegionalImage
 } from './regional-images.js';
 
@@ -1207,6 +1208,22 @@ export default {
           const blockId = (body.block_id || '').trim();
           const result = await upsertRegionalImage(env.DB, blockId, body, session.admin_username);
           await recordAuditLog(env.DB, session.admin_username, 'regional_image_set', 'regional_block_images', blockId, { image_url: body.image_url, source: body.source });
+          return jsonResponse({ success: true, image: result });
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 400);
+        }
+      }
+
+      if (pathname.startsWith('/api/admin/regional-images/') && pathname.endsWith('/markers') && request.method === 'PUT') {
+        try {
+          const blockId = decodeURIComponent(pathname.replace('/api/admin/regional-images/', '').replace(/\/markers$/, ''));
+          const body = await request.json();
+          const result = await upsertRegionalMarkers(env.DB, blockId, body, session.admin_username);
+          await recordAuditLog(env.DB, session.admin_username, 'regional_markers_set', 'regional_block_images', blockId, {
+            labels: (body.labels || []).length,
+            hasNeedle: !!body.needleOverlay,
+            spreads: (body.spreadOverlay || []).length
+          });
           return jsonResponse({ success: true, image: result });
         } catch (err) {
           return jsonResponse({ error: err.message }, 400);

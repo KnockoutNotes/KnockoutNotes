@@ -398,6 +398,7 @@ function setupEventListeners() {
   if (regionalForm) {
     regionalForm.addEventListener('submit', handleRegionalFormSubmit);
   }
+  initMarkerEditor();
 
   const refreshLogsBtn = document.getElementById('refreshLogsBtn');
   if (refreshLogsBtn) {
@@ -1215,9 +1216,10 @@ function renderRegionalTable() {
       <td style="font-size: 12px; color: var(--adm-text-subtle);">${escapeHtml([r.orientation, r.probe].filter(Boolean).join(' · ') || '—')}</td>
       <td style="font-size: 12px; color: var(--adm-text-subtle);">${escapeHtml((r.updated_at || '').replace('T', ' ').slice(0, 16))}</td>
       <td>
-        <div style="display: flex; gap: 6px;">
+        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
           <a href="${escapeHtml(r.image_url)}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 3px 8px; font-size: 11px;">View</a>
           <button class="btn-secondary" style="padding: 3px 8px; font-size: 11px;" onclick="editRegionalImage('${r.block_id}')">Edit</button>
+          <button class="btn-secondary" style="padding: 3px 8px; font-size: 11px;" onclick="openMarkerEditor('${r.block_id}')">Markers${(r.labels || []).length ? ` (${r.labels.length})` : ''}</button>
           <button class="btn-danger" style="padding: 3px 8px; font-size: 11px;" onclick="promptDeleteRegionalImage('${r.block_id}', '${escapeHtml(label)}')">Delete</button>
         </div>
       </td>
@@ -1321,6 +1323,333 @@ async function handleRegionalFormSubmit(e) {
   } finally {
     btn.disabled = false;
     btn.textContent = 'Save Image for This Block';
+  }
+}
+
+// ==========================================
+// REGIONAL ANAESTHESIA — MARKER EDITOR
+// Click-to-place / drag structure labels, needle line and spread-area
+// ellipse directly on a block's real ultrasound image. Saves to
+// PUT /api/admin/regional-images/:blockId/markers (separate from the image
+// URL form above, so the two can never accidentally clobber each other).
+// Coordinates are percent-of-image (0-100), matching regional-sono.js's
+// renderReal() on the public page exactly — what you place here is what
+// visitors see, at the same position.
+// ==========================================
+
+const MARKER_TYPE_COLORS = {
+  muscle: '#be123c', nerve: '#f59e0b', artery: '#dc2626', vein: '#2563eb',
+  bone: '#475569', pleura: '#0d9488', bowel: '#0f766e', organ: '#7c3aed',
+  fascia: '#0891b2', ligament: '#0891b2', sheath: '#0891b2', tendon: '#6b7280',
+  space: '#0284c7', marker: '#15803d', point: '#e11d48'
+};
+const MARKER_TYPES = Object.keys(MARKER_TYPE_COLORS);
+
+let markerState = { blockId: null, imageUrl: '', labels: [], needleOverlay: null, spreadOverlay: [] };
+let markerMode = null; // null | 'add' | 'needle' | 'spread'
+let markerNeedleStep = 0; // 0 = next click sets "from", 1 = next click sets "to"
+let markerDrag = null; // { kind: 'label'|'spread'|'needle-from'|'needle-to', idx }
+
+function clampNum(v, min, max, fallback) {
+  const n = parseFloat(v);
+  if (!Number.isFinite(n)) return fallback;
+  return Math.min(max, Math.max(min, n));
+}
+function round1(n) { return Math.round(n * 10) / 10; }
+
+function setMarkerMode(mode) {
+  markerMode = mode;
+  markerNeedleStep = 0;
+  document.querySelectorAll('.marker-mode-btn').forEach((b) => b.classList.toggle('active', b.dataset.mode === mode));
+  const hints = {
+    add: 'Click the image to add a structure marker.',
+    needle: 'Click the needle entry point, then the tip.',
+    spread: 'Click the image to place a spread-area ellipse.'
+  };
+  const hintEl = document.getElementById('markerModeHint');
+  if (hintEl) hintEl.textContent = hints[mode] || '';
+  const stage = document.getElementById('markerStage');
+  if (stage) stage.style.cursor = mode ? 'crosshair' : 'default';
+}
+
+function renderMarkerOverlay() {
+  const svg = document.getElementById('markerOverlaySvg');
+  if (!svg) return;
+  let html = '';
+  markerState.spreadOverlay.forEach((s, i) => {
+    html += `<ellipse class="marker-dot" data-kind="spread" data-idx="${i}" cx="${s.x}" cy="${s.y}" rx="${s.rx}" ry="${s.ry}" fill="rgba(14,165,233,0.28)" stroke="#0ea5e9" stroke-width="0.6" style="cursor:grab;"></ellipse>`;
+  });
+  if (markerState.needleOverlay) {
+    const n = markerState.needleOverlay;
+    html += `<line x1="${n.from[0]}" y1="${n.from[1]}" x2="${n.to[0]}" y2="${n.to[1]}" stroke="#f8fafc" stroke-width="0.6"></line>`;
+    html += `<circle class="marker-dot" data-kind="needle-from" cx="${n.from[0]}" cy="${n.from[1]}" r="1.8" fill="#94a3b8" stroke="#0f172a" stroke-width="0.4" style="cursor:grab;"></circle>`;
+    html += `<circle class="marker-dot" data-kind="needle-to" cx="${n.to[0]}" cy="${n.to[1]}" r="1.8" fill="#f8fafc" stroke="#0f172a" stroke-width="0.4" style="cursor:grab;"></circle>`;
+  }
+  markerState.labels.forEach((l, i) => {
+    const color = MARKER_TYPE_COLORS[l.type] || MARKER_TYPE_COLORS.marker;
+    html += `<circle class="marker-dot" data-kind="label" data-idx="${i}" cx="${l.x}" cy="${l.y}" r="2.4" fill="${color}" stroke="#fff" stroke-width="0.6" style="cursor:grab;"><title>${escapeHtml(l.text)}</title></circle>`;
+    html += `<text x="${l.x}" y="${Math.max(3, l.y - 3.4)}" font-size="3.4" fill="#fff" text-anchor="middle" style="paint-order: stroke; stroke: #000; stroke-width: 0.7px; pointer-events: none;">${i + 1}</text>`;
+  });
+  svg.innerHTML = html;
+}
+
+function syncLabelRowInputs(i) {
+  const xEl = document.getElementById(`marker-x-${i}`);
+  const yEl = document.getElementById(`marker-y-${i}`);
+  if (xEl) xEl.value = markerState.labels[i].x;
+  if (yEl) yEl.value = markerState.labels[i].y;
+}
+function syncSpreadRowInputs(i) {
+  const xEl = document.getElementById(`spread-x-${i}`);
+  const yEl = document.getElementById(`spread-y-${i}`);
+  if (xEl) xEl.value = markerState.spreadOverlay[i].x;
+  if (yEl) yEl.value = markerState.spreadOverlay[i].y;
+}
+function syncNeedleInputs() {
+  const n = markerState.needleOverlay;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.value = v == null ? '' : v; };
+  set('needleFromX', n ? n.from[0] : '');
+  set('needleFromY', n ? n.from[1] : '');
+  set('needleToX', n ? n.to[0] : '');
+  set('needleToY', n ? n.to[1] : '');
+}
+
+function renderMarkerList() {
+  const body = document.getElementById('markerListBody');
+  if (!body) return;
+  if (!markerState.labels.length) {
+    body.innerHTML = '<tr><td colspan="5" style="color: var(--adm-text-subtle);">No markers yet — use "+ Add Marker" above.</td></tr>';
+    return;
+  }
+  body.innerHTML = markerState.labels.map((l, i) => `
+    <tr>
+      <td><input type="text" class="form-input" style="min-width: 130px;" value="${escapeHtml(l.text)}" oninput="updateMarkerLabel(${i}, 'text', this.value)"></td>
+      <td><select class="form-select" onchange="updateMarkerLabel(${i}, 'type', this.value)">
+        ${MARKER_TYPES.map((t) => `<option value="${t}" ${t === l.type ? 'selected' : ''}>${t}</option>`).join('')}
+      </select></td>
+      <td><input type="number" id="marker-x-${i}" class="form-input" style="width: 70px;" min="0" max="100" step="0.1" value="${l.x}" oninput="updateMarkerLabel(${i}, 'x', this.value)"></td>
+      <td><input type="number" id="marker-y-${i}" class="form-input" style="width: 70px;" min="0" max="100" step="0.1" value="${l.y}" oninput="updateMarkerLabel(${i}, 'y', this.value)"></td>
+      <td><button type="button" class="btn-danger" style="padding: 3px 8px; font-size: 11px;" onclick="removeMarkerLabel(${i})">×</button></td>
+    </tr>`).join('');
+}
+
+function renderSpreadList() {
+  const body = document.getElementById('spreadListBody');
+  if (!body) return;
+  if (!markerState.spreadOverlay.length) {
+    body.innerHTML = '<tr><td colspan="6" style="color: var(--adm-text-subtle);">None — use "Set Spread Area" above.</td></tr>';
+    return;
+  }
+  body.innerHTML = markerState.spreadOverlay.map((s, i) => `
+    <tr>
+      <td><input type="number" id="spread-x-${i}" class="form-input" style="width: 65px;" min="0" max="100" step="0.1" value="${s.x}" oninput="updateSpreadField(${i}, 'x', this.value)"></td>
+      <td><input type="number" id="spread-y-${i}" class="form-input" style="width: 65px;" min="0" max="100" step="0.1" value="${s.y}" oninput="updateSpreadField(${i}, 'y', this.value)"></td>
+      <td><input type="number" id="spread-rx-${i}" class="form-input" style="width: 65px;" min="1" max="100" step="0.1" value="${s.rx}" oninput="updateSpreadField(${i}, 'rx', this.value)"></td>
+      <td><input type="number" id="spread-ry-${i}" class="form-input" style="width: 65px;" min="1" max="100" step="0.1" value="${s.ry}" oninput="updateSpreadField(${i}, 'ry', this.value)"></td>
+      <td><input type="text" class="form-input" style="min-width: 110px;" value="${escapeHtml(s.note || '')}" oninput="updateSpreadField(${i}, 'note', this.value)"></td>
+      <td><button type="button" class="btn-danger" style="padding: 3px 8px; font-size: 11px;" onclick="removeSpread(${i})">×</button></td>
+    </tr>`).join('');
+}
+
+window.updateMarkerLabel = function(i, field, value) {
+  const l = markerState.labels[i];
+  if (!l) return;
+  if (field === 'x' || field === 'y') l[field] = clampNum(value, 0, 100, l[field]);
+  else l[field] = value;
+  renderMarkerOverlay();
+};
+window.removeMarkerLabel = function(i) {
+  markerState.labels.splice(i, 1);
+  renderMarkerList();
+  renderMarkerOverlay();
+};
+window.updateSpreadField = function(i, field, value) {
+  const s = markerState.spreadOverlay[i];
+  if (!s) return;
+  if (field === 'note') s.note = value;
+  else s[field] = clampNum(value, field === 'rx' || field === 'ry' ? 1 : 0, 100, s[field]);
+  renderMarkerOverlay();
+};
+window.removeSpread = function(i) {
+  markerState.spreadOverlay.splice(i, 1);
+  renderSpreadList();
+  renderMarkerOverlay();
+};
+
+function updateNeedleField(part, axis, value) {
+  if (!markerState.needleOverlay) markerState.needleOverlay = { from: [10, 90], to: [50, 50] };
+  const idx = axis === 'x' ? 0 : 1;
+  markerState.needleOverlay[part][idx] = clampNum(value, 0, 100, markerState.needleOverlay[part][idx]);
+  renderMarkerOverlay();
+}
+
+function stageToPct(e) {
+  const rect = document.getElementById('markerStage').getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+  return [Math.max(0, Math.min(100, x)), Math.max(0, Math.min(100, y))];
+}
+
+function onMarkerStagePointerDown(e) {
+  if (!markerState.blockId) return;
+  const dot = e.target.closest('.marker-dot');
+  if (dot) {
+    markerDrag = { kind: dot.dataset.kind, idx: dot.dataset.idx != null && dot.dataset.idx !== '' ? Number(dot.dataset.idx) : null };
+    if (e.target.setPointerCapture) { try { e.target.setPointerCapture(e.pointerId); } catch (_) { /* ignore */ } }
+    e.preventDefault();
+    return;
+  }
+  const [x, y] = stageToPct(e);
+  if (markerMode === 'add') {
+    markerState.labels.push({ id: `marker-${Date.now()}-${markerState.labels.length}`, text: 'New structure', type: 'marker', x: round1(x), y: round1(y) });
+    renderMarkerList();
+    renderMarkerOverlay();
+  } else if (markerMode === 'needle') {
+    if (markerNeedleStep === 0) {
+      markerState.needleOverlay = { from: [round1(x), round1(y)], to: [round1(x), round1(y)] };
+      markerNeedleStep = 1;
+      const hintEl = document.getElementById('markerModeHint');
+      if (hintEl) hintEl.textContent = 'Now click the needle tip.';
+    } else {
+      markerState.needleOverlay.to = [round1(x), round1(y)];
+      setMarkerMode(null);
+    }
+    syncNeedleInputs();
+    renderMarkerOverlay();
+  } else if (markerMode === 'spread') {
+    markerState.spreadOverlay.push({ shape: 'ellipse', x: round1(x), y: round1(y), rx: 15, ry: 10, note: '', variable: false });
+    renderSpreadList();
+    renderMarkerOverlay();
+    setMarkerMode(null);
+  }
+}
+
+function onMarkerStagePointerMove(e) {
+  if (!markerDrag) return;
+  const [x, y] = stageToPct(e);
+  const rx = round1(x), ry = round1(y);
+  if (markerDrag.kind === 'label') {
+    markerState.labels[markerDrag.idx].x = rx;
+    markerState.labels[markerDrag.idx].y = ry;
+    syncLabelRowInputs(markerDrag.idx);
+  } else if (markerDrag.kind === 'spread') {
+    markerState.spreadOverlay[markerDrag.idx].x = rx;
+    markerState.spreadOverlay[markerDrag.idx].y = ry;
+    syncSpreadRowInputs(markerDrag.idx);
+  } else if (markerDrag.kind === 'needle-from') {
+    markerState.needleOverlay.from = [rx, ry];
+    syncNeedleInputs();
+  } else if (markerDrag.kind === 'needle-to') {
+    markerState.needleOverlay.to = [rx, ry];
+    syncNeedleInputs();
+  }
+  renderMarkerOverlay();
+}
+
+function onMarkerStagePointerUp() { markerDrag = null; }
+
+window.openMarkerEditor = function(blockId) {
+  const r = regionalImagesCache[blockId];
+  if (!r) { alert('Set a real image for this block first, using the form above — markers are placed on top of that image.'); return; }
+  const label = (REGIONAL_BLOCKS.find((b) => b.id === blockId) || {}).short || blockId;
+  markerState = {
+    blockId,
+    imageUrl: r.image_url,
+    labels: JSON.parse(JSON.stringify(r.labels || [])),
+    needleOverlay: r.needleOverlay ? JSON.parse(JSON.stringify(r.needleOverlay)) : null,
+    spreadOverlay: JSON.parse(JSON.stringify(r.spreadOverlay || []))
+  };
+  setMarkerMode(null);
+  const titleEl = document.getElementById('markerEditorTitle');
+  const imgEl = document.getElementById('markerImage');
+  const alertEl = document.getElementById('markerAlert');
+  if (titleEl) titleEl.textContent = label;
+  if (imgEl) imgEl.src = r.image_url;
+  if (alertEl) alertEl.style.display = 'none';
+  renderMarkerList();
+  renderSpreadList();
+  syncNeedleInputs();
+  renderMarkerOverlay();
+  const card = document.getElementById('markerEditorCard');
+  if (card) { card.style.display = 'block'; card.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+};
+
+async function handleMarkerSave() {
+  const btn = document.getElementById('markerSaveBtn');
+  const alertEl = document.getElementById('markerAlert');
+  if (!markerState.blockId) return;
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+  try {
+    const res = await fetch(`/api/admin/regional-images/${encodeURIComponent(markerState.blockId)}/markers`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ labels: markerState.labels, needleOverlay: markerState.needleOverlay, spreadOverlay: markerState.spreadOverlay })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Save failed');
+    regionalImagesCache[markerState.blockId] = data.image;
+    renderRegionalTable();
+    if (alertEl) {
+      alertEl.className = 'alert-banner success';
+      alertEl.textContent = 'Markers saved — the public page now shows these.';
+      alertEl.style.display = 'block';
+    }
+  } catch (err) {
+    if (alertEl) {
+      alertEl.className = 'alert-banner error';
+      alertEl.textContent = err.message;
+      alertEl.style.display = 'block';
+    }
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Save Markers';
+  }
+}
+
+function initMarkerEditor() {
+  document.querySelectorAll('.marker-mode-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const mode = btn.dataset.mode;
+      setMarkerMode(markerMode === mode ? null : mode);
+    });
+  });
+  const stage = document.getElementById('markerStage');
+  if (stage) {
+    stage.addEventListener('pointerdown', onMarkerStagePointerDown);
+    stage.addEventListener('pointermove', onMarkerStagePointerMove);
+    window.addEventListener('pointerup', onMarkerStagePointerUp);
+  }
+  ['needleFromX', 'needleFromY', 'needleToX', 'needleToY'].forEach((id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const part = id.includes('From') ? 'from' : 'to';
+    const axis = id.endsWith('X') ? 'x' : 'y';
+    el.addEventListener('input', () => updateNeedleField(part, axis, el.value));
+  });
+  const needleClearBtn = document.getElementById('needleClearBtn');
+  if (needleClearBtn) {
+    needleClearBtn.addEventListener('click', () => {
+      markerState.needleOverlay = null;
+      syncNeedleInputs();
+      renderMarkerOverlay();
+    });
+  }
+  const saveBtn = document.getElementById('markerSaveBtn');
+  if (saveBtn) saveBtn.addEventListener('click', handleMarkerSave);
+  const resetBtn = document.getElementById('markerResetBtn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (markerState.blockId) window.openMarkerEditor(markerState.blockId);
+    });
+  }
+  const closeBtn = document.getElementById('markerEditorClose');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      const card = document.getElementById('markerEditorCard');
+      if (card) card.style.display = 'none';
+      setMarkerMode(null);
+    });
   }
 }
 
