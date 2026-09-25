@@ -277,7 +277,7 @@ body[data-content-page="study"] .st-page.container {
   color: rgba(255, 255, 255, 0.9);
   filter: drop-shadow(0 6px 14px rgba(0,0,0,0.4));
 }
-.st-tile-icon svg { width: 42%; height: 42%; }
+.st-tile-icon svg { width: 50%; height: 50%; }
 
 .st-tile-info {
   position: absolute;
@@ -361,7 +361,7 @@ body[data-content-page="study"] .st-page.container {
   color: rgba(255, 255, 255, 0.95);
   box-shadow: var(--shadow-sm);
 }
-.st-title-card-media svg { width: 58%; height: 58%; }
+.st-title-card-media svg { width: 66%; height: 66%; }
 
 .st-title-card-body { min-width: 0; }
 .st-title-card-body h1 {
