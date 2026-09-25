@@ -49,6 +49,7 @@
     if (t.includes("critical") || t.includes("icu")) return "critical-care.html";
     if (t.includes("chamber") || t.includes("resuscitation") || t.includes("acls")) return "resuscitation-chamber.html";
     if (t.includes("regional")) return "regional-anaesthesia.html";
+    if (t.includes("study")) return "study.html";
     if (t.includes("workstation") || t.includes("ventilator") || t.includes("machine")) return "ventilator.html";
     if (t.includes("update") || t.includes("guideline")) return "recent-updates.html";
     if (t.includes("resource")) return "resources.html";
@@ -1112,7 +1113,345 @@
       Summary: "Diverts metered fresh gas flow to external circuits (Mapleson F / Bain / Jackson-Rees). Interlocks mechanical ventilator when selected.",
       href: "ventilator.html#acgo",
       targetId: "acgo"
-    }
+    },
+    // --- STUDY MODE: ANAESTHESIA TOPICS ---
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Anaesthesia",
+      Title: "Preoperative Assessment & Optimisation",
+      Summary: "History, airway exam, risk scoring, and medication management before surgery",
+      href: "study.html?item=preop-assessment"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Anaesthesia",
+      Title: "ASA Physical Status Classification",
+      Summary: "Six-tier system describing a patient's systemic disease burden before anaesthesia",
+      href: "study.html?item=asa-pscore"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Anaesthesia",
+      Title: "Airway Assessment & Difficult Airway Management",
+      Summary: "Predicting and managing the anticipated and unanticipated difficult airway",
+      href: "study.html?item=airway-assessment"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Anaesthesia",
+      Title: "Rapid Sequence Induction (RSI)",
+      Summary: "Induction technique to minimise the aspiration window in patients at high aspiration risk",
+      href: "study.html?item=rsi"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Anaesthesia",
+      Title: "Anaesthesia Machine & Breathing Circuits",
+      Summary: "Gas delivery, vaporizers, CO2 absorption and circuit checks",
+      href: "study.html?item=anaesthesia-machine"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Anaesthesia",
+      Title: "ASA Standard Monitoring",
+      Summary: "Minimum monitoring standards during all anaesthesia care",
+      href: "study.html?item=asa-monitoring"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Anaesthesia",
+      Title: "Fluid Management & Blood Transfusion",
+      Summary: "Perioperative fluid strategy and transfusion thresholds",
+      href: "study.html?item=fluid-transfusion"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Anaesthesia",
+      Title: "Malignant Hyperthermia",
+      Summary: "Life-threatening hypermetabolic crisis triggered by volatile agents/succinylcholine",
+      href: "study.html?item=malignant-hyperthermia"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Anaesthesia",
+      Title: "Postoperative Nausea and Vomiting (PONV)",
+      Summary: "Risk-stratified multimodal prevention and rescue treatment",
+      href: "study.html?item=ponv"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Anaesthesia",
+      Title: "Neuraxial Blockade — Physiology & Comparison with GA",
+      Summary: "Physiologic effects of spinal/epidural block and outcome comparisons with general anaesthesia",
+      href: "study.html?item=regional-physiology"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Anaesthesia",
+      Title: "Anaphylaxis Under Anaesthesia",
+      Summary: "Recognition and immediate management of intraoperative anaphylaxis",
+      href: "study.html?item=anaphylaxis-anaesthesia"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Anaesthesia",
+      Title: "Enhanced Recovery After Surgery (ERAS)",
+      Summary: "Evidence-based perioperative care bundle to accelerate functional recovery",
+      href: "study.html?item=eras"
+    },
+    // --- STUDY MODE: DRUG MONOGRAPHS ---
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Induction Agents",
+      Title: "Propofol",
+      Summary: "IV sedative-hypnotic for induction and maintenance of anaesthesia/sedation",
+      href: "study.html?item=propofol"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Induction Agents",
+      Title: "Etomidate",
+      Summary: "Haemodynamically stable IV induction agent, imidazole derivative",
+      href: "study.html?item=etomidate"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Induction Agents",
+      Title: "Ketamine",
+      Summary: "NMDA-antagonist dissociative anaesthetic with analgesic and bronchodilator properties",
+      href: "study.html?item=ketamine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Induction Agents",
+      Title: "Thiopental (Sodium Thiopental)",
+      Summary: "Ultra-short-acting barbiturate induction agent (historic gold standard; discontinued in the US market)",
+      href: "study.html?item=thiopental"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Induction Agents",
+      Title: "Midazolam",
+      Summary: "Short-acting benzodiazepine used for premedication, sedation, and co-induction",
+      href: "study.html?item=midazolam"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Muscle Relaxants",
+      Title: "Succinylcholine (Suxamethonium)",
+      Summary: "Depolarising neuromuscular blocker with the fastest onset — first-line for RSI",
+      href: "study.html?item=succinylcholine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Muscle Relaxants",
+      Title: "Rocuronium",
+      Summary: "Intermediate-acting aminosteroid non-depolarising NMBA; fastest onset of its class, reversible by sugammadex",
+      href: "study.html?item=rocuronium"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Muscle Relaxants",
+      Title: "Vecuronium",
+      Summary: "Intermediate-acting aminosteroid non-depolariser with minimal cardiovascular effect",
+      href: "study.html?item=vecuronium"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Muscle Relaxants",
+      Title: "Atracurium",
+      Summary: "Intermediate-acting benzylisoquinolinium NMBA cleared independently of organ function",
+      href: "study.html?item=atracurium"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Muscle Relaxants",
+      Title: "Cisatracurium",
+      Summary: "A single stereoisomer of atracurium with minimal histamine release; preferred in organ failure and ICU use",
+      href: "study.html?item=cisatracurium"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Muscle Relaxants",
+      Title: "Pancuronium",
+      Summary: "Long-acting aminosteroid NMBA with vagolytic (tachycardic) properties",
+      href: "study.html?item=pancuronium"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Muscle Relaxants",
+      Title: "Mivacurium",
+      Summary: "Short-acting benzylisoquinolinium NMBA hydrolysed by plasma cholinesterase",
+      href: "study.html?item=mivacurium"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Reversal Agents",
+      Title: "Sugammadex",
+      Summary: "Modified gamma-cyclodextrin that selectively encapsulates rocuronium/vecuronium for rapid reversal at any depth of block",
+      href: "study.html?item=sugammadex"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Reversal Agents",
+      Title: "Neostigmine",
+      Summary: "Acetylcholinesterase inhibitor used to reverse non-depolarising neuromuscular blockade",
+      href: "study.html?item=neostigmine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Opioids",
+      Title: "Fentanyl",
+      Summary: "Highly lipophilic synthetic opioid; the mainstay perioperative opioid for rapid analgesia",
+      href: "study.html?item=fentanyl"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Opioids",
+      Title: "Morphine",
+      Summary: "Prototypical opioid analgesic; slower onset, longer duration, renally-cleared active metabolite",
+      href: "study.html?item=morphine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Opioids",
+      Title: "Hydromorphone",
+      Summary: "Semi-synthetic mu-opioid roughly 5–7x more potent than morphine, without an active renal metabolite burden of comparable clinical significance",
+      href: "study.html?item=hydromorphone"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Opioids",
+      Title: "Remifentanil",
+      Summary: "Ultra-short-acting mu-opioid metabolised by non-specific plasma/tissue esterases, independent of organ function",
+      href: "study.html?item=remifentanil"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Opioids",
+      Title: "Sufentanil",
+      Summary: "Extremely potent fentanyl analogue (~5–10x fentanyl), used in high-dose cardiac/major surgery and neuraxial analgesia",
+      href: "study.html?item=sufentanil"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Opioids",
+      Title: "Alfentanil",
+      Summary: "Fast-onset, short-duration fentanyl analogue, less potent than fentanyl but with quicker peak effect",
+      href: "study.html?item=alfentanil"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • NSAIDs & Analgesics",
+      Title: "Ketorolac",
+      Summary: "Potent parenteral NSAID for short-term (≤5 day) moderate-to-severe acute pain, opioid-sparing",
+      href: "study.html?item=ketorolac"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • NSAIDs & Analgesics",
+      Title: "Ibuprofen",
+      Summary: "Propionic-acid NSAID; oral and IV formulations for mild-to-moderate pain and multimodal perioperative analgesia",
+      href: "study.html?item=ibuprofen"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • NSAIDs & Analgesics",
+      Title: "Diclofenac",
+      Summary: "Phenylacetic-acid NSAID available in oral, topical, ophthalmic and IV formulations",
+      href: "study.html?item=diclofenac"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • NSAIDs & Analgesics",
+      Title: "Celecoxib",
+      Summary: "Selective COX-2 inhibitor with reduced antiplatelet/GI-ulcer risk relative to non-selective NSAIDs",
+      href: "study.html?item=celecoxib"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • NSAIDs & Analgesics",
+      Title: "Paracetamol (Acetaminophen)",
+      Summary: "Non-opioid, non-NSAID analgesic/antipyretic — core component of multimodal perioperative analgesia",
+      href: "study.html?item=paracetamol"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Vasopressors & Inotropes",
+      Title: "Phenylephrine",
+      Summary: "Pure alpha-1 agonist vasopressor; first-line for anaesthesia-induced hypotension, especially with tachycardia",
+      href: "study.html?item=phenylephrine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Vasopressors & Inotropes",
+      Title: "Norepinephrine (Noradrenaline)",
+      Summary: "First-line vasopressor in septic and most distributive/vasodilatory shock; potent alpha-1 with modest beta-1 activity",
+      href: "study.html?item=norepinephrine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Vasopressors & Inotropes",
+      Title: "Epinephrine (Adrenaline)",
+      Summary: "Endogenous catecholamine with potent alpha and beta activity; first-line in anaphylaxis and cardiac arrest",
+      href: "study.html?item=epinephrine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Vasopressors & Inotropes",
+      Title: "Vasopressin (Arginine Vasopressin)",
+      Summary: "Non-catecholamine V1-receptor vasopressor; second-line/adjunct in septic and vasodilatory shock",
+      href: "study.html?item=vasopressin"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Vasopressors & Inotropes",
+      Title: "Dopamine",
+      Summary: "Dose-dependent dopaminergic/beta/alpha agonist catecholamine; now a second-line agent in most shock states",
+      href: "study.html?item=dopamine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Vasopressors & Inotropes",
+      Title: "Dobutamine",
+      Summary: "Predominantly beta-1 agonist inotrope for cardiogenic shock/low cardiac output states; minimal vasopressor effect",
+      href: "study.html?item=dobutamine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Local Anaesthetics",
+      Title: "Lidocaine",
+      Summary: "Prototypical amide local anaesthetic; intermediate potency/duration, also used IV for analgesia and as an antiarrhythmic",
+      href: "study.html?item=lidocaine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Local Anaesthetics",
+      Title: "Bupivacaine",
+      Summary: "Long-acting amide local anaesthetic with high potency; historically the most cardiotoxic amide LA",
+      href: "study.html?item=bupivacaine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Local Anaesthetics",
+      Title: "Ropivacaine",
+      Summary: "Long-acting amide LA, single (S)-enantiomer, developed for a wider margin of cardiac safety than bupivacaine",
+      href: "study.html?item=ropivacaine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Local Anaesthetics",
+      Title: "Chloroprocaine",
+      Summary: "Fast-onset, short-acting ester local anaesthetic; hydrolysed rapidly by plasma cholinesterase, favoured in obstetrics for emergency conversion",
+      href: "study.html?item=chloroprocaine"
+    },
+    {
+      Type: "Study Drug",
+      Category: "Study Mode • Local Anaesthetics",
+      Title: "Mepivacaine",
+      Summary: "Intermediate-duration amide LA, similar profile to lidocaine but with less vasodilation and longer duration",
+      href: "study.html?item=mepivacaine"
+    },
   ];
 
   const RECENT_KEY = "kn_recent_searches";

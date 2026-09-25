@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Mode | KnockoutNotes</title>
+  <meta name="description" content="Source-cited anaesthesia study mode — core practice topics and drug monographs (induction agents, muscle relaxants, reversal agents, opioids, NSAIDs, vasopressors, local anaesthetics) drawn from Miller's Anesthesia, Barash, Morgan &amp; Mikhail, Stoelting, FDA labels and UpToDate.">
+  <meta name="theme-color" content="#0284c7">
+  <link rel="icon" type="image/png" href="knockoutnotes_icon.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page-common.css">
+  <link rel="stylesheet" href="study.css">
+  <link rel="stylesheet" href="bubble-menu.css">
+  <link rel="stylesheet" href="border-glow.css">
+  <script src="analytics-config.js"></script>
+  <script src="cf-beacon.js"></script>
+</head>
+<body data-content-page="study" class="mode-3d">
+
+<!-- Procedural Anaesthesia Background Canvas -->
+<canvas id="knSpatialCanvas"></canvas>
+
+<!-- Legacy header (hidden by bubble-menu.css; kept for script.js theme/menu hooks) -->
+<header class="site-hud">
+  <div class="hud-capsule">
+    <a class="brand" href="index.html" aria-label="KnockoutNotes home">
+      <div class="brand-icon-wrap"><img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem"></div>
+      <div class="brand-name">Knockout<span>Notes</span></div>
+    </a>
+    <div class="hud-path-indicator">
+      <span class="hud-pulse-dot"></span>
+      <span id="knHudPath">KN // STUDY MODE</span>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-search-trigger" data-open-search aria-label="Open search"><span>Search</span><kbd>⌘K</kbd></button>
+      <button class="icon-btn theme-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"></div>
+</header>
+
+<div class="spatial-stage">
+  <div class="spatial-world">
+    <main class="container st-page" id="stStage">
+
+      <!-- ================= LISTING VIEW ================= -->
+      <section id="stList" class="st-view" aria-labelledby="stTitle">
+        <div class="st-hero">
+          <div class="st-hero-kickers">
+            <span class="st-pill st-pill-cyan">🎓 STUDY MODE</span>
+            <span class="st-pill">MILLER'S · BARASH · MORGAN &amp; MIKHAIL · STOELTING · FDA · UPTODATE</span>
+          </div>
+          <h1 id="stTitle">Study Mode <span>Anaesthesia &amp; Drug Reference</span></h1>
+          <p class="st-lead">Source-cited revision content — core anaesthesia practice topics and full drug monographs (chemical structure, pharmacodynamics, pharmacokinetics, FDA-approved dosage, off-label uses, and complications). Every entry names its source at the top.</p>
+          <div class="st-hero-actions">
+            <div class="st-search">
+              <span aria-hidden="true">⌕</span>
+              <input id="stSearch" type="search" placeholder="Search topics or drugs — e.g. propofol, sugammadex, RSI, PONV…" autocomplete="off" aria-label="Search study content">
+            </div>
+            <button type="button" class="st-fs-btn" id="stFullscreen" aria-pressed="false">⛶ Full Screen</button>
+          </div>
+        </div>
+
+        <nav class="st-cat-nav" id="stCatNav" role="tablist" aria-label="Study categories"></nav>
+        <div id="stGrid" class="st-grid-wrap" aria-live="polite"></div>
+      </section>
+
+      <!-- ================= DETAIL VIEW ================= -->
+      <section id="stDetail" class="st-view" hidden aria-live="polite"></section>
+
+    </main>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="brand">
+        <div class="brand-icon-wrap"><img src="knockoutnotes_icon.png" alt="KnockoutNotes icon"></div>
+        <div class="brand-name">Knockout<span>Notes</span></div>
+      </div>
+      <p>Anaesthesia • Critical Care • Viva</p>
+      <p class="disclaimer">Educational content for medical professionals and trainees, summarised and reworded from the cited sources — never copied verbatim. This is a revision aid, not a substitute for the primary label or guideline: always confirm current dosing and practice against the institutional formulary and the live FDA label/guideline before clinical use.</p>
+    </div>
+    <div class="footer-connect">
+      <strong>Connect, Follow &amp; Support <span class="footer-support-sub">(by buying me a coffee)</span></strong>
+      <div class="socials">
+        <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes" title="Email KnockoutNotes">✉</a>
+        <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes">◎</a>
+        <a class="social social-coffee" href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" aria-label="Support KnockoutNotes (by buying me a coffee)" title="Buy me a coffee">☕</a>
+      </div>
+      <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Search Modal -->
+<div class="kn-modal" id="knSearchModal" role="dialog" aria-modal="true" aria-label="Search KnockoutNotes">
+  <div class="kn-modal-backdrop" data-close-modal></div>
+  <div class="kn-modal-box">
+    <div class="kn-modal-header">
+      <span class="kn-search-icon">⌕</span>
+      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search blocks, drugs, pearls..." autocomplete="off">
+      <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
+      <button class="kn-modal-close" data-close-modal>ESC</button>
+    </div>
+    <div class="kn-modal-body">
+      <div id="knModalSearchStatus" class="kn-search-status">Start typing to search the medical database.</div>
+      <div id="knModalSearchResults" class="kn-search-results"></div>
+    </div>
+    <div class="kn-modal-footer">
+      <span>Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
+      <span>KnockoutNotes Spatial Search</span>
+    </div>
+  </div>
+</div>
+
+<aside class="kn-corner-support" aria-label="Support KnockoutNotes">
+  <a href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" class="kn-corner-support-link" title="Fuel the code with coffee">
+    <span class="kn-corner-coffee-icon">☕</span>
+    <span class="kn-corner-coffee-text">Buy me a coffee</span>
+  </a>
+</aside>
+
+<script src="study-data.js"></script>
+<script src="spatial-bg.js"></script>
+<script src="script.js"></script>
+<script src="page-motion.js"></script>
+<script src="kn-site-search.js"></script>
+<script src="bubble-menu.js"></script>
+<script src="border-glow.js"></script>
+<script src="study-ui.js"></script>
+
+</body>
+</html>

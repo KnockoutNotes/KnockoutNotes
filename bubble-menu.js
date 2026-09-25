@@ -12,6 +12,7 @@
   // Cleaned: Valve Lesions, Pearls, and Viva removed (available inside Notes)
   var DESKTOP_LINKS = [
     { label: 'Home', href: 'index.html', ariaLabel: 'Home' },
+    { label: 'Study', href: 'study.html', ariaLabel: 'Study Mode — Anaesthesia & Drug Reference' },
     { label: 'Notes', href: 'notes.html', ariaLabel: 'Clinical Notes' },
     { label: 'Calculators', href: 'calculators.html', ariaLabel: 'Anaesthesia Calculators' },
     { label: 'Regional', href: 'regional-anaesthesia.html', ariaLabel: 'Regional Anaesthesia — Nerve Blocks' },
@@ -33,6 +34,7 @@
   // Mobile 3-Dot Drawer Items (2-Column Grid)
   // Strictly excludes Home, Notes, and Calculator (and removed Valve Lesions, Pearls, Viva)
   var MOBILE_MORE_ITEMS = [
+    { label: 'Study Mode', href: 'study.html', ariaLabel: 'Study Mode — Anaesthesia & Drug Reference', icon: '🎓', desc: 'Anaesthesia & Drugs' },
     { label: 'Regional Blocks', href: 'regional-anaesthesia.html', ariaLabel: 'Regional Anaesthesia — Nerve Blocks', icon: '💉', desc: 'Nerve Blocks · NYSORA' },
     { label: '3D Workstation', href: 'ventilator.html', ariaLabel: '3D Anaesthesia Workstation', icon: '🫁', desc: 'Interactive Machine' },
     { label: 'Drugs Library', href: 'drugs.html', ariaLabel: 'Pharmacology Library', icon: '💊', desc: 'Dosing & Kinetics' },
