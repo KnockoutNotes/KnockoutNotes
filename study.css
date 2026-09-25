@@ -601,6 +601,10 @@ body[data-content-page="study"] .st-page.container {
   border-radius: 50%;
   background: var(--accent-cyan);
 }
+.st-bullets + .st-bullets { margin-top: 14px; }
+.st-card-body .st-bullets + .st-callout { margin-top: 16px; }
+.st-callout .st-bullets { margin-top: 6px; gap: 8px; }
+.st-callout .st-bullets li { font-size: 16px; line-height: 1.6; }
 
 /* Mapleson circuit diagrams (recreated inline SVG) */
 .st-diagram-wrap { margin-top: 14px; }

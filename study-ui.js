@@ -341,12 +341,12 @@
   // (paras() below) is untouched — its worked-example/pitfall/pearl format
   // already reads as structured content, not a wall of text.
   function splitSentences(text) {
-    return text.split(/(?<=[.!?])\s+(?=[A-Z“"'(])/).map((s) => s.trim()).filter(Boolean);
+    return text.split(/(?<=[.!?])\s+(?=[A-Z0-9“"'(\[])/).map((s) => s.trim()).filter(Boolean);
   }
   function para(text) {
     if (!text) return "";
     const sentences = splitSentences(text);
-    if (sentences.length < 2) return `<p>${highlightKeyValues(esc(text))}</p>`;
+    if (sentences.length === 0) return "";
     return `<ul class="st-bullets">${sentences.map((s) => `<li>${highlightKeyValues(esc(s))}</li>`).join("")}</ul>`;
   }
 
@@ -402,16 +402,20 @@
     });
   }
 
-  // Long-form topic prose is authored with blank-line paragraph breaks and
-  // optional callouts — this keeps study-data.js readable as plain prose
-  // while still rendering as properly separated paragraphs/boxes.
+  // Topic sections (Anaesthesia and Ventilators & Devices) are rendered
+  // as clean, scannable point-wise facts per sentence, exactly like drug monograph fields.
   function paras(text) {
     if (!text) return "";
-    return text.trim().split(/\n\s*\n/).map((p) => `<p>${highlightKeyValues(esc(p.trim()))}</p>`).join("");
+    const blocks = text.trim().split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
+    return blocks.map((b) => para(b)).join("");
   }
   function callout(kind, label, text) {
     if (!text) return "";
-    return `<div class="st-callout st-callout-${kind}"><span class="st-callout-label">${esc(label)}</span>${paras(text)}</div>`;
+    const sentences = splitSentences(text);
+    const innerHTML = sentences.length > 1
+      ? `<ul class="st-bullets">${sentences.map((s) => `<li>${highlightKeyValues(esc(s))}</li>`).join("")}</ul>`
+      : `<p>${highlightKeyValues(esc(text))}</p>`;
+    return `<div class="st-callout st-callout-${kind}"><span class="st-callout-label">${esc(label)}</span>${innerHTML}</div>`;
   }
 
   // All drug sections render in one continuous scroll — no tabs to click
