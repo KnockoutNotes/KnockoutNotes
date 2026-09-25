@@ -9,6 +9,17 @@
    comfortable narrow column at every size.
    ========================================================================== */
 
+/* "Comic Sans MS"/"Chalkboard SE"/"Marker Felt" (used below for .st-page)
+   are OS-bundled fonts (Windows / Apple respectively) that don't exist on
+   most phones — Android in particular — so the stack silently fell
+   through to plain sans-serif on mobile. Comic Neue is the open-source,
+   Google-Fonts-hosted, metrics-compatible substitute for Comic Sans —
+   loading it as a real web font guarantees the look renders on every
+   device, while the system fonts still take priority wherever they're
+   genuinely installed. Must stay the first rule in this file: @import
+   is only valid before any other CSS rule. */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
 body[data-content-page="study"] { overflow-x: hidden; }
 
 /* Auto-hide the site nav while scrolling down through Study Mode content,
@@ -414,7 +425,7 @@ body[data-content-page="study"] .st-page.container {
    of point (2)/(4) below — every section renders in one continuous scroll,
    no tabs to click through. */
 .st-page {
-  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", "Marker Felt", cursive, sans-serif;
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", "Marker Felt", "Comic Neue", cursive, sans-serif;
 }
 
 /* Auto-highlighted doses, values and safety-critical phrases (see
