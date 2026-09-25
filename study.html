@@ -123,13 +123,26 @@
 
 <script src="study-data.js"></script>
 <script src="study-structures.js"></script>
+<script src="study-structures-3d.js"></script>
 <script src="spatial-bg.js"></script>
 <script src="script.js"></script>
 <script src="page-motion.js"></script>
 <script src="kn-site-search.js"></script>
 <script src="bubble-menu.js"></script>
 <script src="border-glow.js"></script>
-<script src="study-ui.js"></script>
+
+<!-- study-molecule-3d.js imports the bare specifier "three" (vendored build) -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three/build/three.module.js"
+  }
+}
+</script>
+<script type="module" src="study-molecule-3d.js"></script>
+<!-- deferred so it runs after the module above has set window.KNMountMolecule3D,
+     even though study-ui.js is a classic (non-module) script -->
+<script src="study-ui.js" defer></script>
 
 </body>
 </html>

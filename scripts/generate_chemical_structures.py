@@ -351,8 +351,60 @@ def render_svg(mol, wide=False):
     return svg
 
 
+
+# --------------------------------------------------------------------------
+# 4. 3D ball-and-stick coordinates (for the rotating molecule viewer)
+# --------------------------------------------------------------------------
+def embed_3d(mol):
+    """Add explicit hydrogens and embed a 3D conformer, optimizing geometry.
+    Tries several random seeds (ETKDG embedding is stochastic and can
+    occasionally fail to converge, especially for larger/charged
+    molecules) before giving up. Returns the H-explicit mol with a 3D
+    conformer, or None if embedding never succeeded."""
+    molH = Chem.AddHs(mol)
+    for seed in (42, 7, 123, 2024, 99):
+        cid = AllChem.EmbedMolecule(molH, randomSeed=seed, useRandomCoords=True, maxAttempts=200)
+        if cid != 0:
+            continue
+        try:
+            result = AllChem.MMFFOptimizeMolecule(molH, maxIters=2000)
+        except Exception:
+            result = AllChem.UFFOptimizeMolecule(molH, maxIters=2000)
+        if result in (0, 1):  # 0 = converged, 1 = did not fully converge but has coords
+            return molH
+    return None
+
+
+def mol_to_3d_json(molH):
+    conf = molH.GetConformer()
+    positions = [conf.GetAtomPosition(i) for i in range(molH.GetNumAtoms())]
+    # Center on the geometric centroid and scale to a consistent size
+    # (max atom distance from center ~= 5 units) so every molecule fills
+    # the viewer similarly regardless of its real size.
+    cx = sum(p.x for p in positions) / len(positions)
+    cy = sum(p.y for p in positions) / len(positions)
+    cz = sum(p.z for p in positions) / len(positions)
+    max_r = max(((p.x - cx) ** 2 + (p.y - cy) ** 2 + (p.z - cz) ** 2) ** 0.5 for p in positions) or 1.0
+    scale = 5.0 / max_r
+
+    atoms = []
+    for i, p in enumerate(positions):
+        atom = molH.GetAtomWithIdx(i)
+        atoms.append([
+            atom.GetSymbol(),
+            round((p.x - cx) * scale, 3),
+            round((p.y - cy) * scale, 3),
+            round((p.z - cz) * scale, 3),
+        ])
+    bonds = []
+    for b in molH.GetBonds():
+        bonds.append([b.GetBeginAtomIdx(), b.GetEndAtomIdx()])
+    return {"atoms": atoms, "bonds": bonds}
+
+
 def main():
     entries = {}
+    mols = {}
     mismatches = []
 
     for drug_id, smi in SMILES_ENTRIES.items():
@@ -368,7 +420,8 @@ def main():
         if not ok:
             mismatches.append(drug_id)
             continue
-        entries[drug_id] = {"svg": render_svg(mol), "formula": formula}
+        mols[drug_id] = mol
+        entries[drug_id] = {"svg": render_svg(Chem.Mol(mol)), "formula": formula}
 
     for drug_id, builder in BUILDER_ENTRIES.items():
         mol = builder()
@@ -385,10 +438,50 @@ def main():
         if not (formula_ok and rings_ok):
             mismatches.append(drug_id)
             continue
-        entries[drug_id] = {"svg": render_svg(mol, wide=True), "formula": formula}
+        mols[drug_id] = mol
+        entries[drug_id] = {"svg": render_svg(Chem.Mol(mol), wide=True), "formula": formula}
 
     if mismatches:
         raise SystemExit(f"Refusing to write output — verification failures: {mismatches}")
+
+    # 3D embeddings — best-effort per molecule; a failure here doesn't
+    # block the (already-verified) 2D diagram, it just means that drug's
+    # card falls back to the flat SVG instead of the rotating model.
+    threed = {}
+    threed_failures = []
+    ordered_ids_for_3d = list(SMILES_ENTRIES.keys()) + list(BUILDER_ENTRIES.keys())
+    for drug_id in ordered_ids_for_3d:
+        if drug_id not in mols:
+            continue
+        molH = embed_3d(Chem.Mol(mols[drug_id]))
+        if molH is None:
+            threed_failures.append(drug_id)
+            print(f"{drug_id:20s} 3D embedding FAILED — will fall back to 2D diagram")
+            continue
+        threed[drug_id] = mol_to_3d_json(molH)
+        print(f"{drug_id:20s} 3D OK ({len(threed[drug_id]['atoms'])} atoms, {len(threed[drug_id]['bonds'])} bonds)")
+
+    lines3d = [
+        "/* ==========================================================================",
+        "   KNOCKOUTNOTES — Drug 3D ball-and-stick coordinates (study-structures-3d.js)",
+        "   RDKit ETKDG-embedded + MMFF/UFF-optimized 3D conformers for the same",
+        "   verified molecules as study-structures.js — see",
+        "   scripts/generate_chemical_structures.py. Explicit hydrogens included.",
+        "   Positions are centered and scaled to a consistent size. Rendered by",
+        "   study-molecule-3d.js. A drug missing here (3D embedding did not",
+        "   converge) falls back to the flat 2D diagram.",
+        "   ========================================================================== */",
+        "window.KN_STRUCTURES_3D = {",
+    ]
+    for drug_id in ordered_ids_for_3d:
+        if drug_id not in threed:
+            continue
+        lines3d.append(f"  {drug_id}: {json.dumps(threed[drug_id], separators=(',', ':'))},")
+    lines3d.append("};")
+    out_path_3d = os.path.join(REPO_ROOT, "study-structures-3d.js")
+    with open(out_path_3d, "w") as f:
+        f.write("\n".join(lines3d) + "\n")
+    print(f"\nWrote {out_path_3d} ({len(threed)} molecules, {len(threed_failures)} fell back to 2D-only)")
 
     lines = [
         "/* ==========================================================================",

@@ -213,13 +213,48 @@
   // sugammadex, vasopressin) deliberately have no diagram rather than a
   // guessed-at one, so those fall back to prose only.
   function structureBodyHTML(d) {
-    const rec = window.KN_STRUCTURES && window.KN_STRUCTURES[d.id];
-    if (!rec) return para(d.structure);
+    const rec2d = window.KN_STRUCTURES && window.KN_STRUCTURES[d.id];
+    const has3d = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[d.id];
+    if (!rec2d && !has3d) return para(d.structure);
+    // A rotating 3D viewer mounts into this placeholder after the HTML is
+    // in the DOM (see mountStructureViewers()) — flat 2D SVG is the
+    // starting content so there's never an empty box while the module
+    // loads or if WebGL isn't available, and mountStructureViewers()
+    // replaces it once the 3D viewer is confirmed working.
+    const media = has3d
+      ? `<div class="st-molecule-viewer" data-drug="${esc(d.id)}" aria-label="Rotating 3D structure of ${esc(d.name)}">${rec2d ? `<div class="st-structure-svg">${rec2d.svg}</div>` : ""}</div>`
+      : `<div class="st-structure-svg">${rec2d.svg}</div>`;
     return `<div class="st-structure-wrap">
-        <div class="st-structure-svg">${rec.svg}</div>
-        <span class="st-structure-formula">${esc(rec.formula)}</span>
+        ${media}
+        ${rec2d ? `<span class="st-structure-formula">${esc(rec2d.formula)}</span>` : ""}
       </div>
       ${para(d.structure)}`;
+  }
+
+  // Mounts the rotating Three.js viewer (study-molecule-3d.js) into every
+  // .st-molecule-viewer placeholder under `root`. If the module hasn't
+  // finished loading yet (it's an ES module, deferred relative to this
+  // classic script — see study.html) or WebGL isn't available, the
+  // placeholder's starting content (the flat 2D SVG, or nothing) is left
+  // as-is rather than showing an empty box.
+  function mountStructureViewers(root) {
+    const nodes = root.querySelectorAll(".st-molecule-viewer[data-drug]");
+    nodes.forEach((node) => {
+      const data = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[node.getAttribute("data-drug")];
+      if (!data) return;
+      const tryMount = () => {
+        if (typeof window.KNMountMolecule3D !== "function") return false;
+        try {
+          return window.KNMountMolecule3D(node, data);
+        } catch (err) {
+          return false;
+        }
+      };
+      if (tryMount()) return;
+      if (typeof window.KNMountMolecule3D !== "function") {
+        window.addEventListener("kn-molecule3d-ready", () => tryMount(), { once: true });
+      }
+    });
   }
 
   // Long-form topic prose is authored with blank-line paragraph breaks and
@@ -383,6 +418,7 @@
     `;
     bindDetailEvents();
     observeReveal($("#stDetail"));
+    mountStructureViewers($("#stDetail"));
     window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
   }
 

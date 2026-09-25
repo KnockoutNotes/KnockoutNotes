@@ -477,33 +477,45 @@ body[data-content-page="study"] .st-page.container {
 }
 .st-diagram-caption { margin: 10px 0 0; font-size: 12px; line-height: 1.55; color: var(--text-muted); }
 
-/* Drug chemical-structure diagrams (accurate RDKit-generated 2D skeletal
-   formulas — see study-structures.js). The Chemical Structure card gets its
-   own 3D depth context (transform-style: preserve-3d) so this panel can sit
-   on a raised Z-plane above the card's own surface — as the card tilts
-   toward the cursor (see initCardTilt() in study-ui.js), the diagram
-   visibly floats above the rest of the card face rather than being flat
-   printed text, while the diagram itself stays the same simple 2D skeletal
-   drawing. The molecular formula sits as a small badge underneath. */
+/* Drug chemical-structure diagrams — a rotating 3D ball-and-stick model
+   when available (study-structures-3d.js, rendered by study-molecule-3d.js
+   via the site's vendored Three.js), falling back to the flat 2D skeletal
+   SVG (study-structures.js) if WebGL isn't available. The Chemical
+   Structure card gets its own 3D depth context (transform-style:
+   preserve-3d) so this panel sits on a raised Z-plane above the card's own
+   surface — as the card tilts toward the cursor (see initCardTilt() in
+   study-ui.js), the molecule visibly floats above the rest of the card
+   face. The background is a soft, mostly-transparent glow rather than an
+   opaque boxed panel, so it blends into the card and the poster-gradient/
+   animated-dot background behind it instead of sitting on top as a flat
+   rectangle. The molecular formula sits as a small badge underneath. */
 .st-card:has(.st-structure-wrap) { perspective: 900px; transform-style: preserve-3d; }
 .st-structure-wrap {
   margin-bottom: 16px;
   padding: 20px 14px;
   border-radius: 16px;
-  background: radial-gradient(ellipse at center, var(--panel-tint-1), var(--bg-card) 85%);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-md);
+  background: radial-gradient(ellipse at center, var(--panel-tint-1) 0%, transparent 72%);
+  border: 1px solid transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
   transform: translateZ(30px);
-  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  transition: transform 0.2s ease-out, background 0.2s ease-out;
 }
 .st-card:hover .st-structure-wrap {
   transform: translateZ(46px);
-  box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.45);
+  background: radial-gradient(ellipse at center, var(--panel-tint-1) 0%, rgba(56, 189, 248, 0.05) 55%, transparent 78%);
 }
+.st-molecule-viewer {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4 / 3;
+  position: relative;
+}
+.st-molecule-viewer .st-structure-svg,
+.st-molecule-canvas { width: 100%; height: 100%; }
+.st-molecule-canvas { display: block; cursor: grab; }
 .st-structure-svg { width: 100%; max-width: 380px; }
 .st-structure-svg svg { width: 100%; height: auto; display: block; color: var(--text-main); }
 .st-structure-formula {
