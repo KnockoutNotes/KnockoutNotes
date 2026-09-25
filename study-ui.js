@@ -440,8 +440,24 @@
     return DRUG_SECTIONS.map((s) => drugSectionCard(d, s)).join("");
   }
 
+  function videoCardHTML(v) {
+    if (!v || !v.src) return "";
+    return `<section class="st-card st-reveal st-video-card" aria-label="${esc(v.title || "Educational Video")}">
+      <h3>🎬 ${esc(v.title || "Video Demonstration")}</h3>
+      <div class="st-card-body">
+        <div class="st-video-wrap">
+          <video class="st-video-player" controls playsinline preload="metadata">
+            <source src="${esc(v.src)}" type="video/mp4">
+            Your browser does not support HTML5 video playback.
+          </video>
+        </div>
+        ${v.externalUrl ? `<p class="st-video-ext"><a href="${esc(v.externalUrl)}" target="_blank" rel="noopener"><span>↗</span> ${esc(v.externalLabel || "Watch on Instagram Reel")}</a></p>` : ""}
+      </div>
+    </section>`;
+  }
+
   function topicPanelHTML(t) {
-    return t.sections.map((s) => {
+    const sectionsHTML = t.sections.map((s) => {
       const diagramHTML = s.diagram === "mapleson-grid" ? maplesonGridHTML() : "";
       const body = `${s.b ? paras(s.b) : ""}` +
         callout("example", "🧩 Worked example", s.example) +
@@ -450,6 +466,8 @@
         diagramHTML;
       return card(s.h, body);
     }).join("");
+    const videoHTML = t.video ? videoCardHTML(t.video) : "";
+    return sectionsHTML + videoHTML;
   }
 
   /* ------------------------------------------------- Mapleson circuit diagrams
