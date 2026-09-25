@@ -485,11 +485,20 @@
 
   function topicPanelHTML(t) {
     const sectionsHTML = t.sections.map((s) => {
-      const diagramHTML = s.diagram === "mapleson-grid" ? maplesonGridHTML() : "";
+      let diagramHTML = "";
+      if (s.diagram === "mapleson-grid") diagramHTML = maplesonGridHTML();
+      else if (s.diagram === "venturi-schematic") diagramHTML = venturiDiagramHTML();
+      else if (s.diagram === "cylinder-pin-index") diagramHTML = cylinderDiagramHTML();
+      else if (s.diagram === "infusion-mechanisms") diagramHTML = infusionPumpDiagramHTML();
+      else if (s.diagram === "soda-lime-reaction") diagramHTML = sodaLimeDiagramHTML();
+
+      const imageHTML = s.image ? `<div class="st-diagram-wrap st-section-img-wrap"><img src="${esc(s.image.src)}" alt="${esc(s.image.alt || "")}" class="st-section-img" loading="lazy" style="max-width:100%;border-radius:10px;display:block;margin:0 auto 10px;box-shadow:0 4px 16px rgba(0,0,0,0.25);">${s.image.caption ? `<p class="st-diagram-caption">${esc(s.image.caption)}</p>` : ""}</div>` : "";
+
       const body = `${s.b ? paras(s.b) : ""}` +
         callout("example", "🧩 Worked example", s.example) +
         callout("pitfall", "⚠️ Common pitfall", s.pitfall) +
         callout("pearl", "💡 Key point", s.pearl) +
+        imageHTML +
         diagramHTML;
       return card(s.h, body);
     }).join("");
@@ -574,6 +583,390 @@
         <p class="st-diagram-caption">Original schematic, redrawn in code for clarity — not a reproduction of any textbook or published figure. Legend: ○ reservoir bag (with a small vent mark for the open-tailed Jackson-Rees bag) · ⊤ APL (adjustable pressure-limiting) valve · FG ↓ fresh gas inlet · zig-zag = corrugated tubing · curved connector + P = patient port.</p></div>`;
     }
     return maplesonSVGCache;
+  }
+
+  /* ------------------------------------------------- Venturi schematic diagram */
+  function venturiDiagramHTML() {
+    return `<div class="st-diagram-wrap">
+      <svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Venturi air entrainment valve physics and color coding" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;">
+        <defs>
+          <linearGradient id="vO2Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#0284c7" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#38bdf8" stop-opacity="1"/>
+          </linearGradient>
+          <linearGradient id="vMixGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#059669" stop-opacity="0.9"/>
+          </linearGradient>
+          <marker id="vArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="currentColor"/>
+          </marker>
+        </defs>
+
+        <!-- Nozzle & Housing Contours -->
+        <path d="M 30,110 L 150,110 L 220,135 L 250,135 L 290,110 L 510,110 L 510,95 L 530,95 L 530,195 L 510,195 L 510,180 L 290,180 L 250,155 L 220,155 L 150,180 L 30,180 Z" fill="rgba(255,255,255,0.04)" stroke="currentColor" stroke-width="2"/>
+        
+        <!-- High-pressure O2 Drive Inflow -->
+        <rect x="30" y="125" width="120" height="40" fill="url(#vO2Grad)" opacity="0.35"/>
+        <line x1="40" y1="145" x2="140" y2="145" stroke="#38bdf8" stroke-width="3" marker-end="url(#vArrow)"/>
+        <text x="85" y="140" font-size="11" font-weight="700" fill="#38bdf8" text-anchor="middle">100% O₂ DRIVE</text>
+        <text x="85" y="160" font-size="9" fill="currentColor" text-anchor="middle">High Pressure / Low Velocity</text>
+
+        <!-- Constricted Jet Nozzle -->
+        <polygon points="150,125 220,140 220,150 150,165" fill="#0284c7" opacity="0.85"/>
+        <line x1="220" y1="145" x2="260" y2="145" stroke="#f59e0b" stroke-width="3" marker-end="url(#vArrow)"/>
+        <text x="235" y="130" font-size="10" font-weight="800" fill="#f59e0b" text-anchor="middle">JET NOZZLE</text>
+        <text x="235" y="172" font-size="9" fill="#f59e0b" text-anchor="middle">Velocity ↑↑  Static P ↓↓</text>
+
+        <!-- Air Entrainment Windows (Top & Bottom) -->
+        <rect x="220" y="70" width="60" height="40" fill="rgba(100,116,139,0.15)" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <line x1="250" y1="50" x2="250" y2="125" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#vArrow)"/>
+        <text x="250" y="42" font-size="10" font-weight="700" fill="currentColor" text-anchor="middle">ROOM AIR (21% O₂)</text>
+
+        <rect x="220" y="180" width="60" height="40" fill="rgba(100,116,139,0.15)" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <line x1="250" y1="240" x2="250" y2="165" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#vArrow)"/>
+        <text x="250" y="255" font-size="10" font-weight="700" fill="currentColor" text-anchor="middle">ROOM AIR (21% O₂)</text>
+
+        <!-- Mixing & Diffuser Zone -->
+        <rect x="290" y="115" width="220" height="60" fill="url(#vMixGrad)" opacity="0.3"/>
+        <line x1="300" y1="145" x2="490" y2="145" stroke="#10b981" stroke-width="3" marker-end="url(#vArrow)"/>
+        <text x="400" y="140" font-size="12" font-weight="800" fill="#10b981" text-anchor="middle">HOMOGENOUS MIXTURE</text>
+        <text x="400" y="160" font-size="10" fill="currentColor" text-anchor="middle">Total Flow > 30–40 L/min (Exceeds Peak PIFR)</text>
+
+        <!-- Patient Mask Port Connector -->
+        <rect x="510" y="100" width="40" height="90" fill="rgba(255,255,255,0.08)" stroke="currentColor" stroke-width="2"/>
+        <text x="530" y="150" font-size="10" font-weight="800" fill="currentColor" text-anchor="middle" transform="rotate(90 530 150)">TO MASK (22 mm)</text>
+
+        <!-- Physics Callout Box -->
+        <rect x="580" y="50" width="165" height="195" rx="8" fill="rgba(15,23,42,0.6)" stroke="#0ea5e9" stroke-width="1"/>
+        <text x="662" y="70" font-size="11" font-weight="800" fill="#38bdf8" text-anchor="middle">BERNOULLI & VENTURI</text>
+        <text x="590" y="90" font-size="9" fill="currentColor">• Narrow nozzle: Speed ↑</text>
+        <text x="590" y="105" font-size="9" fill="currentColor">• Lateral pressure: P &lt; P_atm</text>
+        <text x="590" y="120" font-size="9" fill="currentColor">• Viscous shear entrains air</text>
+        <text x="590" y="145" font-size="9" font-weight="700" fill="#f59e0b">ENTRAINMENT RATIO:</text>
+        <text x="590" y="162" font-size="10" font-weight="800" fill="currentColor">Air:O₂ = (100-FiO₂)/(FiO₂-21)</text>
+        <text x="590" y="185" font-size="8.5" fill="#ef4444">⚠️ Downstream backpressure</text>
+        <text x="590" y="198" font-size="8.5" fill="#ef4444">reduces entrainment → FiO₂ ↑</text>
+        <text x="590" y="210" font-size="8.5" fill="#ef4444">and Total Flow ↓↓</text>
+
+        <!-- Valve Color Specifications Table -->
+        <g transform="translate(30, 275)">
+          <rect x="0" y="0" width="700" height="90" rx="6" fill="rgba(255,255,255,0.03)" stroke="currentColor" stroke-width="1"/>
+          <text x="12" y="18" font-size="11" font-weight="800" fill="currentColor">STANDARD COLOUR-CODED VENTURI VALVES (ISO / BRITISH STANDARD):</text>
+          
+          <!-- Blue 24% -->
+          <rect x="12" y="26" width="105" height="52" rx="4" fill="#0284c7" fill-opacity="0.2" stroke="#0284c7" stroke-width="1.5"/>
+          <text x="64" y="42" font-size="11" font-weight="800" fill="#38bdf8" text-anchor="middle">BLUE • 24%</text>
+          <text x="64" y="56" font-size="9" fill="currentColor" text-anchor="middle">2 L/min O₂ • 25:1</text>
+          <text x="64" y="70" font-size="9" font-weight="700" fill="#10b981" text-anchor="middle">Total: 52 L/min</text>
+
+          <!-- White 28% -->
+          <rect x="126" y="26" width="105" height="52" rx="4" fill="#f8fafc" fill-opacity="0.15" stroke="#e2e8f0" stroke-width="1.5"/>
+          <text x="178" y="42" font-size="11" font-weight="800" fill="#f8fafc" text-anchor="middle">WHITE • 28%</text>
+          <text x="178" y="56" font-size="9" fill="currentColor" text-anchor="middle">4 L/min O₂ • 10:1</text>
+          <text x="178" y="70" font-size="9" font-weight="700" fill="#10b981" text-anchor="middle">Total: 44 L/min</text>
+
+          <!-- Orange 31% -->
+          <rect x="240" y="26" width="105" height="52" rx="4" fill="#ea580c" fill-opacity="0.2" stroke="#ea580c" stroke-width="1.5"/>
+          <text x="292" y="42" font-size="11" font-weight="800" fill="#fb923c" text-anchor="middle">ORANGE • 31%</text>
+          <text x="292" y="56" font-size="9" fill="currentColor" text-anchor="middle">6 L/min O₂ • 7:1</text>
+          <text x="292" y="70" font-size="9" font-weight="700" fill="#10b981" text-anchor="middle">Total: 48 L/min</text>
+
+          <!-- Yellow 35% -->
+          <rect x="354" y="26" width="105" height="52" rx="4" fill="#ca8a04" fill-opacity="0.2" stroke="#eab308" stroke-width="1.5"/>
+          <text x="406" y="42" font-size="11" font-weight="800" fill="#fde047" text-anchor="middle">YELLOW • 35%</text>
+          <text x="406" y="56" font-size="9" fill="currentColor" text-anchor="middle">8 L/min O₂ • 5:1</text>
+          <text x="406" y="70" font-size="9" font-weight="700" fill="#10b981" text-anchor="middle">Total: 48 L/min</text>
+
+          <!-- Red 40% -->
+          <rect x="468" y="26" width="105" height="52" rx="4" fill="#dc2626" fill-opacity="0.2" stroke="#ef4444" stroke-width="1.5"/>
+          <text x="520" y="42" font-size="11" font-weight="800" fill="#f87171" text-anchor="middle">RED • 40%</text>
+          <text x="520" y="56" font-size="9" fill="currentColor" text-anchor="middle">10 L/min O₂ • 3:1</text>
+          <text x="520" y="70" font-size="9" font-weight="700" fill="#10b981" text-anchor="middle">Total: 40 L/min</text>
+
+          <!-- Green 60% -->
+          <rect x="582" y="26" width="105" height="52" rx="4" fill="#16a34a" fill-opacity="0.2" stroke="#22c55e" stroke-width="1.5"/>
+          <text x="634" y="42" font-size="11" font-weight="800" fill="#4ade80" text-anchor="middle">GREEN • 60%</text>
+          <text x="634" y="56" font-size="9" fill="currentColor" text-anchor="middle">15 L/min O₂ • 1:1</text>
+          <text x="634" y="70" font-size="9" font-weight="700" fill="#10b981" text-anchor="middle">Total: 30 L/min</text>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Venturi entrainment mechanism and high-flow fixed-performance color codes. Constriction accelerates oxygen flow, creating sub-atmospheric lateral pressure that draws in precise ratios of ambient air. Total delivered flow consistently exceeds peak inspiratory flow, guaranteeing steady FiO₂ irrespective of patient ventilatory pattern.</p>
+    </div>`;
+  }
+
+  /* ------------------------------------------------- Medical Gas Cylinder schematic */
+  function cylinderDiagramHTML() {
+    return `<div class="st-diagram-wrap">
+      <svg viewBox="0 0 760 370" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pin Index Safety System and medical gas cylinder specifications" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;">
+        <!-- Left: Pin Index Radial Arc Diagram -->
+        <g transform="translate(30, 20)">
+          <rect x="0" y="0" width="340" height="320" rx="8" fill="rgba(255,255,255,0.03)" stroke="currentColor" stroke-width="1"/>
+          <text x="170" y="28" font-size="13" font-weight="800" fill="currentColor" text-anchor="middle">PIN INDEX SAFETY SYSTEM (PISS)</text>
+          <text x="170" y="45" font-size="9.5" fill="currentColor" opacity="0.8" text-anchor="middle">Flush valve face view (9/16" radius arc)</text>
+          
+          <!-- Outer circular valve face -->
+          <circle cx="170" cy="145" r="85" fill="rgba(0,0,0,0.2)" stroke="currentColor" stroke-width="2"/>
+          <!-- Central Gas Outlet Port -->
+          <circle cx="170" cy="120" r="16" fill="#0ea5e9" stroke="#38bdf8" stroke-width="2"/>
+          <text x="170" y="124" font-size="8" font-weight="800" fill="#fff" text-anchor="middle">GAS PORT</text>
+
+          <!-- 7-Pin Arc positions (R=50 from port 170,120) -->
+          <!-- Pos 1: angle ~210 deg -->
+          <circle cx="127" cy="145" r="7" fill="rgba(255,255,255,0.15)" stroke="currentColor" stroke-width="1.5"/>
+          <text x="110" y="149" font-size="10" font-weight="700" fill="currentColor">1</text>
+          
+          <!-- Pos 2: angle ~230 deg -->
+          <circle cx="138" cy="158" r="7" fill="#22c55e" stroke="#16a34a" stroke-width="2"/>
+          <text x="122" y="172" font-size="10" font-weight="800" fill="#22c55e">2 [O₂]</text>
+
+          <!-- Pos 3: angle ~250 deg -->
+          <circle cx="153" cy="168" r="7" fill="#3b82f6" stroke="#2563eb" stroke-width="2"/>
+          <text x="153" y="186" font-size="10" font-weight="800" fill="#3b82f6" text-anchor="middle">3 [N₂O]</text>
+
+          <!-- Pos 7: center at bottom -->
+          <circle cx="170" cy="170" r="7" fill="#ec4899" stroke="#db2777" stroke-width="2"/>
+          <text x="170" y="196" font-size="10" font-weight="800" fill="#ec4899" text-anchor="middle">7 [Entonox]</text>
+
+          <!-- Pos 4: angle ~290 deg -->
+          <circle cx="187" cy="168" r="7" fill="rgba(255,255,255,0.15)" stroke="currentColor" stroke-width="1.5"/>
+          <text x="187" y="186" font-size="10" font-weight="700" fill="currentColor" text-anchor="middle">4</text>
+
+          <!-- Pos 5: angle ~310 deg -->
+          <circle cx="202" cy="158" r="7" fill="#22c55e" stroke="#16a34a" stroke-width="2"/>
+          <text x="218" y="172" font-size="10" font-weight="800" fill="#22c55e">5 [O₂/N₂O]</text>
+
+          <!-- Pos 6: angle ~330 deg -->
+          <circle cx="213" cy="145" r="7" fill="rgba(255,255,255,0.15)" stroke="currentColor" stroke-width="1.5"/>
+          <text x="227" y="149" font-size="10" font-weight="700" fill="currentColor">6</text>
+
+          <!-- Bodok Seal Callout -->
+          <g transform="translate(15, 230)">
+            <rect x="0" y="0" width="310" height="75" rx="5" fill="rgba(14,165,233,0.08)" stroke="#0ea5e9" stroke-width="1"/>
+            <text x="12" y="18" font-size="10.5" font-weight="800" fill="#38bdf8">BODOK SEAL (CRITICAL SAFETY COMPONENT):</text>
+            <text x="12" y="34" font-size="9" fill="currentColor">• Neoprene rubber ring bonded within aluminum washer</text>
+            <text x="12" y="48" font-size="9" fill="currentColor">• Thickness: 2.4 mm · Fits flush over yoke nipple</text>
+            <text x="12" y="62" font-size="9" font-weight="700" fill="#ef4444">⚠️ NEVER use 2 Bodok seals (bypasses pin index safety!)</text>
+          </g>
+        </g>
+
+        <!-- Right: PISS Configurations & Color Codes Matrix -->
+        <g transform="translate(390, 20)">
+          <rect x="0" y="0" width="340" height="320" rx="8" fill="rgba(255,255,255,0.03)" stroke="currentColor" stroke-width="1"/>
+          <text x="170" y="28" font-size="13" font-weight="800" fill="currentColor" text-anchor="middle">EXAM PIN CODES & COLOR STANDARDS</text>
+          
+          <!-- Oxygen -->
+          <g transform="translate(12, 45)">
+            <rect x="0" y="0" width="316" height="42" rx="4" fill="rgba(255,255,255,0.04)" stroke="#22c55e" stroke-width="1.2"/>
+            <circle cx="16" cy="21" r="8" fill="#22c55e"/>
+            <text x="32" y="18" font-size="11" font-weight="800" fill="currentColor">Oxygen (O₂) • Pin 2, 5</text>
+            <text x="32" y="33" font-size="9" fill="currentColor">ISO: White body & shoulder | US: Green | UK/Ind: Black/White</text>
+          </g>
+
+          <!-- Nitrous Oxide -->
+          <g transform="translate(12, 95)">
+            <rect x="0" y="0" width="316" height="42" rx="4" fill="rgba(255,255,255,0.04)" stroke="#3b82f6" stroke-width="1.2"/>
+            <circle cx="16" cy="21" r="8" fill="#3b82f6"/>
+            <text x="32" y="18" font-size="11" font-weight="800" fill="currentColor">Nitrous Oxide (N₂O) • Pin 3, 5</text>
+            <text x="32" y="33" font-size="9" fill="currentColor">French Blue body & shoulder (Universal) · SVP ~51 bar</text>
+          </g>
+
+          <!-- Medical Air -->
+          <g transform="translate(12, 145)">
+            <rect x="0" y="0" width="316" height="42" rx="4" fill="rgba(255,255,255,0.04)" stroke="#64748b" stroke-width="1.2"/>
+            <circle cx="16" cy="21" r="8" fill="#64748b"/>
+            <text x="32" y="18" font-size="11" font-weight="800" fill="currentColor">Medical Air • Pin 1, 5</text>
+            <text x="32" y="33" font-size="9" fill="currentColor">ISO/UK: Black/white quarters | US: Yellow · 137 bar</text>
+          </g>
+
+          <!-- Entonox -->
+          <g transform="translate(12, 195)">
+            <rect x="0" y="0" width="316" height="42" rx="4" fill="rgba(255,255,255,0.04)" stroke="#ec4899" stroke-width="1.2"/>
+            <circle cx="16" cy="21" r="8" fill="#ec4899"/>
+            <text x="32" y="18" font-size="11" font-weight="800" fill="currentColor">Entonox (50% O₂ / 50% N₂O) • Pin 7</text>
+            <text x="32" y="33" font-size="9" fill="currentColor">Blue body, blue/white quarters shoulder · Poynting effect</text>
+          </g>
+
+          <!-- Carbon Dioxide -->
+          <g transform="translate(12, 245)">
+            <rect x="0" y="0" width="316" height="42" rx="4" fill="rgba(255,255,255,0.04)" stroke="#a855f7" stroke-width="1.2"/>
+            <circle cx="16" cy="21" r="8" fill="#a855f7"/>
+            <text x="32" y="18" font-size="11" font-weight="800" fill="currentColor">Carbon Dioxide (CO₂) • Pin 1, 6</text>
+            <text x="32" y="33" font-size="9" fill="currentColor">Grey body & shoulder · Filling ratio 0.67–0.75</text>
+          </g>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Pin Index Safety System (PISS) geometry and color coding. Specific paired pins on the machine yoke engage corresponding holes on the cylinder valve face, physically preventing gas cylinder misconnections. A single Bodok seal ensures an airtight high-pressure seal.</p>
+    </div>`;
+  }
+
+  /* ------------------------------------------------- Infusion Pump & TCI schematic */
+  function infusionPumpDiagramHTML() {
+    return `<div class="st-diagram-wrap">
+      <svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Syringe infusion pump mechanism and Target-Controlled Infusion 3-compartment model" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;">
+        <!-- Left: Syringe Driver Hardware Mechanism -->
+        <g transform="translate(30, 20)">
+          <rect x="0" y="0" width="340" height="310" rx="8" fill="rgba(255,255,255,0.03)" stroke="currentColor" stroke-width="1"/>
+          <text x="170" y="26" font-size="12" font-weight="800" fill="currentColor" text-anchor="middle">SYRINGE DRIVER MECHANISM</text>
+
+          <!-- Motor & Lead Screw -->
+          <rect x="25" y="55" width="45" height="40" rx="4" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
+          <text x="47" y="78" font-size="9" font-weight="800" fill="#fff" text-anchor="middle">STEPPER</text>
+          <text x="47" y="89" font-size="8" fill="#fff" text-anchor="middle">MOTOR</text>
+
+          <!-- Threaded Lead Screw -->
+          <line x1="70" y1="75" x2="185" y2="75" stroke="#f59e0b" stroke-width="5" stroke-dasharray="2,2"/>
+          <text x="127" y="65" font-size="8.5" font-weight="700" fill="#f59e0b" text-anchor="middle">Lead Screw</text>
+
+          <!-- Pusher Block -->
+          <rect x="185" y="45" width="22" height="60" rx="3" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+          <text x="196" y="118" font-size="8" fill="currentColor" text-anchor="middle">Pusher</text>
+
+          <!-- Syringe Plunger -->
+          <line x1="207" y1="75" x2="250" y2="75" stroke="#94a3b8" stroke-width="4"/>
+          <!-- Syringe Barrel -->
+          <rect x="235" y="55" width="75" height="40" rx="2" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="1.5"/>
+          <line x1="250" y1="57" x2="250" y2="93" stroke="#0ea5e9" stroke-width="3"/>
+          <text x="272" y="78" font-size="9" font-weight="700" fill="#38bdf8" text-anchor="middle">50 mL Syringe</text>
+          <!-- Syringe Nozzle & Line -->
+          <rect x="310" y="72" width="15" height="6" fill="#38bdf8"/>
+          <line x1="325" y1="75" x2="335" y2="75" stroke="#38bdf8" stroke-width="2"/>
+
+          <!-- Hardware Sensors Callout -->
+          <g transform="translate(15, 140)">
+            <rect x="0" y="0" width="310" height="150" rx="5" fill="rgba(15,23,42,0.5)" stroke="currentColor" stroke-width="1"/>
+            <text x="10" y="18" font-size="10.5" font-weight="800" fill="#38bdf8">KEY SAFETY SENSORS & HAZARDS:</text>
+            <text x="10" y="36" font-size="9" fill="currentColor">• <tspan font-weight="700">Barrel Clamp Sensor:</tspan> Verifies syringe diameter & size</text>
+            <text x="10" y="52" font-size="9" fill="currentColor">• <tspan font-weight="700">Flange Detector:</tspan> Confirms plunger is correctly engaged</text>
+            <text x="10" y="68" font-size="9" fill="currentColor">• <tspan font-weight="700">In-Line Pressure Sensor:</tspan> Detects downstream occlusion</text>
+            <text x="10" y="84" font-size="9" fill="currentColor">• <tspan font-weight="700">Anti-Siphon Valve:</tspan> Prevents gravity-assisted free flow</text>
+            <text x="10" y="104" font-size="9" font-weight="700" fill="#ef4444">⚠️ Syringe Brand Mismatch:</text>
+            <text x="10" y="118" font-size="8.5" fill="#ef4444">Different barrel internal diameters (BD vs Terumo vs Braun)</text>
+            <text x="10" y="130" font-size="8.5" fill="#ef4444">can produce infusion rate delivery errors exceeding 15–20%!</text>
+          </g>
+        </g>
+
+        <!-- Right: Target-Controlled Infusion (TCI) 3-Compartment Model -->
+        <g transform="translate(390, 20)">
+          <rect x="0" y="0" width="340" height="310" rx="8" fill="rgba(255,255,255,0.03)" stroke="currentColor" stroke-width="1"/>
+          <text x="170" y="26" font-size="12" font-weight="800" fill="currentColor" text-anchor="middle">TARGET-CONTROLLED INFUSION (TCI)</text>
+          <text x="170" y="42" font-size="9" fill="currentColor" opacity="0.8" text-anchor="middle">3-Compartment Mammillary Pharmacokinetic Model</text>
+
+          <!-- V1 Central Compartment -->
+          <rect x="110" y="60" width="120" height="55" rx="6" fill="#0284c7" fill-opacity="0.3" stroke="#0284c7" stroke-width="2"/>
+          <text x="170" y="82" font-size="11" font-weight="800" fill="#38bdf8" text-anchor="middle">V₁ CENTRAL</text>
+          <text x="170" y="98" font-size="9" fill="currentColor" text-anchor="middle">Blood / Vessel-Rich</text>
+
+          <!-- V2 Muscle / Rapid -->
+          <rect x="20" y="160" width="115" height="50" rx="6" fill="#10b981" fill-opacity="0.25" stroke="#10b981" stroke-width="1.5"/>
+          <text x="77" y="182" font-size="10" font-weight="800" fill="#34d399" text-anchor="middle">V₂ RAPID (Muscle)</text>
+          <text x="77" y="196" font-size="8.5" fill="currentColor" text-anchor="middle">Intermediate Eq.</text>
+
+          <!-- V3 Fat / Slow -->
+          <rect x="205" y="160" width="115" height="50" rx="6" fill="#f59e0b" fill-opacity="0.25" stroke="#f59e0b" stroke-width="1.5"/>
+          <text x="262" y="182" font-size="10" font-weight="800" fill="#fbbf24" text-anchor="middle">V₃ SLOW (Fat)</text>
+          <text x="262" y="196" font-size="8.5" fill="currentColor" text-anchor="middle">Deep Storage</text>
+
+          <!-- Connectors V1 <-> V2 -->
+          <line x1="120" y1="115" x2="77" y2="160" stroke="currentColor" stroke-width="1.5"/>
+          <text x="85" y="135" font-size="8" font-weight="700" fill="currentColor">k₁₂ / k₂₁</text>
+
+          <!-- Connectors V1 <-> V3 -->
+          <line x1="220" y1="115" x2="262" y2="160" stroke="currentColor" stroke-width="1.5"/>
+          <text x="250" y="135" font-size="8" font-weight="700" fill="currentColor">k₁₃ / k₃₁</text>
+
+          <!-- Elimination k10 -->
+          <line x1="170" y1="115" x2="170" y2="155" stroke="#ef4444" stroke-width="2"/>
+          <text x="170" y="145" font-size="9" font-weight="800" fill="#ef4444" text-anchor="middle">k₁₀ Elimination</text>
+
+          <!-- Effect Site Compartment (Ce) -->
+          <g transform="translate(20, 235)">
+            <rect x="0" y="0" width="300" height="60" rx="5" fill="rgba(168,85,247,0.15)" stroke="#a855f7" stroke-width="1.5"/>
+            <text x="12" y="18" font-size="10" font-weight="800" fill="#c084fc">EFFECT-SITE TARGETING (Ce vs Cp):</text>
+            <text x="12" y="34" font-size="8.5" fill="currentColor">• <tspan font-weight="700">ke0:</tspan> Rate constant for plasma-to-brain equilibration</text>
+            <text x="12" y="48" font-size="8.5" fill="currentColor">• <tspan font-weight="700">Ce targeting:</tspan> Delivers transient plasma bolus overshoot to achieve brain target faster</text>
+          </g>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Syringe pump precision lead-screw mechanics and Target-Controlled Infusion (TCI) pharmacokinetic modeling. A stepper motor drives the lead screw against the syringe plunger. Microprocessor algorithms calculate continuous drug delivery across central and peripheral compartments based on validated patient PK/PD models.</p>
+    </div>`;
+  }
+
+  /* ------------------------------------------------- Soda Lime & CO2 Absorber schematic */
+  function sodaLimeDiagramHTML() {
+    return `<div class="st-diagram-wrap">
+      <svg viewBox="0 0 760 370" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Soda lime chemical reactions and absorber canister architecture" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;">
+        <!-- Left: Absorber Canister Architecture -->
+        <g transform="translate(30, 20)">
+          <rect x="0" y="0" width="310" height="320" rx="8" fill="rgba(255,255,255,0.03)" stroke="currentColor" stroke-width="1"/>
+          <text x="155" y="24" font-size="12" font-weight="800" fill="currentColor" text-anchor="middle">CIRCLE ABSORBER CANISTER</text>
+          
+          <!-- Outer Canister Body -->
+          <rect x="75" y="45" width="160" height="210" rx="8" fill="rgba(0,0,0,0.25)" stroke="currentColor" stroke-width="2"/>
+          <!-- Top Baffle & Port -->
+          <rect x="130" y="35" width="50" height="10" fill="currentColor" opacity="0.3"/>
+          <text x="155" y="42" font-size="8" font-weight="700" fill="currentColor" text-anchor="middle">Exhaled Gas In</text>
+
+          <!-- Granule Bed Zones -->
+          <!-- Zone 1: Exhausted (Top) -->
+          <rect x="80" y="55" width="150" height="50" fill="#7c3aed" fill-opacity="0.55"/>
+          <text x="155" y="78" font-size="10" font-weight="800" fill="#ddd6fe" text-anchor="middle">EXHAUSTED ZONE</text>
+          <text x="155" y="92" font-size="8" fill="#ddd6fe" text-anchor="middle">Ethyl Violet: Purple (pH &lt; 10.3)</text>
+
+          <!-- Zone 2: Active Reaction Band (Middle) -->
+          <rect x="80" y="105" width="150" height="50" fill="#f59e0b" fill-opacity="0.3"/>
+          <text x="155" y="128" font-size="10" font-weight="800" fill="#fbbf24" text-anchor="middle">ACTIVE REACTION BAND</text>
+          <text x="155" y="142" font-size="8" fill="#fbbf24" text-anchor="middle">Exothermic Heat &amp; Water Generated</text>
+
+          <!-- Zone 3: Fresh Granules (Bottom) -->
+          <rect x="80" y="155" width="150" height="95" fill="rgba(255,255,255,0.08)"/>
+          <text x="155" y="195" font-size="10" font-weight="800" fill="currentColor" text-anchor="middle">FRESH GRANULES</text>
+          <text x="155" y="210" font-size="8" fill="currentColor" text-anchor="middle">White (pH &gt; 10.3) · High Reserve</text>
+
+          <!-- Bottom Port -->
+          <rect x="130" y="255" width="50" height="10" fill="currentColor" opacity="0.3"/>
+          <text x="155" y="278" font-size="9" font-weight="700" fill="#10b981" text-anchor="middle">Scrubbed Gas Out (CO₂ Free)</text>
+
+          <!-- Mesh Size Note -->
+          <text x="155" y="305" font-size="9" fill="currentColor" opacity="0.8" text-anchor="middle">Granule Mesh Size: 4 to 8 mesh (2.5–5.0 mm)</text>
+        </g>
+
+        <!-- Right: Chemical Reactions & Exam Pearls -->
+        <g transform="translate(360, 20)">
+          <rect x="0" y="0" width="370" height="320" rx="8" fill="rgba(255,255,255,0.03)" stroke="currentColor" stroke-width="1"/>
+          <text x="185" y="24" font-size="12" font-weight="800" fill="currentColor" text-anchor="middle">EXAM CHEMISTRY &amp; CRITICAL HAZARDS</text>
+
+          <!-- 3-Step Reaction Box -->
+          <g transform="translate(15, 38)">
+            <rect x="0" y="0" width="340" height="110" rx="5" fill="rgba(14,165,233,0.08)" stroke="#0ea5e9" stroke-width="1"/>
+            <text x="10" y="18" font-size="10" font-weight="800" fill="#38bdf8">3-STEP EXOTHERMIC REACTION SEQUENCE:</text>
+            <text x="10" y="36" font-size="9.5" font-weight="700" fill="currentColor">1. CO₂ + H₂O ⇌ H₂CO₃  <tspan font-weight="400" fill="#94a3b8">(Carbonic acid formation)</tspan></text>
+            <text x="10" y="56" font-size="9.5" font-weight="700" fill="currentColor">2. H₂CO₃ + 2NaOH → Na₂CO₃ + 2H₂O + Heat</text>
+            <text x="10" y="76" font-size="9.5" font-weight="700" fill="currentColor">3. Na₂CO₃ + Ca(OH)₂ → CaCO₃↓ + 2NaOH</text>
+            <text x="10" y="96" font-size="8.5" fill="#10b981">• Exothermic: Releases ~13,000 kcal per mol CO₂ absorbed</text>
+          </g>
+
+          <!-- Rebound Phenomenon Callout -->
+          <g transform="translate(15, 158)">
+            <rect x="0" y="0" width="340" height="72" rx="5" fill="rgba(124,58,237,0.1)" stroke="#7c3aed" stroke-width="1.2"/>
+            <text x="10" y="16" font-size="10" font-weight="800" fill="#c084fc">REBOUND / REGENERATION PHENOMENON (VIVA FAVORITE):</text>
+            <text x="10" y="32" font-size="8.5" fill="currentColor">• Exhausted purple soda lime rested overnight turns white again.</text>
+            <text x="10" y="46" font-size="8.5" fill="currentColor">• Internal Ca(OH)₂ diffuses to surface, neutralizing Na₂CO₃ (pH rises > 10.3).</text>
+            <text x="10" y="60" font-size="8.5" font-weight="700" fill="#ef4444">⚠️ FALSE REASSURANCE: Reverts to purple within minutes of clinical reuse!</text>
+          </g>
+
+          <!-- Degradation Hazards Box -->
+          <g transform="translate(15, 238)">
+            <rect x="0" y="0" width="340" height="72" rx="5" fill="rgba(239,68,68,0.08)" stroke="#ef4444" stroke-width="1"/>
+            <text x="10" y="16" font-size="10" font-weight="800" fill="#f87171">TOXIC DEGRADATION PRODUCTS:</text>
+            <text x="10" y="32" font-size="8.5" fill="currentColor">• <tspan font-weight="700">Compound A:</tspan> Sevoflurane + strong base (NaOH/KOH). Nephrotoxic in rats.</text>
+            <text x="10" y="46" font-size="8.5" fill="currentColor">• <tspan font-weight="700">Carbon Monoxide (CO):</tspan> Desflurane &gt;&gt; Isoflurane + completely dry absorbent.</text>
+            <text x="10" y="60" font-size="8.5" fill="currentColor">• Modern alkali-free absorbents (Amsorb Plus, Litholyme) prevent both risks.</text>
+          </g>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Soda lime CO₂ absorption chemistry and dual-canister circle architecture. Exhaled CO₂ reacts with water and catalytic sodium hydroxide to precipitate calcium carbonate. Ethyl violet indicator monitors pH depletion, while understanding the rebound phenomenon and desiccation hazards prevents clinical misadventures.</p>
+    </div>`;
   }
 
   function showDetail() {
