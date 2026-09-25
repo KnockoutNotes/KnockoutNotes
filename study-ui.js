@@ -246,15 +246,10 @@
     }
   });
 
-  // Opioid receptor-activity classification chart — shown above the poster
-  // grid only for the (unfiltered) Opioids category, not on "all
-  // categories" or search views. This is the classification actually
-  // taught for exam purposes: it's what explains why naloxone/naltrexone
-  // fully reverse an opioid while nalbuphine/pentazocine only partially
-  // do, and why buprenorphine has a ceiling on respiratory depression that
-  // a full agonist doesn't. Each chip reuses the existing [data-item]
-  // click delegation already bound on #stGrid (see bindListEvents()) — no
-  // separate event wiring needed since these chips render inside it.
+  // Receptor-activity & chemical-class classification charts — shown above
+  // the poster grid only for the unfiltered category views (Opioids, Muscle
+  // Relaxants, Induction Agents), not on "all categories" or search views.
+  // Each chip reuses the existing [data-item] click delegation on #stGrid.
   const OPIOID_CLASSES = [
     { label: "Full Agonists — Phenanthrene", desc: "Morphine and its direct chemical relatives.", members: ["morphine", "hydromorphone", "pethidine"] },
     { label: "Full Agonists — Phenylpiperidine", desc: "The fentanyl family — fast, potent, synthetic.", members: ["fentanyl", "sufentanil", "alfentanil", "remifentanil"] },
@@ -263,8 +258,27 @@
     { label: "Mixed Agonist-Antagonists", desc: "Kappa agonist + mu antagonist/partial agonist.", members: ["nalbuphine", "pentazocine"] },
     { label: "Pure Antagonists", desc: "No agonist activity of their own — reversal only.", members: ["naloxone", "naltrexone"] },
   ];
-  function opioidClassificationHTML() {
-    const groups = OPIOID_CLASSES.map((g) => {
+
+  const RELAXANT_CLASSES = [
+    { label: "Depolarising — Acetylcholine Dimer", desc: "Persistent motor endplate depolarisation; ultra-short onset and duration.", members: ["succinylcholine"] },
+    { label: "Aminosteroids — Intermediate-Acting", desc: "Monoquaternary steroid nucleus; hepatic biliary clearance, sugammadex reversible.", members: ["rocuronium", "vecuronium"] },
+    { label: "Aminosteroids — Long-Acting", desc: "Bis-quaternary aminosteroid; renal clearance, marked vagolytic tachycardia.", members: ["pancuronium"] },
+    { label: "Benzylisoquinoliniums — Hofmann Elimination", desc: "Organ-independent spontaneous chemical degradation; intermediate duration, organ-failure safe.", members: ["cisatracurium", "atracurium"] },
+    { label: "Benzylisoquinoliniums — Short-Acting Diester", desc: "Plasma butyrylcholinesterase hydrolysis; short duration, prolonged in atypical enzyme.", members: ["mivacurium"] },
+    { label: "Asymmetric Fumarates — Cysteine-Reversible", desc: "Investigational ultra-short chlorofumarate; designed for rapid L-cysteine adduction reversal.", members: ["gantacurium"] },
+  ];
+
+  const INDUCTION_CLASSES = [
+    { label: "Alkylphenols — GABA-A Potentiators", desc: "Diisopropylphenol & chiral derivatives; rapid redistribution, smooth awakening, antiemetic.", members: ["propofol", "cipepofol"] },
+    { label: "Carboxylated Imidazoles", desc: "Exceptional haemodynamic stability; transient 11β-hydroxylase adrenal steroidogenesis suppression.", members: ["etomidate"] },
+    { label: "Arylcycloalkylamines — NMDA Antagonists", desc: "Non-competitive NMDA blockade; dissociative anaesthesia, somatic analgesia, sympathetic tone.", members: ["ketamine"] },
+    { label: "Benzodiazepines — Classical Imidazobenzodiazepine", desc: "Positive allosteric GABA-A modulator; water-soluble in vial, lipophilic in vivo, hepatic CYP3A4.", members: ["midazolam"] },
+    { label: "Benzodiazepines — Ester-Hydrolysed Soft Drug", desc: "Carboxylic ester grafted onto benzodiazepine core; ultra-short offset via tissue carboxylesterases.", members: ["remimazolam"] },
+    { label: "Barbiturates — Thiobarbiturate (Historic)", desc: "Sulfur-substituted barbiturate; rapid brain entry, long elimination half-life, burst suppression.", members: ["thiopental"] },
+  ];
+
+  function buildClassificationHTML(title, classList) {
+    const groups = classList.map((g) => {
       const chips = g.members.map((id) => {
         const d = drugById.get(id);
         if (!d) return "";
@@ -277,10 +291,20 @@
         <div class="st-class-chips">${chips}</div>
       </div>`;
     }).join("");
-    return `<section class="st-classification st-reveal" aria-label="Opioid classification by receptor activity">
-      <h2 class="st-classification-title">Classification — by Receptor Activity</h2>
+    return `<section class="st-classification st-reveal" aria-label="${esc(title)}">
+      <h2 class="st-classification-title">${esc(title)}</h2>
       <div class="st-classification-grid">${groups}</div>
     </section>`;
+  }
+
+  function opioidClassificationHTML() {
+    return buildClassificationHTML("Classification — by Receptor Activity", OPIOID_CLASSES);
+  }
+  function relaxantClassificationHTML() {
+    return buildClassificationHTML("Classification — by Chemical Structure & Mechanism", RELAXANT_CLASSES);
+  }
+  function inductionClassificationHTML() {
+    return buildClassificationHTML("Classification — by Chemical Class & Receptor Target", INDUCTION_CLASSES);
   }
 
   function renderGrid() {
@@ -301,6 +325,8 @@
       if (!list.length) return;
       if (state.cat === "all" || f) html += `<h2 class="st-group-title"><span>${c.icon}</span> ${esc(c.label)}</h2>`;
       if (c.id === "opioids" && state.cat === "opioids" && !f) html += opioidClassificationHTML();
+      if (c.id === "relaxants" && state.cat === "relaxants" && !f) html += relaxantClassificationHTML();
+      if (c.id === "induction" && state.cat === "induction" && !f) html += inductionClassificationHTML();
       html += `<div class="st-grid">${list.map(tileHTML).join("")}</div>`;
     });
     grid.innerHTML = total ? html : `<div class="st-empty">No results for “${esc(state.filter)}”.</div>`;
@@ -426,6 +452,7 @@
         return card("Overview", `<p class="st-tagline-lg">${esc(d.tagline)}</p>
           ${d.brand ? `<p><strong>Brand name(s):</strong> ${esc(d.brand)}</p>` : ""}
           <p><strong>Class:</strong> ${esc(catById.get(d.cat).label)}</p>
+          ${d.classification ? `<p><strong>Classification:</strong> ${esc(d.classification)}</p>` : ""}
           ${d.tags && d.tags.length ? `<div class="st-tagrow">${d.tags.map((t) => `<span class="st-chip">${esc(t)}</span>`).join("")}</div>` : ""}`);
       case "structure": return card("Chemical Structure", structureBodyHTML(d));
       case "pd": return card("Pharmacodynamics", para(d.pd));

@@ -419,6 +419,7 @@
   // ---------------- INDUCTION AGENTS ----------------
   addDrug({
     id: "propofol", cat: "induction", name: "Propofol", brand: "Diprivan",
+    classification: "Alkylphenol (2,6-diisopropylphenol) • GABA-A receptor agonist",
     tagline: "The default IV induction agent almost everywhere — fast on, fast off, and pleasant to wake up from",
     tags: ["GABA-A agonist", "TIVA"],
     source: SRC.fdaUpToDate("Diprivan (propofol) injectable emulsion label", "Fresenius Kabi/AstraZeneca"),
@@ -432,6 +433,7 @@
 
   addDrug({
     id: "etomidate", cat: "induction", name: "Etomidate", brand: "Amidate",
+    classification: "Carboxylated imidazole ester • Positive allosteric GABA-A modulator",
     tagline: "The induction agent you reach for when the heart can't afford much of a hit",
     tags: ["Cardiac-stable induction", "Adrenal suppression"],
     source: SRC.fdaUpToDate("Amidate (etomidate) injection label", "Hospira/Pfizer"),
@@ -445,6 +447,7 @@
 
   addDrug({
     id: "ketamine", cat: "induction", name: "Ketamine", brand: "Ketalar",
+    classification: "Arylcycloalkylamine (phencyclidine congener) • Non-competitive NMDA receptor antagonist",
     tagline: "The odd one out — it provides its own analgesia, keeps the patient breathing, and raises the blood pressure instead of dropping it",
     tags: ["NMDA antagonist", "Dissociative anaesthesia"],
     source: SRC.fdaUpToDate("Ketalar (ketamine hydrochloride) injection label", "Par Pharmaceutical"),
@@ -458,6 +461,7 @@
 
   addDrug({
     id: "thiopental", cat: "induction", name: "Thiopental (Sodium Thiopental)", brand: "Pentothal",
+    classification: "Thiobarbiturate (sulfur-substituted barbituric acid) • GABA-A channel potentiator",
     tagline: "The original rapid-acting induction agent — historically important, no longer available in the US",
     tags: ["Barbiturate", "Historic agent"],
     source: "FDA-approved prescribing information for Pentothal (thiopental sodium), last US-marketed formulation (Hospira) — product discontinued from the US market in 2011; UpToDate \"Barbiturates\" monograph (2025); Miller's Anesthesia, 10th ed., Ch. 21.",
@@ -471,6 +475,7 @@
 
   addDrug({
     id: "midazolam", cat: "induction", name: "Midazolam", brand: "Versed",
+    classification: "Water-soluble imidazobenzodiazepine • GABA-A positive allosteric modulator",
     tagline: "The benzodiazepine anaesthetists actually use — for calming nerves before a case, not usually for the induction itself",
     tags: ["Benzodiazepine", "GABA-A modulator"],
     source: SRC.fdaUpToDate("Versed (midazolam) injection label", "Pfizer"),
@@ -484,6 +489,7 @@
 
   addDrug({
     id: "remimazolam", cat: "induction", name: "Remimazolam", brand: "Byfavo",
+    classification: "Ester-hydrolysed soft-drug benzodiazepine • Tissue carboxylesterase-cleared GABA-A modulator",
     tagline: "A benzodiazepine engineered to be broken down almost instantly — sedation you can turn off nearly as fast as you turned it on",
     tags: ["Benzodiazepine", "Ultra-short-acting", "Ester-metabolised"],
     source: "FDA-approved prescribing information — Byfavo (remimazolam besylate) injection label (Acacia Pharma/Cosette Pharmaceuticals), approved July 2, 2020; UpToDate \"Remimazolam: Drug information\" (2025); Miller's Anesthesia, 10th ed.",
@@ -497,6 +503,7 @@
 
   addDrug({
     id: "cipepofol", cat: "induction", name: "Cipepofol (Ciprofol)", brand: "Cypsedo",
+    classification: "Chiral cyclopropyl alkylphenol • High-potency GABA-A receptor agonist",
     tagline: "The newest FDA-approved general anaesthesia induction agent — a fluorinated propofol relative that works at a fraction of the dose",
     tags: ["GABA-A agonist", "Newest FDA approval"],
     source: "FDA-approved prescribing information — Cypsedo (cipepofol) injection label (Haisco Pharmaceutical Group / HaiscoUSA Pharmaceuticals), approved May 29, 2026; From propofol to cipepofol (Cypsedo®): Medicinal Chemistry Research (2026); UpToDate general anaesthesia induction agent updates (2026).",
@@ -510,104 +517,112 @@
   // ---------------- MUSCLE RELAXANTS ----------------
   addDrug({
     id: "succinylcholine", cat: "relaxants", name: "Succinylcholine (Suxamethonium)", brand: "Anectine",
+    classification: "Depolarising neuromuscular blocker • Bis-quaternary acetylcholine dimer (ultra-short-acting)",
     tagline: "Still the fastest paralytic in the drawer — and the only depolarising one, which explains both its speed and its risks",
     tags: ["Depolarising NMBA", "Fastest onset"],
     source: SRC.fdaUpToDate("Anectine (succinylcholine chloride) injection label", "Hospira/Pfizer"),
     structure: "Structurally, succinylcholine is just two acetylcholine molecules joined back-to-back at their acetate ends. That resemblance to acetylcholine is the whole story — it's why the drug can activate the same receptor acetylcholine does, and why the body's own plasma cholinesterase can chew through it almost as fast as it would chew through acetylcholine itself. It's the only depolarising neuromuscular blocker in routine clinical use.",
     pd: "Unlike every other relaxant on this list, succinylcholine doesn't block the nicotinic receptor at the neuromuscular junction — it activates it, the same as acetylcholine would, causing a sustained depolarisation of the motor endplate. You see that depolarisation clinically as fasciculations right after injection, followed by paralysis once the receptors desensitise and stop responding (a 'Phase I' depolarising block). With prolonged or repeated exposure, the block can shift character into something that behaves more like a non-depolarising block ('Phase II'). It also causes a predictable rise in serum potassium of around 0.5 mEq/L in a normal patient — trivial normally, but dangerously exaggerated in anyone with denervation injury, burns, major trauma, prolonged immobility, or neuromuscular disease, all of which cause extrajunctional acetylcholine receptors to proliferate across the muscle membrane and massively amplify the potassium released.",
     pk: "It has the fastest onset of any neuromuscular blocker — 30 to 60 seconds — and the shortest duration, 5 to 10 minutes, purely because plasma cholinesterase (not the acetylcholinesterase at the neuromuscular junction) breaks it down almost as fast as it arrives. That's also its single biggest vulnerability: in someone with an atypical or deficient plasma cholinesterase — a genetic variant, liver disease, pregnancy, or certain drugs — that rapid breakdown doesn't happen, and paralysis can stretch from minutes into hours.",
-    dosage: "FDA-approved: for rapid sequence intubation in adults, 1–1.5 mg/kg IV. For shorter routine procedures, 0.3–1.1 mg/kg IV. When IV access isn't available — classically, severe paediatric laryngospasm — it can be given IM at up to 3–4 mg/kg (maximum 150 mg). A continuous infusion (2.5 mg/min, titrated) is rarely used today given the risk of drifting into a Phase II block.",
+    dosage: "ED95 is approximately 0.3 mg/kg IV in adults. FDA-approved dosing: for rapid sequence induction/intubation (RSI) in adults, 1–1.5 mg/kg IV (representing 3 to 5 times the ED95, guaranteeing complete 100% vocal cord paralysis within 30–60 seconds with a recovery duration of 5–10 minutes). For shorter routine procedures, 0.3–1.1 mg/kg IV. When IV access isn't available — classically, severe paediatric laryngospasm — it can be given IM at up to 3–4 mg/kg (maximum 150 mg, onset 3–4 minutes). A continuous infusion (2.5 mg/min, titrated) is rarely used today given the risk of drifting into a Phase II block.",
     offLabel: "Its best-known off-label use is treating severe laryngospasm that hasn't responded to positive-pressure ventilation and jaw thrust — often given IM or intraosseously if IV access isn't yet secured. This is a well-established emergency manoeuvre, just not the drug's primary labelled indication.",
     complications: "The FDA carries a black-box warning on this drug for good reason: hyperkalaemic cardiac arrest, particularly in children with undiagnosed skeletal-muscle myopathy — which is why routine paediatric use is now restricted to emergency airway control rather than elective cases. The hyperkalaemia risk extends well beyond children too: burns (from about 24 hours after injury and for up to a couple of years), spinal cord injury, stroke, prolonged immobility, severe intra-abdominal sepsis, and any neuromuscular disease all meaningfully raise the risk. It's also a recognised trigger for malignant hyperthermia. Masseter muscle rigidity after succinylcholine can be an early warning sign of MH and deserves to be taken seriously, not brushed off. Bradycardia and other arrhythmias occur, especially with repeat dosing in children — often pre-empted with atropine. Myalgia afterward is common, likely related to the fasciculations. And in someone with pseudocholinesterase deficiency, paralysis can run dramatically longer than expected, requiring ventilatory support until it wears off."
   });
 
   addDrug({
     id: "rocuronium", cat: "relaxants", name: "Rocuronium", brand: "Zemuron",
+    classification: "Non-depolarising neuromuscular blocker • Monoquaternary aminosteroid (intermediate-acting)",
     tagline: "The non-depolarising relaxant fast enough to substitute for succinylcholine at RSI — and the one sugammadex was built for",
     tags: ["Non-depolarising NMBA", "Aminosteroid"],
     source: SRC.fdaUpToDate("Zemuron (rocuronium bromide) injection label", "Merck"),
     structure: "Rocuronium is an aminosteroid neuromuscular blocker — built on a steroid backbone, structurally related to vecuronium but modified specifically to make it act faster. It carries a single quaternary ammonium group (monoquaternary), which is where it binds the nicotinic receptor.",
     pd: "It's a straightforward competitive antagonist at the nicotinic acetylcholine receptor on the postjunctional membrane — it sits in the receptor without activating it, blocking acetylcholine from getting in and producing flaccid paralysis. Because it's non-depolarising, there's no fasciculation phase and no potassium release the way there is with succinylcholine. It causes minimal histamine release and very little cardiovascular disturbance at normal clinical doses. What makes it clinically distinctive among the non-depolarisers is speed: at an intubating dose it comes on in roughly 1–2 minutes, and at the higher doses used for RSI, its onset genuinely approaches succinylcholine's — which is exactly why it's the standard substitute when succinylcholine is contraindicated.",
     pk: "Duration is intermediate, roughly 30–40 minutes at a standard intubating dose, longer with repeat dosing. It's cleared mostly by the liver — taken up and excreted largely unchanged in bile — with a smaller renal contribution, so hepatic impairment prolongs its effect more than renal impairment does, though significant renal failure can still stretch its duration somewhat.",
-    dosage: "FDA-approved: for routine intubation, 0.6 mg/kg IV, giving onset around 1–2 minutes and duration around 30 minutes. For rapid sequence intubation, 0.9–1.2 mg/kg IV, bringing onset down to roughly 60–90 seconds. For maintenance, 0.1–0.15 mg/kg IV as needed, or a continuous infusion of 0.01 mg/kg/min, titrated against a peripheral nerve stimulator. The label also covers IM use in infants and children when IV access isn't available and intubation isn't emergent — roughly 1 mg/kg in infants, 1.8 mg/kg in children — but onset is far slower (three to four minutes or more) and duration meaningfully longer than the IV route, so IM rocuronium is not suitable for rapid sequence induction.",
+    dosage: "ED95 is 0.3 mg/kg IV in adults under balanced anaesthesia. FDA-approved dosing: for routine tracheal intubation, 0.6 mg/kg IV (representing exactly 2 times the ED95, producing excellent intubating conditions in 60–90 seconds with an intermediate clinical duration of 30–40 minutes). For rapid sequence induction (RSI), 0.9–1.2 mg/kg IV (3 to 4 times the ED95, bringing onset down to roughly 60 seconds to match succinylcholine, with an extended clinical duration of 50–90 minutes). For maintenance boluses, 0.1–0.15 mg/kg IV (roughly 0.3 to 0.5 times the ED95) as needed, or a continuous infusion of 0.01 mg/kg/min (5–12 mcg/kg/min), titrated against a peripheral nerve stimulator. The label also covers IM use in infants and children when IV access isn't available and intubation isn't emergent — roughly 1 mg/kg in infants, 1.8 mg/kg in children — but onset is far slower (three to four minutes or more) and duration meaningfully longer than the IV route, so IM rocuronium is not suitable for rapid sequence induction.",
     offLabel: "Its high-dose use specifically to enable a reliable RSI when succinylcholine is contraindicated — hyperkalaemia risk, MH susceptibility — is now such standard, well-supported practice that it barely feels 'off-label', but the specific high-dose RSI regimen does technically sit outside the base labelled intubating-dose range.",
     complications: "The most common real-world problem is residual paralysis at extubation if reversal wasn't adequate or wasn't checked — a genuinely major contributor to postoperative pulmonary complications, and entirely avoidable with quantitative train-of-four monitoring before pulling the tube. It's also become one of the neuromuscular blockers most frequently implicated in perioperative anaphylaxis across several national allergy registries, worth remembering the first time hypotension and bronchospasm appear shortly after induction. Hepatic failure meaningfully prolongs its duration. And it's the aminosteroid that sugammadex — the reversal agent covered separately — was essentially designed around, giving it a reversal option no other relaxant on this list has in quite the same reliable, depth-independent way."
   });
 
   addDrug({
     id: "vecuronium", cat: "relaxants", name: "Vecuronium", brand: "Norcuron",
+    classification: "Non-depolarising neuromuscular blocker • Monoquaternary aminosteroid (intermediate-acting)",
     tagline: "Rocuronium's quieter older sibling — same steroid family, gentler on the heart, a bit slower",
     tags: ["Non-depolarising NMBA", "Aminosteroid"],
     source: SRC.fdaUpToDate("Norcuron (vecuronium bromide) injection label (brand discontinued; generic vecuronium bromide for injection remains FDA-approved)", "originally Organon"),
     structure: "Vecuronium is a monoquaternary aminosteroid — it's essentially pancuronium's des-methyl analogue, with one of pancuronium's two quaternary methyl groups removed. That single change is what strips out most of pancuronium's vagolytic (heart rate-raising) activity while keeping a similar intermediate duration of action.",
     pd: "It's a competitive nicotinic antagonist at the neuromuscular junction, working the same way rocuronium does. What sets it apart is how cardiovascularly quiet it is — essentially no histamine release and almost no effect on heart rate or blood pressure at clinical doses, making it about as haemodynamically 'silent' as this drug class gets. That's a genuine clinical advantage in a patient where you don't want the relaxant itself introducing any haemodynamic noise into the picture.",
     pk: "Onset is around 2–3 minutes, with an intermediate duration of roughly 25–40 minutes, similar to rocuronium and atracurium. It's partly metabolised in the liver by deacetylation to 3-desacetylvecuronium — an active metabolite carrying 50–70% of the parent's potency — and excreted mainly through bile, with a renal component too. That means both hepatic and renal impairment can prolong its effect, and in renal failure specifically, the active metabolite itself can accumulate with repeated dosing or infusion, extending the block further than the parent drug's kinetics alone would suggest.",
-    dosage: "FDA-approved: for intubation, 0.08–0.1 mg/kg IV, with onset around 2.5–3 minutes. For maintenance, 0.01–0.015 mg/kg IV increments as needed, or a continuous infusion around 0.001 mg/kg/min (1 mcg/kg/min), titrated against neuromuscular monitoring.",
+    dosage: "ED95 is 0.043 to 0.05 mg/kg IV in adults. FDA-approved dosing: for initial tracheal intubation, 0.08–0.1 mg/kg IV (representing approximately 2 times the ED95, achieving good to excellent intubating conditions in 2.5–3 minutes and a clinical duration of 25–40 minutes). For maintenance during prolonged surgery, 0.01–0.015 mg/kg IV increments (approximately 0.2 to 0.3 times the ED95) given when first twitch of train-of-four returns, or a continuous infusion around 0.001 mg/kg/min (1 mcg/kg/min, or 0.8–1.2 mcg/kg/min), titrated against quantitative neuromuscular monitoring.",
     offLabel: "It's used as a continuous infusion for neuromuscular blockade in ICU settings — severe ARDS with ventilator dyssynchrony, refractory status asthmaticus — though cisatracurium is now often preferred there specifically because its clearance doesn't depend on organ function the way vecuronium's does.",
     complications: "Prolonged or residual blockade is the main concern, and it shows up in two distinct settings: hepatic or renal impairment slowing clearance of a single dose, and prolonged ICU infusion, where there's also a recognised association with ICU-acquired weakness, particularly when corticosteroids are on board at the same time. Because it's so haemodynamically quiet, unexplained bradycardia or hypotension during a vecuronium-based case should prompt you to look elsewhere for the cause rather than blaming the relaxant."
   });
 
   addDrug({
     id: "atracurium", cat: "relaxants", name: "Atracurium", brand: "Tracrium",
+    classification: "Non-depolarising neuromuscular blocker • Bis-quaternary benzylisoquinolinium (intermediate-acting, Hofmann elimination)",
     tagline: "The relaxant that breaks itself down chemically, independent of liver or kidney function — at the cost of some histamine release",
     tags: ["Non-depolarising NMBA", "Hofmann elimination"],
     source: SRC.fdaUpToDate("Tracrium (atracurium besylate) injection label", "originally GlaxoSmithKline"),
     structure: "Atracurium is a benzylisoquinolinium compound — a structurally distinct family from the aminosteroids (rocuronium, vecuronium, pancuronium) — marketed as a mixture of ten different stereoisomers. What makes it genuinely unusual is that it doesn't rely purely on enzymes to be broken down: at normal body pH and temperature, it spontaneously degrades through a chemical process called Hofmann elimination, alongside some additional breakdown by plasma esterases.",
     pd: "Mechanistically it's a standard competitive nicotinic antagonist, same as the others. The clinically relevant difference is that it can cause dose- and rate-dependent histamine release, especially if you push it in quickly — showing up as transient flushing, hypotension, and either reflex tachycardia or occasionally bradycardia. Effects on ganglia and cardiac muscarinic receptors are minimal at normal doses.",
     pk: "Onset is around 2–3 minutes, duration intermediate at roughly 30–45 minutes. The genuinely distinctive part is clearance: somewhere between 70 and 90% of the drug is degraded by that spontaneous, non-enzymatic Hofmann elimination — a chemical reaction, not a metabolic one — with the rest handled by non-specific plasma esterases. That makes atracurium's clearance essentially independent of both liver and kidney function, a real advantage in organ failure. One breakdown product, laudanosine, is a CNS stimulant that can theoretically accumulate with prolonged high-dose infusion, particularly if hepatic or renal clearance of laudanosine itself is impaired.",
-    dosage: "FDA-approved: for intubation and maintenance, an initial dose of 0.4–0.5 mg/kg IV (onset around 2–3 minutes), with maintenance doses of 0.08–0.1 mg/kg IV as needed, or a continuous infusion of 5–10 mcg/kg/min (0.3–0.6 mg/kg/h), titrated against neuromuscular monitoring.",
+    dosage: "ED95 is 0.2 to 0.23 mg/kg IV in adults. FDA-approved dosing: for tracheal intubation, an initial dose of 0.4–0.5 mg/kg IV (representing approximately 2 times the ED95, producing intubating conditions in 2–3 minutes and a clinical duration of 30–45 minutes). For maintenance, 0.08–0.1 mg/kg IV as needed (roughly 0.3 to 0.4 times the ED95), or a continuous infusion of 5–10 mcg/kg/min (0.3–0.6 mg/kg/h), titrated against neuromuscular monitoring. Injections should be administered slowly over 60 seconds to minimise mast-cell histamine release.",
     offLabel: "Historically, atracurium (alongside cisatracurium) was specifically favoured for patients with combined hepatic and renal failure precisely because of its organ-independent Hofmann clearance — cisatracurium has largely taken over that role today, mainly because it causes far less histamine release at equivalent potency.",
     complications: "Histamine-mediated flushing, hypotension and bronchospasm are more pronounced with atracurium than with cisatracurium or vecuronium, so it's worth injecting it slowly, particularly in anyone with reactive airway disease or borderline haemodynamics. Laudanosine-related CNS excitation is a theoretical concern with very prolonged high-dose infusion but is rarely clinically significant at standard dosing. Benzylisoquinoliniums as a class do turn up in perioperative anaphylaxis case series, though less often than rocuronium in most registries."
   });
 
   addDrug({
     id: "cisatracurium", cat: "relaxants", name: "Cisatracurium", brand: "Nimbex",
+    classification: "Non-depolarising neuromuscular blocker • Purified 1R-cis,1'R-cis benzylisoquinolinium (intermediate-acting, Hofmann elimination)",
     tagline: "Atracurium's cleaner isomer — same organ-independent breakdown, almost none of the histamine release",
     tags: ["Non-depolarising NMBA", "Hofmann elimination"],
     source: SRC.fdaUpToDate("Nimbex (cisatracurium besylate) injection label", "AbbVie"),
     structure: "Cisatracurium is a single stereoisomer isolated out of atracurium's original ten-isomer mixture — specifically the 1R-cis,1'R-cis form. Isolating just this one isomer roughly quadruples potency compared with atracurium while dramatically cutting down the histamine-releasing activity that atracurium carries.",
     pd: "It's a competitive nicotinic antagonist, same mechanism as every other non-depolariser here. The genuinely distinguishing feature is how quiet it is: essentially no clinically significant histamine release even at doses well above what's needed for effect, and no meaningful vagolytic or ganglion-blocking activity — making it, alongside vecuronium, one of the most haemodynamically stable relaxants available.",
     pk: "Onset is around 2–3 minutes (a touch slower than rocuronium), duration intermediate at roughly 40–60 minutes at an intubating dose. Like atracurium, it's cleared predominantly by Hofmann elimination — but with a much smaller contribution from plasma esterases than atracurium has — so its clearance is essentially unaffected by hepatic or renal failure. That organ-independence is exactly why it's often the preferred relaxant for prolonged neuromuscular blockade in ICU patients with multi-organ dysfunction, where you genuinely can't count on the liver or kidneys to help clear the drug.",
-    dosage: "FDA-approved: for intubation, 0.15–0.2 mg/kg IV (onset around 2 minutes at the higher end of that range). For maintenance, 0.03 mg/kg IV as needed, or a continuous infusion of 1–3 mcg/kg/min (0.06–0.18 mg/kg/h), titrated against train-of-four monitoring — the same approach used for ICU infusions, just with closer, more regular monitoring given how long those infusions typically run.",
+    dosage: "ED95 is 0.05 mg/kg IV in adults during balanced opioid/nitrous anaesthesia. FDA-approved dosing: for intubation, 0.15–0.2 mg/kg IV (representing 3 to 4 times the ED95; 0.15 mg/kg gives onset in roughly 2 minutes with a 45–60 minute duration, while 0.2 mg/kg accelerates onset to 1.5–2 minutes with a 55–65 minute duration). For maintenance, 0.03 mg/kg IV as needed (roughly 0.6 times the ED95, adding ~20 minutes of block), or a continuous maintenance infusion of 1–3 mcg/kg/min (0.06–0.18 mg/kg/h), titrated against train-of-four monitoring — the same approach used for ICU infusions, just with closer, more regular monitoring given how long those infusions typically run.",
     offLabel: "It's a first-line choice for continuous neuromuscular blockade in severe ARDS with ventilator dyssynchrony or during proning — supported by trial evidence for short-course early paralysis in severe ARDS — and for refractory status asthmaticus, favoured over the aminosteroids largely because of that organ-independent clearance during a prolonged infusion.",
     complications: "Even with organ-independent clearance, prolonged ICU infusion can still cause prolonged block, particularly with concurrent corticosteroids, which raises the risk of ICU-acquired weakness or critical illness myopathy — the same risk seen with vecuronium infusions, not something cisatracurium is immune to. Laudanosine accumulation is theoretically possible but clinically negligible at standard dosing. Because histamine release is minimal, unexplained hypotension during its use is unlikely to be the drug itself — look elsewhere first. Ongoing quantitative neuromuscular monitoring remains essential during any prolonged infusion."
   });
 
   addDrug({
     id: "pancuronium", cat: "relaxants", name: "Pancuronium", brand: "Pavulon",
+    classification: "Non-depolarising neuromuscular blocker • Bis-quaternary aminosteroid (long-acting, vagolytic)",
     tagline: "The long-acting relaxant that speeds the heart up instead of leaving it alone — occasionally exactly what you want",
     tags: ["Non-depolarising NMBA", "Long-acting"],
     source: SRC.fdaUpToDate("Pavulon (pancuronium bromide) injection label (brand largely discontinued; generic pancuronium bromide remains available)", "originally Organon"),
     structure: "Pancuronium is a bis-quaternary aminosteroid — it carries two acetylcholine-like fragments built into a steroid nucleus, giving it strong affinity for the nicotinic receptor and, as a direct consequence of carrying two quaternary charges rather than one, a notably long duration of action compared with the mono-quaternary aminosteroids like rocuronium and vecuronium.",
     pd: "It's a competitive nicotinic antagonist, same basic mechanism as the rest of the class — but with one distinctive extra: it's genuinely vagolytic, blocking cardiac muscarinic (M2) receptors and inhibiting neuronal catecholamine reuptake at the same time. The result is a dose-dependent rise in heart rate, blood pressure and cardiac output. That's a real liability in a patient who can't tolerate tachycardia, but it's occasionally exactly the effect you want — historically used deliberately to counteract the bradycardia that comes with high-dose opioid cardiac anaesthesia.",
     pk: "Onset is 3–5 minutes, and duration is genuinely long — 60 to 100 minutes or more, with cumulative prolongation on repeat dosing. It's cleared mainly by the kidneys, with 40–70% excreted unchanged, plus a weakly active hepatic metabolite. Renal failure significantly prolongs its duration, and hepatic failure does too, to a lesser extent.",
-    dosage: "FDA-approved: for intubation and maintenance, an initial dose of 0.06–0.1 mg/kg IV, with maintenance doses of 0.01 mg/kg IV as needed, titrated against neuromuscular monitoring. It's generally not used as a continuous infusion, given how long-acting and cumulative it already is.",
+    dosage: "ED95 is 0.06 to 0.07 mg/kg IV in adults. FDA-approved dosing: for initial tracheal intubation, 0.08–0.1 mg/kg IV (representing approximately 1.5 to 2 times the ED95, producing intubation conditions within 2.5–4 minutes with a long clinical duration of 60–100 minutes). For maintenance during prolonged procedures, 0.01–0.02 mg/kg IV as needed, titrated against peripheral nerve stimulation. It is not recommended for continuous infusion due to significant accumulation and delayed post-surgical recovery.",
     offLabel: "It's occasionally chosen specifically for its vagolytic, heart-rate-raising effect during high-dose opioid cardiac anaesthesia, to offset the bradycardia opioids like fentanyl or sufentanil produce at high doses — a genuine, recognised practice, though shorter-acting relaxants with better reversal options have largely taken over this role.",
     complications: "Prolonged or residual paralysis is a bigger problem with pancuronium than with the intermediate-acting relaxants, particularly in renal failure or with extended ICU use — historically it carried a meaningfully higher rate of postoperative residual paralysis than shorter-acting agents. Tachycardia and hypertension from its vagolytic effect make it a poor choice where tachycardia is poorly tolerated — significant coronary disease, hypertrophic cardiomyopathy. Reversal with neostigmine is slower and less complete than for the intermediate-acting relaxants. And it's worth knowing that current evidence and labelling for sugammadex is built around and validated for the aminosteroids rocuronium and vecuronium specifically — data supporting its use to reverse pancuronium are considerably more limited, so don't assume the same reliable reversal applies here."
   });
 
   addDrug({
     id: "mivacurium", cat: "relaxants", name: "Mivacurium", brand: "Mivacron",
+    classification: "Non-depolarising neuromuscular blocker • Benzylisoquinolinium diester (short-acting, plasma cholinesterase cleared)",
     tagline: "The shortest-acting non-depolariser ever marketed — cleared by the same enzyme as succinylcholine, and just as vulnerable to its deficiency",
     tags: ["Non-depolarising NMBA", "Short-acting"],
     source: "Mivacron (mivacurium chloride) injection label (brand discontinued in the US; included for comparative/exam relevance) — originally GlaxoWellcome; UpToDate and Miller's Anesthesia, 10th ed., neuromuscular blockade chapters.",
     structure: "Mivacurium is a bis-benzylisoquinolinium diester — the key word being diester. Those ester linkages are exactly what plasma (butyryl-) cholinesterase targets, the same enzyme that breaks down succinylcholine, which is what gives mivacurium its uniquely short duration among the non-depolarising relaxants.",
     pd: "It's a competitive nicotinic antagonist at the neuromuscular junction, the same as any other non-depolariser. Like atracurium, it can cause dose- and rate-dependent histamine release — flushing, hypotension, tachycardia — similar in degree to or slightly greater than atracurium, and blunted by injecting it slowly.",
     pk: "Onset is around 2–3 minutes, duration short at roughly 15–20 minutes — two to three times longer than succinylcholine, but dramatically shorter than every other non-depolariser on this list, purely because of that plasma cholinesterase hydrolysis. And exactly like succinylcholine, that dependence on plasma cholinesterase is also its Achilles heel: anyone with atypical or deficient plasma cholinesterase will clear it far more slowly, with the block stretching out accordingly.",
-    dosage: "Historic FDA-approved dosing: for intubation, 0.15–0.2 mg/kg IV (onset around 2–3 minutes); for maintenance, 0.1 mg/kg IV as needed, or a continuous infusion of 4–10 mcg/kg/min, titrated. It's no longer commercially available in the US — withdrawn primarily for commercial reasons rather than any safety issue — but it's retained here because it's genuinely useful for understanding the comparative pharmacology of this drug class and still shows up in exams.",
+    dosage: "ED95 is 0.07 to 0.08 mg/kg IV in adults. Historic FDA-approved dosing: for initial tracheal intubation, 0.15–0.2 mg/kg IV (representing 2 to 2.5 times the ED95, achieving intubating conditions in 2–3 minutes and a short clinical duration of 15–20 minutes, or administered as divided doses of 0.15 mg/kg followed 30 seconds later by 0.1 mg/kg to minimise histamine release). For maintenance, 0.1 mg/kg IV as needed, or a continuous infusion of 4–10 mcg/kg/min, titrated against train-of-four monitoring.",
     offLabel: "Where it was available, it was a labelled (not off-label) choice for short procedures needing brief non-depolarising relaxation — laryngoscopy, bronchoscopy, short laparoscopic cases — as an alternative to succinylcholine when a non-depolarising block was preferred for the same short duration.",
     complications: "Prolonged block in plasma cholinesterase deficiency, for exactly the same genetic and acquired reasons that prolong succinylcholine's effect (liver disease, pregnancy, certain drugs, homozygous atypical enzyme variants). Histamine-related hypotension, flushing and bronchospasm with rapid injection. And a detail worth remembering precisely because it's easy to get backwards: mivacurium is a benzylisoquinolinium, not an aminosteroid, so sugammadex does not reverse it — recovery depends on spontaneous cholinesterase-driven breakdown, or, once sufficient spontaneous recovery has already begun, an acetylcholinesterase inhibitor like neostigmine."
   });
 
   addDrug({
     id: "gantacurium", cat: "relaxants", name: "Gantacurium", brand: "Investigational — no marketed brand",
+    classification: "Non-depolarising neuromuscular blocker • Asymmetric chlorofumarate (investigational ultra-short, L-cysteine reversible)",
     tagline: "An experimental relaxant designed to be reversed in seconds by a simple IV amino acid — never actually reached the market",
     tags: ["Investigational", "Not FDA-approved", "Fumarate ultra-short-acting"],
     source: "Investigational agent — not FDA-approved and not currently in active clinical development. Sourced from the peer-reviewed literature, not a product label: Naguib M, et al. \"New Drug Developments for Neuromuscular Blockade and Reversal: Gantacurium, CW002, CW011, and Calabadion,\" Anesthesia & Analgesia (2018); Lien CA, Savard P, et al., mechanism-of-reversal studies (Anesthesiology, 2009–2010); Miller's Anesthesia, 10th ed., neuromuscular blockade chapter.",
     structure: "A correction worth making plainly: gantacurium is not an FDA-approved drug, and there is no marketed brand name — it never made it past clinical trials. It's included here because it's genuinely instructive and because it's occasionally, and understandably, assumed to be a newer approved agent given how much has been published on it. Chemically, it's a fumarate-derived, non-depolarising neuromuscular blocker (also studied under the code name AV430A) — its defining structural feature is a central carbon-carbon double bond sitting in a fumarate linkage, the exact feature its intended reversal mechanism was built around.",
     pd: "Like other non-depolarisers, it's a competitive antagonist at the nicotinic acetylcholine receptor. What made it exciting in development wasn't its blocking mechanism — it was its proposed reversal mechanism, genuinely different from anything in clinical use. The amino acid L-cysteine, given IV, adducts directly onto that fumarate double bond in a fast, non-enzymatic chemical reaction, changing the drug's shape so it can no longer bind the receptor — in principle offering reversal within a minute or two, even faster than sugammadex, and by a completely different chemical route.",
     pk: "It was designed and studied as an ultra-short-acting relaxant, with onset and offset both faster than any non-depolariser in current clinical use. In animal studies its safety profile looked genuinely promising. It never advanced to routine clinical use because human studies at effective doses (around three times the ED95) triggered mast-cell histamine release with real cardiovascular consequences — hypotension and tachycardia significant enough to stall further development.",
-    dosage: "Not applicable — there is no FDA-approved dosing, because gantacurium was never approved. Doses used in published clinical trials (a small number of Phase 1/2 studies) are documented in the literature above for historical and comparative interest only, and should never be treated as a clinical reference.",
+    dosage: "Investigational ED95 in human trials is approximately 0.19 mg/kg IV. There is no FDA-approved dosing because gantacurium was never commercially approved. Doses studied in Phase 1/2 clinical trials ranged from 2 to 3 times the ED95 (0.35–0.54 mg/kg IV, which achieved tracheal intubation within 60–90 seconds with a spontaneous recovery duration of 5–10 minutes, reversed in under 2 minutes by 10 mg/kg IV L-cysteine adduction). These experimental trial regimens are documented for comparative pharmacology and exam revision only, and must never be used clinically.",
     offLabel: "None — it has no approved indication to be 'off-label' from, and it is not available for clinical use.",
     complications: "The dose-dependent histamine release seen in human trials — with genuine hypotension and tachycardia at clinically effective doses — is precisely what halted its clinical development, despite an otherwise attractive ultra-fast onset/offset profile and a genuinely novel cysteine-based reversal mechanism. It's worth knowing this story less for gantacurium itself and more for what it teaches: an analogue in the same fumarate family, CW002, was subsequently developed specifically to avoid this histamine problem and has shown a more favourable safety profile in animal and early clinical study, though as of the most recent literature it has not reached FDA approval either. If you're asked about 'newer neuromuscular blockers' expecting an approved answer, sugammadex-reversible rocuronium and vecuronium remain the actual current standard — gantacurium is a well-studied dead end, not a drug you'll ever draw up."
   });
@@ -641,6 +656,7 @@
   // ---------------- OPIOIDS ----------------
   addDrug({
     id: "fentanyl", cat: "opioids", name: "Fentanyl", brand: "Sublimaze",
+    classification: "Full mu-opioid agonist • Synthetic 4-anilidopiperidine (phenylpiperidine family)",
     tagline: "The workhorse perioperative opioid — fast on, gentle on the heart, but sneaky with repeated dosing",
     tags: ["Mu agonist", "Synthetic opioid"],
     source: SRC.fdaUpToDate("Sublimaze (fentanyl citrate) injection label", "Akorn/generic"),
@@ -654,6 +670,7 @@
 
   addDrug({
     id: "morphine", cat: "opioids", name: "Morphine", brand: "Duramorph / Astramorph",
+    classification: "Full mu-opioid agonist • Natural phenanthrene alkaloid (morphinan skeleton)",
     tagline: "The original opioid everything else gets compared to — slower, longer-lasting, and genuinely different in renal failure",
     tags: ["Mu agonist", "Phenanthrene opioid"],
     source: SRC.fdaUpToDate("Duramorph (morphine sulfate) injection label", "Baxter/generic"),
@@ -667,6 +684,7 @@
 
   addDrug({
     id: "hydromorphone", cat: "opioids", name: "Hydromorphone", brand: "Dilaudid",
+    classification: "Full mu-opioid agonist • Semi-synthetic hydrogenated phenanthrene (morphinan skeleton)",
     tagline: "Morphine's more potent cousin — often chosen specifically because it lacks morphine's problematic active metabolite",
     tags: ["Mu agonist", "Semi-synthetic opioid"],
     source: SRC.fdaUpToDate("Dilaudid (hydromorphone hydrochloride) injection label", "Purdue Pharma/generic"),
@@ -680,6 +698,7 @@
 
   addDrug({
     id: "remifentanil", cat: "opioids", name: "Remifentanil", brand: "Ultiva",
+    classification: "Full mu-opioid agonist • Esterase-metabolised synthetic phenylpiperidine (ultra-short-acting)",
     tagline: "An opioid that vanishes within minutes of stopping the infusion — because your own blood and tissue break it down, not your liver",
     tags: ["Mu agonist", "Ester-metabolised"],
     source: SRC.fdaUpToDate("Ultiva (remifentanil hydrochloride) injection label", "originally GlaxoSmithKline/generic"),
@@ -693,6 +712,7 @@
 
   addDrug({
     id: "sufentanil", cat: "opioids", name: "Sufentanil", brand: "Sufenta",
+    classification: "Full mu-opioid agonist • Thienyl-substituted synthetic phenylpiperidine (high potency)",
     tagline: "One of the most potent opioids in clinical use — small volumes, small margin for dosing error",
     tags: ["Mu agonist", "High-potency synthetic opioid"],
     source: SRC.fdaUpToDate("Sufenta (sufentanil citrate) injection label", "originally Janssen/generic"),
@@ -706,6 +726,7 @@
 
   addDrug({
     id: "alfentanil", cat: "opioids", name: "Alfentanil", brand: "Alfenta",
+    classification: "Full mu-opioid agonist • Tetrazole-substituted phenylpiperidine (ultra-rapid onset, low pKa)",
     tagline: "The fentanyl-family opioid with the fastest peak effect — useful for very short, very painful moments",
     tags: ["Mu agonist", "Rapid-onset synthetic opioid"],
     source: SRC.fdaUpToDate("Alfenta (alfentanil hydrochloride) injection label", "originally Janssen/generic"),
@@ -719,6 +740,7 @@
 
   addDrug({
     id: "pethidine", cat: "opioids", name: "Pethidine (Meperidine)", brand: "Demerol",
+    classification: "Full mu-opioid agonist • Synthetic phenylpiperidine (anticholinergic, active normeperidine metabolite)",
     tagline: "The opioid nobody starts on anymore — kept alive mainly for treating shivering, avoided for everything else",
     tags: ["Mu agonist", "Phenylpiperidine opioid", "Toxic active metabolite"],
     source: SRC.fdaUpToDate("Demerol (meperidine hydrochloride) injection label", "Sanofi/generic"),
@@ -732,6 +754,7 @@
 
   addDrug({
     id: "tramadol", cat: "opioids", name: "Tramadol", brand: "Ultram",
+    classification: "Atypical / Weak mu-opioid agonist • Dual-mechanism synthetic cyclohexanol (central SNRI / monoamine uptake inhibitor)",
     tagline: "A weak opioid with a second, independent mechanism bolted on — which is exactly what makes it awkward with antidepressants",
     tags: ["Weak mu agonist", "SNRI activity", "Dual mechanism"],
     source: SRC.fdaUpToDate("Ultram (tramadol hydrochloride) tablet label", "Janssen/generic"),
@@ -745,6 +768,7 @@
 
   addDrug({
     id: "buprenorphine", cat: "opioids", name: "Buprenorphine", brand: "Buprenex (injectable) / Suboxone, Subutex (sublingual) / Butrans (patch) / Belbuca (buccal)",
+    classification: "Partial mu-opioid agonist / Kappa antagonist • Semi-synthetic thebaine-derived oripavine (ceiling effect on respiratory depression)",
     tagline: "So tightly bound to the mu receptor that it's hard to displace either way — a genuine ceiling on overdose risk, and a genuine headache if you need to reverse it",
     tags: ["Partial mu agonist", "Kappa antagonist", "High receptor affinity"],
     source: SRC.fdaUpToDate("Buprenex (buprenorphine hydrochloride) injection label; Suboxone/Subutex, Butrans and Belbuca labels for the respective non-parenteral products", "Indivior/generic"),
@@ -758,6 +782,7 @@
 
   addDrug({
     id: "nalbuphine", cat: "opioids", name: "Nalbuphine", brand: "Nubain",
+    classification: "Mixed kappa agonist / Mu partial antagonist • Semi-synthetic 14-hydroxymorphinan",
     tagline: "A kappa agonist/mu antagonist combination best known for treating the itch that morphine and fentanyl cause, not for treating pain",
     tags: ["Kappa agonist", "Mu antagonist", "Agonist-antagonist"],
     source: SRC.fdaUpToDate("Nubain (nalbuphine hydrochloride) injection label", "Hikma/generic"),
@@ -766,11 +791,12 @@
     pk: "Onset is around 2–3 minutes IV, a little slower IM/SC. Duration is 3–6 hours. It's cleared by hepatic metabolism.",
     dosage: "FDA-approved: for analgesia, 10 mg IV, IM or SC every 3–4 hours as needed (up to 20 mg per dose, maximum 160 mg/day), the same dose whichever of those three routes is used. For treating opioid-induced pruritus specifically — a much smaller, off-label dose than the analgesic range above — 2.5–5 mg IV titrated in small increments is standard teaching.",
     offLabel: "Treating pruritus from neuraxial or systemic mu-agonist opioids, and partially reversing other mu-mediated side effects while preserving some analgesia, are both well-established off-label uses built directly on its mixed-receptor pharmacology.",
-    complications: "Sedation is more prominent than with an equianalgesic dose of a pure mu agonist. The ceiling effect blunts but doesn't eliminate respiratory depression risk, particularly combined with other sedatives. Giving it to an opioid-tolerant patient already on a full mu agonist can precipitate withdrawal, exactly as with any agonist-antagonist. One genuinely distinctive, exam-relevant fact: nalbuphine is not a DEA-scheduled controlled substance in the US, unlike essentially every other opioid on this list — a real practical difference in how it's stored, prescribed and tracked."
+    complications: "Sedation is more prominent than with an equianalgesic dose of a pure mu agonist. The ceiling effect blunts but doesn't eliminate respiratory depression risk, particularly combined with other sedatives. Giving it to an opioid-tolerant patient already on a full mu agonist can precipitate withdrawal, exactly as with any agonist-antagonist. One genuinely distinctive, exam-relevant fact: nalbuphine is not a DEA-scheduled controlled substance in the US, unlike essentially every other opioid on this list — a real practical difference in how it's stored, prescribed and tracked.",
   });
 
   addDrug({
     id: "pentazocine", cat: "opioids", name: "Pentazocine", brand: "Talwin (also Talwin NX, combined with naloxone)",
+    classification: "Mixed kappa agonist / Weak mu antagonist • Synthetic benzomorphan",
     tagline: "One of the first agonist-antagonist opioids — largely retired now, remembered for causing dysphoria rather than euphoria",
     tags: ["Kappa agonist", "Mu partial agonist/antagonist", "Benzomorphan"],
     source: SRC.fdaUpToDate("Talwin (pentazocine) injection and Talwin NX (pentazocine/naloxone) tablet labels", "Sanofi/generic"),
@@ -779,11 +805,12 @@
     pk: "Onset is around 15–20 minutes orally, faster parenterally. It's cleared by hepatic metabolism.",
     dosage: "FDA-approved: orally, 50 mg every 3–4 hours as needed (as Talwin NX, combined with naloxone specifically to deter dissolving and injecting the tablets — the oral naloxone component isn't bioavailable enough to blunt oral analgesia, but becomes active and precipitates withdrawal if injected). Parenterally (IM, SC or IV), 30 mg every 3–4 hours, to a maximum of roughly 360 mg/day.",
     offLabel: "It's now rarely chosen as first-line therapy for anything, largely supplanted by agents with a cleaner side-effect profile — its remaining use is mostly where an agonist-antagonist's ceiling effect is specifically wanted and its psychotomimetic tendency is judged an acceptable trade-off.",
-    complications: "Dysphoria and hallucinations, kappa-mediated, are its most distinctive complication and the main reason it fell out of favour. Repeated subcutaneous or intramuscular injection has historically been linked to severe local tissue damage — sclerosis, fibrosis, occasionally ulceration — particularly with chronic misuse of the injectable form. It raises cardiac workload more than most opioids, worth remembering in significant coronary or valvular disease. It's a Schedule IV controlled substance, and can precipitate withdrawal in opioid-tolerant patients like any agonist-antagonist."
+    complications: "Dysphoria and hallucinations, kappa-mediated, are its most distinctive complication and the main reason it fell out of favour. Repeated subcutaneous or intramuscular injection has historically been linked to severe local tissue damage — sclerosis, fibrosis, occasionally ulceration — particularly with chronic misuse of the injectable form. It raises cardiac workload more than most opioids, worth remembering in significant coronary or valvular disease. It's a Schedule IV controlled substance, and can precipitate withdrawal in opioid-tolerant patients like any agonist-antagonist.",
   });
 
   addDrug({
     id: "naloxone", cat: "opioids", name: "Naloxone", brand: "Narcan",
+    classification: "Pure competitive opioid receptor antagonist • N-allyl substituted morphinan (mu, kappa, and delta blocker)",
     tagline: "The opioid antidote — pure antagonism, fast onset, and a duration deliberately shorter than most of the drugs it's reversing",
     tags: ["Pure opioid antagonist", "Reversal agent"],
     source: SRC.fdaUpToDate("Narcan (naloxone hydrochloride) injection and Narcan Nasal Spray labels", "Emergent BioSolutions/generic"),
@@ -797,6 +824,7 @@
 
   addDrug({
     id: "naltrexone", cat: "opioids", name: "Naltrexone", brand: "ReVia (oral) / Vivitrol (monthly IM depot)",
+    classification: "Pure competitive opioid receptor antagonist • Cyclopropylmethyl substituted morphinan (long-acting orally bioavailable blocker)",
     tagline: "Naloxone's longer-acting, orally active cousin — built for sustained blockade, not emergency reversal",
     tags: ["Pure opioid antagonist", "Oral/depot formulation"],
     source: SRC.fdaUpToDate("ReVia (naltrexone hydrochloride) tablet and Vivitrol (naltrexone extended-release injectable suspension) labels", "originally Duramed/Alkermes, generic available"),
