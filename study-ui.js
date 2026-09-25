@@ -24,10 +24,15 @@
   const drugById = new Map(DATA.drugs.map((d) => [d.id, d]));
   const topicById = new Map(DATA.topics.map((t) => [t.id, t]));
   const catById = new Map(DATA.categories.map((c) => [c.id, c]));
-  const isDrugCat = (catId) => catId !== "anaesthesia";
+  const TOPIC_CATS = new Set(["anaesthesia", "equipment"]);
+  const isDrugCat = (catId) => !TOPIC_CATS.has(catId);
 
   function itemById(id) { return drugById.get(id) || topicById.get(id) || null; }
-  function itemsInCat(catId) { return catId === "anaesthesia" ? DATA.topics : DATA.drugs.filter((d) => d.cat === catId); }
+  function itemsInCat(catId) {
+    return TOPIC_CATS.has(catId)
+      ? DATA.topics.filter((t) => t.cat === catId)
+      : DATA.drugs.filter((d) => d.cat === catId);
+  }
 
   let state = { cat: "anaesthesia", item: null, tab: "overview", filter: "" };
 
@@ -158,7 +163,90 @@
   }
 
   function topicPanelHTML(t) {
-    return t.sections.map((s) => card(s.h, para(s.b))).join("");
+    return t.sections.map((s) => {
+      const diagramHTML = s.diagram === "mapleson-grid" ? maplesonGridHTML() : "";
+      const body = `${s.b ? para(s.b) : ""}${diagramHTML}`;
+      return card(s.h, body);
+    }).join("");
+  }
+
+  /* ------------------------------------------------- Mapleson circuit diagrams
+     Original schematic redrawn in code (not a reproduction of any textbook or
+     third-party figure). Structure per type is verified against the standard
+     teaching (Miller's Anesthesia 10th ed.; Dorsch & Dorsch, Understanding
+     Anesthesia Equipment): A = valve at patient end, FG at bag end. B = valve
+     + FG both at patient end, bag via tubing. C = as B, no tubing (compact).
+     D = FG at patient end, valve at bag/machine end (mirror of A). E = Ayre's
+     T-piece — no valve, no bag, open tube tail. F = Jackson-Rees — as E with
+     an open-tailed bag added. */
+  function mgBag(x, y, vented) {
+    let s = `<circle cx="${x}" cy="${y}" r="20" fill="none" stroke="currentColor" stroke-width="2"/>`;
+    if (vented) {
+      s += `<line x1="${x - 13}" y1="${y - 13}" x2="${x - 24}" y2="${y - 22}" stroke="currentColor" stroke-width="2"/>`;
+      s += `<circle cx="${x - 24}" cy="${y - 22}" r="2.5" fill="currentColor"/>`;
+    }
+    return s;
+  }
+  function mgOpenEnd(x, y) {
+    return `<line x1="${x}" y1="${y - 9}" x2="${x}" y2="${y + 9}" stroke="currentColor" stroke-width="2"/>
+      <line x1="${x - 8}" y1="${y - 13}" x2="${x - 2}" y2="${y - 7}" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="${x - 8}" y1="${y + 13}" x2="${x - 2}" y2="${y + 7}" stroke="currentColor" stroke-width="1.5"/>`;
+  }
+  function mgValve(x, y) {
+    return `<line x1="${x}" y1="${y}" x2="${x}" y2="${y - 18}" stroke="currentColor" stroke-width="2"/>
+      <line x1="${x - 9}" y1="${y - 18}" x2="${x + 9}" y2="${y - 18}" stroke="currentColor" stroke-width="2"/>`;
+  }
+  function mgTube(x1, x2, y, corrugated) {
+    let s = `<line x1="${x1}" y1="${y - 6}" x2="${x2}" y2="${y - 6}" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="${x1}" y1="${y + 6}" x2="${x2}" y2="${y + 6}" stroke="currentColor" stroke-width="1.5"/>`;
+    if (corrugated) {
+      for (let x = x1 + 6; x < x2 - 4; x += 12) {
+        s += `<line x1="${x}" y1="${y - 6}" x2="${x + 6}" y2="${y + 6}" stroke="currentColor" stroke-width="1.2"/>`;
+      }
+    }
+    return s;
+  }
+  function mgPatient(x, y) {
+    return `<path d="M ${x} ${y} q 18 0 18 16 q 0 14 16 14" fill="none" stroke="currentColor" stroke-width="2"/>
+      <ellipse cx="${x + 40}" cy="${y + 30}" rx="12" ry="7" fill="none" stroke="currentColor" stroke-width="2"/>
+      <text x="${x + 58}" y="${y + 34}" font-size="13" font-weight="700" fill="currentColor">P</text>`;
+  }
+  function mgFG(x, y) {
+    return `<line x1="${x}" y1="${y - 28}" x2="${x}" y2="${y - 6}" stroke="currentColor" stroke-width="2"/>
+      <path d="M ${x - 5} ${y - 12} L ${x} ${y - 4} L ${x + 5} ${y - 12} Z" fill="currentColor"/>
+      <text x="${x}" y="${y - 32}" font-size="12" font-weight="700" fill="currentColor" text-anchor="middle">FG</text>`;
+  }
+  function mgTitle(x, y, label) {
+    return `<text x="${x}" y="${y}" font-size="15" font-weight="800" fill="currentColor">${esc(label)}</text>`;
+  }
+
+  const MAPLESON_CELLS = {
+    A: () => `${mgBag(40, 100)}${mgFG(40, 100)}${mgTube(64, 270, 100, true)}${mgValve(270, 100)}${mgPatient(278, 100)}`,
+    B: () => `${mgBag(40, 100)}${mgTube(64, 230, 100, true)}${mgFG(250, 100)}${mgValve(270, 100)}${mgPatient(278, 100)}`,
+    C: () => `${mgBag(40, 100)}${mgTube(64, 90, 100, false)}${mgFG(110, 100)}${mgValve(130, 100)}${mgPatient(138, 100)}`,
+    D: () => `${mgBag(40, 100)}${mgValve(64, 100)}${mgTube(82, 270, 100, true)}${mgFG(280, 100)}${mgPatient(288, 100)}`,
+    E: () => `${mgOpenEnd(40, 100)}${mgTube(54, 270, 100, true)}${mgFG(280, 100)}${mgPatient(288, 100)}`,
+    F: () => `${mgBag(40, 100, true)}${mgTube(64, 270, 100, true)}${mgFG(280, 100)}${mgPatient(288, 100)}`
+  };
+
+  let maplesonSVGCache = null;
+  function maplesonGridHTML() {
+    if (!maplesonSVGCache) {
+      const cellW = 400, cellH = 170, gapX = 20, gapY = 10;
+      const order = ["A", "B", "C", "D", "E", "F"];
+      let cells = "";
+      order.forEach((key, i) => {
+        const col = i % 2, row = Math.floor(i / 2);
+        const tx = col * (cellW + gapX);
+        const ty = row * (cellH + gapY);
+        cells += `<g transform="translate(${tx},${ty})">${mgTitle(6, 20, "Mapleson " + key)}${MAPLESON_CELLS[key]()}</g>`;
+      });
+      const totalW = cellW * 2 + gapX;
+      const totalH = cellH * 3 + gapY * 2;
+      maplesonSVGCache = `<div class="st-diagram-wrap"><svg viewBox="0 0 ${totalW} ${totalH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapleson breathing circuits A to F, schematic diagram">${cells}</svg>
+        <p class="st-diagram-caption">Original schematic, redrawn in code for clarity — not a reproduction of any textbook or published figure. Legend: ○ reservoir bag (with a small vent mark for the open-tailed Jackson-Rees bag) · ⊤ APL (adjustable pressure-limiting) valve · FG ↓ fresh gas inlet · zig-zag = corrugated tubing · curved connector + P = patient port.</p></div>`;
+    }
+    return maplesonSVGCache;
   }
 
   function showDetail() {

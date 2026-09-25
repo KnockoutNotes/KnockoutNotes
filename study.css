@@ -325,6 +325,21 @@
 
 .st-panel-scroll .st-card:last-child { margin-bottom: 0; }
 
+/* Mapleson circuit diagrams (recreated inline SVG) */
+.st-diagram-wrap { margin-top: 14px; }
+.st-diagram-wrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  color: var(--text-main);
+  background: var(--panel-tint-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  box-sizing: border-box;
+}
+.st-diagram-caption { margin: 10px 0 0; font-size: 12px; line-height: 1.55; color: var(--text-muted); }
+
 /* ------------------------------------------------------------ fullscreen */
 .st-fullscreen-active {
   background: var(--bg-body);

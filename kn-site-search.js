@@ -1199,6 +1199,56 @@
       Summary: "Evidence-based perioperative care bundle to accelerate functional recovery",
       href: "study.html?item=eras"
     },
+    // --- STUDY MODE: VENTILATORS & DEVICES ---
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Ventilators & Devices",
+      Title: "Breathing Systems & Mapleson Circuits (A–F)",
+      Summary: "Classification of anaesthetic breathing systems and the six Mapleson (A–F) circuits",
+      href: "study.html?item=breathing-systems-mapleson"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Ventilators & Devices",
+      Title: "Circle Breathing System & Low-Flow Anaesthesia",
+      Summary: "The semi-closed rebreathing circuit that is the standard adult breathing system today",
+      href: "study.html?item=circle-system"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Ventilators & Devices",
+      Title: "Anaesthesia Ventilators — Classification, Bellows & Modes",
+      Summary: "How anaesthesia ventilators are powered, cycled, and the modes available on modern workstations",
+      href: "study.html?item=ventilators-classification"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Ventilators & Devices",
+      Title: "Vaporizers — Variable-Bypass Design & the Desflurane Exception",
+      Summary: "How agent-specific vaporizers meter volatile anaesthetic into the fresh gas stream, and why desflurane needs a different design",
+      href: "study.html?item=vaporizers-device"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Ventilators & Devices",
+      Title: "Airway Devices — Tubes, Supraglottic Airways & Videolaryngoscopy",
+      Summary: "The hardware used to secure and maintain the airway, from simple masks to hyperangulated video blades",
+      href: "study.html?item=airway-devices-equipment"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Ventilators & Devices",
+      Title: "Humidification, Filtration & Scavenging Systems",
+      Summary: "Conditioning inspired gas and safely removing waste anaesthetic gas from the operating room",
+      href: "study.html?item=humidification-scavenging"
+    },
+    {
+      Type: "Study Topic",
+      Category: "Study Mode • Ventilators & Devices",
+      Title: "Patient Warming, Fluid Warming & Suction Devices",
+      Summary: "Equipment used to prevent perioperative hypothermia and manage airway/surgical suction",
+      href: "study.html?item=warming-suction-devices"
+    },
     // --- STUDY MODE: DRUG MONOGRAPHS ---
     {
       Type: "Study Drug",
