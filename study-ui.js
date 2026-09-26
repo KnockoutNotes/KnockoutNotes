@@ -147,20 +147,22 @@
 
   function tileHTML(item) {
     const cat = catById.get(item.cat);
-    // Drugs with a verified chemical structure show THEIR OWN structure on
-    // the poster tile instead of the shared category icon — every card in a
-    // category no longer looks identical. Drugs with a verified 3D conformer
-    // (study-structures-3d.js) get the SAME rotating ball-and-stick viewer
-    // used in the detail view, not just the flat diagram — mounted only
-    // while the tile is actually on/near screen (see observeTileMolecules())
-    // since a grid can show far more tiles at once than the single detail
-    // view ever does, and each viewer is its own WebGL context. Topics and
-    // drugs without any diagram keep the shared category icon.
+    // Drugs and devices with a verified 3D conformer/model (study-structures-3d.js)
+    // get the rotating 3D viewer on the title card, mounted only while visible
+    // on screen (via observeTileMolecules) to conserve WebGL contexts.
+    // Falls back gracefully to the 2D SVG diagram or category icon.
     const structRec = window.KN_STRUCTURES && window.KN_STRUCTURES[item.id];
-    const iconHTML = structRec
-      ? `<div class="st-tile-structure">${structRec.svg}</div>`
-      : catIconHTML(item.cat, cat);
-    return `<a class="st-tile st-reveal${structRec ? " st-tile-has-structure" : ""}" href="?item=${item.id}" data-item="${item.id}" data-cat="${item.cat}" aria-label="${esc(item.name)}">
+    const has3d = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[item.id];
+    let iconHTML;
+    if (has3d) {
+      iconHTML = `<div class="st-tile-molecule" data-drug="${esc(item.id)}">${structRec ? `<div class="st-tile-structure">${structRec.svg}</div>` : `<div class="st-tile-fallback-icon">${catIconHTML(item.cat, cat)}</div>`}</div>`;
+    } else if (structRec) {
+      iconHTML = `<div class="st-tile-structure">${structRec.svg}</div>`;
+    } else {
+      iconHTML = catIconHTML(item.cat, cat);
+    }
+    const hasVisual = structRec || has3d;
+    return `<a class="st-tile st-reveal${hasVisual ? " st-tile-has-structure" : ""}" href="?item=${item.id}" data-item="${item.id}" data-cat="${item.cat}" aria-label="${esc(item.name)}">
       <div class="st-tile-icon" aria-hidden="true">${iconHTML}</div>
       <div class="st-tile-info">
         <span class="st-tile-cat">${esc(cat.label)}</span>
@@ -170,11 +172,49 @@
     </a>`;
   }
 
+  // Poster-tile 3D molecule mounting. Tiles mount their rotating viewer only
+  // while actually on/near screen and dispose it the moment they scroll out.
+  const tileMoleculeObserver = ("IntersectionObserver" in window)
+    ? new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const node = entry.target;
+          const drugId = node.getAttribute("data-drug");
+          const data = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[drugId];
+          if (!data) return;
+          if (entry.isIntersecting) {
+            if (typeof window.KNMountMolecule3D === "function") {
+              try { window.KNMountMolecule3D(node, data); } catch (err) { /* leave fallback */ }
+            }
+          } else if (typeof window.KNDisposeMolecule3D === "function") {
+            window.KNDisposeMolecule3D(node);
+          }
+        });
+      }, { rootMargin: "100px 0px" })
+    : null;
+
+  function observeTileMolecules(root) {
+    if (!tileMoleculeObserver) return;
+    root.querySelectorAll(".st-tile-molecule[data-drug]").forEach((node) => {
+      const drugId = node.getAttribute("data-drug");
+      const data = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[drugId];
+      if (data && typeof window.KNMountMolecule3D === "function") {
+        const rect = node.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 120 && rect.bottom > -120) {
+          try { window.KNMountMolecule3D(node, data); } catch (err) {}
+        }
+      }
+      tileMoleculeObserver.observe(node);
+    });
+  }
+
   // Global listener for when study-molecule-3d.js completes loading and Three.js initialization.
-  // Mounts 3D rotating model strictly in the detail reading view where only 1 viewer is active at a time.
-  // Note: mountStructureViewers already defers internally via rAF, but we still listen here for
-  // the rare case where the module loads AFTER the user has already navigated to a detail page.
   window.addEventListener("kn-molecule3d-ready", () => {
+    const grid = $("#stGrid");
+    const list = $("#stList");
+    if (grid && list && !list.hidden) {
+      if (tileMoleculeObserver) tileMoleculeObserver.disconnect();
+      observeTileMolecules(grid);
+    }
     const detail = $("#stDetail");
     if (detail && !detail.hidden) {
       mountStructureViewers(detail);
@@ -293,11 +333,16 @@
       if (c.id === "nsaids" && state.cat === "nsaids" && !f) html += nsaidsClassificationHTML();
       html += `<div class="st-grid">${list.map(tileHTML).join("")}</div>`;
     });
+    if (tileMoleculeObserver) tileMoleculeObserver.disconnect();
     grid.innerHTML = total ? html : `<div class="st-empty">No results for “${esc(state.filter)}”.</div>`;
     observeReveal(grid);
+    observeTileMolecules(grid);
   }
 
   function showList() {
+    document.querySelectorAll("#stDetail .st-molecule-viewer.st-has-canvas").forEach((node) => {
+      if (typeof window.KNDisposeMolecule3D === "function") window.KNDisposeMolecule3D(node);
+    });
     $("#stDetail").hidden = true;
     $("#stList").hidden = false;
     const cat = catById.get(state.cat);
@@ -576,17 +621,15 @@
     if (!nodes.length) return;
 
     function attemptAll() {
-      const mounted = new Set(); // prevent duplicate WebGL contexts for same drug id
       nodes.forEach((node) => {
-        if (!node.isConnected) return;   // skip if navigated away already
+        if (!node.isConnected) return; // skip if navigated away already
         const drugId = node.getAttribute("data-drug");
-        if (mounted.has(drugId)) return; // one viewer per drug per detail page
         const data = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[drugId];
         if (!data) return;
         if (typeof window.KNMountMolecule3D !== "function") return;
         try {
-          if (window.KNMountMolecule3D(node, data)) mounted.add(drugId);
-        } catch (err) { /* WebGL unavailable — fallback SVG stays visible */ }
+          window.KNMountMolecule3D(node, data);
+        } catch (err) { /* WebGL unavailable — fallback stays visible */ }
       });
     }
 
@@ -1202,6 +1245,10 @@
   }
 
   function showDetail() {
+    if (tileMoleculeObserver) tileMoleculeObserver.disconnect();
+    document.querySelectorAll("#stGrid .st-tile-molecule.st-has-canvas").forEach((node) => {
+      if (typeof window.KNDisposeMolecule3D === "function") window.KNDisposeMolecule3D(node);
+    });
     $("#stList").hidden = true;
     $("#stDetail").hidden = false;
     const item = itemById(state.item);
@@ -1228,13 +1275,11 @@
       titleMediaHTML = catIconHTML(item.cat, cat);
     }
 
-    // Title renders as a normal in-flow card — same glass-card look and the
-    // same st-reveal scroll-in animation as every other content card below
-    // it, not a separate pinned/fixed bar.
+    // Title renders as a normal in-flow card — immediately visible with glass styling
     $("#stDetail").innerHTML = `
       <div class="st-reading-col">
         <a class="st-back" href="${backHref}" data-back>← Back to ${esc(cat.label)}</a>
-        <section class="st-card st-title-card st-reveal" data-cat="${item.cat}">
+        <section class="st-card st-title-card st-reveal st-reveal-visible" data-cat="${item.cat}">
           <div class="st-title-card-media" aria-hidden="true">${titleMediaHTML}</div>
           <div class="st-title-card-body">
             <h1>${esc(item.name)}</h1>
