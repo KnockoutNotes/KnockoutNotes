@@ -770,6 +770,8 @@
       else if (s.diagram === "infusion-mechanisms") diagramHTML = infusionPumpDiagramHTML();
       else if (s.diagram === "soda-lime-reaction") diagramHTML = sodaLimeDiagramHTML();
       else if (s.diagram === "workstation-flowchart") diagramHTML = workstationFlowchartHTML();
+      else if (s.diagram === "fluid-compartments") diagramHTML = fluidCompartmentsDiagramHTML();
+      else if (s.diagram === "blood-products-guide") diagramHTML = bloodProductsDiagramHTML();
 
       let imagesHTML = "";
       if (Array.isArray(s.images)) {
@@ -1435,6 +1437,270 @@
         <text x="380" y="442" font-size="9.5" text-anchor="middle" class="st-wf-footer">Systematic Pre-Use Checkout Sequence · Miller 10th Ed. &amp; Dorsch 5th Ed. Standards</text>
       </svg>
       <p class="st-diagram-caption">Interactive 7-Step Anaesthesia Machine Checkout Flowchart. Follow this sequential order before every theatre list: Emergency Backup ➔ High Pressure ➔ Intermediate Pressure ➔ Low Pressure ➔ Circuit &amp; Absorber ➔ Ventilator ➔ Final Pre-Induction Verification.</p>
+    </div>`;
+  }
+
+
+  /* ---------------------------------------------------------------- fluid compartments diagram */
+  function fluidCompartmentsDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Intravenous Fluid Compartmental Distribution Dynamics" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        <!-- Header -->
+        <text x="380" y="24" font-size="12.5" font-weight="800" text-anchor="middle" letter-spacing="1.1" fill="var(--st-text, #f8fafc)">INTRAVENOUS FLUID COMPARTMENTAL DISTRIBUTION DYNAMICS</text>
+        <text x="380" y="42" font-size="9" text-anchor="middle" fill="#94a3b8">Total Body Water (TBW = 42 L in 70-kg Adult) • Pharmacokinetic Distribution &amp; Intravascular Yield</text>
+
+        <!-- TOP ROW: Compartment Architecture -->
+        <g transform="translate(18, 55)">
+          <!-- ICF Box -->
+          <rect x="0" y="0" width="350" height="95" rx="8" fill="rgba(14,165,233,0.12)" stroke="#0284c7" stroke-width="1.8"/>
+          <text x="175" y="22" font-size="11" font-weight="800" fill="#38bdf8" text-anchor="middle">INTRACELLULAR FLUID (ICF) • 28 LITRES (67% TBW)</text>
+          <text x="175" y="40" font-size="8.5" fill="#cbd5e1" text-anchor="middle">Major Cation: K⁺ (140 mmol/L) · Mg²⁺ (30) · Phosphates &amp; Proteins</text>
+          <text x="175" y="58" font-size="8" fill="#94a3b8" text-anchor="middle">Cell membranes impermeable to Na⁺ (Na⁺/K⁺-ATPase active extrusion)</text>
+          <rect x="25" y="68" width="300" height="18" rx="4" fill="rgba(2,132,199,0.25)"/>
+          <text x="175" y="81" font-size="8.5" font-weight="700" fill="#7dd3fc" text-anchor="middle">D5W expands this space (67%) · Pure Crystalloids DO NOT enter ICF</text>
+        </g>
+
+        <g transform="translate(392, 55)">
+          <!-- ECF Box -->
+          <rect x="0" y="0" width="350" height="95" rx="8" fill="rgba(16,185,129,0.12)" stroke="#10b981" stroke-width="1.8"/>
+          <text x="175" y="22" font-size="11" font-weight="800" fill="#34d399" text-anchor="middle">EXTRACELLULAR FLUID (ECF) • 14 LITRES (33% TBW)</text>
+          <!-- Interstitial Sub-box -->
+          <rect x="15" y="32" width="180" height="55" rx="5" fill="rgba(16,185,129,0.2)" stroke="#059669" stroke-width="1.2"/>
+          <text x="105" y="48" font-size="9" font-weight="700" fill="#6ee7b7" text-anchor="middle">Interstitial Fluid (ISF)</text>
+          <text x="105" y="62" font-size="8" fill="#a7f3d0" text-anchor="middle">10.5 Litres (75% of ECF)</text>
+          <text x="105" y="76" font-size="7.5" fill="#94a3b8" text-anchor="middle">Crystalloid repository</text>
+          <!-- Intravascular Plasma Sub-box -->
+          <rect x="205" y="32" width="130" height="55" rx="5" fill="rgba(220,38,38,0.2)" stroke="#ef4444" stroke-width="1.5"/>
+          <text x="270" y="48" font-size="9" font-weight="800" fill="#fca5a5" text-anchor="middle">Plasma Volume</text>
+          <text x="270" y="62" font-size="8" fill="#fecaca" text-anchor="middle">3.5 Litres (25% ECF)</text>
+          <text x="270" y="76" font-size="7.5" font-weight="700" fill="#f87171" text-anchor="middle">TARGET COMPARTMENT</text>
+        </g>
+
+        <!-- BOTTOM ROW: 4 Fluid Infusion Comparisons (After 1000 mL / unit infused) -->
+        <!-- 1. D5W -->
+        <g transform="translate(18, 165)">
+          <rect x="0" y="0" width="170" height="205" rx="8" fill="rgba(30,41,59,0.7)" stroke="#64748b" stroke-width="1.4"/>
+          <rect x="0" y="0" width="170" height="5" rx="2" fill="#38bdf8"/>
+          <text x="85" y="24" font-size="10.5" font-weight="800" fill="#38bdf8" text-anchor="middle">5% Dextrose (D5W)</text>
+          <text x="85" y="38" font-size="8" font-weight="600" fill="#94a3b8" text-anchor="middle">1000 mL Infused (278 mOsm)</text>
+          <!-- Bar Graph -->
+          <rect x="15" y="48" width="140" height="22" rx="3" fill="#0284c7" fill-opacity="0.8"/>
+          <text x="85" y="63" font-size="8.5" font-weight="700" fill="#fff" text-anchor="middle">ICF: 667 mL (67%)</text>
+          <rect x="15" y="74" width="140" height="22" rx="3" fill="#059669" fill-opacity="0.8"/>
+          <text x="85" y="89" font-size="8.5" font-weight="700" fill="#fff" text-anchor="middle">ISF: 250 mL (25%)</text>
+          <rect x="15" y="100" width="140" height="26" rx="3" fill="#dc2626" fill-opacity="0.9"/>
+          <text x="85" y="116" font-size="9" font-weight="900" fill="#fff" text-anchor="middle">Plasma: ONLY 83 mL</text>
+          <!-- Bullet points -->
+          <text x="12" y="142" font-size="7.8" fill="#cbd5e1">• Yield: 1/12th in plasma</text>
+          <text x="12" y="156" font-size="7.8" fill="#cbd5e1">• Glucose metabolized instantly</text>
+          <text x="12" y="170" font-size="7.8" fill="#fca5a5">• Useless for hypovolaemia!</text>
+          <text x="12" y="184" font-size="7.8" font-weight="700" fill="#ef4444">⚠️ Brain herniation risk in TBI</text>
+          <text x="12" y="198" font-size="7.2" fill="#94a3b8">Use: Pure water loss / carrier</text>
+        </g>
+
+        <!-- 2. Balanced Crystalloids -->
+        <g transform="translate(200, 165)">
+          <rect x="0" y="0" width="170" height="205" rx="8" fill="rgba(30,41,59,0.7)" stroke="#059669" stroke-width="1.4"/>
+          <rect x="0" y="0" width="170" height="5" rx="2" fill="#10b981"/>
+          <text x="85" y="24" font-size="10.5" font-weight="800" fill="#34d399" text-anchor="middle">Balanced Crystalloid</text>
+          <text x="85" y="38" font-size="8" font-weight="600" fill="#94a3b8" text-anchor="middle">RL / Hartmann's / Plasma-Lyte</text>
+          <!-- Bar Graph -->
+          <rect x="15" y="48" width="140" height="18" rx="3" fill="#334155"/>
+          <text x="85" y="61" font-size="8" fill="#94a3b8" text-anchor="middle">ICF: 0 mL (Zero entry)</text>
+          <rect x="15" y="70" width="140" height="26" rx="3" fill="#059669" fill-opacity="0.8"/>
+          <text x="85" y="87" font-size="8.5" font-weight="700" fill="#fff" text-anchor="middle">ISF: 750–800 mL (75%)</text>
+          <rect x="15" y="100" width="140" height="26" rx="3" fill="#dc2626" fill-opacity="0.9"/>
+          <text x="85" y="116" font-size="9" font-weight="900" fill="#fff" text-anchor="middle">Plasma: 200–250 mL</text>
+          <!-- Bullet points -->
+          <text x="12" y="142" font-size="7.8" fill="#cbd5e1">• Yield: 1/4th to 1/5th in plasma</text>
+          <text x="12" y="156" font-size="7.8" fill="#cbd5e1">• Rule: 3:1 replacement ratio</text>
+          <text x="12" y="170" font-size="7.8" fill="#86efac">• First-line surgical fluid</text>
+          <text x="12" y="184" font-size="7.8" fill="#cbd5e1">• Prevents hyperchloraemic acidosis</text>
+          <text x="12" y="198" font-size="7.2" fill="#94a3b8">RL calcium: incompatible with blood</text>
+        </g>
+
+        <!-- 3. 5% Albumin -->
+        <g transform="translate(382, 165)">
+          <rect x="0" y="0" width="170" height="205" rx="8" fill="rgba(30,41,59,0.7)" stroke="#d97706" stroke-width="1.4"/>
+          <rect x="0" y="0" width="170" height="5" rx="2" fill="#f59e0b"/>
+          <text x="85" y="24" font-size="10.5" font-weight="800" fill="#fbbf24" text-anchor="middle">Human Albumin 5%</text>
+          <text x="85" y="38" font-size="8" font-weight="600" fill="#94a3b8" text-anchor="middle">500 mL Iso-oncotic (COP 20 mmHg)</text>
+          <!-- Bar Graph -->
+          <rect x="15" y="48" width="140" height="18" rx="3" fill="#334155"/>
+          <text x="85" y="61" font-size="8" fill="#94a3b8" text-anchor="middle">ICF: 0 mL</text>
+          <rect x="15" y="70" width="140" height="18" rx="3" fill="#334155"/>
+          <text x="85" y="83" font-size="8" fill="#94a3b8" text-anchor="middle">ISF: 0 mL (stays in vessel)</text>
+          <rect x="15" y="92" width="140" height="34" rx="3" fill="#dc2626" fill-opacity="0.95"/>
+          <text x="85" y="112" font-size="9.5" font-weight="900" fill="#fff" text-anchor="middle">Plasma: 500 mL (100%)</text>
+          <!-- Bullet points -->
+          <text x="12" y="142" font-size="7.8" fill="#cbd5e1">• Yield: 1:1 volume expansion</text>
+          <text x="12" y="156" font-size="7.8" fill="#cbd5e1">• Remains inside glycocalyx</text>
+          <text x="12" y="170" font-size="7.8" fill="#fde68a">• Minimal interstitial oedema</text>
+          <text x="12" y="184" font-size="7.8" fill="#cbd5e1">• SBP / cirrhosis resuscitation</text>
+          <text x="12" y="198" font-size="7.2" fill="#94a3b8">Higher cost than crystalloid</text>
+        </g>
+
+        <!-- 4. 20% Albumin -->
+        <g transform="translate(564, 165)">
+          <rect x="0" y="0" width="178" height="205" rx="8" fill="rgba(30,41,59,0.7)" stroke="#dc2626" stroke-width="1.4"/>
+          <rect x="0" y="0" width="178" height="5" rx="2" fill="#ef4444"/>
+          <text x="89" y="24" font-size="10.5" font-weight="800" fill="#f87171" text-anchor="middle">Albumin 20% / 25%</text>
+          <text x="89" y="38" font-size="8" font-weight="600" fill="#94a3b8" text-anchor="middle">100 mL Hyper-oncotic (COP 100)</text>
+          <!-- Bar Graph -->
+          <rect x="15" y="48" width="148" height="18" rx="3" fill="#334155"/>
+          <text x="89" y="61" font-size="8" fill="#94a3b8" text-anchor="middle">ICF: 0 mL</text>
+          <rect x="15" y="70" width="148" height="20" rx="3" fill="rgba(239,68,68,0.25)" stroke="#ef4444" stroke-width="1"/>
+          <text x="89" y="84" font-size="7.8" font-weight="700" fill="#fca5a5" text-anchor="middle">DRAWS -350 mL from ISF ⬆</text>
+          <rect x="15" y="94" width="148" height="34" rx="3" fill="#dc2626"/>
+          <text x="89" y="114" font-size="9" font-weight="900" fill="#fff" text-anchor="middle">Plasma: +450 mL (450%!)</text>
+          <!-- Bullet points -->
+          <text x="12" y="142" font-size="7.8" fill="#cbd5e1">• Yield: 3.5–5x volume drawn</text>
+          <text x="12" y="156" font-size="7.8" fill="#cbd5e1">• Massive oncotic gradient</text>
+          <text x="12" y="170" font-size="7.8" font-weight="700" fill="#fde68a">• Large Paracentesis (>5L: 8g/L)</text>
+          <text x="12" y="184" font-size="7.8" fill="#cbd5e1">• Hepatorenal syndrome (HRS)</text>
+          <text x="12" y="198" font-size="7.2" fill="#fca5a5">⚠️ Heart failure overload hazard</text>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Intravenous Fluid Distribution Dynamics across Body Water Compartments. Notice how 1000 mL of D5W yields only 83 mL of intravascular expansion (1/12th), whereas balanced crystalloid yields 200–250 mL (1/4th to 1/5th), and 5% albumin expands intravascular volume 1:1.</p>
+    </div>`;
+  }
+
+  /* ---------------------------------------------------------------- blood products guide diagram */
+  function bloodProductsDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Blood Component Therapy and Massive Transfusion Protocol Diagram" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        <!-- Header -->
+        <text x="380" y="24" font-size="12.5" font-weight="800" text-anchor="middle" letter-spacing="1.1" fill="var(--st-text, #f8fafc)">BLOOD COMPONENT THERAPY &amp; MASSIVE TRANSFUSION PROTOCOL (MTP)</text>
+        <text x="380" y="42" font-size="9" text-anchor="middle" fill="#94a3b8">Component Specifications, Storage Rules, Transfusion Thresholds &amp; Viscoelastic Haemostatic Targets</text>
+
+        <!-- TOP ROW: 4 Core Blood Components -->
+        <!-- PRBCs -->
+        <g transform="translate(18, 55)">
+          <rect x="0" y="0" width="170" height="155" rx="8" fill="rgba(190,18,60,0.15)" stroke="#e11d48" stroke-width="1.6"/>
+          <rect x="0" y="0" width="170" height="5" rx="2" fill="#be123c"/>
+          <text x="85" y="22" font-size="11" font-weight="800" fill="#fb7185" text-anchor="middle">Packed RBCs (PRBCs)</text>
+          <text x="85" y="36" font-size="8" fill="#fecdd3" text-anchor="middle">Vol: ~300 mL · Hct 55–65%</text>
+          <line x1="12" y1="44" x2="158" y2="44" stroke="#e11d48" stroke-width="0.8" opacity="0.6"/>
+          <text x="12" y="60" font-size="8" fill="#cbd5e1">• Storage: 1°C to 6°C (35–42 d)</text>
+          <text x="12" y="74" font-size="8" font-weight="700" fill="#fca5a5">• 1 Unit ⬆ Hb 1 g/dL, Hct 3%</text>
+          <text x="12" y="88" font-size="8" fill="#cbd5e1">• Filter: Standard 170–260 μm</text>
+          <text x="12" y="102" font-size="8" fill="#cbd5e1">• Infuse within 4 hours</text>
+          <rect x="10" y="112" width="150" height="34" rx="4" fill="rgba(225,29,72,0.25)"/>
+          <text x="85" y="126" font-size="8.2" font-weight="800" fill="#fff" text-anchor="middle">TRIGGER: Hb &lt;7.0 g/dL</text>
+          <text x="85" y="139" font-size="7.5" fill="#fecdd3" text-anchor="middle">(&lt;8.0 g/dL in CAD / Cardiac / ACS)</text>
+        </g>
+
+        <!-- Platelets -->
+        <g transform="translate(200, 55)">
+          <rect x="0" y="0" width="170" height="155" rx="8" fill="rgba(217,119,6,0.15)" stroke="#f59e0b" stroke-width="1.6"/>
+          <rect x="0" y="0" width="170" height="5" rx="2" fill="#d97706"/>
+          <text x="85" y="22" font-size="11" font-weight="800" fill="#fcd34d" text-anchor="middle">Platelets (Apheresis/Pool)</text>
+          <text x="85" y="36" font-size="8" fill="#fef3c7" text-anchor="middle">Vol: ~250 mL · ≥3.0×10¹¹ plts</text>
+          <line x1="12" y1="44" x2="158" y2="44" stroke="#f59e0b" stroke-width="0.8" opacity="0.6"/>
+          <text x="12" y="60" font-size="8" fill="#cbd5e1">• Storage: 20°C–24°C + Agitation</text>
+          <text x="12" y="74" font-size="8" font-weight="700" fill="#fde68a">• 1 Dose ⬆ Count 30–50k/μL</text>
+          <text x="12" y="88" font-size="8" fill="#cbd5e1">• Shelf-life: STRICT 5 DAYS</text>
+          <text x="12" y="102" font-size="8" fill="#fca5a5">• Highest bacterial sepsis risk!</text>
+          <rect x="10" y="112" width="150" height="34" rx="4" fill="rgba(245,158,11,0.25)"/>
+          <text x="85" y="126" font-size="8.2" font-weight="800" fill="#fff" text-anchor="middle">TRIGGER: &lt;50k (Surgery/Bleed)</text>
+          <text x="85" y="139" font-size="7.5" fill="#fef3c7" text-anchor="middle">&lt;100k (Neuro/Ocular) · &lt;10k (Proph)</text>
+        </g>
+
+        <!-- Fresh Frozen Plasma -->
+        <g transform="translate(382, 55)">
+          <rect x="0" y="0" width="170" height="155" rx="8" fill="rgba(3,105,161,0.15)" stroke="#0284c7" stroke-width="1.6"/>
+          <rect x="0" y="0" width="170" height="5" rx="2" fill="#0369a1"/>
+          <text x="85" y="22" font-size="11" font-weight="800" fill="#7dd3fc" text-anchor="middle">Fresh Frozen Plasma</text>
+          <text x="85" y="36" font-size="8" fill="#e0f2fe" text-anchor="middle">Vol: 200–300 mL · All Clot Factors</text>
+          <line x1="12" y1="44" x2="158" y2="44" stroke="#0284c7" stroke-width="0.8" opacity="0.6"/>
+          <text x="12" y="60" font-size="8" fill="#cbd5e1">• Storage: ≤ -18°C (12 months)</text>
+          <text x="12" y="74" font-size="8" font-weight="700" fill="#bae6fd">• Dose: 10 to 15 mL/kg (3–4 U)</text>
+          <text x="12" y="88" font-size="8" fill="#cbd5e1">• Thaw at 37°C; use within 24h</text>
+          <text x="12" y="102" font-size="8" fill="#cbd5e1">• Contains Factors V &amp; VIII</text>
+          <rect x="10" y="112" width="150" height="34" rx="4" fill="rgba(2,132,199,0.25)"/>
+          <text x="85" y="126" font-size="8.2" font-weight="800" fill="#fff" text-anchor="middle">TRIGGER: INR &gt;1.5–1.7</text>
+          <text x="85" y="139" font-size="7.5" fill="#e0f2fe" text-anchor="middle">with active bleeding / trauma</text>
+        </g>
+
+        <!-- Cryoprecipitate -->
+        <g transform="translate(564, 55)">
+          <rect x="0" y="0" width="178" height="155" rx="8" fill="rgba(124,58,237,0.15)" stroke="#8b5cf6" stroke-width="1.6"/>
+          <rect x="0" y="0" width="178" height="5" rx="2" fill="#7c3aed"/>
+          <text x="89" y="22" font-size="11" font-weight="800" fill="#c4b5fd" text-anchor="middle">Cryoprecipitate</text>
+          <text x="89" y="36" font-size="8" fill="#ede9fe" text-anchor="middle">10–20 mL/unit (Adult Pool: 5–10 U)</text>
+          <line x1="12" y1="44" x2="166" y2="44" stroke="#8b5cf6" stroke-width="0.8" opacity="0.6"/>
+          <text x="12" y="60" font-size="8" fill="#cbd5e1">• Storage: ≤ -18°C (12 months)</text>
+          <text x="12" y="74" font-size="8" font-weight="700" fill="#ddd6fe">• Fibrinogen: ≥150 mg/unit</text>
+          <text x="12" y="88" font-size="8" fill="#cbd5e1">• Also contains: Factor VIII, vWF, XIII</text>
+          <text x="12" y="102" font-size="8" fill="#cbd5e1">• Thaw at 37°C; use within 4–6h</text>
+          <rect x="10" y="112" width="158" height="34" rx="4" fill="rgba(139,92,246,0.25)"/>
+          <text x="89" y="126" font-size="8.2" font-weight="800" fill="#fff" text-anchor="middle">TARGET: Fibrinogen &gt;1.5–2.0 g/L</text>
+          <text x="89" y="139" font-size="7.5" fill="#ede9fe" text-anchor="middle">10 Units ⬆ Fibrinogen ~0.5 g/L</text>
+        </g>
+
+        <!-- BOTTOM ROW: Left = MTP 1:1:1 Protocol; Right = TEG/ROTEM Viscoelastic Algorithm -->
+        <!-- MTP 1:1:1 Protocol -->
+        <g transform="translate(18, 225)">
+          <rect x="0" y="0" width="350" height="180" rx="8" fill="rgba(220,38,38,0.1)" stroke="#ef4444" stroke-width="1.8"/>
+          <rect x="0" y="0" width="350" height="5" rx="2" fill="#dc2626"/>
+          <text x="175" y="24" font-size="11" font-weight="800" fill="#f87171" text-anchor="middle">MASSIVE TRANSFUSION PROTOCOL (MTP) • 1:1:1 PACK</text>
+          <!-- Ratio Boxes -->
+          <g transform="translate(25, 34)">
+            <rect x="0" y="0" width="90" height="42" rx="4" fill="#be123c"/>
+            <text x="45" y="18" font-size="9" font-weight="900" fill="#fff" text-anchor="middle">1 UNIT PRBC</text>
+            <text x="45" y="32" font-size="7.5" fill="#fecdd3" text-anchor="middle">Oxygen Carriage</text>
+
+            <rect x="105" y="0" width="90" height="42" rx="4" fill="#0369a1"/>
+            <text x="150" y="18" font-size="9" font-weight="900" fill="#fff" text-anchor="middle">1 UNIT FFP</text>
+            <text x="150" y="32" font-size="7.5" fill="#e0f2fe" text-anchor="middle">Factor Reserve</text>
+
+            <rect x="210" y="0" width="90" height="42" rx="4" fill="#d97706"/>
+            <text x="255" y="18" font-size="9" font-weight="900" fill="#fff" text-anchor="middle">1 DOSE PLT</text>
+            <text x="255" y="32" font-size="7.5" fill="#fef3c7" text-anchor="middle">Primary Haemostasis</text>
+          </g>
+          <!-- Adjuncts -->
+          <text x="175" y="98" font-size="8.8" font-weight="700" fill="#fde68a" text-anchor="middle">CRITICAL ADJUNCTS IN DAMAGE CONTROL RESUSCITATION:</text>
+          <text x="20" y="116" font-size="8.2" fill="#cbd5e1">• <tspan font-weight="700" fill="#38bdf8">Tranexamic Acid (TXA):</tspan> 1 g IV within 3h, then 1 g over 8h (CRASH-2/WOMAN)</text>
+          <text x="20" y="132" font-size="8.2" fill="#cbd5e1">• <tspan font-weight="700" fill="#f87171">Calcium Chloride 1 g IV</tspan> per 4 units citrated blood (target iCa²⁺ &gt;0.9–1.0 mmol/L)</text>
+          <text x="20" y="148" font-size="8.2" fill="#cbd5e1">• <tspan font-weight="700" fill="#34d399">Prevent Lethal Triad:</tspan> Warm all fluids &gt;37°C · Treat acidosis (pH &gt;7.20)</text>
+          <text x="20" y="164" font-size="7.8" fill="#94a3b8">• Definition: ≥10 units PRBCs / 24h OR &gt;4 units in 1h with ongoing bleeding</text>
+        </g>
+
+        <!-- Viscoelastic TEG / ROTEM Algorithm -->
+        <g transform="translate(382, 225)">
+          <rect x="0" y="0" width="360" height="180" rx="8" fill="rgba(15,23,42,0.8)" stroke="#38bdf8" stroke-width="1.8"/>
+          <rect x="0" y="0" width="360" height="5" rx="2" fill="#0284c7"/>
+          <text x="180" y="24" font-size="11" font-weight="800" fill="#38bdf8" text-anchor="middle">VISCOELASTIC (TEG / ROTEM) TARGETED THERAPY</text>
+          <!-- 4 Parameter Grid -->
+          <g transform="translate(15, 34)">
+            <!-- R-time / CT -->
+            <rect x="0" y="0" width="160" height="60" rx="4" fill="rgba(2,132,199,0.18)" stroke="#0284c7" stroke-width="1"/>
+            <text x="80" y="16" font-size="8.5" font-weight="800" fill="#7dd3fc" text-anchor="middle">R-time &gt;10 min / CT &gt;80s</text>
+            <text x="80" y="30" font-size="7.5" fill="#cbd5e1" text-anchor="middle">Deficiency: Clotting Factors</text>
+            <text x="80" y="48" font-size="8.5" font-weight="800" fill="#38bdf8" text-anchor="middle">➔ Give FFP or 4F-PCC</text>
+
+            <!-- Alpha / CFT -->
+            <rect x="170" y="0" width="160" height="60" rx="4" fill="rgba(124,58,237,0.18)" stroke="#8b5cf6" stroke-width="1"/>
+            <text x="250" y="16" font-size="8.5" font-weight="800" fill="#c4b5fd" text-anchor="middle">Alpha &lt;53° / FIBTEM &lt;10mm</text>
+            <text x="250" y="30" font-size="7.5" fill="#cbd5e1" text-anchor="middle">Deficiency: Fibrinogen / Mesh</text>
+            <text x="250" y="48" font-size="8.5" font-weight="800" fill="#a78bfa" text-anchor="middle">➔ Cryoprecipitate / Fibrinogen</text>
+
+            <!-- MA / MCF -->
+            <rect x="0" y="68" width="160" height="60" rx="4" fill="rgba(217,119,6,0.18)" stroke="#f59e0b" stroke-width="1"/>
+            <text x="80" y="84" font-size="8.5" font-weight="800" fill="#fcd34d" text-anchor="middle">MA &lt;50 mm / MCF &lt;45mm</text>
+            <text x="80" y="98" font-size="7.5" fill="#cbd5e1" text-anchor="middle">Deficiency: Platelets / Function</text>
+            <text x="80" y="116" font-size="8.5" font-weight="800" fill="#fbbf24" text-anchor="middle">➔ Give Platelet Pack</text>
+
+            <!-- LY30 / ML -->
+            <rect x="170" y="68" width="160" height="60" rx="4" fill="rgba(220,38,38,0.18)" stroke="#ef4444" stroke-width="1"/>
+            <text x="250" y="84" font-size="8.5" font-weight="800" fill="#fca5a5" text-anchor="middle">LY30 &gt;3% / ML &gt;15%</text>
+            <text x="250" y="98" font-size="7.5" fill="#cbd5e1" text-anchor="middle">Condition: Hyperfibrinolysis</text>
+            <text x="250" y="116" font-size="8.5" font-weight="800" fill="#f87171" text-anchor="middle">➔ Give Tranexamic Acid (TXA)</text>
+          </g>
+          <text x="180" y="168" font-size="8" fill="#94a3b8" text-anchor="middle">Eliminates blind factor administration · Rapid results in 15–20 minutes</text>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Blood Component Specifications, MTP 1:1:1 Balanced Ratio, and Viscoelastic (TEG / ROTEM) Goal-Directed Transfusion Algorithm. Tailors factor, fibrinogen, platelet, and antifibrinolytic therapy to real-time whole blood clotting dynamics.</p>
     </div>`;
   }
 

@@ -598,34 +598,373 @@ PATIENT CHECKOUT COMPLETE — PROCEED SAFELY WITH INDUCTION.`
       "UpToDate \"Basic monitoring during general anesthesia\" (Wolters Kluwer, 2025/2026)."
     ]
   });
-  topics.push({
+    topics.push({
     id: "fluid-transfusion",
     cat: "anaesthesia",
-    name: "Fluid Management & Blood Transfusion",
+    name: "Fluids & Blood Products in Anaesthesia",
     short: "Fluids & Transfusion",
-    tags: ["Goal-directed therapy", "PBM"],
-    tagline: "Perioperative fluid strategy and transfusion thresholds",
-    source: "Barash Clinical Anesthesia, 8th ed., Ch. 24; AABB blood transfusion guidelines; UpToDate \"Perioperative blood management: Strategies to minimize transfusions\" (2025).",
+    tags: ["Crystalloids & Colloids", "Blood Products", "MTP", "Viscoelastic TEG/ROTEM"],
+    tagline: "Composition, pH, osmolarity, pharmacokinetics, and transfusion guidelines",
+    source: "Miller's Anesthesia 10th ed. (Ch. 52); Barash Clinical Anesthesia 9th ed. (Ch. 16 & 24); Stoelting's Pharmacology & Physiology 5th ed.; AABB 2023 Guidelines; Surviving Sepsis Campaign 2021; NICE NG24.",
     sections: [
       {
-        h: "Classification of Intravenous Fluids & Blood Component Therapy",
-        b: "Perioperative fluid management divides intravenous solutions based on molecular weight, oncotic power, and cellular composition:\n\n1. Crystalloid Solutions Classification:\n\u2022 Balanced / Physiological Crystalloids (Plasmalyte-A, Ringer's Lactate, Hartmann's):\n  - Electrolyte profile closely mirrors human plasma (Na⁺ 130u2013140, K⁺ 4u20135, chloride 98u2013109 mmol/L). Buffer anions (acetate, gluconate, or lactate) are metabolized into bicarbonate.\n  - Prevents hyperchloremic metabolic acidosis, preserves renal cortical perfusion, and reduces acute kidney injury compared to saline.\n\u2022 Unbalanced / Normal Saline (0.9% NaCl):\n  - Contains 154 mmol/L Na⁺ and 154 mmol/L Cl⁻ (osmolarity 308 mOsm/L). Infusion of large volumes produces hyperchloremic metabolic acidosis with normal anion gap, renal vasoconstriction, and decreased GFR. Reserved for neurosurgical brain edema, hypochloremic metabolic alkalosis, and hyperkalemia.\n\n2. Colloid Solutions Classification:\n\u2022 Natural Colloids (Human Albumin 5% and 20% / 25%):\n  - Extracted from human pooled plasma. 5% albumin is iso-oncotic (volume expansion ratio 1:1); 20% albumin is hyper-oncotic (draws 3\u20134 mL of interstitial fluid per mL infused). Indicated in cirrhosis, large-volume paracentesis, and severe hypoalbuminemia.\n\u2022 Synthetic Colloids (Hydroxyethyl Starches, Gelatins, Dextrans):\n  - Black-box warnings issued due to increased rates of renal replacement therapy, nephrotoxicity, and coagulopathy (impairing Factor VIII / vWF complex).\n\n3. Blood Component Therapy Classification:\n\u2022 Packed Red Blood Cells (PRBCs): 1 unit (~300 mL, Hct 55\u201365%) increases hemoglobin by 1 g/dL and hematocrit by 3% in a 70 kg adult.\n\u2022 Platelets: 1 apheresis single-donor unit (or pool of 4\u20136 whole-blood donor units) increases platelet count by 30,000 to 50,000/mcL.\n\u2022 Fresh Frozen Plasma (FFP): 10\u201315 mL/kg contains all clotting factors; indicated for INR >1.5 with active microvascular bleeding.\n\u2022 Cryoprecipitate: 1 adult pool (10 units) provides 2 to 3 grams of fibrinogen (Factor I), Factor VIII, Factor XIII, and vWF; target fibrinogen >1.5\u20132.0 g/L in major hemorrhage."
+        h: "Crystalloid Solutions: Content, pH, Osmolarity & Clinical Indications",
+        b: "Crystalloids are aqueous solutions of mineral salts and water-soluble molecules that freely cross vascular endothelial fenestrations into the extravascular extracellular compartment. Selection of an intravenous fluid requires understanding its precise electrolyte composition, pH, tonicity, and in vivo physiological impact:\n\n" +
+           "1. 0.9% Normal Saline (0.9% Sodium Chloride):\n" +
+           "• Content & Composition:\n" +
+           "  - Sodium (Na⁺): 154 mmol/L (mEq/L)\n" +
+           "  - Chloride (Cl⁻): 154 mmol/L (mEq/L)\n" +
+           "  - Potassium, Calcium, Magnesium, Buffer: ZERO (unbuffered, unbalanced solution)\n" +
+           "• pH: 4.5–5.5 in vitro (acidic due to atmospheric CO2 dissolution and total absence of buffering anions).\n" +
+           "• Osmolarity: 308 mOsm/L (slightly hypertonic compared to human plasma osmolality of 285–295 mOsm/kg; actual calculated osmolality ~287 mOsm/kg after osmotic coefficient correction).\n" +
+           "• Pharmacokinetics & Intravascular Yield:\n" +
+           "  - 1000 mL infused expands intravascular plasma volume by only 200–250 mL (1/4th to 1/5th yield).\n" +
+           "  - The remaining 750–800 mL diffuses across capillary clefts into the interstitial space within 30 to 60 minutes.\n" +
+           "• Clinical Uses & Specific Indications:\n" +
+           "  - Hypovolaemic resuscitation in hypochloraemic hypokalaemic metabolic alkalosis (e.g., persistent vomiting, high nasogastric drainage, gastric outlet obstruction, infantile hypertrophic pyloric stenosis).\n" +
+           "  - Traumatic Brain Injury (TBI) and neurosurgical craniotomies: Its slight hypertonicity (308 mOsm/L) maintains serum osmolality and prevents water shift across the blood-brain barrier, avoiding secondary cerebral oedema.\n" +
+           "  - Sole crystalloid compatible with Packed Red Blood Cell (PRBC) administration: Free of calcium (prevents line clotting) and isotonic enough to prevent osmotic lysis.\n" +
+           "  - Saline diuresis in severe hypercalcaemia and volume expansion in severe hyperkalaemia.\n" +
+           "• Adverse Effects & Hazards:\n" +
+           "  - Hyperchloraemic Normal Anion Gap Metabolic Acidosis: Infusing large volumes of supra-physiological chloride (154 mmol/L vs plasma 98–106 mmol/L) drastically decreases the plasma Strong Ion Difference (SID = [Na⁺ + K⁺] - Cl⁻), forcing water dissociation into H⁺ ions.\n" +
+           "  - Renal cortical vasoconstriction: High chloride delivery to the macula densa triggers tubuloglomerular feedback, constricting afferent arterioles, reducing renal blood flow, and increasing acute kidney injury (AKI) and renal replacement rates.\n\n" +
+           "2. Hartmann's Solution & Ringer's Lactate (Balanced Crystalloids):\n" +
+           "• Content & Composition:\n" +
+           "  - Hartmann's Solution: Na⁺ 131 mmol/L, Cl⁻ 111 mmol/L, K⁺ 5 mmol/L, Ca²⁺ 2 mmol/L (4 mEq/L), Sodium Lactate 29 mmol/L.\n" +
+           "  - Ringer's Lactate (USP): Na⁺ 130 mmol/L, Cl⁻ 109 mmol/L, K⁺ 4 mmol/L, Ca²⁺ 1.5 mmol/L (3 mEq/L), Sodium Lactate 28 mmol/L.\n" +
+           "• pH: 6.0–6.5 (slightly acidic in bottle; behaves alkalizing in vivo).\n" +
+           "• Osmolarity: 278 mOsm/L (Hartmann's) / 273 mOsm/L (Ringer's Lactate) — mildly hypotonic relative to human plasma.\n" +
+           "• In Vivo Buffer Dynamics: Sodium lactate is rapidly metabolized in the liver via the Cori cycle and gluconeogenesis into bicarbonate (yielding 28–29 mmol/L HCO3⁻), consuming H⁺ ions and generating an alkalinizing effect.\n" +
+           "• Pharmacokinetics & Intravascular Yield: 1000 mL yields ~200 mL intravascular expansion; 800 mL diffuses into interstitial fluid.\n" +
+           "• Clinical Uses & Indications:\n" +
+           "  - First-line crystalloid for intraoperative maintenance and surgical fluid deficit replacement in general, colorectal, orthopaedic, and gynaecological surgery.\n" +
+           "  - Resuscitation of major burn injuries: Standard choice in Parkland formula (4 mL/kg/% TBSA burned in first 24h).\n" +
+           "  - Acute pancreatitis resuscitation and haemorrhagic shock prior to blood availability.\n" +
+           "• Contraindications & Critical Cautions:\n" +
+           "  - INCOMPATIBLE WITH CITRATED BLOOD PRODUCTS: The ionized Ca²⁺ (1.5–2.0 mmol/L) overcomes the citrate anticoagulant in PRBCs, precipitating microthrombi and macro-clots inside the IV infusion line.\n" +
+           "  - CONTRAINDICATED in severe Traumatic Brain Injury (TBI) and acute intracranial hypertension: Hypotonicity (273–278 mOsm/L) causes free water influx down an osmotic gradient into brain parenchyma, escalating intracranial pressure (ICP).\n" +
+           "  - End-stage fulminant hepatic failure: Impaired hepatic clearance leads to lactate accumulation.\n" +
+           "  - Severe oliguric renal failure with hyperkalaemia: Contains 4–5 mmol/L K⁺.\n\n" +
+           "3. Plasma-Lyte A / Plasma-Lyte 148 (Normosol-R):\n" +
+           "• Content & Composition:\n" +
+           "  - Sodium (Na⁺): 140 mmol/L\n" +
+           "  - Chloride (Cl⁻): 98 mmol/L (truly physiological)\n" +
+           "  - Potassium (K⁺): 5 mmol/L\n" +
+           "  - Magnesium (Mg²⁺): 1.5 mmol/L (3 mEq/L)\n" +
+           "  - Acetate: 27 mmol/L\n" +
+           "  - Gluconate: 23 mmol/L\n" +
+           "  - Calcium: ZERO (calcium-free formulation)\n" +
+           "• pH: 7.4 (adjusted with NaOH; exactly physiological blood pH).\n" +
+           "• Osmolarity: 295 mOsm/L (true plasma isotonicity).\n" +
+           "• In Vivo Buffer Dynamics: Acetate and gluconate are metabolized in peripheral tissues, skeletal muscle, and kidneys (extra-hepatic) into bicarbonate without consuming hepatic metabolic capacity or excessive oxygen.\n" +
+           "• Clinical Uses & Specific Indications:\n" +
+           "  - Premier balanced solution for major visceral, cardiothoracic, and vascular surgery.\n" +
+           "  - Renal transplantation: Zero calcium, physiological chloride (98 mmol/L) preserves renal blood flow, and buffering reduces hyperchloraemic graft hypoperfusion.\n" +
+           "  - Compatible with citrated blood products: Absence of calcium allows co-infusion with PRBCs, FFP, and platelets through the same IV cannula.\n" +
+           "  - Resuscitation of patients with hepatic impairment (extra-hepatic buffer clearance).\n" +
+           "• Cautions: Contains potassium (5 mmol/L); sodium gluconate may yield false-positive results on Platelia Aspergillus galactomannan enzyme immunoassay testing.\n\n" +
+           "4. 5% Dextrose in Water (D5W):\n" +
+           "• Content & Composition: 50 g/L D-Glucose (Dextrose monohydrate) = 5 g/100 mL. Zero electrolytes. Caloric value: 170 kcal/L (3.4 kcal/g glucose).\n" +
+           "• pH: 4.0–4.5 (acidic).\n" +
+           "• Osmolarity: 278 mOsm/L in the container (iso-osmolar), but 0 mOsm/L effective in vivo!\n" +
+           "• Pharmacokinetics & Intravascular Yield:\n" +
+           "  - Once infused, glucose is rapidly translocated into cells by insulin and GLUT transporters, and phosphorylated by hexokinase.\n" +
+           "  - The remaining solvent is pure electrolyte-free water, which distributes proportionally across Total Body Water (TBW = 2/3 Intracellular Fluid [~667 mL], 1/3 Extracellular Fluid [~333 mL]). Of the ECF fraction, 3/4 enters the interstitium (~250 mL) and only 1/4 stays in plasma.\n" +
+           "  - Yield: 1000 mL D5W expands plasma volume by ONLY 83 mL (8.3% yield!).\n" +
+           "• Clinical Uses & Indications:\n" +
+           "  - Correction of severe hypernatraemia and pure water deficit.\n" +
+           "  - Vehicle for delicate drug infusions (e.g., Amiodarone [crystallizes in saline], Noradrenaline, Sodium Nitroprusside).\n" +
+           "  - Treatment of intraoperative hypoglycaemia and prevention of starvation ketosis in neonatal/paediatric anaesthesia.\n" +
+           "  - Glucose-insulin potassium shift protocol for hyperkalaemia management.\n" +
+           "• CONTRAINDICATIONS & BLACK-LETTER HAZARDS:\n" +
+           "  - CONTRAINDICATED IN NEUROSURGERY, HEAD TRAUMA, AND ACUTE ISCHAEMIC STROKE: Free water rapidly shifts down the osmotic gradient into astrocytes, precipitating acute cerebral oedema and brainstem herniation. Furthermore, hyperglycaemia accelerates anaerobic lactic acidosis in ischaemic neuronal tissue, worsening neurological outcomes.\n" +
+           "  - CONTRAINDICATED in hypovolaemic, haemorrhagic, or septic shock (useless intravascular expansion).\n" +
+           "  - Rapid infusion triggers acute hyponatraemic encephalopathy.\n\n" +
+           "5. 0.45% Sodium Chloride (Half-Normal Saline) & D5 0.45% Saline:\n" +
+           "• Content & Composition:\n" +
+           "  - 0.45% Saline: Na⁺ 77 mmol/L, Cl⁻ 77 mmol/L. Osmolarity: 154 mOsm/L (hypotonic).\n" +
+           "  - D5 0.45% Saline: Dextrose 50 g/L, Na⁺ 77 mmol/L, Cl⁻ 77 mmol/L. Osmolarity: 406 mOsm/L in bag (hypertonic in vitro, but hypotonic 154 mOsm/L effective in vivo).\n" +
+           "• pH: 4.0–5.0.\n" +
+           "• Clinical Uses: Paediatric maintenance fluid; Hyperosmolar Hyperglycaemic State (HHS) after initial fluid resuscitation when corrected serum sodium is normal or elevated (>145 mmol/L); replacement of hypotonic gastric or enterostomy losses.\n" +
+           "• Risks: Rapid infusion causes cerebral swelling and intravascular haemolysis.\n\n" +
+           "6. 3% Hypertonic Saline (3% NaCl):\n" +
+           "• Content & Composition: Na⁺ 513 mmol/L, Cl⁻ 513 mmol/L. Zero buffer.\n" +
+           "• pH: 5.0.\n" +
+           "• Osmolarity: 1026 mOsm/L (markedly hypertonic).\n" +
+           "• Pharmacokinetics & Intravascular Yield: Creates an acute transcellular osmotic gradient that draws water from the intracellular (ICF) and interstitial (ISF) spaces into the intravascular compartment. Expands intravascular plasma volume by ~2.5 to 3.0 times the volume infused (100 mL IV bolus expands plasma by 250–300 mL).\n" +
+           "• Clinical Uses & Emergency Indications:\n" +
+           "  - Acute symptomatic severe hyponatraemia with cerebral oedema (seizures, coma, uncal herniation): 100–150 mL IV bolus over 10–15 minutes, repeatable once or twice to elevate serum sodium acutely by 4–6 mmol/L, halting seizures.\n" +
+           "  - Acute intracranial hypertension (ICP >20 mmHg) in severe Traumatic Brain Injury: 150–250 mL bolus of 3% saline (or 2 mL/kg) reduces brain bulk and ICP within minutes without the profound osmotic diuresis or hypovolaemic hypotension caused by mannitol.\n" +
+           "• Critical Rules & Warnings:\n" +
+           "  - Chronic hyponatraemia correction limit: Never exceed 8–10 mmol/L in 24 hours (or 6 mmol/L in high-risk liver cirrhosis/malnutrition) to prevent fatal Osmotic Demyelination Syndrome (ODS / Central Pontine Myelinolysis).\n" +
+           "  - Causes severe hyperchloraemic metabolic acidosis and peripheral venous thrombophlebitis (requires central venous line if administered as a continuous infusion).\n\n" +
+           "7. 20% Mannitol (Osmotic Diuretic):\n" +
+           "• Content & Composition: 200 g/L Mannitol (C6H14O6, molecular weight 182 Da). Zero electrolytes.\n" +
+           "• pH: 4.5–7.0.\n" +
+           "• Osmolarity: 1098 mOsm/L (markedly hypertonic).\n" +
+           "• Mechanism of Action:\n" +
+           "  - Acute Phase (0–15 min): Draws water from brain parenchyma across an intact blood-brain barrier into the intravascular space, while decreasing blood viscosity (rheological effect), which improves microcirculatory flow and triggers reflex autoregulatory vasoconstriction of cerebral arterioles, lowering cerebral blood volume (CBV).\n" +
+           "  - Delayed Phase (15–60 min): Freely filtered at the glomerulus, undergoes negligible tubular reabsorption, causing profound osmotic water and electrolyte diuresis.\n" +
+           "• Clinical Uses & Dosing:\n" +
+           "  - Acute brain herniation and medically refractory elevated ICP: 0.25 to 1.0 g/kg IV bolus infused over 15–20 minutes through a dedicated filter set (crystallizes at cool temperatures).\n" +
+           "  - Acute intraocular hypertension in acute angle-closure glaucoma.\n" +
+           "• Contraindications & Hazards:\n" +
+           "  - Initial transient intravascular volume overload: Can trigger acute pulmonary oedema and decompensated heart failure in patients with compromised left ventricular function.\n" +
+           "  - Severe dehydration, hypovolaemia, hypokalaemia, and hypernatraemic hyperosmolar state.\n" +
+           "  - Acute Tubular Necrosis (ATN) and nephrotoxicity: Discontinue if serum osmolality exceeds 320 mOsm/kg or osmolal gap >55 mOsm/kg.\n" +
+           "  - Rebound intracranial hypertension: Mannitol leaks into brain parenchyma if the blood-brain barrier is widely disrupted (e.g., massive intracerebral contusion), reversing the osmotic gradient."
       },
-      { h: "Crystalloid, and why 'normal' saline isn't actually normal for the body", b: "Start with the basic choice you make on almost every case: which bag do you hang? Balanced crystalloids like lactated Ringer's or Plasma-Lyte have an electrolyte composition designed to resemble plasma reasonably closely, including a bicarbonate precursor to buffer pH. Plain 0.9% saline, despite the name, actually contains a chloride concentration well above what's physiological — and if you give litres of it, that excess chloride causes a real, measurable hyperchloraemic metabolic acidosis. For a quick top-up of a litre in an otherwise well patient, this rarely matters clinically. But in a long case with large-volume resuscitation — a laparotomy for faecal peritonitis, a major trauma — that acidosis becomes real, which is exactly why balanced solutions have become the default first-line choice in most modern practice, with saline reserved for specific situations (like a patient with hypochloraemic alkalosis from prolonged vomiting, where you actually want the chloride)." },
-      { h: "Colloids: when volume-for-volume efficiency is worth the trade-off", b: "Colloids expand the intravascular volume more efficiently per millilitre than crystalloids, because their larger molecules stay in the vessel rather than diffusing out into the interstitium as quickly. That sounds like an obvious win, but colloids come with genuine downsides: cost, a real (if small) risk of anaphylaxis, and, for some starch-based colloids in particular, evidence of harm to the kidneys and to clotting when used in large volumes in critically ill patients — findings that led to starches being restricted or withdrawn in a number of countries for use in sepsis and critical illness. The practical takeaway is that colloids are used more selectively today than they once were, chosen for a specific volume-expansion need rather than reached for as a routine maintenance fluid." },
-      { h: "Goal-directed fluid therapy: replacing guesswork with a number you can watch", b: "For decades, intraoperative fluid management in major surgery was largely a matter of experienced guesswork — replace 'third-space losses,' keep the urine output above some threshold, watch the blood pressure. Goal-directed fluid therapy replaces guesswork with a dynamic, moment-to-moment measurement of whether the heart will actually respond to more fluid: things like stroke volume variation or pulse pressure variation, derived from an arterial line waveform, or a direct measurement of stroke volume from an oesophageal Doppler probe or similar device. The underlying physiology is Frank–Starling — a heart that's still on the steep, fluid-responsive part of the curve will increase its stroke volume with more fluid, while a heart that's already flat on the curve won't, and giving it more fluid there does nothing but cause oedema. Multiple trials in high-risk abdominal surgery have shown that titrating fluid to these dynamic targets, rather than to a fixed volume or to blood pressure alone, reduces complications — which is exactly why it's become standard in many enhanced-recovery pathways for major surgery.", example: "During a major laparotomy, you notice the arterial line shows a stroke volume variation of 18% (above the roughly 10–13% threshold that suggests fluid-responsiveness). You give a 250 mL crystalloid bolus and watch the stroke volume rise meaningfully in response — that patient was indeed fluid-responsive, and the bolus was the right call. Ten minutes and another bolus later, stroke volume variation has fallen to 8% and a further bolus produces almost no change in stroke volume — that patient has now moved onto the flat part of the curve, and further fluid at this point would mostly just cause tissue oedema rather than improve perfusion." },
-      { h: "How much blood loss actually needs a transfusion?", b: "The instinct to “top up” hemoglobin back toward a normal number is strong, but the evidence has moved firmly toward a restrictive transfusion strategy for most surgical patients — transfusing red cells only once haemoglobin falls to around 7–8 g/dL in an otherwise stable patient, with a somewhat higher threshold, around 8 g/dL, often used in patients with significant cardiac disease who tolerate anaemia less well. Multiple large trials have shown a restrictive approach is non-inferior to a liberal one for most patients, while meaningfully reducing transfusion exposure — and every unit of blood avoided is a unit that can't cause a transfusion reaction, can't transmit an infection, and doesn't need to come from an increasingly stretched blood supply. For truly massive haemorrhage, the approach shifts again: massive transfusion protocols aim for a roughly balanced 1:1:1 ratio of red cells, fresh frozen plasma, and platelets, because replacing red cells alone in a massively bleeding patient just produces a diluted coagulopathy on top of the original problem." },
-      { h: "Patient blood management: the strategy that starts before the patient even reaches theatre", b: "The most effective way to avoid a transfusion problem intraoperatively is to never need the transfusion in the first place, and that's the whole philosophy behind patient blood management. It starts preoperatively — identifying and treating iron-deficiency anaemia (with oral or IV iron, sometimes erythropoietin) well before a bloodletting-heavy operation, so the patient isn't starting from a deficit. Intraoperatively, it includes cell salvage (collecting, washing, and re-transfusing the patient's own shed blood during the case), antifibrinolytics like tranexamic acid to reduce overall blood loss, and meticulous surgical technique to minimise bleeding in the first place. None of these are exotic add-ons anymore — they're core components of modern enhanced-recovery and blood-conservation pathways precisely because preventing the need for transfusion is safer, cheaper, and more sustainable than managing it after the fact.", pearl: "Before reaching for a unit of blood, ask yourself the restrictive-strategy question explicitly: is this patient symptomatic or unstable, or are they simply below a number that feels uncomfortable to look at? A stable patient at Hb 7.5 with no ongoing bleeding and no cardiac disease usually doesn't need a transfusion just because the number looks low on paper." }
+      {
+        h: "Crystalloids & Colloids Master Comparison Table",
+        table: {
+          headers: ["Intravenous Solution", "Na⁺ (mmol/L)", "Cl⁻ (mmol/L)", "K⁺ (mmol/L)", "Buffers / Additives", "pH", "Osmolarity", "Plasma Yield (1L)"],
+          rows: [
+            ["Human Normal Plasma", "135–145", "98–106", "3.5–5.0", "HCO3⁻ (24–28), Ca²⁺ (2.2–2.6), Mg²⁺ (0.8–1.0)", "7.35–7.45", "285–295 mOsm/kg", "1000 mL (Baseline)"],
+            ["0.9% Normal Saline", "154", "154", "0", "None (Unbuffered, Unbalanced)", "4.5–5.5", "308 mOsm/L", "~200–250 mL (20–25%)"],
+            ["Hartmann's Solution", "131", "111", "5", "Sodium Lactate 29, Ca²⁺ 2.0", "6.0–6.5", "278 mOsm/L", "~200 mL (20%)"],
+            ["Ringer's Lactate (USP)", "130", "109", "4", "Sodium Lactate 28, Ca²⁺ 1.5", "6.0–6.5", "273 mOsm/L", "~200 mL (20%)"],
+            ["Plasma-Lyte A / 148", "140", "98", "5", "Acetate 27, Gluconate 23, Mg²⁺ 1.5, Ca 0", "7.4", "295 mOsm/L", "~250 mL (25%)"],
+            ["5% Dextrose (D5W)", "0", "0", "0", "Dextrose 50 g/L (170 kcal/L)", "4.0–4.5", "278 in bag (0 in vivo)", "ONLY 83 mL (8.3%!)"],
+            ["0.45% Half Saline", "77", "77", "0", "None (Hypotonic crystalloid)", "4.5–5.5", "154 mOsm/L", "~125 mL (12.5%)"],
+            ["3% Hypertonic Saline", "513", "513", "0", "None (High osmolar shift)", "5.0", "1026 mOsm/L", "~2500–3000 mL (Draws ISF/ICF)"],
+            ["20% Mannitol", "0", "0", "0", "Mannitol 200 g/L (Osmotic hexitol)", "4.5–7.0", "1098 mOsm/L", "Draws water, then dense diuresis"],
+            ["5% Human Albumin", "130–160", "130–160", "<2", "Albumin 50 g/L (COP ~20 mmHg)", "6.7–7.3", "300 mOsm/L", "1000 mL (1:1 Ratio)"],
+            ["20% Human Albumin", "130–160", "130–160", "<2", "Albumin 200 g/L (COP ~100 mmHg)", "6.7–7.3", "300 mOsm/L", "Draws 3.5–5x volume into plasma"]
+          ]
+        }
+      },
+      {
+        h: "Fluid Compartment Distribution Dynamics & The Endothelial Glycocalyx",
+        diagram: "fluid-compartments",
+        b: "Intravenous fluid distribution is governed by Total Body Water (TBW) compartmental architecture and the Starling principle as modified by the endothelial glycocalyx layer:\n\n" +
+           "1. Compartmental Volumes in a 70-kg Adult:\n" +
+           "• Total Body Water (TBW): 60% of total body weight = 42 Litres.\n" +
+           "• Intracellular Fluid (ICF): 2/3 of TBW = 28 Litres (67%). Major cation: K⁺ (140 mmol/L). High protein and organic phosphate content. Cell membrane impermeable to sodium due to active Na⁺/K⁺-ATPase pump extrusion.\n" +
+           "• Extracellular Fluid (ECF): 1/3 of TBW = 14 Litres (33%). Major cation: Na⁺ (140 mmol/L), anion: Cl⁻ (100 mmol/L) and HCO3⁻ (24 mmol/L).\n" +
+           "  - Interstitial Fluid (ISF): 3/4 of ECF = 10.5 Litres (25% of TBW). Gel matrix acting as the crystalloid reservoir.\n" +
+           "  - Intravascular Plasma Volume: 1/4 of ECF = 3.5 Litres (8% of TBW). The target compartment for hemodynamic resuscitation.\n\n" +
+           "2. Pharmacokinetic Distribution Rules for 1000 mL Infusions:\n" +
+           "• D5W (Pure Free Water): Distributes uniformly across all 42 L of TBW. Plasma fraction = 3.5 / 42 = 1/12th (~83 mL). Interstitial fraction = 10.5 / 42 = 1/4th (~250 mL). Intracellular fraction = 28 / 42 = 2/3rds (~667 mL). Completely ineffective for plasma volume resuscitation!\n" +
+           "• Isotonic Crystalloid (RL / Saline / Plasma-Lyte): Excluded from ICF by Na⁺/K⁺-ATPase; distributes exclusively throughout the 14 L ECF space. Plasma fraction = 3.5 / 14 = 1/4th (~250 mL). Interstitium receives 10.5 / 14 = 3/4ths (~750 mL). Explains the classical 3:1 to 4:1 crystalloid-to-blood replacement ratio!\n" +
+           "• 5% Human Albumin (Iso-oncotic Colloid): Albumin molecules (~66.5 kDa) are retained behind the intact endothelial glycocalyx, generating an oncotic pressure (COP ~20 mmHg) balancing plasma hydrostatic pressure. 1000 mL infused stays 100% inside the intravascular compartment (1:1 expansion ratio).\n" +
+           "• 20% / 25% Human Albumin (Hyper-oncotic Colloid): COP of 70–100 mmHg creates a massive transcapillary oncotic gradient that sucks fluid from the oedematous interstitium into the intravascular space (drawing 3.5 to 5 mL of ISF per mL infused). 100 mL infused yields ~450–500 mL plasma expansion.\n\n" +
+           "3. The Revised Starling Principle & Glycocalyx Degradation:\n" +
+           "The revised Starling equation reveals that fluid filtration occurs across the endothelial glycocalyx layer (EGL) into the subglycocalyx space, not the bulk interstitium. There is virtually no interstitial fluid reabsorption back into venous capillaries; fluid returns via lymphatic flow. Hypervolaemic crystalloid fluid loading stretches the atria, releasing Atrial Natriuretic Peptide (ANP), which rapidly shears and sheds the fragile glycocalyx, causing accelerated capillary leak and widespread interstitial tissue oedema."
+      },
+      {
+        h: "Colloid Solutions: Human Albumin vs Synthetic Colloids",
+        b: "Colloids consist of high-molecular-weight substances suspended in a carrier solution, exerting an oncotic pressure that limits extravasation across healthy capillaries:\n\n" +
+           "1. Human Serum Albumin (5% and 20% / 25%):\n" +
+           "• Derivation & Safety: Prepared by Cohn cold ethanol fractionation of pooled human donor plasma, followed by pasteurization at 60°C for 10 hours. This pasteurization process eliminates all risk of viral transmission, including HIV, Hepatitis B, Hepatitis C, and lipid-enveloped viruses.\n" +
+           "• 5% Albumin (Iso-oncotic): 50 g/L albumin. Colloid oncotic pressure ~20 mmHg. 500 mL infusion provides ~500 mL plasma volume expansion without pulling fluid from the interstitium.\n" +
+           "• 20% / 25% Albumin (Hyper-oncotic): 200–250 g/L albumin. Colloid oncotic pressure ~70–100 mmHg. Rapidly mobilizes 3.5 to 5 times its volume from the interstitial fluid into the circulating blood volume within 30–60 minutes.\n" +
+           "• Standard Clinical Indications (Evidence-Based):\n" +
+           "  - Large-Volume Paracentesis (>5 Litres of ascites removed): Administer 8 grams of albumin (40 mL of 20% albumin) per litre of ascites removed to prevent Paracentesis-Induced Circulatory Dysfunction (PICD), progressive renal failure, and hyponatraemia.\n" +
+           "  - Spontaneous Bacterial Peritonitis (SBP): 1.5 g/kg IV within 6 hours of diagnosis, followed by 1.0 g/kg on day 3 (reduces renal impairment and in-hospital mortality from 29% to 10%).\n" +
+           "  - Hepatorenal Syndrome (HRS-AKI): 1 g/kg (max 100 g) on day 1, followed by 20–40 g/day in combination with vasoconstrictor therapy (Terlipressin or Noradrenaline).\n" +
+           "  - Refractory Septic Shock Resuscitation: Surviving Sepsis Campaign (2021) recommends adding 5% albumin when patients require large volumes of crystalloids (>30–40 mL/kg).\n" +
+           "• CONTRAINDICATION in Traumatic Brain Injury (TBI): The landmark SAFE-TBI randomized controlled trial demonstrated significantly higher 24-month mortality and elevated intracranial pressure in TBI patients resuscitated with albumin compared to normal saline, due to altered blood-brain barrier permeability permitting albumin extravasation and worsening cerebral oedema.\n\n" +
+           "2. Synthetic Colloids (Gelatins & Hydroxyethyl Starches):\n" +
+           "• Hydroxyethyl Starches (HES 130/0.4 - Voluven, Tetraspan):\n" +
+           "  - Synthetic modified amylopectin polymer designed for prolonged oncotic persistence.\n" +
+           "  - BLACK-BOX WARNINGS & REGULATORY WITHDRAWAL: Suspended and black-box warned by the US FDA and European Medicines Agency (EMA) based on landmark multicentre randomized trials (6S, CHEST, CRYSTMAS, VISEP). Evidence showed:\n" +
+           "    1. Significant increase in Acute Kidney Injury requiring renal replacement therapy (dialysis).\n" +
+           "    2. Acquired coagulopathy: HES coats platelets, reduces GP IIb/IIIa expression, and accelerates clearance of Factor VIII and von Willebrand Factor (vWF), inducing severe bleeding.\n" +
+           "    3. Intractable pruritus due to permanent reticuloendothelial system storage in skin macrophages.\n" +
+           "• Succinylated Gelatins (Gelofusine, Haemaccel):\n" +
+           "  - Bovine collagen breakdown products (mean MW ~30–35 kDa). Half-life 2–4 hours.\n" +
+           "  - Anaphylactoid Reactions: Carries the highest incidence of life-threatening hypersensitivity reactions (1 in 1000 infusions) among all intravenous fluids due to direct mast cell/basophil degranulation. Provides transient volume expansion due to rapid renal excretion."
+      },
+      {
+        h: "Blood Component Therapy: Products, Storage, Doses & Transfusion Triggers",
+        b: "Modern transfusion medicine practices component therapy, transfusing only the specific blood element required by the patient. All parameters crosschecked with AABB and ASA guidelines:\n\n" +
+           "1. Packed Red Blood Cells (PRBCs):\n" +
+           "• Content & Composition:\n" +
+           "  - Volume: ~250–350 mL per unit.\n" +
+           "  - Hematocrit: 55% to 65%.\n" +
+           "  - Contains: Erythrocytes, minimal plasma (~20–30 mL), white blood cell stroma (unless leukoreduced), ~200–250 mg elemental iron, and 100 mL additive preservative solution (SAGM: Saline-Adenine-Glucose-Mannitol or AS-1/AS-3).\n" +
+           "• Storage Specifications:\n" +
+           "  - Temperature: 1°C to 6°C in monitored blood bank refrigerators.\n" +
+           "  - Shelf-life: 35 days in CPDA-1; 42 days in SAGM / AS-1.\n" +
+           "  - Infusion rule: Must commence within 30 minutes of issue and complete strictly within 4 hours.\n" +
+           "• Dose & Clinical Increment: 1 unit PRBC raises haemoglobin by ~1.0 g/dL (10 g/L) and haematocrit by ~3% in an average 70-kg non-bleeding adult.\n" +
+           "• Transfusion Triggers (AABB 2023 Guidelines):\n" +
+           "  - Restrictive Strategy (Hb <7.0 g/dL): Standard for haemodynamically stable hospitalised adult patients, including critically ill ICU patients (TRICC trial) and stable post-operative surgical patients.\n" +
+           "  - Restrictive Strategy (Hb <7.5–8.0 g/dL): Patients undergoing orthopaedic surgery, cardiac surgery, or with pre-existing cardiovascular disease (FOCUS, TRACS trials).\n" +
+           "  - Hb <8.0 g/dL: Acute coronary syndrome / myocardial ischaemia (REALITY trial, MINT trial).\n" +
+           "  - Clinical judgment override: Active major haemorrhage, shock, or acute physiological signs of tissue hypoxia (tachycardia, lactic acidosis, central venous oxygen saturation ScvO2 <70%) irrespective of numerical Hb.\n" +
+           "• Filter & Administration: Standard 170–260 μm blood administration set; ABO and RhD compatible.\n\n" +
+           "2. Platelets (Random Donor Pooled vs Single Donor Apheresis):\n" +
+           "• Types & Content:\n" +
+           "  - Single Donor Apheresis Platelet (SDAP): Harvested from one donor via apheresis. Contains ≥3.0 × 10¹¹ platelets in 200–300 mL plasma. Equivalent to a full adult dose (4–6 pooled units).\n" +
+           "  - Whole Blood-Derived Pooled Platelets: 4 to 6 units of whole blood platelet concentrates pooled together into 200–300 mL plasma (each single whole blood unit contains ≥5.5 × 10¹⁰ platelets).\n" +
+           "• Storage Specifications:\n" +
+           "  - Temperature: 20°C to 24°C (ROOM TEMPERATURE) with CONTINUOUS GENTLE AGITATION on a mechanical platelet agitator.\n" +
+           "  - Shelf-life: STRICT 5 DAYS maximum (extended to 7 days only with pathogen inactivation or bacterial detection systems).\n" +
+           "  - BACTERIAL SEPSIS RISK: Because platelets are stored at room temperature, they carry the highest risk of bacterial contamination and transfusion-transmitted sepsis (1 in 2000–3000 units; primarily Staphylococcus aureus, epidermidis, and Serratia/Enterobacteriaceae).\n" +
+           "• Dose & Clinical Increment: 1 adult therapeutic dose (1 apheresis unit or 1 pool of 5 whole blood units) increases the platelet count by 30,000 to 50,000 / μL in a 70-kg adult at 1 hour post-transfusion.\n" +
+           "• Clinical Transfusion Triggers:\n" +
+           "  - <10,000 / μL: Prophylactic trigger in stable patients with bone marrow failure without bleeding.\n" +
+           "  - <20,000 / μL: Prophylactic trigger in marrow failure with fever, sepsis, or mucositis.\n" +
+           "  - <50,000 / μL: Major elective surgery, active major bleeding, lumbar puncture, or epidural catheter placement.\n" +
+           "  - <100,000 / μL: Neurosurgery (intracranial or spinal surgery) and ocular surgery involving the posterior segment.\n" +
+           "  - Any platelet count: Documented severe qualitative platelet dysfunction (e.g., cardiopulmonary bypass platelet exhaustion, antiplatelet drug-induced intracranial haemorrhage with emergency craniotomy).\n" +
+           "• Administration: Standard 170–260 μm filter; NEVER refrigerate; NEVER pass through a rapid blood warmer.\n\n" +
+           "3. Fresh Frozen Plasma (FFP):\n" +
+           "• Content & Composition:\n" +
+           "  - Volume: 200 to 300 mL per unit.\n" +
+           "  - Prepared from the liquid portion of whole blood, separated and frozen at ≤ -18°C within 8 hours of phlebotomy.\n" +
+           "  - Contains: All physiological clotting factors at normal concentrations (~1 IU/mL), including labile Factors V and VIII, albumin, protein C, protein S, antithrombin, and fibrinogen (1–2 mg/mL).\n" +
+           "• Storage Specifications:\n" +
+           "  - Frozen: ≤ -18°C for up to 12 months (or ≤ -65°C for up to 7 years).\n" +
+           "  - Thawed: Thawed in a regulated 37°C water bath over 30–45 minutes. Once thawed, stored at 1°C to 6°C and must be transfused within 24 hours (or up to 5 days as 'thawed plasma', during which Factors V and VIII decline by 20–40%).\n" +
+           "• Clinical Dose: 10 to 15 mL/kg (typically 3 to 4 units in an adult) to achieve a 20–30% increase in circulating coagulation factor levels.\n" +
+           "• Indications & Triggers:\n" +
+           "  - Active microvascular bleeding with documented coagulopathy: Prothrombin Time (PT) / INR >1.5–1.7, or activated Partial Thromboplastin Time (aPTT) >1.5 times control.\n" +
+           "  - Massive Transfusion Protocol (1:1:1 ratio pack).\n" +
+           "  - Urgent reversal of Warfarin anticoagulation when 4-Factor Prothrombin Complex Concentrate (PCC) is unavailable.\n" +
+           "  - Treatment of Thrombotic Thrombocytopenic Purpura (TTP) during therapeutic plasma exchange.\n" +
+           "  - Replacement of isolated congenital factor deficiencies for which no specific concentrate exists (e.g., Factor V deficiency).\n" +
+           "• INAPPROPRIATE USES (ABSOLUTELY CONTRAINDICATED):\n" +
+           "  - NEVER use for simple intravascular volume expansion (crystalloids/albumin are far safer).\n" +
+           "  - NEVER use for mild, non-bleeding INR elevations (INR 1.3–1.6 does NOT predict surgical bleeding and FFP fails to correct it).\n" +
+           "  - NEVER use for nutritional protein supplementation.\n" +
+           "• Compatibility: Must be ABO compatible with recipient red cells (RhD matching is not strictly required as plasma contains no cellular RBC stroma).\n\n" +
+           "4. Cryoprecipitate (Cryoprecipitated Antihaemophilic Factor):\n" +
+           "• Derivation & Content:\n" +
+           "  - Prepared by thawing 1 unit of FFP at 1°C to 6°C, centrifuging, and collecting the cold-insoluble precipitate.\n" +
+           "  - Volume: 10 to 20 mL per single unit.\n" +
+           "  - Adult Therapeutic Pool: Standard adult dose is 1 pool of 10 units (volume ~150–200 mL), providing:\n" +
+           "    • Fibrinogen (Factor I): ≥150 to 250 mg per single unit (Adult pool provides 2.0 to 2.5 grams of fibrinogen!).\n" +
+           "    • Factor VIII: 80 to 120 IU per unit.\n" +
+           "    • von Willebrand Factor (vWF): 40% to 70% of original plasma content.\n" +
+           "    • Factor XIII: 20% to 30% of original plasma content.\n" +
+           "    • Fibronectin.\n" +
+           "• Storage Specifications:\n" +
+           "  - Frozen: ≤ -18°C for up to 12 months.\n" +
+           "  - Thawed: Thawed at 37°C. Must be administered within 6 hours of thawing (or within 4 hours if pooled in an open system) to preserve Factor VIII activity.\n" +
+           "• Dose & Clinical Increment: 1 adult pool (10 units) raises the circulating fibrinogen level by approximately 0.5 to 1.0 g/L (50 to 100 mg/dL) in a 70-kg adult.\n" +
+           "• Clinical Indications & Targets:\n" +
+           "  - Hypofibrinogenaemia in active bleeding: Trigger is plasma fibrinogen <1.5 g/L in trauma, cardiac surgery, and general surgery.\n" +
+           "  - Obstetric Postpartum Haemorrhage (PPH): Higher trigger of fibrinogen <2.0 g/L (CRASH-3 / OBS-2 guidelines; pregnant baseline fibrinogen is 4–6 g/L, so <2 g/L represents critical depletion).\n" +
+           "  - Massive Transfusion Protocol guided by viscoelastic testing (ROTEM FIBTEM A10 <10 mm or TEG functional fibrinogen <400 dynes/cm²).\n" +
+           "  - Disseminated Intravascular Coagulation (DIC) with hypofibrinogenaemia.\n" +
+           "  - Congenital or acquired Factor XIII deficiency, dysfibrinogenaemia, or von Willebrand disease when specific concentrates are unavailable.\n\n" +
+           "5. Low-Titer O Whole Blood (LTOWB):\n" +
+           "• Content: ~500 mL of unseparated whole blood collected from Group O donors with verified low anti-A and anti-B IgM agglutinin titers (<1:256), preserved in CPD/CPDA-1. Provides RBCs, plasma factors, and functional cold platelets in physiological balance.\n" +
+           "• Storage: 1°C to 6°C for 21–35 days.\n" +
+           "• Indications: Frontline military battlefield damage control resuscitation and pre-hospital civilian major trauma shock protocols. Delivers immediate haemostatic resuscitation with reduced preservative and additive load compared to reconstituted component therapy.\n\n" +
+           "6. Factor Concentrates (4F-PCC & Fibrinogen Concentrate):\n" +
+           "• 4-Factor Prothrombin Complex Concentrate (4F-PCC - Kcentra / Beriplex):\n" +
+           "  - Lyophilized, virus-inactivated human plasma-derived concentrate containing Factors II, VII, IX, and X, plus natural anticoagulants Protein C and Protein S.\n" +
+           "  - Dosing for urgent Warfarin reversal: 25 to 50 IU/kg based on baseline INR (INR 2–4: 25 IU/kg; INR 4–6: 35 IU/kg; INR >6: 50 IU/kg; maximum dose 5000 IU). Administer concurrently with 5–10 mg IV Vitamin K.\n" +
+           "  - Superiority over FFP: Reconstitutes in ~100 mL volume (infused in 10–15 minutes vs 3–4 hours for 4 units FFP); requires NO blood group crossmatching; requires NO thawing delay; zero risk of volume overload (TACO) or TRALI; normalizes INR <1.3 within 30 minutes.\n" +
+           "• Fibrinogen Concentrate (Riastap / Fibryga):\n" +
+           "  - Highly purified, pasteurized, lyophilized human fibrinogen powder (1 g vial reconstituted in 50 mL sterile water).\n" +
+           "  - Dosing: Target Fibrinogen (g) = (Target [e.g. 2.0 g/L] - Measured [g/L]) × Plasma Volume (0.07 × wt × [1 - Hct]). Typically 2 to 4 grams IV bolus.\n" +
+           "  - Advantages: Exact known dosing, immediate reconstitution (no thawing delay), negligible volume load, and virus-inactivated."
+      },
+      {
+        h: "Blood Component Master Comparison Table",
+        table: {
+          headers: ["Blood Product", "Unit Volume", "Storage Temp & Life", "Core Contents", "Standard Dose", "Transfusion Trigger"],
+          rows: [
+            ["Packed RBCs (PRBCs)", "250–350 mL", "1°C to 6°C (35–42 days)", "Erythrocytes, Hct 55–65%, ~200 mg iron, SAGM", "1 Unit raises Hb 1 g/dL & Hct 3%", "Hb <7.0 g/dL (Restrictive); <8.0 g/dL (CAD/ACS)"],
+            ["Platelets (Apheresis SDAP)", "200–300 mL", "20°C–24°C + Agitation (5 Days)", "≥3.0×10¹¹ plts in plasma (Highest sepsis risk)", "1 Adult Dose raises count 30–50k/μL", "<50k (Surgery/Bleed); <100k (Neuro/Eye); <10k (Proph)"],
+            ["Fresh Frozen Plasma (FFP)", "200–300 mL", "≤ -18°C (12 mos); Thawed 24h at 1–6°C", "All clotting factors (1 IU/mL), V & VIII, Albumin", "10 to 15 mL/kg (3–4 units in adult)", "INR >1.5–1.7 with microvascular bleeding / MTP"],
+            ["Cryoprecipitate", "10–20 mL/unit (Pool: 150 mL)", "≤ -18°C (12 mos); Thawed 4–6h", "Fibrinogen (≥150 mg/u), FVIII, vWF, FXIII", "1 Pool (10 units) raises Fibrinogen 0.5–1.0 g/L", "Fibrinogen <1.5 g/L (<2.0 g/L in Obstetric PPH)"],
+            ["Whole Blood (LTOWB)", "~500 mL", "1°C to 6°C (21–35 days)", "RBCs, plasma factors, cold platelets, low anti-A/B", "1 Unit replaces full whole blood volume", "Exsanguinating military / civilian major trauma"],
+            ["4-Factor PCC (Kcentra)", "~100 mL (Powder)", "2°C to 25°C room temp", "Factors II, VII, IX, X, Protein C & S (Heparin trace)", "25–50 IU/kg based on baseline INR", "Urgent Warfarin reversal / INR >2 with life bleed"],
+            ["Fibrinogen Concentrate", "50 mL per 1g vial", "2°C to 25°C room temp", "Pure lyophilized human fibrinogen (Factor I)", "2 to 4 g IV bolus (guided by ROTEM FIBTEM)", "FIBTEM A10 <10 mm / Fibrinogen <1.5–2.0 g/L"]
+          ]
+        }
+      },
+      {
+        h: "Massive Transfusion Protocol (MTP), Damage Control & Viscoelastic Haemostasis",
+        diagram: "blood-products-guide",
+        b: "Massive transfusion in severe trauma, ruptured aortic aneurysms, or catastrophic obstetric haemorrhage requires aggressive Damage Control Resuscitation (DCR) to prevent the lethal triad (Hypothermia, Acidosis, and Coagulopathy):\n\n" +
+           "1. Definition of Massive Transfusion:\n" +
+           "• Classical: Transfusion of ≥10 units of PRBCs within 24 hours (equivalent to the patient's entire blood volume).\n" +
+           "• Contemporary / Dynamic: Transfusion of ≥4 units of PRBCs within 1 hour with anticipation of continued ongoing haemorrhage, OR replacement of >50% total blood volume within 3 hours.\n\n" +
+           "2. The 1:1:1 Balanced Ratio Strategy (PROPPR Trial):\n" +
+           "• Randomized clinical trial evidence (PROPPR trial, JAMA 2015) demonstrated that resuscitating with a 1:1:1 ratio of PRBCs : FFP : Platelets achieves earlier anatomical haemostasis and significantly reduces 24-hour exsanguination mortality compared to a 1:1:2 ratio.\n" +
+           "• Pack 1 Composition: 4 to 6 Units PRBCs + 4 Units FFP + 1 Adult Dose Platelets (Apheresis or 6-pack pool) + 1 Pool Cryoprecipitate (if fibrinogen <1.5 g/L).\n\n" +
+           "3. Essential Pharmacological & Physiological Adjuncts in MTP:\n" +
+           "• Tranexamic Acid (TXA):\n" +
+           "  - Dose: 1 gram IV bolus over 10 minutes within 3 hours of injury, followed by 1 gram IV infusion over 8 hours (CRASH-2 trial, CRASH-3 trial, WOMAN trial).\n" +
+           "  - Golden Rule: Must be initiated within 3 hours of injury. Administration delayed past 3 hours increases mortality due to altered fibrinolytic physiology.\n" +
+           "• Ionized Calcium Management & Citrate Toxicity:\n" +
+           "  - Mechanism: Citrate preservative in PRBCs and FFP chelates free ionized calcium (Ca²⁺). Normal liver metabolizes citrate into bicarbonate, but hypothermia, liver hypoperfusion, and rapid transfusion overwhelm clearance.\n" +
+           "  - Clinical consequence: Hypocalcaemia impairs myocardial contractility (hypotension, ventricular arrhythmias) and disables the tenase and prothrombinase coagulation enzyme complexes (calcium is Factor IV!).\n" +
+           "  - Rule: Administer 1 gram of Calcium Chloride (or 3 grams Calcium Gluconate) IV for every 4 units of citrated blood products infused. Maintain ionized Ca²⁺ >0.9–1.0 mmol/L.\n" +
+           "• Prevention of the Lethal Triad:\n" +
+           "  - Warm all fluids: Transfuse through rapid warming infusers (Level 1, Belmont FMS) delivering blood at 37°C–38°C. Hypothermia (<35°C) inhibits platelet glycoprotein binding and slows clotting enzyme kinetics by 10% per 1°C drop.\n" +
+           "  - Treat Acidosis: Maintain arterial pH >7.20. Severe acidosis (pH <7.10) cuts coagulation factor activity by >50%.\n\n" +
+           "4. Viscoelastic Testing (TEG 6s & ROTEM delta) Goal-Directed Algorithm:\n" +
+           "Viscoelastic testing evaluates whole blood clotting kinetics from initial platelet-fibrin strand formation through clot propagation, maximum clot firmness, and fibrinolysis within 15–20 minutes, replacing slow laboratory coagulation tests (PT/INR/aPTT):\n" +
+           "• Reaction Time (TEG R-time >10 min) / Clotting Time (ROTEM CT >80s):\n" +
+           "  - Diagnostic Defect: Coagulation factor deficiency or heparin presence.\n" +
+           "  - Targeted Therapy: Administer Fresh Frozen Plasma (FFP 10–15 mL/kg) or 4-Factor PCC (25–30 IU/kg). If heparin suspected, check protamine response.\n" +
+           "• Alpha Angle (TEG α <53°) / Clot Formation Time (ROTEM CFT >160s or FIBTEM A10 <10 mm):\n" +
+           "  - Diagnostic Defect: Fibrinogen deficiency and impaired fibrin mesh crosslinking.\n" +
+           "  - Targeted Therapy: Administer Cryoprecipitate (1 adult pool = 10 units) or Fibrinogen Concentrate (2–4 grams IV).\n" +
+           "• Maximum Amplitude (TEG MA <50 mm) / Maximum Clot Firmness (ROTEM MCF <45 mm):\n" +
+           "  - Diagnostic Defect: Platelet quantitative deficiency (<50,000/μL) or severe platelet receptor dysfunction (with normal FIBTEM).\n" +
+           "  - Targeted Therapy: Transfuse 1 Adult Dose of Platelets (Apheresis or Pooled).\n" +
+           "• Clot Lysis at 30 min (TEG LY30 >3%) / Maximum Lysis (ROTEM ML >15%):\n" +
+           "  - Diagnostic Defect: Systemic hyperfibrinolysis.\n" +
+           "  - Targeted Therapy: Administer Tranexamic Acid (TXA 1 g IV bolus)."
+      },
+      {
+        h: "Transfusion Complications, Differential Diagnosis & RBC Storage Lesion",
+        b: "Blood transfusion carries infectious, immunological, and non-immunological risks. The anaesthetist must immediately differentiate life-threatening pulmonary and haemolytic reactions:\n\n" +
+           "1. TRALI vs TACO Differential Diagnosis (The Critical Distinctions):\n" +
+           "• Transfusion-Related Acute Lung Injury (TRALI):\n" +
+           "  - Pathophysiology: Two-hit model. Recipient neutrophil priming (sepsis, surgery, trauma) followed by infusion of donor anti-HLA Class I/II or anti-HNA antibodies (primarily from multiparous female plasma donors in FFP/platelets). Neutrophil activation triggers extensive capillary leak and non-cardiogenic pulmonary oedema.\n" +
+           "  - Clinical Presentation: Acute dyspnoea, severe hypoxaemia (PaO2/FiO2 ≤300 mmHg), bilateral fluffy pulmonary infiltrates within 6 hours of transfusion, FEVER, and HYPOTENSION.\n" +
+           "  - Diagnostic Markers: Pulmonary Capillary Wedge Pressure (PCWP) is NORMAL (≤18 mmHg); Brain Natriuretic Peptide (BNP) is normal or <1.5× baseline; cardiac ejection fraction normal; non-cardiogenic oedema fluid has high protein content.\n" +
+           "  - Management: STOP transfusion immediately. Supportive mechanical lung-protective ventilation (low tidal volume 6 mL/kg, PEEP). DO NOT GIVE DIURETICS (patients are often intravascularly volume depleted; diuretics worsen hypotension and shock!). Leading cause of transfusion-related mortality.\n" +
+           "• Transfusion-Associated Circulatory Overload (TACO):\n" +
+           "  - Pathophysiology: Hydrostatic cardiogenic pulmonary oedema caused by excessive infusion volume or infusion rate outstripping the patient's cardiac compliance (elderly, heart failure, renal failure).\n" +
+           "  - Clinical Presentation: Acute dyspnoea, tachypnoea, orthopnoea, HYPERTENSION (widened pulse pressure), tachycardia, jugular venous distension (JVD), S3 gallop, peripheral oedema, afebrile.\n" +
+           "  - Diagnostic Markers: PCWP is ELEVATED (>18 mmHg); BNP is markedly elevated (>1.5× baseline or post-transfusion BNP/pre-transfusion BNP ratio >1.5); low protein content in tracheal aspirate; responds dramatically to diuresis.\n" +
+           "  - Management: STOP transfusion immediately. Sit patient upright, deliver supplemental oxygen, administer intravenous Loop Diuretics (Furosemide 20–40 mg IV), and afterload-reducing vasodilators (Nitroglycerin) if hypertensive.\n\n" +
+           "2. Acute Haemolytic Transfusion Reaction (AHTR):\n" +
+           "• Etiology: Clerical error leading to ABO blood group incompatibility. Recipient pre-formed anti-A or anti-B IgM isoagglutinins bind donor erythrocytes, triggering classical complement activation (membrane attack complex C5b-9) and fulminant intravascular haemolysis.\n" +
+           "• Presentation under General Anaesthesia: The classic awake triad of fever, lumbar back pain, and chills is MASKED. Intraoperatively, the ONLY signs are:\n" +
+           "  1. Unexplained refractory hypotension / shock.\n" +
+           "  2. Microvascular oozing and diffuse bleeding across surgical fields (rapid Disseminated Intravascular Coagulation - DIC).\n" +
+           "  3. Dark red/brown port-wine urine in the Foley catheter drainage bag (free hemoglobinuria).\n" +
+           "• Immediate Action Protocol:\n" +
+           "  - STOP TRANSFUSION IMMEDIATELY and disconnect tubing.\n" +
+           "  - Send donor unit and post-transfusion recipient blood and urine samples to blood bank for repeat crossmatch, direct antiglobulin test (DAT / Coombs), free plasma haemoglobin, haptoglobin, and LDH.\n" +
+           "  - Aggressive IV hydration with 0.9% Normal Saline to maintain urine output >100–200 mL/hour, preventing intratubular precipitation of acid haematin crystals and acute tubular necrosis (ATN).\n" +
+           "  - Administer Furosemide or Mannitol for forced diuresis if volume restored; support blood pressure with vasopressors.\n\n" +
+           "3. Febrile Non-Haemolytic Transfusion Reaction (FNHTR):\n" +
+           "• Mechanism: Recipient pre-formed cytotoxic antibodies against donor white blood cell HLA antigens, or infusion of pyrogenic cytokines (IL-1β, IL-6, TNF-α) that accumulated in donor units during storage.\n" +
+           "• Manifestation: Rise in body temperature of ≥1.0°C (or ≥2.0°F) during or within 2 hours of transfusion, accompanied by chills and rigors, without haemolysis or hypotension.\n" +
+           "• Prevention: Pre-storage leukoreduction of donor red cells and platelets reduces the incidence of FNHTR by >80%, while also preventing CMV transmission and HLA alloimmunization.\n\n" +
+           "4. The Red Blood Cell Storage Lesion & Hyperkalaemia:\n" +
+           "During 35 to 42 days of hypothermic storage (1°C–6°C), RBCs undergo progressive biochemical and structural decay:\n" +
+           "• Depletion of 2,3-Diphosphoglycerate (2,3-DPG): Falls to near zero within 14 days of storage, causing a marked LEFTWARD shift in the oxyhaemoglobin dissociation curve (P50 decreases), which impairs oxygen unloading to peripheral tissues (takes 24–48 hours in vivo to regenerate 2,3-DPG).\n" +
+           "• Depletion of Adenosine Triphosphate (ATP): Causes loss of biconcave disk morphology, membrane blebbing, spherocytosis, and loss of cellular deformability, leading to microvascular capillary sludging.\n" +
+           "• Potassium Leakage: Cold storage inactivates membrane Na⁺/K⁺-ATPase pumps while passive K⁺ efflux continues unabated. Extracellular potassium in stored PRBC supernatant rises from 4–5 mmol/L on day 0 up to 30 to 50 mmol/L by day 35–42! Rapid massive transfusion or direct central infusion of older blood can precipitate sudden lethal hyperkalaemic cardiac arrest (peaked T-waves, sine-wave QRS, ventricular fibrillation/asystole), especially in infants and paediatric cardiac surgery.\n" +
+           "• Acidosis: Intracellular glycolysis continues anaerobically, generating lactic acid. Supernatant pH drops from 7.0 to 6.5–6.8 by expiration.\n" +
+           "• Free Hemoglobin & Microparticles: Scavenge endogenous Nitric Oxide (NO), triggering systemic and pulmonary vasoconstriction, endothelial dysfunction, and platelet aggregation."
+      }
     ],
     references: [
+      "Miller's Anesthesia, 10th ed., Ch. 52: Fluid and Electrolyte Physiology & Blood Component Therapy, Elsevier, 2025/2026.",
+      "Barash Clinical Anesthesia, 9th ed., Ch. 16: Fluid Management and Transfusion Medicine, Wolters Kluwer, 2024/2025.",
+      "Stoelting's Pharmacology and Physiology in Anesthetic Practice, 5th ed., Ch. 34: Fluids and Blood Products, 2021.",
+      "American Association of Blood Banks (AABB): Clinical Practice Guidelines on Red Blood Cell Transfusion Thresholds (JAMA 2023).",
       "Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021 (Crit Care Med 2021).",
       "National Institute for Health and Care Excellence (NICE) Guideline [NG24]: Intravenous fluid therapy in adults in hospital (updated 2023).",
-      "American Association of Blood Banks (AABB): Clinical Practice Guidelines on Red Blood Cell Transfusion Thresholds (JAMA 2023).",
-      "Miller's Anesthesia, 10th ed., Ch. 52: Fluid and Electrolyte Physiology & Blood Component Therapy, Elsevier, 2025/2026."
+      "PROPPR Randomized Clinical Trial: Transfusion of Plasma, Platelets, and Red Blood Cells in a 1:1:1 vs a 1:1:2 Ratio (JAMA 2015)."
     ]
   });
 
-  topics.push({
+topics.push({
     id: "malignant-hyperthermia",
     cat: "anaesthesia",
     name: "Malignant Hyperthermia",
