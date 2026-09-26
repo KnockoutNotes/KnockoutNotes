@@ -45,29 +45,28 @@
   <div class="spatial-world">
     <main class="container st-page" id="stStage">
 
-      <!-- Persistent controls: Master Table of Contents (3-dash) & Fullscreen -->
-      <button type="button" class="st-master-menu-btn" id="stMasterMenuBtn" aria-label="Open Master Table of Contents" title="Master Table of Contents (☰)">☰</button>
-      <button type="button" class="st-fs-fixed" id="stFullscreen" aria-pressed="false" aria-label="Toggle full screen" title="Toggle Full Screen (⛶)">⛶</button>
-
-      <!-- Master Table of Contents Drawer Modal -->
-      <div class="st-drawer-overlay" id="stMasterOverlay" hidden></div>
-      <aside class="st-master-drawer" id="stMasterDrawer" hidden aria-label="Master Table of Contents">
-        <div class="st-drawer-header">
-          <div class="st-drawer-brand">
-            <span class="st-drawer-icon">📑</span>
-            <div>
-              <strong class="st-drawer-heading">Master Directory</strong>
-              <span class="st-drawer-sub">KnockoutNotes Study Syllabus (31 Topics • 51 Drugs)</span>
-            </div>
+      <!-- Master Syllabus Index (Minimal, in-flow at top of page — naturally scrolls away on scroll down) -->
+      <nav class="st-top-index" id="stTopIndex" aria-label="Master Syllabus Index">
+        <div class="st-top-index-bar">
+          <button type="button" class="st-top-index-btn" id="stIndexToggle" aria-expanded="false" aria-controls="stIndexPanel">
+            <span class="st-index-icon">☰</span>
+            <span class="st-index-title">Master Syllabus Index</span>
+            <span class="st-index-count">(32 Topics • 51 Drugs)</span>
+            <span class="st-index-chevron" id="stIndexChevron">▾</span>
+          </button>
+          <div class="st-top-index-actions">
+            <button type="button" class="st-top-fs-btn" id="stFullscreen" aria-pressed="false" aria-label="Toggle full screen" title="Toggle Full Screen (⛶)">⛶ Fullscreen</button>
           </div>
-          <button type="button" class="st-drawer-close" id="stMasterClose" aria-label="Close directory">✕</button>
         </div>
-        <div class="st-drawer-search-wrap">
-          <span class="st-drawer-search-icon">🔍</span>
-          <input type="search" id="stMasterSearch" placeholder="Quick find topic or drug (e.g. TOF, Scoline, ECMO)..." autocomplete="off" aria-label="Search syllabus">
+        <div class="st-top-index-panel" id="stIndexPanel" hidden>
+          <div class="st-index-filter-wrap">
+            <span class="st-index-filter-icon">🔍</span>
+            <input type="search" id="stIndexFilter" class="st-index-filter-input" placeholder="Type to filter topics or drugs (e.g. TOF, Scoline, PFT, Cricoid)..." autocomplete="off" aria-label="Filter master index">
+            <span class="st-index-filter-stats" id="stIndexStats">83 entries</span>
+          </div>
+          <div class="st-index-content" id="stIndexContent"></div>
         </div>
-        <div class="st-drawer-body" id="stMasterBody"></div>
-      </aside>
+      </nav>
 
       <!-- ================= LISTING VIEW ================= -->
       <section id="stList" class="st-view" aria-labelledby="stTitle">

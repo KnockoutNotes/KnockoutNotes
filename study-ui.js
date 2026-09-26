@@ -156,17 +156,10 @@
     // view ever does, and each viewer is its own WebGL context. Topics and
     // drugs without any diagram keep the shared category icon.
     const structRec = window.KN_STRUCTURES && window.KN_STRUCTURES[item.id];
-    const has3d = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[item.id];
-    let iconHTML;
-    if (has3d) {
-      iconHTML = `<div class="st-tile-molecule" data-drug="${esc(item.id)}">${structRec ? `<div class="st-tile-structure">${structRec.svg}</div>` : `<div class="st-tile-fallback-icon">${catIconHTML(item.cat, cat)}</div>`}</div>`;
-    } else if (structRec) {
-      iconHTML = `<div class="st-tile-structure">${structRec.svg}</div>`;
-    } else {
-      iconHTML = catIconHTML(item.cat, cat);
-    }
-    const hasVisual = structRec || has3d;
-    return `<a class="st-tile st-reveal${hasVisual ? " st-tile-has-structure" : ""}" href="?item=${item.id}" data-item="${item.id}" data-cat="${item.cat}" aria-label="${esc(item.name)}">
+    const iconHTML = structRec
+      ? `<div class="st-tile-structure">${structRec.svg}</div>`
+      : catIconHTML(item.cat, cat);
+    return `<a class="st-tile st-reveal${structRec ? " st-tile-has-structure" : ""}" href="?item=${item.id}" data-item="${item.id}" data-cat="${item.cat}" aria-label="${esc(item.name)}">
       <div class="st-tile-icon" aria-hidden="true">${iconHTML}</div>
       <div class="st-tile-info">
         <span class="st-tile-cat">${esc(cat.label)}</span>
@@ -176,70 +169,9 @@
     </a>`;
   }
 
-  // Poster-tile 3D molecule mounting. A grid can show far more tiles at
-  // once than the single detail view ever does, and every mounted viewer is
-  // its own WebGL context (browsers cap concurrent contexts at roughly 16),
-  // so tiles mount their rotating viewer only while actually on/near screen
-  // and dispose it the moment they scroll out — capping live contexts to
-  // whatever's visible, not whatever's in the DOM. rootMargin gives a small
-  // pre-mount buffer so tiles are already rotating by the time they're
-  // fully in view.
-  function mountTileMolecule(node) {
-    if (!node || !node.isConnected) return;
-    const drugId = node.getAttribute("data-drug");
-    const data = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[drugId];
-    if (!data) return;
-    if (typeof window.KNMountMolecule3D === "function") {
-      try {
-        window.KNMountMolecule3D(node, data, { fitMargin: 1.9 });
-      } catch (err) {
-        /* fallback 2D remains safely in place */
-      }
-    }
-  }
-
-  const tileMoleculeObserver = "IntersectionObserver" in window
-    ? new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          const node = entry.target;
-          if (entry.isIntersecting) {
-            mountTileMolecule(node);
-          } else if (typeof window.KNDisposeMolecule3D === "function") {
-            window.KNDisposeMolecule3D(node);
-          }
-        });
-      }, { rootMargin: "140px 0px" })
-    : null;
-
-  function mountAllVisibleTileMolecules() {
-    const grid = $("#stGrid");
-    if (!grid || grid.closest(".st-view")?.hidden) return;
-    grid.querySelectorAll(".st-tile-molecule[data-drug]").forEach((node) => {
-      const rect = node.getBoundingClientRect();
-      if (rect.bottom >= -140 && rect.top <= window.innerHeight + 140) {
-        mountTileMolecule(node);
-      }
-    });
-  }
-
-  function observeTileMolecules(root) {
-    if (!tileMoleculeObserver) return;
-    root.querySelectorAll(".st-tile-molecule[data-drug]").forEach((node) => {
-      tileMoleculeObserver.observe(node);
-      // If 3D module is already ready and tile is within viewport bounds, mount immediately
-      if (typeof window.KNMountMolecule3D === "function") {
-        const rect = node.getBoundingClientRect();
-        if (rect.bottom >= -140 && rect.top <= window.innerHeight + 140) {
-          mountTileMolecule(node);
-        }
-      }
-    });
-  }
-
   // Global listener for when study-molecule-3d.js completes loading and Three.js initialization.
-  // Fixes the page-load race condition where tiles initially evaluated before module readiness.
+  // Mounts 3D rotating model strictly in the detail reading view where only 1 viewer is active at a time.
   window.addEventListener("kn-molecule3d-ready", () => {
-    mountAllVisibleTileMolecules();
     const detail = $("#stDetail");
     if (detail && !detail.hidden) {
       mountStructureViewers(detail);
@@ -339,10 +271,6 @@
 
   function renderGrid() {
     const grid = $("#stGrid");
-    // Old tiles are about to be replaced/removed below — stop watching them
-    // (mounted viewers on nodes that leave the DOM still self-dispose via
-    // study-molecule-3d.js's own isConnected check on its next tick).
-    if (tileMoleculeObserver) tileMoleculeObserver.disconnect();
     const f = state.filter.trim().toLowerCase();
     const match = (item) => !f || [item.name, item.short, item.tagline, item.brand]
       .concat(item.tags || []).filter(Boolean).join(" ").toLowerCase().includes(f);
@@ -364,7 +292,6 @@
     });
     grid.innerHTML = total ? html : `<div class="st-empty">No results for “${esc(state.filter)}”.</div>`;
     observeReveal(grid);
-    observeTileMolecules(grid);
   }
 
   function showList() {
@@ -1291,126 +1218,104 @@
   /* ---------------------------------------------------------------- master directory drawer */
   let drawerOpen = false;
 
-  function renderMasterDrawer(filter = "") {
-    const body = $("#stMasterBody");
-    if (!body) return;
+  /* ---------------------------------------------------------------- top master index */
+  function renderTopIndex(filter = "") {
+    const content = $("#stIndexContent");
+    const stats = $("#stIndexStats");
+    if (!content) return;
     const f = filter.trim().toLowerCase();
 
-    if (f) {
-      const allItems = [...DATA.topics, ...DATA.drugs].filter((it) => {
-        return [it.name, it.short, it.tagline, it.brand].concat(it.tags || []).filter(Boolean).join(" ").toLowerCase().includes(f);
-      });
-      if (!allItems.length) {
-        body.innerHTML = `<div class="st-drawer-empty">No topics or drugs matching “${esc(filter)}”.</div>`;
-        return;
-      }
-      body.innerHTML = `<div class="st-drawer-cat-group">
-        <div class="st-drawer-cat-header">
-          <span class="st-drawer-cat-icon">🔍</span>
-          <span class="st-drawer-cat-label">Search Results (${allItems.length})</span>
-        </div>
-        <div class="st-drawer-items-list">
-          ${allItems.map((it) => {
-            const isDrug = isDrugCat(it.cat);
-            return `<a class="st-drawer-item" href="?item=${it.id}" data-item="${it.id}">
-              <span class="st-drawer-item-title">${esc(it.name)}</span>
-              <span class="st-drawer-item-badge ${isDrug ? "st-badge-drug" : "st-badge-topic"}">${isDrug ? "Drug" : "Topic"}</span>
-            </a>`;
-          }).join("")}
-        </div>
-      </div>`;
-      return;
-    }
-
+    let totalShown = 0;
     let html = "";
+
     DATA.categories.forEach((c) => {
-      const items = itemsInCat(c.id);
+      let items = itemsInCat(c.id);
+      if (f) {
+        items = items.filter((it) => {
+          return [it.name, it.short, it.tagline, it.brand].concat(it.tags || []).filter(Boolean).join(" ").toLowerCase().includes(f);
+        });
+      }
       if (!items.length) return;
+      totalShown += items.length;
       const isDrug = isDrugCat(c.id);
-      html += `<div class="st-drawer-cat-group">
-        <div class="st-drawer-cat-header">
-          <span class="st-drawer-cat-icon">${c.icon}</span>
-          <span class="st-drawer-cat-label">${esc(c.label)}</span>
-          <span class="st-drawer-cat-count">${items.length}</span>
+
+      html += `<div class="st-index-cat-group">
+        <div class="st-index-cat-header">
+          <span class="st-index-cat-icon">${c.icon}</span>
+          <span class="st-index-cat-name">${esc(c.label)}</span>
+          <span class="st-index-cat-count">${items.length}</span>
         </div>
-        <div class="st-drawer-items-list">
+        <ul class="st-index-links-list">
           ${items.map((it) => `
-            <a class="st-drawer-item" href="?item=${it.id}" data-item="${it.id}">
-              <span class="st-drawer-item-title">${esc(it.short || it.name)}</span>
-              <span class="st-drawer-item-badge ${isDrug ? "st-badge-drug" : "st-badge-topic"}">${isDrug ? "Drug" : "Topic"}</span>
-            </a>
+            <li class="st-index-link-item">
+              <a href="?item=${it.id}" data-item="${it.id}" class="st-index-link">
+                <span class="st-index-link-text">${esc(it.short || it.name)}</span>
+                ${isDrug ? `<span class="st-index-link-tag">Rx</span>` : ""}
+              </a>
+            </li>
           `).join("")}
-        </div>
+        </ul>
       </div>`;
     });
-    body.innerHTML = html;
+
+    content.innerHTML = totalShown
+      ? `<div class="st-index-cats-grid">${html}</div>`
+      : `<div class="st-index-empty">No topics or drugs matching “${esc(filter)}”.</div>`;
+
+    if (stats) stats.textContent = `${totalShown} entries`;
   }
 
-  function openMasterDrawer() {
-    const drawer = $("#stMasterDrawer");
-    const overlay = $("#stMasterOverlay");
-    const search = $("#stMasterSearch");
-    if (!drawer || !overlay) return;
-    drawer.hidden = false;
-    overlay.hidden = false;
-    void drawer.offsetWidth;
-    drawer.classList.add("st-open");
-    overlay.classList.add("st-open");
-    drawerOpen = true;
-    renderMasterDrawer(search ? search.value : "");
-    if (search) search.focus();
-  }
+  function initTopIndex() {
+    const toggleBtn = $("#stIndexToggle");
+    const panel = $("#stIndexPanel");
+    const filterInput = $("#stIndexFilter");
+    const chevron = $("#stIndexChevron");
+    if (!toggleBtn || !panel) return;
 
-  function closeMasterDrawer() {
-    const drawer = $("#stMasterDrawer");
-    const overlay = $("#stMasterOverlay");
-    if (!drawer || !overlay) return;
-    drawer.classList.remove("st-open");
-    overlay.classList.remove("st-open");
-    drawerOpen = false;
-    setTimeout(() => {
-      if (!drawerOpen) {
-        drawer.hidden = true;
-        overlay.hidden = true;
-      }
-    }, 280);
-  }
+    let indexOpen = false;
 
-  function initMasterDrawer() {
-    const btn = $("#stMasterMenuBtn");
-    const closeBtn = $("#stMasterClose");
-    const overlay = $("#stMasterOverlay");
-    const search = $("#stMasterSearch");
-
-    if (btn) {
-      btn.addEventListener("click", () => {
-        if (drawerOpen) closeMasterDrawer();
-        else openMasterDrawer();
-      });
+    function openIndex() {
+      panel.hidden = false;
+      toggleBtn.setAttribute("aria-expanded", "true");
+      toggleBtn.classList.add("st-open");
+      if (chevron) chevron.textContent = "▴";
+      indexOpen = true;
+      renderTopIndex(filterInput ? filterInput.value : "");
+      if (filterInput) filterInput.focus();
     }
-    if (closeBtn) closeBtn.addEventListener("click", closeMasterDrawer);
-    if (overlay) overlay.addEventListener("click", closeMasterDrawer);
 
-    if (search) {
-      search.addEventListener("input", () => {
-        renderMasterDrawer(search.value);
+    function closeIndex() {
+      panel.hidden = true;
+      toggleBtn.setAttribute("aria-expanded", "false");
+      toggleBtn.classList.remove("st-open");
+      if (chevron) chevron.textContent = "▾";
+      indexOpen = false;
+    }
+
+    toggleBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (indexOpen) closeIndex();
+      else openIndex();
+    });
+
+    if (filterInput) {
+      filterInput.addEventListener("input", () => {
+        renderTopIndex(filterInput.value);
       });
     }
 
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && drawerOpen) {
-        closeMasterDrawer();
-      }
+      if (e.key === "Escape" && indexOpen) closeIndex();
     });
 
-    // Delegated click handler for ANY [data-item] link (master drawer, cross-links, grid tiles)
+    // Delegated click handler for ANY [data-item] link (index, tiles, cross-links)
     document.addEventListener("click", (e) => {
       const a = e.target.closest("a[data-item]");
       if (!a) return;
       const id = a.getAttribute("data-item");
       if (!id || !itemById(id)) return;
       e.preventDefault();
-      closeMasterDrawer();
+      closeIndex();
       state.item = id;
       writeURL({ item: id });
       showDetail();
@@ -1450,7 +1355,7 @@
       const active = !!isFs();
       stage.classList.toggle("st-fullscreen-active", active);
       btn.setAttribute("aria-pressed", String(active));
-      btn.innerHTML = active ? "✕" : "⛶";
+      btn.innerHTML = active ? "✕ Exit" : "⛶ Fullscreen";
       btn.setAttribute("aria-label", active ? "Exit full screen" : "Enter full screen");
     }
     btn.addEventListener("click", () => {
@@ -1496,17 +1401,10 @@
   }
 
   /* ---------------------------------------------------------------- 3D card tilt */
-  // Same mouse-tracked "3D haptic" tilt the site already uses on
-  // resuscitation-chamber.js's flow nodes — reused here via event
-  // delegation (one pair of listeners covers every .st-card/.st-tile,
-  // including ones rendered after this runs) so the reading cards and
-  // poster tiles feel alive rather than flat, and pop toward the cursor
-  // instead of sitting dead on the page.
-  /* ---------------------------------------------------------------- 3D tile tilt */
-  // Mouse-tracked 3D tilt is strictly scoped to poster grid tiles (.st-tile)
-  // so reading cards (.st-card) in the detail view remain completely flat and stable.
+  // Mouse-tracked 3D tilt is strictly scoped to poster grid tiles (.st-tile) on desktop mouse only.
   function initCardTilt() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(hover: hover)").matches) return; // Desktop mouse only!
     const SELECTOR = ".st-tile";
     let rAF = null;
     let activeNode = null;
@@ -1558,7 +1456,7 @@
 
   function init() {
     bindListEvents();
-    initMasterDrawer();
+    initTopIndex();
     initFullscreen();
     initNavAutoHide();
     initCardTilt();
