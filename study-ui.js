@@ -277,6 +277,27 @@
     { label: "Barbiturates — Thiobarbiturate (Historic)", desc: "Sulfur-substituted barbiturate; rapid brain entry, long elimination half-life, burst suppression.", members: ["thiopental"] },
   ];
 
+  const LOCAL_CLASSES = [
+    { label: "Aminoamides — Intermediate Duration", desc: "Hepatic CYP1A2/3A4 clearance; fast onset, moderate lipophilicity, versatile infiltration and spinal use.", members: ["lidocaine", "mepivacaine"] },
+    { label: "Aminoamides — Long Duration", desc: "High lipid solubility and high protein binding (>95%); prolonged sensory block with differential motor sparing.", members: ["bupivacaine", "ropivacaine"] },
+    { label: "Aminoesters — Ultra-Short Duration", desc: "Extremely rapid hydrolysis by plasma pseudocholinesterase; minimal systemic toxicity and rapid recovery.", members: ["chloroprocaine"] },
+  ];
+
+  const VASOPRESSOR_CLASSES = [
+    { label: "Pure Alpha-1 Agonist", desc: "Selective arterial and venous vasoconstriction without direct beta inotropy; reflex bradycardia.", members: ["phenylephrine"] },
+    { label: "Mixed Alpha & Beta Agonists", desc: "Potent systemic vasoconstriction combined with direct inotropic support; first-line in distributive and anaphylactic shock.", members: ["norepinephrine", "epinephrine"] },
+    { label: "Inotropes & Inodilators", desc: "Selective beta-1 inotropy with mild peripheral beta-2 vasodilation; augment stroke volume with reduced LV afterload.", members: ["dobutamine"] },
+    { label: "Dopaminergic & Adrenergic Agonist", desc: "Dose-dependent receptor recruitment: low-dose dopaminergic (D1/D2) -> intermediate beta-1 -> high-dose alpha-1.", members: ["dopamine"] },
+    { label: "Non-Adrenergic Vasoconstrictor", desc: "Stimulates vascular V1a receptors independent of catecholamine pathways; rescues refractory vasodilatory shock.", members: ["vasopressin"] },
+  ];
+
+  const NSAIDS_CLASSES = [
+    { label: "Non-Selective COX Inhibitors — Pyrrolo-pyrrole & Acetic Acid", desc: "High-potency injectable non-steroidal analgesics providing opioid-sparing multimodal relief; inhibit COX-1 and COX-2.", members: ["ketorolac", "diclofenac"] },
+    { label: "Non-Selective COX Inhibitors — Propionic Acid", desc: "Balanced analgesic, antipyretic, and anti-inflammatory activity with reversible cyclooxygenase inhibition.", members: ["ibuprofen"] },
+    { label: "Selective COX-2 Inhibitors (Coxibs)", desc: "Spares gastroprotective COX-1 and platelet thromboxane A2; zero inhibition of platelet aggregation.", members: ["celecoxib"] },
+    { label: "Para-Aminophenol Derivatives", desc: "Central cyclooxygenase/peroxidase inhibition and indirect TRPA1 modulation; antipyretic & analgesic without platelet effect.", members: ["paracetamol"] },
+  ];
+
   function buildClassificationHTML(title, classList) {
     const groups = classList.map((g) => {
       const chips = g.members.map((id) => {
@@ -306,6 +327,15 @@
   function inductionClassificationHTML() {
     return buildClassificationHTML("Classification — by Chemical Class & Receptor Target", INDUCTION_CLASSES);
   }
+  function localClassificationHTML() {
+    return buildClassificationHTML("Classification — by Chemical Structure & Duration of Action", LOCAL_CLASSES);
+  }
+  function vasopressorClassificationHTML() {
+    return buildClassificationHTML("Classification — by Receptor Selectivity & Haemodynamic Mechanism", VASOPRESSOR_CLASSES);
+  }
+  function nsaidsClassificationHTML() {
+    return buildClassificationHTML("Classification — by Cyclooxygenase Selectivity & Chemical Class", NSAIDS_CLASSES);
+  }
 
   function renderGrid() {
     const grid = $("#stGrid");
@@ -327,6 +357,9 @@
       if (c.id === "opioids" && state.cat === "opioids" && !f) html += opioidClassificationHTML();
       if (c.id === "relaxants" && state.cat === "relaxants" && !f) html += relaxantClassificationHTML();
       if (c.id === "induction" && state.cat === "induction" && !f) html += inductionClassificationHTML();
+      if (c.id === "local" && state.cat === "local" && !f) html += localClassificationHTML();
+      if (c.id === "vasopressors" && state.cat === "vasopressors" && !f) html += vasopressorClassificationHTML();
+      if (c.id === "nsaids" && state.cat === "nsaids" && !f) html += nsaidsClassificationHTML();
       html += `<div class="st-grid">${list.map(tileHTML).join("")}</div>`;
     });
     grid.innerHTML = total ? html : `<div class="st-empty">No results for “${esc(state.filter)}”.</div>`;
@@ -468,17 +501,17 @@
   }
 
   function videoCardHTML(v) {
-    if (!v || !v.src) return "";
-    return `<section class="st-card st-reveal st-video-card" aria-label="${esc(v.title || "Educational Video")}">
+    if (!v || (!v.src && !v.externalUrl)) return "";
+    return `<section class="st-card st-reveal st-video-card" aria-label="${esc(v.title || "Video Demonstration")}">
       <h3>🎬 ${esc(v.title || "Video Demonstration")}</h3>
       <div class="st-card-body">
-        <div class="st-video-wrap">
+        ${v.src ? `<div class="st-video-wrap">
           <video class="st-video-player" controls playsinline preload="metadata">
             <source src="${esc(v.src)}" type="video/mp4">
             Your browser does not support HTML5 video playback.
           </video>
-        </div>
-        ${v.externalUrl ? `<p class="st-video-ext"><a href="${esc(v.externalUrl)}" target="_blank" rel="noopener"><span>↗</span> ${esc(v.externalLabel || "Watch on Instagram Reel")}</a></p>` : ""}
+        </div>` : ""}
+        ${v.externalUrl ? `<p class="st-video-ext" style="margin-top:10px;"><a href="${esc(v.externalUrl)}" target="_blank" rel="noopener" class="st-video-link-btn" style="display:inline-flex;align-items:center;gap:8px;padding:9px 18px;background:linear-gradient(135deg,#e11d48,#be123c);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;box-shadow:0 2px 10px rgba(225,29,72,0.35);"><span>▶</span> ${esc(v.externalLabel || "Watch on Instagram Reel")} ↗</a></p>` : ""}
       </div>
     </section>`;
   }
@@ -523,6 +556,7 @@
       }
 
       const tableHTML = s.table ? renderSectionTableHTML(s.table) : "";
+      const linkHTML = s.link ? `<div class="st-section-link-wrap" style="margin-top:14px;"><a href="${esc(s.link.url)}" class="st-pill st-pill-btn" style="display:inline-flex;align-items:center;gap:8px;padding:9px 18px;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;box-shadow:0 2px 10px rgba(37,99,235,0.35);">${esc(s.link.label || "Open Tool / Calculator")} ↗</a></div>` : "";
 
       const body = `${s.b ? paras(s.b) : ""}` +
         callout("example", "🧩 Worked example", s.example) +
@@ -530,7 +564,8 @@
         callout("pearl", "💡 Key point", s.pearl) +
         tableHTML +
         imagesHTML +
-        diagramHTML;
+        diagramHTML +
+        linkHTML;
       return card(s.h, body);
     }).join("");
     const videoHTML = t.video ? videoCardHTML(t.video) : "";

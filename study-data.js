@@ -414,10 +414,40 @@
     source: "Miller's Anesthesia, 10th ed., Ch. 28–30; Difficult Airway Society (DAS) 2015 guidelines for unanticipated difficult intubation; Dorsch & Dorsch, Understanding Anesthesia Equipment, 5th ed.; UpToDate \"Devices for difficult airway management in adults\" (2025).",
     sections: [
       { h: "Matching the device to the job, not just reaching for the familiar one", b: "It's easy, especially early in training, to think of airway devices as a single spectrum from 'easiest' (a face mask) to 'most invasive' (an endotracheal tube), with everything else sitting somewhere in between. A more useful way to think about it is that each device trades off airway protection, patient comfort, ease of insertion, and physiological disturbance differently, and the skill isn't knowing that endotracheal tubes exist — it's matching the right device to the right combination of aspiration risk, expected surgical duration and position, and how difficult you expect the airway itself to be." },
-      { h: "Laryngoscope Blades: Macintosh, Miller, McCoy & Specialised Geometries", b: "Direct laryngoscope blades remain the classic foundation of tracheal intubation, categorised into three primary functional families. The Macintosh curved blade (size 3 standard adult, size 4 large adult) is designed to be inserted into the right side of the mouth, sweeping the tongue to the left, with the tip advanced precisely into the vallecula anterior to the epiglottis; upward and forward lift of the handle stretches the hypoepiglottic ligament, indirectly elevating the epiglottis to expose the glottic aperture without contacting the sensitive posterior surface of the epiglottis. The Miller straight blade (size 2–3 adult, size 0–1 paediatric) is passed posterior to the epiglottis, directly scooping it upward to expose the vocal cords; it is specifically favoured in neonates and infants whose epiglottis is long, floppy, and omega-shaped (making indirect elevation ineffective), and in adults with a floppy, retroverted epiglottis or prominent upper incisors. The McCoy levering blade features a hinged distal tip controlled by a spring-loaded lever on the handle; depressing the lever flexes the tip 35° to 45° upward, directly lifting the vallecular ligament without requiring excessive force or atlanto-occipital neck extension — a classic viva favourite that reliably improves the Cormack-Lehane laryngoscopy view by one to two grades in patients with cervical spine immobility or stiff neck. Specialised blades include the Polio blade (blade mounted at 135° to handle to clear anterior chest or large breasts) and the Left-Handed Macintosh blade for patients with right-sided facial or oropharyngeal deformities." },
+      {
+        h: "Conventional Direct Laryngoscopes: Macintosh, Miller, McCoy & Specialised Blades",
+        b: "Direct laryngoscopy remains the cornerstone skill of endotracheal intubation, utilizing mechanical displacement of the tongue, soft palate, and pharyngeal tissues to establish a continuous direct optical line-of-sight from the operator's eye to the glottic aperture. Blades are classified into four major functional designs:\n\n1. Macintosh Curved Blade (Sizes 1 to 4; Mac 3 standard adult, Mac 4 tall adult):\nEngineered with a gently curved blade and a broad, Z-shaped vertical flange. Inserted into the right oral commissure, sweeping the tongue to the left side of the mouth. The spatula tip is seated precisely into the vallecula (the anatomical groove between the base of the tongue and the lingual surface of the epiglottis). An anterior-superior lift along the 45-degree axis of the handle stretches the median hypo-epiglottic ligament, indirectly tilting the epiglottis forward to expose the vocal cords. Key advantages include minimal dental trauma (wide tongue flange protects teeth), ample room for endotracheal tube passage, and avoidance of bruising the posterior epiglottis.\n\n2. Miller Straight Blade (Sizes 00 to 4; Miller 0/1 neonates, Miller 2/3 adults):\nFeatures a straight, low-profile blade with a small C-shaped or cylindrical flange. Instead of seating in the vallecula, the tip is passed directly beneath (posterior to) the laryngeal surface of the epiglottis, scooping and lifting the epiglottis directly upward. It is the gold standard for neonates and infants under 1 year of age, whose epiglottis is characteristically floppy, elongated, and U/omega-shaped, causing indirect elevation to fail. In adults, Miller blades are superior in patients with a long, retroverted epiglottis, floppy supraglottic redundant tissue, micrognathia (small receded mandible), prominent upper incisors, or narrow oral apertures.\n\n3. McCoy Levering / Flexing-Tip Blade (Sizes 2 to 4):\nDesigned by Dr. E.P. McCoy, this blade incorporates a hinged, pivoting distal tip controlled via a spring-loaded mechanical lever on the laryngoscope handle. Once the blade tip is positioned in the vallecula in standard fashion, depressing the lever flexes the tip 35 to 45 degrees anteriorly. This selectively elevates the hypo-epiglottic ligament and epiglottis without necessitating extension of the atlanto-occipital joint or applying excessive lifting force against the maxillary incisors. It reliably improves Cormack-Lehane laryngoscopic view by 1 to 2 grades in patients with rigid cervical spine pathology, trauma with in-line cervical stabilization collars, halo fixators, or ankylosing spondylitis.\n\n4. Specialised & Rescue Direct Blades:\n• Polio Blade: Positioned at an obtuse 135-degree angle relative to the handle, enabling insertion in patients with extreme morbid obesity, huge pendulous breasts, barrel chest, or patients confined in iron lungs/body jackets.\n• Wisconsin & Guedel Blades: Straight blades with tall, fully tubular or circular flanges providing an expansive, protected field of vision.\n• Left-Handed Macintosh: Mirror-image design for left-handed laryngoscopists or patients with right-sided facial deformities, maxillofacial trauma, or extensive oral resections.",
+        images: [
+          {
+            src: "assets/references/laryngoscope-macintosh-standard.jpg",
+            alt: "Standard direct Macintosh laryngoscope with curved blade and handle",
+            caption: "Direct Macintosh Laryngoscope: Conventional curved blade with standard adult handle and hook-on hinge connection (ISO 7376 standard green-system fiberoptic)."
+          },
+          {
+            src: "assets/references/laryngoscopy-mac3-sagittal-view.png",
+            alt: "Sagittal cross section view of direct laryngoscopy intubation with Macintosh 3 blade",
+            caption: "Sagittal Anatomical Placement: Macintosh 3 blade tip seated precisely in the vallecula, stretching the hypo-epiglottic ligament to indirectly elevate the epiglottis and expose the vocal cords."
+          },
+          {
+            src: "assets/references/laryngoscope-blades-set.jpg",
+            alt: "Direct laryngoscope blades set showing curved Macintosh and straight Miller blades",
+            caption: "Comparative Blade Geometries: Curved Macintosh blades alongside straight Miller blades illustrating differing tongue flange profiles and tip curvatures."
+          }
+        ]
+      },
       { h: "Endotracheal tubes: the gold standard for airway protection, with real variation underneath", b: "A cuffed endotracheal tube remains the only device on this list that reliably seals the trachea against aspiration, which is why it's the default choice whenever aspiration risk is significant (see Rapid Sequence Induction) or when the surgical position (prone, for instance) makes airway access difficult if something goes wrong mid-case. It's worth knowing that paediatric practice has genuinely shifted here — cuffed tubes are now used routinely even in young children, rather than the uncuffed tubes that were traditional for decades, provided the tube is correctly sized for the child and cuff pressure is actively monitored and kept below roughly 20–25 cmH2O, since an over-inflated cuff in a small trachea can cause real mucosal ischaemia. Beyond the standard tube, there's a whole family of specialised designs worth recognising: reinforced (armoured) tubes that resist kinking when the head is turned or the neck flexed; preformed RAE tubes, bent to route the connector away from the surgical field for ENT or ophthalmic cases; double-lumen tubes, which let you ventilate each lung independently for thoracic surgery requiring one-lung ventilation; and laser-resistant tubes, built to reduce fire risk during airway laser surgery." },
       { h: "Supraglottic Airways Overview & Generational Distinction", b: "A supraglottic airway device (SAD) sits above the vocal cords rather than passing through them, causing less physiological disturbance at insertion (less hypertensive/tachycardic response, less coughing) and generally requiring less depth of anaesthesia to tolerate than an endotracheal tube. For a complete deep-dive on First, Second, and Third Generation devices, the i-gel anatomical breakdown, and manufacturer sizing charts, explore the dedicated Laryngeal Mask Airways (LMA) & Supraglottic Airway Devices module in this equipment section." },
-      { h: "Videolaryngoscopy: not just a rescue tool anymore", b: "For a long time, videolaryngoscopes were thought of purely as a rescue device, reached for only once direct laryngoscopy had already failed. That thinking has genuinely shifted. Macintosh-geometry-blade videolaryngoscopes (the C-MAC is a widely used example) give you essentially the same view and technique as conventional direct laryngoscopy, just displayed on a screen rather than viewed directly — and current difficult-airway guidance increasingly supports using this style of videolaryngoscope as a reasonable first-line, routine tool rather than something reserved only for known difficult airways, partly because it lets an assistant see the same view and help in real time. Hyperangulated-blade videolaryngoscopes (the GlideScope and the McGrath X-blade are common examples) take a more angulated path around the tongue, giving a dramatically improved indirect view of the glottis in genuinely difficult airways — but here's the important catch: because the camera's line of sight curves sharply around the blade, it no longer matches the straight line along which a standard tube and stylet would need to travel to reach the cords. That's exactly why hyperangulated videolaryngoscopy requires a matching rigid or malleable stylet, shaped to follow the same curve as the blade — without it, you can have a perfect view of the cords on the screen and still be completely unable to actually get the tube through them.", example: "A trainee gets an excellent Grade 1 view of the cords on a hyperangulated videolaryngoscope but is using a straight stylet shaped for direct laryngoscopy, and struggles for a minute to advance the tube despite the perfect view — the tube keeps hitting the anterior tracheal wall or the epiglottis on the way in. The fix isn't a better view, it's a properly curved, matched stylet; a perfect picture on the screen is worthless if the tube can't actually follow the same path the camera did." },
+      {
+        h: "Videolaryngoscopy: Macintosh-Geometry, Hyperangulated & Channeled Systems",
+        b: "Videolaryngoscopy (VL) incorporates a miniature digital camera (CMOS or CCD sensor) and high-intensity LED light source at the distal tip of the blade, transmitting a magnified, high-resolution glottic image to an integrated or external digital display. By projecting the operator's vantage point directly to the hypopharynx, videolaryngoscopy eliminates the fundamental requirement of direct laryngoscopy — namely, aligning the oral, pharyngeal, and laryngeal axes into a single straight line. Modern VL devices fall into three distinct architectural classes:\n\n1. Standard Macintosh-Geometry VL (e.g., Karl Storz C-MAC, McGrath MAC, GlideScope Titanium Mac):\nPreserves the familiar curve and dimensions of a standard Macintosh blade. Allows the operator to perform conventional direct line-of-sight laryngoscopy while simultaneously presenting an identical digital image to assistants, learners, and supervisors on screen. Enables rapid rescue transition: if direct view is impaired by secretions or anatomy, the operator simply glances up at the monitor. Because the path to the glottis remains anatomically standard, endotracheal tubes can be placed using either a standard malleable stylet or an Eschmann bougie.\n\n2. Hyperangulated Blades (e.g., GlideScope GVL/LoPro, C-MAC D-Blade, McGrath X-Blade):\nEngineered with an aggressive 60-degree anatomical curve. The camera 'looks around the corner' over the base of the tongue without requiring neck extension, head manipulation, or external laryngeal pressure — the undisputed gold standard for severe anterior airways (Cormack-Lehane Grade 3/4) and suspected cervical spine trauma with rigid collars in place. CRITICAL CLINICAL HAZARD: Obtaining a Grade 1 view on the screen does NOT guarantee successful tube delivery! Because the optical axis curves 60 degrees around the tongue, standard straight tubes cannot reach the glottic plane. Hyperangulated VL MANDATES the routine use of a rigid, pre-curved stylet (e.g., GlideRite 60-degree rigid stylet) shaped to replicate the blade curvature.\n\n3. Channeled Videolaryngoscopes (e.g., Airtraq, King Vision Channeled Blade, Pentax AWS):\nFeatures an integrated guide track alongside the optical lens that cradles and directs the endotracheal tube directly toward the centre of the screen target. The operator maneuvers the blade until the vocal cords are centered in crosshairs, then gently advances the pre-loaded tube directly through the cords without needing any separate stylet or bougie. Primary limitation: requires adequate mouth opening (inter-incisor distance ≥ 18 mm) to accommodate the bulk of the channeled blade.",
+        image: {
+          src: "assets/references/videolaryngoscope-mcgrath.jpg",
+          alt: "McGrath video laryngoscope with integrated digital color display",
+          caption: "Compact Video Laryngoscope: McGrath MAC system featuring handle-mounted digital color display and sterile disposable blade with distal camera and LED illumination."
+        },
+        example: "A trainee achieves a perfect Cormack-Lehane Grade 1 view of the vocal cords using a hyperangulated GlideScope blade, but loads the endotracheal tube onto a straight malleable stylet. During delivery, the tube repeatedly impacts the anterior tracheal cartilage and cannot be advanced. Swapping to a rigid 60° GlideRite stylet immediately directs the tube tip upward into the glottic aperture, allowing successful intubation on the first attempt.",
+        pearl: "Hyperangulated videolaryngoscopes solve visualization, not tube delivery. Never attempt hyperangulated videolaryngoscopy without a matched, rigid 60-degree stylet or steerable tip catheter ready at hand."
+      },
       { h: "Eschmann Bougie & Introducers: The Gold-Standard Rescue Tools", b: "The Eschmann gum-elastic bougie (standard length 60 cm, outer diameter 15 French / 5.0 mm, braided polyester coated with resin) is the most proven rescue introducer in airway management. Its distal tip features a 35° anterior angulation (coudé tip) that facilitates navigation beneath an overhanging epiglottis when only a Cormack-Lehane Grade 2b or 3a view is visible. Two unambiguous tactile signs confirm correct tracheal entry: first, a distinct clicking or washboard sensation felt as the angled tip rubs against the anterior cartilaginous tracheal rings during advancement; second, a gentle hold-up resistance encountered between 24 and 40 cm as the tip impacts the narrow bifurcating carina or main bronchi. In sharp contrast, accidental oesophageal entry yields a smooth, frictionless glide with no clicks and no hold-up, advancing the entire 60 cm into the stomach. Once hold-up confirms tracheal placement, an endotracheal tube is lubricated and railroaded over the bougie, rotating the tube 90° counter-clockwise at the vocal cords to prevent the bevel from impinging on the right arytenoid cartilage. Hollow intubating catheters (e.g., Frova introducer, Aintree intubation catheter) feature a central lumen with removable Rapi-Fit adaptors that permit emergency jet oxygenation or capnography verification during railroading.", pearl: "Carina hold-up with an Eschmann bougie occurs at 24 to 40 cm from the incisors. If a bougie advances beyond 40 cm without encountering hold-up, it is in the oesophagus — withdraw and reposition immediately." },
       { h: "Airway Adjuncts & The Standard Difficult Airway Trolley", b: "Oropharyngeal (Guedel) airways prevent the relaxed tongue and epiglottis from obstructing the posterior pharyngeal wall; correct sizing is measured from the corner of the patient's mouth to the angle of the mandible (or tragus). Nasopharyngeal airways (NPAs) bypass upper airway collapse and are sized from the tip of the nose to the tragus of the ear (diameter estimated by patient's little finger), lubricated and passed along the floor of the nose perpendicular to the face (avoiding superior turbinate damage; contraindicated in base of skull fractures). Current major-society guidance, including the ASA 2022 difficult airway guidelines and DAS 2015 guidelines, mandates an immediately accessible difficult-airway trolley in every procedural location where anaesthesia is administered, stocked with: Macintosh blades (3 & 4), Miller blades, McCoy levering blade, videolaryngoscope with hyperangulated and standard blades, second-generation SADs (i-gel, ProSeal, Supreme), Eschmann bougies, Frova catheters, Aintree catheters, Magill forceps, and a designated emergency front-of-neck access (FONA) scalpel-bougie-tube cricothyroidotomy kit." }
     ]
@@ -597,6 +627,11 @@
 
   topics.push({
     id: "medical-gas-cylinders",
+    video: {
+      title: "Medical Gas Cylinders, Manifold Systems & Safety Pin Index",
+      externalUrl: "https://www.instagram.com/reel/Dcug4EQhr0h/?stkn=ZXl0ZGExMGY5cmd5",
+      externalLabel: "Watch Gas Cylinders Video Reel on Instagram"
+    },
     cat: "equipment",
     name: "Medical Gas Cylinders & Pipeline Supply Systems",
     short: "Gas Cylinders & PISS",
@@ -711,6 +746,10 @@
       },
       {
         h: "Validated Propofol & Remifentanil Models: Marsh, Schnider, Eleveld & Minto",
+        link: {
+          url: "calculators.html#tciCard",
+          label: "Open KnockoutNotes Interactive TCI Simulator & Calculator"
+        },
         b: "Clinical TCI relies on rigorously validated population pharmacokinetic models. For Propofol, three prominent models dominate clinical practice: 1) The Marsh Model (Diprifusor): Scales the central compartment volume strictly with total body weight (V₁ = 0.228 L/kg; fixed V₂ = 0.463 L/kg; fixed V₃ = 2.893 L/kg). Because it assumes linear weight scaling without age adjustment, it delivers relatively aggressive induction boluses and can overdose elderly patients. Original Marsh used a slow ke0 of 0.26 min⁻¹ (causing sluggish effect-site tracking); modern implementations utilize a modified ke0 of 1.2 min⁻¹ for rapid clinical equilibration. 2) The Schnider Model: Incorporates age, total weight, height, and sex to calculate lean body mass (LBM) using the James formula. It utilizes a fixed, small central compartment (V₁ = 4.27 L) and an age-dependent elimination rate, resulting in smaller, gentler induction boluses and lower maintenance rates in the elderly, with a faster ke0 of 0.456 min⁻¹. However, the James formula fails in morbidly obese patients (paradoxically under-calculating LBM at extreme weights). 3) The Eleveld Model (2018): A modern universal propofol model developed from over 10,000 venous and arterial samples spanning neonates to elderly centenarians (age 0 to 88 years, weight 0.68 to 160 kg). It utilizes fat-free mass (Al-Sallami formula) and allometric scaling (weight^0.75 for clearance), safely preventing both under-dosing in children and dangerous over-dosing in obese adults. For Remifentanil, the universal standard is the Minto Model, which incorporates age, sex, height, and weight to account for the dramatic 50% reduction in central clearance and V₁ that occurs between age 20 and 85.",
         example: "In an 80-year-old patient undergoing TIVA, the Marsh model (weight-only) would calculate an induction bolus identical to that for a 20-year-old of the same weight, risking severe post-induction hypotension. The Schnider or Eleveld models automatically adjust for age, decreasing the initial bolus by 30–50% to maintain haemodynamic stability."
       },
@@ -985,6 +1024,7 @@
   // ---------------- REVERSAL AGENTS ----------------
   addDrug({
     id: "sugammadex", cat: "reversal", name: "Sugammadex", brand: "Bridion",
+    classification: "Modified gamma-cyclodextrin • Selective relaxant binding agent (SRBA)",
     tagline: "It doesn't inhibit an enzyme like neostigmine does — it physically grabs the relaxant molecule and pulls it out of the picture",
     tags: ["Selective relaxant binding agent", "Encapsulation"],
     source: SRC.fdaUpToDate("Bridion (sugammadex) injection label", "Merck"),
@@ -998,6 +1038,7 @@
 
   addDrug({
     id: "neostigmine", cat: "reversal", name: "Neostigmine", brand: "Prostigmin",
+    classification: "Quaternary ammonium carbamate • Reversible acetylcholinesterase inhibitor",
     tagline: "The older reversal strategy — flood the neuromuscular junction with acetylcholine and let it out-compete the relaxant",
     tags: ["Anticholinesterase", "Reversal agent"],
     source: "UpToDate \"Prostigmin (neostigmine methylsulfate)\" drug information; Miller's Anesthesia, 10th ed.; generic neostigmine widely available.",
@@ -1194,6 +1235,7 @@
   // ---------------- NSAIDs & ANALGESICS ----------------
   addDrug({
     id: "ketorolac", cat: "nsaids", name: "Ketorolac", brand: "Toradol",
+    classification: "Non-selective NSAID • Pyrrolo-pyrrole / Acetic acid derivative (potent COX-1 > COX-2 inhibitor)",
     tagline: "An NSAID potent enough to substitute for opioids in acute pain — with a strict 5-day clock attached",
     tags: ["NSAID", "COX-1/COX-2 inhibitor"],
     source: SRC.fdaUpToDate("Toradol (ketorolac tromethamine) injection label", "Roche/generic"),
@@ -1207,6 +1249,7 @@
 
   addDrug({
     id: "ibuprofen", cat: "nsaids", name: "Ibuprofen", brand: "Motrin / Advil (IV: Caldolor)",
+    classification: "Non-selective NSAID • Propionic acid derivative (reversible COX-1 and COX-2 inhibitor)",
     tagline: "The familiar over-the-counter NSAID, now also available IV as a genuine multimodal analgesia component",
     tags: ["NSAID", "Propionic acid derivative"],
     source: SRC.fdaUpToDate("Caldolor (ibuprofen) injection label; Motrin/generic ibuprofen oral label", "Cumberland Pharmaceuticals (IV)/generic (oral)"),
@@ -1220,6 +1263,7 @@
 
   addDrug({
     id: "diclofenac", cat: "nsaids", name: "Diclofenac", brand: "Voltaren",
+    classification: "Non-selective NSAID • Phenylacetic acid derivative (balanced COX-1 / COX-2 inhibitor)",
     tagline: "An NSAID available in almost every route imaginable — oral, topical, ophthalmic, and IV",
     tags: ["NSAID", "Phenylacetic acid derivative"],
     source: SRC.fdaUpToDate("Dyloject (diclofenac sodium) injection label; Voltaren/generic diclofenac oral and topical labels", "Hikma (IV)/generic"),
@@ -1233,6 +1277,7 @@
 
   addDrug({
     id: "celecoxib", cat: "nsaids", name: "Celecoxib", brand: "Celebrex",
+    classification: "Selective COX-2 inhibitor • Diaryl-substituted pyrazole (platelet-sparing coxib)",
     tagline: "The NSAID that spares platelets — genuinely useful when bleeding risk is the deciding factor",
     tags: ["NSAID", "Selective COX-2 inhibitor"],
     source: SRC.fdaUpToDate("Celebrex (celecoxib) capsule label", "Pfizer/generic"),
@@ -1246,6 +1291,7 @@
 
   addDrug({
     id: "paracetamol", cat: "nsaids", name: "Paracetamol (Acetaminophen)", brand: "Tylenol / Ofirmev (IV)",
+    classification: "Para-aminophenol derivative • Central COX-3 / peroxidase inhibitor & indirect TRPA1 modulator",
     tagline: "Not an NSAID at all — the one analgesic on this list with essentially no bleeding, GI or renal downside",
     tags: ["Analgesic/antipyretic", "COX inhibition (central)"],
     source: SRC.fdaUpToDate("Ofirmev (acetaminophen) injection label; Tylenol/generic acetaminophen oral label", "Mallinckrodt (IV)/generic"),
@@ -1260,6 +1306,7 @@
   // ---------------- VASOPRESSORS & INOTROPES ----------------
   addDrug({
     id: "phenylephrine", cat: "vasopressors", name: "Phenylephrine", brand: "Neo-Synephrine (IV: Vazculep)",
+    classification: "Direct sympathomimetic • Pure selective alpha-1 adrenergic agonist",
     tagline: "A pure vasoconstrictor with no direct effect on the heart — which is exactly why it's the obstetric anaesthetist's default pressor",
     tags: ["Alpha-1 agonist", "Vasopressor"],
     source: SRC.fdaUpToDate("Vazculep (phenylephrine hydrochloride) injection label", "Eagle Pharmaceuticals/generic"),
@@ -1273,6 +1320,7 @@
 
   addDrug({
     id: "norepinephrine", cat: "vasopressors", name: "Norepinephrine (Noradrenaline)", brand: "Levophed",
+    classification: "Direct sympathomimetic • Potent alpha-1 and beta-1 adrenergic agonist",
     tagline: "The default first-line vasopressor in septic and most distributive shock — raises pressure without much collateral tachycardia",
     tags: ["Alpha/beta agonist", "Catecholamine"],
     source: SRC.fdaUpToDate("Levophed (norepinephrine bitartrate) injection label", "Hospira/Pfizer"),
@@ -1286,6 +1334,7 @@
 
   addDrug({
     id: "epinephrine", cat: "vasopressors", name: "Epinephrine (Adrenaline)", brand: "Adrenalin",
+    classification: "Direct sympathomimetic • Non-selective alpha and beta adrenergic agonist",
     tagline: "The one drug that works at every dose and every route — anaphylaxis, cardiac arrest, and everything unstable in between",
     tags: ["Alpha/beta agonist", "Catecholamine"],
     source: SRC.fdaUpToDate("Adrenalin (epinephrine) injection label", "Par Pharmaceutical/generic"),
@@ -1299,6 +1348,7 @@
 
   addDrug({
     id: "vasopressin", cat: "vasopressors", name: "Vasopressin (Arginine Vasopressin)", brand: "Vasostrict",
+    classification: "Non-adrenergic peptide hormone • Vascular V1a and renal V2 receptor agonist",
     tagline: "A non-catecholamine pressor for the shock that's stopped responding to catecholamines",
     tags: ["V1 receptor agonist", "Non-catecholamine"],
     source: SRC.fdaUpToDate("Vasostrict (vasopressin) injection label", "Par Pharmaceutical/Endo"),
@@ -1312,6 +1362,7 @@
 
   addDrug({
     id: "dopamine", cat: "vasopressors", name: "Dopamine", brand: "Intropin",
+    classification: "Direct & indirect sympathomimetic • Dose-dependent D1/D2, beta-1, and alpha-1 agonist",
     tagline: "Once the textbook first-line pressor, now mostly second-line — the dose-dependent receptor story is famous, and famously oversimplified",
     tags: ["Dopaminergic/alpha/beta agonist", "Catecholamine"],
     source: "UpToDate and Miller's Anesthesia, 10th ed. — generic dopamine hydrochloride injection (brand Intropin discontinued; originally DuPont).",
@@ -1325,6 +1376,7 @@
 
   addDrug({
     id: "dobutamine", cat: "vasopressors", name: "Dobutamine", brand: "Dobutrex",
+    classification: "Direct sympathomimetic • Selective beta-1 adrenergic inotrope (inodilator)",
     tagline: "An inotrope, not a vasopressor — it boosts the heart's output without meaningfully raising blood pressure",
     tags: ["Beta-1 agonist", "Inotrope"],
     source: "UpToDate and Miller's Anesthesia, 10th ed. — generic dobutamine injection (brand Dobutrex discontinued; originally Eli Lilly).",
@@ -1338,6 +1390,7 @@
   // ---------------- LOCAL ANAESTHETICS ----------------
   addDrug({
     id: "lidocaine", cat: "local", name: "Lidocaine", brand: "Xylocaine",
+    classification: "Aminoamide • Intermediate-acting local anaesthetic (fast onset, hepatic CYP1A2/3A4)",
     tagline: "The prototype amide local anaesthetic — the one every other local gets compared to, and a drug in its own right IV",
     tags: ["Amide LA", "Class Ib antiarrhythmic"],
     source: SRC.fdaUpToDate("Xylocaine (lidocaine hydrochloride) injection label", "Fresenius Kabi/generic"),
@@ -1351,6 +1404,7 @@
 
   addDrug({
     id: "bupivacaine", cat: "local", name: "Bupivacaine", brand: "Marcaine / Sensorcaine (liposomal: Exparel)",
+    classification: "Aminoamide • Long-acting local anaesthetic (high protein binding, cardiotoxicity risk)",
     tagline: "Long-acting and high-potency — and the local anaesthetic most likely to stop a heart if it gets into a vein by accident",
     tags: ["Amide LA", "Long-acting"],
     source: SRC.fdaUpToDate("Marcaine (bupivacaine hydrochloride) injection label; Exparel (bupivacaine liposome injectable suspension) label", "Pfizer (Marcaine)/Pacira (Exparel)"),
@@ -1364,6 +1418,7 @@
 
   addDrug({
     id: "ropivacaine", cat: "local", name: "Ropivacaine", brand: "Naropin",
+    classification: "Aminoamide • Long-acting local anaesthetic (pure S-enantiomer, differential sensory block)",
     tagline: "Built as a deliberately safer bupivacaine — a single enantiomer with a genuinely wider cardiac safety margin",
     tags: ["Amide LA", "Long-acting", "Single enantiomer"],
     source: SRC.fdaUpToDate("Naropin (ropivacaine hydrochloride) injection label", "originally AstraZeneca/generic"),
@@ -1377,6 +1432,7 @@
 
   addDrug({
     id: "chloroprocaine", cat: "local", name: "Chloroprocaine", brand: "Nesacaine",
+    classification: "Aminoester • Ultra-short-acting local anaesthetic (rapid plasma pseudocholinesterase clearance)",
     tagline: "The fastest-clearing local anaesthetic in clinical use — metabolised in the blood itself, not the liver",
     tags: ["Ester LA", "Rapid onset/offset"],
     source: SRC.fdaUpToDate("Nesacaine (chloroprocaine hydrochloride) injection label", "Sintetica/generic"),
@@ -1390,6 +1446,7 @@
 
   addDrug({
     id: "mepivacaine", cat: "local", name: "Mepivacaine", brand: "Polocaine / Carbocaine",
+    classification: "Aminoamide • Intermediate-acting local anaesthetic (minimal intrinsic vasodilation)",
     tagline: "Similar to lidocaine but with less vasodilation — a plain solution that still lasts a useful while without epinephrine",
     tags: ["Amide LA", "Intermediate duration"],
     source: SRC.fdaUpToDate("Polocaine (mepivacaine hydrochloride) injection label", "Hospira/generic"),
@@ -1407,6 +1464,7 @@
 
   addDrug({
     id: "oxytocin", cat: "pregnancy", name: "Oxytocin", brand: "Pitocin / Syntocinon",
+    classification: "Synthetic nonapeptide uterotonic • Gq-coupled oxytocin receptor agonist",
     tagline: "First-line uterotonic for labour induction and PPH prophylaxis — rapid onset with dose-dependent vasodilation",
     tags: ["Uterotonic", "First-line PPH", "Nonapeptide"],
     source: "FDA Prescribing Information — Pitocin (oxytocin injection, Par Pharmaceutical); ACOG Practice Bulletin No. 183 (Postpartum Hemorrhage); RCOG Green-top Guideline No. 52; Miller's Anesthesia, 10th ed., Ch. 69 (Obstetric Anesthesia).",
@@ -1420,6 +1478,7 @@
 
   addDrug({
     id: "carbetocin", cat: "pregnancy", name: "Carbetocin", brand: "Pabal / Duratocin",
+    classification: "Synthetic 1-deamino-1-carba oxytocin analogue • Long-acting oxytocin receptor agonist",
     tagline: "Long-acting synthetic oxytocin analogue — single-dose PPH prophylaxis with prolonged uterotonic action",
     tags: ["Uterotonic", "Long-acting", "PPH prophylaxis"],
     source: "WHO Recommendations: Uterotonics for the prevention of postpartum haemorrhage (2018/2023 update); SOGC Clinical Practice Guideline No. 433; Health Canada / MHRA Prescribing Information (Duratocin / Pabal); UpToDate 'Management of the third stage of labor' (2025).",
@@ -1433,6 +1492,7 @@
 
   addDrug({
     id: "carboprost", cat: "pregnancy", name: "Carboprost (15-Methyl PGF2α)", brand: "Hemabate",
+    classification: "Synthetic 15-methyl prostaglandin F2α analogue • Myometrial FP prostanoid receptor agonist",
     tagline: "Potent second-line prostaglandin uterotonic — essential rescue for refractory PPH, strictly contraindicated in asthma",
     tags: ["Uterotonic", "Second-line PPH", "Prostaglandin"],
     source: "FDA Prescribing Information — Hemabate (carboprost tromethamine injection, Pfizer); ACOG Practice Bulletin No. 183; RCOG Green-top Guideline No. 52; Miller's Anesthesia, 10th ed., Ch. 69.",
@@ -1446,6 +1506,7 @@
 
   addDrug({
     id: "methergine", cat: "pregnancy", name: "Methergine (Methylergometrine / Methylergonovine)", brand: "Methergine",
+    classification: "Semi-synthetic ergot alkaloid derivative • Alpha-1 adrenergic and 5-HT2 receptor agonist",
     tagline: "Ergot alkaloid producing sustained tetanic uterine tone — strictly contraindicated in hypertension and pre-eclampsia",
     tags: ["Uterotonic", "Ergot alkaloid", "Second-line PPH"],
     source: "FDA Prescribing Information — Methergine (methylergonovine maleate injection/tablets, Novartis/Lupin); ACOG Practice Bulletin No. 183; RCOG Green-top Guideline No. 52; Miller's Anesthesia, 10th ed.",
@@ -1459,6 +1520,7 @@
 
   addDrug({
     id: "misoprostol", cat: "pregnancy", name: "Misoprostol", brand: "Cytotec",
+    classification: "Synthetic methyl ester prostaglandin E1 analogue • Myometrial EP2/EP3 receptor agonist",
     tagline: "Synthetic prostaglandin E1 analogue — temperature-stable uterotonic with versatile oral, sublingual, and rectal routes",
     tags: ["Uterotonic", "Prostaglandin E1", "PPH & Induction"],
     source: "WHO Guidelines for the Management of Postpartum Haemorrhage (2018/2023 update); ACOG Practice Bulletin No. 183; FIGO Guidelines: Prevention and treatment of PPH with misoprostol; FDA prescribing information (Cytotec — Pfizer); Miller's Anesthesia, 10th ed.",
@@ -1468,6 +1530,193 @@
     dosage: "FDA-approved: originally labelled for the prevention of NSAID-induced gastric ulcers (100–200 mcg PO QID). Obstetric dosing is supported by FDA labelling (for termination) and WHO/FIGO/ACOG society guidelines: for the treatment of postpartum haemorrhage when injectable uterotonics are unavailable or have failed, 800 mcg administered sublingually (SL) or 800–1000 mcg administered rectally (PR) as a single dose. For PPH prevention in the absence of oxytocin (especially in community/low-resource settings), 400–600 mcg orally or sublingually immediately after delivery. For labour induction and cervical ripening at term: 25 mcg orally or vaginally (PV) every 3 to 6 hours, with continuous fetal heart rate and uterine monitoring.",
     offLabel: "While originally approved as a gastroprotective tablet, obstetric use of misoprostol for PPH prevention, PPH treatment, second-trimester termination, and management of early pregnancy failure (miscarriage: 800 mcg PV or SL) is universally recognised as standard of care across world obstetric practice (WHO Model List of Essential Medicines, ACOG, RCOG, FIGO). In modern obstetric anaesthesia, rectal administration of 800–1000 mcg at the conclusion of caesarean delivery in patients at high risk of delayed uterine atony is a widely utilised off-label adjuvant.",
     complications: "Shivering and intense rigors occur in up to 30–50% of patients receiving high sublingual or oral doses (e.g. 600–800 mcg), which can be distressing to the patient and interfere with postoperative monitoring. Transient hyperpyrexia and maternal fever (> 38°C in up to 30%, occasionally exceeding 40°C with high doses) can mimic chorioamnionitis or sepsis. Gastrointestinal symptoms including diarrhoea, abdominal cramping, and nausea/vomiting are common. When used for labour induction, uterine tachysystole and hyperstimulation can occur, carrying a serious risk of uterine rupture in women with a previous caesarean scar or uterine surgery (contraindicated for labour induction in trial of labour after caesarean)."
+  });
+
+  
+  // ========================================================================
+  // NEW TOPICS: CVC & PAC, CPB, THRIVE & HFNO, JET VENTILATION
+  // ========================================================================
+
+  topics.push({
+    id: "central-venous-pulmonary-artery-catheters",
+    cat: "equipment",
+    name: "Central Venous Catheters & Pulmonary Artery Catheters (Swan-Ganz)",
+    short: "CVC & Swan-Ganz Catheters",
+    tags: ["CVP", "Swan-Ganz", "Pulmonary Artery Catheter", "Thermodilution", "Waveforms", "Invasive Monitoring"],
+    tagline: "Anatomy of Swan-Ganz catheter, port identification, cardiac navigation waveforms, CVP a-c-v analysis, thermodilution cardiac output, and critical complications",
+    source: "Miller's Anesthesia, 10th ed., Ch. 40 (Intravascular Monitoring); Stoelting's Pharmacology & Physiology; UpToDate \"Pulmonary artery catheterization: Indications, contraindications, and complications in adults\" (2025); ASA Practice Guidelines for Central Venous Access.",
+    sections: [
+      {
+        h: "Anatomy of a Swan-Ganz Catheter: Ports, Markings & Dimensions",
+        b: "The standard Swan-Ganz pulmonary artery catheter (PAC) is a 110 cm long, 7.0 to 7.5 French polyvinyl chloride catheter engineered for flow-directed navigation through the cardiac chambers into the pulmonary artery. The catheter features clear visual depth markings: narrow rings represent 10 cm increments, and wide rings represent 50 cm increments. The catheter incorporates distinct functional lumens and ports:\n\n1. Distal Pulmonary Artery Port (Yellow Hub):\nTerminates at the extreme catheter tip. When the balloon is deflated, it transduces pulsatile pulmonary artery pressure (PAP). When the balloon is inflated and flow-directed into a small pulmonary arterial branch, it measures pulmonary artery occlusion pressure (PAOP / pulmonary capillary wedge pressure, PCWP), reflecting left atrial filling pressure. It also serves as the dedicated port for drawing true mixed venous blood samples (SvO2) from the pulmonary artery.\n\n2. Proximal Right Atrial Port (Blue Hub):\nPositioned exactly 30 cm proximal to the catheter tip. In an average-sized adult, this orifice resides within the right atrium (or cavoatrial junction). It continuously transduces Central Venous Pressure (CVP / RAP) and acts as the delivery lumen for cold or room-temperature fluid boluses during thermodilution cardiac output determinations.\n\n3. Variable Infusion Port (VIP, White or Clear Hub):\nPositioned 31 cm proximal to the catheter tip, also terminating in the right atrium. It provides a dedicated, independent route for continuous infusions of vasoactive drugs, inotropes, or maintenance fluids into the central circulation without interrupting CVP pressure transducing or contaminating thermodilution thermal measurements.\n\n4. Balloon Inflation Lumen (Red Hub with Gate Valve):\nLeads to an inflatable latex balloon situated 1 to 2 mm proximal to the catheter tip. The balloon has a maximum volume capacity of 1.5 mL (inflated diameter 13 mm). When inflated, it completely covers and cushions the stiff plastic catheter tip, allowing blood flow to float the catheter through the tricuspid and pulmonic valves while shielding fragile right ventricular trabeculae from mechanical perforation. Inflation must ALWAYS be performed using the dedicated 1.5 mL syringe with air (never liquid, and never carbon dioxide unless in patients with right-to-left shunts where accidental rupture could cause cerebral air embolism). A sliding safety gate valve locks the syringe to prevent accidental persistent inflation.\n\n5. Thermistor Lumen & Connector:\nInsulated electrical wires lead to a temperature-sensitive thermistor bead located 4 cm proximal to the catheter tip. The thermistor continuously senses pulmonary artery blood temperature (core body temperature) and records rapid temperature-time decay curves following proximal cold saline injection to calculate cardiac output via the Stewart-Hamilton equation.\n\n6. Fiberoptic Optical Connector (Advanced Diagnostic Models):\nIn continuous cardiac output / continuous SvO2 PACs, two fiberoptic light bundles transmit and receive infrared light (660 nm and 805 nm) from the tip, providing continuous reflectance spectrophotometry monitoring of mixed venous oxygen saturation.",
+        images: [
+          {
+            src: "assets/references/swan-ganz-catheter-anatomy.jpg",
+            alt: "Swan-Ganz catheter anatomy diagram showing balloon, ports, thermistor and markings",
+            caption: "Anatomy of a Swan-Ganz Pulmonary Artery Catheter: Comprehensive breakdown of distal PA yellow port, proximal RA blue port, VIP white infusion lumen, balloon inflation syringe with safety gate, thermistor connector, and 10 cm/50 cm depth markings."
+          }
+        ]
+      },
+      {
+        h: "Intracardiac Navigation Pathway & Real-Time Waveform Progression",
+        b: "Insertion of a Swan-Ganz catheter is traditionally performed via the Right Internal Jugular Vein (RIJ) using an 8.5 French introducer sheath. The catheter is advanced under continuous pressure transducing and ECG monitoring. Distance milestones and characteristic chamber pressures must be recognized instantly:\n\n1. Right Atrium (~20 to 25 cm from RIJ):\nNormal pressure is 2 to 6 mmHg (mean CVP). Waveform displays low-amplitude venous undulations with distinct a, c, and v waves and x and y descents.\n\n2. Balloon Inflation in RA:\nOnce the catheter enters the right atrium, the balloon is inflated with 1.5 mL of air. The inflated balloon catches the forward stream of venous blood, allowing the catheter to 'sail' passively across the tricuspid valve into the right ventricle.\n\n3. Right Ventricle (~30 to 35 cm from RIJ):\nNormal pressure is 15 to 30 / 0 to 8 mmHg. Waveform displays a rapid systolic upstroke (matching PA systolic pressure) followed by a steep diastolic drop returning to a near-zero baseline. Because the diastolic pressure falls to near 0 mmHg (unlike the PA), this diastolic drop is the hallmark identifier of ventricular placement. Premature ventricular contractions (PVCs) and transient ventricular ectopy are common during RV transit.\n\n4. Pulmonary Artery (~40 to 45 cm from RIJ):\nNormal pressure is 15 to 30 / 8 to 15 mmHg. As the catheter crosses the pulmonic valve into the pulmonary artery, systolic pressure remains identical to the RV, but diastolic pressure rises sharply to a baseline of 8 to 15 mmHg. A distinct dicrotic notch (incisura) appears on the downstroke, signifying closure of the pulmonic valve. The elevated diastolic pressure and dicrotic notch confirm successful arterial entry.\n\n5. Pulmonary Capillary Wedge Position (PAOP / PCWP, ~45 to 55 cm):\nNormal pressure is 6 to 12 mmHg. The balloon wedges into a small pulmonary arterial branch, occluding forward flow from the right ventricle. The pressure transducer now 'sees' through the static column of blood in the pulmonary capillaries, pulmonary veins, and left atrium to record left atrial pressure (LAP). The high-pressure pulsatile PA waveform dampens into a low-pressure venous waveform featuring modified a and v waves. Once wedging is confirmed, the balloon is IMMEDIATELY deflated, and the pulsatile PA waveform must promptly reappear.",
+        table: {
+          headers: ["Cardiac Chamber / Vessel", "Average RIJ Depth", "Normal Pressures (mmHg)", "Waveform Hallmark Features", "Clinical Significance"],
+          rows: [
+            [{ text: "Right Atrium (RA / CVP)", badge: "RA", badgeColor: "#0284c7" }, "20–25 cm", "2–6 (mean)", "Low-amplitude a, c, v waves with x and y descents", "Preload of right ventricle; baseline filling pressure"],
+            [{ text: "Right Ventricle (RV)", badge: "RV", badgeColor: "#d97706" }, "30–35 cm", "15–30 / 0–8", "Sharp systolic peak with diastolic drop returning to ~0 mmHg", "High ectopy / PVC risk; never inflate balloon in RV"],
+            [{ text: "Pulmonary Artery (PA)", badge: "PA", badgeColor: "#10b981" }, "40–45 cm", "15–30 / 8–15", "Dicrotic notch present; diastolic pressure elevated (8–15 mmHg)", "Confirms passage through pulmonic valve; mixed venous SvO2 port"],
+            [{ text: "Pulmonary Artery Occlusion (PAOP / Wedge)", badge: "PCWP", badgeColor: "#8b5cf6" }, "45–55 cm", "6–12 (mean)", "Damped venous waveform reflecting Left Atrial Pressure (LAP)", "Left ventricular end-diastolic preload estimation; deflated immediately"]
+          ],
+          caption: "Table: Intracardiac distance milestones, normal pressure values, and characteristic waveform morphology during Swan-Ganz catheterization via the Right Internal Jugular Vein."
+        },
+        images: [
+          {
+            src: "assets/references/swan-ganz-heart-pathway-diagram.jpg",
+            alt: "Intracardiac navigation pathway diagram from SVC to Pulmonary Artery",
+            caption: "Intracardiac Navigation & Port Positioning: Catheter passage from Right Internal Jugular vein through SVC, RA (port 1 proximal injectate), RV, and into Pulmonary Artery with balloon inflated (port 3) and thermistor bead (port 2) measuring cardiac output."
+          }
+        ],
+        pitfall: "Never advance the catheter with the balloon deflated (sharp tip can perforate the RV wall), and NEVER pull the catheter backwards with the balloon inflated (inflated balloon will snag and tear the tricuspid or pulmonic valve leaflets)."
+      },
+      {
+        h: "Central Venous Pressure (CVP) Waveform Components & Pathologies",
+        b: "Central venous pressure (CVP) reflects right atrial pressure (RAP) and right ventricular end-diastolic pressure (RVEDP) in the absence of tricuspid stenosis. The CVP tracing consists of three positive deflections (a, c, v) and two negative descents (x, y):\n\n1. The 'a' wave:\nProduced by active right atrial contraction at end-diastole, pumping blood across the tricuspid valve into the RV. Coincides with the PR interval on ECG (follows the P wave). Pathological variants:\n• Large 'a' waves: Occur when the atrium contracts against increased resistance (tricuspid stenosis, right ventricular hypertrophy, pulmonary hypertension, pulmonary stenosis).\n• Cannon 'a' waves: Huge, tall pressure spikes that occur when the atrium contracts against a closed tricuspid valve during atrioventricular dissociation (complete 3rd-degree heart block, ventricular tachycardia, junctional rhythm).\n• Absent 'a' wave: Hallmark of atrial fibrillation (loss of coordinated atrial contraction).\n\n2. The 'c' wave:\nProduced by early right ventricular systole. As the RV begins isovolumetric contraction, the tricuspid valve bulges backwards into the right atrium, creating a transient pressure spike. Coincides with the end of the QRS complex.\n\n3. The 'x' descent (and x' descent):\nRepresents atrial relaxation coupled with the downward systolic displacement of the tricuspid valve apparatus by the contracting right ventricle. Represents rapid drop in right atrial pressure.\n\n4. The 'v' wave:\nProduced by passive venous filling of the right atrium from systemic veins while the tricuspid valve remains closed during ventricular systole. Coincides with the end of the T wave on ECG. Pathological variants:\n• Giant 'v' waves (Lancisi sign / CV waves): In severe tricuspid regurgitation (TR), blood regurgitates backward from the contracting RV into the RA during systole, obliterating the x descent and creating a massive, broad systolic wave that mimics an RV pressure tracing.\n\n5. The 'y' descent:\nRepresents rapid passive emptying of blood from the right atrium into the right ventricle upon opening of the tricuspid valve in early diastole. Pathological variants:\n• Steep, deep 'y' descent (Friedreich's sign): Characteristic of constrictive pericarditis and right ventricular infarction (rapid early diastolic filling followed by abrupt rigid halt).\n• Blunted or absent 'y' descent: Characteristic of cardiac tamponade (high intrapericardial pressure compresses the heart throughout diastole, impeding rapid passive atrial emptying).",
+        pearl: "Examination memory trick: 'a' wave = Atrial contraction (follows P wave); 'c' wave = Cusps bulging during Ventricular contraction (QRS); 'v' wave = Venous filling (T wave end). Cannon 'a' waves indicate AV dissociation; giant 'v' waves indicate tricuspid regurgitation; absent 'y' descent indicates cardiac tamponade."
+      },
+      {
+        h: "Thermodilution Cardiac Output & Haemodynamic Derivations",
+        b: "The pulmonary artery catheter remains the clinical reference method for measuring cardiac output (CO) via bolus thermodilution based on the Stewart-Hamilton equation:\n\n1. Stewart-Hamilton Thermodilution Principle:\nA known volume (typically 10 mL) of cold indicator fluid (ice-cold 0–4°C or room-temperature saline) is injected rapidly (<3 seconds) into the proximal RA port. The cold bolus mixes thoroughly with venous blood in the right atrium and right ventricle before being ejected into the pulmonary artery. The thermistor bead at the catheter tip records the transient drop and subsequent recovery of blood temperature, generating a temperature-time decay curve. Cardiac Output is inversely proportional to the area under the thermodilution curve:\n• High Cardiac Output: Blood flows rapidly, washing out the cold indicator quickly, resulting in a small area under the curve.\n• Low Cardiac Output: Blood flows sluggishly, resulting in a delayed, prolonged washout with a large area under the curve.\n\n2. Standard Haemodynamic Calculations & Normal Reference Ranges:\n• Cardiac Index (CI) = CO / Body Surface Area (BSA). Normal: 2.5 to 4.0 L/min/m².\n• Stroke Volume (SV) = (CO / Heart Rate) × 1000. Normal: 60 to 100 mL/beat.\n• Stroke Volume Index (SVI) = CI / Heart Rate × 1000. Normal: 33 to 47 mL/beat/m².\n• Systemic Vascular Resistance (SVR) = [(MAP - CVP) / CO] × 80. Normal: 800 to 1200 dynes·s·cm⁻⁵.\n• Pulmonary Vascular Resistance (PVR) = [(mPAP - PAOP) / CO] × 80. Normal: 100 to 250 dynes·s·cm⁻⁵.\n• Mixed Venous Oxygen Saturation (SvO2): Normal: 65% to 75%. Reflects the global balance between systemic oxygen delivery (DO2) and oxygen consumption (VO2). A drop in SvO2 (<60%) signals decreased cardiac output, severe anemia, hypoxemia, or increased tissue metabolic demand (shivering, sepsis, malignant hyperthermia).",
+        example: "A patient post-cardiac surgery has BP 85/50 (MAP 62 mmHg), CVP 14 mmHg, and Cardiac Output 3.2 L/min. SVR = [(62 - 14) / 3.2] × 80 = (48 / 3.2) × 80 = 15 × 80 = 1200 dynes·s·cm⁻⁵. SVR is high-normal, but Cardiac Output is severely depressed (cardiogenic shock); therapy requires inotropic support (e.g., dobutamine/milrinone) rather than pure vasopressors."
+      },
+      {
+        h: "Clinical Indications, Controversies & Catastrophic Complications",
+        b: "1. Contemporary Indications:\nRoutine pulmonary artery catheterization has declined following large randomized trials (PAC-Man and ESCAPE) that demonstrated no overall survival benefit in undifferentiated critically ill patients. However, PAC monitoring remains invaluable in select complex scenarios:\n• High-risk cardiac surgery (CABG with low ejection fraction <30%, severe pulmonary hypertension, combined valve/revascularization procedures).\n• Cardiogenic shock refractory to initial therapy.\n• Diagnostic differentiation of unexplained shock (differentiating cardiogenic, septic, hypovolemic, and obstructive shock).\n• Titration of mechanical circulatory support devices (Impella, Intra-Aortic Balloon Pump, VA-ECMO, LVAD).\n• Severe pulmonary arterial hypertension undergoing non-cardiac surgery.\n\n2. Catastrophic & Life-Threatening Complications:\n• Pulmonary Artery Rupture: The most feared, lethal complication of PAC placement (mortality exceeds 50–70%). Occurs when the balloon is over-inflated in a small distal artery, or inflated while wedged, or when an eccentric balloon forces the rigid catheter tip through the arterial wall. Presents as sudden, torrential endobronchial hemoptysis. Risk factors include pulmonary hypertension, hypothermia, advanced age, and anticoagulation. Immediate emergency management: rotate patient onto the affected side (bleeding lung down) to protect the healthy lung, intubate with a double-lumen tube or advance a bronchial blocker, reverse heparin with protamine, and prepare for emergency thoracotomy or angiographic coil embolization.\n• Cardiac Arrhythmias & Complete Heart Block: Premature ventricular contractions (PVCs) occur in up to 30–60% during RV passage; transient Right Bundle Branch Block (RBBB) occurs in ~3%. In patients with pre-existing Left Bundle Branch Block (LBBB), new RBBB results in instantaneous complete third-degree heart block and asystole! Transcutaneous or transvenous pacing capability must be immediately active before catheterization in patients with LBBB.\n• Pulmonary Infarction: Caused by prolonged wedging or spontaneous distal migration of the catheter, causing persistent segmental arterial occlusion.\n• Catheter Knotting & Valve Entanglement: Catheter loops and knots in the right ventricle if advanced beyond 40–50 cm without crossing into the PA. Knotting requires fluoroscopic unraveling or surgical extraction.\n• Catheter-Related Bloodstream Infection (CRBSI) & Air Embolism."
+      }
+    ]
+  });
+
+  topics.push({
+    id: "cardiopulmonary-bypass-cpb",
+    cat: "equipment",
+    name: "Cardiopulmonary Bypass (CPB) — Circuit, Anticoagulation, Cardioplegia & Separation",
+    short: "Cardiopulmonary Bypass (CPB)",
+    tags: ["CPB", "Cardiac Surgery", "CABG", "Heparin", "Protamine", "ACT", "Cardioplegia"],
+    tagline: "Circuit mechanics, roller vs centrifugal pumps, membrane oxygenators, cardioplegia, ACT monitoring, protamine reversal, and separation protocols",
+    source: "Miller's Anesthesia, 10th ed., Ch. 65 (Cardiac Anesthesia); Hensley's Practical Approach to Cardiac Anesthesia, 6th ed.; Society of Cardiovascular Anesthesiologists (SCA) Guidelines; UpToDate \"Initiation and management of cardiopulmonary bypass\".",
+    sections: [
+      {
+        h: "CPB Overview & Indications: On-Pump vs Off-Pump CABG (OPCAB)",
+        b: "Cardiopulmonary Bypass (CPB) temporarily takes over the mechanical pumping function of the heart and the gas-exchange function of the lungs, providing a bloodless, motionless operative field for cardiac surgery. Coronary Artery Bypass Grafting (CABG) is performed either:\n\n1. On-Pump CABG (Using CPB):\nThe heart is arrested using cardioplegia, and the circulation is sustained entirely by the heart-lung machine. It provides pristine surgical exposure and visualization for complete revascularization, especially in small, calcified, intramyocardial vessels or diffuse multivessel disease.\n\n2. Off-Pump CABG (OPCAB - Without CPB):\nGraft anastomoses are constructed on the beating heart utilizing mechanical vacuum suction stabilizers (e.g. Octopus) and apical cardiac positioners. Eliminates the systemic inflammatory response syndrome (SIRS), hemodilution, and aortic cross-clamping atheroembolism associated with CPB, reducing stroke and renal dysfunction in high-risk patients with porcelain aortas, but requires careful haemodynamic management during vertical cardiac displacement.",
+        images: [
+          {
+            src: "assets/references/cpb-circuit-diagram.jpg",
+            alt: "Cardiopulmonary bypass circuit diagram showing venous return, reservoir, pump, and oxygenator",
+            caption: "Cardiopulmonary Bypass Circuit & Perioperative Journey: Comprehensive circuit layout illustrating venous drainage from patient, venous reservoir, arterial pump, membrane oxygenator with O2 sweep gas, and systemic arterial return."
+          }
+        ]
+      },
+      {
+        h: "The CPB Circuit: Cannulation, Reservoirs, Pumps & Oxygenators",
+        b: "The CPB circuit forms a continuous extracorporeal closed loop with the following sequential components:\n\n1. Venous Cannulation & Drainage:\nDeoxygenated systemic venous blood drains from the patient into the circuit via gravity (or vacuum-assisted venous drainage, VAVD). Cannulation strategies include:\n• Two-Stage (Caviatrial) Cannula: Used for CABG and aortic valve surgery. A single cannula inserted via the right atrial appendage with its distal basket in the IVC and proximal side-holes in the RA.\n• Bicaval Cannulation: Separate cannulae placed in the Superior Vena Cava (SVC) and Inferior Vena Cava (IVC), each snared with tourniquet tapes (Rumel tourniquets). Mandatory for open right-heart procedures (mitral valve, tricuspid valve, ASD/VSD repair) to completely isolate right atrial blood from entering the open chamber.\n\n2. Venous Reservoir:\nA rigid polycarbonate hard-shell container that receives venous return and cardiotomy suctioned blood. Acts as a volume buffer, air bubble trap, and defoaming chamber. Features electronic low-level alarms to prevent the pump from running dry and pumping air into the arterial line.\n\n3. Main Arterial Systemic Pump:\n• Roller Pumps: Positive displacement pumps where rotating twin rollers compress flexible silicone/polyvinyl tubing against a curved race. Flow output is linear and directly proportional to revolutions per minute (RPM) and internal tubing diameter (Flow = RPM × Stroke Volume). Occlusive: cannot pump backwards. Hazard: if the arterial line is accidentally clamped while the pump is running, pressure spikes to extreme levels (>1000 mmHg), risking circuit rupture or tubing blow-off.\n• Centrifugal Pumps: Magnetically coupled cone-shaped impellers that spin at high velocities (1500–3000 RPM), creating a constrained vortex and kinetic energy gradient. Non-occlusive: flow is dependent on both preload and afterload. If the arterial line is clamped, pressure cannot exceed safe limits (~400–600 mmHg), eliminating bursting risk. Hazard: if the pump stops rotating, blood can siphon backwards from the patient into the reservoir, causing acute arterial exsanguination and air entrapment.\n\n4. Membrane Oxygenator & Heat Exchanger:\nVenous blood passes through a bundle of microporous polypropylene or polymethylpentene (PMP) hollow fibers. Sweep gas (a blend of oxygen and air, regulated by a gas blender and vaporized anesthetic) flows through the fiber interior while blood bathes the exterior, permitting efficient O2 uptake and CO2 clearance. Integrated within the oxygenator is a counter-current water-jacket heat exchanger that controls patient core temperature during systemic hypothermia (mild 32–34°C, moderate 28–32°C, deep hypothermic circulatory arrest DHCA 18–20°C) and subsequent rewarming.\n\n5. Arterial Line Filter & Aortic Cannula:\nA 20 to 40 μm screen filter removes microscopic particulate emboli and microbubbles. Oxygenated, filtered blood is returned under pressure into the ascending aorta (cannulated proximal to the innominate artery and distal to the aortic cross-clamp)."
+      },
+      {
+        h: "Anticoagulation, Activated Clotting Time (ACT) & Heparin Resistance",
+        b: "Extracorporeal blood contact with foreign synthetic plastic tubing triggers catastrophic activation of the intrinsic coagulation cascade. Robust, instantaneous anticoagulation is mandatory before initiating CPB:\n\n1. Unfractionated Heparin Dosing:\nDosed at 300 to 400 units/kg administered intravenously. Must be injected through a reliable central venous line, aspirating blood before and after to verify true intravascular delivery.\n\n2. Activated Clotting Time (ACT) Monitoring:\n• Baseline ACT: Measured prior to heparin administration (normal: 100 to 140 seconds).\n• Target Bypass ACT: Measured exactly 3 to 5 minutes after heparin. CPB must NEVER be initiated unless the ACT exceeds 400 to 480 seconds (Hemotec device target >400 s; Hemochron device target >480 s). ACT is monitored every 30 minutes throughout CPB.\n\n3. Heparin Resistance Management:\nDefined as the inability to achieve target ACT (>480 s) despite a full weight-adjusted heparin dose (up to 500–600 units/kg). The most common etiology is Antithrombin III (AT-III) deficiency, frequently secondary to preoperative prolonged heparin therapy, liver cirrhosis, nephrotic syndrome, or DIC. Treatment options:\n• Recombinant Antithrombin (Thrombate III): 500 to 1000 units IV provides rapid, concentrated AT-III without viral transmission risk.\n• Fresh Frozen Plasma (FFP): 2 to 4 units of FFP contains abundant endogenous AT-III and reliably restores heparin responsiveness.",
+        pearl: "Never let the surgeon insert the aortic cannula or start CPB without a confirmed ACT > 480 seconds. Clotting the oxygenator on bypass is an immediate fatal emergency."
+      },
+      {
+        h: "Myocardial Protection: Cardioplegia Physiology & Delivery",
+        b: "When the aorta is cross-clamped to provide a motionless operative field, coronary blood flow ceases entirely. Without myocardial protection, normothermic myocardial ischemia causes irreversible necrosis within 15 to 20 minutes. Cardioplegia provides profound protection:\n\n1. Mechanism of Arrest:\nCardioplegia solutions contain high concentrations of potassium chloride (KCl 15 to 30 mEq/L). Infused into the coronary circulation, the high extracellular potassium depolarizes the cardiomyocyte resting membrane potential from -90 mV to approximately -50 mV. This sustained depolarisation inactivates voltage-gated fast sodium channels, rendering the myocardium unexcitable and producing immediate electromechanical arrest in electrical diastole. Arresting the heart reduces myocardial oxygen consumption (MVO2) by >90%. Combining arrest with profound hypothermia (4°C) further reduces metabolic demand to <5% of baseline.\n\n2. Cardioplegia Formulations:\n• Cold Blood Cardioplegia (Buckberg formulation): 4:1 blood-to-crystalloid mixture, 4°C, containing potassium, glucose, and buffers. Re-dosed every 15 to 20 minutes.\n• Del Nido Cardioplegia: A single-dose, crystalloid-rich solution containing lidocaine (fast sodium channel blocker), magnesium (calcium antagonist), mannitol (osmotic free-radical scavenger), and sodium bicarbonate. A single infusion provides up to 60 to 90 minutes of safe ischemic arrest, widely used in both pediatric and adult surgery.\n• Custodiol (HTK Solution): Low-sodium, low-calcium histidine-tryptophan-ketoglutarate intracellular-type solution providing up to 2 to 3 hours of arrest.\n\n3. Routes of Administration:\n• Antegrade: Delivered into the aortic root proximal to the cross-clamp (or directly into coronary ostia). Requires a competent aortic valve to prevent left ventricular distension.\n• Retrograde: Delivered into the coronary sinus via a specialized balloon catheter guided by TEE. Flow travels backward through coronary veins to the capillary bed; essential in patients with severe CAD or severe aortic regurgitation."
+      },
+      {
+        h: "Protamine Reversal & The Three Classes of Adverse Reactions",
+        b: "Upon successful separation from CPB, systemic heparin anticoagulation must be completely neutralized using Protamine Sulfate, a strongly basic polycationic protein derived from salmon sperm:\n\n1. Neutralization Stoichiometry:\nProtamine binds to strongly acidic polyanionic heparin via ionic electrostatic interactions, forming a stable, inert salt complex with zero anticoagulant properties. Dosed at 1.0 to 1.3 mg of protamine per 100 units of initial heparin dose (or titrated via automated protamine-titration devices). Must be infused SLOWLY over 10 to 15 minutes.\n\n2. The Three Classes of Adverse Protamine Reactions:\n• Type I (Rapid Infusion Hypotension): Caused by rapid bolus injection leading to peripheral arterial and venous vasodilation and systemic histamine release. Prevented by slow infusion over ≥10 minutes. Treated by stopping infusion, IV fluid boluses, and phenylephrine.\n• Type II (Anaphylactic / Anaphylactoid Reaction): Severe immunological IgE- or complement-mediated hypersensitivity. Risk factors include previous vasectomy (anti-sperm antibodies cross-react with protamine), prior NPH insulin use (contains protamine zinc), fish allergy, or prior protamine exposure. Manifests as bronchospasm, urticaria, flushing, and profound cardiovascular collapse.\n• Type III (Catastrophic Pulmonary Vasoconstriction): A life-threatening, idiosyncratic reaction mediated by heparin-protamine antibody complexes triggering massive pulmonary thromboxane A2 and endothelin release. Manifests within minutes as severe pulmonary arterial hypertension, catastrophic acute right ventricular distension and failure, and systemic hypotension. Immediate management: immediately cease protamine, restart heparin, reinstitute CPB or support the RV with inotropes (epinephrine, milrinone), and administer pulmonary vasodilators (inhaled epoprostenol or nitric oxide)."
+      },
+      {
+        h: "Separation from CPB: The \"WARM HEART\" Weaning Protocol",
+        b: "Weaning and separating from CPB requires a disciplined, multi-system sequence summarized by the classic mnemonic WARM HEART:\n\n• W — Warm: Confirm core normothermia (nasopharyngeal temp 36.5–37.0°C; bladder/rectal temp >35.5°C). Avoid hyperthermia (>37.5°C) due to neurological injury risk.\n• A — Air Emboli Cleared: Transesophageal echocardiography (TEE) verification that left ventricle, left atrium, and aortic root are thoroughly de-aired via root vent needles.\n• R — Rhythm & Rate: Confirm stable cardiac rhythm (sinus rhythm or A-V sequential pacing captured via temporary epicardial wires; rate 80 to 95 bpm).\n• M — Metabolic Status: Arterial blood gas confirmation of normal acid-base status (pH 7.35–7.45, pO2 >100, pCO2 35–45 mmHg), serum potassium (4.0–5.0 mEq/L), ionized calcium (>1.1 mmol/L), and hematocrit (>22–25% / Hgb >7.5–8.0 g/dL).\n• H — Hemodynamics & Heart Contractility: TEE assessment of LV and RV contractility and preload filling. The perfusionist slowly clamps the venous line, allowing the heart to fill.\n• E — Equipment & Monitors: Arterial lines and CVP transducers zeroed and re-calibrated; pulmonary artery catheter pulled back into PA.\n• A — Anaesthesia & Ventilation: RESUME MECHANICAL VENTILATION! Restart 100% O2, inspect bilateral lung expansion, and re-establish volatile agent or propofol infusion to prevent awareness during rewarming.\n• R — Rate & Inotropes: Infusions of vasoactive agents (norepinephrine, epinephrine, vasopressin, milrinone) started as indicated by TEE contractility and SVR.\n• T — Transfusion & Protamine: Once separation is stable and venous cannula removed, protamine is administered slowly to reverse heparin."
+      }
+    ]
+  });
+
+  topics.push({
+    id: "thrive-hfno-apneic-oxygenation",
+    cat: "equipment",
+    name: "THRIVE & High-Flow Nasal Oxygen (HFNO) — Apneic Oxygenation & Micro-Ventilation",
+    short: "THRIVE & HFNO",
+    tags: ["THRIVE", "HFNO", "Apneic Oxygenation", "Difficult Airway", "Optiflow", "Tubeless ENT"],
+    tagline: "Physiology of avenous oxygen uptake, cardiogenic oscillations, PEEP generation, safe apnea time extension, and shared-airway ENT surgery",
+    source: "Patel & Nouraei, Transnasal Humidified Rapid-Insufflation Ventilatory Exchange (THRIVE) in difficult airway management, Anaesthesia (2015); Miller's Anesthesia, 10th ed., Ch. 44; Difficult Airway Society (DAS) Guidelines; UpToDate \"High-flow nasal cannula oxygen therapy in adults\" (2025).",
+    sections: [
+      {
+        h: "Principles of High-Flow Nasal Oxygen & Dedicated Equipment",
+        b: "High-Flow Nasal Oxygen (HFNO), commercialized as Optiflow and popularized in anaesthesia as Transnasal Humidified Rapid-Insufflation Ventilatory Exchange (THRIVE), delivers high-flow, conditioned oxygen therapy via specialized equipment:\n\n1. Gas Conditioning & Delivery System:\nDelivers 100% oxygen at flow rates reaching 50 to 70 L/min in adults (or 1 to 2 L/kg/min in children). Delivering high gas flows without conditioning would instantaneously destroy respiratory ciliated mucosa; therefore, the gas is passed through an active heated pass-over humidifier, delivering gas heated to core body temperature (37°C) and 100% relative humidity (yielding an absolute humidity of 44 mg H2O/L). Heated breathing tubes incorporate internal spiral heating wires that eliminate condensational 'rainout' along the circuit.\n\n2. Patient Interface:\nAdministered via soft, wide-bore silicone nasal prongs that occlude approximately 50% of the patient's nares. Unlike tight-fitting non-invasive ventilation masks, HFNO prongs leave an open circumferential air gap, allowing continuous passive expiration and gas venting through the nose and mouth.",
+        images: [
+          {
+            src: "assets/references/thrive-hfno-nasal-cannula.png",
+            alt: "High Flow Nasal Cannula HFNO THRIVE interface",
+            caption: "High-Flow Nasal Cannula (HFNO / THRIVE Interface): Soft silicone wide-bore contoured nasal prongs with lightweight corrugated heated tubing delivering high-velocity humidified oxygen."
+          }
+        ]
+      },
+      {
+        h: "Physiological Mechanisms: Avenous Difference, PEEP & Micro-Ventilation",
+        b: "THRIVE provides four synergistic physiological actions that sustain oxygenation and gas exchange during total apnoea:\n\n1. Avenous Difference Apneic Oxygenation:\nIn an apneic patient with a patent airway, alveolar oxygen consumption into the pulmonary capillary blood continues at approximately 250 mL/min. However, because CO2 is highly soluble in blood and tissues, only about 20 mL/min of CO2 moves from pulmonary blood into the alveoli during apnoea. This creates an uneven gas balance: 250 mL of O2 leaves the alveoli while only 20 mL of CO2 enters, generating a continuous net subatmospheric pressure gradient of -1 to -2 cmH2O inside the lungs. This negative pressure pulls oxygen continuously from the pharynx down the tracheobronchial tree into the alveoli by bulk convective flow, independent of diaphragmatic movement.\n\n2. Continuous Dynamic PEEP Generation:\nHigh-velocity gas flows (50–70 L/min) create resistance against expiratory gas flow, generating dynamic positive end-expiratory pressure (PEEP) of 3 to 7 cmH2O (with mouth closed, and 1.5–3 cmH2O with mouth open). This PEEP splints open soft pharyngeal tissues, prevents atelectasis in dependent lung zones, and expands Functional Residual Capacity (FRC).\n\n3. Continuous Dead Space CO2 Washout:\nHigh gas flows continuously flush out exhaled, stagnant carbon dioxide from the anatomical dead space of the nasopharynx and supraglottis, transforming the upper airway into a continuous reservoir of 100% oxygen.\n\n4. Micro-Ventilation via Cardiogenic Oscillations:\nThe mechanical pulsation of the heart and great vessels transmits vibrational kinetic energy across the tracheobronchial tree, creating micro-convection and enhanced gas mixing. This cardiogenic oscillation clears CO2 even during absolute neuromuscular paralysis: with THRIVE, arterial CO2 rises at only ~0.15 to 0.24 kPa/min (1.1 to 1.8 mmHg/min), compared to 0.4 to 0.6 kPa/min during traditional static apneic oxygenation.",
+        pearl: "Cardiogenic oscillation is the secret engine of THRIVE: the physical beating of the heart against the bronchi creates microscopic convective gas eddies that clear CO2 during complete drug-induced neuromuscular paralysis."
+      },
+      {
+        h: "Safe Apnea Time Extension & Clinical Applications",
+        b: "1. Extension of Safe Apnoea Time:\nStandard preoxygenation with 100% O2 via a tight-fitting face mask provides a safe apnoea time (time until SpO2 drops to 90%) of roughly 3 to 6 minutes in healthy adults, and <2 to 3 minutes in obese or obstetric patients. In stark contrast, continuous THRIVE pre- and per-oxygenation extends the safe apnoea time to 30 to 65+ minutes in patients with normal pulmonary compliance and patent airways.\n\n2. Clinical Indications in Anaesthesia:\n• Shared-Airway ENT Surgery ('Tubeless Anaesthesia'): Microlaryngoscopy, vocal cord biopsy, vocal fold polyp excision, and subglottic stenosis laser resection without an endotracheal tube in the field, giving the surgeon an unobstructed view of the vocal cords.\n• Anticipated Difficult Airway & RSI: Applied before induction and continued seamlessly throughout neuromuscular blockade, direct laryngoscopy, or videolaryngoscopy until the trachea is intubated ('apneic peroxygenation').\n• Morbidly Obese & Parturient Patients: High baseline oxygen consumption and low FRC make these patients prone to rapid desaturation; THRIVE prevents rapid hypoxic crashes during airway management.\n• Post-Extubation High-Risk Patients: Provides heated humidification and PEEP support to prevent post-extubation atelectasis and stridor."
+      },
+      {
+        h: "Limitations, Contraindications & Critical Hazards",
+        b: "• Upper Airway Complete Obstruction: STRICT CONTRAINDICATION. THRIVE relies entirely on passive gas egress through the mouth and pharynx. If the airway is completely obstructed (laryngeal mass, foreign body, acute epiglottitis), high-flow oxygen cannot escape, causing intra-thoracic air trapping, alveolar rupture, pneumothorax, or fatal tension pneumothorax.\n• Base of Skull Fractures & Severe Midface Trauma: High nasal pressure carries the danger of tension pneumocephalus or subcutaneous air dissection.\n• Unprotected Airway: THRIVE does not protect against pulmonary aspiration of gastric contents; it is NOT a substitute for a cuffed endotracheal tube in full-stomach patients.\n• Progressive Hypercapnic Acidosis: While CO2 rise is blunted, it is not eliminated. During prolonged apnoea (>45–60 minutes), arterial pH gradually drops (pH < 7.15), which can provoke ventricular arrhythmias in patients with severe underlying cardiac disease."
+      }
+    ]
+  });
+
+  topics.push({
+    id: "jet-ventilation-hfjv-emergency",
+    cat: "equipment",
+    name: "Jet Ventilation — High-Frequency Jet Ventilation (HFJV) & Emergency Transtracheal Jet Ventilation (TTJV)",
+    short: "Jet Ventilation & HFJV",
+    tags: ["Jet Ventilation", "HFJV", "TTJV", "CICO", "Venturi Principle", "Barotrauma"],
+    tagline: "Venturi entrainment physics, high-frequency non-convective gas transport, elective microlaryngeal jetting, emergency cricothyroidotomy rescue, and catastrophic barotrauma hazards",
+    source: "Miller's Anesthesia, 10th ed., Ch. 82 (Anesthesia for Thoracic and Airway Surgery); Difficult Airway Society (DAS) Guidelines: \"Cannot Intubate, Cannot Oxygenate\" (CICO); Dorsch & Dorsch, Understanding Anesthesia Equipment, 5th ed.; UpToDate \"Emergency front-of-neck airway in adults\" (2025).",
+    sections: [
+      {
+        h: "Physics of Jet Delivery: Venturi Entrainment & Non-Convective Gas Transport",
+        b: "Jet ventilation delivers pulsed jets of high-pressure driving gas (1.5 to 4.0 bar / 20 to 50 psi) through a narrow-bore injector nozzle (internal diameter 0.8 to 1.5 mm). It operates via unique physical and fluid mechanical principles:\n\n1. The Venturi Entrainment Principle:\nAccording to Bernoulli's principle, as gas passes through a narrow nozzle, velocity accelerates dramatically while lateral pressure drops below atmospheric. This high-velocity jet stream creates a localized negative pressure vortex at the nozzle tip, entraining surrounding air or humidified supplemental oxygen. The entrained gas volume combines with the jet driving volume, delivering a total tidal volume significantly larger than the primary jet pulse itself.\n\n2. High-Frequency Jet Ventilation (HFJV) Mechanisms:\nIn standard mechanical ventilation, gas exchange occurs via bulk convective flow (tidal volume > anatomical dead space). In contrast, HFJV delivers very small tidal volumes (1 to 3 mL/kg — often LESS than anatomical dead space) at high respiratory rates (100 to 600 breaths/min or 1.5 to 10 Hz). Gas transport occurs via non-convective physical mechanisms:\n• Bulk Convection: To proximal conducting airways.\n• Taylor-Type Turbulent Dispersion: Rapid axial dispersion driven by turbulent velocity profiles.\n• Pendelluft: Out-of-phase gas redistribution between adjacent alveoli with differing regional time constants.\n• Molecular Diffusion: Across the alveolar-capillary membrane.\n• Asymmetric Velocity Profiles: Inspiratory gas travels down the centre of the airway lumen at high velocity, while expiratory gas exits concurrently along the peripheral airway margins.",
+        images: [
+          {
+            src: "assets/references/jet-ventilation-alveolar-mechanics.png",
+            alt: "Drawing of air movement in alveoli during jet ventilation",
+            caption: "Alveolar Gas Transport in Jet Ventilation: Schematic of asymmetric velocity profiles showing central inspiratory high-velocity jet stream and peripheral concentric expiratory gas egress."
+          }
+        ]
+      },
+      {
+        h: "Elective HFJV in Shared-Airway ENT & Thoracic Surgery",
+        b: "Elective jet ventilation is widely utilized in laryngotracheal surgery, rigid bronchoscopy, and tracheal resection:\n\n1. Supraglottic Jet Ventilation:\nA specialized suspension laryngoscope with an integrated jet nozzle delivers pulses from above the vocal cords. Provides completely unobstructed surgical access, but risks gastric distension and vocal cord drying.\n\n2. Subglottic / Infraglottic Jet Ventilation:\nA narrow, laser-resistant catheter (e.g. Hunsaker Mon-Jet or Benjamin catheter, 2.5 to 3.0 mm OD) is passed through the glottis into the subglottic trachea. Delivers reliable ventilation while leaving the surgical field motionless and clear of bulky endotracheal tubes. Requires total intravenous anaesthesia (TIVA with propofol/remifentanil), because volatile anaesthetic vapours cannot be accurately dosed or delivered through open jet circuits."
+      },
+      {
+        h: "Emergency Transtracheal Jet Ventilation (TTJV) in the CICO Algorithm",
+        b: "Emergency Transtracheal Jet Ventilation (TTJV) is a critical rescue modality in the Difficult Airway Society (DAS) and ASA 'Cannot Intubate, Cannot Oxygenate' (CICO) algorithm:\n\n1. Needle Cricothyroidotomy Technique:\nA large-bore, kink-resistant cannula (14-gauge or 12-gauge, e.g. Cook Melker or Ravussin cannula) attached to a 5 mL syringe half-filled with saline is inserted through the cricothyroid membrane at a 45-degree angle caudally. Continuous gentle aspiration is maintained during advancement; sudden aspiration of free air bubbles confirms tracheal entry. The flexible cannula is advanced into the trachea and the metal needle is withdrawn.\n\n2. Connection & Pressure Regulation:\nThe cannula is connected to a manual jet injector (e.g. Manujet 4000 or Sanders injector) attached to a 50 psi wall oxygen source. The driving pressure must be regulated: 1.0 to 1.5 bar for children; 2.0 to 3.0 bar for adults.\n\n3. Strict Duty Cycle (Inspiratory-to-Expiratory Ratio):\nThe trigger is depressed for 1 second (inspiration) followed by a MANDATORY 3 to 4 seconds release (expiration). An I:E ratio of 1:3 or 1:4 is essential to allow adequate passive exhalation through the upper airway.",
+        images: [
+          {
+            src: "assets/references/emergency-jet-cricothyrotomy-kit.jpg",
+            alt: "Emergency needle cricothyroidotomy and jet ventilation kit",
+            caption: "Emergency Front-of-Neck Access & Jet Ventilation Kit: Cricothyroidotomy needle cannula, syringe for tracheal aspiration confirmation, and high-pressure jet connection system."
+          }
+        ]
+      },
+      {
+        h: "CATASTROPHIC HAZARD: Pulmonary Barotrauma & Mandatory Passive Expiration",
+        b: "Jet ventilation carries one critical, lethal physical hazard that every anaesthesiologist must know cold:\n\n1. The Absolute Requirement for Passive Expiration:\nJet ventilators blow gas IN under high driving pressure (20–50 psi), but they CANNOT pull gas OUT. Expiration relies 100% on passive recoil of the lungs and chest wall, with gas escaping upward through the patient's glottis, pharynx, and open mouth. If the upper airway is completely obstructed by vocal cord spasm, tumor, hematoma, or surgical packing, the injected gas cannot escape! Within 2 to 3 breaths, intra-alveolar pressure surges catastrophically, producing instantaneous tension pneumothorax, pneumomediastinum, massive subcutaneous emphysema, and cardiac arrest.\n\n2. Mandatory Safety Rules:\n• Always verify upper airway patency before triggering a jet pulse; if the chest does not fall passively, STOP jetting immediately!\n• Pre-tracheal / Subcutaneous Placement: If the cannula dislodges from the trachea into the pre-tracheal tissue, high-pressure jetting inflates the neck tissues like a balloon, causing massive surgical emphysema that completely compresses the trachea and destroys anatomical landmarks for subsequent surgical tracheostomy.",
+        pitfall: "Never activate jet ventilation if the upper airway is completely obstructed. Gas blown in under 50 psi has no escape route, causing fatal bilateral tension pneumothorax within seconds."
+      }
+    ]
   });
 
   window.KN_STUDY = { categories, topics, drugs };
