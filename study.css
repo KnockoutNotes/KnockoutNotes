@@ -592,14 +592,18 @@ body[data-content-page="study"] .st-page.container {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
-  will-change: transform;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  transform: none;
 }
-/* "Pops out" on hover/cursor-tilt (see initCardTilt() in study-ui.js) rather
-   than sitting flat on the page. */
-.st-card:hover {
-  box-shadow: 0 22px 44px -18px rgba(0, 0, 0, 0.5), var(--shadow-md);
-  border-color: var(--accent-cyan);
+/* Subtle border highlight on touching, clicking, or hovering over reading cards */
+.st-card:hover,
+.st-card:active,
+.st-card:focus-within,
+.st-card.st-card-active {
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 4px 18px rgba(56, 189, 248, 0.12), var(--shadow-sm);
+  background: rgba(15, 23, 42, 0.78);
+  transform: none !important;
 }
 @media (prefers-reduced-motion: reduce) {
   .st-card { transition: none; }

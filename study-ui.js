@@ -670,6 +670,15 @@
 
   function videoCardHTML(v) {
     if (!v || (!v.src && !v.externalUrl)) return "";
+    let instaEmbedHTML = "";
+    if (v.externalUrl && /instagram\.com\/(?:p|reel)\/([A-Za-z0-9_-]+)/.test(v.externalUrl)) {
+      const match = v.externalUrl.match(/instagram\.com\/(?:p|reel)\/([A-Za-z0-9_-]+)/);
+      if (match && match[1]) {
+        instaEmbedHTML = `<div class="st-instagram-embed-wrap" style="max-width:540px;margin:0 auto 14px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);background:rgba(0,0,0,0.3);box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+          <iframe src="https://www.instagram.com/p/${match[1]}/embed/" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy" style="display:block;border:none;"></iframe>
+        </div>`;
+      }
+    }
     return `<section class="st-card st-reveal st-video-card" aria-label="${esc(v.title || "Video Demonstration")}">
       <h3>🎬 ${esc(v.title || "Video Demonstration")}</h3>
       <div class="st-card-body">
@@ -679,7 +688,11 @@
             Your browser does not support HTML5 video playback.
           </video>
         </div>` : ""}
-        ${v.externalUrl ? `<p class="st-video-ext" style="margin-top:10px;"><a href="${esc(v.externalUrl)}" target="_blank" rel="noopener" class="st-video-link-btn" style="display:inline-flex;align-items:center;gap:8px;padding:9px 18px;background:linear-gradient(135deg,#e11d48,#be123c);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;box-shadow:0 2px 10px rgba(225,29,72,0.35);"><span>▶</span> ${esc(v.externalLabel || "Watch on Instagram Reel")} ↗</a></p>` : ""}
+        ${instaEmbedHTML}
+        ${v.externalUrl ? `<div class="st-video-ext" style="margin-top:10px;">
+          <a href="${esc(v.externalUrl)}" target="_blank" rel="noopener" class="st-video-link-btn" style="display:inline-flex;align-items:center;gap:8px;padding:9px 18px;background:linear-gradient(135deg,#e11d48,#be123c);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;box-shadow:0 2px 10px rgba(225,29,72,0.35);"><span>▶</span> ${esc(v.externalLabel || "Watch on Instagram Reel")} ↗</a>
+          <span style="display:block;margin-top:8px;font-size:12.5px;color:#94a3b8;word-break:break-all;"><strong style="color:#cbd5e1;">Direct Link:</strong> <a href="${esc(v.externalUrl)}" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:underline;">${esc(v.externalUrl)}</a></span>
+        </div>` : ""}
       </div>
     </section>`;
   }
@@ -1489,9 +1502,12 @@
   // including ones rendered after this runs) so the reading cards and
   // poster tiles feel alive rather than flat, and pop toward the cursor
   // instead of sitting dead on the page.
+  /* ---------------------------------------------------------------- 3D tile tilt */
+  // Mouse-tracked 3D tilt is strictly scoped to poster grid tiles (.st-tile)
+  // so reading cards (.st-card) in the detail view remain completely flat and stable.
   function initCardTilt() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const SELECTOR = ".st-card, .st-tile";
+    const SELECTOR = ".st-tile";
     let rAF = null;
     let activeNode = null;
 
@@ -1512,20 +1528,31 @@
         const rawRotY = ((x - rect.width / 2) / (rect.width / 2)) * 4;
         const rotateX = Math.max(-4, Math.min(4, rawRotX)).toFixed(2);
         const rotateY = Math.max(-4, Math.min(4, rawRotY)).toFixed(2);
-        const isTile = node.classList.contains("st-tile");
-        const scale = isTile ? 1.06 : 1.012;
-        node.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale}) translateZ(8px)`;
+        node.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.06) translateZ(8px)`;
       });
     }, { passive: true });
 
-    // mouseleave doesn't bubble, so it can't be delegated from document —
-    // mouseout (which does bubble) plus a relatedTarget check is the
-    // standard way to detect "the pointer left this card" here.
     document.addEventListener("mouseout", (e) => {
       if (activeNode && (!e.relatedTarget || !activeNode.contains(e.relatedTarget))) {
         activeNode.style.transform = "";
         activeNode = null;
       }
+    });
+  }
+
+  // Reading cards (.st-card) in Study Mode: subtle border highlight on touch or click,
+  // completely eliminating the sticking 3D tilt issue on touch devices.
+  function initCardHighlight() {
+    document.addEventListener("pointerdown", (e) => {
+      const card = e.target.closest ? e.target.closest("#stDetail .st-card") : null;
+      if (!card) {
+        document.querySelectorAll("#stDetail .st-card-active").forEach((c) => c.classList.remove("st-card-active"));
+        return;
+      }
+      document.querySelectorAll("#stDetail .st-card-active").forEach((c) => {
+        if (c !== card) c.classList.remove("st-card-active");
+      });
+      card.classList.add("st-card-active");
     });
   }
 
@@ -1535,6 +1562,7 @@
     initFullscreen();
     initNavAutoHide();
     initCardTilt();
+    initCardHighlight();
     route();
   }
 
