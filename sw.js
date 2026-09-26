@@ -5,7 +5,7 @@
 // - Stale-While-Revalidate with safe response cloning for static app shell assets
 // ==========================================================================
 
-const CACHE_NAME = "knockoutnotes-cache-v49";
+const CACHE_NAME = "knockoutnotes-cache-v50";
 
 const PRECACHE_ASSETS = [
   "/",
@@ -74,7 +74,9 @@ const PRECACHE_ASSETS = [
   "/vendor/jspdf/jspdf.plugin.autotable.min.js",
   "/knockoutnotes_icon.png",
   "/manifest.json",
-  "/manifest-calculators.json"
+  "/manifest-calculators.json",
+  "/assets/references/ecmo-circuit-diagram.png",
+  "/assets/references/haemodialysis-circuit-diagram.jpg"
 ];
 
 self.addEventListener("install", (event) => {

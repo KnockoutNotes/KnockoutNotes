@@ -12,7 +12,7 @@
   const DATA = window.KN_STUDY;
   // Every drug section renders in one continuous scroll now (no tabs) —
   // this list just drives the order of each card in drugFullPanelHTML().
-  const DRUG_SECTIONS = ["overview", "structure", "pd", "pk", "dosage", "offlabel", "complications"];
+  const DRUG_SECTIONS = ["overview", "structure", "pd", "pk", "dosage", "offlabel", "complications", "references"];
 
   const $ = (sel, root = document) => root.querySelector(sel);
   const esc = (s) => String(s == null ? "" : s)
@@ -493,6 +493,11 @@
       case "dosage": return card("Dosage (FDA-Approved)", para(d.dosage));
       case "offlabel": return card("Off-Label Uses", para(d.offLabel));
       case "complications": return card("Complications", para(d.complications));
+      case "references": {
+        if (!d.references || (Array.isArray(d.references) && !d.references.length)) return "";
+        const refs = Array.isArray(d.references) ? d.references : [d.references];
+        return card("Standard References & Prescribing Guidelines", `<ul class="st-bullets">${refs.map((r) => `<li>📚 ${highlightKeyValues(esc(r))}</li>`).join("")}</ul>`);
+      }
       default: return "";
     }
   }
