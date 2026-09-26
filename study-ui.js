@@ -574,7 +574,12 @@
       return card(s.h, body);
     }).join("");
     const videoHTML = t.video ? videoCardHTML(t.video) : "";
-    return sectionsHTML + videoHTML;
+    let refHTML = "";
+    if (t.references && t.references.length) {
+      const refs = Array.isArray(t.references) ? t.references : [t.references];
+      refHTML = card("Standard References & Clinical Guidelines", `<ul class="st-bullets">${refs.map((r) => `<li>📚 ${highlightKeyValues(esc(r))}</li>`).join("")}</ul>`);
+    }
+    return sectionsHTML + videoHTML + refHTML;
   }
 
   /* ------------------------------------------------- Mapleson circuit diagrams
