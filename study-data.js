@@ -1931,7 +1931,114 @@ topics.push({
         h: "Classification of Infusion Delivery Pumps & TCI Pharmacokinetic Models",
         b: "Intravenous drug delivery systems are classified by electromechanical pump architecture and mathematical pharmacokinetic target algorithms:\n\n1. Mechanical Infusion Pump Classification:\n\u2022 Syringe Drivers (Syringe Infusion Pumps):\n  - A stepper motor turns a high-precision lead screw that drives a pusher block against the syringe plunger.\n  - The gold standard for potent vasoactive infusions (norepinephrine, epinephrine) and TIVA hypnotics (propofol, remifentanil) where flow errors <1% are mandatory.\n\u2022 Volumetric Peristaltic Infusion Pumps:\n  - Linear peristaltic finger cams sequentially compress flexible IV line tubing to propel fluid volumes. Designed for high volume maintenance fluids, blood transfusions, and enteral feedings.\n\u2022 Elastomeric Balloon Pumps:\n  - Disposable non-electric pumps utilizing the elastic recoil of an elastomeric balloon through a micro-bore flow restrictor; ideal for postop ambulatory continuous nerve blocks.\n\u2022 Patient-Controlled Analgesia (PCA) Pumps:\n  - Microprocessor-controlled syringe or cassette pumps programmed with demand bolus dose, lockout interval (e.g. 5\u201310 min), and background infusion limits.\n\n2. Target-Controlled Infusion (TCI) Pharmacokinetic Model Classification:\n\u2022 Marsh Model (Propofol):\n  - Weight-proportional linear model (V₁ = 0.228 L/kg). Historically tuned for Plasma Targeting (C<sub>p</sub>). Rapid induction bolus based on total weight, but can overdose elderly and obese patients.\n\u2022 Schnider Model (Propofol):\n  - Age-, height-, weight-, and gender-adjusted model with fixed small central compartment volume (V₁ = 4.27 L). Uses James formula for Lean Body Mass (LBM). Optimized for Effect-Site Targeting (C<sub>e</sub>).\n\u2022 Eleveld Model (Propofol \u2014 Modern Allometric Standard):\n  - Validated across all ages from neonates to elderly (99 years) and morbidly obese up to 160 kg using allometric scaling (W<sup>0.75</sup>) and maturation functions.\n\u2022 Minto Model (Remifentanil):\n  - Age- and LBM-adjusted model with rapid equilibration (t<sub>½</sub>k<sub>e0</sub> ≈ 1.1 min); decreases dose requirements automatically with advancing age."
       },
+            {
+        h: "Master Classification & Comparison Table of Infusion Pumps",
+        table: {
+          headers: ["Pump Type & Drive", "Mechanism & Pumping Action", "Flow Rate Range & Accuracy", "Typical Settings & Drugs", "Power & Portability", "Key Advantages", "Primary Limitations"],
+          rows: [
+            [
+              "Syringe Driver (Perfusor)",
+              "Stepper motor + precision lead screw driving a pusher block against syringe plunger",
+              "0.1 to 1200 mL/h; Accuracy: ±1% to ±2%",
+              "OR, ICU, CCU; Potent vasoactives (norepi, epi), TIVA (propofol, remifentanil), insulin",
+              "Mains electric + internal rechargeable battery; Pole-mounted",
+              "Ultra-precise, pulseless flow at microscopic rates; rapid occlusion detection; minimal dead space",
+              "Limited fluid volume (max 50–60 mL per syringe); syringe size/brand calibration mismatch risk"
+            ],
+            [
+              "Volumetric Peristaltic Pump",
+              "Linear motorized finger cams or rotary rollers progressively occluding flexible PVC tubing",
+              "1 to 999 mL/h; Accuracy: ±5%",
+              "General wards, HDU, OR; Maintenance fluids, crystalloids, colloids, blood transfusions, TPN",
+              "Mains electric + battery backup; Pole-mounted",
+              "Handles high volumes and large bags (500–3000 mL); wide flow range; automated air-in-line detection",
+              "Tubing fatigue alters accuracy over 24–48h; not suitable for ultra-low dose titration (<2 mL/h)"
+            ],
+            [
+              "Piston / Cassette Pump",
+              "Reciprocating motor-driven micro-piston chamber with directional inlet/outlet check valves",
+              "0.1 to 999 mL/h; Accuracy: ±2% to ±3%",
+              "Specialized oncology, ICU, ambulatory PCA; Chemotherapy, analgesia, targeted hydration",
+              "Mains + battery; Stationary or compact portable",
+              "Superior volumetric accuracy compared to peristaltic pumps; unaffected by tubing elasticity decay",
+              "Requires dedicated proprietary cassette sets; higher disposable consumable cost"
+            ],
+            [
+              "Elastomeric Pump ('Isomeric' Balloon)",
+              "Non-electric elastic recoil of an elastomeric balloon through a micro-bore glass/silica capillary restrictor",
+              "Fixed rates (0.5 to 10 mL/h); Accuracy: ±10% to ±15%",
+              "Ambulatory regional anaesthesia (CPNB), post-op surgical wound infiltration (ON-Q), home 5-FU, IV antibiotics",
+              "Zero electricity; Ultra-portable pocket/pouch wearable",
+              "Completely silent; zero battery/electrical hazards; disposable single-use; tamper-proof; allows full patient mobility",
+              "Fixed pre-set flow rate; flow rate varies with skin/room temperature (2–3%/°C), fluid viscosity, and height"
+            ],
+            [
+              "Electronic Ambulatory PCA Pump",
+              "Miniaturized electromechanical motor (syringe/cassette) with patient demand button & lockout logic",
+              "Basal: 0–10 mL/h; Bolus: 0.5–5 mL with lockout (5–15 min); Accuracy: ±2% to ±3%",
+              "Post-surgical acute pain wards, palliative care, labor analgesia (PCEA); Opioids, local anaesthetics",
+              "Compact battery-powered (rechargeable/AA); Wearable shoulder pack",
+              "Programmable flexibility (basal, bolus, lockout, max limits); electronic event logging; dose error reduction",
+              "Complex programming errors; requires patient education; battery depletion risks; alarms disrupt sleep"
+            ],
+            [
+              "Target-Controlled Infusion (TCI) Pump",
+              "Microprocessor syringe driver solving real-time 3-compartment mammillary PK differential equations",
+              "Dynamic automated rate (0 to 1200 mL/h) matching Cp or Ce; Accuracy: ±1% to ±2%",
+              "OR / Anaesthesia suites; TIVA / TCI induction and maintenance (Propofol, Remifentanil, Sufentanil)",
+              "Mains electric + battery; Integrated workstation",
+              "Eliminates manual rate calculations; maintains steady brain/plasma targets; rapid predictable emergence",
+              "Model mismatch in extreme demographics (e.g. James LBM in morbid obesity); requires specialized TCI hardware"
+            ],
+            [
+              "Spring-Powered / Vacuum Pump",
+              "Mechanical compression spring or vacuum chamber exerting steady force on a drug reservoir",
+              "Fixed or multi-dial restrictor; Accuracy: ±10% to ±15%",
+              "Battlefield medicine, disaster zones, outpatient continuous analgesia",
+              "Zero electricity; Disposable mechanical",
+              "Immune to electromagnetic interference; operates in extreme environments; rugged and lightweight",
+              "Spring force declines as reservoir empties (non-linear delivery profile unless compensated)"
+            ]
+          ]
+        }
+      },
       {
+        h: "Elastomeric ('Isomeric') Infusion Pumps vs Electronic Pumps: Physics, Poiseuille Flow & Clinical Advantages",
+        b: "In clinical practice and examinations, the term 'isomeric pump' is a frequent colloquial/phonetic reference to the elastomeric balloon pump (such as ON-Q, Homepump, Baxter Intermate). These non-electronic disposable devices are increasingly utilized for outpatient continuous peripheral nerve blocks (CPNB), continuous wound catheter infiltration, and ambulatory chemotherapy.\n\n" +
+           "1. Physical Drive Mechanics & Hagen-Poiseuille Law:\n" +
+           "• The Elastomeric Reservoir: Consists of an inner layer of medical-grade silicone or polyisoprene elastomer enclosed within a rigid or soft protective plastic outer shell. When filled with local anaesthetic or drug solution, the stretched elastomer exerts a constant elastic recoil pressure (typically 250 to 500 mmHg / 5 to 10 psi).\n" +
+           "• Flow Restriction via Hagen-Poiseuille Equation:\n" +
+           "  Because the elastomeric balloon delivers a relatively steady internal driving pressure (ΔP), flow rate (Q) is strictly governed by a precision micro-bore glass or silica capillary restrictor according to Hagen-Poiseuille's law:\n" +
+           "  Q = (π · ΔP · r⁴) / (8 · η · L)\n" +
+           "  Where r is capillary internal radius, L is capillary length, and η is dynamic fluid viscosity.\n\n" +
+           "2. Key Clinical Advantages of Elastomeric ('Isomeric') Pumps Over Electronic Pumps:\n" +
+           "• 1. Complete Patient Mobility & Independence (True Ambulatory Care):\n" +
+           "  Elastomeric pumps weigh only 100–150 grams empty and fit into a discreet waist pouch, pocket, or shoulder sling. Patients can be discharged home on postoperative day 0 following major shoulder (interscalene), knee (adductor canal), or foot (popliteal sciatic) surgery while receiving continuous multi-day perineural analgesia.\n" +
+           "• 2. Absolute Battery & Electrical Independence:\n" +
+           "  Requires zero battery changes, zero electrical outlets, zero charging cords, and has no internal electronics that can short-circuit or fail when exposed to moisture or accidental splashing.\n" +
+           "• 3. Complete Immunity to Electromagnetic Interference (EMI):\n" +
+           "  Contains zero metallic or electronic parts; completely safe in MRI suites, during surgical electrocautery (diathermy), and near radiofrequency ablation devices.\n" +
+           "• 4. Zero Programming Errors & Inherent Safety:\n" +
+           "  Eliminates the #1 cause of electronic pump disasters: human data entry error (wrong rate, wrong decimal place, wrong drug concentration, or wrong library profile). The infusion rate is permanently pre-set during manufacturing by the physical dimensions of the capillary restrictor.\n" +
+           "• 5. Whisper-Silent Operation (Zero Noise Pollution):\n" +
+           "  Operates with zero acoustic output — no stepper motor clicks, gears, hums, or false-positive alarms (air-in-line, occlusion, low battery beeps), promoting uninterrupted sleep and recovery at home.\n" +
+           "• 6. Tamper-Proof & High Patient Compliance:\n" +
+           "  The hermetically sealed elastomeric balloon cannot be reprogrammed or bolused by unauthorized individuals, preventing patient-induced overdose.\n" +
+           "• 7. Intrinsic Self-Limiting Occlusion Pressure:\n" +
+           "  If a downstream catheter kinks, pressure cannot exceed the maximum elastic tension of the balloon (≤500 mmHg). Unlike electronic syringe pumps that can drive pressures up to 800–1000 mmHg and propel a dangerous 'compliance bolus' upon unkinking, elastomeric pumps simply halt flow safely until the kink is resolved.\n" +
+           "• 8. Zero Maintenance & No Cross-Contamination Overhead:\n" +
+           "  Single-use disposable design eliminates biomedical engineering maintenance, annual sensor recalibration, battery replacements, and between-patient hospital sanitization protocols.\n\n" +
+           "3. Physical Limitations & Clinical Variables Affecting Elastomeric Delivery Rates:\n" +
+           "• Temperature Sensitivity (The Viscosity Effect):\n" +
+           "  Per Poiseuille's law, flow rate is inversely proportional to fluid viscosity (η), and viscosity decreases as temperature rises. Flow restrictors are calibrated at 31°C–32°C (assumes the restrictor is taped in close contact with patient skin). A 1°C increase in temperature increases flow rate by 2% to 3%. If the restrictor hangs exposed in a cold room (20°C), delivery slows by 20% to 25%; conversely, applying a heating pad or fever can accelerate drug delivery significantly.\n" +
+           "• Solution Viscosity:\n" +
+           "  Pumps are calibrated for 0.9% saline or 5% dextrose. Highly concentrated local anaesthetics (e.g., 0.5% bupivacaine) or lipid solutions flow slower than dilute solutions (0.1%–0.2% ropivacaine).\n" +
+           "• Hydrostatic Pressure Gradient (Height Differential):\n" +
+           "  Placing the pump significantly higher than the catheter insertion site adds hydrostatic pressure (ρgh), increasing flow rate; wearing the pump significantly lower (e.g. at the ankle) decreases flow rate.\n" +
+           "• Non-Adjustable Flow Rate:\n" +
+           "  Once initiated, the flow rate cannot be easily titrated to match fluctuating pain scores unless specialized dual-rate or bolus-enabled elastomeric models (e.g. with on-demand PCA bolus button) are used."
+      },
+{
         h: "Drive Mechanics: Syringe Drivers vs Volumetric Infusion Pumps",
         b: "Intravenous drug delivery in modern anaesthesia is executed via two distinct mechanical architectures. Syringe drivers (perfusors) are purpose-built for low-volume, ultra-precise infusions (rates from 0.1 to 1200 mL/h) of potent vasoactive medications, insulin, and IV hypnotics (propofol, remifentanil). The driver mechanism consists of a microprocessor-controlled stepper motor coupled to a precision threaded lead screw with an anti-backlash drive nut, which advances a pusher block against the syringe plunger. Micro-stepping pulses divide each motor revolution into hundreds of sub-steps, delivering microscopic, pulseless increments. Optical encoders and potentiometer sensors verify syringe barrel diameter and flange position, while an in-line piezoelectric transducer continuously measures drive force to detect line occlusions. In contrast, volumetric infusion pumps are engineered for medium-to-high volume administration of maintenance crystalloids, blood products, and enteral nutrition (rates up to 999 mL/h). They operate via linear peristaltic mechanisms (a rhythmic sequence of motorized finger cams compressing flexible PVC tubing from top to bottom) or rotary peristaltic rollers, drawing fluid from an IV bag and displacing it forward against venous backpressure."
       },
