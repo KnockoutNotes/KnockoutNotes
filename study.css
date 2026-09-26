@@ -480,6 +480,11 @@ body[data-content-page="study"] .st-page.container {
 .st-tile[data-cat="local"],         .st-title-card[data-cat="local"]         { --poster-a: #0284c7; --poster-b: #0c2d48; }
 .st-tile[data-cat="pregnancy"],     .st-title-card[data-cat="pregnancy"]     { --poster-a: #db2777; --poster-b: #500724; }
 .st-tile[data-cat="examination"],   .st-title-card[data-cat="examination"]   { --poster-a: #0f9d74; --poster-b: #064e3b; }
+.st-tile[data-cat="antidiabetics"], .st-title-card[data-cat="antidiabetics"] { --poster-a: #dc2626; --poster-b: #7f1d1d; }
+.st-tile[data-cat="antihypertensives"], .st-title-card[data-cat="antihypertensives"] { --poster-a: #2563eb; --poster-b: #1e3a8a; }
+.st-tile[data-cat="steroids"],      .st-title-card[data-cat="steroids"]      { --poster-a: #9333ea; --poster-b: #581c87; }
+.st-tile[data-cat="alpha2"],        .st-title-card[data-cat="alpha2"]        { --poster-a: #0891b2; --poster-b: #155e75; }
+.st-tile[data-cat="miscellaneous"], .st-title-card[data-cat="miscellaneous"] { --poster-a: #059669; --poster-b: #064e3b; }
 
 .st-tile-molecule.st-has-canvas .st-tile-structure,
 .st-molecule-viewer.st-has-canvas .st-structure-svg {

@@ -755,6 +755,7 @@
       }
 
       const tableHTML = s.table ? renderSectionTableHTML(s.table) : "";
+      const secVideoHTML = s.video ? videoCardHTML(s.video) : "";
       const linkHTML = s.link ? `<div class="st-section-link-wrap" style="margin-top:14px;"><a href="${esc(s.link.url)}" class="st-pill st-pill-btn" style="display:inline-flex;align-items:center;gap:8px;padding:9px 18px;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;box-shadow:0 2px 10px rgba(37,99,235,0.35);">${esc(s.link.label || "Open Tool / Calculator")} ↗</a></div>` : "";
       let crossLinksHTML = "";
       if (s.crossLinks && Array.isArray(s.crossLinks)) {
@@ -768,6 +769,7 @@
         tableHTML +
         imagesHTML +
         diagramHTML +
+        secVideoHTML +
         linkHTML +
         crossLinksHTML;
       return card(s.h, body);

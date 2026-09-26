@@ -36,8 +36,13 @@
     { id: "opioids", label: "Opioids", icon: "💊", desc: "Perioperative opioid analgesics" },
     { id: "nsaids", label: "NSAIDs & Analgesics", icon: "🩹", desc: "Non-opioid multimodal analgesia" },
     { id: "vasopressors", label: "Vasopressors & Inotropes", icon: "❤️", desc: "Haemodynamic support agents" },
+    { id: "antihypertensives", label: "Antihypertensives", icon: "📉", desc: "Perioperative blood pressure management & acute hypertensive crisis agents" },
+    { id: "alpha2", label: "Alpha-2 Agonists", icon: "🧠", desc: "Centrally-acting sympatholytics, sedatives & anaesthetic adjuvants" },
     { id: "local", label: "Local Anaesthetics", icon: "🧊", desc: "Amide & ester local anaesthetics" },
-    { id: "pregnancy", label: "Drugs in Pregnancy", icon: "🤰", desc: "Uterotonics & obstetric pharmacology — labour, delivery & PPH management" }
+    { id: "steroids", label: "Corticosteroids", icon: "🛡️", desc: "Perioperative anti-inflammatory, antiemetic & stress-dose glucocorticoids" },
+    { id: "antidiabetics", label: "Antidiabetic Agents", icon: "🩸", desc: "Oral hypoglycaemics, GLP-1 receptor agonists & perioperative insulin management" },
+    { id: "pregnancy", label: "Drugs in Pregnancy", icon: "🤰", desc: "Uterotonics & obstetric pharmacology — labour, delivery & PPH management" },
+    { id: "miscellaneous", label: "Miscellaneous Drugs", icon: "🧪", desc: "Antiemetics, electrolyte concentrates, lipid rescue & malignant hyperthermia antidote" }
   ];
 
   const SRC = {
@@ -131,6 +136,441 @@
       "UpToDate \"Management of the difficult adult airway for general anesthesia\" (Wolters Kluwer, 2025/2026)."
     ]
   });
+    topics.push({
+    id: "anaesthesia-machine",
+    cat: "anaesthesia",
+    name: "Anaesthesia Machine & Breathing Circuits",
+    short: "Machine & Circuits",
+    tags: ["Workstation", "High pressure", "Intermediate pressure", "Low pressure", "Circle system", "Vaporizers"],
+    tagline: "Physical architecture across high, intermediate, and low pressure systems, gas pathways, vaporizers, and circle circuits",
+    source: "Miller's Anesthesia, 10th ed., Ch. 21–22 (Anesthesia Delivery Systems); Dorsch & Dorsch Understanding Anesthesia Equipment, 5th ed., Ch. 2–5; ASTM F1850 Standard Specification for Anesthesia Workstations.",
+    sections: [
+      {
+        h: "Three Pressure Systems Architecture & Gas Supply Pathway",
+        b: `The modern anaesthesia workstation is an integrated life-support apparatus engineered to receive compressed medical gases, meter their flows with absolute precision, vaporize liquid volatile anaesthetics into the gas stream, and deliver the resulting respirable mixture safely to the patient's breathing circuit.
+
+To understand machine mechanics and safety engineering, the workstation is physically divided into three distinct, sequentially regulated pressure zones separated by valves, regulators, and flow controls:
+
+1. High-Pressure System (Cylinder Supply: 45 to 150 bar / 600 to 2200 psi):
+• Extends from the medical gas cylinder supply up to the primary cylinder pressure regulator.
+• Components: Hanger yokes, Pin Index Safety System (PISS), Bodok seals, cylinder Bourdon pressure gauges, check valves, and primary pressure regulators.
+• Function: Receives gas stored under extreme pressure in compressed gas cylinders and reduces that variable pressure down to a stable intermediate working pressure (typically 45 psi / 3.1 bar).
+
+2. Intermediate-Pressure System (Pipeline & Regulated Gas: 3.5 to 4.0 bar / 50 to 55 psi):
+• Extends from the central hospital pipeline inlets (and output of primary cylinder regulators) up to the needle valves of the flowmeter assembly.
+• Components: Central pipeline inlet connections, Diameter Index Safety System (DISS) or NIST fittings, pipeline pressure gauges, in-line check valves, oxygen fail-safe proportioning systems, oxygen supply-failure warning whistle (Ritchie whistle), oxygen flush valve (35–75 L/min at 50 psi), second-stage regulators (where fitted), auxiliary oxygen flowmeter, and driving gas supply to the mechanical ventilator.
+• Function: Distributes gas at a uniform operating pressure of 50–55 psi, powering emergency bypass flushes and safety interlocks while protecting fragile flowmeters from pressure surges.
+
+3. Low-Pressure System (Flowmeters to Patient: <1 bar / ambient):
+• Extends downstream from the flowmeter needle valves and flow control knobs all the way to the Common Gas Outlet (CGO).
+• Components: Flowmeter control needle valves, precision glass Thorpe tubes (rotameters) or electronic flow sensors, minimum oxygen proportioning systems (hypoxic guard / Link-25), vaporizers and Selectatec mounting backbar manifold, backpressure check valves, and the Common Gas Outlet (CGO).
+• Function: Delivers the final custom-blended, volatile-enriched fresh gas flow into the patient's breathing circuit. This is the most delicate and leak-vulnerable section of the machine, evaluated before every case with the negative-pressure suction bulb test.`,
+        images: [
+          {
+            src: "assets/references/gas-supply-pathway-schematic.png",
+            alt: "Schematic Gas Supply Pathway in the Anaesthesia Workstation",
+            caption: "Schematic Gas Supply Pathway: Tracing medical gases from high-pressure cylinders and intermediate-pressure wall pipelines through regulators, fail-safe valves, flowmeters, vaporizers, and the common gas outlet (CGO)."
+          }
+        ],
+        video: {
+          title: "Anaesthesia Machine & Gas Delivery Systems Overview",
+          externalUrl: "https://www.instagram.com/p/DcqHv_Umc1o/?stkn=cDB1dGIwYW92cmJy",
+          externalLabel: "Watch on Instagram"
+        }
+      },
+      {
+        h: "High-Pressure System: Cylinders, Hanger Yokes, PISS & Primary Regulators",
+        b: `The high-pressure system receives gas stored in compressed medical gas cylinders mounted on the rear of the workstation. It operates under immense physical forces: up to 137 bar (2000 psi) for compressed gaseous Oxygen and Medical Air, and 51 bar (745 psi) for liquefied Nitrous Oxide at 20°C:
+
+1. Hanger Yoke Assembly:
+• The heavy metal bracket supporting the cylinder on the machine backbar.
+• Components:
+  - Clamping / retaining screw: Screws tightly against the conical depression on the back of the cylinder post to force the cylinder valve firmly against the yoke face.
+  - Gas inlet nipple: Protrudes from the yoke into the cylinder valve discharge port.
+  - Unidirectional plunger check valve: Sits inside the yoke bore. It prevents gas from escaping into room air when a cylinder is removed from the yoke, and prevents transfilling of gas from a high-pressure cylinder into an adjacent lower-pressure cylinder when two yokes are connected in parallel.
+  - Pin Index Safety System (PISS) pins.
+
+2. Pin Index Safety System (PISS):
+• A mechanical geometric safety standard (ISO 407 / CGA V-1) engineered to physically prevent mounting the wrong gas cylinder onto a designated yoke.
+• Geometry: Two stainless steel pins (4 mm diameter, 6 mm length) protrude from the yoke face. They mate with matching holes drilled into the valve block on the cylinder neck. The pins are situated on a 9/16-inch (14.3 mm) diameter circle centered on the gas discharge orifice.
+• Standard Pin Index Coordinates (Pin positions numbered 1 to 7 clockwise):
+  - Oxygen: 2, 5
+  - Nitrous Oxide: 3, 5
+  - Medical Air: 1, 5
+  - Entonox (50% O₂ / 50% N₂O): 7 (single center pin)
+  - Carbon Dioxide (liquid >7%): 1, 6
+  - Heliox (helium/oxygen): 2, 4 (for >80% He) or 4, 6
+• Critical Safety Rule: Never force a cylinder onto a yoke. Never tamper with, file down, or remove index pins. Never stack more than one Bodok seal (stacking two seals bypasses the pin length, allowing misconnection of a lethal gas!).
+
+3. Bodok Seal:
+• A non-combustible elastomeric washer (neoprene) with a peripheral aluminum reinforcing ring.
+• Forms an airtight compression seal between the cylinder valve post and the yoke inlet nipple.
+• Inspect every seal before mounting: must be clean, pliable, free of cracks, and strictly ONE washer only.
+
+4. Cylinder Pressure Gauges:
+• Heavy-duty Bourdon tube gauges mounted on the front or side of the workstation.
+• Measures internal cylinder pressure. A curved, hollow, oval-cross-section copper-beryllium tube straightens under pressure, rotating a geared needle pointer over a calibrated dial.
+• Clinical Interpretation:
+  - For Oxygen and Air (stored as true compressed gases): Pressure drops in exact linear proportion to gas volume. A full size E-cylinder contains 660 L at 1900–2200 psi. At 1000 psi, exactly half (330 L) remains.
+  - For Nitrous Oxide (stored as a liquid in equilibrium with vapour): Gauge reads 745 psi continuously at 20°C as long as ANY liquid remains in the cylinder! The gauge drops precipitously ONLY when all liquid has evaporated (at which point roughly 250 L of gaseous N₂O remains, ~16% capacity). The only reliable way to measure N₂O contents is by weighing the cylinder (Tare Weight).
+
+5. Primary Pressure Regulators:
+• Large spring-loaded diaphragm reducing valves that decrease cylinder pressure (137 bar / 2000 psi) to an intermediate operating pressure of ~45 psi (3.1 bar).
+• Deliberate Design Feature: The cylinder regulator output (45 psi) is calibrated slightly LOWER than the hospital pipeline operating pressure (50–55 psi). This ensures that if a cylinder is inadvertently left open while the machine is connected to pipeline gas, the machine preferentially draws from the pipeline, preserving emergency cylinder reserves.
+
+6. High-Pressure Relief Mechanisms:
+• Safety relief devices located on the cylinder valve block to prevent explosive cylinder rupture in fires:
+  - Frangible burst disc: Ruptures at a predetermined hydraulic pressure (~3000 psi).
+  - Fusible plug: Composed of Wood's metal (bismuth, lead, tin, cadmium) with a low melting point (~70–74°C / 165°F) that melts to vent gas safely during a fire.
+  - Spring-loaded pressure relief valve.`,
+        images: [
+          {
+            src: "assets/references/cylinder-valve-pin-index-yoke-diagram.png",
+            alt: "Pin Index Safety System (PISS) and Cylinder Valve Geometry",
+            caption: "Pin Index Safety System (PISS) and Cylinder Valve: Coordinate pin layout (Oxygen 2-5, Nitrous Oxide 3-5, Air 1-5) and Bodok seal seating interface."
+          },
+          {
+            src: "assets/references/cylinder-yoke-check-valve-cross-section.png",
+            alt: "Hanger Yoke Cross-Section Diagram",
+            caption: "Hanger Yoke Cross-Section: Detailed internal anatomy showing clamping screw, gas inlet nipple, Bodok seal, and unidirectional plunger check valve preventing backleak and transfilling."
+          }
+        ],
+        video: {
+          title: "High Pressure System & Pin Index Safety System (PISS)",
+          externalUrl: "https://www.instagram.com/p/DcqHv_Umc1o/?stkn=cDB1dGIwYW92cmJy",
+          externalLabel: "Watch High-Pressure Overview on Instagram"
+        }
+      },
+      {
+        h: "Intermediate-Pressure System: Pipelines, Fail-Safe Systems & O2 Flush",
+        b: `The intermediate-pressure system operates at a standardized working pressure of 3.5 to 4.0 bar (50 to 55 psi). It distributes gas from the central hospital pipeline or primary cylinder regulators to the machine's functional subsystems:
+
+1. Central Pipeline Supply Inlets:
+• Medical gases (O₂, N₂O, Medical Air) are piped throughout the hospital from central bulk storage (Vacuum Insulated Evaporator / VIE for liquid oxygen; high-pressure manifold banks for N₂O and Air) at 4.0 bar (55 psi).
+• Non-Interchangeable Pipeline Fittings:
+  - Diameter Index Safety System (DISS): Threaded, diameter-coded male/female concentric collars (CGA standard). Unique thread sizes prevent cross-connecting pipeline hoses.
+  - NIST (Nut & Indexed Striated Tig / BS EN ISO 5359): Quick-connect threaded fittings with gas-specific diameter and indexing striations, standard across the UK and Europe.
+• Pipeline In-Line Check Valves: Located immediately behind the pipeline inlets. Prevents reverse flow of cylinder gas back into the hospital wall distribution piping when pipeline pressure drops.
+• Pipeline Pressure Gauges: Displays 50–55 psi when wall supplies are connected and pressurized.
+
+2. Oxygen Fail-Safe Proportioning Systems:
+• The single most critical safety mechanism protecting against delivering a hypoxic gas mixture when oxygen pipeline supply fails or is depleted.
+• Operating Principle: Nitrous oxide (and other gases) CANNOT reach their flowmeters unless oxygen pressure is adequate in the intermediate system:
+  - Datex-Ohmeda Pressure-Sensor Shutoff Valve: A spring-loaded balance diaphragm held open by 50 psi oxygen pressure. If oxygen supply pressure drops below 20–25 psi (1.4–1.7 bar), the internal spring overcomes gas pressure and completely closes the nitrous oxide supply line ('all-or-none' threshold response).
+  - Dräger Oxygen Failure Protection Device (OFPD): Uses a proportioning diaphragm and needle valve that continuously throttles nitrous oxide flow downward in direct linear proportion to declining oxygen pressure, halting N₂O entirely when O₂ pressure reaches 10–12 psi.
+• Critical Clinical Limitation: The fail-safe valve senses PRESSURE ONLY, NOT CHEMICAL IDENTITY! If the oxygen pipeline is inadvertently contaminated with nitrous oxide, carbon dioxide, or nitrogen at 50 psi, the fail-safe diaphragm remains held open and delivers pure toxic hypoxic gas without triggering an alarm! This is why continuous in-line inspired oxygen analysis (FiO₂) is mandatory.
+
+3. Oxygen Supply-Failure Warning Whistle (Ritchie Whistle):
+• A purely pneumatic, fail-safe auditory alarm.
+• Powered entirely by residual pressurized oxygen flowing through a vibrating brass reed into a whistle chamber as oxygen pressure drops below 30 psi (2.0 bar).
+• Crucial Advantage: Functions with 100% reliability even during total hospital electrical blackout or battery failure, sounding for at least 7 seconds at a minimum sound pressure of 60 dB.
+
+4. Oxygen Flush Valve (O2 Emergency Bypass):
+• A manually actuated, spring-loaded push button on the front panel.
+• Delivers high-pressure, unmetered, pure oxygen directly from the intermediate-pressure system (50 psi) straight to the Common Gas Outlet (CGO) at a massive flow rate of 35 to 75 L/min!
+• Completely bypasses the flowmeter tubes, hypoxic guard, and vaporizers.
+• Lethal Hazard — Inspiratory Barotrauma: If the oxygen flush valve is pressed during the inspiratory phase of mechanical ventilation (when the ventilator exhalation valve is closed), the massive 75 L/min flow at 50 psi transmits directly to the patient's alveoli, causing catastrophic pulmonary barotrauma, tension pneumothorax, or venous gas embolism! Flush only during exhalation or in manual bag mode with APL valve open.
+• Second Hazard — Volatile Agent Dilution: Flushing the circuit washes out volatile anaesthetic vapour, causing rapid lightening of anaesthesia and intraoperative awareness.
+
+5. Second-Stage Regulators (Workstation Specific):
+• Present in Datex-Ohmeda and GE machines downstream of the intermediate pipeline inlet.
+• Drops oxygen pressure to 14 psi and nitrous oxide to 26 psi before gas enters the needle valves. This eliminates microscopic pipeline pressure ripples, ensuring smooth, rock-steady flowmeter delivery.
+
+6. Power Takeoff for Mechanical Ventilator:
+• Workstations with pneumatically driven bellows ventilators tap compressed oxygen or medical air directly from the 50 psi intermediate system to drive the bellows compressor.`,
+        video: {
+          title: "Intermediate Pressure System Architecture & Fail-Safe Mechanisms",
+          externalUrl: "https://www.instagram.com/reel/DcvG7Kxheoj/?stkn=MXlkMGU1MWt2N212",
+          externalLabel: "Watch Intermediate Pressure System Reel"
+        }
+      },
+      {
+        h: "Low-Pressure System: Flowmeters, Hypoxic Guard, Vaporizers & CGO",
+        b: `The low-pressure system extends from the needle valves of the flowmeter assembly to the Common Gas Outlet (CGO). It operates at pressures only slightly above atmospheric (<1 bar / ambient), making it the most fragile and leak-vulnerable section of the anaesthesia machine:
+
+1. Flowmeter Assembly & Thorpe Tubes:
+• Needle Valves: Fine-threaded needle valves regulate gas entry into calibrated glass flowmeter tubes. Control knobs are touch-coded and colour-coded:
+  - Oxygen knob: Fluted, larger diameter, deeply grooved, and stands proud compared to adjacent knobs.
+• Thorpe Tubes (Rotameters): Precision-machined, vertically mounted, variable-orifice glass tubes. The internal bore is tapered: narrower at the bottom and wider at the top.
+• Dynamics: Gas enters at the bottom, lifting a lightweight bobbin or ball float until the upward force of gas pressure balances the downward gravitational weight of the float.
+• Reading the Float:
+  - For cylindrical / skirted bobbins: Read the flow at the TOP rim of the bobbin.
+  - For spherical ball floats: Read the flow at the EQUATOR (center) of the ball.
+• Physical Principles: At low flow rates (narrow bottom orifice), flow is laminar and governed by gas VISCOSITY (Poiseuille's law). At high flow rates (wide top orifice), flow is turbulent and governed by gas DENSITY (Graham's law).
+• Arrangement Safety Rule: The Oxygen flowmeter tube is ALWAYS positioned furthest DOWNSTREAM (furthest to the right in the US, UK, and ISO standard flowmeter banks). This prevents delivery of a hypoxic mixture if an upstream tube (N₂O or Air) develops a crack or leak: leaking gas escapes into room air while oxygen continues to the outlet!
+
+2. Hypoxic Guard Systems (Minimum Oxygen Proportioning):
+• Enforces a minimum fresh gas oxygen concentration of at least 25% ± 4% whenever nitrous oxide is dialed, preventing inadvertent administration of 100% N₂O:
+  - Mechanical Link-25 Proportioning System (Datex-Ohmeda): A stainless steel bicycle chain interlinks a 14-tooth gear on the nitrous oxide spindle to a 29-tooth gear on the oxygen spindle. If the operator attempts to increase N₂O beyond 75% or decrease O₂ below 25%, the gear teeth mechanically force the oxygen needle valve open to maintain FiO₂ ≥ 0.25.
+  - Electronic Proportioning (Dräger / modern digital workstations): Microprocessor-controlled proportional solenoid valves monitor real-time gas flows and automatically restrict N₂O flow if FiO₂ approaches 21–25%.
+
+3. Vaporizer Mounting Manifold (Selectatec Backbar):
+• Accepts plug-in variable-bypass vaporizers.
+• Interlocking Pins / AutoExclusion Wedges: Mechanical sliding pins link adjacent vaporizers on the backbar. Turning the concentration dial of one vaporizer pushes lateral pins outward, physically locking adjacent vaporizers in the '0' (OFF) position to prevent simultaneous administration of two volatile agents.
+• Vaporizer O-Rings: Elastomeric concentric O-rings seal the vaporizer ports to the backbar. Damaged, rolled, or missing O-rings are the leading cause of low-pressure system leaks!
+
+4. Backpressure Check Valve:
+• Located downstream of vaporizers before the CGO in many machines.
+• Prevents the 'pumping effect' — where positive airway pressure pulses during mechanical ventilation oscillate back into the vaporizing chamber, causing intermittent volatile overdosing.
+
+5. Common Gas Outlet (CGO):
+• The definitive exit port where metered fresh gas leaves the machine and enters the patient's breathing circuit.
+• Features a standardized coaxial connector: 22 mm outer male diameter / 15 mm inner female diameter.
+
+6. Low-Pressure System Vulnerability & Negative-Pressure Bulb Leak Test:
+• Because it operates at near-atmospheric pressure, leaks in this section do NOT trigger high-pressure alarms. Leaks allow room air entrainment or loss of anaesthetic gas, causing intraoperative awareness and hypoxia.
+• Tested before every operating list using the universal negative-pressure suction bulb test (Dorsch test).`,
+        video: {
+          title: "Low Pressure System & Negative Pressure Bulb Leak Test",
+          externalUrl: "https://www.instagram.com/reel/DcyBfbFhQGi/?stkn=MWRyaGQyc3o2NGczag==",
+          externalLabel: "Watch Low Pressure System Reel"
+        }
+      },
+      {
+        h: "Breathing Circuits Integration & Waste Gas Scavenging (AGSS)",
+        b: `Gas leaving the Common Gas Outlet enters the breathing circuit to exchange oxygen and volatile agent with the patient's lungs while eliminating carbon dioxide:
+
+1. The Circle Breathing System:
+• The universal standard adult rebreathing circuit.
+• Consists of 7 mandatory components: fresh gas inlet, inspiratory unidirectional check valve, inspiratory corrugated limb, Y-piece patient connector (the only mechanical dead space!), expiratory corrugated limb, expiratory unidirectional check valve, and carbon dioxide absorber canister (soda lime).
+• Allows low-flow anaesthesia (FGF 0.5–1.0 L/min), recycling exhaled volatile agent and preserving airway warmth and humidity.
+
+2. Mapleson Classification (Semi-Closed Non-Rebreathing Circuits):
+• Classified by Mapleson (1954) from A to F based on the relative position of the fresh gas inlet, reservoir bag, corrugated tubing, and APL valve:
+  - Mapleson A (Magill): Most efficient for SPONTANEOUS breathing (FGF equal to alveolar minute ventilation ~0.8–1.0 × VE). Very inefficient for controlled ventilation (requires FGF 2–3 × VE).
+  - Mapleson D (Bain): Coaxial system with fresh gas running through a narrow inner tube. The most efficient Mapleson system for CONTROLLED mechanical ventilation (FGF 1.5–2.0 × VE).
+  - Mapleson E & F (Ayre's T-piece & Jackson-Rees modification): Valveless, minimal resistance circuits ideal for neonates and infants <20 kg.
+
+3. Anaesthetic Gas Scavenging System (AGSS):
+• Collects waste gases discharged from the circuit's APL valve and ventilator spill valve, disposing them safely outside the hospital building.
+• Active Scavenging: Employs a dedicated hospital vacuum pipeline (flow rate 25–50 L/min). Requires an open or closed scavenging interface with positive- and negative-pressure relief valves to prevent vacuum suction from transferring to the patient's lungs or backpressure bursting the circuit.
+• Occupational Safety: Prevents chronic OR exposure to halogenated agents (OSHA threshold <2 ppm) and nitrous oxide (<25 ppm), mitigating reproductive and neurological hazards.`,
+        images: [
+          {
+            src: "assets/references/mapleson-circuits-classification.jpg",
+            alt: "Mapleson Circuits Classification Diagram (A to F)",
+            caption: "Mapleson Breathing Systems Classification (A through F): Relative component layout and efficiency rankings for spontaneous versus controlled mechanical ventilation."
+          }
+        ]
+      }
+    ],
+    references: [
+      "Miller's Anesthesia, 10th ed., Ch. 21 (Anesthesia Delivery Systems) & Ch. 22 (The Anesthesia Workstation), Elsevier, 2025/2026.",
+      "Dorsch JA, Dorsch SE. Understanding Anesthesia Equipment, 5th ed., Ch. 2: The Anesthesia Machine, Wolters Kluwer.",
+      "ASTM International F1850: Standard Specification for Particular Requirements for Anesthesia Workstations and Their Components.",
+      "ISO 80601-2-13: Particular requirements for basic safety and essential performance of an anaesthetic workstation."
+    ]
+  });
+
+  topics.push({
+    id: "anaesthesia-workstation-check",
+    cat: "anaesthesia",
+    name: "Anaesthesia Workstation Check — Pre-Use Checkout Protocol",
+    short: "Workstation Check",
+    tags: ["Checkout protocol", "Miller's Anesthesia", "Dorsch & Dorsch", "Flowchart", "Safety check", "Negative pressure leak test"],
+    tagline: "Sequential flowchart protocol for daily and pre-case anaesthesia machine checkout based on Miller and Dorsch",
+    source: "Miller's Anesthesia, 10th ed., Ch. 21–22; Dorsch & Dorsch Understanding Anesthesia Equipment, 5th ed., Ch. 2 (The Anesthesia Machine Checkout); ASA Recommendations for Pre-Anesthesia Checkout Procedures (2008 / 2021 update); AAGBI Checking Anaesthetic Equipment (2012 / 2023).",
+    sections: [
+      {
+        h: "Flowchart Architecture: The 7-Stage Pre-Use Checkout Logic",
+        b: `A defective or unchecked anaesthesia machine can asphyxiate, barotraumatise, or fail to ventilate a paralysed patient within seconds. Closed-claims analysis reveals that human equipment check omission remains the single largest preventable factor in machine-related morbidity.
+
+Based on Miller's Anesthesia (10th ed. Ch. 21–22) and Dorsch & Dorsch (5th ed. Ch. 2), the complete pre-use checkout follows an unalterable 7-stage flowchart logic executed before the start of every operating list:
+
+[STAGE 1: Emergency & Auxiliary Equipment]
+        │   • Autonomous Ambu bag + mask verified functional
+        │   • Independent wall/portable suction tested (<-500 mmHg in 10s)
+        │   • Auxiliary O2 cylinder with dedicated regulator checked
+        ▼
+[STAGE 2: High-Pressure System (Cylinders & Yokes)]
+        │   • Bodok seal & PISS pins inspected (only ONE washer per yoke)
+        │   • E-cylinders opened: verify O2 >=1000 psi (full 2000 psi)
+        │   • 1-minute closed spindle leak decay test (<100 psi drop)
+        ▼
+[STAGE 3: Intermediate-Pressure System (Pipelines & Fail-Safe)]
+        │   • Pipeline hoses connected: check gauges 50-55 psi
+        │   • Oxygen flush valve depressed: high-volume flow (35-75 L/min) without sticking
+        │   • O2 fail-safe & whistle test: disconnect O2 pipeline with N2O flowing -> N2O shuts off & whistle sounds!
+        ▼
+[STAGE 4: Low-Pressure System Leak Check (Negative-Pressure Bulb)]
+        │   • Flowmeters turned off, suction bulb attached to CGO
+        │   • Bulb squeezed flat: MUST STAY COLLAPSED >=10 seconds
+        │   • Repeat with EACH vaporizer turned ON to 1% individually (tests internal seals & Selectatec O-rings)
+        ▼
+[STAGE 5: Breathing System, Absorber & Unidirectional Valves]
+        │   • Soda lime granules inspected (crisp white, <50% purple, moist)
+        │   • Oxygen sensor calibrated (21% room air, 100% pure O2, low alarm set)
+        │   • Circuit positive-pressure leak test: occlude Y-piece, pressurize to 30 cmH2O -> holds >=10s
+        │   • APL valve opened: pressure releases smoothly to 0 cmH2O
+        │   • Two-bag test: verify inspiratory and expiratory unidirectional valves move freely
+        ▼
+[STAGE 6: Mechanical Ventilator & Waste Gas Scavenging]
+        │   • Switch Bag/Vent to VENT: verify ascending bellows rises to top stop
+        │   • Simulate circuit disconnect: verify bellows collapses & disconnect alarm sounds <=15s
+        │   • AGSS scavenger float verified hovering within green target zone
+        ▼
+[STAGE 7: Final Pre-Induction Verification]
+        │   • Vaporizers locked OFF, sight glasses full
+        │   • APL valve fully OPEN, Bag/Vent set to BAG
+        │   • Suction catheter under pillow, monitors active and calibrated
+        ▼
+[PATIENT READY FOR INDUCTION]`
+      },
+      {
+        h: "Stage 1: Emergency & Auxiliary Equipment (Autonomous Preparedness)",
+        b: `Before turning on the machine or connecting any patient to electricity or pipeline gas, the clinician must guarantee autonomous survival equipment that functions independent of all hospital infrastructure:
+
+1. Self-Inflating Resuscitation Bag (Ambu Bag / BVM):
+• Must be present, fully assembled, and hanging within arm's reach of the workstation.
+• Squeeze test: occlude mask connector with palm, squeeze bag — verify hard resistance and zero leak; release bag — verify instant elastic recoil. Verify oxygen reservoir bag and tubing are attached.
+
+2. Auxiliary Emergency Oxygen Cylinder:
+• Must be separate from the machine yokes, mounted on a mobile cylinder trolley with its own dedicated flowmeter, regulator, and cylinder key.
+• Turn spindle: verify pressure >=1000 psi. This is your lifeline if the central hospital oxygen supply fails or catches fire.
+
+3. Independent Suction System:
+• Turn on suction unit.
+• Occlude suction tubing with thumb: verify gauge generates at least -500 mmHg (-65 kPa) within 10 seconds.
+• Verify rigid Yankauer handle and flexible suction catheters are immediately available under the head of the operating table.`
+      },
+      {
+        h: "Stage 2: High-Pressure System Checkout (Cylinders & Yokes)",
+        b: `Verifies reserve gas supply integrity and catches high-pressure leaks at the cylinder-yoke interface:
+
+1. Visual & PISS Inspection:
+• Inspect cylinder post, index pins, and Bodok seal on the machine yoke.
+• Verify only ONE Bodok seal is seated. Inspect seal for fraying or crushing.
+
+2. Spindle Opening & Pressure Verification:
+• Mount Oxygen cylinder, tighten clamping screw firmly.
+• Using cylinder wrench, open cylinder spindle counter-clockwise by one full turn.
+• Read Bourdon gauge: verify pressure >=1000 psi (full E-cylinder = 1900–2200 psi / 660 L). If <1000 psi, replace with a fresh cylinder before starting the list.
+
+3. High-Pressure Spindle Leak Decay Test:
+• CLOSE the cylinder spindle completely.
+• Observe the pressure gauge pointer for 1 full minute: pressure drop must be <100 psi (0.7 bar). A larger drop indicates a severe leak around the Bodok seal or yoke check valve.
+• Bleed the line down to 0 psi by pressing the O2 flush button.
+• Repeat procedure for Nitrous Oxide (gauge reads 745 psi) and Medical Air.`
+      },
+      {
+        h: "Stage 3: Intermediate-Pressure System Checkout (Pipelines & Fail-Safe)",
+        b: `Tests pipeline gas distribution, emergency flush throughput, and oxygen fail-safe alarms:
+
+1. Pipeline Supply Connections:
+• Connect pipeline hoses (O₂, N₂O, Air) into wall gas terminals using DISS or quick-connect NIST couplings.
+• Verify pipeline pressure gauges on workstation panel indicate 50 to 55 psi (3.5 to 3.8 bar).
+
+2. Oxygen Flush Valve Functional Test:
+• Depress the oxygen flush button on the front panel:
+• Verify instant high-velocity flow hiss (35 to 75 L/min) discharging through the common gas outlet.
+• Release button: must spring back instantly and shut off completely without sticking, hesitation, or persistent gas hissing.
+
+3. Oxygen Fail-Safe & Whistle Alarm Challenge (The Crucial Test):
+• Turn on Nitrous Oxide flowmeter to 4 to 6 L/min.
+• Disconnect the central Oxygen pipeline supply hose from the wall outlet.
+• Observe the N₂O flowmeter: as oxygen intermediate pressure falls below 20–25 psi, the fail-safe valve must activate — N₂O flow must rapidly drop to zero!
+• Verify the pneumatic low-oxygen whistle (Ritchie whistle) sounds audibly and distinctly as residual oxygen pressure exhausts below 30 psi.
+• Reconnect the Oxygen pipeline hose: verify normal 50 psi pressure restores and whistle ceases.`
+      },
+      {
+        h: "Stage 4: Low-Pressure System Negative-Pressure Bulb Leak Test (Dorsch Test)",
+        b: `The low-pressure system is the most hazard-prone section of the machine. Because it operates at near-atmospheric pressure, leaks will NOT be caught by pipeline gauges or high-pressure tests. The universal negative-pressure suction bulb test is the gold-standard method:
+
+1. Setup:
+• Turn OFF all flowmeter needle valves and knobs completely.
+• Turn OFF the master machine switch (if electronic).
+• Disconnect fresh gas delivery hose from the Common Gas Outlet (CGO).
+• Attach the tapered connector of a specialized compressible rubber suction bulb (equipped with a one-way valve) securely into the CGO.
+
+2. Flowmeter & Manifold Leak Test:
+• Squeeze and completely collapse the suction bulb with your hand, evacuating air and creating a subatmospheric vacuum of approximately -50 cmH₂O in the low-pressure system.
+• Release hand grip: THE BULB MUST REMAIN COMPLETELY COLLAPSED FOR AT LEAST 10 SECONDS!
+• If the bulb re-expands within 10 seconds, ambient room air is leaking into the system through a cracked flowmeter tube, defective needle valve, or faulty manifold fitting — DO NOT USE THE MACHINE!
+
+3. Individual Vaporizer Leak & Interlock Test:
+• With the bulb still attached to the CGO, turn Vaporizer #1 ON to 1%:
+  - Squeeze bulb flat: MUST REMAIN COMPLETELY COLLAPSED FOR >=10 SECONDS (tests internal chamber seals, concentration cone, and Selectatec O-rings).
+  - Turn Vaporizer #1 OFF.
+• Turn Vaporizer #2 ON to 1%:
+  - Squeeze bulb flat: MUST REMAIN COMPLETELY COLLAPSED FOR >=10 SECONDS.
+  - Turn Vaporizer #2 OFF.
+• Attempt to turn ON both vaporizers simultaneously: verify the mechanical interlock pins physically block both dials from engaging together.
+• Disconnect suction bulb from CGO and reconnect the fresh gas delivery hose.`
+      },
+      {
+        h: "Stage 5: Breathing System, Absorber & Unidirectional Valves Check",
+        b: `Evaluates the integrity of the circle breathing system, carbon dioxide absorption, and gas sensor calibration:
+
+1. Carbon Dioxide Absorber Inspection:
+• Examine soda lime granules through the transparent canister:
+  - Must be crisp white; less than 50% purple colour change (ethyl violet indicator).
+  - Confirm moisture is present (granules slightly damp; reaction requires 12–19% water).
+  - Verify canister locking levers are clamped tight with an airtight seal.
+
+2. Oxygen Analyzer Calibration:
+• Expose galvanic/paramagnetic O2 sensor to room air: verify reading calibrates to 21% ± 2%.
+• Depress O2 flush to bathe sensor in 100% oxygen: verify reading rises smoothly to >=97%–100%.
+• Set the low-oxygen alarm threshold to 18–21%.
+
+3. Circle Positive-Pressure Static Leak Test (30 cmH2O Hold):
+• Occlude the patient Y-piece tightly with a leak-proof test plug or clean thumb.
+• Completely close the Adjustable Pressure Limiting (APL) valve clockwise to 70 cmH₂O.
+• Depress O2 flush button until breathing circuit pressure gauge reaches exactly 30 cmH₂O.
+• Release flush button: CIRCUIT PRESSURE MUST HOLD AT 30 cmH₂O FOR AT LEAST 10 SECONDS with zero fresh gas flow (acceptable leak rate <100 mL/min).
+• Gradually open the APL valve counter-clockwise: verify pressure releases smoothly and completely back down to 0 cmH₂O, confirming the APL valve vents cleanly without sticking.
+
+4. Unidirectional Valves Competency Test (Two-Bag Test):
+• Attach a secondary test reservoir bag to the patient Y-piece connector.
+• Squeeze and release the machine reservoir bag manually:
+  - During squeeze (inspiration): inspiratory unidirectional valve flutters open; expiratory valve seats closed; test bag expands.
+  - During release (expiration): expiratory unidirectional valve flutters open; inspiratory valve seats closed; test bag recoils.
+• Squeeze the test bag: verify gas flows in the correct direction around the circle loop without retrograde regurgitation.`
+      },
+      {
+        h: "Stage 6: Mechanical Ventilator, Disconnect Alarms & AGSS Scavenging",
+        b: `Validates the automated ventilation mode, disconnect alarm responsiveness, and pollution control:
+
+1. Ventilator Operation & Ascending Bellows Integrity:
+• Switch the Bag/Vent selector lever from 'BAG' to 'VENT'.
+• Set standard adult parameters: Tidal Volume 500 mL, Respiratory Rate 10–12 bpm, PEEP 5 cmH₂O.
+• Keep test lung attached to Y-piece; switch ventilator power ON.
+• Observe ascending bellows: must descend during inspiration and ascend fully during exhalation, reaching the top stop of the clear enclosure on every single breath cycle. Delivered tidal volume on spirometer must match set volume within ±10%.
+
+2. Circuit Disconnect Alarm Simulation:
+• While ventilator is actively cycling, pull the test lung off the Y-piece to simulate a catastrophic breathing circuit disconnection.
+• Observe machine response:
+  - Ascending bellows immediately collapses to the bottom of the housing under gravity (visual alarm).
+  - Airway pressure trace drops to zero.
+  - AUDIBLE DISCONNECT / APNEA / LOW PRESSURE ALARM MUST SOUND WITHIN 15 SECONDS!
+• Reconnect test lung: verify alarm silences and normal cycling resumes.
+
+3. Waste Gas Scavenging System (AGSS) Verification:
+• Inspect the transparent flow indicator on the AGSS interface:
+• Verify the green bobbin or float is hovering steadily between the designated 'MIN' and 'MAX' marks, confirming adequate active vacuum suction without excessive negative pressure on the patient circuit.`
+      },
+      {
+        h: "Stage 7: Final Pre-Induction Readiness Checklist",
+        b: `The final 60-second bedside verification completed immediately before the patient enters the operating theatre:
+
+• Vaporizers: confirmed locked in '0' (OFF) position; filler caps tight; sight glass shows adequate liquid level.
+• APL valve: adjusted to FULLY OPEN (spontaneous mode, 'MIN' setting).
+• Bag/Vent selector: set to 'BAG' mode (ready for mask preoxygenation).
+• Suction catheter: tucked directly under pillow / head of bed, switched ON and tested.
+• Emergency airway kit: Macintosh 3 & 4 blades verified bright and white; ETTs 7.0 & 8.0 with stylet tested; bougie and i-gel/LMA ready on airway trolley.
+• Emergency drugs drawn and labelled: Succinylcholine, Propofol, Atropine, Ephedrine, Phenylephrine.
+• Monitors: ECG trace active, NIBP cuff sized and cycled, SpO2 waveform pulsatile with audible pitch enabled, capnograph line connected with clear water trap.
+
+PATIENT CHECKOUT COMPLETE — PROCEED SAFELY WITH INDUCTION.`
+      }
+    ],
+    references: [
+      "Miller's Anesthesia, 10th ed., Ch. 21 (Anesthesia Delivery Systems) & Ch. 22 (The Anesthesia Workstation), Elsevier, 2025/2026.",
+      "Dorsch JA, Dorsch SE. Understanding Anesthesia Equipment, 5th ed., Ch. 2: The Anesthesia Machine Checkout, Wolters Kluwer.",
+      "ASA Recommendations for Pre-Anesthesia Checkout Procedures (Approved 2008, reaffirmed 2021).",
+      "Association of Anaesthetists of Great Britain and Ireland (AAGBI): Checking Anaesthetic Equipment 2012 / Safety Guideline (2023 update)."
+    ]
+  });
+
   topics.push({
     id: "rsi",
     cat: "anaesthesia",
@@ -158,32 +598,7 @@
     ]
   });
 
-  topics.push({
-    id: "anaesthesia-machine",
-    cat: "anaesthesia",
-    name: "Anaesthesia Machine & Breathing Circuits",
-    short: "Machine & Circuits",
-    tags: ["Circle system", "Vaporizers"],
-    tagline: "Gas delivery, vaporizers, CO2 absorption and circuit checks",
-    source: "Miller's Anesthesia, 10th ed., Ch. 21 (Anesthesia Delivery Systems); ASA Recommendations for Pre-Anesthesia Checkout Procedures (2008, in current use).",
-    sections: [
-      {
-        h: "Machine Architecture Classification: High, Intermediate & Low Pressure Systems",
-        b: "The anaesthesia workstation is physically divided into three distinct pressure zones separated by regulators, valves, and flow controls:\n\n1. High-Pressure System (Cylinder Supply: 45 to 150 bar / 600 to 2200 psi):\n\u2022 Components: Cylinder yokes, Pin Index Safety System (PISS), Bodok seals, cylinder pressure gauges, and primary pressure regulators.\n\u2022 Function: Accepts gas directly from compressed medical gas cylinders and reduces cylinder pressure down to the intermediate working pressure (typically 3.5 to 4.0 bar / 50 psi).\n\n2. Intermediate-Pressure System (Pipeline & Regulator Output: 3.5 to 4.0 bar / 50 to 55 psi):\n\u2022 Components: Central pipeline inlet connections, Diameter Index Safety System (DISS) or quick-connect NIST fittings, pipeline pressure gauges, oxygen fail-safe valves (proportioning system), oxygen flush valve (delivering 35\u201375 L/min at 50 psi directly to the common gas outlet), oxygen supply-failure alarm, auxiliary gas outlets, and ventilator driving gas supply.\n\u2022 Safety Role: Protects flowmeter assemblies from dangerous pressure spikes while maintaining instant high-flow bypass for emergency oxygen flushing.\n\n3. Low-Pressure System (Downstream of Flowmeters to Patient: <1 bar / ambient):\n\u2022 Components: Flowmeter control needle valves and calibrated flow tubes (Thorpe tubes), vaporizers and mounting manifold (Selectatec interlock), backpressure check valves, and the Common Gas Outlet (CGO).\n\u2022 Hazards: This is the most vulnerable section of the machine for ambient air entrainment and leaks. It is evaluated before every case using the negative-pressure leak test."
-      },
-      { h: "Think of the machine as three jobs stacked on top of each other", b: "The anaesthesia machine can look intimidating the first time you stand in front of one, with its dials, hoses, and flashing displays — but almost everything it does breaks down into three sequential jobs. Job one: take gas from a pipeline or cylinder and deliver a precisely measured, safe mixture of oxygen (and sometimes nitrous oxide or air) at a flow rate you control. Job two: add a controlled amount of volatile anaesthetic vapour to that gas stream. Job three: deliver the resulting mixture to the patient's lungs and deal with what comes back out. Every component on the machine exists to serve one of those three jobs, and keeping that structure in your head makes the whole thing far less overwhelming.", },
-      { h: "Job one: gas supply and the hypoxic guard", b: "Oxygen, nitrous oxide, and air arrive either through colour- and pin-indexed cylinders mounted on the back of the machine (for backup) or via a pipeline supply from the hospital's central gas system, and flowmeters — increasingly electronic rather than the old glass 'Thorpe tube' rotameters — let you dial in exactly how much of each gas joins the fresh gas flow. The single most important safety feature at this stage is the hypoxic guard (sometimes called a proportioning system): a mechanical or electronic interlock that physically prevents you from dialling a gas mixture with less than about 21–25% oxygen, even if you try. It exists because, historically, patients have died from an inadvertently pure-nitrous-oxide mixture being delivered — the hypoxic guard makes that specific error essentially impossible on a modern machine." },
-      { h: "Job two: vaporizers, and why you can only ever have one running", b: "Each vaporizer on the machine is calibrated for exactly one volatile agent — sevoflurane, isoflurane, or desflurane — and works (with the notable exception of desflurane, covered in its own topic because it needs a heated, pressurised design) by splitting the fresh gas flow between a bypass channel and a vaporising chamber in a ratio that produces your dialled concentration. Modern workstations physically or electronically interlock the vaporizers so that only one can ever be switched on at a time — which prevents the genuinely dangerous scenario of two volatile agents being delivered simultaneously, something that's easy to imagine happening by accident during a busy list if that safeguard didn't exist." },
-      { h: "Job three: the circle system and why it lets you use so little fresh gas", b: "The breathing circuit most machines use today is the circle system: a loop of tubing containing one-way (unidirectional) valves that force gas around the circle in a single direction, a Y-piece connecting to the patient, a reservoir bag, and — the clever part — a canister of CO2 absorbent (soda lime or a similar granule) sitting in the loop. Because the one-way valves and the absorbent work together, the patient can rebreathe their own exhaled gas safely, as long as the CO2 has been scrubbed out of it first. That's the entire reason low-flow anaesthesia is possible: you don't need to flush the whole circuit with fresh gas on every breath, because most of what the patient breathes back is their own recycled, CO2-free exhaled gas, topped up with just enough fresh gas and volatile agent to replace what's actually been consumed by the body and lost through minor leaks.", example: "Picture running a 2-hour case at a fresh gas flow of only 1 L/min instead of a more old-fashioned 4–5 L/min. Over that case you'll have used roughly a quarter of the volatile agent (and therefore a quarter of the cost), while also conserving far more of the patient's own body heat and airway humidity, because you're not constantly washing the circuit out with cold, dry fresh gas. This is precisely why understanding the circle system isn't just an equipment curiosity — it directly changes your drug cost, your patient's temperature, and your environmental footprint on every single case." },
-      { h: "The pre-use check: not paperwork, a genuine safety net", b: "Every anaesthetic starts with a machine check, and it's worth understanding what each part is actually looking for rather than just ticking through it by rote. Checking pipeline and cylinder pressures confirms you actually have a gas supply and a backup if it fails. The low-pressure leak test (occluding the common gas outlet and watching the bag hold pressure) catches leaks downstream of the flowmeters that would otherwise silently under-deliver gas to your patient mid-case. Checking each vaporizer individually, on and off, catches internal vaporizer leaks that a leak test with the vaporizer off would completely miss. Testing the unidirectional valves and the breathing circuit confirms gas is actually flowing the direction you think it is. And confirming a working self-inflating bag and suction are available means that if the machine itself fails outright mid-case, you have an immediate, low-tech way to keep the patient alive while you sort out the problem — which is really the whole philosophy behind the check: assume something will eventually fail, and make sure you've already got a backup plan in place before it does." }
-    ],
-    references: [
-      "Dorsch JA, Dorsch SE. Understanding Anesthesia Equipment, 5th ed., Ch. 2: The Anesthesia Machine, Wolters Kluwer.",
-      "ASTM International F1850: Standard Specification for Particular Requirements for Anesthesia Workstations and Their Components.",
-      "Miller's Anesthesia, 10th ed., Ch. 22: The Anesthesia Workstation, Elsevier, 2025/2026.",
-      "ASA Recommendations for Pre-Anesthesia Checkout Procedures (2021 update)."
-    ]
-  });
+  
 
   topics.push({
     id: "asa-monitoring",
@@ -2107,6 +2522,616 @@
   });
 
   
+  
+  // ---------------- ANTIHYPERTENSIVES ----------------
+  addDrug({
+    id: "ramipril", cat: "antihypertensives", name: "Ramipril", brand: "Altace",
+    classification: "Angiotensin-Converting Enzyme (ACE) Inhibitor Prodrug",
+    tagline: "First-line antihypertensive and cardioprotective ACE inhibitor — carries high risk of refractory post-induction vasoplegia",
+    tags: ["ACE Inhibitor", "Vasoplegia", "Renal protective"],
+    source: SRC.fdaUpToDate("Altace (ramipril) capsules label", "Pfizer/King Pharmaceuticals"),
+    structure: `Ramipril is a 2-aza-bicyclo[3.3.0]octane-3-carboxylic acid derivative. It is an orally active ethyl ester prodrug with poor intrinsic inhibitory activity that undergoes rapid hepatic esterase cleavage to form its active diacid metabolite, ramiprilat. Highly lipophilic, allowing extensive tissue and vascular wall penetration.`,
+    pd: `Inhibits angiotensin-converting enzyme (peptidyl dipeptidase A), preventing the conversion of angiotensin I to the potent vasoconstrictor angiotensin II. Decreased circulating angiotensin II reduces systemic vascular resistance (afterload), blunts aldosterone secretion (reducing sodium and water retention), and prevents bradykinin breakdown (contributing to additional vasodilation and the classic dry cough). Sparing of bradykinin enhances local prostacyclin and nitric oxide synthesis.`,
+    pk: `Onset of ACE inhibition is 1 to 2 hours following oral ingestion. Converted in the liver to active ramiprilat; peak plasma ramiprilat concentration is reached at 2 to 4 hours. Protein binding is roughly 56% for ramipril and 73% for ramiprilat. Elimination is triphasic: effective half-life of ramiprilat is 13 to 17 hours, with a terminal half-life exceeding 50 hours reflecting slow dissociation from tissue ACE. Cleared 60% renally and 40% hepatobiliary.`,
+    dosage: `FDA-approved: Hypertension: 2.5 to 20 mg PO once daily (or divided BID). Heart failure post-MI: 2.5 mg PO BID titrated to 5 mg PO BID. Reduction of cardiovascular risk (HOPE trial protocol): 2.5 mg daily for 1 week, 5 mg daily for 3 weeks, then target 10 mg PO once daily.`,
+    offLabel: `Used off-label in diabetic nephropathy to slow chronic kidney disease progression even in normotensive patients, and to reduce proteinuria in non-diabetic proteinuric nephropathies.`,
+    complications: `PERIOPERATIVE VASOPLEGIC HYPOTENSION: General anaesthesia combined with ACE inhibition eliminates the normal compensatory renin-angiotensin-aldosterone surge. Patients can experience severe, treatment-resistant post-induction hypotension unresponsive to ephedrine or phenylephrine. First-line rescue is Vasopressin (0.5 to 2 units IV bolus) or Terlipressin/Methylene blue. Current consensus guidelines recommend HOLDING ramipril on the morning of surgery (24 hours prior) for elective procedures, unless specifically requested to continue by cardiology for severe decompensated heart failure. Other adverse effects: hyperkalaemia, dry cough (10%), angioedema (rare, bradykinin-mediated, can cause catastrophic airway loss), and teratogenicity (contraindicated in pregnancy).`,
+    references: [
+      "FDA Prescribing Information — Altace (ramipril capsules), King Pharmaceuticals / Pfizer; US FDA.",
+      "UpToDate \"Drug Information: Ramipril\" (Wolters Kluwer, 2025/2026).",
+      "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 12 (Preoperative Medication Management).",
+      "ACC/AHA/AAPA/ABC/ACPM/AGS/APhA/ASH/ASPC/NMA/PCNA Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults."
+    ]
+  });
+
+  addDrug({
+    id: "losartan", cat: "antihypertensives", name: "Losartan", brand: "Cozaar",
+    classification: "Angiotensin II Receptor Blocker (ARB) • Selective AT1 Antagonist",
+    tagline: "Selective AT1 receptor antagonist — blunts RAAS tone without bradykinin accumulation; causes refractory post-induction vasoplegia",
+    tags: ["ARB", "AT1 blocker", "Vasoplegia", "Renal protective"],
+    source: SRC.fdaUpToDate("Cozaar (losartan potassium) tablets label", "Organon/Merck"),
+    structure: `Losartan potassium is a substituted imidazole derivative (2-butyl-4-chloro-1-[p-(o-1H-tetrazol-5-ylphenyl)benzyl]imidazole-5-methanol monopotassium salt). It is metabolized by CYP2C9 and CYP3A4 to an active carboxylic acid metabolite (EXP3174), which is 10 to 40 times more potent as an AT1 blocker than parent losartan.`,
+    pd: `Selectively and reversibly blocks the Angiotensin II type 1 (AT1) receptor in vascular smooth muscle, adrenal gland, and kidney. By displacing angiotensin II from AT1, it produces arterial and venous vasodilation, inhibits aldosterone secretion, and promotes natriuresis. Unlike ACE inhibitors, ARBs do not inhibit kinase II (ACE), preventing the breakdown and accumulation of bradykinin and substance P — virtually eliminating the dry cough and markedly reducing angioedema risk.`,
+    pk: `Onset of antihypertensive effect within 1 hour; peak plasma concentration achieved in 1 hour for losartan and 3 to 4 hours for the active EXP3174 metabolite. Bioavailability ~33% due to first-pass hepatic metabolism. Elimination half-life of losartan is 1.5 to 2.5 hours, whereas the active metabolite EXP3174 has a half-life of 6 to 9 hours, allowing once-daily dosing. Excreted in both urine (~35%) and faeces/bile (~60%).`,
+    dosage: `FDA-approved: Hypertension: 50 mg PO once daily (starting dose 25 mg in volume-depleted patients or with hepatic impairment); maximum 100 mg PO daily (single or divided BID). Diabetic Nephropathy with elevated creatinine/proteinuria in T2DM: 50 mg PO once daily titrated to 100 mg daily. Stroke risk reduction in hypertensive patients with left ventricular hypertrophy (LIFE trial): 50 mg PO once daily, combined with hydrochlorothiazide.`,
+    offLabel: `Marfan syndrome to slow aortic root dilation (blocks excessive TGF-beta signalling downstream of AT1); portal hypertension reduction in compensated cirrhosis.`,
+    complications: `PERIOPERATIVE REFRACTORY HYPOTENSION: Similar to ACE inhibitors, chronic ARB therapy causes marked post-induction vasoplegia refractory to sympathomimetics (ephedrine/phenylephrine). The mechanism is down-regulation of alpha-1 receptors and acute loss of sympathetic compensation. Consensus guidelines mandate WITHHOLDING losartan on the morning of surgery (24 hours prior). Rescue agent of choice is IV Vasopressin (0.5 to 2 units bolus, followed by 0.01 to 0.04 units/min infusion). Other complications: hyperkalaemia (especially when paired with potassium-sparing diuretics or NSAIDs), acute kidney injury in bilateral renal artery stenosis, and fetal toxicity (contraindicated in pregnancy).`,
+    references: [
+      "FDA Prescribing Information — Cozaar (losartan potassium tablets), Organon / Merck; US FDA.",
+      "UpToDate \"Drug Information: Losartan\" (Wolters Kluwer, 2025/2026).",
+      "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Pharmacology).",
+      "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed., Ch. 16."
+    ]
+  });
+
+  addDrug({
+    id: "amlodipine", cat: "antihypertensives", name: "Amlodipine", brand: "Norvasc",
+    classification: "Dihydropyridine Calcium Channel Blocker (CCB) • L-type Channel Antagonist",
+    tagline: "Long-acting dihydropyridine calcium channel blocker — potent arteriolar vasodilator with ultra-long 30–50 hr elimination half-life",
+    tags: ["CCB", "Dihydropyridine", "Vasodilator", "Long half-life"],
+    source: SRC.fdaUpToDate("Norvasc (amlodipine besylate) tablets label", "Pfizer"),
+    structure: `Amlodipine besylate is a synthetic 1,4-dihydropyridine derivative containing a basic amino side chain on the heterocyclic ring. This amino side chain confers a pKa of 8.6, meaning it is largely protonated at physiological pH. This unique chemical property promotes slow, gradual binding and dissociation from cell membrane lipids and the L-type channel receptor.`,
+    pd: `Inhibits transmembrane influx of extracellular calcium ions through voltage-gated L-type calcium channels into vascular smooth muscle and cardiac myocytes. Dihydropyridines display marked vascular selectivity: amlodipine produces selective peripheral and coronary arteriolar dilation with minimal negative inotropy and virtually no depression of SA or AV nodal conduction at clinical doses. Reduces systemic vascular resistance and total peripheral resistance, lowering arterial blood pressure and myocardial oxygen demand.`,
+    pk: `Onset of peak plasma concentration is very slow and gradual, occurring 6 to 12 hours following oral administration. Absolute bioavailability is high (64 to 90%). Extensively bound to plasma proteins (~93%). Volume of distribution is massive (~21 L/kg). Hepatically cleared by CYP3A4 to inactive metabolites; elimination half-life is remarkably prolonged: 30 to 50 hours (up to 56 hours in elderly or hepatic impairment), ensuring smooth 24-hour hemodynamic control.`,
+    dosage: `FDA-approved: Hypertension: Initial dose 5 mg PO once daily; may be titrated up to maximum 10 mg PO once daily after 7 to 14 days. Small, elderly, or hepatically impaired patients start at 2.5 mg PO once daily. Chronic Stable Angina or Vasospastic (Prinzmetal's) Angina: 5 to 10 mg PO once daily.`,
+    offLabel: `Raynaud's phenomenon (5 to 10 mg daily to reduce frequency and severity of digital vasospasm); pulmonary arterial hypertension in vasoreactive patients.`,
+    complications: `PERIOPERATIVE CONSIDERATIONS: Unlike ACE inhibitors and ARBs, amlodipine should generally be CONTINUED on the morning of surgery to prevent rebound hypertension and acute coronary vasospasm. However, be vigilant for additive arteriolar vasodilation when combined with volatile anaesthetics (isoflurane, sevoflurane) and propofol, resulting in hypotension that responds promptly to fluid resuscitation and alpha-1 agonists (phenylephrine, norepinephrine). Common chronic adverse effects: dose-dependent peripheral dependent ankle oedema (precapillary arteriolar dilation without venous dilation, causing transudation), flushing, dizziness, and reflex tachycardia.`,
+    references: [
+      "FDA Prescribing Information — Norvasc (amlodipine besylate tablets), Pfizer; US FDA.",
+      "UpToDate \"Drug Information: Amlodipine\" (Wolters Kluwer, 2025/2026).",
+      "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs).",
+      "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed., Ch. 15."
+    ]
+  });
+
+  addDrug({
+    id: "diltiazem", cat: "antihypertensives", name: "Diltiazem", brand: "Cardizem",
+    classification: "Benzothiazepine Non-Dihydropyridine Calcium Channel Blocker",
+    tagline: "Non-dihydropyridine calcium antagonist — slows AV nodal conduction and reduces ventricular rate in AF/flutter and SVT",
+    tags: ["CCB", "Non-dihydropyridine", "Antiarrhythmic Class IV", "Rate control"],
+    source: SRC.fdaUpToDate("Cardizem (diltiazem HCl) injection and tablets label", "Bausch Health/Sanofi"),
+    structure: `Diltiazem hydrochloride is a benzothiazepine derivative ((2S,3S)-5-[2-(dimethylamino)ethyl]-2-(4-methoxyphenyl)-4-oxo-2,3-dihydro-1,5-benzothiazepin-3-yl acetate). Structurally distinct from both dihydropyridines (amlodipine) and phenylalkylamines (verapamil).`,
+    pd: `Class IV antiarrhythmic and vasodilator. Inhibits calcium influx through voltage-dependent L-type channels in both vascular smooth muscle and cardiac conduction tissue. Key actions: (1) Slows SA node automaticity; (2) Prolongs AV nodal conduction time and refractory period (slowing ventricular rate in AF/flutter); (3) Moderately depresses myocardial contractility (negative inotrope); (4) Dilates coronary and systemic peripheral arteries. Less negative inotropic depression than verapamil, but more cardiac depressant than dihydropyridines.`,
+    pk: `Onset of IV bolus action is rapid: 2 to 5 minutes, with peak rate-slowing effect at 5 to 10 minutes. Duration of IV bolus effect: 1 to 3 hours. Protein binding 70 to 80%. Hepatically metabolized via CYP3A4, CYP2C9, and CYP2D6 (primary active metabolite is desacetyldiltiazem, possessing 25–50% parent potency). Elimination half-life: 3.5 to 4.5 hours (extended-release oral forms up to 6–9 hours). Cleared primarily through hepatic biotransformation and biliary excretion.`,
+    dosage: `FDA-approved: Acute Rate Control in Atrial Fibrillation / Atrial Flutter or Paroxysmal SVT: Initial IV bolus 0.25 mg/kg actual body weight (average adult dose ~20 mg) administered over 2 minutes. If response inadequate after 15 minutes, administer second bolus of 0.35 mg/kg (average adult dose ~25 mg) over 2 minutes. Continuous IV Maintenance Infusion: Immediately following bolus, initiate continuous infusion at 5 to 15 mg/hr (titrated to target heart rate <100 bpm). Oral Hypertension / Angina: Immediate-release 30 to 90 mg PO QID (or extended-release Cardizem CD 120 to 360 mg PO once daily).`,
+    offLabel: `Prevention of radial artery graft spasm during coronary artery bypass grafting (CABG); anal fissure healing (topical 2% gel).`,
+    complications: `HAZARDS & CONTRAINDICATIONS: Severe bradycardia, high-grade AV block (second- or third-degree block), and cardiogenic shock. Strictly contraindicated in Wolff-Parkinson-White (WPW) syndrome with pre-excited atrial fibrillation (blocking AV node can divert rapid conduction down the accessory pathway, precipitating ventricular fibrillation!). Extreme caution when combined with beta-blockers or volatile anaesthetics: severe synergistic myocardial depression, bradycardia, and asystole can occur. Reversal of severe diltiazem cardiotoxicity: IV Calcium Chloride (10 mL 10%), High-Dose Insulin Euglycaemic Therapy (HIET: 1 unit/kg regular insulin bolus + 0.5–1.0 units/kg/hr infusion with 10–20% dextrose), and IV glucagon.`,
+    references: [
+      "FDA Prescribing Information — Cardizem (diltiazem hydrochloride injection and tablets), Bausch Health; US FDA.",
+      "UpToDate \"Drug Information: Diltiazem\" (Wolters Kluwer, 2025/2026).",
+      "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 41 (Management of Arrhythmias).",
+      "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed., Ch. 15."
+    ]
+  });
+
+  addDrug({
+    id: "metoprolol", cat: "antihypertensives", name: "Metoprolol", brand: "Lopressor / Toprol-XL",
+    classification: "Cardioselective Beta-1 Adrenergic Receptor Antagonist",
+    tagline: "Selective beta-1 antagonist — blunts perioperative tachycardia and myocardial ischemia; continue chronic therapy on morning of surgery",
+    tags: ["Beta-blocker", "Beta-1 selective", "Rate control", "POISE trial"],
+    source: SRC.fdaUpToDate("Lopressor (metoprolol tartrate) injection and tablets label", "Novartis/Validus"),
+    structure: `Metoprolol is a synthetic isopropylamino-propan-2-ol derivative ((RS)-1-(isopropylamino)-3-[4-(2-methoxyethyl)phenoxy]propan-2-ol). Formulated as metoprolol tartrate (immediate-release oral tablets and IV injection) and metoprolol succinate (extended-release Toprol-XL). Moderately lipophilic, allowing blood-brain barrier penetration.`,
+    pd: `Competitive, selective antagonist at beta-1 adrenergic receptors located predominantly in cardiac tissue. At standard doses, it displays minimal beta-2 blocking activity in bronchial and vascular smooth muscle (though cardioselectivity is dose-dependent and diminishes at higher doses). Decreases heart rate, myocardial contractility, cardiac output, and AV nodal conduction velocity. Inhibits renin release from juxtaglomerular cells. Reduces myocardial oxygen consumption (MVO₂), preventing intraoperative myocardial ischaemia during surgical stress and emergence tachycardia.`,
+    pk: `Onset of IV action: 1 to 2 minutes; peak IV rate-slowing effect: 20 minutes. Oral immediate-release onset: 1 hour; peak: 1.5 to 2 hours. Bioavailability ~50% due to first-pass metabolism. Moderately protein bound (~12%). Extensively metabolized in the liver by CYP2D6; elimination half-life is 3 to 4 hours in extensive metabolizers (prolonged to 7–9 hours in poor CYP2D6 metabolizers). Cleared renally (<5% unchanged).`,
+    dosage: `FDA-approved: Acute Intraoperative Tachycardia / Arrhythmia: 2.5 to 5 mg IV slow push over 2 minutes; repeat every 5 minutes as needed up to a cumulative maximum of 15 mg (titrate to HR 60–80 bpm and MAP). Early Treatment of Definite or Suspected MI: Three IV boluses of 5 mg each given at 2-minute intervals (total 15 mg IV), followed 15 minutes later by 50 mg PO every 6 hours for 48 hours. Oral Maintenance Hypertension / Angina: Metoprolol tartrate 50 to 200 mg PO BID, or metoprolol succinate (Toprol-XL) 50 to 200 mg PO once daily.`,
+    offLabel: `Blunting haemodynamic response to direct laryngoscopy and endotracheal extubation; prevention of thyroid storm crisis during emergency surgery.`,
+    complications: `PERIOPERATIVE GOLDEN RULES: (1) CONTINUE chronic beta-blocker therapy on the morning of surgery: abrupt discontinuation triggers rebound sympathetic storm, severe tachycardia, hypertension, and perioperative myocardial infarction. (2) DO NOT initiate high-dose de novo beta-blockade on the morning of surgery in beta-blocker naive patients (POISE trial proved acute initiation increases stroke and all-cause mortality, despite reducing non-fatal MI!). Relative contraindications: severe sinus bradycardia (HR <50 bpm), second- or third-degree AV block, decompensated cardiogenic shock, and severe active reactive bronchospasm (severe asthma). Treatment of beta-blocker overdose: IV Glucagon (50–100 mcg/kg bolus, then 2–5 mg/hr infusion), High-Dose Insulin Euglycaemic Therapy (HIET), and calcium chloride.`,
+    references: [
+      "FDA Prescribing Information — Lopressor (metoprolol tartrate injection and tablets), Novartis / US FDA.",
+      "POISE Study Group. Effects of extended-release metoprolol succinate in patients undergoing non-cardiac surgery (POISE trial). Lancet 2008.",
+      "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 12 (Preoperative Medication Management).",
+      "UpToDate \"Drug Information: Metoprolol\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  addDrug({
+    id: "esmolol", cat: "antihypertensives", name: "Esmolol", brand: "Brevibloc",
+    classification: "Ultra-Short-Acting Cardioselective Beta-1 Adrenergic Antagonist",
+    tagline: "Ultra-short-acting IV beta-1 blocker with 9-minute half-life — the premier intraoperative titratable agent for acute tachycardia",
+    tags: ["Beta-blocker", "Ultra-short acting", "RBC esterase", "Intraoperative titration"],
+    source: SRC.fdaUpToDate("Brevibloc (esmolol hydrochloride) injection label", "Baxter Healthcare"),
+    structure: `Esmolol hydrochloride is a methyl ester-substituted phenoxypropanolamine derivative (methyl 3-[4-[2-hydroxy-3-(propan-2-ylamino)propoxy]phenyl]propanoate). The critical structural feature is the methyl ester linkage on the aromatic ring, which serves as a vulnerable substrate for rapid enzymatic cleavage by red blood cell esterases.`,
+    pd: `Ultra-short-acting, highly cardioselective beta-1 adrenergic receptor antagonist with zero intrinsic sympathomimetic activity (ISA) and negligible membrane stabilizing (local anaesthetic) activity. Rapidly blunts sympathetically mediated chronotropic and inotropic surges. Decreases heart rate, AV nodal conduction velocity, and cardiac work. Because of its ultra-short kinetics, any adverse haemodynamic depression (hypotension, excessive bradycardia) reverses completely within 15 to 20 minutes of turning off the infusion.`,
+    pk: `Onset of action is almost instantaneous: full beta-blockade achieved within 1 to 2 minutes following a loading dose. Peak effect: 5 minutes. Rapidly and extensively hydrolyzed by cytosolic esterases residing inside red blood cells (erythrocytes) — NOT by plasma pseudocholinesterase or hepatic microsomal enzymes! Hydrolysis cleaves the ester bond to form methanol and an acid metabolite (ASL-8123) with negligible beta-blocking potency (1/1500 of esmolol). Elimination half-life is remarkably brief: 9 minutes! Volume of distribution is 3.4 L/kg. Total body clearance is massive (~285 mL/kg/min), far exceeding hepatic blood flow. Full clinical recovery occurs within 18 to 30 minutes after terminating an infusion.`,
+    dosage: `FDA-approved: Intraoperative Tachycardia and/or Hypertension: Optional loading dose of 0.5 mg/kg (500 mcg/kg) IV bolus administered over 1 minute, followed by an initial maintenance infusion of 50 mcg/kg/min. Titrate in 50 mcg/kg/min increments every 4 minutes (up to a maximum of 200 to 300 mcg/kg/min) until target heart rate is achieved. Immediate Blunting of Laryngoscopy / Intubation / Extubation Reflex: 1.0 to 1.5 mg/kg IV push administered 90 seconds prior to laryngoscopy or extubation. Supraventricular Tachyarrhythmias: 500 mcg/kg IV loading over 1 minute, then 50 mcg/kg/min; re-load and titrate up to 200 mcg/kg/min as needed.`,
+    offLabel: `Controlled hypotension during middle ear microsurgery and endoscopic sinus surgery; blunting hyperdynamic surges during electroconvulsive therapy (ECT) and pheochromocytoma resection.`,
+    complications: `Hypotension (20–50% of patients, directly dose-dependent; resolves promptly upon decreasing or discontinuing infusion), severe bradycardia, heart block, and bronchospasm in susceptible asthmatic patients. Skin necrosis and chemical thrombophlebitis if concentrated solutions (>10 mg/mL) extravasate into peripheral tissue (administer via large vein or central line; dilute pre-mixed bags). Contraindicated in sinus bradycardia (HR <50 bpm), cardiogenic shock, uncompensated heart failure, second- or third-degree AV block, and concurrent IV calcium channel blocker administration.`,
+    references: [
+      "FDA Prescribing Information — Brevibloc (esmolol hydrochloride injection), Baxter Healthcare; US FDA.",
+      "UpToDate \"Drug Information: Esmolol\" (Wolters Kluwer, 2025/2026).",
+      "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Pharmacology).",
+      "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed., Ch. 14."
+    ]
+  });
+
+  addDrug({
+    id: "hydralazine", cat: "antihypertensives", name: "Hydralazine", brand: "Apresoline",
+    classification: "Direct-Acting Peripheral Arteriolar Smooth Muscle Vasodilator",
+    tagline: "Direct arteriolar vasodilator — classic choice for obstetric hypertension; carries a delayed 10–20 min onset and reflex tachycardia",
+    tags: ["Vasodilator", "Arteriolar selective", "Pre-eclampsia", "Obstetric safety"],
+    source: SRC.fdaUpToDate("Hydralazine hydrochloride injection label", "Novartis/Akorn"),
+    structure: `Hydralazine hydrochloride is a hydrazine derivative of phthalazine (1-hydrazinophthalazine monohydrochloride). A simple, highly water-soluble heterocyclic aromatic hydrazine.`,
+    pd: `Produces direct relaxation of vascular smooth muscle, selectively targeting precapillary resistance arterioles with little to no effect on postcapillary capacitance veins. The molecular mechanism involves inhibition of inositol trisphosphate (IP3)-mediated calcium release from the sarcoplasmic reticulum, opening of calcium-activated potassium (K-Ca) channels causing smooth muscle hyperpolarisation, and stimulation of local vascular nitric oxide generation. Because capacitance veins are spared, postural hypotension is uncommon, but the abrupt decline in afterload triggers a vigorous baroreceptor-mediated sympathetic reflex: marked reflex tachycardia, increased stroke volume, and elevated cardiac output. This reflex tachycardia markedly increases myocardial oxygen demand, precipitating myocardial ischaemia in patients with CAD unless co-administered with a beta-blocker.`,
+    pk: `Onset of IV action is DELAYED: 10 to 20 minutes (a crucial pitfall: never dose-stack too quickly!). Peak hypotensive effect occurs at 30 to 60 minutes. Duration of hypotensive action is prolonged and variable: 2 to 6 hours (sometimes up to 12 hours). Extensively metabolized in the liver and intestinal mucosa via N-acetyltransferase 2 (NAT2); genetically determined acetylator status causes marked pharmacokinetic variability (slow acetylators experience higher plasma levels and greater hypotensive response than rapid acetylators). Elimination half-life: 2 to 8 hours.`,
+    dosage: `FDA-approved: Acute Severe Hypertension in Pregnancy / Pre-Eclampsia / Eclampsia: 5 to 10 mg slow IV push over 2 minutes (ACOG first-line protocol). Recheck blood pressure every 10 to 15 minutes; if diastolic BP remains >=110 mmHg or systolic >=160 mmHg after 20 minutes, administer a second dose of 10 mg IV (or switch to labetalol). Maximum single acute cumulative dose: 20 to 30 mg IV. Acute Non-Obstetric Hypertensive Urgency / Postoperative Hypertension: 5 to 20 mg slow IV every 4 to 6 hours as needed.`,
+    offLabel: `Chronic heart failure with reduced ejection fraction in combination with isosorbide dinitrate (BiDil regimen, particularly effective in African American patients to reduce mortality); prevention of vasospasm after subarachnoid hemorrhage.`,
+    complications: `PERIOPERATIVE PITFALLS: (1) Delayed Onset & Dose-Stacking: Because IV onset takes 10 to 20 minutes, giving rapid repeated boluses results in catastrophic delayed refractory hypotension. Always wait at least 20 minutes before re-dosing! (2) Reflex Tachycardia & Myocardial Ischaemia: Strictly avoid in patients with severe coronary artery disease or aortic dissection unless accompanied by adequate beta-blockade. (3) Sodium and water retention during repeated dosing. (4) Drug-Induced Lupus Erythematosus (DILE): Occurs during chronic high-dose oral therapy (>200 mg/day for >6 months), especially in slow acetylators (characterized by ANA and anti-histone antibodies; reverses after stopping drug). Contraindicated in idiopathic systemic lupus erythematosus (SLE) and dissecting aortic aneurysm.`,
+    references: [
+      "FDA Prescribing Information — Hydralazine hydrochloride injection, Akorn / US FDA.",
+      "ACOG Committee Opinion No. 767: Emergent Therapy for Acute-Onset, Severe Hypertension During Pregnancy and the Postpartum Period (Obstet Gynecol 2019 / reaffirmed 2023).",
+      "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 69 (Obstetric Anesthesia).",
+      "UpToDate \"Drug Information: Hydralazine\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  addDrug({
+    id: "sodium-nitroprusside", cat: "antihypertensives", name: "Sodium Nitroprusside (SNP)", brand: "Nipride / Nitropress",
+    classification: "Direct-Acting Mixed Arterial and Venous Vasodilator • Exogenous Nitric Oxide Donor",
+    tagline: "Instantaneous, balanced arterial and venous vasodilator — premier agent for hypertensive crises; requires vigilance for cyanide toxicity",
+    tags: ["Vasodilator", "Nitric Oxide donor", "Cyanide toxicity", "Arterial line mandatory"],
+    source: SRC.fdaUpToDate("Nitropress (sodium nitroprusside) injection label", "Pfizer/Hospira"),
+    structure: `Sodium nitroprusside dihydrate is an inorganic complex salt (sodium pentacyanonitrosylferrate(III) dihydrate, Na₂[Fe(CN)₅NO]·2H₂O). It consists of a central ferrous (Fe²⁺) iron atom surrounded by five cyanide (CN⁻) ligands and a single nitrosyl (NO⁺) group. Photosensitive red crystals; must be protected from ambient light by an opaque sleeve.`,
+    pd: `Acts as an exogenous nitric oxide (NO) donor. In the bloodstream, nitroprusside interacts spontaneously and non-enzymatically with oxyhaemoglobin and sulfhydryl groups in vascular smooth muscle cell membranes, directly releasing nitric oxide. Nitric oxide activates soluble guanylyl cyclase, generating cyclic guanosine monophosphate (cGMP). Elevated cGMP activates protein kinase G (PKG), which dephosphorylates myosin light chains and promotes intracellular calcium sequestration, triggering rapid vascular smooth muscle relaxation. Produces perfectly balanced dilation of BOTH arterial resistance vessels (reducing afterload) AND venous capacitance vessels (reducing preload and pulmonary capillary wedge pressure).`,
+    pk: `Onset of hypotensive action is INSTANTANEOUS: within seconds (15 to 30 seconds) of starting an IV infusion. Peak effect: immediate. Duration of action: blood pressure returns to pre-treatment levels within 1 to 10 minutes after terminating the infusion. Cleared through non-enzymatic cellular breakdown: in erythrocytes, nitroprusside receives an electron from oxyhaemoglobin, breaking down into methemoglobin and releasing its 5 cyanide ions. Cyanide is converted in the liver by the enzyme rhodanese (sulfurtransferase) into non-toxic thiocyanate using endogenous thiosulfate as a sulfur donor. Thiocyanate is cleared renally with an elimination half-life of 3 to 7 days.`,
+    dosage: `FDA-approved: Acute Hypertensive Crisis / Controlled Intraoperative Hypotension: Continuous IV infusion ONLY (requires a precision infusion pump and continuous invasive intraarterial blood pressure monitoring). Initial infusion rate: 0.3 to 0.5 mcg/kg/min. Titrate upward in increments of 0.5 mcg/kg/min every 3 to 5 minutes to achieve target mean arterial pressure. Standard maintenance dose: 1.0 to 3.0 mcg/kg/min. Absolute Maximum Dose: 10 mcg/kg/min — NEVER infuse at >2 mcg/kg/min for prolonged periods or at 10 mcg/kg/min for more than 10 minutes due to lethal cyanide accumulation risk!`,
+    offLabel: `Afterload reduction in severe acute mitral regurgitation, aortic regurgitation, and refractory cardiogenic shock; ergot alkaloid toxicity antidote.`,
+    complications: `BLACK-BOX WARNING — CYANIDE & THIOCYANATE TOXICITY: Infusion rates exceeding 2 mcg/kg/min rapidly deplete endogenous thiosulfate stores. Free cyanide binds ferric (Fe³⁺) iron in cytochrome oxidase a3 in mitochondria, halting aerobic oxidative phosphorylation and producing catastrophic histotoxic hypoxia, profound lactic acidosis, and cardiovascular collapse. Signs of cyanide toxicity: tachyphylaxis (escalating dose requirements to achieve the same hypotensive effect), unexplained widening of base deficit and severe metabolic acidosis, elevated mixed venous oxygen saturation (SvO₂ >85% because tissues cannot extract delivered oxygen), and cardiac arrhythmias. Cyanide Antidote Protocol: (1) Hydroxocobalamin (Cyanokit: 5 g IV over 15 min; binds cyanide to form non-toxic cyanocobalamin / Vitamin B12, excreted in urine); (2) Sodium Thiosulfate 12.5 g IV (provides sulfur substrate for rhodanese); (3) Sodium Nitrite (induces methemoglobinemia to scavenge cyanide). Other hazards: Rebound hypertension upon abrupt discontinuation (mitigate by gradual tapering); intracranial pressure elevation (cerebral vasodilation; hyperventilate or avoid in acute TBI); severe coronary steal phenomenon; photodegradation (protect IV bag and tubing with amber opaque foil wrap).`,
+    references: [
+      "FDA Prescribing Information — Nitropress (sodium nitroprusside injection), Hospira / Pfizer; US FDA.",
+      "UpToDate \"Drug Information: Sodium Nitroprusside\" (Wolters Kluwer, 2025/2026).",
+      "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 42 (Controlled Hypotension).",
+      "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed., Ch. 17."
+    ]
+  });
+
+  // ---------------- ALPHA-2 AGONISTS ----------------
+  addDrug({
+    id: "clonidine", cat: "alpha2", name: "Clonidine", brand: "Catapres",
+    classification: "Centrally Acting Alpha-2 Adrenergic Receptor Agonist",
+    tagline: "Centrally acting alpha-2 agonist — reduces volatile MAC by 25–40%, blunts intubation surges, and prolongs regional nerve blocks",
+    tags: ["Alpha-2 agonist", "Sympatholytic", "MAC reduction", "Rebound hypertension"],
+    source: SRC.fdaUpToDate("Catapres (clonidine hydrochloride) tablets label", "Boehringer Ingelheim"),
+    structure: `Clonidine hydrochloride is an imidazoline derivative (2-(2,6-dichlorophenylamino)-2-imidazoline hydrochloride). A lipid-soluble partial agonist with an alpha-2 to alpha-1 selectivity ratio of approximately 220:1.`,
+    pd: `Stimulates presynaptic alpha-2 adrenergic receptors in the nucleus tractus solitarius and rostral ventrolateral medulla of the brainstem. Activation of presynaptic Gi-protein-coupled alpha-2 receptors suppresses adenylate cyclase, inhibits voltage-gated calcium channels, and activates inward-rectifying potassium channels, terminating norepinephrine exocytosis. This profound reduction in central sympathetic outflow decreases systemic vascular resistance, heart rate, and arterial blood pressure. Key anaesthetic effects: (1) Reduces Minimum Alveolar Concentration (MAC) of volatile anaesthetics by 25 to 40%; (2) Reduces perioperative opioid consumption; (3) Blunts hemodynamic stress surges during direct laryngoscopy and extubation; (4) Neuraxial / peripheral adjuvant: inhibits substance P and nociceptive A-delta and C-fibre transmission in the dorsal horn, prolonging local anaesthetic block duration by 2 to 4 hours.`,
+    pk: `Oral bioavailability is high: 75 to 95%. Onset of oral action: 30 to 60 minutes; peak plasma concentration and maximum hypotensive effect achieved at 1.5 to 3 hours. Onset of IV action: 10 minutes. Moderately protein bound (~20 to 40%). Volume of distribution is large (~2.1 L/kg). Hepatically metabolized (~50%) to inactive metabolites; 50% excreted unchanged in urine. Elimination half-life is 12 to 16 hours (extended up to 40 hours in severe renal impairment). Duration of clinical effect: 8 to 12 hours.`,
+    dosage: `FDA-approved: Hypertension: Initial dose 0.1 mg PO BID (morning and bedtime); titrate by 0.1 mg/day weekly up to standard maintenance of 0.2 to 0.6 mg/day in divided doses (maximum 2.4 mg/day). Transdermal Patch (Catapres-TTS): TTS-1 (0.1 mg/day), TTS-2 (0.2 mg/day), TTS-3 (0.3 mg/day) applied every 7 days. Epidural Analgesia for Severe Cancer Pain (Duraclon): Initial 30 mcg/hr continuous epidural infusion, titrated up as needed.`,
+    offLabel: `Premedication / Anxiolysis: 2 to 5 mcg/kg PO (or 0.1 to 0.2 mg PO) administered 60 to 90 minutes before surgery. Regional Anesthesia Adjuvant: 0.5 to 1.0 mcg/kg (typically 50 to 100 mcg) added to local anaesthetics in brachial plexus or femoral blocks. Prevention of post-anaesthetic shivering: 75 to 150 mcg IV slow push. Opioid and alcohol withdrawal syndrome management.`,
+    complications: `PERIOPERATIVE WARNING — REBOUND HYPERTENSIVE CRISIS: Abrupt cessation of chronic clonidine therapy (missing even 1 or 2 doses preoperatively!) precipitates a life-threatening sympathetic surge (rebound hypertension, severe tachycardia, diaphoresis, headache, and tremors) due to excessive circulating catecholamines. Always instruct patients to take their scheduled clonidine on the morning of surgery with a sip of water. If oral intake is prohibited postoperatively, convert to transdermal clonidine patch or IV infusion. Common side effects: sedation, dry mouth (xerostomia), bradycardia, and orthostatic hypotension. Contraindicated in severe sinus node dysfunction or high-grade AV block without a pacemaker.`,
+    references: [
+      "FDA Prescribing Information — Catapres (clonidine hydrochloride tablets), Boehringer Ingelheim / US FDA.",
+      "UpToDate \"Drug Information: Clonidine\" (Wolters Kluwer, 2025/2026).",
+      "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 34 (Nonopioid Pain Pharmacotherapy).",
+      "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed., Ch. 14."
+    ]
+  });
+
+  addDrug({
+    id: "dexmedetomidine", cat: "alpha2", name: "Dexmedetomidine", brand: "Precedex",
+    classification: "Highly Selective Alpha-2 Adrenergic Receptor Agonist • Non-Opioid Sedative/Analgesic",
+    tagline: "Highly selective alpha-2 agonist (1620:1) — provides 'arousable sedation' mimicking natural sleep with ZERO respiratory depression",
+    tags: ["Alpha-2 agonist", "Arousable sedation", "Zero respiratory depression", "Awake intubation"],
+    source: SRC.fdaUpToDate("Precedex (dexmedetomidine hydrochloride) injection label", "Hospira/Pfizer"),
+    structure: `Dexmedetomidine is the pharmacologically active dextro-enantiomer of medetomidine (5-[(1S)-1-(2,3-dimethylphenyl)ethyl]-1H-imidazole monohydrochloride). It possesses an alpha-2 to alpha-1 selectivity ratio of 1620:1 — making it roughly 8 times more selective for alpha-2 receptors than clonidine.`,
+    pd: `Acts selectively on presynaptic and postsynaptic alpha-2 receptors in the locus coeruleus of the brainstem — the key central hub regulating wakefulness and arousal. Through Gi-protein coupling, it inhibits adenylate cyclase and reduces firing of noradrenergic neurons projecting to the cortex. Unique Clinical Profile: (1) 'Arousable Sedation': Patients appear naturally asleep but are readily roused by verbal or gentle tactile stimuli, can follow commands, and easily drift back to sleep (mimicking stage 2 non-REM sleep on EEG). (2) ZERO Respiratory Depression: Does not impair hypercapnic ventilatory drive or cause hypoventilation/apnoea even at deep sedation levels — the gold standard for awake fibreoptic intubation, difficult airway management, and high-risk OSA patients. (3) Analgesic & Opioid-Sparing: Activates alpha-2 receptors in the substantia gelatinosa of the spinal cord dorsal horn, reducing perioperative opioid requirements by 30 to 50%. (4) Decreases emergence delirium, postoperative shivering, and volatile MAC by up to 50%.`,
+    pk: `Onset of IV sedation: 5 to 10 minutes following initiation; peak sedative effect: 15 to 30 minutes. Rapid distribution phase with a distribution half-life (t1/2alpha) of ~6 minutes. Steady-state volume of distribution: ~118 L (1.7 L/kg). Highly bound to plasma proteins (~94%), primarily albumin and alpha-1 acid glycoprotein. Extensively metabolized in the liver via glucuronidation (UGT2B10, UGT1A4) and cytochrome P450 hydroxylation (CYP2A6) to inactive metabolites. Elimination half-life is 2.0 to 2.5 hours. Cleared almost entirely hepatically (clearance ~39 L/hr); <1% excreted unchanged in urine.`,
+    dosage: `FDA-approved: Procedural Sedation (Non-Intubated Patients / Awake Intubation): Loading dose of 1.0 mcg/kg IV infused over 10 minutes. Followed by a maintenance infusion initiated at 0.6 mcg/kg/hr and titrated to effect (typical procedural range 0.2 to 1.0 mcg/kg/hr). Intensive Care Unit Sedation (Mechanically Ventilated Adults): Initiate continuous infusion at 0.2 to 0.7 mcg/kg/hr without a loading dose (omitting the loading dose dramatically reduces incidence of hypotension and bradycardia); titrate to target RASS sedation score (-1 to -2).`,
+    offLabel: `Awake Craniotomy: Primary sedative agent during the opening and mapping phases (allows fluent neurological testing without clouding speech or motor function). Intraoperative Multimodal TIVA Adjunct: Continuous infusion of 0.2 to 0.5 mcg/kg/hr throughout surgery. Prevention and Treatment of Emergence Delirium in pediatric patients: 0.5 mcg/kg IV given 10 minutes before end of surgery. Neuraxial / Peripheral Nerve Block Adjuvant: 0.5 mcg/kg added to local anaesthetics.`,
+    complications: `BIPHASIC HAEMODYNAMIC RESPONSE TO RAPID BOLUS: Rapid IV bolus administration activates peripheral vascular postsynaptic alpha-2b receptors in vascular smooth muscle, causing transient vasoconstriction and hypertension, accompanied by baroreceptor-mediated severe reflex bradycardia. Once the drug distributes to the central nervous system, central sympatholysis takes over, producing sustained hypotension and sinus bradycardia. Prevention: Omit loading bolus in haemodynamically unstable patients, or infuse loading dose very slowly over 10 to 15 minutes! Severe bradycardia can progress to sinus arrest or heart block (manage with glycopyrrolate, atropine, or ephedrine). Dry mouth (xerostomia). Use cautiously in patients with severe baseline bradycardia, hypovolemia, or high-grade AV block.`,
+    references: [
+      "FDA Prescribing Information — Precedex (dexmedetomidine hydrochloride injection), Hospira / Pfizer; US FDA.",
+      "UpToDate \"Drug Information: Dexmedetomidine\" (Wolters Kluwer, 2025/2026).",
+      "Miller's Anesthesia, 10th ed., Ch. 21 (Intravenous Anesthetics) & Ch. 44 (Airway Management).",
+      "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed., Ch. 14."
+    ]
+  });
+
+  // ---------------- CORTICOSTEROIDS ----------------
+  addDrug({
+    id: "dexamethasone", cat: "steroids", name: "Dexamethasone", brand: "Decadron",
+    classification: "Long-Acting Synthetic Fluorinated Glucocorticoid",
+    tagline: "Ultra-potent synthetic glucocorticoid with zero mineralocorticoid effect — the cornerstone antiemetic and anti-inflammatory agent",
+    tags: ["Glucocorticoid", "PONV prophylaxis", "Airway edema", "Zero mineralocorticoid"],
+    source: SRC.fdaUpToDate("Decadron (dexamethasone sodium phosphate) injection label", "Merck/Fresenius Kabi"),
+    structure: `Dexamethasone sodium phosphate is a synthetic 9-alpha-fluoro-16-alpha-methyl derivative of prednisolone ((8S,9R,10S,11S,13S,14S,16R,17R)-9-fluoro-11,17-dihydroxy-17-(2-hydroxyacetyl)-10,13,16-trimethyl-6,7,8,11,12,14,15,16-octahydrocyclopenta[a]phenanthren-3-one). Fluorination at C-9 and methylation at C-16 confer extreme glucocorticoid potency while completely abolishing mineralocorticoid (sodium-retaining) activity.`,
+    pd: `Potent glucocorticoid receptor agonist with 25 to 30 times the anti-inflammatory potency of hydrocortisone and strictly ZERO mineralocorticoid activity. Lipophilic molecules cross cell membranes and bind intracellular glucocorticoid receptors (GR). The activated complex translocates into the nucleus, binding Glucocorticoid Response Elements (GRE) to transactivate anti-inflammatory proteins (annexin-1, I-kappa-B) and transrepress proinflammatory transcription factors (NF-kappa-B, AP-1), down-regulating cytokines (IL-1, IL-2, IL-6, TNF-alpha), inducible COX-2, and inducible nitric oxide synthase (iNOS). Antiemetic Mechanism: Central inhibition of prostaglandin synthesis, depletion of serotonin precursors in neural tissue, and reduction of blood-brain barrier permeability to emetogenic toxins. Also rapidly reduces capillary endothelial permeability, mitigating post-extubation airway and vocal cord oedema.`,
+    pk: `Onset of biological antiemetic and anti-inflammatory action: 1 to 2 hours following IV injection. Plasma elimination half-life is 3 to 5 hours, but biological tissue half-life is exceptionally prolonged: 36 to 54 hours (long-acting), reflecting prolonged intracellular genomic alterations. Highly protein bound (70 to 80%), predominantly to albumin (does not bind transcortin / CBG). Metabolized in the liver by CYP3A4 to 6-beta-hydroxydexamethasone; excreted renally (<10% unchanged).`,
+    dosage: `FDA-approved & Consensus Guidelines: Postoperative Nausea & Vomiting (PONV) Prophylaxis: 4 to 8 mg IV administered at induction of general anaesthesia (giving at induction allows the 1–2 hour biological onset to take effect before emergence; 4 mg is non-inferior to 8 mg for pure antiemetic effect). Prevention and Treatment of Post-Extubation Airway Edema / Stridor: 8 to 10 mg IV administered at least 4 to 6 hours prior to planned extubation (or 0.25 to 0.5 mg/kg IV in pediatric patients, repeated every 6 hours for up to 4 doses). Reduction of Spinal Cord / Cerebral Tumor Edema: 10 mg IV loading dose, followed by 4 mg IV every 6 hours. Multimodal Analgesic / Perineural Local Anesthetic Adjuvant: 4 to 8 mg IV (or 1 to 2 mg perineurally, off-label) prolongs peripheral nerve block analgesia by 6 to 8 hours.`,
+    offLabel: `Perineural adjuvant in peripheral nerve blocks; COVID-19 severe respiratory distress / ARDS (RECOVERY trial: 6 mg daily for up to 10 days); HELLP syndrome postpartum recovery.`,
+    complications: `CLINICAL PEARLS & ADVERSE EFFECTS: (1) Perianal / Perineal Burning: Rapid IV push in awake patients induces intense, distressing burning, itching, or tingling in the perineal and genital region (due to the phosphate ester vehicle). Always administer slowly over 1 to 2 minutes, dilute in 50 mL saline, or push immediately after loss of consciousness upon induction! (2) Transient Hyperglycaemia: Elevates blood glucose by 30 to 60 mg/dL peaking 4 to 8 hours postoperatively (use with closer capillary glucose monitoring in brittle diabetics; a single 4–8 mg dose is safe and does NOT increase surgical site infection rates). (3) Delayed wound healing and immunosuppression with prolonged multi-day dosing, but negligible with single perioperative doses.`,
+    references: [
+      "FDA Prescribing Information — Dexamethasone sodium phosphate injection, Fresenius Kabi / US FDA.",
+      "Fourth Consensus Guidelines for the Management of Postoperative Nausea and Vomiting (Anesth Analg 2020).",
+      "Miller's Anesthesia, 10th ed., Ch. 86 (Postoperative Nausea and Vomiting) & Ch. 34 (Nonopioid Pain Pharmacotherapy).",
+      "UpToDate \"Drug Information: Dexamethasone\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  addDrug({
+    id: "hydrocortisone", cat: "steroids", name: "Hydrocortisone", brand: "Solu-Cortef",
+    classification: "Short-Acting Natural Glucocorticoid with Equal Mineralocorticoid Activity",
+    tagline: "The gold standard for perioperative 'stress-dose' steroid coverage and acute Addisonian crisis resuscitation",
+    tags: ["Glucocorticoid", "Mineralocorticoid", "Stress dose", "Adrenal crisis"],
+    source: SRC.fdaUpToDate("Solu-Cortef (hydrocortisone sodium succinate) injection label", "Pfizer"),
+    structure: `Hydrocortisone sodium succinate is the sodium succinate ester of endogenous cortisol (11-beta,17-alpha,21-trihydroxypregn-4-ene-3,20-dione 21-succinate sodium salt). Endogenous human glucocorticoid hormone secreted by the zona fasciculata of the adrenal cortex under pituitary ACTH control.`,
+    pd: `Possesses equal 1:1 balanced glucocorticoid (anti-inflammatory) and mineralocorticoid (salt-retaining) potency. Normal basal endogenous adrenal secretion is roughly 15 to 20 mg/day of cortisol, rising to 100 to 150 mg/day under maximal surgical stress. In vascular smooth muscle, hydrocortisone exerts a critical 'permissive effect' on vascular tone: it upregulates vascular alpha-1 adrenergic and angiotensin II receptors and downregulates endothelial nitric oxide synthase. In adrenal insufficiency, absence of cortisol results in severe loss of vascular tone and refractory vasodilatory shock uncorrectable by vasopressors alone. Mineralocorticoid action promotes distal renal sodium reabsorption and potassium/hydrogen ion excretion.`,
+    pk: `Onset of IV hemodynamic action: 10 to 30 minutes; full genomic protein modulation: 2 to 4 hours. Highly bound to plasma proteins (90 to 95%), primarily Corticosteroid-Binding Globulin (CBG / transcortin) with high affinity, and albumin with low affinity. Extensively metabolized by hepatic microsomal enzymes (reduction of the 4,5 double bond and 3-ketone group to tetrahydrocortisol and tetrahydrocortisone) and conjugated with glucuronic acid. Biological half-life: 8 to 12 hours (short-acting); plasma half-life: 1.5 to 2 hours. Excreted renally as glucuronide conjugates.`,
+    dosage: `FDA-approved: Perioperative Stress-Dose Coverage (Patients with HPA Axis Suppression from chronic steroid therapy >5 mg prednisone equivalent daily for >3 weeks within the past 12 months): (1) Minor Surgical Stress (hernia, carpal tunnel): Usual daily morning steroid dose only; no additional IV coverage required. (2) Moderate Surgical Stress (cholecystectomy, joint replacement): 50 mg IV at induction, then 25 mg IV every 8 hours for 24 hours, then resume usual oral maintenance. (3) Major Surgical Stress (cardiac surgery, Whipple, esophagectomy): 100 mg IV at induction, followed by 50 to 100 mg IV every 8 hours for 48 to 72 hours, then taper rapidly back to baseline. Acute Addisonian Adrenal Crisis: Immediate 100 mg IV stat bolus, accompanied by aggressive fluid resuscitation with 0.9% normal saline and 5% dextrose, followed by 100 to 200 mg continuous IV infusion over 24 hours (or 50 to 100 mg IV every 6 hours). Severe Septic Shock with Refractory Vasoplegia: 200 mg/day IV given as 50 mg IV every 6 hours or continuous infusion.`,
+    offLabel: `Septic shock resuscitation (Surviving Sepsis Campaign: recommended when fluids and high-dose vasopressors fail to restore haemodynamic stability); acute thyroid storm crisis.`,
+    complications: `Mineralocorticoid-induced sodium and fluid retention (can precipitate congestive heart failure in compromised ventricles), hypokalaemia, metabolic alkalosis, and acute hyperglycaemic spikes. Acute psychosis or steroid-induced delirium (rare during short perioperative courses). Masks early signs of intra-abdominal surgical sepsis and peritonitis. Prolonged therapy impairs surgical wound healing and elevates infection risks.`,
+    references: [
+      "FDA Prescribing Information — Solu-Cortef (hydrocortisone sodium succinate injection), Pfizer; US FDA.",
+      "Woodcock TE, et al. Guidelines for the management of glucocorticoids during the peri-operative period for patients with adrenal insufficiency (Anaesthesia 2020).",
+      "Miller's Anesthesia, 10th ed., Ch. 12 (Preoperative Evaluation) & Ch. 37 (Anesthesia for Endocrine Surgery).",
+      "UpToDate \"Drug Information: Hydrocortisone\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  addDrug({
+    id: "methylprednisolone", cat: "steroids", name: "Methylprednisolone", brand: "Solu-Medrol",
+    classification: "Intermediate-Acting Synthetic Glucocorticoid",
+    tagline: "Synthetic glucocorticoid with 5x hydrocortisone potency and minimal salt retention — premier agent for bronchospasm and anaphylaxis",
+    tags: ["Glucocorticoid", "Bronchospasm", "Anaphylaxis adjunct", "Intermediate-acting"],
+    source: SRC.fdaUpToDate("Solu-Medrol (methylprednisolone sodium succinate) injection label", "Pfizer"),
+    structure: `Methylprednisolone sodium succinate is the 21-succinate sodium ester of 6-alpha-methylprednisolone ((6S,8S,9S,10R,11S,13S,14S,17R)-11,17-dihydroxy-17-(2-hydroxyacetyl)-6,10,13-trimethyl-6,7,8,9,11,12,14,15,16,17-decahydrocyclopenta[a]phenanthren-3-one). Addition of the 6-alpha-methyl group increases glucocorticoid potency 5-fold compared to hydrocortisone while suppressing mineralocorticoid action.`,
+    pd: `Intermediate-acting glucocorticoid with approximately 5 times the anti-inflammatory potency of hydrocortisone and negligible mineralocorticoid effect. Rapidly suppresses the synthesis and release of inflammatory leukotrienes, prostaglandins, and cytokines. Upregulates beta-2 adrenergic receptor expression on bronchial smooth muscle cells (reversing beta-receptor desensitization and restoring responsiveness to inhaled salbutamol/albuterol). Stabilizes lysosomal membranes, inhibits mast cell mediator cascade, and decreases microvascular permeability.`,
+    pk: `Onset of biological anti-inflammatory action: 1 to 2 hours following IV administration. Biological tissue half-life: 18 to 36 hours (intermediate-acting); plasma half-life: 2.5 to 3.5 hours. Moderately bound to plasma proteins (~77%), primarily albumin. Metabolized in the liver by CYP3A4 to inactive metabolites; excreted renally as glucuronide and sulfate conjugates.`,
+    dosage: `FDA-approved: Acute Intraoperative Bronchospasm / Status Asthmaticus: 40 to 125 mg IV bolus administered slowly over 5 minutes; may be repeated every 6 to 8 hours until wheezing resolves. Severe Anaphylaxis Adjunct (Second-Line after Epinephrine): 1 to 2 mg/kg IV (typical adult dose 100 to 125 mg IV) to prevent late-phase biphasic anaphylactic reactions. Acute Laryngeal / Post-Extubation Airway Edema: 40 to 80 mg IV every 6 hours. Prevention of Solid Organ Allograft Rejection: 250 to 1000 mg IV high-dose pulse therapy.`,
+    offLabel: `Cardiac surgery with cardiopulmonary bypass (CPB) to attenuate systemic inflammatory response syndrome (SIRS: 250 to 500 mg IV before bypass initiation); acute spinal cord injury (historical NASCIS protocol: 30 mg/kg bolus, no longer routinely recommended due to high infection/sepsis risks without meaningful neurological gain).`,
+    complications: `Transient hyperglycaemia (requires capillary glucose monitoring), perianal itching or paraesthesias if pushed rapidly IV (dilute in 50 mL saline and infuse over 10–15 minutes). Hypertension, fluid retention at very high doses, and delayed wound healing. High-dose pulse therapy (>500 mg IV) can precipitate acute cardiac arrhythmias (sinus bradycardia, ventricular arrhythmias) or sudden circulatory collapse if infused too rapidly (always infuse high doses over at least 30 to 60 minutes).`,
+    references: [
+      "FDA Prescribing Information — Solu-Medrol (methylprednisolone sodium succinate injection), Pfizer; US FDA.",
+      "UpToDate \"Drug Information: Methylprednisolone\" (Wolters Kluwer, 2025/2026).",
+      "Miller's Anesthesia, 10th ed., Ch. 60 (Anesthesia for Thoracic Surgery) & Ch. 85 (Anaphylaxis).",
+      "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed., Ch. 21."
+    ]
+  });
+
+  // ---------------- ANTIDIABETICS ----------------
+  addDrug({
+    id: "metformin", cat: "antidiabetics", name: "Metformin", brand: "Glucophage",
+    classification: "Biguanide • AMPK Activator & Mitochondrial Complex I Inhibitor",
+    tagline: "First-line oral antidiabetic — suppresses hepatic gluconeogenesis; carries risk of lactic acidosis during hypoperfusion and contrast nephropathy",
+    tags: ["Biguanide", "AMPK activator", "Lactic acidosis", "Renal clearance"],
+    source: SRC.fdaUpToDate("Glucophage (metformin hydrochloride) tablets label", "Bristol-Myers Squibb/Merck"),
+    structure: `Metformin hydrochloride is 1,1-dimethylbiguanide hydrochloride. A small, highly polar, hydrophilic molecule with a pKa of 12.4. It exists almost entirely as a positively charged cation at physiological pH and exhibits virtually zero plasma protein binding.`,
+    pd: `Inhibits mitochondrial respiratory chain Complex I, decreasing intracellular ATP production and increasing AMP:ATP ratio. This activates AMP-activated protein kinase (AMPK), which: (1) Suppresses hepatic gluconeogenesis and glycogenolysis (reducing basal hepatic glucose output); (2) Stimulates peripheral insulin sensitivity and GLUT4 glucose uptake in skeletal muscle; (3) Inhibits mitochondrial glycerol-3-phosphate dehydrogenase (mGPD), shifting cytoplasmic redox state and blocking lactate conversion to glucose. Does NOT stimulate pancreatic beta-cell insulin secretion — therefore carries virtually ZERO intrinsic risk of hypoglycemia when used as monotherapy.`,
+    pk: `Onset of action: 2 to 3 hours; peak plasma concentration: 2.5 hours (extended-release forms 7 hours). Absolute oral bioavailability: 50 to 60%. Negligible protein binding (<1%). Volume of distribution: 650 L. Metformin is NOT metabolized by the liver; it undergoes zero hepatic biotransformation and is eliminated 100% UNCHANGED by the kidneys via active organic cation transporter 2 (OCT2) and multidrug and toxin extrusion (MATE) tubular secretion. Plasma elimination half-life: 4.0 to 8.7 hours; terminal elimination half-life in whole blood/erythrocytes: up to 17.6 hours.`,
+    dosage: `FDA-approved: Type 2 Diabetes Mellitus: Immediate-release: 500 mg PO BID or 850 mg once daily with meals; titrate in increments of 500 mg weekly up to standard maintenance of 1000 mg PO BID (maximum approved dose: 2550 mg/day). Extended-Release (Glucophage XR): 500 to 1000 mg PO once daily with evening meal (maximum 2000 mg/day). Renal Dose Adjustments: eGFR 45 to 59 mL/min: maximum 1000 mg/day; eGFR 30 to 44 mL/min: maximum 500 mg/day (do not initiate); eGFR <30 mL/min: STRICTLY CONTRAINDICATED.`,
+    offLabel: `Polycystic ovary syndrome (PCOS: 1500 to 2000 mg/day to restore ovulatory menses and reduce hyperandrogenism); prevention of weight gain associated with atypical antipsychotics.`,
+    complications: `BLACK-BOX WARNING — METFORMIN-ASSOCIATED LACTIC ACIDOSIS (MALA): Accumulation of metformin impairs hepatic gluconeogenesis from lactate, driving conversion of pyruvate to lactate. During states of tissue hypoperfusion, sepsis, hypovolaemia, cardiogenic shock, or acute renal failure, lactate clearance fails, precipitating severe lactic acidosis (mortality ~30–50%). PERIOPERATIVE RULES: (1) Hold on the morning of surgery for elective minor/ambulatory procedures. (2) For major surgical procedures with anticipated large fluid shifts, hemodynamic instability, or use of IV iodinated contrast agents: WITHHOLD METFORMIN 48 HOURS PRIOR TO SURGERY. (3) Do NOT resume postoperatively until normal oral intake is established, hemodynamic stability is confirmed, and renal function is verified normal (eGFR >45 mL/min). Other side effects: gastrointestinal distress (diarrhea, abdominal cramps, nausea in 20%), Vitamin B12 deficiency during chronic therapy.`,
+    references: [
+      "FDA Prescribing Information — Glucophage (metformin hydrochloride tablets), Bristol-Myers Squibb / US FDA.",
+      "American Diabetes Association (ADA): Standards of Care in Diabetes — Perioperative Diabetes Management (Diabetes Care 2024/2025).",
+      "Miller's Anesthesia, 10th ed., Ch. 12 (Preoperative Evaluation) & Ch. 37 (Endocrine Pharmacology).",
+      "UpToDate \"Drug Information: Metformin\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  addDrug({
+    id: "empagliflozin", cat: "antidiabetics", name: "Empagliflozin", brand: "Jardiance",
+    classification: "Sodium-Glucose Co-Transporter 2 (SGLT2) Inhibitor",
+    tagline: "Cardioprotective SGLT2 inhibitor — carries critical hazard of life-threatening EUGLYCAEMIC Diabetic Ketoacidosis (euDKA); hold 3 days pre-op",
+    tags: ["SGLT2 inhibitor", "euDKA risk", "Cardioprotective", "Hold 3 days"],
+    source: SRC.fdaUpToDate("Jardiance (empagliflozin) tablets label", "Boehringer Ingelheim/Lilly"),
+    structure: `Empagliflozin is a C-glucoside derivative ((1S)-1,5-anhydro-1-C-[4-chloro-3-[[4-[[(3S)-tetrahydrofuran-3-yl]oxy]phenyl]methyl]phenyl]-D-glucitol). Synthetic glucopyranosyl aryl compound possessing extreme selectivity for SGLT2 over SGLT1 (>5000-fold).`,
+    pd: `Selectively and reversibly inhibits the Sodium-Glucose Co-Transporter 2 (SGLT2) located in the early S1 segment of the renal proximal convoluted tubule. SGLT2 is responsible for reabsorbing approximately 90% of filtered glucose from the tubular lumen. Inhibiting SGLT2 lowers the renal threshold for glucose, producing massive glucosuria (excreting 70 to 100 grams of urinary glucose per day, equivalent to ~280–400 kcal/day) and accompanying mild osmotic diuresis and natriuresis. Major Benefits: Lowers HbA1c without hypoglycemia, reduces systolic blood pressure by 3–5 mmHg, promotes modest weight loss, and dramatically reduces cardiovascular death and hospitalizations for heart failure (EMPA-REG OUTCOME trial).`,
+    pk: `Rapidly absorbed following oral ingestion; peak plasma concentration reached in 1.5 hours. Steady-state volume of distribution: ~73.8 L. Protein binding: 86%. Metabolized in the liver primarily via glucuronidation by uridine 5'-diphospho-glucuronosyltransferases UGT2B7, UGT1A3, UGT1A8, and UGT1A9 to inactive glucuronide conjugates (no major CYP metabolism). Elimination half-life: 12.4 hours. Cleared ~54% in urine and ~41% in faeces.`,
+    dosage: `FDA-approved: Type 2 Diabetes Mellitus / Heart Failure (HFrEF & HFpEF) / Chronic Kidney Disease: 10 mg PO once daily in the morning with or without food. In T2DM, may be increased to maximum 25 mg PO once daily for additional glycaemic control. May be initiated in patients with eGFR down to 20 mL/min for heart failure and CKD indications (glycaemic efficacy declines as eGFR drops below 45 mL/min, but cardioprotective and nephroprotective benefits persist).`,
+    offLabel: `Nonalcoholic steatohepatitis (NASH) to reduce hepatic steatosis.`,
+    complications: `FDA BLACK-BOX / SAFETY WARNING — EUGLYCAEMIC DIABETIC KETOACIDOSIS (euDKA): The single most lethal perioperative trap in modern diabetes pharmacology! Triggered by surgical fasting, physiological stress, dehydration, and reduced carbohydrate intake. Glucosuria lowers plasma glucose and decreases endogenous insulin secretion, while glucagon secretion surges. This profound insulin-to-glucagon imbalance accelerates lipolysis and unrestrained hepatic ketogenesis (producing massive acetoacetate and beta-hydroxybutyrate). Because the kidneys continuously dump glucose, plasma blood glucose levels remain NORMAL OR ONLY MILDLY ELEVATED (<250 mg/dL / <13.9 mmol/L), completely deceiving clinicians who rely on routine glucometer checks! Patient develops profound metabolic ketoacidosis with an elevated anion gap while blood sugars appear benign. FDA / ASA MANDATORY PERIOPERATIVE GUIDELINE: WITHHOLD EMPAGLIFLOZIN FOR AT LEAST 3 FULL DAYS (72 HOURS) PRIOR TO SCHEDULED SURGERY! (Ertugliflozin: hold 4 days; Canagliflozin/Dapagliflozin: hold 3 days). If patient inadvertently took their dose: postpone elective surgery, or test blood beta-hydroxybutyrate preoperatively and monitor arterial blood gases closely. Other side effects: mycotic genital infections, urinary tract infections, volume depletion, and Fournier's gangrene (rare necrotizing fasciitis of perineum).`,
+    references: [
+      "FDA Prescribing Information & Drug Safety Communication — Jardiance (empagliflozin tablets), Boehringer Ingelheim / Lilly / US FDA.",
+      "American Diabetes Association (ADA) / European Association for the Study of Diabetes (EASD) Consensus Statement: Management of Hyperglycemia in T2D (2022/2024 update).",
+      "ASA Statement on Perioperative Management of SGLT2 Inhibitors (Anesthesiology 2021 / 2023 update).",
+      "UpToDate \"Drug Information: Empagliflozin\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  addDrug({
+    id: "semaglutide", cat: "antidiabetics", name: "Semaglutide", brand: "Ozempic / Wegovy / Rybelsus",
+    classification: "Glucagon-Like Peptide-1 (GLP-1) Receptor Agonist",
+    tagline: "Ultra-potent GLP-1 receptor agonist — causes marked gastric emptying delay and severe aspiration risk; hold weekly injections 1 full week pre-op",
+    tags: ["GLP-1 agonist", "Delayed gastric emptying", "Aspiration risk", "Hold 1 week"],
+    source: SRC.fdaUpToDate("Ozempic / Wegovy (semaglutide injection) and Rybelsus (tablets) label", "Novo Nordisk"),
+    structure: `Semaglutide is a synthetic glucagon-like peptide-1 (GLP-1) analogue engineered with 94% amino acid sequence homology to native human GLP-1(7-37). Key chemical modifications: (1) Substitution of 2-aminoisobutyric acid (Aib) at position 8 confers extreme resistance to enzymatic cleavage by Dipeptidyl Peptidase-4 (DPP-4); (2) Attachment of a C-18 fatty diacid chain via a hydrophilic linker at Lys26 promotes high-affinity binding to serum albumin, shielding the molecule from renal filtration.`,
+    pd: `Selectively activates the GLP-1 receptor. Through Gs-protein coupling and adenylate cyclase stimulation, it increases intracellular cyclic AMP (cAMP) in pancreatic beta-cells, stimulating glucose-dependent insulin secretion (insulin is released ONLY when blood glucose is elevated, ensuring minimal intrinsic risk of hypoglycemia). Concurrently suppresses inappropriate postprandial glucagon secretion from alpha-cells. Central Nervous System Action: Activates GLP-1 receptors in the arcuate nucleus of the hypothalamus and area postrema, promoting early satiety and suppressing appetite. Gastrointestinal Action: Pronounced inhibition of gastric motility and profound delay of gastric emptying.`,
+    pk: `Subcutaneous absorption: peak plasma concentration reached 1 to 3 days post-injection. Absolute bioavailability ~89%. Over 99% bound to plasma albumin. Metabolized via proteolytic cleavage of the peptide backbone and sequential beta-oxidation of the fatty acid side chain (no specific CYP pathways). Elimination half-life is remarkably prolonged: approximately 7 DAYS (168 hours). Steady-state concentration is achieved after 4 to 5 weeks of once-weekly dosing. Cleared renally (~3%) and in faeces.`,
+    dosage: `FDA-approved: Type 2 Diabetes Mellitus (Ozempic SC): Initiate at 0.25 mg SC once weekly for 4 weeks (tolerability titration), increase to 0.5 mg SC once weekly; may increase to 1.0 mg or maximum 2.0 mg SC weekly for glycemic targets. Chronic Weight Management (Wegovy SC): Dose escalated monthly from 0.25 mg to 0.5, 1.0, 1.7, and maintenance 2.4 mg SC once weekly. Oral Formulation (Rybelsus): 3 mg PO once daily for 30 days, then 7 mg daily, titratable to 14 mg daily (must be taken upon waking with <=4 oz water on empty stomach 30 min before food).`,
+    offLabel: `Non-alcoholic steatohepatitis (NASH) with fibrosis; metabolic dysfunction-associated steatotic liver disease (MASLD).`,
+    complications: `CRITICAL PERIOPERATIVE HAZARD — DELAYED GASTRIC EMPTYING & PULMONARY ASPIRATION: The massive surge in semaglutide usage has revolutionized anaesthetic airway safety. Because semaglutide profoundly slows gastric emptying, patients consistently retain massive volumes of solid food and gastric secretions in their stomach EVEN AFTER FOLLOWING STANDARD 8- TO 12-HOUR PREOPERATIVE FASTING GUIDELINES! Numerous case reports document catastrophic regurgitation and pulmonary aspiration of solid particulate matter during routine elective induction. ASA 2023 CONSENSUS TASK FORCE GUIDELINE: (1) For patients on once-weekly dosing (Ozempic, Wegovy): WITHHOLD SEMAGLUTIDE FOR 1 FULL WEEK (7 DAYS) PRIOR TO ELECTIVE SURGERY. (2) For daily oral dosing (Rybelsus): Withhold on the morning of surgery. (3) If the drug was NOT held or the patient has GI symptoms (nausea, vomiting, abdominal fullness): Perform bedside Point-of-Care Gastric Ultrasound (POCUS). If solid food or high-volume fluid is visualized in the antrum, postpone elective surgery or proceed with Rapid Sequence Induction (RSI) with cricoid pressure. (4) If patient must proceed emergently: Treat as a 'FULL STOMACH' regardless of fasting duration and execute an RSI protocol.`,
+    references: [
+      "FDA Prescribing Information — Ozempic & Wegovy (semaglutide injection), Novo Nordisk / US FDA.",
+      "American Society of Anesthesiologists (ASA) Consensus-Based Guidance on Preoperative Management of Patients on GLP-1 Receptor Agonists (Anesthesiology June 2023).",
+      "UpToDate \"Drug Information: Semaglutide\" (Wolters Kluwer, 2025/2026).",
+      "Miller's Anesthesia, 10th ed., Ch. 44 (Aspiration Prevention and Rapid Sequence Induction)."
+    ]
+  });
+
+  addDrug({
+    id: "glimepiride", cat: "antidiabetics", name: "Glimepiride", brand: "Amaryl",
+    classification: "Second-Generation Sulfonylurea • Pancreatic Beta-Cell K-ATP Channel Blocker",
+    tagline: "Potent second-generation sulfonylurea — triggers insulin release independent of ambient glucose; hold morning of surgery to prevent severe hypoglycemia",
+    tags: ["Sulfonylurea", "K-ATP blocker", "Hypoglycemia hazard", "Hold morning of surgery"],
+    source: SRC.fdaUpToDate("Amaryl (glimepiride) tablets label", "Sanofi-Aventis"),
+    structure: `Glimepiride is a second-generation sulfonylurea derivative (3-ethyl-4-methyl-N-[2-[4-[(4-methylcyclohexyl)carbamoylsulfamoyl]phenyl]ethyl]-5-oxo-2,5-dihydro-1H-pyrrole-1-carboxamide). A lipophilic weak acid with high affinity for beta-cell receptors.`,
+    pd: `Stimulates endogenous insulin release by binding specifically to the 65 kDa regulatory subunit of the ATP-sensitive potassium (K-ATP) channel complex in pancreatic beta-cell membranes. Binding closes the K-ATP channels, blocking potassium efflux. This depolarizes the beta-cell plasma membrane, opening voltage-dependent calcium channels. Calcium influx triggers exocytosis of preformed insulin granules into the portal circulation. CRITICAL DISTINCTION: Unlike metformin, GLP-1 agonists, or DPP-4 inhibitors, sulfonylureas stimulate insulin release CONTINUOUSLY and INDEPENDENT OF AMBIENT GLUCOSE LEVELS — creating a profound, life-threatening hazard of prolonged perioperative hypoglycemia during pre- and postoperative fasting!`,
+    pk: `Completely absorbed following oral ingestion; peak plasma concentration reached in 2 to 3 hours. Highly bound to plasma proteins (>99.5%), predominantly albumin. Extensively metabolized in the liver via CYP2C9 to two major metabolites: a cyclohexyl hydroxymethyl derivative (M1, which retains roughly 30% of parent hypoglycaemic potency) and an inactive carboxyl derivative (M2). Elimination half-life: 5 to 9 hours. Duration of hypoglycaemic action: 24 hours (allowing once-daily dosing). Cleared 60% renally (M1 and M2) and 40% in faeces.`,
+    dosage: `FDA-approved: Type 2 Diabetes Mellitus: Initial starting dose 1 to 2 mg PO once daily with breakfast (or the first main meal). Titrate in increments of 1 to 2 mg at 1- to 2-week intervals based on blood glucose response. Standard maintenance dose: 1 to 4 mg PO once daily; maximum approved dose: 8 mg PO once daily. In renal or hepatic impairment: start conservatively at 1 mg PO once daily.`,
+    offLabel: `Combination therapy with insulin glargine in refractory type 2 diabetes.`,
+    complications: `PERIOPERATIVE HYPOGLYCEMIA: Under general anaesthesia, classic neuroglycopenic and autonomic warning signs of hypoglycemia (diaphoresis, tremors, tachycardia, hunger) are completely masked by anaesthetic hypnotics and sympatholytic agents. Unrecognized profound hypoglycemia (<40 mg/dL / <2.2 mmol/L) causes irreversible neuronal necrosis, cognitive impairment, and brain death! MANDATORY PERIOPERATIVE RULE: WITHHOLD GLIMEPIRIDE ON THE MORNING OF SURGERY! Never administer a sulfonylurea to a fasting patient. Check capillary blood glucose every 1 to 2 hours intraoperatively. Treatment of Intraoperative Hypoglycemia: Administer 25 to 50 mL of 50% Dextrose (D50W) IV push (providing 12.5 to 25 grams of glucose); repeat and maintain D10W infusion at 50–100 mL/hr to maintain target blood glucose 140–180 mg/dL. Other complications: weight gain, allergic skin reactions, and cross-sensitivity in patients with severe sulfonamide allergies.`,
+    references: [
+      "FDA Prescribing Information — Amaryl (glimepiride tablets), Sanofi-Aventis / US FDA.",
+      "American Diabetes Association (ADA): Standards of Care in Diabetes — Perioperative Diabetes Management (2024/2025).",
+      "Miller's Anesthesia, 10th ed., Ch. 12 (Preoperative Assessment) & Ch. 37 (Endocrine Surgery).",
+      "UpToDate \"Drug Information: Glimepiride\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  addDrug({
+    id: "sitagliptin", cat: "antidiabetics", name: "Sitagliptin", brand: "Januvia",
+    classification: "Dipeptidyl Peptidase-4 (DPP-4) Inhibitor • Incretin Enhancer",
+    tagline: "Oral DPP-4 inhibitor — prolongs endogenous GLP-1 and GIP; low intrinsic hypoglycemia risk, hold morning of surgery per institutional protocol",
+    tags: ["DPP-4 inhibitor", "Incretin enhancer", "Low hypoglycemia risk", "Renal dosing"],
+    source: SRC.fdaUpToDate("Januvia (sitagliptin phosphate) tablets label", "Merck"),
+    structure: `Sitagliptin phosphate monohydrate is a triazolopiperazine derivative ((2R)-4-oxo-4-[3-(trifluoromethyl)-5,6-dihydro-[1,2,4]triazolo[4,3-a]pyrazin-7(8H)-yl]-1-(2,4,5-trifluorophenyl)butan-2-amine phosphate monohydrate). A potent, highly competitive, selective reversible inhibitor of DPP-4.`,
+    pd: `Inhibits the enzyme Dipeptidyl Peptidase-4 (DPP-4), which is responsible for the rapid degradation and inactivation of endogenous incretin hormones, including Glucagon-Like Peptide-1 (GLP-1) and Glucose-Dependent Insulinotropic Polypeptide (GIP). By preventing DPP-4 cleavage, sitagliptin increases circulating active intact incretin levels by 2- to 3-fold. Incretins act on pancreatic islet cells to stimulate insulin synthesis and release in a STRICTLY GLUCOSE-DEPENDENT MANNER (active only during hyperglycaemia), while concurrently reducing postprandial glucagon secretion. Because insulin secretion ceases as plasma glucose normalizes, sitagliptin carries an extremely low intrinsic risk of hypoglycemia when used as monotherapy. Weight neutral.`,
+    pk: `Rapidly absorbed; absolute bioavailability ~87%. Peak plasma concentration reached 1 to 4 hours post-ingestion. Low plasma protein binding (~38%). Apparent volume of distribution: ~198 L. Only minimally metabolized by hepatic CYP3A4 and CYP2C8 (<16%). Cleared primarily by active renal tubular secretion (via human organic anion transporter 3, hOAT3) and glomerular filtration: approximately 79% of the administered dose is excreted UNCHANGED in urine. Elimination half-life is 12.4 hours.`,
+    dosage: `FDA-approved: Type 2 Diabetes Mellitus: Standard dose is 100 mg PO once daily with or without food. Renal Dose Adjustments (Mandatory based on eGFR): eGFR >=45 mL/min: 100 mg PO once daily (no adjustment); eGFR 30 to <45 mL/min: 50 mg PO once daily; eGFR <30 mL/min (including ESRD on hemodialysis): 25 mg PO once daily (can be taken without regard to timing of dialysis).`,
+    offLabel: `Preservation of beta-cell function in latent autoimmune diabetes in adults (LADA).`,
+    complications: `PERIOPERATIVE MANAGEMENT: Because sitagliptin operates via a glucose-dependent mechanism, it does not induce hypoglycemia during pre-induction fasting. However, standard institutional protocols generally recommend WITHHOLDING sitagliptin on the morning of surgery to prevent unmonitored drug interactions and simplify intraoperative sliding-scale insulin management. If accidentally ingested on the morning of surgery, it is safe to proceed without special cancellation. Adverse effects: acute pancreatitis (rare; discontinue immediately if persistent severe abdominal pain occurs), joint pain / severe arthralgia (class-effect of DPP-4 inhibitors), and bullous pemphigoid.`,
+    references: [
+      "FDA Prescribing Information — Januvia (sitagliptin phosphate tablets), Merck / US FDA.",
+      "American Diabetes Association (ADA): Standards of Care in Diabetes (2024/2025).",
+      "UpToDate \"Drug Information: Sitagliptin\" (Wolters Kluwer, 2025/2026).",
+      "Miller's Anesthesia, 10th ed., Ch. 37 (Endocrine Physiology and Pharmacology)."
+    ]
+  });
+
+  addDrug({
+    id: "pioglitazone", cat: "antidiabetics", name: "Pioglitazone", brand: "Actos",
+    classification: "Thiazolidinedione (TZD) • Peroxisome Proliferator-Activated Receptor Gamma (PPAR-γ) Agonist",
+    tagline: "Insulin-sensitizing thiazolidinedione — promotes peripheral glucose uptake; causes fluid retention and precipitates congestive heart failure",
+    tags: ["TZD", "PPAR-gamma agonist", "Fluid retention", "Heart failure risk"],
+    source: SRC.fdaUpToDate("Actos (pioglitazone hydrochloride) tablets label", "Takeda"),
+    structure: `Pioglitazone hydrochloride is a thiazolidinedione derivative ((RS)-5-(4-[2-(5-ethylpyridin-2-yl)ethoxy]benzyl)thiazolidine-2,4-dione monohydrochloride). Highly lipophilic weak base with high plasma protein binding.`,
+    pd: `Potent, highly selective agonist for the peroxisome proliferator-activated receptor-gamma (PPAR-gamma), a nuclear transcription factor expressed predominantly in adipose tissue, skeletal muscle, and liver. Binding of pioglitazone activates PPAR-gamma, which heterodimerizes with the retinoid X receptor (RXR) and binds specific DNA response elements. This modulates transcription of insulin-responsive genes: (1) Increases expression of GLUT4 glucose transporters; (2) Enhances peripheral insulin sensitivity in skeletal muscle and adipocytes; (3) Suppresses hepatic gluconeogenesis; (4) Promotes adipocyte differentiation from visceral to subcutaneous fat stores. Does NOT stimulate pancreatic beta-cell insulin secretion — zero intrinsic risk of hypoglycemia when used alone. Full therapeutic glycaemic effect requires 6 to 12 weeks of continuous administration.`,
+    pk: `Rapidly absorbed; peak plasma concentration reached within 2 hours. Bioavailability >80%. Extensively bound to plasma proteins (>99%), predominantly serum albumin. Volume of distribution: 0.63 L/kg. Extensively metabolized in the liver via CYP2C8 and CYP3A4 into multiple active metabolites (Metabolites M-II, M-III, and M-IV retain 30–50% parent activity). Elimination half-life: 3 to 7 hours for parent pioglitazone, but 16 to 24 hours for active metabolites, ensuring 24-hour action. Cleared via biliary and faecal excretion (~65%) and urine (~35%).`,
+    dosage: `FDA-approved: Type 2 Diabetes Mellitus: Starting dose 15 to 30 mg PO once daily with or without food. May be titrated in increments of 15 mg up to a maximum approved dose of 45 mg PO once daily. In patients with NYHA Class I or II heart failure: initiate conservatively at 15 mg PO once daily.`,
+    offLabel: `Nonalcoholic steatohepatitis (NASH) with biopsy-proven fibrosis (reduces hepatic steatosis, inflammation, and ballooning); secondary prevention of recurrent stroke and MI in insulin-resistant patients (IRIS trial).`,
+    complications: `BLACK-BOX WARNING — CONGESTIVE HEART FAILURE: PPAR-gamma activation in the renal collecting duct upregulates the epithelial sodium channel (ENaC), driving marked renal sodium and water reabsorption. This causes severe plasma volume expansion (dilutional anemia, peripheral ankle edema in 5–10%), which can rapidly PRECIPITATE OR EXACERBATE CONGESTIVE HEART FAILURE. Strictly contraindicated in NYHA Class III and IV heart failure! PERIOPERATIVE CONSIDERATIONS: Hold on the morning of surgery. In patients with borderline left ventricular function or valvular disease, intraoperative IV crystalloid fluid administration must be titrated with extreme caution to prevent acute pulmonary edema. Other long-term complications: atypical distal bone fractures in postmenopausal women, macular edema, and potential association with bladder cancer during prolonged therapy.`,
+    references: [
+      "FDA Prescribing Information — Actos (pioglitazone hydrochloride tablets), Takeda / US FDA.",
+      "American Diabetes Association (ADA): Standards of Care in Diabetes (2024/2025).",
+      "Kernan WN, et al. Pioglitazone after Ischemic Stroke or Transient Ischemic Attack (IRIS trial). N Engl J Med 2016.",
+      "UpToDate \"Drug Information: Pioglitazone\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  addDrug({
+    id: "insulin-regular", cat: "antidiabetics", name: "Regular Insulin", brand: "Humulin R / Novolin R",
+    classification: "Short-Acting Human Recombinant Insulin • Tyrosine Kinase Receptor Agonist",
+    tagline: "The gold-standard intravenous insulin for intraoperative glycaemic sliding scales, infusions, and diabetic ketoacidosis",
+    tags: ["Human insulin", "Short-acting", "IV titratable", "DKA protocol"],
+    source: SRC.fdaUpToDate("Humulin R (regular insulin human injection) label", "Eli Lilly/Novo Nordisk"),
+    structure: `Regular human insulin is identical to endogenous human pancreatic insulin: a 51-amino acid two-chain peptide hormone (A chain of 21 amino acids, B chain of 30 amino acids) linked by two interchain disulfide bonds (A7-B7, A20-B19) and one intrachain disulfide bond (A6-A11). Molecular weight: 5808 Da. In solution at neutral pH, it self-associates into zinc-coordinated hexamers that must dissociate into active monomers and dimers before absorption into capillaries.`,
+    pd: `Binds to the alpha-subunits of the tetrameric insulin receptor tyrosine kinase on cell surfaces. Binding triggers autophosphorylation of beta-subunits, recruiting and phosphorylating Insulin Receptor Substrates (IRS-1 to IRS-4). This activates the PI3K-Akt pathway, which: (1) Translocates GLUT4 glucose transporters to the plasma membrane of skeletal muscle and adipose cells, driving rapid glucose uptake; (2) Activates glycogen synthase and inhibits glycogen phosphorylase, promoting glycogen storage; (3) Inhibits hormone-sensitive lipase, suppressing lipolysis and ketogenesis; (4) Activates the Na+/K+-ATPase pump, shifting extracellular potassium ions into cells (driving rapid correction of hyperkalaemia).`,
+    pk: `Subcutaneous (SC) Route: Onset: 30 to 60 minutes; Peak action: 2 to 4 hours; Duration of action: 5 to 8 hours. Intravenous (IV) Route (The Anaesthetist's Superpower): Onset: INSTANTANEOUS (1 to 5 minutes); Peak action: 15 to 30 minutes; Elimination half-life: 5 to 10 MINUTES! Duration of effect after stopping IV infusion: 30 to 60 minutes. Rapid hepatic and renal enzymatic degradation via glutathione-insulin transhydrogenase and insulin-degrading enzyme (IDE).`,
+    dosage: `FDA-approved: Acute Intraoperative Hyperglycaemia (Sliding Scale): Target intraoperative blood glucose: 140 to 180 mg/dL (7.8 to 10.0 mmol/L). In a typical 70 kg adult, 1 unit of IV Regular Insulin lowers blood glucose by approximately 25 to 50 mg/dL (1.4 to 2.8 mmol/L):
+• Blood Glucose 180–220 mg/dL: 1–2 units IV bolus
+• Blood Glucose 221–260 mg/dL: 2–3 units IV bolus
+• Blood Glucose 261–300 mg/dL: 3–4 units IV bolus
+• Blood Glucose >300 mg/dL: 4–6 units IV bolus; recheck capillary glucose every 60 minutes!
+Continuous IV Insulin Infusion Protocol (Cardiac surgery, critically ill, major trauma): Mix 100 units Regular Insulin in 100 mL 0.9% normal saline (concentration: 1 unit/mL). Initiate at 0.05 to 0.1 units/kg/hr; titrate hourly based on blood glucose checks. Diabetic Ketoacidosis (DKA) / HHS Protocol: Fixed-rate IV infusion 0.14 units/kg/hr (or 0.1 units/kg bolus + 0.1 units/kg/hr infusion); add D5W when glucose reaches 200 mg/dL. Treatment of Severe Hyperkalaemia: 10 units Regular Insulin IV push accompanied immediately by 50 mL of 50% Dextrose (D50W) IV over 5 minutes (shifts potassium intracellularly for 4–6 hours).`,
+    offLabel: `High-Dose Insulin Euglycaemic Therapy (HIET) for calcium channel blocker and beta-blocker overdose (1 unit/kg IV bolus, followed by 0.5 to 1.0 units/kg/hr infusion with concentrated dextrose).`,
+    complications: `HYPOGLYCEMIA: Blood glucose <70 mg/dL (<3.9 mmol/L). Under general anaesthesia, warning symptoms are masked; only diaphoresis and tachycardia may persist. Check capillary glucose every 1 to 2 hours during continuous infusions! Hypokalaemia: Insulin drives extracellular potassium into cells via Na+/K+-ATPase; always monitor serum potassium before and during aggressive insulin administration (do not start insulin infusion in DKA if serum K+ <3.3 mmol/L!). Lipodystrophy with repeated SC injection sites.`,
+    references: [
+      "FDA Prescribing Information — Humulin R (regular insulin human injection), Eli Lilly; US FDA.",
+      "American Diabetes Association (ADA): Standards of Care in Diabetes — Hospital & Perioperative Care (Diabetes Care 2024/2025).",
+      "Miller's Anesthesia, 10th ed., Ch. 37 (Endocrine Pharmacology) & Ch. 52 (Fluid and Electrolyte Physiology).",
+      "UpToDate \"Drug Information: Regular Insulin\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  addDrug({
+    id: "insulin-glargine", cat: "antidiabetics", name: "Insulin Glargine", brand: "Lantus / Toujeo / Basaglar",
+    classification: "Long-Acting Peakless Basal Human Insulin Analogue",
+    tagline: "Peakless once-daily basal insulin analogue — administer 75–80% of normal dose on night before/morning of surgery to prevent ketoacidosis",
+    tags: ["Basal insulin", "Peakless", "24-hour duration", "Perioperative 75-80% dose"],
+    source: SRC.fdaUpToDate("Lantus (insulin glargine injection) label", "Sanofi-Aventis"),
+    structure: `Insulin glargine is a recombinant human insulin analogue produced by DNA technology in Escherichia coli. Engineered with two specific amino acid substitutions: (1) Asparagine at position A21 is replaced by Glycine; (2) Two basic Arginine residues are added to the C-terminus of the B chain (ArgB31, ArgB32). These modifications shift the isoelectric point from pH 5.4 toward neutrality (pH 6.7). Formulated in an acidic vehicle (pH 4.0) where it is completely water-soluble.`,
+    pd: `Acts on the insulin receptor tyrosine kinase to suppress hepatic gluconeogenesis and lipolysis, providing steady, basal suppression of glucose production between meals and throughout the night. Pharmacodynamic Profile: Upon subcutaneous injection into physiological subcutaneous tissue (neutral pH ~7.4), the acidic solution is neutralized. This causes insulin glargine to immediately precipitate into an amorphous microcrystalline microprecipitate depot. Over 24 hours, stable hexamers slowly and continuously dissociate from the depot and dissolve into active monomers that enter the microcirculation at an exceptionally steady, constant rate. Produces a SMOOTH, PEAKLESS 24-HOUR CONCENTRATION-TIME PROFILE, avoiding the sharp nocturnal hypoglycaemic peaks characteristic of older NPH insulin.`,
+    pk: `Subcutaneous absorption ONLY (STRICTLY CONTRAINDICATED VIA IV ROUTE!). Onset of action: 1 to 2 hours. Peak: NO PRONOUNCED PEAK (steady, flat profile). Duration of action: 20 to 24 hours (Lantus 100 units/mL); up to 36 hours for ultra-concentrated formulation (Toujeo U-300 / 300 units/mL). Partially metabolized at the injection site depot by carboxylpeptidases to two active metabolites (M1: 21A-Gly-insulin; M2: 21A-Gly-des-30B-Thr-insulin), which exhibit biological activity identical to human insulin.`,
+    dosage: `FDA-approved: Type 1 and Type 2 Diabetes Mellitus (Basal Glycaemic Control): Individualized subcutaneous injection administered ONCE DAILY at the same time every day (typically at bedtime or with the evening meal). PERIOPERATIVE CONSENSUS GUIDELINE (ADA / ASA):
+• Surgery in Type 1 Diabetes: NEVER OMIT BASAL INSULIN! Absolute insulin deficiency will precipitate acute diabetic ketoacidosis (DKA) within hours if basal insulin is completely stopped. Administer 75% to 80% of the patient's normal evening or morning basal glargine dose.
+• Surgery in Type 2 Diabetes: Administer 75% to 80% of the normal glargine dose on the evening before or morning of surgery. This prevents fasting ketoacidosis and rebound hyperglycaemia while preventing fasting hypoglycemia.
+• Resume 100% normal dose once the patient resumes regular oral diet postoperatively.`,
+    offLabel: `Basal replacement during transition from continuous IV insulin infusions in post-cardiac surgery ICU patients (administer glargine 2 hours before discontinuing the IV insulin infusion to prevent rebound hyperglycaemia).`,
+    complications: `Hypoglycemia (significantly lower incidence of nocturnal hypoglycemia compared to NPH insulin, but can occur if daytime basal dose is excessive). STRICT CONTRAINDICATION: NEVER ADMINISTER INTRAVENOUSLY — precipitation will occur, causing unpredictable kinetics and severe pulmonary microembolism risk. NEVER MIX IN THE SAME SYRINGE with any other insulin (the acidic pH 4.0 of glargine causes immediate precipitation and inactivation of regular or rapid-acting insulins!). Local injection site reactions (lipohypertrophy; rotate injection sites).`,
+    references: [
+      "FDA Prescribing Information — Lantus (insulin glargine injection), Sanofi-Aventis / US FDA.",
+      "American Diabetes Association (ADA): Standards of Care in Diabetes — Hospital Care (Diabetes Care 2024/2025).",
+      "Miller's Anesthesia, 10th ed., Ch. 12 (Preoperative Medical Evaluation) & Ch. 37 (Endocrine Pharmacology).",
+      "UpToDate \"Drug Information: Insulin Glargine\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  // ---------------- MISCELLANEOUS DRUGS ----------------
+  addDrug({
+    id: "ondansetron", cat: "miscellaneous", name: "Ondansetron", brand: "Zofran",
+    classification: "Selective 5-HT3 (Serotonin) Receptor Antagonist Antiemetic",
+    tagline: "The premier antiemetic for PONV prophylaxis and rescue — administer within 30 minutes of emergence for maximal clinical efficacy",
+    tags: ["Antiemetic", "5-HT3 antagonist", "PONV prophylaxis", "QTc prolongation"],
+    source: SRC.fdaUpToDate("Zofran (ondansetron hydrochloride) injection label", "GlaxoSmithKline/Novartis"),
+    structure: `Ondansetron hydrochloride is a carbazolone derivative ((RS)-9-methyl-3-[(2-methyl-1H-imidazol-1-yl)methyl]-2,3-dihydro-1H-carbazol-4-one monohydrochloride dihydrate). Chemically related to serotonin (5-hydroxytryptamine), allowing competitive receptor blockade.`,
+    pd: `Selective, competitive antagonist at 5-hydroxytryptamine-3 (5-HT3) serotonin receptors. In the gut, surgical manipulation, cytotoxic agents, and visceral traction cause mucosal enterochromaffin cells to release serotonin, which activates 5-HT3 receptors on vagal afferent nerve endings, transmitting emetogenic signals to the central nervous system. In the brainstem, ondansetron blocks 5-HT3 receptors in the Chemoreceptor Trigger Zone (CTZ) located in the area postrema and the nucleus tractus solitarius. Does NOT block dopamine D2, histamine H1, or muscarinic receptors — therefore does NOT cause extrapyramidal symptoms, sedation, or anticholinergic dry mouth.`,
+    pk: `Onset of IV action: 10 to 30 minutes; peak plasma concentration: 15 to 30 minutes. Duration of antiemetic effect: 12 to 24 hours. Plasma protein binding: 70 to 76%. Volume of distribution: ~145 L (1.9 L/kg). Extensively metabolized in the liver via multiple cytochrome P450 enzymes (CYP3A4, CYP1A2, CYP2D6) by hydroxylation and subsequent glucuronide/sulfate conjugation. Elimination half-life is 3.5 to 5.5 hours (extended to 6–8 hours in elderly, and up to 20 hours in severe cirrhosis). Less than 5% excreted unchanged in urine.`,
+    dosage: `FDA-approved: Prevention of Postoperative Nausea and Vomiting (PONV): 4 mg IV (or 8 mg PO) administered immediately before induction or toward the END OF SURGERY (within 30 minutes of emergence). TIMING PEARL: Administering ondansetron at the END of surgery is significantly more effective than giving it at induction because its 3.5–5.5 hour half-life aligns peak plasma levels with the high-risk emergence and PACU window! Treatment of Established PONV: 4 mg IV slow push over 2 to 5 minutes (if patient did not receive ondansetron for prophylaxis; if ondansetron was already given for prophylaxis, do not repeat within 6 hours — use an alternative drug class, such as droperidol or promethazine). Chemotherapy-Induced Nausea & Vomiting (CINV): 8 to 16 mg IV administered 30 minutes prior to chemotherapy.`,
+    offLabel: `Prophylaxis of pruritus induced by neuraxial opioids (intrathecal or epidural morphine); prevention of post-dural puncture headache (PDPH) nausea; attenuation of spinal-induced hypotension (Bezold-Jarisch reflex blockade).`,
+    complications: `DOSE-DEPENDENT QTc PROLONGATION: Inhibits cardiac hERG potassium channels, prolonging the QT interval on ECG. Avoid in congenital long QT syndrome, severe hypokalaemia, hypomagnesaemia, or concurrent administration with other potent QT-prolonging drugs. Avoid rapid high-dose single pushes (>16 mg IV bolus is contraindicated due to Torsades de Pointes risk). Common side effects: mild frontal headache (10–15%, responds to paracetamol), constipation, flushing, and transient asymptomatic elevation of hepatic transaminases. Serotonin syndrome (extremely rare, when combined with high-dose SSRIs, SNRIs, or tramadol).`,
+    references: [
+      "FDA Prescribing Information — Zofran (ondansetron hydrochloride injection), GlaxoSmithKline / US FDA.",
+      "Fourth Consensus Guidelines for the Management of Postoperative Nausea and Vomiting (Anesth Analg 2020).",
+      "Miller's Anesthesia, 10th ed., Ch. 86 (Postoperative Nausea and Vomiting).",
+      "UpToDate \"Drug Information: Ondansetron\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  addDrug({
+    id: "magnesium-sulphate", cat: "miscellaneous", name: "Magnesium Sulphate", brand: "Magnesium Sulfate Injection",
+    classification: "Divalent Intracellular Cation • Physiological Calcium Antagonist & NMDA Receptor Blocker",
+    tagline: "Essential divalent cation — drug of choice for eclampsia and Torsades; dramatically potentiates neuromuscular blockers by 2–3 fold",
+    tags: ["Magnesium", "Eclampsia", "Torsades de Pointes", "Neuromuscular potentiation"],
+    source: SRC.fdaUpToDate("Magnesium sulfate in 5% dextrose injection label", "Hospira/Pfizer"),
+    structure: `Magnesium sulphate heptahydrate (MgSO₄·7H₂O). Formulated for injection as a 50% solution (500 mg/mL, providing roughly 2 mmol or 4 mEq of elemental magnesium per mL).`,
+    pd: `The second most abundant intracellular cation and essential cofactor in >300 enzymatic reactions involving ATP. Acts as a physiological calcium antagonist: competes with calcium for presynaptic voltage-gated calcium channels, decreasing presynaptic acetylcholine (ACh) release at the neuromuscular junction, and decreasing motor endplate sensitivity to acetylcholine. In vascular smooth muscle, it stimulates endothelial prostacyclin and nitric oxide synthesis, producing systemic and uterine vasodilation. In the central nervous system, it produces non-competitive voltage-dependent blockade of N-methyl-D-aspartate (NMDA) receptors, conferring potent anticonvulsant, neuroprotective, and opioid-sparing antinociceptive actions. In cardiac electrophysiology, it stabilizes excitable myocardial membranes and suppresses early afterdepolarizations, terminating Torsades de Pointes.`,
+    pk: `Onset of IV action: INSTANTANEOUS (1 to 2 minutes); duration of clinical effect: 30 to 60 minutes after terminating an infusion. Volume of distribution: ~0.25 L/kg (primarily distributes to bone and intracellular compartments). Highly regulated by the kidneys: filtered at the glomerulus, with 90% reabsorbed in the thick ascending limb of Henle. Elimination half-life: ~4 hours. Cleared almost 100% renally.`,
+    dosage: `FDA-approved: Prevention & Treatment of Eclamptic Seizures in Pre-Eclampsia / Eclampsia (Pritchard & Zuspan Regimens): Loading dose of 4 to 6 grams IV infused over 15 to 20 minutes, followed immediately by a continuous IV maintenance infusion of 1 to 2 g/hr for at least 24 hours postpartum (target therapeutic serum magnesium level: 2.0 to 3.5 mmol/L or 4.8 to 8.4 mg/dL). Acute Torsades de Pointes / Polymorphic Ventricular Tachycardia: 1 to 2 grams IV diluted in 50–100 mL D5W infused over 5 to 15 minutes (may repeat in 10 minutes if arrhythmias persist, followed by 0.5–1 g/hr infusion). Severe Acute Refractory Bronchospasm: 1.2 to 2.0 grams IV infused over 20 minutes (relaxes bronchial smooth muscle). Multimodal Analgesic Adjunct in Major Surgery: 30 to 50 mg/kg IV bolus at induction, followed by 10 to 15 mg/kg/hr continuous infusion until end of surgery.`,
+    offLabel: `Attenuation of haemodynamic response to intubation and pneumoperitoneum; perioperative shivering suppression; pheochromocytoma resection hemodynamic stabilization.`,
+    complications: `CRITICAL ANAESTHETIC WARNING — POTENTIATION OF MUSCLE RELAXANTS: Magnesium dramatically potentiates BOTH depolarising (succinylcholine) and non-depolarising neuromuscular blockers (rocuronium, vecuronium, atracurium, cisatracurium). Decreased presynaptic ACh release prolongs rocuronium block duration by 200% to 300% and accelerates onset! Mandates quantitative Train-of-Four (TOF) monitoring; reduce muscle relaxant dosing by 50%. Reversal: Sugammadex successfully reverses steroidal relaxants even in the presence of hypermagnesaemia; neostigmine reversal may be incomplete. MAGNESIUM TOXICITY THRESHOLDS:
+• Normal Serum Magnesium: 0.7 to 1.0 mmol/L (1.7 to 2.4 mg/dL)
+• Therapeutic Range (Eclampsia): 2.0 to 3.5 mmol/L (4.8 to 8.4 mg/dL)
+• Loss of Deep Tendon (Patellar) Reflexes: 4.0 to 5.0 mmol/L (9.6 to 12.0 mg/dL — the earliest clinical sign of toxicity!)
+• Respiratory Depression / Hypoventilation: >5.0 to 6.5 mmol/L (>12 to 15 mg/dL)
+• Sinoatrial / Atrioventricular Heart Block: >7.5 mmol/L (>18 mg/dL)
+• Asystolic Cardiac Arrest: >10.0 to 12.0 mmol/L (>24 to 29 mg/dL)
+SPECIFIC ANTIDOTE FOR TOXICITY: 10% IV Calcium Gluconate (10 mL / 1 gram) administered slow IV over 5 to 10 minutes (calcium directly antagonizes the physiological actions of magnesium). Strictly contraindicated in myasthenia gravis and severe heart block.`,
+    references: [
+      "FDA Prescribing Information — Magnesium Sulfate Injection, Hospira / Pfizer; US FDA.",
+      "ACOG Practice Bulletin No. 222: Gestational Hypertension and Preeclampsia (Obstet Gynecol 2020 / reaffirmed 2023).",
+      "Miller's Anesthesia, 10th ed., Ch. 52 (Fluid and Electrolytes) & Ch. 69 (Obstetric Anesthesia).",
+      "UpToDate \"Drug Information: Magnesium Sulfate\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  addDrug({
+    id: "sodium-bicarbonate", cat: "miscellaneous", name: "Sodium Bicarbonate", brand: "Sodium Bicarbonate 8.4%",
+    classification: "Systemic Alkalinizing Agent • Urinary Alkalinizer & Hypertonic Buffer",
+    tagline: "Hypertonic systemic alkalinizer — essential for severe metabolic acidosis, hyperkalaemia, TCA cardiotoxicity, and local anaesthetic buffering",
+    tags: ["Alkalinizer", "Buffer", "Hyperkalaemia", "TCA overdose"],
+    source: SRC.fdaUpToDate("Sodium bicarbonate 8.4% injection label", "Hospira/Pfizer"),
+    structure: `Sodium bicarbonate (NaHCO₃). Standard 8.4% solution is hypertonic (1000 mOsm/L, osmolarity roughly 2000 mOsm/kg), providing 1.0 mmol (1.0 mEq) of sodium and 1.0 mmol of bicarbonate per mL (50 mmol / 50 mL vial). Also available as 7.5% solution (0.89 mmol/mL) and paediatric 4.2% solution (0.5 mmol/mL).`,
+    pd: `Dissociates in the plasma into sodium (Na⁺) and bicarbonate (HCO₃⁻) ions. Bicarbonate buffers excess hydrogen ions (H⁺) according to the Henderson-Hasselbalch equilibrium: H⁺ + HCO₃⁻ ⇄ H₂CO₃ ⇄ H₂O + CO₂. This rapidly increases plasma bicarbonate concentration, raises systemic arterial pH, and shifts the acid-base balance toward alkaline. Key Effects: (1) Cardiac Protection in Hyperkalaemia: Elevated extracellular pH drives hydrogen ions out of cells in exchange for potassium entering cells via Na⁺/H⁺ antiporters, lowering serum potassium. (2) Reversal of Fast Sodium Channel Blockade (TCA and Local Anaesthetic Toxicity): Raising arterial pH to 7.45–7.55 and delivering an intense hypertonic sodium load overcomes competitive drug binding to cardiac voltage-gated NaV1.5 sodium channels, narrowing widened QRS complexes. (3) Urinary Alkalinization (pH >7.5): Promotes ionization ('ion-trapping') of weak acids (methotrexate, salicylates, myoglobin), preventing tubular precipitation and accelerating renal excretion. (4) Local Anaesthetic Buffering: Adding 1 mL of 8.4% NaHCO₃ per 9–10 mL of 1% lidocaine increases the uncharged, lipid-soluble base fraction, accelerating neuronal penetration and reducing injection pain.`,
+    pk: `Onset of systemic alkalinizing action: INSTANTANEOUS (1 to 2 minutes following IV injection). Duration of buffering action: 1 to 2 hours. Eliminated through two distinct physiological pathways: (1) Carbon dioxide generated from buffering is eliminated via alveolar ventilation through the lungs; (2) Unreacted bicarbonate is filtered at the renal glomerulus and excreted in urine.`,
+    dosage: `FDA-approved: Severe Metabolic Acidosis (Target arterial pH >7.15 to 7.20 in non-anion gap acidosis or severe renal tubular acidosis): Dose (mmol) = Base Deficit × Body Weight (kg) × 0.2 (or 0.3 for severe volume expansion). Administer 50% of the calculated deficit slowly IV over 30 to 45 minutes, then recheck arterial blood gas before administering further bicarbonate. Severe Hyperkalaemia Resuscitation: 50 mmol (50 mL of 8.4% solution) IV push over 5 minutes. Tricyclic Antidepressant (TCA) / Quinidine / Local Anaesthetic Cardiotoxicity: 1 to 2 mmol/kg (75 to 150 mL of 8.4%) rapid IV push; repeat every 3 to 5 minutes until QRS complex narrows to <100 msec, followed by continuous infusion (150 mmol NaHCO₃ in 1 L D5W at 150–250 mL/hr) targeting arterial pH 7.45 to 7.55. Cardiopulmonary Resuscitation (ACLS): 1 mmol/kg IV only for documented pre-existing hyperkalaemia, severe metabolic acidosis, or TCA overdose (routine unselected administration during cardiac arrest is no longer recommended).`,
+    offLabel: `Prevention of contrast-induced nephropathy (hydration with 154 mmol/L sodium bicarbonate infusion); buffering of local anaesthetics for regional nerve blocks.`,
+    complications: `PERIOPERATIVE PITFALLS & HAZARDS: (1) PARADOXICAL INTRACELLULAR ACIDOSIS: Buffering generates large volumes of carbon dioxide (CO₂). While charged bicarbonate (HCO₃⁻) crosses cell membranes and the blood-brain barrier very slowly, lipid-soluble uncharged CO₂ diffuses across cell membranes and the blood-brain barrier INSTANTANEOUSLY! Inside cells, CO₂ hydrates to carbonic acid, paradoxical worsening intracellular and CSF acidosis! Mandates adequate minute ventilation to blow off generated CO₂. (2) Left-Shift of Oxyhaemoglobin Dissociation Curve: Alkalosis increases haemoglobin oxygen affinity, impairing oxygen unloading to peripheral tissues. (3) Acute Hypocalcaemia: Alkalosis increases negative charges on serum albumin, binding free ionised calcium (Ca²⁺) and precipitating acute tetany, laryngospasm, or myocardial depression. (4) Acute Hypokalaemia and Hypernatraemia / Hyperosmolality. (5) Incompatibility: Never co-infuse through the same IV line as calcium salts (forms insoluble calcium carbonate chalk precipitate) or catecholamines (inactivated at alkaline pH).`,
+    references: [
+      "FDA Prescribing Information — Sodium Bicarbonate 8.4% Injection, Hospira / Pfizer; US FDA.",
+      "American Heart Association (AHA) Guidelines for Cardiopulmonary Resuscitation and Emergency Cardiovascular Care (Circulation 2020 / 2023 update).",
+      "Miller's Anesthesia, 10th ed., Ch. 52 (Acid-Base Physiology) & Ch. 87 (Cardiac Arrest and Resuscitation).",
+      "UpToDate \"Drug Information: Sodium Bicarbonate\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  addDrug({
+    id: "potassium-chloride", cat: "miscellaneous", name: "Potassium Chloride", brand: "Potassium Chloride Concentrate for Injection",
+    classification: "Essential Intracellular Electrolyte Concentrate",
+    tagline: "Vital intracellular cation — treat hypokalaemia with strict dilution; NEVER push IV bolus (lethal asystolic arrest)",
+    tags: ["Potassium", "Electrolyte concentrate", "Never IV push", "Hypokalaemia"],
+    source: SRC.fdaUpToDate("Potassium chloride in water for injection label", "Baxter/Hospira"),
+    structure: `Potassium chloride (KCl). Formulated as a concentrated sterile aqueous solution containing 2 mmol/mL (2 mEq/mL / 150 mg/mL) of potassium and chloride ions. Highly hypertonic concentrate (4000 mOsm/L); MUST BE DILUTED BEFORE USE.`,
+    pd: `The major intracellular cation of the human body (intracellular concentration ~140–150 mmol/L vs normal extracellular serum concentration 3.5–5.0 mmol/L). The extreme transcellular potassium concentration gradient across cell membranes is maintained by the active electrogenic Na⁺/K⁺-ATPase pump. This gradient establishes the resting membrane potential (RMP) of all excitable tissues (cardiac myocytes, conducting fibers, neurons, skeletal muscle) according to the Nernst equation: E_K = -61.5 × log([K⁺]in / [K⁺]out). Hypokalaemia ([K⁺] <3.5 mmol/L) hyperpolarizes the resting membrane potential, prolongs action potential duration and effective refractory period, slows AV nodal conduction, and promotes triggered automaticity and re-entrant ventricular dysrhythmias (PVCs, ventricular tachycardia, ventricular fibrillation, Torsades de Pointes). Potassium repletion restores normal resting membrane potential and electrical stability.`,
+    pk: `Intravenous infusion onset: immediate upon entry into central circulation. Rapid cellular uptake mediated by insulin, beta-2 adrenergic stimulation, and aldosterone. Homeostatic elimination: 90% cleared renally (filtered at glomerulus, reabsorbed in proximal tubule, with variable secretion in distal convoluted tubule and collecting duct regulated by aldosterone); 10% excreted in faeces and sweat.`,
+    dosage: `FDA-approved: Treatment and Prevention of Hypokalaemia:
+STRICT SAFETY MANDATE: NEVER ADMINISTER UNDILUTED! NEVER ADMINISTER AS AN IV BOLUS OR DIRECT SYRINGE PUSH — DOING SO PRODUCES INSTANT ASYSTOLIC CARDIAC ARREST (the mechanism used in lethal injection!).
+• Peripheral IV Infusion Guidelines: Maximum allowable potassium concentration in a peripheral infusion bag is 40 mmol/L (0.04 mmol/mL), to prevent severe burning pain, sclerosis, and chemical thrombophlebitis. Maximum peripheral infusion rate: 10 mmol/hr (0.15 mmol/kg/hr).
+• Central Venous Infusion Guidelines (ICU / Theatre with Continuous ECG): In severe acute symptomatic hypokalaemia (<2.5 mmol/L) with cardiac arrhythmias: infuse up to 20 mmol/hr via central venous line with continuous electrocardiographic monitoring. In extreme life-threatening emergencies, up to 40 mmol/hr under direct physician supervision in an ICU setting.
+• Rule of Thumb for Deficit: In a 70 kg adult, every 1.0 mmol/L drop in serum potassium below 4.0 mmol/L represents a total body intracellular potassium deficit of approximately 100 to 200 mmol.`,
+    offLabel: `Cardioplegia solutions for open-heart surgery with cardiopulmonary bypass (high-potassium cold cardioplegia containing 15 to 30 mmol/L KCl induces rapid, reversible depolarized diastolic cardiac arrest, preserving myocardial ATP).`,
+    complications: `LETHAL HAZARDS: (1) Accidental rapid infusion or bolus produces fatal hyperkalaemic cardiac arrest (tall peaked T-waves, PR prolongation, loss of P-wave, widening QRS complex, sine-wave progression, ventricular fibrillation, or asystole). (2) Severe tissue necrosis, chemical sloughing, and compartmental syndrome if concentrated solutions extravasate into subcutaneous tissue (aspirate extravasate, infiltrate with hyaluronidase and apply warm compresses). (3) Chemical phlebitis (common at peripheral rates >10 mmol/hr). Contraindications: Severe hyperkalaemia ([K⁺] >5.0 mmol/L), severe acute kidney injury / anuria, and untreated Addison's disease.`,
+    references: [
+      "FDA Prescribing Information — Potassium Chloride for Injection Concentrate, Baxter / Hospira / US FDA.",
+      "Miller's Anesthesia, 10th ed., Ch. 52 (Fluid and Electrolyte Physiology) & Ch. 61 (Anesthesia for Cardiac Surgery).",
+      "UpToDate \"Drug Information: Potassium Chloride\" (Wolters Kluwer, 2025/2026).",
+      "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed., Ch. 24."
+    ]
+  });
+
+  addDrug({
+    id: "calcium-gluconate-chloride", cat: "miscellaneous", name: "Calcium (Gluconate vs Chloride)", brand: "Calcium Gluconate 10% / Calcium Chloride 10%",
+    classification: "Divalent Extracellular Cation • Myocardial Membrane Stabilizer & Coagulation Factor IV",
+    tagline: "Essential divalent cation — Calcium Chloride has 3x the elemental calcium of Gluconate; first-line membrane stabilizer in hyperkalaemia",
+    tags: ["Calcium", "Hyperkalaemia antidote", "Gluconate vs Chloride", "Citrate toxicity"],
+    source: SRC.fdaUpToDate("Calcium chloride and calcium gluconate 10% injection label", "Fresenius Kabi/Hospira"),
+    structure: `Supplied as 10% sterile solutions of two distinct calcium salts:
+(1) 10% Calcium Chloride (CaCl₂·2H₂O): 10 mL vial contains 1000 mg salt, providing 270 mg (6.8 mmol / 13.6 mEq) of elemental calcium (27 mg/mL / 0.68 mmol/mL). Highly acidic (pH 5.5–7.5) and hypertonic (2040 mOsm/L).
+(2) 10% Calcium Gluconate (C₁₂H₂₂CaO₁₄): 10 mL vial contains 1000 mg salt, providing 90 mg (2.2 mmol / 4.5 mEq) of elemental calcium (9 mg/mL / 0.22 mmol/mL).
+CRITICAL FACT: Calcium Chloride provides THREE TIMES (3x) more elemental calcium than the identical volume of Calcium Gluconate!`,
+    pd: `Essential divalent cation playing a vital role in multiple organ systems: (1) Cardiac Electrophysiological Membrane Stabilization: In severe hyperkalaemia or hypermagnesaemia, elevated extracellular calcium shifts the threshold potential (TP) to less negative values, restoring the normal voltage gap between resting membrane potential and threshold. This eliminates aberrant cardiac automaticity, restores normal conduction velocity, and prevents asystole and ventricular fibrillation within 1 to 3 minutes! (Does NOT lower serum potassium concentration). (2) Excitation-Contraction Coupling: Extracellular calcium influx through L-type channels triggers calcium-induced calcium release (CICR) from the sarcoplasmic reticulum, binding troponin C and augmenting myocardial contractility (positive inotrope) and vascular smooth muscle tone. (3) Coagulation Cascade (Factor IV): Essential cofactor for tenase and prothrombinase complex activation and fibrin clot polymerisation.`,
+    pk: `Onset of IV membrane stabilization: INSTANTANEOUS (1 to 3 minutes); peak inotropic effect: 5 to 10 minutes. Duration of membrane-stabilizing action: 30 to 60 minutes (temporary bridge; must accompany definitive potassium-lowering therapies!). Plasma protein binding: 40 to 45% bound to albumin; 10% complexed with anions (citrate, phosphate); 45 to 50% exists as biologically active FREE IONISED CALCIUM (Ca²⁺, normal 1.15 to 1.33 mmol/L). In the presence of hypothermia or severe hepatic dysfunction, calcium gluconate requires hepatic metabolism of the gluconate moiety to release free calcium (calcium chloride requires no hepatic dissociation). Cleared renally (~20%) and in faeces/bile.`,
+    dosage: `FDA-approved: Hyperkalaemic Cardiac Membrane Stabilization (Peaked T waves, QRS widening):
+• 10% Calcium Gluconate: 10 to 20 mL (1 to 2 grams / 2.2 to 4.4 mmol Ca²⁺) slow IV over 5 to 10 minutes; may repeat in 5 minutes if ECG abnormalities persist. Preferred for peripheral IV access.
+• 10% Calcium Chloride: 5 to 10 mL (0.5 to 1.0 gram / 3.4 to 6.8 mmol Ca²⁺) slow IV over 2 to 5 minutes VIA CENTRAL VENOUS LINE ONLY! (In cardiac arrest, 10 mL rapid IV bolus).
+Citrate Toxicity from Massive Transfusion Protocol (PRBCs & FFP contain citrate preservative which chelates free ionised calcium): Administer 10 mL of 10% Calcium Gluconate (or 3 to 5 mL Calcium Chloride) for every 2 to 4 units of citrated blood components transfused, targeting ionised Ca²⁺ >1.0 mmol/L. Severe Acute Symptomatic Hypocalcaemia: 1 to 2 grams Calcium Gluconate slow IV infusion over 10 to 20 minutes. Antidote for Severe Magnesium Toxicity: 10 mL of 10% Calcium Gluconate slow IV over 5 minutes.`,
+    offLabel: `Reversal of hypotension during induction in patients on chronic calcium channel blockers; adjunct in calcium channel blocker poisoning.`,
+    complications: `PERIOPERATIVE SAFETY HAZARDS: (1) PERIPHERAL EXTRAVASATION NECROSIS: Calcium Chloride is extraordinarily hypertonic and irritating. Peripheral IV extravasation causes severe chemical cellulitis, tissue necrosis, and full-thickness skin sloughing requiring surgical debridement! STRICT RULE: ADMINISTER CALCIUM CHLORIDE VIA A CENTRAL VENOUS LINE ONLY (reserve peripheral administration for Calcium Gluconate or absolute arrest emergencies). (2) Severe Bradycardia and Hypotension if pushed rapidly IV (always infuse slowly over 5–10 minutes). (3) Digitalis Toxicity Hazard: Rapid calcium administration in a patient on digoxin precipitates fatal digitalis-induced arrhythmias ('stone heart' contraction band necrosis). (4) Chemical Incompatibility: Incompatible with sodium bicarbonate (precipitates insoluble chalky calcium carbonate) and ceftriaxone (precipitates calcium-ceftriaxone crystals in lungs and kidneys).`,
+    references: [
+      "FDA Prescribing Information — Calcium Gluconate 10% & Calcium Chloride 10% Injection, Fresenius Kabi / US FDA.",
+      "American Heart Association (AHA) Guidelines for CPR and ECC: Adult Advanced Cardiovascular Life Support (Circulation 2020 / 2023).",
+      "Miller's Anesthesia, 10th ed., Ch. 52 (Fluid and Electrolyte Physiology) & Ch. 53 (Transfusion Medicine).",
+      "UpToDate \"Drug Information: Calcium Salts\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  addDrug({
+    id: "intralipid-20", cat: "miscellaneous", name: "Intralipid 20%", brand: "Intralipid 20% (Intravenous Lipid Emulsion / ILE)",
+    classification: "Sterile Fat Emulsion • First-Line Specific Antidote for Local Anaesthetic Systemic Toxicity (LAST)",
+    tagline: "The definitive life-saving antidote for Local Anaesthetic Systemic Toxicity (LAST) and severe lipophilic drug cardiotoxicity",
+    tags: ["LAST antidote", "Lipid sink", "Intravenous lipid emulsion", "Bupivacaine toxicity"],
+    source: SRC.fdaUpToDate("Intralipid 20% IV fat emulsion label", "Fresenius Kabi"),
+    structure: `Intralipid 20% is a sterile, non-pyrogenic fat emulsion formulated for intravenous infusion. Composition: 20% soybean oil (providing a mixture of neutral triglycerides: linoleic acid 44–62%, oleic acid 19–30%, palmitic acid 7–14%, linolenic acid 4–11%, stearic acid 1.4–5.5%), 1.2% purified egg yolk phospholipids (emulsifying agent), 2.25% glycerol (osmotic stabilizer), and water for injection. Osmolarity: 350 mOsm/L (isotonic); caloric density: 2.0 kcal/mL. pH adjusted to 8.0.`,
+    pd: `Acts as a specific antidote for severe Local Anaesthetic Systemic Toxicity (LAST) and lipophilic drug overdose through multiple synergistic mechanisms:
+(1) 'Lipid Sink' / Scavenging Partitioning: The infusion of millions of microscopic lipid droplets creates an artificial intravascular lipid compartment. Lipophilic local anaesthetic molecules (especially bupivacaine, ropivacaine, and levobupivacaine, which possess high octanol:water partition coefficients) partition out of target tissues (myocardium, conduction system, brainstem) into the circulating lipid droplet core. This drives a concentration gradient pulling free local anaesthetic off cardiac NaV1.5 sodium channels and into the intravascular sink, accelerating myocardial clearance.
+(2) Metabolic Restoration: Local anaesthetics inhibit mitochondrial carnitine-acyltransferase I, blocking long-chain fatty acid transport and starving cardiac myocytes of ATP. High-volume lipid emulsion overrides this block, providing abundant fatty acid substrate to restore mitochondrial oxidative phosphorylation and ATP generation.
+(3) Positive Inotropic Effect: Lipid emulsion directly increases intracellular calcium concentration in cardiac myocytes, reversing local anaesthetic-induced electromechanical uncoupling.`,
+    pk: `Onset of hemodynamic recovery: 1 to 5 minutes following rapid IV bolus administration. Lipid droplets are metabolized in the bloodstream by endothelial lipoprotein lipase in adipose tissue, heart, and skeletal muscle into free fatty acids and glycerol. Free fatty acids enter cells for beta-oxidation or are re-esterified in liver into triglycerides. Elimination half-life: 30 to 45 minutes for circulating chylomicron-sized lipid droplets.`,
+    dosage: `FDA & ASRA Pain Medicine Guidelines for Local Anaesthetic Systemic Toxicity (LAST) Treatment (Standard 70 kg Adult Dosing):
+• Step 1 — Immediate IV Bolus: Administer 1.5 mL/kg of 20% Lipid Emulsion IV push over 2 to 3 minutes (roughly 100 mL bolus for a 70 kg adult).
+• Step 2 — Continuous IV Maintenance Infusion: Immediately start continuous infusion at 0.25 mL/kg/min (roughly 1000 mL/hr or ~18 mL/min for a 70 kg adult).
+• Step 3 — Repeat Boluses for Persistent Collapse: If cardiovascular stability is not restored or circulation deteriorates, repeat the 1.5 mL/kg bolus once or twice at 3- to 5-minute intervals.
+• Step 4 — Titrate Infusion: Double the continuous infusion rate to 0.5 mL/kg/min (roughly 2000 mL/hr or ~36 mL/min) if blood pressure remains refractory.
+• Duration & Upper Limit: Continue infusion for at least 10 minutes after achieving hemodynamic stability. Maximum recommended cumulative dose over the first 30 minutes: 10 to 12 mL/kg (~700 to 850 mL for a 70 kg adult).`,
+    offLabel: `Antidote for severe cardiotoxicity and cardiac arrest induced by non-local anaesthetic lipophilic drugs: verapamil, diltiazem, beta-blockers (propranolol), tricyclic antidepressants (amitriptyline), bupropion, and chloroquine.`,
+    complications: `CRITICAL RESUSCITATION PEARLS IN LAST: (1) AIRWAY AND OXYGENATION FIRST: Hypoxia, hypercapnia, and metabolic acidosis dramatically worsen local anaesthetic cardiotoxicity and reduce the efficacy of lipid rescue. Immediately secure the airway with 100% oxygen and hyperventilate to prevent acidosis! (2) REDUCE EPINEPHRINE DOSES: Animal and clinical trials demonstrate that standard high-dose epinephrine (1 mg ACLS doses) impairs lipid resuscitation and induces intractable arrhythmias. Use SMALL EPINEPHRINE DOSES ONLY: <=1 mcg/kg (e.g., 10 to 50 mcg IV boluses). (3) AVOID VASOPRESSIN, calcium channel blockers, and beta-blockers. (4) AVOID PROPOFOL as a substitute for Intralipid: Propofol contains only 10% lipid emulsion in a carrier that causes severe cardiovascular depression; administering propofol for LAST cardiac arrest is lethal! Side effects of high-volume lipid rescue: hypertriglyceridemia, acute pancreatitis, transient interference with laboratory blood tests (lipemic serum interferes with spectrophotometric hemoglobin, electrolyte, and blood gas measurements), and pulmonary fat microembolism (rare).`,
+    references: [
+      "Neal JM, et al. The American Society of Regional Anesthesia and Pain Medicine (ASRA) Checklist for Management of Local Anesthetic Systemic Toxicity: 2020 version (Reg Anesth Pain Med 2021).",
+      "FDA Prescribing Information — Intralipid 20% (intravenous fat emulsion), Fresenius Kabi / US FDA.",
+      "Miller's Anesthesia, 10th ed., Ch. 36 (Local Anesthetics) & Ch. 85 (Resuscitation from LAST).",
+      "UpToDate \"Local anesthetic systemic toxicity: Management and prevention\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  addDrug({
+    id: "dantrolene", cat: "miscellaneous", name: "Dantrolene Sodium", brand: "Dantrium / Ryanodex",
+    classification: "Post-Synaptic Skeletal Muscle Relaxant • Ryanodine Receptor 1 (RyR1) Antagonist",
+    tagline: "The only specific life-saving antidote for Malignant Hyperthermia crisis and neuroleptic malignant syndrome",
+    tags: ["Malignant Hyperthermia", "RyR1 antagonist", "Ryanodex", "MHAUS protocol"],
+    source: SRC.fdaUpToDate("Dantrium (dantrolene sodium) and Ryanodex injection label", "Par Pharmaceutical/Eagle"),
+    structure: `Dantrolene sodium is a hydantoin derivative (1-[[5-(4-nitrophenyl)furan-2-yl]methylideneamino]imidazolidine-2,4-dione sodium salt hemiheptahydrate). Formulations:
+(1) Classic Dantrium / Revonto: 20 mg lyophilized orange powder per vial containing 3000 mg mannitol and sodium hydroxide. Extremely poor water solubility; each 20 mg vial requires 60 mL of sterile water for injection and vigorous shaking for several minutes (an adult dose requires 36 vials and over 2 liters of fluid!).
+(2) Ryanodex (Modern Nanocrystal Formulation): 250 mg nanocrystal lyophilized suspension per single vial containing only 125 mg mannitol. Dissolves in just 5 mL of sterile water in less than 10 seconds — revolutionary improvement in resuscitation speed!`,
+    pd: `Specific, direct-acting antagonist at the Ryanodine Receptor Type 1 (RyR1) calcium release channel located in the sarcoplasmic reticulum membrane of skeletal muscle cells. In genetically susceptible individuals carrying RYR1 or CACNA1S mutations, exposure to triggering agents (all volatile anaesthetic ethers: sevoflurane, desflurane, isoflurane, halothane; and depolarising relaxants: succinylcholine) produces uncontrolled, sustained calcium efflux from the sarcoplasmic reticulum into the myoplasm. This floods troponin C, producing massive, unremitting muscle contractility, hypermetabolism, ATP exhaustion, severe metabolic/respiratory acidosis, rhabdomyolysis, hyperkalaemia, and hyperthermia. Dantrolene binds specifically to the RyR1 channel, blocking calcium release into the sarcoplasm without impairing reuptake by the SERCA pump. This decouples excitation-contraction coupling, halts hypermetabolism within minutes, normalizes end-tidal CO2, and resolves muscle rigidity. Does NOT affect cardiac or smooth muscle (which utilize RyR2 and IP3 receptors).`,
+    pk: `Onset of action: within 1 to 5 minutes following IV bolus administration. Rapid distribution into skeletal muscle. Volume of distribution: ~0.6 L/kg. Extensively bound to plasma proteins (~90%), primarily albumin. Metabolized in the liver by microsomal enzymes to 5-hydroxydantrolene (active, possesses ~50% parent potency) and an acetylamino metabolite. Elimination half-life: 4 to 9 hours (IV formulation). Cleared renally (~25%) and via biliary/faecal excretion.`,
+    dosage: `FDA & MHAUS (Malignant Hyperthermia Association of the United States) Emergency Treatment Protocol:
+• Immediate Stat IV Bolus: 2.5 mg/kg rapid IV push administered through the largest available IV line.
+• Repeat Dosing: Continue administering 1.0 to 2.5 mg/kg IV pushes every 5 to 10 minutes until hypermetabolism is controlled (verified by falling end-tidal CO2, normalizing heart rate, resolution of muscle rigidity, and cooling core temperature).
+• Dose Ceiling: Most crises resolve with a cumulative dose of 2.5 to 5 mg/kg. However, if hypermetabolism persists, continue administering up to 10 mg/kg (in refractory fulminant crises, cumulative doses up to 20 to 30 mg/kg have been required).
+• Post-Crisis Maintenance: 1 mg/kg IV every 4 to 6 hours (or 0.25 mg/kg/hr continuous IV infusion) for at least 24 to 48 hours to prevent recrudescence (which occurs in ~25% of cases).`,
+    offLabel: `Neuroleptic Malignant Syndrome (NMS: 1 to 2.5 mg/kg IV to reverse severe hyperthermia and lead-pipe rigidity); severe MDMA ('Ecstasy') or amphetamine-induced hyperthermia; thyroid storm hypermetabolism.`,
+    complications: `CRITICAL RECONSTITUTION & RESUSCITATION PEARLS:
+(1) Ryanodex vs Classic Dantrium: Ryanodex requires only ONE vial (250 mg in 5 mL sterile water, reconstituted in 10 seconds). If using classic Dantrium, a 70 kg adult requires 9 vials for an initial 2.5 mg/kg dose (and up to 36 vials for 10 mg/kg), requiring multiple dedicated personnel drawing up 60 mL sterile water per vial! Reconstitute ONLY with preservative-free sterile water (NEVER use saline or dextrose, which cause crystallization).
+(2) Severe Skeletal Muscle Weakness & Ventilatory Failure: Profound generalized weakness occurs; patients require prolonged mechanical ventilatory support and airway monitoring.
+(3) Phlebitis and Tissue Necrosis: Highly alkaline solution (pH ~9.5); peripheral extravasation causes severe chemical thrombophlebitis.
+(4) STRICT CONTRAINDICATION: NEVER CO-ADMINISTER WITH CALCIUM CHANNEL BLOCKERS (verapamil, diltiazem) — co-administration induces severe, fatal hyperkalaemic cardiac arrest and refractory cardiogenic shock!
+(5) Mannitol Overload: Each 20 mg Dantrium vial contains 3 grams of mannitol (36 vials = 108 grams mannitol!), producing massive osmotic diuresis (place an indwelling urinary catheter immediately).`,
+    references: [
+      "Malignant Hyperthermia Association of the United States (MHAUS): Emergency Protocol for Malignant Hyperthermia (2024/2025 update).",
+      "FDA Prescribing Information — Ryanodex & Dantrium IV, Eagle Pharmaceuticals / Par Pharmaceutical / US FDA.",
+      "Miller's Anesthesia, 10th ed., Ch. 39 (Malignant Hyperthermia and Other Pharmacogenetic Disorders).",
+      "UpToDate \"Malignant hyperthermia: Diagnosis and management of acute crisis\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
   // ========================================================================
   // NEW TOPICS: CVC & PAC, CPB, THRIVE & HFNO, JET VENTILATION
   // ========================================================================
@@ -2564,6 +3589,13 @@ Why every anaesthetist must master it:
       },
       {
         h: "Anatomy of the BVM: Every Component and Its Function",
+        images: [
+          {
+            src: "assets/references/ambu-bag-parts-labelled.jpg",
+            alt: "Labelled parts of the Bag-Valve-Mask (BVM) Resuscitator",
+            caption: "Anatomical Components of the Ambu Bag / BVM: Face mask, expiratory valve, PEEP valve, pop-off valve, self-inflating bag body, air-inlet one-way valve, pressure release valve, oxygen inlet tubing, and reservoir bag."
+          }
+        ],
         b: `A standard adult BVM resuscitator consists of 8 major components that must each be present and functional:
 
 1. Self-Inflating Bag (Body Bag / Reservoir Bag):
