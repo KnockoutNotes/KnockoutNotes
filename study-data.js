@@ -582,9 +582,9 @@
         b: "Direct laryngoscopy remains the cornerstone skill of endotracheal intubation, utilizing mechanical displacement of the tongue, soft palate, and pharyngeal tissues to establish a continuous direct optical line-of-sight from the operator's eye to the glottic aperture. Blades are classified into four major functional designs:\n\n1. Macintosh Curved Blade (Sizes 1 to 4; Mac 3 standard adult, Mac 4 tall adult):\nEngineered with a gently curved blade and a broad, Z-shaped vertical flange. Inserted into the right oral commissure, sweeping the tongue to the left side of the mouth. The spatula tip is seated precisely into the vallecula (the anatomical groove between the base of the tongue and the lingual surface of the epiglottis). An anterior-superior lift along the 45-degree axis of the handle stretches the median hypo-epiglottic ligament, indirectly tilting the epiglottis forward to expose the vocal cords. Key advantages include minimal dental trauma (wide tongue flange protects teeth), ample room for endotracheal tube passage, and avoidance of bruising the posterior epiglottis.\n\n2. Miller Straight Blade (Sizes 00 to 4; Miller 0/1 neonates, Miller 2/3 adults):\nFeatures a straight, low-profile blade with a small C-shaped or cylindrical flange. Instead of seating in the vallecula, the tip is passed directly beneath (posterior to) the laryngeal surface of the epiglottis, scooping and lifting the epiglottis directly upward. It is the gold standard for neonates and infants under 1 year of age, whose epiglottis is characteristically floppy, elongated, and U/omega-shaped, causing indirect elevation to fail. In adults, Miller blades are superior in patients with a long, retroverted epiglottis, floppy supraglottic redundant tissue, micrognathia (small receded mandible), prominent upper incisors, or narrow oral apertures.\n\n3. McCoy Levering / Flexing-Tip Blade (Sizes 2 to 4):\nDesigned by Dr. E.P. McCoy, this blade incorporates a hinged, pivoting distal tip controlled via a spring-loaded mechanical lever on the laryngoscope handle. Once the blade tip is positioned in the vallecula in standard fashion, depressing the lever flexes the tip 35 to 45 degrees anteriorly. This selectively elevates the hypo-epiglottic ligament and epiglottis without necessitating extension of the atlanto-occipital joint or applying excessive lifting force against the maxillary incisors. It reliably improves Cormack-Lehane laryngoscopic view by 1 to 2 grades in patients with rigid cervical spine pathology, trauma with in-line cervical stabilization collars, halo fixators, or ankylosing spondylitis.\n\n4. Specialised & Rescue Direct Blades:\n• Polio Blade: Positioned at an obtuse 135-degree angle relative to the handle, enabling insertion in patients with extreme morbid obesity, huge pendulous breasts, barrel chest, or patients confined in iron lungs/body jackets.\n• Wisconsin & Guedel Blades: Straight blades with tall, fully tubular or circular flanges providing an expansive, protected field of vision.\n• Left-Handed Macintosh: Mirror-image design for left-handed laryngoscopists or patients with right-sided facial deformities, maxillofacial trauma, or extensive oral resections.",
         images: [
           {
-            src: "assets/references/laryngoscope-macintosh-standard.jpg",
-            alt: "Standard direct Macintosh laryngoscope with curved blade and handle",
-            caption: "Direct Macintosh Laryngoscope: Conventional curved blade with standard adult handle and hook-on hinge connection (ISO 7376 standard green-system fiberoptic)."
+            src: "assets/references/laryngoscope-curved-macintosh-vs-straight-miller.svg",
+            alt: "Direct laryngoscope comparison showing curved Macintosh blade with vallecular placement versus straight Miller blade with direct epiglottic scoop",
+            caption: "Blade Geometry & Anatomical Landmarks: Macintosh Curved Blade (tip seated in the vallecula, stretching the hypo-epiglottic ligament to indirectly elevate the epiglottis) versus Miller Straight Blade (tip passed beneath/posterior to the epiglottis to scoop and elevate it directly, the gold standard in neonates/infants)."
           },
           {
             src: "assets/references/laryngoscopy-mac3-sagittal-view.png",
@@ -593,8 +593,8 @@
           },
           {
             src: "assets/references/laryngoscope-blades-set.jpg",
-            alt: "Direct laryngoscope blades set showing curved Macintosh and straight Miller blades",
-            caption: "Comparative Blade Geometries: Curved Macintosh blades alongside straight Miller blades illustrating differing tongue flange profiles and tip curvatures."
+            alt: "Curved Macintosh laryngoscope blades set (sizes 2, 3, 4) with battery handle",
+            caption: "Macintosh Curved Blade System: Adult battery handle with sizes 2, 3, and 4 curved Macintosh blades with integral fiberoptic light bundle (ISO 7376 green standard)."
           }
         ]
       },
@@ -967,6 +967,57 @@
           label: "Open KnockoutNotes Interactive TCI Simulator & Calculator"
         },
         b: "Clinical TCI relies on rigorously validated population pharmacokinetic models. For Propofol, three prominent models dominate clinical practice: 1) The Marsh Model (Diprifusor): Scales the central compartment volume strictly with total body weight (V₁ = 0.228 L/kg; fixed V₂ = 0.463 L/kg; fixed V₃ = 2.893 L/kg). Because it assumes linear weight scaling without age adjustment, it delivers relatively aggressive induction boluses and can overdose elderly patients. Original Marsh used a slow ke0 of 0.26 min⁻¹ (causing sluggish effect-site tracking); modern implementations utilize a modified ke0 of 1.2 min⁻¹ for rapid clinical equilibration. 2) The Schnider Model: Incorporates age, total weight, height, and sex to calculate lean body mass (LBM) using the James formula. It utilizes a fixed, small central compartment (V₁ = 4.27 L) and an age-dependent elimination rate, resulting in smaller, gentler induction boluses and lower maintenance rates in the elderly, with a faster ke0 of 0.456 min⁻¹. However, the James formula fails in morbidly obese patients (paradoxically under-calculating LBM at extreme weights). 3) The Eleveld Model (2018): A modern universal propofol model developed from over 10,000 venous and arterial samples spanning neonates to elderly centenarians (age 0 to 88 years, weight 0.68 to 160 kg). It utilizes fat-free mass (Al-Sallami formula) and allometric scaling (weight^0.75 for clearance), safely preventing both under-dosing in children and dangerous over-dosing in obese adults. For Remifentanil, the universal standard is the Minto Model, which incorporates age, sex, height, and weight to account for the dramatic 50% reduction in central clearance and V₁ that occurs between age 20 and 85.",
+        table: {
+          headers: ["Model & Drug", "Input / Feed Variables", "Targeting Modes (Cp vs Ce)", "ke0 & Dynamics", "Key Advantages", "Limitations / Disadvantages"],
+          rows: [
+            [
+              { text: "Marsh (Diprifusor)", badge: "Propofol", badgeColor: "#0284c7" },
+              "Total Body Weight (TBW) only; assumed young adult (20–40 yr)",
+              "Plasma (Cp) natively; modified Marsh supports Ce",
+              "ke0 = 0.26 min⁻¹ (original) / 1.2 min⁻¹ (modified Diprifusor)",
+              "Extremely simple single-variable programming; decades of global clinical familiarity; robust in young non-obese adults",
+              "Zero age adjustment (risks severe overdose & hypotension in elderly); linear weight scaling overdoses obese patients"
+            ],
+            [
+              { text: "Schnider Model", badge: "Propofol", badgeColor: "#10b981" },
+              "Age, Total Weight, Height, Gender (calculates LBM via James formula)",
+              "Effect-Site (Ce) preferred; also Plasma (Cp)",
+              "ke0 = 0.456 min⁻¹ (t1/2 ke0 ≈ 1.5 min)",
+              "Adjusts for age (reduces induction bolus & maintenance in elderly); fixed small V1 (4.27 L) limits overshoot; rapid Ce equilibration",
+              "James formula paradoxically under-calculates LBM at extreme weights (BMI > 35, weight > 140 kg), triggering pump lockouts or under-dosing"
+            ],
+            [
+              { text: "Eleveld Model (2018)", badge: "Propofol", badgeColor: "#8b5cf6" },
+              "Age (0 to 88+ yr), Weight (0.68 to 160 kg), Height, Gender, Opioid co-infusion flag",
+              "Both Ce and Cp with dynamic allometric clearance scaling",
+              "Dynamic allometric scaling (age- & maturation-dependent)",
+              "Truly universal model validated from neonates to elderly and morbidly obese; allometric scaling (W^0.75); accounts for opioid synergism; eliminates obesity lockouts",
+              "Complex mathematics; newer model not yet universally available on older legacy commercial TCI pump hardware"
+            ],
+            [
+              { text: "Minto Model", badge: "Remifentanil", badgeColor: "#d97706" },
+              "Age, Weight, Height, Gender (calculates LBM via James formula)",
+              "Both Ce and Cp (ultra-rapid equilibration)",
+              "ke0 = 0.595 min⁻¹ (t1/2 ke0 ≈ 1.1 min)",
+              "Worldwide gold standard for remifentanil TIVA; scales clearance and V1 down by 50% between age 20 and 85; precise minute-to-minute analgesia titration",
+              "Vulnerable to James formula distortion in severe morbid obesity; high Ce targets (>6–8 ng/mL) can induce acute chest wall rigidity and bradycardia"
+            ],
+            [
+              { text: "Gepts Model", badge: "Sufentanil", badgeColor: "#ec4899" },
+              "Total Body Weight (TBW)",
+              "Plasma (Cp) targeting",
+              "Intermediate equilibration (ke0 ≈ 0.14 min⁻¹)",
+              "Provides sustained background opioid analgesia for prolonged major surgical procedures; smooth transition into postoperative recovery",
+              "Context-sensitive half-time increases sharply after 2 hours; significant accumulation and delayed postoperative respiratory depression risk"
+            ]
+          ],
+          caption: "Table: Detailed comparison of Target-Controlled Infusion (TCI) pharmacokinetic models, patient input variables, targeting dynamics, clinical benefits, and key limitations."
+        },
+        crossLinks: [
+          { label: "💉 Propofol Monograph (Marsh & Schnider Parameters)", item: "propofol" },
+          { label: "💉 Remifentanil Monograph (Minto Pharmacokinetics)", item: "remifentanil" },
+          { label: "💉 Sufentanil Monograph (Gepts Model)", item: "sufentanil" }
+        ],
         example: "In an 80-year-old patient undergoing TIVA, the Marsh model (weight-only) would calculate an induction bolus identical to that for a 20-year-old of the same weight, risking severe post-induction hypotension. The Schnider or Eleveld models automatically adjust for age, decreasing the initial bolus by 30–50% to maintain haemodynamic stability."
       },
       {
@@ -1181,9 +1232,14 @@
     classification: "Depolarising neuromuscular blocker • Bis-quaternary acetylcholine dimer (ultra-short-acting)",
     tagline: "Still the fastest paralytic in the drawer — and the only depolarising one, which explains both its speed and its risks",
     tags: ["Depolarising NMBA", "Fastest onset"],
+    crossLinks: [
+      { label: "⚡ Compare Phase 1 vs Phase 2 Block on Nerve Stimulator (TOF & Tetanic Fade)", item: "nerve-stimulator-neuromuscular-monitoring" },
+      { label: "💉 Rocuronium Monograph (Non-Depolarising RSI & Sugammadex)", item: "rocuronium" },
+      { label: "⚠️ Malignant Hyperthermia Clinical Protocol & Dantrolene", item: "malignant-hyperthermia" }
+    ],
     source: SRC.fdaUpToDate("Anectine (succinylcholine chloride) injection label", "Hospira/Pfizer"),
     structure: "Structurally, succinylcholine is just two acetylcholine molecules joined back-to-back at their acetate ends. That resemblance to acetylcholine is the whole story — it's why the drug can activate the same receptor acetylcholine does, and why the body's own plasma cholinesterase can chew through it almost as fast as it would chew through acetylcholine itself. It's the only depolarising neuromuscular blocker in routine clinical use.",
-    pd: "Unlike every other relaxant on this list, succinylcholine doesn't block the nicotinic acetylcholine receptor (nAChR) at the neuromuscular junction — it activates it as a long-acting agonist, causing sustained depolarisation of the motor endplate. That depolarisation triggers uncoordinated muscle contraction seen clinically as fasciculations right after injection, followed rapidly by flaccid paralysis because perijunctional voltage-gated sodium channels inactivate in their closed conformation (the classic Phase I depolarising block). On a peripheral nerve stimulator, Phase I block is characterised by equal reduction of all four twitches (no train-of-four fade, TOF ratio remains 1.0), absence of post-tetanic facilitation, and sustained contraction without fade during 50 Hz tetanic stimulation. Phase II (Desensitization or Dual) Blockade: When the junction is subjected to continuous exposure, repeated boluses, high cumulative doses (>7 to 10 mg/kg or >500 to 1000 mg in adults), prolonged continuous infusions, or impaired breakdown from atypical plasma cholinesterase, the block shifts into Phase II. The mechanism in simple terms: 1) Receptor Desensitization: Continuous agonist exposure causes post-junctional nicotinic receptors to change shape and lock in an inactive, closed conformation unresponsive to acetylcholine. 2) Channel Plugging: Succinylcholine physically enters and blocks the open receptor ion pore. 3) Electrolyte Uncoupling: Ongoing intracellular sodium and calcium accumulation with potassium egress drops ionic gradients and prevents normal membrane excitability. 4) Shift to Non-Depolarising Behaviour: Even though the endplate repolarizes, receptors remain closed, causing the block to electrophysiologically mimic a non-depolarising block! Diagnostic hallmarks on a nerve stimulator: pronounced train-of-four fade (TOF ratio drops < 0.70), marked tetanic fade at 50/100 Hz, and distinct post-tetanic potentiation (facilitation). Reversal Danger: Anticholinesterases (neostigmine) are contraindicated in early Phase II block because neostigmine inhibits plasma cholinesterase as well, worsening succinylcholine accumulation and prolonging apnea — management requires continued mechanical ventilation and sedation until spontaneous recovery. Potassium Warning: It causes a predictable potassium release of ~0.5 mEq/L in healthy patients, but causes catastrophic life-threatening hyperkalaemia in burns, denervation injury, spinal cord trauma, prolonged immobility, or muscular dystrophies due to proliferation of extrajunctional acetylcholine receptors.",
+    pd: "Unlike every other relaxant on this list, succinylcholine doesn't block the nicotinic acetylcholine receptor (nAChR) at the neuromuscular junction — it activates it as a long-acting agonist, causing sustained depolarisation of the motor endplate. That depolarisation triggers uncoordinated muscle contraction seen clinically as fasciculations right after injection, followed rapidly by flaccid paralysis because perijunctional voltage-gated sodium channels inactivate in their closed conformation (the classic Phase I depolarising block). On a peripheral nerve stimulator, Phase I block is characterised by equal reduction of all four twitches (no train-of-four fade, TOF ratio remains 1.0), absence of post-tetanic facilitation, and sustained contraction without fade during 50 Hz tetanic stimulation. Phase II (Desensitization or Dual) Blockade: When the junction is subjected to continuous exposure, repeated boluses, high cumulative doses (>7 to 10 mg/kg or >500 to 1000 mg in adults), prolonged continuous infusions, or impaired breakdown from atypical plasma cholinesterase, the block shifts into Phase II. The mechanism in simple terms: 1) Receptor Desensitization: Continuous agonist exposure causes post-junctional nicotinic receptors to change shape and lock in an inactive, closed conformation unresponsive to acetylcholine. 2) Channel Plugging: Succinylcholine physically enters and blocks the open receptor ion pore. 3) Electrolyte Uncoupling: Ongoing intracellular sodium and calcium accumulation with potassium egress drops ionic gradients and prevents normal membrane excitability. 4) Shift to Non-Depolarising Behaviour: Even though the endplate repolarizes, receptors remain closed, causing the block to electrophysiologically mimic a non-depolarising block! Diagnostic hallmarks on a nerve stimulator [⚡ See Train-of-Four & Tetanic Monitoring Waveforms](item:nerve-stimulator-neuromuscular-monitoring): pronounced train-of-four fade (TOF ratio drops < 0.70), marked tetanic fade at 50/100 Hz, and distinct post-tetanic potentiation (facilitation). Reversal Danger: Anticholinesterases (neostigmine) are contraindicated in early Phase II block because neostigmine inhibits plasma cholinesterase as well, worsening succinylcholine accumulation and prolonging apnea — management requires continued mechanical ventilation and sedation until spontaneous recovery. Potassium Warning: It causes a predictable potassium release of ~0.5 mEq/L in healthy patients, but causes catastrophic life-threatening hyperkalaemia in burns, denervation injury, spinal cord trauma, prolonged immobility, or muscular dystrophies due to proliferation of extrajunctional acetylcholine receptors.",
     pk: "It has the fastest onset of any neuromuscular blocker — 30 to 60 seconds — and the shortest duration, 5 to 10 minutes, purely because plasma cholinesterase (not the acetylcholinesterase at the neuromuscular junction) breaks it down almost as fast as it arrives. That's also its single biggest vulnerability: in someone with an atypical or deficient plasma cholinesterase — a genetic variant, liver disease, pregnancy, or certain drugs — that rapid breakdown doesn't happen, and paralysis can stretch from minutes into hours.",
     dosage: "ED95 is approximately 0.3 mg/kg IV in adults. FDA-approved dosing: for rapid sequence induction/intubation (RSI) in adults, 1–1.5 mg/kg IV (representing 3 to 5 times the ED95, guaranteeing complete 100% vocal cord paralysis within 30–60 seconds with a recovery duration of 5–10 minutes). For shorter routine procedures, 0.3–1.1 mg/kg IV. When IV access isn't available — classically, severe paediatric laryngospasm — it can be given IM at up to 3–4 mg/kg (maximum 150 mg, onset 3–4 minutes). Continuous infusions (2.5 to 4 mg/min) or cumulative boluses exceeding 500 to 1000 mg total (>7 to 10 mg/kg) are strictly discouraged today because they reliably precipitate prolonged Phase II desensitization blockade. Dosing Weight Basis in Obesity: Dosed strictly on Actual Body Weight (ABW) in both normal-weight and morbidly obese patients (1.0 to 1.5 mg/kg ABW), because plasma pseudocholinesterase enzyme activity and extracellular fluid volume increase proportionally with total body mass.",
     offLabel: "Its best-known off-label use is treating severe laryngospasm that hasn't responded to positive-pressure ventilation and jaw thrust — often given IM or intraosseously if IV access isn't yet secured. This is a well-established emergency manoeuvre, just not the drug's primary labelled indication.",
@@ -2415,7 +2471,11 @@
             [{ text: "Post-Tetanic Count (PTC)", badge: "PTC", badgeColor: "#d97706" }, "50 Hz for 5s → 3s pause → 1 Hz twitches x15", "Supramaximal (40–60 mA)", "Monitoring DEEP block when TOF count is ZERO", "No facilitation; single twitch returns immediately", "Post-tetanic facilitation reveals hidden twitches (PTC 1–8)"]
           ],
           caption: "Table: Standard electrical stimulation patterns, electrophysiological parameters, and diagnostic clinical utility."
-        }
+        },
+        crossLinks: [
+          { label: "⚡ Succinylcholine Monograph (Phase 1 vs Phase 2 Block)", item: "succinylcholine" },
+          { label: "💉 Rocuronium Monograph & Kinetics", item: "rocuronium" }
+        ]
       },
       {
         h: "How Peripheral Nerve Stimulators Work: Electrophysiological Principles",
@@ -2449,13 +2509,23 @@
             [{ text: "Safe Recovery", badge: "Recovered", badgeColor: "#0284c7" }, "Objective TOF Ratio >= 0.90", "None required (already reversed)", "None", "Safe for endotracheal extubation"]
           ],
           caption: "Table: Neuromuscular blockade depth stratification, guideline-directed reversal dosing, and extubation criteria (ASA/ESAIC 2023)."
-        }
+        },
+        crossLinks: [
+          { label: "💊 Sugammadex Monograph (PTC & TOF Reversal)", item: "sugammadex" },
+          { label: "💊 Neostigmine Monograph & Muscarinic Antagonist Ratio", item: "neostigmine" },
+          { label: "💉 Rocuronium Monograph & Reversal Protocol", item: "rocuronium" }
+        ]
       },
       {
         h: "Peripheral Nerve Stimulators in Regional Anaesthesia & Nerve Blocks",
         b: "Beyond neuromuscular junction monitoring, peripheral nerve stimulators play a vital role in regional anaesthesia for target nerve localization and preventing traumatic intraneural injection:\n\n1. Dedicated Regional Stimulator Architecture:\nUnlike neuromuscular junction monitors that fire at 40–60 mA, regional nerve stimulators are low-output constant-current devices operating from 0.01 to 5.0 mA with micro-step precision (increments of 0.01 mA), a pulse width of 0.1 ms, and a pulse repetition rate of 1 Hz or 2 Hz.\n\n2. The Insulated Needle System:\nStandard hypodermic needles leak electrical current along their entire shaft, giving poor spatial resolution. In contrast, dedicated nerve block needles (e.g. Stimuplex, UniPlex) are coated with an electrical Teflon/polyurethane insulation along their entire length except for the conductive metal bevel tip (0.5 to 1.0 mm). Electrical current is concentrated exclusively at the tip, creating a localized high-density spherical electrical field.\n\n3. Polarity Setup for Nerve Blocks:\n• The Insulated Needle is connected to the NEGATIVE CATHODE (Black Lead):\n  - Negative current exiting the needle tip requires 3 to 5 times LESS current to depolarize the adjacent nerve than a positive anode would, maximizing needle tip sensitivity.\n• The Return Electrode (Red Lead) is attached to the patient's skin via a conductive ECG electrode positioned remotely.\n\n4. The Motor Twitch Localization Sequence:\n• Step 1 (Approaching the Nerve): Set stimulator to 1.0 to 1.5 mA at 2 Hz (0.1 ms pulse duration). Advance the needle under real-time ultrasound guidance until an initial evoked motor twitch is visualized in the target muscular distribution (e.g., quadriceps twitch / patellar snap for femoral nerve; foot plantarflexion for tibial nerve).\n• Step 2 (Optimizing Proximity): Gradually reduce current while fine-tuning needle position. Maintaining a clear motor twitch at 0.2 to 0.5 mA confirms that the needle tip is immediately adjacent to the epineurium (optimal perineural position for high-success block).\n\n5. The Critical Safety Threshold: The Danger of < 0.2 mA:\n• If an evoked motor twitch persists when current is dialed BELOW 0.2 mA (0.1 ms duration), the needle tip has almost certainly PENETRATED THE EPINEURIUM AND SITS INTRANEURALLY / INTRAFASCICULARLY!\n• Fatal Danger: Injecting local anaesthetic directly inside a nerve fascicle produces massive intrafascicular hypertension (>20–30 psi), obliterating endoneurial capillary blood flow, resulting in catastrophic ischemic nerve infarction and permanent motor/sensory paralysis!\n• MANDATORY SAFETY RULE: If twitch persists at < 0.2 mA, STOP! NEVER INJECT! Withdraw the needle by 1 to 2 millimetres until the twitch disappears at < 0.2 mA, perform a gentle negative aspiration test, check for low opening injection pressure (<15 psi), and only then inject the local anaesthetic.",
         pearl: "In regional nerve blocks, a motor twitch at 0.2–0.5 mA (0.1 ms) indicates ideal perineural proximity. A twitch persisting at <0.2 mA is a critical warning sign of INTRANEURAL needle placement — withdraw the needle before injecting!",
-        pitfall: "Never extubate a patient based on facial nerve (corrugator supercilii or orbicularis oculi) monitoring. Facial muscles recover far earlier than the pharynx and diaphragm; extubating on facial twitch leads to post-extubation airway obstruction and aspiration!"
+        pitfall: "Never extubate a patient based on facial nerve (corrugator supercilii or orbicularis oculi) monitoring. Facial muscles recover far earlier than the pharynx and diaphragm; extubating on facial twitch leads to post-extubation airway obstruction and aspiration!",
+        crossLinks: [
+          { label: "💉 Lidocaine Monograph (Intermediate Local Anaesthetic)", item: "lidocaine" },
+          { label: "💉 Bupivacaine Monograph & LAST Resuscitation", item: "bupivacaine" },
+          { label: "💉 Ropivacaine Monograph (Motor-Sparing Block)", item: "ropivacaine" }
+        ]
       }
     ],
     references: [

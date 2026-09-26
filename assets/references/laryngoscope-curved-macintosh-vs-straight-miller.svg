@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 540" width="880" height="540" style="background:#0f172a; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="metalGrad" x1="0" y1="0" x2="1" y2="0.8">
+      <stop offset="0%" stop-color="#cbd5e1"/>
+      <stop offset="30%" stop-color="#f8fafc"/>
+      <stop offset="70%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <linearGradient id="macCardGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="20" y="16" width="840" height="54" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="440" y="44" font-size="19" font-weight="800" fill="#f8fafc" text-anchor="middle" letter-spacing="0.5">DIRECT LARYNGOSCOPE BLADE GEOMETRY &amp; ANATOMICAL PLACEMENT</text>
+  <text x="440" y="60" font-size="12" font-weight="600" fill="#38bdf8" text-anchor="middle">Macintosh (Curved Blade • Vallecular Placement) vs. Miller (Straight Blade • Direct Epiglottic Scoop)</text>
+
+  <!-- ================= LEFT PANEL: MACINTOSH ================= -->
+  <g transform="translate(30, 85)">
+    <rect x="0" y="0" width="395" height="300" rx="10" fill="url(#macCardGrad)" stroke="#0284c7" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="395" height="38" rx="10" fill="#0369a1"/>
+    <text x="20" y="25" font-size="16" font-weight="800" fill="#ffffff">Macintosh Blade (Curved)</text>
+    <text x="375" y="24" font-size="11" font-weight="700" fill="#bae6fd" text-anchor="end">Indirect Elevation</text>
+
+    <!-- Handle & Connection -->
+    <rect x="35" y="155" width="34" height="120" rx="5" fill="url(#metalGrad)" stroke="#475569" stroke-width="1.5"/>
+    <!-- Knurling texture on handle -->
+    <line x1="38" y1="175" x2="66" y2="175" stroke="#334155" stroke-width="1.2"/>
+    <line x1="38" y1="195" x2="66" y2="195" stroke="#334155" stroke-width="1.2"/>
+    <line x1="38" y1="215" x2="66" y2="215" stroke="#334155" stroke-width="1.2"/>
+    <line x1="38" y1="235" x2="66" y2="235" stroke="#334155" stroke-width="1.2"/>
+    <line x1="38" y1="255" x2="66" y2="255" stroke="#334155" stroke-width="1.2"/>
+
+    <!-- Hook-on base fitting -->
+    <polygon points="40,155 64,155 72,135 48,135" fill="url(#metalGrad)" stroke="#475569" stroke-width="1.5"/>
+
+    <!-- Curved Macintosh Blade Spatula -->
+    <path d="M52 135 C90 128 170 120 250 80 C290 60 330 46 345 52 C342 58 310 74 270 96 C200 135 110 148 55 142 Z" fill="url(#metalGrad)" stroke="#334155" stroke-width="1.5"/>
+    <!-- Z-flange on Macintosh -->
+    <path d="M58 138 C105 130 180 115 240 85 L245 74 C185 105 105 120 58 128 Z" fill="#94a3b8" opacity="0.6"/>
+    <!-- Bulbous tip -->
+    <circle cx="343" cy="52" r="5" fill="#f8fafc" stroke="#475569"/>
+
+    <!-- Fiberoptic light bundle -->
+    <path d="M68 135 C130 120 200 102 280 72" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="4,2"/>
+    <circle cx="284" cy="71" r="3.5" fill="#facc15"/>
+
+    <!-- Anatomical Vallecula Callout -->
+    <g transform="translate(180, 160)">
+      <rect x="0" y="0" width="200" height="120" rx="6" fill="#0f172a" stroke="#0284c7" stroke-width="1.2"/>
+      <text x="10" y="20" font-size="12" font-weight="700" fill="#38bdf8">Key Anatomical Landmarks:</text>
+      <text x="10" y="40" font-size="11" fill="#f8fafc">• <tspan font-weight="bold" fill="#38bdf8">Tip Site:</tspan> Vallecula</text>
+      <text x="20" y="55" font-size="10" fill="#94a3b8">(between tongue base &amp; epiglottis)</text>
+      <text x="10" y="74" font-size="11" fill="#f8fafc">• <tspan font-weight="bold" fill="#38bdf8">Ligament:</tspan> Hypo-epiglottic</text>
+      <text x="10" y="93" font-size="11" fill="#f8fafc">• <tspan font-weight="bold" fill="#38bdf8">Mechanism:</tspan> Indirect flip</text>
+      <text x="10" y="110" font-size="10.5" fill="#4ade80">✓ Ample room for ETT delivery</text>
+    </g>
+
+    <!-- Curve indicator badge -->
+    <rect x="18" y="50" width="135" height="22" rx="4" fill="#0c4a6e" stroke="#0284c7" stroke-width="1"/>
+    <text x="85" y="65" font-size="10" font-weight="700" fill="#7dd3fc" text-anchor="middle">CURVED SPATULA</text>
+  </g>
+
+  <!-- ================= RIGHT PANEL: MILLER ================= -->
+  <g transform="translate(455, 85)">
+    <rect x="0" y="0" width="395" height="300" rx="10" fill="url(#macCardGrad)" stroke="#8b5cf6" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="395" height="38" rx="10" fill="#6d28d9"/>
+    <text x="20" y="25" font-size="16" font-weight="800" fill="#ffffff">Miller Blade (Straight)</text>
+    <text x="375" y="24" font-size="11" font-weight="700" fill="#ddd6fe" text-anchor="end">Direct Scoop Elevation</text>
+
+    <!-- Handle & Connection -->
+    <rect x="35" y="155" width="34" height="120" rx="5" fill="url(#metalGrad)" stroke="#475569" stroke-width="1.5"/>
+    <line x1="38" y1="175" x2="66" y2="175" stroke="#334155" stroke-width="1.2"/>
+    <line x1="38" y1="195" x2="66" y2="195" stroke="#334155" stroke-width="1.2"/>
+    <line x1="38" y1="215" x2="66" y2="215" stroke="#334155" stroke-width="1.2"/>
+    <line x1="38" y1="235" x2="66" y2="235" stroke="#334155" stroke-width="1.2"/>
+    <line x1="38" y1="255" x2="66" y2="255" stroke="#334155" stroke-width="1.2"/>
+
+    <!-- Hook-on base fitting -->
+    <polygon points="40,155 64,155 72,135 48,135" fill="url(#metalGrad)" stroke="#475569" stroke-width="1.5"/>
+
+    <!-- Straight Miller Blade Spatula -->
+    <!-- Distinctly straight profile with slight upturn at distal tip -->
+    <path d="M52 135 L290 88 L340 76 C345 74 348 78 344 83 L290 98 L55 142 Z" fill="url(#metalGrad)" stroke="#334155" stroke-width="1.5"/>
+    <!-- Low-profile C-channel flange -->
+    <path d="M56 137 L290 90 L292 84 L56 130 Z" fill="#94a3b8" opacity="0.6"/>
+    <!-- Upturned Miller Tip -->
+    <path d="M335 77 Q345 73 348 70 Q346 80 338 82 Z" fill="#f8fafc" stroke="#475569"/>
+
+    <!-- Light carrier tube along straight shaft -->
+    <line x1="68" y1="133" x2="310" y2="84" stroke="#a855f7" stroke-width="2.5" stroke-dasharray="4,2"/>
+    <circle cx="314" cy="83" r="3.5" fill="#facc15"/>
+
+    <!-- Anatomical Epiglottis Callout -->
+    <g transform="translate(180, 160)">
+      <rect x="0" y="0" width="200" height="120" rx="6" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.2"/>
+      <text x="10" y="20" font-size="12" font-weight="700" fill="#c084fc">Key Anatomical Landmarks:</text>
+      <text x="10" y="40" font-size="11" fill="#f8fafc">• <tspan font-weight="bold" fill="#c084fc">Tip Site:</tspan> Under Epiglottis</text>
+      <text x="20" y="55" font-size="10" fill="#94a3b8">(posterior / laryngeal surface)</text>
+      <text x="10" y="74" font-size="11" fill="#f8fafc">• <tspan font-weight="bold" fill="#c084fc">Lift:</tspan> Direct scoop upward</text>
+      <text x="10" y="93" font-size="11" fill="#f8fafc">• <tspan font-weight="bold" fill="#c084fc">Best For:</tspan> Infants &amp; Neonates</text>
+      <text x="10" y="110" font-size="10.5" fill="#f59e0b">Floppy, U-shaped epiglottis</text>
+    </g>
+
+    <!-- Straight indicator badge -->
+    <rect x="18" y="50" width="135" height="22" rx="4" fill="#4c1d95" stroke="#8b5cf6" stroke-width="1"/>
+    <text x="85" y="65" font-size="10" font-weight="700" fill="#ddd6fe" text-anchor="middle">STRAIGHT SPATULA</text>
+  </g>
+
+  <!-- ================= BOTTOM COMPARISON TABLE ================= -->
+  <g transform="translate(30, 400)">
+    <rect x="0" y="0" width="820" height="120" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.2" filter="url(#shadow)"/>
+    <!-- Table Header -->
+    <rect x="0" y="0" width="820" height="28" rx="8" fill="#0f172a"/>
+    <text x="80" y="19" font-size="11" font-weight="700" fill="#94a3b8">FEATURE</text>
+    <text x="290" y="19" font-size="11" font-weight="700" fill="#38bdf8">MACINTOSH (CURVED)</text>
+    <text x="540" y="19" font-size="11" font-weight="700" fill="#c084fc">MILLER (STRAIGHT)</text>
+    <text x="730" y="19" font-size="11" font-weight="700" fill="#ec4899">MCCOY (LEVERING)</text>
+
+    <!-- Row 1: Blade Profile -->
+    <line x1="0" y1="28" x2="820" y2="28" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="47" font-size="10.5" font-weight="700" fill="#f8fafc">Blade Shape</text>
+    <text x="200" y="47" font-size="10.5" fill="#f8fafc">Gentle continuous anatomical curve</text>
+    <text x="470" y="47" font-size="10.5" fill="#f8fafc">Completely flat / straight shaft with tip upturn</text>
+    <text x="680" y="47" font-size="10.5" fill="#f8fafc">Hinged levering tip</text>
+
+    <!-- Row 2: Tip Position -->
+    <line x1="0" y1="58" x2="820" y2="58" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="77" font-size="10.5" font-weight="700" fill="#f8fafc">Tip Position</text>
+    <text x="200" y="77" font-size="10.5" fill="#38bdf8" font-weight="bold">Seated in Vallecula (anterior to epiglottis)</text>
+    <text x="470" y="77" font-size="10.5" fill="#c084fc" font-weight="bold">Passes posterior to epiglottis (underneath)</text>
+    <text x="680" y="77" font-size="10.5" fill="#f8fafc">Vallecula (lever elevates tip)</text>
+
+    <!-- Row 3: Action & Indications -->
+    <line x1="0" y1="88" x2="820" y2="88" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="107" font-size="10.5" font-weight="700" fill="#f8fafc">Clinical Choice</text>
+    <text x="200" y="107" font-size="10.5" fill="#4ade80">Standard adult intubation; low dental trauma</text>
+    <text x="470" y="107" font-size="10.5" fill="#facc15">Infants, neonates, floppy/long epiglottis</text>
+    <text x="680" y="107" font-size="10.5" fill="#f472b6">C-spine injury / restricted neck</text>
+  </g>
+</svg>

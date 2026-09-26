@@ -159,7 +159,7 @@
     const has3d = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[item.id];
     let iconHTML;
     if (has3d) {
-      iconHTML = `<div class="st-tile-molecule" data-drug="${esc(item.id)}">${structRec ? `<div class="st-tile-structure">${structRec.svg}</div>` : ""}</div>`;
+      iconHTML = `<div class="st-tile-molecule" data-drug="${esc(item.id)}">${structRec ? `<div class="st-tile-structure">${structRec.svg}</div>` : `<div class="st-tile-fallback-icon">${catIconHTML(item.cat, cat)}</div>`}</div>`;
     } else if (structRec) {
       iconHTML = `<div class="st-tile-structure">${structRec.svg}</div>`;
     } else {
@@ -399,15 +399,168 @@
   // so this doesn't false-split on abbreviations. General topic prose
   // (paras() below) is untouched — its worked-example/pitfall/pearl format
   // already reads as structured content, not a wall of text.
-  function splitSentences(text) {
-    return text.split(/(?<=[.!?])\s+(?=[A-Z0-9“"'(\[])/).map((s) => s.trim()).filter(Boolean);
-  }
-  function para(text) {
+  // Intelligent structured text formatter:
+  // - Formats sequential numbered items (e.g. '1. ', '1) ') into clean <ol class="st-num-list">
+  // - Formats bullet markers (•, -, *) into clean <ul class="st-bullets">
+  // - Handles nested sub-bullets within numbered list items without orphan blank bullets
+  // - Supports markdown-style cross-links [Label](item:item-id) and [Label](url)
+  // - Highlights key numerical values, units, and safety keywords
+  // - Renders narrative text as readable paragraphs <p class="st-prose">
+  function formatStructuredText(text, isDrug = false) {
     if (!text) return "";
-    const sentences = splitSentences(text);
-    if (sentences.length === 0) return "";
-    return `<ul class="st-bullets">${sentences.map((s) => `<li>${highlightKeyValues(esc(s))}</li>`).join("")}</ul>`;
+
+    function highlightHeading(str) {
+      return str.replace(/^([A-Z0-9][^:—–\n]{1,55}[:—–])\s*/, (m, label) => `<strong>${label}</strong> `);
+    }
+
+    function processContent(str) {
+      let res = esc(str);
+      // Process markdown-style cross links [Label](item:id) or [Label](url)
+      res = res.replace(/\[([^\]]+)\]\((item:([a-zA-Z0-9_\-]+)|([^\)]+))\)/g, (m, label, target, itemId, url) => {
+        if (itemId) {
+          return `<a href="?item=${esc(itemId)}" class="st-cross-link" data-item="${esc(itemId)}">${esc(label)} →</a>`;
+        }
+        return `<a href="${esc(url)}" class="st-cross-link" target="_blank" rel="noopener">${esc(label)} ↗</a>`;
+      });
+      res = highlightKeyValues(res);
+      res = highlightHeading(res);
+      return res;
+    }
+
+    function formatItemText(raw) {
+      const lines = raw.split("\n").map((l) => l.trim()).filter(Boolean);
+      if (lines.length > 1 && lines.slice(1).some((l) => /^[\u2022\u25cf\u25cb\-\*]\s+/.test(l))) {
+        const head = lines[0];
+        const subItems = [];
+        let curSub = null;
+        for (const line of lines.slice(1)) {
+          const m = line.match(/^[\u2022\u25cf\u25cb\-\*]\s+(.*)/);
+          if (m) {
+            if (curSub) subItems.push(curSub);
+            curSub = m[1];
+          } else if (curSub) {
+            curSub += " " + line;
+          } else {
+            subItems.push(line);
+          }
+        }
+        if (curSub) subItems.push(curSub);
+        return `${processContent(head)}<ul class="st-bullets st-sub-bullets" style="margin-top:8px;">${subItems.map((s) => `<li>${processContent(s)}</li>`).join("")}</ul>`;
+      }
+      return processContent(raw.replace(/\n+/g, " "));
+    }
+
+    const rawBlocks = text.trim().split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
+    let html = "";
+
+    for (const block of rawBlocks) {
+      // Check if block has inline numbered items (e.g. 1) ... 2) ... or 1. ... 2. ...)
+      const inlineMatches = [...block.matchAll(/(?:^|\s+)(?:(\d+)[\.\)]|\((\d+)\))\s+/g)];
+      if (inlineMatches.length >= 2) {
+        const nums = inlineMatches.map((m) => parseInt(m[1] || m[2], 10));
+        if (nums[0] === 1 && nums[1] === 2) {
+          const leadText = block.slice(0, inlineMatches[0].index).trim();
+          if (leadText) {
+            html += `<p class="st-prose">${processContent(leadText)}</p>`;
+          }
+          const items = [];
+          for (let i = 0; i < inlineMatches.length; i++) {
+            const start = inlineMatches[i].index + inlineMatches[i][0].length;
+            const end = i + 1 < inlineMatches.length ? inlineMatches[i + 1].index : block.length;
+            items.push(block.slice(start, end).trim());
+          }
+          html += `<ol class="st-num-list">${items.map((it) => `<li>${formatItemText(it)}</li>`).join("")}</ol>`;
+          continue;
+        }
+      }
+
+      // Split block into individual lines
+      const lines = block.split("\n");
+      const hasNumbered = lines.some((l) => /^\s*(\d+)[\.\)]\s+/.test(l));
+      const hasBullets = lines.some((l) => /^\s*[\u2022\u25cf\u25cb\-\*]\s+/.test(l));
+
+      if (hasNumbered) {
+        const items = [];
+        let currentItem = null;
+        let introLines = [];
+
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed) continue;
+          const m = trimmed.match(/^(\d+)[\.\)]\s+(.*)/);
+          if (m) {
+            if (currentItem) items.push(currentItem);
+            currentItem = { num: parseInt(m[1], 10), raw: m[2] };
+          } else if (currentItem) {
+            currentItem.raw += "\n" + trimmed;
+          } else {
+            introLines.push(trimmed);
+          }
+        }
+        if (currentItem) items.push(currentItem);
+
+        if (introLines.length) {
+          html += `<p class="st-prose">${processContent(introLines.join(" "))}</p>`;
+        }
+        if (items.length) {
+          html += `<ol class="st-num-list">${items.map((it) => `<li>${formatItemText(it.raw)}</li>`).join("")}</ol>`;
+        }
+        continue;
+      }
+
+      if (hasBullets) {
+        const items = [];
+        let currentItem = null;
+        let introLines = [];
+
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed) continue;
+          const m = trimmed.match(/^[\u2022\u25cf\u25cb\-\*]\s+(.*)/);
+          if (m) {
+            if (currentItem) items.push(currentItem);
+            currentItem = m[1];
+          } else if (currentItem) {
+            currentItem += "\n" + trimmed;
+          } else {
+            introLines.push(trimmed);
+          }
+        }
+        if (currentItem) items.push(currentItem);
+
+        if (introLines.length) {
+          html += `<p class="st-prose">${processContent(introLines.join(" "))}</p>`;
+        }
+        if (items.length) {
+          html += `<ul class="st-bullets">${items.map((it) => `<li>${formatItemText(it)}</li>`).join("")}</ul>`;
+        }
+        continue;
+      }
+
+      // Drug monograph with multiple sentences
+      if (isDrug) {
+        const sentences = block.split(/(?<=[.!?])\s+(?=[A-Z0-9“"'(\[])/).map((s) => s.trim()).filter(Boolean);
+        if (sentences.length > 1) {
+          html += `<ul class="st-bullets">${sentences.map((s) => `<li>${processContent(s)}</li>`).join("")}</ul>`;
+        } else {
+          html += `<p class="st-prose">${processContent(block)}</p>`;
+        }
+        continue;
+      }
+
+      // Default narrative paragraph
+      html += `<p class="st-prose">${processContent(block)}</p>`;
+    }
+
+    // Merge adjacent lists
+    html = html.replace(/<\/ol>\s*<ol class="st-num-list">/g, "");
+    html = html.replace(/<\/ul>\s*<ul class="st-bullets">/g, "");
+
+    return html;
   }
+
+  const para = (text) => formatStructuredText(text, true);
+  const paras = (text) => formatStructuredText(text, false);
 
   // Chemical Structure card: an accurate 2D skeletal-formula diagram (RDKit-
   // generated from a verified SMILES, cross-checked against the known
@@ -474,19 +627,9 @@
     });
   }
 
-  // Topic sections (Anaesthesia and Ventilators & Devices) are rendered
-  // as clean, scannable point-wise facts per sentence, exactly like drug monograph fields.
-  function paras(text) {
-    if (!text) return "";
-    const blocks = text.trim().split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
-    return blocks.map((b) => para(b)).join("");
-  }
   function callout(kind, label, text) {
     if (!text) return "";
-    const sentences = splitSentences(text);
-    const innerHTML = sentences.length > 1
-      ? `<ul class="st-bullets">${sentences.map((s) => `<li>${highlightKeyValues(esc(s))}</li>`).join("")}</ul>`
-      : `<p>${highlightKeyValues(esc(text))}</p>`;
+    const innerHTML = formatStructuredText(text, false);
     return `<div class="st-callout st-callout-${kind}"><span class="st-callout-label">${esc(label)}</span>${innerHTML}</div>`;
   }
 
@@ -499,13 +642,20 @@
           ${d.brand ? `<p><strong>Brand name(s):</strong> ${esc(d.brand)}</p>` : ""}
           <p><strong>Class:</strong> ${esc(catById.get(d.cat).label)}</p>
           ${d.classification ? `<p><strong>Classification:</strong> ${esc(d.classification)}</p>` : ""}
-          ${d.tags && d.tags.length ? `<div class="st-tagrow">${d.tags.map((t) => `<span class="st-chip">${esc(t)}</span>`).join("")}</div>` : ""}`);
+          ${d.tags && d.tags.length ? `<div class="st-tagrow">${d.tags.map((t) => `<span class="st-chip">${esc(t)}</span>`).join("")}</div>` : ""}
+          ${d.crossLinks && Array.isArray(d.crossLinks) ? `<div class="st-cross-link-box" style="margin-top:14px;">${d.crossLinks.map((cl) => `<a href="?item=${esc(cl.item)}" class="st-cross-link" data-item="${esc(cl.item)}">${esc(cl.label)} →</a>`).join("")}</div>` : ""}`);
       case "structure": return card("Chemical Structure", structureBodyHTML(d));
-      case "pd": return card("Pharmacodynamics", para(d.pd));
-      case "pk": return card("Pharmacokinetics", para(d.pk));
-      case "dosage": return card("Dosage (FDA-Approved)", para(d.dosage));
-      case "offlabel": return card("Off-Label Uses", para(d.offLabel));
-      case "complications": return card("Complications", para(d.complications));
+      case "pd": return card("Pharmacodynamics", formatStructuredText(d.pd, true));
+      case "pk": return card("Pharmacokinetics", formatStructuredText(d.pk, true));
+      case "dosage": return card("Dosage (FDA-Approved)", formatStructuredText(d.dosage, true));
+      case "offlabel": return card("Off-Label Uses", formatStructuredText(d.offLabel, true));
+      case "complications": {
+        const compBody = formatStructuredText(d.complications, true);
+        const compLinks = d.complicationCrossLinks && Array.isArray(d.complicationCrossLinks)
+          ? `<div class="st-cross-link-box" style="margin-top:14px;">${d.complicationCrossLinks.map((cl) => `<a href="?item=${esc(cl.item)}" class="st-cross-link" data-item="${esc(cl.item)}">${esc(cl.label)} →</a>`).join("")}</div>`
+          : "";
+        return card("Complications", compBody + compLinks);
+      }
       case "references": {
         if (!d.references || (Array.isArray(d.references) && !d.references.length)) return "";
         const refs = Array.isArray(d.references) ? d.references : [d.references];
@@ -575,15 +725,20 @@
 
       const tableHTML = s.table ? renderSectionTableHTML(s.table) : "";
       const linkHTML = s.link ? `<div class="st-section-link-wrap" style="margin-top:14px;"><a href="${esc(s.link.url)}" class="st-pill st-pill-btn" style="display:inline-flex;align-items:center;gap:8px;padding:9px 18px;background:linear-gradient(135deg,#0284c7,#2563eb);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;box-shadow:0 2px 10px rgba(37,99,235,0.35);">${esc(s.link.label || "Open Tool / Calculator")} ↗</a></div>` : "";
+      let crossLinksHTML = "";
+      if (s.crossLinks && Array.isArray(s.crossLinks)) {
+        crossLinksHTML = `<div class="st-cross-link-box" style="margin-top:14px;">${s.crossLinks.map((cl) => `<a href="?item=${esc(cl.item)}" class="st-cross-link" data-item="${esc(cl.item)}">${esc(cl.label)} →</a>`).join("")}</div>`;
+      }
 
-      const body = `${s.b ? paras(s.b) : ""}` +
+      const body = `${s.b ? formatStructuredText(s.b, false) : ""}` +
         callout("example", "🧩 Worked example", s.example) +
         callout("pitfall", "⚠️ Common pitfall", s.pitfall) +
         callout("pearl", "💡 Key point", s.pearl) +
         tableHTML +
         imagesHTML +
         diagramHTML +
-        linkHTML;
+        linkHTML +
+        crossLinksHTML;
       return card(s.h, body);
     }).join("");
     const videoHTML = t.video ? videoCardHTML(t.video) : "";
@@ -1077,9 +1232,9 @@
     const structRec = window.KN_STRUCTURES && window.KN_STRUCTURES[item.id];
     const has3d = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[item.id];
     let titleMediaHTML;
-    if (!drug && has3d) {
-      titleMediaHTML = `<div class="st-molecule-viewer" data-drug="${esc(item.id)}" aria-label="Rotating 3D model of ${esc(item.name)}">${structRec ? `<div class="st-structure-svg">${structRec.svg}</div>` : ""}</div>`;
-    } else if (!drug && structRec) {
+    if (has3d) {
+      titleMediaHTML = `<div class="st-molecule-viewer" data-drug="${esc(item.id)}" aria-label="Rotating 3D model of ${esc(item.name)}">${structRec ? `<div class="st-structure-svg">${structRec.svg}</div>` : `<div class="st-tile-fallback-icon">${catIconHTML(item.cat, cat)}</div>`}</div>`;
+    } else if (structRec) {
       titleMediaHTML = `<div class="st-structure-svg">${structRec.svg}</div>`;
     } else {
       titleMediaHTML = catIconHTML(item.cat, cat);
@@ -1120,6 +1275,135 @@
     }
   }
 
+  /* ---------------------------------------------------------------- master directory drawer */
+  let drawerOpen = false;
+
+  function renderMasterDrawer(filter = "") {
+    const body = $("#stMasterBody");
+    if (!body) return;
+    const f = filter.trim().toLowerCase();
+
+    if (f) {
+      const allItems = [...DATA.topics, ...DATA.drugs].filter((it) => {
+        return [it.name, it.short, it.tagline, it.brand].concat(it.tags || []).filter(Boolean).join(" ").toLowerCase().includes(f);
+      });
+      if (!allItems.length) {
+        body.innerHTML = `<div class="st-drawer-empty">No topics or drugs matching “${esc(filter)}”.</div>`;
+        return;
+      }
+      body.innerHTML = `<div class="st-drawer-cat-group">
+        <div class="st-drawer-cat-header">
+          <span class="st-drawer-cat-icon">🔍</span>
+          <span class="st-drawer-cat-label">Search Results (${allItems.length})</span>
+        </div>
+        <div class="st-drawer-items-list">
+          ${allItems.map((it) => {
+            const isDrug = isDrugCat(it.cat);
+            return `<a class="st-drawer-item" href="?item=${it.id}" data-item="${it.id}">
+              <span class="st-drawer-item-title">${esc(it.name)}</span>
+              <span class="st-drawer-item-badge ${isDrug ? "st-badge-drug" : "st-badge-topic"}">${isDrug ? "Drug" : "Topic"}</span>
+            </a>`;
+          }).join("")}
+        </div>
+      </div>`;
+      return;
+    }
+
+    let html = "";
+    DATA.categories.forEach((c) => {
+      const items = itemsInCat(c.id);
+      if (!items.length) return;
+      const isDrug = isDrugCat(c.id);
+      html += `<div class="st-drawer-cat-group">
+        <div class="st-drawer-cat-header">
+          <span class="st-drawer-cat-icon">${c.icon}</span>
+          <span class="st-drawer-cat-label">${esc(c.label)}</span>
+          <span class="st-drawer-cat-count">${items.length}</span>
+        </div>
+        <div class="st-drawer-items-list">
+          ${items.map((it) => `
+            <a class="st-drawer-item" href="?item=${it.id}" data-item="${it.id}">
+              <span class="st-drawer-item-title">${esc(it.short || it.name)}</span>
+              <span class="st-drawer-item-badge ${isDrug ? "st-badge-drug" : "st-badge-topic"}">${isDrug ? "Drug" : "Topic"}</span>
+            </a>
+          `).join("")}
+        </div>
+      </div>`;
+    });
+    body.innerHTML = html;
+  }
+
+  function openMasterDrawer() {
+    const drawer = $("#stMasterDrawer");
+    const overlay = $("#stMasterOverlay");
+    const search = $("#stMasterSearch");
+    if (!drawer || !overlay) return;
+    drawer.hidden = false;
+    overlay.hidden = false;
+    void drawer.offsetWidth;
+    drawer.classList.add("st-open");
+    overlay.classList.add("st-open");
+    drawerOpen = true;
+    renderMasterDrawer(search ? search.value : "");
+    if (search) search.focus();
+  }
+
+  function closeMasterDrawer() {
+    const drawer = $("#stMasterDrawer");
+    const overlay = $("#stMasterOverlay");
+    if (!drawer || !overlay) return;
+    drawer.classList.remove("st-open");
+    overlay.classList.remove("st-open");
+    drawerOpen = false;
+    setTimeout(() => {
+      if (!drawerOpen) {
+        drawer.hidden = true;
+        overlay.hidden = true;
+      }
+    }, 280);
+  }
+
+  function initMasterDrawer() {
+    const btn = $("#stMasterMenuBtn");
+    const closeBtn = $("#stMasterClose");
+    const overlay = $("#stMasterOverlay");
+    const search = $("#stMasterSearch");
+
+    if (btn) {
+      btn.addEventListener("click", () => {
+        if (drawerOpen) closeMasterDrawer();
+        else openMasterDrawer();
+      });
+    }
+    if (closeBtn) closeBtn.addEventListener("click", closeMasterDrawer);
+    if (overlay) overlay.addEventListener("click", closeMasterDrawer);
+
+    if (search) {
+      search.addEventListener("input", () => {
+        renderMasterDrawer(search.value);
+      });
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && drawerOpen) {
+        closeMasterDrawer();
+      }
+    });
+
+    // Delegated click handler for ANY [data-item] link (master drawer, cross-links, grid tiles)
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a[data-item]");
+      if (!a) return;
+      const id = a.getAttribute("data-item");
+      if (!id || !itemById(id)) return;
+      e.preventDefault();
+      closeMasterDrawer();
+      state.item = id;
+      writeURL({ item: id });
+      showDetail();
+    });
+  }
+
   /* ---------------------------------------------------------------- events */
   function bindListEvents() {
     $("#stCatNav").addEventListener("click", (e) => {
@@ -1131,15 +1415,6 @@
       if (search) search.value = "";
       writeURL({ cat: state.cat === "anaesthesia" ? null : state.cat });
       showList();
-    });
-    $("#stGrid").addEventListener("click", (e) => {
-      const a = e.target.closest("[data-item]");
-      if (!a) return;
-      e.preventDefault();
-      const id = a.getAttribute("data-item");
-      state.item = id;
-      writeURL({ item: id });
-      showDetail();
     });
     const search = $("#stSearch");
     if (search) {
@@ -1256,6 +1531,7 @@
 
   function init() {
     bindListEvents();
+    initMasterDrawer();
     initFullscreen();
     initNavAutoHide();
     initCardTilt();

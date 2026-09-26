@@ -45,10 +45,29 @@
   <div class="spatial-world">
     <main class="container st-page" id="stStage">
 
-      <!-- Persistent full-screen toggle — lives outside the list/detail
-           views so it stays visible and functional on every screen in
-           Study Mode, not just the category grid. -->
-      <button type="button" class="st-fs-fixed" id="stFullscreen" aria-pressed="false" aria-label="Toggle full screen">⛶</button>
+      <!-- Persistent controls: Master Table of Contents (3-dash) & Fullscreen -->
+      <button type="button" class="st-master-menu-btn" id="stMasterMenuBtn" aria-label="Open Master Table of Contents" title="Master Table of Contents (☰)">☰</button>
+      <button type="button" class="st-fs-fixed" id="stFullscreen" aria-pressed="false" aria-label="Toggle full screen" title="Toggle Full Screen (⛶)">⛶</button>
+
+      <!-- Master Table of Contents Drawer Modal -->
+      <div class="st-drawer-overlay" id="stMasterOverlay" hidden></div>
+      <aside class="st-master-drawer" id="stMasterDrawer" hidden aria-label="Master Table of Contents">
+        <div class="st-drawer-header">
+          <div class="st-drawer-brand">
+            <span class="st-drawer-icon">📑</span>
+            <div>
+              <strong class="st-drawer-heading">Master Directory</strong>
+              <span class="st-drawer-sub">KnockoutNotes Study Syllabus (31 Topics • 51 Drugs)</span>
+            </div>
+          </div>
+          <button type="button" class="st-drawer-close" id="stMasterClose" aria-label="Close directory">✕</button>
+        </div>
+        <div class="st-drawer-search-wrap">
+          <span class="st-drawer-search-icon">🔍</span>
+          <input type="search" id="stMasterSearch" placeholder="Quick find topic or drug (e.g. TOF, Scoline, ECMO)..." autocomplete="off" aria-label="Search syllabus">
+        </div>
+        <div class="st-drawer-body" id="stMasterBody"></div>
+      </aside>
 
       <!-- ================= LISTING VIEW ================= -->
       <section id="stList" class="st-view" aria-labelledby="stTitle">
