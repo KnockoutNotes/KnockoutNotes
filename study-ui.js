@@ -228,6 +228,28 @@
     { label: "Para-Aminophenol Derivatives", desc: "Central cyclooxygenase/peroxidase inhibition and indirect TRPA1 modulation; antipyretic & analgesic without platelet effect.", members: ["paracetamol"] },
   ];
 
+  const ANTIHYPERTENSIVE_CLASSES = [
+    { label: "ACE Inhibitors (ACEi)", desc: "Competitive inhibition of angiotensin-converting enzyme; reduces angiotensin II & blocks bradykinin degradation. Withhold 24h preoperatively to avoid vasoplegic refractory hypotension.", members: ["ramipril"] },
+    { label: "Angiotensin Receptor Blockers (ARBs)", desc: "Selective AT1 receptor antagonism; blocks vasoconstriction & aldosterone release. High risk of post-induction vasoplegia refractory to phenylephrine/ephedrine.", members: ["losartan"] },
+    { label: "Calcium Channel Blockers — Dihydropyridines (DHP)", desc: "Vascular-selective L-type Ca2+ channel blockade causing potent arteriolar vasodilation with minimal direct myocardial depression.", members: ["amlodipine"] },
+    { label: "Calcium Channel Blockers — Non-Dihydropyridines", desc: "Balanced cardiac and vascular L-type Ca2+ channel inhibition; negative inotropy, chronotropy, and AV nodal conduction slowing.", members: ["diltiazem"] },
+    { label: "Beta-Blockers — Cardioselective (Oral)", desc: "Selective beta-1 adrenoceptor blockade; reduces heart rate, myocardial contractility, and myocardial oxygen consumption.", members: ["metoprolol"] },
+    { label: "Beta-Blockers — Ultra-Short Cardioselective (IV)", desc: "Ultra-rapid onset and 9-minute half-life via erythrocyte esterase hydrolysis; ideal for tight intraoperative haemodynamic titration.", members: ["esmolol"] },
+    { label: "Direct Arteriolar Vasodilators", desc: "Selective precapillary arteriolar smooth muscle relaxation via hyperpolarisation and blunted calcium release; pronounced reflex tachycardia.", members: ["hydralazine"] },
+    { label: "Direct Nitric Oxide Donors / Mixed Vasodilators", desc: "Spontaneous non-enzymatic NO release causing balanced arterial and venous relaxation; first-line for hypertensive emergencies.", members: ["sodium-nitroprusside"] },
+  ];
+
+  const ANTIDIABETIC_CLASSES = [
+    { label: "Biguanides (AMPK Activators)", desc: "Suppresses hepatic gluconeogenesis and improves peripheral insulin sensitivity via AMPK activation. Withhold on morning of surgery (lactic acidosis risk).", members: ["metformin"] },
+    { label: "SGLT2 Inhibitors (Gliflozins)", desc: "Blocks glucose reabsorption in renal proximal tubule; cardioprotective & nephroprotective. CRITICAL: Withhold 3–4 days before surgery due to euglycaemic DKA (euDKA) risk!", members: ["empagliflozin", "dapagliflozin"] },
+    { label: "GLP-1 Receptor Agonists & Incretin Mimetics", desc: "Glucose-dependent insulin secretion, glucagon suppression, and delayed gastric emptying. Hold perioperatively per ASA consensus due to aspiration risk.", members: ["semaglutide"] },
+    { label: "Sulfonylureas (SUR1 / K-ATP Channel Blockers)", desc: "Blocks ATP-sensitive K+ channels in pancreatic beta cells to stimulate continuous insulin secretion. Withhold on morning of surgery (prolonged hypoglycaemia risk).", members: ["glimepiride"] },
+    { label: "DPP-4 Inhibitors (Gliptins)", desc: "Inhibits dipeptidyl peptidase-4 enzyme to prolong endogenous GLP-1 and GIP half-life. Low hypoglycaemia risk; generally held on morning of surgery.", members: ["sitagliptin"] },
+    { label: "Thiazolidinediones (TZDs / PPAR-γ Agonists)", desc: "Nuclear PPAR-gamma receptor agonist enhancing peripheral insulin sensitivity in muscle and adipose tissue. Fluid retention hazard in heart failure.", members: ["pioglitazone"] },
+    { label: "Short-Acting & Prandial Insulins (Soluble / Regular)", desc: "Unmodified zinc crystalline human insulin; IV or subQ; gold standard for continuous infusion in DKA, hyperkalaemia, and intraoperative sliding scales.", members: ["insulin-regular"] },
+    { label: "Long-Acting & Basal Insulins (Peakless Analogues)", desc: "Microprecipitating modified insulin providing 24-hour flat basal suppression of hepatic glucose output; taken at 75–80% normal dose on morning of surgery.", members: ["insulin-glargine"] },
+  ];
+
   function buildClassificationHTML(title, classList) {
     const groups = classList.map((g) => {
       const chips = g.members.map((id) => {
@@ -266,6 +288,12 @@
   function nsaidsClassificationHTML() {
     return buildClassificationHTML("Classification — by Cyclooxygenase Selectivity & Chemical Class", NSAIDS_CLASSES);
   }
+  function antihypertensivesClassificationHTML() {
+    return buildClassificationHTML("Classification — by Mechanism of Action & Receptor Target", ANTIHYPERTENSIVE_CLASSES);
+  }
+  function antidiabeticsClassificationHTML() {
+    return buildClassificationHTML("Classification — by Pharmacological Class & Glycaemic Mechanism", ANTIDIABETIC_CLASSES);
+  }
 
   function renderGrid() {
     const grid = $("#stGrid");
@@ -286,6 +314,8 @@
       if (c.id === "local" && state.cat === "local" && !f) html += localClassificationHTML();
       if (c.id === "vasopressors" && state.cat === "vasopressors" && !f) html += vasopressorClassificationHTML();
       if (c.id === "nsaids" && state.cat === "nsaids" && !f) html += nsaidsClassificationHTML();
+      if (c.id === "antihypertensives" && state.cat === "antihypertensives" && !f) html += antihypertensivesClassificationHTML();
+      if (c.id === "antidiabetics" && state.cat === "antidiabetics" && !f) html += antidiabeticsClassificationHTML();
       html += `<div class="st-grid">${list.map(tileHTML).join("")}</div>`;
     });
     if (tileMoleculeObserver) tileMoleculeObserver.disconnect();
@@ -1321,6 +1351,8 @@
       : `<div class="st-index-empty">No topics or drugs matching “${esc(filter)}”.</div>`;
 
     if (stats) stats.textContent = `${totalShown} entries`;
+    const countEl = $("#stTopIndex .st-index-count");
+    if (countEl && !f) countEl.textContent = `(${DATA.topics.length} Topics • ${DATA.drugs.length} Drugs)`;
   }
 
   function initTopIndex() {

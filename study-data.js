@@ -789,6 +789,216 @@ PATIENT CHECKOUT COMPLETE — PROCEED SAFELY WITH INDUCTION.`
     ]
   });
 
+  topics.push({
+    id: "dka-perioperative-glycaemic-protocols",
+    cat: "anaesthesia",
+    name: "Diabetic Ketoacidosis (DKA), Euglycaemic DKA & Perioperative Glycaemic Protocols",
+    short: "DKA & Glycaemic Protocols",
+    tags: ["DKA Protocol", "Euglycaemic DKA", "Insulin Classification", "SGLT2 Inhibitor", "Two-Bag System", "Hypokalaemia", "Perioperative Diabetes"],
+    tagline: "Latest ADA 2024–2026 & JBDS standard DKA insulin protocols, step-by-step fluid/potassium resuscitation, euglycaemic DKA recognition, comprehensive insulin classification table, and perioperative glycaemic targets",
+    source: "American Diabetes Association (ADA) Standards of Care in Diabetes (2024/2025/2026), Ch. 16 (Diabetes Care in the Hospital); Joint British Diabetes Societies (JBDS) for Inpatient Care Guidelines for the Management of Diabetic Ketoacidosis; Miller's Anesthesia, 10th ed., Ch. 48 (Anesthesia and Endocrine Disease); Stoelting's Pharmacology & Physiology; UpToDate (2025/2026).",
+    sections: [
+      {
+        h: "Comprehensive Classification of Insulins: Analogues, Pharmacokinetics, Chemistry & Brand Examples",
+        b: `Insulin formulations are classified pharmacokinetically by onset, peak, and effective duration of action, determined by engineered amino acid substitutions or peptide modifications that govern hexamer self-association, subcutaneous dissolution, and albumin binding:
+
+1. Rapid-Acting Analogues (Monomeric Ultra-Rapid Insulins):
+• Insulin Lispro (Humalog, Admelog; U-100, U-200):
+  - Chemistry: Inversion of proline at B28 and lysine at B29 (ProB28-LysB29). Eliminates steric hindrance for self-association, preventing hexamer formation.
+  - Kinetics: Onset 10–15 min; Peak 30–90 min; Duration 3–5 hours.
+• Insulin Aspart (Novolog, Fiasp):
+  - Chemistry: Proline at B28 substituted by negatively charged aspartic acid (AspB28). Electrostatic repulsion prevents hexamer formation. Fiasp (Fast-Acting Insulin Aspart) incorporates niacinamide (vitamin B3) and L-arginine, accelerating monomeric absorption to 2.5–5 min onset!
+  - Kinetics: Onset 10–20 min (Novolog) / 2.5–5 min (Fiasp); Peak 40–90 min; Duration 3–5 hours.
+• Insulin Glulisine (Apidra):
+  - Chemistry: Asparagine at B3 replaced by lysine, and lysine at B29 replaced by glutamic acid (LysB3, GluB29). Fast monomeric absorption.
+  - Kinetics: Onset 10–15 min; Peak 45–90 min; Duration 3–5 hours.
+• Clinical Role: Prandial boluses immediately before (or within 20 min of) meals; continuous subcutaneous insulin infusion (CSII / insulin pumps).
+
+2. Short-Acting Human Insulin (Soluble / Regular):
+• Regular Insulin (Humulin R, Novolin R; U-100, U-500):
+  - Chemistry: Unmodified 51-amino-acid recombinant human insulin. In neutral solution with zinc (Zn²⁺), it forms stable hexamers that slowly dilute and dissociate into absorbable dimers and monomers.
+  - Subcutaneous Kinetics: Onset 30–60 min; Peak 2–3 hours; Duration 5–8 hours.
+  - Intravenous Kinetics: Onset 1–3 min; Peak 15–30 min; Plasma elimination t½: 4–5 MINUTES; biological effect terminates within 30–60 min of stopping infusion.
+  - Clinical Role: THE ONLY INSULIN APPROVED FOR INTRAVENOUS INFUSION. Gold standard for diabetic ketoacidosis (DKA), hyperosmolar hyperglycaemic state (HHS), intraoperative sliding scales, and urgent treatment of severe hyperkalaemia.
+
+3. Intermediate-Acting Human Insulin (Isophane / NPH):
+• NPH Insulin (Neutral Protamine Hagedorn; Humulin N, Novolin N):
+  - Chemistry: Equimolar co-crystallisation of regular human insulin with the basic polycationic peptide protamine and zinc at neutral pH. Tissue proteolytic enzymes slowly cleave protamine, releasing soluble insulin monomers.
+  - Kinetics: Onset 1–2 hours; Peak 4–10 hours (unpredictable, prominent peak); Duration 12–18 hours.
+  - Perioperative Hazard: Unpredictable peak carries substantial nocturnal hypoglycaemia risk. If a patient receiving NPH undergoes cardiac or vascular surgery requiring protamine reversal of heparin, they have a 5- to 10-fold higher risk of severe anaphylactic / anaphylactoid protamine reactions!
+
+4. Long-Acting Analogues (Peakless Basal Insulins):
+• Insulin Glargine U-100 (Lantus, Basaglar, Semglee):
+  - Chemistry: Asparagine A21 replaced by glycine (GlyA21), and two basic arginines added to B-chain C-terminus (ArgB31, ArgB32). Shifts isoelectric point (pI) from 5.4 to 6.7. Formulated at acidic pH 4.0; upon subcutaneous injection into neutral tissue (pH 7.4), it microprecipitates into an amorphous depot that dissolves steadily over 24 hours.
+  - Kinetics: Onset 1–2 hours; Flat / peakless plateau; Duration 20–24 hours.
+• Insulin Detemir (Levemir):
+  - Chemistry: Threonine at B30 omitted, and a C14 myristic acid (tetradecanoyl) fatty acid chain covalently acylated to lysine B29. In the subcutaneous depot and circulation, >98% reversibly binds interstitial and plasma albumin, providing prolonged delayed dissociation.
+  - Kinetics: Onset 1–2 hours; Relatively flat peak; Duration 14–20 hours (frequently requires twice-daily dosing in T1DM).
+
+5. Ultra-Long-Acting Analogues (Flat Multi-Hexamer Chains):
+• Insulin Degludec (Tresiba; U-100, U-200):
+  - Chemistry: Threonine B30 omitted, and a 16-carbon fatty diacid (hexadecanedioic acid) coupled to lysine B29 via a gamma-L-glutamyl spacer. In subcutaneous tissue, phenol preservative diffuses away, allowing degludec to self-assemble into stable linear multi-hexamer chains. Monomers slowly and continuously dissociate with exceptionally low intra-patient day-to-day variability.
+  - Kinetics: Onset 30–90 min; Absolutely flat, peakless profile; Elimination t½: ~25 HOURS; Duration of action: >42 hours.
+• Concentrated Insulin Glargine U-300 (Toujeo):
+  - Chemistry: Same molecule as Lantus, but 3x more concentrated (300 units/mL). Forms a tighter subcutaneous precipitate with 1/3 the surface area, slowing redissolution.
+  - Kinetics: Onset 6 hours; Peakless flat line; Duration: Up to 36 hours.
+
+6. Premixed / Fixed-Ratio Formulations:
+• Humalog Mix 75/25 (75% lispro protamine / 25% lispro), Novolog Mix 70/30 (70% aspart protamine / 30% aspart), Humulin 70/30 (70% NPH / 30% regular).
+• Designed to provide both basal coverage and mealtime spikes in two daily injections. High perioperative hypoglycaemia hazard if patient fasts; withhold morning dose on day of surgery!
+
+7. Inhaled Ultra-Rapid-Acting Insulin:
+• Technosphere Insulin (Afrezza): Dry powder formulation of regular insulin adsorbed onto microparticles of fumaryl diketopiperazine. Inhaled into pulmonary alveoli; instant monomeric absorption across alveolar-capillary membrane.
+• Kinetics: Onset <15 min; Peak ~50 min; Duration 2.5–3 hours. Contraindicated in asthma and COPD (bronchospasm risk).`,
+        table: {
+          headers: ["Insulin Class", "Generic Analogues / Formulations", "Brand Names", "Onset", "Peak Action", "Effective Duration", "Primary Perioperative Role & Kinetic Mechanism"],
+          rows: [
+            [{ text: "Rapid-Acting", badge: "Rapid", badgeColor: "#0284c7" }, "Lispro, Aspart, Glulisine", "Humalog, Novolog, Fiasp, Apidra", "10–15 min (Fiasp 2.5 min)", "30–90 min", "3–5 hours", "Prandial mealtime coverage; correction doses; pump infusions. Rapid monomeric absorption via B-chain amino acid substitutions."],
+            [{ text: "Short-Acting", badge: "Regular", badgeColor: "#10b981" }, "Regular Human Insulin", "Humulin R, Novolin R", "30–60 min (SC) / 1–3 min (IV)", "2–3 hours (SC) / 15–30 min (IV)", "5–8 hours (SC) / 30–60 min (IV)", "THE ONLY IV INSULIN. Critical for continuous infusions in DKA, HHS, hyperkalaemia (10 U IV + 50 mL D50W), and cardiac surgical sliding scales."],
+            [{ text: "Intermediate", badge: "NPH", badgeColor: "#f59e0b" }, "NPH (Neutral Protamine Hagedorn)", "Humulin N, Novolin N", "1–2 hours", "4–10 hours (sharp peak)", "12–18 hours", "Basal insulin. Protamine complexed. Marked nocturnal hypoglycaemia risk. Cross-reaction hazard with IV protamine after cardiopulmonary bypass!"],
+            [{ text: "Long-Acting", badge: "Basal", badgeColor: "#8b5cf6" }, "Glargine U-100, Detemir", "Lantus, Basaglar, Levemir", "1–2 hours", "Peakless / Flat plateau", "20–24 hours", "Standard once-daily basal insulin. Glargine microprecipitates at pH 7.4; Detemir binds albumin. Give 75–80% of normal dose on morning of surgery."],
+            [{ text: "Ultra-Long", badge: "Ultra", badgeColor: "#6366f1" }, "Degludec, Glargine U-300", "Tresiba, Toujeo", "30–90 min", "Completely flat (peakless)", ">42 hours (t½ ~25h)", "Multi-hexamer depot (Degludec). Exceptionally consistent 24h basal suppression with lowest day-to-day hypoglycaemic variability."],
+            [{ text: "Premixed", badge: "Biphasic", badgeColor: "#ec4899" }, "70/30, 75/25, 50/50 Ratios", "Novolog Mix 70/30, Humalog Mix 75/25", "10–30 min", "Dual peak (early + late)", "14–24 hours", "Fixed prandial + basal mix. Extreme risk of severe hypoglycemia during preoperative fasting; MUST withhold on morning of surgery!"],
+            [{ text: "Inhaled", badge: "Inhaled", badgeColor: "#64748b" }, "Technosphere Inhaled Insulin", "Afrezza", "<15 min", "~50 min", "2.5–3 hours", "Pulmonary alveolar absorption of dry microparticles. Avoid in bronchospasm, asthma, COPD, and general anaesthesia with endotracheal tube."]
+          ],
+          caption: "Table: Complete classification of clinical insulins, pharmacokinetics, molecular mechanisms, and perioperative management."
+        }
+      },
+      {
+        h: "Latest Evidence-Based DKA Management Protocol: Step-by-Step Algorithm (ADA & JBDS Standards)",
+        b: `Diabetic Ketoacidosis (DKA) is a life-threatening endocrine emergency characterized by the biochemical triad of Hyperglycaemia (blood glucose >200–250 mg/dL), Ketonaemia (blood beta-hydroxybutyrate ≥3.0 mmol/L or urine ketones ≥2+), and High Anion Gap Metabolic Acidosis (venous pH <7.30, serum bicarbonate <18 mEq/L, anion gap >12 mEq/L). The modern protocol follows a structured 6-step resuscitation framework based on ADA (2024–2026) and Joint British Diabetes Societies (JBDS) guidelines:
+
+1. Step 1 — Aggressive Fluid Resuscitation (Volume First):
+• Immediate First Hour: Infuse 0.9% Normal Saline (or balanced crystalloid, e.g. Plasmalyte) at 1000 to 1500 mL/hr (15–20 mL/kg in hour 1) to restore effective circulating arterial volume, expand renal perfusion, and reduce circulating counter-regulatory stress hormones.
+• Subsequent Hours: Determine corrected serum sodium:
+  - Corrected Na⁺ = Measured Na⁺ + 0.016 × (Serum Glucose in mg/dL - 100).
+  - If Corrected Na⁺ is Normal or High (≥135 mEq/L): Switch to 0.45% NaCl at 250 to 500 mL/hr.
+  - If Corrected Na⁺ is Low (<135 mEq/L): Continue 0.9% NaCl at 250 to 500 mL/hr.
+• Target: Replace estimated 5 to 7 Litre volume deficit over 24 to 48 hours; avoid overly rapid fluid shifts that could precipitate cerebral oedema.
+
+2. Step 2 — Mandatory Potassium Safety Threshold (THE GOLDEN RULE):
+• ABSOLUTE RULE: Check serum potassium BEFORE initiating any insulin!
+• Serum K⁺ < 3.3 mEq/L:
+  - **HOLD ALL INSULIN IMMEDIATELY!**
+  - Administer IV potassium chloride (KCl) aggressively at 20 to 40 mEq/hr (central line required for rates >20 mEq/h) until serum K⁺ rises to ≥3.3 mEq/L!
+  - Rationale: Insulin drives potassium into cells via Na⁺/K⁺-ATPase stimulation. Administering insulin in severe hypokalemia triggers catastrophic, fatal cardiac arrhythmias (ventricular fibrillation, asystole) and diaphragmatic respiratory muscle paralysis!
+• Serum K⁺ between 3.3 and 5.2 mEq/L:
+  - START insulin AND add 20 to 30 mEq KCl per Litre of IV maintenance fluid, targeting a serum potassium between 4.0 and 5.0 mEq/L.
+• Serum K⁺ > 5.2 mEq/L:
+  - START insulin WITHOUT potassium; recheck serum potassium every 2 hours until it drops below 5.2 mEq/L, then immediately initiate potassium replacement.
+
+3. Step 3 — Continuous IV Regular Insulin Infusion Protocol:
+• Standard Infusion Setup: Mix 100 units of Regular Human Insulin (Humulin R / Novolin R) in 100 mL of 0.9% Normal Saline (concentration: 1 unit/mL). Flush the IV infusion set with 50 mL of solution before connection to saturate plastic binding sites.
+• Infusion Rate Options (ADA 2024–2026):
+  - Regimen A (Preferred): Fixed continuous infusion of 0.14 units/kg/hr WITHOUT an initial IV bolus.
+  - Regimen B: Initial IV bolus of 0.1 units/kg Regular Insulin, followed immediately by continuous infusion of 0.1 units/kg/hr.
+• Target Glycaemic Fall: Glucose must decline at a controlled rate of 50 to 75 mg/dL/hr (3.0 to 4.0 mmol/L/hr).
+• Troubleshooting Hourly Checks:
+  - If blood glucose does NOT fall by at least 50 mg/dL in the first hour: Verify line patency, and double the hourly insulin rate (or increase by 1.0 unit/hr increments) until a steady 50–75 mg/dL/hr drop is established.
+  - Target ketone clearance: Blood beta-hydroxybutyrate should drop by at least 0.5 mmol/L/hr; venous bicarbonate should rise by ≥3.0 mEq/L/hr.
+
+4. Step 4 — Fluid Transition to Dextrose ("Two-Bag" Protocol at 200–250 mg/dL):
+• CRITICAL PITFALL: When blood glucose drops to 200–250 mg/dL (11.1–13.9 mmol/L), **DO NOT DISCONTINUE THE INSULIN INFUSION!**
+• The goal of insulin in DKA is to CLEAR KETOACIDOSIS and shut down hepatic lipolysis, NOT merely to normalize serum glucose! Stopping insulin when blood glucose hits 200 mg/dL causes rapid rebound ketoacidosis.
+• Action at Blood Glucose 200–250 mg/dL:
+  - Add 5% or 10% Dextrose to the IV fluids (e.g., D5W with 0.45% NaCl + 20 mEq KCl).
+  - Reduce regular insulin infusion rate to 0.02 to 0.05 units/kg/hr.
+  - Titrate the insulin and dextrose infusions together to maintain blood glucose steadily between 150 and 200 mg/dL (8.3 to 11.1 mmol/L) until full resolution of ketoacidosis is documented!
+
+5. Step 5 — Objective Laboratory Criteria for DKA Resolution:
+• DKA is resolved ONLY when all of the following criteria are met:
+  1. Venous blood gas pH > 7.30 (or arterial pH > 7.35).
+  2. Serum bicarbonate ≥ 18 mEq/L.
+  3. Serum anion gap normalized: Anion Gap = [Na⁺] - ([Cl⁻] + [HCO₃⁻]) ≤ 12 mEq/L.
+  4. Blood beta-hydroxybutyrate < 0.6 mmol/L.
+  5. Patient alert, clinically stable, and able to tolerate oral fluid/nutrition.
+
+6. Step 6 — Subcutaneous Transition & Mandatory Basal Overlap:
+• THE MOST COMMON FATAL ERROR: Stopping the IV insulin infusion without overlapping subcutaneous basal insulin!
+• Why Overlap is Mandatory: Intravenous regular insulin has an elimination half-life of only 4 to 5 minutes and biological effect disappears within 30 to 60 minutes. Subcutaneous basal insulin (glargine, degludec, detemir) takes 1 to 2 hours to begin absorbing. If the IV infusion is stopped before subcutaneous basal insulin is active, the patient experiences immediate acute insulin deficiency and relapses into rebound DKA within 1 to 2 hours!
+• Standard Procedure:
+  - Administer subcutaneous basal insulin (e.g. Insulin Glargine or Degludec) **2 TO 4 HOURS BEFORE DISCONTINUING THE IV INSULIN INFUSION** (or continue home basal insulin alongside IV insulin throughout the hospitalization per JBDS recommendations).
+  - Transition timing: Schedule the first mealtime subcutaneous rapid-acting dose (Lispro or Aspart) immediately with a meal, stopping the IV insulin infusion 30 to 60 minutes afterward.`
+      },
+      {
+        h: "Euglycaemic DKA (euDKA) & Perioperative SGLT2 Inhibitor Guidelines",
+        b: `Euglycaemic Diabetic Ketoacidosis (euDKA) represents one of the most perilous diagnostic traps in modern perioperative anaesthesia practice:
+
+1. Pathophysiology of SGLT2 Inhibitor-Induced euDKA:
+• Sodium-glucose cotransporter 2 inhibitors (dapagliflozin, empagliflozin, canagliflozin, ertugliflozin) inhibit renal proximal tubular glucose reabsorption, continuously dumping 70 to 100 g of glucose into the urine daily.
+• When a patient fasts before surgery or experiences surgical stress, relative insulinopenia develops. Counter-regulatory stress hormones (glucagon, epinephrine, cortisol) surge.
+• This profound insulin-to-glucagon imbalance drives rapid adipose tissue lipolysis into free fatty acids, accelerating unrestrained hepatic beta-oxidation and ketogenesis (producing massive amounts of beta-hydroxybutyrate and acetoacetate).
+• HOWEVER, because the kidneys continuously dump glucose into the urine independent of insulin, serum glucose remains normal, near-normal, or only mildly elevated (frequently 120 to 220 mg/dL / 6.7 to 12.2 mmol/L)!
+• The clinician checks fingerstick glucose, sees a "safe" number of 150 mg/dL, and mistakenly excludes DKA, while the patient is in severe high-anion-gap metabolic acidosis!
+
+2. Mandatory Preoperative Withholding Guidelines (FDA 2020 / ASA / ESAIC):
+• Dapagliflozin, Empagliflozin, Canagliflozin: **HOLD FOR AT LEAST 3 FULL DAYS (72 HOURS) BEFORE ELECTIVE SURGERY**.
+• Ertugliflozin: **HOLD FOR AT LEAST 4 FULL DAYS (96 HOURS) BEFORE ELECTIVE SURGERY**.
+• If a patient took their SGLT2 inhibitor within 3 days before elective surgery:
+  - Elective major surgery: POSTPONE the procedure if feasible.
+  - Urgent/Emergency surgery: Proceed with high suspicion, check preoperative blood beta-hydroxybutyrate, arterial blood gases, and commence an IV infusion of 5% or 10% dextrose with insulin to suppress hepatic ketogenesis!
+
+3. Diagnostic Mandate — Blood Beta-Hydroxybutyrate:
+• Urine ketone dipsticks use the nitroprusside reaction, which detects ONLY acetoacetate and does NOT detect beta-hydroxybutyrate!
+• In euDKA, the predominant ketone body is beta-hydroxybutyrate (ratio of beta-hydroxybutyrate to acetoacetate shifts from 1:1 up to 10:1 due to altered mitochondrial redox state). Urine dipsticks can be COMPLETELY NEGATIVE or falsely low!
+• ALWAYS measure serum / capillary **blood beta-hydroxybutyrate** directly (point-of-care ketone meter). Levels >1.5 mmol/L warrant close evaluation; levels ≥3.0 mmol/L confirm acute ketoacidosis.
+
+4. Treatment of euDKA:
+• Identical to standard DKA with ONE CRITICAL DIFFERENCE: Dextrose infusion must be started IMMEDIATELY from the outset!
+• Because the blood glucose is already near-normal (<200 mg/dL), you cannot give IV regular insulin alone without causing severe hypoglycemia.
+• Immediately hang 5% or 10% Dextrose with normal saline AND commence a continuous IV Regular Insulin infusion (0.05 to 0.1 units/kg/hr) to turn off hepatic ketogenesis while maintaining glucose at 140–180 mg/dL until acidosis and anion gap fully normalize.`,
+        pearl: "In any surgical patient taking an SGLT2 inhibitor who develops unexplained metabolic acidosis, nausea, tachypnoea, or widened anion gap, test blood beta-hydroxybutyrate immediately — normal blood sugar does NOT rule out DKA!"
+      },
+      {
+        h: "Perioperative Glycaemic Control & Intraoperative Sliding Scale Protocols",
+        b: `Perioperative glycaemia management balances the prevention of severe hyperglycaemia (which impairs neutrophil phagocytosis, increases surgical site infections, and induces osmotic diuresis) against the avoidance of hypoglycemia (which causes irreversible neurological injury, cardiac arrhythmias, and is completely masked under general anaesthesia):
+
+1. Target Intraoperative Glycaemic Range (ADA & ASA Consensus):
+• General Operating Room & Postoperative Target: **140 to 180 mg/dL (7.8 to 10.0 mmol/L)**.
+• Intensive tight control (<110 mg/dL) was disproven by the NICE-SUGAR trial, which demonstrated increased mortality due to unrecognized severe hypoglycemia.
+• Threshold for intervention: Initiate insulin when intraoperative blood glucose exceeds 180 mg/dL.
+
+2. Preoperative Fasting Medication Adjustment Guide:
+• Metformin: Withhold on the morning of surgery (or 24 hours prior in renal impairment or when IV radiocontrast is planned) to eliminate lactic acidosis hazard.
+• Sulfonylureas (Glimepiride, Glipizide, Glyburide): Withhold on the morning of surgery due to prolonged, unpredictable hypoglycemia risk during fasting.
+• DPP-4 Inhibitors (Sitagliptin): Withhold on morning of surgery.
+• GLP-1 Receptor Agonists (Semaglutide, Dulaglutide, Liraglutide): Withhold weekly injections 1 full week before elective surgery (or daily formulations on morning of surgery) per ASA consensus, to reduce delayed gastric emptying and pulmonary aspiration.
+• Subcutaneous Basal Insulin (Glargine, Degludec, Detemir):
+  - Type 1 Diabetes: NEVER OMIT! Administer 75% to 80% of normal dose on the evening before or morning of surgery to prevent rapid fasting DKA.
+  - Type 2 Diabetes: Administer 75% to 80% of normal dose to preserve basal metabolic suppression without morning hypoglycemia.
+
+3. Intraoperative Regular Insulin Bolus Sliding Scale (70 kg Adult):
+• In an average 70 kg patient, 1 unit of IV Regular Insulin lowers blood glucose by approximately 25 to 50 mg/dL:
+  - Blood Glucose 180–220 mg/dL: Administer 1 to 2 units Regular Insulin IV bolus.
+  - Blood Glucose 221–260 mg/dL: Administer 2 to 3 units Regular Insulin IV bolus.
+  - Blood Glucose 261–300 mg/dL: Administer 3 to 4 units Regular Insulin IV bolus.
+  - Blood Glucose >300 mg/dL: Administer 4 to 6 units Regular Insulin IV bolus; recheck capillary glucose in 45–60 minutes.
+• Continuous Infusion Indication: Major vascular, cardiac surgery, ICU patients, or any patient with persistent glucose >250 mg/dL refractory to two boluses: initiate 1 unit/mL infusion at 1 to 2 units/hr, titrating hourly.
+
+4. Emergency Management of Intraoperative Hypoglycemia (Glucose <70 mg/dL):
+• Under general anaesthesia, classic adrenergic warning signs (tremor, anxiety, palpitations) are entirely absent. Only diaphoresis and tachycardia may be observed, but are easily attributed to light anaesthesia!
+• Immediate Treatment:
+  - Administer 25 to 50 mL of 50% Dextrose (D50W) IV push (delivers 12.5 to 25 grams of pure glucose).
+  - In paediatric patients: Administer 2 mL/kg of 10% Dextrose (D10W) IV.
+  - Recheck blood glucose in 15 minutes; repeat bolus if glucose remains <80 mg/dL.
+  - Once corrected, commence maintenance infusion of 5% or 10% Dextrose at 100 mL/hr to prevent recurrent hypoglycemia.`,
+        crossLinks: [
+          { label: "💉 Regular Insulin Monograph & Kinetics", item: "insulin-regular" },
+          { label: "🧬 Insulin Glargine Monograph & Basal Titration", item: "insulin-glargine" },
+          { label: "🩸 Dapagliflozin SGLT2i Monograph", item: "dapagliflozin" },
+          { label: "💊 Empagliflozin SGLT2i Monograph", item: "empagliflozin" }
+        ]
+      }
+    ],
+    references: [
+      "American Diabetes Association (ADA): Standards of Care in Diabetes — Hospital Care (Diabetes Care 2024;47(Suppl. 1):S295–S306 / 2025/2026 updates).",
+      "Joint British Diabetes Societies (JBDS) for Inpatient Care: The Management of Diabetic Ketoacidosis in Adults (Revised Guidelines 2023/2025).",
+      "Miller's Anesthesia, 10th ed., Ch. 48: Anesthesia and Endocrine Disease, Elsevier, 2025.",
+      "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed., Ch. 27: Endocrine Drugs.",
+      "Umpierrez GE, et al. Management of Hyperglycemia in Hospitalized Patients in Non-Critical Care Setting: An Endocrine Society Clinical Practice Guideline. J Clin Endocrinol Metab. 2012;97(1):16-38 (2024 update)."
+    ]
+  });
+
   // ========================================================================
   // VENTILATORS & DEVICES — breathing systems, ventilators, equipment
   // ========================================================================
@@ -2828,6 +3038,38 @@ PATIENT CHECKOUT COMPLETE — PROCEED SAFELY WITH INDUCTION.`
   });
 
   addDrug({
+    id: "dapagliflozin", cat: "antidiabetics", name: "Dapagliflozin", brand: "Farxiga / Forxiga",
+    classification: "Sodium-Glucose Co-Transporter 2 (SGLT2) Inhibitor • C-Aryl Glucoside",
+    tagline: "Selective SGLT2 inhibitor for T2DM, HFrEF, and CKD — mandatory withholding at least 3 to 4 days pre-op to prevent life-threatening euglycaemic DKA (euDKA)",
+    tags: ["SGLT2 inhibitor", "Gliflozin", "euDKA risk", "Hold 3-4 days preop", "Cardiorenal"],
+    source: SRC.fdaUpToDate("Farxiga (dapagliflozin tablets) label", "AstraZeneca / Bristol-Myers Squibb"),
+    structure: `Dapagliflozin is a C-aryl glucoside derivative: (2S,3R,4R,5S,6R)-2-[4-chloro-3-(4-ethoxybenzyl)phenyl]-6-(hydroxymethyl)oxane-3,4,5-triol (molecular formula: C21H25ClO6; molecular weight: 408.87 g/mol). Chemically, it possesses a carbon-carbon (C-C) linkage connecting the beta-D-glucopyranose ring directly to a lipophilic diarylmethane core (chloro-substituted with an ethoxybenzyl moiety). This direct C-glycosidic bond renders the molecule completely resistant to enzymatic cleavage by gastrointestinal beta-glucosidases, conferring high oral bioavailability and metabolic stability.`,
+    pd: `Potently and selectively inhibits Sodium-Glucose Co-Transporter 2 (SGLT2) located in the S1/S2 segments of the renal proximal convoluted tubule (>1400-fold selectivity for SGLT2 over SGLT1). By blocking glucose and sodium reabsorption, it lowers the renal threshold for glucose, producing urinary excretion of 70 to 80 grams of glucose per day (~280–320 kcal/day). Key Physiological & Cardiorenal Actions: (1) Glycaemic reduction: Lowers HbA1c by 0.5–0.8% without stimulating beta-cell insulin secretion; (2) Tubuloglomerular feedback restoration: Increased sodium delivery to the macula densa triggers afferent arteriolar vasoconstriction, lowering intraglomerular hypertension and preserving glomerular filtration rate (nephroprotection; DAPA-CKD trial); (3) Hemodynamic offloading: Osmotic diuresis and natriuresis decrease plasma volume, reducing cardiac preload, pulmonary capillary wedge pressure, and arterial stiffness (DAPA-HF trial).`,
+    pk: `Rapidly and extensively absorbed following oral administration; peak plasma concentrations (Tmax) achieved within 1 to 2 hours. Absolute oral bioavailability: ~78%. High plasma protein binding (~91%). Metabolism: Primarily metabolised via glucuronidation by UGT1A9 in the liver and kidneys to the inactive major metabolite dapagliflozin 3-O-glucuronide (accounts for ~61% of dose). Cytochrome P450-mediated metabolism is negligible (<10%). Terminal elimination half-life (t1/2): approximately 12.9 hours. Excretion: 75% eliminated in urine (mostly as inactive glucuronide conjugate; <2% as unchanged parent drug) and 21% recovered in faeces.`,
+    dosage: `FDA-approved Indications & Dosing:
+• Type 2 Diabetes Mellitus: Starting dose 5 mg PO once daily in the morning, with or without food. May be increased to 10 mg PO once daily in patients requiring additional glycaemic control who tolerate 5 mg.
+• Heart Failure with Reduced Ejection Fraction (HFrEF) & Heart Failure with Preserved Ejection Fraction (HFpEF): 10 mg PO once daily.
+• Chronic Kidney Disease (CKD) at Risk of Progression: 10 mg PO once daily.
+• Renal Thresholds: Initiation is not recommended for glycaemic control in T2DM if eGFR <45 mL/min/1.73 m² (glucosuric efficacy is markedly diminished). However, for HFrEF and CKD indications, initiation and continuation are FDA-approved down to an eGFR of 25 mL/min/1.73 m² due to sustained cardiorenal protection.`,
+    offLabel: `Historically evaluated as an adjunct to insulin in Type 1 Diabetes Mellitus (T1DM); however, marketing authorization for T1D was withdrawn in Europe and rejected by the FDA due to an unacceptably high rate of life-threatening euglycaemic DKA. Also used off-label in non-diabetic chronic cardiorenal metabolic syndromes.`,
+    complications: `CRITICAL PERIOPERATIVE ALERT — EUGLYCAEMIC DIABETIC KETOACIDOSIS (euDKA):
+• The Ultimate Intraoperative Pitfall: Surgical fasting, acute illness, infection, hypovolaemia, and neuroendocrine surgical stress induce relative insulinopenia and a surge in counter-regulatory hormones (glucagon, epinephrine, cortisol). This imbalance accelerates peripheral lipolysis and unrestrained hepatic ketogenesis.
+• Why It Fools Clinicians: Continued SGLT2-mediated glucosuria clears circulating glucose through the kidneys, maintaining serum glucose levels <200–250 mg/dL (frequently normal or near-normal at 120–180 mg/dL!). Clinicians relying solely on capillary fingerstick glucose will completely overlook catastrophic high-anion-gap ketoacidosis!
+• FDA / ASA / ESAIC Mandatory Guideline: WITHHOLD DAPAGLIFLOZIN FOR AT LEAST 3 FULL DAYS (72 HOURS) PRIOR TO ANY SCHEDULED ELECTIVE SURGERY.
+• Intraoperative Suspicion & Testing: In any patient who has taken dapagliflozin within 3–4 days who presents with unexplained metabolic acidosis, widened anion gap, tachypnoea, nausea, or delayed emergence, IMMEDIATELY TEST BLOOD BETA-HYDROXYBUTYRATE (urine dipsticks test acetoacetate and can be falsely normal or severely delayed).
+• Postoperative Resumption: Resume only when the patient is fully established on oral nutrition, clinically stable, euglycaemic, and free from risk of dehydration, hypovolaemia, or acute kidney injury.
+• Other Adverse Effects: Mycotic genital infections (vulvovaginal candidiasis, balanitis), urinary tract infections, volume depletion / orthostatic hypotension, transient eGFR dip upon initiation, and rare necrotizing fasciitis of the perineum (Fournier's gangrene).`,
+    references: [
+      "FDA Prescribing Information — Farxiga (dapagliflozin tablets), AstraZeneca Pharmaceuticals LP; US FDA.",
+      "FDA Drug Safety Communication: FDA warns that SGLT2 inhibitors may increase risk of euglycemic diabetic ketoacidosis and serious infections; mandates surgical withholding guidelines (March 2020).",
+      "American Diabetes Association (ADA): Standards of Care in Diabetes — Hospital & Perioperative Care (Diabetes Care 2024/2025/2026).",
+      "McMurray JJV, et al. Dapagliflozin in Patients with Heart Failure and Reduced Ejection Fraction (DAPA-HF). N Engl J Med. 2019;381(21):1995-2008.",
+      "Heerspink HJL, et al. Dapagliflozin in Patients with Chronic Kidney Disease (DAPA-CKD). N Engl J Med. 2020;383(15):1436-1446.",
+      "Miller's Anesthesia, 10th ed., Ch. 48 (Anesthesia and Endocrine Disease), Elsevier, 2025."
+    ]
+  });
+
+  addDrug({
     id: "semaglutide", cat: "antidiabetics", name: "Semaglutide", brand: "Ozempic / Wegovy / Rybelsus",
     classification: "Glucagon-Like Peptide-1 (GLP-1) Receptor Agonist",
     tagline: "Ultra-potent GLP-1 receptor agonist — causes marked gastric emptying delay and severe aspiration risk; hold weekly injections 1 full week pre-op",
@@ -2911,23 +3153,64 @@ PATIENT CHECKOUT COMPLETE — PROCEED SAFELY WITH INDUCTION.`
     id: "insulin-regular", cat: "antidiabetics", name: "Regular Insulin", brand: "Humulin R / Novolin R",
     classification: "Short-Acting Human Recombinant Insulin • Tyrosine Kinase Receptor Agonist",
     tagline: "The gold-standard intravenous insulin for intraoperative glycaemic sliding scales, infusions, and diabetic ketoacidosis",
-    tags: ["Human insulin", "Short-acting", "IV titratable", "DKA protocol"],
+    tags: ["Human insulin", "Short-acting", "IV titratable", "DKA protocol", "Insulin classification"],
     source: SRC.fdaUpToDate("Humulin R (regular insulin human injection) label", "Eli Lilly/Novo Nordisk"),
-    structure: `Regular human insulin is identical to endogenous human pancreatic insulin: a 51-amino acid two-chain peptide hormone (A chain of 21 amino acids, B chain of 30 amino acids) linked by two interchain disulfide bonds (A7-B7, A20-B19) and one intrachain disulfide bond (A6-A11). Molecular weight: 5808 Da. In solution at neutral pH, it self-associates into zinc-coordinated hexamers that must dissociate into active monomers and dimers before absorption into capillaries.`,
-    pd: `Binds to the alpha-subunits of the tetrameric insulin receptor tyrosine kinase on cell surfaces. Binding triggers autophosphorylation of beta-subunits, recruiting and phosphorylating Insulin Receptor Substrates (IRS-1 to IRS-4). This activates the PI3K-Akt pathway, which: (1) Translocates GLUT4 glucose transporters to the plasma membrane of skeletal muscle and adipose cells, driving rapid glucose uptake; (2) Activates glycogen synthase and inhibits glycogen phosphorylase, promoting glycogen storage; (3) Inhibits hormone-sensitive lipase, suppressing lipolysis and ketogenesis; (4) Activates the Na+/K+-ATPase pump, shifting extracellular potassium ions into cells (driving rapid correction of hyperkalaemia).`,
+    structure: `Regular human insulin is identical to endogenous human pancreatic insulin: a 51-amino acid two-chain peptide hormone (A chain of 21 amino acids, B chain of 30 amino acids) linked by two interchain disulfide bonds (A7-B7, A20-B19) and one intrachain disulfide bond (A6-A11). Molecular weight: 5808 Da. In solution at neutral pH in the presence of zinc ions (Zn²⁺), it self-associates into stable hexamers. Following subcutaneous injection, these hexamers must slowly dissociate into active dimers and monomers before capillary absorption occurs.`,
+    pd: `Binds to the alpha-subunits of the tetrameric insulin receptor tyrosine kinase on cell surfaces. Binding triggers autophosphorylation of beta-subunits, recruiting and phosphorylating Insulin Receptor Substrates (IRS-1 to IRS-4). This activates the PI3K-Akt pathway, which: (1) Translocates GLUT4 glucose transporters to the plasma membrane of skeletal muscle and adipose cells, driving rapid glucose uptake; (2) Activates glycogen synthase and inhibits glycogen phosphorylase, promoting glycogen storage; (3) Inhibits hormone-sensitive lipase, suppressing lipolysis and ketogenesis; (4) Activates the Na+/K+-ATPase pump, shifting extracellular potassium ions into cells (driving rapid correction of hyperkalaemia).
+
+COMPREHENSIVE CLASSIFICATION OF INSULINS (WITH EXAMPLES):
+1. Rapid-Acting Analogues (Monomeric Ultra-Rapid):
+• Insulin Lispro (Humalog, Admelog): ProB28-LysB29 inversion. Onset: 10–15 min; Peak: 30–90 min; Duration: 3–5 h.
+• Insulin Aspart (Novolog, Fiasp): AspB28 substitution; Fiasp contains niacinamide + L-arginine for ultra-rapid 2.5 min absorption. Onset: 10–20 min (Novolog) / 2.5–5 min (Fiasp); Peak: 40–90 min; Duration: 3–5 h.
+• Insulin Glulisine (Apidra): LysB3, GluB29 substitution. Onset: 10–15 min; Peak: 45–90 min; Duration: 3–5 h.
+2. Short-Acting Human Insulin:
+• Regular Insulin (Humulin R, Novolin R): Unmodified recombinant human insulin. ONLY FORM GIVEN IV. Onset: 30–60 min (SC) / 1–3 min (IV); Peak: 2–3 h (SC) / 15–30 min (IV); Duration: 5–8 h (SC) / 30–60 min (IV).
+3. Intermediate-Acting Human Insulin:
+• NPH / Isophane Insulin (Humulin N, Novolin N): Co-crystallised with protamine. Onset: 1–2 h; Peak: 4–10 h (pronounced peak, nocturnal hypoglycemia hazard); Duration: 12–18 h. Anaphylaxis risk with post-bypass protamine!
+4. Long-Acting Analogues (Peakless Basal):
+• Insulin Glargine U-100 (Lantus, Basaglar): GlyA21 + ArgB31, ArgB32. Microprecipitates at neutral tissue pH. Onset: 1–2 h; Peakless flat plateau; Duration: 20–24 h. Give 75–80% normal dose on morning of surgery.
+• Insulin Detemir (Levemir): C14 myristic acid acylated to LysB29; binds interstitial and plasma albumin. Onset: 1–2 h; Peakless; Duration: 14–20 h.
+5. Ultra-Long-Acting Analogues:
+• Insulin Degludec (Tresiba): Hexadecanedioic acid coupled via gamma-L-glutamyl spacer; forms subcutaneous linear multi-hexamer chains. Onset: 30–90 min; Completely flat; Half-life ~25 h; Duration: >42 h.
+• Concentrated Glargine U-300 (Toujeo): 3x concentrated microprecipitate. Onset: 6 h; Duration: up to 36 h.
+6. Premixed Combinations (Biphasic):
+• Humalog Mix 75/25, Novolog Mix 70/30, Humulin 70/30: Fixed ratios of rapid/short and intermediate/protaminated insulins. Dual peaks; extreme hypoglycaemia risk during preoperative fasting; must hold morning dose.
+7. Inhaled Rapid-Acting:
+• Technosphere Inhaled Insulin (Afrezza): Dry microparticles inhaled into pulmonary alveoli. Onset: <15 min; Peak: ~50 min; Duration: 2.5–3 h. Contraindicated in asthma/COPD.`,
     pk: `Subcutaneous (SC) Route: Onset: 30 to 60 minutes; Peak action: 2 to 4 hours; Duration of action: 5 to 8 hours. Intravenous (IV) Route (The Anaesthetist's Superpower): Onset: INSTANTANEOUS (1 to 5 minutes); Peak action: 15 to 30 minutes; Elimination half-life: 5 to 10 MINUTES! Duration of effect after stopping IV infusion: 30 to 60 minutes. Rapid hepatic and renal enzymatic degradation via glutathione-insulin transhydrogenase and insulin-degrading enzyme (IDE).`,
-    dosage: `FDA-approved: Acute Intraoperative Hyperglycaemia (Sliding Scale): Target intraoperative blood glucose: 140 to 180 mg/dL (7.8 to 10.0 mmol/L). In a typical 70 kg adult, 1 unit of IV Regular Insulin lowers blood glucose by approximately 25 to 50 mg/dL (1.4 to 2.8 mmol/L):
-• Blood Glucose 180–220 mg/dL: 1–2 units IV bolus
-• Blood Glucose 221–260 mg/dL: 2–3 units IV bolus
-• Blood Glucose 261–300 mg/dL: 3–4 units IV bolus
-• Blood Glucose >300 mg/dL: 4–6 units IV bolus; recheck capillary glucose every 60 minutes!
-Continuous IV Insulin Infusion Protocol (Cardiac surgery, critically ill, major trauma): Mix 100 units Regular Insulin in 100 mL 0.9% normal saline (concentration: 1 unit/mL). Initiate at 0.05 to 0.1 units/kg/hr; titrate hourly based on blood glucose checks. Diabetic Ketoacidosis (DKA) / HHS Protocol: Fixed-rate IV infusion 0.14 units/kg/hr (or 0.1 units/kg bolus + 0.1 units/kg/hr infusion); add D5W when glucose reaches 200 mg/dL. Treatment of Severe Hyperkalaemia: 10 units Regular Insulin IV push accompanied immediately by 50 mL of 50% Dextrose (D50W) IV over 5 minutes (shifts potassium intracellularly for 4–6 hours).`,
+    dosage: `FDA-approved & Guideline Protocols:
+1. LATEST STANDARD DKA MANAGEMENT PROTOCOL (ADA 2024–2026 / JBDS Standards):
+• Fluid Resuscitation First: 0.9% NaCl 1000–1500 mL in 1st hour (15–20 mL/kg/h). Then 250–500 mL/h of 0.45% or 0.9% NaCl based on corrected serum sodium (Target: replace 5–7 L deficit over 24–48 h).
+• Potassium Safety Rule (MANDATORY):
+  - K⁺ <3.3 mEq/L: HOLD ALL INSULIN! Give IV KCl 20–40 mEq/h until K⁺ ≥3.3 mEq/L (prevents fatal arrhythmias/asystole and respiratory paralysis!).
+  - K⁺ 3.3–5.2 mEq/L: Start insulin AND add 20–30 mEq KCl per Litre IV fluid (target K⁺ 4.0–5.0 mEq/L).
+  - K⁺ >5.2 mEq/L: Start insulin without KCl; recheck K⁺ every 2 hours.
+• Continuous IV Regular Insulin Infusion:
+  - Standard Concentration: 100 units in 100 mL 0.9% NaCl (1 unit/mL). Flush line with 50 mL before use.
+  - Regimen A (ADA Preferred): 0.14 units/kg/h continuous IV infusion WITHOUT bolus.
+  - Regimen B: 0.1 units/kg IV bolus + 0.1 units/kg/h continuous IV infusion.
+  - Target glucose decline: 50 to 75 mg/dL/h (3.0 to 4.0 mmol/L/h). If decline <50 mg/dL in 1st hour, double hourly infusion rate.
+• Two-Bag / Dextrose Addition at 200–250 mg/dL:
+  - DO NOT STOP INSULIN when blood glucose reaches 200–250 mg/dL (11.1–13.9 mmol/L)!
+  - Add 5% or 10% Dextrose (e.g., D5W with 0.45% NaCl + KCl) and reduce insulin to 0.02–0.05 units/kg/h, keeping glucose 150–200 mg/dL until ketoacidosis completely clears!
+• Resolution Criteria: Venous pH >7.30, Serum HCO₃⁻ ≥18 mEq/L, Anion gap ≤12 mEq/L, Beta-hydroxybutyrate <0.6 mmol/L, patient eating.
+• Mandatory Subcutaneous Basal Overlap: Administer subcutaneous basal insulin (glargine/degludec) 2 TO 4 HOURS BEFORE STOPPING THE IV INFUSION to prevent rapid rebound DKA (IV insulin half-life is only 4–5 min!).
+
+2. Intraoperative Hyperglycaemia Sliding Scale (70 kg Adult):
+• Target: 140 to 180 mg/dL (7.8 to 10.0 mmol/L). 1 unit IV Regular Insulin drops glucose ~25–50 mg/dL:
+  - 180–220 mg/dL: 1–2 units IV bolus
+  - 221–260 mg/dL: 2–3 units IV bolus
+  - 261–300 mg/dL: 3–4 units IV bolus
+  - >300 mg/dL: 4–6 units IV bolus; recheck in 45–60 min.
+
+3. Treatment of Severe Hyperkalaemia: 10 units Regular Insulin IV push + 50 mL of 50% Dextrose (D50W) IV over 5 min (shifts K⁺ intracellularly for 4–6 hours).`,
     offLabel: `High-Dose Insulin Euglycaemic Therapy (HIET) for calcium channel blocker and beta-blocker overdose (1 unit/kg IV bolus, followed by 0.5 to 1.0 units/kg/hr infusion with concentrated dextrose).`,
     complications: `HYPOGLYCEMIA: Blood glucose <70 mg/dL (<3.9 mmol/L). Under general anaesthesia, warning symptoms are masked; only diaphoresis and tachycardia may persist. Check capillary glucose every 1 to 2 hours during continuous infusions! Hypokalaemia: Insulin drives extracellular potassium into cells via Na+/K+-ATPase; always monitor serum potassium before and during aggressive insulin administration (do not start insulin infusion in DKA if serum K+ <3.3 mmol/L!). Lipodystrophy with repeated SC injection sites.`,
     references: [
       "FDA Prescribing Information — Humulin R (regular insulin human injection), Eli Lilly; US FDA.",
-      "American Diabetes Association (ADA): Standards of Care in Diabetes — Hospital & Perioperative Care (Diabetes Care 2024/2025).",
-      "Miller's Anesthesia, 10th ed., Ch. 37 (Endocrine Pharmacology) & Ch. 52 (Fluid and Electrolyte Physiology).",
+      "American Diabetes Association (ADA): Standards of Care in Diabetes — Hospital & Perioperative Care (Diabetes Care 2024/2025/2026).",
+      "Joint British Diabetes Societies (JBDS) for Inpatient Care: The Management of Diabetic Ketoacidosis in Adults (Revised Guidelines 2023/2025).",
+      "Miller's Anesthesia, 10th ed., Ch. 37 (Endocrine Pharmacology) & Ch. 48 (Anesthesia and Endocrine Disease).",
       "UpToDate \"Drug Information: Regular Insulin\" (Wolters Kluwer, 2025/2026)."
     ]
   });
