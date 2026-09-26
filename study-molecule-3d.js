@@ -3,16 +3,6 @@
    (study-molecule-3d.js)
    Renders explicit-H 3D chemical conformers and procedural medical device
    models as glossy CPK-coloured spheres + bond cylinders using Three.js.
-   Optimized for buttery-smooth 60fps rendering, instant loading, and zero
-   battery/CPU waste on mobile viewports:
-   - Shared singleton geometries and global material caching (avoids per-card
-     re-allocation, buffer uploads, and shader re-compilation).
-   - Dynamic DPR scaling (1.0 for thumbnails/title cards, capped at 1.5 on
-     mobile, 2.0 on desktop).
-   - Viewport-aware lifecycle (IntersectionObserver pauses requestAnimationFrame
-     when off-screen and resumes just-in-time; pauses on background tab/screen lock).
-   - Non-blocking mobile touch gestures (touch-action: pan-y, drag-to-rotate with
-     inertia and auto-rotation resumption).
    ========================================================================== */
 import * as THREE from "three";
 
@@ -30,52 +20,21 @@ const DEFAULT_COLOR = 0xa78bfa;
 const DEFAULT_RADIUS = 0.64;
 const BOND_RADIUS = 0.13;
 
-// Shared unit geometries — instantiated ONCE and shared across all cards
-const SHARED_SPHERE_GEO = new THREE.SphereGeometry(1, 18, 14);
-const SHARED_CYL_GEO = new THREE.CylinderGeometry(1, 1, 1, 10);
-const SHARED_SHADOW_GEO = new THREE.CircleGeometry(1, 24);
-const SHARED_SHADOW_MAT = new THREE.MeshBasicMaterial({
-  color: 0x000000,
-  transparent: true,
-  opacity: 0.20,
-  depthWrite: false
-});
-
-// Shared materials across all molecule instances (PBR standard for 60fps mobile speed)
-const SHARED_BOND_MAT = new THREE.MeshStandardMaterial({
-  color: 0xc7d0da,
-  roughness: 0.28,
-  metalness: 0.35
-});
-
-const SHARED_MAT_CACHE = new Map();
-function getAtomMaterial(el) {
-  let mat = SHARED_MAT_CACHE.get(el);
-  if (!mat) {
-    mat = new THREE.MeshStandardMaterial({
-      color: CPK_COLOR[el] || DEFAULT_COLOR,
-      roughness: 0.18,
-      metalness: 0.08
-    });
-    SHARED_MAT_CACHE.set(el, mat);
-  }
-  return mat;
-}
-
 const mounts = new WeakMap();
+const activeQueue = []; // FIFO to enforce maximum concurrent WebGL contexts
+const MAX_ACTIVE_CONTEXTS = 6;
 
 // Global visibility listener: pause all active viewers when tab is hidden or device locked
 if (typeof document !== "undefined") {
   document.addEventListener("visibilitychange", () => {
     const isHidden = document.hidden;
-    const activeCanvases = document.querySelectorAll(".st-molecule-viewer, .st-tile-molecule");
-    activeCanvases.forEach((container) => {
+    activeQueue.forEach((container) => {
       const m = mounts.get(container);
       if (m) {
         if (isHidden) {
-          m.pauseRAF();
+          m.pause();
         } else if (m.isVisible) {
-          m.resumeRAF();
+          m.resume();
         }
       }
     });
@@ -87,9 +46,11 @@ function disposeMount(container) {
   if (!m) return;
   m.cleanup();
   mounts.delete(container);
+  const qIdx = activeQueue.indexOf(container);
+  if (qIdx !== -1) activeQueue.splice(qIdx, 1);
 
   // Restore fallback 2D diagram visibility so cards never turn blank or empty
-  const fallback = container.querySelector(".st-tile-structure, .st-structure-svg, .st-molecule-placeholder");
+  const fallback = container.querySelector(".st-tile-structure, .st-structure-svg, .st-tile-fallback-icon, .st-molecule-placeholder");
   if (fallback) fallback.style.display = "";
   container.classList.remove("st-has-canvas");
 }
@@ -99,10 +60,20 @@ function disposeMount(container) {
  * Returns true on success, false if WebGL is unavailable.
  */
 function mountMolecule3D(container, data, opts) {
+  if (!container || !container.isConnected) return false;
   disposeMount(container);
+
   const hasAtoms = data && data.atoms && data.atoms.length;
   const hasParts = data && data.parts && data.parts.length;
   if (!hasAtoms && !hasParts) return false;
+
+  // Enforce max concurrent WebGL contexts to prevent mobile browser context crashes
+  while (activeQueue.length >= MAX_ACTIVE_CONTEXTS) {
+    const oldest = activeQueue.shift();
+    if (oldest && oldest !== container) {
+      disposeMount(oldest);
+    }
+  }
 
   const fitMargin = (opts && opts.fitMargin) || 1.25;
   const isThumb = !!(opts && opts.isThumbnail) || (container.clientWidth > 0 && container.clientWidth < 100);
@@ -123,7 +94,6 @@ function mountMolecule3D(container, data, opts) {
     return false;
   }
 
-  // Dynamic DPR scaling: thumbnails stay 1.0, mobile capped at 1.5, desktop at 2.0
   const maxDPR = isThumb ? 1.0 : (isMobile ? 1.5 : 2.0);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxDPR));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -133,14 +103,8 @@ function mountMolecule3D(container, data, opts) {
   canvas.className = "st-molecule-canvas";
   canvas.style.touchAction = "pan-y"; // NEVER block mobile vertical page scrolling
   if (isThumb) {
-    canvas.style.pointerEvents = "none"; // Zero click/tap latency on title cards
+    canvas.style.pointerEvents = "none";
   }
-
-  // Hide the flat-2D-SVG or loading placeholder fallback without destroying it
-  const fallback = container.querySelector(".st-tile-structure, .st-structure-svg, .st-molecule-placeholder");
-  if (fallback) fallback.style.display = "none";
-  container.classList.add("st-has-canvas");
-  container.appendChild(canvas);
 
   canvas.addEventListener("webglcontextlost", (e) => {
     e.preventDefault();
@@ -170,7 +134,7 @@ function mountMolecule3D(container, data, opts) {
   const dist = (boundingRadius * fitMargin) / Math.sin(THREE.MathUtils.degToRad(fov / 2));
   camera.position.set(0, 0, dist);
 
-  // Soft studio lighting
+  // Soft lighting setup
   scene.add(new THREE.HemisphereLight(0xffffff, 0x30363f, 1.15));
   const key = new THREE.DirectionalLight(0xffffff, 1.25);
   key.position.set(5, 7, 9);
@@ -185,10 +149,9 @@ function mountMolecule3D(container, data, opts) {
   const group = new THREE.Group();
   scene.add(group);
 
-  const customGeometriesToDispose = [];
-  const customMaterialsToDispose = [];
+  const disposables = [];
 
-  // 1. Procedural 3D device parts (optimized segment counts)
+  // 1. Procedural 3D device parts
   if (hasParts) {
     data.parts.forEach((p) => {
       let geo;
@@ -198,23 +161,23 @@ function mountMolecule3D(container, data, opts) {
           geo = new THREE.CylinderGeometry(...(args.length ? args : [1, 1, 1, 14]));
           break;
         case "sphere":
-          geo = new THREE.SphereGeometry(...(args.length ? args : [1, 18, 14]));
+          geo = new THREE.SphereGeometry(...(args.length ? args : [1, 16, 12]));
           break;
         case "box":
           geo = new THREE.BoxGeometry(...(args.length ? args : [1, 1, 1]));
           break;
         case "torus":
-          geo = new THREE.TorusGeometry(...(args.length ? args : [1, 0.25, 14, 24]));
+          geo = new THREE.TorusGeometry(...(args.length ? args : [1, 0.25, 12, 20]));
           break;
         case "cone":
           geo = new THREE.ConeGeometry(...(args.length ? args : [1, 1, 14]));
           break;
         case "ring":
-          geo = new THREE.RingGeometry(...(args.length ? args : [0.5, 1, 18]));
+          geo = new THREE.RingGeometry(...(args.length ? args : [0.5, 1, 16]));
           break;
         case "capsule":
           if (typeof THREE.CapsuleGeometry === "function") {
-            geo = new THREE.CapsuleGeometry(...(args.length ? args : [0.5, 1, 8, 14]));
+            geo = new THREE.CapsuleGeometry(...(args.length ? args : [0.5, 1, 8, 12]));
           } else {
             geo = new THREE.CylinderGeometry(args[0] || 0.5, args[0] || 0.5, args[1] || 1, 14);
           }
@@ -222,7 +185,7 @@ function mountMolecule3D(container, data, opts) {
         default:
           geo = new THREE.BoxGeometry(1, 1, 1);
       }
-      customGeometriesToDispose.push(geo);
+      disposables.push(geo);
 
       const mat = new THREE.MeshStandardMaterial({
         color: p.color !== undefined ? p.color : 0x9aa5b0,
@@ -232,7 +195,7 @@ function mountMolecule3D(container, data, opts) {
         opacity: p.opacity !== undefined ? p.opacity : 1.0,
         wireframe: !!p.wireframe,
       });
-      customMaterialsToDispose.push(mat);
+      disposables.push(mat);
 
       const mesh = new THREE.Mesh(geo, mat);
       if (p.pos) mesh.position.set(...p.pos);
@@ -245,11 +208,27 @@ function mountMolecule3D(container, data, opts) {
     });
   }
 
-  // 2. CPK Ball-and-stick molecules using SHARED geometries and materials
+  // 2. CPK Ball-and-stick molecules (isolated geometries & materials per renderer)
   if (hasAtoms) {
+    const sphereGeo = new THREE.SphereGeometry(1, 16, 12);
+    const cylGeo = new THREE.CylinderGeometry(1, 1, 1, 10);
+    const bondMat = new THREE.MeshStandardMaterial({ color: 0xc7d0da, roughness: 0.28, metalness: 0.35 });
+    disposables.push(sphereGeo, cylGeo, bondMat);
+
+    const matCache = new Map();
+
     data.atoms.forEach(([el, x, y, z]) => {
-      const mat = getAtomMaterial(el);
-      const mesh = new THREE.Mesh(SHARED_SPHERE_GEO, mat);
+      let mat = matCache.get(el);
+      if (!mat) {
+        mat = new THREE.MeshStandardMaterial({
+          color: CPK_COLOR[el] || DEFAULT_COLOR,
+          roughness: 0.18,
+          metalness: 0.08
+        });
+        matCache.set(el, mat);
+        disposables.push(mat);
+      }
+      const mesh = new THREE.Mesh(sphereGeo, mat);
       mesh.scale.setScalar(CPK_RADIUS[el] || DEFAULT_RADIUS);
       mesh.position.set(x, y, z);
       group.add(mesh);
@@ -267,7 +246,7 @@ function mountMolecule3D(container, data, opts) {
         end.set(b[1], b[2], b[3]);
         const len = start.distanceTo(end);
         if (len < 0.01) return;
-        const mesh = new THREE.Mesh(SHARED_CYL_GEO, SHARED_BOND_MAT);
+        const mesh = new THREE.Mesh(cylGeo, bondMat);
         mesh.scale.set(BOND_RADIUS, len, BOND_RADIUS);
         mesh.position.copy(start).add(end).multiplyScalar(0.5);
         mesh.quaternion.setFromUnitVectors(up, end.clone().sub(start).normalize());
@@ -276,7 +255,7 @@ function mountMolecule3D(container, data, opts) {
     }
   }
 
-  // Soft contact shadow: shared circle geometry, scaled
+  // Soft contact shadow
   let minY = Infinity;
   if (hasAtoms) {
     data.atoms.forEach(([, , y]) => { if (y < minY) minY = y; });
@@ -292,14 +271,15 @@ function mountMolecule3D(container, data, opts) {
   if (minY === Infinity) minY = -2;
 
   const shadowRadius = Math.max(3.2, boundingRadius * 0.85);
-  const shadowDisc = new THREE.Mesh(SHARED_SHADOW_GEO, SHARED_SHADOW_MAT);
-  shadowDisc.scale.set(shadowRadius, shadowRadius, 1);
+  const shadowGeo = new THREE.CircleGeometry(shadowRadius, 20);
+  const shadowMat = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.20, depthWrite: false });
+  disposables.push(shadowGeo, shadowMat);
+  const shadowDisc = new THREE.Mesh(shadowGeo, shadowMat);
   shadowDisc.rotation.x = -Math.PI / 2;
   shadowDisc.position.y = minY - 0.7;
   group.add(shadowDisc);
 
-  const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
+  // Resize handler
   function resize() {
     const w = container.clientWidth;
     const h = container.clientHeight;
@@ -315,6 +295,25 @@ function mountMolecule3D(container, data, opts) {
   const ro = new ResizeObserver(resize);
   ro.observe(container);
   resize();
+
+  // Test first render before hiding fallback!
+  try {
+    renderer.render(scene, camera);
+  } catch (err) {
+    // If WebGL fails, clean up immediately and leave fallback visible
+    ro.disconnect();
+    disposables.forEach((d) => d.dispose && d.dispose());
+    renderer.dispose();
+    return false;
+  }
+
+  // First render was successful! Safely attach canvas and hide fallback
+  const fallback = container.querySelector(".st-tile-structure, .st-structure-svg, .st-tile-fallback-icon, .st-molecule-placeholder");
+  if (fallback) fallback.style.display = "none";
+  container.classList.add("st-has-canvas");
+  container.appendChild(canvas);
+
+  const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   let isVisible = true;
   let raf = null;
@@ -350,7 +349,7 @@ function mountMolecule3D(container, data, opts) {
     }
   }
 
-  // Pre-render anticipation: start loop 120px before entering viewport, pause when scrolled away
+  // Pre-render anticipation: start loop 100px before entering viewport, pause when scrolled away
   const io = ("IntersectionObserver" in window) ? new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -361,12 +360,12 @@ function mountMolecule3D(container, data, opts) {
         pauseRAF();
       }
     });
-  }, { rootMargin: "120px 0px" }) : null;
+  }, { rootMargin: "100px 0px" }) : null;
 
   if (io) io.observe(container);
   resumeRAF();
 
-  // Smooth pointer drag rotation on main description card viewer
+  // Pointer drag controls for full viewer
   if (!isThumb) {
     let startX = 0, startY = 0;
     let startRotY = 0, startRotX = 0;
@@ -413,21 +412,21 @@ function mountMolecule3D(container, data, opts) {
     renderer,
     scene,
     get isVisible() { return isVisible; },
-    resumeRAF,
-    pauseRAF,
+    resume: resumeRAF,
+    pause: pauseRAF,
     cleanup: () => {
       pauseRAF();
       if (resumeTimer) clearTimeout(resumeTimer);
       if (io) io.disconnect();
       ro.disconnect();
-      customGeometriesToDispose.forEach((g) => g.dispose());
-      customMaterialsToDispose.forEach((m) => m.dispose());
+      disposables.forEach((d) => d.dispose && d.dispose());
       renderer.dispose();
       if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
     }
   };
 
   mounts.set(container, mountRecord);
+  activeQueue.push(container);
   return true;
 }
 

@@ -147,21 +147,14 @@
 
   function tileHTML(item) {
     const cat = catById.get(item.cat);
-    // Drugs and devices with a verified 3D conformer/model (study-structures-3d.js)
-    // get the rotating 3D viewer on the title card, mounted only while visible
-    // on screen (via observeTileMolecules) to conserve WebGL contexts.
-    // Falls back gracefully to the 2D SVG diagram or category icon.
     const structRec = window.KN_STRUCTURES && window.KN_STRUCTURES[item.id];
-    const has3d = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[item.id];
     let iconHTML;
-    if (has3d) {
-      iconHTML = `<div class="st-tile-molecule" data-drug="${esc(item.id)}">${structRec ? `<div class="st-tile-structure">${structRec.svg}</div>` : `<div class="st-tile-fallback-icon">${catIconHTML(item.cat, cat)}</div>`}</div>`;
-    } else if (structRec) {
+    if (structRec && structRec.svg) {
       iconHTML = `<div class="st-tile-structure">${structRec.svg}</div>`;
     } else {
-      iconHTML = catIconHTML(item.cat, cat);
+      iconHTML = `<div class="st-tile-fallback-icon">${catIconHTML(item.cat, cat)}</div>`;
     }
-    const hasVisual = structRec || has3d;
+    const hasVisual = !!structRec;
     return `<a class="st-tile st-reveal${hasVisual ? " st-tile-has-structure" : ""}" href="?item=${item.id}" data-item="${item.id}" data-cat="${item.cat}" aria-label="${esc(item.name)}">
       <div class="st-tile-icon" aria-hidden="true">${iconHTML}</div>
       <div class="st-tile-info">
@@ -172,49 +165,11 @@
     </a>`;
   }
 
-  // Poster-tile 3D molecule mounting. Tiles mount their rotating viewer only
-  // while actually on/near screen and dispose it the moment they scroll out.
-  const tileMoleculeObserver = ("IntersectionObserver" in window)
-    ? new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          const node = entry.target;
-          const drugId = node.getAttribute("data-drug");
-          const data = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[drugId];
-          if (!data) return;
-          if (entry.isIntersecting) {
-            if (typeof window.KNMountMolecule3D === "function") {
-              try { window.KNMountMolecule3D(node, data, { isThumbnail: true }); } catch (err) { /* leave fallback */ }
-            }
-          } else if (typeof window.KNDisposeMolecule3D === "function") {
-            window.KNDisposeMolecule3D(node);
-          }
-        });
-      }, { rootMargin: "100px 0px" })
-    : null;
-
-  function observeTileMolecules(root) {
-    if (!tileMoleculeObserver) return;
-    root.querySelectorAll(".st-tile-molecule[data-drug]").forEach((node) => {
-      const drugId = node.getAttribute("data-drug");
-      const data = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[drugId];
-      if (data && typeof window.KNMountMolecule3D === "function") {
-        const rect = node.getBoundingClientRect();
-        if (rect.top < window.innerHeight + 120 && rect.bottom > -120) {
-          try { window.KNMountMolecule3D(node, data, { isThumbnail: true }); } catch (err) {}
-        }
-      }
-      tileMoleculeObserver.observe(node);
-    });
-  }
+  const tileMoleculeObserver = null;
+  function observeTileMolecules() {}
 
   // Global listener for when study-molecule-3d.js completes loading and Three.js initialization.
   window.addEventListener("kn-molecule3d-ready", () => {
-    const grid = $("#stGrid");
-    const list = $("#stList");
-    if (grid && list && !list.hidden) {
-      if (tileMoleculeObserver) tileMoleculeObserver.disconnect();
-      observeTileMolecules(grid);
-    }
     const detail = $("#stDetail");
     if (detail && !detail.hidden) {
       mountStructureViewers(detail);
@@ -629,8 +584,15 @@
         if (typeof window.KNMountMolecule3D !== "function") return;
         try {
           const isThumbnail = !!node.closest(".st-title-card-media");
-          window.KNMountMolecule3D(node, data, { isThumbnail });
-        } catch (err) { /* WebGL unavailable — fallback stays visible */ }
+          const ok = window.KNMountMolecule3D(node, data, { isThumbnail });
+          if (!ok) {
+            const pane = node.closest(".st-structure-3d-pane");
+            if (pane) pane.style.display = "none";
+          }
+        } catch (err) {
+          const pane = node.closest(".st-structure-3d-pane");
+          if (pane) pane.style.display = "none";
+        }
       });
     }
 
