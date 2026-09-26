@@ -372,52 +372,24 @@ To understand machine mechanics and safety engineering, the workstation is physi
     source: "Miller's Anesthesia, 10th ed., Ch. 21–22; Dorsch & Dorsch Understanding Anesthesia Equipment, 5th ed., Ch. 2 (The Anesthesia Machine Checkout); ASA Recommendations for Pre-Anesthesia Checkout Procedures (2008 / 2021 update); AAGBI Checking Anaesthetic Equipment (2012 / 2023).",
     sections: [
       {
-        h: "Flowchart Architecture: The 7-Stage Pre-Use Checkout Logic",
+        h: "Simple Flowchart: 7-Step Anaesthesia Machine Check",
+        diagram: "workstation-flowchart",
         b: `A defective or unchecked anaesthesia machine can asphyxiate, barotraumatise, or fail to ventilate a paralysed patient within seconds. Closed-claims analysis reveals that human equipment check omission remains the single largest preventable factor in machine-related morbidity.
 
-Based on Miller's Anesthesia (10th ed. Ch. 21–22) and Dorsch & Dorsch (5th ed. Ch. 2), the complete pre-use checkout follows an unalterable 7-stage flowchart logic executed before the start of every operating list:
+Based on Miller's Anesthesia (10th ed. Ch. 21–22) and Dorsch & Dorsch (5th ed. Ch. 2), the complete pre-use checkout follows an unalterable 7-step sequence executed before the start of every operating list:
 
-[STAGE 1: Emergency & Auxiliary Equipment]
-        │   • Autonomous Ambu bag + mask verified functional
-        │   • Independent wall/portable suction tested (<-500 mmHg in 10s)
-        │   • Auxiliary O2 cylinder with dedicated regulator checked
-        ▼
-[STAGE 2: High-Pressure System (Cylinders & Yokes)]
-        │   • Bodok seal & PISS pins inspected (only ONE washer per yoke)
-        │   • E-cylinders opened: verify O2 >=1000 psi (full 2000 psi)
-        │   • 1-minute closed spindle leak decay test (<100 psi drop)
-        ▼
-[STAGE 3: Intermediate-Pressure System (Pipelines & Fail-Safe)]
-        │   • Pipeline hoses connected: check gauges 50-55 psi
-        │   • Oxygen flush valve depressed: high-volume flow (35-75 L/min) without sticking
-        │   • O2 fail-safe & whistle test: disconnect O2 pipeline with N2O flowing -> N2O shuts off & whistle sounds!
-        ▼
-[STAGE 4: Low-Pressure System Leak Check (Negative-Pressure Bulb)]
-        │   • Flowmeters turned off, suction bulb attached to CGO
-        │   • Bulb squeezed flat: MUST STAY COLLAPSED >=10 seconds
-        │   • Repeat with EACH vaporizer turned ON to 1% individually (tests internal seals & Selectatec O-rings)
-        ▼
-[STAGE 5: Breathing System, Absorber & Unidirectional Valves]
-        │   • Soda lime granules inspected (crisp white, <50% purple, moist)
-        │   • Oxygen sensor calibrated (21% room air, 100% pure O2, low alarm set)
-        │   • Circuit positive-pressure leak test: occlude Y-piece, pressurize to 30 cmH2O -> holds >=10s
-        │   • APL valve opened: pressure releases smoothly to 0 cmH2O
-        │   • Two-bag test: verify inspiratory and expiratory unidirectional valves move freely
-        ▼
-[STAGE 6: Mechanical Ventilator & Waste Gas Scavenging]
-        │   • Switch Bag/Vent to VENT: verify ascending bellows rises to top stop
-        │   • Simulate circuit disconnect: verify bellows collapses & disconnect alarm sounds <=15s
-        │   • AGSS scavenger float verified hovering within green target zone
-        ▼
-[STAGE 7: Final Pre-Induction Verification]
-        │   • Vaporizers locked OFF, sight glasses full
-        │   • APL valve fully OPEN, Bag/Vent set to BAG
-        │   • Suction catheter under pillow, monitors active and calibrated
-        ▼
-[PATIENT READY FOR INDUCTION]`
+• Step 1: Emergency & Auxiliary Equipment — Autonomous Ambu bag, independent suction (<-500 mmHg), and aux O₂ cylinder.
+• Step 2: High-Pressure System — Cylinder yokes, single Bodok seal, PISS alignment, and 1-minute spindle leak decay test (<100 psi).
+• Step 3: Intermediate-Pressure System — Pipeline connections (50–55 psi), high-flow O₂ flush valve (35–75 L/min), and fail-safe cut-off / whistle alarm challenge.
+• Step 4: Low-Pressure System — Universal negative-pressure bulb leak test at CGO (holds flat ≥10s) and individual vaporizer leak / interlock check.
+• Step 5: Breathing System & Absorber — Soda lime inspection, O₂ sensor calibration (21% and 100%), 30 cmH₂O circuit hold, and two-bag test for unidirectional valves.
+• Step 6: Mechanical Ventilator & AGSS — Ascending bellows ascent, disconnect alarm simulation (sounds ≤15s), and waste gas scavenger float verification.
+• Step 7: Final Pre-Induction Verification — Vaporizers locked OFF, APL fully OPEN, Bag/Vent set to BAG, emergency airway kit ready, and suction under pillow.
+
+Follow each detailed step below in exact sequence before inducing anaesthesia.`
       },
       {
-        h: "Stage 1: Emergency & Auxiliary Equipment (Autonomous Preparedness)",
+        h: "Step 1: Emergency & Auxiliary Equipment (Autonomous Preparedness)",
         b: `Before turning on the machine or connecting any patient to electricity or pipeline gas, the clinician must guarantee autonomous survival equipment that functions independent of all hospital infrastructure:
 
 1. Self-Inflating Resuscitation Bag (Ambu Bag / BVM):
@@ -434,7 +406,7 @@ Based on Miller's Anesthesia (10th ed. Ch. 21–22) and Dorsch & Dorsch (5th ed.
 • Verify rigid Yankauer handle and flexible suction catheters are immediately available under the head of the operating table.`
       },
       {
-        h: "Stage 2: High-Pressure System Checkout (Cylinders & Yokes)",
+        h: "Step 2: High-Pressure System Checkout (Cylinders & Yokes)",
         b: `Verifies reserve gas supply integrity and catches high-pressure leaks at the cylinder-yoke interface:
 
 1. Visual & PISS Inspection:
@@ -453,7 +425,7 @@ Based on Miller's Anesthesia (10th ed. Ch. 21–22) and Dorsch & Dorsch (5th ed.
 • Repeat procedure for Nitrous Oxide (gauge reads 745 psi) and Medical Air.`
       },
       {
-        h: "Stage 3: Intermediate-Pressure System Checkout (Pipelines & Fail-Safe)",
+        h: "Step 3: Intermediate-Pressure System Checkout (Pipelines & Fail-Safe)",
         b: `Tests pipeline gas distribution, emergency flush throughput, and oxygen fail-safe alarms:
 
 1. Pipeline Supply Connections:
@@ -473,7 +445,7 @@ Based on Miller's Anesthesia (10th ed. Ch. 21–22) and Dorsch & Dorsch (5th ed.
 • Reconnect the Oxygen pipeline hose: verify normal 50 psi pressure restores and whistle ceases.`
       },
       {
-        h: "Stage 4: Low-Pressure System Negative-Pressure Bulb Leak Test (Dorsch Test)",
+        h: "Step 4: Low-Pressure System Negative-Pressure Bulb Leak Test (Dorsch Test)",
         b: `The low-pressure system is the most hazard-prone section of the machine. Because it operates at near-atmospheric pressure, leaks will NOT be caught by pipeline gauges or high-pressure tests. The universal negative-pressure suction bulb test is the gold-standard method:
 
 1. Setup:
@@ -498,7 +470,7 @@ Based on Miller's Anesthesia (10th ed. Ch. 21–22) and Dorsch & Dorsch (5th ed.
 • Disconnect suction bulb from CGO and reconnect the fresh gas delivery hose.`
       },
       {
-        h: "Stage 5: Breathing System, Absorber & Unidirectional Valves Check",
+        h: "Step 5: Breathing System, Absorber & Unidirectional Valves Check",
         b: `Evaluates the integrity of the circle breathing system, carbon dioxide absorption, and gas sensor calibration:
 
 1. Carbon Dioxide Absorber Inspection:
@@ -527,7 +499,7 @@ Based on Miller's Anesthesia (10th ed. Ch. 21–22) and Dorsch & Dorsch (5th ed.
 • Squeeze the test bag: verify gas flows in the correct direction around the circle loop without retrograde regurgitation.`
       },
       {
-        h: "Stage 6: Mechanical Ventilator, Disconnect Alarms & AGSS Scavenging",
+        h: "Step 6: Mechanical Ventilator, Disconnect Alarms & AGSS Scavenging",
         b: `Validates the automated ventilation mode, disconnect alarm responsiveness, and pollution control:
 
 1. Ventilator Operation & Ascending Bellows Integrity:
@@ -549,7 +521,7 @@ Based on Miller's Anesthesia (10th ed. Ch. 21–22) and Dorsch & Dorsch (5th ed.
 • Verify the green bobbin or float is hovering steadily between the designated 'MIN' and 'MAX' marks, confirming adequate active vacuum suction without excessive negative pressure on the patient circuit.`
       },
       {
-        h: "Stage 7: Final Pre-Induction Readiness Checklist",
+        h: "Step 7: Final Pre-Induction Readiness Checklist",
         b: `The final 60-second bedside verification completed immediately before the patient enters the operating theatre:
 
 • Vaporizers: confirmed locked in '0' (OFF) position; filler caps tight; sight glass shows adequate liquid level.
