@@ -710,24 +710,24 @@
 
   function renderSectionTableHTML(tbl) {
     if (!tbl || !tbl.headers || !tbl.rows) return "";
-    const ths = tbl.headers.map((h) => `<th style="padding:10px 14px;border:1px solid rgba(255,255,255,0.12);font-weight:700;color:var(--text, #f8fafc);">${esc(h)}</th>`).join("");
+    const ths = tbl.headers.map((h) => `<th class="st-th">${esc(h)}</th>`).join("");
     const trs = tbl.rows.map((row, rIdx) => {
-      const bg = rIdx % 2 === 1 ? "background:rgba(255,255,255,0.025);" : "";
+      const isAlt = rIdx % 2 === 1 ? " st-tr-alt" : "";
       const tds = row.map((cell) => {
         if (typeof cell === "object" && cell !== null) {
-          const badgeHTML = cell.badge ? `<span style="display:inline-block;padding:2px 8px;border-radius:999px;font-size:0.75rem;font-weight:700;background:${cell.badgeColor || '#0284c7'};color:#fff;margin-right:6px;">${esc(cell.badge)}</span>` : "";
-          return `<td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.08);vertical-align:middle;${bg}">${badgeHTML}${highlightKeyValues(esc(cell.text || ""))}</td>`;
+          const badgeHTML = cell.badge ? `<span class="st-td-badge" style="background:${cell.badgeColor || '#0284c7'};">${esc(cell.badge)}</span>` : "";
+          return `<td class="st-td">${badgeHTML}${highlightKeyValues(esc(cell.text || ""))}</td>`;
         }
-        return `<td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.08);vertical-align:middle;${bg}">${highlightKeyValues(esc(String(cell)))}</td>`;
+        return `<td class="st-td">${highlightKeyValues(esc(String(cell)))}</td>`;
       }).join("");
-      return `<tr style="${bg}">${tds}</tr>`;
+      return `<tr class="st-tr${isAlt}">${tds}</tr>`;
     }).join("");
-    return `<div class="st-table-wrap" style="overflow-x:auto;margin:14px 0;border-radius:10px;border:1px solid rgba(255,255,255,0.12);background:rgba(15,23,42,0.45);box-shadow:0 4px 14px rgba(0,0,0,0.2);">
-      <table class="st-table" style="width:100%;border-collapse:collapse;font-size:0.88rem;text-align:left;line-height:1.45;">
-        <thead><tr style="background:rgba(255,255,255,0.07);border-bottom:2px solid rgba(255,255,255,0.16);">${ths}</tr></thead>
+    return `<div class="st-table-wrap">
+      <table class="st-table">
+        <thead><tr class="st-thead-tr">${ths}</tr></thead>
         <tbody>${trs}</tbody>
       </table>
-      ${tbl.caption ? `<p class="st-diagram-caption" style="margin:8px 12px 6px;">${esc(tbl.caption)}</p>` : ""}
+      ${tbl.caption ? `<p class="st-diagram-caption">${esc(tbl.caption)}</p>` : ""}
     </div>`;
   }
 
@@ -1242,167 +1242,167 @@
 
   /* ------------------------------------------------- Workstation 7-Step Check Flowchart */
   function workstationFlowchartHTML() {
-    return `<div class="st-diagram-wrap">
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
       <svg viewBox="0 0 760 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="7-Step Anaesthesia Machine Pre-Use Checkout Flowchart" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
         <defs>
           <marker id="wfArrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#38bdf8"/>
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7" class="st-wf-arrow-head"/>
           </marker>
           <marker id="wfArrowGreen" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#10b981"/>
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#10b981" class="st-wf-arrow-head-green"/>
           </marker>
         </defs>
 
         <!-- Main Title Header -->
-        <text x="380" y="22" font-size="12" font-weight="800" fill="#38bdf8" text-anchor="middle" letter-spacing="1.2">ANAESTHESIA MACHINE CHECKOUT — 7-STEP FLOWCHART</text>
+        <text x="380" y="22" font-size="12" font-weight="800" text-anchor="middle" letter-spacing="1.2" class="st-wf-header-title">ANAESTHESIA MACHINE CHECKOUT — 7-STEP FLOWCHART</text>
 
         <!-- ROW 1: Steps 1 to 4 -->
         <!-- Step 1: Emergency & Backup -->
         <g transform="translate(18, 35)">
-          <rect x="0" y="0" width="162" height="158" rx="8" fill="rgba(15,23,42,0.75)" stroke="#0284c7" stroke-width="1.5"/>
+          <rect x="0" y="0" width="162" height="158" rx="8" class="st-wf-card-bg" stroke="#0284c7" stroke-width="1.5"/>
           <rect x="0" y="0" width="162" height="5" rx="2" fill="#0284c7"/>
-          <rect x="10" y="12" width="52" height="16" rx="8" fill="rgba(2,132,199,0.2)" stroke="#0284c7" stroke-width="1"/>
-          <text x="36" y="24" font-size="9" font-weight="800" fill="#38bdf8" text-anchor="middle">STEP 1</text>
-          <text x="10" y="44" font-size="11.5" font-weight="800" fill="#f8fafc">Emergency Backup</text>
-          <text x="10" y="58" font-size="8.5" font-weight="600" fill="#94a3b8">Autonomous Kit</text>
-          <line x1="10" y1="65" x2="152" y2="65" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <text x="10" y="80" font-size="8.5" fill="#cbd5e1">• Ambu Bag + mask</text>
-          <text x="10" y="95" font-size="8.5" fill="#cbd5e1">• Suction (&lt;-500 mmHg)</text>
-          <text x="10" y="110" font-size="8.5" fill="#cbd5e1">• Aux O₂ cylinder ≥1000 psi</text>
-          <text x="10" y="130" font-size="8" font-weight="700" fill="#38bdf8">Lifeline if power/gas fails</text>
+          <rect x="10" y="12" width="52" height="16" rx="8" class="st-wf-pill-bg" fill="rgba(2,132,199,0.2)" stroke="#0284c7" stroke-width="1"/>
+          <text x="36" y="24" font-size="9" font-weight="800" fill="#0284c7" text-anchor="middle" class="st-wf-pill-txt">STEP 1</text>
+          <text x="10" y="44" font-size="11.5" font-weight="800" class="st-wf-card-title">Emergency Backup</text>
+          <text x="10" y="58" font-size="8.5" font-weight="600" class="st-wf-card-sub">Autonomous Kit</text>
+          <line x1="10" y1="65" x2="152" y2="65" class="st-wf-card-line" stroke-width="1"/>
+          <text x="10" y="80" font-size="8.5" class="st-wf-card-bullet">• Ambu Bag + mask</text>
+          <text x="10" y="95" font-size="8.5" class="st-wf-card-bullet">• Suction (&lt;-500 mmHg)</text>
+          <text x="10" y="110" font-size="8.5" class="st-wf-card-bullet">• Aux O₂ cylinder ≥1000 psi</text>
+          <text x="10" y="130" font-size="8" font-weight="700" fill="#0284c7" class="st-wf-highlight-1">Lifeline if power/gas fails</text>
         </g>
 
         <!-- Arrow 1 -> 2 -->
-        <line x1="183" y1="114" x2="198" y2="114" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#wfArrow)"/>
+        <line x1="183" y1="114" x2="198" y2="114" stroke="#0284c7" stroke-width="2.5" marker-end="url(#wfArrow)" class="st-wf-conn-line"/>
 
         <!-- Step 2: High Pressure -->
         <g transform="translate(204, 35)">
-          <rect x="0" y="0" width="162" height="158" rx="8" fill="rgba(15,23,42,0.75)" stroke="#d97706" stroke-width="1.5"/>
+          <rect x="0" y="0" width="162" height="158" rx="8" class="st-wf-card-bg" stroke="#d97706" stroke-width="1.5"/>
           <rect x="0" y="0" width="162" height="5" rx="2" fill="#d97706"/>
-          <rect x="10" y="12" width="52" height="16" rx="8" fill="rgba(217,119,6,0.2)" stroke="#d97706" stroke-width="1"/>
-          <text x="36" y="24" font-size="9" font-weight="800" fill="#fbbf24" text-anchor="middle">STEP 2</text>
-          <text x="10" y="44" font-size="11.5" font-weight="800" fill="#f8fafc">High Pressure</text>
-          <text x="10" y="58" font-size="8.5" font-weight="600" fill="#94a3b8">Cylinders &amp; Yokes</text>
-          <line x1="10" y1="65" x2="152" y2="65" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <text x="10" y="80" font-size="8.5" fill="#cbd5e1">• 1 Bodok seal per yoke</text>
-          <text x="10" y="95" font-size="8.5" fill="#cbd5e1">• O₂ cylinder ≥1000 psi</text>
-          <text x="10" y="110" font-size="8.5" fill="#cbd5e1">• 1-min leak decay &lt;100 psi</text>
-          <text x="10" y="130" font-size="8" font-weight="700" fill="#fbbf24">Close spindle after check</text>
+          <rect x="10" y="12" width="52" height="16" rx="8" class="st-wf-pill-bg" fill="rgba(217,119,6,0.2)" stroke="#d97706" stroke-width="1"/>
+          <text x="36" y="24" font-size="9" font-weight="800" fill="#d97706" text-anchor="middle" class="st-wf-pill-txt">STEP 2</text>
+          <text x="10" y="44" font-size="11.5" font-weight="800" class="st-wf-card-title">High Pressure</text>
+          <text x="10" y="58" font-size="8.5" font-weight="600" class="st-wf-card-sub">Cylinders &amp; Yokes</text>
+          <line x1="10" y1="65" x2="152" y2="65" class="st-wf-card-line" stroke-width="1"/>
+          <text x="10" y="80" font-size="8.5" class="st-wf-card-bullet">• 1 Bodok seal per yoke</text>
+          <text x="10" y="95" font-size="8.5" class="st-wf-card-bullet">• O₂ cylinder ≥1000 psi</text>
+          <text x="10" y="110" font-size="8.5" class="st-wf-card-bullet">• 1-min leak decay &lt;100 psi</text>
+          <text x="10" y="130" font-size="8" font-weight="700" fill="#d97706" class="st-wf-highlight-2">Close spindle after check</text>
         </g>
 
         <!-- Arrow 2 -> 3 -->
-        <line x1="369" y1="114" x2="384" y2="114" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#wfArrow)"/>
+        <line x1="369" y1="114" x2="384" y2="114" stroke="#0284c7" stroke-width="2.5" marker-end="url(#wfArrow)" class="st-wf-conn-line"/>
 
         <!-- Step 3: Intermediate Pressure -->
         <g transform="translate(390, 35)">
-          <rect x="0" y="0" width="162" height="158" rx="8" fill="rgba(15,23,42,0.75)" stroke="#2563eb" stroke-width="1.5"/>
+          <rect x="0" y="0" width="162" height="158" rx="8" class="st-wf-card-bg" stroke="#2563eb" stroke-width="1.5"/>
           <rect x="0" y="0" width="162" height="5" rx="2" fill="#2563eb"/>
-          <rect x="10" y="12" width="52" height="16" rx="8" fill="rgba(37,99,235,0.2)" stroke="#2563eb" stroke-width="1"/>
-          <text x="36" y="24" font-size="9" font-weight="800" fill="#60a5fa" text-anchor="middle">STEP 3</text>
-          <text x="10" y="44" font-size="11.5" font-weight="800" fill="#f8fafc">Intermediate P</text>
-          <text x="10" y="58" font-size="8.5" font-weight="600" fill="#94a3b8">Pipelines &amp; Fail-Safe</text>
-          <line x1="10" y1="65" x2="152" y2="65" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <text x="10" y="80" font-size="8.5" fill="#cbd5e1">• Pipelines at 50–55 psi</text>
-          <text x="10" y="95" font-size="8.5" fill="#cbd5e1">• O₂ flush (35–75 L/min)</text>
-          <text x="10" y="110" font-size="8.5" fill="#cbd5e1">• Fail-safe cuts N₂O flow</text>
-          <text x="10" y="130" font-size="8" font-weight="700" fill="#60a5fa">Audible whistle alarm test</text>
+          <rect x="10" y="12" width="52" height="16" rx="8" class="st-wf-pill-bg" fill="rgba(37,99,235,0.2)" stroke="#2563eb" stroke-width="1"/>
+          <text x="36" y="24" font-size="9" font-weight="800" fill="#2563eb" text-anchor="middle" class="st-wf-pill-txt">STEP 3</text>
+          <text x="10" y="44" font-size="11.5" font-weight="800" class="st-wf-card-title">Intermediate P</text>
+          <text x="10" y="58" font-size="8.5" font-weight="600" class="st-wf-card-sub">Pipelines &amp; Fail-Safe</text>
+          <line x1="10" y1="65" x2="152" y2="65" class="st-wf-card-line" stroke-width="1"/>
+          <text x="10" y="80" font-size="8.5" class="st-wf-card-bullet">• Pipelines at 50–55 psi</text>
+          <text x="10" y="95" font-size="8.5" class="st-wf-card-bullet">• O₂ flush (35–75 L/min)</text>
+          <text x="10" y="110" font-size="8.5" class="st-wf-card-bullet">• Fail-safe cuts N₂O flow</text>
+          <text x="10" y="130" font-size="8" font-weight="700" fill="#2563eb" class="st-wf-highlight-3">Audible whistle alarm test</text>
         </g>
 
         <!-- Arrow 3 -> 4 -->
-        <line x1="555" y1="114" x2="570" y2="114" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#wfArrow)"/>
+        <line x1="555" y1="114" x2="570" y2="114" stroke="#0284c7" stroke-width="2.5" marker-end="url(#wfArrow)" class="st-wf-conn-line"/>
 
         <!-- Step 4: Low Pressure -->
         <g transform="translate(576, 35)">
-          <rect x="0" y="0" width="166" height="158" rx="8" fill="rgba(15,23,42,0.75)" stroke="#e11d48" stroke-width="1.5"/>
-          <rect x="0" y="0" width="166" height="5" rx="2" fill="#e11d48"/>
-          <rect x="10" y="12" width="52" height="16" rx="8" fill="rgba(225,29,72,0.2)" stroke="#e11d48" stroke-width="1"/>
-          <text x="36" y="24" font-size="9" font-weight="800" fill="#fb7185" text-anchor="middle">STEP 4</text>
-          <text x="10" y="44" font-size="11.5" font-weight="800" fill="#f8fafc">Low Pressure</text>
-          <text x="10" y="58" font-size="8.5" font-weight="600" fill="#94a3b8">Suction Bulb at CGO</text>
-          <line x1="10" y1="65" x2="156" y2="65" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <text x="10" y="80" font-size="8.5" fill="#cbd5e1">• Suction bulb at CGO</text>
-          <text x="10" y="95" font-size="8.5" fill="#cbd5e1">• Flat collapse hold ≥10s</text>
-          <text x="10" y="110" font-size="8.5" fill="#cbd5e1">• Test each vaporizer @ 1%</text>
-          <text x="10" y="130" font-size="8" font-weight="700" fill="#fb7185">Interlock prevents dual use</text>
+          <rect x="0" y="0" width="166" height="158" rx="8" class="st-wf-card-bg" stroke="#dc2626" stroke-width="1.5"/>
+          <rect x="0" y="0" width="166" height="5" rx="2" fill="#dc2626"/>
+          <rect x="10" y="12" width="52" height="16" rx="8" class="st-wf-pill-bg" fill="rgba(220,38,38,0.2)" stroke="#dc2626" stroke-width="1"/>
+          <text x="36" y="24" font-size="9" font-weight="800" fill="#dc2626" text-anchor="middle" class="st-wf-pill-txt">STEP 4</text>
+          <text x="10" y="44" font-size="11.5" font-weight="800" class="st-wf-card-title">Low Pressure</text>
+          <text x="10" y="58" font-size="8.5" font-weight="600" class="st-wf-card-sub">Suction Bulb at CGO</text>
+          <line x1="10" y1="65" x2="156" y2="65" class="st-wf-card-line" stroke-width="1"/>
+          <text x="10" y="80" font-size="8.5" class="st-wf-card-bullet">• Suction bulb at CGO</text>
+          <text x="10" y="95" font-size="8.5" class="st-wf-card-bullet">• Flat collapse hold ≥10s</text>
+          <text x="10" y="110" font-size="8.5" class="st-wf-card-bullet">• Test each vaporizer @ 1%</text>
+          <text x="10" y="130" font-size="8" font-weight="700" fill="#dc2626" class="st-wf-highlight-4">Interlock prevents dual use</text>
         </g>
 
         <!-- Connecting Pathway from Step 4 down to Step 5 -->
-        <path d="M 659,193 L 659,216 L 99,216 L 99,249" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="4,3" marker-end="url(#wfArrow)"/>
-        <rect x="315" y="206" width="130" height="20" rx="10" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
-        <text x="380" y="220" font-size="9" font-weight="800" fill="#38bdf8" text-anchor="middle">Step 5 to 7: Circuit &amp; Delivery ➔</text>
+        <path d="M 659,193 L 659,216 L 99,216 L 99,249" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="4,3" marker-end="url(#wfArrow)" class="st-wf-connector"/>
+        <rect x="315" y="206" width="130" height="20" rx="10" class="st-wf-conn-pill"/>
+        <text x="380" y="220" font-size="9" font-weight="800" text-anchor="middle" class="st-wf-conn-text">Step 5 to 7: Circuit &amp; Delivery ➔</text>
 
         <!-- ROW 2: Steps 5 to 7 + Induction Ready -->
         <!-- Step 5: Breathing Circuit -->
         <g transform="translate(18, 255)">
-          <rect x="0" y="0" width="162" height="158" rx="8" fill="rgba(15,23,42,0.75)" stroke="#059669" stroke-width="1.5"/>
+          <rect x="0" y="0" width="162" height="158" rx="8" class="st-wf-card-bg" stroke="#059669" stroke-width="1.5"/>
           <rect x="0" y="0" width="162" height="5" rx="2" fill="#059669"/>
-          <rect x="10" y="12" width="52" height="16" rx="8" fill="rgba(5,150,105,0.2)" stroke="#059669" stroke-width="1"/>
-          <text x="36" y="24" font-size="9" font-weight="800" fill="#34d399" text-anchor="middle">STEP 5</text>
-          <text x="10" y="44" font-size="11.5" font-weight="800" fill="#f8fafc">Breathing Circuit</text>
-          <text x="10" y="58" font-size="8.5" font-weight="600" fill="#94a3b8">Absorber &amp; Leak Test</text>
-          <line x1="10" y1="65" x2="152" y2="65" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <text x="10" y="80" font-size="8.5" fill="#cbd5e1">• Soda lime white &amp; moist</text>
-          <text x="10" y="95" font-size="8.5" fill="#cbd5e1">• Calibrate O₂ sensor (21/100%)</text>
-          <text x="10" y="110" font-size="8.5" fill="#cbd5e1">• 30 cmH₂O hold ≥10s</text>
-          <text x="10" y="130" font-size="8" font-weight="700" fill="#34d399">Two-bag test for valves</text>
+          <rect x="10" y="12" width="52" height="16" rx="8" class="st-wf-pill-bg" fill="rgba(5,150,105,0.2)" stroke="#059669" stroke-width="1"/>
+          <text x="36" y="24" font-size="9" font-weight="800" fill="#059669" text-anchor="middle" class="st-wf-pill-txt">STEP 5</text>
+          <text x="10" y="44" font-size="11.5" font-weight="800" class="st-wf-card-title">Breathing Circuit</text>
+          <text x="10" y="58" font-size="8.5" font-weight="600" class="st-wf-card-sub">Absorber &amp; Leak Test</text>
+          <line x1="10" y1="65" x2="152" y2="65" class="st-wf-card-line" stroke-width="1"/>
+          <text x="10" y="80" font-size="8.5" class="st-wf-card-bullet">• Soda lime white &amp; moist</text>
+          <text x="10" y="95" font-size="8.5" class="st-wf-card-bullet">• Calibrate O₂ sensor (21/100%)</text>
+          <text x="10" y="110" font-size="8.5" class="st-wf-card-bullet">• 30 cmH₂O hold ≥10s</text>
+          <text x="10" y="130" font-size="8" font-weight="700" fill="#059669" class="st-wf-highlight-5">Two-bag test for valves</text>
         </g>
 
         <!-- Arrow 5 -> 6 -->
-        <line x1="183" y1="334" x2="198" y2="334" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#wfArrow)"/>
+        <line x1="183" y1="334" x2="198" y2="334" stroke="#0284c7" stroke-width="2.5" marker-end="url(#wfArrow)" class="st-wf-conn-line"/>
 
         <!-- Step 6: Ventilator & AGSS -->
         <g transform="translate(204, 255)">
-          <rect x="0" y="0" width="162" height="158" rx="8" fill="rgba(15,23,42,0.75)" stroke="#7c3aed" stroke-width="1.5"/>
+          <rect x="0" y="0" width="162" height="158" rx="8" class="st-wf-card-bg" stroke="#7c3aed" stroke-width="1.5"/>
           <rect x="0" y="0" width="162" height="5" rx="2" fill="#7c3aed"/>
-          <rect x="10" y="12" width="52" height="16" rx="8" fill="rgba(124,58,237,0.2)" stroke="#7c3aed" stroke-width="1"/>
-          <text x="36" y="24" font-size="9" font-weight="800" fill="#a78bfa" text-anchor="middle">STEP 6</text>
-          <text x="10" y="44" font-size="11.5" font-weight="800" fill="#f8fafc">Ventilator &amp; AGSS</text>
-          <text x="10" y="58" font-size="8.5" font-weight="600" fill="#94a3b8">Bellows &amp; Alarms</text>
-          <line x1="10" y1="65" x2="152" y2="65" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <text x="10" y="80" font-size="8.5" fill="#cbd5e1">• Ascending bellows to top</text>
-          <text x="10" y="95" font-size="8.5" fill="#cbd5e1">• Disconnect alarm ≤15s</text>
-          <text x="10" y="110" font-size="8.5" fill="#cbd5e1">• AGSS float in green band</text>
-          <text x="10" y="130" font-size="8" font-weight="700" fill="#a78bfa">Spirometer volume ±10%</text>
+          <rect x="10" y="12" width="52" height="16" rx="8" class="st-wf-pill-bg" fill="rgba(124,58,237,0.2)" stroke="#7c3aed" stroke-width="1"/>
+          <text x="36" y="24" font-size="9" font-weight="800" fill="#7c3aed" text-anchor="middle" class="st-wf-pill-txt">STEP 6</text>
+          <text x="10" y="44" font-size="11.5" font-weight="800" class="st-wf-card-title">Ventilator &amp; AGSS</text>
+          <text x="10" y="58" font-size="8.5" font-weight="600" class="st-wf-card-sub">Bellows &amp; Alarms</text>
+          <line x1="10" y1="65" x2="152" y2="65" class="st-wf-card-line" stroke-width="1"/>
+          <text x="10" y="80" font-size="8.5" class="st-wf-card-bullet">• Ascending bellows to top</text>
+          <text x="10" y="95" font-size="8.5" class="st-wf-card-bullet">• Disconnect alarm ≤15s</text>
+          <text x="10" y="110" font-size="8.5" class="st-wf-card-bullet">• AGSS float in green band</text>
+          <text x="10" y="130" font-size="8" font-weight="700" fill="#7c3aed" class="st-wf-highlight-6">Spirometer volume ±10%</text>
         </g>
 
         <!-- Arrow 6 -> 7 -->
-        <line x1="369" y1="334" x2="384" y2="334" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#wfArrow)"/>
+        <line x1="369" y1="334" x2="384" y2="334" stroke="#0284c7" stroke-width="2.5" marker-end="url(#wfArrow)" class="st-wf-conn-line"/>
 
         <!-- Step 7: Final Pre-Induction Setup -->
         <g transform="translate(390, 255)">
-          <rect x="0" y="0" width="162" height="158" rx="8" fill="rgba(15,23,42,0.75)" stroke="#0d9488" stroke-width="1.5"/>
+          <rect x="0" y="0" width="162" height="158" rx="8" class="st-wf-card-bg" stroke="#0d9488" stroke-width="1.5"/>
           <rect x="0" y="0" width="162" height="5" rx="2" fill="#0d9488"/>
-          <rect x="10" y="12" width="52" height="16" rx="8" fill="rgba(13,148,136,0.2)" stroke="#0d9488" stroke-width="1"/>
-          <text x="36" y="24" font-size="9" font-weight="800" fill="#2dd4bf" text-anchor="middle">STEP 7</text>
-          <text x="10" y="44" font-size="11.5" font-weight="800" fill="#f8fafc">Final Pre-Induction</text>
-          <text x="10" y="58" font-size="8.5" font-weight="600" fill="#94a3b8">Settings &amp; Drugs</text>
-          <line x1="10" y1="65" x2="152" y2="65" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <text x="10" y="80" font-size="8.5" fill="#cbd5e1">• Vaporizers locked OFF</text>
-          <text x="10" y="95" font-size="8.5" fill="#cbd5e1">• APL valve fully OPEN</text>
-          <text x="10" y="110" font-size="8.5" fill="#cbd5e1">• Bag/Vent set to BAG</text>
-          <text x="10" y="130" font-size="8" font-weight="700" fill="#2dd4bf">Emergency drugs ready</text>
+          <rect x="10" y="12" width="52" height="16" rx="8" class="st-wf-pill-bg" fill="rgba(13,148,136,0.2)" stroke="#0d9488" stroke-width="1"/>
+          <text x="36" y="24" font-size="9" font-weight="800" fill="#0d9488" text-anchor="middle" class="st-wf-pill-txt">STEP 7</text>
+          <text x="10" y="44" font-size="11.5" font-weight="800" class="st-wf-card-title">Final Pre-Induction</text>
+          <text x="10" y="58" font-size="8.5" font-weight="600" class="st-wf-card-sub">Settings &amp; Drugs</text>
+          <line x1="10" y1="65" x2="152" y2="65" class="st-wf-card-line" stroke-width="1"/>
+          <text x="10" y="80" font-size="8.5" class="st-wf-card-bullet">• Vaporizers locked OFF</text>
+          <text x="10" y="95" font-size="8.5" class="st-wf-card-bullet">• APL valve fully OPEN</text>
+          <text x="10" y="110" font-size="8.5" class="st-wf-card-bullet">• Bag/Vent set to BAG</text>
+          <text x="10" y="130" font-size="8" font-weight="700" fill="#0d9488" class="st-wf-highlight-7">Emergency drugs ready</text>
         </g>
 
         <!-- Arrow 7 -> 8 -->
-        <line x1="555" y1="334" x2="570" y2="334" stroke="#10b981" stroke-width="2.5" marker-end="url(#wfArrowGreen)"/>
+        <line x1="555" y1="334" x2="570" y2="334" stroke="#10b981" stroke-width="2.5" marker-end="url(#wfArrowGreen)" class="st-wf-conn-line-green"/>
 
         <!-- Induction Ready Badge Card -->
         <g transform="translate(576, 255)">
-          <rect x="0" y="0" width="166" height="158" rx="8" fill="rgba(16,185,129,0.12)" stroke="#10b981" stroke-width="2"/>
+          <rect x="0" y="0" width="166" height="158" rx="8" class="st-wf-ready-bg" stroke="#10b981" stroke-width="2"/>
           <rect x="0" y="0" width="166" height="5" rx="2" fill="#10b981"/>
-          <rect x="10" y="12" width="70" height="16" rx="8" fill="#10b981"/>
-          <text x="45" y="24" font-size="9" font-weight="900" fill="#0f172a" text-anchor="middle">READY ✓</text>
-          <text x="10" y="44" font-size="11.5" font-weight="900" fill="#34d399">Induction Ready</text>
-          <text x="10" y="58" font-size="8.5" font-weight="600" fill="#94a3b8">Patient Safety Assured</text>
-          <line x1="10" y1="65" x2="156" y2="65" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
-          <text x="10" y="80" font-size="8.5" fill="#e2e8f0">• Suction under pillow</text>
-          <text x="10" y="95" font-size="8.5" fill="#e2e8f0">• Monitors connected</text>
-          <text x="10" y="110" font-size="8.5" fill="#e2e8f0">• Airway trolley checked</text>
-          <text x="10" y="130" font-size="8" font-weight="800" fill="#10b981">SAFE TO INDUCE</text>
+          <rect x="10" y="12" width="70" height="16" rx="8" class="st-wf-ready-badge" fill="#10b981"/>
+          <text x="45" y="24" font-size="9" font-weight="900" class="st-wf-ready-badge-txt" fill="#ffffff" text-anchor="middle">READY ✓</text>
+          <text x="10" y="44" font-size="11.5" font-weight="900" class="st-wf-ready-title">Induction Ready</text>
+          <text x="10" y="58" font-size="8.5" font-weight="600" class="st-wf-card-sub">Patient Safety Assured</text>
+          <line x1="10" y1="65" x2="156" y2="65" class="st-wf-ready-line" stroke-width="1"/>
+          <text x="10" y="80" font-size="8.5" class="st-wf-card-bullet">• Suction under pillow</text>
+          <text x="10" y="95" font-size="8.5" class="st-wf-card-bullet">• Monitors connected</text>
+          <text x="10" y="110" font-size="8.5" class="st-wf-card-bullet">• Airway trolley checked</text>
+          <text x="10" y="130" font-size="8" font-weight="800" class="st-wf-ready-action">SAFE TO INDUCE</text>
         </g>
 
         <!-- Footer / Legend -->
-        <text x="380" y="442" font-size="9.5" fill="#94a3b8" text-anchor="middle">Systematic Pre-Use Checkout Sequence · Miller 10th Ed. &amp; Dorsch 5th Ed. Standards</text>
+        <text x="380" y="442" font-size="9.5" text-anchor="middle" class="st-wf-footer">Systematic Pre-Use Checkout Sequence · Miller 10th Ed. &amp; Dorsch 5th Ed. Standards</text>
       </svg>
       <p class="st-diagram-caption">Interactive 7-Step Anaesthesia Machine Checkout Flowchart. Follow this sequential order before every theatre list: Emergency Backup ➔ High Pressure ➔ Intermediate Pressure ➔ Low Pressure ➔ Circuit &amp; Absorber ➔ Ventilator ➔ Final Pre-Induction Verification.</p>
     </div>`;

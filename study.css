@@ -870,6 +870,51 @@ body[data-content-page="study"] .st-page.container {
   height: 55%;
 }
 
+/* Structured content tables */
+.st-table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(15, 23, 42, 0.55);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+.st-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+  line-height: 1.5;
+}
+.st-thead-tr {
+  background: rgba(255, 255, 255, 0.08);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.18);
+}
+.st-th {
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 800;
+  color: #f8fafc;
+}
+.st-td {
+  padding: 9px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  vertical-align: middle;
+  color: #e2e8f0;
+}
+.st-tr.st-tr-alt td {
+  background: rgba(255, 255, 255, 0.025);
+}
+.st-td-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-right: 6px;
+}
+
 /* Mapleson circuit diagrams (recreated inline SVG) */
 .st-diagram-wrap { margin-top: 14px; }
 .st-diagram-wrap svg {
@@ -1120,3 +1165,328 @@ body[data-content-page="study"] .st-page.container {
   .st-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
   .st-reading-col { max-width: none; }
 }
+
+/* ==========================================================================
+   Day Mode (Light Theme) Overrides for Study Mode & Workstation Checkout
+   Matches clinical day-mode standard (body:not(.dark))
+   ========================================================================== */
+
+/* 1. Base Stage & Containers */
+body:not(.dark) .st-page.container {
+  color: #0f172a;
+}
+
+/* 2. Master Syllabus Index & Search Filter */
+body:not(.dark) .st-top-index {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1.5px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+}
+body:not(.dark) .st-top-index:hover {
+  border-color: rgba(2, 132, 199, 0.45);
+}
+body:not(.dark) .st-top-index-btn {
+  color: #0f172a;
+}
+body:not(.dark) .st-index-title {
+  color: #0f172a;
+  font-weight: 800;
+}
+body:not(.dark) .st-index-count {
+  color: #64748b;
+  font-weight: 600;
+}
+body:not(.dark) .st-top-fs-btn {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #334155;
+  font-weight: 600;
+}
+body:not(.dark) .st-top-fs-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+body:not(.dark) .st-top-index-panel {
+  background: #ffffff;
+  border-top: 1px solid rgba(15, 23, 42, 0.1);
+}
+body:not(.dark) .st-index-filter-wrap {
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+body:not(.dark) .st-index-filter-wrap:focus-within {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+body:not(.dark) .st-index-filter-input {
+  color: #0f172a;
+}
+body:not(.dark) .st-index-filter-input::placeholder {
+  color: #94a3b8;
+}
+body:not(.dark) .st-index-cat-col h4 {
+  color: #0f172a;
+  border-bottom-color: rgba(15, 23, 42, 0.12);
+}
+body:not(.dark) .st-index-topic-item {
+  color: #334155;
+}
+body:not(.dark) .st-index-topic-item:hover {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+/* 3. Detail Reading View Cards */
+body:not(.dark) .st-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(15, 23, 42, 0.11);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05), 0 8px 24px -4px rgba(15, 23, 42, 0.07);
+}
+body:not(.dark) .st-card:hover,
+body:not(.dark) .st-card:active,
+body:not(.dark) .st-card:focus-within,
+body:not(.dark) .st-card.st-card-active {
+  background: #ffffff !important;
+  border-color: rgba(2, 132, 199, 0.5);
+  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.14), 0 12px 32px -4px rgba(15, 23, 42, 0.09);
+}
+body:not(.dark) .st-card h3 {
+  color: #0f172a;
+  font-weight: 800;
+}
+body:not(.dark) .st-card-body p,
+body:not(.dark) .st-prose {
+  color: #1e293b;
+  line-height: 1.75;
+}
+body:not(.dark) .st-num-list,
+body:not(.dark) .st-num-list li {
+  color: #1e293b;
+}
+body:not(.dark) .st-num-list li::marker {
+  color: #0284c7;
+  font-weight: 800;
+}
+body:not(.dark) .st-bullets li {
+  color: #1e293b;
+}
+body:not(.dark) .st-bullets li::before {
+  background: #0284c7;
+}
+body:not(.dark) #stDetail .st-card-body strong,
+body:not(.dark) #stDetail .st-callout strong {
+  color: #090d16;
+  font-weight: 800;
+}
+body:not(.dark) #stDetail .st-card-body u,
+body:not(.dark) #stDetail .st-callout u {
+  text-decoration-color: #0284c7;
+}
+
+/* 4. Top Title Card, Badges & Back Button */
+body:not(.dark) .st-back {
+  color: #475569;
+}
+body:not(.dark) .st-back:hover {
+  color: #0284c7;
+}
+body:not(.dark) .st-title-card-body h1 {
+  color: #090d16;
+}
+body:not(.dark) .st-tagline-lg {
+  color: #1e293b;
+}
+body:not(.dark) .st-chip {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #475569;
+}
+
+/* 5. Source Banner */
+body:not(.dark) .st-source-banner {
+  background: #ffffff;
+  border: 1.5px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+}
+body:not(.dark) .st-source-banner strong {
+  color: #475569;
+}
+body:not(.dark) .st-source-banner p {
+  color: #334155;
+}
+
+/* 6. Callout Boxes */
+body:not(.dark) .st-callout {
+  background: rgba(15, 23, 42, 0.03);
+  border-radius: 0 10px 10px 0;
+  padding: 10px 14px;
+}
+body:not(.dark) .st-callout p {
+  color: #1e293b;
+}
+body:not(.dark) .st-callout-example {
+  background: rgba(2, 132, 199, 0.06);
+  border-left-color: #0284c7;
+}
+body:not(.dark) .st-callout-example .st-callout-label {
+  color: #0284c7;
+}
+body:not(.dark) .st-callout-pitfall {
+  background: rgba(225, 29, 72, 0.06);
+  border-left-color: #e11d48;
+}
+body:not(.dark) .st-callout-pitfall .st-callout-label {
+  color: #be123c;
+}
+body:not(.dark) .st-callout-pearl {
+  background: rgba(217, 119, 6, 0.06);
+  border-left-color: #d97706;
+}
+body:not(.dark) .st-callout-pearl .st-callout-label {
+  color: #b45309;
+}
+
+/* 7. Tables */
+body:not(.dark) .st-table-wrap {
+  background: #ffffff !important;
+  border: 1.5px solid rgba(15, 23, 42, 0.14) !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06) !important;
+}
+body:not(.dark) .st-table thead tr {
+  background: #f8fafc !important;
+  border-bottom: 2px solid rgba(15, 23, 42, 0.14) !important;
+}
+body:not(.dark) .st-table th {
+  color: #0f172a !important;
+  font-weight: 800;
+}
+body:not(.dark) .st-table td {
+  color: #334155 !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+}
+body:not(.dark) .st-table tbody tr:hover td {
+  background: rgba(2, 132, 199, 0.04) !important;
+}
+
+/* 8. Cross-Link Buttons & External Links */
+body:not(.dark) .st-cross-link {
+  background: #f8fafc;
+  color: #0284c7;
+  border: 1.5px solid rgba(2, 132, 199, 0.35);
+  font-weight: 700;
+}
+body:not(.dark) .st-cross-link:hover {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+}
+
+/* 9. Classification Grids */
+body:not(.dark) .st-classification {
+  background: #ffffff;
+  border: 1.5px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+}
+body:not(.dark) .st-classification-title {
+  color: #0f172a;
+}
+body:not(.dark) .st-class-group {
+  background: #f8fafc;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-left: 3px solid var(--group-accent, #0284c7);
+}
+body:not(.dark) .st-class-group h3 {
+  color: #0f172a;
+}
+body:not(.dark) .st-class-group p {
+  color: #475569;
+}
+body:not(.dark) .st-class-chip {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.16);
+  color: #334155;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+body:not(.dark) .st-class-chip:hover {
+  background: #e0f2fe;
+  color: var(--group-accent, #0284c7);
+  border-color: var(--group-accent, #0284c7);
+}
+
+/* 10. Diagrams (Mapleson, Venturi, Soda Lime, PISS, Infusion) */
+body:not(.dark) .st-diagram-wrap svg {
+  background: #ffffff;
+  border: 1.5px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+  color: #0f172a;
+}
+body:not(.dark) .st-diagram-caption {
+  color: #475569;
+}
+body:not(.dark) .st-structure-2d-box {
+  background: #f8fafc;
+  border: 1.5px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+body:not(.dark) .st-structure-formula {
+  background: #ffffff;
+  color: #0284c7;
+  border-color: rgba(2, 132, 199, 0.3);
+}
+
+/* 11. Workstation Pre-Use Checkout 7-Step SVG Flowchart Overrides */
+/* Default / Dark Mode */
+.st-wf-header-title { fill: #38bdf8; }
+.st-wf-card-bg { fill: rgba(15, 23, 42, 0.78); }
+.st-wf-card-title { fill: #f8fafc; }
+.st-wf-card-sub { fill: #94a3b8; }
+.st-wf-card-line { stroke: rgba(255, 255, 255, 0.1); }
+.st-wf-card-bullet { fill: #cbd5e1; }
+.st-wf-conn-line { stroke: #38bdf8; }
+.st-wf-connector { stroke: #38bdf8; }
+.st-wf-conn-pill { fill: #0f172a; stroke: #38bdf8; }
+.st-wf-conn-text { fill: #38bdf8; }
+.st-wf-ready-bg { fill: rgba(16, 185, 129, 0.12); }
+.st-wf-ready-title { fill: #34d399; }
+.st-wf-ready-line { stroke: rgba(16, 185, 129, 0.3); }
+.st-wf-ready-action { fill: #10b981; }
+.st-wf-footer { fill: #94a3b8; }
+
+/* Day Mode / Light Theme (body:not(.dark)) */
+body:not(.dark) .st-wf-header-title { fill: #0284c7; font-weight: 800; }
+body:not(.dark) .st-wf-card-bg {
+  fill: #ffffff;
+  filter: drop-shadow(0 2px 6px rgba(15, 23, 42, 0.08));
+}
+body:not(.dark) .st-wf-pill-bg { fill-opacity: 0.12; }
+body:not(.dark) .st-wf-pill-txt { font-weight: 900; }
+body:not(.dark) .st-wf-card-title { fill: #0f172a; font-weight: 800; }
+body:not(.dark) .st-wf-card-sub { fill: #475569; font-weight: 600; }
+body:not(.dark) .st-wf-card-line { stroke: rgba(15, 23, 42, 0.12); }
+body:not(.dark) .st-wf-card-bullet { fill: #1e293b; font-weight: 500; }
+body:not(.dark) .st-wf-highlight-1 { fill: #0284c7; font-weight: 800; }
+body:not(.dark) .st-wf-highlight-2 { fill: #d97706; font-weight: 800; }
+body:not(.dark) .st-wf-highlight-3 { fill: #2563eb; font-weight: 800; }
+body:not(.dark) .st-wf-highlight-4 { fill: #dc2626; font-weight: 800; }
+body:not(.dark) .st-wf-highlight-5 { fill: #059669; font-weight: 800; }
+body:not(.dark) .st-wf-highlight-6 { fill: #7c3aed; font-weight: 800; }
+body:not(.dark) .st-wf-highlight-7 { fill: #0d9488; font-weight: 800; }
+body:not(.dark) .st-wf-conn-line { stroke: #0284c7; }
+body:not(.dark) .st-wf-arrow-head { fill: #0284c7; }
+body:not(.dark) .st-wf-connector { stroke: #0284c7; }
+body:not(.dark) .st-wf-conn-pill {
+  fill: #ffffff;
+  stroke: #0284c7;
+  filter: drop-shadow(0 2px 4px rgba(2, 132, 199, 0.2));
+}
+body:not(.dark) .st-wf-conn-text { fill: #0284c7; font-weight: 800; }
+body:not(.dark) .st-wf-ready-bg {
+  fill: rgba(16, 185, 129, 0.08);
+  stroke: #059669;
+}
+body:not(.dark) .st-wf-ready-badge { fill: #059669; }
+body:not(.dark) .st-wf-ready-title { fill: #047857; font-weight: 900; }
+body:not(.dark) .st-wf-ready-line { stroke: rgba(5, 150, 105, 0.35); }
+body:not(.dark) .st-wf-ready-action { fill: #047857; font-weight: 900; }
+body:not(.dark) .st-wf-footer { fill: #64748b; font-weight: 600; }
