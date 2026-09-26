@@ -483,6 +483,29 @@
     </section>`;
   }
 
+  function renderSectionTableHTML(tbl) {
+    if (!tbl || !tbl.headers || !tbl.rows) return "";
+    const ths = tbl.headers.map((h) => `<th style="padding:10px 14px;border:1px solid rgba(255,255,255,0.12);font-weight:700;color:var(--text, #f8fafc);">${esc(h)}</th>`).join("");
+    const trs = tbl.rows.map((row, rIdx) => {
+      const bg = rIdx % 2 === 1 ? "background:rgba(255,255,255,0.025);" : "";
+      const tds = row.map((cell) => {
+        if (typeof cell === "object" && cell !== null) {
+          const badgeHTML = cell.badge ? `<span style="display:inline-block;padding:2px 8px;border-radius:999px;font-size:0.75rem;font-weight:700;background:${cell.badgeColor || '#0284c7'};color:#fff;margin-right:6px;">${esc(cell.badge)}</span>` : "";
+          return `<td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.08);vertical-align:middle;${bg}">${badgeHTML}${highlightKeyValues(esc(cell.text || ""))}</td>`;
+        }
+        return `<td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.08);vertical-align:middle;${bg}">${highlightKeyValues(esc(String(cell)))}</td>`;
+      }).join("");
+      return `<tr style="${bg}">${tds}</tr>`;
+    }).join("");
+    return `<div class="st-table-wrap" style="overflow-x:auto;margin:14px 0;border-radius:10px;border:1px solid rgba(255,255,255,0.12);background:rgba(15,23,42,0.45);box-shadow:0 4px 14px rgba(0,0,0,0.2);">
+      <table class="st-table" style="width:100%;border-collapse:collapse;font-size:0.88rem;text-align:left;line-height:1.45;">
+        <thead><tr style="background:rgba(255,255,255,0.07);border-bottom:2px solid rgba(255,255,255,0.16);">${ths}</tr></thead>
+        <tbody>${trs}</tbody>
+      </table>
+      ${tbl.caption ? `<p class="st-diagram-caption" style="margin:8px 12px 6px;">${esc(tbl.caption)}</p>` : ""}
+    </div>`;
+  }
+
   function topicPanelHTML(t) {
     const sectionsHTML = t.sections.map((s) => {
       let diagramHTML = "";
@@ -492,13 +515,21 @@
       else if (s.diagram === "infusion-mechanisms") diagramHTML = infusionPumpDiagramHTML();
       else if (s.diagram === "soda-lime-reaction") diagramHTML = sodaLimeDiagramHTML();
 
-      const imageHTML = s.image ? `<div class="st-diagram-wrap st-section-img-wrap"><img src="${esc(s.image.src)}" alt="${esc(s.image.alt || "")}" class="st-section-img" loading="lazy" style="max-width:100%;border-radius:10px;display:block;margin:0 auto 10px;box-shadow:0 4px 16px rgba(0,0,0,0.25);">${s.image.caption ? `<p class="st-diagram-caption">${esc(s.image.caption)}</p>` : ""}</div>` : "";
+      let imagesHTML = "";
+      if (Array.isArray(s.images)) {
+        imagesHTML = s.images.map((img) => `<div class="st-diagram-wrap st-section-img-wrap" style="margin-bottom:14px;"><img src="${esc(img.src)}" alt="${esc(img.alt || "")}" class="st-section-img" loading="lazy" style="max-width:100%;border-radius:10px;display:block;margin:0 auto 10px;box-shadow:0 4px 16px rgba(0,0,0,0.25);">${img.caption ? `<p class="st-diagram-caption">${esc(img.caption)}</p>` : ""}</div>`).join("");
+      } else if (s.image) {
+        imagesHTML = `<div class="st-diagram-wrap st-section-img-wrap"><img src="${esc(s.image.src)}" alt="${esc(s.image.alt || "")}" class="st-section-img" loading="lazy" style="max-width:100%;border-radius:10px;display:block;margin:0 auto 10px;box-shadow:0 4px 16px rgba(0,0,0,0.25);">${s.image.caption ? `<p class="st-diagram-caption">${esc(s.image.caption)}</p>` : ""}</div>`;
+      }
+
+      const tableHTML = s.table ? renderSectionTableHTML(s.table) : "";
 
       const body = `${s.b ? paras(s.b) : ""}` +
         callout("example", "🧩 Worked example", s.example) +
         callout("pitfall", "⚠️ Common pitfall", s.pitfall) +
         callout("pearl", "💡 Key point", s.pearl) +
-        imageHTML +
+        tableHTML +
+        imagesHTML +
         diagramHTML;
       return card(s.h, body);
     }).join("");
