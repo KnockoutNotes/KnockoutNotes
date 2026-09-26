@@ -479,6 +479,7 @@ body[data-content-page="study"] .st-page.container {
 .st-tile[data-cat="vasopressors"],  .st-title-card[data-cat="vasopressors"]  { --poster-a: #e11d48; --poster-b: #4c0519; }
 .st-tile[data-cat="local"],         .st-title-card[data-cat="local"]         { --poster-a: #0284c7; --poster-b: #0c2d48; }
 .st-tile[data-cat="pregnancy"],     .st-title-card[data-cat="pregnancy"]     { --poster-a: #db2777; --poster-b: #500724; }
+.st-tile[data-cat="examination"],   .st-title-card[data-cat="examination"]   { --poster-a: #0f9d74; --poster-b: #064e3b; }
 
 .st-tile-molecule.st-has-canvas .st-tile-structure,
 .st-molecule-viewer.st-has-canvas .st-structure-svg {

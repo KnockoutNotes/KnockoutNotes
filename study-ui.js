@@ -44,6 +44,7 @@
   // instead: layered opacity for shading, texture strokes, small highlights.
   const CAT_ICON_SVG = {
     anaesthesia: '<svg viewBox="0 0 48 48"><path d="M24 6v13" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none"/><path d="M24 19c-1-5-7-6-11-3-4 3-5 12-3 18 2 5 8 6 11 2 1-1.5 2-3.5 2-6V19z" fill="currentColor" opacity="0.95"/><path d="M24 19c1-5 7-6 11-3 4 3 5 12 3 18-2 5-8 6-11 2-1-1.5-2-3.5-2-6V19z" fill="currentColor" opacity="0.7"/><circle cx="16" cy="26" r="1.6" fill="rgba(0,0,0,0.18)"/><circle cx="14" cy="32" r="1.3" fill="rgba(0,0,0,0.14)"/><circle cx="32" cy="26" r="1.6" fill="rgba(0,0,0,0.14)"/><circle cx="34" cy="32" r="1.3" fill="rgba(0,0,0,0.1)"/></svg>',
+    examination: '<svg viewBox="0 0 48 48"><path d="M14 8v10a10 10 0 0 0 20 0V8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="14" cy="8" r="2.5" fill="currentColor"/><circle cx="34" cy="8" r="2.5" fill="currentColor"/><path d="M24 28v6a6 6 0 0 0 6 6h4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="36" cy="40" r="5" fill="currentColor" opacity="0.9"/><circle cx="36" cy="40" r="2.5" fill="rgba(255,255,255,0.4)"/></svg>',
     equipment: '<svg viewBox="0 0 48 48"><rect x="5" y="9" width="27" height="20" rx="3" fill="currentColor" opacity="0.92"/><path d="M9 22h5l2.5-7 4 13 3-9 2 3h4.5" stroke="rgba(0,0,0,0.38)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="35" y="6" width="6" height="20" rx="3" fill="currentColor" opacity="0.55"/><rect x="36.3" y="9" width="3.4" height="4" rx="1" fill="rgba(0,0,0,0.2)"/><rect x="12" y="33" width="14" height="4" rx="2" fill="currentColor" opacity="0.5"/></svg>',
     induction: '<svg viewBox="0 0 48 48"><g transform="rotate(45 24 24)"><rect x="6" y="21" width="8" height="4" fill="currentColor" opacity="0.7"/><rect x="14" y="18" width="20" height="10" rx="2" fill="currentColor" opacity="0.92"/><rect x="16" y="20.5" width="14" height="5" rx="1" fill="rgba(0,0,0,0.2)"/><line x1="19" y1="18" x2="19" y2="28" stroke="rgba(0,0,0,0.3)" stroke-width="1"/><line x1="23" y1="18" x2="23" y2="28" stroke="rgba(0,0,0,0.3)" stroke-width="1"/><line x1="27" y1="18" x2="27" y2="28" stroke="rgba(0,0,0,0.3)" stroke-width="1"/><rect x="34" y="20" width="8" height="6" rx="1" fill="currentColor" opacity="0.85"/><rect x="42" y="22" width="4" height="2" fill="currentColor" opacity="0.95"/></g></svg>',
     relaxants: '<svg viewBox="0 0 48 48"><line x1="17" y1="14" x2="29" y2="14" stroke="currentColor" stroke-width="2.4" opacity="0.6"/><line x1="14" y1="17" x2="20" y2="29" stroke="currentColor" stroke-width="2.4" opacity="0.6"/><line x1="32" y1="17" x2="26" y2="29" stroke="currentColor" stroke-width="2.4" opacity="0.6"/><circle cx="12" cy="13" r="6" fill="currentColor" opacity="0.95"/><circle cx="10" cy="11" r="2" fill="rgba(255,255,255,0.4)"/><circle cx="34" cy="13" r="6" fill="currentColor" opacity="0.95"/><circle cx="32" cy="11" r="2" fill="rgba(255,255,255,0.4)"/><circle cx="23" cy="33" r="6" fill="currentColor" opacity="0.95"/><circle cx="21" cy="31" r="2" fill="rgba(255,255,255,0.4)"/></svg>',
@@ -61,7 +62,7 @@
   const drugById = new Map(DATA.drugs.map((d) => [d.id, d]));
   const topicById = new Map(DATA.topics.map((t) => [t.id, t]));
   const catById = new Map(DATA.categories.map((c) => [c.id, c]));
-  const TOPIC_CATS = new Set(["anaesthesia", "equipment"]);
+  const TOPIC_CATS = new Set(["anaesthesia", "examination", "equipment"]);
   const isDrugCat = (catId) => !TOPIC_CATS.has(catId);
 
   function itemById(id) { return drugById.get(id) || topicById.get(id) || null; }
@@ -171,6 +172,8 @@
 
   // Global listener for when study-molecule-3d.js completes loading and Three.js initialization.
   // Mounts 3D rotating model strictly in the detail reading view where only 1 viewer is active at a time.
+  // Note: mountStructureViewers already defers internally via rAF, but we still listen here for
+  // the rare case where the module loads AFTER the user has already navigated to a detail page.
   window.addEventListener("kn-molecule3d-ready", () => {
     const detail = $("#stDetail");
     if (detail && !detail.hidden) {
@@ -336,6 +339,37 @@
   function formatStructuredText(text, isDrug = false) {
     if (!text) return "";
 
+    function sanitizeLatexMath(str) {
+      if (!str || !str.includes("$")) return str;
+      str = str.replace(/\$\$([\s\S]*?)\$\$/g, (m, inner) => inner.trim());
+      str = str.replace(/(?<!\$)\$(?!\$|\{)([^$\n]+)\$/g, (m, inner) => {
+        let clean = inner
+          .replace(/\\text\{([^}]+)\}/g, "$1")
+          .replace(/\\mathrm\{([^}]+)\}/g, "$1")
+          .replace(/\\times/g, "×")
+          .replace(/\\ge/g, "≥")
+          .replace(/\\le/g, "≤")
+          .replace(/\\approx/g, "≈")
+          .replace(/\\cdot/g, "·")
+          .replace(/\\circ/g, "°")
+          .replace(/\\Delta/g, "Δ")
+          .replace(/\\rightarrow/g, "→")
+          .replace(/\\,/g, " ")
+          .replace(/\\%/g, "%")
+          .replace(/\\left\(/g, "(").replace(/\\right\)/g, ")")
+          .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, "($1 / $2)")
+          .replace(/\^\{([^}]+)\}/g, "<sup>$1</sup>")
+          .replace(/\_\{([^}]+)\}/g, "<sub>$1</sub>")
+          .replace(/\^([0-9\+\-]+)/g, "<sup>$1</sup>")
+          .replace(/\_([0-9a-zA-Z]+)/g, "<sub>$1</sub>")
+          .replace(/\\/g, "");
+        return clean;
+      });
+      return str.replace(/\$/g, "");
+    }
+
+    text = sanitizeLatexMath(text);
+
     function highlightHeading(str) {
       return str.replace(/^([A-Z0-9][^:—–\n]{1,55}[:—–])\s*/, (m, label) => `<strong>${label}</strong> `);
     }
@@ -349,6 +383,9 @@
         }
         return `<a href="${esc(url)}" class="st-cross-link" target="_blank" rel="noopener">${esc(label)} ↗</a>`;
       });
+      // Markdown bold and italics (e.g. procedures in inverted commas and italics: *“...”*)
+      res = res.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+      res = res.replace(/\*([^*]+)\*/g, "<em>$1</em>");
       res = highlightKeyValues(res);
       res = highlightHeading(res);
       return res;
@@ -529,27 +566,38 @@
   }
 
   // Mounts the rotating Three.js viewer (study-molecule-3d.js) into every
-  // .st-molecule-viewer placeholder under `root`. If the module hasn't
-  // finished loading yet (it's an ES module, deferred relative to this
-  // classic script — see study.html) or WebGL isn't available, the
-  // placeholder's starting content (the flat 2D SVG, or nothing) is left
-  // as-is rather than showing an empty box.
+  // .st-molecule-viewer placeholder under `root`. Uses requestAnimationFrame
+  // so that small containers (e.g. the 64×64 title-card media) have been
+  // laid out and have real pixel dimensions before the WebGL renderer tries
+  // to size itself — a zero-size renderer renders nothing and silently fails.
+  // Falls back gracefully if KNMountMolecule3D isn't available yet.
   function mountStructureViewers(root) {
-    const nodes = root.querySelectorAll(".st-molecule-viewer[data-drug]");
-    nodes.forEach((node) => {
-      const data = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[node.getAttribute("data-drug")];
-      if (!data) return;
-      const tryMount = () => {
-        if (typeof window.KNMountMolecule3D !== "function") return false;
+    const nodes = Array.from(root.querySelectorAll(".st-molecule-viewer[data-drug]"));
+    if (!nodes.length) return;
+
+    function attemptAll() {
+      const mounted = new Set(); // prevent duplicate WebGL contexts for same drug id
+      nodes.forEach((node) => {
+        if (!node.isConnected) return;   // skip if navigated away already
+        const drugId = node.getAttribute("data-drug");
+        if (mounted.has(drugId)) return; // one viewer per drug per detail page
+        const data = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[drugId];
+        if (!data) return;
+        if (typeof window.KNMountMolecule3D !== "function") return;
         try {
-          return window.KNMountMolecule3D(node, data);
-        } catch (err) {
-          return false;
-        }
-      };
-      if (tryMount()) return;
-      if (typeof window.KNMountMolecule3D !== "function") {
-        window.addEventListener("kn-molecule3d-ready", () => tryMount(), { once: true });
+          if (window.KNMountMolecule3D(node, data)) mounted.add(drugId);
+        } catch (err) { /* WebGL unavailable — fallback SVG stays visible */ }
+      });
+    }
+
+    // One rAF ensures the DOM has been painted and every container has
+    // non-zero clientWidth/clientHeight before the renderer calls setSize().
+    requestAnimationFrame(() => {
+      if (typeof window.KNMountMolecule3D === "function") {
+        attemptAll();
+      } else {
+        // Module not yet executed — wait for its ready event (fires once).
+        window.addEventListener("kn-molecule3d-ready", attemptAll, { once: true });
       }
     });
   }
