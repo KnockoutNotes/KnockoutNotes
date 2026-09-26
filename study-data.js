@@ -880,6 +880,49 @@ PATIENT CHECKOUT COMPLETE — PROCEED SAFELY WITH INDUCTION.`
         }
       },
       {
+        h: "How Whole Blood is Separated into Components: Centrifugation, Fractionation & Preparation",
+        b: "Modern blood banking separates nearly 100% of donated whole blood into specialized therapeutic components, maximizing efficacy while minimizing volume overload and immunological exposure. The entire process relies on the physical principle of differential specific gravity (density):\n\n" +
+           "1. Physical Densities of Blood Elements:\n" +
+           "• Red Blood Cells (RBCs): 1.093–1.096 g/mL (highest density → settles to the bottom).\n" +
+           "• Granulocytes / White Blood Cells: 1.077–1.082 g/mL.\n" +
+           "• Platelets: 1.030–1.040 g/mL (intermediate density → settles above RBCs in the buffy layer).\n" +
+           "• Plasma: 1.025–1.029 g/mL (lowest density → floats to the very top).\n\n" +
+           "2. Initial Whole Blood Phlebotomy & Anticoagulant-Preservative Bags:\n" +
+           "• Standard Donation: 450 mL (±10%) or 500 mL of whole blood drawn through a 16-gauge needle within 8 to 12 minutes into a sterile, closed multi-bag system.\n" +
+           "• Primary Bag Anticoagulant: Contains 63–70 mL of CPD (Citrate-Phosphate-Dextrose) or CPDA-1 (Citrate-Phosphate-Dextrose-Adenine):\n" +
+           "  - Citrate: Chelates ionized calcium (Ca²⁺), preventing activation of the intrinsic and extrinsic coagulation cascades.\n" +
+           "  - Sodium Phosphate: Maintains intracellular pH, slowing the degradation of 2,3-DPG.\n" +
+           "  - Dextrose: Provides substrate for anaerobic glycolytic ATP synthesis.\n" +
+           "  - Adenine: Acts as a precursor for continuous AMP/ATP regeneration, extending RBC storage from 21 days (CPD) to 35 days (CPDA-1).\n\n" +
+           "3. The Two Separation Pathways (PRP vs Buffy Coat):\n" +
+           "• Method A: Platelet-Rich Plasma (PRP) Method (Standard in USA and Asia):\n" +
+           "  1. Soft Spin (Light Centrifugation): Whole blood is spun at ~2000 × g for 3 to 5 minutes at 20°C–22°C. The heavy red cells pellet at the bottom, leaving supernatant Platelet-Rich Plasma (PRP) containing suspended platelets and plasma.\n" +
+           "  2. Expression: An automated mechanical expressor presses the PRP into the first satellite bag, leaving packed red cells in the primary bag.\n" +
+           "  3. Additive Solution to RBCs: 100–110 mL of nutrient additive solution (SAGM [Saline-Adenine-Glucose-Mannitol], AS-1, or AS-3) is drained into the RBCs, lowering haematocrit to 55–65% and extending shelf-life to 42 days at 1°C–6°C.\n" +
+           "  4. Hard Spin (Heavy Centrifugation): The PRP satellite bag is spun at high speed (~4000–5000 × g for 5–7 minutes). Platelets form a dense sediment button at the bottom. The supernatant cell-poor plasma is expressed into a second satellite bag, leaving ~50–70 mL of plasma with the platelet pellet.\n" +
+           "  5. Resting & Agitation: The platelet pellet rests undisturbed for 1–2 hours to prevent irreversible aggregation, then gently resuspended on a mechanical flatbed agitator at 20°C–24°C.\n" +
+           "• Method B: Buffy Coat (BC) Method (Standard across Europe, UK, Australasia):\n" +
+           "  1. Hard Spin: Whole blood is subjected to a single high-speed centrifugation (4000 × g for 10–12 minutes). This creates three distinct strata: bottom packed RBCs, middle thin layer (15–30 mL) 'Buffy Coat' (containing >80% of platelets and >70% of leukocytes), and top cell-poor plasma.\n" +
+           "  2. Top-and-Bottom Press: An optical automated separator presses plasma out through the top port and packed RBCs through the bottom port simultaneously, leaving the buffy coat isolated in the primary bag.\n" +
+           "  3. Pooling & Platelet Production: Buffy coats from 4 to 6 ABO-identical donors are pooled with 1 unit of plasma or Platelet Additive Solution (PAS). The pool undergoes a soft spin; platelets stay in supernatant while leukocytes and RBCs form a tight pellet. Supernatant is filtered through an in-line leukoreduction filter, yielding high-purity pooled platelets with lower leukocyte contamination and lower reaction rates than PRP-derived platelets.\n\n" +
+           "4. Harvesting Fresh Frozen Plasma (FFP) & Cryoprecipitate:\n" +
+           "• Fresh Frozen Plasma (FFP): The cell-poor plasma is blast-frozen to ≤ -18°C within 8 hours of phlebotomy to preserve labile Factors V and VIII. Stored for 12 months.\n" +
+           "• Cryoprecipitate Production (Controlled Freeze-Thaw Fractionation):\n" +
+           "  1. 1 unit of FFP is thawed slowly overnight at 1°C to 6°C over 12–16 hours.\n" +
+           "  2. A cold-insoluble white flocculent precipitate forms at 4°C, enriched with Fibrinogen (Factor I), Factor VIII, von Willebrand factor (vWF), Factor XIII, and Fibronectin.\n" +
+           "  3. Centrifuged at high speed (4000 × g at 4°C). The supernatant ('Cryo-poor / Cryo-depleted Plasma') is drained off for use in TTP or warfarin reversal.\n" +
+           "  4. The cold precipitate plus 10–20 mL of plasma is immediately refrozen at ≤ -18°C as Cryoprecipitate.\n\n" +
+           "5. Apheresis (Automated Continuous Flow Separation):\n" +
+           "• Single-Donor Apheresis: The donor is connected to an automated centrifuge device (e.g. Trima Accel, Amicus). Whole blood is continuously drawn and separated in a sterile centrifugal chamber.\n" +
+           "• The desired component (Single-Donor Apheresis Platelet [SDAP ≥3.0 × 10¹¹ plts], double red cell units, or source plasma) is diverted into a collection container while unharvested cells and plasma are immediately returned to the donor.\n" +
+           "• Major Clinical Advantage: Transfusing 1 apheresis platelet unit provides a full adult therapeutic dose from a single donor, avoiding multi-donor antigen exposure and drastically reducing infectious and alloimmunization risks.\n\n" +
+           "6. Mandatory Quality & Safety Post-Processing Steps:\n" +
+           "• Leukoreduction (Pre-Storage Leukofiltration): Blood components pass through biocompatible polyester depth filters that capture >99.9% (>3 log10 reduction) of donor leukocytes (<1 × 10⁶ residual WBCs/unit). Drastically reduces Febrile Non-Haemolytic Transfusion Reactions (FNHTR), CMV transmission (CMV resides in donor monocytes), and HLA alloimmunization.\n" +
+           "• Gamma / X-Ray Irradiation (25 Gray): Cellular components (RBCs, platelets) are irradiated with 25 Gy (minimum 15 Gy at any point) to crosslink DNA and eliminate donor T-lymphocyte replication. Mandatory in immunocompromised patients (stem cell transplants, lymphoma, congenital T-cell immunodeficiency) and biological family directed donations to prevent 100% fatal Transfusion-Associated Graft-versus-Host Disease (TA-GvHD).\n" +
+           "• Saline Washing: Centrifuging RBCs or platelets and washing twice with 1–2 L sterile 0.9% saline removes >99% of plasma proteins. Indicated for patients with severe IgA deficiency and anti-IgA antibodies (prevents fatal anaphylaxis) and recurrent refractory allergic urticarial reactions.\n" +
+           "• Pathogen Inactivation / Reduction: Treatment with photochemical agents (e.g. Amotosalen [psoralen] + UVA light [INTERCEPT] or Riboflavin + UV [Mirasol]) irreversibly crosslinks bacterial, viral, and parasite DNA/RNA, rendering pathogens incapable of replication."
+      },
+      {
         h: "Massive Transfusion Protocol (MTP), Damage Control & Viscoelastic Haemostasis",
         diagram: "blood-products-guide",
         b: "Massive transfusion in severe trauma, ruptured aortic aneurysms, or catastrophic obstetric haemorrhage requires aggressive Damage Control Resuscitation (DCR) to prevent the lethal triad (Hypothermia, Acidosis, and Coagulopathy):\n\n" +
