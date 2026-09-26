@@ -2866,6 +2866,40 @@ PATIENT CHECKOUT COMPLETE — PROCEED SAFELY WITH INDUCTION.`
     ]
   });
 
+    addDrug({
+    id: "labetalol", cat: "antihypertensives", name: "Labetalol", brand: "Trandate / Normodyne",
+    classification: "Combined Competitive Alpha-1 and Non-Selective Beta-1/Beta-2 Adrenoceptor Antagonist",
+    tagline: "Combined α1- and non-selective β-blocker — first-line agent for acute severe hypertension in pregnancy and aortic dissection",
+    tags: ["Alpha-beta blocker", "Pre-eclampsia", "Aortic dissection", "Hypertensive crisis"],
+    source: SRC.fdaUpToDate("Trandate (labetalol hydrochloride) injection label", "Promius/US FDA"),
+    structure: `Labetalol hydrochloride (2-hydroxy-5-[1-hydroxy-2-[(1-methyl-3-phenylpropyl)amino]ethyl]benzamide hydrochloride) is a synthetic salicylamide derivative containing two chiral carbon centres (resulting in an equimolar mixture of four stereoisomers: R,R; S,S; R,S; S,R). The R,R-enantiomer (dilevalol) accounts for virtually all non-selective beta-blocking activity and beta-2 intrinsic sympathomimetic activity (ISA), while the S,R-enantiomer provides competitive alpha-1 adrenergic receptor blockade. Ratio of alpha to beta blockade: approximately 1:3 following oral administration, but shifts to approximately 1:7 following intravenous administration.`,
+    pd: `Dual competitive antagonism: (1) Postsynaptic alpha-1 adrenoceptor blockade produces systemic peripheral arteriolar vasodilation, selectively decreasing total peripheral resistance (SVR) and mean arterial pressure without inducing venous pooling or pulmonary vascular resistance collapse. (2) Concurrent non-selective beta-1 and beta-2 adrenoceptor blockade (with partial beta-2 ISA) prevents the profound reflex baroreceptor-mediated tachycardia and increase in cardiac output that typically undermines pure vasodilators like hydralazine. Cardiac output and stroke volume are maintained or only slightly reduced, while myocardial oxygen consumption (MVO2) drops significantly. In obstetrics, labetalol preserves uteroplacental and fetal blood flow, making it a gold standard first-line antihypertensive in pre-eclampsia and eclampsia.`,
+    pk: `Onset of IV action: 2 to 5 minutes. Peak hypotensive effect: 5 to 15 minutes. Duration of hypotensive effect: 2 to 6 hours (extended with higher doses). Volume of distribution: ~9.0 L/kg (extensively distributed into tissues). Plasma protein binding: ~50%. Extensively metabolized in the liver via glucuronidation (inactive glucuronide conjugates); negligible unchanged drug is excreted renally (<5%). Elimination half-life: 5.5 to 8 hours. Crosses the placenta and is excreted in small amounts in breast milk.`,
+    dosage: `FDA-approved & ACOG Clinical Practice Guidelines:
+  (1) Acute Severe Hypertension in Pregnancy / Pre-Eclampsia / Eclampsia (ACOG First-Line Protocol, SBP >=160 mmHg or DBP >=110 mmHg):
+    • Initial: 20 mg slow IV push over 2 minutes.
+    • Repeat BP in 10 minutes: if still severely elevated, administer 40 mg IV over 2 minutes.
+    • Repeat BP in 10 minutes: if still severely elevated, administer 80 mg IV over 2 minutes (up to max 220 mg in the acute escalation series). If blood pressure remains refractory, switch to IV hydralazine.
+  (2) Severe Acute Non-Obstetric Hypertensive Emergencies / Postoperative Hypertension:
+    • Incremental IV Bolus Protocol: Initial 10 to 20 mg slow IV push over 2 minutes. Repeat with 20 to 80 mg IV boluses every 10 minutes as needed up to a cumulative ceiling dose of 300 mg.
+    • Continuous IV Infusion: 0.5 to 2.0 mg/min (mix 200 mg in 200 mL D5W or NS = 1.0 mg/mL). Standard titration: initiate at 1 to 2 mg/min, titrate up to 8 to 10 mg/min if needed until target MAP is reached, then discontinue or taper.
+  (3) Acute Type A or B Aortic Dissection:
+    • Administer in combination with or immediately preceding vasodilators (nitroprusside) to suppress ventricular ejection velocity (dP/dt) and maintain heart rate 55 to 65 bpm and systolic BP 100 to 120 mmHg.`,
+    offLabel: `Deliberate controlled hypotensive anaesthesia for intracranial aneurysm clipping and middle ear surgery; blunting hemodynamic surges during direct laryngoscopy and tracheal extubation; adjunct for perioperative pheochromocytoma excision (CRITICAL: must ONLY be given AFTER complete, established alpha-blockade with phenoxybenzamine or doxazosin; never give as sole initial agent!).`,
+    complications: `PERIOPERATIVE WARNINGS:
+  (1) Ratio Shift (IV 1:7): Intravenous labetalol behaves primarily as a potent beta-blocker (1:7 alpha:beta ratio); do not expect massive rapid vasodilation without accompanying negative inotropy and chronotropy. Watch for severe sinus bradycardia, AV block, and acute heart failure in patients with borderline LV ejection fraction.
+  (2) Bronchospasm: Non-selective beta-2 blockade can trigger life-threatening bronchoconstriction in patients with active asthma or severe reactive airway disease (relative contraindication).
+  (3) Scalp Tingling / Paresthesias: A classic, benign sensation caused by transient cutaneous alpha-1 receptor blockade and cutaneous vasodilation.
+  (4) Hypoglycaemic Symptom Masking: Blunts tachycardia and tremor during intraoperative hypoglycaemia in diabetic patients.
+  (5) Contraindicated in: Severe sinus bradycardia, second- or third-degree heart block, cardiogenic shock, overt acute pulmonary oedema, and severe bronchial asthma.`,
+    references: [
+      "FDA Prescribing Information — Trandate (labetalol hydrochloride injection), Prometheus / US FDA.",
+      "ACOG Practice Bulletin No. 222: Gestational Hypertension and Preeclampsia (Obstet Gynecol 2020 / reaffirmed 2023).",
+      "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 69 (Obstetric Anesthesia).",
+      "UpToDate \"Drug Information: Labetalol\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
   // ---------------- ALPHA-2 AGONISTS ----------------
   addDrug({
     id: "clonidine", cat: "alpha2", name: "Clonidine", brand: "Catapres",
@@ -3388,6 +3422,120 @@ Citrate Toxicity from Massive Transfusion Protocol (PRBCs & FFP contain citrate 
   });
 
   // ========================================================================
+    addDrug({
+    id: "atropine", cat: "miscellaneous", name: "Atropine Sulfate", brand: "Atropine Injection",
+    classification: "Tertiary Amine Parasympatholytic • Competitive Non-Selective Muscarinic Acetylcholine Receptor Antagonist",
+    tagline: "Tertiary amine antimuscarinic — the classic vagolytic for acute haemodynamically unstable bradycardia & organophosphate antidote",
+    tags: ["Anticholinergic", "Antimuscarinic", "Vagolytic", "ACLS bradycardia", "Organophosphate antidote"],
+    source: SRC.fdaUpToDate("Atropine Sulfate injection label", "Hikma/US FDA"),
+    structure: `Atropine is a racemic mixture of D- and L-hyoscyamine (tropine (RS)-3-hydroxy-2-phenylpropanoate), an alkaloid originally isolated from Atropa belladonna. It is a tertiary amine featuring a bicyclic tropane ring connected via an ester linkage to tropic acid. As an uncharged, lipid-soluble tertiary amine at physiologic pH, atropine readily crosses both the blood-brain barrier and the placenta, unlike quaternary ammonium compounds like glycopyrrolate.`,
+    pd: `Competitive, reversible antagonist at all postganglionic muscarinic acetylcholine receptor subtypes (M1, M2, M3, M4, M5). Cardiac actions: blocks parasympathetic vagal stimulation at cardiac M2 receptors in the sinoatrial (SA) node and atrioventricular (AV) node. This increases SA node automaticity, discharge rate, and speeds AV nodal conduction velocity, shortening PR interval and relieving vagally-mediated sinus bradycardia, sinus pauses, or AV block. Extracardiac actions: blocks M3 receptors in exocrine glands (potently suppressing salivary, lacrimal, tracheobronchial, and sweat secretions), smooth muscle of the eye (causing pupillary sphincter relaxation → mydriasis, and ciliary muscle paralysis → cycloplegia / blurred near vision), bronchial smooth muscle (bronchodilation), gastrointestinal tract (decreased motility and tone), and urinary bladder (detrusor relaxation → urinary retention).`,
+    pk: `Onset of action: IV <1 minute (nearly immediate); IM 15 to 30 minutes. Peak cardiac vagolytic effect: 2 to 4 minutes post-IV bolus. Duration of vagolytic effect: 1 to 2 hours (extracardiac effects such as mydriasis and cycloplegia persist much longer, 24 to 72 hours). Extensively distributed into body tissues; volume of distribution: 1.5 to 2.5 L/kg. Plasma protein binding: ~15 to 40%. Hepatically metabolized via enzymatic hydrolysis and conjugation (~50%); 30 to 50% is excreted unchanged in urine. Elimination half-life: 2.5 to 4.0 hours.`,
+    dosage: `AHA ACLS & ERC Guidelines:
+  (1) Acute Symptomatic or Haemodynamically Unstable Bradycardia (ACLS First-Line):
+    • Standard IV Dose: 1.0 mg rapid IV push (updated from older 0.5 mg recommendation in 2020 AHA Guidelines).
+    • Repeat Dosing: 1.0 mg IV push every 3 to 5 minutes as needed.
+    • Maximum Cumulative Vagolytic Ceiling Dose: 3.0 mg total (approx. 0.04 mg/kg, which achieves complete vagal blockade in adults). If ineffective, transition immediately to transcutaneous pacing or chronotropic infusions (epinephrine, dopamine).
+    • MANDATORY LOW-DOSE AVOIDANCE RULE: NEVER administer doses <0.5 mg to an adult! Low subtherapeutic doses stimulate central vagal medullary nuclei and block presynaptic inhibitory M1 autoreceptors on postganglionic parasympathetic nerve terminals, increasing acetylcholine release and paradoxically worsening the bradycardia!
+  (2) Organophosphate / Carbamate Insecticide or Nerve Agent (Tabun, Sarin, VX) Toxicity:
+    • Initial Dose: 2.0 to 4.0 mg IV rapid push.
+    • Repeat Dosing: Double the dose or repeat 2.0 mg IV every 5 to 10 minutes until full clinical atropinisation is achieved (resolution of life-threatening bronchorrhea, clear lung auscultation, heart rate >80 bpm, resolution of bronchospasm). Note: Mydriasis is an unreliable endpoint; drying of pulmonary secretions is the primary therapeutic target!
+  (3) Antagonist Pairing with Neostigmine for Neuromuscular Blockade Reversal:
+    • 0.4 to 0.6 mg atropine per 1.0 mg of neostigmine (faster onset than glycopyrrolate, but produces much higher incidence of extreme tachycardia and penetrates the CNS).`,
+    offLabel: `Treatment of trigeminocardiac, oculocardiac, and vagal traction reflexes during ophthalmic, maxillofacial, and laparoscopy procedures; reduction of excessive respiratory tract secretions in palliative end-of-life care ('death rattle').`,
+    complications: `PERIOPERATIVE WARNINGS & TOXICITY:
+  (1) Paradoxical Bradycardia: Subtherapeutic doses (<0.5 mg) slow heart rate via central vagal stimulation and presynaptic M1 autoreceptor blockade. Always give at least 0.5 to 1.0 mg in adults!
+  (2) Central Anticholinergic Syndrome (CAS): Because atropine crosses the blood-brain barrier, it can induce acute postoperative delirium, agitation, hallucinations, confusion, and coma (especially in elderly patients). Specific antidote: Physostigmine 1.0 to 2.0 mg slow IV push (a tertiary amine acetylcholinesterase inhibitor that penetrates the CNS).
+  (3) Acute Angle-Closure Glaucoma: Pupillary dilation and ciliary relaxation crowd the anterior chamber angle and impede aqueous humour drainage; strictly avoid in untreated angle-closure glaucoma.
+  (4) Severe Tachycardia & Myocardial Ischaemia: Excessive heart rate increases MVO2 and shortens diastolic coronary perfusion time; dangerous in severe coronary artery disease or critical aortic stenosis.
+  (5) Urinary Retention: Relaxes detrusor and contracts trigone/sphincter; high risk in elderly males with benign prostatic hyperplasia (BPH).`,
+    references: [
+      "American Heart Association (AHA) Guidelines for Cardiopulmonary Resuscitation and Emergency Cardiovascular Care: Adult Advanced Cardiovascular Life Support (ACLS 2020 / reaffirmed 2024).",
+      "FDA Prescribing Information — Atropine Sulfate Injection, Hikma / US FDA.",
+      "Miller's Anesthesia, 10th ed., Ch. 19 (Autonomic Nervous System & Anticholinergics).",
+      "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed., Ch. 12."
+    ]
+  });
+
+  addDrug({
+    id: "glycopyrrolate", cat: "miscellaneous", name: "Glycopyrrolate", brand: "Robinul",
+    classification: "Synthetic Quaternary Ammonium Parasympatholytic • Peripheral Muscarinic Acetylcholine Receptor Antagonist",
+    tagline: "Quaternary ammonium antimuscarinic — zero blood-brain barrier crossing, ideal reversal partner for neostigmine & premier antisialagogue",
+    tags: ["Anticholinergic", "Antimuscarinic", "Neostigmine partner", "Quaternary amine", "Antisialagogue"],
+    source: SRC.fdaUpToDate("Robinul (glycopyrrolate injection) label", "Hikma/US FDA"),
+    structure: `Glycopyrrolate is a synthetic quaternary ammonium compound (3-[(cyclopentyl-hydroxyphenylacetyl)oxy]-1,1-dimethylpyrrolidin-1-ium bromide). Its structure features a permanently charged, positively-ionized quaternary nitrogen atom embedded in a pyrrolidine ring, linked by an ester bond to cyclopentylmandelic acid. The permanent positive charge makes the molecule highly polar and completely lipid-insoluble; as a result, it CANNOT cross the lipophilic blood-brain barrier or placental membrane in clinically meaningful amounts.`,
+    pd: `Synthetic competitive antagonist at peripheral muscarinic acetylcholine receptors (predominantly M1, M2, and M3). Key peripheral actions: (1) Cardiac M2 Receptor Blockade: Increases sinus node discharge rate and enhances AV nodal conduction velocity, providing smooth, controlled vagal blockade with significantly less abrupt, extreme tachycardic surges and dysrhythmias compared to atropine. (2) Salivary & Tracheobronchial M3 Receptor Blockade: Twice as potent as atropine as an antisialagogue; produces profound, prolonged suppression of salivary, pharyngeal, tracheal, and bronchial secretions, making it the agent of choice before awake fibreoptic bronchoscopic intubation and ketamine administration. (3) Protection Against Anticholinesterase Adverse Effects: Specifically blocks the visceral muscarinic hyperactivation (severe bradycardia, profuse bronchorrhea, bronchospasm, and hyperperistalsis) induced by neostigmine during reversal of neuromuscular blockade, while leaving desired nicotinic transmission at the motor endplate completely uninhibited.`,
+    pk: `Onset of action: IV 1 minute; IM 15 to 30 minutes. Peak vagolytic effect: 3 to 5 minutes post-IV bolus. Duration of vagal blockade: 2 to 3 hours (matches neostigmine's duration of action perfectly). Duration of antisialagogue effect: 6 to 8 hours (substantially longer than atropine). Poorly lipid-soluble with low volume of distribution (~0.4 L/kg). Plasma protein binding: ~40%. Minimally metabolized by the liver; approximately 85% is excreted completely unchanged in the urine and bile. Zero blood-brain barrier penetration; zero fetal transmission.`,
+    dosage: `FDA-approved & Clinical Anaesthesia Protocols:
+  (1) Reversal of Non-Depolarising Neuromuscular Blockade (Paired with Neostigmine):
+    • Standard Dosing Ratio: Exactly 0.2 mg glycopyrrolate for every 1.0 mg of neostigmine IV.
+    • Typical Adult Dose: 0.5 to 1.0 mg IV administered concurrently in the same syringe with 2.5 to 5.0 mg of neostigmine IV (e.g. 0.6 mg glycopyrrolate + 3.0 mg neostigmine). Administer over 1 to 2 minutes only after confirming objective twitch recovery on train-of-four (TOF) monitoring!
+  (2) Preoperative Antisialagogue / Awake Fibreoptic Intubation:
+    • 0.1 to 0.2 mg IV or IM administered 15 to 30 minutes prior to procedure (or 0.004 to 0.008 mg/kg).
+  (3) Intraoperative Bradycardia / Vagal Reflex Treatment:
+    • 0.1 to 0.2 mg IV bolus; repeat every 2 to 3 minutes as needed up to 0.8 mg (less tachycardic overshoot and lower myocardial oxygen cost than atropine).
+  (4) Paediatric Dosing:
+    • 0.004 to 0.01 mg/kg IV (max single dose 0.2 mg), or 0.01 mg/kg paired with neostigmine 0.05 mg/kg.`,
+    offLabel: `Control of refractory drooling / sialorrhoea in neurological disorders (cerebral palsy, ALS, Parkinson's disease); prevention of hyperhidrosis; reduction of bowel hypermotility during gastrointestinal imaging.`,
+    complications: `CLINICAL PEARLS & ADVANTAGES OVER ATROPINE:
+  (1) Zero Central Anticholinergic Syndrome: Because glycopyrrolate is a quaternary amine, it does NOT penetrate the blood-brain barrier; it will NEVER cause postoperative delirium, confusion, memory impairment, or restlessness in elderly patients!
+  (2) Zero Fetal Transfer: Does not cross the placenta; safe for maternal administration during caesarean section when treating bradycardia without causing fetal tachycardia.
+  (3) Balanced Heart Rate Response: Produces a smoother, more gradual heart rate elevation than atropine, reducing the risk of triggering myocardial ischaemia in patients with CAD.
+  (4) Adverse Effects: Dry mouth (xerostomia), blurred vision, urinary hesitancy or retention, decreased gastrointestinal tone, and transient reduction in lower esophageal sphincter (LES) tone. Contraindicated in angle-closure glaucoma and severe obstructive uropathy.`,
+    references: [
+      "FDA Prescribing Information — Robinul (glycopyrrolate injection), Hikma / US FDA.",
+      "Miller's Anesthesia, 10th ed., Ch. 19 (Autonomic Drugs) & Ch. 34 (Reversal of Neuromuscular Block).",
+      "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed., Ch. 12.",
+      "UpToDate \"Drug Information: Glycopyrrolate\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
+  addDrug({
+    id: "amiodarone", cat: "miscellaneous", name: "Amiodarone", brand: "Cordarone / Nexterone / Pacerone",
+    classification: "Broad-Spectrum Vaughan Williams Class III Antiarrhythmic • Multi-Channel Membrane Stabiliser",
+    tagline: "Vaughan Williams Class III antiarrhythmic with properties of all 4 classes — first-line for shock-refractory VF/pVT & atrial fibrillation",
+    tags: ["Antiarrhythmic", "Class III", "ACLS VF/pVT", "Atrial fibrillation", "Multi-channel blocker"],
+    source: SRC.fdaUpToDate("Nexterone (amiodarone HCl) and Cordarone injection label", "Baxter/US FDA"),
+    structure: `Amiodarone hydrochloride (2-butyl-1-benzofuran-3-yl)-[4-[2-(diethylamino)ethoxy]-3,5-diiodophenyl]methanone hydrochloride is a synthetic benzofuran derivative structurally related to thyroxine (T4). It contains two iodine atoms bound to a benzene ring, accounting for approximately 37% organic iodine by molecular weight. Each 100 mg of amiodarone releases approximately 3 mg of free inorganic iodide during systemic metabolism. Extremely lipophilic; formulated in polysorbate 80 and benzyl alcohol in classic Cordarone (which causes solvent-induced hypotension), or in sulfobutylether beta-cyclodextrin in modern Nexterone.`,
+    pd: `Classified as a Vaughan Williams Class III antiarrhythmic, but uniquely exhibits electrophysiological actions across ALL FOUR Vaughan Williams classes:
+  (1) Class III (Primary Action): Blocks rapid (IKr) and slow (IKs) cardiac delayed rectifier potassium currents, prolonging the cardiac action potential duration (APD) and effective refractory period (ERP) uniformly across atrial, nodal, and ventricular myocardium.
+  (2) Class I Action: Fast, voltage-dependent inactivation of cardiac sodium (INa) channels, slowing phase 0 depolarization velocity (dV/dt) and reducing membrane excitability (prevents re-entrant circuits).
+  (3) Class II Action: Non-competitive antagonism of alpha- and beta-adrenergic receptors, blunting sympathetic stimulation without the profound negative inotropy of pure beta-blockers.
+  (4) Class IV Action: Inhibits L-type calcium (ICa-L) channels, slowing sinoatrial node automaticity and atrioventricular nodal conduction velocity.
+  Remarkable Safety Feature: Because it prolongs refractoriness uniformly across endocardium, mid-myocardium (M-cells), and epicardium, it does NOT increase transmural dispersion of repolarisation; consequently, despite causing prominent QT interval prolongation, the incidence of Torsades de Pointes is exceptionally low (<0.5%).`,
+    pk: `Extremely complex and unique pharmacokinetics:
+  • Massive Volume of Distribution: 60 L/kg (accumulates massively in adipose tissue, lungs, liver, skeletal muscle, and myocardium).
+  • Plasma Protein Binding: >96% (primarily to albumin).
+  • Onset of Action: IV bolus produces rapid suppression of ventricular fibrillation within minutes; full oral antiarrhythmic conversion requires days to weeks of cumulative tissue saturation.
+  • Metabolism: Extensively metabolized in the liver via cytochrome P450 enzymes CYP3A4 and CYP2C8 into an active metabolite, desethylamiodarone (DEA), which possesses equal or greater electrophysiological potency.
+  • Elimination Half-Life: Biphasic with an astonishingly long terminal elimination half-life averaging 40 to 60 days (ranging from 20 to 100+ days).
+  • Excretion: Cleared almost entirely via biliary/hepatic excretion and gastrointestinal elimination; less than 1% is excreted unchanged in the urine (requires zero dose adjustment in renal failure; completely non-dialysable).`,
+    dosage: `AHA ACLS & ERC Guidelines:
+  (1) Cardiac Arrest: Pulseless Ventricular Fibrillation (VF) / Pulseless Ventricular Tachycardia (pVT) Refractory to Defibrillation:
+    • First Dose: 300 mg IV/IO rapid push (diluted in 20 to 30 mL D5W or administered undiluted if emergent) administered after the 3rd shock.
+    • Second Dose: 150 mg IV/IO rapid push administered after the 5th shock if refractory.
+  (2) Stable Wide-Complex Ventricular Tachycardia / Acute Rate & Rhythm Control in Atrial Fibrillation with RVR:
+    • Rapid Loading Infusion: 150 mg IV infused over 10 minutes (15 mg/min) in 100 mL D5W.
+    • Slow Maintenance Infusion: 360 mg IV infused over the next 6 hours (1.0 mg/min).
+    • Subsequent Maintenance Infusion: 540 mg IV infused over the remaining 18 hours (0.5 mg/min). Total recommended load in first 24 hours: approximately 1050 mg (1.05 g).
+  (3) Administration Rules:
+    • Incompatibility: Precipitates in normal saline during prolonged infusions; ALWAYS infuse in Dextrose 5% in Water (D5W)!
+    • Dedicated Line: Infuse via central venous access or a dedicated large-bore peripheral vein; use an in-line filter (0.22 micron) and non-PVC (polyolefin/polyethylene) tubing/containers to prevent adsorption and plasticizer leaching.`,
+    offLabel: `Prophylaxis against postoperative atrial fibrillation after cardiothoracic and cardiac surgery; hypertrophic cardiomyopathy rhythm management; paediatric refractory junctional ectopic tachycardia (JET).`,
+    complications: `PERIOPERATIVE PITFALLS & TOXICITY SPECTRUM:
+  (1) Acute Hypotension & Bradycardia: Solvent-induced (polysorbate 80 / benzyl alcohol in classic Cordarone) or calcium/beta-channel mediated. Manage with IV fluids, vasopressors, or slow the infusion rate. Modern Nexterone (cyclodextrin-based) has significantly lower hypotension rates.
+  (2) Peripheral Phlebitis: Highly irritant; causes chemical thrombophlebitis in peripheral lines. Use central line for infusions >2 hours.
+  (3) Amiodarone-Induced Pulmonary Toxicity & Intraoperative FiO2 Danger: Chronic therapy causes interstitial pneumonitis / pulmonary fibrosis (2–17% incidence). CRITICAL ANAESTHESIA RULE: In patients on chronic amiodarone, keep intraoperative FiO2 as low as safely possible (FiO2 0.30–0.40)! High inspired oxygen generates excessive reactive oxygen species that react with amiodarone-loaded pulmonary lysosomes, triggering catastrophic acute respiratory distress syndrome (ARDS) postoperatively!
+  (4) Thyroid Dysfunction (37% Iodine Content): High iodine content causes both hypothyroidism (via the Wolff-Chaikoff effect, blocking thyroid hormone synthesis) and hyperthyroidism (via the Jod-Basedow effect, excess hormone synthesis in multinodular goitre).
+  (5) Drug Interactions: Potent inhibitor of CYP3A4, CYP2C9, and P-glycoprotein; doubles serum concentrations of digoxin, warfarin (INR surges!), and oral anticoagulants.`,
+    references: [
+      "American Heart Association (AHA) Guidelines for CPR and Emergency Cardiovascular Care: Adult Advanced Cardiovascular Life Support (ACLS 2020 / reaffirmed 2024).",
+      "FDA Prescribing Information — Nexterone (amiodarone HCl injection), Baxter Healthcare / US FDA.",
+      "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 65 (Cardiac Anesthesia).",
+      "UpToDate \"Drug Information: Amiodarone\" (Wolters Kluwer, 2025/2026)."
+    ]
+  });
+
   // NEW TOPICS: CVC & PAC, CPB, THRIVE & HFNO, JET VENTILATION
   // ========================================================================
 

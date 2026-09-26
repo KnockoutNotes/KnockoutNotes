@@ -244,6 +244,7 @@
   ];
 
   const ANTIHYPERTENSIVE_CLASSES = [
+    { label: "Combined Alpha-1 & Non-Selective Beta-Blockers", desc: "Non-selective beta-blockade plus competitive alpha-1 blockade (1:7 IV ratio); reduces SVR without reflex tachycardia. First-line for severe pregnancy hypertension & acute aortic dissection.", members: ["labetalol"] },
     { label: "ACE Inhibitors (ACEi)", desc: "Competitive inhibition of angiotensin-converting enzyme; reduces angiotensin II & blocks bradykinin degradation. Withhold 24h preoperatively to avoid vasoplegic refractory hypotension.", members: ["ramipril"] },
     { label: "Angiotensin Receptor Blockers (ARBs)", desc: "Selective AT1 receptor antagonism; blocks vasoconstriction & aldosterone release. High risk of post-induction vasoplegia refractory to phenylephrine/ephedrine.", members: ["losartan"] },
     { label: "Calcium Channel Blockers — Dihydropyridines (DHP)", desc: "Vascular-selective L-type Ca2+ channel blockade causing potent arteriolar vasodilation with minimal direct myocardial depression.", members: ["amlodipine"] },
@@ -263,6 +264,14 @@
     { label: "Thiazolidinediones (TZDs / PPAR-γ Agonists)", desc: "Nuclear PPAR-gamma receptor agonist enhancing peripheral insulin sensitivity in muscle and adipose tissue. Fluid retention hazard in heart failure.", members: ["pioglitazone"] },
     { label: "Short-Acting & Prandial Insulins (Soluble / Regular)", desc: "Unmodified zinc crystalline human insulin; IV or subQ; gold standard for continuous infusion in DKA, hyperkalaemia, and intraoperative sliding scales.", members: ["insulin-regular"] },
     { label: "Long-Acting & Basal Insulins (Peakless Analogues)", desc: "Microprecipitating modified insulin providing 24-hour flat basal suppression of hepatic glucose output; taken at 75–80% normal dose on morning of surgery.", members: ["insulin-glargine"] },
+  ];
+
+  const MISCELLANEOUS_CLASSES = [
+    { label: "Antimuscarinic Vagolytics (Anticholinergics)", desc: "Competitive antagonists at muscarinic acetylcholine receptors; vagolysis for bradycardia, antisialagogues, and neostigmine reversal partners.", members: ["atropine", "glycopyrrolate"] },
+    { label: "Class III Antiarrhythmics & Multi-Channel Blockers", desc: "Blocks potassium, sodium, and calcium channels with non-competitive anti-adrenergic action; first-line for shock-refractory VF/pVT and rapid AF.", members: ["amiodarone"] },
+    { label: "5-HT3 Receptor Antagonists / Antiemetics", desc: "Selective 5-hydroxytryptamine type 3 receptor antagonism; first-line prophylaxis and treatment for postoperative nausea and vomiting (PONV).", members: ["ondansetron"] },
+    { label: "Electrolytes & Membrane Stabilisers", desc: "Critical intravenous ions for neuromuscular excitability, cardiac conduction, acid-base buffering, and hyperkalaemia/hypocalcaemia emergencies.", members: ["magnesium-sulphate", "sodium-bicarbonate", "potassium-chloride", "calcium-gluconate-chloride"] },
+    { label: "Toxicology, Lipid Rescue & Pharmacogenetic Antidotes", desc: "Targeted antidotes for Local Anaesthetic Systemic Toxicity (LAST) and life-threatening Malignant Hyperthermia crisis.", members: ["intralipid-20", "dantrolene"] },
   ];
 
   function buildClassificationHTML(title, classList) {
@@ -309,6 +318,9 @@
   function antidiabeticsClassificationHTML() {
     return buildClassificationHTML("Classification — by Pharmacological Class & Glycaemic Mechanism", ANTIDIABETIC_CLASSES);
   }
+  function miscellaneousClassificationHTML() {
+    return buildClassificationHTML("Classification — by Pharmacological Class & Clinical Target", MISCELLANEOUS_CLASSES);
+  }
 
   function renderGrid() {
     const grid = $("#stGrid");
@@ -331,6 +343,7 @@
       if (c.id === "nsaids" && state.cat === "nsaids" && !f) html += nsaidsClassificationHTML();
       if (c.id === "antihypertensives" && state.cat === "antihypertensives" && !f) html += antihypertensivesClassificationHTML();
       if (c.id === "antidiabetics" && state.cat === "antidiabetics" && !f) html += antidiabeticsClassificationHTML();
+      if (c.id === "miscellaneous" && state.cat === "miscellaneous" && !f) html += miscellaneousClassificationHTML();
       html += `<div class="st-grid">${list.map(tileHTML).join("")}</div>`;
     });
     if (typeof window.KNUnmountAllTileMolecules === "function") {
