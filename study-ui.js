@@ -420,17 +420,30 @@
     const rec2d = window.KN_STRUCTURES && window.KN_STRUCTURES[d.id];
     const has3d = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[d.id];
     if (!rec2d && !has3d) return para(d.structure);
-    // A rotating 3D viewer mounts into this placeholder after the HTML is
-    // in the DOM (see mountStructureViewers()) — flat 2D SVG is the
-    // starting content so there's never an empty box while the module
-    // loads or if WebGL isn't available, and mountStructureViewers()
-    // replaces it once the 3D viewer is confirmed working.
-    const media = has3d
-      ? `<div class="st-molecule-viewer" data-drug="${esc(d.id)}" aria-label="Rotating 3D structure of ${esc(d.name)}">${rec2d ? `<div class="st-structure-svg">${rec2d.svg}</div>` : ""}</div>`
-      : `<div class="st-structure-svg">${rec2d.svg}</div>`;
-    return `<div class="st-structure-wrap">
-        ${media}
-        ${rec2d ? `<span class="st-structure-formula">${esc(rec2d.formula)}</span>` : ""}
+
+    let mediaHTML = "";
+    if (has3d) {
+      mediaHTML += `
+        <div class="st-structure-pane st-structure-3d-pane">
+          <div class="st-structure-badge st-badge-3d"><span>🔄</span> 3D Conformer (Rotating / Interactive)</div>
+          <div class="st-molecule-viewer" data-drug="${esc(d.id)}" aria-label="Rotating 3D structure of ${esc(d.name)}">
+            <div class="st-molecule-placeholder"><span class="st-spinner"></span> Loading 3D model...</div>
+          </div>
+        </div>`;
+    }
+    if (rec2d) {
+      mediaHTML += `
+        <div class="st-structure-pane st-structure-2d-pane">
+          <div class="st-structure-badge st-badge-2d"><span>📐</span> 2D Complete Chemical Structure</div>
+          <div class="st-structure-2d-box">
+            <div class="st-structure-svg">${rec2d.svg}</div>
+            ${rec2d.formula ? `<span class="st-structure-formula">${esc(rec2d.formula)}</span>` : ""}
+          </div>
+        </div>`;
+    }
+
+    return `<div class="st-structure-wrap st-structure-dual">
+        ${mediaHTML}
       </div>
       ${para(d.structure)}`;
   }
