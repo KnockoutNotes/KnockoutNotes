@@ -148,13 +148,16 @@
   function tileHTML(item) {
     const cat = catById.get(item.cat);
     const structRec = window.KN_STRUCTURES && window.KN_STRUCTURES[item.id];
+    const has3d = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[item.id];
     let iconHTML;
-    if (structRec && structRec.svg) {
+    if (has3d) {
+      iconHTML = `<div class="st-tile-molecule" data-drug="${esc(item.id)}">${structRec && structRec.svg ? `<div class="st-tile-structure">${structRec.svg}</div>` : `<div class="st-tile-fallback-icon">${catIconHTML(item.cat, cat)}</div>`}</div>`;
+    } else if (structRec && structRec.svg) {
       iconHTML = `<div class="st-tile-structure">${structRec.svg}</div>`;
     } else {
       iconHTML = `<div class="st-tile-fallback-icon">${catIconHTML(item.cat, cat)}</div>`;
     }
-    const hasVisual = !!structRec;
+    const hasVisual = has3d || structRec;
     return `<a class="st-tile st-reveal${hasVisual ? " st-tile-has-structure" : ""}" href="?item=${item.id}" data-item="${item.id}" data-cat="${item.cat}" aria-label="${esc(item.name)}">
       <div class="st-tile-icon" aria-hidden="true">${iconHTML}</div>
       <div class="st-tile-info">
@@ -165,14 +168,26 @@
     </a>`;
   }
 
-  const tileMoleculeObserver = null;
-  function observeTileMolecules() {}
+  function observeTileMolecules(root) {
+    if (!root || typeof window.KNMountTileMolecule !== "function") return;
+    const nodes = root.querySelectorAll(".st-tile-molecule[data-drug]");
+    nodes.forEach((node) => {
+      const drugId = node.getAttribute("data-drug");
+      if (drugId) {
+        window.KNMountTileMolecule(node, drugId);
+      }
+    });
+  }
 
   // Global listener for when study-molecule-3d.js completes loading and Three.js initialization.
   window.addEventListener("kn-molecule3d-ready", () => {
     const detail = $("#stDetail");
     if (detail && !detail.hidden) {
       mountStructureViewers(detail);
+    }
+    const grid = $("#stGrid");
+    if (grid && $("#stList") && !$("#stList").hidden) {
+      observeTileMolecules(grid);
     }
   });
 
@@ -318,7 +333,9 @@
       if (c.id === "antidiabetics" && state.cat === "antidiabetics" && !f) html += antidiabeticsClassificationHTML();
       html += `<div class="st-grid">${list.map(tileHTML).join("")}</div>`;
     });
-    if (tileMoleculeObserver) tileMoleculeObserver.disconnect();
+    if (typeof window.KNUnmountAllTileMolecules === "function") {
+      window.KNUnmountAllTileMolecules();
+    }
     grid.innerHTML = total ? html : `<div class="st-empty">No results for “${esc(state.filter)}”.</div>`;
     observeReveal(grid);
     observeTileMolecules(grid);
@@ -1409,10 +1426,9 @@
   }
 
   function showDetail() {
-    if (tileMoleculeObserver) tileMoleculeObserver.disconnect();
-    document.querySelectorAll("#stGrid .st-tile-molecule.st-has-canvas").forEach((node) => {
-      if (typeof window.KNDisposeMolecule3D === "function") window.KNDisposeMolecule3D(node);
-    });
+    if (typeof window.KNUnmountAllTileMolecules === "function") {
+      window.KNUnmountAllTileMolecules();
+    }
     $("#stList").hidden = true;
     $("#stDetail").hidden = false;
     const item = itemById(state.item);

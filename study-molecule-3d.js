@@ -3,6 +3,7 @@
    (study-molecule-3d.js)
    Renders explicit-H 3D chemical conformers and procedural medical device
    models as glossy CPK-coloured spheres + bond cylinders using Three.js.
+   Includes a crash-proof shared single-context WebGL renderer for poster tiles.
    ========================================================================== */
 import * as THREE from "three";
 
@@ -20,100 +21,17 @@ const DEFAULT_COLOR = 0xa78bfa;
 const DEFAULT_RADIUS = 0.64;
 const BOND_RADIUS = 0.13;
 
-const mounts = new WeakMap();
-const activeQueue = []; // FIFO to enforce maximum concurrent WebGL contexts
-const MAX_ACTIVE_CONTEXTS = 6;
-
-// Global visibility listener: pause all active viewers when tab is hidden or device locked
-if (typeof document !== "undefined") {
-  document.addEventListener("visibilitychange", () => {
-    const isHidden = document.hidden;
-    activeQueue.forEach((container) => {
-      const m = mounts.get(container);
-      if (m) {
-        if (isHidden) {
-          m.pause();
-        } else if (m.isVisible) {
-          m.resume();
-        }
-      }
-    });
-  });
-}
-
-function disposeMount(container) {
-  const m = mounts.get(container);
-  if (!m) return;
-  m.cleanup();
-  mounts.delete(container);
-  const qIdx = activeQueue.indexOf(container);
-  if (qIdx !== -1) activeQueue.splice(qIdx, 1);
-
-  // Restore fallback 2D diagram visibility so cards never turn blank or empty
-  const fallback = container.querySelector(".st-tile-structure, .st-structure-svg, .st-tile-fallback-icon, .st-molecule-placeholder");
-  if (fallback) fallback.style.display = "";
-  container.classList.remove("st-has-canvas");
-}
-
 /**
- * Mounts a high-performance rotating 3D viewer into `container`.
- * Returns true on success, false if WebGL is unavailable.
+ * Builds a THREE.Group for either procedural 3D equipment parts or CPK chemical atoms.
+ * Shared between the detail viewer and the single-context tile renderer.
  */
-function mountMolecule3D(container, data, opts) {
-  if (!container || !container.isConnected) return false;
-  disposeMount(container);
-
+function createModelGroup(data, opts = {}) {
   const hasAtoms = data && data.atoms && data.atoms.length;
   const hasParts = data && data.parts && data.parts.length;
-  if (!hasAtoms && !hasParts) return false;
+  if (!hasAtoms && !hasParts) return null;
 
-  // Enforce max concurrent WebGL contexts to prevent mobile browser context crashes
-  while (activeQueue.length >= MAX_ACTIVE_CONTEXTS) {
-    const oldest = activeQueue.shift();
-    if (oldest && oldest !== container) {
-      disposeMount(oldest);
-    }
-  }
-
-  const fitMargin = (opts && opts.fitMargin) || 1.25;
-  const isThumb = !!(opts && opts.isThumbnail) || (container.clientWidth > 0 && container.clientWidth < 100);
-  const isMobile = typeof window !== "undefined" && (
-    window.innerWidth <= 768 ||
-    (navigator.maxTouchPoints && navigator.maxTouchPoints > 0)
-  );
-
-  let renderer;
-  try {
-    renderer = new THREE.WebGLRenderer({
-      antialias: !isThumb,
-      alpha: true,
-      powerPreference: "low-power",
-      precision: isMobile ? "mediump" : "highp"
-    });
-  } catch (err) {
-    return false;
-  }
-
-  const maxDPR = isThumb ? 1.0 : (isMobile ? 1.5 : 2.0);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxDPR));
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.setClearColor(0x000000, 0);
-
-  const canvas = renderer.domElement;
-  canvas.className = "st-molecule-canvas";
-  canvas.style.touchAction = "pan-y"; // NEVER block mobile vertical page scrolling
-  if (isThumb) {
-    canvas.style.pointerEvents = "none";
-  }
-
-  canvas.addEventListener("webglcontextlost", (e) => {
-    e.preventDefault();
-    disposeMount(container);
-  }, { once: true });
-
-  const scene = new THREE.Scene();
+  const fitMargin = opts.fitMargin || 1.25;
   const fov = 32;
-  const camera = new THREE.PerspectiveCamera(fov, 1, 0.1, 200);
 
   let boundingRadius = data.boundingRadius || 0;
   if (hasAtoms) {
@@ -131,24 +49,9 @@ function mountMolecule3D(container, data, opts) {
     });
   }
   boundingRadius = Math.max(boundingRadius, 1.5);
-  const dist = (boundingRadius * fitMargin) / Math.sin(THREE.MathUtils.degToRad(fov / 2));
-  camera.position.set(0, 0, dist);
-
-  // Soft lighting setup
-  scene.add(new THREE.HemisphereLight(0xffffff, 0x30363f, 1.15));
-  const key = new THREE.DirectionalLight(0xffffff, 1.25);
-  key.position.set(5, 7, 9);
-  scene.add(key);
-  const fill = new THREE.DirectionalLight(0xffffff, 0.55);
-  fill.position.set(-6, 2, 5);
-  scene.add(fill);
-  const rim = new THREE.DirectionalLight(0x93c5fd, 0.4);
-  rim.position.set(-3, -4, -7);
-  scene.add(rim);
+  const cameraDist = (boundingRadius * fitMargin) / Math.sin(THREE.MathUtils.degToRad(fov / 2));
 
   const group = new THREE.Group();
-  scene.add(group);
-
   const disposables = [];
 
   // 1. Procedural 3D device parts
@@ -208,7 +111,7 @@ function mountMolecule3D(container, data, opts) {
     });
   }
 
-  // 2. CPK Ball-and-stick molecules (isolated geometries & materials per renderer)
+  // 2. CPK Ball-and-stick molecules
   if (hasAtoms) {
     const sphereGeo = new THREE.SphereGeometry(1, 16, 12);
     const cylGeo = new THREE.CylinderGeometry(1, 1, 1, 10);
@@ -255,7 +158,7 @@ function mountMolecule3D(container, data, opts) {
     }
   }
 
-  // Soft contact shadow
+  // 3. Soft contact shadow disc
   let minY = Infinity;
   if (hasAtoms) {
     data.atoms.forEach(([, , y]) => { if (y < minY) minY = y; });
@@ -279,7 +182,112 @@ function mountMolecule3D(container, data, opts) {
   shadowDisc.position.y = minY - 0.7;
   group.add(shadowDisc);
 
-  // Resize handler
+  return {
+    group,
+    boundingRadius,
+    cameraDist,
+    disposables
+  };
+}
+
+/* ==========================================================================
+   DETAIL VIEW VIEWER (Single full interactive 3D model)
+   ========================================================================== */
+const mounts = new WeakMap();
+const activeQueue = []; // FIFO to enforce maximum concurrent WebGL contexts in detail view
+const MAX_ACTIVE_CONTEXTS = 2;
+
+function disposeMount(container) {
+  const m = mounts.get(container);
+  if (!m) return;
+  m.cleanup();
+  mounts.delete(container);
+  const qIdx = activeQueue.indexOf(container);
+  if (qIdx !== -1) activeQueue.splice(qIdx, 1);
+
+  const fallback = container.querySelector(".st-tile-structure, .st-structure-svg, .st-tile-fallback-icon, .st-molecule-placeholder");
+  if (fallback) fallback.style.display = "";
+  container.classList.remove("st-has-canvas");
+}
+
+function mountMolecule3D(container, data, opts) {
+  if (!container || !container.isConnected) return false;
+  disposeMount(container);
+
+  const hasAtoms = data && data.atoms && data.atoms.length;
+  const hasParts = data && data.parts && data.parts.length;
+  if (!hasAtoms && !hasParts) return false;
+
+  while (activeQueue.length >= MAX_ACTIVE_CONTEXTS) {
+    const oldest = activeQueue.shift();
+    if (oldest && oldest !== container) {
+      disposeMount(oldest);
+    }
+  }
+
+  const isThumb = !!(opts && opts.isThumbnail) || (container.clientWidth > 0 && container.clientWidth < 100);
+  const isMobile = typeof window !== "undefined" && (
+    window.innerWidth <= 768 ||
+    (navigator.maxTouchPoints && navigator.maxTouchPoints > 0)
+  );
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({
+      antialias: !isThumb,
+      alpha: true,
+      powerPreference: "low-power",
+      precision: isMobile ? "mediump" : "highp"
+    });
+  } catch (err) {
+    return false;
+  }
+
+  const maxDPR = isThumb ? 1.0 : (isMobile ? 1.5 : 2.0);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxDPR));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.setClearColor(0x000000, 0);
+
+  const canvas = renderer.domElement;
+  canvas.className = "st-molecule-canvas";
+  canvas.style.touchAction = "pan-y";
+  if (isThumb) {
+    canvas.style.pointerEvents = "none";
+  }
+
+  canvas.addEventListener("webglcontextlost", (e) => {
+    e.preventDefault();
+    disposeMount(container);
+  }, { once: true });
+
+  const scene = new THREE.Scene();
+  const fov = 32;
+  const camera = new THREE.PerspectiveCamera(fov, 1, 0.1, 200);
+
+  // Soft lighting setup
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x30363f, 1.15));
+  const key = new THREE.DirectionalLight(0xffffff, 1.25);
+  key.position.set(5, 7, 9);
+  scene.add(key);
+  const fill = new THREE.DirectionalLight(0xffffff, 0.55);
+  fill.position.set(-6, 2, 5);
+  scene.add(fill);
+  const rim = new THREE.DirectionalLight(0x93c5fd, 0.4);
+  rim.position.set(-3, -4, -7);
+  scene.add(rim);
+
+  const model = createModelGroup(data, opts);
+  if (!model) {
+    renderer.dispose();
+    return false;
+  }
+
+  const group = model.group;
+  scene.add(group);
+  camera.position.set(0, 0, model.cameraDist);
+
+  const disposables = model.disposables;
+
   function resize() {
     const w = container.clientWidth;
     const h = container.clientHeight;
@@ -296,18 +304,15 @@ function mountMolecule3D(container, data, opts) {
   ro.observe(container);
   resize();
 
-  // Test first render before hiding fallback!
   try {
     renderer.render(scene, camera);
   } catch (err) {
-    // If WebGL fails, clean up immediately and leave fallback visible
     ro.disconnect();
     disposables.forEach((d) => d.dispose && d.dispose());
     renderer.dispose();
     return false;
   }
 
-  // First render was successful! Safely attach canvas and hide fallback
   const fallback = container.querySelector(".st-tile-structure, .st-structure-svg, .st-tile-fallback-icon, .st-molecule-placeholder");
   if (fallback) fallback.style.display = "none";
   container.classList.add("st-has-canvas");
@@ -349,7 +354,6 @@ function mountMolecule3D(container, data, opts) {
     }
   }
 
-  // Pre-render anticipation: start loop 100px before entering viewport, pause when scrolled away
   const io = ("IntersectionObserver" in window) ? new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -365,7 +369,6 @@ function mountMolecule3D(container, data, opts) {
   if (io) io.observe(container);
   resumeRAF();
 
-  // Pointer drag controls for full viewer
   if (!isThumb) {
     let startX = 0, startY = 0;
     let startRotY = 0, startRotX = 0;
@@ -430,6 +433,265 @@ function mountMolecule3D(container, data, opts) {
   return true;
 }
 
+/* ==========================================================================
+   CRASH-PROOF SHARED SINGLE-CONTEXT WEBGL TILE RENDERER
+   Uses EXACTLY ONE WebGL context for all card tiles across the entire application.
+   Visible cards use lightweight 2D canvases with 0 WebGL overhead, completely
+   eliminating browser context loss, mobile limits, and card face crashes.
+   ========================================================================== */
+const TILE_WIDTH = 240;
+const TILE_HEIGHT = 180;
+let sharedRenderer = null;
+let sharedScene = null;
+let sharedCamera = null;
+let sharedInitialized = false;
+
+const tileModelCache = new Map(); // drugId -> { group, cameraDist, phaseOffset }
+const activeTiles = new Map();     // containerElement -> { container, canvas, ctx, drugId, isVisible }
+let tileIO = null;
+let tileRaf = null;
+
+function initSharedTileRenderer() {
+  if (sharedInitialized) return !!sharedRenderer;
+  sharedInitialized = true;
+  try {
+    sharedRenderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+      powerPreference: "low-power",
+      preserveDrawingBuffer: true
+    });
+    sharedRenderer.setSize(TILE_WIDTH, TILE_HEIGHT, false);
+    sharedRenderer.setPixelRatio(1);
+    sharedRenderer.outputColorSpace = THREE.SRGBColorSpace;
+    sharedRenderer.setClearColor(0x000000, 0);
+
+    sharedScene = new THREE.Scene();
+    sharedCamera = new THREE.PerspectiveCamera(32, TILE_WIDTH / TILE_HEIGHT, 0.1, 200);
+
+    sharedScene.add(new THREE.HemisphereLight(0xffffff, 0x30363f, 1.15));
+    const key = new THREE.DirectionalLight(0xffffff, 1.25);
+    key.position.set(5, 7, 9);
+    sharedScene.add(key);
+    const fill = new THREE.DirectionalLight(0xffffff, 0.55);
+    fill.position.set(-6, 2, 5);
+    sharedScene.add(fill);
+    const rim = new THREE.DirectionalLight(0x93c5fd, 0.4);
+    rim.position.set(-3, -4, -7);
+    sharedScene.add(rim);
+
+    sharedRenderer.domElement.addEventListener("webglcontextlost", (e) => {
+      e.preventDefault();
+      unmountAllTileMolecules();
+    }, { once: true });
+    return true;
+  } catch (err) {
+    sharedRenderer = null;
+    return false;
+  }
+}
+
+function getOrCreateTileModel(drugId) {
+  if (tileModelCache.has(drugId)) {
+    return tileModelCache.get(drugId);
+  }
+  const data = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[drugId];
+  if (!data) return null;
+
+  const model = createModelGroup(data, { fitMargin: 1.25 });
+  if (!model) return null;
+
+  let phaseOffset = 0;
+  for (let i = 0; i < drugId.length; i++) {
+    phaseOffset += drugId.charCodeAt(i) * 0.17;
+  }
+
+  const record = {
+    group: model.group,
+    cameraDist: model.cameraDist,
+    phaseOffset
+  };
+  tileModelCache.set(drugId, record);
+  return record;
+}
+
+function startTileLoop() {
+  if (tileRaf) return;
+  const listEl = document.getElementById("stList");
+  if (document.hidden || (listEl && listEl.hidden)) return;
+  tileRaf = requestAnimationFrame(tileTick);
+}
+
+function tileTick(now) {
+  const listEl = document.getElementById("stList");
+  if (document.hidden || (listEl && listEl.hidden)) {
+    tileRaf = null;
+    return;
+  }
+
+  let anyVisible = false;
+  const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  activeTiles.forEach((rec, container) => {
+    if (!container.isConnected) {
+      unmountTileMolecule(container);
+      return;
+    }
+    if (!rec.isVisible) return;
+    anyVisible = true;
+
+    const model = getOrCreateTileModel(rec.drugId);
+    if (!model) return;
+
+    if (reducedMotion) {
+      model.group.rotation.y = 0.5;
+      model.group.rotation.x = 0.1;
+    } else {
+      model.group.rotation.y = (now * 0.0009 + model.phaseOffset) % (Math.PI * 2);
+      model.group.rotation.x = Math.sin(now * 0.0006 + model.phaseOffset) * 0.14;
+    }
+
+    sharedCamera.position.set(0, 0, model.cameraDist);
+    sharedCamera.lookAt(0, 0, 0);
+
+    sharedScene.add(model.group);
+    sharedRenderer.render(sharedScene, sharedCamera);
+    sharedScene.remove(model.group);
+
+    rec.ctx.clearRect(0, 0, TILE_WIDTH, TILE_HEIGHT);
+    rec.ctx.drawImage(sharedRenderer.domElement, 0, 0, TILE_WIDTH, TILE_HEIGHT);
+  });
+
+  if (anyVisible && !reducedMotion) {
+    tileRaf = requestAnimationFrame(tileTick);
+  } else {
+    tileRaf = null;
+  }
+}
+
+function mountTileMolecule(container, drugId) {
+  if (!container || !container.isConnected || !drugId) return false;
+  if (!initSharedTileRenderer()) return false;
+
+  const model = getOrCreateTileModel(drugId);
+  if (!model) return false;
+
+  let canvas = container.querySelector(".st-tile-molecule-canvas");
+  if (!canvas) {
+    canvas = document.createElement("canvas");
+    canvas.className = "st-tile-molecule-canvas";
+    canvas.width = TILE_WIDTH;
+    canvas.height = TILE_HEIGHT;
+    container.appendChild(canvas);
+  }
+
+  const ctx = canvas.getContext("2d", { alpha: true });
+  if (!ctx) return false;
+
+  // Render initial frame immediately so there is zero flash or blank card
+  model.group.rotation.y = model.phaseOffset;
+  model.group.rotation.x = 0.08;
+  sharedCamera.position.set(0, 0, model.cameraDist);
+  sharedCamera.lookAt(0, 0, 0);
+
+  sharedScene.add(model.group);
+  sharedRenderer.render(sharedScene, sharedCamera);
+  sharedScene.remove(model.group);
+
+  ctx.clearRect(0, 0, TILE_WIDTH, TILE_HEIGHT);
+  ctx.drawImage(sharedRenderer.domElement, 0, 0, TILE_WIDTH, TILE_HEIGHT);
+
+  // Successfully rendered first frame! Now safely hide fallback diagram
+  const fallback = container.querySelector(".st-tile-structure, .st-tile-fallback-icon");
+  if (fallback) fallback.style.display = "none";
+  container.classList.add("st-has-canvas");
+
+  const rec = {
+    container,
+    canvas,
+    ctx,
+    drugId,
+    isVisible: true
+  };
+  activeTiles.set(container, rec);
+
+  if (!tileIO) {
+    tileIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const item = activeTiles.get(entry.target);
+        if (item) {
+          item.isVisible = entry.isIntersecting;
+          if (item.isVisible) startTileLoop();
+        }
+      });
+    }, { rootMargin: "120px 0px" });
+  }
+  tileIO.observe(container);
+
+  startTileLoop();
+  return true;
+}
+
+function unmountTileMolecule(container) {
+  if (!container) return;
+  if (tileIO) {
+    try { tileIO.unobserve(container); } catch (_) {}
+  }
+  activeTiles.delete(container);
+  const canvas = container.querySelector(".st-tile-molecule-canvas");
+  if (canvas && canvas.parentNode) {
+    canvas.parentNode.removeChild(canvas);
+  }
+  const fallback = container.querySelector(".st-tile-structure, .st-tile-fallback-icon");
+  if (fallback) fallback.style.display = "";
+  container.classList.remove("st-has-canvas");
+}
+
+function unmountAllTileMolecules() {
+  if (tileRaf) {
+    cancelAnimationFrame(tileRaf);
+    tileRaf = null;
+  }
+  if (tileIO) {
+    try { tileIO.disconnect(); } catch (_) {}
+    tileIO = null;
+  }
+  activeTiles.clear();
+}
+
+// Global visibility listener: pause loops when tab is hidden or device locked
+if (typeof document !== "undefined") {
+  document.addEventListener("visibilitychange", () => {
+    const isHidden = document.hidden;
+    activeQueue.forEach((container) => {
+      const m = mounts.get(container);
+      if (m) {
+        if (isHidden) {
+          m.pause();
+        } else if (m.isVisible) {
+          m.resume();
+        }
+      }
+    });
+
+    if (isHidden) {
+      if (tileRaf) {
+        cancelAnimationFrame(tileRaf);
+        tileRaf = null;
+      }
+    } else {
+      const listEl = document.getElementById("stList");
+      if (listEl && !listEl.hidden && activeTiles.size > 0) {
+        startTileLoop();
+      }
+    }
+  });
+}
+
+// Global exports
 window.KNMountMolecule3D = mountMolecule3D;
 window.KNDisposeMolecule3D = disposeMount;
+window.KNMountTileMolecule = mountTileMolecule;
+window.KNUnmountTileMolecule = unmountTileMolecule;
+window.KNUnmountAllTileMolecules = unmountAllTileMolecules;
 window.dispatchEvent(new CustomEvent("kn-molecule3d-ready"));
