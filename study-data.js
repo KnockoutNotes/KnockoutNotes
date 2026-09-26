@@ -2540,7 +2540,203 @@
       "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed., Ch. 11: Neuromuscular Blocking Drugs, Wolters Kluwer.",
       "Hadzic A. Hadzic's Peripheral Nerve Blocks and Anatomy for Ultrasound-Guided Regional Anesthesia, 3rd ed., McGraw-Hill."
     ]
+  });
+  topics.push({
+    id: "ambu-bag-bvm",
+    cat: "equipment",
+    name: "Ambu Bag — Bag-Valve-Mask (BVM) Resuscitator: Parts, Function & Pre-use Check",
+    short: "Ambu Bag / BVM",
+    tags: ["BVM", "Ambu Bag", "Resuscitation", "Airway Equipment", "OSCE", "Pre-use Check", "Self-inflating"],
+    tagline: "Self-inflating manual resuscitator — components, pre-use check, one-person vs two-person technique, and anaesthetic implications",
+    source: "Dorsch & Dorsch Understanding Anesthesia Equipment, 5th ed., Ch. 10 (Manual Resuscitators); Miller's Anesthesia, 10th ed., Ch. 44; ILCOR Basic Life Support Guidelines 2020; AAGBI Guidelines on Safe Anaesthetic Practice (2023).",
+    sections: [
+      {
+        h: "What the Ambu Bag Is and Why It Matters",
+        b: `The term "Ambu bag" comes from the Danish company Ambu A/S which commercialized the first self-inflating bag in 1956, designed by Dr Henning Ruben. Today "Ambu bag" is used colloquially for any self-inflating Bag-Valve-Mask (BVM) resuscitator, though multiple manufacturers produce them (Laerdal, Intersurgical, Mercury Medical).
+
+The BVM resuscitator is arguably the single most important piece of airway rescue equipment in all of medicine. It allows a rescuer to provide positive-pressure ventilation (PPV) to an apnoeic or hypoventilating patient without an electricity supply, compressed gas line, or anaesthesia machine — making it the backbone of cardiopulmonary resuscitation (CPR), pre-hospital care, transport ventilation, and emergency intraoperative backup.
+
+Why every anaesthetist must master it:
+• It is the rescue device used immediately when an airway is lost or a ventilator fails.
+• A poorly assembled or incorrectly checked BVM delivers NO oxygen to the patient — or worse, room air only — without the rescuer knowing.
+• One-person BVM ventilation is notoriously unreliable at maintaining a seal in difficult-airway patients; the two-person E-C grip technique is the standard of care whenever a second rescuer is available.
+• The self-inflating mechanism means the bag refills even with NO oxygen connected — delivering only 21% room air (FiO₂ 0.21) rather than the intended 100% O₂ without any alarm.`
+      },
+      {
+        h: "Anatomy of the BVM: Every Component and Its Function",
+        b: `A standard adult BVM resuscitator consists of 8 major components that must each be present and functional:
+
+1. Self-Inflating Bag (Body Bag / Reservoir Bag):
+• Material: Flexible non-collapsing polyurethane, silicone, or EVA elastomeric shell that recoils automatically to its original shape after squeezing.
+• Adult Volume: 1400 to 1600 mL total capacity. Tidal volume per squeeze: 500 to 700 mL (6 to 8 mL/kg for a 70 kg adult). Paediatric: 250 mL (neonatal/infant), 500 mL (child).
+• Self-inflating mechanism: Bag refills passively from elastic recoil — drawing gas through the inlet valve from the oxygen reservoir behind it — without needing a pressurized gas source. This is the defining feature that distinguishes a BVM from an anaesthesia circuit.
+• Critical Limitation: If the oxygen reservoir bag/tube is empty or disconnected, the bag refills with room air (FiO₂ 0.21) SILENTLY with no alarm or visual warning.
+
+2. Patient Valve (Non-Rebreathing Valve / Duck-bill Valve / Fish-Mouth Valve):
+• Located at the patient end of the bag where the mask or ETT/LMA connector attaches.
+• Function: A one-way duck-bill or disc valve system with two critical jobs:
+  - During SQUEEZE (Inspiration): Opens to direct bag contents forward into the patient; simultaneously closes the expiratory port to prevent backflow into the bag.
+  - During RELEASE (Expiration): Closes the inspiratory port and opens the expiratory port to vent exhaled gas sideways to atmosphere — preventing CO₂ rebreathing.
+• Made of clear plastic — allows visual inspection for mucus plugs, blood, or vomitus blocking the valve.
+• Failure mode: If the duck-bill disc sticks, inverts, or is absent (e.g., not reassembled after cleaning), the patient's exhaled CO₂ recirculates into the bag — they rebreathe with each cycle without any clinical warning sign!
+
+3. Face Mask:
+• A clear, anatomically contoured, cushioned rim mask providing an airtight seal over the nose and mouth.
+• Clear mask preferred: Allows immediate detection of condensation (confirming airflow), fogging, vomitus, or secretions through the transparent body.
+• Sizes: 0 (preterm neonate) through 5 (large adult). Correct sizing: covers the bridge of the nose, sides of the face, and the chin dimple without compressing the eyes (risk of vagally-mediated bradycardia) or slipping off the chin.
+• Cuff: Inflatable cushion ring provides a conformable seal to irregular facial anatomy (beards, edentulous patients, facial trauma).
+
+4. Oxygen Reservoir System (Reservoir Bag or Reservoir Tube):
+• Adult standard: 2600 mL reservoir bag or a 0.5-metre reservoir tube attached to the oxygen inlet at the back of the self-inflating bag.
+• Function: Stores a pool of 100% oxygen adjacent to the inlet valve. When the self-inflating bag recoils between breaths, it draws from this reservoir — maintaining FiO₂ ≥ 0.85 to 1.0 at oxygen flow rates of 10 to 15 L/min.
+• Without reservoir: Even at 15 L/min O₂ flow, maximum FiO₂ delivered is only 0.40 to 0.60 — the bag refills faster than the oxygen flow can fill the inlet.
+• With a full reservoir at 15 L/min O₂: FiO₂ reliably ≥ 0.85 to 1.0 — the reservoir pre-fills with pure oxygen between breaths and provides a large bolus on the next bag recoil.
+• Critical danger: If the reservoir bag is absent, crimped, disconnected, or empty (oxygen supply failure) — FiO₂ delivered to the patient drops to 0.21 (room air). Clinically SILENT.
+
+5. Oxygen Inlet Port (Nipple / Tail Piece):
+• A standard barbed connector at the back of the bag.
+• Connects to the oxygen flowmeter tubing (standard green barbed oxygen connector).
+• Incorporates a spring-loaded check valve to prevent bag gas from back-flushing into the oxygen tubing during compression.
+
+6. Air Inlet Valve (Ambient Air Intake / One-Way Inlet Valve):
+• Located at the back of the bag adjacent to the oxygen inlet.
+• Opens during bag recoil to allow entry of oxygen (and room air if the oxygen reservoir is depleted) to refill the bag.
+• Contains a disc or duckbill valve — closes during bag compression to prevent delivered gas from backflowing into the reservoir.
+
+7. Pressure Relief / Pop-off Valve (Pressure Limiting Valve):
+• Paediatric BVMs ONLY (neonatal and child sizes): Pre-set pressure relief valve that opens at 40 to 45 cmH₂O to prevent barotrauma (neonatal lungs are extremely compliant and susceptible to pulmonary interstitial emphysema or pneumothorax at high pressures).
+• Adult BVMs: Generally do NOT have a pop-off valve — adult resuscitation requires the ability to deliver high inspiratory pressures to overcome high airway resistance and poor compliance during CPR.
+• Occlusion override: In neonatal bags, the pop-off valve can be manually occluded with the thumb during CPR when higher pressures are absolutely necessary (e.g., meconium aspiration syndrome).
+
+8. PEEP Valve (Optional Add-on Component):
+• A threshold resistor valve that screws onto the expiratory port of the patient valve.
+• Provides Positive End-Expiratory Pressure (5 to 20 cmH₂O) during manual ventilation — critical for ARDS, pulmonary oedema, or severe bronchospasm to maintain alveolar recruitment between breaths.
+• Not routinely attached; must be deliberately added when clinically indicated.`
+      },
+      {
+        h: "Pre-Use Check of the BVM — Systematic 7-Step OSCE Protocol",
+        b: `A defective BVM that delivers no oxygen, recirculates CO₂, or provides no seal kills patients. Every BVM must be checked before every use:
+
+STEP 1 — Visual Inspection & Completeness:
+• Procedure: *"Lay all components on a clean surface: self-inflating bag, patient valve assembly, face mask, oxygen reservoir bag or tube, and oxygen connecting tubing. Verify all components are present, clean, undamaged, and correctly sized for the patient."*
+• Check: No cracks in the bag body, no missing or deformed duck-bill valves, no split mask cushion.
+
+STEP 2 — Patient Valve Assembly Inspection:
+• Procedure: *"Remove the patient valve dome from the bag nozzle and visually inspect the duck-bill disc valve inside. Hold it up to a light source: the disc should be perfectly flat, symmetric, centrally seated without tearing or curling at any edge, and there should be no blood, mucus, vomitus, or debris on or around the valve seat. Reassemble by pushing the patient valve firmly back onto the bag nozzle until the locking click is felt."*
+
+STEP 3 — Competency of Patient Valve (One-Way Function Test):
+• Procedure: *"Attach the mask to the patient valve port. Completely seal the mask against your palm. Squeeze the bag: you should feel clear resistance and feel air rushing against your palm through the mask. Release the bag: it must recoil completely and rapidly back to its original shape, drawing in ambient air through the back inlet valve. This confirms inlet valve integrity, bag elasticity, and patient valve competency."*
+• Then: *"Block the mask port completely with your palm. Squeeze the bag again: it should NOT compress at all — you should feel hard, incompressible resistance confirming the patient valve does not leak backward."*
+
+STEP 4 — Oxygen Reservoir Connection & Functional Fill Test:
+• Procedure: *"Attach the oxygen reservoir bag or tube securely to its port on the back of the self-inflating bag. Connect the oxygen supply tubing to the oxygen inlet nipple. Turn the oxygen flowmeter to 10 to 15 L/min and observe the reservoir bag: it should fully inflate and remain turgid within 5 to 10 seconds."*
+• Critical Check: *"Pinch the oxygen tubing closed temporarily — the reservoir bag should not deflate more than 10 to 15% over 10 seconds confirming no holes or leaks in the reservoir bag."*
+• Failure: A persistently flaccid or non-inflating reservoir bag at 15 L/min indicates disconnected tubing, kinked tubing, failed oxygen supply, or a holed reservoir bag — REPLACE before use.
+
+STEP 5 — Mask Seal & Cuff Integrity:
+• Procedure: *"Inspect the mask cuff for symmetric inflation. If the mask has an inflatable cushion ring, inflate it with a 5 mL syringe until the cuff feels uniformly firm. Press the back of your hand firmly over the mask: the cuff should provide a conformable seal without obvious gaps. Confirm correct mask size by checking it covers nose bridge to chin cleft without compressing the eyes."*
+
+STEP 6 — PEEP Valve Check (If Required):
+• Procedure: *"If PEEP is indicated, screw the PEEP valve clockwise onto the expiratory port of the patient valve, ensuring the directional markings are correctly oriented with the expiratory flow direction arrow pointing away from the patient. Confirm the PEEP level dial is set to the required pressure (e.g., 5 cmH₂O for ARDS)."*
+
+STEP 7 — Final Systems Check:
+• Procedure: *"With oxygen flowing at 10 to 15 L/min, confirm: (1) reservoir bag is fully inflated and turgid; (2) patient valve assembly is correctly attached with audible click; (3) mask is correct size and cuff is competent; (4) oxygen tubing is connected and kink-free; (5) squeeze the bag 3 times at the intended ventilation rate and listen — you should hear clear audible exhalation through the expiratory port with each release. Adult rate: 10 to 12 breaths/minute. Neonatal rate: 20 to 30 breaths/minute."*`
+      },
+      {
+        h: "Ventilation Technique: One-Person vs Two-Person E-C Grip",
+        b: `Correct technique is as important as correct equipment. Poor technique delivers inadequate tidal volumes, insufflates the stomach, and causes desaturation despite a working BVM.
+
+1. One-Person Technique (Single-Rescuer E-C Grip):
+• Procedure: *"With the non-dominant hand, form a 'C' shape with the thumb and index finger around the mask rim to press it firmly against the face from above. Simultaneously hook the remaining three fingers (middle, ring, little finger) under the bony prominence of the mandible in an 'E' configuration, lifting the jaw forward and upward to maintain the jaw-thrust airway opening manoeuvre. With the dominant hand, squeeze the self-inflating bag smoothly over 1 second until visible chest rise appears — typically 500 to 600 mL for an adult (approximately one-third of a 1600 mL bag)."*
+• Limitation: One hand must simultaneously maintain an airtight mask seal AND a jaw-thrust airway opening position. In patients with beards, edentulous jaws, or difficult anatomy, this is extremely unreliable. Studies confirm highly variable tidal volume delivery.
+
+2. Two-Person Technique (Preferred Standard of Care):
+• Procedure: *"Rescuer 1 positions at the patient's head and uses BOTH hands to apply the E-C grip bilaterally: thumbs and index fingers forming a 'C' on each side of the mask rim, the remaining three fingers hooked under the jaw angle on each side, providing a symmetric airtight double-clamp seal and maintaining a continuous bilateral jaw-thrust with two hands. Rescuer 2 stands to one side and squeezes the bag smoothly and steadily with both hands."*
+• Evidence: Two-person technique consistently delivers significantly higher and more reliable tidal volumes, greater mask seal fidelity, and lower rates of gastric insufflation compared to one-person technique.
+• Airway adjuncts: Always insert an oral (Guedel) airway OPA or nasopharyngeal airway NPA before applying the BVM in unconscious patients to prevent soft tissue airway obstruction at the tongue base.
+
+3. Correct Squeeze Volume and Rate:
+• Adult: 500 to 600 mL per breath (visible chest rise). NEVER squeeze the full bag — 1000+ mL guarantees gastric insufflation and aspiration risk.
+• Rate: 10 to 12 breaths/minute in adults (one breath every 5 to 6 seconds). In cardiac arrest with advanced airway (ETT or LMA) in place: 10 breaths/min asynchronous with chest compressions.
+• Neonate/Infant: 20 to 30 breaths/minute; 6 to 8 mL/kg per breath.
+
+4. Jaw Thrust vs Head-Tilt Chin-Lift:
+• Jaw thrust is mandatory in all suspected cervical spine injuries (trauma, falls, diving accidents) as it opens the airway without extending the neck.
+• Head-tilt chin-lift is the default for cardiac arrest patients with no trauma history and provides equivalent or superior airway opening in most non-trauma cases.`
+      },
+      {
+        h: "FiO₂ Delivered at Each Configuration",
+        b: `Understanding actual FiO₂ delivered at each configuration prevents inadvertent room-air resuscitation:
+
+Configuration | O₂ Flow Rate | FiO₂ Delivered
+No oxygen connected | 0 L/min | 0.21 (room air only)
+BVM without reservoir bag, 15 L/min O₂ | 15 L/min | 0.40 to 0.60
+BVM with reservoir bag, 10 L/min O₂ | 10 L/min | 0.85 to 0.95
+BVM with reservoir bag, 15 L/min O₂ | 15 L/min | ≥ 0.95 to 1.0
+
+Key Principle: The self-inflating bag refills faster than a low oxygen flow can fill its inlet. The reservoir bag solves this by pre-storing 2600 mL of 100% oxygen, making it available as a large bolus immediately as the bag recoils.
+
+Minimum O₂ Flow to Prevent Reservoir Collapse:
+• At respiratory rate 12 breaths/min with tidal volume 600 mL: Total minute ventilation = 7.2 L/min.
+• Oxygen flow must equal or exceed minute ventilation to prevent the reservoir from collapsing and room air being entrained.
+• Safe standard: Always set oxygen to 10 to 15 L/min during BVM ventilation. Never below 6 L/min.
+
+MOANS — Predictors of Difficult Mask Ventilation:
+• M = Mask seal difficulty (Beard, abnormal facial anatomy)
+• O = Obesity / airway Obstruction (BMI > 26, supraglottic lesion)
+• A = Age > 55 years
+• N = No teeth / edentulous (loss of lower facial support)
+• S = Stiffness of lung / Snoring (severe COPD, asthma, sleep apnoea)`
+      },
+      {
+        h: "Common Errors, Hazards & Anaesthetic Pearls",
+        b: `Errors with the BVM carry immediate life-threatening consequences:
+
+1. Reversed Patient Valve (Most Dangerous Assembly Error):
+• The patient valve can be inserted upside down or backwards during reassembly after cleaning — reversing the one-way valve direction. Squeezing the bag delivers NOTHING to the patient; the patient's exhaled gas is forced back into the bag and the bag refills with CO₂-laden gas with each recoil.
+• Prevention: Always check the directional arrow on the patient valve body before assembly, and perform the Step 3 competency test above before every use.
+
+2. Absent or Disconnected Reservoir Bag (Silent FiO₂ 0.21):
+• The most common cause of inadvertently delivering room air instead of 100% O₂. Silently dangerous — the patient continues to receive ventilation but with no oxygen enrichment whatsoever.
+• Prevention: Step 4 of the pre-use check; observe reservoir bag inflation before starting ventilation.
+
+3. Gastric Insufflation → Regurgitation → Aspiration:
+• Squeezing too hard, too fast, or with a poor mask seal forces gas into the oesophagus rather than the trachea. A distended stomach elevates the diaphragm, reduces Functional Residual Capacity (FRC), and if the lower oesophageal sphincter is incompetent, passive regurgitation causes pulmonary aspiration of acidic gastric contents (Mendelson's Syndrome: chemical pneumonitis, mortality 5%).
+• Prevention: Two-person technique; observe only visible chest rise; rate 10 to 12/min; insert OPA or NPA adjunct; apply cricoid pressure in high-risk patients.
+
+4. Inadequate Mask Seal (Most Common Technical Failure in Bedside Practice):
+• In patients with beards, very narrow faces, wide flat faces, or edentulous jaws (tooth loss collapses the lower face structure), maintaining a seal with one hand is nearly impossible.
+• Solution: Always use two-person technique when seal is uncertain. Leave dentures IN during BVM ventilation to maintain facial structure. Use a four-point mask hold (two-handed E-C clamp) whenever possible.
+
+5. Mucus or Vomitus Blockage of Patient Valve:
+• Vomited material, blood, or thick secretions can clog the duck-bill valve flaps — preventing valve opening on compression (patient gets no breath) or preventing valve closure on release (patient rebreathes CO₂).
+• Prevention: Use a clear patient valve for visibility; suction the airway before applying BVM; immediately remove, rinse, and replace the patient valve if soiling occurs.
+
+6. BVM Connected to Tracheostomy or ETT:
+• The face mask is replaced by a 15 mm catheter mount or elbow connector attached directly to the tracheostomy tube or ETT connector. The bag mechanics are identical, but the mask seal step is not relevant.
+
+Anaesthetic Pearl — BVM as Backup During Anaesthesia Machine Failure:
+• Every anaesthesia workstation pre-use check protocol mandates confirming the presence of a fully functional, oxygen-connected BVM as a contingency backup for complete machine failure.
+• During machine failure: Switch immediately to BVM ventilation with 100% O₂ at 15 L/min, call for help, and do not attempt to debug the machine while the patient is under general anaesthesia and apnoeic.`
+      }
+    ],
+    crossLinks: [
+      { label: "🌬️ Airway Devices — Laryngoscopes, SADs & Bougies", item: "airway-devices-equipment" },
+      { label: "⚡ THRIVE / High-Flow Nasal Oxygen (Apnoeic Oxygenation)", item: "thrive-hfno-apneic-oxygenation" },
+      { label: "💨 Breathing Systems & Mapleson Circuits", item: "breathing-systems-mapleson" },
+      { label: "🔄 Rapid Sequence Induction (RSI)", item: "rsi" }
+    ],
+    references: [
+      "Dorsch JA, Dorsch SE. Understanding Anesthesia Equipment, 5th ed., Ch. 10: Manual Resuscitators. Lippincott Williams & Wilkins, 2008.",
+      "Soar J, et al. European Resuscitation Council Guidelines 2021: Adult Advanced Life Support. Resuscitation 2021;161:115\u2013151.",
+      "Panchal AR, et al. 2020 American Heart Association Guidelines for Cardiopulmonary Resuscitation and Emergency Cardiovascular Care. Circulation 2020;142.",
+      "Otten EJ, et al. 'Two-rescuer adult bag-mask ventilation is superior to one-rescuer ventilation.' Prehosp Emerg Care 2014;18(2):223\u20137.",
+      "Miller's Anesthesia, 10th ed. (Gropper MA, ed.), Ch. 44: Airway Management in the Adult. Elsevier, 2025/2026.",
+      "AAGBI: Safe Anaesthetic Practice \u2014 Equipment Checks, Association of Anaesthetists of Great Britain & Ireland (2023)."
+    ]
   });
+
+
 
     topics.push({
     id: "exam-airway",
