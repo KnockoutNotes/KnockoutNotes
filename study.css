@@ -545,6 +545,7 @@ body[data-content-page="study"] .st-page.container {
   height: 100%;
   max-width: none;
   aspect-ratio: 1 / 1;
+  pointer-events: none;
 }
 .st-title-card-media .st-structure-svg {
   width: 100%;
@@ -922,7 +923,14 @@ body[data-content-page="study"] .st-page.container {
 }
 .st-molecule-viewer .st-structure-svg,
 .st-molecule-canvas { width: 100%; height: 100%; }
-.st-molecule-canvas { display: block; cursor: grab; }
+.st-molecule-canvas {
+  display: block;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.st-molecule-canvas:active { cursor: grabbing; }
 .st-structure-svg { width: 100%; max-width: 380px; }
 .st-structure-svg svg { width: 100%; height: auto; display: block; color: var(--text-main); }
 .st-structure-formula {

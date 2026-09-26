@@ -183,7 +183,7 @@
           if (!data) return;
           if (entry.isIntersecting) {
             if (typeof window.KNMountMolecule3D === "function") {
-              try { window.KNMountMolecule3D(node, data); } catch (err) { /* leave fallback */ }
+              try { window.KNMountMolecule3D(node, data, { isThumbnail: true }); } catch (err) { /* leave fallback */ }
             }
           } else if (typeof window.KNDisposeMolecule3D === "function") {
             window.KNDisposeMolecule3D(node);
@@ -200,7 +200,7 @@
       if (data && typeof window.KNMountMolecule3D === "function") {
         const rect = node.getBoundingClientRect();
         if (rect.top < window.innerHeight + 120 && rect.bottom > -120) {
-          try { window.KNMountMolecule3D(node, data); } catch (err) {}
+          try { window.KNMountMolecule3D(node, data, { isThumbnail: true }); } catch (err) {}
         }
       }
       tileMoleculeObserver.observe(node);
@@ -628,7 +628,8 @@
         if (!data) return;
         if (typeof window.KNMountMolecule3D !== "function") return;
         try {
-          window.KNMountMolecule3D(node, data);
+          const isThumbnail = !!node.closest(".st-title-card-media");
+          window.KNMountMolecule3D(node, data, { isThumbnail });
         } catch (err) { /* WebGL unavailable — fallback stays visible */ }
       });
     }
