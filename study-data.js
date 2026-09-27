@@ -5753,6 +5753,286 @@ Anaesthetic Pearl — BVM as Backup During Anaesthesia Machine Failure:
     ]
   });
 
+  topics.push({
+    id: "abg-interpretation",
+    cat: "anaesthesia",
+    name: "Arterial Blood Gas (ABG) Interpretation & Acid-Base Disorders",
+    short: "ABG Interpretation",
+    tags: ["Acid-Base", "Winter's Formula", "Anion Gap", "Delta Gap", "HAGMA vs NAGMA", "Respiratory Acidosis", "Alkalosis", "Stewart Approach"],
+    tagline: "Systematic 6-step interpretation, Henderson-Hasselbalch, acute vs chronic compensation, albumin-corrected anion gap, delta-delta ratio, and HAGMA/NAGMA mnemonics",
+    source: "Miller's Anesthesia, 10th ed., Ch. 42 (Acid-Base Homeostasis & Blood Gas Analysis); Stoelting's Pharmacology & Physiology in Anesthetic Practice, 6th ed., Ch. 30; West's Respiratory Physiology, 11th ed.; Marino's The ICU Book, 4th ed., Section 8.",
+    sections: [
+      {
+        h: "Interpretation: Stepwise Systematic Method, Normal Ranges & Henderson-Hasselbalch",
+        diagram: "abg-stepwise-flowchart",
+        table: {
+          headers: ["Parameter", "Arterial Blood Gas (ABG)", "Venous Blood Gas (VBG)", "Primary Physiological Role", "Clinical Significance & Critical Thresholds"],
+          rows: [
+            ["pH", "7.35 to 7.45", "7.31 to 7.41 (≈0.03–0.04 lower)", "-log10 [H+] (35–45 nmol/L)", "Severe acidemia <7.20 (myocardial depression); severe alkalemia >7.60 (arrhythmias, tetany)"],
+            ["pCO2", "35 to 45 mmHg (4.7–6.0 kPa)", "40 to 50 mmHg (≈4–6 mmHg higher)", "Respiratory component (alveolar ventilation)", "Hypercapnia >45 mmHg (hypoventilation); Hypocapnia <35 mmHg (hyperventilation)"],
+            ["pO2", "80 to 100 mmHg on room air", "35 to 45 mmHg (PvO2)", "Dissolved arterial oxygen tension", "Hypoxemia <60 mmHg on air (P/F ratio <300 defines acute lung injury/ARDS)"],
+            ["HCO3- (Actual)", "22 to 26 mmol/L (mEq/L)", "23 to 27 mmol/L (≈1–2 higher)", "Calculated metabolic component", "Primary renal buffer; <22 = metabolic acidosis; >26 = metabolic alkalosis"],
+            ["Base Excess (BE)", "-2 to +2 mmol/L", "-2 to +2 mmol/L", "Titratable base at normal pCO2 and pH 7.40", "<-3 = tissue hypoperfusion / acid load; >+3 = metabolic alkalosis"],
+            ["Oxygen Saturation", "≥95% to 99% (SaO2)", "65% to 75% (SvO2 / ScvO2)", "Hb oxygen binding percentage", "ScvO2 <70% signals systemic tissue oxygen debt / low cardiac output state"],
+            ["Serum Lactate", "0.5 to 1.5 mmol/L (<2.0)", "0.5 to 2.0 mmol/L", "Anaerobic glycolysis byproduct", ">2.0 = hyperlactatemia; >4.0 mmol/L = septic/cardiogenic shock biomarker"]
+          ]
+        },
+        b: "A structured, algorithmic 6-step method prevents misdiagnosis of complex mixed or triple acid-base disturbances:\n\n" +
+           "1. The 6-Step Systematic ABG Reading Algorithm:\n" +
+           "• Step 1 — Evaluate the pH:\n" +
+           "  - pH < 7.35 = Acidemia (excess H+ activity).\n" +
+           "  - pH > 7.45 = Alkalemia (deficit of H+ activity).\n" +
+           "  - pH 7.35 to 7.45 = Normal acid-base status, or fully compensated primary disorder, or mixed opposing disorders (e.g. severe HAGMA + severe Met Alkalosis).\n" +
+           "• Step 2 — Determine the Primary Acid-Base Disturbance:\n" +
+           "  - Compare the direction of pH against pCO2 and HCO3-:\n" +
+           "  - If pH and pCO2 move in OPPOSITE directions -> Primary Respiratory Disorder (low pH + high pCO2 = Resp Acidosis; high pH + low pCO2 = Resp Alkalosis).\n" +
+           "  - If pH and HCO3- move in the SAME direction -> Primary Metabolic Disorder (low pH + low HCO3- = Met Acidosis; high pH + high HCO3- = Met Alkalosis).\n" +
+           "• Step 3 — Calculate Expected Compensation:\n" +
+           "  - Use validated physiological formulas (Winter's formula for metabolic acidosis; acute vs chronic rules for respiratory disorders).\n" +
+           "  - CRITICAL RULE: The human body NEVER over-compensates! Compensation never drives the pH across normal 7.40 to the opposite side. If measured values deviate from expected compensation, a secondary coexisting acid-base disorder is present!\n" +
+           "• Step 4 — Calculate the Serum Anion Gap (AG) with Albumin Correction:\n" +
+           "  - AG = Na+ - (Cl- + HCO3-). Normal is 8 to 12 mmol/L.\n" +
+           "  - Corrected AG = AG + 2.5 * (4.0 - Albumin in g/dL).\n" +
+           "  - An elevated corrected AG (>12) proves the presence of a High Anion Gap Metabolic Acidosis, even if pH or HCO3- are normal!\n" +
+           "• Step 5 — Calculate the Delta Ratio (Delta Gap / Delta Bicarbonate):\n" +
+           "  - Delta Ratio = (AG - 12) / (24 - HCO3-).\n" +
+           "  - Distinguishes pure HAGMA from mixed HAGMA + NAGMA (<0.8) or mixed HAGMA + Metabolic Alkalosis (>2.0).\n" +
+           "• Step 6 — Assess Oxygenation and Alveolar-Arterial (A-a) Gradient:\n" +
+           "  - Calculate Alveolar PO2: PAO2 = FiO2 * (P_atm - 47) - (PaCO2 / 0.8).\n" +
+           "  - Alveolar-arterial gradient: P(A-a)O2 = PAO2 - PaO2. Normal is < (Age / 4 + 4). Elevated gradient indicates V/Q mismatch, shunt, or diffusion impairment.\n" +
+           "  - Calculate PaO2/FiO2 (P/F) ratio: Normal >300; 200–300 = Mild ARDS; 100–200 = Moderate ARDS; <100 = Severe ARDS.\n\n" +
+           "2. Henderson-Hasselbalch Equation & Mathematical Foundations:\n" +
+           "• Equation: pH = pK_a + log([HCO3-] / (alpha * pCO2)), where pK_a = 6.1 and carbon dioxide solubility coefficient alpha = 0.03 mmol/L/mmHg.\n" +
+           "• Henderson Equation: [H+] in nmol/L = 24 * (pCO2 / [HCO3-]).\n" +
+           "• Rapid Rule of Conversion: At pH 7.40, [H+] is exactly 40 nmol/L. Every 0.01 unit change in pH corresponds inversely to approximately 1 nmol/L change in [H+] (e.g. pH 7.30 = 50 nmol/L; pH 7.20 = 63 nmol/L).\n\n" +
+           "3. Temperature Correction in Hypothermia (Alpha-Stat vs pH-Stat):\n" +
+           "• As blood temperature decreases, gas solubility increases, causing measured pCO2 and pO2 to decrease and pH to rise (neutral water pH rises at lower temperatures).\n" +
+           "• Alpha-Stat Management (Standard in Adult Cardiac Surgery): Blood gas is measured and reported at 37°C without temperature correction. Preserves the fractional dissociation state (alpha) of imidazole rings on histidine proteins, maintaining normal intracellular enzyme function and cellular autoregulation.\n" +
+           "• pH-Stat Management (Preferred in Pediatric Congenital Cardiac Surgery): CO2 is added to the oxygenator to keep temperature-corrected pH at 7.40 and pCO2 at 40 mmHg at the patient's actual cold core temperature. Induces cerebral vasodilation, increasing cerebral blood flow and accelerating brain cooling prior to deep hypothermic circulatory arrest (DHCA)."
+      },
+      {
+        h: "Metabolic Acidosis: Pathophysiology, Winter's Formula Compensation & Consequences",
+        table: {
+          headers: ["Primary Disorder", "Primary Disturbance", "Compensatory Response", "Expected Compensation Formula", "Maximal Physiological Limit"],
+          rows: [
+            ["Metabolic Acidosis", "Primary drop in HCO3- (<22 mmol/L)", "Respiratory hyperventilation (decreased pCO2)", "Expected pCO2 = 1.5 × [HCO3-] + 8 ± 2 (Winter's formula)", "pCO2 rarely drops below 10–12 mmHg due to fatigue"],
+            ["Quick Rule of Thumb", "HCO3- drops below 24", "pCO2 decreases proportionally", "Expected pCO2 ≈ last two digits of pH (e.g. at pH 7.25, pCO2 ≈ 25)", "Applicable only down to pH ~7.15"],
+            ["Coexisting Resp Acidosis", "Inadequate hyperventilation", "Measured pCO2 > Expected pCO2", "Patient failing to blow off CO2 (exhaustion / CNS sedation)", "Immediate mechanical ventilatory support required"],
+            ["Coexisting Resp Alkalosis", "Excessive hyperventilation", "Measured pCO2 < Expected pCO2", "Additional respiratory drive (sepsis / pain / salicylate)", "Investigate independent central hyperventilation trigger"]
+          ]
+        },
+        b: "Metabolic Acidosis is defined by a primary reduction in plasma bicarbonate (<22 mmol/L) accompanied by arterial acidemia (pH <7.35). It is the most frequent metabolic derangement encountered in shock, sepsis, and perioperative critical care:\n\n" +
+           "1. Pathophysiological Mechanisms:\n" +
+           "• Addition of Fixed Organic Acids: Unmeasured acid anions (lactic acid, ketoacids, toxic alcohols) dissociate into H+ and organic anions. The added H+ is buffered by extracellular bicarbonate (H+ + HCO3- <-> H2CO3 <-> H2O + CO2), consuming bicarbonate and generating High Anion Gap Metabolic Acidosis (HAGMA).\n" +
+           "• Direct Gastrointestinal Loss of Bicarbonate: Secretions from the pancreas, biliary tract, and small intestine contain high bicarbonate concentrations (up to 120 mmol/L). Diarrhea, enterocutaneous fistulae, and surgical drainage directly deplete body bicarbonate, producing Normal Anion Gap Metabolic Acidosis (NAGMA).\n" +
+           "• Impaired Renal Net Acid Excretion: Failure of proximal tubular bicarbonate reabsorption (Type 2 RTA) or distal tubular H+ ion excretion (Type 1 RTA, chronic kidney disease, hypoaldosteronism Type 4 RTA).\n\n" +
+           "2. Respiratory Compensation — Winter's Formula:\n" +
+           "• Peripheral and central chemoreceptors detect elevated [H+], stimulating the respiratory center in the medulla to increase alveolar ventilation (tidal volume and respiratory rate — Kussmaul breathing).\n" +
+           "• Winter's Formula for Expected pCO2: Expected pCO2 = 1.5 * [HCO3-] + 8 ± 2 mmHg.\n" +
+           "• Clinical Interpretation:\n" +
+           "  - If measured pCO2 falls within the calculated Winter's range -> Pure Metabolic Acidosis with appropriate respiratory compensation.\n" +
+           "  - If measured pCO2 > Expected pCO2 -> Mixed Metabolic Acidosis + Coexisting Respiratory Acidosis! Indicates respiratory muscle fatigue, central nervous system depression, or severe lung pathology; early endotracheal intubation and mechanical ventilation are strongly indicated.\n" +
+           "  - If measured pCO2 < Expected pCO2 -> Mixed Metabolic Acidosis + Coexisting Respiratory Alkalosis! Seen characteristically in early septic shock (hyperventilation + lactic acidosis) or salicylate toxicity.\n\n" +
+           "3. Systemic Clinical Consequences of Severe Acidemia (pH <7.20):\n" +
+           "• Cardiovascular Depolarisation & Collapse: Direct impairment of actin-myosin cross-bridging produces negative inotropy. Profound peripheral arterial vasodilation occurs, unresponsive to exogenous vasopressors due to downregulation and desensitization of alpha-1 and beta-1 adrenergic receptors.\n" +
+           "• Central Venoconstriction: Peripheral-to-central redistribution of blood volume, worsening acute pulmonary oedema.\n" +
+           "• Arrhythmogenic Predisposition: Lowers ventricular fibrillation threshold; slows intraventricular conduction.\n" +
+           "• Transcellular Potassium Shift: In mineral (hyperchloraemic/inorganic) acidemias, excess extracellular H+ enters cells in exchange for K+ leaving cells via the H+/K+ antiporter. For every 0.1 unit drop in pH, serum potassium rises by approximately 0.5 to 0.6 mmol/L (less pronounced in organic acidoses such as lactic acidosis or DKA where organic anions enter cells with H+)."
+      },
+      {
+        h: "Respiratory Acidosis: Acute vs Chronic Renal Compensation, Causes & Intraoperative Management",
+        table: {
+          headers: ["Condition", "Acute Respiratory Acidosis", "Chronic Respiratory Acidosis", "Primary Mechanism", "Clinical Setting & Treatment"],
+          rows: [
+            ["Definition", "Acute rise in pCO2 (>45 mmHg)", "Sustained pCO2 (>45 mmHg) >3–5 days", "Alveolar hypoventilation (VA = (VT - VD) × RR)", "Hypoventilation from drugs, airway obstruction, or chronic lung disease"],
+            ["Renal Compensation", "Minimal (cellular buffering only)", "Full renal HCO3- retention", "Proximal tubule H+ secretion & HCO3- synthesis", "Takes 3 to 5 days for kidneys to reach maximum compensation"],
+            ["HCO3- Elevation Rule", "For every 10 mmHg pCO2 rise >40, HCO3- rises by 1 mmol/L", "For every 10 mmHg pCO2 rise >40, HCO3- rises by 3.5 to 4.0 mmol/L", "Acute: 1 mEq/L per 10 mmHg\nChronic: 3.5 mEq/L per 10 mmHg", "Acute formula: Expected HCO3- = 24 + (pCO2 - 40)/10 × 1\nChronic formula: Expected HCO3- = 24 + (pCO2 - 40)/10 × 3.5"],
+            ["pH Drop Rule", "pH drops by 0.08 per 10 mmHg rise in pCO2", "pH drops by only 0.03 per 10 mmHg rise in pCO2", "Renal retention of HCO3- buffers arterial pH near normal", "Acute pCO2 60 mmHg → pH ~7.24\nChronic pCO2 60 mmHg → pH ~7.34"],
+            ["Maximal Compensation", "HCO3- rarely exceeds 30–32 mmol/L", "HCO3- can reach 42–45 mmol/L", "Maximal renal bicarbonate reabsorption threshold", "HCO3- >45 mmol/L indicates superimposed metabolic alkalosis"]
+          ]
+        },
+        b: "Respiratory Acidosis occurs whenever alveolar ventilation (V_A) fails to match carbon dioxide production (V_CO2), governed by the alveolar ventilation equation: PaCO2 = (V_CO2 / V_A) * 0.863:\n\n" +
+           "1. Acute vs Chronic Compensation Rules:\n" +
+           "• Acute Respiratory Acidosis (Immediate to Hours):\n" +
+           "  - The kidneys have had insufficient time to synthesize and retain new bicarbonate.\n" +
+           "  - Initial buffering is mediated exclusively by intracellular non-bicarbonate buffers (primarily hemoglobin and intracellular phosphates): CO2 + H2O <-> H2CO3 <-> H+ + HCO3-; H+ is buffered by Hb(Prot-), leaving small amounts of HCO3- in plasma.\n" +
+           "  - Rule: For every 10 mmHg increase in pCO2 above 40 mmHg, serum [HCO3-] rises by exactly 1 mmol/L, and pH drops by 0.08.\n" +
+           "• Chronic Respiratory Acidosis (3 to 5 Days):\n" +
+           "  - The kidneys adapt to chronic hypercapnia by upregulating proximal tubular Na+/H+ antiporters (NHE3) and H+-ATPase pumps, maximizing ammonia (NH4+) excretion and synthesizing new bicarbonate.\n" +
+           "  - Rule: For every 10 mmHg increase in pCO2 above 40 mmHg, serum [HCO3-] rises by 3.5 to 4.0 mmol/L, and pH drops by only 0.03 (near-normal pH).\n\n" +
+           "2. Etiological Classification in Anaesthesia & Critical Care:\n" +
+           "• Central Respiratory Depression: Opioid overdose (mu-receptor mediated depression of respiratory rate and blunted hypercapnic drive), volatile anaesthetics, propofol, benzodiazepines, brainstem infarction, and increased ICP.\n" +
+           "• Neuromuscular Transmission Failure: Incomplete reversal of neuromuscular blockade (train-of-four [TOF] ratio <0.90), Myasthenia Gravis, Guillain-Barré Syndrome, high spinal/epidural anaesthesia, amyotrophic lateral sclerosis (ALS), critical illness polyneuropathy.\n" +
+           "• Thoracic / Chest Wall Restriction: Flail chest, severe kyphoscoliosis, morbid obesity (Pickwickian syndrome / Obesity Hypoventilation Syndrome), abdominal compartment syndrome, tight abdominal binders.\n" +
+           "• Airway & Pulmonary Parenchymal Disease: Acute laryngospasm, severe bronchospasm, endotracheal tube obstruction/kinking, mainstem bronchial intubation, acute pulmonary oedema, advanced COPD, severe ARDS.\n" +
+           "• Intraoperative Equipment Malfunctions: Soda lime canister exhaustion (rebreathing CO2), malfunctioning inspiratory/expiratory unidirectional valves in circle system, fresh gas flow set below minute ventilation in non-rebreathing circuits, laparoscopy pneumoperitoneum (massive CO2 absorption from peritoneal cavity).\n\n" +
+           "3. Intraoperative Management & The 'Post-Hypercapnic Alkalosis' Trap:\n" +
+           "• Treatment of Acute Respiratory Acidosis: Correct the underlying ventilation defect! Titrate minute ventilation (V_E = RR * V_T) on the anaesthesia workstation; reverse opioids with Naloxone (0.04 to 0.1 mg IV increments); reverse residual neuromuscular block with Sugammadex (2 to 4 mg/kg) or Neostigmine/Glycopyrrolate.\n" +
+           "• THE DANGEROUS POST-HYPERCAPNIC ALKALOSIS TRAP:\n" +
+           "  - In patients with chronic hypercapnia (e.g. severe COPD with baseline pCO2 65 mmHg and compensatory HCO3- 34 mmol/L), mechanical hyperventilation to a 'normal' pCO2 of 40 mmHg will cause a lethal, acute metabolic alkalosis! (pH jumps to >7.60, precipitating seizures, coronary spasm, and hypokalaemic arrhythmias).\n" +
+           "  - Management Goal: Ventilate chronic COPD patients to their BASELINE pCO2, NOT to 40 mmHg!"
+      },
+      {
+        h: "Metabolic Alkalosis: Saline-Responsive vs Resistant, Urinary Chloride & Compensation",
+        table: {
+          headers: ["Category", "Urinary Chloride (U_Cl)", "Underlying Pathophysiology", "Common Clinical Etiologies", "Targeted Therapeutic Strategy"],
+          rows: [
+            ["Saline-Responsive", "<20 mmol/L (Low)", "Extracellular volume depletion + Chloride deficit; kidney cannot excrete HCO3- without Cl-", "Nasogastric suction, vomiting, prior diuretic therapy, post-hypercapnia, congenital chloridorrhea", "Volume expansion with 0.9% Normal Saline + Potassium Chloride (KCl) infusion"],
+            ["Saline-Resistant", ">20 mmol/L (High)", "Mineralocorticoid excess or direct renal tubular wasting; independent of volume depletion", "Primary hyperaldosteronism (Conn's), Cushing's, licorice ingestion, Bartter's / Gitelman's, severe hypokalaemia (<2.0)", "Treat underlying cause; Potassium repletion, Spironolactone / Eplerenone (aldosterone antagonists)"],
+            ["Exogenous Alkali", "Variable (>20 mmol/L)", "Direct bicarbonate overload exceeding renal excretion capacity", "Massive sodium bicarbonate infusion, massive blood transfusion (citrate conversion to HCO3-), milk-alkali syndrome", "Discontinue alkali administration; Acetazolamide (carbonic anhydrase inhibitor) if volume overload"]
+          ]
+        },
+        b: "Metabolic Alkalosis is characterized by a primary elevation of plasma bicarbonate (>26 mmol/L) and arterial pH >7.45. It requires both an INITIATING event (loss of H+ or gain of HCO3-) and a MAINTENANCE factor that prevents the normal kidneys from excreting the excess bicarbonate:\n\n" +
+           "1. The Two-Step Mechanism (Generation vs Maintenance):\n" +
+           "• The Generation Phase: Direct loss of gastric hydrochloric acid (vomiting, NG suction: H+ and Cl- lost, leaving equimolar HCO3- in plasma) or renal H+ loss (loop/thiazide diuretics blocking Na+/Cl- reabsorption, delivering high Na+ to distal tubule and stimulating aldosterone-driven H+ excretion).\n" +
+           "• The Maintenance Phase (Why normal kidneys cannot excrete excess HCO3-):\n" +
+           "  1. Hypovolaemia: Decreased effective circulating volume triggers maximal aldosterone and angiotensin II release, stimulating proximal tubular Na+/H+ exchange and distal H+-ATPase, reabsorbing all filtered bicarbonate.\n" +
+           "  2. Hypochloraemia: The distal tubular pendrin exchanger (Cl-/HCO3- antiporter) requires luminal chloride to secrete bicarbonate into urine. Chloride depletion paralyzes bicarbonate excretion!\n" +
+           "  3. Hypokalaemia: Low extracellular potassium forces intracellular K+ to exit cells in exchange for H+ entering cells. Intracellular renal acidosis stimulates proximal tubule ammoniagenesis and bicarbonate synthesis, while distal tubule H+/K+ ATPase is activated, excreting H+ and paradoxically acidifying urine ('Paradoxical Aciduria').\n\n" +
+           "2. Respiratory Compensation Formula:\n" +
+           "• Respiratory compensation is mediated by hypoventilation (elevated pCO2):\n" +
+           "  - Expected pCO2 = 0.7 * ([HCO3-] - 24) + 40 ± 2 mmHg (or Expected pCO2 = 0.7 * [HCO3-] + 20 ± 2 mmHg).\n" +
+           "  - Physiological ceiling: Hypoventilation is strictly limited by the development of hypoxia! In non-intubated, spontaneous-breathing patients, pCO2 rarely rises above 55 to 60 mmHg because hypoxic ventilatory drive overrides metabolic alkalemia.\n\n" +
+           "3. Saline-Responsive vs Saline-Resistant Classification (Urinary Chloride):\n" +
+           "• Saline-Responsive (Urinary Chloride <20 mmol/L):\n" +
+           "  - Represents chloride depletion and volume contraction (e.g. vomiting, NG tube drainage, loop diuretics).\n" +
+           "  - Hallmark: Promptly corrected by intravenous 0.9% Normal Saline (154 mmol/L Cl-) plus Potassium Chloride (KCl) replacement.\n" +
+           "• Saline-Resistant (Urinary Chloride >20 mmol/L):\n" +
+           "  - Represents autonomous mineralocorticoid excess (Primary Hyperaldosteronism, adrenal adenoma, Cushing's syndrome, exogenous licorice consumption) or severe intrinsic hypokalaemia.\n" +
+           "  - The kidneys waste chloride; Normal Saline does NOT correct the alkalosis. Requires aldosterone receptor antagonists (Spironolactone) and aggressive potassium replacement.\n\n" +
+           "4. Detrimental Clinical Effects of Severe Alkalemia (pH >7.55–7.60):\n" +
+           "• Left-Shift of Oxyhaemoglobin Dissociation Curve (Bohr Effect): Hemoglobin binds oxygen with extreme affinity, severely impairing oxygen release at peripheral tissues and worsening tissue hypoxia.\n" +
+           "• Acute Reduction in Ionized Calcium (Ca2+): Alkalemia increases the negative charge on albumin molecules, increasing calcium binding to albumin. Serum ionized calcium drops acutely, triggering neuromuscular hyperexcitability, carpopedal spasm (Trousseau's sign), facial twitching (Chvostek's sign), laryngospasm, and seizures.\n" +
+           "• Malignant Cardiac Arrhythmias: Predisposes to atrial tachycardias, PVCs, and ventricular arrhythmias, especially in patients with ischemic heart disease or taking digitalis."
+      },
+      {
+        h: "Respiratory Alkalosis: Acute vs Chronic Rules, Causes, Hypocalcaemia & Cerebral Perfusion",
+        table: {
+          headers: ["Condition", "Acute Respiratory Alkalosis", "Chronic Respiratory Alkalosis", "Physiological Compensation", "Key Clinical Features"],
+          rows: [
+            ["Definition", "Acute reduction in pCO2 (<35 mmHg)", "Sustained reduction in pCO2 (<35 mmHg) >2–3 days", "Alveolar hyperventilation exceeding metabolic CO2 production", "Hyperventilation driven by hypoxia, central stimulation, or mechanical ventilation"],
+            ["Renal Compensation", "Minimal (cellular buffering)", "Full renal HCO3- excretion", "Downregulated proximal tubular H+ secretion; HCO3- excretion", "Renal excretion of bicarbonate lowers plasma HCO3- towards normal pH"],
+            ["HCO3- Drop Rule", "For every 10 mmHg pCO2 drop <40, HCO3- drops by 2 mmol/L", "For every 10 mmHg pCO2 drop <40, HCO3- drops by 4 to 5 mmol/L", "Acute: 2 mEq/L per 10 mmHg\nChronic: 4–5 mEq/L per 10 mmHg", "Acute formula: Expected HCO3- = 24 - (40 - pCO2)/10 × 2\nChronic formula: Expected HCO3- = 24 - (40 - pCO2)/10 × 5"],
+            ["pH Rise Rule", "pH rises by 0.08 per 10 mmHg drop in pCO2", "pH rises by only 0.03 per 10 mmHg drop in pCO2", "Near-complete restoration of arterial pH in chronic states", "Acute pCO2 20 mmHg → pH ~7.56\nChronic pCO2 20 mmHg → pH ~7.46"],
+            ["Maximal Compensation", "HCO3- rarely drops below 18 mmol/L", "HCO3- can drop to 12–15 mmol/L", "Physiological limit of renal bicarbonate excretion", "HCO3- <12 mmol/L indicates coexisting metabolic acidosis"]
+          ]
+        },
+        b: "Respiratory Alkalosis is caused by an increase in effective alveolar ventilation relative to carbon dioxide production, resulting in a primary reduction in arterial pCO2 (<35 mmHg) and arterial alkalemia (pH >7.45):\n\n" +
+           "1. Acute vs Chronic Renal Compensation Rules:\n" +
+           "• Acute Respiratory Alkalosis (Minutes to Hours):\n" +
+           "  - Immediate chemical buffering by intracellular proteins releases H+ into plasma: H+ + HCO3- <-> H2CO3 <-> H2O + CO2, consuming small amounts of bicarbonate.\n" +
+           "  - Rule: For every 10 mmHg drop in pCO2 below 40 mmHg, plasma [HCO3-] falls by 2 mmol/L, and pH rises by 0.08.\n" +
+           "• Chronic Respiratory Alkalosis (2 to 3 Days):\n" +
+           "  - The kidneys respond to persistent low pCO2 by downregulating proton secretion (inhibiting apical NHE3 antiporters and H+-ATPase) and decreasing bicarbonate reabsorption.\n" +
+           "  - Rule: For every 10 mmHg drop in pCO2 below 40 mmHg, plasma [HCO3-] falls by 4 to 5 mmol/L, and pH rises by only 0.03.\n\n" +
+           "2. Common Etiologies in Anaesthesia & Emergency Medicine:\n" +
+           "• Hypoxemic Drive: High altitude, severe anemia, pulmonary embolism, pneumonia, right-to-left intracardiac shunts, acute asthma (early stage hyperventilation before fatigue).\n" +
+           "• Central Nervous System Stimulation: Severe pain, anxiety/panic attacks, fever, sepsis, traumatic brain injury, subarachnoid hemorrhage, meningitis, pregnancy (progesterone stimulates medullary respiratory center).\n" +
+           "• Toxic / Drug-Induced: Early Salicylate (Aspirin) toxicity (direct stimulation of medullary chemoreceptor trigger zone produces primary respiratory alkalosis before uncoupling of oxidative phosphorylation produces HAGMA); theophylline, catecholamines.\n" +
+           "• Iatrogenic Mechanical Over-Ventilation: Excess tidal volume or respiratory rate delivered during general anaesthesia or ICU mechanical ventilation.\n" +
+           "• Hepatic Cirrhosis & Encephalopathy: Elevated circulating ammonia and progesterone metabolites trigger persistent hyperventilation.\n\n" +
+           "3. Profound Neurological & Vascular Consequences:\n" +
+           "• Cerebral Vasoconstriction & Ischemia: Cerebral blood flow (CBF) is exquisitely sensitive to arterial pCO2, decreasing by 2% to 4% for every 1 mmHg drop in pCO2 between 20 and 60 mmHg. Severe hyperventilation (pCO2 <25 mmHg) causes profound cerebral vasoconstriction, causing dizziness, lightheadedness, confusion, syncope, and worsening focal cerebral ischemia in traumatic brain injury or stroke.\n" +
+           "• Acute Hypocalcaemic Neuromuscular Irritability: Elevated pH increases the negative charge on plasma proteins, leading to increased binding of ionized calcium to albumin. The acute reduction in ionized calcium (Ca2+) increases neuronal membrane sodium permeability, causing circumoral paresthesias, carpopedal spasm, tetany, and hyperreflexia."
+      },
+      {
+        h: "HAGMA & Delta Gap: Anion Gap Calculation, Albumin Correction & Delta Ratio Framework",
+        diagram: "abg-anion-gap-balance",
+        table: {
+          headers: ["Delta Ratio (ΔAG / ΔHCO3-)", "Diagnostic Interpretation", "Underlying Pathophysiology", "Classic Clinical Examples"],
+          rows: [
+            ["<0.4 to 0.8", "Mixed HAGMA + NAGMA", "Bicarbonate drop is far greater than the rise in Anion Gap; dual acidotic insult", "Diabetic Ketoacidosis + severe diarrhea; Lactic acidosis + aggressive 0.9% Normal Saline resuscitation; Renal Tubular Acidosis + sepsis"],
+            ["0.8 to 1.0", "HAGMA (with early/mild NAGMA)", "Transition zone; proportional buffering with mild hyperchloraemia", "Early DKA; resolving lactic acidosis with renal chloride retention"],
+            ["1.0 to 2.0", "Pure High Anion Gap Metabolic Acidosis (HAGMA)", "One mole of unmeasured organic acid buffers exactly one mole of HCO3- (1:1 stoichiometry)", "Uncomplicated Diabetic Ketoacidosis (DKA); Lactic Acidosis (septic, cardiogenic, or hemorrhagic shock); Toxic alcohol poisoning"],
+            [">2.0", "Mixed HAGMA + Metabolic Alkalosis (or Pre-existing Chronic Hypercapnia)", "Bicarbonate is higher than expected; a concurrent process has elevated HCO3- prior to or during HAGMA", "DKA with protracted vomiting (gastric HCl loss); Lactic acidosis in chronic COPD patient with baseline compensatory hyperbicarbonatemia"]
+          ]
+        },
+        b: "The Serum Anion Gap and the Delta Ratio are essential mathematical tools for unmasking complex, mixed, and life-threatening occult metabolic acid-base disorders:\n\n" +
+           "1. Serum Anion Gap (AG) Definition & Formula:\n" +
+           "• The Law of Electroneutrality mandates that total plasma cation charges must equal total plasma anion charges: [Na+] + [Unmeasured Cations] = [Cl-] + [HCO3-] + [Unmeasured Anions].\n" +
+           "• Standard Anion Gap Equation: AG = [Na+] - ([Cl-] + [HCO3-]).\n" +
+           "• Normal Reference Range: 8 to 12 mmol/L (measured by modern ion-selective electrode analyzers; historically 12–16 mmol/L when flame photometry was used).\n" +
+           "• Unmeasured Anions comprise circulating albumin (accounting for ~75% of normal AG), phosphate, sulphate, and organic acids. Unmeasured Cations include calcium (Ca2+), magnesium (Mg2+), potassium (K+), and gamma-globulins.\n\n" +
+           "2. Mandatory Albumin Correction of Anion Gap (The Figge-Jabor-Kazda Formula):\n" +
+           "• Circulating albumin is a polyvalent polyanion. At physiological pH 7.40, each 1.0 g/dL of serum albumin provides approximately 2.5 mmol/L of negative charge (anion equivalents).\n" +
+           "• The Figge-Jabor-Kazda-Fencl Formula:\n" +
+           "  Corrected AG = Observed AG + 2.5 * (4.0 - Serum Albumin in g/dL).\n" +
+           "• CRITICAL CLINICAL WARNING — OCCULT HAGMA IN ICU SEPSIS:\n" +
+           "  - Hypoalbuminaemia is virtually ubiquitous in critically ill, septic, cirrhotic, and post-surgical patients (e.g. serum albumin 2.0 g/dL instead of normal 4.0 g/dL).\n" +
+           "  - A 2.0 g/dL deficit in albumin artificially lowers the baseline baseline AG by 5.0 mmol/L (from normal 12 down to 7 mmol/L!).\n" +
+           "  - Therefore, an uncorrected measured AG of 12 mmol/L in a hypoalbuminaemic patient actually represents a TRUE corrected AG of 17 mmol/L! Failure to correct for albumin causes clinicians to miss lethal occult lactic acidosis or ketoacidosis in over 30% of ICU admissions!\n\n" +
+           "3. The Delta Ratio (Delta-Delta Framework):\n" +
+           "• In pure HAGMA, each millimole of unmeasured organic acid (e.g. lactic acid, beta-hydroxybutyric acid) added to the extracellular fluid releases one H+, which binds and consumes exactly one millimole of HCO3-. The rise in Anion Gap (Delta AG) should match the drop in Bicarbonate (Delta HCO3-).\n" +
+           "• Mathematical Formulas:\n" +
+           "  - Delta AG = Observed Corrected AG - Normal AG (12).\n" +
+           "  - Delta HCO3- = Normal HCO3- (24) - Observed HCO3-.\n" +
+           "  - Delta Ratio = Delta AG / Delta HCO3- = (AG - 12) / (24 - [HCO3-]).\n" +
+           "• Diagnostic Framework:\n" +
+           "  1. Delta Ratio 1.0 to 2.0 = Pure HAGMA: Classic uncomplicated lactic acidosis or DKA.\n" +
+           "  2. Delta Ratio < 0.8 = Mixed HAGMA + NAGMA: Bicarbonate has dropped significantly more than the Anion Gap has risen. Look immediately for normal saline resuscitation hyperchloraemia, diarrhea, or renal tubular acidosis coexisting with shock or DKA!\n" +
+           "  3. Delta Ratio > 2.0 = Mixed HAGMA + Metabolic Alkalosis: Bicarbonate is unexpectedly elevated relative to the high Anion Gap. Look for severe vomiting (gastric HCl loss), chronic diuretic use, or pre-existing chronic respiratory acidosis with renal compensation!"
+      },
+      {
+        h: "HAGMA & NAGMA Examples: MUDPILES / GOLD MARK vs HARDCARP & Urine Anion Gap",
+        table: {
+          headers: ["Acidosis Type", "Anion Gap", "Serum Chloride", "Mnemonic / Acronym", "Key Etiologies & Diagnostic Biomarkers", "Emergency Therapeutic Interventions"],
+          rows: [
+            ["High Anion Gap (HAGMA)", "Elevated (>12 mmol/L)", "Normal (100–106 mmol/L)", "MUDPILES / GOLD MARK", "Methanol, Uraemia, DKA, Paracetamol (5-oxoproline), Iron/INH, Lactic acidosis, Ethylene glycol, Salicylates", "Treat underlying cause; Insulin/IVF for DKA; Hemodialysis for toxic alcohols/uraemia; Fomepizole"],
+            ["Normal Anion Gap (NAGMA)", "Normal (8–12 mmol/L)", "Elevated (>108 mmol/L, Hyperchloraemic)", "HARDCARP / USEDCAMP", "Hyperalimentation, Acetazolamide, RTA, Diarrhea, Chloride fluids (0.9% NS), Addison's, Retrosternal conduit, Pancreatic fistula", "Discontinue 0.9% NS; switch to balanced crystalloids (Plasma-Lyte / Hartmann's); correct diarrhea/RTA; oral NaHCO3"],
+            ["Urine Anion Gap (UAG)", "Differentiates renal vs GI NAGMA", "Calculated from urine electrolytes", "UAG = (Na+_u + K+_u) - Cl-_u", "Negative UAG (-20 to -50): Normal renal NH4+ excretion (Diarrhea)\nPositive UAG (+20 to +40): Impaired renal NH4+ excretion (RTA)", "Negative UAG confirms intact renal response to GI losses; Positive UAG confirms distal RTA (Type 1 or 4)"]
+          ]
+        },
+        b: "Distinguishing between High Anion Gap Metabolic Acidosis (HAGMA) and Normal Anion Gap (Hyperchloraemic) Metabolic Acidosis (NAGMA) is the cornerstone of clinical acid-base diagnostics:\n\n" +
+           "1. High Anion Gap Metabolic Acidosis (HAGMA) Mnemonics:\n" +
+           "• THE CLASSIC MUDPILES MNEMONIC:\n" +
+           "  - M — Methanol: Metabolized by alcohol dehydrogenase to formic acid; causes retinal toxicity, optic disc hyperaemia, and permanent blindness.\n" +
+           "  - U — Uraemia: Advanced acute kidney injury or chronic renal failure (eGFR <15–20 mL/min); accumulation of organic sulfates, phosphates, and hippurate.\n" +
+           "  - D — Diabetic Ketoacidosis (DKA): Insulin deficiency + glucagon excess accelerates lipolysis; accumulation of beta-hydroxybutyrate and acetoacetate. (Also includes Alcoholic Ketoacidosis and Starvation Ketoacidosis).\n" +
+           "  - P — Paracetamol / Propylene Glycol: Chronic therapeutic or supratherapeutic paracetamol in malnourished/female patients induces 5-oxoproline (pyroglutamic acid) accumulation via glutathione depletion. Propylene glycol is a solvent in IV lorazepam/diazepam infusions.\n" +
+           "  - I — Iron, Isoniazid (INH), Infection: INH causes intractable seizures refractory to standard anticonvulsants (treated with IV Pyridoxine / Vitamin B6); Iron toxicity causes direct mitochondrial poisoning.\n" +
+           "  - L — Lactic Acidosis: Type A (tissue hypoperfusion/shock, cardiac arrest, mesenteric ischemia); Type B (toxins, metformin-associated lactic acidosis [MALA], liver failure, propofol infusion syndrome [PRIS], cyanide).\n" +
+           "  - E — Ethylene Glycol: Antifreeze ingestion; metabolized to glycolic and oxalic acid; forms calcium oxalate envelope crystals in urine, precipitating acute tubular necrosis and hypocalcaemic tetany.\n" +
+           "  - S — Salicylates (Aspirin): Uncouples oxidative phosphorylation (generating lactic and keto acids) and directly stimulates medullary respiratory center (producing early respiratory alkalosis).\n" +
+           "• THE MODERN GOLD MARK MNEMONIC (Preferred in Toxicology):\n" +
+           "  - G: Glycols (ethylene glycol, propylene glycol)\n" +
+           "  - O: Oxoproline (5-oxoproline / pyroglutamic acid from chronic paracetamol use)\n" +
+           "  - L: L-Lactate (standard clinical lactic acidosis from shock, hypoperfusion, sepsis)\n" +
+           "  - D: D-Lactate (short bowel syndrome / bacterial fermentation of unabsorbed carbohydrates)\n" +
+           "  - M: Methanol\n" +
+           "  - A: Aspirin (salicylates)\n" +
+           "  - R: Renal Failure (uraemic acidosis)\n" +
+           "  - K: Ketoacidosis (diabetic, alcoholic, starvation)\n\n" +
+           "2. Normal Anion Gap (Hyperchloraemic) Metabolic Acidosis (NAGMA) Mnemonics:\n" +
+           "• Electrophysiological Principle: In NAGMA, the serum anion gap remains normal (8–12 mmol/L) because for every millimole of bicarbonate lost from the body, the kidneys or intravenous infusions replace it with exactly one millimole of chloride (Cl-), preserving electroneutrality.\n" +
+           "• THE HARDCARP MNEMONIC:\n" +
+           "  - H — Hyperalimentation: Total Parenteral Nutrition (TPN) with excessive chloride-rich amino acid formulations.\n" +
+           "  - A — Acetazolamide: Carbonic anhydrase inhibition in the renal proximal tubule, causing renal bicarbonate wasting.\n" +
+           "  - R — Renal Tubular Acidosis (RTA Types 1, 2, and 4).\n" +
+           "  - D — Diarrhea: The most common worldwide cause of NAGMA. Pancreatic, biliary, and intestinal secretions contain high NaHCO3 concentrations; loss of stool directly drains bicarbonate.\n" +
+           "  - C — Chloride-rich Resuscitation Fluids: Massive infusion of 0.9% Normal Saline (154 mmol/L Cl-, far higher than normal plasma Cl- of 104 mmol/L). Induces hyperchloraemic metabolic acidosis, renal vasoconstriction, and decreased GFR.\n" +
+           "  - A — Addison's Disease: Primary adrenal insufficiency / aldosterone deficiency leads to impaired renal H+ excretion.\n" +
+           "  - R — Retrosternal / Ureteral Diversion (Ureterosigmoidostomy): Colon mucosa reabsorbs chloride from urine in exchange for secreting bicarbonate into the bowel lumen.\n" +
+           "  - P — Pancreaticoduodenal Fistulae: Direct loss of bicarbonate-rich digestive fluids.\n\n" +
+           "3. Differentiating Diarrhea from RTA Using Urine Anion Gap (UAG):\n" +
+           "• Formula: UAG = ([Na+]_urine + [K+]_urine) - [Cl-]_urine.\n" +
+           "• Negative Urine Anion Gap (Typically -20 to -50 mmol/L):\n" +
+           "  - Indicates INTACT renal acidification mechanism.\n" +
+           "  - In extra-renal bicarbonate loss (Diarrhea), the healthy kidneys appropriately increase ammonium (NH4+) excretion to eliminate acid. Because NH4+ is an unmeasured cation excreted together with chloride (Cl-), urinary chloride rises markedly above Na+ + K+, yielding a strongly negative UAG.\n" +
+           "• Positive Urine Anion Gap (Typically +20 to +40 mmol/L):\n" +
+           "  - Indicates IMPAIRED renal ammonium excretion.\n" +
+           "  - Classic hallmark of Renal Tubular Acidosis (Distal Type 1 RTA or Hypoaldosteronism Type 4 RTA). The diseased kidney cannot excrete NH4+, urinary chloride remains low, yielding a positive UAG."
+      }
+    ],
+    references: [
+      "Miller's Anesthesia, 10th ed., Ch. 42 (Acid-Base Homeostasis & Blood Gas Analysis), Elsevier, 2025/2026.",
+      "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 6th ed., Ch. 30 (Acid-Base Homeostasis), Wolters Kluwer, 2022.",
+      "Marino PL. The ICU Book, 4th ed., Section 8: Acid-Base Disorders, Wolters Kluwer, 2014 / 2023 update.",
+      "West JB, Luks AM. West's Respiratory Physiology: The Essentials, 11th ed., Wolters Kluwer, 2021.",
+      "Kellum JA. Clinical review: Reunification of acid-base physiology. Crit Care. 2005;9(5):500-507.",
+      "Figge J, Jabor A, Kazda A, Fencl V. Anion gap and hypoalbuminemia. Crit Care Med. 1998;26(11):1807-1810."
+    ]
+  });
+
   window.KN_STUDY = { categories, topics, drugs };
 })();
 

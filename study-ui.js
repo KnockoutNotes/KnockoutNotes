@@ -782,6 +782,8 @@
       else if (s.diagram === "ecg-vf-waveform") diagramHTML = ecgVfDiagramHTML();
       else if (s.diagram === "ecg-hyperkalemia-waveform") diagramHTML = ecgHyperkalemiaDiagramHTML();
       else if (s.diagram === "ecg-hypokalemia-waveform") diagramHTML = ecgHypokalemiaDiagramHTML();
+      else if (s.diagram === "abg-stepwise-flowchart") diagramHTML = abgStepwiseFlowchartHTML();
+      else if (s.diagram === "abg-anion-gap-balance") diagramHTML = abgAnionGapBalanceHTML();
 
       let imagesHTML = "";
       if (Array.isArray(s.images)) {
@@ -3049,6 +3051,210 @@
         </g>
       </svg>
       <p class="st-diagram-caption">Hypokalaemia ECG Manifestations. Top: Pathognomonic prominent U wave (U &gt; T), ST depression, and pseudo-prolonged QU interval in moderate hypokalaemia (2.5–3.0 mmol/L). Bottom: Early R-on-U phenomenon triggering ventricular ectopy and Torsades de Pointes in severe hypokalaemia (&lt;2.5 mmol/L).</p>
+    </div>`;
+  }
+
+  /* 12. Arterial Blood Gas (ABG) 6-Step Systematic Interpretation Flowchart */
+  function abgStepwiseFlowchartHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stepwise ABG Interpretation Flowchart" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        <rect x="10" y="10" width="740" height="360" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- Header -->
+        <g transform="translate(30, 25)">
+          <rect x="0" y="0" width="700" height="30" rx="5" fill="#1e293b"/>
+          <text x="350" y="19" font-size="11" font-weight="900" fill="#38bdf8" text-anchor="middle" letter-spacing="1">SYSTEMATIC 6-STEP ARTERIAL BLOOD GAS (ABG) INTERPRETATION</text>
+        </g>
+
+        <!-- STEP 1: pH Assessment -->
+        <g transform="translate(30, 68)">
+          <rect x="0" y="0" width="220" height="85" rx="6" fill="#111827" stroke="#3b82f6" stroke-width="1.4"/>
+          <rect x="0" y="0" width="220" height="20" rx="6" fill="#1d4ed8"/>
+          <text x="110" y="14" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">STEP 1: pH (ACIDEMIA vs ALKALEMIA)</text>
+          <text x="12" y="34" font-size="8" font-weight="800" fill="#ef4444">• pH &lt; 7.35: Acidemia (Excess H+)</text>
+          <text x="12" y="47" font-size="8" font-weight="800" fill="#22c55e">• pH 7.35 – 7.45: Normal or Mixed</text>
+          <text x="12" y="60" font-size="8" font-weight="800" fill="#38bdf8">• pH &gt; 7.45: Alkalemia (Deficit H+)</text>
+          <text x="12" y="73" font-size="7.2" fill="#94a3b8">Severe risk: pH &lt;7.10 or &gt;7.60</text>
+        </g>
+
+        <!-- Arrow 1 -> 2 -->
+        <path d="M250 110 L268 110" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)"/>
+
+        <!-- STEP 2: Primary Disorder -->
+        <g transform="translate(270, 68)">
+          <rect x="0" y="0" width="220" height="85" rx="6" fill="#111827" stroke="#0ea5e9" stroke-width="1.4"/>
+          <rect x="0" y="0" width="220" height="20" rx="6" fill="#0284c7"/>
+          <text x="110" y="14" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">STEP 2: PRIMARY PROCESS (CO2 vs HCO3)</text>
+          <text x="12" y="34" font-size="7.8" fill="#e2e8f0">• If pH &amp; pCO2 opposite: <tspan fill="#ef4444" font-weight="bold">RESPIRATORY</tspan></text>
+          <text x="12" y="47" font-size="7.8" fill="#e2e8f0">• If pH &amp; HCO3 same: <tspan fill="#f59e0b" font-weight="bold">METABOLIC</tspan></text>
+          <text x="12" y="60" font-size="7.5" fill="#cbd5e1">• pCO2 &gt;45 = Resp Acidosis; &lt;35 = Alk</text>
+          <text x="12" y="73" font-size="7.5" fill="#cbd5e1">• HCO3 &lt;22 = Met Acidosis; &gt;26 = Alk</text>
+        </g>
+
+        <!-- Arrow 2 -> 3 -->
+        <path d="M490 110 L508 110" stroke="#38bdf8" stroke-width="2"/>
+
+        <!-- STEP 3: Compensation -->
+        <g transform="translate(510, 68)">
+          <rect x="0" y="0" width="220" height="85" rx="6" fill="#111827" stroke="#8b5cf6" stroke-width="1.4"/>
+          <rect x="0" y="0" width="220" height="20" rx="6" fill="#7c3aed"/>
+          <text x="110" y="14" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">STEP 3: COMPENSATION RULES</text>
+          <text x="12" y="34" font-size="7.5" font-weight="800" fill="#fde68a">• Met Acid: pCO2 = 1.5×HCO3 + 8 ± 2</text>
+          <text x="12" y="47" font-size="7.5" fill="#e9d5ff">• Met Alk: pCO2 = 0.7×ΔHCO3 + 40 ± 2</text>
+          <text x="12" y="60" font-size="7.5" fill="#e9d5ff">• Acute Resp: ΔHCO3 = 1 (Acid) / 2 (Alk)</text>
+          <text x="12" y="73" font-size="7.5" fill="#e9d5ff">• Chronic Resp: ΔHCO3 = 3.5 (Acid) / 5 (Alk)</text>
+        </g>
+
+        <!-- Vertical Flow to Bottom Row -->
+        <!-- STEP 4: Anion Gap -->
+        <g transform="translate(30, 175)">
+          <rect x="0" y="0" width="220" height="95" rx="6" fill="#111827" stroke="#f59e0b" stroke-width="1.4"/>
+          <rect x="0" y="0" width="220" height="20" rx="6" fill="#d97706"/>
+          <text x="110" y="14" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">STEP 4: ANION GAP &amp; ALBUMIN</text>
+          <text x="12" y="35" font-size="8" font-weight="800" fill="#fef08a">AG = Na+ – (Cl– + HCO3–)</text>
+          <text x="12" y="48" font-size="7.5" fill="#fde68a">• Normal AG: 8 to 12 mmol/L</text>
+          <text x="12" y="61" font-size="7.5" font-weight="bold" fill="#f87171">• Corrected AG = AG + 2.5×(4.0 – Alb)</text>
+          <text x="12" y="74" font-size="7.2" fill="#cbd5e1">Every 1 g/dL drop in Albumin lowers AG by 2.5</text>
+          <text x="12" y="86" font-size="7.2" fill="#bae6fd">Prevents missing occult HAGMA in ICU sepsis</text>
+        </g>
+
+        <!-- Arrow 4 -> 5 -->
+        <path d="M250 220 L268 220" stroke="#f59e0b" stroke-width="2"/>
+
+        <!-- STEP 5: Delta-Delta Ratio -->
+        <g transform="translate(270, 175)">
+          <rect x="0" y="0" width="220" height="95" rx="6" fill="#111827" stroke="#ec4899" stroke-width="1.4"/>
+          <rect x="0" y="0" width="220" height="20" rx="6" fill="#db2777"/>
+          <text x="110" y="14" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">STEP 5: DELTA RATIO (ΔAG / ΔHCO3)</text>
+          <text x="12" y="34" font-size="8" font-weight="800" fill="#fbcfe8">Δ/Δ = (AG – 12) / (24 – HCO3)</text>
+          <text x="12" y="48" font-size="7.5" fill="#fdf2f8">• 1.0 to 2.0 = Pure HAGMA (DKA/Lactic)</text>
+          <text x="12" y="61" font-size="7.5" font-weight="bold" fill="#f43f5e">• &lt;0.8 = Mixed HAGMA + NAGMA</text>
+          <text x="12" y="74" font-size="7.5" font-weight="bold" fill="#38bdf8">• &gt;2.0 = Mixed HAGMA + Met Alkalosis</text>
+          <text x="12" y="87" font-size="7.2" fill="#cbd5e1">(or Pre-existing Chronic Hypercapnia)</text>
+        </g>
+
+        <!-- Arrow 5 -> 6 -->
+        <path d="M490 220 L508 220" stroke="#ec4899" stroke-width="2"/>
+
+        <!-- STEP 6: Oxygenation & A-a Gradient -->
+        <g transform="translate(510, 175)">
+          <rect x="0" y="0" width="220" height="95" rx="6" fill="#111827" stroke="#10b981" stroke-width="1.4"/>
+          <rect x="0" y="0" width="220" height="20" rx="6" fill="#059669"/>
+          <text x="110" y="14" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">STEP 6: OXYGENATION &amp; SHUNT</text>
+          <text x="12" y="34" font-size="7.5" fill="#d1fae5">• PaO2 / FiO2 Ratio (P/F):</text>
+          <text x="20" y="47" font-size="7.5" fill="#a7f3d0">&gt;300 Normal | 200–300 Mild ARDS</text>
+          <text x="20" y="59" font-size="7.5" fill="#fde68a">100–200 Mod ARDS | &lt;100 Severe ARDS</text>
+          <text x="12" y="72" font-size="7.5" font-weight="800" fill="#6ee7b7">• A-a Gradient = PAO2 – PaO2</text>
+          <text x="12" y="85" font-size="7.2" fill="#cbd5e1">Normal &lt; (Age/4 + 4) • High = V/Q Shunt / PE</text>
+        </g>
+
+        <!-- Bottom Summary Card -->
+        <g transform="translate(30, 285)">
+          <rect x="0" y="0" width="700" height="68" rx="6" fill="rgba(30,41,59,0.7)" stroke="#475569" stroke-width="1.2"/>
+          <text x="15" y="18" font-size="8.8" font-weight="900" fill="#38bdf8">GOLDEN CLINICAL RULES IN ACID-BASE INTERPRETATION:</text>
+          <text x="15" y="34" font-size="8" fill="#e2e8f0">1. The body NEVER over-compensates for a primary acid-base disorder (pH never crosses normal to the other side).</text>
+          <text x="15" y="48" font-size="8" fill="#e2e8f0">2. Normal anion gap does NOT rule out HAGMA in hypoalbuminemia — ALWAYS calculate Albumin-Corrected Anion Gap.</text>
+          <text x="15" y="61" font-size="8" fill="#fde68a">3. If the Delta Ratio is &lt;0.8, look immediately for diarrhea or normal saline resuscitation hyperchloremia!</text>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Systematic 6-Step Arterial Blood Gas (ABG) Interpretation Algorithm. Step 1 (pH) → Step 2 (Primary disorder) → Step 3 (Compensation equations) → Step 4 (Albumin-corrected Anion Gap) → Step 5 (Delta ratio for triple disorders) → Step 6 (P/F ratio and A-a alveolar-arterial oxygen gradient).</p>
+    </div>`;
+  }
+
+  /* 13. Gamblegram Electrolyte Balance: Normal vs HAGMA vs NAGMA */
+  function abgAnionGapBalanceHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gamblegram Anion Gap Balance Normal vs HAGMA vs NAGMA" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        <rect x="10" y="10" width="740" height="340" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- Header -->
+        <text x="380" y="32" font-size="11" font-weight="900" fill="#38bdf8" text-anchor="middle" letter-spacing="1">ELECTROLYTE GAMBLEGRAM: NORMAL vs HAGMA vs NAGMA</text>
+        <text x="380" y="46" font-size="8" fill="#94a3b8" text-anchor="middle">Law of Electroneutrality: Total Cations (Na+) Must Equal Total Anions (Cl– + HCO3– + Unmeasured Anions)</text>
+
+        <!-- COLUMN 1: NORMAL STATE -->
+        <g transform="translate(50, 60)">
+          <rect x="0" y="0" width="180" height="210" rx="6" fill="#111827" stroke="#334155" stroke-width="1.4"/>
+          <text x="90" y="18" font-size="9" font-weight="900" fill="#22c55e" text-anchor="middle">NORMAL STATE (AG = 12)</text>
+
+          <!-- Cation Bar Na+ -->
+          <rect x="15" y="30" width="65" height="165" rx="3" fill="#3b82f6"/>
+          <text x="47" y="115" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">Na⁺</text>
+          <text x="47" y="130" font-size="8" font-weight="bold" fill="#dbeafe" text-anchor="middle">140</text>
+
+          <!-- Anion Bars -->
+          <!-- Chloride -->
+          <rect x="90" y="30" width="75" height="115" rx="3" fill="#0ea5e9"/>
+          <text x="127" y="85" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">Cl⁻</text>
+          <text x="127" y="98" font-size="8" font-weight="bold" fill="#e0f2fe" text-anchor="middle">104</text>
+
+          <!-- Bicarbonate -->
+          <rect x="90" y="147" width="75" height="28" rx="2" fill="#10b981"/>
+          <text x="127" y="165" font-size="8" font-weight="900" fill="#ffffff" text-anchor="middle">HCO₃⁻ 24</text>
+
+          <!-- Normal Anion Gap -->
+          <rect x="90" y="177" width="75" height="18" rx="2" fill="#64748b"/>
+          <text x="127" y="190" font-size="8" font-weight="900" fill="#f8fafc" text-anchor="middle">AG 12</text>
+        </g>
+
+        <!-- COLUMN 2: HAGMA -->
+        <g transform="translate(290, 60)">
+          <rect x="0" y="0" width="180" height="210" rx="6" fill="#111827" stroke="#ef4444" stroke-width="1.6"/>
+          <text x="90" y="18" font-size="9" font-weight="900" fill="#ef4444" text-anchor="middle">HAGMA (EXPANDED AG)</text>
+
+          <!-- Cation Bar Na+ -->
+          <rect x="15" y="30" width="65" height="165" rx="3" fill="#3b82f6"/>
+          <text x="47" y="115" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">Na⁺</text>
+          <text x="47" y="130" font-size="8" font-weight="bold" fill="#dbeafe" text-anchor="middle">140</text>
+
+          <!-- Anion Bars -->
+          <!-- Chloride normal -->
+          <rect x="90" y="30" width="75" height="115" rx="3" fill="#0ea5e9"/>
+          <text x="127" y="85" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">Cl⁻ 104</text>
+
+          <!-- Bicarbonate Consumed -->
+          <rect x="90" y="147" width="75" height="12" rx="2" fill="#10b981"/>
+          <text x="127" y="157" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">HCO₃ 10</text>
+
+          <!-- EXPANDED Anion Gap -->
+          <rect x="90" y="161" width="75" height="34" rx="2" fill="#ef4444"/>
+          <text x="127" y="177" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">AG 26 🚨</text>
+          <text x="127" y="189" font-size="6.8" font-weight="bold" fill="#fee2e2" text-anchor="middle">Lactate / Ketones</text>
+        </g>
+
+        <!-- COLUMN 3: NAGMA (Hyperchloraemic) -->
+        <g transform="translate(530, 60)">
+          <rect x="0" y="0" width="180" height="210" rx="6" fill="#111827" stroke="#f59e0b" stroke-width="1.6"/>
+          <text x="90" y="18" font-size="9" font-weight="900" fill="#f59e0b" text-anchor="middle">NAGMA (HYPERCHLORAEMIC)</text>
+
+          <!-- Cation Bar Na+ -->
+          <rect x="15" y="30" width="65" height="165" rx="3" fill="#3b82f6"/>
+          <text x="47" y="115" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">Na⁺</text>
+          <text x="47" y="130" font-size="8" font-weight="bold" fill="#dbeafe" text-anchor="middle">140</text>
+
+          <!-- Anion Bars -->
+          <!-- Chloride EXPANDED -->
+          <rect x="90" y="30" width="75" height="131" rx="3" fill="#0284c7"/>
+          <text x="127" y="90" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">EXPANDED Cl⁻</text>
+          <text x="127" y="103" font-size="8" font-weight="bold" fill="#bae6fd" text-anchor="middle">118 ⚠️</text>
+
+          <!-- Bicarbonate Consumed / Lost -->
+          <rect x="90" y="163" width="75" height="12" rx="2" fill="#10b981"/>
+          <text x="127" y="173" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">HCO₃ 10</text>
+
+          <!-- Normal Anion Gap Preserved -->
+          <rect x="90" y="177" width="75" height="18" rx="2" fill="#64748b"/>
+          <text x="127" y="190" font-size="8" font-weight="900" fill="#f8fafc" text-anchor="middle">AG 12 (Normal)</text>
+        </g>
+
+        <!-- Bottom Comparison Banner -->
+        <g transform="translate(50, 282)">
+          <rect x="0" y="0" width="660" height="52" rx="5" fill="rgba(15,23,42,0.9)" stroke="#334155" stroke-width="1.2"/>
+          <text x="15" y="18" font-size="8.5" font-weight="900" fill="#38bdf8">KEY MECHANISTIC DISTINCTION:</text>
+          <text x="15" y="32" font-size="8" fill="#e2e8f0">• In HAGMA, unmeasured fixed organic acids (lactate, acetoacetate) consume HCO3– while chloride remains normal.</text>
+          <text x="15" y="44" font-size="8" fill="#fde68a">• In NAGMA, HCO3– is lost directly (diarrhea/RTA) or diluted; chloride rises mole-for-mole to preserve neutrality.</text>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Electrolyte Gamblegram: Anion Gap Dynamics. Left: Normal electrolyte distribution (AG = 12). Middle: High Anion Gap Metabolic Acidosis (HAGMA) with unmeasured organic anions consuming bicarbonate while chloride is stable. Right: Normal Anion Gap Metabolic Acidosis (NAGMA) where hyperchloremia mirrors bicarbonate loss.</p>
     </div>`;
   }
 
