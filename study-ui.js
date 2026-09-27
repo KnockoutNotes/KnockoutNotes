@@ -772,6 +772,15 @@
       else if (s.diagram === "workstation-flowchart") diagramHTML = workstationFlowchartHTML();
       else if (s.diagram === "fluid-compartments") diagramHTML = fluidCompartmentsDiagramHTML();
       else if (s.diagram === "blood-products-guide") diagramHTML = bloodProductsDiagramHTML();
+      else if (s.diagram === "ecg-basic-waves") diagramHTML = ecgBasicWavesDiagramHTML();
+      else if (s.diagram === "ecg-axis-wheel") diagramHTML = ecgAxisWheelDiagramHTML();
+      else if (s.diagram === "ecg-lvh-waveform") diagramHTML = ecgLvhDiagramHTML();
+      else if (s.diagram === "ecg-rvh-waveform") diagramHTML = ecgRvhDiagramHTML();
+      else if (s.diagram === "ecg-bbb-comparison") diagramHTML = ecgBbbDiagramHTML();
+      else if (s.diagram === "ecg-stemi-evolution") diagramHTML = ecgStemiDiagramHTML();
+      else if (s.diagram === "ecg-heart-blocks") diagramHTML = ecgHeartBlocksDiagramHTML();
+      else if (s.diagram === "ecg-vt-waveform") diagramHTML = ecgVtDiagramHTML();
+      else if (s.diagram === "ecg-vf-waveform") diagramHTML = ecgVfDiagramHTML();
 
       let imagesHTML = "";
       if (Array.isArray(s.images)) {
@@ -1701,6 +1710,1172 @@
         </g>
       </svg>
       <p class="st-diagram-caption">Blood Component Specifications, MTP 1:1:1 Balanced Ratio, and Viscoelastic (TEG / ROTEM) Goal-Directed Transfusion Algorithm. Tailors factor, fibrinogen, platelet, and antifibrinolytic therapy to real-time whole blood clotting dynamics.</p>
+    </div>`;
+  }
+
+
+  /* ---------------------------------------------------------------- ECG DIAGRAMS */
+  
+  /* 1. Basic ECG Waves & Intervals */
+  function ecgBasicWavesDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Normal Sinus Rhythm ECG Complex Waves, Intervals and Calibration Standards" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        
+    <defs>
+      <!-- ECG Millimeter Grid (1mm minor, 5mm major boxes) -->
+      <pattern id="ecgGridMinor" width="5" height="5" patternUnits="userSpaceOnUse">
+        <rect width="5" height="5" fill="none" stroke="rgba(244,63,94,0.12)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="ecgGridMajor" width="25" height="25" patternUnits="userSpaceOnUse">
+        <rect width="25" height="25" fill="url(#ecgGridMinor)" stroke="rgba(244,63,94,0.32)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Monitor Neon Grid Pattern -->
+      <pattern id="monGridMinor" width="6" height="6" patternUnits="userSpaceOnUse">
+        <rect width="6" height="6" fill="none" stroke="rgba(34,197,94,0.08)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="monGridMajor" width="30" height="30" patternUnits="userSpaceOnUse">
+        <rect width="30" height="30" fill="url(#monGridMinor)" stroke="rgba(34,197,94,0.22)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Sweep Beam Gradient -->
+      <linearGradient id="sweepGradGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#22c55e" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#22c55e" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#4ade80" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#f59e0b" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#f59e0b" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradRed" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ef4444" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#ef4444" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#f87171" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0284c7" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#38bdf8" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#7dd3fc" stop-opacity="0.95"/>
+      </linearGradient>
+    </defs>
+    <style>
+      @keyframes ecgBeamSweep {
+        0% { transform: translateX(0px); opacity: 0; }
+        3% { opacity: 1; }
+        96% { opacity: 1; }
+        100% { transform: translateX(710px); opacity: 0; }
+      }
+      .ecg-beam { animation: ecgBeamSweep 3.2s linear infinite; }
+      .ecg-beam-fast { animation: ecgBeamSweep 2.2s linear infinite; }
+      .ecg-beam-vf { animation: ecgBeamSweep 1.8s linear infinite; }
+      @keyframes ecgGlow {
+        0%, 100% { filter: drop-shadow(0 0 1.5px currentColor); }
+        50% { filter: drop-shadow(0 0 4px currentColor); }
+      }
+      .ecg-trace { animation: ecgGlow 2.5s ease-in-out infinite; }
+    </style>
+        <!-- Background Grid Container -->
+        <rect x="10" y="10" width="740" height="330" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+        <rect x="20" y="20" width="720" height="310" rx="6" fill="url(#monGridMajor)"/>
+
+        <!-- Header Information -->
+        <text x="35" y="42" font-size="11.5" font-weight="800" fill="#22c55e" letter-spacing="0.8">LEAD II  •  STANDARD NORMAL SINUS RHYTHM (NSR)</text>
+        <text x="725" y="42" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="end">CALIBRATION: 25 mm/s (40 ms/small box)  •  10 mm/mV (0.1 mV/small box)</text>
+
+        <!-- Standard Calibration Pulse (10 mm high x 5 mm wide) -->
+        <g transform="translate(35, 120)">
+          <path d="M0 60 L15 60 L15 0 L30 0 L30 60 L45 60" fill="none" stroke="#22c55e" stroke-width="2.2" stroke-linecap="round"/>
+          <text x="22" y="75" font-size="8" font-weight="700" fill="#86efac" text-anchor="middle">1.0 mV</text>
+          <text x="22" y="86" font-size="7.5" fill="#94a3b8" text-anchor="middle">(10 mm)</text>
+        </g>
+
+        <!-- Main Labeled P-QRS-T Waveform (Centered) -->
+        <g transform="translate(100, 40)">
+          <!-- Trace Path -->
+          <path d="M0 140 L40 140 Q60 115 80 140 L105 140 L115 148 L130 20 L145 175 L155 140 L210 140 Q250 85 290 140 L340 140 Q355 130 370 140 L440 140 Q460 115 480 140 L505 140 L515 148 L530 20 L545 175 L555 140 L610 140"
+                fill="none" stroke="#22c55e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#22c55e"/>
+
+          <!-- Animated Sweep Beam -->
+          <g class="ecg-beam">
+            <rect x="0" y="0" width="30" height="280" fill="url(#sweepGradGreen)"/>
+            <line x1="30" y1="0" x2="30" y2="280" stroke="#86efac" stroke-width="2"/>
+            <circle cx="30" cy="140" r="4" fill="#ffffff" filter="drop-shadow(0 0 6px #22c55e)"/>
+          </g>
+
+          <!-- Wave Annotations -->
+          <!-- P wave -->
+          <circle cx="60" cy="126" r="3" fill="#38bdf8"/>
+          <text x="60" y="112" font-size="11" font-weight="900" fill="#38bdf8" text-anchor="middle">P</text>
+          <text x="60" y="100" font-size="7.5" fill="#cbd5e1" text-anchor="middle">Atrial Depol (&lt;120 ms)</text>
+
+          <!-- Q wave -->
+          <text x="112" y="165" font-size="10" font-weight="900" fill="#f87171" text-anchor="middle">Q</text>
+
+          <!-- R wave peak -->
+          <circle cx="130" cy="20" r="3.5" fill="#f59e0b"/>
+          <text x="130" y="10" font-size="12" font-weight="900" fill="#fbbf24" text-anchor="middle">R</text>
+          <text x="130" y="-3" font-size="8" fill="#fde68a" text-anchor="middle">Ventricular Depolarization</text>
+
+          <!-- S wave -->
+          <text x="145" y="193" font-size="10" font-weight="900" fill="#f87171" text-anchor="middle">S</text>
+
+          <!-- J-Point -->
+          <circle cx="155" cy="140" r="3.5" fill="#ef4444"/>
+          <text x="175" y="152" font-size="8.5" font-weight="800" fill="#fca5a5">J-POINT</text>
+
+          <!-- ST Segment -->
+          <line x1="155" y1="135" x2="210" y2="135" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="2,2"/>
+          <text x="182" y="128" font-size="8.5" font-weight="800" fill="#fbbf24" text-anchor="middle">ST Segment (Isoelectric)</text>
+
+          <!-- T wave -->
+          <circle cx="250" cy="110" r="3" fill="#a855f7"/>
+          <text x="250" y="98" font-size="11" font-weight="900" fill="#c084fc" text-anchor="middle">T</text>
+          <text x="250" y="86" font-size="7.5" fill="#e9d5ff" text-anchor="middle">Ventricular Repol</text>
+
+          <!-- U wave -->
+          <text x="355" y="120" font-size="9" font-weight="800" fill="#94a3b8" text-anchor="middle">U</text>
+          <text x="355" y="110" font-size="7" fill="#64748b" text-anchor="middle">Purkinje / Hypo-K</text>
+
+          <!-- Interval Brackets (Bottom) -->
+          <!-- PR Interval (120 - 200 ms) -->
+          <g transform="translate(40, 205)">
+            <line x1="0" y1="0" x2="115" y2="0" stroke="#38bdf8" stroke-width="1.6"/>
+            <line x1="0" y1="-5" x2="0" y2="5" stroke="#38bdf8" stroke-width="1.6"/>
+            <line x1="115" y1="-5" x2="115" y2="5" stroke="#38bdf8" stroke-width="1.6"/>
+            <text x="57" y="15" font-size="8.5" font-weight="800" fill="#38bdf8" text-anchor="middle">PR INTERVAL: 120–200 ms</text>
+            <text x="57" y="26" font-size="7.5" fill="#94a3b8" text-anchor="middle">(3 to 5 small boxes)</text>
+          </g>
+
+          <!-- QRS Duration (<120 ms) -->
+          <g transform="translate(115, 245)">
+            <line x1="0" y1="0" x2="40" y2="0" stroke="#fbbf24" stroke-width="1.6"/>
+            <line x1="0" y1="-5" x2="0" y2="5" stroke="#fbbf24" stroke-width="1.6"/>
+            <line x1="40" y1="-5" x2="40" y2="5" stroke="#fbbf24" stroke-width="1.6"/>
+            <text x="20" y="14" font-size="8.2" font-weight="800" fill="#fbbf24" text-anchor="middle">QRS &lt;100–120 ms</text>
+          </g>
+
+          <!-- QT / QTc Interval -->
+          <g transform="translate(115, 205)">
+            <line x1="0" y1="0" x2="175" y2="0" stroke="#c084fc" stroke-width="1.6"/>
+            <line x1="0" y1="-5" x2="0" y2="5" stroke="#c084fc" stroke-width="1.6"/>
+            <line x1="175" y1="-5" x2="175" y2="5" stroke="#c084fc" stroke-width="1.6"/>
+            <text x="87" y="15" font-size="8.5" font-weight="800" fill="#c084fc" text-anchor="middle">QT INTERVAL (&lt;440 ms ♂, &lt;460 ms ♀)</text>
+            <text x="87" y="26" font-size="7.5" fill="#f87171" text-anchor="middle">Critical Prolongation: QTc &gt;500 ms (Torsades Risk)</text>
+          </g>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Normal Sinus Rhythm (NSR) Standard P-QRS-T Morphology, Calibrations &amp; Diagnostic Intervals. Dynamic sweep beam simulates real-time cardiac monitoring sweep at standard 25 mm/s paper speed.</p>
+    </div>`;
+  }
+
+  /* 2. Cardiac Axis Wheel Diagram */
+  function ecgAxisWheelDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Einthoven Hexaxial Reference System and Cardiac Axis Quadrants" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        <!-- Header -->
+        <text x="380" y="24" font-size="12.5" font-weight="800" text-anchor="middle" letter-spacing="1.1" fill="var(--st-text, #f8fafc)">HEXAXIAL REFERENCE SYSTEM &amp; CARDIAC ELECTRICAL AXIS DETERMINATION</text>
+        <text x="380" y="42" font-size="9" text-anchor="middle" fill="#94a3b8">Bipolar (I, II, III) &amp; Augmented Unipolar (aVR, aVL, aVF) Frontal Plane Vectors with Quadrant Logic</text>
+
+        <!-- LEFT: Hexaxial Polar Wheel -->
+        <g transform="translate(190, 210)">
+          <!-- Circular Background Sectors -->
+          <!-- Normal Axis (-30 to +90 deg): Emerald Green Wedge -->
+          <path d="M0 0 L121 -70 A140 140 0 0 1 0 140 Z" fill="rgba(16,185,129,0.22)" stroke="#10b981" stroke-width="1.5"/>
+          <!-- Left Axis Deviation (-30 to -90 deg): Orange Wedge -->
+          <path d="M0 0 L0 -140 A140 140 0 0 1 121 -70 Z" fill="rgba(245,158,11,0.22)" stroke="#f59e0b" stroke-width="1.5"/>
+          <!-- Right Axis Deviation (+90 to +180 deg): Blue Wedge -->
+          <path d="M0 0 L-140 0 A140 140 0 0 1 0 140 Z" fill="rgba(2,132,199,0.22)" stroke="#0284c7" stroke-width="1.5"/>
+          <!-- Extreme / Northwest Axis (+180 to -90 deg): Red Wedge -->
+          <path d="M0 0 L0 -140 A140 140 0 0 0 -140 0 Z" fill="rgba(225,29,72,0.22)" stroke="#e11d48" stroke-width="1.5"/>
+
+          <!-- Concentric rings -->
+          <circle cx="0" cy="0" r="140" fill="none" stroke="#475569" stroke-width="1.2" stroke-dasharray="3,3"/>
+          <circle cx="0" cy="0" r="70" fill="none" stroke="#334155" stroke-width="0.8"/>
+          <circle cx="0" cy="0" r="4" fill="#ffffff"/>
+
+          <!-- 6 Lead Vector Axes -->
+          <!-- Lead I (0 deg) -->
+          <line x1="-155" y1="0" x2="155" y2="0" stroke="#38bdf8" stroke-width="2"/>
+          <polygon points="160,0 150,-4 150,4" fill="#38bdf8"/>
+          <text x="168" y="4" font-size="10" font-weight="900" fill="#38bdf8">Lead I (0°)</text>
+
+          <!-- Lead aVF (+90 deg) -->
+          <line x1="0" y1="-155" x2="0" y2="155" stroke="#10b981" stroke-width="2"/>
+          <polygon points="0,160 -4,150 4,150" fill="#10b981"/>
+          <text x="0" y="174" font-size="10" font-weight="900" fill="#34d399" text-anchor="middle">aVF (+90°)</text>
+
+          <!-- Lead II (+60 deg) -->
+          <line x1="-75" y1="-130" x2="75" y2="130" stroke="#22c55e" stroke-width="2"/>
+          <polygon points="78,135 68,130 76,123" fill="#22c55e"/>
+          <text x="88" y="148" font-size="9.5" font-weight="800" fill="#86efac">Lead II (+60°)</text>
+
+          <!-- Lead aVL (-30 deg) -->
+          <line x1="-130" y1="75" x2="130" y2="-75" stroke="#f59e0b" stroke-width="1.8"/>
+          <polygon points="135,-78 125,-75 131,-68" fill="#f59e0b"/>
+          <text x="144" y="-76" font-size="9" font-weight="800" fill="#fde68a">aVL (-30°)</text>
+
+          <!-- Lead III (+120 deg) -->
+          <line x1="75" y1="-130" x2="-75" y2="130" stroke="#0284c7" stroke-width="1.8"/>
+          <polygon points="-78,135 -76,123 -68,130" fill="#0284c7"/>
+          <text x="-88" y="148" font-size="9" font-weight="800" fill="#7dd3fc" text-anchor="end">Lead III (+120°)</text>
+
+          <!-- Lead aVR (-150 deg) -->
+          <line x1="130" y1="75" x2="-130" y2="-75" stroke="#e11d48" stroke-width="1.8"/>
+          <polygon points="-135,-78 -131,-68 -125,-75" fill="#e11d48"/>
+          <text x="-142" y="-76" font-size="9" font-weight="800" fill="#fca5a5" text-anchor="end">aVR (-150°)</text>
+
+          <!-- Rotating Vector Animation (Normal Axis Demonstration: +50 deg) -->
+          <g>
+            <line x1="0" y1="0" x2="70" y2="84" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round"/>
+            <polygon points="77,92 64,88 74,80" fill="#ffffff"/>
+            <circle cx="0" cy="0" r="5" fill="#f43f5e"/>
+            <text x="40" y="45" font-size="8.5" font-weight="900" fill="#ffffff">MEAN VECTOR (~+50°)</text>
+          </g>
+
+          <!-- Quadrant Sector Labels -->
+          <text x="75" y="45" font-size="8.5" font-weight="800" fill="#34d399">NORMAL AXIS</text>
+          <text x="75" y="57" font-size="7.5" fill="#a7f3d0">(-30° to +90°)</text>
+
+          <text x="45" y="-95" font-size="8.5" font-weight="800" fill="#fbbf24">LAD</text>
+          <text x="45" y="-83" font-size="7.5" fill="#fde68a">(-30° to -90°)</text>
+
+          <text x="-95" y="65" font-size="8.5" font-weight="800" fill="#38bdf8" text-anchor="end">RAD</text>
+          <text x="-95" y="77" font-size="7.5" fill="#bae6fd" text-anchor="end">(+90° to +180°)</text>
+
+          <text x="-70" y="-95" font-size="8" font-weight="800" fill="#f87171" text-anchor="middle">EXTREME / NW</text>
+          <text x="-70" y="-83" font-size="7.5" fill="#fca5a5" text-anchor="middle">(+180° to -90°)</text>
+        </g>
+
+        <!-- RIGHT: Rapid 2-Lead Quadrant Decision Guide -->
+        <g transform="translate(420, 65)">
+          <rect x="0" y="0" width="320" height="295" rx="8" fill="rgba(30,41,59,0.7)" stroke="#475569" stroke-width="1.5"/>
+          <text x="160" y="24" font-size="10.5" font-weight="800" fill="#38bdf8" text-anchor="middle">RAPID BED-SIDE 2-LEAD / 3-LEAD METHOD</text>
+
+          <!-- Rule 1: Normal Axis -->
+          <g transform="translate(15, 36)">
+            <rect x="0" y="0" width="290" height="52" rx="5" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="1.2"/>
+            <text x="12" y="18" font-size="9" font-weight="800" fill="#34d399">NORMAL AXIS (-30° to +90°):</text>
+            <text x="12" y="32" font-size="8.2" fill="#cbd5e1">• <tspan font-weight="700" fill="#38bdf8">Lead I (+)</tspan> AND <tspan font-weight="700" fill="#34d399">Lead aVF (+)</tspan> = Normal (0° to +90°)</text>
+            <text x="12" y="44" font-size="8" fill="#94a3b8">• If I (+) and aVF (-): check Lead II! If II (+) = Normal (-30° to 0°)</text>
+          </g>
+
+          <!-- Rule 2: Left Axis Deviation -->
+          <g transform="translate(15, 96)">
+            <rect x="0" y="0" width="290" height="58" rx="5" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="1.2"/>
+            <text x="12" y="18" font-size="9" font-weight="800" fill="#fbbf24">LEFT AXIS DEVIATION (LAD: -30° to -90°):</text>
+            <text x="12" y="32" font-size="8.2" fill="#cbd5e1">• <tspan font-weight="700" fill="#38bdf8">Lead I (+)</tspan> AND <tspan font-weight="700" fill="#f87171">Lead aVF (-)</tspan> AND <tspan font-weight="700" fill="#f87171">Lead II (-)</tspan></text>
+            <text x="12" y="46" font-size="7.8" fill="#fde68a">Causes: LAFB (qR in I/aVL, rS in II/III), LVH, Inferior MI, LBBB</text>
+          </g>
+
+          <!-- Rule 3: Right Axis Deviation -->
+          <g transform="translate(15, 162)">
+            <rect x="0" y="0" width="290" height="58" rx="5" fill="rgba(2,132,199,0.15)" stroke="#0284c7" stroke-width="1.2"/>
+            <text x="12" y="18" font-size="9" font-weight="800" fill="#7dd3fc">RIGHT AXIS DEVIATION (RAD: +90° to +180°):</text>
+            <text x="12" y="32" font-size="8.2" fill="#cbd5e1">• <tspan font-weight="700" fill="#f87171">Lead I (-)</tspan> AND <tspan font-weight="700" fill="#34d399">Lead aVF (+)</tspan> ("Thumbs away")</text>
+            <text x="12" y="46" font-size="7.8" fill="#bae6fd">Causes: RVH, PE (S1Q3T3), Cor Pulmonale, LPFB, Lateral MI, Arm Swap</text>
+          </g>
+
+          <!-- Rule 4: Extreme Axis -->
+          <g transform="translate(15, 228)">
+            <rect x="0" y="0" width="290" height="54" rx="5" fill="rgba(225,29,72,0.15)" stroke="#e11d48" stroke-width="1.2"/>
+            <text x="12" y="18" font-size="9" font-weight="800" fill="#fb7185">EXTREME / NORTHWEST AXIS (+180° to -90°):</text>
+            <text x="12" y="32" font-size="8.2" fill="#cbd5e1">• <tspan font-weight="700" fill="#f87171">Lead I (-)</tspan> AND <tspan font-weight="700" fill="#f87171">Lead aVF (-)</tspan></text>
+            <text x="12" y="44" font-size="7.8" font-weight="700" fill="#fecdd3">Critical marker for Ventricular Tachycardia (VT) vs SVT!</text>
+          </g>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">The Hexaxial Reference System and Rapid 2-Lead Quadrant Axis Algorithm. Notice the 3-lead rule: if Lead I is positive and aVF is negative, inspect Lead II to differentiate physiological normal axis (-30° to 0°) from pathological Left Axis Deviation (-30° to -90°).</p>
+    </div>`;
+  }
+
+  /* 3. Left Ventricular Hypertrophy (LVH) Waveform */
+  function ecgLvhDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Left Ventricular Hypertrophy ECG Voltage Criteria and Strain Pattern" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        
+    <defs>
+      <!-- ECG Millimeter Grid (1mm minor, 5mm major boxes) -->
+      <pattern id="ecgGridMinor" width="5" height="5" patternUnits="userSpaceOnUse">
+        <rect width="5" height="5" fill="none" stroke="rgba(244,63,94,0.12)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="ecgGridMajor" width="25" height="25" patternUnits="userSpaceOnUse">
+        <rect width="25" height="25" fill="url(#ecgGridMinor)" stroke="rgba(244,63,94,0.32)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Monitor Neon Grid Pattern -->
+      <pattern id="monGridMinor" width="6" height="6" patternUnits="userSpaceOnUse">
+        <rect width="6" height="6" fill="none" stroke="rgba(34,197,94,0.08)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="monGridMajor" width="30" height="30" patternUnits="userSpaceOnUse">
+        <rect width="30" height="30" fill="url(#monGridMinor)" stroke="rgba(34,197,94,0.22)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Sweep Beam Gradient -->
+      <linearGradient id="sweepGradGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#22c55e" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#22c55e" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#4ade80" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#f59e0b" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#f59e0b" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradRed" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ef4444" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#ef4444" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#f87171" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0284c7" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#38bdf8" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#7dd3fc" stop-opacity="0.95"/>
+      </linearGradient>
+    </defs>
+    <style>
+      @keyframes ecgBeamSweep {
+        0% { transform: translateX(0px); opacity: 0; }
+        3% { opacity: 1; }
+        96% { opacity: 1; }
+        100% { transform: translateX(710px); opacity: 0; }
+      }
+      .ecg-beam { animation: ecgBeamSweep 3.2s linear infinite; }
+      .ecg-beam-fast { animation: ecgBeamSweep 2.2s linear infinite; }
+      .ecg-beam-vf { animation: ecgBeamSweep 1.8s linear infinite; }
+      @keyframes ecgGlow {
+        0%, 100% { filter: drop-shadow(0 0 1.5px currentColor); }
+        50% { filter: drop-shadow(0 0 4px currentColor); }
+      }
+      .ecg-trace { animation: ecgGlow 2.5s ease-in-out infinite; }
+    </style>
+        <rect x="10" y="10" width="740" height="320" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- LEFT PANEL: Lead V1 (Deep S Wave) -->
+        <g transform="translate(20, 20)">
+          <rect x="0" y="0" width="350" height="300" rx="6" fill="url(#monGridMajor)"/>
+          <text x="15" y="24" font-size="11" font-weight="900" fill="#38bdf8">LEAD V1 (Right Precordium)</text>
+          <text x="15" y="38" font-size="8.5" fill="#94a3b8">Small r wave + Massive Deep S Wave (&gt;25 mm)</text>
+
+          <!-- Waveform V1 -->
+          <g transform="translate(10, 60)">
+            <path d="M0 80 L35 80 Q45 74 55 80 L65 80 L68 72 L72 80 L76 210 L84 80 L115 80 Q130 65 145 80 L175 80 Q185 74 195 80 L205 80 L208 72 L212 80 L216 210 L224 80 L255 80 Q270 65 285 80 L320 80"
+                  fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#38bdf8"/>
+            <!-- Sweep Beam V1 -->
+            <g class="ecg-beam">
+              <rect x="0" y="0" width="25" height="230" fill="url(#sweepGradCyan)"/>
+              <line x1="25" y1="0" x2="25" y2="230" stroke="#7dd3fc" stroke-width="2"/>
+            </g>
+
+            <!-- Caliper S in V1 -->
+            <line x1="90" y1="80" x2="90" y2="210" stroke="#f87171" stroke-width="1.8"/>
+            <line x1="85" y1="80" x2="95" y2="80" stroke="#f87171" stroke-width="1.8"/>
+            <line x1="85" y1="210" x2="95" y2="210" stroke="#f87171" stroke-width="1.8"/>
+            <text x="100" y="150" font-size="9" font-weight="900" fill="#fca5a5">S in V1 = 26 mm</text>
+          </g>
+        </g>
+
+        <!-- RIGHT PANEL: Lead V5 (Towering R Wave + Lateral Strain) -->
+        <g transform="translate(390, 20)">
+          <rect x="0" y="0" width="350" height="300" rx="6" fill="url(#monGridMajor)"/>
+          <text x="15" y="24" font-size="11" font-weight="900" fill="#f59e0b">LEAD V5 (Left Precordium)</text>
+          <text x="15" y="38" font-size="8.5" fill="#fde68a">Towering R Wave (&gt;26 mm) + Downsloping ST-T Strain</text>
+
+          <!-- Waveform V5 -->
+          <g transform="translate(10, 60)">
+            <!-- Path with downsloping ST depression and asymmetric inverted T -->
+            <path d="M0 120 L35 120 Q45 110 55 120 L65 120 L70 124 L76 10 L84 135 L100 138 Q115 145 130 120 L175 120 Q185 110 195 120 L205 120 L210 124 L216 10 L224 135 L240 138 Q255 145 270 120 L320 120"
+                  fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#f59e0b"/>
+            <!-- Sweep Beam V5 -->
+            <g class="ecg-beam">
+              <rect x="0" y="0" width="25" height="230" fill="url(#sweepGradAmber)"/>
+              <line x1="25" y1="0" x2="25" y2="230" stroke="#fbbf24" stroke-width="2"/>
+            </g>
+
+            <!-- Caliper R in V5 -->
+            <line x1="90" y1="10" x2="90" y2="120" stroke="#fbbf24" stroke-width="1.8"/>
+            <line x1="85" y1="10" x2="95" y2="10" stroke="#fbbf24" stroke-width="1.8"/>
+            <line x1="85" y1="120" x2="95" y2="120" stroke="#fbbf24" stroke-width="1.8"/>
+            <text x="98" y="60" font-size="9" font-weight="900" fill="#fbbf24">R in V5 = 28 mm</text>
+
+            <!-- Strain label -->
+            <rect x="95" y="145" width="135" height="22" rx="3" fill="rgba(239,68,68,0.25)" stroke="#ef4444" stroke-width="1"/>
+            <text x="162" y="160" font-size="8" font-weight="800" fill="#fca5a5" text-anchor="middle">LV STRAIN: ST DEP + TWI</text>
+          </g>
+
+          <!-- Sokolow-Lyon Calculation Badge -->
+          <g transform="translate(15, 255)">
+            <rect x="0" y="0" width="320" height="30" rx="4" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="1.2"/>
+            <text x="160" y="19" font-size="9" font-weight="900" fill="#34d399" text-anchor="middle">SOKOLOW-LYON: S_V1 (26) + R_V5 (28) = 54 mm (&gt;35 mm POSITIVE!)</text>
+          </g>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Left Ventricular Hypertrophy (LVH) Sokolow-Lyon Voltage Criterion and Asymmetrical Lateral ST-T Strain Pattern. Notice the combined voltage exceeds 35 mm (3.5 mV) with characteristic repolarisation strain in V5.</p>
+    </div>`;
+  }
+
+  /* 4. Right Ventricular Hypertrophy (RVH) Waveform */
+  function ecgRvhDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Right Ventricular Hypertrophy ECG Voltage Criteria and RV Strain Pattern" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        
+    <defs>
+      <!-- ECG Millimeter Grid (1mm minor, 5mm major boxes) -->
+      <pattern id="ecgGridMinor" width="5" height="5" patternUnits="userSpaceOnUse">
+        <rect width="5" height="5" fill="none" stroke="rgba(244,63,94,0.12)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="ecgGridMajor" width="25" height="25" patternUnits="userSpaceOnUse">
+        <rect width="25" height="25" fill="url(#ecgGridMinor)" stroke="rgba(244,63,94,0.32)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Monitor Neon Grid Pattern -->
+      <pattern id="monGridMinor" width="6" height="6" patternUnits="userSpaceOnUse">
+        <rect width="6" height="6" fill="none" stroke="rgba(34,197,94,0.08)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="monGridMajor" width="30" height="30" patternUnits="userSpaceOnUse">
+        <rect width="30" height="30" fill="url(#monGridMinor)" stroke="rgba(34,197,94,0.22)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Sweep Beam Gradient -->
+      <linearGradient id="sweepGradGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#22c55e" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#22c55e" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#4ade80" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#f59e0b" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#f59e0b" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradRed" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ef4444" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#ef4444" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#f87171" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0284c7" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#38bdf8" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#7dd3fc" stop-opacity="0.95"/>
+      </linearGradient>
+    </defs>
+    <style>
+      @keyframes ecgBeamSweep {
+        0% { transform: translateX(0px); opacity: 0; }
+        3% { opacity: 1; }
+        96% { opacity: 1; }
+        100% { transform: translateX(710px); opacity: 0; }
+      }
+      .ecg-beam { animation: ecgBeamSweep 3.2s linear infinite; }
+      .ecg-beam-fast { animation: ecgBeamSweep 2.2s linear infinite; }
+      .ecg-beam-vf { animation: ecgBeamSweep 1.8s linear infinite; }
+      @keyframes ecgGlow {
+        0%, 100% { filter: drop-shadow(0 0 1.5px currentColor); }
+        50% { filter: drop-shadow(0 0 4px currentColor); }
+      }
+      .ecg-trace { animation: ecgGlow 2.5s ease-in-out infinite; }
+    </style>
+        <rect x="10" y="10" width="740" height="320" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- LEFT PANEL: Lead V1 (Tall R wave + RV Strain) -->
+        <g transform="translate(20, 20)">
+          <rect x="0" y="0" width="350" height="300" rx="6" fill="url(#monGridMajor)"/>
+          <text x="15" y="24" font-size="11" font-weight="900" fill="#22c55e">LEAD V1 (Dominant R Wave)</text>
+          <text x="15" y="38" font-size="8.5" fill="#86efac">Tall R Wave (&gt;7 mm, R/S &gt; 1.0) + Convex RV Strain</text>
+
+          <!-- Waveform V1 -->
+          <g transform="translate(10, 60)">
+            <path d="M0 120 L35 120 Q45 105 55 120 L65 120 L72 30 L80 145 L95 140 Q115 150 130 120 L175 120 Q185 105 195 120 L205 120 L212 30 L220 145 L235 140 Q255 150 270 120 L320 120"
+                  fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#22c55e"/>
+            <!-- Sweep Beam V1 -->
+            <g class="ecg-beam">
+              <rect x="0" y="0" width="25" height="230" fill="url(#sweepGradGreen)"/>
+              <line x1="25" y1="0" x2="25" y2="230" stroke="#86efac" stroke-width="2"/>
+            </g>
+
+            <!-- Caliper R in V1 -->
+            <line x1="88" y1="30" x2="88" y2="120" stroke="#22c55e" stroke-width="1.8"/>
+            <line x1="83" y1="30" x2="93" y2="30" stroke="#22c55e" stroke-width="1.8"/>
+            <line x1="83" y1="120" x2="93" y2="120" stroke="#22c55e" stroke-width="1.8"/>
+            <text x="96" y="75" font-size="9" font-weight="900" fill="#86efac">R in V1 = 12 mm (&gt;7 mm)</text>
+            <text x="96" y="88" font-size="8" fill="#cbd5e1">R/S Ratio = 2.4 (&gt;1.0)</text>
+
+            <!-- RV Strain Badge -->
+            <rect x="100" y="150" width="130" height="22" rx="3" fill="rgba(225,29,72,0.25)" stroke="#e11d48" stroke-width="1"/>
+            <text x="165" y="165" font-size="8" font-weight="800" fill="#fca5a5" text-anchor="middle">RV STRAIN (ST DEP + TWI)</text>
+          </g>
+        </g>
+
+        <!-- RIGHT PANEL: Lead V6 (Persistent Deep S Wave) -->
+        <g transform="translate(390, 20)">
+          <rect x="0" y="0" width="350" height="300" rx="6" fill="url(#monGridMajor)"/>
+          <text x="15" y="24" font-size="11" font-weight="900" fill="#0284c7">LEAD V6 (Persistent Lateral S Wave)</text>
+          <text x="15" y="38" font-size="8.5" fill="#7dd3fc">Small r + Deep S Wave (&gt;7 mm, R/S &lt; 1.0)</text>
+
+          <!-- Waveform V6 -->
+          <g transform="translate(10, 60)">
+            <path d="M0 80 L35 80 Q45 74 55 80 L65 80 L70 55 L76 175 L84 80 L115 80 Q130 68 145 80 L175 80 Q185 74 195 80 L205 80 L210 55 L216 175 L224 80 L255 80 Q270 68 285 80 L320 80"
+                  fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#0284c7"/>
+            <!-- Sweep Beam V6 -->
+            <g class="ecg-beam">
+              <rect x="0" y="0" width="25" height="230" fill="url(#sweepGradCyan)"/>
+              <line x1="25" y1="0" x2="25" y2="230" stroke="#38bdf8" stroke-width="2"/>
+            </g>
+
+            <!-- Caliper S in V6 -->
+            <line x1="90" y1="80" x2="90" y2="175" stroke="#38bdf8" stroke-width="1.8"/>
+            <line x1="85" y1="80" x2="95" y2="80" stroke="#38bdf8" stroke-width="1.8"/>
+            <line x1="85" y1="175" x2="95" y2="175" stroke="#38bdf8" stroke-width="1.8"/>
+            <text x="100" y="130" font-size="9" font-weight="900" fill="#7dd3fc">S in V6 = 11 mm (&gt;7 mm)</text>
+          </g>
+
+          <!-- Associated Criteria Box -->
+          <g transform="translate(15, 245)">
+            <rect x="0" y="0" width="320" height="42" rx="4" fill="rgba(15,23,42,0.8)" stroke="#475569" stroke-width="1.2"/>
+            <text x="160" y="16" font-size="8.5" font-weight="800" fill="#fde68a" text-anchor="middle">ASSOCIATED RVH FINDINGS:</text>
+            <text x="160" y="32" font-size="8" fill="#cbd5e1" text-anchor="middle">• Right Axis Deviation (&gt;+90°/110°) • P-Pulmonale (&gt;2.5 mm in II) • S1Q3T3 (PE)</text>
+          </g>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Right Ventricular Hypertrophy (RVH) Voltage Criteria. Dominant tall R wave in V1 (R/S &gt; 1.0) with right ventricular strain and persistent deep S wave in V6.</p>
+    </div>`;
+  }
+
+  /* 5. Bundle Branch Block (LBBB vs RBBB) Comparison */
+  function ecgBbbDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Left Bundle Branch Block and Right Bundle Branch Block Comparative Morphology" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        
+    <defs>
+      <!-- ECG Millimeter Grid (1mm minor, 5mm major boxes) -->
+      <pattern id="ecgGridMinor" width="5" height="5" patternUnits="userSpaceOnUse">
+        <rect width="5" height="5" fill="none" stroke="rgba(244,63,94,0.12)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="ecgGridMajor" width="25" height="25" patternUnits="userSpaceOnUse">
+        <rect width="25" height="25" fill="url(#ecgGridMinor)" stroke="rgba(244,63,94,0.32)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Monitor Neon Grid Pattern -->
+      <pattern id="monGridMinor" width="6" height="6" patternUnits="userSpaceOnUse">
+        <rect width="6" height="6" fill="none" stroke="rgba(34,197,94,0.08)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="monGridMajor" width="30" height="30" patternUnits="userSpaceOnUse">
+        <rect width="30" height="30" fill="url(#monGridMinor)" stroke="rgba(34,197,94,0.22)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Sweep Beam Gradient -->
+      <linearGradient id="sweepGradGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#22c55e" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#22c55e" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#4ade80" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#f59e0b" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#f59e0b" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradRed" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ef4444" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#ef4444" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#f87171" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0284c7" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#38bdf8" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#7dd3fc" stop-opacity="0.95"/>
+      </linearGradient>
+    </defs>
+    <style>
+      @keyframes ecgBeamSweep {
+        0% { transform: translateX(0px); opacity: 0; }
+        3% { opacity: 1; }
+        96% { opacity: 1; }
+        100% { transform: translateX(710px); opacity: 0; }
+      }
+      .ecg-beam { animation: ecgBeamSweep 3.2s linear infinite; }
+      .ecg-beam-fast { animation: ecgBeamSweep 2.2s linear infinite; }
+      .ecg-beam-vf { animation: ecgBeamSweep 1.8s linear infinite; }
+      @keyframes ecgGlow {
+        0%, 100% { filter: drop-shadow(0 0 1.5px currentColor); }
+        50% { filter: drop-shadow(0 0 4px currentColor); }
+      }
+      .ecg-trace { animation: ecgGlow 2.5s ease-in-out infinite; }
+    </style>
+        <rect x="10" y="10" width="740" height="360" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- LEFT COLUMN: LBBB (WiLLiaM) -->
+        <g transform="translate(20, 20)">
+          <rect x="0" y="0" width="350" height="340" rx="6" fill="url(#monGridMajor)"/>
+          <rect x="0" y="0" width="350" height="26" rx="4" fill="#7c3aed"/>
+          <text x="175" y="18" font-size="10.5" font-weight="900" fill="#ffffff" text-anchor="middle">LEFT BUNDLE BRANCH BLOCK (LBBB)</text>
+
+          <!-- Lead V1 in LBBB: Broad QS / rS with Discordant STE -->
+          <g transform="translate(10, 35)">
+            <text x="10" y="16" font-size="9.5" font-weight="800" fill="#c4b5fd">Lead V1: Broad QS Complex + Discordant STE</text>
+            <path d="M0 50 L30 50 Q40 45 50 50 L58 50 L65 140 L76 140 L85 30 Q110 20 130 50 L160 50"
+                  fill="none" stroke="#a78bfa" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#a78bfa"/>
+            <!-- QRS duration bracket -->
+            <text x="70" y="160" font-size="8" font-weight="800" fill="#fca5a5" text-anchor="middle">Wide QRS ≥120 ms (Slurred QS)</text>
+          </g>
+
+          <!-- Lead V6 in LBBB: Broad notched M-shaped R without Q -->
+          <g transform="translate(10, 185)">
+            <text x="10" y="16" font-size="9.5" font-weight="800" fill="#c4b5fd">Lead V6: Broad Notched "M" R Wave (No Q wave)</text>
+            <path d="M0 60 L30 60 Q40 52 50 60 L58 60 L68 10 L74 20 L80 10 L88 75 L115 78 Q135 90 150 60 L180 60"
+                  fill="none" stroke="#a78bfa" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#a78bfa"/>
+            <text x="76" y="0" font-size="8.5" font-weight="800" fill="#fde68a" text-anchor="middle">Notched Plateau R ("M")</text>
+            <text x="125" y="100" font-size="8" fill="#fca5a5">Discordant ST-T</text>
+          </g>
+          <!-- Mnemonic -->
+          <text x="175" y="325" font-size="8.5" font-weight="800" fill="#ddd6fe" text-anchor="middle">MNEMONIC: W in V1, M in V6 = "WiLLiaM" (LL = LBBB)</text>
+        </g>
+
+        <!-- RIGHT COLUMN: RBBB (MaRRoW) -->
+        <g transform="translate(390, 20)">
+          <rect x="0" y="0" width="350" height="340" rx="6" fill="url(#monGridMajor)"/>
+          <rect x="0" y="0" width="350" height="26" rx="4" fill="#0284c7"/>
+          <text x="175" y="18" font-size="10.5" font-weight="900" fill="#ffffff" text-anchor="middle">RIGHT BUNDLE BRANCH BLOCK (RBBB)</text>
+
+          <!-- Lead V1 in RBBB: Classic rsR' Rabbit Ears -->
+          <g transform="translate(10, 35)">
+            <text x="10" y="16" font-size="9.5" font-weight="800" fill="#38bdf8">Lead V1: rsR' "Rabbit Ears" (R' &gt; r)</text>
+            <path d="M0 70 L30 70 Q40 62 50 70 L58 70 L64 35 L70 85 L78 10 L86 85 L105 88 Q125 100 140 70 L170 70"
+                  fill="none" stroke="#38bdf8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#38bdf8"/>
+            <text x="64" y="25" font-size="8" font-weight="800" fill="#93c5fd">r</text>
+            <text x="70" y="98" font-size="8" font-weight="800" fill="#93c5fd">s</text>
+            <text x="78" y="0" font-size="9.5" font-weight="900" fill="#fde68a">R' (Tall Ear)</text>
+            <text x="120" y="115" font-size="8" fill="#fca5a5">Secondary TWI</text>
+          </g>
+
+          <!-- Lead V6 in RBBB: Wide slurred S wave -->
+          <g transform="translate(10, 185)">
+            <text x="10" y="16" font-size="9.5" font-weight="800" fill="#38bdf8">Lead V6: Wide Slurred S Wave (&gt;40 ms)</text>
+            <path d="M0 60 L30 60 Q40 52 50 60 L58 60 L62 65 L68 15 L74 125 L92 60 L115 60 Q130 45 145 60 L175 60"
+                  fill="none" stroke="#38bdf8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#38bdf8"/>
+            <text x="68" y="5" font-size="8" font-weight="800" fill="#93c5fd">Normal R</text>
+            <line x1="74" y1="60" x2="92" y2="60" stroke="#f87171" stroke-width="1.8"/>
+            <text x="83" y="140" font-size="8.5" font-weight="900" fill="#fca5a5" text-anchor="middle">Slurred Terminal S</text>
+          </g>
+          <!-- Mnemonic -->
+          <text x="175" y="325" font-size="8.5" font-weight="800" fill="#bae6fd" text-anchor="middle">MNEMONIC: M in V1, W in V6 = "MaRRoW" (RR = RBBB)</text>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Left Bundle Branch Block (LBBB) vs Right Bundle Branch Block (RBBB) Classical Morphologies. Remember the WiLLiaM MaRRoW rule: LBBB shows W in V1 &amp; M in V6; RBBB shows M (rabbit ears) in V1 &amp; wide slurred W in V6.</p>
+    </div>`;
+  }
+
+  /* 6. STEMI Evolutionary Stages & Equivalents */
+  function ecgStemiDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Myocardial Infarction ECG Evolutionary Stages and STEMI Equivalents" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        
+    <defs>
+      <!-- ECG Millimeter Grid (1mm minor, 5mm major boxes) -->
+      <pattern id="ecgGridMinor" width="5" height="5" patternUnits="userSpaceOnUse">
+        <rect width="5" height="5" fill="none" stroke="rgba(244,63,94,0.12)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="ecgGridMajor" width="25" height="25" patternUnits="userSpaceOnUse">
+        <rect width="25" height="25" fill="url(#ecgGridMinor)" stroke="rgba(244,63,94,0.32)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Monitor Neon Grid Pattern -->
+      <pattern id="monGridMinor" width="6" height="6" patternUnits="userSpaceOnUse">
+        <rect width="6" height="6" fill="none" stroke="rgba(34,197,94,0.08)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="monGridMajor" width="30" height="30" patternUnits="userSpaceOnUse">
+        <rect width="30" height="30" fill="url(#monGridMinor)" stroke="rgba(34,197,94,0.22)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Sweep Beam Gradient -->
+      <linearGradient id="sweepGradGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#22c55e" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#22c55e" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#4ade80" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#f59e0b" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#f59e0b" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradRed" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ef4444" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#ef4444" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#f87171" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0284c7" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#38bdf8" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#7dd3fc" stop-opacity="0.95"/>
+      </linearGradient>
+    </defs>
+    <style>
+      @keyframes ecgBeamSweep {
+        0% { transform: translateX(0px); opacity: 0; }
+        3% { opacity: 1; }
+        96% { opacity: 1; }
+        100% { transform: translateX(710px); opacity: 0; }
+      }
+      .ecg-beam { animation: ecgBeamSweep 3.2s linear infinite; }
+      .ecg-beam-fast { animation: ecgBeamSweep 2.2s linear infinite; }
+      .ecg-beam-vf { animation: ecgBeamSweep 1.8s linear infinite; }
+      @keyframes ecgGlow {
+        0%, 100% { filter: drop-shadow(0 0 1.5px currentColor); }
+        50% { filter: drop-shadow(0 0 4px currentColor); }
+      }
+      .ecg-trace { animation: ecgGlow 2.5s ease-in-out infinite; }
+    </style>
+        <rect x="10" y="10" width="740" height="360" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- ROW 1: 4 Evolutionary Stages -->
+        <!-- Stage 1: Baseline -->
+        <g transform="translate(20, 25)">
+          <rect x="0" y="0" width="165" height="150" rx="6" fill="url(#monGridMajor)"/>
+          <text x="82" y="20" font-size="9" font-weight="800" fill="#94a3b8" text-anchor="middle">1. BASELINE (Normal)</text>
+          <path d="M10 90 L30 90 Q40 82 50 90 L56 90 L60 93 L65 40 L70 98 L75 90 L95 90 Q110 75 125 90 L155 90"
+                fill="none" stroke="#22c55e" stroke-width="2.2" stroke-linecap="round"/>
+          <text x="82" y="130" font-size="7.5" fill="#cbd5e1" text-anchor="middle">Normal ST segment &amp; T wave</text>
+        </g>
+
+        <!-- Stage 2: Hyperacute T Wave -->
+        <g transform="translate(200, 25)">
+          <rect x="0" y="0" width="165" height="150" rx="6" fill="url(#monGridMajor)"/>
+          <text x="82" y="20" font-size="9" font-weight="800" fill="#f59e0b" text-anchor="middle">2. HYPERACUTE (Minutes)</text>
+          <path d="M10 90 L25 90 Q35 82 45 90 L52 90 L56 93 L61 40 L66 98 L71 90 L80 90 Q105 20 130 90 L155 90"
+                fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round"/>
+          <text x="82" y="130" font-size="7.5" font-weight="700" fill="#fde68a" text-anchor="middle">Tall, broad, symmetrical T</text>
+        </g>
+
+        <!-- Stage 3: Acute STEMI (Tombstone) -->
+        <g transform="translate(380, 25)">
+          <rect x="0" y="0" width="175" height="150" rx="6" fill="url(#monGridMajor)"/>
+          <text x="87" y="20" font-size="9" font-weight="900" fill="#ef4444" text-anchor="middle">3. ACUTE STEMI (Hours)</text>
+          <!-- Tombstone convex coving -->
+          <path d="M10 90 L25 90 Q35 82 45 90 L52 90 L56 93 L62 30 L67 75 Q85 30 115 50 L125 90 L165 90"
+                fill="none" stroke="#ef4444" stroke-width="2.6" stroke-linecap="round" class="ecg-trace" color="#ef4444"/>
+          <text x="87" y="125" font-size="7.5" font-weight="900" fill="#fca5a5" text-anchor="middle">CONVEX ST ELEVATION</text>
+          <text x="87" y="138" font-size="7.2" fill="#fecdd3" text-anchor="middle">("Tombstone" Coving &gt;2 mm)</text>
+        </g>
+
+        <!-- Stage 4: Subacute Q-Wave MI -->
+        <g transform="translate(570, 25)">
+          <rect x="0" y="0" width="165" height="150" rx="6" fill="url(#monGridMajor)"/>
+          <text x="82" y="20" font-size="9" font-weight="800" fill="#a855f7" text-anchor="middle">4. SUBACUTE / OLD</text>
+          <!-- Deep Q wave + inverted T -->
+          <path d="M10 80 L25 80 Q35 72 45 80 L52 80 L56 125 L65 55 L70 80 L85 80 Q105 115 125 80 L155 80"
+                fill="none" stroke="#c084fc" stroke-width="2.2" stroke-linecap="round"/>
+          <text x="56" y="140" font-size="8" font-weight="800" fill="#f87171" text-anchor="middle">Q Wave</text>
+          <text x="110" y="140" font-size="8" font-weight="800" fill="#c084fc" text-anchor="middle">Inverted T</text>
+        </g>
+
+        <!-- ROW 2: CRITICAL STEMI EQUIVALENTS -->
+        <!-- Wellens Syndrome Type A & B -->
+        <g transform="translate(20, 190)">
+          <rect x="0" y="0" width="345" height="165" rx="6" fill="rgba(15,23,42,0.85)" stroke="#38bdf8" stroke-width="1.4"/>
+          <text x="172" y="20" font-size="10" font-weight="900" fill="#38bdf8" text-anchor="middle">WELLENS SYNDROME (Critical Proximal LAD Stenosis)</text>
+
+          <!-- Type A: Biphasic T in V2/V3 -->
+          <g transform="translate(15, 30)">
+            <text x="75" y="16" font-size="8.5" font-weight="700" fill="#cbd5e1" text-anchor="middle">Type A (25%): Biphasic T</text>
+            <path d="M10 60 L35 60 L40 20 L45 75 L50 60 L60 60 Q72 38 82 60 Q92 82 104 60 L140 60"
+                  fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/>
+          </g>
+
+          <!-- Type B: Deep Symmetrical TWI in V2/V3 -->
+          <g transform="translate(175, 30)">
+            <text x="75" y="16" font-size="8.5" font-weight="700" fill="#cbd5e1" text-anchor="middle">Type B (75%): Deep TWI</text>
+            <path d="M10 50 L35 50 L40 10 L45 65 L50 50 L60 50 Q80 105 100 50 L140 50"
+                  fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/>
+          </g>
+          <text x="172" y="152" font-size="7.5" font-weight="700" fill="#fde68a" text-anchor="middle">⚠️ Pain-free at ECG! High risk of massive anterior STEMI within days</text>
+        </g>
+
+        <!-- de Winter T Waves -->
+        <g transform="translate(385, 190)">
+          <rect x="0" y="0" width="350" height="165" rx="6" fill="rgba(15,23,42,0.85)" stroke="#ef4444" stroke-width="1.4"/>
+          <text x="175" y="20" font-size="10" font-weight="900" fill="#f87171" text-anchor="middle">de WINTER T WAVES (Acute Proximal LAD Occlusion)</text>
+
+          <!-- de Winter Trace: Upsloping ST depression + Tall hyperacute T -->
+          <g transform="translate(25, 35)">
+            <path d="M10 50 L30 50 Q40 42 50 50 L56 50 L60 20 L65 75 L75 80 L95 10 L115 50 L150 50"
+                  fill="none" stroke="#f87171" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="75" cy="80" r="3" fill="#f59e0b"/>
+            <text x="80" y="96" font-size="8" font-weight="800" fill="#fbbf24">J-point Dep (1–3 mm)</text>
+            <text x="100" y="5" font-size="8.5" font-weight="900" fill="#f87171">Tall Peaked T</text>
+          </g>
+          <text x="210" y="65" font-size="8.2" fill="#cbd5e1">• Present in ~2% of LAD occlusions</text>
+          <text x="210" y="80" font-size="8.2" fill="#cbd5e1">• 1–2 mm ST elevation in Lead aVR</text>
+          <text x="210" y="95" font-size="8.2" font-weight="700" fill="#fca5a5">• STEMI Equivalent (Cath Lab!)</text>
+          <text x="175" y="152" font-size="7.5" font-weight="700" fill="#fde68a" text-anchor="middle">Do NOT delay primary PCI waiting for traditional ST elevation!</text>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Evolutionary ECG Stages of Myocardial Infarction and Life-Threatening STEMI Equivalents (Wellens Syndrome &amp; de Winter Pattern). Both equivalents demand immediate primary percutaneous coronary intervention (PCI).</p>
+    </div>`;
+  }
+
+  /* 7. Heart Blocks & Conduction Disorders */
+  function ecgHeartBlocksDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Atrioventricular Heart Blocks First Second and Third Degree AV Block Waveforms" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        
+    <defs>
+      <!-- ECG Millimeter Grid (1mm minor, 5mm major boxes) -->
+      <pattern id="ecgGridMinor" width="5" height="5" patternUnits="userSpaceOnUse">
+        <rect width="5" height="5" fill="none" stroke="rgba(244,63,94,0.12)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="ecgGridMajor" width="25" height="25" patternUnits="userSpaceOnUse">
+        <rect width="25" height="25" fill="url(#ecgGridMinor)" stroke="rgba(244,63,94,0.32)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Monitor Neon Grid Pattern -->
+      <pattern id="monGridMinor" width="6" height="6" patternUnits="userSpaceOnUse">
+        <rect width="6" height="6" fill="none" stroke="rgba(34,197,94,0.08)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="monGridMajor" width="30" height="30" patternUnits="userSpaceOnUse">
+        <rect width="30" height="30" fill="url(#monGridMinor)" stroke="rgba(34,197,94,0.22)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Sweep Beam Gradient -->
+      <linearGradient id="sweepGradGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#22c55e" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#22c55e" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#4ade80" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#f59e0b" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#f59e0b" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradRed" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ef4444" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#ef4444" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#f87171" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0284c7" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#38bdf8" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#7dd3fc" stop-opacity="0.95"/>
+      </linearGradient>
+    </defs>
+    <style>
+      @keyframes ecgBeamSweep {
+        0% { transform: translateX(0px); opacity: 0; }
+        3% { opacity: 1; }
+        96% { opacity: 1; }
+        100% { transform: translateX(710px); opacity: 0; }
+      }
+      .ecg-beam { animation: ecgBeamSweep 3.2s linear infinite; }
+      .ecg-beam-fast { animation: ecgBeamSweep 2.2s linear infinite; }
+      .ecg-beam-vf { animation: ecgBeamSweep 1.8s linear infinite; }
+      @keyframes ecgGlow {
+        0%, 100% { filter: drop-shadow(0 0 1.5px currentColor); }
+        50% { filter: drop-shadow(0 0 4px currentColor); }
+      }
+      .ecg-trace { animation: ecgGlow 2.5s ease-in-out infinite; }
+    </style>
+        <rect x="10" y="10" width="740" height="360" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- 1st Degree AV Block -->
+        <g transform="translate(20, 20)">
+          <rect x="0" y="0" width="720" height="75" rx="5" fill="url(#monGridMajor)"/>
+          <text x="15" y="18" font-size="9.5" font-weight="800" fill="#38bdf8">1st DEGREE AV BLOCK: Prolonged PR Interval &gt;200 ms (Constant 1:1 Conduction)</text>
+          <!-- Trace with long PR = 280 ms -->
+          <g transform="translate(10, 15)">
+            <path d="M0 35 L20 35 Q30 25 40 35 L80 35 L84 40 L90 8 L96 45 L102 35 L125 35 Q140 20 155 35 L200 35 Q210 25 220 35 L260 35 L264 40 L270 8 L276 45 L282 35 L305 35 Q320 20 335 35 L380 35 Q390 25 400 35 L440 35 L444 40 L450 8 L456 45 L462 35 L485 35 Q500 20 515 35 L560 35"
+                  fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="20" y1="48" x2="84" y2="48" stroke="#f59e0b" stroke-width="1.8"/>
+            <text x="52" y="58" font-size="7.5" font-weight="800" fill="#fbbf24" text-anchor="middle">PR = 280 ms (&gt;200 ms)</text>
+          </g>
+        </g>
+
+        <!-- 2nd Degree Type 1 (Mobitz I / Wenckebach) -->
+        <g transform="translate(20, 105)">
+          <rect x="0" y="0" width="720" height="80" rx="5" fill="url(#monGridMajor)"/>
+          <text x="15" y="18" font-size="9.5" font-weight="800" fill="#f59e0b">2nd DEGREE MOBITZ I (Wenckebach): Progressive PR Lengthening → Dropped QRS Beat</text>
+          <g transform="translate(10, 15)">
+            <!-- Beat 1: PR 160 ms -->
+            <path d="M0 35 L20 35 Q28 25 36 35 L55 35 L58 38 L63 8 L68 45 L73 35 L90 35 Q102 20 115 35 L135 35 " fill="none" stroke="#f59e0b" stroke-width="2.2"/>
+            <text x="45" y="54" font-size="7" fill="#fbbf24">PR 160</text>
+            <!-- Beat 2: PR 240 ms -->
+            <path d="M135 35 Q143 25 151 35 L180 35 L183 38 L188 8 L193 45 L198 35 L215 35 Q227 20 240 35 L260 35 " fill="none" stroke="#f59e0b" stroke-width="2.2"/>
+            <text x="165" y="54" font-size="7" fill="#fbbf24">PR 240</text>
+            <!-- Beat 3: PR 320 ms -->
+            <path d="M260 35 Q268 25 276 35 L315 35 L318 38 L323 8 L328 45 L333 35 L350 35 Q362 20 375 35 L395 35 " fill="none" stroke="#f59e0b" stroke-width="2.2"/>
+            <text x="295" y="54" font-size="7" fill="#fbbf24">PR 320</text>
+            <!-- Beat 4: DROPPED P WAVE -->
+            <path d="M395 35 Q405 23 415 35 L475 35 " fill="none" stroke="#ef4444" stroke-width="2.2"/>
+            <circle cx="410" cy="28" r="3" fill="#ef4444"/>
+            <text x="410" y="16" font-size="8" font-weight="900" fill="#fca5a5" text-anchor="middle">BLOCKED P WAVE</text>
+            <text x="410" y="54" font-size="7.5" font-weight="700" fill="#f87171" text-anchor="middle">DROPPED QRS!</text>
+            <!-- Beat 5: Reset PR 160 ms -->
+            <path d="M475 35 Q483 25 491 35 L510 35 L513 38 L518 8 L523 45 L528 35 L545 35" fill="none" stroke="#f59e0b" stroke-width="2.2"/>
+          </g>
+        </g>
+
+        <!-- 2nd Degree Type 2 (Mobitz II) -->
+        <g transform="translate(20, 195)">
+          <rect x="0" y="0" width="720" height="80" rx="5" fill="url(#monGridMajor)"/>
+          <text x="15" y="18" font-size="9.5" font-weight="800" fill="#ef4444">2nd DEGREE MOBITZ II (Infranodal Block): Constant PR Interval → Sudden Blocked P Wave</text>
+          <g transform="translate(10, 15)">
+            <!-- Conducted beat with wide QRS -->
+            <path d="M0 35 L20 35 Q30 25 40 35 L60 35 L64 42 L72 8 L80 48 L88 35 L115 35 Q130 18 145 35 L180 35" fill="none" stroke="#ef4444" stroke-width="2.2"/>
+            <text x="50" y="52" font-size="7" fill="#cbd5e1">PR Constant</text>
+            <!-- BLOCKED P WAVE (Sudden Drop) -->
+            <path d="M180 35 Q190 22 200 35 L260 35" fill="none" stroke="#ef4444" stroke-width="2.2"/>
+            <circle cx="195" cy="28" r="3.5" fill="#fca5a5"/>
+            <text x="195" y="16" font-size="8.5" font-weight="900" fill="#fca5a5" text-anchor="middle">SUDDEN DROPPED QRS</text>
+            <text x="195" y="52" font-size="7.5" fill="#f87171" text-anchor="middle">(High CHB Risk!)</text>
+            <!-- Next conducted beat -->
+            <path d="M260 35 Q270 25 280 35 L300 35 L304 42 L312 8 L320 48 L328 35 L355 35 Q370 18 385 35 L420 35" fill="none" stroke="#ef4444" stroke-width="2.2"/>
+          </g>
+          <text x="705" y="48" font-size="8" font-weight="700" fill="#fde68a" text-anchor="end">⚠️ Atropine INEFFECTIVE / Dangerous! Urgent Pacemaker indicated.</text>
+        </g>
+
+        <!-- 3rd Degree Complete AV Block (CHB) -->
+        <g transform="translate(20, 285)">
+          <rect x="0" y="0" width="720" height="75" rx="5" fill="url(#monGridMajor)"/>
+          <text x="15" y="18" font-size="9.5" font-weight="900" fill="#a855f7">3rd DEGREE (COMPLETE) AV BLOCK: Total AV Dissociation (Independent P &amp; QRS March)</text>
+          <g transform="translate(10, 15)">
+            <!-- Slow Wide Ventricular Escape complexes at 30 bpm -->
+            <path d="M0 35 L120 35 L126 44 L138 2 L148 50 L158 35 L200 35 Q225 15 250 35 L390 35 L396 44 L408 2 L418 50 L428 35 L470 35 Q495 15 520 35" fill="none" stroke="#c084fc" stroke-width="2.5"/>
+            <!-- Marching P waves at 75 bpm (arrows) -->
+            <g fill="#38bdf8">
+              <path d="M40 35 Q48 23 56 35 Z"/><text x="48" y="18" font-size="7.5" font-weight="800" text-anchor="middle">P</text>
+              <path d="M110 35 Q118 23 126 35 Z"/><text x="118" y="18" font-size="7.5" font-weight="800" text-anchor="middle">P</text>
+              <path d="M180 35 Q188 23 196 35 Z"/><text x="188" y="18" font-size="7.5" font-weight="800" text-anchor="middle">P</text>
+              <path d="M250 35 Q258 23 266 35 Z"/><text x="258" y="18" font-size="7.5" font-weight="800" text-anchor="middle">P</text>
+              <path d="M320 35 Q328 23 336 35 Z"/><text x="328" y="18" font-size="7.5" font-weight="800" text-anchor="middle">P</text>
+              <path d="M390 35 Q398 23 406 35 Z"/><text x="398" y="18" font-size="7.5" font-weight="800" text-anchor="middle">P</text>
+              <path d="M460 35 Q468 23 476 35 Z"/><text x="468" y="18" font-size="7.5" font-weight="800" text-anchor="middle">P</text>
+            </g>
+          </g>
+          <text x="705" y="48" font-size="8" font-weight="800" fill="#f87171" text-anchor="end">EMERGENCY PACING (TCP / TVP) MANDATORY</text>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Atrioventricular Conduction Disorders from First-Degree through Complete Third-Degree AV Block. Notice how Mobitz I has progressive PR prolongation before dropped beat, whereas Mobitz II drops suddenly with constant PR interval.</p>
+    </div>`;
+  }
+
+  /* 8. Ventricular Tachycardia (VT) & Torsades de Pointes */
+  function ecgVtDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ventricular Tachycardia Monomorphic VT and Polymorphic Torsades de Pointes Waveforms" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        
+    <defs>
+      <!-- ECG Millimeter Grid (1mm minor, 5mm major boxes) -->
+      <pattern id="ecgGridMinor" width="5" height="5" patternUnits="userSpaceOnUse">
+        <rect width="5" height="5" fill="none" stroke="rgba(244,63,94,0.12)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="ecgGridMajor" width="25" height="25" patternUnits="userSpaceOnUse">
+        <rect width="25" height="25" fill="url(#ecgGridMinor)" stroke="rgba(244,63,94,0.32)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Monitor Neon Grid Pattern -->
+      <pattern id="monGridMinor" width="6" height="6" patternUnits="userSpaceOnUse">
+        <rect width="6" height="6" fill="none" stroke="rgba(34,197,94,0.08)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="monGridMajor" width="30" height="30" patternUnits="userSpaceOnUse">
+        <rect width="30" height="30" fill="url(#monGridMinor)" stroke="rgba(34,197,94,0.22)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Sweep Beam Gradient -->
+      <linearGradient id="sweepGradGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#22c55e" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#22c55e" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#4ade80" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#f59e0b" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#f59e0b" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradRed" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ef4444" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#ef4444" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#f87171" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0284c7" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#38bdf8" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#7dd3fc" stop-opacity="0.95"/>
+      </linearGradient>
+    </defs>
+    <style>
+      @keyframes ecgBeamSweep {
+        0% { transform: translateX(0px); opacity: 0; }
+        3% { opacity: 1; }
+        96% { opacity: 1; }
+        100% { transform: translateX(710px); opacity: 0; }
+      }
+      .ecg-beam { animation: ecgBeamSweep 3.2s linear infinite; }
+      .ecg-beam-fast { animation: ecgBeamSweep 2.2s linear infinite; }
+      .ecg-beam-vf { animation: ecgBeamSweep 1.8s linear infinite; }
+      @keyframes ecgGlow {
+        0%, 100% { filter: drop-shadow(0 0 1.5px currentColor); }
+        50% { filter: drop-shadow(0 0 4px currentColor); }
+      }
+      .ecg-trace { animation: ecgGlow 2.5s ease-in-out infinite; }
+    </style>
+        <rect x="10" y="10" width="740" height="320" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- TOP PANEL: Monomorphic VT with Capture & Fusion Beats -->
+        <g transform="translate(20, 20)">
+          <rect x="0" y="0" width="720" height="140" rx="6" fill="url(#monGridMajor)"/>
+          <text x="15" y="20" font-size="10" font-weight="900" fill="#ef4444">MONOMORPHIC VENTRICULAR TACHYCARDIA (Rate 180 bpm  •  Wide QRS ≥160 ms)</text>
+          <!-- VT waveform with Capture and Fusion beat -->
+          <g transform="translate(10, 15)">
+            <path d="M0 65 L10 65 
+                     L18 8 L32 105 L42 8 L56 105 L66 8 L80 105 L90 8 L104 105 
+                     L114 8 L128 105 L138 8 L152 105 
+                     L160 50 L163 15 L168 75 L174 55 
+                     L184 8 L198 105 L208 8 L222 105 
+                     L230 40 L238 90 L248 15 L260 95 
+                     L270 8 L284 105 L294 8 L308 105 L318 8 L332 105 L342 8 L356 105 L366 8 L380 105 L390 8 L404 105"
+                  fill="none" stroke="#ef4444" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#ef4444"/>
+
+            <!-- Animated Sweep Beam Fast -->
+            <g class="ecg-beam-fast">
+              <rect x="0" y="0" width="25" height="120" fill="url(#sweepGradRed)"/>
+              <line x1="25" y1="0" x2="25" y2="120" stroke="#f87171" stroke-width="2"/>
+            </g>
+
+            <!-- Annotation: Capture Beat -->
+            <rect x="145" y="10" width="48" height="16" rx="3" fill="rgba(16,185,129,0.3)" stroke="#10b981" stroke-width="1"/>
+            <text x="169" y="22" font-size="7.5" font-weight="900" fill="#34d399" text-anchor="middle">CAPTURE</text>
+
+            <!-- Annotation: Fusion Beat (Dressler) -->
+            <rect x="225" y="10" width="46" height="16" rx="3" fill="rgba(245,158,11,0.3)" stroke="#f59e0b" stroke-width="1"/>
+            <text x="248" y="22" font-size="7.5" font-weight="900" fill="#fbbf24" text-anchor="middle">FUSION</text>
+          </g>
+          <text x="705" y="130" font-size="8" font-weight="800" fill="#fca5a5" text-anchor="end">BRUGADA CRITERIA: AV Dissociation + Capture/Fusion = 100% SPECIFIC FOR VT</text>
+        </g>
+
+        <!-- BOTTOM PANEL: Polymorphic VT (Torsades de Pointes) -->
+        <g transform="translate(20, 175)">
+          <rect x="0" y="0" width="720" height="140" rx="6" fill="url(#monGridMajor)"/>
+          <text x="15" y="20" font-size="10" font-weight="900" fill="#a855f7">TORSADES DE POINTES (Polymorphic VT with Prolonged QTc &gt;500 ms)</text>
+          <!-- Twisting Spindle-and-Node trace -->
+          <g transform="translate(10, 15)">
+            <path d="M0 65 L15 65 
+                     L22 15 L32 95 L40 22 L48 88 L56 30 L64 80 L72 40 L80 75 L88 48 L96 70 L104 55 L112 65 
+                     L120 75 L128 45 L136 82 L144 35 L152 92 L160 25 L168 100 L176 15 L184 105 L192 12 L200 108 
+                     L208 25 L216 98 L224 35 L232 85 L240 45 L248 78 L256 52 L264 68 L272 58 L280 65 
+                     L288 78 L296 42 L304 88 L312 30 L320 95 L328 20 L336 102 L344 15 L352 105 L360 25"
+                  fill="none" stroke="#c084fc" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#c084fc"/>
+
+            <!-- Sweep Beam Fast -->
+            <g class="ecg-beam-fast">
+              <rect x="0" y="0" width="25" height="120" fill="url(#sweepGradCyan)"/>
+              <line x1="25" y1="0" x2="25" y2="120" stroke="#a78bfa" stroke-width="2"/>
+            </g>
+
+            <!-- Peak markers -->
+            <text x="60" y="18" font-size="8" fill="#e9d5ff">Positive Polarity</text>
+            <text x="108" y="70" font-size="8" font-weight="900" fill="#fde68a" text-anchor="middle">NODE</text>
+            <text x="160" y="118" font-size="8" fill="#e9d5ff">Negative Polarity</text>
+            <text x="272" y="70" font-size="8" font-weight="900" fill="#fde68a" text-anchor="middle">NODE</text>
+          </g>
+          <text x="705" y="130" font-size="8" font-weight="800" fill="#fde68a" text-anchor="end">FIRST-LINE TREATMENT: IV MAGNESIUM SULPHATE 2g OVER 10 MIN + OVERDRIVE PACING</text>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Ventricular Tachycardia (VT) Dynamics. Top: Monomorphic VT displaying pathognomonic capture and fusion beats. Bottom: Polymorphic Torsades de Pointes showing classic twisting of QRS amplitudes around the isoelectric line.</p>
+    </div>`;
+  }
+
+  /* 9. Ventricular Fibrillation (Coarse vs Fine VF) */
+  function ecgVfDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ventricular Fibrillation Coarse and Fine VF Waveforms and Defibrillation Protocol" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        
+    <defs>
+      <!-- ECG Millimeter Grid (1mm minor, 5mm major boxes) -->
+      <pattern id="ecgGridMinor" width="5" height="5" patternUnits="userSpaceOnUse">
+        <rect width="5" height="5" fill="none" stroke="rgba(244,63,94,0.12)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="ecgGridMajor" width="25" height="25" patternUnits="userSpaceOnUse">
+        <rect width="25" height="25" fill="url(#ecgGridMinor)" stroke="rgba(244,63,94,0.32)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Monitor Neon Grid Pattern -->
+      <pattern id="monGridMinor" width="6" height="6" patternUnits="userSpaceOnUse">
+        <rect width="6" height="6" fill="none" stroke="rgba(34,197,94,0.08)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="monGridMajor" width="30" height="30" patternUnits="userSpaceOnUse">
+        <rect width="30" height="30" fill="url(#monGridMinor)" stroke="rgba(34,197,94,0.22)" stroke-width="1.1"/>
+      </pattern>
+      <!-- Sweep Beam Gradient -->
+      <linearGradient id="sweepGradGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#22c55e" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#22c55e" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#4ade80" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#f59e0b" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#f59e0b" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradRed" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ef4444" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#ef4444" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#f87171" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="sweepGradCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0284c7" stop-opacity="0"/>
+        <stop offset="80%" stop-color="#38bdf8" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#7dd3fc" stop-opacity="0.95"/>
+      </linearGradient>
+    </defs>
+    <style>
+      @keyframes ecgBeamSweep {
+        0% { transform: translateX(0px); opacity: 0; }
+        3% { opacity: 1; }
+        96% { opacity: 1; }
+        100% { transform: translateX(710px); opacity: 0; }
+      }
+      .ecg-beam { animation: ecgBeamSweep 3.2s linear infinite; }
+      .ecg-beam-fast { animation: ecgBeamSweep 2.2s linear infinite; }
+      .ecg-beam-vf { animation: ecgBeamSweep 1.8s linear infinite; }
+      @keyframes ecgGlow {
+        0%, 100% { filter: drop-shadow(0 0 1.5px currentColor); }
+        50% { filter: drop-shadow(0 0 4px currentColor); }
+      }
+      .ecg-trace { animation: ecgGlow 2.5s ease-in-out infinite; }
+    </style>
+        <rect x="10" y="10" width="740" height="320" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- TOP PANEL: Coarse Ventricular Fibrillation -->
+        <g transform="translate(20, 20)">
+          <rect x="0" y="0" width="720" height="140" rx="6" fill="url(#monGridMajor)"/>
+          <text x="15" y="20" font-size="10" font-weight="900" fill="#ef4444">COARSE VENTRICULAR FIBRILLATION (Amplitude ≥0.2 mV / 2 mm  •  High Defibrillation Efficacy)</text>
+          <!-- Chaotic irregular large wavelets -->
+          <g transform="translate(10, 15)">
+            <path d="M0 60 Q12 10 24 65 Q35 110 48 45 Q58 10 70 85 Q82 120 95 30 Q108 8 120 75 Q132 115 145 40 Q158 5 170 80 Q182 125 195 25 Q208 10 220 85 Q232 110 245 45 Q258 15 270 70 Q282 115 295 35 Q308 12 320 80 Q332 120 345 40 Q358 10 370 75 Q382 110 395 30 Q408 8 420 85 Q432 115 445 40 Q458 15 470 75 Q482 120 495 35 Q508 10 520 80"
+                  fill="none" stroke="#ef4444" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#ef4444"/>
+
+            <!-- Sweep Beam VF -->
+            <g class="ecg-beam-vf">
+              <rect x="0" y="0" width="25" height="120" fill="url(#sweepGradRed)"/>
+              <line x1="25" y1="0" x2="25" y2="120" stroke="#f87171" stroke-width="2"/>
+            </g>
+
+            <!-- Defibrillation Lightning Bolt -->
+            <g transform="translate(560, 20)">
+              <rect x="0" y="0" width="135" height="42" rx="4" fill="#dc2626" stroke="#f87171" stroke-width="1.4"/>
+              <text x="67" y="18" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">⚡ SHOCKABLE RHYTHM</text>
+              <text x="67" y="32" font-size="8" font-weight="800" fill="#fee2e2" text-anchor="middle">200 J BIPHASIC SHOCK</text>
+            </g>
+          </g>
+          <text x="15" y="130" font-size="8" fill="#fca5a5">• Total absence of P, QRS, or T waves • Zero cardiac output • High myocardial ATP reserves</text>
+        </g>
+
+        <!-- BOTTOM PANEL: Fine Ventricular Fibrillation vs Asystole Warning -->
+        <g transform="translate(20, 175)">
+          <rect x="0" y="0" width="720" height="140" rx="6" fill="url(#monGridMajor)"/>
+          <text x="15" y="20" font-size="10" font-weight="900" fill="#f59e0b">FINE VENTRICULAR FIBRILLATION (Amplitude &lt;0.2 mV  •  Prolonged Arrest / Impending Asystole)</text>
+          <!-- Low amplitude chaotic wavelets -->
+          <g transform="translate(10, 15)">
+            <path d="M0 60 Q15 48 30 65 Q45 72 60 55 Q75 48 90 62 Q105 70 120 54 Q135 50 150 64 Q165 72 180 56 Q195 48 210 65 Q225 70 240 55 Q255 50 270 64 Q285 70 300 58 Q315 50 330 65 Q345 70 360 55 Q375 52 390 62 Q405 68 420 56 Q435 50 450 64 Q465 70 480 55 Q495 52 510 62"
+                  fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#f59e0b"/>
+
+            <g class="ecg-beam-vf">
+              <rect x="0" y="0" width="25" height="120" fill="url(#sweepGradAmber)"/>
+              <line x1="25" y1="0" x2="25" y2="120" stroke="#fbbf24" stroke-width="2"/>
+            </g>
+          </g>
+
+          <g transform="translate(380, 75)">
+            <rect x="0" y="0" width="320" height="50" rx="4" fill="rgba(225,29,72,0.25)" stroke="#ef4444" stroke-width="1.2"/>
+            <text x="160" y="18" font-size="8.8" font-weight="900" fill="#fca5a5" text-anchor="middle">⚠️ CRITICAL PITFALL: DO NOT MISTAKE FOR ASYSTOLE!</text>
+            <text x="160" y="32" font-size="7.8" fill="#fee2e2" text-anchor="middle">Check lead connections &amp; increase ECG gain. Fine VF is SHOCKABLE;</text>
+            <text x="160" y="44" font-size="7.8" fill="#fee2e2" text-anchor="middle">asystole is NOT shockable! CPR &amp; Epinephrine help coarsen the rhythm.</text>
+          </g>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Ventricular Fibrillation (VF) Presentations. Top: Coarse VF with high-amplitude chaotic wavelets representing recent cardiac arrest with high defibrillation response. Bottom: Fine VF with low amplitude (&lt;0.2 mV) representing prolonged arrest.</p>
     </div>`;
   }
 

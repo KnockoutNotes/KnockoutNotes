@@ -1007,6 +1007,383 @@ PATIENT CHECKOUT COMPLETE — PROCEED SAFELY WITH INDUCTION.`
     ]
   });
 
+  topics.push({
+    id: "ecg-interpretation",
+    cat: "anaesthesia",
+    name: "ECG Interpretation & Perioperative Arrhythmias",
+    short: "ECG Interpretation",
+    tags: ["12-Lead ECG", "Axis & Hypertrophy", "Bundle Branch Blocks", "STEMI Criteria", "AV Blocks", "VT & VF", "Animated Waveforms"],
+    tagline: "Systematic 12-lead interpretation, hexaxial axis wheel, LVH/RVH voltage, BBBs, Universal STEMI definition, AV conduction blocks, and lethal ventricular rhythms",
+    source: "Fourth Universal Definition of Myocardial Infarction (ESC/ACC/AHA/WHF 2018/2023 update); 2023 ACC/AHA/ACCP/HRS Guideline for the Management of Patients With Bradycardia and Cardiac Conduction Delay; 2022/2024 ESC Guidelines for Ventricular Arrhythmias; Goldberger's Clinical Electrocardiography, 10th ed.; Miller's Anesthesia, 10th ed., Ch. 38.",
+    sections: [
+      {
+        h: "Basic ECG Interpretation: Calibration, Waves, Intervals & Reading Sequence",
+        diagram: "ecg-basic-waves",
+        table: {
+          headers: ["Parameter", "Paper Dimensions", "Time / Voltage Value", "Normal Reference Range", "Key Clinical Significance"],
+          rows: [
+            ["Paper Speed", "25 mm / second", "1 mm = 0.04 s (40 ms)", "Standard calibration", "50 mm/s doubles paper speed (used in electrophysiology to separate rapid wavelets)"],
+            ["Small Box (Time)", "1 mm horizontal", "0.04 seconds (40 ms)", "Fundamental time unit", "2.5 small boxes = 100 ms; 3 small boxes = 120 ms (QRS cutoff)"],
+            ["Large Box (Time)", "5 mm horizontal", "0.20 seconds (200 ms)", "5 small boxes = 0.20 s", "5 large boxes = 1.0 second; 300 large boxes = 1 minute"],
+            ["Voltage Calibration", "10 mm / mV", "1 mm = 0.1 mV", "Standard (10 mm pulse)", "Half-standard (5 mm/mV) used in massive LVH; Double-standard (20 mm/mV) for low voltage"],
+            ["Heart Rate (Regular)", "300 ÷ Large Boxes", "or 1500 ÷ Small Boxes", "60 to 100 bpm", "Count R-R: 1 box=300, 2=150, 3=100, 4=75, 5=60, 6=50 bpm"],
+            ["Heart Rate (Irregular)", "R waves in 30 large boxes × 10", "30 boxes = 6 seconds", "60 to 100 bpm", "Mandatory calculation method for Atrial Fibrillation and sinus arrhythmia"],
+            ["P Wave Duration", "<3 small boxes", "<120 ms (0.12 s)", "<120 ms width", "P-mitrale (>120 ms notched in Lead II) = Left Atrial Enlargement"],
+            ["P Wave Amplitude", "<2.5 small boxes", "<0.25 mV (2.5 mm)", "<2.5 mm in limb leads", "P-pulmonale (>2.5 mm peaked in Lead II) = Right Atrial Enlargement / Cor Pulmonale"],
+            ["PR Interval", "3 to 5 small boxes", "120 to 200 ms", "120–200 ms (0.12–0.20 s)", "<120 ms = WPW / junctional; >200 ms = First-degree AV block"],
+            ["QRS Duration", "<2.5 to 3 small boxes", "<100 to 120 ms", "Narrow (<100–120 ms)", "≥120 ms = Complete LBBB, RBBB, IVCD, or Ventricular Ectopy/Pacing"],
+            ["QTc Interval (Bazett)", "Beginning of Q to end of T", "QT / √(RR in seconds)", "♂ <440 ms, ♀ <460 ms", "Prolonged >480 ms; Critical Torsades de Pointes threshold >500 ms"]
+          ]
+        },
+        b: "A methodical 7-step reading sequence guarantees that subtle, life-threatening ischaemic or electrophysiological abnormalities are never missed:\n\n" +
+           "1. Standard Calibration & Technical Verification:\n" +
+           "• Paper Speed: Standard 25 mm/s. Every 1 mm small box horizontally equals 0.04 seconds (40 ms); every 5 mm large box equals 0.20 seconds (200 ms).\n" +
+           "• Voltage Calibration: Standard 10 mm/mV. Every 1 mm small box vertically equals 0.1 mV; a standard calibration pulse is a 10 mm high × 5 mm wide square box (1.0 mV × 0.20 s).\n" +
+           "• Lead Placement Sanity Check: Lead aVR must have completely negative deflections (inverted P, negative QRS, inverted T) in normal anatomy. An upright Lead aVR indicates limb lead reversal (right/left arm swapped) or dextrocardia.\n\n" +
+           "2. Heart Rate Calculation:\n" +
+           "• Regular Rhythm: Divide 300 by the number of large boxes between consecutive R-R intervals (or 1500 divided by the number of small boxes). Sequence: 300 → 150 → 100 → 75 → 60 → 50 bpm.\n" +
+           "• Irregular Rhythm (Atrial Fibrillation / Ectopy): Count the total number of QRS complexes in a 30-large-box strip (6 seconds) and multiply by 10.\n\n" +
+           "3. Rhythm & P-Wave Analysis:\n" +
+           "• Sinus Rhythm Diagnostic Criteria:\n" +
+           "  1. Positive, upright P waves in Leads I, II, and aVF (vector directed inferiorly and leftward from SA node).\n" +
+           "  2. Inverted, negative P wave in Lead aVR.\n" +
+           "  3. Every P wave followed by a QRS complex, and every QRS preceded by a P wave (1:1 ratio).\n" +
+           "  4. Constant, regular PR interval across beats at a rate of 60 to 100 bpm.\n" +
+           "• Atrial Enlargement Morphologies:\n" +
+           "  - P-Mitrale (Left Atrial Enlargement): Bifid, broad, notched P wave in Lead II (>120 ms wide with inter-peak notch >40 ms), plus biphasic P in Lead V1 with deep negative terminal deflection (>1 mm deep × >40 ms wide = Morris index >1 mm²).\n" +
+           "  - P-Pulmonale (Right Atrial Enlargement): Tall, peaked, tent-shaped P wave >2.5 mm in Leads II, III, and aVF, and >1.5 mm in Lead V1.\n\n" +
+           "4. PR Interval & PR Segment:\n" +
+           "• Normal Range: 120 to 200 ms (3 to 5 small boxes), measured from the beginning of the P wave to the beginning of the QRS complex.\n" +
+           "• Short PR Interval (<120 ms): Wolff-Parkinson-White (WPW) pre-excitation (short PR + slurred delta wave + wide QRS), Lown-Ganong-Levine (LGL) syndrome, or junctional rhythm.\n" +
+           "• Prolonged PR Interval (>200 ms): First-degree AV block.\n" +
+           "• PR Segment Depression: Hallmark of acute pericarditis (concomitant with diffuse concave ST elevation and reciprocal PR elevation in Lead aVR) or atrial infarction.\n\n" +
+           "5. QRS Complex Morphological Rules:\n" +
+           "• Duration: Normal <100–120 ms. Intermediate (100–119 ms = incomplete bundle branch block). Wide (≥120 ms = complete LBBB, RBBB, hyperkalaemia, WPW, or ventricular rhythm).\n" +
+           "• Normal Septal Q Waves: Small, physiological q waves (<30 ms wide, <2 mm deep, and <15% of R-wave amplitude) in lateral leads (I, aVL, V5, V6) representing initial left-to-right septal depolarization.\n" +
+           "• Pathological Q Waves: Duration ≥40 ms (1 small box), depth >25% of the corresponding R-wave amplitude, or present in leads V2–V3. Indicates transmural myocardial necrosis.\n" +
+           "• Precordial R-Wave Progression: Normal transition where rS in Lead V1 (r < S) transitions to equiphasic RS at Lead V3–V4, and evolves into a tall qR complex in Leads V5–V6 (R > S). Poor R-wave progression (persistent small r through V4) indicates prior anterior MI, severe LVH, or lead misplacement.\n\n" +
+           "6. ST Segment & T Wave Evaluation:\n" +
+           "• Baseline Reference: The TP segment (isoelectric baseline between T wave termination and next P wave). Avoid using the PR segment as baseline if PR depression is present.\n" +
+           "• J-Point (Junction): The exact point of transition between the end of the QRS complex and the beginning of the ST segment.\n" +
+           "• ST Elevation: Convex upward ('tombstone' / coving) = acute transmural STEMI; Concave upward ('saddleback') = acute pericarditis or benign early repolarisation.\n" +
+           "• T-Wave Orientation: Concordant with the dominant QRS deflection in most leads. Normally upright in I, II, V3–V6; inverted in aVR; variable in III, aVL, V1.\n" +
+           "• Symmetrical Tall Peaked T Waves: Hyperacute STEMI (broad base) vs Hyperkalaemia (narrow, pinched, 'tented' sharp base).\n" +
+           "• Giant Inverted T Waves ('Cerebral T Waves'): Deeply inverted, bizarre, wide T waves across precordial leads seen in acute intracranial haemorrhage (SAH), elevated ICP, or massive stroke.\n\n" +
+           "7. QT and Corrected QTc Calculations:\n" +
+           "• Measured from the onset of the Q wave to the end of the T wave (tangent method at baseline intersection).\n" +
+           "• Heart-Rate Correction Formulas:\n" +
+           "  - Bazett Formula: QTc = QT / √(RR in seconds). Most common, but overcorrects at rapid rates and undercorrects at slow rates.\n" +
+           "  - Fridericia Formula: QTc = QT / ∛(RR in seconds). Superior accuracy at extreme heart rates.\n" +
+           "• Normal Thresholds: QTc <440 ms in adult males; QTc <460 ms in adult females.\n" +
+           "• Prolonged QTc: >480 ms (abnormal). Critical Arrhythmia Threshold: QTc >500 ms carries severe risk of early afterdepolarisations (EADs) triggering polymorphic Ventricular Tachycardia (Torsades de Pointes).\n" +
+           "• Perioperative QT-Prolonging Culprits: 5-HT3 antagonists (Ondansetron), Butyrophenones (Droperidol), Volatile anaesthetics (Sevoflurane, Isoflurane), Methadone, Amiodarone, Hypokalaemia, Hypomagnesaemia, and Hypocalcaemia."
+      },
+      {
+        h: "Cardiac Axis Interpretation: Hexaxial System & Quadrant Analysis",
+        diagram: "ecg-axis-wheel",
+        b: "The mean electrical cardiac axis represents the net spatial direction of ventricular depolarization in the frontal plane, determined using the hexaxial reference system derived from Einthoven's triangle:\n\n" +
+           "1. Einthoven's Triangle & The Hexaxial System:\n" +
+           "• Bipolar Limb Leads: Lead I (0°), Lead II (+60°), Lead III (+120°). Einthoven's Law: Lead II = Lead I + Lead III.\n" +
+           "• Augmented Unipolar Leads: aVR (-150°), aVL (-30°), aVF (+90°).\n" +
+           "• Normal Mean QRS Vector: Directed downward and leftward towards the left ventricle, normally between -30° and +90°.\n\n" +
+           "2. Frontal Plane Axis Classifications:\n" +
+           "• Normal Axis: -30° to +90° (physiologically oriented towards left apex).\n" +
+           "• Left Axis Deviation (LAD): -30° to -90° (vector shifts superiorly and leftward).\n" +
+           "• Right Axis Deviation (RAD): +90° to +180° (vector shifts rightward and inferiorly).\n" +
+           "• Extreme Axis / Northwest Axis / Indeterminate: -90° to -180° (or +180° to +270°).\n\n" +
+           "3. Rapid Bed-Side Quadrant Assessment (The 2-Lead / 3-Lead Rule):\n" +
+           "Inspect Lead I (0°) and Lead aVF (+90°):\n" +
+           "• Lead I Positive (+), aVF Positive (+) → NORMAL AXIS (0° to +90°): Both thumbs pointing up.\n" +
+           "• Lead I Positive (+), aVF Negative (-) → Check Lead II (+60°)!\n" +
+           "  - If Lead II is POSITIVE (+) → NORMAL AXIS (-30° to 0°): Normal physiological variant.\n" +
+           "  - If Lead II is NEGATIVE (-) → TRUE LEFT AXIS DEVIATION (-30° to -90°): Pathological LAD confirmed.\n" +
+           "• Lead I Negative (-), aVF Positive (+) → RIGHT AXIS DEVIATION (+90° to +180°): Thumbs pointing away from each other ('RAD = Leaving each other').\n" +
+           "• Lead I Negative (-), aVF Negative (-) → EXTREME / NORTHWEST AXIS (-90° to -180°): Both thumbs pointing down. Strongly suggests Ventricular Tachycardia (VT) over SVT with aberrancy.\n\n" +
+           "4. Comprehensive Etiological Differential Diagnosis:\n" +
+           "• Causes of Left Axis Deviation (-30° to -90°):\n" +
+           "  1. Left Anterior Fascicular Block (LAFB / LAHB - #1 cause): Small q in I/aVL, small r in II/III/aVF (qR in I, rS in II/III/aVF), normal QRS duration.\n" +
+           "  2. Left Ventricular Hypertrophy (LVH).\n" +
+           "  3. Left Bundle Branch Block (LBBB).\n" +
+           "  4. Inferior Wall Myocardial Infarction (loss of inferior forces leaves unopposed superior vectors).\n" +
+           "  5. Wolff-Parkinson-White syndrome (right-sided accessory pathway).\n" +
+           "  6. Hyperkalaemia, mechanical ventilation, or elevated diaphragm (pregnancy, ascites).\n" +
+           "• Causes of Right Axis Deviation (+90° to +180°):\n" +
+           "  1. Right Ventricular Hypertrophy (RVH) & Chronic Cor Pulmonale (COPD).\n" +
+           "  2. Acute Pulmonary Embolism (acute right ventricular strain: S1Q3T3 pattern).\n" +
+           "  3. Left Posterior Fascicular Block (LPFB): rS in I/aVL, qR in II/III/aVF (must rule out RVH/PE first).\n" +
+           "  4. Lateral Wall Myocardial Infarction (loss of lateral forces leaves unopposed rightward vectors).\n" +
+           "  5. Normal physiological variant in children, infants, and tall, asthenic thin adults.\n" +
+           "  6. Technical artifact: Right/Left Arm lead reversal, or Dextrocardia.\n" +
+           "• Causes of Extreme / Northwest Axis (-90° to -180°):\n" +
+           "  1. Ventricular Tachycardia (VT) — key pathognomonic diagnostic discriminator!\n" +
+           "  2. Severe Hyperkalaemia (QRS widening with axis deviation).\n" +
+           "  3. Artificial Right Ventricular Apical Pacing.\n" +
+           "  4. Severe emphysema with cor pulmonale and massive right ventricular strain."
+      },
+      {
+        h: "Left Ventricular Hypertrophy (LVH) Criteria & Strain Pattern",
+        diagram: "ecg-lvh-waveform",
+        b: "Left Ventricular Hypertrophy (LVH) occurs in response to chronically elevated afterload (aortic stenosis, systemic hypertension) or volume overload. Increased myocyte mass amplifies total electrical dipole magnitude, generating huge voltages in leads overlying the left ventricle and deep reciprocal deflections in right-sided leads:\n\n" +
+           "1. Standard Diagnostic Voltage Criteria:\n" +
+           "• Sokolow-Lyon Voltage Criteria:\n" +
+           "  - S wave in Lead V1 + R wave in Lead V5 or V6 > 35 mm (>3.5 mV).\n" +
+           "  - R wave in Lead aVL ≥ 11 mm (1.1 mV) — single limb lead criterion with high specificity (>90%).\n" +
+           "• Cornell Voltage Criteria (Gender-Adjusted; Highest Diagnostic Accuracy):\n" +
+           "  - Men: R wave in aVL + S wave in V3 > 28 mm (>2.8 mV).\n" +
+           "  - Women: R wave in aVL + S wave in V3 > 20 mm (>2.0 mV).\n" +
+           "  - Cornell Voltage-Duration Product: (R_aVL + S_V3) × QRS duration (ms) > 2440 mm·ms (sensitivity 51%, specificity 95%).\n" +
+           "• Gubner-Ungerleider Criterion:\n" +
+           "  - R wave in Lead I + S wave in Lead III > 25 mm.\n\n" +
+           "2. Romhilt-Estes Point Score System (Gold Standard Pointwise System):\n" +
+           "Score ≥5 points = Definite LVH; Score 4 points = Probable LVH:\n" +
+           "• Any single lead amplitude criterion (3 points): R or S in any limb lead ≥20 mm, or S in V1/V2 ≥30 mm, or R in V5/V6 ≥30 mm.\n" +
+           "• ST-T segment strain abnormality (3 points without digitalis; 1 point with digitalis).\n" +
+           "• Left Atrial Enlargement in V1 (P-terminal force duration ≥40 ms × depth ≥1 mm = 3 points).\n" +
+           "• Left Axis Deviation ≤ -30° (2 points).\n" +
+           "• QRS Duration ≥90 ms (1 point).\n" +
+           "• Intrinsicoid Deflection in V5/V6 ≥50 ms (delayed ventricular activation time = 1 point).\n\n" +
+           "3. Left Ventricular 'Strain' Pattern (Repolarisation Abnormality):\n" +
+           "• Morphology: Asymmetrical, downsloping ST segment depression with discordant, deeply inverted T waves in the left-sided lateral leads (Leads I, aVL, V5, V6), accompanied by reciprocal ST elevation in right precordial leads (V1, V2).\n" +
+           "• Pathophysiology: Severe subendocardial ischaemia and delayed repolarisation of the thickened, highly pressurised left ventricular myocardium.\n\n" +
+           "4. Clinical Confounders & Limitations:\n" +
+           "• False Positives: Thin young athletes, tall asthenic males, chest wall deformities (pectus excavatum) — high voltage without hypertrophy.\n" +
+           "• False Negatives (Voltage Masking): Morbid obesity, emphysema/COPD (barrel chest insulates electrical conduction), large pericardial effusion, pleural effusion, myxoedema, or infiltrative cardiac amyloidosis."
+      },
+      {
+        h: "Right Ventricular Hypertrophy (RVH) Criteria & Strain Pattern",
+        diagram: "ecg-rvh-waveform",
+        b: "Because the normal adult left ventricle has three times the mass of the right ventricle, the LV normally dominates precordial vectors (producing small r and deep S in V1). Right Ventricular Hypertrophy (RVH) reverses this balance, directing forces anteriorly, rightward, and inferiorly:\n\n" +
+           "1. Standard Diagnostic Voltage Criteria:\n" +
+           "• Dominant R Wave in Lead V1:\n" +
+           "  - R wave amplitude in Lead V1 > 7 mm (>0.7 mV).\n" +
+           "  - R/S ratio in Lead V1 > 1.0 (normally R/S is <1.0 in V1).\n" +
+           "• Persistent Deep S Wave in Lateral Leads:\n" +
+           "  - S wave amplitude in Lead V5 or V6 > 7 mm.\n" +
+           "  - R/S ratio in Lead V5 or V6 < 1.0 (normally R/S is >1.0 in V5/V6).\n" +
+           "• Frontal Plane Right Axis Deviation (RAD):\n" +
+           "  - Mean electrical axis > +90° (often > +110°).\n\n" +
+           "2. Right Ventricular 'Strain' Pattern:\n" +
+           "• Convex, downsloping ST segment depression with asymmetric inverted T waves in right precordial leads (V1, V2, V3) and inferior leads (II, III, aVF).\n" +
+           "• Reflects RV subendocardial repolarisation delay and elevated RV end-diastolic pressures.\n\n" +
+           "3. Associated ECG Markers of Pulmonary Hypertension & Cor Pulmonale:\n" +
+           "• P-Pulmonale: Peaked P waves >2.5 mm in Lead II, III, aVF, and >1.5 mm in Lead V1 (Right Atrial Enlargement).\n" +
+           "• S1S2S3 Pattern: Prominent S waves across Leads I, II, and III (clockwise anatomical rotation).\n" +
+           "• S1Q3T3 Pattern (McGinn-White Sign): Deep S wave in Lead I, pathological Q wave in Lead III, and T-wave inversion in Lead III. Classic hallmark of acute cor pulmonale / massive Pulmonary Embolism.\n" +
+           "• Incomplete or Complete Right Bundle Branch Block (RBBB) pattern.\n\n" +
+           "4. Differential Diagnosis of Dominant Tall R Wave in Lead V1:\n" +
+           "  1. Right Ventricular Hypertrophy (RAD + RV strain present).\n" +
+           "  2. True Posterior Wall STEMI (reciprocal mirror image: tall R, horizontal ST depression, upright T in V1–V3).\n" +
+           "  3. Right Bundle Branch Block (QRS ≥120 ms, rsR' rabbit ears).\n" +
+           "  4. Wolff-Parkinson-White (WPW) Type A (left-sided accessory pathway with positive delta wave in V1).\n" +
+           "  5. Hypertrophic Cardiomyopathy (HCM) with asymmetric septal hypertrophy.\n" +
+           "  6. Normal paediatric ECG (physiological RV dominance in neonates/infants)."
+      },
+      {
+        h: "Bundle Branch Blocks: LBBB, RBBB & Sgarbossa STEMI Criteria",
+        diagram: "ecg-bbb-comparison",
+        table: {
+          headers: ["Feature / Lead", "Left Bundle Branch Block (LBBB)", "Right Bundle Branch Block (RBBB)"],
+          rows: [
+            ["QRS Duration", "≥120 ms (Complete LBBB); 100–119 ms (Incomplete)", "≥120 ms (Complete RBBB); 100–119 ms (Incomplete)"],
+            ["Septal Activation", "Reversed: Right-to-Left (loss of physiological septal Q in I, V5, V6)", "Normal: Left-to-Right (septal Q waves preserved in I, V5, V6)"],
+            ["Lead V1 / V2 Morphology", "Broad, deep QS or rS complex; discordant ST elevation", "Triphasic rsR' or rSR' ('rabbit ears'); R' > r; discordant ST-T inversion"],
+            ["Lead I, aVL, V5, V6", "Broad, notched or slurred R wave ('M-shaped' plateau); zero Q waves", "Normal initial R wave; wide, slurred, terminal S wave (>40 ms)"],
+            ["Intrinsicoid Deflection", "Delayed in V5/V6 (>60 ms); Normal in V1", "Delayed in V1 (>50 ms); Normal in V5/V6 (<50 ms)"],
+            ["Acute MI Diagnosis", "Standard STEMI criteria VOID; Must use Modified Smith-Sgarbossa criteria", "Standard STEMI criteria INTACT (septal and LV repol preserved)"],
+            ["Anaesthesia / Line Hazard", "PAC insertion hazard: new transient RBBB produces Complete Heart Block!", "Common benign finding; rarely progresses to acute complete AV block"]
+          ],
+          caption: "Table: Definitive diagnostic criteria, electrophysiological mechanisms, and clinical distinctions between Left and Right Bundle Branch Blocks."
+        },
+        b: "Bundle branch blocks represent intraventricular conduction delays where impulse propagation shifts from rapid Purkinje fibers to slow, cell-to-cell myocyte conduction:\n\n" +
+           "1. Left Bundle Branch Block (LBBB) Diagnostic Criteria (AHA/ACC/HRS):\n" +
+           "• QRS Duration ≥120 ms in adults (100–119 ms = Incomplete LBBB).\n" +
+           "• Broad, notched, or slurred R waves ('M-shaped' / plateau) in lateral leads (I, aVL, V5, V6), with prolonged intrinsicoid deflection >60 ms.\n" +
+           "• Complete Absence of Physiological Septal Q Waves in Leads I, V5, and V6 (due to reversed right-to-left septal activation).\n" +
+           "• Broad, predominantly negative QS or rS complexes in right precordial leads (V1, V2).\n" +
+           "• Appropriate ST-T Discordance: ST segment and T wave are oriented in the direction opposite to the primary QRS deflection (e.g. ST elevation and upright T wave in V1–V2 where QRS is negative; ST depression and inverted T in V5–V6 where QRS is positive).\n\n" +
+           "2. Diagnosing Acute Myocardial Infarction in LBBB (Sgarbossa & Modified Smith-Sgarbossa Criteria):\n" +
+           "Standard STEMI criteria cannot be applied in LBBB because baseline secondary repolarisation changes mask ischaemia. Validated Sgarbossa criteria must be used:\n" +
+           "• Criterion 1 (Concordant ST Elevation - 5 Points):\n" +
+           "  - ST elevation ≥1.0 mm (0.1 mV) concordant with a positive QRS complex in any single lead (Highest specificity: 98% for acute coronary occlusion!).\n" +
+           "• Criterion 2 (Concordant ST Depression - 3 Points):\n" +
+           "  - ST depression ≥1.0 mm concordant with a negative QRS complex in leads V1, V2, or V3 (Specificity: 90%).\n" +
+           "• Criterion 3 (Modified Smith-Sgarbossa Proportional Rule - Replaces Original 5 mm Rule):\n" +
+           "  - Excessively discordant ST elevation where ST elevation at the J-point is ≥25% of the depth of the preceding S wave (ST/S ratio ≤ -0.25). Sensitivity 91%, specificity 90% for acute occlusion STEMI!\n\n" +
+           "3. Right Bundle Branch Block (RBBB) Diagnostic Criteria:\n" +
+           "• QRS Duration ≥120 ms (complete RBBB).\n" +
+           "• Triphasic rsR' or rSR' pattern ('M-shaped' rabbit ears) in right precordial leads (V1, V2), with the secondary peak (R') taller than the primary (r).\n" +
+           "• Wide, slurred, terminal S wave in lateral leads (I, aVL, V5, V6) representing delayed RV activation moving away from lateral electrodes.\n" +
+           "• Normal septal depolarization is preserved (physiological q waves intact). Standard STEMI criteria remain fully valid in RBBB!\n" +
+           "• Secondary T-wave inversion in Leads V1–V2."
+      },
+      {
+        h: "Myocardial Infarction Criteria & Coronary Territory Localization",
+        diagram: "ecg-stemi-evolution",
+        table: {
+          headers: ["Infarct Territory", "Contiguous Diagnostic Leads", "Reciprocal ST Depression Leads", "Culprit Coronary Artery", "Critical Perioperative Haemodynamic Hazards"],
+          rows: [
+            ["Inferior Wall", "Leads II, III, aVF", "Leads I, aVL", "Right Coronary Artery (RCA ~85%) or LCx (~15%)", "High risk of sinus bradycardia, Mobitz I, and 3rd degree AV block; check RV involvement!"],
+            ["Right Ventricle (RV)", "Leads V3R, V4R (ST elevation ≥0.5 mm)", "None (co-exists with inferior STE)", "Proximal RCA occlusion (pre-RV marginal branch)", "PRELOAD DEPENDENT! Severe hypotension with nitrates/morphine/diuretics; treat with IV fluid boluses!"],
+            ["Anteroseptal", "Leads V1, V2, V3", "None (or Leads II, III, aVF)", "Left Anterior Descending (LAD) / Septal perforators", "Loss of anterior pump function; high risk of pump failure, cardiogenic shock, and infranodal CHB"],
+            ["Anterior Wall", "Leads V3, V4", "Leads II, III, aVF", "Left Anterior Descending (LAD) mid-vessel", "Extensive LV wall motion abnormality; acute pulmonary oedema; high mortality"],
+            ["Anterolateral / High Lateral", "Leads I, aVL, V5, V6", "Leads II, III, aVF", "Proximal LAD, Diagonal branches, or Circumflex (LCx)", "Severe LV dysfunction; high lateral often shows subtle isolated STE in I & aVL with deep inferior STD"],
+            ["Posterior Wall", "Leads V7, V8, V9 (STE ≥0.5 mm)", "Leads V1, V2, V3 (Mirror: Tall R, STD, Upright T)", "Left Circumflex (LCx) or Posterior Descending (PDA)", "Easily missed on standard 12-lead! Horizontal ST depression in V1–V3 requires placing V7–V9"]
+          ]
+        },
+        b: "The Fourth Universal Definition of Myocardial Infarction (2018/2023 ESC/ACC/AHA/WHF) establishes definitive clinical, biomarker, and electrocardiographic criteria for acute myocardial infarction:\n\n" +
+           "1. Universal Definition of Acute MI (Type 1):\n" +
+           "Detection of a rise and/or fall of cardiac troponin (cTn) with at least one value above the 99th percentile upper reference limit (URL), accompanied by at least one of:\n" +
+           "• Symptoms of acute myocardial ischaemia.\n" +
+           "• New ischaemic ECG changes (new ST-T changes or new LBBB).\n" +
+           "• Development of pathological Q waves.\n" +
+           "• Imaging evidence of new loss of viable myocardium or new regional wall motion abnormality (RWMA).\n" +
+           "• Identification of an acute coronary thrombus by angiography.\n\n" +
+           "2. Standard 12-Lead Electrocardiographic STEMI Criteria:\n" +
+           "New ST elevation at the J-point in at least TWO contiguous leads of:\n" +
+           "• Leads V2–V3:\n" +
+           "  - Men <40 years: ≥2.5 mm (0.25 mV).\n" +
+           "  - Men ≥40 years: ≥2.0 mm (0.20 mV).\n" +
+           "  - Women (any age): ≥1.5 mm (0.15 mV).\n" +
+           "• All other standard leads (I, II, III, aVL, aVF, V1, V4, V5, V6): ≥1.0 mm (0.10 mV) in men and women.\n" +
+           "• Posterior leads (V7–V9): ≥0.5 mm (≥1.0 mm in men <40 years).\n" +
+           "• Right ventricular leads (V3R, V4R): ≥0.5 mm (≥1.0 mm in men <30 years).\n\n" +
+           "3. Evolutionary Stages of STEMI:\n" +
+           "• 1. Hyperacute Phase (Minutes): Tall, broad, symmetrical hyperacute T waves with minimal ST shift.\n" +
+           "• 2. Acute Phase (Hours): Marked convex J-point ST elevation ('tombstone' coving) merging directly into T wave; reciprocal ST depression in opposing leads.\n" +
+           "• 3. Subacute Phase (Hours to Days): Development of pathological Q waves (≥40 ms or >25% R height), progressive loss of R-wave amplitude, ST segment returns towards baseline, and symmetrical T-wave inversion.\n" +
+           "• 4. Chronic / Healed Phase (Weeks to Months): Permanent pathological Q waves persist, ST segment is isoelectric, T wave may remain inverted or normalize.\n\n" +
+           "4. Critical STEMI Equivalents (Cath Lab Activation Required!):\n" +
+           "• Wellens Syndrome (Critical Proximal LAD Stenosis):\n" +
+           "  - Type A (25%): Biphasic T waves in Leads V2 and V3.\n" +
+           "  - Type B (75%): Deep, symmetrical T-wave inversions in Leads V2 and V3 (often extending V1–V5).\n" +
+           "  - Hallmark: Patient is pain-free when the ECG is recorded! High risk of imminent massive anterior wall MI within days.\n" +
+           "• de Winter T-Wave Pattern (Acute Proximal LAD Occlusion without STEMI):\n" +
+           "  - 1 to 3 mm upsloping ST depression at the J-point in Leads V1–V6 that continues into tall, prominent, symmetrical hyperacute T waves, plus 1 to 2 mm ST elevation in Lead aVR.\n" +
+           "• Isolated True Posterior STEMI:\n" +
+           "  - Horizontal ST depression in V1–V3 with tall, broad R waves (R/S > 1.0) and upright T waves (mirror image of posterior ST elevation); confirmed by placing leads V7–V9."
+      },
+      {
+        h: "Heart Blocks & AV Conduction Disorders (1st, 2nd & 3rd Degree)",
+        diagram: "ecg-heart-blocks",
+        table: {
+          headers: ["Type of AV Block", "PR Interval Behavior", "QRS Conduction Pattern", "Anatomical Site of Block", "Response to Atropine", "Clinical Prognosis & Pacemaker Need"],
+          rows: [
+            ["1st Degree AV Block", "Prolonged >200 ms; Constant beat to beat", "1:1 Conduction (every P followed by QRS)", "AV Node (Supra-Hisian delay)", "Responds (shortens PR interval)", "Benign; rarely progresses; review nodal blocking drugs"],
+            ["2nd Degree Mobitz I (Wenckebach)", "Progressive lengthening until dropped beat", "Grouped beating; regular dropped QRS beats", "AV Node (decremental conduction)", "Responds well (restores 1:1)", "Usually transient and benign (inferior MI, high vagal tone); pacing rarely needed"],
+            ["2nd Degree Mobitz II", "Fixed and constant before/after pause", "Sudden non-conducted P waves (2:1, 3:1)", "His-Purkinje System (Infranodal)", "POOR / HARMFUL (accelerates sinus rate)", "MALIGNANT; high risk of sudden complete heart block and syncope; Urgent Pacemaker!"],
+            ["High-Grade AV Block", "Constant when conducted", "≥2 consecutive blocked P waves", "His-Purkinje System (Infranodal)", "Unresponsive", "Malignant; severe bradycardia; urgent temporary/permanent pacing"],
+            ["3rd Degree (Complete) AV Block", "Completely variable (AV dissociation)", "Independent regular P-P and R-R intervals", "AV Node (Junctional) or His-Purkinje (Ventricular)", "Junctional escape responds; Ventricular escape fails", "EMERGENCY; hemodynamic collapse; immediate transcutaneous/transvenous pacing"]
+          ]
+        },
+        b: "Atrioventricular (AV) blocks represent impairment or complete interruption of impulse transmission from the atria to the ventricles, classified anatomically into Supra-Hisian (nodal) and Infra-Hisian (infranodal):\n\n" +
+           "1. First-Degree AV Block:\n" +
+           "• ECG Diagnostic Rules:\n" +
+           "  1. PR interval prolonged >200 ms (>0.20 seconds, or >5 small boxes).\n" +
+           "  2. Constant PR interval from beat to beat.\n" +
+           "  3. 1:1 AV conduction — every P wave is followed by a QRS complex.\n" +
+           "• Clinical Management: Usually asymptomatic and physiologically benign. Common in athletes (high vagal tone). Review AV nodal blocking medications (beta-blockers, diltiazem/verapamil, digoxin).\n\n" +
+           "2. Second-Degree AV Block — Type 1 (Mobitz I / Wenckebach):\n" +
+           "• ECG Diagnostic Rules:\n" +
+           "  1. Progressive prolongation of the PR interval on successive beats until a P wave completely fails to conduct (Dropped QRS).\n" +
+           "  2. The PR interval following the non-conducted P wave is the shortest of the cycle.\n" +
+           "  3. Characterized by 'group beating' with progressive shortening of the R-R interval prior to the pause.\n" +
+           "• Electrophysiology: Due to decremental conduction fatigue within the AV Node (Supra-Hisian). Narrow QRS complex is typical.\n" +
+           "• Clinical Management: Benign, reversible; frequently seen in acute inferior wall MI (RCA supplies AV node via AV nodal artery) and during sleep. Readily responsive to Atropine (0.5 to 1.0 mg IV).\n\n" +
+           "3. Second-Degree AV Block — Type 2 (Mobitz II):\n" +
+           "• ECG Diagnostic Rules:\n" +
+           "  1. Completely CONSTANT and FIXED PR intervals before and after the dropped QRS complex.\n" +
+           "  2. Intermittent, sudden failure of a P wave to conduct to the ventricles.\n" +
+           "• Electrophysiology: Infranodal block within the bundle of His or bilateral bundle branches. QRS complex is usually wide (≥120 ms) due to co-existing bundle branch block.\n" +
+           "• Clinical Management: Highly malignant! Carries extreme risk of sudden progression to complete heart block, syncope (Stokes-Adams attacks), and sudden cardiac arrest. Atropine is completely ineffective and potentially dangerous (increasing sinus rate increases the number of blocked beats!). Requires immediate Transcutaneous Pacing (TCP) pads applied and urgent permanent pacemaker insertion.\n\n" +
+           "4. Third-Degree (Complete) AV Block (CHB):\n" +
+           "• ECG Diagnostic Rules:\n" +
+           "  1. Complete absence of AV conduction: complete AV dissociation.\n" +
+           "  2. Independent, regular P-P intervals (sinus rate 60 to 100 bpm).\n" +
+           "  3. Independent, regular R-R intervals (escape rate 20 to 60 bpm).\n" +
+           "  4. Completely random, variable PR intervals with P waves marching directly through QRS complexes, ST segments, and T waves.\n" +
+           "• Escape Pacemaker Focus:\n" +
+           "  - Junctional Escape: Narrow QRS (<120 ms), rate 40 to 60 bpm; relatively stable haemodynamics; responds to atropine.\n" +
+           "  - Ventricular Escape: Wide, bizarre QRS (≥120 ms), rate 20 to 40 bpm; severely unstable haemodynamics; refractory to atropine.\n" +
+           "• Emergency Resuscitation: Immediate Transcutaneous Pacing (TCP) with sedation/analgesia, urgent Transvenous Pacing (TVP), and chronotropic infusions (Isoproterenol 2–10 mcg/min, Epinephrine 2–10 mcg/min, or Dopamine 5–20 mcg/kg/min)."
+      },
+      {
+        h: "Ventricular Tachycardia (Monomorphic, Polymorphic, Brugada Algorithm & Treatment)",
+        diagram: "ecg-vt-waveform",
+        table: {
+          headers: ["Criterion / Step", "Ventricular Tachycardia (VT)", "SVT with Aberrant Conduction"],
+          rows: [
+            ["Precordial Concordance", "Entirely positive (all R) or entirely negative (all QS) in V1–V6 = VT", "Discordant (typical RBBB or LBBB progression across chest leads)"],
+            ["Absence of RS complex", "Absence of RS complex in all precordial leads V1–V6 = VT", "RS complexes present in one or more precordial chest leads"],
+            ["RS Interval Duration", "Onset of R to nadir of S >100 ms in any lead = VT", "RS interval <100 ms"],
+            ["AV Dissociation", "Present: Independent marching P waves, capture beats, fusion beats = 100% VT", "Absent: 1:1 relationship or retrogradely conducted P waves"],
+            ["Frontal Plane Axis", "Extreme / Northwest Axis (-90° to -180°) strongly favors VT", "Normal axis or classic LAD / RAD matching pre-existing BBB"],
+            ["Vereckei aVR Criterion", "Initial dominant R wave in Lead aVR = VT! Initial r or q >40 ms = VT!", "Initial r <40 ms with rapid terminal descent in aVR"],
+            ["Clinical Rule of Thumb", "Assume ANY Wide Complex Tachycardia is VT until proven otherwise (80–90%)", "Treating VT with Verapamil or Adenosine causes fatal vascular collapse!"]
+          ]
+        },
+        b: "Ventricular Tachycardia (VT) is defined as three or more consecutive ventricular complexes at a rate >100 bpm (typically 140 to 250 bpm) arising distal to the bifurcation of the bundle of His:\n\n" +
+           "1. Classification of Ventricular Tachycardia:\n" +
+           "• Monomorphic VT: Uniform, identical QRS morphology from beat to beat, typically generated by stable re-entrant scar tissue from previous myocardial infarction.\n" +
+           "• Polymorphic VT: Continuously varying QRS morphology, electrical axis, and amplitude, reflecting multiple re-entrant wavelets in acute myocardial ischaemia.\n" +
+           "• Torsades de Pointes (TdP): Specific polymorphic VT occurring in the setting of prolonged baseline QTc (>500 ms). Displays characteristic spindle-and-node morphology where the peaks of the QRS complexes twist around the isoelectric line at 200–250 bpm. Triggered by early afterdepolarisations (EADs); treated with IV Magnesium Sulphate (2 grams over 10 minutes), overdrive pacing (90–110 bpm), and withdrawal of all QT-prolonging drugs.\n\n" +
+           "2. Differentiating VT from SVT with Aberrancy (The Wide Complex Tachycardia Dilemma):\n" +
+           "CRITICAL SAFETY RULE: Always treat an undifferentiated regular Wide Complex Tachycardia (WCT) as Ventricular Tachycardia! Over 80% of all WCTs (and >90% in patients with structural heart disease or prior MI) are VT. Administering calcium channel blockers (verapamil, diltiazem) or adenosine for undiagnosed VT precipitates cardiovascular collapse and ventricular fibrillation.\n\n" +
+           "3. The Brugada 4-Step Diagnostic Algorithm:\n" +
+           "• Step 1: Absence of an RS complex in all precordial leads V1–V6? If YES → VT diagnosed (100% specificity).\n" +
+           "• Step 2: Is the longest RS interval (from R-wave onset to S-wave nadir) >100 ms in any lead? If YES → VT diagnosed.\n" +
+           "• Step 3: Is Atrioventricular (AV) Dissociation present? If YES → VT diagnosed.\n" +
+           "• Step 4: Are morphological criteria for VT satisfied in both Leads V1/V2 and V6? If YES → VT diagnosed.\n\n" +
+           "4. Pathognomonic Features of VT:\n" +
+           "• AV Dissociation: Independent atrial P waves marching through the wide ventricular complexes at a slower rate.\n" +
+           "• Capture Beats: An occasional supraventricular impulse conducts through the AV node, capturing the ventricle to produce a transient, completely normal narrow QRS complex.\n" +
+           "• Fusion Beats (Dressler Beats): Hybrid QRS morphology resulting from simultaneous ventricular activation by both a descending supraventricular beat and the ectopic ventricular pacemaker.\n" +
+           "• Precordial Concordance: Completely positive (all monophasic R) or completely negative (all QS) complexes across V1 through V6.\n\n" +
+           "5. Emergency Management Protocols:\n" +
+           "• Unstable VT (Hypotension, altered mental status, chest pain, acute pulmonary oedema): Immediate Synchronized Electrical Cardioversion (100 J biphasic → 200 J biphasic) under intravenous sedation.\n" +
+           "• Pulseless VT: Treat as Cardiac Arrest! Immediate Unsynchronized Defibrillation (200 J biphasic) + ACLS algorithm.\n" +
+           "• Stable Monomorphic VT: Intravenous Amiodarone 150 mg infused over 10 minutes (repeatable once), followed by 1 mg/min for 6 hours, then 0.5 mg/min for 18 hours. Alternatively, Procainamide 20 to 50 mg/min IV (up to 17 mg/kg). Synchronized electrical cardioversion if pharmacological therapy fails."
+      },
+      {
+        h: "Ventricular Fibrillation (Coarse vs Fine VF & ACLS Resuscitation Protocol)",
+        diagram: "ecg-vf-waveform",
+        b: "Ventricular Fibrillation (VF) is a lethal, uncoordinated cardiac rhythm characterized by completely disorganized, chaotic ventricular depolarizations arising from multiple asynchronous micro-reentrant wavelets. Mechanical stroke volume and cardiac output drop immediately to ZERO, resulting in clinical cardiac arrest and brain death within 4 to 6 minutes without resuscitation:\n\n" +
+           "1. Electrocardiographic Diagnostic Criteria:\n" +
+           "• Total absence of identifiable P waves, QRS complexes, ST segments, or T waves.\n" +
+           "• Continuous, irregular, shapeless, chaotic baseline undulations varying wildly in amplitude, wavelength, and contour at a frequency of 150 to 500/min.\n\n" +
+           "2. Coarse VF vs Fine VF:\n" +
+           "• Coarse Ventricular Fibrillation:\n" +
+           "  - Amplitude of fibrillatory undulations ≥0.2 mV (≥2 mm).\n" +
+           "  - Represents early, recent-onset cardiac arrest with preserved myocardial high-energy phosphate stores (ATP).\n" +
+           "  - Highly responsive to electrical defibrillation.\n" +
+           "• Fine Ventricular Fibrillation:\n" +
+           "  - Amplitude of fibrillatory undulations <0.2 mV (<2 mm).\n" +
+           "  - Represents prolonged ischaemic arrest, depleted myocardial ATP, and impending asystole.\n" +
+           "  - Poor defibrillation success rate; requires high-quality CPR and Epinephrine to coarsen the fibrillatory amplitude before shock.\n" +
+           "• CRITICAL PITFALL — Fine VF vs Asystole:\n" +
+           "  - Fine VF is frequently misdiagnosed as Asystole ('flat line'). Always verify lead integrity, ensure monitor gain (amplitude) is turned up, and check at least TWO orthogonal leads. Fine VF is SHOCKABLE; Asystole is NOT shockable! Shocking asystole damages myocardium and eliminates intrinsic pacemaker recovery.\n\n" +
+           "3. AHA/ERC ACLS Resuscitation Protocol for Shockable Rhythms (VF / Pulseless VT):\n" +
+           "• 1. Immediate High-Quality CPR: Chest compression rate 100 to 120/min, depth 5 to 6 cm (2 to 2.4 inches), full chest recoil, minimal interruptions (<10 seconds). Ratio 30:2 or continuous with advanced airway (1 breath every 6 seconds).\n" +
+           "• 2. Immediate Unsynchronized Defibrillation: 200 Joules biphasic (or maximum manufacturer dose, e.g. 120–200 J; 360 J monophasic). Deliver shock immediately upon rhythm identification.\n" +
+           "• 3. Immediate CPR Resumption: Resume chest compressions immediately for 2 full minutes without pausing to check pulse or rhythm.\n" +
+           "• 4. Epinephrine: 1 mg IV/IO every 3 to 5 minutes (administered after the second defibrillation shock).\n" +
+           "• 5. Antiarrhythmic Therapy (For Shock-Refractory VF after 3rd Shock):\n" +
+           "  - Amiodarone: 300 mg IV/IO rapid push after shock 3; second dose of 150 mg IV/IO after shock 5.\n" +
+           "  - Alternative: Lidocaine 1.0 to 1.5 mg/kg IV/IO first dose, followed by 0.5 to 0.75 mg/kg for second dose (maximum 3 mg/kg).\n" +
+           "• 6. Treat Reversible Underlying Causes (The 5 H's and 5 T's):\n" +
+           "  - Hypovolaemia, Hypoxia, Hydrogen ion (Acidosis), Hypo/Hyperkalaemia, Hypothermia.\n" +
+           "  - Tension pneumothorax, Tamponade (cardiac), Toxins, Thrombosis (pulmonary), Thrombosis (coronary / acute MI)."
+      }
+    ],
+    references: [
+      "Fourth Universal Definition of Myocardial Infarction: Consensus Document of the Joint European Society of Cardiology (ESC) / American College of Cardiology (ACC) / American Heart Association (AHA) / World Heart Federation (WHF) Task Force (Circulation 2018 / 2023 update).",
+      "2023 ACC/AHA/ACCP/HRS Guideline for the Management of Patients With Bradycardia and Cardiac Conduction Delay (J Am Coll Cardiol 2023 / Circulation 2023).",
+      "2022 ESC Guidelines for the Management of Patients With Ventricular Arrhythmias and the Prevention of Sudden Cardiac Death (Eur Heart J 2022 / 2024 update).",
+      "American Heart Association (AHA) Guidelines for Cardiopulmonary Resuscitation (CPR) and Emergency Cardiovascular Care (Circulation 2020 / 2025 update).",
+      "Goldberger AL, Goldberger ZD, Shvilkin A. Goldberger's Clinical Electrocardiography: A Simplified Approach, 10th ed., Elsevier, 2024.",
+      "Miller's Anesthesia, 10th ed., Ch. 38: Intraoperative Monitoring Systems (Electrocardiography), Elsevier, 2025/2026."
+    ]
+  });
+
 topics.push({
     id: "malignant-hyperthermia",
     cat: "anaesthesia",
