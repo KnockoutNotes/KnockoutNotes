@@ -779,8 +779,9 @@
       else if (s.diagram === "ecg-bbb-comparison") diagramHTML = ecgBbbDiagramHTML();
       else if (s.diagram === "ecg-stemi-evolution") diagramHTML = ecgStemiDiagramHTML();
       else if (s.diagram === "ecg-heart-blocks") diagramHTML = ecgHeartBlocksDiagramHTML();
-      else if (s.diagram === "ecg-vt-waveform") diagramHTML = ecgVtDiagramHTML();
       else if (s.diagram === "ecg-vf-waveform") diagramHTML = ecgVfDiagramHTML();
+      else if (s.diagram === "ecg-hyperkalemia-waveform") diagramHTML = ecgHyperkalemiaDiagramHTML();
+      else if (s.diagram === "ecg-hypokalemia-waveform") diagramHTML = ecgHypokalemiaDiagramHTML();
 
       let imagesHTML = "";
       if (Array.isArray(s.images)) {
@@ -2876,6 +2877,178 @@
         </g>
       </svg>
       <p class="st-diagram-caption">Ventricular Fibrillation (VF) Presentations. Top: Coarse VF with high-amplitude chaotic wavelets representing recent cardiac arrest with high defibrillation response. Bottom: Fine VF with low amplitude (&lt;0.2 mV) representing prolonged arrest.</p>
+    </div>`;
+  }
+
+  /* 10. Hyperkalaemia ECG Waveforms & Progressive Stages */
+  function ecgHyperkalemiaDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hyperkalaemia ECG Progression Waveforms" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        <rect x="10" y="10" width="740" height="340" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- STAGE 1: Mild Hyperkalaemia (5.5 - 6.5 mmol/L) -->
+        <g transform="translate(20, 20)">
+          <rect x="0" y="0" width="350" height="150" rx="6" fill="url(#monGridMajor)"/>
+          <text x="15" y="20" font-size="10" font-weight="900" fill="#38bdf8">1. MILD HYPERKALAEMIA (5.5 – 6.5 mmol/L)</text>
+          <text x="15" y="32" font-size="7.5" fill="#94a3b8">Tall, peaked, narrow-based "tented" T waves • Shortened QT interval</text>
+          
+          <g transform="translate(10, 25)">
+            <!-- Baseline and cycle with tall pointed T wave -->
+            <path d="M0 65 L25 65 Q33 65 37 59 Q42 53 47 59 Q52 65 60 65 L70 65 L74 72 L82 15 L90 88 L94 65 L105 65 Q114 65 120 4 Q124 -8 L128 4 Q134 65 145 65 L175 65 L179 72 L187 15 L195 88 L199 65 L210 65 Q219 65 225 4 Q229 -8 L233 4 Q239 65 250 65 L280 65 L284 72 L292 15 L300 88 L304 65 L320 65"
+                  fill="none" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#38bdf8"/>
+            <!-- Callout pointer on peaked T wave -->
+            <circle cx="126" cy="0" r="3.5" fill="#ef4444"/>
+            <line x1="126" y1="-2" x2="150" y2="-12" stroke="#ef4444" stroke-width="1.2"/>
+            <text x="155" y="-9" font-size="8" font-weight="800" fill="#f87171">Peaked T Wave (Tented)</text>
+
+            <g class="ecg-beam-fast">
+              <rect x="0" y="0" width="20" height="110" fill="url(#sweepGradCyan)"/>
+              <line x1="20" y1="0" x2="20" y2="110" stroke="#7dd3fc" stroke-width="1.8"/>
+            </g>
+          </g>
+          <text x="15" y="142" font-size="7.5" fill="#bae6fd">• Accelerated phase 3 repolarisation via enhanced I_Kr channel conductance</text>
+        </g>
+
+        <!-- STAGE 2: Moderate Hyperkalaemia (6.5 - 7.5 mmol/L) -->
+        <g transform="translate(390, 20)">
+          <rect x="0" y="0" width="350" height="150" rx="6" fill="url(#monGridMajor)"/>
+          <text x="15" y="20" font-size="10" font-weight="900" fill="#f59e0b">2. MODERATE HYPERKALAEMIA (6.5 – 7.5 mmol/L)</text>
+          <text x="15" y="32" font-size="7.5" fill="#94a3b8">Flattened P wave • Prolonged PR • Widened slurred QRS complex</text>
+          
+          <g transform="translate(10, 25)">
+            <!-- Flat P, prolonged PR, wide QRS, and broad peaked T -->
+            <path d="M0 65 L20 65 Q35 65 42 63 Q50 63 56 65 L78 65 L84 75 L96 22 L110 92 L118 65 L132 65 Q142 65 148 10 Q152 -2 L156 10 Q162 65 178 65 L198 65 L204 75 L216 22 L230 92 L238 65 L252 65 Q262 65 268 10 Q272 -2 L276 10 Q282 65 310 65"
+                  fill="none" stroke="#f59e0b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#f59e0b"/>
+            <!-- QRS duration bracket -->
+            <line x1="84" y1="98" x2="118" y2="98" stroke="#fbbf24" stroke-width="1.4"/>
+            <text x="101" y="108" font-size="7.5" font-weight="800" fill="#fbbf24" text-anchor="middle">Wide QRS &gt;120 ms</text>
+
+            <g class="ecg-beam-fast">
+              <rect x="0" y="0" width="20" height="110" fill="url(#sweepGradAmber)"/>
+              <line x1="20" y1="0" x2="20" y2="110" stroke="#fbbf24" stroke-width="1.8"/>
+            </g>
+          </g>
+          <text x="15" y="142" font-size="7.5" fill="#fde68a">• Slower Phase 0 Vmax due to resting membrane depolarisation &amp; Na+ inactivation</text>
+        </g>
+
+        <!-- STAGE 3: Severe Pre-Terminal Hyperkalaemia (>8.0 - 9.0 mmol/L): SINE WAVE -->
+        <g transform="translate(20, 185)">
+          <rect x="0" y="0" width="720" height="150" rx="6" fill="url(#monGridMajor)"/>
+          <text x="15" y="20" font-size="10.5" font-weight="900" fill="#ef4444">3. SEVERE / PRE-TERMINAL HYPERKALAEMIA (&gt;8.0 – 9.0 mmol/L) — SINE-WAVE PATTERN</text>
+          <text x="15" y="32" font-size="8" fill="#fca5a5">Absent P waves (sinoventricular conduction) • Extreme QRS-T fusion into undulating sinusoidal rhythm • Impending VF / Asystole</text>
+
+          <g transform="translate(15, 25)">
+            <!-- Continuous wide sinusoidal wave -->
+            <path d="M0 60 Q25 -5 50 60 Q75 125 100 60 Q125 -5 150 60 Q175 125 200 60 Q225 -5 250 60 Q275 125 300 60 Q325 -5 350 60 Q375 125 400 60 Q425 -5 450 60 Q475 125 500 60"
+                  fill="none" stroke="#ef4444" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#ef4444"/>
+
+            <g class="ecg-beam-vf">
+              <rect x="0" y="0" width="25" height="115" fill="url(#sweepGradRed)"/>
+              <line x1="25" y1="0" x2="25" y2="115" stroke="#f87171" stroke-width="2"/>
+            </g>
+
+            <!-- STAT Treatment Box -->
+            <g transform="translate(515, 10)">
+              <rect x="0" y="0" width="185" height="85" rx="6" fill="rgba(220,38,38,0.3)" stroke="#ef4444" stroke-width="1.5"/>
+              <text x="92" y="18" font-size="9" font-weight="900" fill="#fee2e2" text-anchor="middle">🚨 EMERGENCY STABILISATION</text>
+              <text x="92" y="34" font-size="8" font-weight="800" fill="#ffffff" text-anchor="middle">10% CALCIUM GLUCONATE</text>
+              <text x="92" y="47" font-size="8" fill="#fecaca" text-anchor="middle">10 to 30 mL IV over 5–10 min</text>
+              <line x1="15" y1="53" x2="170" y2="53" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <text x="92" y="65" font-size="7.5" fill="#fca5a5" text-anchor="middle">PLUS 10u Regular Insulin + 25g D50</text>
+              <text x="92" y="77" font-size="7.5" fill="#fca5a5" text-anchor="middle">PLUS Emergent Hemodialysis</text>
+            </g>
+          </g>
+          <text x="15" y="142" font-size="7.8" fill="#fecaca">• Calcium stabilizes the cardiac membrane by resetting threshold potential; it does NOT lower serum potassium.</text>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Hyperkalaemia ECG Progression. Stage 1: Tall peaked tented T waves (5.5–6.5 mmol/L). Stage 2: P-wave flattening and QRS widening (6.5–7.5 mmol/L). Stage 3: Classic pre-terminal Sine-Wave pattern (&gt;8.0–9.0 mmol/L) requiring immediate intravenous calcium.</p>
+    </div>`;
+  }
+
+  /* 11. Hypokalaemia ECG Waveforms & U-Wave Morphology */
+  function ecgHypokalemiaDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hypokalaemia ECG Waveform and U-Wave Morphology" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        <rect x="10" y="10" width="740" height="330" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- PANEL 1: Moderate Hypokalaemia (2.5 - 3.0 mmol/L) -->
+        <g transform="translate(20, 20)">
+          <rect x="0" y="0" width="720" height="150" rx="6" fill="url(#monGridMajor)"/>
+          <text x="15" y="20" font-size="10.5" font-weight="900" fill="#38bdf8">MODERATE HYPOKALAEMIA (2.5 – 3.0 mmol/L) — PATHOGNOMONIC U-WAVE &amp; ST DEPRESSION</text>
+          <text x="15" y="32" font-size="8" fill="#94a3b8">T wave flattening/inversion • ST depression ≥0.5 mm • Prominent U wave (U &gt; T) • Pseudo-prolonged QU interval</text>
+
+          <g transform="translate(15, 25)">
+            <!-- ECG trace showing P, Q, R, S, ST depression, flat T, large U -->
+            <path d="M0 65 L25 65 Q33 65 37 59 Q42 53 47 59 Q52 65 60 65 L68 65 L72 70 L80 18 L88 82 L92 65 L98 75 Q110 75 118 72 Q126 68 132 70 Q142 50 152 46 Q162 50 170 65 L190 65 Q198 65 202 59 Q207 53 212 59 Q217 65 225 65 L233 65 L237 70 L245 18 L253 82 L257 65 L263 75 Q275 75 283 72 Q291 68 297 70 Q307 50 317 46 Q327 50 335 65 L360 65 L364 70 L372 18 L380 82 L384 65 L390 75 Q402 75 410 72 Q418 68 424 70 Q434 50 444 46 Q454 50 462 65 L490 65"
+                  fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#38bdf8"/>
+
+            <!-- Annotations -->
+            <circle cx="108" cy="75" r="3" fill="#f59e0b"/>
+            <text x="108" y="90" font-size="7.5" font-weight="800" fill="#fbbf24" text-anchor="middle">ST Depression</text>
+
+            <circle cx="128" cy="70" r="2.5" fill="#94a3b8"/>
+            <text x="128" y="82" font-size="7" fill="#cbd5e1" text-anchor="middle">Flat T</text>
+
+            <circle cx="152" cy="46" r="3.5" fill="#22c55e"/>
+            <text x="152" y="36" font-size="8.5" font-weight="900" fill="#4ade80" text-anchor="middle">PROMINENT U WAVE (U &gt; T)</text>
+
+            <!-- QU Interval Bracket -->
+            <line x1="72" y1="102" x2="170" y2="102" stroke="#38bdf8" stroke-width="1.2"/>
+            <line x1="72" y1="99" x2="72" y2="105" stroke="#38bdf8" stroke-width="1.2"/>
+            <line x1="170" y1="99" x2="170" y2="105" stroke="#38bdf8" stroke-width="1.2"/>
+            <text x="121" y="113" font-size="7.5" font-weight="800" fill="#38bdf8" text-anchor="middle">Pseudo-Prolonged QU Interval ("Apparent Long QT")</text>
+
+            <g class="ecg-beam">
+              <rect x="0" y="0" width="25" height="115" fill="url(#sweepGradCyan)"/>
+              <line x1="25" y1="0" x2="25" y2="115" stroke="#7dd3fc" stroke-width="2"/>
+            </g>
+
+            <!-- Legend Badge -->
+            <g transform="translate(515, 15)">
+              <rect x="0" y="0" width="185" height="78" rx="5" fill="rgba(15,23,42,0.85)" stroke="#334155" stroke-width="1.2"/>
+              <text x="12" y="18" font-size="8" font-weight="800" fill="#38bdf8">U-WAVE CHARACTERISTICS</text>
+              <text x="12" y="32" font-size="7.5" fill="#cbd5e1">• Amplitude &gt;1.0 mm (or &gt;50% of T)</text>
+              <text x="12" y="44" font-size="7.5" fill="#cbd5e1">• Most prominent in leads V2 and V3</text>
+              <text x="12" y="56" font-size="7.5" fill="#cbd5e1">• Same polarity as preceding T wave</text>
+              <text x="12" y="68" font-size="7.5" fill="#fde68a">• Delays terminal repolarisation</text>
+            </g>
+          </g>
+          <text x="15" y="142" font-size="7.5" fill="#bae6fd">• Due to delayed repolarisation of Mid-myocardial M cells and His-Purkinje conducting system fibers.</text>
+        </g>
+
+        <!-- PANEL 2: Severe Hypokalaemia (<2.5 mmol/L) & Lethal Arrhythmia Hazards -->
+        <g transform="translate(20, 185)">
+          <rect x="0" y="0" width="720" height="140" rx="6" fill="url(#monGridMajor)"/>
+          <text x="15" y="20" font-size="10.5" font-weight="900" fill="#ef4444">SEVERE HYPOKALAEMIA (&lt;2.5 mmol/L) — R-ON-U VENTRICULAR ECTOPY &amp; TORSADES DE POINTES HAZARD</text>
+
+          <g transform="translate(15, 25)">
+            <!-- ECG showing giant U wave followed by early R-on-U ectopic beat trigger -->
+            <path d="M0 65 L25 65 Q33 65 37 59 Q42 53 47 59 Q52 65 60 65 L68 65 L72 70 L80 18 L88 82 L92 65 L98 78 Q108 78 116 75 Q126 50 136 40 Q144 48 148 60 L152 75 L160 5 L172 105 L182 25 L195 90 L205 35 L218 80 L228 45 L240 75 L252 50 L265 70 L278 55 L292 65"
+                  fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#ef4444"/>
+
+            <circle cx="152" cy="65" r="4" fill="#fbbf24"/>
+            <text x="152" y="98" font-size="8" font-weight="900" fill="#fbbf24" text-anchor="middle">R-on-U Ectopic Beat Trigger</text>
+            <text x="235" y="25" font-size="8.5" font-weight="900" fill="#f87171">Polymorphic VT / Torsades de Pointes Initiation</text>
+
+            <g class="ecg-beam-fast">
+              <rect x="0" y="0" width="25" height="105" fill="url(#sweepGradRed)"/>
+              <line x1="25" y1="0" x2="25" y2="105" stroke="#f87171" stroke-width="2"/>
+            </g>
+
+            <!-- Safety Box -->
+            <g transform="translate(480, 10)">
+              <rect x="0" y="0" width="220" height="75" rx="5" fill="rgba(220,38,38,0.25)" stroke="#ef4444" stroke-width="1.3"/>
+              <text x="110" y="16" font-size="8.5" font-weight="900" fill="#fee2e2" text-anchor="middle">⚠️ REPLACEMENT SAFETY LIMITS</text>
+              <text x="110" y="30" font-size="7.8" font-weight="800" fill="#ffffff" text-anchor="middle">• Max Peripheral IV: ≤10 mEq/hour (≤40 mEq/L)</text>
+              <text x="110" y="43" font-size="7.8" fill="#fecaca" text-anchor="middle">• Max Central Line: ≤20 mEq/hour (with ECG monitor)</text>
+              <line x1="15" y1="50" x2="205" y2="50" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <text x="110" y="64" font-size="8" font-weight="800" fill="#fde68a" text-anchor="middle">CHECK &amp; CORRECT Mg²⁺ FIRST! (1–2g IV MgSO4)</text>
+            </g>
+          </g>
+          <text x="15" y="132" font-size="7.5" fill="#fecaca">• Hypokalaemia refractory to repletion is almost universally caused by concomitant hypomagnesaemia impairing Na+/K+ ATPase.</text>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Hypokalaemia ECG Manifestations. Top: Pathognomonic prominent U wave (U &gt; T), ST depression, and pseudo-prolonged QU interval in moderate hypokalaemia (2.5–3.0 mmol/L). Bottom: Early R-on-U phenomenon triggering ventricular ectopy and Torsades de Pointes in severe hypokalaemia (&lt;2.5 mmol/L).</p>
     </div>`;
   }
 

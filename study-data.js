@@ -1372,6 +1372,88 @@ PATIENT CHECKOUT COMPLETE — PROCEED SAFELY WITH INDUCTION.`
            "• 6. Treat Reversible Underlying Causes (The 5 H's and 5 T's):\n" +
            "  - Hypovolaemia, Hypoxia, Hydrogen ion (Acidosis), Hypo/Hyperkalaemia, Hypothermia.\n" +
            "  - Tension pneumothorax, Tamponade (cardiac), Toxins, Thrombosis (pulmonary), Thrombosis (coronary / acute MI)."
+      },
+      {
+        h: "Hyperkalaemia in ECG: Serum Level-Wise ECG Progression & Emergency Protocol",
+        diagram: "ecg-hyperkalemia-waveform",
+        table: {
+          headers: ["Serum K⁺ Level (mmol/L)", "Severity Grade", "Key ECG Morphological Changes", "Electrophysiological Mechanism", "Arrhythmia Risks & Emergency Interventions"],
+          rows: [
+            ["3.5 to 5.0 mmol/L", "Normal Reference", "Normal P-QRS-T contours; QTc normal (<440 ms in men, <460 ms in women)", "Resting membrane potential Em = -90 mV; normal Phase 0 Vmax and Phase 3 repolarisation", "Baseline rhythm monitoring; no electrolyte intervention required"],
+            ["5.5 to 6.5 mmol/L", "Mild Hyperkalaemia", "Tall, peaked, narrow-based, symmetrical 'tented' T waves; shortened QT/QTc interval", "Increased extracellular K+ enhances I_Kr (rapid delayed rectifier) conductance, accelerating Phase 3 repolarisation", "Earliest sign (most prominent in V2–V4); withhold all exogenous K+ and K+-sparing drugs; obtain urgent repeat lab check"],
+            ["6.5 to 7.5 mmol/L", "Moderate Hyperkalaemia", "Prolonged PR interval (>200 ms); flattening and widening of P waves; widening of QRS complex (>120 ms); ST elevation mimicking STEMI or Brugada phenocopy ('dialysis pseudoinfarction')", "Em becomes less negative (-80 to -70 mV), inactivating voltage-gated Na+ channels; Phase 0 dV/dt (Vmax) decreases markedly, slowing intra-atrial and intraventricular conduction", "High risk of high-grade AV block and junctional rhythm; initiate transcellular shifting: 10u Regular Insulin + 25g D50 IV, inhaled Salbutamol 10–20 mg, IV NaHCO3 if acidotic"],
+            ["7.5 to 8.5 mmol/L", "Severe Hyperkalaemia", "Complete loss of P waves (atrial inexcitability resulting in sinoventricular conduction); marked QRS widening (>160–200 ms); blending of QRS into ST-T wave; progressive bradycardia", "Atrial myocytes lose excitability before specialized conducting tissues; sinus node continues to drive ventricles through internodal tracts without generating an atrial surface wave", "Imminent cardiac arrest! Administer 10% Calcium Gluconate 10–30 mL IV over 5–10 min (or CaCl2 10 mL via central line) to stabilize myocardium"],
+            [">8.5 to 9.0 mmol/L", "Extreme / Pre-Terminal", "Classic 'Sine-Wave' pattern (smooth, wide, undulating biphasic sinusoidal wave resulting from total fusion of QRS and T wave); Asystole or Ventricular Fibrillation", "Profound myocardial inexcitability; complete failure of sodium and potassium channel gating; loss of coordinated electrical wavefronts", "MEDICAL EMERGENCY! Calcium Gluconate STAT (repeat every 5–10 min until QRS narrows), aggressive shifting, continuous CPR if pulseless, emergent Hemodialysis"]
+          ]
+        },
+        b: "Hyperkalaemia is one of the most rapidly lethal electrolyte emergencies encountered in perioperative medicine and intensive care. Electrocardiographic changes correlate closely with the rate of serum potassium rise and absolute extracellular concentration:\n\n" +
+           "1. Electrophysiological Foundations of Hyperkalaemia:\n" +
+           "• The Nernst Potential Shift: In accordance with the Nernst equation (E_K = -61.5 * log([K+]_i / [K+]_o)), an elevation in extracellular potassium decreases the transmembrane concentration gradient. This shifts the resting membrane potential (E_m) to a less negative value (e.g. from normal -90 mV to -75 or -70 mV).\n" +
+           "• Voltage-Gated Fast Sodium Channel Inactivation: Depolarisation of E_m to less negative potentials causes progressive conformational inactivation of fast Na+ channels. Consequently, Phase 0 upstroke velocity (V_max or dV/dt) decreases dramatically, markedly impairing conduction velocity across the atria, AV node, His-Purkinje system, and ventricles (producing P-wave flattening, PR prolongation, and QRS widening).\n" +
+           "• Accelerated Phase 3 Repolarisation (T-Wave Tenting): Paradoxically, elevated extracellular potassium increases the open probability and conductance of the rapid delayed rectifier potassium channel (I_Kr). Outward potassium efflux during Phase 3 is accelerated and synchronised, yielding the pathognomonic tall, narrow-based, pointed 'tented' T waves with a shortened QT interval.\n\n" +
+           "2. Step-by-Step Level-Wise Electrocardiographic Progression:\n" +
+           "• Stage 1 (K+ 5.5 to 6.5 mmol/L): Tall, symmetrical, pointed T waves with narrow bases ('tented' T waves), best visualized in precordial leads V2 to V4. Differs from hyperacute T waves of myocardial infarction, which have broad bases and are asymmetric.\n" +
+           "• Stage 2 (K+ 6.5 to 7.5 mmol/L): Progressive PR prolongation (>200 ms) and P-wave flattening/widening (intra-atrial conduction delay). QRS complex begins to widen (>120 ms) with diffuse intraventricular conduction defect (IVCD).\n" +
+           "• Stage 3 (K+ 7.5 to 8.5 mmol/L): Atrial standstill with complete disappearance of surface P waves. The sinus node continues to pace the heart, with impulses conducted to the AV node and ventricles via the specialized internodal tracts without depolarizing atrial myocardium ('Sinoventricular Rhythm'). Marked QRS widening (>160 ms).\n" +
+           "• Stage 4 (K+ >8.5 to 9.0 mmol/L): Complete fusion of the widened QRS complex with the peaked T wave, producing a continuous, smooth, undulating biphasic sinusoidal wave ('Sine-Wave' Pattern). This is an ominous, pre-terminal rhythm that degenerates into Ventricular Fibrillation, Pulseless Electrical Activity (PEA), or Asystole within minutes.\n\n" +
+           "3. Pseudoinfarction & Brugada Phenocopy Patterns:\n" +
+           "• Severe hyperkalaemia can produce marked ST-segment elevation in leads V1 to V3, closely mimicking acute anterior STEMI or a Type 1 Brugada pattern ('Brugada Phenocopy').\n" +
+           "• Dialysis Pseudoinfarction: In end-stage renal disease patients, hyperkalaemic ST elevation resolves completely and immediately following intravenous calcium administration or emergent dialysis.\n\n" +
+           "4. Triple-Pillar Emergency Management Protocol:\n" +
+           "• Pillar 1 — Myocardial Membrane Stabilization (Immediate Onset: 1 to 3 minutes):\n" +
+           "  - 10% Calcium Gluconate: 10 to 30 mL IV infused over 5 to 10 minutes. Preferred for peripheral intravenous administration because it causes minimal tissue necrosis if extravasated.\n" +
+           "  - 10% Calcium Chloride: 5 to 10 mL IV. Contains three times more elemental calcium than calcium gluconate; preferred in cardiac arrest or profound shock. Strictly administered via central venous line due to severe chemical phlebitis and necrosis if peripheral extravasation occurs.\n" +
+           "  - Mechanism: Calcium does NOT lower serum potassium! Instead, extracellular calcium increases the threshold potential (V_th) towards less negative values, restoring the critical electrical gradient between resting potential (E_m) and threshold potential (V_th). Duration of effect: 30 to 60 minutes; repeat if QRS widens again.\n" +
+           "• Pillar 2 — Transcellular Potassium Shifting (Onset: 15 to 30 minutes):\n" +
+           "  - Regular Insulin + Dextrose: 10 units of Regular Insulin IV bolus followed immediately by 50 mL of 50% Dextrose (25 g glucose) over 15 to 30 minutes (or 100 mL of 20% Dextrose). Insulin stimulates the skeletal muscle Na+/K+ ATPase pump, driving potassium into cells. Lowers serum K+ by 0.5 to 1.2 mmol/L for 4 to 6 hours.\n" +
+           "  - Inhaled Salbutamol (Albuterol): 10 to 20 mg nebulized in 4 mL normal saline. Beta-2 adrenergic stimulation activates adenylate cyclase, raising intracellular cAMP and driving Na+/K+ ATPase activity.\n" +
+           "  - Sodium Bicarbonate 8.4%: 50 to 100 mEq IV over 10 to 15 minutes. Useful primarily when hyperkalaemia is accompanied by concurrent severe metabolic acidosis (pH <7.20).\n" +
+           "• Pillar 3 — Total Body Potassium Elimination (Onset: 1 to 4 hours):\n" +
+           "  - Loop Diuretics: Furosemide 40 to 80 mg IV in patients with preserved renal function to increase kaliuresis.\n" +
+           "  - Potassium Binders: Sodium zirconium cyclosilicate (Lokelma) 10 g PO TID, or Patiromer 8.4 g PO once daily.\n" +
+           "  - Emergent Hemodialysis: The gold standard, definitive modality for severe, refractory hyperkalaemia and patients with established ESRD or acute anuric renal failure."
+      },
+      {
+        h: "Hypokalaemia in ECG: Serum Level-Wise ECG Progression & Replacement Safety",
+        diagram: "ecg-hypokalemia-waveform",
+        table: {
+          headers: ["Serum K⁺ Level (mmol/L)", "Severity Grade", "Key ECG Morphological Changes", "Electrophysiological Mechanism", "Arrhythmia Risks & Emergency Replacement Safety"],
+          rows: [
+            ["3.5 to 5.0 mmol/L", "Normal Reference", "Normal upright T waves; small U waves (<1 mm) may be physiological in young athletes", "Normal resting potential Em = -90 mV; normal Phase 3 repolarisation via I_Kr/I_Ks channels", "No replacement required; routine clinical monitoring"],
+            ["3.0 to 3.5 mmol/L", "Mild Hypokalaemia", "Decreased T wave amplitude, flattening of T waves, mild ST depression (0.5 mm), emergence of noticeable U waves", "Hyperpolarisation of resting membrane potential; delayed Phase 3 repolarisation due to reduced I_Kr channel conductance", "Low risk in healthy hearts; in CAD or digoxin therapy, triggers atrial/ventricular ectopy; Oral KCl 20–40 mEq/day"],
+            ["2.5 to 3.0 mmol/L", "Moderate Hypokalaemia", "Marked ST depression (≥0.5–1.0 mm); T wave flattening or shallow inversion; prominent U waves (>1.0 mm or >50% of T wave height in V2–V3); T-U fusion creating pseudo-prolonged QU interval ('apparent long QT')", "Marked prolongation of repolarisation specifically in Mid-myocardial M cells and Purkinje fibers; enhanced Phase 4 diastolic depolarisation", "Frequent ventricular premature complexes (PVCs), bigeminy, atrial fibrillation; IV KCl infusion at strictly ≤10 mEq/h peripheral line"],
+            ["<2.5 mmol/L", "Severe Hypokalaemia", "Giant U waves exceeding T wave amplitude (U > T); deep horizontal/downsloping ST depression; markedly prolonged QU interval (>500–600 ms); extreme ventricular ectopy", "Extreme repolarisation delay and trans-mural dispersion of repolarisation triggering Early Afterdepolarizations (EADs) and Phase 2/3 reentry", "CRITICAL ARRHYTHMIA HAZARD: Torsades de Pointes, polymorphic VT, and VF! Requires urgent IV KCl up to 20 mEq/h via central line + 1–2g IV Magnesium Sulphate"]
+          ]
+        },
+        b: "Hypokalaemia (serum potassium <3.5 mmol/L) is the most frequent electrolyte disturbance in surgical and anaesthetized patients, occurring in up to 20% of hospitalized patients and over 40% of patients receiving diuretics:\n\n" +
+           "1. Electrophysiological Foundations of Hypokalaemia:\n" +
+           "• Resting Membrane Hyperpolarization: In accordance with the Nernst equation, lower extracellular potassium increases the transmembrane potassium gradient, shifting the resting membrane potential (E_m) to a more negative value (e.g. -95 mV). This hyperpolarization increases the voltage distance to threshold potential, slowing conduction velocity in some tissues while paradoxically enhancing Phase 4 automaticity in Purkinje fibers.\n" +
+           "• Paradoxical Delay of Repolarisation: Low extracellular potassium inhibits the outward delayed rectifier potassium current (I_Kr). This markedly prolongs the cardiac action potential duration (APD) and increases transmural dispersion of repolarisation between epicardial, endocardial, and mid-myocardial M cells.\n" +
+           "• Genesis of Early Afterdepolarizations (EADs): Prolongation of Phase 2 and Phase 3 plateaus allows reactivation of L-type calcium channels (I_Ca,L) and the sodium-calcium exchanger (NCX), generating triggered depolarizations (EADs). When an EAD reaches threshold during repolarization, it initiates ventricular ectopy, non-sustained VT, or lethal Torsades de Pointes (Polymorphic VT).\n\n" +
+           "2. The Pathognomonic U Wave & The QU vs QT Conundrum:\n" +
+           "• Morphological Characteristics of the U Wave:\n" +
+           "  - A small, rounded deflection immediately following the T wave, representing repolarization of the mid-myocardial M cells and the Purkinje conduction network.\n" +
+           "  - Normal U wave: amplitude <1 mm (or <25% of preceding T wave), upright in leads with positive T waves, and best visualized in precordial leads V2 and V3.\n" +
+           "  - Hypokalaemic U wave: amplitude exceeds 1.0 mm (or >50% of the preceding T-wave amplitude). In severe hypokalaemia, the U wave becomes taller than the T wave (U > T), producing a characteristic 'camel hump' contour.\n" +
+           "• The Pseudo-Prolonged QU Interval ('Apparent Long QT'):\n" +
+           "  - As hypokalaemia progresses, ST depression develops, the T wave flattens, and the prominent U wave merges into the terminal limb of the T wave.\n" +
+           "  - Automated ECG machines and clinicians frequently misidentify the peak of the U wave as the end of the T wave, falsely reporting an extremely prolonged QT interval. The true measurement is the QU interval, which reflects delayed myocardial repolarization.\n\n" +
+           "3. Digitalis Toxicity Potentiation:\n" +
+           "• Potassium and Digoxin compete for overlapping binding sites on the extracellular alpha-subunit of the myocardial Na+/K+ ATPase pump.\n" +
+           "• When extracellular potassium is low, digoxin binding is uninhibited and greatly increased, precipitating severe digitalis toxicity even at therapeutic serum digoxin concentrations.\n" +
+           "• Classic manifestations: Bidirectional Ventricular Tachycardia, Paroxysmal Atrial Tachycardia with 2:1 AV block, junctional escape rhythm, and PVC bigeminy.\n\n" +
+           "4. Evidence-Based Potassium Repletion Protocols & Nursing Safety Constraints:\n" +
+           "• Peripheral Intravenous Infusion Rules:\n" +
+           "  - Maximum Peripheral Rate: strictly <=10 mEq/hour.\n" +
+           "  - Maximum Peripheral Concentration: <=40 mEq/L (preferably in 0.9% Normal Saline; avoid Dextrose 5% solutions because dextrose-induced insulin secretion drives potassium intracellularly, temporarily worsening hypokalaemia!).\n" +
+           "  - Rationale: High potassium concentrations cause intense chemical phlebitis, excruciating burning pain, and venous thrombosis in peripheral veins.\n" +
+           "• Central Venous Infusion Protocol:\n" +
+           "  - In severe hypokalaemia (<2.5 mmol/L) with malignant ventricular arrhythmias or cardiac arrest: infusion rates up to 20 mEq/hour (concentration 60 to 80 mEq/L) may be infused strictly via a central venous line with continuous 12-lead ECG telemetry in an ICU/HDU setting.\n" +
+           "• Mandatory Magnesium Co-Administration:\n" +
+           "  - Hypomagnesaemia is present in 40% to 50% of patients with hypokalaemia.\n" +
+           "  - Electrophysiological Gate: Intracellular magnesium (Mg2+) acts as an essential physiological blocker of renal outer medullary potassium (ROMK) channels in the distal nephron. When magnesium is depleted, the inhibitory blockade is lost, leading to massive, unabated renal potassium wasting in urine.\n" +
+           "  - In addition, low magnesium impairs the enzymatic activity of the Na+/K+ ATPase pump.\n" +
+           "  - CLINICAL GOLDEN RULE: Hypokalaemia refractory to intravenous potassium repletion is almost universally caused by concomitant hypomagnesaemia! Always co-administer Magnesium Sulphate 1 to 2 g (4 to 8 mmol) IV over 15 to 30 minutes."
       }
     ],
     references: [
