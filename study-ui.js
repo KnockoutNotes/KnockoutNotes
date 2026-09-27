@@ -781,11 +781,14 @@
       else if (s.diagram === "ecg-bbb-comparison") diagramHTML = ecgBbbDiagramHTML();
       else if (s.diagram === "ecg-stemi-evolution") diagramHTML = ecgStemiDiagramHTML();
       else if (s.diagram === "ecg-heart-blocks") diagramHTML = ecgHeartBlocksDiagramHTML();
+      else if (s.diagram === "ecg-vt-waveform") diagramHTML = ecgVtDiagramHTML();
       else if (s.diagram === "ecg-vf-waveform") diagramHTML = ecgVfDiagramHTML();
       else if (s.diagram === "ecg-hyperkalemia-waveform") diagramHTML = ecgHyperkalemiaDiagramHTML();
       else if (s.diagram === "ecg-hypokalemia-waveform") diagramHTML = ecgHypokalemiaDiagramHTML();
       else if (s.diagram === "abg-stepwise-flowchart") diagramHTML = abgStepwiseFlowchartHTML();
       else if (s.diagram === "abg-anion-gap-balance") diagramHTML = abgAnionGapBalanceHTML();
+      else if (s.diagram === "abg-compensation-rules") diagramHTML = abgCompensationRulesDiagramHTML();
+      else if (s.diagram === "abg-hagma-nagma-tree") diagramHTML = abgHagmaNagmaTreeDiagramHTML();
 
       let imagesHTML = "";
       if (Array.isArray(s.images)) {
@@ -1841,18 +1844,18 @@
           <text x="355" y="120" font-size="9" font-weight="800" fill="#94a3b8" text-anchor="middle">U</text>
           <text x="355" y="110" font-size="7" fill="#64748b" text-anchor="middle">Purkinje / Hypo-K</text>
 
-          <!-- Interval Brackets (Bottom) -->
+          <!-- Interval Brackets (Bottom - Tiered to eliminate overlap) -->
           <!-- PR Interval (120 - 200 ms) -->
-          <g transform="translate(40, 205)">
+          <g transform="translate(40, 195)">
             <line x1="0" y1="0" x2="115" y2="0" stroke="#38bdf8" stroke-width="1.6"/>
             <line x1="0" y1="-5" x2="0" y2="5" stroke="#38bdf8" stroke-width="1.6"/>
             <line x1="115" y1="-5" x2="115" y2="5" stroke="#38bdf8" stroke-width="1.6"/>
-            <text x="57" y="15" font-size="8.5" font-weight="800" fill="#38bdf8" text-anchor="middle">PR INTERVAL: 120–200 ms</text>
-            <text x="57" y="26" font-size="7.5" fill="#94a3b8" text-anchor="middle">(3 to 5 small boxes)</text>
+            <text x="57" y="14" font-size="8.5" font-weight="800" fill="#38bdf8" text-anchor="middle">PR INTERVAL: 120–200 ms</text>
+            <text x="57" y="24" font-size="7.5" fill="#94a3b8" text-anchor="middle">(3 to 5 small boxes)</text>
           </g>
 
           <!-- QRS Duration (<120 ms) -->
-          <g transform="translate(115, 245)">
+          <g transform="translate(115, 226)">
             <line x1="0" y1="0" x2="40" y2="0" stroke="#fbbf24" stroke-width="1.6"/>
             <line x1="0" y1="-5" x2="0" y2="5" stroke="#fbbf24" stroke-width="1.6"/>
             <line x1="40" y1="-5" x2="40" y2="5" stroke="#fbbf24" stroke-width="1.6"/>
@@ -1860,12 +1863,12 @@
           </g>
 
           <!-- QT / QTc Interval -->
-          <g transform="translate(115, 205)">
+          <g transform="translate(115, 252)">
             <line x1="0" y1="0" x2="175" y2="0" stroke="#c084fc" stroke-width="1.6"/>
             <line x1="0" y1="-5" x2="0" y2="5" stroke="#c084fc" stroke-width="1.6"/>
             <line x1="175" y1="-5" x2="175" y2="5" stroke="#c084fc" stroke-width="1.6"/>
-            <text x="87" y="15" font-size="8.5" font-weight="800" fill="#c084fc" text-anchor="middle">QT INTERVAL (&lt;440 ms ♂, &lt;460 ms ♀)</text>
-            <text x="87" y="26" font-size="7.5" fill="#f87171" text-anchor="middle">Critical Prolongation: QTc &gt;500 ms (Torsades Risk)</text>
+            <text x="87" y="14" font-size="8.5" font-weight="800" fill="#c084fc" text-anchor="middle">QT INTERVAL (&lt;440 ms ♂, &lt;460 ms ♀)</text>
+            <text x="87" y="24" font-size="7.5" fill="#f87171" text-anchor="middle">Critical Prolongation: QTc &gt;500 ms (Torsades Risk)</text>
           </g>
         </g>
       </svg>
@@ -1889,9 +1892,9 @@
           <!-- Left Axis Deviation (-30 to -90 deg): Orange Wedge -->
           <path d="M0 0 L0 -140 A140 140 0 0 1 121 -70 Z" fill="rgba(245,158,11,0.22)" stroke="#f59e0b" stroke-width="1.5"/>
           <!-- Right Axis Deviation (+90 to +180 deg): Blue Wedge -->
-          <path d="M0 0 L-140 0 A140 140 0 0 1 0 140 Z" fill="rgba(2,132,199,0.22)" stroke="#0284c7" stroke-width="1.5"/>
+          <path d="M0 0 L0 140 A140 140 0 0 1 -140 0 Z" fill="rgba(2,132,199,0.22)" stroke="#0284c7" stroke-width="1.5"/>
           <!-- Extreme / Northwest Axis (+180 to -90 deg): Red Wedge -->
-          <path d="M0 0 L0 -140 A140 140 0 0 0 -140 0 Z" fill="rgba(225,29,72,0.22)" stroke="#e11d48" stroke-width="1.5"/>
+          <path d="M0 0 L-140 0 A140 140 0 0 1 0 -140 Z" fill="rgba(225,29,72,0.22)" stroke="#e11d48" stroke-width="1.5"/>
 
           <!-- Concentric rings -->
           <circle cx="0" cy="0" r="140" fill="none" stroke="#475569" stroke-width="1.2" stroke-dasharray="3,3"/>
@@ -3257,6 +3260,183 @@
         </g>
       </svg>
       <p class="st-diagram-caption">Electrolyte Gamblegram: Anion Gap Dynamics. Left: Normal electrolyte distribution (AG = 12). Middle: High Anion Gap Metabolic Acidosis (HAGMA) with unmeasured organic anions consuming bicarbonate while chloride is stable. Right: Normal Anion Gap Metabolic Acidosis (NAGMA) where hyperchloremia mirrors bicarbonate loss.</p>
+    </div>`;
+  }
+
+  /* 14. Arterial Blood Gas (ABG) Expected Compensation Formulas */
+  function abgCompensationRulesDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ABG Expected Compensation Formulas and Diagnostic Rules" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        <rect x="10" y="10" width="740" height="340" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+        <!-- Header -->
+        <g transform="translate(30, 25)">
+          <rect x="0" y="0" width="700" height="30" rx="5" fill="#1e293b"/>
+          <text x="350" y="19" font-size="11" font-weight="900" fill="#38bdf8" text-anchor="middle" letter-spacing="1">EXPECTED PHYSIOLOGICAL COMPENSATION RULES IN ACID-BASE DISORDERS</text>
+        </g>
+        <!-- Row 1: Metabolic Disorders -->
+        <!-- Met Acidosis (Winter's) -->
+        <g transform="translate(30, 68)">
+          <rect x="0" y="0" width="340" height="125" rx="6" fill="#111827" stroke="#ef4444" stroke-width="1.4"/>
+          <rect x="0" y="0" width="340" height="22" rx="6" fill="#b91c1c"/>
+          <text x="170" y="15" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">METABOLIC ACIDOSIS (WINTER'S FORMULA)</text>
+          <rect x="20" y="30" width="300" height="28" rx="4" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1"/>
+          <text x="170" y="48" font-size="10.5" font-weight="900" fill="#fca5a5" text-anchor="middle">Expected PaCO₂ = 1.5 × [HCO₃⁻] + 8 ± 2</text>
+          <text x="15" y="72" font-size="7.8" font-weight="700" fill="#cbd5e1">• If Actual PaCO₂ &gt; Expected: <tspan fill="#f87171" font-weight="bold">+ Concomitant Resp Acidosis</tspan></text>
+          <text x="15" y="85" font-size="7.8" font-weight="700" fill="#cbd5e1">• If Actual PaCO₂ &lt; Expected: <tspan fill="#38bdf8" font-weight="bold">+ Concomitant Resp Alkalosis</tspan></text>
+          <text x="15" y="100" font-size="7.2" fill="#fde68a">Bedside Quick Rule: Expected PaCO₂ ≈ [HCO₃⁻] + 15 (or last 2 digits of pH)</text>
+          <text x="15" y="114" font-size="7.2" fill="#94a3b8">Max Respiratory Compensation Limit: PaCO₂ rarely drops below 10–12 mmHg</text>
+        </g>
+        <!-- Met Alkalosis -->
+        <g transform="translate(390, 68)">
+          <rect x="0" y="0" width="340" height="125" rx="6" fill="#111827" stroke="#0284c7" stroke-width="1.4"/>
+          <rect x="0" y="0" width="340" height="22" rx="6" fill="#0369a1"/>
+          <text x="170" y="15" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">METABOLIC ALKALOSIS (HYPOVENTILATION LIMIT)</text>
+          <rect x="20" y="30" width="300" height="28" rx="4" fill="rgba(2,132,199,0.2)" stroke="#0284c7" stroke-width="1"/>
+          <text x="170" y="48" font-size="10" font-weight="900" fill="#7dd3fc" text-anchor="middle">Expected PaCO₂ = 40 + 0.7 × ([HCO₃⁻] – 24) ± 2</text>
+          <text x="15" y="72" font-size="7.8" font-weight="700" fill="#cbd5e1">• If Actual PaCO₂ &gt; Expected: <tspan fill="#f87171" font-weight="bold">+ Concomitant Resp Acidosis</tspan></text>
+          <text x="15" y="85" font-size="7.8" font-weight="700" fill="#cbd5e1">• If Actual PaCO₂ &lt; Expected: <tspan fill="#38bdf8" font-weight="bold">+ Concomitant Resp Alkalosis</tspan></text>
+          <text x="15" y="100" font-size="7.2" fill="#fde68a">Max Respiratory Compensation Limit: PaCO₂ rarely exceeds 55–60 mmHg</text>
+          <text x="15" y="114" font-size="7.2" fill="#94a3b8">(Hypoxic drive via carotid chemoreceptors prevents further hypoventilation)</text>
+        </g>
+        <!-- Row 2: Respiratory Disorders (Acute vs Chronic Renal Compensation) -->
+        <!-- Resp Acidosis -->
+        <g transform="translate(30, 205)">
+          <rect x="0" y="0" width="340" height="135" rx="6" fill="#111827" stroke="#f59e0b" stroke-width="1.4"/>
+          <rect x="0" y="0" width="340" height="22" rx="6" fill="#b45309"/>
+          <text x="170" y="15" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">RESPIRATORY ACIDOSIS (↑ PaCO₂ &gt; 40 mmHg)</text>
+          <!-- Acute -->
+          <g transform="translate(15, 30)">
+            <rect x="0" y="0" width="150" height="55" rx="4" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="1"/>
+            <text x="75" y="15" font-size="8.2" font-weight="900" fill="#fbbf24" text-anchor="middle">ACUTE (Immediate Buffering)</text>
+            <text x="75" y="30" font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">ΔHCO₃⁻ = 1 mEq/L</text>
+            <text x="75" y="42" font-size="7.2" fill="#cbd5e1" text-anchor="middle">per 10 mmHg ↑ PaCO₂</text>
+            <text x="75" y="51" font-size="6.8" fill="#fca5a5" text-anchor="middle">(pH drops 0.08 / 10 mmHg)</text>
+          </g>
+          <!-- Chronic -->
+          <g transform="translate(175, 30)">
+            <rect x="0" y="0" width="150" height="55" rx="4" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="1"/>
+            <text x="75" y="15" font-size="8.2" font-weight="900" fill="#fbbf24" text-anchor="middle">CHRONIC (Renal Retention 3–5d)</text>
+            <text x="75" y="30" font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">ΔHCO₃⁻ = 3.5 to 4 mEq/L</text>
+            <text x="75" y="42" font-size="7.2" fill="#cbd5e1" text-anchor="middle">per 10 mmHg ↑ PaCO₂</text>
+            <text x="75" y="51" font-size="6.8" fill="#86efac" text-anchor="middle">(pH drops 0.03 / 10 mmHg)</text>
+          </g>
+          <text x="170" y="102" font-size="7.5" font-weight="800" fill="#fde68a" text-anchor="middle">Max Renal Bicarbonate Compensation: HCO₃⁻ rarely &gt;45 mEq/L</text>
+          <text x="170" y="116" font-size="7.2" fill="#cbd5e1" text-anchor="middle">If HCO₃⁻ between Acute &amp; Chronic: Partial compensation (Acute-on-chronic)</text>
+        </g>
+        <!-- Resp Alkalosis -->
+        <g transform="translate(390, 205)">
+          <rect x="0" y="0" width="340" height="135" rx="6" fill="#111827" stroke="#10b981" stroke-width="1.4"/>
+          <rect x="0" y="0" width="340" height="22" rx="6" fill="#047857"/>
+          <text x="170" y="15" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">RESPIRATORY ALKALOSIS (↓ PaCO₂ &lt; 40 mmHg)</text>
+          <!-- Acute -->
+          <g transform="translate(15, 30)">
+            <rect x="0" y="0" width="150" height="55" rx="4" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="1"/>
+            <text x="75" y="15" font-size="8.2" font-weight="900" fill="#34d399" text-anchor="middle">ACUTE (Immediate Buffering)</text>
+            <text x="75" y="30" font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">ΔHCO₃⁻ = 2 mEq/L</text>
+            <text x="75" y="42" font-size="7.2" fill="#cbd5e1" text-anchor="middle">per 10 mmHg ↓ PaCO₂</text>
+            <text x="75" y="51" font-size="6.8" fill="#86efac" text-anchor="middle">(pH rises 0.08 / 10 mmHg)</text>
+          </g>
+          <!-- Chronic -->
+          <g transform="translate(175, 30)">
+            <rect x="0" y="0" width="150" height="55" rx="4" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="1"/>
+            <text x="75" y="15" font-size="8.2" font-weight="900" fill="#34d399" text-anchor="middle">CHRONIC (Renal Excretion 2–3d)</text>
+            <text x="75" y="30" font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">ΔHCO₃⁻ = 5 mEq/L</text>
+            <text x="75" y="42" font-size="7.2" fill="#cbd5e1" text-anchor="middle">per 10 mmHg ↓ PaCO₂</text>
+            <text x="75" y="51" font-size="6.8" fill="#86efac" text-anchor="middle">(pH rises 0.03 / 10 mmHg)</text>
+          </g>
+          <text x="170" y="102" font-size="7.5" font-weight="800" fill="#a7f3d0" text-anchor="middle">Max Renal Bicarbonate Elimination Limit: HCO₃⁻ rarely &lt;12–15 mEq/L</text>
+          <text x="170" y="116" font-size="7.2" fill="#cbd5e1" text-anchor="middle">Severe hypocapnia causes cerebral vasoconstriction and leftward oxyhemoglobin shift</text>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Standard Arterial Blood Gas (ABG) Physiological Expected Compensation Equations. Used to evaluate whether secondary respiratory or renal response is adequate or if a mixed primary acid-base disorder co-exists.</p>
+    </div>`;
+  }
+
+  /* 15. HAGMA vs NAGMA Diagnostic Decision Tree */
+  function abgHagmaNagmaTreeDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HAGMA vs NAGMA Diagnostic Decision Tree and Urine Anion Gap" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        <rect x="10" y="10" width="740" height="360" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+        <!-- Header -->
+        <g transform="translate(30, 22)">
+          <rect x="0" y="0" width="700" height="28" rx="5" fill="#1e293b"/>
+          <text x="350" y="18" font-size="10.5" font-weight="900" fill="#38bdf8" text-anchor="middle" letter-spacing="1">METABOLIC ACIDOSIS DIAGNOSTIC DECISION TREE: HAGMA vs NAGMA</text>
+        </g>
+
+        <!-- Root Node: Metabolic Acidosis confirmed -->
+        <g transform="translate(260, 60)">
+          <rect x="0" y="0" width="240" height="42" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+          <text x="120" y="17" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">METABOLIC ACIDOSIS CONFIRMED</text>
+          <text x="120" y="32" font-size="7.8" fill="#93c5fd" text-anchor="middle">pH &lt; 7.35  •  [HCO₃⁻] &lt; 22 mEq/L</text>
+        </g>
+
+        <!-- Connecting Lines -->
+        <path d="M380 102 L380 115 L200 115 L200 135" stroke="#ef4444" stroke-width="2" fill="none"/>
+        <path d="M380 115 L560 115 L560 135" stroke="#f59e0b" stroke-width="2" fill="none"/>
+
+        <!-- LEFT BRANCH: HAGMA -->
+        <g transform="translate(40, 135)">
+          <rect x="0" y="0" width="320" height="220" rx="6" fill="#111827" stroke="#ef4444" stroke-width="1.5"/>
+          <rect x="0" y="0" width="320" height="24" rx="6" fill="#b91c1c"/>
+          <text x="160" y="16" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">HIGH ANION GAP (HAGMA: AG &gt; 12 mmol/L)</text>
+          
+          <rect x="15" y="32" width="290" height="45" rx="4" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1"/>
+          <text x="25" y="47" font-size="8" font-weight="800" fill="#fca5a5">1. Correct for Albumin: AG_corr = AG + 2.5×(4.0 – Alb)</text>
+          <text x="25" y="60" font-size="8" font-weight="800" fill="#fca5a5">2. Check Delta Ratio: ΔAG / ΔHCO₃⁻ = (AG – 12) / (24 – HCO₃⁻)</text>
+          <text x="35" y="71" font-size="7.2" fill="#cbd5e1">• &lt;0.8 = Mixed HAGMA + NAGMA  • &gt;2.0 = Mixed HAGMA + Met Alk</text>
+
+          <!-- Mnemonics Box -->
+          <rect x="15" y="85" width="290" height="120" rx="4" fill="rgba(15,23,42,0.9)" stroke="#374151" stroke-width="1"/>
+          <text x="25" y="100" font-size="8.5" font-weight="900" fill="#fbbf24">DIAGNOSTIC MNEMONICS:</text>
+          <text x="25" y="115" font-size="8" font-weight="800" fill="#f87171">• GOLD MARK (Toxicology Standard):</text>
+          <text x="35" y="128" font-size="7.5" fill="#cbd5e1">G = Glycols | O = Oxoproline (Paracetamol) | L = L-Lactate</text>
+          <text x="35" y="139" font-size="7.5" fill="#cbd5e1">D = D-Lactate | M = Methanol | A = Aspirin | R = Renal | K = Keto</text>
+          <text x="25" y="156" font-size="8" font-weight="800" fill="#f87171">• MUDPILES (Classic Bedside):</text>
+          <text x="35" y="169" font-size="7.5" fill="#cbd5e1">Methanol, Uremia, DKA, Paracetamol/Propylene, Iron/INH,</text>
+          <text x="35" y="180" font-size="7.5" fill="#cbd5e1">Lactic acidosis (Shock/Sepsis), Ethylene glycol, Salicylates</text>
+          <text x="25" y="198" font-size="7.5" font-weight="700" fill="#a7f3d0">Immediate Workup: Lactate, Ketones, BUN/Cr, Osmolal Gap</text>
+        </g>
+
+        <!-- RIGHT BRANCH: NAGMA -->
+        <g transform="translate(400, 135)">
+          <rect x="0" y="0" width="320" height="220" rx="6" fill="#111827" stroke="#f59e0b" stroke-width="1.5"/>
+          <rect x="0" y="0" width="320" height="24" rx="6" fill="#b45309"/>
+          <text x="160" y="16" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">NORMAL ANION GAP (NAGMA: AG 8–12 mmol/L)</text>
+          
+          <rect x="15" y="32" width="290" height="35" rx="4" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="1"/>
+          <text x="160" y="47" font-size="8.2" font-weight="900" fill="#fbbf24" text-anchor="middle">CALCULATE URINE ANION GAP (UAG):</text>
+          <text x="160" y="59" font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">UAG = ([Na⁺]_u + [K⁺]_u) – [Cl⁻]_u</text>
+
+          <!-- UAG Sub-branches -->
+          <!-- Negative UAG -->
+          <g transform="translate(15, 75)">
+            <rect x="0" y="0" width="140" height="75" rx="4" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="1"/>
+            <text x="70" y="15" font-size="7.8" font-weight="900" fill="#34d399" text-anchor="middle">NEGATIVE UAG (-20 to -50)</text>
+            <text x="70" y="28" font-size="7" fill="#cbd5e1" text-anchor="middle">Intact renal NH₄⁺ excretion</text>
+            <text x="70" y="44" font-size="8" font-weight="800" fill="#ffffff" text-anchor="middle">GI HCO₃⁻ LOSS</text>
+            <text x="70" y="56" font-size="7.2" fill="#a7f3d0" text-anchor="middle">• Severe Diarrhea</text>
+            <text x="70" y="67" font-size="7.2" fill="#a7f3d0" text-anchor="middle">• Enterocutaneous fistula</text>
+          </g>
+          <!-- Positive UAG -->
+          <g transform="translate(165, 75)">
+            <rect x="0" y="0" width="140" height="75" rx="4" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1"/>
+            <text x="70" y="15" font-size="7.8" font-weight="900" fill="#fca5a5" text-anchor="middle">POSITIVE UAG (+20 to +40)</text>
+            <text x="70" y="28" font-size="7" fill="#cbd5e1" text-anchor="middle">Impaired renal NH₄⁺ excretion</text>
+            <text x="70" y="44" font-size="8" font-weight="800" fill="#ffffff" text-anchor="middle">RENAL TUBULAR ACIDOSIS</text>
+            <text x="70" y="56" font-size="7.2" fill="#fca5a5" text-anchor="middle">• Distal Type 1 RTA</text>
+            <text x="70" y="67" font-size="7.2" fill="#fca5a5" text-anchor="middle">• Hypoaldosteronism (Type 4)</text>
+          </g>
+
+          <!-- Iatrogenic / HARDCARP box -->
+          <g transform="translate(15, 158)">
+            <rect x="0" y="0" width="290" height="50" rx="4" fill="rgba(15,23,42,0.9)" stroke="#374151" stroke-width="1"/>
+            <text x="12" y="15" font-size="7.8" font-weight="900" fill="#38bdf8">IATROGENIC &amp; EXOGENOUS CAUSES (HARDCARP):</text>
+            <text x="12" y="28" font-size="7.2" fill="#cbd5e1">• Massive 0.9% Normal Saline resuscitation (hyperchloremic acidosis)</text>
+            <text x="12" y="40" font-size="7.2" fill="#cbd5e1">• Acetazolamide, TPN hyperalimentation, ureterosigmoidostomy</text>
+          </g>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Metabolic Acidosis Diagnostic Flowchart: Differentiating High Anion Gap (HAGMA) from Normal Anion Gap (NAGMA). In NAGMA, calculating the Urine Anion Gap (UAG) definitively distinguishes extra-renal GI bicarbonate loss (negative UAG) from Renal Tubular Acidosis (positive UAG).</p>
     </div>`;
   }
 
