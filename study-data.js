@@ -2480,7 +2480,54 @@
         "b": "Ventricular Fibrillation (VF) is a lethal, uncoordinated cardiac rhythm characterized by completely disorganized, chaotic ventricular depolarizations arising from multiple asynchronous micro-reentrant wavelets. Mechanical stroke volume and cardiac output drop immediately to ZERO, resulting in clinical cardiac arrest and brain death within 4 to 6 minutes without resuscitation:\n\n1. Electrocardiographic Diagnostic Criteria:\n• Total absence of identifiable P waves, QRS complexes, ST segments, or T waves.\n• Continuous, irregular, shapeless, chaotic baseline undulations varying wildly in amplitude, wavelength, and contour at a frequency of 150 to 500/min.\n\n2. Coarse VF vs Fine VF:\n• Coarse Ventricular Fibrillation:\n  - Amplitude of fibrillatory undulations ≥0.2 mV (≥2 mm).\n  - Represents early, recent-onset cardiac arrest with preserved myocardial high-energy phosphate stores (ATP).\n  - Highly responsive to electrical defibrillation.\n• Fine Ventricular Fibrillation:\n  - Amplitude of fibrillatory undulations <0.2 mV (<2 mm).\n  - Represents prolonged ischaemic arrest, depleted myocardial ATP, and impending asystole.\n  - Poor defibrillation success rate; requires high-quality CPR and Epinephrine to coarsen the fibrillatory amplitude before shock.\n• CRITICAL PITFALL — Fine VF vs Asystole:\n  - Fine VF is frequently misdiagnosed as Asystole ('flat line'). Always verify lead integrity, ensure monitor gain (amplitude) is turned up, and check at least TWO orthogonal leads. Fine VF is SHOCKABLE; Asystole is NOT shockable! Shocking asystole damages myocardium and eliminates intrinsic pacemaker recovery.\n\n3. AHA/ERC ACLS Resuscitation Protocol for Shockable Rhythms (VF / Pulseless VT):\n• 1. Immediate High-Quality CPR: Chest compression rate 100 to 120/min, depth 5 to 6 cm (2 to 2.4 inches), full chest recoil, minimal interruptions (<10 seconds). Ratio 30:2 or continuous with advanced airway (1 breath every 6 seconds).\n• 2. Immediate Unsynchronized Defibrillation: 200 Joules biphasic (or maximum manufacturer dose, e.g. 120–200 J; 360 J monophasic). Deliver shock immediately upon rhythm identification.\n• 3. Immediate CPR Resumption: Resume chest compressions immediately for 2 full minutes without pausing to check pulse or rhythm.\n• 4. Epinephrine: 1 mg IV/IO every 3 to 5 minutes (administered after the second defibrillation shock).\n• 5. Antiarrhythmic Therapy (For Shock-Refractory VF after 3rd Shock):\n  - Amiodarone: 300 mg IV/IO rapid push after shock 3; second dose of 150 mg IV/IO after shock 5.\n  - Alternative: Lidocaine 1.0 to 1.5 mg/kg IV/IO first dose, followed by 0.5 to 0.75 mg/kg for second dose (maximum 3 mg/kg).\n• 6. Treat Reversible Underlying Causes (The 5 H's and 5 T's):\n  - Hypovolaemia, Hypoxia, Hydrogen ion (Acidosis), Hypo/Hyperkalaemia, Hypothermia.\n  - Tension pneumothorax, Tamponade (cardiac), Toxins, Thrombosis (pulmonary), Thrombosis (coronary / acute MI).",
         "pearl": "Every 1-minute delay in defibrillation in VF reduces survival to hospital discharge by 7% to 10% without effective CPR.",
         "pitfall": "Do not mistake Fine VF (<0.2 mV) for Asystole! Fine VF is shockable whereas Asystole is non-shockable. Always check multiple leads, confirm cable integrity, and increase ECG gain.",
-        "example": "Patient in cardiac arrest shows high-amplitude chaotic waveforms (>2 mm) on monitor without organized QRS. Rhythm identified as Coarse VF. Immediately deliver 200 J biphasic asynchronous shock, followed by immediate resumption of CPR for 2 minutes."
+        "example": "Patient in cardiac arrest shows high-amplitude chaotic waveforms (>2 mm) on monitor without organized QRS. Rhythm identified as Coarse VF. Immediately deliver 200 J biphasic asynchronous shock, followed by immediate resumption of CPR for 2 minutes.",
+        "table": {
+          "caption": "Comparative Features: Coarse Ventricular Fibrillation vs Fine VF vs Ventricular Asystole",
+          "headers": [
+            "Clinical & ECG Parameter",
+            "Coarse Ventricular Fibrillation",
+            "Fine Ventricular Fibrillation",
+            "Ventricular Asystole (Cardiac Arrest)"
+          ],
+          "rows": [
+            [
+              "Waveform Amplitude",
+              "≥0.2 mV (≥2 mm deflection)",
+              "<0.2 mV (<2 mm low-voltage undulations)",
+              "0 mV (Complete isoelectric flatline)"
+            ],
+            [
+              "Rhythm & Frequency",
+              "Chaotic, disorganized, 150–500/min",
+              "Low-amplitude chaotic fibrillatory waves",
+              "Total absence of ventricular electrical activity"
+            ],
+            [
+              "Myocardial Substrate",
+              "Recent arrest (<4 min); preserved ATP & glycogen stores",
+              "Prolonged arrest (>5–10 min); severe myocardial ATP depletion",
+              "End-stage myocardial metabolic exhaustion & severe anoxia"
+            ],
+            [
+              "Electrical Defibrillation",
+              "MANDATORY & URGENT (120–200 J biphasic immediately)",
+              "MANDATORY SHOCK (CPR & Epinephrine help coarsen rhythm)",
+              "CONTRAINDICATED / INEFFECTIVE (Non-shockable rhythm!)"
+            ],
+            [
+              "ACLS Pharmacotherapy",
+              "CPR + Shock + Epinephrine 1 mg q3–5m + Amiodarone 300 mg",
+              "CPR + Shock + Epinephrine 1 mg q3–5m + Amiodarone 300 mg",
+              "High-quality CPR + Epinephrine 1 mg q3–5m + Search 4Hs & 4Ts"
+            ],
+            [
+              "Critical Diagnostic Pitfall",
+              "Do not pause CPR to confirm rhythm beyond 5–10 seconds",
+              "Do NOT mistake for asystole — increase gain & check 2 orthogonal leads",
+              "Confirm true asystole in 2 leads; check cable connections & gain"
+            ]
+          ]
+        }
       }
     ]
   },
