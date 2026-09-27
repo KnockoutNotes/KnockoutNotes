@@ -785,6 +785,7 @@
       else if (s.diagram === "ecg-vf-waveform") diagramHTML = ecgVfDiagramHTML();
       else if (s.diagram === "ecg-hyperkalemia-waveform") diagramHTML = ecgHyperkalemiaDiagramHTML();
       else if (s.diagram === "ecg-hypokalemia-waveform") diagramHTML = ecgHypokalemiaDiagramHTML();
+      else if (s.diagram === "ecg-pacemaker-waveform") diagramHTML = ecgPacemakerDiagramHTML();
       else if (s.diagram === "abg-stepwise-flowchart") diagramHTML = abgStepwiseFlowchartHTML();
       else if (s.diagram === "abg-anion-gap-balance") diagramHTML = abgAnionGapBalanceHTML();
       else if (s.diagram === "abg-compensation-rules") diagramHTML = abgCompensationRulesDiagramHTML();
@@ -3056,6 +3057,165 @@
         </g>
       </svg>
       <p class="st-diagram-caption">Hypokalaemia ECG Manifestations. Top: Pathognomonic prominent U wave (U &gt; T), ST depression, and pseudo-prolonged QU interval in moderate hypokalaemia (2.5–3.0 mmol/L). Bottom: Early R-on-U phenomenon triggering ventricular ectopy and Torsades de Pointes in severe hypokalaemia (&lt;2.5 mmol/L).</p>
+    </div>`;
+  }
+
+  /* 11b. Cardiac Pacemaker Rhythms & Pacing Spikes */
+  function ecgPacemakerDiagramHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 760 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cardiac Pacemaker ECG Rhythms Pacing Spikes Modes and Malfunctions" style="width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        <defs>
+          <pattern id="ecgGridMinor" width="5" height="5" patternUnits="userSpaceOnUse">
+            <rect width="5" height="5" fill="none" stroke="rgba(244,63,94,0.12)" stroke-width="0.5"/>
+          </pattern>
+          <pattern id="ecgGridMajor" width="25" height="25" patternUnits="userSpaceOnUse">
+            <rect width="25" height="25" fill="url(#ecgGridMinor)" stroke="rgba(244,63,94,0.32)" stroke-width="1.1"/>
+          </pattern>
+          <pattern id="monGridMinor" width="6" height="6" patternUnits="userSpaceOnUse">
+            <rect width="6" height="6" fill="none" stroke="rgba(34,197,94,0.08)" stroke-width="0.5"/>
+          </pattern>
+          <pattern id="monGridMajor" width="30" height="30" patternUnits="userSpaceOnUse">
+            <rect width="30" height="30" fill="url(#monGridMinor)" stroke="rgba(34,197,94,0.22)" stroke-width="1.1"/>
+          </pattern>
+          <linearGradient id="sweepGradAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f59e0b" stop-opacity="0"/>
+            <stop offset="80%" stop-color="#f59e0b" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.95"/>
+          </linearGradient>
+          <linearGradient id="sweepGradCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#0284c7" stop-opacity="0"/>
+            <stop offset="80%" stop-color="#38bdf8" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#7dd3fc" stop-opacity="0.95"/>
+          </linearGradient>
+        </defs>
+        <style>
+          @keyframes ecgBeamSweep {
+            0% { transform: translateX(0px); opacity: 0; }
+            3% { opacity: 1; }
+            96% { opacity: 1; }
+            100% { transform: translateX(710px); opacity: 0; }
+          }
+          .ecg-beam-fast { animation: ecgBeamSweep 2.4s linear infinite; }
+          @keyframes ecgGlow {
+            0%, 100% { filter: drop-shadow(0 0 1.5px currentColor); }
+            50% { filter: drop-shadow(0 0 4px currentColor); }
+          }
+          .ecg-trace { animation: ecgGlow 2.5s ease-in-out infinite; }
+        </style>
+        <rect x="10" y="10" width="740" height="380" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- PANEL 1: Atrial Pacing (AAI) -->
+        <g transform="translate(20, 20)">
+          <rect x="0" y="0" width="350" height="85" rx="5" fill="url(#monGridMajor)"/>
+          <text x="12" y="16" font-size="9" font-weight="900" fill="#fbbf24">1. ATRIAL PACING (AAI MODE): Atrial Spike → Captured P Wave → Normal QRS</text>
+          <g transform="translate(10, 10)">
+            <!-- Cycle 1 -->
+            <line x1="30" y1="52" x2="30" y2="18" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M0 45 L30 45 L32 45 Q40 32 48 45 L62 45 L66 48 L72 18 L78 52 L82 45 L105 45 Q120 30 135 45 L155 45"
+                  fill="none" stroke="#fbbf24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Cycle 2 -->
+            <line x1="185" y1="52" x2="185" y2="18" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M155 45 L185 45 L187 45 Q195 32 203 45 L217 45 L221 48 L227 18 L233 52 L237 45 L260 45 Q275 30 290 45 L320 45"
+                  fill="none" stroke="#fbbf24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="30" y="13" font-size="7.5" font-weight="900" fill="#fef08a" text-anchor="middle">Atrial Spike</text>
+            <text x="75" y="65" font-size="7.2" fill="#cbd5e1">Narrow intrinsic QRS (Intact AV node)</text>
+          </g>
+        </g>
+
+        <!-- PANEL 2: Ventricular Pacing (VVI, RV Apex) -->
+        <g transform="translate(390, 20)">
+          <rect x="0" y="0" width="350" height="85" rx="5" fill="url(#monGridMajor)"/>
+          <text x="12" y="16" font-size="9" font-weight="900" fill="#38bdf8">2. VENTRICULAR PACING (VVI MODE, RV APEX): Spike → Broad LBBB-like QRS</text>
+          <g transform="translate(10, 10)">
+            <line x1="40" y1="58" x2="40" y2="12" stroke="#38bdf8" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M0 45 L40 45 L44 45 L50 78 L65 78 L78 20 Q95 12 110 45 L145 45"
+                  fill="none" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="185" y1="58" x2="185" y2="12" stroke="#38bdf8" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M145 45 L185 45 L189 45 L195 78 L210 78 L223 20 Q240 12 255 45 L320 45"
+                  fill="none" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="40" y="10" font-size="7.5" font-weight="900" fill="#7dd3fc" text-anchor="middle">Ventricular Spike</text>
+            <text x="60" y="70" font-size="7.5" font-weight="800" fill="#fca5a5">Wide QRS (≥120 ms)</text>
+            <text x="260" y="68" font-size="7" fill="#cbd5e1">LBBB Pattern + LAD (RV Apex)</text>
+          </g>
+        </g>
+
+        <!-- PANEL 3: Dual-Chamber AV Sequential Pacing (DDD Mode) -->
+        <g transform="translate(20, 115)">
+          <rect x="0" y="0" width="720" height="110" rx="5" fill="url(#monGridMajor)"/>
+          <text x="15" y="18" font-size="9.5" font-weight="900" fill="#10b981">3. DUAL-CHAMBER AV SEQUENTIAL PACING (DDD MODE): Dual Spikes (Atrial → AV Delay → Ventricular)</text>
+          <g transform="translate(15, 12)">
+            <line x1="40" y1="55" x2="40" y2="20" stroke="#fbbf24" stroke-width="2.4" stroke-linecap="round"/>
+            <line x1="105" y1="62" x2="105" y2="12" stroke="#38bdf8" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M0 48 L40 48 L42 48 Q52 35 62 48 L105 48 L108 48 L114 82 L128 82 L142 20 Q160 12 178 48 L220 48"
+                  fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#10b981"/>
+
+            <line x1="260" y1="55" x2="260" y2="20" stroke="#fbbf24" stroke-width="2.4" stroke-linecap="round"/>
+            <line x1="325" y1="62" x2="325" y2="12" stroke="#38bdf8" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M220 48 L260 48 L262 48 Q272 35 282 48 L325 48 L328 48 L334 82 L348 82 L362 20 Q380 12 398 48 L450 48"
+                  fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ecg-trace" color="#10b981"/>
+
+            <line x1="40" y1="75" x2="105" y2="75" stroke="#fbbf24" stroke-width="1.4"/>
+            <line x1="40" y1="71" x2="40" y2="79" stroke="#fbbf24" stroke-width="1.4"/>
+            <line x1="105" y1="71" x2="105" y2="79" stroke="#fbbf24" stroke-width="1.4"/>
+            <text x="72" y="86" font-size="7.5" font-weight="800" fill="#fbbf24" text-anchor="middle">Programmed AV Delay (150–200 ms)</text>
+
+            <g class="ecg-beam-fast">
+              <rect x="0" y="0" width="25" height="95" fill="url(#sweepGradAmber)"/>
+              <line x1="25" y1="0" x2="25" y2="95" stroke="#fbbf24" stroke-width="2"/>
+            </g>
+
+            <g transform="translate(470, 10)">
+              <rect x="0" y="0" width="220" height="75" rx="4" fill="rgba(15,23,42,0.9)" stroke="#334155" stroke-width="1.2"/>
+              <text x="12" y="16" font-size="8.2" font-weight="900" fill="#34d399">PHYSIOLOGICAL ADVANTAGES:</text>
+              <text x="12" y="30" font-size="7.5" fill="#cbd5e1">• Preserves Atrial Kick (+20–30% Stroke Volume)</text>
+              <text x="12" y="43" font-size="7.5" fill="#cbd5e1">• Prevents Pacemaker Syndrome (cannon A waves)</text>
+              <text x="12" y="56" font-size="7.5" fill="#cbd5e1">• Tracks sinus rhythm up to Upper Rate Limit</text>
+              <text x="12" y="68" font-size="7.5" fill="#fde68a">• Senses intrinsic R waves to inhibit ventricular spike</text>
+            </g>
+          </g>
+        </g>
+
+        <!-- PANEL 4: Pacemaker Malfunctions & Pitfalls -->
+        <g transform="translate(20, 235)">
+          <rect x="0" y="0" width="720" height="140" rx="5" fill="url(#monGridMajor)"/>
+          <text x="15" y="18" font-size="9.5" font-weight="900" fill="#ef4444">4. PACEMAKER MALFUNCTIONS: Failure to Capture &amp; Undersensing (R-on-T Spike Hazard)</text>
+          <g transform="translate(15, 15)">
+            <!-- Failure to Capture -->
+            <line x1="30" y1="55" x2="30" y2="12" stroke="#ef4444" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M0 48 L30 48 L110 48 L115 52 L120 18 L126 56 L130 48 L155 48" fill="none" stroke="#f87171" stroke-width="2.2"/>
+            <circle cx="30" cy="12" r="3.5" fill="#ef4444"/>
+            <text x="30" y="72" font-size="7.8" font-weight="900" fill="#fca5a5" text-anchor="middle">FAILURE TO CAPTURE</text>
+            <text x="30" y="83" font-size="7" fill="#fee2e2" text-anchor="middle">Spike without subsequent QRS</text>
+
+            <line x1="175" y1="5" x2="175" y2="105" stroke="#334155" stroke-dasharray="2,2"/>
+
+            <!-- Undersensing -->
+            <g transform="translate(195, 0)">
+              <path d="M0 48 L20 48 Q28 36 36 48 L48 48 L52 52 L58 12 L64 58 L68 48 L80 48 Q98 25 116 48 L140 48" fill="none" stroke="#38bdf8" stroke-width="2.2"/>
+              <line x1="104" y1="58" x2="104" y2="12" stroke="#ef4444" stroke-width="2.8" stroke-linecap="round"/>
+              <circle cx="104" cy="12" r="3.5" fill="#dc2626"/>
+              <text x="104" y="72" font-size="7.8" font-weight="900" fill="#f87171" text-anchor="middle">UNDERSENSING (R-on-T)</text>
+              <text x="104" y="83" font-size="7" fill="#fca5a5" text-anchor="middle">Spike ignores intrinsic QRS; fires on T wave!</text>
+
+              <path d="M140 48 L145 15 L155 75 L165 15 L175 75 L185 15 L195 75 L205 15" fill="none" stroke="#ef4444" stroke-width="2.4"/>
+              <text x="180" y="94" font-size="7.5" font-weight="900" fill="#ef4444" text-anchor="middle">Lethal VT / VF Trigger 🚨</text>
+            </g>
+
+            <!-- Magnet Application Box -->
+            <g transform="translate(435, 5)">
+              <rect x="0" y="0" width="255" height="100" rx="4" fill="rgba(220,38,38,0.2)" stroke="#ef4444" stroke-width="1.3"/>
+              <text x="127" y="16" font-size="8.5" font-weight="900" fill="#fee2e2" text-anchor="middle">🧲 PERIOPERATIVE MAGNET APPLICATION</text>
+              <text x="12" y="32" font-size="7.5" fill="#fecaca">• Converts Pacemaker to <tspan font-weight="bold" fill="#ffffff">VOO / DOO Asynchronous mode</tspan></text>
+              <text x="12" y="44" font-size="7.5" fill="#fecaca">• Prevents cautery EMI from causing inhibition</text>
+              <text x="12" y="56" font-size="7.5" fill="#fecaca">• Fixed rate (85–100 bpm) indicates battery longevity</text>
+              <text x="12" y="68" font-size="7.5" font-weight="bold" fill="#fde68a">• On ICD: Suspends shocks; does NOT pace!</text>
+              <text x="12" y="80" font-size="7.2" fill="#cbd5e1">Bipolar cautery &amp; return pad away from thorax</text>
+              <text x="12" y="92" font-size="7.2" fill="#bae6fd">Sgarbossa criteria apply to paced rhythm in STEMI!</text>
+            </g>
+          </g>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Cardiac Pacemaker ECG Rhythms &amp; Diagnostic Malfunctions. Top: Atrial pacing (AAI) with sharp atrial spike and intrinsic QRS; Ventricular pacing (VVI) with wide LBBB-like QRS. Middle: Dual-Chamber AV Sequential pacing (DDD). Bottom: Pacemaker malfunctions (Failure to Capture &amp; Undersensing R-on-T hazard) and intraoperative magnet response.</p>
     </div>`;
   }
 

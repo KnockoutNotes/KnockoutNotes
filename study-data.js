@@ -2668,6 +2668,103 @@
     ]
   },
   {
+    "id": "ecg-pacemaker",
+    "cat": "ecg",
+    "name": "Cardiac Pacemaker Rhythms: NBG Codes, Paced ECG Morphologies & Malfunctions",
+    "short": "Pacemaker ECG & NBG Nomenclature",
+    "tags": [
+      "Pacemaker ECG",
+      "NBG Code",
+      "Pacing Spikes",
+      "VVI vs DDD",
+      "Failure to Capture",
+      "Undersensing",
+      "Magnet Response",
+      "Sgarbossa in Pacing"
+    ],
+    "tagline": "NASPE/BPEG (NBG) 5-letter pacemaker nomenclature, surface ECG waveforms (AAI, VVI, DDD, BiV/CRT), lead location vector axes, failure to capture/sense, and perioperative magnet management",
+    "source": "AHA/ACC/HRS Guideline on the Evaluation and Management of Patients With Bradycardia and Cardiac Conduction Delay (2018/2023); NASPE/BPEG Revised Generic Pacemaker Code (NBG); Miller's Anesthesia, 10th ed., Ch. 41 & 51; ASA Practice Advisory for CIEDs (2020/2025).",
+    "sections": [
+      {
+        "h": "NASPE/BPEG (NBG) Nomenclature, Paced Waveform Morphologies & Malfunctions",
+        "diagram": "ecg-pacemaker-waveform",
+        "table": {
+          "caption": "The NASPE/BPEG (NBG) Generic Pacemaker Code & Associated Surface ECG Morphologies",
+          "headers": [
+            "Pacemaker Mode (NBG Code)",
+            "Position I: Paced / Position II: Sensed / Position III: Response",
+            "Characteristic Surface ECG Morphology & Pacing Spikes",
+            "Normal Paced Vector & Axis",
+            "Clinical Indications & Hemodynamic Advantages",
+            "Potential Malfunctions & Anesthetic Warnings"
+          ],
+          "rows": [
+            [
+              "AAI / AAIR (Atrial Demand)",
+              "Paced: Atrium (A)\nSensed: Atrium (A)\nResponse: Inhibited (I)\nIV: Rate Responsive (R)",
+              "Sharp vertical atrial spike preceding P-wave by 1–2 mm; normal PR interval; narrow intrinsic QRS complex",
+              "Normal frontal axis; P-wave morphology reflects atrial lead site (upright in II if RA appendage, inverted if low RA/CS)",
+              "Sick Sinus Syndrome (Sinus Node Dysfunction) with intact AV nodal conduction",
+              "Risk of AV block over time (~1–2%/yr); failure to sense atrial flutter/fib; cautery inhibition causes sinus pauses"
+            ],
+            [
+              "VVI / VVIR (Ventricular Demand - RV Apex)",
+              "Paced: Ventricle (V)\nSensed: Ventricle (V)\nResponse: Inhibited (I)\nIV: Rate Responsive (R)",
+              "Sharp ventricular spike preceding wide QRS (≥120 ms); broad QS in V1 (LBBB pattern); secondary discordant ST-T segment",
+              "Left Axis Deviation (-30° to -90°) with negative QRS in II, III, aVF (apex to base activation)",
+              "Chronic Atrial Fibrillation with slow ventricular response; complete AV block (emergency standby)",
+              "Pacemaker Syndrome (cannon A waves, loss of atrial kick, hypotension); cautery inhibition causes ventricular asystole"
+            ],
+            [
+              "VVI (RV Outflow Tract / His-Bundle Pacing)",
+              "Paced: Ventricle (RVOT / His)\nSensed: Ventricle (V)\nResponse: Inhibited (I)",
+              "RVOT: Sharp spike preceding LBBB-like QRS; His-Bundle: Spike followed by near-normal narrow QRS (<110–120 ms)",
+              "RVOT: Normal or Inferior Axis (+60° to +90°, upright in II, III, aVF); His-bundle: Normal intrinsic axis",
+              "Physiological ventricular activation; prevents dyssynchrony-induced cardiomyopathy of chronic RV apical pacing",
+              "Higher pacing threshold; acute threshold rise requires higher voltage output to prevent failure to capture"
+            ],
+            [
+              "DDD / DDDR (Dual-Chamber Universal)",
+              "Paced: Dual A+V (D)\nSensed: Dual A+V (D)\nResponse: Dual I+T (D)\nIV: Rate Responsive (R)",
+              "Dual pacing spikes: Atrial spike → captured P wave → programmed AV delay (150–200 ms) → Ventricular spike → wide QRS",
+              "Ventricular axis reflects ventricular lead location (LAD for RV apex, inferior for RVOT)",
+              "AV synchrony restoration (+20–30% cardiac output); AV block with normal sinus node; prevents pacemaker syndrome",
+              "Pacemaker-Mediated Tachycardia (PMT / Endless Loop Tachycardia) triggered by retrograde P-wave; cross-talk"
+            ],
+            [
+              "VOO / DOO (Asynchronous / Magnet Mode)",
+              "Paced: Ventricle (V) or Dual (D)\nSensed: None (O)\nResponse: None (O)",
+              "Fixed-rate pacing spikes firing continuously at manufacturer default rate (85–100 bpm) ignoring all intrinsic beats",
+              "Constant paced morphology unaffected by intrinsic cardiac depolarizations or external electrical signals",
+              "Operating room electrocautery (bovie) protection; prevents electromagnetic interference (EMI) inhibition",
+              "R-on-T hazard: If intrinsic rhythm co-exists, asynchronous spike landing on vulnerable T wave can trigger lethal VT/VF!"
+            ],
+            [
+              "BiV / CRT-P / CRT-D (Biventricular Pacing)",
+              "Paced: Dual Ventricles (BiV)\nSensed: Ventricle (V)\nResponse: Dual (D)",
+              "Prominent upright R wave in lead V1 (RBBB-like pattern or R/S > 1.0); shortened QRS duration compared to baseline LBBB",
+              "Superior or Rightward Axis (vector directed away from LV lateral wall lead in coronary sinus)",
+              "HFrEF (EF ≤35%) with complete LBBB and QRS ≥150 ms (NYHA Class II–IV); eliminates intraventricular dyssynchrony",
+              "Phrenic nerve stimulation via LV epicardial lead (diaphragmatic twitching synchronized with pacing spike)"
+            ],
+            [
+              "Pacemaker Malfunctions & Artifacts",
+              "Failure to Pace / Capture / Sense",
+              "• Failure to Pace: Absent spike\n• Failure to Capture: Spike without P or QRS\n• Undersensing: Spikes fire on intrinsic beats\n• Oversensing: Pauses from myopotentials",
+              "Variable / Dependent on underlying escape rhythm",
+              "Immediate recognition and correction of metabolic (hyperkalemia) or electrical etiology",
+              "Emergency transcutaneous pacing pads must be applied immediately if patient is pacemaker-dependent!"
+            ]
+          ]
+        },
+        "b": "Cardiac pacemakers generate artificial electrical impulses to depolarise excitable myocardial tissue when the intrinsic cardiac conduction system fails. Understanding their standardised nomenclature and ECG manifestations is essential in emergency, cardiology, and perioperative practice:\n\n1. How It Is Named: The NASPE/BPEG (NBG) 5-Letter Generic Pacemaker Code:\nStandardised by the North American Society of Pacing and Electrophysiology (NASPE) and the British Pacing and Electrophysiology Group (BPEG):\n• Position I — Chamber(s) Paced:\n  - O: None (e.g. sensing-only recording devices).\n  - A: Atrium (Single-chamber atrial pacing; e.g., AAI).\n  - V: Ventricle (Single-chamber ventricular pacing; e.g., VVI).\n  - D: Dual (Both Atrium and Ventricle paced; e.g., DDD).\n• Position II — Chamber(s) Sensed:\n  - O: None (Asynchronous modes; e.g., VOO, DOO).\n  - A: Atrium.\n  - V: Ventricle.\n  - D: Dual (Both Atrium and Ventricle sensed).\n• Position III — Response to Sensing:\n  - O: None (Ignores all intrinsic cardiac signals; fires at fixed rate).\n  - I: Inhibited (Intrinsic cardiac depolarisation suppresses/inhibits pacing pulse; demand mode).\n  - T: Triggered (Intrinsic event triggers an immediate pacing discharge).\n  - D: Dual (Atrial sensing triggers ventricular pacing after AV delay; ventricular sensing inhibits ventricular spike).\n• Position IV — Rate Modulation / Programmability:\n  - O: None (Fixed baseline pacing rate).\n  - R: Rate-Adaptive / Rate-Responsive (Internal biosensors, typically an accelerometer or minute-ventilation sensor, automatically accelerate heart rate during exercise, stress, or surgical trauma).\n• Position V — Multisite Pacing:\n  - O: None.\n  - A: Dual/multisite atrium (bi-atrial pacing).\n  - V: Dual/multisite ventricle (Biventricular pacing / CRT).\n  - D: Dual (Bi-atrial + Bi-ventricular).\n\n2. Surface ECG Changes Related to Pacemaker Activity:\n• Pacing Spikes:\n  - Narrow, vertical deflection (<2 ms) reflecting the electrical stimulus artifact.\n  - Unipolar Pacing: Anode is the titanium pulse generator casing in the chest wall; large current vector produces prominent 10–20 mm pacing spikes easily visible in all leads.\n  - Bipolar Pacing: Both anode and cathode reside within millimeters at the lead tip inside the heart; minimal electrical leakage generates tiny (1–2 mm) spikes that may be invisible on standard monitor filters.\n• Atrial Pacing (AAI / DDD):\n  - Spike immediately precedes the P wave.\n  - P-wave axis and morphology depend on lead fixation: upright in leads II, III, and aVF if fixed in the right atrial appendage; inverted if paced from the coronary sinus or low interatrial septum.\n  - Normal PR interval and narrow intrinsic QRS complex confirm intact atrioventricular nodal and His-Purkinje conduction.\n• Right Ventricular Apex Pacing (VVI / DDD):\n  - Spike immediately precedes a widened QRS complex (≥120 ms).\n  - Horizontal Plane: Depolarisation spreads from right to left ventricle across the non-specialised working myocardium, producing a classic Left Bundle Branch Block (LBBB) morphology (broad negative QS complex in V1–V2, broad notched R wave in lateral leads I, aVL, V5–V6).\n  - Frontal Plane: Depolarisation travels from the low RV apex upward toward the base, generating negative QRS deflections in inferior leads (II, III, aVF) and Left Axis Deviation (-30° to -90°).\n• Right Ventricular Outflow Tract (RVOT) / Septal Pacing:\n  - Produces LBBB morphology in V1 but with an Inferior Axis (+60° to +90°, tall upright R in leads II, III, and aVF), reflecting superior-to-inferior conduction.\n• His-Bundle / Conduction System Pacing (CSP):\n  - Captures the intrinsic His-Purkinje network directly, yielding a physiological, narrow QRS complex (<110–120 ms) with normal axis, preventing pacing-induced ventricular dyssynchrony and heart failure.\n• Biventricular Pacing (Cardiac Resynchronization Therapy / CRT):\n  - Leads in the RV apex/septum and the LV lateral wall (via the coronary sinus) fire simultaneously.\n  - Forces depolarisation from the lateral LV toward the RV, creating a prominent positive R wave in Lead V1 (Right Bundle Branch Block-like pattern or R/S ratio > 1.0) and a superior or rightward electrical axis.\n• Dual-Chamber AV Sequential Pacing (DDD):\n  - Displays two sequential pacing spikes: Atrial spike → captured P wave → programmed electronic AV delay (typically 150–200 ms) → Ventricular spike → wide paced QRS complex.\n  - Restores the physiological \"atrial kick\", augmenting left ventricular end-diastolic volume and increasing stroke volume by 20% to 30%.\n\n3. Diagnosing Acute Myocardial Infarction in RV Paced Rhythm:\nBecause RV apical pacing produces an artificial LBBB pattern with secondary ST-T discordance, standard STEMI criteria cannot be applied. Clinicians must use the Sgarbossa and Modified Smith-Sgarbossa Criteria:\n• Criterion 1 (Concordant ST Elevation, 5 points):\n  - ST-segment elevation ≥ 1 mm in any lead with a positive (upright) QRS complex. Highly specific (>95%) for acute coronary occlusion.\n• Criterion 2 (Concordant ST Depression, 3 points):\n  - ST-segment depression ≥ 1 mm in leads V1, V2, or V3 (leads with predominantly negative QRS complexes).\n• Criterion 3 (Excessive Discordance — Modified Smith-Sgarbossa Rule):\n  - ST-segment elevation / S-wave amplitude ratio ≤ -0.25 (i.e. discordant STE ≥ 25% of the preceding negative S wave depth). Replaces the original rigid 5 mm cutoff and raises diagnostic sensitivity to ~90%.\n\n4. ECG Recognition of Pacemaker Malfunctions:\n• Failure to Pace (Loss of Output / Inappropriate Inhibition):\n  - Total absence of pacing spikes despite the patient's intrinsic heart rate falling below the programmed lower rate limit.\n  - Causes: Oversensing (device misinterprets pectoral muscle myopotentials, shivering, or electrocautery EMI as intrinsic cardiac activity), lead fracture, loose terminal set screw, or battery depletion.\n• Failure to Capture:\n  - Pacing spike is visible at the correct timing interval, but is NOT followed by an evoked P wave or QRS complex.\n  - Causes: Lead dislodgement (most common in first 6 weeks), exit block, threshold rise from acute hyperkalaemia (K+ >6.5 mmol/L), class IC antiarrhythmics (flecainide), severe myocardial ischaemia or fibrosis at the electrode tip.\n• Undersensing:\n  - Pacemaker fails to detect intrinsic cardiac depolarisations; fires pacing spikes asynchronously into the cardiac cycle regardless of underlying rhythm.\n  - Lethal Hazard: An asynchronous ventricular spike falling onto the vulnerable phase of the intrinsic T wave (R-on-T phenomenon) can immediately trigger polymorphic ventricular tachycardia or ventricular fibrillation!\n• Pacemaker Syndrome:\n  - Occurs in single-chamber VVI pacing when loss of AV synchrony causes atria to contract against closed tricuspid/mitral valves, producing retrograde ventriculoatrial (VA) conduction, giant cannon A waves, hepatic pulsation, dizziness, and profound hypotension. Corrected by upgrading to dual-chamber DDD pacing.\n• Pacemaker-Mediated Tachycardia (PMT / Endless Loop Tachycardia):\n  - In DDD mode, a PVC produces retrograde VA conduction; the retrograde P wave is sensed by the atrial lead, which triggers ventricular pacing after the AV delay. This loop repeats at the Upper Tracking Rate (UTR, typically 120–160 bpm). Placing a magnet terminates the tachycardia immediately by disabling atrial sensing.\n\n5. Perioperative & Anesthetic Management (Magnet Response):\n• Pacemakers vs ICDs Magnet Response:\n  - PACEMAKER: Placing a donut or ring magnet over the generator converts the device to ASYNCHRONOUS PACING (VOO or DOO mode) at a fixed manufacturer-specific rate (Medtronic = 85 bpm, Boston Scientific = 100 bpm, Abbott/St. Jude = 100 bpm). The fixed rate also serves as an indicator of remaining battery longevity. Asynchronous pacing protects pacemaker-dependent patients from cautery-induced asystole!\n  - ICD (Defibrillator): Placing a magnet SUSPENDS anti-tachycardia therapy and defibrillation shocks (preventing inappropriate shocks from electrocautery EMI), but does NOT alter pacemaker functionality or provide asynchronous pacing!\n• Electrocautery (Bovie) Precautions:\n  - Use bipolar cautery whenever possible.\n  - If monopolar cautery is mandatory, use short bursts (<5 seconds), lowest effective energy, and position the dispersive return electrode (cautery pad) so that the current pathway never traverses the pacemaker generator or cardiac leads.",
+        "pearl": "Placing a surgical magnet over a PACEMAKER converts it to asynchronous pacing (VOO/DOO) at a fixed battery-indicator rate (typically 85–100 bpm), protecting against cautery-induced asystole. In contrast, placing a magnet over an ICD suspends tachyarrhythmia detection/defibrillation shocks, but does NOT switch pacing to asynchronous mode!",
+        "pitfall": "Never assume that acute STEMI cannot be diagnosed in a paced rhythm. Concordant ST elevation ≥1 mm in leads with positive QRS (Sgarbossa Criterion A, 5 points) or discordant ST elevation to S-wave amplitude ratio ≥25% (Modified Smith-Sgarbossa) is >95% specific for acute coronary occlusion!",
+        "example": "A 74-year-old pacemaker-dependent male with a dual-chamber DDD pacemaker undergoes TURP with monopolar electrocautery. During cautery activation, the monitor displays complete cessation of pacing spikes with 4.5-second ventricular asystolic pauses due to cautery electromagnetic interference (EMI) being oversensed as intrinsic cardiac activity. Placing a ring magnet directly over the generator instantly switches the device to DOO asynchronous pacing at a fixed rate of 90 bpm, completely eliminating inhibition and restoring arterial pressure."
+      }
+    ]
+  },
+  {
     "id": "abg-interpretation",
     "cat": "abg",
     "name": "ABG Interpretation: Systematic 6-Step Method & Reference Ranges",
