@@ -29,6 +29,8 @@
   const categories = [
     { id: "anaesthesia", label: "Anaesthesia", icon: "🫀", desc: "Core practice topics — assessment, airway, physiology, safety" },
     { id: "examination", label: "Clinical Examination", icon: "🩺", desc: "Pre-anaesthetic systematic bedside evaluation — Airway, Cardiovascular, Respiratory, Nervous & Gastrointestinal systems" },
+    { id: "ecg", label: "Electrocardiogram (ECG)", icon: "📈", desc: "12-Lead interpretation, cardiac axis, ventricular hypertrophy, bundle branch blocks, MI criteria, heart blocks & arrhythmias" },
+    { id: "abg", label: "Arterial Blood Gas (ABG)", icon: "🧪", desc: "Systematic acid-base analysis, compensation rules, Winter's formula, HAGMA, NAGMA & delta ratio" },
     { id: "equipment", label: "Equipment & Instruments", icon: "🌬️", desc: "Breathing systems, cylinders, soda lime, Venturi, infusion pumps, ECMO, dialysis, ventilators & airway instruments" },
     { id: "induction", label: "Induction Agents", icon: "💉", desc: "IV hypnotics used to induce general anaesthesia" },
     { id: "relaxants", label: "Muscle Relaxants", icon: "🧬", desc: "Depolarising & non-depolarising neuromuscular blockers" },
@@ -1008,465 +1010,6 @@ PATIENT CHECKOUT COMPLETE — PROCEED SAFELY WITH INDUCTION.`
   });
 
   topics.push({
-    id: "ecg-interpretation",
-    cat: "anaesthesia",
-    name: "ECG Interpretation & Perioperative Arrhythmias",
-    short: "ECG Interpretation",
-    tags: ["12-Lead ECG", "Axis & Hypertrophy", "Bundle Branch Blocks", "STEMI Criteria", "AV Blocks", "VT & VF", "Animated Waveforms"],
-    tagline: "Systematic 12-lead interpretation, hexaxial axis wheel, LVH/RVH voltage, BBBs, Universal STEMI definition, AV conduction blocks, and lethal ventricular rhythms",
-    source: "Fourth Universal Definition of Myocardial Infarction (ESC/ACC/AHA/WHF 2018/2023 update); 2023 ACC/AHA/ACCP/HRS Guideline for the Management of Patients With Bradycardia and Cardiac Conduction Delay; 2022/2024 ESC Guidelines for Ventricular Arrhythmias; Goldberger's Clinical Electrocardiography, 10th ed.; Miller's Anesthesia, 10th ed., Ch. 38.",
-    sections: [
-      {
-        h: "Basic ECG Interpretation: Calibration, Waves, Intervals & Reading Sequence",
-        diagram: "ecg-basic-waves",
-        table: {
-          headers: ["Parameter", "Paper Dimensions", "Time / Voltage Value", "Normal Reference Range", "Key Clinical Significance"],
-          rows: [
-            ["Paper Speed", "25 mm / second", "1 mm = 0.04 s (40 ms)", "Standard calibration", "50 mm/s doubles paper speed (used in electrophysiology to separate rapid wavelets)"],
-            ["Small Box (Time)", "1 mm horizontal", "0.04 seconds (40 ms)", "Fundamental time unit", "2.5 small boxes = 100 ms; 3 small boxes = 120 ms (QRS cutoff)"],
-            ["Large Box (Time)", "5 mm horizontal", "0.20 seconds (200 ms)", "5 small boxes = 0.20 s", "5 large boxes = 1.0 second; 300 large boxes = 1 minute"],
-            ["Voltage Calibration", "10 mm / mV", "1 mm = 0.1 mV", "Standard (10 mm pulse)", "Half-standard (5 mm/mV) used in massive LVH; Double-standard (20 mm/mV) for low voltage"],
-            ["Heart Rate (Regular)", "300 ÷ Large Boxes", "or 1500 ÷ Small Boxes", "60 to 100 bpm", "Count R-R: 1 box=300, 2=150, 3=100, 4=75, 5=60, 6=50 bpm"],
-            ["Heart Rate (Irregular)", "R waves in 30 large boxes × 10", "30 boxes = 6 seconds", "60 to 100 bpm", "Mandatory calculation method for Atrial Fibrillation and sinus arrhythmia"],
-            ["P Wave Duration", "<3 small boxes", "<120 ms (0.12 s)", "<120 ms width", "P-mitrale (>120 ms notched in Lead II) = Left Atrial Enlargement"],
-            ["P Wave Amplitude", "<2.5 small boxes", "<0.25 mV (2.5 mm)", "<2.5 mm in limb leads", "P-pulmonale (>2.5 mm peaked in Lead II) = Right Atrial Enlargement / Cor Pulmonale"],
-            ["PR Interval", "3 to 5 small boxes", "120 to 200 ms", "120–200 ms (0.12–0.20 s)", "<120 ms = WPW / junctional; >200 ms = First-degree AV block"],
-            ["QRS Duration", "<2.5 to 3 small boxes", "<100 to 120 ms", "Narrow (<100–120 ms)", "≥120 ms = Complete LBBB, RBBB, IVCD, or Ventricular Ectopy/Pacing"],
-            ["QTc Interval (Bazett)", "Beginning of Q to end of T", "QT / √(RR in seconds)", "♂ <440 ms, ♀ <460 ms", "Prolonged >480 ms; Critical Torsades de Pointes threshold >500 ms"]
-          ]
-        },
-        b: "A methodical 7-step reading sequence guarantees that subtle, life-threatening ischaemic or electrophysiological abnormalities are never missed:\n\n" +
-           "1. Standard Calibration & Technical Verification:\n" +
-           "• Paper Speed: Standard 25 mm/s. Every 1 mm small box horizontally equals 0.04 seconds (40 ms); every 5 mm large box equals 0.20 seconds (200 ms).\n" +
-           "• Voltage Calibration: Standard 10 mm/mV. Every 1 mm small box vertically equals 0.1 mV; a standard calibration pulse is a 10 mm high × 5 mm wide square box (1.0 mV × 0.20 s).\n" +
-           "• Lead Placement Sanity Check: Lead aVR must have completely negative deflections (inverted P, negative QRS, inverted T) in normal anatomy. An upright Lead aVR indicates limb lead reversal (right/left arm swapped) or dextrocardia.\n\n" +
-           "2. Heart Rate Calculation:\n" +
-           "• Regular Rhythm: Divide 300 by the number of large boxes between consecutive R-R intervals (or 1500 divided by the number of small boxes). Sequence: 300 → 150 → 100 → 75 → 60 → 50 bpm.\n" +
-           "• Irregular Rhythm (Atrial Fibrillation / Ectopy): Count the total number of QRS complexes in a 30-large-box strip (6 seconds) and multiply by 10.\n\n" +
-           "3. Rhythm & P-Wave Analysis:\n" +
-           "• Sinus Rhythm Diagnostic Criteria:\n" +
-           "  1. Positive, upright P waves in Leads I, II, and aVF (vector directed inferiorly and leftward from SA node).\n" +
-           "  2. Inverted, negative P wave in Lead aVR.\n" +
-           "  3. Every P wave followed by a QRS complex, and every QRS preceded by a P wave (1:1 ratio).\n" +
-           "  4. Constant, regular PR interval across beats at a rate of 60 to 100 bpm.\n" +
-           "• Atrial Enlargement Morphologies:\n" +
-           "  - P-Mitrale (Left Atrial Enlargement): Bifid, broad, notched P wave in Lead II (>120 ms wide with inter-peak notch >40 ms), plus biphasic P in Lead V1 with deep negative terminal deflection (>1 mm deep × >40 ms wide = Morris index >1 mm²).\n" +
-           "  - P-Pulmonale (Right Atrial Enlargement): Tall, peaked, tent-shaped P wave >2.5 mm in Leads II, III, and aVF, and >1.5 mm in Lead V1.\n\n" +
-           "4. PR Interval & PR Segment:\n" +
-           "• Normal Range: 120 to 200 ms (3 to 5 small boxes), measured from the beginning of the P wave to the beginning of the QRS complex.\n" +
-           "• Short PR Interval (<120 ms): Wolff-Parkinson-White (WPW) pre-excitation (short PR + slurred delta wave + wide QRS), Lown-Ganong-Levine (LGL) syndrome, or junctional rhythm.\n" +
-           "• Prolonged PR Interval (>200 ms): First-degree AV block.\n" +
-           "• PR Segment Depression: Hallmark of acute pericarditis (concomitant with diffuse concave ST elevation and reciprocal PR elevation in Lead aVR) or atrial infarction.\n\n" +
-           "5. QRS Complex Morphological Rules:\n" +
-           "• Duration: Normal <100–120 ms. Intermediate (100–119 ms = incomplete bundle branch block). Wide (≥120 ms = complete LBBB, RBBB, hyperkalaemia, WPW, or ventricular rhythm).\n" +
-           "• Normal Septal Q Waves: Small, physiological q waves (<30 ms wide, <2 mm deep, and <15% of R-wave amplitude) in lateral leads (I, aVL, V5, V6) representing initial left-to-right septal depolarization.\n" +
-           "• Pathological Q Waves: Duration ≥40 ms (1 small box), depth >25% of the corresponding R-wave amplitude, or present in leads V2–V3. Indicates transmural myocardial necrosis.\n" +
-           "• Precordial R-Wave Progression: Normal transition where rS in Lead V1 (r < S) transitions to equiphasic RS at Lead V3–V4, and evolves into a tall qR complex in Leads V5–V6 (R > S). Poor R-wave progression (persistent small r through V4) indicates prior anterior MI, severe LVH, or lead misplacement.\n\n" +
-           "6. ST Segment & T Wave Evaluation:\n" +
-           "• Baseline Reference: The TP segment (isoelectric baseline between T wave termination and next P wave). Avoid using the PR segment as baseline if PR depression is present.\n" +
-           "• J-Point (Junction): The exact point of transition between the end of the QRS complex and the beginning of the ST segment.\n" +
-           "• ST Elevation: Convex upward ('tombstone' / coving) = acute transmural STEMI; Concave upward ('saddleback') = acute pericarditis or benign early repolarisation.\n" +
-           "• T-Wave Orientation: Concordant with the dominant QRS deflection in most leads. Normally upright in I, II, V3–V6; inverted in aVR; variable in III, aVL, V1.\n" +
-           "• Symmetrical Tall Peaked T Waves: Hyperacute STEMI (broad base) vs Hyperkalaemia (narrow, pinched, 'tented' sharp base).\n" +
-           "• Giant Inverted T Waves ('Cerebral T Waves'): Deeply inverted, bizarre, wide T waves across precordial leads seen in acute intracranial haemorrhage (SAH), elevated ICP, or massive stroke.\n\n" +
-           "7. QT and Corrected QTc Calculations:\n" +
-           "• Measured from the onset of the Q wave to the end of the T wave (tangent method at baseline intersection).\n" +
-           "• Heart-Rate Correction Formulas:\n" +
-           "  - Bazett Formula: QTc = QT / √(RR in seconds). Most common, but overcorrects at rapid rates and undercorrects at slow rates.\n" +
-           "  - Fridericia Formula: QTc = QT / ∛(RR in seconds). Superior accuracy at extreme heart rates.\n" +
-           "• Normal Thresholds: QTc <440 ms in adult males; QTc <460 ms in adult females.\n" +
-           "• Prolonged QTc: >480 ms (abnormal). Critical Arrhythmia Threshold: QTc >500 ms carries severe risk of early afterdepolarisations (EADs) triggering polymorphic Ventricular Tachycardia (Torsades de Pointes).\n" +
-           "• Perioperative QT-Prolonging Culprits: 5-HT3 antagonists (Ondansetron), Butyrophenones (Droperidol), Volatile anaesthetics (Sevoflurane, Isoflurane), Methadone, Amiodarone, Hypokalaemia, Hypomagnesaemia, and Hypocalcaemia."
-      },
-      {
-        h: "Cardiac Axis Interpretation: Hexaxial System & Quadrant Analysis",
-        diagram: "ecg-axis-wheel",
-        b: "The mean electrical cardiac axis represents the net spatial direction of ventricular depolarization in the frontal plane, determined using the hexaxial reference system derived from Einthoven's triangle:\n\n" +
-           "1. Einthoven's Triangle & The Hexaxial System:\n" +
-           "• Bipolar Limb Leads: Lead I (0°), Lead II (+60°), Lead III (+120°). Einthoven's Law: Lead II = Lead I + Lead III.\n" +
-           "• Augmented Unipolar Leads: aVR (-150°), aVL (-30°), aVF (+90°).\n" +
-           "• Normal Mean QRS Vector: Directed downward and leftward towards the left ventricle, normally between -30° and +90°.\n\n" +
-           "2. Frontal Plane Axis Classifications:\n" +
-           "• Normal Axis: -30° to +90° (physiologically oriented towards left apex).\n" +
-           "• Left Axis Deviation (LAD): -30° to -90° (vector shifts superiorly and leftward).\n" +
-           "• Right Axis Deviation (RAD): +90° to +180° (vector shifts rightward and inferiorly).\n" +
-           "• Extreme Axis / Northwest Axis / Indeterminate: -90° to -180° (or +180° to +270°).\n\n" +
-           "3. Rapid Bed-Side Quadrant Assessment (The 2-Lead / 3-Lead Rule):\n" +
-           "Inspect Lead I (0°) and Lead aVF (+90°):\n" +
-           "• Lead I Positive (+), aVF Positive (+) → NORMAL AXIS (0° to +90°): Both thumbs pointing up.\n" +
-           "• Lead I Positive (+), aVF Negative (-) → Check Lead II (+60°)!\n" +
-           "  - If Lead II is POSITIVE (+) → NORMAL AXIS (-30° to 0°): Normal physiological variant.\n" +
-           "  - If Lead II is NEGATIVE (-) → TRUE LEFT AXIS DEVIATION (-30° to -90°): Pathological LAD confirmed.\n" +
-           "• Lead I Negative (-), aVF Positive (+) → RIGHT AXIS DEVIATION (+90° to +180°): Thumbs pointing away from each other ('RAD = Leaving each other').\n" +
-           "• Lead I Negative (-), aVF Negative (-) → EXTREME / NORTHWEST AXIS (-90° to -180°): Both thumbs pointing down. Strongly suggests Ventricular Tachycardia (VT) over SVT with aberrancy.\n\n" +
-           "4. Comprehensive Etiological Differential Diagnosis:\n" +
-           "• Causes of Left Axis Deviation (-30° to -90°):\n" +
-           "  1. Left Anterior Fascicular Block (LAFB / LAHB - #1 cause): Small q in I/aVL, small r in II/III/aVF (qR in I, rS in II/III/aVF), normal QRS duration.\n" +
-           "  2. Left Ventricular Hypertrophy (LVH).\n" +
-           "  3. Left Bundle Branch Block (LBBB).\n" +
-           "  4. Inferior Wall Myocardial Infarction (loss of inferior forces leaves unopposed superior vectors).\n" +
-           "  5. Wolff-Parkinson-White syndrome (right-sided accessory pathway).\n" +
-           "  6. Hyperkalaemia, mechanical ventilation, or elevated diaphragm (pregnancy, ascites).\n" +
-           "• Causes of Right Axis Deviation (+90° to +180°):\n" +
-           "  1. Right Ventricular Hypertrophy (RVH) & Chronic Cor Pulmonale (COPD).\n" +
-           "  2. Acute Pulmonary Embolism (acute right ventricular strain: S1Q3T3 pattern).\n" +
-           "  3. Left Posterior Fascicular Block (LPFB): rS in I/aVL, qR in II/III/aVF (must rule out RVH/PE first).\n" +
-           "  4. Lateral Wall Myocardial Infarction (loss of lateral forces leaves unopposed rightward vectors).\n" +
-           "  5. Normal physiological variant in children, infants, and tall, asthenic thin adults.\n" +
-           "  6. Technical artifact: Right/Left Arm lead reversal, or Dextrocardia.\n" +
-           "• Causes of Extreme / Northwest Axis (-90° to -180°):\n" +
-           "  1. Ventricular Tachycardia (VT) — key pathognomonic diagnostic discriminator!\n" +
-           "  2. Severe Hyperkalaemia (QRS widening with axis deviation).\n" +
-           "  3. Artificial Right Ventricular Apical Pacing.\n" +
-           "  4. Severe emphysema with cor pulmonale and massive right ventricular strain."
-      },
-      {
-        h: "Left Ventricular Hypertrophy (LVH) Criteria & Strain Pattern",
-        diagram: "ecg-lvh-waveform",
-        b: "Left Ventricular Hypertrophy (LVH) occurs in response to chronically elevated afterload (aortic stenosis, systemic hypertension) or volume overload. Increased myocyte mass amplifies total electrical dipole magnitude, generating huge voltages in leads overlying the left ventricle and deep reciprocal deflections in right-sided leads:\n\n" +
-           "1. Standard Diagnostic Voltage Criteria:\n" +
-           "• Sokolow-Lyon Voltage Criteria:\n" +
-           "  - S wave in Lead V1 + R wave in Lead V5 or V6 > 35 mm (>3.5 mV).\n" +
-           "  - R wave in Lead aVL ≥ 11 mm (1.1 mV) — single limb lead criterion with high specificity (>90%).\n" +
-           "• Cornell Voltage Criteria (Gender-Adjusted; Highest Diagnostic Accuracy):\n" +
-           "  - Men: R wave in aVL + S wave in V3 > 28 mm (>2.8 mV).\n" +
-           "  - Women: R wave in aVL + S wave in V3 > 20 mm (>2.0 mV).\n" +
-           "  - Cornell Voltage-Duration Product: (R_aVL + S_V3) × QRS duration (ms) > 2440 mm·ms (sensitivity 51%, specificity 95%).\n" +
-           "• Gubner-Ungerleider Criterion:\n" +
-           "  - R wave in Lead I + S wave in Lead III > 25 mm.\n\n" +
-           "2. Romhilt-Estes Point Score System (Gold Standard Pointwise System):\n" +
-           "Score ≥5 points = Definite LVH; Score 4 points = Probable LVH:\n" +
-           "• Any single lead amplitude criterion (3 points): R or S in any limb lead ≥20 mm, or S in V1/V2 ≥30 mm, or R in V5/V6 ≥30 mm.\n" +
-           "• ST-T segment strain abnormality (3 points without digitalis; 1 point with digitalis).\n" +
-           "• Left Atrial Enlargement in V1 (P-terminal force duration ≥40 ms × depth ≥1 mm = 3 points).\n" +
-           "• Left Axis Deviation ≤ -30° (2 points).\n" +
-           "• QRS Duration ≥90 ms (1 point).\n" +
-           "• Intrinsicoid Deflection in V5/V6 ≥50 ms (delayed ventricular activation time = 1 point).\n\n" +
-           "3. Left Ventricular 'Strain' Pattern (Repolarisation Abnormality):\n" +
-           "• Morphology: Asymmetrical, downsloping ST segment depression with discordant, deeply inverted T waves in the left-sided lateral leads (Leads I, aVL, V5, V6), accompanied by reciprocal ST elevation in right precordial leads (V1, V2).\n" +
-           "• Pathophysiology: Severe subendocardial ischaemia and delayed repolarisation of the thickened, highly pressurised left ventricular myocardium.\n\n" +
-           "4. Clinical Confounders & Limitations:\n" +
-           "• False Positives: Thin young athletes, tall asthenic males, chest wall deformities (pectus excavatum) — high voltage without hypertrophy.\n" +
-           "• False Negatives (Voltage Masking): Morbid obesity, emphysema/COPD (barrel chest insulates electrical conduction), large pericardial effusion, pleural effusion, myxoedema, or infiltrative cardiac amyloidosis."
-      },
-      {
-        h: "Right Ventricular Hypertrophy (RVH) Criteria & Strain Pattern",
-        diagram: "ecg-rvh-waveform",
-        b: "Because the normal adult left ventricle has three times the mass of the right ventricle, the LV normally dominates precordial vectors (producing small r and deep S in V1). Right Ventricular Hypertrophy (RVH) reverses this balance, directing forces anteriorly, rightward, and inferiorly:\n\n" +
-           "1. Standard Diagnostic Voltage Criteria:\n" +
-           "• Dominant R Wave in Lead V1:\n" +
-           "  - R wave amplitude in Lead V1 > 7 mm (>0.7 mV).\n" +
-           "  - R/S ratio in Lead V1 > 1.0 (normally R/S is <1.0 in V1).\n" +
-           "• Persistent Deep S Wave in Lateral Leads:\n" +
-           "  - S wave amplitude in Lead V5 or V6 > 7 mm.\n" +
-           "  - R/S ratio in Lead V5 or V6 < 1.0 (normally R/S is >1.0 in V5/V6).\n" +
-           "• Frontal Plane Right Axis Deviation (RAD):\n" +
-           "  - Mean electrical axis > +90° (often > +110°).\n\n" +
-           "2. Right Ventricular 'Strain' Pattern:\n" +
-           "• Convex, downsloping ST segment depression with asymmetric inverted T waves in right precordial leads (V1, V2, V3) and inferior leads (II, III, aVF).\n" +
-           "• Reflects RV subendocardial repolarisation delay and elevated RV end-diastolic pressures.\n\n" +
-           "3. Associated ECG Markers of Pulmonary Hypertension & Cor Pulmonale:\n" +
-           "• P-Pulmonale: Peaked P waves >2.5 mm in Lead II, III, aVF, and >1.5 mm in Lead V1 (Right Atrial Enlargement).\n" +
-           "• S1S2S3 Pattern: Prominent S waves across Leads I, II, and III (clockwise anatomical rotation).\n" +
-           "• S1Q3T3 Pattern (McGinn-White Sign): Deep S wave in Lead I, pathological Q wave in Lead III, and T-wave inversion in Lead III. Classic hallmark of acute cor pulmonale / massive Pulmonary Embolism.\n" +
-           "• Incomplete or Complete Right Bundle Branch Block (RBBB) pattern.\n\n" +
-           "4. Differential Diagnosis of Dominant Tall R Wave in Lead V1:\n" +
-           "  1. Right Ventricular Hypertrophy (RAD + RV strain present).\n" +
-           "  2. True Posterior Wall STEMI (reciprocal mirror image: tall R, horizontal ST depression, upright T in V1–V3).\n" +
-           "  3. Right Bundle Branch Block (QRS ≥120 ms, rsR' rabbit ears).\n" +
-           "  4. Wolff-Parkinson-White (WPW) Type A (left-sided accessory pathway with positive delta wave in V1).\n" +
-           "  5. Hypertrophic Cardiomyopathy (HCM) with asymmetric septal hypertrophy.\n" +
-           "  6. Normal paediatric ECG (physiological RV dominance in neonates/infants)."
-      },
-      {
-        h: "Bundle Branch Blocks: LBBB, RBBB & Sgarbossa STEMI Criteria",
-        diagram: "ecg-bbb-comparison",
-        table: {
-          headers: ["Feature / Lead", "Left Bundle Branch Block (LBBB)", "Right Bundle Branch Block (RBBB)"],
-          rows: [
-            ["QRS Duration", "≥120 ms (Complete LBBB); 100–119 ms (Incomplete)", "≥120 ms (Complete RBBB); 100–119 ms (Incomplete)"],
-            ["Septal Activation", "Reversed: Right-to-Left (loss of physiological septal Q in I, V5, V6)", "Normal: Left-to-Right (septal Q waves preserved in I, V5, V6)"],
-            ["Lead V1 / V2 Morphology", "Broad, deep QS or rS complex; discordant ST elevation", "Triphasic rsR' or rSR' ('rabbit ears'); R' > r; discordant ST-T inversion"],
-            ["Lead I, aVL, V5, V6", "Broad, notched or slurred R wave ('M-shaped' plateau); zero Q waves", "Normal initial R wave; wide, slurred, terminal S wave (>40 ms)"],
-            ["Intrinsicoid Deflection", "Delayed in V5/V6 (>60 ms); Normal in V1", "Delayed in V1 (>50 ms); Normal in V5/V6 (<50 ms)"],
-            ["Acute MI Diagnosis", "Standard STEMI criteria VOID; Must use Modified Smith-Sgarbossa criteria", "Standard STEMI criteria INTACT (septal and LV repol preserved)"],
-            ["Anaesthesia / Line Hazard", "PAC insertion hazard: new transient RBBB produces Complete Heart Block!", "Common benign finding; rarely progresses to acute complete AV block"]
-          ],
-          caption: "Table: Definitive diagnostic criteria, electrophysiological mechanisms, and clinical distinctions between Left and Right Bundle Branch Blocks."
-        },
-        b: "Bundle branch blocks represent intraventricular conduction delays where impulse propagation shifts from rapid Purkinje fibers to slow, cell-to-cell myocyte conduction:\n\n" +
-           "1. Left Bundle Branch Block (LBBB) Diagnostic Criteria (AHA/ACC/HRS):\n" +
-           "• QRS Duration ≥120 ms in adults (100–119 ms = Incomplete LBBB).\n" +
-           "• Broad, notched, or slurred R waves ('M-shaped' / plateau) in lateral leads (I, aVL, V5, V6), with prolonged intrinsicoid deflection >60 ms.\n" +
-           "• Complete Absence of Physiological Septal Q Waves in Leads I, V5, and V6 (due to reversed right-to-left septal activation).\n" +
-           "• Broad, predominantly negative QS or rS complexes in right precordial leads (V1, V2).\n" +
-           "• Appropriate ST-T Discordance: ST segment and T wave are oriented in the direction opposite to the primary QRS deflection (e.g. ST elevation and upright T wave in V1–V2 where QRS is negative; ST depression and inverted T in V5–V6 where QRS is positive).\n\n" +
-           "2. Diagnosing Acute Myocardial Infarction in LBBB (Sgarbossa & Modified Smith-Sgarbossa Criteria):\n" +
-           "Standard STEMI criteria cannot be applied in LBBB because baseline secondary repolarisation changes mask ischaemia. Validated Sgarbossa criteria must be used:\n" +
-           "• Criterion 1 (Concordant ST Elevation - 5 Points):\n" +
-           "  - ST elevation ≥1.0 mm (0.1 mV) concordant with a positive QRS complex in any single lead (Highest specificity: 98% for acute coronary occlusion!).\n" +
-           "• Criterion 2 (Concordant ST Depression - 3 Points):\n" +
-           "  - ST depression ≥1.0 mm concordant with a negative QRS complex in leads V1, V2, or V3 (Specificity: 90%).\n" +
-           "• Criterion 3 (Modified Smith-Sgarbossa Proportional Rule - Replaces Original 5 mm Rule):\n" +
-           "  - Excessively discordant ST elevation where ST elevation at the J-point is ≥25% of the depth of the preceding S wave (ST/S ratio ≤ -0.25). Sensitivity 91%, specificity 90% for acute occlusion STEMI!\n\n" +
-           "3. Right Bundle Branch Block (RBBB) Diagnostic Criteria:\n" +
-           "• QRS Duration ≥120 ms (complete RBBB).\n" +
-           "• Triphasic rsR' or rSR' pattern ('M-shaped' rabbit ears) in right precordial leads (V1, V2), with the secondary peak (R') taller than the primary (r).\n" +
-           "• Wide, slurred, terminal S wave in lateral leads (I, aVL, V5, V6) representing delayed RV activation moving away from lateral electrodes.\n" +
-           "• Normal septal depolarization is preserved (physiological q waves intact). Standard STEMI criteria remain fully valid in RBBB!\n" +
-           "• Secondary T-wave inversion in Leads V1–V2."
-      },
-      {
-        h: "Myocardial Infarction Criteria & Coronary Territory Localization",
-        diagram: "ecg-stemi-evolution",
-        table: {
-          headers: ["Infarct Territory", "Contiguous Diagnostic Leads", "Reciprocal ST Depression Leads", "Culprit Coronary Artery", "Critical Perioperative Haemodynamic Hazards"],
-          rows: [
-            ["Inferior Wall", "Leads II, III, aVF", "Leads I, aVL", "Right Coronary Artery (RCA ~85%) or LCx (~15%)", "High risk of sinus bradycardia, Mobitz I, and 3rd degree AV block; check RV involvement!"],
-            ["Right Ventricle (RV)", "Leads V3R, V4R (ST elevation ≥0.5 mm)", "None (co-exists with inferior STE)", "Proximal RCA occlusion (pre-RV marginal branch)", "PRELOAD DEPENDENT! Severe hypotension with nitrates/morphine/diuretics; treat with IV fluid boluses!"],
-            ["Anteroseptal", "Leads V1, V2, V3", "None (or Leads II, III, aVF)", "Left Anterior Descending (LAD) / Septal perforators", "Loss of anterior pump function; high risk of pump failure, cardiogenic shock, and infranodal CHB"],
-            ["Anterior Wall", "Leads V3, V4", "Leads II, III, aVF", "Left Anterior Descending (LAD) mid-vessel", "Extensive LV wall motion abnormality; acute pulmonary oedema; high mortality"],
-            ["Anterolateral / High Lateral", "Leads I, aVL, V5, V6", "Leads II, III, aVF", "Proximal LAD, Diagonal branches, or Circumflex (LCx)", "Severe LV dysfunction; high lateral often shows subtle isolated STE in I & aVL with deep inferior STD"],
-            ["Posterior Wall", "Leads V7, V8, V9 (STE ≥0.5 mm)", "Leads V1, V2, V3 (Mirror: Tall R, STD, Upright T)", "Left Circumflex (LCx) or Posterior Descending (PDA)", "Easily missed on standard 12-lead! Horizontal ST depression in V1–V3 requires placing V7–V9"]
-          ]
-        },
-        b: "The Fourth Universal Definition of Myocardial Infarction (2018/2023 ESC/ACC/AHA/WHF) establishes definitive clinical, biomarker, and electrocardiographic criteria for acute myocardial infarction:\n\n" +
-           "1. Universal Definition of Acute MI (Type 1):\n" +
-           "Detection of a rise and/or fall of cardiac troponin (cTn) with at least one value above the 99th percentile upper reference limit (URL), accompanied by at least one of:\n" +
-           "• Symptoms of acute myocardial ischaemia.\n" +
-           "• New ischaemic ECG changes (new ST-T changes or new LBBB).\n" +
-           "• Development of pathological Q waves.\n" +
-           "• Imaging evidence of new loss of viable myocardium or new regional wall motion abnormality (RWMA).\n" +
-           "• Identification of an acute coronary thrombus by angiography.\n\n" +
-           "2. Standard 12-Lead Electrocardiographic STEMI Criteria:\n" +
-           "New ST elevation at the J-point in at least TWO contiguous leads of:\n" +
-           "• Leads V2–V3:\n" +
-           "  - Men <40 years: ≥2.5 mm (0.25 mV).\n" +
-           "  - Men ≥40 years: ≥2.0 mm (0.20 mV).\n" +
-           "  - Women (any age): ≥1.5 mm (0.15 mV).\n" +
-           "• All other standard leads (I, II, III, aVL, aVF, V1, V4, V5, V6): ≥1.0 mm (0.10 mV) in men and women.\n" +
-           "• Posterior leads (V7–V9): ≥0.5 mm (≥1.0 mm in men <40 years).\n" +
-           "• Right ventricular leads (V3R, V4R): ≥0.5 mm (≥1.0 mm in men <30 years).\n\n" +
-           "3. Evolutionary Stages of STEMI:\n" +
-           "• 1. Hyperacute Phase (Minutes): Tall, broad, symmetrical hyperacute T waves with minimal ST shift.\n" +
-           "• 2. Acute Phase (Hours): Marked convex J-point ST elevation ('tombstone' coving) merging directly into T wave; reciprocal ST depression in opposing leads.\n" +
-           "• 3. Subacute Phase (Hours to Days): Development of pathological Q waves (≥40 ms or >25% R height), progressive loss of R-wave amplitude, ST segment returns towards baseline, and symmetrical T-wave inversion.\n" +
-           "• 4. Chronic / Healed Phase (Weeks to Months): Permanent pathological Q waves persist, ST segment is isoelectric, T wave may remain inverted or normalize.\n\n" +
-           "4. Critical STEMI Equivalents (Cath Lab Activation Required!):\n" +
-           "• Wellens Syndrome (Critical Proximal LAD Stenosis):\n" +
-           "  - Type A (25%): Biphasic T waves in Leads V2 and V3.\n" +
-           "  - Type B (75%): Deep, symmetrical T-wave inversions in Leads V2 and V3 (often extending V1–V5).\n" +
-           "  - Hallmark: Patient is pain-free when the ECG is recorded! High risk of imminent massive anterior wall MI within days.\n" +
-           "• de Winter T-Wave Pattern (Acute Proximal LAD Occlusion without STEMI):\n" +
-           "  - 1 to 3 mm upsloping ST depression at the J-point in Leads V1–V6 that continues into tall, prominent, symmetrical hyperacute T waves, plus 1 to 2 mm ST elevation in Lead aVR.\n" +
-           "• Isolated True Posterior STEMI:\n" +
-           "  - Horizontal ST depression in V1–V3 with tall, broad R waves (R/S > 1.0) and upright T waves (mirror image of posterior ST elevation); confirmed by placing leads V7–V9."
-      },
-      {
-        h: "Heart Blocks & AV Conduction Disorders (1st, 2nd & 3rd Degree)",
-        diagram: "ecg-heart-blocks",
-        table: {
-          headers: ["Type of AV Block", "PR Interval Behavior", "QRS Conduction Pattern", "Anatomical Site of Block", "Response to Atropine", "Clinical Prognosis & Pacemaker Need"],
-          rows: [
-            ["1st Degree AV Block", "Prolonged >200 ms; Constant beat to beat", "1:1 Conduction (every P followed by QRS)", "AV Node (Supra-Hisian delay)", "Responds (shortens PR interval)", "Benign; rarely progresses; review nodal blocking drugs"],
-            ["2nd Degree Mobitz I (Wenckebach)", "Progressive lengthening until dropped beat", "Grouped beating; regular dropped QRS beats", "AV Node (decremental conduction)", "Responds well (restores 1:1)", "Usually transient and benign (inferior MI, high vagal tone); pacing rarely needed"],
-            ["2nd Degree Mobitz II", "Fixed and constant before/after pause", "Sudden non-conducted P waves (2:1, 3:1)", "His-Purkinje System (Infranodal)", "POOR / HARMFUL (accelerates sinus rate)", "MALIGNANT; high risk of sudden complete heart block and syncope; Urgent Pacemaker!"],
-            ["High-Grade AV Block", "Constant when conducted", "≥2 consecutive blocked P waves", "His-Purkinje System (Infranodal)", "Unresponsive", "Malignant; severe bradycardia; urgent temporary/permanent pacing"],
-            ["3rd Degree (Complete) AV Block", "Completely variable (AV dissociation)", "Independent regular P-P and R-R intervals", "AV Node (Junctional) or His-Purkinje (Ventricular)", "Junctional escape responds; Ventricular escape fails", "EMERGENCY; hemodynamic collapse; immediate transcutaneous/transvenous pacing"]
-          ]
-        },
-        b: "Atrioventricular (AV) blocks represent impairment or complete interruption of impulse transmission from the atria to the ventricles, classified anatomically into Supra-Hisian (nodal) and Infra-Hisian (infranodal):\n\n" +
-           "1. First-Degree AV Block:\n" +
-           "• ECG Diagnostic Rules:\n" +
-           "  1. PR interval prolonged >200 ms (>0.20 seconds, or >5 small boxes).\n" +
-           "  2. Constant PR interval from beat to beat.\n" +
-           "  3. 1:1 AV conduction — every P wave is followed by a QRS complex.\n" +
-           "• Clinical Management: Usually asymptomatic and physiologically benign. Common in athletes (high vagal tone). Review AV nodal blocking medications (beta-blockers, diltiazem/verapamil, digoxin).\n\n" +
-           "2. Second-Degree AV Block — Type 1 (Mobitz I / Wenckebach):\n" +
-           "• ECG Diagnostic Rules:\n" +
-           "  1. Progressive prolongation of the PR interval on successive beats until a P wave completely fails to conduct (Dropped QRS).\n" +
-           "  2. The PR interval following the non-conducted P wave is the shortest of the cycle.\n" +
-           "  3. Characterized by 'group beating' with progressive shortening of the R-R interval prior to the pause.\n" +
-           "• Electrophysiology: Due to decremental conduction fatigue within the AV Node (Supra-Hisian). Narrow QRS complex is typical.\n" +
-           "• Clinical Management: Benign, reversible; frequently seen in acute inferior wall MI (RCA supplies AV node via AV nodal artery) and during sleep. Readily responsive to Atropine (0.5 to 1.0 mg IV).\n\n" +
-           "3. Second-Degree AV Block — Type 2 (Mobitz II):\n" +
-           "• ECG Diagnostic Rules:\n" +
-           "  1. Completely CONSTANT and FIXED PR intervals before and after the dropped QRS complex.\n" +
-           "  2. Intermittent, sudden failure of a P wave to conduct to the ventricles.\n" +
-           "• Electrophysiology: Infranodal block within the bundle of His or bilateral bundle branches. QRS complex is usually wide (≥120 ms) due to co-existing bundle branch block.\n" +
-           "• Clinical Management: Highly malignant! Carries extreme risk of sudden progression to complete heart block, syncope (Stokes-Adams attacks), and sudden cardiac arrest. Atropine is completely ineffective and potentially dangerous (increasing sinus rate increases the number of blocked beats!). Requires immediate Transcutaneous Pacing (TCP) pads applied and urgent permanent pacemaker insertion.\n\n" +
-           "4. Third-Degree (Complete) AV Block (CHB):\n" +
-           "• ECG Diagnostic Rules:\n" +
-           "  1. Complete absence of AV conduction: complete AV dissociation.\n" +
-           "  2. Independent, regular P-P intervals (sinus rate 60 to 100 bpm).\n" +
-           "  3. Independent, regular R-R intervals (escape rate 20 to 60 bpm).\n" +
-           "  4. Completely random, variable PR intervals with P waves marching directly through QRS complexes, ST segments, and T waves.\n" +
-           "• Escape Pacemaker Focus:\n" +
-           "  - Junctional Escape: Narrow QRS (<120 ms), rate 40 to 60 bpm; relatively stable haemodynamics; responds to atropine.\n" +
-           "  - Ventricular Escape: Wide, bizarre QRS (≥120 ms), rate 20 to 40 bpm; severely unstable haemodynamics; refractory to atropine.\n" +
-           "• Emergency Resuscitation: Immediate Transcutaneous Pacing (TCP) with sedation/analgesia, urgent Transvenous Pacing (TVP), and chronotropic infusions (Isoproterenol 2–10 mcg/min, Epinephrine 2–10 mcg/min, or Dopamine 5–20 mcg/kg/min)."
-      },
-      {
-        h: "Ventricular Tachycardia (Monomorphic, Polymorphic, Brugada Algorithm & Treatment)",
-        diagram: "ecg-vt-waveform",
-        table: {
-          headers: ["Criterion / Step", "Ventricular Tachycardia (VT)", "SVT with Aberrant Conduction"],
-          rows: [
-            ["Precordial Concordance", "Entirely positive (all R) or entirely negative (all QS) in V1–V6 = VT", "Discordant (typical RBBB or LBBB progression across chest leads)"],
-            ["Absence of RS complex", "Absence of RS complex in all precordial leads V1–V6 = VT", "RS complexes present in one or more precordial chest leads"],
-            ["RS Interval Duration", "Onset of R to nadir of S >100 ms in any lead = VT", "RS interval <100 ms"],
-            ["AV Dissociation", "Present: Independent marching P waves, capture beats, fusion beats = 100% VT", "Absent: 1:1 relationship or retrogradely conducted P waves"],
-            ["Frontal Plane Axis", "Extreme / Northwest Axis (-90° to -180°) strongly favors VT", "Normal axis or classic LAD / RAD matching pre-existing BBB"],
-            ["Vereckei aVR Criterion", "Initial dominant R wave in Lead aVR = VT! Initial r or q >40 ms = VT!", "Initial r <40 ms with rapid terminal descent in aVR"],
-            ["Clinical Rule of Thumb", "Assume ANY Wide Complex Tachycardia is VT until proven otherwise (80–90%)", "Treating VT with Verapamil or Adenosine causes fatal vascular collapse!"]
-          ]
-        },
-        b: "Ventricular Tachycardia (VT) is defined as three or more consecutive ventricular complexes at a rate >100 bpm (typically 140 to 250 bpm) arising distal to the bifurcation of the bundle of His:\n\n" +
-           "1. Classification of Ventricular Tachycardia:\n" +
-           "• Monomorphic VT: Uniform, identical QRS morphology from beat to beat, typically generated by stable re-entrant scar tissue from previous myocardial infarction.\n" +
-           "• Polymorphic VT: Continuously varying QRS morphology, electrical axis, and amplitude, reflecting multiple re-entrant wavelets in acute myocardial ischaemia.\n" +
-           "• Torsades de Pointes (TdP): Specific polymorphic VT occurring in the setting of prolonged baseline QTc (>500 ms). Displays characteristic spindle-and-node morphology where the peaks of the QRS complexes twist around the isoelectric line at 200–250 bpm. Triggered by early afterdepolarisations (EADs); treated with IV Magnesium Sulphate (2 grams over 10 minutes), overdrive pacing (90–110 bpm), and withdrawal of all QT-prolonging drugs.\n\n" +
-           "2. Differentiating VT from SVT with Aberrancy (The Wide Complex Tachycardia Dilemma):\n" +
-           "CRITICAL SAFETY RULE: Always treat an undifferentiated regular Wide Complex Tachycardia (WCT) as Ventricular Tachycardia! Over 80% of all WCTs (and >90% in patients with structural heart disease or prior MI) are VT. Administering calcium channel blockers (verapamil, diltiazem) or adenosine for undiagnosed VT precipitates cardiovascular collapse and ventricular fibrillation.\n\n" +
-           "3. The Brugada 4-Step Diagnostic Algorithm:\n" +
-           "• Step 1: Absence of an RS complex in all precordial leads V1–V6? If YES → VT diagnosed (100% specificity).\n" +
-           "• Step 2: Is the longest RS interval (from R-wave onset to S-wave nadir) >100 ms in any lead? If YES → VT diagnosed.\n" +
-           "• Step 3: Is Atrioventricular (AV) Dissociation present? If YES → VT diagnosed.\n" +
-           "• Step 4: Are morphological criteria for VT satisfied in both Leads V1/V2 and V6? If YES → VT diagnosed.\n\n" +
-           "4. Pathognomonic Features of VT:\n" +
-           "• AV Dissociation: Independent atrial P waves marching through the wide ventricular complexes at a slower rate.\n" +
-           "• Capture Beats: An occasional supraventricular impulse conducts through the AV node, capturing the ventricle to produce a transient, completely normal narrow QRS complex.\n" +
-           "• Fusion Beats (Dressler Beats): Hybrid QRS morphology resulting from simultaneous ventricular activation by both a descending supraventricular beat and the ectopic ventricular pacemaker.\n" +
-           "• Precordial Concordance: Completely positive (all monophasic R) or completely negative (all QS) complexes across V1 through V6.\n\n" +
-           "5. Emergency Management Protocols:\n" +
-           "• Unstable VT (Hypotension, altered mental status, chest pain, acute pulmonary oedema): Immediate Synchronized Electrical Cardioversion (100 J biphasic → 200 J biphasic) under intravenous sedation.\n" +
-           "• Pulseless VT: Treat as Cardiac Arrest! Immediate Unsynchronized Defibrillation (200 J biphasic) + ACLS algorithm.\n" +
-           "• Stable Monomorphic VT: Intravenous Amiodarone 150 mg infused over 10 minutes (repeatable once), followed by 1 mg/min for 6 hours, then 0.5 mg/min for 18 hours. Alternatively, Procainamide 20 to 50 mg/min IV (up to 17 mg/kg). Synchronized electrical cardioversion if pharmacological therapy fails."
-      },
-      {
-        h: "Ventricular Fibrillation (Coarse vs Fine VF & ACLS Resuscitation Protocol)",
-        diagram: "ecg-vf-waveform",
-        b: "Ventricular Fibrillation (VF) is a lethal, uncoordinated cardiac rhythm characterized by completely disorganized, chaotic ventricular depolarizations arising from multiple asynchronous micro-reentrant wavelets. Mechanical stroke volume and cardiac output drop immediately to ZERO, resulting in clinical cardiac arrest and brain death within 4 to 6 minutes without resuscitation:\n\n" +
-           "1. Electrocardiographic Diagnostic Criteria:\n" +
-           "• Total absence of identifiable P waves, QRS complexes, ST segments, or T waves.\n" +
-           "• Continuous, irregular, shapeless, chaotic baseline undulations varying wildly in amplitude, wavelength, and contour at a frequency of 150 to 500/min.\n\n" +
-           "2. Coarse VF vs Fine VF:\n" +
-           "• Coarse Ventricular Fibrillation:\n" +
-           "  - Amplitude of fibrillatory undulations ≥0.2 mV (≥2 mm).\n" +
-           "  - Represents early, recent-onset cardiac arrest with preserved myocardial high-energy phosphate stores (ATP).\n" +
-           "  - Highly responsive to electrical defibrillation.\n" +
-           "• Fine Ventricular Fibrillation:\n" +
-           "  - Amplitude of fibrillatory undulations <0.2 mV (<2 mm).\n" +
-           "  - Represents prolonged ischaemic arrest, depleted myocardial ATP, and impending asystole.\n" +
-           "  - Poor defibrillation success rate; requires high-quality CPR and Epinephrine to coarsen the fibrillatory amplitude before shock.\n" +
-           "• CRITICAL PITFALL — Fine VF vs Asystole:\n" +
-           "  - Fine VF is frequently misdiagnosed as Asystole ('flat line'). Always verify lead integrity, ensure monitor gain (amplitude) is turned up, and check at least TWO orthogonal leads. Fine VF is SHOCKABLE; Asystole is NOT shockable! Shocking asystole damages myocardium and eliminates intrinsic pacemaker recovery.\n\n" +
-           "3. AHA/ERC ACLS Resuscitation Protocol for Shockable Rhythms (VF / Pulseless VT):\n" +
-           "• 1. Immediate High-Quality CPR: Chest compression rate 100 to 120/min, depth 5 to 6 cm (2 to 2.4 inches), full chest recoil, minimal interruptions (<10 seconds). Ratio 30:2 or continuous with advanced airway (1 breath every 6 seconds).\n" +
-           "• 2. Immediate Unsynchronized Defibrillation: 200 Joules biphasic (or maximum manufacturer dose, e.g. 120–200 J; 360 J monophasic). Deliver shock immediately upon rhythm identification.\n" +
-           "• 3. Immediate CPR Resumption: Resume chest compressions immediately for 2 full minutes without pausing to check pulse or rhythm.\n" +
-           "• 4. Epinephrine: 1 mg IV/IO every 3 to 5 minutes (administered after the second defibrillation shock).\n" +
-           "• 5. Antiarrhythmic Therapy (For Shock-Refractory VF after 3rd Shock):\n" +
-           "  - Amiodarone: 300 mg IV/IO rapid push after shock 3; second dose of 150 mg IV/IO after shock 5.\n" +
-           "  - Alternative: Lidocaine 1.0 to 1.5 mg/kg IV/IO first dose, followed by 0.5 to 0.75 mg/kg for second dose (maximum 3 mg/kg).\n" +
-           "• 6. Treat Reversible Underlying Causes (The 5 H's and 5 T's):\n" +
-           "  - Hypovolaemia, Hypoxia, Hydrogen ion (Acidosis), Hypo/Hyperkalaemia, Hypothermia.\n" +
-           "  - Tension pneumothorax, Tamponade (cardiac), Toxins, Thrombosis (pulmonary), Thrombosis (coronary / acute MI)."
-      },
-      {
-        h: "Hyperkalaemia in ECG: Serum Level-Wise ECG Progression & Emergency Protocol",
-        diagram: "ecg-hyperkalemia-waveform",
-        table: {
-          headers: ["Serum K⁺ Level (mmol/L)", "Severity Grade", "Key ECG Morphological Changes", "Electrophysiological Mechanism", "Arrhythmia Risks & Emergency Interventions"],
-          rows: [
-            ["3.5 to 5.0 mmol/L", "Normal Reference", "Normal P-QRS-T contours; QTc normal (<440 ms in men, <460 ms in women)", "Resting membrane potential Em = -90 mV; normal Phase 0 Vmax and Phase 3 repolarisation", "Baseline rhythm monitoring; no electrolyte intervention required"],
-            ["5.5 to 6.5 mmol/L", "Mild Hyperkalaemia", "Tall, peaked, narrow-based, symmetrical 'tented' T waves; shortened QT/QTc interval", "Increased extracellular K+ enhances I_Kr (rapid delayed rectifier) conductance, accelerating Phase 3 repolarisation", "Earliest sign (most prominent in V2–V4); withhold all exogenous K+ and K+-sparing drugs; obtain urgent repeat lab check"],
-            ["6.5 to 7.5 mmol/L", "Moderate Hyperkalaemia", "Prolonged PR interval (>200 ms); flattening and widening of P waves; widening of QRS complex (>120 ms); ST elevation mimicking STEMI or Brugada phenocopy ('dialysis pseudoinfarction')", "Em becomes less negative (-80 to -70 mV), inactivating voltage-gated Na+ channels; Phase 0 dV/dt (Vmax) decreases markedly, slowing intra-atrial and intraventricular conduction", "High risk of high-grade AV block and junctional rhythm; initiate transcellular shifting: 10u Regular Insulin + 25g D50 IV, inhaled Salbutamol 10–20 mg, IV NaHCO3 if acidotic"],
-            ["7.5 to 8.5 mmol/L", "Severe Hyperkalaemia", "Complete loss of P waves (atrial inexcitability resulting in sinoventricular conduction); marked QRS widening (>160–200 ms); blending of QRS into ST-T wave; progressive bradycardia", "Atrial myocytes lose excitability before specialized conducting tissues; sinus node continues to drive ventricles through internodal tracts without generating an atrial surface wave", "Imminent cardiac arrest! Administer 10% Calcium Gluconate 10–30 mL IV over 5–10 min (or CaCl2 10 mL via central line) to stabilize myocardium"],
-            [">8.5 to 9.0 mmol/L", "Extreme / Pre-Terminal", "Classic 'Sine-Wave' pattern (smooth, wide, undulating biphasic sinusoidal wave resulting from total fusion of QRS and T wave); Asystole or Ventricular Fibrillation", "Profound myocardial inexcitability; complete failure of sodium and potassium channel gating; loss of coordinated electrical wavefronts", "MEDICAL EMERGENCY! Calcium Gluconate STAT (repeat every 5–10 min until QRS narrows), aggressive shifting, continuous CPR if pulseless, emergent Hemodialysis"]
-          ]
-        },
-        b: "Hyperkalaemia is one of the most rapidly lethal electrolyte emergencies encountered in perioperative medicine and intensive care. Electrocardiographic changes correlate closely with the rate of serum potassium rise and absolute extracellular concentration:\n\n" +
-           "1. Electrophysiological Foundations of Hyperkalaemia:\n" +
-           "• The Nernst Potential Shift: In accordance with the Nernst equation (E_K = -61.5 * log([K+]_i / [K+]_o)), an elevation in extracellular potassium decreases the transmembrane concentration gradient. This shifts the resting membrane potential (E_m) to a less negative value (e.g. from normal -90 mV to -75 or -70 mV).\n" +
-           "• Voltage-Gated Fast Sodium Channel Inactivation: Depolarisation of E_m to less negative potentials causes progressive conformational inactivation of fast Na+ channels. Consequently, Phase 0 upstroke velocity (V_max or dV/dt) decreases dramatically, markedly impairing conduction velocity across the atria, AV node, His-Purkinje system, and ventricles (producing P-wave flattening, PR prolongation, and QRS widening).\n" +
-           "• Accelerated Phase 3 Repolarisation (T-Wave Tenting): Paradoxically, elevated extracellular potassium increases the open probability and conductance of the rapid delayed rectifier potassium channel (I_Kr). Outward potassium efflux during Phase 3 is accelerated and synchronised, yielding the pathognomonic tall, narrow-based, pointed 'tented' T waves with a shortened QT interval.\n\n" +
-           "2. Step-by-Step Level-Wise Electrocardiographic Progression:\n" +
-           "• Stage 1 (K+ 5.5 to 6.5 mmol/L): Tall, symmetrical, pointed T waves with narrow bases ('tented' T waves), best visualized in precordial leads V2 to V4. Differs from hyperacute T waves of myocardial infarction, which have broad bases and are asymmetric.\n" +
-           "• Stage 2 (K+ 6.5 to 7.5 mmol/L): Progressive PR prolongation (>200 ms) and P-wave flattening/widening (intra-atrial conduction delay). QRS complex begins to widen (>120 ms) with diffuse intraventricular conduction defect (IVCD).\n" +
-           "• Stage 3 (K+ 7.5 to 8.5 mmol/L): Atrial standstill with complete disappearance of surface P waves. The sinus node continues to pace the heart, with impulses conducted to the AV node and ventricles via the specialized internodal tracts without depolarizing atrial myocardium ('Sinoventricular Rhythm'). Marked QRS widening (>160 ms).\n" +
-           "• Stage 4 (K+ >8.5 to 9.0 mmol/L): Complete fusion of the widened QRS complex with the peaked T wave, producing a continuous, smooth, undulating biphasic sinusoidal wave ('Sine-Wave' Pattern). This is an ominous, pre-terminal rhythm that degenerates into Ventricular Fibrillation, Pulseless Electrical Activity (PEA), or Asystole within minutes.\n\n" +
-           "3. Pseudoinfarction & Brugada Phenocopy Patterns:\n" +
-           "• Severe hyperkalaemia can produce marked ST-segment elevation in leads V1 to V3, closely mimicking acute anterior STEMI or a Type 1 Brugada pattern ('Brugada Phenocopy').\n" +
-           "• Dialysis Pseudoinfarction: In end-stage renal disease patients, hyperkalaemic ST elevation resolves completely and immediately following intravenous calcium administration or emergent dialysis.\n\n" +
-           "4. Triple-Pillar Emergency Management Protocol:\n" +
-           "• Pillar 1 — Myocardial Membrane Stabilization (Immediate Onset: 1 to 3 minutes):\n" +
-           "  - 10% Calcium Gluconate: 10 to 30 mL IV infused over 5 to 10 minutes. Preferred for peripheral intravenous administration because it causes minimal tissue necrosis if extravasated.\n" +
-           "  - 10% Calcium Chloride: 5 to 10 mL IV. Contains three times more elemental calcium than calcium gluconate; preferred in cardiac arrest or profound shock. Strictly administered via central venous line due to severe chemical phlebitis and necrosis if peripheral extravasation occurs.\n" +
-           "  - Mechanism: Calcium does NOT lower serum potassium! Instead, extracellular calcium increases the threshold potential (V_th) towards less negative values, restoring the critical electrical gradient between resting potential (E_m) and threshold potential (V_th). Duration of effect: 30 to 60 minutes; repeat if QRS widens again.\n" +
-           "• Pillar 2 — Transcellular Potassium Shifting (Onset: 15 to 30 minutes):\n" +
-           "  - Regular Insulin + Dextrose: 10 units of Regular Insulin IV bolus followed immediately by 50 mL of 50% Dextrose (25 g glucose) over 15 to 30 minutes (or 100 mL of 20% Dextrose). Insulin stimulates the skeletal muscle Na+/K+ ATPase pump, driving potassium into cells. Lowers serum K+ by 0.5 to 1.2 mmol/L for 4 to 6 hours.\n" +
-           "  - Inhaled Salbutamol (Albuterol): 10 to 20 mg nebulized in 4 mL normal saline. Beta-2 adrenergic stimulation activates adenylate cyclase, raising intracellular cAMP and driving Na+/K+ ATPase activity.\n" +
-           "  - Sodium Bicarbonate 8.4%: 50 to 100 mEq IV over 10 to 15 minutes. Useful primarily when hyperkalaemia is accompanied by concurrent severe metabolic acidosis (pH <7.20).\n" +
-           "• Pillar 3 — Total Body Potassium Elimination (Onset: 1 to 4 hours):\n" +
-           "  - Loop Diuretics: Furosemide 40 to 80 mg IV in patients with preserved renal function to increase kaliuresis.\n" +
-           "  - Potassium Binders: Sodium zirconium cyclosilicate (Lokelma) 10 g PO TID, or Patiromer 8.4 g PO once daily.\n" +
-           "  - Emergent Hemodialysis: The gold standard, definitive modality for severe, refractory hyperkalaemia and patients with established ESRD or acute anuric renal failure."
-      },
-      {
-        h: "Hypokalaemia in ECG: Serum Level-Wise ECG Progression & Replacement Safety",
-        diagram: "ecg-hypokalemia-waveform",
-        table: {
-          headers: ["Serum K⁺ Level (mmol/L)", "Severity Grade", "Key ECG Morphological Changes", "Electrophysiological Mechanism", "Arrhythmia Risks & Emergency Replacement Safety"],
-          rows: [
-            ["3.5 to 5.0 mmol/L", "Normal Reference", "Normal upright T waves; small U waves (<1 mm) may be physiological in young athletes", "Normal resting potential Em = -90 mV; normal Phase 3 repolarisation via I_Kr/I_Ks channels", "No replacement required; routine clinical monitoring"],
-            ["3.0 to 3.5 mmol/L", "Mild Hypokalaemia", "Decreased T wave amplitude, flattening of T waves, mild ST depression (0.5 mm), emergence of noticeable U waves", "Hyperpolarisation of resting membrane potential; delayed Phase 3 repolarisation due to reduced I_Kr channel conductance", "Low risk in healthy hearts; in CAD or digoxin therapy, triggers atrial/ventricular ectopy; Oral KCl 20–40 mEq/day"],
-            ["2.5 to 3.0 mmol/L", "Moderate Hypokalaemia", "Marked ST depression (≥0.5–1.0 mm); T wave flattening or shallow inversion; prominent U waves (>1.0 mm or >50% of T wave height in V2–V3); T-U fusion creating pseudo-prolonged QU interval ('apparent long QT')", "Marked prolongation of repolarisation specifically in Mid-myocardial M cells and Purkinje fibers; enhanced Phase 4 diastolic depolarisation", "Frequent ventricular premature complexes (PVCs), bigeminy, atrial fibrillation; IV KCl infusion at strictly ≤10 mEq/h peripheral line"],
-            ["<2.5 mmol/L", "Severe Hypokalaemia", "Giant U waves exceeding T wave amplitude (U > T); deep horizontal/downsloping ST depression; markedly prolonged QU interval (>500–600 ms); extreme ventricular ectopy", "Extreme repolarisation delay and trans-mural dispersion of repolarisation triggering Early Afterdepolarizations (EADs) and Phase 2/3 reentry", "CRITICAL ARRHYTHMIA HAZARD: Torsades de Pointes, polymorphic VT, and VF! Requires urgent IV KCl up to 20 mEq/h via central line + 1–2g IV Magnesium Sulphate"]
-          ]
-        },
-        b: "Hypokalaemia (serum potassium <3.5 mmol/L) is the most frequent electrolyte disturbance in surgical and anaesthetized patients, occurring in up to 20% of hospitalized patients and over 40% of patients receiving diuretics:\n\n" +
-           "1. Electrophysiological Foundations of Hypokalaemia:\n" +
-           "• Resting Membrane Hyperpolarization: In accordance with the Nernst equation, lower extracellular potassium increases the transmembrane potassium gradient, shifting the resting membrane potential (E_m) to a more negative value (e.g. -95 mV). This hyperpolarization increases the voltage distance to threshold potential, slowing conduction velocity in some tissues while paradoxically enhancing Phase 4 automaticity in Purkinje fibers.\n" +
-           "• Paradoxical Delay of Repolarisation: Low extracellular potassium inhibits the outward delayed rectifier potassium current (I_Kr). This markedly prolongs the cardiac action potential duration (APD) and increases transmural dispersion of repolarisation between epicardial, endocardial, and mid-myocardial M cells.\n" +
-           "• Genesis of Early Afterdepolarizations (EADs): Prolongation of Phase 2 and Phase 3 plateaus allows reactivation of L-type calcium channels (I_Ca,L) and the sodium-calcium exchanger (NCX), generating triggered depolarizations (EADs). When an EAD reaches threshold during repolarization, it initiates ventricular ectopy, non-sustained VT, or lethal Torsades de Pointes (Polymorphic VT).\n\n" +
-           "2. The Pathognomonic U Wave & The QU vs QT Conundrum:\n" +
-           "• Morphological Characteristics of the U Wave:\n" +
-           "  - A small, rounded deflection immediately following the T wave, representing repolarization of the mid-myocardial M cells and the Purkinje conduction network.\n" +
-           "  - Normal U wave: amplitude <1 mm (or <25% of preceding T wave), upright in leads with positive T waves, and best visualized in precordial leads V2 and V3.\n" +
-           "  - Hypokalaemic U wave: amplitude exceeds 1.0 mm (or >50% of the preceding T-wave amplitude). In severe hypokalaemia, the U wave becomes taller than the T wave (U > T), producing a characteristic 'camel hump' contour.\n" +
-           "• The Pseudo-Prolonged QU Interval ('Apparent Long QT'):\n" +
-           "  - As hypokalaemia progresses, ST depression develops, the T wave flattens, and the prominent U wave merges into the terminal limb of the T wave.\n" +
-           "  - Automated ECG machines and clinicians frequently misidentify the peak of the U wave as the end of the T wave, falsely reporting an extremely prolonged QT interval. The true measurement is the QU interval, which reflects delayed myocardial repolarization.\n\n" +
-           "3. Digitalis Toxicity Potentiation:\n" +
-           "• Potassium and Digoxin compete for overlapping binding sites on the extracellular alpha-subunit of the myocardial Na+/K+ ATPase pump.\n" +
-           "• When extracellular potassium is low, digoxin binding is uninhibited and greatly increased, precipitating severe digitalis toxicity even at therapeutic serum digoxin concentrations.\n" +
-           "• Classic manifestations: Bidirectional Ventricular Tachycardia, Paroxysmal Atrial Tachycardia with 2:1 AV block, junctional escape rhythm, and PVC bigeminy.\n\n" +
-           "4. Evidence-Based Potassium Repletion Protocols & Nursing Safety Constraints:\n" +
-           "• Peripheral Intravenous Infusion Rules:\n" +
-           "  - Maximum Peripheral Rate: strictly <=10 mEq/hour.\n" +
-           "  - Maximum Peripheral Concentration: <=40 mEq/L (preferably in 0.9% Normal Saline; avoid Dextrose 5% solutions because dextrose-induced insulin secretion drives potassium intracellularly, temporarily worsening hypokalaemia!).\n" +
-           "  - Rationale: High potassium concentrations cause intense chemical phlebitis, excruciating burning pain, and venous thrombosis in peripheral veins.\n" +
-           "• Central Venous Infusion Protocol:\n" +
-           "  - In severe hypokalaemia (<2.5 mmol/L) with malignant ventricular arrhythmias or cardiac arrest: infusion rates up to 20 mEq/hour (concentration 60 to 80 mEq/L) may be infused strictly via a central venous line with continuous 12-lead ECG telemetry in an ICU/HDU setting.\n" +
-           "• Mandatory Magnesium Co-Administration:\n" +
-           "  - Hypomagnesaemia is present in 40% to 50% of patients with hypokalaemia.\n" +
-           "  - Electrophysiological Gate: Intracellular magnesium (Mg2+) acts as an essential physiological blocker of renal outer medullary potassium (ROMK) channels in the distal nephron. When magnesium is depleted, the inhibitory blockade is lost, leading to massive, unabated renal potassium wasting in urine.\n" +
-           "  - In addition, low magnesium impairs the enzymatic activity of the Na+/K+ ATPase pump.\n" +
-           "  - CLINICAL GOLDEN RULE: Hypokalaemia refractory to intravenous potassium repletion is almost universally caused by concomitant hypomagnesaemia! Always co-administer Magnesium Sulphate 1 to 2 g (4 to 8 mmol) IV over 15 to 30 minutes."
-      }
-    ],
-    references: [
-      "Fourth Universal Definition of Myocardial Infarction: Consensus Document of the Joint European Society of Cardiology (ESC) / American College of Cardiology (ACC) / American Heart Association (AHA) / World Heart Federation (WHF) Task Force (Circulation 2018 / 2023 update).",
-      "2023 ACC/AHA/ACCP/HRS Guideline for the Management of Patients With Bradycardia and Cardiac Conduction Delay (J Am Coll Cardiol 2023 / Circulation 2023).",
-      "2022 ESC Guidelines for the Management of Patients With Ventricular Arrhythmias and the Prevention of Sudden Cardiac Death (Eur Heart J 2022 / 2024 update).",
-      "American Heart Association (AHA) Guidelines for Cardiopulmonary Resuscitation (CPR) and Emergency Cardiovascular Care (Circulation 2020 / 2025 update).",
-      "Goldberger AL, Goldberger ZD, Shvilkin A. Goldberger's Clinical Electrocardiography: A Simplified Approach, 10th ed., Elsevier, 2024.",
-      "Miller's Anesthesia, 10th ed., Ch. 38: Intraoperative Monitoring Systems (Electrocardiography), Elsevier, 2025/2026."
-    ]
-  });
-
-topics.push({
     id: "malignant-hyperthermia",
     cat: "anaesthesia",
     name: "Malignant Hyperthermia",
@@ -5753,285 +5296,1269 @@ Anaesthetic Pearl — BVM as Backup During Anaesthesia Machine Failure:
     ]
   });
 
+
+  // ========================================================================
+  // ELECTROCARDIOGRAM (ECG) — Subdivided Topics
+  // ========================================================================
   topics.push({
-    id: "abg-interpretation",
-    cat: "anaesthesia",
-    name: "Arterial Blood Gas (ABG) Interpretation & Acid-Base Disorders",
-    short: "ABG Interpretation",
-    tags: ["Acid-Base", "Winter's Formula", "Anion Gap", "Delta Gap", "HAGMA vs NAGMA", "Respiratory Acidosis", "Alkalosis", "Stewart Approach"],
-    tagline: "Systematic 6-step interpretation, Henderson-Hasselbalch, acute vs chronic compensation, albumin-corrected anion gap, delta-delta ratio, and HAGMA/NAGMA mnemonics",
-    source: "Miller's Anesthesia, 10th ed., Ch. 42 (Acid-Base Homeostasis & Blood Gas Analysis); Stoelting's Pharmacology & Physiology in Anesthetic Practice, 6th ed., Ch. 30; West's Respiratory Physiology, 11th ed.; Marino's The ICU Book, 4th ed., Section 8.",
-    sections: [
-      {
-        h: "Interpretation: Stepwise Systematic Method, Normal Ranges & Henderson-Hasselbalch",
-        diagram: "abg-stepwise-flowchart",
-        table: {
-          headers: ["Parameter", "Arterial Blood Gas (ABG)", "Venous Blood Gas (VBG)", "Primary Physiological Role", "Clinical Significance & Critical Thresholds"],
-          rows: [
-            ["pH", "7.35 to 7.45", "7.31 to 7.41 (≈0.03–0.04 lower)", "-log10 [H+] (35–45 nmol/L)", "Severe acidemia <7.20 (myocardial depression); severe alkalemia >7.60 (arrhythmias, tetany)"],
-            ["pCO2", "35 to 45 mmHg (4.7–6.0 kPa)", "40 to 50 mmHg (≈4–6 mmHg higher)", "Respiratory component (alveolar ventilation)", "Hypercapnia >45 mmHg (hypoventilation); Hypocapnia <35 mmHg (hyperventilation)"],
-            ["pO2", "80 to 100 mmHg on room air", "35 to 45 mmHg (PvO2)", "Dissolved arterial oxygen tension", "Hypoxemia <60 mmHg on air (P/F ratio <300 defines acute lung injury/ARDS)"],
-            ["HCO3- (Actual)", "22 to 26 mmol/L (mEq/L)", "23 to 27 mmol/L (≈1–2 higher)", "Calculated metabolic component", "Primary renal buffer; <22 = metabolic acidosis; >26 = metabolic alkalosis"],
-            ["Base Excess (BE)", "-2 to +2 mmol/L", "-2 to +2 mmol/L", "Titratable base at normal pCO2 and pH 7.40", "<-3 = tissue hypoperfusion / acid load; >+3 = metabolic alkalosis"],
-            ["Oxygen Saturation", "≥95% to 99% (SaO2)", "65% to 75% (SvO2 / ScvO2)", "Hb oxygen binding percentage", "ScvO2 <70% signals systemic tissue oxygen debt / low cardiac output state"],
-            ["Serum Lactate", "0.5 to 1.5 mmol/L (<2.0)", "0.5 to 2.0 mmol/L", "Anaerobic glycolysis byproduct", ">2.0 = hyperlactatemia; >4.0 mmol/L = septic/cardiogenic shock biomarker"]
+  "id": "ecg-basic",
+  "cat": "ecg",
+  "name": "Basic ECG Interpretation & Systematic Sequence",
+  "short": "Basic Interpretation",
+  "tags": [
+    "Calibration",
+    "Heart Rate",
+    "Intervals",
+    "P-QRS-T",
+    "Systematic Reading"
+  ],
+  "tagline": "Standard calibration 25 mm/s & 10 mm/mV, wave morphology, interval durations, and 7-step reading sequence",
+  "source": "Goldberger's Clinical Electrocardiography, 10th ed., 2024; Miller's Anesthesia, 10th ed., Ch. 38 (Intraoperative Monitoring).",
+  "sections": [
+    {
+      "h": "Paper Calibration, Normal Waveforms & Interval Standards",
+      "diagram": "ecg-basic-waves",
+      "table": {
+        "headers": [
+          "Parameter",
+          "Paper Dimensions",
+          "Time / Voltage Value",
+          "Normal Reference Range",
+          "Key Clinical Significance"
+        ],
+        "rows": [
+          [
+            "Paper Speed",
+            "25 mm / second",
+            "1 mm = 0.04 s (40 ms)",
+            "Standard calibration",
+            "50 mm/s doubles paper speed (used in electrophysiology to separate rapid wavelets)"
+          ],
+          [
+            "Small Box (Time)",
+            "1 mm horizontal",
+            "0.04 seconds (40 ms)",
+            "Fundamental time unit",
+            "2.5 small boxes = 100 ms; 3 small boxes = 120 ms (QRS cutoff)"
+          ],
+          [
+            "Large Box (Time)",
+            "5 mm horizontal",
+            "0.20 seconds (200 ms)",
+            "5 small boxes = 0.20 s",
+            "5 large boxes = 1.0 second; 300 large boxes = 1 minute"
+          ],
+          [
+            "Voltage Calibration",
+            "10 mm / mV",
+            "1 mm = 0.1 mV",
+            "Standard (10 mm pulse)",
+            "Half-standard (5 mm/mV) used in massive LVH; Double-standard (20 mm/mV) for low voltage"
+          ],
+          [
+            "Heart Rate (Regular)",
+            "300 ÷ Large Boxes",
+            "or 1500 ÷ Small Boxes",
+            "60 to 100 bpm",
+            "Count R-R: 1 box=300, 2=150, 3=100, 4=75, 5=60, 6=50 bpm"
+          ],
+          [
+            "Heart Rate (Irregular)",
+            "R waves in 30 large boxes × 10",
+            "30 boxes = 6 seconds",
+            "60 to 100 bpm",
+            "Mandatory calculation method for Atrial Fibrillation and sinus arrhythmia"
+          ],
+          [
+            "P Wave Duration",
+            "<3 small boxes",
+            "<120 ms (0.12 s)",
+            "<120 ms width",
+            "P-mitrale (>120 ms notched in Lead II) = Left Atrial Enlargement"
+          ],
+          [
+            "P Wave Amplitude",
+            "<2.5 small boxes",
+            "<0.25 mV (2.5 mm)",
+            "<2.5 mm in limb leads",
+            "P-pulmonale (>2.5 mm peaked in Lead II) = Right Atrial Enlargement / Cor Pulmonale"
+          ],
+          [
+            "PR Interval",
+            "3 to 5 small boxes",
+            "120 to 200 ms",
+            "120–200 ms (0.12–0.20 s)",
+            "<120 ms = WPW / junctional; >200 ms = First-degree AV block"
+          ],
+          [
+            "QRS Duration",
+            "<2.5 to 3 small boxes",
+            "<100 to 120 ms",
+            "Narrow (<100–120 ms)",
+            "≥120 ms = Complete LBBB, RBBB, IVCD, or Ventricular Ectopy/Pacing"
+          ],
+          [
+            "QTc Interval (Bazett)",
+            "Beginning of Q to end of T",
+            "QT / √(RR in seconds)",
+            "♂ <440 ms, ♀ <460 ms",
+            "Prolonged >480 ms; Critical Torsades de Pointes threshold >500 ms"
           ]
-        },
-        b: "A structured, algorithmic 6-step method prevents misdiagnosis of complex mixed or triple acid-base disturbances:\n\n" +
-           "1. The 6-Step Systematic ABG Reading Algorithm:\n" +
-           "• Step 1 — Evaluate the pH:\n" +
-           "  - pH < 7.35 = Acidemia (excess H+ activity).\n" +
-           "  - pH > 7.45 = Alkalemia (deficit of H+ activity).\n" +
-           "  - pH 7.35 to 7.45 = Normal acid-base status, or fully compensated primary disorder, or mixed opposing disorders (e.g. severe HAGMA + severe Met Alkalosis).\n" +
-           "• Step 2 — Determine the Primary Acid-Base Disturbance:\n" +
-           "  - Compare the direction of pH against pCO2 and HCO3-:\n" +
-           "  - If pH and pCO2 move in OPPOSITE directions -> Primary Respiratory Disorder (low pH + high pCO2 = Resp Acidosis; high pH + low pCO2 = Resp Alkalosis).\n" +
-           "  - If pH and HCO3- move in the SAME direction -> Primary Metabolic Disorder (low pH + low HCO3- = Met Acidosis; high pH + high HCO3- = Met Alkalosis).\n" +
-           "• Step 3 — Calculate Expected Compensation:\n" +
-           "  - Use validated physiological formulas (Winter's formula for metabolic acidosis; acute vs chronic rules for respiratory disorders).\n" +
-           "  - CRITICAL RULE: The human body NEVER over-compensates! Compensation never drives the pH across normal 7.40 to the opposite side. If measured values deviate from expected compensation, a secondary coexisting acid-base disorder is present!\n" +
-           "• Step 4 — Calculate the Serum Anion Gap (AG) with Albumin Correction:\n" +
-           "  - AG = Na+ - (Cl- + HCO3-). Normal is 8 to 12 mmol/L.\n" +
-           "  - Corrected AG = AG + 2.5 * (4.0 - Albumin in g/dL).\n" +
-           "  - An elevated corrected AG (>12) proves the presence of a High Anion Gap Metabolic Acidosis, even if pH or HCO3- are normal!\n" +
-           "• Step 5 — Calculate the Delta Ratio (Delta Gap / Delta Bicarbonate):\n" +
-           "  - Delta Ratio = (AG - 12) / (24 - HCO3-).\n" +
-           "  - Distinguishes pure HAGMA from mixed HAGMA + NAGMA (<0.8) or mixed HAGMA + Metabolic Alkalosis (>2.0).\n" +
-           "• Step 6 — Assess Oxygenation and Alveolar-Arterial (A-a) Gradient:\n" +
-           "  - Calculate Alveolar PO2: PAO2 = FiO2 * (P_atm - 47) - (PaCO2 / 0.8).\n" +
-           "  - Alveolar-arterial gradient: P(A-a)O2 = PAO2 - PaO2. Normal is < (Age / 4 + 4). Elevated gradient indicates V/Q mismatch, shunt, or diffusion impairment.\n" +
-           "  - Calculate PaO2/FiO2 (P/F) ratio: Normal >300; 200–300 = Mild ARDS; 100–200 = Moderate ARDS; <100 = Severe ARDS.\n\n" +
-           "2. Henderson-Hasselbalch Equation & Mathematical Foundations:\n" +
-           "• Equation: pH = pK_a + log([HCO3-] / (alpha * pCO2)), where pK_a = 6.1 and carbon dioxide solubility coefficient alpha = 0.03 mmol/L/mmHg.\n" +
-           "• Henderson Equation: [H+] in nmol/L = 24 * (pCO2 / [HCO3-]).\n" +
-           "• Rapid Rule of Conversion: At pH 7.40, [H+] is exactly 40 nmol/L. Every 0.01 unit change in pH corresponds inversely to approximately 1 nmol/L change in [H+] (e.g. pH 7.30 = 50 nmol/L; pH 7.20 = 63 nmol/L).\n\n" +
-           "3. Temperature Correction in Hypothermia (Alpha-Stat vs pH-Stat):\n" +
-           "• As blood temperature decreases, gas solubility increases, causing measured pCO2 and pO2 to decrease and pH to rise (neutral water pH rises at lower temperatures).\n" +
-           "• Alpha-Stat Management (Standard in Adult Cardiac Surgery): Blood gas is measured and reported at 37°C without temperature correction. Preserves the fractional dissociation state (alpha) of imidazole rings on histidine proteins, maintaining normal intracellular enzyme function and cellular autoregulation.\n" +
-           "• pH-Stat Management (Preferred in Pediatric Congenital Cardiac Surgery): CO2 is added to the oxygenator to keep temperature-corrected pH at 7.40 and pCO2 at 40 mmHg at the patient's actual cold core temperature. Induces cerebral vasodilation, increasing cerebral blood flow and accelerating brain cooling prior to deep hypothermic circulatory arrest (DHCA)."
+        ]
       },
-      {
-        h: "Metabolic Acidosis: Pathophysiology, Winter's Formula Compensation & Consequences",
-        table: {
-          headers: ["Primary Disorder", "Primary Disturbance", "Compensatory Response", "Expected Compensation Formula", "Maximal Physiological Limit"],
-          rows: [
-            ["Metabolic Acidosis", "Primary drop in HCO3- (<22 mmol/L)", "Respiratory hyperventilation (decreased pCO2)", "Expected pCO2 = 1.5 × [HCO3-] + 8 ± 2 (Winter's formula)", "pCO2 rarely drops below 10–12 mmHg due to fatigue"],
-            ["Quick Rule of Thumb", "HCO3- drops below 24", "pCO2 decreases proportionally", "Expected pCO2 ≈ last two digits of pH (e.g. at pH 7.25, pCO2 ≈ 25)", "Applicable only down to pH ~7.15"],
-            ["Coexisting Resp Acidosis", "Inadequate hyperventilation", "Measured pCO2 > Expected pCO2", "Patient failing to blow off CO2 (exhaustion / CNS sedation)", "Immediate mechanical ventilatory support required"],
-            ["Coexisting Resp Alkalosis", "Excessive hyperventilation", "Measured pCO2 < Expected pCO2", "Additional respiratory drive (sepsis / pain / salicylate)", "Investigate independent central hyperventilation trigger"]
+      "b": "A methodical 7-step reading sequence guarantees that subtle, life-threatening ischaemic or electrophysiological abnormalities are never missed:\n\n1. Standard Calibration & Technical Verification:\n• Paper Speed: Standard 25 mm/s. Every 1 mm small box horizontally equals 0.04 seconds (40 ms); every 5 mm large box equals 0.20 seconds (200 ms).\n• Voltage Calibration: Standard 10 mm/mV. Every 1 mm small box vertically equals 0.1 mV; a standard calibration pulse is a 10 mm high × 5 mm wide square box (1.0 mV × 0.20 s).\n• Lead Placement Sanity Check: Lead aVR must have completely negative deflections (inverted P, negative QRS, inverted T) in normal anatomy. An upright Lead aVR indicates limb lead reversal (right/left arm swapped) or dextrocardia.\n\n2. Heart Rate Calculation:\n• Regular Rhythm: Divide 300 by the number of large boxes between consecutive R-R intervals (or 1500 divided by the number of small boxes). Sequence: 300 → 150 → 100 → 75 → 60 → 50 bpm.\n• Irregular Rhythm (Atrial Fibrillation / Ectopy): Count the total number of QRS complexes in a 30-large-box strip (6 seconds) and multiply by 10.\n\n3. Rhythm & P-Wave Analysis:\n• Sinus Rhythm Diagnostic Criteria:\n  1. Positive, upright P waves in Leads I, II, and aVF (vector directed inferiorly and leftward from SA node).\n  2. Inverted, negative P wave in Lead aVR.\n  3. Every P wave followed by a QRS complex, and every QRS preceded by a P wave (1:1 ratio).\n  4. Constant P-P interval and PR interval.\n\n4. PR Interval & AV Conduction:\n• Normal: 120 to 200 ms (3 to 5 small boxes).\n• Short PR (<120 ms): Pre-excitation syndromes (Wolff-Parkinson-White [WPW] pattern with delta wave), Lown-Ganong-Levine (LGL), or AV junctional rhythm.\n• Prolonged PR (>200 ms): First-degree AV block.\n\n5. QRS Complex Duration & Morphology:\n• Normal duration: <100 ms (narrow). Incomplete bundle branch block: 100 to 119 ms. Complete bundle branch block or ventricular rhythm: ≥120 ms (≥3 small boxes).\n• Pathological Q Wave Criteria: Duration ≥40 ms (1 small box) OR depth >25% of the height of the subsequent R wave in the same lead (indicates transmural myocardial infarction/fibrosis).\n\n6. ST Segment & T Wave Evaluation:\n• ST Segment: Isoelectric reference line is the preceding TP segment (or PR segment if tachycardia). Measured at the J-point (junction between end of QRS and onset of ST segment).\n• T Wave: Concordant with the dominant QRS deflection in most leads. Normally upright in I, II, and V3–V6; inverted in aVR.\n\n7. QT & Corrected QTc Interval:\n• Measured from the earliest onset of the Q wave to the terminal return of the T wave to baseline (lead II or V5/V6).\n• Rate-corrected Bazett formula: QTc = QT / √(RR in seconds).\n• Prolonged QTc: >450 ms in adult men; >460 ms in adult women. Borderline: 440–470 ms; Markedly prolonged >480 ms. High risk for drug-induced Torsades de Pointes: QTc >500 ms or an increase >60 ms over baseline."
+    }
+  ]
+});
+
+  topics.push({
+  "id": "ecg-axis",
+  "cat": "ecg",
+  "name": "Cardiac Axis Interpretation: Hexaxial Reference System & Quadrant Rules",
+  "short": "Axis Interpretation",
+  "tags": [
+    "Frontal Plane",
+    "Hexaxial",
+    "LAD",
+    "RAD",
+    "Quadrant Rule",
+    "Fascicular Blocks"
+  ],
+  "tagline": "Hexaxial lead angles, normal axis (-30° to +90°), left & right axis deviations, quadrant methods, and clinical causes",
+  "source": "Goldberger's Clinical Electrocardiography, 10th ed., 2024; Hampton's The ECG in Practice, 7th ed.",
+  "sections": [
+    {
+      "h": "The Hexaxial Reference System & 2-Lead Quadrant Rules",
+      "diagram": "ecg-axis-wheel",
+      "table": {
+        "headers": [
+          "Frontal Axis Category",
+          "Degrees Arc",
+          "Lead I Deflection",
+          "Lead aVF Deflection",
+          "Lead II Deflection",
+          "Common Clinical Causes"
+        ],
+        "rows": [
+          [
+            "Normal Axis",
+            "-30° to +90°",
+            "Positive (+)",
+            "Positive (+)",
+            "Positive (+)",
+            "Normal physiological variant; horizontal heart in pregnancy/obesity"
+          ],
+          [
+            "Physiological Left Axis",
+            "0° to -30°",
+            "Positive (+)",
+            "Equiphasic or mildly (-)",
+            "Positive (+)",
+            "Normal aging, elevated diaphragm, horizontal cardiac orientation"
+          ],
+          [
+            "Pathological Left Axis (LAD)",
+            "-30° to -90°",
+            "Positive (+)",
+            "Negative (-)",
+            "Predominantly Negative (-)",
+            "Left Anterior Fascicular Block (LAFB), LBBB, inferior myocardial infarction, LVH, artificial ventricular pacing"
+          ],
+          [
+            "Right Axis Deviation (RAD)",
+            "+90° to +180°",
+            "Negative (-)",
+            "Positive (+)",
+            "Positive (+)",
+            "Right Ventricular Hypertrophy (RVH), acute pulmonary embolism, COPD / emphysema, Left Posterior Fascicular Block (LPFB), lateral MI, normal tall thin adults"
+          ],
+          [
+            "Extreme / Northwest Axis",
+            "-90° to ±180°",
+            "Negative (-)",
+            "Negative (-)",
+            "Negative (-)",
+            "Ventricular Tachycardia (VT), severe hyperkalaemia, paced ventricular rhythms, severe chronic lung disease, lead transposition"
           ]
-        },
-        b: "Metabolic Acidosis is defined by a primary reduction in plasma bicarbonate (<22 mmol/L) accompanied by arterial acidemia (pH <7.35). It is the most frequent metabolic derangement encountered in shock, sepsis, and perioperative critical care:\n\n" +
-           "1. Pathophysiological Mechanisms:\n" +
-           "• Addition of Fixed Organic Acids: Unmeasured acid anions (lactic acid, ketoacids, toxic alcohols) dissociate into H+ and organic anions. The added H+ is buffered by extracellular bicarbonate (H+ + HCO3- <-> H2CO3 <-> H2O + CO2), consuming bicarbonate and generating High Anion Gap Metabolic Acidosis (HAGMA).\n" +
-           "• Direct Gastrointestinal Loss of Bicarbonate: Secretions from the pancreas, biliary tract, and small intestine contain high bicarbonate concentrations (up to 120 mmol/L). Diarrhea, enterocutaneous fistulae, and surgical drainage directly deplete body bicarbonate, producing Normal Anion Gap Metabolic Acidosis (NAGMA).\n" +
-           "• Impaired Renal Net Acid Excretion: Failure of proximal tubular bicarbonate reabsorption (Type 2 RTA) or distal tubular H+ ion excretion (Type 1 RTA, chronic kidney disease, hypoaldosteronism Type 4 RTA).\n\n" +
-           "2. Respiratory Compensation — Winter's Formula:\n" +
-           "• Peripheral and central chemoreceptors detect elevated [H+], stimulating the respiratory center in the medulla to increase alveolar ventilation (tidal volume and respiratory rate — Kussmaul breathing).\n" +
-           "• Winter's Formula for Expected pCO2: Expected pCO2 = 1.5 * [HCO3-] + 8 ± 2 mmHg.\n" +
-           "• Clinical Interpretation:\n" +
-           "  - If measured pCO2 falls within the calculated Winter's range -> Pure Metabolic Acidosis with appropriate respiratory compensation.\n" +
-           "  - If measured pCO2 > Expected pCO2 -> Mixed Metabolic Acidosis + Coexisting Respiratory Acidosis! Indicates respiratory muscle fatigue, central nervous system depression, or severe lung pathology; early endotracheal intubation and mechanical ventilation are strongly indicated.\n" +
-           "  - If measured pCO2 < Expected pCO2 -> Mixed Metabolic Acidosis + Coexisting Respiratory Alkalosis! Seen characteristically in early septic shock (hyperventilation + lactic acidosis) or salicylate toxicity.\n\n" +
-           "3. Systemic Clinical Consequences of Severe Acidemia (pH <7.20):\n" +
-           "• Cardiovascular Depolarisation & Collapse: Direct impairment of actin-myosin cross-bridging produces negative inotropy. Profound peripheral arterial vasodilation occurs, unresponsive to exogenous vasopressors due to downregulation and desensitization of alpha-1 and beta-1 adrenergic receptors.\n" +
-           "• Central Venoconstriction: Peripheral-to-central redistribution of blood volume, worsening acute pulmonary oedema.\n" +
-           "• Arrhythmogenic Predisposition: Lowers ventricular fibrillation threshold; slows intraventricular conduction.\n" +
-           "• Transcellular Potassium Shift: In mineral (hyperchloraemic/inorganic) acidemias, excess extracellular H+ enters cells in exchange for K+ leaving cells via the H+/K+ antiporter. For every 0.1 unit drop in pH, serum potassium rises by approximately 0.5 to 0.6 mmol/L (less pronounced in organic acidoses such as lactic acidosis or DKA where organic anions enter cells with H+)."
+        ]
       },
-      {
-        h: "Respiratory Acidosis: Acute vs Chronic Renal Compensation, Causes & Intraoperative Management",
-        table: {
-          headers: ["Condition", "Acute Respiratory Acidosis", "Chronic Respiratory Acidosis", "Primary Mechanism", "Clinical Setting & Treatment"],
-          rows: [
-            ["Definition", "Acute rise in pCO2 (>45 mmHg)", "Sustained pCO2 (>45 mmHg) >3–5 days", "Alveolar hypoventilation (VA = (VT - VD) × RR)", "Hypoventilation from drugs, airway obstruction, or chronic lung disease"],
-            ["Renal Compensation", "Minimal (cellular buffering only)", "Full renal HCO3- retention", "Proximal tubule H+ secretion & HCO3- synthesis", "Takes 3 to 5 days for kidneys to reach maximum compensation"],
-            ["HCO3- Elevation Rule", "For every 10 mmHg pCO2 rise >40, HCO3- rises by 1 mmol/L", "For every 10 mmHg pCO2 rise >40, HCO3- rises by 3.5 to 4.0 mmol/L", "Acute: 1 mEq/L per 10 mmHg\nChronic: 3.5 mEq/L per 10 mmHg", "Acute formula: Expected HCO3- = 24 + (pCO2 - 40)/10 × 1\nChronic formula: Expected HCO3- = 24 + (pCO2 - 40)/10 × 3.5"],
-            ["pH Drop Rule", "pH drops by 0.08 per 10 mmHg rise in pCO2", "pH drops by only 0.03 per 10 mmHg rise in pCO2", "Renal retention of HCO3- buffers arterial pH near normal", "Acute pCO2 60 mmHg → pH ~7.24\nChronic pCO2 60 mmHg → pH ~7.34"],
-            ["Maximal Compensation", "HCO3- rarely exceeds 30–32 mmol/L", "HCO3- can reach 42–45 mmol/L", "Maximal renal bicarbonate reabsorption threshold", "HCO3- >45 mmol/L indicates superimposed metabolic alkalosis"]
+      "b": "The mean QRS electrical axis represents the net direction of ventricular depolarisation in the frontal plane, determined by Einthoven's limb leads (I, II, III) and Goldberger's augmented unipolar leads (aVR, aVL, aVF):\n\n1. Hexaxial Reference System Angles:\n• Lead I: 0° (lateral left).\n• Lead II: +60° (inferior apex).\n• Lead III: +120° (inferior right).\n• Lead aVR: -150° (right shoulder).\n• Lead aVL: -30° (left shoulder).\n• Lead aVF: +90° (inferior foot).\n\n2. The Rapid 2-Lead / 3-Lead Quadrant Method:\n• Step 1: Examine Lead I and Lead aVF:\n  - Lead I Positive AND Lead aVF Positive -> NORMAL AXIS (0° to +90°).\n  - Lead I Negative AND Lead aVF Positive -> RIGHT AXIS DEVIATION (+90° to +180°).\n  - Lead I Negative AND Lead aVF Negative -> EXTREME / NORTHWEST AXIS (-90° to ±180°).\n• Step 2: If Lead I is Positive and Lead aVF is Negative (0° to -90°), examine Lead II:\n  - If Lead II is POSITIVE: The axis lies between 0° and -30° (Physiological Left Axis — within normal limits).\n  - If Lead II is NEGATIVE: The axis is more negative than -30° (-30° to -90°) -> PATHOLOGICAL LEFT AXIS DEVIATION (LAD).\n\n3. Causes of Left Axis Deviation (LAD: -30° to -90°):\n• Left Anterior Fascicular Block (LAFB): Most common cause. Small q in I/aVL, small r in II/III/aVF with tall R in aVL.\n• Left Bundle Branch Block (LBBB).\n• Previous Inferior Myocardial Infarction: Loss of inferior depolarisation forces leaves unopposed superior/leftward forces.\n• Left Ventricular Hypertrophy (LVH): Moderately shifts axis leftward (though true LAD <-30° usually indicates concomitant fascicular block).\n• Right ventricular apical pacing (ventricular pacing leads in RV apex fire depolarisation upwards towards the left base).\n\n4. Causes of Right Axis Deviation (RAD: +90° to +180°):\n• Right Ventricular Hypertrophy (RVH): Due to pulmonary arterial hypertension, cor pulmonale, mitral stenosis.\n• Acute Pulmonary Embolism (PE): Sudden RV strain shifts axis acutely rightward (often with S1Q3T3 pattern).\n• Left Posterior Fascicular Block (LPFB): Rare; diagnosis of exclusion once RVH, PE, and lateral MI are ruled out.\n• Lateral Myocardial Infarction: Loss of lateral electrical forces.\n• Chronic Obstructive Pulmonary Disease (COPD): Hyperinflated lungs push the diaphragm down, rotating the heart vertically."
+    }
+  ]
+});
+
+  topics.push({
+  "id": "ecg-lvh",
+  "cat": "ecg",
+  "name": "Left Ventricular Hypertrophy (LVH): Sokolow-Lyon, Cornell & Romhilt-Estes Criteria",
+  "short": "LVH Criteria",
+  "tags": [
+    "Sokolow-Lyon",
+    "Cornell Voltage",
+    "Romhilt-Estes",
+    "LV Strain",
+    "Voltage Criteria"
+  ],
+  "tagline": "Voltage cutoffs, Cornell product, Romhilt-Estes point score, and secondary ST-T strain patterns",
+  "source": "AHA/ACCF/HRS Recommendations for the Standardization and Interpretation of the Electrocardiogram (JACC 2009/2021 update); Goldberger's Clinical Electrocardiography, 10th ed.",
+  "sections": [
+    {
+      "h": "Diagnostic Voltage Criteria & Repolarisation Strain Pattern",
+      "diagram": "ecg-lvh-waveform",
+      "table": {
+        "headers": [
+          "Diagnostic System",
+          "Specific Lead Criteria",
+          "Male Cutoff Threshold",
+          "Female Cutoff Threshold",
+          "Diagnostic Strengths & Limitations"
+        ],
+        "rows": [
+          [
+            "Sokolow-Lyon Voltage",
+            "S in V1 + R in V5 or V6",
+            ">35 mm (>3.5 mV)",
+            ">35 mm (>3.5 mV)",
+            "High specificity (>95%), low sensitivity (~22%). Prone to false positives in young athletic males"
+          ],
+          [
+            "Sokolow-Lyon Limb Lead",
+            "R wave in Lead aVL",
+            ">11 mm (>1.1 mV)",
+            ">11 mm (>1.1 mV)",
+            "Quick rule; highly specific for concentric left ventricular hypertrophy"
+          ],
+          [
+            "Cornell Voltage (AHA)",
+            "R in aVL + S in V3",
+            ">28 mm (>2.8 mV)",
+            ">20 mm (>2.0 mV)",
+            "Superior accuracy over Sokolow-Lyon; accounts for female gender differences; sensitivity ~42%, specificity ~96%"
+          ],
+          [
+            "Cornell Voltage-Duration",
+            "(R_aVL + S_V3) × QRS (ms)",
+            ">2440 mm·ms",
+            ">2440 mm·ms (adjusting for voltage)",
+            "Strongest correlation with cardiovascular mortality and echocardiographic left ventricular mass index"
+          ],
+          [
+            "Gubner-Ungerleider",
+            "R in Lead I + S in Lead III",
+            ">25 mm (>2.5 mV)",
+            ">25 mm (>2.5 mV)",
+            "Classic limb-lead voltage criteria; specific for hypertensive heart disease"
+          ],
+          [
+            "Romhilt-Estes Point Score",
+            "Multi-parameter point system",
+            "≥5 points = Definite LVH",
+            "4 points = Probable LVH",
+            "Combines voltage, ST-T strain, left atrial enlargement, left axis deviation, and QRS duration"
           ]
-        },
-        b: "Respiratory Acidosis occurs whenever alveolar ventilation (V_A) fails to match carbon dioxide production (V_CO2), governed by the alveolar ventilation equation: PaCO2 = (V_CO2 / V_A) * 0.863:\n\n" +
-           "1. Acute vs Chronic Compensation Rules:\n" +
-           "• Acute Respiratory Acidosis (Immediate to Hours):\n" +
-           "  - The kidneys have had insufficient time to synthesize and retain new bicarbonate.\n" +
-           "  - Initial buffering is mediated exclusively by intracellular non-bicarbonate buffers (primarily hemoglobin and intracellular phosphates): CO2 + H2O <-> H2CO3 <-> H+ + HCO3-; H+ is buffered by Hb(Prot-), leaving small amounts of HCO3- in plasma.\n" +
-           "  - Rule: For every 10 mmHg increase in pCO2 above 40 mmHg, serum [HCO3-] rises by exactly 1 mmol/L, and pH drops by 0.08.\n" +
-           "• Chronic Respiratory Acidosis (3 to 5 Days):\n" +
-           "  - The kidneys adapt to chronic hypercapnia by upregulating proximal tubular Na+/H+ antiporters (NHE3) and H+-ATPase pumps, maximizing ammonia (NH4+) excretion and synthesizing new bicarbonate.\n" +
-           "  - Rule: For every 10 mmHg increase in pCO2 above 40 mmHg, serum [HCO3-] rises by 3.5 to 4.0 mmol/L, and pH drops by only 0.03 (near-normal pH).\n\n" +
-           "2. Etiological Classification in Anaesthesia & Critical Care:\n" +
-           "• Central Respiratory Depression: Opioid overdose (mu-receptor mediated depression of respiratory rate and blunted hypercapnic drive), volatile anaesthetics, propofol, benzodiazepines, brainstem infarction, and increased ICP.\n" +
-           "• Neuromuscular Transmission Failure: Incomplete reversal of neuromuscular blockade (train-of-four [TOF] ratio <0.90), Myasthenia Gravis, Guillain-Barré Syndrome, high spinal/epidural anaesthesia, amyotrophic lateral sclerosis (ALS), critical illness polyneuropathy.\n" +
-           "• Thoracic / Chest Wall Restriction: Flail chest, severe kyphoscoliosis, morbid obesity (Pickwickian syndrome / Obesity Hypoventilation Syndrome), abdominal compartment syndrome, tight abdominal binders.\n" +
-           "• Airway & Pulmonary Parenchymal Disease: Acute laryngospasm, severe bronchospasm, endotracheal tube obstruction/kinking, mainstem bronchial intubation, acute pulmonary oedema, advanced COPD, severe ARDS.\n" +
-           "• Intraoperative Equipment Malfunctions: Soda lime canister exhaustion (rebreathing CO2), malfunctioning inspiratory/expiratory unidirectional valves in circle system, fresh gas flow set below minute ventilation in non-rebreathing circuits, laparoscopy pneumoperitoneum (massive CO2 absorption from peritoneal cavity).\n\n" +
-           "3. Intraoperative Management & The 'Post-Hypercapnic Alkalosis' Trap:\n" +
-           "• Treatment of Acute Respiratory Acidosis: Correct the underlying ventilation defect! Titrate minute ventilation (V_E = RR * V_T) on the anaesthesia workstation; reverse opioids with Naloxone (0.04 to 0.1 mg IV increments); reverse residual neuromuscular block with Sugammadex (2 to 4 mg/kg) or Neostigmine/Glycopyrrolate.\n" +
-           "• THE DANGEROUS POST-HYPERCAPNIC ALKALOSIS TRAP:\n" +
-           "  - In patients with chronic hypercapnia (e.g. severe COPD with baseline pCO2 65 mmHg and compensatory HCO3- 34 mmol/L), mechanical hyperventilation to a 'normal' pCO2 of 40 mmHg will cause a lethal, acute metabolic alkalosis! (pH jumps to >7.60, precipitating seizures, coronary spasm, and hypokalaemic arrhythmias).\n" +
-           "  - Management Goal: Ventilate chronic COPD patients to their BASELINE pCO2, NOT to 40 mmHg!"
+        ]
       },
-      {
-        h: "Metabolic Alkalosis: Saline-Responsive vs Resistant, Urinary Chloride & Compensation",
-        table: {
-          headers: ["Category", "Urinary Chloride (U_Cl)", "Underlying Pathophysiology", "Common Clinical Etiologies", "Targeted Therapeutic Strategy"],
-          rows: [
-            ["Saline-Responsive", "<20 mmol/L (Low)", "Extracellular volume depletion + Chloride deficit; kidney cannot excrete HCO3- without Cl-", "Nasogastric suction, vomiting, prior diuretic therapy, post-hypercapnia, congenital chloridorrhea", "Volume expansion with 0.9% Normal Saline + Potassium Chloride (KCl) infusion"],
-            ["Saline-Resistant", ">20 mmol/L (High)", "Mineralocorticoid excess or direct renal tubular wasting; independent of volume depletion", "Primary hyperaldosteronism (Conn's), Cushing's, licorice ingestion, Bartter's / Gitelman's, severe hypokalaemia (<2.0)", "Treat underlying cause; Potassium repletion, Spironolactone / Eplerenone (aldosterone antagonists)"],
-            ["Exogenous Alkali", "Variable (>20 mmol/L)", "Direct bicarbonate overload exceeding renal excretion capacity", "Massive sodium bicarbonate infusion, massive blood transfusion (citrate conversion to HCO3-), milk-alkali syndrome", "Discontinue alkali administration; Acetazolamide (carbonic anhydrase inhibitor) if volume overload"]
+      "b": "Left Ventricular Hypertrophy (LVH) reflects an increase in myocardial mass, most commonly secondary to chronic systemic arterial hypertension, aortic stenosis, or hypertrophic cardiomyopathy. Increased wall thickness increases both depolarisation voltage and duration:\n\n1. Sokolow-Lyon Criteria:\n• Precordial Voltage: S wave in V1 + R wave in V5 or V6 > 35 mm (3.5 mV).\n• Limb Lead Voltage: R wave in Lead aVL > 11 mm (or >12 mm in some criteria).\n• Clinical Limitation: High rate of false positives in thin young adults, athletes, and asthenic chest walls; low sensitivity (misses >60% of echocardiographically proven LVH).\n\n2. Cornell Voltage Criteria (Recommended by AHA/ACC):\n• Formula: R wave in Lead aVL + S wave in Lead V3.\n• Cutoffs: >28 mm (2.8 mV) in men; >20 mm (2.0 mV) in women.\n• Cornell Product: Cornell Voltage (mm) × QRS duration (ms). Cutoff >2440 mm·ms indicates definite LVH and carries high prognostic value for heart failure and stroke.\n\n3. Romhilt-Estes Point Score System (≥5 = Definite LVH, 4 = Probable LVH):\n• 1. Voltage Criteria (Any of: R or S in limb leads ≥20 mm; S in V1/V2 ≥30 mm; R in V5/V6 ≥30 mm) = 3 points.\n• 2. ST-T Segment Strain Pattern: With digitalis = 1 point; Without digitalis = 3 points.\n• 3. Left Atrial Enlargement (P-terminal force in V1 duration ≥40 ms with depth ≥1 mm) = 3 points.\n• 4. Left Axis Deviation (QRS axis <-30°) = 2 points.\n• 5. QRS Duration ≥90 ms = 1 point.\n• 6. Intrinsicoid Deflection in V5/V6 ≥50 ms = 1 point.\n\n4. Left Ventricular Strain Pattern (Secondary Repolarisation Abnormality):\n• Morphology: Asymmetrical, downsloping ST depression with inverted, asymmetrical T waves in the lateral leads (I, aVL, V5, V6).\n• Reciprocal changes: Concave, upright ST elevation in right precordial leads (V1, V2).\n• Pathophysiology: Subendocardial ischaemia resulting from high wall stress and oxygen demand exceeding capillary microvascular supply."
+    }
+  ]
+});
+
+  topics.push({
+  "id": "ecg-rvh",
+  "cat": "ecg",
+  "name": "Right Ventricular Hypertrophy (RVH): Precordial & Frontal Criteria",
+  "short": "RVH Criteria",
+  "tags": [
+    "R/S Ratio",
+    "Right Axis",
+    "RV Strain",
+    "P-Pulmonale",
+    "Cor Pulmonale"
+  ],
+  "tagline": "Tall R wave in V1, deep S in V5/V6, right axis deviation, RV strain pattern, and cor pulmonale signs",
+  "source": "AHA/ACCF/HRS Recommendations for the Standardization of Electrocardiography (JACC 2009/2021); Goldberger's Clinical Electrocardiography, 10th ed.",
+  "sections": [
+    {
+      "h": "Diagnostic Precordial R/S Ratios & Strain Patterns",
+      "diagram": "ecg-rvh-waveform",
+      "table": {
+        "headers": [
+          "Diagnostic Parameter",
+          "Specific Lead Criterion",
+          "Diagnostic Threshold Value",
+          "Underlying Pathophysiology",
+          "Clinical Significance"
+        ],
+        "rows": [
+          [
+            "Precordial R/S Ratio (V1)",
+            "R wave height ÷ S wave depth",
+            "R/S ratio > 1.0 in Lead V1",
+            "Massive RV free wall hypertrophy directs electrical vector anteriorly and rightward",
+            "Hallmark feature of RVH; highly specific once RBBB and posterior MI are ruled out"
+          ],
+          [
+            "Dominant R Wave (V1)",
+            "R wave absolute amplitude",
+            "R wave in V1 > 7 mm (>0.7 mV)",
+            "Thickened right ventricular myocardium dominates early precordial depolarisation",
+            "Common in severe pulmonary arterial hypertension and severe pulmonic stenosis"
+          ],
+          [
+            "Deep Lateral S Wave (V5/V6)",
+            "S wave depth in Lead V5 or V6",
+            "S wave in V5 or V6 > 7 mm",
+            "Persistent late rightward vector pulls forces away from left lateral chest",
+            "Produces R/S ratio < 1.0 in Lead V6 (abnormal loss of normal lateral R-wave dominance)"
+          ],
+          [
+            "Right Axis Deviation",
+            "Frontal mean QRS axis",
+            "QRS axis > +90° (or > +110°)",
+            "Rightward anatomical shift of ventricular depolarisation vector",
+            "Essential supporting criterion; increases diagnostic specificity when combined with V1 criteria"
+          ],
+          [
+            "Right Ventricular Strain",
+            "ST segment and T wave in V1–V3",
+            "Convex ST depression + inverted asymmetric T",
+            "Subendocardial ischaemia of chronically overloaded, high-pressure right ventricle",
+            "Indicates high RV afterload (pulmonary embolism, primary pulmonary hypertension)"
+          ],
+          [
+            "P-Pulmonale",
+            "P wave amplitude in Leads II, III, aVF",
+            "P wave height > 2.5 mm (>0.25 mV)",
+            "Right atrial hypertrophy / dilatation secondary to elevated RV end-diastolic pressure",
+            "Classic sign of chronic cor pulmonale / COPD / tricuspid valve disease"
+          ],
+          [
+            "S1Q3T3 (McGinn-White)",
+            "Deep S in I, Q wave in III, inverted T in III",
+            "S_I > 1.5 mm, Q_III > 1.5 mm, T_III (-)",
+            "Acute right ventricular dilatation and clockwise cardiac rotation",
+            "Classic sign of acute cor pulmonale / acute massive pulmonary embolism (PE)"
           ]
-        },
-        b: "Metabolic Alkalosis is characterized by a primary elevation of plasma bicarbonate (>26 mmol/L) and arterial pH >7.45. It requires both an INITIATING event (loss of H+ or gain of HCO3-) and a MAINTENANCE factor that prevents the normal kidneys from excreting the excess bicarbonate:\n\n" +
-           "1. The Two-Step Mechanism (Generation vs Maintenance):\n" +
-           "• The Generation Phase: Direct loss of gastric hydrochloric acid (vomiting, NG suction: H+ and Cl- lost, leaving equimolar HCO3- in plasma) or renal H+ loss (loop/thiazide diuretics blocking Na+/Cl- reabsorption, delivering high Na+ to distal tubule and stimulating aldosterone-driven H+ excretion).\n" +
-           "• The Maintenance Phase (Why normal kidneys cannot excrete excess HCO3-):\n" +
-           "  1. Hypovolaemia: Decreased effective circulating volume triggers maximal aldosterone and angiotensin II release, stimulating proximal tubular Na+/H+ exchange and distal H+-ATPase, reabsorbing all filtered bicarbonate.\n" +
-           "  2. Hypochloraemia: The distal tubular pendrin exchanger (Cl-/HCO3- antiporter) requires luminal chloride to secrete bicarbonate into urine. Chloride depletion paralyzes bicarbonate excretion!\n" +
-           "  3. Hypokalaemia: Low extracellular potassium forces intracellular K+ to exit cells in exchange for H+ entering cells. Intracellular renal acidosis stimulates proximal tubule ammoniagenesis and bicarbonate synthesis, while distal tubule H+/K+ ATPase is activated, excreting H+ and paradoxically acidifying urine ('Paradoxical Aciduria').\n\n" +
-           "2. Respiratory Compensation Formula:\n" +
-           "• Respiratory compensation is mediated by hypoventilation (elevated pCO2):\n" +
-           "  - Expected pCO2 = 0.7 * ([HCO3-] - 24) + 40 ± 2 mmHg (or Expected pCO2 = 0.7 * [HCO3-] + 20 ± 2 mmHg).\n" +
-           "  - Physiological ceiling: Hypoventilation is strictly limited by the development of hypoxia! In non-intubated, spontaneous-breathing patients, pCO2 rarely rises above 55 to 60 mmHg because hypoxic ventilatory drive overrides metabolic alkalemia.\n\n" +
-           "3. Saline-Responsive vs Saline-Resistant Classification (Urinary Chloride):\n" +
-           "• Saline-Responsive (Urinary Chloride <20 mmol/L):\n" +
-           "  - Represents chloride depletion and volume contraction (e.g. vomiting, NG tube drainage, loop diuretics).\n" +
-           "  - Hallmark: Promptly corrected by intravenous 0.9% Normal Saline (154 mmol/L Cl-) plus Potassium Chloride (KCl) replacement.\n" +
-           "• Saline-Resistant (Urinary Chloride >20 mmol/L):\n" +
-           "  - Represents autonomous mineralocorticoid excess (Primary Hyperaldosteronism, adrenal adenoma, Cushing's syndrome, exogenous licorice consumption) or severe intrinsic hypokalaemia.\n" +
-           "  - The kidneys waste chloride; Normal Saline does NOT correct the alkalosis. Requires aldosterone receptor antagonists (Spironolactone) and aggressive potassium replacement.\n\n" +
-           "4. Detrimental Clinical Effects of Severe Alkalemia (pH >7.55–7.60):\n" +
-           "• Left-Shift of Oxyhaemoglobin Dissociation Curve (Bohr Effect): Hemoglobin binds oxygen with extreme affinity, severely impairing oxygen release at peripheral tissues and worsening tissue hypoxia.\n" +
-           "• Acute Reduction in Ionized Calcium (Ca2+): Alkalemia increases the negative charge on albumin molecules, increasing calcium binding to albumin. Serum ionized calcium drops acutely, triggering neuromuscular hyperexcitability, carpopedal spasm (Trousseau's sign), facial twitching (Chvostek's sign), laryngospasm, and seizures.\n" +
-           "• Malignant Cardiac Arrhythmias: Predisposes to atrial tachycardias, PVCs, and ventricular arrhythmias, especially in patients with ischemic heart disease or taking digitalis."
+        ]
       },
-      {
-        h: "Respiratory Alkalosis: Acute vs Chronic Rules, Causes, Hypocalcaemia & Cerebral Perfusion",
-        table: {
-          headers: ["Condition", "Acute Respiratory Alkalosis", "Chronic Respiratory Alkalosis", "Physiological Compensation", "Key Clinical Features"],
-          rows: [
-            ["Definition", "Acute reduction in pCO2 (<35 mmHg)", "Sustained reduction in pCO2 (<35 mmHg) >2–3 days", "Alveolar hyperventilation exceeding metabolic CO2 production", "Hyperventilation driven by hypoxia, central stimulation, or mechanical ventilation"],
-            ["Renal Compensation", "Minimal (cellular buffering)", "Full renal HCO3- excretion", "Downregulated proximal tubular H+ secretion; HCO3- excretion", "Renal excretion of bicarbonate lowers plasma HCO3- towards normal pH"],
-            ["HCO3- Drop Rule", "For every 10 mmHg pCO2 drop <40, HCO3- drops by 2 mmol/L", "For every 10 mmHg pCO2 drop <40, HCO3- drops by 4 to 5 mmol/L", "Acute: 2 mEq/L per 10 mmHg\nChronic: 4–5 mEq/L per 10 mmHg", "Acute formula: Expected HCO3- = 24 - (40 - pCO2)/10 × 2\nChronic formula: Expected HCO3- = 24 - (40 - pCO2)/10 × 5"],
-            ["pH Rise Rule", "pH rises by 0.08 per 10 mmHg drop in pCO2", "pH rises by only 0.03 per 10 mmHg drop in pCO2", "Near-complete restoration of arterial pH in chronic states", "Acute pCO2 20 mmHg → pH ~7.56\nChronic pCO2 20 mmHg → pH ~7.46"],
-            ["Maximal Compensation", "HCO3- rarely drops below 18 mmol/L", "HCO3- can drop to 12–15 mmol/L", "Physiological limit of renal bicarbonate excretion", "HCO3- <12 mmol/L indicates coexisting metabolic acidosis"]
+      "b": "Because the normal adult left ventricle has approximately 3 times more mass than the right ventricle, mild-to-moderate right ventricular hypertrophy may be completely masked by left ventricular electrical dominance. Definite ECG signs appear when RV mass increases substantially:\n\n1. Primary Precordial Criteria:\n• Reversal of Normal R/S Ratio in Lead V1: In normal hearts, V1 shows an rS complex with a tiny r wave and deep S wave (R/S < 1). In RVH, the R wave becomes tall and dominant: R/S ratio > 1.0 in V1.\n• Tall Monophasic R Wave in Lead V1: R wave amplitude > 7 mm (0.7 mV).\n• Deep Persistent S Wave in Leads V5 and V6: S wave depth > 7 mm (or R/S ratio < 1.0 in lead V6).\n\n2. Supporting Frontal & Atrial Criteria:\n• Right Axis Deviation (RAD): Mean QRS axis > +90° (often > +110°).\n• P-Pulmonale: Tall, peaked, narrow P waves > 2.5 mm in the inferior leads (II, III, aVF), reflecting right atrial enlargement.\n• QR complex in Lead V1: Highly specific for severe RVH and right atrial dilation.\n\n3. Right Ventricular Strain Pattern:\n• Downsloping ST-segment depression and asymmetric T-wave inversion in leads V1, V2, and V3 (and frequently in the inferior leads II, III, aVF).\n• Reflects repolarisation delay and microvascular ischaemia in a hypertensive, hyper-pressurized right ventricle.\n\n4. Differential Diagnosis of Tall R Wave in Lead V1:\n• True Right Ventricular Hypertrophy (RVH).\n• Posterior Wall Myocardial Infarction: Reciprocal changes to posterior Q waves appear as tall R waves with upright, tall T waves in V1–V3.\n• Right Bundle Branch Block (RBBB): Characterized by wide QRS (≥120 ms) with an rsR' pattern.\n• Wolff-Parkinson-White (WPW) Syndrome: Type A pre-excitation with left-sided accessory pathway produces a positive delta wave and tall R in V1.\n• Normal pediatric ECG or normal variant clockwise cardiac rotation."
+    }
+  ]
+});
+
+  topics.push({
+  "id": "ecg-bbb",
+  "cat": "ecg",
+  "name": "Bundle Branch Blocks: LBBB, RBBB & Sgarbossa MI Criteria",
+  "short": "Bundle Branch Blocks",
+  "tags": [
+    "LBBB",
+    "RBBB",
+    "Rabbit Ears",
+    "Sgarbossa Criteria",
+    "Modified Smith-Sgarbossa"
+  ],
+  "tagline": "QRS >=120 ms, notched lateral R waves, rsR' rabbit ears in V1, and Sgarbossa criteria for acute MI in LBBB",
+  "source": "2023 ACC/AHA/ACCP/HRS Guideline for Management of Patients With Bradycardia and Cardiac Conduction Delay; Smith SW, et al. Ann Emerg Med 2012.",
+  "sections": [
+    {
+      "h": "LBBB vs RBBB Morphology & Sgarbossa MI Diagnostic Scoring",
+      "diagram": "ecg-bbb-comparison",
+      "table": {
+        "headers": [
+          "Diagnostic System",
+          "Specific Lead Criterion",
+          "Diagnostic Cutoff Value",
+          "Sensitivity / Specificity",
+          "Clinical Decision Threshold"
+        ],
+        "rows": [
+          [
+            "LBBB Morphology",
+            "Broad, notched R in I, aVL, V5, V6; deep QS in V1",
+            "QRS duration ≥120 ms (≥3 small boxes)",
+            "Absent septal Q waves; prolonged intrinsicoid deflection >60 ms",
+            "Masks standard STEMI criteria; secondary ST/T discordance is normal"
+          ],
+          [
+            "RBBB Morphology",
+            "rsR' ('rabbit ears') in V1–V2; wide slurred S in I, aVL, V5, V6",
+            "QRS duration ≥120 ms",
+            "Normal septal Q waves preserved; primary vector intact",
+            "Does NOT mask STEMI; secondary ST depression & T inversion normal in V1–V3"
+          ],
+          [
+            "Sgarbossa 1: Concordant STE",
+            "ST elevation ≥1 mm in leads with positive QRS",
+            "≥1 mm (0.1 mV) concordant STE",
+            "Specificity ~98%, Sensitivity ~20% (Score = 5 points)",
+            "Score ≥3 points: Acute Myocardial Infarction confirmed! Immediate catheterisation lab activation"
+          ],
+          [
+            "Sgarbossa 2: Concordant STD",
+            "ST depression ≥1 mm in leads V1, V2, or V3",
+            "≥1 mm concordant STD in V1–V3",
+            "Specificity ~96%, Sensitivity ~25% (Score = 3 points)",
+            "Represents acute posterior / anteroseptal MI; Score ≥3 points confirms acute occlusion"
+          ],
+          [
+            "Original Sgarbossa 3",
+            "Extreme discordant ST elevation in negative QRS",
+            "≥5 mm discordant STE in QS leads",
+            "Low sensitivity and specificity (Score = 2 points)",
+            "Score of 2 points alone is NOT diagnostic of acute MI under original criteria"
+          ],
+          [
+            "Modified Smith-Sgarbossa",
+            "Excessive discordant STE relative to S wave depth",
+            "ST / S ratio ≤ -0.25 (STE ≥ 25% of S depth)",
+            "Sensitivity ~91%, Specificity ~90%",
+            "Replaces original rule 3! Detects occlusion MI (OMI) with high diagnostic accuracy"
           ]
-        },
-        b: "Respiratory Alkalosis is caused by an increase in effective alveolar ventilation relative to carbon dioxide production, resulting in a primary reduction in arterial pCO2 (<35 mmHg) and arterial alkalemia (pH >7.45):\n\n" +
-           "1. Acute vs Chronic Renal Compensation Rules:\n" +
-           "• Acute Respiratory Alkalosis (Minutes to Hours):\n" +
-           "  - Immediate chemical buffering by intracellular proteins releases H+ into plasma: H+ + HCO3- <-> H2CO3 <-> H2O + CO2, consuming small amounts of bicarbonate.\n" +
-           "  - Rule: For every 10 mmHg drop in pCO2 below 40 mmHg, plasma [HCO3-] falls by 2 mmol/L, and pH rises by 0.08.\n" +
-           "• Chronic Respiratory Alkalosis (2 to 3 Days):\n" +
-           "  - The kidneys respond to persistent low pCO2 by downregulating proton secretion (inhibiting apical NHE3 antiporters and H+-ATPase) and decreasing bicarbonate reabsorption.\n" +
-           "  - Rule: For every 10 mmHg drop in pCO2 below 40 mmHg, plasma [HCO3-] falls by 4 to 5 mmol/L, and pH rises by only 0.03.\n\n" +
-           "2. Common Etiologies in Anaesthesia & Emergency Medicine:\n" +
-           "• Hypoxemic Drive: High altitude, severe anemia, pulmonary embolism, pneumonia, right-to-left intracardiac shunts, acute asthma (early stage hyperventilation before fatigue).\n" +
-           "• Central Nervous System Stimulation: Severe pain, anxiety/panic attacks, fever, sepsis, traumatic brain injury, subarachnoid hemorrhage, meningitis, pregnancy (progesterone stimulates medullary respiratory center).\n" +
-           "• Toxic / Drug-Induced: Early Salicylate (Aspirin) toxicity (direct stimulation of medullary chemoreceptor trigger zone produces primary respiratory alkalosis before uncoupling of oxidative phosphorylation produces HAGMA); theophylline, catecholamines.\n" +
-           "• Iatrogenic Mechanical Over-Ventilation: Excess tidal volume or respiratory rate delivered during general anaesthesia or ICU mechanical ventilation.\n" +
-           "• Hepatic Cirrhosis & Encephalopathy: Elevated circulating ammonia and progesterone metabolites trigger persistent hyperventilation.\n\n" +
-           "3. Profound Neurological & Vascular Consequences:\n" +
-           "• Cerebral Vasoconstriction & Ischemia: Cerebral blood flow (CBF) is exquisitely sensitive to arterial pCO2, decreasing by 2% to 4% for every 1 mmHg drop in pCO2 between 20 and 60 mmHg. Severe hyperventilation (pCO2 <25 mmHg) causes profound cerebral vasoconstriction, causing dizziness, lightheadedness, confusion, syncope, and worsening focal cerebral ischemia in traumatic brain injury or stroke.\n" +
-           "• Acute Hypocalcaemic Neuromuscular Irritability: Elevated pH increases the negative charge on plasma proteins, leading to increased binding of ionized calcium to albumin. The acute reduction in ionized calcium (Ca2+) increases neuronal membrane sodium permeability, causing circumoral paresthesias, carpopedal spasm, tetany, and hyperreflexia."
+        ]
       },
-      {
-        h: "HAGMA & Delta Gap: Anion Gap Calculation, Albumin Correction & Delta Ratio Framework",
-        diagram: "abg-anion-gap-balance",
-        table: {
-          headers: ["Delta Ratio (ΔAG / ΔHCO3-)", "Diagnostic Interpretation", "Underlying Pathophysiology", "Classic Clinical Examples"],
-          rows: [
-            ["<0.4 to 0.8", "Mixed HAGMA + NAGMA", "Bicarbonate drop is far greater than the rise in Anion Gap; dual acidotic insult", "Diabetic Ketoacidosis + severe diarrhea; Lactic acidosis + aggressive 0.9% Normal Saline resuscitation; Renal Tubular Acidosis + sepsis"],
-            ["0.8 to 1.0", "HAGMA (with early/mild NAGMA)", "Transition zone; proportional buffering with mild hyperchloraemia", "Early DKA; resolving lactic acidosis with renal chloride retention"],
-            ["1.0 to 2.0", "Pure High Anion Gap Metabolic Acidosis (HAGMA)", "One mole of unmeasured organic acid buffers exactly one mole of HCO3- (1:1 stoichiometry)", "Uncomplicated Diabetic Ketoacidosis (DKA); Lactic Acidosis (septic, cardiogenic, or hemorrhagic shock); Toxic alcohol poisoning"],
-            [">2.0", "Mixed HAGMA + Metabolic Alkalosis (or Pre-existing Chronic Hypercapnia)", "Bicarbonate is higher than expected; a concurrent process has elevated HCO3- prior to or during HAGMA", "DKA with protracted vomiting (gastric HCl loss); Lactic acidosis in chronic COPD patient with baseline compensatory hyperbicarbonatemia"]
+      "b": "Intraventricular conduction delays (QRS ≥120 ms) occur when conduction is blocked in either the left or right main bundle branches. Because standard repolarisation is disrupted, secondary ST-segment and T-wave changes occur naturally in a direction opposite to the main QRS vector ('appropriate discordance'):\n\n1. Left Bundle Branch Block (LBBB) Diagnostic Criteria:\n• QRS Duration: ≥120 ms in adults (incomplete LBBB if 100–119 ms).\n• Lateral Leads (I, aVL, V5, V6): Broad, slurred, notched monophasic R waves (often described as an 'M' shaped complex); absent septal Q waves (septal depolarisation is reversed, proceeding from right to left).\n• Precordial Lead V1: Broad, deep, monophasic QS or rS complex ('W' shaped complex).\n• Intrinsicoid Deflection: Delayed in leads V5 and V6 (>60 ms).\n• Appropriate Discordance: The ST segment and T wave are naturally discordant (opposite in polarity) to the major QRS deflection: ST depression and T inversion in leads with positive QRS (I, aVL, V5, V6), and modest ST elevation in leads with deep QS complexes (V1, V2).\n\n2. Right Bundle Branch Block (RBBB) Diagnostic Criteria:\n• QRS Duration: ≥120 ms in adults (incomplete RBBB if 100–119 ms).\n• Precordial Leads V1 and V2: Triphasic rsR' ('rabbit ears') or rSR' complex, where the R' wave is taller and wider than the initial r wave.\n• Lateral Leads (I, aVL, V5, V6): Wide, slurred, blunt S wave (reflecting delayed, slow depolarisation of the right ventricle traveling left-to-right).\n• Septal Activation: Intact! Normal physiological septal Q waves are preserved in lateral leads.\n• STEMI Diagnosis in RBBB: Standard STEMI elevation criteria REMAIN VALID in patients with RBBB! ST elevation in leads I, aVL, or V4–V6 signifies acute transmural ischaemia without requiring specialized scoring systems.\n\n3. Sgarbossa & Modified Smith-Sgarbossa Criteria (Diagnosing Acute MI in LBBB / Paced Rhythms):\n• Criterion 1 (Concordant ST Elevation — 5 Points):\n  - ST-segment elevation ≥1 mm in at least one lead with a positive (upright) QRS complex.\n  - Highly specific (98%) for acute coronary occlusion (Score ≥3 is diagnostic of STEMI).\n• Criterion 2 (Concordant ST Depression — 3 Points):\n  - ST-segment depression ≥1 mm in lead V1, V2, or V3.\n  - In LBBB, V1–V3 normally have deep QS waves with slight ST elevation. Any ST depression in V1–V3 is concordant with ischaemia (anterior/posterior MI).\n• Criterion 3 — Modified Smith-Sgarbossa Rule (Proportional Discordance):\n  - Original rule: Excessively discordant ST elevation ≥5 mm in leads with negative QRS (2 points; unreliable in very high voltage).\n  - Modified Smith-Sgarbossa Criterion: ST-segment elevation measured at the J-point relative to the depth of the preceding S wave (ST/S ratio) ≤ -0.25 (meaning ST elevation is ≥25% of the preceding S wave depth) in any lead with a QS/rS complex.\n  - Validated sensitivity ~91% and specificity ~90% for detecting acute coronary occlusion (Occlusion MI / OMI) requiring emergent primary PCI."
+    }
+  ]
+});
+
+  topics.push({
+  "id": "ecg-mi",
+  "cat": "ecg",
+  "name": "Myocardial Infarction (MI) Criteria & STEMI Equivalents",
+  "short": "MI Criteria",
+  "tags": [
+    "STEMI Criteria",
+    "4th Universal Definition",
+    "Wellens",
+    "de Winter",
+    "Posterior MI"
+  ],
+  "tagline": "Fourth Universal Definition thresholds, contiguous lead rules, Wellens, de Winter, and coronary territories",
+  "source": "Fourth Universal Definition of Myocardial Infarction (ESC/ACC/AHA/WHF 2018/2023 update); 2023 ESC Guidelines for the Management of Acute Coronary Syndromes.",
+  "sections": [
+    {
+      "h": "Universal Definition Thresholds, Coronary Territories & STEMI Equivalents",
+      "diagram": "ecg-stemi-evolution",
+      "table": {
+        "headers": [
+          "Anatomical Coronary Territory",
+          "ECG Lead Distribution",
+          "Culprit Coronary Artery",
+          "Reciprocal ST Depression Leads",
+          "Key Clinical & Haemodynamic Complications"
+        ],
+        "rows": [
+          [
+            "Inferior Wall",
+            "Leads II, III, aVF",
+            "Right Coronary Artery (RCA 85%) or Left Circumflex (LCx 15%)",
+            "Leads I, aVL (high lateral)",
+            "High risk of sinus bradycardia, Mobitz I / Complete Heart Block; check V3R/V4R for RV involvement!"
+          ],
+          [
+            "Anteroseptal Wall",
+            "Leads V1, V2, V3, V4",
+            "Left Anterior Descending (LAD) Artery",
+            "Leads II, III, aVF (inferior reciprocal)",
+            "Highest risk of cardiogenic shock, acute pulmonary oedema, free wall / ventricular septal rupture, and complete RBBB/bifascicular block"
+          ],
+          [
+            "High Lateral Wall",
+            "Leads I, aVL",
+            "Left Circumflex (LCx) or Diagonal branch of LAD",
+            "Leads II, III, aVF",
+            "Isolated aVL elevation may be earliest subtle sign of proximal LAD occlusion ('South African Flag' pattern)"
+          ],
+          [
+            "Low Lateral / Apical",
+            "Leads V5, V6",
+            "Distal LAD, Left Circumflex, or Ramus Intermedius",
+            "Leads V1, V2",
+            "Associated with extensive anterior infarction or isolated circumflex occlusion"
+          ],
+          [
+            "True Posterior Wall",
+            "Leads V7, V8, V9 (posterior chest)",
+            "Posterior Descending Artery (PDA from RCA or LCx)",
+            "Horizontal STD, tall broad R, upright T in V1–V3",
+            "Frequently missed! Standard 12-lead shows only reciprocal changes in V1–V3. Must obtain 15-lead ECG with V7–V9"
+          ],
+          [
+            "Right Ventricular (RV)",
+            "Leads V3R, V4R (right chest)",
+            "Proximal Right Coronary Artery (proximal RCA)",
+            "Leads I, aVL",
+            "Severe preload dependence! Profound hypotension with nitroglycerin, morphine, or volume depletion. Treat with IV crystalloid boluses"
           ]
-        },
-        b: "The Serum Anion Gap and the Delta Ratio are essential mathematical tools for unmasking complex, mixed, and life-threatening occult metabolic acid-base disorders:\n\n" +
-           "1. Serum Anion Gap (AG) Definition & Formula:\n" +
-           "• The Law of Electroneutrality mandates that total plasma cation charges must equal total plasma anion charges: [Na+] + [Unmeasured Cations] = [Cl-] + [HCO3-] + [Unmeasured Anions].\n" +
-           "• Standard Anion Gap Equation: AG = [Na+] - ([Cl-] + [HCO3-]).\n" +
-           "• Normal Reference Range: 8 to 12 mmol/L (measured by modern ion-selective electrode analyzers; historically 12–16 mmol/L when flame photometry was used).\n" +
-           "• Unmeasured Anions comprise circulating albumin (accounting for ~75% of normal AG), phosphate, sulphate, and organic acids. Unmeasured Cations include calcium (Ca2+), magnesium (Mg2+), potassium (K+), and gamma-globulins.\n\n" +
-           "2. Mandatory Albumin Correction of Anion Gap (The Figge-Jabor-Kazda Formula):\n" +
-           "• Circulating albumin is a polyvalent polyanion. At physiological pH 7.40, each 1.0 g/dL of serum albumin provides approximately 2.5 mmol/L of negative charge (anion equivalents).\n" +
-           "• The Figge-Jabor-Kazda-Fencl Formula:\n" +
-           "  Corrected AG = Observed AG + 2.5 * (4.0 - Serum Albumin in g/dL).\n" +
-           "• CRITICAL CLINICAL WARNING — OCCULT HAGMA IN ICU SEPSIS:\n" +
-           "  - Hypoalbuminaemia is virtually ubiquitous in critically ill, septic, cirrhotic, and post-surgical patients (e.g. serum albumin 2.0 g/dL instead of normal 4.0 g/dL).\n" +
-           "  - A 2.0 g/dL deficit in albumin artificially lowers the baseline baseline AG by 5.0 mmol/L (from normal 12 down to 7 mmol/L!).\n" +
-           "  - Therefore, an uncorrected measured AG of 12 mmol/L in a hypoalbuminaemic patient actually represents a TRUE corrected AG of 17 mmol/L! Failure to correct for albumin causes clinicians to miss lethal occult lactic acidosis or ketoacidosis in over 30% of ICU admissions!\n\n" +
-           "3. The Delta Ratio (Delta-Delta Framework):\n" +
-           "• In pure HAGMA, each millimole of unmeasured organic acid (e.g. lactic acid, beta-hydroxybutyric acid) added to the extracellular fluid releases one H+, which binds and consumes exactly one millimole of HCO3-. The rise in Anion Gap (Delta AG) should match the drop in Bicarbonate (Delta HCO3-).\n" +
-           "• Mathematical Formulas:\n" +
-           "  - Delta AG = Observed Corrected AG - Normal AG (12).\n" +
-           "  - Delta HCO3- = Normal HCO3- (24) - Observed HCO3-.\n" +
-           "  - Delta Ratio = Delta AG / Delta HCO3- = (AG - 12) / (24 - [HCO3-]).\n" +
-           "• Diagnostic Framework:\n" +
-           "  1. Delta Ratio 1.0 to 2.0 = Pure HAGMA: Classic uncomplicated lactic acidosis or DKA.\n" +
-           "  2. Delta Ratio < 0.8 = Mixed HAGMA + NAGMA: Bicarbonate has dropped significantly more than the Anion Gap has risen. Look immediately for normal saline resuscitation hyperchloraemia, diarrhea, or renal tubular acidosis coexisting with shock or DKA!\n" +
-           "  3. Delta Ratio > 2.0 = Mixed HAGMA + Metabolic Alkalosis: Bicarbonate is unexpectedly elevated relative to the high Anion Gap. Look for severe vomiting (gastric HCl loss), chronic diuretic use, or pre-existing chronic respiratory acidosis with renal compensation!"
+        ]
       },
-      {
-        h: "HAGMA & NAGMA Examples: MUDPILES / GOLD MARK vs HARDCARP & Urine Anion Gap",
-        table: {
-          headers: ["Acidosis Type", "Anion Gap", "Serum Chloride", "Mnemonic / Acronym", "Key Etiologies & Diagnostic Biomarkers", "Emergency Therapeutic Interventions"],
-          rows: [
-            ["High Anion Gap (HAGMA)", "Elevated (>12 mmol/L)", "Normal (100–106 mmol/L)", "MUDPILES / GOLD MARK", "Methanol, Uraemia, DKA, Paracetamol (5-oxoproline), Iron/INH, Lactic acidosis, Ethylene glycol, Salicylates", "Treat underlying cause; Insulin/IVF for DKA; Hemodialysis for toxic alcohols/uraemia; Fomepizole"],
-            ["Normal Anion Gap (NAGMA)", "Normal (8–12 mmol/L)", "Elevated (>108 mmol/L, Hyperchloraemic)", "HARDCARP / USEDCAMP", "Hyperalimentation, Acetazolamide, RTA, Diarrhea, Chloride fluids (0.9% NS), Addison's, Retrosternal conduit, Pancreatic fistula", "Discontinue 0.9% NS; switch to balanced crystalloids (Plasma-Lyte / Hartmann's); correct diarrhea/RTA; oral NaHCO3"],
-            ["Urine Anion Gap (UAG)", "Differentiates renal vs GI NAGMA", "Calculated from urine electrolytes", "UAG = (Na+_u + K+_u) - Cl-_u", "Negative UAG (-20 to -50): Normal renal NH4+ excretion (Diarrhea)\nPositive UAG (+20 to +40): Impaired renal NH4+ excretion (RTA)", "Negative UAG confirms intact renal response to GI losses; Positive UAG confirms distal RTA (Type 1 or 4)"]
+      "b": "The diagnosis of ST-Elevation Myocardial Infarction (STEMI) requires prompt recognition of J-point elevation in at least two anatomically contiguous leads, crosschecked against the Fourth Universal Definition of Myocardial Infarction:\n\n1. Fourth Universal Definition of MI — J-Point ST Elevation Thresholds:\n• Standard Diagnostic Threshold: New ST elevation at the J-point in at least TWO contiguous leads:\n• Precordial Leads V2 and V3 (Specific Age and Sex Cutoffs):\n  - Men <40 years: ≥2.5 mm (0.25 mV).\n  - Men ≥40 years: ≥2.0 mm (0.20 mV).\n  - Women (any age): ≥1.5 mm (0.15 mV).\n• All Other Leads (I, II, III, aVF, aVL, V1, V4, V5, V6):\n  - Both Men and Women: ≥1.0 mm (0.10 mV).\n• Posterior Chest Leads (V7, V8, V9):\n  - Both Men and Women: ≥0.5 mm (0.05 mV).\n• Right Precordial Leads (V3R, V4R):\n  - Both Men and Women: ≥0.5 mm (0.05 mV) [≥1.0 mm in men <30 years].\n\n2. Classical 4-Stage Electrocardiographic STEMI Evolution:\n• Stage 1 (Hyperacute Phase — Minutes): Tall, peaked, broad-based, symmetrical hyperacute T waves with slight J-point elevation.\n• Stage 2 (Acute Fully Evolved Phase — Hours): Convex-upward 'tombstone' ST-segment elevation merging into T waves, with reciprocal ST depression in opposing vascular territories.\n• Stage 3 (Subacute Phase — Days): ST segments begin returning to baseline, T waves invert symmetrically, and pathological Q waves develop (Q wave ≥40 ms or >25% of R wave amplitude).\n• Stage 4 (Chronic / Old Infarction — Months): Persistent pathological Q waves with isoelectric ST segments and upright or permanently inverted T waves.\n\n3. Critical STEMI Equivalents & Occlusion MI (OMI) Patterns:\n• Wellens Syndrome (Critical Proximal LAD Stenosis):\n  - Occurs during pain-free intervals in unstable angina patients; signals imminent, massive anterior myocardial infarction.\n  - Type A (25%): Biphasic T waves in precordial leads V2 and V3 (initial positive deflection followed by terminal negative deflection).\n  - Type B (75%): Deep, symmetrical, pointed T-wave inversions across precordial leads V2 through V4/V5.\n  - Clinical Rule: Cardiac enzymes may be normal; avoid exercise stress testing! Emergent coronary angiography indicated.\n• de Winter T-Wave Pattern (Proximal LAD Occlusion — 2% of Anterior OMI):\n  - J-point depression of 1 to 3 mm in leads V1 through V6 with upsloping ST segments continuing into tall, prominent, symmetrical, hyperacute T waves.\n  - Accompanied by reciprocal ST-segment elevation of 0.5 to 2 mm in lead aVR.\n  - Represents complete acute proximal LAD occlusion without classical ST elevation; requires immediate primary PCI activation.\n• Isolated Posterior Myocardial Infarction:\n  - Standard 12-lead shows horizontal ST depression, tall R waves (R/S ratio > 1.0), and upright tall T waves in leads V1 to V3.\n  - Confirmation: Place posterior leads V7, V8, V9; ST elevation ≥0.5 mm confirms acute posterior STEMI.\n• ST Elevation in Lead aVR with Multi-Lead Depression:\n  - ST elevation in lead aVR (≥1.0 mm) that exceeds ST elevation in lead V1, combined with diffuse ST depression across ≥6 leads (I, II, aVL, V4–V6).\n  - Indicates Left Main Coronary Artery (LMCA) occlusion or severe triple-vessel ischaemic disease."
+    }
+  ]
+});
+
+  topics.push({
+  "id": "ecg-blocks",
+  "cat": "ecg",
+  "name": "Heart Blocks: 1st Degree, Mobitz I, Mobitz II & Complete Heart Block",
+  "short": "Heart Blocks",
+  "tags": [
+    "AV Blocks",
+    "Wenckebach",
+    "Mobitz II",
+    "Complete Heart Block",
+    "AV Dissociation"
+  ],
+  "tagline": "First-degree, Mobitz I (Wenckebach), Mobitz II, and third-degree complete heart block with pacing protocols",
+  "source": "2023 ACC/AHA/ACCP/HRS Guideline for Management of Patients With Bradycardia and Cardiac Conduction Delay; Circulation 2023.",
+  "sections": [
+    {
+      "h": "AV Conduction Block Diagnostic Hierarchy & Pacing Strategies",
+      "diagram": "ecg-heart-blocks",
+      "table": {
+        "headers": [
+          "Heart Block Category",
+          "Anatomic Conduction Level",
+          "Key Electrocardiographic Findings",
+          "Response to IV Atropine",
+          "Definitive Clinical Management"
+        ],
+        "rows": [
+          [
+            "First-Degree AV Block",
+            "AV Node (intranodal delay)",
+            "Constant PR interval >200 ms (>5 small boxes); all P waves conducted (1:1)",
+            "Accelerates AV nodal conduction; shortens PR interval",
+            "Benign; no active pacing required unless drug toxicity (beta-blocker, diltiazem, digoxin) present"
+          ],
+          [
+            "Second-Degree Mobitz I (Wenckebach)",
+            "AV Node (progressive fatigue)",
+            "Progressive PR lengthening until a single P wave drops (grouped beating); PR after dropped beat is shortest",
+            "Improves AV nodal conduction; eliminates Wenckebach periodicity",
+            "Usually benign, reversible (inferior MI, vagal tone); temporary pacing only if symptomatic hypoperfusion"
+          ],
+          [
+            "Second-Degree Mobitz II",
+            "Infranodal (His bundle or bilateral bundle branches)",
+            "Fixed, constant PR interval with sudden, intermittent dropped P waves without warning; wide QRS common",
+            "Paradoxical worsening! Speeds sinus rate without improving infranodal conduction; drops more beats",
+            "High risk of syncope (Stokes-Adams) and rapid progression to asystole! Immediate Transvenous Pacing indicated"
+          ],
+          [
+            "Third-Degree Complete Heart Block (CHB)",
+            "AV Node or Infranodal Purkinje system",
+            "Complete AV dissociation; P waves march independently through QRS (atrial rate > ventricular rate); regular R-R and regular P-P",
+            "Junctional escape may respond; infranodal ventricular escape has ZERO response to atropine",
+            "Urgent Transcutaneous / Transvenous Cardiac Pacing + Permanent Pacemaker (PPM) implantation"
           ]
-        },
-        b: "Distinguishing between High Anion Gap Metabolic Acidosis (HAGMA) and Normal Anion Gap (Hyperchloraemic) Metabolic Acidosis (NAGMA) is the cornerstone of clinical acid-base diagnostics:\n\n" +
-           "1. High Anion Gap Metabolic Acidosis (HAGMA) Mnemonics:\n" +
-           "• THE CLASSIC MUDPILES MNEMONIC:\n" +
-           "  - M — Methanol: Metabolized by alcohol dehydrogenase to formic acid; causes retinal toxicity, optic disc hyperaemia, and permanent blindness.\n" +
-           "  - U — Uraemia: Advanced acute kidney injury or chronic renal failure (eGFR <15–20 mL/min); accumulation of organic sulfates, phosphates, and hippurate.\n" +
-           "  - D — Diabetic Ketoacidosis (DKA): Insulin deficiency + glucagon excess accelerates lipolysis; accumulation of beta-hydroxybutyrate and acetoacetate. (Also includes Alcoholic Ketoacidosis and Starvation Ketoacidosis).\n" +
-           "  - P — Paracetamol / Propylene Glycol: Chronic therapeutic or supratherapeutic paracetamol in malnourished/female patients induces 5-oxoproline (pyroglutamic acid) accumulation via glutathione depletion. Propylene glycol is a solvent in IV lorazepam/diazepam infusions.\n" +
-           "  - I — Iron, Isoniazid (INH), Infection: INH causes intractable seizures refractory to standard anticonvulsants (treated with IV Pyridoxine / Vitamin B6); Iron toxicity causes direct mitochondrial poisoning.\n" +
-           "  - L — Lactic Acidosis: Type A (tissue hypoperfusion/shock, cardiac arrest, mesenteric ischemia); Type B (toxins, metformin-associated lactic acidosis [MALA], liver failure, propofol infusion syndrome [PRIS], cyanide).\n" +
-           "  - E — Ethylene Glycol: Antifreeze ingestion; metabolized to glycolic and oxalic acid; forms calcium oxalate envelope crystals in urine, precipitating acute tubular necrosis and hypocalcaemic tetany.\n" +
-           "  - S — Salicylates (Aspirin): Uncouples oxidative phosphorylation (generating lactic and keto acids) and directly stimulates medullary respiratory center (producing early respiratory alkalosis).\n" +
-           "• THE MODERN GOLD MARK MNEMONIC (Preferred in Toxicology):\n" +
-           "  - G: Glycols (ethylene glycol, propylene glycol)\n" +
-           "  - O: Oxoproline (5-oxoproline / pyroglutamic acid from chronic paracetamol use)\n" +
-           "  - L: L-Lactate (standard clinical lactic acidosis from shock, hypoperfusion, sepsis)\n" +
-           "  - D: D-Lactate (short bowel syndrome / bacterial fermentation of unabsorbed carbohydrates)\n" +
-           "  - M: Methanol\n" +
-           "  - A: Aspirin (salicylates)\n" +
-           "  - R: Renal Failure (uraemic acidosis)\n" +
-           "  - K: Ketoacidosis (diabetic, alcoholic, starvation)\n\n" +
-           "2. Normal Anion Gap (Hyperchloraemic) Metabolic Acidosis (NAGMA) Mnemonics:\n" +
-           "• Electrophysiological Principle: In NAGMA, the serum anion gap remains normal (8–12 mmol/L) because for every millimole of bicarbonate lost from the body, the kidneys or intravenous infusions replace it with exactly one millimole of chloride (Cl-), preserving electroneutrality.\n" +
-           "• THE HARDCARP MNEMONIC:\n" +
-           "  - H — Hyperalimentation: Total Parenteral Nutrition (TPN) with excessive chloride-rich amino acid formulations.\n" +
-           "  - A — Acetazolamide: Carbonic anhydrase inhibition in the renal proximal tubule, causing renal bicarbonate wasting.\n" +
-           "  - R — Renal Tubular Acidosis (RTA Types 1, 2, and 4).\n" +
-           "  - D — Diarrhea: The most common worldwide cause of NAGMA. Pancreatic, biliary, and intestinal secretions contain high NaHCO3 concentrations; loss of stool directly drains bicarbonate.\n" +
-           "  - C — Chloride-rich Resuscitation Fluids: Massive infusion of 0.9% Normal Saline (154 mmol/L Cl-, far higher than normal plasma Cl- of 104 mmol/L). Induces hyperchloraemic metabolic acidosis, renal vasoconstriction, and decreased GFR.\n" +
-           "  - A — Addison's Disease: Primary adrenal insufficiency / aldosterone deficiency leads to impaired renal H+ excretion.\n" +
-           "  - R — Retrosternal / Ureteral Diversion (Ureterosigmoidostomy): Colon mucosa reabsorbs chloride from urine in exchange for secreting bicarbonate into the bowel lumen.\n" +
-           "  - P — Pancreaticoduodenal Fistulae: Direct loss of bicarbonate-rich digestive fluids.\n\n" +
-           "3. Differentiating Diarrhea from RTA Using Urine Anion Gap (UAG):\n" +
-           "• Formula: UAG = ([Na+]_urine + [K+]_urine) - [Cl-]_urine.\n" +
-           "• Negative Urine Anion Gap (Typically -20 to -50 mmol/L):\n" +
-           "  - Indicates INTACT renal acidification mechanism.\n" +
-           "  - In extra-renal bicarbonate loss (Diarrhea), the healthy kidneys appropriately increase ammonium (NH4+) excretion to eliminate acid. Because NH4+ is an unmeasured cation excreted together with chloride (Cl-), urinary chloride rises markedly above Na+ + K+, yielding a strongly negative UAG.\n" +
-           "• Positive Urine Anion Gap (Typically +20 to +40 mmol/L):\n" +
-           "  - Indicates IMPAIRED renal ammonium excretion.\n" +
-           "  - Classic hallmark of Renal Tubular Acidosis (Distal Type 1 RTA or Hypoaldosteronism Type 4 RTA). The diseased kidney cannot excrete NH4+, urinary chloride remains low, yielding a positive UAG."
-      }
-    ],
-    references: [
-      "Miller's Anesthesia, 10th ed., Ch. 42 (Acid-Base Homeostasis & Blood Gas Analysis), Elsevier, 2025/2026.",
-      "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 6th ed., Ch. 30 (Acid-Base Homeostasis), Wolters Kluwer, 2022.",
-      "Marino PL. The ICU Book, 4th ed., Section 8: Acid-Base Disorders, Wolters Kluwer, 2014 / 2023 update.",
-      "West JB, Luks AM. West's Respiratory Physiology: The Essentials, 11th ed., Wolters Kluwer, 2021.",
-      "Kellum JA. Clinical review: Reunification of acid-base physiology. Crit Care. 2005;9(5):500-507.",
-      "Figge J, Jabor A, Kazda A, Fencl V. Anion gap and hypoalbuminemia. Crit Care Med. 1998;26(11):1807-1810."
-    ]
-  });
+        ]
+      },
+      "b": "Atrioventricular (AV) conduction blocks represent impaired electrical transmission from the atria to the ventricles. Diagnostic distinction between nodal (benign/atropine-responsive) and infranodal (malignant/pacing-dependent) conduction failure is vital:\n\n1. First-Degree AV Block:\n• Diagnostic Criteria: Constant, prolonged PR interval >200 ms (more than 5 small boxes / one large box) at normal heart rates, with a 1:1 relationship between P waves and QRS complexes.\n• Anatomic Site: Almost universally localized to the AV node.\n• Causes: High vagal tone in well-trained athletes, degenerative conduction disease, medications (beta-blockers, non-dihydropyridine calcium channel blockers, digoxin, amiodarone), inferior MI.\n• Management: Asymptomatic first-degree block requires no treatment.\n\n2. Second-Degree AV Block — Mobitz Type I (Wenckebach):\n• Diagnostic Criteria:\n  1. Progressive lengthening of consecutive PR intervals until a single P wave fails to conduct to the ventricles (non-conducted P wave / dropped QRS).\n  2. The PR interval immediately following the dropped P wave is the shortest of the cycle.\n  3. Progressive shortening of the R-R interval prior to the dropped beat (grouped beating).\n• Anatomic Site: AV node (conduction delay increases incrementally with each beat until refractory period blocks one impulse).\n• Clinical Course: Typically benign, transient, and reversible (e.g. acute inferior STEMI due to RCA ischemia of AV nodal artery, excessive vagal stimulation, athletic heart).\n• Response to Atropine: Excellent response! Atropine (0.5 to 1.0 mg IV) blocks vagal tone, shortening AV nodal refractoriness and restoring 1:1 conduction.\n\n3. Second-Degree AV Block — Mobitz Type II:\n• Diagnostic Criteria:\n  1. Constant, fixed PR intervals for all conducted beats.\n  2. Intermittent, sudden failure of a P wave to conduct (dropped QRS complex) without prior PR prolongation.\n  3. QRS complex is usually widened (≥120 ms) due to underlying bundle branch disease.\n• Anatomic Site: Infranodal — within the Bundle of His or bilateral bundle branches (His-Purkinje system).\n• Clinical Course: Malignant and unstable! High risk of sudden complete heart block, syncope (Stokes-Adams attacks), ventricular arrhythmias, and sudden cardiac death.\n• Response to Atropine: Ineffective or DANGEROUS! Atropine increases sinus node firing rate, delivering more impulses to the diseased infranodal conduction system, which increases the block ratio (e.g. converting 2:1 block into 3:1 block).\n• Management: Immediate Transcutaneous Pacing pads applied, preparation for emergent Transvenous Pacing, and definitive Dual-Chamber Permanent Pacemaker (PPM) implantation.\n\n4. Third-Degree (Complete) Heart Block:\n• Diagnostic Criteria:\n  1. Complete atrioventricular dissociation: No relationship between P waves and QRS complexes.\n  2. Atrial rate is faster than ventricular escape rate (P rate > QRS rate).\n  3. Regular P-P intervals and regular R-R intervals (both rhythms march through independently).\n• Escape Rhythm Characteristics:\n  - Junctional Escape (AV Nodal / His): Narrow QRS (<120 ms), rate 40 to 60 bpm, hemodynamically stable.\n  - Ventricular Escape (Purkinje): Wide QRS (≥120 ms), rate 20 to 40 bpm, hemodynamically unstable, prone to ventricular standstill.\n• Emergency Treatment: Immediate Transcutaneous Pacing (TCP) with sedation; chronotropic infusions (Isoproterenol 2–10 mcg/min, Dopamine 5–20 mcg/kg/min, or Epinephrine 2–10 mcg/min) while awaiting transvenous pacing wire insertion."
+    }
+  ]
+});
+
+  topics.push({
+  "id": "ecg-vt",
+  "cat": "ecg",
+  "name": "Ventricular Tachycardia (VT): Monomorphic, Polymorphic & Diagnostic Algorithms",
+  "short": "Ventricular Tachycardia",
+  "tags": [
+    "Wide Complex Tachycardia",
+    "Brugada Algorithm",
+    "Vereckei aVR",
+    "Capture Beats",
+    "Fusion Beats",
+    "Torsades de Pointes"
+  ],
+  "tagline": "Monomorphic vs polymorphic VT, Brugada 4-step algorithm, Vereckei aVR, and emergency cardioversion protocols",
+  "source": "2022/2024 ESC Guidelines for the Management of Patients With Ventricular Arrhythmias; Circulation 2020/2025 ACLS Guidelines.",
+  "sections": [
+    {
+      "h": "Wide Complex Tachycardia Differentiation: Brugada vs Vereckei Algorithms",
+      "diagram": "ecg-vt-waveform",
+      "table": {
+        "headers": [
+          "Diagnostic Algorithm",
+          "Step / Criterion",
+          "Positive Finding Suggesting VT",
+          "Diagnostic Accuracy",
+          "Key Clinical Pitfall / Rule"
+        ],
+        "rows": [
+          [
+            "Brugada 4-Step (Step 1)",
+            "Absence of RS complex in ALL precordial leads V1–V6",
+            "Concordance: All leads purely positive (monophasic R) or purely negative (QS)",
+            "Specificity 100% for VT",
+            "If all leads are positive or negative without RS complexes, diagnosis is VT. Stop!"
+          ],
+          [
+            "Brugada 4-Step (Step 2)",
+            "RS interval duration in any precordial lead",
+            "RS interval > 100 ms (onset of R to nadir of S wave)",
+            "Specificity ~98% for VT",
+            "RS >100 ms indicates slow myocardial-to-myocardial cell transmission"
+          ],
+          [
+            "Brugada 4-Step (Step 3)",
+            "Atrioventricular Dissociation",
+            "Presence of independent P waves, Capture beats, or Fusion beats (Dressler beats)",
+            "Specificity 100% for VT",
+            "Pathognomonic hallmark of VT! Independent sinus P waves march through wide QRS"
+          ],
+          [
+            "Brugada 4-Step (Step 4)",
+            "Morphology criteria in V1/V2 and V6",
+            "RBBB-like (monophasic R or qR in V1) or LBBB-like (r >30 ms, notched S in V1)",
+            "Sensitivity ~89%, Specificity ~98%",
+            "If morphology criteria satisfied in both V1/V2 and V6, diagnosis is VT"
+          ],
+          [
+            "Vereckei aVR (Step 1)",
+            "Initial R wave in Lead aVR",
+            "Presence of an initial dominant R wave in Lead aVR",
+            "Specificity ~98% for VT",
+            "Single lead evaluation! Normal conduction travels away from aVR; initial R = ventricular origin"
+          ],
+          [
+            "Vereckei aVR (Step 2)",
+            "Initial r or q wave width in Lead aVR",
+            "Width of initial r or q wave > 40 ms (1 small box)",
+            "High specificity for VT",
+            "Reflects slow initial activation originating within ventricular myocardium"
+          ],
+          [
+            "Vereckei aVR (Step 3)",
+            "Notching on descending limb in Lead aVR",
+            "Notch or slur on descending limb of predominantly negative QRS",
+            "High specificity for VT",
+            "Indicates slow, fragmented intraventricular conduction propagation"
+          ],
+          [
+            "Vereckei aVR (Step 4)",
+            "Ventricular activation velocity ratio (vi/vt)",
+            "vi / vt ratio ≤ 1.0 (terminal velocity faster than initial velocity)",
+            "Specificity ~96% for VT",
+            "In VT, initial myocardial spread is slow (vi), whereas in SVT-A initial spread via His is fast (vi > vt)"
+          ]
+        ]
+      },
+      "b": "Any regular tachycardia with a QRS duration ≥120 ms is classified as a Wide Complex Tachycardia (WCT). Over 80% of all WCT cases are Ventricular Tachycardia (VT), rising to >90% in patients with prior myocardial infarction or structural heart disease:\n\n1. The Golden Rule of Wide Complex Tachycardia:\n• TREAT EVERY WIDE COMPLEX TACHYCARDIA AS VENTRICULAR TACHYCARDIA UNTIL PROVEN OTHERWISE!\n• Administering AV-nodal blocking drugs (Verapamil, Diltiazem, Adenosine, Beta-blockers) to a patient with VT mistakenly diagnosed as SVT with aberrancy can cause catastrophic haemodynamic collapse, ventricular fibrillation, and death!\n\n2. Monomorphic vs Polymorphic Ventricular Tachycardia:\n• Monomorphic VT:\n  - Uniform, identical QRS morphology from beat to beat.\n  - Arises from a single stable anatomical re-entrant circuit around myocardial scar/fibrosis (e.g. post-infarction scar, cardiomyopathy).\n• Polymorphic VT / Torsades de Pointes:\n  - Continually changing QRS axis and morphology from beat to beat.\n  - Torsades de Pointes ('twisting of points'): A specific subtype of polymorphic VT associated with baseline QT/QTc prolongation (>500 ms). QRS complexes twist their polarity and amplitude around the isoelectric baseline in an undulating helical pattern at a rate of 200 to 250 bpm.\n  - Hallmark Causes: Hypokalaemia, hypomagnesaemia, drugs (amiodarone, sotalol, haloperidol, ondansetron, macrolides), congenital Long QT Syndrome (LQTS).\n\n3. Pathognomonic Hallmarks of Ventricular Tachycardia:\n• Atrioventricular (AV) Dissociation: The sinus node continues to pace the atria independently while the ectopic ventricular focus drives the ventricles. Independent P waves can be seen marching through the wide QRS complexes at a slower rate.\n• Capture Beats: An occasional supraventricular impulse captures the AV node and ventricles during a non-refractory window, generating a solitary, narrow, normal QRS complex amidst the wide-complex tachycardia.\n• Fusion Beats (Dressler Beats): Occur when a descending supraventricular impulse and an ascending ventricular ectopic impulse depolarize the ventricles simultaneously, producing a hybrid QRS complex intermediate in morphology and duration.\n• Precordial Concordance: Completely positive (all monophasic R) or completely negative (all QS) complexes across V1 through V6.\n\n4. Emergency Management Protocols:\n• Unstable VT (Hypotension, altered mental status, chest pain, acute pulmonary oedema): Immediate Synchronized Electrical Cardioversion (100 J biphasic → 200 J biphasic) under intravenous sedation.\n• Pulseless VT: Treat as Cardiac Arrest! Immediate Unsynchronized Defibrillation (200 J biphasic) + ACLS algorithm.\n• Stable Monomorphic VT: Intravenous Amiodarone 150 mg infused over 10 minutes (repeatable once), followed by 1 mg/min for 6 hours, then 0.5 mg/min for 18 hours. Alternatively, Procainamide 20 to 50 mg/min IV (up to 17 mg/kg). Synchronized electrical cardioversion if pharmacological therapy fails.\n• Torsades de Pointes (Polymorphic VT with Prolonged QT): Intravenous Magnesium Sulphate 2 g IV bolus over 10 minutes (repeatable in 5–15 min); overdrive transcutaneous/transvenous pacing at 90–110 bpm to shorten repolarisation duration; discontinue all QT-prolonging medications immediately."
+    }
+  ]
+});
+
+  topics.push({
+  "id": "ecg-vf",
+  "cat": "ecg",
+  "name": "Ventricular Fibrillation (VF): Coarse vs Fine & ACLS Protocol",
+  "short": "Ventricular Fibrillation",
+  "tags": [
+    "Cardiac Arrest",
+    "Defibrillation",
+    "Coarse VF",
+    "Fine VF",
+    "ACLS",
+    "Shockable Rhythms"
+  ],
+  "tagline": "Coarse vs fine VF, avoiding mistaking fine VF for asystole, 200 J biphasic defibrillation, and ACLS algorithms",
+  "source": "American Heart Association (AHA) Guidelines for CPR and ECC; Circulation 2020 / 2025 update.",
+  "sections": [
+    {
+      "h": "Ventricular Fibrillation Morphology & ACLS Resuscitation Protocol",
+      "diagram": "ecg-vf-waveform",
+      "b": "Ventricular Fibrillation (VF) is a lethal, uncoordinated cardiac rhythm characterized by completely disorganized, chaotic ventricular depolarizations arising from multiple asynchronous micro-reentrant wavelets. Mechanical stroke volume and cardiac output drop immediately to ZERO, resulting in clinical cardiac arrest and brain death within 4 to 6 minutes without resuscitation:\n\n1. Electrocardiographic Diagnostic Criteria:\n• Total absence of identifiable P waves, QRS complexes, ST segments, or T waves.\n• Continuous, irregular, shapeless, chaotic baseline undulations varying wildly in amplitude, wavelength, and contour at a frequency of 150 to 500/min.\n\n2. Coarse VF vs Fine VF:\n• Coarse Ventricular Fibrillation:\n  - Amplitude of fibrillatory undulations ≥0.2 mV (≥2 mm).\n  - Represents early, recent-onset cardiac arrest with preserved myocardial high-energy phosphate stores (ATP).\n  - Highly responsive to electrical defibrillation.\n• Fine Ventricular Fibrillation:\n  - Amplitude of fibrillatory undulations <0.2 mV (<2 mm).\n  - Represents prolonged ischaemic arrest, depleted myocardial ATP, and impending asystole.\n  - Poor defibrillation success rate; requires high-quality CPR and Epinephrine to coarsen the fibrillatory amplitude before shock.\n• CRITICAL PITFALL — Fine VF vs Asystole:\n  - Fine VF is frequently misdiagnosed as Asystole ('flat line'). Always verify lead integrity, ensure monitor gain (amplitude) is turned up, and check at least TWO orthogonal leads. Fine VF is SHOCKABLE; Asystole is NOT shockable! Shocking asystole damages myocardium and eliminates intrinsic pacemaker recovery.\n\n3. AHA/ERC ACLS Resuscitation Protocol for Shockable Rhythms (VF / Pulseless VT):\n• 1. Immediate High-Quality CPR: Chest compression rate 100 to 120/min, depth 5 to 6 cm (2 to 2.4 inches), full chest recoil, minimal interruptions (<10 seconds). Ratio 30:2 or continuous with advanced airway (1 breath every 6 seconds).\n• 2. Immediate Unsynchronized Defibrillation: 200 Joules biphasic (or maximum manufacturer dose, e.g. 120–200 J; 360 J monophasic). Deliver shock immediately upon rhythm identification.\n• 3. Immediate CPR Resumption: Resume chest compressions immediately for 2 full minutes without pausing to check pulse or rhythm.\n• 4. Epinephrine: 1 mg IV/IO every 3 to 5 minutes (administered after the second defibrillation shock).\n• 5. Antiarrhythmic Therapy (For Shock-Refractory VF after 3rd Shock):\n  - Amiodarone: 300 mg IV/IO rapid push after shock 3; second dose of 150 mg IV/IO after shock 5.\n  - Alternative: Lidocaine 1.0 to 1.5 mg/kg IV/IO first dose, followed by 0.5 to 0.75 mg/kg for second dose (maximum 3 mg/kg).\n• 6. Treat Reversible Underlying Causes (The 5 H's and 5 T's):\n  - Hypovolaemia, Hypoxia, Hydrogen ion (Acidosis), Hypo/Hyperkalaemia, Hypothermia.\n  - Tension pneumothorax, Tamponade (cardiac), Toxins, Thrombosis (pulmonary), Thrombosis (coronary / acute MI)."
+    }
+  ]
+});
+
+  topics.push({
+  "id": "ecg-hyperkalemia",
+  "cat": "ecg",
+  "name": "Hyperkalaemia in ECG: Serum Level-Wise ECG Progression & Emergency Protocol",
+  "short": "Hyperkalaemia ECG",
+  "tags": [
+    "Potassium",
+    "Tented T Waves",
+    "Sine Wave",
+    "Calcium Gluconate",
+    "Insulin Dextrose"
+  ],
+  "tagline": "Serum level-wise ECG changes, peaked tented T waves, QRS widening, Sine-Wave rhythm, and emergency management",
+  "source": "European Resuscitation Council Guidelines 2021/2025; Goldberger's Clinical Electrocardiography, 10th ed.; Miller's Anesthesia, 10th ed.",
+  "sections": [
+    {
+      "h": "Serum Level-Wise ECG Progression & Emergency Triple-Pillar Protocol",
+      "diagram": "ecg-hyperkalemia-waveform",
+      "table": {
+        "headers": [
+          "Serum K⁺ Level (mmol/L)",
+          "Severity Grade",
+          "Key ECG Morphological Changes",
+          "Electrophysiological Mechanism",
+          "Arrhythmia Risks & Emergency Interventions"
+        ],
+        "rows": [
+          [
+            "3.5 to 5.0 mmol/L",
+            "Normal Reference",
+            "Normal P-QRS-T contours; QTc normal (<440 ms in men, <460 ms in women)",
+            "Resting membrane potential Em = -90 mV; normal Phase 0 Vmax and Phase 3 repolarisation",
+            "Baseline rhythm monitoring; no electrolyte intervention required"
+          ],
+          [
+            "5.5 to 6.5 mmol/L",
+            "Mild Hyperkalaemia",
+            "Tall, peaked, narrow-based, symmetrical 'tented' T waves; shortened QT/QTc interval",
+            "Increased extracellular K+ enhances I_Kr (rapid delayed rectifier) conductance, accelerating Phase 3 repolarisation",
+            "Earliest sign (most prominent in V2–V4); withhold all exogenous K+ and K+-sparing drugs; obtain urgent repeat lab check"
+          ],
+          [
+            "6.5 to 7.5 mmol/L",
+            "Moderate Hyperkalaemia",
+            "Prolonged PR interval (>200 ms); flattening and widening of P waves; widening of QRS complex (>120 ms); ST elevation mimicking STEMI or Brugada phenocopy ('dialysis pseudoinfarction')",
+            "Em becomes less negative (-80 to -70 mV), inactivating voltage-gated Na+ channels; Phase 0 dV/dt (Vmax) decreases markedly, slowing intra-atrial and intraventricular conduction",
+            "High risk of high-grade AV block and junctional rhythm; initiate transcellular shifting: 10u Regular Insulin + 25g D50 IV, inhaled Salbutamol 10–20 mg, IV NaHCO3 if acidotic"
+          ],
+          [
+            "7.5 to 8.5 mmol/L",
+            "Severe Hyperkalaemia",
+            "Complete loss of P waves (atrial inexcitability resulting in sinoventricular conduction); marked QRS widening (>160–200 ms); blending of QRS into ST-T wave; progressive bradycardia",
+            "Atrial myocytes lose excitability before specialized conducting tissues; sinus node continues to drive ventricles through internodal tracts without generating an atrial surface wave",
+            "Imminent cardiac arrest! Administer 10% Calcium Gluconate 10–30 mL IV over 5–10 min (or CaCl2 10 mL via central line) to stabilize myocardium"
+          ],
+          [
+            ">8.5 to 9.0 mmol/L",
+            "Extreme / Pre-Terminal",
+            "Classic 'Sine-Wave' pattern (smooth, wide, undulating biphasic sinusoidal wave resulting from total fusion of QRS and T wave); Asystole or Ventricular Fibrillation",
+            "Profound myocardial inexcitability; complete failure of sodium and potassium channel gating; loss of coordinated electrical wavefronts",
+            "MEDICAL EMERGENCY! Calcium Gluconate STAT (repeat every 5–10 min until QRS narrows), aggressive shifting, continuous CPR if pulseless, emergent Hemodialysis"
+          ]
+        ]
+      },
+      "b": "Hyperkalaemia is one of the most rapidly lethal electrolyte emergencies encountered in perioperative medicine and intensive care. Electrocardiographic changes correlate closely with the rate of serum potassium rise and absolute extracellular concentration:\n\n1. Electrophysiological Foundations of Hyperkalaemia:\n• The Nernst Potential Shift: In accordance with the Nernst equation (E_K = -61.5 * log([K+]_i / [K+]_o)), an elevation in extracellular potassium decreases the transmembrane concentration gradient. This shifts the resting membrane potential (E_m) to a less negative value (e.g. from normal -90 mV to -75 or -70 mV).\n• Voltage-Gated Fast Sodium Channel Inactivation: Depolarisation of E_m to less negative potentials causes progressive conformational inactivation of fast Na+ channels. Consequently, Phase 0 upstroke velocity (V_max or dV/dt) decreases dramatically, markedly impairing conduction velocity across the atria, AV node, His-Purkinje system, and ventricles (producing P-wave flattening, PR prolongation, and QRS widening).\n• Accelerated Phase 3 Repolarisation (T-Wave Tenting): Paradoxically, elevated extracellular potassium increases the open probability and conductance of the rapid delayed rectifier potassium channel (I_Kr). Outward potassium efflux during Phase 3 is accelerated and synchronised, yielding the pathognomonic tall, narrow-based, pointed 'tented' T waves with a shortened QT interval.\n\n2. Step-by-Step Level-Wise Electrocardiographic Progression:\n• Stage 1 (K+ 5.5 to 6.5 mmol/L): Tall, symmetrical, pointed T waves with narrow bases ('tented' T waves), best visualized in precordial leads V2 to V4. Differs from hyperacute T waves of myocardial infarction, which have broad bases and are asymmetric.\n• Stage 2 (K+ 6.5 to 7.5 mmol/L): Progressive PR prolongation (>200 ms) and P-wave flattening/widening (intra-atrial conduction delay). QRS complex begins to widen (>120 ms) with diffuse intraventricular conduction defect (IVCD).\n• Stage 3 (K+ 7.5 to 8.5 mmol/L): Atrial standstill with complete disappearance of surface P waves. The sinus node continues to pace the heart, with impulses conducted to the AV node and ventricles via the specialized internodal tracts without depolarizing atrial myocardium ('Sinoventricular Rhythm'). Marked QRS widening (>160 ms).\n• Stage 4 (K+ >8.5 to 9.0 mmol/L): Complete fusion of the widened QRS complex with the peaked T wave, producing a continuous, smooth, undulating biphasic sinusoidal wave ('Sine-Wave' Pattern). This is an ominous, pre-terminal rhythm that degenerates into Ventricular Fibrillation, Pulseless Electrical Activity (PEA), or Asystole within minutes.\n\n3. Pseudoinfarction & Brugada Phenocopy Patterns:\n• Severe hyperkalaemia can produce marked ST-segment elevation in leads V1 to V3, closely mimicking acute anterior STEMI or a Type 1 Brugada pattern ('Brugada Phenocopy').\n• Dialysis Pseudoinfarction: In end-stage renal disease patients, hyperkalaemic ST elevation resolves completely and immediately following intravenous calcium administration or emergent dialysis.\n\n4. Triple-Pillar Emergency Management Protocol:\n• Pillar 1 — Myocardial Membrane Stabilization (Immediate Onset: 1 to 3 minutes):\n  - 10% Calcium Gluconate: 10 to 30 mL IV infused over 5 to 10 minutes. Preferred for peripheral intravenous administration because it causes minimal tissue necrosis if extravasated.\n  - 10% Calcium Chloride: 5 to 10 mL IV. Contains three times more elemental calcium than calcium gluconate; preferred in cardiac arrest or profound shock. Strictly administered via central venous line due to severe chemical phlebitis and necrosis if peripheral extravasation occurs.\n  - Mechanism: Calcium does NOT lower serum potassium! Instead, extracellular calcium increases the threshold potential (V_th) towards less negative values, restoring the critical electrical gradient between resting potential (E_m) and threshold potential (V_th). Duration of effect: 30 to 60 minutes; repeat if QRS widens again.\n• Pillar 2 — Transcellular Potassium Shifting (Onset: 15 to 30 minutes):\n  - Regular Insulin + Dextrose: 10 units of Regular Insulin IV bolus followed immediately by 50 mL of 50% Dextrose (25 g glucose) over 15 to 30 minutes (or 100 mL of 20% Dextrose). Insulin stimulates the skeletal muscle Na+/K+ ATPase pump, driving potassium into cells. Lowers serum K+ by 0.5 to 1.2 mmol/L for 4 to 6 hours.\n  - Inhaled Salbutamol (Albuterol): 10 to 20 mg nebulized in 4 mL normal saline. Beta-2 adrenergic stimulation activates adenylate cyclase, raising intracellular cAMP and driving Na+/K+ ATPase activity.\n  - Sodium Bicarbonate 8.4%: 50 to 100 mEq IV over 10 to 15 minutes. Useful primarily when hyperkalaemia is accompanied by concurrent severe metabolic acidosis (pH <7.20).\n• Pillar 3 — Total Body Potassium Elimination (Onset: 1 to 4 hours):\n  - Loop Diuretics: Furosemide 40 to 80 mg IV in patients with preserved renal function to increase kaliuresis.\n  - Potassium Binders: Sodium zirconium cyclosilicate (Lokelma) 10 g PO TID, or Patiromer 8.4 g PO once daily.\n  - Emergent Hemodialysis: The gold standard, definitive modality for severe, refractory hyperkalaemia and patients with established ESRD or acute anuric renal failure."
+    }
+  ]
+});
+
+  topics.push({
+  "id": "ecg-hypokalemia",
+  "cat": "ecg",
+  "name": "Hypokalaemia in ECG: Serum Level-Wise ECG Progression & Replacement Safety",
+  "short": "Hypokalaemia ECG",
+  "tags": [
+    "Potassium Deficit",
+    "U Wave",
+    "QU Interval",
+    "Torsades de Pointes",
+    "KCl Infusion Limits",
+    "Magnesium"
+  ],
+  "tagline": "Serum level-wise ECG changes, pathognomonic U waves, pseudo-prolonged QU, and replacement safety constraints",
+  "source": "European Resuscitation Council Guidelines 2021/2025; Stoelting's Pharmacology & Physiology, 6th ed.; Miller's Anesthesia, 10th ed.",
+  "sections": [
+    {
+      "h": "Serum Level-Wise ECG Progression, U-Waves & Replacement Protocols",
+      "diagram": "ecg-hypokalemia-waveform",
+      "table": {
+        "headers": [
+          "Serum K⁺ Level (mmol/L)",
+          "Severity Grade",
+          "Key ECG Morphological Changes",
+          "Electrophysiological Mechanism",
+          "Arrhythmia Risks & Emergency Replacement Safety"
+        ],
+        "rows": [
+          [
+            "3.5 to 5.0 mmol/L",
+            "Normal Reference",
+            "Normal upright T waves; small U waves (<1 mm) may be physiological in young athletes",
+            "Normal resting potential Em = -90 mV; normal Phase 3 repolarisation via I_Kr/I_Ks channels",
+            "No replacement required; routine clinical monitoring"
+          ],
+          [
+            "3.0 to 3.5 mmol/L",
+            "Mild Hypokalaemia",
+            "Decreased T wave amplitude, flattening of T waves, mild ST depression (0.5 mm), emergence of noticeable U waves",
+            "Hyperpolarisation of resting membrane potential; delayed Phase 3 repolarisation due to reduced I_Kr channel conductance",
+            "Low risk in healthy hearts; in CAD or digoxin therapy, triggers atrial/ventricular ectopy; Oral KCl 20–40 mEq/day"
+          ],
+          [
+            "2.5 to 3.0 mmol/L",
+            "Moderate Hypokalaemia",
+            "Marked ST depression (≥0.5–1.0 mm); T wave flattening or shallow inversion; prominent U waves (>1.0 mm or >50% of T wave height in V2–V3); T-U fusion creating pseudo-prolonged QU interval ('apparent long QT')",
+            "Marked prolongation of repolarisation specifically in Mid-myocardial M cells and Purkinje fibers; enhanced Phase 4 diastolic depolarisation",
+            "Frequent ventricular premature complexes (PVCs), bigeminy, atrial fibrillation; IV KCl infusion at strictly ≤10 mEq/h peripheral line"
+          ],
+          [
+            "<2.5 mmol/L",
+            "Severe Hypokalaemia",
+            "Giant U waves exceeding T wave amplitude (U > T); deep horizontal/downsloping ST depression; markedly prolonged QU interval (>500–600 ms); extreme ventricular ectopy",
+            "Extreme repolarisation delay and trans-mural dispersion of repolarisation triggering Early Afterdepolarizations (EADs) and Phase 2/3 reentry",
+            "CRITICAL ARRHYTHMIA HAZARD: Torsades de Pointes, polymorphic VT, and VF! Requires urgent IV KCl up to 20 mEq/h via central line + 1–2g IV Magnesium Sulphate"
+          ]
+        ]
+      },
+      "b": "Hypokalaemia (serum potassium <3.5 mmol/L) is the most frequent electrolyte disturbance in surgical and anaesthetized patients, occurring in up to 20% of hospitalized patients and over 40% of patients receiving diuretics:\n\n1. Electrophysiological Foundations of Hypokalaemia:\n• Resting Membrane Hyperpolarization: In accordance with the Nernst equation, lower extracellular potassium increases the transmembrane potassium gradient, shifting the resting membrane potential (E_m) to a more negative value (e.g. -95 mV). This hyperpolarization increases the voltage distance to threshold potential, slowing conduction velocity in some tissues while paradoxically enhancing Phase 4 automaticity in Purkinje fibers.\n• Paradoxical Delay of Repolarisation: Low extracellular potassium inhibits the outward delayed rectifier potassium current (I_Kr). This markedly prolongs the cardiac action potential duration (APD) and increases transmural dispersion of repolarisation between epicardial, endocardial, and mid-myocardial M cells.\n• Genesis of Early Afterdepolarizations (EADs): Prolongation of Phase 2 and Phase 3 plateaus allows reactivation of L-type calcium channels (I_Ca,L) and the sodium-calcium exchanger (NCX), generating triggered depolarizations (EADs). When an EAD reaches threshold during repolarization, it initiates ventricular ectopy, non-sustained VT, or lethal Torsades de Pointes (Polymorphic VT).\n\n2. The Pathognomonic U Wave & The QU vs QT Conundrum:\n• Morphological Characteristics of the U Wave:\n  - A small, rounded deflection immediately following the T wave, representing repolarization of the mid-myocardial M cells and the Purkinje conduction network.\n  - Normal U wave: amplitude <1 mm (or <25% of preceding T wave), upright in leads with positive T waves, and best visualized in precordial leads V2 and V3.\n  - Hypokalaemic U wave: amplitude exceeds 1.0 mm (or >50% of the preceding T-wave amplitude). In severe hypokalaemia, the U wave becomes taller than the T wave (U > T), producing a characteristic 'camel hump' contour.\n• The Pseudo-Prolonged QU Interval ('Apparent Long QT'):\n  - As hypokalaemia progresses, ST depression develops, the T wave flattens, and the prominent U wave merges into the terminal limb of the T wave.\n  - Automated ECG machines and clinicians frequently misidentify the peak of the U wave as the end of the T wave, falsely reporting an extremely prolonged QT interval. The true measurement is the QU interval, which reflects delayed myocardial repolarization.\n\n3. Digitalis Toxicity Potentiation:\n• Potassium and Digoxin compete for overlapping binding sites on the extracellular alpha-subunit of the myocardial Na+/K+ ATPase pump.\n• When extracellular potassium is low, digoxin binding is uninhibited and greatly increased, precipitating severe digitalis toxicity even at therapeutic serum digoxin concentrations.\n• Classic manifestations: Bidirectional Ventricular Tachycardia, Paroxysmal Atrial Tachycardia with 2:1 AV block, junctional escape rhythm, and PVC bigeminy.\n\n4. Evidence-Based Potassium Repletion Protocols & Nursing Safety Constraints:\n• Peripheral Intravenous Infusion Rules:\n  - Maximum Peripheral Rate: strictly <=10 mEq/hour.\n  - Maximum Peripheral Concentration: <=40 mEq/L (preferably in 0.9% Normal Saline; avoid Dextrose 5% solutions because dextrose-induced insulin secretion drives potassium intracellularly, temporarily worsening hypokalaemia!).\n  - Rationale: High potassium concentrations cause intense chemical phlebitis, excruciating burning pain, and venous thrombosis in peripheral veins.\n• Central Venous Infusion Protocol:\n  - In severe hypokalaemia (<2.5 mmol/L) with malignant ventricular arrhythmias or cardiac arrest: infusion rates up to 20 mEq/hour (concentration 60 to 80 mEq/L) may be infused strictly via a central venous line with continuous 12-lead ECG telemetry in an ICU/HDU setting.\n• Mandatory Magnesium Co-Administration:\n  - Hypomagnesaemia is present in 40% to 50% of patients with hypokalaemia.\n  - Electrophysiological Gate: Intracellular magnesium (Mg2+) acts as an essential physiological blocker of renal outer medullary potassium (ROMK) channels in the distal nephron. When magnesium is depleted, the inhibitory blockade is lost, leading to massive, unabated renal potassium wasting in urine.\n  - In addition, low magnesium impairs the enzymatic activity of the Na+/K+ ATPase pump.\n  - CLINICAL GOLDEN RULE: Hypokalaemia refractory to intravenous potassium repletion is almost universally caused by concomitant hypomagnesaemia! Always co-administer Magnesium Sulphate 1 to 2 g (4 to 8 mmol) IV over 15 to 30 minutes."
+    }
+  ]
+});
+
+
+  // ========================================================================
+  // ARTERIAL BLOOD GAS (ABG) — Subdivided Topics
+  // ========================================================================
+  topics.push({
+  "id": "abg-interpretation",
+  "cat": "abg",
+  "name": "ABG Interpretation: Systematic 6-Step Method & Reference Ranges",
+  "short": "ABG Interpretation",
+  "tags": [
+    "6-Step Method",
+    "Henderson-Hasselbalch",
+    "Normal Values",
+    "VBG vs ABG",
+    "Alpha-stat vs pH-stat"
+  ],
+  "tagline": "Systematic 6-step interpretation sequence, normal reference values, Henderson equation, and temperature correction",
+  "source": "Miller's Anesthesia, 10th ed., Ch. 42 (Acid-Base Homeostasis & Blood Gas Analysis); Marino's The ICU Book, 4th ed., Section 8.",
+  "sections": [
+    {
+      "h": "The Systematic 6-Step Reading Sequence & Reference Parameters",
+      "diagram": "abg-stepwise-flowchart",
+      "table": {
+        "headers": [
+          "Parameter",
+          "Arterial Blood Gas (ABG)",
+          "Venous Blood Gas (VBG)",
+          "Primary Physiological Role",
+          "Clinical Significance & Critical Thresholds"
+        ],
+        "rows": [
+          [
+            "pH",
+            "7.35 to 7.45",
+            "7.31 to 7.41 (≈0.03–0.04 lower)",
+            "-log10 [H+] (35–45 nmol/L)",
+            "Severe acidemia <7.20 (myocardial depression); severe alkalemia >7.60 (arrhythmias, tetany)"
+          ],
+          [
+            "pCO2",
+            "35 to 45 mmHg (4.7–6.0 kPa)",
+            "40 to 50 mmHg (≈4–6 mmHg higher)",
+            "Respiratory component (alveolar ventilation)",
+            "Hypercapnia >45 mmHg (hypoventilation); Hypocapnia <35 mmHg (hyperventilation)"
+          ],
+          [
+            "pO2",
+            "80 to 100 mmHg on room air",
+            "35 to 45 mmHg (PvO2)",
+            "Dissolved arterial oxygen tension",
+            "Hypoxemia <60 mmHg on air (P/F ratio <300 defines acute lung injury/ARDS)"
+          ],
+          [
+            "HCO3- (Actual)",
+            "22 to 26 mmol/L (mEq/L)",
+            "23 to 27 mmol/L (≈1–2 higher)",
+            "Calculated metabolic component",
+            "Primary renal buffer; <22 = metabolic acidosis; >26 = metabolic alkalosis"
+          ],
+          [
+            "Base Excess (BE)",
+            "-2 to +2 mmol/L",
+            "-2 to +2 mmol/L",
+            "Titratable base at normal pCO2 and pH 7.40",
+            "<-3 = tissue hypoperfusion / acid load; >+3 = metabolic alkalosis"
+          ],
+          [
+            "Oxygen Saturation",
+            "≥95% to 99% (SaO2)",
+            "65% to 75% (SvO2 / ScvO2)",
+            "Hb oxygen binding percentage",
+            "ScvO2 <70% signals systemic tissue oxygen debt / low cardiac output state"
+          ],
+          [
+            "Serum Lactate",
+            "0.5 to 1.5 mmol/L (<2.0)",
+            "0.5 to 2.0 mmol/L",
+            "Anaerobic glycolysis byproduct",
+            ">2.0 = hyperlactatemia; >4.0 mmol/L = septic/cardiogenic shock biomarker"
+          ]
+        ]
+      },
+      "b": "A structured, algorithmic 6-step method prevents misdiagnosis of complex mixed or triple acid-base disturbances:\n\n1. The 6-Step Systematic ABG Reading Algorithm:\n• Step 1 — Evaluate the pH:\n  - pH < 7.35 = Acidemia (excess H+ activity).\n  - pH > 7.45 = Alkalemia (deficit of H+ activity).\n  - pH 7.35 to 7.45 = Normal acid-base status, or fully compensated primary disorder, or mixed opposing disorders (e.g. severe HAGMA + severe Met Alkalosis).\n• Step 2 — Determine the Primary Acid-Base Disturbance:\n  - Compare the direction of pH against pCO2 and HCO3-:\n  - If pH and pCO2 move in OPPOSITE directions -> Primary Respiratory Disorder (low pH + high pCO2 = Resp Acidosis; high pH + low pCO2 = Resp Alkalosis).\n  - If pH and HCO3- move in the SAME direction -> Primary Metabolic Disorder (low pH + low HCO3- = Met Acidosis; high pH + high HCO3- = Met Alkalosis).\n• Step 3 — Calculate Expected Compensation:\n  - Use validated physiological formulas (Winter's formula for metabolic acidosis; acute vs chronic rules for respiratory disorders).\n  - CRITICAL RULE: The human body NEVER over-compensates! Compensation never drives the pH across normal 7.40 to the opposite side. If measured values deviate from expected compensation, a secondary coexisting acid-base disorder is present!\n• Step 4 — Calculate the Serum Anion Gap (AG) with Albumin Correction:\n  - AG = Na+ - (Cl- + HCO3-). Normal is 8 to 12 mmol/L.\n  - Corrected AG = AG + 2.5 * (4.0 - Albumin in g/dL).\n  - An elevated corrected AG (>12) proves the presence of a High Anion Gap Metabolic Acidosis, even if pH or HCO3- are normal!\n• Step 5 — Calculate the Delta Ratio (Delta Gap / Delta Bicarbonate):\n  - Delta Ratio = (AG - 12) / (24 - HCO3-).\n  - Distinguishes pure HAGMA from mixed HAGMA + NAGMA (<0.8) or mixed HAGMA + Metabolic Alkalosis (>2.0).\n• Step 6 — Assess Oxygenation and Alveolar-Arterial (A-a) Gradient:\n  - Calculate Alveolar PO2: PAO2 = FiO2 * (P_atm - 47) - (PaCO2 / 0.8).\n  - Alveolar-arterial gradient: P(A-a)O2 = PAO2 - PaO2. Normal is < (Age / 4 + 4). Elevated gradient indicates V/Q mismatch, shunt, or diffusion impairment.\n  - Calculate PaO2/FiO2 (P/F) ratio: Normal >300; 200–300 = Mild ARDS; 100–200 = Moderate ARDS; <100 = Severe ARDS.\n\n2. Henderson-Hasselbalch Equation & Mathematical Foundations:\n• Equation: pH = pK_a + log([HCO3-] / (alpha * pCO2)), where pK_a = 6.1 and carbon dioxide solubility coefficient alpha = 0.03 mmol/L/mmHg.\n• Henderson Equation: [H+] in nmol/L = 24 * (pCO2 / [HCO3-]).\n• Rapid Rule of Conversion: At pH 7.40, [H+] is exactly 40 nmol/L. Every 0.01 unit change in pH corresponds inversely to approximately 1 nmol/L change in [H+] (e.g. pH 7.30 = 50 nmol/L; pH 7.20 = 63 nmol/L).\n\n3. Temperature Correction in Hypothermia (Alpha-Stat vs pH-Stat):\n• As blood temperature decreases, gas solubility increases, causing measured pCO2 and pO2 to decrease and pH to rise (neutral water pH rises at lower temperatures).\n• Alpha-Stat Management (Standard in Adult Cardiac Surgery): Blood gas is measured and reported at 37°C without temperature correction. Preserves the fractional dissociation state (alpha) of imidazole rings on histidine proteins, maintaining normal intracellular enzyme function and cellular autoregulation.\n• pH-Stat Management (Preferred in Pediatric Congenital Cardiac Surgery): CO2 is added to the oxygenator to keep temperature-corrected pH at 7.40 and pCO2 at 40 mmHg at the patient's actual cold core temperature. Induces cerebral vasodilation, increasing cerebral blood flow and accelerating brain cooling prior to deep hypothermic circulatory arrest (DHCA)."
+    }
+  ]
+});
+
+  topics.push({
+  "id": "abg-metabolic-acidosis",
+  "cat": "abg",
+  "name": "Metabolic Acidosis: Pathophysiology & Winter's Formula Compensation",
+  "short": "Metabolic Acidosis",
+  "tags": [
+    "Winter's Formula",
+    "Kussmaul Breathing",
+    "Myocardial Depression",
+    "Catecholamine Resistance"
+  ],
+  "tagline": "Pathophysiology, respiratory compensation via Winter's formula, clinical consequences, and management",
+  "source": "Miller's Anesthesia, 10th ed., Ch. 42; Stoelting's Pharmacology & Physiology, 6th ed., Ch. 30.",
+  "sections": [
+    {
+      "h": "Winter's Formula Compensation & Clinical Consequences of Acidemia",
+      "table": {
+        "headers": [
+          "Primary Disorder",
+          "Primary Disturbance",
+          "Compensatory Response",
+          "Expected Compensation Formula",
+          "Maximal Physiological Limit"
+        ],
+        "rows": [
+          [
+            "Metabolic Acidosis",
+            "Primary drop in HCO3- (<22 mmol/L)",
+            "Respiratory hyperventilation (decreased pCO2)",
+            "Expected pCO2 = 1.5 × [HCO3-] + 8 ± 2 (Winter's formula)",
+            "pCO2 rarely drops below 10–12 mmHg due to fatigue"
+          ],
+          [
+            "Quick Rule of Thumb",
+            "HCO3- drops below 24",
+            "pCO2 decreases proportionally",
+            "Expected pCO2 ≈ last two digits of pH (e.g. at pH 7.25, pCO2 ≈ 25)",
+            "Applicable only down to pH ~7.15"
+          ],
+          [
+            "Coexisting Resp Acidosis",
+            "Inadequate hyperventilation",
+            "Measured pCO2 > Expected pCO2",
+            "Patient failing to blow off CO2 (exhaustion / CNS sedation)",
+            "Immediate mechanical ventilatory support required"
+          ],
+          [
+            "Coexisting Resp Alkalosis",
+            "Excessive hyperventilation",
+            "Measured pCO2 < Expected pCO2",
+            "Additional respiratory drive (sepsis / pain / salicylate)",
+            "Investigate independent central hyperventilation trigger"
+          ]
+        ]
+      },
+      "b": "Metabolic Acidosis is defined by a primary reduction in plasma bicarbonate (<22 mmol/L) accompanied by arterial acidemia (pH <7.35). It is the most frequent metabolic derangement encountered in shock, sepsis, and perioperative critical care:\n\n1. Pathophysiological Mechanisms:\n• Addition of Fixed Organic Acids: Unmeasured acid anions (lactic acid, ketoacids, toxic alcohols) dissociate into H+ and organic anions. The added H+ is buffered by extracellular bicarbonate (H+ + HCO3- <-> H2CO3 <-> H2O + CO2), consuming bicarbonate and generating High Anion Gap Metabolic Acidosis (HAGMA).\n• Direct Gastrointestinal Loss of Bicarbonate: Secretions from the pancreas, biliary tract, and small intestine contain high bicarbonate concentrations (up to 120 mmol/L). Diarrhea, enterocutaneous fistulae, and surgical drainage directly deplete body bicarbonate, producing Normal Anion Gap Metabolic Acidosis (NAGMA).\n• Impaired Renal Net Acid Excretion: Failure of proximal tubular bicarbonate reabsorption (Type 2 RTA) or distal tubular H+ ion excretion (Type 1 RTA, chronic kidney disease, hypoaldosteronism Type 4 RTA).\n\n2. Respiratory Compensation — Winter's Formula:\n• Peripheral and central chemoreceptors detect elevated [H+], stimulating the respiratory center in the medulla to increase alveolar ventilation (tidal volume and respiratory rate — Kussmaul breathing).\n• Winter's Formula for Expected pCO2: Expected pCO2 = 1.5 * [HCO3-] + 8 ± 2 mmHg.\n• Clinical Interpretation:\n  - If measured pCO2 falls within the calculated Winter's range -> Pure Metabolic Acidosis with appropriate respiratory compensation.\n  - If measured pCO2 > Expected pCO2 -> Mixed Metabolic Acidosis + Coexisting Respiratory Acidosis! Indicates respiratory muscle fatigue, central nervous system depression, or severe lung pathology; early endotracheal intubation and mechanical ventilation are strongly indicated.\n  - If measured pCO2 < Expected pCO2 -> Mixed Metabolic Acidosis + Coexisting Respiratory Alkalosis! Seen characteristically in early septic shock (hyperventilation + lactic acidosis) or salicylate toxicity.\n\n3. Systemic Clinical Consequences of Severe Acidemia (pH <7.20):\n• Cardiovascular Depolarisation & Collapse: Direct impairment of actin-myosin cross-bridging produces negative inotropy. Profound peripheral arterial vasodilation occurs, unresponsive to exogenous vasopressors due to downregulation and desensitization of alpha-1 and beta-1 adrenergic receptors.\n• Central Venoconstriction: Peripheral-to-central redistribution of blood volume, worsening acute pulmonary oedema.\n• Arrhythmogenic Predisposition: Lowers ventricular fibrillation threshold; slows intraventricular conduction.\n• Transcellular Potassium Shift: In mineral (hyperchloraemic/inorganic) acidemias, excess extracellular H+ enters cells in exchange for K+ leaving cells via the H+/K+ antiporter. For every 0.1 unit drop in pH, serum potassium rises by approximately 0.5 to 0.6 mmol/L (less pronounced in organic acidoses such as lactic acidosis or DKA where organic anions enter cells with H+)."
+    }
+  ]
+});
+
+  topics.push({
+  "id": "abg-respiratory-acidosis",
+  "cat": "abg",
+  "name": "Respiratory Acidosis: Acute vs Chronic Renal Compensation Rules",
+  "short": "Respiratory Acidosis",
+  "tags": [
+    "Hypercapnia",
+    "Acute vs Chronic Rules",
+    "Post-Hypercapnic Alkalosis",
+    "Hypoventilation"
+  ],
+  "tagline": "Acute vs chronic renal compensation, opioid depression, neuromuscular failure, and post-hypercapnic alkalosis",
+  "source": "West's Respiratory Physiology, 11th ed.; Miller's Anesthesia, 10th ed., Ch. 42.",
+  "sections": [
+    {
+      "h": "Acute vs Chronic Compensation Formulas & Clinical Causes",
+      "table": {
+        "headers": [
+          "Condition",
+          "Acute Respiratory Acidosis",
+          "Chronic Respiratory Acidosis",
+          "Primary Mechanism",
+          "Clinical Setting & Treatment"
+        ],
+        "rows": [
+          [
+            "Definition",
+            "Acute rise in pCO2 (>45 mmHg)",
+            "Sustained pCO2 (>45 mmHg) >3–5 days",
+            "Alveolar hypoventilation (VA = (VT - VD) × RR)",
+            "Hypoventilation from drugs, airway obstruction, or chronic lung disease"
+          ],
+          [
+            "Renal Compensation",
+            "Minimal (cellular buffering only)",
+            "Full renal HCO3- retention",
+            "Proximal tubule H+ secretion & HCO3- synthesis",
+            "Takes 3 to 5 days for kidneys to reach maximum compensation"
+          ],
+          [
+            "HCO3- Elevation Rule",
+            "For every 10 mmHg pCO2 rise >40, HCO3- rises by 1 mmol/L",
+            "For every 10 mmHg pCO2 rise >40, HCO3- rises by 3.5 to 4.0 mmol/L",
+            "Acute: 1 mEq/L per 10 mmHg\nChronic: 3.5 mEq/L per 10 mmHg",
+            "Acute formula: Expected HCO3- = 24 + (pCO2 - 40)/10 × 1\nChronic formula: Expected HCO3- = 24 + (pCO2 - 40)/10 × 3.5"
+          ],
+          [
+            "pH Drop Rule",
+            "pH drops by 0.08 per 10 mmHg rise in pCO2",
+            "pH drops by only 0.03 per 10 mmHg rise in pCO2",
+            "Renal retention of HCO3- buffers arterial pH near normal",
+            "Acute pCO2 60 mmHg → pH ~7.24\nChronic pCO2 60 mmHg → pH ~7.34"
+          ],
+          [
+            "Maximal Compensation",
+            "HCO3- rarely exceeds 30–32 mmol/L",
+            "HCO3- can reach 42–45 mmol/L",
+            "Maximal renal bicarbonate reabsorption threshold",
+            "HCO3- >45 mmol/L indicates superimposed metabolic alkalosis"
+          ]
+        ]
+      },
+      "b": "Respiratory Acidosis occurs whenever alveolar ventilation (V_A) fails to match carbon dioxide production (V_CO2), governed by the alveolar ventilation equation: PaCO2 = (V_CO2 / V_A) * 0.863:\n\n1. Acute vs Chronic Compensation Rules:\n• Acute Respiratory Acidosis (Immediate to Hours):\n  - The kidneys have had insufficient time to synthesize and retain new bicarbonate.\n  - Initial buffering is mediated exclusively by intracellular non-bicarbonate buffers (primarily hemoglobin and intracellular phosphates): CO2 + H2O <-> H2CO3 <-> H+ + HCO3-; H+ is buffered by Hb(Prot-), leaving small amounts of HCO3- in plasma.\n  - Rule: For every 10 mmHg increase in pCO2 above 40 mmHg, serum [HCO3-] rises by exactly 1 mmol/L, and pH drops by 0.08.\n• Chronic Respiratory Acidosis (3 to 5 Days):\n  - The kidneys adapt to chronic hypercapnia by upregulating proximal tubular Na+/H+ antiporters (NHE3) and H+-ATPase pumps, maximizing ammonia (NH4+) excretion and synthesizing new bicarbonate.\n  - Rule: For every 10 mmHg increase in pCO2 above 40 mmHg, serum [HCO3-] rises by 3.5 to 4.0 mmol/L, and pH drops by only 0.03 (near-normal pH).\n\n2. Etiological Classification in Anaesthesia & Critical Care:\n• Central Respiratory Depression: Opioid overdose (mu-receptor mediated depression of respiratory rate and blunted hypercapnic drive), volatile anaesthetics, propofol, benzodiazepines, brainstem infarction, and increased ICP.\n• Neuromuscular Transmission Failure: Incomplete reversal of neuromuscular blockade (train-of-four [TOF] ratio <0.90), Myasthenia Gravis, Guillain-Barré Syndrome, high spinal/epidural anaesthesia, amyotrophic lateral sclerosis (ALS), critical illness polyneuropathy.\n• Thoracic / Chest Wall Restriction: Flail chest, severe kyphoscoliosis, morbid obesity (Pickwickian syndrome / Obesity Hypoventilation Syndrome), abdominal compartment syndrome, tight abdominal binders.\n• Airway & Pulmonary Parenchymal Disease: Acute laryngospasm, severe bronchospasm, endotracheal tube obstruction/kinking, mainstem bronchial intubation, acute pulmonary oedema, advanced COPD, severe ARDS.\n• Intraoperative Equipment Malfunctions: Soda lime canister exhaustion (rebreathing CO2), malfunctioning inspiratory/expiratory unidirectional valves in circle system, fresh gas flow set below minute ventilation in non-rebreathing circuits, laparoscopy pneumoperitoneum (massive CO2 absorption from peritoneal cavity).\n\n3. Intraoperative Management & The 'Post-Hypercapnic Alkalosis' Trap:\n• Treatment of Acute Respiratory Acidosis: Correct the underlying ventilation defect! Titrate minute ventilation (V_E = RR * V_T) on the anaesthesia workstation; reverse opioids with Naloxone (0.04 to 0.1 mg IV increments); reverse residual neuromuscular block with Sugammadex (2 to 4 mg/kg) or Neostigmine/Glycopyrrolate.\n• THE DANGEROUS POST-HYPERCAPNIC ALKALOSIS TRAP:\n  - In patients with chronic hypercapnia (e.g. severe COPD with baseline pCO2 65 mmHg and compensatory HCO3- 34 mmol/L), mechanical hyperventilation to a 'normal' pCO2 of 40 mmHg will cause a lethal, acute metabolic alkalosis! (pH jumps to >7.60, precipitating seizures, coronary spasm, and hypokalaemic arrhythmias).\n  - Management Goal: Ventilate chronic COPD patients to their BASELINE pCO2, NOT to 40 mmHg!"
+    }
+  ]
+});
+
+  topics.push({
+  "id": "abg-metabolic-alkalosis",
+  "cat": "abg",
+  "name": "Metabolic Alkalosis: Saline-Responsive vs Saline-Resistant & Urinary Chloride",
+  "short": "Metabolic Alkalosis",
+  "tags": [
+    "Saline Responsive",
+    "Urinary Chloride",
+    "Conn's Syndrome",
+    "Paradoxical Aciduria",
+    "Bohr Effect"
+  ],
+  "tagline": "Generation vs maintenance, urinary chloride <20 vs >20, hypocalcaemic tetany, and Bohr effect left-shift",
+  "source": "Stoelting's Pharmacology & Physiology, 6th ed., Ch. 30; Miller's Anesthesia, 10th ed., Ch. 42.",
+  "sections": [
+    {
+      "h": "Saline-Responsive vs Resistant Classification & Maintenance Mechanisms",
+      "table": {
+        "headers": [
+          "Category",
+          "Urinary Chloride (U_Cl)",
+          "Underlying Pathophysiology",
+          "Common Clinical Etiologies",
+          "Targeted Therapeutic Strategy"
+        ],
+        "rows": [
+          [
+            "Saline-Responsive",
+            "<20 mmol/L (Low)",
+            "Extracellular volume depletion + Chloride deficit; kidney cannot excrete HCO3- without Cl-",
+            "Nasogastric suction, vomiting, prior diuretic therapy, post-hypercapnia, congenital chloridorrhea",
+            "Volume expansion with 0.9% Normal Saline + Potassium Chloride (KCl) infusion"
+          ],
+          [
+            "Saline-Resistant",
+            ">20 mmol/L (High)",
+            "Mineralocorticoid excess or direct renal tubular wasting; independent of volume depletion",
+            "Primary hyperaldosteronism (Conn's), Cushing's, licorice ingestion, Bartter's / Gitelman's, severe hypokalaemia (<2.0)",
+            "Treat underlying cause; Potassium repletion, Spironolactone / Eplerenone (aldosterone antagonists)"
+          ],
+          [
+            "Exogenous Alkali",
+            "Variable (>20 mmol/L)",
+            "Direct bicarbonate overload exceeding renal excretion capacity",
+            "Massive sodium bicarbonate infusion, massive blood transfusion (citrate conversion to HCO3-), milk-alkali syndrome",
+            "Discontinue alkali administration; Acetazolamide (carbonic anhydrase inhibitor) if volume overload"
+          ]
+        ]
+      },
+      "b": "Metabolic Alkalosis is characterized by a primary elevation of plasma bicarbonate (>26 mmol/L) and arterial pH >7.45. It requires both an INITIATING event (loss of H+ or gain of HCO3-) and a MAINTENANCE factor that prevents the normal kidneys from excreting the excess bicarbonate:\n\n1. The Two-Step Mechanism (Generation vs Maintenance):\n• The Generation Phase: Direct loss of gastric hydrochloric acid (vomiting, NG suction: H+ and Cl- lost, leaving equimolar HCO3- in plasma) or renal H+ loss (loop/thiazide diuretics blocking Na+/Cl- reabsorption, delivering high Na+ to distal tubule and stimulating aldosterone-driven H+ excretion).\n• The Maintenance Phase (Why normal kidneys cannot excrete excess HCO3-):\n  1. Hypovolaemia: Decreased effective circulating volume triggers maximal aldosterone and angiotensin II release, stimulating proximal tubular Na+/H+ exchange and distal H+-ATPase, reabsorbing all filtered bicarbonate.\n  2. Hypochloraemia: The distal tubular pendrin exchanger (Cl-/HCO3- antiporter) requires luminal chloride to secrete bicarbonate into urine. Chloride depletion paralyzes bicarbonate excretion!\n  3. Hypokalaemia: Low extracellular potassium forces intracellular K+ to exit cells in exchange for H+ entering cells. Intracellular renal acidosis stimulates proximal tubule ammoniagenesis and bicarbonate synthesis, while distal tubule H+/K+ ATPase is activated, excreting H+ and paradoxically acidifying urine ('Paradoxical Aciduria').\n\n2. Respiratory Compensation Formula:\n• Respiratory compensation is mediated by hypoventilation (elevated pCO2):\n  - Expected pCO2 = 0.7 * ([HCO3-] - 24) + 40 ± 2 mmHg (or Expected pCO2 = 0.7 * [HCO3-] + 20 ± 2 mmHg).\n  - Physiological ceiling: Hypoventilation is strictly limited by the development of hypoxia! In non-intubated, spontaneous-breathing patients, pCO2 rarely rises above 55 to 60 mmHg because hypoxic ventilatory drive overrides metabolic alkalemia.\n\n3. Saline-Responsive vs Saline-Resistant Classification (Urinary Chloride):\n• Saline-Responsive (Urinary Chloride <20 mmol/L):\n  - Represents chloride depletion and volume contraction (e.g. vomiting, NG tube drainage, loop diuretics).\n  - Hallmark: Promptly corrected by intravenous 0.9% Normal Saline (154 mmol/L Cl-) plus Potassium Chloride (KCl) replacement.\n• Saline-Resistant (Urinary Chloride >20 mmol/L):\n  - Represents autonomous mineralocorticoid excess (Primary Hyperaldosteronism, adrenal adenoma, Cushing's syndrome, exogenous licorice consumption) or severe intrinsic hypokalaemia.\n  - The kidneys waste chloride; Normal Saline does NOT correct the alkalosis. Requires aldosterone receptor antagonists (Spironolactone) and aggressive potassium replacement.\n\n4. Detrimental Clinical Effects of Severe Alkalemia (pH >7.55–7.60):\n• Left-Shift of Oxyhaemoglobin Dissociation Curve (Bohr Effect): Hemoglobin binds oxygen with extreme affinity, severely impairing oxygen release at peripheral tissues and worsening tissue hypoxia.\n• Acute Reduction in Ionized Calcium (Ca2+): Alkalemia increases the negative charge on albumin molecules, increasing calcium binding to albumin. Serum ionized calcium drops acutely, triggering neuromuscular hyperexcitability, carpopedal spasm (Trousseau's sign), facial twitching (Chvostek's sign), laryngospasm, and seizures.\n• Malignant Cardiac Arrhythmias: Predisposes to atrial tachycardias, PVCs, and ventricular arrhythmias, especially in patients with ischemic heart disease or taking digitalis."
+    }
+  ]
+});
+
+  topics.push({
+  "id": "abg-respiratory-alkalosis",
+  "cat": "abg",
+  "name": "Respiratory Alkalosis: Acute vs Chronic Rules & Cerebral Vasoconstriction",
+  "short": "Respiratory Alkalosis",
+  "tags": [
+    "Hyperventilation",
+    "Cerebral Blood Flow",
+    "Ionized Calcium",
+    "Tetany",
+    "Salicylates"
+  ],
+  "tagline": "Acute vs chronic compensation, cerebral blood flow reduction, acute hypocalcaemic tetany, and causes",
+  "source": "West's Respiratory Physiology, 11th ed.; Miller's Anesthesia, 10th ed., Ch. 42.",
+  "sections": [
+    {
+      "h": "Acute vs Chronic Rules, Cerebral Perfusion & Hypocalcaemic Tetany",
+      "table": {
+        "headers": [
+          "Condition",
+          "Acute Respiratory Alkalosis",
+          "Chronic Respiratory Alkalosis",
+          "Physiological Compensation",
+          "Key Clinical Features"
+        ],
+        "rows": [
+          [
+            "Definition",
+            "Acute reduction in pCO2 (<35 mmHg)",
+            "Sustained reduction in pCO2 (<35 mmHg) >2–3 days",
+            "Alveolar hyperventilation exceeding metabolic CO2 production",
+            "Hyperventilation driven by hypoxia, central stimulation, or mechanical ventilation"
+          ],
+          [
+            "Renal Compensation",
+            "Minimal (cellular buffering)",
+            "Full renal HCO3- excretion",
+            "Downregulated proximal tubular H+ secretion; HCO3- excretion",
+            "Renal excretion of bicarbonate lowers plasma HCO3- towards normal pH"
+          ],
+          [
+            "HCO3- Drop Rule",
+            "For every 10 mmHg pCO2 drop <40, HCO3- drops by 2 mmol/L",
+            "For every 10 mmHg pCO2 drop <40, HCO3- drops by 4 to 5 mmol/L",
+            "Acute: 2 mEq/L per 10 mmHg\nChronic: 4–5 mEq/L per 10 mmHg",
+            "Acute formula: Expected HCO3- = 24 - (40 - pCO2)/10 × 2\nChronic formula: Expected HCO3- = 24 - (40 - pCO2)/10 × 5"
+          ],
+          [
+            "pH Rise Rule",
+            "pH rises by 0.08 per 10 mmHg drop in pCO2",
+            "pH rises by only 0.03 per 10 mmHg drop in pCO2",
+            "Near-complete restoration of arterial pH in chronic states",
+            "Acute pCO2 20 mmHg → pH ~7.56\nChronic pCO2 20 mmHg → pH ~7.46"
+          ],
+          [
+            "Maximal Compensation",
+            "HCO3- rarely drops below 18 mmol/L",
+            "HCO3- can drop to 12–15 mmol/L",
+            "Physiological limit of renal bicarbonate excretion",
+            "HCO3- <12 mmol/L indicates coexisting metabolic acidosis"
+          ]
+        ]
+      },
+      "b": "Respiratory Alkalosis is caused by an increase in effective alveolar ventilation relative to carbon dioxide production, resulting in a primary reduction in arterial pCO2 (<35 mmHg) and arterial alkalemia (pH >7.45):\n\n1. Acute vs Chronic Renal Compensation Rules:\n• Acute Respiratory Alkalosis (Minutes to Hours):\n  - Immediate chemical buffering by intracellular proteins releases H+ into plasma: H+ + HCO3- <-> H2CO3 <-> H2O + CO2, consuming small amounts of bicarbonate.\n  - Rule: For every 10 mmHg drop in pCO2 below 40 mmHg, plasma [HCO3-] falls by 2 mmol/L, and pH rises by 0.08.\n• Chronic Respiratory Alkalosis (2 to 3 Days):\n  - The kidneys respond to persistent low pCO2 by downregulating proton secretion (inhibiting apical NHE3 antiporters and H+-ATPase) and decreasing bicarbonate reabsorption.\n  - Rule: For every 10 mmHg drop in pCO2 below 40 mmHg, plasma [HCO3-] falls by 4 to 5 mmol/L, and pH rises by only 0.03.\n\n2. Common Etiologies in Anaesthesia & Emergency Medicine:\n• Hypoxemic Drive: High altitude, severe anemia, pulmonary embolism, pneumonia, right-to-left intracardiac shunts, acute asthma (early stage hyperventilation before fatigue).\n• Central Nervous System Stimulation: Severe pain, anxiety/panic attacks, fever, sepsis, traumatic brain injury, subarachnoid hemorrhage, meningitis, pregnancy (progesterone stimulates medullary respiratory center).\n• Toxic / Drug-Induced: Early Salicylate (Aspirin) toxicity (direct stimulation of medullary chemoreceptor trigger zone produces primary respiratory alkalosis before uncoupling of oxidative phosphorylation produces HAGMA); theophylline, catecholamines.\n• Iatrogenic Mechanical Over-Ventilation: Excess tidal volume or respiratory rate delivered during general anaesthesia or ICU mechanical ventilation.\n• Hepatic Cirrhosis & Encephalopathy: Elevated circulating ammonia and progesterone metabolites trigger persistent hyperventilation.\n\n3. Profound Neurological & Vascular Consequences:\n• Cerebral Vasoconstriction & Ischemia: Cerebral blood flow (CBF) is exquisitely sensitive to arterial pCO2, decreasing by 2% to 4% for every 1 mmHg drop in pCO2 between 20 and 60 mmHg. Severe hyperventilation (pCO2 <25 mmHg) causes profound cerebral vasoconstriction, causing dizziness, lightheadedness, confusion, syncope, and worsening focal cerebral ischemia in traumatic brain injury or stroke.\n• Acute Hypocalcaemic Neuromuscular Irritability: Elevated pH increases the negative charge on plasma proteins, leading to increased binding of ionized calcium to albumin. The acute reduction in ionized calcium (Ca2+) increases neuronal membrane sodium permeability, causing circumoral paresthesias, carpopedal spasm, tetany, and hyperreflexia."
+    }
+  ]
+});
+
+  topics.push({
+  "id": "abg-hagma-delta-gap",
+  "cat": "abg",
+  "name": "HAGMA & Delta Gap: Anion Gap, Albumin Correction & Delta Ratio",
+  "short": "HAGMA & Delta Gap",
+  "tags": [
+    "Anion Gap",
+    "Albumin Correction",
+    "Delta Ratio",
+    "Delta Gap",
+    "Mixed Disorders",
+    "Gamblegram"
+  ],
+  "tagline": "Anion gap calculation, Figge albumin correction formula, delta-delta ratio, and unmasking mixed disorders",
+  "source": "Figge J, et al. Crit Care Med 1998; Kellum JA. Crit Care 2005; Marino's The ICU Book, 4th ed.",
+  "sections": [
+    {
+      "h": "The Anion Gap Gamblegram, Albumin Correction & Delta Ratio Framework",
+      "diagram": "abg-anion-gap-balance",
+      "table": {
+        "headers": [
+          "Delta Ratio (ΔAG / ΔHCO3-)",
+          "Diagnostic Interpretation",
+          "Underlying Pathophysiology",
+          "Classic Clinical Examples"
+        ],
+        "rows": [
+          [
+            "<0.4 to 0.8",
+            "Mixed HAGMA + NAGMA",
+            "Bicarbonate drop is far greater than the rise in Anion Gap; dual acidotic insult",
+            "Diabetic Ketoacidosis + severe diarrhea; Lactic acidosis + aggressive 0.9% Normal Saline resuscitation; Renal Tubular Acidosis + sepsis"
+          ],
+          [
+            "0.8 to 1.0",
+            "HAGMA (with early/mild NAGMA)",
+            "Transition zone; proportional buffering with mild hyperchloraemia",
+            "Early DKA; resolving lactic acidosis with renal chloride retention"
+          ],
+          [
+            "1.0 to 2.0",
+            "Pure High Anion Gap Metabolic Acidosis (HAGMA)",
+            "One mole of unmeasured organic acid buffers exactly one mole of HCO3- (1:1 stoichiometry)",
+            "Uncomplicated Diabetic Ketoacidosis (DKA); Lactic Acidosis (septic, cardiogenic, or hemorrhagic shock); Toxic alcohol poisoning"
+          ],
+          [
+            ">2.0",
+            "Mixed HAGMA + Metabolic Alkalosis (or Pre-existing Chronic Hypercapnia)",
+            "Bicarbonate is higher than expected; a concurrent process has elevated HCO3- prior to or during HAGMA",
+            "DKA with protracted vomiting (gastric HCl loss); Lactic acidosis in chronic COPD patient with baseline compensatory hyperbicarbonatemia"
+          ]
+        ]
+      },
+      "b": "The Serum Anion Gap and the Delta Ratio are essential mathematical tools for unmasking complex, mixed, and life-threatening occult metabolic acid-base disorders:\n\n1. Serum Anion Gap (AG) Definition & Formula:\n• The Law of Electroneutrality mandates that total plasma cation charges must equal total plasma anion charges: [Na+] + [Unmeasured Cations] = [Cl-] + [HCO3-] + [Unmeasured Anions].\n• Standard Anion Gap Equation: AG = [Na+] - ([Cl-] + [HCO3-]).\n• Normal Reference Range: 8 to 12 mmol/L (measured by modern ion-selective electrode analyzers; historically 12–16 mmol/L when flame photometry was used).\n• Unmeasured Anions comprise circulating albumin (accounting for ~75% of normal AG), phosphate, sulphate, and organic acids. Unmeasured Cations include calcium (Ca2+), magnesium (Mg2+), potassium (K+), and gamma-globulins.\n\n2. Mandatory Albumin Correction of Anion Gap (The Figge-Jabor-Kazda Formula):\n• Circulating albumin is a polyvalent polyanion. At physiological pH 7.40, each 1.0 g/dL of serum albumin provides approximately 2.5 mmol/L of negative charge (anion equivalents).\n• The Figge-Jabor-Kazda-Fencl Formula:\n  Corrected AG = Observed AG + 2.5 * (4.0 - Serum Albumin in g/dL).\n• CRITICAL CLINICAL WARNING — OCCULT HAGMA IN ICU SEPSIS:\n  - Hypoalbuminaemia is virtually ubiquitous in critically ill, septic, cirrhotic, and post-surgical patients (e.g. serum albumin 2.0 g/dL instead of normal 4.0 g/dL).\n  - A 2.0 g/dL deficit in albumin artificially lowers the baseline baseline AG by 5.0 mmol/L (from normal 12 down to 7 mmol/L!).\n  - Therefore, an uncorrected measured AG of 12 mmol/L in a hypoalbuminaemic patient actually represents a TRUE corrected AG of 17 mmol/L! Failure to correct for albumin causes clinicians to miss lethal occult lactic acidosis or ketoacidosis in over 30% of ICU admissions!\n\n3. The Delta Ratio (Delta-Delta Framework):\n• In pure HAGMA, each millimole of unmeasured organic acid (e.g. lactic acid, beta-hydroxybutyric acid) added to the extracellular fluid releases one H+, which binds and consumes exactly one millimole of HCO3-. The rise in Anion Gap (Delta AG) should match the drop in Bicarbonate (Delta HCO3-).\n• Mathematical Formulas:\n  - Delta AG = Observed Corrected AG - Normal AG (12).\n  - Delta HCO3- = Normal HCO3- (24) - Observed HCO3-.\n  - Delta Ratio = Delta AG / Delta HCO3- = (AG - 12) / (24 - [HCO3-]).\n• Diagnostic Framework:\n  1. Delta Ratio 1.0 to 2.0 = Pure HAGMA: Classic uncomplicated lactic acidosis or DKA.\n  2. Delta Ratio < 0.8 = Mixed HAGMA + NAGMA: Bicarbonate has dropped significantly more than the Anion Gap has risen. Look immediately for normal saline resuscitation hyperchloraemia, diarrhea, or renal tubular acidosis coexisting with shock or DKA!\n  3. Delta Ratio > 2.0 = Mixed HAGMA + Metabolic Alkalosis: Bicarbonate is unexpectedly elevated relative to the high Anion Gap. Look for severe vomiting (gastric HCl loss), chronic diuretic use, or pre-existing chronic respiratory acidosis with renal compensation!"
+    }
+  ]
+});
+
+  topics.push({
+  "id": "abg-hagma-nagma-examples",
+  "cat": "abg",
+  "name": "HAGMA vs NAGMA Examples: MUDPILES / GOLD MARK vs HARDCARP & UAG",
+  "short": "HAGMA & NAGMA Examples",
+  "tags": [
+    "MUDPILES",
+    "GOLD MARK",
+    "HARDCARP",
+    "Urine Anion Gap",
+    "RTA",
+    "Hyperchloraemic Acidosis"
+  ],
+  "tagline": "Etiological mnemonics, toxic alcohols, pyroglutamic acidosis, normal saline acidosis, and urine anion gap",
+  "source": "Miller's Anesthesia, 10th ed., Ch. 42; Marino's The ICU Book, 4th ed., Section 8.",
+  "sections": [
+    {
+      "h": "HAGMA vs NAGMA Etiological Mnemonics & Urine Anion Gap (UAG)",
+      "table": {
+        "headers": [
+          "Acidosis Type",
+          "Anion Gap",
+          "Serum Chloride",
+          "Mnemonic / Acronym",
+          "Key Etiologies & Diagnostic Biomarkers",
+          "Emergency Therapeutic Interventions"
+        ],
+        "rows": [
+          [
+            "High Anion Gap (HAGMA)",
+            "Elevated (>12 mmol/L)",
+            "Normal (100–106 mmol/L)",
+            "MUDPILES / GOLD MARK",
+            "Methanol, Uraemia, DKA, Paracetamol (5-oxoproline), Iron/INH, Lactic acidosis, Ethylene glycol, Salicylates",
+            "Treat underlying cause; Insulin/IVF for DKA; Hemodialysis for toxic alcohols/uraemia; Fomepizole"
+          ],
+          [
+            "Normal Anion Gap (NAGMA)",
+            "Normal (8–12 mmol/L)",
+            "Elevated (>108 mmol/L, Hyperchloraemic)",
+            "HARDCARP / USEDCAMP",
+            "Hyperalimentation, Acetazolamide, RTA, Diarrhea, Chloride fluids (0.9% NS), Addison's, Retrosternal conduit, Pancreatic fistula",
+            "Discontinue 0.9% NS; switch to balanced crystalloids (Plasma-Lyte / Hartmann's); correct diarrhea/RTA; oral NaHCO3"
+          ],
+          [
+            "Urine Anion Gap (UAG)",
+            "Differentiates renal vs GI NAGMA",
+            "Calculated from urine electrolytes",
+            "UAG = (Na+_u + K+_u) - Cl-_u",
+            "Negative UAG (-20 to -50): Normal renal NH4+ excretion (Diarrhea)\nPositive UAG (+20 to +40): Impaired renal NH4+ excretion (RTA)",
+            "Negative UAG confirms intact renal response to GI losses; Positive UAG confirms distal RTA (Type 1 or 4)"
+          ]
+        ]
+      },
+      "b": "Distinguishing between High Anion Gap Metabolic Acidosis (HAGMA) and Normal Anion Gap (Hyperchloraemic) Metabolic Acidosis (NAGMA) is the cornerstone of clinical acid-base diagnostics:\n\n1. High Anion Gap Metabolic Acidosis (HAGMA) Mnemonics:\n• THE CLASSIC MUDPILES MNEMONIC:\n  - M — Methanol: Metabolized by alcohol dehydrogenase to formic acid; causes retinal toxicity, optic disc hyperaemia, and permanent blindness.\n  - U — Uraemia: Advanced acute kidney injury or chronic renal failure (eGFR <15–20 mL/min); accumulation of organic sulfates, phosphates, and hippurate.\n  - D — Diabetic Ketoacidosis (DKA): Insulin deficiency + glucagon excess accelerates lipolysis; accumulation of beta-hydroxybutyrate and acetoacetate. (Also includes Alcoholic Ketoacidosis and Starvation Ketoacidosis).\n  - P — Paracetamol / Propylene Glycol: Chronic therapeutic or supratherapeutic paracetamol in malnourished/female patients induces 5-oxoproline (pyroglutamic acid) accumulation via glutathione depletion. Propylene glycol is a solvent in IV lorazepam/diazepam infusions.\n  - I — Iron, Isoniazid (INH), Infection: INH causes intractable seizures refractory to standard anticonvulsants (treated with IV Pyridoxine / Vitamin B6); Iron toxicity causes direct mitochondrial poisoning.\n  - L — Lactic Acidosis: Type A (tissue hypoperfusion/shock, cardiac arrest, mesenteric ischemia); Type B (toxins, metformin-associated lactic acidosis [MALA], liver failure, propofol infusion syndrome [PRIS], cyanide).\n  - E — Ethylene Glycol: Antifreeze ingestion; metabolized to glycolic and oxalic acid; forms calcium oxalate envelope crystals in urine, precipitating acute tubular necrosis and hypocalcaemic tetany.\n  - S — Salicylates (Aspirin): Uncouples oxidative phosphorylation (generating lactic and keto acids) and directly stimulates medullary respiratory center (producing early respiratory alkalosis).\n• THE MODERN GOLD MARK MNEMONIC (Preferred in Toxicology):\n  - G: Glycols (ethylene glycol, propylene glycol)\n  - O: Oxoproline (5-oxoproline / pyroglutamic acid from chronic paracetamol use)\n  - L: L-Lactate (standard clinical lactic acidosis from shock, hypoperfusion, sepsis)\n  - D: D-Lactate (short bowel syndrome / bacterial fermentation of unabsorbed carbohydrates)\n  - M: Methanol\n  - A: Aspirin (salicylates)\n  - R: Renal Failure (uraemic acidosis)\n  - K: Ketoacidosis (diabetic, alcoholic, starvation)\n\n2. Normal Anion Gap (Hyperchloraemic) Metabolic Acidosis (NAGMA) Mnemonics:\n• Electrophysiological Principle: In NAGMA, the serum anion gap remains normal (8–12 mmol/L) because for every millimole of bicarbonate lost from the body, the kidneys or intravenous infusions replace it with exactly one millimole of chloride (Cl-), preserving electroneutrality.\n• THE HARDCARP MNEMONIC:\n  - H — Hyperalimentation: Total Parenteral Nutrition (TPN) with excessive chloride-rich amino acid formulations.\n  - A — Acetazolamide: Carbonic anhydrase inhibition in the renal proximal tubule, causing renal bicarbonate wasting.\n  - R — Renal Tubular Acidosis (RTA Types 1, 2, and 4).\n  - D — Diarrhea: The most common worldwide cause of NAGMA. Pancreatic, biliary, and intestinal secretions contain high NaHCO3 concentrations; loss of stool directly drains bicarbonate.\n  - C — Chloride-rich Resuscitation Fluids: Massive infusion of 0.9% Normal Saline (154 mmol/L Cl-, far higher than normal plasma Cl- of 104 mmol/L). Induces hyperchloraemic metabolic acidosis, renal vasoconstriction, and decreased GFR.\n  - A — Addison's Disease: Primary adrenal insufficiency / aldosterone deficiency leads to impaired renal H+ excretion.\n  - R — Retrosternal / Ureteral Diversion (Ureterosigmoidostomy): Colon mucosa reabsorbs chloride from urine in exchange for secreting bicarbonate into the bowel lumen.\n  - P — Pancreaticoduodenal Fistulae: Direct loss of bicarbonate-rich digestive fluids.\n\n3. Differentiating Diarrhea from RTA Using Urine Anion Gap (UAG):\n• Formula: UAG = ([Na+]_urine + [K+]_urine) - [Cl-]_urine.\n• Negative Urine Anion Gap (Typically -20 to -50 mmol/L):\n  - Indicates INTACT renal acidification mechanism.\n  - In extra-renal bicarbonate loss (Diarrhea), the healthy kidneys appropriately increase ammonium (NH4+) excretion to eliminate acid. Because NH4+ is an unmeasured cation excreted together with chloride (Cl-), urinary chloride rises markedly above Na+ + K+, yielding a strongly negative UAG.\n• Positive Urine Anion Gap (Typically +20 to +40 mmol/L):\n  - Indicates IMPAIRED renal ammonium excretion.\n  - Classic hallmark of Renal Tubular Acidosis (Distal Type 1 RTA or Hypoaldosteronism Type 4 RTA). The diseased kidney cannot excrete NH4+, urinary chloride remains low, yielding a positive UAG."
+    }
+  ]
+});
 
   window.KN_STUDY = { categories, topics, drugs };
 })();
