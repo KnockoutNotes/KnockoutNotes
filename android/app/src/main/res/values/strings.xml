@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Knockout Notes</string>
+    <string name="title_activity_main">Knockout Notes</string>
+    <string name="package_name">com.knockoutnotes.app</string>
+    <string name="custom_url_scheme">com.knockoutnotes.app</string>
+</resources>

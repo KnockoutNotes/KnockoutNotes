@@ -6,6 +6,15 @@
   <title>KnockoutNotes Administration &amp; CMS Portal</title>
   <link rel="icon" type="image/png" href="/knockoutnotes_icon.png">
   <link rel="stylesheet" href="/admin/admin.css">
+  <script src="/ventilator-data.js"></script>
+  <script src="/regional-data.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "/vendor/three/build/three.module.js"
+    }
+  }
+  </script>
 </head>
 <body class="admin-body">
 
@@ -45,6 +54,10 @@
         <button class="adm-nav-item" data-view="regional">
           <svg class="adm-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v18M4 7l5-4 5 4M4 17l5 4 5-4m1-14h5v18h-5"></path></svg>
           Regional Images
+        </button>
+        <button class="adm-nav-item" data-view="workstation">
+          <svg class="adm-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+          3D Workstation Markers
         </button>
 
         <div class="adm-nav-group-title">Audience &amp; Comms</div>
@@ -501,14 +514,18 @@
                image. Hidden until "Edit Markers" is clicked on a row above.
                ========================================== -->
           <div class="adm-card" id="markerEditorCard" style="display: none; margin-top: 20px;">
-            <div class="adm-card-header">
+            <div class="adm-card-header" style="flex-wrap: wrap; gap: 8px;">
               <span class="adm-card-title">Markers — <span id="markerEditorTitle">—</span></span>
-              <button type="button" class="btn-secondary" id="markerEditorClose" style="padding: 4px 10px; font-size: 12px;">Close</button>
+              <div style="display: flex; gap: 8px; align-items: center; margin-left: auto;">
+                <label for="markerQuickBlockSelect" style="font-size: 11px; color: var(--adm-text-subtle);">Switch Block:</label>
+                <select id="markerQuickBlockSelect" class="form-select" style="width: auto; font-size: 12px; padding: 3px 8px;"></select>
+                <button type="button" class="btn-secondary" id="markerEditorClose" style="padding: 4px 10px; font-size: 12px;">Close</button>
+              </div>
             </div>
             <div class="adm-card-body">
               <div id="markerAlert" class="alert-banner"></div>
               <p style="font-size: 12px; color: var(--adm-text-subtle); margin: 0 0 12px;">
-                This shows exactly what visitors see. <strong>Add marker</strong> then click the image to drop a structure label; drag any existing dot to reposition it. Use the list below each tool for precise numeric editing.
+                This shows exactly what visitors see. <strong>Drag any marker dot, needle endpoint, or spread area</strong> to move it freely across the scan ("busy moving the pointer"). You can also click "+ Add Marker" or select a marker row below to place it.
               </p>
 
               <div id="markerToolbar" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;">
@@ -522,6 +539,7 @@
                 <div id="markerStage" style="position: relative; width: 100%; min-height: 220px; background: #000; border-radius: 8px; overflow: hidden; line-height: 0; cursor: default;">
                   <img id="markerImage" src="" alt="" style="width: 100%; height: auto; display: block;">
                   <svg id="markerOverlaySvg" viewBox="0 0 100 100" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></svg>
+                  <div id="markerDragBadge" style="display: none; position: absolute; background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(4px); border: 1px solid var(--adm-primary); border-radius: 4px; padding: 2px 7px; font-size: 11px; font-family: var(--adm-font-mono); color: #fff; pointer-events: none; z-index: 20; transform: translate(-50%, -140%); white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.5);"></div>
                 </div>
               </div>
 
@@ -557,6 +575,194 @@
               <div style="display: flex; gap: 10px; margin-top: 18px;">
                 <button type="button" class="btn-primary" id="markerSaveBtn">Save Markers</button>
                 <button type="button" class="btn-secondary" id="markerResetBtn">Revert Changes</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             VIEW: 3D WORKSTATION MARKERS
+             Interactive 3D model with raycast surface snapping,
+             continuous pointer moving ("busy moving the pointer"),
+             component label editing, D1 persistence & code export.
+             ========================================== -->
+        <section id="view-workstation" class="adm-view">
+          <div id="workstationAlert" class="alert-banner" style="display: none; margin-bottom: 16px;"></div>
+
+          <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 20px; align-items: start;">
+            <!-- Left: 3D Interactive Stage & View Controls -->
+            <div class="adm-card">
+              <div class="adm-card-header" style="flex-wrap: wrap; gap: 10px;">
+                <span class="adm-card-title">3D Workstation Model &amp; Surface Positioning</span>
+                <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+                  <button type="button" class="btn-secondary" id="ventCamFrontBtn" style="padding: 4px 8px; font-size: 11px;">Front</button>
+                  <button type="button" class="btn-secondary" id="ventCamRearBtn" style="padding: 4px 8px; font-size: 11px;">Rear</button>
+                  <button type="button" class="btn-secondary" id="ventCamSideBtn" style="padding: 4px 8px; font-size: 11px;">Side</button>
+                  <button type="button" class="btn-secondary" id="ventCamResetBtn" style="padding: 4px 8px; font-size: 11px;">Reset</button>
+                </div>
+              </div>
+              <div class="adm-card-body" style="padding: 14px;">
+                <!-- 3D Toolbar -->
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                  <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                    <button type="button" class="btn-primary" id="ventMovePointerBtn" style="padding: 5px 12px; font-size: 12px;">
+                      📍 Move Pointer (Click/Drag on 3D Surface)
+                    </button>
+                    <button type="button" class="btn-secondary" id="ventAddNewMarkerBtn" style="padding: 5px 10px; font-size: 12px;">
+                      + New Marker
+                    </button>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <label for="ventOpacitySlider" style="font-size: 11px; color: var(--adm-text-subtle);">Inspect (Translucent):</label>
+                    <input type="range" id="ventOpacitySlider" min="0" max="1" step="0.05" value="0" style="width: 80px; accent-color: var(--adm-primary);">
+                  </div>
+                </div>
+
+                <!-- Status & Hint Banner -->
+                <div id="ventMoveHint" style="font-size: 12px; color: var(--adm-primary); margin-bottom: 8px; min-height: 18px; font-weight: 500;">
+                  Click 'Move Pointer' to glide the marker across the 3D machine surface.
+                </div>
+
+                <!-- 3D Canvas Host Container -->
+                <div id="ventAdminStageWrap" style="position: relative; width: 100%; height: 500px; background: #060911; border-radius: 8px; overflow: hidden; border: 1px solid var(--adm-border);">
+                  <div id="ventAdminLoading" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(6, 9, 17, 0.85); z-index: 10; color: var(--adm-text-muted);">
+                    <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px;">Loading 3D Workstation Geometry…</div>
+                    <div style="font-size: 11px;">Initializing WebGL &amp; DRACO decompressed mesh</div>
+                  </div>
+                  <div id="ventAdminStage" style="width: 100%; height: 100%;"></div>
+                  <!-- Floating HUD badge for active 3D coordinates -->
+                  <div id="ventCoordHud" style="position: absolute; bottom: 12px; left: 12px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); border: 1px solid var(--adm-border); border-radius: 4px; padding: 4px 10px; font-size: 11px; font-family: var(--adm-font-mono); color: #38bdf8; z-index: 5; pointer-events: none;">
+                    Position: X: 0.000 | Y: 0.000 | Z: 0.000
+                  </div>
+                </div>
+
+                <!-- Fine Nudge Controls -->
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; margin-top: 12px; padding: 10px; background: var(--adm-surface-subtle); border-radius: 6px; border: 1px solid var(--adm-border-subtle);">
+                  <div style="font-size: 11px; font-weight: 600; color: var(--adm-text-muted);">Fine-tune Position (0.01m):</div>
+                  <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                    <button type="button" class="btn-secondary" onclick="nudgeVentPosition('x', -0.01)" style="padding: 2px 7px; font-size: 11px;">-X</button>
+                    <button type="button" class="btn-secondary" onclick="nudgeVentPosition('x', 0.01)" style="padding: 2px 7px; font-size: 11px;">+X</button>
+                    <button type="button" class="btn-secondary" onclick="nudgeVentPosition('y', -0.01)" style="padding: 2px 7px; font-size: 11px;">-Y</button>
+                    <button type="button" class="btn-secondary" onclick="nudgeVentPosition('y', 0.01)" style="padding: 2px 7px; font-size: 11px;">+Y</button>
+                    <button type="button" class="btn-secondary" onclick="nudgeVentPosition('z', -0.01)" style="padding: 2px 7px; font-size: 11px;">-Z</button>
+                    <button type="button" class="btn-secondary" onclick="nudgeVentPosition('z', 0.01)" style="padding: 2px 7px; font-size: 11px;">+Z</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Component Marker Details & Metadata Form -->
+            <div class="adm-card">
+              <div class="adm-card-header">
+                <span class="adm-card-title">Component Marker Details</span>
+                <span id="ventMarkerCountBadge" style="font-size: 11px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 8px; border-radius: 10px; font-weight: 600;">0 Markers</span>
+              </div>
+              <div class="adm-card-body">
+                <form id="ventComponentForm">
+                  <div class="form-group">
+                    <label class="form-label" for="ventCompSelect">Select Component Marker</label>
+                    <select id="ventCompSelect" class="form-select"></select>
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div class="form-group">
+                      <label class="form-label" for="ventCompId">Component Slug / ID</label>
+                      <input type="text" id="ventCompId" class="form-input" style="font-family: var(--adm-font-mono);" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="ventCompView">Default View</label>
+                      <select id="ventCompView" class="form-select">
+                        <option value="front">Front View</option>
+                        <option value="rear">Rear View</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="ventCompName">Display Name / Label</label>
+                    <input type="text" id="ventCompName" class="form-input" placeholder="e.g. Flowmeters (O2, N2O &amp; Air Rotameter Bank)" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="ventCompSystem">Anatomical / Workstation System</label>
+                    <select id="ventCompSystem" class="form-select">
+                      <option value="flowControl">Flowmeters &amp; Vaporizers</option>
+                      <option value="gasSupply">Gas Supply &amp; Cylinders</option>
+                      <option value="pressure">Pressure Monitoring</option>
+                      <option value="breathing">Breathing System &amp; Scavenging</option>
+                      <option value="ventilator">Ventilator &amp; Monitors</option>
+                      <option value="auxOutlet">Auxiliary Outlets &amp; Emergency</option>
+                      <option value="power">Power &amp; Electronics</option>
+                      <option value="mobility">Frame &amp; Mobility</option>
+                      <option value="storage">Storage &amp; Accessories</option>
+                    </select>
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+                    <div class="form-group">
+                      <label class="form-label" for="ventPosX">Position X</label>
+                      <input type="number" id="ventPosX" class="form-input" step="0.001" style="font-family: var(--adm-font-mono);">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="ventPosY">Position Y</label>
+                      <input type="number" id="ventPosY" class="form-input" step="0.001" style="font-family: var(--adm-font-mono);">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="ventPosZ">Position Z</label>
+                      <input type="number" id="ventPosZ" class="form-input" step="0.001" style="font-family: var(--adm-font-mono);">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="ventCompSummary">Summary (One-line description)</label>
+                    <textarea id="ventCompSummary" class="form-textarea" rows="2"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="ventCompFunction">Clinical Function</label>
+                    <textarea id="ventCompFunction" class="form-textarea" rows="3"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="ventCompSafety">Safety Note</label>
+                    <textarea id="ventCompSafety" class="form-textarea" rows="2"></textarea>
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div class="form-group">
+                      <label class="form-label" for="ventVivaPrompt">Viva Prompt</label>
+                      <input type="text" id="ventVivaPrompt" class="form-input" placeholder="Viva question...">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="ventVivaAnswer">Viva Answer</label>
+                      <input type="text" id="ventVivaAnswer" class="form-input" placeholder="Model answer...">
+                    </div>
+                  </div>
+
+                  <div style="display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap;">
+                    <button type="button" id="ventSaveAllBtn" class="btn-primary" style="flex: 1; min-width: 140px;">
+                      💾 Save to Cloudflare D1
+                    </button>
+                    <button type="button" id="ventExportCodeBtn" class="btn-secondary" style="min-width: 110px;">
+                      📋 Export Code
+                    </button>
+                    <button type="button" id="ventRevertBtn" class="btn-secondary" style="min-width: 80px;">
+                      ↺ Revert
+                    </button>
+                    <button type="button" id="ventDeleteMarkerBtn" class="btn-danger" style="padding: 6px 12px;">
+                      🗑 Delete
+                    </button>
+                  </div>
+                </form>
+
+                <!-- Code Export Card (hidden until requested) -->
+                <div id="ventExportWrap" style="display: none; margin-top: 16px; padding: 12px; background: #060911; border-radius: 6px; border: 1px solid var(--adm-border);">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <span style="font-size: 11px; font-weight: 600; color: #fff;">Exported ventilator-data.js Code:</span>
+                    <button type="button" class="btn-secondary" id="ventCopyCodeBtn" style="padding: 2px 8px; font-size: 11px;">Copy Code</button>
+                  </div>
+                  <textarea id="ventExportCodeText" class="form-textarea" rows="8" readonly style="font-family: var(--adm-font-mono); font-size: 11px; background: #090d16; color: #38bdf8;"></textarea>
+                </div>
               </div>
             </div>
           </div>
@@ -947,6 +1153,7 @@
 
   <!-- Scripts -->
   <script src="/admin/admin.js"></script>
+  <script type="module" src="/admin/workstation-3d.js"></script>
 </body>
 </html>
 

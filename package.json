@@ -1,0 +1,22 @@
+{
+  "name": "knockoutnotes",
+  "version": "2.4.0",
+  "description": "Knockout Notes — Standalone Anaesthesia & Critical Care Knowledge Engine",
+  "main": "index.html",
+  "scripts": {
+    "cap": "cap",
+    "build:android": "cap sync android"
+  },
+  "author": "KnockoutNotes",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/app": "^6.0.1",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/network": "^6.0.2",
+    "@capacitor/splash-screen": "^6.0.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2"
+  }
+}

@@ -1086,4 +1086,34 @@ body.admin-body {
   cursor: grabbing;
 }
 
+/* ==========================================
+   3D WORKSTATION MARKER POSITIONER
+   ========================================== */
+#ventMovePointerBtn.active {
+  background: var(--adm-warning, #f59e0b);
+  color: #0f172a;
+  border-color: var(--adm-warning, #f59e0b);
+  font-weight: 700;
+  animation: ventPulse 1.5s infinite;
+}
+
+@keyframes ventPulse {
+  0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+#ventAdminStage canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media (max-width: 900px) {
+  #view-workstation > div {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
 

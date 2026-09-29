@@ -206,6 +206,36 @@ class TestCrisisCalculators(unittest.TestCase):
         self.assertIn("REDUCE EPINEPHRINE DOSES", content)
         self.assertIn("AVOID VASOPRESSIN", content)
 
+        # Verify Anaphylaxis Section
+        self.assertIn("Perioperative Anaphylaxis", content)
+        self.assertIn("view-anaphylaxis", content)
+        self.assertIn("anaWeightInput", content)
+        self.assertIn("anaOutputImDose", content)
+        self.assertIn("anaOutputIvDose", content)
+        self.assertIn("anaOutputFluidBolus", content)
+        self.assertIn("anaOutputInfusion", content)
+        self.assertIn("Mast Cell Tryptase Sampling Protocol", content)
+
+        # Verify Bronchospasm Section
+        self.assertIn("Severe Intraoperative Bronchospasm", content)
+        self.assertIn("view-bronchospasm", content)
+        self.assertIn("bronchoWeightInput", content)
+        self.assertIn("bronchoOutputDeepen", content)
+        self.assertIn("bronchoOutputInhSalbutamol", content)
+        self.assertIn("bronchoOutputMagnesium", content)
+        self.assertIn("The Circuit Disconnection Maneuver", content)
+        self.assertIn("Dynamic Hyperinflation (Auto-PEEP) Warning", content)
+
+        # Verify Laryngospasm Section
+        self.assertIn("Laryngospasm: Acute Vocal Cord Spasm", content)
+        self.assertIn("view-laryngospasm", content)
+        self.assertIn("laryngoWeightInput", content)
+        self.assertIn("laryngoOutputPropofol", content)
+        self.assertIn("laryngoOutputLowSux", content)
+        self.assertIn("laryngoOutputFullSux", content)
+        self.assertIn("Larson's Maneuver", content)
+        self.assertIn("Negative Pressure Pulmonary Oedema", content)
+
     def test_crisis_css_exists(self):
         css_file = PROJECT_ROOT / "crisis.css"
         self.assertTrue(css_file.exists(), "crisis.css must exist")
@@ -221,7 +251,46 @@ class TestCrisisCalculators(unittest.TestCase):
         content = js_file.read_text(encoding="utf-8")
         self.assertIn("calculateMH", content)
         self.assertIn("calculateLAST", content)
+        self.assertIn("calculateAnaphylaxis", content)
+        self.assertIn("calculateBronchospasm", content)
+        self.assertIn("calculateLaryngospasm", content)
+        self.assertIn("anaphylaxis", content)
+        self.assertIn("bronchospasm", content)
+        self.assertIn("laryngospasm", content)
         self.assertIn("navigateToView", content)
+
+    def test_neonatal_resuscitation_presence(self):
+        rc_html = PROJECT_ROOT / "resuscitation-chamber.html"
+        self.assertTrue(rc_html.exists(), "resuscitation-chamber.html must exist")
+        html_content = rc_html.read_text(encoding="utf-8")
+        self.assertIn('data-patient="neonatal"', html_content)
+        self.assertIn("Neonatal NLS / NRP", html_content)
+
+        rc_js = PROJECT_ROOT / "resuscitation-chamber.js"
+        self.assertTrue(rc_js.exists(), "resuscitation-chamber.js must exist")
+        js_content = rc_js.read_text(encoding="utf-8")
+        self.assertIn("neonatal:", js_content)
+        self.assertIn("5 Inflation Breaths", js_content)
+        self.assertIn("90 compressions + 30 breaths = 120 events/min", js_content)
+        self.assertIn("Umbilical Venous Catheter (UVC)", js_content)
+        self.assertIn("Adrenaline: 10 to 30 mcg/kg", js_content)
+        self.assertIn("currentBpm = 120", js_content)
+
+    def test_dist_app_sync(self):
+        dist_crisis_html = PROJECT_ROOT / "dist-app" / "crisis.html"
+        dist_crisis_js = PROJECT_ROOT / "dist-app" / "crisis.js"
+        dist_rc_html = PROJECT_ROOT / "dist-app" / "resuscitation-chamber.html"
+        dist_rc_js = PROJECT_ROOT / "dist-app" / "resuscitation-chamber.js"
+
+        self.assertTrue(dist_crisis_html.exists())
+        self.assertTrue(dist_crisis_js.exists())
+        self.assertTrue(dist_rc_html.exists())
+        self.assertTrue(dist_rc_js.exists())
+
+        self.assertIn("view-anaphylaxis", dist_crisis_html.read_text(encoding="utf-8"))
+        self.assertIn("calculateAnaphylaxis", dist_crisis_js.read_text(encoding="utf-8"))
+        self.assertIn("Neonatal NLS / NRP", dist_rc_html.read_text(encoding="utf-8"))
+        self.assertIn("currentBpm = 120", dist_rc_js.read_text(encoding="utf-8"))
 
     def test_home_page_integration(self):
         index_file = PROJECT_ROOT / "index.html"
@@ -235,3 +304,4 @@ class TestCrisisCalculators(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

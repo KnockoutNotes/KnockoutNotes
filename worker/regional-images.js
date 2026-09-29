@@ -225,29 +225,44 @@ export async function upsertRegionalMarkers(db, blockId, markers, adminUsername)
   if (!(await markerColumnsExist(db))) {
     throw new Error('Marker columns not found — run migration 0004_regional_block_markers.sql against the D1 database first.');
   }
-  const existing = await db.prepare('SELECT block_id FROM regional_block_images WHERE block_id = ?').bind(blockId).first();
-  if (!existing) {
-    throw new Error('Set a real image for this block first (above), then edit its markers.');
-  }
-
   const labels = sanitizeLabels(markers && markers.labels);
   const needleOverlay = sanitizeNeedle(markers && markers.needleOverlay);
   const spreadOverlay = sanitizeSpread(markers && markers.spreadOverlay);
+  const existing = await db.prepare('SELECT block_id FROM regional_block_images WHERE block_id = ?').bind(blockId).first();
 
-  await db
-    .prepare(`
-      UPDATE regional_block_images
-      SET labels_json = ?, needle_json = ?, spread_json = ?, updated_by = ?, updated_at = datetime('now')
-      WHERE block_id = ?
-    `)
-    .bind(
-      JSON.stringify(labels),
-      needleOverlay ? JSON.stringify(needleOverlay) : null,
-      JSON.stringify(spreadOverlay),
-      adminUsername,
-      blockId
-    )
-    .run();
+  if (!existing) {
+    const imgUrl = (markers && markers.imageUrl) || `assets/regional/${blockId}-usg.jpg`;
+    await db
+      .prepare(`
+        INSERT INTO regional_block_images (
+          block_id, image_url, source, attribution, labels_json, needle_json, spread_json, updated_by, created_at, updated_at
+        ) VALUES (?, ?, 'KnockoutNotes / user-provided', 'KnockoutNotes', ?, ?, ?, ?, datetime('now'), datetime('now'))
+      `)
+      .bind(
+        blockId,
+        imgUrl,
+        JSON.stringify(labels),
+        needleOverlay ? JSON.stringify(needleOverlay) : null,
+        JSON.stringify(spreadOverlay),
+        adminUsername
+      )
+      .run();
+  } else {
+    await db
+      .prepare(`
+        UPDATE regional_block_images
+        SET labels_json = ?, needle_json = ?, spread_json = ?, updated_by = ?, updated_at = datetime('now')
+        WHERE block_id = ?
+      `)
+      .bind(
+        JSON.stringify(labels),
+        needleOverlay ? JSON.stringify(needleOverlay) : null,
+        JSON.stringify(spreadOverlay),
+        adminUsername,
+        blockId
+      )
+      .run();
+  }
 
   const updated = await getRegionalImage(db, blockId);
   if (!updated) {

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reference Shelf | KnockoutNotes</title>
+  <meta name="description" content="Reference textbooks, international guideline sources, and editorial standards for KnockoutNotes.">
+    <meta name="theme-color" content="#0284c7">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page-common.css">
+  <link rel="stylesheet" href="bubble-menu.css">
+  <link rel="stylesheet" href="border-glow.css">
+  <script src="sheet-config.js"></script>
+  <script src="content-config.js"></script>
+  <script src="analytics-config.js"></script>
+  <script src="cf-beacon.js"></script>
+</head>
+<body data-content-page="resources" class="mode-3d">
+
+<!-- Procedural Anaesthesia Background Canvas (Active for both views) -->
+<canvas id="knSpatialCanvas"></canvas>
+
+<!-- Persistent Top-Left Mode Switch Dock (3D View vs Lite View) -->
+<div class="kn-mode-switch-dock" id="knModeSwitch" role="group" aria-label="Interface View Mode">
+  <button class="kn-mode-btn active" data-mode="3d" title="Switch to Cinematic 3D Spatial Experience" aria-label="3D View">
+    <span>✦ 3D VIEW</span>
+  </button>
+  <button class="kn-mode-btn" data-mode="lite" title="Switch to Familiar Clinical Lite View" aria-label="Lite View">
+    <span>⚡ LITE VIEW</span>
+  </button>
+</div>
+
+
+<!-- ==========================================================================
+     PRESENTATION LAYER 1: IMMERSIVE 3D VIEW (Active on body.mode-3d)
+     ========================================================================== -->
+<div class="view-layer-3d">
+  <header class="site-hud">
+  <div class="hud-capsule">
+    <a class="brand" href="index.html" aria-label="KnockoutNotes home">
+      <div class="brand-icon-wrap">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      </div>
+      <div class="brand-name">Knockout<span>Notes</span></div>
+    </a>
+
+    <div class="hud-path-indicator">
+      <span class="hud-pulse-dot"></span>
+      <span id="knHudPath3d">KN // REFERENCE SHELF</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="notes.html#pearls">Pearls</a>
+      <a href="notes.html">Notes</a>
+      <a href="calculators.html">Calculators</a>
+      <a href="viva.html">Viva</a>
+      <a href="ventilator.html">Workstation</a>
+      <a href="drugs.html">Drugs</a>
+      <a href="critical-care.html">Critical Care and Code</a>
+      <a href="recent-updates.html">Updates</a>
+      <a href="resources.html">About</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="nav-search-trigger" data-open-search aria-label="Open search">
+        <span>Search</span>
+        <kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn" id="themeBtn3d" aria-label="Toggle theme">☾</button>
+      <button class="menu-btn" id="menuBtn3d" aria-label="Open menu" aria-expanded="false">⋮</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu3d">
+    <a data-close-menu href="index.html">Home <span>→</span></a>
+    <a data-close-menu href="notes.html#pearls">Pearls <span>→</span></a>
+    <a data-close-menu href="notes.html">Notes <span>→</span></a>
+    <a data-close-menu href="calculators.html">Calculators <span>→</span></a>
+    <a data-close-menu href="viva.html">Viva <span>→</span></a>
+    <a data-close-menu href="ventilator.html">Workstation <span>→</span></a>
+    <a data-close-menu href="drugs.html">Drugs <span>→</span></a>
+    <a data-close-menu href="critical-care.html">Critical Care and Code <span>→</span></a>
+    <a data-close-menu href="recent-updates.html">Updates <span>→</span></a>
+    <a data-close-menu href="resources.html">About <span>→</span></a>
+  </div>
+</header>
+
+  <div class="spatial-stage">
+    <div class="spatial-world">
+      <main class="container">
+      <!-- Upper Coffee Hero Section with Live Rising Steam / Vapor Background (Dark Themed Only) -->
+      <section class="kn-about-coffee-hero-section" id="knCoffeeHeroSection" aria-label="Support KnockoutNotes">
+        <canvas id="knCoffeeVaporCanvas" class="kn-coffee-vapor-bg" aria-hidden="true"></canvas>
+        <div class="kn-coffee-big-box kn-coffee-card fade" id="coffeeSupport3d">
+          <!-- In-Box Ambient Video Background: plays only inside this box, blended seamlessly -->
+          <div class="kn-coffee-box-video-wrap" aria-hidden="true">
+            <video class="kn-coffee-box-video" autoplay loop muted playsinline preload="auto">
+              <source src="assets/videos/coffee.mp4" type="video/mp4">
+            </video>
+            <div class="kn-coffee-box-video-overlay"></div>
+          </div>
+
+          <div class="kn-coffee-box-content">
+            <div class="kn-coffee-box-header">
+              <span class="kn-coffee-box-kicker">☕ SUPPORT INDEPENDENT CLINICAL EDUCATION</span>
+              <span class="kn-coffee-box-badge">Fuel the Code</span>
+            </div>
+            <div class="kn-coffee-box-body">
+              <div class="kn-coffee-box-text">
+                <h2>Let's Keep Up the Code! ☕⚡</h2>
+                <p class="kn-coffee-lead">
+                  If you like my work, support me — you can give me something that anaesthesiologists love! <strong>Yes, coffee!</strong>
+                </p>
+                <p class="kn-coffee-desc">
+                  Every brew fuels late-night algorithm refinement, 2026 guideline syncing, and keeping this entire workstation ad-free, uncompromised, and 100% open for every clinician and resident.
+                </p>
+              </div>
+              <div class="kn-coffee-box-action">
+                <div class="kn-bondin-container">
+                  <script async src="https://bondin.io/embed/v1.js"></script>
+                  <bondin-support username="@knockoutnotes" label="Support me"></bondin-support>
+                </div>
+                <a class="kn-coffee-direct-link" href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" aria-label="Support KnockoutNotes with coffee on Bondin">
+                  <span>☕ Buy me a coffee on Bondin</span>
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Textbooks & Standards: Simple Small Sized Cards (Normal Wallpaper) -->
+      <section class="section kn-about-reference-section">
+        <div class="section-head fade">
+          <div class="kicker-pill">📖 REFERENCE SHELF</div>
+          <h2>Textbooks & Standards</h2>
+          <p>KnockoutNotes strictly prioritises current international guidelines, clinical consensus statements, and standard post-graduate anaesthesia textbooks.</p>
+        </div>
+
+        <div class="grid kn-simple-cards-grid" data-kc-skip="1">
+          <article class="card kn-small-card fade">
+            <div class="card-top">
+              <div class="tag">Gold Standard</div>
+              <span class="card-date">Textbooks</span>
+            </div>
+            <h3>Core Curriculum Textbooks</h3>
+            <ul class="kn-small-list">
+              <li><strong>Miller's Anesthesia</strong>, 10th Edition</li>
+              <li><strong>Barash, Cullen & Stoelting's Clinical Anesthesia</strong>, 9th Edition</li>
+              <li><strong>Stoelting's Pharmacology & Physiology in Anesthetic Practice</strong>, 6th Edition</li>
+              <li><strong>West's Respiratory Physiology: The Essentials</strong>, 11th Edition</li>
+            </ul>
+            <small class="reference">Publisher citations and editions verified in 2026.</small>
+          </article>
+
+          <article class="card kn-small-card fade">
+            <div class="card-top">
+              <div class="tag">Resuscitation</div>
+              <span class="card-date">Guidelines</span>
+            </div>
+            <h3>AHA & ERC Standards</h3>
+            <p>All cardiac arrest algorithms, pediatric life support, and post-resuscitation care are aligned with the <strong>2025 American Heart Association Guidelines for CPR and ECC</strong> and European Resuscitation Council standards.</p>
+            <small class="reference">2025 AHA Guidelines for CPR and ECC, Adult Basic & Advanced Life Support.</small>
+          </article>
+
+          <article class="card kn-small-card fade">
+            <div class="card-top">
+              <div class="tag">Airway & Sepsis</div>
+              <span class="card-date">Consensus</span>
+            </div>
+            <h3>Difficult Airway & Sepsis</h3>
+            <ul class="kn-small-list">
+              <li><strong>Difficult Airway Society (DAS)</strong> 2025 Guidelines</li>
+              <li><strong>Surviving Sepsis Campaign</strong> 2026 International Guidelines</li>
+              <li><strong>NYSORA</strong> Regional Anesthesia Protocols</li>
+            </ul>
+            <small class="reference">Regularly updated via the editorial Google Sheet.</small>
+          </article>
+        </div>
+      </section>
+        <section class="section" style="padding-bottom:0;">
+          <div class="section-head fade">
+            <div class="kicker-pill">EDITORIAL INTEGRITY</div>
+            <h2>Evidence Hierarchy Policy</h2>
+            <p>Every clinical answer carries a verified source citation.</p>
+          </div>
+          <div class="card fade">
+            <div class="card-top">
+              <div class="tag">Policy Hierarchy</div>
+              <span class="card-date">Evidence-Based</span>
+            </div>
+            <p style="font-size:15px;line-height:1.75;"><strong>Order of Evidence Priority:</strong> Major clinical society guidelines and consensus statements (ASA, DAS, ESAIC, AHA, SCCM) take precedence for procedural algorithms and dosage recommendations. Core physiology and pharmacology mechanisms reference the standard textbooks above. In clinical practice, always verify current product labelling, institutional protocols, and patient-specific variables.</p>
+            <small class="reference">Editorial governance: KnockoutNotes Medical Education Board.</small>
+          </div>
+        </section>
+
+        <!-- Policies & Information Section -->
+        <section class="section" style="padding-bottom:0;">
+          <div class="section-head fade">
+            <div class="kicker-pill">⚖️ GOVERNANCE & POLICIES</div>
+            <h2>Policies & Information</h2>
+            <p>Official website documentation, delivery terms, terms of use, and privacy practices.</p>
+          </div>
+          <div class="policy-pill-tabs fade">
+            <a class="policy-tab-btn" href="shipping-policy.html">📦 Shipping Policy</a>
+            <a class="policy-tab-btn" href="contact.html">✉️ Contact Us</a>
+            <a class="policy-tab-btn" href="pricing.html">💳 Pricing Details</a>
+            <a class="policy-tab-btn" href="terms-and-conditions.html">📜 Terms & Conditions</a>
+            <a class="policy-tab-btn" href="privacy-policy.html">🔒 Privacy Policy</a>
+            <a class="policy-tab-btn" href="refund-policy.html">↩️ Refund Policy</a>
+          </div>
+        </section>
+      </section>
+    </main>
+    </div>
+  </div>
+
+  <footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="brand">
+        <div class="brand-icon-wrap">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        </div>
+        <div class="brand-name">Knockout<span>Notes</span></div>
+      </div>
+      <p>Anaesthesia • Critical Care • Viva</p>
+      <p class="disclaimer">Educational content for medical professionals and trainees. Always verify current guidelines, institutional protocols, drug labels, and patient-specific factors before clinical use.</p>
+      <div class="footer-policy-links" style="margin-top:14px;display:flex;flex-wrap:wrap;gap:12px;font-size:12px;">
+        <a href="shipping-policy.html" style="color:var(--text-muted);text-decoration:none;">Shipping</a>
+        <a href="contact.html" style="color:var(--text-muted);text-decoration:none;">Contact</a>
+        <a href="pricing.html" style="color:var(--text-muted);text-decoration:none;">Pricing</a>
+        <a href="terms-and-conditions.html" style="color:var(--text-muted);text-decoration:none;">Terms</a>
+        <a href="privacy-policy.html" style="color:var(--text-muted);text-decoration:none;">Privacy</a>
+        <a href="refund-policy.html" style="color:var(--text-muted);text-decoration:none;">Refunds</a>
+      </div>
+    </div>
+    <div class="footer-connect">
+      <strong>Connect, Follow &amp; Support <span class="footer-support-sub">(by buying me a coffee)</span></strong>
+      <div class="socials">
+        <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes" title="Email KnockoutNotes">✉</a>
+        <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes" title="Instagram">◎</a>
+        <a class="social social-coffee" href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" aria-label="Support KnockoutNotes (by buying me a coffee)" title="Buy me a coffee">☕</a>
+      </div>
+      <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
+    </div>
+  </div>
+</footer>
+</div>
+
+<!-- ==========================================================================
+     PRESENTATION LAYER 2: LITE VIEW (Active on body.mode-lite)
+     Exact code and animations copied 1:1 from 3D View
+     ========================================================================== -->
+<div class="view-layer-lite">
+  <header class="site-hud">
+  <div class="hud-capsule">
+    <a class="brand" href="index.html" aria-label="KnockoutNotes home">
+      <div class="brand-icon-wrap">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      </div>
+      <div class="brand-name">Knockout<span>Notes</span></div>
+    </a>
+
+    <div class="hud-path-indicator">
+      <span class="hud-pulse-dot"></span>
+      <span id="knHudPath">KN // REFERENCE SHELF</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="notes.html#pearls">Pearls</a>
+      <a href="notes.html">Notes</a>
+      <a href="calculators.html">Calculators</a>
+      <a href="viva.html">Viva</a>
+      <a href="ventilator.html">Workstation</a>
+      <a href="drugs.html">Drugs</a>
+      <a href="critical-care.html">Critical Care and Code</a>
+      <a href="recent-updates.html">Updates</a>
+      <a href="resources.html">About</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="nav-search-trigger" data-open-search aria-label="Open search">
+        <span>Search</span>
+        <kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a data-close-menu href="index.html">Home <span>→</span></a>
+    <a data-close-menu href="notes.html#pearls">Pearls <span>→</span></a>
+    <a data-close-menu href="notes.html">Notes <span>→</span></a>
+    <a data-close-menu href="calculators.html">Calculators <span>→</span></a>
+    <a data-close-menu href="viva.html">Viva <span>→</span></a>
+    <a data-close-menu href="ventilator.html">Workstation <span>→</span></a>
+    <a data-close-menu href="drugs.html">Drugs <span>→</span></a>
+    <a data-close-menu href="critical-care.html">Critical Care and Code <span>→</span></a>
+    <a data-close-menu href="recent-updates.html">Updates <span>→</span></a>
+    <a data-close-menu href="resources.html">About <span>→</span></a>
+  </div>
+</header>
+
+  <div class="spatial-stage">
+    <div class="spatial-world">
+      <main class="container">
+      <!-- Upper Coffee Hero Section (Lite View) -->
+      <section class="kn-about-coffee-hero-section" id="knCoffeeHeroSectionLite" aria-label="Support KnockoutNotes">
+        <div class="kn-coffee-big-box kn-coffee-card fade" id="coffeeSupportLite">
+          <!-- In-Box Ambient Video Background: plays only inside this box, blended seamlessly -->
+          <div class="kn-coffee-box-video-wrap" aria-hidden="true">
+            <video class="kn-coffee-box-video" autoplay loop muted playsinline preload="auto">
+              <source src="assets/videos/coffee.mp4" type="video/mp4">
+            </video>
+            <div class="kn-coffee-box-video-overlay"></div>
+          </div>
+
+          <div class="kn-coffee-box-content">
+            <div class="kn-coffee-box-header">
+              <span class="kn-coffee-box-kicker">☕ SUPPORT INDEPENDENT CLINICAL EDUCATION</span>
+              <span class="kn-coffee-box-badge">Fuel the Code</span>
+            </div>
+            <div class="kn-coffee-box-body">
+              <div class="kn-coffee-box-text">
+                <h2>Let's Keep Up the Code! ☕⚡</h2>
+                <p class="kn-coffee-lead">
+                  If you like my work, support me — you can give me something that anaesthesiologists love! <strong>Yes, coffee!</strong>
+                </p>
+                <p class="kn-coffee-desc">
+                  Every brew fuels late-night algorithm refinement, 2026 guideline syncing, and keeping this entire workstation ad-free, uncompromised, and 100% open for every clinician and resident.
+                </p>
+              </div>
+              <div class="kn-coffee-box-action">
+                <div class="kn-bondin-container">
+                  <script async src="https://bondin.io/embed/v1.js"></script>
+                  <bondin-support username="@knockoutnotes" label="Support me"></bondin-support>
+                </div>
+                <a class="kn-coffee-direct-link" href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" aria-label="Support KnockoutNotes with coffee on Bondin">
+                  <span>☕ Buy me a coffee on Bondin</span>
+                  <span class="arrow">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Textbooks & Standards: Simple Small Sized Cards (Lite View) -->
+      <section class="section kn-about-reference-section">
+        <div class="section-head fade">
+          <div class="kicker-pill">📖 REFERENCE SHELF</div>
+          <h2>Textbooks & Standards</h2>
+          <p>KnockoutNotes strictly prioritises current international guidelines, clinical consensus statements, and standard post-graduate anaesthesia textbooks.</p>
+        </div>
+
+        <div class="grid kn-simple-cards-grid" data-kc-skip="1">
+          <article class="card kn-small-card fade">
+            <div class="card-top">
+              <div class="tag">Gold Standard</div>
+              <span class="card-date">Textbooks</span>
+            </div>
+            <h3>Core Curriculum Textbooks</h3>
+            <ul class="kn-small-list">
+              <li><strong>Miller's Anesthesia</strong>, 10th Edition</li>
+              <li><strong>Barash, Cullen & Stoelting's Clinical Anesthesia</strong>, 9th Edition</li>
+              <li><strong>Stoelting's Pharmacology & Physiology</strong>, 6th Edition</li>
+              <li><strong>West's Respiratory Physiology: The Essentials</strong>, 11th Edition</li>
+            </ul>
+            <small class="reference">Publisher citations and editions verified in 2026.</small>
+          </article>
+
+          <article class="card kn-small-card fade">
+            <div class="card-top">
+              <div class="tag">Resuscitation</div>
+              <span class="card-date">Guidelines</span>
+            </div>
+            <h3>AHA & ERC Standards</h3>
+            <p>All cardiac arrest algorithms, pediatric life support, and post-resuscitation care are aligned with the <strong>2025 American Heart Association Guidelines for CPR and ECC</strong> and European Resuscitation Council standards.</p>
+            <small class="reference">2025 AHA Guidelines for CPR and ECC, Adult Basic & Advanced Life Support.</small>
+          </article>
+
+          <article class="card kn-small-card fade">
+            <div class="card-top">
+              <div class="tag">Airway & Sepsis</div>
+              <span class="card-date">Consensus</span>
+            </div>
+            <h3>Difficult Airway & Sepsis</h3>
+            <ul class="kn-small-list">
+              <li><strong>Difficult Airway Society (DAS)</strong> 2025 Guidelines</li>
+              <li><strong>Surviving Sepsis Campaign</strong> 2026 International Guidelines</li>
+              <li><strong>NYSORA</strong> Regional Anesthesia Protocols</li>
+            </ul>
+            <small class="reference">Regularly updated via the editorial Google Sheet.</small>
+          </article>
+        </div>
+      </section>
+        <section class="section" style="padding-bottom:0;">
+          <div class="section-head fade">
+            <div class="kicker-pill">EDITORIAL INTEGRITY</div>
+            <h2>Evidence Hierarchy Policy</h2>
+            <p>Every clinical answer carries a verified source citation.</p>
+          </div>
+          <div class="card fade">
+            <div class="card-top">
+              <div class="tag">Policy Hierarchy</div>
+              <span class="card-date">Evidence-Based</span>
+            </div>
+            <p style="font-size:15px;line-height:1.75;"><strong>Order of Evidence Priority:</strong> Major clinical society guidelines and consensus statements (ASA, DAS, ESAIC, AHA, SCCM) take precedence for procedural algorithms and dosage recommendations. Core physiology and pharmacology mechanisms reference the standard textbooks above. In clinical practice, always verify current product labelling, institutional protocols, and patient-specific variables.</p>
+            <small class="reference">Editorial governance: KnockoutNotes Medical Education Board.</small>
+          </div>
+        </section>
+
+        <!-- Policies & Information Section -->
+        <section class="section" style="padding-bottom:0;">
+          <div class="section-head fade">
+            <div class="kicker-pill">⚖️ GOVERNANCE & POLICIES</div>
+            <h2>Policies & Information</h2>
+            <p>Official website documentation, delivery terms, terms of use, and privacy practices.</p>
+          </div>
+          <div class="policy-pill-tabs fade">
+            <a class="policy-tab-btn" href="shipping-policy.html">📦 Shipping Policy</a>
+            <a class="policy-tab-btn" href="contact.html">✉️ Contact Us</a>
+            <a class="policy-tab-btn" href="pricing.html">💳 Pricing Details</a>
+            <a class="policy-tab-btn" href="terms-and-conditions.html">📜 Terms & Conditions</a>
+            <a class="policy-tab-btn" href="privacy-policy.html">🔒 Privacy Policy</a>
+            <a class="policy-tab-btn" href="refund-policy.html">↩️ Refund Policy</a>
+          </div>
+        </section>
+      </section>
+    </main>
+    </div>
+  </div>
+
+  <footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="brand">
+        <div class="brand-icon-wrap">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        </div>
+        <div class="brand-name">Knockout<span>Notes</span></div>
+      </div>
+      <p>Anaesthesia • Critical Care • Viva</p>
+      <p class="disclaimer">Educational content for medical professionals and trainees. Always verify current guidelines, institutional protocols, drug labels, and patient-specific factors before clinical use.</p>
+      <div class="footer-policy-links" style="margin-top:14px;display:flex;flex-wrap:wrap;gap:12px;font-size:12px;">
+        <a href="shipping-policy.html" style="color:var(--text-muted);text-decoration:none;">Shipping</a>
+        <a href="contact.html" style="color:var(--text-muted);text-decoration:none;">Contact</a>
+        <a href="pricing.html" style="color:var(--text-muted);text-decoration:none;">Pricing</a>
+        <a href="terms-and-conditions.html" style="color:var(--text-muted);text-decoration:none;">Terms</a>
+        <a href="privacy-policy.html" style="color:var(--text-muted);text-decoration:none;">Privacy</a>
+        <a href="refund-policy.html" style="color:var(--text-muted);text-decoration:none;">Refunds</a>
+      </div>
+    </div>
+    <div class="footer-connect">
+      <strong>Connect, Follow &amp; Support <span class="footer-support-sub">(by buying me a coffee)</span></strong>
+      <div class="socials">
+        <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes" title="Email KnockoutNotes">✉</a>
+        <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes" title="Instagram">◎</a>
+        <a class="social social-coffee" href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" aria-label="Support KnockoutNotes (by buying me a coffee)" title="Buy me a coffee">☕</a>
+      </div>
+      <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
+    </div>
+  </div>
+</footer>
+</div>
+
+
+<!-- Universal Command Palette Search Modal -->
+<div class="kn-modal" id="knSearchModal" role="dialog" aria-modal="true" aria-label="Search KnockoutNotes">
+  <div class="kn-modal-backdrop" data-close-modal></div>
+  <div class="kn-modal-box">
+    <div class="kn-modal-header">
+      <span class="kn-search-icon">⌕</span>
+      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search pearls, drugs, scores, viva questions..." autocomplete="off">
+      <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
+      <button class="kn-modal-close" data-close-modal>ESC</button>
+    </div>
+    <div class="kn-modal-body">
+      <div id="knModalSearchStatus" class="kn-search-status">Start typing to search the medical database.</div>
+      <div id="knModalSearchResults" class="kn-search-results"></div>
+    </div>
+    <div class="kn-modal-footer">
+      <span>Pro-tip: Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
+      <span>KnockoutNotes Spatial Search</span>
+    </div>
+  </div>
+</div>
+
+
+<script src="spatial-bg.js"></script>
+<script src="spatial-camera.js"></script>
+<script src="spatial-scroll.js"></script>
+<script src="spatial-viewer.js"></script>
+<script src="script.js"></script>
+<script src="page-motion.js"></script>
+<script src="kn-site-search.js"></script>
+<script src="vendor/gsap/gsap.min.js"></script>
+<script src="spa-router.js"></script>
+<script src="bubble-menu.js"></script>
+<script src="border-glow.js"></script>
+<script src="coffee-bg.js"></script>
+<script>
+  // Safeguard: Ensure all Bondin modal and checkout links strictly resolve to @knockoutnotes
+  document.addEventListener('click', function(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="bondin.io"]') : null;
+    if (a && a.href && a.href.includes('bondin.io') && !a.href.includes('@knockoutnotes') && !a.href.includes('%40knockoutnotes')) {
+      a.href = 'https://bondin.io/@knockoutnotes/support';
+    }
+  }, true);
+</script>
+
+</body>
+</html>

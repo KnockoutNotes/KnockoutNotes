@@ -1,0 +1,318 @@
+/* ==========================================================================
+   KNOCKOUTNOTES — Policy Pages Common Styles (policy-common.css)
+   Clean, responsive, accessible layouts for all six website policy documents.
+   ========================================================================== */
+
+.policy-page-container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+
+/* Breadcrumb & Navigation Backlink */
+.policy-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Space Grotesk', system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color 0.2s ease;
+}
+
+.policy-breadcrumb:hover {
+  color: var(--accent-cyan);
+}
+
+.policy-breadcrumb-sep {
+  opacity: 0.5;
+}
+
+/* Policy Hero */
+.policy-hero {
+  margin-bottom: 32px;
+}
+
+.policy-hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  background: var(--soft-accent);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  margin-bottom: 12px;
+}
+
+.policy-hero h1 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--text-main);
+  margin: 0 0 12px;
+}
+
+.policy-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 18px;
+}
+
+.policy-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Policy Quick Nav Links */
+.policy-nav-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0 32px;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(16px);
+}
+
+.policy-nav-link {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 550;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.policy-nav-link:hover,
+.policy-nav-link.active {
+  color: var(--accent-cyan);
+  background: var(--soft-accent);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+/* Policy Card Content */
+.policy-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 36px 40px;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: var(--text-secondary);
+  line-height: 1.75;
+  font-size: 15px;
+}
+
+@media (max-width: 640px) {
+  .policy-card {
+    padding: 24px 18px;
+  }
+}
+
+.policy-card h2 {
+  font-size: 1.4rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  margin: 36px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.policy-card h2:first-of-type {
+  margin-top: 0;
+}
+
+.policy-card h3 {
+  font-size: 1.15rem;
+  font-weight: 650;
+  color: var(--text-main);
+  margin: 24px 0 10px;
+}
+
+.policy-card p {
+  margin: 0 0 16px;
+}
+
+.policy-card ul,
+.policy-card ol {
+  padding-left: 24px;
+  margin: 0 0 20px;
+}
+
+.policy-card li {
+  margin-bottom: 8px;
+}
+
+.policy-card li strong {
+  color: var(--text-main);
+}
+
+/* Callout Blocks */
+.policy-callout {
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  margin: 24px 0;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+}
+
+.policy-callout-medical {
+  border-color: rgba(239, 68, 68, 0.35);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+body:not(.dark) .policy-callout-medical {
+  background: rgba(239, 68, 68, 0.06);
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+.policy-callout-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #f87171;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+body:not(.dark) .policy-callout-title {
+  color: #dc2626;
+}
+
+.policy-callout-info {
+  border-color: rgba(56, 189, 248, 0.3);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.policy-callout-info .policy-callout-title {
+  color: var(--accent-cyan);
+}
+
+/* Policy Contact Cards Grid */
+.policy-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.policy-contact-card {
+  padding: 18px 20px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+body:not(.dark) .policy-contact-card {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.policy-contact-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.policy-contact-title {
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 14.5px;
+}
+
+.policy-contact-link {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13.5px;
+  word-break: break-all;
+}
+
+.policy-contact-link:hover {
+  text-decoration: underline;
+}
+
+/* Support Button */
+.policy-support-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #0284c7, #0ea5e9);
+  color: #ffffff !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 650;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 8px;
+}
+
+.policy-support-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.45);
+  background: linear-gradient(135deg, #0369a1, #0284c7);
+}
+
+/* Policy Footer Navigation */
+.policy-footer-nav {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.policy-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.policy-footer-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.policy-footer-links a:hover {
+  color: var(--accent-cyan);
+}

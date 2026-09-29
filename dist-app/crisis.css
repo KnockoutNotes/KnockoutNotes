@@ -1,0 +1,799 @@
+/**
+ * KnockoutNotes — Crisis Mode Emergency Stylesheet
+ * High-contrast, zero-animation, fast-loading clinical emergency reference.
+ * Mobile-first design, large touch targets, high legibility under emergency conditions.
+ */
+
+:root {
+  --cm-bg: #06090f;
+  --cm-surface: #0d131f;
+  --cm-surface-elevated: #151e30;
+  --cm-border: #24324a;
+  --cm-border-strong: #3b5075;
+  
+  --cm-text: #f8fafc;
+  --cm-text-muted: #94a3b8;
+  --cm-text-subtle: #64748b;
+  
+  --cm-danger: #ef4444;
+  --cm-danger-bg: #450a0a;
+  --cm-danger-border: #b91c1c;
+  
+  --cm-warning: #f59e0b;
+  --cm-warning-bg: #451a03;
+  --cm-warning-border: #d97706;
+  
+  --cm-success: #10b981;
+  --cm-success-bg: #064e3b;
+  --cm-success-border: #059669;
+  
+  --cm-info: #0ea5e9;
+  --cm-info-bg: #082f49;
+  --cm-info-border: #0284c7;
+
+  --cm-radius: 8px;
+  --cm-radius-lg: 12px;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.crisis-body {
+  background-color: var(--cm-bg);
+  color: var(--cm-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Container */
+.cm-container {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Top Emergency Bar */
+.cm-top-bar {
+  background: var(--cm-surface);
+  border-bottom: 2px solid var(--cm-danger);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 10px 16px;
+}
+
+.cm-top-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cm-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cm-emergency-badge {
+  background: var(--cm-danger);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.cm-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.2px;
+}
+
+.cm-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--cm-surface-elevated);
+  border: 1px solid var(--cm-border);
+  color: var(--cm-text);
+  padding: 8px 14px;
+  border-radius: var(--cm-radius);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cm-back-btn:hover {
+  background: #1e293b;
+  border-color: var(--cm-border-strong);
+}
+
+.cm-exit-btn {
+  background: none;
+  border: 1px solid var(--cm-border);
+  color: var(--cm-text-muted);
+  padding: 6px 12px;
+  border-radius: var(--cm-radius);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.cm-exit-btn:hover {
+  color: #fff;
+  border-color: #cbd5e1;
+}
+
+/* Medical Safety Disclaimer Banner */
+.cm-disclaimer-banner {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-left: 3px solid var(--cm-info);
+  padding: 10px 14px;
+  border-radius: var(--cm-radius);
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 18px;
+}
+
+.cm-disclaimer-banner strong {
+  color: #f1f5f9;
+}
+
+/* HUB VIEW: Emergency Selection Cards */
+.cm-hub-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.cm-crisis-card {
+  display: block;
+  background: var(--cm-surface);
+  border: 2px solid var(--cm-border);
+  border-radius: var(--cm-radius-lg);
+  padding: 20px 22px;
+  text-decoration: none;
+  color: var(--cm-text);
+  cursor: pointer;
+}
+
+.cm-crisis-card:hover, .cm-crisis-card:focus-visible {
+  border-color: var(--cm-danger);
+  background: var(--cm-surface-elevated);
+  outline: none;
+}
+
+.cm-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.cm-card-pill {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cm-card-pill.danger {
+  background: var(--cm-danger-bg);
+  color: #fca5a5;
+  border: 1px solid var(--cm-danger-border);
+}
+
+.cm-card-arrow {
+  font-size: 20px;
+  color: var(--cm-text-muted);
+  font-weight: 700;
+}
+
+.cm-card-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.cm-card-subtitle {
+  font-size: 14px;
+  color: var(--cm-text-muted);
+  line-height: 1.4;
+}
+
+/* CRISIS DETAIL SCREENS */
+.cm-view {
+  display: none;
+}
+
+.cm-view.active {
+  display: block;
+}
+
+.cm-screen-header {
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--cm-border);
+  padding-bottom: 16px;
+}
+
+.cm-screen-kicker {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--cm-danger);
+  margin-bottom: 4px;
+}
+
+.cm-screen-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.cm-screen-desc {
+  font-size: 14px;
+  color: var(--cm-text-muted);
+}
+
+.cm-screen-meta {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--cm-text-subtle);
+}
+
+/* Section Box Styles */
+.cm-section {
+  background: var(--cm-surface);
+  border: 1px solid var(--cm-border);
+  border-radius: var(--cm-radius-lg);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.cm-section-header {
+  padding: 12px 18px;
+  background: var(--cm-surface-elevated);
+  border-bottom: 1px solid var(--cm-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cm-section-title {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cm-section-body {
+  padding: 18px;
+}
+
+/* Callout Variations */
+.cm-section.danger-priority {
+  border-color: var(--cm-danger-border);
+}
+
+.cm-section.danger-priority .cm-section-header {
+  background: var(--cm-danger-bg);
+  border-color: var(--cm-danger-border);
+  color: #fca5a5;
+}
+
+.cm-section.warning-priority {
+  border-color: var(--cm-warning-border);
+}
+
+.cm-section.warning-priority .cm-section-header {
+  background: var(--cm-warning-bg);
+  border-color: var(--cm-warning-border);
+  color: #fde68a;
+}
+
+/* Checklists */
+.cm-checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cm-checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #090e1a;
+  border: 1px solid var(--cm-border);
+  padding: 10px 14px;
+  border-radius: var(--cm-radius);
+  cursor: pointer;
+  user-select: none;
+}
+
+.cm-checklist-item:hover {
+  border-color: var(--cm-border-strong);
+}
+
+.cm-checklist-item.checked {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: var(--cm-success-border);
+}
+
+.cm-checklist-item.checked .cm-item-text {
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+.cm-check-box {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--cm-border-strong);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 800;
+  color: transparent;
+}
+
+.cm-checklist-item.checked .cm-check-box {
+  background: var(--cm-success);
+  border-color: var(--cm-success);
+  color: #fff;
+}
+
+.cm-item-content {
+  flex: 1;
+}
+
+.cm-item-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.cm-item-desc {
+  font-size: 13px;
+  color: var(--cm-text-muted);
+  line-height: 1.4;
+}
+
+/* DAS CICO Algorithm Plan Steps */
+.cm-plan-box {
+  border: 2px solid var(--cm-border);
+  border-radius: var(--cm-radius);
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+.cm-plan-header {
+  padding: 10px 14px;
+  font-weight: 800;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cm-plan-body {
+  padding: 14px;
+  background: #090e1a;
+  font-size: 13px;
+}
+
+.cm-plan-a { border-color: #3b82f6; }
+.cm-plan-a .cm-plan-header { background: #1e3a8a; color: #93c5fd; }
+
+.cm-plan-b { border-color: #f59e0b; }
+.cm-plan-b .cm-plan-header { background: #78350f; color: #fde68a; }
+
+.cm-plan-c { border-color: #f97316; }
+.cm-plan-c .cm-plan-header { background: #7c2d12; color: #fed7aa; }
+
+.cm-plan-d { border-color: #ef4444; }
+.cm-plan-d .cm-plan-header { background: #7f1d1d; color: #fca5a5; font-size: 15px; }
+
+/* Emergency Front of Neck Access Box */
+.cm-efona-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cm-efona-step {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: #180909;
+  border: 1px solid #7f1d1d;
+  border-radius: var(--cm-radius);
+}
+
+.cm-step-num {
+  width: 28px;
+  height: 28px;
+  background: var(--cm-danger);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.cm-step-content strong {
+  color: #fff;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.cm-step-content p {
+  color: #fca5a5;
+  font-size: 13px;
+}
+
+/* Weight-Based Calculator Components */
+.cm-calc-box {
+  background: #090e1a;
+  border: 1px solid var(--cm-border-strong);
+  border-radius: var(--cm-radius);
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.cm-calc-input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.cm-calc-label {
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+}
+
+.cm-calc-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cm-calc-input {
+  width: 130px;
+  height: 46px;
+  background: #141e33;
+  border: 2px solid var(--cm-border-strong);
+  border-radius: var(--cm-radius);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+  outline: none;
+}
+
+.cm-calc-input:focus {
+  border-color: var(--cm-danger);
+}
+
+.cm-calc-unit {
+  font-weight: 700;
+  color: var(--cm-text-muted);
+  font-size: 15px;
+}
+
+.cm-calc-quick-btns {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.cm-calc-preset-btn {
+  background: var(--cm-surface-elevated);
+  border: 1px solid var(--cm-border);
+  color: var(--cm-text);
+  padding: 6px 12px;
+  border-radius: var(--cm-radius);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 40px;
+}
+
+.cm-calc-preset-btn:hover {
+  background: #334155;
+}
+
+/* Output Cards Grid */
+.cm-dose-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.cm-dose-card {
+  background: #141e33;
+  border: 1px solid var(--cm-border);
+  border-radius: var(--cm-radius);
+  padding: 14px;
+  border-left: 4px solid var(--cm-danger);
+}
+
+.cm-dose-card.warning {
+  border-left-color: var(--cm-warning);
+}
+
+.cm-dose-card.info {
+  border-left-color: var(--cm-info);
+}
+
+.cm-dose-card.success {
+  border-left-color: var(--cm-success);
+}
+
+.cm-dose-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--cm-text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.cm-dose-value {
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.cm-dose-unit {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cm-text-muted);
+  margin-left: 4px;
+}
+
+.cm-dose-sub {
+  font-size: 12px;
+  color: #cbd5e1;
+  margin-top: 6px;
+  line-height: 1.3;
+}
+
+/* Formulation Comparison Cards (Dantrium vs Ryanodex) */
+.cm-formulation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.cm-form-card {
+  background: #090e1a;
+  border: 2px solid var(--cm-border);
+  border-radius: var(--cm-radius);
+  padding: 16px;
+}
+
+.cm-form-card.highlight {
+  border-color: #38bdf8;
+  background: #071529;
+}
+
+.cm-form-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.cm-form-vial-strength {
+  font-size: 12px;
+  font-weight: 700;
+  color: #38bdf8;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.cm-form-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #1e293b;
+  font-size: 13px;
+}
+
+.cm-form-stat-val {
+  font-weight: 800;
+  color: #fff;
+}
+
+/* What to Avoid / Warning Callout Box */
+.cm-warning-box {
+  background: #270707;
+  border: 2px solid var(--cm-danger);
+  border-radius: var(--cm-radius);
+  padding: 16px;
+  margin-top: 14px;
+}
+
+.cm-warning-title {
+  color: #f87171;
+  font-weight: 800;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cm-warning-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.cm-warning-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #fecaca;
+}
+
+.cm-warning-list li::before {
+  content: "✕";
+  position: absolute;
+  left: 0;
+  color: #ef4444;
+  font-weight: 900;
+}
+
+/* Supportive Care Tables & Grids */
+.cm-support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.cm-support-card {
+  background: #090e1a;
+  border: 1px solid var(--cm-border);
+  border-radius: var(--cm-radius);
+  padding: 12px 14px;
+}
+
+.cm-support-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #38bdf8;
+  margin-bottom: 4px;
+}
+
+.cm-support-text {
+  font-size: 12px;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+/* References Section */
+.cm-references-box {
+  background: #090e1a;
+  border: 1px solid var(--cm-border);
+  border-radius: var(--cm-radius);
+  padding: 16px;
+  font-size: 12px;
+}
+
+.cm-ref-item {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.cm-ref-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.cm-ref-org {
+  font-weight: 800;
+  color: #fff;
+}
+
+.cm-ref-title {
+  color: #94a3b8;
+  margin: 2px 0;
+}
+
+.cm-ref-link {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+.cm-ref-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 640px) {
+  .cm-container {
+    padding: 12px 10px;
+  }
+
+  .cm-screen-title {
+    font-size: 22px;
+  }
+
+  .cm-card-title {
+    font-size: 19px;
+  }
+
+  .cm-calc-input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cm-calc-input {
+    width: 100%;
+    font-size: 20px;
+  }
+
+  .cm-calc-input-wrap {
+    width: 100%;
+  }
+
+  .cm-dose-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cm-formulation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cm-support-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="bubble-menu.css">
   <link rel="stylesheet" href="border-glow.css">
   <link rel="stylesheet" href="subscribe-widget.css">
+  <link rel="stylesheet" href="mobile-app.css">
   <script src="sheet-config.js"></script>
   <script src="content-config.js"></script>
   <script src="analytics-config.js"></script>
@@ -89,6 +90,26 @@
   <div class="spatial-stage">
     <div class="spatial-world">
       <main class="container">
+      <!-- Mobile System Status Bar -->
+      <div class="kn-app-status-bar" id="knAppStatusBar3d">
+        <div class="kn-app-status-left">
+          <span class="kn-net-status-badge online" id="knNetStatusBadge3d">
+            <span class="kn-net-dot"></span>
+            <span>ONLINE</span>
+          </span>
+          <span class="kn-sync-group">
+            <span style="font-size:12px; color:#94a3b8;">Sync: <strong class="kn-sync-time-val" style="color:#e2e8f0;">Checking...</strong></span>
+            <button type="button" class="kn-sync-now-btn" title="Sync latest notes & guidelines from server">
+              <span class="kn-sync-spinner">↻</span>
+              <span>Sync Now</span>
+            </button>
+          </span>
+        </div>
+        <div class="kn-app-status-right">
+          <span style="font-size:11px; color:#64748b; font-family:monospace;">APP v2.4.0 • 8 OFFLINE SECTIONS READY</span>
+        </div>
+      </div>
+
       <!-- Section 1: Hero Workstation (Z: +180px) -->
       <section class="hero" data-env-state="hero">
         <div class="fade">
@@ -107,7 +128,7 @@
             <a class="btn-cinematic" href="resuscitation-chamber.html" style="background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; border-color: rgba(239, 68, 68, 0.6); box-shadow: 0 0 20px rgba(239, 68, 68, 0.45);">⚡ Run a Code (ACLS / PALS)</a>
             <a class="btn-cinematic" href="crisis.html" style="background: linear-gradient(135deg, #b91c1c, #991b1b); color: #fff; border-color: rgba(239, 68, 68, 0.8); box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);">🚨 CRISIS MODE</a>
             <a class="btn-cinematic primary" href="pearls.html">Explore Pearls →</a>
-            <a class="btn-cinematic glass" href="notes.html#viva">Viva Drill Chamber</a>
+            <a class="btn-cinematic kn-btn-android-download" href="knockoutnotes.apk" download="knockoutnotes.apk" title="Download Knockout Notes Android App (APK)">📱 Get Android App (APK)</a>
             <button class="btn-cinematic glass" data-open-search>⌕ Search Database</button>
           </div>
           <div class="hero-subscribe-wrap">
@@ -173,6 +194,129 @@
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- Core Offline Sections Hub (8 Standalone Sections) -->
+      <section class="kn-app-sections-hub fade" aria-labelledby="knHubHeading3d">
+        <div class="kn-app-hub-title">
+          <h2 id="knHubHeading3d">
+            <span>⚡ Standalone Clinical Hub</span>
+          </h2>
+          <span class="kn-offline-badge-pill">8 Sections Offline Ready</span>
+        </div>
+        <div class="kn-app-grid">
+          <!-- 1. Home Dashboard -->
+          <a href="index.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🏠</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Home Dashboard</h3>
+            <p class="kn-app-card-desc">Mobile command center with sitewide instant search, clinical radar, and telemetry.</p>
+            <div class="kn-app-card-footer">
+              <span>Open Home</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 2. Study Mode -->
+          <a href="study.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">📖</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Study Mode</h3>
+            <p class="kn-app-card-desc">64 master syllabus topics, 84 drug monographs, and interactive 3D molecular structures.</p>
+            <div class="kn-app-card-footer">
+              <span>Launch Study Mode</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 3. Calculators -->
+          <a href="calculators.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🧮</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Anaesthesia Calculators</h3>
+            <p class="kn-app-card-desc">37+ mathematical calculators, Paediatric emergency chart, and ABG interpretation.</p>
+            <div class="kn-app-card-footer">
+              <span>Open Calculators</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 4. Critical Care -->
+          <a href="critical-care.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🏥</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Critical Care & Code</h3>
+            <p class="kn-app-card-desc">ICU scoring systems (SOFA, NEWS2, MEWS), mechanical ventilation protocols, and hemodynamics.</p>
+            <div class="kn-app-card-footer">
+              <span>Open Critical Care</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 5. Code Room: Run a Code -->
+          <a href="resuscitation-chamber.html" class="kn-app-card emergency">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">⚡</span>
+              <span class="kn-offline-badge-pill" style="background:rgba(239,68,68,0.2); border-color:rgba(239,68,68,0.5); color:#fca5a5;">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title" style="color:#fca5a5;">Code Room — Run a Code</h3>
+            <p class="kn-app-card-desc">AHA ACLS & PALS algorithms, 2-minute cycle timer, CPR metronome, and 5H/5T reversible causes.</p>
+            <div class="kn-app-card-footer" style="color:#ef4444;">
+              <span>⚡ Start Resuscitation</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 6. Code Room: Crisis Mode -->
+          <a href="crisis.html" class="kn-app-card emergency">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🚨</span>
+              <span class="kn-offline-badge-pill" style="background:rgba(239,68,68,0.2); border-color:rgba(239,68,68,0.5); color:#fca5a5;">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title" style="color:#fca5a5;">Code Room — Crisis Mode</h3>
+            <p class="kn-app-card-desc">High-contrast emergency protocols: CICO, Malignant Hyperthermia, LAST, and Anaphylaxis dosing.</p>
+            <div class="kn-app-card-footer" style="color:#ef4444;">
+              <span>🚨 Enter Crisis Mode</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 7. Regional Blocks -->
+          <a href="regional-anaesthesia.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">💉</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Regional Blocks</h3>
+            <p class="kn-app-card-desc">44 NYSORA-based nerve blocks, sono-anatomy ultrasound schematics, and 3D needle trajectories.</p>
+            <div class="kn-app-card-footer">
+              <span>View Nerve Blocks</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 8. 3D Workstation -->
+          <a href="ventilator.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">⚙️</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">3D Workstation</h3>
+            <p class="kn-app-card-desc">Interactive 3D ICU mechanical ventilator explorer with rotatable GLTF model and gas pathways.</p>
+            <div class="kn-app-card-footer">
+              <span>Launch 3D Workstation</span>
+              <span>→</span>
+            </div>
+          </a>
         </div>
       </section>
 
@@ -376,6 +520,18 @@
           <span class="kn-pill-arrow">→</span>
         </button>
       </div>
+
+      <!-- Android App Download Banner -->
+      <div class="footer-app-banner">
+        <div class="footer-app-badge">✦ OFFLINE STANDALONE APPLICATION</div>
+        <div class="footer-app-title">Knockout Notes for Android</div>
+        <p class="footer-app-desc">Carry the 8 core clinical sections offline: Calculators, Run a Code, Crisis Mode, Study Mode, Regional Blocks, and 3D Workstation directly on your phone.</p>
+        <a href="knockoutnotes.apk" download="knockoutnotes.apk" class="footer-app-btn">
+          <span>⬇ Download APK (v2.4.0)</span>
+          <span class="footer-app-size">• 23.8 MB</span>
+        </a>
+      </div>
+
       <strong>Connect, Follow &amp; Support <span class="footer-support-sub">(by buying me a coffee)</span></strong>
       <div class="socials">
         <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes" title="Email KnockoutNotes">✉</a>
@@ -446,6 +602,26 @@
   <div class="spatial-stage">
     <div class="spatial-world">
       <main class="container">
+      <!-- Mobile System Status Bar -->
+      <div class="kn-app-status-bar" id="knAppStatusBarLite">
+        <div class="kn-app-status-left">
+          <span class="kn-net-status-badge online" id="knNetStatusBadgeLite">
+            <span class="kn-net-dot"></span>
+            <span>ONLINE</span>
+          </span>
+          <span class="kn-sync-group">
+            <span style="font-size:12px; color:#94a3b8;">Sync: <strong class="kn-sync-time-val" style="color:#e2e8f0;">Checking...</strong></span>
+            <button type="button" class="kn-sync-now-btn" title="Sync latest notes & guidelines from server">
+              <span class="kn-sync-spinner">↻</span>
+              <span>Sync Now</span>
+            </button>
+          </span>
+        </div>
+        <div class="kn-app-status-right">
+          <span style="font-size:11px; color:#64748b; font-family:monospace;">APP v2.4.0 • 8 OFFLINE SECTIONS READY</span>
+        </div>
+      </div>
+
       <!-- Section 1: Hero Workstation (Z: +180px) -->
       <section class="hero" data-env-state="hero">
         <div class="fade">
@@ -464,7 +640,7 @@
             <a class="btn-cinematic" href="resuscitation-chamber.html" style="background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; border-color: rgba(239, 68, 68, 0.6); box-shadow: 0 0 20px rgba(239, 68, 68, 0.45);">⚡ Run a Code (ACLS / PALS)</a>
             <a class="btn-cinematic" href="crisis.html" style="background: linear-gradient(135deg, #b91c1c, #991b1b); color: #fff; border-color: rgba(239, 68, 68, 0.8); box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);">🚨 CRISIS MODE</a>
             <a class="btn-cinematic primary" href="pearls.html">Explore Pearls →</a>
-            <a class="btn-cinematic glass" href="notes.html#viva">Viva Drill Chamber</a>
+            <a class="btn-cinematic kn-btn-android-download" href="knockoutnotes.apk" download="knockoutnotes.apk" title="Download Knockout Notes Android App (APK)">📱 Get Android App (APK)</a>
             <button class="btn-cinematic glass" data-open-search>⌕ Search Database</button>
           </div>
           <div class="hero-subscribe-wrap">
@@ -530,6 +706,129 @@
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- Core Offline Sections Hub (8 Standalone Sections) -->
+      <section class="kn-app-sections-hub fade" aria-labelledby="knHubHeadingLite">
+        <div class="kn-app-hub-title">
+          <h2 id="knHubHeadingLite">
+            <span>⚡ Standalone Clinical Hub</span>
+          </h2>
+          <span class="kn-offline-badge-pill">8 Sections Offline Ready</span>
+        </div>
+        <div class="kn-app-grid">
+          <!-- 1. Home Dashboard -->
+          <a href="index.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🏠</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Home Dashboard</h3>
+            <p class="kn-app-card-desc">Mobile command center with sitewide instant search, clinical radar, and telemetry.</p>
+            <div class="kn-app-card-footer">
+              <span>Open Home</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 2. Study Mode -->
+          <a href="study.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">📖</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Study Mode</h3>
+            <p class="kn-app-card-desc">64 master syllabus topics, 84 drug monographs, and interactive 3D molecular structures.</p>
+            <div class="kn-app-card-footer">
+              <span>Launch Study Mode</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 3. Calculators -->
+          <a href="calculators.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🧮</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Anaesthesia Calculators</h3>
+            <p class="kn-app-card-desc">37+ mathematical calculators, Paediatric emergency chart, and ABG interpretation.</p>
+            <div class="kn-app-card-footer">
+              <span>Open Calculators</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 4. Critical Care -->
+          <a href="critical-care.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🏥</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Critical Care & Code</h3>
+            <p class="kn-app-card-desc">ICU scoring systems (SOFA, NEWS2, MEWS), mechanical ventilation protocols, and hemodynamics.</p>
+            <div class="kn-app-card-footer">
+              <span>Open Critical Care</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 5. Code Room: Run a Code -->
+          <a href="resuscitation-chamber.html" class="kn-app-card emergency">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">⚡</span>
+              <span class="kn-offline-badge-pill" style="background:rgba(239,68,68,0.2); border-color:rgba(239,68,68,0.5); color:#fca5a5;">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title" style="color:#fca5a5;">Code Room — Run a Code</h3>
+            <p class="kn-app-card-desc">AHA ACLS & PALS algorithms, 2-minute cycle timer, CPR metronome, and 5H/5T reversible causes.</p>
+            <div class="kn-app-card-footer" style="color:#ef4444;">
+              <span>⚡ Start Resuscitation</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 6. Code Room: Crisis Mode -->
+          <a href="crisis.html" class="kn-app-card emergency">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🚨</span>
+              <span class="kn-offline-badge-pill" style="background:rgba(239,68,68,0.2); border-color:rgba(239,68,68,0.5); color:#fca5a5;">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title" style="color:#fca5a5;">Code Room — Crisis Mode</h3>
+            <p class="kn-app-card-desc">High-contrast emergency protocols: CICO, Malignant Hyperthermia, LAST, and Anaphylaxis dosing.</p>
+            <div class="kn-app-card-footer" style="color:#ef4444;">
+              <span>🚨 Enter Crisis Mode</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 7. Regional Blocks -->
+          <a href="regional-anaesthesia.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">💉</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Regional Blocks</h3>
+            <p class="kn-app-card-desc">44 NYSORA-based nerve blocks, sono-anatomy ultrasound schematics, and 3D needle trajectories.</p>
+            <div class="kn-app-card-footer">
+              <span>View Nerve Blocks</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 8. 3D Workstation -->
+          <a href="ventilator.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">⚙️</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">3D Workstation</h3>
+            <p class="kn-app-card-desc">Interactive 3D ICU mechanical ventilator explorer with rotatable GLTF model and gas pathways.</p>
+            <div class="kn-app-card-footer">
+              <span>Launch 3D Workstation</span>
+              <span>→</span>
+            </div>
+          </a>
         </div>
       </section>
 
@@ -733,6 +1032,18 @@
           <span class="kn-pill-arrow">→</span>
         </button>
       </div>
+
+      <!-- Android App Download Banner -->
+      <div class="footer-app-banner">
+        <div class="footer-app-badge">✦ OFFLINE STANDALONE APPLICATION</div>
+        <div class="footer-app-title">Knockout Notes for Android</div>
+        <p class="footer-app-desc">Carry the 8 core clinical sections offline: Calculators, Run a Code, Crisis Mode, Study Mode, Regional Blocks, and 3D Workstation directly on your phone.</p>
+        <a href="knockoutnotes.apk" download="knockoutnotes.apk" class="footer-app-btn">
+          <span>⬇ Download APK (v2.4.0)</span>
+          <span class="footer-app-size">• 23.8 MB</span>
+        </a>
+      </div>
+
       <strong>Connect, Follow &amp; Support <span class="footer-support-sub">(by buying me a coffee)</span></strong>
       <div class="socials">
         <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes" title="Email KnockoutNotes">✉</a>
@@ -796,6 +1107,8 @@
 <script src="bubble-menu.js"></script>
 <script src="border-glow.js"></script>
 <script src="subscribe-widget.js"></script>
+<script src="mobile-bridge.js"></script>
+<script src="sync-engine.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KnockoutNotes — Futuristic Anaesthesia Knowledge Engine</title>
+  <meta name="theme-color" content="#0284c7">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page-common.css">
+  <link rel="stylesheet" href="bubble-menu.css">
+  <link rel="stylesheet" href="border-glow.css">
+  <link rel="stylesheet" href="subscribe-widget.css">
+  <link rel="stylesheet" href="mobile-app.css">
+  <script src="sheet-config.js"></script>
+  <script src="content-config.js"></script>
+  <script src="analytics-config.js"></script>
+  <script src="cf-beacon.js"></script>
+</head>
+<body data-content-page="home" class="mode-3d">
+
+<!-- Procedural Anaesthesia Background Canvas (Active for both views) -->
+<canvas id="knSpatialCanvas"></canvas>
+
+<!-- Persistent Top-Left Mode Switch Dock (3D View vs Lite View) -->
+<div class="kn-mode-switch-dock" id="knModeSwitch" role="group" aria-label="Interface View Mode">
+  <button class="kn-mode-btn active" data-mode="3d" title="Switch to Cinematic 3D Spatial Experience" aria-label="3D View">
+    <span>✦ 3D VIEW</span>
+  </button>
+  <button class="kn-mode-btn" data-mode="lite" title="Switch to Familiar Clinical Lite View" aria-label="Lite View">
+    <span>⚡ LITE VIEW</span>
+  </button>
+</div>
+
+
+<!-- ==========================================================================
+     PRESENTATION LAYER 1: IMMERSIVE 3D VIEW (Active on body.mode-3d)
+     ========================================================================== -->
+<div class="view-layer-3d">
+  <header class="site-hud">
+  <div class="hud-capsule">
+    <a class="brand" href="index.html" aria-label="KnockoutNotes home">
+      <div class="brand-icon-wrap">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      </div>
+      <div class="brand-name">Knockout<span>Notes</span></div>
+    </a>
+
+    <div class="hud-path-indicator">
+      <span class="hud-pulse-dot"></span>
+      <span id="knHudPath3d">KN // OR WORKSTATION</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="notes.html#pearls">Pearls</a>
+      <a href="notes.html">Notes</a>
+      <a href="calculators.html">Calculators</a>
+      <a href="viva.html">Viva</a>
+      <a href="ventilator.html">Workstation</a>
+      <a href="drugs.html">Drugs</a>
+      <a href="critical-care.html">Critical Care and Code</a>
+      <a href="recent-updates.html">Updates</a>
+      <a href="resources.html">About</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="nav-search-trigger" data-open-search aria-label="Open search">
+        <span>Search</span>
+        <kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn" id="themeBtn3d" aria-label="Toggle theme">☾</button>
+      <button class="menu-btn" id="menuBtn3d" aria-label="Open menu" aria-expanded="false">⋮</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu3d">
+    <a data-close-menu href="index.html">Home <span>→</span></a>
+    <a data-close-menu href="notes.html#pearls">Pearls <span>→</span></a>
+    <a data-close-menu href="notes.html">Notes <span>→</span></a>
+    <a data-close-menu href="calculators.html">Calculators <span>→</span></a>
+    <a data-close-menu href="viva.html">Viva <span>→</span></a>
+    <a data-close-menu href="ventilator.html">Workstation <span>→</span></a>
+    <a data-close-menu href="drugs.html">Drugs <span>→</span></a>
+    <a data-close-menu href="critical-care.html">Critical Care and Code <span>→</span></a>
+    <a data-close-menu href="recent-updates.html">Updates <span>→</span></a>
+    <a data-close-menu href="resources.html">About <span>→</span></a>
+  </div>
+</header>
+
+  <div class="spatial-stage">
+    <div class="spatial-world">
+      <main class="container">
+      <!-- Mobile System Status Bar -->
+      <div class="kn-app-status-bar" id="knAppStatusBar3d">
+        <div class="kn-app-status-left">
+          <span class="kn-net-status-badge online" id="knNetStatusBadge3d">
+            <span class="kn-net-dot"></span>
+            <span>ONLINE</span>
+          </span>
+          <span class="kn-sync-group">
+            <span style="font-size:12px; color:#94a3b8;">Sync: <strong class="kn-sync-time-val" style="color:#e2e8f0;">Checking...</strong></span>
+            <button type="button" class="kn-sync-now-btn" title="Sync latest notes & guidelines from server">
+              <span class="kn-sync-spinner">↻</span>
+              <span>Sync Now</span>
+            </button>
+          </span>
+        </div>
+        <div class="kn-app-status-right">
+          <span style="font-size:11px; color:#64748b; font-family:monospace;">APP v2.4.0 • 8 OFFLINE SECTIONS READY</span>
+        </div>
+      </div>
+
+      <!-- Section 1: Hero Workstation (Z: +180px) -->
+      <section class="hero" data-env-state="hero">
+        <div class="fade">
+          <div class="kicker-pill">
+            <span class="hud-pulse-dot"></span>
+            <span>ANAESTHESIA • CRITICAL CARE • VIVA</span>
+          </div>
+          <h1>
+            Knockout<br>
+            <span class="gradient-text">Precision.</span>
+          </h1>
+          <p class="hero-lead">
+            A futuristic 3D clinical knowledge engine distilled for high-stakes decisions: operating theatres, intensive care rounds, and viva examinations.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-cinematic" href="resuscitation-chamber.html" style="background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; border-color: rgba(239, 68, 68, 0.6); box-shadow: 0 0 20px rgba(239, 68, 68, 0.45);">⚡ Run a Code (ACLS / PALS)</a>
+            <a class="btn-cinematic" href="crisis.html" style="background: linear-gradient(135deg, #b91c1c, #991b1b); color: #fff; border-color: rgba(239, 68, 68, 0.8); box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);">🚨 CRISIS MODE</a>
+            <a class="btn-cinematic primary" href="pearls.html">Explore Pearls →</a>
+            <a class="btn-cinematic glass" href="notes.html#viva">Viva Drill Chamber</a>
+            <button class="btn-cinematic glass" data-open-search>⌕ Search Database</button>
+          </div>
+          <div class="hero-subscribe-wrap">
+            <button type="button" class="kn-pill-subscribe kn-pill-highlighted" data-kn-open-subscribe aria-label="Subscribe for recent updates in anaesthesia and knockoutnotes">
+              <span class="kn-pill-icon">⚡</span>
+              <span class="kn-pill-text">Subscribe for recent updates in anaesthesia and knockoutnotes</span>
+              <span class="kn-pill-arrow">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Multiparameter Telemetry Console & Live ECG -->
+        <div class="hero-visual fade">
+          <div class="telemetry-card">
+            <div class="telemetry-header">
+              <div class="telemetry-channel">
+                <span class="telemetry-channel-dot"></span>
+                <span>LEAD II • ECG TELEMETRY</span>
+              </div>
+              <div class="telemetry-status">25 mm/s • 10 mm/mV</div>
+            </div>
+
+            <div class="ecg-screen">
+              <canvas id="knEcgCanvas3d"></canvas>
+            </div>
+
+            <div class="telemetry-vitals-grid">
+              <div class="vital-box green">
+                <div class="vital-label">HR</div>
+                <div class="vital-val"><span class="kn-vital-hr">72</span><span class="vital-unit">bpm</span></div>
+              </div>
+              <div class="vital-box cyan">
+                <div class="vital-label">SpO₂</div>
+                <div class="vital-val"><span class="kn-vital-spo2">99</span><span class="vital-unit">%</span></div>
+              </div>
+              <div class="vital-box amber">
+                <div class="vital-label">MAP</div>
+                <div class="vital-val"><span class="kn-vital-map">85</span><span class="vital-unit">mmHg</span></div>
+              </div>
+              <div class="vital-box violet">
+                <div class="vital-label">MAC</div>
+                <div class="vital-val"><span class="kn-vital-mac">1.05</span><span class="vital-unit">MAC</span></div>
+              </div>
+              <div class="vital-box indigo">
+                <div class="vital-label">ETCO₂</div>
+                <div class="vital-val"><span class="kn-vital-etco2">38</span><span class="vital-unit">mmHg</span></div>
+              </div>
+              <div class="vital-box teal">
+                <div class="vital-label">Temp</div>
+                <div class="vital-val"><span class="kn-vital-temp">36.8</span><span class="vital-unit">°C</span></div>
+              </div>
+            </div>
+
+            <div class="telemetry-footer">
+              <div class="telemetry-badge">
+                <span>32+</span> Visual Infographics
+              </div>
+              <div class="telemetry-badge">
+                <span>100%</span> Referenced
+              </div>
+              <div class="telemetry-badge">
+                <span>2025/26</span> Standards
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Offline Sections Hub (8 Standalone Sections) -->
+      <section class="kn-app-sections-hub fade" aria-labelledby="knHubHeading3d">
+        <div class="kn-app-hub-title">
+          <h2 id="knHubHeading3d">
+            <span>⚡ Standalone Clinical Hub</span>
+          </h2>
+          <span class="kn-offline-badge-pill">8 Sections Offline Ready</span>
+        </div>
+        <div class="kn-app-grid">
+          <!-- 1. Home Dashboard -->
+          <a href="index.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🏠</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Home Dashboard</h3>
+            <p class="kn-app-card-desc">Mobile command center with sitewide instant search, clinical radar, and telemetry.</p>
+            <div class="kn-app-card-footer">
+              <span>Open Home</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 2. Study Mode -->
+          <a href="study.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">📖</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Study Mode</h3>
+            <p class="kn-app-card-desc">64 master syllabus topics, 84 drug monographs, and interactive 3D molecular structures.</p>
+            <div class="kn-app-card-footer">
+              <span>Launch Study Mode</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 3. Calculators -->
+          <a href="calculators.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🧮</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Anaesthesia Calculators</h3>
+            <p class="kn-app-card-desc">37+ mathematical calculators, Paediatric emergency chart, and ABG interpretation.</p>
+            <div class="kn-app-card-footer">
+              <span>Open Calculators</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 4. Critical Care -->
+          <a href="critical-care.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🏥</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Critical Care & Code</h3>
+            <p class="kn-app-card-desc">ICU scoring systems (SOFA, NEWS2, MEWS), mechanical ventilation protocols, and hemodynamics.</p>
+            <div class="kn-app-card-footer">
+              <span>Open Critical Care</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 5. Code Room: Run a Code -->
+          <a href="resuscitation-chamber.html" class="kn-app-card emergency">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">⚡</span>
+              <span class="kn-offline-badge-pill" style="background:rgba(239,68,68,0.2); border-color:rgba(239,68,68,0.5); color:#fca5a5;">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title" style="color:#fca5a5;">Code Room — Run a Code</h3>
+            <p class="kn-app-card-desc">AHA ACLS & PALS algorithms, 2-minute cycle timer, CPR metronome, and 5H/5T reversible causes.</p>
+            <div class="kn-app-card-footer" style="color:#ef4444;">
+              <span>⚡ Start Resuscitation</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 6. Code Room: Crisis Mode -->
+          <a href="crisis.html" class="kn-app-card emergency">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🚨</span>
+              <span class="kn-offline-badge-pill" style="background:rgba(239,68,68,0.2); border-color:rgba(239,68,68,0.5); color:#fca5a5;">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title" style="color:#fca5a5;">Code Room — Crisis Mode</h3>
+            <p class="kn-app-card-desc">High-contrast emergency protocols: CICO, Malignant Hyperthermia, LAST, and Anaphylaxis dosing.</p>
+            <div class="kn-app-card-footer" style="color:#ef4444;">
+              <span>🚨 Enter Crisis Mode</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 7. Regional Blocks -->
+          <a href="regional-anaesthesia.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">💉</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Regional Blocks</h3>
+            <p class="kn-app-card-desc">44 NYSORA-based nerve blocks, sono-anatomy ultrasound schematics, and 3D needle trajectories.</p>
+            <div class="kn-app-card-footer">
+              <span>View Nerve Blocks</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 8. 3D Workstation -->
+          <a href="ventilator.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">⚙️</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">3D Workstation</h3>
+            <p class="kn-app-card-desc">Interactive 3D ICU mechanical ventilator explorer with rotatable GLTF model and gas pathways.</p>
+            <div class="kn-app-card-footer">
+              <span>Launch 3D Workstation</span>
+              <span>→</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section 2: Spatial Fast-Path Clinical Index -->
+      <section class="fastpath-section fade" data-env-state="pearls">
+        <div class="fastpath-lead">
+          <span class="kicker-pill">SPATIAL PATHWAYS</span>
+          <h3>Where are you heading today?</h3>
+          <p>Instant clinical pathways curated for the daily workflow of MD Anaesthesia and Critical Care specialists.</p>
+        </div>
+        <div class="fastpath-links">
+          <a class="fastpath-link" href="resuscitation-chamber.html" style="border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.08);">
+            <span style="color: #ef4444; font-weight: 700;">⚡ Run a Code: AHA ACLS / PALS Resuscitation</span>
+            <span class="link-arrow" style="color: #ef4444;">→</span>
+          </a>
+          <a class="fastpath-link" href="pearls.html">
+            <span>⚡ High-Yield Visual Pearls</span>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="fastpath-link" href="drugs.html">
+            <span>💊 Structured Drug Monographs</span>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="fastpath-link" href="critical-care.html">
+            <span>🚨 ICU Telemetry & Scoring</span>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="fastpath-link" href="notes.html#viva">
+            <span>🧠 Viva Exam Drill Chamber</span>
+            <span class="link-arrow">→</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section 3: Philosophy Feature Banner -->
+      <div class="feature-banner fade" data-env-state="drugs">
+        <h2>💥 The KnockoutNotes Standard</h2>
+        <p>Never rely on vague memory. Understand the physiological mechanism, know the exact clinical number when it matters, and keep a peer-reviewed standard citation attached to every single answer.</p>
+      </div>
+
+      <!-- Section 4: Bento Grid (Today's Knockout & Guideline Watch) -->
+      <section class="section" data-env-state="criticalCare">
+        <div class="section-head fade">
+          <div class="kicker-pill">CLINICAL RADAR</div>
+          <h2>Today's High-Yield Core</h2>
+          <p>Instant active recall points, bedside formulas, and real-time guideline monitoring.</p>
+        </div>
+
+        <div class="bento-grid">
+          <article class="card bento-span-7 fade">
+            <div class="card-top">
+              <div class="tag">⚡ Daily High-Yield</div>
+              <span class="card-date">Pharmacology</span>
+            </div>
+            <h3>Succinylcholine — IV Intubating Dose</h3>
+            <p>For adult tracheal intubation, standard rapid sequence induction dose is commonly cited as <strong>1–1.5 mg/kg IV</strong>.</p>
+            <div>
+              <span class="formula">Dose: 1.0 – 1.5 mg/kg IV</span>
+            </div>
+            <button class="reveal" data-target="dailyAnswer3d">Reveal Answer</button>
+            <div class="answer" id="dailyAnswer3d">
+              <strong>Viva point:</strong> Rapid onset (30–60s) follows rapid access to neuromuscular junction nicotinic acetylcholine receptors, producing initial phase I depolarisation block.
+              <small class="reference">Reference: Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology, 6th ed.</small>
+            </div>
+          </article>
+
+          <article class="card bento-span-5 fade">
+            <div class="card-top">
+              <div class="tag">🚨 Guideline Radar</div>
+              <a class="card-date" href="recent-updates.html" style="color:var(--accent-cyan);">View All →</a>
+            </div>
+            <h3>Recent Practice Updates</h3>
+            <p>Curated international consensus updates synced from the editorial sheet.</p>
+            <div id="knHomeUpdates3d">
+              <div class="kn-search-result" style="padding:14px 18px;">
+                <p style="margin:0;font-size:13px;color:var(--text-muted);">Loading latest guideline alerts…</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card bento-span-6 fade">
+            <div class="card-top">
+              <div class="tag">🧠 Viva • Today's Question</div>
+              <a class="card-date" href="notes.html#viva" style="color:var(--accent-cyan);">Explore All →</a>
+            </div>
+            <h3>Why does N₂O expand a closed gas space?</h3>
+            <p>A classic exam question testing differential diffusion coefficients across body cavities.</p>
+            <button class="reveal" data-target="vivaQuick3d">Reveal Answer</button>
+            <div class="answer" id="vivaQuick3d">
+              N₂O is 34 times more soluble in blood than nitrogen. It diffuses into closed gas cavities far faster than nitrogen leaves, causing rapid expansion of volume or pressure.
+              <small class="reference">Reference: Miller's Anesthesia, 10th ed.; Barash 9th ed.</small>
+              <div style="margin-top:12px;">
+                <a href="notes.html#viva" style="color:var(--accent-cyan);font-weight:750;font-size:13px;text-decoration:none;">→ Open All Viva Drills in Notes</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card bento-span-6 fade">
+            <div class="card-top">
+              <div class="tag">🚨 Critical Care</div>
+              <span class="card-date">ICU Ventilation Protocol</span>
+            </div>
+            <h3>Low Tidal Volume Strategy in ARDS</h3>
+            <p>Lung-protective ventilation target based on predicted body weight (PBW).</p>
+            <div>
+              <span class="formula">Target: 4 – 8 mL/kg PBW</span>
+            </div>
+            <button class="reveal" data-target="icuQuick3d">Reveal Answer</button>
+            <div class="answer" id="icuQuick3d">
+              Target <strong>4–8 mL/kg predicted body weight</strong>, maintain plateau pressure &le; 30 cmH₂O, and titrate PEEP according to driving pressure goals (&Delta;P &le; 14 cmH₂O).
+              <small class="reference">Reference: Surviving Sepsis & ARDS Guidelines 2026.</small>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Section 5: Explore Directory -->
+      <section class="section" data-env-state="resources">
+        <div class="section-head fade">
+          <div class="kicker-pill">SYSTEMATIC REVISION</div>
+          <h2>Explore by Specialty Area</h2>
+          <p>Built around the exact way an anaesthesia trainee prepares for operating lists and exams.</p>
+        </div>
+        <div class="grid">
+          <a class="card explore-card fade" href="pearls.html">
+            <div class="card-top">
+              <div class="tag">⚡ Pearls</div>
+            </div>
+            <h3>High-Yield Visuals</h3>
+            <p>Clinical takeaways with exact parameters, pharmacology tables, and high-res infographics.</p>
+            <div class="card-arrow" aria-hidden="true">→</div>
+          </a>
+          <a class="card explore-card fade" href="drugs.html">
+            <div class="card-top">
+              <div class="tag">💊 Drugs</div>
+            </div>
+            <h3>Pharmacology Dossier</h3>
+            <p>Dose, onset, receptor affinity, metabolism, indications, and examiners' viva points.</p>
+            <div class="card-arrow" aria-hidden="true">→</div>
+          </a>
+          <a class="card explore-card fade" href="critical-care.html">
+            <div class="card-top">
+              <div class="tag">🚨 Critical Care</div>
+            </div>
+            <h3>ICU Telemetry & Scoring</h3>
+            <p>Mechanical ventilation, hemodynamic monitoring, shock algorithms, and sepsis resuscitation.</p>
+            <div class="card-arrow" aria-hidden="true">→</div>
+          </a>
+          <a class="card explore-card fade" href="notes.html#viva">
+            <div class="card-top">
+              <div class="tag">🧠 Viva</div>
+            </div>
+            <h3>Viva Exam Classics</h3>
+            <p>High-frequency viva questions repeated by examiners, paired with concise referenced answers.</p>
+            <div class="card-arrow" aria-hidden="true">→</div>
+          </a>
+          <a class="card explore-card fade" href="notes.html">
+            <div class="card-top">
+              <div class="tag">📚 Notes</div>
+            </div>
+            <h3>Study Notes Library</h3>
+            <p>Structured visual summaries and downloadable PDF study sheets for deep revision.</p>
+            <div class="card-arrow" aria-hidden="true">→</div>
+          </a>
+          <a class="card explore-card fade" href="resources.html">
+            <div class="card-top">
+              <div class="tag">📖 Resources</div>
+            </div>
+            <h3>Reference Shelf</h3>
+            <p>Standard textbook editions, international resuscitation standards, and citation policy.</p>
+            <div class="card-arrow" aria-hidden="true">→</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section 6: Clinical Email Subscription (3D View) -->
+      <section class="section" style="padding-top: 0;">
+        <div class="kn-subscription-mount"></div>
+      </section>
+    </main>
+    </div>
+  </div>
+
+  <footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="brand">
+        <div class="brand-icon-wrap">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        </div>
+        <div class="brand-name">Knockout<span>Notes</span></div>
+      </div>
+      <p>Anaesthesia • Critical Care • Viva</p>
+      <p class="disclaimer">Educational content for medical professionals and trainees. Always verify current guidelines, institutional protocols, drug labels, and patient-specific factors before clinical use.</p>
+    </div>
+    <div class="footer-connect">
+      <div class="footer-subscribe-wrap">
+        <button type="button" class="kn-pill-subscribe kn-pill-footer" data-kn-open-subscribe aria-label="Subscribe for recent updates in anaesthesia and knockoutnotes">
+          <span class="kn-pill-icon">✉</span>
+          <span class="kn-pill-text">Subscribe for recent updates in anaesthesia and knockoutnotes</span>
+          <span class="kn-pill-arrow">→</span>
+        </button>
+      </div>
+      <strong>Connect, Follow &amp; Support <span class="footer-support-sub">(by buying me a coffee)</span></strong>
+      <div class="socials">
+        <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes" title="Email KnockoutNotes">✉</a>
+        <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes" title="Instagram">◎</a>
+        <a class="social social-coffee" href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" aria-label="Support KnockoutNotes (by buying me a coffee)" title="Buy me a coffee">☕</a>
+      </div>
+      <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
+    </div>
+  </div>
+</footer>
+</div>
+
+<!-- ==========================================================================
+     PRESENTATION LAYER 2: LITE VIEW (Active on body.mode-lite)
+     Exact code and animations copied 1:1 from 3D View
+     ========================================================================== -->
+<div class="view-layer-lite">
+  <header class="site-hud">
+  <div class="hud-capsule">
+    <a class="brand" href="index.html" aria-label="KnockoutNotes home">
+      <div class="brand-icon-wrap">
+        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+      </div>
+      <div class="brand-name">Knockout<span>Notes</span></div>
+    </a>
+
+    <div class="hud-path-indicator">
+      <span class="hud-pulse-dot"></span>
+      <span id="knHudPath">KN // OR WORKSTATION</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="notes.html#pearls">Pearls</a>
+      <a href="notes.html">Notes</a>
+      <a href="calculators.html">Calculators</a>
+      <a href="viva.html">Viva</a>
+      <a href="ventilator.html">Workstation</a>
+      <a href="drugs.html">Drugs</a>
+      <a href="critical-care.html">Critical Care and Code</a>
+      <a href="recent-updates.html">Updates</a>
+      <a href="resources.html">About</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="nav-search-trigger" data-open-search aria-label="Open search">
+        <span>Search</span>
+        <kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☾</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a data-close-menu href="index.html">Home <span>→</span></a>
+    <a data-close-menu href="notes.html#pearls">Pearls <span>→</span></a>
+    <a data-close-menu href="notes.html">Notes <span>→</span></a>
+    <a data-close-menu href="calculators.html">Calculators <span>→</span></a>
+    <a data-close-menu href="viva.html">Viva <span>→</span></a>
+    <a data-close-menu href="ventilator.html">Workstation <span>→</span></a>
+    <a data-close-menu href="drugs.html">Drugs <span>→</span></a>
+    <a data-close-menu href="critical-care.html">Critical Care and Code <span>→</span></a>
+    <a data-close-menu href="recent-updates.html">Updates <span>→</span></a>
+    <a data-close-menu href="resources.html">About <span>→</span></a>
+  </div>
+</header>
+
+  <div class="spatial-stage">
+    <div class="spatial-world">
+      <main class="container">
+      <!-- Mobile System Status Bar -->
+      <div class="kn-app-status-bar" id="knAppStatusBarLite">
+        <div class="kn-app-status-left">
+          <span class="kn-net-status-badge online" id="knNetStatusBadgeLite">
+            <span class="kn-net-dot"></span>
+            <span>ONLINE</span>
+          </span>
+          <span class="kn-sync-group">
+            <span style="font-size:12px; color:#94a3b8;">Sync: <strong class="kn-sync-time-val" style="color:#e2e8f0;">Checking...</strong></span>
+            <button type="button" class="kn-sync-now-btn" title="Sync latest notes & guidelines from server">
+              <span class="kn-sync-spinner">↻</span>
+              <span>Sync Now</span>
+            </button>
+          </span>
+        </div>
+        <div class="kn-app-status-right">
+          <span style="font-size:11px; color:#64748b; font-family:monospace;">APP v2.4.0 • 8 OFFLINE SECTIONS READY</span>
+        </div>
+      </div>
+
+      <!-- Section 1: Hero Workstation (Z: +180px) -->
+      <section class="hero" data-env-state="hero">
+        <div class="fade">
+          <div class="kicker-pill">
+            <span class="hud-pulse-dot"></span>
+            <span>ANAESTHESIA • CRITICAL CARE • VIVA</span>
+          </div>
+          <h1>
+            Knockout<br>
+            <span class="gradient-text">Precision.</span>
+          </h1>
+          <p class="hero-lead">
+            A futuristic 3D clinical knowledge engine distilled for high-stakes decisions: operating theatres, intensive care rounds, and viva examinations.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-cinematic" href="resuscitation-chamber.html" style="background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; border-color: rgba(239, 68, 68, 0.6); box-shadow: 0 0 20px rgba(239, 68, 68, 0.45);">⚡ Run a Code (ACLS / PALS)</a>
+            <a class="btn-cinematic" href="crisis.html" style="background: linear-gradient(135deg, #b91c1c, #991b1b); color: #fff; border-color: rgba(239, 68, 68, 0.8); box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);">🚨 CRISIS MODE</a>
+            <a class="btn-cinematic primary" href="pearls.html">Explore Pearls →</a>
+            <a class="btn-cinematic glass" href="notes.html#viva">Viva Drill Chamber</a>
+            <button class="btn-cinematic glass" data-open-search>⌕ Search Database</button>
+          </div>
+          <div class="hero-subscribe-wrap">
+            <button type="button" class="kn-pill-subscribe kn-pill-highlighted" data-kn-open-subscribe aria-label="Subscribe for recent updates in anaesthesia and knockoutnotes">
+              <span class="kn-pill-icon">⚡</span>
+              <span class="kn-pill-text">Subscribe for recent updates in anaesthesia and knockoutnotes</span>
+              <span class="kn-pill-arrow">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Multiparameter Telemetry Console & Live ECG -->
+        <div class="hero-visual fade">
+          <div class="telemetry-card">
+            <div class="telemetry-header">
+              <div class="telemetry-channel">
+                <span class="telemetry-channel-dot"></span>
+                <span>LEAD II • ECG TELEMETRY</span>
+              </div>
+              <div class="telemetry-status">25 mm/s • 10 mm/mV</div>
+            </div>
+
+            <div class="ecg-screen">
+              <canvas id="knEcgCanvas"></canvas>
+            </div>
+
+            <div class="telemetry-vitals-grid">
+              <div class="vital-box green">
+                <div class="vital-label">HR</div>
+                <div class="vital-val"><span class="kn-vital-hr">72</span><span class="vital-unit">bpm</span></div>
+              </div>
+              <div class="vital-box cyan">
+                <div class="vital-label">SpO₂</div>
+                <div class="vital-val"><span class="kn-vital-spo2">99</span><span class="vital-unit">%</span></div>
+              </div>
+              <div class="vital-box amber">
+                <div class="vital-label">MAP</div>
+                <div class="vital-val"><span class="kn-vital-map">85</span><span class="vital-unit">mmHg</span></div>
+              </div>
+              <div class="vital-box violet">
+                <div class="vital-label">MAC</div>
+                <div class="vital-val"><span class="kn-vital-mac">1.05</span><span class="vital-unit">MAC</span></div>
+              </div>
+              <div class="vital-box indigo">
+                <div class="vital-label">ETCO₂</div>
+                <div class="vital-val"><span class="kn-vital-etco2">38</span><span class="vital-unit">mmHg</span></div>
+              </div>
+              <div class="vital-box teal">
+                <div class="vital-label">Temp</div>
+                <div class="vital-val"><span class="kn-vital-temp">36.8</span><span class="vital-unit">°C</span></div>
+              </div>
+            </div>
+
+            <div class="telemetry-footer">
+              <div class="telemetry-badge">
+                <span>32+</span> Visual Infographics
+              </div>
+              <div class="telemetry-badge">
+                <span>100%</span> Referenced
+              </div>
+              <div class="telemetry-badge">
+                <span>2025/26</span> Standards
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Offline Sections Hub (8 Standalone Sections) -->
+      <section class="kn-app-sections-hub fade" aria-labelledby="knHubHeadingLite">
+        <div class="kn-app-hub-title">
+          <h2 id="knHubHeadingLite">
+            <span>⚡ Standalone Clinical Hub</span>
+          </h2>
+          <span class="kn-offline-badge-pill">8 Sections Offline Ready</span>
+        </div>
+        <div class="kn-app-grid">
+          <!-- 1. Home Dashboard -->
+          <a href="index.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🏠</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Home Dashboard</h3>
+            <p class="kn-app-card-desc">Mobile command center with sitewide instant search, clinical radar, and telemetry.</p>
+            <div class="kn-app-card-footer">
+              <span>Open Home</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 2. Study Mode -->
+          <a href="study.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">📖</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Study Mode</h3>
+            <p class="kn-app-card-desc">64 master syllabus topics, 84 drug monographs, and interactive 3D molecular structures.</p>
+            <div class="kn-app-card-footer">
+              <span>Launch Study Mode</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 3. Calculators -->
+          <a href="calculators.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🧮</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Anaesthesia Calculators</h3>
+            <p class="kn-app-card-desc">37+ mathematical calculators, Paediatric emergency chart, and ABG interpretation.</p>
+            <div class="kn-app-card-footer">
+              <span>Open Calculators</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 4. Critical Care -->
+          <a href="critical-care.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🏥</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Critical Care & Code</h3>
+            <p class="kn-app-card-desc">ICU scoring systems (SOFA, NEWS2, MEWS), mechanical ventilation protocols, and hemodynamics.</p>
+            <div class="kn-app-card-footer">
+              <span>Open Critical Care</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 5. Code Room: Run a Code -->
+          <a href="resuscitation-chamber.html" class="kn-app-card emergency">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">⚡</span>
+              <span class="kn-offline-badge-pill" style="background:rgba(239,68,68,0.2); border-color:rgba(239,68,68,0.5); color:#fca5a5;">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title" style="color:#fca5a5;">Code Room — Run a Code</h3>
+            <p class="kn-app-card-desc">AHA ACLS & PALS algorithms, 2-minute cycle timer, CPR metronome, and 5H/5T reversible causes.</p>
+            <div class="kn-app-card-footer" style="color:#ef4444;">
+              <span>⚡ Start Resuscitation</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 6. Code Room: Crisis Mode -->
+          <a href="crisis.html" class="kn-app-card emergency">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">🚨</span>
+              <span class="kn-offline-badge-pill" style="background:rgba(239,68,68,0.2); border-color:rgba(239,68,68,0.5); color:#fca5a5;">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title" style="color:#fca5a5;">Code Room — Crisis Mode</h3>
+            <p class="kn-app-card-desc">High-contrast emergency protocols: CICO, Malignant Hyperthermia, LAST, and Anaphylaxis dosing.</p>
+            <div class="kn-app-card-footer" style="color:#ef4444;">
+              <span>🚨 Enter Crisis Mode</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 7. Regional Blocks -->
+          <a href="regional-anaesthesia.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">💉</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">Regional Blocks</h3>
+            <p class="kn-app-card-desc">44 NYSORA-based nerve blocks, sono-anatomy ultrasound schematics, and 3D needle trajectories.</p>
+            <div class="kn-app-card-footer">
+              <span>View Nerve Blocks</span>
+              <span>→</span>
+            </div>
+          </a>
+
+          <!-- 8. 3D Workstation -->
+          <a href="ventilator.html" class="kn-app-card">
+            <div class="kn-app-card-header">
+              <span class="kn-app-card-icon">⚙️</span>
+              <span class="kn-offline-badge-pill">⚡ OFFLINE READY</span>
+            </div>
+            <h3 class="kn-app-card-title">3D Workstation</h3>
+            <p class="kn-app-card-desc">Interactive 3D ICU mechanical ventilator explorer with rotatable GLTF model and gas pathways.</p>
+            <div class="kn-app-card-footer">
+              <span>Launch 3D Workstation</span>
+              <span>→</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section 2: Spatial Fast-Path Clinical Index -->
+      <section class="fastpath-section fade" data-env-state="pearls">
+        <div class="fastpath-lead">
+          <span class="kicker-pill">SPATIAL PATHWAYS</span>
+          <h3>Where are you heading today?</h3>
+          <p>Instant clinical pathways curated for the daily workflow of MD Anaesthesia and Critical Care specialists.</p>
+        </div>
+        <div class="fastpath-links">
+          <a class="fastpath-link" href="resuscitation-chamber.html" style="border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.08);">
+            <span style="color: #ef4444; font-weight: 700;">⚡ Run a Code: AHA ACLS / PALS Resuscitation</span>
+            <span class="link-arrow" style="color: #ef4444;">→</span>
+          </a>
+          <a class="fastpath-link" href="pearls.html">
+            <span>⚡ High-Yield Visual Pearls</span>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="fastpath-link" href="drugs.html">
+            <span>💊 Structured Drug Monographs</span>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="fastpath-link" href="critical-care.html">
+            <span>🚨 ICU Telemetry & Scoring</span>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="fastpath-link" href="notes.html#viva">
+            <span>🧠 Viva Exam Drill Chamber</span>
+            <span class="link-arrow">→</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section 3: Philosophy Feature Banner -->
+      <div class="feature-banner fade" data-env-state="drugs">
+        <h2>💥 The KnockoutNotes Standard</h2>
+        <p>Never rely on vague memory. Understand the physiological mechanism, know the exact clinical number when it matters, and keep a peer-reviewed standard citation attached to every single answer.</p>
+      </div>
+
+      <!-- Section 4: Bento Grid (Today's Knockout & Guideline Watch) -->
+      <section class="section" data-env-state="criticalCare">
+        <div class="section-head fade">
+          <div class="kicker-pill">CLINICAL RADAR</div>
+          <h2>Today's High-Yield Core</h2>
+          <p>Instant active recall points, bedside formulas, and real-time guideline monitoring.</p>
+        </div>
+
+        <div class="bento-grid">
+          <article class="card bento-span-7 fade">
+            <div class="card-top">
+              <div class="tag">⚡ Daily High-Yield</div>
+              <span class="card-date">Pharmacology</span>
+            </div>
+            <h3>Succinylcholine — IV Intubating Dose</h3>
+            <p>For adult tracheal intubation, standard rapid sequence induction dose is commonly cited as <strong>1–1.5 mg/kg IV</strong>.</p>
+            <div>
+              <span class="formula">Dose: 1.0 – 1.5 mg/kg IV</span>
+            </div>
+            <button class="reveal" data-target="dailyAnswer">Reveal Answer</button>
+            <div class="answer" id="dailyAnswer">
+              <strong>Viva point:</strong> Rapid onset (30–60s) follows rapid access to neuromuscular junction nicotinic acetylcholine receptors, producing initial phase I depolarisation block.
+              <small class="reference">Reference: Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology &amp; Physiology, 6th ed.</small>
+            </div>
+          </article>
+
+          <article class="card bento-span-5 fade">
+            <div class="card-top">
+              <div class="tag">🚨 Guideline Radar</div>
+              <a class="card-date" href="recent-updates.html" style="color:var(--accent-cyan);">View All →</a>
+            </div>
+            <h3>Recent Practice Updates</h3>
+            <p>Curated international consensus updates synced from the editorial sheet.</p>
+            <div id="knHomeUpdates">
+              <div class="kn-search-result" style="padding:14px 18px;">
+                <p style="margin:0;font-size:13px;color:var(--text-muted);">Loading latest guideline alerts…</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card bento-span-6 fade">
+            <div class="card-top">
+              <div class="tag">🧠 Viva • Today's Question</div>
+              <a class="card-date" href="notes.html#viva" style="color:var(--accent-cyan);">Explore All →</a>
+            </div>
+            <h3>Why does N₂O expand a closed gas space?</h3>
+            <p>A classic exam question testing differential diffusion coefficients across body cavities.</p>
+            <button class="reveal" data-target="vivaQuick">Reveal Answer</button>
+            <div class="answer" id="vivaQuick">
+              N₂O is 34 times more soluble in blood than nitrogen. It diffuses into closed gas cavities far faster than nitrogen leaves, causing rapid expansion of volume or pressure.
+              <small class="reference">Reference: Miller's Anesthesia, 10th ed.; Barash 9th ed.</small>
+              <div style="margin-top:12px;">
+                <a href="notes.html#viva" style="color:var(--accent-cyan);font-weight:750;font-size:13px;text-decoration:none;">→ Open All Viva Drills in Notes</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card bento-span-6 fade">
+            <div class="card-top">
+              <div class="tag">🚨 Critical Care</div>
+              <span class="card-date">ICU Ventilation Protocol</span>
+            </div>
+            <h3>Low Tidal Volume Strategy in ARDS</h3>
+            <p>Lung-protective ventilation target based on predicted body weight (PBW).</p>
+            <div>
+              <span class="formula">Target: 4 – 8 mL/kg PBW</span>
+            </div>
+            <button class="reveal" data-target="icuQuick">Reveal Answer</button>
+            <div class="answer" id="icuQuick">
+              Target <strong>4–8 mL/kg predicted body weight</strong>, maintain plateau pressure &le; 30 cmH₂O, and titrate PEEP according to driving pressure goals (&Delta;P &le; 14 cmH₂O).
+              <small class="reference">Reference: Surviving Sepsis &amp; ARDS Guidelines 2026.</small>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Section 5: Explore Directory -->
+      <section class="section" data-env-state="resources">
+        <div class="section-head fade">
+          <div class="kicker-pill">SYSTEMATIC REVISION</div>
+          <h2>Explore by Specialty Area</h2>
+          <p>Built around the exact way an anaesthesia trainee prepares for operating lists and exams.</p>
+        </div>
+        <div class="grid">
+          <a class="card explore-card fade" href="pearls.html">
+            <div class="card-top">
+              <div class="tag">⚡ Pearls</div>
+            </div>
+            <h3>High-Yield Visuals</h3>
+            <p>Clinical takeaways with exact parameters, pharmacology tables, and high-res infographics.</p>
+            <div class="card-arrow" aria-hidden="true">→</div>
+          </a>
+          <a class="card explore-card fade" href="drugs.html">
+            <div class="card-top">
+              <div class="tag">💊 Drugs</div>
+            </div>
+            <h3>Pharmacology Dossier</h3>
+            <p>Dose, onset, receptor affinity, metabolism, indications, and examiners' viva points.</p>
+            <div class="card-arrow" aria-hidden="true">→</div>
+          </a>
+          <a class="card explore-card fade" href="critical-care.html">
+            <div class="card-top">
+              <div class="tag">🚨 Critical Care</div>
+            </div>
+            <h3>ICU Telemetry & Scoring</h3>
+            <p>Mechanical ventilation, hemodynamic monitoring, shock algorithms, and sepsis resuscitation.</p>
+            <div class="card-arrow" aria-hidden="true">→</div>
+          </a>
+          <a class="card explore-card fade" href="notes.html#viva">
+            <div class="card-top">
+              <div class="tag">🧠 Viva</div>
+            </div>
+            <h3>Viva Exam Classics</h3>
+            <p>High-frequency viva questions repeated by examiners, paired with concise referenced answers.</p>
+            <div class="card-arrow" aria-hidden="true">→</div>
+          </a>
+          <a class="card explore-card fade" href="notes.html">
+            <div class="card-top">
+              <div class="tag">📚 Notes</div>
+            </div>
+            <h3>Study Notes Library</h3>
+            <p>Structured visual summaries and downloadable PDF study sheets for deep revision.</p>
+            <div class="card-arrow" aria-hidden="true">→</div>
+          </a>
+          <a class="card explore-card fade" href="resources.html">
+            <div class="card-top">
+              <div class="tag">📖 Resources</div>
+            </div>
+            <h3>Reference Shelf</h3>
+            <p>Standard textbook editions, international resuscitation standards, and citation policy.</p>
+            <div class="card-arrow" aria-hidden="true">→</div>
+          </a>
+        </div>
+      </section>
+      
+      <!-- Section 6: Clinical Email Subscription (Lite View) -->
+      <section class="section" style="padding-top: 0;">
+        <div class="kn-subscription-mount"></div>
+      </section>
+    </main>
+    </div>
+  </div>
+
+  <footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="brand">
+        <div class="brand-icon-wrap">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+        </div>
+        <div class="brand-name">Knockout<span>Notes</span></div>
+      </div>
+      <p>Anaesthesia • Critical Care • Viva</p>
+      <p class="disclaimer">Educational content for medical professionals and trainees. Always verify current guidelines, institutional protocols, drug labels, and patient-specific factors before clinical use.</p>
+    </div>
+    <div class="footer-connect">
+      <div class="footer-subscribe-wrap">
+        <button type="button" class="kn-pill-subscribe kn-pill-footer" data-kn-open-subscribe aria-label="Subscribe for recent updates in anaesthesia and knockoutnotes">
+          <span class="kn-pill-icon">✉</span>
+          <span class="kn-pill-text">Subscribe for recent updates in anaesthesia and knockoutnotes</span>
+          <span class="kn-pill-arrow">→</span>
+        </button>
+      </div>
+      <strong>Connect, Follow &amp; Support <span class="footer-support-sub">(by buying me a coffee)</span></strong>
+      <div class="socials">
+        <a class="social" href="mailto:knockoutnotes.anaesthesia@gmail.com" aria-label="Email KnockoutNotes" title="Email KnockoutNotes">✉</a>
+        <a class="social" href="https://www.instagram.com/knock.out.notes?igsi=djNyZWxpd2NwMWFy" target="_blank" rel="noopener" aria-label="Instagram KnockoutNotes" title="Instagram">◎</a>
+        <a class="social social-coffee" href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" aria-label="Support KnockoutNotes (by buying me a coffee)" title="Buy me a coffee">☕</a>
+      </div>
+      <p class="footer-copy">© 2026 KnockoutNotes. Built for clinicians.</p>
+    </div>
+  </div>
+</footer>
+</div>
+
+<!-- Floating Updates Pill -->
+<a class="kn-updates-pill" href="recent-updates.html" aria-label="Recent KnockoutNotes updates">
+  <span class="kn-blink"></span>
+  <span class="kn-updates-pill-text">Recent Updates</span>
+  <span class="kn-updates-pill-badge">Live</span>
+</a>
+
+
+<!-- Universal Command Palette Search Modal -->
+<div class="kn-modal" id="knSearchModal" role="dialog" aria-modal="true" aria-label="Search KnockoutNotes">
+  <div class="kn-modal-backdrop" data-close-modal></div>
+  <div class="kn-modal-box">
+    <div class="kn-modal-header">
+      <span class="kn-search-icon">⌕</span>
+      <input class="kn-modal-input" id="knModalSearchInput" type="search" placeholder="Search pearls, drugs, scores, viva questions..." autocomplete="off">
+      <button class="kn-modal-clear" id="knModalSearchClear" aria-label="Clear search">×</button>
+      <button class="kn-modal-close" data-close-modal>ESC</button>
+    </div>
+    <div class="kn-modal-body">
+      <div id="knModalSearchStatus" class="kn-search-status">Start typing to search the medical database.</div>
+      <div id="knModalSearchResults" class="kn-search-results"></div>
+    </div>
+    <div class="kn-modal-footer">
+      <span>Pro-tip: Press <kbd>ESC</kbd> to exit or <kbd>⌘K</kbd> anywhere</span>
+      <span>KnockoutNotes Spatial Search</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- Floating Bottom Corner "Buy Me a Coffee" Link -->
+<aside class="kn-corner-support" aria-label="Support KnockoutNotes">
+  <a href="https://bondin.io/@knockoutnotes/support" target="_blank" rel="noopener noreferrer" class="kn-corner-support-link" title="Fuel the code with coffee">
+    <span class="kn-corner-coffee-icon">☕</span>
+    <span class="kn-corner-coffee-text">Buy me a coffee</span>
+  </a>
+</aside>
+
+<script src="spatial-bg.js"></script>
+<script src="spatial-camera.js"></script>
+<script src="spatial-scroll.js"></script>
+<script src="spatial-viewer.js"></script>
+<script src="script.js"></script>
+<script src="page-motion.js"></script>
+<script src="kn-site-search.js"></script>
+<script src="content-library.js"></script>
+<script src="vendor/gsap/gsap.min.js"></script>
+<script src="spa-router.js"></script>
+<script src="bubble-menu.js"></script>
+<script src="border-glow.js"></script>
+<script src="subscribe-widget.js"></script>
+<script src="mobile-bridge.js"></script>
+<script src="sync-engine.js"></script>
+
+</body>
+</html>

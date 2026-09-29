@@ -51,6 +51,10 @@ import {
   upsertRegionalMarkers,
   deleteRegionalImage
 } from './regional-images.js';
+import {
+  getWorkstationMarkers,
+  upsertWorkstationMarkers
+} from './workstation.js';
 
 
 // Standard CORS headers
@@ -154,6 +158,22 @@ export default {
       if (env.ASSETS) {
         const adminReq = new Request(new URL('/admin/', request.url), request);
         return env.ASSETS.fetch(adminReq);
+      }
+    }
+
+    // ==========================================
+    // ANDROID APK DOWNLOAD ROUTE
+    // ==========================================
+    if (pathname === '/knockoutnotes.apk' || pathname === '/download/app' || pathname === '/download/android') {
+      if (env.ASSETS) {
+        const assetReq = new Request(new URL('/knockoutnotes.apk', request.url), request);
+        const res = await env.ASSETS.fetch(assetReq);
+        if (res && res.status === 200) {
+          const headers = new Headers(res.headers);
+          headers.set('Content-Type', 'application/vnd.android.package-archive');
+          headers.set('Content-Disposition', 'attachment; filename="knockoutnotes.apk"');
+          return new Response(res.body, { status: 200, headers });
+        }
       }
     }
 
@@ -541,6 +561,18 @@ export default {
       } catch (err) {
         // Never break the public page over this — degrade to "no overrides".
         return jsonResponse({});
+      }
+    }
+
+    // ==========================================
+    // 3D Workstation Marker Overrides (public)
+    // ==========================================
+    if (pathname === '/api/workstation-markers' && request.method === 'GET') {
+      try {
+        const markers = await getWorkstationMarkers(env.DB);
+        return jsonResponse(markers || { components: [] });
+      } catch (err) {
+        return jsonResponse({ components: [] });
       }
     }
 
@@ -1235,6 +1267,32 @@ export default {
           const blockId = decodeURIComponent(pathname.replace('/api/admin/regional-images/', ''));
           const result = await deleteRegionalImage(env.DB, blockId);
           await recordAuditLog(env.DB, session.admin_username, 'regional_image_delete', 'regional_block_images', blockId, {});
+          return jsonResponse(result);
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 400);
+        }
+      }
+
+      // ----------------------------------------------------
+      // 3D WORKSTATION MARKERS (Admin)
+      // ----------------------------------------------------
+      if (pathname === '/api/admin/workstation-markers' && request.method === 'GET') {
+        try {
+          const data = await getWorkstationMarkers(env.DB);
+          return jsonResponse(data || { components: [] });
+        } catch (err) {
+          return jsonResponse({ error: err.message }, 400);
+        }
+      }
+
+      if (pathname === '/api/admin/workstation-markers' && request.method === 'PUT') {
+        try {
+          const body = await request.json();
+          const components = Array.isArray(body) ? body : body.components;
+          const result = await upsertWorkstationMarkers(env.DB, components, session.admin_username);
+          await recordAuditLog(env.DB, session.admin_username, 'workstation_markers_updated', 'workstation_markers', 'default', {
+            count: result.count
+          });
           return jsonResponse(result);
         } catch (err) {
           return jsonResponse({ error: err.message }, 400);

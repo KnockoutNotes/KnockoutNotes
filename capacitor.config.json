@@ -1,0 +1,24 @@
+{
+  "appId": "com.knockoutnotes.app",
+  "appName": "Knockout Notes",
+  "webDir": "dist-app",
+  "server": {
+    "androidScheme": "https",
+    "cleartext": false
+  },
+  "android": {
+    "allowMixedContent": false,
+    "webContentsDebuggingEnabled": true
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1800,
+      "launchAutoHide": true,
+      "backgroundColor": "#0a0e17",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false
+    },
+    "App": {},
+    "Network": {}
+  }
+}

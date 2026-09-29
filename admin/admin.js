@@ -152,6 +152,7 @@ function switchView(viewName) {
     categories: 'Category Hierarchy',
     files: 'File & Asset Manager (R2)',
     regional: 'Regional Anaesthesia — Real Images',
+    workstation: '3D Workstation Markers',
     subscribers: 'Subscribers Directory',
     email: 'Email Broadcasts & Delivery',
     settings: 'System Status & Audit Logs'
@@ -166,6 +167,7 @@ function switchView(viewName) {
   if (viewName === 'categories') renderCategoriesTable();
   if (viewName === 'files') loadFiles();
   if (viewName === 'regional') loadRegionalImages();
+  if (viewName === 'workstation' && typeof window.loadWorkstationAdmin === 'function') window.loadWorkstationAdmin();
   if (viewName === 'subscribers') loadSubscribers();
   if (viewName === 'email') loadLogs();
   if (viewName === 'settings') loadSettingsAndAudit();
@@ -1346,9 +1348,10 @@ const MARKER_TYPE_COLORS = {
 const MARKER_TYPES = Object.keys(MARKER_TYPE_COLORS);
 
 let markerState = { blockId: null, imageUrl: '', labels: [], needleOverlay: null, spreadOverlay: [] };
-let markerMode = null; // null | 'add' | 'needle' | 'spread'
+let markerMode = null; // null | 'add' | 'needle' | 'spread' | 'place'
 let markerNeedleStep = 0; // 0 = next click sets "from", 1 = next click sets "to"
 let markerDrag = null; // { kind: 'label'|'spread'|'needle-from'|'needle-to', idx }
+let markerSelectedLabelIdx = null;
 
 function clampNum(v, min, max, fallback) {
   const n = parseFloat(v);
@@ -1364,7 +1367,8 @@ function setMarkerMode(mode) {
   const hints = {
     add: 'Click the image to add a structure marker.',
     needle: 'Click the needle entry point, then the tip.',
-    spread: 'Click the image to place a spread-area ellipse.'
+    spread: 'Click the image to place a spread-area ellipse.',
+    place: 'Click anywhere on the image to place/move the selected marker.'
   };
   const hintEl = document.getElementById('markerModeHint');
   if (hintEl) hintEl.textContent = hints[mode] || '';
@@ -1387,7 +1391,8 @@ function renderMarkerOverlay() {
   }
   markerState.labels.forEach((l, i) => {
     const color = MARKER_TYPE_COLORS[l.type] || MARKER_TYPE_COLORS.marker;
-    html += `<circle class="marker-dot" data-kind="label" data-idx="${i}" cx="${l.x}" cy="${l.y}" r="2.4" fill="${color}" stroke="#fff" stroke-width="0.6" style="cursor:grab;"><title>${escapeHtml(l.text)}</title></circle>`;
+    const isSelected = markerSelectedLabelIdx === i;
+    html += `<circle class="marker-dot" data-kind="label" data-idx="${i}" cx="${l.x}" cy="${l.y}" r="${isSelected ? 3.4 : 2.4}" fill="${color}" stroke="${isSelected ? '#fbbf24' : '#fff'}" stroke-width="${isSelected ? 1.0 : 0.6}" style="cursor:grab;"><title>${escapeHtml(l.text)}</title></circle>`;
     html += `<text x="${l.x}" y="${Math.max(3, l.y - 3.4)}" font-size="3.4" fill="#fff" text-anchor="middle" style="paint-order: stroke; stroke: #000; stroke-width: 0.7px; pointer-events: none;">${i + 1}</text>`;
   });
   svg.innerHTML = html;
@@ -1429,9 +1434,18 @@ function renderMarkerList() {
       </select></td>
       <td><input type="number" id="marker-x-${i}" class="form-input" style="width: 70px;" min="0" max="100" step="0.1" value="${l.x}" oninput="updateMarkerLabel(${i}, 'x', this.value)"></td>
       <td><input type="number" id="marker-y-${i}" class="form-input" style="width: 70px;" min="0" max="100" step="0.1" value="${l.y}" oninput="updateMarkerLabel(${i}, 'y', this.value)"></td>
-      <td><button type="button" class="btn-danger" style="padding: 3px 8px; font-size: 11px;" onclick="removeMarkerLabel(${i})">×</button></td>
+      <td style="white-space: nowrap;">
+        <button type="button" class="btn-secondary" style="padding: 3px 8px; font-size: 11px; margin-right: 4px;" onclick="placeMarkerLabel(${i})" title="Click to move/place this pointer on the scan">📍 Move</button>
+        <button type="button" class="btn-danger" style="padding: 3px 8px; font-size: 11px;" onclick="removeMarkerLabel(${i})">×</button>
+      </td>
     </tr>`).join('');
 }
+
+window.placeMarkerLabel = function(i) {
+  markerSelectedLabelIdx = i;
+  setMarkerMode('place');
+  renderMarkerOverlay();
+};
 
 function renderSpreadList() {
   const body = document.getElementById('spreadListBody');
@@ -1460,6 +1474,7 @@ window.updateMarkerLabel = function(i, field, value) {
 };
 window.removeMarkerLabel = function(i) {
   markerState.labels.splice(i, 1);
+  if (markerSelectedLabelIdx === i) markerSelectedLabelIdx = null;
   renderMarkerList();
   renderMarkerOverlay();
 };
@@ -1492,14 +1507,27 @@ function stageToPct(e) {
 
 function onMarkerStagePointerDown(e) {
   if (!markerState.blockId) return;
+  const [x, y] = stageToPct(e);
+
+  if (markerMode === 'place' && markerSelectedLabelIdx != null && markerState.labels[markerSelectedLabelIdx]) {
+    markerState.labels[markerSelectedLabelIdx].x = round1(x);
+    markerState.labels[markerSelectedLabelIdx].y = round1(y);
+    syncLabelRowInputs(markerSelectedLabelIdx);
+    renderMarkerOverlay();
+    setMarkerMode(null);
+    markerSelectedLabelIdx = null;
+    return;
+  }
+
   const dot = e.target.closest('.marker-dot');
   if (dot) {
     markerDrag = { kind: dot.dataset.kind, idx: dot.dataset.idx != null && dot.dataset.idx !== '' ? Number(dot.dataset.idx) : null };
+    if (dot.dataset.kind === 'label') markerSelectedLabelIdx = markerDrag.idx;
     if (e.target.setPointerCapture) { try { e.target.setPointerCapture(e.pointerId); } catch (_) { /* ignore */ } }
     e.preventDefault();
     return;
   }
-  const [x, y] = stageToPct(e);
+
   if (markerMode === 'add') {
     markerState.labels.push({ id: `marker-${Date.now()}-${markerState.labels.length}`, text: 'New structure', type: 'marker', x: round1(x), y: round1(y) });
     renderMarkerList();
@@ -1528,29 +1556,71 @@ function onMarkerStagePointerMove(e) {
   if (!markerDrag) return;
   const [x, y] = stageToPct(e);
   const rx = round1(x), ry = round1(y);
+  let labelText = 'Pointer';
   if (markerDrag.kind === 'label') {
     markerState.labels[markerDrag.idx].x = rx;
     markerState.labels[markerDrag.idx].y = ry;
+    labelText = markerState.labels[markerDrag.idx]?.text || 'Marker';
     syncLabelRowInputs(markerDrag.idx);
   } else if (markerDrag.kind === 'spread') {
     markerState.spreadOverlay[markerDrag.idx].x = rx;
     markerState.spreadOverlay[markerDrag.idx].y = ry;
+    labelText = markerState.spreadOverlay[markerDrag.idx]?.note || 'Spread Area';
     syncSpreadRowInputs(markerDrag.idx);
   } else if (markerDrag.kind === 'needle-from') {
     markerState.needleOverlay.from = [rx, ry];
+    labelText = 'Needle Entry';
     syncNeedleInputs();
   } else if (markerDrag.kind === 'needle-to') {
     markerState.needleOverlay.to = [rx, ry];
+    labelText = 'Needle Tip';
     syncNeedleInputs();
   }
   renderMarkerOverlay();
+
+  // Floating coordinates badge following pointer ("busy moving the pointer")
+  const badge = document.getElementById('markerDragBadge');
+  if (badge) {
+    badge.style.display = 'block';
+    badge.style.left = `${rx}%`;
+    badge.style.top = `${ry}%`;
+    badge.textContent = `${labelText} (${rx}%, ${ry}%)`;
+  }
 }
 
-function onMarkerStagePointerUp() { markerDrag = null; }
+function onMarkerStagePointerUp() {
+  markerDrag = null;
+  const badge = document.getElementById('markerDragBadge');
+  if (badge) badge.style.display = 'none';
+}
 
 window.openMarkerEditor = function(blockId) {
-  const r = regionalImagesCache[blockId];
-  if (!r) { alert('Set a real image for this block first, using the form above — markers are placed on top of that image.'); return; }
+  let r = regionalImagesCache[blockId];
+  if (!r) {
+    // Check built-in catalog in window.KN_REGIONAL
+    const catalogBlock = window.KN_REGIONAL?.blocks?.find((b) => b.id === blockId);
+    if (catalogBlock && catalogBlock.sono?.real) {
+      const real = catalogBlock.sono.real;
+      r = {
+        block_id: blockId,
+        image_url: real.image || `assets/regional/${blockId}-usg.jpg`,
+        source: real.source || 'KnockoutNotes / user-provided',
+        labels: JSON.parse(JSON.stringify(real.labels || [])),
+        needleOverlay: real.needleOverlay ? JSON.parse(JSON.stringify(real.needleOverlay)) : null,
+        spreadOverlay: JSON.parse(JSON.stringify(real.spreadOverlay || []))
+      };
+    } else {
+      r = {
+        block_id: blockId,
+        image_url: `assets/regional/${blockId}-usg.jpg`,
+        source: 'KnockoutNotes / user-provided',
+        labels: [],
+        needleOverlay: null,
+        spreadOverlay: []
+      };
+    }
+  }
+
   const label = (REGIONAL_BLOCKS.find((b) => b.id === blockId) || {}).short || blockId;
   markerState = {
     blockId,
@@ -1560,12 +1630,23 @@ window.openMarkerEditor = function(blockId) {
     spreadOverlay: JSON.parse(JSON.stringify(r.spreadOverlay || []))
   };
   setMarkerMode(null);
+  markerSelectedLabelIdx = null;
+
   const titleEl = document.getElementById('markerEditorTitle');
   const imgEl = document.getElementById('markerImage');
   const alertEl = document.getElementById('markerAlert');
   if (titleEl) titleEl.textContent = label;
   if (imgEl) imgEl.src = r.image_url;
   if (alertEl) alertEl.style.display = 'none';
+
+  // Quick switcher dropdown in header
+  const qSel = document.getElementById('markerQuickBlockSelect');
+  if (qSel && !qSel.options.length) {
+    qSel.innerHTML = REGIONAL_BLOCKS.map(b => `<option value="${b.id}">${escapeHtml(b.short)}</option>`).join('');
+    qSel.addEventListener('change', () => window.openMarkerEditor(qSel.value));
+  }
+  if (qSel) qSel.value = blockId;
+
   renderMarkerList();
   renderSpreadList();
   syncNeedleInputs();
@@ -1584,7 +1665,12 @@ async function handleMarkerSave() {
     const res = await fetch(`/api/admin/regional-images/${encodeURIComponent(markerState.blockId)}/markers`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ labels: markerState.labels, needleOverlay: markerState.needleOverlay, spreadOverlay: markerState.spreadOverlay })
+      body: JSON.stringify({
+        labels: markerState.labels,
+        needleOverlay: markerState.needleOverlay,
+        spreadOverlay: markerState.spreadOverlay,
+        imageUrl: markerState.imageUrl
+      })
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Save failed');
@@ -1592,7 +1678,7 @@ async function handleMarkerSave() {
     renderRegionalTable();
     if (alertEl) {
       alertEl.className = 'alert-banner success';
-      alertEl.textContent = 'Markers saved — the public page now shows these.';
+      alertEl.textContent = 'Markers saved — the public page and mobile app now show these.';
       alertEl.style.display = 'block';
     }
   } catch (err) {
