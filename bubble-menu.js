@@ -23,17 +23,17 @@
   ];
 
   // Mobile Primary Bar Links (< 768px)
-  // Minimalist: Home, Notes, Calculator
+  // Minimalist: Home, Study Mode, Calculator
   var MOBILE_PRIMARY_LINKS = [
     { label: 'Home', href: 'index.html', ariaLabel: 'Home' },
-    { label: 'Notes', href: 'notes.html', ariaLabel: 'Clinical Notes' },
+    { label: 'Study Mode', href: 'study.html', ariaLabel: 'Study Mode — Anaesthesia & Drug Reference', shortLabel: 'Study' },
     { label: 'Calculator', href: 'calculators.html', ariaLabel: 'Anaesthesia Calculators', shortLabel: 'Calc' }
   ];
 
   // Mobile 3-Dot Drawer Items (2-Column Grid)
-  // Strictly excludes Home, Notes, and Calculator (and removed Valve Lesions, Pearls, Viva)
+  // Strictly excludes Home, Study Mode, and Calculator
   var MOBILE_MORE_ITEMS = [
-    { label: 'Study Mode', href: 'study.html', ariaLabel: 'Study Mode — Anaesthesia & Drug Reference', icon: '🎓', desc: 'Anaesthesia & Drugs' },
+    { label: 'Clinical Notes', href: 'notes.html', ariaLabel: 'Clinical & Study Notes', icon: '📝', desc: 'Notes, Pearls & Viva', matchPaths: ['notes.html', 'pearls.html', 'viva.html'] },
     { label: 'Regional Blocks', href: 'regional-anaesthesia.html', ariaLabel: 'Regional Anaesthesia — Nerve Blocks', icon: '💉', desc: 'Nerve Blocks · NYSORA' },
     { label: '3D Workstation', href: 'ventilator.html', ariaLabel: '3D Anaesthesia Workstation', icon: '🫁', desc: 'Interactive Machine' },
     { label: 'Drugs Library', href: 'drugs.html', ariaLabel: 'Pharmacology Library', icon: '💊', desc: 'Dosing & Kinetics' },
@@ -204,7 +204,7 @@
       var isActive = (!item.href.includes("#") && isCurPage);
 
       var labelHtml = item.shortLabel
-        ? '<span class="calc-label-full">' + item.label + '</span><span class="calc-label-short">' + item.shortLabel + '</span>'
+        ? '<span class="nav-label-full calc-label-full">' + item.label + '</span><span class="nav-label-short calc-label-short">' + item.shortLabel + '</span>'
         : item.label;
 
       return [

@@ -331,13 +331,13 @@ body:not(.dark) .kn-desktop-search-btn kbd {
   gap: 6px;
   padding: 4px 8px 4px 6px;
   border-radius: 9999px;
-  background: rgba(15, 18, 28, 0.70);
+  background: rgba(15, 18, 28, 0.45);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45),
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35),
               inset 0 1.5px 0 rgba(255, 255, 255, 0.22),
-              inset 0 -1.5px 2px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
+              inset 0 -1.5px 2px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
   pointer-events: auto;
   max-width: 100%;
   box-sizing: border-box;
@@ -345,12 +345,12 @@ body:not(.dark) .kn-desktop-search-btn kbd {
 }
 
 body:not(.dark) .bubble-bar-capsule {
-  background: rgba(255, 255, 255, 0.74);
+  background: rgba(255, 255, 255, 0.50);
   border-color: rgba(2, 132, 199, 0.20);
-  box-shadow: 0 14px 32px rgba(2, 132, 199, 0.12),
-              0 2px 6px rgba(0, 0, 0, 0.04),
-              inset 0 1.5px 0 #ffffff,
-              inset 0 -1.5px 2px rgba(2, 132, 199, 0.08);
+  box-shadow: 0 14px 32px rgba(2, 132, 199, 0.10),
+              0 2px 6px rgba(0, 0, 0, 0.03),
+              inset 0 1.5px 0 rgba(255, 255, 255, 0.9),
+              inset 0 -1.5px 2px rgba(2, 132, 199, 0.06);
 }
 
 .bubble-logo-link {
@@ -458,10 +458,12 @@ body:not(.dark) .bubble-nav-link.active {
   font-weight: 600;
 }
 
-/* Responsive Calc label */
+/* Responsive labels */
+.nav-label-short,
 .calc-label-short {
   display: none;
 }
+.nav-label-full,
 .calc-label-full {
   display: inline;
 }
@@ -785,53 +787,75 @@ body:not(.dark) .bubble-menu-items .pill-close-hint {
   color: #64748b;
 }
 
-/* Narrow mobile screens (< 360px down to 320px) */
-@media (max-width: 360px) {
-  .bubble-menu {
-    padding: 0 6px;
-  }
-  .bubble-bar-capsule {
-    gap: 4px;
-    padding: 3px 6px 3px 4px;
-  }
-  .bubble-logo {
-    width: 24px;
-    height: 24px;
-  }
-  .bubble-nav-links {
-    gap: 2px;
-    padding: 2px;
-  }
-  .bubble-nav-link {
-    padding: 5px 7px;
-    font-size: 11.5px;
-  }
+/* Compact mobile screens (<= 440px): show short labels ("Study", "Calc") */
+@media (max-width: 440px) {
+  .nav-label-full,
   .calc-label-full {
     display: none;
   }
+  .nav-label-short,
+  .calc-label-short {
+    display: inline;
+  }
+  .bubble-nav-link {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}
+
+/* Narrow mobile screens (< 360px down to 320px) */
+@media (max-width: 360px) {
+  .bubble-menu {
+    padding: 0 4px;
+  }
+  .bubble-bar-capsule {
+    gap: 3px;
+    padding: 3px 5px 3px 4px;
+  }
+  .bubble-logo {
+    width: 22px;
+    height: 22px;
+  }
+  .bubble-nav-links {
+    gap: 1px;
+    padding: 2px;
+  }
+  .bubble-nav-link {
+    padding: 4px 6px;
+    font-size: 11px;
+  }
+  .nav-label-full,
+  .calc-label-full {
+    display: none;
+  }
+  .nav-label-short,
   .calc-label-short {
     display: inline;
   }
   .bubble-action-btn {
-    width: 29px;
-    height: 29px;
-    font-size: 12px;
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+  .bubble-nav-actions {
+    gap: 3px;
+    padding-left: 3px;
   }
   .kn-dots-icon {
-    font-size: 14px;
+    font-size: 13px;
   }
   .kn-more-card {
-    min-height: 88px;
-    padding: 10px 10px;
+    min-height: 84px;
+    padding: 8px 8px;
   }
   .kn-more-card-icon {
-    font-size: 20px;
+    font-size: 18px;
   }
   .kn-more-card-label {
-    font-size: 12px;
+    font-size: 11.5px;
   }
   .kn-more-card-desc {
-    font-size: 10px;
+    font-size: 9.5px;
   }
 }
 
