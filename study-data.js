@@ -5148,7 +5148,6 @@
       "AAGBI: Safe Anaesthetic Practice — Equipment Checks, Association of Anaesthetists of Great Britain & Ireland (2023)."
     ]
   },
-  ,
   {
     "id": "pft-how-to-read",
     "cat": "pft",

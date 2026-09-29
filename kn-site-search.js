@@ -1835,7 +1835,6 @@
       Tags: "BVM, Ambu Bag, Resuscitation, Airway Equipment, OSCE, Pre-use Check, Self-inflating, equipment, Ambu Bag / BVM",
       href: "study.html?item=ambu-bag-bvm",
     },
-,
     {
       Type: "Study Topic",
       Category: "Study Mode • PFT",

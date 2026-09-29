@@ -62,17 +62,17 @@
     return CAT_ICON_SVG[catId] || esc(cat.icon);
   }
 
-  const drugById = new Map(DATA.drugs.map((d) => [d.id, d]));
-  const topicById = new Map(DATA.topics.map((t) => [t.id, t]));
-  const catById = new Map(DATA.categories.map((c) => [c.id, c]));
+  const drugById = new Map((DATA.drugs || []).filter(Boolean).map((d) => [d.id, d]));
+  const topicById = new Map((DATA.topics || []).filter(Boolean).map((t) => [t.id, t]));
+  const catById = new Map((DATA.categories || []).filter(Boolean).map((c) => [c.id, c]));
   const TOPIC_CATS = new Set(["anaesthesia", "examination", "ecg", "abg", "equipment", "pft"]);
   const isDrugCat = (catId) => !TOPIC_CATS.has(catId);
 
   function itemById(id) { return drugById.get(id) || topicById.get(id) || null; }
   function itemsInCat(catId) {
     return TOPIC_CATS.has(catId)
-      ? DATA.topics.filter((t) => t.cat === catId)
-      : DATA.drugs.filter((d) => d.cat === catId);
+      ? (DATA.topics || []).filter((t) => t && t.cat === catId)
+      : (DATA.drugs || []).filter((d) => d && d.cat === catId);
   }
 
   let state = { cat: "anaesthesia", item: null, filter: "" };
