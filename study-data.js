@@ -58,6 +58,12 @@
     "desc": "Breathing systems, cylinders, soda lime, Venturi, infusion pumps, ECMO, dialysis, ventilators & airway instruments"
   },
   {
+    "id": "pft",
+    "label": "Pulmonary Function Tests (PFT)",
+    "icon": "🫁",
+    "desc": "Systematic PFT reading, obstructive & restrictive patterns, flow-volume loops, DLCO & post-op resection assessment (ppoFEV1/ppoDLCO)"
+  },
+  {
     "id": "induction",
     "label": "Induction Agents",
     "icon": "💉",
@@ -5140,6 +5146,638 @@
       "Otten EJ, et al. 'Two-rescuer adult bag-mask ventilation is superior to one-rescuer ventilation.' Prehosp Emerg Care 2014;18(2):223–7.",
       "Miller's Anesthesia, 10th ed. (Gropper MA, ed.), Ch. 44: Airway Management in the Adult. Elsevier, 2025/2026.",
       "AAGBI: Safe Anaesthetic Practice — Equipment Checks, Association of Anaesthetists of Great Britain & Ireland (2023)."
+    ]
+  },
+  ,
+  {
+    "id": "pft-how-to-read",
+    "cat": "pft",
+    "name": "How to Read a Pulmonary Function Test (PFT)",
+    "brand": "ATS/ERS 2022 Technical Standards • Stepwise Interpretation Protocol",
+    "classification": "Respiratory Physiology • Spirometry • Lung Volumes • Diffusion Capacity (DLCO)",
+    "tagline": "A systematic 5-step ATS/ERS protocol to interpret spirometry, bronchodilator reversibility, lung volumes, and diffusing capacity",
+    "tags": [
+      "PFT",
+      "Spirometry",
+      "ATS/ERS",
+      "FEV1",
+      "FVC",
+      "DLCO",
+      "TLC",
+      "Reversibility",
+      "LLN"
+    ],
+    "source": "Stanojevic S, Kaminsky DA, Miller MR, et al. ERS/ATS technical standard on interpretive strategies for routine lung function tests. Eur Respir J 2022;60:2101499; Miller's Anesthesia, 10th ed., Ch. 45; West's Respiratory Physiology: The Essentials, 12th ed.",
+    "diagram": "pft-reading-algorithm",
+    "link": {
+      "url": "calculators.html?calc=calc-pft-analyzer",
+      "label": "Open Interactive PFT Pathology Analyzer"
+    },
+    "sections": [
+      {
+        "h": "Spirometry Quality & Acceptability: Validating the Test First",
+        "b": "Never interpret a Pulmonary Function Test without first confirming that the data meets international acceptability and repeatability criteria (ATS/ERS 2022 standards). Interpreting sub-maximal effort leads to false diagnoses of restriction or obstruction.\n\nEssential Technical Quality Criteria:\n1. Acceptable Start of Test:\n   • Rapid, sharp rise to Peak Expiratory Flow (PEF) without hesitation.\n   • Back-extrapolated volume (BEV) must be < 5% of FVC or < 0.100 L (whichever is greater). Excessive BEV (> 100 mL) indicates a hesitant start and artificially lowers FEV1.\n2. Exhalation Duration & End-of-Test Criteria:\n   • Minimum exhalation duration of ≥ 6 seconds in adults (≥ 3 seconds in children < 10 years).\n   • Plateau on volume-time curve: volume change < 0.025 L (25 mL) over the final 1.0 second of expiration, or inability to exhale further despite continuous verbal encouragement (e.g. up to 15 seconds).\n   • Absence of glottic closure, coughing during the first second, early termination, or leaks around the mouthpiece.\n3. Repeatability (Reproducibility):\n   • Patient performs a minimum of 3 acceptable maneuvers.\n   • The two highest FEV1 values must be within 150 mL (0.150 L) of each other.\n   • The two highest FVC values must be within 150 mL (0.150 L) of each other (100 mL if FVC < 1.0 L).\n   • Report the single HIGHEST FEV1 and HIGHEST FVC across all acceptable efforts (even if from different maneuvers). Note: The FEV1/FVC ratio is calculated from the single best maneuver with the largest sum of FEV1 + FVC."
+      },
+      {
+        "h": "Step 1: The FEV1/FVC Ratio & Lower Limit of Normal (LLN)",
+        "b": "The first diagnostic step is ALWAYS to evaluate the FEV1/FVC ratio to determine whether airflow obstruction is present.\n\n1. The Fixed Cutoff vs Lower Limit of Normal (LLN):\n   • Fixed Cutoff (GOLD criterion): FEV1/FVC < 0.70 (70%). Widely used in COPD guidelines for simplicity.\n   • Lower Limit of Normal (LLN, ATS/ERS 2022 standard): Defined as the 5th percentile of a healthy, age-, sex-, and height-matched reference population (z-score < -1.645).\n   • Pitfall of the Fixed 0.70 Cutoff:\n     - In elderly patients (> 65 years), natural loss of lung elastic recoil causes the FEV1/FVC ratio to decline physiologically to 0.65–0.68. Using a fixed 0.70 over-diagnoses COPD in up to 30% of normal elderly individuals.\n     - In young adults (< 40 years), normal FEV1/FVC is 0.80–0.85; using 0.70 under-diagnoses early airway disease.\n   • Golden Rule: Use LLN (z-score < -1.645) as the primary determinant whenever available; use < 0.70 for GOLD COPD staging.\n\n2. Decision Branch at Step 1:\n   • If FEV1/FVC < LLN (< 0.70): Airflow Obstruction is confirmed. Proceed to evaluate severity, reversibility, and hyperinflation.\n   • If FEV1/FVC ≥ LLN (≥ 0.70): No obstruction. Check FVC:\n     - If FVC is Normal (≥ 80% or ≥ LLN): Normal spirometry.\n     - If FVC is Reduced (< 80% or < LLN): Possible Restrictive defect or Mixed defect. Must measure Total Lung Capacity (TLC) via plethysmography or gas dilution."
+      },
+      {
+        "h": "Step 2: Grading the Severity of Ventilatory Impairment",
+        "b": "Severity is graded primarily by the degree of FEV1 reduction (% of predicted value) for obstructive defects, and FVC reduction for suspected restrictive defects.\n\nATS/ERS Severity Staging Scale (FEV1 % Predicted):\n• Mild: FEV1 ≥ 70% predicted (or z-score ≥ -2.0)\n• Moderate: FEV1 60% – 69% predicted (z-score -2.0 to -2.5)\n• Moderately Severe: FEV1 50% – 59% predicted (z-score -2.5 to -3.0)\n• Severe: FEV1 35% – 49% predicted (z-score -3.0 to -4.0)\n• Very Severe: FEV1 < 35% predicted (z-score < -4.0)\n\nGOLD COPD Severity Scale (Post-Bronchodilator FEV1 with FEV1/FVC < 0.70):\n• GOLD 1 (Mild): FEV1 ≥ 80% predicted\n• GOLD 2 (Moderate): 50% ≤ FEV1 < 80% predicted\n• GOLD 3 (Severe): 30% ≤ FEV1 < 50% predicted\n• GOLD 4 (Very Severe): FEV1 < 30% predicted\n\nClinical Pearl: Severity grading reflects functional impairment, but does NOT always correlate with symptom burden or dynamic hyperinflation during exercise or anaesthesia emergence."
+      },
+      {
+        "h": "Step 3: Bronchodilator Responsiveness Testing (Reversibility)",
+        "b": "Reversibility testing establishes whether airflow obstruction is dynamic and responsive to beta-2 agonists, helping differentiate asthma from fixed COPD.\n\nTesting Protocol:\n• Baseline spirometry is recorded.\n• Inhalation of 4 separate puffs of salbutamol (100 mcg per puff, total 400 mcg) via a metered-dose inhaler (MDI) with a valved holding chamber spacer, with 30 seconds between puffs.\n• Repeat spirometry 10 to 15 minutes post-inhalation (or 30 minutes if using ipratropium 80 mcg).\n\nATS/ERS 2022 Criteria for Significant Bronchodilator Response:\n• An increase in FEV1 and/or FVC of:\n  ≥ 10% of the PREDICTED value (ATS/ERS 2022 update)\n  OR the classic ATS/ERS criterion:\n  ≥ 12% increase from baseline AND an absolute increase of ≥ 200 mL in FEV1 or FVC.\n\nDiagnostic Interpretation:\n• Complete Normalization (Post-BD FEV1/FVC ≥ LLN and FEV1 ≥ 80%): Highly characteristic of Asthma.\n• Partial Reversibility (Significant increase in FEV1, but FEV1/FVC remains < 0.70): Common in Asthma-COPD Overlap (ACO) or COPD with hyperreactive airways.\n• Non-Reversible (Increase < 12% or < 200 mL): Typical of longstanding fixed COPD, emphysema, or severe bronchiectasis."
+      },
+      {
+        "h": "Step 4: Static Lung Volumes & Confirming Restriction",
+        "b": "Spirometry alone CANNOT diagnose restriction — it can only suggest it when FVC is reduced with a normal ratio. A reduced FVC can also result from severe air trapping (pseudorestriction). Definitive diagnosis requires measuring static lung volumes (Plethysmography, Helium dilution, or Nitrogen washout).\n\nKey Static Lung Volume Parameters:\n• Total Lung Capacity (TLC): Total gas volume in the lungs at maximal inspiration (Normal: 80%–120% predicted).\n• Residual Volume (RV): Volume of air remaining in the lungs after maximal exhalation (Normal: 80%–120% predicted).\n• Functional Residual Capacity (FRC): Volume of gas in the lungs at end of tidal expiration (ERV + RV).\n• RV/TLC Ratio: Normally < 35%. Evaluates gas trapping.\n\nDiagnostic Algorithm for Static Volumes:\n1. Restrictive Defect Confirmed: TLC < 80% predicted (or < LLN). FEV1/FVC is normal (> 0.70) or increased (often > 0.85 due to radial traction on airways).\n2. Air Trapping: RV > 120% predicted with normal TLC, and RV/TLC ratio > 35%.\n3. Hyperinflation: TLC > 120% predicted, commonly accompanied by marked RV elevation (> 150%). Pathognomonic for severe emphysema or chronic severe asthma.\n4. Mixed Defect: Both FEV1/FVC < LLN (obstruction) AND TLC < 80% predicted (restriction). Examples: COPD combined with idiopathic pulmonary fibrosis, or morbidly obese smoker."
+      },
+      {
+        "h": "Step 5: Diffusing Capacity for Carbon Monoxide (DLCO) & KCO",
+        "b": "Diffusing capacity of the lung for carbon monoxide (DLCO / TLCO) measures the transfer of gas from alveolar airspaces across the alveolar-capillary membrane into pulmonary capillary hemoglobin.\n\nNormal Range: 80% – 120% predicted (or > LLN). Reduced if < 80% or < LLN.\n\nCorrections Required Before Interpretation:\n• Hemoglobin (Hb): Anemia reduces DLCO artificially (fewer binding sites); polycythemia elevates DLCO. Always report Hb-corrected DLCO!\n• Carboxyhemoglobin (COHb): Smoking elevates COHb, creating a 'back-pressure' that falsely lowers DLCO.\n• Alveolar Volume (VA): DLCO divided by VA yields the transfer coefficient (KCO = DLCO/VA).\n\nDifferential Diagnosis Based on DLCO:\n• Reduced DLCO (< 80%):\n  - With Obstructive Pattern: Emphysema (loss of alveolar-capillary surface area). Asthma and chronic bronchitis have NORMAL or ELEVATED DLCO.\n  - With Restrictive Pattern: Intrinsic Parenchymal Lung Disease (Idiopathic Pulmonary Fibrosis, Sarcoidosis, Hypersensitivity Pneumonitis, Drug Toxicity).\n  - With Normal Spirometry: Pulmonary Vascular Disease (Pulmonary Arterial Hypertension, recurrent Pulmonary Embolism, Hepatopulmonary Syndrome), Early Interstitial Lung Disease, or Anemia.\n• Normal or Elevated DLCO (> 120%):\n  - Extrinsic restriction (Kyphoscoliosis, Obesity, Neuromuscular weakness — lung parenchyma is healthy!).\n  - Asthma (increased pulmonary capillary blood volume due to negative intrathoracic pressure swings).\n  - Alveolar hemorrhage (Goodpasture, GPA — RBCs in alveoli scavenge CO).\n  - Left-to-right intracardiac shunts, Polycythemia, Exercise, Supine position."
+      },
+      {
+        "h": "Systematic 5-Step Reading Checklist & Quick Decision Matrix",
+        "table": {
+          "headers": [
+            "Step",
+            "Measurement",
+            "Threshold",
+            "Pathological Finding / Action"
+          ],
+          "rows": [
+            [
+              "Step 1",
+              "FEV1 / FVC Ratio",
+              "< LLN (< 0.70)",
+              "OBSTRUCTIVE DEFECT → Go to Step 2 & 3"
+            ],
+            [
+              "Step 1",
+              "FEV1 / FVC Ratio",
+              "≥ LLN (≥ 0.70)",
+              "NO OBSTRUCTION → Check FVC. If FVC < 80%, suspect RESTRICTION → Go to Step 4"
+            ],
+            [
+              "Step 2",
+              "FEV1 % Predicted",
+              "≥80% / 50-79% / 30-49% / <30%",
+              "Grade severity: Mild, Moderate, Severe, Very Severe"
+            ],
+            [
+              "Step 3",
+              "Post-BD Response",
+              "ΔFEV1 or ΔFVC ≥ 12% & ≥ 200 mL",
+              "Significant Reversibility (Asthma, ACO) vs Fixed (COPD)"
+            ],
+            [
+              "Step 4",
+              "Total Lung Capacity (TLC)",
+              "< 80% predicted",
+              "CONFIRMED RESTRICTION (Intrinsic vs Extrinsic)"
+            ],
+            [
+              "Step 4",
+              "Residual Volume (RV)",
+              "> 120% predicted",
+              "Air Trapping (Obstructive) or Pseudorestriction"
+            ],
+            [
+              "Step 5",
+              "DLCO / KCO",
+              "< 80% with obstruction",
+              "Emphysema (destruction of alveolar-capillary membrane)"
+            ],
+            [
+              "Step 5",
+              "DLCO / KCO",
+              "< 80% with restriction",
+              "Intrinsic Interstitial Lung Disease (IPF, Sarcoid, Fibrosis)"
+            ],
+            [
+              "Step 5",
+              "DLCO / KCO",
+              "Normal with restriction",
+              "Extrinsic: Chest wall, Kyphoscoliosis, Obesity, Neuromuscular weakness"
+            ]
+          ],
+          "caption": "ATS/ERS 2022 Systematic 5-Step PFT Interpretation Algorithm."
+        },
+        "b": "Summary Protocol:\n1. Verify acceptability, repeatability (within 150 mL), and no coughing.\n2. Check FEV1/FVC against LLN (<0.70).\n3. If low, grade severity by FEV1% and test bronchodilator reversibility (Δ ≥12% & 200 mL).\n4. Check TLC: <80% confirms restriction; >120% confirms hyperinflation.\n5. Check DLCO to pinpoint parenchymal destruction vs chest wall/vascular pathology."
+      }
+    ],
+    "example": "CLINICAL CASE: A 64-year-old heavy smoker with a 40 pack-year history presents for preoperative evaluation prior to elective knee arthroplasty. He complains of progressive dyspnea on walking uphill.\n\nPFT Results:\n• Pre-BD: FVC = 3.20 L (78% pred), FEV1 = 1.60 L (52% pred), FEV1/FVC = 0.50 (LLN = 0.68).\n• Post-BD: FEV1 = 1.86 L (+260 mL, +16.3% increase), FEV1/FVC = 0.54.\n• Plethysmography: TLC = 6.80 L (118% pred), RV = 3.40 L (162% pred), RV/TLC = 50%.\n• Gas Transfer: DLCO = 52% predicted (Hb-corrected), KCO = 58% predicted.\n\nSystematic 5-Step Interpretation:\n1. FEV1/FVC (0.50) is markedly below LLN (0.68) → Airflow Obstruction confirmed.\n2. FEV1 is 52% of predicted → Moderately Severe obstruction (GOLD Stage 2/3).\n3. Post-BD test shows +260 mL and +16.3% increase → Significant bronchodilator reversibility present (Asthma-COPD overlap component).\n4. TLC is 118% (normal/high) and RV is 162% with RV/TLC 50% → Severe air trapping and hyperinflation. The reduced FVC (78%) was pseudorestriction due to gas trapping, NOT true restriction!\n5. DLCO is 52% (severely reduced) → Alveolar-capillary destruction pathognomonic for Emphysema.\n\nFinal Diagnosis: Moderate-to-severe Chronic Obstructive Pulmonary Disease with emphysema, significant air trapping, and partially reversible bronchospasm. Anaesthetic plan: optimize bronchodilators, anticipate auto-PEEP during mechanical ventilation, maintain prolonged expiratory time, and consider neuraxial regional anaesthesia.",
+    "crossLinks": [
+      {
+        "label": "🌬️ Obstructive Lung Diseases (COPD, Asthma & Mechanics)",
+        "item": "pft-obstructive"
+      },
+      {
+        "label": "🫁 Restrictive Lung Diseases & DLCO",
+        "item": "pft-restrictive"
+      },
+      {
+        "label": "📈 Flow-Volume Loops & Airway Lesions",
+        "item": "pft-flow-volume-loops"
+      },
+      {
+        "label": "✂️ Post-Operative FEV1 & DLCO (Resection Assessment)",
+        "item": "pft-postop-fev1-dlco"
+      },
+      {
+        "label": "🧪 Arterial Blood Gas (ABG) Systematic Analysis",
+        "item": "abg-interpretation-systematic"
+      }
+    ],
+    "references": [
+      "Stanojevic S, Kaminsky DA, Miller MR, et al. ERS/ATS technical standard on interpretive strategies for routine lung function tests. Eur Respir J 2022;60:2101499.",
+      "Global Initiative for Chronic Obstructive Lung Disease (GOLD). Global Strategy for the Diagnosis, Management, and Prevention of COPD. 2024 Report.",
+      "Miller's Anesthesia, 10th ed. (Gropper MA, ed.), Ch. 45: Anesthesia for Thoracic Surgery. Elsevier, 2025/2026.",
+      "West JB, Luks AM. West's Respiratory Physiology: The Essentials, 12th ed. Wolters Kluwer, 2022.",
+      "Culver BH, et al. Recommendations for a Standardized Pulmonary Function Report: An Official American Thoracic Society Technical Statement. Am J Respir Crit Care Med 2017;196(11):1463–1472."
+    ]
+  },
+  {
+    "id": "pft-obstructive",
+    "cat": "pft",
+    "name": "Obstructive Lung Diseases (COPD, Asthma & Bronchiectasis)",
+    "brand": "GOLD 2024 & GINA 2024 • Airway Resistance, EPP & Auto-PEEP",
+    "classification": "Pathophysiology • Airway Flow Limitation • Dynamic Hyperinflation",
+    "tagline": "Airflow obstruction mechanics, GOLD staging, Equal Pressure Point, auto-PEEP / intrinsic PEEP, and intraoperative ventilation strategies",
+    "tags": [
+      "COPD",
+      "Asthma",
+      "GOLD",
+      "Obstructive",
+      "Air Trapping",
+      "Auto-PEEP",
+      "Bronchospasm",
+      "Permissive Hypercapnia"
+    ],
+    "source": "Global Initiative for Chronic Obstructive Lung Disease (GOLD) 2024 Report; Global Initiative for Asthma (GINA) 2024; Miller's Anesthesia, 10th ed., Ch. 45; Stoelting's Pharmacology & Physiology, 5th ed.",
+    "diagram": "pft-obstructive-severity",
+    "link": {
+      "url": "calculators.html?calc=calc-pft-analyzer",
+      "label": "Open PFT Pathology Analyzer"
+    },
+    "sections": [
+      {
+        "h": "Defining Airflow Obstruction: Mechanics & Diagnostic Criteria",
+        "b": "Airflow obstruction is defined by an abnormally slow rate of gas emptying from the lungs during forced expiration, caused by increased airway resistance (bronchospasm, secretions, mucosal edema) or loss of radial elastic parenchymal traction (emphysema).\n\nDiagnostic Criteria:\n• Spirometry: Post-bronchodilator FEV1/FVC < LLN (or fixed ratio < 0.70).\n• The FEV1 is disproportionately reduced relative to FVC.\n• Forced Expiratory Time (FET) is prolonged beyond the normal 3–4 seconds to > 6–10 seconds.\n• Peak Expiratory Flow (PEF) and mid-expiratory flow rates (FEF25–75%) are markedly depressed."
+      },
+      {
+        "h": "GOLD Severity Classification & Clinical Risk",
+        "b": "The Global Initiative for Chronic Obstructive Lung Disease (GOLD 2024) classifies severity based on post-bronchodilator FEV1 in patients with FEV1/FVC < 0.70:\n\nGOLD 1 — Mild:\n• FEV1 ≥ 80% predicted.\n• Usually minimal dyspnea; often undiagnosed until routine preoperative testing.\n\nGOLD 2 — Moderate:\n• 50% ≤ FEV1 < 80% predicted.\n• Exertional dyspnea, chronic cough, sputum production. Moderate perioperative pulmonary complication (PPC) risk.\n\nGOLD 3 — Severe:\n• 30% ≤ FEV1 < 50% predicted.\n• Frequent exacerbations, significant exercise limitation. High risk of postoperative respiratory failure, prolonged mechanical ventilation, and delayed extubation.\n\nGOLD 4 — Very Severe:\n• FEV1 < 30% predicted (or FEV1 < 50% plus chronic respiratory failure with PaO2 < 60 mmHg or PaCO2 > 50 mmHg).\n• Severe dynamic hyperinflation, cor pulmonale, secondary polycythemia. High perioperative mortality."
+      },
+      {
+        "h": "Asthma vs COPD vs Bronchiectasis: Distinctive PFT Signatures",
+        "table": {
+          "headers": [
+            "Feature",
+            "Asthma",
+            "COPD (Emphysema)",
+            "COPD (Chronic Bronchitis)",
+            "Bronchiectasis"
+          ],
+          "rows": [
+            [
+              "Primary Pathology",
+              "Eosinophilic / Th2 airway inflammation & bronchospasm",
+              "Alveolar wall destruction & loss of elastic recoil",
+              "Mucus hypersecretion & small airway remodeling",
+              "Irreversible bronchial dilatation & chronic suppuration"
+            ],
+            [
+              "FEV1 / FVC Ratio",
+              "Reduced (< LLN) during attacks; normal in remission",
+              "Persistently reduced (< 0.70), irreversible",
+              "Persistently reduced (< 0.70)",
+              "Reduced or normal depending on extent"
+            ],
+            [
+              "Reversibility (Post-BD)",
+              "Marked (often > 15–20% and normalizes)",
+              "Partial or none (< 12% or < 200 mL)",
+              "Partial or none",
+              "Minimal to moderate"
+            ],
+            [
+              "TLC",
+              "Normal to mildly increased",
+              "Elevated (> 120%, hyperinflation)",
+              "Normal to mildly elevated",
+              "Normal to reduced"
+            ],
+            [
+              "Residual Volume (RV)",
+              "Normal or transiently elevated",
+              "Markedly elevated (> 140–160%)",
+              "Elevated (air trapping)",
+              "Elevated in obstructive type"
+            ],
+            [
+              "DLCO / KCO",
+              "Normal or ELEVATED (> 100%)",
+              "Severely REDUCED (< 60–70%)",
+              "Normal or mildly reduced",
+              "Normal to mildly reduced"
+            ],
+            [
+              "Expiratory Loop",
+              "Reversible scooped loop",
+              "Fixed severe coving / scooping",
+              "Scooped expiratory limb",
+              "Scooped limb + sawtooth oscillations"
+            ]
+          ],
+          "caption": "Pathophysiological and PFT differentiation across obstructive airway diseases."
+        },
+        "b": "Key Clinical Differentiator:\n• A reduced FEV1/FVC with a REDUCED DLCO (<80%) is almost universally EMPHYSEMA.\n• A reduced FEV1/FVC with a NORMAL or ELEVATED DLCO (>100%) indicates ASTHMA or chronic bronchitis without parenchymal destruction."
+      },
+      {
+        "h": "Dynamic Airway Compression, Equal Pressure Point (EPP) & Auto-PEEP",
+        "b": "Understanding the mechanics of expiration is critical for mechanical ventilation in obstructive lung disease:\n\n1. The Equal Pressure Point (EPP) Concept:\n   • During forced expiration, pleural pressure (Ppl) becomes positive (e.g. +20 cmH2O).\n   • Alveolar driving pressure equals pleural pressure plus the elastic recoil pressure of the lung: Palv = Ppl + Pel (e.g. +20 + 10 = +30 cmH2O).\n   • As gas flows from alveoli toward the mouth, airway pressure drops due to frictional resistance.\n   • The point along the airway where intraluminal pressure equals pleural pressure (Pint = Ppl) is the Equal Pressure Point (EPP).\n   • Downstream from EPP (toward mouth): Intraluminal pressure drops below pleural pressure → transmural pressure is negative → airway dynamic compression occurs!\n   • In healthy lungs: EPP resides within cartilaginous, non-collapsible large bronchi.\n   • In Emphysema: Loss of alveolar elastic recoil (Pel drops from 10 to 2 cmH2O) causes EPP to migrate upstream into fragile, non-cartilaginous terminal bronchioles → premature airway collapse and gas trapping!\n\n2. Dynamic Hyperinflation & Auto-PEEP (Intrinsic PEEP):\n   • When expiratory time (Te) is shorter than the time constant of the respiratory system (Time constant τ = Compliance × Resistance), the lungs cannot fully empty before the next breath initiates.\n   • Gas is trapped under pressure: this residual alveolar end-expiratory pressure is termed Auto-PEEP or intrinsic PEEP (PEEPi).\n   • Hemodynamic Consequences: Auto-PEEP increases intrathoracic pressure → compresses right atrium and inferior vena cava → decreases venous return → severe hypotension and cardiac arrest during positive-pressure ventilation!\n   • Barotrauma: Alveolar overdistension increases risk of pneumothorax, pneumomediastinum, and subcutaneous emphysema."
+      },
+      {
+        "h": "Anaesthetic Management & Intraoperative Ventilatory Strategy",
+        "b": "Safe intraoperative management of patients with severe obstructive disease requires strict adherence to lung-protective, obstructive-pattern ventilatory mechanics:\n\n1. Preoperative Optimization:\n   • Cessation of smoking for > 4–8 weeks (improves ciliary function, reduces sputum volume).\n   • Maximize bronchodilator therapy (inhaled long-acting beta agonists LABA, long-acting muscarinic antagonists LAMA, inhaled corticosteroids ICS).\n   • Treat active respiratory infections before elective surgery.\n\n2. Intraoperative Ventilatory Mechanics:\n   • Low Respiratory Rate: 8 to 10 breaths/minute (allows adequate time for expiration).\n   • Prolonged Expiratory Time (I:E Ratio): Set I:E to 1:3, 1:4, or even 1:5.\n   • Tidal Volume: Moderate 6 to 8 mL/kg of predicted body weight (avoid excessive volumes that worsen hyperinflation).\n   • High Inspiratory Flow Rate: Deliver the inspiratory volume quickly (e.g. peak flow 60–80 L/min) to shorten inspiratory time and maximize time available for expiration.\n   • Permissive Hypercapnia: Tolerate elevated PaCO2 (50–65 mmHg) and moderate respiratory acidosis (pH ≥ 7.20–7.25) to avoid delivering destructive respiratory rates.\n   • Applied External PEEP: Apply low external PEEP (set to ~70–80% of measured auto-PEEP, typically 4–6 cmH2O) to splint open dynamic collapsible airways and decrease the work of triggering breaths without increasing peak alveolar pressure.\n   • Monitor Expiratory Flow: Watch the flow-time waveform continuously on the ventilator! Expiratory flow MUST return to the zero baseline before the next breath begins. If flow does not reach zero, breath-stacking and auto-PEEP are occurring!"
+      },
+      {
+        "h": "Emergency Protocol for Intraoperative Bronchospasm & Dynamic Hyperinflation",
+        "b": "If airway pressure suddenly surges and severe bronchospasm or auto-PEEP occurs under general anaesthesia:\n\nStepwise Resuscitation Protocol:\n1. 100% FiO2 and Disconnect from Ventilator:\n   • Immediately disconnect patient from the breathing circuit and allow full passive exhalation to atmosphere!\n   • If hypotension resolves and a large rush of exhaled gas is felt, AUTO-PEEP / DYNAMIC HYPERINFLATION was the cause.\n2. Deepen Anaesthesia:\n   • Volatile anaesthetics (Sevoflurane, Isoflurane) are potent direct bronchodilators.\n   • Bolus IV Ketamine (0.5–1.0 mg/kg) or Propofol. Avoid Desflurane (pungent airway irritant that triggers bronchospasm).\n3. Inhaled Bronchodilators via Circuit:\n   • Administer 6–10 puffs of Salbutamol MDI into the inspiratory limb via an in-line adapter, or nebulize salbutamol 5 mg.\n4. Intravenous Bronchodilators & Anti-inflammatories:\n   • Magnesium Sulfate: 2.0 g IV over 10–15 minutes (smooth muscle relaxant via calcium channel blockade).\n   • Hydrocortisone: 100–200 mg IV (onset 4–6 hours; prevents late recurrence).\n   • IV Aminophylline: Second line (loading dose 5 mg/kg over 20 min) if refractory.\n5. Severe Refractory Life-Threatening Bronchospasm:\n   • Epinephrine (Adrenaline): 10 to 50 mcg IV boluses titrated to bronchospasm resolution and hemodynamics, or continuous infusion 0.05–0.2 mcg/kg/min."
+      }
+    ],
+    "example": "CLINICAL CASE: A 70-year-old male with severe COPD (FEV1 34% predicted, GOLD 3) undergoes robotic anterior resection under general endotracheal anaesthesia. Thirty minutes into the case with pneumoperitoneum and steep Trendelenburg position, peak airway pressure spikes from 26 to 48 cmH2O, EtCO2 rises to 58 mmHg, and blood pressure drops acutely from 125/75 to 70/40 mmHg.\n\nEvaluation & Management:\n• Inspection of the ventilator screen reveals the expiratory flow waveform fails to return to zero baseline before each subsequent breath begins — confirming dynamic breath-stacking.\n• Disconnection Maneuver: The anaesthetist immediately disconnects the ETT from the circuit. A continuous exhalation of gas persists for over 4 seconds. Within 20 seconds, blood pressure rebounds to 110/65 mmHg as venous return is restored.\n• Readjustment of Settings: Ventilator rate reduced from 14 to 8 breaths/min; I:E ratio lengthened from 1:2 to 1:4; inspiratory flow rate increased to 70 L/min; tidal volume adjusted to 450 mL (6.5 mL/kg IBW). External PEEP set to 5 cmH2O.\n• EtCO2 stabilizes at 50–52 mmHg with pH 7.28 (permissive hypercapnia tolerated). Peak pressures fall to 30 cmH2O and surgery proceeds uneventfully.",
+    "crossLinks": [
+      {
+        "label": "📖 How to Read a PFT (Systematic 5-Step Protocol)",
+        "item": "pft-how-to-read"
+      },
+      {
+        "label": "📈 Flow-Volume Loops & Airway Lesions",
+        "item": "pft-flow-volume-loops"
+      },
+      {
+        "label": "🫁 Restrictive Lung Diseases & DLCO",
+        "item": "pft-restrictive"
+      },
+      {
+        "label": "💨 Breathing Systems & Mapleson Circuits",
+        "item": "breathing-systems-mapleson"
+      }
+    ],
+    "references": [
+      "Global Initiative for Chronic Obstructive Lung Disease (GOLD) 2024 Report.",
+      "Global Initiative for Asthma (GINA). Global Strategy for Asthma Management and Prevention, 2024.",
+      "Miller's Anesthesia, 10th ed. (Gropper MA, ed.), Ch. 45: Anesthesia for Thoracic Surgery. Elsevier, 2025/2026.",
+      "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed. Wolters Kluwer, 2015."
+    ]
+  },
+  {
+    "id": "pft-restrictive",
+    "cat": "pft",
+    "name": "Restrictive Lung Diseases & Diffusing Capacity (DLCO)",
+    "brand": "Parenchymal vs Chest Wall vs Neuromuscular • Lung Volume Deficits",
+    "classification": "Pulmonary Mechanics • Compliance Deficits • Gas Transfer Deficits",
+    "tagline": "Diagnostic algorithm for reduced TLC, distinguishing intrinsic from extrinsic restriction, DLCO/KCO partitioning, and perioperative management",
+    "tags": [
+      "Restrictive",
+      "TLC",
+      "DLCO",
+      "KCO",
+      "ILD",
+      "Fibrosis",
+      "Kyphoscoliosis",
+      "Myasthenia",
+      "MIP/MEP"
+    ],
+    "source": "Raghu G, et al. Diagnosis of Idiopathic Pulmonary Fibrosis: ATS/ERS/JRS/ALAT Clinical Practice Guideline. Am J Respir Crit Care Med 2022;205:e18–e47; Miller's Anesthesia, 10th ed., Ch. 45; West's Pulmonary Pathophysiology, 10th ed.",
+    "diagram": "pft-restrictive-tree",
+    "link": {
+      "url": "calculators.html?calc=calc-pft-analyzer",
+      "label": "Open PFT Pathology Analyzer"
+    },
+    "sections": [
+      {
+        "h": "Definition of Restrictive Ventilatory Defect (Why Spirometry Fails)",
+        "b": "A restrictive ventilatory defect is characterized by a reduction in total lung capacity (TLC < 80% predicted or < LLN). All lung volumes (TLC, FRC, RV, VC) are typically symmetrically reduced.\n\nWhy Spirometry Alone Cannot Diagnose Restriction:\n• In restrictive disease, FVC is reduced, but FEV1 is reduced proportionally; therefore, the FEV1/FVC ratio is NORMAL or ELEVATED (often > 0.85 due to increased radial traction keeping airways tethered open).\n• However, a low FVC with a normal ratio has a false-positive rate for restriction of up to 40%!\n• Why? Patients with severe air trapping (COPD, asthma) have an elevated residual volume that encroaches on vital capacity, falsely dropping FVC despite a normal or enlarged TLC (pseudorestriction).\n• Mandatory Clinical Rule: Total Lung Capacity (TLC) must be measured via body plethysmography or gas dilution to confirm restriction. If TLC is ≥ 80%, restriction is ruled out!"
+      },
+      {
+        "h": "Intrinsic Parenchymal Restriction: Pathology & Gas Transfer Deficits",
+        "b": "Intrinsic restrictive disorders involve inflammation and fibrosis of the alveolar walls, pulmonary interstitium, and capillary bed, leading to stiff, non-compliant lungs (reduced lung compliance CL).\n\nKey Etiologies:\n1. Idiopathic Interstitial Pneumonias: Idiopathic Pulmonary Fibrosis (IPF / UIP pattern), Non-Specific Interstitial Pneumonia (NSIP), Cryptogenic Organizing Pneumonia (COP).\n2. Connective Tissue Disease-Associated ILD: Systemic Sclerosis (Scleroderma), Rheumatoid Arthritis, SLE, Polymyositis/Dermatomyositis.\n3. Occupational & Environmental: Asbestosis, Silicosis, Chronic Hypersensitivity Pneumonitis (bird fancier's / farmer's lung), Berylliosis.\n4. Drug-Induced Pulmonary Toxicity:\n   • Bleomycin (cumulative dose > 400 units; synergistic lung injury with oxygen!).\n   • Amiodarone (lysosomal accumulation and free radical pneumonitis).\n   • Methotrexate, Busulfan, Nitrofurantoin, Checkpoint inhibitors (anti-PD-1 / CTLA-4).\n5. Radiation Fibrosis: Post-thoracic radiotherapy for breast or lung malignancy.\n\nPFT Signature of Intrinsic Restriction:\n• TLC < 80%, FVC < 80%, FEV1/FVC normal or high (> 0.80).\n• DLCO is MARKEDLY REDUCED (< 60–70% predicted) due to thickening of the alveolar-capillary barrier and loss of capillary bed surface area.\n• Transfer Coefficient (KCO = DLCO/VA) is REDUCED."
+      },
+      {
+        "h": "Extrinsic Restriction: Chest Wall & Pleural Disorders",
+        "b": "In extrinsic restrictive disorders, the lung parenchyma and alveolar-capillary membrane are entirely normal, but expansion of the lungs is mechanically impeded by thoracic cage deformities, pleural disease, or abdominal mass effects.\n\nKey Etiologies:\n1. Chest Wall Deformities:\n   • Kyphoscoliosis: Severe Cobb angle (> 60–100°) causes asymmetric thoracic distortion, poor chest wall compliance (Ccw), and chronic hypoventilation.\n   • Ankylosing Spondylitis: Costovertebral joint fusion limits thoracic excursion; breathing becomes entirely diaphragmatic.\n   • Pectus excavatum / Pectus carinatum.\n2. Pleural Pathology:\n   • Chronic fibrothorax (thickened, calcified pleural peel following hemothorax or empyema).\n   • Massive pleural effusion, malignant mesothelioma.\n3. Abdominal / Extrathoracic Load:\n   • Morbid Obesity (Obesity Hypoventilation Syndrome / Pickwickian Syndrome): Chest wall and abdominal mass load reduces Functional Residual Capacity (FRC) and Expiratory Reserve Volume (ERV) profoundly.\n   • Massive ascites, large intra-abdominal tumors, third-trimester pregnancy.\n\nPFT Signature of Extrinsic Restriction:\n• TLC < 80%, FVC < 80%, FEV1/FVC normal (> 0.70).\n• DLCO is NORMAL when corrected for alveolar volume (KCO = DLCO/VA is normal or elevated!).\n• The alveolar-capillary membrane is intact; low DLCO is simply due to reduced lung volume (VA)."
+      },
+      {
+        "h": "Neuromuscular Respiratory Weakness: MIP, MEP & Supine Spirometry",
+        "b": "Disorders of the respiratory pump (respiratory drive, motor neurons, peripheral nerves, neuromuscular junction, or diaphragm/intercostal muscles) produce a characteristic pattern of pump failure.\n\nKey Etiologies:\n• Amyotrophic Lateral Sclerosis (ALS / Motor Neuron Disease).\n• Myasthenia Gravis (autoantibodies to AChR or MuSK).\n• Guillain-Barré Syndrome (acute inflammatory demyelinating polyneuropathy).\n• Cervical Spinal Cord Injury (C3–C5 phrenic nerve involvement).\n• Bilateral Phrenic Nerve Palsy (post-cardiac surgery or thoracic trauma).\n• Muscular Dystrophies (Duchenne, Becker, Myotonic Dystrophy).\n\nEssential Diagnostic Tests for Neuromuscular Weakness:\n1. Maximal Inspiratory Pressure (MIP / PImax):\n   • Measures diaphragm and inspiratory muscle strength from residual volume.\n   • Normal: > -80 cmH2O (men), > -70 cmH2O (women).\n   • Impaired: MIP < -30 to -40 cmH2O indicates significant diaphragm weakness; < -20 cmH2O signals impending hypercapnic ventilatory failure requiring mechanical support.\n2. Maximal Expiratory Pressure (MEP / PEmax):\n   • Measures abdominal and internal intercostal muscle strength from TLC.\n   • Normal: > +100 cmH2O.\n   • Impaired: MEP < +40 cmH2O predicts ineffective cough, secretion retention, and high post-extubation aspiration risk.\n3. Supine Spirometry Test (Diaphragm Paralysis Hallmark):\n   • Patient performs FVC seated, then repeats FVC after lying completely flat (supine).\n   • Normal subjects have a small drop in FVC of < 10% supine.\n   • Diaphragm Paralysis / Severe Weakness: FVC drops by > 20% to 50% upon lying supine! (Gravity no longer pulls abdominal contents down, and weak diaphragm is pushed into thorax)."
+      },
+      {
+        "h": "DLCO and Transfer Coefficient (KCO) Diagnostic Decision Matrix",
+        "table": {
+          "headers": [
+            "Clinical Category",
+            "TLC",
+            "FEV1 / FVC",
+            "DLCO",
+            "KCO (DLCO/VA)",
+            "Classic Disease Examples"
+          ],
+          "rows": [
+            [
+              "Intrinsic Parenchymal Restriction",
+              "Reduced (<80%)",
+              "Normal or High",
+              "Reduced (<80%)",
+              "Reduced (<80%)",
+              "Idiopathic pulmonary fibrosis, Sarcoidosis, Asbestosis, Drug toxicity"
+            ],
+            [
+              "Extrinsic Chest Wall Restriction",
+              "Reduced (<80%)",
+              "Normal or High",
+              "Reduced (proportional to VA)",
+              "Normal or Elevated (≥100%)",
+              "Kyphoscoliosis, Fibrothorax, Morbid obesity, Ankylosing spondylitis"
+            ],
+            [
+              "Neuromuscular Weakness",
+              "Reduced (<80%)",
+              "Normal or High",
+              "Mildly reduced",
+              "Normal or High (≥100%)",
+              "Myasthenia gravis, ALS, Guillain-Barré, Phrenic nerve palsy (drop in supine FVC)"
+            ],
+            [
+              "Isolated DLCO Defect (Normal Spirometry)",
+              "Normal (80-120%)",
+              "Normal (≥0.70)",
+              "Reduced (<80%)",
+              "Reduced (<80%)",
+              "Pulmonary arterial hypertension (PAH), Chronic thromboembolic PH (CTEPH), Anemia, Early ILD"
+            ]
+          ],
+          "caption": "Diagnostic decision matrix using TLC, DLCO, and KCO to differentiate restrictive phenotypes."
+        },
+        "b": "Transfer Coefficient Rule:\n• KCO = DLCO / VA.\n• If DLCO is low, but KCO is NORMAL: the diffusing membrane is healthy; the lung is simply small (extrinsic restriction, post-pneumonectomy, submaximal inspiratory effort).\n• If BOTH DLCO and KCO are low: true alveolar-capillary membrane destruction is present (intrinsic parenchymal disease or pulmonary vascular occlusion)."
+      },
+      {
+        "h": "Anaesthetic & Perioperative Management of Restrictive Diseases",
+        "b": "Patients with restrictive lung disease present profound challenges for general anaesthesia and mechanical ventilation:\n\n1. Severe Drop in Functional Residual Capacity (FRC):\n   • Induction of general anaesthesia and supine positioning reduces FRC by an additional 20–30% in already volume-contracted lungs.\n   • Rapid desaturation upon induction: Apneic safe time is drastically shortened. Mandatory thorough preoxygenation (3–5 minutes of tight-seal 100% O2 or CPAP/PEEP with THRIVE).\n\n2. Low Respiratory Compliance & High Peak Pressures:\n   • Stiff lungs require high airway pressures to deliver normal volumes.\n   • Intraoperative Ventilatory Strategy: Use Volume-Controlled or Pressure-Controlled ventilation with low tidal volumes (4 to 6 mL/kg predicted body weight) and higher respiratory rates (14 to 18 breaths/min) to maintain minute ventilation while keeping plateau pressure < 30 cmH2O to prevent barotrauma.\n   • Titrate PEEP cautiously: PEEP maintains alveolar recruitment, but excessive PEEP can overdistend relatively healthy alveoli and compromise right ventricular hemodynamics.\n\n3. High-Risk Drug Warnings:\n   • Bleomycin: Strict limitation of intraoperative FiO2! High inspired oxygen concentrations (FiO2 > 0.30–0.40) generate excessive reactive oxygen species (ROS) that catalyze catastrophic free-radical mediated lung destruction and fatal ARDS. Keep FiO2 as low as compatible with SpO2 ≥ 90–92%.\n   • Neuromuscular Blockade: Patients with neuromuscular weakness (Myasthenia Gravis, ALS) are hypersensitive to non-depolarising muscle relaxants. Use qualitative or quantitative TOF monitoring; reverse with Sugammadex rather than neostigmine whenever possible."
+      }
+    ],
+    "example": "CLINICAL CASE: A 58-year-old woman with systemic sclerosis and progressive exertional dyspnea is scheduled for laparoscopic cholecystectomy. Preoperative PFTs reveal:\n• FVC = 1.62 L (48% predicted), FEV1 = 1.45 L (52% predicted), FEV1/FVC = 0.89.\n• Plethysmography: TLC = 2.65 L (54% predicted), RV = 1.05 L (68% predicted), RV/TLC = 39%.\n• Gas Transfer: DLCO = 36% predicted (Hb-corrected), KCO = 55% predicted.\n\nSystematic Diagnostic Interpretation:\n1. FEV1/FVC is high (0.89), ruling out airflow obstruction.\n2. TLC is 54% predicted (< 80%), confirming a SEVERE RESTRICTIVE VENTILATORY DEFECT.\n3. Both DLCO (36%) and KCO (55%) are severely depressed → Points decisively to INTRINSIC PARENCHYMAL RESTRICTION (Systemic Sclerosis-associated Interstitial Lung Disease / pulmonary fibrosis), rather than simple chest wall tightening.\n\nAnaesthetic Plan:\n• Meticulous preoxygenation with PEEP.\n• Lung-protective ventilation: TV = 280 mL (5 mL/kg IBW), RR = 18/min, PEEP = 6 cmH2O; monitor plateau pressure continuously (target < 28 cmH2O).\n• Limit IV fluids to prevent hydrostatic pulmonary edema in vulnerable capillary beds.\n• Postoperative high-dependency unit (HDU) admission with multimodal opioid-sparing analgesia.",
+    "crossLinks": [
+      {
+        "label": "📖 How to Read a PFT (Systematic 5-Step Protocol)",
+        "item": "pft-how-to-read"
+      },
+      {
+        "label": "🌬️ Obstructive Lung Diseases (COPD, Asthma & Mechanics)",
+        "item": "pft-obstructive"
+      },
+      {
+        "label": "📈 Flow-Volume Loops & Airway Lesions",
+        "item": "pft-flow-volume-loops"
+      },
+      {
+        "label": "✂️ Post-Operative FEV1 & DLCO (Resection Assessment)",
+        "item": "pft-postop-fev1-dlco"
+      },
+      {
+        "label": "🧪 ABG Systematic Analysis & Oxygenation",
+        "item": "abg-interpretation-systematic"
+      }
+    ],
+    "references": [
+      "Raghu G, Remy-Jardin M, Richeldi L, et al. Idiopathic Pulmonary Fibrosis: ATS/ERS/JRS/ALAT Clinical Practice Guideline. Am J Respir Crit Care Med 2022;205:e18–e47.",
+      "Stanojevic S, et al. ERS/ATS technical standard on interpretive strategies for routine lung function tests. Eur Respir J 2022;60:2101499.",
+      "Miller's Anesthesia, 10th ed. (Gropper MA, ed.), Ch. 45: Anesthesia for Thoracic Surgery. Elsevier, 2025/2026.",
+      "West JB, Luks AM. West's Pulmonary Pathophysiology: The Essentials, 10th ed. Wolters Kluwer, 2021."
+    ]
+  },
+  {
+    "id": "pft-flow-volume-loops",
+    "cat": "pft",
+    "name": "Flow-Volume Loops & Airway Lesions",
+    "brand": "Maximal Expiratory & Inspiratory Flow-Volume Curves (MEFV / MIFV)",
+    "classification": "Respiratory Mechanics • Airway Geometry • Upper Airway Obstruction",
+    "tagline": "Morphological analysis of flow-volume loops: obstructive scooping, restrictive witch's hat, and fixed vs variable upper airway obstruction",
+    "tags": [
+      "Flow-Volume Loop",
+      "Upper Airway Obstruction",
+      "Tracheal Stenosis",
+      "Vocal Cord Paralysis",
+      "FEF50/FIF50",
+      "Stridor",
+      "Awake Fiberoptic"
+    ],
+    "source": "Miller RD, Hyatt RE. Evaluation of Obstructing Lesions of the Trachea and Larynx by Flow-Volume Loops. Am Rev Respir Dis 1973;108:475–481; British Journal of Anaesthesia 2022; Miller's Anesthesia, 10th ed., Ch. 44.",
+    "diagram": "pft-flow-volume-loops",
+    "link": {
+      "url": "calculators.html?calc=calc-pft-analyzer",
+      "label": "Open PFT Pathology Analyzer"
+    },
+    "sections": [
+      {
+        "h": "Physiological Anatomy of the Flow-Volume Loop",
+        "b": "The flow-volume loop plots instantaneous airflow (L/second) on the vertical y-axis against lung volume (Liters) on the horizontal x-axis during a maximal forced expiratory maneuver followed by a maximal forced inspiratory maneuver.\n\nOrientation Conventions:\n• Expiration is plotted ABOVE the horizontal axis (positive flow).\n• Inspiration is plotted BELOW the horizontal axis (negative flow).\n• Volume axis: Total Lung Capacity (TLC) is at the far LEFT; Residual Volume (RV) is at the far RIGHT. Forced expiration travels from LEFT (TLC) to RIGHT (RV); forced inspiration travels from RIGHT (RV) back to LEFT (TLC).\n\nAnatomy of the Normal Loop:\n1. Expiratory Curve:\n   • Rapid, explosive ascent to a sharp Peak Expiratory Flow (PEF) within 100 ms of start.\n   • Linear, steady downward descent from PEF to RV (no concave dips or plateaus).\n2. Inspiratory Curve:\n   • Smooth, symmetric, semi-elliptical or parabolic contour.\n   • Peak Inspiratory Flow (PIF) occurs midway through inspiration (around 50% of VC)."
+      },
+      {
+        "h": "Effort-Dependent vs Effort-Independent Flow Dynamics",
+        "b": "Understanding why the expiratory and inspiratory limbs have different shapes is rooted in airway mechanics:\n\n1. Initial Expiration (TLC to 75% VC) — Effort-Dependent:\n   • Flow during the first 25% of expiration is directly determined by patient effort and expiratory muscle strength (abdominal and internal intercostal force) and airway caliber of large central bronchi.\n   • This generates the sharp PEF peak.\n\n2. Middle-to-Late Expiration (75% to RV) — Effort-Independent:\n   • Once the Equal Pressure Point (EPP) is established, maximum expiratory flow is strictly governed by the elastic recoil pressure of the lung (Pel) and the resistance of upstream small airways (Raw).\n   • No matter how hard the patient squeezes their chest, expiratory flow CANNOT increase further (flow limitation) because higher pleural pressure simply compresses downstream airways proportionally.\n\n3. Entire Inspiratory Curve — Effort-Dependent:\n   • During inspiration, pleural pressure becomes increasingly negative (-10 to -25 cmH2O).\n   • Negative pleural pressure expands and dilates intrathoracic airways, preventing dynamic compression.\n   • Hence, flow throughout inspiration depends entirely on patient muscular effort and upper airway patency."
+      },
+      {
+        "h": "Parenchymal Patterns: Obstructive Coving vs Restrictive Witch's Hat",
+        "b": "Two classic morphological signatures represent diffuse parenchymal lung pathology:\n\n1. Obstructive Pattern ('Scooped-Out' / Concave Loop):\n   • Peak Expiratory Flow (PEF) is reduced and delayed.\n   • Expiratory limb displays marked upward concavity ('coving' or 'scooping') toward the horizontal axis.\n   • Mechanism: As lung volume declines during expiration, loss of elastic recoil and high small airway resistance cause early airway closure and severely reduced flow rates at mid-to-low lung volumes (FEF25–75% and FEF50%).\n   • Seen in: Emphysema (most pronounced scooping), Asthma, Chronic Bronchitis, Cystic Fibrosis.\n\n2. Restrictive Pattern ('Witch's Hat' / Tall Narrow Loop):\n   • The loop looks like a miniature, scaled-down normal loop ('witch's hat' appearance).\n   • The shape and contour are preserved with a sharp peak and linear descent, but the width along the volume axis is severely compressed (reduced FVC and TLC).\n   • Peak flow relative to lung volume is actually preserved or even supranormal, because increased radial elastic parenchymal traction tethers airways open and maintains high flows at small lung volumes.\n   • Seen in: Idiopathic pulmonary fibrosis, sarcoidosis, chest wall deformities, neuromuscular weakness."
+      },
+      {
+        "h": "Upper Airway Obstruction (UAO): Fixed vs Variable Extrathoracic vs Variable Intrathoracic",
+        "table": {
+          "headers": [
+            "Type of Lesion",
+            "Expiratory Limb",
+            "Inspiratory Limb",
+            "FEF50 / FIF50",
+            "Classic Etiologies"
+          ],
+          "rows": [
+            [
+              "Fixed Upper Airway Obstruction",
+              "Flattened / Plateaued (constant flow)",
+              "Flattened / Plateaued (constant flow)",
+              "≈ 1.0 (0.7 – 1.0)",
+              "Tracheal stenosis (post-intubation/tracheostomy), bilateral vocal cord paralysis, obstructing thyroid goiter, rigid circumferential tracheal tumor"
+            ],
+            [
+              "Variable Extrathoracic Obstruction",
+              "NORMAL (positive airway pressure stents airway open)",
+              "FLATTENED / Plateaued (negative intraluminal pressure collapses airway)",
+              "> 1.0 (often > 1.5 – 2.0)",
+              "Unilateral vocal cord paralysis, vocal cord polyp, laryngomalacia, obstructing laryngeal papilloma, OSA pharyngeal collapse"
+            ],
+            [
+              "Variable Intrathoracic Obstruction",
+              "FLATTENED / Plateaued (positive pleural pressure collapses airway)",
+              "NORMAL (negative pleural pressure dilates airway)",
+              "< 0.5 (often < 0.3)",
+              "Tracheomalacia, intrathoracic tracheal tumor/adenoma, mediastinal mass compressing lower trachea"
+            ]
+          ],
+          "caption": "Morphology, physiology, and etiologies of Upper Airway Obstruction on Flow-Volume Loops."
+        },
+        "b": "Transmural Pressure Mechanics (The Key to Understanding Variable Lesions):\n• Extrathoracic Airway (Larynx to Thoracic Inlet):\n  - Surrounding tissue pressure is atmospheric (0 cmH2O).\n  - During Inspiration: Negative pressure inside airway (-5 to -15 cmH2O) sucks pliable lesion inward → INSPIRATORY FLATTENING.\n  - During Expiration: Positive pressure inside airway (+10 to +30 cmH2O) pushes lesion outward → NORMAL EXPIRATION.\n• Intrathoracic Airway (Thoracic Inlet to Carina):\n  - Surrounding tissue pressure is pleural pressure (Ppl).\n  - During Expiration: Forced expiration creates high positive pleural pressure (+20 to +40 cmH2O) that exceeds intraluminal airway pressure → dynamic compression collapses pliable lesion → EXPIRATORY FLATTENING.\n  - During Inspiration: Negative pleural pressure expands airways and holds pliable lesion open → NORMAL INSPIRATION."
+      },
+      {
+        "h": "Quantitative Ratios for Upper Airway Obstruction",
+        "b": "Three objective numerical indices calculate the probability and type of upper airway obstruction:\n\n1. FEF50 / FIF50 Ratio (Miller & Hyatt Index):\n   • Ratio of Forced Expiratory Flow at 50% of VC to Forced Inspiratory Flow at 50% of VC.\n   • Normal value: 0.8 to 1.0.\n   • Fixed UAO: ≈ 1.0 (both flows equally truncated).\n   • Variable Extrathoracic: > 1.2 to 2.0 (inspiratory flow impaired, expiratory normal).\n   • Variable Intrathoracic: < 0.3 to 0.5 (expiratory flow impaired, inspiratory normal).\n\n2. Empey Index (Airflow-Obstruction Index):\n   • Formula: FEV1 (in mL) / PEF (in L/min).\n   • Normal: < 8.0.\n   • Upper Airway Obstruction: > 8.0 (e.g. FEV1 2400 mL / PEF 180 L/min = 13.3) indicates central upper airway stenosis rather than diffuse parenchymal COPD.\n\n3. Rothman Ratio:\n   • FEV1 (in L) / FEV0.5 (in L). A ratio approaching 1.0 indicates fixed flow truncation."
+      },
+      {
+        "h": "Anaesthetic Management, Airway Red Flags & Awake Intubation Strategy",
+        "b": "Flow-volume loop abnormalities pointing to upper airway obstruction are critical anaesthetic red flags that dictate the airway management plan:\n\n1. Clinical Presentation & Symptoms:\n   • Stridor: Inspiratory stridor suggests extrathoracic obstruction (laryngeal); expiratory wheeze/stridor suggests intrathoracic tracheal obstruction; biphasic stridor indicates fixed, high-grade subglottic or tracheal stenosis.\n   • Positional dyspnea (worse supine) strongly indicates anterior mediastinal mass or mobile supraglottic lesion.\n\n2. Loss of Spontaneous Respiration Hazard:\n   • Induction of general anaesthesia with neuromuscular blockade relaxes pharyngeal and laryngeal dilator tone and eliminates the negative intrathoracic transmural pressure gradient that stents intrathoracic airways open.\n   • Result: COMPLETE, CATASTROPHIC AIRWAY CLOSURE ('cannot intubate, cannot ventilate' scenario) upon induction!\n\n3. Standard of Care in High-Grade or Variable UAO:\n   • AWAKE FLEXIBLE ENDOSCOPIC INTUBATION (AFEI):\n     - Perform topical local anaesthesia of the airway (nebulized lidocaine 4%, superior laryngeal nerve block, trans-tracheal injection).\n     - Maintain spontaneous respiration throughout.\n     - Directly visualize the obstructing lesion, confirm patency, and advance the endotracheal tube past the narrowing under direct visual guidance.\n   • Rigid Bronchoscopy & ENT / Thoracic Team on Standby:\n     - Rigid bronchoscope, jet ventilation, and extracorporeal membrane oxygenation (ECMO) standby in operating room for high-grade tracheal stenosis or mediastinal mass before inducing anaesthesia."
+      }
+    ],
+    "example": "CLINICAL CASE: A 42-year-old woman presents for thyroidectomy for a large multinodular goiter. She reports increasing shortness of breath when lying flat and an unusual 'whistling sound' when breathing in during exercise. Routine spirometry reveals:\n• FVC = 3.60 L (96% pred), FEV1 = 2.45 L (82% pred), FEV1/FVC = 0.68.\n• Peak Expiratory Flow (PEF) = 6.8 L/s (normal).\n• Forced Inspiratory Flow at 50% (FIF50) = 1.6 L/s (severely reduced).\n• Forced Expiratory Flow at 50% (FEF50) = 4.8 L/s.\n• FEF50 / FIF50 Ratio = 4.8 / 1.6 = 3.0.\n\nLoop Analysis & Diagnosis:\n• Expiratory limb is normal with sharp peak and linear descent.\n• Inspiratory limb shows marked flattening and horizontal plateauing at 1.6 L/s.\n• FEF50 / FIF50 ratio is 3.0 (> 1.5) → Pathognomonic for VARIABLE EXTRATHORACIC UPPER AIRWAY OBSTRUCTION.\n• CT neck/chest confirms a retrosternal goiter with extrinsic compression of the extrathoracic trachea and unilateral vocal cord hypomobility.\n\nAnaesthetic Strategy: The finding of variable extrathoracic obstruction with inspiratory plateauing mandates avoidance of standard IV induction. An awake flexible fiberoptic intubation under topical anaesthesia with ENT surgical team in the room is executed successfully, securing the airway safely without respiratory collapse.",
+    "crossLinks": [
+      {
+        "label": "📖 How to Read a PFT (Systematic 5-Step Protocol)",
+        "item": "pft-how-to-read"
+      },
+      {
+        "label": "🌬️ Obstructive Lung Diseases (COPD, Asthma & Mechanics)",
+        "item": "pft-obstructive"
+      },
+      {
+        "label": "🫁 Restrictive Lung Diseases & DLCO",
+        "item": "pft-restrictive"
+      },
+      {
+        "label": "🌬️ Airway Devices — Laryngoscopes, SADs & Bougies",
+        "item": "airway-devices-equipment"
+      },
+      {
+        "label": "🔄 Rapid Sequence Induction (RSI)",
+        "item": "rsi"
+      }
+    ],
+    "references": [
+      "Miller RD, Hyatt RE. Evaluation of Obstructing Lesions of the Trachea and Larynx by Flow-Volume Loops. Am Rev Respir Dis 1973;108:475–481.",
+      "Miller's Anesthesia, 10th ed. (Gropper MA, ed.), Ch. 44: Airway Management in the Adult. Elsevier, 2025/2026.",
+      "British Journal of Anaesthesia. Airway management in patients with central airway obstruction: an updated consensus statement. BJA 2022;129(4):e98–e107.",
+      "Stanojevic S, et al. ERS/ATS technical standard on interpretive strategies for routine lung function tests. Eur Respir J 2022;60:2101499."
+    ]
+  },
+  {
+    "id": "pft-postop-fev1-dlco",
+    "cat": "pft",
+    "name": "Post-Operative Predicted FEV1 & DLCO (ppoFEV1 & ppoDLCO)",
+    "brand": "ACCP & ESTS Thoracic Surgery Guidelines • Lung Resection Risk",
+    "classification": "Thoracic Anaesthesia • Perioperative Risk Stratification • Pulmonary Resection",
+    "tagline": "Preoperative evaluation for lung resection: 19-segment anatomical counting, perfusion scintigraphy, CPET, and perioperative mortality ladders",
+    "tags": [
+      "ppoFEV1",
+      "ppoDLCO",
+      "Thoracic",
+      "Lobectomy",
+      "Pneumonectomy",
+      "Segment Counting",
+      "ACCP",
+      "ESTS",
+      "OLV"
+    ],
+    "source": "Brunelli A, Charloux A, Bolliger CT, et al. ERS/ESTS clinical guidelines on fitness for radical therapy in lung cancer patients. Eur Respir J 2009;34:17–41; Roy PM, et al. ACCP Guidelines for Physiologic Evaluation of Patient Being Considered for Lung Resection. Chest 2013;143:e166S–e190S; Miller's Anesthesia 10th ed., Ch. 45.",
+    "diagram": "pft-postop-resection",
+    "link": {
+      "url": "calculators.html?calc=calc-postop-pft",
+      "label": "Open Post-Operative FEV1 & DLCO Resection Calculator"
+    },
+    "sections": [
+      {
+        "h": "The Rationale for Post-Operative Pulmonary Prediction",
+        "b": "Surgical resection (lobectomy, segmentectomy, sleeve resection, pneumonectomy) remains the definitive curative treatment for early-stage non-small cell lung cancer (NSCLC). However, many lung cancer patients have underlying tobacco-related COPD, emphysema, or cardiovascular comorbidity.\n\nWhy Prediction is Essential:\n• Resection of functional lung tissue permanently reduces pulmonary functional reserve.\n• The single most important determinants of perioperative cardiopulmonary mortality and long-term respiratory disability are the predicted post-operative FEV1 (ppoFEV1%) and predicted post-operative DLCO (ppoDLCO%).\n• Removing too much lung parenchyma leads to post-resection acute respiratory failure, right heart failure (cor pulmonale from sudden reduction of pulmonary vascular bed), and death."
+      },
+      {
+        "h": "Anatomical Segment Counting Method (The 19-Segment Rule)",
+        "b": "For lobectomies, segmentectomies, and bilobectomies, the ACCP and ESTS guidelines recommend the anatomical segment counting method.\n\nAnatomical Bronchopulmonary Segment Distribution (Total = 19 Segments):\n• Right Lung (10 Segments total):\n  - Right Upper Lobe (RUL): 3 segments (Apical, Posterior, Anterior).\n  - Right Middle Lobe (RML): 2 segments (Lateral, Medial).\n  - Right Lower Lobe (RLL): 5 segments (Superior, Medial basal, Anterior basal, Lateral basal, Posterior basal).\n• Left Lung (9 Segments total):\n  - Left Upper Lobe (LUL - Culmen): 3 segments (Apical, Posterior, Anterior).\n  - Lingula: 2 segments (Superior, Inferior).\n  - Left Lower Lobe (LLL): 4 segments (Superior, Anteromedial basal, Lateral basal, Posterior basal).\n\nMathematical Formula:\nppoFEV1% = Preoperative FEV1% × [1 - (S_resected / S_total)]\nppoDLCO% = Preoperative DLCO% × [1 - (S_resected / S_total)]\n\nWhere:\n• S_resected = Number of functioning segments to be surgically removed.\n• S_total = Total number of functioning segments before surgery (normally 19, unless an obstructed or completely atelectatic lobe has 0 function on preoperative imaging)."
+      },
+      {
+        "h": "Quantitative Radionuclide Perfusion Scintigraphy (V/Q Scan)",
+        "b": "For patients undergoing PNEUMONECTOMY (complete removal of an entire lung), the anatomical segment counting method is inaccurate because ventilation and perfusion are often unequally distributed between the two lungs (e.g. central tumor occluding pulmonary artery branch).\n\nQuantitative Perfusion Scan Method:\n• A planar radionuclide perfusion scan using technetium-99m macroaggregated albumin (99mTc-MAA) is performed.\n• The fraction of total pulmonary blood flow directed to each lung is quantified:\n  - % Perfusion to Right Lung (normally ~55%)\n  - % Perfusion to Left Lung (normally ~45%)\n\nCalculation for Pneumonectomy:\n• ppoFEV1% = Preoperative FEV1% × (1 - Fractional Perfusion of Lung to be Resected)\n• ppoDLCO% = Preoperative DLCO% × (1 - Fractional Perfusion of Lung to be Resected)\n\nClinical Example: If the right lung receives 60% of total perfusion on V/Q scan and preoperative FEV1 is 70%:\nppoFEV1% = 70% × (1 - 0.60) = 70% × 0.40 = 28.0% (High risk!)\nConversely, if a massive tumor already non-functions the right lung (perfusion only 10%):\nppoFEV1% = 70% × (1 - 0.10) = 63% (Safe to resect!)."
+      },
+      {
+        "h": "ACCP & ESTS 3-Tier Risk Stratification Algorithm",
+        "table": {
+          "headers": [
+            "Risk Tier",
+            "ppoFEV1% and ppoDLCO%",
+            "CPET VO2 max (if performed)",
+            "Cardiopulmonary Risk & Recommendation"
+          ],
+          "rows": [
+            [
+              "LOW RISK (Tier 1)",
+              "Both ppoFEV1% > 40% AND ppoDLCO% > 40%",
+              "VO2 max > 20 mL/kg/min (or > 75% pred)",
+              "Low perioperative mortality (<1-2%). Standard surgical candidate; proceed to planned resection without further testing."
+            ],
+            [
+              "INTERMEDIATE RISK (Tier 2)",
+              "Either ppoFEV1% OR ppoDLCO% between 30% and 40%",
+              "VO2 max 10 to 19 mL/kg/min (35-75% pred)",
+              "Moderate perioperative complication rate. Mandatory Formal Cardiopulmonary Exercise Testing (CPET) to assess functional capacity before deciding."
+            ],
+            [
+              "HIGH RISK (Tier 3)",
+              "Either ppoFEV1% < 30% OR ppoDLCO% < 30%",
+              "VO2 max < 10 mL/kg/min (< 35% pred)",
+              "Very high perioperative mortality (>10%) and morbidity. Standard anatomical resection contraindicated. Consider sublobar wedge resection, stereotactic body radiation (SBRT), or ablation."
+            ]
+          ],
+          "caption": "ACCP & ESTS guidelines for physiological assessment before lung resection."
+        },
+        "b": "Critical Guideline Rule:\n• Never rely on ppoFEV1 alone! In many patients, ppoFEV1 is normal (>60%) but ppoDLCO is severely reduced (<30%) due to emphysematous microvascular destruction.\n• An isolated low ppoDLCO (<30%) carries the EXACT SAME high perioperative mortality risk as a low ppoFEV1!"
+      },
+      {
+        "h": "Cardiopulmonary Exercise Testing (CPET) & Bedside Exercise Surrogates",
+        "b": "Cardiopulmonary Exercise Testing (CPET) is the ultimate gold standard for measuring integrated global oxygen transport (pulmonary ventilation, gas diffusion, cardiac output, and peripheral muscular utilization):\n\n1. CPET Parameters & Risk Cutoffs:\n   • VO2 max > 20 mL/kg/min: Normal aerobic capacity; low risk for any thoracic resection (even pneumonectomy).\n   • VO2 max 10 to 15 mL/kg/min: Increased risk; lobectomy acceptable, pneumonectomy carries high risk.\n   • VO2 max < 10 mL/kg/min (or < 35% predicted): Extremely high mortality (> 25%). Conventional lung resection is generally contraindicated.\n   • VE / VCO2 Slope > 35: Ventilatory inefficiency; independent predictor of postoperative pulmonary complications.\n\n2. Bedside Exercise Surrogates (When Formal CPET is Unavailable):\n   • Stair Climbing Test:\n     - Climbing > 5 flights of stairs (> 22 meters vertical ascent): Correlates with VO2 max > 20 mL/kg/min (low risk).\n     - Climbing 3 to 4 flights: Correlates with VO2 max 15–20 mL/kg/min.\n     - Inability to climb 2 flights (< 12 meters): Correlates with VO2 max < 10 mL/kg/min (high risk).\n   • Incremental Shuttle Walk Test (ISWT):\n     - Walking distance > 400 meters: VO2 max ≥ 15 mL/kg/min.\n     - Walking distance < 250 meters: Correlates with VO2 max < 10 mL/kg/min."
+      },
+      {
+        "h": "Thoracic Anaesthesia Management & Preventing Post-Resection ALI",
+        "b": "Key intraoperative management principles during one-lung ventilation (OLV) and lung resection:\n\n1. Protective One-Lung Ventilation (OLV):\n   • Historically, 10–12 mL/kg tidal volumes were used during OLV to maintain PaCO2, causing severe volutrauma and shear stress in the dependent lung.\n   • Modern Standard: Low tidal volume 4 to 5 mL/kg (predicted body weight) to the ventilated dependent lung.\n   • PEEP: 5 to 8 cmH2O on dependent lung.\n   • Plateau pressure < 25 cmH2O, driving pressure < 15 cmH2O.\n   • Permissive hypercapnia is safe and protective.\n\n2. Fluid Restriction (The #1 Rule to Prevent Post-Pneumonectomy Pulmonary Edema):\n   • Post-pneumonectomy pulmonary edema is a devastating form of acute lung injury (ALI) occurring 24–72 hours post-resection, with mortality > 50%.\n   • Caused by hyperfiltration of the entire cardiac output through a reduced pulmonary vascular bed, combined with lymphatic disruption.\n   • Restrict crystalloids to < 1.5 L total during the case (< 1 to 2 mL/kg/hr).\n   • Avoid fluid boluses for transient hypotension; use vasopressor infusions (noradrenaline) instead!\n\n3. Regional Analgesia:\n   • Thoracic epidural analgesia (TEA) or ultrasound-guided Thoracic Paravertebral Block (TPVB) / Erector Spinae Plane (ESP) block.\n   • Effective opioid-sparing analgesia facilitates early extubation, deep breathing, and aggressive post-op mobilization."
+      }
+    ],
+    "example": "CLINICAL CASE: A 65-year-old male with a 45 pack-year smoking history and a 3.5 cm adenocarcinoma in the right upper lobe is scheduled for right upper lobectomy.\n\nPreoperative PFT Data:\n• Preoperative FEV1 = 1.95 L (65% predicted)\n• Preoperative DLCO = 16.5 mL/min/mmHg (55% predicted)\n• Surgery Planned: Right Upper Lobectomy (RUL). RUL contains 3 segments (Apical, Posterior, Anterior).\n\nCalculation:\n• Total functioning segments = 19.\n• Resected segments = 3.\n• Unresected fraction = (19 - 3) / 19 = 16 / 19 = 0.842 (84.2%).\n• ppoFEV1% = 65% × (16 / 19) = 54.7% predicted.\n• ppoDLCO% = 55% × (16 / 19) = 46.3% predicted.\n\nACCP / ESTS Risk Stratification:\n• Both ppoFEV1% (54.7%) and ppoDLCO% (46.3%) are strictly GREATER than 40%.\n• Result: The patient is in LOW RISK (Tier 1). He is a safe surgical candidate for right upper lobectomy and does NOT require preoperative CPET testing.\n• Anaesthesia Plan: Left double-lumen endotracheal tube (39 Fr), protective OLV (4-5 mL/kg, PEEP 5 cmH2O), thoracic epidural at T5-T6, strict fluid restriction (< 1.5 L crystalloid total).",
+    "crossLinks": [
+      {
+        "label": "📖 How to Read a PFT (Systematic 5-Step Protocol)",
+        "item": "pft-how-to-read"
+      },
+      {
+        "label": "🌬️ Obstructive Lung Diseases (COPD & Mechanics)",
+        "item": "pft-obstructive"
+      },
+      {
+        "label": "🫁 Restrictive Lung Diseases & DLCO",
+        "item": "pft-restrictive"
+      },
+      {
+        "label": "📈 Flow-Volume Loops & Airway Lesions",
+        "item": "pft-flow-volume-loops"
+      },
+      {
+        "label": "🧮 Open Post-Op PFT Resection Calculator",
+        "item": "pft-calculator"
+      }
+    ],
+    "references": [
+      "Brunelli A, Charloux A, Bolliger CT, et al. ERS/ESTS clinical guidelines on fitness for radical therapy in lung cancer patients. Eur Respir J 2009;34:17–41.",
+      "Roy PM, et al. ACCP Guidelines for Physiologic Evaluation of Patient Being Considered for Lung Resection. Chest 2013;143:e166S–e190S.",
+      "Miller's Anesthesia, 10th ed. (Gropper MA, ed.), Ch. 45: Anesthesia for Thoracic Surgery. Elsevier, 2025/2026.",
+      "Slinger P, et al. Principles and Practice of Anesthesia for Thoracic Surgery. Springer, 2019."
     ]
   }
 ];

@@ -1835,6 +1835,391 @@
     };
   }
 
+  // ==========================================================================
+  // PULMONARY FUNCTION TEST (PFT) INTERPRETATION ENGINE
+  // Evidence-based ATS/ERS Spirometry & Lung Volumes Diagnostic Algorithm
+  // Sources:
+  // - Pellegrino R et al. Eur Respir J 2005; 26: 948–968 (ATS/ERS Consensus)
+  // - Stanojevic S et al. Eur Respir J 2022; 60: 2101499 (2022 ATS/ERS Technical Standard)
+  // ==========================================================================
+  function calculatePFT({
+    fev1,
+    fev1Pred,
+    fvc,
+    fvcPred,
+    ratio,
+    postBdFev1ChangePercent,
+    postBdFev1ChangeMl,
+    tlcPred,
+    dlcoPred
+  } = {}) {
+    let effectiveRatio = num(ratio);
+    const f1 = num(fev1);
+    const fv = num(fvc);
+    if (effectiveRatio === null && f1 !== null && fv !== null && fv > 0) {
+      effectiveRatio = (f1 / fv) * 100;
+    }
+    if (effectiveRatio !== null && effectiveRatio <= 1.0 && effectiveRatio > 0) {
+      effectiveRatio = effectiveRatio * 100;
+    }
+
+    const f1P = num(fev1Pred);
+    const fvP = num(fvcPred);
+    const tlc = num(tlcPred);
+    const dlco = num(dlcoPred);
+    const bdPct = num(postBdFev1ChangePercent);
+    const bdMl = num(postBdFev1ChangeMl);
+
+    if (effectiveRatio === null && f1P === null && fvP === null) {
+      return { error: "Please enter FEV1/FVC ratio (or FEV1 & FVC) and % predicted values." };
+    }
+
+    const ratioVal = effectiveRatio !== null ? round(effectiveRatio, 1) : null;
+    const isObstructed = ratioVal !== null ? ratioVal < 70 : false;
+
+    let isReversible = false;
+    let reversibilityText = "";
+    if (bdPct !== null || bdMl !== null) {
+      const hasPct = bdPct !== null && bdPct >= 12;
+      const hasMl = bdMl !== null && bdMl >= 200;
+      if (hasPct && hasMl) {
+        isReversible = true;
+        reversibilityText = "Significant Bronchodilator Reversibility (ΔFEV1 ≥ 12% and ≥ 200 mL)";
+      } else if (hasPct || hasMl) {
+        reversibilityText = "Partial Bronchodilator Response";
+      } else {
+        reversibilityText = "No Significant Bronchodilator Reversibility";
+      }
+    }
+
+    let primaryDiagnosis = "";
+    let pathologyType = "";
+    let severity = "";
+    let severityClass = "info";
+    let physiologicalMechanisms = [];
+    let differentialDiagnoses = [];
+    let anaesthesiaImplications = [];
+
+    if (isObstructed) {
+      pathologyType = "obstructive";
+      if (f1P !== null) {
+        if (f1P >= 80) {
+          severity = "Mild Obstruction (FEV1 ≥ 80% pred)";
+          severityClass = "warn";
+        } else if (f1P >= 60) {
+          severity = "Moderate Obstruction (FEV1 60–79% pred)";
+          severityClass = "warn";
+        } else if (f1P >= 50) {
+          severity = "Moderately Severe Obstruction (FEV1 50–59% pred)";
+          severityClass = "danger";
+        } else if (f1P >= 35) {
+          severity = "Severe Obstruction (FEV1 35–49% pred)";
+          severityClass = "danger";
+        } else {
+          severity = "Very Severe Obstruction (FEV1 < 35% pred)";
+          severityClass = "danger";
+        }
+      } else {
+        severity = "Obstructive Defect (FEV1 % not provided for grading)";
+        severityClass = "warn";
+      }
+
+      if (tlc !== null && tlc < 80) {
+        pathologyType = "mixed";
+        primaryDiagnosis = "Mixed Obstructive & Restrictive Ventilatory Defect";
+        severityClass = "danger";
+        differentialDiagnoses = [
+          "Combined Pulmonary Fibrosis and Emphysema (CPFE)",
+          "Advanced Sarcoidosis",
+          "Severe Bronchiectasis with parenchymal destruction/atelectasis",
+          "Morbid obesity complicating severe COPD"
+        ];
+        physiologicalMechanisms.push("Reduced FEV1/FVC confirms expiratory airflow limitation.");
+        physiologicalMechanisms.push(`Reduced TLC (${tlc}% pred) confirms concurrent true lung volume restriction.`);
+      } else {
+        primaryDiagnosis = `Obstructive Ventilatory Defect (${severity.split(' ')[0]})`;
+        physiologicalMechanisms.push(`FEV1/FVC ratio is ${ratioVal}% (< 70%), demonstrating expiratory airflow limitation.`);
+        if (f1P !== null) {
+          physiologicalMechanisms.push(`FEV1 is ${f1P}% predicted (${severity}).`);
+        }
+        if (tlc !== null) {
+          if (tlc > 120) {
+            physiologicalMechanisms.push(`TLC is elevated at ${tlc}% predicted, indicating true Hyperinflation.`);
+          } else if (tlc >= 80) {
+            physiologicalMechanisms.push(`TLC is normal (${tlc}% pred), ruling out concomitant restriction.`);
+          }
+        }
+        if (dlco !== null) {
+          if (dlco < 80) {
+            differentialDiagnoses.push("Emphysema (Loss of alveolar-capillary diffusing surface)");
+            differentialDiagnoses.push("Lymphangioleiomyomatosis (LAM) or Bronchiectasis");
+            physiologicalMechanisms.push(`DLCO is reduced (${dlco}% pred), indicating loss of alveolar membrane gas-transfer surface (hallmark of emphysema).`);
+          } else {
+            differentialDiagnoses.push("Asthma (Airway hyperreactivity with preserved alveolar diffusion)");
+            differentialDiagnoses.push("Chronic Bronchitis (Airway inflammation without parenchymal destruction)");
+            physiologicalMechanisms.push(`DLCO is preserved (${dlco}% pred), typical of pure airway diseases without alveolar destruction.`);
+          }
+        } else {
+          differentialDiagnoses = ["Asthma", "Chronic Obstructive Pulmonary Disease (COPD)", "Bronchiectasis", "Cystic Fibrosis"];
+        }
+      }
+
+      anaesthesiaImplications = [
+        "High risk of dynamic hyperinflation, auto-PEEP, and gas trapping under positive pressure ventilation.",
+        "Prolong expiratory time (I:E ratio 1:3 or 1:4), reduce respiratory rate, and monitor plateau pressure.",
+        "Increased risk of postoperative bronchospasm, sputum retention, and atelectasis.",
+        "Consider regional/neuraxial techniques where appropriate to minimize airway manipulation."
+      ];
+
+    } else {
+      const fvcReduced = fvP !== null && fvP < 80;
+      const tlcReduced = tlc !== null && tlc < 80;
+
+      if (tlcReduced || (fvcReduced && tlc === null)) {
+        pathologyType = "restrictive";
+        const basisVal = tlc !== null ? tlc : fvP;
+        const basisLabel = tlc !== null ? "TLC" : "FVC (Surrogate)";
+
+        if (basisVal >= 70) {
+          severity = `Mild Restriction (${basisLabel} 70–79% pred)`;
+          severityClass = "warn";
+        } else if (basisVal >= 60) {
+          severity = `Moderate Restriction (${basisLabel} 60–69% pred)`;
+          severityClass = "warn";
+        } else if (basisVal >= 50) {
+          severity = `Moderately Severe Restriction (${basisLabel} 50–59% pred)`;
+          severityClass = "danger";
+        } else if (basisVal >= 35) {
+          severity = `Severe Restriction (${basisLabel} 35–49% pred)`;
+          severityClass = "danger";
+        } else {
+          severity = `Very Severe Restriction (${basisLabel} < 35% pred)`;
+          severityClass = "danger";
+        }
+
+        primaryDiagnosis = tlc !== null 
+          ? `Confirmed Restrictive Ventilatory Defect (${severity.split(' ')[0]})`
+          : `Suspected Restrictive Pattern (${severity.split(' ')[0]})`;
+
+        physiologicalMechanisms.push(`FEV1/FVC ratio is preserved at ${ratioVal}%, ruling out primary obstruction.`);
+        physiologicalMechanisms.push(`${basisLabel} is reduced at ${basisVal}% predicted, demonstrating reduced lung expansion.`);
+
+        if (tlc === null && fvcReduced) {
+          physiologicalMechanisms.push("Note: Reduced FVC with normal FEV1/FVC suggests restriction, but plethysmographic TLC is required to definitively distinguish true restriction from air-trapping / pseudo-restriction.");
+        }
+
+        if (dlco !== null) {
+          if (dlco < 80) {
+            primaryDiagnosis += " — Intrinsic (Parenchymal)";
+            physiologicalMechanisms.push(`DLCO is reduced (${dlco}% pred), pointing to alveolar-capillary membrane disease.`);
+            differentialDiagnoses = [
+              "Interstitial Lung Disease (ILD) / Idiopathic Pulmonary Fibrosis (IPF)",
+              "Sarcoidosis / Hypersensitivity Pneumonitis",
+              "Connective Tissue Disease-Associated ILD",
+              "Drug-induced pulmonary toxicity (e.g., Amiodarone, Bleomycin, Methotrexate)"
+            ];
+          } else {
+            primaryDiagnosis += " — Extrinsic (Chest Wall / Neuromuscular)";
+            physiologicalMechanisms.push(`DLCO is preserved (${dlco}% pred), indicating healthy alveolar parenchyma with extrapulmonary mechanical restriction.`);
+            differentialDiagnoses = [
+              "Severe Kyphoscoliosis / Pectus deformities",
+              "Neuromuscular disorders (Myasthenia Gravis, ALS, Guillain-Barré, Muscular Dystrophy)",
+              "Morbid Obesity / Obesity Hypoventilation Syndrome (OHS)",
+              "Pleural thickening, fibrothorax, or large pleural effusion"
+            ];
+          }
+        } else {
+          differentialDiagnoses = [
+            "Intrinsic: Interstitial lung disease, pulmonary fibrosis, sarcoidosis",
+            "Extrinsic: Kyphoscoliosis, neuromuscular disease, morbid obesity, chest wall rigidity"
+          ];
+        }
+
+        anaesthesiaImplications = [
+          "Reduced Functional Residual Capacity (FRC) leads to rapid arterial desaturation during induction and apnea.",
+          "Decreased pulmonary compliance; patient requires higher airway pressures to achieve adequate tidal volumes.",
+          "Titrate PEEP carefully and avoid high tidal volumes to prevent barotrauma and hemodynamic compromise.",
+          "Patients with neuromuscular restriction have prolonged sensitivity to non-depolarizing neuromuscular blockers; quantitative neuromuscular monitoring is mandatory."
+        ];
+
+      } else if (fvcReduced && tlc !== null && tlc >= 80) {
+        pathologyType = "normal";
+        primaryDiagnosis = "Pseudo-Restriction / Non-Specific Pattern (Preserved TLC)";
+        severity = "Mild / Non-specific";
+        severityClass = "warn";
+        physiologicalMechanisms.push(`FEV1/FVC is normal (${ratioVal}%) and FVC is low (${fvP}%), but TLC is normal (${tlc}%).`);
+        physiologicalMechanisms.push("True restriction is ruled out by normal TLC. This pattern often represents air-trapping, submaximal inspiratory effort, or early small airway disease.");
+        differentialDiagnoses = ["Air trapping in early obstructive lung disease", "Submaximal patient effort", "Respiratory muscle weakness (early)"];
+        anaesthesiaImplications = ["Ensure thorough pre-oxygenation; monitor respiratory mechanics."];
+
+      } else if (dlco !== null && dlco < 80) {
+        pathologyType = "isolated-dlco";
+        primaryDiagnosis = "Isolated Gas Transfer Defect (Low DLCO with Normal Spirometry)";
+        severity = dlco < 40 ? "Severe Gas Transfer Defect" : (dlco < 60 ? "Moderate Gas Transfer Defect" : "Mild Gas Transfer Defect");
+        severityClass = dlco < 40 ? "danger" : "warn";
+        physiologicalMechanisms.push(`Spirometry is completely normal (FEV1/FVC ${ratioVal}%, FVC ${fvP || 'Normal'}%), but DLCO is reduced (${dlco}% pred).`);
+        physiologicalMechanisms.push("Demonstrates impaired alveolar-capillary diffusion without mechanical ventilatory limitation.");
+        differentialDiagnoses = [
+          "Pulmonary Vascular Disease / Pulmonary Arterial Hypertension (PAH)",
+          "Chronic Thromboembolic Pulmonary Hypertension (CTEPH)",
+          "Early Interstitial Lung Disease (before spirometric volume loss occurs)",
+          "Severe Anaemia (check hemoglobin-corrected DLCO)",
+          "Hepatopulmonary Syndrome"
+        ];
+        anaesthesiaImplications = [
+          "Evaluate right ventricular function and pulmonary artery pressures (transthoracic echocardiogram).",
+          "High vigilance for perioperative acute pulmonary hypertension and right ventricular failure.",
+          "Avoid hypoxemia, hypercarbia, acidemia, hypothermia, and high PEEP which increase pulmonary vascular resistance (PVR)."
+        ];
+
+      } else {
+        pathologyType = "normal";
+        primaryDiagnosis = "Normal Spirometry / Ventilatory Function";
+        severity = "Normal (No Defect)";
+        severityClass = "success";
+        physiologicalMechanisms.push(`FEV1/FVC ratio is ${ratioVal}% (≥ 70%, within normal limits).`);
+        if (fvP !== null) physiologicalMechanisms.push(`FVC is ${fvP}% predicted (≥ 80%, within normal limits).`);
+        if (f1P !== null) physiologicalMechanisms.push(`FEV1 is ${f1P}% predicted (≥ 80%, normal ventilatory flow).`);
+        if (tlc !== null) physiologicalMechanisms.push(`TLC is ${tlc}% predicted (normal lung volumes).`);
+        if (dlco !== null) physiologicalMechanisms.push(`DLCO is ${dlco}% predicted (normal gas transfer).`);
+        differentialDiagnoses = ["Normal pulmonary function; does not exclude exercise-induced bronchospasm or early cough-variant asthma."];
+        anaesthesiaImplications = ["Standard perioperative pulmonary risk and routine airway management."];
+      }
+    }
+
+    return {
+      ratio: ratioVal,
+      fev1Pred: f1P,
+      fvcPred: fvP,
+      tlcPred: tlc,
+      dlcoPred: dlco,
+      isObstructed,
+      pathologyType,
+      primaryDiagnosis,
+      severity,
+      severityClass,
+      reversibilityText,
+      isReversible,
+      physiologicalMechanisms,
+      differentialDiagnoses,
+      anaesthesiaImplications
+    };
+  }
+
+  // ==========================================================================
+  // POST-OPERATIVE FEV1 (ppoFEV1) & ppoDLCO CALCULATOR (THORACIC SURGERY)
+  // Evidence-based ACCP / ESTS Thoracic Surgery Resection Risk Stratification
+  // Sources:
+  // - Brunelli A et al. Eur J Cardiothorac Surg 2009; 36: 181–184 (ESTS/ERS Guidelines)
+  // - Roy PM et al. Chest 2013; 143(5): 1460–1473 (ACCP Thoracic Guidelines)
+  // Total functional segments = 19 (Right = 10, Left = 9)
+  // ==========================================================================
+  const LUNG_LOBE_SEGMENTS = {
+    "pneumonectomy_r": { name: "Right Pneumonectomy", segments: 10, side: "Right" },
+    "pneumonectomy_l": { name: "Left Pneumonectomy", segments: 9, side: "Left" },
+    "rul": { name: "Right Upper Lobectomy (RUL)", segments: 3, side: "Right" },
+    "rml": { name: "Right Middle Lobectomy (RML)", segments: 2, side: "Right" },
+    "rll": { name: "Right Lower Lobectomy (RLL)", segments: 5, side: "Right" },
+    "bilobectomy_ru_rm": { name: "Right Bilobectomy (Upper + Middle)", segments: 5, side: "Right" },
+    "bilobectomy_rm_rl": { name: "Right Bilobectomy (Middle + Lower)", segments: 7, side: "Right" },
+    "lul_total": { name: "Left Upper Lobectomy (Culmen + Lingula)", segments: 5, side: "Left" },
+    "lul_culmen": { name: "Left Culmen Lobectomy (Trisegmentectomy)", segments: 3, side: "Left" },
+    "lingula": { name: "Left Lingulectomy (Bisegmentectomy)", segments: 2, side: "Left" },
+    "lll": { name: "Left Lower Lobectomy (LLL)", segments: 4, side: "Left" },
+    "wedge": { name: "Wedge / Sublobar Resection (1 segment equivalent)", segments: 1, side: "Sublobar" }
+  };
+
+  function calculatePpoLungResection({
+    preopFev1L,
+    preopFev1Pct,
+    preopDlcoPct,
+    resectionMode,
+    selectedLobeKey,
+    resectedSegments,
+    obstructedSegments
+  } = {}) {
+    const f1L = num(preopFev1L);
+    const f1P = num(preopFev1Pct);
+    const dlcoP = num(preopDlcoPct);
+    const obsSeg = Math.max(0, Math.min(18, num(obstructedSegments) || 0));
+
+    let segCount = 0;
+    let procedureName = "";
+
+    if (resectionMode === "lobes" && selectedLobeKey && LUNG_LOBE_SEGMENTS[selectedLobeKey]) {
+      segCount = LUNG_LOBE_SEGMENTS[selectedLobeKey].segments;
+      procedureName = LUNG_LOBE_SEGMENTS[selectedLobeKey].name;
+    } else {
+      segCount = Math.max(0, Math.min(19, num(resectedSegments) || 0));
+      procedureName = `${segCount} Segment(s) Resection`;
+    }
+
+    const totalFunctionalPreop = 19 - obsSeg;
+    if (totalFunctionalPreop <= 0) {
+      return { error: "Obstructed segments cannot equal or exceed total 19 lung segments." };
+    }
+
+    const effectiveResected = Math.min(segCount, totalFunctionalPreop);
+    const fractionRemaining = Math.max(0, 1 - (effectiveResected / totalFunctionalPreop));
+    const pctLungRemoved = round((effectiveResected / totalFunctionalPreop) * 100, 1);
+
+    const ppoFev1L = f1L !== null ? round(f1L * fractionRemaining, 2) : null;
+    const ppoFev1Pct = f1P !== null ? round(f1P * fractionRemaining, 1) : null;
+    const ppoDlcoPct = dlcoP !== null ? round(dlcoP * fractionRemaining, 1) : null;
+
+    let riskTier = "";
+    let riskBadgeClass = "";
+    let recommendation = "";
+    let exerciseTestingNeeded = false;
+
+    const lowestPct = Math.min(
+      ppoFev1Pct !== null ? ppoFev1Pct : 100,
+      ppoDlcoPct !== null ? ppoDlcoPct : 100
+    );
+
+    const isBelowAbsoluteThreshold = ppoFev1L !== null && ppoFev1L < 0.8;
+
+    if (isBelowAbsoluteThreshold || (lowestPct !== 100 && lowestPct < 30)) {
+      riskTier = "High Perioperative Cardiopulmonary Risk";
+      riskBadgeClass = "danger";
+      recommendation = "High risk of post-resection mortality and ventilator dependency. CPET indicated (VO2 peak < 10 mL/kg/min indicates extreme risk). Consider sublobar/segmental resection, stereotactic body radiation (SBRT), ablation, or pulmonary prehabilitation.";
+    } else if (lowestPct !== 100 && lowestPct <= 40) {
+      riskTier = "Moderate / Intermediate Perioperative Risk";
+      riskBadgeClass = "warn";
+      exerciseTestingNeeded = true;
+      recommendation = "Formal Cardiopulmonary Exercise Testing (CPET) is recommended by ACCP/ESTS guidelines. If VO2 peak > 15 mL/kg/min (>35% pred), standard anatomical resection is safe. If VO2 peak 10–15 mL/kg/min (35–75% pred), intermediate risk (prefer VATS/sublobar).";
+    } else {
+      riskTier = "Low Perioperative Risk (Suitable for Resection)";
+      riskBadgeClass = "success";
+      recommendation = "Patient meets ACCP/ESTS criteria for planned anatomical lung resection with low predicted cardiopulmonary mortality (<1–3%). Standard post-thoracotomy care.";
+    }
+
+    const anaesthesiaPoints = [
+      `Functional lung remaining: ${round(fractionRemaining * 100, 1)}% (${effectiveResected} of ${totalFunctionalPreop} functional segments removed).`,
+      "Strict perioperative fluid management: Limit total fluids < 1.5–2 L in 24 hours (or < 20 mL/kg/day) to prevent fatal post-pneumonectomy pulmonary edema.",
+      "Lung-protective one-lung ventilation (OLV): Tidal volume 4–6 mL/kg PBW, PEEP 5 cmH2O, peak airway pressure < 30 cmH2O, permissive hypercapnia.",
+      "Multimodal analgesia: Thoracic epidural, paravertebral block, or erector spinae plane (ESP) block essential for early extubation and coughing."
+    ];
+
+    return {
+      procedureName,
+      resectedSegments: effectiveResected,
+      obstructedSegments: obsSeg,
+      totalFunctionalPreop,
+      fractionRemaining: round(fractionRemaining, 3),
+      pctLungRemoved,
+      ppoFev1L,
+      ppoFev1Pct,
+      ppoDlcoPct,
+      lowestPct: lowestPct === 100 ? null : lowestPct,
+      riskTier,
+      riskBadgeClass,
+      exerciseTestingNeeded,
+      recommendation,
+      anaesthesiaPoints
+    };
+  }
+
   // Export module
   window.KnockoutCalculators = Object.assign(window.KnockoutCalculators || {}, {
     calculateBMI,
@@ -1868,6 +2253,9 @@
     calculateFRAIL,
     calculateClinicalFrailtyScale,
     calculateRevisedTraumaScore,
+    calculatePFT,
+    calculatePpoLungResection,
+    LUNG_LOBE_SEGMENTS,
     DASI_ITEMS
   });
 })();

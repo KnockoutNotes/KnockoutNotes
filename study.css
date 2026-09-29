@@ -473,6 +473,7 @@ body[data-content-page="study"] .st-page.container {
    title card so a drug/topic's card always matches its poster tile */
 .st-tile[data-cat="anaesthesia"],   .st-title-card[data-cat="anaesthesia"]   { --poster-a: #be123c; --poster-b: #4c0519; }
 .st-tile[data-cat="equipment"],     .st-title-card[data-cat="equipment"]     { --poster-a: #0369a1; --poster-b: #082f49; }
+.st-tile[data-cat="pft"],           .st-title-card[data-cat="pft"]           { --poster-a: #0ea5e9; --poster-b: #0c4a6e; }
 .st-tile[data-cat="induction"],     .st-title-card[data-cat="induction"]     { --poster-a: #7c3aed; --poster-b: #2e1065; }
 .st-tile[data-cat="relaxants"],     .st-title-card[data-cat="relaxants"]     { --poster-a: #0d9488; --poster-b: #042f2e; }
 .st-tile[data-cat="reversal"],      .st-title-card[data-cat="reversal"]      { --poster-a: #d97706; --poster-b: #451a03; }

@@ -112,15 +112,40 @@
           </div>
         </section>
 
-        <!-- Category Switcher Tabs -->
+        <!-- Category Switcher Tabs (8-Squircle Symmetrical Menu) -->
         <div class="calc-hub-nav fade" role="tablist" aria-label="Calculator Categories">
-          <button class="calc-nav-pill active" data-calc-tab="paeds" role="tab" aria-selected="true">⚡ Paediatric (Chart &amp; Airway)</button>
-          <button class="calc-nav-pill" data-calc-tab="periop" role="tab" aria-selected="false">📋 Perioperative Assessment</button>
-          <button class="calc-nav-pill" data-calc-tab="advanced" role="tab" aria-selected="false">⚡ Advanced / Dynamic</button>
-          <button class="calc-nav-pill" data-calc-tab="emergency" role="tab" aria-selected="false">🚨 Emergency &amp; Resuscitation</button>
-          <button class="calc-nav-pill" data-calc-tab="abg" role="tab" aria-selected="false">🩸 ABG &amp; Acid–Base</button>
-          <button class="calc-nav-pill" data-calc-tab="renal" role="tab" aria-selected="false">🧪 Renal Clearance</button>
-          <button class="calc-nav-pill" data-calc-tab="all" role="tab" aria-selected="false">✦ View All</button>
+          <button class="calc-nav-pill active" data-calc-tab="paeds" role="tab" aria-selected="true" title="Paediatric Airway &amp; Drug Chart">
+            <span class="bubble-icon">👶</span>
+            <span class="bubble-label">Paediatric Airway</span>
+          </button>
+          <button class="calc-nav-pill" data-calc-tab="periop" role="tab" aria-selected="false" title="Perioperative Risk &amp; Assessment">
+            <span class="bubble-icon">📋</span>
+            <span class="bubble-label">Perioperative Risk</span>
+          </button>
+          <button class="calc-nav-pill" data-calc-tab="pft" role="tab" aria-selected="false" title="Pulmonary Function Test &amp; Thoracic Resection">
+            <span class="bubble-icon">🫁</span>
+            <span class="bubble-label">PFT &amp; Resection</span>
+          </button>
+          <button class="calc-nav-pill" data-calc-tab="advanced" role="tab" aria-selected="false" title="Advanced Dynamic Calculators &amp; TCI">
+            <span class="bubble-icon">⚡</span>
+            <span class="bubble-label">Dynamic &amp; TCI</span>
+          </button>
+          <button class="calc-nav-pill" data-calc-tab="emergency" role="tab" aria-selected="false" title="Emergency &amp; Resuscitation">
+            <span class="bubble-icon">🚨</span>
+            <span class="bubble-label">Emergency &amp; Code</span>
+          </button>
+          <button class="calc-nav-pill" data-calc-tab="abg" role="tab" aria-selected="false" title="Arterial Blood Gas &amp; Acid–Base">
+            <span class="bubble-icon">🩸</span>
+            <span class="bubble-label">ABG &amp; Acid–Base</span>
+          </button>
+          <button class="calc-nav-pill" data-calc-tab="renal" role="tab" aria-selected="false" title="Renal Function &amp; Clearance">
+            <span class="bubble-icon">🧪</span>
+            <span class="bubble-label">Renal Clearance</span>
+          </button>
+          <button class="calc-nav-pill" data-calc-tab="all" role="tab" aria-selected="false" title="View All Calculators">
+            <span class="bubble-icon">✦</span>
+            <span class="bubble-label">View All</span>
+          </button>
         </div>
 
         
@@ -2328,6 +2353,304 @@
         </div>
         </div><!-- /#tabPeriop3d -->
 
+        <!-- TAB CONTENT: PULMONARY FUNCTION & LUNG RESECTION (3D Layer) -->
+        <div class="calc-tab-content" id="tabPft3d" data-tab-name="pft">
+        <div class="calc-group-title fade" id="groupPft3d">
+          <span>Pulmonary Function &amp; Thoracic Resection</span>
+          <span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8; border:1px solid rgba(56,189,248,0.35);">🫁 ATS/ERS &amp; ACCP/ESTS</span>
+        </div>
+
+        <div class="pft-hero-banner fade">
+          <h2 style="font-size:1.5rem; margin:0 0 6px 0; color:#fff;">Pulmonary Physiology &amp; Resection Assessment</h2>
+          <p style="margin:0; font-size:0.92rem; color:#94a3b8; line-height:1.5;">
+            Diagnostic spirometry and gas-transfer interpretation following ATS/ERS consensus standards, plus post-operative FEV₁ and ppoDLCO calculation for anatomical lung resection risk stratification.
+          </p>
+        </div>
+
+        <div class="calc-card-grid">
+          <!-- CARD 1: PFT Interpretation & Pathology Diagnostic Calculator -->
+          <article class="calc-box fade" id="calcBoxPft3d">
+            <div class="calc-box-header">
+              <div>
+                <div class="calc-name">PFT Pathology Interpretation</div>
+                <div class="calc-subtitle">Spirometry, Bronchodilator Reversibility, TLC &amp; DLCO (ATS/ERS 2022)</div>
+              </div>
+              <span class="calc-tag">Diagnostics</span>
+            </div>
+
+            <p class="calc-desc">Enter measured values and percent of predicted to automatically determine obstructive, restrictive, mixed, or gas-transfer defects.</p>
+
+            <div class="calc-fields-grid">
+              <div class="calc-field">
+                <label for="pftFev1Ratio3d">FEV₁/FVC Ratio (%) *</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pftFev1Ratio3d" type="number" step="0.1" min="10" max="100" placeholder="e.g. 62" value="62">
+                  <span class="calc-unit">%</span>
+                </div>
+                <span class="calc-hint">Lower limit of normal: 70%</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="pftFev1Pred3d">FEV₁ (% Predicted) *</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pftFev1Pred3d" type="number" step="1" min="10" max="150" placeholder="e.g. 54" value="54">
+                  <span class="calc-unit">% pred</span>
+                </div>
+                <span class="calc-hint">Obstruction grading</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="pftFvcPred3d">FVC (% Predicted) *</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pftFvcPred3d" type="number" step="1" min="10" max="150" placeholder="e.g. 82" value="82">
+                  <span class="calc-unit">% pred</span>
+                </div>
+                <span class="calc-hint">Normal ≥ 80% pred</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="pftDlcoPred3d">DLCO / Gas Transfer (% Pred, Optional)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pftDlcoPred3d" type="number" step="1" min="10" max="150" placeholder="e.g. 58" value="58">
+                  <span class="calc-unit">% pred</span>
+                </div>
+                <span class="calc-hint">Differentiates emphysema vs asthma / ILD</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="pftTlcPred3d">TLC Total Lung Capacity (% Pred, Optional)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pftTlcPred3d" type="number" step="1" min="20" max="180" placeholder="e.g. 115" value="115">
+                  <span class="calc-unit">% pred</span>
+                </div>
+                <span class="calc-hint">Confirms restriction (&lt;80%) or hyperinflation (&gt;120%)</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="pftBdPct3d">Post-BD ΔFEV₁ (% Improvement, Optional)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pftBdPct3d" type="number" step="1" min="0" max="100" placeholder="e.g. 15">
+                  <span class="calc-unit">%</span>
+                </div>
+                <span class="calc-hint">≥12% AND ≥200 mL = Reversible</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="pftBdMl3d">Post-BD ΔFEV₁ Volume (mL, Optional)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pftBdMl3d" type="number" step="10" min="0" max="2000" placeholder="e.g. 240">
+                  <span class="calc-unit">mL</span>
+                </div>
+                <span class="calc-hint">≥200 mL threshold</span>
+              </div>
+            </div>
+
+            <!-- Pathology Diagnostic Output Banner -->
+            <div class="pft-pathology-banner danger" id="pftPathologyBanner3d">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
+                <div class="pft-pathology-title" id="pftPathologyTitle3d">Obstructive Ventilatory Defect</div>
+                <span class="pft-pathology-badge" id="pftSeverityBadge3d">Moderate (FEV₁ 50–59%)</span>
+              </div>
+              <div style="font-size:0.85rem; line-height:1.4;" id="pftReversibilityText3d">Significant Bronchodilator Reversibility</div>
+            </div>
+
+            <!-- Physiological Mechanism and Differential Diagnosis -->
+            <div class="pft-details-block" id="pftDetailsBlock3d">
+              <h5>Physiological Mechanisms &amp; Findings</h5>
+              <ul id="pftMechanismsList3d">
+                <li>FEV₁/FVC ratio is 62% (&lt; 70%), demonstrating expiratory airflow limitation.</li>
+                <li>FEV₁ is 54% predicted (Moderately Severe Obstruction).</li>
+                <li>DLCO is reduced (58% pred), indicating loss of alveolar membrane gas-transfer surface (hallmark of emphysema).</li>
+              </ul>
+              <h5 style="margin-top:0.85rem;">Differential Diagnoses</h5>
+              <ul id="pftDiffList3d">
+                <li>Emphysema (Loss of alveolar-capillary diffusing surface)</li>
+                <li>Chronic Obstructive Pulmonary Disease (COPD)</li>
+              </ul>
+              <h5 style="margin-top:0.85rem; color:#f59e0b;">Anaesthetic &amp; Airway Implications</h5>
+              <ul id="pftAnaesthList3d">
+                <li>High risk of dynamic hyperinflation, auto-PEEP, and gas trapping under positive pressure ventilation.</li>
+                <li>Prolong expiratory time (I:E ratio 1:3 or 1:4), reduce respiratory rate, and monitor plateau pressure.</li>
+              </ul>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnPftReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/16129869/" target="_blank" rel="noopener">Source: ATS/ERS Spirometry Guidelines ↗</a>
+            </div>
+          </article>
+
+          <!-- CARD 2: Post-Operative FEV1 & ppoDLCO / ppoDLC Resection Calculator -->
+          <article class="calc-box fade" id="calcBoxPpo3d">
+            <div class="calc-box-header">
+              <div>
+                <div class="calc-name">Post-Op FEV₁ &amp; ppoDLCO / ppoDLC</div>
+                <div class="calc-subtitle">Thoracic Surgery Anatomical Lung Resection Risk (ACCP / ESTS)</div>
+              </div>
+              <span class="calc-tag">Thoracic Risk</span>
+            </div>
+
+            <p class="calc-desc">Calculate predicted post-operative FEV₁ and ppoDLCO using anatomical lobar resection or 19-segment count with tumor obstruction offset.</p>
+
+            <div class="calc-fields-grid">
+              <div class="calc-field">
+                <label for="ppoPreopFev1L3d">Pre-Op FEV₁ (Litres) *</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="ppoPreopFev1L3d" type="number" step="0.05" min="0.5" max="6.0" placeholder="e.g. 2.40" value="2.40">
+                  <span class="calc-unit">L</span>
+                </div>
+                <span class="calc-hint">Absolute volume</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="ppoPreopFev1Pct3d">Pre-Op FEV₁ (% Predicted) *</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="ppoPreopFev1Pct3d" type="number" step="1" min="10" max="150" placeholder="e.g. 78" value="78">
+                  <span class="calc-unit">% pred</span>
+                </div>
+                <span class="calc-hint">Percent of normal</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="ppoPreopDlcoPct3d">Pre-Op DLCO / DLC (% Predicted) *</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="ppoPreopDlcoPct3d" type="number" step="1" min="10" max="150" placeholder="e.g. 70" value="70">
+                  <span class="calc-unit">% pred</span>
+                </div>
+                <span class="calc-hint">Diffusing capacity</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="ppoObstructedSeg3d">Pre-Op Obstructed Segments</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="ppoObstructedSeg3d" type="number" step="1" min="0" max="10" placeholder="0" value="0">
+                  <span class="calc-unit">segments</span>
+                </div>
+                <span class="calc-hint">Segments already collapsed/non-functional</span>
+              </div>
+            </div>
+
+            <!-- Resection Mode Toggle: Lobes vs Segments -->
+            <div style="margin-top:1rem;">
+              <label style="display:block; font-size:0.82rem; font-weight:600; color:#94a3b8; margin-bottom:0.4rem;">Resection Selection Method:</label>
+              <div class="resection-mode-toggle" id="ppoModeToggle3d" role="group">
+                <button type="button" class="resection-mode-btn active" data-resection-mode="lobes" id="btnModeLobes3d">Anatomical Lobes</button>
+                <button type="button" class="resection-mode-btn" data-resection-mode="segments" id="btnModeSegments3d">19-Segment Checklist</button>
+              </div>
+            </div>
+
+            <!-- Panel A: Lobes Preset Dropdown -->
+            <div id="ppoLobesContainer3d" class="calc-field" style="margin-top:0.5rem;">
+              <label for="ppoLobeSelect3d">Planned Surgical Resection (Lobe)</label>
+              <select class="calc-input" id="ppoLobeSelect3d">
+                <option value="rul" selected>Right Upper Lobectomy (RUL - 3 segments)</option>
+                <option value="rml">Right Middle Lobectomy (RML - 2 segments)</option>
+                <option value="rll">Right Lower Lobectomy (RLL - 5 segments)</option>
+                <option value="bilobectomy_ru_rm">Right Bilobectomy: Upper + Middle (5 segments)</option>
+                <option value="bilobectomy_rm_rl">Right Bilobectomy: Middle + Lower (7 segments)</option>
+                <option value="pneumonectomy_r">Right Pneumonectomy (10 segments / 52.6%)</option>
+                <option value="lul_total">Left Upper Lobectomy: Culmen + Lingula (5 segments)</option>
+                <option value="lul_culmen">Left Culmen Trisegmentectomy (3 segments)</option>
+                <option value="lingula">Left Lingulectomy (2 segments)</option>
+                <option value="lll">Left Lower Lobectomy (LLL - 4 segments)</option>
+                <option value="pneumonectomy_l">Left Pneumonectomy (9 segments / 47.4%)</option>
+                <option value="wedge">Wedge / Sublobar Resection (1 segment equivalent)</option>
+              </select>
+            </div>
+
+            <!-- Panel B: Interactive 19-Segment Checklist -->
+            <div id="ppoSegmentsContainer3d" style="display:none; margin-top:0.5rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+                <label style="font-size:0.8rem; font-weight:600; color:#38bdf8;">Select Segments to Resect (Total 19):</label>
+                <span style="font-size:0.75rem; color:#94a3b8;" id="ppoSelectedSegCount3d">3 segments selected</span>
+              </div>
+              <div class="segment-checklist-grid">
+                <!-- Right Lung (10 Segments) -->
+                <div>
+                  <div class="segment-col-header">Right Lung (10 Segments)</div>
+                  <div class="segment-chip-list">
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="R1" checked> <span>R1: Apical (RUL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="R2" checked> <span>R2: Posterior (RUL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="R3" checked> <span>R3: Anterior (RUL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="R4"> <span>R4: Lateral (RML)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="R5"> <span>R5: Medial (RML)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="R6"> <span>R6: Superior (RLL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="R7"> <span>R7: Medial Basal (RLL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="R8"> <span>R8: Anterior Basal (RLL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="R9"> <span>R9: Lateral Basal (RLL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="R10"> <span>R10: Posterior Basal (RLL)</span></label>
+                  </div>
+                </div>
+
+                <!-- Left Lung (9 Segments) -->
+                <div>
+                  <div class="segment-col-header">Left Lung (9 Segments)</div>
+                  <div class="segment-chip-list">
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="L1_2"> <span>L1+2: Apicoposterior (LUL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="L3"> <span>L3: Anterior (LUL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="L4"> <span>L4: Superior Lingular</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="L5"> <span>L5: Inferior Lingular</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="L6"> <span>L6: Superior (LLL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="L7_8"> <span>L7+8: Anteromedial Basal (LLL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="L9"> <span>L9: Lateral Basal (LLL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-3d" value="L10"> <span>L10: Posterior Basal (LLL)</span></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Predicted Post-Op Results Deck -->
+            <div class="ppo-result-deck">
+              <div class="ppo-stat-tile">
+                <div class="label">ppoFEV₁ (L)</div>
+                <div class="val" id="ppoValFev1L3d">2.02 L</div>
+                <div class="sub">Absolute volume (&gt;0.8L)</div>
+              </div>
+              <div class="ppo-stat-tile">
+                <div class="label">ppoFEV₁ (%)</div>
+                <div class="val" id="ppoValFev1Pct3d" style="color:#38bdf8;">65.7%</div>
+                <div class="sub">Threshold: &gt;40%</div>
+              </div>
+              <div class="ppo-stat-tile">
+                <div class="label">ppoDLCO / ppoDLC</div>
+                <div class="val" id="ppoValDlcoPct3d" style="color:#38bdf8;">58.9%</div>
+                <div class="sub">Threshold: &gt;40%</div>
+              </div>
+              <div class="ppo-stat-tile">
+                <div class="label">Lung Removed</div>
+                <div class="val" id="ppoValRemovedPct3d">15.8%</div>
+                <div class="sub" id="ppoValRemovedSegs3d">3 of 19 segments</div>
+              </div>
+            </div>
+
+            <!-- Thoracic Risk Stratification Callout Banner -->
+            <div class="pft-pathology-banner success" id="ppoRiskBanner3d">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
+                <div class="pft-pathology-title" id="ppoRiskTitle3d">Low Perioperative Risk (Suitable for Resection)</div>
+                <span class="pft-pathology-badge" id="ppoRiskBadge3d">ppo &gt; 40%</span>
+              </div>
+              <div style="font-size:0.85rem; line-height:1.4;" id="ppoRecommendationText3d">
+                Patient meets ACCP/ESTS criteria for planned anatomical lung resection with low predicted cardiopulmonary mortality (&lt;1–3%). Standard post-thoracotomy care.
+              </div>
+            </div>
+
+            <div class="pft-details-block" id="ppoDetailsBlock3d">
+              <h5>Thoracic Anaesthesia &amp; One-Lung Ventilation (OLV) Points</h5>
+              <ul id="ppoAnaesthList3d">
+                <li>Strict perioperative fluid management: Limit total fluids &lt; 1.5–2 L in 24 hours to prevent fatal post-pneumonectomy pulmonary edema.</li>
+                <li>Lung-protective one-lung ventilation (OLV): Tidal volume 4–6 mL/kg PBW, PEEP 5 cmH2O, peak airway pressure &lt; 30 cmH2O, permissive hypercapnia.</li>
+                <li>Multimodal analgesia: Thoracic epidural, paravertebral block, or erector spinae plane (ESP) block essential for early extubation and coughing.</li>
+              </ul>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnPpoReset3d">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/19443519/" target="_blank" rel="noopener">Source: ACCP / ESTS Thoracic Guidelines ↗</a>
+            </div>
+          </article>
+        </div>
+        </div><!-- /#tabPft3d -->
+
         <!-- TAB CONTENT: RENAL & ACID-BASE -->
         <div class="calc-tab-content" id="tabRenal3d" data-tab-name="renal">
         <div class="calc-group-title fade" id="groupRenal3d">
@@ -2848,15 +3171,40 @@
           </div>
         </section>
 
-        <!-- Category Switcher Tabs -->
+        <!-- Category Switcher Tabs (8-Squircle Symmetrical Menu) -->
         <div class="calc-hub-nav fade" role="tablist" aria-label="Calculator Categories">
-          <button class="calc-nav-pill active" data-calc-tab="paeds" role="tab" aria-selected="true">⚡ Paediatric (Chart &amp; Airway)</button>
-          <button class="calc-nav-pill" data-calc-tab="periop" role="tab" aria-selected="false">📋 Perioperative Assessment</button>
-          <button class="calc-nav-pill" data-calc-tab="advanced" role="tab" aria-selected="false">⚡ Advanced / Dynamic</button>
-          <button class="calc-nav-pill" data-calc-tab="emergency" role="tab" aria-selected="false">🚨 Emergency &amp; Resuscitation</button>
-          <button class="calc-nav-pill" data-calc-tab="abg" role="tab" aria-selected="false">🩸 ABG &amp; Acid–Base</button>
-          <button class="calc-nav-pill" data-calc-tab="renal" role="tab" aria-selected="false">🧪 Renal Clearance</button>
-          <button class="calc-nav-pill" data-calc-tab="all" role="tab" aria-selected="false">✦ View All</button>
+          <button class="calc-nav-pill active" data-calc-tab="paeds" role="tab" aria-selected="true" title="Paediatric Airway &amp; Drug Chart">
+            <span class="bubble-icon">👶</span>
+            <span class="bubble-label">Paediatric Airway</span>
+          </button>
+          <button class="calc-nav-pill" data-calc-tab="periop" role="tab" aria-selected="false" title="Perioperative Risk &amp; Assessment">
+            <span class="bubble-icon">📋</span>
+            <span class="bubble-label">Perioperative Risk</span>
+          </button>
+          <button class="calc-nav-pill" data-calc-tab="pft" role="tab" aria-selected="false" title="Pulmonary Function Test &amp; Thoracic Resection">
+            <span class="bubble-icon">🫁</span>
+            <span class="bubble-label">PFT &amp; Resection</span>
+          </button>
+          <button class="calc-nav-pill" data-calc-tab="advanced" role="tab" aria-selected="false" title="Advanced Dynamic Calculators &amp; TCI">
+            <span class="bubble-icon">⚡</span>
+            <span class="bubble-label">Dynamic &amp; TCI</span>
+          </button>
+          <button class="calc-nav-pill" data-calc-tab="emergency" role="tab" aria-selected="false" title="Emergency &amp; Resuscitation">
+            <span class="bubble-icon">🚨</span>
+            <span class="bubble-label">Emergency &amp; Code</span>
+          </button>
+          <button class="calc-nav-pill" data-calc-tab="abg" role="tab" aria-selected="false" title="Arterial Blood Gas &amp; Acid–Base">
+            <span class="bubble-icon">🩸</span>
+            <span class="bubble-label">ABG &amp; Acid–Base</span>
+          </button>
+          <button class="calc-nav-pill" data-calc-tab="renal" role="tab" aria-selected="false" title="Renal Function &amp; Clearance">
+            <span class="bubble-icon">🧪</span>
+            <span class="bubble-label">Renal Clearance</span>
+          </button>
+          <button class="calc-nav-pill" data-calc-tab="all" role="tab" aria-selected="false" title="View All Calculators">
+            <span class="bubble-icon">✦</span>
+            <span class="bubble-label">View All</span>
+          </button>
         </div>
 
         
@@ -4971,6 +5319,304 @@
         </div>
         </div><!-- /#tabPeriop -->
 
+        <!-- TAB CONTENT: PULMONARY FUNCTION & LUNG RESECTION (Lite View) -->
+        <div class="calc-tab-content" id="tabPft" data-tab-name="pft">
+        <div class="calc-group-title fade" id="groupPft">
+          <span>Pulmonary Function &amp; Thoracic Resection</span>
+          <span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8; border:1px solid rgba(56,189,248,0.35);">🫁 ATS/ERS &amp; ACCP/ESTS</span>
+        </div>
+
+        <div class="pft-hero-banner fade">
+          <h2 style="font-size:1.5rem; margin:0 0 6px 0; color:#fff;">Pulmonary Physiology &amp; Resection Assessment</h2>
+          <p style="margin:0; font-size:0.92rem; color:#94a3b8; line-height:1.5;">
+            Diagnostic spirometry and gas-transfer interpretation following ATS/ERS consensus standards, plus post-operative FEV₁ and ppoDLCO calculation for anatomical lung resection risk stratification.
+          </p>
+        </div>
+
+        <div class="calc-card-grid">
+          <!-- CARD 1: PFT Interpretation & Pathology Diagnostic Calculator -->
+          <article class="calc-box fade" id="calcBoxPft">
+            <div class="calc-box-header">
+              <div>
+                <div class="calc-name">PFT Pathology Interpretation</div>
+                <div class="calc-subtitle">Spirometry, Bronchodilator Reversibility, TLC &amp; DLCO (ATS/ERS 2022)</div>
+              </div>
+              <span class="calc-tag">Diagnostics</span>
+            </div>
+
+            <p class="calc-desc">Enter measured values and percent of predicted to automatically determine obstructive, restrictive, mixed, or gas-transfer defects.</p>
+
+            <div class="calc-fields-grid">
+              <div class="calc-field">
+                <label for="pftFev1Ratio">FEV₁/FVC Ratio (%) *</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pftFev1Ratio" type="number" step="0.1" min="10" max="100" placeholder="e.g. 62" value="62">
+                  <span class="calc-unit">%</span>
+                </div>
+                <span class="calc-hint">Lower limit of normal: 70%</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="pftFev1Pred">FEV₁ (% Predicted) *</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pftFev1Pred" type="number" step="1" min="10" max="150" placeholder="e.g. 54" value="54">
+                  <span class="calc-unit">% pred</span>
+                </div>
+                <span class="calc-hint">Obstruction grading</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="pftFvcPred">FVC (% Predicted) *</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pftFvcPred" type="number" step="1" min="10" max="150" placeholder="e.g. 82" value="82">
+                  <span class="calc-unit">% pred</span>
+                </div>
+                <span class="calc-hint">Normal ≥ 80% pred</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="pftDlcoPred">DLCO / Gas Transfer (% Pred, Optional)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pftDlcoPred" type="number" step="1" min="10" max="150" placeholder="e.g. 58" value="58">
+                  <span class="calc-unit">% pred</span>
+                </div>
+                <span class="calc-hint">Differentiates emphysema vs asthma / ILD</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="pftTlcPred">TLC Total Lung Capacity (% Pred, Optional)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pftTlcPred" type="number" step="1" min="20" max="180" placeholder="e.g. 115" value="115">
+                  <span class="calc-unit">% pred</span>
+                </div>
+                <span class="calc-hint">Confirms restriction (&lt;80%) or hyperinflation (&gt;120%)</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="pftBdPct">Post-BD ΔFEV₁ (% Improvement, Optional)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pftBdPct" type="number" step="1" min="0" max="100" placeholder="e.g. 15">
+                  <span class="calc-unit">%</span>
+                </div>
+                <span class="calc-hint">≥12% AND ≥200 mL = Reversible</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="pftBdMl">Post-BD ΔFEV₁ Volume (mL, Optional)</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="pftBdMl" type="number" step="10" min="0" max="2000" placeholder="e.g. 240">
+                  <span class="calc-unit">mL</span>
+                </div>
+                <span class="calc-hint">≥200 mL threshold</span>
+              </div>
+            </div>
+
+            <!-- Pathology Diagnostic Output Banner -->
+            <div class="pft-pathology-banner danger" id="pftPathologyBanner">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
+                <div class="pft-pathology-title" id="pftPathologyTitle">Obstructive Ventilatory Defect</div>
+                <span class="pft-pathology-badge" id="pftSeverityBadge">Moderate (FEV₁ 50–59%)</span>
+              </div>
+              <div style="font-size:0.85rem; line-height:1.4;" id="pftReversibilityText">Significant Bronchodilator Reversibility</div>
+            </div>
+
+            <!-- Physiological Mechanism and Differential Diagnosis -->
+            <div class="pft-details-block" id="pftDetailsBlock">
+              <h5>Physiological Mechanisms &amp; Findings</h5>
+              <ul id="pftMechanismsList">
+                <li>FEV₁/FVC ratio is 62% (&lt; 70%), demonstrating expiratory airflow limitation.</li>
+                <li>FEV₁ is 54% predicted (Moderately Severe Obstruction).</li>
+                <li>DLCO is reduced (58% pred), indicating loss of alveolar membrane gas-transfer surface (hallmark of emphysema).</li>
+              </ul>
+              <h5 style="margin-top:0.85rem;">Differential Diagnoses</h5>
+              <ul id="pftDiffList">
+                <li>Emphysema (Loss of alveolar-capillary diffusing surface)</li>
+                <li>Chronic Obstructive Pulmonary Disease (COPD)</li>
+              </ul>
+              <h5 style="margin-top:0.85rem; color:#f59e0b;">Anaesthetic &amp; Airway Implications</h5>
+              <ul id="pftAnaesthList">
+                <li>High risk of dynamic hyperinflation, auto-PEEP, and gas trapping under positive pressure ventilation.</li>
+                <li>Prolong expiratory time (I:E ratio 1:3 or 1:4), reduce respiratory rate, and monitor plateau pressure.</li>
+              </ul>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnPftReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/16129869/" target="_blank" rel="noopener">Source: ATS/ERS Spirometry Guidelines ↗</a>
+            </div>
+          </article>
+
+          <!-- CARD 2: Post-Operative FEV1 & ppoDLCO / ppoDLC Resection Calculator -->
+          <article class="calc-box fade" id="calcBoxPpo">
+            <div class="calc-box-header">
+              <div>
+                <div class="calc-name">Post-Op FEV₁ &amp; ppoDLCO / ppoDLC</div>
+                <div class="calc-subtitle">Thoracic Surgery Anatomical Lung Resection Risk (ACCP / ESTS)</div>
+              </div>
+              <span class="calc-tag">Thoracic Risk</span>
+            </div>
+
+            <p class="calc-desc">Calculate predicted post-operative FEV₁ and ppoDLCO using anatomical lobar resection or 19-segment count with tumor obstruction offset.</p>
+
+            <div class="calc-fields-grid">
+              <div class="calc-field">
+                <label for="ppoPreopFev1L">Pre-Op FEV₁ (Litres) *</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="ppoPreopFev1L" type="number" step="0.05" min="0.5" max="6.0" placeholder="e.g. 2.40" value="2.40">
+                  <span class="calc-unit">L</span>
+                </div>
+                <span class="calc-hint">Absolute volume</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="ppoPreopFev1Pct">Pre-Op FEV₁ (% Predicted) *</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="ppoPreopFev1Pct" type="number" step="1" min="10" max="150" placeholder="e.g. 78" value="78">
+                  <span class="calc-unit">% pred</span>
+                </div>
+                <span class="calc-hint">Percent of normal</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="ppoPreopDlcoPct">Pre-Op DLCO / DLC (% Predicted) *</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="ppoPreopDlcoPct" type="number" step="1" min="10" max="150" placeholder="e.g. 70" value="70">
+                  <span class="calc-unit">% pred</span>
+                </div>
+                <span class="calc-hint">Diffusing capacity</span>
+              </div>
+
+              <div class="calc-field">
+                <label for="ppoObstructedSeg">Pre-Op Obstructed Segments</label>
+                <div class="calc-input-wrap">
+                  <input class="calc-input" id="ppoObstructedSeg" type="number" step="1" min="0" max="10" placeholder="0" value="0">
+                  <span class="calc-unit">segments</span>
+                </div>
+                <span class="calc-hint">Segments already collapsed/non-functional</span>
+              </div>
+            </div>
+
+            <!-- Resection Mode Toggle: Lobes vs Segments -->
+            <div style="margin-top:1rem;">
+              <label style="display:block; font-size:0.82rem; font-weight:600; color:#94a3b8; margin-bottom:0.4rem;">Resection Selection Method:</label>
+              <div class="resection-mode-toggle" id="ppoModeToggle" role="group">
+                <button type="button" class="resection-mode-btn active" data-resection-mode="lobes" id="btnModeLobes">Anatomical Lobes</button>
+                <button type="button" class="resection-mode-btn" data-resection-mode="segments" id="btnModeSegments">19-Segment Checklist</button>
+              </div>
+            </div>
+
+            <!-- Panel A: Lobes Preset Dropdown -->
+            <div id="ppoLobesContainer" class="calc-field" style="margin-top:0.5rem;">
+              <label for="ppoLobeSelect">Planned Surgical Resection (Lobe)</label>
+              <select class="calc-input" id="ppoLobeSelect">
+                <option value="rul" selected>Right Upper Lobectomy (RUL - 3 segments)</option>
+                <option value="rml">Right Middle Lobectomy (RML - 2 segments)</option>
+                <option value="rll">Right Lower Lobectomy (RLL - 5 segments)</option>
+                <option value="bilobectomy_ru_rm">Right Bilobectomy: Upper + Middle (5 segments)</option>
+                <option value="bilobectomy_rm_rl">Right Bilobectomy: Middle + Lower (7 segments)</option>
+                <option value="pneumonectomy_r">Right Pneumonectomy (10 segments / 52.6%)</option>
+                <option value="lul_total">Left Upper Lobectomy: Culmen + Lingula (5 segments)</option>
+                <option value="lul_culmen">Left Culmen Trisegmentectomy (3 segments)</option>
+                <option value="lingula">Left Lingulectomy (2 segments)</option>
+                <option value="lll">Left Lower Lobectomy (LLL - 4 segments)</option>
+                <option value="pneumonectomy_l">Left Pneumonectomy (9 segments / 47.4%)</option>
+                <option value="wedge">Wedge / Sublobar Resection (1 segment equivalent)</option>
+              </select>
+            </div>
+
+            <!-- Panel B: Interactive 19-Segment Checklist -->
+            <div id="ppoSegmentsContainer" style="display:none; margin-top:0.5rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+                <label style="font-size:0.8rem; font-weight:600; color:#38bdf8;">Select Segments to Resect (Total 19):</label>
+                <span style="font-size:0.75rem; color:#94a3b8;" id="ppoSelectedSegCount">3 segments selected</span>
+              </div>
+              <div class="segment-checklist-grid">
+                <!-- Right Lung (10 Segments) -->
+                <div>
+                  <div class="segment-col-header">Right Lung (10 Segments)</div>
+                  <div class="segment-chip-list">
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="R1" checked> <span>R1: Apical (RUL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="R2" checked> <span>R2: Posterior (RUL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="R3" checked> <span>R3: Anterior (RUL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="R4"> <span>R4: Lateral (RML)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="R5"> <span>R5: Medial (RML)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="R6"> <span>R6: Superior (RLL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="R7"> <span>R7: Medial Basal (RLL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="R8"> <span>R8: Anterior Basal (RLL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="R9"> <span>R9: Lateral Basal (RLL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="R10"> <span>R10: Posterior Basal (RLL)</span></label>
+                  </div>
+                </div>
+
+                <!-- Left Lung (9 Segments) -->
+                <div>
+                  <div class="segment-col-header">Left Lung (9 Segments)</div>
+                  <div class="segment-chip-list">
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="L1_2"> <span>L1+2: Apicoposterior (LUL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="L3"> <span>L3: Anterior (LUL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="L4"> <span>L4: Superior Lingular</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="L5"> <span>L5: Inferior Lingular</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="L6"> <span>L6: Superior (LLL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="L7_8"> <span>L7+8: Anteromedial Basal (LLL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="L9"> <span>L9: Lateral Basal (LLL)</span></label>
+                    <label class="segment-chip-label"><input type="checkbox" class="ppo-seg-check-lite" value="L10"> <span>L10: Posterior Basal (LLL)</span></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Predicted Post-Op Results Deck -->
+            <div class="ppo-result-deck">
+              <div class="ppo-stat-tile">
+                <div class="label">ppoFEV₁ (L)</div>
+                <div class="val" id="ppoValFev1L">2.02 L</div>
+                <div class="sub">Absolute volume (&gt;0.8L)</div>
+              </div>
+              <div class="ppo-stat-tile">
+                <div class="label">ppoFEV₁ (%)</div>
+                <div class="val" id="ppoValFev1Pct" style="color:#38bdf8;">65.7%</div>
+                <div class="sub">Threshold: &gt;40%</div>
+              </div>
+              <div class="ppo-stat-tile">
+                <div class="label">ppoDLCO / ppoDLC</div>
+                <div class="val" id="ppoValDlcoPct" style="color:#38bdf8;">58.9%</div>
+                <div class="sub">Threshold: &gt;40%</div>
+              </div>
+              <div class="ppo-stat-tile">
+                <div class="label">Lung Removed</div>
+                <div class="val" id="ppoValRemovedPct">15.8%</div>
+                <div class="sub" id="ppoValRemovedSegs">3 of 19 segments</div>
+              </div>
+            </div>
+
+            <!-- Thoracic Risk Stratification Callout Banner -->
+            <div class="pft-pathology-banner success" id="ppoRiskBanner">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
+                <div class="pft-pathology-title" id="ppoRiskTitle">Low Perioperative Risk (Suitable for Resection)</div>
+                <span class="pft-pathology-badge" id="ppoRiskBadge">ppo &gt; 40%</span>
+              </div>
+              <div style="font-size:0.85rem; line-height:1.4;" id="ppoRecommendationText">
+                Patient meets ACCP/ESTS criteria for planned anatomical lung resection with low predicted cardiopulmonary mortality (&lt;1–3%). Standard post-thoracotomy care.
+              </div>
+            </div>
+
+            <div class="pft-details-block" id="ppoDetailsBlock">
+              <h5>Thoracic Anaesthesia &amp; One-Lung Ventilation (OLV) Points</h5>
+              <ul id="ppoAnaesthList">
+                <li>Strict perioperative fluid management: Limit total fluids &lt; 1.5–2 L in 24 hours to prevent fatal post-pneumonectomy pulmonary edema.</li>
+                <li>Lung-protective one-lung ventilation (OLV): Tidal volume 4–6 mL/kg PBW, PEEP 5 cmH2O, peak airway pressure &lt; 30 cmH2O, permissive hypercapnia.</li>
+                <li>Multimodal analgesia: Thoracic epidural, paravertebral block, or erector spinae plane (ESP) block essential for early extubation and coughing.</li>
+              </ul>
+            </div>
+
+            <div class="calc-box-actions">
+              <button class="btn-calc-reset" id="btnPpoReset">Reset</button>
+              <a class="calc-source-link" href="https://pubmed.ncbi.nlm.nih.gov/19443519/" target="_blank" rel="noopener">Source: ACCP / ESTS Thoracic Guidelines ↗</a>
+            </div>
+          </article>
+        </div>
+        </div><!-- /#tabPft -->
+
         <!-- TAB CONTENT: RENAL & ACID-BASE (Lite View) -->
         <div class="calc-tab-content" id="tabRenal" data-tab-name="renal">
         <div class="calc-group-title fade" id="groupRenal">
@@ -7033,6 +7679,223 @@
   });
 
   // ------------------------------------------------------------------------
+  // PULMONARY FUNCTION TEST (PFT) & THORACIC RESECTION CONTROLLER
+  // ------------------------------------------------------------------------
+  function updatePFT() {
+    const ratioInput = document.getElementById("pftFev1Ratio3d") || document.getElementById("pftFev1Ratio");
+    const f1pInput = document.getElementById("pftFev1Pred3d") || document.getElementById("pftFev1Pred");
+    const fvpInput = document.getElementById("pftFvcPred3d") || document.getElementById("pftFvcPred");
+    const dlcoInput = document.getElementById("pftDlcoPred3d") || document.getElementById("pftDlcoPred");
+    const tlcInput = document.getElementById("pftTlcPred3d") || document.getElementById("pftTlcPred");
+    const bdpInput = document.getElementById("pftBdPct3d") || document.getElementById("pftBdPct");
+    const bdmInput = document.getElementById("pftBdMl3d") || document.getElementById("pftBdMl");
+
+    if (!ratioInput || !f1pInput || !fvpInput || !window.KnockoutCalculators.calculatePFT) return;
+
+    const res = window.KnockoutCalculators.calculatePFT({
+      ratio: ratioInput.value,
+      fev1Pred: f1pInput.value,
+      fvcPred: fvpInput.value,
+      dlcoPred: dlcoInput ? dlcoInput.value : null,
+      tlcPred: tlcInput ? tlcInput.value : null,
+      postBdFev1ChangePercent: bdpInput ? bdpInput.value : null,
+      postBdFev1ChangeMl: bdmInput ? bdmInput.value : null
+    });
+
+    if (!res || res.error) return;
+
+    ["3d", ""].forEach(s => {
+      const banner = document.getElementById("pftPathologyBanner" + s);
+      const title = document.getElementById("pftPathologyTitle" + s);
+      const badge = document.getElementById("pftSeverityBadge" + s);
+      const revText = document.getElementById("pftReversibilityText" + s);
+      const mechList = document.getElementById("pftMechanismsList" + s);
+      const diffList = document.getElementById("pftDiffList" + s);
+      const anaesthList = document.getElementById("pftAnaesthList" + s);
+
+      if (banner) {
+        banner.className = "pft-pathology-banner " + res.severityClass;
+      }
+      if (title) title.textContent = res.primaryDiagnosis;
+      if (badge) badge.textContent = res.severity;
+      if (revText) {
+        revText.textContent = res.reversibilityText || (res.pathologyType === "normal" ? "Normal Expiratory & Diffusion Parameters" : "No bronchodilator reversibility test values entered");
+      }
+
+      if (mechList) {
+        mechList.innerHTML = (res.physiologicalMechanisms || []).map(m => `<li>${m}</li>`).join("");
+      }
+      if (diffList) {
+        diffList.innerHTML = (res.differentialDiagnoses || []).map(d => `<li>${d}</li>`).join("");
+      }
+      if (anaesthList) {
+        anaesthList.innerHTML = (res.anaesthesiaImplications || []).map(a => `<li>${a}</li>`).join("");
+      }
+    });
+  }
+
+  let currentPpoMode = "lobes"; // "lobes" or "segments"
+
+  function updatePpo() {
+    const f1Input = document.getElementById("ppoPreopFev1L3d") || document.getElementById("ppoPreopFev1L");
+    const f1pInput = document.getElementById("ppoPreopFev1Pct3d") || document.getElementById("ppoPreopFev1Pct");
+    const dlcoInput = document.getElementById("ppoPreopDlcoPct3d") || document.getElementById("ppoPreopDlcoPct");
+    const obsInput = document.getElementById("ppoObstructedSeg3d") || document.getElementById("ppoObstructedSeg");
+    const lobeSelect = document.getElementById("ppoLobeSelect3d") || document.getElementById("ppoLobeSelect");
+
+    if (!f1Input || !f1pInput || !dlcoInput || !window.KnockoutCalculators.calculatePpoLungResection) return;
+
+    let checkedSegsCount = 0;
+    const checks = document.querySelectorAll(".ppo-seg-check-3d:checked");
+    checkedSegsCount = checks.length;
+
+    const res = window.KnockoutCalculators.calculatePpoLungResection({
+      preopFev1L: f1Input.value,
+      preopFev1Pct: f1pInput.value,
+      preopDlcoPct: dlcoInput.value,
+      obstructedSegments: obsInput ? obsInput.value : 0,
+      resectionMode: currentPpoMode,
+      selectedLobeKey: lobeSelect ? lobeSelect.value : "rul",
+      resectedSegments: checkedSegsCount
+    });
+
+    if (!res || res.error) return;
+
+    ["3d", ""].forEach(s => {
+      const fev1L = document.getElementById("ppoValFev1L" + s);
+      const fev1Pct = document.getElementById("ppoValFev1Pct" + s);
+      const dlcoPct = document.getElementById("ppoValDlcoPct" + s);
+      const removedPct = document.getElementById("ppoValRemovedPct" + s);
+      const removedSegs = document.getElementById("ppoValRemovedSegs" + s);
+      const banner = document.getElementById("ppoRiskBanner" + s);
+      const title = document.getElementById("ppoRiskTitle" + s);
+      const badge = document.getElementById("ppoRiskBadge" + s);
+      const recText = document.getElementById("ppoRecommendationText" + s);
+      const anaesthList = document.getElementById("ppoAnaesthList" + s);
+      const segCountLabel = document.getElementById("ppoSelectedSegCount" + s);
+
+      if (fev1L) fev1L.textContent = res.ppoFev1L !== null ? `${res.ppoFev1L} L` : "—";
+      if (fev1Pct) fev1Pct.textContent = res.ppoFev1Pct !== null ? `${res.ppoFev1Pct}%` : "—";
+      if (dlcoPct) dlcoPct.textContent = res.ppoDlcoPct !== null ? `${res.ppoDlcoPct}%` : "—";
+      if (removedPct) removedPct.textContent = `${res.pctLungRemoved}%`;
+      if (removedSegs) removedSegs.textContent = `${res.resectedSegments} of ${res.totalFunctionalPreop} functional segs`;
+
+      if (banner) banner.className = "pft-pathology-banner " + res.riskBadgeClass;
+      if (title) title.textContent = res.riskTier;
+      if (badge) badge.textContent = res.lowestPct !== null ? `Lowest ppo: ${res.lowestPct}%` : "ACCP / ESTS Tier";
+      if (recText) recText.textContent = res.recommendation;
+
+      if (anaesthList) {
+        anaesthList.innerHTML = (res.anaesthesiaPoints || []).map(p => `<li>${p}</li>`).join("");
+      }
+      if (segCountLabel) {
+        segCountLabel.textContent = `${res.resectedSegments} segment(s) selected`;
+      }
+    });
+  }
+
+  function setupPpoModeToggles() {
+    ["3d", ""].forEach(s => {
+      const btnLobes = document.getElementById("btnModeLobes" + s);
+      const btnSegments = document.getElementById("btnModeSegments" + s);
+
+      if (btnLobes && btnSegments) {
+        btnLobes.addEventListener("click", () => {
+          currentPpoMode = "lobes";
+          ["3d", ""].forEach(s2 => {
+            const bL = document.getElementById("btnModeLobes" + s2);
+            const bS = document.getElementById("btnModeSegments" + s2);
+            const lC = document.getElementById("ppoLobesContainer" + s2);
+            const sC = document.getElementById("ppoSegmentsContainer" + s2);
+            if (bL) bL.classList.add("active");
+            if (bS) bS.classList.remove("active");
+            if (lC) lC.style.display = "block";
+            if (sC) sC.style.display = "none";
+          });
+          updatePpo();
+        });
+
+        btnSegments.addEventListener("click", () => {
+          currentPpoMode = "segments";
+          ["3d", ""].forEach(s2 => {
+            const bL = document.getElementById("btnModeLobes" + s2);
+            const bS = document.getElementById("btnModeSegments" + s2);
+            const lC = document.getElementById("ppoLobesContainer" + s2);
+            const sC = document.getElementById("ppoSegmentsContainer" + s2);
+            if (bL) bL.classList.remove("active");
+            if (bS) bS.classList.add("active");
+            if (lC) lC.style.display = "none";
+            if (sC) sC.style.display = "block";
+          });
+          updatePpo();
+        });
+      }
+    });
+
+    const checks3d = document.querySelectorAll(".ppo-seg-check-3d");
+    const checksLite = document.querySelectorAll(".ppo-seg-check-lite");
+    checks3d.forEach((c, idx) => {
+      c.addEventListener("change", () => {
+        if (checksLite[idx]) checksLite[idx].checked = c.checked;
+        updatePpo();
+      });
+    });
+    checksLite.forEach((c, idx) => {
+      c.addEventListener("change", () => {
+        if (checks3d[idx]) checks3d[idx].checked = c.checked;
+        updatePpo();
+      });
+    });
+  }
+
+  syncPair("pftFev1Ratio3d", "pftFev1Ratio", updatePFT);
+  syncPair("pftFev1Pred3d", "pftFev1Pred", updatePFT);
+  syncPair("pftFvcPred3d", "pftFvcPred", updatePFT);
+  syncPair("pftDlcoPred3d", "pftDlcoPred", updatePFT);
+  syncPair("pftTlcPred3d", "pftTlcPred", updatePFT);
+  syncPair("pftBdPct3d", "pftBdPct", updatePFT);
+  syncPair("pftBdMl3d", "pftBdMl", updatePFT);
+
+  ["btnPftReset3d", "btnPftReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const r = document.getElementById("pftFev1Ratio" + s); if (r) r.value = "62";
+        const f1 = document.getElementById("pftFev1Pred" + s); if (f1) f1.value = "54";
+        const fv = document.getElementById("pftFvcPred" + s); if (fv) fv.value = "82";
+        const dl = document.getElementById("pftDlcoPred" + s); if (dl) dl.value = "58";
+        const tl = document.getElementById("pftTlcPred" + s); if (tl) tl.value = "115";
+        const bp = document.getElementById("pftBdPct" + s); if (bp) bp.value = "";
+        const bm = document.getElementById("pftBdMl" + s); if (bm) bm.value = "";
+      });
+      updatePFT();
+    });
+  });
+
+  syncPair("ppoPreopFev1L3d", "ppoPreopFev1L", updatePpo);
+  syncPair("ppoPreopFev1Pct3d", "ppoPreopFev1Pct", updatePpo);
+  syncPair("ppoPreopDlcoPct3d", "ppoPreopDlcoPct", updatePpo);
+  syncPair("ppoObstructedSeg3d", "ppoObstructedSeg", updatePpo);
+  syncPair("ppoLobeSelect3d", "ppoLobeSelect", updatePpo);
+
+  ["btnPpoReset3d", "btnPpoReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const f1 = document.getElementById("ppoPreopFev1L" + s); if (f1) f1.value = "2.40";
+        const f1p = document.getElementById("ppoPreopFev1Pct" + s); if (f1p) f1p.value = "78";
+        const dl = document.getElementById("ppoPreopDlcoPct" + s); if (dl) dl.value = "70";
+        const obs = document.getElementById("ppoObstructedSeg" + s); if (obs) obs.value = "0";
+        const sel = document.getElementById("ppoLobeSelect" + s); if (sel) sel.value = "rul";
+      });
+      document.querySelectorAll(".ppo-seg-check-3d, .ppo-seg-check-lite").forEach(c => {
+        c.checked = ["R1", "R2", "R3"].includes(c.value);
+      });
+      updatePpo();
+    });
+  });
+
+  // ------------------------------------------------------------------------
   // TAB SWITCHING CONTROLLER (FAST TABS)
   // ------------------------------------------------------------------------
   function setupTabs() {
@@ -7077,6 +7940,7 @@
       else if (hash.includes("adv") || hash.includes("vaso") || hash.includes("tci") || hash.includes("vent") || hash.includes("mabl") || hash.includes("mtp") || hash.includes("teg") || hash.includes("rotem")) initialTab = "advanced";
       else if (hash.includes("abg")) initialTab = "abg";
       else if (hash.includes("emerg") || hash.includes("parkland")) initialTab = "emergency";
+      else if (hash.includes("pft") || hash.includes("fev") || hash.includes("dlco") || hash.includes("spiro") || hash.includes("resect") || hash.includes("lung")) initialTab = "pft";
       else if (hash.includes("periop") || hash.includes("wilson") || hash.includes("dasi") || hash.includes("stop") || hash.includes("bmi") || hash.includes("child") || hash.includes("mets")) initialTab = "periop";
       else if (hash.includes("renal") || hash.includes("cockcroft") || hash.includes("crcl")) initialTab = "renal";
       else if (hash.includes("paed") || hash.includes("airway") || hash.includes("copur")) initialTab = "paeds";
@@ -7278,6 +8142,9 @@
     try { updateMews(); } catch (e) { console.error("updateMews error:", e); }
     try { updateCorrectedCa(); } catch (e) { console.error("updateCorrectedCa error:", e); }
     try { updateCorrectedNa(); } catch (e) { console.error("updateCorrectedNa error:", e); }
+    try { updatePFT(); } catch (e) { console.error("updatePFT error:", e); }
+    try { updatePpo(); } catch (e) { console.error("updatePpo error:", e); }
+    try { setupPpoModeToggles(); } catch (e) { console.error("setupPpoModeToggles error:", e); }
     try { setup3DHapticDepth(); } catch (e) { console.error("setup3DHapticDepth error:", e); }
   }
 

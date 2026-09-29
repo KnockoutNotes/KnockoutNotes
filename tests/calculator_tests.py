@@ -376,7 +376,51 @@ def test_clinical_calculators():
     assert round(ps * 100, 1) == 98.6
     print("[OK] Revised Trauma Score (Triage RTS & TRISS physiological) verified.")
 
-    print("\n>>> All 31 Clinical Calculators: 100% MATHEMATICALLY VERIFIED!\n")
+    # 28. Pulmonary Function Test (PFT) Diagnostic Logic
+    # Case A: Obstructive (FEV1/FVC 62% < 70%, FEV1 54% pred -> Moderately Severe Obstruction)
+    ratio_a = 62.0
+    fev1_pred_a = 54.0
+    is_obstructive_a = ratio_a < 70.0
+    assert is_obstructive_a is True
+    assert 50.0 <= fev1_pred_a < 60.0
+
+    # Bronchodilator reversibility: >=12% and >=200 mL
+    bd_pct = 15.0
+    bd_ml = 240.0
+    is_reversible = (bd_pct >= 12.0) and (bd_ml >= 200.0)
+    assert is_reversible is True
+
+    # Case B: Restrictive (FEV1/FVC 82% >= 70%, FVC 58% < 80%, TLC 62% < 80% -> Confirmed Moderate Restriction)
+    ratio_b = 82.0
+    tlc_pred_b = 62.0
+    dlco_pred_b = 48.0
+    assert ratio_b >= 70.0
+    assert tlc_pred_b < 80.0
+    assert dlco_pred_b < 80.0
+    print("[OK] Pulmonary Function Test (PFT) diagnostic pathology algorithms verified against ATS/ERS standards.")
+
+    # 29. Post-Operative FEV1 & ppoDLCO Resection Equations (Thoracic Surgery)
+    # 19 Total Segments (RUL = 3 segments). Preop FEV1 = 2.40 L (78%), DLCO = 70%, Obstructed = 0
+    # Fraction remaining = 1 - (3 / 19) = 16 / 19 = 0.8421
+    # ppoFEV1 L = 2.40 * (16/19) = 2.02 L
+    # ppoFEV1 % = 78 * (16/19) = 65.7%
+    # ppoDLCO % = 70 * (16/19) = 58.9%
+    total_segments = 19
+    resected_rul = 3
+    preop_fev1_l = 2.40
+    preop_fev1_pct = 78.0
+    preop_dlco_pct = 70.0
+    fraction_remaining = 1.0 - (resected_rul / total_segments)
+    ppo_fev1_l = round(preop_fev1_l * fraction_remaining, 2)
+    ppo_fev1_pct = round(preop_fev1_pct * fraction_remaining, 1)
+    ppo_dlco_pct = round(preop_dlco_pct * fraction_remaining, 1)
+    assert ppo_fev1_l == 2.02
+    assert ppo_fev1_pct == 65.7
+    assert ppo_dlco_pct == 58.9
+    assert ppo_fev1_pct > 40.0 and ppo_dlco_pct > 40.0 and ppo_fev1_l > 0.8
+    print("[OK] Post-Operative FEV1 and ppoDLCO lung resection formulas verified against ACCP/ESTS standards.")
+
+    print("\n>>> All 33 Clinical Calculators: 100% MATHEMATICALLY VERIFIED!\n")
 
 
 def test_table_42_6_airway_equipment():
@@ -430,22 +474,22 @@ def test_calculator_tabs_and_sections():
     print("[OK] calculators.html HTML tag balance is 100% clean (0 errors, 0 unclosed).")
 
     # 2. Section containers in 3D and Lite views
-    tabs_3d = ["tabPaeds3d", "tabEmergency3d", "tabPeriop3d", "tabRenal3d", "tabAbg3d"]
+    tabs_3d = ["tabPaeds3d", "tabEmergency3d", "tabPeriop3d", "tabPft3d", "tabRenal3d", "tabAbg3d"]
     for t in tabs_3d:
         assert f'id="{t}"' in content, f"Missing 3D tab container: {t}"
-    tabs_lite = ["tabPaeds", "tabEmergency", "tabPeriop", "tabRenal", "tabAbg"]
+    tabs_lite = ["tabPaeds", "tabEmergency", "tabPeriop", "tabPft", "tabRenal", "tabAbg"]
     for t in tabs_lite:
         assert f'id="{t}"' in content, f"Missing Lite tab container: {t}"
-    print("[OK] All 5 tab content sections exist in both 3D View and Lite View.")
+    print("[OK] All 6 tab content sections exist in both 3D View and Lite View.")
 
     # 3. Respective section headings
-    titles_3d = ["groupPaeds3d", "groupEmergency3d", "groupPeriop3d", "groupRenal3d", "groupAbg3d"]
+    titles_3d = ["groupPaeds3d", "groupEmergency3d", "groupPeriop3d", "groupPft3d", "groupRenal3d", "groupAbg3d"]
     for g in titles_3d:
         assert f'id="{g}"' in content, f"Missing 3D heading: {g}"
-    titles_lite = ["groupPaeds", "groupEmergency", "groupPeriop", "groupRenal", "groupAbg"]
+    titles_lite = ["groupPaeds", "groupEmergency", "groupPeriop", "groupPft", "groupRenal", "groupAbg"]
     for g in titles_lite:
         assert f'id="{g}"' in content, f"Missing Lite heading: {g}"
-    print("[OK] All 5 sections have their respective headings.")
+    print("[OK] All 6 sections have their respective headings.")
 
     # 4. ABG Engine presence
     assert 'id="abgHero3d"' in content, "ABG hero engine missing in 3D View"

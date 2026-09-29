@@ -55,7 +55,8 @@
     nsaids: '<svg viewBox="0 0 48 48"><g transform="rotate(-30 24 24)"><rect x="8" y="18" width="32" height="14" rx="7" fill="currentColor" opacity="0.5"/><path d="M24 18h9a7 7 0 0 1 7 7 7 7 0 0 1-7 7h-9z" fill="currentColor" opacity="0.95"/><line x1="24" y1="18" x2="24" y2="32" stroke="rgba(0,0,0,0.25)" stroke-width="1.2"/></g><circle cx="35" cy="11" r="5" fill="currentColor" opacity="0.8"/><line x1="35" y1="7" x2="35" y2="15" stroke="rgba(0,0,0,0.2)" stroke-width="1"/></svg>',
     vasopressors: '<svg viewBox="0 0 48 48"><path d="M24 41C9 30 5 21 5 14a10 10 0 0 1 19-4 10 10 0 0 1 19 4c0 7-4 16-19 27z" fill="currentColor" opacity="0.92"/><path d="M8 23h6l3-7 4 15 3-10 2 2h10" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     local: '<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="5" fill="currentColor" opacity="0.9"/><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.85"><line x1="24" y1="24" x2="24" y2="6"/><line x1="24" y1="24" x2="24" y2="42"/><line x1="24" y1="24" x2="6" y2="24"/><line x1="24" y1="24" x2="42" y2="24"/><line x1="24" y1="24" x2="11" y2="11"/><line x1="24" y1="24" x2="37" y2="37"/><line x1="24" y1="24" x2="37" y2="11"/><line x1="24" y1="24" x2="11" y2="37"/></g><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.7"><line x1="24" y1="10" x2="20" y2="14"/><line x1="24" y1="10" x2="28" y2="14"/><line x1="24" y1="38" x2="20" y2="34"/><line x1="24" y1="38" x2="28" y2="34"/><line x1="10" y1="24" x2="14" y2="20"/><line x1="10" y1="24" x2="14" y2="28"/><line x1="38" y1="24" x2="34" y2="20"/><line x1="38" y1="24" x2="34" y2="28"/></g></svg>',
-    pregnancy: '<svg viewBox="0 0 48 48"><circle cx="24" cy="11" r="5" fill="currentColor" opacity="0.95"/><circle cx="22" cy="10" r="1.5" fill="rgba(255,255,255,0.4)"/><path d="M19 18c-3 0-5 3-5 7 0 6 3 11 5 15l2 3h6l2-3c2-4 5-9 5-15 0-4-2-7-5-7h-10z" fill="currentColor" opacity="0.6"/><path d="M21 21c-2 1-3 3-3 6 0 4 2 8 4 11 1 0 2 0 3-1 2-2 3-5 3-8 0-3-1-5-3-6-1-1-3-2-4-2z" fill="currentColor" opacity="0.95"/><circle cx="24" cy="27" r="2.2" fill="rgba(255,255,255,0.5)"/></svg>'
+    pregnancy: '<svg viewBox="0 0 48 48"><circle cx="24" cy="11" r="5" fill="currentColor" opacity="0.95"/><circle cx="22" cy="10" r="1.5" fill="rgba(255,255,255,0.4)"/><path d="M19 18c-3 0-5 3-5 7 0 6 3 11 5 15l2 3h6l2-3c2-4 5-9 5-15 0-4-2-7-5-7h-10z" fill="currentColor" opacity="0.6"/><path d="M21 21c-2 1-3 3-3 6 0 4 2 8 4 11 1 0 2 0 3-1 2-2 3-5 3-8 0-3-1-5-3-6-1-1-3-2-4-2z" fill="currentColor" opacity="0.95"/><circle cx="24" cy="27" r="2.2" fill="rgba(255,255,255,0.5)"/></svg>',
+    pft: '<svg viewBox="0 0 48 48"><path d="M24 6v14M24 20c-3-2-6-3-9-3-6 0-10 5-10 12 0 8 5 13 11 13 5 0 8-3 8-7V20z" fill="currentColor" opacity="0.9"/><path d="M24 20c3-2 6-3 9-3 6 0 10 5 10 12 0 8-5 13-11 13-5 0-8-3-8-7V20z" fill="currentColor" opacity="0.75"/><circle cx="16" cy="27" r="2" fill="rgba(0,0,0,0.2)"/><circle cx="32" cy="27" r="2" fill="rgba(0,0,0,0.15)"/><path d="M24 6c0-2-1-3-3-3h-1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>'
   };
   function catIconHTML(catId, cat) {
     return CAT_ICON_SVG[catId] || esc(cat.icon);
@@ -64,7 +65,7 @@
   const drugById = new Map(DATA.drugs.map((d) => [d.id, d]));
   const topicById = new Map(DATA.topics.map((t) => [t.id, t]));
   const catById = new Map(DATA.categories.map((c) => [c.id, c]));
-  const TOPIC_CATS = new Set(["anaesthesia", "examination", "ecg", "abg", "equipment"]);
+  const TOPIC_CATS = new Set(["anaesthesia", "examination", "ecg", "abg", "equipment", "pft"]);
   const isDrugCat = (catId) => !TOPIC_CATS.has(catId);
 
   function itemById(id) { return drugById.get(id) || topicById.get(id) || null; }
@@ -790,6 +791,11 @@
       else if (s.diagram === "abg-anion-gap-balance") diagramHTML = abgAnionGapBalanceHTML();
       else if (s.diagram === "abg-compensation-rules") diagramHTML = abgCompensationRulesDiagramHTML();
       else if (s.diagram === "abg-hagma-nagma-tree") diagramHTML = abgHagmaNagmaTreeDiagramHTML();
+      else if (s.diagram === "pft-reading-algorithm") diagramHTML = pftReadingAlgorithmHTML();
+      else if (s.diagram === "pft-obstructive-severity") diagramHTML = pftObstructiveSeverityHTML();
+      else if (s.diagram === "pft-restrictive-tree") diagramHTML = pftRestrictiveTreeHTML();
+      else if (s.diagram === "pft-flow-volume-loops") diagramHTML = pftFlowVolumeLoopsHTML();
+      else if (s.diagram === "pft-postop-resection") diagramHTML = pftPostopResectionHTML();
 
       let imagesHTML = "";
       if (Array.isArray(s.images)) {
@@ -3597,6 +3603,682 @@
         </g>
       </svg>
       <p class="st-diagram-caption">Metabolic Acidosis Diagnostic Flowchart: Differentiating High Anion Gap (HAGMA) from Normal Anion Gap (NAGMA). In NAGMA, calculating the Urine Anion Gap (UAG) definitively distinguishes extra-renal GI bicarbonate loss (negative UAG) from Renal Tubular Acidosis (positive UAG).</p>
+    </div>`;
+  }
+
+
+  /* ==========================================================================
+     PFT (PULMONARY FUNCTION TESTS) DYNAMIC DIAGRAMS (16 to 20)
+     ========================================================================== */
+
+  /* 16. ATS/ERS Systematic 5-Step PFT Interpretation Flowchart */
+  function pftReadingAlgorithmHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 780 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Systematic 5-Step PFT Interpretation Algorithm" style="width:100%;max-width:780px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        <rect x="10" y="10" width="760" height="420" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- Header -->
+        <g transform="translate(30, 22)">
+          <rect x="0" y="0" width="720" height="28" rx="5" fill="#1e293b"/>
+          <text x="360" y="18" font-size="11" font-weight="900" fill="#38bdf8" text-anchor="middle" letter-spacing="1">ATS / ERS SYSTEMATIC 5-STEP PFT INTERPRETATION ALGORITHM</text>
+        </g>
+
+        <!-- STEP 1: FEV1/FVC Ratio -->
+        <g transform="translate(30, 62)">
+          <rect x="0" y="0" width="220" height="100" rx="6" fill="#111827" stroke="#38bdf8" stroke-width="1.5"/>
+          <rect x="0" y="0" width="220" height="22" rx="6" fill="#0284c7"/>
+          <text x="110" y="15" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">STEP 1: FEV1 / FVC RATIO (LLN)</text>
+          <text x="12" y="38" font-size="8" font-weight="800" fill="#ef4444">• Ratio &lt; LLN (&lt; 0.70):</text>
+          <text x="24" y="50" font-size="7.5" fill="#fca5a5">OBSTRUCTIVE DEFECT</text>
+          <text x="12" y="66" font-size="8" font-weight="800" fill="#22c55e">• Ratio ≥ LLN (≥ 0.70):</text>
+          <text x="24" y="78" font-size="7.5" fill="#a7f3d0">NO OBSTRUCTION → Check FVC</text>
+          <text x="12" y="92" font-size="7.2" fill="#94a3b8">Beware: 0.70 overdiagnoses in elderly!</text>
+        </g>
+
+        <!-- Path from Step 1 to Step 2 (Down if Obstructive) -->
+        <path d="M140 162 L140 195" stroke="#ef4444" stroke-width="2" fill="none"/>
+        <polygon points="140,202 136,194 144,194" fill="#ef4444"/>
+
+        <!-- Path from Step 1 to Step 4 (Right if No Obstruction) -->
+        <path d="M250 112 L280 112" stroke="#22c55e" stroke-width="2" fill="none"/>
+        <polygon points="288,112 280,108 280,116" fill="#22c55e"/>
+
+        <!-- STEP 2: Grade Severity -->
+        <g transform="translate(30, 204)">
+          <rect x="0" y="0" width="220" height="105" rx="6" fill="#111827" stroke="#ef4444" stroke-width="1.4"/>
+          <rect x="0" y="0" width="220" height="22" rx="6" fill="#b91c1c"/>
+          <text x="110" y="15" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">STEP 2: GRADE SEVERITY (FEV1 %)</text>
+          <text x="12" y="38" font-size="7.6" fill="#fef08a">• Mild: FEV1 ≥ 80% predicted</text>
+          <text x="12" y="52" font-size="7.6" fill="#fed7aa">• Moderate: 50% – 79% predicted</text>
+          <text x="12" y="66" font-size="7.6" fill="#fb923c">• Severe: 30% – 49% predicted</text>
+          <text x="12" y="80" font-size="7.6" fill="#f87171">• Very Severe: &lt; 30% predicted</text>
+          <text x="12" y="96" font-size="7" fill="#cbd5e1">(ATS/ERS 5-tier or GOLD 1–4 staging)</text>
+        </g>
+
+        <!-- Arrow Step 2 to Step 3 -->
+        <path d="M140 309 L140 330" stroke="#f59e0b" stroke-width="2" fill="none"/>
+        <polygon points="140,337 136,329 144,329" fill="#f59e0b"/>
+
+        <!-- STEP 3: Reversibility -->
+        <g transform="translate(30, 338)">
+          <rect x="0" y="0" width="220" height="80" rx="6" fill="#111827" stroke="#f59e0b" stroke-width="1.4"/>
+          <rect x="0" y="0" width="220" height="20" rx="6" fill="#d97706"/>
+          <text x="110" y="14" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">STEP 3: REVERSIBILITY (POST-BD)</text>
+          <text x="12" y="36" font-size="7.5" fill="#fef08a">• Reversible: ΔFEV1 ≥12% AND ≥200 mL</text>
+          <text x="24" y="48" font-size="7.2" fill="#a7f3d0">→ Classic ASTHMA / ACO</text>
+          <text x="12" y="62" font-size="7.5" fill="#f87171">• Fixed / Non-reversible (&lt;12% or &lt;200 mL)</text>
+          <text x="24" y="74" font-size="7.2" fill="#cbd5e1">→ Classic COPD / Emphysema</text>
+        </g>
+
+        <!-- STEP 4: Lung Volumes (TLC) -->
+        <g transform="translate(290, 62)">
+          <rect x="0" y="0" width="220" height="120" rx="6" fill="#111827" stroke="#8b5cf6" stroke-width="1.5"/>
+          <rect x="0" y="0" width="220" height="22" rx="6" fill="#6d28d9"/>
+          <text x="110" y="15" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">STEP 4: LUNG VOLUMES (TLC)</text>
+          <text x="12" y="38" font-size="7.8" font-weight="800" fill="#a78bfa">• If FVC &lt; 80% &amp; Ratio Normal:</text>
+          <text x="24" y="51" font-size="7.5" fill="#c4b5fd">Measure TLC by Plethysmography</text>
+          <text x="12" y="67" font-size="7.8" font-weight="800" fill="#f43f5e">• TLC &lt; 80% predicted:</text>
+          <text x="24" y="80" font-size="7.5" fill="#fecdd3">CONFIRMED RESTRICTION</text>
+          <text x="12" y="95" font-size="7.8" font-weight="800" fill="#38bdf8">• TLC &gt; 120% predicted:</text>
+          <text x="24" y="108" font-size="7.5" fill="#bae6fd">HYPERINFLATION (RV &gt; 120% = Air Trap)</text>
+        </g>
+
+        <!-- Arrow Step 4 to Step 5 -->
+        <path d="M400 182 L400 215" stroke="#8b5cf6" stroke-width="2" fill="none"/>
+        <polygon points="400,222 396,214 404,214" fill="#8b5cf6"/>
+
+        <!-- STEP 5: DLCO / Gas Transfer -->
+        <g transform="translate(290, 224)">
+          <rect x="0" y="0" width="220" height="194" rx="6" fill="#111827" stroke="#10b981" stroke-width="1.5"/>
+          <rect x="0" y="0" width="220" height="22" rx="6" fill="#059669"/>
+          <text x="110" y="15" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">STEP 5: DIFFUSING CAPACITY (DLCO)</text>
+          <text x="12" y="38" font-size="7.6" font-weight="800" fill="#34d399">• Correct for Hb &amp; COHb first!</text>
+          <text x="12" y="54" font-size="7.8" font-weight="800" fill="#ef4444">A. Reduced DLCO (&lt; 80% pred):</text>
+          <text x="20" y="68" font-size="7.2" fill="#fca5a5">• With Obstruction: Emphysema</text>
+          <text x="20" y="80" font-size="7.2" fill="#fca5a5">• With Restriction: Intrinsic ILD/Fibrosis</text>
+          <text x="20" y="92" font-size="7.2" fill="#fca5a5">• With Normal Spiro: Pulmonary HTN / PE</text>
+          <text x="12" y="110" font-size="7.8" font-weight="800" fill="#22c55e">B. Normal / High DLCO (&gt; 80%):</text>
+          <text x="20" y="124" font-size="7.2" fill="#a7f3d0">• With Obstruction: Pure Asthma, Bronchitis</text>
+          <text x="20" y="136" font-size="7.2" fill="#a7f3d0">• With Restriction: Chest Wall, Obesity, NMD</text>
+          <text x="20" y="148" font-size="7.2" fill="#a7f3d0">• High (&gt;120%): Alveolar Hemorrhage, Shunt</text>
+          <rect x="10" y="158" width="200" height="28" rx="4" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="0.8"/>
+          <text x="110" y="171" font-size="7" font-weight="bold" fill="#34d399" text-anchor="middle">KCO = DLCO / VA</text>
+          <text x="110" y="181" font-size="6.8" fill="#cbd5e1" text-anchor="middle">Normal KCO = small lung, healthy membrane</text>
+        </g>
+
+        <!-- Right Summary Card -->
+        <g transform="translate(530, 62)">
+          <rect x="0" y="0" width="220" height="356" rx="6" fill="#111827" stroke="#334155" stroke-width="1.2"/>
+          <rect x="0" y="0" width="220" height="24" rx="6" fill="#1e293b"/>
+          <text x="110" y="16" font-size="8.8" font-weight="900" fill="#f8fafc" text-anchor="middle">DIAGNOSTIC SUMMARY CHEAT-SHEET</text>
+
+          <g transform="translate(12, 34)">
+            <text x="0" y="10" font-size="8" font-weight="900" fill="#ef4444">1. COPD (EMPHYSEMA):</text>
+            <text x="6" y="22" font-size="7.2" fill="#cbd5e1">• FEV1/FVC &lt; 0.70, Non-reversible</text>
+            <text x="6" y="34" font-size="7.2" fill="#cbd5e1">• TLC &gt; 120%, RV &gt; 140%, DLCO &lt; 60%</text>
+
+            <text x="0" y="54" font-size="8" font-weight="900" fill="#38bdf8">2. BRONCHIAL ASTHMA:</text>
+            <text x="6" y="66" font-size="7.2" fill="#cbd5e1">• FEV1/FVC &lt; LLN, Reversible (Δ≥12%)</text>
+            <text x="6" y="78" font-size="7.2" fill="#cbd5e1">• TLC Normal, DLCO Normal or Elevated</text>
+
+            <text x="0" y="98" font-size="8" font-weight="900" fill="#ec4899">3. INTRINSIC RESTRICTION (IPF):</text>
+            <text x="6" y="110" font-size="7.2" fill="#cbd5e1">• Ratio Normal/High (&gt;0.85), TLC &lt; 80%</text>
+            <text x="6" y="122" font-size="7.2" fill="#cbd5e1">• DLCO &lt; 70%, KCO &lt; 80%</text>
+
+            <text x="0" y="142" font-size="8" font-weight="900" fill="#f59e0b">4. EXTRINSIC RESTRICTION (OBESITY):</text>
+            <text x="6" y="154" font-size="7.2" fill="#cbd5e1">• Ratio Normal, TLC &lt; 80%, FRC &lt;&lt; Normal</text>
+            <text x="6" y="166" font-size="7.2" fill="#cbd5e1">• DLCO low-normal, KCO Normal / High</text>
+
+            <text x="0" y="186" font-size="8" font-weight="900" fill="#a855f7">5. NEUROMUSCULAR WEAKNESS:</text>
+            <text x="6" y="198" font-size="7.2" fill="#cbd5e1">• Supine FVC drops &gt;20% vs seated</text>
+            <text x="6" y="210" font-size="7.2" fill="#cbd5e1">• MIP &lt; -30 cmH2O, MEP &lt; +40 cmH2O</text>
+
+            <text x="0" y="230" font-size="8" font-weight="900" fill="#14b8a6">6. PULMONARY VASCULAR (PAH):</text>
+            <text x="6" y="242" font-size="7.2" fill="#cbd5e1">• Normal Spirometry + Normal TLC</text>
+            <text x="6" y="254" font-size="7.2" fill="#cbd5e1">• ISOLATED Low DLCO (&lt;60%)</text>
+          </g>
+
+          <rect x="10" y="300" width="200" height="46" rx="4" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.8"/>
+          <text x="110" y="316" font-size="7.5" font-weight="900" fill="#38bdf8" text-anchor="middle">ANAESTHETIC TAKEAWAY</text>
+          <text x="110" y="328" font-size="6.8" fill="#cbd5e1" text-anchor="middle">Stiff lungs = High Pinsp, Low FRC desat</text>
+          <text x="110" y="338" font-size="6.8" fill="#cbd5e1" text-anchor="middle">Obstructive lungs = Auto-PEEP, Prolong Te</text>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">ATS/ERS Systematic 5-Step Diagnostic Protocol for Pulmonary Function Tests: Evaluating airflow obstruction ratio, grading severity, confirming reversibility, measuring static volumes (TLC), and partitioning gas transfer with DLCO and KCO.</p>
+    </div>`;
+  }
+
+  /* 17. Obstructive Mechanics, GOLD Severity Staging & Auto-PEEP Diagram */
+  function pftObstructiveSeverityHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 780 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Obstructive Lung Mechanics and GOLD Severity Scale" style="width:100%;max-width:780px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        <rect x="10" y="10" width="760" height="420" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- Header -->
+        <g transform="translate(30, 22)">
+          <rect x="0" y="0" width="720" height="28" rx="5" fill="#1e293b"/>
+          <text x="360" y="18" font-size="11" font-weight="900" fill="#38bdf8" text-anchor="middle" letter-spacing="1">OBSTRUCTIVE LUNG MECHANICS: GOLD STAGING, EQUAL PRESSURE POINT &amp; AUTO-PEEP</text>
+        </g>
+
+        <!-- TOP BAR: GOLD 1 to 4 Severity Classification -->
+        <g transform="translate(30, 60)">
+          <text x="0" y="14" font-size="9" font-weight="900" fill="#f8fafc">GOLD COPD SEVERITY STAGING (Post-Bronchodilator FEV1 with FEV1/FVC &lt; 0.70):</text>
+          
+          <!-- Stage 1 -->
+          <g transform="translate(0, 22)">
+            <rect x="0" y="0" width="175" height="52" rx="5" fill="#111827" stroke="#22c55e" stroke-width="1.4"/>
+            <rect x="0" y="0" width="175" height="18" rx="5" fill="#15803d"/>
+            <text x="87" y="13" font-size="8.2" font-weight="900" fill="#ffffff" text-anchor="middle">GOLD 1: MILD</text>
+            <text x="87" y="32" font-size="8" font-weight="bold" fill="#86efac" text-anchor="middle">FEV1 ≥ 80% predicted</text>
+            <text x="87" y="44" font-size="7" fill="#cbd5e1" text-anchor="middle">Low perioperative PPC risk</text>
+          </g>
+
+          <!-- Stage 2 -->
+          <g transform="translate(182, 22)">
+            <rect x="0" y="0" width="175" height="52" rx="5" fill="#111827" stroke="#eab308" stroke-width="1.4"/>
+            <rect x="0" y="0" width="175" height="18" rx="5" fill="#a16207"/>
+            <text x="87" y="13" font-size="8.2" font-weight="900" fill="#ffffff" text-anchor="middle">GOLD 2: MODERATE</text>
+            <text x="87" y="32" font-size="8" font-weight="bold" fill="#fde047" text-anchor="middle">50% ≤ FEV1 &lt; 80%</text>
+            <text x="87" y="44" font-size="7" fill="#cbd5e1" text-anchor="middle">Exertional dyspnea, PPC risk</text>
+          </g>
+
+          <!-- Stage 3 -->
+          <g transform="translate(364, 22)">
+            <rect x="0" y="0" width="175" height="52" rx="5" fill="#111827" stroke="#f97316" stroke-width="1.4"/>
+            <rect x="0" y="0" width="175" height="18" rx="5" fill="#c2410c"/>
+            <text x="87" y="13" font-size="8.2" font-weight="900" fill="#ffffff" text-anchor="middle">GOLD 3: SEVERE</text>
+            <text x="87" y="32" font-size="8" font-weight="bold" fill="#fdba74" text-anchor="middle">30% ≤ FEV1 &lt; 50%</text>
+            <text x="87" y="44" font-size="7" fill="#cbd5e1" text-anchor="middle">High PPC risk, delayed extub.</text>
+          </g>
+
+          <!-- Stage 4 -->
+          <g transform="translate(545, 22)">
+            <rect x="0" y="0" width="175" height="52" rx="5" fill="#111827" stroke="#ef4444" stroke-width="1.4"/>
+            <rect x="0" y="0" width="175" height="18" rx="5" fill="#b91c1c"/>
+            <text x="87" y="13" font-size="8.2" font-weight="900" fill="#ffffff" text-anchor="middle">GOLD 4: VERY SEVERE</text>
+            <text x="87" y="32" font-size="8" font-weight="bold" fill="#fca5a5" text-anchor="middle">FEV1 &lt; 30% predicted</text>
+            <text x="87" y="44" font-size="7" fill="#cbd5e1" text-anchor="middle">Cor pulmonale, postop vent</text>
+          </g>
+        </g>
+
+        <!-- MIDDLE LEFT: Equal Pressure Point (EPP) Mechanics -->
+        <g transform="translate(30, 150)">
+          <rect x="0" y="0" width="350" height="260" rx="6" fill="#111827" stroke="#334155" stroke-width="1.2"/>
+          <rect x="0" y="0" width="350" height="24" rx="6" fill="#1e293b"/>
+          <text x="175" y="16" font-size="8.8" font-weight="900" fill="#38bdf8" text-anchor="middle">THE EQUAL PRESSURE POINT (EPP) &amp; DYNAMIC COLLAPSE</text>
+
+          <!-- Airway Schematic Diagram -->
+          <g transform="translate(20, 36)">
+            <!-- Pleural Cavity -->
+            <rect x="0" y="0" width="310" height="110" rx="6" fill="rgba(30,41,59,0.5)" stroke="#475569" stroke-dasharray="4,4"/>
+            <text x="155" y="16" font-size="7.5" font-weight="bold" fill="#94a3b8" text-anchor="middle">Pleural Cavity: Positive Pleural Pressure during forced exhalation (Ppl = +20 cmH2O)</text>
+
+            <!-- Alveolus -->
+            <circle cx="35" cy="65" r="24" fill="#0369a1" stroke="#38bdf8" stroke-width="1.5"/>
+            <text x="35" y="62" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">Alveolus</text>
+            <text x="35" y="73" font-size="6.8" fill="#bae6fd" text-anchor="middle">Palv = +30</text>
+
+            <!-- Airway Tube -->
+            <path d="M59 55 L290 55 M59 75 L290 75" stroke="#38bdf8" stroke-width="2" fill="none"/>
+
+            <!-- Pressure points along tube -->
+            <text x="100" y="50" font-size="7" fill="#cbd5e1" text-anchor="middle">Pint = +25</text>
+            <text x="180" y="50" font-size="7.5" font-weight="900" fill="#f59e0b" text-anchor="middle">EPP (Pint = +20)</text>
+            <text x="250" y="50" font-size="7" fill="#ef4444" text-anchor="middle">Pint = +15</text>
+
+            <!-- Pinch compression at downstream -->
+            <path d="M230 55 Q245 63 260 55 M230 75 Q245 67 260 75" stroke="#ef4444" stroke-width="2.5" fill="none"/>
+            <text x="245" y="92" font-size="7" font-weight="bold" fill="#ef4444" text-anchor="middle">DYNAMIC COMPRESSION</text>
+
+            <line x1="180" y1="53" x2="180" y2="77" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="2,2"/>
+          </g>
+
+          <!-- Explanation box -->
+          <g transform="translate(15, 155)">
+            <text x="0" y="12" font-size="7.8" font-weight="bold" fill="#e2e8f0">• Formula: <tspan fill="#38bdf8">Palv = Ppl + Pel</tspan> (Alveolar = Pleural + Elastic Recoil)</text>
+            <text x="0" y="26" font-size="7.2" fill="#cbd5e1">• Downstream from EPP, intraluminal pressure drops below pleural pressure.</text>
+            <text x="0" y="40" font-size="7.2" fill="#cbd5e1">• <tspan fill="#22c55e" font-weight="bold">Normal Lung:</tspan> EPP is in large cartilaginous airways → resists collapse.</text>
+            <text x="0" y="54" font-size="7.2" fill="#cbd5e1">• <tspan fill="#ef4444" font-weight="bold">Emphysema:</tspan> Loss of Pel causes EPP to migrate upstream into</text>
+            <text x="0" y="66" font-size="7.2" fill="#fca5a5">non-cartilaginous bronchioles → premature collapse &amp; severe gas trapping!</text>
+            <text x="0" y="80" font-size="7.2" fill="#93c5fd">• Pursed-lip breathing raises intraluminal pressure, pushing EPP back downstream.</text>
+          </g>
+        </g>
+
+        <!-- MIDDLE RIGHT: Dynamic Hyperinflation & Ventilator Strategy -->
+        <g transform="translate(400, 150)">
+          <rect x="0" y="0" width="350" height="260" rx="6" fill="#111827" stroke="#334155" stroke-width="1.2"/>
+          <rect x="0" y="0" width="350" height="24" rx="6" fill="#1e293b"/>
+          <text x="175" y="16" font-size="8.8" font-weight="900" fill="#f59e0b" text-anchor="middle">VENTILATOR FLOW WAVEFORM &amp; AUTO-PEEP MANAGEMENT</text>
+
+          <!-- Flow-Time Graphic showing breath stacking -->
+          <g transform="translate(20, 32)">
+            <!-- Background grid -->
+            <rect x="0" y="0" width="310" height="85" rx="4" fill="#0b1120" stroke="#1e293b"/>
+            <!-- Zero baseline -->
+            <line x1="10" y1="42" x2="300" y2="42" stroke="#475569" stroke-width="1" stroke-dasharray="3,3"/>
+            <text x="15" y="38" font-size="6.5" fill="#94a3b8">Flow (L/min)</text>
+            <text x="280" y="38" font-size="6.5" fill="#94a3b8">0 L/min</text>
+
+            <!-- Breath 1 (Fails to return to zero) -->
+            <!-- Inspiration -->
+            <path d="M30 42 L35 15 L70 42" stroke="#38bdf8" stroke-width="2" fill="none"/>
+            <!-- Expiration incomplete -->
+            <path d="M70 42 L80 75 Q120 58 140 52" stroke="#ef4444" stroke-width="2" fill="none"/>
+            <circle cx="140" cy="52" r="3" fill="#ef4444"/>
+            <!-- Next breath starts prematurely -->
+            <path d="M140 52 L145 15 L180 42" stroke="#38bdf8" stroke-width="2" fill="none"/>
+            <path d="M180 42 L190 78 Q230 62 250 55" stroke="#ef4444" stroke-width="2" fill="none"/>
+            <circle cx="250" cy="55" r="3" fill="#ef4444"/>
+
+            <text x="140" y="70" font-size="7" font-weight="900" fill="#ef4444" text-anchor="middle">Flow ≠ 0 (Auto-PEEP!)</text>
+            <text x="80" y="18" font-size="6.5" fill="#38bdf8">Insp</text>
+            <text x="110" y="80" font-size="6.5" fill="#ef4444">Incomplete Exp</text>
+          </g>
+
+          <!-- Actionable Intraoperative Ventilator Rules -->
+          <g transform="translate(15, 126)">
+            <text x="0" y="12" font-size="8" font-weight="900" fill="#38bdf8">INTRAOPERATIVE VENTILATORY PRESCRIPTION:</text>
+            <text x="0" y="26" font-size="7.4" fill="#e2e8f0">• <tspan font-weight="bold" fill="#fef08a">Low Respiratory Rate:</tspan> 8 to 10 breaths/min (prolongs expiratory time Te)</text>
+            <text x="0" y="40" font-size="7.4" fill="#e2e8f0">• <tspan font-weight="bold" fill="#fef08a">Long Expiratory Ratio:</tspan> I:E = 1:3, 1:4 or 1:5</text>
+            <text x="0" y="54" font-size="7.4" fill="#e2e8f0">• <tspan font-weight="bold" fill="#fef08a">High Insp Flow Rate:</tspan> 60–80 L/min (delivers TV fast, maximizing Te)</text>
+            <text x="0" y="68" font-size="7.4" fill="#e2e8f0">• <tspan font-weight="bold" fill="#fef08a">Permissive Hypercapnia:</tspan> Tolerate PaCO2 50–65 mmHg (pH ≥ 7.20)</text>
+            <text x="0" y="82" font-size="7.4" fill="#e2e8f0">• <tspan font-weight="bold" fill="#fef08a">Ext PEEP Titration:</tspan> Set PEEP = 70–80% of auto-PEEP (splints airways open)</text>
+            
+            <rect x="0" y="92" width="320" height="30" rx="4" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1"/>
+            <text x="160" y="105" font-size="7.2" font-weight="900" fill="#fca5a5" text-anchor="middle">ACUTE HYPOTENSION PROTOCOL:</text>
+            <text x="160" y="116" font-size="7" fill="#ffffff" text-anchor="middle">Disconnect ETT from circuit! Allow full passive exhalation.</text>
+          </g>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Obstructive Lung Mechanics: GOLD 1 to 4 severity classification, dynamic airway compression mechanics (Equal Pressure Point migration upstream in emphysema), and ventilator flow-time waveform analysis showing breath-stacking and auto-PEEP with protective ventilatory strategies.</p>
+    </div>`;
+  }
+
+  /* 18. Restrictive Lung Defects & DLCO/KCO Diagnostic Tree */
+  function pftRestrictiveTreeHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 780 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Restrictive Lung Defects and DLCO Partitioning Decision Tree" style="width:100%;max-width:780px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        <rect x="10" y="10" width="760" height="420" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- Header -->
+        <g transform="translate(30, 22)">
+          <rect x="0" y="0" width="720" height="28" rx="5" fill="#1e293b"/>
+          <text x="360" y="18" font-size="11" font-weight="900" fill="#38bdf8" text-anchor="middle" letter-spacing="1">RESTRICTIVE DEFECTS: INTRINSIC vs EXTRINSIC vs NEUROMUSCULAR PARTITIONING</text>
+        </g>
+
+        <!-- Root Node: Low TLC Confirmed -->
+        <g transform="translate(260, 60)">
+          <rect x="0" y="0" width="260" height="46" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+          <text x="130" y="18" font-size="9.5" font-weight="900" fill="#ffffff" text-anchor="middle">RESTRICTIVE DEFECT CONFIRMED</text>
+          <text x="130" y="34" font-size="8" fill="#93c5fd" text-anchor="middle">TLC &lt; 80% Predicted  •  FEV1/FVC Normal or &gt;0.80</text>
+        </g>
+
+        <!-- Connecting Lines to 3 Branches -->
+        <path d="M390 106 L390 120 L150 120 L150 136" stroke="#ec4899" stroke-width="2" fill="none"/>
+        <path d="M390 120 L390 136" stroke="#f59e0b" stroke-width="2" fill="none"/>
+        <path d="M390 120 L630 120 L630 136" stroke="#8b5cf6" stroke-width="2" fill="none"/>
+
+        <!-- BRANCH 1: Intrinsic Parenchymal (Left) -->
+        <g transform="translate(30, 138)">
+          <rect x="0" y="0" width="235" height="225" rx="6" fill="#111827" stroke="#ec4899" stroke-width="1.5"/>
+          <rect x="0" y="0" width="235" height="24" rx="6" fill="#be185d"/>
+          <text x="117" y="16" font-size="8.8" font-weight="900" fill="#ffffff" text-anchor="middle">INTRINSIC PARENCHYMAL (ILD)</text>
+
+          <rect x="10" y="32" width="215" height="42" rx="4" fill="rgba(236,72,153,0.15)" stroke="#ec4899" stroke-width="1"/>
+          <text x="117" y="47" font-size="8" font-weight="900" fill="#fbcfe8" text-anchor="middle">GAS TRANSFER SIGNATURE:</text>
+          <text x="117" y="62" font-size="8.2" font-weight="bold" fill="#ffffff" text-anchor="middle">DLCO &lt; 80%  &amp;  KCO &lt; 80%</text>
+
+          <g transform="translate(10, 82)">
+            <text x="0" y="10" font-size="7.8" font-weight="bold" fill="#f472b6">• Pathology: Thickened alveolar wall</text>
+            <text x="0" y="22" font-size="7.2" fill="#cbd5e1">• Idiopathic Pulmonary Fibrosis (IPF)</text>
+            <text x="0" y="34" font-size="7.2" fill="#cbd5e1">• Sarcoidosis, Asbestosis, Silicosis</text>
+            <text x="0" y="46" font-size="7.2" fill="#cbd5e1">• Connective tissue ILD (Scleroderma)</text>
+            <text x="0" y="58" font-size="7.8" font-weight="bold" fill="#fb7185">• Drug-Induced Pulmonary Toxicity:</text>
+            <text x="8" y="70" font-size="7.2" fill="#fecdd3">Bleomycin, Amiodarone, Methotrexate</text>
+            <text x="8" y="82" font-size="7.2" fill="#fecdd3">Nitrofurantoin, Radiation pneumonitis</text>
+
+            <rect x="0" y="90" width="215" height="44" rx="4" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="0.8"/>
+            <text x="107" y="103" font-size="7.2" font-weight="900" fill="#fca5a5" text-anchor="middle">CRITICAL BLEOMYCIN RULE:</text>
+            <text x="107" y="115" font-size="6.8" fill="#ffffff" text-anchor="middle">Strictly limit FiO2 ≤ 0.30–0.40 intraop!</text>
+            <text x="107" y="125" font-size="6.8" fill="#ffffff" text-anchor="middle">High O2 triggers fatal ARDS/fibrosis.</text>
+          </g>
+        </g>
+
+        <!-- BRANCH 2: Extrinsic Chest Wall / Pleural (Middle) -->
+        <g transform="translate(275, 138)">
+          <rect x="0" y="0" width="230" height="225" rx="6" fill="#111827" stroke="#f59e0b" stroke-width="1.5"/>
+          <rect x="0" y="0" width="230" height="24" rx="6" fill="#b45309"/>
+          <text x="115" y="16" font-size="8.8" font-weight="900" fill="#ffffff" text-anchor="middle">EXTRINSIC CHEST WALL / PLEURA</text>
+
+          <rect x="10" y="32" width="210" height="42" rx="4" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="1"/>
+          <text x="105" y="47" font-size="8" font-weight="900" fill="#fde68a" text-anchor="middle">GAS TRANSFER SIGNATURE:</text>
+          <text x="105" y="62" font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">DLCO proportional to VA • KCO Normal/High</text>
+
+          <g transform="translate(10, 82)">
+            <text x="0" y="10" font-size="7.8" font-weight="bold" fill="#fbbf24">• Pathology: Normal lung, small cage</text>
+            <text x="0" y="23" font-size="7.4" fill="#cbd5e1">• <tspan font-weight="bold" fill="#ffffff">Kyphoscoliosis:</tspan> Cobb angle &gt;60°</text>
+            <text x="0" y="36" font-size="7.4" fill="#cbd5e1">• <tspan font-weight="bold" fill="#ffffff">Morbid Obesity / OHS:</tspan> profound drop</text>
+            <text x="8" y="48" font-size="7.2" fill="#cbd5e1">in FRC &amp; ERV; rapid desaturation</text>
+            <text x="0" y="61" font-size="7.4" fill="#cbd5e1">• <tspan font-weight="bold" fill="#ffffff">Ankylosing Spondylitis:</tspan> thoracic rigid</text>
+            <text x="0" y="74" font-size="7.4" fill="#cbd5e1">• <tspan font-weight="bold" fill="#ffffff">Fibrothorax:</tspan> calcified pleural peel</text>
+            <text x="0" y="87" font-size="7.4" fill="#cbd5e1">• Massive ascites / pregnancy load</text>
+
+            <rect x="0" y="96" width="210" height="38" rx="4" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="0.8"/>
+            <text x="105" y="110" font-size="7" font-weight="900" fill="#fde68a" text-anchor="middle">ANAESTHETIC MECHANICS:</text>
+            <text x="105" y="122" font-size="6.8" fill="#ffffff" text-anchor="middle">Low chest compliance • High PEEP required</text>
+          </g>
+        </g>
+
+        <!-- BRANCH 3: Neuromuscular Weakness (Right) -->
+        <g transform="translate(515, 138)">
+          <rect x="0" y="0" width="235" height="225" rx="6" fill="#111827" stroke="#8b5cf6" stroke-width="1.5"/>
+          <rect x="0" y="0" width="235" height="24" rx="6" fill="#6d28d9"/>
+          <text x="117" y="16" font-size="8.8" font-weight="900" fill="#ffffff" text-anchor="middle">NEUROMUSCULAR WEAKNESS</text>
+
+          <rect x="10" y="32" width="215" height="42" rx="4" fill="rgba(139,92,246,0.15)" stroke="#8b5cf6" stroke-width="1"/>
+          <text x="107" y="47" font-size="8" font-weight="900" fill="#ddd6fe" text-anchor="middle">RESPIRATORY PUMP FAILURE:</text>
+          <text x="107" y="62" font-size="7.8" font-weight="bold" fill="#ffffff" text-anchor="middle">MIP &lt; -30 cmH2O  •  MEP &lt; +40 cmH2O</text>
+
+          <g transform="translate(10, 82)">
+            <text x="0" y="10" font-size="7.8" font-weight="bold" fill="#c084fc">• Hallmark: Supine FVC drop &gt; 20%</text>
+            <text x="8" y="22" font-size="7" fill="#e9d5ff">(Diaphragmatic paralysis hallmark)</text>
+            <text x="0" y="35" font-size="7.4" fill="#cbd5e1">• Myasthenia Gravis (AChR-Ab)</text>
+            <text x="0" y="48" font-size="7.4" fill="#cbd5e1">• Amyotrophic Lateral Sclerosis (ALS)</text>
+            <text x="0" y="61" font-size="7.4" fill="#cbd5e1">• Guillain-Barré Syndrome (GBS)</text>
+            <text x="0" y="74" font-size="7.4" fill="#cbd5e1">• Phrenic nerve palsy (C3–C5 injury)</text>
+
+            <rect x="0" y="86" width="215" height="48" rx="4" fill="rgba(139,92,246,0.15)" stroke="#8b5cf6" stroke-width="0.8"/>
+            <text x="107" y="99" font-size="7" font-weight="900" fill="#ddd6fe" text-anchor="middle">PERIOPERATIVE WARNINGS:</text>
+            <text x="107" y="111" font-size="6.8" fill="#ffffff" text-anchor="middle">Extreme sensitivity to NMBAs</text>
+            <text x="107" y="121" font-size="6.8" fill="#ffffff" text-anchor="middle">Prefer Sugammadex • High postop ventilatory risk</text>
+          </g>
+        </g>
+
+        <!-- Bottom Banner -->
+        <g transform="translate(30, 372)">
+          <rect x="0" y="0" width="720" height="46" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+          <text x="360" y="16" font-size="8.5" font-weight="900" fill="#38bdf8" text-anchor="middle">VENTILATION STRATEGY FOR RESTRICTIVE LUNG DISEASE (STIFF LUNGS)</text>
+          <text x="360" y="32" font-size="7.5" fill="#e2e8f0" text-anchor="middle">Low Tidal Volume: 4–6 mL/kg PBW • Higher RR (14–18/min) • Keep Pplateau &lt; 28 cmH2O • Preox with PEEP/CPAP (Short apnea time!)</text>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Restrictive Lung Disease Diagnostic Flowchart: Distinguishing Intrinsic Parenchymal fibrosis (low DLCO &amp; low KCO) from Extrinsic Chest Wall limitation (normal KCO) and Neuromuscular Weakness (impaired MIP/MEP and &gt;20% drop in supine FVC).</p>
+    </div>`;
+  }
+
+  /* 19. Flow-Volume Loops: 6 Classic Waveforms */
+  function pftFlowVolumeLoopsHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 780 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flow-Volume Loops Morphological Analysis" style="width:100%;max-width:780px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        <rect x="10" y="10" width="760" height="460" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- Header -->
+        <g transform="translate(30, 20)">
+          <rect x="0" y="0" width="720" height="26" rx="5" fill="#1e293b"/>
+          <text x="360" y="17" font-size="10.5" font-weight="900" fill="#38bdf8" text-anchor="middle" letter-spacing="1">FLOW-VOLUME LOOPS: 6 CLASSIC CLINICAL &amp; AIRWAY LESION PATTERNS</text>
+        </g>
+
+        <!-- GRID OF 6 LOOPS: 3 columns x 2 rows -->
+
+        <!-- 1. Normal Loop (Top Left) -->
+        <g transform="translate(30, 56)">
+          <rect x="0" y="0" width="230" height="190" rx="6" fill="#111827" stroke="#22c55e" stroke-width="1.2"/>
+          <rect x="0" y="0" width="230" height="20" rx="6" fill="#15803d"/>
+          <text x="115" y="14" font-size="8.2" font-weight="900" fill="#ffffff" text-anchor="middle">1. NORMAL FLOW-VOLUME LOOP</text>
+          
+          <!-- Coordinate Axes -->
+          <!-- Zero line at y=95 -->
+          <line x1="25" y1="95" x2="205" y2="95" stroke="#475569" stroke-width="1" stroke-dasharray="2,2"/>
+          <line x1="25" y1="35" x2="25" y2="155" stroke="#475569" stroke-width="1"/>
+          <text x="18" y="42" font-size="6" fill="#94a3b8">+Exp</text>
+          <text x="18" y="150" font-size="6" fill="#94a3b8">-Insp</text>
+          <text x="30" y="103" font-size="6" fill="#94a3b8">TLC</text>
+          <text x="195" y="103" font-size="6" fill="#94a3b8">RV</text>
+
+          <!-- Normal Waveform Curve -->
+          <!-- Expiration: Sharp rise to PEF at (60, 42), straight descent to (195, 95) -->
+          <!-- Inspiration: Semi-ellipse below from (195, 95) down to (115, 145) to (30, 95) -->
+          <path d="M30 95 L55 42 L195 95 Q115 150 30 95 Z" fill="rgba(34,197,94,0.12)" stroke="#22c55e" stroke-width="2"/>
+          <!-- PEF mark -->
+          <circle cx="55" cy="42" r="2.5" fill="#22c55e"/>
+          <text x="65" y="40" font-size="6.5" font-weight="bold" fill="#86efac">PEF</text>
+
+          <!-- Annotations -->
+          <text x="115" y="166" font-size="7.2" font-weight="bold" fill="#e2e8f0" text-anchor="middle">Normal PEF • Linear Expiratory Limb</text>
+          <text x="115" y="178" font-size="6.8" fill="#94a3b8" text-anchor="middle">FEF50 / FIF50 = 0.8 to 1.0</text>
+        </g>
+
+        <!-- 2. Obstructive Pattern (Top Middle) -->
+        <g transform="translate(275, 56)">
+          <rect x="0" y="0" width="230" height="190" rx="6" fill="#111827" stroke="#ef4444" stroke-width="1.2"/>
+          <rect x="0" y="0" width="230" height="20" rx="6" fill="#b91c1c"/>
+          <text x="115" y="14" font-size="8.2" font-weight="900" fill="#ffffff" text-anchor="middle">2. OBSTRUCTIVE (COPD / ASTHMA)</text>
+          
+          <!-- Axes -->
+          <line x1="25" y1="95" x2="205" y2="95" stroke="#475569" stroke-width="1" stroke-dasharray="2,2"/>
+          <line x1="25" y1="35" x2="25" y2="155" stroke="#475569" stroke-width="1"/>
+          <text x="30" y="103" font-size="6" fill="#94a3b8">TLC</text>
+          <text x="195" y="103" font-size="6" fill="#94a3b8">RV</text>
+
+          <!-- Obstructive Curve: lower PEF, scooped out concavity -->
+          <path d="M30 95 L60 55 Q100 88 195 95 Q115 145 30 95 Z" fill="rgba(239,68,68,0.12)" stroke="#ef4444" stroke-width="2"/>
+          <text x="115" y="80" font-size="7" font-weight="900" fill="#fca5a5" text-anchor="middle">"COVING" / SCOOPING</text>
+
+          <!-- Annotations -->
+          <text x="115" y="166" font-size="7.2" font-weight="bold" fill="#fca5a5" text-anchor="middle">Concave Expiratory Scooping</text>
+          <text x="115" y="178" font-size="6.8" fill="#cbd5e1" text-anchor="middle">Loss of elastic recoil • Small airway closure</text>
+        </g>
+
+        <!-- 3. Restrictive Pattern (Top Right) -->
+        <g transform="translate(520, 56)">
+          <rect x="0" y="0" width="230" height="190" rx="6" fill="#111827" stroke="#ec4899" stroke-width="1.2"/>
+          <rect x="0" y="0" width="230" height="20" rx="6" fill="#be185d"/>
+          <text x="115" y="14" font-size="8.2" font-weight="900" fill="#ffffff" text-anchor="middle">3. RESTRICTIVE ("WITCH'S HAT")</text>
+          
+          <!-- Axes -->
+          <line x1="25" y1="95" x2="205" y2="95" stroke="#475569" stroke-width="1" stroke-dasharray="2,2"/>
+          <line x1="25" y1="35" x2="25" y2="155" stroke="#475569" stroke-width="1"/>
+          <text x="30" y="103" font-size="6" fill="#94a3b8">TLC</text>
+          <text x="195" y="103" font-size="6" fill="#94a3b8">RV</text>
+
+          <!-- Restrictive Curve: narrowed horizontally, tall steep shape -->
+          <path d="M50 95 L75 45 L130 95 Q90 140 50 95 Z" fill="rgba(236,72,153,0.12)" stroke="#ec4899" stroke-width="2"/>
+          <text x="90" y="70" font-size="7" font-weight="900" fill="#fbcfe8" text-anchor="middle">Narrowed FVC</text>
+
+          <!-- Annotations -->
+          <text x="115" y="166" font-size="7.2" font-weight="bold" fill="#fbcfe8" text-anchor="middle">Miniature Normal Shape (Witch's Hat)</text>
+          <text x="115" y="178" font-size="6.8" fill="#cbd5e1" text-anchor="middle">High radial traction • Preserved peak flows</text>
+        </g>
+
+        <!-- 4. Fixed Upper Airway Obstruction (Bottom Left) -->
+        <g transform="translate(30, 258)">
+          <rect x="0" y="0" width="230" height="200" rx="6" fill="#111827" stroke="#38bdf8" stroke-width="1.2"/>
+          <rect x="0" y="0" width="230" height="20" rx="6" fill="#0284c7"/>
+          <text x="115" y="14" font-size="8.2" font-weight="900" fill="#ffffff" text-anchor="middle">4. FIXED UPPER AIRWAY OBSTRUCTION</text>
+          
+          <!-- Axes -->
+          <line x1="25" y1="100" x2="205" y2="100" stroke="#475569" stroke-width="1" stroke-dasharray="2,2"/>
+          <line x1="25" y1="40" x2="25" y2="160" stroke="#475569" stroke-width="1"/>
+
+          <!-- Fixed Curve: plateau top AND bottom -->
+          <path d="M35 100 L55 60 L165 60 L185 100 L165 140 L55 140 Z" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="2"/>
+          <text x="110" y="54" font-size="6.5" font-weight="bold" fill="#7dd3fc" text-anchor="middle">FLAT EXPIRATION</text>
+          <text x="110" y="152" font-size="6.5" font-weight="bold" fill="#7dd3fc" text-anchor="middle">FLAT INSPIRATION</text>
+
+          <!-- Annotations -->
+          <text x="115" y="172" font-size="7.2" font-weight="bold" fill="#38bdf8" text-anchor="middle">FEF50 / FIF50 ≈ 1.0 (Both Truncated)</text>
+          <text x="115" y="184" font-size="6.8" fill="#cbd5e1" text-anchor="middle">Tracheal Stenosis, Bilateral Cord Paralysis</text>
+          <text x="115" y="194" font-size="6.5" fill="#fca5a5" text-anchor="middle">⚠️ Awake Endoscopic Intubation candidate!</text>
+        </g>
+
+        <!-- 5. Variable Extrathoracic Obstruction (Bottom Middle) -->
+        <g transform="translate(275, 258)">
+          <rect x="0" y="0" width="230" height="200" rx="6" fill="#111827" stroke="#f59e0b" stroke-width="1.2"/>
+          <rect x="0" y="0" width="230" height="20" rx="6" fill="#b45309"/>
+          <text x="115" y="14" font-size="8.2" font-weight="900" fill="#ffffff" text-anchor="middle">5. VARIABLE EXTRATHORACIC</text>
+          
+          <!-- Axes -->
+          <line x1="25" y1="100" x2="205" y2="100" stroke="#475569" stroke-width="1" stroke-dasharray="2,2"/>
+          <line x1="25" y1="40" x2="25" y2="160" stroke="#475569" stroke-width="1"/>
+
+          <!-- Variable Extrathoracic: NORMAL expiration, FLATTENED inspiration -->
+          <path d="M35 100 L60 50 L185 100 L165 140 L55 140 Z" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" stroke-width="2"/>
+          <text x="90" y="44" font-size="6.5" font-weight="bold" fill="#86efac" text-anchor="middle">Normal Expiration</text>
+          <text x="110" y="152" font-size="6.5" font-weight="bold" fill="#f59e0b" text-anchor="middle">FLAT INSPIRATION</text>
+
+          <!-- Annotations -->
+          <text x="115" y="172" font-size="7.2" font-weight="bold" fill="#fde68a" text-anchor="middle">FEF50 / FIF50 &gt; 1.5 (Inspiratory Defect)</text>
+          <text x="115" y="184" font-size="6.8" fill="#cbd5e1" text-anchor="middle">Unilateral Cord Palsy, Laryngomalacia</text>
+          <text x="115" y="194" font-size="6.5" fill="#fca5a5" text-anchor="middle">Atmospheric pressure collapses airway on insp</text>
+        </g>
+
+        <!-- 6. Variable Intrathoracic Obstruction (Bottom Right) -->
+        <g transform="translate(520, 258)">
+          <rect x="0" y="0" width="230" height="200" rx="6" fill="#111827" stroke="#a855f7" stroke-width="1.2"/>
+          <rect x="0" y="0" width="230" height="20" rx="6" fill="#7e22ce"/>
+          <text x="115" y="14" font-size="8.2" font-weight="900" fill="#ffffff" text-anchor="middle">6. VARIABLE INTRATHORACIC</text>
+          
+          <!-- Axes -->
+          <line x1="25" y1="100" x2="205" y2="100" stroke="#475569" stroke-width="1" stroke-dasharray="2,2"/>
+          <line x1="25" y1="40" x2="25" y2="160" stroke="#475569" stroke-width="1"/>
+
+          <!-- Variable Intrathoracic: FLATTENED expiration, NORMAL inspiration -->
+          <path d="M35 100 L55 65 L165 65 L185 100 Q110 155 35 100 Z" fill="rgba(168,85,247,0.12)" stroke="#a855f7" stroke-width="2"/>
+          <text x="110" y="58" font-size="6.5" font-weight="bold" fill="#c084fc" text-anchor="middle">FLAT EXPIRATION</text>
+          <text x="110" y="150" font-size="6.5" font-weight="bold" fill="#86efac" text-anchor="middle">Normal Inspiration</text>
+
+          <!-- Annotations -->
+          <text x="115" y="172" font-size="7.2" font-weight="bold" fill="#e9d5ff" text-anchor="middle">FEF50 / FIF50 &lt; 0.5 (Expiratory Defect)</text>
+          <text x="115" y="184" font-size="6.8" fill="#cbd5e1" text-anchor="middle">Tracheomalacia, Distal Tracheal Tumor</text>
+          <text x="115" y="194" font-size="6.5" fill="#fca5a5" text-anchor="middle">Positive pleural pressure collapses airway on exp</text>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Morphological Comparison of 6 Flow-Volume Loop Waveforms: Normal loop, Obstructive coving (loss of elastic recoil), Restrictive witch's hat (narrow volume), Fixed Upper Airway Obstruction (bilevel plateauing), Variable Extrathoracic obstruction (inspiratory plateauing), and Variable Intrathoracic obstruction (expiratory plateauing).</p>
+    </div>`;
+  }
+
+  /* 20. Post-Operative Pulmonary Resection Prediction & Risk Ladder (ppoFEV1 & ppoDLCO) */
+  function pftPostopResectionHTML() {
+    return `<div class="st-diagram-wrap st-flowchart-wrap">
+      <svg viewBox="0 0 780 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Preoperative Evaluation for Lung Resection and Risk Ladder" style="width:100%;max-width:780px;height:auto;display:block;margin:0 auto;font-family:system-ui,-apple-system,sans-serif;">
+        <rect x="10" y="10" width="760" height="420" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="1.8"/>
+
+        <!-- Header -->
+        <g transform="translate(30, 22)">
+          <rect x="0" y="0" width="720" height="28" rx="5" fill="#1e293b"/>
+          <text x="360" y="18" font-size="11" font-weight="900" fill="#38bdf8" text-anchor="middle" letter-spacing="1">PREOPERATIVE LUNG RESECTION EVALUATION: 19-SEGMENT RULE &amp; ACCP/ESTS RISK LADDER</text>
+        </g>
+
+        <!-- LEFT PANEL: 19-Segment Anatomical Map -->
+        <g transform="translate(30, 60)">
+          <rect x="0" y="0" width="340" height="350" rx="6" fill="#111827" stroke="#334155" stroke-width="1.2"/>
+          <rect x="0" y="0" width="340" height="24" rx="6" fill="#1e293b"/>
+          <text x="170" y="16" font-size="8.8" font-weight="900" fill="#38bdf8" text-anchor="middle">ANATOMICAL SEGMENT COUNTING (TOTAL = 19 SEGMENTS)</text>
+
+          <!-- Right Lung (10 Segments) -->
+          <g transform="translate(15, 36)">
+            <rect x="0" y="0" width="145" height="150" rx="5" fill="rgba(14,165,233,0.1)" stroke="#0ea5e9" stroke-width="1"/>
+            <rect x="0" y="0" width="145" height="20" rx="5" fill="#0284c7"/>
+            <text x="72" y="14" font-size="8" font-weight="900" fill="#ffffff" text-anchor="middle">RIGHT LUNG (10 Seg)</text>
+            
+            <text x="8" y="36" font-size="7.6" font-weight="bold" fill="#38bdf8">• Right Upper Lobe (3 seg):</text>
+            <text x="16" y="48" font-size="7" fill="#cbd5e1">Apical, Posterior, Anterior</text>
+
+            <text x="8" y="66" font-size="7.6" font-weight="bold" fill="#38bdf8">• Right Middle Lobe (2 seg):</text>
+            <text x="16" y="78" font-size="7" fill="#cbd5e1">Lateral, Medial</text>
+
+            <text x="8" y="96" font-size="7.6" font-weight="bold" fill="#38bdf8">• Right Lower Lobe (5 seg):</text>
+            <text x="16" y="108" font-size="7" fill="#cbd5e1">Superior, Medial basal</text>
+            <text x="16" y="120" font-size="7" fill="#cbd5e1">Anterior, Lateral, Post. basal</text>
+            
+            <text x="72" y="140" font-size="7.2" font-weight="bold" fill="#f59e0b" text-anchor="middle">Pneumonectomy = 55%</text>
+          </g>
+
+          <!-- Left Lung (9 Segments) -->
+          <g transform="translate(180, 36)">
+            <rect x="0" y="0" width="145" height="150" rx="5" fill="rgba(168,85,247,0.1)" stroke="#a855f7" stroke-width="1"/>
+            <rect x="0" y="0" width="145" height="20" rx="5" fill="#7e22ce"/>
+            <text x="72" y="14" font-size="8" font-weight="900" fill="#ffffff" text-anchor="middle">LEFT LUNG (9 Seg)</text>
+            
+            <text x="8" y="36" font-size="7.6" font-weight="bold" fill="#c084fc">• Left Upper Lobe (3 seg):</text>
+            <text x="16" y="48" font-size="7" fill="#cbd5e1">Apical, Posterior, Anterior</text>
+
+            <text x="8" y="66" font-size="7.6" font-weight="bold" fill="#c084fc">• Lingula (2 seg):</text>
+            <text x="16" y="78" font-size="7" fill="#cbd5e1">Superior, Inferior</text>
+
+            <text x="8" y="96" font-size="7.6" font-weight="bold" fill="#c084fc">• Left Lower Lobe (4 seg):</text>
+            <text x="16" y="108" font-size="7" fill="#cbd5e1">Superior, Anteromedial</text>
+            <text x="16" y="120" font-size="7" fill="#cbd5e1">Lateral basal, Posterior basal</text>
+
+            <text x="72" y="140" font-size="7.2" font-weight="bold" fill="#f59e0b" text-anchor="middle">Pneumonectomy = 45%</text>
+          </g>
+
+          <!-- Mathematical Formula Box -->
+          <g transform="translate(15, 196)">
+            <rect x="0" y="0" width="310" height="66" rx="5" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+            <text x="155" y="16" font-size="7.8" font-weight="900" fill="#38bdf8" text-anchor="middle">LOBECTOMY FORMULA (SEGMENT COUNT):</text>
+            <text x="155" y="32" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">ppoFEV1% = Preop FEV1% × [1 - (S_resected / 19)]</text>
+            <text x="155" y="46" font-size="8.5" font-weight="bold" fill="#ffffff" text-anchor="middle">ppoDLCO% = Preop DLCO% × [1 - (S_resected / 19)]</text>
+            <text x="155" y="58" font-size="6.8" fill="#94a3b8" text-anchor="middle">(Where S_resected is the number of functioning segments resected)</text>
+          </g>
+
+          <!-- V/Q Scan Box for Pneumonectomy -->
+          <g transform="translate(15, 270)">
+            <rect x="0" y="0" width="310" height="68" rx="5" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+            <text x="155" y="16" font-size="7.8" font-weight="900" fill="#f59e0b" text-anchor="middle">PNEUMONECTOMY: QUANTITATIVE V/Q SCAN</text>
+            <text x="155" y="32" font-size="8.2" font-weight="bold" fill="#ffffff" text-anchor="middle">ppo% = Preop% × (1 - Fractional Perfusion)</text>
+            <text x="155" y="46" font-size="7" fill="#cbd5e1" text-anchor="middle">• Segment counting is inaccurate for pneumonectomy!</text>
+            <text x="155" y="58" font-size="7" fill="#cbd5e1" text-anchor="middle">• Mandatory radionuclide 99mTc-MAA perfusion scan</text>
+          </g>
+        </g>
+
+        <!-- RIGHT PANEL: ACCP / ESTS 3-Tier Risk Ladder -->
+        <g transform="translate(390, 60)">
+          <rect x="0" y="0" width="360" height="350" rx="6" fill="#111827" stroke="#334155" stroke-width="1.2"/>
+          <rect x="0" y="0" width="360" height="24" rx="6" fill="#1e293b"/>
+          <text x="180" y="16" font-size="8.8" font-weight="900" fill="#22c55e" text-anchor="middle">ACCP &amp; ESTS 3-TIER RISK STRATIFICATION LADDER</text>
+
+          <!-- Tier 1: Low Risk -->
+          <g transform="translate(15, 34)">
+            <rect x="0" y="0" width="330" height="60" rx="5" fill="#14532d" stroke="#22c55e" stroke-width="1.4"/>
+            <text x="12" y="18" font-size="8.5" font-weight="900" fill="#86efac">TIER 1: LOW RISK (STANDARD SURGICAL CANDIDATE)</text>
+            <text x="12" y="32" font-size="8" font-weight="bold" fill="#ffffff">• BOTH ppoFEV1 &gt; 40% AND ppoDLCO &gt; 40% predicted</text>
+            <text x="12" y="44" font-size="7.4" fill="#dcfce7">• Perioperative mortality &lt; 1–2%. Proceed to planned resection!</text>
+            <text x="12" y="54" font-size="7" fill="#86efac">• No further CPET exercise testing required.</text>
+          </g>
+
+          <!-- Tier 2: Intermediate Risk -->
+          <g transform="translate(15, 102)">
+            <rect x="0" y="0" width="330" height="68" rx="5" fill="#78350f" stroke="#f59e0b" stroke-width="1.4"/>
+            <text x="12" y="18" font-size="8.5" font-weight="900" fill="#fde68a">TIER 2: INTERMEDIATE RISK (CPET MANDATORY)</text>
+            <text x="12" y="32" font-size="8" font-weight="bold" fill="#ffffff">• EITHER ppoFEV1 OR ppoDLCO between 30% and 40%</text>
+            <text x="12" y="44" font-size="7.4" fill="#fef3c7">• Mandatory Cardiopulmonary Exercise Testing (CPET):</text>
+            <text x="20" y="55" font-size="7" fill="#fde68a">→ VO2 max 10 to 15 mL/kg/min (Moderate risk)</text>
+            <text x="20" y="64" font-size="7" fill="#fde68a">→ VO2 max &gt; 15 mL/kg/min (Safe for lobectomy)</text>
+          </g>
+
+          <!-- Tier 3: High Risk -->
+          <g transform="translate(15, 178)">
+            <rect x="0" y="0" width="330" height="68" rx="5" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.4"/>
+            <text x="12" y="18" font-size="8.5" font-weight="900" fill="#fca5a5">TIER 3: HIGH RISK (RESECTION CONTRAINDICATED)</text>
+            <text x="12" y="32" font-size="8" font-weight="bold" fill="#ffffff">• EITHER ppoFEV1 &lt; 30% OR ppoDLCO &lt; 30% (or VO2 &lt; 10)</text>
+            <text x="12" y="44" font-size="7.4" fill="#fee2e2">• Very high perioperative mortality (&gt; 10–15%)</text>
+            <text x="12" y="55" font-size="7" fill="#fecdd3">• Standard lobectomy / pneumonectomy contraindicated</text>
+            <text x="12" y="64" font-size="7" fill="#fecdd3">• Consider: Wedge resection, SBRT, or ablation</text>
+          </g>
+
+          <!-- Thoracic Anaesthesia Callout -->
+          <g transform="translate(15, 254)">
+            <rect x="0" y="0" width="330" height="84" rx="5" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+            <text x="165" y="15" font-size="8" font-weight="900" fill="#38bdf8" text-anchor="middle">THORACIC ANAESTHETIC SAFEGUARDS</text>
+            <text x="10" y="30" font-size="7.4" font-weight="bold" fill="#e2e8f0">1. FLUID RESTRICTION (Post-Pneumonectomy Pulmonary Edema):</text>
+            <text x="16" y="42" font-size="7" fill="#93c5fd">• Total crystalloids &lt; 1.5 L for entire case (&lt; 2 mL/kg/hr)!</text>
+            <text x="16" y="52" font-size="7" fill="#93c5fd">• Hyperfiltration in reduced vascular bed triggers fatal ALI.</text>
+            <text x="10" y="66" font-size="7.4" font-weight="bold" fill="#e2e8f0">2. LUNG-PROTECTIVE ONE-LUNG VENTILATION (OLV):</text>
+            <text x="16" y="78" font-size="7" fill="#93c5fd">• TV 4–5 mL/kg PBW • PEEP 5 cmH2O • Pplat &lt; 25 cmH2O</text>
+          </g>
+        </g>
+      </svg>
+      <p class="st-diagram-caption">Post-Operative Pulmonary Prediction: Anatomical 19-segment tracheobronchial map (Right 10, Left 9), lobectomy vs pneumonectomy calculation formulas, and the ACCP/ESTS 3-tier risk stratification ladder with intraoperative fluid restriction and protective OLV safeguards.</p>
     </div>`;
   }
 
