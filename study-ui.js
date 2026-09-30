@@ -635,6 +635,7 @@
   // to size itself — a zero-size renderer renders nothing and silently fails.
   // Falls back gracefully if KNMountMolecule3D isn't available yet.
   function mountStructureViewers(root) {
+    if (document.body && !document.body.classList.contains("dark")) return;
     const nodes = Array.from(root.querySelectorAll(".st-molecule-viewer[data-drug]"));
     if (!nodes.length) return;
 
@@ -764,38 +765,45 @@
     </div>`;
   }
 
+  function getDiagramHTML(name) {
+    if (!name) return "";
+    if (name === "mapleson-grid") return maplesonGridHTML();
+    if (name === "venturi-schematic") return venturiDiagramHTML();
+    if (name === "cylinder-pin-index") return cylinderDiagramHTML();
+    if (name === "infusion-mechanisms") return infusionPumpDiagramHTML();
+    if (name === "soda-lime-reaction") return sodaLimeDiagramHTML();
+    if (name === "workstation-flowchart") return workstationFlowchartHTML();
+    if (name === "fluid-compartments") return fluidCompartmentsDiagramHTML();
+    if (name === "blood-products-guide") return bloodProductsDiagramHTML();
+    if (name === "ecg-basic-waves") return ecgBasicWavesDiagramHTML();
+    if (name === "ecg-axis-wheel") return ecgAxisWheelDiagramHTML();
+    if (name === "ecg-lvh-waveform") return ecgLvhDiagramHTML();
+    if (name === "ecg-rvh-waveform") return ecgRvhDiagramHTML();
+    if (name === "ecg-bbb-comparison") return ecgBbbDiagramHTML();
+    if (name === "ecg-stemi-evolution") return ecgStemiDiagramHTML();
+    if (name === "ecg-heart-blocks") return ecgHeartBlocksDiagramHTML();
+    if (name === "ecg-vt-waveform") return ecgVtDiagramHTML();
+    if (name === "ecg-vf-waveform") return ecgVfDiagramHTML();
+    if (name === "ecg-hyperkalemia-waveform") return ecgHyperkalemiaDiagramHTML();
+    if (name === "ecg-hypokalemia-waveform") return ecgHypokalemiaDiagramHTML();
+    if (name === "ecg-pacemaker-waveform") return ecgPacemakerDiagramHTML();
+    if (name === "abg-stepwise-flowchart") return abgStepwiseFlowchartHTML();
+    if (name === "abg-anion-gap-balance") return abgAnionGapBalanceHTML();
+    if (name === "abg-compensation-rules") return abgCompensationRulesDiagramHTML();
+    if (name === "abg-hagma-nagma-tree") return abgHagmaNagmaTreeDiagramHTML();
+    if (name === "pft-reading-algorithm") return pftReadingAlgorithmHTML();
+    if (name === "pft-obstructive-severity") return pftObstructiveSeverityHTML();
+    if (name === "pft-restrictive-tree") return pftRestrictiveTreeHTML();
+    if (name === "pft-flow-volume-loops") return pftFlowVolumeLoopsHTML();
+    if (name === "pft-postop-resection") return pftPostopResectionHTML();
+    return "";
+  }
+  window.KN_GET_DIAGRAM = getDiagramHTML;
+  window.KN_GET_CALLOUT = callout;
+
   function topicPanelHTML(t) {
     const sectionsHTML = t.sections.map((s) => {
-      let diagramHTML = "";
-      if (s.diagram === "mapleson-grid") diagramHTML = maplesonGridHTML();
-      else if (s.diagram === "venturi-schematic") diagramHTML = venturiDiagramHTML();
-      else if (s.diagram === "cylinder-pin-index") diagramHTML = cylinderDiagramHTML();
-      else if (s.diagram === "infusion-mechanisms") diagramHTML = infusionPumpDiagramHTML();
-      else if (s.diagram === "soda-lime-reaction") diagramHTML = sodaLimeDiagramHTML();
-      else if (s.diagram === "workstation-flowchart") diagramHTML = workstationFlowchartHTML();
-      else if (s.diagram === "fluid-compartments") diagramHTML = fluidCompartmentsDiagramHTML();
-      else if (s.diagram === "blood-products-guide") diagramHTML = bloodProductsDiagramHTML();
-      else if (s.diagram === "ecg-basic-waves") diagramHTML = ecgBasicWavesDiagramHTML();
-      else if (s.diagram === "ecg-axis-wheel") diagramHTML = ecgAxisWheelDiagramHTML();
-      else if (s.diagram === "ecg-lvh-waveform") diagramHTML = ecgLvhDiagramHTML();
-      else if (s.diagram === "ecg-rvh-waveform") diagramHTML = ecgRvhDiagramHTML();
-      else if (s.diagram === "ecg-bbb-comparison") diagramHTML = ecgBbbDiagramHTML();
-      else if (s.diagram === "ecg-stemi-evolution") diagramHTML = ecgStemiDiagramHTML();
-      else if (s.diagram === "ecg-heart-blocks") diagramHTML = ecgHeartBlocksDiagramHTML();
-      else if (s.diagram === "ecg-vt-waveform") diagramHTML = ecgVtDiagramHTML();
-      else if (s.diagram === "ecg-vf-waveform") diagramHTML = ecgVfDiagramHTML();
-      else if (s.diagram === "ecg-hyperkalemia-waveform") diagramHTML = ecgHyperkalemiaDiagramHTML();
-      else if (s.diagram === "ecg-hypokalemia-waveform") diagramHTML = ecgHypokalemiaDiagramHTML();
-      else if (s.diagram === "ecg-pacemaker-waveform") diagramHTML = ecgPacemakerDiagramHTML();
-      else if (s.diagram === "abg-stepwise-flowchart") diagramHTML = abgStepwiseFlowchartHTML();
-      else if (s.diagram === "abg-anion-gap-balance") diagramHTML = abgAnionGapBalanceHTML();
-      else if (s.diagram === "abg-compensation-rules") diagramHTML = abgCompensationRulesDiagramHTML();
-      else if (s.diagram === "abg-hagma-nagma-tree") diagramHTML = abgHagmaNagmaTreeDiagramHTML();
-      else if (s.diagram === "pft-reading-algorithm") diagramHTML = pftReadingAlgorithmHTML();
-      else if (s.diagram === "pft-obstructive-severity") diagramHTML = pftObstructiveSeverityHTML();
-      else if (s.diagram === "pft-restrictive-tree") diagramHTML = pftRestrictiveTreeHTML();
-      else if (s.diagram === "pft-flow-volume-loops") diagramHTML = pftFlowVolumeLoopsHTML();
-      else if (s.diagram === "pft-postop-resection") diagramHTML = pftPostopResectionHTML();
+      const diagramHTML = getDiagramHTML(s.diagram);
 
       let imagesHTML = "";
       if (Array.isArray(s.images)) {
@@ -4585,6 +4593,15 @@
       card.classList.add("st-card-active");
     });
   }
+
+  window.KN_STUDY_HELPERS = {
+    topicPanelHTML,
+    drugFullPanelHTML,
+    itemById,
+    isDrugCat,
+    catById,
+    itemsInCat
+  };
 
   function init() {
     bindListEvents();

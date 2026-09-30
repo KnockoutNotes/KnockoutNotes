@@ -886,45 +886,73 @@
    Day Mode (Light Theme) Overrides for Calculators & Paediatric Hub
    ========================================================================== */
 body:not(.dark) .calc-hero-card {
-  background: #ffffff;
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 10px 28px rgba(15, 23, 42, 0.06);
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-xl, 32px);
+  box-shadow:
+    0 16px 36px -4px rgba(45, 35, 25, 0.08),
+    0 4px 14px rgba(45, 35, 25, 0.04),
+    inset 0 2px 2px #ffffff,
+    inset 0 -2px 3px rgba(45, 35, 25, 0.03);
 }
 
 body:not(.dark) .calc-hero-header h2,
 body:not(.dark) .calc-box-header h3,
 body:not(.dark) .calc-group-title,
 body:not(.dark) .calc-primary-val {
-  color: #0f172a !important;
+  color: #1e293b !important;
 }
 
 body:not(.dark) .calc-box {
-  background: #ffffff;
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 6px 18px -2px rgba(15, 23, 42, 0.05);
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-lg, 24px);
+  box-shadow:
+    0 12px 32px -4px rgba(45, 35, 25, 0.08),
+    0 4px 12px -2px rgba(45, 35, 25, 0.04),
+    inset 0 2px 2px 0 #ffffff,
+    inset 0 -2px 3px 0 rgba(45, 35, 25, 0.03);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
 }
 
 body:not(.dark) .calc-box:hover {
-  border-color: rgba(2, 132, 199, 0.35);
-  box-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.09), 0 0 18px rgba(2, 132, 199, 0.12);
+  transform: translateY(-6px) scale(1.015) !important;
+  border-color: #ffffff !important;
+  box-shadow:
+    0 24px 48px -8px rgba(45, 35, 25, 0.14),
+    0 8px 20px -3px rgba(45, 35, 25, 0.06),
+    inset 0 2.5px 2px 0 #ffffff,
+    inset 0 -1.5px 3px 0 rgba(45, 35, 25, 0.02) !important;
+}
+
+@media (hover: none) {
+  body:not(.dark) .calc-box:hover {
+    transform: none !important;
+  }
 }
 
 body:not(.dark) .calc-input,
 body:not(.dark) .calc-select {
-  background: #ffffff !important;
-  border: 1.5px solid #cbd5e1 !important;
-  color: #0f172a !important;
+  background: #f0ebe2 !important;
+  border: 1px solid rgba(45, 35, 25, 0.08) !important;
+  border-radius: 12px !important;
+  box-shadow: inset 0 2px 3px rgba(45, 35, 25, 0.06), 0 1px 1px #ffffff !important;
+  color: #1e293b !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 body:not(.dark) .calc-input:focus,
 body:not(.dark) .calc-select:focus {
+  background: #ffffff !important;
   border-color: #0284c7 !important;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2), 0 4px 12px rgba(45, 35, 25, 0.06), inset 0 1.5px 1.5px #ffffff !important;
 }
 
 body:not(.dark) .calc-result-area {
-  background: #f1f4f9 !important;
-  border: 1px solid #cbd5e1 !important;
+  background: #f5f2ea !important;
+  border: 1px solid rgba(45, 35, 25, 0.08) !important;
+  border-radius: 16px !important;
+  box-shadow: inset 0 2px 4px rgba(45, 35, 25, 0.05), 0 1px 1px #ffffff !important;
 }
 
 body:not(.dark) .calc-formula-display {

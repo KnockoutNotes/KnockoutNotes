@@ -508,6 +508,16 @@ body.is-mobile-app .footer-app-row {
   display: none !important;
 }
 
+body:not(.dark) .footer-app-row {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  box-shadow: inset 0 1px 1px #ffffff, 0 2px 6px rgba(45, 35, 25, 0.04);
+}
+
+body:not(.dark) .footer-app-row-text {
+  color: #047857;
+}
+
 /* Footer Android Download Feature Card */
 .footer-app-banner {
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(15, 23, 42, 0.9));

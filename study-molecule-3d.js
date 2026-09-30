@@ -195,7 +195,7 @@ function createModelGroup(data, opts = {}) {
    ========================================================================== */
 const mounts = new WeakMap();
 const activeQueue = []; // FIFO to enforce maximum concurrent WebGL contexts in detail view
-const MAX_ACTIVE_CONTEXTS = 2;
+const MAX_ACTIVE_CONTEXTS = 8;
 
 function disposeMount(container) {
   const m = mounts.get(container);
@@ -288,6 +288,11 @@ function mountMolecule3D(container, data, opts) {
 
   const disposables = model.disposables;
 
+  let isVisible = true;
+  let raf = null;
+  let isInteracting = false;
+  let resumeTimer = null;
+
   function resize() {
     const w = container.clientWidth;
     const h = container.clientHeight;
@@ -319,11 +324,6 @@ function mountMolecule3D(container, data, opts) {
   container.appendChild(canvas);
 
   const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  let isVisible = true;
-  let raf = null;
-  let isInteracting = false;
-  let resumeTimer = null;
 
   function tick() {
     if (!container.isConnected) {

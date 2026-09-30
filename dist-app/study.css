@@ -1181,12 +1181,14 @@ body:not(.dark) .st-page.container {
 
 /* 2. Master Syllabus Index & Search Filter */
 body:not(.dark) .st-top-index {
-  background: rgba(255, 255, 255, 0.94);
-  border: 1.5px solid rgba(15, 23, 42, 0.12);
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  background: #ffffff;
+  border: 1px solid rgba(45, 35, 25, 0.08);
+  border-radius: var(--radius-lg, 24px);
+  box-shadow: inset 0 2px 2px #ffffff, inset 0 -2px 3px rgba(45, 35, 25, 0.03), 0 4px 6px -1px rgba(45, 35, 25, 0.04), 0 16px 32px -4px rgba(45, 35, 25, 0.08);
 }
 body:not(.dark) .st-top-index:hover {
-  border-color: rgba(2, 132, 199, 0.45);
+  border-color: rgba(2, 132, 199, 0.35);
+  box-shadow: inset 0 2px 2px #ffffff, inset 0 -2px 3px rgba(45, 35, 25, 0.03), 0 8px 12px -2px rgba(45, 35, 25, 0.05), 0 24px 44px -6px rgba(45, 35, 25, 0.12);
 }
 body:not(.dark) .st-top-index-btn {
   color: #0f172a;
@@ -1200,27 +1202,31 @@ body:not(.dark) .st-index-count {
   font-weight: 600;
 }
 body:not(.dark) .st-top-fs-btn {
-  background: #f1f5f9;
-  border-color: #cbd5e1;
+  background: #f1ede5;
+  border-color: rgba(45, 35, 25, 0.12);
   color: #334155;
   font-weight: 600;
+  border-radius: var(--radius-md, 14px);
+  box-shadow: inset 0 1px 1px #ffffff, 0 1px 2px rgba(45, 35, 25, 0.05);
 }
 body:not(.dark) .st-top-fs-btn:hover {
-  background: #e2e8f0;
+  background: #e9e4da;
   color: #0f172a;
 }
 body:not(.dark) .st-top-index-panel {
   background: #ffffff;
-  border-top: 1px solid rgba(15, 23, 42, 0.1);
+  border-top: 1px solid rgba(45, 35, 25, 0.08);
 }
 body:not(.dark) .st-index-filter-wrap {
-  background: #f8fafc;
-  border: 1.5px solid #cbd5e1;
-  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
+  background: #f0ebe2;
+  border: 1.5px solid rgba(45, 35, 25, 0.1);
+  box-shadow: inset 0 2px 4px rgba(45, 35, 25, 0.06), inset 0 1px 2px rgba(45, 35, 25, 0.08), 0 1px 0 #ffffff;
+  border-radius: var(--radius-md, 14px);
 }
 body:not(.dark) .st-index-filter-wrap:focus-within {
   border-color: #0284c7;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18), inset 0 1px 1px rgba(45, 35, 25, 0.04);
 }
 body:not(.dark) .st-index-filter-input {
   color: #0f172a;
@@ -1230,10 +1236,11 @@ body:not(.dark) .st-index-filter-input::placeholder {
 }
 body:not(.dark) .st-index-cat-col h4 {
   color: #0f172a;
-  border-bottom-color: rgba(15, 23, 42, 0.12);
+  border-bottom-color: rgba(45, 35, 25, 0.1);
 }
 body:not(.dark) .st-index-topic-item {
   color: #334155;
+  border-radius: 10px;
 }
 body:not(.dark) .st-index-topic-item:hover {
   background: #e0f2fe;
@@ -1243,16 +1250,26 @@ body:not(.dark) .st-index-topic-item:hover {
 /* 3. Detail Reading View Cards */
 body:not(.dark) .st-card {
   background: #ffffff;
-  border: 1.5px solid rgba(15, 23, 42, 0.11);
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05), 0 8px 24px -4px rgba(15, 23, 42, 0.07);
+  border: 1px solid rgba(45, 35, 25, 0.08);
+  border-radius: var(--radius-lg, 24px);
+  box-shadow: inset 0 2px 2px #ffffff, inset 0 -2px 3px rgba(45, 35, 25, 0.03), 0 4px 6px -1px rgba(45, 35, 25, 0.04), 0 16px 32px -4px rgba(45, 35, 25, 0.08);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s ease;
+  will-change: transform, box-shadow;
 }
-body:not(.dark) .st-card:hover,
-body:not(.dark) .st-card:active,
-body:not(.dark) .st-card:focus-within,
-body:not(.dark) .st-card.st-card-active {
-  background: #ffffff !important;
-  border-color: rgba(2, 132, 199, 0.5);
-  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.14), 0 12px 32px -4px rgba(15, 23, 42, 0.09);
+@media (hover: hover) and (pointer: fine) {
+  body:not(.dark) .st-card:hover,
+  body:not(.dark) .st-card:focus-within,
+  body:not(.dark) .st-card.st-card-active {
+    background: #ffffff !important;
+    border-color: rgba(2, 132, 199, 0.35);
+    transform: translateY(-4px) scale(1.008);
+    box-shadow: inset 0 2px 2px #ffffff, inset 0 -2px 3px rgba(45, 35, 25, 0.03), 0 8px 12px -2px rgba(45, 35, 25, 0.05), 0 24px 44px -6px rgba(45, 35, 25, 0.12);
+  }
+}
+@media (hover: none) {
+  body:not(.dark) .st-card:active {
+    transform: scale(0.995);
+  }
 }
 body:not(.dark) .st-card h3 {
   color: #0f172a;

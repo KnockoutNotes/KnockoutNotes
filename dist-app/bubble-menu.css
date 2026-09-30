@@ -50,11 +50,13 @@
 }
 
 body:not(.dark) .kn-desktop-nav-capsule {
-  background: rgba(255, 255, 255, 0.92);
-  border-color: rgba(15, 23, 42, 0.09);
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08),
-              0 2px 6px rgba(0, 0, 0, 0.02),
-              inset 0 1px 0 #ffffff;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 16px 36px -4px rgba(45, 35, 25, 0.09),
+    0 4px 12px rgba(45, 35, 25, 0.04),
+    inset 0 2px 2px #ffffff,
+    inset 0 -1.5px 2px rgba(45, 35, 25, 0.02);
 }
 
 /* Brand Emblem & Wordmark */
@@ -122,8 +124,9 @@ body:not(.dark) .kn-desktop-brand-name span {
 }
 
 body:not(.dark) .kn-desktop-links {
-  background: #f1f4f8;
-  border-color: #e2e8f0;
+  background: #f0ebe2;
+  border: 1px solid rgba(45, 35, 25, 0.06);
+  box-shadow: inset 0 1.5px 3px rgba(45, 35, 25, 0.06);
 }
 
 /* 3D Convex Glass Sliding Pill Indicator */
@@ -149,9 +152,12 @@ body:not(.dark) .kn-desktop-links {
 }
 
 body:not(.dark) .kn-desktop-indicator {
-  background: #ffffff;
-  border-color: rgba(15, 23, 42, 0.08);
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 2px 8px rgba(45, 35, 25, 0.08),
+    inset 0 1.5px 1.5px #ffffff,
+    inset 0 -1px 2px rgba(45, 35, 25, 0.03);
 }
 
 .kn-desktop-link {
@@ -343,11 +349,13 @@ body:not(.dark) .kn-desktop-search-btn kbd {
 }
 
 body:not(.dark) .bubble-bar-capsule {
-  background: rgba(255, 255, 255, 0.92);
-  border-color: rgba(15, 23, 42, 0.09);
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08),
-              0 2px 6px rgba(0, 0, 0, 0.02),
-              inset 0 1px 0 #ffffff;
+  background: rgba(255, 255, 255, 0.90);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 14px 34px -4px rgba(45, 35, 25, 0.09),
+    0 4px 12px rgba(45, 35, 25, 0.04),
+    inset 0 2px 2px #ffffff,
+    inset 0 -1.5px 2px rgba(45, 35, 25, 0.02);
 }
 
 .bubble-logo-link {
@@ -380,8 +388,9 @@ body:not(.dark) .bubble-bar-capsule {
 }
 
 body:not(.dark) .bubble-nav-links {
-  background: #f1f4f8;
-  border-color: #e2e8f0;
+  background: #f0ebe2;
+  border-color: rgba(45, 35, 25, 0.06);
+  box-shadow: inset 0 1.5px 3px rgba(45, 35, 25, 0.06);
 }
 
 /* 3D Convex Glass Sliding Pill Indicator for Mobile Main Menu (Home, Notes, Calc) */
@@ -407,9 +416,12 @@ body:not(.dark) .bubble-nav-links {
 }
 
 body:not(.dark) .kn-mobile-indicator {
-  background: #ffffff;
-  border-color: rgba(15, 23, 42, 0.08);
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 2px 8px rgba(45, 35, 25, 0.08),
+    inset 0 1.5px 1.5px #ffffff,
+    inset 0 -1px 2px rgba(45, 35, 25, 0.03);
 }
 
 .bubble-nav-link {
@@ -676,9 +688,12 @@ body:not(.dark) .kn-more-close-btn {
 }
 
 body:not(.dark) .kn-more-card {
-  background: #ffffff;
-  border-color: rgba(15, 23, 42, 0.08);
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 8px 24px -2px rgba(45, 35, 25, 0.07),
+    inset 0 1.5px 1.5px #ffffff,
+    inset 0 -1.5px 2px rgba(45, 35, 25, 0.03);
 }
 
 .kn-more-card:hover,
@@ -692,8 +707,11 @@ body:not(.dark) .kn-more-card {
 body:not(.dark) .kn-more-card:hover,
 body:not(.dark) .kn-more-card:active {
   background: #ffffff;
-  border-color: rgba(2, 132, 199, 0.35);
-  box-shadow: 0 10px 24px rgba(2, 132, 199, 0.12);
+  border-color: #ffffff;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow:
+    0 16px 32px -4px rgba(45, 35, 25, 0.12),
+    inset 0 2px 2px #ffffff;
 }
 
 .kn-more-card.active-route {

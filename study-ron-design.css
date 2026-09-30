@@ -1,0 +1,1858 @@
+/* ==========================================================================
+   KNOCKOUTNOTES — Ron-Design Study Mode Theme (study-ron-design.css)
+   Exact reproduction of the clean, clinical tablet dashboard layout:
+   - Slate outer device bezel with organic curved corners
+   - Warm putty / stone alabaster screen canvas (#e2dfd7)
+   - Sculpted organic scoop header tab
+   - Rounded white pill navigation clusters
+   - Topic summary banner with portrait card, title, vitals readout & action pills
+   - Connected interactive clinical mindmap with SVG bezier branches
+   - Yellow lime step nodes, dual-tone medication capsules
+   - Custom Blood Pressure range charts with dark value bubble
+   - Symptoms card with anatomical mannequin graphic & active hotspots
+   - ECG Lead II rhythmic waveform strip
+   - Bottom floating scrubber dock with calendar pill & active range selector
+   Strictly scoped to Light Mode: body:not(.dark)[data-content-page="study"]
+   ========================================================================== */
+
+/* Hide legacy top hero, default grid and detail in light mode when Ron-Design board is active */
+body:not(.dark)[data-content-page="study"] .st-hero,
+body:not(.dark)[data-content-page="study"] .st-cat-nav,
+body:not(.dark)[data-content-page="study"] .st-top-index,
+body:not(.dark)[data-content-page="study"] #stGrid,
+body:not(.dark)[data-content-page="study"] #stDetail {
+  display: none !important;
+}
+
+body:not(.dark)[data-content-page="study"] {
+  background-color: #d8d6ce !important;
+  background-image: radial-gradient(circle at 50% 10%, #eae8e1 0%, #d8d6ce 100%) !important;
+}
+
+body:not(.dark)[data-content-page="study"] #knSpatialCanvas {
+  opacity: 0.12 !important;
+}
+
+/* Container Frame */
+body:not(.dark)[data-content-page="study"] .st-page.container {
+  max-width: 1360px !important;
+  padding: 30px 16px 80px 16px !important;
+}
+
+/* ------------------------------------------------------------ Device Frame */
+.ron-device-frame {
+  background: #34373a;
+  padding: 12px;
+  border-radius: 44px;
+  box-shadow: 0 35px 90px -15px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.12);
+  margin: 0 auto 30px auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .ron-device-frame {
+    padding: 8px;
+    border-radius: 28px;
+  }
+}
+
+.ron-screen {
+  background: #e2dfd7;
+  border-radius: 36px;
+  position: relative;
+  overflow: hidden;
+  padding: 24px 32px 42px 32px;
+  min-height: 780px;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+  color: #191c1e;
+}
+
+@media (max-width: 768px) {
+  .ron-screen {
+    padding: 16px 14px 32px 14px;
+    border-radius: 22px;
+  }
+}
+
+/* ------------------------------------------------------------ Header Bar */
+.ron-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.ron-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ron-close-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  color: #191c1e;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.18s ease, background 0.18s ease;
+  flex-shrink: 0;
+}
+
+.ron-close-btn:hover {
+  transform: scale(1.06);
+  background: #f8fafc;
+}
+
+/* ------------------------------------------------------------ Header Bar */
+.ron-header-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.ron-header-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ron-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ron-close-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  color: #191c1e;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.18s ease, background 0.18s ease;
+  flex-shrink: 0;
+}
+
+.ron-close-btn:hover {
+  transform: scale(1.06);
+  background: #f8fafc;
+}
+
+.ron-title-scoop {
+  position: relative;
+  background: #e2dfd7;
+  padding: 4px 18px 4px 6px;
+  border-radius: 0 0 24px 0;
+}
+
+.ron-title-scoop h1 {
+  margin: 0;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a1e21;
+}
+
+.ron-inline-search-wrap {
+  flex: 1;
+  max-width: 480px;
+  min-width: 240px;
+}
+
+.ron-inline-search-input {
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+  border-radius: 9999px;
+  padding: 9px 20px;
+  font-size: 13.5px;
+  color: #191c1e;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.ron-inline-search-input:focus {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18), inset 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* All Categories Two-Line Horizontal Track Container */
+.ron-nav-pills-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.ron-nav-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 2px 2px 6px 2px;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ron-nav-row::-webkit-scrollbar {
+  height: 4px;
+}
+
+.ron-nav-row::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+}
+
+.ron-nav-row::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* Related Tools & Calculators Bubble Row */
+.ron-related-tools-wrap {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 18px;
+}
+
+.ron-related-tools-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #555a5e;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-right: 4px;
+}
+
+.ron-tool-pill {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 650;
+  color: #0284c7;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.18s ease;
+}
+
+.ron-tool-pill:hover {
+  background: #0284c7;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+.ron-nav-pill {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 9999px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2c3135;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.3, 1);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ron-nav-pill:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.07);
+}
+
+.ron-nav-pill.active {
+  background: #ffffff;
+  color: #000000;
+  font-weight: 750;
+  border-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
+}
+
+.ron-pill-count {
+  background: #f1ede5;
+  color: #555a5e;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 9999px;
+}
+
+.ron-nav-pill.active .ron-pill-count {
+  background: #191c1e;
+  color: #ffffff;
+}
+
+/* ------------------------------------------------------------ Topic Summary Banner */
+.ron-summary-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .ron-summary-banner {
+    flex-direction: column;
+    gap: 18px;
+  }
+}
+
+/* Left Profile / Topic Meta Card */
+.ron-profile-card {
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 14px 20px 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  min-width: 240px;
+  flex-shrink: 0;
+}
+
+.ron-avatar-wrap {
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #f1ede5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ron-avatar-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ron-profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ron-profile-meta {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #7a7f84;
+}
+
+.ron-profile-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #191c1e;
+  line-height: 1.25;
+}
+
+.ron-profile-progress {
+  width: 50px;
+  height: 3px;
+  background: #e5e3db;
+  border-radius: 3px;
+  margin-top: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ron-profile-progress::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 65%;
+  background: #0284c7;
+  border-radius: 3px;
+}
+
+/* Center & Right Stats Readout */
+.ron-stats-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ron-stats-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* ------------------------------------------------------------ Topic Hero 2-Column Layout */
+.ron-topic-hero-layout {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 28px;
+  align-items: start;
+  margin-top: 10px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 960px) {
+  .ron-topic-hero-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.ron-topic-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ron-topic-main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* Left-Side Vertical Calculators & Crisis Protocols */
+.ron-related-tools-vertical {
+  background: #fdfdfc;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ron-vertical-tools-heading {
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ron-vertical-tool-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 12.5px;
+  font-weight: 650;
+  color: #0369a1;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.ron-vertical-tool-pill:hover {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  transform: translateX(4px);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.22);
+}
+
+.ron-tool-arrow {
+  font-size: 13px;
+  font-weight: 750;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+.ron-diagnosis-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ron-diagnosis-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #7b8084;
+  letter-spacing: 0.02em;
+}
+
+.ron-diagnosis-title {
+  margin: 0;
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: #191c1e;
+}
+
+/* Horizontal Vitals Strip */
+.ron-vitals-strip {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .ron-vitals-strip {
+    gap: 16px;
+  }
+}
+
+.ron-vital-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ron-vital-label {
+  font-size: 11px;
+  font-weight: 550;
+  color: #7b8084;
+}
+
+.ron-vital-val {
+  font-size: 18px;
+  font-weight: 700;
+  color: #191c1e;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+}
+
+.ron-vital-val small {
+  font-size: 11px;
+  font-weight: 500;
+  color: #7b8084;
+}
+
+/* Action Sub-Pills */
+.ron-action-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ron-slider-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+  color: #2e3337;
+  font-size: 13px;
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.ron-slider-btn:hover {
+  transform: scale(1.06);
+}
+
+.ron-filter-pill {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 9999px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+
+.ron-filter-pill:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.ron-filter-pill.active {
+  background: #191c1e !important;
+  color: #ffffff !important;
+  border-color: #191c1e !important;
+  font-weight: 750 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18) !important;
+  transform: translateY(-1px);
+}
+
+/* ------------------------------------------------------------ Main Stage Container (Replaces Phase 1 & 2 Graphs) */
+.ron-stage-container {
+  background: #ffffff;
+  border-radius: 32px;
+  padding: 28px 32px 36px 32px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+  margin-top: 22px;
+  position: relative;
+  transition: box-shadow 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .ron-stage-container {
+    padding: 20px 16px 28px 16px;
+    border-radius: 24px;
+  }
+}
+
+.ron-stage-pill {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 9999px;
+  padding: 8px 24px;
+  font-size: 13.5px;
+  font-weight: 750;
+  color: #191c1e;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+  display: inline-block;
+  margin: 0 auto 14px auto;
+  text-align: center;
+  max-width: 90%;
+  line-height: 1.4;
+}
+
+.ron-description-container {
+  position: relative;
+  margin-top: 10px;
+}
+
+/* Source Callout */
+.ron-source-callout {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #0284c7;
+  border-radius: 14px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.ron-source-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Point-Wise Clinical Typography */
+.ron-prose {
+  font-size: 14.5px;
+  color: #1e293b;
+  line-height: 1.75;
+}
+
+.ron-point-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 9px;
+  line-height: 1.7;
+}
+
+.ron-point-bullet {
+  color: #0284c7;
+  font-size: 16px;
+  line-height: 1.4;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.ron-point-text {
+  font-size: 14.5px;
+  color: #1e293b;
+  flex: 1;
+}
+
+.ron-point-keyval .ron-point-label {
+  color: #0f172a;
+  font-weight: 750;
+  letter-spacing: 0.01em;
+}
+
+.ron-numbered-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 18px 0 10px 0;
+  padding-bottom: 4px;
+}
+
+.ron-point-num-badge {
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ron-point-title {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 750;
+  color: #0f172a;
+  line-height: 1.4;
+}
+
+/* Clinical Callout Boxes (Pearl, Pitfall, Example) */
+.ron-callout {
+  border-radius: 16px;
+  padding: 14px 18px;
+  margin: 16px 0;
+  border: 1px solid;
+}
+
+.ron-callout-pearl {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  border-left: 4px solid #16a34a;
+}
+
+.ron-callout-pitfall {
+  background: #fef2f2;
+  border-color: #fecaca;
+  border-left: 4px solid #dc2626;
+}
+
+.ron-callout-example {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  border-left: 4px solid #2563eb;
+}
+
+.ron-callout-badge {
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.ron-callout-pearl .ron-callout-badge { color: #15803d; }
+.ron-callout-pitfall .ron-callout-badge { color: #b91c1c; }
+.ron-callout-example .ron-callout-badge { color: #1d4ed8; }
+
+/* Vector Diagram & ECG Waveform Cards */
+.ron-diagram-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 18px;
+  margin: 18px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  overflow-x: auto;
+}
+
+.ron-diagram-header {
+  margin-bottom: 12px;
+}
+
+.ron-diagram-badge {
+  font-size: 11px;
+  font-weight: 800;
+  color: #0284c7;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ron-diagram-body svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   TIGHT-FITTING WRAPPING MEDIA: 2D STRUCTURES, 3D ROTATION & FIGURES
+   ========================================================================== */
+
+/* Block Formatting Context containers to contain floats cleanly */
+.ron-structure-tight-prose,
+.ron-figure-tight-prose {
+  display: flow-root;
+}
+
+/* Chemical Structure & 3D Conformer Floating Wrapper */
+.ron-structure-float-wrap {
+  float: right;
+  margin: 2px 0 12px 18px;
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  max-width: 350px;
+  box-sizing: border-box;
+}
+
+.ron-structure-tight-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 8px 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  width: 165px;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.ron-structure-tight-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.06);
+}
+
+.ron-structure-tight-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  gap: 4px;
+}
+
+.ron-structure-badge {
+  font-size: 10px;
+  font-weight: 800;
+  color: #0284c7;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.ron-structure-formula-chip {
+  font-size: 10px;
+  font-weight: 750;
+  color: #1e293b;
+  background: #f1f5f9;
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.ron-structure-3d-hint {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #64748b;
+  background: #f8fafc;
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.ron-structure-svg-compact {
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafaf9;
+  border-radius: 8px;
+  padding: 4px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.ron-structure-svg-compact svg {
+  max-width: 100%;
+  max-height: 88px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.ron-structure-3d-compact {
+  width: 100% !important;
+  height: 96px !important;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fafaf9;
+  cursor: grab;
+}
+
+.ron-structure-3d-compact:active {
+  cursor: grabbing;
+}
+
+.ron-structure-3d-compact canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Topic Figures & Clinical Photos Wrap Float */
+.ron-figure-wrap-float {
+  float: right;
+  max-width: 270px;
+  margin: 2px 0 12px 18px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  padding: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.ron-figure-wrap-float:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+}
+
+.ron-figure-img {
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+}
+
+.ron-figure-caption {
+  font-size: 11px;
+  color: #64748b;
+  margin: 4px 0 1px 0;
+  line-height: 1.35;
+  font-style: italic;
+}
+
+/* Clinical Table */
+.ron-table-wrap {
+  overflow-x: auto;
+  margin: 20px 0 16px 0;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.ron-clinical-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  background: #ffffff;
+}
+
+.ron-clinical-table th {
+  background: #f1f5f9;
+  color: #0f172a;
+  font-weight: 750;
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 2px solid #cbd5e1;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.ron-clinical-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.ron-clinical-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.ron-table-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.ron-table-caption {
+  font-size: 12px;
+  color: #64748b;
+  margin: 6px 4px 0 4px;
+  font-style: italic;
+}
+
+/* Cross-links */
+.ron-crosslinks-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.ron-crosslinks-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ron-crosslink-bubble {
+  background: #f1f5f9;
+  color: #0369a1;
+  border: 1px solid #cbd5e1;
+  border-radius: 9999px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ron-crosslink-bubble:hover {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+}
+
+/* Mobile & Tablet Optimization (Portrait & Landscape) */
+@media (max-width: 640px) {
+  .ron-structure-float-wrap {
+    float: none;
+    margin: 8px auto 14px auto;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    gap: 8px;
+  }
+  .ron-structure-tight-card {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
+    max-width: 175px;
+    padding: 6px 8px;
+  }
+  .ron-structure-svg-compact,
+  .ron-structure-3d-compact {
+    height: 90px !important;
+  }
+  .ron-figure-wrap-float {
+    float: none;
+    max-width: 100%;
+    margin: 8px auto 14px auto;
+  }
+  .ron-device-frame {
+    padding: 6px;
+    border-radius: 20px;
+  }
+  .ron-screen {
+    border-radius: 16px;
+    padding: 12px;
+  }
+  .ron-header-bar {
+    padding: 6px 0;
+  }
+  .ron-stage-container {
+    padding: 16px 12px 24px 12px;
+    border-radius: 20px;
+  }
+  .ron-card.ron-notes-card {
+    padding: 16px 14px !important;
+    border-radius: 18px !important;
+  }
+  .ron-point-text {
+    font-size: 13.5px;
+  }
+  .ron-vitals-strip {
+    gap: 12px;
+  }
+  .ron-vital-val {
+    font-size: 15px;
+  }
+  .ron-filter-pill {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+  .ron-nav-row {
+    gap: 6px;
+    padding-bottom: 4px;
+  }
+  .ron-nav-pill {
+    padding: 6px 12px;
+    font-size: 11.5px;
+  }
+}
+
+/* Landscape Mobile (Orientation landscape and max-height 500px) */
+@media (max-height: 500px) and (orientation: landscape) {
+  .ron-topic-hero-layout {
+    grid-template-columns: 240px 1fr;
+    gap: 16px;
+  }
+  .ron-structure-layout {
+    grid-template-columns: 1fr 220px;
+  }
+}
+
+.ron-stepper-btn:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+.ron-stepper-btn.active-stepper {
+  background: #191c1e;
+  color: #ffffff;
+  border-color: #191c1e;
+}
+
+.ron-stepper-btn.active-stepper:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+.ron-stepper-counter {
+  font-size: 13px;
+  color: #64748b;
+}
+
+@media (max-width: 600px) {
+  .ron-stepper-bar {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* ------------------------------------------------------------ Main Mindmap Flowchart */
+.ron-flowchart-stage {
+  position: relative;
+  margin: 10px 0 36px 0;
+  padding-bottom: 20px;
+}
+
+.ron-connector-svg {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  width: 100%;
+  height: 480px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.75;
+}
+
+@media (max-width: 900px) {
+  .ron-connector-svg {
+    display: none;
+  }
+}
+
+/* Top Guideline Row */
+.ron-guideline-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  margin-bottom: 8px;
+}
+
+.ron-guideline-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 60px;
+  height: 1.5px;
+  background: #c7c4b9;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.ron-step-node {
+  position: relative;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e2ec24;
+  color: #191c1e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+}
+
+.ron-step-node svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.ron-plus-action-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #24282b;
+  color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 400;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.ron-plus-action-btn:hover {
+  transform: translateY(-50%) scale(1.08);
+  background: #101213;
+}
+
+/* Flow Columns Grid */
+.ron-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 32px;
+  position: relative;
+  z-index: 2;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .ron-flow-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.ron-flow-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+/* Month / Phase Tag */
+.ron-phase-title-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding-left: 20px;
+}
+
+.ron-phase-title {
+  font-size: 16px;
+  font-weight: 750;
+  color: #191c1e;
+  margin: 0;
+}
+
+.ron-phase-subtitle {
+  font-size: 11px;
+  font-weight: 600;
+  color: #7b8084;
+}
+
+/* Dual-Tone Medication Capsule */
+.ron-med-capsule {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  align-self: flex-start;
+  margin-left: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: transform 0.18s ease;
+}
+
+.ron-med-capsule:hover {
+  transform: scale(1.04);
+}
+
+.ron-med-icon-bulb {
+  background: #ffffff;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #191c1e;
+}
+
+.ron-med-icon-bulb svg {
+  width: 14px;
+  height: 14px;
+}
+
+.ron-med-name-bulb {
+  background: #5b6267;
+  color: #ffffff;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* ------------------------------------------------------------ Clinical Cards */
+.ron-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 18px 22px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.3, 1), box-shadow 0.22s ease;
+}
+
+.ron-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.ron-interactive-topic-card {
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.ron-interactive-topic-card:hover {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  border-color: rgba(2, 132, 199, 0.25);
+}
+
+.ron-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ron-card-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #191c1e;
+}
+
+.ron-card-scale-icon {
+  width: 18px;
+  height: 18px;
+  color: #7b8084;
+}
+
+.ron-card-subtag {
+  font-size: 10px;
+  font-weight: 600;
+  color: #7b8084;
+  margin-top: -6px;
+  align-self: center;
+}
+
+/* Blood Pressure Waveform Range Chart */
+.ron-bp-chart-wrap {
+  position: relative;
+  width: 100%;
+  height: 72px;
+  margin: 4px 0;
+  border-radius: 12px;
+  overflow: visible;
+}
+
+.ron-bp-chart-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ron-bp-badge {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #191c1e;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+}
+
+.ron-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #555a5e;
+  padding-top: 4px;
+}
+
+.ron-card-footer strong {
+  color: #191c1e;
+}
+
+.ron-delta-badge {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.ron-delta-badge.pos {
+  color: #059669;
+}
+
+.ron-delta-badge.dark {
+  background: #191c1e;
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+}
+
+/* Symptoms Anatomical Card */
+.ron-symptoms-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 80px;
+}
+
+.ron-symptoms-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ron-chip-pill {
+  background: #f4f2eb;
+  color: #2b3034;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.ron-mannequin-wrap {
+  width: 60px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ECG Rhythm Strip Card */
+.ron-ecg-strip-wrap {
+  width: 100%;
+  height: 60px;
+  background: #fbfbf9;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 4px 6px;
+  box-sizing: border-box;
+}
+
+.ron-ecg-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Left Chevron Column Controls */
+.ron-chevron-dock {
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffffff;
+  border-radius: 9999px;
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 5;
+}
+
+@media (max-width: 900px) {
+  .ron-chevron-dock {
+    display: none;
+  }
+}
+
+.ron-chevron-btn {
+  background: none;
+  border: none;
+  color: #555a5e;
+  font-size: 10px;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ron-chevron-btn:hover {
+  color: #000000;
+}
+
+/* ------------------------------------------------------------ Bottom Floating Scrubber Dock */
+.ron-bottom-dock {
+  position: relative;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 9999px;
+  padding: 6px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 20px auto 0 auto;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ron-bottom-dock::-webkit-scrollbar {
+  display: none;
+}
+
+/* Calendar Button */
+.ron-dock-cal-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #191c1e;
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Scrubber Timeline Items */
+.ron-dock-stream {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  justify-content: space-around;
+  padding: 0 10px;
+}
+
+.ron-dock-node {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #7b8084;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.15s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ron-dock-node:hover {
+  color: #000000;
+}
+
+.ron-badge-bubble {
+  background: #e2ec24;
+  color: #191c1e;
+  font-size: 9px;
+  font-weight: 800;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Active Highlighted Segment */
+.ron-dock-active-pill {
+  background: #191c1e;
+  color: #ffffff;
+  border-radius: 9999px;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.ron-dock-active-pill .ron-dock-node {
+  color: #cbd5e1;
+}
+
+.ron-dock-active-pill .ron-dock-node.active-text {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------ Selected Topic Full Reading View (Integrated) */
+.ron-expanded-notes {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ron-notes-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px 28px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.ron-notes-card h3 {
+  margin: 0 0 14px 0;
+  font-size: 17px;
+  font-weight: 750;
+  color: #191c1e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ron-notes-card p {
+  color: #2b3034;
+  line-height: 1.7;
+  font-size: 14px;
+  margin: 0 0 12px 0;
+}
+
+.ron-expanded-notes .st-card,
+.ron-expanded-notes .ron-card,
+.ron-notes-card {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  display: block !important;
+  background: #ffffff !important;
+  border-radius: 24px !important;
+  padding: 24px 28px !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+  margin-bottom: 20px !important;
+  scroll-margin-top: 130px;
+}
+
+.ron-expanded-notes .st-card h3,
+.ron-notes-card h3 {
+  font-size: 17px !important;
+  font-weight: 750 !important;
+  color: #191c1e !important;
+}
+
+.ron-expanded-notes .st-card-body p,
+.ron-expanded-notes .st-prose,
+.ron-notes-card p {
+  color: #2b3034 !important;
+  line-height: 1.7 !important;
+  font-size: 14px !important;
+}
+
+/* Quick Topic Selector Drawer */
+.ron-topics-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.ron-topics-modal[hidden] {
+  display: none !important;
+}
+
+.ron-topics-sheet {
+  background: #e2dfd7;
+  border-radius: 32px;
+  max-width: 860px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+  border: 8px solid #34373a;
+  overflow: hidden;
+}
+
+.ron-topics-sheet-head {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.ron-topics-sheet-head h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 750;
+  color: #191c1e;
+}
+
+.ron-sheet-search {
+  padding: 12px 24px;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.ron-sheet-search input {
+  width: 100%;
+  border: none;
+  background: #f1ede5;
+  padding: 10px 16px;
+  border-radius: 9999px;
+  font-size: 14px;
+  color: #191c1e;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.ron-sheet-grid {
+  padding: 20px 24px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.ron-topic-item-card {
+  background: #ffffff;
+  padding: 12px 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: transform 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ron-topic-item-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+}
+
+.ron-topic-item-cat {
+  font-size: 10px;
+  font-weight: 700;
+  color: #0284c7;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ron-topic-item-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #191c1e;
+}
+
+.ron-topic-item-tag {
+  font-size: 11px;
+  color: #7b8084;
+}

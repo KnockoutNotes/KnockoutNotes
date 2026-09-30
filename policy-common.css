@@ -119,7 +119,7 @@
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
   padding: 36px 40px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md), var(--box-3d-bevel);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   color: var(--text-secondary);
