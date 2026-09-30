@@ -428,6 +428,86 @@
   50% { box-shadow: 0 0 32px rgba(52, 211, 153, 0.75); }
 }
 
+/* Compact 1-Line Footer Android App Download Row */
+.footer-app-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  margin: 0 0 16px 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.footer-app-row-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #34d399;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.footer-app-row-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  color: #ffffff !important;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(52, 211, 153, 0.5);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  font-family: inherit;
+}
+
+.footer-app-row-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.45);
+}
+
+.footer-app-row-size {
+  font-size: 10px;
+  opacity: 0.85;
+  font-weight: 500;
+}
+
+@media (max-width: 520px) {
+  .footer-app-row {
+    padding: 6px 10px;
+    border-radius: 12px;
+  }
+  .footer-app-row-text {
+    font-size: 11px;
+  }
+  .footer-app-row-btn {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+  .footer-app-row-size {
+    display: none;
+  }
+}
+
+body.is-mobile-app .footer-app-row {
+  display: none !important;
+}
+
 /* Footer Android Download Feature Card */
 .footer-app-banner {
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(15, 23, 42, 0.9));

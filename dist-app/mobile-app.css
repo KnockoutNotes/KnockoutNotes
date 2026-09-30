@@ -400,3 +400,178 @@
     flex-direction: column;
   }
 }
+
+/* ==========================================================================
+   Highlighted Android App Download Button (Hero) & Footer App Feature
+   ========================================================================== */
+.kn-btn-android-download {
+  background: linear-gradient(135deg, #059669, #10b981) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(52, 211, 153, 0.9) !important;
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.55), 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+  animation: knAndroidPulse 3s infinite ease-in-out;
+}
+
+.kn-btn-android-download:hover,
+.kn-btn-android-download:focus-visible {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 35px rgba(52, 211, 153, 0.8), 0 6px 20px rgba(0, 0, 0, 0.5) !important;
+  border-color: #6ee7b7 !important;
+}
+
+@keyframes knAndroidPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.45); }
+  50% { box-shadow: 0 0 32px rgba(52, 211, 153, 0.75); }
+}
+
+/* Compact 1-Line Footer Android App Download Row */
+.footer-app-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  margin: 0 0 16px 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.footer-app-row-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #34d399;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.footer-app-row-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  color: #ffffff !important;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(52, 211, 153, 0.5);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  font-family: inherit;
+}
+
+.footer-app-row-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.45);
+}
+
+.footer-app-row-size {
+  font-size: 10px;
+  opacity: 0.85;
+  font-weight: 500;
+}
+
+@media (max-width: 520px) {
+  .footer-app-row {
+    padding: 6px 10px;
+    border-radius: 12px;
+  }
+  .footer-app-row-text {
+    font-size: 11px;
+  }
+  .footer-app-row-btn {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+  .footer-app-row-size {
+    display: none;
+  }
+}
+
+body.is-mobile-app .footer-app-row {
+  display: none !important;
+}
+
+/* Footer Android Download Feature Card */
+.footer-app-banner {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(15, 23, 42, 0.9));
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin: 16px 0 20px 0;
+  text-align: left;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(16, 185, 129, 0.15);
+}
+
+.footer-app-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: #34d399;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.footer-app-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.footer-app-desc {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #cbd5e1;
+  margin-bottom: 12px;
+}
+
+.footer-app-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #059669, #10b981) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(52, 211, 153, 0.8) !important;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4) !important;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.footer-app-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(52, 211, 153, 0.7) !important;
+}
+
+.footer-app-size {
+  font-size: 11px;
+  opacity: 0.85;
+}
+
