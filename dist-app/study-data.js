@@ -64,6 +64,18 @@
     "desc": "Systematic PFT reading, obstructive & restrictive patterns, flow-volume loops, DLCO & post-op resection assessment (ppoFEV1/ppoDLCO)"
   },
   {
+    "id": "antibiotics",
+    "label": "ICU Antibiotics & Sepsis",
+    "icon": "🦠",
+    "desc": "Critical Care Antimicrobial Stewardship, PK/PD, Multi-Drug Resistant Pathogens & Sepsis Bundles (Washington Manual / SSC / IDSA)"
+  },
+  {
+    "id": "poisoning",
+    "label": "ICU Toxicology & Poisoning",
+    "icon": "☠️",
+    "desc": "Life-Threatening Overdoses, Toxidromes, Antidotes & Extracorporeal Elimination in Critical Care (Washington Manual / Goldfrank / EXTRIP)"
+  },
+  {
     "id": "induction",
     "label": "Induction Agents",
     "icon": "💉",
@@ -5779,6 +5791,808 @@
       "Slinger P, et al. Principles and Practice of Anesthesia for Thoracic Surgery. Springer, 2019."
     ]
   }
+,
+  {
+  "id": "antibiotic-pk-pd",
+  "cat": "antibiotics",
+  "name": "Antimicrobial PK/PD & Dosing in Critically Ill Patients",
+  "brand": "Washington Manual of Critical Care • Sepsis Pharmacology",
+  "classification": "Critical Care Pharmacology • PK/PD Optimization • Organ Dysfunction",
+  "tagline": "Physiological shifts in septic shock, volume of distribution expansion, hydrophilic vs lipophilic dynamics, extended beta-lactam infusions, and renal clearance adaptations",
+  "tags": [
+    "PK/PD",
+    "Septic Shock",
+    "Beta-Lactams",
+    "Extended Infusion",
+    "ARC",
+    "CRRT",
+    "TDM",
+    "MIC"
+  ],
+  "source": "Kolleft MH, et al. The Washington Manual of Critical Care, 3rd ed., Ch. 28: Antimicrobial Therapy; Marino PL. Marino's The ICU Book, 4th ed., Ch. 44; Roberts JA, et al. DALI Study: Individualized antibiotic dosing in sepsis. Lancet Infect Dis 2014;14:498–509.",
+  "sections": [
+    {
+      "h": "Pathophysiological Derangements Altering Antimicrobial PK in Critical Illness",
+      "b": "Critically ill patients in septic shock experience profound, unpredictable pharmacokinetic alterations that render standard package-insert antibiotic dosing ineffective in >50% of cases:\n\n1. Massive Capillary Leak & Expanded Volume of Distribution (Vd):\n• Endothelial glycocalyx shedding and systemic capillary hyperpermeability cause fluid extravasation into the interstitial third space.\n• Aggressive crystalloid resuscitation (30 mL/kg) dramatically inflates total extracellular water (ECW).\n• Profoundly dilutes hydrophilic antibiotics (Beta-lactams, Aminoglycosides, Glycopeptides, Colistin), precipitating subtherapeutic peak and steady-state serum concentrations during the critical initial 24–48 hours.\n\n2. Hypoalbuminaemia (<2.0 g/dL):\n• Acute hepatic downregulation of albumin synthesis paired with capillary loss elevates the unbound (free) pharmacologically active drug fraction for highly protein-bound agents (Ceftriaxone [95% bound], Ertapenem [95% bound], Teicoplanin [90% bound]).\n• The elevated free fraction undergoes accelerated renal clearance and tissue distribution, drastically shortening elimination half-life.\n\n3. Augmented Renal Clearance (ARC):\n• Defined as Creatinine Clearance (CrCl) > 130 mL/min/1.73 m² (frequently seen in young trauma, burn, pancreatitis, and early hyperdynamic septic shock patients).\n• Mediated by hyperdynamic cardiac output, fluid loading, and excessive renal perfusion.\n• Rapidly washes out renally eliminated hydrophilic antimicrobials, resulting in treatment failure unless aggressive dose escalation or continuous infusions are used.\n\n4. Acute Kidney Injury (AKI) & Renal Replacement Therapy (CRRT/SLED):\n• Drug clearance is severely reduced, but INITIAL loading doses MUST NOT be reduced because Volume of Distribution remains persistently expanded!\n• Maintenance dosing must be adjusted strictly according to CRRT effluent rate (mL/kg/h) and membrane pore size, not the patient's intrinsic GFR."
+    },
+    {
+      "h": "Hydrophilic vs Lipophilic Antimicrobials Classification",
+      "table": {
+        "headers": [
+          "Property",
+          "Hydrophilic Antimicrobials",
+          "Lipophilic Antimicrobials"
+        ],
+        "rows": [
+          [
+            "Drug Classes",
+            "Beta-lactams (Penicillins, Cephalosporins, Carbapenems), Aminoglycosides, Glycopeptides (Vancomycin), Polymyxins (Colistin)",
+            "Fluoroquinolones (Levofloxacin, Moxifloxacin), Macrolides, Tetracyclines / Glycylcyclines (Tigecycline), Linezolid, Rifampin"
+          ],
+          [
+            "Volume of Distribution (Vd)",
+            "Small (0.1–0.3 L/kg); confined primarily to extracellular fluid space",
+            "Large (> 1.0–2.0 L/kg); extensive intracellular and adipose tissue distribution"
+          ],
+          [
+            "Impact of Sepsis / Capillary Leak",
+            "DRAMATIC: Vd increases up to 2- to 3-fold; serum concentrations fall sharply",
+            "MINIMAL: Sepsis, edema, and fluid resuscitation have negligible impact on serum levels"
+          ],
+          [
+            "Clearance Mechanism",
+            "Primarily Renal (glomerular filtration and tubular secretion)",
+            "Primarily Hepatic metabolism and biliary excretion"
+          ],
+          [
+            "Intracellular Penetration",
+            "Poor intracellular and pulmonary epithelial lining fluid (ELF) penetration",
+            "Exceptional intracellular, alveolar macrophage, and tissue penetration"
+          ],
+          [
+            "Dosing Rule in Sepsis",
+            "Mandatory HIGH loading doses upfront regardless of renal function to fill the expanded Vd",
+            "Standard weight-based loading; standard maintenance dosing without acute fluid adjustment"
+          ]
+        ],
+        "caption": "Pharmacokinetic divergence between hydrophilic and lipophilic antibiotics in critical illness."
+      },
+      "b": "Key Exam Takeaway:\n• In septic shock, never hold or reduce the FIRST dose of hydrophilic antibiotics (Meropenem, Piperacillin-tazobactam, Vancomycin, Amikacin) even in anuric AKI on dialysis!\n• Loading dose depends purely on Volume of Distribution (Vd), NOT on renal clearance (Clearance dictates only the maintenance interval)."
+    },
+    {
+      "h": "The Three Core Pharmacodynamic (PK/PD) Indices",
+      "b": "Optimal antimicrobial killing efficacy depends on matching the specific antibiotic class to its pharmacodynamic killing pattern:\n\n1. Time-Dependent Killing (T > MIC):\n• Efficacy correlates with the percentage of the dosing interval that unbound drug concentration exceeds the pathogen's Minimum Inhibitory Concentration (%fT > MIC).\n• Applicable Classes: Beta-lactams (Penicillins, Cephalosporins, Carbapenems, Monobactams).\n• Critical Targets in ICU:\n  - Cephalosporins: 60–70% fT > MIC (in severe sepsis/ICU: target 100% fT > 1–4× MIC).\n  - Penicillins: 50% fT > MIC.\n  - Carbapenems: 40% fT > MIC (target 100% fT > 4× MIC for MDR Pseudomonas/Acinetobacter).\n• Clinical Strategy: Frequent intermittent dosing, Extended 3- to 4-hour infusions, or 24-hour Continuous Infusions.\n\n2. Concentration-Dependent Killing (Peak / MIC or Cmax / MIC):\n• Efficacy correlates with achieving high peak drug concentrations relative to the MIC.\n• Promotes rapid bactericidal eradication and prevents emergence of resistant mutant subpopulations.\n• Applicable Classes: Aminoglycosides (Amikacin, Gentamicin, Tobramycin), Daptomycin.\n• Critical Targets:\n  - Aminoglycosides: Peak / MIC ratio ≥ 8–10.\n  - Daptomycin: AUC24 / MIC > 666 (or high-dose 8–10 mg/kg/day).\n• Clinical Strategy: High-dose once-daily (extended-interval) dosing to maximize peak concentration while exploiting the prolonged Post-Antibiotic Effect (PAE).\n\n3. Exposure-Dependent Killing (AUC24 / MIC):\n• Efficacy correlates with total cumulative drug exposure over 24 hours relative to MIC.\n• Applicable Classes: Vancomycin, Fluoroquinolones, Colistin, Tigecycline, Linezolid.\n• Critical Targets:\n  - Vancomycin (MRSA): AUC24 / MIC = 400–600 (trough 15–20 mcg/mL is an imperfect surrogate; area under the curve monitoring is preferred).\n  - Fluoroquinolones: AUC24 / MIC > 125 for Gram-negative bacilli; > 30–50 for Streptococcus pneumoniae."
+    },
+    {
+      "h": "Extended and Continuous Infusions of Beta-Lactams in Septic Shock",
+      "b": "Extensive randomized trial evidence (BLING-III, MERCY) demonstrates that administering beta-lactams as prolonged or continuous infusions significantly improves clinical cure and microbiological eradication in critically ill patients with severe sepsis and septic shock:\n\n1. Rationale for Prolonged / Continuous Infusion:\n• Standard 30-minute IV intermittent boluses create high initial peak concentrations followed by a rapid exponential fall below MIC due to hyperdynamic clearance and short half-lives (Meropenem t½ = 1 hour; Pip-Tazo t½ = 0.7–1.2 hours).\n• Continuous infusion maintains constant serum concentrations 4–5 times above pathogen MIC for 100% of the dosing interval (100% fT > MIC).\n\n2. Practical Clinical Protocols:\n• Meropenem:\n  - Standard Bolus: 1 g IV q8h over 30 min (frequently fails against Pseudomonas MIC ≥ 2 mg/L).\n  - Extended Infusion: 1 g to 2 g IV q8h infused over 3 to 4 hours.\n  - Continuous Infusion: 1 g IV loading dose over 30 min, immediately followed by 3 g to 6 g IV continuously over 24 hours.\n  - Stability: Meropenem in normal saline at room temperature is chemically stable for only 4–6 hours; continuous infusion requires solution replacement every 4–6 hours (or dual-syringe pump).\n• Piperacillin-Tazobactam (Pip-Tazo):\n  - Standard Bolus: 4.5 g IV q6h over 30 min.\n  - Extended Infusion: 4.5 g IV q8h (or q6h in high-MIC strains) infused over 4 hours.\n  - Continuous Infusion: 4.5 g loading dose over 30 min, then 13.5 g to 18 g continuous infusion over 24 hours (Pip-Tazo is stable for 24h at room temperature).\n• Cefepime:\n  - Extended Infusion: 2 g IV q8h infused over 3 to 4 hours."
+    },
+    {
+      "h": "Antimicrobial Dosing in Continuous Renal Replacement Therapy (CRRT)",
+      "b": "Dosing in CVVH (hemofiltration) and CVVHD/CVVHDF (hemodiafiltration) depends on convective vs diffusive clearance, sieving coefficient (Sc), and effluent flow rate (normally 20–25 mL/kg/h):\n\n1. Key Rules for CRRT Dosing:\n• Sieving Coefficient (Sc) ≈ Unbound fraction of drug (1 - Protein Binding). Drugs with low protein binding (<50%) are heavily cleared by CRRT filters.\n• Effluent Rate Drives Clearance: Higher prescribed effluent rates (30–35 mL/kg/h) remove more drug; antibiotic doses must be scaled upwards.\n• Filter Clotting & Downtime: When CRRT circuits clot, drug clearance halts abruptly; monitor for toxic accumulation if circuits remain down >4–6 hours.\n\n2. Common Empirical CRRT Dosing Regimens (for Effluent Rate 20–25 mL/kg/h):\n• Meropenem: Loading 1–2 g IV, then 1 g IV q8h (or 1 g q12h; in septic shock / non-fermenting GNB, maintain 1 g q8h to avoid underdosing!).\n• Piperacillin-Tazobactam: Loading 4.5 g IV, then 4.5 g IV q8h (or 3.375 g q6h; 4-hour extended infusion).\n• Vancomycin: Loading dose 25–30 mg/kg actual body weight, then 10–15 mg/kg IV q24–48h titrated to daily AUC24 / MIC target 400–600.\n• Colistin: Loading dose 9–12 million IU (300–400 mg CBA), maintenance 2 to 3.5 million IU IV q12h on CRRT (Colistin is significantly cleared by polysulfone membranes).\n• Amikacin: Loading 25–30 mg/kg; subsequent doses given only when trough drops < 5 mcg/mL."
+    }
+  ],
+  "example": "CLINICAL CASE: A 28-year-old male with 40% TBSA burns presents on Day 4 with high fever (39.5°C), tachycardia (130 bpm), and septic shock (MAP 55 mmHg on Noradrenaline 0.2 mcg/kg/min). Blood gas shows lactate 3.8 mmol/L. Serum creatinine is 0.5 mg/dL; measured 8-hour urine output yields a CrCl of 185 mL/min/1.73 m² (Augmented Renal Clearance, ARC). Sputum grows Pseudomonas aeruginosa (Meropenem MIC = 2 mcg/L).\n\nWhy Standard Dosing Fails:\n• Meropenem 1 g IV q8h over 30 min has a half-life of barely 35 minutes in ARC. Serum levels fall below the MIC of 2 mcg/L within 1.5 hours (<25% fT > MIC), guaranteeing clinical failure and emergence of resistance!\n\nOptimal Evidence-Based Plan:\n1. Immediate Loading Dose: Meropenem 2 g IV over 30 minutes.\n2. Continuous Infusion: 4 g to 6 g IV continuous infusion over 24 hours (prepared fresh every 6 hours due to reconstitution stability limits).\n3. Dual Coverage: Amikacin 25 mg/kg (2 g IV single loading dose over 60 min) to achieve Peak/MIC > 8–10.\n4. Therapeutic Drug Monitoring: Target steady-state Meropenem concentration of 8–16 mcg/mL (4–8× MIC).",
+  "references": [
+    "The Washington Manual of Critical Care, 3rd ed. (Kollef MH, et al., eds.), Ch. 28: Antimicrobial Therapy in the ICU. Wolters Kluwer, 2024.",
+    "Marino's The ICU Book, 4th ed. (Marino PL), Ch. 44: Antimicrobial Therapy. Wolters Kluwer, 2014.",
+    "Abdul-Aziz MH, et al. Defining antibiotic PK/PD targets in critically ill patients: Position paper by EXXERT / ESICM. Intensive Care Med 2020;46:1127–1153.",
+    "Dulhunty JM, et al. Continuous vs Intermittent Infusion of Beta-Lactam Antibiotics in Critically Ill Patients (BLING-III). JAMA 2024;332:387–396."
+  ]
+},
+  {
+  "id": "carbapenems-betalactams",
+  "cat": "antibiotics",
+  "name": "Carbapenems, Novel BL-BLI Combinations & Siderophore Cephalosporins",
+  "brand": "Meropenem • Zavicefta • Zerbaxa • Cefiderocol",
+  "classification": "Critical Care Antibacterials • Multi-Drug Resistant Gram-Negative Bacilli",
+  "tagline": "Carbapenemase classifications (KPC, MBL, OXA-48), Ceftazidime-Avibactam synergy with Aztreonam, Ceftolozane-Tazobactam in DTR-Pseudomonas, and Cefiderocol Trojan horse iron transport",
+  "tags": [
+    "Carbapenem",
+    "Meropenem",
+    "CRE",
+    "KPC",
+    "NDM",
+    "Avibactam",
+    "Ceftolozane",
+    "Cefiderocol"
+  ],
+  "source": "IDSA 2024 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections; The Washington Manual of Critical Care, 3rd ed., Ch. 28; Sanford Guide to Antimicrobial Therapy 2025.",
+  "sections": [
+    {
+      "h": "Carbapenem Class Division & Carbapenemase Molecular Classification (Ambler)",
+      "b": "Carbapenems represent the clinical backbone for severe ESBL and AmpC-producing Enterobacterales in ICU, but their efficacy is threatened by carbapenemase-producing organisms (CPO):\n\n1. Group 1 vs Group 2 Carbapenems:\n• Group 1 (Ertapenem):\n  - Lacks activity against Pseudomonas aeruginosa, Acinetobacter baumannii, and Enterococcus species ('PEE' organisms).\n  - Highly protein bound (95%); once-daily dosing (1 g IV q24h).\n  - Preferred for community-onset ESBL intra-abdominal infections and pyelonephritis to conserve Group 2 agents.\n• Group 2 (Meropenem, Imipenem-Cilastatin, Doripenem):\n  - Broad antipseudomonal spectrum against P. aeruginosa, Enterobacterales, and Acinetobacter.\n  - Meropenem is preferred in ICU: lower neurotoxicity / seizure risk than Imipenem; compatible with high-dose extended/continuous infusion.\n\n2. Ambler Molecular Classification of Carbapenemases:\n• Class A (Serine Carbapenemases — KPC [Klebsiella pneumoniae carbapenemase]):\n  - Plasmid-borne serine active site. Hydrolyzes all penicillins, cephalosporins, and carbapenems.\n  - Inhibited by Avibactam, Vaborbactam, and Relebactam.\n• Class B (Metallo-Beta-Lactamases — MBL [NDM, VIM, IMP]):\n  - Zinc-dependent active site. Hydrolyzes ALL beta-lactams and carbapenems EXCEPT Aztreonam.\n  - Resistant to Avibactam, Vaborbactam, and Relebactam!\n  - Endemic in South Asia (NDM-1 / New Delhi metallo-beta-lactamase).\n• Class D (OXA Carbapenemases — OXA-48-like, OXA-23/24):\n  - Serine beta-lactamases that weakly hydrolyze carbapenems; often display false 'borderline susceptible' carbapenem MICs.\n  - Inhibited by Avibactam; resistant to Vaborbactam and Relebactam."
+    },
+    {
+      "h": "Novel Beta-Lactam / Beta-Lactamase Inhibitor (BL-BLI) Combinations in ICU",
+      "table": {
+        "headers": [
+          "Agent",
+          "Components & Mechanism",
+          "Key Antimicrobial Spectrum",
+          "Major Gaps & Pitfalls"
+        ],
+        "rows": [
+          [
+            "Ceftazidime-Avibactam (Zavicefta)",
+            "3rd gen cephalosporin + non-beta-lactam diazabicyclooctane (DBO) inhibitor",
+            "KPC, OXA-48-like Enterobacterales, ESBL, AmpC, susceptible P. aeruginosa",
+            "Zero activity against Metallo-beta-lactamases (NDM/VIM) and Acinetobacter baumannii; ineffective against anaerobes (requires Metronidazole)"
+          ],
+          [
+            "Ceftolozane-Tazobactam (Zerbaxa)",
+            "Novel antipseudomonal cephalosporin + classic beta-lactamase inhibitor",
+            "DTR-Pseudomonas aeruginosa (resistant via AmpC derepression, OprD loss, and efflux pumps)",
+            "Zero activity against KPC, MBLs (NDM), OXA-48, and Acinetobacter. Ineffective against anaerobes"
+          ],
+          [
+            "Meropenem-Vaborbactam (Vabomere)",
+            "Group 2 carbapenem + novel cyclic boronic acid beta-lactamase inhibitor",
+            "Potent against KPC-producing Enterobacterales (restores meropenem MIC)",
+            "Zero activity against MBLs (NDM), OXA-48, Acinetobacter, or DTR-Pseudomonas"
+          ],
+          [
+            "Imipenem-Cilastatin-Relebactam (Recarbrio)",
+            "Carbapenem + renal dehydropeptidase inhibitor + DBO inhibitor",
+            "KPC-producing Enterobacterales, DTR-Pseudomonas aeruginosa",
+            "Inactive against MBLs, OXA-48, and Acinetobacter; seizure risk in renal impairment"
+          ],
+          [
+            "Cefiderocol (Fetroja)",
+            "Novel siderophore cephalosporin utilizing bacterial active iron-transport systems",
+            "Broadest spectrum GNB agent: active against KPC, NDM/MBLs, OXA-48, DTR-Pseudomonas, CRAB, and Stenotrophomonas",
+            "High cost; all-cause mortality warning in Acinetobacter pneumonia (CREDIBLE-CR trial); requires strict stewardship"
+          ]
+        ],
+        "caption": "Novel reserve Gram-negative antimicrobials for ICU multi-drug resistant pathogens."
+      }
+    },
+    {
+      "h": "The Ceftazidime-Avibactam + Aztreonam (CZA-ATM) Synergy Strategy",
+      "b": "The single most important antimicrobial regimen for Metallo-Beta-Lactamase (NDM-1) producing Enterobacterales in Indian and global ICUs:\n\n1. The Molecular Dilemma:\n• NDM hydrolyzes carbapenems, penicillins, and cephalosporins, but cannot hydrolyze Aztreonam (monobactam).\n• However, nearly 100% of NDM-producing clinical isolates concurrently co-produce Class A ESBLs (CTX-M) or AmpC beta-lactamases that rapidly destroy Aztreonam!\n\n2. The Synergy Mechanism:\n• Avibactam binds to and neutralizes the co-carried ESBLs, AmpC, and KPC enzymes.\n• This 'shields' Aztreonam, allowing Aztreonam to penetrate intact and bind to Penicillin-Binding Protein 3 (PBP3) to kill the bacterium!\n• Ceftazidime acts as an active carrier for Avibactam.\n\n3. Dosing Protocol in Normal Renal Function:\n• Ceftazidime-Avibactam: 2.5 g IV q8h infused over 2 hours.\n• Aztreonam: 2 g IV q8h infused concurrently over 2 hours.\n• Administer simultaneously or mix in the same infusion line to ensure parallel tissue exposure."
+    },
+    {
+      "h": "Cefiderocol: The Siderophore 'Trojan Horse' Cephalosporin",
+      "b": "Cefiderocol is a first-in-class catechol-substituted siderophore cephalosporin engineered specifically for refractory XDR/PDR Gram-negative pathogens:\n\n1. Siderophore Mechanism:\n• Possesses a catechol chlorocatechol side chain that chelates ferric iron (Fe3+).\n• Exploits the bacterial cell's active TonB-dependent iron transport channels (FpvA, CirA) to cross the outer membrane via active transport, completely bypassing mutated or closed porin channels (OprD loss).\n• Once in the periplasmic space, it dissociates from iron and binds with high affinity to PBP3, halting cell wall synthesis.\n\n2. Stability Against Degradation:\n• Resistant to hydrolysis by ALL four Ambler classes: Class A (KPC), Class B (NDM, VIM, IMP), Class C (AmpC), and Class D (OXA-48, OXA-23/24/51 in Acinetobacter).\n\n3. Dosing & Cautions:\n• Standard Dose: 2 g IV q8h infused over 3 hours.\n• FDA Boxed Warning (CREDIBLE-CR): Increased all-cause mortality observed in patients treated for Carbapenem-Resistant Acinetobacter baumannii (CRAB) pneumonia compared to best available therapy; reserve for situations where no other option exists, and consider combination therapy with Colistin or Sulbactam."
+    }
+  ],
+  "example": "CLINICAL CASE: A 52-year-old liver transplant recipient in ICU develops high fever and purulent endotracheal secretions on Day 10 of mechanical ventilation. Chest radiograph shows new bilateral lower lobe infiltrates. Tracheal aspirate grows Klebsiella pneumoniae resistant to Meropenem (MIC > 32 mcg/L), Pip-Tazo, and Amikacin. Rapid multiplex molecular PCR confirms the presence of blaNDM-1 and blaCTX-M genes.\n\nAntimicrobial Decision Tree:\n• Is Ceftazidime-Avibactam monotherapy effective? NO. Avibactam does not inhibit metallo-beta-lactamases like NDM.\n• Is Meropenem-Vaborbactam effective? NO. Vaborbactam does not inhibit NDM.\n• Is Aztreonam monotherapy effective? NO. The co-carried CTX-M ESBL hydrolyzes aztreonam immediately.\n\nTargeted ICU Regimen:\n• Initiate Ceftazidime-Avibactam 2.5 g IV q8h (2-hour infusion) + Aztreonam 2 g IV q8h (concurrent 2-hour infusion).\n• Alternative: Cefiderocol 2 g IV q8h (3-hour infusion).\n• Perform repeat endotracheal culture at 48–72 hours to verify microbiological clearance.",
+  "references": [
+    "Tamma PD, et al. Infectious Diseases Society of America (IDSA) 2024 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. Clin Infect Dis 2024;78:e1–e48.",
+    "The Washington Manual of Critical Care, 3rd ed., Ch. 28. Wolters Kluwer, 2024.",
+    "Falcone M, et al. Ceftazidime-avibactam plus aztreonam for severe infections caused by MBL-producing Enterobacterales: Results from an international registry. Clin Infect Dis 2021;72:1871–1878.",
+    "Bassetti M, et al. Efficacy and safety of cefiderocol or best available therapy for the treatment of serious infections caused by carbapenem-resistant Gram-negative bacteria (CREDIBLE-CR). Lancet Infect Dis 2021;21:226–240."
+  ]
+},
+  {
+  "id": "glycopeptides-lipopeptides",
+  "cat": "antibiotics",
+  "name": "MRSA & Resistant Gram-Positive Therapy: Vancomycin, Daptomycin & Linezolid",
+  "brand": "Vancomycin • Cubicin (Daptomycin) • Zyvox (Linezolid)",
+  "classification": "Critical Care Antibacterials • Methicillin-Resistant Staphylococcus aureus & VRE",
+  "tagline": "Vancomycin AUC/MIC 400-600 optimization, Daptomycin surfactant inactivation pitfall, Linezolid bone marrow toxicity and Serotonin Syndrome",
+  "tags": [
+    "MRSA",
+    "Vancomycin",
+    "AUC",
+    "Trough",
+    "Daptomycin",
+    "Linezolid",
+    "VRE",
+    "Serotonin Syndrome"
+  ],
+  "source": "ASHP/IDSA/SIDP 2020 Vancomycin Therapeutic Monitoring Guidelines; The Washington Manual of Critical Care, 3rd ed., Ch. 28; Marino's The ICU Book, 4th ed., Ch. 44.",
+  "sections": [
+    {
+      "h": "Vancomycin Pharmacokinetics, AUC-Guided Dosing & Nephrotoxicity",
+      "b": "Vancomycin is a complex tricyclic glycopeptide that binds to the D-Ala-D-Ala terminus of cell wall peptidoglycan precursors, inhibiting cell wall elongation in Gram-positive bacteria:\n\n1. Target AUC24 / MIC vs Trough Monitoring (2020 Consensus Guidelines):\n• Efficacy and safety benchmark for serious MRSA infections (bacteremia, endocarditis, osteomyelitis, HAP/VAP): target AUC24 / MIC ratio of 400 to 600 (assuming MRSA broth microdilution MIC ≤ 1 mcg/mL).\n• Historic trough monitoring (target 15–20 mcg/mL) is NO LONGER recommended as primary strategy because troughs > 15 mcg/mL significantly increase Acute Kidney Injury (AKI) rates without improving clinical cure.\n• Monitoring Method: Bayesian computer software (single or two trough/peak levels) or two-point pharmacokinetic estimation (post-infusion peak at 1–2 hours and pre-dose trough).\n\n2. Practical Dosing Protocol:\n• Loading Dose: 25 to 30 mg/kg actual body weight (maximum 3,000 mg) infused at a rate not exceeding 1,000 mg/hour (prevents Vancomycin Infusion Reaction / 'Red Man Syndrome').\n• Maintenance Dose: 15 to 20 mg/kg IV q8–12h in patients with normal renal function, adjusted per Bayesian AUC estimation.\n• Continuous Infusion in ICU: 30 mg/kg load, then 30 mg/kg/day continuous infusion, targeting a steady-state serum level (Css) of 20 to 25 mcg/mL (which reliably equates to an AUC24 of 480–600).\n\n3. Nephrotoxicity Risks & Piperacillin-Tazobactam Synergism:\n• Direct oxidative stress on proximal tubular epithelial cells with cast nephropathy.\n• Synergistic Nephrotoxicity: Co-administration of Vancomycin with Piperacillin-Tazobactam increases the incidence of AKI by 3- to 4-fold compared to Vancomycin + Cefepime or Vancomycin + Meropenem!\n• In high-risk ICU patients, avoid prolonged Vanc + Pip-Tazo; substitute Cefepime or Meropenem for antipseudomonal coverage."
+    },
+    {
+      "h": "Daptomycin: Bactericidal Membrane Disruptor & Surfactant Inactivation",
+      "b": "Daptomycin is a cyclic lipopeptide that binds to bacterial cell membranes in a calcium-dependent manner, oligomerizing and creating transmembrane pores that cause potassium efflux, rapid depolarization, and cell death without bacterial lysis:\n\n1. Antimicrobial Spectrum:\n• Rapid bactericidal activity against MRSA, VISA, and Vancomycin-Resistant Enterococci (VRE: Enterococcus faecium and E. faecalis).\n\n2. Dosing Strategies in Severe ICU Infections:\n• Package insert doses (4–6 mg/kg) lead to treatment failure and emergence of resistance in deep-seated infections.\n• Modern High-Dose ICU Strategy: 8 to 10 mg/kg/day (and up to 12 mg/kg/day in MRSA bacteremia, prosthetic valve endocarditis, and persistent bacteremia).\n\n3. THE CRITICAL CLINICAL PITFALL (Pulmonary Surfactant Inactivation):\n• Daptomycin binds with high affinity to pulmonary surfactant dipalmitoylphosphatidylcholine (DPPC), sequestering the drug and completely abolishing its antibacterial activity in the alveoli!\n• CONTRAINDICATED in community-acquired pneumonia, hospital-acquired pneumonia, and ventilator-associated pneumonia (VAP).\n• If an ICU patient has septic shock with simultaneous bacteremia and pneumonia, choose Vancomycin or Linezolid, NOT Daptomycin!\n\n4. Monitoring Toxicity:\n• Skeletal muscle toxicity / rhabdomyolysis: Monitor serum Creatine Kinase (CPK) at baseline and at least twice weekly in ICU; discontinue if CPK > 1,000 U/L with symptoms or > 2,000 U/L in asymptomatic patients."
+    },
+    {
+      "h": "Linezolid: Oxazolidinone Pharmacodynamics, Toxicities & Drug Interactions",
+      "b": "Linezolid binds to the 23S ribosomal RNA of the 50S subunit, preventing formation of the functional 70S initiation complex. It is predominantly bacteriostatic:\n\n1. ICU Pharmacokinetics & Lung Penetration:\n• 100% oral bioavailability (IV-to-oral switch ratio 1:1).\n• Exceptional pulmonary penetration: Epithelial Lining Fluid (ELF) to plasma ratio exceeds 4:1 (surpassing Vancomycin, which achieves only ~0.2:1 in ELF).\n• Excellent choice for MRSA ventilator-associated pneumonia (VAP) and catheter-related skin/soft tissue infections.\n• Zero dosage adjustment required in renal failure, AKI, or CRRT.\n\n2. Clinical Toxicities with Prolonged Use (>10–14 Days):\n• Myelosuppression: Reversible thrombocytopenia and anemia (inhibition of human mitochondrial protein synthesis); platelet count drops typically begin after day 10.\n• Mitochondrial Toxicities: Lactic acidosis (type B), irreversible peripheral neuropathy, and optic neuropathy with long-term therapy (>28 days).\n\n3. Serotonin Syndrome Warning (Weak Reversible MAO Inhibition):\n• Linezolid is a non-selective, reversible inhibitor of Monoamine Oxidase (MAO-A and MAO-B).\n• Co-administration with Selective Serotonin Reuptake Inhibitors (SSRIs e.g., Fluoxetine, Sertraline), SNRIs, Tramadol, Pethidine (Meperidine), or high-dose Fentanyl can precipitate life-threatening Serotonin Syndrome:\n  - Hyperthermia, autonomic instability, hyperreflexia, clonus (ocular/inducible), tremor, diaphoresis, and altered mental status.\n• Management: Immediate cessation of all serotonergic agents and Linezolid, IV Cyproheptadine (5-HT2A antagonist), and supportive cooling/sedation with benzodiazepines."
+    }
+  ],
+  "example": "CLINICAL CASE: A 62-year-old female on Sertraline (100 mg/day) is admitted to ICU following coronary artery bypass graft surgery. On post-op Day 7, she develops sternal wound drainage and septic shock. Gram stain reveals Gram-positive cocci in clusters. Empiric therapy with Vancomycin and Piperacillin-Tazobactam is initiated. On Day 9, her serum creatinine doubles from 0.8 to 1.8 mg/dL (AKI stage 2).\n\nClinical Decision Dilemma:\n• Option A: Switch Vancomycin to Linezolid. CAVEAT: High risk of life-threatening Serotonin Syndrome with ongoing Sertraline!\n• Option B: Switch Vancomycin to Daptomycin. EVALUATE: Sternal wound and bacteremia — Does she have pneumonia? No. Daptomycin 10 mg/kg/day IV is safe, highly bactericidal, and spares the kidneys.\n• Option C: Switch Pip-Tazo to Cefepime or Meropenem to eliminate the synergistic nephrotoxicity if continuing Vancomycin.\n\nOptimal Plan: Switch Pip-Tazo to Cefepime; if MRSA bacteremia is confirmed, initiate high-dose Daptomycin (8–10 mg/kg IV daily) and discontinue Vancomycin to allow renal recovery.",
+  "references": [
+    "Rybak MJ, et al. Therapeutic monitoring of vancomycin for serious methicillin-resistant Staphylococcus aureus infections: A revised consensus guideline by ASHP, IDSA, PIDS, and SIDP. Am J Health-Syst Pharm 2020;77:835–864.",
+    "The Washington Manual of Critical Care, 3rd ed., Ch. 28. Wolters Kluwer, 2024.",
+    "Bamberger DM. Daptomycin, a lipopeptide antibiotic. Clin Med Insights Ther 2012;4:CMT.S6605.",
+    "Taylor JJ, et al. Linezolid and Serotonin Toxicity: A Systematic Review of Case Reports. Pharmacotherapy 2006;26:1183–1191."
+  ]
+},
+  {
+  "id": "polymyxins-aminoglycosides",
+  "cat": "antibiotics",
+  "name": "Polymyxins (Colistin vs Polymyxin B) & Aminoglycosides in MDR Sepsis",
+  "brand": "Colistin (CMS) • Polymyxin B • Amikacin",
+  "classification": "Critical Care Antibacterials • Multi-Drug Resistant Gram-Negative Sepsis",
+  "tagline": "Colistin vs Polymyxin B pharmacokinetics, CMS prodrug conversion, nephrotoxicity and neurotoxicity mitigation, once-daily high-dose Amikacin in septic shock",
+  "tags": [
+    "Colistin",
+    "Polymyxin B",
+    "CMS",
+    "Amikacin",
+    "Gentamicin",
+    "MDR",
+    "Nephrotoxicity",
+    "Neurotoxicity"
+  ],
+  "source": "International Consensus Guidelines for the Optimal Use of the Polymyxins (Pharmacotherapy 2019); The Washington Manual of Critical Care, 3rd ed., Ch. 28; Marino's The ICU Book, 4th ed., Ch. 44.",
+  "sections": [
+    {
+      "h": "Colistin (Colistimethate Sodium / CMS) vs Polymyxin B Pharmacokinetics",
+      "table": {
+        "headers": [
+          "Pharmacokinetic Parameter",
+          "Colistin (Colistimethate Sodium - CMS)",
+          "Polymyxin B (Sulfate)"
+        ],
+        "rows": [
+          [
+            "Administered Molecule",
+            "Inactive Prodrug (CMS) requiring spontaneous chemical in vivo hydrolysis to active colistin",
+            "Direct Active Drug (Polymyxin B1 and B2) immediately bioactive upon IV infusion"
+          ],
+          [
+            "Elimination Route",
+            "CMS is predominantly cleared RENALLY by glomerular filtration (60–70% excreted unchanged in urine)",
+            "Non-renal clearance (predominantly tissue uptake, hepatic/cellular endocytosis); minimal renal excretion"
+          ],
+          [
+            "Dosing in Renal Dysfunction",
+            "Requires extensive, mandatory dosage reductions as CrCl declines to avoid CMS accumulation",
+            "NO dosage adjustment required in AKI, CKD, or CRRT! Constant dose regardless of renal function"
+          ],
+          [
+            "Serum Concentration Predictability",
+            "Highly variable and unpredictable due to competing renal excretion vs hydrolysis of prodrug",
+            "Highly predictable serum concentrations; rapid achievement of target Cmax and AUC"
+          ],
+          [
+            "Role in Urinary Tract Infections (UTI)",
+            "EXCELLENT: Large amounts of CMS filtered into urine hydrolyze to high active colistin levels in the bladder",
+            "POOR: Minimal active drug excreted in urine; contraindicated as monotherapy for MDR urinary tract sepsis"
+          ],
+          [
+            "Loading Dose Mandate",
+            "Mandatory: 9 to 12 million IU (300–400 mg CBA) over 1 hour to achieve target level on Day 1",
+            "Mandatory: 2.0 to 2.5 mg/kg (based on total body weight) over 1 hour"
+          ]
+        ],
+        "caption": "Fundamental clinical differences between the two polymyxins."
+      }
+    },
+    {
+      "h": "Polymyxin Dosing Protocols & Toxicities in Critical Care",
+      "b": "Polymyxins are cationic detergents that bind lipid A of lipopolysaccharide (LPS), displacing divalent cations (Mg2+, Ca2+) and disrupting outer and cytoplasmic membrane integrity:\n\n1. Target Therapeutic Window:\n• Target steady-state average concentration (Css,avg): 2.0 mcg/mL (equates to AUC24 ≈ 50 mg·h/L).\n• Above 2.5 mcg/mL: Risk of acute tubular necrosis rises exponentially.\n• Below 1.5 mcg/mL: Promotes selection of heteroresistant polymyxin subpopulations.\n\n2. Colistin (CMS) Dosing Regimen:\n• Loading Dose: 9 million IU (equivalent to 300 mg Colistin Base Activity [CBA]) in 100 mL normal saline over 1 hour.\n• Maintenance Dose in Normal Renal Function: 4.5 million IU IV q12h (9 million IU/day).\n• Renal Adjustment: CrCl 30–50: 3 million IU q12h; CrCl 10–30: 2 million IU q12h; Anuria / Hemodialysis: 1 million IU q24h with booster post-dialysis.\n\n3. Polymyxin B Dosing Regimen:\n• Loading Dose: 2.0 to 2.5 mg/kg (20,000–25,000 units/kg) IV over 1 hour.\n• Maintenance Dose: 1.25 to 1.5 mg/kg (12,500–15,000 units/kg) IV q12h. Never reduce the dose for renal failure!\n\n4. Major Toxicities:\n• Nephrotoxicity (Acute Tubular Necrosis): Occurs in 30–50% of patients; mediated by cellular uptake via megalin receptors, mitochondrial swelling, and reactive oxygen species. Co-administration with ascorbic acid (Vitamin C) or N-acetylcysteine may provide nephroprotection.\n• Neurotoxicity / Neuromuscular Blockade: Paresthesias, ataxia, dizziness, and life-threatening respiratory muscle paralysis.\n• CRITICAL EXAM WARNING: Polymyxins non-competitively displace calcium at the motor nerve terminal, blocking acetylcholine release and causing prolonged apnea. Exacerbated by muscle relaxants (Rocuronium, Vecuronium) and aminoglycosides; poorly reversed by neostigmine (IV Calcium Chloride is the antidote of choice)."
+    },
+    {
+      "h": "Inhaled (Aerosolized) Colistin in Ventilator-Associated Pneumonia (VAP)",
+      "b": "Because IV Colistin exhibits notoriously poor penetration into pulmonary epithelial lining fluid (ELF) and lung parenchyma (ELF-to-plasma ratio < 0.1), systemic monotherapy frequently fails in XDR Acinetobacter and Pseudomonas VAP:\n\n1. Inhaled Colistin Strategy (IDSA & ESICM Guidelines):\n• Recommended as an ADJUNCT to systemic IV therapy (never as monotherapy) for hospital-acquired or ventilator-associated pneumonia caused by colistin-susceptible, aminoglycoside-resistant GNB.\n• Dose: 1 to 2 million IU nebulized q8–12h via vibrating mesh nebulizer placed in the inspiratory limb 15 cm before the Y-piece.\n• Bronchospasm Precaution: Pre-treat with an inhaled beta-2 agonist (Salbutamol 2.5–5 mg) 15 minutes prior to nebulization to prevent acute severe reactive airway bronchoconstriction."
+    },
+    {
+      "h": "Aminoglycosides in Septic Shock: High-Dose Extended-Interval Strategy",
+      "b": "Aminoglycosides (Amikacin, Gentamicin, Tobramycin) inhibit the bacterial 30S ribosomal subunit. In septic shock, they are used primarily as combination agents for synergistic, rapid GNB bactericidal activity:\n\n1. High-Dose Once-Daily (Extended-Interval) Dosing Rationale:\n• Maximizes Peak / MIC ratio (target Cmax / MIC ≥ 8–10) for peak bactericidal efficacy.\n• Exploits the extended Post-Antibiotic Effect (PAE) lasting 2–4 hours after serum levels fall below MIC.\n• Allows prolonged periods with undetectable trough levels (<1 mcg/mL for Gentamicin, <2.5–5 mcg/mL for Amikacin), allowing saturable renal cortical uptake mechanisms to clear, drastically lowering cumulative nephrotoxicity and ototoxicity.\n\n2. Dosing Protocol in Septic Shock:\n• Amikacin: Loading dose 25 to 30 mg/kg actual body weight IV over 60 min (target Cmax 60–80 mcg/mL).\n• Gentamicin / Tobramycin: Loading dose 7 to 9 mg/kg IV over 60 min (target Cmax 16–24 mcg/mL).\n• Limit Duration: Use for only 48 to 72 hours as upfront bactericidal de-bulking therapy; discontinue once culture sensitivities identify a safer beta-lactam agent."
+    }
+  ],
+  "example": "CLINICAL CASE: A 70-year-old mechanically ventilated female with pan-drug resistant Acinetobacter baumannii ventilator-associated pneumonia develops anuric Acute Kidney Injury (serum Cr 3.2 mg/dL). Her weight is 60 kg. Her team needs to prescribe Polymyxin therapy.\n\nClinical Decision Analysis:\n• Should Colistin (CMS) or Polymyxin B be chosen?\n• Answer: Polymyxin B is superior in renal failure! CMS requires dangerous dose reductions that result in subtherapeutic active colistin levels in the lung. Polymyxin B does not require renal dose adjustments, achieving reliable blood levels immediately.\n\nPrescription:\n1. Polymyxin B IV Loading Dose: 2.5 mg/kg × 60 kg = 150 mg IV in 250 mL D5W over 1 hour.\n2. Polymyxin B IV Maintenance: 1.25 mg/kg × 60 kg = 75 mg IV q12h (DO NOT adjust for anuria).\n3. Inhaled Adjunct: Colistimethate Sodium (CMS) 2 million IU nebulized via vibrating mesh nebulizer q8h (with pre-treatment salbutamol).\n4. Synergistic Partner: High-dose Ampicillin-Sulbactam (9 g IV q8h as 4-hour extended infusion, adjusted for renal failure) to exploit sulbactam's intrinsic PBP1a/PBP3 affinity against Acinetobacter.",
+  "references": [
+    "Tsuji BT, et al. International Consensus Guidelines for the Optimal Use of the Polymyxins: Endorsed by ACCP, ESCMID, IDSA, ISAP, SCCM, and SIDP. Pharmacotherapy 2019;39:10–39.",
+    "The Washington Manual of Critical Care, 3rd ed., Ch. 28. Wolters Kluwer, 2024.",
+    "Roberts JA, et al. Individualised antibiotic dosing for patients who are critically ill: challenges and potential solutions. Lancet Infect Dis 2014;14:498–509.",
+    "Nang SC, et al. Polymyxins: Pharmacokinetics, Pharmacodynamics, and Antibacterial Resistance. Cold Spring Harb Perspect Med 2021;11:a037085."
+  ]
+},
+  {
+  "id": "antifungals-icu",
+  "cat": "antibiotics",
+  "name": "Critical Care Antifungals: Invasive Candidiasis, Aspergillosis & Mucormycosis",
+  "brand": "Caspofungin • Liposomal Amphotericin B • Voriconazole",
+  "classification": "Critical Care Antimicrobials • Invasive Fungal Infections in ICU",
+  "tagline": "Echinocandin first-line positioning in candidemia, Voriconazole TDM and CAPA/IAPA, Liposomal Amphotericin B in Mucormycosis and DKA",
+  "tags": [
+    "Antifungal",
+    "Candidemia",
+    "Aspergillosis",
+    "Mucormycosis",
+    "Echinocandin",
+    "Amphotericin",
+    "Voriconazole",
+    "CAPA"
+  ],
+  "source": "IDSA 2016 Guidelines for Management of Candidiasis; IDSA 2016 Guidelines for Aspergillosis; The Washington Manual of Critical Care, 3rd ed., Ch. 30; ECMM Global Guideline for Mucormycosis 2019.",
+  "sections": [
+    {
+      "h": "Invasive Candidiasis & Candidemia in the ICU",
+      "b": "Candida is the fourth most common bloodstream isolate in ICUs, with an attributable mortality of 30–50%:\n\n1. Risk Stratification & Candida Score:\n• Candida Score (Leon et al.):\n  - Severe Sepsis (2 points)\n  - Total Parenteral Nutrition (1 point)\n  - Initial Surgery (1 point)\n  - Multifocal Candida Colonization (1 point)\n• Score ≥ 3 identifies high-risk patients who benefit from early empirical antifungal therapy (sensitivity 81%, specificity 74%).\n• Biomarker: 1,3-beta-D-Glucan (BDG) has high negative predictive value (>90%); negative BDG effectively rules out invasive candidiasis.\n\n2. First-Line Empiric & Directed Therapy (Echinocandins):\n• IDSA and ESCMID guidelines mandate ECHINOCANDINS as first-line therapy over Fluconazole for all critically ill patients with candidemia or suspected invasive candidiasis:\n  - Caspofungin: Loading dose 70 mg IV over 1 hour, then 50 mg IV daily (70 mg daily if body weight > 80 kg or moderate hepatic impairment).\n  - Anidulafungin: Loading dose 200 mg IV over 1.5 hours, then 100 mg IV daily (zero hepatic metabolism or renal adjustment).\n  - Micafungin: 100 mg IV daily (no loading dose needed).\n• Why Echinocandins Trump Fluconazole: Superior fungicidal activity, active against Candida glabrata and Candida krusei (intrinsically fluconazole-resistant), disrupts Candida biofilms on vascular catheters, and superior survival in randomized trials.\n\n3. Central Line Removal & Treatment Duration:\n• Mandatory: Central venous catheters MUST be removed as early as safely possible in all candidemia cases (catheter retention is an independent predictor of death and persistent candidemia).\n• Treatment Duration: Continue for minimum 14 DAYS after the FIRST negative blood culture and resolution of symptoms.\n• Mandatory Dilated Fundoscopic Exam: Perform in all candidemic patients within the first week to rule out Candida endophthalmitis (echinocandins penetrate the vitreous poorly; requires Liposomal Amphotericin B or Voriconazole if endophthalmitis is present)."
+    },
+    {
+      "h": "Invasive Aspergillosis in ICU (CAPA & IAPA)",
+      "b": "Invasive pulmonary aspergillosis in ICU increasingly affects non-neutropenic patients, particularly severe viral pneumonias (CAPA = COVID-19-Associated Pulmonary Aspergillosis; IAPA = Influenza-Associated Pulmonary Aspergillosis):\n\n1. Diagnostic Hallmarks:\n• High index of suspicion when ventilated viral ARDS patients deteriorate with new cavitary or nodular infiltrates, refractory hypoxemia, or secondary fever.\n• Biomarkers: Bronchoalveolar lavage (BAL) Galactomannan (GM) optical density index ≥ 1.0 (or serum GM ≥ 0.5).\n\n2. First-Line Therapy (Voriconazole or Isavuconazole):\n• Voriconazole: Loading dose 6 mg/kg IV q12h x 2 doses, then 4 mg/kg IV q12h.\n  - Therapeutic Drug Monitoring (TDM) is MANDATORY in ICU: Target trough level 2.0 to 5.0 mcg/mL.\n  - Trough < 1.0–2.0 mcg/mL leads to treatment failure; trough > 5.5 mcg/mL causes severe neurotoxicity (visual/auditory hallucinations, confusion, encephalopathy), QTc prolongation, and cholestatic hepatotoxicity.\n  - Polymorphic CYP2C19 Metabolism: Poor metabolizers accumulate toxic levels, whereas rapid metabolizers experience profound subtherapeutic failure.\n  - IV Vehicle Warning: IV formulation contains sulfobutylether-beta-cyclodextrin (SBECD), which accumulates in renal failure (CrCl < 50 mL/min); switch to oral voriconazole or IV Isavuconazole if renal failure worsens.\n• Isavuconazole: 200 mg IV q8h x 6 doses (loading), then 200 mg IV daily. Water-soluble prodrug with NO cyclodextrin vehicle; predictable linear kinetics; shorter QTc interval (can shorten QTc!)."
+    },
+    {
+      "h": "Mucormycosis (Zygomycosis) in Critical Care",
+      "b": "A fulminant, angioinvasive fungal emergency caused by Mucorales (Rhizopus, Mucor, Lichtheimia) occurring predominantly in uncontrolled diabetic ketoacidosis (DKA), severe immunosuppression, post-COVID-19 steroid exposure, and iron overload (deferoxamine therapy):\n\n1. Pathophysiology of Angioinvasion:\n• Fungal hyphae invade internal elastic lamina of arterial walls, causing extensive thrombosis, tissue infarction, and black necrotic eschars (rhino-orbito-cerebral, pulmonary, or cutaneous).\n• Growth enhanced by free iron and acidic pH (Rhizopus produces ketone reductase, thriving in acidic hyperglycemia).\n\n2. Two Pillars of Definitive Management:\n• PILLAR 1: Emergent Radical Surgical Debridement: Medical therapy alone has near 100% mortality! Immediate, aggressive excision of all necrotic tissue back to bleeding margins is lifesaving.\n• PILLAR 2: High-Dose Liposomal Amphotericin B (L-AmB):\n  - Dose: 5 to 10 mg/kg/day IV in D5W (infusion over 2–3 hours).\n  - Amphotericin B deoxycholate (conventional) is obsolete due to severe nephrotoxicity and lower brain/tissue penetration.\n  - Step-down / Salvage: Oral Posaconazole (delayed-release tablets 300 mg q12h load, then 300 mg daily) or Isavuconazole (200 mg daily) once surgical control is achieved."
+    }
+  ],
+  "example": "CLINICAL CASE: A 54-year-old male with poorly controlled type 2 diabetes presents with acute diabetic ketoacidosis (pH 7.12, glucose 580 mg/dL, ketones 4+). Over 24 hours in ICU, he develops right facial numbness, ptosis, and proptosis. On examination, a black necrotic eschar is visualized on the hard palate and right middle turbinate. CT head/orbits shows right ethmoid opacification with orbital apex infiltration.\n\nImmediate Management Protocol:\n1. Surgical Emergency: Immediate bedside ENT and ophthalmology consult for emergency radical orbital-sinus surgical debridement.\n2. Antifungal Therapy: Liposomal Amphotericin B 10 mg/kg/day IV immediately (600 mg IV in D5W over 3 hours).\n3. Metabolic Correction: Aggressive IV insulin infusion and fluid rehydration to reverse acidosis, eliminate circulating ketones, and restrict free iron availability.\n4. Avoid Voriconazole: Voriconazole has ZERO activity against Mucorales fungi!",
+  "references": [
+    "Pappas PG, et al. Clinical Practice Guideline for the Management of Candidiasis: 2016 Update by IDSA. Clin Infect Dis 2016;62:e1–e50.",
+    "The Washington Manual of Critical Care, 3rd ed., Ch. 30: Fungal Infections. Wolters Kluwer, 2024.",
+    "Cornely OA, et al. Global guideline for the diagnosis and management of mucormycosis: An initiative of ECMM in cooperation with Mycoses Study Group. Lancet Infect Dis 2019;19:e405–e421.",
+    "Koehler P, et al. Defining and managing COVID-19-associated pulmonary aspergillosis (CAPA): The 2020 ECMM/ISHAM consensus criteria. Lancet Infect Dis 2021;21:e149–e162."
+  ]
+},
+  {
+  "id": "empiric-sepsis-mdr-bundles",
+  "cat": "antibiotics",
+  "name": "Surviving Sepsis 1-Hour Bundle, De-escalation & Site-Specific Regimens",
+  "brand": "Surviving Sepsis Campaign (SSC) • IDSA / ATS Hospital Guidelines",
+  "classification": "Critical Care Protocols • Sepsis Resuscitation & Antimicrobial Stewardship",
+  "tagline": "The 1-hour sepsis bundle, empirical choices for HAP/VAP, intra-abdominal sepsis, neutropenic fever, Procalcitonin kinetics, and 48-hour de-escalation algorithms",
+  "tags": [
+    "Sepsis",
+    "Septic Shock",
+    "Bundle",
+    "HAP",
+    "VAP",
+    "Procalcitonin",
+    "Stewardship",
+    "Source Control"
+  ],
+  "source": "Evans L, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Intensive Care Med 2021;47:1181–1247; The Washington Manual of Critical Care, 3rd ed., Ch. 27 & 28.",
+  "sections": [
+    {
+      "h": "The Surviving Sepsis Campaign (SSC 2021/2026) 1-Hour Bundle",
+      "b": "Sepsis is defined as life-threatening organ dysfunction caused by a dysregulated host response to infection (SOFA score increase ≥ 2 points). Septic shock includes persistent hypotension requiring vasopressors to maintain MAP ≥ 65 mmHg AND serum lactate > 2 mmol/L despite adequate fluid resuscitation:\n\n1. The 5 Core Elements of the Hour-1 Bundle:\n• Step 1: Measure Blood Lactate: Remeasure within 2–4 hours if initial lactate is elevated (>2.0 mmol/L) to guide resuscitation towards lactate clearance.\n• Step 2: Obtain Blood Cultures Prior to Starting Antibiotics: Two sets of blood cultures (aerobic and anaerobic) from separate venipuncture sites. Do NOT delay antimicrobial administration by >45 minutes if blood culture acquisition is difficult!\n• Step 3: Administer Broad-Spectrum IV Antimicrobials: Within 1 HOUR of recognition for septic shock or high probability of sepsis; within 3 hours if sepsis is possible without shock while rapid evaluation proceeds.\n• Step 4: Rapid IV Fluid Resuscitation: Administer at least 30 mL/kg of balanced crystalloid (Plasmalyte or Ringer's Lactate; avoid 0.9% normal saline to prevent hyperchloremic metabolic acidosis and renal vasoconstriction) within the first 3 hours for hypotension (MAP < 65 mmHg) or lactate ≥ 4.0 mmol/L.\n• Step 5: Apply Vasopressors: Initiate Norepinephrine during or immediately after fluid resuscitation if MAP remains < 65 mmHg; add Vasopressin (0.03 units/min fixed) if norepinephrine exceeds 0.25 mcg/kg/min; target MAP ≥ 65 mmHg."
+    },
+    {
+      "h": "Empiric Regimens by Infection Site in the ICU",
+      "table": {
+        "headers": [
+          "Clinical Syndrome",
+          "Key Likely Pathogens",
+          "Recommended First-Line ICU Empiric Regimen",
+          "Critical Clinical Caveat"
+        ],
+        "rows": [
+          [
+            "Hospital-Acquired / Ventilator-Associated Pneumonia (HAP/VAP)",
+            "Pseudomonas aeruginosa, Klebsiella pneumoniae, Acinetobacter, MRSA, Enterobacter",
+            "Dual Antipseudomonal: (Meropenem 1-2 g q8h extended infusion OR Pip-Tazo 4.5 g q6h) + (Amikacin 20-25 mg/kg daily OR Ciprofloxacin 400 mg q8h) + MRSA agent (Vancomycin AUC 400-600 OR Linezolid 600 mg q12h)",
+            "Avoid Daptomycin (surfactant inactivation). In high-risk colistin-dependent units, consider empirical Colistin or CZA if prior colonization documented."
+          ],
+          [
+            "Severe Intra-Abdominal Sepsis (Peritonitis, Perforated Viscus)",
+            "Enterobacterales, Bacteroides fragilis (anaerobes), Enterococcus faecalis, Candida albicans",
+            "Meropenem 1 g IV q8h (covers anaerobes + ESBL GNB) + Echinocandin (Caspofungin 70 mg/50 mg) if high Candida risk",
+            "EMERGENT SOURCE CONTROL is the primary determinant of survival! Antibiotics without laparotomy/drainage within 6-12 hours yield 100% mortality."
+          ],
+          [
+            "High-Risk Neutropenic Sepsis (ANC < 500 / microL)",
+            "Pseudomonas aeruginosa, enteric GNB, viridans streptococci, Staph epidermidis",
+            "Antipseudomonal Beta-Lactam Monotherapy: Cefepime 2 g IV q8h OR Meropenem 1 g IV q8h OR Pip-Tazo 4.5 g IV q6h",
+            "Do NOT add Vancomycin routinely upfront! Add vancomycin only if hemodynamic instability, catheter sepsis, pneumonia, or severe mucositis."
+          ],
+          [
+            "Urosepsis in Critical Care (Obstructive Pyelonephritis)",
+            "E. coli (ESBL-producing), Klebsiella, Proteus, Enterococci",
+            "Meropenem 1 g IV q8h + Amikacin 20 mg/kg single dose",
+            "Urgent urological decompression (ureteric stenting or percutaneous nephrostomy) required if hydronephrosis/calculus present."
+          ]
+        ],
+        "caption": "Evidence-based ICU syndromic antimicrobial coverage."
+      }
+    },
+    {
+      "h": "Antimicrobial De-Escalation & Procalcitonin (PCT) Kinetics",
+      "b": "Antimicrobial stewardship in ICU aims to maximize clinical cure while preventing emergence of C. difficile colitis and multi-drug resistant superinfections:\n\n1. Daily 48- to 72-Hour Time-Out:\n• Review all microbiological cultures, rapid molecular multiplex PCR (BioFire FilmArray, GeneXpert), and Gram stains.\n• Narrow broad-spectrum empiric combinations (e.g. discontinue vancomycin if MRSA PCR/culture is negative; de-escalate meropenem to ceftriaxone if pan-sensitive E. coli is identified).\n• Discontinue combination double-coverage GNB agents (e.g. stop aminoglycoside at 48 hours).\n\n2. Procalcitonin (PCT)-Guided Cessation Algorithm:\n• Procalcitonin rises selectively within 3–6 hours of bacterial endotoxin exposure and drops rapidly (half-life ≈ 24 hours) as infection clears.\n• Cessation Thresholds:\n  - Discontinue antibiotics when PCT drops < 0.25 mcg/L (or < 0.5 mcg/L in severe shock), OR\n  - When PCT decreases by ≥ 80% from its initial peak level, provided the patient is clinically stable and source control is secured.\n• Limits duration of antibiotic courses from traditional 10–14 days down to 5–7 days without increasing relapse or mortality (SASP and PRORATA trials)."
+    }
+  ],
+  "example": "CLINICAL CASE: A 68-year-old intubated ICU patient with COPD is on Day 5 of mechanical ventilation and suddenly develops septic shock with high ventilatory pressures, purulent sputum, and new right-sided alveolar consolidation. Baseline Procalcitonin is 14.5 mcg/L.\n\nInitial Empiric Action (Within 60 Minutes):\n1. Blood cultures x 2 sets + Endotracheal aspirate for Gram stain, culture, and multiplex respiratory PCR.\n2. Resuscitation: IV Plasmalyte 30 mL/kg (2,100 mL over 2 hours) + Norepinephrine infusion targeting MAP ≥ 65 mmHg.\n3. Empiric Triad: Meropenem 2 g IV load followed by 1 g q8h (4-hour extended infusion) + Amikacin 25 mg/kg IV single dose + Linezolid 600 mg IV q12h.\n\n48-Hour De-Escalation Decision:\n• ETA culture grows 10^6 CFU/mL Pseudomonas aeruginosa sensitive to Meropenem (MIC = 0.5 mcg/L), Cefepime, and Pip-Tazo; MRSA PCR is negative.\n• Day 3 PCT dropped to 2.1 mcg/L (85% reduction from peak).\n• Action: Discontinue Amikacin and Linezolid immediately! Continue Meropenem monotherapy for a total 7-day course, guided by clinical resolution.",
+  "references": [
+    "Evans L, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Intensive Care Med 2021;47:1181–1247.",
+    "The Washington Manual of Critical Care, 3rd ed., Ch. 27 & 28. Wolters Kluwer, 2024.",
+    "Kalil AC, et al. Management of Adults With Hospital-acquired and Ventilator-associated Pneumonia: 2016 Clinical Practice Guidelines by IDSA and ATS. Clin Infect Dis 2016;63:e61–e111.",
+    "de Jong E, et al. Efficacy and safety of procalcitonin guidance in reducing the duration of antibiotic treatment in critically ill patients (SAPS): A randomised, controlled trial. Lancet Infect Dis 2016;16:819–827."
+  ]
+},
+  {
+  "id": "toxidromes-general-approach",
+  "cat": "poisoning",
+  "name": "ICU Poisoning Resuscitation, Toxidromes & Extracorporeal Elimination",
+  "brand": "Washington Manual of Critical Care • Goldfrank's Toxicology",
+  "classification": "Critical Care Toxicology • Emergency Resuscitation • EXTRIP Guidelines",
+  "tagline": "Airway preservation in acute overdose, the 5 classic toxidromes, gastrointestinal decontamination criteria, and EXTRIP hemodialysis indications",
+  "tags": [
+    "Toxicology",
+    "Toxidromes",
+    "EXTRIP",
+    "Hemodialysis",
+    "Charcoal",
+    "Decontamination",
+    "Overdose"
+  ],
+  "source": "Kollef MH, et al. The Washington Manual of Critical Care, 3rd ed., Ch. 87: Toxic Ingestions; Goldfrank's Toxicologic Emergencies, 11th ed.; EXTRIP (Extracorporeal Treatments in Poisoning) Workgroup Guidelines.",
+  "sections": [
+    {
+      "h": "The Structured Resuscitation Approach to the Poisoned Patient in ICU",
+      "b": "Acute poisoning requires a rapid, systematic approach where physiological resuscitation takes precedence over historical toxin identification:\n\n1. Airway & Breathing Protection:\n• Early Endotracheal Intubation Thresholds: Glasgow Coma Scale (GCS) ≤ 8, loss of protective airway reflexes (gag/cough), intractable vomiting, hypoxemia, or progressive respiratory depression.\n• RSI Drug Choice Nuances: Avoid Succinylcholine in acute organophosphate poisoning (prolonged apnea due to plasma cholinesterase inhibition) or unknown ingestions with hyperkalemia risk. Use Rocuronium or Etomidate.\n\n2. The Modern 'Coma Cocktail' Nuances:\n• Historically administered indiscriminately to all obtunded patients (Dextrose, Thiamine, Naloxone, Flumazenil). Modern standard is TARGETED:\n  - Fingerstick Glucose First: Give D50W (25–50 g IV) only for documented hypoglycemia.\n  - Thiamine (100–500 mg IV): Give before or with glucose in chronic malnutrition/alcoholism to prevent Wernicke's encephalopathy.\n  - Naloxone: Titrate in 0.04 to 0.4 mg IV increments targeting adequate ventilation, NOT full arousal (prevents acute severe withdrawal and pulmonary edema).\n  - FLUMAZENIL IS CONTRAINDICATED in undifferentiated coma! Precipitates refractory status epilepticus and fatal arrhythmias in chronic benzodiazepine users or co-ingested proconvulsant/proarrhythmic drugs (TCAs, bupropion).\n\n3. Gastrointestinal Decontamination Guidelines:\n• Single-Dose Activated Charcoal (SDAC, 1 g/kg up to 50 g):\n  - Time Window: Beneficial ONLY if administered within 1 to 2 hours of ingestion of an adsorbable toxin.\n  - Contraindications: Unprotected airway (massive aspiration risk), altered sensorium without endotracheal tube, bowel obstruction/perforation, caustics/acids, hydrocarbons, heavy metals (iron, lead, mercury), lithium, and toxic alcohols (which do not bind to charcoal).\n• Gastric Lavage: Obsolete for routine care! Consider ONLY if a life-threatening dose was ingested < 1 hour prior, patient is intubated, and no effective antidote or alternative exists.\n• Whole Bowel Irrigation (WBI with PEG-ELS 1–2 L/hr):\n  - Indicated for: Body packers/stuffers, sustained-release or enteric-coated preparations (calcium channel blockers, theophylline), and heavy metals (iron, lithium)."
+    },
+    {
+      "h": "The 5 Classic Toxidromes in Critical Care",
+      "table": {
+        "headers": [
+          "Toxidrome",
+          "Vital Signs",
+          "Pupils & Skin",
+          "Mental Status & Reflexes",
+          "Common Causative Agents"
+        ],
+        "rows": [
+          [
+            "Anticholinergic",
+            "Hyperthermia, Tachycardia, Hypertension, Tachypnea",
+            "Mydriasis (dilated), Flushed, Erythematous, Bone Dry skin and mucous membranes",
+            "Agitated delirium ('Mad as a hatter'), visual hallucinations, choreoathetosis, urinary retention",
+            "Atropine, Scopolamine, Antihistamines (Diphenhydramine), TCAs, Datura (Jimsonweed), Belladonna"
+          ],
+          [
+            "Cholinergic (Muscarinic & Nicotinic)",
+            "Bradycardia or Tachycardia, Hypotension or Hypertension",
+            "Miosis (pinpoint), Diaphoresis (drenching sweats), Salivation, Lacrimation",
+            "Confusion, Coma, Fasciculations, Flaccid paralysis (nicotinic exhaustion), Seizures",
+            "Organophosphates, Carbamates, Nerve agents (Sarin, VX), Pilocarpine, Physostigmine"
+          ],
+          [
+            "Opioid",
+            "Hypothermia, Bradycardia, Hypotension, Severe Bradypnea / Apnea",
+            "Pinpoint Miosis (except Meperidine/Tramadol which can dilate), Dry or cool skin",
+            "Profound CNS depression / Stupor / Coma, Hyporeflexia, Absent bowel sounds",
+            "Morphine, Fentanyl, Heroin, Methadone, Oxycodone, Buprenorphine, Codeine"
+          ],
+          [
+            "Sympathomimetic",
+            "Severe Hyperthermia, Marked Tachycardia, Severe Hypertension, Tachypnea",
+            "Mydriasis, Diaphoresis (profuse sweating - differentiates from anticholinergic!)",
+            "Hypervigilance, Agitation, Paranoia, Hyperreflexia, Tremors, Seizures",
+            "Cocaine, Amphetamines, Methamphetamine, MDMA (Ecstasy), Ephedrine, Synthetic cathinones"
+          ],
+          [
+            "Sedative-Hypnotic",
+            "Hypothermia, Bradycardia, Hypotension, Hypoventilation",
+            "Normal or small pupils, Cool, clammy or dry skin",
+            "Progressive stupor, Ataxia, Slurred speech, Coma, Hyporeflexia",
+            "Benzodiazepines, Barbiturates, Z-drugs (Zolpidem), GHB, Ethanol, Baclofen"
+          ]
+        ],
+        "caption": "Bedside physical examination toxidromes and discriminating clinical features."
+      }
+    },
+    {
+      "h": "Extracorporeal Elimination in Poisoning (EXTRIP Workgroup Criteria)",
+      "b": "Extracorporeal treatments (Intermittent Hemodialysis [IHD], Continuous Renal Replacement Therapy [CRRT], and Hemoperfusion) can rapidly clear life-threatening circulating toxins:\n\n1. Physicochemical Requirements for High Dialyzability:\n• Low Molecular Weight: < 500 Daltons (diffuses freely across dialysis membrane).\n• Low Volume of Distribution (Vd): < 1.0 L/kg (toxin remains primarily in intravascular space where the filter can access it; drugs with Vd > 2–3 L/kg like Digoxin or TCAs cannot be removed by dialysis!).\n• Low Protein Binding: < 50–60% (only free unbound drug passes through the dialyzer).\n• High Water Solubility.\n\n2. EXTRIP Key Indications for Intermittent Hemodialysis (IHD is Preferred Over CRRT):\n• Toxic Alcohols (Methanol, Ethylene Glycol): Blood level > 50 mg/dL, severe acidemia (pH < 7.30), visual deficits, or acute renal failure.\n• Salicylates (Aspirin): Serum level > 100 mg/dL (acute) or > 60 mg/dL (chronic), refractory acidosis, pulmonary edema, or neurological deterioration.\n• Lithium: Serum level > 4.0 mEq/L (acute) or > 2.5 mEq/L (chronic with renal failure or neurotoxicity).\n• Theophylline: Serum level > 100 mcg/mL (acute) or > 60 mcg/mL (chronic/elderly), refractory tachyarrhythmias, or seizures.\n• Valproic Acid: Serum level > 850–1,000 mcg/mL, hyperammonemic encephalopathy, or refractory shock.\n• Metformin: Severe Metformin-Associated Lactic Acidosis (MALA) with pH < 7.15, lactate > 20 mmol/L, or failure of medical resuscitation."
+    }
+  ],
+  "example": "CLINICAL CASE: A 24-year-old male is brought to the ICU in a state of wild, incoherent agitation, shouting at imaginary insects. Vitals: HR 148 bpm, BP 165/95 mmHg, Temp 39.2°C, RR 26/min. Physical Exam reveals flushed red face, dry axillae, dry oral mucosa, pupils 8 mm bilateral (poorly reactive), and a palpably distended urinary bladder.\n\nToxidrome Identification:\n• Hyperthermia + Tachycardia + Mydriasis + Bone Dry Skin + Urinary Retention + Delirium = Classic ANTICHOLINERGIC TOXIDROME (e.g. Diphenhydramine or Datura ingestion).\n• Why not Sympathomimetic? In sympathomimetic toxicity, the skin is profusely DIAPHORETIC (sweaty). Here, the skin is completely BONE DRY!\n\nICU Management:\n1. Bladder Catheterization: Relieve acute urinary retention immediately (often yields > 1,000 mL urine).\n2. Sedation: IV Diazepam (5–10 mg) or Midazolam to control psychomotor agitation and prevent rhabdomyolysis.\n3. Active External Cooling: Evaporative cooling, ice packs, ambient temperature control.\n4. Specific Antidote: Physostigmine (1–2 mg slow IV over 5 min). Reverses central and peripheral anticholinergic toxicity. (CONTRAINDICATION: Check 12-lead ECG first to ensure QRS is narrow [<100 ms]; physostigmine causes asystole in TCA overdose!).",
+  "references": [
+    "The Washington Manual of Critical Care, 3rd ed., Ch. 87: Toxic Ingestions. Wolters Kluwer, 2024.",
+    "Goldfrank's Toxicologic Emergencies, 11th ed. (Nelson LS, et al., eds.). McGraw Hill, 2019.",
+    "Ghannoum M, et al. Extracorporeal treatment for poisoning: Guidelines from the EXTRIP workgroup. Nat Rev Nephrol 2014;10:654–668.",
+    "Mowry JB, et al. Annual Report of the American Association of Poison Control Centers' National Poison Data System (NPDS). Clin Toxicol 2023;61:823–945."
+  ]
+},
+  {
+  "id": "organophosphates-carbamates",
+  "cat": "poisoning",
+  "name": "Organophosphate & Carbamate Poisoning in Critical Care",
+  "brand": "Atropine • Pralidoxime (2-PAM) • Intermediate Syndrome",
+  "classification": "Critical Care Toxicology • Acetylcholinesterase Inhibitors • Chemical Disasters",
+  "tagline": "Pathophysiology, the three stages of paralysis, Intermediate Syndrome (IMS), endpoints of atropinisation, and WHO pralidoxime continuous infusion protocol",
+  "tags": [
+    "Organophosphate",
+    "Carbamate",
+    "Atropine",
+    "Pralidoxime",
+    "2-PAM",
+    "Intermediate Syndrome",
+    "AChE",
+    "OPIDN"
+  ],
+  "source": "The Washington Manual of Critical Care, 3rd ed., Ch. 87; Eddleston M, et al. Management of acute organophosphorus pesticide poisoning. Lancet 2008;371:597–607; WHO Guidelines on Organophosphate Management.",
+  "sections": [
+    {
+      "h": "Pathophysiology, Aging & Carbamate Differences",
+      "b": "Organophosphates (OPs) are synthetic organophosphorus esters that phosphorylate the serine hydroxyl residue at the active site of Acetylcholinesterase (AChE), causing massive acetylcholine accumulation throughout the nervous system:\n\n1. Receptor Synaptic Manifestations:\n• Muscarinic Receptors (Parasympathetic postganglionic): Bronchorrhea, bronchospasm, bradycardia, miosis, salivation, lacrimation, urination, defecation, GI cramps, emesis (SLUDGE-BAM / DUMBELS).\n• Nicotinic Receptors (Autonomic ganglia & Neuromuscular junction): Muscle fasciculations, tremors, muscle weakness, diaphragmatic and intercostal paralysis, tachycardia, hypertension.\n• Central Nervous System (Muscarinic & Nicotinic): Seizures, coma, central respiratory depression.\n\n2. The 'Aging' Phenomenon:\n• Non-enzymatic loss of an alkyl side chain from the phosphorylated enzyme over time strengthens the phosphorus-enzyme bond, rendering the inhibition PERMANENT and IRREVERSIBLE by oximes.\n• Aging Rate depends entirely on the chemical structure:\n  - Dimethyl OPs (e.g. Dimethoate, Dichlorvos): Rapid aging within 2 to 4 hours!\n  - Diethyl OPs (e.g. Chlorpyrifos, Parathion): Slow aging over 24 to 48 hours.\n\n3. Organophosphates vs Carbamates:\n• Carbamates (e.g. Carbaryl, Propoxur, Aldicarb) carbamylate AChE.\n• Carbamylation is spontaneous and reversible within 24–48 hours; aging DOES NOT OCCUR.\n• Pralidoxime is generally unnecessary in carbamate poisoning (Atropine alone is sufficient)."
+    },
+    {
+      "h": "The Three Distinct Phases of Neuromuscular Paralysis",
+      "b": "In acute severe organophosphate poisoning, paralysis develops in three distinct clinical time frames with completely different therapeutic responses:\n\n1. Phase 1: Acute Cholinergic Crisis (Hours 0–48):\n• Mediated by excessive acetylcholine depolarizing the motor endplate.\n• Manifests as widespread muscle fasciculations, weakness, and exhaustion.\n• Fully responsive to Atropine (for muscarinic bronchorrhea) and Pralidoxime (for nicotinic muscle reactivation).\n\n2. Phase 2: Intermediate Syndrome (IMS, Hours 24–96):\n• Occurs in 20–50% of severe OP ingestions (especially lipophilic agents like Fenthion, Dimethoate, Monocrotophos).\n• Pathophysiology: Post-synaptic neuromuscular junction exhaustion, down-regulation of nicotinic receptors, and sustained receptor desensitization.\n• Clinical Hallmarks: Sudden respiratory failure occurring 1 to 4 days AFTER initial atropinisation; severe weakness of neck flexor muscles (cannot lift head off pillow), cranial nerve motor weakness, and proximal limb muscles.\n• CRITICAL EXAM TRUTH: Intermediate Syndrome is COMPLETELY UNRESPONSIVE to Atropine or Pralidoxime! Treatment is purely SUPPORTIVE with invasive mechanical ventilation until synaptic regeneration occurs (typically 5 to 14 days).\n\n3. Phase 3: Organophosphate-Induced Delayed Polyneuropathy (OPIDN, Weeks 2–4):\n• Not related to AChE inhibition! Caused by chemical inhibition of Neuropathy Target Esterase (NTE).\n• Presents 2 to 4 weeks post-exposure as bilateral, symmetrical ascending distal sensorimotor axonopathy (cramping pain, paresthesias, foot drop, wrist drop)."
+    },
+    {
+      "h": "Atropine Titration Protocol & Definite Endpoints of Atropinisation",
+      "b": "Atropine is a competitive antagonist at muscarinic acetylcholine receptors. It saves lives by reversing life-threatening bronchorrhea, bronchospasm, and bradycardia (Note: It has ZERO effect on nicotinic neuromuscular weakness!):\n\n1. Bolus Escalation Strategy:\n• Start immediately with Atropine 2 to 5 mg IV bolus in an adult.\n• If no clinical response within 5 minutes, DOUBLE the dose: 2 mg → 4 mg → 8 mg → 16 mg → 32 mg every 5 minutes until complete atropinisation is achieved.\n• Doses of 100 to 200 mg in the first 24 hours are frequently required in severe agricultural poisonings!\n\n2. The 5 Definitive Clinical Endpoints of Atropinisation:\n• Endpoint 1 (Most Critical): DRY LUNGS (clear chest on auscultation; complete cessation of bronchial bubbling, rhonchi, and tracheal secretions).\n• Endpoint 2: Heart Rate > 80 bpm.\n• Endpoint 3: Systolic Blood Pressure > 90 mmHg (adequate systemic perfusion).\n• Endpoint 4: Dry Axillae and oral mucosa.\n• Endpoint 5: Pupils no longer pinpoint (Note: Miosis is an unreliable sole endpoint; do NOT withhold atropine if pupils remain small while lungs are dry!).\n\n3. Maintenance Continuous Infusion:\n• Once atropinised, start continuous IV infusion at 10% to 20% of the total dose required to achieve initial atropinisation per hour.\n• Monitor closely; adjust infusion rate hourly based on chest auscultation."
+    },
+    {
+      "h": "Pralidoxime (2-PAM) Oxime Protocol & Seizure Control",
+      "b": "Oximes (Pralidoxime, Obidoxime) act as nucleophilic reactivators that pull the organophosphate molecule off the phosphorylated AChE active site, restoring functional acetylcholinesterase:\n\n1. WHO Recommended High-Dose Pralidoxime Protocol:\n• Loading Dose: 30 mg/kg IV in 100 mL normal saline infused over 30 minutes.\n• Continuous Infusion: 8 to 10 mg/kg/hour continuous IV infusion (maintains therapeutic plasma level > 4 mcg/mL).\n• Avoid rapid boluses (causes hypertension, tachycardia, and transient neuromuscular block).\n• Continue infusion until the patient is completely weaned from mechanical ventilation and has required zero atropine for 12–24 hours.\n\n2. Seizure Management & Neurological Protection:\n• Early, aggressive control with IV Benzodiazepines (Diazepam 10 mg IV or Midazolam 0.1 mg/kg IV repeated q5-10 min).\n• Benzodiazepines prevent central excitotoxic neuronal injury and raise the seizure threshold.\n• Avoid Phenytoin (ineffective for toxic seizures and worsens conduction blocks)."
+    }
+  ],
+  "example": "CLINICAL CASE: A 32-year-old farmer is admitted to ICU 3 hours after spraying an agricultural pesticide. He is in severe respiratory distress with copious white frothy secretions pouring from mouth and nose, diffuse bilateral wet crepitations across all lung zones, HR 42 bpm, BP 80/50 mmHg, pinpoint pupils (1 mm), and widespread muscle fasciculations.\n\nImmediate Resuscitation Steps:\n1. Decontamination: Strip all clothing, wash skin thoroughly with soap and water (OPs are lipophilic and continue to be absorbed through skin!). Healthcare staff must wear gloves and aprons.\n2. Airway & Suction: Deep tracheal suctioning, 100% preoxygenation, and prepare for endotracheal intubation.\n3. Atropine Loading: Atropine 2 mg IV given. At 5 minutes: lungs still bubbling, HR 48 bpm. Dose doubled to 4 mg IV. At 10 minutes: lungs still wet. Dose doubled to 8 mg IV. At 15 minutes: chest clears, secretions dry up, HR rises to 92 bpm, BP 105/70 mmHg.\n   - Total Atropine load = 2 + 4 + 8 = 14 mg.\n4. Maintenance Atropine: Start continuous IV infusion at 15% of load = ~2 mg/hour.\n5. Oxime Therapy: Pralidoxime 30 mg/kg (2 g IV over 30 min) followed by 8 mg/kg/hr continuous infusion.\n6. Sedation: IV Diazepam 10 mg for fasciculations and seizure prophylaxis.",
+  "references": [
+    "The Washington Manual of Critical Care, 3rd ed., Ch. 87. Wolters Kluwer, 2024.",
+    "Eddleston M, et al. Management of acute organophosphorus pesticide poisoning. Lancet 2008;371:597–607.",
+    "Roberts DM, Aaron CK. Managing acute organophosphorus pesticide poisoning. BMJ 2007;334:629–634.",
+    "Buckley NA, et al. Oximes for acute organophosphate pesticide poisoning. Cochrane Database Syst Rev 2011;2:CD005085."
+  ]
+},
+  {
+  "id": "paracetamol-salicylate",
+  "cat": "poisoning",
+  "name": "Paracetamol (Acetaminophen) & Salicylate (Aspirin) Overdose",
+  "brand": "N-Acetylcysteine (NAC) • Rumack-Matthew • King's College Criteria",
+  "classification": "Critical Care Toxicology • Hepatotoxicity & Salicylate Poisoning",
+  "tagline": "Rumack-Matthew nomogram, modified 2-bag NAC SNAP protocol, King's College transplant criteria, salicylate uncoupling of oxidative phosphorylation, and urinary alkalinisation",
+  "tags": [
+    "Paracetamol",
+    "Acetaminophen",
+    "NAC",
+    "Rumack-Matthew",
+    "King's College",
+    "Salicylate",
+    "Aspirin",
+    "Alkalinisation"
+  ],
+  "source": "Dart RC, et al. Acetaminophen Poisoning: Rumack-Matthew Nomogram Updates. Clin Toxicol 2023; Prescott LF. Paracetamol poisoning; The Washington Manual of Critical Care, 3rd ed., Ch. 87.",
+  "sections": [
+    {
+      "h": "Paracetamol (Acetaminophen) Pathophysiology & Hepatotoxicity",
+      "b": "Paracetamol is the leading cause of acute liver failure (ALF) in the Western world. Therapeutic doses are primarily metabolized by hepatic glucuronidation (55%) and sulfation (30%) to harmless conjugates:\n\n1. The Toxic Mechanism:\n• In overdose, glucuronidation and sulfation pathways become completely saturated.\n• An increasing proportion of paracetamol is shunted to Cytochrome P450 (predominantly CYP2E1), generating the highly reactive electrophilic metabolite N-acetyl-p-benzoquinone imine (NAPQI).\n• Under normal conditions, NAPQI is rapidly detoxified by conjugation with endogenous hepatic Glutathione.\n• When hepatic glutathione stores are depleted by >70%, free unconjugated NAPQI binds covalently to cysteinyl sulfhydryl groups on hepatocyte mitochondrial proteins, causing mitochondrial permeability transition, ATP depletion, reactive oxygen species burst, and centrilobular (Zone 3) hepatic necrosis.\n\n2. Clinical Stages of Paracetamol Toxicity:\n• Stage 1 (0–24 hours): Asymptomatic or mild nausea, vomiting, anorexia, diaphoresis. Normal transaminases.\n• Stage 2 (24–72 hours): 'The Latent Phase.' Nausea improves, but right upper quadrant tenderness develops. ALT/AST begin exponential elevation; PT/INR and bilirubin rise.\n• Stage 3 (72–96 hours): Peak hepatotoxicity. Jaundice, coagulopathy (INR > 4–6), hypoglycemia, lactic acidosis, encephalopathy, cerebral edema, Acute Tubular Necrosis (ATN in 25%), and multiorgan failure.\n• Stage 4 (4–14 days): Recovery phase or death from cerebral herniation/sepsis."
+    },
+    {
+      "h": "The Rumack-Matthew Nomogram & N-Acetylcysteine Protocols",
+      "b": "The Rumack-Matthew nomogram guides the decision to administer N-acetylcysteine based on a single serum paracetamol level drawn between 4 and 24 hours following an acute single ingestion:\n\n1. Nomogram Thresholds:\n• Treatment Line (US Standard): Starts at 150 mcg/mL (1,000 micromol/L) at 4 hours, down to 37.5 mcg/mL at 12 hours.\n• High-Risk Treatment Line: 100 mcg/mL (660 micromol/L) at 4 hours; used for chronic alcoholics, malnutrition, cachexia, or patients taking CYP2E1 inducers (phenytoin, carbamazepine, rifampin).\n• If ingestion occurred < 4 hours prior: Wait until the 4-hour mark to draw paracetamol level (levels drawn < 4h do not correlate with toxicity!). If presentation is delayed > 8 hours or ingestion time is unknown: start NAC immediately while awaiting laboratory results!\n\n2. The Modern 2-Bag NAC Protocol (SNAP Regimen):\n• Replaces the classic 21-hour 3-bag Prescott regimen. Drastically reduces non-IgE anaphylactoid reactions (flushing, angioedema, bronchospasm) by lowering peak infusion rates:\n  - Bag 1: 200 mg/kg IV in 500 mL D5W infused over 4 hours.\n  - Bag 2: 100 mg/kg IV in 1,000 mL D5W infused over 16 hours.\n• Criteria to Stop NAC at 20 Hours:\n  1) Serum paracetamol is undetectable (< 10 mcg/mL), AND\n  2) ALT/AST are normal or clearly declining, AND\n  3) INR is ≤ 1.3, AND patient is clinically well.\n• If any criteria fail: CONTINUE Bag 2 (100 mg/kg over 16h) without interruption until all criteria are satisfied."
+    },
+    {
+      "h": "King's College Criteria for Urgent Liver Transplantation in Paracetamol ALF",
+      "table": {
+        "headers": [
+          "Criterion Category",
+          "King's College Thresholds in Paracetamol Toxicity",
+          "Clinical Significance"
+        ],
+        "rows": [
+          [
+            "Independent Single Criterion",
+            "Arterial pH < 7.30 after adequate fluid resuscitation (regardless of the grade of hepatic encephalopathy)",
+            "Indicates severe uncorrectable lactic acidosis from profound mitochondrial collapse; mortality > 85% without transplant"
+          ],
+          [
+            "Triple Combined Criteria (All 3 Must Be Present in 24h)",
+            "1. Grade III or IV Hepatic Encephalopathy\n2. Serum Creatinine > 3.4 mg/dL (300 micromol/L)\n3. Prothrombin Time > 100 seconds (INR > 6.5)",
+            "Combines severe end-stage cerebral, renal, and hepatic failure; survival without emergent liver transplantation is < 15%"
+          ],
+          [
+            "Early Auxiliary Predictors",
+            "Arterial Lactate > 3.5 mmol/L after 4 hours of resuscitation, OR > 3.0 mmol/L at 12 hours",
+            "Identifies patients likely to meet full King's College criteria early; triggers immediate liver transplant ICU transfer"
+          ]
+        ],
+        "caption": "Validated prognostic criteria for emergency liver transplant listing in paracetamol acute liver failure."
+      }
+    },
+    {
+      "h": "Salicylate (Aspirin) Toxicity: Pathophysiology & Urinary Alkalinisation",
+      "b": "Salicylates cause complex multi-system toxicity by stimulating the medullary respiratory center and uncoupling oxidative phosphorylation in cellular mitochondria:\n\n1. Biphasic Acid-Base Disturbance:\n• Early Phase: Direct medullary stimulation triggers hyperventilation and profound primary Respiratory Alkalosis.\n• Late Phase: Uncoupling of oxidative phosphorylation inhibits Krebs cycle dehydrogenases and accumulates pyruvic/lactic acid, generating a mixed High Anion Gap Metabolic Acidosis (HAGMA).\n• Hallmark Blood Gas: Mixed Respiratory Alkalosis + Metabolic Acidosis.\n\n2. Key Symptoms & Complications:\n• Tinnitus, vertigo, nausea, vomiting, tachypnea, severe hyperthermia (energy lost as heat due to uncoupled ATP synthesis), altered mental status, and non-cardiogenic pulmonary edema.\n\n3. Treatment: Urinary Alkalinisation with IV Sodium Bicarbonate:\n• Mechanism: 'Ion Trapping.' Salicylic acid is a weak acid (pKa = 3.0). Alkalinizing urine (pH 7.5–8.0) converts non-ionized salicylic acid to ionized salicylate (COO-), which cannot cross tubular cell membranes, trapping it in urine and accelerating renal elimination by 10- to 20-fold!\n• Protocol: IV Sodium Bicarbonate (8.4%) 1 to 2 mEq/kg bolus, then infusion of 150 mEq in 1,000 mL D5W with 40 mEq KCl at 150–200 mL/hr.\n• CRITICAL EXAM RULE: Always replace POTASSIUM! Hypokalemia causes renal H+/K+ exchange in collecting ducts, secreting H+ into urine and causing PARADOXICAL ACIDURIA, which completely prevents urinary alkalinisation!\n\n4. Indications for Emergent Hemodialysis in Salicylate Overdose:\n• Serum salicylate level > 100 mg/dL (7.2 mmol/L) in acute ingestion (or > 60 mg/dL in chronic).\n• Severe refractory metabolic acidosis (pH < 7.20).\n• Central nervous system toxicity (altered sensorium, coma, seizures, cerebral edema).\n• Acute kidney injury or pulmonary edema precluding bicarbonate fluid load."
+    }
+  ],
+  "example": "CLINICAL CASE: A 19-year-old female presents to the ICU 14 hours after ingesting 30 tablets of 500 mg paracetamol (15 g total). She has right upper quadrant pain. Labs: Paracetamol level = 85 mcg/mL; AST = 2,400 U/L; ALT = 2,100 U/L; Total Bilirubin = 2.1 mg/dL; PT/INR = 2.4; Arterial pH = 7.34; Lactate = 2.8 mmol/L.\n\nNomogram Interpretation & Decision:\n• At 14 hours post-ingestion, the treatment threshold line on the Rumack-Matthew nomogram is approximately 28 mcg/mL.\n• Her level of 85 mcg/mL is far ABOVE the treatment line, indicating severe toxic risk.\n• AST/ALT elevation and INR 2.4 indicate established Stage 2 acute hepatotoxicity.\n\nImmediate Management Plan:\n1. N-Acetylcysteine (SNAP 2-Bag Protocol): Initiate Bag 1 (200 mg/kg IV over 4 hours), followed immediately by Bag 2 (100 mg/kg IV over 16 hours).\n2. Critical Care Monitoring: Serial ABG, lactate, blood glucose (prevent hypoglycemia), and INR every 6–8 hours.\n3. Liver Transplant Alert: Alert the regional liver transplant team. If arterial pH drops < 7.30 or INR rises > 6.5 with encephalopathy, emergent listing is required.",
+  "references": [
+    "The Washington Manual of Critical Care, 3rd ed., Ch. 87. Wolters Kluwer, 2024.",
+    "Dart RC, et al. Management of Acetaminophen Poisoning. N Engl J Med 2008;359:285–292.",
+    "Bernal W, et al. Acute liver failure. Lancet 2010;376:190–201.",
+    "Chiew AL, et al. Updated guidelines for the management of paracetamol poisoning in Australia and New Zealand. Med J Aust 2020;212:175–183."
+  ]
+},
+  {
+  "id": "cardiovascular-drug-poisoning",
+  "cat": "poisoning",
+  "name": "Calcium Channel Blocker (CCB) & Beta-Blocker Poisoning",
+  "brand": "HIET • Calcium Chloride • Glucagon • Lipid Emulsion (ILE)",
+  "classification": "Critical Care Toxicology • Cardiotoxins & Refractory Shock",
+  "tagline": "High-dose insulin euglycemia therapy (HIET), IV calcium salts, glucagon for beta-blockers, 20% intravenous lipid rescue, and VA-ECMO bridging",
+  "tags": [
+    "CCB",
+    "Beta-Blocker",
+    "Amlodipine",
+    "Verapamil",
+    "HIET",
+    "Insulin",
+    "Glucagon",
+    "Lipid Emulsion"
+  ],
+  "source": "St-Onge M, et al. Experts Consensus Recommendations for the Management of Calcium Channel Blocker Poisoning. Crit Care Med 2017;45:e306–e315; The Washington Manual of Critical Care, 3rd ed., Ch. 87.",
+  "sections": [
+    {
+      "h": "Pathophysiology & Clinical Presentation of CCB and Beta-Blocker Toxicity",
+      "b": "Calcium channel blockers (CCBs) and Beta-blockers (BBs) are responsible for the highest proportion of cardiovascular drug-related fatalities in intensive care:\n\n1. CCB Toxicity (Dihydropyridines vs Non-Dihydropyridines):\n• Dihydropyridines (Amlodipine, Nifedipine): Selective for vascular smooth muscle L-type calcium channels. Present primarily with profound peripheral vasodilation and refractory distributive shock with initial reflex tachycardia; in massive overdose, selectivity is lost, causing severe myocardial depression and bradycardia.\n• Non-Dihydropyridines (Verapamil, Diltiazem): Potent myocardial and SA/AV nodal L-type calcium channel blockers. Present with profound sinus bradycardia, high-grade AV block (complete heart block), and cardiogenic shock.\n• The Metabolic Hallmark: L-type calcium channels on pancreatic islet beta cells are blocked, halting insulin release. Results in marked HYPERGLYCEMIA and lactic acidosis (the degree of hyperglycemia correlates directly with the severity of CCB overdose!).\n\n2. Beta-Blocker Toxicity:\n• Competitive antagonism of myocardial beta-1 and beta-2 adrenergic receptors, reducing intracellular cyclic AMP (cAMP) and protein kinase A activation.\n• Presents with bradycardia, hypotension, and cardiogenic shock.\n• Unique Agent Toxicities:\n  - Propranolol: Highly lipophilic; crosses blood-brain barrier causing seizures and coma; exerts potent sodium-channel blockade (quinidine-like effect) causing QRS widening and ventricular arrhythmias.\n  - Sotalol: Potassium channel blockade (Class III effect) causing marked QTc prolongation, Torsades de Pointes, and ventricular fibrillation.\n  - Labetalol & Carvedilol: Combined alpha-1 and beta-blockade causing profound vasodilation."
+    },
+    {
+      "h": "High-Dose Insulin Euglycemia Therapy (HIET) Protocol",
+      "b": "High-Dose Insulin Euglycemia Therapy (HIET) is the consensus FIRST-LINE inotropic therapy for severe, refractory CCB and Beta-blocker shock:\n\n1. Physiological Mechanism:\n• Under normal conditions, cardiac myocytes utilize free fatty acids (FFAs) for 70–90% of their energy.\n• In toxic shock and ischemia, the heart switches to carbohydrate / glucose oxidation.\n• CCB toxicity blocks pancreatic insulin release, causing cellular glucose starvation.\n• High-dose insulin facilitates massive myocardial glucose uptake, restores calcium transport into the sarcoplasmic reticulum, and exerts a potent positive inotropic effect without increasing myocardial oxygen demand or peripheral vascular resistance!\n\n2. Practical Step-by-Step HIET Dosing Protocol:\n• Step 1: Pre-Infusion Glucose Check: If blood glucose < 250 mg/dL, administer an IV bolus of 25–50 g Dextrose (50–100 mL of D50W).\n• Step 2: Regular Insulin Bolus: Administer Regular Insulin 1 unit/kg IV bolus over 1 minute.\n• Step 3: Regular Insulin Infusion: Start continuous IV infusion at 1 unit/kg/hour.\n• Step 4: Rapid Up-Titration: Titrate insulin every 15–30 minutes in increments of 1–2 units/kg/hour up to a maximum of 10 units/kg/hour until cardiac output and MAP improve!\n• Step 5: Dextrose Support: Infuse 10% or 20% Dextrose via central line at 0.5 g/kg/hr, titrated to maintain blood glucose between 150 and 250 mg/dL.\n• Step 6: Potassium Management: Insulin drives potassium intracellularly. Maintain potassium between 2.8 and 3.2 mEq/L (do NOT over-correct potassium; mild hypokalemia enhances calcium entry and myocardial contractility; supplement potassium only if K+ < 2.8 mEq/L to prevent arrhythmias)."
+    },
+    {
+      "h": "Antidotes & Hemodynamic Support Ladder",
+      "table": {
+        "headers": [
+          "Therapy",
+          "Specific Role & Mechanism",
+          "Standard ICU Dosing Protocol",
+          "Clinical Cautions & Monitoring"
+        ],
+        "rows": [
+          [
+            "Intravenous Calcium Salts",
+            "Increases extracellular calcium gradient to overcome competitive L-type channel blockade",
+            "Calcium Chloride (10%): 10 to 20 mL IV via central line over 5-10 min; OR Calcium Gluconate (10%): 30 to 60 mL peripheral. Repeat q10-15 min x 3-4 doses",
+            "Transient inotropic benefit; rarely restores hemodynamics alone in severe shock. Avoid extravasation with chloride"
+          ],
+          [
+            "Glucagon",
+            "First-line inotropic antidote specifically for BETA-BLOCKERS. Activates adenylate cyclase via G-protein, bypassing beta-receptors",
+            "Bolus: 5 to 10 mg IV push over 2 to 3 minutes. If HR/BP improves, start continuous infusion at 2 to 5 mg/hour",
+            "Causes intense nausea and vomiting; pretreat with Ondansetron. Tachyphylaxis occurs within 24 hours"
+          ],
+          [
+            "Intravenous Lipid Emulsion (ILE 20%)",
+            "Lipid sink that extracts lipophilic cardiotoxins (Verapamil, Diltiazem, Propranolol); provides direct myocardial fatty acid energy",
+            "Bolus: 1.5 mL/kg 20% lipid emulsion IV over 1 min; followed by continuous infusion of 0.25 to 0.5 mL/kg/min for 30-60 min (max 10-12 mL/kg)",
+            "Reserved for cardiac arrest or refractory periarrest shock failing HIET. Can interfere with laboratory colorimetric assays and plug CRRT filters"
+          ],
+          [
+            "Vasoactive Infusions",
+            "Restores vascular tone (distributive CCB shock) and inotropic drive",
+            "Norepinephrine (0.05-1.0 mcg/kg/min) + Epinephrine (0.05-0.5 mcg/kg/min) + Vasopressin (0.03 U/min)",
+            "Do not rely solely on massive catecholamines; causes severe peripheral ischemia without restoring intracellular contractility"
+          ],
+          [
+            "Extracorporeal Life Support (VA-ECMO)",
+            "Complete circulatory bypass providing organ perfusion until drug is metabolized",
+            "Emergent peripheral femoro-femoral Veno-Arterial ECMO cannulation",
+            "Ideal bridge to recovery: CCB/BB cardiotoxicity is completely reversible once the toxin is cleared from receptor sites!"
+          ]
+        ],
+        "caption": "Resuscitation ladder for severe cardiovascular drug poisoning."
+      }
+    }
+  ],
+  "example": "CLINICAL CASE: A 48-year-old female presents 4 hours after ingesting 50 tablets of Amlodipine 10 mg (500 mg total) with suicidal intent. On arrival in ICU: lethargic, cold peripheries, HR 52 bpm, BP 65/38 mmHg (MAP 47 mmHg). Blood gas reveals pH 7.22, lactate 5.4 mmol/L, blood glucose 380 mg/dL (marked hyperglycemia). Two liters of crystalloid and Norepinephrine at 0.4 mcg/kg/min fail to raise MAP above 50 mmHg.\n\nICU Cardiotoxic Protocol:\n1. Immediate IV Calcium: Calcium Chloride 10% (10 mL via central line over 5 min); repeated at 15 min.\n2. Initiate HIET Immediately:\n   - Regular Insulin 1 unit/kg IV bolus (70 units IV push).\n   - D50W 50 mL IV bolus.\n   - Regular Insulin infusion at 1 unit/kg/hr (70 units/hr) titrated upwards by 1 unit/kg/hr every 15 minutes to 3 units/kg/hr (210 units/hr).\n   - Central line D20W infusion titrated to keep blood glucose 150–220 mg/dL.\n3. Add Epinephrine: Epinephrine infusion at 0.15 mcg/kg/min for combined inotropy and vasoconstriction.\n4. Hemodynamic Response: At 45 minutes into HIET, MAP rises to 68 mmHg, cardiac output improves from 2.1 to 4.2 L/min, and extremities warm up. Patient makes a full recovery over 72 hours.",
+  "references": [
+    "St-Onge M, et al. Experts Consensus Recommendations for the Management of Calcium Channel Blocker Poisoning. Crit Care Med 2017;45:e306–e315.",
+    "The Washington Manual of Critical Care, 3rd ed., Ch. 87. Wolters Kluwer, 2024.",
+    "Cole JB, et al. High dose insulin for calcium-channel blocker and beta-blocker overdose. Am J Emerg Med 2018;36:1881–1886.",
+    "Gosselin S, et al. Evidence-based recommendations on the use of intravenous lipid emulsion to treat poisoning: The American College of Medical Toxicology (ACMT) position statement. J Med Toxicol 2016;12:113–128."
+  ]
+},
+  {
+  "id": "toxic-alcohols-tca-cyanide",
+  "cat": "poisoning",
+  "name": "Toxic Alcohols (Methanol, Ethylene Glycol), TCAs & Cyanide in ICU",
+  "brand": "Fomepizole • Sodium Bicarbonate • Hydroxocobalamin",
+  "classification": "Critical Care Toxicology • High Anion Gap Metabolic Acidosis & Antidotes",
+  "tagline": "Osmolar gap, Fomepizole and hemodialysis in methanol/ethylene glycol, QRS terminal aVR signs and sodium bicarbonate in TCAs, and Hydroxocobalamin in Cyanide",
+  "tags": [
+    "Toxic Alcohols",
+    "Methanol",
+    "Ethylene Glycol",
+    "Fomepizole",
+    "TCA",
+    "Sodium Bicarbonate",
+    "Cyanide",
+    "Hydroxocobalamin"
+  ],
+  "source": "The Washington Manual of Critical Care, 3rd ed., Ch. 87; Goldfrank's Toxicologic Emergencies, 11th ed.; American Academy of Clinical Toxicology (AACT) Practice Guidelines.",
+  "sections": [
+    {
+      "h": "Toxic Alcohols: Methanol & Ethylene Glycol",
+      "b": "Methanol (windshield wiper fluid, adulterated illicit alcohol) and Ethylene Glycol (antifreeze, de-icers) are parent alcohols that are relatively non-toxic; life-threatening toxicity is caused entirely by their toxic acidic metabolites generated via Alcohol Dehydrogenase (ADH):\n\n1. Pathophysiology & Target Organ Toxicity:\n• Methanol:\n  - ADH metabolizes methanol to Formaldehyde, which Aldehyde Dehydrogenase rapidly converts to FORMIC ACID.\n  - Formic acid inhibits cytochrome oxidase, causing retinal Müller cell injury, optic disc hyperemia, 'snowfield' blindness, and bilateral necrosis/hemorrhage of the putamen.\n  - Adjunctive Cofactor: Folinic Acid (Leucovorin) 50 mg IV q4h (accelerates breakdown of formic acid into CO2 and water).\n• Ethylene Glycol:\n  - ADH metabolizes ethylene glycol to Glycoaldehyde → Glycolic Acid → Glyoxylic Acid → OXALIC ACID.\n  - Oxalic acid chelates calcium, precipitating Calcium Oxalate monohydrate crystals in renal tubules (acute tubular necrosis, acute renal failure) and cerebral capillaries.\n  - Causes profound hypocalcemia (tetany, QTc prolongation) and envelope-shaped calcium oxalate crystals in urine.\n  - Adjunctive Cofactors: Pyridoxine (Vitamin B6) 50 mg IV q6h and Thiamine 100 mg IV q6h (diverts glyoxylic acid metabolism to harmless glycine and alpha-hydroxy-beta-ketoadipate).\n\n2. Laboratory Diagnostics (The Gaps):\n• Osmolar Gap = Measured Serum Osmolality - Calculated Osmolality.\n  - Calculated Osmolality = 2[Na+] + [Glucose]/18 + [BUN]/2.8.\n  - Normal Osmolar Gap < 10 mOsm/kg. Early toxic alcohol ingestion produces a marked Osmolar Gap (>20–50 mOsm/kg).\n• As the parent alcohol is metabolized over hours, the Osmolar Gap FALLS and the Anion Gap RISES (High Anion Gap Metabolic Acidosis, HAGMA)!\n\n3. Antidote Therapy: Fomepizole vs Ethanol:\n• Fomepizole (4-methylpyrazole): Potent competitive inhibitor of ADH (8,000x higher affinity than ethanol). Halts toxic metabolite generation immediately.\n  - Dose: Loading dose 15 mg/kg IV over 30 min; then 10 mg/kg q12h for 4 doses; then 15 mg/kg q12h (increase frequency to q4h during hemodialysis).\n• Ethanol (Alternative when Fomepizole is unavailable): Competes for ADH. Maintain target blood ethanol level of 100 to 150 mg/dL (requires continuous 10% IV ethanol infusion).\n\n4. Indications for Emergent Hemodialysis:\n• Methanol or Ethylene Glycol level > 50 mg/dL.\n• Severe acidemia (pH < 7.30) refractory to bicarbonate.\n• Visual abnormalities (methanol) or renal failure (ethylene glycol)."
+    },
+    {
+      "h": "Tricyclic Antidepressant (TCA) Overdose: ECG Markers & Sodium Bicarbonate",
+      "b": "Tricyclic antidepressants (Amitriptyline, Imipramine, Doxepin) exert complex life-threatening cardiovascular and neurological toxicity via five distinct mechanisms: (1) Fast sodium channel (INa) blockade, (2) Alpha-1 adrenergic blockade, (3) Central and peripheral anticholinergic blockade, (4) GABA-A antagonism (seizures), and (5) Potassium channel (IKr) blockade:\n\n1. Critical 12-Lead ECG Markers of TCA Toxicity:\n• QRS Duration > 100 ms: Predicts a 33% risk of generalized seizures.\n• QRS Duration > 160 ms: Predicts a 50% risk of life-threatening ventricular arrhythmias (ventricular tachycardia, ventricular fibrillation).\n• Terminal R wave in lead aVR > 3 mm: Highly specific marker of right bundle branch / cardiac sodium channel blockade.\n• R / S ratio in lead aVR > 0.7.\n\n2. The Antidote of Choice: Hypertonic Sodium Bicarbonate (8.4%):\n• Mechanism: Dual therapeutic effect:\n  1) Sodium Load: High extracellular sodium concentration overcomes the competitive blockade of fast sodium channels.\n  2) Serum Alkalinisation: Alkalinizing blood to pH 7.50–7.55 converts the charged lipophilic TCA molecule into an uncharged form, uncoupling it from the sodium channel receptor.\n• Protocol: Administer 1 to 2 mEq/kg of 8.4% Sodium Bicarbonate (50–100 mL) as a rapid IV push over 1–2 minutes.\n• Endpoint: Narrowing of the QRS complex (< 100 ms) and resolution of hypotension/arrhythmias.\n• Maintenance: Infusion of 150 mEq NaHCO3 in 1,000 mL D5W titrated to maintain arterial pH 7.50 to 7.55 (monitor potassium; prevent severe hypokalemia).\n• CONTRAINDICATIONS: Physostigmine (causes refractory asystolic cardiac arrest in TCA toxicity); Class IA and IC antiarrhythmics (Procainamide, Flecainide) and Amiodarone (worsens conduction delay and QTc prolongation)."
+    },
+    {
+      "h": "Carbon Monoxide (CO) & Cyanide (CN) Smoke Inhalation Emergencies",
+      "b": "Carbon Monoxide and Cyanide are frequently encountered together in industrial fires and enclosed-space smoke inhalation:\n\n1. Carbon Monoxide (CO):\n• Binds to hemoglobin with 200–250 times higher affinity than oxygen, forming Carboxyhemoglobin (COHb).\n• Causes severe left-shift of the oxyhemoglobin dissociation curve (Haldane effect), preventing oxygen unloading to tissues.\n• Normal pulse oximeter (SpO2) is FALSELY NORMAL! SpO2 cannot distinguish oxy-Hb from carboxy-Hb (requires Co-oximeter on blood gas).\n• Treatment: 100% High-Flow Normobaric Oxygen (reduces t½ from 320 min on room air down to 80 min). Hyperbaric Oxygen (HBO2 at 2.5–3.0 ATA; reduces t½ to 23 min): Indicated for COHb > 25% (>15% in pregnancy), loss of consciousness, cardiac ischemia, or refractory neurological symptoms.\n\n2. Cyanide Poisoning:\n• Binds with high affinity to ferric iron (Fe3+) in Cytochrome c Oxidase (Complex IV), halting mitochondrial aerobic ATP synthesis.\n• Produces profound cellular histotoxic hypoxia, extreme lactic acidosis (>8–10 mmol/L), and high central venous oxygen saturation (ScvO2 > 85–90% due to inability of tissues to extract oxygen; 'arterialization of venous blood').\n• First-Line Antidote: HYDROXOCOBALAMIN (Cyanokit):\n  - Dose: 5 g IV infused over 15 minutes (can repeat a second 5 g dose for refractory cardiac arrest).\n  - Mechanism: Chelates cyanide directly to form non-toxic Cyanocobalamin (Vitamin B12), excreted in urine.\n  - Side Effect: Dark red/purple discoloration of skin and urine (chromaturia for 48–72h); interferes with colorimetric laboratory tests and dialysis blood leak detectors.\n  - Second-Line: Sodium Thiosulfate 12.5 g IV (provides sulfur donor for endogenous rhodanese enzyme)."
+    }
+  ],
+  "example": "CLINICAL CASE: A 38-year-old male is retrieved from an apartment fire unconscious with soot around his mouth. In the ICU: GCS 4 (E1V1M2), BP 75/40 mmHg, HR 135 bpm. ABG on 100% FiO2 reveals: pH 7.05, PaCO2 24 mmHg, PaO2 380 mmHg, HCO3 8 mEq/L, Lactate 14.5 mmol/L (extreme lactic acidosis), ScvO2 92% (inability to extract O2), and Carboxyhemoglobin (COHb) 18%.\n\nDiagnostic Synthesis:\n• Smoke inhalation with profound lactic acidosis (lactate > 10 mmol/L) and high venous saturation confirms acute CYANIDE POISONING with concurrent Carbon Monoxide exposure!\n\nEmergency Treatment Protocol:\n1. Immediate Antidote: Hydroxocobalamin (Cyanokit) 5 g IV over 15 minutes immediately. If hemodynamics do not improve within 15 minutes, infuse a second 5 g dose.\n2. Oxygenation: Maintain 100% high-flow FiO2 to accelerate carbon monoxide elimination.\n3. Hemodynamic Support: Norepinephrine infusion targeting MAP ≥ 65 mmHg.\n4. Avoid Nitrites: Sodium nitrite is contraindicated in smoke inhalation with concurrent CO poisoning because it induces methemoglobinemia, further degrading blood oxygen-carrying capacity!",
+  "references": [
+    "The Washington Manual of Critical Care, 3rd ed., Ch. 87. Wolters Kluwer, 2024.",
+    "Goldfrank's Toxicologic Emergencies, 11th ed. McGraw Hill, 2019.",
+    "Kraut JA, Kurtz I. Toxic alcohol ingestions: Clinical features, diagnosis, and management. Clin J Am Soc Nephrol 2008;3:208–225.",
+    "Body R, et al. Guidelines for the management of tricyclic antidepressant poisoning. Emerg Med J 2011;28:347–368."
+  ]
+},
+  {
+  "id": "celphos-snake-envenomation",
+  "cat": "poisoning",
+  "name": "Aluminium Phosphide (Celphos) & Snake Envenomation in ICU",
+  "brand": "Celphos / Phosphine • Polyvalent ASV • Neostigmine Protocol",
+  "classification": "Critical Care Toxicology • Agricultural Poisons & Toxinology",
+  "tagline": "Aluminium phosphide non-competitive cytochrome inhibition, fatal arrhythmias, liquid paraffin decontamination, neurotoxic vs hemotoxic snakebites, and 20WBCT-guided ASV protocol",
+  "tags": [
+    "Celphos",
+    "Aluminium Phosphide",
+    "Phosphine",
+    "Snakebite",
+    "ASV",
+    "20WBCT",
+    "Neostigmine",
+    "Krait",
+    "Viper"
+  ],
+  "source": "Baviskar AS, et al. Aluminium phosphide poisoning: An ICU emergency. Indian J Crit Care Med; WHO Guidelines for the Management of Snakebites in Southeast Asia 2016; The Washington Manual of Critical Care, 3rd ed., Ch. 87.",
+  "sections": [
+    {
+      "h": "Aluminium Phosphide (Celphos / Rice Tablet) Toxicity & Resuscitation",
+      "b": "Aluminium Phosphide (AlP), sold commercially as 'Celphos' or 'Quickphos' grain preservative tablets, is a fatal pesticide poisoning endemic across South Asia with mortality exceeding 60–90%:\n\n1. Pathophysiological Mechanism:\n• When ingested, AlP reacts rapidly with gastric hydrochloric acid and water to release lethal PHOSPHINE GAS (PH3):\n  AlP + 3 HCl → AlCl3 + PH3 (gas)\n• Phosphine gas is rapidly absorbed across mucosal membranes.\n• Non-competitively inhibits Cytochrome c Oxidase (Complex IV) in myocardial and vascular cellular mitochondria, arresting cellular aerobic respiration.\n• Generates massive reactive oxygen species (ROS), causing severe lipid peroxidation of cell membranes, focal myocardial necrosis, intractable ventricular arrhythmias, and refractory cardiogenic and distributive shock.\n\n2. Gastrointestinal Decontamination Pitfall:\n• STRICT CONTRAINDICATION: NEVER perform gastric lavage with water or aqueous saline! Water accelerates the chemical reaction, releasing massive bursts of phosphine gas!\n• Decontamination Protocol: Gastric lavage using LIQUID PARAFFIN or COCONUT OIL: forms a hydrophobic oily barrier that coats the tablets, retards water contact, and drastically inhibits phosphine gas release.\n\n3. Resuscitation & Antiarrhythmic Protocol in ICU:\n• Zero Specific Antidote: Survival depends on aggressive, early physiological support.\n• High-Dose Magnesium Sulfate: Membrane stabilizer that counteracts free-radical lipid peroxidation and suppresses lethal ventricular arrhythmias (VT/VF). Protocol: 3 g IV infusion over 30 min, then 1 g/hr for 24–48 hours (maintain serum Mg 3.0–4.0 mg/dL).\n• Antioxidant Cocktail: IV N-Acetylcysteine (antioxidant and glutathione replenisher), Vitamin C, and Vitamin E.\n• Vasoactive Support: Norepinephrine + Vasopressin (counteracts severe vasoplegia).\n• Mechanical Circulatory Support (VA-ECMO): Veno-Arterial ECMO initiated early in refractory cardiogenic shock provides complete hemodynamic support for 48–72 hours until phosphine gas is cleared."
+    },
+    {
+      "h": "Snake Envenomation: Neurotoxic vs Vasculotoxic Clinical Syndromes",
+      "table": {
+        "headers": [
+          "Clinical Feature",
+          "Neurotoxic Envenomation (Elapidae: Cobra, Krait)",
+          "Vasculotoxic Envenomation (Viperidae: Russell's, Saw-Scaled)"
+        ],
+        "rows": [
+          [
+            "Representative Species",
+            "Common Cobra (Naja naja), Common Krait (Bungarus caeruleus)",
+            "Russell's Viper (Daboia russelii), Saw-scaled Viper (Echis carinatus)"
+          ],
+          [
+            "Pathophysiologic Mechanism",
+            "Neurotoxins blocking neuromuscular transmission:\n• Presynaptic (Krait): Beta-neurotoxins destroy motor nerve terminals\n• Postsynaptic (Cobra): Alpha-neurotoxins block nicotinic ACh receptors",
+            "Procoagulant venom enzymes (Factor X and Prothrombin activators) causing Venom-Induced Consumption Coagulopathy (VICC) + Metalloproteinases causing endothelial damage"
+          ],
+          [
+            "Local Wound Signs",
+            "Cobra: Severe pain, blistering, necrotic sloughing\nKrait: MINIMAL or NO local pain/swelling! (Bite occurs at night while asleep; often dismissed as insect bite)",
+            "Severe swelling, hemorrhagic blisters, ecchymosis, compartment syndrome, bleeding from fang punctures"
+          ],
+          [
+            "Systemic Manifestations",
+            "Descending Flaccid Paralysis: Bilateral ptosis, diplopia, ophthalmoplegia, dysarthria, pooling of secretions, and respiratory muscle paralysis",
+            "Spontaneous systemic bleeding (gingival bleeding, hematuria, hemoptysis, intracranial hemorrhage), shock, Acute Kidney Injury (cortical necrosis), hypopituitarism"
+          ],
+          [
+            "Bedside Diagnostic Test",
+            "Single Breath Count (SBC < 15 indicates diaphragmatic weakness); Atropine-Neostigmine challenge test",
+            "20-Minute Whole Blood Clotting Test (20WBCT): Unclotted liquid blood indicates active consumption coagulopathy"
+          ]
+        ],
+        "caption": "Diagnostic divergence between the major snake envenomation toxidromes in South Asia."
+      }
+    },
+    {
+      "h": "The 20-Minute Whole Blood Clotting Test (20WBCT) & ASV Protocols",
+      "b": "The 20-Minute Whole Blood Clotting Test (20WBCT) is the single most validated, rapid bedside test for detecting Venom-Induced Consumption Coagulopathy (VICC):\n\n1. 20WBCT Step-by-Step Procedure:\n• Draw 2 mL of fresh venous blood.\n• Place in a clean, dry, new, plain glass tube (without anticoagulant or clot activator).\n• Leave completely undisturbed at room temperature for EXACTLY 20 MINUTES.\n• Gently tilt the tube: If the blood is solid/clotted, test is NEGATIVE (normal coagulation). If blood remains completely LIQUID and pours out, test is POSITIVE (severe VICC).\n\n2. Indications for Polyvalent Anti-Snake Venom (ASV):\n• Systemic Envenomation: Unclotted 20WBCT, spontaneous systemic bleeding, neuroparalysis (ptosis, bulbar weakness), shock, or acute kidney injury.\n• Severe Local Envenomation: Rapid swelling involving more than half the bitten limb within 24 hours.\n\n3. Anti-Snake Venom (ASV) Administration Protocol:\n• Initial Dose: 10 Vials of lyophilized polyvalent ASV reconstituted in 250 to 500 mL Normal Saline.\n• Infusion Rate: Infuse over 1 hour (start slowly at 1 mL/min for the first 10 minutes to detect anaphylaxis).\n• Repeat ASV Rules in Coagulopathy:\n  - Repeat 20WBCT at 6 HOURS after ASV completion.\n  - Why 6 Hours? It takes the liver 6 hours to synthesize brand-new fibrinogen and clotting factors once venom is neutralized!\n  - CRITICAL PITFALL: NEVER repeat ASV before 6 hours for coagulopathy alone! Repeating ASV at 2 hours wastes antivenom and causes massive allergic reactions.\n  - If 20WBCT is STILL unclotted at 6 hours: Administer a second dose of 10 vials ASV.\n\n4. Atropine-Neostigmine Trial in Neuroparalytic Snakebite:\n• For postsynaptic neurotoxicity (Cobra), acetylcholinesterase inhibition prolongs acetylcholine at the neuromuscular junction:\n• Protocol: Pre-treat with Atropine 0.6 mg IV (blocks muscarinic side effects), then Neostigmine 1.5 mg IV.\n• Monitor single breath count and ptosis at 30, 60, and 90 minutes. If objective improvement occurs, continue Neostigmine 0.5 mg IV q30min with Atropine."
+    }
+  ],
+  "example": "CLINICAL CASE: A 42-year-old male farmer presents to the ICU at 6:00 AM after waking up with severe abdominal colic, bilateral ptosis, and difficulty swallowing. He remembers sleeping on the floor and feeling a pinch on his right ankle during the night. Examination reveals no fang marks, no local swelling, but bilateral symmetrical ptosis, ophthalmoplegia, single breath count of 8 (normal > 30), and paradoxical abdominal breathing.\n\nDiagnostic Analysis:\n• Nocturnal bite while sleeping + Absence of local pain/swelling + Early morning bilateral ptosis and respiratory failure = Classic COMMON KRAIT (Bungarus caeruleus) ENVENOMATION!\n\nEmergency Resuscitation & Treatment:\n1. Immediate Endotracheal Intubation: Due to bulbar palsy and impending diaphragmatic arrest. Mechanically ventilate with lung-protective settings.\n2. Polyvalent ASV: 10 vials reconstituted in 250 mL NS infused over 1 hour.\n3. Presynaptic Toxin Reality: Krait beta-neurotoxin causes irreversible physical destruction of motor nerve terminal boutons. ASV neutralizes circulating venom but CANNOT reverse already-bound toxin. Anticipate mechanical ventilation for 3 to 7 days until new synaptic terminals sprout!\n4. Neostigmine Trial: Test response to Atropine 0.6 mg + Neostigmine 1.5 mg; usually ineffective in krait due to presynaptic destruction, but harmless if monitored.",
+  "references": [
+    "World Health Organization (WHO). Guidelines for the Management of Snakebites in Southeast Asia, 2nd ed. WHO Regional Office for South-East Asia, 2016.",
+    "The Washington Manual of Critical Care, 3rd ed., Ch. 87. Wolters Kluwer, 2024.",
+    "Baviskar AS, et al. Aluminium phosphide poisoning: An ICU emergency. Indian J Crit Care Med 2016;20:534–538.",
+    "Simpson ID, Norris RL. Snakes of medical importance in India: Is the concept of the 'Big 4' still relevant and useful? Wilderness Environ Med 2007;18:2–9."
+  ]
+}
 ];
 
   const drugs = [

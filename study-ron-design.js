@@ -110,6 +110,16 @@
     if (text.includes("anaphylaxis") || text.includes("allergy") || text.includes("histamine")) {
       tools.push({ label: "🚨 Anaphylaxis Emergency Protocol", url: "crisis.html#anaphylaxis" });
     }
+    if (text.includes("antibiotic") || text.includes("sepsis") || text.includes("infection") || text.includes("microb") || text.includes("carbapenem") || text.includes("colistin")) {
+      tools.push({ label: "🧮 Sepsis Bundle & Fluids", url: "calculators.html?calc=fluid" });
+      tools.push({ label: "🧮 ABG Anion Gap & Delta", url: "calculators.html?calc=abg" });
+      tools.push({ label: "🚨 Crisis: Anaphylaxis", url: "crisis.html#anaphylaxis" });
+    }
+    if (text.includes("poison") || text.includes("toxic") || text.includes("overdose") || text.includes("organophosphate") || text.includes("paracetamol") || text.includes("celphos") || text.includes("snake")) {
+      tools.push({ label: "🚨 Crisis: LAST / Toxin Rescue", url: "crisis.html#last" });
+      tools.push({ label: "🚨 Code Room: ACLS Protocols", url: "crisis.html#acls" });
+      tools.push({ label: "🧮 MAP & SVR Calculator", url: "calculators.html?calc=map" });
+    }
 
     if (tools.length < 2) {
       tools.push({ label: "🧮 Medical Calculators Suite", url: "calculators.html" });
@@ -238,10 +248,10 @@
   function renderTopPillsTrack(allCats, activeId) {
     const totalCount = getData().topics.length + getData().drugs.length;
 
-    // Line 1: Clinical Domains & Investigations (Excludes pregnancy)
-    const line1Cats = allCats.filter(c => ["anaesthesia", "examination", "ecg", "abg", "equipment", "pft"].includes(c.id));
+    // Line 1: Clinical Domains, Investigations & Critical Care (Includes Antibiotics & Poisoning)
+    const line1Cats = allCats.filter(c => ["anaesthesia", "examination", "ecg", "abg", "equipment", "pft", "antibiotics", "poisoning"].includes(c.id));
     // Line 2: Pharmacology & Drug Monographs (Includes pregnancy / Drugs in Pregnancy)
-    const line2Cats = allCats.filter(c => !["anaesthesia", "examination", "ecg", "abg", "equipment", "pft"].includes(c.id));
+    const line2Cats = allCats.filter(c => !["anaesthesia", "examination", "ecg", "abg", "equipment", "pft", "antibiotics", "poisoning"].includes(c.id));
 
     let line1HTML = `
       <button type="button" class="ron-nav-pill ${activeId === 'all' ? 'active' : ''}" data-ron-cat="all">
@@ -1150,7 +1160,7 @@
               <span style="font-size:24px;">✦</span>
               <div>
                 <h2>Knockout Notes Study Library</h2>
-                <p style="margin:2px 0 0; font-size:12.5px; color:var(--ron-text-empty);">Browse 147 source-cited anaesthesia topics, clinical exams, ECGs &amp; drug monographs</p>
+                <p style="margin:2px 0 0; font-size:12.5px; color:var(--ron-text-empty);">Browse 159 source-cited anaesthesia &amp; critical care topics, clinical exams, ECGs, antibiotics, toxicology &amp; drug monographs</p>
               </div>
             </div>
             <button class="ron-close-btn" id="ronCloseModalBtn" aria-label="Close dialog">
