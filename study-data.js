@@ -76,6 +76,18 @@
     "desc": "Life-Threatening Overdoses, Toxidromes, Antidotes & Extracorporeal Elimination in Critical Care (Washington Manual / Goldfrank / EXTRIP)"
   },
   {
+    "id": "shock",
+    "label": "ICU Shock & Hemodynamics",
+    "icon": "⚡",
+    "desc": "Classification, Hemodynamic Monitoring, Septic, Cardiogenic, Hypovolemic & Obstructive Shock (Washington Manual / SSC / SCAI)"
+  },
+  {
+    "id": "respiratory",
+    "label": "ICU Respiratory & Ventilation",
+    "icon": "🫁",
+    "desc": "Respiratory Failure, ARDS, Mechanical Ventilation, Severe COPD/Asthma, Massive PE & Extubation Protocols (Washington Manual / ATS / ESICM)"
+  },
+  {
     "id": "induction",
     "label": "Induction Agents",
     "icon": "💉",
@@ -6593,6 +6605,946 @@
     "Simpson ID, Norris RL. Snakes of medical importance in India: Is the concept of the 'Big 4' still relevant and useful? Wilderness Environ Med 2007;18:2–9."
   ]
 }
+,
+{
+    "id": "hemodynamics-shock-approach",
+    "cat": "shock",
+    "name": "Approach to Undifferentiated Shock & Hemodynamic Monitoring",
+    "short": "Shock & Hemodynamics",
+    "tags": [
+      "Shock Classification",
+      "Hemodynamics",
+      "Preload Responsiveness",
+      "PLR Test",
+      "RUSH Protocol",
+      "Lactate Clearance"
+    ],
+    "tagline": "Bedside differentiation of the 4 shock states, dynamic preload responsiveness, POCUS RUSH exam & resuscitation targets",
+    "source": "The Washington Manual of Critical Care (3rd ed.), Ch. 1 & 2; Surviving Sepsis Campaign 2021/2026; ANDROMEDA-SHOCK Trial; Marino's The ICU Book (4th ed.).",
+    "sections": [
+      {
+        "h": "Classification & Hemodynamic Profiles of the 4 Shock States",
+        "b": "Shock is defined as life-threatening generalized acute circulatory failure resulting in inadequate cellular oxygen utilization (cellular dysoxia), tissue hypoperfusion, and multiorgan failure.\n\nKey Physiological Determinants:\n• Oxygen Delivery (DO2) = Cardiac Output (CO) × Arterial Oxygen Content (CaO2) × 10.\n• Mean Arterial Pressure (MAP) = Cardiac Output (CO) × Systemic Vascular Resistance (SVR) + CVP.\n• When cellular oxygen demand outstrips oxygen delivery, tissues switch from mitochondrial oxidative phosphorylation to anaerobic glycolysis, producing lactate and hydrogen ions (lactic acidosis).\n\nThe 4 Classic Shock Phenotypes:\n1. Hypovolemic Shock: Severe intravascular volume loss (hemorrhage, GI fluid loss, third spacing). Hallmark: Low preload, low cardiac output, compensatory high SVR.\n2. Cardiogenic Shock: Primary pump failure (acute MI, acute decompensated heart failure, severe myocarditis, acute valvular rupture). Hallmark: Markedly elevated filling pressures (CVP/PCWP), severely depressed cardiac output, elevated compensatory SVR.\n3. Distributive Shock: Pathological profound loss of vascular vasomotor tone and capillary leak (sepsis, anaphylaxis, neurogenic shock, pancreatitis). Hallmark: Normal-to-high cardiac output (hyperdynamic early phase), low filling pressures, and profoundly low SVR with arteriovenous shunting.\n4. Obstructive Shock: Extracardiac mechanical impediment to cardiac filling or emptying (cardiac tamponade, tension pneumothorax, massive pulmonary embolism). Hallmark: Elevated venous filling pressures, severely reduced cardiac output, and high compensatory SVR.",
+        "table": {
+          "headers": [
+            "Shock Category",
+            "Preload (CVP / PCWP)",
+            "Cardiac Output (CO / CI)",
+            "Afterload (SVR)",
+            "Venous Sat (SvO2 / ScvO2)",
+            "Venous-Arterial CO2 Gap (P(v-a)CO2)"
+          ],
+          "rows": [
+            [
+              "Hypovolemic",
+              "Low (CVP < 5, PCWP < 8 mmHg)",
+              "Low (CI < 2.2 L/min/m²)",
+              "High (SVR > 1200 dyn·s/cm⁵)",
+              "Low (< 65%)",
+              "Widened (> 6 mmHg)"
+            ],
+            [
+              "Cardiogenic",
+              "High (CVP > 12, PCWP > 18 mmHg)",
+              "Severely Low (CI < 1.8–2.2)",
+              "High (SVR > 1400 dyn·s/cm⁵)",
+              "Low (< 60%)",
+              "Markedly Widened (> 6–8 mmHg)"
+            ],
+            [
+              "Distributive (Septic)",
+              "Low to Normal (Variable)",
+              "High (Hyperdynamic, CI > 3.5)",
+              "Low (SVR < 800 dyn·s/cm⁵)",
+              "High (> 70–75%, extraction defect)",
+              "Normal to Narrow (< 6 mmHg)"
+            ],
+            [
+              "Obstructive (Tamponade/PE)",
+              "High (CVP elevated, PCWP variable)",
+              "Low (CI < 2.0 L/min/m²)",
+              "High (SVR compensatory)",
+              "Low (< 60%)",
+              "Widened (> 6 mmHg)"
+            ]
+          ],
+          "caption": "Hemodynamic profile differentiation across the four primary shock states."
+        }
+      },
+      {
+        "h": "Dynamic vs Static Indices of Preload Responsiveness",
+        "b": "Why Static Measures (CVP / PCWP) Fail:\n• Central Venous Pressure (CVP) of 8–12 mmHg or PCWP has an AUC of only ~0.55 for predicting fluid responsiveness (no better than flipping a coin!).\n• CVP is heavily confounded by tricuspid regurgitation, pulmonary hypertension, high PEEP, and thoracic compliance.\n• Only ~50% of hemodynamically unstable ICU patients are fluid responsive. Giving fluids to a non-responder causes lung water accumulation, worsening gas exchange, renal capsule edema, and increased mortality!\n\nDefinition of Fluid Responsiveness:\n• An increase in stroke volume (SV) or cardiac output (CO) by ≥ 10% to 15% in response to a fluid challenge or equivalent volume shift.\n\nDynamic Preload Tests (Evidence-Based Gold Standards):\n1. Passive Leg Raising (PLR) Test (The Gold Standard):\n• Mechanism: Elevating legs from semi-recumbent position autotransfuses ~300 to 500 mL of venous blood from legs and splanchnic circulation back to the heart (a completely reversible endogenous fluid challenge).\n• Protocol: Start at 45° semi-recumbent \n• Lower upper body flat and elevate lower extremities 45° for 60 to 90 seconds.\n• Evaluation: Must measure real-time stroke volume or cardiac output (arterial waveform analysis, echo VTI, bioreactance). A ΔSV or ΔCO ≥ 10% indicates fluid responsiveness.\n• Key Advantage: Valid in spontaneous breathing, cardiac arrhythmias, low tidal volumes, and low lung compliance!\n\n2. Pulse Pressure Variation (PPV) & Stroke Volume Variation (SVV):\n• Principle: Heart-lung interactions during positive-pressure mechanical ventilation (inspiratory squeeze increases LV preload, followed by expiratory decrease).\n• Strict Mandatory Conditions for Validity:\n  - Sinus rhythm (zero arrhythmias or ectopic beats).\n  - Passive mechanical ventilation (zero patient trigger or spontaneous effort).\n  - Tidal volume ≥ 8 mL/kg Predicted Body Weight (PBW).\n  - Normal chest wall compliance (no open thorax, no high PEEP).\n• Diagnostic Threshold: PPV > 13% or SVV > 12% strongly predicts volume responsiveness.\n\n3. Mini-Fluid Challenge:\n• Infuse 100 to 150 mL crystalloid over 1 to 2 minutes. An increase in stroke volume ≥ 5% identifies fluid responders with high sensitivity and specificity.",
+        "callout": {
+          "type": "pearl",
+          "title": "EXAM PEARL — Tidal Volume Challenge (VT Challenge)",
+          "text": "When lung-protective ventilation (6 mL/kg PBW) renders PPV unreliable (false negatives), perform the 'VT Challenge': Transiently increase tidal volume from 6 mL/kg to 8 mL/kg for 1 minute. If absolute PPV increases by ≥ 3.5% (or SVV by ≥ 2.5%), the patient is volume responsive! Immediately return VT to 6 mL/kg."
+        }
+      },
+      {
+        "h": "Bedside POCUS in Shock: The RUSH Protocol & VExUS Grading",
+        "b": "The RUSH Protocol (Rapid Ultrasound in Shock) — 'Pump, Tank, Pipes':\n\n1. The PUMP (Cardiac):\n• Parasternal long/short axis, apical 4-chamber, subxiphoid.\n• Contractility: Hyperdynamic LV (kissing papillary muscles = distributive or hypovolemic shock) vs severely hypokinetic/dilated LV (cardiogenic shock).\n• Pericardium: Pericardial fluid with right ventricular diastolic collapse and plethoric IVC = cardiac tamponade.\n• Right Ventricle: Severe RV dilatation, McConnell's sign (hyperdynamic RV apex with akinetic RV free wall), and 60/60 sign = massive pulmonary embolism.\n\n2. The TANK (Volume Status & Distribution):\n• Inferior Vena Cava (IVC):\n  - Diameter < 1.5 cm with > 50% inspiratory collapse = Low CVP (< 5 mmHg, volume responsive).\n  - Diameter > 2.1 cm with < 50% collapse = High CVP (> 10–15 mmHg, systemic congestion / non-responder).\n• Thoracic Ultrasound (BLUE protocol):\n  - Bilateral lung sliding + A-lines = Normal aerated lung (hypovolemic / distributive shock).\n  - Bilateral B-lines (> 3 per intercostal space) = Pulmonary edema (cardiogenic shock / fluid overload).\n  - Absence of lung sliding + stratosphere/barcode sign on M-mode + lung point = Pneumothorax.\n• Abdominal / Pelvic Cavity (FAST):\n  - Screen Morrison's pouch, splenorenal space, pelvis, and pleural spaces for occult free fluid / hemoperitoneum.\n\n3. The PIPES (Vascular System):\n• Abdominal Aorta: Screen for abdominal aortic aneurysm (> 3 cm diameter) or dissection flap.\n• Femoral / Popliteal Veins: Compressibility test to rule out Deep Vein Thrombosis (DVT) causing massive PE.\n\nThe VExUS (Venous Excess Ultrasound) Score:\n• Quantitative grading of systemic venous congestion to prevent harmful fluid overload:\n• Components: (1) IVC diameter ≥ 2.0 cm + (2) Hepatic vein Doppler (systolic reversal) + (3) Portal vein pulsatility index (≥ 50%) + (4) Intrarenal venous Doppler (discontinuous biphasic or monophasic flow).\n• VExUS Grade 3 = Severe venous congestion. Administering further fluids in VExUS Grade 3 directly causes congestive nephropathy, worsening AKI, and death!"
+      },
+      {
+        "h": "Resuscitation Endpoints & Perfusion Targets",
+        "b": "Modern resuscitation targets shift away from gross macrocirculatory pressure numbers toward cellular and microcirculatory perfusion:\n\n1. Mean Arterial Pressure (MAP):\n• General Target: MAP ≥ 65 mmHg.\n• Chronic Hypertension Phenotype (SEPSISPAM Trial): In patients with chronic baseline hypertension, targeting a higher MAP of 80 to 85 mmHg significantly reduced doubling of serum creatinine and need for Renal Replacement Therapy (RRT) without increasing mortality.\n\n2. Capillary Refill Time (CRT) — The ANDROMEDA-SHOCK Trial:\n• Procedure: Apply pressure to ventral pulp of index finger using a clean glass slide for 10 seconds until blanched, then time return of normal color.\n• Normal / Resuscitated Target: CRT ≤ 3.0 seconds.\n• Clinical Superiority: In the landmark ANDROMEDA-SHOCK trial, a CRT-targeted resuscitation strategy resulted in less organ dysfunction and significantly lower fluid administration compared to serial lactate clearance!\n\n3. Lactate Kinetics & Clearance:\n• Serial Measurement: Measure every 2 to 4 hours during active resuscitation.\n• Target: Lactate clearance of > 10% to 20% every 2 hours indicates successful cellular resuscitation.\n• Critical Caveat: Not all hyperlactatemia is hypoperfusion! Type B lactic acidosis occurs from catecholamine-induced aerobic glycolysis (high adrenaline/terbutaline), impaired hepatic clearance, or metformin.\n\n4. Central Venous Oxygen Saturation (ScvO2):\n• Target: ScvO2 ≥ 70% (drawn from internal jugular or subclavian central line).\n• ScvO2 < 65% = Low cardiac output, severe anemia, or extreme oxygen consumption.\n• ScvO2 > 80% = Microvascular shunting and impaired cellular oxygen utilization (cytopathic hypoxia in severe sepsis, cyanide toxicity).\n\n5. Central Venous-to-Arterial CO2 Difference (P(v-a)CO2 Gap):\n• Normal Target: P(v-a)CO2 < 6 mmHg.\n• Widened Gap (> 6 mmHg): Signifies sluggish microvascular blood flow and tissue hypoperfusion. Even if ScvO2 is > 70%, a widened CO2 gap indicates that cardiac output is inadequate for current microcirculatory demand!"
+      }
+    ],
+    "example": "CLINICAL CASE: A 68-year-old male with a history of long-standing hypertension presents with severe septic shock secondary to acute pyelonephritis. Vitals: HR 122 bpm, BP 82/46 mmHg (MAP 58 mmHg), RR 26 bpm, SpO2 93% on room air. CRT is 5.5 seconds, serum lactate is 4.8 mmol/L, and ScvO2 is 58%.\n\nDiagnostic & Resuscitation Steps:\n1. Noradrenaline Infusion: Begun immediately via peripheral large-bore line, titrated to MAP ≥ 65 mmHg (target 80–85 mmHg given chronic HTN).\n2. Preload Responsiveness: Passive Leg Raising (PLR) test is performed with real-time echo VTI: Stroke volume increases by 16% (Volume responsive!).\n3. Fluid Challenge: 500 mL Plasmalyte infused over 15 minutes; repeat PLR shows only 4% increase in SV (Now non-responsive).\n4. Persistent Low ScvO2 (62%) and CRT (4.0 s) despite MAP 82 mmHg and CVP 11 mmHg: Point-of-care echo reveals LV ejection fraction 28% (Septic Cardiomyopathy). Dobutamine infusion started at 5 mcg/kg/min.\n5. Outcome: CRT normalizes to 2.2 seconds, ScvO2 climbs to 73%, and 2-hour repeat lactate drops to 3.1 mmol/L (>35% clearance).",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd ed., Ch. 1 & 2. Wolters Kluwer, 2024.",
+      "Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Intensive Care Med 2021;47:1181–1247.",
+      "Hernández G, et al. Effect of a Resuscitation Strategy Targeting Peripheral Perfusion Status vs Serum Lactate Levels on 28-Day Mortality (ANDROMEDA-SHOCK). JAMA 2019;321(7):654–664.",
+      "Marino PL. Marino's The ICU Book, 4th ed., Ch. 8–10. Wolters Kluwer, 2014."
+    ]
+  },
+  {
+    "id": "septic-shock-resuscitation",
+    "cat": "shock",
+    "name": "Septic Shock: Surviving Sepsis Campaign & Vasopressor Protocols",
+    "short": "Septic Shock",
+    "tags": [
+      "Sepsis-3",
+      "Surviving Sepsis Campaign",
+      "Vasopressors",
+      "Noradrenaline",
+      "Vasopressin",
+      "Hydrocortisone"
+    ],
+    "tagline": "Sepsis-3 definitions, SSC 1-hour bundle, balanced crystalloids, first-to-third line vasopressors & adjunctive steroids",
+    "source": "The Washington Manual of Critical Care (3rd ed.), Ch. 3; Surviving Sepsis Campaign International Guidelines (2021 & updates); SMART and SALT-ED trials; VASST, APROCCHSS trials.",
+    "sections": [
+      {
+        "h": "Sepsis-3 Diagnostic Criteria & Pathophysiological Cascade",
+        "b": "The Sepsis-3 International Consensus Definitions (Singer et al., JAMA 2016):\n• Sepsis: Life-threatening organ dysfunction caused by a dysregulated host response to infection.\n• Operational Diagnostic Criterion: An acute increase in total Sequential Organ Failure Assessment (SOFA) score by ≥ 2 points attributable to the infection (associated with in-hospital mortality > 10%).\n• Baseline SOFA: Assumed to be 0 unless known preexisting organ dysfunction.\n\nSeptic Shock Definition:\n• A subset of sepsis in which particularly profound circulatory, cellular, and metabolic abnormalities are associated with a greater risk of mortality (> 40%) than with sepsis alone.\n• Clinical Triad for Septic Shock:\n  1. Persistent hypotension requiring vasopressors to maintain Mean Arterial Pressure (MAP) ≥ 65 mmHg, AND\n  2. Serum lactate > 2.0 mmol/L (> 18 mg/dL), DESPITE adequate volume resuscitation.\n\nQuick SOFA (qSOFA) Bedside Screening (Not diagnostic; prompts bedside workup):\n• Respiratory rate ≥ 22 breaths/min (1 point).\n• Altered mentation / GCS < 15 (1 point).\n• Systolic blood pressure ≤ 100 mmHg (1 point).\n• Score ≥ 2 suggests high risk of poor outcome and sepsis.\n\nPathophysiological Cascade of Vasodilation & Shock:\n• Pathogen components (LPS, peptidoglycans) bind Toll-Like Receptors (TLR-4, TLR-2), activating NF-κB and releasing massive pro-inflammatory cytokines (TNF-α, IL-1β, IL-6).\n• Overexpression of Inducible Nitric Oxide Synthase (iNOS) produces excessive nitric oxide (NO), stimulating soluble guanylate cyclase and cGMP, causing profound arteriolar vasodilation refractory to sympathetic tone.\n• Endothelial glycocalyx shedding causes massive capillary leak and intravascular fluid extravasation into the interstitium.\n• Microvascular microthrombi and cytopathic hypoxia cause mitochondrial uncoupling and energetic failure.",
+        "callout": {
+          "type": "pearl",
+          "title": "EXAM PEARL — SOFA Score 6 Organ Systems",
+          "text": "1. Respiration: PaO2/FiO2 ratio.\n2. Coagulation: Platelet count.\n3. Liver: Total bilirubin.\n4. Cardiovascular: MAP and vasopressor requirements (Noradrenaline/Adrenaline/Dopamine).\n5. Central Nervous System: Glasgow Coma Scale (GCS).\n6. Renal: Serum creatinine and daily urine output."
+        }
+      },
+      {
+        "h": "Surviving Sepsis Campaign (SSC) 1-Hour Bundle & Fluid Optimization",
+        "b": "The Surviving Sepsis Campaign (SSC) 1-Hour Bundle (Execute within 60 minutes):\n1. Measure Blood Lactate: Immediately; re-measure within 2 to 4 hours if initial lactate is > 2 mmol/L.\n2. Obtain Blood Cultures: Draw at least 2 sets (aerobic + anaerobic) prior to initiating antimicrobials (do not delay abx > 45 min if difficult draw).\n3. Administer Broad-Spectrum IV Antimicrobials: Administer empiric broad-spectrum coverage covering all likely pathogens within 1 hour.\n4. Rapid Fluid Resuscitation: Administer 30 mL/kg of IV balanced crystalloid within the first 3 hours for hypotension (MAP < 65 mmHg) or initial lactate ≥ 4.0 mmol/L.\n5. Vasopressor Initiation: Start immediately during or directly following fluid resuscitation if MAP remains < 65 mmHg.\n\nBalanced Crystalloids vs 0.9% Normal Saline (SMART & SALT-ED Trials):\n• 0.9% Normal Saline has a high chloride content (154 mEq/L) compared to human plasma (98–106 mEq/L).\n• Infusing large volumes of 0.9% saline triggers hyperchloremic metabolic acidosis, renal afferent arteriolar vasoconstriction, reduced renal cortical perfusion, and increased rates of Acute Kidney Injury (AKI) and RRT.\n• Balanced Crystalloids (Plasma-Lyte A or Ringer's Lactate) significantly reduce 30-day Major Adverse Kidney Events (MAKE30) and mortality. SSC 2021 recommends balanced crystalloids over 0.9% saline.\n\nThe ROSE Dynamic Fluid Stewardship Framework:\n• Resuscitation (First 3 hours): Rapid loading (30 mL/kg) to restore perfusion.\n• Optimization (3 to 24 hours): Administer fluid boluses (250–500 mL) guided solely by dynamic tests of fluid responsiveness (PLR, PPV, echo).\n• Stabilization (24 to 72 hours): Aim for neutral fluid balance; zero maintenance fluid overload.\n• Evacuation (After 72 hours): Active de-resuscitation with loop diuretics or ultrafiltration to eliminate accumulated tissue edema, improve lung compliance, and accelerate ventilator liberation."
+      },
+      {
+        "h": "Vasopressor & Inotrope Escalation Hierarchy",
+        "b": "When fluid resuscitation fails to restore MAP ≥ 65 mmHg, vasopressors must be escalated according to a standardized hierarchy:",
+        "table": {
+          "headers": [
+            "Line / Priority",
+            "Agent",
+            "Receptor Activity",
+            "Dosing Protocol",
+            "Clinical Role & Sepsis Exam Pearls"
+          ],
+          "rows": [
+            [
+              "1st Line (Primary)",
+              "Noradrenaline (Norepinephrine)",
+              "Potent α1 + moderate β1",
+              "0.02 to 1.0 mcg/kg/min (titrate q2–5 min)",
+              "Premier 1st-line vasopressor; potently restores SVR and MAP with minimal arrhythmogenic tachycardia. Peripheral administration via large vein is safe for initial 2–4 hours while central access is secured."
+            ],
+            [
+              "2nd Line (Adjunct)",
+              "Vasopressin (Argipressine)",
+              "Selective vascular V1a",
+              "Fixed non-titrated 0.03 units/min (never bolus)",
+              "Add when noradrenaline dose exceeds 0.25 mcg/kg/min (VASST trial). Restores neurohypophyseal vasopressin deficiency in septic shock; exerts powerful catecholamine-sparing effect and reduces tachyarrhythmias."
+            ],
+            [
+              "3rd Line (Refractory)",
+              "Adrenaline (Epinephrine)",
+              "Potent α1 + β1 + β2",
+              "0.05 to 0.5 mcg/kg/min",
+              "Add when MAP remains < 65 mmHg despite noradrenaline + vasopressin. Crucial Pitfall: Induces transient hyperlactatemia via skeletal muscle β2-receptor stimulation of aerobic glycolysis (do NOT misinterpret as worsening shock!)."
+            ],
+            [
+              "Inotrope Adjunct",
+              "Dobutamine",
+              "Selective β1 > β2",
+              "2.5 to 20 mcg/kg/min",
+              "Add to noradrenaline in patients with septic cardiomyopathy (low cardiac output, persistent hypoperfusion, ScvO2 < 70% despite adequate volume and MAP). Caution: Can cause vasodilation and arrhythmias."
+            ],
+            [
+              "Avoided Agent",
+              "Dopamine",
+              "D1, β1, then α1 (dose-dependent)",
+              "2 to 20 mcg/kg/min",
+              "SOAP II Trial: Dopamine causes significantly higher tachyarrhythmias (24% vs 12%) and increased mortality compared to noradrenaline. Strictly restricted to selected patients with absolute bradycardia."
+            ]
+          ],
+          "caption": "Surviving Sepsis Campaign vasopressor and inotrope escalation hierarchy."
+        }
+      },
+      {
+        "h": "Refractory Septic Shock & Rescue Therapies",
+        "b": "Definition of Refractory Septic Shock:\n• Persistent shock requiring escalating high-dose noradrenaline (≥ 0.25–0.5 mcg/kg/min) plus vasopressin to maintain target MAP ≥ 65 mmHg.\n\nLow-Dose Corticosteroids (The APROCCHSS Trial Protocol):\n• Indication: Septic shock refractory to fluid resuscitation and moderate-to-high dose vasopressors (> 4 hours duration).\n• Regimen: IV Hydrocortisone 200 mg per day, administered either as 50 mg IV every 6 hours or as a continuous infusion (200 mg/24 hours).\n• Mechanism: Upregulates downregulated vascular adrenergic receptors, suppresses excessive iNOS expression, and treats Critical Illness-Related Corticosteroid Insufficiency (CIRCI).\n• Evidence: APROCCHSS trial demonstrated significant reduction in 90-day all-cause mortality (43% vs 49%) and faster shock reversal without increasing secondary infections. Routine ACTH stimulation test is NOT recommended.\n\nRescue Therapies for Extreme Vasoplegia:\n1. Methylene Blue (Soluble Guanylate Cyclase Inhibitor):\n• Mechanism: Directly inhibits inducible nitric oxide synthase (iNOS) and soluble guanylate cyclase, terminating excessive cGMP-mediated vascular relaxation.\n• Dose: 1 to 2 mg/kg IV bolus over 20 minutes, followed by 0.25 to 0.5 mg/kg/hr infusion.\n• Warning: Risk of severe Serotonin Syndrome in patients on SSRIs/SNRIs or Linezolid due to potent MAO-A inhibition!\n2. Synthetic Human Angiotensin II (Giapreza — ATHOS-3 Trial):\n• Mechanism: Direct AT1 receptor stimulation restores vasomotor tone through a non-adrenergic pathway. Highly effective in high-output distributive shock with high renin / ACE dysfunction."
+      }
+    ],
+    "example": "CLINICAL CASE: A 54-year-old female presents with severe urosepsis. Following 30 mL/kg balanced crystalloids, she remains hypotensive at 76/42 mmHg (MAP 53 mmHg) with lactate 5.2 mmol/L. Noradrenaline is started and rapidly escalated to 0.35 mcg/kg/min, but MAP remains 59 mmHg.\n\nEscalation Protocol Execution:\n1. Add Fixed-Dose Vasopressin: Vasopressin is added at fixed 0.03 units/min (catecholamine-sparing strategy).\n2. Refractory Shock Corticosteroids: Hydrocortisone 200 mg/day (50 mg IV q6h) is initiated immediately.\n3. Echo Assessment: Shows hyperdynamic LV with stroke volume index 45 mL/m² (No inotrope needed; purely vasoplegic shock).\n4. Hemodynamic Response: MAP rises to 72 mmHg within 45 minutes; noradrenaline requirements decrease to 0.12 mcg/kg/min over the next 6 hours.",
+    "references": [
+      "Singer M, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA 2016;315(8):801–810.",
+      "Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Intensive Care Med 2021;47:1181–1247.",
+      "Annane D, et al. Hydrocortisone plus Fludrocortisone for Adults with Septic Shock (APROCCHSS). N Engl J Med 2018;378(9):809–818.",
+      "Russell JA, et al. Vasopressin versus Norepinephrine Infusion in Patients with Septic Shock (VASST). N Engl J Med 2008;358(9):877–887."
+    ]
+  },
+  {
+    "id": "cardiogenic-shock-scai",
+    "cat": "shock",
+    "name": "Cardiogenic Shock & Mechanical Circulatory Support (SCAI Stages)",
+    "short": "Cardiogenic Shock",
+    "tags": [
+      "Cardiogenic Shock",
+      "SCAI Staging",
+      "Inotropes",
+      "Dobutamine",
+      "Milrinone",
+      "IABP",
+      "Impella",
+      "VA-ECMO"
+    ],
+    "tagline": "SCAI A-to-E classification, inotrope/inodilator selection, pulmonary artery catheter profiles & MCS devices",
+    "source": "The Washington Manual of Critical Care (3rd ed.), Ch. 4; SCAI 2022 Expert Consensus on Cardiogenic Shock; AHA Scientific Statement; DanGer Shock Trial (NEJM 2024); IABP-SHOCK II Trial.",
+    "sections": [
+      {
+        "h": "SCAI Clinical Staging & Bedside Phenotyping",
+        "b": "Definition of Cardiogenic Shock:\n• Primary cardiac dysfunction resulting in critical end-organ hypoperfusion.\n• Classical Hemodynamic Diagnostic Criteria:\n  1. Persistent hypotension: Systolic blood pressure < 90 mmHg for > 30 minutes, or requirement for vasopressors/inotropes to maintain MAP ≥ 65 mmHg.\n  2. Severely reduced cardiac output: Cardiac Index (CI) < 2.2 L/min/m² (or < 1.8 L/min/m² without pharmacologic/mechanical support).\n  3. Elevated ventricular filling pressures: Pulmonary Capillary Wedge Pressure (PCWP) > 15–18 mmHg and/or CVP > 12–15 mmHg.\n\nThe SCAI (Society for Cardiovascular Angiography and Interventions) Shock Staging System (2022 Update):\n• Stage A (At Risk): Patients with large acute MI, acute heart failure decompensation, or severe myocarditis without current symptoms or signs of hypoperfusion.\n• Stage B (Beginning / Pre-Shock): Clinical signs of hemodynamic instability (tachycardia HR > 100 bpm, relative hypotension SBP < 90 mmHg) without hypoperfusion (lactate normal, warm extremities, normal urine output).\n• Stage C (Classic Cardiogenic Shock): Manifest hypoperfusion requiring inotropes, vasopressors, or MCS. Cold extremities, oliguria, altered sensorium, lactate ≥ 2.0 mmol/L, CI < 2.2 L/min/m².\n• Stage D (Deteriorating): Failure to respond to initial inotrope/vasopressor intervention within 1 hour; escalating support or adding multiple devices needed.\n• Stage E (Extremis): Circulatory collapse, refractory cardiac arrest undergoing active CPR / mechanical CPR, profound refractory acidosis (lactate > 8–10 mmol/L, pH < 7.10).\n\nForrester Bedside Hemodynamic Classification:\n• Subset I (Warm & Dry): CI > 2.2, PCWP < 18 → Normal baseline hemodynamics.\n• Subset II (Warm & Wet): CI > 2.2, PCWP > 18 → Pulmonary congestion without shock; treat with IV loop diuretics and vasodilators (NTG).\n• Subset III (Cold & Dry): CI < 2.2, PCWP < 18 → Hypovolemic or isolated RV shock; cautious small fluid challenges.\n• Subset IV (Cold & Wet): CI < 2.2, PCWP > 18 → Classic Cardiogenic Shock; inotropes, vasopressors, and mechanical unloading required."
+      },
+      {
+        "h": "Inotropic & Inodilator Pharmacotherapy",
+        "b": "Selection of inotropic agents depends on blood pressure, pulmonary vascular resistance, and underlying beta-receptor sensitivity:",
+        "table": {
+          "headers": [
+            "Inotropic Agent",
+            "Receptor / Mechanism",
+            "Inotropic Potency",
+            "SVR / Vasomotor Effect",
+            "PVR / RV Effect",
+            "Key Clinical Traps & Exam Pearls"
+          ],
+          "rows": [
+            [
+              "Dobutamine",
+              "Direct β1 > β2 agonist",
+              "Marked (+++++)",
+              "Mild to Moderate Vasodilation (↓ SVR)",
+              "Mild Vasodilation (↓ PVR)",
+              "First-line inotropic drug. Dose: 2.5–20 mcg/kg/min. Increases myocardial oxygen demand (MVO2); causes tachycardia and arrhythmias. Receptor downregulation in chronic β-blocker therapy."
+            ],
+            [
+              "Milrinone",
+              "PDE-3 inhibitor (prevents cAMP breakdown)",
+              "Strong (++++)",
+              "Marked Arterial + Venous Vasodilation (↓↓ SVR)",
+              "Marked Pulmonary Vasodilation (↓↓ PVR)",
+              "Premier inodilator of choice in pulmonary hypertension and right ventricular failure. Works downstream of β-receptors (effective despite chronic β-blockers). Eliminated renally: accumulates in AKI causing refractory hypotension!"
+            ],
+            [
+              "Levosimendan",
+              "Calcium sensitizer (binds Troponin C) + K_ATP opener",
+              "Strong (++++)",
+              "Systemic Vasodilation (↓ SVR)",
+              "Pulmonary Vasodilation (↓ PVR)",
+              "Augments cardiac contractility during systole without increasing intracellular calcium; does NOT increase MVO2 or arrhythmogenicity. Produces active metabolite (OR-1896) with prolonged half-life (70–80 hours)."
+            ],
+            [
+              "Noradrenaline",
+              "Potent α1 > β1 agonist",
+              "Mild (++)",
+              "Marked Vasoconstriction (↑↑ SVR)",
+              "Neutral to slight increase",
+              "First-line vasopressor to restore coronary perfusion pressure (target MAP ≥ 65 mmHg) when profound hypotension accompanies cardiogenic shock, prior to or paired with inotropes."
+            ]
+          ],
+          "caption": "Comparative pharmacology of inotropic and inodilator agents in cardiogenic shock."
+        }
+      },
+      {
+        "h": "Mechanical Circulatory Support (MCS) Comparison",
+        "b": "When pharmacotherapy fails to achieve hemodynamic stability, mechanical circulatory support is indicated:",
+        "table": {
+          "headers": [
+            "Device",
+            "Cannulation & Mechanism",
+            "Preload (PCWP)",
+            "Afterload (LV)",
+            "Cardiac Output Support",
+            "Myocardial O2 Demand (MVO2)"
+          ],
+          "rows": [
+            [
+              "IABP (Intra-Aortic Balloon Pump)",
+              "Femoral artery -> descending aorta. Helium balloon inflates in diastole (coronary perfusion), deflates in systole (vacuum afterload reduction).",
+              "Mild Decrease (-)",
+              "Decreases (-)",
+              "Modest (0.5 to 1.0 L/min)",
+              "Decreases"
+            ],
+            [
+              "Impella (CP / 5.5)",
+              "Transvalvular microaxial continuous-flow pump across aortic valve. Draws blood from LV cavity and expels into ascending aorta.",
+              "Markedly Decreases (---)",
+              "Decreases (unloads LV)",
+              "High (3.5 to 5.5 L/min)",
+              "Markedly Decreases (---)"
+            ],
+            [
+              "VA-ECMO (Extracorporeal Membrane Oxygenation)",
+              "Femoral vein drainage -> centrifugal pump & oxygenator -> Femoral artery return (retrograde flow against aortic valve).",
+              "INCREASES (LV distension!)",
+              "INCREASES (Retrograde afterload!)",
+              "Complete (4.0 to 7.0 L/min)",
+              "Increases (unless LV is vented)"
+            ]
+          ],
+          "caption": "Hemodynamic impact of temporary mechanical circulatory support devices."
+        },
+        "callout": {
+          "type": "pitfall",
+          "title": "CRITICAL PITFALL — VA-ECMO LV Distension & Harlequin Syndrome",
+          "text": "1. Retrograde aortic flow from VA-ECMO increases LV afterload. If the failing LV cannot open the aortic valve, massive LV distension, pulmonary edema, and intracardiac thrombus occur! Mandatory mitigation: LV venting via Impella ('ECPELLA'), IABP, or atrial septostomy.\n2. Harlequin Syndrome (North-South Syndrome): In femoral VA-ECMO, recovering native heart pumps deoxygenated blood through the aortic root (perfusing brain and right arm via innominate artery) while hyperoxygenated ECMO blood perfuses the lower body. Mandatory monitoring: Place right radial arterial line and pulse oximeter!"
+        }
+      },
+      {
+        "h": "Right Ventricular (RV) Failure in Cardiogenic Shock",
+        "b": "Pathophysiology of Acute Right Heart Failure:\n• The right ventricle is a thin-walled, compliant chamber designed for a low-resistance pulmonary circuit; it fails rapidly when subjected to acute increases in afterload (PVR).\n• Ventricular Interdependence: Marked RV dilatation shifts the interventricular septum leftward ('D-shaped LV' on short-axis echo), impairing LV diastolic filling, reducing LV stroke volume, and decreasing aortic root pressure.\n• The Fatal Coronary Ischemia Spiral: Falling aortic pressure + rising RV intracavitary pressure obliterates the right coronary artery (RCA) perfusion pressure gradient (normally perfused during both systole and diastole), precipitating RV infarction and fatal shock!\n\nPrinciples of RV Management in the ICU:\n1. Restrict Intravenous Fluids: Overfilling the RV worsens tricuspid regurgitation and septal bowing. Keep CVP at 8–12 mmHg; avoid fluid boluses!\n2. Maintain RV Perfusion Pressure: Noradrenaline is first-line to maintain aortic root diastolic pressure and restore RCA perfusion.\n3. Reduce RV Afterload: Treat hypoxemia, hypercapnia, and acidemia. Use inhaled pulmonary vasodilators (inhaled epoprostenol or inhaled nitric oxide) which act selectively on the pulmonary vasculature without systemic hypotension.\n4. Selective Inotropy: Inhaled milrinone or low-dose dobutamine."
+      }
+    ],
+    "example": "CLINICAL CASE: A 62-year-old male presents with acute anterior STEMI complicated by cardiogenic shock (SCAI Stage C). BP is 78/48 mmHg, HR 115 bpm, cold clammy extremities, lactate 4.2 mmol/L. Bedside echo reveals extensive anterior/apical akinesis with LVEF 18% and severe pulmonary congestion.\n\nManagement Protocol:\n1. Noradrenaline Infusion: Started immediately to restore MAP to 65 mmHg and maintain coronary perfusion pressure.\n2. Primary PCI: Immediate transfer to catheterization laboratory for emergency revascularization of occluded proximal LAD.\n3. DanGer Shock Protocol: Impella CP microaxial pump placed prior to PCI to achieve active left ventricular mechanical unloading.\n4. Hemodynamic Result: PCWP drops from 28 to 14 mmHg, Cardiac Index increases to 2.6 L/min/m², and serum lactate clears to normal within 12 hours.",
+    "references": [
+      "Baran DA, et al. SCAI Clinical Expert Consensus Statement on the Classification of Cardiogenic Shock. Catheter Cardiovasc Interv 2019;94(1):29–37.",
+      "The Washington Manual of Critical Care, 3rd ed., Ch. 4. Wolters Kluwer, 2024.",
+      "Møller JE, et al. Microaxial Flow Pump or Standard Care in Infarct-Related Cardiogenic Shock (DanGer Shock). N Engl J Med 2024;390(23):2129–2140.",
+      "Thiele H, et al. Intraaortic Balloon Support for Myocardial Infarction with Cardiogenic Shock (IABP-SHOCK II). N Engl J Med 2012;367(14):1287–1296."
+    ]
+  },
+  {
+    "id": "hypovolemic-hemorrhagic-shock",
+    "cat": "shock",
+    "name": "Hypovolemic Shock & Massive Transfusion Protocols (MTP)",
+    "short": "Hypovolemic Shock & MTP",
+    "tags": [
+      "Hemorrhagic Shock",
+      "ATLS Classes",
+      "Massive Transfusion",
+      "TEG/ROTEM",
+      "Tranexamic Acid",
+      "Lethal Triad"
+    ],
+    "tagline": "ATLS shock classes, 1:1:1 balanced transfusion, viscoelastometric ROTEM/TEG guidance & TXA CRASH-2 protocol",
+    "source": "The Washington Manual of Critical Care (3rd ed.), Ch. 5; ATLS 10th/11th ed.; PROPPR Trial; CRASH-2 and CRASH-3 Trials; European Trauma Guidelines 2023.",
+    "sections": [
+      {
+        "h": "ATLS Classification of Hemorrhagic Shock",
+        "b": "The American College of Surgeons Advanced Trauma Life Support (ATLS) classifies hemorrhagic shock into 4 classes based on blood volume loss (assuming standard 70 kg adult, blood volume ~5 Liters / 70 mL/kg):",
+        "table": {
+          "headers": [
+            "Parameter",
+            "Class I (Minimal)",
+            "Class II (Mild)",
+            "Class III (Moderate)",
+            "Class IV (Severe)"
+          ],
+          "rows": [
+            [
+              "Blood Loss (% & mL)",
+              "< 15% (< 750 mL)",
+              "15–30% (750–1500 mL)",
+              "30–40% (1500–2000 mL)",
+              "> 40% (> 2000 mL)"
+            ],
+            [
+              "Heart Rate (bpm)",
+              "< 100 (Normal)",
+              "100–120 (Tachycardia)",
+              "120–140 (Marked Tachycardia)",
+              "> 140 (Extreme Tachycardia)"
+            ],
+            [
+              "Blood Pressure",
+              "Normal",
+              "Normal (Vasoconstriction)",
+              "Decreased (Hypotension)",
+              "Severely Decreased / Unobtainable"
+            ],
+            [
+              "Pulse Pressure",
+              "Normal",
+              "Decreased (Narrowed)",
+              "Decreased",
+              "Severely Narrowed"
+            ],
+            [
+              "Respiratory Rate",
+              "14–20",
+              "20–30",
+              "30–40",
+              "> 35 (Air hunger)"
+            ],
+            [
+              "Urine Output (mL/h)",
+              "> 30",
+              "20–30",
+              "5–15",
+              "Negligible / Anuria"
+            ],
+            [
+              "Mental Status",
+              "Slightly anxious",
+              "Mildly anxious",
+              "Anxious, confused",
+              "Confused, lethargic, obtunded"
+            ],
+            [
+              "Fluid Replacement",
+              "Crystalloid",
+              "Crystalloid",
+              "Blood products + Crystalloid",
+              "Massive Transfusion Protocol (1:1:1)"
+            ]
+          ],
+          "caption": "ATLS classification of hemorrhagic shock."
+        },
+        "callout": {
+          "type": "pearl",
+          "title": "EXAM PEARL — The Compensated Shock Trap",
+          "text": "Young, fit trauma patients maintain completely normal systolic blood pressure up to Class III hemorrhage (30% blood volume loss, ~1500 mL!) through intense catecholamine vasoconstriction. The earliest reliable clinical markers of occult shock are resting tachycardia and narrowed pulse pressure (elevated diastolic BP from vasoconstriction)!"
+        }
+      },
+      {
+        "h": "Damage Control Resuscitation & Massive Transfusion Protocol (MTP)",
+        "b": "Core Pillars of Damage Control Resuscitation (DCR):\n1. Immediate Hemorrhage Control: Tourniquets, pelvic binder, surgical packing, REBOA.\n2. Permissive Hypotension:\n• Target Systolic Blood Pressure: 80 to 90 mmHg (MAP 50 to 60 mmHg) until definitive surgical hemostasis.\n• Rationale: Avoids dislodging nascent blood clots ('popping the clot') and prevents dilutional coagulopathy.\n• CRITICAL EXCEPTION: Traumatic Brain Injury (TBI) — maintain SBP ≥ 100–110 mmHg and MAP ≥ 80 mmHg to prevent secondary ischemic brain injury.\n3. Minimize Crystalloids: Limit crystalloids to < 1000–1500 mL; early transition to blood products.\n\nDefinition of Massive Transfusion:\n• Transfusion of ≥ 10 units of packed RBCs within 24 hours, or ≥ 4 units of RBCs within 1 hour with ongoing bleeding.\n\nBalanced 1:1:1 Hemostatic Transfusion (PROPPR Trial):\n• Fixed Ratio: 1 Unit Packed Red Blood Cells (PRBC) : 1 Unit Fresh Frozen Plasma (FFP) : 1 Unit Platelets (or 1 apheresis platelet pack per 6 PRBC/FFP).\n• Evidence: PROPPR trial proved that 1:1:1 compared to 1:1:2 achieved significantly faster hemostasis and reduced exsanguination mortality at 24 hours.\n\nThe Trauma Lethal Triad & The Diamond of Death:\n• Hypothermia: Keep core temperature > 35°C with rapid blood warmers and active forced-air warming. Below 34°C, clotting enzyme cascades cease functioning!\n• Acidosis: Target pH > 7.20. Severe acidosis directly inhibits thrombin generation.\n• Coagulopathy: Dilutional and trauma-induced coagulopathy (TIC).\n• Hypocalcemia (The 4th Element / Diamond of Death): Citrate preservative in stored blood binds ionized calcium. Target ionized Ca2+ ≥ 1.1 mmol/L! Administer 1 g Calcium Chloride or 3 g Calcium Gluconate IV for every 4 units of blood products transfused."
+      },
+      {
+        "h": "Viscoelastometric Testing (TEG & ROTEM) Protocols",
+        "b": "Viscoelastic testing provides real-time functional assessment of whole blood clot formation, firmness, and lysis, directing precise blood component therapy:",
+        "table": {
+          "headers": [
+            "TEG Parameter",
+            "ROTEM Parameter",
+            "Hemostatic Phase / Defect",
+            "Targeted Therapy / Blood Product"
+          ],
+          "rows": [
+            [
+              "R-Time (Reaction time)",
+              "Clotting Time (CT)",
+              "Clot initiation / clotting factor activity",
+              "Fresh Frozen Plasma (FFP) 10–15 mL/kg or 4-Factor PCC"
+            ],
+            [
+              "K-Time & α-Angle",
+              "Clot Formation Time (CFT) & α-Angle",
+              "Clot kinetics / fibrin mesh propagation",
+              "Cryoprecipitate (10 units per 70 kg) or Fibrinogen Concentrate (target fibrinogen > 1.5–2.0 g/L)"
+            ],
+            [
+              "Maximum Amplitude (MA)",
+              "Maximum Clot Firmness (MCF)",
+              "Clot strength (80% platelets, 20% fibrin)",
+              "Platelet Concentrate / Apheresis Pack (target platelets > 50,000–100,000/μL)"
+            ],
+            [
+              "LY30 (> 3%)",
+              "Maximum Lysis / ML (> 15%)",
+              "Premature clot breakdown / Hyperfibrinolysis",
+              "Tranexamic Acid (TXA) 1 g IV bolus"
+            ]
+          ],
+          "caption": "Goal-directed resuscitation guided by TEG and ROTEM viscoelastometric parameters."
+        }
+      },
+      {
+        "h": "Tranexamic Acid (TXA) Protocols & Non-Hemorrhagic Hypovolemia",
+        "b": "The CRASH-2 Trial Tranexamic Acid (TXA) Protocol:\n• Mechanism: Synthetic lysine analogue that competitively blocks plasminogen lysine-binding sites, inhibiting plasmin formation and fibrinolysis.\n• Dose: 1 g IV bolus infused over 10 minutes, followed by 1 g IV continuous infusion over the next 8 hours.\n• THE 3-HOUR TIME-DEPENDENT MANDATE:\n  - Administration within 1 hour of injury reduces risk of death due to bleeding by 32% (p < 0.0001).\n  - Administration between 1 to 3 hours reduces bleeding death by 21%.\n  - CRITICAL WARNING: Administration AFTER 3 HOURS significantly INCREASES the risk of bleeding death and thrombotic events (OR 1.44)! Never start TXA if > 3 hours have elapsed since injury!\n\nNon-Hemorrhagic Hypovolemic Shock:\n• Gastrointestinal Losses: Severe vomiting (hypokalemic hypochloremic metabolic alkalosis), cholera / secretory diarrhea (normal anion gap hyperchloremic metabolic acidosis with severe hypokalemia).\n• Third Spacing: Acute pancreatitis, extensive bowel ischemia, peritonitis.\n• Severe Thermal Burns (The Parkland Formula):\n  - Volume in first 24 hours = 4 mL × Weight (kg) × % Total Body Surface Area (TBSA) of 2nd/3rd degree burns.\n  - Give half the total calculated volume in the first 8 hours (calculated from the time of burn, NOT time of hospital arrival!), and the remaining half over the next 16 hours."
+      }
+    ],
+    "example": "CLINICAL CASE: A 28-year-old male motorcyclist arrives following a high-speed collision. Vitals: HR 138 bpm, BP 84/52 mmHg, RR 32 bpm. FAST exam reveals free fluid in Morrison's pouch and splenorenal recess; pelvis is mechanically unstable.\n\nDamage Control Resuscitation Steps:\n1. Pelvic Binder: Circumferential sheet / commercial binder applied immediately around the greater trochanters.\n2. MTP Activation: Blood bank alerts MTP cooler (6 PRBC, 6 FFP, 1 apheresis platelet pack).\n3. TXA Administration: 1 g IV given over 10 minutes (injury occurred 45 min ago; well within 3-hour window), followed by 1 g over 8 hours.\n4. Permissive Hypotension: Target SBP 80–90 mmHg maintained with balanced 1:1:1 transfusion; rapid transfuser with blood warmer used.\n5. Calcium Repletion: 1 g Calcium Chloride IV given after first 4 units (ionized Ca2+ maintained at 1.2 mmol/L).\n6. Outcome: Patient transferred to hybrid OR for pelvic angioembolization and exploratory laparotomy; survives without lethal triad complications.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd ed., Ch. 5. Wolters Kluwer, 2024.",
+      "CRASH-2 trial collaborators. Effects of tranexamic acid on death, vascular occlusive events, and blood transfusion in trauma patients. Lancet 2010;376:23–32.",
+      "Holcomb JB, et al. Transfusion of Plasma, Platelets, and Red Blood Cells in a 1:1:1 vs a 1:1:2 Ratio (PROPPR). JAMA 2015;313(5):471–482.",
+      "Spahn DR, et al. The European guideline on management of major bleeding and coagulopathy following trauma: 5th/6th edition. Crit Care 2023;27:80."
+    ]
+  },
+  {
+    "id": "obstructive-shock-icu",
+    "cat": "shock",
+    "name": "Obstructive Shock: Cardiac Tamponade, Tension Pneumothorax & PE",
+    "short": "Obstructive Shock",
+    "tags": [
+      "Cardiac Tamponade",
+      "Tension Pneumothorax",
+      "Pulsus Paradoxus",
+      "Pericardiocentesis",
+      "Thoracostomy",
+      "Obstructive Shock"
+    ],
+    "tagline": "Pathophysiology, emergency bedside decompression, echocardiographic signs & acute relief of mechanical obstruction",
+    "source": "The Washington Manual of Critical Care (3rd ed.), Ch. 6; Goldfrank's Toxicologic & Critical Emergencies; British Thoracic Society (BTS) Pleural Guidelines; ESC Guidelines on Pericardial Diseases.",
+    "sections": [
+      {
+        "h": "Pathophysiological Mechanisms of Mechanical Obstruction",
+        "b": "Definition & Overview:\n• Obstructive shock is acute circulatory failure caused by physical, extracardiac mechanical obstruction to blood flow in the central cardiovascular circuit.\n• Results in severe impairment of diastolic ventricular filling (inflow obstruction) or extreme elevation in ventricular afterload (outflow obstruction).\n• Key Distinction: The myocardium is intrinsically healthy and hypercontractile initially, but forward stroke volume collapses because blood cannot physically enter or exit the ventricles.\n\nThe 3 Core Life-Threatening Etiologies:\n1. Cardiac Tamponade: Pericardial effusion elevates intrapericardial pressure above chamber diastolic pressures, crushing the right atrium and right ventricle and preventing diastolic filling.\n2. Tension Pneumothorax: One-way valve creates positive pleural pressure that collapses the ipsilateral lung, shifts the mediastinum, kinks the inferior/superior vena cava, and halts venous return to the right heart.\n3. Massive Pulmonary Embolism: Large saddle embolus physically obstructs ≥ 50% of the pulmonary arterial bed, abruptly generating acute right ventricular outflow obstruction and acute cor pulmonale.\n\n4th Critical ICU Etiology: Severe Dynamic Hyperinflation (Severe Auto-PEEP):\n• In mechanically ventilated patients with severe status asthmaticus or COPD, massive gas trapping generates intrinsic PEEP > 15–25 cmH2O, compressing the heart and IVC exactly like a tension pneumothorax!"
+      },
+      {
+        "h": "Cardiac Tamponade: Bedside Diagnosis & Emergency Pericardiocentesis",
+        "b": "Pathophysiology & The Pericardial Pressure-Volume Curve:\n• The normal pericardial space contains 15 to 50 mL of lubricating fluid.\n• In acute hemopericardium (trauma, aortic dissection, post-cardiac surgery), as little as 150 to 200 mL of rapid fluid accumulation exhausts pericardial compliance and triggers catastrophic tamponade along the steep portion of the curve.\n\nClassic Bedside Signs:\n1. Beck's Triad (Present in only ~30% of acute medical tamponade, highly specific):\n• Hypotension (low stroke volume).\n• Distended Jugular Veins (JVD) with absent or diminished y-descent (elevated venous pressure).\n• Muffled / Distant Heart Sounds (fluid insulator).\n\n2. Pulsus Paradoxus:\n• Definition: An exaggerated inspiratory drop in systolic blood pressure > 10 mmHg during normal quiet spontaneous breathing.\n• Mechanism (Ventricular Interdependence): In an inextensible pericardial sac, inspiratory venous return expands the RV at the direct expense of the LV, bulging the interventricular septum leftward and reducing LV stroke volume.\n• Measurement: Deflate manual sphygmomanometer slowly: note pressure where Korotkoff sounds are heard only during expiration, then pressure where sounds are heard continuously throughout respiration. Difference > 10 mmHg is positive.\n\n3. Electrical Alternans:\n• Beat-to-beat alternation in QRS complex amplitude across all ECG leads caused by the heart swinging back and forth in the fluid-filled pericardial sac.\n\nEchocardiographic Cardinal Signs:\n• Right Ventricular Diastolic Collapse: Free wall indentation during early diastole (high specificity).\n• Right Atrial Late Systolic Collapse: RA inversion lasting > 1/3 of the cardiac cycle (earliest and most sensitive sign).\n• Plethoric IVC: Dilated IVC (> 2.1 cm) with < 50% respiratory collapse.\n• Respiratory Variation Across Valves: > 25% respiratory variation in mitral E-velocity and > 40% in tricuspid E-velocity.\n\nEmergency Pericardiocentesis Protocol:\n• Subxiphoid Ultrasound-Guided Approach: Insert 18-gauge needle 1 cm inferior to left costoxiphoid angle, directed at 45° angle toward left shoulder under continuous gentle aspiration.\n• Removing even 30 to 50 mL dramatically drops pressure along the steep portion of the curve, immediately restoring cardiac output!",
+        "callout": {
+          "type": "pearl",
+          "title": "EXAM PEARL — Low-Pressure Tamponade",
+          "text": "In severely hypovolemic patients (dehydration, trauma, hemorrhage), intrapericardial pressure is elevated relative to intracardiac pressure, but absolute CVP and JVP are normal or low! Always suspect 'Low-Pressure Tamponade' on bedside POCUS in unexplained shock."
+        }
+      },
+      {
+        "h": "Tension Pneumothorax: Immediate Needle Decompression & Finger Thoracostomy",
+        "b": "Pathophysiological Emergency:\n• Alveolar or chest wall tear acts as a one-way flutter valve: air enters pleural space on inspiration but cannot escape on expiration.\n• Intrapleural pressure becomes positive, collapsing ipsilateral lung and shifting the mobile mediastinum and trachea contralaterally.\n• Mediastinal shift kinks the inferior and superior vena cava, obliterating venous return to the right atrium and precipitating pulseless electrical activity (PEA) arrest!\n\nBedside Clinical Diagnosis (NEVER WAIT FOR A CHEST RADIOGRAPH!):\n• Sudden extreme dyspnea, tachypnea, cyanosis, and profound shock.\n• Unilateral absence of breath sounds + marked hyperresonance to percussion.\n• Contralateral tracheal deviation and distended neck veins.\n• In ventilated patients: Sudden alarm for elevated peak inspiratory pressure (PIP) + crashing tidal volumes + severe arterial desaturation.\n\nEmergency Decompression Protocols:\n1. Needle Thoracostomy (Temporary Bridge):\n• Catheter: Large-bore (14 or 16-gauge) cannula at least 7 to 8 cm in length (standard 4.5 cm needles fail in up to 50% of adults due to thick chest wall).\n• Pediatric / Traditional Site: 2nd intercostal space, midclavicular line (just superior to 3rd rib to avoid neurovascular bundle).\n• Modern Adult / ATLS 10th/11th Ed Preferred Site: 4th or 5th intercostal space, anterior axillary line (significantly higher success rate and thinner chest wall).\n\n2. Simple Finger Thoracostomy (The Gold Standard in Mechanically Ventilated / Trauma Patients):\n• 3 cm horizontal incision at the 4th/5th intercostal space anterior axillary line.\n• Blunt dissection with Kelly forceps over the rib into the pleural space.\n• Insert gloved finger directly into pleural cavity to confirm rush of air and sweep for adhesions.\n• Immediately converts a lethal tension pneumothorax into a harmless open pneumothorax!\n• Follow immediately by inserting a formal 28–32 Fr intercostal chest tube connected to an underwater seal."
+      },
+      {
+        "h": "Massive Pulmonary Embolism & Severe Dynamic Air-Trapping",
+        "b": "Massive Pulmonary Embolism Outflow Obstruction:\n• Occlusion of ≥ 50% of the pulmonary arterial bed generates acute right ventricular afterload mismatch.\n• The thin-walled RV acutely dilates and fails, shifting the interventricular septum into the LV ('D-shaped LV'), reducing LV preload and precipitating cardiogenic/obstructive shock.\n• Immediate Emergency Management: Systemic thrombolysis with Alteplase 100 mg IV over 2 hours, or 50 mg IV bolus over 15 minutes during cardiac arrest.\n\nDynamic Hyperinflation (Severe Auto-PEEP) as an Obstructive Shock Mimic:\n• In ventilated patients with severe status asthmaticus or COPD, extreme airway resistance prevents complete lung emptying before the next breath.\n• Intrinsic PEEP (Auto-PEEP) accumulates, frequently exceeding 15 to 25 cmH2O.\n• This massive positive intrathoracic pressure compresses the IVC, halts venous return, and precipitates acute circulatory arrest immediately following intubation!\n• THE LIFE-SAVING VENTILATOR DISCONNECT MANEUVER:\n  - IMMEDIATELY DISCONNECT THE PATIENT FROM THE VENTILATOR CIRCUIT!\n  - Manually compress the patient's chest to assist complete passive exhalation for 30 to 60 seconds.\n  - If blood pressure and pulse instantly rebound, obstructive shock from auto-PEEP is confirmed! Adjust ventilator: low rate (10–12 bpm), long Te (I:E 1:4–1:5), and permissive hypercapnia."
+      }
+    ],
+    "example": "CLINICAL CASE: A 32-year-old male with severe acute asthma is intubated for exhaustion. Thirty seconds after being placed on volume-control ventilation (VT 550 mL, RR 20 bpm, PEEP 8 cmH2O), his blood pressure plummets from 120/75 to 55/30 mmHg, HR drops to 45 bpm, and carotid pulse becomes barely palpable. Bilateral breath sounds are present with wheezing; trachea is central.\n\nDiagnostic Analysis & Immediate Life-Saving Action:\n1. Recognize Obstructive Shock from Severe Auto-PEEP (Dynamic Hyperinflation).\n2. Action: The respiratory circuit is IMMEDIATELY DISCONNECTED from the ETT.\n3. A continuous audible rush of exhaled gas escapes for 12 seconds with gentle manual chest pressure.\n4. Within 20 seconds of deflation, blood pressure surges to 135/85 mmHg and HR normalizes to 88 bpm.\n5. Ventilator Reset: RR reduced to 10 bpm, VT reduced to 400 mL (6 mL/kg), I:E ratio set to 1:4, PEEP set to 0 cmH2O, and permissive hypercapnia accepted (pH 7.22, PaCO2 68 mmHg).",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd ed., Ch. 6. Wolters Kluwer, 2024.",
+      "Goldfrank's Toxicologic Emergencies, 11th ed., Ch. 28. McGraw-Hill, 2019.",
+      "Adler Y, et al. 2015 ESC Guidelines on the diagnosis and management of pericardial diseases. Eur Heart J 2015;36(42):2921–2964.",
+      "Havelock T, et al. British Thoracic Society Pleural Disease Guideline 2010. Thorax 2010;65(Suppl 2):ii61–ii76."
+    ]
+  },
+  {
+    "id": "anaphylactic-neurogenic-endocrine-shock",
+    "cat": "shock",
+    "name": "Anaphylactic, Neurogenic & Endocrine Shock",
+    "short": "Anaphylactic & Neurogenic Shock",
+    "tags": [
+      "Anaphylactic Shock",
+      "Neurogenic Shock",
+      "Spinal Shock",
+      "Adrenal Crisis",
+      "Myxedema Coma",
+      "Epinephrine"
+    ],
+    "tagline": "Distributive shock variants: IgE anaphylaxis protocols, spinal cord sympathetic disruption & acute endocrine collapse",
+    "source": "The Washington Manual of Critical Care (3rd ed.), Ch. 7 & 8; World Allergy Organization (WAO) Guidelines 2020/2024; Resuscitation Council UK; Endocrine Society Guidelines.",
+    "sections": [
+      {
+        "h": "Anaphylactic Shock: Grading & Emergency Epinephrine Protocols",
+        "b": "Pathophysiology of Anaphylactic Shock:\n• Acute, life-threatening multi-system syndrome resulting from sudden massive systemic degranulation of mast cells and basophils.\n• Immunologic (IgE-mediated cross-linking on FcεRI receptors: neuromuscular blockers, antibiotics, latex, venom) vs Non-immunologic (direct mast cell activation: radiocontrast media, vancomycin, opioids).\n• Massive release of histamine, tryptase, leukotrienes (LTC4, LTD4), and platelet-activating factor (PAF) triggers profound arteriolar vasodilation, systemic venous pooling, and extreme capillary hyperpermeability (up to 35% of intravascular volume extravasates into the interstitium within 10 minutes!).\n\nRing & Messmer Clinical Grading Scale:\n• Grade I: Cutaneous signs only (generalized erythema, urticaria, angioedema).\n• Grade II: Moderate multi-organ involvement (cutaneous signs + tachycardia, mild hypotension ΔSBP > 30%, mild dyspnea, nausea).\n• Grade III: Severe life-threatening anaphylaxis (cardiovascular collapse, severe bronchospasm, laryngeal stridor, shock, arrhythmias).\n• Grade IV: Circulatory arrest or respiratory arrest.\n\nEpinephrine Administration Rules (The Premier First-Line Agent):\n• Route of Choice: INTRAMUSCULAR (IM) injection into the ANTEROLATERAL ASPECT OF THE MIDDLE THIRD OF THE THIGH (vastus lateralis achieves peak plasma levels 4 times faster than the deltoid or subcutaneous routes!).\n• Adult Dose: 0.5 mg IM of 1:1,000 (1 mg/mL) solution undiluted.\n• Repeat Interval: Repeat every 5 to 15 minutes if symptoms persist or deteriorate.\n\nRefractory Anaphylactic Shock Protocol:\n1. Transition to IV Adrenaline Infusion: Start at 0.05 to 0.1 mcg/kg/min (or 2 to 10 mcg/min) and titrate rapidly to restore MAP ≥ 65 mmHg.\n2. Aggressive Volume Resuscitation: Rapidly infuse 1 to 2 Liters of balanced crystalloid via large-bore IV cannulae.\n3. The Beta-Blocker Rescue Rule (IV Glucagon):\n• Patients on chronic beta-blockers may fail to respond to adrenaline and can develop severe unopposed alpha-vasoconstriction and paradoxical bradycardia.\n• Specific Antidote: IV Glucagon 1.0 to 5.0 mg administered over 5 minutes, followed by an infusion of 1 to 5 mg/hour. Glucagon bypasses adrenergic receptors by directly activating adenylate cyclase, increasing intracellular cAMP and restoring cardiac inotropy and chronotropy!",
+        "callout": {
+          "type": "pitfall",
+          "title": "CRITICAL PITFALL — The 'Empty Heart' Death Position",
+          "text": "Never allow a patient in anaphylactic shock to suddenly sit up or stand! Massive venous pooling leaves the ventricles underfilled ('empty heart syndrome'). Sudden upright posture halts venous return entirely, triggering immediate PEA cardiac arrest. Keep the patient strictly supine with legs elevated (Trendelenburg position) unless severe airway stridor mandates sitting."
+        }
+      },
+      {
+        "h": "Neurogenic Shock vs Spinal Shock",
+        "b": "A fundamental distinction in neurotrauma between circulatory failure and neurological reflex loss:",
+        "table": {
+          "headers": [
+            "Clinical Feature",
+            "Neurogenic Shock",
+            "Spinal Shock"
+          ],
+          "rows": [
+            [
+              "Primary Nature",
+              "Circulatory / Hemodynamic collapse (Distributive shock)",
+              "Neurological / Electrophysiological concussion"
+            ],
+            [
+              "Pathophysiology",
+              "Acute disruption of descending sympathetic pathways (T1–L2) from spinal cord injury at or above T6.",
+              "Temporary physiological disruption of all sensorimotor and autonomic spinal reflex arcs below the level of injury."
+            ],
+            [
+              "Classic Triad",
+              "Hypotension + Bradycardia (loss of T1–T4 cardiac accelerators) + Warm/dry extremities.",
+              "Flaccid paralysis + Areflexia + Loss of bulbocavernosus reflex."
+            ],
+            [
+              "Duration",
+              "Days to weeks (typically lasts 1 to 5 weeks).",
+              "Hours to months (ends when bulbocavernosus reflex returns and spasticity develops)."
+            ],
+            [
+              "Target Blood Pressure",
+              "Maintain MAP ≥ 85 mmHg for 7 days to preserve spinal cord perfusion.",
+              "Standard pressure targets unless concurrent neurogenic shock."
+            ],
+            [
+              "Medical Management",
+              "Vasopressors with α1 + β1 activity (Noradrenaline, Ephedrine, Dopamine) + IV fluids.",
+              "Spinal immobilization, urgent surgical decompression, supportive care."
+            ]
+          ],
+          "caption": "Diagnostic divergence between neurogenic shock and spinal shock."
+        }
+      },
+      {
+        "h": "Acute Adrenal Crisis in Critical Care",
+        "b": "Pathophysiology & Triggers:\n• Acute severe deficiency of glucocorticoids (cortisol) and mineralocorticoids (aldosterone).\n• Most common trigger in ICU: Septic shock, trauma, or surgery in patients on chronic systemic corticosteroid therapy who have an unrecognized suppressed hypothalamic-pituitary-adrenal (HPA) axis.\n• Other Causes: Sudden cessation of steroids, bilateral adrenal hemorrhage (Waterhouse-Friderichsen syndrome in meningococcemia, antiphospholipid syndrome, HIT), pituitary apoplexy (Sheehan's syndrome).\n\nClinical Presentation:\n• Severe, unexplained hypotension refractory to fluid loading and escalating vasopressors.\n• Accompanied by abdominal pain, nausea, vomiting, fever, and confusion.\n\nDiagnostic Laboratory Triad:\n1. Hyponatremia: Aldosterone deficiency impairs renal tubular sodium reabsorption.\n2. Hyperkalemia: Aldosterone deficiency impairs renal potassium excretion (absent in secondary/pituitary failure).\n3. Hypoglycemia: Cortisol deficiency impairs hepatic gluconeogenesis and glycogenolysis.\n\nEmergency Replacement Protocol:\n• Stat Dose: Hydrocortisone 100 mg IV push IMMEDIATELY (do not wait for cortisol levels or ACTH stimulation test!).\n• Maintenance Dose: Hydrocortisone 200 mg per 24 hours, administered either as 50 mg IV every 6 hours or as a continuous 200 mg/day infusion.\n• Fluid Resuscitation: Dextrose 5% in 0.9% Normal Saline (treats both hypovolemia and hypoglycemia).\n• Mineralocorticoid Note: Fludrocortisone is unnecessary acutely because hydrocortisone at doses > 100 mg/day fully saturates mineralocorticoid receptors."
+      },
+      {
+        "h": "Myxedema Coma & Thyroid Storm",
+        "b": "Myxedema Coma (Decompensated Hypothyroidism):\n• Presentation: Severe hypothermia (core temp often < 32°C), marked bradycardia, hypotension, hypoventilation (impaired hypoxic/hypercapnic drive), delayed deep tendon reflex relaxation, non-pitting periorbital/pretibial edema, and obtundation.\n• THE LIFE-SAVING STEROID RULE:\n  - ALWAYS administer IV Hydrocortisone (100 mg IV q8h) BEFORE administering IV thyroid hormone!\n  - Administering thyroid hormone abruptly raises the metabolic rate and accelerates hepatic cortisol degradation. If co-existing adrenal insufficiency is present, thyroid hormone administration will trigger fatal acute adrenal crisis!\n• Thyroid Hormone Dosing: IV Levothyroxine (T4) 200 to 400 mcg loading dose, followed by 50 to 100 mcg daily, with or without IV Liothyronine (T3) 5 to 20 mcg.\n\nThyroid Storm (Extreme Decompensated Thyrotoxicosis):\n• Clinical Diagnosis: Burch-Wartofsky Point Scale ≥ 45 confirms thyroid storm.\n• Multimodal 4-Step Therapeutic Blockade:\n  1. Block Thyroid Hormone Synthesis: Propylthiouracil (PTU) 500–1000 mg loading PO/NG, then 200 mg q4h (PTU preferred over Methimazole because it also blocks peripheral T4 to T3 conversion).\n  2. Block Thyroid Hormone Release: Lugol's solution (5 drops q8h) or Potassium Iodide (SSKI) administered at least 1 HOUR AFTER PTU (giving iodine first supplies substrate for new hormone synthesis via the Jod-Basedow effect!).\n  3. Block Peripheral Adrenergic Hyperactivity: IV Esmolol (titratable, short-acting) or Propranolol 1–2 mg IV q15min.\n  4. Inhibit Peripheral Conversion & Support Adrenals: IV Hydrocortisone 100 mg q8h."
+      }
+    ],
+    "example": "CLINICAL CASE: A 24-year-old male with a complete C5 spinal cord injury following a diving accident is brought to the ICU. Vitals: HR 42 bpm (sinus bradycardia), BP 74/40 mmHg (MAP 51 mmHg), core temp 35.1°C. His skin is warm, flushed, and dry; neurologically he has flaccid quadriplegia with absent bulbocavernosus reflex.\n\nDiagnostic Analysis & Management:\n1. Diagnosis: Concurrent Neurogenic Shock (distributive shock from sympathetic disruption above T6) and Spinal Shock (areflexia).\n2. Contrast with Hypovolemic Shock: Skin is warm/dry (not cold/clammy) and heart rate is bradycardic at 42 bpm (not tachycardic) due to loss of T1–T4 cardiac sympathetic accelerators.\n3. Spinal Cord Perfusion Target: Consortium guidelines mandate maintaining MAP ≥ 85 mmHg for the first 7 days to prevent secondary ischemic spinal cord infarction.\n4. Pharmacotherapy: Noradrenaline infusion initiated (α1 vasoconstriction + β1 inotropy/chronotropy). Atropine 0.5 mg IV given for symptomatic bradycardia.\n5. Outcome: MAP maintained at 88 mmHg with noradrenaline; skin tone and perfusion normalize.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd ed., Ch. 7 & 8. Wolters Kluwer, 2024.",
+      "Cardona V, et al. World Allergy Organization Anaphylaxis Guidelines 2020. World Allergy Organ J 2020;13(10):100472.",
+      "Consortium for Spinal Cord Medicine. Early acute management in adults with spinal cord injury: a clinical practice guideline. J Spinal Cord Med 2008;31(4):403–479.",
+      "Bornstein SR, et al. Diagnosis and Treatment of Primary Adrenal Insufficiency: An Endocrine Society Clinical Practice Guideline. J Clin Endocrinol Metab 2016;101(2):364–389."
+    ]
+  },
+  {
+    "id": "acute-respiratory-failure-types",
+    "cat": "respiratory",
+    "name": "Acute Respiratory Failure: Types 1, 2, 3 & 4",
+    "short": "Respiratory Failure Types",
+    "tags": [
+      "Type 1 Hypoxemic",
+      "Type 2 Hypercapnic",
+      "A-a Gradient",
+      "HFNC",
+      "NIV",
+      "ROX Index"
+    ],
+    "tagline": "Pathophysiologic classification of respiratory failure, A-a gradient analysis, HFNC vs NIV & the ROX index",
+    "source": "The Washington Manual of Critical Care (3rd ed.), Ch. 9 & 10; West's Respiratory Physiology; ATS/ERS Guidelines on Non-Invasive Ventilation; FLORALI Trial.",
+    "sections": [
+      {
+        "h": "Classification & Physiological Mechanisms of the 4 Types",
+        "b": "Acute respiratory failure occurs when the respiratory system cannot adequately perform its fundamental functions of oxygenation (transferring O2 to pulmonary capillary blood) or carbon dioxide elimination (clearing CO2 from systemic venous blood).\n\nThe 4 Distinct Types of Respiratory Failure:\n\n1. Type 1: Acute Hypoxemic Respiratory Failure (Lung / Alveolar Failure):\n• Definition: PaO2 < 60 mmHg on room air with normal or low PaCO2.\n• Pathophysiologic Mechanisms:\n  - Ventilation-Perfusion (V/Q) Mismatch: Most common mechanism (COPD, asthma, pulmonary embolism). Responds well to supplemental oxygen.\n  - Intrapulmonary Right-to-Left Shunt: Blood perfuses completely non-aerated alveoli (ARDS, severe lobar pneumonia, complete atelectasis). Hallmark: Hypoxemia refractory to 100% FiO2; requires Positive End-Expiratory Pressure (PEEP) to recruit collapsed alveoli!\n  - Diffusion Limitation: Interstitial fibrosis, pulmonary edema.\n  - Alveolar Hypoventilation (High altitude or hypopnea).\n\n2. Type 2: Acute Hypercapnic Respiratory Failure (Pump / Ventilatory Failure):\n• Definition: PaCO2 > 45–50 mmHg with an uncompensated respiratory acidemia (pH < 7.35).\n• Pathophysiologic Mechanisms: Failure of the neuromuscular ventilatory pump or excessive respiratory load:\n  - Central Respiratory Depression: Opioid overdose, sedative toxicity, brainstem stroke.\n  - Neuromuscular Disorders: Guillain-Barré Syndrome, Myasthenia Gravis crisis, amyotrophic lateral sclerosis (ALS), cervical cord injury.\n  - Chest Wall / Pleural Deformities: Severe kyphoscoliosis, flail chest, morbid obesity-hypoventilation syndrome.\n  - High Resistive / Elastic Work of Breathing: Severe acute COPD exacerbation, dynamic hyperinflation.\n\n3. Type 3: Perioperative / Atelectatic Respiratory Failure:\n• Definition: Postoperative atelectasis and functional residual capacity (FRC) collapse occurring within 24–72 hours of surgery.\n• Mechanisms: General anesthesia and neuromuscular blockade promote dorsal basal atelectasis; diaphragmatic dysfunction; abdominal pain splinting; supine immobilization; opioid sedation blunting sigh reflexes.\n• Prevention & Treatment: Upright positioning, thoracic epidural / multimodal regional analgesia, incentive spirometry, early ambulation, and prophylactic post-op CPAP/NIV.\n\n4. Type 4: Shock / Hypoperfusion-Related Respiratory Failure:\n• Definition: Respiratory exhaustion occurring secondary to profound circulatory failure and systemic tissue hypoperfusion (cardiogenic shock, septic shock).\n• Physiology: Under normal conditions, respiratory muscles consume < 3–5% of total cardiac output. In severe shock and lactic acidosis, the work of breathing surges to consume up to 30% to 40% of the entire cardiac output!\n• Rationale for Early Elective Intubation: Mechanically unloading the respiratory muscles immediately diverts precious cardiac output and oxygen delivery back to the brain, heart, and kidneys!"
+      },
+      {
+        "h": "The Alveolar-Arterial (A-a) Oxygen Gradient",
+        "b": "The Alveolar Gas Equation:\n• Calculates the ideal partial pressure of oxygen inside the alveoli (PAO2):\n  PAO2 = [FiO2 × (Patm - PH2O)] - (PaCO2 / R)\n• At sea level on room air (FiO2 0.21, Patm 760 mmHg, PH2O 47 mmHg, R 0.8):\n  PAO2 = [0.21 × (760 - 47)] - (PaCO2 / 0.8) = 150 - (PaCO2 × 1.25).\n\nThe A-a Gradient Formula:\n• A-a Gradient = PAO2 - PaO2 (measured from arterial blood gas).\n• Normal Age-Adjusted A-a Gradient = (Age / 4) + 4 (or Age / 3).\n• An A-a gradient > 20 to 30 mmHg in a young adult is distinctly abnormal.",
+        "table": {
+          "headers": [
+            "Clinical Scenario",
+            "PaO2",
+            "PaCO2",
+            "A-a Gradient",
+            "Primary Pathophysiological Mechanism"
+          ],
+          "rows": [
+            [
+              "Pure Hypoventilation (Opioids, GBS)",
+              "Low (< 60 mmHg)",
+              "High (> 50 mmHg)",
+              "NORMAL (≤ 15–20 mmHg)",
+              "Normal lung parenchyma; failure of central drive or neuromuscular pump."
+            ],
+            [
+              "High Altitude / Low Ambient FiO2",
+              "Low (< 60 mmHg)",
+              "Low (Hyperventilation)",
+              "NORMAL",
+              "Low ambient PIO2; normal alveolar-capillary membrane."
+            ],
+            [
+              "V/Q Mismatch (COPD, Asthma, Mild PE)",
+              "Low (< 60 mmHg)",
+              "Variable",
+              "ELEVATED (> 25–30 mmHg)",
+              "Parenchymal / vascular disease; responds readily to supplemental FiO2."
+            ],
+            [
+              "Intrapulmonary Shunt (ARDS, Lobar Pneumonia)",
+              "Low (< 50 mmHg)",
+              "Variable",
+              "SEVERELY ELEVATED (> 100–300)",
+              "True shunt (blood bypasses aerated alveoli); REFRACTORY to 100% FiO2; mandates PEEP."
+            ],
+            [
+              "Mixed Failure (COPD + Pneumonia)",
+              "Low",
+              "High",
+              "ELEVATED",
+              "Combined ventilatory pump failure + parenchymal alveolar flooding."
+            ]
+          ],
+          "caption": "Diagnostic utility of the A-a gradient in classifying respiratory failure."
+        }
+      },
+      {
+        "h": "High-Flow Nasal Cannula (HFNC) & The ROX Index",
+        "b": "Mechanisms & Physiological Benefits of HFNC:\n• Delivers warmed (37°C), fully humidified gas at flow rates up to 60 to 80 L/min with titratable FiO2 (0.21 to 1.0).\n• Dead-Space Washout: Flushes nasopharyngeal anatomical dead space, clearing expired CO2 and creating a reservoir of fresh gas.\n• Dynamic Flow-Dependent PEEP: Generates modest PEEP (~0.7 to 1.0 cmH2O per 10 L/min flow with closed mouth).\n• Matches Peak Inspiratory Demand: Critically ill tachypneic patients have peak inspiratory flow rates of 60 to 100 L/min. HFNC eliminates entrainment of room air, delivering precise FiO2.\n\nThe ROX Index (Prediction of HFNC Success vs Failure):\n• Formula: ROX Index = (SpO2 / FiO2) / Respiratory Rate (breaths/min).\n• Example: SpO2 94% on FiO2 0.60, RR 24 bpm → (94 / 0.60) / 24 = 156.7 / 24 = 6.53.\n\nROX Decision Thresholds (FLORALI Trial & Roca et al.):\n• ROX ≥ 4.88 (measured at 2, 6, and 12 hours): Highly predictive of HFNC success; patient can safely remain on HFNC.\n• ROX 3.85 to 4.87: Intermediate zone; repeat measurement within 1 to 2 hours with close clinical monitoring.\n• ROX < 3.85: HIGH RISK OF FAILURE (> 85% fail). DO NOT DELAY ENDOTRACHEAL INTUBATION!\n• Crucial Clinical Rule: Delayed intubation under a failing trial of HFNC is associated with increased emergency airway complications and significantly higher mortality!"
+      },
+      {
+        "h": "Non-Invasive Positive Pressure Ventilation (NIV)",
+        "b": "Evidence-Based 1st-Line Indications for NIV (BiPAP / CPAP):\n1. Acute Hypercapnic Exacerbation of COPD (PaCO2 > 45 mmHg, pH 7.25–7.35):\n• Number Needed to Treat (NNT) to prevent endotracheal intubation is only 4!\n• Slashes in-hospital mortality by 50% and reduces hospital length of stay.\n2. Acute Cardiogenic Pulmonary Edema (ACPE):\n• CPAP (8–12 cmH2O) or BiPAP rapidly reduces LV preload and afterload, drives fluid out of alveoli, and relieves work of breathing.\n3. Post-Extubation Prophylaxis in High-Risk Patients:\n• Prophylactic NIV applied immediately post-extubation in patients with hypercapnia, COPD, or cardiac failure prevents respiratory decompensation.\n\nAbsolute Contraindications to NIV:\n• Respiratory or cardiac arrest.\n• Severe hemodynamic instability / refractory shock.\n• Inability to protect airway (absent gag/cough reflex, GCS < 8).\n• Severe facial trauma, facial burns, or recent upper gastrointestinal/airway surgery.\n• Severe vomiting or high aspiration risk.\n• Copious, thick, unmanageable tracheobronchial secretions."
+      }
+    ],
+    "example": "CLINICAL CASE: A 64-year-old female with bilateral viral pneumonia is placed on High-Flow Nasal Cannula (HFNC) at 60 L/min and FiO2 0.70. Two hours later, her vitals are: SpO2 88%, RR 34 bpm, HR 118 bpm, BP 132/80 mmHg with intercostal retractions.\n\nDiagnostic Analysis using the ROX Index:\n• Calculation: ROX = (SpO2 / FiO2) / RR = (88 / 0.70) / 34 = 125.7 / 34 = 3.70.\n• Interpretation: ROX is 3.70 (< 3.85), indicating an 85%+ probability of imminent HFNC failure!\n• Clinical Decision: Rather than increasing FiO2 to 0.80 or waiting, the ICU team executes prompt, controlled RSI with endotracheal intubation, preventing emergent hypoxic cardiac arrest.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd ed., Ch. 9 & 10. Wolters Kluwer, 2024.",
+      "West JB. Respiratory Physiology: The Essentials, 10th ed. Wolters Kluwer, 2016.",
+      "Frat JP, et al. High-flow oxygen through nasal cannula in acute hypoxemic respiratory failure (FLORALI). N Engl J Med 2015;372(23):2185–2196.",
+      "Rochwerg B, et al. Official ERS/ATS clinical practice guidelines: noninvasive ventilation for acute respiratory failure. Eur Respir J 2017;50(2):1602426."
+    ]
+  },
+  {
+    "id": "ards-berlin-lung-protective",
+    "cat": "respiratory",
+    "name": "ARDS: Berlin & New Global Definitions & Lung-Protective Ventilation",
+    "short": "ARDS & Lung Protection",
+    "tags": [
+      "ARDS",
+      "Berlin Definition",
+      "New Global ARDS",
+      "Low Tidal Volume",
+      "Driving Pressure",
+      "Plateau Pressure"
+    ],
+    "tagline": "Berlin & 2023 Global definitions, ARMA 4-8 mL/kg low tidal volume, driving pressure targets & permissive hypercapnia",
+    "source": "The Washington Manual of Critical Care (3rd ed.), Ch. 11; Berlin Definition (JAMA 2012); New Global Definition of ARDS (Am J Respir Crit Care Med 2023); ARMA Trial (NEJM 2000); Amato et al. (NEJM 2015).",
+    "sections": [
+      {
+        "h": "Diagnostic Criteria: Berlin Definition vs 2023 New Global Definition",
+        "b": "The Berlin Definition of ARDS (JAMA 2012) — 4 Core Criteria:\n1. Timing: Onset within 1 week of a known clinical insult or new/worsening respiratory symptoms.\n2. Chest Imaging: Bilateral opacities on chest radiograph or CT scan not fully explained by effusions, lobar/lung collapse, or nodules.\n3. Origin of Edema: Respiratory failure not fully explained by cardiac failure or fluid overload. Objective assessment (echocardiography) required to exclude hydrostatic edema if no identifiable ARDS risk factor is present.\n4. Oxygenation Impairment (Assessed on PEEP ≥ 5 cmH2O):\n• Mild ARDS: 200 < PaO2/FiO2 ≤ 300 mmHg.\n• Moderate ARDS: 100 < PaO2/FiO2 ≤ 200 mmHg.\n• Severe ARDS: PaO2/FiO2 ≤ 100 mmHg.\n\nThe 2023 New Global Definition of ARDS (Matthay et al., AJRCCM 2023):\n• Expansion to Non-Intubated Patients: Formally includes patients managed on High-Flow Nasal Cannula (HFNC) with flow ≥ 30 L/min or CPAP/NIV ≥ 5 cmH2O.\n• Pulse Oximetry Integration: Allows use of the SpO2/FiO2 ratio (≤ 315 when SpO2 ≤ 97%) in resource-limited settings where arterial blood gas testing is unavailable.\n• Lung Ultrasound Validation: Formally validates bedside lung ultrasound (bilateral B-lines and/or subpleural consolidations in ≥ 2 zones bilaterally) as an acceptable imaging modality when chest CT/CXR is delayed."
+      },
+      {
+        "h": "The ARMA Lung-Protective Ventilation Protocol",
+        "b": "The ARMA Landmark Trial (ARDS Network, NEJM 2000):\n• Demonstrated that lower tidal volume ventilation (6 mL/kg PBW) reduced 28-day mortality from 39.8% to 31.0% (an 8.8% absolute mortality reduction!) compared to traditional ventilation (12 mL/kg).\n\nStep 1: Calculate Predicted Body Weight (PBW):\n• NEVER use actual body weight! Adipose tissue does not increase lung volume; ventilating an obese patient based on actual weight causes catastrophic volutrauma.\n• Male PBW (kg) = 50 + 0.91 × [Height in cm - 152.4]\n• Female PBW (kg) = 45.5 + 0.91 × [Height in cm - 152.4]\n\nStep 2: Set Initial Tidal Volume (VT):\n• Start at 6 mL/kg PBW in Volume Assist-Control mode.\n• Titrate down by 1 mL/kg increments (down to 5 or 4 mL/kg PBW) if Plateau Pressure exceeds 30 cmH2O.\n\nStep 3: Plateau Pressure (Pplat) Ceiling:\n• Target Pplat ≤ 30 cmH2O.\n• Measured by performing a 0.5-second end-inspiratory pause during passive mechanical ventilation (zero patient inspiratory effort).",
+        "callout": {
+          "type": "pearl",
+          "title": "EXAM PEARL — Peak vs Plateau Pressure",
+          "text": "• Peak Inspiratory Pressure (PIP) = Pressure to overcome airway resistance + alveolar elastance (Ppeak = Flow × Raw + Palv).\n• Plateau Pressure (Pplat) = Static pressure inside the alveoli at zero flow (reflects respiratory system compliance).\n• High PIP with Normal Pplat (Widened gap > 5 cmH2O) = High Airway Resistance (bronchospasm, kinked tube, mucus plug, biting).\n• High PIP with High Pplat (Narrow gap ≤ 5 cmH2O) = Decreased Lung Compliance (ARDS, pulmonary edema, pneumothorax, abdominal compartment syndrome)!"
+        }
+      },
+      {
+        "h": "Driving Pressure (ΔP) — The Master Predictor of Mortality",
+        "b": "The Concept of the 'Baby Lung' (Gattinoni et al.):\n• In ARDS, the lung is not stiff; it is small! Alveolar flooding and collapse leave only a small fraction (often only 20–30%) of aerated alveoli capable of gas exchange ('the baby lung').\n• Delivering standard tidal volumes into this tiny baby lung generates massive cyclic shearing stress.\n\nDriving Pressure Definition & Equation:\n• Driving Pressure (ΔP) = Pplat - PEEP = VT / Crs\n  where Crs is the static compliance of the respiratory system.\n• Driving pressure represents the tidal volume normalized to the functional compliance (size) of the aerated baby lung!\n\nLandmark Evidence (Amato et al., NEJM 2015):\n• In a multilevel mediation analysis of 3,562 ARDS patients, driving pressure was the SINGLE STRONGEST INDEPENDENT PREDICTOR OF SURVIVAL!\n• Increases in VT or Pplat were NOT associated with increased mortality if driving pressure remained constant.\n• Target: Maintain Driving Pressure (ΔP) ≤ 14 to 15 cmH2O.\n• Each 7 cmH2O increase in driving pressure independently escalates hospital mortality!"
+      },
+      {
+        "h": "PEEP Titration & Permissive Hypercapnia",
+        "b": "PEEP Strategy (High vs Low PEEP Titration):\n• In Moderate-to-Severe ARDS (PaO2/FiO2 < 200), high-PEEP strategies (10–18 cmH2O) improve alveolar recruitment, reduce cyclic opening-and-closing atelectrauma, and improve survival.\n• Titration Methods: Utilize the ARDSNet Higher-PEEP / Lower-FiO2 titration grid, or titrate PEEP to find the lowest driving pressure (the 'best PEEP' point of maximal compliance).\n\nPermissive Hypercapnia Protocol:\n• To maintain low tidal volume (4–6 mL/kg) and low driving pressure (≤ 14 cmH2O), allow PaCO2 to rise (frequently 50–70 mmHg or higher).\n• Accept respiratory acidosis down to arterial pH ≥ 7.20 (or ≥ 7.15 in extreme refractory ARDS).\n• Counteract severe acidosis by administering IV sodium bicarbonate infusion or THAM if pH < 7.15.\n\nAbsolute Contraindications to Permissive Hypercapnia:\n1. Acute Traumatic Brain Injury (TBI) or Intracranial Hypertension: Hypercapnia induces cerebral vasodilation, increasing cerebral blood flow and spiking intracranial pressure (ICP).\n2. Severe Right Ventricular Failure / Acute Cor Pulmonale: Hypercapnia and acidosis are potent pulmonary vasoconstrictors, dramatically increasing pulmonary vascular resistance (PVR) and precipitating RV collapse."
+      }
+    ],
+    "example": "CLINICAL CASE: A 50-year-old male with severe acute pancreatitis develops severe ARDS. Height: 175 cm (PBW = 50 + 0.91 × [175 - 152.4] = 70.5 kg). Actual weight: 110 kg. Ventilator settings: Volume Control, VT 700 mL (set to actual weight!), PEEP 10 cmH2O, RR 20 bpm. Plateau pressure is 38 cmH2O, PaO2 is 65 mmHg on FiO2 0.80.\n\nCritical Assessment & Ventilator Correction:\n1. Error Identification: Tidal volume was set to 10 mL/kg of actual weight, delivering massive volutrauma! Driving pressure = Pplat - PEEP = 38 - 10 = 28 cmH2O (Extremely lethal!).\n2. Low Tidal Volume Correction: Re-calculate VT based on PBW (70.5 kg × 6 mL/kg = 420 mL). VT reduced immediately from 700 mL to 420 mL.\n3. PEEP Optimization: PEEP increased from 10 to 14 cmH2O using high-PEEP grid.\n4. Measurement: Plateau pressure drops to 26 cmH2O. New Driving Pressure = 26 - 14 = 12 cmH2O (Well within safe ≤ 14 cmH2O target!).\n5. Arterial Blood Gas: pH 7.24, PaCO2 56 mmHg, PaO2 82 mmHg (P/F ratio improves from 81 to 102; permissive hypercapnia safely tolerated).",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd ed., Ch. 11. Wolters Kluwer, 2024.",
+      "The ARDS Definition Task Force. Acute Respiratory Distress Syndrome: The Berlin Definition. JAMA 2012;307(23):2526–2533.",
+      "Matthay MA, et al. A New Global Definition of Acute Respiratory Distress Syndrome. Am J Respir Crit Care Med 2023;209(1):37–47.",
+      "The Acute Respiratory Distress Syndrome Network. Ventilation with Lower Tidal Volumes as Compared with Traditional Tidal Volumes (ARMA). N Engl J Med 2000;342(18):1301–1308.",
+      "Amato MBP, et al. Driving Pressure and Survival in the Acute Respiratory Distress Syndrome. N Engl J Med 2015;372(8):747–755."
+    ]
+  },
+  {
+    "id": "ards-refractory-rescue-ecmo",
+    "cat": "respiratory",
+    "name": "Severe ARDS: Prone Positioning, Paralysis & ECMO Indications",
+    "short": "Severe ARDS & ECMO",
+    "tags": [
+      "Prone Positioning",
+      "PROSEVA",
+      "Neuromuscular Blockade",
+      "Inhaled Vasodilators",
+      "VV-ECMO",
+      "EOLIA Trial"
+    ],
+    "tagline": "PROSEVA 16-hour proning protocol, cisatracurium infusions, inhaled epoprostenol/iNO & EOLIA ECMO criteria",
+    "source": "The Washington Manual of Critical Care (3rd ed.), Ch. 12; PROSEVA Trial (NEJM 2013); ACURASYS and ROSE Trials; EOLIA Trial (NEJM 2018); ELSO Guidelines.",
+    "sections": [
+      {
+        "h": "Prone Positioning: The PROSEVA Landmark Protocol",
+        "b": "The PROSEVA Landmark Trial (Guérin et al., NEJM 2013):\n• Investigated early prone positioning in patients with severe ARDS (PaO2/FiO2 < 150 with PEEP ≥ 10 cmH2O and FiO2 ≥ 0.60).\n• Slashed 28-day mortality from 32.8% to 16.0% (a 50% relative mortality reduction, NNT = 6!). 90-day mortality dropped from 41% to 23.6%.\n\nPhysiological Mechanisms of Prone Positioning:\n1. Transpulmonary Pressure Homogenization: In the supine position, pleural pressure increases along the dorsal axis due to heart and abdominal visceral weight, collapsing dorsal alveoli. Prone positioning makes the vertical pleural pressure gradient substantially more uniform.\n2. Ventral-Dorsal Ventilation Redistribution: Alveolar inflation becomes uniform across the lung, opening dorsal alveoli without hyperinflating ventral regions.\n3. Perfusion Preservation: Pulmonary blood flow remains preferentially distributed to dorsal regions (governed by anatomical vascular architecture, not gravity). Aerating dorsal alveoli dramatically restores V/Q matching and eliminates intrapulmonary shunt!\n4. Right Ventricular Unloading: Relieves hypoxic pulmonary vasoconstriction and hypercapnic pulmonary hypertension, significantly improving RV ejection fraction.\n\nImplementation Protocol:\n• Duration: Maintain prone position for AT LEAST 16 CONSECUTIVE HOURS per session.\n• Discontinuation Criteria: PaO2/FiO2 ≥ 150 mmHg with PEEP ≤ 10 cmH2O and FiO2 ≤ 0.60 maintained in the supine position for at least 4 hours after turning back.",
+        "callout": {
+          "type": "pearl",
+          "title": "EXAM PEARL — Proning Contraindications",
+          "text": "Absolute: Unstable spinal fractures, open abdomen with surgical mesh, severe open facial/ocular trauma, uncontrolled intracranial hypertension (ICP > 30 mmHg).\nRelative: Hemodynamic instability / refractory shock, life-threatening ventricular arrhythmias, multiple chest tubes, late-term pregnancy (requires specialized pelvic/chest bolsters)."
+        }
+      },
+      {
+        "h": "Neuromuscular Blockade & Sedation Strategies",
+        "b": "Reconciling ACURASYS vs ROSE Trials:\n\n1. The ACURASYS Trial (Papazian et al., NEJM 2010):\n• Protocol: Continuous infusion of Cisatracurium besylate for 48 hours in early severe ARDS (PaO2/FiO2 < 150).\n• Findings: Significant improvement in 90-day survival (adjusted HR 0.68) and increased ventilator-free days without causing ICU-acquired weakness.\n\n2. The ROSE Trial (PETAL Network, NEJM 2019):\n• Protocol: Routine early paralysis with deep sedation vs light sedation with as-needed paralysis.\n• Findings: No significant difference in 90-day mortality (42.5% vs 42.8%). The light sedation arm had fewer cardiovascular events and earlier mobilization.\n\nModern Evidence-Based Consensus:\n• Routine 48-hour neuromuscular blockade is NO LONGER mandatory for all ARDS patients.\n• Specific Indications for Neuromuscular Blockade in ARDS:\n  1. Severe patient-ventilator dyssynchrony refractory to deep sedation.\n  2. Breath-stacking and double-triggering generating excessive tidal volumes (reverse triggering).\n  3. Pendelluft phenomenon (occult gas movement between lung units causing regional alveolar overdistension).\n  4. Inability to maintain target plateau pressure (≤ 30 cmH2O) or driving pressure (≤ 14 cmH2O).\n  5. Facilitation of safe prone positioning."
+      },
+      {
+        "h": "Inhaled Pulmonary Vasodilators (Epoprostenol & Nitric Oxide)",
+        "b": "Physiological Mechanism of Action:\n• Inhaled agents travel selectively to well-ventilated, aerated alveolar units.\n• Induce localized relaxation of precapillary pulmonary vascular smooth muscle, dilating capillaries adjacent to functional alveoli.\n• Redistributes pulmonary arterial blood flow AWAY from collapsed, shunting alveolar units TOWARD ventilated units, dramatically improving V/Q matching and arterial oxygenation.\n• The Selective Advantage: Zero systemic vasodilation! Because the drug is either rapidly deactivated by local tissue esterases (Epoprostenol, t1/2 ~3–5 min) or instantaneously scavenged by hemoglobin (Nitric Oxide forming methemoglobin), it does NOT cause systemic hypotension.\n\nAgents & Protocols:\n1. Inhaled Epoprostenol (PGI2 / Prostacyclin):\n• Continuous aerosolized infusion at 10 to 50 ng/kg/min.\n• Slashes cost compared to nitric oxide; equally efficacious in improving PaO2/FiO2.\n2. Inhaled Nitric Oxide (iNO):\n• Dose: 10 to 20 parts per million (ppm). Monitor methemoglobin levels daily (< 3%).\n• Role: Used as a rescue bridge to prone positioning or ECMO in refractory hypoxemia; does not independently improve long-term survival."
+      },
+      {
+        "h": "Veno-Venous (VV) ECMO: EOLIA Trial Criteria & Management",
+        "b": "Extracorporeal Membrane Oxygenation (VV-ECMO) in Severe ARDS:\n• Cannulation: Drainage cannula in femoral vein (draining deoxygenated venous blood from IVC) → Centrifugal pump → Polymethylpentene membrane oxygenator (adds O2, clears CO2) → Return cannula in right internal jugular vein (directing oxygenated blood across tricuspid valve into pulmonary circulation).\n\nThe EOLIA Trial Inclusion Criteria (Indications for VV-ECMO):\n1. Very Severe Hypoxemia: PaO2/FiO2 < 50 mmHg for > 3 hours despite optimization (PEEP ≥ 10, proning, paralysis).\n2. Sustained Severe Hypoxemia: PaO2/FiO2 < 80 mmHg for > 6 hours.\n3. Severe Respiratory Acidosis: Arterial pH < 7.15 with PaCO2 ≥ 60 mmHg for > 6 hours with Pplat maintained ≤ 32 cmH2O.\n\n'Lung Rest' Ventilator Strategy on VV-ECMO:\n• Because the ECMO circuit handles gas exchange, the ventilator is dialed down to ultra-protective 'rest settings':\n  - Mode: Pressure Control or Volume Control.\n  - Tidal Volume: 2 to 3 mL/kg PBW (often 100–200 mL total!).\n  - PEEP: 10 to 14 cmH2O (prevents total atelectasis).\n  - Driving Pressure: < 10 cmH2O.\n  - Respiratory Rate: 4 to 10 breaths/min.\n  - FiO2: 0.30 to 0.50.\n• Rationale: Eliminates mechanical shearing strain entirely, allowing inflamed alveoli to heal without ventilator-induced lung injury (VILI)!"
+      }
+    ],
+    "example": "CLINICAL CASE: A 38-year-old female with severe influenza A ARDS is mechanically ventilated: VT 360 mL (6 mL/kg PBW), PEEP 16 cmH2O, FiO2 1.0, and continuous Cisatracurium infusion. Despite neuromuscular blockade, ABG shows: pH 7.18, PaCO2 58 mmHg, PaO2 54 mmHg (P/F ratio = 54). Plateau pressure is 33 cmH2O.\n\nEscalation Protocol Execution:\n1. Prone Positioning: Patient is placed in the prone position immediately according to PROSEVA protocol. After 4 hours, P/F ratio rises from 54 to 118 mmHg.\n2. Scheduled Session: Prone positioning is maintained for 18 consecutive hours.\n3. Return to Supine: ABG 4 hours post-supine confirms P/F ratio of 165 mmHg with Pplat 27 cmH2O (Met cessation criteria for day 1).\n4. VV-ECMO Avoided: Patient avoids ECMO cannulation through rapid implementation of prone positioning.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd ed., Ch. 12. Wolters Kluwer, 2024.",
+      "Guérin C, et al. Prone Positioning in Severe Acute Respiratory Distress Syndrome (PROSEVA). N Engl J Med 2013;368(23):2159–2168.",
+      "Combes A, et al. Extracorporeal Membrane Oxygenation for Severe Acute Respiratory Distress Syndrome (EOLIA). N Engl J Med 2018;378(21):1965–1975.",
+      "The National Heart, Lung, and Blood Institute PETAL Clinical Trials Network. Early Neuromuscular Blockade in the Acute Respiratory Distress Syndrome (ROSE). N Engl J Med 2019;380(21):1997–2008."
+    ]
+  },
+  {
+    "id": "status-asthmaticus-copd-icu",
+    "cat": "respiratory",
+    "name": "Severe Acute Asthma & COPD Exacerbation in ICU",
+    "short": "Status Asthmaticus & COPD",
+    "tags": [
+      "Status Asthmaticus",
+      "COPD Exacerbation",
+      "Auto-PEEP",
+      "Dynamic Hyperinflation",
+      "Ketamine",
+      "Inhalational Anaesthetics"
+    ],
+    "tagline": "Dynamic hyperinflation, bedside auto-PEEP measurement, low-rate long-Te ventilation & escalation to ketamine/volatiles",
+    "source": "The Washington Manual of Critical Care (3rd ed.), Ch. 13 & 14; GINA 2024/2025 Asthma Report; GOLD 2024/2025 COPD Strategy; Marino's The ICU Book (4th ed.).",
+    "sections": [
+      {
+        "h": "Pathophysiology: Dynamic Hyperinflation & Auto-PEEP",
+        "b": "The Core Obstruction Mechanism:\n• Severe diffuse bronchospasm, extensive mucosal edema, and tenacious intraluminal mucus plugging cause massive increases in airway resistance (Raw).\n• The Expiratory Time Constant (τ = Raw × Crs) is markedly prolonged. Normal lung empties in 3 time constants (~0.6–0.9 seconds); in severe asthma, complete exhalation requires > 3 to 5 seconds!\n\nDynamic Hyperinflation & Auto-PEEP:\n• When the respiratory rate is too rapid, the patient initiates the next breath before the lungs have fully exhaled to functional residual capacity (incomplete expiration).\n• Gas is trapped in the alveoli with each breath (breath-stacking), causing end-expiratory lung volume to increase progressively.\n• This generates Intrinsic PEEP (Auto-PEEP), which can easily reach 15 to 25 cmH2O!\n\nHemodynamic Consequences (The Death Trap):\n• Extreme intrathoracic pressure compresses the pulmonary capillary bed and superior/inferior vena cava, halting venous return to the right heart.\n• Induces acute right ventricular afterload mismatch and reduces left ventricular filling, causing profound hypotension, electromechanical dissociation (PEA), and circulatory arrest upon intubation!\n\nBedside Measurement of Auto-PEEP:\n• Perform an END-EXPIRATORY HOLD maneuver for 2 to 3 seconds on the ventilator during passive breathing:\n• Total PEEP = Measured plateau pressure at end-expiration.\n• Auto-PEEP (Intrinsic PEEP) = Total PEEP - Set Extrinsic PEEP."
+      },
+      {
+        "h": "Mechanical Ventilation Strategies in Obstructive Airway Disease",
+        "b": "Mechanical ventilation in severe obstructive disease is supportive, NOT curative. The sole goal is to buy time for medical therapy to work while preventing fatal dynamic hyperinflation.\n\nThe 4 Golden Mechanical Rules:\n1. Low Respiratory Rate: Set RR to 10 to 12 breaths/min (maximizes expiratory time Te).\n2. Long Expiratory Time (I:E Ratio): Set I:E ratio to 1:3, 1:4, or 1:5.\n3. High Inspiratory Flow Rate: 70 to 90 L/min using a square inspiratory waveform (delivers the tidal volume rapidly, shortening inspiratory time Ti and leaving maximum time for expiration).\n4. Low-to-Moderate Tidal Volume: 6 to 8 mL/kg PBW.\n\nSetting Extrinsic PEEP — The Critical Divergence:\n• In Acute COPD Exacerbation (Dynamic Airway Collapse): Set extrinsic PEEP to 70% to 80% of measured auto-PEEP. This acts as a pneumatic stent, keeping collapsed distal airways open during expiration and reducing the patient's inspiratory trigger work of breathing without increasing alveolar pressure ('the waterfall concept').\n• In Severe Acute Asthma (Fixed Inflammatory Bronchospasm): Extrinsic PEEP does NOT stent airways open; it adds directly to auto-PEEP, worsening hyperinflation and hemodynamic collapse! Keep extrinsic PEEP minimal (0 to 5 cmH2O).\n\nPermissive Hypercapnia Mandate:\n• Prioritize alveolar emptying over carbon dioxide clearance! Allow PaCO2 to rise to 60 to 90 mmHg as long as arterial pH remains ≥ 7.15–7.20. Administer IV sodium bicarbonate only if pH drops below 7.15."
+      },
+      {
+        "h": "Acute Post-Intubation Collapse & The Ventilator Disconnect Rule",
+        "b": "Why Asthmatics Crash Post-Intubation:\n• Induction hypnotics remove native sympathetic vasoconstrictor tone.\n• Positive pressure ventilation immediately worsens venous return.\n• Manual bagging at 20–30 bpm causes massive breath-stacking and auto-PEEP.\n\nThe 'DOPES' Algorithm for Acute Decompensation:\n• D: Dislodged ETT (esophageal intubation, right mainstem).\n• O: Obstructed ETT (thick mucus plug, blood clot, patient biting tube).\n• P: Pneumothorax (tension pneumothorax from alveolar rupture/barotrauma).\n• E: Equipment failure (ventilator disconnect, oxygen failure).\n• S: Stacking (severe dynamic hyperinflation / auto-PEEP).\n\nTHE LIFE-SAVING VENTILATOR DISCONNECT MANEUVER:\n• If the patient becomes acutely hypotensive or enters PEA arrest post-intubation:\n  1. IMMEDIATELY DISCONNECT THE ENDOTRACHEAL TUBE FROM THE VENTILATOR!\n  2. Allow the chest to deflate passively; perform bilateral chest compression for 30 to 60 seconds.\n  3. If blood pressure and pulse instantly return: The arrest was purely obstructive shock from auto-PEEP! Re-evaluate ventilator settings before reconnecting."
+      },
+      {
+        "h": "Pharmacological Escalations in Refractory Status Asthmaticus",
+        "b": "Medical Management Hierarchy:\n1. Inhaled Beta-2 Agonists + Anticholinergics:\n• Continuous nebulized Salbutamol (10–15 mg/hr) + Ipratropium Bromide (0.5 mg q4h).\n2. Systemic Corticosteroids:\n• IV Methylprednisolone 60 to 125 mg q6h or IV Hydrocortisone 100 mg q6h (onset 4–6 hours).\n3. Intravenous Magnesium Sulfate:\n• Dose: 2 g IV infused over 20 minutes.\n• Mechanism: Inhibits voltage-gated calcium channels in bronchial smooth muscle, producing direct bronchodilation.\n4. Intravenous Beta-Agonists (Terbutaline / Salbutamol):\n• Continuous IV infusion (Terbutaline 0.1–1.0 mcg/kg/min) to reach obstructed peripheral airways that inhaled aerosols cannot reach due to mucus plugs.\n5. Intravenous Ketamine (The Premier Sedative / Bronchodilator):\n• Induction Bolus: 1.0 to 2.0 mg/kg IV; Infusion: 0.5 to 2.0 mg/kg/hr.\n• Dual Action: Provides deep dissociative sedation while stimulating endogenous catecholamine release and exerting direct smooth muscle NMDA receptor antagonism, potently relaxing bronchial smooth muscle.\n6. Volatile Inhalational Anaesthetics (The Ultimate Rescue):\n• Sevoflurane or Isoflurane delivered directly into the ICU ventilator via the AnaConDa (Anaesthetic Conserving Device) or dedicated ICU anesthesia machine.\n• Most potent bronchodilator in medicine; reserved for refractory life-threatening status asthmaticus."
+      }
+    ],
+    "example": "CLINICAL CASE: A 22-year-old female with brittle asthma is brought to the ICU in extremis: silent chest on auscultation, pulsus paradoxus 25 mmHg, PaCO2 68 mmHg (pseudonormalization/hypercapnic exhaustion), pH 7.14. Following intubation with Ketamine and Rocuronium, the ventilator displays auto-PEEP of 18 cmH2O, and BP drops to 70/40 mmHg.\n\nManagement Protocol:\n1. Immediate Ventilator Adjustment: RR set to 10 bpm, VT 380 mL (6 mL/kg PBW), Flow 80 L/min square wave, PEEP 0 cmH2O, I:E 1:4.5.\n2. Auto-PEEP Reduction: Measured auto-PEEP drops from 18 to 6 cmH2O; blood pressure immediately recovers to 110/72 mmHg without vasopressors.\n3. Escalation: Magnesium Sulfate 2 g IV given; continuous Ketamine infusion (1.5 mg/kg/hr) maintained.\n4. Outcome: Bronchospasm resolves over 24 hours; patient is successfully extubated on hospital day 2.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd ed., Ch. 13 & 14. Wolters Kluwer, 2024.",
+      "Global Initiative for Asthma (GINA). Global Strategy for Asthma Management and Prevention, 2024 update.",
+      "Global Initiative for Chronic Obstructive Lung Disease (GOLD). Global Strategy for Diagnosis, Management, and Prevention of COPD, 2024 report.",
+      "Marino PL. Marino's The ICU Book, 4th ed., Ch. 26. Wolters Kluwer, 2014."
+    ]
+  },
+  {
+    "id": "massive-pe-cor-pulmonale",
+    "cat": "respiratory",
+    "name": "Massive Pulmonary Embolism & Acute Cor Pulmonale",
+    "short": "Massive PE & RV Failure",
+    "tags": [
+      "Massive PE",
+      "Acute Cor Pulmonale",
+      "Thrombolysis",
+      "Alteplase",
+      "PESI Score",
+      "RV Strain"
+    ],
+    "tagline": "ESC risk stratification, acute right ventricular afterload mismatch, McConnell's sign, systemic thrombolysis & catheter embolectomy",
+    "source": "The Washington Manual of Critical Care (3rd ed.), Ch. 15; 2019/2024 ESC Guidelines on Acute Pulmonary Embolism; CHEST Pulmonary Embolism Guidelines; PEITHO Trial.",
+    "sections": [
+      {
+        "h": "Risk Stratification & Clinical Severity (ESC Guidelines)",
+        "b": "The European Society of Cardiology (ESC) classifies acute pulmonary embolism into 4 distinct risk categories based on early mortality risk:",
+        "table": {
+          "headers": [
+            "Risk Category",
+            "Hemodynamic Shock (SBP < 90 mmHg)",
+            "RV Dysfunction (Echo / CT)",
+            "Cardiac Biomarkers (Trop / BNP)",
+            "Recommended Primary Management"
+          ],
+          "rows": [
+            [
+              "High-Risk (Massive PE)",
+              "PRESENT (Hypotension, drop ≥ 40 mmHg > 15 min, or arrest)",
+              "Present (Severe RV dilatation)",
+              "Present / Elevated",
+              "Immediate Systemic Thrombolysis (or surgical/catheter embolectomy if thrombolysis contraindicated) + UFH infusion."
+            ],
+            [
+              "Intermediate-High Risk",
+              "ABSENT (Normotensive)",
+              "BOTH PRESENT (RV/LV diameter ratio > 1.0)",
+              "BOTH PRESENT (Elevated Troponin AND BNP)",
+              "Therapeutic Anticoagulation (LMWH or UFH) + Mandatory ICU Monitoring; Rescue Thrombolysis if deterioration occurs."
+            ],
+            [
+              "Intermediate-Low Risk",
+              "ABSENT",
+              "Either RV dysfunction OR elevated biomarker (NOT both)",
+              "Either RV strain OR biomarker alone",
+              "Anticoagulation (LMWH or DOAC); general step-down ward."
+            ],
+            [
+              "Low-Risk PE",
+              "ABSENT",
+              "Absent",
+              "Normal biomarkers (PESI Class I–II / sPESI = 0)",
+              "Anticoagulation; early discharge or outpatient management."
+            ]
+          ],
+          "caption": "ESC risk stratification and management hierarchy for acute pulmonary embolism."
+        }
+      },
+      {
+        "h": "Pathophysiology of Acute Cor Pulmonale & The RV Death Spiral",
+        "b": "The Acute RV Afterload Surge:\n• Sudden mechanical obstruction of ≥ 30% to 50% of the pulmonary arterial cross-sectional area, exacerbated by reflex hypoxic pulmonary vasoconstriction and platelet-mediated release of thromboxane A2 and serotonin.\n• The Unconditioned RV: Because the normal right ventricle is a thin-walled, compliant chamber designed for low pressure, it CANNOT generate a systolic pressure > 50 to 60 mmHg acutely!\n\nThe RV 'Spiral of Death' (Hemodynamic Cascade):\n1. Acute RV Dilatation & Wall Stress: The RV acutely dilates, increasing free-wall tension and tricuspid annular dilation (severe tricuspid regurgitation).\n2. Ventricular Interdependence (The D-Shaped LV): The dilated RV shifts the interventricular septum leftward into the left ventricular cavity ('D-shaped LV' on short-axis echo), severely reducing LV diastolic filling.\n3. Systemic Circulatory Collapse: Reduced LV stroke volume plummets systemic cardiac output, dropping Mean Arterial Pressure and aortic root pressure.\n4. Fatal Right Ventricular Ischemia: The combination of falling aortic diastolic pressure (reduced RCA perfusion) and rising RV intracavitary pressure compresses the right coronary artery during both systole and diastole, precipitating RV subendocardial ischemia, cardiogenic shock, and PEA cardiac arrest!"
+      },
+      {
+        "h": "Hemodynamic & Critical Care Management Rules",
+        "b": "Managing hemodynamics in acute cor pulmonale requires strict adherence to physiological principles:\n\n1. Rule 1: STRICT FLUID RESTRICTION!\n• Aggressive crystalloid boluses are FATAL in acute RV failure!\n• Excess fluid overdistends the RV, increases tricuspid regurgitation, exacerbates leftward septal bowing, further crushes LV filling, and precipitates cardiovascular collapse!\n• If hypovolemia is suspected, fluid bolus must not exceed 250 to 500 mL balanced crystalloid.\n\n2. Rule 2: Noradrenaline as the Vasopressor of Choice:\n• First-line agent: Directly restores aortic root pressure and right coronary artery perfusion, restores RV contractility via β1, and does not increase pulmonary vascular resistance. Target MAP ≥ 65–75 mmHg.\n\n3. Rule 3: Inotrope Addition (Dobutamine / Milrinone):\n• If cardiac index remains depressed despite MAP restoration, add low-dose Dobutamine (2.5–5.0 mcg/kg/min). Caution: Avoid higher doses which worsen tachycardia and systemic vasodilation.\n\n4. Rule 4: Inhaled Pulmonary Vasodilators:\n• Inhaled Epoprostenol (10–50 ng/kg/min) or Inhaled Nitric Oxide (10–20 ppm) selectively dilates the pulmonary arterial bed, directly reducing RV afterload without causing systemic arterial hypotension.\n\n5. Rule 5: Protective Mechanical Ventilation:\n• If intubation is required, anticipate severe post-induction circulatory collapse! High PEEP and high tidal volumes crush the right ventricle. Use low VT (6 mL/kg), low PEEP (0–5 cmH2O), and avoid hypercapnia (a potent pulmonary vasoconstrictor)."
+      },
+      {
+        "h": "Reperfusion Protocols: Thrombolysis, CDT & ECMO",
+        "b": "Systemic Thrombolysis Protocol (The Standard for High-Risk / Massive PE):\n• Standard 2-Hour Regimen: Recombinant tissue plasminogen activator (rtPA / Alteplase) 100 mg IV infused over 2 hours.\n• Emergency Cardiac Arrest / Imminent Collapse Regimen: Alteplase 50 mg IV push over 15 minutes, with potential repeat 50 mg at 30 minutes if CPR is ongoing.\n• Unfractionated Heparin (UFH) Synergy: Discontinue UFH infusion during the 2-hour Alteplase infusion, then resume UFH without a bolus when aPTT is < 2 times normal.\n\nCatheter-Directed Thrombolysis (CDT) & Percutaneous Thrombectomy:\n• Ultrasound-assisted catheter thrombolysis (EKOS) delivers low-dose local rtPA (e.g., 8–12 mg per catheter) directly into the thrombus alongside high-frequency ultrasound waves that loosen fibrin strands.\n• Provides rapid RV unloading with < 10% of the major bleeding risk of systemic thrombolysis.\n• Indicated in intermediate-high risk PE with clinical deterioration or massive PE when systemic thrombolysis is contraindicated.\n\nSurgical Embolectomy & Veno-Arterial (VA) ECMO:\n• Surgical pulmonary embolectomy is indicated when thrombolysis fails or is strictly contraindicated.\n• VA-ECMO provides complete hemodynamic and gas exchange support while completely unloading the right ventricle, serving as an exceptional bridge to surgical embolectomy or recovery."
+      }
+    ],
+    "example": "CLINICAL CASE: A 58-year-old male 10 days post-total knee arthroplasty suddenly collapses in the hallway. Vitals: BP 72/44 mmHg, HR 128 bpm, SpO2 84% on reservoir mask. Bedside echo reveals severe RV dilatation with McConnell's sign (hyperdynamic RV apex with akinetic mid-free wall) and a flattened 'D-shaped' left ventricle.\n\nImmediate Resuscitation & Thrombolysis Protocol:\n1. Noradrenaline Infusion: Started immediately via peripheral line to restore MAP ≥ 65 mmHg.\n2. Reperfusion Decision: Confirmed High-Risk / Massive PE with hemodynamic collapse. Systemic thrombolysis indicated.\n3. Alteplase Protocol: 100 mg IV rtPA infused over 2 hours; UFH infusion held.\n4. Hemodynamic Response: At 90 minutes into infusion, BP improves to 118/76 mmHg, HR slows to 92 bpm, and SpO2 rises to 96% on 2 L nasal cannula.\n5. Follow-Up: Echo at 24 hours confirms complete resolution of RV dilatation and restoration of normal LV geometry.",
+    "references": [
+      "Konstantinides SV, et al. 2019 ESC Guidelines for the diagnosis and management of acute pulmonary embolism. Eur Heart J 2020;41(4):543–603.",
+      "The Washington Manual of Critical Care, 3rd ed., Ch. 15. Wolters Kluwer, 2024.",
+      "Meyer G, et al. Fibrinolysis for Patients with Intermediate-Risk Pulmonary Embolism (PEITHO). N Engl J Med 2014;370(15):1402–1411.",
+      "Kearon C, et al. Antithrombotic Therapy for VTE Disease: CHEST Guideline and Expert Panel Report. Chest 2016;149(2):315–352."
+    ]
+  },
+  {
+    "id": "ventilator-liberation-weaning-failure",
+    "cat": "respiratory",
+    "name": "Ventilator Liberation, Weaning Protocols & Extubation Failure",
+    "short": "Ventilator Liberation",
+    "tags": [
+      "Weaning Protocols",
+      "Spontaneous Breathing Trial",
+      "RSBI",
+      "Cuff Leak Test",
+      "Extubation Failure",
+      "Post-Extubation NIV"
+    ],
+    "tagline": "Readiness criteria, low-PSV vs T-piece SBT, Yang-Tobin RSBI calculation, cuff leak test & post-extubation failure prevention",
+    "source": "The Washington Manual of Critical Care (3rd ed.), Ch. 16; CHEST/ATS Clinical Practice Guideline on Liberation from Mechanical Ventilation; Yang & Tobin RSBI Landmark Study; Subira et al. (JAMA 2019).",
+    "sections": [
+      {
+        "h": "Readiness Screening: The Pre-Weaning Checklist",
+        "b": "Daily Weaning Readiness Screening:\n• Unnecessary prolongation of mechanical ventilation increases VAP, tracheal injury, ICU-acquired weakness, and mortality by 1% to 2% for every additional day!\n• Screen every mechanically ventilated patient daily for weaning readiness:\n\n1. Resolution of Underlying Cause:\n• Substantial improvement or resolution of the acute primary pathology that mandated intubation (e.g., cleared pneumonia, reversed sepsis, resolved pulmonary edema).\n\n2. Adequate Oxygenation & Gas Exchange:\n• PaO2/FiO2 ratio ≥ 150 to 200 mmHg on PEEP ≤ 5 to 8 cmH2O and FiO2 ≤ 0.40 to 0.50.\n• Arterial pH ≥ 7.30 to 7.35 with stable PaCO2.\n\n3. Hemodynamic Stability:\n• Absence of active myocardial ischemia or malignant arrhythmias.\n• Minimal or no vasopressor requirement (e.g., Noradrenaline < 0.05 mcg/kg/min or low-dose dopamine/dobutamine).\n• Heart rate < 140 bpm, stable sinus or controlled rhythm.\n\n4. Neurological & Ventilatory Capacity:\n• Patient awake, alert, or easily rousable (GCS ≥ 8 to 10).\n• Active spontaneous breathing effort present.\n• Core temperature < 38.5°C; normal electrolyte profile (potassium, phosphate, and magnesium required for diaphragmatic muscle strength!)."
+      },
+      {
+        "h": "The Spontaneous Breathing Trial (SBT): Protocols & Failure Triggers",
+        "b": "SBT Modality: Low-PSV vs T-Piece Trial:\n• Low-Pressure Support Ventilation (PSV): Pressure Support 5 to 8 cmH2O with PEEP 0 to 5 cmH2O for 30 to 120 minutes.\n• T-Piece Trial: Complete disconnection from the ventilator, breathing humidified oxygen via a T-piece circuit for 30 to 120 minutes.\n• Landmark Evidence (Subira et al., JAMA 2019):\n  - A 30-minute SBT conducted with low-level Pressure Support significantly increased successful extubation rates (82.5% vs 75.9%) compared to a 2-hour T-piece trial!\n  - Low-PSV overcomes the artificial resistive work of breathing imposed by the endotracheal tube without providing unearned assistance.\n\nObjective SBT Failure Criteria (Terminate trial immediately if ANY are present):\n1. Tachypnea: Respiratory rate > 35 breaths/min (or < 8 breaths/min) for > 5 minutes.\n2. Hypoxemia: SpO2 < 90% on FiO2 ≤ 0.40 (or PaO2 < 60 mmHg).\n3. Hemodynamic Instability: Heart rate > 140 bpm or sustained change > 20%; Systolic BP > 180 mmHg or < 90 mmHg.\n4. Work of Breathing: Intercostal indrawing, suprasternal retractions, diaphoresis, or thoracoabdominal paradoxical breathing (diaphragmatic fatigue!).\n5. Mental Status Deterioration: Agitation, panic, anxiety, somnolence, or obtundation."
+      },
+      {
+        "h": "The Rapid Shallow Breathing Index (RSBI) & Cuff Leak Test",
+        "b": "The Yang & Tobin RSBI (NEJM 1991):\n• Definition & Equation:\n  RSBI = Frequency (f, breaths/min) / Tidal Volume (VT, in Liters)\n• Measurement Technique: Measured during EXACTLY 1 MINUTE of completely unassisted spontaneous breathing (PEEP 0, PS 0) using a handheld spirometer or ventilator monitor.\n• Clinical Interpretation:\n  - RSBI < 105 breaths/min/L: High probability of extubation success (Sensitivity ~97%, Negative Predictive Value ~95%).\n  - RSBI > 105 breaths/min/L: High probability of weaning failure (indicates that the patient is breathing rapidly and shallowly, the classic signature of imminent diaphragmatic fatigue!).\n\nThe Cuff Leak Test (Screening for Laryngeal Edema / Post-Extubation Stridor):\n• High-Risk Cohorts: Prolonged intubation (> 6 days), female gender, large ETT size, traumatic intubation, history of neck surgery.\n• Technique: Suction oral secretions, deflate ETT cuff while observing volume-controlled ventilation:\n  - Qualitative: Audible air leak heard around the tube with a stethoscope placed over the larynx during inspiration.\n  - Quantitative: Measure difference between inspiratory and expiratory tidal volume over 6 breaths. A leak < 110 mL (or < 15% of delivered VT) indicates a POSITIVE test (significant laryngeal edema!).\n• Prophylactic Steroid Protocol for Failed Leak Test:\n  - Administer IV Dexamethasone 4 to 5 mg every 6 hours started at least 12 to 24 hours prior to planned extubation (or Methylprednisolone 20–40 mg q4–6h). Reduces post-extubation stridor and re-intubation rates by > 50%!"
+      },
+      {
+        "h": "Post-Extubation Failure & Prophylactic NIV/HFNC",
+        "b": "The High-Risk Extubation Failure Population:\n• Age > 65 years.\n• Underlying Chronic Obstructive Pulmonary Disease (COPD) or Congestive Heart Failure (CHF).\n• Hypercapnia at the end of the SBT (PaCO2 > 45 mmHg).\n• High Body Mass Index (BMI > 30).\n• Multiple failed previous weaning attempts or prolonged mechanical ventilation (> 7 days).\n\nProphylactic Post-Extubation Protocol (NIV / HFNC):\n• In high-risk patients, DO NOT wait for respiratory failure to develop post-extubation!\n• Apply Non-Invasive Ventilation (NIV) or High-Flow Nasal Cannula (HFNC) IMMEDIATELY upon extubation in the ICU.\n• Evidence: Prophylactic post-extubation NIV/HFNC reduces re-intubation rates from 15.9% to 7.4% and significantly lowers 90-day mortality.\n\nThe Trap of Rescue NIV in Unselected Patients:\n• If an unselected patient without underlying COPD or CHF develops acute respiratory distress hours after extubation, RESCUE NIV IS HARMFUL!\n• Several randomized trials demonstrate that rescue NIV delays inevitable re-intubation, increases aspiration risk, and significantly increases mortality!\n• Rule: If respiratory failure develops post-extubation in an unselected patient, promptly RE-INTUBATE without delay."
+      }
+    ],
+    "example": "CLINICAL CASE: A 69-year-old male with severe COPD is intubated for 8 days following septic shock from community-acquired pneumonia. Pneumonia has cleared, noradrenaline has been stopped for 24 hours, and PaO2 is 88 mmHg on PEEP 5 and FiO2 0.35.\n\nLiberation Protocol Execution:\n1. SBT Conducted: 30-minute Low-PSV trial (PS 7 cmH2O, PEEP 5 cmH2O). Patient remains calm, RR 18 bpm, HR 82 bpm, SpO2 95%.\n2. RSBI Measurement: Measured on PEEP 0 / PS 0 for 1 minute: RR 19 bpm, VT 380 mL (0.38 L) → RSBI = 19 / 0.38 = 50 breaths/min/L (< 105; Excellent!).\n3. Cuff Leak Test: Cuff deflated; measured leak is 195 mL (> 110 mL; Negative for laryngeal edema).\n4. Post-Extubation Prophylaxis: Because patient is > 65 with severe COPD, he is extubated directly onto prophylactic BiPAP (IPAP 12, EPAP 5 cmH2O).\n5. Outcome: Patient successfully transitions to room air over the next 48 hours without re-intubation.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd ed., Ch. 16. Wolters Kluwer, 2024.",
+      "Yang KL, Tobin MJ. A prospective study of indexes predicting the outcome of trials of weaning from mechanical ventilation. N Engl J Med 1991;324(21):1445–1450.",
+      "Subira C, et al. Effect of Pressure Support vs T-Piece Spontaneous Breathing Trials on Successful Extubation (JAMA 2019). JAMA 2019;321(22):2175–2182.",
+      "Ouellette DR, et al. Liberation from Mechanical Ventilation in Critically Ill Adults: An Official ATS/CHEST Clinical Practice Guideline. Chest 2017;151(1):166–180."
+    ]
+  }
 ];
 
   const drugs = [

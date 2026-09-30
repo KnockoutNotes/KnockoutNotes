@@ -120,13 +120,28 @@
       tools.push({ label: "🚨 Code Room: ACLS Protocols", url: "crisis.html#acls" });
       tools.push({ label: "🧮 MAP & SVR Calculator", url: "calculators.html?calc=map" });
     }
+    if (text.includes("shock") || text.includes("hemodynamic") || text.includes("inotrope") || text.includes("tamponade")) {
+      tools.push({ label: "🧮 MAP & SVR Calculator", url: "calculators.html?calc=map" });
+      tools.push({ label: "🧮 Estimated Blood Loss & MTP", url: "calculators.html?calc=ebl" });
+      tools.push({ label: "🚨 Crisis: ACLS & Resuscitation", url: "crisis.html#acls" });
+    }
+    if (text.includes("respiratory") || text.includes("ards") || text.includes("weaning") || text.includes("hyperinflation") || text.includes("peep") || text.includes("extubation")) {
+      tools.push({ label: "🫁 Ventilator Station 3D", url: "ventilator.html" });
+      tools.push({ label: "🧮 ABG Anion Gap & Delta", url: "calculators.html?calc=abg" });
+      tools.push({ label: "🚨 Crisis: Bronchospasm & Airway", url: "crisis.html#bronchospasm" });
+    }
 
     if (tools.length < 2) {
       tools.push({ label: "🧮 Medical Calculators Suite", url: "calculators.html" });
       tools.push({ label: "🚨 Code Room & Emergency Algorithms", url: "crisis.html" });
     }
 
-    return tools;
+    const seen = new Set();
+    return tools.filter(t => {
+      if (seen.has(t.url)) return false;
+      seen.add(t.url);
+      return true;
+    });
   }
 
   // Get list of subsections for fast scroll navigation
@@ -249,9 +264,9 @@
     const totalCount = getData().topics.length + getData().drugs.length;
 
     // Line 1: Clinical Domains, Investigations & Critical Care (Includes Antibiotics & Poisoning)
-    const line1Cats = allCats.filter(c => ["anaesthesia", "examination", "ecg", "abg", "equipment", "pft", "antibiotics", "poisoning"].includes(c.id));
+    const line1Cats = allCats.filter(c => ["anaesthesia", "examination", "ecg", "abg", "equipment", "pft", "antibiotics", "poisoning", "shock", "respiratory"].includes(c.id));
     // Line 2: Pharmacology & Drug Monographs (Includes pregnancy / Drugs in Pregnancy)
-    const line2Cats = allCats.filter(c => !["anaesthesia", "examination", "ecg", "abg", "equipment", "pft", "antibiotics", "poisoning"].includes(c.id));
+    const line2Cats = allCats.filter(c => !["anaesthesia", "examination", "ecg", "abg", "equipment", "pft", "antibiotics", "poisoning", "shock", "respiratory"].includes(c.id));
 
     let line1HTML = `
       <button type="button" class="ron-nav-pill ${activeId === 'all' ? 'active' : ''}" data-ron-cat="all">
@@ -358,7 +373,7 @@
               <!-- Top Inline Search Input -->
               <div class="ron-inline-search-wrap">
                 <input type="search" id="ronInlineSearchInput" class="ron-inline-search-input"
-                  placeholder="🔍 Search all 147 topics &amp; drugs (e.g. Propofol, RSI, TOF)..."
+                  placeholder="🔍 Search all 171 topics &amp; drugs (e.g. Propofol, RSI, TOF)..."
                   value="${esc(searchFilter)}" autocomplete="off">
               </div>
             </div>
@@ -528,7 +543,7 @@
               <!-- Top Inline Search Input -->
               <div class="ron-inline-search-wrap">
                 <input type="search" id="ronInlineSearchInput" class="ron-inline-search-input"
-                  placeholder="🔍 Search all 147 topics &amp; drugs..."
+                  placeholder="🔍 Search all 171 topics &amp; drugs..."
                   value="${esc(searchFilter)}" autocomplete="off">
               </div>
             </div>
@@ -1128,7 +1143,7 @@
         <div class="ron-dock-shell">
           <div class="ron-dock-calendar">
             <span class="ron-dock-cal-icon">${ICONS.cal}</span>
-            <span class="ron-dock-cal-label">147 TOPICS</span>
+            <span class="ron-dock-cal-label">171 TOPICS</span>
           </div>
 
           <div class="ron-dock-stream">
@@ -1160,7 +1175,7 @@
               <span style="font-size:24px;">✦</span>
               <div>
                 <h2>Knockout Notes Study Library</h2>
-                <p style="margin:2px 0 0; font-size:12.5px; color:var(--ron-text-empty);">Browse 159 source-cited anaesthesia &amp; critical care topics, clinical exams, ECGs, antibiotics, toxicology &amp; drug monographs</p>
+                <p style="margin:2px 0 0; font-size:12.5px; color:var(--ron-text-empty);">Browse 171 source-cited anaesthesia &amp; critical care topics, clinical exams, ECGs, antibiotics, toxicology &amp; drug monographs</p>
               </div>
             </div>
             <button class="ron-close-btn" id="ronCloseModalBtn" aria-label="Close dialog">
