@@ -15,6 +15,202 @@
    Strictly scoped to Light Mode: body:not(.dark)[data-content-page="study"]
    ========================================================================== */
 
+/* ── Theme Variables: Light Mode Defaults ── */
+#ronStudyApp,
+.ron-study-app {
+  --ron-bg-app: #ffffff;
+  --ron-bg-card: #ffffff;
+  --ron-bg-card-alt: #f8fafc;
+  --ron-bg-muted: #f1f5f9;
+  --ron-bg-hover: #e2e8f0;
+  --ron-bg-pearl: #eff6ff;
+  --ron-bg-pitfall: #fef2f2;
+  --ron-bg-example: #f0fdf4;
+  --ron-bg-callout: #e0f2fe;
+  --ron-bg-diagram: #ecfdf5;
+  --ron-bg-crosslinks: #faf5ff;
+  --ron-bg-offlabel: #f5f3ff;
+  --ron-bg-complications: #fefce8;
+  --ron-text-primary: #0f172a;
+  --ron-text-secondary: #1e293b;
+  --ron-text-body: #334155;
+  --ron-text-muted: #475569;
+  --ron-text-faint: #64748b;
+  --ron-text-placeholder: #94a3b8;
+  --ron-text-dark: #191c1e;
+  --ron-text-tagline: #555a5e;
+  --ron-text-empty: #555;
+  --ron-text-hint: #888;
+  --ron-accent: #0284c7;
+  --ron-accent-dark: #0369a1;
+  --ron-accent-light: #0ea5e9;
+  --ron-accent-sky: #38bdf8;
+  --ron-accent-bg: rgba(2,132,199,0.08);
+  --ron-accent-bg-active: rgba(2,132,199,0.12);
+  --ron-text-on-accent: #ffffff;
+  --ron-chip-hover-bg: #dbeafe;
+  --ron-chip-active-border: #93c5fd;
+  --ron-label-pearl: #1e40af;
+  --ron-label-pitfall: #b91c1c;
+  --ron-label-example: #166534;
+  --ron-label-diagram: #047857;
+  --ron-label-crosslinks: #6b21a8;
+  --ron-label-complications: #92400e;
+  --ron-color-warning: #ef4444;
+  --ron-border: #e2e8f0;
+  --ron-border-hover: #cbd5e1;
+  --ron-border-pearl: #93c5fd;
+  --ron-border-pitfall: #fca5a5;
+  --ron-border-example: #86efac;
+  --ron-border-callout: #bfdbfe;
+  --ron-border-diagram: #6ee7b7;
+  --ron-border-crosslinks: #c4b5fd;
+  --ron-border-offlabel: #c4b5fd;
+  --ron-border-complications: #fcd34d;
+  --ron-shadow-sm: rgba(0,0,0,0.03);
+  --ron-shadow-card: rgba(0,0,0,0.04);
+  --ron-shadow-md: rgba(0,0,0,0.06);
+  --ron-shadow-lg: rgba(0,0,0,0.08);
+  --ron-shadow-xl: rgba(0,0,0,0.1);
+  --ron-shadow-accent: rgba(2,132,199,0.15);
+  --ron-shadow-accent-lg: rgba(2,132,199,0.25);
+  --ron-gradient-accent-from: #0284c7;
+  --ron-gradient-accent-to: #0ea5e9;
+  --ron-gradient-divider: #e2e8f0;
+  /* Device frame & screen */
+  --ron-device-bg: #34373a;
+  --ron-screen-bg: #e2dfd7;
+  --ron-screen-color: #191c1e;
+  --ron-scoop-bg: #e2dfd7;
+  --ron-scoop-title: #1a1e21;
+  --ron-input-bg: #ffffff;
+  --ron-input-border: rgba(0,0,0,0.08);
+  --ron-input-color: #191c1e;
+  --ron-close-bg: #ffffff;
+  --ron-close-border: rgba(0,0,0,0.06);
+  --ron-close-color: #191c1e;
+  --ron-close-hover-bg: #f8fafc;
+  --ron-page-bg: #d8d6ce;
+  --ron-page-bg-gradient: radial-gradient(circle at 50% 10%, #eae8e1 0%, #d8d6ce 100%);
+  /* Modal */
+  --ron-modal-bg: rgba(0,0,0,0.5);
+  --ron-modal-sheet-bg: #ffffff;
+  --ron-modal-border: rgba(0,0,0,0.08);
+  --ron-modal-item-bg: #ffffff;
+  --ron-modal-item-border: rgba(0,0,0,0.04);
+  --ron-modal-search-bg: #f1ede5;
+  /* Table */
+  --ron-table-header-bg: #f1f5f9;
+  --ron-table-border: #e2e8f0;
+  --ron-table-header-color: #1e293b;
+  --ron-table-row-hover: rgba(2,132,199,0.04);
+  --ron-table-stripe: rgba(0,0,0,0.015);
+  /* Dock */
+  --ron-dock-bg: rgba(255,255,255,0.92);
+  --ron-dock-border: rgba(0,0,0,0.05);
+  --ron-dock-node-color: #555a5e;
+  --ron-dock-active-bg: #0284c7;
+  --ron-dock-active-color: #ffffff;
+}
+
+/* ── Theme Variables: Dark Mode Overrides ── */
+body.dark #ronStudyApp,
+body.dark .ron-study-app {
+  --ron-bg-app: #0d0d1a;
+  --ron-bg-card: #181830;
+  --ron-bg-card-alt: #1e1e38;
+  --ron-bg-muted: #222244;
+  --ron-bg-hover: #2a2a50;
+  --ron-bg-pearl: rgba(30,64,175,0.12);
+  --ron-bg-pitfall: rgba(185,28,28,0.10);
+  --ron-bg-example: rgba(22,101,52,0.10);
+  --ron-bg-callout: rgba(79,195,247,0.08);
+  --ron-bg-diagram: rgba(4,120,87,0.10);
+  --ron-bg-crosslinks: rgba(107,33,168,0.10);
+  --ron-bg-offlabel: rgba(107,33,168,0.08);
+  --ron-bg-complications: rgba(146,64,14,0.10);
+  --ron-text-primary: #e8e8f0;
+  --ron-text-secondary: #d0d0e0;
+  --ron-text-body: #b8b8d0;
+  --ron-text-muted: #9898b0;
+  --ron-text-faint: #686880;
+  --ron-text-placeholder: #585870;
+  --ron-text-dark: #f0f0f5;
+  --ron-text-tagline: #9898b0;
+  --ron-text-empty: #9898b0;
+  --ron-text-hint: #686880;
+  --ron-accent: #4fc3f7;
+  --ron-accent-dark: #29b6f6;
+  --ron-accent-light: #81d4fa;
+  --ron-accent-sky: #4fc3f7;
+  --ron-accent-bg: rgba(79,195,247,0.08);
+  --ron-accent-bg-active: rgba(79,195,247,0.15);
+  --ron-text-on-accent: #0d0d1a;
+  --ron-chip-hover-bg: rgba(79,195,247,0.12);
+  --ron-chip-active-border: #4fc3f7;
+  --ron-label-pearl: #93c5fd;
+  --ron-label-pitfall: #fca5a5;
+  --ron-label-example: #86efac;
+  --ron-label-diagram: #6ee7b7;
+  --ron-label-crosslinks: #c4b5fd;
+  --ron-label-complications: #fcd34d;
+  --ron-color-warning: #f87171;
+  --ron-border: rgba(255,255,255,0.06);
+  --ron-border-hover: rgba(255,255,255,0.12);
+  --ron-border-pearl: rgba(147,197,253,0.3);
+  --ron-border-pitfall: rgba(252,165,165,0.3);
+  --ron-border-example: rgba(134,239,172,0.3);
+  --ron-border-callout: rgba(79,195,247,0.25);
+  --ron-border-diagram: rgba(110,231,183,0.3);
+  --ron-border-crosslinks: rgba(196,181,253,0.3);
+  --ron-border-offlabel: rgba(196,181,253,0.2);
+  --ron-border-complications: rgba(252,211,77,0.3);
+  --ron-shadow-sm: rgba(0,0,0,0.3);
+  --ron-shadow-card: rgba(0,0,0,0.4);
+  --ron-shadow-md: rgba(0,0,0,0.4);
+  --ron-shadow-lg: rgba(0,0,0,0.5);
+  --ron-shadow-xl: rgba(0,0,0,0.6);
+  --ron-shadow-accent: rgba(79,195,247,0.2);
+  --ron-shadow-accent-lg: rgba(79,195,247,0.3);
+  --ron-gradient-accent-from: #1a5276;
+  --ron-gradient-accent-to: #4fc3f7;
+  --ron-gradient-divider: rgba(255,255,255,0.06);
+  /* Device frame & screen */
+  --ron-device-bg: #0a0a1a;
+  --ron-screen-bg: #0d0d1a;
+  --ron-screen-color: #e8e8f0;
+  --ron-scoop-bg: #0d0d1a;
+  --ron-scoop-title: #e8e8f0;
+  --ron-input-bg: #141428;
+  --ron-input-border: rgba(255,255,255,0.08);
+  --ron-input-color: #e8e8f0;
+  --ron-close-bg: #1e1e38;
+  --ron-close-border: rgba(255,255,255,0.08);
+  --ron-close-color: #e8e8f0;
+  --ron-close-hover-bg: #2a2a50;
+  --ron-page-bg: #030712;
+  --ron-page-bg-gradient: radial-gradient(circle at 50% 10%, #0d0d1a 0%, #030712 100%);
+  /* Modal */
+  --ron-modal-bg: rgba(0,0,0,0.75);
+  --ron-modal-sheet-bg: #181830;
+  --ron-modal-border: rgba(255,255,255,0.08);
+  --ron-modal-item-bg: #1e1e38;
+  --ron-modal-item-border: rgba(255,255,255,0.06);
+  --ron-modal-search-bg: #141428;
+  /* Table */
+  --ron-table-header-bg: #1e1e38;
+  --ron-table-border: rgba(255,255,255,0.06);
+  --ron-table-header-color: #e8e8f0;
+  --ron-table-row-hover: rgba(79,195,247,0.06);
+  --ron-table-stripe: rgba(255,255,255,0.02);
+  /* Dock */
+  --ron-dock-bg: rgba(13,13,26,0.92);
+  --ron-dock-border: rgba(255,255,255,0.06);
+  --ron-dock-node-color: #9898b0;
+  --ron-dock-active-bg: #4fc3f7;
+  --ron-dock-active-color: #0d0d1a;
+}
+
 /* Hide legacy top hero, default grid and detail in light mode when Ron-Design board is active */
 body:not(.dark)[data-content-page="study"] .st-hero,
 body:not(.dark)[data-content-page="study"] .st-cat-nav,
@@ -33,15 +229,30 @@ body:not(.dark)[data-content-page="study"] #knSpatialCanvas {
   opacity: 0.12 !important;
 }
 
+/* Dark Mode page background and legacy element hiding */
+body.dark[data-content-page="study"] .st-hero,
+body.dark[data-content-page="study"] .st-cat-nav,
+body.dark[data-content-page="study"] .st-top-index,
+body.dark[data-content-page="study"] #stGrid,
+body.dark[data-content-page="study"] #stDetail,
+body.dark[data-content-page="study"] #stList {
+  display: none !important;
+}
+
+body.dark[data-content-page="study"] {
+  background-color: var(--ron-page-bg) !important;
+  background-image: var(--ron-page-bg-gradient) !important;
+}
+
 /* Container Frame */
-body:not(.dark)[data-content-page="study"] .st-page.container {
+body[data-content-page="study"] .st-page.container {
   max-width: 1360px !important;
   padding: 30px 16px 80px 16px !important;
 }
 
 /* ------------------------------------------------------------ Device Frame */
 .ron-device-frame {
-  background: #34373a;
+  background: var(--ron-device-bg);
   padding: 12px;
   border-radius: 44px;
   box-shadow: 0 35px 90px -15px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.12);
@@ -58,7 +269,7 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
 }
 
 .ron-screen {
-  background: #e2dfd7;
+  background: var(--ron-screen-bg);
   border-radius: 36px;
   position: relative;
   overflow: hidden;
@@ -66,7 +277,7 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
   min-height: 780px;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
-  color: #191c1e;
+  color: var(--ron-screen-color);
 }
 
 @media (max-width: 768px) {
@@ -96,9 +307,9 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  color: #191c1e;
+  background: var(--ron-close-bg);
+  border: 1px solid var(--ron-close-border);
+  color: var(--ron-close-color);
   font-size: 18px;
   font-weight: 700;
   display: flex;
@@ -112,7 +323,7 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
 
 .ron-close-btn:hover {
   transform: scale(1.06);
-  background: #f8fafc;
+  background: var(--ron-close-hover-bg);
 }
 
 /* ------------------------------------------------------------ Header Bar */
@@ -141,9 +352,9 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  color: #191c1e;
+  background: var(--ron-close-bg);
+  border: 1px solid var(--ron-close-border);
+  color: var(--ron-close-color);
   font-size: 18px;
   font-weight: 700;
   display: flex;
@@ -157,12 +368,12 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
 
 .ron-close-btn:hover {
   transform: scale(1.06);
-  background: #f8fafc;
+  background: var(--ron-close-hover-bg);
 }
 
 .ron-title-scoop {
   position: relative;
-  background: #e2dfd7;
+  background: var(--ron-scoop-bg);
   padding: 4px 18px 4px 6px;
   border-radius: 0 0 24px 0;
 }
@@ -172,7 +383,7 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
   font-size: clamp(22px, 3vw, 32px);
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #1a1e21;
+  color: var(--ron-scoop-title);
 }
 
 .ron-inline-search-wrap {
@@ -183,12 +394,12 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
 
 .ron-inline-search-input {
   width: 100%;
-  background: #ffffff;
-  border: 1.5px solid rgba(0, 0, 0, 0.08);
+  background: var(--ron-input-bg);
+  border: 1.5px solid var(--ron-input-border);
   border-radius: 9999px;
   padding: 9px 20px;
   font-size: 13.5px;
-  color: #191c1e;
+  color: var(--ron-input-color);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
   outline: none;
   box-sizing: border-box;
@@ -196,7 +407,7 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
 }
 
 .ron-inline-search-input:focus {
-  border-color: #0284c7;
+  border-color: var(--ron-accent);
   box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18), inset 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
@@ -216,22 +427,15 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
   gap: 8px;
   overflow-x: auto;
   padding: 2px 2px 6px 2px;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
 }
 
 .ron-nav-row::-webkit-scrollbar {
-  height: 4px;
-}
-
-.ron-nav-row::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.04);
-  border-radius: 4px;
-}
-
-.ron-nav-row::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 /* Related Tools & Calculators Bubble Row */
@@ -1291,8 +1495,8 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
 /* Flow Columns Grid */
 .ron-flow-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 20px;
   position: relative;
   z-index: 2;
   margin-top: 10px;
@@ -1300,8 +1504,8 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
 
 @media (max-width: 768px) {
   .ron-flow-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: 1fr !important;
+    gap: 16px;
   }
 }
 
@@ -1402,6 +1606,94 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
   transform: translateY(-4px) scale(1.015);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
   border-color: rgba(2, 132, 199, 0.25);
+}
+
+/* Card with 3D Thumbnail in Main Categories View */
+.ron-card-body-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 4px 0 8px 0;
+  min-height: 72px;
+}
+
+.ron-card-text-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.ron-card-tagline {
+  font-size: 12.5px;
+  color: var(--ron-text-tagline);
+  margin: 5px 0 0 0;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ron-card-3d-wrap {
+  width: 88px;
+  height: 78px;
+  border-radius: 14px;
+  background: #f7f6f2;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+
+.ron-card:hover .ron-card-3d-wrap {
+  transform: scale(1.05);
+  border-color: var(--ron-accent);
+}
+
+.ron-card-3d-canvas-box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ron-card-3d-canvas-box canvas,
+.ron-card-3d-canvas-box .st-tile-molecule-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.ron-card-3d-placeholder {
+  font-size: 16px;
+  color: var(--ron-text-hint);
+  opacity: 0.6;
+}
+
+.ron-card-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.ron-card-read-link {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ron-accent);
+  transition: transform 0.15s ease;
+}
+
+.ron-card:hover .ron-card-read-link {
+  transform: translateX(3px);
 }
 
 .ron-card-header {
@@ -1752,7 +2044,7 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
 .ron-topics-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: var(--ron-modal-bg);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 10000;
@@ -1767,7 +2059,7 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
 }
 
 .ron-topics-sheet {
-  background: #e2dfd7;
+  background: var(--ron-modal-sheet-bg);
   border-radius: 32px;
   max-width: 860px;
   width: 100%;
@@ -1791,23 +2083,23 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
   margin: 0;
   font-size: 20px;
   font-weight: 750;
-  color: #191c1e;
+  color: var(--ron-text-dark);
 }
 
 .ron-sheet-search {
   padding: 12px 24px;
-  background: #ffffff;
+  background: var(--ron-modal-sheet-bg);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .ron-sheet-search input {
   width: 100%;
   border: none;
-  background: #f1ede5;
+  background: var(--ron-modal-search-bg);
   padding: 10px 16px;
   border-radius: 9999px;
   font-size: 14px;
-  color: #191c1e;
+  color: var(--ron-input-color);
   outline: none;
   box-sizing: border-box;
 }
@@ -1821,11 +2113,11 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
 }
 
 .ron-topic-item-card {
-  background: #ffffff;
+  background: var(--ron-modal-item-bg);
   padding: 12px 16px;
   border-radius: 16px;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--ron-modal-item-border);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
   transition: transform 0.15s ease;
   display: flex;
@@ -1841,7 +2133,7 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
 .ron-topic-item-cat {
   font-size: 10px;
   font-weight: 700;
-  color: #0284c7;
+  color: var(--ron-accent);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -1849,10 +2141,548 @@ body:not(.dark)[data-content-page="study"] .st-page.container {
 .ron-topic-item-name {
   font-size: 13.5px;
   font-weight: 700;
-  color: #191c1e;
+  color: var(--ron-text-dark);
 }
 
 .ron-topic-item-tag {
   font-size: 11px;
-  color: #7b8084;
+  color: var(--ron-text-muted);
 }
+
+/* ==========================================================================
+   DARK MODE COMPONENT OVERRIDES (body.dark)
+   Safe, high-contrast, clinical styling with consistent point-wise formatting
+   ========================================================================== */
+
+/* 1. Base Canvas & Device Frame */
+body.dark .ron-device-frame {
+  background: var(--ron-device-bg);
+  box-shadow: 0 35px 90px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+body.dark .ron-screen {
+  background: var(--ron-screen-bg);
+  color: var(--ron-screen-color);
+}
+
+body.dark .ron-title-scoop {
+  background: var(--ron-scoop-bg);
+}
+
+body.dark .ron-title-scoop h1 {
+  color: var(--ron-scoop-title);
+}
+
+body.dark .ron-close-btn {
+  background: var(--ron-close-bg);
+  border-color: var(--ron-close-border);
+  color: var(--ron-close-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .ron-close-btn:hover {
+  background: var(--ron-close-hover-bg);
+  color: #ffffff;
+}
+
+body.dark .ron-inline-search-input {
+  background: var(--ron-input-bg);
+  border-color: var(--ron-input-border);
+  color: var(--ron-input-color);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .ron-inline-search-input:focus {
+  border-color: var(--ron-accent);
+  box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* 2. Top Navigation Category Pills (Two-Line Menu) */
+body.dark .ron-nav-pill {
+  background: #181830;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+body.dark .ron-nav-pill:hover {
+  background: #222244;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+}
+
+body.dark .ron-nav-pill.active {
+  background: #252848;
+  color: #4fc3f7;
+  font-weight: 750;
+  border-color: #4fc3f7;
+  box-shadow: 0 4px 14px rgba(79, 195, 247, 0.25);
+}
+
+body.dark .ron-pill-count {
+  background: #121224;
+  color: #9898b0;
+}
+
+body.dark .ron-nav-pill.active .ron-pill-count {
+  background: #4fc3f7;
+  color: #0d0d1a;
+}
+
+
+/* 3. Summary Banner & Topic Profile */
+body.dark .ron-profile-card {
+  background: #181830;
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .ron-avatar-wrap {
+  background: #121224;
+  color: #4fc3f7;
+}
+
+body.dark .ron-profile-meta {
+  color: #9898b0;
+}
+
+body.dark .ron-profile-name {
+  color: #f0f0f5;
+}
+
+body.dark .ron-profile-progress {
+  background: #2a2a50;
+}
+
+body.dark .ron-profile-progress::after {
+  background: var(--ron-accent);
+}
+
+body.dark .ron-diagnosis-label {
+  color: #9898b0;
+}
+
+body.dark .ron-diagnosis-title {
+  color: #f0f0f5;
+}
+
+body.dark .ron-vital-label {
+  color: #9898b0;
+}
+
+body.dark .ron-vital-val {
+  color: #e8e8f0;
+}
+
+body.dark .ron-vital-val small {
+  color: #9898b0;
+}
+
+/* 4. Left-Side Vertical Calculators & Protocols Bubbles */
+body.dark .ron-related-tools-vertical {
+  background: #141428;
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .ron-vertical-tools-heading {
+  color: #9898b0;
+}
+
+body.dark .ron-vertical-tool-pill {
+  background: #1e1e38;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #81d4fa;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .ron-vertical-tool-pill:hover {
+  background: #4fc3f7;
+  color: #0d0d1a;
+  border-color: #4fc3f7;
+  box-shadow: 0 4px 14px rgba(79, 195, 247, 0.3);
+}
+
+/* 5. Fast Scroll Subsection Buttons & Stage Title */
+body.dark .ron-slider-btn {
+  background: #1e1e38;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #e8e8f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .ron-slider-btn:hover {
+  background: #2a2a50;
+  color: #ffffff;
+}
+
+body.dark .ron-filter-pill {
+  background: #181830;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .ron-filter-pill:hover {
+  background: #222244;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+body.dark .ron-filter-pill.active {
+  background: #4fc3f7 !important;
+  color: #0d0d1a !important;
+  border-color: #4fc3f7 !important;
+  box-shadow: 0 4px 14px rgba(79, 195, 247, 0.35) !important;
+}
+
+/* 6. Main Stage Container Box */
+body.dark .ron-stage-container {
+  background: #181830;
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .ron-stage-pill {
+  background: #1e1e38;
+  border-color: rgba(255, 255, 255, 0.09);
+  color: #f0f0f5;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .ron-guideline-line {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark .ron-step-node {
+  background: #38bdf8;
+  color: #0d0d1a;
+  box-shadow: 0 2px 8px rgba(56, 189, 248, 0.35);
+}
+
+body.dark .ron-plus-action-btn {
+  background: #2a2a50;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+body.dark .ron-plus-action-btn:hover {
+  background: #4fc3f7;
+  color: #0d0d1a;
+}
+
+/* 7. Clinical Section Cards (Point-Wise Descriptions) */
+body.dark .ron-card,
+body.dark .ron-notes-card,
+body.dark .ron-expanded-notes .st-card {
+  background: #141428 !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark .ron-card-title,
+body.dark .ron-notes-card h3,
+body.dark .ron-expanded-notes .st-card h3 {
+  color: #e8e8f0 !important;
+}
+
+body.dark .ron-card-scale-icon {
+  color: #9898b0;
+}
+
+body.dark .ron-prose,
+body.dark .ron-notes-card p,
+body.dark .ron-expanded-notes .st-card-body p,
+body.dark .ron-expanded-notes .st-prose {
+  color: #b8b8d0 !important;
+}
+
+body.dark .ron-point-text {
+  color: #cbd5e1;
+}
+
+body.dark .ron-point-bullet {
+  color: #4fc3f7;
+}
+
+body.dark .ron-point-title,
+body.dark .ron-point-keyval .ron-point-label {
+  color: #f0f0f5;
+}
+
+body.dark .ron-point-num-badge {
+  background: #4fc3f7;
+  color: #0d0d1a;
+}
+
+/* 8. Callout Boxes */
+body.dark .ron-source-callout {
+  background: rgba(79, 195, 247, 0.08);
+  border-color: rgba(79, 195, 247, 0.2);
+  border-left-color: #4fc3f7;
+}
+
+body.dark .ron-callout-pearl {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.25);
+  border-left-color: #34d399;
+}
+
+body.dark .ron-callout-pearl .ron-callout-badge {
+  color: #34d399;
+}
+
+body.dark .ron-callout-pitfall {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.25);
+  border-left-color: #f87171;
+}
+
+body.dark .ron-callout-pitfall .ron-callout-badge {
+  color: #f87171;
+}
+
+body.dark .ron-callout-example {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.25);
+  border-left-color: #60a5fa;
+}
+
+body.dark .ron-callout-example .ron-callout-badge {
+  color: #60a5fa;
+}
+
+/* 9. Vector Diagrams & Figures */
+body.dark .ron-diagram-card {
+  background: #141428;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+body.dark .ron-diagram-badge {
+  color: #4fc3f7;
+}
+
+body.dark .ron-figure-wrap-float {
+  background: #181830;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+body.dark .ron-figure-caption {
+  color: #9898b0;
+}
+
+/* 10. 2D Chemical Structures & 3D Conformer */
+body.dark .ron-structure-tight-card {
+  background: #181830;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+body.dark .ron-structure-badge {
+  color: #4fc3f7;
+}
+
+body.dark .ron-structure-formula-chip {
+  background: #222244;
+  color: #81d4fa;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark .ron-structure-3d-hint {
+  background: #222244;
+  color: #9898b0;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark .ron-structure-svg-compact {
+  background: #101020;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Invert black bonds/text in 2D SVG for dark mode clarity while preserving atom colors */
+body.dark .ron-structure-svg-compact svg {
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.2));
+}
+
+body.dark .ron-structure-svg-compact svg text[fill="#000000"],
+body.dark .ron-structure-svg-compact svg text[fill="#000"],
+body.dark .ron-structure-svg-compact svg text:not([fill]) {
+  fill: #e8e8f0 !important;
+}
+
+body.dark .ron-structure-svg-compact svg path[stroke="#000000"],
+body.dark .ron-structure-svg-compact svg path[stroke="#000"],
+body.dark .ron-structure-svg-compact svg line[stroke="#000000"],
+body.dark .ron-structure-svg-compact svg line[stroke="#000"] {
+  stroke: #e8e8f0 !important;
+}
+
+body.dark .ron-structure-3d-compact {
+  background: #0d0d1a !important;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* 11. Clinical Tables */
+body.dark .ron-table-wrap {
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+body.dark .ron-clinical-table {
+  background: #141428;
+}
+
+body.dark .ron-clinical-table th {
+  background: #1e1e38;
+  color: #e8e8f0;
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark .ron-clinical-table td {
+  border-bottom-color: rgba(255, 255, 255, 0.04);
+  color: #b8b8d0;
+}
+
+body.dark .ron-clinical-table tbody tr:hover {
+  background: rgba(79, 195, 247, 0.06);
+}
+
+body.dark .ron-table-caption {
+  color: #9898b0;
+}
+
+/* 12. Crosslinks */
+body.dark .ron-crosslinks-bar {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark .ron-crosslinks-label {
+  color: #9898b0;
+}
+
+body.dark .ron-crosslink-bubble {
+  background: #1e1e38;
+  color: #81d4fa;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark .ron-crosslink-bubble:hover {
+  background: #4fc3f7;
+  color: #0d0d1a;
+  border-color: #4fc3f7;
+}
+
+/* 13. Category Cards & Overview Flow Grid (View 1) */
+body.dark .ron-interactive-topic-card {
+  background: #141428;
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .ron-interactive-topic-card:hover {
+  border-color: rgba(79, 195, 247, 0.4);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
+}
+
+body.dark .ron-med-capsule {
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .ron-med-icon-bulb {
+  background: #1e1e38;
+  color: #e8e8f0;
+}
+
+body.dark .ron-med-name-bulb {
+  background: #2a2a50;
+  color: #f0f0f5;
+}
+
+body.dark .ron-topic-item-cat {
+  color: #4fc3f7;
+}
+
+body.dark .ron-card-3d-wrap {
+  background: #0f0f1e;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* 14. Bottom Scrubber Dock (View 1) */
+body.dark .ron-bottom-dock {
+  background: rgba(18, 18, 36, 0.92);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+}
+
+body.dark .ron-dock-cal-btn {
+  background: #2a2a50;
+  color: #f0f0f5;
+}
+
+body.dark .ron-dock-node {
+  color: #9898b0;
+}
+
+body.dark .ron-dock-node:hover {
+  color: #ffffff;
+}
+
+body.dark .ron-badge-bubble {
+  background: #38bdf8;
+  color: #0d0d1a;
+}
+
+body.dark .ron-dock-active-pill {
+  background: #4fc3f7;
+  color: #0d0d1a;
+}
+
+body.dark .ron-dock-active-pill .ron-dock-node {
+  color: #0d0d1a;
+}
+
+body.dark .ron-dock-active-pill .ron-dock-node.active-text {
+  color: #0d0d1a;
+  font-weight: 800;
+}
+
+/* 15. Quick Topics Modal */
+body.dark .ron-topics-sheet {
+  background: #181830;
+  border-color: #0a0a1a;
+}
+
+body.dark .ron-topics-sheet-head {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark .ron-sheet-search {
+  background: #181830;
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark .ron-sheet-search input {
+  background: #141428;
+  color: #e8e8f0;
+}
+
+body.dark .ron-topic-item-card {
+  background: #1e1e38;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark .ron-topic-item-card:hover {
+  background: #252545;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .ron-topic-item-name {
+  color: #f0f0f5;
+}
+

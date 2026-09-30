@@ -517,14 +517,12 @@ function getOrCreateTileModel(drugId) {
 
 function startTileLoop() {
   if (tileRaf) return;
-  const listEl = document.getElementById("stList");
-  if (document.hidden || (listEl && listEl.hidden)) return;
+  if (document.hidden || activeTiles.size === 0) return;
   tileRaf = requestAnimationFrame(tileTick);
 }
 
 function tileTick(now) {
-  const listEl = document.getElementById("stList");
-  if (document.hidden || (listEl && listEl.hidden)) {
+  if (document.hidden || activeTiles.size === 0) {
     tileRaf = null;
     return;
   }
@@ -602,7 +600,7 @@ function mountTileMolecule(container, drugId) {
   ctx.drawImage(sharedRenderer.domElement, 0, 0, TILE_WIDTH, TILE_HEIGHT);
 
   // Successfully rendered first frame! Now safely hide fallback diagram
-  const fallback = container.querySelector(".st-tile-structure, .st-tile-fallback-icon");
+  const fallback = container.querySelector(".st-tile-structure, .st-tile-fallback-icon, .ron-card-3d-placeholder, .st-molecule-placeholder");
   if (fallback) fallback.style.display = "none";
   container.classList.add("st-has-canvas");
 
@@ -642,7 +640,7 @@ function unmountTileMolecule(container) {
   if (canvas && canvas.parentNode) {
     canvas.parentNode.removeChild(canvas);
   }
-  const fallback = container.querySelector(".st-tile-structure, .st-tile-fallback-icon");
+  const fallback = container.querySelector(".st-tile-structure, .st-tile-fallback-icon, .ron-card-3d-placeholder, .st-molecule-placeholder");
   if (fallback) fallback.style.display = "";
   container.classList.remove("st-has-canvas");
 }
@@ -680,8 +678,7 @@ if (typeof document !== "undefined") {
         tileRaf = null;
       }
     } else {
-      const listEl = document.getElementById("stList");
-      if (listEl && !listEl.hidden && activeTiles.size > 0) {
+      if (activeTiles.size > 0) {
         startTileLoop();
       }
     }

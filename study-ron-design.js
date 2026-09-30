@@ -185,16 +185,14 @@
   }
 
   function renderRonBoard() {
-    if (!isLightMode()) {
-      const existing = document.getElementById("ronStudyApp");
-      if (existing) existing.style.display = "none";
-      return;
-    }
+    // Both light and dark modes now use this controller
+    // CSS variables handle all color differences
 
     let mount = document.getElementById("ronStudyApp");
     if (!mount) {
       mount = document.createElement("div");
       mount.id = "ronStudyApp";
+      mount.className = "ron-study-app";
       const stage = document.getElementById("stStage");
       if (stage) stage.prepend(mount);
     }
@@ -205,17 +203,19 @@
     const itemParam = urlParams.get("item");
     const catParam = urlParams.get("cat");
 
-    if (itemParam && (!activeItem || activeItem.id !== itemParam)) {
-      activeItem = findItem(itemParam);
-      if (activeItem) activeCat = activeItem.cat;
-    } else if (!itemParam && activeItem) {
-      if (window.history.state && window.history.state.item) {
-        activeItem = findItem(window.history.state.item);
+    if (itemParam) {
+      if (!activeItem || activeItem.id !== itemParam) {
+        activeItem = findItem(itemParam);
       }
+      if (activeItem) activeCat = activeItem.cat;
+    } else {
+      activeItem = null;
     }
 
-    if (!activeItem && catParam) {
-      activeCat = catParam;
+    if (!activeItem) {
+      if (catParam) {
+        activeCat = catParam;
+      }
     }
 
     const data = getData();
@@ -224,8 +224,10 @@
 
     if (activeItem) {
       renderSelectedTopicView(mount, activeItem, currentCatObj, categories);
+      mountAll3D(mount);
     } else {
       renderCategoryOverview(mount, activeCat, currentCatObj, categories);
+      mountAllCard3D(mount);
     }
   }
 
@@ -290,28 +292,40 @@
 
     const cardsHTML = items.length ? items.map((it) => {
       const isDrug = !it.sections;
+      const has3D = window.KN_STRUCTURES_3D && !!window.KN_STRUCTURES_3D[it.id];
       const drugBadge = isDrug
         ? `<div class="ron-med-capsule"><div class="ron-med-icon-bulb">${ICONS.pill}</div><div class="ron-med-name-bulb">${esc(it.brand || 'Rx Drug')}</div></div>`
         : `<div class="ron-med-capsule"><div class="ron-med-icon-bulb">${ICONS.doc}</div><div class="ron-med-name-bulb">${it.sections ? it.sections.length : 1} Sections</div></div>`;
 
       return `
-        <div class="ron-card ron-interactive-topic-card" data-topic-id="${it.id}" role="button" tabindex="0" title="Click to open ${esc(it.name)}">
+        <div class="ron-card ron-interactive-topic-card ${has3D ? 'ron-card-has-3d' : ''}" data-topic-id="${it.id}" role="button" tabindex="0" title="Click to open ${esc(it.name)}">
           <div class="ron-card-header">
-            <span class="ron-topic-item-cat">${esc(it.cat ? it.cat.toUpperCase() : 'CLINICAL')}</span>
+            <span class="ron-topic-item-cat">${esc(it.brand ? it.brand.toUpperCase() : (it.cat ? it.cat.toUpperCase() : 'CLINICAL'))}</span>
             <span class="ron-card-scale-icon">${ICONS.scale}</span>
           </div>
-          <h4 class="ron-card-title">${esc(it.short || it.name)}</h4>
-          <p style="font-size:13px; color:#555a5e; margin:6px 0 10px; line-height:1.5;">${esc(it.tagline || "")}</p>
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:8px;">
+          <div class="ron-card-body-row">
+            <div class="ron-card-text-col">
+              <h4 class="ron-card-title">${esc(it.short || it.name)}</h4>
+              <p class="ron-card-tagline">${esc(it.tagline || it.classification || "")}</p>
+            </div>
+            ${has3D ? `
+              <div class="ron-card-3d-wrap" title="3D Conformer: ${esc(it.name)}">
+                <div class="ron-card-3d-canvas-box" data-tile-drug="${esc(it.id)}">
+                  <div class="ron-card-3d-placeholder">🔄</div>
+                </div>
+              </div>
+            ` : ''}
+          </div>
+          <div class="ron-card-footer-row">
             ${drugBadge}
-            <span style="font-size:12px; font-weight:700; color:#0284c7;">Read Description →</span>
+            <span class="ron-card-read-link">Read Description →</span>
           </div>
         </div>
       `;
     }).join("") : `
-      <div style="grid-column: 1 / -1; background:#fff; border-radius:24px; padding:36px; text-align:center; color:#555;">
+      <div style="grid-column: 1 / -1; background:var(--ron-bg-card); border-radius:24px; padding:36px; text-align:center; color:var(--ron-text-empty);">
         <p style="font-size:16px; font-weight:700;">No items found matching "${esc(searchFilter)}"</p>
-        <p style="font-size:13px; color:#888;">Try searching for propofol, RSI, TOF, difficult airway, or select a category above.</p>
+        <p style="font-size:13px; color:var(--ron-text-hint);">Try searching for propofol, RSI, TOF, difficult airway, or select a category above.</p>
       </div>
     `;
 
@@ -392,7 +406,7 @@
               <button class="ron-plus-action-btn" id="ronPlusBtn" title="Search all topics">+</button>
             </div>
 
-            <div class="ron-flow-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+            <div class="ron-flow-grid">
               ${cardsHTML}
             </div>
           </div>
@@ -406,6 +420,8 @@
       <!-- Quick Topics Modal -->
       ${renderTopicsModal()}
     `;
+
+    mountAllCard3D(mount);
   }
 
   // ==========================================================================
@@ -440,7 +456,7 @@
         </div>
         <div class="ron-vital-item">
           <span class="ron-vital-label">Safety Status</span>
-          <span class="ron-vital-val" style="color:#ef4444; font-size:13.5px;">Boxed Warning</span>
+          <span class="ron-vital-val" style="color:var(--ron-color-warning); font-size:13.5px;">Boxed Warning</span>
         </div>
       `;
     } else {
@@ -537,7 +553,7 @@
                 <div class="ron-diagnosis-block">
                   <span class="ron-diagnosis-label">STUDY TOPIC MONOGRAPH</span>
                   <h2 class="ron-diagnosis-title">${esc(item.name)}</h2>
-                  ${item.tagline ? `<p style="margin:6px 0 0; font-size:14px; color:#555a5e; line-height:1.5;">${esc(item.tagline)}</p>` : ''}
+                  ${item.tagline ? `<p style="margin:6px 0 0; font-size:14px; color:var(--ron-text-tagline); line-height:1.5;">${esc(item.tagline)}</p>` : ''}
                 </div>
 
                 <div class="ron-vitals-strip">
@@ -600,47 +616,108 @@
   }
 
   // ==========================================================================
+  // CARD 3D MOLECULE THUMBNAIL CONTROLLER (Shared Single-Context WebGL)
+  // ==========================================================================
+  function mountAllCard3D(root) {
+    function tryMountCards() {
+      const boxes = Array.from((root || document).querySelectorAll("[data-tile-drug]"));
+      if (!boxes.length) return true;
+      if (typeof window.KNMountTileMolecule !== "function") return false;
+
+      let unmounted = 0;
+      boxes.forEach((box) => {
+        if (!box.isConnected || box.classList.contains("st-has-canvas")) return;
+        const drugId = box.getAttribute("data-tile-drug");
+        if (!drugId) return;
+        try {
+          const ok = window.KNMountTileMolecule(box, drugId);
+          if (!ok) unmounted++;
+        } catch (e) {
+          unmounted++;
+        }
+      });
+      return unmounted === 0;
+    }
+
+    if (typeof window.KNMountTileMolecule === "function") {
+      requestAnimationFrame(tryMountCards);
+      setTimeout(tryMountCards, 60);
+      setTimeout(tryMountCards, 250);
+      setTimeout(tryMountCards, 750);
+    }
+
+    window.addEventListener("kn-molecule3d-ready", tryMountCards, { once: true });
+    let attempts = 0;
+    const timer = setInterval(() => {
+      attempts++;
+      if (typeof window.KNMountTileMolecule === "function") {
+        const allDone = tryMountCards();
+        if (allDone || attempts > 35) clearInterval(timer);
+      }
+    }, 80);
+  }
+
+  // ==========================================================================
   // 3D MOLECULE MOUNTING CONTROLLER (Interactive WebGL Rotating Conformer)
   // ==========================================================================
   function mountAll3D(root) {
     function attemptAll() {
       const nodes = Array.from((root || document).querySelectorAll(".st-molecule-viewer[data-drug]"));
-      if (!nodes.length) return false;
-      if (typeof window.KNMountMolecule3D !== "function") return false;
+      if (!nodes.length) return true;
 
       let allDone = true;
       nodes.forEach((node) => {
-        if (!node.isConnected) return;
-        if (node.classList.contains("st-has-canvas")) return; // already mounted
+        if (!node.isConnected || node.classList.contains("st-has-canvas")) return;
         const drugId = node.getAttribute("data-drug");
         const data = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[drugId];
-        if (!data) return;
-        try {
-          const ok = window.KNMountMolecule3D(node, data, { isThumbnail: false });
-          if (!ok) allDone = false;
-        } catch (err) {
-          console.warn("Failed to mount 3D conformer for " + drugId, err);
-          allDone = false;
+        if (!data) {
+          const ph = node.querySelector(".st-molecule-placeholder");
+          if (ph) ph.textContent = "3D structure not available";
+          return;
         }
+
+        // Strategy 1: Full interactive 3D viewer
+        if (typeof window.KNMountMolecule3D === "function") {
+          try {
+            const ok = window.KNMountMolecule3D(node, data, { isThumbnail: false });
+            if (ok) return;
+          } catch (err) {
+            console.warn("KNMountMolecule3D error for " + drugId, err);
+          }
+        }
+
+        // Strategy 2: Single-context tile renderer fallback
+        if (typeof window.KNMountTileMolecule === "function") {
+          try {
+            const ok = window.KNMountTileMolecule(node, drugId);
+            if (ok) return;
+          } catch (err) {
+            console.warn("KNMountTileMolecule error for " + drugId, err);
+          }
+        }
+
+        allDone = false;
       });
       return allDone;
     }
 
-    if (typeof window.KNMountMolecule3D === "function") {
+    if (typeof window.KNMountMolecule3D === "function" || typeof window.KNMountTileMolecule === "function") {
       requestAnimationFrame(attemptAll);
-      setTimeout(attemptAll, 80);
-      setTimeout(attemptAll, 300);
-    } else {
-      window.addEventListener("kn-molecule3d-ready", attemptAll, { once: true });
-      let count = 0;
-      const interval = setInterval(() => {
-        count++;
-        if (typeof window.KNMountMolecule3D === "function") {
-          const done = attemptAll();
-          if (done || count > 30) clearInterval(interval);
-        }
-      }, 60);
+      setTimeout(attemptAll, 60);
+      setTimeout(attemptAll, 200);
+      setTimeout(attemptAll, 600);
+      setTimeout(attemptAll, 1200);
     }
+
+    window.addEventListener("kn-molecule3d-ready", attemptAll, { once: true });
+    let count = 0;
+    const interval = setInterval(() => {
+      count++;
+      if (typeof window.KNMountMolecule3D === "function" || typeof window.KNMountTileMolecule === "function") {
+        const done = attemptAll();
+        if (done || count > 35) clearInterval(interval);
+      }
+    }, 80);
   }
 
   // ==========================================================================
@@ -651,8 +728,8 @@
       <div class="ron-source-callout">
         <span class="ron-source-icon">📚</span>
         <div class="ron-source-body">
-          <strong style="text-transform:uppercase; letter-spacing:0.04em; font-size:11.5px; color:#475569;">SOURCE REFERENCE</strong>
-          <p style="margin:2px 0 0; font-size:13px; color:#1e293b; font-style:italic;">${esc(item.source)}</p>
+          <strong style="text-transform:uppercase; letter-spacing:0.04em; font-size:11.5px; color:var(--ron-text-muted);">SOURCE REFERENCE</strong>
+          <p style="margin:2px 0 0; font-size:13px; color:var(--ron-text-secondary); font-style:italic;">${esc(item.source)}</p>
         </div>
       </div>
     ` : "";
@@ -678,7 +755,7 @@
             return `
               <div class="ron-card ron-notes-card" id="${s.id}">
                 <div class="ron-card-header">
-                  <h3 class="ron-card-title" style="text-transform:uppercase; font-size:15px; letter-spacing:0.04em; color:#0284c7; margin:0;">
+                  <h3 class="ron-card-title" style="text-transform:uppercase; font-size:15px; letter-spacing:0.04em; color:var(--ron-accent); margin:0;">
                     ${esc(s.title)}
                   </h3>
                   <span class="ron-card-scale-icon">${ICONS.scale}</span>
@@ -703,7 +780,7 @@
                           <span class="ron-structure-3d-hint">Rotate 360°</span>
                         </div>
                         <div class="st-molecule-viewer ron-structure-3d-compact" data-drug="${esc(item.id)}">
-                          <div class="st-molecule-placeholder" style="display:flex;align-items:center;justify-content:center;height:100%;font-size:11px;color:#888;">Loading 3D...</div>
+                          <div class="st-molecule-placeholder" style="display:flex;align-items:center;justify-content:center;height:100%;font-size:11px;color:var(--ron-text-hint);">Loading 3D...</div>
                         </div>
                       </div>
                     ` : ''}
@@ -719,7 +796,7 @@
         return `
           <div class="ron-card ron-notes-card" id="${s.id}">
             <div class="ron-card-header">
-              <h3 class="ron-card-title" style="text-transform:uppercase; font-size:15px; letter-spacing:0.04em; color:#0284c7; margin:0;">
+              <h3 class="ron-card-title" style="text-transform:uppercase; font-size:15px; letter-spacing:0.04em; color:var(--ron-accent); margin:0;">
                 ${esc(s.title)}
               </h3>
               <span class="ron-card-scale-icon">${ICONS.scale}</span>
@@ -732,12 +809,12 @@
       }).join("") + (item.references && item.references.length ? `
         <div class="ron-card ron-notes-card" id="sec-references">
           <div class="ron-card-header">
-            <h3 class="ron-card-title" style="text-transform:uppercase; font-size:15px; letter-spacing:0.04em; color:#0284c7; margin:0;">
+            <h3 class="ron-card-title" style="text-transform:uppercase; font-size:15px; letter-spacing:0.04em; color:var(--ron-accent); margin:0;">
               References &amp; Prescribing Guidelines
             </h3>
             <span class="ron-card-scale-icon">${ICONS.scale}</span>
           </div>
-          <ul style="margin:14px 0 0; padding-left:22px; font-size:14px; color:#334155; line-height:1.8;">
+          <ul style="margin:14px 0 0; padding-left:22px; font-size:14px; color:var(--ron-text-body); line-height:1.8;">
             ${item.references.map((r) => `<li style="margin-bottom:8px;">📚 ${highlightKeyValues(esc(r))}</li>`).join("")}
           </ul>
         </div>
@@ -826,7 +903,7 @@
           const trs = sec.table.rows.map(row => {
             const tds = row.map(cell => {
               if (cell && typeof cell === "object") {
-                const badge = cell.badge ? `<span class="ron-table-badge" style="background:${cell.badgeColor || '#0284c7'};">${esc(cell.badge)}</span>` : '';
+                const badge = cell.badge ? `<span class="ron-table-badge" style="background:${cell.badgeColor || 'var(--ron-accent)'};">${esc(cell.badge)}</span>` : '';
                 return `<td>${badge} <strong>${highlightKeyValues(esc(cell.text || ''))}</strong></td>`;
               }
               return `<td>${highlightKeyValues(esc(String(cell)))}</td>`;
@@ -863,7 +940,7 @@
         return `
           <div class="ron-card ron-notes-card" id="sec-${idx}">
             <div class="ron-card-header">
-              <h3 class="ron-card-title" style="font-size:17px; font-weight:750; color:#0f172a; margin:0;">
+              <h3 class="ron-card-title" style="font-size:17px; font-weight:750; color:var(--ron-text-primary); margin:0;">
                 ${esc(sec.h || `Section ${idx + 1}`)}
               </h3>
               <span class="ron-card-scale-icon">${ICONS.scale}</span>
@@ -885,7 +962,7 @@
 
     return `
       <div class="ron-card ron-notes-card">
-        <p style="font-size:14px; color:#555;">No extended text available for this topic.</p>
+        <p style="font-size:14px; color:var(--ron-text-empty);">No extended text available for this topic.</p>
       </div>
     `;
   }
@@ -1066,14 +1143,14 @@
   // ==========================================================================
   function renderTopicsModal() {
     return `
-      <div class="ron-modal-backdrop" id="ronTopicsModal" hidden>
-        <div class="ron-modal-sheet">
-          <div class="ron-modal-sheet-header">
+      <div class="ron-topics-modal" id="ronTopicsModal" hidden>
+        <div class="ron-topics-sheet">
+          <div class="ron-topics-sheet-head">
             <div style="display:flex; align-items:center; gap:12px;">
               <span style="font-size:24px;">✦</span>
               <div>
-                <h3 style="margin:0; font-size:18px; font-weight:750; color:#191c1e;">Knockout Notes Study Library</h3>
-                <p style="margin:2px 0 0; font-size:12.5px; color:#555;">Browse 147 source-cited anaesthesia topics, clinical exams, ECGs &amp; drug monographs</p>
+                <h2>Knockout Notes Study Library</h2>
+                <p style="margin:2px 0 0; font-size:12.5px; color:var(--ron-text-empty);">Browse 147 source-cited anaesthesia topics, clinical exams, ECGs &amp; drug monographs</p>
               </div>
             </div>
             <button class="ron-close-btn" id="ronCloseModalBtn" aria-label="Close dialog">
@@ -1081,9 +1158,8 @@
             </button>
           </div>
 
-          <div style="margin:16px 0;">
-            <input type="search" id="ronSheetSearchInput" class="ron-inline-search-input"
-              style="width:100%; border-radius:16px; padding:12px 18px;"
+          <div class="ron-sheet-search">
+            <input type="search" id="ronSheetSearchInput"
               placeholder="Type to filter topics (e.g. Propofol, RSI, TOF, Difficult Airway)..." autocomplete="off">
           </div>
 
@@ -1118,7 +1194,6 @@
   // GLOBAL CLICK LISTENER DELEGATION
   // ==========================================================================
   document.addEventListener("click", (e) => {
-    if (!isLightMode()) return;
 
     // 1. Topic Card clicked -> Open Topic Description
     const topicCard = e.target.closest("[data-topic-id]");
@@ -1225,7 +1300,7 @@
 
   // Browser navigation
   window.addEventListener("popstate", () => {
-    if (isLightMode()) renderRonBoard();
+    renderRonBoard();
   });
 
   // Theme switch observer
@@ -1233,6 +1308,19 @@
     renderRonBoard();
   });
   observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
+  // 3D Ready listener & window resize trigger
+  window.addEventListener("kn-molecule3d-ready", () => {
+    mountAllCard3D();
+    mountAll3D();
+  });
+
+  window.addEventListener("resize", () => {
+    if (activeItem) mountAll3D();
+    else mountAllCard3D();
+  }, { passive: true });
+
+  window.__RON_STUDY_ACTIVE = true;
 
   // Initial boot
   if (document.readyState === "loading") {

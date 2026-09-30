@@ -4604,6 +4604,7 @@
   };
 
   function init() {
+    if (document.querySelector('script[src*="study-ron-design"]') || window.__RON_STUDY_ACTIVE) return;
     bindListEvents();
     initTopIndex();
     initFullscreen();
