@@ -1915,71 +1915,118 @@ body[data-content-page="study"] .st-page.container {
 }
 
 /* ------------------------------------------------------------ Bottom Floating Scrubber Dock */
-.ron-bottom-dock {
+.ron-dock-wrap {
+  width: 100%;
+  max-width: 100%;
+  margin: 20px auto 0 auto;
+  display: flex;
+  justify-content: center;
   position: relative;
-  background: rgba(255, 255, 255, 0.92);
+  z-index: 10;
+}
+
+.ron-dock-shell {
+  position: relative;
+  background: var(--ron-dock-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-radius: 9999px;
   padding: 6px 10px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--ron-dock-border);
+  box-shadow: 0 12px 36px var(--ron-shadow-lg);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin: 20px auto 0 auto;
+  width: 100%;
   max-width: 100%;
-  overflow-x: auto;
-  scrollbar-width: none;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.ron-bottom-dock::-webkit-scrollbar {
-  display: none;
-}
-
-/* Calendar Button */
-.ron-dock-cal-btn {
-  display: flex;
+.ron-dock-calendar {
+  display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #191c1e;
+  background: var(--ron-device-bg);
   color: #ffffff;
   border: none;
   border-radius: 9999px;
   padding: 6px 14px;
   font-size: 11px;
   font-weight: 700;
-  cursor: pointer;
+  letter-spacing: 0.5px;
   flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px var(--ron-shadow-md);
+  user-select: none;
 }
 
-/* Scrubber Timeline Items */
+.ron-dock-cal-icon {
+  display: inline-flex;
+  font-size: 12px;
+}
+
+.ron-dock-cal-label {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+/* Scrubber Timeline Items - Scrollable Track */
 .ron-dock-stream {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   flex: 1;
-  justify-content: space-around;
-  padding: 0 10px;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 2px 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ron-border-hover) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ron-dock-stream::-webkit-scrollbar {
+  height: 4px;
+}
+
+.ron-dock-stream::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ron-dock-stream::-webkit-scrollbar-thumb {
+  background: var(--ron-border-hover);
+  border-radius: 4px;
 }
 
 .ron-dock-node {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   font-size: 11px;
-  color: #7b8084;
+  color: var(--ron-dock-node-color);
   font-weight: 600;
   cursor: pointer;
-  transition: color 0.15s ease;
+  transition: all 0.15s ease;
   position: relative;
   flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: transparent;
+  user-select: none;
+  white-space: nowrap;
 }
 
 .ron-dock-node:hover {
-  color: #000000;
+  color: var(--ron-text-primary);
+  background: var(--ron-accent-bg);
+}
+
+.ron-dock-node.active-text {
+  color: var(--ron-dock-active-color);
+  background: var(--ron-dock-active-bg);
+  font-weight: 700;
 }
 
 .ron-badge-bubble {
@@ -1987,34 +2034,218 @@ body[data-content-page="study"] .st-page.container {
   color: #191c1e;
   font-size: 9px;
   font-weight: 800;
-  width: 14px;
+  min-width: 14px;
   height: 14px;
-  border-radius: 50%;
+  padding: 0 3px;
+  border-radius: 9999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
-}
-
-/* Active Highlighted Segment */
-.ron-dock-active-pill {
-  background: #191c1e;
-  color: #ffffff;
-  border-radius: 9999px;
-  padding: 6px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
   flex-shrink: 0;
 }
 
-.ron-dock-active-pill .ron-dock-node {
-  color: #cbd5e1;
+.ron-dock-pill-active {
+  background: var(--ron-dock-active-bg);
+  color: var(--ron-dock-active-color);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px var(--ron-shadow-accent);
+  user-select: none;
+  white-space: nowrap;
 }
 
-.ron-dock-active-pill .ron-dock-node.active-text {
-  color: #ffffff;
+/* ------------------------------------------------------------ Classification Grouping in Study Mode */
+.ron-classification-stage-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.ron-classification-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.ron-classification-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: var(--ron-bg-card);
+  border: 1px solid var(--ron-border);
+  border-left: 4px solid var(--ron-accent);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--ron-shadow-sm);
+}
+
+.ron-classification-group-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ron-classification-group-pill {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--ron-accent);
+  text-transform: uppercase;
+}
+
+.ron-classification-group-title {
+  font-size: 15px;
   font-weight: 700;
+  color: var(--ron-text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.ron-classification-group-count {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: var(--ron-accent-bg);
+  color: var(--ron-accent);
+  border: 1px solid var(--ron-border);
+  white-space: nowrap;
+}
+
+/* Card Classification Subtext & Badges */
+.ron-card-tagline {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ron-card-cls-text {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ron-accent);
+  line-height: 1.4;
+}
+
+.ron-card-tagline-sub {
+  font-size: 12px;
+  color: var(--ron-text-tagline);
+  line-height: 1.4;
+}
+
+.ron-topic-item-cat.ron-badge-depol {
+  background: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.ron-topic-item-cat.ron-badge-nondepol {
+  background: rgba(14, 165, 233, 0.12);
+  color: var(--ron-accent);
+  border: 1px solid var(--ron-border-callout);
+}
+
+.ron-topic-item-cat.ron-badge-antagonist {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--ron-color-warning);
+  border: 1px solid var(--ron-border-pitfall);
+}
+
+.ron-topic-item-cat.ron-badge-amide {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.ron-topic-item-cat.ron-badge-ester {
+  background: rgba(168, 85, 247, 0.12);
+  color: #9333ea;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+/* Monograph Hero Standard Classification Banner */
+.ron-topic-classification-hero {
+  margin-top: 10px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: var(--ron-bg-card);
+  border: 1px solid var(--ron-border);
+  border-left: 3px solid var(--ron-accent);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px var(--ron-shadow-sm);
+}
+
+.ron-cls-hero-pill {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--ron-accent);
+  text-transform: uppercase;
+}
+
+.ron-cls-hero-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ron-text-secondary);
+}
+
+/* Monograph Description Box Classification Banner */
+.ron-classification-box {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: var(--ron-bg-pearl);
+  border: 1px solid var(--ron-border-pearl);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ron-classification-box-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ron-classification-box-icon {
+  font-size: 14px;
+}
+
+.ron-classification-box-label {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--ron-label-pearl);
+  text-transform: uppercase;
+}
+
+.ron-classification-box-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ron-classification-primary {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ron-text-primary);
+}
+
+.ron-classification-secondary {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ron-text-muted);
 }
 
 /* ------------------------------------------------------------ Selected Topic Full Reading View (Integrated) */
@@ -2658,13 +2889,13 @@ body.dark .ron-card-3d-wrap {
 }
 
 /* 14. Bottom Scrubber Dock (View 1) */
-body.dark .ron-bottom-dock {
+body.dark .ron-dock-shell {
   background: rgba(18, 18, 36, 0.92);
   border-color: rgba(255, 255, 255, 0.08);
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
 }
 
-body.dark .ron-dock-cal-btn {
+body.dark .ron-dock-calendar {
   background: #2a2a50;
   color: #f0f0f5;
 }
@@ -2675,6 +2906,7 @@ body.dark .ron-dock-node {
 
 body.dark .ron-dock-node:hover {
   color: #ffffff;
+  background: rgba(79, 195, 247, 0.15);
 }
 
 body.dark .ron-badge-bubble {
@@ -2682,18 +2914,42 @@ body.dark .ron-badge-bubble {
   color: #0d0d1a;
 }
 
-body.dark .ron-dock-active-pill {
+body.dark .ron-dock-pill-active {
   background: #4fc3f7;
   color: #0d0d1a;
 }
 
-body.dark .ron-dock-active-pill .ron-dock-node {
-  color: #0d0d1a;
+/* Classification Dark Mode Overrides */
+body.dark .ron-classification-group-header {
+  background: #141428;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
-body.dark .ron-dock-active-pill .ron-dock-node.active-text {
-  color: #0d0d1a;
-  font-weight: 800;
+body.dark .ron-classification-group-title {
+  color: #f0f0f5;
+}
+
+body.dark .ron-topic-classification-hero {
+  background: #141428;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark .ron-cls-hero-text {
+  color: #d0d0e0;
+}
+
+body.dark .ron-classification-box {
+  background: rgba(30, 64, 175, 0.14);
+  border-color: rgba(147, 197, 253, 0.3);
+}
+
+body.dark .ron-classification-primary {
+  color: #e8e8f0;
+}
+
+body.dark .ron-classification-secondary {
+  color: #9898b0;
 }
 
 /* 15. Quick Topics Modal */

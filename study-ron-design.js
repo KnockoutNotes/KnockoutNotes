@@ -225,7 +225,7 @@
 
     // Read URL state
     const urlParams = new URLSearchParams(window.location.search);
-    const itemParam = urlParams.get("item");
+    const itemParam = urlParams.get("item") || urlParams.get("topic");
     const catParam = urlParams.get("cat");
 
     if (itemParam) {
@@ -304,6 +304,252 @@
   }
 
   // ==========================================================================
+  // STANDARD PHARMACOLOGICAL CLASSIFICATION ENGINE
+  // ==========================================================================
+  function getDrugClassificationGroup(item) {
+    if (!item) return "General";
+    const cls = (item.classification || "").toLowerCase();
+    const cat = item.cat || "";
+
+    if (cat === "relaxants") {
+      if (cls.includes("non-depolaris") || cls.includes("non-depolariz")) return "Non-Depolarising Neuromuscular Blockers";
+      if (cls.includes("depolaris") || cls.includes("depolariz")) return "Depolarising Neuromuscular Blockers";
+      return "Other Neuromuscular Blockers";
+    }
+
+    if (cat === "induction") {
+      if (cls.includes("alkylphenol")) return "Alkylphenols (GABA-A Agonists)";
+      if (cls.includes("imidazole")) return "Carboxylated Imidazoles";
+      if (cls.includes("nmda") || cls.includes("arylcycloalkylamine") || cls.includes("phencyclidine")) return "NMDA Receptor Antagonists & Dissociatives";
+      if (cls.includes("barbiturate")) return "Barbiturates";
+      if (cls.includes("benzodiazepine")) return "Benzodiazepines";
+      return "Intravenous Induction Agents";
+    }
+
+    if (cat === "local") {
+      if (cls.includes("aminoamide") || cls.includes("amide")) return "Aminoamide Local Anaesthetics";
+      if (cls.includes("aminoester") || cls.includes("ester")) return "Aminoester Local Anaesthetics";
+      return "Local Anaesthetics";
+    }
+
+    if (cat === "reversal") {
+      if (cls.includes("cyclodextrin") || cls.includes("srba") || cls.includes("selective relaxant")) return "Selective Relaxant Binding Agents (SRBA)";
+      if (cls.includes("cholinesterase") || cls.includes("carbamate")) return "Acetylcholinesterase Inhibitors";
+      return "Reversal Agents";
+    }
+
+    if (cat === "opioids") {
+      if (cls.includes("partial") || cls.includes("mixed")) return "Partial Agonists & Mixed Agonist-Antagonists";
+      if (cls.includes("antagonist")) return "Pure Opioid Receptor Antagonists";
+      if (cls.includes("atypical") || cls.includes("dual-mechanism")) return "Atypical & Dual-Mechanism Opioids";
+      if (cls.includes("phenylpiperidine") || cls.includes("anilidopiperidine")) return "Synthetic Mu-Opioid Agonists (Phenylpiperidines)";
+      if (cls.includes("phenanthrene") || cls.includes("morphinan")) return "Natural & Semi-Synthetic Agonists (Phenanthrenes)";
+      return "Opioids";
+    }
+
+    if (cat === "nsaids") {
+      if (cls.includes("selective cox-2") || cls.includes("coxib")) return "Selective COX-2 Inhibitors";
+      if (cls.includes("para-aminophenol") || cls.includes("cox-3") || (item.name || "").toLowerCase().includes("paracetamol")) return "Central Analgesics & Antipyretics (Para-Aminophenols)";
+      if (cls.includes("non-selective")) return "Non-Selective NSAIDs (COX-1 & COX-2 Inhibitors)";
+      return "Non-Opioid Analgesics";
+    }
+
+    if (cat === "vasopressors") {
+      if (cls.includes("non-adrenergic") || cls.includes("peptide")) return "Non-Adrenergic Peptide Vasopressors";
+      if (cls.includes("alpha-1") && !cls.includes("beta")) return "Pure Alpha-1 Adrenergic Vasopressors";
+      if (cls.includes("inodilator") || cls.includes("pde") || cls.includes("inotropic")) return "Inotropes & Inodilators";
+      if (cls.includes("sympathomimetic")) return "Direct Sympathomimetic Vasopressors & Inotropes";
+      return "Vasopressors & Inotropes";
+    }
+
+    if (cat === "antihypertensives") {
+      if (cls.includes("ace") || cls.includes("angiotensin-converting")) return "ACE Inhibitors";
+      if (cls.includes("arb") || cls.includes("receptor blocker")) return "Angiotensin II Receptor Blockers (ARBs)";
+      if (cls.includes("calcium channel") || cls.includes("ccb")) return "Calcium Channel Blockers (CCBs)";
+      if (cls.includes("beta-") || cls.includes("adrenoceptor antagonist")) return "Beta-Adrenergic Antagonists";
+      if (cls.includes("vasodilator") || cls.includes("nitric oxide donor")) return "Direct Vasodilators & Nitrates";
+      return "Antihypertensive Agents";
+    }
+
+    if (cat === "antidiabetics") {
+      if (cls.includes("insulin")) return "Insulins & Basal Analogues";
+      if (cls.includes("biguanide")) return "Biguanides";
+      if (cls.includes("sglt2")) return "SGLT2 Inhibitors";
+      if (cls.includes("glp-1")) return "GLP-1 Receptor Agonists";
+      if (cls.includes("sulfonylurea")) return "Sulfonylureas";
+      if (cls.includes("dpp-4")) return "DPP-4 Inhibitors";
+      if (cls.includes("thiazolidinedione") || cls.includes("tzd")) return "Thiazolidinediones";
+      return "Antidiabetic Agents";
+    }
+
+    if (cat === "pregnancy") {
+      if (cls.includes("uterotonic") || cls.includes("oxytocin") || cls.includes("prostaglandin") || cls.includes("ergot")) return "Uterotonics & Myometrial Active Agents";
+      return "Obstetric Pharmacology";
+    }
+
+    if (cat === "alpha2") return "Alpha-2 Adrenergic Agonists";
+    if (cat === "steroids") return "Corticosteroids";
+
+    if (cat === "miscellaneous") {
+      if (cls.includes("antiemetic") || cls.includes("5-ht3")) return "Antiemetics";
+      if (cls.includes("cation") || cls.includes("electrolyte") || cls.includes("buffer")) return "Electrolytes & Systemic Buffers";
+      if (cls.includes("antidote") || cls.includes("fat emulsion") || cls.includes("dantrolene")) return "Antidotes & Crisis Rescue Agents";
+      if (cls.includes("parasympatholytic") || cls.includes("muscarinic")) return "Parasympatholytics (Antimuscarinics)";
+      if (cls.includes("antiarrhythmic")) return "Antiarrhythmic Agents";
+      return "Miscellaneous Clinical Agents";
+    }
+
+    if (item.classification) {
+      return item.classification.split("•")[0].trim();
+    }
+    return "Clinical Reference";
+  }
+
+  function getDrugClassificationBadge(it) {
+    if (!it) return "CLINICAL";
+    const cls = (it.classification || "").toLowerCase();
+    const cat = it.cat || "";
+
+    if (cat === "relaxants") {
+      if (cls.includes("non-depolaris") || cls.includes("non-depolariz")) {
+        if (cls.includes("aminosteroid")) return "NON-DEPOLARISING • AMINOSTEROID";
+        if (cls.includes("benzylisoquinolinium")) return "NON-DEPOLARISING • BENZYLISOQUINOLINIUM";
+        if (cls.includes("chlorofumarate")) return "NON-DEPOLARISING • CHLOROFUMARATE";
+        return "NON-DEPOLARISING NMB";
+      }
+      if (cls.includes("depolaris") || cls.includes("depolariz")) {
+        return "DEPOLARISING NMB";
+      }
+    }
+
+    if (cat === "induction") {
+      if (cls.includes("alkylphenol")) return "ALKYLPHENOL • GABA-A";
+      if (cls.includes("imidazole")) return "IMIDAZOLE ESTER";
+      if (cls.includes("nmda") || cls.includes("phencyclidine")) return "NMDA ANTAGONIST / DISSOCIATIVE";
+      if (cls.includes("barbiturate")) return "BARBITURATE";
+      if (cls.includes("benzodiazepine")) return "BENZODIAZEPINE";
+    }
+
+    if (cat === "local") {
+      if (cls.includes("aminoamide") || cls.includes("amide")) return "AMINOAMIDE LA";
+      if (cls.includes("aminoester") || cls.includes("ester")) return "AMINOESTER LA";
+    }
+
+    if (cat === "reversal") {
+      if (cls.includes("cyclodextrin") || cls.includes("srba")) return "SRBA CYCLODEXTRIN";
+      if (cls.includes("cholinesterase") || cls.includes("carbamate")) return "ANTICHOLINESTERASE";
+    }
+
+    if (cat === "opioids") {
+      if (cls.includes("pure") && cls.includes("antagonist")) return "PURE OPIOID ANTAGONIST";
+      if (cls.includes("partial") || cls.includes("mixed")) return "PARTIAL / MIXED AGONIST";
+      if (cls.includes("atypical") || cls.includes("dual-mechanism")) return "ATYPICAL OPIOID";
+      if (cls.includes("phenylpiperidine")) return "SYNTHETIC PHENYLPIPERIDINE";
+      if (cls.includes("phenanthrene")) return "PHENANTHRENE OPIOID";
+    }
+
+    if (cat === "vasopressors") {
+      if (cls.includes("non-adrenergic") || cls.includes("peptide")) return "NON-ADRENERGIC PEPTIDE";
+      if (cls.includes("alpha-1") && !cls.includes("beta")) return "PURE ALPHA-1 AGONIST";
+      if (cls.includes("inodilator") || cls.includes("pde")) return "INODILATOR / PDE-3 INHIBITOR";
+      if (cls.includes("sympathomimetic")) return "SYMPATHOMIMETIC INOTROPE";
+    }
+
+    if (cat === "nsaids") {
+      if (cls.includes("selective cox-2") || cls.includes("coxib")) return "SELECTIVE COX-2 INHIBITOR";
+      if (cls.includes("para-aminophenol") || (it.name || "").toLowerCase().includes("paracetamol")) return "CENTRAL ANALGESIC";
+      if (cls.includes("non-selective")) return "NON-SELECTIVE NSAID";
+    }
+
+    if (cat === "antihypertensives") {
+      if (cls.includes("ace")) return "ACE INHIBITOR";
+      if (cls.includes("arb")) return "ARB ANTAGONIST";
+      if (cls.includes("calcium channel") || cls.includes("ccb")) return "CALCIUM CHANNEL BLOCKER";
+      if (cls.includes("beta-")) return "BETA-ADRENOCEPTOR BLOCKER";
+      if (cls.includes("vasodilator") || cls.includes("nitric oxide")) return "DIRECT VASODILATOR";
+    }
+
+    if (cat === "antidiabetics") {
+      if (cls.includes("insulin")) return "INSULIN ANALOGUE";
+      if (cls.includes("biguanide")) return "BIGUANIDE";
+      if (cls.includes("sglt2")) return "SGLT2 INHIBITOR";
+      if (cls.includes("glp-1")) return "GLP-1 AGONIST";
+      if (cls.includes("sulfonylurea")) return "SULFONYLUREA";
+      if (cls.includes("dpp-4")) return "DPP-4 INHIBITOR";
+    }
+
+    if (it.brand) return it.brand.toUpperCase();
+    if (it.classification) return it.classification.split("•")[0].trim().toUpperCase().slice(0, 32);
+    return it.cat ? it.cat.toUpperCase() : "CLINICAL";
+  }
+
+  function getDrugClassificationBadgeClass(it) {
+    if (!it) return "";
+    const cls = (it.classification || "").toLowerCase();
+    if (cls.includes("depolaris") && !cls.includes("non-")) return "ron-badge-depol";
+    if (cls.includes("non-depolaris")) return "ron-badge-nondepol";
+    if (cls.includes("antagonist") || cls.includes("reversal")) return "ron-badge-antagonist";
+    if (cls.includes("aminoamide")) return "ron-badge-amide";
+    if (cls.includes("aminoester")) return "ron-badge-ester";
+    return "";
+  }
+
+  function renderTopicCard(it) {
+    const isDrug = !it.sections;
+    const has3D = window.KN_STRUCTURES_3D && !!window.KN_STRUCTURES_3D[it.id];
+    const drugBadge = isDrug
+      ? `<div class="ron-med-capsule"><div class="ron-med-icon-bulb">${ICONS.pill}</div><div class="ron-med-name-bulb">${esc(it.brand || 'Rx Drug')}</div></div>`
+      : `<div class="ron-med-capsule"><div class="ron-med-icon-bulb">${ICONS.doc}</div><div class="ron-med-name-bulb">${it.sections ? it.sections.length : 1} Sections</div></div>`;
+
+    const catBadgeText = getDrugClassificationBadge(it);
+    const badgeClass = getDrugClassificationBadgeClass(it);
+
+    return `
+      <div class="ron-card ron-interactive-topic-card ${has3D ? 'ron-card-has-3d' : ''}" data-topic-id="${it.id}" role="button" tabindex="0" title="Click to open ${esc(it.name)}">
+        <div class="ron-card-header">
+          <span class="ron-topic-item-cat ${badgeClass}">${esc(catBadgeText)}</span>
+          <div class="kn-card-actions-group">
+            ${window.KN_WORKSPACE ? window.KN_WORKSPACE.renderBookmarkBtn({
+              content_id: 'study:' + it.id,
+              content_type: 'study',
+              title: it.short || it.name,
+              category: it.cat || 'Study Topics',
+              route: 'study.html?topic=' + it.id
+            }) : ''}
+            ${window.KN_WORKSPACE ? window.KN_WORKSPACE.renderStickyBtn({
+              content_id: 'study:' + it.id,
+              content_type: 'study',
+              title: it.short || it.name,
+              route: 'study.html?topic=' + it.id
+            }) : ''}
+            <span class="ron-card-scale-icon">${ICONS.scale}</span>
+          </div>
+        </div>
+        <div class="ron-card-body-row">
+          <div class="ron-card-text-col">
+            <h4 class="ron-card-title">${esc(it.short || it.name)}</h4>
+            <div class="ron-card-tagline">
+              ${it.classification ? `<div class="ron-card-cls-text">${esc(it.classification)}</div>` : ''}
+              ${it.tagline && it.tagline !== it.classification ? `<div class="ron-card-tagline-sub">${esc(it.tagline)}</div>` : ''}
+            </div>
+          </div>
+          ${has3D ? `
+            <div class="ron-card-3d-wrap" title="3D Conformer: ${esc(it.name)}">
+              <div class="ron-card-3d-canvas-box" data-tile-drug="${esc(it.id)}">
+                <div class="ron-card-3d-placeholder">🔄</div>
+              </div>
+            </div>
+          ` : ''}
+        </div>
+        <div class="ron-card-footer-row">
+          ${drugBadge}
+          <span class="ron-card-read-link">Read Description →</span>
+        </div>
+      </div>
+    `;
+  }
+
+  // ==========================================================================
   // VIEW 1: CATEGORY OVERVIEW
   // ==========================================================================
   function renderCategoryOverview(mount, catId, currentCat, allCats) {
@@ -311,63 +557,66 @@
     if (searchFilter.trim()) {
       const q = searchFilter.trim().toLowerCase();
       items = items.filter((it) => {
-        return [it.name, it.short, it.tagline, it.cat, it.brand].concat(it.tags || []).filter(Boolean).join(" ").toLowerCase().includes(q);
+        return [it.name, it.short, it.tagline, it.cat, it.brand, it.classification].concat(it.tags || []).filter(Boolean).join(" ").toLowerCase().includes(q);
       });
     }
 
-    const cardsHTML = items.length ? items.map((it) => {
-      const isDrug = !it.sections;
-      const has3D = window.KN_STRUCTURES_3D && !!window.KN_STRUCTURES_3D[it.id];
-      const drugBadge = isDrug
-        ? `<div class="ron-med-capsule"><div class="ron-med-icon-bulb">${ICONS.pill}</div><div class="ron-med-name-bulb">${esc(it.brand || 'Rx Drug')}</div></div>`
-        : `<div class="ron-med-capsule"><div class="ron-med-icon-bulb">${ICONS.doc}</div><div class="ron-med-name-bulb">${it.sections ? it.sections.length : 1} Sections</div></div>`;
-
-      return `
-        <div class="ron-card ron-interactive-topic-card ${has3D ? 'ron-card-has-3d' : ''}" data-topic-id="${it.id}" role="button" tabindex="0" title="Click to open ${esc(it.name)}">
-          <div class="ron-card-header">
-            <span class="ron-topic-item-cat">${esc(it.brand ? it.brand.toUpperCase() : (it.cat ? it.cat.toUpperCase() : 'CLINICAL'))}</span>
-            <div class="kn-card-actions-group">
-              ${window.KN_WORKSPACE ? window.KN_WORKSPACE.renderBookmarkBtn({
-                content_id: 'study:' + it.id,
-                content_type: 'study',
-                title: it.short || it.name,
-                category: it.cat || 'Study Topics',
-                route: 'study.html?topic=' + it.id
-              }) : ''}
-              ${window.KN_WORKSPACE ? window.KN_WORKSPACE.renderStickyBtn({
-                content_id: 'study:' + it.id,
-                content_type: 'study',
-                title: it.short || it.name,
-                route: 'study.html?topic=' + it.id
-              }) : ''}
-              <span class="ron-card-scale-icon">${ICONS.scale}</span>
-            </div>
-          </div>
-          <div class="ron-card-body-row">
-            <div class="ron-card-text-col">
-              <h4 class="ron-card-title">${esc(it.short || it.name)}</h4>
-              <p class="ron-card-tagline">${esc(it.tagline || it.classification || "")}</p>
-            </div>
-            ${has3D ? `
-              <div class="ron-card-3d-wrap" title="3D Conformer: ${esc(it.name)}">
-                <div class="ron-card-3d-canvas-box" data-tile-drug="${esc(it.id)}">
-                  <div class="ron-card-3d-placeholder">🔄</div>
-                </div>
-              </div>
-            ` : ''}
-          </div>
-          <div class="ron-card-footer-row">
-            ${drugBadge}
-            <span class="ron-card-read-link">Read Description →</span>
-          </div>
+    let groupsHTML = "";
+    if (!items.length) {
+      groupsHTML = `
+        <div style="grid-column: 1 / -1; background:var(--ron-bg-card); border-radius:24px; padding:36px; text-align:center; color:var(--ron-text-empty);">
+          <p style="font-size:16px; font-weight:700;">No items found matching "${esc(searchFilter)}"</p>
+          <p style="font-size:13px; color:var(--ron-text-hint);">Try searching for propofol, RSI, TOF, difficult airway, or select a category above.</p>
         </div>
       `;
-    }).join("") : `
-      <div style="grid-column: 1 / -1; background:var(--ron-bg-card); border-radius:24px; padding:36px; text-align:center; color:var(--ron-text-empty);">
-        <p style="font-size:16px; font-weight:700;">No items found matching "${esc(searchFilter)}"</p>
-        <p style="font-size:13px; color:var(--ron-text-hint);">Try searching for propofol, RSI, TOF, difficult airway, or select a category above.</p>
-      </div>
-    `;
+    } else {
+      // Group items by classification
+      const groupsMap = new Map();
+      items.forEach((it) => {
+        const groupName = getDrugClassificationGroup(it);
+        if (!groupsMap.has(groupName)) groupsMap.set(groupName, []);
+        groupsMap.get(groupName).push(it);
+      });
+
+      // Standard pharmacological ordering for relaxants: Depolarising first, then Non-Depolarising
+      let orderedGroupNames = Array.from(groupsMap.keys());
+      if (catId === "relaxants") {
+        orderedGroupNames.sort((a, b) => {
+          const aDepol = a.toLowerCase().includes("depolarising") && !a.toLowerCase().includes("non-");
+          const bDepol = b.toLowerCase().includes("depolarising") && !b.toLowerCase().includes("non-");
+          if (aDepol && !bDepol) return -1;
+          if (!aDepol && bDepol) return 1;
+          return 0;
+        });
+      }
+
+      groupsHTML = orderedGroupNames.map((gName) => {
+        const groupItems = groupsMap.get(gName);
+        const groupCards = groupItems.map(renderTopicCard).join("");
+
+        // Show header if multiple groups or meaningful classification title
+        const showHeader = orderedGroupNames.length > 1 || (gName !== "General" && gName !== "Clinical Reference");
+
+        if (!showHeader) {
+          return `<div class="ron-flow-grid">${groupCards}</div>`;
+        }
+
+        return `
+          <div class="ron-classification-group">
+            <div class="ron-classification-group-header">
+              <div class="ron-classification-group-info">
+                <span class="ron-classification-group-pill">PHARMACOLOGICAL CLASSIFICATION</span>
+                <h3 class="ron-classification-group-title">${esc(gName)}</h3>
+              </div>
+              <span class="ron-classification-group-count">${groupItems.length} ${groupItems.length === 1 ? 'entry' : 'entries'}</span>
+            </div>
+            <div class="ron-flow-grid">
+              ${groupCards}
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
 
     mount.innerHTML = `
       <div class="ron-device-frame">
@@ -446,8 +695,8 @@
               <button class="ron-plus-action-btn" id="ronPlusBtn" title="Search all topics">+</button>
             </div>
 
-            <div class="ron-flow-grid">
-              ${cardsHTML}
+            <div class="ron-classification-stage-content">
+              ${groupsHTML}
             </div>
           </div>
 
@@ -593,7 +842,13 @@
                 <div class="ron-diagnosis-block">
                   <span class="ron-diagnosis-label">STUDY TOPIC MONOGRAPH</span>
                   <h2 class="ron-diagnosis-title">${esc(item.name)}</h2>
-                  ${item.tagline ? `<p style="margin:6px 0 0; font-size:14px; color:var(--ron-text-tagline); line-height:1.5;">${esc(item.tagline)}</p>` : ''}
+                  ${item.classification ? `
+                    <div class="ron-topic-classification-hero">
+                      <span class="ron-cls-hero-pill">STANDARD CLASSIFICATION</span>
+                      <span class="ron-cls-hero-text">${esc(item.classification)}</span>
+                    </div>
+                  ` : ''}
+                  ${item.tagline && item.tagline !== item.classification ? `<p style="margin:6px 0 0; font-size:14px; color:var(--ron-text-tagline); line-height:1.5;">${esc(item.tagline)}</p>` : ''}
                   <div class="kn-monograph-action-bar">
                     ${window.KN_WORKSPACE ? window.KN_WORKSPACE.renderBookmarkBtn({
                       content_id: 'study:' + item.id,
@@ -854,6 +1109,19 @@
         }
 
         // Standard drug section card
+        const classificationCallout = (s.id === "sec-overview" && item.classification) ? `
+          <div class="ron-classification-box">
+            <div class="ron-classification-box-header">
+              <span class="ron-classification-box-icon">🏷️</span>
+              <span class="ron-classification-box-label">LATEST &amp; STANDARD PHARMACOLOGICAL CLASSIFICATION</span>
+            </div>
+            <div class="ron-classification-box-body">
+              <div class="ron-classification-primary">${esc(item.classification.split('•')[0].trim())}</div>
+              ${item.classification.includes('•') ? `<div class="ron-classification-secondary">${esc(item.classification.split('•').slice(1).join('•').trim())}</div>` : ''}
+            </div>
+          </div>
+        ` : "";
+
         return `
           <div class="ron-card ron-notes-card" id="${s.id}">
             <div class="ron-card-header">
@@ -863,6 +1131,7 @@
               <span class="ron-card-scale-icon">${ICONS.scale}</span>
             </div>
             <div class="ron-prose" style="margin-top:14px;">
+              ${classificationCallout}
               ${formatProseLines(s.text)}
             </div>
           </div>
@@ -1179,7 +1448,7 @@
         <div class="ron-dock-shell">
           <div class="ron-dock-calendar">
             <span class="ron-dock-cal-icon">${ICONS.cal}</span>
-            <span class="ron-dock-cal-label">171 TOPICS</span>
+            <span class="ron-dock-cal-label">${totalCount} TOPICS</span>
           </div>
 
           <div class="ron-dock-stream">
@@ -1190,10 +1459,6 @@
             <span style="font-size:14px;">${activeCatObj.icon}</span>
             <span>${esc(activeCatObj.label.split(' ')[0])}</span>
           </div>
-
-          <button class="ron-dock-filter-btn" id="ronDockIndexBtn" title="Open Study Directory">
-            ${ICONS.sliders} Topics
-          </button>
         </div>
       </div>
     `;
@@ -1239,14 +1504,14 @@
 
     const matched = all.filter((it) => {
       if (!q) return true;
-      return [it.name, it.short, it.tagline, it.cat, it.brand].concat(it.tags || []).filter(Boolean).join(" ").toLowerCase().includes(q);
+      return [it.name, it.short, it.tagline, it.cat, it.brand, it.classification].concat(it.tags || []).filter(Boolean).join(" ").toLowerCase().includes(q);
     });
 
     return matched.map((it) => `
       <div class="ron-topic-item-card ron-interactive-topic-card" data-topic-id="${it.id}">
-        <span class="ron-topic-item-cat">${esc(it.brand || (it.cat ? it.cat.toUpperCase() : 'CLINICAL'))}</span>
+        <span class="ron-topic-item-cat ${getDrugClassificationBadgeClass(it)}">${esc(getDrugClassificationBadge(it))}</span>
         <strong class="ron-topic-item-name">${esc(it.short || it.name)}</strong>
-        <span class="ron-topic-item-tag">${esc(it.tagline || '')}</span>
+        <span class="ron-topic-item-tag">${esc(it.classification ? it.classification.split('•')[0].trim() : (it.tagline || ''))}</span>
       </div>
     `).join("");
   }
@@ -1326,7 +1591,7 @@
     }
 
     // 6. Modal Open Triggers
-    if (e.target.closest("#ronPlusBtn, #ronOpenAllTopicsBtn, #ronDockIndexBtn")) {
+    if (e.target.closest("#ronPlusBtn, #ronOpenAllTopicsBtn")) {
       e.preventDefault();
       e.stopPropagation();
       const modal = document.getElementById("ronTopicsModal");
@@ -1345,6 +1610,15 @@
       return;
     }
   });
+
+  // Smooth horizontal wheel scrolling for scrubber dock stream
+  document.addEventListener("wheel", (e) => {
+    const stream = e.target.closest(".ron-dock-stream");
+    if (stream && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+      stream.scrollLeft += e.deltaY;
+    }
+  }, { passive: false });
 
   // Real-time search inputs
   document.addEventListener("input", (e) => {
