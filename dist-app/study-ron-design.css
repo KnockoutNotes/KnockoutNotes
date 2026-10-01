@@ -132,13 +132,13 @@ body.dark .ron-study-app {
   --ron-text-primary: #e8e8f0;
   --ron-text-secondary: #d0d0e0;
   --ron-text-body: #b8b8d0;
-  --ron-text-muted: #9898b0;
-  --ron-text-faint: #686880;
-  --ron-text-placeholder: #585870;
+  --ron-text-muted: #a6a6c2;
+  --ron-text-faint: #82829e;
+  --ron-text-placeholder: #7c7c9c;
   --ron-text-dark: #f0f0f5;
-  --ron-text-tagline: #9898b0;
-  --ron-text-empty: #9898b0;
-  --ron-text-hint: #686880;
+  --ron-text-tagline: #a6a6c2;
+  --ron-text-empty: #a6a6c2;
+  --ron-text-hint: #94a3b8;
   --ron-accent: #4fc3f7;
   --ron-accent-dark: #29b6f6;
   --ron-accent-light: #81d4fa;
@@ -1704,9 +1704,18 @@ body[data-content-page="study"] .st-page.container {
 }
 
 .ron-card-3d-placeholder {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--ron-text-hint);
-  opacity: 0.6;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: ronPulseShimmer 2s ease-in-out infinite;
+}
+
+@keyframes ronPulseShimmer {
+  0%, 100% { opacity: 0.35; transform: scale(0.96); }
+  50% { opacity: 0.85; transform: scale(1.02); }
 }
 
 .ron-card-footer-row {
@@ -2720,4 +2729,61 @@ body.dark .ron-topic-item-card:hover {
 body.dark .ron-topic-item-name {
   color: #f0f0f5;
 }
+
+/* ── Floating Back to Top Capsule ── */
+.ron-back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 12px rgba(56, 189, 248, 0.2);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s ease, border-color 0.2s ease;
+  touch-action: manipulation;
+}
+
+body:not(.dark) .ron-back-to-top {
+  background: rgba(255, 255, 255, 0.92);
+  color: #0284c7;
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 0 12px rgba(2, 132, 199, 0.12);
+}
+
+.ron-back-to-top.ron-btt-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.ron-back-to-top:hover {
+  transform: translateY(-2px);
+  border-color: #38bdf8;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 18px rgba(56, 189, 248, 0.35);
+}
+
+@media (max-width: 640px) {
+  .ron-back-to-top {
+    bottom: 20px;
+    right: 16px;
+    padding: 7px 13px;
+    font-size: 12px;
+  }
+}
+
 

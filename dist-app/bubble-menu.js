@@ -517,6 +517,7 @@
     var isDark = document.body.classList.contains("dark");
     var nextTheme = isDark ? "light" : "dark";
     document.body.classList.toggle("dark", !isDark);
+    document.documentElement.classList.toggle("dark", !isDark);
     try { localStorage.setItem("kn-theme", nextTheme); } catch (_) {}
     syncThemeIcons();
 
@@ -805,6 +806,17 @@
   }
 
   function initNavigation() {
+    try {
+      var savedTheme = localStorage.getItem("kn-theme");
+      if (savedTheme === "dark" || (savedTheme === null && !document.body.classList.contains("light"))) {
+        document.body.classList.add("dark");
+        document.documentElement.classList.add("dark");
+      } else if (savedTheme === "light") {
+        document.body.classList.remove("dark");
+        document.documentElement.classList.remove("dark");
+      }
+    } catch (_) {}
+
     renderDesktopNav();
     renderMobileBubbleMenu();
     syncThemeIcons();
