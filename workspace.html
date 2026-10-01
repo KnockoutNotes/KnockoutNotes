@@ -12,6 +12,19 @@
   <link rel="stylesheet" href="workspace.css">
   <script src="sheet-config.js"></script>
   <script src="content-config.js"></script>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("kn-theme");
+        var isDark = t ? t === "dark" : true;
+        if (isDark) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    })();
+  </script>
 </head>
 <body data-content-page="workspace">
 
@@ -238,6 +251,7 @@
   </div>
 
   <!-- Scripts -->
+  <script src="spatial-bg.js"></script>
   <script src="bubble-menu.js"></script>
   <script src="workspace-engine.js"></script>
   <script>

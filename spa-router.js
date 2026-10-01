@@ -328,18 +328,31 @@
 
     var transitionDelay = reduceMotion ? 0 : 80;
 
-    setTimeout(function () {
-      // Hide current view
-      if (currentEntry && currentEntry.element) {
-        currentEntry.element.style.display = "none";
+    function runWithViewTransition(callback) {
+      if (!reduceMotion && typeof document.startViewTransition === "function") {
+        try {
+          return document.startViewTransition(callback);
+        } catch (_) {
+          callback();
+        }
+      } else {
+        callback();
       }
+    }
 
+    setTimeout(function () {
       // Check if target is already in in-memory cache
       if (pageCache.has(targetPath)) {
         var cached = pageCache.get(targetPath);
-        cached.element.style.display = "block";
-        document.title = cached.title;
-        document.body.setAttribute("data-content-page", cached.contentPage);
+        runWithViewTransition(function () {
+          // Hide current view
+          if (currentEntry && currentEntry.element) {
+            currentEntry.element.style.display = "none";
+          }
+          cached.element.style.display = "block";
+          document.title = cached.title;
+          document.body.setAttribute("data-content-page", cached.contentPage);
+        });
 
         // Restore scroll position or target hash
         if (targetHash) {
@@ -384,10 +397,15 @@
             }
           });
 
-          stageRoot.appendChild(newView);
-
-          document.title = newTitle;
-          document.body.setAttribute("data-content-page", newContentPage);
+          runWithViewTransition(function () {
+            // Hide current view
+            if (currentEntry && currentEntry.element) {
+              currentEntry.element.style.display = "none";
+            }
+            stageRoot.appendChild(newView);
+            document.title = newTitle;
+            document.body.setAttribute("data-content-page", newContentPage);
+          });
 
           // Store in cache
           pageCache.set(targetPath, {

@@ -114,6 +114,7 @@ html.dark,
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -125,7 +126,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
   transition: background-color var(--transition-smooth), color var(--transition-smooth);
 }
@@ -182,8 +183,8 @@ body.kn-scroll-locked {
 #knSpatialCanvas {
   position: fixed;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 0;
   opacity: 0.9;
@@ -3812,6 +3813,52 @@ body:not(.dark) .chamber-pill-red {
     max-width: none;
   }
 }
+
+/* ==========================================================================
+   Smooth Cross-Page View Transitions API (Modern Smoothness)
+   ========================================================================== */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.2s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+::view-transition-old(root) {
+  animation-name: knViewFadeOut;
+}
+
+::view-transition-new(root) {
+  animation-name: knViewFadeIn;
+}
+
+@keyframes knViewFadeOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.995); }
+}
+
+@keyframes knViewFadeIn {
+  from { opacity: 0; transform: scale(1.005); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   Content Visibility Auto for High-Yield Long Lists (FPS & Layout Boost)
+   ========================================================================== */
+.kn-file-row,
+.st-card,
+.ron-card,
+.ron-topic-item-card {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 140px;
+}
+
 
 
 

@@ -20,7 +20,7 @@
   }
 
   const ctx = canvas.getContext("2d");
-  let width = (canvas.width = window.innerWidth);
+  let width = (canvas.width = document.documentElement.clientWidth || window.innerWidth);
   let height = (canvas.height = window.innerHeight);
 
   // Environmental state presets
@@ -116,7 +116,7 @@
   let env = Object.assign({}, ENVIRONMENTS[currentEnvKey] || ENVIRONMENTS.hero);
 
   window.addEventListener("resize", () => {
-    width = canvas.width = window.innerWidth;
+    width = canvas.width = document.documentElement.clientWidth || window.innerWidth;
     height = canvas.height = window.innerHeight;
     initParticles();
   });
@@ -294,9 +294,15 @@
 
   let animId = null;
 
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && !document.body.classList.contains("mode-lite") && !animId) {
+      animId = requestAnimationFrame(render);
+    }
+  });
+
   function render() {
     if (document.hidden || document.body.classList.contains("mode-lite")) {
-      animId = requestAnimationFrame(render);
+      animId = null;
       return;
     }
 

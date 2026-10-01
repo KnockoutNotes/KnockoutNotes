@@ -1390,12 +1390,50 @@
     else mountAllCard3D();
   }, { passive: true });
 
+  // Floating Back to Top Button for deep study reading
+  function initBackToTop() {
+    let btn = document.getElementById("ronBackToTopBtn");
+    if (!btn) {
+      btn = document.createElement("button");
+      btn.id = "ronBackToTopBtn";
+      btn.type = "button";
+      btn.className = "ron-back-to-top";
+      btn.setAttribute("aria-label", "Back to top");
+      btn.innerHTML = `<span class="ron-btt-icon" aria-hidden="true">↑</span><span class="ron-btt-text">Top</span>`;
+      btn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+      document.body.appendChild(btn);
+    }
+
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (btn) {
+            if (window.scrollY > 480) {
+              btn.classList.add("ron-btt-visible");
+            } else {
+              btn.classList.remove("ron-btt-visible");
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
   window.__RON_STUDY_ACTIVE = true;
 
   // Initial boot
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => setTimeout(renderRonBoard, 50));
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(renderRonBoard, 50);
+      initBackToTop();
+    });
   } else {
     setTimeout(renderRonBoard, 50);
+    initBackToTop();
   }
 })();
