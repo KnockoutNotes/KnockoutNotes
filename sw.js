@@ -5,13 +5,16 @@
 // - Stale-While-Revalidate with safe response cloning for static app shell assets
 // ==========================================================================
 
-const CACHE_NAME = "knockoutnotes-cache-v80";
+const CACHE_NAME = "knockoutnotes-cache-v81";
 
 const PRECACHE_ASSETS = [
   "/",
   "/index.html",
   "/notes.html",
   "/study.html",
+  "/workspace.html",
+  "/workspace.css",
+  "/workspace-engine.js",
   "/study-data.js",
   "/study-structures.js",
   "/study-structures-3d.js",

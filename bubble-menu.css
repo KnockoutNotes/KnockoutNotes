@@ -16,6 +16,24 @@
 }
 
 /* --------------------------------------------------------------------------
+   Scroll-Off Navigation Behavior (All pages except Home)
+   -------------------------------------------------------------------------- */
+body:not([data-content-page="home"]) .kn-desktop-nav,
+body:not([data-content-page="home"]) .bubble-menu {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease;
+  will-change: transform, opacity;
+}
+
+body:not([data-content-page="home"]).kn-nav-scrolled-off .kn-desktop-nav,
+body:not([data-content-page="home"]).kn-nav-scrolled-off .bubble-menu,
+body:not([data-content-page="home"]).kn-nav-autohidden .kn-desktop-nav,
+body:not([data-content-page="home"]).kn-nav-autohidden .bubble-menu {
+  transform: translateY(-160%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* --------------------------------------------------------------------------
    2. Desktop Minimalist Navigation Bar (>= 768px)
    -------------------------------------------------------------------------- */
 .kn-desktop-nav {

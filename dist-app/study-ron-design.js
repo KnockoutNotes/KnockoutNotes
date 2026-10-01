@@ -326,7 +326,22 @@
         <div class="ron-card ron-interactive-topic-card ${has3D ? 'ron-card-has-3d' : ''}" data-topic-id="${it.id}" role="button" tabindex="0" title="Click to open ${esc(it.name)}">
           <div class="ron-card-header">
             <span class="ron-topic-item-cat">${esc(it.brand ? it.brand.toUpperCase() : (it.cat ? it.cat.toUpperCase() : 'CLINICAL'))}</span>
-            <span class="ron-card-scale-icon">${ICONS.scale}</span>
+            <div class="kn-card-actions-group">
+              ${window.KN_WORKSPACE ? window.KN_WORKSPACE.renderBookmarkBtn({
+                content_id: 'study:' + it.id,
+                content_type: 'study',
+                title: it.short || it.name,
+                category: it.cat || 'Study Topics',
+                route: 'study.html?topic=' + it.id
+              }) : ''}
+              ${window.KN_WORKSPACE ? window.KN_WORKSPACE.renderStickyBtn({
+                content_id: 'study:' + it.id,
+                content_type: 'study',
+                title: it.short || it.name,
+                route: 'study.html?topic=' + it.id
+              }) : ''}
+              <span class="ron-card-scale-icon">${ICONS.scale}</span>
+            </div>
           </div>
           <div class="ron-card-body-row">
             <div class="ron-card-text-col">
@@ -579,6 +594,27 @@
                   <span class="ron-diagnosis-label">STUDY TOPIC MONOGRAPH</span>
                   <h2 class="ron-diagnosis-title">${esc(item.name)}</h2>
                   ${item.tagline ? `<p style="margin:6px 0 0; font-size:14px; color:var(--ron-text-tagline); line-height:1.5;">${esc(item.tagline)}</p>` : ''}
+                  <div class="kn-monograph-action-bar">
+                    ${window.KN_WORKSPACE ? window.KN_WORKSPACE.renderBookmarkBtn({
+                      content_id: 'study:' + item.id,
+                      content_type: 'study',
+                      title: item.name,
+                      category: item.cat || 'Study Topics',
+                      route: 'study.html?topic=' + item.id
+                    }) : ''}
+                    ${window.KN_WORKSPACE ? window.KN_WORKSPACE.renderStickyBtn({
+                      content_id: 'study:' + item.id,
+                      content_type: 'study',
+                      title: item.name,
+                      route: 'study.html?topic=' + item.id
+                    }) : ''}
+                    ${window.KN_WORKSPACE ? window.KN_WORKSPACE.renderNoteBtn({
+                      content_id: 'study:' + item.id,
+                      content_type: 'study',
+                      title: item.name,
+                      route: 'study.html?topic=' + item.id
+                    }) : ''}
+                  </div>
                 </div>
 
                 <div class="ron-vitals-strip">
@@ -1223,6 +1259,9 @@
     // 1. Topic Card clicked -> Open Topic Description
     const topicCard = e.target.closest("[data-topic-id]");
     if (topicCard) {
+      if (e.target.closest("[data-kn-bookmark-id], [data-kn-sticky-id], .kn-btn-icon-action, .kn-action-chip-btn")) {
+        return;
+      }
       e.preventDefault();
       e.stopPropagation();
       const id = topicCard.getAttribute("data-topic-id");

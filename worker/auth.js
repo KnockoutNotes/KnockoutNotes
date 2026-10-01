@@ -138,3 +138,89 @@ export async function validateAdminSession(db, sessionId) {
 
   return session || null;
 }
+
+/**
+ * Hash password using PBKDF2 with a random 16-byte salt
+ * Output format: "pbkdf2:100000:<saltHex>:<hashHex>"
+ */
+export async function hashPassword(password, iterations = 100000) {
+  const saltBytes = new Uint8Array(16);
+  crypto.getRandomValues(saltBytes);
+  const saltHex = toHex(saltBytes);
+  const hashHex = await pbkdf2Sha256(password, saltBytes, iterations);
+  return `pbkdf2:${iterations}:${saltHex}:${hashHex}`;
+}
+
+/**
+ * Generate a Set-Cookie header string for regular user session (30 days default)
+ */
+export function createUserSessionCookie(sessionId, maxAgeSeconds = 60 * 60 * 24 * 30) {
+  return `user_session=${sessionId}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=${maxAgeSeconds}`;
+}
+
+/**
+ * Generate a clear cookie header string for user logout
+ */
+export function clearUserSessionCookie() {
+  return `user_session=; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+}
+
+/**
+ * Extract user session token from either Cookie or Authorization header (for Android app / API)
+ */
+export function extractUserSessionId(request) {
+  // 1. Check Authorization Bearer header
+  const authHeader = request.headers.get('Authorization') || '';
+  if (authHeader.startsWith('Bearer ')) {
+    const token = authHeader.substring(7).trim();
+    if (token) return token;
+  }
+
+  // 2. Check Cookie
+  const cookies = parseCookies(request);
+  return cookies.user_session || null;
+}
+
+/**
+ * Validate an active user session against D1 and return user object
+ */
+export async function validateUserSession(db, sessionId) {
+  if (!sessionId || typeof sessionId !== 'string') return null;
+
+  const now = new Date().toISOString();
+  const row = await db
+    .prepare(`
+      SELECT 
+        s.session_id,
+        s.expires_at,
+        u.id AS user_id,
+        u.email,
+        u.name,
+        u.avatar_url,
+        u.status,
+        u.created_at,
+        u.updated_at
+      FROM user_sessions s
+      JOIN users u ON s.user_id = u.id
+      WHERE s.session_id = ? AND s.expires_at > ? AND u.status = 'active'
+    `)
+    .bind(sessionId, now)
+    .first();
+
+  if (!row) return null;
+
+  return {
+    sessionId: row.session_id,
+    expiresAt: row.expires_at,
+    user: {
+      id: row.user_id,
+      email: row.email,
+      name: row.name,
+      avatarUrl: row.avatar_url,
+      status: row.status,
+      createdAt: row.created_at,
+      updatedAt: row.updated_at
+    }
+  };
+}
+

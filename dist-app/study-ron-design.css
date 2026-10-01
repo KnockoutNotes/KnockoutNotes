@@ -239,9 +239,17 @@ body.dark[data-content-page="study"] #stList {
   display: none !important;
 }
 
+html.dark,
+body.dark,
 body.dark[data-content-page="study"] {
-  background-color: var(--ron-page-bg) !important;
-  background-image: var(--ron-page-bg-gradient) !important;
+  background-color: #030712 !important;
+  background-image: none !important;
+}
+
+body.dark[data-content-page="study"] #knSpatialCanvas {
+  opacity: 0.9 !important;
+  display: block !important;
+  mix-blend-mode: normal !important;
 }
 
 /* Container Frame */

@@ -280,14 +280,27 @@
 
     const listHtml = `
       <div class="kn-file-list" role="list">
-        ${files.map(item => `
-          <a class="kn-file-row" href="${esc(item.url)}" target="_blank" rel="noopener noreferrer" role="listitem">
-            <span class="kn-file-num">${pad(item.number)}</span>
-            <span class="kn-file-title">${esc(item.title)}</span>
-            <span class="kn-file-badge kn-badge-${item.type}">${item.type.toUpperCase()}</span>
-            <span class="kn-file-arrow" aria-hidden="true">→</span>
-          </a>
-        `).join('')}
+        ${files.map(item => {
+          const contentId = (cat.id || 'library') + ':' + (item.url ? item.url.split('/').pop().replace(/\.[^/.]+$/, "") : item.number);
+          const bookmarkBtn = window.KN_WORKSPACE ? window.KN_WORKSPACE.renderBookmarkBtn({
+            content_id: contentId,
+            content_type: (cat.title && cat.title.toLowerCase().includes('pearl')) ? 'pearl' : 'note',
+            title: item.title,
+            category: cat.title || 'Clinical Notes',
+            route: item.url
+          }) : '';
+          return `
+            <div class="kn-file-row-wrap" style="display:flex; align-items:center; gap:8px; width:100%;">
+              <a class="kn-file-row" href="${esc(item.url)}" target="_blank" rel="noopener noreferrer" role="listitem" style="flex:1;">
+                <span class="kn-file-num">${pad(item.number)}</span>
+                <span class="kn-file-title">${esc(item.title)}</span>
+                <span class="kn-file-badge kn-badge-${item.type}">${item.type.toUpperCase()}</span>
+                <span class="kn-file-arrow" aria-hidden="true">→</span>
+              </a>
+              ${bookmarkBtn}
+            </div>
+          `;
+        }).join('')}
       </div>
     `;
 

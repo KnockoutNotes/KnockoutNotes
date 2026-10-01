@@ -19,7 +19,8 @@
     { label: '3D Workstation', href: 'ventilator.html', ariaLabel: '3D Anaesthesia Workstation' },
     { label: 'Drugs', href: 'drugs.html', ariaLabel: 'Pharmacology Library' },
     { label: 'Critical Care', href: 'critical-care.html', ariaLabel: 'Critical Care & Code', matchPaths: ['critical-care.html', 'resuscitation-chamber.html'] },
-    { label: 'About', href: 'resources.html', ariaLabel: 'About KnockoutNotes' }
+    { label: 'About', href: 'resources.html', ariaLabel: 'About KnockoutNotes' },
+    { label: 'Sign In', href: 'workspace.html', ariaLabel: 'Sign In / Personal Workspace', isAuthLink: true }
   ];
 
   // Mobile Primary Bar Links (< 768px)
@@ -39,7 +40,8 @@
     { label: 'Drugs Library', href: 'drugs.html', ariaLabel: 'Pharmacology Library', icon: '💊', desc: 'Dosing & Kinetics' },
     { label: 'Critical Care', href: 'critical-care.html', ariaLabel: 'Critical Care & Code Blue', icon: '⚡', desc: 'ICU & Resuscitation', matchPaths: ['critical-care.html', 'resuscitation-chamber.html'] },
     { label: 'Recent Updates', href: 'recent-updates.html', ariaLabel: 'Recent Updates & Changelog', icon: '✨', desc: 'Latest Features' },
-    { label: 'About & Evidence', href: 'resources.html', ariaLabel: 'About KnockoutNotes', icon: '📖', desc: 'Evidence & Methodology' }
+    { label: 'About & Evidence', href: 'resources.html', ariaLabel: 'About KnockoutNotes', icon: '📖', desc: 'Evidence & Methodology' },
+    { label: 'Sign In', href: 'workspace.html', ariaLabel: 'Sign In / Personal Workspace', icon: '👤', desc: 'Bookmarks & Notes', matchPaths: ['workspace.html'], isAuthLink: true }
   ];
 
   var isMobileMenuOpen = false;
@@ -75,10 +77,12 @@
         (item.matchPaths && item.matchPaths.indexOf(currentPath) !== -1);
       var isCurHash = item.href.indexOf("#") !== -1 && (currentPath + currentHash).indexOf(item.href) !== -1;
       var isActive = isCurHash || (!item.href.includes("#") && isCurPage);
+      var authAttrs = item.isAuthLink ? ' data-auth-nav-link="true" id="knDesktopAuthNavLink"' : '';
 
       return [
         '<a href="' + item.href + '"',
-        '   class="kn-desktop-link' + (isActive ? ' active' : '') + '"',
+        '   class="kn-desktop-link' + (isActive ? ' active' : '') + (item.isAuthLink ? ' kn-auth-nav-link' : '') + '"',
+        authAttrs,
         '   role="menuitem"',
         '   aria-label="' + item.ariaLabel + '">',
         '  ' + item.label,
@@ -254,6 +258,7 @@
         (item.matchPaths && item.matchPaths.indexOf(currentPath) !== -1);
       var isCurHash = item.href.indexOf("#") !== -1 && (currentPath + currentHash).indexOf(item.href) !== -1;
       var isActive = isCurHash || (!item.href.includes("#") && isCurPage);
+      var authAttrs = item.isAuthLink ? ' data-auth-nav-link="true" id="knMobileAuthNavLink"' : '';
 
       return [
         '<li class="kn-more-item" role="none">',
@@ -261,6 +266,7 @@
         '     role="menuitem"',
         '     href="' + item.href + '"',
         '     data-card-index="' + idx + '"',
+        authAttrs,
         '     aria-label="' + item.ariaLabel + '">',
         '    <div class="kn-more-card-top">',
         '      <span class="kn-more-card-icon" aria-hidden="true">' + item.icon + '</span>',
@@ -674,11 +680,138 @@
     }
   }
 
+  function syncAuthNavLinks() {
+    var isLoggedIn = window.KN_WORKSPACE && window.KN_WORKSPACE.isLoggedIn();
+    var user = isLoggedIn ? window.KN_WORKSPACE.getUser() : null;
+    var label = isLoggedIn ? 'Workspace' : 'Sign In';
+
+    // Desktop auth link in main menu
+    var dskLink = document.getElementById("knDesktopAuthNavLink");
+    if (dskLink) {
+      dskLink.textContent = label;
+      dskLink.setAttribute("title", isLoggedIn ? (user && user.name ? user.name + "'s Workspace" : "Personal Workspace") : "Sign In or Register");
+      dskLink.setAttribute("aria-label", label);
+    }
+
+    // Mobile auth card in 3-dot drawer
+    var mobCard = document.getElementById("knMobileAuthNavLink");
+    if (mobCard) {
+      var lblEl = mobCard.querySelector(".kn-more-card-label");
+      var descEl = mobCard.querySelector(".kn-more-card-desc");
+      if (lblEl) lblEl.textContent = label;
+      if (descEl) descEl.textContent = isLoggedIn ? "Bookmarks & Notes" : "Sign In or Register";
+    }
+
+    // 3D HUD Nav Links & Header Nav Links
+    document.querySelectorAll("[data-auth-nav-link]").forEach(function (el) {
+      if (el.id !== "knDesktopAuthNavLink" && el.id !== "knMobileAuthNavLink") {
+        if (el.querySelector("span") || el.hasAttribute("data-close-menu")) {
+          el.innerHTML = label + ' <span>&rarr;</span>';
+        } else {
+          el.textContent = label;
+        }
+      }
+    });
+  }
+
+  // Intercept click on Sign In / Workspace main menu link
+  document.addEventListener("click", function (e) {
+    var authLink = e.target.closest("[data-auth-nav-link]");
+    if (authLink) {
+      var isLoggedIn = window.KN_WORKSPACE && window.KN_WORKSPACE.isLoggedIn();
+      if (!isLoggedIn) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (window.KN_WORKSPACE && typeof window.KN_WORKSPACE.openAuthModal === "function") {
+          window.KN_WORKSPACE.openAuthModal("signin");
+        } else {
+          ensureWorkspaceAssets();
+          var checkInterval = setInterval(function () {
+            if (window.KN_WORKSPACE && typeof window.KN_WORKSPACE.openAuthModal === "function") {
+              clearInterval(checkInterval);
+              window.KN_WORKSPACE.openAuthModal("signin");
+            }
+          }, 40);
+          setTimeout(function () { clearInterval(checkInterval); }, 1500);
+        }
+      }
+    }
+  }, true);
+
+  window.addEventListener("kn:auth-change", function () {
+    syncAuthNavLinks();
+  });
+
+  function ensureWorkspaceAssets() {
+    if (!document.querySelector('link[href*="workspace.css"]')) {
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "workspace.css";
+      document.head.appendChild(link);
+    }
+    if (!window.KN_WORKSPACE && !document.querySelector('script[src*="workspace-engine.js"]')) {
+      var script = document.createElement("script");
+      script.src = "workspace-engine.js";
+      script.onload = function () {
+        if (window.KN_WORKSPACE) {
+          window.KN_WORKSPACE.updateNavUser();
+          syncAuthNavLinks();
+        }
+      };
+      document.body.appendChild(script);
+    } else if (window.KN_WORKSPACE) {
+      window.KN_WORKSPACE.updateNavUser();
+      syncAuthNavLinks();
+    }
+  }
+
+  function initNavScrollAutoHide() {
+    var isHome = document.body.getAttribute("data-content-page") === "home" ||
+                 window.location.pathname.endsWith("index.html") ||
+                 window.location.pathname === "/" ||
+                 window.location.pathname === "";
+    if (isHome) return; // Keep navigation pinned on Home page
+
+    var lastY = window.scrollY;
+    var ticking = false;
+
+    function handleScroll() {
+      ticking = false;
+      if (isMobileMenuOpen) return;
+
+      var y = Math.max(0, window.scrollY || window.pageYOffset || (document.documentElement ? document.documentElement.scrollTop : 0) || 0);
+      var delta = y - lastY;
+
+      // The moment user scrolls down past the top (y > 10), scroll off immediately!
+      if (delta > 2 && y > 10) {
+        document.body.classList.add("kn-nav-scrolled-off", "kn-nav-autohidden");
+      } else if (delta < -4 || y <= 10) {
+        // Scrolling up or near top reveals it smoothly
+        document.body.classList.remove("kn-nav-scrolled-off", "kn-nav-autohidden");
+      }
+      lastY = y;
+    }
+
+    var triggerScroll = function () {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(handleScroll);
+      }
+    };
+
+    window.addEventListener("scroll", triggerScroll, { passive: true });
+    window.addEventListener("touchmove", triggerScroll, { passive: true });
+    window.addEventListener("wheel", triggerScroll, { passive: true });
+  }
+
   function initNavigation() {
     renderDesktopNav();
     renderMobileBubbleMenu();
     syncThemeIcons();
     handleHashRoute();
+    ensureWorkspaceAssets();
+    syncAuthNavLinks();
+    initNavScrollAutoHide();
   }
 
   window.KnockoutNavigation = {

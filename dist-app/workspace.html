@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Workspace — KnockoutNotes</title>
+  <meta name="theme-color" content="#0284c7">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page-common.css">
+  <link rel="stylesheet" href="bubble-menu.css">
+  <link rel="stylesheet" href="workspace.css">
+  <script src="sheet-config.js"></script>
+  <script src="content-config.js"></script>
+</head>
+<body data-content-page="workspace">
+
+  <!-- Background Canvas -->
+  <canvas id="knSpatialCanvas"></canvas>
+
+  <div class="kn-workspace-app">
+
+    <!-- Workspace Hero Banner -->
+    <header class="kn-ws-hero" id="knWsHero">
+      <div class="kn-ws-hero-left">
+        <div class="kn-ws-hero-avatar" id="knWsHeroAvatar">KN</div>
+        <div>
+          <h1 class="kn-ws-hero-title" id="knWsHeroName">Personal Workspace</h1>
+          <p class="kn-ws-hero-subtitle" id="knWsHeroEmail">Manage your clinical bookmarks, personal study notes, and sticky notes</p>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;" id="knWsHeroActions">
+        <span class="kn-sync-status-badge" id="knWsSyncBadge">
+          <span class="kn-sync-dot"></span>
+          <span id="knWsSyncText">Cloud Synced</span>
+        </span>
+        <button type="button" class="kn-btn kn-btn-secondary" id="knWsSyncTrigger" title="Sync changes with server">
+          <span>🔄 Sync</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Workspace Tabs Track -->
+    <nav class="kn-ws-nav-track" role="tablist" aria-label="Workspace Sections">
+      <button type="button" class="kn-ws-nav-btn active" data-tab="bookmarks" role="tab" aria-selected="true">
+        <span>📌 Bookmarks</span>
+        <span class="kn-ws-badge" id="knCountBookmarks">0</span>
+      </button>
+      <button type="button" class="kn-ws-nav-btn" data-tab="notes" role="tab" aria-selected="false">
+        <span>📝 Personal Notes</span>
+        <span class="kn-ws-badge" id="knCountNotes">0</span>
+      </button>
+      <button type="button" class="kn-ws-nav-btn" data-tab="sticky-notes" role="tab" aria-selected="false">
+        <span>🏷️ Sticky Notes</span>
+        <span class="kn-ws-badge" id="knCountSticky">0</span>
+      </button>
+      <button type="button" class="kn-ws-nav-btn" data-tab="profile" role="tab" aria-selected="false">
+        <span>👤 Profile &amp; Settings</span>
+      </button>
+    </nav>
+
+    <!-- ====================================================================
+         TAB 1: VIEW BOOKMARKS
+         ==================================================================== -->
+    <section id="knTabBookmarks" class="kn-ws-tab-panel" role="tabpanel">
+      <!-- Toolbar -->
+      <div class="kn-ws-toolbar">
+        <div class="kn-ws-search-wrap">
+          <span class="kn-ws-search-icon">🔍</span>
+          <input type="search" id="knBmSearch" class="kn-ws-search-input" placeholder="Search bookmarked topics, drugs, pearls, or questions...">
+        </div>
+        <div class="kn-ws-filter-group">
+          <select id="knBmSort" class="kn-ws-select" aria-label="Sort Bookmarks">
+            <option value="newest">Recently Bookmarked</option>
+            <option value="alphabetical">Alphabetical (A–Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Category Filter Chips -->
+      <div class="kn-category-chips-row" id="knBmCategoryChips">
+        <button type="button" class="kn-chip-btn active" data-cat="all">All Items</button>
+        <button type="button" class="kn-chip-btn" data-cat="Study Topics">Study Topics</button>
+        <button type="button" class="kn-chip-btn" data-cat="Pharmacology">Pharmacology</button>
+        <button type="button" class="kn-chip-btn" data-cat="Pearls">Clinical Pearls</button>
+        <button type="button" class="kn-chip-btn" data-cat="Questions">Questions</button>
+        <button type="button" class="kn-chip-btn" data-cat="Notes">Clinical Notes</button>
+        <button type="button" class="kn-chip-btn" data-cat="Critical Care">Critical Care</button>
+        <button type="button" class="kn-chip-btn" data-cat="Calculators">Calculators</button>
+        <button type="button" class="kn-chip-btn" data-cat="Code Room">Code Room</button>
+        <button type="button" class="kn-chip-btn" data-cat="Regional Blocks">Regional Blocks</button>
+      </div>
+
+      <!-- Bookmarks Grid -->
+      <div class="kn-ws-grid" id="knBookmarksGrid"></div>
+    </section>
+
+    <!-- ====================================================================
+         TAB 2: PERSONAL NOTES
+         ==================================================================== -->
+    <section id="knTabNotes" class="kn-ws-tab-panel" role="tabpanel" style="display:none;">
+      <!-- Toolbar -->
+      <div class="kn-ws-toolbar">
+        <div class="kn-ws-search-wrap">
+          <span class="kn-ws-search-icon">🔍</span>
+          <input type="search" id="knNotesSearch" class="kn-ws-search-input" placeholder="Search personal notes, content, or tags...">
+        </div>
+        <div class="kn-ws-filter-group">
+          <select id="knNotesSort" class="kn-ws-select" aria-label="Sort Notes">
+            <option value="newest">Newest First</option>
+            <option value="alphabetical">Title (A–Z)</option>
+          </select>
+          <button type="button" class="kn-btn kn-btn-primary" id="knCreateNoteBtn">
+            <span>+ Create Note</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Notes Category Filter Chips -->
+      <div class="kn-category-chips-row" id="knNotesCategoryChips">
+        <button type="button" class="kn-chip-btn active" data-cat="all">All Notes</button>
+        <button type="button" class="kn-chip-btn" data-cat="pinned">📌 Pinned</button>
+        <button type="button" class="kn-chip-btn" data-cat="study">Study Topics</button>
+        <button type="button" class="kn-chip-btn" data-cat="pearl">Pearls</button>
+        <button type="button" class="kn-chip-btn" data-cat="question">Questions</button>
+        <button type="button" class="kn-chip-btn" data-cat="standalone">Standalone</button>
+      </div>
+
+      <!-- Notes Grid -->
+      <div class="kn-ws-grid" id="knNotesGrid"></div>
+    </section>
+
+    <!-- ====================================================================
+         TAB 3: STICKY NOTES
+         ==================================================================== -->
+    <section id="knTabStickyNotes" class="kn-ws-tab-panel" role="tabpanel" style="display:none;">
+      <div class="kn-ws-toolbar">
+        <div class="kn-ws-search-wrap">
+          <span class="kn-ws-search-icon">🔍</span>
+          <input type="search" id="knStickySearch" class="kn-ws-search-input" placeholder="Search sticky note annotations...">
+        </div>
+        <div class="kn-ws-filter-group">
+          <select id="knStickyColorFilter" class="kn-ws-select" aria-label="Filter by Color">
+            <option value="all">All Colors</option>
+            <option value="yellow">Yellow</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="pink">Pink</option>
+            <option value="purple">Purple</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Sticky Notes Grid -->
+      <div class="kn-ws-grid" id="knStickyGrid"></div>
+    </section>
+
+    <!-- ====================================================================
+         TAB 4: PROFILE & SETTINGS
+         ==================================================================== -->
+    <section id="knTabProfile" class="kn-ws-tab-panel" role="tabpanel" style="display:none;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px;">
+
+        <!-- Profile Details Card -->
+        <div class="kn-bookmark-card" style="padding:24px;">
+          <h3 style="font-size:17px; font-weight:700; margin:0 0 16px;">My Profile</h3>
+          <form id="knProfileForm" style="display:flex; flex-direction:column; gap:14px;">
+            <div class="kn-form-group">
+              <label class="kn-form-label">Full Name</label>
+              <input type="text" id="knProfileName" class="kn-form-input" required placeholder="Dr. Jane Doe">
+            </div>
+            <div class="kn-form-group">
+              <label class="kn-form-label">Email Address</label>
+              <input type="email" id="knProfileEmail" class="kn-form-input" disabled style="opacity:0.75; cursor:not-allowed;">
+            </div>
+            <div class="kn-form-group">
+              <label class="kn-form-label">Profile Picture URL (optional)</label>
+              <input type="url" id="knProfileAvatarUrl" class="kn-form-input" placeholder="https://example.com/avatar.jpg">
+            </div>
+            <button type="submit" class="kn-btn kn-btn-primary" style="margin-top:8px;">Save Profile</button>
+          </form>
+        </div>
+
+        <!-- Security / Password Card -->
+        <div class="kn-bookmark-card" style="padding:24px;">
+          <h3 style="font-size:17px; font-weight:700; margin:0 0 16px;">Change Password</h3>
+          <form id="knPasswordForm" style="display:flex; flex-direction:column; gap:14px;">
+            <div class="kn-form-group">
+              <label class="kn-form-label">Current Password</label>
+              <input type="password" id="knOldPassword" class="kn-form-input" required placeholder="••••••••">
+            </div>
+            <div class="kn-form-group">
+              <label class="kn-form-label">New Password (min 8 chars)</label>
+              <input type="password" id="knNewPassword" class="kn-form-input" minlength="8" required placeholder="••••••••">
+            </div>
+            <div class="kn-form-group">
+              <label class="kn-form-label">Confirm New Password</label>
+              <input type="password" id="knConfirmPassword" class="kn-form-input" minlength="8" required placeholder="••••••••">
+            </div>
+            <div id="knPasswordError" class="kn-form-error" style="display:none;"></div>
+            <button type="submit" class="kn-btn kn-btn-secondary" style="margin-top:8px;">Update Password</button>
+          </form>
+        </div>
+
+        <!-- Workspace Data & Sync Stats Card -->
+        <div class="kn-bookmark-card" style="padding:24px;">
+          <h3 style="font-size:17px; font-weight:700; margin:0 0 16px;">Offline Content &amp; Sync</h3>
+          <p style="font-size:13.5px; color:var(--kn-ws-text-muted); margin:0 0 14px; line-height:1.5;">
+            Your personal bookmarks and notes are stored locally in your browser for instant offline access and backed up to the Cloudflare D1 database.
+          </p>
+          <div style="display:flex; flex-direction:column; gap:8px; font-size:13px; margin-bottom:18px;">
+            <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--kn-ws-border);">
+              <span>Cached Bookmarks:</span>
+              <strong id="knStatBookmarks">0</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--kn-ws-border);">
+              <span>Personal Notes:</span>
+              <strong id="knStatNotes">0</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--kn-ws-border);">
+              <span>Sticky Annotations:</span>
+              <strong id="knStatSticky">0</strong>
+            </div>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button type="button" class="kn-btn kn-btn-secondary" id="knExportDataBtn">
+              <span>📥 Export JSON</span>
+            </button>
+            <button type="button" class="kn-btn kn-btn-danger" id="knWsLogoutBtn" style="margin-left:auto;">
+              <span>Sign Out</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="bubble-menu.js"></script>
+  <script src="workspace-engine.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      let activeTab = "bookmarks";
+      let activeBmCat = "all";
+      let activeNotesCat = "all";
+
+      function esc(s) {
+        return String(s == null ? "" : s)
+          .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+      }
+
+      function initWorkspaceView() {
+        const user = window.KN_WORKSPACE ? window.KN_WORKSPACE.getUser() : null;
+
+        // Populate User Info
+        const nameEl = document.getElementById("knWsHeroName");
+        const emailEl = document.getElementById("knWsHeroEmail");
+        const avatarEl = document.getElementById("knWsHeroAvatar");
+
+        if (user) {
+          nameEl.textContent = user.name || "Doctor";
+          emailEl.textContent = user.email || "KnockoutNotes Member";
+          if (user.avatar_url) {
+            avatarEl.innerHTML = `<img src="${esc(user.avatar_url)}" alt="${esc(user.name)}">`;
+          } else {
+            const parts = (user.name || "KN").trim().split(/\s+/);
+            avatarEl.textContent = parts.length >= 2 ? (parts[0][0] + parts[1][0]).toUpperCase() : parts[0].substring(0, 2).toUpperCase();
+          }
+
+          const profileNameInput = document.getElementById("knProfileName");
+          const profileEmailInput = document.getElementById("knProfileEmail");
+          const profileAvatarInput = document.getElementById("knProfileAvatarUrl");
+          if (profileNameInput) profileNameInput.value = user.name || "";
+          if (profileEmailInput) profileEmailInput.value = user.email || "";
+          if (profileAvatarInput) profileAvatarInput.value = user.avatar_url || "";
+        } else {
+          nameEl.textContent = "Personal Workspace";
+          emailEl.textContent = "Sign in to save bookmarks and personal study notes across devices";
+          avatarEl.textContent = "KN";
+        }
+
+        const actionsEl = document.getElementById("knWsHeroActions");
+        if (actionsEl) {
+          if (user) {
+            actionsEl.innerHTML = `
+              <span class="kn-sync-status-badge" id="knWsSyncBadge">
+                <span class="kn-sync-dot"></span>
+                <span id="knWsSyncText">Cloud Synced</span>
+              </span>
+              <button type="button" class="kn-btn kn-btn-secondary" id="knWsSyncTrigger" title="Sync changes with server">
+                <span>🔄 Sync</span>
+              </button>
+            `;
+            document.getElementById("knWsSyncTrigger")?.addEventListener("click", () => {
+              window.KN_WORKSPACE?.sync();
+            });
+          } else {
+            actionsEl.innerHTML = `
+              <button type="button" class="kn-btn-google" id="knWsGoogleSignInBtn" style="padding:8px 14px; font-size:13px; width:auto;">
+                <svg class="kn-google-icon" viewBox="0 0 24 24" width="16" height="16">
+                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                </svg>
+                <span>Continue with Google</span>
+              </button>
+              <button type="button" class="kn-btn kn-btn-primary" id="knWsSignInBtn" style="padding:8px 16px; font-size:13px;">Sign In</button>
+            `;
+            document.getElementById("knWsGoogleSignInBtn")?.addEventListener("click", () => {
+              window.KN_WORKSPACE?.loginWithGoogle();
+            });
+            document.getElementById("knWsSignInBtn")?.addEventListener("click", () => {
+              window.KN_WORKSPACE?.openAuthModal("signin");
+            });
+          }
+        }
+
+        renderBookmarks();
+        renderNotes();
+        renderStickyNotes();
+        updateCounters();
+      }
+
+      function updateCounters() {
+        if (!window.KN_WORKSPACE) return;
+        const bms = window.KN_WORKSPACE.getBookmarks();
+        const nts = window.KN_WORKSPACE.getNotes();
+        const stks = window.KN_WORKSPACE.getStickyNotes("");
+
+        const countBm = document.getElementById("knCountBookmarks");
+        const countNt = document.getElementById("knCountNotes");
+        const countStk = document.getElementById("knCountSticky");
+
+        if (countBm) countBm.textContent = bms.length;
+        if (countNt) countNt.textContent = nts.length;
+        if (countStk) countStk.textContent = stks.length;
+
+        const statBm = document.getElementById("knStatBookmarks");
+        const statNt = document.getElementById("knStatNotes");
+        const statStk = document.getElementById("knStatSticky");
+        if (statBm) statBm.textContent = bms.length;
+        if (statNt) statNt.textContent = nts.length;
+        if (statStk) statStk.textContent = stks.length;
+      }
+
+      // Render Bookmarks
+      function renderBookmarks() {
+        const grid = document.getElementById("knBookmarksGrid");
+        if (!grid || !window.KN_WORKSPACE) return;
+
+        const query = (document.getElementById("knBmSearch")?.value || "").trim();
+        const sort = document.getElementById("knBmSort")?.value || "newest";
+        const items = window.KN_WORKSPACE.getBookmarks(activeBmCat, query, sort);
+
+        if (items.length === 0) {
+          grid.innerHTML = `
+            <div class="kn-empty-state">
+              <div class="kn-empty-icon">📌</div>
+              <h4 class="kn-empty-title">No Bookmarks Found</h4>
+              <p class="kn-empty-desc">${query ? 'No bookmarked items match your search.' : 'You have not saved any bookmarks in this category yet.'}</p>
+              <a href="study.html" class="kn-btn kn-btn-primary">Browse Study Notes</a>
+            </div>
+          `;
+          return;
+        }
+
+        grid.innerHTML = items.map((it) => {
+          const dateStr = it.created_at ? new Date(it.created_at).toLocaleDateString() : "";
+          const route = it.route || `study.html?topic=${it.content_id.split(':').pop()}`;
+
+          return `
+            <div class="kn-bookmark-card" data-bookmark-id="${esc(it.content_id)}">
+              <div>
+                <div class="kn-bookmark-head">
+                  <span class="kn-bookmark-cat-badge">${esc(it.category || it.content_type || 'Study')}</span>
+                  <button type="button" class="kn-btn-icon-action active-bookmark"
+                    data-kn-bookmark-id="${esc(it.content_id)}"
+                    data-kn-item='${JSON.stringify({ content_id: it.content_id, title: it.title, category: it.category, route }).replace(/'/g, "&apos;")}'
+                    title="Remove Bookmark" aria-label="Remove Bookmark">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+                  </button>
+                </div>
+                <h4 class="kn-bookmark-title">${esc(it.title)}</h4>
+                <div class="kn-bookmark-meta">Saved ${dateStr}</div>
+              </div>
+              <div class="kn-bookmark-foot">
+                <a href="${esc(route)}" class="kn-bookmark-open-link">
+                  <span>Open Monograph</span>
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      // Render Notes
+      function renderNotes() {
+        const grid = document.getElementById("knNotesGrid");
+        if (!grid || !window.KN_WORKSPACE) return;
+
+        const query = (document.getElementById("knNotesSearch")?.value || "").trim();
+        const sort = document.getElementById("knNotesSort")?.value || "newest";
+        const items = window.KN_WORKSPACE.getNotes(activeNotesCat, query, sort);
+
+        if (items.length === 0) {
+          grid.innerHTML = `
+            <div class="kn-empty-state">
+              <div class="kn-empty-icon">📝</div>
+              <h4 class="kn-empty-title">No Personal Notes</h4>
+              <p class="kn-empty-desc">${query ? 'No notes matched your search.' : 'You have not created any notes in this category.'}</p>
+              <button type="button" class="kn-btn kn-btn-primary" id="knEmptyCreateNoteBtn">+ Create Note</button>
+            </div>
+          `;
+          grid.querySelector("#knEmptyCreateNoteBtn")?.addEventListener("click", () => {
+            window.KN_WORKSPACE.openNoteModal();
+          });
+          return;
+        }
+
+        grid.innerHTML = items.map((it) => {
+          const dateStr = it.created_at ? new Date(it.created_at).toLocaleDateString() : "";
+          const tagsHtml = (it.tags || []).map((t) => `<span class="kn-note-tag">${esc(t)}</span>`).join("");
+
+          return `
+            <div class="kn-note-card ${it.is_pinned ? 'is-pinned' : ''}">
+              <div>
+                <h4 class="kn-note-title">
+                  ${it.is_pinned ? '<span class="kn-note-pinned-icon">📌</span>' : ''}
+                  ${esc(it.title)}
+                </h4>
+                ${it.content_title ? `
+                  <div class="kn-note-linked-source">
+                    <span>Attached to:</span>
+                    <strong>${esc(it.content_title)}</strong>
+                  </div>
+                ` : ''}
+                <div class="kn-note-body-preview">${esc(it.body)}</div>
+                ${tagsHtml ? `<div class="kn-note-tags-row">${tagsHtml}</div>` : ''}
+              </div>
+              <div class="kn-bookmark-foot">
+                <span style="font-size:12px; color:var(--kn-ws-text-muted);">${dateStr}</span>
+                <div style="display:flex; gap:6px;">
+                  <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 10px; font-size:12px;" data-edit-note-id="${esc(it.id)}">Edit</button>
+                  <button type="button" class="kn-btn kn-btn-danger" style="padding:4px 10px; font-size:12px;" data-del-note-id="${esc(it.id)}">Delete</button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        // Bind Edit & Delete
+        grid.querySelectorAll("[data-edit-note-id]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const note = items.find((n) => n.id === btn.dataset.editNoteId);
+            if (note) window.KN_WORKSPACE.openNoteModal(null, note);
+          });
+        });
+
+        grid.querySelectorAll("[data-del-note-id]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            if (confirm("Delete this personal note?")) {
+              window.KN_WORKSPACE.deleteNote(btn.dataset.delNoteId);
+            }
+          });
+        });
+      }
+
+      // Render Sticky Notes
+      function renderStickyNotes() {
+        const grid = document.getElementById("knStickyGrid");
+        if (!grid || !window.KN_WORKSPACE) return;
+
+        const query = (document.getElementById("knStickySearch")?.value || "").toLowerCase().trim();
+        const color = document.getElementById("knStickyColorFilter")?.value || "all";
+        let items = window.KN_WORKSPACE.getStickyNotes("");
+
+        if (color !== "all") {
+          items = items.filter((s) => s.color === color);
+        }
+        if (query) {
+          items = items.filter((s) =>
+            (s.note_text && s.note_text.toLowerCase().includes(query)) ||
+            (s.content_title && s.content_title.toLowerCase().includes(query))
+          );
+        }
+
+        if (items.length === 0) {
+          grid.innerHTML = `
+            <div class="kn-empty-state">
+              <div class="kn-empty-icon">🏷️</div>
+              <h4 class="kn-empty-title">No Sticky Notes</h4>
+              <p class="kn-empty-desc">You can attach sticky notes to any topic, drug, or monograph across the site.</p>
+              <a href="study.html" class="kn-btn kn-btn-primary">Go to Study Notes</a>
+            </div>
+          `;
+          return;
+        }
+
+        grid.innerHTML = items.map((it) => {
+          const colorClass = `color-${it.color || 'yellow'}`;
+          const route = it.route || `study.html?topic=${(it.content_id || '').split(':').pop()}`;
+
+          return `
+            <div class="kn-sticky-card ${colorClass}">
+              <div>
+                <div class="kn-sticky-head">
+                  <span>${esc(it.content_type || 'Study Topic')}</span>
+                  <button type="button" class="kn-modal-close" style="width:24px; height:24px; font-size:12px;" data-del-sticky-id="${esc(it.id)}" title="Delete Note">✕</button>
+                </div>
+                <div style="font-size:13px; font-weight:700; margin-bottom:8px;">${esc(it.content_title || 'Monograph')}</div>
+                <div class="kn-sticky-text">${esc(it.note_text)}</div>
+              </div>
+              <div class="kn-sticky-foot">
+                <a href="${esc(route)}" style="color:inherit; font-weight:600; text-decoration:underline;">Jump to Topic →</a>
+                <button type="button" class="kn-btn kn-btn-secondary" style="padding:2px 8px; font-size:11px;" data-edit-sticky-id="${esc(it.id)}">Edit</button>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        // Bind Edit & Delete
+        grid.querySelectorAll("[data-edit-sticky-id]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const stk = items.find((s) => s.id === btn.dataset.editStickyId);
+            if (stk) window.KN_WORKSPACE.openStickyModal({ id: stk.content_id, title: stk.content_title, content_type: stk.content_type }, stk);
+          });
+        });
+
+        grid.querySelectorAll("[data-del-sticky-id]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            if (confirm("Delete this sticky note?")) {
+              window.KN_WORKSPACE.deleteStickyNote(btn.dataset.delStickyId);
+            }
+          });
+        });
+      }
+
+      // Tab Switching
+      function switchTab(targetTab) {
+        activeTab = targetTab;
+        document.querySelectorAll(".kn-ws-nav-btn").forEach((btn) => {
+          const on = btn.dataset.tab === targetTab;
+          btn.classList.toggle("active", on);
+          btn.setAttribute("aria-selected", on ? "true" : "false");
+        });
+
+        document.getElementById("knTabBookmarks").style.display = targetTab === "bookmarks" ? "" : "none";
+        document.getElementById("knTabNotes").style.display = targetTab === "notes" ? "" : "none";
+        document.getElementById("knTabStickyNotes").style.display = targetTab === "sticky-notes" ? "" : "none";
+        document.getElementById("knTabProfile").style.display = targetTab === "profile" ? "" : "none";
+
+        if (window.location.hash !== "#" + targetTab) {
+          history.replaceState(null, "", "#" + targetTab);
+        }
+      }
+
+      // Setup Event Listeners
+      document.addEventListener("DOMContentLoaded", () => {
+        // Handle URL hash on entry
+        const hash = (window.location.hash || "").replace(/^#/, "");
+        if (["bookmarks", "notes", "sticky-notes", "profile"].includes(hash)) {
+          switchTab(hash);
+        }
+
+        document.querySelectorAll(".kn-ws-nav-btn").forEach((btn) => {
+          btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+        });
+
+        // Search inputs
+        document.getElementById("knBmSearch")?.addEventListener("input", renderBookmarks);
+        document.getElementById("knBmSort")?.addEventListener("change", renderBookmarks);
+        document.getElementById("knNotesSearch")?.addEventListener("input", renderNotes);
+        document.getElementById("knNotesSort")?.addEventListener("change", renderNotes);
+        document.getElementById("knStickySearch")?.addEventListener("input", renderStickyNotes);
+        document.getElementById("knStickyColorFilter")?.addEventListener("change", renderStickyNotes);
+
+        // Bookmark category chips
+        document.querySelectorAll("#knBmCategoryChips .kn-chip-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll("#knBmCategoryChips .kn-chip-btn").forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            activeBmCat = btn.dataset.cat;
+            renderBookmarks();
+          });
+        });
+
+        // Notes category chips
+        document.querySelectorAll("#knNotesCategoryChips .kn-chip-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll("#knNotesCategoryChips .kn-chip-btn").forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            activeNotesCat = btn.dataset.cat;
+            renderNotes();
+          });
+        });
+
+        // Create Note button
+        document.getElementById("knCreateNoteBtn")?.addEventListener("click", () => {
+          window.KN_WORKSPACE?.openNoteModal();
+        });
+
+        // Sync Trigger
+        document.getElementById("knWsSyncTrigger")?.addEventListener("click", () => {
+          window.KN_WORKSPACE?.sync();
+        });
+
+        // Export Data
+        document.getElementById("knExportDataBtn")?.addEventListener("click", () => {
+          const exportPayload = {
+            exportDate: new Date().toISOString(),
+            user: window.KN_WORKSPACE?.getUser(),
+            bookmarks: window.KN_WORKSPACE?.getBookmarks(),
+            notes: window.KN_WORKSPACE?.getNotes(),
+            stickyNotes: window.KN_WORKSPACE?.getStickyNotes("")
+          };
+          const blob = new Blob([JSON.stringify(exportPayload, null, 2)], { type: "application/json" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `knockoutnotes_workspace_${Date.now()}.json`;
+          a.click();
+          URL.revokeObjectURL(url);
+        });
+
+        // Logout
+        document.getElementById("knWsLogoutBtn")?.addEventListener("click", () => {
+          window.KN_WORKSPACE?.logout();
+        });
+
+        // Listen for engine events
+        window.addEventListener("kn:bookmarks-change", () => {
+          renderBookmarks();
+          updateCounters();
+        });
+        window.addEventListener("kn:notes-change", () => {
+          renderNotes();
+          updateCounters();
+        });
+        window.addEventListener("kn:sticky-change", () => {
+          renderStickyNotes();
+          updateCounters();
+        });
+        window.addEventListener("kn:auth-change", initWorkspaceView);
+
+        // Initial render
+        initWorkspaceView();
+      });
+    })();
+  </script>
+</body>
+</html>

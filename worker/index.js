@@ -11,8 +11,34 @@ import {
   parseCookies,
   createSessionCookie,
   clearSessionCookie,
-  validateAdminSession
+  validateAdminSession,
+  extractUserSessionId,
+  validateUserSession
 } from './auth.js';
+
+import {
+  handleRegister,
+  handleLogin,
+  handleLogout,
+  handleGetMe,
+  handleUpdateProfile,
+  handleChangePassword,
+  handleForgotPassword,
+  handleResetPassword,
+  handleGetBookmarks,
+  handleToggleBookmark,
+  handleDeleteBookmark,
+  handleGetNotes,
+  handleCreateNote,
+  handleUpdateNote,
+  handleDeleteNote,
+  handleGetStickyNotes,
+  handleCreateStickyNote,
+  handleUpdateStickyNote,
+  handleDeleteStickyNote,
+  handleSync,
+  handleGoogleAuth
+} from './user-workspace.js';
 
 import {
   renderVerificationEmail,
@@ -573,6 +599,97 @@ export default {
         return jsonResponse(markers || { components: [] });
       } catch (err) {
         return jsonResponse({ components: [] });
+      }
+    }
+
+    // ==========================================
+    // USER AUTHENTICATION & WORKSPACE ROUTES
+    // ==========================================
+    if (pathname === '/api/auth/register' && request.method === 'POST') {
+      return handleRegister(request, env);
+    }
+    if (pathname === '/api/auth/login' && request.method === 'POST') {
+      return handleLogin(request, env);
+    }
+    if (pathname === '/api/auth/logout' && request.method === 'POST') {
+      return handleLogout(request, env);
+    }
+    if (pathname === '/api/auth/forgot-password' && request.method === 'POST') {
+      return handleForgotPassword(request, env);
+    }
+    if (pathname === '/api/auth/reset-password' && request.method === 'POST') {
+      return handleResetPassword(request, env);
+    }
+    if (pathname === '/api/auth/google' && request.method === 'POST') {
+      return handleGoogleAuth(request, env);
+    }
+
+    // Authenticated user session middleware
+    if (pathname === '/api/auth/me' || pathname === '/api/auth/profile' || pathname === '/api/auth/password' || pathname.startsWith('/api/user/')) {
+      const sessionId = extractUserSessionId(request);
+      const userAuth = await validateUserSession(env.DB, sessionId);
+
+      if (!userAuth) {
+        return jsonResponse({ error: 'Unauthorized. Please log in.', authenticated: false }, 401);
+      }
+
+      if (pathname === '/api/auth/me' && request.method === 'GET') {
+        return handleGetMe(request, env, userAuth);
+      }
+      if (pathname === '/api/auth/profile' && request.method === 'PUT') {
+        return handleUpdateProfile(request, env, userAuth);
+      }
+      if (pathname === '/api/auth/password' && request.method === 'PUT') {
+        return handleChangePassword(request, env, userAuth);
+      }
+
+      // Bookmarks
+      if (pathname === '/api/user/bookmarks' && request.method === 'GET') {
+        return handleGetBookmarks(request, env, userAuth);
+      }
+      if (pathname === '/api/user/bookmarks/toggle' && request.method === 'POST') {
+        return handleToggleBookmark(request, env, userAuth);
+      }
+      if (pathname.startsWith('/api/user/bookmarks/') && request.method === 'DELETE') {
+        const contentId = pathname.replace('/api/user/bookmarks/', '');
+        return handleDeleteBookmark(request, env, userAuth, contentId);
+      }
+
+      // Personal Notes
+      if (pathname === '/api/user/notes' && request.method === 'GET') {
+        return handleGetNotes(request, env, userAuth);
+      }
+      if (pathname === '/api/user/notes' && request.method === 'POST') {
+        return handleCreateNote(request, env, userAuth);
+      }
+      if (pathname.startsWith('/api/user/notes/') && request.method === 'PUT') {
+        const noteId = pathname.replace('/api/user/notes/', '');
+        return handleUpdateNote(request, env, userAuth, noteId);
+      }
+      if (pathname.startsWith('/api/user/notes/') && request.method === 'DELETE') {
+        const noteId = pathname.replace('/api/user/notes/', '');
+        return handleDeleteNote(request, env, userAuth, noteId);
+      }
+
+      // Contextual Sticky Notes
+      if (pathname === '/api/user/sticky-notes' && request.method === 'GET') {
+        return handleGetStickyNotes(request, env, userAuth);
+      }
+      if (pathname === '/api/user/sticky-notes' && request.method === 'POST') {
+        return handleCreateStickyNote(request, env, userAuth);
+      }
+      if (pathname.startsWith('/api/user/sticky-notes/') && request.method === 'PUT') {
+        const stickyId = pathname.replace('/api/user/sticky-notes/', '');
+        return handleUpdateStickyNote(request, env, userAuth, stickyId);
+      }
+      if (pathname.startsWith('/api/user/sticky-notes/') && request.method === 'DELETE') {
+        const stickyId = pathname.replace('/api/user/sticky-notes/', '');
+        return handleDeleteStickyNote(request, env, userAuth, stickyId);
+      }
+
+      // Batch Offline Synchronization
+      if (pathname === '/api/user/sync' && request.method === 'POST') {
+        return handleSync(request, env, userAuth);
       }
     }
 
