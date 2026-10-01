@@ -172,7 +172,7 @@
          TAB 4: PROFILE & SETTINGS
          ==================================================================== -->
     <section id="knTabProfile" class="kn-ws-tab-panel" role="tabpanel" style="display:none;">
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px;">
+      <div class="kn-profile-grid">
 
         <!-- Profile Details Card -->
         <div class="kn-bookmark-card" style="padding:24px;">
@@ -557,12 +557,23 @@
 
       // Tab Switching
       function switchTab(targetTab) {
+        if (!["bookmarks", "notes", "sticky-notes", "profile"].includes(targetTab)) {
+          targetTab = "bookmarks";
+        }
         activeTab = targetTab;
         document.querySelectorAll(".kn-ws-nav-btn").forEach((btn) => {
           const on = btn.dataset.tab === targetTab;
           btn.classList.toggle("active", on);
           btn.setAttribute("aria-selected", on ? "true" : "false");
         });
+
+        // Horizontally center active tab inside track without scrolling window
+        const activeBtn = document.querySelector(`.kn-ws-nav-btn[data-tab="${targetTab}"]`);
+        const track = document.querySelector(".kn-ws-nav-track");
+        if (activeBtn && track) {
+          const scrollTarget = activeBtn.offsetLeft - (track.clientWidth / 2) + (activeBtn.clientWidth / 2);
+          track.scrollTo({ left: Math.max(0, scrollTarget), behavior: "smooth" });
+        }
 
         document.getElementById("knTabBookmarks").style.display = targetTab === "bookmarks" ? "" : "none";
         document.getElementById("knTabNotes").style.display = targetTab === "notes" ? "" : "none";
@@ -573,14 +584,20 @@
           history.replaceState(null, "", "#" + targetTab);
         }
       }
+      window.switchWorkspaceTab = switchTab;
 
-      // Setup Event Listeners
-      document.addEventListener("DOMContentLoaded", () => {
-        // Handle URL hash on entry
+      function handleHashChange() {
         const hash = (window.location.hash || "").replace(/^#/, "");
         if (["bookmarks", "notes", "sticky-notes", "profile"].includes(hash)) {
           switchTab(hash);
         }
+      }
+      window.addEventListener("hashchange", handleHashChange);
+
+      // Setup Event Listeners
+      document.addEventListener("DOMContentLoaded", () => {
+        // Handle URL hash on entry
+        handleHashChange();
 
         document.querySelectorAll(".kn-ws-nav-btn").forEach((btn) => {
           btn.addEventListener("click", () => switchTab(btn.dataset.tab));

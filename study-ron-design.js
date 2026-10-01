@@ -515,11 +515,19 @@
     const currentCatObj = getCategoryMeta(activeDomain, activeCat);
 
     if (activeItem) {
+      window.__ACTIVE_STUDY_ITEM = activeItem;
       renderSelectedTopicView(mount, activeItem, currentCatObj);
       mountAll3D(mount);
+      try {
+        window.dispatchEvent(new CustomEvent("kn:study-topic-loaded", { detail: { topicId: activeItem.id, item: activeItem } }));
+      } catch (_) {}
     } else {
+      window.__ACTIVE_STUDY_ITEM = null;
       renderCategoryOverview(mount, activeCat, currentCatObj);
       mountAllCard3D(mount);
+      try {
+        window.dispatchEvent(new CustomEvent("kn:study-topic-loaded", { detail: { topicId: null } }));
+      } catch (_) {}
     }
   }
 

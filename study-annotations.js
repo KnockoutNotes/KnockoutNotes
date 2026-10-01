@@ -3,7 +3,7 @@
  * Strictly scoped to the Study section (body[data-content-page="study"]).
  * Automatically reveals a sleek floating vertical toolbar on the left/right
  * side the moment an Apple Pencil, Samsung S Pen, or stylus is detected.
- * Includes Pen, Pencil, Highlighter, Eraser, Swatches, Palm Rejection, and Local Storage.
+ * Includes Pen, Pencil, Highlighter, Eraser, Swatches, Palm Rejection, and Local/Cloud Storage.
  */
 
 (function () {
@@ -19,7 +19,8 @@
     PEN: "pen",
     PENCIL: "pencil",
     HIGHLIGHTER: "highlighter",
-    ERASER: "eraser"
+    ERASER: "eraser",
+    READ: "read"
   };
 
   const DEFAULT_COLORS = [
@@ -28,7 +29,9 @@
     "#10b981", // Emerald green
     "#f59e0b", // Amber yellow
     "#8b5cf6", // Purple
-    "#0f172a"  // Slate black
+    "#0f172a", // Slate black
+    "#ec4899", // Rose pink
+    "#ffffff"  // Crisp white (for dark mode)
   ];
 
   // State
@@ -42,6 +45,7 @@
   let currentTopicId = null;
   let dockSide = "right"; // "right" or "left"
   let stylusDetected = false;
+  let toastShown = false;
 
   // DOM Elements
   let canvas = null;
@@ -49,6 +53,7 @@
   let toolbar = null;
   let stageContainer = null;
   let resizeObserver = null;
+  let mutationObserver = null;
 
   /**
    * Check if user is logged in
@@ -66,11 +71,44 @@
   }
 
   /**
+   * Get active topic ID across all URL and DOM representations
+   */
+  function getActiveTopicId() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const fromParam = params.get("item") || params.get("topic") || params.get("t");
+      if (fromParam) return fromParam;
+    } catch (_) {}
+
+    if (window.__ACTIVE_STUDY_ITEM && window.__ACTIVE_STUDY_ITEM.id) {
+      return window.__ACTIVE_STUDY_ITEM.id;
+    }
+
+    const bookmarkBtn = document.querySelector(".kn-monograph-action-bar [data-kn-bookmark-id]");
+    if (bookmarkBtn) {
+      const rawId = bookmarkBtn.getAttribute("data-kn-bookmark-id") || "";
+      const cleaned = rawId.replace(/^study:/, "").trim();
+      if (cleaned) return cleaned;
+    }
+
+    const stageBox = document.getElementById("ronMainContentBox");
+    if (stageBox) {
+      const titleEl = document.querySelector(".ron-diagnosis-title");
+      if (titleEl && titleEl.textContent) {
+        return titleEl.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-");
+      }
+      return "current_topic";
+    }
+
+    return null;
+  }
+
+  /**
    * Storage Key for Topic Annotations
    */
   function getStorageKey(topicId) {
     const user = window.KN_WORKSPACE && window.KN_WORKSPACE.getUser ? window.KN_WORKSPACE.getUser() : null;
-    const uid = user && (user.id || user.uid || user.email) ? (user.id || user.uid || user.email) : "user";
+    const uid = user && (user.id || user.uid || user.email) ? (user.id || user.uid || user.email) : "guest";
     return `kn_annotations_${uid}_${topicId}`;
   }
 
@@ -78,11 +116,17 @@
    * Load strokes for active topic
    */
   function loadStrokes(topicId) {
+    if (!topicId) return;
     currentTopicId = topicId;
     strokes = [];
     undoStack = [];
+
     try {
-      const saved = localStorage.getItem(getStorageKey(topicId));
+      let saved = localStorage.getItem(getStorageKey(topicId));
+      // Fallback: check guest key if logged in user has no strokes yet
+      if (!saved && isUserLoggedIn()) {
+        saved = localStorage.getItem(`kn_annotations_guest_${topicId}`);
+      }
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed)) {
@@ -108,18 +152,20 @@
   }
 
   /**
-   * Initialize or attach the annotation canvas over .ron-stage-container
+   * Initialize or attach the annotation canvas over #ronMainContentBox
    */
   function setupCanvas() {
     if (!isStudySection()) return;
 
-    stageContainer = document.getElementById("ronMainContentBox") || document.querySelector(".ron-stage-container");
+    stageContainer = document.getElementById("ronMainContentBox") ||
+                     document.querySelector(".ron-stage-container") ||
+                     document.querySelector(".ron-screen");
     if (!stageContainer) return;
 
     if (!canvas) {
       canvas = document.createElement("canvas");
       canvas.className = "kn-annotation-canvas";
-      ctx = canvas.getContext("2d");
+      ctx = canvas.getContext("2d", { willReadFrequently: false });
       attachPointerListeners(canvas);
     }
 
@@ -135,6 +181,13 @@
       });
       resizeObserver.observe(stageContainer);
     }
+
+    if (!mutationObserver && window.MutationObserver) {
+      mutationObserver = new MutationObserver(() => {
+        syncCanvasDimensions();
+      });
+      mutationObserver.observe(stageContainer, { childList: true, subtree: true });
+    }
   }
 
   /**
@@ -143,44 +196,64 @@
   function syncCanvasDimensions() {
     if (!stageContainer || !canvas || !ctx) return;
     const rect = stageContainer.getBoundingClientRect();
-    const width = stageContainer.scrollWidth || rect.width;
-    const height = Math.max(stageContainer.scrollHeight, rect.height, 400);
+    const width = Math.max(stageContainer.scrollWidth, rect.width, 320);
+    const height = Math.max(stageContainer.scrollHeight, rect.height, 500);
 
     const dpr = window.devicePixelRatio || 1;
-    if (canvas.width !== width * dpr || canvas.height !== height * dpr) {
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
+    const targetW = Math.round(width * dpr);
+    const targetH = Math.round(height * dpr);
+
+    if (canvas.width !== targetW || canvas.height !== targetH) {
+      canvas.width = targetW;
+      canvas.height = targetH;
       canvas.style.width = width + "px";
       canvas.style.height = height + "px";
-      ctx.scale(dpr, dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       redrawAll();
     }
   }
 
   /**
-   * Global Pen Detection Listener
-   * When any pen/stylus interacts with the document, reveal the floating sidebar
+   * Global Pen & Stylus Detection Listener
+   * When any pen/stylus interacts or hovers near the screen, reveal the floating sidebar immediately
    */
   function setupGlobalPenDetection() {
     const handleGlobalPointer = (e) => {
       if (!isStudySection()) return;
 
-      if (e.pointerType === "pen") {
+      const isStylus = e.pointerType === "pen" ||
+                       (e.pointerType === "touch" && e.altitudeAngle !== undefined && e.altitudeAngle > 0) ||
+                       (e.touches && e.touches[0] && e.touches[0].touchType === "stylus");
+
+      if (isStylus) {
         if (!stylusDetected) {
           stylusDetected = true;
-          showStylusDetectedToast();
-        }
-        if (isUserLoggedIn() && toolbar) {
-          showToolbar();
-          if (!activeTool) {
-            setTool(TOOLS.PEN);
+          if (!toastShown) {
+            toastShown = true;
+            showStylusDetectedToast();
           }
+        }
+
+        // Ensure canvas and toolbar exist
+        setupCanvas();
+        if (!toolbar) renderToolbar();
+        showToolbar();
+
+        if (activeTool !== TOOLS.PENCIL && activeTool !== TOOLS.HIGHLIGHTER && activeTool !== TOOLS.ERASER) {
+          setTool(TOOLS.PEN);
         }
       }
     };
 
-    window.addEventListener("pointerdown", handleGlobalPointer, { capture: true, passive: true });
-    window.addEventListener("pointermove", handleGlobalPointer, { capture: true, passive: true });
+    ["pointerdown", "pointermove", "pointerenter"].forEach((evt) => {
+      window.addEventListener(evt, handleGlobalPointer, { capture: true, passive: true });
+      document.addEventListener(evt, handleGlobalPointer, { capture: true, passive: true });
+    });
+    document.addEventListener("touchstart", (e) => {
+      if (e.touches && e.touches[0] && e.touches[0].touchType === "stylus") {
+        handleGlobalPointer(e);
+      }
+    }, { capture: true, passive: true });
   }
 
   function showStylusDetectedToast() {
@@ -188,11 +261,11 @@
     const toast = document.createElement("div");
     toast.className = "kn-stylus-toast";
     toast.id = "knStylusToast";
-    toast.innerHTML = `<span>✏️</span><span>Stylus Detected — Annotation Active</span>`;
+    toast.innerHTML = `<span>✏️</span><span>Stylus Detected — S Pen / Apple Pencil Active</span>`;
     document.body.appendChild(toast);
     setTimeout(() => {
       if (toast.parentElement) toast.remove();
-    }, 3200);
+    }, 3400);
   }
 
   /**
@@ -203,22 +276,27 @@
     cvs.addEventListener("pointermove", onPointerMove, { passive: false });
     cvs.addEventListener("pointerup", onPointerUp, { passive: false });
     cvs.addEventListener("pointercancel", onPointerCancel, { passive: false });
+    cvs.addEventListener("pointerleave", onPointerCancel, { passive: false });
   }
 
   function getCanvasCoords(e) {
     const rect = canvas.getBoundingClientRect();
+    const pressure = (e.pressure !== undefined && e.pressure > 0) ? e.pressure : 0.5;
     return {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
-      pressure: e.pressure !== undefined && e.pressure > 0 ? e.pressure : 0.5
+      pressure: Math.min(Math.max(pressure, 0.15), 1.0)
     };
   }
 
   function onPointerDown(e) {
     if (!activeTool) return;
 
+    const isPen = e.pointerType === "pen" ||
+                  (e.pointerType === "touch" && e.altitudeAngle !== undefined && e.altitudeAngle > 0);
+
     // Palm Rejection: When a stylus/pen is present or actively writing, reject finger touches
-    if (e.pointerType === "pen") {
+    if (isPen) {
       penActive = true;
       if (!stylusDetected) {
         stylusDetected = true;
@@ -226,6 +304,7 @@
       }
     } else if (e.pointerType === "touch" && penActive) {
       e.preventDefault();
+      e.stopPropagation();
       return;
     }
 
@@ -237,6 +316,13 @@
 
     e.preventDefault();
     isDrawing = true;
+
+    try {
+      if (canvas && typeof canvas.setPointerCapture === "function") {
+        canvas.setPointerCapture(e.pointerId);
+      }
+    } catch (_) {}
+
     const pt = getCanvasCoords(e);
 
     if (toolToUse === TOOLS.ERASER) {
@@ -254,9 +340,10 @@
   function onPointerMove(e) {
     if (!isDrawing) return;
 
-    // Palm Rejection ignore touch during drawing
+    // Palm Rejection: ignore touches during pen drawing
     if (e.pointerType === "touch" && penActive) {
       e.preventDefault();
+      e.stopPropagation();
       return;
     }
 
@@ -279,6 +366,12 @@
     if (!isDrawing) return;
     isDrawing = false;
 
+    try {
+      if (canvas && typeof canvas.releasePointerCapture === "function") {
+        canvas.releasePointerCapture(e.pointerId);
+      }
+    } catch (_) {}
+
     if (currentStroke && currentStroke.points.length > 0) {
       strokes.push(currentStroke);
       undoStack = [];
@@ -287,10 +380,10 @@
     }
 
     if (e.pointerType === "pen") {
-      // Retain palm rejection shield for 350ms post-stroke
+      // Retain palm rejection shield for 400ms post-stroke
       setTimeout(() => {
         penActive = false;
-      }, 350);
+      }, 400);
     }
   }
 
@@ -299,7 +392,7 @@
   }
 
   /**
-   * Rendering individual segment with smoothing & pressure
+   * Rendering individual segment with smooth curves & pressure dynamics
    */
   function drawSegment(stroke, startIndex, endIndex) {
     if (!ctx || startIndex < 0 || endIndex >= stroke.points.length) return;
@@ -313,7 +406,7 @@
     if (stroke.tool === TOOLS.HIGHLIGHTER) {
       ctx.globalAlpha = 0.35;
       ctx.strokeStyle = stroke.color;
-      ctx.lineWidth = 22;
+      ctx.lineWidth = 24;
       ctx.beginPath();
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
@@ -321,14 +414,14 @@
     } else if (stroke.tool === TOOLS.PENCIL) {
       ctx.globalAlpha = 0.65;
       ctx.strokeStyle = stroke.color;
-      ctx.lineWidth = 1.4 + p2.pressure * 2.2;
+      ctx.lineWidth = 1.2 + p2.pressure * 2.2;
       ctx.beginPath();
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
       ctx.stroke();
     } else {
-      // Default Ballpoint Pen
-      ctx.globalAlpha = 0.95;
+      // Default Ballpoint Pen with smooth pressure dynamics
+      ctx.globalAlpha = 0.96;
       ctx.strokeStyle = stroke.color;
       ctx.lineWidth = 1.6 + p2.pressure * 3.4;
       ctx.beginPath();
@@ -344,22 +437,31 @@
    */
   function redrawAll() {
     if (!ctx || !canvas) return;
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const dpr = window.devicePixelRatio || 1;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
     for (let i = 0; i < strokes.length; i++) {
       const s = strokes[i];
-      if (s.points.length < 2) continue;
-      for (let j = 0; j < s.points.length - 1; j++) {
-        drawSegment(s, j, j + 1);
+      if (s.points.length === 1) {
+        // Single tap dot
+        drawSegment(s, 0, 0);
+      } else {
+        for (let j = 0; j < s.points.length - 1; j++) {
+          drawSegment(s, j, j + 1);
+        }
       }
     }
+    ctx.restore();
   }
 
   /**
-   * Stroke-level Eraser
+   * Stroke-level Eraser (Samsung Notes / GoodNotes style)
    */
   function eraseAtPoint(x, y) {
-    const radius = 22;
+    const radius = 26;
     const originalLength = strokes.length;
 
     strokes = strokes.filter((stroke) => {
@@ -396,18 +498,31 @@
   }
 
   /**
+   * Clear all annotations on this topic
+   */
+  function clearAll() {
+    if (strokes.length === 0) return;
+    if (confirm("Clear all handwriting annotations on this topic?")) {
+      undoStack = [...strokes];
+      strokes = [];
+      redrawAll();
+      saveStrokes();
+    }
+  }
+
+  /**
    * Create Floating Vertical Toolbar on Left or Right
    */
   function renderToolbar() {
     if (!isStudySection()) return;
-    if (toolbar) toolbar.remove();
+    if (toolbar && toolbar.parentElement) toolbar.remove();
 
     toolbar = document.createElement("div");
     toolbar.className = `kn-pen-toolbar dock-${dockSide} kn-hidden`;
     toolbar.id = "knPenToolbar";
 
     toolbar.innerHTML = `
-      <button type="button" class="kn-tool-btn" data-tool="pen" title="Ballpoint Pen (S Pen / Apple Pencil)" aria-label="Pen">
+      <button type="button" class="kn-tool-btn active" data-tool="pen" title="Ballpoint Pen (S Pen / Apple Pencil)" aria-label="Pen">
         ✏️
       </button>
       <button type="button" class="kn-tool-btn" data-tool="pencil" title="Pencil" aria-label="Pencil">
@@ -418,6 +533,9 @@
       </button>
       <button type="button" class="kn-tool-btn" data-tool="eraser" title="Eraser" aria-label="Eraser">
         🧹
+      </button>
+      <button type="button" class="kn-tool-btn" data-tool="read" title="Scroll &amp; Read Mode (Finger Navigation)" aria-label="Read Mode">
+        🖐️
       </button>
 
       <div class="kn-pen-divider"></div>
@@ -439,6 +557,11 @@
 
       <div class="kn-pen-divider"></div>
 
+      <!-- Clear All -->
+      <button type="button" class="kn-tool-btn" id="knClearAllBtn" title="Clear All Annotations" aria-label="Clear All">
+        🗑️
+      </button>
+
       <!-- Left / Right Dock Switcher -->
       <button type="button" class="kn-tool-btn kn-dock-switch-btn" id="knDockSwitchBtn" title="Switch Side (Left / Right)" aria-label="Switch Side">
         ⇄
@@ -455,9 +578,14 @@
   }
 
   function showToolbar() {
+    setupCanvas();
     if (!toolbar) renderToolbar();
     if (toolbar) {
       toolbar.classList.remove("kn-hidden");
+    }
+    // If no active tool is set, default to pen
+    if (!activeTool) {
+      setTool(TOOLS.PEN);
     }
   }
 
@@ -474,16 +602,19 @@
     toolbar.querySelectorAll("[data-tool]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const tool = btn.getAttribute("data-tool");
-        if (activeTool === tool) {
-          setTool(null);
+        if (tool === "read") {
+          setTool(TOOLS.READ);
+        } else if (activeTool === tool) {
+          setTool(TOOLS.READ);
         } else {
           setTool(tool);
         }
       });
     });
 
-    toolbar.querySelector("#knUndoBtn").addEventListener("click", undo);
-    toolbar.querySelector("#knRedoBtn").addEventListener("click", redo);
+    toolbar.querySelector("#knUndoBtn")?.addEventListener("click", undo);
+    toolbar.querySelector("#knRedoBtn")?.addEventListener("click", redo);
+    toolbar.querySelector("#knClearAllBtn")?.addEventListener("click", clearAll);
 
     // Switch between left and right side dock
     const switchBtn = toolbar.querySelector("#knDockSwitchBtn");
@@ -518,10 +649,11 @@
   }
 
   function setTool(tool) {
-    activeTool = tool;
+    activeTool = tool === TOOLS.READ ? null : tool;
     if (toolbar) {
       toolbar.querySelectorAll("[data-tool]").forEach((btn) => {
-        if (btn.getAttribute("data-tool") === tool) {
+        const btnTool = btn.getAttribute("data-tool");
+        if ((tool === TOOLS.READ && btnTool === "read") || (activeTool && btnTool === activeTool)) {
           btn.classList.add("active");
         } else {
           btn.classList.remove("active");
@@ -601,34 +733,38 @@
         return;
       }
 
-      if (!isUserLoggedIn()) {
-        if (toolbar) toolbar.remove();
-        if (canvas) canvas.remove();
-        return;
-      }
+      const topicId = getActiveTopicId();
 
-      const params = new URLSearchParams(window.location.search);
-      const topicId = params.get("topic") || params.get("t");
-
-      if (topicId && topicId !== lastTopic) {
-        lastTopic = topicId;
+      if (topicId) {
         setupCanvas();
         if (!toolbar) renderToolbar();
-        loadStrokes(topicId);
 
-        // If stylus was already detected previously in session, show toolbar
-        if (stylusDetected) {
-          showToolbar();
+        if (topicId !== lastTopic) {
+          lastTopic = topicId;
+          loadStrokes(topicId);
+
+          // If stylus was previously detected in session, reveal toolbar
+          if (stylusDetected) {
+            showToolbar();
+          }
         }
-      } else if (!topicId) {
+      } else {
         lastTopic = null;
-        if (canvas) canvas.remove();
+        if (canvas) {
+          // If we are browsing categories, keep canvas detached until topic opened
+          if (canvas.parentElement) canvas.remove();
+        }
+        if (toolbar) {
+          hideToolbar();
+        }
       }
     };
 
-    setInterval(checkTopic, 600);
+    // Responsive checks
+    setInterval(checkTopic, 500);
     window.addEventListener("popstate", checkTopic);
     window.addEventListener("kn:auth-changed", checkTopic);
+    window.addEventListener("kn:study-topic-loaded", checkTopic);
   }
 
   // Export module globally
@@ -639,7 +775,9 @@
     setTool,
     undo,
     redo,
-    loadStrokes
+    clearAll,
+    loadStrokes,
+    setupCanvas
   };
 
   // Boot listeners

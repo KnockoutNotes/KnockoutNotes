@@ -938,6 +938,12 @@
   }
 
   function updateNavUser() {
+    currentUser = safeJSONParse(localStorage.getItem(STORAGE_KEYS.user), null);
+    sessionToken = localStorage.getItem(STORAGE_KEYS.token) || "";
+    bookmarksCache = safeJSONParse(localStorage.getItem(STORAGE_KEYS.bookmarks), []);
+    notesCache = safeJSONParse(localStorage.getItem(STORAGE_KEYS.notes), []);
+    stickyCache = safeJSONParse(localStorage.getItem(STORAGE_KEYS.stickyNotes), []);
+
     // 1. Desktop Nav (.kn-desktop-actions)
     const desktopActions = document.querySelector("#knDesktopNav .kn-desktop-actions");
     if (desktopActions) {
@@ -996,52 +1002,144 @@
         <button type="button" class="bubble-action-btn kn-bubble-user-btn logged-in" id="knMobUserBtn" aria-haspopup="true" aria-expanded="false" title="My Personal Workspace" aria-label="Open Workspace Menu">
           <span class="kn-user-avatar">${avatarHtml}</span>
         </button>
+      `;
 
-        <div class="kn-user-dropdown" role="menu">
-          <div class="kn-user-dropdown-header">
+      let sheet = document.getElementById("knMobileUserSheet");
+      if (!sheet) {
+        sheet = document.createElement("div");
+        sheet.id = "knMobileUserSheet";
+        sheet.className = "kn-mobile-user-sheet";
+        document.body.appendChild(sheet);
+      }
+
+      let backdrop = document.getElementById("knMobileSheetBackdrop");
+      if (!backdrop) {
+        backdrop = document.createElement("div");
+        backdrop.id = "knMobileSheetBackdrop";
+        backdrop.className = "kn-mobile-sheet-backdrop";
+        document.body.appendChild(backdrop);
+      }
+
+      sheet.innerHTML = `
+        <div class="kn-sheet-drag-handle" aria-hidden="true"></div>
+        <div class="kn-user-dropdown-header">
+          <div class="kn-user-dropdown-avatar-large">${avatarHtml}</div>
+          <div class="kn-user-dropdown-info">
             <div class="kn-user-dropdown-name">${currentUser.name || "Doctor"}</div>
             <div class="kn-user-dropdown-email">${currentUser.email || ""}</div>
-            <div style="margin-top:6px;">
+            <div style="margin-top:5px;">
               <span class="kn-sync-status-badge">
                 <span class="kn-sync-dot ${isSyncing ? 'syncing' : (navigator.onLine ? '' : 'offline')}"></span>
                 <span>${isSyncing ? 'Syncing...' : (navigator.onLine ? 'Cloud Synced' : 'Offline')}</span>
               </span>
             </div>
           </div>
+          <button type="button" class="kn-sheet-close-btn" id="knMobSheetCloseBtn" aria-label="Close">✕</button>
+        </div>
 
-          <a href="workspace.html#bookmarks" class="kn-user-menu-item" role="menuitem">
-            <span>📌</span> <span>View Bookmarks</span>
+        <div class="kn-user-menu-list">
+          <a href="workspace.html#bookmarks" class="kn-user-menu-item" data-tab="bookmarks">
+            <span class="kn-menu-item-icon kn-icon-bm">📌</span>
+            <div class="kn-menu-item-content">
+              <span class="kn-menu-item-text">View Bookmarks</span>
+              <span class="kn-menu-item-desc">Saved study topics, drugs &amp; pearls</span>
+            </div>
+            <span class="kn-menu-item-badge">${bookmarksCache.length}</span>
+            <span class="kn-menu-item-arrow">›</span>
           </a>
-          <a href="workspace.html#notes" class="kn-user-menu-item" role="menuitem">
-            <span>📝</span> <span>My Personal Notes</span>
+
+          <a href="workspace.html#notes" class="kn-user-menu-item" data-tab="notes">
+            <span class="kn-menu-item-icon kn-icon-notes">📝</span>
+            <div class="kn-menu-item-content">
+              <span class="kn-menu-item-text">My Personal Notes</span>
+              <span class="kn-menu-item-desc">Custom clinical summaries &amp; revisions</span>
+            </div>
+            <span class="kn-menu-item-badge">${notesCache.length}</span>
+            <span class="kn-menu-item-arrow">›</span>
           </a>
-          <a href="workspace.html#sticky-notes" class="kn-user-menu-item" role="menuitem">
-            <span>🟨</span> <span>My Sticky Notes</span>
+
+          <a href="workspace.html#sticky-notes" class="kn-user-menu-item" data-tab="sticky-notes">
+            <span class="kn-menu-item-icon kn-icon-sticky">🟨</span>
+            <div class="kn-menu-item-content">
+              <span class="kn-menu-item-text">My Sticky Notes</span>
+              <span class="kn-menu-item-desc">Topic highlights &amp; annotations</span>
+            </div>
+            <span class="kn-menu-item-badge">${stickyCache.length}</span>
+            <span class="kn-menu-item-arrow">›</span>
           </a>
-          <a href="workspace.html#profile" class="kn-user-menu-item" role="menuitem">
-            <span>⚙️</span> <span>Account Settings</span>
+
+          <a href="workspace.html#profile" class="kn-user-menu-item" data-tab="profile">
+            <span class="kn-menu-item-icon kn-icon-settings">⚙️</span>
+            <div class="kn-menu-item-content">
+              <span class="kn-menu-item-text">Account Settings</span>
+              <span class="kn-menu-item-desc">Profile, password &amp; offline data</span>
+            </div>
+            <span class="kn-menu-item-arrow">›</span>
           </a>
-          <div class="kn-user-menu-divider"></div>
-          <button type="button" class="kn-user-menu-item kn-logout-btn" id="knMobLogoutBtn" role="menuitem">
+        </div>
+
+        <div class="kn-user-menu-divider"></div>
+
+        <div class="kn-user-menu-actions">
+          <button type="button" class="kn-sheet-action-btn" id="knMobSyncBtn">
+            <span>🔄</span> <span>Sync Now</span>
+          </button>
+          <button type="button" class="kn-sheet-action-btn danger" id="knMobLogoutBtn">
             <span>🚪</span> <span>Sign Out</span>
           </button>
         </div>
       `;
 
-      const userBtn = slot.querySelector("#knMobUserBtn");
-      const dropdown = slot.querySelector(".kn-user-dropdown");
-      if (userBtn && dropdown) {
-        userBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          const isOpen = dropdown.classList.toggle("open");
-          userBtn.setAttribute("aria-expanded", isOpen);
-        });
+      function closeSheet() {
+        sheet.classList.remove("open");
+        backdrop.classList.remove("open");
+        userBtn?.setAttribute("aria-expanded", "false");
       }
 
-      const logoutBtn = slot.querySelector("#knMobLogoutBtn");
-      if (logoutBtn) {
-        logoutBtn.addEventListener("click", () => handleLogout());
+      function openSheet() {
+        sheet.classList.add("open");
+        backdrop.classList.add("open");
+        userBtn?.setAttribute("aria-expanded", "true");
       }
+
+      const userBtn = slot.querySelector("#knMobUserBtn");
+      userBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (sheet.classList.contains("open")) {
+          closeSheet();
+        } else {
+          openSheet();
+        }
+      });
+
+      backdrop.addEventListener("click", closeSheet);
+      sheet.querySelector("#knMobSheetCloseBtn")?.addEventListener("click", closeSheet);
+
+      sheet.querySelectorAll(".kn-user-menu-item").forEach((item) => {
+        item.addEventListener("click", (e) => {
+          const tab = item.getAttribute("data-tab");
+          closeSheet();
+          if (window.location.pathname.endsWith("workspace.html") || window.location.pathname.endsWith("workspace")) {
+            e.preventDefault();
+            if (typeof window.switchWorkspaceTab === "function") {
+              window.switchWorkspaceTab(tab);
+            } else {
+              window.location.hash = "#" + tab;
+            }
+          }
+        });
+      });
+
+      sheet.querySelector("#knMobSyncBtn")?.addEventListener("click", () => {
+        syncOfflineQueue();
+        closeSheet();
+      });
+
+      sheet.querySelector("#knMobLogoutBtn")?.addEventListener("click", () => {
+        closeSheet();
+        logout();
+      });
+
       return;
     }
 
@@ -1065,15 +1163,18 @@
 
         <a href="workspace.html#bookmarks" class="kn-user-menu-item" role="menuitem">
           <span>📌</span> <span>View Bookmarks</span>
+          <span class="kn-menu-item-badge" style="margin-left:auto;">${bookmarksCache.length}</span>
         </a>
         <a href="workspace.html#notes" class="kn-user-menu-item" role="menuitem">
           <span>📝</span> <span>My Personal Notes</span>
+          <span class="kn-menu-item-badge" style="margin-left:auto;">${notesCache.length}</span>
         </a>
         <a href="workspace.html#sticky-notes" class="kn-user-menu-item" role="menuitem">
-          <span>🏷️</span> <span>My Sticky Notes</span>
+          <span>🟨</span> <span>My Sticky Notes</span>
+          <span class="kn-menu-item-badge" style="margin-left:auto;">${stickyCache.length}</span>
         </a>
         <a href="workspace.html#profile" class="kn-user-menu-item" role="menuitem">
-          <span>👤</span> <span>My Profile &amp; Settings</span>
+          <span>⚙️</span> <span>Account Settings</span>
         </a>
 
         <div class="kn-user-menu-divider"></div>
