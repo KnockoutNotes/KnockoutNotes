@@ -1,10 +1,11 @@
 /* ==========================================================================
-   KNOCKOUTNOTES — Pen & Handwriting Annotation Layer (study-annotations.css)
-   Fully responsive canvas overlay & toolbar for logged-in stylus / touch notes.
+   KNOCKOUTNOTES — Stylus / Pen Handwriting & Annotation Layer (study-annotations.css)
+   Exclusively activated in Study Mode when a stylus / pen (Apple Pencil, S Pen)
+   is detected or toggled. Matches the Ron Design tablet visual identity.
    ========================================================================== */
 
-/* Container wrapper for stage to position canvas accurately */
-.ron-stage-container {
+/* Scoped strictly to Study Mode */
+body[data-content-page="study"] .ron-stage-container {
   position: relative;
 }
 
@@ -15,7 +16,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 25;
+  z-index: 30;
   pointer-events: none;
   touch-action: none;
 }
@@ -24,58 +25,92 @@
   pointer-events: auto;
 }
 
-/* Floating Stylus Toolbar */
+/* ==========================================================================
+   FLOATING VERTICAL / DOCKED PEN TOOLBAR
+   Appears smoothly at the side (Right / Left) when stylus is detected
+   ========================================================================== */
+
 .kn-pen-toolbar {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 9999;
+  top: 50%;
+  transform: translateY(-50%) translateX(0);
+  z-index: 10000;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   background: var(--ron-bg-card, #ffffff);
-  border: 1px solid var(--ron-border, rgba(0, 0, 0, 0.12));
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
-  border-radius: 9999px;
-  padding: 6px 12px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid var(--ron-border, rgba(0, 0, 0, 0.08));
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  border-radius: 36px;
+  padding: 10px 7px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   user-select: none;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, box-shadow 0.25s ease;
+  opacity: 1;
 }
 
+/* Side Placements: Right default, Left alternative */
+.kn-pen-toolbar.dock-right {
+  right: 28px;
+  left: auto;
+}
+
+.kn-pen-toolbar.dock-left {
+  left: 28px;
+  right: auto;
+}
+
+/* Hidden state until pen is detected / toggled */
+.kn-pen-toolbar.kn-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.9);
+}
+
+.kn-pen-toolbar.dock-right.kn-hidden {
+  transform: translateY(-50%) translateX(70px);
+}
+
+.kn-pen-toolbar.dock-left.kn-hidden {
+  transform: translateY(-50%) translateX(-70px);
+}
+
+/* Dark Theme overrides matching Ron-design */
 body.dark .kn-pen-toolbar {
-  background: rgba(24, 24, 48, 0.92);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
-}
-
-/* Minimized State */
-.kn-pen-toolbar.minimized {
-  padding: 4px;
-  border-radius: 50%;
-}
-
-.kn-pen-toolbar.minimized .kn-tool-btn:not(.kn-toggle-collapse-btn) {
-  display: none;
+  background: rgba(24, 24, 48, 0.94);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 /* Toolbar Buttons */
 .kn-tool-btn {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: transparent;
-  border: none;
+  border: 1px solid transparent;
   color: var(--ron-text-primary, #0f172a);
   cursor: pointer;
-  font-size: 16px;
-  transition: all 0.15s ease;
+  font-size: 17px;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   outline: none;
+  box-sizing: border-box;
+}
+
+.kn-tool-btn span.kn-tool-label {
+  display: none;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-top: 1px;
 }
 
 body.dark .kn-tool-btn {
@@ -84,48 +119,99 @@ body.dark .kn-tool-btn {
 
 .kn-tool-btn:hover {
   background: var(--ron-bg-hover, #f1f5f9);
+  transform: scale(1.08);
 }
 
 body.dark .kn-tool-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.09);
 }
 
 .kn-tool-btn.active {
-  background: var(--ron-accent, #0284c7);
+  background: var(--ron-accent, #0284c7) !important;
   color: #ffffff !important;
-  box-shadow: 0 2px 8px var(--ron-shadow-accent, rgba(2, 132, 199, 0.35));
+  border-color: transparent;
+  box-shadow: 0 4px 14px var(--ron-shadow-accent, rgba(2, 132, 199, 0.42));
+  transform: scale(1.12);
 }
 
-.kn-tool-btn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
+.kn-tool-btn:active {
+  transform: scale(0.95);
 }
 
 /* Divider inside toolbar */
 .kn-pen-divider {
-  width: 1px;
-  height: 22px;
-  background: var(--ron-border, rgba(0, 0, 0, 0.1));
-  margin: 0 2px;
+  width: 24px;
+  height: 1px;
+  background: var(--ron-border, rgba(0, 0, 0, 0.08));
+  margin: 3px 0;
 }
 
 body.dark .kn-pen-divider {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Side Switcher Pill (Switch between Left / Right dock) */
+.kn-dock-switch-btn {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.kn-dock-switch-btn:hover {
+  opacity: 1;
+}
+
+/* Stylus Detected Badge notification */
+.kn-stylus-toast {
+  position: fixed;
+  top: 76px;
+  right: 24px;
+  z-index: 10001;
+  background: var(--ron-bg-card, #ffffff);
+  border: 1px solid var(--ron-border, rgba(0,0,0,0.08));
+  border-radius: 9999px;
+  padding: 8px 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ron-text-primary, #0f172a);
+  animation: knToastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1), knToastOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) 2.7s forwards;
+  pointer-events: none;
+}
+
+body.dark .kn-stylus-toast {
+  background: #181830;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #e8e8f0;
+}
+
+@keyframes knToastIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes knToastOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-12px); }
 }
 
 /* Palette Swatches Popover */
 .kn-palette-popover {
-  position: absolute;
-  bottom: 54px;
-  right: 48px;
+  position: fixed;
   background: var(--ron-bg-card, #ffffff);
-  border: 1px solid var(--ron-border, rgba(0, 0, 0, 0.12));
-  border-radius: 12px;
-  padding: 8px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  display: flex;
+  border: 1px solid var(--ron-border, rgba(0, 0, 0, 0.08));
+  border-radius: 18px;
+  padding: 10px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  z-index: 10000;
+  z-index: 10002;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: knPopIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body.dark .kn-palette-popover {
@@ -133,50 +219,70 @@ body.dark .kn-palette-popover {
   border-color: rgba(255, 255, 255, 0.12);
 }
 
+@keyframes knPopIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
 .kn-color-swatch {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   border: 2px solid transparent;
   cursor: pointer;
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  box-sizing: border-box;
 }
 
 .kn-color-swatch:hover {
-  transform: scale(1.15);
+  transform: scale(1.18);
 }
 
 .kn-color-swatch.selected {
   border-color: var(--ron-text-primary, #0f172a);
-  transform: scale(1.1);
+  transform: scale(1.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 body.dark .kn-color-swatch.selected {
   border-color: #ffffff;
 }
 
-/* Text Highlight Wrappers */
-mark.kn-text-highlight {
-  border-radius: 3px;
-  padding: 1px 2px;
-  cursor: pointer;
-  transition: filter 0.15s ease;
+/* Active Pen Mode Indicator dot on screen */
+.kn-pen-indicator {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  z-index: 9998;
+  pointer-events: none;
+  display: none;
 }
 
-mark.kn-text-highlight:hover {
-  filter: brightness(0.92);
+.kn-pen-indicator.visible {
+  display: block;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
+/* Mobile & Tablet Optimizations */
+@media (max-width: 768px) {
   .kn-pen-toolbar {
-    bottom: 74px; /* Float safely above bottom dock */
-    right: 12px;
-    padding: 4px 8px;
+    padding: 8px 5px;
+    gap: 5px;
+    border-radius: 30px;
+  }
+  .kn-pen-toolbar.dock-right {
+    right: 8px;
+  }
+  .kn-pen-toolbar.dock-left {
+    left: 8px;
   }
   .kn-tool-btn {
-    width: 34px;
-    height: 34px;
-    font-size: 14px;
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
   }
 }

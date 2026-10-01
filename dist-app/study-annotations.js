@@ -1,12 +1,18 @@
 /**
- * KNOCKOUTNOTES — Handwriting, Stylus & Annotation Engine (study-annotations.js)
- * Implements Pointer Events Level 2, palm rejection, pressure-sensitive drawing,
- * multi-tool ink rendering (ballpoint, pencil, highlighter, eraser),
- * local offline persistence and sync for logged-in users.
+ * KNOCKOUTNOTES — Stylus / Pen Handwriting Engine (study-annotations.js)
+ * Strictly scoped to the Study section (body[data-content-page="study"]).
+ * Automatically reveals a sleek floating vertical toolbar on the left/right
+ * side the moment an Apple Pencil, Samsung S Pen, or stylus is detected.
+ * Includes Pen, Pencil, Highlighter, Eraser, Swatches, Palm Rejection, and Local Storage.
  */
 
 (function () {
   "use strict";
+
+  // Check if we are strictly in the study section
+  function isStudySection() {
+    return document.body && document.body.getAttribute("data-content-page") === "study";
+  }
 
   // Tool Definitions
   const TOOLS = {
@@ -16,17 +22,26 @@
     ERASER: "eraser"
   };
 
-  const DEFAULT_COLORS = ["#0284c7", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#0f172a"];
+  const DEFAULT_COLORS = [
+    "#0284c7", // Sky blue (matches Ron accent)
+    "#ef4444", // Coral red
+    "#10b981", // Emerald green
+    "#f59e0b", // Amber yellow
+    "#8b5cf6", // Purple
+    "#0f172a"  // Slate black
+  ];
 
   // State
-  let activeTool = null; // null = inactive/navigation mode
+  let activeTool = null; // null = viewing/navigation mode, string = drawing mode
   let activeColor = DEFAULT_COLORS[0];
   let isDrawing = false;
-  let penActive = false; // Flag to enforce hardware palm rejection
+  let penActive = false; // Flag for hardware palm rejection
   let currentStroke = null;
   let strokes = [];
   let undoStack = [];
   let currentTopicId = null;
+  let dockSide = "right"; // "right" or "left"
+  let stylusDetected = false;
 
   // DOM Elements
   let canvas = null;
@@ -40,11 +55,11 @@
    */
   function isUserLoggedIn() {
     if (window.KN_WORKSPACE && typeof window.KN_WORKSPACE.isLoggedIn === "function") {
-      return window.KN_WORKSPACE.isLoggedIn();
+      if (window.KN_WORKSPACE.isLoggedIn()) return true;
     }
     try {
       const user = localStorage.getItem("kn_user");
-      return !!user && user !== "null";
+      return !!user && user !== "null" && user !== "undefined";
     } catch (_) {
       return false;
     }
@@ -55,7 +70,7 @@
    */
   function getStorageKey(topicId) {
     const user = window.KN_WORKSPACE && window.KN_WORKSPACE.getUser ? window.KN_WORKSPACE.getUser() : null;
-    const uid = user && (user.id || user.uid || user.email) ? (user.id || user.uid || user.email) : "guest";
+    const uid = user && (user.id || user.uid || user.email) ? (user.id || user.uid || user.email) : "user";
     return `kn_annotations_${uid}_${topicId}`;
   }
 
@@ -96,6 +111,8 @@
    * Initialize or attach the annotation canvas over .ron-stage-container
    */
   function setupCanvas() {
+    if (!isStudySection()) return;
+
     stageContainer = document.getElementById("ronMainContentBox") || document.querySelector(".ron-stage-container");
     if (!stageContainer) return;
 
@@ -141,6 +158,44 @@
   }
 
   /**
+   * Global Pen Detection Listener
+   * When any pen/stylus interacts with the document, reveal the floating sidebar
+   */
+  function setupGlobalPenDetection() {
+    const handleGlobalPointer = (e) => {
+      if (!isStudySection()) return;
+
+      if (e.pointerType === "pen") {
+        if (!stylusDetected) {
+          stylusDetected = true;
+          showStylusDetectedToast();
+        }
+        if (isUserLoggedIn() && toolbar) {
+          showToolbar();
+          if (!activeTool) {
+            setTool(TOOLS.PEN);
+          }
+        }
+      }
+    };
+
+    window.addEventListener("pointerdown", handleGlobalPointer, { capture: true, passive: true });
+    window.addEventListener("pointermove", handleGlobalPointer, { capture: true, passive: true });
+  }
+
+  function showStylusDetectedToast() {
+    if (document.getElementById("knStylusToast")) return;
+    const toast = document.createElement("div");
+    toast.className = "kn-stylus-toast";
+    toast.id = "knStylusToast";
+    toast.innerHTML = `<span>✏️</span><span>Stylus Detected — Annotation Active</span>`;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+      if (toast.parentElement) toast.remove();
+    }, 3200);
+  }
+
+  /**
    * Pointer Events with Stylus Palm Rejection
    */
   function attachPointerListeners(cvs) {
@@ -162,15 +217,19 @@
   function onPointerDown(e) {
     if (!activeTool) return;
 
-    // Palm Rejection: If an active stylus / pen is in use, block finger touches completely
+    // Palm Rejection: When a stylus/pen is present or actively writing, reject finger touches
     if (e.pointerType === "pen") {
       penActive = true;
+      if (!stylusDetected) {
+        stylusDetected = true;
+        showStylusDetectedToast();
+      }
     } else if (e.pointerType === "touch" && penActive) {
       e.preventDefault();
       return;
     }
 
-    // Barrel button eraser shortcut check (S Pen button)
+    // S Pen Barrel button shortcut (Eraser toggle)
     let toolToUse = activeTool;
     if (e.button === 5 || e.buttons === 32) {
       toolToUse = TOOLS.ERASER;
@@ -195,6 +254,7 @@
   function onPointerMove(e) {
     if (!isDrawing) return;
 
+    // Palm Rejection ignore touch during drawing
     if (e.pointerType === "touch" && penActive) {
       e.preventDefault();
       return;
@@ -211,7 +271,7 @@
     if (!currentStroke) return;
     currentStroke.points.push(pt);
 
-    // Draw the new segment incrementally
+    // Render segment incrementally
     drawSegment(currentStroke, currentStroke.points.length - 2, currentStroke.points.length - 1);
   }
 
@@ -221,16 +281,16 @@
 
     if (currentStroke && currentStroke.points.length > 0) {
       strokes.push(currentStroke);
-      undoStack = []; // Reset redo
+      undoStack = [];
       saveStrokes();
       currentStroke = null;
     }
 
     if (e.pointerType === "pen") {
-      // Allow slight delay before letting touch register again
+      // Retain palm rejection shield for 350ms post-stroke
       setTimeout(() => {
         penActive = false;
-      }, 400);
+      }, 350);
     }
   }
 
@@ -261,7 +321,7 @@
     } else if (stroke.tool === TOOLS.PENCIL) {
       ctx.globalAlpha = 0.65;
       ctx.strokeStyle = stroke.color;
-      ctx.lineWidth = 1.5 + p2.pressure * 2.5;
+      ctx.lineWidth = 1.4 + p2.pressure * 2.2;
       ctx.beginPath();
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
@@ -270,7 +330,7 @@
       // Default Ballpoint Pen
       ctx.globalAlpha = 0.95;
       ctx.strokeStyle = stroke.color;
-      ctx.lineWidth = 1.5 + p2.pressure * 3.5;
+      ctx.lineWidth = 1.6 + p2.pressure * 3.4;
       ctx.beginPath();
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
@@ -280,7 +340,7 @@
   }
 
   /**
-   * Redraw all existing strokes
+   * Redraw all strokes on canvas
    */
   function redrawAll() {
     if (!ctx || !canvas) return;
@@ -299,11 +359,10 @@
    * Stroke-level Eraser
    */
   function eraseAtPoint(x, y) {
-    const radius = 24;
+    const radius = 22;
     const originalLength = strokes.length;
 
     strokes = strokes.filter((stroke) => {
-      // Check if any point in the stroke lies within radius
       return !stroke.points.some((p) => {
         const dx = p.x - x;
         const dy = p.y - y;
@@ -337,31 +396,76 @@
   }
 
   /**
-   * Create Floating Toolbar
+   * Create Floating Vertical Toolbar on Left or Right
    */
   function renderToolbar() {
+    if (!isStudySection()) return;
     if (toolbar) toolbar.remove();
 
     toolbar = document.createElement("div");
-    toolbar.className = "kn-pen-toolbar";
+    toolbar.className = `kn-pen-toolbar dock-${dockSide} kn-hidden`;
     toolbar.id = "knPenToolbar";
 
     toolbar.innerHTML = `
-      <button type="button" class="kn-tool-btn" data-tool="pen" title="Ballpoint Pen (S Pen / Apple Pencil)">✏️</button>
-      <button type="button" class="kn-tool-btn" data-tool="pencil" title="Pencil">🖊️</button>
-      <button type="button" class="kn-tool-btn" data-tool="highlighter" title="Highlighter">🖍️</button>
-      <button type="button" class="kn-tool-btn" data-tool="eraser" title="Eraser">🧹</button>
+      <button type="button" class="kn-tool-btn" data-tool="pen" title="Ballpoint Pen (S Pen / Apple Pencil)" aria-label="Pen">
+        ✏️
+      </button>
+      <button type="button" class="kn-tool-btn" data-tool="pencil" title="Pencil" aria-label="Pencil">
+        🖊️
+      </button>
+      <button type="button" class="kn-tool-btn" data-tool="highlighter" title="Highlighter" aria-label="Highlighter">
+        🖍️
+      </button>
+      <button type="button" class="kn-tool-btn" data-tool="eraser" title="Eraser" aria-label="Eraser">
+        🧹
+      </button>
+
       <div class="kn-pen-divider"></div>
-      <button type="button" class="kn-tool-btn" id="knColorPickerBtn" title="Color Swatches" style="color: ${activeColor}">🎨</button>
+
+      <!-- Color Swatch Button -->
+      <button type="button" class="kn-tool-btn" id="knColorPickerBtn" title="Choose Ink Color" aria-label="Palette" style="color:${activeColor}">
+        🎨
+      </button>
+
       <div class="kn-pen-divider"></div>
-      <button type="button" class="kn-tool-btn" id="knUndoBtn" title="Undo">↩️</button>
-      <button type="button" class="kn-tool-btn" id="knRedoBtn" title="Redo">↪️</button>
+
+      <!-- Undo / Redo -->
+      <button type="button" class="kn-tool-btn" id="knUndoBtn" title="Undo Stroke" aria-label="Undo">
+        ↩️
+      </button>
+      <button type="button" class="kn-tool-btn" id="knRedoBtn" title="Redo Stroke" aria-label="Redo">
+        ↪️
+      </button>
+
       <div class="kn-pen-divider"></div>
-      <button type="button" class="kn-tool-btn kn-toggle-collapse-btn" id="knCollapseBtn" title="Hide/Show Toolbar">✕</button>
+
+      <!-- Left / Right Dock Switcher -->
+      <button type="button" class="kn-tool-btn kn-dock-switch-btn" id="knDockSwitchBtn" title="Switch Side (Left / Right)" aria-label="Switch Side">
+        ⇄
+      </button>
+
+      <!-- Dismiss Toolbar -->
+      <button type="button" class="kn-tool-btn" id="knDismissToolbarBtn" title="Hide Toolbar" aria-label="Hide">
+        ✕
+      </button>
     `;
 
     document.body.appendChild(toolbar);
     attachToolbarEvents();
+  }
+
+  function showToolbar() {
+    if (!toolbar) renderToolbar();
+    if (toolbar) {
+      toolbar.classList.remove("kn-hidden");
+    }
+  }
+
+  function hideToolbar() {
+    if (toolbar) {
+      toolbar.classList.add("kn-hidden");
+      setTool(null);
+    }
   }
 
   function attachToolbarEvents() {
@@ -371,7 +475,6 @@
       btn.addEventListener("click", () => {
         const tool = btn.getAttribute("data-tool");
         if (activeTool === tool) {
-          // Toggle off
           setTool(null);
         } else {
           setTool(tool);
@@ -382,22 +485,36 @@
     toolbar.querySelector("#knUndoBtn").addEventListener("click", undo);
     toolbar.querySelector("#knRedoBtn").addEventListener("click", redo);
 
-    const collapseBtn = toolbar.querySelector("#knCollapseBtn");
-    collapseBtn.addEventListener("click", () => {
-      if (toolbar.classList.contains("minimized")) {
-        toolbar.classList.remove("minimized");
-        collapseBtn.innerText = "✕";
-      } else {
-        toolbar.classList.add("minimized");
-        collapseBtn.innerText = "✏️";
-        setTool(null);
-      }
-    });
+    // Switch between left and right side dock
+    const switchBtn = toolbar.querySelector("#knDockSwitchBtn");
+    if (switchBtn) {
+      switchBtn.addEventListener("click", () => {
+        if (dockSide === "right") {
+          dockSide = "left";
+          toolbar.classList.remove("dock-right");
+          toolbar.classList.add("dock-left");
+        } else {
+          dockSide = "right";
+          toolbar.classList.remove("dock-left");
+          toolbar.classList.add("dock-right");
+        }
+      });
+    }
 
+    // Dismiss toolbar
+    const dismissBtn = toolbar.querySelector("#knDismissToolbarBtn");
+    if (dismissBtn) {
+      dismissBtn.addEventListener("click", hideToolbar);
+    }
+
+    // Color picker
     const colorBtn = toolbar.querySelector("#knColorPickerBtn");
-    colorBtn.addEventListener("click", () => {
-      toggleColorPalette(colorBtn);
-    });
+    if (colorBtn) {
+      colorBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleColorPalette(colorBtn);
+      });
+    }
   }
 
   function setTool(tool) {
@@ -438,6 +555,15 @@
     `
     ).join("");
 
+    const rect = anchor.getBoundingClientRect();
+    if (dockSide === "right") {
+      popover.style.right = (window.innerWidth - rect.left + 12) + "px";
+      popover.style.top = Math.max(12, rect.top - 30) + "px";
+    } else {
+      popover.style.left = (rect.right + 12) + "px";
+      popover.style.top = Math.max(12, rect.top - 30) + "px";
+    }
+
     popover.querySelectorAll(".kn-color-swatch").forEach((swatch) => {
       swatch.addEventListener("click", () => {
         activeColor = swatch.getAttribute("data-color");
@@ -448,7 +574,7 @@
 
     document.body.appendChild(popover);
 
-    // Auto close when clicking outside
+    // Auto close on outside click
     setTimeout(() => {
       const closeHandler = (e) => {
         if (!popover.contains(e.target) && e.target !== anchor) {
@@ -464,9 +590,17 @@
    * Monitor Study Mode Navigation & Topic Changes
    */
   function monitorStudyNavigation() {
+    if (!isStudySection()) return;
+
     let lastTopic = null;
 
     const checkTopic = () => {
+      if (!isStudySection()) {
+        if (toolbar) toolbar.remove();
+        if (canvas) canvas.remove();
+        return;
+      }
+
       if (!isUserLoggedIn()) {
         if (toolbar) toolbar.remove();
         if (canvas) canvas.remove();
@@ -481,6 +615,11 @@
         setupCanvas();
         if (!toolbar) renderToolbar();
         loadStrokes(topicId);
+
+        // If stylus was already detected previously in session, show toolbar
+        if (stylusDetected) {
+          showToolbar();
+        }
       } else if (!topicId) {
         lastTopic = null;
         if (canvas) canvas.remove();
@@ -495,13 +634,17 @@
   // Export module globally
   window.KN_ANNOTATIONS = {
     init: monitorStudyNavigation,
+    showToolbar,
+    hideToolbar,
     setTool,
     undo,
     redo,
     loadStrokes
   };
 
-  // Auto-boot if document is ready
+  // Boot listeners
+  setupGlobalPenDetection();
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", monitorStudyNavigation);
   } else {

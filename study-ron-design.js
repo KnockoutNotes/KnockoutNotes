@@ -1077,6 +1077,9 @@
                       title: item.name,
                       route: 'study.html?topic=' + item.id
                     }) : ''}
+                    <button type="button" class="kn-action-btn kn-pen-toggle-btn" title="Toggle Stylus / Pen Annotations" onclick="if(window.KN_ANNOTATIONS)window.KN_ANNOTATIONS.showToolbar();">
+                      <span>✏️</span> <span>Draw</span>
+                    </button>
                   </div>
                 </div>
 
