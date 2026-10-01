@@ -969,11 +969,19 @@
 
   function renderNavUserContent(slot, isMobile = false) {
     if (!currentUser) {
-      slot.innerHTML = `
-        <button type="button" class="kn-user-signin-link" id="${isMobile ? 'knMobSignIn' : 'knDskSignIn'}" title="Sign In or Register">
-          <span>Sign In</span>
-        </button>
-      `;
+      if (isMobile) {
+        slot.innerHTML = `
+          <button type="button" class="bubble-action-btn kn-bubble-user-btn" id="knMobSignIn" title="Sign In or Register" aria-label="Sign In or Register">
+            <span class="kn-user-icon-slot">👤</span>
+          </button>
+        `;
+      } else {
+        slot.innerHTML = `
+          <button type="button" class="kn-user-signin-link" id="knDskSignIn" title="Sign In or Register">
+            <span>Sign In</span>
+          </button>
+        `;
+      }
       slot.querySelector("button").addEventListener("click", () => openAuthModal("signin"));
       return;
     }
@@ -983,10 +991,64 @@
       ? `<img src="${currentUser.avatar_url}" alt="${currentUser.name}">`
       : initials;
 
+    if (isMobile) {
+      slot.innerHTML = `
+        <button type="button" class="bubble-action-btn kn-bubble-user-btn logged-in" id="knMobUserBtn" aria-haspopup="true" aria-expanded="false" title="My Personal Workspace" aria-label="Open Workspace Menu">
+          <span class="kn-user-avatar">${avatarHtml}</span>
+        </button>
+
+        <div class="kn-user-dropdown" role="menu">
+          <div class="kn-user-dropdown-header">
+            <div class="kn-user-dropdown-name">${currentUser.name || "Doctor"}</div>
+            <div class="kn-user-dropdown-email">${currentUser.email || ""}</div>
+            <div style="margin-top:6px;">
+              <span class="kn-sync-status-badge">
+                <span class="kn-sync-dot ${isSyncing ? 'syncing' : (navigator.onLine ? '' : 'offline')}"></span>
+                <span>${isSyncing ? 'Syncing...' : (navigator.onLine ? 'Cloud Synced' : 'Offline')}</span>
+              </span>
+            </div>
+          </div>
+
+          <a href="workspace.html#bookmarks" class="kn-user-menu-item" role="menuitem">
+            <span>📌</span> <span>View Bookmarks</span>
+          </a>
+          <a href="workspace.html#notes" class="kn-user-menu-item" role="menuitem">
+            <span>📝</span> <span>My Personal Notes</span>
+          </a>
+          <a href="workspace.html#sticky-notes" class="kn-user-menu-item" role="menuitem">
+            <span>🟨</span> <span>My Sticky Notes</span>
+          </a>
+          <a href="workspace.html#profile" class="kn-user-menu-item" role="menuitem">
+            <span>⚙️</span> <span>Account Settings</span>
+          </a>
+          <div class="kn-user-menu-divider"></div>
+          <button type="button" class="kn-user-menu-item kn-logout-btn" id="knMobLogoutBtn" role="menuitem">
+            <span>🚪</span> <span>Sign Out</span>
+          </button>
+        </div>
+      `;
+
+      const userBtn = slot.querySelector("#knMobUserBtn");
+      const dropdown = slot.querySelector(".kn-user-dropdown");
+      if (userBtn && dropdown) {
+        userBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const isOpen = dropdown.classList.toggle("open");
+          userBtn.setAttribute("aria-expanded", isOpen);
+        });
+      }
+
+      const logoutBtn = slot.querySelector("#knMobLogoutBtn");
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => handleLogout());
+      }
+      return;
+    }
+
     slot.innerHTML = `
-      <button type="button" class="kn-user-btn" id="${isMobile ? 'knMobUserBtn' : 'knDskUserBtn'}" aria-haspopup="true" aria-expanded="false" title="My Personal Workspace">
+      <button type="button" class="kn-user-btn" id="knDskUserBtn" aria-haspopup="true" aria-expanded="false" title="My Personal Workspace">
         <span class="kn-user-avatar">${avatarHtml}</span>
-        ${isMobile ? "" : `<span class="kn-user-name">${currentUser.name || "Doctor"}</span>`}
+        <span class="kn-user-name">${currentUser.name || "Doctor"}</span>
       </button>
 
       <div class="kn-user-dropdown" role="menu">

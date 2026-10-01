@@ -350,8 +350,8 @@ body:not(.dark) .kn-desktop-search-btn kbd {
 .bubble-bar-capsule {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 8px 4px 6px;
+  gap: 4px;
+  padding: 3px 6px 3px 5px;
   border-radius: 9999px;
   background: rgba(15, 18, 28, 0.45);
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -361,7 +361,7 @@ body:not(.dark) .kn-desktop-search-btn kbd {
   backdrop-filter: blur(24px) saturate(190%);
   -webkit-backdrop-filter: blur(24px) saturate(190%);
   pointer-events: auto;
-  max-width: 100%;
+  max-width: calc(100vw - 16px);
   box-sizing: border-box;
   transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -445,9 +445,9 @@ body:not(.dark) .kn-mobile-indicator {
 .bubble-nav-link {
   position: relative;
   z-index: 2;
-  padding: 5px 10px;
+  padding: 4px 8px;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Space Grotesk', system-ui, sans-serif;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.65);
   text-decoration: none;
@@ -482,22 +482,22 @@ body:not(.dark) .bubble-nav-link.active {
   font-weight: 700;
 }
 
-/* Responsive labels */
+/* Responsive labels - mobile primary bar always shows concise labels ("Study", "Calc") */
 .nav-label-short,
 .calc-label-short {
-  display: none;
+  display: inline !important;
 }
 .nav-label-full,
 .calc-label-full {
-  display: inline;
+  display: none !important;
 }
 
-/* Mobile Actions: Search, 3-Dot More, Theme */
+/* Mobile Actions: Search, 3-Dot More, User/Account, Theme */
 .bubble-nav-actions {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding-left: 4px;
+  gap: 3px;
+  padding-left: 3px;
   border-left: 1px solid rgba(255, 255, 255, 0.12);
   flex-shrink: 0;
 }
@@ -508,8 +508,8 @@ body:not(.dark) .bubble-nav-actions {
 
 .bubble-action-btn {
   position: relative;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
@@ -517,10 +517,11 @@ body:not(.dark) .bubble-nav-actions {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.85);
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 0;
+  flex-shrink: 0;
 }
 
 body:not(.dark) .bubble-action-btn {
@@ -864,14 +865,15 @@ body:not(.dark) .bubble-menu-items .pill-close-hint {
   .calc-label-short {
     display: inline;
   }
-  .bubble-action-btn {
-    width: 28px;
-    height: 28px;
+  .bubble-action-btn,
+  .kn-bubble-user-btn {
+    width: 27px;
+    height: 27px;
     font-size: 11px;
   }
   .bubble-nav-actions {
-    gap: 3px;
-    padding-left: 3px;
+    gap: 2.5px;
+    padding-left: 2.5px;
   }
   .kn-dots-icon {
     font-size: 13px;
