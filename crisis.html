@@ -10,6 +10,18 @@
   <link rel="stylesheet" href="mobile-app.css">
   <script src="analytics-config.js"></script>
   <script src="cf-beacon.js"></script>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("kn-theme");
+        if (t === "dark" || !t) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    })();
+  </script>
 </head>
 <body class="crisis-body">
 

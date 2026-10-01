@@ -824,6 +824,7 @@
     ensureWorkspaceAssets();
     syncAuthNavLinks();
     initNavScrollAutoHide();
+    document.body.classList.add("kn-nav-mounted");
   }
 
   window.KnockoutNavigation = {

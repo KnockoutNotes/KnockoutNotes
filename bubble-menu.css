@@ -8,8 +8,8 @@
 /* --------------------------------------------------------------------------
    1. Legacy Navigation Suppression
    -------------------------------------------------------------------------- */
-.site-hud,
-.mobile-menu {
+body.kn-nav-mounted .site-hud,
+body.kn-nav-mounted .mobile-menu {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
