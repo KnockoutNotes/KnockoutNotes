@@ -52,6 +52,21 @@
     return text.replace(HIGHLIGHT_RE, (m) => `<strong><u>${m}</u></strong>`);
   }
 
+  function formatInlineContent(str) {
+    if (!str) return "";
+    let clean = String(str)
+      .replace(/<br\s*\/?>/gi, "\n")
+      .replace(/<\/?(b|strong)>/gi, "**")
+      .replace(/<\/?(i|em)>/gi, "*")
+      .replace(/<\/?u>/gi, "")
+      .replace(/<\/?span[^>]*>/gi, "");
+    let res = esc(clean);
+    res = res.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    res = res.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+    res = highlightKeyValues(res);
+    return res;
+  }
+
   function getData() {
     return window.KN_STUDY || { categories: [], topics: [], drugs: [] };
   }
@@ -199,7 +214,7 @@
         { id: "equipment", label: "Equipment", icon: "⚙️", desc: "Anaesthesia machines, breathing circuits & vaporizers", filter: (it) => it.cat === "equipment" },
         { id: "pft", label: "Pulmonary Function Tests", icon: "📊", desc: "Preoperative spirometry, flow-volume loops & gas exchange", filter: (it) => it.cat === "pft" },
         { id: "examination", label: "Preop & Examination", icon: "📋", desc: "Preoperative assessment, system examination & risk indices", filter: (it) => it.cat === "examination" },
-        { id: "pain", label: "Pain Medicine", icon: "⚡", desc: "Acute pain protocols and multimodal analgesia", filter: (it) => (it.id.includes("pain") || (it.name || "").toLowerCase().includes("pain") || (it.tags || []).some(t => t.includes("pain"))) && it.cat !== "nsaids" && it.cat !== "opioids" }
+        { id: "pain", label: "Pain Medicine", icon: "⚡", desc: "Acute perioperative pain protocols, multimodal analgesia, regional catheters, neuropathic syndromes & palliative care", filter: (it) => it.cat === "pain" || it.id.includes("pain") || (it.tags || []).some(t => (t || "").toLowerCase().includes("pain")) }
       ]
     },
     critical: {
@@ -208,7 +223,7 @@
       icon: "🫁",
       desc: "Complete 16-chapter intensive care syllabus (Washington Manual & consensus guidelines)",
       cats: [
-        { id: "all", label: "All Critical Care", icon: "✦", desc: "Complete 16-chapter Critical Care master syllabus (Washington Manual & consensus guidelines)", filter: (it) => (it.cat && it.cat.startsWith("cc_")) || ["shock", "respiratory", "abg", "antibiotics", "poisoning"].includes(it.cat) || (it.id && (it.id.includes("sepsis") || it.id.includes("shock") || it.id.includes("ards") || it.id.includes("ventilator"))) },
+        { id: "all", label: "All Critical Care", icon: "✦", desc: "Complete 16-chapter Critical Care master syllabus (Washington Manual & consensus guidelines)", filter: (it) => (it.cat && it.cat.startsWith("cc_")) || ["shock", "respiratory", "abg", "antibiotics", "poisoning", "pain"].includes(it.cat) || (it.id && (it.id.includes("sepsis") || it.id.includes("shock") || it.id.includes("ards") || it.id.includes("ventilator"))) },
         { id: "cc_principles", label: "General Principles", icon: "🏛️", desc: "ICU organization, triage, severity scoring systems (APACHE, SOFA, NEWS2), ethics & organ donation", filter: (it) => it.cat === "cc_principles" },
         { id: "cc_airway", label: "Airway Management", icon: "🫁", desc: "Difficult airway in ICU, physiological RSI, video laryngoscopy & percutaneous tracheostomy", filter: (it) => it.cat === "cc_airway" || (it.id && it.id.includes("rsi")) || ((it.name || "").toLowerCase().includes("rsi")) },
         { id: "cc_respiratory", label: "Respiratory Critical Care", icon: "💨", desc: "ARDS, mechanical ventilation modes, APRV, waveforms, asynchrony, severe asthma & PE", filter: (it) => it.cat === "cc_respiratory" || it.cat === "respiratory" },
@@ -224,7 +239,8 @@
         { id: "cc_obs", label: "Obstetric Critical Care", icon: "🤰", desc: "Severe pre-eclampsia, eclampsia, HELLP syndrome, amniotic fluid embolism & obstetric hemorrhage", filter: (it) => it.cat === "cc_obs" },
         { id: "cc_peds", label: "Pediatric Critical Care", icon: "👶", desc: "Pediatric acute respiratory failure, croup, PALS protocols, pediatric septic shock & vasoactive support", filter: (it) => it.cat === "cc_peds" },
         { id: "cc_pharm", label: "ICU Pharmacology", icon: "💊", desc: "SCCM PADIS guidelines (pain, agitation, delirium), sedation protocols & neuromuscular blockade with TOF", filter: (it) => it.cat === "cc_pharm" },
-        { id: "cc_advances", label: "Research & Recent Advances", icon: "🚀", desc: "Extracorporeal membrane oxygenation (VV vs VA ECMO), multiorgan critical care POCUS (BLUE/RUSH/VExUS)", filter: (it) => it.cat === "cc_advances" }
+        { id: "cc_advances", label: "Research & Recent Advances", icon: "🚀", desc: "Extracorporeal membrane oxygenation (VV vs VA ECMO), multiorgan critical care POCUS (BLUE/RUSH/VExUS)", filter: (it) => it.cat === "cc_advances" },
+        { id: "pain", label: "Pain Medicine", icon: "⚡", desc: "Multimodal analgesia, continuous regional catheters, neuropathic pain & palliative care", filter: (it) => it.cat === "pain" }
       ]
     },
     drugs: {
@@ -1360,6 +1376,15 @@
 
         // Callout blocks (pearl, pitfall, example)
         let calloutsHTML = "";
+        if (sec.callout) {
+          const cType = sec.callout.type || "pearl";
+          const cTitle = sec.callout.title || (cType === "pitfall" ? "⚠️ Lethal Pitfall & Safety Warning" : "💡 Clinical Key Point");
+          calloutsHTML += `
+            <div class="ron-callout ron-callout-${cType}">
+              <span class="ron-callout-badge">${esc(cTitle)}</span>
+              <div>${formatProseLines(sec.callout.text)}</div>
+            </div>`;
+        }
         if (sec.pearl) {
           calloutsHTML += `
             <div class="ron-callout ron-callout-pearl">
@@ -1479,7 +1504,45 @@
         `;
       }).join("");
 
-      return sourceCalloutHTML + cardsHTML;
+      let exampleCardHTML = "";
+      if (item.example) {
+        exampleCardHTML = `
+          <div class="ron-card ron-notes-card" id="sec-case-example">
+            <div class="ron-card-header">
+              <h3 class="ron-card-title" style="font-size:17px; font-weight:750; color:var(--ron-text-primary); margin:0;">
+                Worked Clinical Case Vignette
+              </h3>
+              <span class="ron-card-scale-icon">${ICONS.scale}</span>
+            </div>
+            <div class="ron-prose ron-figure-tight-prose" style="margin-top:14px;">
+              <div class="ron-callout ron-callout-example">
+                <span class="ron-callout-badge">🧩 Bedside Clinical Scenario</span>
+                <div>${formatProseLines(item.example)}</div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      let refsCardHTML = "";
+      if (item.references && item.references.length) {
+        const refs = Array.isArray(item.references) ? item.references : [item.references];
+        refsCardHTML = `
+          <div class="ron-card ron-notes-card" id="sec-references">
+            <div class="ron-card-header">
+              <h3 class="ron-card-title" style="font-size:17px; font-weight:750; color:var(--ron-text-primary); margin:0;">
+                Standard References &amp; Clinical Guidelines
+              </h3>
+              <span class="ron-card-scale-icon">${ICONS.scale}</span>
+            </div>
+            <ul style="margin:14px 0 0; padding-left:22px; font-size:14px; color:var(--ron-text-body); line-height:1.8;">
+              ${refs.map((r) => `<li style="margin-bottom:8px;">📚 ${highlightKeyValues(esc(r))}</li>`).join("")}
+            </ul>
+          </div>
+        `;
+      }
+
+      return sourceCalloutHTML + cardsHTML + exampleCardHTML + refsCardHTML;
     }
 
     return `
@@ -1504,30 +1567,54 @@
         return;
       }
 
-      // 1. Numbered Heading / Step (e.g. "1. Pathophysiological Mechanisms:", "2. Mitral Stenosis (MS):")
-      if (/^\d+\.\s/.test(trimmed)) {
-        result += `<div class="ron-numbered-point">
-          <div class="ron-point-num-badge">${trimmed.match(/^\d+/)[0]}</div>
-          <div class="ron-point-num-content">
-            <h4 class="ron-point-title">${highlightKeyValues(esc(trimmed.replace(/^\d+\.\s*/, "")))}</h4>
-          </div>
-        </div>`;
+      // 1. Numbered Heading / Step with Title and Body (e.g. "1. Title: Description" or "1. Heading")
+      const numMatch = trimmed.match(/^(\d+)\.\s+(.+)$/);
+      if (numMatch) {
+        const num = numMatch[1];
+        const rest = numMatch[2];
+        const colonMatch = rest.match(/^(\*{0,2})([A-Za-z0-9\s\/\(\)-]{2,50})\1(?::|—|–)\s+(.+)$/);
+        if (colonMatch) {
+          result += `<div class="ron-numbered-point">
+            <div class="ron-point-num-badge">${num}</div>
+            <div class="ron-point-num-content">
+              <h4 class="ron-point-title">${formatInlineContent(colonMatch[2])}</h4>
+              <div class="ron-point-desc" style="font-size:14px; color:var(--ron-text-body); line-height:1.7; margin-top:4px;">${formatInlineContent(colonMatch[3])}</div>
+            </div>
+          </div>`;
+        } else {
+          result += `<div class="ron-numbered-point">
+            <div class="ron-point-num-badge">${num}</div>
+            <div class="ron-point-num-content">
+              <h4 class="ron-point-title">${formatInlineContent(rest)}</h4>
+            </div>
+          </div>`;
+        }
       }
       // 2. Existing Bullet (e.g. "• ...", "- ...", "* ...")
       else if (trimmed.startsWith("• ") || trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
         const text = trimmed.replace(/^[\u2022\-\*]\s*/, "");
-        result += `<div class="ron-point-row">
-          <span class="ron-point-bullet">•</span>
-          <div class="ron-point-text">${highlightKeyValues(esc(text))}</div>
-        </div>`;
+        const subMatch = text.match(/^(\*{0,2})([A-Za-z0-9\s\/\(\)-]{2,45})\1(?::|—|–)\s+(.+)$/);
+        if (subMatch) {
+          result += `<div class="ron-point-row ron-point-keyval">
+            <span class="ron-point-bullet">•</span>
+            <div class="ron-point-text">
+              <strong class="ron-point-label">${formatInlineContent(subMatch[2])}:</strong> ${formatInlineContent(subMatch[3])}
+            </div>
+          </div>`;
+        } else {
+          result += `<div class="ron-point-row">
+            <span class="ron-point-bullet">•</span>
+            <div class="ron-point-text">${formatInlineContent(text)}</div>
+          </div>`;
+        }
       }
       // 3. Sub-point with key label (e.g. "Auscultation Finding: ...", "Anaesthetic Goals: ...", "Severity Criteria: ...")
-      else if (/^([A-Z][A-Za-z0-9\s\/\(\)-]{2,32}):\s+(.+)$/.test(trimmed)) {
-        const match = trimmed.match(/^([A-Z][A-Za-z0-9\s\/\(\)-]{2,32}):\s+(.+)$/);
+      else if (/^(\*{0,2})([A-Z0-9][A-Za-z0-9\s\/\(\)-]{1,45})\1(?::|—|–)\s+(.+)$/.test(trimmed)) {
+        const match = trimmed.match(/^(\*{0,2})([A-Z0-9][A-Za-z0-9\s\/\(\)-]{1,45})\1(?::|—|–)\s+(.+)$/);
         result += `<div class="ron-point-row ron-point-keyval">
           <span class="ron-point-bullet">•</span>
           <div class="ron-point-text">
-            <strong class="ron-point-label">${esc(match[1])}:</strong> ${highlightKeyValues(esc(match[2]))}
+            <strong class="ron-point-label">${formatInlineContent(match[2])}:</strong> ${formatInlineContent(match[3])}
           </div>
         </div>`;
       }
@@ -1540,14 +1627,14 @@
             if (st) {
               result += `<div class="ron-point-row">
                 <span class="ron-point-bullet">•</span>
-                <div class="ron-point-text">${highlightKeyValues(esc(st))}</div>
+                <div class="ron-point-text">${formatInlineContent(st)}</div>
               </div>`;
             }
           });
         } else {
           result += `<div class="ron-point-row">
             <span class="ron-point-bullet">•</span>
-            <div class="ron-point-text">${highlightKeyValues(esc(trimmed))}</div>
+            <div class="ron-point-text">${formatInlineContent(trimmed)}</div>
           </div>`;
         }
       }
