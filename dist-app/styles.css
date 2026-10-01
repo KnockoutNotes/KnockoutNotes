@@ -3074,12 +3074,9 @@ body.mode-lite #knSpatialCanvas {
   display: none !important;
 }
 
-body.mode-3d {
-  overflow-y: auto !important;
-}
-
+body.mode-3d,
 body.mode-lite {
-  overflow-y: auto !important;
+  overflow-x: clip;
 }
 
 /* Hardened Lite Mode: complete animation & 3D tilt suppression */

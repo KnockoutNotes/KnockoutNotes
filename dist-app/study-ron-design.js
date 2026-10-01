@@ -1367,9 +1367,15 @@
     renderRonBoard();
   });
 
-  // Theme switch observer
+  // Theme switch observer (strictly gates on dark class changes; never fires on scroll classes)
+  let lastIsDark = document.body.classList.contains("dark");
   const observer = new MutationObserver(() => {
-    renderRonBoard();
+    const isDark = document.body.classList.contains("dark");
+    if (isDark !== lastIsDark) {
+      lastIsDark = isDark;
+      if (activeItem) mountAll3D();
+      else mountAllCard3D();
+    }
   });
   observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
 

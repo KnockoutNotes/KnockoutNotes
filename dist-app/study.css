@@ -20,7 +20,16 @@
    is only valid before any other CSS rule. */
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
 
-body[data-content-page="study"] { overflow-x: hidden; }
+html[data-content-page="study"],
+html {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+body[data-content-page="study"] {
+  overflow: visible !important;
+  overflow-y: visible !important;
+  overflow-x: clip !important;
+}
 
 /* Auto-hide the site nav while scrolling down through Study Mode content,
    reveal it again on scrolling up (see initNavAutoHide() in study-ui.js —
