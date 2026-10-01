@@ -25,9 +25,11 @@
   };
 
   // State
+  let activeDomain = "anaesthesia";
   let activeCat = "all";
   let activeItem = null;
   let searchFilter = "";
+  let hoverPreviewTimeout = null;
 
   function esc(s) {
     return String(s == null ? "" : s)
@@ -170,6 +172,243 @@
     return [{ id: "sec-0", label: "Clinical Overview" }];
   }
 
+  function triggerHapticFeedback() {
+    if (typeof navigator !== "undefined" && typeof navigator.vibrate === "function") {
+      try {
+        navigator.vibrate(8);
+      } catch (err) {}
+    }
+  }
+
+  // ==========================================================================
+  // THREE MASTER DOMAINS & COMPREHENSIVE CURRICULUM DEFINITIONS
+  // 1. ANAESTHESIA | 2. CRITICAL CARE | 3. DRUGS
+  // ==========================================================================
+  const DOMAIN_DEFS = {
+    anaesthesia: {
+      id: "anaesthesia",
+      label: "ANAESTHESIA",
+      icon: "💉",
+      desc: "Clinical anaesthesia practice, airway management, monitoring and equipment",
+      cats: [
+        { id: "all", label: "All Anaesthesia", icon: "✦", desc: "Comprehensive clinical anaesthesia syllabus", filter: (it) => ["anaesthesia", "examination", "ecg", "equipment", "pft"].includes(it.cat) },
+        { id: "general", label: "General Anaesthesia", icon: "💉", desc: "Induction, maintenance, emergence & peri-operative safety", filter: (it) => it.cat === "anaesthesia" },
+        { id: "airway", label: "Airway", icon: "🫁", desc: "Airway assessment, devices, difficult airway algorithms & RSI", filter: (it) => it.cat === "anaesthesia" && (it.id.includes("airway") || it.id.includes("cricoid") || it.id.includes("lma") || it.id.includes("intubat") || (it.name || "").toLowerCase().includes("airway")) },
+        { id: "regional", label: "Regional Anaesthesia", icon: "📍", desc: "Neuraxial blocks (spinal, epidural) and peripheral nerve blocks", filter: (it) => it.cat === "anaesthesia" && (it.id.includes("spinal") || it.id.includes("epidural") || it.id.includes("block") || (it.name || "").toLowerCase().includes("spinal") || (it.name || "").toLowerCase().includes("epidural")) },
+        { id: "monitoring", label: "Monitoring & ECG", icon: "📈", desc: "Hemodynamic monitoring, ECG interpretation & capnography", filter: (it) => it.cat === "ecg" },
+        { id: "equipment", label: "Equipment", icon: "⚙️", desc: "Anaesthesia machines, breathing circuits & vaporizers", filter: (it) => it.cat === "equipment" },
+        { id: "pft", label: "Pulmonary Function Tests", icon: "📊", desc: "Preoperative spirometry, flow-volume loops & gas exchange", filter: (it) => it.cat === "pft" },
+        { id: "examination", label: "Preop & Examination", icon: "📋", desc: "Preoperative assessment, system examination & risk indices", filter: (it) => it.cat === "examination" },
+        { id: "pain", label: "Pain Medicine", icon: "⚡", desc: "Acute pain protocols and multimodal analgesia", filter: (it) => (it.id.includes("pain") || (it.name || "").toLowerCase().includes("pain") || (it.tags || []).some(t => t.includes("pain"))) && it.cat !== "nsaids" && it.cat !== "opioids" }
+      ]
+    },
+    critical: {
+      id: "critical",
+      label: "CRITICAL CARE",
+      icon: "🫁",
+      desc: "Complete 16-chapter intensive care syllabus (Washington Manual & consensus guidelines)",
+      cats: [
+        { id: "all", label: "All Critical Care", icon: "✦", desc: "Complete 16-chapter Critical Care master syllabus (Washington Manual & consensus guidelines)", filter: (it) => (it.cat && it.cat.startsWith("cc_")) || ["shock", "respiratory", "abg", "antibiotics", "poisoning"].includes(it.cat) || (it.id && (it.id.includes("sepsis") || it.id.includes("shock") || it.id.includes("ards") || it.id.includes("ventilator"))) },
+        { id: "cc_principles", label: "General Principles", icon: "🏛️", desc: "ICU organization, triage, severity scoring systems (APACHE, SOFA, NEWS2), ethics & organ donation", filter: (it) => it.cat === "cc_principles" },
+        { id: "cc_airway", label: "Airway Management", icon: "🫁", desc: "Difficult airway in ICU, physiological RSI, video laryngoscopy & percutaneous tracheostomy", filter: (it) => it.cat === "cc_airway" || (it.id && it.id.includes("rsi")) || ((it.name || "").toLowerCase().includes("rsi")) },
+        { id: "cc_respiratory", label: "Respiratory Critical Care", icon: "💨", desc: "ARDS, mechanical ventilation modes, APRV, waveforms, asynchrony, severe asthma & PE", filter: (it) => it.cat === "cc_respiratory" || it.cat === "respiratory" },
+        { id: "cc_hemodynamics", label: "Hemodynamic Support", icon: "⚡", desc: "Shock classification, invasive monitoring, PiCCO, vasopressors, inotropes & dynamic preload", filter: (it) => it.cat === "cc_hemodynamics" || it.cat === "shock" },
+        { id: "cc_sepsis", label: "Sepsis & Infections", icon: "🛡️", desc: "Sepsis-3 1-hour bundle, MDR pathogens, PK/PD beta-lactam infusions & source control", filter: (it) => it.cat === "cc_sepsis" || it.cat === "antibiotics" || (it.id && it.id.includes("sepsis")) },
+        { id: "cc_neuro", label: "Neurological Critical Care", icon: "🧠", desc: "Coma, GCS, intracranial hypertension, TBI, refractory status epilepticus, stroke & GBS", filter: (it) => it.cat === "cc_neuro" },
+        { id: "cc_cardio", label: "Cardiovascular Critical Care", icon: "❤️", desc: "Acute coronary syndromes, cardiogenic shock (SCAI), malignant arrhythmias & cardiac tamponade", filter: (it) => it.cat === "cc_cardio" },
+        { id: "cc_renal", label: "Renal & Metabolic Support", icon: "🧪", desc: "AKI (KDIGO), CRRT modalities, acid-base disorders & severe electrolyte emergencies", filter: (it) => it.cat === "cc_renal" || it.cat === "abg" },
+        { id: "cc_gi", label: "Gastrointestinal & Hepatic", icon: "🔬", desc: "Acute GI bleeding, severe acute pancreatitis, acute liver failure, ICU nutrition & refeeding", filter: (it) => it.cat === "cc_gi" },
+        { id: "cc_trauma", label: "Trauma & Burns", icon: "🩹", desc: "Polytrauma resuscitation, ATLS principles, damage control surgery, pelvic fractures & burn care", filter: (it) => it.cat === "cc_trauma" },
+        { id: "cc_tox", label: "Poisoning & Toxicology", icon: "☠️", desc: "Toxidromes, targeted antidotes, EXTRIP extracorporeal elimination, heatstroke & hypothermia", filter: (it) => it.cat === "cc_tox" || it.cat === "poisoning" },
+        { id: "cc_heme", label: "Hematology & Transfusion", icon: "🩸", desc: "Massive transfusion protocols (MTP), ROTEM/TEG, DIC, HIT & transfusion reactions", filter: (it) => it.cat === "cc_heme" },
+        { id: "cc_obs", label: "Obstetric Critical Care", icon: "🤰", desc: "Severe pre-eclampsia, eclampsia, HELLP syndrome, amniotic fluid embolism & obstetric hemorrhage", filter: (it) => it.cat === "cc_obs" },
+        { id: "cc_peds", label: "Pediatric Critical Care", icon: "👶", desc: "Pediatric acute respiratory failure, croup, PALS protocols, pediatric septic shock & vasoactive support", filter: (it) => it.cat === "cc_peds" },
+        { id: "cc_pharm", label: "ICU Pharmacology", icon: "💊", desc: "SCCM PADIS guidelines (pain, agitation, delirium), sedation protocols & neuromuscular blockade with TOF", filter: (it) => it.cat === "cc_pharm" },
+        { id: "cc_advances", label: "Research & Recent Advances", icon: "🚀", desc: "Extracorporeal membrane oxygenation (VV vs VA ECMO), multiorgan critical care POCUS (BLUE/RUSH/VExUS)", filter: (it) => it.cat === "cc_advances" }
+      ]
+    },
+    drugs: {
+      id: "drugs",
+      label: "DRUGS",
+      icon: "💊",
+      desc: "Pharmacological monographs, receptor dynamics, kinetics and dosing guidelines",
+      cats: [
+        { id: "all", label: "All Drugs", icon: "✦", desc: "Complete library of 84 drug monographs", filter: (it) => !it.sections },
+        { id: "induction", label: "Induction Agents", icon: "💉", desc: "Intravenous hypnotics (propofol, etomidate, ketamine, thiopental)", filter: (it) => it.cat === "induction" },
+        { id: "relaxants", label: "Neuromuscular Blockers", icon: "⚡", desc: "Depolarising and non-depolarising neuromuscular blockers", filter: (it) => it.cat === "relaxants" },
+        { id: "reversal", label: "Reversal Agents", icon: "🔄", desc: "Sugammadex, neostigmine, glycopyrrolate & atropine", filter: (it) => it.cat === "reversal" },
+        { id: "opioids", label: "Opioids", icon: "🌿", desc: "Analgesic opioids and pure opioid receptor antagonists", filter: (it) => it.cat === "opioids" },
+        { id: "nsaids", label: "Non-opioid Analgesics", icon: "💊", desc: "NSAIDs, paracetamol, parecoxib and adjuvant analgesics", filter: (it) => it.cat === "nsaids" },
+        { id: "vasopressors", label: "Vasopressors & Inotropes", icon: "❤️", desc: "Catecholamines, vasopressin, milrinone & inotropes", filter: (it) => it.cat === "vasopressors" },
+        { id: "antihypertensives", label: "Cardiovascular Drugs", icon: "🩸", desc: "Antihypertensives, beta-blockers and antiarrhythmics", filter: (it) => it.cat === "antihypertensives" },
+        { id: "alpha2", label: "Sedatives (Alpha-2)", icon: "🧠", desc: "Dexmedetomidine, clonidine & neuro-sedatives", filter: (it) => it.cat === "alpha2" },
+        { id: "local", label: "Local Anaesthetics", icon: "💉", desc: "Aminoamides and aminoesters for regional anaesthesia", filter: (it) => it.cat === "local" },
+        { id: "steroids", label: "ICU Drugs (Steroids)", icon: "🧬", desc: "Hydrocortisone, dexamethasone & methylprednisolone", filter: (it) => it.cat === "steroids" },
+        { id: "antidiabetics", label: "ICU Drugs (Antidiabetics)", icon: "🩸", desc: "Insulin protocols and glycemic management", filter: (it) => it.cat === "antidiabetics" },
+        { id: "pregnancy", label: "Obstetric & Pediatric Drugs", icon: "🤰", desc: "Drugs in pregnancy, lactation and uterotonics", filter: (it) => it.cat === "pregnancy" },
+        { id: "miscellaneous", label: "Emergency Drugs", icon: "🚨", desc: "Dantrolene, intralipid, adrenaline & resuscitation drugs", filter: (it) => it.cat === "miscellaneous" }
+      ]
+    }
+  };
+
+  function inferDomainFromCat(catId) {
+    if (!catId || catId === "all") return "anaesthesia";
+    if (catId.startsWith("cc_")) return "critical";
+    const drugCats = ["induction", "relaxants", "reversal", "opioids", "nsaids", "vasopressors", "antihypertensives", "alpha2", "local", "steroids", "antidiabetics", "pregnancy", "miscellaneous"];
+    if (drugCats.includes(catId)) return "drugs";
+    const critCats = ["respiratory", "shock", "abg", "antibiotics", "poisoning", "sepsis", "neuro_icu", "airway_icu", "cardio_icu"];
+    if (critCats.includes(catId)) return "critical";
+    return "anaesthesia";
+  }
+
+  function getItemsForDomainAndCat(domainId, catId) {
+    const data = getData();
+    const all = [...(data.topics || []), ...(data.drugs || [])];
+    const dom = DOMAIN_DEFS[domainId] || DOMAIN_DEFS.anaesthesia;
+    const catObj = dom.cats.find(c => c.id === catId);
+    if (!catObj) {
+      const direct = all.filter(it => it.cat === catId);
+      if (direct.length) return direct;
+      return all.filter(dom.cats[0].filter);
+    }
+    return all.filter(catObj.filter);
+  }
+
+  function getCategoryMeta(domainId, catId) {
+    const dom = DOMAIN_DEFS[domainId] || DOMAIN_DEFS.anaesthesia;
+    const found = dom.cats.find(c => c.id === catId) || dom.cats[0];
+    const items = getItemsForDomainAndCat(domainId, found.id);
+    return {
+      id: found.id,
+      label: found.label,
+      icon: found.icon,
+      desc: found.desc || dom.desc,
+      count: items.length,
+      domain: dom
+    };
+  }
+
+  // ==========================================================================
+  // NEW STUDY MODE NAVIGATION ARCHITECTURE:
+  // 3 Primary Domains (Vertical) + Secondary Categories (Single-Line Horizontal)
+  // ==========================================================================
+  function renderNewDomainNavSystem(currentDomain, currentCat) {
+    const dom = DOMAIN_DEFS[currentDomain] || DOMAIN_DEFS.anaesthesia;
+    const allDomains = Object.values(DOMAIN_DEFS);
+
+    const domainCounts = {
+      anaesthesia: getItemsForDomainAndCat("anaesthesia", "all").length,
+      critical: getItemsForDomainAndCat("critical", "all").length,
+      drugs: getItemsForDomainAndCat("drugs", "all").length
+    };
+
+    // 1. Primary Vertical Domains Menu
+    const domainTabsHTML = allDomains.map((d) => {
+      const isActive = d.id === currentDomain;
+      const count = domainCounts[d.id] || 0;
+      return `
+        <button type="button" 
+                class="ron-domain-tab ${isActive ? 'active' : ''}" 
+                data-ron-domain="${d.id}" 
+                role="tab" 
+                aria-selected="${isActive}" 
+                title="${esc(d.desc)}">
+          <span class="ron-domain-tab-icon">${d.icon}</span>
+          <span class="ron-domain-tab-text">${esc(d.label)}</span>
+          <span class="ron-domain-tab-count">${count}</span>
+        </button>
+      `;
+    }).join("");
+
+    // 2. Secondary Horizontal Categories (Single Line Track)
+    const catPillsHTML = dom.cats.map((c) => {
+      const count = getItemsForDomainAndCat(dom.id, c.id).length;
+      const isActive = c.id === currentCat;
+      return `
+        <button type="button" 
+                class="ron-nav-pill ${isActive ? 'active' : ''}" 
+                data-ron-domain="${dom.id}" 
+                data-ron-cat="${c.id}" 
+                role="tab" 
+                aria-selected="${isActive}" 
+                title="${esc(c.desc || c.label)}">
+          <span>${c.icon}</span> ${esc(c.label)} <span class="ron-pill-count">${count}</span>
+        </button>
+      `;
+    }).join("");
+
+    return `
+      <div class="ron-domain-nav-system" id="ronDomainNavSystem">
+        <!-- 1. Primary Vertical Domains Menu -->
+        <div class="ron-domain-vertical-menu" role="tablist" aria-label="Primary Study Domains">
+          ${domainTabsHTML}
+        </div>
+
+        <!-- 2. Secondary Horizontal Categories Bar (Smooth single line) -->
+        <div class="ron-secondary-horizontal-bar" id="ronSecondaryBar">
+          <div class="ron-secondary-header-strip">
+            <div class="ron-secondary-domain-pill">
+              <span class="ron-secondary-dot"></span>
+              <span class="ron-secondary-domain-title">${esc(dom.label)}</span>
+              <span class="ron-secondary-sub">— ${esc(dom.desc)}</span>
+            </div>
+            <div class="ron-scroll-indicator-wrap" aria-hidden="true">
+              <span class="ron-scroll-hint">Swipe categories</span>
+              <span class="ron-scroll-arrow">→</span>
+            </div>
+          </div>
+          <div class="ron-category-single-row ron-cat-animating" id="ronCategorySingleRow" role="tablist" aria-label="${esc(dom.label)} Categories">
+            ${catPillsHTML}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function previewCategoriesForDomain(domainId) {
+    const dom = DOMAIN_DEFS[domainId];
+    if (!dom) return;
+    const singleRow = document.getElementById("ronCategorySingleRow");
+    if (!singleRow) return;
+
+    document.querySelectorAll(".ron-domain-tab").forEach((tab) => {
+      const d = tab.getAttribute("data-ron-domain");
+      if (d === domainId) {
+        tab.classList.add("active");
+        tab.setAttribute("aria-selected", "true");
+      } else {
+        tab.classList.remove("active");
+        tab.setAttribute("aria-selected", "false");
+      }
+    });
+
+    const titleEl = document.querySelector(".ron-secondary-domain-title");
+    if (titleEl) titleEl.textContent = dom.label;
+    const subEl = document.querySelector(".ron-secondary-sub");
+    if (subEl) subEl.textContent = "— " + dom.desc;
+
+    const catPillsHTML = dom.cats.map((c) => {
+      const count = getItemsForDomainAndCat(dom.id, c.id).length;
+      const isActive = c.id === activeCat && dom.id === activeDomain;
+      return `
+        <button type="button" 
+                class="ron-nav-pill ${isActive ? 'active' : ''}" 
+                data-ron-domain="${dom.id}" 
+                data-ron-cat="${c.id}" 
+                role="tab" 
+                aria-selected="${isActive}" 
+                title="${esc(c.desc || c.label)}">
+          <span>${c.icon}</span> ${esc(c.label)} <span class="ron-pill-count">${count}</span>
+        </button>
+      `;
+    }).join("");
+
+    singleRow.innerHTML = catPillsHTML;
+    singleRow.classList.remove("ron-cat-animating");
+    void singleRow.offsetWidth;
+    singleRow.classList.add("ron-cat-animating");
+  }
+
   // Navigation actions
   function openTopic(id) {
     if (!id) return;
@@ -177,11 +416,14 @@
     if (!item) return;
     activeItem = item;
     activeCat = item.cat;
+    activeDomain = inferDomainFromCat(item.cat);
 
     try {
       const url = new URL(window.location.href);
+      url.searchParams.set("domain", activeDomain);
+      url.searchParams.set("cat", activeCat);
       url.searchParams.set("item", id);
-      window.history.pushState({ item: id }, "", url.toString());
+      window.history.pushState({ domain: activeDomain, cat: activeCat, item: id }, "", url.toString());
     } catch (e) {}
 
     renderRonBoard();
@@ -195,12 +437,14 @@
     try {
       const url = new URL(window.location.href);
       url.searchParams.delete("item");
+      url.searchParams.delete("topic");
+      if (activeDomain) url.searchParams.set("domain", activeDomain);
       if (activeCat && activeCat !== "all") {
         url.searchParams.set("cat", activeCat);
       } else {
         url.searchParams.delete("cat");
       }
-      window.history.pushState({ cat: activeCat }, "", url.toString());
+      window.history.pushState({ domain: activeDomain, cat: activeCat }, "", url.toString());
     } catch (e) {}
 
     renderRonBoard();
@@ -210,9 +454,6 @@
   }
 
   function renderRonBoard() {
-    // Both light and dark modes now use this controller
-    // CSS variables handle all color differences
-
     let mount = document.getElementById("ronStudyApp");
     if (!mount) {
       mount = document.createElement("div");
@@ -225,14 +466,18 @@
 
     // Read URL state
     const urlParams = new URLSearchParams(window.location.search);
-    const itemParam = urlParams.get("item") || urlParams.get("topic");
+    const domainParam = urlParams.get("domain");
     const catParam = urlParams.get("cat");
+    const itemParam = urlParams.get("item") || urlParams.get("topic");
 
     if (itemParam) {
       if (!activeItem || activeItem.id !== itemParam) {
         activeItem = findItem(itemParam);
       }
-      if (activeItem) activeCat = activeItem.cat;
+      if (activeItem) {
+        activeCat = activeItem.cat;
+        activeDomain = inferDomainFromCat(activeItem.cat);
+      }
     } else {
       activeItem = null;
     }
@@ -240,67 +485,26 @@
     if (!activeItem) {
       if (catParam) {
         activeCat = catParam;
+        if (domainParam && ["anaesthesia", "critical", "drugs"].includes(domainParam)) {
+          activeDomain = domainParam;
+        } else {
+          activeDomain = inferDomainFromCat(catParam);
+        }
+      } else if (domainParam && ["anaesthesia", "critical", "drugs"].includes(domainParam)) {
+        activeDomain = domainParam;
+        activeCat = "all";
       }
     }
 
-    const data = getData();
-    const categories = data.categories || [];
-    const currentCatObj = categories.find((c) => c.id === activeCat) || { label: "All Study Topics", icon: "✦", desc: "Comprehensive source-cited medical and anaesthesia study library" };
+    const currentCatObj = getCategoryMeta(activeDomain, activeCat);
 
     if (activeItem) {
-      renderSelectedTopicView(mount, activeItem, currentCatObj, categories);
+      renderSelectedTopicView(mount, activeItem, currentCatObj);
       mountAll3D(mount);
     } else {
-      renderCategoryOverview(mount, activeCat, currentCatObj, categories);
+      renderCategoryOverview(mount, activeCat, currentCatObj);
       mountAllCard3D(mount);
     }
-  }
-
-  // ==========================================================================
-  // TOP MENU: TWO BALANCED LINES FOR ALL CATEGORIES
-  // Note: Line 1 (Clinical Examination & Investigations), Line 2 (Pharmacology + Pregnancy)
-  // ==========================================================================
-  function renderTopPillsTrack(allCats, activeId) {
-    const totalCount = getData().topics.length + getData().drugs.length;
-
-    // Line 1: Clinical Domains, Investigations & Critical Care (Includes Antibiotics & Poisoning)
-    const line1Cats = allCats.filter(c => ["anaesthesia", "examination", "ecg", "abg", "equipment", "pft", "antibiotics", "poisoning", "shock", "respiratory"].includes(c.id));
-    // Line 2: Pharmacology & Drug Monographs (Includes pregnancy / Drugs in Pregnancy)
-    const line2Cats = allCats.filter(c => !["anaesthesia", "examination", "ecg", "abg", "equipment", "pft", "antibiotics", "poisoning", "shock", "respiratory"].includes(c.id));
-
-    let line1HTML = `
-      <button type="button" class="ron-nav-pill ${activeId === 'all' ? 'active' : ''}" data-ron-cat="all">
-        <span>✦</span> All Topics &amp; Drugs <span class="ron-pill-count">${totalCount}</span>
-      </button>
-    `;
-    line1HTML += line1Cats.map((c) => {
-      const count = getItemsInCat(c.id).length;
-      return `
-        <button type="button" class="ron-nav-pill ${activeId === c.id ? 'active' : ''}" data-ron-cat="${c.id}">
-          <span>${c.icon}</span> ${esc(c.label)} <span class="ron-pill-count">${count}</span>
-        </button>
-      `;
-    }).join("");
-
-    let line2HTML = line2Cats.map((c) => {
-      const count = getItemsInCat(c.id).length;
-      return `
-        <button type="button" class="ron-nav-pill ${activeId === c.id ? 'active' : ''}" data-ron-cat="${c.id}">
-          <span>${c.icon}</span> ${esc(c.label)} <span class="ron-pill-count">${count}</span>
-        </button>
-      `;
-    }).join("");
-
-    return `
-      <div class="ron-nav-pills-container">
-        <div class="ron-nav-row" role="tablist" aria-label="Clinical Domains &amp; Investigations">
-          ${line1HTML}
-        </div>
-        <div class="ron-nav-row" role="tablist" aria-label="Pharmacology &amp; Drug Classes">
-          ${line2HTML}
-        </div>
-      </div>
-    `;
   }
 
   // ==========================================================================
@@ -552,8 +756,8 @@
   // ==========================================================================
   // VIEW 1: CATEGORY OVERVIEW
   // ==========================================================================
-  function renderCategoryOverview(mount, catId, currentCat, allCats) {
-    let items = getItemsInCat(catId);
+  function renderCategoryOverview(mount, catId, currentCatObj) {
+    let items = getItemsForDomainAndCat(activeDomain, catId);
     if (searchFilter.trim()) {
       const q = searchFilter.trim().toLowerCase();
       items = items.filter((it) => {
@@ -565,8 +769,8 @@
     if (!items.length) {
       groupsHTML = `
         <div style="grid-column: 1 / -1; background:var(--ron-bg-card); border-radius:24px; padding:36px; text-align:center; color:var(--ron-text-empty);">
-          <p style="font-size:16px; font-weight:700;">No items found matching "${esc(searchFilter)}"</p>
-          <p style="font-size:13px; color:var(--ron-text-hint);">Try searching for propofol, RSI, TOF, difficult airway, or select a category above.</p>
+          <p style="font-size:16px; font-weight:700;">No items found matching "${esc(searchFilter)}" in this category</p>
+          <p style="font-size:13px; color:var(--ron-text-hint);">Try selecting "All" or explore other categories across Anaesthesia, Critical Care, or Drugs above.</p>
         </div>
       `;
     } else {
@@ -626,11 +830,11 @@
           <div class="ron-header-bar">
             <div class="ron-header-top-row">
               <div class="ron-header-left">
-                <button class="ron-close-btn" id="ronResetBtn" title="Reset View" aria-label="Reset View">
+                <button class="ron-close-btn" id="ronResetBtn" title="Reset to All" aria-label="Reset View">
                   ${ICONS.close}
                 </button>
                 <div class="ron-title-scoop">
-                  <h1>${esc(currentCat.label)}</h1>
+                  <h1>${esc(currentCatObj.label)}</h1>
                 </div>
               </div>
 
@@ -642,19 +846,19 @@
               </div>
             </div>
 
-            <!-- Two-Line Categories Menu -->
-            ${renderTopPillsTrack(allCats, catId)}
+            <!-- New 3-Domain Vertical & Single Horizontal Category Track -->
+            ${renderNewDomainNavSystem(activeDomain, catId)}
           </div>
 
           <!-- 2. Summary Banner -->
           <div class="ron-summary-banner">
             <div class="ron-profile-card">
               <div class="ron-avatar-wrap" style="font-size:32px;">
-                ${currentCat.icon}
+                ${currentCatObj.icon}
               </div>
               <div class="ron-profile-info">
-                <span class="ron-profile-meta">SYLLABUS CATEGORY</span>
-                <span class="ron-profile-name">${esc(currentCat.label)}</span>
+                <span class="ron-profile-meta">${esc(currentCatObj.domain.label)} SYLLABUS</span>
+                <span class="ron-profile-name">${esc(currentCatObj.label)}</span>
                 <div class="ron-profile-progress"></div>
               </div>
             </div>
@@ -662,8 +866,8 @@
             <div class="ron-stats-area">
               <div class="ron-stats-header">
                 <div class="ron-diagnosis-block">
-                  <span class="ron-diagnosis-label">CATEGORY OVERVIEW</span>
-                  <h2 class="ron-diagnosis-title">${esc(currentCat.desc || "Anaesthesia &amp; Critical Care Reference")}</h2>
+                  <span class="ron-diagnosis-label">${esc(currentCatObj.domain.label)} OVERVIEW</span>
+                  <h2 class="ron-diagnosis-title">${esc(currentCatObj.desc)}</h2>
                 </div>
 
                 <div class="ron-vitals-strip">
@@ -686,22 +890,10 @@
 
           <!-- 3. Connected Cards Grid -->
           <div class="ron-flowchart-stage">
-            <div class="ron-guideline-track">
-              <div class="ron-guideline-line"></div>
-              <div style="display:flex; justify-content:space-around; width:100%; padding-right:70px;">
-                <div class="ron-step-node" title="Section 1">${ICONS.doc}</div>
-                <div class="ron-step-node" title="Section 2">${ICONS.pill}</div>
-              </div>
-              <button class="ron-plus-action-btn" id="ronPlusBtn" title="Search all topics">+</button>
-            </div>
-
             <div class="ron-classification-stage-content">
               ${groupsHTML}
             </div>
           </div>
-
-          <!-- 4. Bottom Scrubber Dock -->
-          ${renderBottomDock(catId, allCats)}
 
         </div>
       </div>
@@ -716,7 +908,7 @@
   // ==========================================================================
   // VIEW 2: SELECTED TOPIC (COMPLETE DESCRIPTION, VERTICAL BUBBLES ON LEFT)
   // ==========================================================================
-  function renderSelectedTopicView(mount, item, currentCat, allCats) {
+  function renderSelectedTopicView(mount, item, currentCatObj) {
     const isDrug = !item.sections;
     const subsections = getItemSubsections(item);
 
@@ -756,7 +948,7 @@
         </div>
         <div class="ron-vital-item">
           <span class="ron-vital-label">Clinical Scope</span>
-          <span class="ron-vital-val" style="font-size:13.5px;">${esc(currentCat.label)}</span>
+          <span class="ron-vital-val" style="font-size:13.5px;">${esc(currentCatObj.label)}</span>
         </div>
         <div class="ron-vital-item">
           <span class="ron-vital-label">Subsections</span>
@@ -800,7 +992,7 @@
                   ${ICONS.back}
                 </button>
                 <div class="ron-title-scoop">
-                  <h1>${esc(currentCat.label)}</h1>
+                  <h1>${esc(currentCatObj.label)}</h1>
                 </div>
               </div>
 
@@ -812,8 +1004,8 @@
               </div>
             </div>
 
-            <!-- Two-Line Categories Menu -->
-            ${renderTopPillsTrack(allCats, item.cat)}
+            <!-- New 3-Domain Vertical & Single Horizontal Category Track -->
+            ${renderNewDomainNavSystem(activeDomain, activeCat)}
           </div>
 
           <!-- 2. Topic Hero Layout: Left Side (Profile + Vertical Tools) & Right Side (Header + Fast Scroll Buttons) -->
@@ -823,7 +1015,7 @@
             <div class="ron-topic-left-col">
               <div class="ron-profile-card">
                 <div class="ron-avatar-wrap" style="font-size:32px;">
-                  ${currentCat.icon}
+                  ${currentCatObj.icon}
                 </div>
                 <div class="ron-profile-info">
                   <span class="ron-profile-meta">${esc(item.source ? item.source.slice(0, 36) + '...' : 'SOURCE CITED')}</span>
@@ -1558,34 +1750,69 @@
       return;
     }
 
-    // 4. Reset Button clicked -> Reset to All Categories
+    // 4. Reset Button clicked -> Reset to All Categories in current domain
     if (e.target.closest("#ronResetBtn")) {
       e.preventDefault();
       e.stopPropagation();
+      triggerHapticFeedback();
       activeCat = "all";
       searchFilter = "";
       backToCategory();
       return;
     }
 
-    // 5. Category Pill clicked -> Switch Category
+    // 5. Primary Domain Tab clicked -> Switch Domain
+    const domainTab = e.target.closest("[data-ron-domain]:not([data-ron-cat])");
+    if (domainTab) {
+      e.preventDefault();
+      e.stopPropagation();
+      const targetDomain = domainTab.getAttribute("data-ron-domain");
+      if (targetDomain && targetDomain !== activeDomain) {
+        triggerHapticFeedback();
+        activeDomain = targetDomain;
+        activeCat = "all";
+        activeItem = null;
+        searchFilter = "";
+        try {
+          const url = new URL(window.location.href);
+          url.searchParams.delete("item");
+          url.searchParams.delete("topic");
+          url.searchParams.set("domain", activeDomain);
+          url.searchParams.delete("cat");
+          window.history.pushState({ domain: activeDomain, cat: "all" }, "", url.toString());
+        } catch (err) {}
+        renderRonBoard();
+      }
+      return;
+    }
+
+    // 6. Secondary Category Pill clicked -> Switch Category
     const catPill = e.target.closest("[data-ron-cat]");
     if (catPill) {
       e.preventDefault();
       e.stopPropagation();
       const cat = catPill.getAttribute("data-ron-cat");
+      const domain = catPill.getAttribute("data-ron-domain") || activeDomain;
       if (cat) {
+        triggerHapticFeedback();
+        activeDomain = domain;
         activeCat = cat;
         activeItem = null;
         searchFilter = "";
         try {
           const url = new URL(window.location.href);
           url.searchParams.delete("item");
+          url.searchParams.delete("topic");
+          url.searchParams.set("domain", activeDomain);
           if (cat !== "all") url.searchParams.set("cat", cat);
           else url.searchParams.delete("cat");
-          window.history.pushState({ cat }, "", url.toString());
+          window.history.pushState({ domain: activeDomain, cat }, "", url.toString());
         } catch (err) {}
         renderRonBoard();
+        const activeNode = document.querySelector(`[data-ron-cat="${cat}"][data-ron-domain="${domain}"]`);
+        if (activeNode) {
+          activeNode.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        }
       }
       return;
     }
@@ -1611,12 +1838,38 @@
     }
   });
 
-  // Smooth horizontal wheel scrolling for scrubber dock stream
+  // Smooth hover preview for primary domains (smooth horizontal category reveal)
+  document.addEventListener("pointerover", (e) => {
+    if (e.pointerType && e.pointerType !== "mouse") return;
+    const tab = e.target.closest && e.target.closest(".ron-domain-tab");
+    if (!tab) return;
+    const targetDomain = tab.getAttribute("data-ron-domain");
+    if (!targetDomain) return;
+
+    clearTimeout(hoverPreviewTimeout);
+    hoverPreviewTimeout = setTimeout(() => {
+      previewCategoriesForDomain(targetDomain);
+    }, 60);
+  });
+
+  document.addEventListener("pointerout", (e) => {
+    if (e.pointerType && e.pointerType !== "mouse") return;
+    const navSys = e.target.closest && e.target.closest(".ron-domain-nav-system");
+    if (!navSys) return;
+    if (e.relatedTarget && navSys.contains(e.relatedTarget)) return;
+
+    clearTimeout(hoverPreviewTimeout);
+    hoverPreviewTimeout = setTimeout(() => {
+      previewCategoriesForDomain(activeDomain);
+    }, 120);
+  });
+
+  // Smooth horizontal wheel scrolling for horizontal category row
   document.addEventListener("wheel", (e) => {
-    const stream = e.target.closest(".ron-dock-stream");
-    if (stream && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+    const singleRow = e.target.closest(".ron-category-single-row");
+    if (singleRow && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
       e.preventDefault();
-      stream.scrollLeft += e.deltaY;
+      singleRow.scrollLeft += e.deltaY;
     }
   }, { passive: false });
 

@@ -164,6 +164,102 @@
     "label": "Miscellaneous Drugs",
     "icon": "🧪",
     "desc": "Antiemetics, electrolyte concentrates, lipid rescue & malignant hyperthermia antidote"
+  },
+  {
+      "id": "cc_principles",
+      "label": "General Principles",
+      "icon": "🏛️",
+      "desc": "ICU Organization, Triage, Severity Scoring Systems (APACHE, SOFA, NEWS2), Ethics & Organ Donation"
+  },
+  {
+      "id": "cc_airway",
+      "label": "Airway Management",
+      "icon": "🫁",
+      "desc": "Difficult Airway in Critical Care, Physiological RSI, Video Laryngoscopy & Percutaneous Tracheostomy"
+  },
+  {
+      "id": "cc_respiratory",
+      "label": "Respiratory Critical Care",
+      "icon": "💨",
+      "desc": "ARDS, Mechanical Ventilation Modes, APRV, Waveform Asynchrony, Severe Asthma & Liberation"
+  },
+  {
+      "id": "cc_hemodynamics",
+      "label": "Hemodynamic Support",
+      "icon": "⚡",
+      "desc": "Shock Differentiation, Advanced Monitoring (PiCCO/PAC), Vasopressors, Inotropes & Dynamic Preload"
+  },
+  {
+      "id": "cc_sepsis",
+      "label": "Sepsis & Infectious Diseases",
+      "icon": "🛡️",
+      "desc": "Sepsis-3 Bundles, Source Control, Multi-Drug Resistant (MDR) Pathogens & PK/PD Beta-Lactam Infusions"
+  },
+  {
+      "id": "cc_neuro",
+      "label": "Neurological Critical Care",
+      "icon": "🧠",
+      "desc": "Coma, GCS, Intracranial Hypertension, TBI, Refractory Status Epilepticus, Acute Stroke & GBS"
+  },
+  {
+      "id": "cc_cardio",
+      "label": "Cardiovascular Critical Care",
+      "icon": "❤️",
+      "desc": "Acute Coronary Syndromes, Cardiogenic Shock (SCAI), Malignant ICU Arrhythmias & Cardiac Tamponade"
+  },
+  {
+      "id": "cc_renal",
+      "label": "Renal & Metabolic Support",
+      "icon": "🧪",
+      "desc": "Acute Kidney Injury (KDIGO), Continuous Renal Replacement Therapy (CRRT) & Severe Electrolyte Crises"
+  },
+  {
+      "id": "cc_gi",
+      "label": "Gastrointestinal & Hepatic Critical Care",
+      "icon": "🔬",
+      "desc": "Acute Upper/Lower GI Bleeding, Severe Acute Pancreatitis, Acute Liver Failure, ICU Nutrition & Refeeding"
+  },
+  {
+      "id": "cc_trauma",
+      "label": "Trauma & Burns",
+      "icon": "🩹",
+      "desc": "Polytrauma Resuscitation, ATLS Principles, Damage Control Surgery, Pelvic Fractures & Burn Care"
+  },
+  {
+      "id": "cc_tox",
+      "label": "Poisoning & Environmental Emergencies",
+      "icon": "☠️",
+      "desc": "Toxidromes, Targeted Antidotes, EXTRIP Extracorporeal Elimination, Heatstroke & Accidental Hypothermia"
+  },
+  {
+      "id": "cc_heme",
+      "label": "Hematology & Transfusion",
+      "icon": "🩸",
+      "desc": "Massive Transfusion Protocols (MTP), Viscoelastic Testing (ROTEM/TEG), DIC, HIT & Transfusion Reactions"
+  },
+  {
+      "id": "cc_obs",
+      "label": "Obstetric Critical Care",
+      "icon": "🤰",
+      "desc": "Severe Pre-eclampsia, Eclampsia, HELLP Syndrome, Amniotic Fluid Embolism (AFE) & Obstetric Hemorrhage"
+  },
+  {
+      "id": "cc_peds",
+      "label": "Pediatric Critical Care",
+      "icon": "👶",
+      "desc": "Pediatric Acute Respiratory Failure, Croup, PALS Protocols, Pediatric Septic Shock & Vasoactive Support"
+  },
+  {
+      "id": "cc_pharm",
+      "label": "ICU Pharmacology",
+      "icon": "💊",
+      "desc": "SCCM PADIS Guidelines (Pain, Agitation, Delirium), Sedation Protocols & Neuromuscular Blockade with TOF"
+  },
+  {
+      "id": "cc_advances",
+      "label": "Research & Recent Advances",
+      "icon": "🚀",
+      "desc": "Extracorporeal Membrane Oxygenation (VV vs VA ECMO), Multiorgan Critical Care POCUS (BLUE/RUSH/VExUS)"
   }
 ];
 
@@ -7543,6 +7639,2990 @@
       "Yang KL, Tobin MJ. A prospective study of indexes predicting the outcome of trials of weaning from mechanical ventilation. N Engl J Med 1991;324(21):1445–1450.",
       "Subira C, et al. Effect of Pressure Support vs T-Piece Spontaneous Breathing Trials on Successful Extubation (JAMA 2019). JAMA 2019;321(22):2175–2182.",
       "Ouellette DR, et al. Liberation from Mechanical Ventilation in Critically Ill Adults: An Official ATS/CHEST Clinical Practice Guideline. Chest 2017;151(1):166–180."
+    ]
+  },
+  {
+    "id": "icu-organization-scoring-ethics",
+    "cat": "cc_principles",
+    "name": "ICU Organization, Severity Scoring Systems & Ethics",
+    "short": "ICU Organization & Scoring",
+    "tags": [
+      "ICU Levels",
+      "APACHE IV",
+      "SOFA Score",
+      "qSOFA",
+      "NEWS2",
+      "ICU Ethics",
+      "Quality Bundles"
+    ],
+    "tagline": "Staffing models, severity scoring algorithms, triage priority, bioethics & quality improvement in the intensive care unit",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 1; SCCM Guidelines for ICU Admission, Discharge, and Triage; Critical Care Medicine 2016; 44:2291–2300.",
+    "sections": [
+      {
+        "h": "ICU Organization, Staffing Models & Triage Principles",
+        "b": "• Levels of ICU Care:\n  - Level 1 (Community ICU): Provides basic mechanical ventilation, invasive monitoring, and resuscitation; transfers complex multisystem failure.\n  - Level 2 (Intermediate ICU): Capable of managing most critical illnesses with multi-organ failure, invasive monitoring, hemodialysis, and comprehensive surgical support.\n  - Level 3 (Tertiary/Quaternary Academic ICU): Comprehensive apex tertiary care with advanced subspecialty services, mechanical circulatory support (ECMO, VAD), cardiothoracic surgery, neurotrauma, and 24/7 in-house intensivists.\n\n• Staffing Models:\n  - Closed ICU: Patients admitted directly under the primary care of a dedicated board-certified Intensivist team. Proven to reduce ICU mortality (RR 0.85), decrease ventilator days, and shorten ICU length of stay.\n  - Open ICU: Primary admitting physician retains overall care and requests elective critical care consultations.\n  - Staffing Ratios: Physician-to-patient ratio optimal at <b><u>1:8 to 1:14</u></b>; Nurse-to-patient ratio <b><u>1:1</u></b> for mechanically ventilated, unstable, or ECMO/CRRT patients, and <b><u>1:2</u></b> for stabilized ICU patients.\n\n• SCCM ICU Triage Priorities:\n  - Priority 1: Critically ill, unstable patients requiring immediate intensive monitoring and interventions unavailable outside the ICU (e.g., severe shock, status asthmaticus, acute respiratory failure requiring invasive ventilation) with zero limitations on therapy.\n  - Priority 2: Stable patients with high risk of immediate decompensation who require intensive hemodynamic monitoring (e.g., post-carotid endarterectomy, severe metabolic acidosis, acute pancreatitis).\n  - Priority 3: Unstable patients with severe underlying chronic comorbid illness or acute irreversible disease, where intensive therapy may achieve short-term recovery but long-term prognosis is poor; limits placed on CPR or invasive ventilation.\n  - Priority 4: Patients not appropriate for ICU admission: Either too well to benefit (e.g., mild DKA, peripheral vascular surgery) OR too sick with irreversible terminal condition where interventions offer no clinical benefit (e.g., brain death non-donors, end-stage multi-organ failure unresponsive to full support).",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — Closed ICU Model Mortality Benefit",
+          "text": "Implementation of a 'Closed ICU' model with mandatory Intensivist-led daily multidisciplinary rounds consistently demonstrates an absolute mortality reduction of <b><u>15% to 20%</u></b>, driven by standardized lung-protective ventilation, protocolized sedation holidays, and timely antimicrobial de-escalation."
+        }
+      },
+      {
+        "h": "ICU Severity Scoring Systems: APACHE IV, SOFA, qSOFA & NEWS2",
+        "b": "Severity scoring tools provide risk-adjusted mortality prediction, benchmarking for clinical audit, and standardized organ dysfunction tracking:\n\n1. APACHE IV (Acute Physiology and Chronic Health Evaluation IV):\n• Calculated within the first <b><u>24 hours</u></b> of ICU admission.\n• Incorporates 12 physiological variables (temperature, MAP, HR, RR, PaO2/FiO2, arterial pH, Na, K, Cr, Hct, WBC, GCS), plus age, chronic health conditions, and specific ICU admission diagnostic categories.\n• Generates an accurate predicted hospital mortality percentage for benchmarking.\n\n2. SOFA (Sequential Organ Failure Assessment):\n• Evaluates 6 organ systems scored <b><u>0 to 4</u></b> points each (total score <b><u>0 to 24</u></b>):\n  - Respiration: PaO2/FiO2 ratio (0: ≥400, 1: <400, 2: <300, 3: <200 with vent, 4: <100 with vent).\n  - Coagulation: Platelets (0: ≥150k, 1: <150k, 2: <100k, 3: <50k, 4: <20k/mcL).\n  - Liver: Total Bilirubin (0: <1.2, 1: 1.2–1.9, 2: 2.0–5.9, 3: 6.0–11.9, 4: ≥12.0 mg/dL).\n  - Cardiovascular: Hypotension / Vasopressor dose (0: MAP ≥70, 1: MAP <70, 2: Dopamine ≤5 or dobutamine, 3: Noradrenaline ≤0.1, 4: Noradrenaline >0.1 mcg/kg/min).\n  - CNS: Glasgow Coma Scale (0: 15, 1: 13–14, 2: 10–12, 3: 6–9, 4: <6).\n  - Renal: Creatinine or Urine Output (0: <1.2, 1: 1.2–1.9, 2: 2.0–3.4, 3: 3.5–4.9 or UO <500 mL/d, 4: ≥5.0 mg/dL or UO <200 mL/d).\n• An acute increase of <b><u>≥ 2 points</u></b> defines new organ dysfunction under Sepsis-3 definitions (associated with an in-hospital mortality of <b><u>> 10%</u></b>).\n\n3. qSOFA (Quick SOFA) Bedside Screen:\n• Non-laboratory bedside screening tool (1 point each, total 3):\n  - Respiratory rate <b><u>≥ 22 breaths/min</u></b>.\n  - Altered mental status (GCS <b><u>< 15</u></b>).\n  - Systolic blood pressure <b><u>≤ 100 mmHg</u></b>.\n• A score of <b><u>≥ 2</u></b> identifies non-ICU patients at high risk of deterioration.\n\n4. NEWS2 (National Early Warning Score 2):\n• Tracks 6 physiological parameters: RR, SpO2, systolic BP, pulse rate, level of consciousness (ACVPU), and temperature.\n• Score <b><u>≥ 5</u></b> or a score of 3 in a single parameter triggers an urgent bedside medical emergency team (MET) review.",
+        "table": {
+          "headers": [
+            "Scoring System",
+            "Calculation Timing",
+            "Parameters Tracked",
+            "Primary Clinical Purpose",
+            "Mortality Correlation"
+          ],
+          "rows": [
+            [
+              "APACHE IV",
+              "First 24 hours of ICU",
+              "12 physiological vars + Age + Comorbidities",
+              "Risk-adjusted hospital mortality & benchmarking",
+              "Score > 100 correlates with > 50% mortality"
+            ],
+            [
+              "SOFA",
+              "Daily serial assessment",
+              "6 organ systems (Resp, Coag, Liver, CVS, CNS, Renal)",
+              "Tracking multiorgan dysfunction progression",
+              "Delta SOFA ≥ +2 defines sepsis; baseline > 15 = > 80% mortality"
+            ],
+            [
+              "qSOFA",
+              "Rapid bedside triage",
+              "RR ≥ 22, GCS < 15, SBP ≤ 100",
+              "Ward screening for suspected sepsis",
+              "Score ≥ 2 indicates 3- to 14-fold increased mortality"
+            ],
+            [
+              "NEWS2",
+              "Continuous / Shift-wise",
+              "6 vital signs + supplemental oxygen",
+              "Early clinical deterioration alert on hospital wards",
+              "Score ≥ 7 mandates immediate ICU outreach / MET team activation"
+            ]
+          ],
+          "caption": "Comparison of standard ICU severity scores and their clinical indications."
+        }
+      },
+      {
+        "h": "Ethical Principles, Surrogacy, Futility & Communication in ICU",
+        "b": "• The Four Pillars of Bioethics in ICU:\n  1. Autonomy: Respecting the patient's right to self-determination, advance directives, and informed consent or refusal.\n  2. Beneficence: Acting in the best medical interest of the patient.\n  3. Non-maleficence: Primum non nocere (above all, do no harm) — avoiding non-beneficial, agonizing treatments that prolong suffering without prospect of recovery.\n  4. Justice: Fair and equitable allocation of scarce critical care resources, beds, and organ support.\n\n• Hierarchy of Surrogate Decision-Making:\n  - Legally appointed Medical Power of Attorney (DPOA) / Healthcare Proxy > Legal Guardian > Spouse > Adult Children > Parents > Adult Siblings > Nearest living adult relative.\n  - Substituted Judgment Standard: The surrogate must decide what the patient would have chosen based on known values and prior statements, NOT what the surrogate wants.\n  - Best Interests Standard: Used when patient preferences are unknown; decisions focus on what a reasonable person would choose to minimize suffering and maximize net benefit.\n\n• Medical Futility vs Inappropriate Treatment:\n  - Physiological Futility: The proposed intervention cannot achieve its physiological objective (e.g., CPR in refractory decapitation or rigor mortis; pressors in uncorrectable fatal structural disruption).\n  - Non-Beneficial / Inappropriate Intervention: Treatment may achieve a transient physiological change (e.g., maintaining blood pressure with 3 pressors) but cannot restore meaningful consciousness, relieve suffering, or achieve a quality of life acceptable to the patient.\n\n• Family Conferences: The VALUE Communication Bundle:\n  - <b>V</b>alue family statements: Listen actively to their story and goals.\n  - <b>A</b>cknowledge family emotions: Validate grief, fear, and uncertainty.\n  - <b>L</b>isten to the family: Allow them to speak > 50% of the conference time.\n  - <b>U</b>nderstand the patient as a person: Inquire about their personality, joys, and values.\n  - <b>E</b>licit questions: Encourage clarification and summarize next steps with transparent prognostication.",
+        "callout": {
+          "type": "pitfall",
+          "title": "ETHICAL PITFALL — Framing Life Support Withdrawal",
+          "text": "Never ask families: 'Do you want us to withdraw care?' Care is NEVER withdrawn — only non-beneficial organ support technologies (ventilators, dialysis, pressors) are de-escalated. Reframe as: 'We are transitioning all our intensive efforts toward aggressive comfort care, pain relief, dignity, and symptom management.'"
+        }
+      },
+      {
+        "h": "ICU Quality Bundles & Adverse Event Prevention",
+        "b": "• Central Line-Associated Bloodstream Infection (CLABSI) Bundle:\n  - Hand hygiene, maximal sterile barrier precautions (cap, mask, sterile gown, sterile gloves, full-body drape).\n  - Chlorhexidine <b><u>2%</u></b> in <b><u>70%</u></b> isopropyl alcohol skin antisepsis (air dry completely for <b><u>≥ 2 min</u></b>).\n  - Subclavian site preferred over internal jugular; avoid femoral vein in adults due to high infection/DVT risk.\n  - Daily line review and immediate removal of unnecessary catheters.\n\n• Catheter-Associated Urinary Tract Infection (CAUTI) Bundle:\n  - Strict aseptic insertion technique, maintain closed drainage system, dependent drainage bag below bladder level.\n  - Daily assessment of need; remove urinary catheter as soon as accurate hourly output monitoring is no longer required.\n\n• Ventilator-Associated Event (VAE) Bundle:\n  - Head of bed elevation <b><u>30° to 45°</u></b>.\n  - Daily spontaneous awakening trials (SAT) and spontaneous breathing trials (SBT).\n  - Peptic ulcer disease prophylaxis (H2RA or PPI in high-risk patients with mechanical ventilation > 48 h or coagulopathy).\n  - Venous thromboembolism (VTE) prophylaxis (LMWH or unfractionated heparin + sequential compression devices).\n  - Continuous or intermittent subglottic secretion drainage with specialized ETT."
+      }
+    ],
+    "example": "CLINICAL CASE: A 74-year-old male with end-stage COPD and ischemic cardiomyopathy is admitted to the ICU with severe septic shock secondary to perforated diverticulitis. Within 12 hours post-laparotomy, he is on noradrenaline 0.4 mcg/kg/min, vasopressin 0.03 U/min, mechanically ventilated (P/F 110 on PEEP 14), and anuric (Cr 4.2 mg/dL, K 6.1 mEq/L). His SOFA score is 16 (predicted mortality >80%).\n\nBedside Management & Ethics Review:\n1. Triage & Organ Tracking: Admitted as Priority 1; sequential SOFA tracking demonstrates profound 4-organ failure (CVS, Resp, Renal, Hematology).\n2. Family Conference: The patient has no living will. His designated health care proxy (daughter) is convened using the VALUE communication bundle.\n3. Values Elicitation: The daughter explains that her father explicitly stated two months ago after his last COPD hospitalization that he 'never wanted to live permanently connected to machines or spend his final days in an ICU.'\n4. Multidisciplinary Consensus: The team reaches agreement with the family that initiating continuous renal replacement therapy (CRRT) and escalating to a third pressor represents non-beneficial physiological prolongation of dying.\n5. Palliative Transition: Organ-support technologies are systematically withdrawn; intravenous morphine and midazolam infusions are titrated for complete dyspnea and pain control. The patient passes peacefully with family present.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 1. Wolters Kluwer.",
+      "Singer M, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA 2016;315(8):801–810.",
+      "Nates JL, et al. ICU Admission, Discharge, and Triage Guidelines: A Framework to Enhance Clinical Operations, Development of Institutional Policies, and Allocation of Scarce Resources. Crit Care Med 2016;44(8):1553–1602.",
+      "Lautrette A, et al. A Communication Strategy and Brochure for Relatives of Patients Dying in the ICU (VALUE Study). N Engl J Med 2007;356(5):469–478."
+    ]
+  },
+  {
+    "id": "brain-death-organ-donation",
+    "cat": "cc_principles",
+    "name": "Brain Death Determination, DNR Protocols & Organ Donor Care",
+    "short": "Brain Death & Organ Donation",
+    "tags": [
+      "Brain Death Criteria",
+      "Apnea Test",
+      "Confirmatory Tests",
+      "DNR Protocols",
+      "Organ Donor Care",
+      "Rule of 100s"
+    ],
+    "tagline": "AAN brain death guidelines, clinical apnea test protocols, confirmatory diagnostics, WLST and hormonal donor resuscitation",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 1 & 43; American Academy of Neurology (AAN) Practice Parameter Update 2023; Intensive Care Medicine 2024; 50:112–129.",
+    "sections": [
+      {
+        "h": "Brain Death (Death by Neurological Criteria): Prerequisites & Baseline Checks",
+        "b": "• Legal Definition: The irreversible cessation of all functions of the entire brain, including the brainstem.\n\n• Mandatory Prerequisite Checklist Before Clinical Testing:\n  1. Proximate Known Etiology: Irreversible, catastrophic brain injury documented by neuroimaging (e.g., massive intracranial hemorrhage, severe traumatic brain injury, diffuse anoxic brain injury post-cardiac arrest).\n  2. Exclusion of Reversible Confounders:\n     - Core temperature: Core body temperature must be <b><u>> 36.0°C (96.8°F)</u></b> (warmed with active warming blankets if necessary).\n     - Blood pressure: Systolic BP <b><u>≥ 100 mmHg</u></b> or Mean Arterial Pressure (MAP) <b><u>≥ 60 mmHg</u></b> (vasopressors titrated to maintain perfusion).\n     - Exclusion of CNS depressant drugs: Must wait at least <b><u>5 half-lives</u></b> (prolonged in renal/hepatic failure or hypothermia). Screen toxicology; check blood levels of barbiturates, benzodiazepines, propofol, opioids, and antiepileptics.\n     - Exclusion of neuromuscular blockade: Confirm 4/4 twitches on Train-of-Four (TOF) peripheral nerve stimulation.\n     - Severe metabolic, acid-base, or endocrine derangements: Correct severe electrolyte imbalances (Na, K, phosphate), myxedema, or severe hypoglycemia.",
+        "callout": {
+          "type": "pitfall",
+          "title": "EXAM PITFALL — Hypothermia & Targeted Temperature Management (TTM)",
+          "text": "In patients treated with targeted temperature management (32°C–36°C) following cardiac arrest, clearance of sedatives and paralytics is dramatically delayed. Brain death evaluation must be delayed for at least <b><u>48 to 72 hours</u></b> after rewarming to <b><u>> 36°C</u></b>, and after all residual sedation is confirmed eliminated."
+        }
+      },
+      {
+        "h": "The Clinical Neurological Examination for Brain Death",
+        "b": "The examination requires demonstration of complete coma, absence of all brainstem reflexes, and absence of spontaneous respiration:\n\n1. Coma: Completely unreceptive and unarousable; zero eye opening, vocal response, or purposeful limb movement to noxious stimuli in all four extremities.\n\n2. Brainstem Reflexes (Must ALL be Absent):\n• Pupillary Reflex (CN II, III): Pupils fixed and mid-dilated (<b><u>4 to 9 mm</u></b>); zero response to bright light bilaterally.\n• Corneal Reflex (CN V, VII): Zero eyelid blink upon touching cornea with sterile saline drop or cotton swab bilaterally.\n• Oculocephalic Reflex / Doll's Eyes (CN III, VI, VIII): Performed only after ruling out cervical spine fracture. Rapid horizontal and vertical head rotation produces zero eye movement (eyes remain fixed in head socket, moving passively like doll's eyes).\n• Oculovestibular Reflex / Cold Caloric Test (CN III, VI, VIII): Confirm clear external auditory canal and intact tympanic membrane. Elevate head 30°. Irrigate canal with <b><u>50 mL of ice-cold water</u></b> over <b><u>1 minute</u></b>. Observe for <b><u>1 to 2 minutes</u></b>. Intact reflex shows slow deviation toward cold ear; in brain death, eyes remain completely stationary.\n• Gag Reflex (CN IX, X): Firm stimulation of posterior pharynx with suction catheter or tongue blade produces zero muscular contraction or gag.\n• Cough Reflex (CN X): Deep endotracheal suctioning down to the carina produces zero cough response or diaphragmatic effort.\n• Facial Motor Response (CN V, VII): Deep noxious pressure applied to supraorbital ridge, temporomandibular joint, or condyle produces zero facial grimace.\n\n• Spinal Reflexes (Permissible in Brain Death):\n- Deep tendon reflexes, plantar flexion, triple flexion, and the Lazarus sign (spontaneous arm flexion, abduction, and hand raising mediated by intact cervical spinal cord arcs) DO NOT preclude the diagnosis of brain death!",
+        "table": {
+          "headers": [
+            "Brainstem Reflex",
+            "Cranial Nerves Tested",
+            "Clinical Stimulation Method",
+            "Brain Death Finding"
+          ],
+          "rows": [
+            [
+              "Pupillary Light Reflex",
+              "CN II (Afferent) / CN III (Efferent)",
+              "Bright penlight / ophthalmoscope",
+              "Fixed, mid-dilated (4–9 mm), unreactive bilaterally"
+            ],
+            [
+              "Corneal Reflex",
+              "CN V1 (Afferent) / CN VII (Efferent)",
+              "Sterile cotton wisp or saline drop to cornea",
+              "Complete absence of eye blink response"
+            ],
+            [
+              "Oculovestibular (Cold Caloric)",
+              "CN VIII (Afferent) / CN III, VI (Efferent)",
+              "50 mL ice-cold water into ear canal at 30° head tilt",
+              "Zero tonic deviation or nystagmus (eyes fixed)"
+            ],
+            [
+              "Gag & Cough Reflexes",
+              "CN IX, X (Afferent / Efferent)",
+              "Pharyngeal stimulation & carinal suctioning",
+              "Complete absence of gag or cough reflex"
+            ],
+            [
+              "Facial Grimace",
+              "CN V (Afferent) / CN VII (Efferent)",
+              "Supraorbital ridge or nailbed deep pressure",
+              "Zero facial muscle movement or grimacing"
+            ]
+          ],
+          "caption": "Brainstem reflex testing protocol in suspected death by neurological criteria."
+        }
+      },
+      {
+        "h": "The Apnea Test Protocol: Step-by-Step Procedure & Abort Triggers",
+        "b": "The Apnea Test proves irreversible absence of respiratory center drive in the medulla oblongata under maximal hypercapnic stimulation:\n\n• Step-by-Step Execution:\n  1. Prerequisites met: Core temp <b><u>> 36°C</u></b>, SBP <b><u>≥ 100 mmHg</u></b>, baseline arterial blood gas normal (PaCO2 <b><u>35 to 45 mmHg</u></b>).\n  2. Pre-oxygenate with <b><u>100% FiO2</u></b> for <b><u>10 to 15 minutes</u></b> to achieve PaO2 <b><u>> 200 mmHg</u></b>.\n  3. Disconnect ventilator: Place an insufflation catheter down the endotracheal tube delivering <b><u>100% O2 at 6 to 8 L/min</u></b> (or maintain CPAP valve at <b><u>5 cmH2O</u></b> with 100% O2 to maintain oxygenation without alveolar collapse).\n  4. Continuous observation: Monitor chest wall for respiratory efforts for <b><u>8 to 10 minutes</u></b> (PaCO2 rises by approximately <b><u>3 mmHg/min</u></b> in complete apnea).\n  5. Obtain arterial blood gas at 8 to 10 minutes; reconnect mechanical ventilator.\n\n• Positive Apnea Test (Confirms Brain Death):\n  - Zero spontaneous respiratory effort observed, AND\n  - Arterial PaCO2 <b><u>≥ 60 mmHg</u></b> (or a <b><u>≥ 20 mmHg increase</u></b> above baseline normocapnic level), AND\n  - Arterial pH <b><u>< 7.28</u></b>.\n\n• Mandatory Abort Triggers (Immediately stop test, draw blood gas, and reconnect ventilator):\n  - Severe hypotension: SBP drops <b><u>< 90 mmHg</u></b> despite vasopressors.\n  - Severe hypoxemia: SpO2 drops <b><u>< 85%</u></b> for > 30 seconds.\n  - Development of malignant cardiac arrhythmias (VT, VF, severe bradycardia).\n  - If the test is aborted due to hemodynamic instability, a validated Ancillary Confirmatory Test is mandatory!"
+      },
+      {
+        "h": "Ancillary Confirmatory Tests, DNR Protocols & Deceased Organ Donor Resuscitation",
+        "b": "• Ancillary (Confirmatory) Tests:\n  - Required when: Apnea test cannot be safely completed, severe facial trauma prevents brainstem examination, or confounding drug levels persist.\n  - 4-Vessel Cerebral Angiography: Gold standard; demonstrates complete absence of intracranial arterial blood flow at the skull base (carotid siphon and vertebral arteries).\n  - Radionuclide Cerebral Blood Flow (Tc-99m HMPAO SPECT): Demonstrates complete absence of cerebral perfusion ('hollow skull' or 'lightbulb' sign).\n  - Transcranial Doppler (TCD): Demonstrates reverberating flow (biphasic oscillatory flow) or small systolic spikes with absent diastolic flow in anterior and middle cerebral arteries.\n  - Electroencephalography (EEG): Demonstrates electrocerebral inactivity (isoelectric silence < 2 microvolts for ≥ 30 min at high gain).\n\n• DNR & Withholding/Withdrawing Life-Sustaining Therapy (WLST):\n  - DNR applies strictly to cardiopulmonary arrest (chest compressions, defibrillation, emergency cardiac pacing).\n  - DNR does NOT mean withdrawal of existing therapies (ventilator, pressors, antibiotics) unless explicitly stated.\n  - When WLST is initiated: Proactively administer IV morphine/fentanyl and midazolam for dyspnea, anxiety, and pain; systematically titrate down pressors, discontinue dialysis, and terminal extubation performed.\n\n• Medical Management of the Deceased Organ Donor (The Rule of 100s):\n  - Loss of hypothalamic-pituitary-adrenal axis causes diabetes insipidus, severe vasodilation, hypothermia, and myocardial dysfunction ('autonomic storm' followed by complete neurogenic collapse).\n  - Hemodynamic Goals: SBP <b><u>≥ 100 mmHg</u></b>, MAP <b><u>65 to 85 mmHg</u></b>, Urine Output <b><u>100 to 200 mL/h (1–3 mL/kg/h)</u></b>, PaO2 <b><u>> 100 mmHg</u></b>.\n  - Hormonal Resuscitation Protocol:\n    * Vasopressin: Continuous infusion at <b><u>0.01 to 0.04 U/min</u></b> (treats diabetes insipidus, reduces noradrenaline needs).\n    * Thyroid Hormone: Levothyroxine (T4) <b><u>20 mcg IV bolus</u></b>, then <b><u>10 mcg/h</u></b>, or Triiodothyronine (T3) <b><u>4 mcg bolus</u></b>, then <b><u>3 mcg/h</u></b> (restores cardiac contractility and depletes anaerobic metabolism).\n    * Methylprednisolone: <b><u>15 mg/kg IV</u></b> (or 1 g IV) every 24 hours (reduces systemic inflammatory cytokine storm, improves lung donor yield).\n    * Insulin Infusion: Regular insulin titrated to maintain blood glucose <b><u>110 to 180 mg/dL</u></b>."
+      }
+    ],
+    "example": "CLINICAL CASE: A 42-year-old female sustains a catastrophic non-traumatic subarachnoid hemorrhage (Hunt & Hess Grade 5) with brainstem herniation. After 24 hours of maximal neurocritical care, her pupils are fixed and dilated at 7 mm with zero spontaneous movements.\n\nBrain Death Evaluation & Donor Protocol:\n1. Prerequisites: Core temp 36.8°C, MAP 72 mmHg on noradrenaline 0.08 mcg/kg/min, toxicology screen negative, TOF 4/4 twitches, electrolytes normal.\n2. Brainstem Exam: Absent pupillary, corneal, oculocephalic, cold caloric, gag, and cough reflexes bilaterally. Spinal reflex (triple flexion) noted in left leg, recognized as medullary-independent.\n3. Apnea Test: Pre-oxygenated with 100% FiO2 for 15 min; baseline ABG: pH 7.41, PaCO2 38 mmHg, PaO2 340 mmHg. Disconnected with 6 L/min tracheal O2 insufflation. Observed for 9 minutes: No respiratory effort. Repeat ABG: pH 7.22, PaCO2 68 mmHg (rise of 30 mmHg), PaO2 195 mmHg. Brain death certified.\n4. Organ Donation: Family consents to organ donation. Copious polyuria develops (550 mL/h, urine sp gr 1.002, Na 154 mEq/L) consistent with central diabetes insipidus.\n5. Hormonal Resuscitation: Started on vasopressin 0.03 U/min, IV methylprednisolone 1 g, and IV levothyroxine 20 mcg bolus + 10 mcg/h. Urine output stabilizes at 120 mL/h, noradrenaline is weaned off, and all 5 solid organs (heart, lungs, liver, kidneys) are successfully retrieved.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 1 & 43. Wolters Kluwer.",
+      "Greer DM, et al. Pediatric and Adult Brain Death/Death by Neurologic Criteria Consensus Practice Guideline. Neurology 2023;101(24):1112–1132.",
+      "Kotloff RM, et al. Management of the Potential Organ Donor in the ICU: Society of Critical Care Medicine/American College of Chest Physicians/Association of Organ Procurement Organizations Consensus Statement. Crit Care Med 2015;43(6):1291–1325.",
+      "Truog RD, et al. Recommendations for End-of-Life Care in the Intensive Care Unit: The Ethics Committee of the Society of Critical Care Medicine. Crit Care Med 2008;36(3):953–963."
+    ]
+  },
+  {
+    "id": "difficult-airway-icu-extubation",
+    "cat": "cc_airway",
+    "name": "Difficult Airway in Critical Care & Physiological RSI",
+    "short": "ICU Airway & RSI",
+    "tags": [
+      "ICU Intubation",
+      "Physiological RSI",
+      "MACOCHA Score",
+      "Video Laryngoscopy",
+      "Cuff Leak Test",
+      "RSBI",
+      "Extubation Failure"
+    ],
+    "tagline": "Hemodynamic optimization, MACOCHA risk stratification, apneic oxygenation, rescue bougie protocols and liberation criteria",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 2; Difficult Airway Society (DAS) Guidelines for the Critically Ill; Intensive Care Med 2018; 44:1185–1204.",
+    "sections": [
+      {
+        "h": "ICU vs OR Intubation: The Physiological Difficult Airway",
+        "b": "• Why Emergency ICU Intubation Carries Extreme Morbidity:\n  - Unlike elective operating room intubations in fasting, stable patients, ICU intubations occur in physiologically collapsed patients with severe hypoxemia, lactic acidosis, sepsis, or shock.\n  - Incidence of severe complications in ICU intubations: Severe hypoxemia (SpO2 < 80%) in <b><u>25% to 40%</u></b>; Severe hemodynamic collapse (cardiovascular collapse / SBP < 65 mmHg) in <b><u>20% to 30%</u></b>; Immediate cardiac arrest in <b><u>2% to 3%</u></b>!\n\n• The 'Physiological Difficult Airway' Triad:\n  1. Extreme Hypoxemic Failure: Low functional residual capacity (FRC), intrapulmonary shunting, and high oxygen consumption (VO2) cause precipitous desaturation within <b><u>30 to 45 seconds</u></b> of apnea.\n  2. Severe Hemodynamic Collapse: Positive-pressure ventilation increases intrathoracic pressure, blunting venous return (preload) to a heart already reliant on high sympathetic drive; sedative induction blunts sympathetic tone, causing immediate PEA arrest!\n  3. Severe Metabolic Acidosis: In severe DKA or lactic acidosis with compensatory hyperventilation (e.g., PaCO2 15 mmHg), transient apnea during intubation rapidly increases PaCO2 to 45 mmHg, crashing arterial pH down to < 6.90 and precipitating fatal ventricular arrhythmias!\n\n• MACOCHA Score for Difficult Intubation in ICU:\n  - Predicts difficult intubation in critically ill patients (Score 0 to 12):\n    * <b>M</b>allampati class III or IV (5 points)\n    * <b>A</b>pnea syndrome / obstructive sleep apnea (2 points)\n    * <b>C</b>ervical spine limitation (1 point)\n    * <b>O</b>pening mouth < 3 cm (1 point)\n    * <b>C</b>oma (GCS < 8) (1 point)\n    * <b>H</b>ypoxemia (SpO2 < 80% prior to intubation) (1 point)\n    * <b>A</b>naesthesiologist non-trained / Non-anaesthesiologist operator (1 point)\n  - Score <b><u>≥ 3</u></b> indicates a high risk of difficult intubation (sensitivity 73%, specificity 89%); mandates experienced operator, video laryngoscope, and surgical airway equipment at bedside.",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — Pre-Intubation Hemodynamic Optimization",
+          "text": "Never induce an unstable, hypotensive ICU patient without an active vasoactive agent ready! Hang a peripheral noradrenaline infusion (<b><u>0.05–0.15 mcg/kg/min</u></b>) or prepare push-dose phenylephrine (<b><u>100–200 mcg</u></b>) or adrenaline (<b><u>10–20 mcg</u></b>) to pre-empt the inevitable post-induction vascular collapse."
+        }
+      },
+      {
+        "h": "Physiological Rapid Sequence Intubation (RSI) Protocol in ICU",
+        "b": "• Preparation & Pre-Oxygenation (The 3-Minute Rule):\n  - Head-of-bed elevation to <b><u>30° to 45°</u></b> (ramped position: aligns external auditory meatus with sternal notch; increases FRC, improves visual axis, and slows desaturation).\n  - Hypoxemic Patients (SpO2 < 93% on room air): Standard non-rebreather mask is INSUFFICIENT. Pre-oxygenate with High-Flow Nasal Oxygen (HFNO at <b><u>60 L/min, FiO2 1.0</u></b>) or Non-Invasive Ventilation (NIV with PEEP <b><u>5–10 cmH2O</u></b> and PS <b><u>5–10 cmH2O</u></b> with 100% O2 for 3 minutes).\n  - Continuous Apneic Oxygenation: Leave nasal cannula at <b><u>15 L/min</u></b> (or HFNO at <b><u>40–60 L/min</u></b>) during active laryngoscopy to maintain passive pharyngeal oxygen entrainment.\n\n• Induction Agent Selection in the Critically Ill:\n  - Ketamine (First-Line in Shock): Dose <b><u>1.0 to 2.0 mg/kg IV</u></b>. Preserves sympathetic tone, bronchodilates, and maintains systemic vascular resistance.\n  - Etomidate: Dose <b><u>0.2 to 0.3 mg/kg IV</u></b>. Hemodynamically neutral; caveat: causes transient adrenal suppression via 11-beta-hydroxylase inhibition.\n  - Propofol: Strictly AVOID in hemodynamic instability (causes profound myocardial depression and venous vasodilation).\n\n• Neuromuscular Blockade Selection:\n  - Rocuronium: Dose <b><u>1.2 to 1.6 mg/kg IV</u></b> (high dose achieves intubation conditions in <b><u>45 to 60 seconds</u></b>, equal to succinylcholine; duration 45–60 min; reversible immediately with Sugammadex 16 mg/kg if needed).\n  - Succinylcholine: Dose <b><u>1.5 to 2.0 mg/kg IV</u></b>. Rapid onset (45 s); strictly CONTRAINDICATED in hyperkalemia (K > 5.5 mEq/L), severe burns/trauma > 24 h, denervating neuromuscular disease (GBS, paraplegia), and malignant hyperthermia risk.\n\n• Video Laryngoscopy & Bougie as Standard of Care:\n  - The landmark DEVICE trial (NEJM 2023) proved that Video Laryngoscopy (hyperangulated or standard geometry) achieves higher first-pass success (<b><u>85.1%</u></b> vs <b><u>70.8%</u></b>) and lower complication rates compared to direct laryngoscopy in critically ill adults.\n  - Always introduce a flexible pre-curved bougie (coude tip) on the first attempt to navigate anterior airways.",
+        "table": {
+          "headers": [
+            "Induction / Paralytic Agent",
+            "ICU Dosing",
+            "Onset Time",
+            "Hemodynamic Impact",
+            "Key ICU Caveats & Contraindications"
+          ],
+          "rows": [
+            [
+              "Ketamine",
+              "1.0–2.0 mg/kg IV",
+              "45–60 sec",
+              "Sympathomimetic (MAP maintained/increased)",
+              "Agent of choice in septic/cardiogenic shock; caution in severe catecholamine-depleted states"
+            ],
+            [
+              "Etomidate",
+              "0.2–0.3 mg/kg IV",
+              "30–45 sec",
+              "Neutral (minimal myocardial depression)",
+              "Inhibits 11-beta-hydroxylase; causes transient adrenal suppression"
+            ],
+            [
+              "Rocuronium",
+              "1.2–1.6 mg/kg IV",
+              "45–60 sec",
+              "Hemodynamically neutral",
+              "Preferred paralytic in ICU; prolonged action in organ failure; reversibility via Sugammadex"
+            ],
+            [
+              "Succinylcholine",
+              "1.5–2.0 mg/kg IV",
+              "45 sec",
+              "Mild bradycardia / transient arrhythmia",
+              "Raises K+ by 0.5–1.0 mEq/L; contraindicated in burns >24h, denervation, crush injury, CKD"
+            ]
+          ],
+          "caption": "Pharmacological profiles of common ICU rapid sequence intubation agents."
+        }
+      },
+      {
+        "h": "The Difficult Airway & Failed Oxygenation Rescue Algorithm (DAS/ASA)",
+        "b": "• Plan A: Primary Tracheal Intubation (First Pass):\n  - Video laryngoscope + Bougie/Stylet + pre-oxygenation with apneic flow.\n  - Maximize head position, external laryngeal manipulation (BURP maneuver: Backward, Upward, Rightward Pressure).\n  - Limit attempts to a maximum of <b><u>3 attempts</u></b> (each attempt separated by re-oxygenation) to prevent airway trauma and fatal 'cannot intubate, cannot oxygenate' (CICO) scenarios.\n\n• Plan B: Secondary Supraglottic Airway (SGA) Rescue:\n  - Insert second-generation Supraglottic Airway (e.g., i-gel, LMA ProSeal/Supreme) with gastric drainage port.\n  - Confirms ventilation via waveform capnography (EtCO2).\n  - If successful: Patient can be stabilized, ventilated, and intubated fiberoptically through the SGA.\n\n• Plan C: Facemask Ventilation Rescue:\n  - Two-person, two-handed technique with oral and nasal airways + jaw thrust.\n\n• Plan D: Emergency Front-of-Neck Access (eFONA / Scalpel-Bougie Cricothyroidotomy):\n  - Immediate indication: CICO situation (SpO2 falling, impossible to oxygenate via tube, SGA, or mask).\n  - 'Laryngeal Hand' stabilization: Palpate thyroid notch, cricoid ring, and cricothyroid membrane.\n  - Step-by-step Scalpel-Bougie-Tube Technique:\n    1. Transverse stab incision through skin and cricothyroid membrane using a No. 10 scalpel blade.\n    2. Rotate blade 90° with sharp edge directed caudally to open the space.\n    3. Slide coude-tipped tracheal bougie along the flat blade into the trachea (feel tracheal ring clicks).\n    4. Rail-road a cuffed <b><u>6.0 mm ETT</u></b> over the bougie into the airway.\n    5. Inflate cuff, confirm bilateral breath sounds and waveform EtCO2, secure tube."
+      },
+      {
+        "h": "Weaning, Extubation Readiness & Post-Extubation Failure Prevention",
+        "b": "• Criteria for Extubation Readiness:\n  1. Primary cause of respiratory failure resolved or significantly improved.\n  2. Hemodynamically stable without escalating vasopressors (noradrenaline <b><u>< 0.1 mcg/kg/min</u></b>).\n  3. Adequate oxygenation: PaO2/FiO2 <b><u>≥ 150 to 200</u></b> on PEEP <b><u>≤ 8 cmH2O</u></b> and FiO2 <b><u>≤ 0.40</u></b>, pH <b><u>> 7.30</u></b>.\n  4. Conscious, cooperative, intact airway reflexes (active cough on suctioning, swallowing).\n\n• Spontaneous Breathing Trial (SBT):\n  - Conducted for <b><u>30 to 120 minutes</u></b> using T-piece or low pressure support (PS <b><u>5–7 cmH2O</u></b>, PEEP <b><u>0–5 cmH2O</u></b>).\n  - Rapid Shallow Breathing Index (RSBI = RR / VT in Liters):\n    * Measured during 1 minute of unassisted T-piece breathing.\n    * RSBI <b><u>< 105 breaths/min/L</u></b> strongly predicts successful weaning.\n    * RSBI <b><u>> 105</u></b> indicates high risk of diaphragmatic exhaustion and extubation failure.\n\n• Airway Patency & Secretions:\n  - Cuff Leak Test: Deflate ETT cuff while on volume ventilation. Expired volume drop of <b><u>> 110 mL</u></b> (or <b><u>> 24%</u></b> of delivered VT) confirms adequate peritubal airflow. Absent leak indicates severe laryngeal edema (treat with IV methylprednisolone 20 mg q4h for 4 doses prior to extubation).\n  - Secretion clearance: Suctioning frequency <b><u>< q2h</u></b>, peak expiratory flow on cough <b><u>> 60 L/min</u></b>.\n\n• Preventing Post-Extubation Failure in High-Risk Patients:\n  - High-risk criteria: Age > 65, underlying COPD/CHF, hypercapnia, BMI > 30, mechanical ventilation > 7 days.\n  - Evidence-Based Prophylaxis: Immediately apply prophylactic <b><u>NIV alternating with HFNO</u></b> (60 L/min, FiO2 titrated) post-extubation (reduces reintubation rate from 18% to 6%, OPERA/HIGH-WEAN trials!)."
+      }
+    ],
+    "example": "CLINICAL CASE: A 58-year-old morbidly obese male (BMI 42 kg/m²) with severe bilateral pneumonia is admitted to the ICU in worsening respiratory failure. Vitals: RR 36, SpO2 84% on 15 L non-rebreather, HR 132 bpm, BP 88/52 mmHg. MACOCHA score is 6 (Mallampati IV, mouth opening 2.8 cm, obesity, severe hypoxemia).\n\nPhysiological RSI & Extubation Pathway:\n1. Hemodynamics: Started peripheral noradrenaline at 0.10 mcg/kg/min; MAP climbs to 68 mmHg prior to induction.\n2. Pre-oxygenation: Placed on High-Flow Nasal Oxygen (HFNO) at 60 L/min with FiO2 1.0 in a 35° ramped position for 3 minutes; SpO2 improves to 96%.\n3. Induction: Ketamine 1.5 mg/kg (150 mg IV) + Rocuronium 1.2 mg/kg (120 mg IV). HFNO left running at 60 L/min during laryngoscopy (apneic oxygenation).\n4. Intubation: Hyperangulated video laryngoscopy reveals Cormack-Lehane Grade 2b view. A flexible coude-tip bougie is passed into the trachea with palpable ring clicks, and an 8.0 mm cuffed ETT is rail-roaded on the first attempt without desaturation (SpO2 nadir 94%).\n5. Weaning & Liberation: By day 5, pneumonia clears. RSBI is 58 breaths/min/L, cuff leak is 185 mL (positive leak), and SBT on PS 5/PEEP 5 passes easily.\n6. Post-Extubation Care: Due to high risk (BMI 42, severe initial ARDS), he is immediately transitioned to preventive HFNO alternating with nocturnal bilevel NIV for 48 hours, avoiding reintubation.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 2. Wolters Kluwer.",
+      "Prekker ME, et al. Video Laryngoscopy versus Direct Laryngoscopy for Tracheal Intubation of Critically Ill Adults (DEVICE Trial). N Engl J Med 2023;389(5):418–429.",
+      "Higgs A, et al. Guidelines for the Management of Tracheal Intubation in Critically Ill Adults. Br J Anaesth 2018;120(2):323–352.",
+      "Hernández G, et al. Effect of Postextubation High-Flow Nasal Cannula vs Noninvasive Ventilation on Reintubation and Postextubation Respiratory Failure in High-Risk Patients (HIGH-WEAN Trial). JAMA 2016;316(15):1565–1574."
+    ]
+  },
+  {
+    "id": "percutaneous-tracheostomy-icu",
+    "cat": "cc_airway",
+    "name": "Percutaneous Dilatational Tracheostomy in ICU",
+    "short": "Percutaneous Tracheostomy",
+    "tags": [
+      "Tracheostomy Indications",
+      "Ciaglia Blue Rhino",
+      "Bronchoscopic Guidance",
+      "Tracheal Stenosis",
+      "False Tract",
+      "Tracheo-Innominate Fistula"
+    ],
+    "tagline": "Indications, timing, Seldinger techniques, bedside bronchoscopy, acute complication management and decannulation protocols",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 2; American College of Chest Physicians (CHEST) Tracheostomy Guidelines; Chest 2014; 146(6):1565–1575.",
+    "sections": [
+      {
+        "h": "Indications, Optimal Timing & Contraindications",
+        "b": "• Clinical Indications for Tracheostomy in ICU:\n  1. Prolonged Mechanical Ventilation: Patients failing multiple weaning trials with anticipated ventilator dependence > 10–14 days.\n  2. Severe Neurological Injury / Coma: Poor GCS (< 8), absent cough/swallowing reflexes, inability to clear airway secretions despite weaning from ventilator.\n  3. Severe Upper Airway Obstruction: Laryngeal edema, trauma, or bilateral vocal cord paralysis.\n  4. Reduction of Airway Resistance & Dead Space: Tracheostomy reduces anatomical dead space by approximately <b><u>50% (75 to 100 mL)</u></b> and lowers work of breathing compared to long endotracheal tubes.\n  5. Patient Comfort & Nursing Care: Facilitates oral hygiene, communication, early mobilization, enteral nutrition, and avoids vocal cord pressure ulceration.\n\n• Optimal Timing (The TracMan Trial Consensus):\n  - Early (Day 1 to 4) vs Late (After Day 10): The landmark multicenter TracMan trial (JAMA 2013) demonstrated that routine early tracheostomy (< 4 days) does not reduce 30-day mortality or overall ICU stay compared to waiting until day 10–14.\n  - Current Standard of Care: Formally evaluate around <b><u>Day 7 to 10</u></b> of mechanical ventilation; proceed if patient is unlikely to be successfully extubated within the subsequent 7 days.\n\n• Contraindications to Percutaneous Dilatational Tracheostomy (PDT):\n  - Absolute Contraindications: Severe local infection / active cellulitis or phlegmon at the neck site; Grossly distorted neck anatomy (massive goiter, previous radical neck dissection); Uncorrected severe coagulopathy (INR > 2.0, Platelets < 30,000/mcL); Cervical spine instability (cannot extend neck).\n  - Relative Contraindications: Morbid obesity (short, thick neck / unpalpable anatomical landmarks); High ventilatory requirements (PEEP <b><u>> 15 cmH2O</u></b>, FiO2 <b><u>> 0.70</u></b>); Known tracheal pathology (severe tracheomalacia, prior tracheal resection).",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — Real-Time Fiberoptic Bronchoscopic Guidance",
+          "text": "Bedside fiberoptic bronchoscopy during PDT is the absolute standard of safety: It visualizes needle entry in the midline between the <b><u>2nd and 3rd tracheal rings</u></b>, ensures zero transfixion of the posterior membranous tracheal wall, and confirms clean intratracheal guidewire placement."
+        }
+      },
+      {
+        "h": "Percutaneous Dilatational Techniques (Ciaglia Blue Rhino)",
+        "b": "• The Ciaglia Single-Dilator Technique (Ciaglia Blue Rhino) Step-by-Step:\n  1. Preparation & Monitoring: 100% FiO2, continuous arterial line and EtCO2 monitoring. Adequate deep sedation and neuromuscular blockade.\n  2. Patient Positioning: Hyperextend the neck using a shoulder roll (brings trachea anteriorly; avoid in cervical trauma).\n  3. Palpation of Landmarks: Cricoid cartilage, thyroid notch, tracheal rings, and sternal notch.\n  4. Laryngoscopy & ETT Repositioning: Under direct vision or bronchoscopy, deflate ETT cuff and withdraw ETT to just below the vocal cords (cuff at subglottic level). Re-inflate cuff.\n  5. Asepsis & Local Infiltration: Prep neck sterilely; infiltrate skin and pre-tracheal tissue with <b><u>1% or 2% lidocaine with epinephrine (1:200,000)</u></b> for anesthesia and vasoconstriction.\n  6. Incision & Needle Puncture: 1.5 cm transverse or vertical incision between cricoid and 1st ring, or between 1st and 2nd rings. Insert 14-gauge introducer needle with saline-filled syringe in midline directed 45° caudally; aspirate air bubbles to confirm tracheal lumen entry.\n  7. Guidewire Insertion: Feed J-tip Seldinger guidewire through the needle into the trachea. Remove needle.\n  8. Short Dilator: Pass 14-Fr preliminary dilator over the guidewire to dilate the pre-tracheal fascia and anterior wall.\n  9. Ciaglia Blue Rhino Dilator: Thread the hydrophobic-coated Blue Rhino dilator (lubricated with sterile water/saline) over the guiding catheter and wire. In a smooth, controlled single motion, advance the dilator to the skin level marking to dilate the stoma.\n  10. Tracheostomy Tube Placement: Load appropriate tracheostomy tube (typically <b><u>size 7.5 to 8.5 mm ID</u></b> for males, <b><u>7.0 to 8.0 mm ID</u></b> for females) onto the matching loading dilator. Advance over the guidewire into the trachea.\n  11. Confirmation & Fixation: Remove dilator and wire; insert inner cannula; inflate cuff. Confirm ventilation by bilateral breath sounds, chest rise, and continuous waveform EtCO2. Secure tube with neck flange sutures and tracheostomy collar ties.",
+        "table": {
+          "headers": [
+            "Tracheostomy Technique",
+            "Mechanism of Dilation",
+            "Advantages in ICU",
+            "Key Potential Hazards"
+          ],
+          "rows": [
+            [
+              "Ciaglia Single Dilator (Blue Rhino)",
+              "Gradual radial dilation over Seldinger wire",
+              "Fast, minimal tissue disruption, low infection rate",
+              "Posterior tracheal wall tear if pushed too forcefully"
+            ],
+            [
+              "Griggs Forceps (GWDF)",
+              "Blunt spreading with modified Howard-Kelly forceps",
+              "Inexpensive, fast in expert hands",
+              "Higher risk of bleeding and uncontrolled tearing of tracheal rings"
+            ],
+            [
+              "Surgical Open Tracheostomy",
+              "Formal surgical dissection, Bjork flap / window",
+              "Controlled under direct vision; preferred in distorted anatomy",
+              "Requires operating room or electrocautery; higher stomal infection"
+            ]
+          ],
+          "caption": "Comparison of bedside percutaneous tracheostomy methods."
+        }
+      },
+      {
+        "h": "Acute & Late Complications & Emergency Management",
+        "b": "• Immediate / Intra-procedural Complications:\n  1. Hemorrhage: Usually venous oozing from thyroid isthmus or anterior jugular veins. Managed by tamponade with lubricated gauze or topical tranexamic acid; if refractory, surgical exploration.\n  2. False Tract Insertion: Tracheostomy tube placed anteriorly in pre-tracheal tissue or mediastinum. Recognized by high peak airway pressures, absent chest rise, absent EtCO2, and subcutaneous emphysema. Immediately remove tube, re-intubate orally from above!\n  3. Posterior Tracheal Wall Laceration / Perforation: Caused by forceful needle or dilator insertion. Can lead to fatal pneumomediastinum or tracheoesophageal fistula.\n  4. Loss of Airway / Accidental Decannulation: Oral airway equipment, laryngoscope, and ETT must ALWAYS remain at the head of the bed ready for immediate re-intubation from above.\n\n• Late / Chronic Complications:\n  1. Tracheoinnominate Artery Fistula (TIAF):\n     - Catastrophic erosion of low tracheostomy tube cuff (usually below 4th ring) into the adjacent brachiocephalic (innominate) artery. Peak incidence: <b><u>1 to 3 weeks post-procedure</u></b>.\n     - Warning sign: 'Sentinel bleed' (pulsatile blood spurting or rhythmic tube pulsations).\n     - Emergency Management: Hyperinflate cuff to tamponade artery; if bleeding persists, insert index finger through the stoma and forcefully compress the innominate artery anteriorly against the posterior surface of the sternal manubrium while rushing to the operating room (Utley maneuver)!\n  2. Tracheal Stenosis: Fibrotic cicatricial narrowing at cuff site or stoma level from prolonged high cuff pressures (> 25–30 cmH2O). Prevent by keeping cuff pressure <b><u>20 to 25 cmH2O (or 15–18 mmHg)</u></b>.\n  3. Tracheoesophageal Fistula (TEF): Caused by ischemic necrosis between high-pressure tracheostomy cuff and rigid nasogastric tube."
+      },
+      {
+        "h": "Tracheostomy Care, Weaning & Decannulation Protocol",
+        "b": "• Routine Stoma & Tube Care:\n  - Clean stoma dressing daily; check cuff pressure with manometer every shift (target <b><u>20–25 cmH2O</u></b> to prevent tracheal mucosal necrosis and aspiration).\n  - Change inner cannula every <b><u>8 to 12 hours</u></b> to prevent mucus plugging.\n  - The first formal tracheostomy tube change should NOT occur before <b><u>Day 7 to 10</u></b> (ensures the tract is fully matured and fibrous; changing earlier risks false tract creation and airway loss!).\n\n• Decannulation Readiness Checklist:\n  1. Complete resolution of initial respiratory failure; patient successfully liberated from mechanical ventilation for <b><u>≥ 48 to 72 hours</u></b>.\n  2. Intact swallowing and airway protection reflexes; minimal tracheal secretions requiring suctioning <b><u>< 2 times per 8-hour shift</u></b>.\n  3. Patient can tolerate cuff deflation without desaturation or severe aspiration.\n  4. One-Way Speaking Valve (Passy-Muir Valve / PMV) Trial: With cuff fully deflated, attach PMV. Patient inhales through tube and exhales around tube through vocal cords; confirms patent upper airway and restores vocalization and subglottic pressure.\n  5. Capping (Occlusion) Trial: Tube is capped for <b><u>24 to 48 hours</u></b>. If patient breathes comfortably through upper airway without stridor, tachypnea, or desaturation, decannulation is performed.\n  6. Post-Decannulation: Remove tube, cover stoma with sterile gauze and occlusive dressing (tell patient to press finger over gauze when coughing). Stoma spontaneously closes in <b><u>3 to 7 days</u></b>."
+      }
+    ],
+    "example": "CLINICAL CASE: A 64-year-old male with severe traumatic brain injury (initial GCS 4) is on mechanical ventilation on day 10. While intracranial pressures have normalized and he requires minimal ventilator support (FiO2 0.30, PEEP 5), his GCS is 7 (E2VTM4) with absent cough and copious thick secretions. He is scheduled for bedside percutaneous tracheostomy.\n\nProcedure & Emergency Safeguards:\n1. Pre-procedure: Coagulation profile normal (Plt 180k, INR 1.1). Shoulder roll placed; neck landmarks palpated.\n2. Bronchoscopic Guidance: Bronchoscope inserted via ETT with swivel adapter; ETT withdrawn to subglottic level under direct vision. 14-G needle inserted between 2nd and 3rd tracheal rings exactly in midline, verified by bronchoscope.\n3. Dilation: J-wire passed; Ciaglia Blue Rhino dilator advanced over wire smoothly with bronchoscopic visualization confirming clear lumen.\n4. Placement: Size 8.0 mm cuffed tracheostomy tube inserted; EtCO2 confirmed; secured with 4-point ties and flange sutures.\n5. Post-procedure Care: Cuff pressure monitored at 22 cmH2O. By day 18, patient is awake (GCS 11), swallows saliva, and passes a 24-hour capping trial with Passy-Muir valve. Tracheostomy decannulated smoothly on day 20 with complete stomal closure by day 24.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 2. Wolters Kluwer.",
+      "Young D, et al. Effect of Early vs Late Tracheostomy on Mortality in Patients with Prolonged Mechanical Ventilation: The TracMan Randomized Clinical Trial. JAMA 2013;309(20):2121–2129.",
+      "Fernandez-Bussy S, et al. Percutaneous Dilatational Tracheostomy. Am J Respir Crit Care Med 2015;192(11):1395–1396.",
+      "Raimondi N, et al. Evidence-Based Guidelines for the Use of Tracheostomy in Critically Ill Patients. J Crit Care 2017;38:312–318."
+    ]
+  },
+  {
+    "id": "ards-advanced-rescue-therapies",
+    "cat": "cc_respiratory",
+    "name": "ARDS Pathophysiology, Driving Pressure & Rescue Therapies",
+    "short": "ARDS & Advanced Rescue",
+    "tags": [
+      "Berlin Definition",
+      "Global ARDS 2023",
+      "Baby Lung",
+      "Driving Pressure",
+      "Prone Positioning",
+      "PROSEVA Trial",
+      "Inhaled Vasodilators",
+      "VV-ECMO"
+    ],
+    "tagline": "Berlin criteria, baby lung mechanics, driving pressure targets, PROSEVA prone protocols, neuromuscular blockade and ECMO indications",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 3; ARDSNet Protocols; Berlin Definition (JAMA 2012); New Global Definition of ARDS (Am J Respir Crit Care Med 2023).",
+    "sections": [
+      {
+        "h": "ARDS Definitions: Berlin 2012 vs New Global Definition 2023",
+        "b": "• The Berlin Definition (2012 Consensus Criteria):\n  1. Timing: Acute onset within <b><u>1 week</u></b> of a known clinical insult or new/worsening respiratory symptoms.\n  2. Chest Imaging: Bilateral opacities on chest radiograph or CT scan not fully explained by effusions, lobar/lung collapse, or nodules.\n  3. Origin of Edema: Respiratory failure not fully explained by cardiac failure or fluid overload (objective assessment with echocardiography needed if no risk factor present).\n  4. Oxygenation Impairment (on minimum PEEP <b><u>≥ 5 cmH2O</u></b>):\n     - Mild ARDS: <b><u>200 < PaO2/FiO2 ≤ 300 mmHg</u></b>.\n     - Moderate ARDS: <b><u>100 < PaO2/FiO2 ≤ 200 mmHg</u></b>.\n     - Severe ARDS: <b><u>PaO2/FiO2 ≤ 100 mmHg</u></b>.\n\n• The New Global Definition of ARDS (2023 Update):\n  - Expands the Berlin definition to resource-limited settings and modern non-invasive practices:\n  - Includes High-Flow Nasal Oxygen (HFNO): Patients on HFNO with flow <b><u>≥ 30 L/min</u></b> can be diagnosed with ARDS (eliminates the strict requirement for positive pressure ventilation).\n  - Incorporates Pulse Oximetry: SpO2/FiO2 ratio <b><u>≤ 315</u></b> (with SpO2 ≤ 97%) substitutes for PaO2/FiO2 when arterial blood gases are unavailable.\n  - Lung Ultrasound: Bilateral B-lines or consolidation on bedside lung ultrasound accepted as equivalent to chest radiography/CT.",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — The 'Baby Lung' Concept (Gattinoni)",
+          "text": "In severe ARDS, the lung is not 'stiff' throughout; rather, dependent dorsal lung regions are completely consolidated and fluid-filled, leaving only a tiny aerated ventral compartment — the 'Baby Lung' (equivalent in volume to the lung of a <b><u>5- to 6-year-old child, ~300 to 400 g</u></b>). Delivering normal adult tidal volumes (10 mL/kg) into this tiny compartment causes massive volutrauma and barotrauma!"
+        }
+      },
+      {
+        "h": "Lung-Protective Mechanical Ventilation & Driving Pressure",
+        "b": "• ARDSNet Lung-Protective Strategy (ARMA Trial Benchmark):\n  - Tidal Volume (VT): Strictly calculated from <b><u>Predicted Body Weight (PBW)</u></b>, NOT actual weight!\n    * Males PBW = 50 + 0.91 × [Height (cm) - 152.4] kg\n    * Females PBW = 45.5 + 0.91 × [Height (cm) - 152.4] kg\n  - Initial VT: <b><u>6 mL/kg PBW</u></b> (titrate down to <b><u>4 mL/kg PBW</u></b> if plateau pressure exceeds target).\n  - Plateau Pressure (Pplat): Measured during an end-inspiratory pause of <b><u>0.5 seconds</u></b>; must be kept strictly <b><u>≤ 30 cmH2O</u></b>.\n  - Permissive Hypercapnia: Allow arterial pH to drop to <b><u>7.20 to 7.25</u></b> (or 7.15 in extreme cases) to avoid injurious tidal volumes and pressures; strictly avoid in acute intracranial hypertension or severe pulmonary hypertension.\n\n• Driving Pressure (ΔP) — The Strongest Prognostic Determinant (Amato NEJM 2015):\n  - Formula: <b><u>Driving Pressure (ΔP) = Pplat - PEEP</u></b>.\n  - Represents tidal volume normalized to actual respiratory system compliance (ΔP = VT / Crs).\n  - Clinical Target: Keep <b><u>ΔP < 14 cmH2O</u></b> (each 7 cmH2O increase above 14 is associated with a dramatic step-up in mortality!).\n  - If Pplat is 28 cmH2O and PEEP is 10, ΔP = 18 cmH2O (excessive!); lowering VT to 5 mL/kg or optimizing PEEP to reduce ΔP < 14 significantly improves survival.\n\n• Mechanical Power of Ventilation:\n  - Integrates volume, pressure, flow, and respiratory rate: Mechanical Power = 0.098 × RR × VT × (Ppeak - ΔP/2).\n  - Target mechanical power <b><u>< 17 Joules/min</u></b>; values > 27 J/min directly induce ventilator-induced lung injury (VILI).",
+        "table": {
+          "headers": [
+            "PEEP / FiO2 Titration Step",
+            "FiO2 Setting",
+            "Lower PEEP Protocol (ARDSNet)",
+            "Higher PEEP Protocol (ALVEOLI/LOVS)",
+            "Clinical Objective"
+          ],
+          "rows": [
+            [
+              "Step 1",
+              "0.30–0.40",
+              "5–8 cmH2O",
+              "12–14 cmH2O",
+              "Prevent atelectrauma in mild ARDS"
+            ],
+            [
+              "Step 2",
+              "0.50",
+              "8–10 cmH2O",
+              "14–16 cmH2O",
+              "Alveolar recruitment without hemodynamic compromise"
+            ],
+            [
+              "Step 3",
+              "0.60–0.70",
+              "10–14 cmH2O",
+              "18–20 cmH2O",
+              "Overcome severe intrapulmonary shunt"
+            ],
+            [
+              "Step 4",
+              "0.80–1.00",
+              "14–24 cmH2O",
+              "22–24 cmH2O",
+              "Refractory hypoxemia; balance against RV strain"
+            ]
+          ],
+          "caption": "ARDSNet PEEP/FiO2 titration grid comparing standard vs higher PEEP strategies."
+        }
+      },
+      {
+        "h": "Evidence-Based Advanced Rescue Therapies in Severe ARDS",
+        "b": "When PaO2/FiO2 remains <b><u>< 150 mmHg</u></b> despite lung-protective ventilation, systematically deploy advanced rescue modalities:\n\n1. Prone Positioning (The PROSEVA Trial — Grade 1A Evidence):\n• Indication: Severe ARDS with <b><u>PaO2/FiO2 < 150 mmHg</u></b> on PEEP <b><u>≥ 10 cmH2O</u></b> and FiO2 <b><u>≥ 0.60</u></b>.\n• Physiological Mechanism: Homogenizes transpulmonary pressure gradients, relieves cardiac and abdominal compression on dorsal lung units, redistributes ventilation to better-perfused dorsal regions, dramatically improves V/Q matching, and unloads the right ventricle.\n• Protocol: Turn patient prone for at least <b><u>16 consecutive hours per session</u></b>. Continue daily prone sessions until PaO2/FiO2 remains <b><u>≥ 150 mmHg</u></b> in supine position on PEEP ≤ 10 for > 4 hours.\n• Mortality Impact: Reduced 28-day mortality from <b><u>32.8% to 16.0%</u></b> (Absolute Risk Reduction 16.8%, Number Needed to Treat = 6!).\n\n2. Neuromuscular Blockade Infusion (ACURASYS Trial):\n• Cisatracurium continuous infusion for the first <b><u>48 hours</u></b> in severe ARDS.\n• Eliminates patient-ventilator dyssynchrony, prevents breath-stacking / reverse triggering, and reduces transpulmonary pressure swings.\n• Must maintain deep sedation (RASS -4 to -5) and monitor Train-of-Four (target 1–2 twitches).\n\n3. Inhaled Pulmonary Vasodilators:\n• Inhaled Nitric Oxide (iNO at <b><u>10 to 20 ppm</u></b>) or Inhaled Epoprostenol (Prostacyclin at <b><u>10 to 50 ng/kg/min</u></b>).\n• Selectively dilates pulmonary vessels in aerated lung units, shifting blood flow away from shunted, consolidated units to improve oxygenation.\n• Acts as a temporary bridge; does not improve overall mortality.\n\n4. Recruitment Maneuvers & High PEEP Titration Caveats:\n• Avoid aggressive stair-step recruitment maneuvers (ART Trial showed increased 28-day mortality and cardiac arrest from barotrauma and hemodynamic collapse!).",
+        "callout": {
+          "type": "pitfall",
+          "title": "RESCUE PITFALL — Delaying Prone Positioning",
+          "text": "Do not treat prone positioning as a 'last-ditch pre-terminal rescue'! The mortality benefit of PROSEVA is realized when proning is initiated <b><u>early (within the first 24 to 36 hours)</u></b> of severe ARDS, before irreversible fibrotic remodeling and ventilator-induced lung injury take hold."
+        }
+      },
+      {
+        "h": "Veno-Venous (VV) ECMO Criteria & The EOLIA Trial",
+        "b": "• Veno-Venous (VV) ECMO in Severe Refractory ARDS:\n  - Replaces pulmonary gas exchange: Deoxygenated blood is drained from the vena cava, pumped through an extracorporeal polymethylpentene membrane lung where O2 is added and CO2 removed, and returned to the venous circulation.\n  - Allows 'ultra-lung-protective ventilation' (resting the lung: VT <b><u>2–3 mL/kg</u></b>, Pplat <b><u>< 24 cmH2O</u></b>, PEEP 10–14, RR 10 breaths/min).\n\n• EOLIA Trial (NEJM 2018) Inclusion Criteria (Standard VV-ECMO Indications):\n  1. PaO2/FiO2 <b><u>< 50 mmHg</u></b> for <b><u>> 3 hours</u></b> despite FiO2 1.0 and optimal PEEP, OR\n  2. PaO2/FiO2 <b><u>< 80 mmHg</u></b> for <b><u>> 6 hours</u></b> despite FiO2 1.0, OR\n  3. Arterial pH <b><u>< 7.15</u></b> with PaCO2 <b><u>≥ 60 mmHg</u></b> for <b><u>> 6 hours</u></b> resulting from hypercapnia due to limitation of tidal volume (Pplat kept ≤ 32 cmH2O).\n\n• Exclusion Criteria for ECMO:\n  - Mechanical ventilation > 7 to 10 days at high settings (fibroproliferative irreversible lung disease).\n  - Severe intracranial hemorrhage or uncorrectable coagulopathy (contraindication to systemic heparinization).\n  - Irreversible terminal illness or advanced multiorgan failure with no recovery potential."
+      }
+    ],
+    "example": "CLINICAL CASE: A 46-year-old male with severe influenza A pneumonia is intubated on Day 2 of ICU admission. Height: 178 cm (PBW = 73 kg). Current ventilator settings: Volume Control, VT 580 mL (8 mL/kg PBW), PEEP 14 cmH2O, FiO2 1.0, RR 28. ABG: pH 7.24, PaCO2 54, PaO2 62 mmHg (PaO2/FiO2 = 62 mmHg, severe ARDS). End-inspiratory pause reveals Pplat 34 cmH2O (Driving Pressure = 20 cmH2O!).\n\nStepwise Evidence-Based ARDS Management:\n1. Lung-Protective Adjustment: Immediate down-titration of tidal volume to 6 mL/kg PBW (440 mL), then 5 mL/kg PBW (365 mL). Pplat drops to 27 cmH2O (Driving Pressure drops to 13 cmH2O, meeting the <14 target). pH is 7.21 (permissive hypercapnia accepted).\n2. Neuromuscular Blockade: Severe patient-ventilator dyssynchrony with double-triggering observed; cisatracurium continuous infusion started at 2 mcg/kg/min with deep sedation (RASS -5).\n3. Early Prone Positioning: PaO2/FiO2 remains 88 mmHg. The multidisciplinary team turns the patient prone for a 16-hour session.\n4. Response: At hour 4 of proning, PaO2 rises to 142 mmHg on FiO2 0.70 (P/F improves to 202 mmHg). Daily 16-hour prone sessions are continued for 3 consecutive days.\n5. Outcome: On Day 6, the patient is supine with P/F 240 on PEEP 10 and FiO2 0.40. Cisatracurium is stopped, sedation lightened, and he is successfully liberated from mechanical ventilation on Day 11 without requiring ECMO.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 3. Wolters Kluwer.",
+      "The ARDS Definition Task Force. Acute Respiratory Distress Syndrome: The Berlin Definition. JAMA 2012;307(23):2526–2533.",
+      "Guérin C, et al. Prone Positioning in Severe Acute Respiratory Distress Syndrome (PROSEVA Trial). N Engl J Med 2013;368(23):2159–2168.",
+      "Amato MB, et al. Driving Pressure and Survival in the Acute Respiratory Distress Syndrome. N Engl J Med 2015;372(8):747–755.",
+      "Combes A, et al. Extracorporeal Membrane Oxygenation for Severe Acute Respiratory Distress Syndrome (EOLIA Trial). N Engl J Med 2018;378(21):1965–1975."
+    ]
+  },
+  {
+    "id": "ventilator-modes-waveforms-asynchrony",
+    "cat": "cc_respiratory",
+    "name": "Ventilator Modes, Waveforms & Patient-Ventilator Asynchrony",
+    "short": "Ventilator Modes & Waveforms",
+    "tags": [
+      "VCV vs PCV",
+      "PRVC",
+      "APRV Mechanics",
+      "Auto-PEEP",
+      "Trigger Asynchrony",
+      "Reverse Triggering",
+      "Flow Starvation"
+    ],
+    "tagline": "VCV vs PCV physics, APRV settings, pressure-volume loops, auto-PEEP quantification and bedside management of ventilator asynchronies",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 3; Principles and Practice of Mechanical Ventilation (Tobin, 3rd ed.); Intensive Care Med 2020; 46:2112–2126.",
+    "sections": [
+      {
+        "h": "Mechanical Ventilator Modes: Physics & Operational Principles",
+        "b": "Every mechanical breath is governed by the Equation of Motion:\n<b><u>P(airway) = Flow × Resistance + Volume / Compliance + PEEP</u></b>.\n\n• Volume Control Ventilation (VCV / AC-VC):\n  - Control Variable: Tidal Volume (VT) and inspiratory flow rate are set and guaranteed.\n  - Independent Variable: Airway pressure (Ppeak and Pplat) varies based on the patient's respiratory system compliance and airway resistance.\n  - Key Advantage: Guarantees minute ventilation; essential for strict lung-protective protocols in ARDS.\n  - Key Drawback: High peak pressures if compliance falls; fixed flow can cause severe flow starvation in tachypneic patients.\n\n• Pressure Control Ventilation (PCV / AC-PC):\n  - Control Variable: Inspiratory pressure (Pinsp) and inspiratory time (Ti) are set.\n  - Independent Variable: Tidal volume varies based on compliance and resistance.\n  - Flow Pattern: Decelerating flow pattern (delivers highest flow at breath initiation when lungs are emptiest, resulting in better gas distribution and lower peak alveolar pressures).\n  - Key Advantage: Limits maximal airway pressure, protects against barotrauma.\n  - Key Drawback: Tidal volume drops unpredictably if lung compliance worsens (e.g., worsening pulmonary edema or pneumothorax).\n\n• Pressure Regulated Volume Control (PRVC / VC+):\n  - Dual-control mode: Delivers a set target tidal volume using a decelerating pressure-controlled breath.\n  - Breath-to-breath feedback: The ventilator calculates dynamic compliance and adjusts the inspiratory pressure by <b><u>1 to 3 cmH2O</u></b> per breath to deliver the target VT at the lowest possible airway pressure.\n\n• Airway Pressure Release Ventilation (APRV / Bi-Level):\n  - CPAP with intermittent releases: Applies high continuous airway pressure (Phigh) for a prolonged time (Thigh) to recruit collapsed alveoli, with brief cyclic releases to a low pressure (Plow) for a short time (Tlow) to clear CO2.\n  - Spontaneous breathing is unrestricted throughout the entire respiratory cycle.\n  - Initial APRV Settings: Phigh = Previous Pplat (typically <b><u>25 to 30 cmH2O</u></b>); Thigh = <b><u>4.0 to 6.0 seconds</u></b>; Plow = <b><u>0 cmH2O</u></b>; Tlow = <b><u>0.4 to 0.8 seconds</u></b> (strictly titrated so that expiratory flow terminates at <b><u>75%</u></b> of peak expiratory flow rate to maintain intrinsic PEEP and prevent alveolar derecruitment!).",
+        "table": {
+          "headers": [
+            "Ventilator Mode",
+            "Control Variable",
+            "Flow Pattern",
+            "Target Guaranteed",
+            "Primary ICU Indication"
+          ],
+          "rows": [
+            [
+              "Volume Control (VCV)",
+              "Volume & Flow",
+              "Square or Decelerating",
+              "Tidal Volume (VT)",
+              "ARDS, strict lung-protective ventilation, neuro ICU (PaCO2 control)"
+            ],
+            [
+              "Pressure Control (PCV)",
+              "Inspiratory Pressure",
+              "Decelerating",
+              "Airway Pressure (Pinsp)",
+              "Severe hypoxemia, high airway pressures, barotrauma risk"
+            ],
+            [
+              "PRVC / Volume Support",
+              "Pressure (Volume-targeted)",
+              "Decelerating",
+              "Tidal Volume at lowest P",
+              "Post-operative weaning, general ICU medical ventilation"
+            ],
+            [
+              "APRV / Bi-Level",
+              "Dual CPAP Levels",
+              "Continuous + Release",
+              "Recruitment via Phigh/Thigh",
+              "Refractory ARDS, severe atelectasis, recruitment failure"
+            ]
+          ],
+          "caption": "Comparison of fundamental mechanical ventilation modes and their characteristics."
+        }
+      },
+      {
+        "h": "Waveform Analysis: Pressure-Time, Flow-Time & Loops",
+        "b": "• Flow-Time Scalar Analysis:\n  - Normal Expiratory Curve: Smooth, exponential decay returning completely to baseline (zero flow) before the next breath initiates.\n  - Auto-PEEP / Dynamic Hyperinflation: Expiratory flow does NOT return to the zero baseline before the next breath begins! This proves that air remains trapped in the alveoli at end-expiration (pathognomonic of severe COPD or asthma bronchospasm).\n  - Measuring Intrinsic PEEP (Auto-PEEP): Perform an <b><u>End-Expiratory Pause</u></b> of <b><u>2 to 3 seconds</u></b> in a relaxed patient; Total PEEP = Set PEEP + Auto-PEEP.\n\n• Pressure-Time Scalar Analysis:\n  - Peak Inspiratory Pressure (Ppeak): Total pressure required to overcome BOTH airway resistance and lung/chest wall elastance.\n  - Plateau Pressure (Pplat): Measured during an <b><u>End-Inspiratory Pause</u></b> (0.5 s, zero flow); reflects purely elastic recoil of the alveoli and chest wall.\n  - Transairway Pressure = Ppeak - Pplat: Reflects resistive properties (airway resistance = [Ppeak - Pplat] / Flow).\n  - Diagnostic Differentiation:\n    * High Ppeak with NORMAL Pplat (< 30 cmH2O): High airway resistance (bronchospasm, secretions, kinked ETT, mucous plug).\n    * High Ppeak with HIGH Pplat (> 30 cmH2O): Low respiratory compliance (ARDS, tension pneumothorax, pulmonary edema, severe abdominal compartment syndrome, massive pleural effusion).\n\n• Pressure-Volume (P-V) Loop:\n  - Lower Inflection Point (LIP): The pressure at which collapsed alveoli suddenly pop open (recruitment pressure); setting PEEP <b><u>2 cmH2O above LIP</u></b> prevents cyclic atelectrauma.\n  - Upper Inflection Point (UIP): The pressure at which alveoli become overdistended; VT should be adjusted to keep end-inspiratory pressure below the UIP ('beak' or 'duck bill' appearance indicates dangerous alveolar overdistension!).",
+        "callout": {
+          "type": "pearl",
+          "title": "WAVEFORM PEARL — The 'Scooped' Pressure Waveform (Flow Starvation)",
+          "text": "In Volume Control ventilation, if the patient's inspiratory flow demand exceeds the ventilator's set flow rate (e.g., set at 40 L/min while patient demands 80 L/min), the pressure-time waveform dips downward ('scooping'). This causes severe patient distress and increased work of breathing. Remedy: Increase inspiratory flow rate to <b><u>70–80 L/min</u></b> or switch to Pressure Control."
+        }
+      },
+      {
+        "h": "Patient-Ventilator Asynchrony: Classification, Detection & Management",
+        "b": "Patient-ventilator asynchrony occurs in up to <b><u>25% to 80%</u></b> of mechanically ventilated patients and is independently associated with prolonged ICU stay and higher mortality:\n\n1. Ineffective Triggering (Wasted Efforts):\n• Patient makes an inspiratory effort, but it fails to trigger a ventilator breath.\n• Waveform Sign: A small negative dip on the pressure curve with an upward deflection on expiratory flow curve that fails to cross trigger threshold.\n• Primary Cause: Auto-PEEP (dynamic hyperinflation). The patient must first generate enough negative pressure to overcome intrinsic PEEP before triggering the machine.\n• Management: Treat bronchospasm (bronchodilators); prolong expiratory time (decrease RR, shorten Ti); apply external PEEP to equal approximately <b><u>70% to 80% of auto-PEEP</u></b> ('waterfall effect' makes triggering easier!).\n\n2. Double Triggering (Breath Stacking):\n• Two consecutive ventilator breaths separated by a very short expiratory time (< 0.5 s), delivering twice the set tidal volume into the lung.\n• Primary Cause: High patient drive and short set inspiratory time (Ti). The patient's neural inspiratory effort outlasts the machine's breath, re-triggering a second breath immediately.\n• Management: Increase inspiratory time (Ti) or tidal volume in VCV, optimize sedation, or switch to Pressure Support.\n\n3. Reverse Triggering (Entrainment):\n• A deep diaphragmatic contraction triggered reflexively by the ventilator's mechanical insufflation (entrainment of the respiratory center by lung stretch receptors).\n• Causes secondary breath stacking and high transpulmonary pressures in heavily sedated ARDS patients.\n• Management: Adjust ventilator rate, deepen sedation or initiate neuromuscular blockade in early ARDS.\n\n4. Auto-Triggering:\n• The ventilator triggers breaths spontaneously without any patient effort.\n• Causes: Leaks in the breathing circuit or ETT cuff; cardiac oscillations (rhythmic stroke volume changes triggering sensitive flow triggers).\n• Management: Fix circuit leaks; change trigger type from flow trigger to pressure trigger or raise flow trigger threshold (e.g., from 1.0 to <b><u>2.5–3.0 L/min</u></b>).",
+        "table": {
+          "headers": [
+            "Asynchrony Type",
+            "Waveform Diagnostic Sign",
+            "Primary Pathophysiology",
+            "Immediate Bedside Corrective Action"
+          ],
+          "rows": [
+            [
+              "Ineffective Trigger",
+              "Negative dip in P-time during expiration without breath",
+              "Severe Auto-PEEP; patient cannot overcome threshold",
+              "Counteract auto-PEEP with external PEEP (75% rule); bronchodilators"
+            ],
+            [
+              "Double Triggering",
+              "Two consecutive breaths with minimal expiration",
+              "Patient neural Ti longer than set ventilator Ti",
+              "Lengthen set Ti; increase VT if safe; adjust cycle-off in PSV"
+            ],
+            [
+              "Flow Starvation",
+              "Concave downward 'scooped' pressure waveform in VCV",
+              "Set flow rate lower than patient inspiratory demand",
+              "Increase inspiratory flow rate to 70–80 L/min or switch to PCV"
+            ],
+            [
+              "Auto-Triggering",
+              "Rapid machine cycling without patient muscular effort",
+              "Circuit leak or cardiac oscillations triggering breath",
+              "Seal leaks; switch from flow to pressure trigger; increase trigger threshold"
+            ]
+          ],
+          "caption": "Diagnostic features and bedside solutions for major patient-ventilator asynchronies."
+        }
+      },
+      {
+        "h": "Management of Severe Auto-PEEP & Dynamic Hyperinflation",
+        "b": "• Life-Threatening Consequences of Auto-PEEP in COPD / Asthma:\n  - Massive dynamic hyperinflation increases intrathoracic pressure to > 20 cmH2O, compressing the superior and inferior vena cava.\n  - Venous return crashes, precipitating acute pulseless electrical activity (PEA) arrest within minutes of intubation!\n\n• Emergency Bedside Action for Acute Hemodynamic Collapse in Ventilated Asthmatic:\n  1. Immediately DISCONNECT the patient from the mechanical ventilator!\n  2. Manually compress the chest wall: Allow a prolonged expiration of <b><u>30 to 60 seconds</u></b> to vent trapped gas.\n  3. If blood pressure and pulse immediately return, the diagnosis is confirmed as severe auto-PEEP!\n\n• Ventilator Prescription for Severe Airflow Obstruction:\n  - Low Respiratory Rate: <b><u>10 to 14 breaths/min</u></b> (allows adequate expiratory time: Te <b><u>> 3 to 4 seconds</u></b>).\n  - Short Inspiratory Time: High inspiratory flow rate (<b><u>70 to 90 L/min</u></b>) to keep Ti short (<b><u>0.6 to 0.8 seconds</u></b>).\n  - I:E Ratio: Target <b><u>1:3 to 1:5</u></b>.\n  - Modest Tidal Volume: <b><u>6 to 8 mL/kg PBW</u></b>.\n  - Accept Permissive Hypercapnia: Allow PaCO2 to rise (60–90 mmHg) provided pH remains <b><u>≥ 7.15 to 7.20</u></b>."
+      }
+    ],
+    "example": "CLINICAL CASE: A 52-year-old female with severe COPD exacerbation is intubated in the ICU. Within 10 minutes on Volume Control (VT 450 mL, RR 24, I:E 1:2, PEEP 5 cmH2O), she develops profound hypotension: BP drops from 120/70 to 62/34 mmHg, HR 145 bpm, SpO2 88%. Flow-time waveform demonstrates that expiratory flow does not return to baseline before the next breath. An end-expiratory pause reveals an intrinsic PEEP (Auto-PEEP) of 18 cmH2O (Total PEEP = 23 cmH2O!).\n\nBedside Management:\n1. Immediate Disconnection: The ventilator is immediately disconnected from the ETT. An audible rush of air escapes, and after 30 seconds of passive exhalation, her BP recovers to 118/74 mmHg and HR drops to 105 bpm.\n2. Waveform Troubleshooting: The severe hypotension was caused by dynamic hyperinflation compressing the vena cava and eliminating cardiac preload.\n3. Ventilator Reset: Settings adjusted to: RR 12 breaths/min, VT 380 mL, Inspiratory Flow increased to 80 L/min (shortening Ti to 0.7 s), achieving an I:E ratio of 1:4. External PEEP set to 5 cmH2O.\n4. Bronchodilators: Continuous nebulized salbutamol and ipratropium delivered via in-line circuit adapter + IV methylprednisolone 60 mg.\n5. Follow-up: Repeat end-expiratory pause shows Auto-PEEP reduced to 4 cmH2O. Hemodynamics remain stable with arterial pH 7.28 and PaCO2 56 mmHg (permissive hypercapnia).",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 3. Wolters Kluwer.",
+      "Tobin MJ. Principles and Practice of Mechanical Ventilation, 3rd ed. McGraw-Hill, 2013.",
+      "De Wit M, et al. Patient-Ventilator Asynchrony: A Review. Crit Care Med 2009;37(8):2459–2465.",
+      "Marini JJ. Dynamic Hyperinflation and Auto-PEEP: Lessons Learned over 30 Years. Am J Respir Crit Care Med 2011;184(7):756–762."
+    ]
+  },
+  {
+    "id": "advanced-hemodynamic-monitoring-picco",
+    "cat": "cc_hemodynamics",
+    "name": "Advanced Hemodynamic Monitoring: Arterial Line, PAC & PiCCO",
+    "short": "Advanced Hemodynamics",
+    "tags": [
+      "Arterial Line Damping",
+      "PAC Thermodilution",
+      "PiCCO",
+      "EVLWI",
+      "GEDVI",
+      "FloTrac",
+      "Bedside Echo VTI"
+    ],
+    "tagline": "Invasive monitoring physics, square wave damping tests, Swan-Ganz profiles, transpulmonary thermodilution and echo stroke volume",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 4; Consensus on Circulatory Shock and Hemodynamic Monitoring (ESICM); Intensive Care Med 2014; 40:1795–1815.",
+    "sections": [
+      {
+        "h": "Invasive Arterial Line Monitoring & Waveform Physics",
+        "b": "• Indications: Continuous real-time blood pressure monitoring in shock states, high-dose vasopressor/inotropic titration, and frequent arterial blood gas sampling.\n\n• Arterial Waveform Components:\n  - Systolic Upstroke: Reflects left ventricular contractility (dP/dt) and aortic compliance.\n  - Systolic Peak: Corresponds to peak systolic pressure.\n  - Dicrotic Notch: Marks aortic valve closure and the transition from systole to diastole.\n  - Diastolic Runoff: Reflects systemic vascular resistance (SVR) and vascular tone.\n\n• Fast Flush Test (Square Wave Test) for Dynamic Frequency Response:\n  - Overdamped Waveform: Slurred upstroke, absent dicrotic notch, falsely LOW systolic BP and falsely HIGH diastolic BP (MAP is usually preserved).\n    * Causes: Air bubbles in tubing, blood clots in cannula, compliant flexible tubing, loose luer locks.\n    * Management: Flush line, aspirate clots, de-air tubing completely.\n  - Underdamped Waveform (Resonance / Ringing): Exaggerated steep upstroke, multiple ringing oscillations after flush, falsely HIGH systolic BP and falsely LOW diastolic BP.\n    * Causes: Stiff tubing, catheter whip, hyperdynamic circulation, tachycardia.\n    * Management: Insert a damping device (ROSE device) or trust the MAP (MAP remains accurate even in resonance!).\n\n• Arterial Cannulation Sites & Pitfalls:\n  - Radial artery (first-line; collateral supply via ulnar artery); Femoral artery (preferred in profound shock / severe peripheral vasoconstriction where radial pressure underestimates central aortic pressure by <b><u>10 to 20 mmHg</u></b>); Brachial artery (end artery, higher ischemia risk); Axillary artery.",
+        "callout": {
+          "type": "pearl",
+          "title": "PHYSICS PEARL — The Square Wave Test Interpretation",
+          "text": "Perform a fast flush: If the oscillation following the square wave terminates with exactly <b><u>1 to 2 oscillations</u></b> before resuming the waveform, the system is optimally damped (damping coefficient <b><u>0.6 to 0.7</u></b>). Zero oscillations = overdamped; > 2 oscillations = underdamped."
+        }
+      },
+      {
+        "h": "The Pulmonary Artery Catheter (PAC / Swan-Ganz): Profiles & Pressures",
+        "b": "• Clinical Indications for PAC in Modern ICU:\n  - Refractory undifferentiated shock; severe mixed shock states (e.g., septic shock with severe underlying cardiomyopathy).\n  - Severe pulmonary arterial hypertension (PAH) with acute right ventricular failure.\n  - Cardiogenic shock requiring mechanical circulatory support (Impella, ECMO) titration.\n\n• Normal Intracardiac & Vascular Pressure Profiles:\n  - Right Atrial Pressure (RAP / CVP): <b><u>2 to 6 mmHg</u></b>.\n  - Right Ventricular Pressure (RVP): Systolic <b><u>15 to 25 mmHg</u></b>, Diastolic <b><u>0 to 8 mmHg</u></b>.\n  - Pulmonary Artery Pressure (PAP): Systolic <b><u>15 to 25 mmHg</u></b>, Diastolic <b><u>8 to 15 mmHg</u></b>, Mean <b><u>10 to 20 mmHg</u></b>.\n  - Pulmonary Capillary Wedge Pressure (PCWP): <b><u>6 to 12 mmHg</u></b> (measured at end-expiration at West Zone 3 of the lung).\n\n• Cardiac Output Measurement:\n  - Intermittent Bolus Thermodilution: Inject 10 mL of cold saline (< 8°C) into the proximal RA port; thermistor at the tip detects temperature change over time. Area under the Stewart-Hamilton curve is inversely proportional to cardiac output.\n  - Fick Principle: Cardiac Output = Oxygen Consumption (VO2) / [Arterial O2 Content (CaO2) - Mixed Venous O2 Content (CvO2)].\n\n• Mixed Venous Oxygen Saturation (SvO2):\n  - Normal: <b><u>65% to 75%</u></b> (drawn from the distal pulmonary artery port, representing mixed blood from SVC, IVC, and coronary sinus).\n  - SvO2 < 65%: Inadequate delivery (low CO, severe anemia, hypoxemia) or high VO2 (shivering, fever, seizure).\n  - SvO2 > 80%: Cellular extraction failure (septic shock, cyanide toxicity, hypothermia).",
+        "table": {
+          "headers": [
+            "Hemodynamic Parameter",
+            "Normal Range",
+            "Hypovolemic Shock",
+            "Cardiogenic Shock",
+            "Septic (Distributive) Shock"
+          ],
+          "rows": [
+            [
+              "CVP / RAP",
+              "2–6 mmHg",
+              "Low (< 2–4)",
+              "High (> 12–15)",
+              "Low to Normal"
+            ],
+            [
+              "PCWP",
+              "6–12 mmHg",
+              "Low (< 6–8)",
+              "High (> 18–20)",
+              "Low to Normal"
+            ],
+            [
+              "Cardiac Index (CI)",
+              "2.5–4.0 L/min/m²",
+              "Low (< 2.2)",
+              "Severely Low (< 1.8–2.0)",
+              "High (Early hyperdynamic > 3.5)"
+            ],
+            [
+              "SVR",
+              "800–1200 dyn·s/cm⁵",
+              "High (> 1400)",
+              "High (> 1400–1600)",
+              "Low (< 700–800)"
+            ],
+            [
+              "SvO2 / ScvO2",
+              "65–75%",
+              "Low (< 60–65%)",
+              "Low (< 55–60%)",
+              "High (> 70–75%)"
+            ]
+          ],
+          "caption": "Classic hemodynamic profiles measured via pulmonary artery catheterization."
+        }
+      },
+      {
+        "h": "Transpulmonary Thermodilution (PiCCO & EV1000) & Volumetric Parameters",
+        "b": "• Principle of Transpulmonary Thermodilution (TPTD):\n  - Requires a central venous line (CVC) and a specialized thermistor-tipped femoral arterial catheter.\n  - Cold saline bolus (15–20 mL < 8°C) is injected into the CVC; the thermistor in the femoral artery records the downstream thermodilution curve after passing through the right heart, pulmonary circulation, left heart, and aorta.\n\n• Key Volumetric Parameters Provided by PiCCO:\n  1. Global End-Diastolic Volume Index (GEDVI):\n     - Represents total volume of blood in all four cardiac chambers at end-diastole.\n     - Normal: <b><u>680 to 800 mL/m²</u></b>. Reflects true volumetric cardiac preload (superior to CVP/PCWP).\n  2. Extravascular Lung Water Index (EVLWI):\n     - Directly quantifies thermal volume of fluid in the lung interstitium and alveoli (pulmonary edema).\n     - Normal: <b><u>3.0 to 7.0 mL/kg</u></b>.\n     - EVLWI <b><u>> 10.0 mL/kg</u></b> indicates significant pulmonary edema; values <b><u>> 15.0 mL/kg</u></b> correlate with severe ARDS and high mortality.\n  3. Pulmonary Vascular Permeability Index (PVPI = EVLWI / Pulmonary Blood Volume):\n     - Differentiates the etiology of pulmonary edema:\n     - PVPI <b><u>< 2.0</u></b>: Hydrostatic / Cardiogenic pulmonary edema (intact alveolar-capillary barrier, fluid driven by high wedge pressure).\n     - PVPI <b><u>> 3.0</u></b>: Permeability / Inflammatory pulmonary edema (ARDS; damaged capillary membrane with proteinaceous alveolar leak).\n  4. Cardiac Function Index (CFI) & Global Ejection Fraction (GEF):\n     - Quantifies intrinsic myocardial contractility independent of loading conditions.",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — PiCCO Guidance in ARDS with Sepsis",
+          "text": "When managing a septic patient with ARDS, the combination of GEDVI and EVLWI prevents dangerous fluid over-resuscitation: If GEDVI is low (< 650) but EVLWI is already high (> 12 mL/kg), giving IV crystalloids will worsen alveolar flooding without meaningful stroke volume gain! Transition immediately to early vasopressors and inotropes."
+        }
+      },
+      {
+        "h": "Bedside Echocardiography for Non-Invasive Hemodynamic Profiling",
+        "b": "• Stroke Volume & Cardiac Output via LVOT VTI:\n  - Measure Left Ventricular Outflow Tract (LVOT) diameter on parasternal long-axis (PLAX) in mid-systole (typically <b><u>1.8 to 2.2 cm</u></b>).\n  - LVOT Cross-Sectional Area (CSArea) = 0.785 × (LVOT diameter)².\n  - Place Pulsed-Wave (PW) Doppler at the LVOT in apical 5-chamber view; trace the Velocity Time Integral (LVOT VTI, normal <b><u>18 to 22 cm</u></b>).\n  - <b><u>Stroke Volume (SV) = CSArea × LVOT VTI</u></b> (normal <b><u>60 to 90 mL</u></b>).\n  - <b><u>Cardiac Output (CO) = SV × Heart Rate</u></b>.\n  - A change in LVOT VTI of <b><u>≥ 10% to 15%</u></b> during a Passive Leg Raise (PLR) test confirms volume responsiveness.\n\n• Left Ventricular Filling Pressures (Diastolic Function):\n  - Measure early mitral inflow velocity (E wave) and late atrial velocity (A wave) via PW Doppler at mitral leaflet tips.\n  - Measure mitral annular tissue velocity (e' wave) via Tissue Doppler Imaging (TDI) at the septal and lateral annulus.\n  - E/e' Ratio:\n    * E/e' <b><u>< 8</u></b>: Normal LV filling pressure (PCWP < 12 mmHg).\n    * E/e' <b><u>> 14</u></b>: Markedly elevated LV filling pressure (PCWP > 18–20 mmHg, consistent with cardiogenic congestion).\n\n• Right Ventricular Assessment:\n  - Tricuspid Annular Plane Systolic Excursion (TAPSE): M-mode at lateral tricuspid annulus; TAPSE <b><u>< 17 mm</u></b> indicates significant RV systolic dysfunction.\n  - RV/LV Diameter Ratio: Measured in apical 4-chamber view; ratio <b><u>> 0.6</u></b> indicates RV enlargement, <b><u>> 1.0</u></b> indicates severe RV dilation with imminent hemodynamic failure."
+      }
+    ],
+    "example": "CLINICAL CASE: A 62-year-old male with severe pneumonia and septic shock is admitted to the ICU. After 30 mL/kg fluid resuscitation, he remains hypotensive on noradrenaline 0.25 mcg/kg/min. A femoral PiCCO catheter is placed.\n\nPiCCO Analysis & Targeted Interventions:\n1. Baseline PiCCO Readings: Cardiac Index (CI) 2.1 L/min/m², Stroke Volume Variation (SVV) 18%, GEDVI 540 mL/m² (normal 680–800), EVLWI 6.2 mL/kg (normal <7), PVPI 1.6.\n2. Interpretation: The low GEDVI and high SVV indicate persistent preload deficit, while the low EVLWI confirms that the lungs are dry (safe to give fluid).\n3. Fluid Challenge: 500 mL balanced crystalloid infused over 15 minutes. Repeat PiCCO: CI increases to 2.9 L/min/m² (+38%), GEDVI rises to 690 mL/m², SVV drops to 9%, while EVLWI remains safe at 6.8 mL/kg.\n4. Day 3 Deterioration: Patient develops worsening hypoxemia (P/F drops to 120). Repeat PiCCO: CI 3.2 L/min/m², GEDVI 780 mL/m², but EVLWI has spiked to 14.5 mL/kg with a PVPI of 3.8!\n5. Diagnosis & Shift in Strategy: The PVPI of 3.8 confirms acute inflammatory capillary leak (ARDS), not fluid overload. Fluids are strictly restricted, lung-protective ventilation enforced, and continuous furosemide infusion initiated.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 4. Wolters Kluwer.",
+      "Cecconi M, et al. Consensus on Circulatory Shock and Hemodynamic Monitoring. Task Force of the European Society of Intensive Care Medicine. Intensive Care Med 2014;40(12):1795–1815.",
+      "Monnet X, et al. Prediction of Fluid Responsiveness: An Update. Ann Intensive Care 2016;6(1):111.",
+      "Ochagavia A, et al. Monitoring in Critical Care: Current Status and Future Trends. Med Intensiva 2014;38(8):497–505."
+    ]
+  },
+  {
+    "id": "vasopressors-inotropes-titration-protocols",
+    "cat": "cc_hemodynamics",
+    "name": "Vasopressors & Inotropes: Pharmacology & Titration Protocols",
+    "short": "Vasopressors & Inotropes",
+    "tags": [
+      "Noradrenaline",
+      "Vasopressin",
+      "Adrenaline",
+      "Dobutamine",
+      "Milrinone",
+      "Phenylephrine",
+      "Extravasation Protocol",
+      "Phentolamine"
+    ],
+    "tagline": "Receptor affinities, dosing ranges, second-line pressor synergy, inodilators, peripheral infusion safety and phentolamine rescue",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 4; Surviving Sepsis Campaign 2021/2026; Critical Care Clinics 2019; 35(2):247–264.",
+    "sections": [
+      {
+        "h": "Adrenergic & Non-Adrenergic Receptor Pharmacology Matrix",
+        "b": "• Receptor Profiles & Downstream Second Messengers:\n  - Alpha-1 (α1): Gq-protein coupled → Phospholipase C activation → IP3/DAG → intracellular calcium release → potent vascular smooth muscle contraction (vasoconstriction) and increased SVR.\n  - Beta-1 (β1): Gs-protein coupled → Adenylyl cyclase activation → cyclic AMP (cAMP) → Protein Kinase A → increased myocardial inotropy (contractility), chronotropy (heart rate), and dromotropy (conduction velocity).\n  - Beta-2 (β2): Gs-protein coupled → increased cAMP in vascular smooth muscle → relaxation and vasodilation; bronchodilation; stimulates skeletal muscle Na+/K+ ATPase (causing hypokalemia and lactic acidosis).\n  - Vasopressin-1a (V1a): Gq-protein coupled → vascular smooth muscle contraction; maintains vasoconstriction during severe acidosis when adrenergic receptors become desensitized.\n  - Dopamine-1 (DA1): Gs-protein coupled → renal, mesenteric, and coronary vasodilation.\n  - Phosphodiesterase-3 (PDE3) Inhibition: Prevents cAMP degradation in cardiomyocytes and vascular smooth muscle → positive inotropy WITH systemic and pulmonary vasodilation ('inodilator').",
+        "table": {
+          "headers": [
+            "Vasoactive Agent",
+            "Alpha-1",
+            "Beta-1",
+            "Beta-2",
+            "V1a / Other",
+            "Hemodynamic Effects",
+            "Standard Dosing Range"
+          ],
+          "rows": [
+            [
+              "Norepinephrine (Noradrenaline)",
+              "++++",
+              "++",
+              "+",
+              "—",
+              "Potent vasoconstriction (↑SVR), modest ↑CO",
+              "0.02–1.0 mcg/kg/min (titrate to MAP ≥65)"
+            ],
+            [
+              "Vasopressin (AVP)",
+              "—",
+              "—",
+              "—",
+              "++++ (V1a)",
+              "Pure vasoconstriction; no arrhythmia; spares pulmonary bed",
+              "Fixed dose 0.03 units/min (never titrated)"
+            ],
+            [
+              "Epinephrine (Adrenaline)",
+              "++++",
+              "++++",
+              "+++",
+              "—",
+              "Potent inotrope + pressor; transient ↑lactate",
+              "0.02–0.5 mcg/kg/min"
+            ],
+            [
+              "Dobutamine",
+              "+",
+              "++++",
+              "++",
+              "—",
+              "Potent inotrope; peripheral vasodilation (↓SVR)",
+              "2.5–20.0 mcg/kg/min"
+            ],
+            [
+              "Milrinone",
+              "—",
+              "— (PDE3)",
+              "—",
+              "PDE3 inhibitor",
+              "Inotrope + pulmonary/systemic vasodilator (inodilator)",
+              "0.25–0.75 mcg/kg/min (renally cleared)"
+            ],
+            [
+              "Phenylephrine",
+              "++++",
+              "0",
+              "0",
+              "—",
+              "Pure vasoconstriction; reflex bradycardia",
+              "0.5–5.0 mcg/kg/min (push: 100–200 mcg)"
+            ],
+            [
+              "Dopamine",
+              "+ to ++++",
+              "++ to +++",
+              "+",
+              "DA1 (low dose)",
+              "Dose-dependent: DA1 (<3), β1 (3–10), α1 (>10 mcg/kg/min)",
+              "2.0–20.0 mcg/kg/min (high arrhythmia rate)"
+            ]
+          ],
+          "caption": "Receptor affinities and clinical pharmacological profiles of critical care vasoactive infusions."
+        }
+      },
+      {
+        "h": "First-Line Vasopressors in Septic & Vasodilatory Shock",
+        "b": "• Norepinephrine (Noradrenaline) — The Undisputed First-Line Agent:\n  - Surviving Sepsis Campaign Grade 1A recommendation.\n  - Restores vascular tone and MAP with minimal increase in heart rate or myocardial oxygen consumption compared to dopamine.\n  - Titration: Begin at <b><u>0.05 mcg/kg/min</u></b>; rapidly titrate every 2 to 5 minutes to achieve target MAP <b><u>≥ 65 mmHg</u></b> (or <b><u>80 to 85 mmHg</u></b> in chronic hypertensive patients).\n  - High-dose threshold: Doses <b><u>> 0.25 mcg/kg/min</u></b> define severe shock; mandates immediate addition of a second-line pressor!\n\n• Vasopressin (Argipressin) — Second-Line Vasopressor of Choice:\n  - Rationale: Endogenous vasopressin stores become depleted within 24 to 36 hours of septic shock. Sepsis causes down-regulation of alpha-adrenergic receptors due to acidosis and nitric oxide.\n  - Fixed Dosing: Infused at a strict fixed dose of <b><u>0.03 units/min</u></b> (do NOT titrate up and down!).\n  - Clinical Benefits: Exerts a 'noradrenaline-sparing effect' (reduces noradrenaline requirements by up to 50%); reduces incidence of tachyarrhythmias (VASST trial); does not cause pulmonary vasoconstriction (preserves RV function).\n  - Initiation Threshold: Add vasopressin when noradrenaline reaches <b><u>0.25 mcg/kg/min</u></b>, rather than waiting for extreme noradrenaline doses (> 0.5 mcg/kg/min).\n\n• Epinephrine (Adrenaline) — Third-Line Agent in Refractory Shock:\n  - Add when MAP remains < 65 mmHg despite noradrenaline + vasopressin.\n  - Dosing: <b><u>0.05 to 0.5 mcg/kg/min</u></b>.\n  - Metabolic Effect: Stimulates skeletal muscle beta-2 receptors, activating aerobic glycolysis and Na+/K+ ATPase, producing a transient spike in serum lactate. This catecholamine-induced hyperlactatemia is benign and resolves over 24 hours.",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — Why Dopamine is Deprecated in Sepsis",
+          "text": "The landmark SOAP II trial (NEJM 2010) demonstrated that dopamine is associated with a significantly higher incidence of tachyarrhythmias (<b><u>24.1%</u></b> vs <b><u>12.4%</u></b>) and increased 28-day mortality in cardiogenic shock compared to norepinephrine. Dopamine is strictly second-line, reserved only for highly selected patients with bradycardia and low arrhythmia risk."
+        }
+      },
+      {
+        "h": "Inotropic Selection in Septic Cardiomyopathy & Low Cardiac Output",
+        "b": "• Identifying Septic Cardiomyopathy:\n  - Up to <b><u>40% to 60%</u></b> of septic shock patients develop septic-induced myocardial dysfunction (manifested by depressed LVEF, LV dilation, or low ScvO2 < 65% with elevated CVP).\n\n• Dobutamine Titration:\n  - Indication: Persistent hypoperfusion (elevated lactate, prolonged capillary refill > 3 s, ScvO2 < 70%) despite achieving target MAP ≥ 65 mmHg with adequate intravascular volume.\n  - Dosing: Start at <b><u>2.5 to 5.0 mcg/kg/min</u></b>; titrate by 2.5 mcg/kg/min every 15–30 min up to <b><u>10 to 20 mcg/kg/min</u></b>.\n  - Clinical Monitoring: Stop or reduce dose if heart rate increases by <b><u>> 20%</u></b>, tachyarrhythmias develop, or MAP drops due to beta-2 vasodilation.\n\n• Milrinone in Pulmonary Hypertension & RV Failure:\n  - PDE3 inhibitor; bypasses down-regulated beta-adrenergic receptors.\n  - Reduces right ventricular afterload by dilating the pulmonary vascular bed while boosting RV contractility.\n  - Dosing: <b><u>0.25 to 0.75 mcg/kg/min</u></b> (omit loading bolus in ICU to prevent sudden hypotension).\n  - Renal Clearance: Accumulates in renal failure (elimination half-life prolonged from 2.5 hours to <b><u>> 6 to 10 hours</u></b>); adjust dose when CrCl < 50 mL/min."
+      },
+      {
+        "h": "Peripheral Vasopressor Safety & Extravasation Protocol",
+        "b": "• Safe Peripheral Administration of Noradrenaline:\n  - Waiting for central venous catheter (CVC) insertion causes dangerous resuscitation delays. Peripheral noradrenaline can be safely initiated through a large-bore IV catheter (<b><u>18- or 20-gauge</u></b>) placed in the forearm or antecubital fossa.\n  - Safe Duration: Up to <b><u>4 to 6 hours</u></b> (or longer with strict protocolized checks) while central access is being secured.\n  - Safety Protocol: Check IV site for blanching, swelling, or redness every <b><u>15 to 30 minutes</u></b>; never infuse through veins of the hand, wrist, or lower extremities.\n\n• Management of Peripheral Vasopressor Extravasation (Emergency Protocol):\n  - Extravasation of alpha-1 agonists causes intense local vasoconstriction leading to ischemic skin necrosis and gangrene.\n  - Step-by-Step Extravasation Rescue Protocol:\n    1. Immediately STOP the infusion; do NOT remove the peripheral cannula immediately!\n    2. Aspirate as much extravasated drug as possible through the existing catheter.\n    3. Remove the catheter after aspiration.\n    4. Specific Antidote — Phentolamine:\n       * Phentolamine is a competitive non-selective alpha-adrenergic antagonist.\n       * Dose: <b><u>5 to 10 mg</u></b> reconstituted in <b><u>10 to 15 mL of 0.9% normal saline</u></b>.\n       * Infiltrate subcutaneously using a fine needle (25-gauge) throughout the entire blanched, ischemic area in a circular ring pattern within <b><u>12 hours</u></b> of extravasation.\n       * Immediate reversal: Skin reperfusion and flush should be visible within 10 to 15 minutes.\n    5. Topical Nitroglycerin Paste: Apply <b><u>1 to 2 inches of 2% nitroglycerin paste</u></b> locally to promote collateral vasodilation if phentolamine is unavailable.\n    6. Elevate the extremity and apply warm compresses to enhance blood flow."
+      }
+    ],
+    "example": "CLINICAL CASE: A 70-year-old male is admitted with septic shock secondary to acute ascending cholangitis. Following 30 mL/kg fluid resuscitation, he is on noradrenaline 0.35 mcg/kg/min with a MAP of 66 mmHg. However, heart rate is 118 bpm (sinus), serum lactate is rising (from 3.8 to 5.4 mmol/L), ScvO2 is 56%, and bedside echo reveals a hyperdynamic LV with severe RV dilatation and septal flattening (acute cor pulmonale).\n\nStepwise Vasoactive Strategy:\n1. Second-Line Pressor Addition: Given noradrenaline dose > 0.25 mcg/kg/min, Vasopressin is added at a fixed dose of 0.03 units/min. Over the next hour, noradrenaline requirements decrease to 0.18 mcg/kg/min.\n2. Inotropic & RV Optimization: Persistent cellular hypoperfusion (lactate 5.4, ScvO2 56%) is driven by acute RV failure. Dobutamine is initiated at 2.5 mcg/kg/min and titrated to 5.0 mcg/kg/min.\n3. Clinical Response: Dobutamine augments RV contractility; ScvO2 climbs to 71%, capillary refill time normalizes to 2.4 seconds, and repeat 2-hour lactate drops to 3.6 mmol/L.\n4. Peripheral Rescue Event: During ward-to-ICU transfer, peripheral noradrenaline infiltrated the left forearm causing a 5 cm blanched ischemic area. The emergency extravasation protocol was activated: 5 mg phentolamine in 10 mL saline was infiltrated subcutaneously within 20 minutes, completely reversing the blanching without tissue loss.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 4. Wolters Kluwer.",
+      "Evans L, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Intensive Care Med 2021;47(11):1181–1247.",
+      "De Backer D, et al. Comparison of Dopamine and Norepinephrine in the Treatment of Shock (SOAP II Trial). N Engl J Med 2010;362(9):779–789.",
+      "Russell JA, et al. Vasopressin versus Norepinephrine Infusion in Patients with Septic Shock (VASST Trial). N Engl J Med 2008;358(9):877–887.",
+      "Cardenas-Garcia J, et al. Safety of Peripheral Intravenous Administration of Vasoactive Medication. J Hosp Med 2015;10(9):581–585."
+    ]
+  },
+  {
+    "id": "sepsis3-hour1-bundle-resuscitation",
+    "cat": "cc_sepsis",
+    "name": "Sepsis-3 Definitions, Hour-1 Bundle & Resuscitation",
+    "short": "Sepsis-3 & Hour-1 Bundle",
+    "tags": [
+      "Sepsis-3",
+      "Septic Shock",
+      "Hour-1 Bundle",
+      "Crystalloids",
+      "Source Control",
+      "Hydrocortisone",
+      "Lactate Clearance"
+    ],
+    "tagline": "SOFA organ dysfunction criteria, 30 mL/kg balanced crystalloids, early vasopressors, source control within 6 hours and adjunctive steroids",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 5; Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021/2026; Critical Care Medicine 2021; 49:e1063–e1143.",
+    "sections": [
+      {
+        "h": "Sepsis-3 Consensus Definitions & Diagnostic Criteria",
+        "b": "• The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3):\n  - Sepsis: Life-threatening organ dysfunction caused by a dysregulated host response to infection.\n    * Operational Criterion: An acute change in total Sequential Organ Failure Assessment (SOFA) score of <b><u>≥ 2 points</u></b> consequent to the infection (reflects an overall in-hospital mortality rate of <b><u>> 10%</u></b>).\n    * SIRS criteria (fever, tachycardia, tachypnea, leukocytosis) are no longer required for definition, as they represent general inflammation rather than true dysregulated organ failure.\n\n  - Septic Shock: A subset of sepsis in which underlying circulatory and cellular/metabolic abnormalities are profound enough to substantially increase mortality.\n    * Operational Criteria (Must fulfill BOTH):\n      1. Persistent hypotension requiring vasopressors to maintain Mean Arterial Pressure (MAP) <b><u>≥ 65 mmHg</u></b>, AND\n      2. Serum lactate level <b><u>> 2.0 mmol/L (18 mg/dL)</u></b> despite adequate volume resuscitation.\n    * In-hospital mortality for septic shock exceeds <b><u>40% to 50%</u></b>!",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — The Sepsis-3 Redefinition",
+          "text": "The term 'Severe Sepsis' was completely retired by Sepsis-3! Sepsis by definition now implies severe organ failure. Patients are classified as having either <b>Sepsis</b> (infection + acute organ failure) or <b>Septic Shock</b> (sepsis + pressor requirement + lactate > 2.0 mmol/L)."
+        }
+      },
+      {
+        "h": "The Surviving Sepsis Campaign (SSC) Hour-1 Bundle",
+        "b": "The Hour-1 Bundle represents a high-priority emergency resuscitation target to be initiated immediately upon recognition:\n\n1. Measure Blood Lactate Level:\n• Point-of-care or laboratory lactate drawn immediately.\n• If initial lactate is <b><u>> 2.0 mmol/L</u></b>, remeasure within <b><u>2 to 4 hours</u></b> to guide resuscitation towards lactate clearance (target: clearance of <b><u>> 10% to 20%</u></b> every 2 hours).\n\n2. Obtain Blood Cultures Prior to Starting Antibiotics:\n• Draw at least <b><u>2 sets of blood cultures</u></b> (one percutaneous peripheral venipuncture, and one from each indwelling vascular catheter in place > 48 h; each set = 1 aerobic + 1 anaerobic bottle, total <b><u>20 to 30 mL blood per set</u></b>).\n• Do not delay antimicrobial initiation by > 45 minutes if cultures are difficult to obtain!\n\n3. Administer Broad-Spectrum Empiric Antimicrobials:\n• Infuse targeted IV antimicrobials within <b><u>1 hour</u></b> of sepsis recognition.\n• In shock, every 1-hour delay in effective antibiotic administration increases mortality by <b><u>7.6%</u></b> (Kumar et al., Crit Care Med).\n\n4. Rapid Administration of 30 mL/kg Intravenous Crystalloid:\n• Mandated for patients with hypotension (MAP < 65 or SBP < 90) OR initial serum lactate <b><u>≥ 4.0 mmol/L</u></b>.\n• Infuse <b><u>30 mL/kg of balanced crystalloid</u></b> (Plasmalyte or Lactated Ringer's) within the first <b><u>3 hours</u></b>.\n• Why Balanced Crystalloids (SMART / SALT-ED Trials): 0.9% Normal Saline causes hyperchloremic metabolic acidosis, renal vasoconstriction, and increases the composite outcome of death, new RRT, and persistent renal dysfunction.\n\n5. Apply Vasopressors for Persistent Hypotension:\n• Initiate Norepinephrine (Noradrenaline) during or immediately after fluid resuscitation to maintain MAP <b><u>≥ 65 mmHg</u></b>.\n• Do NOT wait to complete the full 30 mL/kg fluid bolus before starting vasopressors if the patient is profoundly hypotensive!",
+        "table": {
+          "headers": [
+            "Hour-1 Bundle Element",
+            "Target Timeframe",
+            "Clinical Goal",
+            "Key Guideline Requirement"
+          ],
+          "rows": [
+            [
+              "Lactate Measurement",
+              "Immediately (< 15 min)",
+              "Identify occult tissue dysoxia",
+              "Remeasure within 2–4 h; target >10–20% clearance"
+            ],
+            [
+              "Blood Cultures",
+              "< 45 min",
+              "Microbiological source identification",
+              "2 sets (aerobic + anaerobic); do not delay antibiotics"
+            ],
+            [
+              "Broad-Spectrum Antibiotics",
+              "Within 1 hour",
+              "Eradicate bloodstream/tissue pathogens",
+              "Cover all likely pathogens; optimize PK/PD loading"
+            ],
+            [
+              "30 mL/kg Crystalloid Bolus",
+              "Within first 3 hours",
+              "Restore intravascular volume",
+              "Balanced crystalloids preferred; avoid 0.9% saline / starches"
+            ],
+            [
+              "Norepinephrine Vasopressor",
+              "Immediate for MAP < 65",
+              "Restore perfusion pressure",
+              "Peripheral initiation safe; titrate to MAP ≥ 65 mmHg"
+            ]
+          ],
+          "caption": "The Surviving Sepsis Campaign Hour-1 Bundle elements and clinical targets."
+        }
+      },
+      {
+        "h": "Resuscitation Beyond the Bundle & Dynamic Preload Assessment",
+        "b": "• Shift Away from Fixed Fluid Volumes:\n  - Following the initial 30 mL/kg bolus, routine unmonitored fluid administration is dangerous and causes fluid creep, lung water accumulation, and worsening organ dysfunction.\n  - Only approximately <b><u>50% of septic shock patients</u></b> are fluid responsive after the initial bolus!\n\n• Dynamic Measures of Fluid Responsiveness:\n  1. Passive Leg Raising (PLR) Test: Measures real-time cardiac output or stroke volume before and after shifting 300–500 mL of autologous blood. A <b><u>≥ 10% increase</u></b> in stroke volume confirms volume responsiveness.\n  2. Pulse Pressure Variation (PPV) / Stroke Volume Variation (SVV): Valid only in sinus rhythm, fully passive mechanical ventilation with VT <b><u>≥ 8 mL/kg PBW</u></b>. Threshold: <b><u>> 13%</u></b> indicates volume responsiveness.\n  3. Tidal Volume Challenge (VT Challenge): Transiently increase VT from 6 to 8 mL/kg for 1 minute; an absolute increase in PPV by <b><u>≥ 3.5%</u></b> confirms volume responsiveness in lung-protective ventilation.\n\n• Perfusion-Targeted Resuscitation (The ANDROMEDA-SHOCK Trial):\n  - Capillary Refill Time (CRT): Apply pressure to index fingertip with glass slide for 10 s; normal is <b><u>≤ 3.0 seconds</u></b>.\n  - Targeting CRT normalization resulted in less organ dysfunction and reduced fluid administration compared to serial lactate clearance!",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — The ANDROMEDA-SHOCK Trial",
+          "text": "Capillary Refill Time (CRT) normalizes within <b><u>15 to 30 minutes</u></b> of restored microvascular perfusion, whereas lactate clearance requires <b><u>hours</u></b> due to delayed hepatic metabolism. Using CRT prevents excessive, toxic fluid overloading during active septic shock resuscitation."
+        }
+      },
+      {
+        "h": "Source Control, Corticosteroids & Refractory Shock Management",
+        "b": "• Emergency Source Control (The 6-Hour Window):\n  - Source control is the single most important intervention in sepsis after antibiotics!\n  - Rapid diagnostic identification: Bedside ultrasound, CT abdomen/pelvis, or diagnostic paracentesis/thoracentesis.\n  - Emergent intervention within <b><u>6 to 12 hours</u></b> of recognition: Surgical debridement of necrotizing fasciitis, percutaneous drainage of intra-abdominal abscess, cholecystostomy, nephrostomy for pyonephrosis, or removal of infected central venous catheters.\n\n• Adjunctive Corticosteroid Therapy (ADRENAL & APROCCHSS Trials):\n  - Indication: Refractory septic shock requiring ongoing vasopressor therapy (norepinephrine dose <b><u>≥ 0.25 mcg/kg/min</u></b> or vasopressin escalation) despite adequate fluid resuscitation.\n  - Drug & Dosing: Intravenous <b><u>Hydrocortisone 200 mg/day</u></b> (administered as <b><u>50 mg IV every 6 hours</u></b> or as a continuous IV infusion of 200 mg over 24 hours).\n  - Benefits: Accelerates shock resolution, shortens time on vasopressors, and reduces ICU length of stay; taper once vasopressors are weaned.\n  - Routine fludrocortisone is optional (used in APROCCHSS, not in ADRENAL).\n\n• Second-Line Vasoactive Strategy in Refractory Septic Shock:\n  - Add Vasopressin at fixed <b><u>0.03 units/min</u></b> when norepinephrine reaches 0.25 mcg/kg/min.\n  - Add Epinephrine (0.05–0.5 mcg/kg/min) if MAP remains < 65 mmHg.\n  - Inotropic Dobutamine (2.5–20 mcg/kg/min) added for myocardial depression / low ScvO2 (< 70%)."
+      }
+    ],
+    "example": "CLINICAL CASE: A 69-year-old female presents with acute delirium, chills, and fever. Vitals: HR 126 bpm, BP 78/42 mmHg (MAP 54 mmHg), RR 28 bpm, SpO2 93% on room air. Point-of-care lactate is 4.8 mmol/L, CRT is 5.2 seconds, and urinalysis shows abundant WBCs and bacteria.\n\nHour-1 Resuscitation & De-escalation Protocol:\n1. Diagnosis: Sepsis-3 Septic Shock secondary to acute urosepsis (hypotension + lactate 4.8).\n2. Hour-1 Bundle Execution: Two sets of blood cultures drawn. Piperacillin-tazobactam 4.5 g IV infusion started immediately (within 35 minutes). 30 mL/kg balanced crystalloid (Plasmalyte 2100 mL for 70 kg) started.\n3. Vasopressors: Due to profound initial MAP of 54 mmHg, peripheral noradrenaline is initiated at 0.10 mcg/kg/min via a 20-G forearm cannula while fluid is running. MAP increases to 68 mmHg within 15 minutes.\n4. Source Control: Bedside POCUS reveals severe right hydronephrosis with internal echoes (pyonephrosis). Emergent urology consult called; percutaneous nephrostomy placed under ultrasound guidance at hour 4, draining 80 mL of frank pus (source controlled!).\n5. Adjunctive Hydrocortisone: Noradrenaline requirements reach 0.28 mcg/kg/min; vasopressin 0.03 U/min and IV hydrocortisone 50 mg q6h are added. Over the next 12 hours, pressors are successfully weaned off, CRT normalizes to 2.1 seconds, and lactate drops to 1.4 mmol/L.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 5. Wolters Kluwer.",
+      "Evans L, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Crit Care Med 2021;49(11):e1063–e1143.",
+      "Hernández G, et al. Effect of a Resuscitation Strategy Targeting Peripheral Perfusion Status vs Serum Lactate Levels on 28-Day Mortality (ANDROMEDA-SHOCK). JAMA 2019;321(7):654–664.",
+      "Annane D, et al. Hydrocortisone plus Fludrocortisone for Adults with Septic Shock (APROCCHSS Trial). N Engl J Med 2018;378(9):809–818.",
+      "Venkatesh B, et al. Adjunctive Glucocorticoid Therapy in Patients with Septic Shock (ADRENAL Trial). N Engl J Med 2018;378(9):797–808."
+    ]
+  },
+  {
+    "id": "multidrug-resistant-pathogens-icu",
+    "cat": "cc_sepsis",
+    "name": "MDR Pathogens, PK/PD Infusions & Antibiotic Stewardship",
+    "short": "MDR Pathogens & PK/PD",
+    "tags": [
+      "ESKAPE Pathogens",
+      "CRE / CRAB / CRPA",
+      "Beta-Lactam PK/PD",
+      "Extended Infusions",
+      "Colistin vs Polymyxin B",
+      "Ceftazidime-Avibactam",
+      "Cefiderocol"
+    ],
+    "tagline": "Carbapenem-resistant Enterobacterales, Pseudomonas, Acinetobacter, novel BL-BLIs, colistin dosing and continuous infusion kinetics",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 5; IDSA Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections (2023 Update); Clinical Infectious Diseases 2023; ciad428.",
+    "sections": [
+      {
+        "h": "The ESKAPE Pathogens & Gram-Negative Resistance Mechanisms",
+        "b": "• The High-Priority ICU 'ESKAPE' Pathogens:\n  - <b>E</b>nterococcus faecium (VRE: Vancomycin-Resistant Enterococci)\n  - <b>S</b>taphylococcus aureus (MRSA: Methicillin-Resistant S. aureus)\n  - <b>K</b>lebsiella pneumoniae (ESBL & CRE: Carbapenem-Resistant Enterobacterales)\n  - <b>A</b>cinetobacter baumannii (CRAB: Carbapenem-Resistant A. baumannii)\n  - <b>P</b>seudomonas aeruginosa (CRPA / DTR: Difficult-to-Treat Resistance)\n  - <b>E</b>nterobacter species (AmpC beta-lactamase producers)\n\n• Major Gram-Negative Resistance Enzymes:\n  1. Extended-Spectrum Beta-Lactamases (ESBL: CTX-M, TEM, SHV): Hydrolyze penicillins, cephalosporins, and aztreonam. Inhibited by clavulanate, tazobactam, and avibactam. Carbapenems (Meropenem 1 g q8h) remain the gold standard treatment.\n  2. AmpC Beta-Lactamases (Enterobacter, Citrobacter freundii, Serratia marcescens, Providencia, Morganella): Inducible chromosomal cephalosporinases. Ceftriaxone or piperacillin-tazobactam therapy can select for stably derepressed mutants during treatment! Drug of choice: Cefepime (2 g q8h extended infusion) or Carbapenems.\n  3. Carbapenemases:\n     - Class A (KPC — Klebsiella pneumoniae carbapenemase): Serine carbapenemase. Inhibited by avibactam, vaborbactam, and relebactam.\n     - Class B (Metallo-Beta-Lactamases / MBL — NDM, VIM, IMP): Zinc-dependent enzymes. Hydrolyze all beta-lactams including carbapenems; spare Aztreonam! Avibactam and vaborbactam CANNOT inhibit MBLs.\n     - Class D (OXA-48-like, OXA-23/24 in Acinetobacter): Hydrolyze carbapenems; weakly inhibited by standard inhibitors. Inhibited by avibactam.",
+        "callout": {
+          "type": "pearl",
+          "title": "MICROBIOLOGY PEARL — The Aztreonam-Avibactam Synergy",
+          "text": "NDM (New Delhi Metallo-Beta-Lactamase) hydrolyzes all beta-lactams except Aztreonam. However, NDM producers almost always co-produce ESBLs or AmpC enzymes that destroy Aztreonam. Adding <b>Ceftazidime-Avibactam + Aztreonam</b> provides complete synergy: Avibactam protects Aztreonam from ESBL/AmpC enzymes, allowing Aztreonam to kill the NDM producer!"
+        }
+      },
+      {
+        "h": "Novel Beta-Lactam/Beta-Lactamase Inhibitor (BL-BLI) Agents",
+        "b": "• Next-Generation Antimicrobial Armamentarium:\n\n1. Ceftazidime-Avibactam (Avycaz):\n• Spectrum: KPC-producing CRE, OXA-48-producing CRE, and resistant Pseudomonas aeruginosa.\n• Dose: <b><u>2.5 g IV every 8 hours</u></b> infused over <b><u>2 hours</u></b> (adjusted in renal failure).\n• Ineffective against MBLs (NDM) unless combined with Aztreonam (2 g IV q8h).\n\n2. Meropenem-Vaborbactam (Vabomere):\n• Spectrum: KPC-producing Enterobacterales (extremely potent boronic acid inhibitor).\n• Dose: <b><u>4.0 g (2 g meropenem / 2 g vaborbactam) IV every 8 hours</u></b> infused over <b><u>3 hours</u></b>.\n• Ineffective against OXA-48, MBLs, and Acinetobacter.\n\n3. Ceftolozane-Tazobactam (Zerbaxa):\n• Spectrum: First-line agent of choice for Difficult-to-Treat (DTR) <b>Pseudomonas aeruginosa</b> (overcomes porin loss and efflux pump mechanisms).\n• Dose: <b><u>3.0 g (2 g ceftolozane / 1 g tazobactam) IV every 8 hours</u></b> infused over <b><u>1 hour</u></b> for hospital-acquired / ventilator-associated pneumonia (HAP/VAP).\n• Poor activity against carbapenemase-producing Enterobacterales.\n\n4. Cefiderocol (Fetroja) — The 'Trojan Horse' Siderophore Cephalosporin:\n• Novel Mechanism: Chelates extracellular ferric iron (Fe3+) and is actively transported through bacterial outer membrane iron-uptake channels, bypassing porin mutations and efflux pumps.\n• Ultra-Broad Spectrum: Stable against ALL carbapenemases (KPC, NDM, VIM, IMP, and OXA-48/OXA-23).\n• Indication: Reserve agent for Carbapenem-Resistant Acinetobacter baumannii (CRAB) and MBL-producing CRE.\n• Dose: <b><u>2.0 g IV every 8 hours</u></b> infused over <b><u>3 hours</u></b>.",
+        "table": {
+          "headers": [
+            "Novel Agent",
+            "Target Pathogens / Enzymes",
+            "Standard ICU Dosing",
+            "Infusion Duration",
+            "Key Resistance Gaps"
+          ],
+          "rows": [
+            [
+              "Ceftazidime-Avibactam",
+              "KPC & OXA-48 CRE, MDR Pseudomonas",
+              "2.5 g IV q8h",
+              "2 hours",
+              "Ineffective against NDM / MBLs (requires Aztreonam)"
+            ],
+            [
+              "Meropenem-Vaborbactam",
+              "KPC-producing Enterobacterales",
+              "4.0 g IV q8h",
+              "3 hours",
+              "Ineffective against OXA-48, MBLs, and Acinetobacter"
+            ],
+            [
+              "Ceftolozane-Tazobactam",
+              "DTR / MDR Pseudomonas aeruginosa",
+              "3.0 g IV q8h (pneumonia)",
+              "1 hour",
+              "Ineffective against carbapenemase-producing CRE"
+            ],
+            [
+              "Cefiderocol",
+              "CRAB, NDM/MBL CRE, DTR Pseudomonas",
+              "2.0 g IV q8h",
+              "3 hours",
+              "High cost; reserved strictly for refractory pan-drug resistance"
+            ]
+          ],
+          "caption": "Activity profiles and dosing of modern second-generation BL-BLIs and siderophores."
+        }
+      },
+      {
+        "h": "Polymyxins (Colistin vs Polymyxin B) in Carbapenem Resistance",
+        "b": "• Colistin (Colistimethate Sodium / CMS) vs Polymyxin B:\n  - Cationic polypeptide antibiotics that disrupt the bacterial lipopolysaccharide (LPS) outer membrane.\n\n• Colistin (CMS Prodrug):\n  - Administered as the inactive prodrug CMS, which is slowly hydrolyzed in vivo to active colistin.\n  - Renal Elimination: CMS is cleared renally; in normal renal function, up to <b><u>80% of CMS is excreted in urine</u></b> before converting to active colistin (causing subtherapeutic plasma levels!).\n  - Mandatory Loading Dose: <b><u>9 Million International Units (MIU)</u></b> (~300 mg Colistin Base Activity / CBA) infused over 1 hour.\n  - Maintenance Dose: <b><u>4.5 MIU IV every 12 hours</u></b> (adjusted for renal clearance).\n  - Major Toxicity: Nephrotoxicity (acute tubular necrosis in <b><u>30% to 50%</u></b> of patients) and neurotoxicity/neuromuscular blockade.\n\n• Polymyxin B (Active Drug of Choice in Sepsis):\n  - Administered directly as the ACTIVE drug (no prodrug conversion required; achieves rapid, predictable bactericidal levels within 1 hour!).\n  - Non-Renal Clearance: Eliminated by non-renal mechanisms; dose is NOT adjusted in renal failure or CRRT.\n  - Loading Dose: <b><u>2.0 to 2.5 mg/kg IV</u></b> (based on actual weight) over 1 hour.\n  - Maintenance Dose: <b><u>1.25 to 1.5 mg/kg IV every 12 hours</u></b>.\n  - Preferred over colistin for all systemic bloodstream and abdominal infections due to superior PK/PD predictability and lower nephrotoxicity; colistin preferred only for lower urinary tract infections (due to high urine concentrations of active colistin)."
+      },
+      {
+        "h": "PK/PD Optimization: Extended & Continuous Beta-Lactam Infusions",
+        "b": "• Pharmacokinetics/Pharmacodynamics (PK/PD) in Critical Illness:\n  - Sepsis causes dramatic physiological alterations: Massive capillary leak increases Volume of Distribution (Vd); Augmented Renal Clearance (ARC with CrCl > 130 mL/min) accelerates antibiotic elimination.\n  - Standard intermittent bolus dosing results in severely subtherapeutic antibiotic levels in up to <b><u>50% to 70%</u></b> of critically ill patients!\n\n• Beta-Lactams are Time-Dependent Killers (T > MIC):\n  - Efficacy depends on the percentage of the dosing interval that free drug concentration remains above the Minimum Inhibitory Concentration (<b><u>%fT > MIC</u></b>).\n  - Target in Critical Illness: <b><u>100% fT > MIC</u></b> (or free concentration maintained at <b><u>4 to 5 times the MIC</u></b> throughout the entire 24 hours).\n\n• Evidence-Based Prolonged Infusion Strategies (BLING III Trial):\n  - Meropenem: Intermittent bolus (1 g over 30 min) results in drug levels dropping below MIC after 4 hours. Solution: <b><u>Loading dose 1 g over 30 min, followed by 1 g IV infused over 3 hours every 8 hours</u></b> (extended infusion), or <b><u>3 g continuous IV infusion over 24 hours</u></b>.\n  - Piperacillin-Tazobactam: <b><u>Loading dose 4.5 g over 30 min, followed by 4.5 g infused over 4 hours every 8 hours</u></b> (or <b><u>13.5 to 18 g continuous infusion over 24 hours</u></b>).\n  - Clinical Benefit: Extended/continuous infusions achieve higher bactericidal cure rates, reduce emergence of resistance, and significantly improve survival in critically ill patients with severe sepsis."
+      }
+    ],
+    "example": "CLINICAL CASE: A 54-year-old male on day 12 of mechanical ventilation in the ICU develops ventilator-associated pneumonia (VAP) with septic shock. Sputum culture and endotracheal aspirate grow Klebsiella pneumoniae resistant to all cephalosporins, piperacillin-tazobactam, and meropenem (MIC > 32 mcg/mL). Rapid molecular testing detects the bla-NDM-1 (New Delhi Metallo-Beta-Lactamase) gene.\n\nTargeted Antimicrobial Regimen:\n1. Mechanism Analysis: NDM produces a zinc-dependent carbapenemase that hydrolyzes all beta-lactams except aztreonam; however, the organism also co-produces CTX-M-15 ESBL, which degrades aztreonam.\n2. Synergistic Combination: Standard ceftazidime-avibactam alone is inactive against NDM. The team initiates synergistic dual-drug therapy: Ceftazidime-avibactam (2.5 g IV q8h, 2-hour extended infusion) PLUS Aztreonam (2.0 g IV q8h, 2-hour extended infusion).\n3. PK/PD Synchronization: Both drugs are co-infused simultaneously so that avibactam concentrations in the epithelial lining fluid continuously protect aztreonam from ESBL hydrolysis.\n4. Adjunctive Polymyxin: Due to initial high vasopressor requirements, Polymyxin B is co-prescribed: Loading dose 150 mg IV (2.0 mg/kg), followed by 100 mg IV q12h.\n5. Outcome: Shock resolves within 48 hours; repeat tracheal aspirates at day 5 show complete microbiological eradication with clinical resolution of VAP.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 5. Wolters Kluwer.",
+      "Tamma PD, et al. Infectious Diseases Society of America 2023 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. Clin Infect Dis 2023;ciad428.",
+      "Dulhunty JM, et al. Continuous versus Intermittent beta-Lactam Antibiotic Infusions in Critically Ill Patients with Sepsis (BLING II / BLING III Trials). JAMA 2024;332(8):621–631.",
+      "Tsuji BT, et al. International Consensus Guidelines for the Optimal Use of the Polymyxins. Pharmacotherapy 2019;39(1):10–39."
+    ]
+  },
+  {
+    "id": "tbi-neuromonitoring-raised-icp",
+    "cat": "cc_neuro",
+    "name": "Traumatic Brain Injury, Intracranial Hypertension & Neuromonitoring",
+    "short": "TBI & Intracranial Pressure",
+    "tags": [
+      "Monro-Kellie",
+      "CPP Target",
+      "Tiered ICP Management",
+      "Hypertonic Saline vs Mannitol",
+      "EVD Monitoring",
+      "Decompressive Craniectomy",
+      "ONSD"
+    ],
+    "tagline": "Monro-Kellie doctrine, CPP 60–70 mmHg targets, tiered osmotherapy, burst suppression and Brain Trauma Foundation protocols",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 6 & 7; Brain Trauma Foundation Guidelines for the Management of Severe Traumatic Brain Injury (4th ed.); Neurosurgery 2017; 80(1):6–15.",
+    "sections": [
+      {
+        "h": "The Monro-Kellie Doctrine & Cerebral Perfusion Physiology",
+        "b": "• The Monro-Kellie Doctrine:\n  - The cranial vault is a rigid, non-distensible container with a fixed total volume.\n  - Total Intracranial Volume = <b><u>V(brain ~80%) + V(blood ~10%) + V(CSF ~10%) = Constant</u></b>.\n  - Intracranial Compliance: Initially, a space-occupying lesion (hematoma, tumor, contusion) is compensated by displacement of CSF into the spinal subarachnoid space and compression of low-pressure cerebral veins. Once compensatory volume reserves are exhausted (compliance curve inflection point), any tiny further increase in volume produces an exponential, catastrophic spike in Intracranial Pressure (ICP)!\n\n• Normal ICP & Treatment Threshold:\n  - Normal resting ICP: <b><u>5 to 15 mmHg</u></b> in adults.\n  - Pathological Intracranial Hypertension: Sustained ICP <b><u>> 20 to 22 mmHg</u></b> for > 5 minutes.\n\n• Cerebral Perfusion Pressure (CPP) & Autoregulation:\n  - Formula: <b><u>CPP = Mean Arterial Pressure (MAP) - Intracranial Pressure (ICP)</u></b>.\n  - Target CPP (Brain Trauma Foundation Guidelines): Maintain CPP strictly between <b><u>60 and 70 mmHg</u></b>.\n  - Avoid CPP < 50 mmHg: Causes secondary ischemic infarction and neuronal death.\n  - Avoid CPP > 70 mmHg: Causes hyperperfusion, breakdown of blood-brain barrier, cerebral edema, and ARDS!\n  - Cerebral Autoregulation: Normal cerebral blood flow (CBF ~50 mL/100g/min) is autoregulated across MAP 50 to 150 mmHg; in severe TBI, autoregulation is frequently lost, making CBF passively dependent on MAP.",
+        "callout": {
+          "type": "pearl",
+          "title": "PHYSIOLOGY PEARL — PaCO2 & Cerebral Vasomotor Reactivity",
+          "text": "Arterial carbon dioxide (PaCO2) is the most potent bedside regulator of cerebral blood flow: For every <b><u>1 mmHg change in PaCO2</u></b>, CBF changes by <b><u>2% to 4%</u></b>! Hypercapnia causes massive cerebral vasodilation and spikes ICP; aggressive hypocapnia (PaCO2 < 30) causes severe cerebral vasoconstriction and secondary cerebral ischemia!"
+        }
+      },
+      {
+        "h": "Neuromonitoring Modalities: Invasive vs Non-Invasive",
+        "b": "• Invasive Monitoring Modalities:\n  1. External Ventricular Drain (EVD / Ventriculostomy):\n     - The clinical Gold Standard for both ICP measurement AND therapeutic CSF drainage.\n     - Placed into the frontal horn of the lateral ventricle (Kocher's point: 11 cm posterior to glabella, 3 cm lateral to midline).\n     - Zero reference level: Transducer must be leveled at the <b><u>Tragus of the ear</u></b> (external auditory meatus, representing the Foramen of Monro).\n  2. Intraparenchymal Microtransducer (Camino, Codman, Raumedic):\n     - Fiberoptic or strain-gauge sensor inserted 1–2 cm into brain parenchyma (usually right frontal lobe).\n     - Lower infection and hemorrhage risk than EVD, but cannot drain CSF; subject to baseline calibration drift.\n  3. Brain Tissue Oxygenation (PbtO2) & Microdialysis:\n     - Direct measurement of local cerebral oxygen tension (target <b><u>PbtO2 > 20 mmHg</u></b>; values < 15 mmHg indicate severe brain tissue hypoxia).\n\n• Non-Invasive Bedside Neuromonitoring:\n  1. Optic Nerve Sheath Diameter (ONSD) Ultrasound:\n     - The optic nerve sheath is an anatomical continuation of the intracranial subarachnoid space; raised ICP causes sheath expansion.\n     - Measured <b><u>3.0 mm posterior to the globe</u></b> in the transverse plane using a high-frequency linear probe.\n     - Threshold: ONSD <b><u>> 5.8 mm</u></b> correlates with ICP > 20 mmHg with <b><u>> 90% sensitivity and specificity</u></b>!\n  2. Transcranial Doppler (TCD):\n     - Evaluates middle cerebral artery (MCA) flow velocity.\n     - Pulsatility Index (PI = [Peak Systolic - End Diastolic] / Mean Velocity): Normal PI 0.8–1.1. PI <b><u>> 1.2 to 1.4</u></b> indicates high downstream cerebrovascular resistance and raised ICP.",
+        "table": {
+          "headers": [
+            "Neuromonitoring Tool",
+            "Invasive vs Non-Invasive",
+            "Therapeutic Capability",
+            "Normal Target Range",
+            "Key Complications / Limitations"
+          ],
+          "rows": [
+            [
+              "External Ventricular Drain (EVD)",
+              "Invasive (Ventriculostomy)",
+              "Yes (Continuous/intermittent CSF drainage)",
+              "ICP < 20 mmHg (zero at tragus)",
+              "Ventriculitis (5–10%), tract hemorrhage, clogging"
+            ],
+            [
+              "Intraparenchymal Probe",
+              "Invasive (Parenchymal sensor)",
+              "No (Diagnostic pressure only)",
+              "ICP < 20 mmHg",
+              "Calibration drift; cannot verify in vivo zero"
+            ],
+            [
+              "Brain Tissue Oxygen (PbtO2)",
+              "Invasive (Clark-type electrode)",
+              "Guides oxygenation/transfusion/MAP",
+              "PbtO2 > 20 mmHg",
+              "Measures focal tissue only; catheter lag time"
+            ],
+            [
+              "Optic Nerve Sheath (ONSD)",
+              "Non-Invasive (Ocular ultrasound)",
+              "No (Rapid screening tool)",
+              "ONSD < 5.8 mm (< 5.0 in normal)",
+              "Operator dependent; ocular trauma artifact"
+            ],
+            [
+              "Transcranial Doppler (TCD)",
+              "Non-Invasive (Ultrasound MCA)",
+              "Guides CPP optimization",
+              "PI 0.8–1.1; Diastolic flow present",
+              "Poor acoustic bone window in 10–15% of patients"
+            ]
+          ],
+          "caption": "Comparison of multimodal neuromonitoring techniques in severe TBI."
+        }
+      },
+      {
+        "h": "Tiered Management Protocol for Intracranial Hypertension (BTF)",
+        "b": "The Brain Trauma Foundation (BTF) tiered protocol provides a structured escalation pathway for sustained ICP <b><u>> 20 to 22 mmHg</u></b>:\n\n• Tier 0 — Baseline Neuroprotective Foundations (Universal):\n  - Head-of-bed elevation to <b><u>30°</u></b> with head in neutral midline position (promotes cerebral venous drainage; avoid tight ETT ties or neck constriction).\n  - Target Normothermia (<b><u>36.0°C to 37.0°C</u></b>): Aggressive antipyretics and targeted temperature cooling (fever dramatically increases cerebral metabolic rate of oxygen / CMRO2).\n  - Normoglycemia (<b><u>140 to 180 mg/dL</u></b>): Avoid hypoglycemia (< 80) and hyperglycemia (> 200).\n  - Target Normonatremia / Mild Hypernatremia: Serum sodium <b><u>140 to 145 mEq/L</u></b> (hypotonic IV fluids like 0.45% saline or D5W are strictly contraindicated!).\n  - Analgesia and sedation (propofol, fentanyl) to prevent coughing, ventilator fighting, and shivering.\n  - Baseline Ventilation: Target normocarbia (PaCO2 <b><u>35 to 40 mmHg</u></b>) and normoxia (PaO2 <b><u>80 to 120 mmHg</u></b>).\n\n• Tier 1 — First-Line Medical Interventions:\n  1. Intermittent CSF Drainage: Open EVD against a pressure threshold of <b><u>10 to 15 cmH2O</u></b> to drain 3–5 mL of CSF.\n  2. Osmotherapy (Hypertonic Saline vs Mannitol):\n     - Hypertonic Saline (HTS 3%): Dose <b><u>250 mL bolus over 15 to 20 min</u></b> (or <b><u>23.4% 30 mL bolus over 10 min</u></b> via central line). Target serum sodium <b><u>145 to 155 mEq/L</u></b> and serum osmolality < 320 mOsm/L.\n     - Mannitol 20%: Dose <b><u>0.5 to 1.0 g/kg IV bolus over 20 min</u></b>. Target serum osmolality <b><u>< 320 mOsm/L</u></b> (osmolar gap < 20). Caveat: Causes osmotic diuresis, hypovolemia, and hypotension!\n  3. Mild Hyperventilation: Transiently adjust ventilator to target PaCO2 <b><u>32 to 35 mmHg</u></b>.\n\n• Tier 2 — Second-Line Escalation:\n  1. Neuromuscular Blockade: Continuous cisatracurium infusion to eliminate thoracic-abdominal muscular contractions.\n  2. Moderate Hyperventilation: Target PaCO2 <b><u>30 to 32 mmHg</u></b> under continuous brain tissue oxygen (PbtO2) monitoring to rule out cerebral ischemia.\n\n• Tier 3 — Refractory Rescue Interventions:\n  1. Decompressive Craniectomy: Large unilateral fronto-temporo-parietal hemicraniectomy (<b><u>≥ 12 × 15 cm</u></b>) or bifrontal craniectomy (RESCUEicp trial demonstrated reduced mortality from 48.9% to 26.9%, with increased vegetative/severe disability rates).\n  2. High-Dose Barbiturate Coma: Thiopental (loading dose 2–3 mg/kg, then 2–5 mg/kg/h) or Pentobarbital titrated to burst suppression (<b><u>10 to 15 seconds of suppression</u></b> between bursts) on continuous EEG.",
+        "callout": {
+          "type": "pitfall",
+          "title": "THERAPEUTIC PITFALL — Steroids in Severe TBI (CRASH Trial)",
+          "text": "Corticosteroids (dexamethasone or methylprednisolone) are <b>STRICTLY CONTRAINDICATED</b> in traumatic brain injury! The landmark CRASH trial (Lancet 2004, 10,000+ patients) proved that high-dose steroids significantly increased 14-day mortality (<b><u>25.7% vs 22.3%</u></b>) without providing any neurological benefit."
+        }
+      },
+      {
+        "h": "Brain Herniation Syndromes & Emergency Bedside Rescue",
+        "b": "• Classical Herniation Syndromes:\n  1. Uncal (Transtentorial) Herniation: Medial temporal lobe (uncus) herniates over tentorial incisura.\n     - Compression of ipsilateral Oculomotor Nerve (CN III) → Unilateral pupil dilation, ptosis, and sluggish/fixed pupil ('blown pupil').\n     - Compression of ipsilateral cerebral peduncle → Contralateral hemiplegia.\n     - Kernohan's Notch Phenomenon (False Localizing Sign): Compression of contralateral cerebral peduncle against opposite tentorium produces hemiplegia IPSILATERAL to the hematoma!\n  2. Central Transtentorial Herniation: Downward displacement of diencephalon and midbrain; progressive lethargy, small reactive pupils progressing to mid-dilated fixed pupils, Cheyne-Stokes respiration.\n  3. Subfalcine (Cingulate) Herniation: Cingulate gyrus herniates under falx cerebri; compresses anterior cerebral artery (ACA) causing leg weakness.\n  4. Tonsillar Herniation: Cerebellar tonsils herniate through foramen magnum compressing medulla oblongata → Cushing's Triad (Severe Hypertension, Bradycardia, Irregular Respirations), respiratory arrest, and flaccid quadriplegia.\n\n• Emergency Bedside Rescue for Impending Herniation (The 5-Minute Drill):\n  1. Hypertonic Saline: Immediately administer <b><u>30 mL of 23.4% Hypertonic Saline IV over 10 min</u></b> (or <b><u>250 mL of 3% HTS</u></b>).\n  2. Emergency Manual Hyperventilation: Bag-valve-mask or ventilator rate increased to target PaCO2 <b><u>28 to 30 mmHg</u></b> for 15–30 minutes as a temporizing bridge.\n  3. MAP Optimization: Push-dose phenylephrine or noradrenaline to maintain MAP > 90 mmHg (ensuring CPP > 70 mmHg).\n  4. Immediate Neurosurgical Evacuation: Rush directly to the operating room for craniotomy and hematoma decompression."
+      }
+    ],
+    "example": "CLINICAL CASE: A 28-year-old male involved in a high-speed motor vehicle collision arrives intubated with severe TBI. Initial head CT reveals a 4 mm right acute subdural hematoma, extensive bilateral contusions, and effacement of the basal cisterns. An intraparenchymal ICP monitor is placed; initial ICP is 16 mmHg, BP 124/76 mmHg (MAP 92 mmHg, CPP 76 mmHg).\n\nAcute Deterioration & Tiered Management:\n1. Acute Spike: On Day 2, the patient develops sustained ICP rise to 34 mmHg with an acute dilation of the right pupil (5 mm, non-reactive). MAP is 90 mmHg (CPP crashes to 56 mmHg!).\n2. Emergency Bedside Rescue: The '5-minute drill' is activated: 23.4% Hypertonic Saline 30 mL is infused over 10 minutes via CVC; ventilator rate is transiently increased to target PaCO2 30 mmHg. Within 8 minutes, the pupil constricts back to 3 mm and ICP drops to 21 mmHg.\n3. Tier 1 Escalation: Continuous 3% hypertonic saline infusion is titrated to maintain serum sodium at 148–152 mEq/L (measured osmolarity 312 mOsm/L). An EVD is placed and yields 15 mL/day of therapeutic CSF drainage.\n4. Repeat CT Imaging: Shows progressive hemispheric edema with 8 mm midline shift and uncal effacement.\n5. Tier 3 Surgical Decompression: Given refractory ICP spikes to 28 mmHg despite Tier 1/2 therapy, an emergency right fronto-temporo-parietal decompressive hemicraniectomy (14 × 16 cm bone flap) with duraplasty is performed.\n6. Outcome: Post-operative ICP stabilizes between 8 and 12 mmHg without further hyperosmolar boluses. Sodium is slowly normalized over 5 days; the patient recovers to GCS 11 (E4VTM6) by discharge to neurorehabilitation.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 6 & 7. Wolters Kluwer.",
+      "Carney N, et al. Guidelines for the Management of Severe Traumatic Brain Injury, Fourth Edition. Neurosurgery 2017;80(1):6–15.",
+      "Hutchinson PJ, et al. Trial of Decompressive Craniectomy for Traumatic Intracranial Hypertension (RESCUEicp Trial). N Engl J Med 2016;375(12):1119–1130.",
+      "Roberts I, et al. Effect of Intravenous Corticosteroids on Death within 14 Days in 10008 Adults with Clinically Significant Head Injury (MRC CRASH Trial). Lancet 2004;364(9442):1321–1328."
+    ]
+  },
+  {
+    "id": "status-epilepticus-stroke-gbs-myasthenia",
+    "cat": "cc_neuro",
+    "name": "Status Epilepticus, Acute Stroke & Neuromuscular Weakness",
+    "short": "Neuro Emergencies: Status & Stroke",
+    "tags": [
+      "Status Epilepticus",
+      "ESETT Trial",
+      "RSE Anesthetic Coma",
+      "Acute Ischemic Stroke",
+      "Tenecteplase",
+      "Malignant MCA",
+      "GBS / Myasthenia 20/30/40 Rule"
+    ],
+    "tagline": "ILAE status definitions, ESETT trial antiepileptics, burst suppression, stroke reperfusion targets and neuromuscular respiratory failure",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 6 & 8; Neurocritical Care Society Guidelines for Status Epilepticus; AHA/ASA Acute Ischemic Stroke Guidelines; Neurocrit Care 2020; 32:638–666.",
+    "sections": [
+      {
+        "h": "Status Epilepticus: ILAE Definitions & Phased Protocol",
+        "b": "• International League Against Epilepsy (ILAE) Status Epilepticus (SE) Operational Timelines:\n  - <b>Time Point 1 (T1 = 5 minutes in Convulsive SE)</b>: The time beyond which a continuous seizure is abnormally prolonged and unlikely to stop spontaneously; mandates immediate pharmacotherapy!\n  - <b>Time Point 2 (T2 = 30 minutes in Convulsive SE)</b>: The time beyond which sustained seizure activity causes irreversible excitotoxic neuronal injury, pharmacoresistance (GABA-A receptor internalization and NMDA receptor upregulation), and long-term morbidity.\n\n• Phase 1: Emergent Initial Therapy (0 to 5 Minutes):\n  - ABCs, high-flow oxygen, check fingerstick glucose immediately (treat hypoglycemia with 50 mL 50% dextrose + 100 mg IV thiamine).\n  - First-Line Benzodiazepines (Standard of Care):\n    * Intravenous Lorazepam: <b><u>0.1 mg/kg IV (typically 4 mg bolus over 2 min)</u></b>; repeat once at 5–10 min if seizing.\n    * Intramuscular Midazolam (if no IV access): <b><u>10 mg IM</u></b> (for weight > 40 kg; 5 mg for 13–40 kg) (RAMPART trial: IM midazolam achieved faster seizure cessation than IV lorazepam due to zero IV access delays!).\n    * Intravenous Diazepam: <b><u>0.15 to 0.2 mg/kg IV (typically 10 mg IV)</u></b>.\n\n• Phase 2: Urgent Control Therapy (5 to 20 Minutes) — The ESETT Trial Benchmark:\n  - The landmark Established Status Epilepticus Treatment Trial (ESETT, NEJM 2019) demonstrated equal 50% efficacy and safety across three non-sedating antiepileptics:\n    1. Levetiracetam (Keppra): <b><u>60 mg/kg IV (maximum 4500 mg)</u></b> infused over 10 minutes.\n    2. Fosphenytoin: <b><u>20 mg PE/kg IV (maximum 1500 mg PE)</u></b> infused over 10 minutes (continuous ECG and BP monitoring; max rate 150 mg PE/min).\n    3. Sodium Valproate: <b><u>40 mg/kg IV (maximum 3000 mg)</u></b> infused over 10 minutes.\n\n• Phase 3: Refractory Status Epilepticus (RSE, Seizure Persisting > 20 to 30 Minutes):\n  - Patient must be endotracheally intubated for airway protection.\n  - Initiate continuous anesthetic infusions titrated to <b>Burst Suppression</b> or electrographic seizure cessation on continuous EEG:\n    * Propofol: Bolus <b><u>2.0 to 3.0 mg/kg</u></b>, then continuous infusion <b><u>2.0 to 10.0 mg/kg/h (30 to 150 mcg/kg/min)</u></b>.\n    * Midazolam: Bolus <b><u>0.2 mg/kg</u></b>, then infusion <b><u>0.1 to 2.0 mg/kg/h</u></b>.\n    * Ketamine: Bolus <b><u>1.5 to 3.0 mg/kg</u></b>, then infusion <b><u>1.0 to 5.0 mg/kg/h</u></b> (blocks up-regulated NMDA receptors; excellent hemodynamic stability).\n  - Maintain electrographic burst suppression for <b><u>24 to 48 hours</u></b> before gradual weaning.",
+        "table": {
+          "headers": [
+            "Status Epilepticus Phase",
+            "Time Window",
+            "First-Line Drug Choices",
+            "Standard Dosing",
+            "Key Monitoring Target"
+          ],
+          "rows": [
+            [
+              "Phase 1: Emergent",
+              "0–5 min",
+              "Lorazepam IV or Midazolam IM",
+              "Lorazepam 4 mg IV / Midazolam 10 mg IM",
+              "Clinical seizure cessation within 5 min"
+            ],
+            [
+              "Phase 2: Urgent Control",
+              "5–20 min",
+              "Levetiracetam, Fosphenytoin, Valproate",
+              "Keppra 60 mg/kg / Fos 20 mg/kg / Val 40 mg/kg",
+              "50% terminate; watch hypotension with phenytoin"
+            ],
+            [
+              "Phase 3: Refractory (RSE)",
+              "> 20–30 min",
+              "Propofol, Midazolam, Ketamine",
+              "Propofol 2–10 mg/kg/h / Midaz 0.1–2 mg/kg/h",
+              "Continuous EEG: Burst suppression 10–15 sec"
+            ],
+            [
+              "Super-Refractory (SRSE)",
+              "> 24 hours of coma",
+              "Ketamine, Isoflurane, Pentobarbital",
+              "Burst suppression titration",
+              "PRIS screening; continuous vasopressor support"
+            ]
+          ],
+          "caption": "Phased management protocol for convulsive status epilepticus."
+        }
+      },
+      {
+        "h": "Acute Ischemic Stroke: Reperfusion & Malignant MCA Infarction",
+        "b": "• Reperfusion Windows & Blood Pressure Targets:\n  - Intravenous Thrombolysis: Alteplase (0.9 mg/kg, max 90 mg) or Tenecteplase (0.25 mg/kg, max 25 mg) within <b><u>4.5 hours</u></b> of symptom onset.\n  - Blood Pressure Requirement for Thrombolysis: Must lower BP to <b><u>< 185/110 mmHg</u></b> prior to lytic infusion, and keep strictly <b><u>< 180/105 mmHg</u></b> for at least 24 hours post-thrombolysis (treat with IV labetalol 10–20 mg or nicardipine infusion 5–15 mg/h).\n  - Permissive Hypertension: If patient is NOT eligible for thrombolysis/thrombectomy, allow blood pressure up to <b><u>220/120 mmHg</u></b> for the first 48 to 72 hours to maintain collateral penumbral perfusion!\n  - Endovascular Thrombectomy (EVT): Indicated for Large Vessel Occlusion (LVO: ICA, MCA M1/M2) up to <b><u>24 hours</u></b> from last known well (DAWN and DEFUSE-3 criteria based on CT perfusion / penumbral mismatch).\n\n• Malignant MCA Infarction & Decompressive Craniectomy:\n  - Massive ischemic edema of the middle cerebral artery territory occurs in up to 10% of strokes; causes midline shift, uncal herniation, and <b><u>80% mortality</u></b> with medical management alone.\n  - Predictors: Ischemic volume > 50% of MCA territory on CT/MRI, early nausea/vomiting, midline shift > 5 mm, age < 60.\n  - Decompressive Hemicraniectomy (DECIMAL, DESTINY, HAMLET pooled analysis): Emergency large hemicraniectomy (≥ 12 cm) performed within <b><u>48 hours</u></b> reduces mortality from <b><u>71% to 22%</u></b> (Absolute Risk Reduction ~50%!).",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — Malignant MCA Timing",
+          "text": "Do not wait for pupillary dilation or herniation signs before calling the neurosurgeon in malignant MCA infarction! Decompressive hemicraniectomy must be performed <b>proactively within 48 hours</b> (ideally within 24–36 hours) when neurological deterioration begins, before irreversible brainstem infarction occurs."
+        }
+      },
+      {
+        "h": "Acute Neuromuscular Weakness: GBS & Myasthenic Crisis",
+        "b": "• Guillain-Barré Syndrome (GBS) & Myasthenia Gravis Crisis:\n  - GBS: Acute inflammatory demyelinating polyradiculoneuropathy (AIDP); ascending symmetrical flaccid paralysis with areflexia following Campylobacter, CMV, or viral infection.\n  - Myasthenic Crisis: Severe exacerbation of myasthenia gravis with respiratory muscle and bulbar weakness requiring ventilatory support; triggered by infection, surgery, or tapering of immunosuppression.\n\n• Predicting Impending Respiratory Arrest — The '20/30/40 Rule':\n  - Bedside pulmonary mechanics criteria for elective endotracheal intubation:\n    1. Forced Vital Capacity (FVC) <b><u>< 20 mL/kg</u></b> (or < 15 mL/kg).\n    2. Negative Inspiratory Force (NIF / MIP) <b><u>< -30 cmH2O</u></b> (less negative than -30, e.g., -15 cmH2O).\n    3. Maximum Expiratory Pressure (MEP) <b><u>< 40 cmH2O</u></b>.\n    4. Single-Breath Count <b><u>< 20</u></b> (inability to count to 20 on a single breath).\n  - Do NOT wait for hypoxia or hypercapnia! Arterial blood gases remain normal until complete diaphragmatic fatigue occurs, followed by sudden, catastrophic respiratory arrest.\n\n• Disease-Specific Immunotherapies:\n  - Intravenous Immunoglobulin (IVIG): <b><u>2.0 g/kg total dose</u></b> administered over <b><u>2 to 5 days</u></b> (0.4 g/kg/day for 5 days).\n  - Therapeutic Plasma Exchange (PLEX): <b><u>5 exchanges</u></b> (40–50 mL/kg plasma volume each) performed on alternate days over 10 to 14 days.\n  - IVIG and PLEX have equal efficacy; combining them provides no additional benefit and increases complications!\n  - Corticosteroids: Strictly INEFFECTIVE in GBS (may delay recovery); indicated in myasthenic crisis only under IVIG/PLEX cover.",
+        "callout": {
+          "type": "pitfall",
+          "title": "AIRWAY PITFALL — Succinylcholine in GBS & Myasthenia",
+          "text": "Succinylcholine is <b>STRICTLY CONTRAINDICATED</b> in Guillain-Barré Syndrome! Proliferation of extrajunctional acetylcholine receptors causes massive, fatal potassium release (hyperkalemic cardiac arrest!). In Myasthenia Gravis, succinylcholine exhibits resistance, while non-depolarizing relaxants (rocuronium) exhibit extreme hypersensitivity (reduce rocuronium intubating dose by <b><u>50% to 75%</u></b>!)."
+        }
+      }
+    ],
+    "example": "CLINICAL CASE: A 34-year-old male with a history of epilepsy is brought to the ED by ambulance in continuous generalized tonic-clonic status epilepticus. Paramedics administered midazolam 10 mg IM 12 minutes ago with no effect. Upon arrival, he has been seizing continuously for 22 minutes. Blood glucose is 114 mg/dL.\n\nStatus Protocol & Resolution:\n1. Phase 1 Check: IV access established. IV Lorazepam 4 mg given over 2 minutes. Seizure continues at 26 minutes.\n2. Phase 2 (ESETT Protocol): Levetiracetam 60 mg/kg (4500 mg IV) is infused over 10 minutes. Clinical clonic movements persist at minute 35.\n3. Phase 3 (Refractory Status): Seizure has exceeded 30 minutes (RSE). The airway team performs physiological RSI: Pre-oxygenation, induction with Ketamine 2 mg/kg (150 mg IV) + Rocuronium 1.2 mg/kg, and intubation on first pass.\n4. Anesthetic Coma: Continuous Propofol infusion started at 5 mg/kg/h. Continuous 24-lead EEG is connected within 25 minutes, demonstrating persistent non-convulsive electrographic status.\n5. Burst Suppression: Propofol titrated to 7 mg/kg/h with addition of Ketamine infusion at 2 mg/kg/h. EEG confirms therapeutic burst suppression (12 seconds of suppression between bursts). Serum triglycerides and lactate monitored q12h (PRIS screen negative).\n6. Outcome: Burst suppression maintained for 36 hours. Second-line lacosamide 200 mg BID added. Anesthetic infusions tapered slowly over 12 hours with zero seizure recurrence on EEG. Extubated successfully on Day 4.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 6 & 8. Wolters Kluwer.",
+      "Kapur J, et al. Randomized Trial of Three Intravenous Anticonvulsants for Status Epilepticus (ESETT Trial). N Engl J Med 2019;381(22):2103–2113.",
+      "Powers WJ, et al. Guidelines for the Early Management of Patients with Acute Ischemic Stroke: 2019 Update. Stroke 2019;50(12):e344–e418.",
+      "Vaishnavi S, et al. Management of Neuromuscular Weakness and Myasthenic Crisis in the ICU. Crit Care Clin 2019;35(2):373–387."
+    ]
+  },
+  {
+    "id": "acute-coronary-syndromes-cardiogenic-shock",
+    "cat": "cc_cardio",
+    "name": "Acute Coronary Syndromes & Cardiogenic Shock (SCAI Stages)",
+    "short": "ACS & Cardiogenic Shock",
+    "tags": [
+      "STEMI / NSTEMI",
+      "SCAI Shock Stages",
+      "Mechanical Complications",
+      "VSR vs Papillary Rupture",
+      "IABP",
+      "Impella",
+      "ECPELLA"
+    ],
+    "tagline": "Troponin kinetics, mechanical complications of MI, SCAI shock classification, inodilators and mechanical circulatory support",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 9 & 10; SCAI Clinical Expert Consensus Statement on the Classification of Cardiogenic Shock; J Am Coll Cardiol 2022; 79(19):1979–1993.",
+    "sections": [
+      {
+        "h": "Acute Coronary Syndromes in ICU & Troponin Kinetics",
+        "b": "• Spectrum of ACS in the Critically Ill:\n  - ST-Elevation Myocardial Infarction (STEMI): Transmural ischemia; emergent reperfusion (primary PCI within <b><u>90 minutes door-to-balloon time</u></b>; fibrinolysis within <b><u>30 minutes</u></b> if transfer delay > 120 min).\n  - Non-ST-Elevation ACS (NSTEMI / Unstable Angina): Subendocardial ischemia; early invasive strategy (< 24 h) for high-risk features (GRACE score > 140, dynamic ST depression, refractory pain, ventricular arrhythmia).\n\n• Type 1 vs Type 2 Myocardial Infarction:\n  - Type 1 MI: Spontaneous myocardial infarction related to acute atherosclerotic plaque rupture, ulceration, or erosion leading to intraluminal coronary thrombosis.\n  - Type 2 MI (Frequent in ICU!): Myocardial necrosis resulting strictly from a mismatch between myocardial oxygen supply and demand (e.g., severe septic shock, profound anemia with Hb < 6 g/dL, hypoxemic respiratory failure, hypertensive emergency, or tachyarrhythmias).\n  - Management of Type 2 MI: Focuses on correcting the underlying hemodynamic insult (transfusing blood, treating sepsis, rate control), NOT emergent PCI or aggressive anticoagulation!\n\n• High-Sensitivity Cardiac Troponin (hs-cTn) Kinetics:\n  - Serial hs-cTn testing at <b><u>0 and 1–2 hours</u></b>.\n  - A significant dynamic change (rise or fall <b><u>> 20%</u></b>) differentiates acute myocardial injury/infarction from chronic baseline elevations common in critical illness (sepsis, ESRD, pulmonary embolism).",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — Antiplatelet Dosing in Critically Ill ACS",
+          "text": "For acute Type 1 MI in the ICU: Chewable Aspirin <b><u>162 to 325 mg</u></b> immediately + P2Y12 inhibitor loading (Ticagrelor <b><u>180 mg</u></b> or Clopidogrel <b><u>600 mg</u></b>) + Anticoagulation (Unfractionated Heparin 60 units/kg bolus [max 4000 U], then 12 units/kg/h [max 1000 U/h] titrated to aPTT 50–70 s; UFH is preferred over enoxaparin due to rapid reversibility with protamine if emergent surgery or CABG is required)."
+        }
+      },
+      {
+        "h": "Mechanical Complications of Acute Myocardial Infarction",
+        "b": "Mechanical complications occur in <b><u>1% to 2%</u></b> of acute MIs, typically presenting <b><u>3 to 7 days post-MI</u></b> with sudden hemodynamic collapse:\n\n1. Acute Mitral Regurgitation (Papillary Muscle Rupture):\n• Anatomy: Posteromedial papillary muscle has a single blood supply (Posterior Descending Artery / RCA); ruptures <b><u>6 to 10 times more frequently</u></b> than the anterolateral muscle (dual LAD/LCx supply).\n• Presentation: Sudden catastrophic pulmonary edema, cardiogenic shock, and a new harsh holosystolic murmur at the apex (murmur may be soft or absent in severe low-output states!).\n• Diagnostic Tracing: Giant, prominent <b><u>'v waves'</u></b> on pulmonary capillary wedge pressure (PCWP) tracing.\n• Management: Emergent IABP or Impella placement to reduce LV afterload; emergent surgical mitral repair/replacement.\n\n2. Ventricular Septal Rupture (VSR):\n• Anatomy: Occurs in anterior MIs (apical septum) or inferior MIs (basal septum).\n• Presentation: Biventricular failure, cardiogenic shock, and a harsh, loud holosystolic murmur with a palpable thrill along the left sternal border.\n• Diagnostic Confirmation: Swan-Ganz PAC demonstrates an <b>Oxygen Step-Up of > 10%</b> in oxygen saturation from Right Atrium to Right Ventricle (confirms left-to-right intracardiac shunt!).\n• Management: Afterload reduction; surgical or percutaneous closure (bridged with MCS).\n\n3. Free Wall Rupture:\n• Transmural myocardial necrosis causes rupture of LV free wall into pericardial space.\n• Presentation: Sudden electromechanical dissociation (PEA cardiac arrest), massive hemopericardium, and fatal cardiac tamponade; emergency pericardiocentesis and salvage sternotomy.",
+        "table": {
+          "headers": [
+            "Mechanical Complication",
+            "Vessel Involved",
+            "Physical Exam Hallmark",
+            "PAC / Echo Diagnostic Finding",
+            "Immediate Emergency Action"
+          ],
+          "rows": [
+            [
+              "Papillary Muscle Rupture",
+              "RCA (Posteromedial muscle)",
+              "Apical holosystolic murmur; flash pulmonary edema",
+              "Giant 'v waves' on PCWP; flail mitral leaflet on echo",
+              "IABP / Impella afterload reduction; emergent mitral surgery"
+            ],
+            [
+              "Ventricular Septal Rupture",
+              "LAD or RCA",
+              "Harsh holosystolic murmur with thrill at LSB",
+              "Oxygen step-up >10% from RA to RV on PAC",
+              "Afterload reduction (nitroprusside / MCS); surgical repair"
+            ],
+            [
+              "Left Ventricular Free Wall Rupture",
+              "LAD or LCx (Transmural)",
+              "Sudden PEA arrest, Beck's triad, hemopericardium",
+              "Cardiac tamponade on echo; pericardial fluid",
+              "Emergency pericardiocentesis; salvage thoracotomy in OR"
+            ]
+          ],
+          "caption": "Comparison of mechanical complications following acute myocardial infarction."
+        }
+      },
+      {
+        "h": "Cardiogenic Shock & The SCAI Staging System (Stages A to E)",
+        "b": "• Hemodynamic Definition of Cardiogenic Shock:\n  - Persistent hypotension: SBP <b><u>< 90 mmHg</u></b> for > 30 minutes OR Mean Arterial Pressure (MAP) drop <b><u>> 30 mmHg</u></b>, AND\n  - Severe reduction in Cardiac Index: CI <b><u>< 2.2 L/min/m²</u></b> without support (or <b><u>< 1.8 L/min/m²</u></b> with support), AND\n  - Elevated Left Ventricular Filling Pressures: PCWP <b><u>> 15 mmHg</u></b> (distinguishes cardiogenic shock from hypovolemic shock).\n\n• The SCAI (Society for Cardiovascular Angiography and Interventions) Shock Stages:\n  - <b>Stage A ('At Risk')</b>: Patients with large acute MI or acute decompensated heart failure with normal vital signs, normal lactate, and no hypoperfusion.\n  - <b>Stage B ('Beginning')</b>: Clinical evidence of hemodynamic instability (hypotension SBP < 90, MAP < 60, or tachycardia HR > 100) WITHOUT tissue hypoperfusion (lactate normal < 2.0 mmol/L).\n  - <b>Stage C ('Classic')</b>: Cardiogenic shock requiring pharmacological vasoactive support or mechanical circulatory support (MCS) to restore perfusion; lactate <b><u>> 2.0 mmol/L</u></b>, oliguria, cold extremities.\n  - <b>Stage D ('Deteriorating')</b>: Failure to respond to initial shock interventions; escalating inotropes and pressors; worsening organ dysfunction.\n  - <b>Stage E ('Extremis')</b>: Imminent circulatory collapse, refractory cardiac arrest / PEA requiring CPR or emergency ECMO.\n\n• Vasoactive Strategy in Cardiogenic Shock:\n  - Norepinephrine (First-Line Vasopressor): Restores coronary perfusion pressure (MAP ≥ 65 mmHg) with lower arrhythmia rates than dopamine (SOAP II trial).\n  - Dobutamine (First-Line Inotrope): Enhances myocardial contractility and cardiac index; titrate <b><u>2.5 to 15 mcg/kg/min</u></b>; watch for vasodilation and tachycardia.\n  - Milrinone (PDE3 Inhibitor): Dose <b><u>0.25 to 0.75 mcg/kg/min</u></b>; preferred when beta-receptors are down-regulated or in severe pulmonary hypertension/RV dysfunction."
+      },
+      {
+        "h": "Mechanical Circulatory Support (MCS): IABP, Impella & ECPELLA",
+        "b": "• Intra-Aortic Balloon Pump (IABP):\n  - Placed in descending thoracic aorta (tip 1–2 cm distal to left subclavian artery).\n  - Helium balloon inflates at the dicrotic notch (diastole): Augments diastolic coronary perfusion pressure by <b><u>30%</u></b>.\n  - Balloon deflates immediately prior to ventricular systole: Creates a vacuum effect, reducing LV afterload and myocardial oxygen demand by <b><u>10% to 15%</u></b>.\n  - SHOCK II Trial: Routine IABP does not reduce 30-day mortality in post-MI cardiogenic shock; indicated primarily for mechanical complications (mitral regurgitation, VSR) and refractory ischemia.\n  - Contraindications: Moderate-to-severe aortic regurgitation; severe aortic dissection.\n\n• Impella (Percutaneous Microaxial Flow Pump):\n  - Catheter-based axial Archimedes screw pump inserted retrograde across the aortic valve into the left ventricle.\n  - Directly aspirates blood from the LV cavity and expels it continuously into the ascending aorta.\n  - Delivers forward systemic blood flow of <b><u>2.5 to 5.5 L/min</u></b> (Impella CP: up to 4.0 L/min; Impella 5.5: up to 5.5 L/min).\n  - Directly unloads the left ventricle, lowering end-diastolic volume, wall tension, PCWP, and myocardial oxygen consumption.\n\n• Veno-Arterial (VA) ECMO & 'ECPELLA' Strategy:\n  - Peripheral VA-ECMO provides complete biventricular and pulmonary gas exchange support (up to 4–6 L/min flow).\n  - The 'Afterload Penalty': VA-ECMO pumps arterial blood retrograde into the femoral artery and aorta, dramatically increasing left ventricular afterload. In severe LV failure, the aortic valve cannot open, leading to LV distension, massive pulmonary edema, intraventricular stasis, and fatal intracardiac thrombosis!\n  - ECPELLA (Combination of VA-ECMO + Impella): Impella actively vents and unloads the LV while VA-ECMO provides high-flow systemic oxygenation and perfusion (significantly improves survival over VA-ECMO alone!)."
+      }
+    ],
+    "example": "CLINICAL CASE: A 61-year-old male presents with acute anterior STEMI. He undergoes emergent primary PCI with stenting of a 100% proximal LAD occlusion. Six hours post-procedure in the CCU, he develops severe cardiogenic shock (SCAI Stage C): BP 76/48 mmHg, HR 118 bpm, cold clammy extremities, urine output 10 mL/h, serum lactate 4.6 mmol/L. Bedside echo reveals extensive anterior wall akinesis with LVEF 18% and severe mitral valve tenting.\n\nResuscitation & Advanced MCS Pathway:\n1. Hemodynamic Profiling: Arterial line and Swan-Ganz PAC inserted: MAP 56 mmHg, CI 1.6 L/min/m², PCWP 26 mmHg, SVR 1650 dyn·s/cm⁵ (profound cardiogenic shock).\n2. Pharmacotherapy: Norepinephrine initiated at 0.15 mcg/kg/min to restore MAP ≥ 65 mmHg; Dobutamine added at 5 mcg/kg/min.\n3. Clinical Deterioration: Despite pressors, lactate rises to 6.2 mmol/L and CI remains 1.7 L/min/m² (escalating to SCAI Stage D).\n4. Mechanical Circulatory Support: Taken emergently to the cath lab for percutaneous Impella CP placement. Impella flow established at 3.4 L/min (P-level 8).\n5. Physiological Impact: Left ventricle is immediately unloaded; PCWP drops from 26 to 14 mmHg; systemic CI increases to 2.8 L/min/m²; dobutamine is weaned off.\n6. Recovery: Over the next 48 hours, serum lactate normalizes (1.2 mmol/L) and renal function recovers. Impella is successfully weaned and explanted on Day 5, and the patient is transferred out of the ICU on Day 8.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 9 & 10. Wolters Kluwer.",
+      "Baran DA, et al. SCAI Clinical Expert Consensus Statement on the Classification of Cardiogenic Shock. Catheter Cardiovasc Interv 2019;94(1):29–37.",
+      "Thiele H, et al. Intraaortic Balloon Support for Myocardial Infarction with Cardiogenic Shock (IABP-SHOCK II Trial). N Engl J Med 2012;367(14):1287–1296.",
+      "Schrage B, et al. Left Ventricular Unloading with Impella in Patients with Cardiogenic Shock Treated with Venoarterial Extracorporeal Membrane Oxygenation (ECPELLA). Circulation 2020;142(22):2095–2106."
+    ]
+  },
+  {
+    "id": "cardiac-arrhythmias-tamponade-pocus",
+    "cat": "cc_cardio",
+    "name": "Life-Threatening ICU Arrhythmias & Cardiac Tamponade",
+    "short": "ICU Arrhythmias & Tamponade",
+    "tags": [
+      "AF with RVR",
+      "Amiodarone Infusion",
+      "Pulseless Arrest ACLS",
+      "Pulsus Paradoxus",
+      "Beck's Triad",
+      "RV Diastolic Collapse",
+      "Pericardiocentesis"
+    ],
+    "tagline": "Atrial fibrillation with RVR, malignant VT/VF protocols, Beck's triad, pulsus paradoxus and ultrasound-guided pericardiocentesis",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 11 & 12; ACLS 2020/2025 Guidelines; European Heart Journal 2020; 41(5):480–500.",
+    "sections": [
+      {
+        "h": "Tachyarrhythmias in ICU: Atrial Fibrillation with RVR & SVT",
+        "b": "• Atrial Fibrillation with Rapid Ventricular Response (AF with RVR):\n  - Most common sustained arrhythmia in the ICU (occurs in up to <b><u>30% to 50%</u></b> of septic shock and post-cardiac surgery patients).\n  - Precipitants: Systemic inflammation, catecholamine excess, hypokalemia (target K <b><u>> 4.0–4.5 mEq/L</u></b>), hypomagnesemia (target Mg <b><u>> 2.0–2.5 mg/dL</u></b>), right atrial stretch from fluid overload, central line mechanical irritation.\n  - Unstable Patient (Hypotension, ischemic chest pain, altered mental status, acute pulmonary edema): Immediate <b>Synchronized Electrical Cardioversion (100 to 200 J biphasic)</b>.\n\n• Rate Control in Stable ICU AF with RVR:\n  1. Preserved LV Ejection Fraction (LVEF > 40%):\n     - Beta-Blockers: Intravenous <b>Esmolol</b> (ultrashort-acting; loading dose 500 mcg/kg over 1 min, then infusion <b><u>50 to 200 mcg/kg/min</u></b>; easily titrated or stopped if hypotension develops) or Metoprolol 2.5–5.0 mg IV q5m (up to 15 mg).\n     - Calcium Channel Blockers: Intravenous <b>Diltiazem</b> (bolus 0.25 mg/kg over 2 min, then infusion <b><u>5 to 15 mg/h</u></b>).\n  2. Depressed LV Ejection Fraction (LVEF < 40%) or Shock:\n     - Beta-blockers and diltiazem are strictly CONTRAINDICATED (precipitate cardiogenic collapse!).\n     - Intravenous <b>Amiodarone</b>: Loading dose <b><u>150 mg IV over 10 minutes</u></b>, followed by <b><u>1.0 mg/min for 6 hours</u></b>, then <b><u>0.5 mg/min for 18 hours</u></b> (total 24-hour dose ~1050 mg).\n     - Intravenous <b>Digoxin</b>: 0.25 to 0.5 mg IV initial dose, then 0.25 mg q4–6h (up to 1.0 mg in 24 h); ideal in hypotensive heart failure.\n\n• Supraventricular Tachycardia (AVNRT / AVRT):\n  - Vagal maneuvers (Modified Valsalva maneuver: 40 mmHg strain for 15 s, then immediate supine repositioning with leg elevation to 45° for 15 s; triples conversion rate to 43%!).\n  - Intravenous <b>Adenosine</b>: Rapid bolus <b><u>6 mg IV</u></b> via proximal line followed by 20 mL saline flush; if no conversion within 1–2 minutes, give <b><u>12 mg IV</u></b>.",
+        "callout": {
+          "type": "pearl",
+          "title": "ARRHYTHMIA PEARL — New-Onset AF as a Sepsis Biomarker",
+          "text": "New-onset atrial fibrillation in an ICU patient is rarely a primary cardiac disease! It is an acute physiological alarm for an occult systemic insult: Screen immediately for worsening sepsis, occult surgical bleeding, severe hypomagnesemia, acute right ventricular strain (PE), or an over-inserted central venous catheter irritating the right atrium."
+        }
+      },
+      {
+        "h": "Ventricular Arrhythmias & Advanced ACLS Pulseless Arrest Protocols",
+        "b": "• Ventricular Tachycardia (VT) with Pulse:\n  - Monomorphic VT (Hemodynamically Stable):\n    * Intravenous <b>Amiodarone</b>: 150 mg IV over 10 min, followed by continuous infusion, OR\n    * Intravenous <b>Procainamide</b>: 20–50 mg/min (up to 17 mg/kg; stop if QRS widens > 50% or hypotension develops).\n  - Polymorphic VT / Torsades de Pointes:\n    * Prolonged baseline QTc (> 500 ms) triggered by hypokalemia, hypomagnesemia, or QT-prolonging ICU drugs (haloperidol, ondansetron, amiodarone, fluoroquinolones).\n    * Treatment: Intravenous <b>Magnesium Sulfate 2.0 g IV bolus over 2 to 5 minutes</b> (repeat in 10 min); Overdrive transvenous pacing or Isoproterenol infusion (target HR 100–110 bpm to shorten QTc).\n\n• Pulseless Cardiac Arrest Protocol (ACLS 2020/2025 Updates):\n  - Shockable Rhythms: Ventricular Fibrillation (VF) & Pulseless Ventricular Tachycardia (pVT).\n    * Immediate Defibrillation: <b><u>200 Joules biphasic</u></b> (or 360 J monophasic); resume CPR immediately for 2 minutes without checking rhythm or pulse.\n    * Epinephrine (Adrenaline): <b><u>1.0 mg IV/IO</u></b> administered after the second shock, then repeated every <b><u>3 to 5 minutes</u></b>.\n    * Antiarrhythmic: Administer <b>Amiodarone 300 mg IV bolus</b> after the 3rd shock; second dose <b>150 mg IV</b> after 5th shock (or Lidocaine 1.0–1.5 mg/kg first dose, then 0.5–0.75 mg/kg).\n  - Non-Shockable Rhythms: Asystole & Pulseless Electrical Activity (PEA).\n    * Epinephrine: <b><u>1.0 mg IV/IO</u></b> administered as early as possible!\n    * Identify & Treat the Reversible H's and T's:\n      - <b>H</b>ypovolemia, <b>H</b>ypoxia, <b>H</b>ydrogen ion (acidosis), <b>H</b>ypo/Hyperkalemia, <b>H</b>ypothermia.\n      - <b>T</b>ension pneumothorax, <b>T</b>amponade (cardiac), <b>T</b>oxins, <b>T</b>hrombosis (pulmonary PE), <b>T</b>hrombosis (coronary MI)."
+      },
+      {
+        "h": "Cardiac Tamponade: Pathophysiology & Diagnostic Criteria",
+        "b": "• Pathophysiology of Tamponade:\n  - Accumulation of pericardial fluid under elevated pressure compresses cardiac chambers.\n  - When intrapericardial pressure exceeds intracardiac diastolic filling pressures, venous return to the right heart crashes.\n  - Ventricular Interdependence: In inspiration, increased right ventricular filling shifts the compliant interventricular septum leftward, encroaching on the left ventricular cavity and dramatically dropping LV stroke volume and systolic BP.\n\n• Clinical Examination Signs:\n  1. Beck's Triad (Present in < 30% of ICU cases!): Hypotension + Distended Jugular Veins (elevated CVP) + Muffled/Distant Heart Sounds.\n  2. Pulsus Paradoxus:\n     - An exaggerated decrease in systolic blood pressure of <b><u>> 10 mmHg during normal inspiration</u></b>.\n     - Measured with manual sphygmomanometer cuff or directly visualised on the arterial line waveform tracing.\n  3. Central Venous Pressure (CVP) Tracing Hallmark:\n     - Loss of the normal diastolic <b>'y' descent</b> (prominent 'x' descent preserved; ventricular filling is blocked in early diastole!).",
+        "table": {
+          "headers": [
+            "Diagnostic Modality",
+            "Tamponade Finding",
+            "Sensitivity / Specificity",
+            "Clinical Significance"
+          ],
+          "rows": [
+            [
+              "Bedside Echocardiography",
+              "Right Ventricular Diastolic Collapse",
+              "Specific (> 90%)",
+              "Occurs when intrapericardial pressure > RV diastolic pressure"
+            ],
+            [
+              "Bedside Echocardiography",
+              "Right Atrial Systolic Collapse",
+              "Sensitive (early sign)",
+              "Inversion of RA free wall for > 1/3 of cardiac cycle"
+            ],
+            [
+              "Bedside Echocardiography",
+              "Plethoric IVC (> 2.1 cm, < 50% collapse)",
+              "High Sensitivity (> 95%)",
+              "Reflects severely elevated right atrial filling pressures"
+            ],
+            [
+              "Spectral Doppler",
+              "Mitral Inflow Respiratory Variation > 25%",
+              "Diagnostic of interdependence",
+              "E-wave velocity drops > 25% on inspiration, reciprocal tricuspid increase"
+            ],
+            [
+              "Invasive Hemodynamics",
+              "Equalization of Diastolic Pressures",
+              "Pathognomonic on PAC",
+              "CVP = RV Diastolic P = PA Diastolic P = PCWP (all within 5 mmHg)"
+            ]
+          ],
+          "caption": "Diagnostic hallmarks of cardiac tamponade across echocardiography and hemodynamics."
+        }
+      },
+      {
+        "h": "Emergency Pericardiocentesis Technique & Pitfalls",
+        "b": "• Indications: Cardiac tamponade with hemodynamic instability (shock, PEA cardiac arrest).\n\n• Step-by-Step Ultrasound-Guided Pericardiocentesis:\n  1. Patient Position: Semi-recumbent at <b><u>30° to 45°</u></b> (brings pericardial fluid anteriorly and inferiorly).\n  2. Acoustic Window Selection: Subxiphoid (subcostal) approach OR Apical approach (preferred when fluid collection is largest apically; lowest risk of liver or internal mammary artery injury).\n  3. Real-Time Ultrasound Guidance: Identify largest pocket of pericardial fluid closest to chest wall. Measure distance to fluid (typically <b><u>2 to 4 cm</u></b>).\n  4. Needle Entry: Under local anesthesia, introduce an 18-gauge spinal/introducer needle attached to a saline-filled syringe directed toward the left shoulder under continuous ultrasound visualization and negative suction.\n  5. Agitated Saline Test: Inject <b><u>5 mL of agitated sterile saline (saline + 1 mL air)</u></b>: Real-time ultrasound reveals bright hyperechoic microbubbles swirling inside the pericardial space (confirms needle is in the pericardial cavity, NOT inside the right ventricle!).\n  6. Seldinger Technique: Feed J-tip guidewire, dilate tract, and place a multi-hole pigtail pericardial drain. Secure drain to gravity collection.\n  7. Hemodynamic Response: Evacuation of as little as <b><u>50 to 100 mL of fluid</u></b> produces an immediate, dramatic spike in blood pressure and cardiac output (relieves the steep pericardial compliance curve!)."
+      }
+    ],
+    "example": "CLINICAL CASE: A 56-year-old male 4 days post-coronary artery bypass grafting (CABG) in the CT-ICU suddenly develops worsening hypotension and tachycardia: BP drops to 78/56 mmHg, HR 128 bpm, CVP 18 mmHg. Arterial line tracing demonstrates a 16 mmHg drop in systolic pressure during inspiration (pulsus paradoxus).\n\nEmergency Bedside Diagnosis & Management:\n1. POCUS Cardiac Exam: Subcostal 4-chamber view reveals a moderate-to-large circumferential pericardial effusion with Right Ventricular Diastolic Collapse and an engorged, plethoric IVC (2.4 cm, zero inspiratory collapse). Mitral inflow PW Doppler confirms a 32% inspiratory velocity variation.\n2. Diagnosis: Post-operative Cardiac Tamponade.\n3. Fluid Optimization: Immediate 500 mL crystalloid bolus administered to transiently increase intracardiac filling pressure above pericardial pressure while equipment is prepped.\n4. Ultrasound-Guided Pericardiocentesis: Subxiphoid approach performed under sterile precautions. An 18-G needle is advanced into the pericardial space. Agitated saline test confirms dense microbubbles within the pericardial space without myocardial puncture.\n5. Therapeutic Evacuation: 120 mL of frank blood is aspirated; BP immediately climbs from 78/56 to 124/78 mmHg, HR drops to 88 bpm, and CVP falls from 18 to 9 mmHg.\n6. Definitive Surgery: Pigtail catheter secured; patient taken urgently to the operating room for surgical re-exploration, where an active bleeding site on an epicardial venous branch is successfully ligated.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 11 & 12. Wolters Kluwer.",
+      "Panchal AR, et al. 2020 American Heart Association Guidelines for Cardiopulmonary Resuscitation and Emergency Cardiovascular Care. Circulation 2020;142(16_suppl_2):S366–S468.",
+      "Hindricks G, et al. 2020 ESC Guidelines for the Diagnosis and Management of Atrial Fibrillation. Eur Heart J 2021;42(5):373–498.",
+      "Adler Y, et al. 2015 ESC Guidelines for the Diagnosis and Management of Pericardial Diseases. Eur Heart J 2015;36(42):2921–2964."
+    ]
+  },
+  {
+    "id": "aki-kdigo-crrt-modalities",
+    "cat": "cc_renal",
+    "name": "Acute Kidney Injury (KDIGO), Biomarkers & CRRT Modalities",
+    "short": "AKI & CRRT Modalities",
+    "tags": [
+      "KDIGO Criteria",
+      "Furosemide Stress Test",
+      "NephroCheck",
+      "CVVH vs CVVHD vs CVVHDF",
+      "Effluent Dose 20-25",
+      "Citrate Anticoagulation",
+      "Citrate Toxicity"
+    ],
+    "tagline": "KDIGO staging, furosemide stress test, continuous renal replacement therapy physics, effluent dosing and regional citrate anticoagulation",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 13 & 14; KDIGO Clinical Practice Guideline for Acute Kidney Injury; Kidney Int Suppl 2012; 2(1):1–138.",
+    "sections": [
+      {
+        "h": "Acute Kidney Injury: KDIGO Staging & Novel Biomarkers",
+        "b": "• KDIGO (Kidney Disease: Improving Global Outcomes) Consensus Staging:\n  - <b>Stage 1</b>:\n    * Serum Creatinine: <b><u>1.5 to 1.9 times baseline</u></b> OR an absolute increase of <b><u>≥ 0.3 mg/dL (≥ 26.5 mcmol/L)</u></b> within 48 hours, OR\n    * Urine Output: <b><u>< 0.5 mL/kg/h for 6 to 12 hours</u></b>.\n  - <b>Stage 2</b>:\n    * Serum Creatinine: <b><u>2.0 to 2.9 times baseline</u></b>, OR\n    * Urine Output: <b><u>< 0.5 mL/kg/h for ≥ 12 hours</u></b>.\n  - <b>Stage 3</b>:\n    * Serum Creatinine: <b><u>3.0 times baseline</u></b> OR increase to <b><u>≥ 4.0 mg/dL (≥ 353.6 mcmol/L)</u></b> OR initiation of Renal Replacement Therapy (RRT) OR eGFR < 35 mL/min/1.73m² (in patients < 18 y), OR\n    * Urine Output: <b><u>< 0.3 mL/kg/h for ≥ 24 hours</u></b> OR Anuria for <b><u>≥ 12 hours</u></b>.\n\n• Novel Renal Biomarkers:\n  - [TIMP-2]·[IGFBP7] (NephroCheck): Biomarkers of renal tubular cell-cycle arrest (G1 arrest); NephroCheck score <b><u>> 0.3 (ng/mL)²/1000</u></b> indicates high risk of moderate/severe AKI within 12 hours; score <b><u>> 2.0</u></b> predicts imminent RRT requirement.\n  - Neutrophil Gelatinase-Associated Lipocalin (NGAL): Rises within <b><u>2 to 4 hours</u></b> of tubular ischemic injury (long before creatinine rises!).\n\n• The Furosemide Stress Test (FST):\n  - Assesses functional tubular integrity in early AKI (KDIGO Stage 1 or 2).\n  - Protocol: Administer <b><u>1.0 mg/kg IV furosemide</u></b> in loop-naive patients (or <b><u>1.5 mg/kg IV</u></b> in patients with prior loop diuretic exposure) to an adequately volume-resuscitated patient.\n  - Validation (Chawla et al., Crit Care): A 2-hour cumulative urine output of <b><u>< 200 mL</u></b> identifies non-responders with <b><u>87% sensitivity and 84% specificity</u></b> for progression to Stage 3 AKI and RRT!",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — The Furosemide Stress Test Safety",
+          "text": "The FST is a dynamic functional test, NOT a treatment for AKI. It must only be performed after restoring adequate circulating volume. If the patient produces < 200 mL in 2 hours, do NOT give repeated massive diuretic doses — prepare for renal replacement therapy!"
+        }
+      },
+      {
+        "h": "Renal Replacement Therapy Modalities: CRRT Physics & Prescriptions",
+        "b": "• Indications for Urgent RRT in ICU (The 'AEIOU' Mnemonic):\n  - <b>A</b>cidosis: Severe refractory metabolic acidosis (pH < 7.15).\n  - <b>E</b>lectrolytes: Severe refractory hyperkalemia (K > 6.5 mEq/L with ECG changes).\n  - <b>I</b>ngestions: Toxic alcohols, salicylates, lithium, theophylline (EXTRIP criteria).\n  - <b>O</b>verload: Refractory pulmonary edema / volume overload unresponsive to diuretics.\n  - <b>U</b>remia: Uremic encephalopathy, pericarditis, or uremic bleeding diathesis.\n\n• Continuous Renal Replacement Therapy (CRRT) vs Intermittent Modalities:\n  - CRRT is preferred over Intermittent Hemodialysis (IHD) in hemodynamically unstable patients, acute brain injury (avoids sudden shifts in serum osmolality and cerebral edema), and severe volume overload.\n\n• Physical Transport Principles of CRRT:\n  1. Continuous Veno-Venous Hemofiltration (CVVH) — <b>Convection</b>:\n     - Solutes are dragged across a semipermeable membrane with water ('solvent drag') driven by a positive transmembrane pressure (TMP).\n     - Superior clearance of middle and large molecular weight molecules (cytokines, myoglobin).\n     - Requires high volumes of sterile Replacement Fluid infused pre-filter or post-filter.\n  2. Continuous Veno-Venous Hemodialysis (CVVHD) — <b>Diffusion</b>:\n     - Solutes move down their concentration gradient across the membrane into counter-current dialysate fluid.\n     - Highly efficient for small molecules (urea, creatinine, potassium); zero replacement fluid required.\n  3. Continuous Veno-Venous Hemodiafiltration (CVVHDF) — <b>Combined Convection + Diffusion</b>:\n     - Uses BOTH dialysate fluid (counter-current) and replacement fluid for maximal clearance.\n\n• Evidence-Based Effluent Dosing (ATN & RENAL Trials):\n  - The landmark VA/NIH ATN and RENAL trials demonstrated that high-intensity effluent doses (> 35–40 mL/kg/h) provide ZERO survival advantage over standard dosing.\n  - Recommended Prescribed Effluent Dose: <b><u>20 to 25 mL/kg/h</u></b> (prescribe at <b><u>25 to 30 mL/kg/h</u></b> to account for downtime during filter changes and bag swaps).",
+        "table": {
+          "headers": [
+            "CRRT Modality",
+            "Primary Clearance Mechanism",
+            "Fluids Utilized",
+            "Optimal Molecular Clearance",
+            "Clinical Advantages"
+          ],
+          "rows": [
+            [
+              "CVVH",
+              "Convection (Solvent Drag)",
+              "Replacement fluid (Pre/Post-filter)",
+              "Middle & Large molecules (myoglobin, cytokines)",
+              "Ideal in rhabdomyolysis, severe sepsis"
+            ],
+            [
+              "CVVHD",
+              "Diffusion (Concentration gradient)",
+              "Dialysate fluid (Counter-current)",
+              "Small molecules (K+, urea, creatinine)",
+              "Simple fluid balance, low filtration fraction"
+            ],
+            [
+              "CVVHDF",
+              "Combined (Diffusion + Convection)",
+              "Both Dialysate & Replacement fluids",
+              "Broad spectrum (Small + Middle molecules)",
+              "Maximal clearance rate in severe metabolic crises"
+            ],
+            [
+              "SCUF",
+              "Ultrafiltration only (No clearance)",
+              "Zero replacement/dialysate",
+              "Fluid removal only (Zero solute clearance)",
+              "Isolated fluid overload with normal renal chemistry"
+            ]
+          ],
+          "caption": "Comparison of continuous renal replacement therapy modalities."
+        }
+      },
+      {
+        "h": "Vascular Access & Circuit Anticoagulation (Regional Citrate)",
+        "b": "• CRRT Vascular Access:\n  - Dual-lumen non-tunneled dialysis catheter (<b><u>13.5 French, 15 to 20 cm length</u></b>).\n  - Preferred Site: Right Internal Jugular Vein (straight anatomical path into SVC/RA; lowest thrombosis risk) > Femoral Vein (requires <b><u>24 to 25 cm catheter</u></b> to reach inferior vena cava above diaphragm) > Left Internal Jugular > Subclavian Vein (strictly AVOID subclavian due to high risk of central venous stenosis compromising future fistula creation!).\n\n• Regional Citrate Anticoagulation (RCA) — The Gold Standard (KDIGO Grade 1B):\n  - Mechanism: Trisodium citrate is infused pre-filter into the arterial line. Citrate chelates ionized calcium (iCa), dropping circuit iCa to <b><u>< 0.35 mmol/L</u></b> (calcium is an essential cofactor for the clotting cascade; zero clotting can occur in the filter!).\n  - In the patient's body, the liver, skeletal muscle, and kidneys metabolize the calcium-citrate complex to bicarbonate (1 mmol citrate yields 3 mmol HCO3-).\n  - Post-Filter Calcium Infusion: Intravenous Calcium Chloride or Calcium Gluconate is continuously infused into the venous line returning to the patient to restore normal systemic ionized calcium.\n  - Target Monitoring Parameters:\n    * Circuit Post-Filter Ionized Calcium: <b><u>0.25 to 0.35 mmol/L</u></b> (proves effective circuit anticoagulation).\n    * Systemic Ionized Calcium: <b><u>1.10 to 1.30 mmol/L</u></b> (prevents systemic hypocalcemia).\n\n• Citrate Toxicity ('Citrate Lock'):\n  - Occurs when the liver cannot metabolize citrate (severe acute liver failure, severe hypoperfusion/shock).\n  - Laboratory Hallmark: Total Calcium to Ionized Calcium Ratio: <b><u>Total Ca (mg/dL) / Systemic Ionized Ca (mmol/L) > 2.5</u></b>.\n  - Accompanied by severe High Anion Gap Metabolic Acidosis with refractory hypocalcemia.\n  - Management: Immediately stop or reduce citrate infusion; switch to systemic heparin or saline flushes."
+      },
+      {
+        "h": "Timing of RRT Initiation: The Landmark Evidence (AKIKI, ELAIN, STARRT-AKI)",
+        "b": "• The RRT Initiation Dilemma (Early vs Delayed/Watchful Waiting):\n  - Does initiating RRT early before severe complications develop improve survival, or does it expose patients to unnecessary invasive complications?\n\n• Landmark Multicenter Randomized Controlled Trials:\n  1. AKIKI Trial (NEJM 2016): Early RRT (within 6 h of Stage 3 AKI) vs Delayed RRT (withheld until refractory criteria met: K > 6.5, pH < 7.15, pulmonary edema, or BUN > 112 mg/dL). Outcome: Zero difference in 60-day mortality (48.5% vs 49.7%); 49% of patients in the delayed group spontaneously recovered renal function and never needed dialysis!\n  2. IDEAL-ICU Trial (NEJM 2018): In septic shock patients with Stage 3 AKI, early RRT did not improve 90-day survival.\n  3. STARRT-AKI Trial (NEJM 2020 — Largest trial, 3011 patients):\n     - Accelerated RRT strategy (median 6 hours) vs Standard strategy (median 31 hours).\n     - Outcome: Zero difference in 90-day mortality (43.9% vs 43.7%).\n     - Significant Harm in Accelerated Group: Higher rate of chronic dialysis dependence at 90 days (<b><u>10.4% vs 6.0%</u></b>) and higher incidence of catheter complications and hypotension.\n\n• Current Evidence-Based Consensus:\n  - Routine 'Accelerated' RRT without urgent indications is NOT recommended.\n  - Adopt a watchful waiting strategy: Optimize medical management (diuretics, fluid restriction, treating acidosis); initiate RRT promptly when conventional medical therapy fails or absolute indications (AEIOU) emerge."
+      }
+    ],
+    "example": "CLINICAL CASE: A 67-year-old male with severe septic shock and multi-organ failure post-emergency bowel resection is in the ICU. Baseline creatinine was 0.9 mg/dL. Over 24 hours, he is anuric (< 50 mL total urine output over 18 hours), and serum creatinine rises to 4.2 mg/dL (KDIGO Stage 3 AKI). Blood gas: pH 7.14, PaCO2 32, HCO3 11 mEq/L, K 6.6 mEq/L with peaked T-waves on telemetry. Fluid balance is +8.5 Liters, with bilateral pulmonary crackles and worsening oxygenation (P/F 140).\n\nCRRT Prescription & Anticoagulation Protocol:\n1. Indication: Absolute refractory indications for RRT met: Severe metabolic acidosis (pH 7.14), life-threatening hyperkalemia (K 6.6), and anuric fluid overload.\n2. Access: A 13.5-Fr, 19 cm dual-lumen hemodialysis catheter is placed in the right internal jugular vein under ultrasound guidance with good bilateral aspiration.\n3. Modality: Continuous Veno-Venous Hemodiafiltration (CVVHDF) initiated (pt weight = 80 kg):\n   - Blood flow rate (Qb): 150 mL/min.\n   - Dialysate flow rate (Qd): 1000 mL/h.\n   - Replacement fluid (Qr, post-filter): 1000 mL/h.\n   - Total Effluent Dose: 2000 mL/h (<b>25 mL/kg/h</b>, exactly matching KDIGO recommendations).\n   - Net ultrafiltration rate set to 150 mL/h (negative fluid balance).\n4. Anticoagulation: Regional Citrate Anticoagulation (RCA) started:\n   - Pre-filter citrate infusion titrated to achieve post-filter iCa 0.28 mmol/L.\n   - Systemic calcium gluconate infusion titrated to maintain systemic iCa 1.18 mmol/L.\n   - Liver function normal; total Ca / ionized Ca ratio stays at 2.1 (no citrate toxicity).\n5. Outcome: Over 12 hours, potassium normalizes to 4.2 mEq/L, arterial pH corrects to 7.36, and 2.5 L of fluid is removed. The filter runs continuously for 72 hours without clotting.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 13 & 14. Wolters Kluwer.",
+      "KDIGO Clinical Practice Guideline for Acute Kidney Injury. Kidney Int Suppl 2012;2(1):1–138.",
+      "The STARRT-AKI Investigators. Timing of Initiation of Renal-Replacement Therapy in Acute Kidney Injury. N Engl J Med 2020;383(3):240–251.",
+      "Gaudry S, et al. Initiation Strategies for Renal-Replacement Therapy in the Intensive Care Unit (AKIKI Trial). N Engl J Med 2016;375(2):122–133.",
+      "The RENAL Replacement Therapy Study Investigators. Intensity of Continuous Renal-Replacement Therapy in Critically Ill Patients. N Engl J Med 2009;361(17):1627–1638."
+    ]
+  },
+  {
+    "id": "severe-electrolyte-disturbances-icu",
+    "cat": "cc_renal",
+    "name": "Severe Electrolyte Disturbances: Dysnatremias & Dyskalemias",
+    "short": "Electrolyte Emergencies in ICU",
+    "tags": [
+      "Severe Hyponatremia",
+      "3% Hypertonic Saline",
+      "ODS / CPM",
+      "Hyperkalemia Emergency",
+      "Calcium Gluconate",
+      "Insulin-Glucose Shift",
+      "Hypophosphatemia"
+    ],
+    "tagline": "Dysnatremia correction limits, osmotic demyelination prevention, hyperkalemic membrane stabilization and refeeding hypophosphatemia",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 15; European Society of Intensive Care Medicine Guidelines on Hyponatremia; Intensive Care Med 2014; 40:320–331.",
+    "sections": [
+      {
+        "h": "Severe Hyponatremia: Neuroemergencies & Safe Correction Limits",
+        "b": "• Classification & Pathophysiology:\n  - Severe Hyponatremia: Serum Sodium <b><u>< 120 mEq/L</u></b> (or any sodium < 130 mEq/L accompanied by severe neurological symptoms: seizures, coma, respiratory depression, brain herniation).\n  - Acute (< 48 hours) vs Chronic (> 48 hours): In chronic hyponatremia, brain astrocytes actively extrude organic osmolytes (glutamate, myoinositol, taurine) over 24–48 hours to restore cell volume; rapid overcorrection causes osmotic shrinkage of brain cells, disruption of blood-brain barrier, and fatal <b>Osmotic Demyelination Syndrome (ODS / Central Pontine Myelinolysis)</b>!\n\n• Emergency Protocol for Symptomatic / Severe Hyponatremia:\n  1. Immediate Interventions for Active Seizures / Coma:\n     - Administer <b><u>3% Hypertonic Saline (NaCl 3%): 100 to 150 mL IV bolus over 10 minutes</u></b>.\n     - Repeat up to <b><u>3 times</u></b> at 20-minute intervals until severe neurological symptoms resolve.\n     - Clinical Goal: Raise serum sodium acutely by <b><u>4 to 6 mEq/L</u></b> (this small increase is sufficient to reduce brain edema and abort herniation!).\n\n• Strict Safe Correction Limits for Chronic Hyponatremia:\n  - Maximum 24-Hour Limit: Do NOT exceed an increase of <b><u>8 mEq/L in 24 hours</u></b> (standard patients).\n  - High-Risk Patients for ODS (Malnutrition, alcoholism, advanced liver cirrhosis, baseline Na < 105 mEq/L): Limit correction strictly to <b><u>≤ 4 to 6 mEq/L in 24 hours</u></b>!\n\n• Managing Inadvertent Overcorrection (The 'Rescue Protocol'):\n  - If serum sodium rises > 8 mEq/L in 24 hours (frequently occurs when underlying cause resolves and spontaneous free water diuresis ensues):\n  - Immediately stop all sodium-containing fluids.\n  - Administer <b>Desmopressin (dDAVP) 2 to 4 mcg IV/SC</b> to halt renal water loss.\n  - Infuse free water as <b>5% Dextrose (D5W) at 3 to 5 mL/kg/h</b> to safely re-lower serum sodium back within safe target limits.",
+        "callout": {
+          "type": "pearl",
+          "title": "NEUROLOGICAL PEARL — The Osmotic Demyelination Syndrome (ODS)",
+          "text": "ODS typically manifests <b><u>2 to 6 days after rapid sodium overcorrection</u></b>. Patients initially improve, followed by delayed neurological devastation: Dysarthria, dysphagia, horizontal gaze paralysis, spastic flaccid quadriplegia, and the tragic 'Locked-In' syndrome."
+        }
+      },
+      {
+        "h": "Severe Hypernatremia: Water Deficit & Calculation Protocols",
+        "b": "• Pathophysiology & Etiology:\n  - Severe Hypernatremia: Serum Sodium <b><u>> 155 mEq/L</u></b>.\n  - Causes: Unreplaced free water loss (central or nephrogenic diabetes insipidus, osmotic diuresis in DKA/HHS, profuse sweating/burns, fever) or sodium overload (hypertonic saline, sodium bicarbonate boluses).\n  - High sodium draws water out of neurons, causing cell shrinkage, brain vascular tearing, and intracranial hemorrhage.\n\n• Safe Correction Principles:\n  - Rapid correction of chronic hypernatremia causes sudden intracellular water influx and lethal <b>Cerebral Edema</b>!\n  - Correction Limit: Lower serum sodium at a rate of <b><u>≤ 0.5 mEq/L per hour</u></b>, with a maximal drop of <b><u>≤ 10 mEq/L in 24 hours</u></b>.\n\n• Free Water Deficit Formula:\n  - <b><u>Total Body Water (TBW) = Weight (kg) × Factor</u></b> (Factor = 0.6 for young males, 0.5 for elderly males/young females, 0.45 for elderly females).\n  - <b><u>Free Water Deficit (Liters) = TBW × [(Current Na / 140) - 1]</u></b>.\n  - Replacement Strategy: Administer calculated deficit plus ongoing losses (urine + insensible ~30 mL/h) evenly over <b><u>48 to 72 hours</u></b> using enteral sterile water via NG tube (preferred) or intravenous <b>5% Dextrose in Water (D5W)</b>.",
+        "table": {
+          "headers": [
+            "Dysnatremias",
+            "Defining Threshold",
+            "Primary Pathophysiology",
+            "Acute Intervention",
+            "Strict 24-Hour Correction Limit"
+          ],
+          "rows": [
+            [
+              "Severe Hyponatremia",
+              "Na < 120 mEq/L (or seizures)",
+              "Cellular swelling, cerebral edema",
+              "3% Hypertonic Saline 100–150 mL bolus over 10 min",
+              "≤ 8 mEq/L / 24h (≤ 4–6 in high risk)"
+            ],
+            [
+              "Severe Hypernatremia",
+              "Na > 155 mEq/L",
+              "Cellular dehydration, brain shrinkage",
+              "Enteral water or IV D5W based on deficit",
+              "≤ 10 mEq/L / 24h (drop ≤ 0.5 mEq/L/h)"
+            ]
+          ],
+          "caption": "Emergency management and correction boundaries for severe dysnatremias."
+        }
+      },
+      {
+        "h": "Life-Threatening Hyperkalemia: The 3-Step Emergency Management",
+        "b": "Severe Hyperkalemia (Serum Potassium <b><u>> 6.5 mEq/L</u></b> or ANY potassium elevation with ECG changes) is an immediate cardiac arrest emergency:\n\n• ECG Manifestations in Order of Appearance:\n  1. Tall, peaked, symmetrical T-waves (narrow base, 'tented' appearance).\n  2. Prolongation of PR interval and flattening/loss of P-waves.\n  3. Widening of QRS complex, bundle branch blocks, and ST-segment depression.\n  4. Merging of QRS and T-wave into a fatal <b>Sine Wave</b> pattern → Ventricular Fibrillation or Asystole!\n\n• Step 1: Immediate Myocardial Membrane Stabilization (0 to 5 Minutes):\n  - <b>Intravenous Calcium</b>: Does NOT lower serum potassium; it antagonizes the cardiotoxic electrophysiological effects of hyperkalemia on cardiac myocytes by restoring resting membrane potential threshold!\n  - <b>10% Calcium Gluconate: 10 to 20 mL IV push over 2 to 3 minutes</b> (preferred for peripheral access; less tissue toxic).\n  - <b>10% Calcium Chloride: 10 mL IV</b> (provides 3 times more elemental calcium; preferred in cardiac arrest or via central line).\n  - Onset: <b><u>1 to 3 minutes</u></b>; Duration of effect: Only <b><u>30 to 60 minutes</u></b>! Repeat dose if ECG changes do not resolve within 5–10 minutes.\n\n• Step 2: Intracellular Shifting of Potassium (5 to 30 Minutes):\n  1. Insulin & Glucose:\n     - Regular Insulin <b><u>10 Units IV push</u></b> + <b><u>50 mL of 50% Dextrose (D50W, 25 g glucose)</u></b> over 15 minutes.\n     - Mechanism: Insulin activates muscle cell Na+/K+ ATPase, driving potassium into cells.\n     - Onset: 15–30 min; lowers serum K by <b><u>0.5 to 1.2 mEq/L</u></b> for 4–6 hours. Monitor blood glucose hourly to prevent severe hypoglycemia!\n  2. Inhaled Beta-2 Agonist (Salbutamol / Albuterol):\n     - Nebulized Salbutamol <b><u>10 to 20 mg</u></b> (4 to 8 standard unit-dose vials) over 15 minutes.\n     - Synergistic with insulin; lowers K by another 0.5–1.0 mEq/L.\n  3. Sodium Bicarbonate (IV):\n     - <b><u>50 to 100 mEq IV infusion</u></b>: Effective ONLY in the presence of concurrent metabolic acidosis (drives K into cells via H+/K+ exchange).\n\n• Step 3: Total Body Potassium Elimination (Definitive Removal):\n  - Loop Diuretics: Furosemide 40–80 mg IV in patients with preserved renal function.\n  - Potassium Binders: <b>Sodium Zirconium Cyclosilicate (Lokelma)</b> 10 g orally TID (rapid onset ~1 h) or Patiromer 8.4 g.\n  - Emergent Hemodialysis: The most effective and definitive treatment in anuric/oliguric renal failure (removes <b><u>25 to 50 mEq K per hour</u></b>)."
+      },
+      {
+        "h": "Hypokalemia, Severe Hypophosphatemia & Hypomagnesemia",
+        "b": "• Severe Hypokalemia (Serum Potassium < 2.5 mEq/L):\n  - ECG Signs: Flattened T-waves, prominent U-waves, ST depression, prolonged QTc, VT, ventricular fibrillation, and torsades de pointes.\n  - Replacement Protocol: Intravenous Potassium Chloride (KCl) infused via a central line at <b><u>10 to 20 mEq/h</u></b> (maximum <b><u>40 mEq/h</u></b> in emergency cardiac arrest under continuous cardiac telemetry).\n  - <b>The Magnesium Link</b>: Always check and replete Magnesium! Hypomagnesemia impairs the renal Na+/K+ ATPase, causing refractory renal potassium wasting; hypokalemia CANNOT be corrected until magnesium is normalized!\n\n• Severe Hypophosphatemia (Serum Phosphate < 1.0 mg/dL / < 0.3 mmol/L):\n  - High Risk: Refeeding syndrome, severe DKA recovery, chronic alcoholism, prolonged mechanical ventilation.\n  - Devastating Consequences: Depletes intracellular 2,3-DPG (shifting oxyhemoglobin curve leftward and impairing tissue oxygen delivery) and ATP (causing severe diaphragmatic muscle weakness, <b>Ventilator Weaning Failure</b>, acute rhabdomyolysis, and acute hemolytic anemia!).\n  - Treatment: Sodium or Potassium Phosphate <b><u>0.08 to 0.16 mmol/kg IV</u></b> (typically <b><u>20 to 30 mmol</u></b>) infused over <b><u>4 to 6 hours</u></b>.\n\n• Severe Hypomagnesemia (Serum Magnesium < 1.2 mg/dL / < 0.5 mmol/L):\n  - Causes cardiac irritability, refractory hypokalemia, and secondary hypocalcemia (by inhibiting PTH release).\n  - Treatment: Intravenous <b>Magnesium Sulfate 2.0 to 4.0 g IV</b> infused in 100 mL saline over <b><u>30 to 60 minutes</u></b> (in cardiac arrest or Torsades de Pointes: 2.0 g IV push over 1–2 minutes)."
+      }
+    ],
+    "example": "CLINICAL CASE: A 72-year-old female with chronic heart failure on spironolactone and lisinopril presents with profound generalized weakness. Vitals: HR 38 bpm, BP 82/44 mmHg. Serum potassium is 8.4 mEq/L, BUN 64 mg/dL, Cr 3.8 mg/dL. ECG reveals absence of P-waves, a wide QRS complex of 190 ms, and a classic sine-wave appearance merging with tall peaked T-waves.\n\nEmergency Hyperkalemic Resuscitation:\n1. Step 1 (Membrane Stabilization): Immediate 10% Calcium Gluconate 20 mL IV push over 3 minutes. Telemetry rhythm visibly narrows from sine wave back to wide-complex bradycardia within 2 minutes. A second 10 mL bolus is administered 10 minutes later, restoring narrow QRS complexes.\n2. Step 2 (Intracellular Shifting): Regular Insulin 10 Units IV + 50% Dextrose 50 mL infused over 10 minutes. Continuous Salbutamol nebulization 20 mg initiated. Point-of-care fingerstick glucose monitored q30m.\n3. Step 3 (Definitive Elimination): Patient is oliguric (Cr 3.8). Nephrology called immediately for emergent hemodialysis. A temporary right IJ catheter is placed and 3 hours of hemodialysis performed with zero-potassium dialysate.\n4. Outcome: Post-dialysis serum potassium drops to 4.4 mEq/L, heart rate normalizes to 74 bpm (normal sinus rhythm), and hemodynamics stabilize with complete resolution of weakness.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 15. Wolters Kluwer.",
+      "Spasovski G, et al. Clinical Practice Guideline on Diagnosis and Treatment of Hyponatraemia. Intensive Care Med 2014;40(3):320–331.",
+      "Sterns RH. Disorders of Plasma Sodium — Causes, Consequences, and Correction. N Engl J Med 2015;372(1):55–65.",
+      "Weisberg LS. Management of Severe Hyperkalemia. Crit Care Med 2008;36(12):3246–3251."
+    ]
+  },
+  {
+    "id": "acute-gi-bleeding-pancreatitis-icu",
+    "cat": "cc_gi",
+    "name": "Acute GI Bleeding, Severe Pancreatitis & Abdominal Compartment",
+    "short": "GI Bleeding & Pancreatitis",
+    "tags": [
+      "Variceal Bleeding",
+      "Octreotide / Terlipressin",
+      "Restrictive Transfusion",
+      "Atlanta Criteria",
+      "Step-Up Approach",
+      "Intra-Abdominal Hypertension"
+    ],
+    "tagline": "Variceal vs non-variceal protocols, restrictive transfusion threshold 7 g/dL, Atlanta classification, step-up necrosectomy and IAP monitoring",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 16 & 17; ACG Clinical Guidelines on Upper GI Bleeding; WSACS Intra-Abdominal Hypertension Guidelines; Am J Gastroenterol 2021; 116(5):859–877.",
+    "sections": [
+      {
+        "h": "Acute Upper GI Bleeding: Resuscitation & Restrictive Transfusion",
+        "b": "• Initial Resuscitation & Risk Stratification:\n  - Secure two large-bore peripheral IVs (16- or 14-gauge) or rapid infusion catheter; endotracheal intubation considered for massive hematemesis, hemodynamic instability, or altered mental status to prevent fatal pulmonary aspiration.\n  - Glasgow-Blatchford Score (GBS): Outpatient triage score (score 0–1 identifies low-risk patients suitable for outpatient management; score <b><u>≥ 6</u></b> carries > 50% risk of needing intervention/transfusion).\n\n• Restrictive Transfusion Strategy (Villanueva NEJM Benchmark Trial):\n  - <b>Restrictive Trigger</b>: Transfuse Packed Red Blood Cells (PRBC) strictly when Hemoglobin drops <b><u>< 7.0 g/dL</u></b>, targeting post-transfusion Hb <b><u>7.0 to 9.0 g/dL</u></b>.\n  - Clinical Benefit: Compared to a liberal strategy (trigger < 9.0 g/dL), restrictive transfusion significantly improved 6-week survival (<b><u>95% vs 91%</u></b>), reduced rebleeding (<b><u>10% vs 16%</u></b>), and lowered adverse event rates!\n  - Physiological Mechanism in Cirrhosis: Liberal transfusion overfills the splanchnic venous bed, spikes portal venous pressure, and dislodges newly formed hemostatic clots on esophageal varices!\n  - Exception: Acute active myocardial ischemia (maintain Hb <b><u>≥ 8.0 g/dL</u></b>).",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — The Restrictive Transfusion Rule in Cirrhosis",
+          "text": "Over-transfusing a patient with bleeding esophageal varices (targeting Hb > 9 or 10 g/dL) is dangerous: It raises portal pressure above the critical threshold of <b><u>12 mmHg</u></b>, precipitating immediate refractory rebleeding and doubling mortality!"
+        }
+      },
+      {
+        "h": "Variceal Bleeding Protocol vs Non-Variceal (Peptic Ulcer) Bleeding",
+        "b": "• Acute Variceal Hemorrhage Protocol:\n  1. Vasoactive Splanchnic Vasoconstrictor (Initiate IMMEDIATELY before endoscopy):\n     - <b>Octreotide</b>: Intravenous bolus <b><u>50 mcg IV</u></b>, followed by continuous infusion of <b><u>50 mcg/h for 2 to 5 days</u></b> (inhibits glucagon release, selective splanchnic vasoconstriction), OR\n     - <b>Terlipressin</b>: <b><u>2.0 mg IV every 4 hours</u></b> for the first 48 hours, then 1.0 mg q4h (synthetic vasopressin analog; lowers portal pressure and improves renal perfusion in HRS).\n  2. Prophylactic Antibiotics (Mandatory Standard of Care):\n     - Intravenous <b>Ceftriaxone 1.0 g IV every 24 hours for 7 days</b>.\n     - Reduces spontaneous bacterial peritonitis (SBP), recurrent variceal hemorrhage, and overall hospital mortality by <b><u>> 30%</u></b>!\n  3. Urgent Esophagogastroduodenoscopy (EGD):\n     - Perform within <b><u>12 hours</u></b> of presentation; Endoscopic Variceal Ligation (EVL / Banding) is first-line.\n  4. Balloon Tamponade (Rescue Bridge):\n     - Sengstaken-Blakemore or Minnesota Tube: Gastric balloon inflated with <b><u>250 to 300 mL of air</u></b> (clamped and put on 0.5–1.0 kg traction). If bleeding persists, esophageal balloon inflated to <b><u>30 to 45 mmHg</u></b> for a maximum of <b><u>24 hours</u></b> (prevents esophageal necrosis) as a bridge to emergent TIPS (Transjugular Intrahepatic Portosystemic Shunt).\n\n• Non-Variceal (Peptic Ulcer) Bleeding Protocol:\n  - High-Dose Proton Pump Inhibitor (PPI):\n    * <b>Pantoprazole or Omeprazole 80 mg IV bolus</b>, followed by <b><u>8 mg/h continuous IV infusion for 72 hours</u></b> (maintains intragastric pH > 6.0, which stabilizes platelet aggregation and prevents fibrinolysis).\n  - Endoscopy within <b><u>24 hours</u></b>: Dual therapy (epinephrine injection PLUS hemoclip or bipolar electrocoagulation) for high-risk stigmata (Forrest Ia: spurting, Ib: oozing, IIa: non-bleeding visible vessel).",
+        "table": {
+          "headers": [
+            "Clinical Category",
+            "First-Line Pharmacotherapy",
+            "Endoscopic Modality",
+            "Secondary Rescue Modality",
+            "Antibiotic Requirement"
+          ],
+          "rows": [
+            [
+              "Variceal Bleeding (Cirrhosis)",
+              "Octreotide 50 mcg/h OR Terlipressin 2 mg q4h",
+              "Endoscopic Variceal Ligation (EVL)",
+              "Sengstaken tube → Emergent TIPS",
+              "Mandatory: Ceftriaxone 1 g IV q24h × 7 days"
+            ],
+            [
+              "Non-Variceal Peptic Ulcer",
+              "Pantoprazole 80 mg bolus + 8 mg/h infusion",
+              "Dual modality: Clip + Thermal / Epinephrine",
+              "Transcatheter Angiographic Embolization (TAE)",
+              "No routine antibiotics (test for H. pylori)"
+            ]
+          ],
+          "caption": "Comparison of variceal vs non-variceal upper GI bleeding protocols."
+        }
+      },
+      {
+        "h": "Severe Acute Pancreatitis: Revised Atlanta Criteria & The 'Step-Up' Approach",
+        "b": "• Revised Atlanta Classification of Acute Pancreatitis:\n  - Diagnosis requires at least 2 of 3: (1) Characteristic severe epigastric pain radiating to back, (2) Serum lipase or amylase <b><u>≥ 3 times upper limit of normal</u></b>, (3) Characteristic findings on contrast-enhanced CT, MRI, or ultrasound.\n  - Severity Grading:\n    * Mild: Zero organ failure and zero local/systemic complications.\n    * Moderately Severe: Transient organ failure that resolves within <b><u>< 48 hours</u></b>, OR local complications (fluid collections, necrosis).\n    * <b>Severe Acute Pancreatitis</b>: Persistent organ failure lasting <b><u>> 48 hours</u></b> (pulmonary P/F < 300, renal Cr > 1.9, or cardiovascular shock requiring pressors); carries a mortality rate of <b><u>20% to 40%</u></b>!\n\n• Early Fluid Resuscitation & The WATERFALL Trial:\n  - Initial Resuscitation: Balanced crystalloid (Lactated Ringer's preferred over normal saline; reduces systemic inflammation).\n  - The WATERFALL Trial (NEJM 2022): Aggressive goal-directed fluid loading (> 20 mL/kg bolus + 3 mL/kg/h) resulted in a <b><u>3-fold higher rate of fluid overload (20.5% vs 6.3%)</u></b> without improving clinical outcomes compared to moderate fluid resuscitation (10 mL/kg bolus in hypovolemia + 1.5 mL/kg/h).\n  - Target: Titrate fluid to urine output <b><u>0.5 to 1.0 mL/kg/h</u></b>, hematocrit <b><u>35% to 44%</u></b>, and normal BUN.\n\n• Enteral Nutrition in Acute Pancreatitis:\n  - Total Parenteral Nutrition (TPN) is DEPRECATED (increases infectious morbidity and gut atrophy).\n  - Initiate early enteral nutrition (nasogastric or nasojejunal) within <b><u>24 to 72 hours</u></b> of admission; maintains gut mucosal barrier, prevents bacterial translocation, and significantly reduces mortality.\n\n• Management of Necrosis — The 'Step-Up' Approach (PANTER Trial):\n  - Prophylactic antibiotics are strictly NOT recommended for sterile necrosis.\n  - Infected Pancreatic Necrosis (gas bubbles on CT or positive gram stain on FNA):\n  - Step 1: Broad-spectrum antibiotics that penetrate pancreatic tissue (<b>Meropenem 1 g IV q8h</b> or Ciprofloxacin + Metronidazole).\n  - Step 2: Percutaneous or endoscopic transgastric catheter drainage of fluid collections (resolves 35% of cases without surgery!).\n  - Step 3: Minimally invasive retroperitoneal necrosectomy (VARD: Video-Assisted Retroperitoneal Debridement) if drainage fails; avoids the high mortality and organ failure associated with early open surgical necrosectomy.",
+        "callout": {
+          "type": "pitfall",
+          "title": "SURGICAL PITFALL — Early Open Necrosectomy",
+          "text": "Open surgical necrosectomy performed during the first <b><u>2 to 3 weeks</u></b> of acute pancreatitis carries a devastating mortality rate of <b><u>> 50%</u></b>! Always delay intervention for at least <b><u>4 weeks</u></b> whenever possible, allowing necrosis to become walled off ('walled-off pancreatic necrosis' / WOPN), and utilize the minimally invasive step-up approach."
+        }
+      },
+      {
+        "h": "Intra-Abdominal Hypertension (IAH) & Abdominal Compartment Syndrome (ACS)",
+        "b": "• Definitions (World Society of the Abdominal Compartment Syndrome / WSACS):\n  - Normal Intra-Abdominal Pressure (IAP): <b><u>0 to 5 mmHg</u></b> (up to <b><u>5 to 7 mmHg</u></b> in critically ill adults).\n  - <b>Intra-Abdominal Hypertension (IAH)</b>: Sustained pathological increase in IAP <b><u>≥ 12 mmHg</u></b>.\n    * Grade I: IAP <b><u>12 to 15 mmHg</u></b>.\n    * Grade II: IAP <b><u>16 to 20 mmHg</u></b>.\n    * Grade III: IAP <b><u>21 to 25 mmHg</u></b>.\n    * Grade IV: IAP <b><u>> 25 mmHg</u></b>.\n  - <b>Abdominal Compartment Syndrome (ACS)</b>: Sustained IAP <b><u>> 20 mmHg</u></b> (with or without Abdominal Perfusion Pressure / APP < 60 mmHg) associated with <b>NEW ORGAN DYSFUNCTION OR FAILURE</b> (e.g., oliguria, elevated airway pressures, hypotension, severe acidosis).\n\n• Bedside IAP Measurement (The Gold Standard):\n  - Measured via the urinary bladder at end-expiration in the supine position (zeroed at the mid-axillary line at iliac crest level) after instilling a maximum of <b><u>25 mL of sterile saline</u></b>.\n\n• Multimodal Medical Management of IAH/ACS:\n  1. Evacuate intraluminal contents: Nasogastric decompression and rectal tube; prokinetics (erythromycin, metoclopramide).\n  2. Evacuate abdominal space-occupying collections: Percutaneous catheter drainage of massive ascites or retroperitoneal hematomas.\n  3. Improve abdominal wall compliance: Adequate analgesia, sedation, and neuromuscular blockade.\n  4. Optimize fluid balance: Avoid over-resuscitation; initiate diuresis or ultrafiltration (CRRT).\n\n• Surgical Decompression (The Lifesaving Intervention):\n  - Mandatory for refractory Abdominal Compartment Syndrome:\n  - Emergent decompressive midline laparotomy / laparostomy (leaves abdomen open with temporary abdominal closure using negative pressure wound therapy / Bogota bag).\n  - Immediately restores renal perfusion, reduces peak airway pressures, and relieves inferior vena cava compression."
+      }
+    ],
+    "example": "CLINICAL CASE: A 52-year-old male with alcoholic cirrhosis presents to the ICU with massive hematemesis and melena. Vitals: HR 122 bpm, BP 82/46 mmHg. Hemoglobin is 6.2 g/dL, Platelets 62,000/mcL, INR 1.8.\n\nEmergency GI Resuscitation Pathway:\n1. Airway & Vasoactive Support: Proactively endotracheally intubated for airway protection prior to endoscopy. Octreotide 50 mcg IV bolus given immediately, followed by 50 mcg/h infusion. Ceftriaxone 1 g IV started.\n2. Transfusion Protocol: Transfused 1 unit of PRBCs (restrictive protocol); post-transfusion Hb reaches 7.4 g/dL (transfusion held to prevent portal pressure surge). Platelets and FFP withheld in the absence of ongoing diffuse coagulopathic oozing.\n3. Emergent Endoscopy: Performed within 4 hours; reveals large esophageal varices with an active platelet plug and sign of recent bleeding. Endoscopic variceal ligation (EVL) with 4 bands deployed, successfully achieving hemostasis.\n4. Day 3 Complication: On Day 3, patient develops severe abdominal distension, oliguria (15 mL/h), and peak airway pressures spike to 38 cmH2O on the ventilator. Bladder pressure measurement reveals an IAP of 24 mmHg (Abdominal Compartment Syndrome Grade III).\n5. ACS Resolution: Bedside ultrasound shows massive tense ascites. A percutaneous peritoneal drain is placed, evacuating 3.5 Liters of ascitic fluid under continuous pressure monitoring. Bladder IAP drops to 11 mmHg; urine output immediately surges to 65 mL/h, and peak airway pressures normalize to 24 cmH2O.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 16 & 17. Wolters Kluwer.",
+      "Villanueva C, et al. Transfusion Strategies for Acute Upper Gastrointestinal Bleeding. N Engl J Med 2013;368(1):11–21.",
+      "de-Madaria E, et al. Aggressive or Moderate Fluid Resuscitation in Acute Pancreatitis (WATERFALL Trial). N Engl J Med 2022;387(11):989–997.",
+      "van Santvoort HC, et al. A Step-Up Approach or Open Necrosectomy for Necrotizing Pancreatitis (PANTER Trial). N Engl J Med 2010;362(16):1491–1502.",
+      "Kirkpatrick AW, et al. Intra-Abdominal Hypertension and the Abdominal Compartment Syndrome: Updated Consensus Guidelines. Intensive Care Med 2013;39(7):1190–1206."
+    ]
+  },
+  {
+    "id": "acute-liver-failure-nutrition-icu",
+    "cat": "cc_gi",
+    "name": "Acute Liver Failure, Hepatorenal Syndrome & ICU Nutrition",
+    "short": "Liver Failure & ICU Nutrition",
+    "tags": [
+      "Acute Liver Failure",
+      "King's College Criteria",
+      "Cerebral Edema / Ammonia",
+      "HRS-AKI",
+      "Terlipressin + Albumin",
+      "Refeeding Syndrome",
+      "Enteral Nutrition"
+    ],
+    "tagline": "King's College transplantation criteria, intracranial hypertension in ALF, hepatorenal syndrome, early enteral feeding and refeeding protocols",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 18 & 19; AASLD Practice Guidelines: Acute Liver Failure; ASPEN/ESPEN Guidelines for Clinical Nutrition in Critically Ill; Hepatology 2018; 67(4):1588–1609.",
+    "sections": [
+      {
+        "h": "Acute Liver Failure: Definitions, Etiology & King's College Criteria",
+        "b": "• Clinical Definition of Acute Liver Failure (ALF):\n  - Severe acute liver injury resulting in impaired synthetic function (<b><u>INR ≥ 1.5</u></b>) AND any degree of <b>Hepatic Encephalopathy</b> in a patient <b>WITHOUT preexisting cirrhosis</b>, with an illness duration of <b><u>< 26 weeks</u></b>.\n  - Classification by Onset:\n    * Hyperacute ALF (< 7 days): Typically paracetamol (acetaminophen) or viral hepatitis A/E; high incidence of severe cerebral edema, but high spontaneous recovery rate.\n    * Acute ALF (7 to 21 days): Idiosyncratic drug-induced liver injury (DILI).\n    * Subacute ALF (3 to 26 weeks): Slow progression; lower incidence of cerebral edema, but extremely poor spontaneous survival without liver transplantation.\n\n• King's College Hospital Prognostic Criteria for Liver Transplantation:\n  - <b>Paracetamol-Induced ALF</b>:\n    * Arterial pH <b><u>< 7.30</u></b> after adequate volume resuscitation (regardless of encephalopathy grade), OR\n    * All three criteria within a 24-hour period:\n      1. Serum Creatinine <b><u>> 3.4 mg/dL (300 mcmol/L)</u></b>\n      2. Prothrombin Time > 100 seconds (<b><u>INR > 6.5</u></b>)\n      3. Grade III or IV Hepatic Encephalopathy\n  - <b>Non-Paracetamol ALF</b>:\n    * Prothrombin Time > 100 seconds (<b><u>INR > 6.5</u></b>), OR\n    * Any three of the following five criteria:\n      1. Etiology: Idiosyncratic drug reaction, Wilson disease, or indeterminate\n      2. Age <b><u>< 10 or > 40 years</u></b>\n      3. Jaundice to encephalopathy interval <b><u>> 7 days</u></b>\n      4. Serum Bilirubin <b><u>> 17.5 mg/dL (300 mcmol/L)</u></b>\n      5. Prothrombin Time > 50 seconds (<b><u>INR > 3.5</u></b>).",
+        "table": {
+          "headers": [
+            "ALF Etiology",
+            "King's College Primary Triggers",
+            "Spontaneous Recovery Rate",
+            "Specific Antidote / Initial Therapy"
+          ],
+          "rows": [
+            [
+              "Paracetamol Overdose",
+              "Arterial pH < 7.30 OR (Cr > 3.4 + INR > 6.5 + Grade III/IV)",
+              "High (~60–70% with NAC)",
+              "N-acetylcysteine (NAC) IV continuous infusion"
+            ],
+            [
+              "Non-Paracetamol (DILI / Viral)",
+              "INR > 6.5 OR (3 of 5: Age, Etiology, Interval, Bili, INR)",
+              "Low (~20–25% without transplant)",
+              "NAC trial + urgent emergent liver transplant listing"
+            ],
+            [
+              "Wilson's Disease",
+              "Acute hemolytic anemia + low alkaline phosphatase",
+              "0% (Fatal without transplant)",
+              "Plasma exchange + emergent liver transplantation"
+            ],
+            [
+              "Amanita Phalloides (Mushroom)",
+              "Delayed severe cholera-like diarrhea + ALF",
+              "Low",
+              "Silibinin (Legalon) + High-dose Penicillin G"
+            ]
+          ],
+          "caption": "King's College transplantation criteria and disease profiles in acute liver failure."
+        }
+      },
+      {
+        "h": "Pathophysiology & Management of Cerebral Edema in ALF",
+        "b": "• Ammonia & Astrocyte Swelling Mechanics:\n  - Ammonia crosses the blood-brain barrier and is metabolized inside astrocytes into <b>Glutamine</b> via glutamine synthetase.\n  - Glutamine acts as a powerful intracellular osmolyte, drawing water into astrocytes and causing diffuse cytotoxic cerebral edema, intracranial hypertension, and fatal tonsillar brain herniation (the leading cause of death in ALF!).\n  - Risk Factors: Arterial ammonia <b><u>> 150 to 200 mcmol/L</u></b>, Grade III/IV encephalopathy, need for vasopressors, and youth (< 35 years).\n\n• Protocolized Neuroprotection in ALF:\n  1. Intubation: Elective endotracheal intubation for all patients progressing to <b>Grade III or IV Encephalopathy</b> to protect airway and prevent hypercapnic vasodilation.\n  2. Head Position: Head of bed elevated to <b><u>30°</u></b> in neutral alignment.\n  3. Targeted Osmotherapy: Continuous 3% Hypertonic Saline infusion to achieve a therapeutic target serum sodium of <b><u>145 to 150 mEq/L</u></b> (proves superior to mannitol and avoids osmotic diuresis/hypovolemia).\n  4. High-Volume Plasma Exchange (HV-PE): The landmark trial by Larsen et al. (J Hepatol 2016) demonstrated that high-volume plasma exchange (exchanging 8–12 L plasma over 3 days) significantly improves transplant-free survival by clearing systemic ammonia and inflammatory cytokines.\n  5. Continuous Renal Replacement Therapy (CRRT): Initiate early CRRT with dialysate even without severe azotemia to aggressively clear circulating blood ammonia.",
+        "callout": {
+          "type": "pearl",
+          "title": "THERAPEUTIC PEARL — N-Acetylcysteine in Non-Paracetamol ALF",
+          "text": "Intravenous N-Acetylcysteine (NAC) improves transplant-free survival and microvascular liver perfusion in <b>BOTH paracetamol AND non-paracetamol acute liver failure</b> (Lee et al., Gastroenterology). Infuse standard NAC (150 mg/kg over 1 h, 50 mg/kg over 4 h, 100 mg/kg over 16 h) and continue for up to <b><u>72 hours</u></b>."
+        }
+      },
+      {
+        "h": "Hepatorenal Syndrome (HRS-AKI): Diagnosis & Terlipressin Protocols",
+        "b": "• Pathophysiology of HRS-AKI:\n  - Extreme portal hypertension triggers massive nitric oxide release and severe splanchnic arterial vasodilation.\n  - Splanchnic blood pooling dramatically reduces effective circulating arterial blood volume, activating compensatory neurohumoral axes (Renin-Angiotensin-Aldosterone and Sympathetic system).\n  - Results in extreme, unremitting intrarenal arterial vasoconstriction, leading to functional oliguric acute kidney injury with structurally intact kidneys!\n\n• Diagnostic Criteria (International Club of Ascites / ICA Criteria):\n  1. Cirrhosis with ascites.\n  2. Acute Kidney Injury (KDIGO criteria).\n  3. Zero response after <b><u>≥ 48 consecutive hours of diuretic withdrawal AND volume expansion with IV Albumin (1.0 g/kg/day, max 100 g/day)</u></b>.\n  4. Absence of shock.\n  5. Absence of current or recent exposure to nephrotoxic drugs.\n  6. Absence of intrinsic structural kidney disease (microscopic hematuria < 50 RBCs/hpf, proteinuria < 500 mg/day, normal renal ultrasound).\n\n• Medical Management Protocol (The CONFIRM Trial Benchmark):\n  - <b>Terlipressin + IV Albumin (The Standard of Care)</b>:\n    * <b>Terlipressin</b>: Start at <b><u>0.85 to 1.0 mg IV bolus every 4 to 6 hours</u></b> (or continuous IV infusion 2.0 to 4.0 mg/day). If creatinine does not drop by ≥ 25% by Day 3, escalate up to <b><u>2.0 mg q4h (max 12 mg/day)</u></b>.\n    * <b>Albumin 20%</b>: <b><u>20 to 40 g IV daily</u></b>.\n    * Continue until serum creatinine normalizes (< 1.5 mg/dL) or for a maximum of 14 days.\n    * Alternative (where terlipressin is unavailable): Norepinephrine infusion (titrated to raise MAP by ≥ 15 mmHg) + IV Albumin."
+      },
+      {
+        "h": "ICU Nutrition Guidelines & Refeeding Syndrome Prevention",
+        "b": "• Clinical Nutrition Timing & Route (ASPEN / ESPEN Guidelines):\n  - Early Enteral Nutrition (EN): Initiate within <b><u>24 to 48 hours</u></b> of ICU admission once the patient is hemodynamically resuscitated (MAP stable on stable/decreasing vasopressor doses).\n  - Enteral route is strictly superior to Parenteral Nutrition (PN): Preserves intestinal mucosal integrity, prevents bacterial translocation, maintains gut-associated lymphoid tissue (GALT), and reduces infectious complications.\n  - Caloric & Protein Targets:\n    * Energy: <b><u>25 to 30 kcal/kg/day</u></b> of actual weight (or <b><u>11 to 14 kcal/kg/day</u></b> of actual weight in obesity BMI > 30).\n    * Protein: <b><u>1.2 to 2.0 g/kg/day</u></b> (up to <b><u>2.5 g/kg/day</u></b> in severe trauma, burns, or CRRT losses).\n\n• Refeeding Syndrome: The Fatal Metabolic Collapse:\n  - Occurs when carbohydrates are reintroduced to chronically starved, malnourished patients (alcoholics, anorexia, prolonged fasting > 7 days, oncology, bariatric post-op).\n  - Pathophysiology: Carbohydrate intake stimulates massive <b>Insulin Surge</b> → drives glucose, potassium, magnesium, and phosphate into cells for glycolysis and glycogen synthesis.\n  - Hallmark: <b>Severe, life-threatening Hypophosphatemia (< 1.0 mg/dL)</b> + Hypokalemia + Hypomagnesemia + acute Thiamine deficiency.\n  - Consequences: Acute respiratory failure (diaphragmatic ATP depletion), fatal ventricular arrhythmias, cardiac arrest, Wernicke encephalopathy, and acute rhabdomyolysis!\n\n• Prevention & Management Protocol:\n  1. Check and aggressively replete electrolytes (PO4, K, Mg) BEFORE starting any nutrition.\n  2. Administer <b>Intravenous Thiamine: 200 to 300 mg IV daily for 3 days</b> prior to and during feeding.\n  3. Start nutrition very slowly: <b><u>10 to 15 kcal/kg/day</u></b> (approximately <b><u>25% of goal calories</u></b>) for the first 48 hours.\n  4. Advance slowly over <b><u>4 to 7 days</u></b> only if daily serum phosphate, potassium, and magnesium remain completely stable."
+      }
+    ],
+    "example": "CLINICAL CASE: A 24-year-old female is admitted to the ICU 48 hours after an intentional overdose of 25 grams of paracetamol. On arrival: GCS 9 (Grade III encephalopathy, confused, asterixis present). Labs: Arterial blood gas pH 7.24, Lactate 6.8 mmol/L, Total Bilirubin 4.8 mg/dL, ALT 6800 U/L, AST 8400 U/L, INR 7.4, Serum Creatinine 3.8 mg/dL, Arterial Ammonia 195 mcmol/L.\n\nALF & Neuroprotection Pathway:\n1. King's College Criteria Evaluation: The patient meets criteria for emergent liver transplantation on TWO counts: (1) Arterial pH < 7.30 (7.24) AND (2) The triad of INR > 6.5 (7.4), Cr > 3.4 (3.8), and Grade III encephalopathy. National liver transplant team contacted immediately for status 1A super-urgent listing.\n2. Airway & Neuroprotection: Intubated with ketamine and rocuronium. 3% Hypertonic saline continuous infusion started, titrating serum sodium to 148 mEq/L. Head of bed 30°. Continuous CRRT (CVVHDF) initiated with zero potassium and regional citrate to rapidly lower ammonia.\n3. Antidote & Extracorporeal Therapy: Continuous IV N-Acetylcysteine protocol initiated. High-volume plasma exchange (HV-PE) performed: 9 Liters of plasma exchanged over 6 hours.\n4. Clinical Course: Over the next 24 hours, arterial ammonia drops to 82 mcmol/L, pH normalizes to 7.38, and a deceased donor liver becomes available at hour 32.\n5. Outcome: Orthotopic liver transplantation is successfully performed with uneventful graft function and full neurological recovery.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 18 & 19. Wolters Kluwer.",
+      "O'Grady JG, et al. Early Indicators of Prognosis in Fulminant Hepatic Failure (King's College Criteria). Gastroenterology 1989;97(2):439–445.",
+      "Larsen FS, et al. High-Volume Plasma Exchange in Patients with Acute Liver Failure: An Open-Label, Randomized Controlled Trial. J Hepatol 2016;64(1):69–78.",
+      "Wong F, et al. Terlipressin plus Albumin for the Treatment of Type 1 Hepatorenal Syndrome (CONFIRM Trial). N Engl J Med 2021;384(9):818–827.",
+      "Singer P, et al. ESPEN Guideline on Clinical Nutrition in the Intensive Care Unit. Clin Nutr 2019;38(1):48–79."
+    ]
+  },
+  {
+    "id": "trauma-resuscitation-damage-control",
+    "cat": "cc_trauma",
+    "name": "Trauma Resuscitation, Damage Control & Pelvic Fractures",
+    "short": "Trauma & Damage Control",
+    "tags": [
+      "ATLS 10th",
+      "Lethal Diamond",
+      "Permissive Hypotension",
+      "Damage Control Surgery",
+      "CRASH-2 TXA",
+      "Pelvic Binder",
+      "Preperitoneal Packing"
+    ],
+    "tagline": "ATLS principles, lethal diamond of trauma, 1:1:1 balanced transfusion, CRASH-2 TXA, pelvic binders and damage control surgery",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 20; Advanced Trauma Life Support (ATLS 10th/11th ed.); Journal of Trauma and Acute Care Surgery 2020; 89(4):804–812.",
+    "sections": [
+      {
+        "h": "Advanced Trauma Life Support (ATLS): Primary Survey & Adjuncts",
+        "b": "• The Structured ABCDE Primary Survey:\n  - <b>A — Airway with Cervical Spine Protection</b>:\n    * Maintain rigid in-line cervical stabilization; inspect for maxillofacial fractures, airway burns, blood/debris, and vocal cord edema.\n    * Secure definitive airway (cuffed ETT) if GCS <b><u>≤ 8</u></b>, impending airway obstruction, or severe shock.\n  - <b>B — Breathing & Ventilation</b>:\n    * Rapidly rule out the 3 immediate thoracic killers: Tension Pneumothorax (emergent finger thoracostomy in 5th intercostal space anterior axillary line), Open Pneumothorax (three-sided flutter dressing), and Massive Hemothorax (chest tube evacuation > 1500 mL or > 200 mL/h for 2–4 h triggers emergent thoracotomy).\n  - <b>C — Circulation with Hemorrhage Control</b>:\n    * Direct pressure on external wounds, tourniquets on extremities; assess pulses, CRT, skin color, and pelvic stability.\n  - <b>D — Disability (Neurological Evaluation)</b>:\n    * Glasgow Coma Scale (GCS) and bilateral pupillary examination.\n  - <b>E — Exposure & Environmental Control</b>:\n    * Completely undress the patient for full anatomical inspection; immediately cover with active warming blankets (hypothermia prevention!).\n\n• Resuscitation Adjuncts:\n  - E-FAST (Extended Focused Assessment with Sonography for Trauma): Rapid 8-view ultrasound screening for hemoperitoneum, hemopericardium, and pneumothorax.\n  - Diagnostic Pelvic & Chest Radiographs.",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — The Lethal Diamond of Trauma",
+          "text": "The classic 'Lethal Triad' (Hypothermia, Acidosis, Coagulopathy) is now recognized as the <b>Lethal Diamond</b>, including <b>Hypocalcemia</b>! Severe hypocalcemia (ionized Ca < 1.0 mmol/L, exacerbated by citrate in transfused blood) impairs clotting factor enzymatic complexes, worsens cardiac contractility, and independently predicts mortality."
+        }
+      },
+      {
+        "h": "Damage Control Resuscitation (DCR): Permissive Hypotension & TXA",
+        "b": "• Damage Control Resuscitation (DCR) Strategy:\n  - Focuses on stopping the 'bloody vicious cycle' of the Lethal Diamond before definitive surgical reconstruction.\n\n• Permissive Hypotension (Deliberate Hypovolemia):\n  - Target Blood Pressure: Maintain SBP <b><u>80 to 90 mmHg (MAP 50 to 60 mmHg)</u></b> until surgical or endovascular hemorrhage control is achieved.\n  - Physiological Rationale: Aggressive fluid resuscitation spikes intravascular hydrostatic pressure, dilutes clotting factors, and 'pops the clot' from freshly clotted vascular lacerations.\n  - <b>The Absolute Exception</b>: Severe Traumatic Brain Injury (TBI)! In patients with suspected TBI, maintain SBP <b><u>≥ 100 to 110 mmHg (MAP ≥ 80 mmHg)</u></b> to prevent secondary cerebral ischemic infarction.\n\n• Hemostatic Resuscitation (1:1:1 Ratio):\n  - Immediate balanced transfusion of <b>Packed Red Blood Cells (PRBC) : Fresh Frozen Plasma (FFP) : Platelets in a 1:1:1 unit ratio</b> (PROPPR trial demonstrated significantly earlier hemostasis and lower 24-hour exsanguination mortality compared to 1:1:2).\n  - Large-volume crystalloid boluses are strictly minimized or avoided completely!\n\n• Tranexamic Acid (TXA) — The CRASH-2 Trial Benchmark:\n  - Indication: All trauma patients with significant hemorrhage (SBP < 90 or HR > 110) or at risk of significant hemorrhage.\n  - Protocol: <b><u>1.0 g IV bolus over 10 minutes</u></b> administered <b>WITHIN 3 HOURS OF INJURY</b>, followed by a continuous infusion of <b><u>1.0 g IV over 8 hours</u></b>.\n  - The 3-Hour Golden Rule: If administered within 1 hour, TXA reduces risk of death by 32%; if given between 1–3 hours, reduces death by 21%; if administered <b>> 3 hours after injury</b>, TXA significantly INCREASES mortality (due to late prothrombotic complications)! Do NOT start TXA after 3 hours.",
+        "table": {
+          "headers": [
+            "Resuscitation Element",
+            "Target Range / Protocol",
+            "Clinical Trial Benchmark",
+            "Key Physiological Benefit"
+          ],
+          "rows": [
+            [
+              "Permissive Hypotension",
+              "SBP 80–90 mmHg (MAP 50–60)",
+              "Bickell / Dutton Trauma Trials",
+              "Prevents clot dislodgement; reduces blood loss"
+            ],
+            [
+              "Balanced Transfusion",
+              "1:1:1 (PRBC : FFP : Platelets)",
+              "PROPPR Trial (JAMA 2015)",
+              "Prevents dilutional coagulopathy & thrombocytopenia"
+            ],
+            [
+              "Tranexamic Acid (TXA)",
+              "1 g bolus + 1 g over 8 hours",
+              "CRASH-2 Trial (Lancet 2010)",
+              "Inhibits hyperfibrinolysis; must give < 3 hours"
+            ],
+            [
+              "Calcium Replacement",
+              "Ionized Ca > 1.10–1.20 mmol/L",
+              "Trauma Hemostasis Guidelines",
+              "Administer 1 g CaCl2 per 4 units PRBCs to counter citrate"
+            ]
+          ],
+          "caption": "Principles of damage control resuscitation in severe polytrauma."
+        }
+      },
+      {
+        "h": "Damage Control Surgery (DCS): The 3-Phase Strategy",
+        "b": "• The 3-Phase Damage Control Surgery Philosophy:\n  - Initiated when physiological exhaustion occurs (pH < 7.20, core temp < 35°C, INR > 1.5, base deficit > 15 mEq/L).\n\n• Phase 1 — Abbreviated Operating Room Surgery (< 60 to 90 Minutes):\n  - Focuses strictly on control of hemorrhage and contamination:\n  - Hemorrhage Control: Direct vessel ligation, temporary intravascular shunts (e.g., Argyle shunt in femoral artery), balloon tamponade, and extensive abdominal packing (perihepatic packing).\n  - Contamination Control: Rapid stapling or simple ligation of perforated bowel without anastomosis or stoma creation.\n  - Temporary Abdominal Closure: Leave abdomen open with negative pressure wound therapy (Abthera / Bogota bag); prevents Abdominal Compartment Syndrome.\n\n• Phase 2 — Intensive Care Unit Resuscitation (24 to 48 Hours):\n  - Active core rewarming to <b><u>> 36.0°C</u></b> using forced-air blankets, warmed fluids, and humidified circuits.\n  - Correction of coagulopathy via viscoelastic assay (TEG/ROTEM) guidance.\n  - Correction of acidosis and tissue hypoperfusion; continuous monitoring for abdominal compartment syndrome.\n\n• Phase 3 — Planned Return to Operating Room (36 to 72 Hours):\n  - Once physiological parameters are restored, return to OR for pack removal, definitive vascular reconstruction, intestinal anastomoses or ostomy creation, and abdominal wall closure."
+      },
+      {
+        "h": "Unstable Pelvic Ring Fractures & Retroperitoneal Exsanguination",
+        "b": "• Mechanisms & Bleeding Source in Pelvic Trauma:\n  - High-energy blunt trauma (motor vehicle collisions, falls from height) causes Open Book (Anteroposterior Compression) or Vertical Shear pelvic fractures.\n  - Source of Bleeding: <b><u>85% to 90% is Low-Pressure Venous Bleeding</u></b> from the extensive presacral and prevesical venous plexuses and cancellous fractured bone surfaces; only <b><u>10% to 15% is Arterial Bleeding</u></b> (branches of internal iliac artery: superior gluteal, internal pudendal, lateral sacral arteries).\n\n• Emergency Bedside Interventions:\n  1. Commercial Pelvic Circumferential Compression Device (Pelvic Binder):\n     - Immediate application: Closes the open pelvic ring, reduces pelvic volume, and restores internal retroperitoneal tamponade.\n     - <b>Correct Anatomical Placement</b>: The binder must be centered directly over the <b>Greater Trochanters of the Femurs</b>, NOT over the iliac crests! Placing the binder over the iliac crests is ineffective and can worsen pelvic displacement.\n     - In absence of commercial binder: Wrap a folded bedsheet tightly around the greater trochanters and clamp with towel clips.\n  2. Resuscitative Endovascular Balloon Occlusion of the Aorta (REBOA):\n     - Zone 3 placement (infrarenal aorta, above aortic bifurcation) to temporarily control massive pelvic hemorrhage.\n  3. Preperitoneal Pelvic Packing (PPP) & Angioembolization:\n     - Rapid surgical preperitoneal pelvic packing through a 6 cm suprapubic midline incision (places 3 to 6 laparotomy pads in the space of Retzius to tamponade venous bleeding).\n     - Transfer to interventional radiology for emergent selective arterial angioembolization if arterial contrast extravasation ('blush') is present."
+      }
+    ],
+    "example": "CLINICAL CASE: A 24-year-old male motorcyclist is struck by an SUV at high speed and brought to the trauma center. On arrival: GCS 14, HR 138 bpm, BP 74/42 mmHg, cold extremities, severe pelvic asymmetry and pain. E-FAST reveals a small pelvic fluid stripe, normal cardiac views, and normal bilateral lung sliding.\n\nDamage Control Resuscitation & Surgery:\n1. Hemorrhage Control: A pelvic binder is immediately applied and centered over the greater trochanters; pelvic ring is visibly stabilized.\n2. DCR Activation: Massive Transfusion Protocol (MTP) activated. PRBC : FFP : Platelets initiated in 1:1:1 ratio. IV Tranexamic Acid (1 g bolus) administered at 45 minutes post-injury. Target SBP 85 mmHg maintained (permissive hypotension).\n3. Calcium Management: Point-of-care iCa is 0.88 mmol/L; 2 g Calcium Chloride IV given (ionized calcium restored to 1.15 mmol/L).\n4. Operating Room (Phase 1): Pelvic X-ray confirms severe Open Book fracture (APC III). Patient taken immediately to the OR: Preperitoneal pelvic packing performed through a suprapubic incision with 6 laparotomy pads, followed by external pelvic fixation. Abdomen packed and temporary vacuum closure applied (procedure duration 42 minutes).\n5. ICU Phase 2: Patient transferred to ICU hypothermic (34.2°C) with pH 7.18. Active rewarming and ROTEM-guided factor replacement normalize temp to 36.6°C and pH to 7.34 over 18 hours.\n6. Phase 3: Returned to the OR at 48 hours: Laparotomy pads removed with zero active bleeding, external fixator adjusted, and abdominal wall closed successfully.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 20. Wolters Kluwer.",
+      "American College of Surgeons Committee on Trauma. Advanced Trauma Life Support (ATLS) Student Course Manual, 10th ed. 2018.",
+      "CRASH-2 Trial Collaborators. Effects of Tranexamic Acid on Death, Vascular Occlusive Events, and Blood Transfusion in Trauma Patients. Lancet 2010;376(9734):23–32.",
+      "Holcomb JB, et al. Transfusion of Plasma, Platelets, and Red Blood Cells in a 1:1:1 vs a 1:1:2 Ratio and Mortality in Patients with Severe Trauma (PROPPR Trial). JAMA 2015;313(5):471–482."
+    ]
+  },
+  {
+    "id": "burn-resuscitation-inhalation-injury",
+    "cat": "cc_trauma",
+    "name": "Severe Burn Resuscitation, Inhalation Injury & Escharotomy",
+    "short": "Burns & Inhalation Injury",
+    "tags": [
+      "Parkland Formula",
+      "Fluid Creep",
+      "Inhalation Injury",
+      "Carbon Monoxide Poisoning",
+      "Cyanide Antidote",
+      "Hydroxocobalamin",
+      "Escharotomy"
+    ],
+    "tagline": "Parkland formula, titrating urine output, carbon monoxide co-oximetry, cyanide hydroxocobalamin rescue and emergency escharotomy",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 21; American Burn Association (ABA) Practice Guidelines; Journal of Burn Care & Research 2016; 37(3):159–181.",
+    "sections": [
+      {
+        "h": "Burn Severity Assessment: Total Body Surface Area (TBSA)",
+        "b": "• Estimating Burn Severity:\n  - The prognosis and fluid requirement of burn injury depend on <b>Total Body Surface Area (% TBSA)</b> burned and depth of tissue destruction.\n  - <b>Only 2nd-degree (partial thickness) and 3rd-degree (full thickness) burns are counted</b>! 1st-degree burns (superficial erythema/sunburn without blistering) are strictly EXCLUDED from TBSA calculations.\n\n• The Rule of Nines (Adults):\n  - Head and Neck: <b><u>9%</u></b> (Anterior 4.5%, Posterior 4.5%)\n  - Anterior Torso (Chest + Abdomen): <b><u>18%</u></b>\n  - Posterior Torso (Upper + Lower Back): <b><u>18%</u></b>\n  - Each Upper Extremity: <b><u>9%</u></b> (Anterior 4.5%, Posterior 4.5%)\n  - Each Lower Extremity: <b><u>18%</u></b> (Anterior 9%, Posterior 9%)\n  - Perineum / Genitalia: <b><u>1%</u></b>\n\n• Palmar Surface Method:\n  - The patient's entire palm (including fingers) represents approximately <b><u>1.0% of their TBSA</u></b> (useful for calculating scattered, patchy burn areas).\n  - In pediatric patients, use the <b>Lund-Browder Chart</b> (accounts for a child's larger head-to-body surface area proportion).",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — Overestimating TBSA & 'Fluid Creep'",
+          "text": "Overestimating burn surface area leads to excessive crystalloid administration — 'Fluid Creep'. Giving fluids far above formula calculations produces severe secondary complications: Abdominal Compartment Syndrome, Extremity Compartment Syndrome, and severe pulmonary edema."
+        }
+      },
+      {
+        "h": "Burn Shock Resuscitation: The Parkland Formula & Titration Targets",
+        "b": "• Pathophysiology of Burn Shock:\n  - Thermal destruction causes massive systemic release of histamine, bradykinin, and prostaglandins.\n  - Produces profound systemic capillary hyperpermeability, microvascular protein leakage into interstitial space, and intravascular hypovolemic shock (peaks in first <b><u>8 to 12 hours</u></b>).\n\n• The Parkland (Baxter) Resuscitation Formula:\n  - <b>Total 24-Hour Crystalloid Volume = 4 mL × Weight (kg) × % TBSA (2nd & 3rd degree)</b>.\n  - Modern ABA Consensus Guideline (Modified Brooke): Recommends starting at <b><u>2 to 4 mL/kg/% TBSA</u></b> (2 mL/kg for adults, 3–4 mL/kg for pediatric or electrical burns) to reduce fluid creep.\n  - Fluid of Choice: Balanced crystalloid (<b>Lactated Ringer's or Plasmalyte</b>; avoid 0.9% Normal Saline to prevent severe hyperchloremic acidosis!).\n\n• Administration Schedule (The Clock Starts at Time of Injury!):\n  - <b>First Half (50%) of Total Volume</b>: Administered over the <b><u>first 8 hours from the time of injury</u></b> (NOT the time of hospital arrival!).\n  - <b>Second Half (50%) of Total Volume</b>: Administered evenly over the subsequent <b><u>16 hours</u></b>.\n\n• Hourly Fluid Titration Endpoints (The True Standard of Care):\n  - The formula provides only a starting estimate; actual infusion rate must be titrated hourly based on <b>Urine Output</b>:\n  - Adult Target: <b><u>0.5 mL/kg/h (typically 30 to 50 mL/h)</u></b>.\n  - Pediatric Target (< 30 kg): <b><u>1.0 to 1.5 mL/kg/h</u></b>.\n  - High-Voltage Electrical Burns (with Rhabdomyolysis / Myoglobinuria): <b><u>1.5 to 2.0 mL/kg/h (100 to 150 mL/h)</u></b> until urine clears.",
+        "table": {
+          "headers": [
+            "Resuscitation Parameter",
+            "Formula Starting Target",
+            "Hourly Titration Target",
+            "Key Complications of Deviation"
+          ],
+          "rows": [
+            [
+              "Adult Thermal Burn",
+              "2–4 mL × kg × % TBSA",
+              "Urine Output 0.5 mL/kg/h (30–50 mL/h)",
+              "Over: Abdominal compartment syndrome; Under: AKI"
+            ],
+            [
+              "Pediatric Thermal Burn",
+              "3–4 mL × kg × % TBSA + maintenance D5W",
+              "Urine Output 1.0–1.5 mL/kg/h",
+              "Children rapidly develop hypoglycemia; add maintenance glucose"
+            ],
+            [
+              "High-Voltage Electrical Burn",
+              "4 mL × kg × % TBSA (higher fluids)",
+              "Urine Output 1.5–2.0 mL/kg/h (100–150 mL/h)",
+              "Pigment nephropathy & acute tubular necrosis from myoglobin"
+            ]
+          ],
+          "caption": "Burn shock fluid resuscitation formulas and clinical titration targets."
+        }
+      },
+      {
+        "h": "Inhalation Injury, Carbon Monoxide & Cyanide Poisoning",
+        "b": "• Inhalation Injury & Airway Management:\n  - History of enclosed-space fire, facial burns, singed nasal hairs, carbonaceous sputum, hoarseness, or stridor.\n  - Supraglottic airway edema worsens exponentially over <b><u>12 to 24 hours</u></b> as resuscitation fluids are infused.\n  - <b>Early Preemptive Endotracheal Intubation</b>: Mandated before anatomical landmark distortion occurs; intubate using a large-bore ETT (<b><u>≥ 8.0 mm ID</u></b> in adults) to permit therapeutic fiberoptic bronchoscopy and clearance of dense soot casts.\n\n• Carbon Monoxide (CO) Poisoning:\n  - Affinity for hemoglobin is <b><u>200 to 250 times higher</u></b> than oxygen; shifts the oxyhemoglobin dissociation curve to the left, preventing oxygen delivery to tissues.\n  - Standard pulse oximeters (SpO2) are <b>FALSELY NORMAL</b> (cannot distinguish carboxyhemoglobin from oxyhemoglobin!).\n  - Measurement: Measure Carboxyhemoglobin (CO-Hb) via arterial co-oximetry (normal < 2% in non-smokers, < 5–9% in smokers; toxic > 15–20%).\n  - Treatment: <b>100% High-Flow Oxygen via non-rebreather or ETT</b> (reduces CO half-life from 300 minutes to <b><u>60 to 90 minutes</u></b>).\n  - Hyperbaric Oxygen (HBO at 2.5–3.0 atm): Indicated for CO-Hb > 25% (or > 15% in pregnancy), loss of consciousness, seizures, or acute myocardial ischemia; reduces CO half-life to <b><u>20 to 30 minutes</u></b>.\n\n• Hydrogen Cyanide (HCN) Poisoning:\n  - Released during combustion of synthetic polymers, polyurethane, wool, and plastics in house fires.\n  - Inhibits mitochondrial Cytochrome c Oxidase (Complex IV), completely halting aerobic ATP production.\n  - Clinical Hallmark: Severe unexplained <b>Lactic Acidosis (lactate > 8 to 10 mmol/L)</b> in a smoke-inhalation victim with normal arterial PaO2 and bright red venous blood.\n  - Specific Antidote: <b><u>Hydroxocobalamin (Cyanokit) 5.0 g IV infused over 15 minutes</u></b> (binds cyanide to form non-toxic cyanocobalamin / Vitamin B12, excreted harmlessly in urine; causes transient red skin/urine discoloration).",
+        "callout": {
+          "type": "pearl",
+          "title": "TOXICOLOGY PEARL — Hydroxocobalamin over Sodium Nitrite",
+          "text": "In burn victims with concurrent smoke inhalation, <b>Hydroxocobalamin</b> is the mandatory cyanide antidote of choice! The older antidote (Sodium Nitrite) induces methemoglobinemia, which severely impairs already-compromised oxygen-carrying capacity in patients with carbon monoxide poisoning."
+        }
+      },
+      {
+        "h": "Emergency Escharotomy for Circumferential Full-Thickness Burns",
+        "b": "• Indications for Bedside Escharotomy:\n  - Full-thickness (3rd-degree) circumferential burns form a rigid, leathery, non-distensible coagulated tissue layer (eschar).\n  - As fluid resuscitation expands the interstitial space, internal tissue pressure spikes precipitously.\n  - <b>Circumferential Thoracic Burns</b>: Restricts chest wall expansion, producing high peak airway pressures, hypoventilation, severe hypercapnia, and failure of mechanical ventilation.\n  - <b>Circumferential Extremity Burns</b>: Compartment pressure rises > 30 mmHg, compressing venous and arterial flow, causing distal ischemia, absent Doppler pulses, cyanosis, and limb loss.\n\n• Bedside Escharotomy Technique:\n  - Emergency procedure performed at the bedside under sterile conditions; 3rd-degree burn tissue is insensate (zero anesthesia needed; sedation for anxiety).\n  - Incision Tool: Electrocautery or scalpel.\n  - Incision Depth: Through the entire thickness of the rigid eschar and into the subcutaneous fat layer until the wound edges pop open and tissue compliance is restored (avoid incising deep muscular fascia unless a true muscle compartment syndrome is present).\n  - Thoracic Incisions: Bilateral anterior axillary line incisions extending from clavicle to costal margin, joined by a transverse horizontal incision across the upper chest ('H-pattern' or 'shield' incision).\n  - Extremity Incisions: Mid-lateral and mid-medial longitudinal incisions along the limb, avoiding major superficial neurovascular bundles (e.g., ulnar nerve at elbow, common peroneal nerve at fibular head)."
+      }
+    ],
+    "example": "CLINICAL CASE: A 38-year-old male is rescued from a house fire. He sustains 40% TBSA deep partial- and full-thickness burns involving the entire chest, abdomen, and bilateral upper extremities. Weight: 80 kg. Time of fire: 2 hours ago. On arrival: Stridorous with singed facial hair and soot-covered pharynx. ABG on room air: pH 7.18, PaCO2 36, PaO2 84, Lactate 11.2 mmol/L. Co-oximetry reveals CO-Hb 28%.\n\nEmergency Resuscitation & Interventions:\n1. Airway & Cyanide Rescue: Preemptively intubated with an 8.5 mm ETT on 100% FiO2. Due to enclosed fire and lactate 11.2 mmol/L, Hydroxocobalamin 5.0 g IV is infused over 15 minutes for cyanide toxicity. 100% FiO2 reduces CO-Hb to 6% over 2 hours.\n2. Parkland Calculation: 4 mL × 80 kg × 40% TBSA = 12,800 mL Lactated Ringer's over 24 hours. First 8 hours (starting from fire time 2 h ago): 6,400 mL due over 6 remaining hours = 1,066 mL/h. Urine catheter placed; infusion titrated to urine output 40–50 mL/h.\n3. Circumferential Chest Restriction: At hour 3, peak airway pressures spike to 45 cmH2O on the ventilator, tidal volumes drop to 260 mL, and radial pulses become impalpable bilaterally.\n4. Emergency Escharotomy: Immediate bedside bilateral mid-axillary and transverse chest escharotomies performed using electrocautery through the full thickness of the leathery eschar. The rigid chest wall visibly separates by 3 cm; peak airway pressures immediately fall to 26 cmH2O, and strong bilateral radial Doppler signals return.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 21. Wolters Kluwer.",
+      "American Burn Association. Advanced Burn Life Support (ABLS) Provider Manual. 2018.",
+      "Pham TN, et al. American Burn Association Practice Guidelines Burn Shock Resuscitation. J Burn Care Res 2008;29(1):257–266.",
+      "Bebarta VS, et al. Hydroxocobalamin Versus Sodium Thiosulfate for the Treatment of Acute Cyanide Toxicity. Ann Emerg Med 2012;59(6):532–539."
+    ]
+  },
+  {
+    "id": "toxicology-antidotes-extracorporeal-elimination",
+    "cat": "cc_tox",
+    "name": "Severe ICU Poisoning, Antidotes & Extracorporeal Elimination",
+    "short": "Toxicology & Extracorporeal",
+    "tags": [
+      "Toxidromes",
+      "EXTRIP Criteria",
+      "HIET Protocol",
+      "Intralipid 20%",
+      "Sodium Bicarbonate",
+      "Fomepizole",
+      "Methanol / Ethylene Glycol"
+    ],
+    "tagline": "Toxidrome recognition, high-dose insulin euglycemia, lipid rescue, EXTRIP hemodialysis indications and toxic alcohol protocols",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 22 & 23; EXTRIP Workgroup Guidelines; Goldfrank's Toxicologic Emergencies (11th ed.); Lancet 2018; 391(10120):580–592.",
+    "sections": [
+      {
+        "h": "Major Clinical Toxidromes Matrix in Critical Care",
+        "b": "• Toxidrome Recognition: Constellation of physical signs and vitals indicating specific toxin classes:\n\n1. Anticholinergic (Atropine, TCAs, Antihistamines, Scopolamine):\n• 'Blind as a bat, mad as a hatter, red as a beet, hot as a hare, dry as a bone.'\n• Mydriasis, delirium, flushed skin, hyperthermia, dry axillae/mucosa, urinary retention, tachycardia, absent bowel sounds.\n\n2. Cholinergic (Organophosphates, Carbamates, Nerve Agents):\n• 'SLUDGEM' (Salivation, Lacrimation, Urination, Defecation, GI cramping, Emesis, Miosis) + 'DUMBELS' (Diarrhea, Urination, Miosis, Bradycardia, Bronchorrhea, Emesis, Lacrimation, Salivation).\n• Killer B's: <b>Bradycardia, Bronchorrhea, Bronchospasm</b> (respiratory failure is the cause of death!).\n\n3. Sympathomimetic (Cocaine, Amphetamines, MDMA, Synthetic Cathinones):\n• Severe hypertension, extreme tachycardia, hyperthermia, mydriasis, diaphoresis (<b>diaphoretic skin differentiates from anticholinergic dry skin!</b>), agitation, seizures, rhabdomyolysis.\n\n4. Opioid (Heroin, Fentanyl, Morphine, Methadone):\n• The Triad: <b>CNS Depression (Coma) + Respiratory Depression (RR < 8–10) + Miosis (Pinpoint Pupils)</b>. Bradycardia, hypothermia, pulmonary edema.\n\n5. Serotonin Syndrome vs Neuroleptic Malignant Syndrome (NMS):\n• Serotonin Syndrome (Hunter Criteria): Rapid onset (< 24 h); Hyperthermia, autonomic instability, agitation, tremor, hyperreflexia, and <b>Inducible / Spontaneous Clonus</b> (hallmark!).\n• NMS: Slow onset (days); Antipsychotic exposure; Severe <b>'Lead-Pipe' Muscle Rigidity</b>, extreme hyperthermia, autonomic instability, marked CK elevation.",
+        "table": {
+          "headers": [
+            "Toxidrome",
+            "Pupil Size",
+            "Heart Rate & BP",
+            "Skin / Sweating",
+            "Bowel Sounds",
+            "Key Hallmark Sign"
+          ],
+          "rows": [
+            [
+              "Anticholinergic",
+              "Mydriasis (Dilated)",
+              "Tachycardia, Hypertension",
+              "Dry, flushed, hot",
+              "Hypoactive / Absent",
+              "Dry axillae, urinary retention, delirium"
+            ],
+            [
+              "Cholinergic",
+              "Miosis (Pinpoint)",
+              "Bradycardia, Hypotension",
+              "Profusely Diaphoretic",
+              "Hyperactive (Diarrhea)",
+              "Bronchorrhea, wheezing, fasciculations"
+            ],
+            [
+              "Sympathomimetic",
+              "Mydriasis (Dilated)",
+              "Extreme Tachycardia, HTN",
+              "Profusely Diaphoretic",
+              "Hyperactive",
+              "Agitation, severe tremor, rhabdomyolysis"
+            ],
+            [
+              "Opioid",
+              "Miosis (Pinpoint)",
+              "Bradycardia, Hypotension",
+              "Cool, dry/normal",
+              "Hypoactive",
+              "Bradypnea, coma, pinpoint pupils"
+            ],
+            [
+              "Serotonin Syndrome",
+              "Mydriasis (Dilated)",
+              "Tachycardia, Labile BP",
+              "Diaphoretic",
+              "Hyperactive",
+              "Spontaneous clonus, hyperreflexia, tremor"
+            ],
+            [
+              "NMS",
+              "Normal",
+              "Tachycardia, Labile BP",
+              "Diaphoretic",
+              "Normal / Decreased",
+              "Lead-pipe rigidity, extreme CK spike"
+            ]
+          ],
+          "caption": "Comparative physical exam profiles of life-threatening toxidromes."
+        }
+      },
+      {
+        "h": "Advanced Targeted Antidotes in the ICU",
+        "b": "• High-Dose Insulin Euglycemia Therapy (HIET) for CCB & Beta-Blocker Toxicity:\n  - Calcium channel blockers (verapamil, diltiazem) and beta-blockers block pancreatic insulin secretion, impair myocardial glucose uptake, and induce refractory shock.\n  - HIET Protocol:\n    1. Regular Insulin: <b><u>1.0 Unit/kg IV bolus</u></b>, followed by continuous infusion of <b><u>1.0 to 10.0 Units/kg/hour</u></b> (up to 10 U/kg/h!).\n    2. Dextrose: Infuse <b>50% Dextrose (D50W) at 0.5 to 1.0 g/kg/h</b> titrated to maintain blood glucose <b><u>110 to 180 mg/dL</u></b>.\n    3. Potassium: Replete K+ to keep <b><u>> 3.0 mEq/L</u></b> (do NOT aggressively treat mild hypokalemia, as K is shifted intracellularly by insulin).\n    4. Onset: Takes <b><u>30 to 45 minutes</u></b> to exert full inotropic effect; provides dramatic contractility improvement without increasing myocardial oxygen consumption!\n\n• Intravenous Lipid Emulsion (ILE / Intralipid 20%) — 'Lipid Sink':\n  - Indications: Severe Local Anaesthetic Systemic Toxicity (LAST from bupivacaine, ropivacaine) and lipophilic drug overdoses refractory to vasopressors (verapamil, propranolol, bupropion, TCAs).\n  - Protocol: <b><u>Intralipid 20% bolus of 1.5 mL/kg IV over 2 to 3 minutes</u></b>, followed by continuous infusion of <b><u>0.25 to 0.5 mL/kg/min</u></b>. Repeat bolus up to 2 times; maximum total dose <b><u>12 mL/kg</u></b>.\n\n• Sodium Bicarbonate for TCA Toxicity & Salicylates:\n  - Tricyclic Antidepressants (TCAs): Fast sodium channel blockade causes QRS widening (> 100 ms) and fatal VT/VF. Administer <b>Sodium Bicarbonate 1.0 to 2.0 mEq/kg IV push</b> (repeat to keep arterial pH <b><u>7.50 to 7.55</u></b> and narrow QRS < 100 ms).\n  - Salicylate Alkalinization: Sodium Bicarbonate infusion (150 mEq in 1 L D5W at 1.5–2× maintenance) to achieve <b>urine pH 7.5 to 8.0</b> (ion trapping enhances urinary salicylate clearance by 10- to 20-fold!).",
+        "callout": {
+          "type": "pearl",
+          "title": "ANTIDOTE PEARL — Atropinization Target in Organophosphates",
+          "text": "When dosing Atropine for organophosphate poisoning, do NOT titrate to pupil size or heart rate! Titrate to clearing the 'Killer B's': <b>Clear lung fields (cessation of bronchorrhea), dry mouth, and SBP > 90 mmHg</b>. Doses of 100 to 200+ mg over 24 hours may be required."
+        }
+      },
+      {
+        "h": "Extracorporeal Elimination in Poisoning (The EXTRIP Guidelines)",
+        "b": "• The EXTRIP (Extracorporeal Treatments in Poisoning) Workgroup Criteria:\n  - Intermittent Hemodialysis (IHD) is the premier extracorporeal modality due to highest clearance rates (superior to CRRT).\n\n• Toxin-Specific Dialysis Thresholds:\n  1. Salicylates (Aspirin):\n     - Dialysis Indications: Serum salicylate <b><u>> 90 mg/dL (6.5 mmol/L)</u></b> in acute ingestion (or <b><u>> 80 mg/dL</u></b> with renal impairment); OR any level with coma, seizures, severe refractory acidosis (pH < 7.20), or ARDS.\n  2. Toxic Alcohols (Methanol & Ethylene Glycol):\n     - Specific Antidote: <b>Fomepizole 15 mg/kg IV loading dose</b> (potent alcohol dehydrogenase inhibitor; prevents toxic metabolite generation: formic acid from methanol, oxalic/glycolic acid from ethylene glycol).\n     - Dialysis Indications: Serum level <b><u>> 50 mg/dL (16 mmol/L)</u></b>; OR severe metabolic acidosis (pH < 7.25), anion gap > 24, visual deficits (methanol), or acute renal failure.\n  3. Lithium:\n     - Dialysis Indications: Serum lithium <b><u>> 4.0 mEq/L</u></b> (or <b><u>> 2.5 mEq/L</u></b> with severe neurological symptoms, seizures, or renal failure).\n  4. Theophylline:\n     - Dialysis Indications: Level <b><u>> 100 mg/L</u></b> in acute overdose (or > 60 mg/L in chronic overdose) or intractable seizures/arrhythmias.\n  5. Valproic Acid:\n     - Dialysis Indications: Serum level <b><u>> 850 mg/L (5900 mcmol/L)</u></b> or coma/cerebral edema/shock.",
+        "table": {
+          "headers": [
+            "Toxic Ingestion",
+            "First-Line Antidote",
+            "Specific Antidote Dosing",
+            "EXTRIP Hemodialysis Trigger"
+          ],
+          "rows": [
+            [
+              "Calcium Channel Blocker",
+              "High-Dose Insulin (HIET) + Calcium",
+              "Insulin 1 U/kg bolus + 1–10 U/kg/h",
+              "Extracorporeal not effective (high protein binding)"
+            ],
+            [
+              "Salicylate (Aspirin)",
+              "Sodium Bicarbonate (Urine alkalinization)",
+              "Target urine pH 7.5–8.0",
+              "Level > 90 mg/dL (> 80 with AKI), coma, pH < 7.20"
+            ],
+            [
+              "Methanol / Ethylene Glycol",
+              "Fomepizole (or Ethanol)",
+              "Fomepizole 15 mg/kg IV load",
+              "Level > 50 mg/dL, severe HAGMA, visual symptoms"
+            ],
+            [
+              "Tricyclic Antidepressants",
+              "Sodium Bicarbonate IV",
+              "Target serum pH 7.50–7.55",
+              "Extracorporeal not effective (large Vd > 15 L/kg)"
+            ],
+            [
+              "Lithium",
+              "Isotonic Saline Hydration",
+              "Restore renal perfusion",
+              "Level > 4.0 mEq/L (or > 2.5 with neuro symptoms)"
+            ]
+          ],
+          "caption": "Targeted antidotes and EXTRIP dialysis criteria for common ICU toxicities."
+        }
+      },
+      {
+        "h": "Toxic Alcohols: Osmolar Gap & Anion Gap Kinetics",
+        "b": "• Diagnostic Sequence in Toxic Alcohol Ingestion (Methanol, Ethylene Glycol, Isopropanol):\n  - Step 1: Calculate the Serum Osmolality & Osmolar Gap:\n    * <b>Calculated Osmolality = 2 × [Na+] + [Glucose mg/dL / 18] + [BUN mg/dL / 2.8]</b>.\n    * <b>Osmolar Gap = Measured Serum Osmolality (freezing point depression) - Calculated Osmolality</b>.\n    * Normal Osmolar Gap: <b><u>< 10 mOsm/kg</u></b>.\n    * High Osmolar Gap (<b><u>> 15 to 20 mOsm/kg</u></b>): Proves presence of unmeasured low-molecular-weight parent alcohol!\n\n  - Step 2: Temporal Evolution of Gaps:\n    * <b>Early Ingestion (Hours 1 to 4)</b>: Parent alcohol is present in blood → <b>High Osmolar Gap with NORMAL Anion Gap</b>.\n    * <b>Late Ingestion (Hours 8 to 24)</b>: Alcohol dehydrogenase metabolizes parent alcohol into organic acids → <b>High Anion Gap Metabolic Acidosis with NORMALIZING Osmolar Gap</b>!\n\n  - Toxic Metabolite Sequelae:\n    * Methanol: Formic acid inhibits cytochrome oxidase in retina → 'Snowstorm vision', optic disc hyperemia, and permanent blindness; bilateral putaminal necrosis on CT.\n    * Ethylene Glycol: Glycolic acid causes profound acidosis; oxalic acid binds calcium forming calcium oxalate crystals → envelope-shaped crystals in urine, severe hypocalcemia, and acute tubular necrosis.\n    * Isopropanol (Rubbing Alcohol): Metabolized to Acetone → High Osmolar Gap + Ketosis + Hemorrhagic Gastritis, but <b>NO Acidosis (Normal Anion Gap!)</b>."
+      }
+    ],
+    "example": "CLINICAL CASE: A 44-year-old male with depression is found unresponsive in an abandoned warehouse next to empty bottles of antifreeze (ethylene glycol). On arrival: Intubated, BP 84/50 mmHg, HR 105 bpm. ABG: pH 6.98, PaCO2 18, HCO3 4 mEq/L, Lactate 3.2 mmol/L. Labs: Na 142, K 5.8, Cl 104, Glucose 126, BUN 28, Cr 3.2 mg/dL. Measured serum osmolality is 358 mOsm/kg.\n\nToxic Alcohol Resuscitation Protocol:\n1. Gap Calculations: Anion Gap = 142 - (104 + 4) = 34 mEq/L (Severe HAGMA). Calculated Osmolality = 2(142) + 126/18 + 28/2.8 = 301 mOsm/kg. Osmolar Gap = 358 - 301 = 57 mOsm/kg (Massive osmolar gap!).\n2. Enzyme Inhibition: Fomepizole 15 mg/kg (1050 mg IV) administered immediately to block alcohol dehydrogenase.\n3. Extracorporeal Elimination: The patient meets multiple absolute EXTRIP criteria: pH < 7.20 (6.98), AKI (Cr 3.2), and massive ingestion. Urgent Intermittent Hemodialysis initiated immediately via a temporary IJ catheter.\n4. Adjunctive Cofactors: IV Thiamine 100 mg and Pyridoxine (Vitamin B6) 100 mg IV q6h administered (shunts glycolic acid metabolism toward harmless alpha-hydroxy-beta-ketoadipate and glycine).\n5. Outcome: Over 6 hours of high-efficiency hemodialysis, the osmolar gap resolves (< 8), arterial pH corrects to 7.36, and ethylene glycol level drops from an initial 140 mg/dL to undetectable. Fomepizole redosed at 1.0 mg/kg/h during dialysis. Renal function recovers fully by Day 10.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 22 & 23. Wolters Kluwer.",
+      "Roberts DM, et al. Recommendations for the Role of Extracorporeal Treatments in the Management of Acute Toxic Ingestions (EXTRIP Guidelines). Clin Toxicol 2015;53(7):645–664.",
+      "Krenzischek DA, et al. High-Dose Insulin-Euglycemic Therapy for Calcium Channel Blocker and Beta-Blocker Poisoning. Crit Care Clin 2012;28(4):619–633.",
+      "Nelson LS, et al. Goldfrank's Toxicologic Emergencies, 11th ed. McGraw-Hill, 2019."
+    ]
+  },
+  {
+    "id": "environmental-emergencies-heat-hypothermia-drowning",
+    "cat": "cc_tox",
+    "name": "Heatstroke, Accidental Hypothermia & Drowning Management",
+    "short": "Environmental Emergencies",
+    "tags": [
+      "Heatstroke",
+      "Ice-Water Immersion",
+      "Swiss Hypothermia Staging",
+      "Osborn J Wave",
+      "ECLS Rewarming",
+      "Drowning Submersion ARDS"
+    ],
+    "tagline": "Exertional vs classic heatstroke, evaporative cooling, Swiss staging, Osborn waves, ECLS for arrest and submersion lung mechanics",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 24; Wilderness Medical Society Clinical Practice Guidelines; New England Journal of Medicine 2012; 367(20):1930–1938.",
+    "sections": [
+      {
+        "h": "Severe Heat-Related Illness: Exertional vs Classic Heatstroke",
+        "b": "• Definitions & The Diagnostic Triad:\n  - Heat Exhaustion: Core temperature < 40°C, preserved mental status, mild dehydration.\n  - <b>Heatstroke (The True Critical Care Emergency)</b>: Defined by the triad of:\n    1. Severe hyperthermia: Core body temperature <b><u>> 40.0°C (104.0°F)</u></b>.\n    2. Profound Central Nervous System (CNS) dysfunction: Delirium, seizures, ataxia, or coma.\n    3. Multi-organ failure and systemic inflammatory response.\n\n• Clinical Phenotypes:\n  - <b>Exertional Heatstroke (EHS)</b>: Young, healthy individuals (athletes, military recruits, manual laborers) exercising in hot/humid environments; rapid onset; characterized by massive rhabdomyolysis (CK > 50,000 U/L), acute kidney injury, severe lactic acidosis, and disseminated intravascular coagulation (DIC).\n  - <b>Classic (Non-Exertional) Heatstroke</b>: Elderly, debilitated patients with underlying cardiovascular disease or impaired access to air conditioning during heatwaves; slow onset; skin frequently dry due to anhidrosis.\n\n• Emergency Cooling Protocols:\n  - <b>Ice-Water Immersion (The Gold Standard for Exertional Heatstroke)</b>:\n    * Submerge patient in a tub of ice water (1°C–5°C) with continuous stirring; achieves cooling rates of <b><u>0.20°C to 0.35°C per minute</u></b>.\n  - <b>Evaporative & Convective Cooling (Preferred for Classic Heatstroke)</b>:\n    * Continuous spraying of lukewarm water (20°C–25°C) mist combined with high-flow industrial fans; cooling rate <b><u>0.10°C to 0.15°C per minute</u></b>.\n  - <b>Cooling Target & Boundary</b>: Stop active cooling when core temperature reaches <b><u>38.0°C to 38.5°C</u></b> to prevent overshooting into severe hypothermia!\n  - Antipyretics (Paracetamol, Aspirin): Strictly INEFFECTIVE (the thermoregulatory hypothalamic set-point is normal!) and hepatotoxic/nephrotoxic.",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — The Golden Hour of Heatstroke",
+          "text": "If core body temperature is lowered to <b>< 39.0°C within 30 minutes of collapse</b> ('The Golden Half-Hour'), the mortality rate of exertional heatstroke drops to near <b>0%</b>! Every 30-minute delay increases multiorgan failure and permanent neurological deficit."
+        }
+      },
+      {
+        "h": "Accidental Hypothermia: Swiss Staging & Rewarming Strategies",
+        "b": "• Pathophysiology of Hypothermia:\n  - Core body temperature <b><u>< 35.0°C (95.0°F)</u></b> (must be measured with a low-reading esophageal or rectal thermistor probe).\n  - Progressively decreases cerebral metabolic rate of oxygen (CMRO2 drops by <b><u>6% for every 1°C fall</u></b> in core temp), slows enzymatic reactions, and induces electrical cardiac instability.\n\n• The Swiss Hypothermia Staging System:\n  - <b>Stage I (Mild Hypothermia: 32°C to 35°C)</b>: Conscious, shivering vigorously, tachycardia, cold diuresis. Passive external rewarming (warm blankets, hot drinks).\n  - <b>Stage II (Moderate Hypothermia: 28°C to 32°C)</b>: Impaired consciousness / lethargy, shivering ceases (depleted glycogen), bradycardia, hypoventilation. Active external rewarming (forced-air blankets 40°C–42°C, warmed IV fluids 42°C).\n  - <b>Stage III (Severe Hypothermia: 24°C to 28°C)</b>: Unconscious / coma, vital signs present but severely depressed, high risk of ventricular fibrillation. Active internal rewarming; handle patient with extreme gentleness (rough movement triggers refractory VF!).\n  - <b>Stage IV (Cardiac Arrest: < 24°C)</b>: Apparent death, no detectable pulse or breathing, asystole or VF.\n\n• Electrocardiographic Hallmarks:\n  - <b>Osborn (J) Waves</b>: Pathognomonic positive deflection at the J-point (junction of QRS and ST segment); height of the J-wave is proportional to the degree of hypothermia.\n  - Prolongation of PR, QRS, and QTc intervals; sinus bradycardia, slow atrial fibrillation, ventricular fibrillation.",
+        "table": {
+          "headers": [
+            "Swiss Hypothermia Stage",
+            "Core Body Temperature",
+            "Clinical Consciousness",
+            "Shivering Status",
+            "Recommended Rewarming Modality"
+          ],
+          "rows": [
+            [
+              "Stage I: Mild",
+              "32°C to 35°C",
+              "Conscious, alert",
+              "Active Shivering",
+              "Passive external (dry clothing, warm environment)"
+            ],
+            [
+              "Stage II: Moderate",
+              "28°C to 32°C",
+              "Lethargic / Confused",
+              "Shivering Ceases",
+              "Active external (Bair Hugger 42°C, warmed IV fluids)"
+            ],
+            [
+              "Stage III: Severe",
+              "24°C to 28°C",
+              "Unconscious / Coma",
+              "No Shivering",
+              "Active internal rewarming; thoracic/bladder lavage"
+            ],
+            [
+              "Stage IV: Arrest",
+              "< 24°C",
+              "Cardiac Arrest / Death",
+              "No Shivering",
+              "Extracorporeal Life Support (VA-ECMO / CPB)"
+            ]
+          ],
+          "caption": "The Swiss clinical staging system and rewarming protocols for accidental hypothermia."
+        }
+      },
+      {
+        "h": "Hypothermic Cardiac Arrest & Extracorporeal Life Support (ECLS)",
+        "b": "• The Cardinal Rule of Hypothermia:\n  - <b>'No one is dead until warm and dead!'</b>\n  - Profound hypothermia exerts a massive neuroprotective effect against ischemic brain injury. Full intact neurological recovery has been documented after prolonged hypothermic cardiac arrest (> 6 hours of CPR!).\n\n• Resuscitation Modifications for Core Temp < 30°C:\n  - Defibrillation: Attempt up to <b><u>3 defibrillations for VF/pVT</u></b>; if unsuccessful, defer further shocks until core temp is warmed <b><u>> 30°C</u></b>.\n  - Resuscitation Medications (Epinephrine / Amiodarone): <b>WITHHELD below 30°C</b> (metabolism is halted, causing toxic drug accumulation); when temp reaches 30°C–35°C, double the dosing intervals (e.g., epinephrine q6–10m).\n\n• Extracorporeal Life Support (ECLS / VA-ECMO):\n  - Treatment of choice for Stage IV hypothermic cardiac arrest:\n  - Femoro-femoral VA-ECMO provides rapid internal blood rewarming (rate <b><u>4°C to 6°C per hour</u></b>) while maintaining full systemic perfusion.\n  - Rewarm to core temperature <b><u>≥ 32.0°C to 35.0°C</u></b> before declaring death or terminating resuscitation (unless serum potassium is <b><u>> 12.0 mmol/L</u></b>, which proves irreversible cell lysis and death)."
+      },
+      {
+        "h": "Drowning & Submersion Injury: Pulmonary Mechanics & Neuroprotection",
+        "b": "• Pathophysiology of Drowning:\n  - Drowning is defined as the process of experiencing respiratory impairment from submersion or immersion in liquid.\n  - The initial event is breath-holding followed by involuntary laryngospasm.\n  - Fluid aspiration (even tiny volumes: <b><u>1 to 3 mL/kg</u></b>) washes out and destroys pulmonary surfactant, producing massive alveolar collapse, severe intrapulmonary shunting, and severe non-cardiogenic pulmonary edema (ARDS).\n  - The historical distinction between freshwater (hypotonic, hemolysis) and saltwater (hypertonic, fluid shift) has <b>zero clinical relevance</b> in human resuscitation — both produce identical alveolar flooding and severe hypoxemic respiratory failure!\n\n• Emergency Resuscitation Sequence:\n  - Primary Survey: Focus on <b>Ventilation First (A-B-C, NOT C-A-B!)</b>. Deliver <b><u>5 rescue breaths</u></b> immediately.\n  - Routine cervical spine immobilization is NOT recommended unless high-impact trauma (diving, surfing, motor vehicle collision) is documented.\n  - The Heimlich Maneuver / Abdominal Thrusts: <b>STRICTLY CONTRAINDICATED</b>! Induces vomiting, worsens pulmonary aspiration, and delays lifesaving ventilation.\n\n• Mechanical Ventilation Strategy in Drowning ARDS:\n  - Strict lung-protective ventilation (VT <b><u>6 mL/kg PBW</u></b>, Pplat <b><u>≤ 30 cmH2O</u></b>).\n  - High PEEP (<b><u>10 to 15 cmH2O</u></b>) to overcome surfactant washout and recruit collapsed alveoli.\n  - Routine prophylactic antibiotics and corticosteroids are strictly NOT recommended (do not improve outcomes; select for resistant nosocomial organisms)."
+      }
+    ],
+    "example": "CLINICAL CASE: A 22-year-old military recruit collapses during an intense 15 km endurance run in full gear on a hot, humid summer day (ambient temp 34°C, humidity 80%). On presentation to the field ICU 20 minutes later: GCS 4 (unresponsive, posturing to pain), rectal core temperature is 41.8°C (107.2°F), HR 148 bpm, BP 82/40 mmHg. Labs reveal CK 78,000 U/L, Lactate 8.4 mmol/L, Cr 2.4 mg/dL, and active oozing from venipuncture sites (DIC).\n\nEmergency Heatstroke Resuscitation:\n1. Immediate Diagnosis: Exertional Heatstroke (EHS) with multiorgan failure (coma + temp 41.8°C + rhabdomyolysis + DIC).\n2. Rapid Cooling Protocol: Patient is immediately stripped and immersed in an ice-water bath (3°C) with continuous physical water agitation. Core rectal temperature is monitored continuously.\n3. Resuscitation & Airway: Intubated with ketamine and rocuronium. Resuscitated with chilled balanced crystalloids.\n4. Cooling Target: Within 18 minutes, core body temperature falls to 38.4°C. Active immersion cooling is immediately stopped to prevent rebound hypothermia. Patient dried and placed on warming sheet.\n5. Rhabdomyolysis & AKI Management: Continuous IV crystalloid infusion titrated to maintain urine output 150–200 mL/h until myoglobin cleared. Platelets and cryoprecipitate transfused for DIC.\n6. Outcome: Over 48 hours, renal function recovers, DIC resolves, and extubation is performed on Day 3 with complete intact neurological recovery.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 24. Wolters Kluwer.",
+      "Lipman GS, et al. Wilderness Medical Society Clinical Practice Guidelines for the Prevention and Treatment of Heat Illness: 2019 Update. Wilderness Environ Med 2019;30(4S):S33–S46.",
+      "Brown DJ, et al. Accidental Hypothermia. N Engl J Med 2012;367(20):1930–1938.",
+      "Szpilman D, et al. Drowning. N Engl J Med 2012;366(22):2102–2110."
+    ]
+  },
+  {
+    "id": "massive-transfusion-rotem-teg-coagulopathy",
+    "cat": "cc_heme",
+    "name": "Massive Transfusion Protocols, ROTEM / TEG & Transfusion Reactions",
+    "short": "Massive Transfusion & ROTEM",
+    "tags": [
+      "MTP Triggers",
+      "ABC Score",
+      "1:1:1 Ratio",
+      "ROTEM vs TEG",
+      "FIBTEM MCF",
+      "TRALI vs TACO",
+      "Citrate Toxicity"
+    ],
+    "tagline": "MTP activation criteria, 1:1:1 component therapy, viscoelastic ROTEM/TEG interpretation, TRALI vs TACO and hypocalcemia rescue",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 25; European Guideline on Management of Major Bleeding and Coagulopathy Following Trauma (6th ed.); Crit Care 2023; 27:80.",
+    "sections": [
+      {
+        "h": "Massive Transfusion Protocol (MTP): Triggers & Administration Ratios",
+        "b": "• Definitions of Massive Transfusion:\n  - Traditional Definition: Transfusion of <b><u>≥ 10 units of Packed Red Blood Cells (PRBC) within 24 hours</u></b>.\n  - Modern Critical Care Definition: Transfusion of <b><u>≥ 4 units of PRBC within 1 hour</u></b> with anticipated ongoing bleeding, OR replacement of <b><u>> 50% of total blood volume within 3 hours</u></b>.\n\n• Objective MTP Activation Scoring Tools:\n  1. Assessment of Blood Consumption (ABC) Score (Score 0 to 4):\n     - Penetrating trauma mechanism (1 point)\n     - Systolic Blood Pressure <b><u>≤ 90 mmHg</u></b> (1 point)\n     - Heart Rate <b><u>≥ 120 bpm</u></b> (1 point)\n     - Positive FAST ultrasound exam (1 point)\n     - A score of <b><u>≥ 2 points</u></b> has an 84% sensitivity for massive transfusion; triggers immediate MTP activation!\n  2. Shock Index (Heart Rate / Systolic BP):\n     - Shock Index <b><u>> 1.0</u></b> indicates severe hypovolemic shock and impending decompensation.\n\n• Empirical Balanced Transfusion (The PROPPR Trial):\n  - Administer blood components in a fixed <b><u>1:1:1 ratio: 1 Unit PRBC : 1 Unit FFP : 1 Unit Platelets</u></b> (typically delivered in pre-packaged cooler packs: 4–6 units PRBCs, 4–6 units FFP, and 1 pool of apheresis platelets).\n  - Cryoprecipitate: Administer <b><u>10 to 20 units</u></b> (or Fibrinogen Concentrate 2–4 g) early to maintain plasma fibrinogen <b><u>> 150 to 200 mg/dL</u></b>.\n  - Calcium Replacement: Every 4 units of blood products contains sufficient citrate preservative to bind circulating calcium. Administer <b>1.0 g Calcium Chloride IV</b> (or 3 g Calcium Gluconate) for every <b><u>4 units of blood components</u></b>; target ionized calcium <b><u>> 1.10 to 1.20 mmol/L</u></b>.",
+        "callout": {
+          "type": "pearl",
+          "title": "TRANSFUSION PEARL — Calcium Chloride over Calcium Gluconate in Shock",
+          "text": "In massive shock, the liver is severely hypoperfused and cannot rapidly metabolize gluconate to release calcium. <b>Calcium Chloride</b> provides 3 times more elemental calcium (27.2 mg/mL vs 9.3 mg/mL) and dissociates immediately without hepatic metabolism; it is the calcium salt of choice during MTP!"
+        }
+      },
+      {
+        "h": "Viscoelastic Hemostatic Assays: ROTEM vs TEG Interpretation",
+        "b": "Conventional coagulation tests (PT/INR, aPTT) have turnaround times of 45–60 minutes and measure only clot initiation in isolated plasma. Viscoelastic testing (ROTEM / TEG) evaluates the entire clotting process in whole blood in real-time within <b><u>10 to 15 minutes</u></b>:\n\n• Thromboelastography (TEG) Parameters & Interventions:\n  1. <b>R-Time (Reaction Time, normal 4 to 8 min)</b>: Time until initial fibrin clot formation. Prolonged R-time = Clotting factor deficiency → <b>Give Fresh Frozen Plasma (FFP 10–15 mL/kg)</b>.\n  2. <b>K-Time & Alpha-Angle (normal K 1–3 min, Angle 53°–72°)</b>: Speed of clot propagation. Prolonged K or low angle = Fibrinogen deficiency → <b>Give Cryoprecipitate or Fibrinogen Concentrate</b>.\n  3. <b>Maximum Amplitude (MA, normal 50 to 70 mm)</b>: Ultimate clot strength (80% platelet function, 20% fibrinogen). Low MA = Platelet deficiency → <b>Give Platelets (1 apheresis pool)</b>.\n  4. <b>LY30 (Lysis at 30 min, normal 0% to 3%)</b>: Clot breakdown. LY30 <b><u>> 3%</u></b> = Hyperfibrinolysis → <b>Give Tranexamic Acid (TXA 1–2 g IV)</b>.\n\n• Rotational Thromboelastometry (ROTEM) Parameters:\n  - <b>CT (Clotting Time in EXTEM/INTEM, normal 40–80 s)</b>: Prolonged CT → Give FFP or Prothrombin Complex Concentrate (PCC).\n  - <b>CFT (Clot Formation Time)</b>: Prolonged → Low fibrinogen/platelets.\n  - <b>A10 / MCF (Maximum Clot Firmness) in FIBTEM</b>: Isolates fibrinogen function by poisoning platelets with cytochalasin D.\n    * FIBTEM MCF <b><u>< 10 to 12 mm</u></b> = Severe Fibrinogen Deficiency → <b>Give Cryoprecipitate (10–20 units) or Fibrinogen Concentrate (2–4 g)</b>!\n  - <b>ML (Maximum Lysis in EXTEM > 15%)</b>: Hyperfibrinolysis → Give Tranexamic Acid.",
+        "table": {
+          "headers": [
+            "Clinical Defect",
+            "TEG Finding",
+            "ROTEM Finding",
+            "Targeted Component Therapy"
+          ],
+          "rows": [
+            [
+              "Coagulation Factor Deficiency",
+              "Prolonged R-Time (> 8 min)",
+              "Prolonged EXTEM CT (> 80 s)",
+              "Fresh Frozen Plasma (FFP) or PCC"
+            ],
+            [
+              "Fibrinogen Deficiency",
+              "Prolonged K-Time / Low Alpha Angle",
+              "FIBTEM A10/MCF < 10 mm",
+              "Cryoprecipitate (10–20 units) or Fibrinogen conc"
+            ],
+            [
+              "Platelet Deficiency / Dysfunction",
+              "Decreased MA (< 50 mm) with normal K",
+              "EXTEM MCF < 40 mm with normal FIBTEM",
+              "Platelets (1 apheresis pack / 4–6 pooled units)"
+            ],
+            [
+              "Severe Hyperfibrinolysis",
+              "Elevated LY30 (> 3%)",
+              "EXTEM Maximum Lysis (ML > 15%)",
+              "Tranexamic Acid (TXA 1.0–2.0 g IV)"
+            ]
+          ],
+          "caption": "Goal-directed transfusion algorithm based on TEG and ROTEM parameters."
+        }
+      },
+      {
+        "h": "Transfusion Reactions: TRALI vs TACO Differentiation",
+        "b": "• Transfusion-Related Acute Lung Injury (TRALI):\n  - Leading cause of transfusion-related mortality!\n  - Pathophysiology (Two-Hit Hypothesis):\n    * Hit 1: Recipient pulmonary endothelial activation and neutrophil sequestration (sepsis, surgery, trauma).\n    * Hit 2: Transfused blood component contains donor anti-HLA or anti-human neutrophil antigen (anti-HNA) antibodies that bind and activate recipient pulmonary neutrophils, releasing reactive oxygen species and causing massive non-cardiogenic capillary leak.\n  - Diagnostic Criteria: New Acute Lung Injury / ARDS (bilateral infiltrates, PaO2/FiO2 ≤ 300) occurring <b>within 6 hours of transfusion</b> in the ABSENCE of circulatory overload.\n  - Hemodynamics: Normal LV filling pressure (PCWP < 18 mmHg), normal BNP/NT-proBNP, low-to-normal CVP, transient leukopenia/neutropenia.\n  - Management: Supportive lung-protective ventilation; diuretics provide ZERO benefit!\n\n• Transfusion-Associated Circulatory Overload (TACO):\n  - Cardiogenic hydrostatic pulmonary edema caused by excessive volume or rapid infusion rate.\n  - Signs: Dyspnea, tachypnea, hypertension, wide pulse pressure, elevated JVP/CVP, positive fluid balance.\n  - Diagnostic Biomarkers: <b>Post-transfusion BNP or NT-proBNP markedly elevated (> 1.5× baseline)</b>, elevated PCWP (> 18 mmHg), responsive to diuretics!\n  - Management: Stop transfusion; place patient upright; aggressive IV Furosemide (40–80 mg IV) and non-invasive ventilation (BiPAP/CPAP).",
+        "table": {
+          "headers": [
+            "Diagnostic Feature",
+            "TRALI (Permeability / Lung Injury)",
+            "TACO (Hydrostatic / Volume Overload)"
+          ],
+          "rows": [
+            [
+              "Primary Mechanism",
+              "Donor antibody-mediated neutrophil activation (ARDS)",
+              "Hydrostatic hydrostatic volume overload (Cardiogenic)"
+            ],
+            [
+              "Blood Pressure",
+              "Hypotension or Normal",
+              "Severe Hypertension (widened pulse pressure)"
+            ],
+            [
+              "Jugular Venous Pressure / CVP",
+              "Normal or Low",
+              "Elevated JVP, engorged liver, CVP > 12–15 mmHg"
+            ],
+            [
+              "BNP / NT-proBNP",
+              "Normal or unchanged from baseline",
+              "Markedly elevated (> 1.5- to 3-fold increase)"
+            ],
+            [
+              "Echocardiography",
+              "Normal LV filling pressures, hyperdynamic LV",
+              "Elevated E/e' ratio (> 14), LV systolic/diastolic failure"
+            ],
+            [
+              "Response to Diuretics",
+              "Zero response (May worsen shock/hypotension!)",
+              "Rapid clinical improvement with IV Furosemide"
+            ]
+          ],
+          "caption": "Clinical and laboratory differentiation between TRALI and TACO."
+        }
+      },
+      {
+        "h": "Acute Hemolytic Reactions & Storage Lesions",
+        "b": "• Acute Hemolytic Transfusion Reaction (AHTR):\n  - Fatal immunological destruction of donor RBCs caused by <b>ABO Incompatibility</b> (usually administrative patient/unit misidentification error!).\n  - Triad: Fever, flank/back pain, and dark/red urine (hemoglobinuria), followed rapidly by severe hypotension, DIC, and acute renal failure.\n  - Emergency Management: Immediately STOP transfusion; vigorously hydrate with IV crystalloid (target urine output > 100 mL/h to prevent intratubular pigment cast obstruction); send blood bank check, direct antiglobulin test (Coombs), repeat crossmatch, and DIC panel.\n\n• Transfusion Storage Lesions:\n  - Biochemical changes occurring in banked PRBCs stored > 14 to 21 days:\n  - Depletion of <b>2,3-Diphosphoglycerate (2,3-DPG)</b>: Shifts oxyhemoglobin curve leftward (increases O2 affinity; impairs offloading to tissues).\n  - Potassium Leakage: Extracellular potassium increases to <b><u>30 to 50 mEq/L</u></b> per unit in stored blood (massive transfusion can cause lethal hyperkalemia!).\n  - Depletion of nitric oxide, accumulation of free hemoglobin, microaggregates, and inflammatory cytokines."
+      }
+    ],
+    "example": "CLINICAL CASE: A 32-year-old male arrives at the trauma ICU following a high-speed collision with multiple extremity fractures and grade IV liver laceration. Vitals: HR 134 bpm, BP 76/40 mmHg. ABC score is 3. MTP is activated.\n\nROTEM-Guided Hemostatic Resuscitation:\n1. MTP Round 1: Infused 1 cooler pack (4 PRBC, 4 FFP, 1 apheresis platelet) + 1 g IV Tranexamic Acid. Ionized calcium is 0.82 mmol/L; 2 g Calcium Chloride IV administered.\n2. Viscoelastic Guidance: Bedside ROTEM results at 15 minutes: EXTEM CT 98 s (prolonged), FIBTEM A10 is 6 mm (severely low; normal > 10 mm), and EXTEM ML is 6% (no hyperfibrinolysis).\n3. Targeted Product Choice: The low FIBTEM A10 proves severe hypofibrinogenemia. Rather than empirical FFP, 4.0 grams of Fibrinogen Concentrate (equivalent to 20 units of cryoprecipitate) is administered.\n4. Repeat ROTEM: 20 minutes later, FIBTEM A10 recovers to 14 mm and EXTEM CT normalizes to 62 s. Surgical hemostasis achieved; MTP discontinued after 6 PRBCs, 4 FFP, 1 Platelet pack.\n5. Post-Transfusion Deterioration: Two hours later, patient develops acute hypoxemia (P/F drops to 110) with bilateral pulmonary infiltrates. BP is 82/50 mmHg, CVP is 6 mmHg, and BNP is normal. Diagnosed with TRALI (not TACO). Diuretics withheld; managed with lung-protective ventilation and recovered on Day 4.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 25. Wolters Kluwer.",
+      "Spahn DR, et al. The European Guideline on Management of Major Bleeding and Coagulopathy Following Trauma: Sixth Edition. Crit Care 2023;27(1):80.",
+      "Holcomb JB, et al. Transfusion of Plasma, Platelets, and Red Blood Cells in a 1:1:1 vs a 1:1:2 Ratio and Mortality in Patients with Severe Trauma (PROPPR Trial). JAMA 2015;313(5):471–482.",
+      "Vlaar AP, et al. Transfusion-Related Acute Lung Injury: A Two-Hit Condition. Crit Care 2013;17(3):234."
+    ]
+  },
+  {
+    "id": "dic-hit-thrombotic-microangiopathies",
+    "cat": "cc_heme",
+    "name": "Disseminated Intravascular Coagulation (DIC), HIT & TMA in ICU",
+    "short": "DIC, HIT & Microangiopathies",
+    "tags": [
+      "ISTH DIC Score",
+      "4Ts Score for HIT",
+      "Argatroban",
+      "TTP Pentad",
+      "ADAMTS13",
+      "Caplacizumab",
+      "Platelet Paradox"
+    ],
+    "tagline": "ISTH DIC scoring criteria, 4Ts probability of HIT, direct thrombin inhibitors, TTP pentad, ADAMTS13 assays and emergency plasma exchange",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 26; ISTH Guidelines on Disseminated Intravascular Coagulation; Chest 2018; 153(2):479–492.",
+    "sections": [
+      {
+        "h": "Disseminated Intravascular Coagulation (DIC): Pathophysiology & Scoring",
+        "b": "• Pathophysiology of DIC:\n  - Systemic, uncontrolled intravascular activation of coagulation driven by massive tissue factor release (sepsis, severe trauma, obstetric disasters, acute promyelocytic leukemia, solid tumors).\n  - Generates widespread microvascular fibrin deposition, leading to microthrombosis, tissue ischemia, and multi-organ dysfunction syndrome (MODS).\n  - Secondary Consumptive Phase: Depletion of platelets, fibrinogen, and clotting factors combined with secondary hyperfibrinolysis produces profuse, uncontrollable systemic hemorrhage.\n\n• The ISTH (International Society on Thrombosis and Haemostasis) Overt DIC Scoring:\n  - Applied only to patients with a known underlying disorder associated with DIC:\n  1. Platelet Count: <b><u>> 100k = 0</u></b>, <b><u>50k to 100k = 1</u></b>, <b><u>< 50k = 2</u></b>.\n  2. Elevated Fibrin-Related Markers (D-dimer / FDP): <b><u>No increase = 0</u></b>, <b><u>Moderate increase = 2</u></b>, <b><u>Strong increase = 3</u></b>.\n  3. Prolonged Prothrombin Time (PT/INR): <b><u>< 3 seconds prolongation = 0</u></b>, <b><u>3 to 6 seconds = 1</u></b>, <b><u>> 6 seconds prolongation = 2</u></b>.\n  4. Fibrinogen Level: <b><u>> 100 mg/dL = 0</u></b>, <b><u>< 100 mg/dL (1.0 g/L) = 1</u></b>.\n  - <b>Diagnostic Threshold: Total Score ≥ 5 points</b> confirms <b>Overt DIC</b> (repeat daily to monitor progression).\n\n• Evidence-Based DIC Management:\n  - <b>The Primary Mandate</b>: Aggressively treat the underlying trigger (antimicrobials for sepsis, damage control surgery, delivery of placenta/fetus in abruption).\n  - Component Replacement (Indicated for ACTIVE BLEEDING or prior to invasive procedures):\n    * Platelets: Transfuse if count <b><u>< 50,000/mcL</u></b> in active bleeding (or < 20,000 in high bleeding risk).\n    * Fresh Frozen Plasma (FFP): <b><u>15 to 25 mL/kg</u></b> for prolonged PT/INR > 1.5 or bleeding.\n    * Cryoprecipitate: <b><u>10 units</u></b> if fibrinogen drops <b><u>< 150 mg/dL</u></b>.",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — Routine Clotting Repletion in Non-Bleeding DIC",
+          "text": "Do NOT prophylactically transfuse platelets or FFP in a non-bleeding ICU patient solely to 'normalize abnormal lab numbers'! Infusing coagulation factors into a thrombotic DIC state adds 'fuel to the fire', exacerbating microvascular thrombosis and worsening organ failure."
+        }
+      },
+      {
+        "h": "Heparin-Induced Thrombocytopenia (HIT Type II): The 4Ts Score & Argatroban",
+        "b": "• Pathophysiology of HIT Type II (Immune-Mediated):\n  - Antibodies (IgG) form against complexes of <b>Platelet Factor 4 (PF4) and Heparin</b>.\n  - The IgG-PF4-Heparin complex binds Fc-gamma-RIIa receptors on platelets, inducing massive, uncontrolled platelet activation, microparticle shedding, and extreme thrombin generation.\n  - <b>The Paradox of HIT</b>: Despite thrombocytopenia, patients present with <b>SEVERE THROMBOSIS ('White Clot Syndrome')</b>, NOT bleeding! Up to <b><u>50% of untreated patients develop fatal DVT, PE, stroke, MI, or limb arterial occlusion</u></b>!\n\n• The 4Ts Probability Scoring System (Score 0 to 8):\n  1. <b>T</b>hrombocytopenia: Fall > 50% AND platelet nadir ≥ 20k (2 pts); Fall 30–50% or nadir 10–19k (1 pt); Fall < 30% or nadir < 10k (0 pts).\n  2. <b>T</b>iming of Fall: Onset Day 5–10 (2 pts); Onset > Day 10 or < 1 day with heparin exposure within past 30 days (2 pts); Fall after Day 10 (1 pt); Fall < 4 days without recent exposure (0 pts).\n  3. <b>T</b>hrombosis: Proven new thrombosis, skin necrosis at injection site, or acute systemic reaction post-bolus (2 pts); Progressive/recurrent thrombosis (1 pt); None (0 pts).\n  4. o<b>T</b>her Causes: None evident (2 pts); Possible other cause (1 pt); Definite other cause (sepsis, DIC) (0 pts).\n  - Probability: <b>Score 6–8 = High Probability (> 64% true HIT)</b>; Score 4–5 = Intermediate; Score 0–3 = Low (< 1% true HIT).\n\n• Emergency Protocol for Suspected / Proven HIT:\n  1. <b>Immediately STOP ALL forms of heparin</b> (including subcutaneous DVT prophylaxis, heparin flushes in arterial lines, and heparin-bonded dialysis catheters!).\n  2. Send Anti-PF4/Heparin ELISA and confirmatory functional assay (Serotonin Release Assay / SRA).\n  3. Initiate a Non-Heparin Anticoagulant immediately (even in isolated HIT without proven thrombosis):\n     - <b>Argatroban (Direct Thrombin Inhibitor — Drug of Choice in Renal Failure)</b>:\n       * Dosing: Continuous IV infusion at <b><u>1.0 to 2.0 mcg/kg/min</u></b> (reduce to <b><u>0.5 mcg/kg/min in hepatic dysfunction or critical illness/shock</u></b>).\n       * Monitoring: Titrate to target aPTT <b><u>1.5 to 3.0 times baseline (typically 50 to 70 seconds)</u></b>.\n       * Exclusively metabolized by the liver; zero renal dose adjustment required!\n     - <b>Bivalirudin</b>: Alternative direct thrombin inhibitor (renally cleared; dose 0.15 mg/kg/h).\n     - <b>Fondaparinux</b>: Factor Xa inhibitor; alternative in hemodynamically stable patients with normal renal function (contraindicated if CrCl < 30 mL/min).\n  4. <b>Strict Contraindications in Acute HIT</b>:\n     - Platelet transfusions are CONTRAINDICATED (increases thrombotic risk!).\n     - Warfarin is STRICTLY CONTRAINDICATED in acute HIT (depletes Protein C rapidly before prothrombin, producing severe microvascular thrombosis and <b>Warfarin-Induced Skin Necrosis / Venous Limb Gangrene</b>!). Do NOT initiate Warfarin until platelets recover > 150,000/mcL.",
+        "table": {
+          "headers": [
+            "4Ts Score Component",
+            "2 Points",
+            "1 Point",
+            "0 Points"
+          ],
+          "rows": [
+            [
+              "Thrombocytopenia",
+              "Drop > 50% and nadir ≥ 20k/mcL",
+              "Drop 30–50% or nadir 10–19k",
+              "Drop < 30% or nadir < 10k"
+            ],
+            [
+              "Timing of Platelet Fall",
+              "Day 5–10 (or < 1 day with heparin < 30d)",
+              "Day > 10 (or < 1 day with heparin 30–100d)",
+              "Day < 4 without recent heparin"
+            ],
+            [
+              "Thrombosis / Sequelae",
+              "Proven new thrombosis or skin necrosis",
+              "Progressive or silent thrombosis",
+              "None"
+            ],
+            [
+              "oTher Causes Excluded",
+              "Zero other causes evident",
+              "Possible other cause present",
+              "Definite other cause (sepsis, chemo)"
+            ]
+          ],
+          "caption": "The 4Ts pre-test probability scoring system for heparin-induced thrombocytopenia."
+        }
+      },
+      {
+        "h": "Thrombotic Microangiopathies: TTP vs HUS in the ICU",
+        "b": "• Thrombotic Thrombocytopenic Purpura (TTP):\n  - Severe deficiency of <b>ADAMTS13</b> (vWF-cleaving protease; activity <b><u>< 10%</u></b>) due to acquired autoantibodies.\n  - Results in ultra-large von Willebrand factor multimers that bind platelets, forming microvascular thrombi that shear RBCs (Microangiopathic Hemolytic Anemia / MAHA).\n  - The Classic Pentad (Present in full in < 10% of cases!):\n    1. <b>Microangiopathic Hemolytic Anemia</b> (Schistocytes > 1% on peripheral blood smear, high LDH, low haptoglobin, negative Coombs).\n    2. <b>Severe Thrombocytopenia</b> (typically < 30,000/mcL).\n    3. <b>Fluctuating Neurological Deficits</b> (confusion, headache, transient aphasia, seizures, coma).\n    4. <b>Renal Impairment</b> (mild-to-moderate; less severe than in HUS).\n    5. <b>Fever</b>.\n  - Emergency Therapy (The Medical Emergency!):\n    * <b>Therapeutic Plasma Exchange (TPE / PLEX)</b>: Exchanging <b><u>1.0 to 1.5 plasma volumes daily</u></b> with fresh frozen plasma (removes anti-ADAMTS13 autoantibodies and replaces deficient ADAMTS13 enzyme). Reduces mortality from <b><u>> 90% down to < 10% to 15%</u></b>!\n    * <b>Caplacizumab</b>: Anti-vWF nanobody (10 mg IV bolus followed by 10 mg SC daily); prevents vWF-platelet adhesion and achieves rapid platelet normalization (HERCULES trial).\n    * High-Dose Corticosteroids (Methylprednisolone 1 g IV daily × 3 days) + Rituximab.\n\n• Hemolytic Uremic Syndrome (HUS):\n  - Typical HUS: Shiga toxin-producing E. coli (STEC O157:H7); children with bloody diarrhea; predominant acute renal failure; supportive care (avoid antibiotics and antimotility agents!).\n  - Atypical HUS (aHUS): Uncontrolled alternative complement pathway activation; treated with <b>Eculizumab / Ravulizumab</b> (monoclonal anti-C5 complement inhibitor)."
+      }
+    ],
+    "example": "CLINICAL CASE: A 64-year-old male 7 days post-aortic valve replacement on prophylactic subcutaneous unfractionated heparin (5000 units TID) develops acute right calf pain and swelling. Telemetry records an acute drop in platelet count from a baseline of 240,000/mcL to 48,000/mcL (80% drop). Duplex ultrasound reveals an extensive occlusive right femoral-popliteal DVT.\n\nHIT Protocol Execution & Recovery:\n1. 4Ts Score Assessment: Thrombocytopenia fall > 50% with nadir 48k (2 pts), Timing onset Day 7 (2 pts), New proven DVT (2 pts), Other causes absent (2 pts). Total Score = 8 points (High Probability for HIT Type II).\n2. Immediate Action: All heparin discontinued immediately. Heparin line flushes replaced with normal saline.\n3. Anticoagulation: Started on continuous IV Argatroban infusion at 1.0 mcg/kg/min. Baseline aPTT was 28 seconds; at hour 4, aPTT is 62 seconds (therapeutic 1.5–3× target).\n4. Serology: Anti-PF4 ELISA returns strongly positive (optical density 2.4); confirmatory Serotonin Release Assay (SRA) confirms > 80% release at therapeutic heparin levels.\n5. Warfarin Avoidance: Warfarin is strictly avoided to prevent venous limb gangrene. Platelet count recovers to 185,000/mcL over 6 days on argatroban.\n6. Transition: Once platelets exceed 150k, the patient is transitioned to Fondaparinux 7.5 mg SC daily for 3 months with complete clot resolution and zero bleeding.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 26. Wolters Kluwer.",
+      "Taylor FB Jr, et al. Towards Definition, Clinical and Laboratory Criteria, and a Scoring System for Disseminated Intravascular Coagulation. Thromb Haemost 2001;86(5):1327–1330.",
+      "Cuker A, et al. American Society of Hematology 2018 Guidelines for Management of Venous Thromboembolism: Heparin-Induced Thrombocytopenia. Blood Adv 2018;2(22):3360–3392.",
+      "Scully M, et al. Caplacizumab Treatment for Acquired Thrombotic Thrombocytopenic Purpura (HERCULES Trial). N Engl J Med 2019;380(4):335–346."
+    ]
+  },
+  {
+    "id": "preeclampsia-eclampsia-hellp-syndrome",
+    "cat": "cc_obs",
+    "name": "Severe Pre-eclampsia, Eclampsia & HELLP Syndrome",
+    "short": "Pre-eclampsia & Eclampsia",
+    "tags": [
+      "Severe Pre-eclampsia",
+      "Eclampsia",
+      "Magnesium Sulfate",
+      "Calcium Gluconate Antidote",
+      "HELLP Syndrome",
+      "Labetalol / Hydralazine",
+      "Target BP 140/90"
+    ],
+    "tagline": "Hypertensive emergencies in pregnancy, Collaborative Eclampsia magnesium protocols, toxicity rescue and HELLP syndrome delivery criteria",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 27; ACOG Practice Bulletin No. 222: Gestational Hypertension and Preeclampsia; Obstetrics & Gynecology 2020; 135(6):e237–e260.",
+    "sections": [
+      {
+        "h": "Definitions & Diagnostic Criteria of Severe Pre-eclampsia",
+        "b": "• Hypertensive Disorders of Pregnancy Classification:\n  - Chronic Hypertension: Pre-existing hypertension diagnosed before pregnancy or prior to <b><u>20 weeks of gestation</u></b>.\n  - Gestational Hypertension: New-onset SBP <b><u>≥ 140 mmHg</u></b> or DBP <b><u>≥ 90 mmHg</u></b> after 20 weeks of gestation WITHOUT proteinuria or severe features.\n  - <b>Preeclampsia</b>: New-onset hypertension after 20 weeks PLUS proteinuria (<b><u>≥ 300 mg/24h</u></b> or protein-to-creatinine ratio <b><u>≥ 0.3</u></b>) OR in the absence of proteinuria, any new-onset <b>Severe Feature</b>.\n\n• Diagnostic Criteria for Preeclampsia with Severe Features:\n  1. Severe Hypertension: Sustained SBP <b><u>≥ 160 mmHg</u></b> OR DBP <b><u>≥ 110 mmHg</u></b> on two occasions at least 4 hours apart (or confirmed within 15 minutes to expedite therapy!).\n  2. Thrombocytopenia: Platelet count <b><u>< 100,000/mcL</u></b>.\n  3. Impaired Liver Function: Serum transaminases (AST/ALT) elevated to <b><u>≥ 2 times upper limit of normal</u></b>, or severe persistent right upper quadrant / epigastric pain unresponsive to medication.\n  4. Progressive Renal Insufficiency: Serum creatinine <b><u>> 1.1 mg/dL (97 mcmol/L)</u></b> or doubling of baseline in absence of other renal disease.\n  5. Pulmonary Edema: Non-cardiogenic or hydrostatic pulmonary edema.\n  6. New-Onset Cerebral or Visual Disturbances: Severe unremitting headache, photopsia, scotomata, cortical blindness, or altered mental status.",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — Proteinuria is No Longer Mandatory",
+          "text": "Under modern ACOG and international criteria, <b>Proteinuria is NOT required to diagnose preeclampsia</b> if severe features (thrombocytopenia, renal insufficiency, elevated transaminases, pulmonary edema, or cerebral symptoms) are present. Never withhold treatment because urine protein is negative!"
+        }
+      },
+      {
+        "h": "Acute Severe Hypertension Management in Pregnancy",
+        "b": "• Emergency Treatment Threshold (Hypertensive Emergency in Pregnancy):\n  - Sustained SBP <b><u>≥ 160 mmHg</u></b> OR DBP <b><u>≥ 110 mmHg</u></b> lasting <b><u>> 15 minutes</u></b>.\n  - Mandatory Mandate: Initiate emergency IV antihypertensive therapy within <b><u>30 to 60 minutes</u></b> of confirmation to prevent maternal intracerebral hemorrhage (the leading cause of maternal mortality in preeclampsia!).\n  - Target Blood Pressure: Lower BP to <b><u>140 to 150 / 90 to 100 mmHg</u></b> (avoid precipitous drops in MAP, which can compromise uteroplacental perfusion and trigger fetal distress!).\n\n• First-Line Antihypertensive Regimens (ACOG Guidelines):\n  1. <b>Intravenous Labetalol (Combined Alpha/Beta-Blocker — First-Line)</b>:\n     - Initial dose: <b><u>20 mg IV bolus over 2 minutes</u></b>.\n     - If BP remains ≥ 160/110 after 10–20 min, give <b><u>40 mg IV</u></b>, then <b><u>80 mg IV</u></b> every 10–20 min (maximum cumulative IV dose <b><u>300 mg</u></b>).\n     - Maintenance: Infusion at <b><u>1.0 to 2.0 mg/min</u></b>.\n     - Contraindicated in severe asthma, decompensated heart failure, and severe bradycardia (HR < 60 bpm).\n  2. <b>Intravenous Hydralazine (Direct Arteriolar Vasodilator)</b>:\n     - Initial dose: <b><u>5.0 to 10.0 mg IV over 2 minutes</u></b>.\n     - If BP remains elevated after 20 min, give <b><u>10 mg IV</u></b> (maximum cumulative dose <b><u>20 to 30 mg</u></b>).\n     - Caveat: Can cause reflex tachycardia and unpredictable maternal hypotension.\n  3. <b>Oral Immediate-Release Nifedipine</b>:\n     - Dose: <b><u>10 to 20 mg PO</u></b>; repeat in 20 minutes if needed (swallow whole; <b>sublingual administration is strictly contraindicated</b> due to unpredictable severe hypotension!).\n  4. <b>Intravenous Nicardipine</b>:\n     - Infusion at <b><u>5.0 mg/h</u></b>, titrate by 2.5 mg/h every 5–15 min up to <b><u>15.0 mg/h</u></b>.",
+        "table": {
+          "headers": [
+            "Antihypertensive Agent",
+            "Starting Dose",
+            "Repeat Interval",
+            "Maximum Cumulative Dose",
+            "Key Clinical Cautions"
+          ],
+          "rows": [
+            [
+              "Labetalol IV",
+              "20 mg IV bolus",
+              "10–20 min (escalate 40, 80 mg)",
+              "300 mg cumulative",
+              "Avoid in active asthma, bradycardia, heart failure"
+            ],
+            [
+              "Hydralazine IV",
+              "5–10 mg IV bolus",
+              "20 min",
+              "25–30 mg cumulative",
+              "Reflex tachycardia, unpredictable prolonged hypotension"
+            ],
+            [
+              "Nifedipine PO",
+              "10–20 mg PO swallow",
+              "20 min",
+              "180 mg/day",
+              "Do NOT puncture/bite/sublingual; can cause sudden drop"
+            ],
+            [
+              "Nicardipine IV",
+              "5.0 mg/h continuous",
+              "Titrate q5–15m by 2.5 mg/h",
+              "15.0 mg/h",
+              "Preferred in ICU arterial line; highly predictable titration"
+            ]
+          ],
+          "caption": "First-line antihypertensive agents for acute severe hypertension in pregnancy."
+        }
+      },
+      {
+        "h": "Magnesium Sulfate Protocol: Seizure Prophylaxis & Toxicity Rescue",
+        "b": "• Magnesium Sulfate (MgSO4) — The Gold Standard (The Collaborative Eclampsia Trial Benchmark):\n  - Mechanism: Non-competitive NMDA receptor antagonist, central anticonvulsant, and cerebral vasodilator (reduces cerebral ischemia and blood-brain barrier permeability).\n  - Proven vastly superior to phenytoin, diazepam, and lytic cocktail in preventing both initial and recurrent eclamptic seizures!\n\n• Dosing Protocol (The Collaborative Eclampsia Trial / Zuspan Regimen):\n  - <b>Loading Dose</b>: <b><u>4.0 to 6.0 grams IV in 100 mL diluent infused over 15 to 20 minutes</u></b>.\n  - <b>Maintenance Infusion</b>: Continuous IV infusion of <b><u>1.0 to 2.0 grams/hour</u></b>.\n  - Duration of Therapy: Continue for at least <b><u>24 hours post-delivery</u></b>, or for <b><u>24 hours after the last seizure</u></b> (whichever is later).\n  - Recurrent Seizure Management: If a breakthrough seizure occurs on maintenance infusion, administer an additional <b><u>2.0 grams IV bolus over 3 to 5 minutes</u></b>.\n\n• Monitoring for Magnesium Toxicity (Serial Bedside Checks):\n  - Therapeutic Serum Magnesium Level: <b><u>4.8 to 8.4 mg/dL (2.0 to 3.5 mmol/L or 4.0 to 7.0 mEq/L)</u></b>.\n  - Clinical Safety Triad (Must verify before every shift/hour):\n    1. <b>Patellar Deep Tendon Reflexes (DTR)</b>: Must be present! (Loss of DTR occurs at <b><u>> 9.0 to 12.0 mg/dL [> 3.5–5.0 mmol/L]</u></b>; earliest sign of toxicity!).\n    2. <b>Respiratory Rate</b>: Must be <b><u>≥ 12 to 14 breaths/min</u></b>! (Respiratory depression occurs at <b><u>> 12.0 mg/dL</u></b>; respiratory arrest at > 15 mg/dL).\n    3. <b>Urine Output</b>: Must be <b><u>≥ 30 mL/h (or 100 mL / 4 hours)</u></b>! (Magnesium is 100% renally excreted; oliguria causes rapid, lethal toxic accumulation!).\n\n• Emergency Antidote for Magnesium Toxicity:\n  - <b>10% Calcium Gluconate: 10 mL (1.0 gram) IV push over 3 to 5 minutes</b>.\n  - Immediately antagonizes the neuromuscular and cardiac depression; repeat if needed while supporting ventilation.",
+        "callout": {
+          "type": "pearl",
+          "title": "TOXICITY PEARL — The Hierarchy of Magnesium Toxicity",
+          "text": "• 4.8–8.4 mg/dL: Therapeutic anticonvulsant range.\n• 9.0–12.0 mg/dL: Loss of patellar deep tendon reflexes.\n• 12.0–15.0 mg/dL: Severe respiratory depression and somnolence.\n• 15.0–20.0 mg/dL: Flaccid paralysis and respiratory arrest.\n• > 20.0 mg/dL: Complete AV block and cardiac arrest!"
+        }
+      },
+      {
+        "h": "HELLP Syndrome: Diagnosis, Complications & Delivery Timing",
+        "b": "• Diagnostic Criteria for HELLP Syndrome (Tennessee Criteria):\n  - <b>H — Hemolysis (Microangiopathic)</b>: Abnormal peripheral blood smear showing <b>Schistocytes / Burr cells</b>, elevated serum Lactate Dehydrogenase (<b><u>LDH ≥ 600 U/L</u></b>), elevated Total Bilirubin (<b><u>≥ 1.2 mg/dL</u></b>), and low haptoglobin.\n  - <b>EL — Elevated Liver Enzymes</b>: Serum AST or ALT <b><u>≥ 2 times upper limit of normal (typically AST ≥ 70 U/L)</u></b>.\n  - <b>LP — Low Platelets</b>: Platelet count <b><u>< 100,000/mcL</u></b>.\n  - Mississippi Triple-Class Staging: Class 1 (Platelets < 50k, highest mortality), Class 2 (Platelets 50k–100k), Class 3 (Platelets 100k–150k).\n\n• Catastrophic Complications of HELLP:\n  - Hepatic Subcapsular Hematoma & Rupture: Manifests with sudden agonizing right upper quadrant or epigastric pain, shoulder tip pain (diaphragmatic irritation), and sudden hypovolemic shock; diagnosed by emergent bedside ultrasound or CT; managed with urgent transcatheter arterial embolization (TAE) or emergency surgical packing.\n  - Disseminated Intravascular Coagulation (DIC in up to 20%), placental abruption, acute pulmonary edema, and acute kidney injury.\n\n• Definitive Management & Delivery Mandate:\n  - <b>The Only Definitive Cure is Delivery of the Fetus and Placenta!</b>\n  - Delivery Timing: Immediate delivery once maternal condition is stabilized for gestational age <b><u>≥ 34 weeks</u></b>, or at ANY gestational age if multiorgan dysfunction, DIC, non-reassuring fetal status, or eclampsia develops.\n  - Platelet Transfusion Thresholds in Obstetric Critical Care:\n    * Transfuse if platelets <b><u>< 20,000/mcL</u></b> (general risk).\n    * Transfuse to target <b><u>≥ 50,000/mcL</u></b> prior to Cesarean delivery.\n    * Transfuse to target <b><u>≥ 70,000 to 80,000/mcL</u></b> prior to neuraxial (spinal/epidural) anesthesia to avoid epidural hematoma."
+      }
+    ],
+    "example": "CLINICAL CASE: A 31-year-old primigravida at 33 weeks gestation presents to the obstetric triage unit with severe pounding headache and blurred vision. Vitals: BP 184/116 mmHg, HR 92 bpm. While being evaluated, she suddenly develops generalized tonic-clonic convulsions lasting 90 seconds (Eclampsia).\n\nEmergency Obstetric Resuscitation Protocol:\n1. Immediate Airway & Seizure Control: Left lateral tilt position applied. Suctioning performed, high-flow oxygen administered. IV access secured. Magnesium Sulfate loading dose of 6.0 grams IV infused over 20 minutes, followed by a continuous infusion of 2.0 g/hour. Zero further seizures occur.\n2. Acute Blood Pressure Control: Labetalol 20 mg IV bolus given at minute 5; repeat BP at minute 15 is 176/112 mmHg. Escalated to Labetalol 40 mg IV; BP drops to 146/94 mmHg (meeting target < 150/100).\n3. Laboratory Workup: Platelets 42,000/mcL, AST 340 U/L, ALT 410 U/L, LDH 1150 U/L, Cr 1.4 mg/dL. Peripheral smear reveals abundant schistocytes (Class 1 HELLP Syndrome).\n4. Delivery Plan: Given eclampsia, severe gestational thrombocytopenia, and gestational age 33 weeks, emergent delivery is indicated. Transfused 1 unit of apheresis platelets, raising count to 68,000/mcL. General anesthesia induced with rapid sequence intubation (pre-treated with labetalol to blunt hypertensive response to laryngoscopy).\n5. Outcome: Healthy viable infant delivered via emergent Cesarean section. Continuous Magnesium sulfate maintained for 24 hours postpartum. Platelet count normalizes to 145,000/mcL by Day 3, transaminases resolve, and mother and child are discharged in stable condition.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 27. Wolters Kluwer.",
+      "ACOG Practice Bulletin No. 222: Gestational Hypertension and Preeclampsia. Obstet Gynecol 2020;135(6):e237–e260.",
+      "The Eclampsia Trial Collaborative Group. Which Anticonvulsant for Women with Eclampsia? Evidence from the Collaborative Eclampsia Trial. Lancet 1995;345(8963):1455–1463.",
+      "Sibai BM. Diagnosis, Controversies, and Management of the Syndrome of Hemolysis, Elevated Liver Enzymes, and Low Platelet Count. Obstet Gynecol 2004;103(5 Pt 1):981–991."
+    ]
+  },
+  {
+    "id": "amniotic-fluid-embolism-obstetric-hemorrhage",
+    "cat": "cc_obs",
+    "name": "Amniotic Fluid Embolism & Massive Obstetric Hemorrhage",
+    "short": "AFE & Obstetric Hemorrhage",
+    "tags": [
+      "AFE Triad",
+      "Anaphylactoid Syndrome",
+      "A-OK Regimen",
+      "Perimortem Cesarean",
+      "Resuscitative Hysterotomy",
+      "Postpartum Hemorrhage 4Ts",
+      "Bakri Balloon",
+      "WOMAN Trial TXA"
+    ],
+    "tagline": "AFE biphasic collapse, A-OK pharmacology, 4-minute perimortem cesarean rule, uterotonic hierarchy and viscoelastic-guided MTP",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 27 & 28; Society for Maternal-Fetal Medicine (SMFM) Consult Series: Amniotic Fluid Embolism; Am J Obstet Gynecol 2016; 215(2):B16–B24.",
+    "sections": [
+      {
+        "h": "Amniotic Fluid Embolism (AFE): Biphasic Collapse & Pathophysiology",
+        "b": "• Incidence & Pathophysiology:\n  - Rare (1 in 20,000 to 50,000 deliveries) but accounts for up to <b><u>10% to 15% of all maternal deaths</u></b> in developed nations; maternal mortality historically <b><u>20% to 60%</u></b>.\n  - <b>Not a mechanical embolic phenomenon</b>: Caused by breach of the maternal-fetal barrier (during labor, cesarean delivery, amniocentesis, or placental abruption), allowing fetal antigens, squames, and mucin into the maternal venous circulation.\n  - Triggers a catastrophic <b>Biphasic Anaphylactoid / Immune-Mediated Response</b> ('Anaphylactoid Syndrome of Pregnancy'):\n    * <b>Phase 1 (Early Pulmonic / RV Collapse: Minutes 0 to 30)</b>: Intense pulmonary vascular vasospasm and microthrombi formation, precipitating acute severe pulmonary hypertension, acute right ventricular failure, and sudden profound hypoxemia.\n    * <b>Phase 2 (Left Ventricular & Coagulopathic Collapse: > 30 Minutes)</b>: Severe left ventricular failure, cardiogenic pulmonary edema, and catastrophic consumptive coagulopathy / massive hyperfibrinolytic <b>DIC</b> with uncontrolled uterine atony and exsanguinating hemorrhage.\n\n• The Classic Diagnostic Triad of AFE:\n  1. <b>Sudden Acute Hypoxemic Respiratory Arrest</b> (frequently preceded by anxiety, restlessness, shivering, numbness, or a feeling of impending doom).\n  2. <b>Sudden Cardiovascular Collapse / Cardiac Arrest</b> (PEA or pulseless arrest).\n  3. <b>Catastrophic Consumptive Coagulopathy (DIC)</b> with massive uterine atony and hemorrhage.",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — The 'A-OK' Resuscitation Regimen in AFE",
+          "text": "A targeted pharmacological protocol ('A-OK') has shown remarkable clinical success in reversing the anaphylactoid pulmonary vasospasm of AFE:\n1. <b>Atropine 1.0 mg IV</b> (blunts vagal bradycardia and coronary spasm).\n2. <b>Ondansetron 8.0 mg IV</b> (potent 5-HT3 serotonin receptor antagonist; blocks massive pulmonary vasoconstriction).\n3. <b>Ketorolac 30 mg IV</b> (blocks cyclooxygenase, preventing thromboxane production and platelet aggregation)."
+        }
+      },
+      {
+        "h": "Maternal Cardiac Arrest & The 4-Minute Perimortem Cesarean Delivery",
+        "b": "• Unique Anatomical & Physiological Challenges in Maternal Arrest:\n  - The gravid uterus compresses the Inferior Vena Cava and Aorta in the supine position, reducing cardiac preload by up to <b><u>60%</u></b> and rendering closed chest compressions completely ineffective!\n\n• Advanced Maternal Resuscitation (ACLS Obstetric Modifications):\n  1. Continuous Left Uterine Displacement (LUD): Manually displace the gravid uterus to the patient's left side using two hands to relieve aortocaval compression during chest compressions (avoid tilting the whole table, as chest compressions are suboptimal on a tilted surface).\n  2. Compressions: Hand placement <b><u>2 to 3 cm higher on the sternum</u></b> (diaphragm is elevated by gravid uterus).\n  3. Early Advanced Airway: High risk of fatal pulmonary aspiration; use smaller ETT (<b><u>6.5 to 7.0 mm ID</u></b>) due to airway mucosal edema.\n\n• The 4-Minute Rule: Perimortem Cesarean Delivery (PMCD / Resuscitative Hysterotomy):\n  - <b>The Absolute Rule</b>: If there is <b>NO Return of Spontaneous Circulation (ROSC) within 4 minutes of maternal cardiac arrest</b> in a pregnant woman with uterine fundus at or above the umbilicus (≥ 20 weeks gestation):\n  - <b>DELIVER THE FETUS BY MINUTE 5!</b>\n  - Rationale: Emptying the uterus immediately relieves aortocaval compression, autotransfuses approximately <b><u>500 to 800 mL of blood</u></b> back to the maternal central circulation, and dramatically increases venous return. Maternal ROSC frequently occurs immediately following delivery of the fetus!\n  - Location: Performed immediately at the bedside in the ICU or resuscitation room; do NOT transport the patient to the operating room (delays exceed survival windows!).",
+        "table": {
+          "headers": [
+            "Timeline (Minutes)",
+            "Resuscitation Step",
+            "Key Action",
+            "Physiological Objective"
+          ],
+          "rows": [
+            [
+              "Minute 0–1",
+              "High-Quality CPR + LUD",
+              "Continuous manual left uterine displacement",
+              "Relieve IVC compression; maintain venous return"
+            ],
+            [
+              "Minute 1–3",
+              "Advanced Airway & Access",
+              "Intubate with 6.5–7.0 mm ETT + 100% O2",
+              "Overcome high metabolic demand & FRC collapse"
+            ],
+            [
+              "Minute 4",
+              "Assess ROSC / Call Scalpel",
+              "If NO ROSC, initiate emergent hysterotomy",
+              "Pre-pack prep; scalpel directly onto abdomen"
+            ],
+            [
+              "Minute 5",
+              "Complete Delivery of Fetus",
+              "Vertical midline incision, deliver infant & placenta",
+              "Autotransfuse 500–800 mL blood; restore maternal ROSC"
+            ]
+          ],
+          "caption": "The 4-minute perimortem cesarean delivery protocol in maternal cardiac arrest."
+        }
+      },
+      {
+        "h": "Massive Obstetric Hemorrhage: The '4 Ts' & Uterotonics Hierarchy",
+        "b": "• Definitions of Postpartum Hemorrhage (PPH):\n  - Cumulative blood loss <b><u>≥ 1,000 mL</u></b> (or blood loss accompanied by signs/symptoms of hypovolemia) within 24 hours of birth.\n\n• The Etiological '4 Ts' of Obstetric Hemorrhage:\n  1. <b>Tone (70% of cases)</b>: Uterine atony (overdistension, prolonged labor, chorioamnionitis).\n  2. <b>Tissue (20%)</b>: Retained placenta, succenturiate lobe, or Placenta Accreta Spectrum (PAS).\n  3. <b>Trauma (10%)</b>: Cervical/vaginal lacerations, uterine inversion, or uterine rupture.\n  4. <b>Thrombin (< 1%)</b>: Consumptive coagulopathy, DIC, or inherited bleeding disorder.\n\n• Stepwise Uterotonic Pharmacotherapy Hierarchy for Uterine Atony:\n  1. <b>Oxytocin (First-Line)</b>: <b><u>10 to 40 Units in 1 L crystalloid</u></b> infused at 250–500 mL/h (or 10 U IM; <b>avoid rapid IV push</b>, which causes profound hypotension, tachycardia, and coronary vasoconstriction!).\n  2. <b>Methylergometrine (Methergine — Second-Line)</b>: <b><u>0.2 mg IM</u></b> every 2–4 hours.\n     - <b>STRICTLY CONTRAINDICATED in Hypertension / Preeclampsia / CAD</b> (causes severe peripheral vasoconstriction and cerebral hemorrhage!).\n  3. <b>Carboprost Tromethamine (Hemabate / PGF2-alpha — Third-Line)</b>: <b><u>250 mcg (0.25 mg) IM</u></b> every 15–90 minutes (max 8 doses).\n     - <b>STRICTLY CONTRAINDICATED in Active Asthma</b> (potent bronchoconstrictor!).\n  4. <b>Misoprostol (PGE1)</b>: <b><u>800 to 1,000 mcg sublingually or per rectum</u></b>.",
+        "callout": {
+          "type": "pearl",
+          "title": "TRIAL BENCHMARK — The WOMAN Trial (Tranexamic Acid in PPH)",
+          "text": "The landmark WOMAN Trial (Lancet 2017, 20,000+ women) proved that <b>Tranexamic Acid (1.0 g IV bolus over 10 min given within 3 hours of birth)</b> reduced maternal death due to bleeding by <b><u>31%</u></b>! A second 1.0 g dose is given if bleeding continues after 30 minutes."
+        }
+      },
+      {
+        "h": "Surgical & Tamponade Interventions for Refractory PPH",
+        "b": "• Stepwise Escalation for Refractory Obstetric Bleeding:\n  1. Intrauterine Balloon Tamponade (Bakri Balloon):\n     - Inserted into the uterine cavity and inflated with <b><u>300 to 500 mL of sterile saline</u></b> (tamponades low-pressure venous bleeding from the placental bed; successful in <b><u>> 85% of atonic hemorrhage</u></b>).\n  2. B-Lynch Compression Sutures:\n     - Transfixing brace sutures placed surgically during laparotomy to mechanically compress the uterine anterior and posterior walls together ('corset effect').\n  3. Stepwise Devascularization:\n     - Bilateral uterine artery ligation (O'Leary stitch) → Utero-ovarian artery ligation → Internal Iliac (Hypogastric) artery ligation.\n  4. Interventional Radiology: Emergent Pelvic Arterial Embolization (PAE).\n  5. Emergency Peripartum Hysterectomy (The Final Salvage):\n     - Total or subtotal hysterectomy performed when all medical, mechanical, and devascularization therapies fail to arrest life-threatening hemorrhage."
+      }
+    ],
+    "example": "CLINICAL CASE: A 34-year-old G2P1 at 39 weeks gestation undergoes elective repeat Cesarean delivery. Two minutes after delivery of the infant, the patient gasps, complains of severe dizziness and chest tightness, and immediately develops tonic posturing followed by complete cardiopulmonary collapse: BP unmeasurable, pulse absent, telemetry reveals PEA.\n\nAFE Resuscitation & Emergency Protocols:\n1. Diagnosis: Amniotic Fluid Embolism (AFE) presenting with acute cardiopulmonary arrest.\n2. Resuscitation & A-OK Protocol: High-quality CPR started immediately. Intubated on first pass with 7.0 mm ETT. Left uterine displacement maintained. The emergency A-OK regimen is administered within 2 minutes: Atropine 1 mg IV, Ondansetron 8 mg IV, and Ketorolac 30 mg IV. ROSC achieved after 4 minutes of resuscitation.\n3. Phase 2 DIC & Uterine Atony: 15 minutes post-ROSC, diffuse oozing begins from the surgical wound and massive postpartum hemorrhage ensues (2,500 mL blood loss in 20 minutes) with a boggy, atonic uterus. ROTEM reveals flatline FIBTEM (fibrinogen < 50 mg/dL).\n4. Hemostatic Escalation: Tranexamic Acid 1 g IV infused. MTP cooler packs transfused in 1:1:1 ratio + 4 grams Fibrinogen Concentrate. Oxytocin infusion (40 U) + Carboprost 250 mcg IM administered.\n5. Mechanical Tamponade: A Bakri balloon is placed into the uterine cavity and inflated with 400 mL saline. Bleeding stops completely.\n6. Outcome: Patient stabilized in the ICU; extubated on Day 2 with normal neurological function and discharged home with her baby on Day 6.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 27 & 28. Wolters Kluwer.",
+      "Clark SL. Amniotic Fluid Embolism. Obstet Gynecol 2014;123(2 Pt 1):337–348.",
+      "WOMAN Trial Collaborators. Effect of Early Tranexamic Acid Administration on Mortality, Hysterectomy, and Other Morbidities in Post-Partum Haemorrhage. Lancet 2017;389(10084):2105–2116.",
+      "Jeejeebhoy FM, et al. Cardiac Arrest in Pregnancy: A Scientific Statement from the American Heart Association. Circulation 2015;132(18):1747–1773."
+    ]
+  },
+  {
+    "id": "pediatric-respiratory-failure-pals",
+    "cat": "cc_peds",
+    "name": "Pediatric Acute Respiratory Failure & PALS Resuscitation",
+    "short": "Pediatric Respiratory & PALS",
+    "tags": [
+      "Pediatric Airway Anatomy",
+      "PALS Guidelines",
+      "Westley Croup Score",
+      "Racemic Epinephrine",
+      "Bronchiolitis HFNC",
+      "Defibrillation 2 J/kg",
+      "Broselow Tape"
+    ],
+    "tagline": "Pediatric anatomical airway differences, Westley croup grading, bronchiolitis HFNC, PALS arrest algorithms and weight-based resuscitation",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 29 & 30; PALS 2020/2025 Guidelines; Pediatrics 2021; 147(1):e2020038505.",
+    "sections": [
+      {
+        "h": "Pediatric Airway Anatomy vs Adults: Key Physiological Distinctions",
+        "b": "• Unique Anatomical Differences in the Pediatric Airway:\n  1. <b>Occiput</b>: Prominent, large occiput in infants causes flexion of the neck in the supine position (obstructs airway!); requires a <b>Shoulder Roll</b> (towel under shoulders) to achieve the neutral 'sniffing' position.\n  2. <b>Tongue</b>: Disproportionately large tongue relative to oral cavity (most common cause of upper airway obstruction).\n  3. <b>Epiglottis</b>: Long, floppy, omega-shaped epiglottis projecting at 45° angle; requires a straight blade (Miller blade) to physically lift the epiglottis directly.\n  4. <b>Larynx Position</b>: More cephalad and anterior (level of <b>C3–C4 in infants</b> vs C4–C5 in children, C5–C6 in adults).\n  5. <b>Narrowest Point of Airway</b>:\n     - Adults: Vocal cords (glottis).\n     - Children < 8–10 years: Historical view cited cricoid ring; modern MRI/endoscopic evidence shows the glottis is narrowest, but the <b>subglottic cricoid ring is the only non-distensible circular cartilage</b>, making it extremely prone to post-extubation subglottic stenosis!\n  6. <b>Trachea</b>: Extremely short (<b><u>4 to 5 cm in neonates</u></b>); high risk of right mainstem endobronchial intubation with head flexion, or accidental extubation with head extension.\n  7. <b>Airway Resistance (Poiseuille's Law: R ∝ 1/r⁴)</b>: 1 mm of circumferential mucosal edema reduces an adult airway caliber by 19% (increases resistance 3-fold); in an infant, 1 mm of edema reduces caliber by <b><u>75% (increases airway resistance by 16-fold!)</u></b>.",
+        "callout": {
+          "type": "pearl",
+          "title": "EQUIPMENT PEARL — Pediatric Endotracheal Tube Sizing Formulas",
+          "text": "• <b>Cuffed ETT ID (mm) = [Age in years / 4] + 3.5</b> (Preferred in modern PICU; provides low-pressure seal, reduces air leaks and gas pollution).\n• <b>Uncuffed ETT ID (mm) = [Age in years / 4] + 4.0</b>.\n• Depth of ETT insertion at lip (cm) = <b>ETT ID × 3</b> (or [Age in years / 2] + 12 cm)."
+        }
+      },
+      {
+        "h": "Pediatric Acute Respiratory Failure: Croup vs Bronchiolitis",
+        "b": "• Viral Croup (Laryngotracheobronchitis):\n  - Parainfluenza virus types 1–3; subglottic edema producing the classic barking cough, inspiratory stridor, and hoarseness ('Steeple sign' on AP neck radiograph).\n  - Westley Croup Score (Graded 0 to 17: Stridor, Retractions, Air Entry, Cyanosis, Level of Consciousness):\n    * Mild (Score ≤ 2): Single dose of oral <b>Dexamethasone 0.15 to 0.60 mg/kg</b>.\n    * Moderate to Severe (Score <b><u>≥ 6</u></b>): Stridor at rest and chest wall retractions.\n  - Medical Resuscitation Protocol:\n    1. <b>Nebulized Racemic Epinephrine (2.25%)</b>: Dose <b><u>0.05 mL/kg (max 0.5 mL)</u></b> diluted in 3 mL saline, OR standard <b>L-Epinephrine (1:1000 / 1 mg/mL): 0.5 mL/kg (max 5.0 mL)</b> nebulized.\n       * Rapidly stimulates alpha-1 mucosal vasoconstriction, dramatically shrinking subglottic edema within 10–30 minutes.\n       * Caveat: Rebound phenomenon occurs after <b><u>2 hours</u></b>; monitor in ICU/ED for at least 3–4 hours!\n    2. <b>Corticosteroids</b>: <b>Dexamethasone 0.6 mg/kg IV/IM/PO (max 16 mg)</b> or Nebulized Budesonide 2.0 mg.\n\n• Severe Bronchiolitis (RSV / Metapneumovirus):\n  - Small airway inflammation, mucus plugging, and alveolar atelectasis in infants < 2 years.\n  - First-Line PICU Support: <b>High-Flow Nasal Cannula (HFNC)</b>:\n    * Flow rate: <b><u>1.0 to 2.0 L/kg/min</u></b> with heated, humidified oxygen.\n    * Provides continuous distending positive pharyngeal pressure (PEEP ~4–6 cmH2O), unloads respiratory muscles, flushes nasopharyngeal dead space, and reduces intubation rates by <b><u>> 50%</u></b>.\n  - Routine bronchodilators, systemic steroids, and hypertonic saline are strictly NOT recommended by AAP guidelines.",
+        "table": {
+          "headers": [
+            "Clinical Condition",
+            "Primary Anatomical Site",
+            "Physical Exam Hallmark",
+            "First-Line Medical Therapy",
+            "Advanced PICU Support"
+          ],
+          "rows": [
+            [
+              "Viral Croup",
+              "Subglottic larynx / trachea",
+              "Inspiratory stridor, barking cough",
+              "Nebulized Epinephrine + Dexamethasone",
+              "Heliox (70:30 He:O2) or gentle intubation (ETT 0.5 size down)"
+            ],
+            [
+              "Severe Bronchiolitis",
+              "Bronchioles / small airways",
+              "Expiratory wheezing, crackles, tachypnea",
+              "Nasal suctioning + hydration",
+              "High-Flow Nasal Cannula (1–2 L/kg/min)"
+            ],
+            [
+              "Pediatric ARDS (PARDS)",
+              "Alveoli / capillary membrane",
+              "Severe hypoxemia, bilateral infiltrates",
+              "Lung-protective ventilation (VT 3–6 mL/kg)",
+              "Prone positioning + High-Frequency Oscillation (HFOV)"
+            ]
+          ],
+          "caption": "Comparison of pediatric lower and upper respiratory failure conditions."
+        }
+      },
+      {
+        "h": "Pediatric Advanced Life Support (PALS 2020/2025): Arrest Algorithms",
+        "b": "• Pediatric Assessment Triangle (PAT — The 30-Second Doorway Evaluation):\n  1. <b>Appearance</b>: Tone, interactiveness, consolability, look/gaze, speech/cry (TICLS mnemonic).\n  2. <b>Work of Breathing</b>: Retractions, nasal flaring, grunting, stridor, wheezing.\n  3. <b>Circulation to Skin</b>: Pallor, mottling, cyanosis.\n\n• Pediatric CPR Parameters (AHA Guidelines):\n  - Compression-to-Ventilation Ratio: <b><u>15:2 for 2 healthcare rescuers</u></b> (30:2 for single rescuer).\n  - Compression Rate: <b><u>100 to 120 compressions/minute</u></b>.\n  - Compression Depth: At least <b><u>one-third the anterior-posterior diameter of the chest</u></b> (approximately <b><u>1.5 inches [4 cm] in infants</u></b>, and <b><u>2.0 inches [5 cm] in children</u></b>).\n\n• Shockable Rhythms (VF / Pulseless VT) Defibrillation Dosing:\n  - Initial Shock Dose: <b><u>2.0 Joules/kg (biphasic)</u></b>.\n  - Second Shock Dose: <b><u>4.0 Joules/kg</u></b>.\n  - Subsequent Shock Doses: <b><u>≥ 4.0 Joules/kg up to a maximum of 10.0 Joules/kg</u></b> (or adult maximum 200 J biphasic).\n\n• Resuscitation Medications in Pediatric Arrest:\n  - <b>Epinephrine (Adrenaline)</b>: <b><u>0.01 mg/kg (0.1 mL/kg of the 1:10,000 / 0.1 mg/mL concentration) IV/IO</u></b>; repeat every <b><u>3 to 5 minutes</u></b> (max single dose 1.0 mg).\n  - <b>Amiodarone</b>: <b><u>5.0 mg/kg IV/IO bolus</u></b> (for shockable VF/pVT refractory to second shock); can repeat up to 2 times (maximum cumulative dose <b><u>15 mg/kg</u></b>).\n  - <b>Lidocaine</b>: Alternative to amiodarone; loading dose <b><u>1.0 mg/kg IV/IO</u></b>.\n  - <b>Atropine</b>: <b><u>0.02 mg/kg IV/IO</u></b> (minimum dose <b><u>0.1 mg</u></b> to avoid paradoxical reflex bradycardia; max single dose 0.5 mg in children) for bradycardia refractory to oxygenation/epinephrine with vagal tone."
+      },
+      {
+        "h": "Targeted Post-Cardiac Arrest Care & Neuroprotection in Children",
+        "b": "• Post-ROSC Hemodynamic & Oxygenation Targets:\n  - Maintain normoxia: Avoid hyperoxia! Titrate FiO2 to maintain SpO2 <b><u>94% to 98%</u></b>.\n  - Maintain normocarbia: Target PaCO2 <b><u>35 to 45 mmHg</u></b>; avoid hypocarbia (causes cerebral ischemia).\n  - Blood Pressure: Target Mean Arterial Pressure (MAP) <b><u>≥ 50th percentile for age</u></b> (titrate epinephrine or norepinephrine infusions to maintain organ perfusion).\n\n• Targeted Temperature Management (TTM) in Children (The THAPCA Trials):\n  - Indication: Comatose infants and children post-cardiac arrest.\n  - Protocol: Actively prevent fever! Maintain either <b>Hypothermia (32.0°C to 34.0°C)</b> OR <b>Controlled Normothermia (36.0°C to 37.5°C)</b> for <b><u>48 to 72 hours</u></b>.\n  - THAPCA trials demonstrated equal survival and 1-year functional neurobehavioral outcomes between hypothermia and controlled normothermia; the essential mandate is the <b>strict prevention of post-arrest fever (> 38.0°C)</b>.\n\n• Continuous EEG Monitoring: High incidence of non-convulsive status epilepticus post-arrest (occurs in up to 30% of pediatric patients); treat aggressively with levetiracetam or fosphenytoin."
+      }
+    ],
+    "example": "CLINICAL CASE: An 18-month-old male (weight 12 kg) is brought to the pediatric resuscitation area with acute severe respiratory distress following a 2-day viral illness. On arrival: Stridor at rest, severe intercostal and suprasternal retractions, barking cough, and lethargy. SpO2 is 86% on room air, RR 58, HR 182 bpm. Westley Croup score is 9 (Severe).\n\nPED Resuscitation Pathway:\n1. Non-Invasive Rescue: Patient kept calm in mother's arms. Nebulized L-Epinephrine (1:1000) 5 mL (0.5 mL/kg max 5 mL) with high-flow oxygen administered immediately + Dexamethasone 0.6 mg/kg (7.2 mg IV).\n2. Response: Over 20 minutes, stridor improves, SpO2 climbs to 94%, but severe subcostal retractions persist. Transferred to PICU.\n3. Rebound Obstruction: At hour 2.5, severe stridor recurs with progressive lethargy and cyanosis (SpO2 drops to 81%). Decision made for emergency endotracheal intubation.\n4. Airway Sizing & Intubation: Cuffed ETT formula: (1.5/4) + 3.5 = 3.875 → Selected a <b>size 3.5 mm cuffed ETT</b> (half-size smaller than normal 4.0 mm due to severe subglottic edema). Shoulder roll placed.\n5. Induction: Ketamine 2 mg/kg (24 mg IV) + Rocuronium 1.2 mg/kg (14.4 mg IV) with video laryngoscopy. The 3.5 mm cuffed tube is placed smoothly on first pass under direct vision; cuff inflated with minimal leak at 15 cmH2O.\n6. Outcome: Ventilated with lung-protective settings. Dexamethasone continued q12h. Extubated successfully on Day 3 following a positive cuff leak test; discharged home fully recovered on Day 5.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 29 & 30. Wolters Kluwer.",
+      "Topjian AA, et al. 2020 American Heart Association Guidelines for Cardiopulmonary Resuscitation and Emergency Cardiovascular Care: Pediatric Basic and Advanced Life Support. Pediatrics 2021;147(1):e2020038505.",
+      "Moler FW, et al. Therapeutic Hypothermia after Out-of-Hospital Cardiac Arrest in Children (THAPCA-OH Trial). N Engl J Med 2015;372(20):1898–1908.",
+      "Franklin D, et al. A Randomized Trial of High-Flow Oxygen Therapy in Infants with Bronchiolitis. N Engl J Med 2018;378(12):1121–1131."
+    ]
+  },
+  {
+    "id": "pediatric-septic-shock-resuscitation",
+    "cat": "cc_peds",
+    "name": "Pediatric Septic Shock & Vasoactive Support Guidelines",
+    "short": "Pediatric Septic Shock",
+    "tags": [
+      "Cold Shock vs Warm Shock",
+      "Epinephrine First-Line",
+      "10-20 mL/kg Bolus",
+      "FEAST Trial Caveat",
+      "Stress-Dose Hydrocortisone",
+      "Milrinone"
+    ],
+    "tagline": "Cold vs warm shock differentiation, epinephrine vs noradrenaline first-line, cautious fluid boluses and pediatric adrenal rescue",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 30; Surviving Sepsis Campaign International Guidelines for the Management of Septic Shock and Sepsis-Associated Organ Dysfunction in Children; Pediatr Crit Care Med 2020; 21(2):e52–e106.",
+    "sections": [
+      {
+        "h": "Pediatric Septic Shock Phenotypes: Cold Shock vs Warm Shock",
+        "b": "• Fundamental Differences from Adult Septic Shock:\n  - Adults predominantly present with 'Warm Shock' (hyperdynamic, high cardiac output, low SVR).\n  - Children frequently present with <b>'Cold Shock' (Low Cardiac Output, High SVR) in > 60% of cases</b>, driven by an inability of the pediatric myocardium to augment stroke volume in response to inflammation.\n  - <b>Hypotension is a LATE, pre-terminal sign in children!</b> Robust compensatory peripheral vasoconstriction maintains normal blood pressure until extreme cardiovascular collapse occurs ('Compensated Shock' vs 'Decompensated / Hypotensive Shock').\n\n• Age-Specific Hypotension Thresholds (5th Percentile SBP):\n  - Term Neonates (0 to 28 days): SBP <b><u>< 60 mmHg</u></b>.\n  - Infants (1 to 12 months): SBP <b><u>< 70 mmHg</u></b>.\n  - Children (1 to 10 years): SBP <b><u>< 70 + (2 × Age in years) mmHg</u></b>.\n  - Children > 10 years: SBP <b><u>< 90 mmHg</u></b>.\n\n• Clinical Differentiation of Shock Phenotypes:\n  1. <b>Cold Shock (Low CO, High SVR — Most Common in Community Sepsis)</b>:\n     - Cold, pale, mottled extremities; delayed Capillary Refill Time (<b><u>CRT > 3.0 seconds</u></b>); weak, thready peripheral pulses; narrow pulse pressure; oliguria.\n     - Hemodynamics: Depressed cardiac index (CI < 3.0 L/min/m²), elevated SVR.\n  2. <b>Warm Shock (High CO, Low SVR — More Common in Nosocomial/Catheter Sepsis)</b>:\n     - Warm extremities, bounding peripheral pulses, flash Capillary Refill Time (<b><u>CRT < 1.0 second</u></b>), wide pulse pressure.\n     - Hemodynamics: Elevated cardiac index (CI > 4.5 L/min/m²), low SVR.",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — Compensated vs Decompensated Pediatric Shock",
+          "text": "Never wait for hypotension before diagnosing septic shock in a child! Tachycardia + altered mental status (lethargy, irritability) + abnormal capillary refill (> 3 s or flash < 1 s) + cold mottled extremities = <b>Septic Shock</b>, even if blood pressure is completely normal!"
+        }
+      },
+      {
+        "h": "Fluid Resuscitation Protocols & The FEAST Trial Caveat",
+        "b": "• Surviving Sepsis Campaign Pediatric Fluid Guidelines (2020 Updates):\n  - Where Full Intensive Care (Mechanical Ventilation & Inotropes) is Available:\n    * Administer balanced crystalloid (Lactated Ringer's or Plasmalyte) in <b>boluses of 10 to 20 mL/kg</b> infused over <b><u>10 to 20 minutes</u></b>.\n    * Re-evaluate the patient after every single bolus!\n    * Repeat boluses up to <b><u>40 to 60 mL/kg total</u></b> in the first hour only if clinical perfusion improves without signs of fluid overload.\n\n• The FEAST Trial Landmark Caveat (Maitland et al., NEJM):\n  - In settings where advanced pediatric ICU support, mechanical ventilation, and inotropes are limited, rapid large-volume fluid boluses significantly <b>INCREASED 48-hour mortality (3.3% excess absolute mortality!)</b> due to fluid-induced pulmonary edema and cardiogenic collapse.\n  - In children without overt hypotension, avoid aggressive unmonitored fluid boluses; administer maintenance fluids with slow replacement.\n\n• Stopping Rules for Fluid Administration (Signs of Fluid Overload):\n  - Immediately STOP fluid boluses if any of the following occur:\n    1. New or worsening hepatomegaly (liver edge descending > 2 cm below costal margin).\n    2. Bilateral pulmonary rales / crackles on auscultation.\n    3. New or worsening tachypnea, grunting, or increased work of breathing.\n  - Fluid Overload Threshold: Cumulative positive fluid balance <b><u>> 10% to 15% of body weight</u></b> independently predicts multiorgan failure and mortality in the PICU!",
+        "table": {
+          "headers": [
+            "Clinical Setting",
+            "Initial Fluid Strategy",
+            "Re-evaluation Frequency",
+            "Key Stopping Threshold"
+          ],
+          "rows": [
+            [
+              "Tertiary PICU with Full Support",
+              "10–20 mL/kg boluses over 10–20 min",
+              "After every 10–20 mL/kg bolus",
+              "Hepatomegaly, lung crackles, or > 40–60 mL/kg"
+            ],
+            [
+              "Resource-Limited Setting",
+              "Cautious fluid (maintenance + slow bolus)",
+              "Continuous monitoring",
+              "Avoid rapid boluses unless profound hypotension"
+            ],
+            [
+              "Fluid-Refractory Shock (> 40 mL/kg)",
+              "Immediately initiate vasoactive infusions",
+              "Continuous arterial line & echo",
+              "Halt fluid; initiate Epinephrine or Norepinephrine"
+            ]
+          ],
+          "caption": "Surviving Sepsis Campaign pediatric fluid resuscitation recommendations."
+        }
+      },
+      {
+        "h": "Vasoactive Infusion Selection: Epinephrine vs Norepinephrine",
+        "b": "• Vasoactive Strategy Driven by Shock Phenotype (First-Line Guidelines):\n\n1. <b>Cold Shock (Low CO, High SVR) — Epinephrine (Adrenaline) is First-Line</b>:\n• Dosing: Continuous IV infusion at <b><u>0.05 to 0.30 mcg/kg/min</u></b>.\n• Receptor Mechanisms: At low-to-moderate doses, potent Beta-1 inotropy and Beta-2 vasodilation overcome myocardial depression and improve cardiac output without spiking afterload.\n• Dopamine is strictly DEPRECATED (inferior survival and higher adverse events in pediatric sepsis trials!).\n\n2. <b>Warm Shock (High CO, Low SVR) — Norepinephrine (Noradrenaline) is First-Line</b>:\n• Dosing: Continuous IV infusion at <b><u>0.05 to 0.40 mcg/kg/min</u></b>.\n• Receptor Mechanisms: Potent Alpha-1 vasoconstriction restores systemic vascular resistance, diastolic pressure, and organ perfusion.\n\n3. <b>Milrinone (Inodilator) in Persistent Cold Shock</b>:\n• Indication: Persistent high SVR, poor peripheral perfusion, and elevated cardiac filling pressures despite normalized blood pressure on epinephrine.\n• Dosing: <b><u>0.25 to 0.75 mcg/kg/min</u></b> (omit loading bolus to prevent hypotension; renally cleared).\n\n4. <b>Peripheral Vasoactive Administration</b>:\n• Vasoactive infusions should be initiated immediately via a peripheral IV or intraosseous (IO) line while central venous access is being established; never delay vasoactive support for line placement!"
+      },
+      {
+        "h": "Adrenal Insufficiency & Stress-Dose Corticosteroids in Children",
+        "b": "• Refractory / Catecholamine-Resistant Septic Shock:\n  - Defined as persistent shock despite adequate volume resuscitation (≥ 40–60 mL/kg) AND escalating vasoactive infusions (epinephrine/norepinephrine > 0.2–0.3 mcg/kg/min).\n  - Absolute or Relative Adrenal Insufficiency occurs in up to <b><u>30% to 50%</u></b> of pediatric patients with refractory septic shock (Waterhouse-Friderichsen syndrome in meningococcemia, hypothalamic-pituitary suppression).\n\n• Stress-Dose Hydrocortisone Protocol:\n  - <b>Dosing</b>: Intravenous <b>Hydrocortisone 1.0 to 2.0 mg/kg/dose IV every 6 hours</b> (or <b><u>50 to 100 mg/m²/day</u></b> as a continuous infusion).\n  - Clinical Monitoring: Rapidly weans vasopressor requirements, restores adrenergic receptor sensitivity, and accelerates shock reversal.\n  - Tapering: Wean off over <b><u>24 to 48 hours</u></b> once vasoactive infusions are successfully discontinued.\n  - Baseline random cortisol levels may be drawn prior to initiation but do NOT delay hydrocortisone administration in refractory shock!"
+      }
+    ],
+    "example": "CLINICAL CASE: A 3-year-old female (weight 14 kg) presents to the emergency department with fever, lethargy, and a petechial rash on her lower extremities. Vitals: HR 188 bpm, RR 42 bpm, BP 82/52 mmHg (normal SBP threshold 70 + 6 = 76 mmHg; compensated shock!). Physical Exam: Cold, pale, mottled legs, CRT is 5.0 seconds, weak femoral pulses, normal liver edge. Blood gas reveals lactate 5.6 mmol/L.\n\nPediatric Shock Resuscitation Pathway:\n1. Diagnosis: Compensated Cold Septic Shock (likely meningococcemia).\n2. Antimicrobial & Fluid Therapy: Ceftriaxone 100 mg/kg IV administered within 20 minutes. Two peripheral lines placed. Balanced crystalloid (Plasmalyte 20 mL/kg = 280 mL) infused over 15 minutes.\n3. Second Bolus & Assessment: Perfusion remains poor (CRT 4.5 s). Second bolus of 20 mL/kg infused. Total fluid = 40 mL/kg. Post-bolus exam reveals liver edge now palpable 3 cm below costal margin (Stopping Rule reached!).\n4. First-Line Vasoactive: Fluid halted. Peripheral infusion of Epinephrine started at 0.10 mcg/kg/min for Cold Shock. Bedside echo confirms severely depressed LV function with elevated SVR.\n5. Escalation: Epinephrine titrated to 0.20 mcg/kg/min; milrinone added at 0.35 mcg/kg/min for inotropic support and afterload reduction.\n6. Refractory Shock: Because shock persists on epinephrine > 0.2 mcg/kg/min, stress-dose Hydrocortisone is administered (2 mg/kg = 28 mg IV q6h). Over the next 6 hours, CRT normalizes to 2.0 seconds, lactate drops to 1.8 mmol/L, and inotropes are successfully weaned over 48 hours in the PICU.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 30. Wolters Kluwer.",
+      "Weiss SL, et al. Surviving Sepsis Campaign International Guidelines for the Management of Septic Shock and Sepsis-Associated Organ Dysfunction in Children. Pediatr Crit Care Med 2020;21(2):e52–e106.",
+      "Maitland K, et al. Mortality after Fluid Bolus in African Children with Severe Infection (FEAST Trial). N Engl J Med 2011;364(26):2483–2495.",
+      "Ventura AM, et al. Double-Blind Prospective Randomized Controlled Trial of Dopamine versus Epinephrine as First-Line Vasoactive Drug in Pediatric Septic Shock. Crit Care Med 2015;43(11):2292–2302."
+    ]
+  },
+  {
+    "id": "icu-sedation-analgesia-delirium-padis",
+    "cat": "cc_pharm",
+    "name": "PADIS Guidelines: Sedation, Analgesia & Delirium Management",
+    "short": "PADIS Sedation & Delirium",
+    "tags": [
+      "PADIS Guidelines",
+      "Analgosedation",
+      "RASS Score",
+      "CAM-ICU",
+      "Dexmedetomidine",
+      "PRIS Syndrome",
+      "ABCDEF Bundle"
+    ],
+    "tagline": "Analgosedation paradigm, light sedation targets, dexmedetomidine vs propofol, PRIS avoidance, CAM-ICU scoring and ABCDEF bundle",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 31; Clinical Practice Guidelines for the Prevention and Management of Pain, Agitation/Sedation, Delirium, Immobility, and Sleep Disruption (PADIS); Crit Care Med 2018; 46(9):e825–e873.",
+    "sections": [
+      {
+        "h": "The PADIS Guidelines: The Analgesia-First ('Analgosedation') Paradigm",
+        "b": "• SCCM PADIS Guidelines Core Principles:\n  - <b>Pain is the primary cause of agitation in critically ill patients!</b> Up to <b><u>50% of medical and 80% of surgical ICU patients</u></b> experience moderate-to-severe pain at rest and during routine procedures (turning, suctioning, wound care).\n  - <b>Analgosedation (Analgesia-First Sedation)</b>: Protocolized strategy where pain is systematically assessed and treated with intravenous analgesics FIRST before sedatives are introduced.\n  - Clinical Benefit: Significantly reduces cumulative sedative requirements, decreases mechanical ventilation duration by <b><u>2 to 4 days</u></b>, shortens ICU length of stay, and dramatically lowers delirium rates!\n\n• Validated Behavioral Pain Scales for Non-Verbal ICU Patients:\n  1. <b>Critical-Care Pain Observation Tool (CPOT, Score 0 to 8)</b>:\n     - Evaluates 4 domains: Facial expression (0–2), Body movements (0–2), Muscle tension (0–2), and Ventilator compliance / Vocalization (0–2).\n     - Score <b><u>≥ 3 points</u></b> indicates significant pain requiring intervention.\n  2. <b>Behavioral Pain Scale (BPS, Score 3 to 12)</b>:\n     - Evaluates Facial expression (1–4), Upper limb movements (1–4), and Compliance with mechanical ventilation (1–4).\n     - Score <b><u>> 5 points</u></b> indicates significant pain.\n\n• Multimodal Opioid-Sparing Analgesia:\n  - Co-prescribe non-opioid adjuvants: <b>Intravenous Paracetamol 1.0 g IV every 6 hours</b>, low-dose <b>Ketamine infusion (0.1 to 0.3 mg/kg/hour)</b>, neuropathic agents (Gabapentin / Pregabalin), and regional nerve blocks (Erector Spinae, Transversus Abdominis Plane) to reduce cumulative opioid exposure by <b><u>> 30% to 50%</u></b>.",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — The Danger of Early Deep Sedation",
+          "text": "The landmark Sedation Practice in Intensive Care Evaluation (SPICE III) trial proved that <b>deep sedation in the first 48 hours of mechanical ventilation</b> is an independent predictor of increased 90-day mortality, delayed extubation, and long-term cognitive impairment. Target <b>Light Sedation (RASS -1 to 0)</b> from Day 1!"
+        }
+      },
+      {
+        "h": "Sedative Selection: Propofol, Dexmedetomidine & PRIS Avoidance",
+        "b": "• The Richmond Agitation-Sedation Scale (RASS, Score -5 to +4):\n  - Target for general ICU patients: <b>RASS -1 (Drowsy, sustains eye contact > 10 s) to 0 (Alert and calm)</b>.\n  - Deep Sedation (RASS -4 to -5): Strictly reserved for severe ARDS with paralysis, elevated ICP, status epilepticus, or open surgical abdomen.\n\n• Propofol (GABA-A Agonist):\n  - Rapid onset (1–2 min), rapid offset; short context-sensitive half-life.\n  - Dosing: <b><u>5 to 50 mcg/kg/min (0.3 to 3.0 mg/kg/h)</u></b>.\n  - <b>Propofol Infusion Syndrome (PRIS) — The Lethal Metabolic Collapse</b>:\n    * Trigger: High doses (<b><u>> 4.0 to 5.0 mg/kg/h [> 67–83 mcg/kg/min]</u></b>) for prolonged durations (<b><u>> 48 hours</u></b>).\n    * Pathophysiology: Impairs mitochondrial free fatty acid oxidation and oxidative phosphorylation.\n    * Clinical Hallmarks: Severe refractory metabolic acidosis, hypertriglyceridemia, rhabdomyolysis (high CK), hyperkalemia, hepatomegaly, acute renal failure, and fatal bradycardia / Brugada-like ECG pattern progressing to asystole!\n    * Prevention: Limit propofol to < 4 mg/kg/h; monitor serum triglycerides and lactate every 24–48 hours; stop infusion immediately if unexplained acidosis occurs!\n\n• Dexmedetomidine (Precedex — Highly Selective Alpha-2 Agonist):\n  - Mechanism: Stimulates locus coeruleus alpha-2 receptors, providing 'cooperative sedation' (patients remain easily arousable and interactive) with mild analgesia and ZERO respiratory depression!\n  - Clinical Trials (SEDCOM, MIDEX, PRODEX): Significantly reduces ICU delirium, shortens time to extubation, and facilitates earlier spontaneous breathing trials compared to midazolam or propofol.\n  - Dosing: <b><u>0.2 to 1.4 mcg/kg/hour</u></b> (omit loading bolus in ICU to prevent sudden bradycardia and hypotension).\n\n• Benzodiazepines (Midazolam, Lorazepam):\n  - Independent risk factors for prolonged mechanical ventilation, cognitive delirium, and post-ICU PTSD; <b>routinely avoided for maintenance sedation in modern ICUs</b> (PADIS Grade 1B recommendation against routine benzodiazepine use!).",
+        "table": {
+          "headers": [
+            "Sedative Agent",
+            "Mechanism",
+            "Standard ICU Dosing",
+            "Delirium Risk",
+            "Key Adverse Effects / Limitations"
+          ],
+          "rows": [
+            [
+              "Dexmedetomidine",
+              "Selective Alpha-2 Agonist",
+              "0.2–1.4 mcg/kg/h",
+              "Lowest (Reduces delirium)",
+              "Sinus bradycardia, hypotension; slow onset"
+            ],
+            [
+              "Propofol",
+              "GABA-A Receptor Agonist",
+              "5–50 mcg/kg/min (0.3–3 mg/kg/h)",
+              "Intermediate",
+              "Hypotension, hypertriglyceridemia, PRIS risk > 48h"
+            ],
+            [
+              "Midazolam",
+              "GABA-A / Benzodiazepine",
+              "0.02–0.10 mg/kg/h",
+              "High (Strong delirium trigger)",
+              "Active metabolite accumulation in AKI; prolonged waking"
+            ],
+            [
+              "Ketamine",
+              "NMDA Receptor Antagonist",
+              "0.1–0.5 mg/kg/h (analgosedation)",
+              "Neutral / Low",
+              "Preserves breathing/MAP; emergence hallucinations"
+            ]
+          ],
+          "caption": "Pharmacological properties and adverse effect profiles of common ICU sedatives."
+        }
+      },
+      {
+        "h": "ICU Delirium: Assessment via CAM-ICU & The ABCDEF Bundle",
+        "b": "• Clinical Impact of Delirium:\n  - Occurs in up to <b><u>50% to 80% of mechanically ventilated ICU patients</u></b>.\n  - Independently associated with a <b>3-fold increase in 6-month mortality</b>, prolonged ventilator days, and permanent long-term cognitive impairment (acquired dementia-like syndrome).\n  - Subtypes: <b>Hypoactive Delirium</b> ('quiet delirium', apathy, lethargy; most common, accounting for 60% of cases, and carries the WORST prognosis!); Hyperactive Delirium (agitation, combative, pulling lines); Mixed Delirium.\n\n• The Confusion Assessment Method for the ICU (CAM-ICU):\n  - Evaluated every shift in non-comatose patients (RASS ≥ -3):\n  - <b>Feature 1: Acute Onset or Fluctuating Course</b> (positive if RASS fluctuates or baseline mental status changed).\n  - <b>Feature 2: Inattention</b> (Letters test: spell 'S-A-V-E-A-H-A-A-R-T'; patient squeezes hand on letter 'A'; positive if > 2 errors).\n  - <b>Feature 3: Altered Level of Consciousness</b> (positive if current RASS is anything other than 0).\n  - <b>Feature 4: Disorganized Thinking</b> (logic questions: 'Will a stone float on water?'; positive if > 1 error).\n  - <b>Diagnosis of Delirium = Feature 1 + Feature 2 + EITHER Feature 3 OR Feature 4</b>.\n\n• Prevention & Management — The ABCDEF Liberation Bundle:\n  - <b>A — Assess, Prevent, and Manage Pain</b> (regular CPOT scoring, multimodal analgesia).\n  - <b>B — Both Spontaneous Awakening Trials (SAT) and Spontaneous Breathing Trials (SBT) Daily</b>.\n  - <b>C — Choice of Sedation</b> (prefer dexmedetomidine over benzodiazepines/propofol).\n  - <b>D — Delirium: Assess, Prevent, and Manage</b> (daily CAM-ICU checks, sleep hygiene, reorientation).\n  - <b>E — Early Mobility and Exercise</b> (passive cycling, sitting on edge of bed, ambulation while ventilated!).\n  - <b>F — Family Engagement and Empowerment</b> (flexible visiting hours, familiar voices, cognitive stimulation).\n\n• Pharmacological Delirium Caveat (The MIND-USA Trial Benchmark):\n  - Antipsychotics (Haloperidol, Quetiapine, Ziprasidone) do <b>NOT reduce delirium duration, shorten ICU stay, or improve survival</b>! Reserved strictly for short-term control of severe, distressing agitation endangering patient safety."
+      },
+      {
+        "h": "Daily Spontaneous Awakening (SAT) & Breathing (SBT) Protocols",
+        "b": "• The 'Wake Up and Breathe' Protocol (Girard et al., Lancet):\n  - Pairing a daily Spontaneous Awakening Trial (SAT) with a Spontaneous Breathing Trial (SBT) reduces mechanical ventilation duration by <b><u>3.1 days</u></b> and lowers 1-year mortality by <b><u>14%</u></b>!\n\n• SAT Safety Screen (Must pass before turning off sedatives):\n  - No active seizures; no alcohol withdrawal; no neuromuscular blockade in past 24h; ICP within normal limits; MAP stable without escalating vasopressors.\n  - If screen passes: <b>Completely STOP all continuous sedative and analgesic infusions</b>.\n  - SAT Success: Patient opens eyes to voice or follows simple commands, or tolerates 4 hours without agitation (RASS > +2), severe tachycardia, or desaturation.\n\n• SBT Execution (Once SAT Passes):\n  - Conducted on low pressure support (PS <b><u>5 cmH2O, PEEP 5 cmH2O</u></b>) or T-piece for <b><u>30 to 120 minutes</u></b>.\n  - Rapid Shallow Breathing Index (RSBI = RR / VT in Liters) <b>< 105</b> strongly predicts successful extubation."
+      }
+    ],
+    "example": "CLINICAL CASE: A 66-year-old male is intubated for severe abdominal sepsis post-laparotomy. On Day 3, he is receiving continuous midazolam (5 mg/h) and fentanyl (150 mcg/h). RASS is -4 (deep coma), CPOT is 0, MAP is 70 mmHg on low noradrenaline. His nurse notes that he has been deeply sedated for 72 hours with zero spontaneous efforts.\n\nPADIS & ABCDEF Protocol Implementation:\n1. Sedation Audit: Review reveals inappropriate deep benzodiazepine sedation. Midazolam infusion is completely discontinued.\n2. SAT Execution: The daily spontaneous awakening trial (SAT) is initiated: All sedatives turned off. Over 3 hours, the patient wakes up, becomes agitated (RASS +2), and pulls at his ETT. CAM-ICU confirms acute delirium (inattention errors 4/10, altered RASS).\n3. Analgosedation & Dexmedetomidine: Agitation recognized as mixed pain and delirium. Fentanyl titrated to CPOT < 2 + IV Paracetamol 1 g q6h started. Dexmedetomidine infusion initiated at 0.5 mcg/kg/h without a bolus. Within 30 minutes, RASS normalizes to 0 (calm, awake, following commands).\n4. SBT & Early Mobility: Spontaneous breathing trial initiated: RSBI is 54 breaths/min/L. Physical therapy performs passive cycling and assists him to sit at the edge of the bed while intubated (ABCDEF bundle compliance).\n5. Outcome: Successfully extubated 4 hours later. Dexmedetomidine weaned over 12 hours. Delirium completely resolves by Day 5 without antipsychotic medications.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 31. Wolters Kluwer.",
+      "Devlin JW, et al. Clinical Practice Guidelines for the Prevention and Management of Pain, Agitation/Sedation, Delirium, Immobility, and Sleep Disruption in Adult Patients in the ICU. Crit Care Med 2018;46(9):e825–e873.",
+      "Girard TD, et al. Efficacy and Safety of a Paired Sedation and Ventilator Weaning Protocol for Mechanically Ventilated Patients in Intensive Care (Awakening and Breathing Controlled Trial). Lancet 2008;371(9610):126–134.",
+      "Girard TD, et al. Haloperidol and Ziprasidone for Treatment of Delirium in Critically Ill Patients (MIND-USA Trial). N Engl J Med 2018;379(26):2506–2516."
+    ]
+  },
+  {
+    "id": "neuromuscular-blockade-train-of-four-icu",
+    "cat": "cc_pharm",
+    "name": "Neuromuscular Blockade in ARDS & Train-of-Four (TOF) Monitoring",
+    "short": "ICU Paralysis & TOF",
+    "tags": [
+      "Cisatracurium ARDS",
+      "ACURASYS vs ROSE",
+      "Train-of-Four",
+      "Peripheral Nerve Stimulation",
+      "ICU-Acquired Weakness",
+      "CIM / CIP",
+      "Corneal Protection"
+    ],
+    "tagline": "Evidence-based paralysis in ARDS, ACURASYS vs ROSE trial synthesis, peripheral nerve stimulation mechanics and ICU-acquired weakness",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 31 & 32; Clinical Practice Guidelines for Sustained Neuromuscular Blockade in the Adult Critically Ill Patient; Crit Care Med 2016; 44(11):2079–2103.",
+    "sections": [
+      {
+        "h": "Indications for Sustained Neuromuscular Blockade in Critical Care",
+        "b": "• Evidence-Based Indications for Continuous NMBA Infusion in ICU:\n  1. <b>Severe Acute Respiratory Distress Syndrome (ARDS)</b>:\n     - Refractory patient-ventilator dyssynchrony, persistent double-triggering, breath-stacking, reverse triggering, or elevated transpulmonary driving pressures (ΔP > 14 cmH2O).\n     - Eliminates muscular oxygen consumption and improves chest wall compliance.\n  2. <b>Refractory Intracranial Hypertension (Raised ICP)</b>:\n     - Prevents coughing, straining, and thoracic venous obstruction in severe TBI.\n  3. <b>Targeted Temperature Management (TTM / Hypothermia)</b>:\n     - Suppresses shivering (which increases metabolic rate and oxygen consumption by <b><u>> 200% to 500%</u></b>!).\n  4. <b>Refractory Status Epilepticus</b>:\n     - Controls peripheral muscular manifestations and metabolic acidosis during emergent airway control and anesthetic coma initiation.\n  5. <b>Open Abdomen Packing / Severe Abdominal Wall Tension</b>.\n\n• The Landmark ARDS Trial Synthesis (ACURASYS vs ROSE Trials):\n  - <b>ACURASYS Trial (NEJM 2010)</b>: Early continuous infusion of Cisatracurium for <b>48 hours</b> in severe ARDS (PaO2/FiO2 < 150) significantly reduced 90-day mortality (<b><u>31.6% vs 40.7%</u></b>) and increased ventilator-free days.\n  - <b>ROSE Trial (PETAL Network, NEJM 2019)</b>: Early neuromuscular blockade with high PEEP strategy showed zero mortality difference compared to light sedation with intermittent paralytics.\n  - <b>Modern Consensus Guideline</b>: Routine universal paralysis for all ARDS is NOT recommended; use sustained NMBAs selectively for <b>severe ARDS with persistent patient-ventilator dyssynchrony or refractory hypoxemia</b> for a maximum of <b><u>24 to 48 hours</u></b>.",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — Cisatracurium Hofmann Elimination in Organ Failure",
+          "text": "<b>Cisatracurium</b> is the undisputed neuromuscular blocker of choice in critical care: It undergoes organ-independent <b>Hofmann Elimination</b> (spontaneous chemical breakdown at physiological pH and temperature) and non-specific ester hydrolysis. Its elimination kinetics are completely unchanged by end-stage renal failure or fulminant hepatic failure!"
+        }
+      },
+      {
+        "h": "Train-of-Four (TOF) Monitoring: Physics & Clinical Calibration",
+        "b": "• Peripheral Nerve Stimulation & Train-of-Four (TOF) Mechanics:\n  - Delivers <b>4 supramaximal electrical impulses at a frequency of 2 Hz (2 impulses/second for 2 seconds)</b> to a peripheral motor nerve.\n  - Evaluates the degree of post-synaptic nicotinic acetylcholine receptor blockade at the neuromuscular junction:\n    * <b>4 Twitches Present (TOF 4/4)</b>: <b><u>< 75%</u></b> of acetylcholine receptors blocked (minimal or no paralysis).\n    * <b>3 Twitches Present (TOF 3/4)</b>: Approximately <b><u>75% to 80%</u></b> of receptors blocked.\n    * <b>2 Twitches Present (TOF 2/4)</b>: Approximately <b><u>80% to 85%</u></b> of receptors blocked (The Optimal Clinical Target!).\n    * <b>1 Twitch Present (TOF 1/4)</b>: Approximately <b><u>90%</u></b> of receptors blocked (Deep surgical paralysis).\n    * <b>0 Twitches Present (TOF 0/4)</b>: <b><u>100% of receptors blocked (Over-paralysis!)</u></b>; drug accumulates, dramatically increasing the risk of prolonged paralysis and ICU-acquired weakness!\n\n• Target Clinical Goal for Sustained ICU Blockade:\n  - Titrate continuous NMBA infusion to achieve <b>1 to 2 twitches out of 4 (TOF 1–2/4)</b>, combined with clinical parameters (cessation of ventilator dyssynchrony and elimination of spontaneous breathing efforts).\n\n• Electrode Placement Sites:\n  1. <b>Ulnar Nerve (Preferred Standard)</b>:\n     - Electrodes placed along the volar aspect of the wrist over the ulnar nerve; observe/palpate adduction of the thumb (contraction of the <b>Adductor Pollicis muscle</b>).\n  2. <b>Facial Nerve (Alternative)</b>:\n     - Electrodes placed anterior to the ear tragus; observe contraction of the <b>Orbicularis Oculi muscle</b>.\n     - Caveat: The facial nerve is more resistant to NMBAs than peripheral nerves; facial TOF underestimates diaphragm paralysis (may indicate 2 twitches while thumb shows 0 twitches!).",
+        "table": {
+          "headers": [
+            "Twitches Observed (TOF)",
+            "Receptor Blockade %",
+            "Depth of Neuromuscular Block",
+            "Clinical Action in ICU"
+          ],
+          "rows": [
+            [
+              "4 of 4 Twitches",
+              "< 75% Blockade",
+              "Inadequate for sustained paralysis",
+              "Increase NMBA infusion rate"
+            ],
+            [
+              "3 of 4 Twitches",
+              "75% to 80% Blockade",
+              "Light blockade",
+              "Increase infusion slightly if dyssynchrony persists"
+            ],
+            [
+              "1 to 2 of 4 Twitches",
+              "85% to 90% Blockade",
+              "Optimal Therapeutic Target in ICU",
+              "Maintain current infusion rate; monitor q4h"
+            ],
+            [
+              "0 of 4 Twitches",
+              "100% Receptor Blockade",
+              "Dangerous Over-Paralysis",
+              "Stop or immediately reduce infusion rate until 1 twitch returns"
+            ]
+          ],
+          "caption": "Train-of-Four response interpretation and infusion adjustment protocol."
+        }
+      },
+      {
+        "h": "Mandatory Nursing & Safety Safeguards During ICU Paralysis",
+        "b": "• The Absolute Rule: Mandatory Deep Sedation & Analgesia:\n  - Neuromuscular blockers possess <b>ZERO sedative, hypnotic, amnesic, or analgesic properties!</b>\n  - A paralyzed patient without deep sedation is fully conscious, terrified, in agonizing pain, and experiencing complete motor entrapment ('awake paralysis').\n  - Mandatory Practice: Establish deep sedation (RASS <b><u>-4 to -5</u></b>) and continuous opioid analgesia BEFORE initiating an NMBA, and maintain continuous sedative infusions throughout!\n\n• Eye Care & Corneal Ulcer Prevention:\n  - Paralyzed patients lose the blink reflex and ability to close eyelids (lagophthalmos).\n  - Apply lubricating eye ointment / artificial tears every <b><u>2 to 4 hours</u></b>, and secure eyelids closed with hypoallergenic tape or moisture chambers to prevent devastating exposure keratopathy and permanent corneal perforation!\n\n• Positioning & Skin Protection:\n  - Full pressure-relieving air mattress; turn patient every <b><u>2 hours</u></b>; pad all bony prominences (risk of peripheral nerve compression palsies, e.g., common peroneal or ulnar nerve palsy).\n  - Daily 'Drug Holiday' / Sedation Interruption:\n  - Stop or reduce NMBA infusion daily until neuromuscular recovery begins (TOF 4/4) to verify underlying neurological status and prevent drug accumulation."
+      },
+      {
+        "h": "Intensive Care Unit-Acquired Weakness (ICUAW): CIM vs CIP",
+        "b": "• Intensive Care Unit-Acquired Weakness (ICUAW):\n  - Symmetrical, flaccid limb and respiratory muscle weakness developing in critically ill patients, not attributable to preexisting neurological disease.\n  - Associated with prolonged ventilator dependence, tracheostomy, failure to wean, and doubled 1-year mortality!\n\n• Clinical & Electrophysiological Subtypes:\n  1. <b>Critical Illness Myopathy (CIM — Most Common)</b>:\n     - Primary non-necrotizing myopathy characterized by selective loss of thick myosin filaments and muscle membrane inexcitability.\n     - Trigger: Strongly correlated with the combination of <b>Prolonged NMBAs PLUS High-Dose Corticosteroids</b>, prolonged immobility, and sepsis.\n     - Sensory function is preserved; deep tendon reflexes depressed or normal.\n  2. <b>Critical Illness Polyneuropathy (CIP)</b>:\n     - Distal axonal sensory-motor polyneuropathy caused by microvascular ischemia of peripheral nerves during sepsis.\n     - Loss of both motor power and sensory modalities (pain, vibration, light touch); absent deep tendon reflexes.\n\n• Prevention & Management:\n  - Avoid concurrent prolonged use of NMBAs and systemic corticosteroids whenever possible.\n  - Limit NMBA duration to <b><u>< 48 hours</u></b>.\n  - Strict glycemic control (avoid severe hyperglycemia > 180 mg/dL).\n  - Early physical therapy and passive/active mobilization protocols once neuromuscular blockade is discontinued."
+      }
+    ],
+    "example": "CLINICAL CASE: A 48-year-old male with severe acute pancreatitis develops severe ARDS (PaO2/FiO2 = 78 mmHg on PEEP 16 cmH2O and FiO2 1.0). Despite lung-protective volume control ventilation and deep sedation (propofol + fentanyl), telemetry reveals violent ventilator dyssynchrony with double-triggering, high peak airway pressures (44 cmH2O), and driving pressure spiking to 22 cmH2O.\n\nICU Neuromuscular Blockade Protocol:\n1. Sedation Verification: Bispectral Index (BIS) connected; deep sedation confirmed (BIS 38, RASS -5).\n2. NMBA Initiation: Cisatracurium IV bolus of 0.2 mg/kg (16 mg IV) administered, followed by a continuous infusion started at 2.0 mcg/kg/min.\n3. Clinical Response: Spontaneous fighting ceases within 3 minutes; ventilator synchrony is fully restored, tidal volume stabilizes at 6 mL/kg PBW, and driving pressure drops from 22 to 12 cmH2O.\n4. TOF Calibration: Peripheral nerve stimulator placed over left ulnar nerve. Initial check at 4 hours shows 0/4 twitches (over-paralysis!). The infusion rate is reduced from 2.0 to 1.4 mcg/kg/min. Repeat check at 6 hours confirms 2/4 twitches (ideal therapeutic target achieved).\n5. Safety Measures: Artificial tears and eyelid taping enforced q2h; scheduled turning protocol active.\n6. Weaning: Prone positioning is maintained for 16 hours. By hour 44, PaO2/FiO2 improves to 210 mmHg on PEEP 10. Cisatracurium infusion is discontinued at hour 46. Full TOF recovery (4/4 twitches with sustained tetanus) confirmed 4 hours post-cessation with zero clinical signs of ICU-acquired weakness.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 31 & 32. Wolters Kluwer.",
+      "Papazian L, et al. Neuromuscular Blockers in Early Severe Acute Respiratory Distress Syndrome (ACURASYS Trial). N Engl J Med 2010;363(12):1107–1116.",
+      "The National Heart, Lung, and Blood Institute PETAL Clinical Trials Network. Early Neuromuscular Blockade in the Acute Respiratory Distress Syndrome (ROSE Trial). N Engl J Med 2019;380(21):1997–2008.",
+      "Murray MJ, et al. Clinical Practice Guidelines for Sustained Neuromuscular Blockade in the Adult Critically Ill Patient. Crit Care Med 2016;44(11):2079–2103."
+    ]
+  },
+  {
+    "id": "ecmo-vv-va-principles-cannulation",
+    "cat": "cc_advances",
+    "name": "Extracorporeal Membrane Oxygenation: VV vs VA ECMO Principles",
+    "short": "ECMO: VV vs VA Principles",
+    "tags": [
+      "VV-ECMO vs VA-ECMO",
+      "ELSO Guidelines",
+      "Cannulation Configurations",
+      "Harlequin Syndrome",
+      "Distal Perfusion Catheter",
+      "Resting Ventilator",
+      "Sweep Gas"
+    ],
+    "tagline": "ELSO guidelines, VV vs VA physiology, cannulation geometry, distal limb perfusion, North-South syndrome and ultra-protective ventilation",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 33; Extracorporeal Life Support Organization (ELSO) General Guidelines for Adult Extracorporeal Life Support; Intensive Care Med 2019; 45:1389–1400.",
+    "sections": [
+      {
+        "h": "ECMO Classification & Core Physiological Distinctions",
+        "b": "• Extracorporeal Membrane Oxygenation (ECMO) Modalities:\n  - <b>Veno-Venous (VV) ECMO — Pure Respiratory Support</b>:\n    * Indication: Severe refractory respiratory failure (ARDS, hypercapnic status asthmaticus) unresponsive to lung-protective ventilation and prone positioning.\n    * Circuit Path: Blood is drained from a large central vein, pumped through an extracorporeal membrane lung (oxygenator), and returned back into the venous system (right atrium / vena cava).\n    * Requirement: <b>Requires adequate intrinsic native cardiac output!</b> VV-ECMO provides zero hemodynamic or circulatory support.\n\n  - <b>Veno-Arterial (VA) ECMO — Combined Cardiorespiratory Support</b>:\n    * Indication: Refractory cardiogenic shock, post-cardiotomy shock, massive pulmonary embolism, or Extracorporeal Cardiopulmonary Resuscitation (E-CPR).\n    * Circuit Path: Blood is drained from the venous system (right atrium / femoral vein), oxygenated, and pumped directly under high pressure into the arterial system (femoral artery / aorta).\n    * Hemodynamics: Bypasses both the heart and lungs; unloads the right ventricle and provides immediate systemic organ perfusion (replaces native cardiac output).",
+        "table": {
+          "headers": [
+            "Modality",
+            "Primary Organ Replaced",
+            "Drainage Site",
+            "Return Site",
+            "Impact on Preload & Afterload"
+          ],
+          "rows": [
+            [
+              "VV-ECMO",
+              "Lungs Only (Gas Exchange)",
+              "Vena Cava (Femoral / Jugular)",
+              "Right Atrium / SVC",
+              "Zero hemodynamic change; native CO required"
+            ],
+            [
+              "Peripheral VA-ECMO",
+              "Heart + Lungs (Biventricular)",
+              "Right Atrium (Femoral Vein)",
+              "Common Femoral Artery",
+              "Unloads RV preload; dramatically INCREASES LV afterload!"
+            ]
+          ],
+          "caption": "Fundamental physiological comparison between VV and VA ECMO modalities."
+        }
+      },
+      {
+        "h": "Cannulation Configurations, Anatomy & The Distal Perfusion Catheter",
+        "b": "• VV-ECMO Cannulation Configurations:\n  1. Two-Site (Femoro-Jugular) Configuration:\n     - Drainage Cannula (Large bore: <b><u>23 to 27 French</u></b>): Inserted via femoral vein with tip positioned in the inferior vena cava just below the hepatic veins.\n     - Return Cannula (<b><u>17 to 21 French</u></b>): Inserted via right internal jugular vein with tip positioned at the cavoatrial junction directed toward the tricuspid valve.\n     - Recirculation: Occurs when oxygenated blood returning from the jugular cannula is immediately sucked back into the drainage cannula without passing through the pulmonary circulation; prevent by keeping cannula tips separated by <b><u>≥ 10 to 15 cm</u></b>!\n  2. Single-Site Dual-Lumen Cannula (Avalon Elite / Crescent):\n     - Single 27–31 Fr cannula inserted into the right internal jugular vein with bicaval drainage ports and a targeted return port directing oxygenated flow across the tricuspid valve under transesophageal echocardiography (TEE) guidance.\n\n• Peripheral VA-ECMO & The Mandatory Distal Perfusion Catheter (DPC):\n  - Venous Drainage: 21–25 Fr cannula in common femoral vein advanced to right atrium.\n  - Arterial Return: 15–19 Fr cannula in common femoral artery.\n  - <b>The Threat of Acute Lower Limb Ischemia</b>: The large arterial return cannula completely occludes the femoral lumen, obstructing antegrade blood flow to the distal leg. Without intervention, severe limb ischemia, compartment syndrome, and amputation occur in <b><u>15% to 30% of cases</u></b>!\n  - <b>The Mandatory Solution — Distal Perfusion Catheter (DPC)</b>:\n    * A <b><u>6- to 8-French antegrade catheter</u></b> is placed percutaneously into the superficial femoral artery (SFA) directed toward the foot, and spliced via a bridge line into the arterial ECMO return circuit to ensure continuous antegrade limb perfusion.\n    * Monitor limb perfusion continuously with bilateral lower extremity near-infrared spectroscopy (NIRS) and Doppler.",
+        "callout": {
+          "type": "pearl",
+          "title": "CANNULATION PEARL — The Distal Perfusion Catheter Mandate",
+          "text": "In peripheral VA-ECMO, placement of a distal perfusion catheter (DPC) should NEVER be delayed until signs of limb ischemia appear! Place the DPC <b>simultaneously at the time of primary arterial cannulation</b>."
+        }
+      },
+      {
+        "h": "Circuit Physics: Sweep Gas, Flow & Ultra-Lung-Protective Ventilation",
+        "b": "• Independent Regulation of Oxygenation vs Carbon Dioxide Removal:\n  1. <b>Carbon Dioxide Clearance (PaCO2)</b>:\n     - Controlled exclusively by the <b>Sweep Gas Flow Rate (Liters/minute)</b> through the membrane lung.\n     - Increasing sweep gas flow from 2 L/min to 8 L/min accelerates CO2 removal, dropping arterial PaCO2.\n  2. <b>Oxygenation (PaO2)</b>:\n     - Controlled by <b>Total Blood Flow Rate (Liters/minute)</b> through the ECMO pump (target <b><u>60 to 80 mL/kg/min</u></b>, typically <b><u>4.0 to 6.0 L/min</u></b> in adults) AND the <b>FiO2 set on the oxygenator blender</b> (typically 1.0).\n\n• 'Resting' the Ventilator During VV-ECMO (Ultra-Protective Ventilation):\n  - Because the ECMO membrane lung handles 80–100% of gas exchange, the mechanical ventilator is dialed down to minimal, non-injurious 'rest settings' to permit alveolar healing and prevent VILI:\n  - Mode: Pressure Control (PCV) or Volume Control.\n  - Tidal Volume: <b><u>2 to 3 mL/kg PBW</u></b>.\n  - Plateau Pressure (Pplat): Kept strictly <b><u>< 24 to 25 cmH2O</u></b>.\n  - Driving Pressure: Kept strictly <b><u>< 10 cmH2O</u></b>!\n  - PEEP: Set to <b><u>10 to 14 cmH2O</u></b> to prevent complete cyclic atelectrauma.\n  - Respiratory Rate: Low (<b><u>8 to 10 breaths/min</u></b>).\n  - FiO2: Kept low (<b><u>0.30 to 0.40</u></b>) to avoid absorption atelectasis and oxygen toxicity.",
+        "table": {
+          "headers": [
+            "Circuit Parameter",
+            "Physical Controller",
+            "Primary Physiological Target",
+            "Typical Starting Setting"
+          ],
+          "rows": [
+            [
+              "ECMO Blood Flow (Qb)",
+              "Centrifugal Pump RPM",
+              "Arterial Oxygenation (PaO2)",
+              "60–80 mL/kg/min (4.0–5.5 L/min)"
+            ],
+            [
+              "Sweep Gas Flow",
+              "Gas Flowmeter (L/min)",
+              "Carbon Dioxide Clearance (PaCO2)",
+              "Matches blood flow 1:1 (4–6 L/min)"
+            ],
+            [
+              "Oxygenator FiO2",
+              "Gas Blender (21% to 100%)",
+              "Trans-membrane O2 gradient",
+              "1.0 (100% O2)"
+            ],
+            [
+              "Ventilator Rest Settings",
+              "Mechanical Ventilator",
+              "Prevent VILI / alveolar healing",
+              "VT 2–3 mL/kg, Pplat < 24, PEEP 10–12"
+            ]
+          ],
+          "caption": "Operational parameters and targets for extracorporeal circuit control."
+        }
+      },
+      {
+        "h": "Harlequin Syndrome (North-South Syndrome) & Weaning Protocols",
+        "b": "• Harlequin Syndrome (North-South Syndrome / Differential Hypoxemia):\n  - Occurs EXCLUSIVELY in <b>Peripheral Veno-Arterial (VA) ECMO</b> when native left ventricular contractility partially recovers while native pulmonary gas exchange remains severely impaired.\n  - Pathophysiology:\n    * The recovering native LV ejects poorly oxygenated blood (from failing lungs) antegrade into the ascending aorta and aortic arch.\n    * The ECMO arterial cannula pumps well-oxygenated blood retrograde up the descending aorta.\n    * The mixing point / 'watershed area' between the two opposing streams moves down the aorta.\n    * <b>Result</b>: Deoxygenated blood from native heart supplies the coronary arteries, carotid arteries, and right arm (<b>Upper Body Hypoxia / Cyanosis</b>), while hyper-oxygenated ECMO blood supplies the lower extremities (<b>Lower Body Pink</b>)!\n  - Diagnostic Confirmation: Monitor arterial blood gas and pulse oximetry from the <b>Right Radial Artery</b> (reflects oxygenation of blood going to brain and coronaries!).\n  - Management: Improve native lung oxygenation (increase ventilator PEEP/FiO2), or convert to <b>Veno-Arterio-Venous (V-AV) ECMO</b> (add an internal jugular return cannula to oxygenate blood entering the right heart).\n\n• VV-ECMO Weaning Protocol:\n  - Indication: Resolution of primary lung pathology (Crs > 30 mL/cmH2O, bilateral clearing on CXR).\n  - Weaning Trial: Mechanical ventilator settings are advanced to moderate lung-protective settings (VT 6 mL/kg PBW, PEEP 8–10, FiO2 ≤ 0.50).\n  - The 'Sweep Off' Trial: Turn the sweep gas flow completely <b>OFF (Sweep = 0 L/min)</b> while keeping ECMO blood pump running at 3 L/min (prevents circuit clotting).\n  - If the patient maintains normal ABG (PaO2 > 70 mmHg, PaCO2 normal, pH > 7.35) for <b><u>4 to 6 consecutive hours with Sweep = 0</u></b>, the patient is ready for surgical decannulation!"
+      }
+    ],
+    "example": "CLINICAL CASE: A 32-year-old female post-emergency Cesarean delivery develops fulminant severe ARDS secondary to aspiration pneumonia. On Day 3: Intubated on volume control, VT 4 mL/kg PBW (240 mL), Pplat 32 cmH2O, PEEP 16 cmH2O, FiO2 1.0, prone positioning maintained for 18 hours. ABG: pH 7.12, PaCO2 68, PaO2 48 mmHg (PaO2/FiO2 = 48 mmHg for > 4 hours; EOLIA criteria met).\n\nVV-ECMO Cannulation & Liberation Pathway:\n1. Cannulation: Emergent bedside VV-ECMO cannulation under ultrasound and TEE guidance: 25-Fr multistage drainage cannula in right femoral vein; 19-Fr return cannula in right internal jugular vein. Tips confirmed 12 cm apart on echo (no recirculation).\n2. Circuit Stabilization: Blood flow established at 4.5 L/min; Sweep gas flow set to 5.0 L/min on 100% O2. Within 15 minutes, post-membrane blood PaO2 is 420 mmHg; systemic arterial blood gas shows pH 7.38, PaCO2 38, PaO2 86 mmHg.\n3. Ventilator Rest Protocol: Ventilator settings immediately dropped to rest parameters: Pressure Control, Pinsp 10, PEEP 12, Pplat 22 cmH2O (Driving Pressure = 10 cmH2O), RR 10 bpm, FiO2 0.35.\n4. Recovery Course: Patient managed on continuous unfractionated heparin (target anti-Xa 0.3–0.5 IU/mL). By Day 9, lung compliance recovers from 12 to 38 mL/cmH2O.\n5. Weaning: On Day 10, ventilator adjusted to VT 6 mL/kg, PEEP 8, FiO2 0.40. Sweep gas turned to 0 L/min for 6 hours: ABG remains rock-solid (pH 7.41, PaCO2 42, PaO2 96). Successfully decannulated at the bedside without complications.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 33. Wolters Kluwer.",
+      "Combes A, et al. Extracorporeal Membrane Oxygenation for Severe Acute Respiratory Distress Syndrome (EOLIA Trial). N Engl J Med 2018;378(21):1965–1975.",
+      "Extracorporeal Life Support Organization (ELSO). Guidelines for Adult Respiratory and Cardiac Failure. Ann Arbor, MI. 2021.",
+      "Schmidt M, et al. The Extracorporeal Membrane Oxygenation for Severe Acute Respiratory Distress Syndrome: 2023 Clinical Update. Intensive Care Med 2023;49(4):415–428."
+    ]
+  },
+  {
+    "id": "pocus-critical-care-vexus-blue-rush",
+    "cat": "cc_advances",
+    "name": "Critical Care POCUS: BLUE, RUSH & VExUS Venous Congestion",
+    "short": "POCUS: BLUE, RUSH & VExUS",
+    "tags": [
+      "BLUE Protocol",
+      "Lung Ultrasound B-Lines",
+      "RUSH Protocol",
+      "VExUS Grade 0-3",
+      "Hepatic Vein Doppler",
+      "Portal Pulsatility",
+      "Venous Congestion"
+    ],
+    "tagline": "BLUE thoracic profiles, RUSH shock algorithms, VExUS Doppler grading of venous excess and bedside organ congestion management",
+    "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 34; The BLUE Protocol (Lichtenstein, Chest 2008); The VExUS Grading System; Ultrasound J 2020; 12:44.",
+    "sections": [
+      {
+        "h": "The Bedside Lung Ultrasound in Emergency (BLUE) Protocol",
+        "b": "• The BLUE Protocol (Lichtenstein Consensus):\n  - Standardized bedside lung ultrasound protocol that diagnoses the cause of acute respiratory failure within <b><u>< 3 minutes with > 90% diagnostic accuracy</u></b>!\n  - Standard Examination Points: 2 anterior points (upper and lower BLUE points) + 1 posterior-lateral point (PLAPS point: Postero-Lateral Alveolar and/or Pleural Syndrome point) bilaterally.\n\n• Fundamental Ultrasound Artifacts & Signs:\n  1. <b>Bat Sign</b>: Upper and lower rib shadows with the hyperechoic pleural line in between.\n  2. <b>Lung Sliding</b>: Shimmering, glistening horizontal movement of visceral pleura against parietal pleura during respiration (rules out pneumothorax at that location with 100% negative predictive value!).\n  3. <b>A-Lines</b>: Horizontal, repetitive, equidistant hyperechoic reverberation artifacts of the pleural line; indicates a <b>Dry, Aerated Lung</b> (normal lung or asthma/COPD/PE).\n  4. <b>B-Lines ('Lung Rockets')</b>: Vertical, hyperechoic, laser-like artifacts arising strictly from the pleural line that extend to the bottom of the screen without fading, erasing A-lines and moving synchronously with lung sliding.\n     - <b>≥ 3 B-lines in a single intercostal space</b> defines an abnormal <b>Interstitial Syndrome</b> (extravascular lung water, pulmonary edema, ARDS).\n  5. <b>Lung Point</b>: Specific transition point on the chest wall between absent lung sliding (pneumothorax) and normal lung sliding (expanded lung); <b>100% Pathognomonic for Pneumothorax</b>!\n\n• The BLUE Diagnostic Decision Profiles:\n  - <b>A-Profile with normal sliding + DVT</b>: Pulmonary Embolism (PE).\n  - <b>A-Profile with normal sliding and NO DVT</b>: Severe COPD Exacerbation or Acute Asthma.\n  - <b>B-Profile (Bilateral diffuse B-lines with sliding)</b>: Acute Cardiogenic Pulmonary Edema.\n  - <b>A/B Profile (Asymmetric B-lines)</b>: Pneumonia.\n  - <b>C-Profile (Anterior alveolar consolidation / tissue sign)</b>: Pneumonia.\n  - <b>A'-Profile (Absent lung sliding with A-lines)</b>: Search for Lung Point → Pneumothorax.",
+        "table": {
+          "headers": [
+            "BLUE Profile",
+            "Lung Sliding",
+            "Predominant Artifacts",
+            "Pleural / Consolidation Signs",
+            "Definitive Clinical Diagnosis"
+          ],
+          "rows": [
+            [
+              "B-Profile",
+              "Present",
+              "Bilateral diffuse B-lines (> 3/space)",
+              "Smooth pleural line",
+              "Acute Cardiogenic Pulmonary Edema (100% spec)"
+            ],
+            [
+              "A-Profile + DVT",
+              "Present",
+              "A-Lines (Dry lungs)",
+              "Femoral/popliteal non-compressible vein",
+              "Pulmonary Embolism (PE)"
+            ],
+            [
+              "A-Profile (No DVT)",
+              "Present",
+              "A-Lines (Dry lungs)",
+              "Normal pleura, zero consolidations",
+              "COPD Exacerbation / Acute Severe Asthma"
+            ],
+            [
+              "A/B or C-Profile",
+              "Variable",
+              "Focal B-lines or tissue-like consolidation",
+              "Shred sign, dynamic air bronchograms",
+              "Pneumonia / Lung Contusion"
+            ],
+            [
+              "A'-Profile",
+              "ABSENT",
+              "A-Lines only (No B-lines)",
+              "Lung Point identified on M-mode",
+              "Pneumothorax (100% specificity)"
+            ]
+          ],
+          "caption": "The Lichtenstein BLUE protocol diagnostic profiles in acute respiratory failure."
+        }
+      },
+      {
+        "h": "The RUSH Protocol for Undifferentiated Shock: 'Pump, Tank, Pipes'",
+        "b": "• Rapid Ultrasound in Shock (RUSH Protocol):\n  - Structured, rapid 3-step evaluation of shock etiology within minutes of patient arrival:\n\n1. <b>The PUMP (Cardiac Evaluation)</b>:\n• Views: Parasternal Long Axis (PLAX), Parasternal Short Axis (PSAX), Apical 4-Chamber (A4C), Subxiphoid.\n• Contractility: Hyperdynamic LV with kissing walls (hypovolemic or distributive shock) vs Severely dilated/hypokinetic LV (cardiogenic shock).\n• Pericardium: Anechoic fluid stripe with right ventricular diastolic collapse (cardiac tamponade).\n• Right Ventricle: Severely enlarged RV (RV/LV diameter > 1.0) with McConnel's sign (akinetic free wall with sparing of hyperdynamic apex) indicates massive pulmonary embolism.\n\n2. <b>The TANK (Volume Status & Intravascular Capacity)</b>:\n• Inferior Vena Cava (IVC):\n  - Diameter <b><u>< 1.5 cm with > 50% inspiratory collapse</u></b> = Low CVP (< 5 mmHg, volume responsive hypovolemia).\n  - Diameter <b><u>> 2.1 cm with < 50% collapse</u></b> = High CVP (> 10–15 mmHg, systemic venous congestion).\n• Thoracic Cavity: Bilateral BLUE lung protocol (rule out pneumothorax, pulmonary edema, hemothorax).\n• Abdominal Cavity (FAST): Screen Morrison's pouch, splenorenal space, and pelvis for occult hemoperitoneum.\n\n3. <b>The PIPES (Vascular System)</b>:\n• Aorta: Screen abdominal aorta from diaphragm to bifurcation; diameter <b><u>> 3.0 cm</u></b> indicates Abdominal Aortic Aneurysm (AAA); screen for intimal dissection flap.\n• Venous System: Compressibility ultrasound of bilateral common femoral and popliteal veins (failure to collapse = Deep Vein Thrombosis / DVT).",
+        "callout": {
+          "type": "pearl",
+          "title": "CLINICAL PEARL — The 60/60 Sign in Pulmonary Embolism",
+          "text": "Echocardiographic 60/60 Sign: <b>Pulmonary acceleration time < 60 ms</b> combined with a <b>tricuspid regurgitant peak systolic gradient < 60 mmHg</b> (reflects acute right ventricular pressure overload that has not had time to hypertrophy; 94% specific for massive acute pulmonary embolism!)."
+        }
+      },
+      {
+        "h": "The VExUS Grading System: Quantifying Systemic Venous Congestion",
+        "b": "• The Paradigm Shift from 'Preload' to 'Congestion':\n  - While fluid resuscitation expands circulating volume, excessive fluids lead to systemic venous hypertension.\n  - Back-pressure transmission into the liver, intestines, and kidneys causes <b>Congestive Nephropathy (renal capsule stretch and acute tubular ischemia)</b>, worsening AKI and increasing mortality!\n\n• The Venous Excess Ultrasound (VExUS) Score (Beaubien-Souligny et al., 2020):\n  - Combines IVC diameter with pulsed-wave Doppler assessment of 3 organ vascular beds:\n\n1. <b>Step 1 — IVC Diameter (The Gatekeeper)</b>:\n• Measure IVC 2 cm caudal to right atrial junction.\n• If IVC is <b><u>< 2.0 cm</u></b>: Systemic venous congestion is ABSENT (VExUS Grade 0; no further Doppler needed!).\n• If IVC is <b><u>≥ 2.0 cm</u></b>: Proceed to 3-organ Doppler analysis.\n\n2. <b>Step 2 — Organ Doppler Evaluation (Pulsed-Wave)</b>:\n• <b>Hepatic Vein Doppler</b>:\n  - Normal: Retrograde A wave, large antegrade Systolic (S) wave, smaller antegrade Diastolic (D) wave (S > D).\n  - Mild Congestion: Blunted Systolic wave (S < D).\n  - <b>Severe Congestion</b>: <b>Systolic Flow Reversal (Reversed S-Wave)</b>; blood is propelled retrograde during systole!\n• <b>Portal Vein Doppler</b>:\n  - Normal: Continuous, smooth hepatopetal blood flow with minimal cardiac variation (Pulsatility Fraction < 30%).\n  - Mild Congestion: Pulsatility fraction 30% to 49%.\n  - <b>Severe Congestion</b>: <b>Pulsatility Fraction ≥ 50%</b> (pulsatility fraction = [Vmax - Vmin] / Vmax × 100%).\n• <b>Intrarenal Venous Doppler (Interlobar Renal Veins)</b>:\n  - Normal: Continuous non-pulsatile venous flow throughout cardiac cycle.\n  - Mild Congestion: Discontinuous biphasic flow (systolic and diastolic peaks separated by zero flow).\n  - <b>Severe Congestion</b>: <b>Discontinuous Monophasic Flow (Diastolic-Only Flow)</b>; zero renal venous outflow during ventricular systole!",
+        "table": {
+          "headers": [
+            "VExUS Grade",
+            "IVC Diameter",
+            "Doppler Flow Patterns",
+            "Clinical Meaning",
+            "Therapeutic Action"
+          ],
+          "rows": [
+            [
+              "Grade 0",
+              "< 2.0 cm",
+              "Normal patterns in all organ beds",
+              "No Venous Congestion",
+              "Safe to administer fluids if volume responsive"
+            ],
+            [
+              "Grade 1",
+              "≥ 2.0 cm",
+              "Normal or mildly abnormal flow patterns",
+              "Mild Congestion",
+              "Cautious fluid; monitor organ perfusion"
+            ],
+            [
+              "Grade 2",
+              "≥ 2.0 cm",
+              "ONE severe Doppler abnormality",
+              "Moderate Venous Congestion",
+              "Hold further fluids; consider mild diuresis"
+            ],
+            [
+              "Grade 3",
+              "≥ 2.0 cm",
+              "TWO OR MORE severe Doppler abnormalities",
+              "Severe Venous Congestion (Kidney toxic!)",
+              "Fluids STRICTLY TOXIC! Aggressive diuresis / CRRT"
+            ]
+          ],
+          "caption": "The VExUS grading scale and associated clinical management."
+        }
+      },
+      {
+        "h": "Clinical Application of VExUS in Fluid De-Resuscitation",
+        "b": "• The Four Phases of Fluid Therapy (The 'ROSE' Conceptual Model):\n  1. <b>R — Resuscitation</b>: Early shock; rapid fluid boluses (Hour 1–3).\n  2. <b>O — Optimization</b>: Hemodynamic stabilization; fluid given only for proven volume responsiveness.\n  3. <b>S — Stabilization</b>: Zero fluid boluses; maintenance only.\n  4. <b>E — Evacuation / De-Resuscitation</b>: Active removal of accumulated fluid overload (negative fluid balance).\n\n• VExUS-Guided Fluid De-escalation Protocol:\n  - In a critically ill patient with AKI and rising creatinine: If VExUS score is <b>Grade 3</b>, the renal dysfunction is driven by <b>Congestive Nephropathy (Elevated Renal Venous Pressure)</b>, NOT prerenal dehydration!\n  - Giving further IV fluids in VExUS Grade 3 accelerates renal failure and doubles 30-day mortality.\n  - Action: Immediately initiate aggressive loop diuretic therapy (continuous furosemide infusion) or ultrafiltration on CRRT.\n  - Decongestion Success: As venous congestion is relieved, the VExUS Doppler pattern normalizes (monophasic → biphasic → continuous renal flow; reversal of S-wave disappears), and renal perfusion pressure (MAP - CVP) is restored, leading to recovery of urine output and falling serum creatinine."
+      }
+    ],
+    "example": "CLINICAL CASE: A 68-year-old male with septic shock secondary to peritonitis is on Day 4 of ICU admission. Over 4 days, cumulative fluid balance is +11.5 Liters. Serum creatinine has risen from baseline 1.0 to 3.4 mg/dL with oliguria (12 mL/h). MAP is 68 mmHg on noradrenaline 0.08 mcg/kg/min. The admitting team debates giving another 500 mL crystalloid bolus for 'prerenal azotemia'.\n\nMultiorgan Critical Care POCUS Audit:\n1. BLUE Protocol: Diffuse bilateral B-lines in all anterior zones (B-profile = pulmonary congestion).\n2. RUSH Protocol: Hyperdynamic LV with kissing walls excluded; LV EF is 45% with moderately enlarged RV.\n3. VExUS Protocol:\n   - IVC: 2.6 cm diameter with 0% inspiratory collapse.\n   - Hepatic Vein: Severe Systolic flow reversal (retrograde S-wave).\n   - Portal Vein: Severe pulsatility fraction of 68% (normal < 30%).\n   - Intrarenal Venous Doppler: Discontinuous monophasic diastolic-only flow (zero systolic outflow from the kidney).\n4. VExUS Grade: <b>Grade 3 Severe Venous Congestion (Congestive Nephropathy)</b>.\n5. Interventions: The planned fluid bolus is immediately canceled. Continuous IV Furosemide infusion started at 10 mg/h with low-dose metolazone.\n6. Response: Over 24 hours, net fluid balance is -3.8 Liters. Repeat VExUS Doppler demonstrates recovery of antegrade hepatic S-wave, portal pulsatility drops to 24%, and renal venous flow becomes continuous. Renal perfusion pressure increases; urine output surges to 95 mL/h, and serum creatinine falls to 1.8 mg/dL over 48 hours without requiring dialysis.",
+    "references": [
+      "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 34. Wolters Kluwer.",
+      "Lichtenstein DA, et al. Relevance of Lung Ultrasound in the Diagnosis of Acute Respiratory Failure: The BLUE Protocol. Chest 2008;134(1):117–125.",
+      "Beaubien-Souligny W, et al. Quantifying Systemic Congestion with Point-of-Care Ultrasound: Development of the Venous Excess Ultrasound Grading System (VExUS). Ultrasound J 2020;12(1):44.",
+      "Perera P, et al. The RUSH Exam: Rapid Ultrasound in SHock in the Evaluation of the Critically Ill. Emerg Med Clin North Am 2010;28(1):29–56."
     ]
   }
 ];
