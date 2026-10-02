@@ -2,19 +2,17 @@
  * KNOCKOUTNOTES — Stylus / Pen Handwriting & Annotation Engine (study-annotations.js)
  * Strictly scoped to the Study section (body[data-content-page="study"]).
  *
- * SPECIFICATION & USER BEHAVIOR:
+ * SPECIFICATION & HIGH-FIDELITY EXPERIENCE:
  * 1. Logged-in Users Only: Drawing features are strictly active only when a user is logged in.
- *    For guest / logged-out users, the engine stays completely dormant.
- * 2. Real Stylus Detection ("Not fingers"): The moment a hardware stylus (Samsung S Pen,
- *    Apple Pencil, Surface Pen) is detected via hover or touch, the floating toolbar appears.
- *    Normal finger touches are NEVER treated as a stylus.
- * 3. Drawing Mode Active: Touching with stylus DRAWS on the screen with pressure dynamics.
- *    Normal touch like kinetic scrolling is OFF for the stylus.
- *    Fingers can still scroll the page, with palm rejection shielding stray touches
- *    while the stylus is actively writing.
- * 4. Drawing Mode Closed: When the user dismisses the floating window (via ✕),
- *    normal touch with stylus is ON. The stylus scrolls and taps normally like a finger.
- *    A sleek floating pen chip (✏️) remains available at the edge to re-open drawing mode with one tap.
+ * 2. Hardware Pen vs Finger: S-Pen / Apple Pencil hardware is strictly detected via pointerType.
+ *    Fingers always scroll and tap freely without accidental drawing.
+ * 3. Silky Smooth Writing: Quadratic Midpoint Spline smoothing and coalesced event processing
+ *    for fluid, latency-free ink matching Samsung Notes and OneNote.
+ * 4. Smart Straight-Line Highlighter: Constant opacity without dark overlapping splotches,
+ *    locking horizontally across text lines for immaculate revision highlighting.
+ * 5. S-Pen Barrel Button Eraser: Holding the S-Pen button continuously erases strokes along the
+ *    drag path; context menu popup is suppressed. Dedicated Eraser button with tooltip in toolbar.
+ * 6. Hover Tooltips: Hovering over tools with S-Pen or mouse reveals descriptive name pills.
  */
 
 (function () {
@@ -53,6 +51,7 @@
   let stylusDetected = false;
   let toastShown = false;
   let isDrawing = false;
+  let isErasing = false;
   let penActive = false; // Flag for hardware palm rejection while pen touches
   let penActiveTimeout = null;
   let currentStroke = null;
@@ -60,6 +59,7 @@
   let undoStack = [];
   let currentTopicId = null;
   let dockSide = "right"; // "right" or "left"
+  let highlightStartY = null;
 
   // DOM Elements
   let canvas = null;
@@ -76,7 +76,7 @@
       if (window.KN_WORKSPACE.isLoggedIn()) return true;
     }
     try {
-      const user = localStorage.getItem("kn_user");
+      const user = localStorage.getItem("kn_user") || sessionStorage.getItem("kn_user");
       return !!user && user !== "null" && user !== "undefined";
     } catch (_) {
       return false;
@@ -84,15 +84,12 @@
   }
 
   /**
-   * Strict Hardware Stylus / Pen Event Detector ("Not fingers")
-   * NEVER infers stylus from altitudeAngle on touch events (since finger touches on mobile
-   * report ~1.57 rad by default).
+   * Strict Hardware Stylus / Pen Event Detector
+   * Never infers pen from touch altitudeAngle (preventing finger false-positives).
    */
   function isStylusEvent(e) {
     if (!e) return false;
-    // Hardware pointerType must be explicitly 'pen' or 'stylus'
     if (e.pointerType === "pen" || e.pointerType === "stylus") return true;
-    // iOS Safari TouchEvent: touchType must be explicitly 'stylus' (never 'direct'/finger)
     if (e.touchType === "stylus") return true;
     if (e.touches && e.touches.length > 0) {
       for (let i = 0; i < e.touches.length; i++) {
@@ -108,7 +105,19 @@
   }
 
   /**
-   * Get active topic ID across all URL and DOM representations
+   * Check if S-Pen Barrel Button or Eraser Mode is Active
+   */
+  function isBarrelOrEraser(e) {
+    if (activeTool === TOOLS.ERASER) return true;
+    if (!e) return false;
+    // S-Pen barrel button: button 2 (right click), button 5, or buttons mask 2 or 32
+    if (e.button === 2 || e.button === 5) return true;
+    if (e.buttons && ((e.buttons & 2) !== 0 || (e.buttons & 32) !== 0)) return true;
+    return false;
+  }
+
+  /**
+   * Get active topic ID across all representations
    */
   function getActiveTopicId() {
     try {
@@ -146,18 +155,12 @@
     return "study_overview";
   }
 
-  /**
-   * Storage Key for Topic Annotations
-   */
   function getStorageKey(topicId) {
     const user = window.KN_WORKSPACE && window.KN_WORKSPACE.getUser ? window.KN_WORKSPACE.getUser() : null;
     const uid = user && (user.id || user.uid || user.email) ? (user.id || user.uid || user.email) : "guest";
     return `kn_annotations_${uid}_${topicId}`;
   }
 
-  /**
-   * Load strokes for active topic
-   */
   function loadStrokes(topicId) {
     if (!topicId || !isUserLoggedIn()) return;
     currentTopicId = topicId;
@@ -178,9 +181,6 @@
     redrawAll();
   }
 
-  /**
-   * Persist strokes
-   */
   function saveStrokes() {
     if (!currentTopicId || !isUserLoggedIn()) return;
     try {
@@ -190,9 +190,6 @@
     }
   }
 
-  /**
-   * Get the primary study container to mount canvas over
-   */
   function getStageContainer() {
     return document.querySelector(".ron-screen") ||
            document.getElementById("ronStudyApp") ||
@@ -201,9 +198,6 @@
            document.getElementById("stDetail");
   }
 
-  /**
-   * Initialize or attach the annotation canvas over the study stage
-   */
   function setupCanvas() {
     if (!isStudySection() || !isUserLoggedIn()) return;
 
@@ -223,9 +217,6 @@
     syncCanvasDimensions();
   }
 
-  /**
-   * Resize canvas matching the container with high-DPI scaling
-   */
   function syncCanvasDimensions() {
     if (!stageContainer || !canvas || !ctx) return;
     const rect = stageContainer.getBoundingClientRect();
@@ -236,7 +227,6 @@
     const targetW = Math.round(width * dpr);
     const targetH = Math.round(height * dpr);
 
-    // Only update if dimensions actually changed by more than 2px to prevent reflow flashing
     if (Math.abs(canvas.width - targetW) > 2 || Math.abs(canvas.height - targetH) > 2) {
       canvas.width = targetW;
       canvas.height = targetH;
@@ -247,9 +237,6 @@
     }
   }
 
-  /**
-   * Notification toast when stylus is detected
-   */
   function showStylusDetectedToast() {
     if (!isUserLoggedIn()) return;
     if (document.getElementById("knStylusToast")) return;
@@ -260,12 +247,9 @@
     document.body.appendChild(toast);
     setTimeout(() => {
       if (toast.parentElement) toast.remove();
-    }, 3400);
+    }, 3200);
   }
 
-  /**
-   * Convert Pointer/Touch event client coordinates to canvas-space coordinates
-   */
   function getCanvasCoords(e) {
     if (!canvas) return { x: 0, y: 0, pressure: 0.5 };
     const rect = canvas.getBoundingClientRect();
@@ -280,52 +264,93 @@
   }
 
   /**
-   * Internal drawing stroke handlers
+   * Internal Drawing & Erasing Handlers
    */
   function onPointerDown(e) {
     if (!isUserLoggedIn()) return;
     if (!activeTool || activeTool === TOOLS.READ) return;
 
-    let toolToUse = activeTool;
-    // S Pen barrel button shortcut toggles eraser
-    if (e.button === 5 || e.buttons === 32 || (e.buttons & 2)) {
-      toolToUse = TOOLS.ERASER;
-    }
-
-    isDrawing = true;
     const pt = getCanvasCoords(e);
 
-    if (toolToUse === TOOLS.ERASER) {
+    // S-Pen Barrel button or Eraser tool
+    if (isBarrelOrEraser(e)) {
+      isErasing = true;
+      isDrawing = false;
       eraseAtPoint(pt.x, pt.y);
       return;
     }
 
+    isErasing = false;
+    isDrawing = true;
+
+    // Straight-line highlighter initial baseline
+    if (activeTool === TOOLS.HIGHLIGHTER) {
+      highlightStartY = pt.y;
+    } else {
+      highlightStartY = null;
+    }
+
     currentStroke = {
-      tool: toolToUse,
+      tool: activeTool,
       color: activeColor,
       points: [pt]
     };
 
-    drawSegment(currentStroke, 0, 0);
+    // Render initial dot
+    renderStrokeSegment(currentStroke, 0, 0);
   }
 
   function onPointerMove(e) {
-    if (!isDrawing || !isUserLoggedIn()) return;
+    if (!isUserLoggedIn()) return;
 
     const pt = getCanvasCoords(e);
 
-    if (activeTool === TOOLS.ERASER || e.button === 5 || e.buttons === 32 || (e.buttons & 2)) {
+    // Dynamic S-Pen button press during motion switches to eraser
+    if (isBarrelOrEraser(e)) {
+      isErasing = true;
+      if (isDrawing) {
+        isDrawing = false;
+        currentStroke = null;
+      }
       eraseAtPoint(pt.x, pt.y);
       return;
     }
 
-    if (!currentStroke) return;
-    currentStroke.points.push(pt);
+    if (isErasing) {
+      eraseAtPoint(pt.x, pt.y);
+      return;
+    }
 
-    drawSegment(currentStroke, currentStroke.points.length - 2, currentStroke.points.length - 1);
+    if (!isDrawing || !currentStroke) return;
+
+    // Straight-line lock for Highlighter (Samsung Notes style)
+    if (currentStroke.tool === TOOLS.HIGHLIGHTER && highlightStartY !== null) {
+      const dy = Math.abs(pt.y - highlightStartY);
+      // Lock horizontally if within 26px vertical range of the initial text line
+      if (dy < 26) {
+        pt.y = highlightStartY;
+      }
+    }
+
+    currentStroke.points.push(pt);
+    const len = currentStroke.points.length;
+
+    if (currentStroke.tool === TOOLS.HIGHLIGHTER) {
+      // Re-render whole highlighter stroke to avoid alpha stacking
+      redrawAll();
+      renderHighlighterStroke(currentStroke);
+    } else {
+      // Render smooth spline segment incrementally
+      renderStrokeSegment(currentStroke, len - 2, len - 1);
+    }
   }
 
   function onPointerUp(e) {
+    if (isErasing) {
+      isErasing = false;
+      return;
+    }
+
     if (!isDrawing) return;
     isDrawing = false;
 
@@ -334,64 +359,98 @@
       undoStack = [];
       saveStrokes();
       currentStroke = null;
+      redrawAll();
     }
+    highlightStartY = null;
   }
 
   /**
-   * Segment rendering with pressure and tool dynamics
+   * Quadratic Midpoint Spline Rendering (Silky Smooth Samsung Notes / OneNote style)
    */
-  function drawSegment(stroke, startIndex, endIndex) {
+  function renderStrokeSegment(stroke, startIndex, endIndex) {
     if (!ctx || !stroke.points || stroke.points.length === 0) return;
-    const p1 = stroke.points[startIndex];
-    const p2 = stroke.points[endIndex] || p1;
+    const pts = stroke.points;
+    const dpr = window.devicePixelRatio || 1;
 
     ctx.save();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
 
-    if (startIndex === endIndex || stroke.points.length === 1) {
-      // Single tap dot
+    if (pts.length === 1 || startIndex === endIndex) {
+      // Single tap circular dot
+      const p = pts[0];
       ctx.fillStyle = stroke.color;
-      ctx.globalAlpha = stroke.tool === TOOLS.HIGHLIGHTER ? 0.35 : 0.95;
-      const radius = stroke.tool === TOOLS.HIGHLIGHTER ? 12 : (1.6 + p1.pressure * 2.5);
+      ctx.globalAlpha = stroke.tool === TOOLS.PENCIL ? 0.7 : 0.96;
+      const radius = stroke.tool === TOOLS.PENCIL ? (1.2 + p.pressure * 1.5) : (1.8 + p.pressure * 2.8);
       ctx.beginPath();
-      ctx.arc(p1.x, p1.y, radius, 0, Math.PI * 2);
+      ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
       ctx.fill();
       ctx.restore();
       return;
     }
 
-    if (stroke.tool === TOOLS.HIGHLIGHTER) {
-      ctx.globalAlpha = 0.35;
+    const p1 = pts[startIndex];
+    const p2 = pts[endIndex];
+
+    if (stroke.tool === TOOLS.PENCIL) {
+      ctx.globalAlpha = 0.72;
       ctx.strokeStyle = stroke.color;
-      ctx.lineWidth = 24;
-      ctx.beginPath();
-      ctx.moveTo(p1.x, p1.y);
-      ctx.lineTo(p2.x, p2.y);
-      ctx.stroke();
-    } else if (stroke.tool === TOOLS.PENCIL) {
-      ctx.globalAlpha = 0.65;
+      ctx.lineWidth = 1.2 + p2.pressure * 2.0;
+    } else {
+      // Ballpoint Pen with dynamic pressure smoothing
+      ctx.globalAlpha = 0.98;
       ctx.strokeStyle = stroke.color;
-      ctx.lineWidth = 1.2 + p2.pressure * 2.2;
+      ctx.lineWidth = 1.6 + p2.pressure * 3.2;
+    }
+
+    if (pts.length === 2) {
       ctx.beginPath();
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
       ctx.stroke();
     } else {
-      // Default Ballpoint Pen with smooth pressure dynamics
-      ctx.globalAlpha = 0.96;
-      ctx.strokeStyle = stroke.color;
-      ctx.lineWidth = 1.6 + p2.pressure * 3.4;
+      // Midpoint curve interpolation
+      const prev = pts[startIndex - 1] || p1;
+      const mid1 = { x: (prev.x + p1.x) / 2, y: (prev.y + p1.y) / 2 };
+      const mid2 = { x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2 };
+
       ctx.beginPath();
-      ctx.moveTo(p1.x, p1.y);
-      ctx.lineTo(p2.x, p2.y);
+      ctx.moveTo(mid1.x, mid1.y);
+      ctx.quadraticCurveTo(p1.x, p1.y, mid2.x, mid2.y);
       ctx.stroke();
     }
+
     ctx.restore();
   }
 
   /**
-   * Redraw all strokes on canvas with high-DPI transform preservation
+   * Straight-Line Uniform Highlighter (Single Path, zero splotches)
+   */
+  function renderHighlighterStroke(stroke) {
+    if (!ctx || !stroke.points || stroke.points.length < 2) return;
+    const pts = stroke.points;
+    const dpr = window.devicePixelRatio || 1;
+
+    ctx.save();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.lineCap = "square";
+    ctx.lineJoin = "bevel";
+    ctx.globalAlpha = 0.38;
+    ctx.strokeStyle = stroke.color;
+    ctx.lineWidth = 22;
+
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for (let i = 1; i < pts.length; i++) {
+      ctx.lineTo(pts[i].x, pts[i].y);
+    }
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  /**
+   * Redraw All Strokes
    */
   function redrawAll() {
     if (!ctx || !canvas) return;
@@ -402,21 +461,25 @@
 
     for (let i = 0; i < strokes.length; i++) {
       const s = strokes[i];
-      if (s.points.length === 1) {
-        drawSegment(s, 0, 0);
+      if (s.tool === TOOLS.HIGHLIGHTER) {
+        renderHighlighterStroke(s);
       } else {
-        for (let j = 0; j < s.points.length - 1; j++) {
-          drawSegment(s, j, j + 1);
+        if (s.points.length === 1) {
+          renderStrokeSegment(s, 0, 0);
+        } else {
+          for (let j = 0; j < s.points.length - 1; j++) {
+            renderStrokeSegment(s, j, j + 1);
+          }
         }
       }
     }
   }
 
   /**
-   * Stroke-level Eraser
+   * Continuous Stroke-Level Eraser
    */
   function eraseAtPoint(x, y) {
-    const radius = 26;
+    const radius = 32;
     const originalLength = strokes.length;
 
     strokes = strokes.filter((stroke) => {
@@ -433,9 +496,6 @@
     }
   }
 
-  /**
-   * Undo/Redo
-   */
   function undo() {
     if (strokes.length === 0) return;
     const popped = strokes.pop();
@@ -452,9 +512,6 @@
     saveStrokes();
   }
 
-  /**
-   * Clear all annotations on this topic
-   */
   function clearAll() {
     if (strokes.length === 0) return;
     if (confirm("Clear all handwriting annotations on this topic?")) {
@@ -465,34 +522,34 @@
     }
   }
 
-  /**
-   * Check if an event target belongs to toolbar or popovers
-   */
   function isToolbarElement(target) {
     if (!target) return false;
     return !!(target.closest && target.closest("#knPenToolbar, #knPalettePopover, #knPenFloatChip"));
   }
 
   /**
-   * MASTER GLOBAL POINTER INTERCEPTOR (Capture Phase)
-   * Strictly active ONLY for logged in users and genuine pen/stylus hardware.
-   * Normal finger touches are NEVER intercepted or prevented.
+   * Pointer Interceptor System
+   * - Blocks Android contextmenu when S-Pen button is held.
+   * - Uses pointer capture on canvas to prevent Android Chrome from dropping pen frames.
+   * - Never intercepts finger touch unless palm rejection is shielding an active stylus stroke.
    */
   function setupPointerInterceptors() {
-    // 1. POINTERDOWN (Capture Phase, passive: false)
+    // Suppress context menu for S-Pen barrel button
+    document.addEventListener("contextmenu", (e) => {
+      if (isStylusEvent(e) || penActive || isBarrelOrEraser(e)) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, { capture: true });
+
+    // 1. POINTERDOWN (Capture Phase)
     document.addEventListener("pointerdown", (e) => {
-      if (!isStudySection()) return;
-
-      // Ignore if user is not logged in
-      if (!isUserLoggedIn()) return;
-
-      // Never intercept interactions with toolbar controls or floating chip
+      if (!isStudySection() || !isUserLoggedIn()) return;
       if (isToolbarElement(e.target)) return;
 
       const isStylus = isStylusEvent(e);
 
       if (isStylus) {
-        // Genuine Stylus Detected
         if (!stylusDetected) {
           stylusDetected = true;
           if (!toastShown) {
@@ -501,36 +558,39 @@
           }
         }
 
-        // Maintain palm rejection shield while stylus is actively touching
         penActive = true;
         if (penActiveTimeout) clearTimeout(penActiveTimeout);
 
-        // Auto-reveal toolbar if not explicitly dismissed by user
         if (!isDrawingModeActive && !userDismissedToolbar) {
           showToolbar();
         }
 
-        // When Drawing Mode is OPEN: Normal touch with stylus like scrolling is OFF
         if (isDrawingModeActive) {
           if (activeTool && activeTool !== TOOLS.READ) {
             e.preventDefault();
             e.stopPropagation();
             setupCanvas();
+
+            // Lock pointer capture to canvas to prevent browser from cancelling stroke
+            try {
+              if (canvas && typeof canvas.setPointerCapture === "function") {
+                canvas.setPointerCapture(e.pointerId);
+              }
+            } catch (_) {}
+
             onPointerDown(e);
           }
         }
-        // When Drawing Mode is CLOSED: Stylus acts as normal touch (scrolling is ON, not prevented)
       } else if (e.pointerType === "touch") {
         // Finger Touch:
         if (isDrawingModeActive && penActive) {
-          // Palm Rejection: palm is resting on the glass while stylus writes
+          // Palm Rejection: reject finger touch ONLY when pen is actively writing!
           e.preventDefault();
           e.stopPropagation();
         }
-        // When penActive is false, fingers scroll the page and click cards smoothly without any interception!
+        // When penActive is false, fingers scroll and tap topic cards freely!
       } else if (e.pointerType === "mouse") {
         if (isDrawingModeActive && activeTool && activeTool !== TOOLS.READ) {
-          // Desktop testing / mouse drawing support
           if (!isToolbarElement(e.target)) {
             setupCanvas();
             onPointerDown(e);
@@ -539,50 +599,63 @@
       }
     }, { capture: true, passive: false });
 
-    // 2. POINTERMOVE (Capture Phase, passive: false)
+    // 2. POINTERMOVE (Capture Phase)
     document.addEventListener("pointermove", (e) => {
       if (!isStudySection() || !isUserLoggedIn()) return;
 
       const isStylus = isStylusEvent(e);
 
-      if (isStylus && !isDrawing) {
-        // S Pen Hover detection (S Pen emits pointermove while hovering ~1.5cm above screen)
+      // S-Pen Hover detection (~1.5cm above screen)
+      if (isStylus && !isDrawing && !isErasing) {
         if (!stylusDetected) {
           stylusDetected = true;
           if (!toastShown) {
             toastShown = true;
             showStylusDetectedToast();
           }
-          if (!isDrawingModeActive && !userDismissedToolbar) {
-            showToolbar();
-          }
+        }
+        if (!isDrawingModeActive && !userDismissedToolbar) {
+          showToolbar();
         }
       }
 
-      if (isDrawing) {
+      if (isDrawing || isErasing) {
         if (isStylus || e.pointerType === "mouse") {
           e.preventDefault();
           e.stopPropagation();
-          onPointerMove(e);
+
+          // High-refresh rate coalesced events (120Hz/240Hz sampling on Galaxy S26 Ultra)
+          const events = (e.getCoalescedEvents && e.getCoalescedEvents().length > 0)
+            ? e.getCoalescedEvents()
+            : [e];
+
+          for (let i = 0; i < events.length; i++) {
+            onPointerMove(events[i]);
+          }
         }
       }
     }, { capture: true, passive: false });
 
-    // 3. POINTERUP & POINTERCANCEL (Capture Phase, passive: false)
+    // 3. POINTERUP & POINTERCANCEL (Capture Phase)
     const handlePointerEnd = (e) => {
       if (!isStudySection() || !isUserLoggedIn()) return;
 
-      if (isDrawing) {
+      if (isDrawing || isErasing) {
         e.preventDefault();
         onPointerUp(e);
       }
 
+      try {
+        if (canvas && typeof canvas.releasePointerCapture === "function") {
+          canvas.releasePointerCapture(e.pointerId);
+        }
+      } catch (_) {}
+
       if (isStylusEvent(e)) {
-        // Keep palm rejection active for 350ms after lifting pen
         if (penActiveTimeout) clearTimeout(penActiveTimeout);
         penActiveTimeout = setTimeout(() => {
           penActive = false;
-        }, 350);
+        }, 320);
       }
     };
 
@@ -591,7 +664,7 @@
   }
 
   /**
-   * Create Floating Vertical Toolbar on Left or Right
+   * Floating Toolbar with Tooltips on Hover
    */
   function renderToolbar() {
     if (!isStudySection() || !isUserLoggedIn()) return;
@@ -602,53 +675,53 @@
     toolbar.id = "knPenToolbar";
 
     toolbar.innerHTML = `
-      <button type="button" class="kn-tool-btn active" data-tool="pen" title="Ballpoint Pen (S Pen / Apple Pencil)" aria-label="Pen">
+      <button type="button" class="kn-tool-btn active" data-tool="pen" data-tooltip="Ballpoint Pen" title="Ballpoint Pen" aria-label="Ballpoint Pen">
         ✏️
       </button>
-      <button type="button" class="kn-tool-btn" data-tool="pencil" title="Pencil" aria-label="Pencil">
+      <button type="button" class="kn-tool-btn" data-tool="pencil" data-tooltip="Fine Pencil" title="Fine Pencil" aria-label="Fine Pencil">
         🖊️
       </button>
-      <button type="button" class="kn-tool-btn" data-tool="highlighter" title="Highlighter" aria-label="Highlighter">
+      <button type="button" class="kn-tool-btn" data-tool="highlighter" data-tooltip="Straight Highlighter" title="Straight Highlighter" aria-label="Highlighter">
         🖍️
       </button>
-      <button type="button" class="kn-tool-btn" data-tool="eraser" title="Eraser" aria-label="Eraser">
-        🧹
+      <button type="button" class="kn-tool-btn" data-tool="eraser" data-tooltip="Stroke Eraser" title="Stroke Eraser (or hold S-Pen button)" aria-label="Eraser">
+        🧼
       </button>
-      <button type="button" class="kn-tool-btn" data-tool="read" title="Scroll &amp; Read Mode (Finger Navigation)" aria-label="Read Mode">
+      <button type="button" class="kn-tool-btn" data-tool="read" data-tooltip="Scroll / Read Mode" title="Scroll &amp; Read Mode (Finger Navigation)" aria-label="Read Mode">
         🖐️
       </button>
 
       <div class="kn-pen-divider"></div>
 
       <!-- Color Swatch Button -->
-      <button type="button" class="kn-tool-btn" id="knColorPickerBtn" title="Choose Ink Color" aria-label="Palette" style="color:${activeColor}">
+      <button type="button" class="kn-tool-btn" id="knColorPickerBtn" data-tooltip="Ink Palette" title="Choose Ink Color" aria-label="Palette" style="color:${activeColor}">
         🎨
       </button>
 
       <div class="kn-pen-divider"></div>
 
       <!-- Undo / Redo -->
-      <button type="button" class="kn-tool-btn" id="knUndoBtn" title="Undo Stroke" aria-label="Undo">
+      <button type="button" class="kn-tool-btn" id="knUndoBtn" data-tooltip="Undo Stroke" title="Undo Stroke" aria-label="Undo">
         ↩️
       </button>
-      <button type="button" class="kn-tool-btn" id="knRedoBtn" title="Redo Stroke" aria-label="Redo">
+      <button type="button" class="kn-tool-btn" id="knRedoBtn" data-tooltip="Redo Stroke" title="Redo Stroke" aria-label="Redo">
         ↪️
       </button>
 
       <div class="kn-pen-divider"></div>
 
       <!-- Clear All -->
-      <button type="button" class="kn-tool-btn" id="knClearAllBtn" title="Clear All Annotations" aria-label="Clear All">
+      <button type="button" class="kn-tool-btn" id="knClearAllBtn" data-tooltip="Clear Annotations" title="Clear All Annotations" aria-label="Clear All">
         🗑️
       </button>
 
       <!-- Left / Right Dock Switcher -->
-      <button type="button" class="kn-tool-btn kn-dock-switch-btn" id="knDockSwitchBtn" title="Switch Side (Left / Right)" aria-label="Switch Side">
+      <button type="button" class="kn-tool-btn kn-dock-switch-btn" id="knDockSwitchBtn" data-tooltip="Switch Side" title="Switch Side (Left / Right)" aria-label="Switch Side">
         ⇄
       </button>
 
       <!-- Dismiss Toolbar -->
-      <button type="button" class="kn-tool-btn" id="knDismissToolbarBtn" title="Hide Toolbar &amp; Enable Stylus Scrolling (✕)" aria-label="Hide">
+      <button type="button" class="kn-tool-btn" id="knDismissToolbarBtn" data-tooltip="Close (Enable Scrolling)" title="Close Toolbar &amp; Enable Stylus Scrolling (✕)" aria-label="Hide">
         ✕
       </button>
     `;
@@ -657,9 +730,6 @@
     attachToolbarEvents();
   }
 
-  /**
-   * Floating Chip to Re-open Toolbar when closed
-   */
   function renderFloatingChip() {
     if (!isStudySection() || !isUserLoggedIn()) return;
     if (floatChip && floatChip.parentElement) floatChip.remove();
@@ -670,6 +740,7 @@
     floatChip.id = "knPenFloatChip";
     floatChip.title = "Re-open Stylus Drawing Tools";
     floatChip.setAttribute("aria-label", "Open Stylus Tools");
+    floatChip.setAttribute("data-tooltip", "Open Drawing Tools");
     floatChip.innerHTML = "✏️";
 
     floatChip.addEventListener("click", () => {
@@ -694,10 +765,6 @@
     }
   }
 
-  /**
-   * Reveal Toolbar and Activate Drawing Mode
-   * Strictly prompts sign-in if guest user clicks Draw button.
-   */
   function showToolbar() {
     if (!isUserLoggedIn()) {
       if (window.KN_WORKSPACE && typeof window.KN_WORKSPACE.openAuthModal === "function") {
@@ -725,14 +792,11 @@
     }
   }
 
-  /**
-   * Hide Toolbar and Deactivate Drawing Mode
-   * Normal touch with stylus like scrolling is now ON!
-   */
   function hideToolbar() {
     userDismissedToolbar = true;
     isDrawingModeActive = false;
     isDrawing = false;
+    isErasing = false;
     activeTool = null;
 
     if (toolbar) {
@@ -742,7 +806,6 @@
       canvas.classList.remove("active-mode");
     }
 
-    // Display re-open chip so user can bring drawing tools back anytime
     if (isUserLoggedIn()) {
       showFloatingChip();
     }
@@ -768,7 +831,6 @@
     toolbar.querySelector("#knRedoBtn")?.addEventListener("click", redo);
     toolbar.querySelector("#knClearAllBtn")?.addEventListener("click", clearAll);
 
-    // Switch between left and right side dock
     const switchBtn = toolbar.querySelector("#knDockSwitchBtn");
     if (switchBtn) {
       switchBtn.addEventListener("click", () => {
@@ -792,13 +854,11 @@
       });
     }
 
-    // Dismiss toolbar (Closes drawing mode, enables normal stylus scrolling)
     const dismissBtn = toolbar.querySelector("#knDismissToolbarBtn");
     if (dismissBtn) {
       dismissBtn.addEventListener("click", hideToolbar);
     }
 
-    // Color picker
     const colorBtn = toolbar.querySelector("#knColorPickerBtn");
     if (colorBtn) {
       colorBtn.addEventListener("click", (e) => {
@@ -869,9 +929,6 @@
     }, 50);
   }
 
-  /**
-   * Clean up UI elements if logged out
-   */
   function cleanupLoggedOutState() {
     if (toolbar && toolbar.parentElement) toolbar.remove();
     if (floatChip && floatChip.parentElement) floatChip.remove();
@@ -882,13 +939,10 @@
     ctx = null;
     isDrawingModeActive = false;
     isDrawing = false;
+    isErasing = false;
     stylusDetected = false;
   }
 
-  /**
-   * Monitor Study Mode Navigation & Topic Changes
-   * Loads saved strokes when opening a topic, without any infinite reflow loops.
-   */
   function monitorStudyNavigation() {
     if (!isStudySection()) return;
 

@@ -134,6 +134,54 @@ body.dark .kn-tool-btn:hover {
   transform: scale(0.95);
 }
 
+/* Tooltip on hover / S-Pen hover */
+.kn-tool-btn[data-tooltip]::after,
+.kn-pen-float-chip[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) scale(0.9);
+  background: var(--ron-text-primary, #0f172a);
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 5px 10px;
+  border-radius: 9999px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  z-index: 10005;
+}
+
+body.dark .kn-tool-btn[data-tooltip]::after,
+body.dark .kn-pen-float-chip[data-tooltip]::after {
+  background: #181830;
+  color: #e8e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+.kn-pen-toolbar.dock-right .kn-tool-btn[data-tooltip]::after,
+.kn-pen-float-chip.dock-right[data-tooltip]::after {
+  right: calc(100% + 12px);
+  left: auto;
+}
+
+.kn-pen-toolbar.dock-left .kn-tool-btn[data-tooltip]::after,
+.kn-pen-float-chip.dock-left[data-tooltip]::after {
+  left: calc(100% + 12px);
+  right: auto;
+}
+
+.kn-tool-btn[data-tooltip]:hover::after,
+.kn-pen-float-chip[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
 /* Divider inside toolbar */
 .kn-pen-divider {
   width: 24px;
