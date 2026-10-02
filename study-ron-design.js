@@ -59,7 +59,14 @@
       .replace(/<\/?(b|strong)>/gi, "**")
       .replace(/<\/?(i|em)>/gi, "*")
       .replace(/<\/?u>/gi, "")
-      .replace(/<\/?span[^>]*>/gi, "");
+      .replace(/<\/?span[^>]*>/gi, "")
+      .replace(/<sub>0<\/sub>/gi, "₀").replace(/<sub>1<\/sub>/gi, "₁").replace(/<sub>2<\/sub>/gi, "₂")
+      .replace(/<sub>3<\/sub>/gi, "₃").replace(/<sub>4<\/sub>/gi, "₄").replace(/<sub>5<\/sub>/gi, "₅")
+      .replace(/<sub>i<\/sub>/gi, "ᵢ").replace(/<sub>e<\/sub>/gi, "ₑ").replace(/<sub>a<\/sub>/gi, "ₐ")
+      .replace(/<\/?sub>/gi, "")
+      .replace(/<sup>\+<\/sup>/gi, "⁺").replace(/<sup>-<\/sup>/gi, "⁻").replace(/<sup>2\+<\/sup>/gi, "²⁺")
+      .replace(/<sup>2<\/sup>/gi, "²").replace(/<sup>3<\/sup>/gi, "³")
+      .replace(/<\/?sup>/gi, "");
     let res = esc(clean);
     res = res.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
     res = res.replace(/\*([^*]+)\*/g, "<em>$1</em>");
@@ -1380,9 +1387,9 @@
         if (typeof sec.b === "string") {
           bodyHTML = formatProseLines(sec.b);
         } else if (Array.isArray(sec.b)) {
-          bodyHTML = sec.b.map((b) => `<div class="ron-point-row"><span class="ron-point-bullet">•</span><div class="ron-point-text">${highlightKeyValues(esc(b))}</div></div>`).join("");
+          bodyHTML = sec.b.map((b) => `<div class="ron-point-row"><span class="ron-point-bullet">•</span><div class="ron-point-text">${formatInlineContent(b)}</div></div>`).join("");
         } else if (sec.b) {
-          bodyHTML = `<div class="ron-point-row"><span class="ron-point-bullet">•</span><div class="ron-point-text">${highlightKeyValues(esc(String(sec.b)))}</div></div>`;
+          bodyHTML = `<div class="ron-point-row"><span class="ron-point-bullet">•</span><div class="ron-point-text">${formatInlineContent(String(sec.b))}</div></div>`;
         }
 
         // Callout blocks (pearl, pitfall, example)
