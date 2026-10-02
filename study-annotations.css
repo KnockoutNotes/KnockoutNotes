@@ -16,13 +16,9 @@ body[data-content-page="study"] .ron-stage-container {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 30;
+  z-index: 50;
   pointer-events: none;
   touch-action: none;
-}
-
-.kn-annotation-canvas.active-mode {
-  pointer-events: auto;
 }
 
 /* ==========================================================================
@@ -248,6 +244,64 @@ body.dark .kn-color-swatch.selected {
   border-color: #ffffff;
 }
 
+/* Floating Pen Re-open Chip (displayed when toolbar is closed) */
+.kn-pen-float-chip {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--ron-bg-card, #ffffff);
+  border: 1px solid var(--ron-border, rgba(0, 0, 0, 0.1));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  cursor: pointer;
+  color: var(--ron-text-primary, #0f172a);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, opacity 0.2s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.kn-pen-float-chip.dock-right {
+  right: 14px;
+  left: auto;
+}
+
+.kn-pen-float-chip.dock-left {
+  left: 14px;
+  right: auto;
+}
+
+.kn-pen-float-chip:hover {
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+}
+
+.kn-pen-float-chip:active {
+  transform: translateY(-50%) scale(0.94);
+}
+
+.kn-pen-float-chip.kn-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.6);
+}
+
+body.dark .kn-pen-float-chip {
+  background: rgba(24, 24, 48, 0.94);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+  color: #e8e8f0;
+}
+
 /* Active Pen Mode Indicator dot on screen */
 .kn-pen-indicator {
   position: fixed;
@@ -278,6 +332,17 @@ body.dark .kn-color-swatch.selected {
     right: 8px;
   }
   .kn-pen-toolbar.dock-left {
+    left: 8px;
+  }
+  .kn-pen-float-chip {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+  .kn-pen-float-chip.dock-right {
+    right: 8px;
+  }
+  .kn-pen-float-chip.dock-left {
     left: 8px;
   }
   .kn-tool-btn {

@@ -1,9 +1,19 @@
 /**
- * KNOCKOUTNOTES — Stylus / Pen Handwriting Engine (study-annotations.js)
+ * KNOCKOUTNOTES — Stylus / Pen Handwriting & Annotation Engine (study-annotations.js)
  * Strictly scoped to the Study section (body[data-content-page="study"]).
- * Automatically reveals a sleek floating vertical toolbar on the left/right
- * side the moment an Apple Pencil, Samsung S Pen, or stylus is detected.
- * Includes Pen, Pencil, Highlighter, Eraser, Swatches, Palm Rejection, and Local/Cloud Storage.
+ *
+ * SPECIFICATION & USER BEHAVIOR:
+ * 1. Automatic Stylus Detection: The moment a stylus (Samsung S Pen, Apple Pencil,
+ *    Surface Pen, or standard active stylus) is detected via hover or touch,
+ *    the floating annotation toolbar appears immediately at the screen edge.
+ * 2. Drawing Mode Active: Touching with stylus DRAWS on the screen with pressure
+ *    dynamics. Normal touch like kinetic scrolling is OFF for the stylus.
+ *    Fingers can still scroll the page, with palm rejection shielding stray touches
+ *    while the stylus is writing.
+ * 3. Drawing Mode Closed: When the user dismisses the floating window (via ✕),
+ *    normal touch with stylus is ON. The stylus behaves like a standard finger
+ *    (scrolling the webpage, tapping links, etc.). A sleek floating pen chip (✏️)
+ *    remains available at the edge to re-open drawing mode with one tap.
  */
 
 (function () {
@@ -34,26 +44,59 @@
     "#ffffff"  // Crisp white (for dark mode)
   ];
 
-  // State
-  let activeTool = null; // null = viewing/navigation mode, string = drawing mode
+  // Core State
+  let activeTool = TOOLS.PEN;
   let activeColor = DEFAULT_COLORS[0];
+  let isDrawingModeActive = false; // true when toolbar is open and drawing is active
+  let userDismissedToolbar = false; // true if user explicitly tapped ✕
+  let stylusDetected = false;
+  let toastShown = false;
   let isDrawing = false;
-  let penActive = false; // Flag for hardware palm rejection
+  let penActive = false; // Flag for hardware palm rejection while pen touches
+  let penActiveTimeout = null;
   let currentStroke = null;
   let strokes = [];
   let undoStack = [];
   let currentTopicId = null;
   let dockSide = "right"; // "right" or "left"
-  let stylusDetected = false;
-  let toastShown = false;
 
   // DOM Elements
   let canvas = null;
   let ctx = null;
   let toolbar = null;
+  let floatChip = null;
   let stageContainer = null;
   let resizeObserver = null;
   let mutationObserver = null;
+
+  /**
+   * Robust Stylus / Pen Event Detector
+   * Covers Samsung S-Pen (Android Chrome/Samsung Internet), Apple Pencil (iPadOS Safari),
+   * Windows Ink, and standard Pointer Events Level 2/3.
+   */
+  function isStylusEvent(e) {
+    if (!e) return false;
+    if (e.pointerType === "pen" || e.pointerType === "stylus") return true;
+    if (e.touchType === "stylus") return true;
+    if (e.altitudeAngle !== undefined && e.altitudeAngle > 0) return true;
+    if (e.touches && e.touches.length > 0) {
+      for (let i = 0; i < e.touches.length; i++) {
+        const t = e.touches[i];
+        if (t.touchType === "stylus" || (t.altitudeAngle !== undefined && t.altitudeAngle > 0)) {
+          return true;
+        }
+      }
+    }
+    if (e.changedTouches && e.changedTouches.length > 0) {
+      for (let i = 0; i < e.changedTouches.length; i++) {
+        const t = e.changedTouches[i];
+        if (t.touchType === "stylus" || (t.altitudeAngle !== undefined && t.altitudeAngle > 0)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 
   /**
    * Check if user is logged in
@@ -72,6 +115,7 @@
 
   /**
    * Get active topic ID across all URL and DOM representations
+   * Always returns a valid string (never null) so annotations can always be persisted.
    */
   function getActiveTopicId() {
     try {
@@ -91,16 +135,22 @@
       if (cleaned) return cleaned;
     }
 
-    const stageBox = document.getElementById("ronMainContentBox");
-    if (stageBox) {
-      const titleEl = document.querySelector(".ron-diagnosis-title");
-      if (titleEl && titleEl.textContent) {
-        return titleEl.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-");
-      }
-      return "current_topic";
+    const titleEl = document.querySelector(".ron-diagnosis-title");
+    if (titleEl && titleEl.textContent) {
+      return titleEl.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-");
     }
 
-    return null;
+    try {
+      const catParam = new URLSearchParams(window.location.search).get("cat");
+      if (catParam) return "cat_" + catParam;
+    } catch (_) {}
+
+    const catTitle = document.querySelector(".ron-title-scoop h1");
+    if (catTitle && catTitle.textContent) {
+      return "cat_" + catTitle.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    }
+
+    return "study_overview";
   }
 
   /**
@@ -123,7 +173,6 @@
 
     try {
       let saved = localStorage.getItem(getStorageKey(topicId));
-      // Fallback: check guest key if logged in user has no strokes yet
       if (!saved && isUserLoggedIn()) {
         saved = localStorage.getItem(`kn_annotations_guest_${topicId}`);
       }
@@ -152,21 +201,29 @@
   }
 
   /**
-   * Initialize or attach the annotation canvas over #ronMainContentBox
+   * Get the primary study container to mount canvas over
+   */
+  function getStageContainer() {
+    return document.querySelector(".ron-screen") ||
+           document.getElementById("ronStudyApp") ||
+           document.querySelector(".ron-stage-container") ||
+           document.getElementById("stStage") ||
+           document.getElementById("stDetail");
+  }
+
+  /**
+   * Initialize or attach the annotation canvas over the full study stage
    */
   function setupCanvas() {
     if (!isStudySection()) return;
 
-    stageContainer = document.getElementById("ronMainContentBox") ||
-                     document.querySelector(".ron-stage-container") ||
-                     document.querySelector(".ron-screen");
+    stageContainer = getStageContainer();
     if (!stageContainer) return;
 
     if (!canvas) {
       canvas = document.createElement("canvas");
       canvas.className = "kn-annotation-canvas";
       ctx = canvas.getContext("2d", { willReadFrequently: false });
-      attachPointerListeners(canvas);
     }
 
     if (canvas.parentElement !== stageContainer) {
@@ -184,6 +241,9 @@
 
     if (!mutationObserver && window.MutationObserver) {
       mutationObserver = new MutationObserver(() => {
+        if (canvas && canvas.parentElement !== stageContainer && stageContainer) {
+          stageContainer.appendChild(canvas);
+        }
         syncCanvasDimensions();
       });
       mutationObserver.observe(stageContainer, { childList: true, subtree: true });
@@ -191,13 +251,13 @@
   }
 
   /**
-   * Resize canvas matching the scrollable scrollHeight of the stage
+   * Resize canvas matching the container with high-DPI scaling
    */
   function syncCanvasDimensions() {
     if (!stageContainer || !canvas || !ctx) return;
     const rect = stageContainer.getBoundingClientRect();
-    const width = Math.max(stageContainer.scrollWidth, rect.width, 320);
-    const height = Math.max(stageContainer.scrollHeight, rect.height, 500);
+    const width = Math.max(stageContainer.scrollWidth, stageContainer.offsetWidth, rect.width, 320);
+    const height = Math.max(stageContainer.scrollHeight, stageContainer.offsetHeight, rect.height, 500);
 
     const dpr = window.devicePixelRatio || 1;
     const targetW = Math.round(width * dpr);
@@ -214,48 +274,8 @@
   }
 
   /**
-   * Global Pen & Stylus Detection Listener
-   * When any pen/stylus interacts or hovers near the screen, reveal the floating sidebar immediately
+   * Notification toast when stylus is detected
    */
-  function setupGlobalPenDetection() {
-    const handleGlobalPointer = (e) => {
-      if (!isStudySection()) return;
-
-      const isStylus = e.pointerType === "pen" ||
-                       (e.pointerType === "touch" && e.altitudeAngle !== undefined && e.altitudeAngle > 0) ||
-                       (e.touches && e.touches[0] && e.touches[0].touchType === "stylus");
-
-      if (isStylus) {
-        if (!stylusDetected) {
-          stylusDetected = true;
-          if (!toastShown) {
-            toastShown = true;
-            showStylusDetectedToast();
-          }
-        }
-
-        // Ensure canvas and toolbar exist
-        setupCanvas();
-        if (!toolbar) renderToolbar();
-        showToolbar();
-
-        if (activeTool !== TOOLS.PENCIL && activeTool !== TOOLS.HIGHLIGHTER && activeTool !== TOOLS.ERASER) {
-          setTool(TOOLS.PEN);
-        }
-      }
-    };
-
-    ["pointerdown", "pointermove", "pointerenter"].forEach((evt) => {
-      window.addEventListener(evt, handleGlobalPointer, { capture: true, passive: true });
-      document.addEventListener(evt, handleGlobalPointer, { capture: true, passive: true });
-    });
-    document.addEventListener("touchstart", (e) => {
-      if (e.touches && e.touches[0] && e.touches[0].touchType === "stylus") {
-        handleGlobalPointer(e);
-      }
-    }, { capture: true, passive: true });
-  }
-
   function showStylusDetectedToast() {
     if (document.getElementById("knStylusToast")) return;
     const toast = document.createElement("div");
@@ -269,60 +289,34 @@
   }
 
   /**
-   * Pointer Events with Stylus Palm Rejection
+   * Convert Pointer/Touch event client coordinates to canvas-space coordinates
    */
-  function attachPointerListeners(cvs) {
-    cvs.addEventListener("pointerdown", onPointerDown, { passive: false });
-    cvs.addEventListener("pointermove", onPointerMove, { passive: false });
-    cvs.addEventListener("pointerup", onPointerUp, { passive: false });
-    cvs.addEventListener("pointercancel", onPointerCancel, { passive: false });
-    cvs.addEventListener("pointerleave", onPointerCancel, { passive: false });
-  }
-
   function getCanvasCoords(e) {
+    if (!canvas) return { x: 0, y: 0, pressure: 0.5 };
     const rect = canvas.getBoundingClientRect();
+    const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+    const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
     const pressure = (e.pressure !== undefined && e.pressure > 0) ? e.pressure : 0.5;
     return {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
+      x: clientX - rect.left,
+      y: clientY - rect.top,
       pressure: Math.min(Math.max(pressure, 0.15), 1.0)
     };
   }
 
+  /**
+   * Internal drawing stroke handlers
+   */
   function onPointerDown(e) {
-    if (!activeTool) return;
+    if (!activeTool || activeTool === TOOLS.READ) return;
 
-    const isPen = e.pointerType === "pen" ||
-                  (e.pointerType === "touch" && e.altitudeAngle !== undefined && e.altitudeAngle > 0);
-
-    // Palm Rejection: When a stylus/pen is present or actively writing, reject finger touches
-    if (isPen) {
-      penActive = true;
-      if (!stylusDetected) {
-        stylusDetected = true;
-        showStylusDetectedToast();
-      }
-    } else if (e.pointerType === "touch" && penActive) {
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-    }
-
-    // S Pen Barrel button shortcut (Eraser toggle)
     let toolToUse = activeTool;
-    if (e.button === 5 || e.buttons === 32) {
+    // S Pen barrel button shortcut toggles eraser
+    if (e.button === 5 || e.buttons === 32 || (e.buttons & 2)) {
       toolToUse = TOOLS.ERASER;
     }
 
-    e.preventDefault();
     isDrawing = true;
-
-    try {
-      if (canvas && typeof canvas.setPointerCapture === "function") {
-        canvas.setPointerCapture(e.pointerId);
-      }
-    } catch (_) {}
-
     const pt = getCanvasCoords(e);
 
     if (toolToUse === TOOLS.ERASER) {
@@ -335,22 +329,17 @@
       color: activeColor,
       points: [pt]
     };
+
+    // Draw immediate initial dot
+    drawSegment(currentStroke, 0, 0);
   }
 
   function onPointerMove(e) {
     if (!isDrawing) return;
 
-    // Palm Rejection: ignore touches during pen drawing
-    if (e.pointerType === "touch" && penActive) {
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-    }
-
-    e.preventDefault();
     const pt = getCanvasCoords(e);
 
-    if (activeTool === TOOLS.ERASER || e.button === 5 || e.buttons === 32) {
+    if (activeTool === TOOLS.ERASER || e.button === 5 || e.buttons === 32 || (e.buttons & 2)) {
       eraseAtPoint(pt.x, pt.y);
       return;
     }
@@ -366,42 +355,37 @@
     if (!isDrawing) return;
     isDrawing = false;
 
-    try {
-      if (canvas && typeof canvas.releasePointerCapture === "function") {
-        canvas.releasePointerCapture(e.pointerId);
-      }
-    } catch (_) {}
-
     if (currentStroke && currentStroke.points.length > 0) {
       strokes.push(currentStroke);
       undoStack = [];
       saveStrokes();
       currentStroke = null;
     }
-
-    if (e.pointerType === "pen") {
-      // Retain palm rejection shield for 400ms post-stroke
-      setTimeout(() => {
-        penActive = false;
-      }, 400);
-    }
-  }
-
-  function onPointerCancel(e) {
-    onPointerUp(e);
   }
 
   /**
-   * Rendering individual segment with smooth curves & pressure dynamics
+   * Segment rendering with pressure and tool dynamics
    */
   function drawSegment(stroke, startIndex, endIndex) {
-    if (!ctx || startIndex < 0 || endIndex >= stroke.points.length) return;
+    if (!ctx || !stroke.points || stroke.points.length === 0) return;
     const p1 = stroke.points[startIndex];
-    const p2 = stroke.points[endIndex];
+    const p2 = stroke.points[endIndex] || p1;
 
     ctx.save();
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
+
+    if (startIndex === endIndex || stroke.points.length === 1) {
+      // Single tap dot
+      ctx.fillStyle = stroke.color;
+      ctx.globalAlpha = stroke.tool === TOOLS.HIGHLIGHTER ? 0.35 : 0.95;
+      const radius = stroke.tool === TOOLS.HIGHLIGHTER ? 12 : (1.6 + p1.pressure * 2.5);
+      ctx.beginPath();
+      ctx.arc(p1.x, p1.y, radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+      return;
+    }
 
     if (stroke.tool === TOOLS.HIGHLIGHTER) {
       ctx.globalAlpha = 0.35;
@@ -433,20 +417,18 @@
   }
 
   /**
-   * Redraw all strokes on canvas
+   * Redraw all strokes on canvas with high-DPI transform preservation
    */
   function redrawAll() {
     if (!ctx || !canvas) return;
-    ctx.save();
+    const dpr = window.devicePixelRatio || 1;
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const dpr = window.devicePixelRatio || 1;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
     for (let i = 0; i < strokes.length; i++) {
       const s = strokes[i];
       if (s.points.length === 1) {
-        // Single tap dot
         drawSegment(s, 0, 0);
       } else {
         for (let j = 0; j < s.points.length - 1; j++) {
@@ -454,11 +436,10 @@
         }
       }
     }
-    ctx.restore();
   }
 
   /**
-   * Stroke-level Eraser (Samsung Notes / GoodNotes style)
+   * Stroke-level Eraser
    */
   function eraseAtPoint(x, y) {
     const radius = 26;
@@ -508,6 +489,160 @@
       redrawAll();
       saveStrokes();
     }
+  }
+
+  /**
+   * Check if an event target belongs to toolbar or popovers
+   */
+  function isToolbarElement(target) {
+    if (!target) return false;
+    return !!(target.closest && target.closest("#knPenToolbar, #knPalettePopover, #knPenFloatChip"));
+  }
+
+  /**
+   * MASTER GLOBAL POINTER INTERCEPTOR (Capture Phase)
+   * Controls when normal touch like scrolling is on or off for stylus.
+   */
+  function setupPointerInterceptors() {
+    // 1. POINTERDOWN (Capture Phase, passive: false)
+    document.addEventListener("pointerdown", (e) => {
+      if (!isStudySection()) return;
+
+      // Never intercept interactions with toolbar controls or floating chip
+      if (isToolbarElement(e.target)) return;
+
+      const isStylus = isStylusEvent(e);
+
+      if (isStylus) {
+        // Detect Stylus
+        if (!stylusDetected) {
+          stylusDetected = true;
+          if (!toastShown) {
+            toastShown = true;
+            showStylusDetectedToast();
+          }
+        }
+
+        // Maintain palm rejection shield while stylus is touching
+        penActive = true;
+        if (penActiveTimeout) clearTimeout(penActiveTimeout);
+
+        // Auto-reveal toolbar if not explicitly dismissed by user
+        if (!isDrawingModeActive && !userDismissedToolbar) {
+          showToolbar();
+        }
+
+        // When Drawing Mode is OPEN: Normal touch with stylus like scrolling is OFF
+        if (isDrawingModeActive) {
+          if (activeTool && activeTool !== TOOLS.READ) {
+            e.preventDefault();
+            e.stopPropagation();
+            setupCanvas();
+            onPointerDown(e);
+          }
+        }
+        // When Drawing Mode is CLOSED: Stylus acts as normal touch (scrolling is ON, not prevented)
+      } else if (e.pointerType === "touch") {
+        // Finger Touch:
+        if (isDrawingModeActive && penActive) {
+          // Palm Rejection: palm is resting on the glass while stylus writes
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        // When penActive is false, fingers scroll the page smoothly without interception
+      } else if (e.pointerType === "mouse") {
+        if (isDrawingModeActive && activeTool && activeTool !== TOOLS.READ) {
+          // Desktop testing / mouse drawing support
+          if (!isToolbarElement(e.target)) {
+            setupCanvas();
+            onPointerDown(e);
+          }
+        }
+      }
+    }, { capture: true, passive: false });
+
+    // 2. POINTERMOVE (Capture Phase, passive: false)
+    document.addEventListener("pointermove", (e) => {
+      if (!isStudySection()) return;
+
+      const isStylus = isStylusEvent(e);
+
+      if (isStylus && !isDrawing) {
+        // S Pen Hover detection (S Pen emits pointermove while hovering ~1.5cm above screen)
+        if (!stylusDetected) {
+          stylusDetected = true;
+          if (!toastShown) {
+            toastShown = true;
+            showStylusDetectedToast();
+          }
+          if (!isDrawingModeActive && !userDismissedToolbar) {
+            showToolbar();
+          }
+        }
+      }
+
+      if (isDrawing) {
+        if (isStylus || e.pointerType === "mouse") {
+          e.preventDefault();
+          e.stopPropagation();
+          onPointerMove(e);
+        }
+      }
+    }, { capture: true, passive: false });
+
+    // 3. POINTERUP & POINTERCANCEL (Capture Phase, passive: false)
+    const handlePointerEnd = (e) => {
+      if (!isStudySection()) return;
+
+      if (isDrawing) {
+        e.preventDefault();
+        onPointerUp(e);
+      }
+
+      if (isStylusEvent(e)) {
+        // Keep palm rejection active for 350ms after lifting pen
+        if (penActiveTimeout) clearTimeout(penActiveTimeout);
+        penActiveTimeout = setTimeout(() => {
+          penActive = false;
+        }, 350);
+      }
+    };
+
+    document.addEventListener("pointerup", handlePointerEnd, { capture: true, passive: false });
+    document.addEventListener("pointercancel", handlePointerEnd, { capture: true, passive: false });
+
+    // Additional hover/touch triggers for legacy devices
+    ["pointerenter", "pointerover"].forEach((evt) => {
+      document.addEventListener(evt, (e) => {
+        if (isStudySection() && isStylusEvent(e)) {
+          if (!stylusDetected) {
+            stylusDetected = true;
+            if (!toastShown) {
+              toastShown = true;
+              showStylusDetectedToast();
+            }
+            if (!isDrawingModeActive && !userDismissedToolbar) {
+              showToolbar();
+            }
+          }
+        }
+      }, { capture: true, passive: true });
+    });
+
+    document.addEventListener("touchstart", (e) => {
+      if (isStudySection() && isStylusEvent(e)) {
+        if (!stylusDetected) {
+          stylusDetected = true;
+          if (!toastShown) {
+            toastShown = true;
+            showStylusDetectedToast();
+          }
+          if (!isDrawingModeActive && !userDismissedToolbar) {
+            showToolbar();
+          }
+        }
+      }
+    }, { capture: true, passive: true });
   }
 
   /**
@@ -568,7 +703,7 @@
       </button>
 
       <!-- Dismiss Toolbar -->
-      <button type="button" class="kn-tool-btn" id="knDismissToolbarBtn" title="Hide Toolbar" aria-label="Hide">
+      <button type="button" class="kn-tool-btn" id="knDismissToolbarBtn" title="Hide Toolbar &amp; Enable Stylus Scrolling (✕)" aria-label="Hide">
         ✕
       </button>
     `;
@@ -577,23 +712,83 @@
     attachToolbarEvents();
   }
 
+  /**
+   * Floating Chip to Re-open Toolbar when closed
+   */
+  function renderFloatingChip() {
+    if (!isStudySection()) return;
+    if (floatChip && floatChip.parentElement) floatChip.remove();
+
+    floatChip = document.createElement("button");
+    floatChip.type = "button";
+    floatChip.className = `kn-pen-float-chip dock-${dockSide} kn-hidden`;
+    floatChip.id = "knPenFloatChip";
+    floatChip.title = "Re-open Stylus Drawing Tools";
+    floatChip.setAttribute("aria-label", "Open Stylus Tools");
+    floatChip.innerHTML = "✏️";
+
+    floatChip.addEventListener("click", () => {
+      userDismissedToolbar = false;
+      showToolbar();
+    });
+
+    document.body.appendChild(floatChip);
+  }
+
+  function showFloatingChip() {
+    if (!floatChip) renderFloatingChip();
+    if (floatChip) {
+      floatChip.classList.remove("kn-hidden");
+    }
+  }
+
+  function hideFloatingChip() {
+    if (floatChip) {
+      floatChip.classList.add("kn-hidden");
+    }
+  }
+
+  /**
+   * Reveal Toolbar and Activate Drawing Mode
+   * Normal touch with stylus is now OFF (stylus draws).
+   */
   function showToolbar() {
     setupCanvas();
     if (!toolbar) renderToolbar();
+    if (!floatChip) renderFloatingChip();
+
+    userDismissedToolbar = false;
+    isDrawingModeActive = true;
+
     if (toolbar) {
       toolbar.classList.remove("kn-hidden");
     }
-    // If no active tool is set, default to pen
-    if (!activeTool) {
+    hideFloatingChip();
+
+    if (!activeTool || activeTool === TOOLS.READ) {
       setTool(TOOLS.PEN);
     }
   }
 
+  /**
+   * Hide Toolbar and Deactivate Drawing Mode
+   * Normal touch with stylus like scrolling is now ON!
+   */
   function hideToolbar() {
+    userDismissedToolbar = true;
+    isDrawingModeActive = false;
+    isDrawing = false;
+    activeTool = null;
+
     if (toolbar) {
       toolbar.classList.add("kn-hidden");
-      setTool(null);
     }
+    if (canvas) {
+      canvas.classList.remove("active-mode");
+    }
+
+    // Display re-open chip so user can bring drawing tools back anytime
+    showFloatingChip();
   }
 
   function attachToolbarEvents() {
@@ -624,15 +819,23 @@
           dockSide = "left";
           toolbar.classList.remove("dock-right");
           toolbar.classList.add("dock-left");
+          if (floatChip) {
+            floatChip.classList.remove("dock-right");
+            floatChip.classList.add("dock-left");
+          }
         } else {
           dockSide = "right";
           toolbar.classList.remove("dock-left");
           toolbar.classList.add("dock-right");
+          if (floatChip) {
+            floatChip.classList.remove("dock-left");
+            floatChip.classList.add("dock-right");
+          }
         }
       });
     }
 
-    // Dismiss toolbar
+    // Dismiss toolbar (Closes drawing mode, enables normal stylus scrolling)
     const dismissBtn = toolbar.querySelector("#knDismissToolbarBtn");
     if (dismissBtn) {
       dismissBtn.addEventListener("click", hideToolbar);
@@ -659,14 +862,6 @@
           btn.classList.remove("active");
         }
       });
-    }
-
-    if (canvas) {
-      if (activeTool) {
-        canvas.classList.add("active-mode");
-      } else {
-        canvas.classList.remove("active-mode");
-      }
     }
   }
 
@@ -706,7 +901,6 @@
 
     document.body.appendChild(popover);
 
-    // Auto close on outside click
     setTimeout(() => {
       const closeHandler = (e) => {
         if (!popover.contains(e.target) && e.target !== anchor) {
@@ -720,6 +914,8 @@
 
   /**
    * Monitor Study Mode Navigation & Topic Changes
+   * Ensures canvas is always mounted and strokes are properly associated.
+   * NEVER hides the toolbar automatically.
    */
   function monitorStudyNavigation() {
     if (!isStudySection()) return;
@@ -729,39 +925,27 @@
     const checkTopic = () => {
       if (!isStudySection()) {
         if (toolbar) toolbar.remove();
+        if (floatChip) floatChip.remove();
         if (canvas) canvas.remove();
+        toolbar = null;
+        floatChip = null;
+        canvas = null;
         return;
       }
 
+      setupCanvas();
+      if (!toolbar) renderToolbar();
+      if (!floatChip) renderFloatingChip();
+
       const topicId = getActiveTopicId();
-
-      if (topicId) {
-        setupCanvas();
-        if (!toolbar) renderToolbar();
-
-        if (topicId !== lastTopic) {
-          lastTopic = topicId;
-          loadStrokes(topicId);
-
-          // If stylus was previously detected in session, reveal toolbar
-          if (stylusDetected) {
-            showToolbar();
-          }
-        }
-      } else {
-        lastTopic = null;
-        if (canvas) {
-          // If we are browsing categories, keep canvas detached until topic opened
-          if (canvas.parentElement) canvas.remove();
-        }
-        if (toolbar) {
-          hideToolbar();
-        }
+      if (topicId !== lastTopic) {
+        lastTopic = topicId;
+        loadStrokes(topicId);
       }
     };
 
-    // Responsive checks
-    setInterval(checkTopic, 500);
+    // Periodic synchronization
+    setInterval(checkTopic, 600);
     window.addEventListener("popstate", checkTopic);
     window.addEventListener("kn:auth-changed", checkTopic);
     window.addEventListener("kn:study-topic-loaded", checkTopic);
@@ -777,15 +961,20 @@
     redo,
     clearAll,
     loadStrokes,
-    setupCanvas
+    setupCanvas,
+    isDrawingModeActive: () => isDrawingModeActive
   };
 
   // Boot listeners
-  setupGlobalPenDetection();
+  setupPointerInterceptors();
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", monitorStudyNavigation);
+    document.addEventListener("DOMContentLoaded", () => {
+      monitorStudyNavigation();
+      renderFloatingChip();
+    });
   } else {
     monitorStudyNavigation();
+    renderFloatingChip();
   }
 })();
