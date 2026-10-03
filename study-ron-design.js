@@ -213,7 +213,7 @@
       icon: "💉",
       desc: "Clinical anaesthesia practice, airway management, monitoring, equipment & subspecialty chapters",
       cats: [
-        { id: "all", label: "All Anaesthesia", icon: "✦", desc: "Comprehensive clinical anaesthesia syllabus based on Miller's Anesthesia & Tata's Objective Anaesthesia", filter: (it) => (["anaesthesia", "examination", "ecg", "equipment", "pft"].includes(it.cat) || (it.cat === "pain" && it.id !== "icu-analgosedation-padis-delirium")) },
+        { id: "all", label: "All Anaesthesia", icon: "✦", desc: "Comprehensive clinical anaesthesia syllabus based on Miller's Anesthesia & Tata's Objective Anaesthesia", filter: (it) => (["anaesthesia", "examination", "ecg", "equipment", "pft"].includes(it.cat) || (it.cat === "pain" && ["acute-pain-multimodal-analgesia-pca", "regional-neuraxial-analgesia-catheters", "neuropathic-pain-crps-post-surgical", "chronic-post-surgical-pain-neuromodulation"].includes(it.id))) },
         { id: "general", label: "General Anaesthesia", icon: "💉", desc: "Induction, maintenance, emergence, crisis checklists & peri-operative safety", filter: (it) => it.cat === "anaesthesia" },
         { id: "airway", label: "Airway", icon: "🫁", desc: "Airway assessment, video laryngoscopy, difficult airway algorithms & RSI", filter: (it) => it.cat === "anaesthesia" && (it.id.includes("airway") || it.id.includes("cricoid") || it.id.includes("lma") || it.id.includes("intubat") || (it.name || "").toLowerCase().includes("airway")) },
         { id: "regional", label: "Regional Anaesthesia", icon: "📍", desc: "Neuraxial blocks (spinal, epidural, CSE) and peripheral nerve catheters", filter: (it) => (it.cat === "anaesthesia" || it.cat === "pain") && (it.id.includes("spinal") || it.id.includes("epidural") || it.id.includes("block") || (it.name || "").toLowerCase().includes("spinal") || (it.name || "").toLowerCase().includes("epidural")) },
@@ -227,7 +227,7 @@
         { id: "equipment", label: "Equipment", icon: "⚙️", desc: "Anaesthesia machines, breathing circuits & vaporizers", filter: (it) => it.cat === "equipment" },
         { id: "pft", label: "Pulmonary Function Tests", icon: "📊", desc: "Preoperative spirometry, flow-volume loops & gas exchange", filter: (it) => it.cat === "pft" },
         { id: "examination", label: "Preop & Examination", icon: "📋", desc: "Preoperative assessment, system examination & risk indices", filter: (it) => it.cat === "examination" },
-        { id: "pain", label: "Pain Medicine", icon: "⚡", desc: "Acute perioperative pain protocols, multimodal analgesia, regional catheters, neuropathic syndromes & interventional blocks", filter: (it) => it.cat === "pain" && it.id !== "icu-analgosedation-padis-delirium" }
+        { id: "pain", label: "Pain Medicine", icon: "⚡", desc: "Acute perioperative pain protocols, multimodal analgesia, regional catheters, neuropathic syndromes & interventional blocks", filter: (it) => it.cat === "pain" && ["acute-pain-multimodal-analgesia-pca", "regional-neuraxial-analgesia-catheters", "neuropathic-pain-crps-post-surgical", "chronic-post-surgical-pain-neuromodulation"].includes(it.id) }
       ]
     },
     critical: {
@@ -236,13 +236,13 @@
       icon: "🫁",
       desc: "Complete 16-chapter intensive care syllabus (Washington Manual & consensus guidelines)",
       cats: [
-        { id: "all", label: "All Critical Care", icon: "✦", desc: "Complete 16-chapter Critical Care master syllabus (Washington Manual & consensus guidelines)", filter: (it) => (it.cat && it.cat.startsWith("cc_")) || ["shock", "respiratory", "abg", "antibiotics", "poisoning", "pain"].includes(it.cat) || (it.id && (it.id.includes("sepsis") || it.id.includes("shock") || it.id.includes("ards") || it.id.includes("ventilator"))) },
+        { id: "all", label: "All Critical Care", icon: "✦", desc: "Complete 16-chapter Critical Care master syllabus (Washington Manual & consensus guidelines)", filter: (it) => (it.cat && it.cat.startsWith("cc_")) || ["shock", "respiratory", "abg", "antibiotics", "poisoning"].includes(it.cat) || (it.cat === "pain" && it.id !== "chronic-post-surgical-pain-neuromodulation" && it.id !== "regional-neuraxial-analgesia-catheters") || (it.id && (it.id.includes("sepsis") || it.id.includes("shock") || it.id.includes("ards") || it.id.includes("ventilator"))) },
         { id: "cc_principles", label: "General Principles", icon: "🏛️", desc: "ICU organization, triage, severity scoring systems (APACHE, SOFA, NEWS2), ethics & organ donation", filter: (it) => it.cat === "cc_principles" },
         { id: "cc_airway", label: "Airway Management", icon: "🫁", desc: "Difficult airway in ICU, physiological RSI, video laryngoscopy & percutaneous tracheostomy", filter: (it) => it.cat === "cc_airway" || (it.id && it.id.includes("rsi")) || ((it.name || "").toLowerCase().includes("rsi")) },
         { id: "cc_respiratory", label: "Respiratory Critical Care", icon: "💨", desc: "ARDS, mechanical ventilation modes, APRV, waveforms, asynchrony, severe asthma & PE", filter: (it) => it.cat === "cc_respiratory" || it.cat === "respiratory" },
         { id: "cc_hemodynamics", label: "Hemodynamic Support", icon: "⚡", desc: "Shock classification, invasive monitoring, PiCCO, vasopressors, inotropes & dynamic preload", filter: (it) => it.cat === "cc_hemodynamics" || it.cat === "shock" },
         { id: "cc_sepsis", label: "Sepsis & Infections", icon: "🛡️", desc: "Sepsis-3 1-hour bundle, MDR pathogens, PK/PD beta-lactam infusions & source control", filter: (it) => it.cat === "cc_sepsis" || it.cat === "antibiotics" || (it.id && it.id.includes("sepsis")) },
-        { id: "cc_neuro", label: "Neurological Critical Care", icon: "🧠", desc: "Coma, GCS, intracranial hypertension, TBI, refractory status epilepticus, stroke & GBS", filter: (it) => it.cat === "cc_neuro" },
+        { id: "cc_neuro", label: "Neurological Critical Care", icon: "🧠", desc: "Coma, GCS/FOUR score, TBI, raised ICP, status epilepticus, stroke & EVT, GBS, CNS infections & brain death", filter: (it) => it.cat === "cc_neuro" },
         { id: "cc_cardio", label: "Cardiovascular Critical Care", icon: "❤️", desc: "Acute coronary syndromes, cardiogenic shock (SCAI), malignant arrhythmias & cardiac tamponade", filter: (it) => it.cat === "cc_cardio" },
         { id: "cc_renal", label: "Renal & Metabolic Support", icon: "🧪", desc: "AKI (KDIGO), CRRT modalities, acid-base disorders & severe electrolyte emergencies", filter: (it) => it.cat === "cc_renal" || it.cat === "abg" },
         { id: "cc_gi", label: "Gastrointestinal & Hepatic", icon: "🔬", desc: "Acute GI bleeding, severe acute pancreatitis, acute liver failure, ICU nutrition & refeeding", filter: (it) => it.cat === "cc_gi" },
@@ -253,7 +253,7 @@
         { id: "cc_peds", label: "Pediatric Critical Care", icon: "👶", desc: "Pediatric acute respiratory failure, croup, PALS protocols, pediatric septic shock & vasoactive support", filter: (it) => it.cat === "cc_peds" },
         { id: "cc_pharm", label: "ICU Pharmacology", icon: "💊", desc: "SCCM PADIS guidelines (pain, agitation, delirium), sedation protocols & neuromuscular blockade with TOF", filter: (it) => it.cat === "cc_pharm" },
         { id: "cc_advances", label: "Research & Recent Advances", icon: "🚀", desc: "Extracorporeal membrane oxygenation (VV vs VA ECMO), multiorgan critical care POCUS (BLUE/RUSH/VExUS)", filter: (it) => it.cat === "cc_advances" },
-        { id: "pain", label: "Pain Medicine", icon: "⚡", desc: "Multimodal analgesia, continuous regional catheters, neuropathic pain & palliative care", filter: (it) => it.cat === "pain" }
+        { id: "pain", label: "Pain Medicine & Analgosedation", icon: "⚡", desc: "ICU analgosedation, PADIS guidelines, CPOT/BPS, trauma/burn pain, opioid tapering & palliative care", filter: (it) => it.cat === "pain" && it.id !== "chronic-post-surgical-pain-neuromodulation" && it.id !== "regional-neuraxial-analgesia-catheters" }
       ]
     },
     drugs: {
@@ -281,16 +281,27 @@
   };
 
   function inferDomainFromCat(catId, item) {
-    if (item && item.id === "icu-analgosedation-padis-delirium") return "critical";
-    if (item && item.id && item.id.startsWith("cc_")) return "critical";
-    if (!catId || catId === "all") return "anaesthesia";
-    if (catId.startsWith("cc_")) return "critical";
+    if (item && item.cat === "pain") {
+      const icuPainIds = [
+        "icu-analgosedation-padis-delirium",
+        "opioid-induced-hyperalgesia-tolerance-tapering",
+        "novel-non-opioid-analgesic-pharmacology",
+        "trauma-burn-procedural-analgesia-icu",
+        "cancer-pain-opioid-rotation-palliative",
+        "interventional-sympathetic-nerve-blocks"
+      ];
+      if (icuPainIds.includes(item.id)) return "critical";
+      if (activeDomain === "critical") return "critical";
+      return "anaesthesia";
+    }
+    if (item && item.id && (item.id.startsWith("cc-") || item.id.startsWith("cc_") || item.cat === "cc_neuro")) return "critical";
+    if (!catId || catId === "all") return activeDomain || "anaesthesia";
+    if (catId.startsWith("cc_") || catId === "cc_neuro") return "critical";
     const drugCats = ["induction", "relaxants", "reversal", "opioids", "nsaids", "vasopressors", "antihypertensives", "alpha2", "local", "steroids", "antidiabetics", "pregnancy", "miscellaneous"];
     if (drugCats.includes(catId)) return "drugs";
     const critCats = ["respiratory", "shock", "abg", "antibiotics", "poisoning", "sepsis", "neuro_icu", "airway_icu", "cardio_icu"];
     if (critCats.includes(catId)) return "critical";
     if (catId === "pain") {
-      if (item && item.id === "icu-analgosedation-padis-delirium") return "critical";
       if (activeDomain === "critical") return "critical";
       return "anaesthesia";
     }

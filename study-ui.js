@@ -65,14 +65,21 @@
   const drugById = new Map((DATA.drugs || []).filter(Boolean).map((d) => [d.id, d]));
   const topicById = new Map((DATA.topics || []).filter(Boolean).map((t) => [t.id, t]));
   const catById = new Map((DATA.categories || []).filter(Boolean).map((c) => [c.id, c]));
-  const TOPIC_CATS = new Set(["anaesthesia", "examination", "ecg", "abg", "equipment", "pft"]);
-  const isDrugCat = (catId) => !TOPIC_CATS.has(catId);
+  const TOPIC_CATS = new Set([
+    "anaesthesia", "examination", "ecg", "abg", "equipment", "pft",
+    "antibiotics", "poisoning", "shock", "respiratory", "pain",
+    "cc_principles", "cc_airway", "cc_respiratory", "cc_hemodynamics",
+    "cc_sepsis", "cc_neuro", "cc_cardio", "cc_renal", "cc_gi",
+    "cc_trauma", "cc_tox", "cc_heme", "cc_obs", "cc_peds",
+    "cc_pharm", "cc_advances"
+  ]);
+  const isDrugCat = (catId) => (DATA.drugs || []).some((d) => d && d.cat === catId) && !(DATA.topics || []).some((t) => t && t.cat === catId);
 
-  function itemById(id) { return drugById.get(id) || topicById.get(id) || null; }
+  function itemById(id) { return topicById.get(id) || drugById.get(id) || null; }
   function itemsInCat(catId) {
-    return TOPIC_CATS.has(catId)
-      ? (DATA.topics || []).filter((t) => t && t.cat === catId)
-      : (DATA.drugs || []).filter((d) => d && d.cat === catId);
+    const topicMatches = (DATA.topics || []).filter((t) => t && t.cat === catId);
+    if (topicMatches.length > 0) return topicMatches;
+    return (DATA.drugs || []).filter((d) => d && d.cat === catId);
   }
 
   let state = { cat: "anaesthesia", item: null, filter: "" };
@@ -4295,9 +4302,10 @@
       window.KNUnmountAllTileMolecules();
     }
     $("#stList").hidden = true;
-    $("#stDetail").hidden = false;
     const item = itemById(state.item);
-    const drug = isDrugCat(item.cat);
+    if (!item) return;
+    $("#stDetail").hidden = false;
+    const drug = !item.sections;
     const cat = catById.get(item.cat);
     document.title = `${item.name} | Study Mode | KnockoutNotes`;
 
