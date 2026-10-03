@@ -37,9 +37,9 @@
   }
 
   const HIGHLIGHT_RE = new RegExp(
-    "\\d+(?:\\.\\d+)?(?:\\s?[\\u2013-]\\s?\\d+(?:\\.\\d+)?)?\\s?" +
+    "\\b\\d+(?:\\.\\d+)?(?:\\s?[\\u2013-]\\s?\\d+(?:\\.\\d+)?)?\\s*" +
       "(?:mg\\/kg\\/min|mcg\\/kg\\/min|mg\\/kg\\/h(?:r)?|mcg\\/kg\\/h(?:r)?|units?\\/kg\\/h(?:r)?|" +
-      "mg\\/kg|mcg\\/kg|mg\\/min|mcg\\/min|mL\\/kg|ml\\/kg|mEq\\/kg|mg|mcg|g\\/kg|g|mL|ml|units?|IU|mEq|" +
+      "mg\\/kg|mcg\\/kg|mg\\/min|mcg\\/min|mL\\/kg|ml\\/kg|mEq\\/kg|mg|mcg|g\\/kg|g\\b|mL|ml|units?|IU|mEq|" +
       "mmHg|bpm|minutes?|mins?|hours?|hrs?|seconds?|secs?|%)" +
       "|\\b(?:contraindicated|black[\\s-]box warning|boxed warning|do not (?:administer|give|use)|" +
       "never give|never use|avoid in|life-threatening|malignant hyperthermia|anaphylaxis|" +
@@ -211,17 +211,23 @@
       id: "anaesthesia",
       label: "ANAESTHESIA",
       icon: "💉",
-      desc: "Clinical anaesthesia practice, airway management, monitoring and equipment",
+      desc: "Clinical anaesthesia practice, airway management, monitoring, equipment & subspecialty chapters",
       cats: [
-        { id: "all", label: "All Anaesthesia", icon: "✦", desc: "Comprehensive clinical anaesthesia syllabus", filter: (it) => ["anaesthesia", "examination", "ecg", "equipment", "pft"].includes(it.cat) },
-        { id: "general", label: "General Anaesthesia", icon: "💉", desc: "Induction, maintenance, emergence & peri-operative safety", filter: (it) => it.cat === "anaesthesia" },
-        { id: "airway", label: "Airway", icon: "🫁", desc: "Airway assessment, devices, difficult airway algorithms & RSI", filter: (it) => it.cat === "anaesthesia" && (it.id.includes("airway") || it.id.includes("cricoid") || it.id.includes("lma") || it.id.includes("intubat") || (it.name || "").toLowerCase().includes("airway")) },
-        { id: "regional", label: "Regional Anaesthesia", icon: "📍", desc: "Neuraxial blocks (spinal, epidural) and peripheral nerve blocks", filter: (it) => it.cat === "anaesthesia" && (it.id.includes("spinal") || it.id.includes("epidural") || it.id.includes("block") || (it.name || "").toLowerCase().includes("spinal") || (it.name || "").toLowerCase().includes("epidural")) },
+        { id: "all", label: "All Anaesthesia", icon: "✦", desc: "Comprehensive clinical anaesthesia syllabus based on Miller's Anesthesia & Tata's Objective Anaesthesia", filter: (it) => (["anaesthesia", "examination", "ecg", "equipment", "pft"].includes(it.cat) || (it.cat === "pain" && it.id !== "icu-analgosedation-padis-delirium")) },
+        { id: "general", label: "General Anaesthesia", icon: "💉", desc: "Induction, maintenance, emergence, crisis checklists & peri-operative safety", filter: (it) => it.cat === "anaesthesia" },
+        { id: "airway", label: "Airway", icon: "🫁", desc: "Airway assessment, video laryngoscopy, difficult airway algorithms & RSI", filter: (it) => it.cat === "anaesthesia" && (it.id.includes("airway") || it.id.includes("cricoid") || it.id.includes("lma") || it.id.includes("intubat") || (it.name || "").toLowerCase().includes("airway")) },
+        { id: "regional", label: "Regional Anaesthesia", icon: "📍", desc: "Neuraxial blocks (spinal, epidural, CSE) and peripheral nerve catheters", filter: (it) => (it.cat === "anaesthesia" || it.cat === "pain") && (it.id.includes("spinal") || it.id.includes("epidural") || it.id.includes("block") || (it.name || "").toLowerCase().includes("spinal") || (it.name || "").toLowerCase().includes("epidural")) },
+        { id: "obstetrics", label: "Obstetric Anaesthesia", icon: "🤰", desc: "Labour analgesia, Caesarean delivery, high-risk pregnancy, pre-eclampsia, PPH & AFE", filter: (it) => it.cat === "anaesthesia" && (it.id.includes("obstetric") || it.id.includes("labour") || it.id.includes("pregnancy") || (it.tags || []).some(t => (t || "").toLowerCase().includes("obstetric") || (t || "").toLowerCase().includes("labour") || (t || "").toLowerCase().includes("caesarean"))) },
+        { id: "neuro", label: "Neuroanaesthesia", icon: "🧠", desc: "Cerebral physiology, CBF, ICP, supratentorial craniotomy, sitting position, VAE & SAH", filter: (it) => it.cat === "anaesthesia" && (it.id.includes("neuro") || it.id.includes("craniotomy") || (it.tags || []).some(t => (t || "").toLowerCase().includes("neuro") || (t || "").toLowerCase().includes("icp") || (t || "").toLowerCase().includes("craniotomy"))) },
+        { id: "cardiothoracic", label: "Cardiothoracic & Vascular", icon: "🫀", desc: "One-lung ventilation, double-lumen tubes, CPB, valvular heart disease & vascular surgery", filter: (it) => it.cat === "anaesthesia" && (it.id.startsWith("thoracic-") || it.id.startsWith("cardiac-") || (it.tags || []).some(t => ["cardiac anaesthesia", "thoracic anaesthesia", "cardiopulmonary bypass", "valvular heart disease", "cpb"].includes((t || "").toLowerCase()))) },
+        { id: "pediatrics", label: "Pediatric Anaesthesia", icon: "👶", desc: "Pediatric airway, neonatal surgical emergencies, fasting guidelines & laryngospasm", filter: (it) => it.cat === "anaesthesia" && (it.id.startsWith("pediatric-") || (it.tags || []).some(t => ["pediatric anaesthesia", "neonatal emergencies", "cuffed ett"].includes((t || "").toLowerCase()))) },
+        { id: "endocrine_renal", label: "Endocrine & Renal Anaesthesia", icon: "🧪", desc: "Pheochromocytoma, thyroid storm, ESRD, renal transplantation & TURP syndrome", filter: (it) => it.cat === "anaesthesia" && (it.id.startsWith("endocrine-") || it.id.startsWith("renal-transplant") || (it.tags || []).some(t => ["endocrine anaesthesia", "renal anaesthesia", "pheochromocytoma", "turp syndrome"].includes((t || "").toLowerCase()))) },
+        { id: "specialties", label: "ENT, Eyes, Trauma & Ortho", icon: "👁️", desc: "Oculocardiac reflex, airway fire, bleeding tonsil, BCIS, fat embolism & geriatric care", filter: (it) => it.cat === "anaesthesia" && (it.id.startsWith("ophthalmic-") || it.id.startsWith("trauma-ortho-") || (it.tags || []).some(t => ["ophthalmic anaesthesia", "ent anaesthesia", "orthopaedic anaesthesia", "geriatric anaesthesia", "bcis"].includes((t || "").toLowerCase()))) },
         { id: "monitoring", label: "Monitoring & ECG", icon: "📈", desc: "Hemodynamic monitoring, ECG interpretation & capnography", filter: (it) => it.cat === "ecg" },
         { id: "equipment", label: "Equipment", icon: "⚙️", desc: "Anaesthesia machines, breathing circuits & vaporizers", filter: (it) => it.cat === "equipment" },
         { id: "pft", label: "Pulmonary Function Tests", icon: "📊", desc: "Preoperative spirometry, flow-volume loops & gas exchange", filter: (it) => it.cat === "pft" },
         { id: "examination", label: "Preop & Examination", icon: "📋", desc: "Preoperative assessment, system examination & risk indices", filter: (it) => it.cat === "examination" },
-        { id: "pain", label: "Pain Medicine", icon: "⚡", desc: "Acute perioperative pain protocols, multimodal analgesia, regional catheters, neuropathic syndromes & palliative care", filter: (it) => it.cat === "pain" || it.id.includes("pain") || (it.tags || []).some(t => (t || "").toLowerCase().includes("pain")) }
+        { id: "pain", label: "Pain Medicine", icon: "⚡", desc: "Acute perioperative pain protocols, multimodal analgesia, regional catheters, neuropathic syndromes & interventional blocks", filter: (it) => it.cat === "pain" && it.id !== "icu-analgosedation-padis-delirium" }
       ]
     },
     critical: {
@@ -274,13 +280,20 @@
     }
   };
 
-  function inferDomainFromCat(catId) {
+  function inferDomainFromCat(catId, item) {
+    if (item && item.id === "icu-analgosedation-padis-delirium") return "critical";
+    if (item && item.id && item.id.startsWith("cc_")) return "critical";
     if (!catId || catId === "all") return "anaesthesia";
     if (catId.startsWith("cc_")) return "critical";
     const drugCats = ["induction", "relaxants", "reversal", "opioids", "nsaids", "vasopressors", "antihypertensives", "alpha2", "local", "steroids", "antidiabetics", "pregnancy", "miscellaneous"];
     if (drugCats.includes(catId)) return "drugs";
     const critCats = ["respiratory", "shock", "abg", "antibiotics", "poisoning", "sepsis", "neuro_icu", "airway_icu", "cardio_icu"];
     if (critCats.includes(catId)) return "critical";
+    if (catId === "pain") {
+      if (item && item.id === "icu-analgosedation-padis-delirium") return "critical";
+      if (activeDomain === "critical") return "critical";
+      return "anaesthesia";
+    }
     return "anaesthesia";
   }
 
@@ -439,7 +452,7 @@
     if (!item) return;
     activeItem = item;
     activeCat = item.cat;
-    activeDomain = inferDomainFromCat(item.cat);
+    activeDomain = inferDomainFromCat(item.cat, item);
 
     try {
       const url = new URL(window.location.href);
@@ -499,7 +512,7 @@
       }
       if (activeItem) {
         activeCat = activeItem.cat;
-        activeDomain = inferDomainFromCat(activeItem.cat);
+        activeDomain = inferDomainFromCat(activeItem.cat, activeItem);
       }
     } else {
       activeItem = null;
@@ -1636,18 +1649,25 @@
           </div>
         </div>`;
       }
-      // 4. Standard Paragraph -> Split into clean sentence-level points
+      // 4. Standard Paragraph -> Split into clean sentence-level points without breaking decimals or abbreviations
       else {
-        const sentences = trimmed.match(/[^.!?]+[.!?]+(?:\s|$)|[^.!?]+$/g);
-        if (sentences && sentences.length > 1) {
-          sentences.forEach(s => {
-            const st = s.trim();
-            if (st) {
-              result += `<div class="ron-point-row">
-                <span class="ron-point-bullet">•</span>
-                <div class="ron-point-text">${formatInlineContent(st)}</div>
-              </div>`;
-            }
+        // Protect decimals (e.g. 0.5 mg) and common abbreviations from being broken into fragmented points
+        const protectedText = trimmed
+          .replace(/(\d)\.(\d)/g, "$1\u2024$2")
+          .replace(/\b(e\.g|i\.e|vs|approx|etc|vol|no|dr|fig|tab|al|ed)\./gi, "$1\u2024");
+        
+        // Split on sentence-ending punctuation followed by whitespace and a capital letter or quote
+        const sentences = protectedText.split(/(?<=[.!?])\s+(?=[A-Z0-9"'\u201C\u2018])/);
+        const validSentences = sentences
+          .map(s => s.replace(/\u2024/g, ".").trim())
+          .filter(s => s.length > 0);
+
+        if (validSentences.length > 1) {
+          validSentences.forEach(st => {
+            result += `<div class="ron-point-row">
+              <span class="ron-point-bullet">•</span>
+              <div class="ron-point-text">${formatInlineContent(st)}</div>
+            </div>`;
           });
         } else {
           result += `<div class="ron-point-row">
