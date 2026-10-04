@@ -4334,9 +4334,17 @@
         <a class="st-back" href="${backHref}" data-back>← Back to ${esc(cat.label)}</a>
         <section class="st-card st-title-card st-reveal st-reveal-visible" data-cat="${item.cat}">
           <div class="st-title-card-media" aria-hidden="true">${titleMediaHTML}</div>
-          <div class="st-title-card-body">
-            <h1>${esc(item.name)}</h1>
-            <p class="st-tagline-lg">${esc(item.tagline)}</p>
+          <div class="st-title-card-body" style="flex:1;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;">
+              <div>
+                <h1>${esc(item.name)}</h1>
+                <p class="st-tagline-lg">${esc(item.tagline)}</p>
+              </div>
+              <button type="button" class="kn-download-pdf-btn" data-chapter-id="${esc(item.id)}" title="Download Official Branded PDF Monograph" onclick="if(window.KN_PAYMENTS)window.KN_PAYMENTS.initiateChapterDownload('${esc(item.id)}', '${esc(item.name).replace(/'/g, "\\'")}');">
+                <svg class="kn-download-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>Download PDF</span>
+              </button>
+            </div>
             ${tagsRow}
           </div>
         </section>

@@ -81,6 +81,16 @@ import {
   getWorkstationMarkers,
   upsertWorkstationMarkers
 } from './workstation.js';
+import {
+  handleGetChapterPricing,
+  handleCreateCashfreeOrder,
+  handleVerifyCashfreeOrder,
+  handleCashfreeWebhook,
+  handleDownloadChapterPDF,
+  handleGetUserPaymentHistory,
+  handleAdminPaymentsOverview,
+  handleAdminUpdatePricing
+} from './payments.js';
 
 
 // Standard CORS headers
@@ -691,6 +701,57 @@ export default {
       if (pathname === '/api/user/sync' && request.method === 'POST') {
         return handleSync(request, env, userAuth);
       }
+
+      // User Payments & Entitlements
+      if (pathname === '/api/user/payments' && request.method === 'GET') {
+        return handleGetUserPaymentHistory(request, env, userAuth);
+      }
+    }
+
+    // ==========================================
+    // CASHFREE LIVE PAYMENTS & PDF ENGINE
+    // ==========================================
+    if (pathname === '/api/payments/chapter-price' && request.method === 'GET') {
+      const sessionId = extractUserSessionId(request);
+      const userAuth = sessionId ? await validateUserSession(env.DB, sessionId) : null;
+      return handleGetChapterPricing(request, env, userAuth);
+    }
+
+    if (pathname === '/api/payments/cashfree/webhook' && request.method === 'POST') {
+      return handleCashfreeWebhook(request, env);
+    }
+
+    if (pathname === '/api/payments/cashfree/create-order' && request.method === 'POST') {
+      const sessionId = extractUserSessionId(request);
+      const userAuth = await validateUserSession(env.DB, sessionId);
+      if (!userAuth) return jsonResponse({ error: 'Unauthorized. Please log in.', authenticated: false }, 401);
+      return handleCreateCashfreeOrder(request, env, userAuth);
+    }
+
+    if (pathname === '/api/payments/cashfree/verify-order' && request.method === 'GET') {
+      const sessionId = extractUserSessionId(request);
+      const userAuth = await validateUserSession(env.DB, sessionId);
+      if (!userAuth) return jsonResponse({ error: 'Unauthorized. Please log in.', authenticated: false }, 401);
+      return handleVerifyCashfreeOrder(request, env, userAuth);
+    }
+
+    if (pathname === '/api/study/download-pdf' && request.method === 'GET') {
+      const sessionId = extractUserSessionId(request);
+      const userAuth = await validateUserSession(env.DB, sessionId);
+      if (!userAuth) return jsonResponse({ error: 'Unauthorized. Please log in to download chapter PDFs.', authenticated: false }, 401);
+      return handleDownloadChapterPDF(request, env, userAuth);
+    }
+
+    if (pathname === '/api/admin/payments/overview' && request.method === 'GET') {
+      const sessionId = extractUserSessionId(request);
+      const userAuth = sessionId ? await validateUserSession(env.DB, sessionId) : null;
+      return handleAdminPaymentsOverview(request, env, userAuth);
+    }
+
+    if (pathname === '/api/admin/payments/pricing' && request.method === 'POST') {
+      const sessionId = extractUserSessionId(request);
+      const userAuth = sessionId ? await validateUserSession(env.DB, sessionId) : null;
+      return handleAdminUpdatePricing(request, env, userAuth);
     }
 
     // ==========================================
@@ -1438,6 +1499,14 @@ export default {
       if (pathname === '/api/admin/settings/status' && request.method === 'GET') {
         return jsonResponse({
           database: { connected: Boolean(env.DB), name: 'knockoutnotes-db' },
+          cashfree: {
+            configured: Boolean(env.CASHFREE_APP_ID && env.CASHFREE_SECRET_KEY),
+            app_id_configured: Boolean(env.CASHFREE_APP_ID),
+            secret_configured: Boolean(env.CASHFREE_SECRET_KEY),
+            webhook_configured: Boolean(env.CASHFREE_WEBHOOK_SECRET || env.CASHFREE_SECRET_KEY),
+            environment: 'production',
+            api_version: env.CASHFREE_API_VERSION || '2023-08-01'
+          },
           mailersend: { configured: Boolean(env.MAILERSEND_API_TOKEN), from_email: env.FROM_EMAIL || 'Not configured' },
           r2_storage: { configured: isR2Configured(env), bucket: isR2Configured(env) ? 'Bound' : 'Not bound' },
           analytics: {

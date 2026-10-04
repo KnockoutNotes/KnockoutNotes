@@ -327,6 +327,17 @@
       openStickyModal(pending.item);
     } else if (pending.type === "note" && pending.item) {
       openNoteModal(pending.item);
+    } else if (pending.type === "download_pdf" && pending.chapterId) {
+      if (pending.returnUrl && window.location.pathname.includes("workspace.html") && !pending.returnUrl.includes("workspace.html")) {
+        try {
+          localStorage.setItem(STORAGE_KEYS.pendingAction, JSON.stringify(pending));
+          window.location.href = pending.returnUrl;
+          return;
+        } catch (_) {}
+      }
+      if (window.KN_PAYMENTS && typeof window.KN_PAYMENTS.initiateChapterDownload === "function") {
+        window.KN_PAYMENTS.initiateChapterDownload(pending.chapterId, pending.chapterTitle);
+      }
     }
   }
 
@@ -1242,9 +1253,10 @@
     });
     observer.observe(document.body, { childList: true, subtree: true });
 
-    // Initial background sync
+    // Initial background sync & pending action execution
     if (sessionToken && navigator.onLine) {
       syncOfflineQueue();
+      executePendingAction();
     }
   });
 

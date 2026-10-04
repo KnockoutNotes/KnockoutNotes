@@ -1087,8 +1087,16 @@
             <div class="ron-topic-main-col">
               <div class="ron-stats-header">
                 <div class="ron-diagnosis-block">
-                  <span class="ron-diagnosis-label">STUDY TOPIC MONOGRAPH</span>
-                  <h2 class="ron-diagnosis-title">${esc(item.name)}</h2>
+                  <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:4px;">
+                    <div style="flex:1; min-width:240px;">
+                      <span class="ron-diagnosis-label">STUDY TOPIC MONOGRAPH</span>
+                      <h2 class="ron-diagnosis-title" style="margin:2px 0 0;">${esc(item.name)}</h2>
+                    </div>
+                    <button type="button" class="kn-download-pdf-btn" data-chapter-id="${esc(item.id)}" title="Download Official Branded PDF Monograph" onclick="if(window.KN_PAYMENTS)window.KN_PAYMENTS.initiateChapterDownload('${esc(item.id)}', '${esc(item.name).replace(/'/g, "\\'")}');">
+                      <svg class="kn-download-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                      <span>Download PDF</span>
+                    </button>
+                  </div>
                   ${item.classification ? `
                     <div class="ron-topic-classification-hero">
                       <span class="ron-cls-hero-pill">STANDARD CLASSIFICATION</span>

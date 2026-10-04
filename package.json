@@ -14,7 +14,8 @@
     "@capacitor/app": "^6.0.1",
     "@capacitor/core": "^6.1.2",
     "@capacitor/network": "^6.0.2",
-    "@capacitor/splash-screen": "^6.0.2"
+    "@capacitor/splash-screen": "^6.0.2",
+    "pdf-lib": "^1.17.1"
   },
   "devDependencies": {
     "@capacitor/cli": "^6.1.2"
