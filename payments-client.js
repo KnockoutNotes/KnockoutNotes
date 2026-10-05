@@ -94,10 +94,24 @@
     }
   }
 
+  function resolveDisplayPrice(info) {
+    if (typeof info?.priceInr === 'number' && !isNaN(info.priceInr) && info.priceInr !== 49) {
+      return info.priceInr;
+    }
+    const cat = String(info?.category || '').toLowerCase();
+    const id = String(info?.chapterId || '').toLowerCase();
+    const drugCats = ['induction', 'relaxants', 'reversal', 'opioids', 'nsaids', 'vasopressors', 'antihypertensives', 'alpha2', 'local', 'steroids', 'antidiabetics', 'pregnancy', 'miscellaneous', 'drugs'];
+    if (drugCats.includes(cat)) return 12;
+    const critCats = ['cc_principles', 'cc_airway', 'cc_respiratory', 'cc_hemodynamics', 'cc_sepsis', 'cc_neuro', 'cc_cardio', 'cc_renal', 'cc_gi', 'cc_trauma', 'cc_tox', 'cc_heme', 'cc_obs', 'cc_peds', 'cc_pharm', 'cc_advances', 'critical_care', 'critical', 'shock', 'respiratory', 'abg', 'antibiotics', 'poisoning'];
+    if (critCats.includes(cat) || cat.startsWith('cc_') || cat.startsWith('cc-') || id.startsWith('cc-') || id.startsWith('cc_')) return 19;
+    return 9;
+  }
+
   /**
    * Render Purchase Confirmation Modal
    */
   function renderPurchaseModal(info) {
+    const displayPrice = resolveDisplayPrice(info);
     const modal = getOrCreateModal();
     modal.innerHTML = `
       <div class="kn-payment-modal-card">
@@ -126,7 +140,7 @@
 
         <div class="kn-pay-pricing-box">
           <div class="kn-pay-price-label">Instant Access Fee</div>
-          <div class="kn-pay-price-amount">₹${esc(info.priceInr || 49)} <span class="kn-pay-currency">INR</span></div>
+          <div class="kn-pay-price-amount">₹${esc(displayPrice)} <span class="kn-pay-currency">INR</span></div>
           <div class="kn-pay-tax-note">Inclusive of all taxes &bull; Secured by Cashfree LIVE</div>
         </div>
 
@@ -134,7 +148,7 @@
 
         <div class="kn-pay-actions">
           <button type="button" class="kn-btn kn-pay-submit-btn" id="knPayConfirmBtn">
-            <span>Pay ₹${esc(info.priceInr || 49)} &amp; Download PDF</span>
+            <span>Pay ₹${esc(displayPrice)} &amp; Download PDF</span>
           </button>
           <button type="button" class="kn-btn kn-pay-cancel-btn" id="knPayCancelBtn">Cancel</button>
         </div>

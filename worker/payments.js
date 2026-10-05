@@ -89,10 +89,73 @@ export function getChapterContent(chapterId) {
 }
 
 /**
+ * Map chapter/category to master domain:
+ * - 'anaesthesia' (default ₹9)
+ * - 'drugs' (default ₹12)
+ * - 'critical_care' (default ₹19)
+ */
+export function getCategoryDomain(cat, chapterId) {
+  const c = String(cat || '').toLowerCase().trim();
+  const id = String(chapterId || '').toLowerCase().trim();
+
+  const drugCats = [
+    'induction', 'relaxants', 'reversal', 'opioids', 'nsaids',
+    'vasopressors', 'antihypertensives', 'alpha2', 'local',
+    'steroids', 'antidiabetics', 'pregnancy', 'miscellaneous', 'drugs'
+  ];
+  if (drugCats.includes(c)) return 'drugs';
+
+  const critCats = [
+    'cc_principles', 'cc_airway', 'cc_respiratory', 'cc_hemodynamics',
+    'cc_sepsis', 'cc_neuro', 'cc_cardio', 'cc_renal', 'cc_gi',
+    'cc_trauma', 'cc_tox', 'cc_heme', 'cc_obs', 'cc_peds',
+    'cc_pharm', 'cc_advances', 'critical_care', 'critical',
+    'shock', 'respiratory', 'abg', 'antibiotics', 'poisoning'
+  ];
+  if (critCats.includes(c) || c.startsWith('cc_') || c.startsWith('cc-') || id.startsWith('cc-') || id.startsWith('cc_')) {
+    return 'critical_care';
+  }
+
+  const icuPainIds = [
+    'icu-analgosedation-padis-delirium',
+    'opioid-induced-hyperalgesia-tolerance-tapering',
+    'novel-non-opioid-analgesic-pharmacology',
+    'trauma-burn-procedural-analgesia-icu',
+    'cancer-pain-opioid-rotation-palliative',
+    'interventional-sympathetic-nerve-blocks'
+  ];
+  if (icuPainIds.includes(id)) {
+    return 'critical_care';
+  }
+
+  return 'anaesthesia';
+}
+
+export function getDefaultPriceForDomain(domain) {
+  if (domain === 'drugs') return 12.0;
+  if (domain === 'critical_care') return 19.0;
+  return 9.0; // anaesthesia default
+}
+
+export function getDefaultPriceForChapter(chapterId, cat) {
+  const chapter = chapterId ? getChapterContent(chapterId) : null;
+  const category = cat || chapter?.cat || '';
+  const domain = getCategoryDomain(category, chapterId);
+  return getDefaultPriceForDomain(domain);
+}
+
+/**
  * Resolve price for a chapter in INR
+ * Defaults:
+ * - ₹9 for anaesthesia
+ * - ₹12 for drugs
+ * - ₹19 for critical care
+ * Any price previously recorded as 49 is converted to its category default.
+ * Custom prices changed by admin/user to any other value remain intact.
  */
 export async function getChapterPrice(db, chapterId) {
-  if (!db || !chapterId) return 49.0;
+  const defaultPrice = getDefaultPriceForChapter(chapterId);
+  if (!db || !chapterId) return defaultPrice;
 
   try {
     const custom = await db
@@ -101,6 +164,9 @@ export async function getChapterPrice(db, chapterId) {
       .first();
 
     if (custom && custom.is_active === 1 && typeof custom.price_inr === 'number') {
+      if (custom.price_inr === 49.0 || custom.price_inr === 49) {
+        return defaultPrice;
+      }
       return custom.price_inr;
     }
 
@@ -110,13 +176,16 @@ export async function getChapterPrice(db, chapterId) {
       .first();
 
     if (fallback && typeof fallback.price_inr === 'number') {
+      if (fallback.price_inr === 49.0 || fallback.price_inr === 49) {
+        return defaultPrice;
+      }
       return fallback.price_inr;
     }
   } catch (err) {
-    console.warn('[Pricing Lookup Error, using default ₹49]:', err);
+    console.warn('[Pricing Lookup Error, using category default]:', err);
   }
 
-  return 49.0;
+  return defaultPrice;
 }
 
 /**
@@ -719,7 +788,10 @@ export async function handleDownloadChapterPDF(request, env, userAuth) {
 
   try {
     // Generate branded PDF on demand
-    const pdfBytes = await generateChapterPdf(chapter);
+    const pdfBytes = await generateChapterPdf(chapter, {
+      siteUrl: env?.SITE_URL,
+      supportUrl: env?.SUPPORT_URL
+    });
 
     // Track download metric
     try {
@@ -851,13 +923,18 @@ export async function handleAdminPaymentsOverview(request, env, userAuth) {
     // Build complete catalog of all 175 study topics merged with custom pricing
     const catalog = STUDY_TOPICS.map(topic => {
       const custom = pricesMap.get(topic.id);
+      const catDefault = getDefaultPriceForChapter(topic.id, topic.cat);
+      let price = (custom && typeof custom.price_inr === 'number') ? custom.price_inr : catDefault;
+      if (price === 49 || price === 49.0) {
+        price = catDefault;
+      }
       return {
         chapter_id: topic.id,
         title: topic.name,
         category: topic.cat,
-        price_inr: custom ? custom.price_inr : defaultPrice,
+        price_inr: price,
         is_active: custom ? custom.is_active : 1,
-        is_custom: Boolean(custom),
+        is_custom: Boolean(custom && custom.price_inr !== 49),
         updated_at: custom ? custom.updated_at : (defaultPriceRow?.updated_at || null)
       };
     });
@@ -865,9 +942,14 @@ export async function handleAdminPaymentsOverview(request, env, userAuth) {
     // Also include 'default' setting row for global default
     const globalDefault = {
       chapter_id: 'default',
-      title: 'Global Default (All standard chapters)',
+      title: 'Global Default (Anaesthesia: ₹9, Drugs: ₹12, Critical Care: ₹19)',
       category: 'System Configuration',
-      price_inr: defaultPrice,
+      price_inr: 9.0,
+      defaults_by_category: {
+        anaesthesia: 9.0,
+        drugs: 12.0,
+        critical_care: 19.0
+      },
       is_active: 1,
       is_custom: true,
       updated_at: defaultPriceRow ? defaultPriceRow.updated_at : null
@@ -961,7 +1043,7 @@ export async function handleAdminUpdatePricing(request, env, userAuth) {
       .bind(cleanChapterId)
       .first();
 
-    const previousPrice = prevRow ? prevRow.price_inr : 49.0;
+    const previousPrice = prevRow ? prevRow.price_inr : getDefaultPriceForChapter(cleanChapterId, displayCat);
 
     await env.DB
       .prepare(`

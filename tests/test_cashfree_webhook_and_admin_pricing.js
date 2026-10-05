@@ -219,6 +219,80 @@ function checkAdminAuth(userEmail, adminSessionValid) {
   console.log('✓ Test 7: Historical order preservation and entitlement persistence passed');
 }
 
+// --------------------------------------------------------------------------
+// 7. CATEGORY PRICING DEFAULTS (Anaesthesia: ₹9, Drugs: ₹12, Critical Care: ₹19)
+// --------------------------------------------------------------------------
+{
+  function getCategoryDomain(cat, chapterId) {
+    const c = String(cat || '').toLowerCase().trim();
+    const id = String(chapterId || '').toLowerCase().trim();
+
+    const drugCats = [
+      'induction', 'relaxants', 'reversal', 'opioids', 'nsaids',
+      'vasopressors', 'antihypertensives', 'alpha2', 'local',
+      'steroids', 'antidiabetics', 'pregnancy', 'miscellaneous', 'drugs'
+    ];
+    if (drugCats.includes(c)) return 'drugs';
+
+    const critCats = [
+      'cc_principles', 'cc_airway', 'cc_respiratory', 'cc_hemodynamics',
+      'cc_sepsis', 'cc_neuro', 'cc_cardio', 'cc_renal', 'cc_gi',
+      'cc_trauma', 'cc_tox', 'cc_heme', 'cc_obs', 'cc_peds',
+      'cc_pharm', 'cc_advances', 'critical_care', 'critical',
+      'shock', 'respiratory', 'abg', 'antibiotics', 'poisoning'
+    ];
+    if (critCats.includes(c) || c.startsWith('cc_') || c.startsWith('cc-') || id.startsWith('cc-') || id.startsWith('cc_')) {
+      return 'critical_care';
+    }
+
+    const icuPainIds = [
+      'icu-analgosedation-padis-delirium',
+      'opioid-induced-hyperalgesia-tolerance-tapering',
+      'novel-non-opioid-analgesic-pharmacology',
+      'trauma-burn-procedural-analgesia-icu',
+      'cancer-pain-opioid-rotation-palliative',
+      'interventional-sympathetic-nerve-blocks'
+    ];
+    if (icuPainIds.includes(id)) {
+      return 'critical_care';
+    }
+
+    return 'anaesthesia';
+  }
+
+  function getDefaultPriceForDomain(domain) {
+    if (domain === 'drugs') return 12.0;
+    if (domain === 'critical_care') return 19.0;
+    return 9.0;
+  }
+
+  function resolvePrice(customPrice, cat, chapterId) {
+    const domain = getCategoryDomain(cat, chapterId);
+    const def = getDefaultPriceForDomain(domain);
+    if (customPrice === 49.0 || customPrice === 49 || customPrice == null) {
+      return def;
+    }
+    return customPrice;
+  }
+
+  // Verification: Category defaults
+  assert.strictEqual(resolvePrice(null, 'anaesthesia', 'airway-assessment'), 9.0, 'Anaesthesia default must be ₹9');
+  assert.strictEqual(resolvePrice(null, 'cc_neuro', 'cc-tbi-icp'), 19.0, 'Critical care default must be ₹19');
+  assert.strictEqual(resolvePrice(null, 'induction', 'propofol'), 12.0, 'Drug monograph default must be ₹12');
+
+  // Verification: Legacy 49 mapped to category defaults
+  assert.strictEqual(resolvePrice(49, 'anaesthesia', 'spinal-anaesthesia'), 9.0, 'Legacy 49 in anaesthesia must map to ₹9');
+  assert.strictEqual(resolvePrice(49, 'cc_cardio', 'cc-cardiogenic-shock'), 19.0, 'Legacy 49 in critical care must map to ₹19');
+  assert.strictEqual(resolvePrice(49, 'relaxants', 'rocuronium'), 12.0, 'Legacy 49 in drugs must map to ₹12');
+
+  // Verification: Custom prices other than 49 remain untouched
+  assert.strictEqual(resolvePrice(0, 'anaesthesia', 'preop-assessment'), 0, 'Custom ₹0 must remain untouched');
+  assert.strictEqual(resolvePrice(29, 'cc_sepsis', 'cc-septic-shock'), 29, 'Custom ₹29 must remain untouched');
+  assert.strictEqual(resolvePrice(99, 'opioids', 'fentanyl'), 99, 'Custom ₹99 must remain untouched');
+
+  console.log('✓ Test 8: Category pricing defaults (Anaesthesia ₹9, Drugs ₹12, Critical Care ₹19) & legacy 49 migration passed');
+}
+
 console.log('\n=======================================================');
-console.log('ALL VERIFICATION ASSERTIONS PASSED (7/7 TESTS SUCCESSFUL)');
+console.log('ALL VERIFICATION ASSERTIONS PASSED (8/8 TESTS SUCCESSFUL)');
 console.log('=======================================================');
