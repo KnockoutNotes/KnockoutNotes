@@ -19,7 +19,8 @@ class MockD1Database {
   constructor() {
     this.users = [
       { id: 1, email: 'kmaneesh1997@gmail.com', name: 'Dr. Maneesh Sinha', auth_provider: 'google', google_sub: 'existing_sub_1', created_at: '2026-01-01' },
-      { id: 2, email: 'maneeshkumarsinha@gmail.com', name: 'Dr. Maneesh', auth_provider: 'local', google_sub: null, created_at: '2026-01-01' }
+      { id: 2, email: 'maneeshkumarsinha@gmail.com', name: 'Dr. Maneesh', auth_provider: 'local', google_sub: null, created_at: '2026-01-01' },
+      { id: 3, email: 'knockoutnotes.anaesthesia@gmail.com', name: 'Knockout Notes Admin', auth_provider: 'google', google_sub: 'google_admin_sub_999', created_at: '2026-01-01' }
     ];
     this.sessions = [];
     this.entitlements = [
@@ -30,63 +31,75 @@ class MockD1Database {
 
   prepare(sql) {
     const db = this;
-    return {
-      bind(...params) {
-        return {
-          async first() {
-            if (sql.includes('FROM users WHERE google_sub = ?')) {
-              return db.users.find(u => u.google_sub === params[0]) || null;
-            }
-            if (sql.includes('FROM users WHERE email = ?')) {
-              return db.users.find(u => u.email === params[0].toLowerCase().trim()) || null;
-            }
-            if (sql.includes('FROM users WHERE id = ?')) {
-              return db.users.find(u => u.id === params[0]) || null;
-            }
-            if (sql.includes('FROM user_sessions')) {
-              const session = db.sessions.find(s => s.session_id === params[0]);
-              if (!session) return null;
-              const user = db.users.find(u => u.id === session.user_id);
-              if (!user) return null;
-              return {
-                session_id: session.session_id,
-                user_id: user.id,
-                email: user.email,
-                name: user.name,
-                avatar_url: user.avatar_url || null,
-                auth_provider: user.auth_provider || 'local',
-                google_sub: user.google_sub || null,
-                expires_at: session.expires_at
-              };
-            }
-            if (sql.includes('FROM admin_sessions WHERE session_id = ?')) {
-              return db.adminSessions.find(s => s.session_id === params[0]) || null;
-            }
-            if (sql.includes('FROM chapter_entitlements WHERE user_id = ? AND chapter_id = ?')) {
-              return db.entitlements.find(e => e.user_id === params[0] && e.chapter_id === params[1] && e.access_status === 'active') || null;
-            }
-            if (sql.includes('FROM chapter_pricing WHERE chapter_id = ?')) {
-              return { chapter_id: params[0], inr_price: 199, is_active: 1 };
-            }
-            return null;
-          },
-          async all() {
-            return { results: [] };
-          },
-          async run() {
-            if (sql.includes('INSERT INTO user_sessions')) {
-              db.sessions.push({
-                session_id: params[0],
-                user_id: params[1],
-                expires_at: params[2],
-                created_at: new Date().toISOString()
-              });
-            }
-            return { success: true };
-          }
-        };
+    const createStmt = (params = []) => ({
+      bind(...newParams) {
+        return createStmt(newParams);
+      },
+      async first() {
+        if (sql.includes('FROM users WHERE google_sub = ?')) {
+          return db.users.find(u => u.google_sub === params[0]) || null;
+        }
+        if (sql.includes('FROM users WHERE email = ?')) {
+          return db.users.find(u => u.email === params[0].toLowerCase().trim()) || null;
+        }
+        if (sql.includes('FROM users WHERE id = ?')) {
+          return db.users.find(u => u.id === params[0]) || null;
+        }
+        if (sql.includes('FROM user_sessions')) {
+          const session = db.sessions.find(s => s.session_id === params[0]);
+          if (!session) return null;
+          const user = db.users.find(u => u.id === session.user_id);
+          if (!user) return null;
+          return {
+            session_id: session.session_id,
+            user_id: user.id,
+            email: user.email,
+            name: user.name,
+            avatar_url: user.avatar_url || null,
+            auth_provider: user.auth_provider || 'local',
+            google_sub: user.google_sub || null,
+            expires_at: session.expires_at
+          };
+        }
+        if (sql.includes('FROM admin_sessions WHERE session_id = ?')) {
+          return db.adminSessions.find(s => s.session_id === params[0]) || null;
+        }
+        if (sql.includes('FROM chapter_entitlements WHERE user_id = ? AND chapter_id = ?')) {
+          return db.entitlements.find(e => e.user_id === params[0] && e.chapter_id === params[1] && e.access_status === 'active') || null;
+        }
+        if (sql.includes('FROM chapter_pricing WHERE chapter_id = ?')) {
+          return { chapter_id: params[0], inr_price: 199, is_active: 1 };
+        }
+        if (sql.includes('COUNT(*) as total_orders')) {
+          return { total_orders: 1, total_revenue: 199, successful_orders: 1, unique_buyers: 1 };
+        }
+        if (sql.includes('COUNT(*) as count FROM subscribers')) {
+          return { count: 1 };
+        }
+        if (sql.includes('COUNT(*) as count FROM email_logs')) {
+          return { count: 1 };
+        }
+        if (sql.includes('COUNT(*) as count FROM content')) {
+          return { count: 1 };
+        }
+        return { count: 0 };
+      },
+      async all() {
+        return { results: [] };
+      },
+      async run() {
+        if (sql.includes('INSERT INTO user_sessions')) {
+          db.sessions.push({
+            session_id: params[0],
+            user_id: params[1],
+            expires_at: params[2],
+            created_at: new Date().toISOString()
+          });
+        }
+        return { success: true };
       }
-    };
+    });
+    return createStmt();
   }
 }
 
@@ -97,7 +110,8 @@ async function runTests() {
   const env = {
     DB: mockDb,
     SITE_URL: 'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev',
-    ADMIN_EMAIL: 'kmaneesh1997@gmail.com',
+    ADMIN_EMAIL: 'knockoutnotes.anaesthesia@gmail.com',
+    ADMIN_NOTIFICATION_EMAIL: 'knockoutnotes.anaesthesia@gmail.com',
     CASHFREE_APP_ID: 'cf_app_test',
     CASHFREE_SECRET_KEY: 'cf_secret_test'
   };
@@ -215,40 +229,131 @@ async function runTests() {
     console.log('✓ PASS: All sensitive user and admin endpoints require authentic server sessions.');
   }
 
-  // TEST 7: ADMIN ENDPOINT BLOCKS NON-ADMIN USERS EVEN WITH VALID SESSION
+  // TEST 7: PREVIOUS ADMIN (kmaneesh1997@gmail.com) IS STRICTLY TREATED AS NORMAL USER
   {
-    console.log('\n[TEST 7] Non-admin user session is blocked from admin revenue and pricing...');
-    // Create non-admin session for user_id = 2 (maneeshkumarsinha@gmail.com)
+    console.log('\n[TEST 7] Verify kmaneesh1997@gmail.com is strictly treated as normal user...');
+    // Create valid session for user_id = 1 (kmaneesh1997@gmail.com)
     mockDb.sessions.push({
-      session_id: 'non_admin_session_token_123',
-      user_id: 2,
+      session_id: 'user_kmaneesh_session_token_111',
+      user_id: 1,
       expires_at: new Date(Date.now() + 3600000).toISOString()
     });
 
-    const req = new Request('https://knockoutnotes.workers.dev/api/admin/payments/overview', {
+    // 1. Blocked from admin revenue & pricing
+    const reqPricing = new Request('https://knockoutnotes.workers.dev/api/admin/payments/overview', {
       method: 'GET',
-      headers: { 'Authorization': 'Bearer non_admin_session_token_123' }
+      headers: { 'Authorization': 'Bearer user_kmaneesh_session_token_111' }
     });
-    const res = await worker.fetch(req, env, {});
-    assert.strictEqual(res.status, 403);
-    const data = await res.json();
-    assert.strictEqual(data.error, 'Administrator access required');
-    console.log('✓ PASS: Admin payment/pricing console returns 403 Forbidden to non-admin accounts.');
+    const resPricing = await worker.fetch(reqPricing, env, {});
+    assert.strictEqual(resPricing.status, 403, 'kmaneesh1997@gmail.com must be 403 on admin payments overview');
+    const dataPricing = await resPricing.json();
+    assert.strictEqual(dataPricing.error, 'Administrator access required');
+
+    // 2. Blocked from CMS / admin stats
+    const reqStats = new Request('https://knockoutnotes.workers.dev/api/admin/stats', {
+      method: 'GET',
+      headers: { 'Authorization': 'Bearer user_kmaneesh_session_token_111' }
+    });
+    const resStats = await worker.fetch(reqStats, env, {});
+    assert.strictEqual(resStats.status, 401, 'kmaneesh1997@gmail.com must be 401 on /api/admin/stats');
+
+    // 3. Blocked from /admin dashboard route (redirected to /admin/login)
+    const reqAdminPage = new Request('https://knockoutnotes.workers.dev/admin/', {
+      method: 'GET',
+      headers: { 'Authorization': 'Bearer user_kmaneesh_session_token_111' }
+    });
+    const resAdminPage = await worker.fetch(reqAdminPage, env, {});
+    assert.strictEqual(resAdminPage.status, 302, 'kmaneesh1997@gmail.com must be redirected from /admin/');
+    assert(resAdminPage.headers.get('Location').includes('/admin/login'));
+
+    // 4. Chapter price check returns isAdmin: false
+    const reqPriceMeta = new Request('https://knockoutnotes.workers.dev/api/payments/chapter-price?chapter_id=preop-assessment', {
+      method: 'GET',
+      headers: { 'Authorization': 'Bearer user_kmaneesh_session_token_111' }
+    });
+    const resPriceMeta = await worker.fetch(reqPriceMeta, env, {});
+    assert.strictEqual(resPriceMeta.status, 200);
+    const dataPriceMeta = await resPriceMeta.json();
+    assert.strictEqual(dataPriceMeta.isAdmin, false, 'kmaneesh1997@gmail.com must have isAdmin: false');
+
+    console.log('✓ PASS: kmaneesh1997@gmail.com has NO admin privileges across all administrative routes.');
   }
 
-  // TEST 8: PAID PDF ENFORCES ACTIVE PURCHASE ENTITLEMENT
+  // TEST 8: SOLE ADMIN (knockoutnotes.anaesthesia@gmail.com) HAS FULL ADMIN ACCESS
   {
-    console.log('\n[TEST 8] Paid PDF engine blocks authenticated users who did not purchase chapter...');
-    const req = new Request('https://knockoutnotes.workers.dev/api/study/download-pdf?chapter_id=preop-assessment', {
-      method: 'GET',
-      headers: { 'Authorization': 'Bearer non_admin_session_token_123' }
+    console.log('\n[TEST 8] Verify knockoutnotes.anaesthesia@gmail.com has full admin authorization...');
+    // Create valid session for user_id = 3 (knockoutnotes.anaesthesia@gmail.com)
+    mockDb.sessions.push({
+      session_id: 'admin_google_session_token_999',
+      user_id: 3,
+      expires_at: new Date(Date.now() + 3600000).toISOString()
     });
-    const res = await worker.fetch(req, env, {});
-    assert.strictEqual(res.status, 403);
-    const data = await res.json();
-    assert.strictEqual(data.code, 'PURCHASE_REQUIRED');
-    assert(data.error.includes('Chapter purchase required'));
-    console.log('✓ PASS: Unpurchased chapter download fails closed with 403 and purchase prompt.');
+
+    // 1. Authorized on admin revenue & pricing
+    const reqPricing = new Request('https://knockoutnotes.workers.dev/api/admin/payments/overview', {
+      method: 'GET',
+      headers: { 'Authorization': 'Bearer admin_google_session_token_999' }
+    });
+    const resPricing = await worker.fetch(reqPricing, env, {});
+    assert.strictEqual(resPricing.status, 200, 'knockoutnotes.anaesthesia@gmail.com must be 200 on admin overview');
+
+    // 2. Authorized on /api/admin/me
+    const reqMe = new Request('https://knockoutnotes.workers.dev/api/admin/me', {
+      method: 'GET',
+      headers: { 'Authorization': 'Bearer admin_google_session_token_999' }
+    });
+    const resMe = await worker.fetch(reqMe, env, {});
+    assert.strictEqual(resMe.status, 200);
+    const dataMe = await resMe.json();
+    assert.strictEqual(dataMe.authenticated, true);
+
+    // 3. Chapter price check returns isAdmin: true
+    const reqPriceMeta = new Request('https://knockoutnotes.workers.dev/api/payments/chapter-price?chapter_id=preop-assessment', {
+      method: 'GET',
+      headers: { 'Authorization': 'Bearer admin_google_session_token_999' }
+    });
+    const resPriceMeta = await worker.fetch(reqPriceMeta, env, {});
+    assert.strictEqual(resPriceMeta.status, 200);
+    const dataPriceMeta = await resPriceMeta.json();
+    assert.strictEqual(dataPriceMeta.isAdmin, true, 'knockoutnotes.anaesthesia@gmail.com must have isAdmin: true');
+
+    // 4. Admin exempt free PDF download
+    const reqPdf = new Request('https://knockoutnotes.workers.dev/api/study/download-pdf?chapter_id=preop-assessment', {
+      method: 'GET',
+      headers: { 'Authorization': 'Bearer admin_google_session_token_999' }
+    });
+    const resPdf = await worker.fetch(reqPdf, env, {});
+    assert.strictEqual(resPdf.status, 200, 'Admin receives direct 200 PDF generation');
+
+    console.log('✓ PASS: knockoutnotes.anaesthesia@gmail.com is fully recognized and authorized as sole administrator.');
+  }
+
+  // TEST 9: PRESERVATION OF USER PURCHASES AND ENTITLEMENTS FOR NORMAL USERS
+  {
+    console.log('\n[TEST 9] Verify user purchases & entitlements remain active...');
+    // user 1 has entitlement for preop-assessment
+    const reqPdf = new Request('https://knockoutnotes.workers.dev/api/study/download-pdf?chapter_id=preop-assessment', {
+      method: 'GET',
+      headers: { 'Authorization': 'Bearer user_kmaneesh_session_token_111' }
+    });
+    const resPdf = await worker.fetch(reqPdf, env, {});
+    assert.strictEqual(resPdf.status, 200, 'Existing entitlement for user 1 is preserved');
+
+    // user 2 does not have entitlement
+    mockDb.sessions.push({
+      session_id: 'user_2_session_token_222',
+      user_id: 2,
+      expires_at: new Date(Date.now() + 3600000).toISOString()
+    });
+    const reqUnpurchased = new Request('https://knockoutnotes.workers.dev/api/study/download-pdf?chapter_id=preop-assessment', {
+      method: 'GET',
+      headers: { 'Authorization': 'Bearer user_2_session_token_222' }
+    });
+    const resUnpurchased = await worker.fetch(reqUnpurchased, env, {});
+    assert.strictEqual(resUnpurchased.status, 403);
+    const dataUnpurchased = await resUnpurchased.json();
+    assert.strictEqual(dataUnpurchased.code, 'PURCHASE_REQUIRED');
+    console.log('✓ PASS: User purchase entitlements and non-entitled blocks function correctly.');
   }
 
   console.log('\n======================================================');

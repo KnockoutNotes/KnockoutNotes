@@ -4,7 +4,7 @@
  * Verification, Webhook Signature Validation, Admin Exemption, and Secure PDF Delivery.
  */
 
-import { timingSafeEqual, generateSecureToken, parseCookies, validateAdminSession } from './auth.js';
+import { timingSafeEqual, generateSecureToken, parseCookies, validateAdminSession, extractUserSessionId, validateUserSession } from './auth.js';
 import { generateChapterPdf } from './pdf-generator.js';
 import { STUDY_TOPICS } from './study-topics.js';
 import { recordAuditLog } from './cms.js';
@@ -12,9 +12,11 @@ import { recordAuditLog } from './cms.js';
 // Production API Base URL (Live directly — per strict project requirement)
 const CASHFREE_LIVE_BASE_URL = 'https://api.cashfree.com/pg';
 
-// Designated Administrator Accounts Allowlist
+// Primary & Sole Designated Administrator Email for Knockout Notes
+export const PRIMARY_ADMIN_EMAIL = 'knockoutnotes.anaesthesia@gmail.com';
+
 const ADMIN_EMAILS = new Set([
-  'kmaneesh1997@gmail.com'
+  PRIMARY_ADMIN_EMAIL
 ]);
 
 function jsonResponse(data, status = 200, headers = {}) {
@@ -39,15 +41,32 @@ function getSiteUrl(request, env) {
 /**
  * Robust server-side verification of Administrator Status
  * Never trusts frontend flags or client request parameters!
+ * Sole authorized administrator: knockoutnotes.anaesthesia@gmail.com
+ * Previous email kmaneesh1997@gmail.com is strictly treated as a normal user.
  */
 export async function isServerAdmin(userAuth, env, request = null) {
-  if (userAuth && userAuth.user && userAuth.user.email) {
-    const userEmail = userAuth.user.email.trim().toLowerCase();
-    if (ADMIN_EMAILS.has(userEmail)) return true;
-    const envAdmin = (env.ADMIN_NOTIFICATION_EMAIL || env.ADMIN_EMAIL || '').trim().toLowerCase();
-    if (envAdmin && userEmail === envAdmin) return true;
+  let auth = userAuth;
+  if (!auth && request && env && env.DB) {
+    const sessionId = extractUserSessionId(request);
+    if (sessionId) {
+      try {
+        auth = await validateUserSession(env.DB, sessionId);
+      } catch (_) {}
+    }
   }
 
+  // 1. Authenticated Google / User Workspace identity check
+  if (auth && auth.user && auth.user.email) {
+    const userEmail = auth.user.email.trim().toLowerCase();
+    // Sole primary admin
+    if (userEmail === PRIMARY_ADMIN_EMAIL) {
+      return true;
+    }
+    // Any other user email (including kmaneesh1997@gmail.com) is NOT admin
+    return false;
+  }
+
+  // 2. Fallback check for active admin_session cookie (username/password login)
   if (request && env && env.DB) {
     try {
       const cookies = parseCookies(request);
@@ -178,6 +197,7 @@ export async function handleGetChapterPricing(request, env, userAuth) {
     currency: 'INR',
     isPurchased,
     isAdminExempt: isAdmin,
+    isAdmin: isAdmin,
     downloadUrl: isPurchased ? `/api/study/download-pdf?chapter_id=${encodeURIComponent(chapterId)}` : null
   });
 }

@@ -93,7 +93,9 @@ import {
   handleGetUserPaymentHistory,
   handleAdminPaymentsOverview,
   handleAdminUpdatePricing,
-  handleAdminBulkUpdatePricing
+  handleAdminBulkUpdatePricing,
+  isServerAdmin,
+  PRIMARY_ADMIN_EMAIL
 } from './payments.js';
 
 
@@ -157,9 +159,8 @@ export default {
 
     // Login page handling
     if (pathname === '/admin/login') {
-      const cookies = parseCookies(request);
-      const session = await validateAdminSession(env.DB, cookies.admin_session);
-      if (session) {
+      const hasAdmin = await isServerAdmin(null, env, request);
+      if (hasAdmin) {
         return redirectResponse('/admin/');
       }
       if (env.ASSETS) {
@@ -169,9 +170,8 @@ export default {
 
     // Canonicalize /admin/index.html -> /admin/
     if (pathname === '/admin/index.html') {
-      const cookies = parseCookies(request);
-      const session = await validateAdminSession(env.DB, cookies.admin_session);
-      if (!session) {
+      const hasAdmin = await isServerAdmin(null, env, request);
+      if (!hasAdmin) {
         return redirectResponse('/admin/login');
       }
       return redirectResponse('/admin/');
@@ -179,9 +179,8 @@ export default {
 
     // Canonicalize /admin (without trailing slash) -> /admin/
     if (pathname === '/admin') {
-      const cookies = parseCookies(request);
-      const session = await validateAdminSession(env.DB, cookies.admin_session);
-      if (!session) {
+      const hasAdmin = await isServerAdmin(null, env, request);
+      if (!hasAdmin) {
         return redirectResponse('/admin/login');
       }
       return redirectResponse('/admin/');
@@ -190,9 +189,8 @@ export default {
     // Admin dashboard and sub-routes (/admin/, /admin/content, etc.)
     // Note: static files with extensions (.css, .js, .png, etc.) pass through directly to ASSETS below
     if (pathname === '/admin/' || (pathname.startsWith('/admin/') && !pathname.includes('.'))) {
-      const cookies = parseCookies(request);
-      const session = await validateAdminSession(env.DB, cookies.admin_session);
-      if (!session) {
+      const hasAdmin = await isServerAdmin(null, env, request);
+      if (!hasAdmin) {
         return redirectResponse('/admin/login');
       }
       if (env.ASSETS) {
@@ -580,12 +578,16 @@ export default {
 
     // GET /api/admin/me
     if (pathname === '/api/admin/me' && request.method === 'GET') {
-      const cookies = parseCookies(request);
-      const session = await validateAdminSession(env.DB, cookies.admin_session);
-      if (!session) {
+      const sessionId = extractUserSessionId(request);
+      const userAuth = sessionId && env.DB ? await validateUserSession(env.DB, sessionId) : null;
+      const isAdmin = await isServerAdmin(userAuth, env, request);
+      if (!isAdmin) {
         return jsonResponse({ authenticated: false }, 401);
       }
-      return jsonResponse({ authenticated: true, username: session.admin_username });
+      const adminUsername = (userAuth && userAuth.user && userAuth.user.email === PRIMARY_ADMIN_EMAIL)
+        ? (userAuth.user.name || userAuth.user.email)
+        : (env.ADMIN_USERNAME || 'admin.knockoutnotes');
+      return jsonResponse({ authenticated: true, username: adminUsername });
     }
 
     // ==========================================
@@ -777,11 +779,12 @@ export default {
     // 3. ADMIN SECURE API MIDDLEWARE & ROUTES
     // ==========================================
     if (pathname.startsWith('/api/admin/')) {
-      const cookies = parseCookies(request);
-      const session = await validateAdminSession(env.DB, cookies.admin_session);
+      const sessionId = extractUserSessionId(request);
+      const userAuth = sessionId && env.DB ? await validateUserSession(env.DB, sessionId) : null;
+      const isAdmin = await isServerAdmin(userAuth, env, request);
 
-      if (!session) {
-        return jsonResponse({ error: 'Unauthorized. Admin session invalid or expired.' }, 401);
+      if (!isAdmin) {
+        return jsonResponse({ error: 'Unauthorized. Admin privileges required.' }, 401);
       }
 
       // GET /api/admin/stats

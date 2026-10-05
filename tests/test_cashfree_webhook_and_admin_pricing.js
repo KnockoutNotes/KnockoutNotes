@@ -179,17 +179,18 @@ function validatePrice(priceInr) {
 // --------------------------------------------------------------------------
 // 5. SERVER-SIDE ADMIN AUTHORIZATION CHECK
 // --------------------------------------------------------------------------
-const ADMIN_EMAILS = new Set(['kmaneesh1997@gmail.com']);
+const PRIMARY_ADMIN_EMAIL = 'knockoutnotes.anaesthesia@gmail.com';
 
 function checkAdminAuth(userEmail, adminSessionValid) {
-  if (userEmail && ADMIN_EMAILS.has(userEmail.trim().toLowerCase())) return true;
+  if (userEmail && userEmail.trim().toLowerCase() === PRIMARY_ADMIN_EMAIL) return true;
   if (adminSessionValid === true) return true;
   return false;
 }
 
 {
-  assert.strictEqual(checkAdminAuth('kmaneesh1997@gmail.com', false), true, 'Owner email is authorized');
-  assert.strictEqual(checkAdminAuth('KMANEESH1997@GMAIL.COM', false), true, 'Case-insensitive owner email is authorized');
+  assert.strictEqual(checkAdminAuth('knockoutnotes.anaesthesia@gmail.com', false), true, 'Sole admin email is authorized');
+  assert.strictEqual(checkAdminAuth('KNOCKOUTNOTES.ANAESTHESIA@GMAIL.COM', false), true, 'Case-insensitive sole admin email is authorized');
+  assert.strictEqual(checkAdminAuth('kmaneesh1997@gmail.com', false), false, 'Previous admin kmaneesh1997@gmail.com is strictly treated as normal user');
   assert.strictEqual(checkAdminAuth('regular_user@example.com', false), false, 'Regular user is blocked');
   assert.strictEqual(checkAdminAuth(null, false), false, 'Unauthenticated user is blocked');
   assert.strictEqual(checkAdminAuth(null, true), true, 'Valid admin session is authorized');
