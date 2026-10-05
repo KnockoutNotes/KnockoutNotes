@@ -198,7 +198,40 @@
     window.addEventListener("online", () => showNetworkPill(true));
     window.addEventListener("offline", () => showNetworkPill(false));
 
+    function isCriticalSessionActive() {
+      // 1. Check if Screen Wake Lock is active for an emergency
+      if (window.KnockoutEmergencyWakeLock && typeof window.KnockoutEmergencyWakeLock.isActive === "function") {
+        if (window.KnockoutEmergencyWakeLock.isActive()) return true;
+      }
+      // 2. Check Resuscitation Chamber active timers / metronomes
+      const timerBtn = document.getElementById("btnToggleTimer");
+      if (timerBtn && !timerBtn.classList.contains("is-paused")) return true;
+      const metronomeBtn = document.getElementById("btnToggleMetronome");
+      if (metronomeBtn && metronomeBtn.classList.contains("running")) return true;
+      // 3. Check Crisis Mode active views
+      const activeCrisis = document.querySelector(".cm-view.active:not(#view-hub)");
+      if (activeCrisis) return true;
+      // 4. Check Calculators with active patient data
+      if (typeof window.sessionStorage !== "undefined") {
+        try {
+          if (sessionStorage.getItem("kn_calc_has_patient_data") === "true") return true;
+        } catch (_) {}
+      }
+      return false;
+    }
+
     function createUpdateToast() {
+      // If critical resuscitation or active crisis is running, defer notification until exit
+      if (isCriticalSessionActive()) {
+        const deferCheck = setInterval(() => {
+          if (!isCriticalSessionActive()) {
+            clearInterval(deferCheck);
+            createUpdateToast();
+          }
+        }, 5000);
+        return;
+      }
+
       let toast = document.getElementById("knUpdateToast");
       if (!toast) {
         toast = document.createElement("div");
@@ -208,8 +241,8 @@
         toast.innerHTML = `
           <div class="kn-pwa-toast-icon">⚡</div>
           <div class="kn-pwa-toast-content">
-            <div class="kn-pwa-toast-title">Update Available</div>
-            <div class="kn-pwa-toast-desc">A fresh clinical update is ready to load.</div>
+            <div class="kn-pwa-toast-title">Clinical Update Available</div>
+            <div class="kn-pwa-toast-desc">New clinical guidelines synced — Tap to update.</div>
             <div class="kn-pwa-toast-actions">
               <button class="kn-pwa-btn primary" id="knPwaUpdateBtn">Update Now</button>
               <button class="kn-pwa-btn ghost" id="knPwaDismissBtn">Later</button>
@@ -219,6 +252,10 @@
         document.body.appendChild(toast);
 
         toast.querySelector("#knPwaUpdateBtn").addEventListener("click", () => {
+          if (isCriticalSessionActive()) {
+            alert("A critical emergency workflow or calculator is currently active. Please pause or exit the workflow before refreshing.");
+            return;
+          }
           if (newWorker) {
             newWorker.postMessage({ action: "skipWaiting" });
           } else {
@@ -260,6 +297,12 @@
         let refreshing = false;
         navigator.serviceWorker.addEventListener("controllerchange", () => {
           if (!refreshing) {
+            // NEVER automatically reload if a critical clinical session or emergency workflow is active
+            if (isCriticalSessionActive()) {
+              console.warn("KnockoutNotes SW: controllerchange received during active clinical workflow; deferring reload.");
+              createUpdateToast();
+              return;
+            }
             refreshing = true;
             window.location.reload();
           }
@@ -397,6 +440,21 @@
         }
       });
 
+      root.querySelectorAll("details.kn-active-recall").forEach(d => {
+        if (d.dataset.wired) return;
+        d.dataset.wired = "1";
+        d.addEventListener("toggle", () => {
+          const txt = d.querySelector(".kn-summary-text");
+          if (txt) {
+            txt.textContent = d.open ? "Hide Model Answer & Rationale" : "💡 Reveal Model Answer & Rationale";
+          }
+          if (d.open && window.KnockoutSpatialBg && typeof window.KnockoutSpatialBg.triggerRipple === "function") {
+            const rect = d.getBoundingClientRect();
+            window.KnockoutSpatialBg.triggerRipple(rect.left + rect.width * 0.5, rect.top + 20);
+          }
+        });
+      });
+
       root.querySelectorAll(".reveal").forEach(btn => {
         if (btn.dataset.wired) return;
         btn.dataset.wired = "1";
@@ -446,6 +504,12 @@
       const answer = target.classList.contains("answer") ? target : target.querySelector(".answer");
       if (answer) {
         answer.classList.add("open");
+        const details = answer.closest("details");
+        if (details) {
+          details.open = true;
+          const txt = details.querySelector(".kn-summary-text");
+          if (txt) txt.textContent = "Hide Model Answer & Rationale";
+        }
         const btn = target.closest(".card, .quick-card")?.querySelector(".reveal");
         if (btn) {
           btn.textContent = "Hide Answer";
@@ -532,6 +596,12 @@
             const ans = card.querySelector(".answer");
             if (ans && ans.textContent.toLowerCase().includes(q)) {
               ans.classList.add("open");
+              const details = ans.closest("details");
+              if (details) {
+                details.open = true;
+                const txt = details.querySelector(".kn-summary-text");
+                if (txt) txt.textContent = "Hide Model Answer & Rationale";
+              }
               const btn = card.querySelector(".reveal");
               if (btn) {
                 btn.textContent = "Hide Answer";
@@ -819,11 +889,47 @@
       let lastTime = performance.now();
       const sweepPixelsPerSecond = 68;
       const scanWidth = 24; // Erase bar ahead of sweep head
+      let ecgAnimFrame = null;
+      let anyEcgVisible = true;
+
+      if ("IntersectionObserver" in window) {
+        const ecgVisibleMap = new Map();
+        const ecgObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            ecgVisibleMap.set(entry.target, entry.isIntersecting);
+          });
+          anyEcgVisible = Array.from(ecgVisibleMap.values()).some(Boolean);
+          if (anyEcgVisible && !document.hidden && !ecgAnimFrame) {
+            lastTime = performance.now();
+            ecgAnimFrame = requestAnimationFrame(renderEcg);
+          } else if (!anyEcgVisible && ecgAnimFrame) {
+            cancelAnimationFrame(ecgAnimFrame);
+            ecgAnimFrame = null;
+          }
+        }, { threshold: 0.01 });
+        ecgCanvases.forEach(cvs => {
+          ecgVisibleMap.set(cvs, true);
+          ecgObserver.observe(cvs);
+        });
+      }
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          if (ecgAnimFrame) {
+            cancelAnimationFrame(ecgAnimFrame);
+            ecgAnimFrame = null;
+          }
+        } else {
+          if (anyEcgVisible && !ecgAnimFrame) {
+            lastTime = performance.now();
+            ecgAnimFrame = requestAnimationFrame(renderEcg);
+          }
+        }
+      });
 
       function renderEcg(now) {
-        if (document.hidden) {
-          lastTime = now;
-          requestAnimationFrame(renderEcg);
+        if (document.hidden || !anyEcgVisible) {
+          ecgAnimFrame = null;
           return;
         }
 
@@ -905,10 +1011,12 @@
           }
         });
 
-        requestAnimationFrame(renderEcg);
+        ecgAnimFrame = requestAnimationFrame(renderEcg);
       }
 
-      requestAnimationFrame(renderEcg);
+      if (anyEcgVisible && !document.hidden) {
+        ecgAnimFrame = requestAnimationFrame(renderEcg);
+      }
     }
 
     // ------------------------------------------------------------------------

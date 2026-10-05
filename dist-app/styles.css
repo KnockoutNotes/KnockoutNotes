@@ -81,7 +81,7 @@ html.dark,
   --bg-glass: rgba(10, 16, 32, 0.58);
   --text-main: #f8fafc;
   --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-muted: #94a3b8;
   --accent-cyan: #38bdf8;
   --accent-blue: #60a5fa;
   --accent-indigo: #818cf8;
@@ -1306,6 +1306,56 @@ a.kn-update-card:hover .kn-update-open {
 .answer.open {
   display: block;
   animation: fadeSlideDown 0.32s var(--ease-expo);
+}
+
+/* Active Recall Semantic Details & Summary */
+details.kn-active-recall {
+  margin-top: 14px;
+  width: 100%;
+}
+
+details.kn-active-recall > summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  font-size: 12.5px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent-cyan);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-specular);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--box-3d-bevel), 0 2px 6px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+details.kn-active-recall > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.kn-active-recall > summary:hover,
+details.kn-active-recall > summary:focus-visible {
+  background: var(--accent-cyan);
+  color: #ffffff;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.45);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+details.kn-active-recall[open] > summary {
+  background: rgba(56, 189, 248, 0.14);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+details.kn-active-recall .answer {
+  display: block !important;
+  margin-top: 14px;
 }
 
 .reference {
@@ -3859,6 +3909,174 @@ body:not(.dark) .chamber-pill-red {
   contain-intrinsic-size: 0 140px;
 }
 
+/* ==========================================================================
+   PRINT-OPTIMIZED CLINICAL NOTES & MONOGRAPHS (@media print)
+   High-contrast, pure black on white, clean pagination, zero clutter
+   ========================================================================== */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
 
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt !important;
+    line-height: 1.45 !important;
+  }
 
+  /* Hide navigation, HUDs, background canvases, widgets, search, floating buttons */
+  .site-hud,
+  .site-nav,
+  .mobile-menu,
+  .ron-header-bar,
+  .ron-domain-nav-system,
+  .ron-inline-search-wrap,
+  .ron-action-pills-row,
+  .ron-related-tools-vertical,
+  .kn-monograph-action-bar,
+  .kn-card-actions-group,
+  .kn-card-progress-badge,
+  .kn-study-progress-tracker,
+  .kn-download-pdf-btn,
+  .kn-pen-toggle-btn,
+  .ron-back-to-top,
+  .kn-calc-session-banner,
+  .kn-cpr-wake-indicator,
+  .kn-sw-update-toast,
+  .kn-ticker-wrap,
+  .footer,
+  .footer-inner,
+  .footer-connect,
+  #knSpatialCanvas,
+  #cf-beacon,
+  .ron-card-3d-wrap,
+  .st-molecule-viewer,
+  .nav-search-trigger,
+  .kicker-pill,
+  button,
+  input,
+  select {
+    display: none !important;
+  }
 
+  /* Layout resets for clean document flow */
+  .container,
+  .content,
+  .spatial-stage,
+  .spatial-world,
+  .ron-device-frame,
+  .ron-screen,
+  .ron-stage-container,
+  .ron-flowchart-stage,
+  .ron-topic-hero-layout,
+  .ron-topic-main-col {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Reveal all collapsed details/summaries for complete study reference */
+  details {
+    display: block !important;
+  }
+
+  details > summary {
+    font-weight: bold !important;
+    border-bottom: 1px solid #ccc !important;
+    margin-bottom: 6pt !important;
+  }
+
+  details[open] > summary,
+  details > summary {
+    list-style: none !important;
+  }
+
+  /* High contrast clinical typography */
+  h1, h2, h3, h4, h5, h6 {
+    color: #000 !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  h1 { font-size: 18pt !important; margin-bottom: 6pt !important; }
+  h2 { font-size: 15pt !important; margin-top: 12pt !important; margin-bottom: 4pt !important; }
+  h3 { font-size: 13pt !important; margin-top: 10pt !important; margin-bottom: 4pt !important; }
+  h4 { font-size: 11pt !important; margin-top: 8pt !important; }
+
+  p, li, span, td, th {
+    color: #111 !important;
+  }
+
+  /* Clean tables */
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin: 10pt 0 !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  th, td {
+    border: 1px solid #777 !important;
+    padding: 4pt 6pt !important;
+    font-size: 9.5pt !important;
+  }
+
+  th {
+    background-color: #f0f0f0 !important;
+    font-weight: bold !important;
+  }
+
+  /* Monograph cards & clinical blocks */
+  .card,
+  .ron-card,
+  .st-card,
+  .ron-step-box,
+  .ron-summary-banner,
+  .st-callout {
+    border: 1px solid #aaa !important;
+    padding: 8pt !important;
+    margin-bottom: 10pt !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border-radius: 4px !important;
+  }
+
+  /* Hyperlinks: show clean text */
+  a {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+
+  /* Viva Cards print layout */
+  .grid {
+    display: block !important;
+  }
+
+  .grid > .card {
+    margin-bottom: 12pt !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .formula {
+    display: inline-block !important;
+    font-weight: bold !important;
+    border: 1px solid #999 !important;
+    padding: 2pt 6pt !important;
+    background: #fdfdfd !important;
+  }
+}

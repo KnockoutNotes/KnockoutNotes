@@ -68,6 +68,15 @@ function navigateToView(viewName) {
     v.classList.toggle('active', v.id === `view-${activeView}`);
   });
 
+  // Emergency Wake Lock lifecycle
+  if (window.KnockoutEmergencyWakeLock) {
+    if (activeView !== 'hub') {
+      window.KnockoutEmergencyWakeLock.requestLock(`Crisis: ${activeView.toUpperCase()}`);
+    } else {
+      window.KnockoutEmergencyWakeLock.releaseLock();
+    }
+  }
+
   // Back button visibility
   const backBtn = document.getElementById('cmBackBtn');
   if (backBtn) {

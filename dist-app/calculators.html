@@ -53,7 +53,7 @@
         <span id="knHudPath3d">KN // ANAESTHESIA CALCULATORS</span>
       </div>
 
-      <div class="nav-links">
+      <nav class="nav-links" aria-label="Main Navigation">
         <a href="index.html">Home</a>
         <a href="notes.html#pearls">Pearls</a>
         <a href="notes.html">Notes</a>
@@ -64,7 +64,7 @@
         <a href="critical-care.html">Critical Care and Code</a>
         <a href="recent-updates.html">Updates</a>
         <a href="resources.html">About</a>
-      </div>
+      </nav>
 
       <div class="nav-actions">
         <button class="nav-search-trigger" data-open-search aria-label="Open search">
@@ -75,7 +75,7 @@
         <button class="menu-btn" id="menuBtn3d" aria-label="Open menu" aria-expanded="false">⋮</button>
       </div>
     </div>
-    <div class="mobile-menu" id="mobileMenu3d">
+    <nav class="mobile-menu" id="mobileMenu3d" aria-label="Mobile Navigation">
       <a data-close-menu href="index.html">Home <span>→</span></a>
       <a data-close-menu href="notes.html#pearls">Pearls <span>→</span></a>
       <a data-close-menu href="notes.html">Notes <span>→</span></a>
@@ -86,7 +86,7 @@
       <a data-close-menu href="critical-care.html">Critical Care and Code <span>→</span></a>
       <a data-close-menu href="recent-updates.html">Updates <span>→</span></a>
       <a data-close-menu href="resources.html">About <span>→</span></a>
-    </div>
+    </nav>
   </header>
 
   <div class="spatial-stage">
@@ -101,6 +101,8 @@
             <p>Evidence-based dosing formulas, paediatric airway sizing, renal clearances, and perioperative assessment tools.</p>
             <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin: 0 0 14px 0;">
               <span class="badge" style="background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.35); color:var(--accent-cyan,#38bdf8); font-size:11px; padding:3px 10px; border-radius:999px;">⚡ 100% Offline Capable</span>
+              <span class="badge" style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.35); color:#34d399; font-size:11px; padding:3px 10px; border-radius:999px;" title="Calculator inputs are securely saved to your local browser session only">🔒 Session Protected (Local Only)</span>
+              <button class="hud-install-btn" id="btnClearPatientData3d" style="font-size:11px; padding:3px 12px; background:rgba(239,68,68,0.15); border-color:rgba(239,68,68,0.4); color:#f87171;" title="Clear all entered patient data and reset calculators">🗑 Clear Patient Data</button>
               <button class="hud-install-btn" id="btnInstallCalcBanner3d" style="font-size:11px; padding:3px 10px;">⤓ Install Calculators App (Android / PC)</button>
             </div>
             <div class="kn-site-search">
@@ -899,7 +901,7 @@
           </div>
 
           <!-- Table of 16 Drugs -->
-          <div class="paeds-table-wrapper">
+          <div class="paeds-table-wrapper" tabindex="0" role="region" aria-label="Paediatric drug dosing table">
             <table class="paeds-chart-table" id="paedsTable3d">
               <thead>
                 <tr>
@@ -3120,7 +3122,7 @@
         <span id="knHudPath">KN // ANAESTHESIA CALCULATORS</span>
       </div>
 
-      <div class="nav-links">
+      <nav class="nav-links" aria-label="Main Navigation">
         <a href="index.html">Home</a>
         <a href="notes.html#pearls">Pearls</a>
         <a href="notes.html">Notes</a>
@@ -3131,7 +3133,7 @@
         <a href="critical-care.html">Critical Care and Code</a>
         <a href="recent-updates.html">Updates</a>
         <a href="resources.html">About</a>
-      </div>
+      </nav>
 
       <div class="nav-actions">
         <button class="nav-search-trigger" data-open-search aria-label="Open search">
@@ -3142,7 +3144,7 @@
         <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
       </div>
     </div>
-    <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
       <a data-close-menu href="index.html">Home <span>→</span></a>
       <a data-close-menu href="notes.html#pearls">Pearls <span>→</span></a>
       <a data-close-menu href="notes.html">Notes <span>→</span></a>
@@ -3153,7 +3155,7 @@
       <a data-close-menu href="critical-care.html">Critical Care and Code <span>→</span></a>
       <a data-close-menu href="recent-updates.html">Updates <span>→</span></a>
       <a data-close-menu href="resources.html">About <span>→</span></a>
-    </div>
+    </nav>
   </header>
 
   <div class="spatial-stage">
@@ -3168,6 +3170,8 @@
             <p>Evidence-based dosing formulas, paediatric airway sizing, renal clearances, and perioperative assessment tools.</p>
             <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin: 0 0 14px 0;">
               <span class="badge" style="background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.35); color:var(--accent-cyan,#38bdf8); font-size:11px; padding:3px 10px; border-radius:999px;">⚡ 100% Offline Capable</span>
+              <span class="badge" style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.35); color:#34d399; font-size:11px; padding:3px 10px; border-radius:999px;" title="Calculator inputs are securely saved to your local browser session only">🔒 Session Protected (Local Only)</span>
+              <button class="hud-install-btn" id="btnClearPatientData" style="font-size:11px; padding:3px 12px; background:rgba(239,68,68,0.15); border-color:rgba(239,68,68,0.4); color:#f87171;" title="Clear all entered patient data and reset calculators">🗑 Clear Patient Data</button>
               <button class="hud-install-btn" id="btnInstallCalcBanner" style="font-size:11px; padding:3px 10px;">⤓ Install Calculators App (Android / PC)</button>
             </div>
             <div class="kn-site-search">
@@ -3966,7 +3970,7 @@
           </div>
 
           <!-- Table of 16 Drugs -->
-          <div class="paeds-table-wrapper">
+          <div class="paeds-table-wrapper" tabindex="0" role="region" aria-label="Paediatric drug dosing table">
             <table class="paeds-chart-table" id="paedsTable">
               <thead>
                 <tr>
@@ -6110,6 +6114,7 @@
 <script src="vendor/jspdf/jspdf.plugin.autotable.min.js"></script>
 
 <!-- Calculator Engines -->
+<script src="clinical-validator.js"></script>
 <script src="paeds-chart-engine.js"></script>
 <script src="paeds-pdf-export.js"></script>
 <script src="abg-engine.js"></script>
@@ -6143,18 +6148,49 @@
   }
 
   // ------------------------------------------------------------------------
+  // CLINICAL VALIDATION HELPER
+  // ------------------------------------------------------------------------
+  const Validator = window.KnockoutClinicalValidator;
+  function validatePair(idBase, ruleKey) {
+    if (!Validator) return { valid: true };
+    const el3d = document.getElementById(idBase + "3d");
+    const elLite = document.getElementById(idBase);
+    const r1 = el3d ? Validator.checkAndRender(el3d, ruleKey) : { valid: true };
+    const r2 = elLite ? Validator.checkAndRender(elLite, ruleKey) : { valid: true };
+    return {
+      valid: r1.valid && r2.valid,
+      isWarning: r1.isWarning || r2.isWarning,
+      isEmpty: r1.isEmpty || r2.isEmpty,
+      numVal: r1.numVal ?? r2.numVal
+    };
+  }
+
+  // ------------------------------------------------------------------------
   // PAEDIATRIC DRUG CHART CONTROLLER
   // ------------------------------------------------------------------------
   let paedsConcentrationOverrides = {};
 
   function updatePaedsChart() {
+    const vWt = validatePair("paedsWt", "paedsWeight");
+    const vAge = validatePair("paedsAge", "paedsAge");
+
     const wtInput = document.getElementById("paedsWt3d") || document.getElementById("paedsWt");
     const ageInput = document.getElementById("paedsAge3d") || document.getElementById("paedsAge");
     const caseInput = document.getElementById("paedsCase3d") || document.getElementById("paedsCase");
 
-    const wt = parseFloat(wtInput?.value);
-    const age = parseFloat(ageInput?.value);
+    const wt = vWt.numVal;
+    const age = vAge.numVal;
     const caseId = caseInput?.value || "";
+
+    if (!vWt.valid || wt === null || isNaN(wt) || wt <= 0) {
+      ["paedsTableBody3d", "paedsTableBody"].forEach(bodyId => {
+        const el = document.getElementById(bodyId);
+        if (el) {
+          el.innerHTML = `<tr class="category-header"><td colspan="7" style="text-align:center; color:#fca5a5; padding:1.2rem;">⛔ Please enter a valid paediatric weight (0.4–120 kg) to calculate emergency and anaesthetic doses.</td></tr>`;
+        }
+      });
+      return;
+    }
 
     // 1. Airway Sizing (Table 42-6 + ETT Formulas)
     const airway = window.KnockoutPaedsChart.computeAirway(age, wt);
@@ -6273,8 +6309,8 @@
     const age = parseFloat(ageInput?.value);
     const caseId = caseInput?.value || "";
 
-    if (!wt || wt <= 0 || isNaN(wt)) {
-      alert("Please enter a valid patient weight before generating the PDF.");
+    if (!wt || wt <= 0 || isNaN(wt) || wt > 120) {
+      alert("Please enter a valid patient weight (0.4–120 kg) before generating the PDF.");
       return;
     }
 
@@ -6310,10 +6346,24 @@
   // PARKLAND CONTROLLER
   // ------------------------------------------------------------------------
   function updateParkland() {
-    const wt = parseFloat(document.getElementById("parklandWt3d")?.value || document.getElementById("parklandWt")?.value);
-    const tbsa = parseFloat(document.getElementById("parklandTbsa3d")?.value || document.getElementById("parklandTbsa")?.value);
-    const hrs = parseFloat(document.getElementById("parklandHrs3d")?.value || document.getElementById("parklandHrs")?.value);
-    const given = parseFloat(document.getElementById("parklandGiven3d")?.value || document.getElementById("parklandGiven")?.value);
+    const vWt = validatePair("parklandWt", "adultWeight");
+    const vTbsa = validatePair("parklandTbsa", "burnTbsa");
+    const vHrs = validatePair("parklandHrs", "burnHours");
+
+    const wt = vWt.numVal;
+    const tbsa = vTbsa.numVal;
+    const hrs = vHrs.numVal || 0;
+    const given = parseFloat(document.getElementById("parklandGiven3d")?.value || document.getElementById("parklandGiven")?.value) || 0;
+
+    if (!vWt.valid || !vTbsa.valid || !vHrs.valid || !wt || !tbsa) {
+      ["3d", ""].forEach(s => {
+        const tot = document.getElementById("parklandTotalVal" + s);
+        const interp = document.getElementById("parklandInterp" + s);
+        if (tot) tot.innerHTML = `-- <span class="unit">mL / 24h</span>`;
+        if (interp) interp.textContent = "Please enter valid burn parameters (weight, % TBSA ≤ 100%, hours ≤ 24) to calculate fluid resuscitation.";
+      });
+      return;
+    }
 
     const res = window.KnockoutCalculators.calculateParkland(wt, tbsa, hrs, given);
     if (res.error) return;
@@ -6340,8 +6390,24 @@
   // BMI CONTROLLER
   // ------------------------------------------------------------------------
   function updateBmi() {
-    const wt = parseFloat(document.getElementById("bmiWt3d")?.value || document.getElementById("bmiWt")?.value);
-    const ht = parseFloat(document.getElementById("bmiHt3d")?.value || document.getElementById("bmiHt")?.value);
+    const vWt = validatePair("bmiWt", "adultWeight");
+    const vHt = validatePair("bmiHt", "heightCm");
+
+    const wt = vWt.numVal;
+    const ht = vHt.numVal;
+
+    if (!vWt.valid || !vHt.valid || !wt || !ht) {
+      ["3d", ""].forEach(s => {
+        const val = document.getElementById("bmiVal" + s);
+        const badge = document.getElementById("bmiBadge" + s);
+        const interp = document.getElementById("bmiInterp" + s);
+        if (val) val.innerHTML = `-- <span class="unit">kg/m²</span>`;
+        if (badge) { badge.className = "calc-result-badge warn"; badge.textContent = "Invalid Input"; }
+        if (interp) interp.textContent = "Please enter physiological adult weight (15–450 kg) and height (35–260 cm).";
+      });
+      return;
+    }
+
     const res = window.KnockoutCalculators.calculateBMI(wt, ht);
     if (res.error) return;
 
@@ -6503,13 +6569,30 @@
   // COCKCROFT-GAULT CONTROLLER
   // ------------------------------------------------------------------------
   function updateCockcroftGault() {
-    const age = document.getElementById("cgAge3d")?.value || document.getElementById("cgAge")?.value;
+    const vAge = validatePair("cgAge", "adultAge");
+    const vWeight = validatePair("cgWeight", "adultWeight");
+    const vHeight = validatePair("cgHeight", "heightCm");
+    const vScr = validatePair("cgScr", "serumCreatinine");
+
+    const age = vAge.numVal;
     const sex = document.getElementById("cgSex3d")?.value || document.getElementById("cgSex")?.value;
-    const weight = document.getElementById("cgWeight3d")?.value || document.getElementById("cgWeight")?.value;
-    const heightCm = document.getElementById("cgHeight3d")?.value || document.getElementById("cgHeight")?.value;
-    const sCr = document.getElementById("cgScr3d")?.value || document.getElementById("cgScr")?.value;
+    const weight = vWeight.numVal;
+    const heightCm = vHeight.numVal;
+    const sCr = vScr.numVal;
     const crUnit = document.getElementById("cgScrUnit3d")?.value || document.getElementById("cgScrUnit")?.value;
     const weightType = document.getElementById("cgWeightType3d")?.value || document.getElementById("cgWeightType")?.value;
+
+    if (!vAge.valid || !vWeight.valid || !vHeight.valid || !vScr.valid || !age || !weight || !heightCm || !sCr) {
+      ["3d", ""].forEach(s => {
+        const val = document.getElementById("cgVal" + s);
+        const badge = document.getElementById("cgBadge" + s);
+        const interp = document.getElementById("cgInterp" + s);
+        if (val) val.innerHTML = `-- <span class="unit">mL/min</span>`;
+        if (badge) { badge.className = "calc-result-badge warn"; badge.textContent = "Invalid Input"; }
+        if (interp) interp.textContent = "Please enter physiological renal parameters (age, weight, height, serum creatinine).";
+      });
+      return;
+    }
 
     const res = window.KnockoutCalculators.calculateCockcroftGault({
       age, sex, weight, heightCm, sCr, crUnit, weightType
@@ -6543,15 +6626,32 @@
   function updateABG() {
     const sampleType = (document.getElementById("abgSampleType3d") || document.getElementById("abgSampleType"))?.value || "abg";
     const chronicity = (document.getElementById("abgChronicity3d") || document.getElementById("abgChronicity"))?.value || "acute";
-    const ph = (document.getElementById("abgPh3d") || document.getElementById("abgPh"))?.value;
-    const paco2 = (document.getElementById("abgPaco23d") || document.getElementById("abgPaco2"))?.value;
-    const pao2 = (document.getElementById("abgPao23d") || document.getElementById("abgPao2"))?.value;
-    const hco3 = (document.getElementById("abgHco33d") || document.getElementById("abgHco3"))?.value;
+    const vPh = validatePair("abgPh", "abgPh");
+    const vPaco2 = validatePair("abgPaco2", "abgPaco2");
+    const vPao2 = validatePair("abgPao2", "abgPao2");
+    const vHco3 = validatePair("abgHco3", "abgHco3");
+
+    const ph = vPh.numVal;
+    const paco2 = vPaco2.numVal;
+    const pao2 = vPao2.numVal;
+    const hco3 = vHco3.numVal;
     const fio2 = (document.getElementById("abgFio23d") || document.getElementById("abgFio2"))?.value;
     const na = (document.getElementById("abgNa3d") || document.getElementById("abgNa"))?.value;
     const cl = (document.getElementById("abgCl3d") || document.getElementById("abgCl"))?.value;
     const alb = (document.getElementById("abgAlb3d") || document.getElementById("abgAlb"))?.value;
     const age = (document.getElementById("abgAge3d") || document.getElementById("abgAge"))?.value;
+
+    if (!vPh.valid || !vPaco2.valid || !vHco3.valid || !ph || !paco2 || !hco3) {
+      ["3d", ""].forEach(s => {
+        const phVal = document.getElementById("abgPhVal" + s);
+        const phBadge = document.getElementById("abgPhBadge" + s);
+        const impText = document.getElementById("abgImpressionText" + s);
+        if (phVal) phVal.innerHTML = `pH --`;
+        if (phBadge) { phBadge.className = "calc-result-badge warn"; phBadge.textContent = "Invalid Gas Values"; }
+        if (impText) impText.textContent = "Please enter physiological blood gas values (pH 6.6–7.9, PaCO₂ 5–180 mmHg, HCO₃⁻ 1–75 mmol/L).";
+      });
+      return;
+    }
 
     const res = window.KnockoutCalculators.analyzeABG({
       sampleType, chronicity, ph, paco2, pao2, hco3, fio2, na, cl, albumin: alb, age
@@ -7020,9 +7120,25 @@
 
   // --- 3. WEIGHTS (IBW, ABW, LBW) ---
   function updateWeights() {
-    const ht = (document.getElementById("weightHt3d") || document.getElementById("weightHt"))?.value;
-    const wt = (document.getElementById("weightWt3d") || document.getElementById("weightWt"))?.value;
+    const vHt = validatePair("weightHt", "heightCm");
+    const vWt = validatePair("weightWt", "adultWeight");
+    const ht = vHt.numVal;
+    const wt = vWt.numVal;
     const sex = (document.getElementById("weightSex3d") || document.getElementById("weightSex"))?.value;
+
+    if (!vHt.valid || !vWt.valid || !ht || !wt) {
+      ["3d", ""].forEach(s => {
+        const b = document.getElementById("weightsBadge" + s);
+        const ibw = document.getElementById("weightsIbwVal" + s);
+        const abw = document.getElementById("weightsAbwVal" + s);
+        const lbw = document.getElementById("weightsLbwVal" + s);
+        if (b) { b.className = "calc-result-badge warn"; b.textContent = "Invalid Input"; }
+        if (ibw) ibw.innerHTML = `IBW: -- <span class="unit">kg</span>`;
+        if (abw) abw.innerHTML = `ABW: -- <span class="unit">kg</span>`;
+        if (lbw) lbw.innerHTML = `LBW: -- <span class="unit">kg</span>`;
+      });
+      return;
+    }
 
     const res = window.KnockoutCalculators.calculateBodyWeights(ht, wt, sex);
     if (!res || res.error) return;
@@ -7162,11 +7278,26 @@
 
   // --- 6. MELD-Na ---
   function updateMeldNa() {
-    const bili = (document.getElementById("meldBili3d") || document.getElementById("meldBili"))?.value;
-    const inr = (document.getElementById("meldInr3d") || document.getElementById("meldInr"))?.value;
-    const cr = (document.getElementById("meldCr3d") || document.getElementById("meldCr"))?.value;
-    const na = (document.getElementById("meldNa3d") || document.getElementById("meldNa"))?.value;
+    const vBili = validatePair("meldBili", "serumBilirubin");
+    const vInr = validatePair("meldInr", "inrValue");
+    const vCr = validatePair("meldCr", "serumCreatinine");
+    const vNa = validatePair("meldNa", "serumSodium");
+
+    const bili = vBili.numVal;
+    const inr = vInr.numVal;
+    const cr = vCr.numVal;
+    const na = vNa.numVal;
     const dialysis = (document.getElementById("meldDialysis3d") || document.getElementById("meldDialysis"))?.checked;
+
+    if (!vBili.valid || !vInr.valid || !vCr.valid || !vNa.valid || !bili || !inr || !cr || !na) {
+      ["3d", ""].forEach(s => {
+        const b = document.getElementById("meldBadge" + s);
+        const v = document.getElementById("meldVal" + s);
+        if (b) { b.className = "calc-result-badge warn"; b.textContent = "Invalid Labs"; }
+        if (v) v.innerHTML = `-- <span class="unit">Points</span>`;
+      });
+      return;
+    }
 
     const res = window.KnockoutCalculators.calculateMELDNa(bili, inr, cr, na, dialysis);
     if (!res || res.error) return;
@@ -7617,9 +7748,21 @@
 
   // --- 17. CALCIUM CORRECTION ---
   function updateCorrectedCa() {
-    const ca = (document.getElementById("caMeasured3d") || document.getElementById("caMeasured"))?.value;
-    const alb = (document.getElementById("caAlbumin3d") || document.getElementById("caAlbumin"))?.value;
+    const vCa = validatePair("caMeasured", "serumCalcium");
+    const vAlb = validatePair("caAlbumin", "serumAlbuminGdl");
+    const ca = vCa.numVal;
+    const alb = vAlb.numVal;
     const unit = (document.getElementById("caUnit3d") || document.getElementById("caUnit"))?.value;
+
+    if (!vCa.valid || !vAlb.valid || !ca || !alb) {
+      ["3d", ""].forEach(s => {
+        const b = document.getElementById("caBadge" + s);
+        const v = document.getElementById("caVal" + s);
+        if (b) { b.className = "calc-result-badge warn"; b.textContent = "Invalid Lab"; }
+        if (v) v.innerHTML = `-- <span class="unit">${unit || 'mg/dL'}</span>`;
+      });
+      return;
+    }
 
     const res = window.KnockoutCalculators.calculateCorrectedCalcium(ca, alb, unit);
     if (!res || res.error) return;
@@ -7656,9 +7799,21 @@
 
   // --- 18. SODIUM CORRECTION ---
   function updateCorrectedNa() {
-    const na = (document.getElementById("naMeasured3d") || document.getElementById("naMeasured"))?.value;
-    const glu = (document.getElementById("naGlucose3d") || document.getElementById("naGlucose"))?.value;
+    const vNa = validatePair("naMeasured", "serumSodium");
+    const vGlu = validatePair("naGlucose", "bloodGlucose");
+    const na = vNa.numVal;
+    const glu = vGlu.numVal;
     const unit = (document.getElementById("naGluUnit3d") || document.getElementById("naGluUnit"))?.value;
+
+    if (!vNa.valid || !vGlu.valid || !na || !glu) {
+      ["3d", ""].forEach(s => {
+        const b = document.getElementById("naBadge" + s);
+        const hillier = document.getElementById("naHillierVal" + s);
+        if (b) { b.className = "calc-result-badge warn"; b.textContent = "Invalid Lab"; }
+        if (hillier) hillier.innerHTML = `Hillier: -- <span class="unit">mEq/L</span>`;
+      });
+      return;
+    }
 
     const res = window.KnockoutCalculators.calculateCorrectedSodium(na, glu, unit);
     if (!res || res.error) return;
@@ -8163,10 +8318,149 @@
     try { updatePpo(); } catch (e) { console.error("updatePpo error:", e); }
     try { setupPpoModeToggles(); } catch (e) { console.error("setupPpoModeToggles error:", e); }
     try { setup3DHapticDepth(); } catch (e) { console.error("setup3DHapticDepth error:", e); }
+    try { initCalculatorPersistence(); } catch (e) { console.error("initCalculatorPersistence error:", e); }
+  }
+
+  // --------------------------------------------------------------------------
+  // Calculator Session Storage Persistence (Local Browser Tab Only)
+  // --------------------------------------------------------------------------
+  const CALC_STORAGE_KEY = "kn_calc_session_data_v1";
+
+  function initCalculatorPersistence() {
+    restorePersistedCalculatorData();
+    bindCalculatorInputPersistence();
+    bindClearPatientDataButtons();
+  }
+
+  function getRelevantCalcInputs() {
+    return Array.from(document.querySelectorAll(
+      ".calc-box input:not([type='search']):not([type='hidden']), .calc-box select, " +
+      ".airway-box input, .airway-box select, " +
+      ".calc-hero-card input, .calc-hero-card select"
+    )).filter(el => !!el.id && !el.id.toLowerCase().includes("search"));
+  }
+
+  function restorePersistedCalculatorData() {
+    if (typeof window.sessionStorage === "undefined") return;
+    try {
+      const raw = sessionStorage.getItem(CALC_STORAGE_KEY);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      if (!data || typeof data !== "object") return;
+
+      const inputs = getRelevantCalcInputs();
+      let restoredCount = 0;
+
+      inputs.forEach(el => {
+        if (Object.prototype.hasOwnProperty.call(data, el.id)) {
+          const val = data[el.id];
+          if (el.type === "checkbox" || el.type === "radio") {
+            el.checked = Boolean(val);
+          } else {
+            el.value = val;
+          }
+          restoredCount++;
+        }
+      });
+
+      if (restoredCount > 0) {
+        // Trigger recalculation on restored forms
+        const event = new Event("input", { bubbles: true });
+        const changeEvent = new Event("change", { bubbles: true });
+        inputs.forEach(el => {
+          if (Object.prototype.hasOwnProperty.call(data, el.id)) {
+            el.dispatchEvent(event);
+            el.dispatchEvent(changeEvent);
+          }
+        });
+      }
+    } catch (err) {
+      console.warn("KnockoutCalculators: Note on session restore:", err);
+    }
+  }
+
+  function saveCalculatorDataDebounced() {
+    if (typeof window.sessionStorage === "undefined") return;
+    try {
+      const inputs = getRelevantCalcInputs();
+      const payload = {};
+      let hasData = false;
+
+      inputs.forEach(el => {
+        if (el.type === "checkbox" || el.type === "radio") {
+          if (el.checked) {
+            payload[el.id] = el.checked;
+            hasData = true;
+          }
+        } else if (el.value !== "" && el.value !== el.defaultValue) {
+          payload[el.id] = el.value;
+          hasData = true;
+        } else if (el.value !== "") {
+          payload[el.id] = el.value;
+        }
+      });
+
+      sessionStorage.setItem(CALC_STORAGE_KEY, JSON.stringify(payload));
+      sessionStorage.setItem("kn_calc_has_patient_data", hasData ? "true" : "false");
+    } catch (_) {}
+  }
+
+  function bindCalculatorInputPersistence() {
+    let debounceTimer = null;
+    document.addEventListener("input", (e) => {
+      const target = e.target;
+      if (target && target.matches && target.matches(".calc-box input, .calc-box select, .airway-box input, .airway-box select, .calc-hero-card input, .calc-hero-card select")) {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(saveCalculatorDataDebounced, 250);
+      }
+    }, { passive: true });
+
+    document.addEventListener("change", (e) => {
+      const target = e.target;
+      if (target && target.matches && target.matches(".calc-box input, .calc-box select, .airway-box input, .airway-box select, .calc-hero-card input, .calc-hero-card select")) {
+        saveCalculatorDataDebounced();
+      }
+    }, { passive: true });
+  }
+
+  function clearAllPatientData() {
+    if (!confirm("Are you sure you want to clear all patient values and reset the calculators for a new case?")) {
+      return;
+    }
+    if (typeof window.sessionStorage !== "undefined") {
+      try {
+        sessionStorage.removeItem(CALC_STORAGE_KEY);
+        sessionStorage.removeItem("kn_calc_has_patient_data");
+      } catch (_) {}
+    }
+
+    const inputs = getRelevantCalcInputs();
+    inputs.forEach(el => {
+      if (el.type === "checkbox" || el.type === "radio") {
+        el.checked = el.defaultChecked;
+      } else {
+        el.value = el.defaultValue !== undefined ? el.defaultValue : "";
+      }
+      el.dispatchEvent(new Event("input", { bubbles: true }));
+      el.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+
+    // Re-run global calculator suite to reset badges & outputs
+    initAllCalculators();
+  }
+
+  function bindClearPatientDataButtons() {
+    ["btnClearPatientData3d", "btnClearPatientData"].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) {
+        btn.addEventListener("click", clearAllPatientData);
+      }
+    });
   }
 
   window.KnockoutCalculators = Object.assign(window.KnockoutCalculators || {}, {
-    init: initAllCalculators
+    init: initAllCalculators,
+    clearPatientData: clearAllPatientData
   });
 
   if (document.readyState === "loading") {

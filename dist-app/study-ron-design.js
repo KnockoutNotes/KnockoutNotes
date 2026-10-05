@@ -91,6 +91,82 @@
            (data.drugs || []).find((d) => d.id === id) || null;
   }
 
+  // ==========================================================================
+  // STUDY PROGRESS & ACTIVE RECALL TRACKING (LocalStorage: kn_study_progress_v1)
+  // Mastered | Flagged for Revision | Remaining (Reset-friendly)
+  // ==========================================================================
+  const STUDY_PROGRESS_KEY = "kn_study_progress_v1";
+
+  function getStudyProgress() {
+    try {
+      const raw = localStorage.getItem(STUDY_PROGRESS_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch (e) {}
+    return { mastered: {}, revision: {} };
+  }
+
+  function setStudyProgress(progress) {
+    try {
+      localStorage.setItem(STUDY_PROGRESS_KEY, JSON.stringify(progress));
+    } catch (e) {}
+    try {
+      window.dispatchEvent(new CustomEvent("kn:study-progress-updated", { detail: progress }));
+    } catch (e) {}
+  }
+
+  function getItemProgressState(itemId) {
+    const p = getStudyProgress();
+    if (p.mastered && p.mastered[itemId]) return "mastered";
+    if (p.revision && p.revision[itemId]) return "revision";
+    return "unstudied";
+  }
+
+  function toggleItemProgress(itemId, targetState) {
+    const p = getStudyProgress();
+    if (!p.mastered) p.mastered = {};
+    if (!p.revision) p.revision = {};
+
+    const current = getItemProgressState(itemId);
+    if (current === targetState) {
+      // Toggle off -> back to unstudied
+      delete p.mastered[itemId];
+      delete p.revision[itemId];
+    } else {
+      if (targetState === "mastered") {
+        p.mastered[itemId] = Date.now();
+        delete p.revision[itemId];
+      } else if (targetState === "revision") {
+        p.revision[itemId] = Date.now();
+        delete p.mastered[itemId];
+      }
+    }
+    setStudyProgress(p);
+    return getItemProgressState(itemId);
+  }
+
+  function resetStudyProgress() {
+    if (window.confirm("Reset all study progress (Mastered & Revision status) on this device?")) {
+      try {
+        localStorage.removeItem(STUDY_PROGRESS_KEY);
+      } catch (e) {}
+      try {
+        window.dispatchEvent(new CustomEvent("kn:study-progress-updated", { detail: { mastered: {}, revision: {} } }));
+      } catch (e) {}
+      renderRonBoard();
+    }
+  }
+
+  function getStudyProgressStats() {
+    const data = getData();
+    const total = (data.topics || []).length + (data.drugs || []).length;
+    const p = getStudyProgress();
+    const masteredCount = Object.keys(p.mastered || {}).length;
+    const revisionCount = Object.keys(p.revision || {}).length;
+    const remainingCount = Math.max(0, total - (masteredCount + revisionCount));
+    const percent = total > 0 ? Math.round((masteredCount / total) * 100) : 0;
+    return { total, masteredCount, revisionCount, remainingCount, percent };
+  }
+
   // Related Calculators & Crisis Protocols
   function getRelatedTools(item) {
     const tools = [];
@@ -763,10 +839,20 @@
     const catBadgeText = getDrugClassificationBadge(it);
     const badgeClass = getDrugClassificationBadgeClass(it);
 
+    const progState = getItemProgressState(it.id);
+    const progBadge = progState === "mastered"
+      ? `<span class="kn-card-progress-pill kn-pill-mastered" title="Mastered">✓ Mastered</span>`
+      : progState === "revision"
+      ? `<span class="kn-card-progress-pill kn-pill-revision" title="Flagged for Revision">⚑ Revision</span>`
+      : "";
+
     return `
-      <div class="ron-card ron-interactive-topic-card ${has3D ? 'ron-card-has-3d' : ''}" data-topic-id="${it.id}" role="button" tabindex="0" title="Click to open ${esc(it.name)}">
+      <div class="ron-card ron-interactive-topic-card ${has3D ? 'ron-card-has-3d' : ''} ${progState !== 'unstudied' ? 'kn-card-' + progState : ''}" data-topic-id="${it.id}" role="button" tabindex="0" title="Click to open ${esc(it.name)}">
         <div class="ron-card-header">
-          <span class="ron-topic-item-cat ${badgeClass}">${esc(catBadgeText)}</span>
+          <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+            <span class="ron-topic-item-cat ${badgeClass}">${esc(catBadgeText)}</span>
+            ${progBadge}
+          </div>
           <div class="kn-card-actions-group">
             ${window.KN_WORKSPACE ? window.KN_WORKSPACE.renderBookmarkBtn({
               content_id: 'study:' + it.id,
@@ -943,6 +1029,30 @@
             </div>
           </div>
 
+          <!-- Study Progress & Recall Metrics Bar -->
+          ${(() => {
+            const stats = getStudyProgressStats();
+            return `
+              <div class="kn-study-progress-tracker" style="margin: 0 0 16px 0; padding: 12px 16px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; backdrop-filter: blur(8px);">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+                  <div style="display:flex; align-items:center; gap:12px; font-size:12.5px; font-weight:700;">
+                    <span style="color:#38bdf8;">📊 Study Mastery: ${stats.percent}%</span>
+                    <span style="color:#10b981;">✓ Mastered: ${stats.masteredCount}</span>
+                    <span style="color:#f59e0b;">⚑ Revision: ${stats.revisionCount}</span>
+                    <span style="color:#94a3b8;">○ Remaining: ${stats.remainingCount} / ${stats.total}</span>
+                  </div>
+                  <button type="button" class="kn-reset-progress-btn" style="background:transparent; border:1px solid rgba(239, 68, 68, 0.4); color:#ef4444; font-size:11px; padding:3px 8px; border-radius:6px; cursor:pointer;" title="Reset progress records">
+                    ↺ Reset Progress
+                  </button>
+                </div>
+                <div style="width:100%; height:6px; background:rgba(255,255,255,0.08); border-radius:3px; overflow:hidden; display:flex;">
+                  <div style="width:${stats.percent}%; height:100%; background:linear-gradient(90deg, #10b981, #059669); transition:width 0.3s ease;"></div>
+                  <div style="width:${stats.total > 0 ? (stats.revisionCount / stats.total) * 100 : 0}%; height:100%; background:linear-gradient(90deg, #f59e0b, #d97706); transition:width 0.3s ease;"></div>
+                </div>
+              </div>
+            `;
+          })()}
+
           <!-- 3. Connected Cards Grid -->
           <div class="ron-flowchart-stage">
             <div class="ron-classification-stage-content">
@@ -1105,6 +1215,17 @@
                   ` : ''}
                   ${item.tagline && item.tagline !== item.classification ? `<p style="margin:6px 0 0; font-size:14px; color:var(--ron-text-tagline); line-height:1.5;">${esc(item.tagline)}</p>` : ''}
                   <div class="kn-monograph-action-bar">
+                    ${(() => {
+                      const prog = getItemProgressState(item.id);
+                      return `
+                        <button type="button" class="kn-action-btn kn-study-progress-btn kn-progress-master-btn ${prog === 'mastered' ? 'active-mastered' : ''}" data-kn-progress-target="${esc(item.id)}" data-kn-progress-action="mastered" title="Mark as Mastered">
+                          <span>${prog === 'mastered' ? '✓' : '○'}</span> <span>Mastered</span>
+                        </button>
+                        <button type="button" class="kn-action-btn kn-study-progress-btn kn-progress-revision-btn ${prog === 'revision' ? 'active-revision' : ''}" data-kn-progress-target="${esc(item.id)}" data-kn-progress-action="revision" title="Flag for Revision">
+                          <span>${prog === 'revision' ? '⚑' : '⚐'}</span> <span>Revision</span>
+                        </button>
+                      `;
+                    })()}
                     ${window.KN_WORKSPACE ? window.KN_WORKSPACE.renderBookmarkBtn({
                       content_id: 'study:' + item.id,
                       content_type: 'study',
@@ -1856,11 +1977,35 @@
   // GLOBAL CLICK LISTENER DELEGATION
   // ==========================================================================
   document.addEventListener("click", (e) => {
+    // 0a. Progress Toggle Action (Mastered / Revision)
+    const progBtn = e.target.closest(".kn-study-progress-btn");
+    if (progBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const targetId = progBtn.getAttribute("data-kn-progress-target");
+      const action = progBtn.getAttribute("data-kn-progress-action");
+      if (targetId && action) {
+        triggerHapticFeedback();
+        toggleItemProgress(targetId, action);
+        if (activeItem && activeItem.id === targetId) {
+          renderRonBoard();
+        }
+      }
+      return;
+    }
+
+    // 0b. Reset Progress Action
+    if (e.target.closest(".kn-reset-progress-btn")) {
+      e.preventDefault();
+      e.stopPropagation();
+      resetStudyProgress();
+      return;
+    }
 
     // 1. Topic Card clicked -> Open Topic Description
     const topicCard = e.target.closest("[data-topic-id]");
     if (topicCard) {
-      if (e.target.closest("[data-kn-bookmark-id], [data-kn-sticky-id], .kn-btn-icon-action, .kn-action-chip-btn")) {
+      if (e.target.closest("[data-kn-bookmark-id], [data-kn-sticky-id], .kn-btn-icon-action, .kn-action-chip-btn, .kn-card-progress-pill")) {
         return;
       }
       e.preventDefault();

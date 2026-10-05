@@ -293,15 +293,39 @@
   }
 
   let animId = null;
+  let isCanvasIntersecting = true;
+
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        isCanvasIntersecting = entry.isIntersecting;
+        if (isCanvasIntersecting && !document.hidden && !document.body.classList.contains("mode-lite")) {
+          if (!animId) animId = requestAnimationFrame(render);
+        } else if (!isCanvasIntersecting && animId) {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+      });
+    }, { threshold: 0.01 });
+    io.observe(canvas);
+  }
 
   document.addEventListener("visibilitychange", () => {
-    if (!document.hidden && !document.body.classList.contains("mode-lite") && !animId) {
-      animId = requestAnimationFrame(render);
+    if (document.hidden) {
+      if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+    } else {
+      if (isCanvasIntersecting && !document.body.classList.contains("mode-lite") && !animId) {
+        animId = requestAnimationFrame(render);
+      }
     }
   });
 
   function render() {
-    if (document.hidden || document.body.classList.contains("mode-lite")) {
+    if (document.hidden || !isCanvasIntersecting || document.body.classList.contains("mode-lite")) {
+      if (animId) cancelAnimationFrame(animId);
       animId = null;
       return;
     }

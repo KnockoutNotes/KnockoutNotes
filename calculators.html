@@ -101,6 +101,8 @@
             <p>Evidence-based dosing formulas, paediatric airway sizing, renal clearances, and perioperative assessment tools.</p>
             <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin: 0 0 14px 0;">
               <span class="badge" style="background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.35); color:var(--accent-cyan,#38bdf8); font-size:11px; padding:3px 10px; border-radius:999px;">⚡ 100% Offline Capable</span>
+              <span class="badge" style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.35); color:#34d399; font-size:11px; padding:3px 10px; border-radius:999px;" title="Calculator inputs are securely saved to your local browser session only">🔒 Session Protected (Local Only)</span>
+              <button class="hud-install-btn" id="btnClearPatientData3d" style="font-size:11px; padding:3px 12px; background:rgba(239,68,68,0.15); border-color:rgba(239,68,68,0.4); color:#f87171;" title="Clear all entered patient data and reset calculators">🗑 Clear Patient Data</button>
               <button class="hud-install-btn" id="btnInstallCalcBanner3d" style="font-size:11px; padding:3px 10px;">⤓ Install Calculators App (Android / PC)</button>
             </div>
             <div class="kn-site-search">
@@ -3168,6 +3170,8 @@
             <p>Evidence-based dosing formulas, paediatric airway sizing, renal clearances, and perioperative assessment tools.</p>
             <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin: 0 0 14px 0;">
               <span class="badge" style="background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.35); color:var(--accent-cyan,#38bdf8); font-size:11px; padding:3px 10px; border-radius:999px;">⚡ 100% Offline Capable</span>
+              <span class="badge" style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.35); color:#34d399; font-size:11px; padding:3px 10px; border-radius:999px;" title="Calculator inputs are securely saved to your local browser session only">🔒 Session Protected (Local Only)</span>
+              <button class="hud-install-btn" id="btnClearPatientData" style="font-size:11px; padding:3px 12px; background:rgba(239,68,68,0.15); border-color:rgba(239,68,68,0.4); color:#f87171;" title="Clear all entered patient data and reset calculators">🗑 Clear Patient Data</button>
               <button class="hud-install-btn" id="btnInstallCalcBanner" style="font-size:11px; padding:3px 10px;">⤓ Install Calculators App (Android / PC)</button>
             </div>
             <div class="kn-site-search">
@@ -8314,10 +8318,149 @@
     try { updatePpo(); } catch (e) { console.error("updatePpo error:", e); }
     try { setupPpoModeToggles(); } catch (e) { console.error("setupPpoModeToggles error:", e); }
     try { setup3DHapticDepth(); } catch (e) { console.error("setup3DHapticDepth error:", e); }
+    try { initCalculatorPersistence(); } catch (e) { console.error("initCalculatorPersistence error:", e); }
+  }
+
+  // --------------------------------------------------------------------------
+  // Calculator Session Storage Persistence (Local Browser Tab Only)
+  // --------------------------------------------------------------------------
+  const CALC_STORAGE_KEY = "kn_calc_session_data_v1";
+
+  function initCalculatorPersistence() {
+    restorePersistedCalculatorData();
+    bindCalculatorInputPersistence();
+    bindClearPatientDataButtons();
+  }
+
+  function getRelevantCalcInputs() {
+    return Array.from(document.querySelectorAll(
+      ".calc-box input:not([type='search']):not([type='hidden']), .calc-box select, " +
+      ".airway-box input, .airway-box select, " +
+      ".calc-hero-card input, .calc-hero-card select"
+    )).filter(el => !!el.id && !el.id.toLowerCase().includes("search"));
+  }
+
+  function restorePersistedCalculatorData() {
+    if (typeof window.sessionStorage === "undefined") return;
+    try {
+      const raw = sessionStorage.getItem(CALC_STORAGE_KEY);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      if (!data || typeof data !== "object") return;
+
+      const inputs = getRelevantCalcInputs();
+      let restoredCount = 0;
+
+      inputs.forEach(el => {
+        if (Object.prototype.hasOwnProperty.call(data, el.id)) {
+          const val = data[el.id];
+          if (el.type === "checkbox" || el.type === "radio") {
+            el.checked = Boolean(val);
+          } else {
+            el.value = val;
+          }
+          restoredCount++;
+        }
+      });
+
+      if (restoredCount > 0) {
+        // Trigger recalculation on restored forms
+        const event = new Event("input", { bubbles: true });
+        const changeEvent = new Event("change", { bubbles: true });
+        inputs.forEach(el => {
+          if (Object.prototype.hasOwnProperty.call(data, el.id)) {
+            el.dispatchEvent(event);
+            el.dispatchEvent(changeEvent);
+          }
+        });
+      }
+    } catch (err) {
+      console.warn("KnockoutCalculators: Note on session restore:", err);
+    }
+  }
+
+  function saveCalculatorDataDebounced() {
+    if (typeof window.sessionStorage === "undefined") return;
+    try {
+      const inputs = getRelevantCalcInputs();
+      const payload = {};
+      let hasData = false;
+
+      inputs.forEach(el => {
+        if (el.type === "checkbox" || el.type === "radio") {
+          if (el.checked) {
+            payload[el.id] = el.checked;
+            hasData = true;
+          }
+        } else if (el.value !== "" && el.value !== el.defaultValue) {
+          payload[el.id] = el.value;
+          hasData = true;
+        } else if (el.value !== "") {
+          payload[el.id] = el.value;
+        }
+      });
+
+      sessionStorage.setItem(CALC_STORAGE_KEY, JSON.stringify(payload));
+      sessionStorage.setItem("kn_calc_has_patient_data", hasData ? "true" : "false");
+    } catch (_) {}
+  }
+
+  function bindCalculatorInputPersistence() {
+    let debounceTimer = null;
+    document.addEventListener("input", (e) => {
+      const target = e.target;
+      if (target && target.matches && target.matches(".calc-box input, .calc-box select, .airway-box input, .airway-box select, .calc-hero-card input, .calc-hero-card select")) {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(saveCalculatorDataDebounced, 250);
+      }
+    }, { passive: true });
+
+    document.addEventListener("change", (e) => {
+      const target = e.target;
+      if (target && target.matches && target.matches(".calc-box input, .calc-box select, .airway-box input, .airway-box select, .calc-hero-card input, .calc-hero-card select")) {
+        saveCalculatorDataDebounced();
+      }
+    }, { passive: true });
+  }
+
+  function clearAllPatientData() {
+    if (!confirm("Are you sure you want to clear all patient values and reset the calculators for a new case?")) {
+      return;
+    }
+    if (typeof window.sessionStorage !== "undefined") {
+      try {
+        sessionStorage.removeItem(CALC_STORAGE_KEY);
+        sessionStorage.removeItem("kn_calc_has_patient_data");
+      } catch (_) {}
+    }
+
+    const inputs = getRelevantCalcInputs();
+    inputs.forEach(el => {
+      if (el.type === "checkbox" || el.type === "radio") {
+        el.checked = el.defaultChecked;
+      } else {
+        el.value = el.defaultValue !== undefined ? el.defaultValue : "";
+      }
+      el.dispatchEvent(new Event("input", { bubbles: true }));
+      el.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+
+    // Re-run global calculator suite to reset badges & outputs
+    initAllCalculators();
+  }
+
+  function bindClearPatientDataButtons() {
+    ["btnClearPatientData3d", "btnClearPatientData"].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) {
+        btn.addEventListener("click", clearAllPatientData);
+      }
+    });
   }
 
   window.KnockoutCalculators = Object.assign(window.KnockoutCalculators || {}, {
-    init: initAllCalculators
+    init: initAllCalculators,
+    clearPatientData: clearAllPatientData
   });
 
   if (document.readyState === "loading") {

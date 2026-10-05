@@ -132,10 +132,47 @@
     return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
   }
 
+  // Update network badges across 3D and Lite views
+  function updateNetworkBadges(netState) {
+    const badges = [
+      document.getElementById('knNetStatusBadge3d'),
+      document.getElementById('knNetStatusBadgeLite')
+    ];
+    badges.forEach(b => {
+      if (!b) return;
+      b.className = `kn-net-status-badge ${netState.status}`;
+      b.innerHTML = `<span class="kn-net-dot"></span><span>${netState.text}</span>`;
+    });
+  }
+
+  // Fast bounded (~2s) probe distinguishing Online / Offline / Cached-Ready
+  async function checkNetworkConnectivity() {
+    if (!navigator.onLine) {
+      const hasCache = ('caches' in window) || !!navigator.serviceWorker?.controller;
+      return hasCache ? { status: 'cached', text: 'OFFLINE READY' } : { status: 'offline', text: 'OFFLINE' };
+    }
+    try {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 2000); // Bounded ~2s check
+      const res = await fetch('favicon.ico?_=' + Date.now(), {
+        method: 'HEAD',
+        signal: ctrl.signal,
+        cache: 'no-store'
+      });
+      clearTimeout(timer);
+      if (res.ok || res.status < 400) {
+        return { status: 'online', text: 'ONLINE' };
+      }
+    } catch (_) {}
+
+    const hasCache = ('caches' in window) || !!navigator.serviceWorker?.controller;
+    return hasCache ? { status: 'cached', text: 'OFFLINE READY' } : { status: 'offline', text: 'OFFLINE' };
+  }
+
   // Update DOM elements representing sync state
   async function updateSyncUI(status, message) {
     const lastSync = await getLocalMeta('lastSyncTime');
-    const timeStr = formatSyncTime(lastSync);
+    const timeStr = lastSync ? formatSyncTime(lastSync) : ('caches' in window ? 'Cached / Ready' : 'Ready');
 
     document.querySelectorAll('.kn-sync-time-val').forEach(el => {
       el.textContent = timeStr;
@@ -180,10 +217,12 @@
     return false;
   }
 
-  // Core Sync Execution
+  // Core Sync Execution with bounded ~2s timeouts
   async function performSync(triggerReason = 'auto') {
     if (isSyncing) return;
     if (!navigator.onLine) {
+      const hasCache = ('caches' in window) || !!navigator.serviceWorker?.controller;
+      updateNetworkBadges(hasCache ? { status: 'cached', text: 'OFFLINE READY' } : { status: 'offline', text: 'OFFLINE' });
       updateSyncUI('offline', 'Offline — Ready with local database');
       return;
     }
@@ -195,16 +234,17 @@
 
     isSyncing = true;
     updateSyncUI('syncing');
+    updateNetworkBadges({ status: 'checking', text: 'CHECKING...' });
 
     try {
       const results = { updated: 0, preserved: 0 };
 
-      // 1. Sync Live CMS Sheet Data (Pearls, Notes, Viva) if API configured
+      // 1. Sync Live CMS Sheet Data (Pearls, Notes, Viva) if API configured (bounded 2s)
       const apiUrl = window.KNOCKOUTNOTES_API || (window.KNOCKOUTNOTES_CONFIG && window.KNOCKOUTNOTES_CONFIG.API_URL);
       if (apiUrl) {
         try {
           const ctrl = new AbortController();
-          const timer = setTimeout(() => ctrl.abort(), 10000); // 10s timeout
+          const timer = setTimeout(() => ctrl.abort(), 2000); // Bounded ~2s timeout
           const res = await fetch(apiUrl + (apiUrl.includes('?') ? '&' : '?') + 't=' + Date.now(), {
             signal: ctrl.signal,
             cache: 'no-store'
@@ -225,10 +265,10 @@
         }
       }
 
-      // 2. Sync Clinical Updates Manifest (Guidelines: AHA 2025, DAS, GINA)
+      // 2. Sync Clinical Updates Manifest (Guidelines: AHA 2025, DAS, GINA) (bounded 2s)
       try {
         const ctrl = new AbortController();
-        const timer = setTimeout(() => ctrl.abort(), 8000);
+        const timer = setTimeout(() => ctrl.abort(), 2000); // Bounded ~2s timeout
         const res = await fetch('content-config.js?_=' + Date.now(), {
           signal: ctrl.signal,
           cache: 'no-store'
@@ -252,12 +292,15 @@
       await setLocalMeta('lastSyncTime', now);
       await setLocalMeta('lastSyncStatus', 'success');
 
+      updateNetworkBadges({ status: 'online', text: 'ONLINE' });
       updateSyncUI('success', `Synchronized successfully (Just now)`);
 
       // Notify any active views that new content is available
       window.dispatchEvent(new CustomEvent('knockout:content-synced', { detail: { timestamp: now, trigger: triggerReason } }));
     } catch (err) {
       console.error('[SyncEngine] Sync error:', err);
+      const hasCache = ('caches' in window) || !!navigator.serviceWorker?.controller;
+      updateNetworkBadges(hasCache ? { status: 'cached', text: 'OFFLINE READY' } : { status: 'offline', text: 'OFFLINE' });
       updateSyncUI('error', 'Sync interrupted — Offline copy intact');
     } finally {
       isSyncing = false;
@@ -266,14 +309,31 @@
 
   // Setup periodic & event-driven triggers
   function setupTriggers() {
-    // App start
-    setTimeout(() => {
-      if (navigator.onLine) {
+    // Online / Offline listeners for reactive connectivity badge update
+    window.addEventListener('online', async () => {
+      updateNetworkBadges({ status: 'checking', text: 'CHECKING...' });
+      const net = await checkNetworkConnectivity();
+      updateNetworkBadges(net);
+      if (net.status === 'online') {
+        performSync('network_online');
+      }
+    });
+
+    window.addEventListener('offline', () => {
+      const hasCache = ('caches' in window) || !!navigator.serviceWorker?.controller;
+      updateNetworkBadges(hasCache ? { status: 'cached', text: 'OFFLINE READY' } : { status: 'offline', text: 'OFFLINE' });
+      updateSyncUI('offline', 'Offline — Local database active');
+    });
+
+    // App start: fast bounded probe
+    checkNetworkConnectivity().then(net => {
+      updateNetworkBadges(net);
+      if (net.status === 'online') {
         performSync('app_start');
       } else {
-        updateSyncUI('offline');
+        updateSyncUI('offline', 'Offline — Local database active');
       }
-    }, 1500);
+    });
 
     // Visibility change / app returning to foreground
     document.addEventListener('visibilitychange', () => {

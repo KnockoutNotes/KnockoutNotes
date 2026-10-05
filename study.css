@@ -1577,3 +1577,107 @@ details.kn-study-callout-details .st-callout {
   border: none !important;
   border-radius: 0 !important;
 }
+
+/* ==========================================================================
+   STUDY CHAMBER PRINT REFINEMENTS
+   ========================================================================== */
+@media print {
+  .ron-flow-grid {
+    display: block !important;
+  }
+  .ron-card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 12pt !important;
+    box-shadow: none !important;
+  }
+  .ron-classification-group-header {
+    border-bottom: 2px solid #000 !important;
+    padding-bottom: 4pt !important;
+    margin-top: 14pt !important;
+    margin-bottom: 8pt !important;
+    page-break-after: avoid !important;
+  }
+  .ron-step-box {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    border: 1px solid #bbb !important;
+    margin-bottom: 10pt !important;
+  }
+  .st-study-card,
+  .st-flow-step {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}
+
+/* ==========================================================================
+   STUDY PROGRESS & ACTIVE RECALL STYLES
+   Mastered, Revision, and Progress Tracker Bars
+   ========================================================================== */
+.kn-card-progress-pill {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.kn-pill-mastered {
+  background: rgba(16, 185, 129, 0.18);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.kn-pill-revision {
+  background: rgba(245, 158, 11, 0.18);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.ron-card.kn-card-mastered {
+  border-left: 3px solid #10b981 !important;
+}
+
+.ron-card.kn-card-revision {
+  border-left: 3px solid #f59e0b !important;
+}
+
+.kn-study-progress-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.kn-study-progress-btn:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.kn-progress-master-btn.active-mastered {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.6);
+  color: #10b981;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);
+}
+
+.kn-progress-revision-btn.active-revision {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: rgba(245, 158, 11, 0.6);
+  color: #f59e0b;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.25);
+}

@@ -114,18 +114,40 @@
   /* ---------------------------------------------------------------- routing */
   function readURL() {
     const q = new URLSearchParams(location.search);
-    const item = q.get("item");
-    const cat = q.get("cat");
+    const rawHash = (location.hash || "").replace(/^#/, "").trim();
+    let hashItem = null;
+    let hashCat = null;
+    if (rawHash) {
+      if (rawHash.startsWith("cat-")) {
+        const c = rawHash.replace(/^cat-/, "");
+        if (c === "all" || catById.has(c)) hashCat = c;
+      } else if (itemById(rawHash)) {
+        hashItem = rawHash;
+      } else if (catById.has(rawHash) || rawHash === "all") {
+        hashCat = rawHash;
+      }
+    }
+
+    const queryItem = q.get("item");
+    const queryCat = q.get("cat");
+
+    const item = hashItem || (queryItem && itemById(queryItem) ? queryItem : null);
+    const cat = hashCat || (queryCat === "all" || catById.has(queryCat) ? queryCat : null);
+
     return {
-      item: item && itemById(item) ? item : null,
-      cat: cat === "all" || catById.has(cat) ? cat : null
+      item,
+      cat
     };
   }
 
   function writeURL(params, replace) {
-    const q = new URLSearchParams();
-    Object.entries(params).forEach(([k, v]) => { if (v) q.set(k, v); });
-    const url = `${location.pathname}${q.toString() ? "?" + q.toString() : ""}`;
+    let hash = "";
+    if (params.item) {
+      hash = `#${params.item}`;
+    } else if (params.cat && params.cat !== "anaesthesia") {
+      hash = `#cat-${params.cat}`;
+    }
+    const url = `${location.pathname}${hash}`;
     if (replace) history.replaceState(null, "", url);
     else history.pushState(null, "", url);
   }
@@ -135,7 +157,7 @@
     if (r.item) {
       state.item = r.item;
       const found = itemById(r.item);
-      state.cat = found.cat;
+      state.cat = found ? found.cat : "anaesthesia";
       showDetail();
     } else {
       state.item = null;
@@ -682,6 +704,9 @@
   function callout(kind, label, text) {
     if (!text) return "";
     const innerHTML = formatStructuredText(text, false);
+    if (kind === "example") {
+      return `<details class="kn-study-callout-details" aria-label="${esc(label)}"><summary><span class="st-callout-label" style="display:inline-flex;align-items:center;gap:6px;">${esc(label)} — Clinical Challenge &amp; Solution</span></summary><div class="st-callout st-callout-${kind}">${innerHTML}</div></details>`;
+    }
     return `<div class="st-callout st-callout-${kind}"><span class="st-callout-label">${esc(label)}</span>${innerHTML}</div>`;
   }
 
@@ -4301,9 +4326,12 @@
     if (typeof window.KNUnmountAllTileMolecules === "function") {
       window.KNUnmountAllTileMolecules();
     }
-    $("#stList").hidden = true;
     const item = itemById(state.item);
-    if (!item) return;
+    if (!item) {
+      showList();
+      return;
+    }
+    $("#stList").hidden = true;
     $("#stDetail").hidden = false;
     const drug = !item.sections;
     const cat = catById.get(item.cat);
@@ -4500,6 +4528,7 @@
   }
 
   window.addEventListener("popstate", route);
+  window.addEventListener("hashchange", route);
 
   /* ---------------------------------------------------------------- fullscreen */
   function initFullscreen() {

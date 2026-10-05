@@ -8,13 +8,18 @@
   'use strict';
 
   // --------------------------------------------------------------------------
-  // 1. Web Audio & Mechanical Pendulum Metronome
+  // 1. Web Audio & Precision Look-Ahead Metronome Scheduler
   // --------------------------------------------------------------------------
   let audioCtx = null;
   let isMetronomeRunning = false;
-  let metronomeTimer = null;
   let currentBpm = 110; // Default adult/pals 110 bpm; neonatal 120 bpm (3:1)
   let metronomeCount = 0;
+
+  // Look-ahead Web Audio Scheduler parameters
+  const LOOKAHEAD_INTERVAL_MS = 25.0; // How frequently scheduler runs (ms)
+  const SCHEDULE_AHEAD_TIME = 0.1;    // How far ahead to schedule audio (seconds)
+  let nextBeatTime = 0.0;             // When the next beat is due (in AudioContext time)
+  let schedulerTimer = null;
 
   function initAudio() {
     if (!audioCtx) {
@@ -24,11 +29,11 @@
       }
     }
     if (audioCtx && audioCtx.state === 'suspended') {
-      audioCtx.resume();
+      audioCtx.resume().catch(() => {});
     }
   }
 
-  function playTickSound(isAccent) {
+  function scheduleTick(time, isAccent, beatNumber) {
     if (!audioCtx) return;
     try {
       const osc = audioCtx.createOscillator();
@@ -37,43 +42,52 @@
       gain.connect(audioCtx.destination);
 
       // Distinct pitch every 30 beats
-      osc.frequency.setValueAtTime(isAccent ? 1046.5 : 880, audioCtx.currentTime);
-      gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.06);
+      osc.frequency.setValueAtTime(isAccent ? 1046.5 : 880, time);
+      gain.gain.setValueAtTime(0.3, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + 0.06);
 
-      osc.start(audioCtx.currentTime);
-      osc.stop(audioCtx.currentTime + 0.07);
+      osc.start(time);
+      osc.stop(time + 0.07);
+
+      // Schedule UI flash in sync with audio tick
+      const timeUntilBeat = Math.max(0, (time - audioCtx.currentTime) * 1000);
+      setTimeout(() => {
+        if (!isMetronomeRunning) return;
+        const led = document.getElementById('metronomeLed');
+        if (led) {
+          led.classList.add('active-pulse');
+          setTimeout(() => led.classList.remove('active-pulse'), 90);
+        }
+        const countEl = document.getElementById('metronomeCount');
+        if (countEl) countEl.textContent = beatNumber;
+      }, timeUntilBeat);
     } catch (e) {
-      console.warn('Audio tick error:', e);
+      console.warn('Audio tick scheduling error:', e);
     }
   }
 
-  function triggerMetronomeBeat() {
+  function nextBeat() {
+    const secondsPerBeat = 60.0 / currentBpm;
+    nextBeatTime += secondsPerBeat;
     metronomeCount++;
-    const isAccent = metronomeCount % 30 === 1;
-    playTickSound(isAccent);
+  }
 
-    // Pulse the LED indicator
-    const led = document.getElementById('metronomeLed');
-    if (led) {
-      led.classList.add('active-pulse');
-      setTimeout(() => led.classList.remove('active-pulse'), 90);
+  function runScheduler() {
+    if (!isMetronomeRunning || !audioCtx) return;
+    while (nextBeatTime < audioCtx.currentTime + SCHEDULE_AHEAD_TIME) {
+      const isAccent = (metronomeCount % 30 === 1);
+      scheduleTick(nextBeatTime, isAccent, metronomeCount);
+      nextBeat();
     }
-
-    // Update count display
-    const countEl = document.getElementById('metronomeCount');
-    if (countEl) countEl.textContent = metronomeCount;
   }
 
   function startMetronome() {
     initAudio();
-    isMetronomeRunning = true;
-    metronomeCount = 0;
-    const intervalMs = (60 / currentBpm) * 1000;
+    if (!audioCtx) return;
 
-    // Start audio ticks
-    triggerMetronomeBeat();
-    metronomeTimer = setInterval(triggerMetronomeBeat, intervalMs);
+    isMetronomeRunning = true;
+    metronomeCount = 1;
+    nextBeatTime = audioCtx.currentTime + 0.05;
 
     // Start physical pendulum swing
     const arm = document.getElementById('metronomeArm');
@@ -81,18 +95,33 @@
       arm.classList.add('swinging');
     }
 
+    if (schedulerTimer) clearInterval(schedulerTimer);
+    schedulerTimer = setInterval(runScheduler, LOOKAHEAD_INTERVAL_MS);
+
+    // Coordinate Emergency Wake Lock
+    if (window.KnockoutEmergencyWakeLock) {
+      window.KnockoutEmergencyWakeLock.requestLock('CPR Metronome');
+    }
+
     updateMetronomeUI(true);
   }
 
   function stopMetronome() {
-    if (metronomeTimer) clearInterval(metronomeTimer);
+    if (schedulerTimer) {
+      clearInterval(schedulerTimer);
+      schedulerTimer = null;
+    }
     isMetronomeRunning = false;
-    metronomeTimer = null;
 
     // Stop physical pendulum swing
     const arm = document.getElementById('metronomeArm');
     if (arm) {
       arm.classList.remove('swinging');
+    }
+
+    // Release wake lock if cycle timer is also paused
+    if (!isTimerRunning && window.KnockoutEmergencyWakeLock) {
+      window.KnockoutEmergencyWakeLock.releaseLock();
     }
 
     updateMetronomeUI(false);
@@ -202,6 +231,9 @@
     if (!cycleTimer) {
       cycleTimer = setInterval(tickCycleTimer, 1000);
       isTimerRunning = true;
+      if (window.KnockoutEmergencyWakeLock) {
+        window.KnockoutEmergencyWakeLock.requestLock('CPR 2-Min Timer');
+      }
       updateTimerControlsUI();
     }
   }
@@ -212,6 +244,9 @@
       cycleTimer = null;
     }
     isTimerRunning = false;
+    if (!isMetronomeRunning && window.KnockoutEmergencyWakeLock) {
+      window.KnockoutEmergencyWakeLock.releaseLock();
+    }
     updateTimerControlsUI();
   }
 

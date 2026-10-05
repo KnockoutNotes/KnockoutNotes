@@ -51,6 +51,22 @@
     }
   }
 
+  // Clinical validation helper across dual-layer (3D and Lite) inputs
+  const Validator = window.KnockoutClinicalValidator;
+  function validateAdvancedPair(idBase, ruleKey) {
+    if (!Validator) return { valid: true, numVal: parseFloat(getEl(idBase)?.value) };
+    const el3d = document.getElementById(idBase + "3d");
+    const elLite = document.getElementById(idBase);
+    const r1 = el3d ? Validator.checkAndRender(el3d, ruleKey) : { valid: true };
+    const r2 = elLite ? Validator.checkAndRender(elLite, ruleKey) : { valid: true };
+    return {
+      valid: r1.valid && r2.valid,
+      isWarning: r1.isWarning || r2.isWarning,
+      isEmpty: r1.isEmpty || r2.isEmpty,
+      numVal: r1.numVal ?? r2.numVal
+    };
+  }
+
   // ==========================================================================
   // 1. VASOACTIVE INFUSION CALCULATOR CONTROLLER
   // ==========================================================================
@@ -148,9 +164,32 @@
     function updateForward() {
       if (isUpdatingReverse) return;
       const drugKey = (getEl("vasoDrug")?.value || "norepinephrine").toLowerCase();
-      const weight = parseFloat(getEl("vasoWeight")?.value) || 70;
-      const doseMode = getEl("vasoDoseModeSel")?.value || "mcg_kg_min";
-      const doseInput = parseFloat(getEl("vasoDoseInput")?.value);
+      const drugDef = Engine.VasopressorEngine.drugs[drugKey] || Engine.VasopressorEngine.drugs.norepinephrine;
+      const isUnits = drugDef.unitType === "units";
+      const doseMode = getEl("vasoDoseModeSel")?.value || (isUnits ? "units_min" : "mcg_kg_min");
+
+      let vWt = { valid: true, numVal: 70 };
+      if (!isUnits) {
+        vWt = validateAdvancedPair("vasoWeight", "adultWeight");
+      }
+
+      let doseRule = "norepiDoseWeight";
+      if (isUnits) {
+        doseRule = doseMode === "units_hr" ? "vasopressinUnitsHr" : "vasopressinUnitsMin";
+      } else if (doseMode === "mcg_min") {
+        doseRule = "norepiDoseFixed";
+      } else if (drugKey === "dobutamine" || drugKey === "dopamine") {
+        doseRule = "dobutamineDose";
+      }
+      const vDose = validateAdvancedPair("vasoDoseInput", doseRule);
+
+      if (!vWt.valid || !vDose.valid) {
+        renderVasoOutputs({ error: "Please enter physiological dose and patient weight within safe clinical limits." }, "forward");
+        return;
+      }
+
+      const weight = vWt.numVal || 70;
+      const doseInput = vDose.numVal;
       const concMcgMl = parseFloat(getEl("vasoConcMcgMl")?.value);
       const concUnitsMl = parseFloat(getEl("vasoConcUnitsMl")?.value);
 
@@ -169,8 +208,23 @@
     function updateReverse() {
       isUpdatingReverse = true;
       const drugKey = (getEl("vasoDrug")?.value || "norepinephrine").toLowerCase();
-      const weight = parseFloat(getEl("vasoWeight")?.value) || 70;
-      const rateMlHr = parseFloat(getEl("vasoRateInput")?.value);
+      const drugDef = Engine.VasopressorEngine.drugs[drugKey] || Engine.VasopressorEngine.drugs.norepinephrine;
+      const isUnits = drugDef.unitType === "units";
+
+      let vWt = { valid: true, numVal: 70 };
+      if (!isUnits) {
+        vWt = validateAdvancedPair("vasoWeight", "adultWeight");
+      }
+      const vRate = validateAdvancedPair("vasoRateInput", "infusionRateMlHr");
+
+      if (!vWt.valid || !vRate.valid) {
+        renderVasoOutputs({ error: "Please enter physiological infusion rate (0.01–500 mL/hr) and patient weight." }, "reverse");
+        setTimeout(() => { isUpdatingReverse = false; }, 50);
+        return;
+      }
+
+      const weight = vWt.numVal || 70;
+      const rateMlHr = vRate.numVal;
       const concMcgMl = parseFloat(getEl("vasoConcMcgMl")?.value);
       const concUnitsMl = parseFloat(getEl("vasoConcUnitsMl")?.value);
 
@@ -297,12 +351,28 @@
 
     function runSimulation() {
       const modelKey = (getEl("tciModel")?.value || "schnider").toLowerCase();
-      const age = parseFloat(getEl("tciAge")?.value) || 40;
+      const modelDef = Engine.TciEngine.models[modelKey] || Engine.TciEngine.models.schnider;
+      const isRemi = modelDef.drug === "Remifentanil";
+
+      const vAge = validateAdvancedPair("tciAge", "adultAge");
+      const vHt = validateAdvancedPair("tciHeight", "heightCm");
+      const vWt = validateAdvancedPair("tciWeight", "adultWeight");
+      const vTarget = validateAdvancedPair("tciTargetConc", isRemi ? "tciRemiTarget" : "tciPropofolTarget");
+
+      if (!vAge.valid || !vHt.valid || !vWt.valid || !vTarget.valid) {
+        getAllEls("tciErrorAlert").forEach(el => {
+          el.textContent = "Please enter physiological patient covariates (Age 14–125y, Height 35–260cm, Weight 15–450kg, and clinical target concentration).";
+          el.style.display = "block";
+        });
+        return;
+      }
+
+      const age = vAge.numVal || 40;
       const sex = getEl("tciSex")?.value || "male";
-      const height = parseFloat(getEl("tciHeight")?.value) || 175;
-      const weight = parseFloat(getEl("tciWeight")?.value) || 70;
+      const height = vHt.numVal || 175;
+      const weight = vWt.numVal || 70;
       const targetMode = getEl("tciTargetMode")?.value || "plasma";
-      const targetConc = parseFloat(getEl("tciTargetConc")?.value) || 4.0;
+      const targetConc = vTarget.numVal || (isRemi ? 3.0 : 4.0);
 
       const simRes = Engine.TciEngine.simulateTrajectory({
         model: modelKey,
@@ -489,12 +559,32 @@
   // ==========================================================================
   function setupVentilationController() {
     function updateVent() {
-      const heightCm = parseFloat(getEl("ventHeight")?.value) || 175;
+      const vHt = validateAdvancedPair("ventHeight", "heightCm");
+      const vPplat = validateAdvancedPair("ventPplat", "ventPplat");
+      const vPeep = validateAdvancedPair("ventPeep", "ventPeep");
+
+      if (!vHt.valid || !vPplat.valid || !vPeep.valid) {
+        getAllEls("ventErrorAlert").forEach(el => {
+          el.textContent = "Please enter physiological ventilation parameters (Height 35–260 cm, Pplat 5–80 cmH2O, PEEP 0–40 cmH2O).";
+          el.style.display = "block";
+        });
+        return;
+      }
+
+      const heightCm = vHt.numVal || 175;
       const sex = getEl("ventSex")?.value || "male";
       const targetRatio = parseFloat(getEl("ventTargetSlider")?.value) || 6.0;
       const setVt = parseFloat(getEl("ventSetVt")?.value);
-      const pplat = parseFloat(getEl("ventPplat")?.value);
-      const peep = parseFloat(getEl("ventPeep")?.value);
+      const pplat = vPplat.numVal;
+      const peep = vPeep.numVal;
+
+      if (!isNaN(pplat) && !isNaN(peep) && pplat < peep) {
+        getAllEls("ventErrorAlert").forEach(el => {
+          el.textContent = "Plateau pressure (Pplat) cannot be lower than positive end-expiratory pressure (PEEP).";
+          el.style.display = "block";
+        });
+        return;
+      }
 
       const res = Engine.VentilationPbwEngine.computeMechanics({
         heightCm,
@@ -582,15 +672,34 @@
   // ==========================================================================
   function setupMablController() {
     function updateMabl() {
-      const weight = parseFloat(getEl("mablWeight")?.value) || 70;
+      const vWt = validateAdvancedPair("mablWeight", "adultWeight");
       const ebvCategory = getEl("mablCategory")?.value || "adult_male";
       const mode = getEl("mablMode")?.value || "hb";
-      const initialVal = parseFloat(getEl("mablInit")?.value);
-      const targetVal = parseFloat(getEl("mablTarget")?.value);
-
-      // Adjust input step/placeholders for Hb vs Hct
       const isHb = mode === "hb";
       getAllEls("mablValUnit").forEach(el => { el.textContent = isHb ? "g/dL" : "%"; });
+
+      const vInit = isHb ? { valid: true, numVal: parseFloat(getEl("mablInit")?.value) } : validateAdvancedPair("mablInit", "mablHct");
+      const vTarget = isHb ? { valid: true, numVal: parseFloat(getEl("mablTarget")?.value) } : validateAdvancedPair("mablTarget", "mablHct");
+
+      if (!vWt.valid || !vInit.valid || !vTarget.valid) {
+        getAllEls("mablErrorAlert").forEach(el => {
+          el.textContent = "Please enter physiological weight and baseline/target haematocrit or haemoglobin.";
+          el.style.display = "block";
+        });
+        return;
+      }
+
+      const weight = vWt.numVal || 70;
+      const initialVal = vInit.numVal;
+      const targetVal = vTarget.numVal;
+
+      if (!isNaN(initialVal) && !isNaN(targetVal) && initialVal <= targetVal) {
+        getAllEls("mablErrorAlert").forEach(el => {
+          el.textContent = "Initial haemoglobin/haematocrit must be higher than target threshold to calculate allowable blood loss.";
+          el.style.display = "block";
+        });
+        return;
+      }
 
       const res = Engine.MablEngine.calculateMABL({
         weight,

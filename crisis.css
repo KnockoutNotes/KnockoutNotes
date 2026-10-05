@@ -806,13 +806,7 @@ body.crisis-body {
   padding: 0.35rem 0.6rem;
   margin-top: 0.35rem;
   border-radius: 6px;
-  animation: knValFadeIn 0.2s ease-out;
   box-sizing: border-box;
-}
-
-@keyframes knValFadeIn {
-  from { opacity: 0; transform: translateY(-3px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 .kn-calc-validation-msg.kn-val-warning {

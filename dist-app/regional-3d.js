@@ -1006,17 +1006,50 @@ export function createSpreadViewer(container) {
   resize();
 
   let visible = true;
-  const io = new IntersectionObserver((entries) => { visible = entries[0].isIntersecting; });
+  let raf = 0;
+  let disposed = false;
+
+  function resumeFrame() {
+    if (!raf && visible && !document.hidden && !disposed && container.isConnected) {
+      raf = requestAnimationFrame(frame);
+    }
+  }
+
+  function pauseFrame() {
+    if (raf) {
+      cancelAnimationFrame(raf);
+      raf = 0;
+    }
+  }
+
+  function onVisibilityChange() {
+    if (document.hidden) {
+      pauseFrame();
+    } else {
+      resumeFrame();
+    }
+  }
+  document.addEventListener("visibilitychange", onVisibilityChange);
+
+  const io = new IntersectionObserver((entries) => {
+    visible = entries[0].isIntersecting;
+    if (visible) {
+      resumeFrame();
+    } else {
+      pauseFrame();
+    }
+  });
   io.observe(container);
 
   const v = new THREE.Vector3();
   const toCam = new THREE.Vector3();
-  let raf = 0;
-  let disposed = false;
+
   function frame(time) {
-    if (disposed) return;
+    if (disposed || !visible || document.hidden || !container.isConnected) {
+      pauseFrame();
+      return;
+    }
     raf = requestAnimationFrame(frame);
-    if (!visible || !container.isConnected) return;
     controls.update();
     const pulse = 1 + Math.sin(time / 420) * 0.06;
     deepMeshes.forEach((m) => m.scale.set(m.userData.base[0] * pulse, m.userData.base[1] * pulse, m.userData.base[2] * pulse));
@@ -1061,7 +1094,7 @@ export function createSpreadViewer(container) {
       l.el.style.transform = `translate(${l.x.toFixed(1)}px, ${y.toFixed(1)}px)`;
     });
   }
-  raf = requestAnimationFrame(frame);
+  resumeFrame();
 
   function rebuild() {
     clearOverlay();
@@ -1124,7 +1157,8 @@ export function createSpreadViewer(container) {
     legend,
     dispose() {
       disposed = true;
-      cancelAnimationFrame(raf);
+      pauseFrame();
+      document.removeEventListener("visibilitychange", onVisibilityChange);
       ro.disconnect();
       io.disconnect();
       controls.dispose();

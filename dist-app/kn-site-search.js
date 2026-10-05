@@ -2641,9 +2641,11 @@
               Type: "Study Drug",
               Category: `Study Mode • ${d.classification || 'Pharmacology'}`,
               Title: d.name + (d.brand ? ` (${d.brand})` : ""),
+              CanonicalTitle: d.name,
               Summary: d.tagline || (d.pd ? d.pd.replace(/<[^>]+>/g, " ").slice(0, 180) : ""),
               Content: pharmacologyText,
               Tags: (d.tags || []).concat([d.classification, d.brand]).filter(Boolean).join(", "),
+              Aliases: Array.isArray(d.aliases) ? d.aliases : [],
               href: `study.html?item=${d.id}`
             });
           });
@@ -2882,30 +2884,44 @@
           const content = norm(item.Content || "");
           const ref = norm(item.Reference);
 
+          const aliases = Array.isArray(item.Aliases) ? item.Aliases.map(norm) : [];
+
           let score = 0;
           let matchContext = "summary";
+          let matchedAlias = "";
+
+          // Check aliases
+          for (const al of aliases) {
+            if (al === q) {
+              if (score < 135) { score = 135; matchContext = "alias"; matchedAlias = al; }
+            } else if (al.startsWith(q)) {
+              if (score < 115) { score = 115; matchContext = "alias"; matchedAlias = al; }
+            } else if (al.includes(q)) {
+              if (score < 88) { score = 88; matchContext = "alias"; matchedAlias = al; }
+            }
+          }
 
           if (title === q) {
             score = 150;
             matchContext = "title";
           } else if (title.startsWith(q)) {
-            score = 120;
-            matchContext = "title";
+            score = Math.max(score, 120);
+            if (score === 120) matchContext = "title";
           } else if (title.includes(q)) {
-            score = 90;
-            matchContext = "title";
+            score = Math.max(score, 90);
+            if (score === 90) matchContext = "title";
           } else if (imgFile && imgFile.includes(q)) {
-            score = 85;
-            matchContext = "image";
+            score = Math.max(score, 85);
+            if (score === 85) matchContext = "image";
           } else if (tags.includes(q)) {
-            score = 75;
-            matchContext = "tags";
+            score = Math.max(score, 75);
+            if (score === 75) matchContext = "tags";
           } else if (answer && answer.includes(q)) {
-            score = 70;
-            matchContext = "answer";
+            score = Math.max(score, 70);
+            if (score === 70) matchContext = "answer";
           } else if (category.includes(q)) {
-            score = 65;
-            matchContext = "category";
+            score = Math.max(score, 65);
+            if (score === 65) matchContext = "category";
           } else if (summary.includes(q)) {
             score = 55;
             matchContext = "summary";
@@ -2954,7 +2970,10 @@
 
           // Determine preview snippet
           let previewHtml = "";
-          if (matchContext === "answer" && item.Answer) {
+          if (matchContext === "alias" && item.Aliases && item.Aliases.length) {
+            const matchedName = item.Aliases.find(a => norm(a).includes(norm(rawQ))) || item.Aliases[0];
+            previewHtml = `<div class="kn-search-answer-snippet" style="border-left-color:#10b981;"><span class="kn-badge-ans" style="background:rgba(16,185,129,0.16);color:#34d399;border:1px solid rgba(16,185,129,0.35);padding:1px 6px;border-radius:4px;">🔍 Synonym / Alias</span> Matches “<strong>${esc(matchedName)}</strong>” &bull; Canonical: <strong>${esc(item.CanonicalTitle || title)}</strong></div>`;
+          } else if (matchContext === "answer" && item.Answer) {
             previewHtml = `<div class="kn-search-answer-snippet"><span class="kn-badge-ans">💬 In Answer</span> ${extractSnippet(item.Answer, rawQ)}</div>`;
           } else if (matchContext === "content" && item.Content) {
             previewHtml = `<div class="kn-search-answer-snippet" style="border-left-color:#38bdf8;"><span class="kn-badge-ans" style="background:rgba(56,189,248,0.16);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);padding:1px 6px;border-radius:4px;">📄 In Study Content</span> ${extractSnippet(item.Content, rawQ)}</div>`;
