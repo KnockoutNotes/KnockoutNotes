@@ -2110,5 +2110,120 @@
       "CH-31"
     ],
     "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-hfnc-mechanics-rox-index",
+    "sourceIndex": 89,
+    "sourceDuration": "45 Min",
+    "sourceCategory": "NON-INVASIVE RESPIRATORY SUPPORT",
+    "title": "High-Flow Nasal Cannula (HFNC) Mechanics & ROX Index",
+    "chapterId": 7,
+    "subchapterId": "7.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "High-Flow Nasal Cannula (HFNC) Mechanics & ROX Index"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [
+      "formula-rox-index"
+    ],
+    "landmarkTrials": [
+      "trial-floric-hfnc"
+    ],
+    "guidelines": [
+      "g-ats-ers-hfnc"
+    ],
+    "examTags": [
+      "NEET-SS",
+      "CH-7"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-niv-failure-predictors-hacor-score",
+    "sourceIndex": 90,
+    "sourceDuration": "40 Min",
+    "sourceCategory": "NON-INVASIVE RESPIRATORY SUPPORT",
+    "title": "NIV Failure Predictors, HACOR Score & Intubation Triggers",
+    "chapterId": 7,
+    "subchapterId": "7.3",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "NIV Failure Predictors, HACOR Score & Intubation Triggers"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [
+      "formula-hacor-score"
+    ],
+    "landmarkTrials": [],
+    "guidelines": [
+      "g-ers-ats-niv"
+    ],
+    "examTags": [
+      "NEET-SS",
+      "CH-7"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-paediatric-shock-sepsis-formulas",
+    "sourceIndex": 91,
+    "sourceDuration": "45 Min",
+    "sourceCategory": "PAEDIATRIC & NEONATAL CRITICAL CARE",
+    "title": "Paediatric Shock, Sepsis Resuscitation & Weight-Based Formulas",
+    "chapterId": 27,
+    "subchapterId": "27.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Paediatric Shock, Sepsis Resuscitation & Weight-Based Formulas"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [
+      "formula-pediatric-ett-cuffed",
+      "formula-pediatric-fluid-bolus"
+    ],
+    "landmarkTrials": [
+      "trial-feast-pediatric-fluid"
+    ],
+    "guidelines": [
+      "g-pals-2025"
+    ],
+    "examTags": [
+      "NEET-SS",
+      "CH-27"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-paediatric-status-asthmaticus-dka",
+    "sourceIndex": 92,
+    "sourceDuration": "40 Min",
+    "sourceCategory": "PAEDIATRIC & NEONATAL CRITICAL CARE",
+    "title": "Paediatric Upper Airway Obstruction, Status Asthmaticus & DKA",
+    "chapterId": 27,
+    "subchapterId": "27.2",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Paediatric Upper Airway Obstruction, Status Asthmaticus & DKA"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [
+      "g-pals-2025"
+    ],
+    "examTags": [
+      "NEET-SS",
+      "CH-27"
+    ],
+    "lastUpdated": "2026-10"
   }
 ]

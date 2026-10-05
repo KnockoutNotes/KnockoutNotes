@@ -1,0 +1,920 @@
+[
+  {
+    "id": "mcq-cc-0201",
+    "chapterId": 17,
+    "topicId": "cc-pharmacokinetics",
+    "question": "In a critically ill patient with early septic shock receiving aggressive fluid resuscitation, which pharmacokinetic alteration primarily affects hydrophilic antimicrobials (such as aminoglycosides, beta-lactams, and glycopeptides)?",
+    "options": [
+      "A. Decreased volume of distribution requiring reduced loading doses",
+      "B. Marked increase in the volume of distribution (Vd) due to endothelial capillary leak and third-spacing, mandating LARGER initial loading doses to achieve therapeutic peak concentrations",
+      "C. Accelerated hepatic cytochrome P450 clearance requiring lower doses",
+      "D. Zero changes in drug distribution"
+    ],
+    "answer": "B",
+    "explanation": "Hydrophilic antimicrobials (beta-lactams, aminoglycosides, vancomycin, colistin) distribute primarily into extracellular water. In early sepsis, systemic endothelial hyperpermeability (capillary leak) and aggressive intravenous fluid resuscitation expand the extracellular fluid volume by 40-100%. This markedly increases the Volume of Distribution (Vd), causing severe dilution and subtherapeutic initial plasma peak concentrations (Cmax). Therefore, guideline-directed practice requires administering FULL OR HIGHER LOADING DOSES (e.g., Amikacin 25-30 mg/kg, Vancomycin 25-30 mg/kg) regardless of renal function.",
+    "whyWrong": {
+      "A": "Vd increases substantially, requiring LARGER loading doses, not smaller.",
+      "C": "Hepatic CYP enzymes are often downregulated by circulating cytokines (IL-6, TNF).",
+      "D": "Critical illness causes profound pharmacokinetic alterations in hydrophilic drugs."
+    },
+    "difficulty": "moderate",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2022,
+    "examPearl": "NEET-SS EXAM PEARL: Sepsis Pharmacokinetics: Hydrophilic drugs have markedly INCREASED Volume of Distribution (Vd). ALWAYS give a full, weight-based LOADING DOSE regardless of renal function!",
+    "hyperlinkedReference": {
+      "label": "Roberts JA et al. Individualised antibiotic dosing for patients who are critically ill: challenges and potential solutions. Lancet Infect Dis 2014; 14(6):498-509",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24768437/"
+    },
+    "tags": [
+      "Pharmacokinetics",
+      "Volume of Distribution",
+      "Hydrophilic Antibiotics",
+      "Septic Shock"
+    ]
+  },
+  {
+    "id": "mcq-cc-0202",
+    "chapterId": 17,
+    "topicId": "cc-pharmacokinetics",
+    "question": "What is Augmented Renal Clearance (ARC) in the ICU, and what creatinine clearance threshold defines ARC, posing a major risk of subtherapeutic beta-lactam concentrations?",
+    "options": [
+      "A. Creatinine clearance < 30 mL/min/1.73m2",
+      "B. Creatinine clearance (CrCl) > 130 mL/min/1.73m2 (frequently seen in young trauma, burn, and sepsis patients with hyperdynamic circulation)",
+      "C. Creatinine clearance 60-90 mL/min/1.73m2",
+      "D. High urine output without change in creatinine clearance"
+    ],
+    "answer": "B",
+    "explanation": "Augmented Renal Clearance (ARC) is defined as enhanced renal elimination of circulating solute, manifested as a measured creatinine clearance (CrCl) > 130 mL/min/1.73m2 (or > 150 mL/min in young adults). It occurs commonly in young polytrauma, burn, pancreatitis, and hyperdynamic septic shock patients due to systemic inflammatory vasodilation, elevated cardiac output, and increased glomerular filtration. ARC causes rapid elimination of renally excreted hydrophilic drugs (beta-lactams, vancomycin), leading to therapeutic failure unless doses or infusion durations are significantly increased.",
+    "whyWrong": {
+      "A": "CrCl < 30 defines severe renal impairment.",
+      "C": "60-90 is normal to mildly decreased renal function.",
+      "D": "ARC specifically requires elevated glomerular filtration rate (CrCl > 130)."
+    },
+    "difficulty": "moderate",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Augmented Renal Clearance (ARC): CrCl > 130 mL/min/1.73m2. Seen in young trauma/burn/sepsis patients. Major cause of subtherapeutic beta-lactam levels; requires higher doses / continuous infusions.",
+    "hyperlinkedReference": {
+      "label": "Udy AA et al. Augmented renal clearance in the critically ill: an important consideration in managing antimicrobial therapy. Clin Pharmacokinet 2010; 49(1):1-16",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20000885/"
+    },
+    "tags": [
+      "Augmented Renal Clearance",
+      "ARC",
+      "Beta Lactam Elimination",
+      "TDM"
+    ]
+  },
+  {
+    "id": "mcq-cc-0203",
+    "chapterId": 17,
+    "topicId": "cc-pharmacokinetics",
+    "question": "The landmark BLING III trial (Dulhunty et al., JAMA 2024) evaluated continuous versus intermittent infusions of beta-lactam antibiotics (piperacillin-tazobactam or meropenem) in critically ill septic patients. What was the pharmacokinetic rationale, and what did the trial find?",
+    "options": [
+      "A. Beta-lactams are concentration-dependent; intermittent bolus showed 25% lower mortality",
+      "B. Beta-lactams exhibit time-dependent killing (fraction of dosing interval where free drug concentration exceeds MIC, %fT > MIC); BLING III showed that while continuous infusion achieved superior target attainment, it did NOT statistically reduce 90-day all-cause mortality (24.9% vs 26.8%; p = 0.20) compared with intermittent infusion",
+      "C. Continuous infusion caused severe neurotoxicity in > 30% of patients",
+      "D. Intermittent infusion is strictly contraindicated in all ICU patients"
+    ],
+    "answer": "B",
+    "explanation": "Beta-lactam antibiotics (penicillins, cephalosporins, carbapenems) exhibit time-dependent bactericidal activity, parameterized by %fT > MIC. Prolonged or continuous infusions optimize this parameter, achieving near 100% fT > MIC. The definitive BLING III international trial (JAMA 2024; 7,202 patients) compared continuous vs intermittent beta-lactam infusion in septic ICU patients. While continuous infusion was safe and achieved superior PK/PD target attainment, it did not demonstrate a statistically significant reduction in 90-day mortality (24.9% vs 26.8%; OR 0.91, p = 0.20). Clinical cure was slightly higher in the continuous group. Continuous or extended infusions remain guideline-favored for difficult, high-MIC pathogens and ARC.",
+    "whyWrong": {
+      "A": "Beta-lactams are time-dependent, not concentration-dependent.",
+      "C": "Neurotoxicity was rare and comparable between groups.",
+      "D": "Intermittent infusion remains widely utilized."
+    },
+    "difficulty": "hard",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: BLING III Trial (JAMA 2024): Continuous vs intermittent beta-lactams in sepsis: Continuous infusion optimizes %fT > MIC and clinical cure, but did NOT achieve statistically significant 90-day mortality reduction (24.9% vs 26.8%).",
+    "hyperlinkedReference": {
+      "label": "Dulhunty JM et al. Continuous vs Intermittent beta-Lactam Antibiotic Infusion in Critically Ill Patients (BLING III). JAMA 2024; 332(5):377-386",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/2820063"
+    },
+    "tags": [
+      "BLING III Trial",
+      "Beta-Lactam Infusion",
+      "Time-Dependent Killing",
+      "Septic Shock"
+    ]
+  },
+  {
+    "id": "mcq-cc-0204",
+    "chapterId": 17,
+    "topicId": "cc-pharmacokinetics",
+    "question": "According to current consensus guidelines (Rybak et al., Am J Health-Syst Pharm 2020), what is the optimal Therapeutic Drug Monitoring (TDM) pharmacokinetic target for Vancomycin in serious MRSA infections, and why has trough-only monitoring been replaced?",
+    "options": [
+      "A. Trough level 5-10 mg/L; AUC monitoring is obsolete",
+      "B. 24-hour Area Under the Curve to MIC ratio (AUC24/MIC) of 400 to 600 mg.h/L (assuming broth microdilution MIC = 1 mg/L); replaces trough monitoring because troughs >= 15-20 mg/L cause excessive acute kidney injury (nephrotoxicity) without added efficacy",
+      "C. Peak level > 100 mg/L to ensure lung penetration",
+      "D. Trough level > 30 mg/L to prevent resistance"
+    ],
+    "answer": "B",
+    "explanation": "The 2020 consensus guidelines by IDSA, ASHP, and SIDP recommend Bayesian-derived AUC24/MIC of 400 to 600 mg.h/L as the primary PK/PD target for vancomycin in serious MRSA infections (bacteremia, endocarditis, osteomyelitis, hospital-acquired pneumonia). Traditional trough-guided monitoring (targeting 15-20 mg/L) frequently leads to AUC24 values well above 650-700 mg.h/L, which dramatically increases the incidence of vancomycin-induced acute kidney injury (nephrotoxicity) by three- to fourfold without improving clinical cure. AUC-guided monitoring maintains clinical efficacy while significantly lowering nephrotoxicity rates.",
+    "whyWrong": {
+      "A": "Trough 5-10 mg/L results in subtherapeutic AUC and treatment failure.",
+      "C": "Vancomycin is not concentration-dependent; toxic peaks > 50-80 mg/L cause ototoxicity.",
+      "D": "Trough > 30 mg/L causes severe acute tubular necrosis."
+    },
+    "difficulty": "moderate",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Vancomycin TDM Target: AUC24/MIC = 400 to 600 mg.h/L (Bayesian-guided). Trough-only monitoring (15-20 mg/L) is abandoned because it triples nephrotoxicity!",
+    "hyperlinkedReference": {
+      "label": "Rybak MJ et al. Therapeutic monitoring of vancomycin for serious methicillin-resistant Staphylococcus aureus infections: A revised consensus guideline. Am J Health-Syst Pharm 2020; 77(11):835-864",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32191793/"
+    },
+    "tags": [
+      "Vancomycin TDM",
+      "AUC24/MIC",
+      "Nephrotoxicity",
+      "MRSA"
+    ]
+  },
+  {
+    "id": "mcq-cc-0205",
+    "chapterId": 18,
+    "topicId": "cc-managing-mdr-gram-negative-infections-i",
+    "question": "In Carbapenem-Resistant Enterobacterales (CRE) infections producing Metallo-Beta-Lactamases (such as New Delhi Metallo-beta-lactamase, NDM-1), which novel antibiotic or combination has demonstrated potent in vitro activity and clinical efficacy?",
+    "options": [
+      "A. Ceftazidime-avibactam monotherapy",
+      "B. Ceftazidime-avibactam PLUS Aztreonam (or Cefiderocol monotherapy)",
+      "C. Meropenem-vaborbactam monotherapy",
+      "D. Imipenem-relebactam monotherapy"
+    ],
+    "answer": "B",
+    "explanation": "Metallo-beta-lactamases (MBLs: NDM, VIM, IMP) hydrolyze all penicillins, cephalosporins, and carbapenems, and are NOT inhibited by serine beta-lactamase inhibitors (avibactam, vaborbactam, relebactam). However, Aztreonam is naturally stable against hydrolysis by metallo-beta-lactamases. Because MBL-producing clinical isolates almost universally co-produce serine beta-lactamases (ESBLs, AmpC) that hydrolyze aztreonam, combining Ceftazidime-avibactam with Aztreonam is synergistic: avibactam inhibits the co-produced serine enzymes, allowing aztreonam to kill the MBL organism. Alternatively, Cefiderocol (a siderophore cephalosporin) is stable against MBLs and approved for metallo-beta-lactamase infections.",
+    "whyWrong": {
+      "A": "Ceftazidime-avibactam alone is completely hydrolyzed by NDM metallo-beta-lactamase.",
+      "C": "Vaborbactam inhibits only KPC (Class A) carbapenemases; ineffective against MBL.",
+      "D": "Relebactam inhibits Class A and Class C enzymes; ineffective against MBL."
+    },
+    "difficulty": "hard",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Metallo-Beta-Lactamase (NDM-1) Treatment: Ceftazidime-Avibactam + Aztreonam OR Cefiderocol. Ceftazidime-avibactam alone does NOT cover NDM!",
+    "hyperlinkedReference": {
+      "label": "Tamma PD et al. Infectious Diseases Society of America 2023 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. Clin Infect Dis 2023",
+      "url": "https://academic.oup.com/cid/article/77/1/21/7222383"
+    },
+    "tags": [
+      "NDM Carbapenemase",
+      "Ceftazidime-Avibactam",
+      "Aztreonam",
+      "MBL"
+    ]
+  },
+  {
+    "id": "mcq-cc-0206",
+    "chapterId": 18,
+    "topicId": "cc-managing-mdr-gram-negative-infections-ii",
+    "question": "For severe infections caused by Carbapenem-Resistant Acinetobacter baumannii (CRAB), which high-dose agent forms the backbone of preferred combination therapy according to IDSA guidance?",
+    "options": [
+      "A. High-dose Ampicillin-Sulbactam (delivering 6 to 9 grams of the Sulbactam component per day)",
+      "B. Ceftriaxone monotherapy",
+      "C. Ciprofloxacin monotherapy",
+      "D. Oral Nitrofurantoin"
+    ],
+    "answer": "A",
+    "explanation": "Acinetobacter baumannii is naturally resistant to many classes. Sulbactam (traditionally marketed as a beta-lactamase inhibitor) possesses unique, intrinsic direct bactericidal activity against Acinetobacter baumannii by binding to bacterial penicillin-binding proteins PBP1a and PBP3. In CRAB infections, IDSA guidelines strongly recommend high-dose Ampicillin-Sulbactam (typically 9g IV every 8h infused over 4h, delivering 9g of sulbactam component daily) as the backbone agent, usually combined with a second active agent (such as Polymyxin B/Colistin, Minocycline, or Cefiderocol).",
+    "whyWrong": {
+      "B": "Ceftriaxone has zero activity against CRAB.",
+      "C": "Fluoroquinolone resistance in CRAB exceeds 95%.",
+      "D": "Nitrofurantoin is solely for uncomplicated cystitis and has no systemic activity."
+    },
+    "difficulty": "hard",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: CRAB (Carbapenem-Resistant Acinetobacter baumannii): High-dose Sulbactam (Ampicillin-sulbactam 27 g/day = 9 g sulbactam) is the backbone therapy because sulbactam has direct bactericidal PBP binding in Acinetobacter.",
+    "hyperlinkedReference": {
+      "label": "Tamma PD et al. IDSA Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. Clin Infect Dis 2023",
+      "url": "https://academic.oup.com/cid/article/77/1/21/7222383"
+    },
+    "tags": [
+      "CRAB",
+      "Acinetobacter baumannii",
+      "Sulbactam",
+      "IDSA Guidance"
+    ]
+  },
+  {
+    "id": "mcq-cc-0207",
+    "chapterId": 18,
+    "topicId": "cc-community-acquired-pneumonia",
+    "question": "The landmark CAPE COD trial (Dequin et al., NEJM 2023) evaluated early Hydrocortisone administration in patients admitted to the ICU with severe Community-Acquired Pneumonia (CAP). What was the primary finding?",
+    "options": [
+      "A. Hydrocortisone increased 28-day mortality due to secondary fungal infections",
+      "B. Hydrocortisone significantly REDUCED 28-day mortality (6.2% vs 11.9%; absolute difference -5.6%, p = 0.006) without increasing hospital-acquired infections",
+      "C. Hydrocortisone had no effect on mortality but prolonged mechanical ventilation",
+      "D. Hydrocortisone was beneficial only in viral pneumonia"
+    ],
+    "answer": "B",
+    "explanation": "The CAPE COD multicenter double-blind trial (NEJM 2023; 800 patients) evaluated early Hydrocortisone (200 mg/day continuous IV infusion for 4-8 days, tapered over 14 days) versus placebo in severe community-acquired pneumonia admitted to the ICU. Treatment with hydrocortisone resulted in a statistically significant and clinically substantial reduction in 28-day all-cause mortality (6.2% in hydrocortisone vs 11.9% in placebo; absolute reduction 5.6%, NNT = 18). It also decreased endotracheal intubation rates and vasopressor requirements, without increasing secondary hospital-acquired infections or gastrointestinal bleeding.",
+    "whyWrong": {
+      "A": "Secondary fungal or bacterial infections were not increased in CAPE COD.",
+      "C": "Ventilator-free days and intubation avoidance were significantly improved.",
+      "D": "Patients with influenza or viral pneumonia without bacterial infection were excluded."
+    },
+    "difficulty": "moderate",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: CAPE COD Trial (NEJM 2023): Early Hydrocortisone (200 mg/day continuous infusion) in severe Community-Acquired Pneumonia (CAP) in the ICU cuts 28-day mortality in half (6.2% vs 11.9%, p = 0.006).",
+    "hyperlinkedReference": {
+      "label": "Dequin PF et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). N Engl J Med 2023; 388:1931-1941",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2215145"
+    },
+    "tags": [
+      "CAPE COD Trial",
+      "Severe CAP",
+      "Hydrocortisone",
+      "Mortality Reduction"
+    ]
+  },
+  {
+    "id": "mcq-cc-0208",
+    "chapterId": 18,
+    "topicId": "cc-cns-infections-in-icu",
+    "question": "In adult acute community-acquired bacterial meningitis, when should Dexamethasone be administered, and in which specific microbiological pathogen has it been conclusively proven to reduce mortality and neurological sequelae (de Heer trial)?",
+    "options": [
+      "A. Given 2 hours after completing the first antibiotic infusion; beneficial in Neisseria meningitidis",
+      "B. Given BEFORE or CONCURRENTLY with the first dose of antimicrobial therapy (10 mg IV every 6 hours for 4 days); proven to reduce mortality and severe hearing loss in Streptococcus pneumoniae meningitis",
+      "C. Given only if the patient develops cerebral herniation",
+      "D. Dexamethasone is contraindicated in bacterial meningitis"
+    ],
+    "answer": "B",
+    "explanation": "In acute bacterial meningitis, rapid bacterial lysis caused by initial antibiotic therapy releases cell wall fragments (peptidoglycan, teichoic acid, endotoxin) into the subarachnoid space, triggering massive neuroinflammation, cerebral edema, and neuronal necrosis. In the landmark European trial by de Gans and van de Beek (NEJM 2002), Dexamethasone (10 mg IV q6h for 4 days) given 15-20 minutes before or with the first dose of antibiotics significantly reduced unfavorable outcomes (15% vs 25%) and overall mortality (7% vs 34%) in Streptococcus pneumoniae meningitis, while reducing hearing loss. If given after antibiotics, its anti-inflammatory benefit is lost.",
+    "whyWrong": {
+      "A": "Giving dexamethasone after antibiotics is ineffective because inflammatory cytokine cascades are already unleashed.",
+      "C": "Giving dexamethasone at herniation is too late.",
+      "D": "Class I recommendation in European and IDSA guidelines for suspected pneumococcal meningitis."
+    },
+    "difficulty": "easy",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2021,
+    "examPearl": "NEET-SS EXAM PEARL: Dexamethasone in Bacterial Meningitis: 10 mg IV BEFORE or WITH 1st dose of antibiotics (continue for 4 days). Proven mortality and hearing loss benefit specifically for STREPTOCOCCUS PNEUMONIAE.",
+    "hyperlinkedReference": {
+      "label": "van de Beek D et al. Corticosteroids for acute bacterial meningitis. Cochrane Database Syst Rev 2015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26367352/"
+    },
+    "tags": [
+      "Bacterial Meningitis",
+      "Dexamethasone Timing",
+      "Streptococcus pneumoniae",
+      "Hearing Loss"
+    ]
+  },
+  {
+    "id": "mcq-cc-0209",
+    "chapterId": 18,
+    "topicId": "cc-clostridioides-difficile-colitis",
+    "question": "According to the 2021 IDSA/SHEA guidelines update, what is the PREFERRED first-line agent for an initial episode of non-severe or severe Clostridioides difficile infection?",
+    "options": [
+      "A. Oral Metronidazole 500 mg three times daily",
+      "B. Fidaxomicin 200 mg orally twice daily for 10 days (preferred over oral Vancomycin 125 mg four times daily)",
+      "C. Intravenous Vancomycin 1 gram twice daily",
+      "D. Oral Ciprofloxacin 500 mg twice daily"
+    ],
+    "answer": "B",
+    "explanation": "The 2021 IDSA/SHEA guidelines updated the treatment hierarchy for initial C. difficile episodes: Fidaxomicin (200 mg PO BID for 10 days) is now the PREFERRED first-line agent over oral Vancomycin (125 mg PO QID for 10 days). Fidaxomicin has a narrow antibacterial spectrum that spares normal anaerobic gut microbiota while inhibiting C. difficile RNA polymerase, resulting in significantly lower recurrence rates compared to vancomycin. Oral Metronidazole is no longer recommended as first-line therapy due to inferior clinical cure and high recurrence. Intravenous vancomycin is NOT excreted into the colonic lumen and is completely ineffective for C. diff colitis.",
+    "whyWrong": {
+      "A": "Metronidazole is relegated to third-line only when vancomycin and fidaxomicin are unavailable.",
+      "C": "IV vancomycin does not penetrate the colonic lumen; oral route is mandatory.",
+      "D": "Fluoroquinolones are a major risk factor for triggering C. difficile, not treatment."
+    },
+    "difficulty": "moderate",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: C. difficile 2021 Guidelines: FIDAXOMICIN (200 mg PO BID x 10d) is preferred first-line over oral Vancomycin because of much lower recurrence. IV Vancomycin has ZERO colonic clearance!",
+    "hyperlinkedReference": {
+      "label": "Johnson S et al. Clinical Practice Guideline by the Infectious Diseases Society of America (IDSA) and Society for Healthcare Epidemiology of America (SHEA): 2021 Focused Update Guidelines on Management of Clostridioides difficile Infection in Adults. Clin Infect Dis 2021; 73(5):e1029-e1044",
+      "url": "https://academic.oup.com/cid/article/73/5/e1029/6298219"
+    },
+    "tags": [
+      "Clostridioides difficile",
+      "Fidaxomicin",
+      "Vancomycin",
+      "IDSA/SHEA Guidelines"
+    ]
+  },
+  {
+    "id": "mcq-cc-0210",
+    "chapterId": 19,
+    "topicId": "cc-acute-liver-failure",
+    "question": "In Acute Liver Failure (ALF), which of the King's College Criteria indicates an immediate indication for emergency orthotopic liver transplantation in NON-ACETAMINOPHEN etiology?",
+    "options": [
+      "A. Serum ALT > 10,000 U/L alone",
+      "B. Prothrombin time > 100 seconds (INR > 6.5) alone, OR any three of: Age < 10 or > 40 yr, Jaundice-to-encephalopathy time > 7 days, PT > 50 s (INR > 3.5), Serum Bilirubin > 17.5 mg/dL (300 umol/L), or Etiology of non-A/non-B hepatitis or drug toxicity",
+      "C. Presence of mild encephalopathy alone",
+      "D. Platelet count < 50,000/uL"
+    ],
+    "answer": "B",
+    "explanation": "King's College Hospital Criteria stratify liver transplant indications into Acetaminophen and Non-Acetaminophen etiologies. In Non-Acetaminophen ALF, transplant is indicated if: Prothrombin time > 100 seconds (INR > 6.5) regardless of grade of encephalopathy; OR if any THREE of the following 5 criteria are met: (1) Age < 10 or > 40 years, (2) Etiology: Non-A/Non-B hepatitis, halothane, idiosyncratic drug reaction, (3) Duration of jaundice before encephalopathy > 7 days, (4) Prothrombin time > 50 seconds (INR > 3.5), (5) Serum bilirubin > 17.5 mg/dL (300 umol/L).",
+    "whyWrong": {
+      "A": "Transaminase levels do not predict mortality or transplant need; they often plummet as liver mass undergoes necrosis.",
+      "C": "Encephalopathy grade alone does not fulfill the transplant criteria.",
+      "D": "Thrombocytopenia is non-specific."
+    },
+    "difficulty": "hard",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2022,
+    "examPearl": "NEET-SS EXAM PEARL: King's College Non-Acetaminophen Criteria: PT > 100 s (INR > 6.5) ALONE, OR any 3 of: Age (<10 or >40), Jaundice-to-coma > 7d, PT > 50 s (INR > 3.5), Bilirubin > 17.5 mg/dL, or unfavorable etiology.",
+    "hyperlinkedReference": {
+      "label": "O'Grady JG et al. Early indicators of prognosis in fulminant hepatic failure. Gastroenterology 1989; 97(2):439-445",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2490426/"
+    },
+    "tags": [
+      "King's College Criteria",
+      "Acute Liver Failure",
+      "Liver Transplantation",
+      "Prothrombin Time"
+    ]
+  },
+  {
+    "id": "mcq-cc-0211",
+    "chapterId": 19,
+    "topicId": "cc-decompensated-cld",
+    "question": "In acute variceal bleeding in cirrhosis, what is the guideline-recommended target hemoglobin threshold for a 'Restrictive Transfusion Strategy' (based on the Villanueva trial), and what is the adverse effect of liberal transfusion?",
+    "options": [
+      "A. Target Hb 10-12 g/dL; liberal transfusion prevents kidney failure",
+      "B. Target Hemoglobin of 7.0 to 8.0 g/dL; liberal transfusion (targeting Hb > 9-10 g/dL) increases portal venous pressure and causes acute rebound variceal rebleeding and increased mortality",
+      "C. Target Hb 5.0 g/dL only",
+      "D. Transfusion should never be given in variceal bleeding"
+    ],
+    "answer": "B",
+    "explanation": "The landmark trial by Villanueva et al. (NEJM 2013) evaluated restrictive (transfuse when Hb < 7.0 g/dL, target 7-8 g/dL) vs liberal transfusion (transfuse when Hb < 9.0 g/dL, target 9-11 g/dL) in acute upper gastrointestinal bleeding. In cirrhotics with variceal hemorrhage, the restrictive strategy produced a significant reduction in 6-week mortality (9% vs 5%, p = 0.02) and less rebleeding. Over-transfusion expands intravascular volume, increases splanchnic blood flow and portal venous pressure, and dislodges newly formed platelet-fibrin clots over the ruptured varices.",
+    "whyWrong": {
+      "A": "Targeting Hb > 10 g/dL elevates portal pressures and doubles rebleeding risk.",
+      "C": "Hb < 7 g/dL risks tissue hypoxia and myocardial ischemia in shock.",
+      "D": "Transfusion is life-saving when Hb drops below 7.0 g/dL."
+    },
+    "difficulty": "easy",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2021,
+    "examPearl": "NEET-SS EXAM PEARL: Variceal Hemorrhage Transfusion Target: Restrictive strategy targeting Hb 7.0 - 8.0 g/dL. Liberal transfusion elevates portal pressure and causes fatal variceal rebleeding!",
+    "hyperlinkedReference": {
+      "label": "Villanueva C et al. Transfusion strategies for acute upper gastrointestinal bleeding. N Engl J Med 2013; 368:11-21",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1211801"
+    },
+    "tags": [
+      "Variceal Bleeding",
+      "Restrictive Transfusion",
+      "Portal Hypertension",
+      "Villanueva Trial"
+    ]
+  },
+  {
+    "id": "mcq-cc-0212",
+    "chapterId": 19,
+    "topicId": "cc-decompensated-cld",
+    "question": "The CONFIRM trial (Wong et al., NEJM 2021) evaluated Terlipressin plus Albumin versus Albumin alone in Hepatorenal Syndrome type 1 (HRS-1 / HRS-AKI). What was the major efficacy benefit and what was the critical respiratory safety signal observed?",
+    "options": [
+      "A. Terlipressin showed zero renal improvement",
+      "B. Terlipressin significantly reversed hepatorenal syndrome (32% vs 17%, p = 0.006), but was associated with a higher incidence of severe or fatal respiratory failure (11% vs 2%) due to acute pulmonary edema / fluid overload",
+      "C. Terlipressin caused massive intra-abdominal hemorrhage",
+      "D. Terlipressin cured underlying cirrhosis"
+    ],
+    "answer": "B",
+    "explanation": "The CONFIRM phase 3 randomized trial (NEJM 2021; 300 patients) evaluated Terlipressin (a synthetic vasopressin-1A receptor agonist) plus albumin vs placebo plus albumin in HRS-1. Terlipressin produced significant HRS reversal (verified serum creatinine <= 1.5 mg/dL: 32% vs 17%, p = 0.006). However, patients in the terlipressin arm experienced higher rates of serious adverse events, notably acute respiratory failure (11% in terlipressin vs 2% in placebo; death due to respiratory failure 11% vs 2%). Terlipressin causes systemic vasoconstriction, increasing cardiac afterload and shifting blood into the cardiopulmonary circulation; when combined with large volumes of IV albumin, acute pulmonary edema can occur. Patients must be carefully monitored for volume overload.",
+    "whyWrong": {
+      "A": "Terlipressin doubled the rate of HRS reversal.",
+      "C": "Terlipressin reduces portal inflow and variceal bleeding, not hemorrhage.",
+      "D": "HRS is a functional renal vasoconstriction; terlipressin does not reverse underlying cirrhosis."
+    },
+    "difficulty": "hard",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: CONFIRM Trial: Terlipressin reverses Hepatorenal Syndrome (HRS-AKI), but carries a major risk of severe RESPIRATORY FAILURE / PULMONARY EDEMA (11% vs 2%). Monitor oxygenation closely and avoid albumin fluid overload!",
+    "hyperlinkedReference": {
+      "label": "Wong F et al. Terlipressin plus Albumin for the Treatment of Type 1 Hepatorenal Syndrome (CONFIRM). N Engl J Med 2021; 384:818-827",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2008290"
+    },
+    "tags": [
+      "CONFIRM Trial",
+      "Terlipressin",
+      "Hepatorenal Syndrome",
+      "Respiratory Failure"
+    ]
+  },
+  {
+    "id": "mcq-cc-0213",
+    "chapterId": 19,
+    "topicId": "cc-acute-pancreatitis",
+    "question": "The WATERFALL trial (de-Madaria et al., NEJM 2022) compared aggressive fluid resuscitation versus moderate fluid resuscitation in acute pancreatitis. What was the definitive outcome of this trial?",
+    "options": [
+      "A. Aggressive fluid resuscitation reduced necrotizing pancreatitis by 30%",
+      "B. Aggressive fluid resuscitation resulted in a significantly higher rate of fluid overload (20.5% vs 6.3%; aRR 2.85, p = 0.004) WITHOUT any improvement in clinical outcomes or reduction in necrotizing pancreatitis",
+      "C. Moderate fluid resuscitation caused severe acute renal failure",
+      "D. Normal saline was superior to Lactated Ringer's solution"
+    ],
+    "answer": "B",
+    "explanation": "The WATERFALL multicenter randomized trial (NEJM 2022) compared aggressive fluid resuscitation (20 mL/kg bolus followed by 3 mL/kg/h of Lactated Ringer's) with moderate fluid resuscitation (10 mL/kg bolus if hypovolemic, followed by 1.5 mL/kg/h) in acute pancreatitis. The trial was halted prematurely by the safety monitoring board because aggressive fluid resuscitation resulted in a nearly threefold increase in fluid overload (20.5% vs 6.3%; aRR 2.85, p = 0.004) without improving the development of moderate-to-severe pancreatitis (22.1% vs 17.3%). Guidelines now recommend moderate, goal-directed fluid resuscitation with Lactated Ringer's solution.",
+    "whyWrong": {
+      "A": "Aggressive hydration did NOT decrease necrosis or organ failure.",
+      "C": "Moderate fluid resuscitation did not increase acute kidney injury.",
+      "D": "Lactated Ringer's is preferred over saline to prevent hyperchloremic acidosis and acinar inflammation."
+    },
+    "difficulty": "moderate",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: WATERFALL Trial (NEJM 2022): Aggressive fluid resuscitation in acute pancreatitis triples fluid overload (20.5% vs 6.3%) without improving outcomes. Moderate, goal-directed resuscitation with Ringer's Lactate is the standard of care.",
+    "hyperlinkedReference": {
+      "label": "de-Madaria E et al. Aggressive or Moderate Fluid Resuscitation in Acute Pancreatitis (WATERFALL). N Engl J Med 2022; 387:989-1000",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2202884"
+    },
+    "tags": [
+      "WATERFALL Trial",
+      "Acute Pancreatitis",
+      "Fluid Overload",
+      "Lactated Ringer"
+    ]
+  },
+  {
+    "id": "mcq-cc-0214",
+    "chapterId": 19,
+    "topicId": "cc-intra-abdominal-hypertension-and-abdominal-compartment-syndrome",
+    "question": "According to the WSACS (World Society of the Abdominal Compartment Syndrome) guidelines, what are the formal definitions of Intra-Abdominal Hypertension (IAH) and Abdominal Compartment Syndrome (ACS)?",
+    "options": [
+      "A. IAH is IAP >= 5 mmHg; ACS is IAP >= 10 mmHg without organ failure",
+      "B. IAH is sustained Intra-Abdominal Pressure (IAP) >= 12 mmHg; ACS is sustained IAP > 20 mmHg (with or without Abdominal Perfusion Pressure < 60 mmHg) that is associated with NEW ORGAN DYSFUNCTION or failure",
+      "C. ACS is diagnosed by physical abdominal distension alone without pressure measurement",
+      "D. IAH requires laparotomy for all patients"
+    ],
+    "answer": "B",
+    "explanation": "The WSACS consensus definitions: Normal IAP in critically ill adults is ~5-7 mmHg. Intra-Abdominal Hypertension (IAH) is defined as a sustained or repeated pathological elevation in IAP >= 12 mmHg (Graded: Grade I: 12-15 mmHg; Grade II: 16-20 mmHg; Grade III: 21-25 mmHg; Grade IV: > 25 mmHg). Abdominal Compartment Syndrome (ACS) is defined as a sustained IAP > 20 mmHg (with or without an Abdominal Perfusion Pressure APP = MAP - IAP < 60 mmHg) that is associated with NEW ORGAN DYSFUNCTION/FAILURE (e.g. oliguria, rising PIP/hypoxia, intracranial hypertension, hypotension). ACS is a surgical emergency mandating medical decompression and, if refractory, emergent decompressive laparotomy.",
+    "whyWrong": {
+      "A": "5-7 mmHg is normal baseline IAP in the ICU.",
+      "C": "Physical examination has an accuracy of < 50% for ACS; transvesical bladder manometry is the gold standard.",
+      "D": "IAH is managed medically; decompressive laparotomy is reserved for refractory ACS."
+    },
+    "difficulty": "easy",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2021,
+    "examPearl": "NEET-SS EXAM PEARL: WSACS Definitions: IAH = Sustained IAP >= 12 mmHg. ACS = Sustained IAP > 20 mmHg + NEW ORGAN FAILURE. Gold-standard measurement: Transvesical bladder pressure at end-expiration in supine position.",
+    "hyperlinkedReference": {
+      "label": "Kirkpatrick AW et al. Intra-abdominal hypertension and the abdominal compartment syndrome: updated consensus definitions and clinical practice guidelines from the WSACS. Intensive Care Med 2013; 39(7):1190-1206",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23673399/"
+    },
+    "tags": [
+      "WSACS",
+      "Intra-Abdominal Hypertension",
+      "Abdominal Compartment Syndrome",
+      "Bladder Pressure"
+    ]
+  },
+  {
+    "id": "mcq-cc-0215",
+    "chapterId": 20,
+    "topicId": "cc-glucose-control-in-icu",
+    "question": "The landmark NICE-SUGAR trial (Finfer et al., NEJM 2009) compared intensive glucose control (target 81 to 108 mg/dL) with conventional glucose control (target 140 to 180 mg/dL) in 6,104 critically ill patients. What was the definitive outcome?",
+    "options": [
+      "A. Intensive glucose control significantly reduced 90-day mortality",
+      "B. Intensive glucose control INCREASED 90-day mortality (27.5% vs 24.9%; OR 1.14, p = 0.02) and caused a catastrophic fourteenfold increase in severe hypoglycemia (6.8% vs 0.5%)",
+      "C. Both strategies had identical hypoglycemia rates",
+      "D. Intensive control eliminated wound infections without any adverse events"
+    ],
+    "answer": "B",
+    "explanation": "The landmark NICE-SUGAR multicenter randomized trial (NEJM 2009; 6,104 patients) refuted earlier single-center findings and established current global practice. Patients randomized to intensive insulin therapy (blood glucose target 81-108 mg/dL, 4.5-6.0 mmol/L) had significantly HIGHER 90-day mortality (27.5% vs 24.9%; OR 1.14, p = 0.02) compared to conventional glucose control (target 140-180 mg/dL, 7.8-10.0 mmol/L). Severe hypoglycemia (blood glucose <= 40 mg/dL) was drastically more frequent with intensive control (6.8% vs 0.5%, p < 0.001). Current SCCM and international guidelines recommend initiating insulin infusion when glucose exceeds 180 mg/dL and maintaining target levels between 140 and 180 mg/dL.",
+    "whyWrong": {
+      "A": "Mortality was significantly INCREASED by intensive insulin therapy.",
+      "C": "Hypoglycemia was 14 times higher in the intensive arm.",
+      "D": "Severe hypoglycemia carries independent cardiovascular and neurological mortality."
+    },
+    "difficulty": "easy",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2022,
+    "examPearl": "NEET-SS EXAM PEARL: NICE-SUGAR Trial (NEJM 2009): Tight glycemic control (81-108 mg/dL) INCREASES 90-day mortality (27.5% vs 24.9%) and severe hypoglycemia (6.8% vs 0.5%). Recommended ICU blood glucose target is 140 to 180 mg/dL.",
+    "hyperlinkedReference": {
+      "label": "The NICE-SUGAR Study Investigators. Intensive versus Conventional Glucose Control in Critically Ill Patients. N Engl J Med 2009; 360:1283-1297",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa0810625"
+    },
+    "tags": [
+      "NICE-SUGAR",
+      "Glycemic Control",
+      "Hypoglycemia",
+      "Insulin Infusion"
+    ]
+  },
+  {
+    "id": "mcq-cc-0216",
+    "chapterId": 20,
+    "topicId": "cc-endocrine-emergencies",
+    "question": "In a 60-year-old female presenting with Myxedema Coma (hypothermia 32.8 deg C, bradycardia 42 bpm, hypoventilation, and profound lethargy), what is the mandatory sequence of pharmacotherapy to prevent fatal cardiovascular collapse?",
+    "options": [
+      "A. Intravenous Levothyroxine (T4) or Liothyronine (T3) administered alone immediately",
+      "B. Intravenous Stress-Dose Hydrocortisone (100 mg IV every 8 hours) MUST be administered BEFORE or CONCURRENTLY with thyroid hormone replacement to avoid precipitating an acute adrenal crisis",
+      "C. High-dose oral methimazole",
+      "D. Immediate rapid rewarming with active internal bypass"
+    ],
+    "answer": "B",
+    "explanation": "In severe myxedema coma, hypothalamic-pituitary-thyroid failure frequently coexists with secondary adrenal insufficiency, or primary autoimmune polyglandular syndrome (Schmidt syndrome). Administering thyroid hormone accelerates basal metabolic rate, hepatic clearance of cortisol, and peripheral oxygen consumption. If exogenous corticosteroids are not provided beforehand, the increased metabolic demand precipitates acute adrenal crisis and cardiovascular collapse. Stress-dose Hydrocortisone (100 mg IV q8h) must be administered prior to or concurrently with IV Levothyroxine (200-400 mcg loading dose, then 50-100 mcg daily) +/- Liothyronine. Rewarming must be passive/gradual to avoid peripheral vasodilation and shock.",
+    "whyWrong": {
+      "A": "Giving thyroid hormone alone without steroids can precipitate fatal acute adrenal crisis.",
+      "C": "Methimazole treats hyperthyroidism; myxedema coma is severe hypothyroidism.",
+      "D": "Rapid aggressive active rewarming triggers peripheral vasodilation and cardiovascular collapse."
+    },
+    "difficulty": "moderate",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Myxedema Coma Rule: Administer IV Hydrocortisone (100 mg q8h) BEFORE or with IV Levothyroxine to prevent precipitating acute adrenal crisis! Rewarm passively to avoid shock.",
+    "hyperlinkedReference": {
+      "label": "Wiersinga WM. Myxedema coma. Endocrine 2018",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29904875/"
+    },
+    "tags": [
+      "Myxedema Coma",
+      "Hydrocortisone First",
+      "Adrenal Crisis",
+      "Levothyroxine"
+    ]
+  },
+  {
+    "id": "mcq-cc-0217",
+    "chapterId": 20,
+    "topicId": "cc-endocrine-emergencies",
+    "question": "In Thyroid Storm, why is Lugol's iodine (saturated solution of potassium iodide, SSKI) strictly withheld until AT LEAST ONE HOUR AFTER administration of an antithyroid drug (such as Propylthiouracil or Methimazole)?",
+    "options": [
+      "A. Iodine destroys the antithyroid drug molecules in the stomach",
+      "B. If iodine is administered before thionamide inhibition of thyroid peroxidase, the exogenous iodine is rapidly utilized as substrate to synthesize and release massive amounts of new thyroid hormones ('Jod-Basedow phenomenon'), dangerously worsening thyrotoxicosis",
+      "C. Iodine causes acute renal failure when given first",
+      "D. Antithyroid drugs require 24 hours to activate"
+    ],
+    "answer": "B",
+    "explanation": "In thyroid storm, thionamides (PTU or Methimazole) block thyroid peroxidase and inhibit organification and coupling of new thyroid hormone synthesis. High concentrations of inorganic iodine (Lugol's solution, SSKI) rapidly block the proteolytic release of preformed T3 and T4 from thyroglobulin via the Wolff-Chaikoff effect. However, if iodine is administered BEFORE or simultaneously without prior thionamide blockade, the gland will avidly utilize the iodine load to synthesize and release massive waves of new thyroid hormones (the Jod-Basedow phenomenon), precipitating refractory storm and death. Therefore, iodine must be delayed until >= 1 hour after thionamide administration.",
+    "whyWrong": {
+      "A": "No direct physical interaction in the stomach occurs.",
+      "C": "Iodine does not induce acute renal failure in thyroid storm.",
+      "D": "Thionamides begin inhibiting organification within an hour."
+    },
+    "difficulty": "hard",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Thyroid Storm Protocol: Step 1 = Beta-blocker (Propranolol / Esmolol). Step 2 = Thionamide (PTU 200 mg q4h). Step 3 = IODINE (Lugol's / SSKI) given >= 1 HOUR AFTER thionamide to prevent Jod-Basedow hormone surge! Step 4 = Dexamethasone (blocks T4->T3).",
+    "hyperlinkedReference": {
+      "label": "Ross DS et al. 2016 American Thyroid Association Guidelines for Diagnosis and Management of Hyperthyroidism and Other Causes of Thyrotoxicosis. Thyroid 2016; 26(10):1343-1421",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27521067/"
+    },
+    "tags": [
+      "Thyroid Storm",
+      "Wolff-Chaikoff",
+      "Jod-Basedow",
+      "Burch-Wartofsky"
+    ]
+  },
+  {
+    "id": "mcq-cc-0218",
+    "chapterId": 21,
+    "topicId": "cc-nutrition-in-the-icu",
+    "question": "According to the ESPEN and ASPEN Clinical Practice Guidelines for nutrition in critically ill adults, what is the recommended protein delivery target during the acute phase of critical illness?",
+    "options": [
+      "A. 0.5 to 0.8 g/kg/day",
+      "B. 1.2 to 2.0 g/kg actual or ideal body weight/day (with higher targets in burns and trauma)",
+      "C. Zero protein until day 14",
+      "D. > 3.5 g/kg/day in all patients"
+    ],
+    "answer": "B",
+    "explanation": "Critical illness is characterized by intense neuroendocrine and cytokine-mediated muscle proteolysis that cannot be suppressed by feeding alone. Both ESPEN and ASPEN guidelines recommend an optimal protein intake of 1.2 to 2.0 g/kg/day (administered as intact protein or peptide formulations) to minimize negative nitrogen balance, preserve lean muscle mass, and support immune function. In polytrauma, major burns, or CRRT (where 10-15 g of amino acids are lost daily into effluent), protein targets can reach 2.0 to 2.5 g/kg/day.",
+    "whyWrong": {
+      "A": "0.8 g/kg/day is the RDA for healthy sedentary adults; insufficient in critical catabolism.",
+      "C": "Withholding protein causes profound muscle wasting, diaphragmatic atrophy, and ICUAW.",
+      "D": "Protein > 2.5-3.0 g/kg/day produces azotemia, hyperammonemia, and metabolic acidosis without added benefit."
+    },
+    "difficulty": "easy",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2022,
+    "examPearl": "NEET-SS EXAM PEARL: ICU Nutrition Protein Target: 1.2 to 2.0 g/kg/day (ESPEN/ASPEN). Higher (up to 2.5 g/kg/day) in burns, polytrauma, and CRRT.",
+    "hyperlinkedReference": {
+      "label": "Singer P et al. ESPEN practical guideline: Clinical nutrition in the intensive care unit. Clin Nutr 2023; 42(9):1671-1689",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37454558/"
+    },
+    "tags": [
+      "ICU Nutrition",
+      "Protein Targets",
+      "ESPEN Guidelines",
+      "ASPEN Guidelines"
+    ]
+  },
+  {
+    "id": "mcq-cc-0219",
+    "chapterId": 21,
+    "topicId": "cc-nutrition-in-the-icu",
+    "question": "The NUTRIREA-2 trial (Reignier et al., Lancet 2018) compared early enteral nutrition (EN) versus early parenteral nutrition (PN) in critically ill patients with shock requiring mechanical ventilation and vasopressors. What was the primary finding?",
+    "options": [
+      "A. Enteral nutrition showed a 15% reduction in 28-day mortality",
+      "B. 28-day mortality was identical between early EN and early PN (37% vs 35%), but early enteral nutrition in shock caused significantly higher gastrointestinal complications, including acute bowel ischemia (2% vs < 1%) and colonic pseudo-obstruction",
+      "C. Parenteral nutrition caused severe liver failure in all patients",
+      "D. Enteral nutrition completely prevented ICU infections"
+    ],
+    "answer": "B",
+    "explanation": "The NUTRIREA-2 trial (Lancet 2018; 2,410 patients in shock) challenged the traditional dogma that enteral nutrition is universally superior to parenteral nutrition in early shock. Patients with shock requiring vasopressors were randomized to early isocaloric EN vs early PN. Mortality at 28 days did not differ significantly between groups (37% in EN vs 35% in PN, p = 0.33), nor did ICU-acquired infection rates. However, early enteral nutrition in patients with high-dose vasopressors resulted in significantly higher gastrointestinal complications: acute mesenteric bowel ischemia (19 patients vs 5 patients; p = 0.007) and intestinal pseudo-obstruction. Therefore, while EN remains first-line, it should be held or titrated cautiously in patients with escalating shock or severe splanchnic hypoperfusion.",
+    "whyWrong": {
+      "A": "Enteral nutrition did not reduce mortality compared to parenteral nutrition.",
+      "C": "PN was safe and well tolerated.",
+      "D": "ICU-acquired infection rates were similar between groups."
+    },
+    "difficulty": "moderate",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: NUTRIREA-2 Trial: In patients with septic/cardiogenic shock on high-dose vasopressors, early aggressive enteral feeding carries risk of ACUTE BOWEL ISCHEMIA. Hold or slowly trickle EN until shock stabilizes!",
+    "hyperlinkedReference": {
+      "label": "Reignier J et al. Enteral versus parenteral nutrition in critically ill patients in shock (NUTRIREA-2). Lancet 2018; 391(10116):133-143",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29129327/"
+    },
+    "tags": [
+      "NUTRIREA-2",
+      "Enteral vs Parenteral",
+      "Bowel Ischemia",
+      "Vasopressors in Shock"
+    ]
+  },
+  {
+    "id": "mcq-cc-0220",
+    "chapterId": 22,
+    "topicId": "cc-hematological-emergencies-in-critical-illness",
+    "question": "The landmark PROPPR trial (Holcomb et al., JAMA 2015) evaluated blood component ratios in severely bleeding trauma patients receiving massive transfusion. What were the outcomes comparing a 1:1:1 ratio (Platelets : Plasma : PRBCs) versus a 1:1:2 ratio?",
+    "options": [
+      "A. The 1:1:1 ratio reduced 30-day all-cause mortality by 40%",
+      "B. Overall 24-hour and 30-day all-cause mortality did not differ significantly, but the 1:1:1 ratio significantly reduced early exsanguination (death from bleeding within 24 hours: 9.2% vs 14.6%, p = 0.03) and achieved superior early hemostasis without increasing complications",
+      "C. The 1:1:1 ratio caused severe pulmonary edema in > 50% of patients",
+      "D. The 1:1:2 ratio was superior in all clinical endpoints"
+    ],
+    "answer": "B",
+    "explanation": "The PROPPR trial (JAMA 2015; 680 bleeding trauma patients) evaluated a 1:1:1 unit ratio (1 unit platelets : 1 unit plasma : 1 unit packed red blood cells) versus a 1:1:2 ratio. While 24-hour all-cause mortality (12.7% vs 17.0%, p = 0.12) and 30-day all-cause mortality (22.4% vs 26.1%, p = 0.26) did not reach statistical significance for the primary composite endpoint, patients in the 1:1:1 group were significantly less likely to die from EXSANGUINATION within 24 hours (9.2% vs 14.6%, p = 0.03) and achieved anatomic hemostasis significantly faster (86% vs 78%, p = 0.006). Inflammatory complications (ARDS, MOF) were not increased.",
+    "whyWrong": {
+      "A": "30-day all-cause mortality did not reach statistical significance.",
+      "C": "Transfusion-related complications (ARDS, acute lung injury) were similar between groups.",
+      "D": "The 1:1:2 ratio had higher exsanguination deaths."
+    },
+    "difficulty": "moderate",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2021,
+    "examPearl": "NEET-SS EXAM PEARL: PROPPR Trial (2015): 1:1:1 Massive Transfusion Protocol (Platelets : Plasma : PRBC) significantly reduces death from EXSANGUINATION within 24 hours (9.2% vs 14.6%) and achieves faster hemostasis.",
+    "hyperlinkedReference": {
+      "label": "Holcomb JB et al. Transfusion of plasma, platelets, and red blood cells in a 1:1:1 vs a 1:1:2 ratio and mortality in patients with severe trauma: the PROPPR randomized clinical trial. JAMA 2015; 313(5):471-482",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/2107789"
+    },
+    "tags": [
+      "PROPPR Trial",
+      "Massive Transfusion",
+      "1:1:1 Ratio",
+      "Exsanguination"
+    ]
+  },
+  {
+    "id": "mcq-cc-0221",
+    "chapterId": 22,
+    "topicId": "cc-hematological-emergencies-in-critical-illness",
+    "question": "In Viscoelastic Hemostatic Testing (Thromboelastography / TEG or ROTEM), which parameter reflects Fibrinogen deficiency or dysfunction, and which blood product is indicated when it is severely decreased?",
+    "options": [
+      "A. Reaction time (R in TEG / CT in ROTEM); treat with Platelets",
+      "B. Maximum Amplitude (MA in TEG) or Maximum Clot Firmness (MCF in ROTEM) on the functional fibrinogen track (TEG Functional Fibrinogen / ROTEM FIBTEM); treat with Cryoprecipitate or Fibrinogen Concentrate",
+      "C. K-time; treat with Tranexamic acid",
+      "D. LY30; treat with Fresh Frozen Plasma"
+    ],
+    "answer": "B",
+    "explanation": "Viscoelastic testing dissects clot formation: (1) R-time (CT in ROTEM): time to initial fibrin formation (clotting factors -> treat with Plasma/PCC); (2) K-time and alpha angle (CFT / alpha in ROTEM): rate of clot kinetics (thrombin generation/fibrin mesh -> Cryoprecipitate); (3) Maximum Amplitude MA (MCF in ROTEM): total clot strength. Clot strength is generated ~80% by platelets and ~20% by fibrinogen. To isolate fibrinogen, the FIBTEM assay blocks platelets with Cytochalasin D. A low FIBTEM MCF (< 9-10 mm) or TEG FF MA (< 12 mm) indicates severe hypofibrinogenemia (< 1.5-2.0 g/L), treated with Cryoprecipitate (1-2 pools) or Fibrinogen Concentrate (30-50 mg/kg). LY30 / ML reflects fibrinolysis -> TXA.",
+    "whyWrong": {
+      "A": "R-time reflects clotting factors; treated with FFP or PCC.",
+      "C": "K-time reflects kinetics; treated with Cryoprecipitate or FFP.",
+      "D": "LY30 > 3% reflects hyperfibrinolysis, treated with Tranexamic Acid (TXA)."
+    },
+    "difficulty": "hard",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: TEG/ROTEM Algorithm: R/CT prolonged -> FFP/PCC. FIBTEM MCF low -> Cryoprecipitate/Fibrinogen. Platelet-driven MA low -> Platelet transfusion. LY30 / ML elevated -> Tranexamic acid (TXA).",
+    "hyperlinkedReference": {
+      "label": "Whiting P et al. Viscoelastic point-of-care testing to assist with the diagnosis, management and monitoring of haemostasis: a systematic review. Health Technol Assess 2015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26211831/"
+    },
+    "tags": [
+      "TEG",
+      "ROTEM",
+      "FIBTEM",
+      "Fibrinogen Deficiency"
+    ]
+  },
+  {
+    "id": "mcq-cc-0222",
+    "chapterId": 22,
+    "topicId": "cc-thrombocytopenia-in-the-icu",
+    "question": "In a critically ill patient who develops thrombocytopenia on day 7 of subcutaneous unfractionated heparin, which pre-test probability score is calculated to guide diagnosis and management of Heparin-Induced Thrombocytopenia (HIT)?",
+    "options": [
+      "A. Glasgow-Blatchford Score",
+      "B. The 4Ts Score (Thrombocytopenia magnitude, Timing of fall, Thrombosis presence, and oTher causes ruled out)",
+      "C. Well's Score for DVT",
+      "D. MELD Score"
+    ],
+    "answer": "B",
+    "explanation": "The 4Ts Score is the validated clinical scoring system for Heparin-Induced Thrombocytopenia (HIT type II, immune-mediated anti-PF4/heparin antibodies): (1) Thrombocytopenia: platelet fall > 50% AND nadir >= 20,000/uL (2 pts); (2) Timing: onset day 5-10, or <= 1 day with heparin exposure within past 30 days (2 pts); (3) Thrombosis: new proven thrombosis, skin necrosis, or acute systemic reaction (2 pts); (4) oTher causes: no other plausible cause for thrombocytopenia (2 pts). Total score: 0-3 (Low probability - negative predictive value > 99%, continue heparin); 4-5 (Intermediate probability); 6-8 (High probability). If score is >= 4, STOP all heparin immediately and switch to a non-heparin direct thrombin inhibitor (Argatroban, Bivalirudin) or Fondaparinux.",
+    "whyWrong": {
+      "A": "Glasgow-Blatchford evaluates upper GI bleeding.",
+      "C": "Wells score evaluates DVT or PE probability.",
+      "D": "MELD evaluates end-stage liver disease mortality."
+    },
+    "difficulty": "easy",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2022,
+    "examPearl": "NEET-SS EXAM PEARL: 4Ts Score in HIT: Platelet drop > 50% between Day 5-10. If score >= 4: STOP all heparin immediately, start non-heparin direct thrombin inhibitor (Argatroban / Bivalirudin). Never give platelets or warfarin in acute HIT!",
+    "hyperlinkedReference": {
+      "label": "Cuker A et al. American Society of Hematology 2018 guidelines for management of venous thromboembolism: heparin-induced thrombocytopenia. Blood Adv 2018; 2(22):3360-3392",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30482768/"
+    },
+    "tags": [
+      "HIT",
+      "4Ts Score",
+      "Argatroban",
+      "Heparin-Induced Thrombocytopenia"
+    ]
+  },
+  {
+    "id": "mcq-cc-0223",
+    "chapterId": 23,
+    "topicId": "cc-acetaminophen-toxicity",
+    "question": "In acute paracetamol (acetaminophen) overdose, when using the Rumack-Matthew nomogram, what is the critical time window for initiating N-Acetylcysteine (NAC) to provide near 100% protection against severe hepatotoxicity?",
+    "options": [
+      "A. Within 30 minutes only",
+      "B. Within 8 hours of ingestion (hepatotoxicity protection approaches 100% if initiated <= 8 hours post-ingestion)",
+      "C. Between 24 and 48 hours",
+      "D. Timing does not matter; NAC works equally at any day"
+    ],
+    "answer": "B",
+    "explanation": "In acetaminophen toxicity, cytochrome P450 (CYP2E1) metabolizes excess drug into the toxic electrophile N-acetyl-p-benzoquinone imine (NAPQI). Once hepatic glutathione stores are depleted by > 70%, NAPQI binds covalently to hepatocyte mitochondrial proteins, causing centrilobular hepatic necrosis. N-acetylcysteine (NAC) replenishes glutathione stores, acts as a glutathione substitute, and detoxifies NAPQI directly. When initiated within 8 hours of an acute ingestion, NAC provides virtually 100% protection against hepatotoxicity. However, NAC should still be given at any time if hepatotoxicity or detectable acetaminophen is present, as it improves microvascular hemodynamics and reduces cerebral edema in established liver failure.",
+    "whyWrong": {
+      "A": "30 minutes is unnecessary; 8 hours provides complete protection.",
+      "C": "Starting at 24-48h occurs after extensive hepatocyte necrosis has already developed.",
+      "D": "Efficacy decays significantly after 8-10 hours."
+    },
+    "difficulty": "easy",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2021,
+    "examPearl": "NEET-SS EXAM PEARL: Acetaminophen Toxicity: NAC started within 8 HOURS of ingestion provides near 100% prevention of hepatotoxicity. Rumack-Matthew nomogram applies ONLY to single acute ingestions between 4 and 24 hours.",
+    "hyperlinkedReference": {
+      "label": "Rumack BH, Matthew H. Acetaminophen poisoning and toxicity. Pediatrics 1975; 55(6):871-876",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1134886/"
+    },
+    "tags": [
+      "Acetaminophen Poisoning",
+      "NAC",
+      "Rumack-Matthew Nomogram",
+      "NAPQI"
+    ]
+  },
+  {
+    "id": "mcq-cc-0224",
+    "chapterId": 23,
+    "topicId": "cc-pesticides",
+    "question": "In acute organophosphate poisoning, what is the primary therapeutic endpoint for titrating intravenous Atropine therapy?",
+    "options": [
+      "A. Achieving pinpoint pupils (miosis)",
+      "B. 'Atropinization' characterized by CLEAR CHEST ON AUSCULTATION (clearing of bronchorrhea and bronchospasm), heart rate > 80 bpm, systolic BP > 90 mmHg, and dry axillae",
+      "C. Complete cessation of muscle fasciculations",
+      "D. Reversal of coma to full orientation"
+    ],
+    "answer": "B",
+    "explanation": "Patients with severe organophosphate poisoning die from asphyxiation due to massive muscarinic hypersecretion (bronchorrhea) and bronchospasm ('drowning in their own secretions'). Atropine is a competitive antagonist of muscarinic acetylcholine receptors. It does NOT act on nicotinic receptors (thus it does NOT reverse muscle fasciculations or motor paralysis). The clinical endpoints for adequate atropinization are: (1) Clear lungs on auscultation (disappearance of rales and wheezing - the most critical endpoint), (2) Heart rate > 80 bpm, (3) Systolic BP > 90 mmHg, and (4) Dry axillae/skin. Dilated pupils alone are NOT an adequate endpoint, as pupils can be dilated from hypoxia or sympathetic activation.",
+    "whyWrong": {
+      "A": "Atropine causes mydriasis, not miosis.",
+      "C": "Fasciculations are nicotinic; atropine has zero effect on nicotinic motor receptors (oximes are used for nicotinic).",
+      "D": "Coma may persist due to solvent toxicity and cerebral hypoxia despite adequate atropinization."
+    },
+    "difficulty": "moderate",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Atropinization endpoints: CLEAR LUNGS (clearing of bronchorrhea/bronchospasm) + HR > 80 bpm + Dry axillae. Atropine reverses MUSCARINIC signs only; it does NOT fix muscle fasciculations (nicotinic)!",
+    "hyperlinkedReference": {
+      "label": "Eddleston M et al. Early management after self-poisoning with an organophosphorus insecticide. Lancet 2008; 371(9612):597-607",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18280330/"
+    },
+    "tags": [
+      "Organophosphate Poisoning",
+      "Atropinization",
+      "Bronchorrhea",
+      "Muscarinic Receptors"
+    ]
+  },
+  {
+    "id": "mcq-cc-0225",
+    "chapterId": 23,
+    "topicId": "cc-recreational-drug-toxicity",
+    "question": "A 22-year-old male is brought to the ICU with agitation, hyperthermia (temperature 40.2 deg C), tremors, and diaphoresis. Examination reveals SPONTANEOUS OCULAR AND INDUCIBLE LOWER EXTREMITY CLONUS with marked hyperreflexia. His medications include Fluoxetine and Tramadol. According to the Hunter Serotonin Toxicity Criteria, what is the diagnosis and first-line specific antidote?",
+    "options": [
+      "A. Neuroleptic Malignant Syndrome; Bromocriptine",
+      "B. Serotonin Syndrome; Cyproheptadine (5-HT2A antagonist) along with active cooling and IV benzodiazepines",
+      "C. Malignant Hyperthermia; Dantrolene",
+      "D. Anticholinergic toxidrome; Physostigmine"
+    ],
+    "answer": "B",
+    "explanation": "The Hunter Criteria are the gold-standard diagnostic criteria for Serotonin Syndrome (Hunter Serotonin Toxicity Criteria, 84% sensitivity, 97% specificity). In the presence of a serotonergic agent (here Fluoxetine + Tramadol), diagnosis requires spontaneous clonus, OR inducible clonus with agitation/diaphoresis, OR ocular clonus with agitation/diaphoresis, OR tremor with hyperreflexia, OR hypertonia with temp > 38 deg C and ocular/inducible clonus. Spontaneous clonus and hyperreflexia are the cardinal distinguishing features (unlike Neuroleptic Malignant Syndrome, which features 'lead-pipe' rigidity and hyporeflexia). Management includes active cooling, IV benzodiazepines, and Cyproheptadine (a 5-HT2A antagonist: initial dose 12 mg orally/NG, followed by 2 mg q2h).",
+    "whyWrong": {
+      "A": "NMS features severe generalized 'lead-pipe' rigidity, bradykinesia, and hyporeflexia, without clonus.",
+      "C": "Malignant hyperthermia occurs after halogenated volatile anesthetics or succinylcholine, characterized by masseter spasm and jaw rigidity.",
+      "D": "Anticholinergic toxidrome features dry flushed skin, absent sweating, and dilated sluggish pupils."
+    },
+    "difficulty": "hard",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Hunter Criteria for Serotonin Syndrome: SPONTANEOUS CLONUS or INDUCIBLE CLONUS + Hyperreflexia + Agitation/Diaphoresis. Antidote: CYPROHEPTADINE (5-HT2A antagonist). NMS features lead-pipe rigidity, not clonus!",
+    "hyperlinkedReference": {
+      "label": "Dunkley EJ et al. The Hunter Serotonin Toxicity Criteria: simple and accurate diagnostic decision rules for serotonin toxicity. QJM 2003; 96(9):635-642",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12925718/"
+    },
+    "tags": [
+      "Serotonin Syndrome",
+      "Hunter Criteria",
+      "Clonus",
+      "Cyproheptadine"
+    ]
+  },
+  {
+    "id": "mcq-cc-0226",
+    "chapterId": 24,
+    "topicId": "cc-haemodynamic-management-pharmacotherapy-in-acute-polytrauma",
+    "question": "The landmark CRASH-2 trial (Lancet 2010) evaluated early administration of Tranexamic Acid (TXA) in trauma patients with significant hemorrhage. What was the exact time window for administration, and what occurred if TXA was delayed beyond 3 hours?",
+    "options": [
+      "A. Given within 12 hours; delay had no effect on survival",
+      "B. TXA administered within 3 hours significantly reduced all-cause mortality and bleeding death (RR 0.79); however, administration DELAYED BEYOND 3 HOURS significantly INCREASED the risk of death due to bleeding (RR 1.44)",
+      "C. TXA was ineffective in trauma",
+      "D. TXA had to be given within 10 minutes only"
+    ],
+    "answer": "B",
+    "explanation": "The CRASH-2 trial (Lancet 2010; 20,211 trauma patients across 40 countries) evaluated Tranexamic Acid (1 g IV over 10 min, followed by 1 g infused over 8 hours). When administered within 1 hour of injury, TXA reduced bleeding death by 32% (RR 0.68). Given between 1 and 3 hours, it reduced death by 21% (RR 0.79). Crucially, a subsequent planned exploratory analysis (Lancet 2011) showed that when TXA administration was delayed beyond 3 hours from injury, it significantly INCREASED the risk of death due to bleeding (RR 1.44, p = 0.004), likely due to suppression of protective tissue plasminogen activator dynamics after consumptive coagulopathy sets in. Guidelines state: Give TXA as early as possible, and DO NOT START TXA if > 3 hours have elapsed since injury.",
+    "whyWrong": {
+      "A": "Administering TXA after 3 hours is harmful and increases mortality.",
+      "C": "CRASH-2 was a landmark positive trial saving thousands of trauma lives.",
+      "D": "Effective window is up to 3 hours, with greatest efficacy in the first hour."
+    },
+    "difficulty": "easy",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2021,
+    "examPearl": "NEET-SS EXAM PEARL: CRASH-2 Trial: TXA (1 g bolus + 1 g over 8h) MUST be given within 3 HOURS of trauma. Administering TXA beyond 3 hours INCREASES mortality from bleeding (RR 1.44)!",
+    "hyperlinkedReference": {
+      "label": "CRASH-2 trial collaborators. Effects of tranexamic acid on death, vascular occlusive events, and blood transfusion in trauma patients with significant haemorrhage (CRASH-2). Lancet 2010; 376(9734):23-32",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20554319/"
+    },
+    "tags": [
+      "CRASH-2",
+      "Tranexamic Acid",
+      "Trauma Coagulopathy",
+      "3-Hour Window"
+    ]
+  },
+  {
+    "id": "mcq-cc-0227",
+    "chapterId": 24,
+    "topicId": "cc-haemodynamic-management-pharmacotherapy-in-acute-polytrauma",
+    "question": "In Damage Control Resuscitation for polytrauma with active non-compressible torso hemorrhage, what is the target systolic blood pressure for 'Permissive Hypotension', and in which patient population is permissive hypotension STRICTLY CONTRAINDICATED?",
+    "options": [
+      "A. Target SBP 120-140 mmHg; contraindicated in young adults",
+      "B. Target SBP 80 to 90 mmHg (MAP 50-60 mmHg) until surgical hemostasis is achieved; Permissive hypotension is STRICTLY CONTRAINDICATED in patients with Traumatic Brain Injury (TBI) or spinal cord injury, where SBP must be maintained >= 100 to 110 mmHg",
+      "C. Target SBP 50-60 mmHg; contraindicated in femur fractures",
+      "D. Permissive hypotension is indicated in all trauma patients without exception"
+    ],
+    "answer": "B",
+    "explanation": "Permissive hypotension (deliberate hypotensive resuscitation) balances minimal vital organ perfusion while preventing 'popping the clot' (hydrostatic disruption of immature thrombi) and dilution of coagulation factors by excessive fluids. In penetrating or blunt torso trauma without TBI, systolic blood pressure is targeted at 80 to 90 mmHg (palpable radial pulse). However, in patients with severe Traumatic Brain Injury (TBI) or spinal cord trauma, permissive hypotension is STRICTLY CONTRAINDICATED: secondary cerebral ischemic injury accelerates exponentially when SBP drops < 100-110 mmHg. In poly-trauma with TBI, maintain SBP >= 100-110 mmHg.",
+    "whyWrong": {
+      "A": "Targeting 120-140 mmHg before hemostasis causes massive rebleeding and coagulopathy.",
+      "C": "SBP 50-60 mmHg causes irreversible end-organ ischemic necrosis.",
+      "D": "TBI and spinal cord injury are absolute contraindications to permissive hypotension."
+    },
+    "difficulty": "moderate",
+    "sourceType": "pyq",
+    "exam": "NEET-SS",
+    "year": 2022,
+    "examPearl": "NEET-SS EXAM PEARL: Permissive Hypotension Target: SBP 80-90 mmHg until surgical hemostasis. STRICTLY CONTRAINDICATED in Traumatic Brain Injury (TBI), where SBP must be maintained >= 100-110 mmHg to preserve Cerebral Perfusion Pressure!",
+    "hyperlinkedReference": {
+      "label": "Spahn DR et al. The European guideline on management of major bleeding and coagulopathy following trauma: fifth edition. Crit Care 2019; 23(1):98",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30917843/"
+    },
+    "tags": [
+      "Permissive Hypotension",
+      "Damage Control Resuscitation",
+      "TBI Contraindication",
+      "Trauma Hemodynamics"
+    ]
+  }
+]
