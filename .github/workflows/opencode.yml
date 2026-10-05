@@ -33,5 +33,5 @@ jobs:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-  model: google/<appropriate-gemini-model>
+  model: google/gemini-3.1-pro-preview
   use_github_token: true
