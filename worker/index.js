@@ -37,7 +37,10 @@ import {
   handleUpdateStickyNote,
   handleDeleteStickyNote,
   handleSync,
-  handleGoogleAuth
+  handleGoogleAuth,
+  handleGoogleAuthStart,
+  handleGoogleAuthCallback,
+  handleGetAuthConfig
 } from './user-workspace.js';
 
 import {
@@ -89,7 +92,8 @@ import {
   handleDownloadChapterPDF,
   handleGetUserPaymentHistory,
   handleAdminPaymentsOverview,
-  handleAdminUpdatePricing
+  handleAdminUpdatePricing,
+  handleAdminBulkUpdatePricing
 } from './payments.js';
 
 
@@ -633,6 +637,15 @@ export default {
     if (pathname === '/api/auth/google' && request.method === 'POST') {
       return handleGoogleAuth(request, env);
     }
+    if (pathname === '/api/auth/google/start' && request.method === 'GET') {
+      return handleGoogleAuthStart(request, env);
+    }
+    if (pathname === '/api/auth/google/callback' && request.method === 'GET') {
+      return handleGoogleAuthCallback(request, env);
+    }
+    if (pathname === '/api/auth/config' && request.method === 'GET') {
+      return handleGetAuthConfig(request, env);
+    }
 
     // Authenticated user session middleware
     if (pathname === '/api/auth/me' || pathname === '/api/auth/profile' || pathname === '/api/auth/password' || pathname.startsWith('/api/user/')) {
@@ -752,6 +765,12 @@ export default {
       const sessionId = extractUserSessionId(request);
       const userAuth = sessionId ? await validateUserSession(env.DB, sessionId) : null;
       return handleAdminUpdatePricing(request, env, userAuth);
+    }
+
+    if (pathname === '/api/admin/payments/pricing/bulk' && request.method === 'POST') {
+      const sessionId = extractUserSessionId(request);
+      const userAuth = sessionId ? await validateUserSession(env.DB, sessionId) : null;
+      return handleAdminBulkUpdatePricing(request, env, userAuth);
     }
 
     // ==========================================

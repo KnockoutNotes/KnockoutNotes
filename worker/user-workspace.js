@@ -10,7 +10,11 @@ import {
   createUserSessionCookie,
   clearUserSessionCookie,
   extractUserSessionId,
-  validateUserSession
+  validateUserSession,
+  createOAuthStateCookie,
+  clearOAuthStateCookie,
+  verifyGoogleIdToken,
+  parseCookies
 } from './auth.js';
 import { sendEmail } from './mailersend.js';
 
@@ -203,96 +207,390 @@ export async function handleLogout(request, env) {
   }
 }
 
-// POST /api/auth/google
+// ==========================================================================
+// GOOGLE OAUTH 2.0 / OIDC AUTHENTICATION (AUTHENTICATED IDENTITY PROVIDER)
+// ==========================================================================
+
+/**
+ * GET /api/auth/config
+ * Returns public authentication configuration and OAuth callback URL.
+ * NEVER exposes secrets.
+ */
+export async function handleGetAuthConfig(request, env) {
+  const url = new URL(request.url);
+  const siteUrl = (env.SITE_URL || `${url.protocol}//${url.host}`).replace(/\/$/, '');
+  const callbackUrl = `${siteUrl}/api/auth/google/callback`;
+
+  return jsonResponse({
+    googleConfigured: Boolean(env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET),
+    googleClientId: env.GOOGLE_CLIENT_ID || null,
+    oauthCallbackUrl: callbackUrl
+  });
+}
+
+/**
+ * GET /api/auth/google/start
+ * Initiates official Google OAuth 2.0 Authorization Code flow.
+ * Generates secure state + nonce, sets HttpOnly CSRF cookie, and redirects to Google.
+ */
+export async function handleGoogleAuthStart(request, env) {
+  const url = new URL(request.url);
+  const siteUrl = (env.SITE_URL || `${url.protocol}//${url.host}`).replace(/\/$/, '');
+  const callbackUrl = `${siteUrl}/api/auth/google/callback`;
+  const returnUrl = url.searchParams.get('return_url') || '/workspace.html';
+
+  const clientId = (env.GOOGLE_CLIENT_ID || '').trim();
+  const clientSecret = (env.GOOGLE_CLIENT_SECRET || '').trim();
+
+  if (!clientId || !clientSecret) {
+    const isBrowserNavigation = (request.headers.get('accept') || '').includes('text/html');
+    if (isBrowserNavigation) {
+      return new Response(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Sign-In Configuration Required — KnockoutNotes</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #090d16; color: #f8fafc; padding: 40px 20px; display: flex; justify-content: center; align-items: center; min-height: 80vh; margin: 0; }
+    .card { background: #0f172a; border: 1px solid #334155; border-radius: 12px; max-width: 580px; padding: 32px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); }
+    h1 { font-size: 20px; color: #38bdf8; margin-top: 0; margin-bottom: 12px; }
+    p { font-size: 14px; color: #cbd5e1; line-height: 1.6; margin-bottom: 16px; }
+    code { background: #1e293b; padding: 3px 8px; border-radius: 4px; font-family: monospace; font-size: 12px; color: #34d399; word-break: break-all; }
+    .box { background: #141e33; border: 1px solid #1e293b; padding: 14px; border-radius: 6px; margin: 16px 0; }
+    .btn { display: inline-block; background: #0284c7; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 13px; margin-top: 8px; }
+    .btn:hover { background: #0369a1; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>⚙️ Google OAuth Setup Required</h1>
+    <p>To sign in with Google, Google Cloud OAuth credentials must be added to Cloudflare Secrets for this Worker deployment.</p>
+    <div class="box">
+      <p style="margin: 0 0 8px 0;"><strong>Required Cloudflare Server-Side Secrets:</strong></p>
+      <div>1. <code>GOOGLE_CLIENT_ID</code></div>
+      <div style="margin-top: 4px;">2. <code>GOOGLE_CLIENT_SECRET</code></div>
+      <p style="margin: 12px 0 6px 0;"><strong>Authorized Redirect URI (Google Cloud Console):</strong></p>
+      <code>${callbackUrl}</code>
+    </div>
+    <p>In the meantime, you can create a free account or sign in using email &amp; password.</p>
+    <a href="${returnUrl}" class="btn">&larr; Return to KnockoutNotes</a>
+  </div>
+</body>
+</html>`, {
+        status: 503,
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+
+    return jsonResponse({
+      error: 'Google OAuth credentials are not yet configured on this server.',
+      configured: false,
+      required_secrets: ['GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET'],
+      callback_url: callbackUrl
+    }, 503);
+  }
+
+  // Generate secure state payload with return URL and nonce
+  const statePayload = {
+    r: returnUrl,
+    t: Date.now(),
+    nonce: generateSecureToken(16)
+  };
+  const stateStr = btoa(JSON.stringify(statePayload)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  const cookieValue = `${stateStr}:${statePayload.nonce}`;
+
+  const googleAuthUrl = new URL('https://accounts.google.com/o/oauth2/v2/auth');
+  googleAuthUrl.searchParams.set('client_id', clientId);
+  googleAuthUrl.searchParams.set('redirect_uri', callbackUrl);
+  googleAuthUrl.searchParams.set('response_type', 'code');
+  googleAuthUrl.searchParams.set('scope', 'openid email profile');
+  googleAuthUrl.searchParams.set('state', stateStr);
+  googleAuthUrl.searchParams.set('nonce', statePayload.nonce);
+  googleAuthUrl.searchParams.set('prompt', 'select_account');
+
+  return new Response(null, {
+    status: 302,
+    headers: {
+      'Location': googleAuthUrl.toString(),
+      'Set-Cookie': createOAuthStateCookie(cookieValue)
+    }
+  });
+}
+
+/**
+ * GET /api/auth/google/callback
+ * Handles Google's redirect back after user authenticates on accounts.google.com.
+ * Verifies state/CSRF cookie, exchanges authorization code for tokens,
+ * cryptographically verifies Google ID Token, links/creates user, and issues secure session.
+ */
+export async function handleGoogleAuthCallback(request, env) {
+  const url = new URL(request.url);
+  const code = url.searchParams.get('code');
+  const state = url.searchParams.get('state');
+  const errorParam = url.searchParams.get('error');
+
+  const siteUrl = (env.SITE_URL || `${url.protocol}//${url.host}`).replace(/\/$/, '');
+  const callbackUrl = `${siteUrl}/api/auth/google/callback`;
+
+  // Handle cancellation or error reported by Google
+  if (errorParam) {
+    return new Response(null, {
+      status: 302,
+      headers: {
+        'Location': `${siteUrl}/workspace.html?auth_error=${encodeURIComponent('Google authentication cancelled: ' + errorParam)}`,
+        'Set-Cookie': clearOAuthStateCookie()
+      }
+    });
+  }
+
+  if (!code || !state) {
+    return jsonResponse({ error: 'Missing OAuth authorization code or state parameter.' }, 400);
+  }
+
+  // 1. Verify CSRF state parameter against HttpOnly cookie
+  const cookies = parseCookies(request);
+  const stateCookie = cookies.kn_oauth_state || '';
+  if (!stateCookie) {
+    return jsonResponse({ error: 'OAuth state cookie missing or expired. Please initiate login again.' }, 400);
+  }
+
+  const [cookieState] = stateCookie.split(':');
+  if (cookieState !== state) {
+    console.error('[OAuth Security]: State parameter mismatch — potential CSRF attempt blocked');
+    return jsonResponse({ error: 'OAuth state verification failed. Access denied.' }, 403);
+  }
+
+  let returnUrl = `${siteUrl}/workspace.html`;
+  try {
+    const raw = atob(state.replace(/-/g, '+').replace(/_/g, '/'));
+    const parsed = JSON.parse(raw);
+    if (parsed.r && (parsed.r.startsWith('/') || parsed.r.startsWith(siteUrl))) {
+      returnUrl = parsed.r.startsWith('/') ? `${siteUrl}${parsed.r}` : parsed.r;
+    }
+    // Expiration check (10 minutes)
+    if (parsed.t && Date.now() - parsed.t > 10 * 60 * 1000) {
+      return jsonResponse({ error: 'OAuth state token has expired. Please try again.' }, 400);
+    }
+  } catch (_) {}
+
+  const clientId = (env.GOOGLE_CLIENT_ID || '').trim();
+  const clientSecret = (env.GOOGLE_CLIENT_SECRET || '').trim();
+
+  if (!clientId || !clientSecret) {
+    return jsonResponse({ error: 'Server Google OAuth credentials are not configured.' }, 503);
+  }
+
+  // 2. Exchange authorization code for tokens directly with Google
+  const tokenParams = new URLSearchParams();
+  tokenParams.set('code', code);
+  tokenParams.set('client_id', clientId);
+  tokenParams.set('client_secret', clientSecret);
+  tokenParams.set('redirect_uri', callbackUrl);
+  tokenParams.set('grant_type', 'authorization_code');
+
+  const tokenRes = await fetch('https://oauth2.googleapis.com/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: tokenParams.toString()
+  });
+
+  if (!tokenRes.ok) {
+    const errBody = await tokenRes.text().catch(() => '');
+    console.error('[Google Token Exchange Error]:', errBody);
+    return new Response(null, {
+      status: 302,
+      headers: {
+        'Location': `${siteUrl}/workspace.html?auth_error=${encodeURIComponent('Failed to exchange authorization code with Google.')}`,
+        'Set-Cookie': clearOAuthStateCookie()
+      }
+    });
+  }
+
+  const tokens = await tokenRes.json();
+  if (!tokens.id_token) {
+    return jsonResponse({ error: 'Google did not return a valid ID token.' }, 502);
+  }
+
+  // 3. Cryptographically verify Google ID Token
+  let googleUser;
+  try {
+    googleUser = await verifyGoogleIdToken(tokens.id_token, clientId);
+  } catch (err) {
+    console.error('[Google Token Verification Failed]:', err.message);
+    return jsonResponse({ error: 'Google identity verification failed: ' + err.message }, 401);
+  }
+
+  // 4. Locate or Create Verified User in D1 Database
+  // Priority A: Search by verified Google Subject Identifier
+  let user = await env.DB
+    .prepare('SELECT * FROM users WHERE google_sub = ?')
+    .bind(googleUser.sub)
+    .first();
+
+  let userId;
+
+  if (user) {
+    userId = user.id;
+    await env.DB
+      .prepare(`
+        UPDATE users
+        SET avatar_url = COALESCE(?, avatar_url),
+            name = COALESCE(?, name),
+            last_login_at = datetime('now'),
+            updated_at = datetime('now')
+        WHERE id = ?
+      `)
+      .bind(googleUser.picture, googleUser.name, userId)
+      .run();
+  } else {
+    // Priority B: Search by verified email (Safe linking to existing user)
+    const existingByEmail = await env.DB
+      .prepare('SELECT * FROM users WHERE email = ?')
+      .bind(googleUser.email)
+      .first();
+
+    if (existingByEmail) {
+      userId = existingByEmail.id;
+      // Link Google identity permanently — preserves all bookmarks, notes & PDF entitlements!
+      await env.DB
+        .prepare(`
+          UPDATE users
+          SET google_sub = ?,
+              auth_provider = 'google',
+              avatar_url = COALESCE(?, avatar_url),
+              name = COALESCE(?, name),
+              verified_at = COALESCE(verified_at, datetime('now')),
+              status = 'active',
+              last_login_at = datetime('now'),
+              updated_at = datetime('now')
+          WHERE id = ?
+        `)
+        .bind(googleUser.sub, googleUser.picture, googleUser.name, userId)
+        .run();
+    } else {
+      // Priority C: Create brand-new user record
+      const placeholderHash = `oauth_google_${googleUser.sub}`;
+      const insertRes = await env.DB
+        .prepare(`
+          INSERT INTO users (email, name, password_hash, avatar_url, auth_provider, google_sub, status, verified_at, last_login_at, created_at, updated_at)
+          VALUES (?, ?, ?, ?, 'google', ?, 'active', datetime('now'), datetime('now'), datetime('now'), datetime('now'))
+        `)
+        .bind(googleUser.email, googleUser.name, placeholderHash, googleUser.picture, googleUser.sub)
+        .run();
+
+      userId = insertRes.meta.last_row_id;
+    }
+  }
+
+  // 5. Create secure server-side session in user_sessions table
+  const sessionId = generateSecureToken(32);
+  const expiresAt = new Date(Date.now() + 30 * 24 * 3600 * 1000).toISOString();
+  const ip = request.headers.get('CF-Connecting-IP') || '';
+  const ua = request.headers.get('User-Agent') || '';
+
+  await env.DB
+    .prepare(`
+      INSERT INTO user_sessions (session_id, user_id, expires_at, ip_address, user_agent, created_at)
+      VALUES (?, ?, ?, ?, ?, datetime('now'))
+    `)
+    .bind(sessionId, userId, expiresAt, ip, ua)
+    .run();
+
+  const sessionCookie = createUserSessionCookie(sessionId);
+
+  // 6. Return 302 redirect with session cookie & clear state cookie
+  const responseHeaders = new Headers();
+  responseHeaders.append('Location', returnUrl);
+  responseHeaders.append('Set-Cookie', sessionCookie);
+  responseHeaders.append('Set-Cookie', clearOAuthStateCookie());
+
+  return new Response(null, {
+    status: 302,
+    headers: responseHeaders
+  });
+}
+
+/**
+ * POST /api/auth/google
+ * Validates a Google ID Token directly sent by Google Identity Services.
+ * Strictly verifies the cryptographically signed ID token against Google's public keys.
+ * NEVER accepts arbitrary email strings or untrusted profile JSON!
+ */
 export async function handleGoogleAuth(request, env) {
   try {
-    const { credential, profile } = await request.json();
+    const body = await request.json().catch(() => ({}));
+    const credential = body.credential;
 
-    let email, name, avatarUrl, googleSub;
-
-    if (credential) {
-      // Real Google Identity Services ID Token verification via Google tokeninfo
-      try {
-        const verifyRes = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${encodeURIComponent(credential)}`);
-        if (verifyRes.ok) {
-          const payload = await verifyRes.json();
-          email = payload.email;
-          name = payload.name;
-          avatarUrl = payload.picture;
-          googleSub = payload.sub;
-        } else {
-          // Fallback decode JWT payload
-          const parts = credential.split('.');
-          if (parts.length === 3) {
-            const raw = atob(parts[1].replace(/-/g, '+').replace(/_/g, '/'));
-            const payload = JSON.parse(raw);
-            email = payload.email;
-            name = payload.name;
-            avatarUrl = payload.picture;
-            googleSub = payload.sub;
-          }
-        }
-      } catch (e) {
-        console.error('[Google Token Verify Error]:', e);
-      }
-    } else if (profile && profile.email) {
-      email = profile.email;
-      name = profile.name || profile.email.split('@')[0];
-      avatarUrl = profile.picture || profile.avatar_url || null;
-      googleSub = profile.sub || profile.id || ('g_' + Date.now());
+    if (!credential || typeof credential !== 'string') {
+      return jsonResponse({
+        error: 'A cryptographically signed Google ID token (credential) is required. Direct email submission is prohibited.',
+        code: 'CREDENTIAL_REQUIRED'
+      }, 400);
     }
 
-    if (!email || !isValidEmail(email)) {
-      return jsonResponse({ error: 'Valid Google email is required.' }, 400);
-    }
+    const clientId = (env.GOOGLE_CLIENT_ID || '').trim();
+    const googleUser = await verifyGoogleIdToken(credential, clientId || null);
 
-    const cleanEmail = email.trim().toLowerCase();
-    const cleanName = (name || cleanEmail.split('@')[0]).trim();
-
-    // Check if user exists
+    // Locate or create user via verified Google subject ID
     let user = await env.DB
-      .prepare('SELECT * FROM users WHERE email = ?')
-      .bind(cleanEmail)
+      .prepare('SELECT * FROM users WHERE google_sub = ?')
+      .bind(googleUser.sub)
       .first();
 
     let userId;
 
     if (user) {
       userId = user.id;
-      if (!user.avatar_url && avatarUrl) {
-        await env.DB
-          .prepare("UPDATE users SET avatar_url = ?, last_login_at = datetime('now'), updated_at = datetime('now') WHERE id = ?")
-          .bind(avatarUrl, userId)
-          .run();
-        user.avatar_url = avatarUrl;
-      } else {
-        await env.DB
-          .prepare("UPDATE users SET last_login_at = datetime('now') WHERE id = ?")
-          .bind(userId)
-          .run();
-      }
-    } else {
-      const dummyPasswordHash = 'oauth:google:' + (googleSub || Date.now());
-      const insertResult = await env.DB
+      await env.DB
         .prepare(`
-          INSERT INTO users (email, name, password_hash, avatar_url, status, verified_at, last_login_at, created_at, updated_at)
-          VALUES (?, ?, ?, ?, 'active', datetime('now'), datetime('now'), datetime('now'), datetime('now'))
+          UPDATE users
+          SET avatar_url = COALESCE(?, avatar_url),
+              name = COALESCE(?, name),
+              last_login_at = datetime('now'),
+              updated_at = datetime('now')
+          WHERE id = ?
         `)
-        .bind(cleanEmail, cleanName, dummyPasswordHash, avatarUrl || null)
+        .bind(googleUser.picture, googleUser.name, userId)
         .run();
+    } else {
+      const existingByEmail = await env.DB
+        .prepare('SELECT * FROM users WHERE email = ?')
+        .bind(googleUser.email)
+        .first();
 
-      userId = insertResult.meta.last_row_id;
-      user = {
-        id: userId,
-        email: cleanEmail,
-        name: cleanName,
-        avatar_url: avatarUrl || null,
-        status: 'active',
-        created_at: new Date().toISOString()
-      };
+      if (existingByEmail) {
+        userId = existingByEmail.id;
+        await env.DB
+          .prepare(`
+            UPDATE users
+            SET google_sub = ?,
+                auth_provider = 'google',
+                avatar_url = COALESCE(?, avatar_url),
+                name = COALESCE(?, name),
+                verified_at = COALESCE(verified_at, datetime('now')),
+                status = 'active',
+                last_login_at = datetime('now'),
+                updated_at = datetime('now')
+            WHERE id = ?
+          `)
+          .bind(googleUser.sub, googleUser.picture, googleUser.name, userId)
+          .run();
+      } else {
+        const placeholderHash = `oauth_google_${googleUser.sub}`;
+        const insertRes = await env.DB
+          .prepare(`
+            INSERT INTO users (email, name, password_hash, avatar_url, auth_provider, google_sub, status, verified_at, last_login_at, created_at, updated_at)
+            VALUES (?, ?, ?, ?, 'google', ?, 'active', datetime('now'), datetime('now'), datetime('now'), datetime('now'))
+          `)
+          .bind(googleUser.email, googleUser.name, placeholderHash, googleUser.picture, googleUser.sub)
+          .run();
+
+        userId = insertRes.meta.last_row_id;
+      }
     }
 
-    // Create immediate user session
+    // Issue 30-day session
     const sessionId = generateSecureToken(32);
     const expiresAt = new Date(Date.now() + 30 * 24 * 3600 * 1000).toISOString();
     const ip = request.headers.get('CF-Connecting-IP') || '';
@@ -306,25 +604,27 @@ export async function handleGoogleAuth(request, env) {
       .bind(sessionId, userId, expiresAt, ip, ua)
       .run();
 
-    const cookie = createUserSessionCookie(sessionId, expiresAt);
+    const userObj = {
+      id: userId,
+      email: googleUser.email,
+      name: googleUser.name,
+      avatarUrl: googleUser.picture,
+      authProvider: 'google',
+      status: 'active'
+    };
 
-    return jsonResponse({
-      success: true,
-      user: {
-        id: user.id,
-        email: user.email,
-        name: user.name,
-        avatar_url: user.avatar_url,
-        status: user.status,
-        createdAt: user.created_at
-      },
-      session_token: sessionId
-    }, 200, {
-      'Set-Cookie': cookie
-    });
+    const cookie = createUserSessionCookie(sessionId);
+    return jsonResponse(
+      { success: true, user: userObj, session_token: sessionId },
+      200,
+      { 'Set-Cookie': cookie }
+    );
   } catch (err) {
-    console.error('[Google Auth Error]:', err);
-    return jsonResponse({ error: 'Google authentication failed: ' + err.message }, 500);
+    console.error('[Google Auth Verification Error]:', err.message);
+    return jsonResponse({
+      error: 'Google authentication failed: ' + err.message,
+      code: 'INVALID_CREDENTIAL'
+    }, 401);
   }
 }
 

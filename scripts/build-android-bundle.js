@@ -96,7 +96,8 @@ const CSS_FILES = [
   'bubble-menu.css',
   'border-glow.css',
   'subscribe-widget.css',
-  'policy-common.css'
+  'policy-common.css',
+  'study-annotations.css'
 ];
 CSS_FILES.forEach(copyFile);
 
@@ -146,6 +147,7 @@ const JS_FILES = [
   'ventilator-schematics.js',
   'ventilator-ui.js',
   'policy-config.js',
+  'study-annotations.js',
   'sw.js'
 ];
 JS_FILES.forEach(copyFile);

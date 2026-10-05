@@ -67,6 +67,10 @@
         <span>🏷️ Sticky Notes</span>
         <span class="kn-ws-badge" id="knCountSticky">0</span>
       </button>
+      <button type="button" class="kn-ws-nav-btn" data-tab="payments" role="tab" aria-selected="false">
+        <span>💳 Payments</span>
+        <span class="kn-ws-badge" id="knCountPayments" style="display:none;">0</span>
+      </button>
       <button type="button" class="kn-ws-nav-btn" data-tab="profile" role="tab" aria-selected="false">
         <span>👤 Profile &amp; Settings</span>
       </button>
@@ -245,6 +249,92 @@
           </div>
         </div>
 
+        <!-- Payments Card inside Profile -->
+        <div class="kn-bookmark-card" style="padding:24px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;">
+            <div>
+              <h3 style="font-size:17px; font-weight:700; margin:0 0 8px; display:flex; align-items:center; gap:8px;">
+                <span>💳</span> <span>Payments &amp; Chapter Entitlements</span>
+              </h3>
+              <p style="font-size:13.5px; color:var(--kn-ws-text-muted); margin:0; line-height:1.5;">
+                View your unlocked Study Notes chapters, re-download branded publication PDFs, and check Cashfree transaction receipts.
+              </p>
+            </div>
+            <button type="button" class="kn-btn kn-btn-primary" onclick="window.switchWorkspaceTab('payments');">
+              <span>View Payments →</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         TAB 5: PAYMENT & CHAPTER DOWNLOADS
+         ==================================================================== -->
+    <section id="knTabPayments" class="kn-ws-tab-panel" role="tabpanel" style="display:none;">
+      <!-- Toolbar -->
+      <div class="kn-ws-toolbar">
+        <div class="kn-ws-search-wrap">
+          <span class="kn-ws-search-icon">🔍</span>
+          <input type="search" id="knPaymentsSearch" class="kn-ws-search-input" placeholder="Search orders, chapter title, or order ID...">
+        </div>
+        <div class="kn-ws-filter-group">
+          <button type="button" class="kn-btn kn-btn-secondary" id="knRefreshPaymentsBtn" title="Refresh Payment Status">
+            <span>🔄 Refresh Status</span>
+          </button>
+          <a href="study.html" class="kn-btn kn-btn-primary">
+            <span>+ Browse Chapters</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- User Purchases & Entitlements Section -->
+      <div style="margin-bottom: 28px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+          <div>
+            <h3 style="font-size:18px; font-weight:700; margin:0; display:flex; align-items:center; gap:8px;">
+              <span>📚</span> <span>Purchased Study Chapters</span>
+            </h3>
+            <p style="font-size:13px; color:var(--kn-ws-text-muted); margin:4px 0 0;">Unlocked chapter monographs ready for instant re-download.</p>
+          </div>
+          <span id="knEntitlementsBadge" class="kn-bookmark-cat-badge" style="background:rgba(16,185,129,0.15); color:#10b981; border:1px solid rgba(16,185,129,0.3); font-weight:600;">0 Chapters Unlocked</span>
+        </div>
+        <div class="kn-ws-grid" id="knEntitlementsGrid">
+          <!-- Entitlement cards rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- Order Transaction History -->
+      <div style="margin-bottom: 32px;">
+        <h3 style="font-size:18px; font-weight:700; margin:0 0 14px; display:flex; align-items:center; gap:8px;">
+          <span>🧾</span> <span>Cashfree Transaction Receipts</span>
+        </h3>
+        <div id="knOrdersList" class="kn-orders-table-wrap">
+          <!-- Order table rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- Admin Chapter Pricing & Orders Console (Only visible if admin kmaneesh1997@gmail.com) -->
+      <div id="knAdminPricingSection" style="display:none; margin-top:36px; padding:24px; border-radius:16px; border:1px solid rgba(225,29,72,0.35); background:rgba(225,29,72,0.04);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px; flex-wrap:wrap; gap:12px;">
+          <div>
+            <div style="display:inline-flex; align-items:center; gap:6px; background:#e11d48; color:#fff; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px;">Administrator Console</div>
+            <h3 style="font-size:20px; font-weight:700; margin:0;">Chapter Pricing &amp; Revenue Overview</h3>
+            <p style="font-size:13px; color:var(--kn-ws-text-muted); margin:4px 0 0;">Manage INR prices per chapter and monitor all system purchases in real time.</p>
+          </div>
+          <div id="knAdminRevenueStats" style="display:flex; gap:10px; flex-wrap:wrap; font-size:13px;">
+            <!-- Admin Revenue Stats -->
+          </div>
+        </div>
+
+        <!-- Pricing Management Table -->
+        <div style="margin-top:16px;">
+          <h4 style="font-size:15px; font-weight:700; margin:0 0 10px;">Configure Chapter Prices (INR)</h4>
+          <div id="knAdminPricingTableWrap" class="kn-orders-table-wrap">
+            <!-- Pricing rows rendered here -->
+          </div>
+        </div>
       </div>
     </section>
 
@@ -254,6 +344,7 @@
   <script src="spatial-bg.js"></script>
   <script src="bubble-menu.js"></script>
   <script src="workspace-engine.js"></script>
+  <script src="payments-client.js"></script>
   <script>
     (function () {
       "use strict";
@@ -337,6 +428,7 @@
         renderBookmarks();
         renderNotes();
         renderStickyNotes();
+        renderPayments();
         updateCounters();
       }
 
@@ -555,9 +647,304 @@
         });
       }
 
+      // Render Payments & Entitlements
+      let userPaymentsData = null;
+
+      async function renderPayments() {
+        const entitlementsGrid = document.getElementById("knEntitlementsGrid");
+        const ordersList = document.getElementById("knOrdersList");
+        if (!entitlementsGrid || !ordersList) return;
+
+        const user = window.KN_WORKSPACE ? window.KN_WORKSPACE.getUser() : null;
+        if (!user) {
+          entitlementsGrid.innerHTML = `
+            <div class="kn-empty-state">
+              <div class="kn-empty-icon">🔒</div>
+              <h4 class="kn-empty-title">Sign In Required</h4>
+              <p class="kn-empty-desc">Please sign in to view your purchased chapter downloads and transaction receipts.</p>
+              <button type="button" class="kn-btn kn-btn-primary" onclick="window.KN_WORKSPACE.openAuthModal('signin');">Sign In</button>
+            </div>
+          `;
+          ordersList.innerHTML = `<p style="padding:16px; color:var(--kn-ws-text-muted); font-size:13px;">No transaction history available while signed out.</p>`;
+          return;
+        }
+
+        try {
+          const res = await fetch("/api/user/payments", { credentials: "include" });
+          if (!res.ok) throw new Error("Failed to load payment history");
+          userPaymentsData = await res.json();
+        } catch (err) {
+          console.error("[Render Payments Error]:", err);
+          entitlementsGrid.innerHTML = `
+            <div class="kn-empty-state">
+              <div class="kn-empty-icon">⚠️</div>
+              <h4 class="kn-empty-title">Could Not Load Payments</h4>
+              <p class="kn-empty-desc">${esc(err.message)}</p>
+              <button type="button" class="kn-btn kn-btn-secondary" onclick="renderPayments()">Retry</button>
+            </div>
+          `;
+          return;
+        }
+
+        const query = (document.getElementById("knPaymentsSearch")?.value || "").toLowerCase().trim();
+        const orders = userPaymentsData.orders || [];
+        const entitlements = userPaymentsData.entitlements || [];
+
+        // Update badge
+        const badge = document.getElementById("knEntitlementsBadge");
+        if (badge) badge.textContent = `${entitlements.length} Chapter${entitlements.length === 1 ? '' : 's'} Unlocked`;
+
+        const countBadge = document.getElementById("knCountPayments");
+        if (countBadge) {
+          countBadge.textContent = entitlements.length;
+          countBadge.style.display = entitlements.length > 0 ? "inline-flex" : "none";
+        }
+
+        // 1. Render Entitlements Grid
+        let filteredEntitlements = entitlements;
+        if (query) {
+          filteredEntitlements = entitlements.filter(e => e.chapter_id.toLowerCase().includes(query));
+        }
+
+        if (filteredEntitlements.length === 0) {
+          entitlementsGrid.innerHTML = `
+            <div class="kn-empty-state">
+              <div class="kn-empty-icon">📚</div>
+              <h4 class="kn-empty-title">${query ? 'No Matching Chapters' : 'No Purchased Chapters Yet'}</h4>
+              <p class="kn-empty-desc">${query ? 'No unlocked chapters match your search query.' : 'Download comprehensive branded PDF monographs directly from the Study Notes section.'}</p>
+              <a href="study.html" class="kn-btn kn-btn-primary">Browse Study Notes Syllabus</a>
+            </div>
+          `;
+        } else {
+          entitlementsGrid.innerHTML = filteredEntitlements.map(it => {
+            const dateStr = it.created_at ? new Date(it.created_at).toLocaleDateString() : "Active";
+            const downloadCount = it.download_count || 0;
+            const displayTitle = it.chapter_id.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+            return `
+              <div class="kn-bookmark-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                  <div class="kn-bookmark-head">
+                    <span class="kn-bookmark-cat-badge" style="background:rgba(16,185,129,0.15); color:#10b981; border:1px solid rgba(16,185,129,0.3);">
+                      ✓ Unlocked
+                    </span>
+                    <span style="font-size:11.5px; color:var(--kn-ws-text-muted);">${downloadCount} ${downloadCount === 1 ? 'download' : 'downloads'}</span>
+                  </div>
+                  <h4 class="kn-bookmark-title" style="margin:8px 0 6px;">${esc(displayTitle)}</h4>
+                  <div class="kn-bookmark-meta">Purchased ${dateStr}</div>
+                </div>
+                <div class="kn-bookmark-foot" style="margin-top:16px; padding-top:12px; border-top:1px solid var(--kn-ws-border); display:flex; justify-content:space-between; align-items:center;">
+                  <button type="button" class="kn-download-pdf-btn" style="padding:5px 12px; font-size:12px;" onclick="window.KN_PAYMENTS.triggerPdfDownload('/api/study/download-pdf?chapter_id=${encodeURIComponent(it.chapter_id)}', 'KnockoutNotes_${esc(it.chapter_id)}.pdf')">
+                    <svg class="kn-download-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    <span>Download PDF</span>
+                  </button>
+                  <a href="study.html?topic=${encodeURIComponent(it.chapter_id)}" class="kn-bookmark-open-link" style="font-size:12px;">
+                    <span>Open Monograph →</span>
+                  </a>
+                </div>
+              </div>
+            `;
+          }).join("");
+        }
+
+        // 2. Render Orders Table
+        let filteredOrders = orders;
+        if (query) {
+          filteredOrders = orders.filter(o => 
+            (o.order_id && o.order_id.toLowerCase().includes(query)) ||
+            (o.chapter_title && o.chapter_title.toLowerCase().includes(query)) ||
+            (o.chapter_id && o.chapter_id.toLowerCase().includes(query))
+          );
+        }
+
+        if (filteredOrders.length === 0) {
+          ordersList.innerHTML = `<div style="padding:20px; text-align:center; color:var(--kn-ws-text-muted); font-size:13px;">No Cashfree payment transactions recorded.</div>`;
+        } else {
+          ordersList.innerHTML = `
+            <table class="kn-orders-table">
+              <thead>
+                <tr>
+                  <th>Date &amp; Time</th>
+                  <th>Chapter</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Order ID</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${filteredOrders.map(o => {
+                  const dateStr = o.created_at ? new Date(o.created_at).toLocaleString() : "";
+                  const status = o.payment_status || "PENDING";
+                  let pillClass = "kn-status-pending";
+                  let statusLabel = "Pending";
+
+                  if (status === "SUCCESS") {
+                    pillClass = "kn-status-success";
+                    statusLabel = "Paid";
+                  } else if (status === "FAILED" || status === "EXPIRED") {
+                    pillClass = "kn-status-failed";
+                    statusLabel = status;
+                  }
+
+                  return `
+                    <tr>
+                      <td style="white-space:nowrap; font-size:12px; color:var(--kn-ws-text-muted);">${esc(dateStr)}</td>
+                      <td>
+                        <strong>${esc(o.chapter_title || o.chapter_id)}</strong>
+                      </td>
+                      <td style="font-weight:700;">₹${Number(o.amount_inr || 0).toFixed(2)}</td>
+                      <td>
+                        <span class="kn-status-pill ${pillClass}">${esc(statusLabel)}</span>
+                      </td>
+                      <td style="font-family:monospace; font-size:11.5px; color:var(--kn-ws-text-muted);">${esc(o.order_id)}</td>
+                      <td>
+                        ${status === "SUCCESS" ? `
+                          <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 10px; font-size:11.5px;" onclick="window.KN_PAYMENTS.triggerPdfDownload('/api/study/download-pdf?chapter_id=${encodeURIComponent(o.chapter_id)}', 'KnockoutNotes_${esc(o.chapter_id)}.pdf')">
+                            📥 Download
+                          </button>
+                        ` : status === "PENDING" ? `
+                          <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 10px; font-size:11.5px;" onclick="verifyPendingOrder('${esc(o.order_id)}', '${esc(o.chapter_title || o.chapter_id)}')">
+                            🔄 Verify Status
+                          </button>
+                        ` : `
+                          <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 10px; font-size:11.5px;" onclick="window.KN_PAYMENTS.initiateChapterDownload('${esc(o.chapter_id)}')">
+                            Retry
+                          </button>
+                        `}
+                      </td>
+                    </tr>
+                  `;
+                }).join("")}
+              </tbody>
+            </table>
+          `;
+        }
+
+        // 3. Admin Console if user is server admin
+        if (userPaymentsData.isAdmin) {
+          renderAdminPricingConsole();
+        }
+      }
+
+      async function verifyPendingOrder(orderId, chapterTitle) {
+        if (!orderId) return;
+        window.KN_WORKSPACE?.showToast("Checking payment verification with bank...", "info");
+        try {
+          const res = await fetch(`/api/payments/cashfree/verify-order?order_id=${encodeURIComponent(orderId)}`, { credentials: "include" });
+          const data = await res.json();
+          if (data.success && data.paymentStatus === "SUCCESS") {
+            window.KN_WORKSPACE?.showToast("Payment verified successfully!", "success");
+            renderPayments();
+            if (data.downloadUrl) {
+              window.KN_PAYMENTS?.triggerPdfDownload(data.downloadUrl, `KnockoutNotes_${chapterTitle}.pdf`);
+            }
+          } else {
+            window.KN_WORKSPACE?.showToast(`Status: ${data.paymentStatus || 'Pending'}. ${data.message || ''}`, "info");
+            renderPayments();
+          }
+        } catch (err) {
+          window.KN_WORKSPACE?.showToast(err.message || "Failed to verify order", "error");
+        }
+      }
+      window.verifyPendingOrder = verifyPendingOrder;
+
+      async function renderAdminPricingConsole() {
+        const adminSection = document.getElementById("knAdminPricingSection");
+        if (!adminSection) return;
+        adminSection.style.display = "block";
+
+        try {
+          const res = await fetch("/api/admin/payments/overview", { credentials: "include" });
+          if (!res.ok) return;
+          const data = await res.json();
+
+          // Render stats
+          const statsEl = document.getElementById("knAdminRevenueStats");
+          if (statsEl && data.stats) {
+            statsEl.innerHTML = `
+              <div style="background:rgba(255,255,255,0.06); padding:8px 14px; border-radius:10px;">
+                <div style="font-size:11px; color:#94a3b8;">Cashfree Gateway</div>
+                <div style="font-size:14px; font-weight:800; color:${data.gatewayConfig?.configured ? '#10b981' : '#f59e0b'};">
+                  ${data.gatewayConfig?.configured ? '🟢 Live Ready' : '🟡 Pending Config'}
+                </div>
+              </div>
+              <div style="background:rgba(255,255,255,0.06); padding:8px 14px; border-radius:10px;">
+                <div style="font-size:11px; color:#94a3b8;">Total Revenue</div>
+                <div style="font-size:16px; font-weight:800; color:#10b981;">₹${Number(data.stats.totalRevenueInr || 0).toFixed(2)}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.06); padding:8px 14px; border-radius:10px;">
+                <div style="font-size:11px; color:#94a3b8;">Paid Orders</div>
+                <div style="font-size:16px; font-weight:800; color:#38bdf8;">${data.stats.successfulOrders || 0}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.06); padding:8px 14px; border-radius:10px;">
+                <div style="font-size:11px; color:#94a3b8;">Pending / Failed</div>
+                <div style="font-size:16px; font-weight:800; color:#f59e0b;">${(data.stats.pendingOrders || 0) + (data.stats.failedOrders || 0)}</div>
+              </div>
+            `;
+          }
+
+          // Render Pricing Table
+          const tableWrap = document.getElementById("knAdminPricingTableWrap");
+          if (tableWrap && data.pricing) {
+            tableWrap.innerHTML = `
+              <table class="kn-orders-table">
+                <thead>
+                  <tr>
+                    <th>Chapter ID</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Price (INR)</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${data.pricing.map(p => `
+                    <tr>
+                      <td style="font-family:monospace; font-size:12px;">${esc(p.chapter_id)}</td>
+                      <td><strong>${esc(p.title)}</strong></td>
+                      <td><span class="kn-bookmark-cat-badge">${esc(p.category)}</span></td>
+                      <td>
+                        <input type="number" step="1" min="0" id="knPriceInput_${esc(p.chapter_id)}" value="${p.price_inr}" style="width:80px; padding:4px 8px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.4); color:#fff; font-size:13px; font-weight:700;">
+                      </td>
+                      <td>
+                        <button type="button" class="kn-btn kn-btn-primary" style="padding:4px 12px; font-size:12px;" onclick="saveChapterPrice('${esc(p.chapter_id)}', '${esc(p.title)}', '${esc(p.category)}')">
+                          Save
+                        </button>
+                      </td>
+                    </tr>
+                  `).join("")}
+                </tbody>
+              </table>
+            `;
+          }
+        } catch (err) {
+          console.error("[Admin Console Error]:", err);
+        }
+      }
+
+      async function saveChapterPrice(chapterId, title, category) {
+        const input = document.getElementById(`knPriceInput_${chapterId}`);
+        if (!input) return;
+        const newPrice = Number(input.value);
+        if (isNaN(newPrice) || newPrice < 0) {
+          window.KN_WORKSPACE?.showToast("Please enter a valid price in INR", "error");
+          return;
+        }
+
+        try {
+          await window.KN_PAYMENTS?.updateChapterPrice(chapterId, newPrice, title, category);
+          window.KN_WORKSPACE?.showToast(`Updated price for ${title} to ₹${newPrice}`, "success");
+          renderAdminPricingConsole();
+        } catch (err) {
+          window.KN_WORKSPACE?.showToast(err.message || "Failed to update price", "error");
+        }
+      }
+      window.saveChapterPrice = saveChapterPrice;
+
       // Tab Switching
       function switchTab(targetTab) {
-        if (!["bookmarks", "notes", "sticky-notes", "profile"].includes(targetTab)) {
+        if (!["bookmarks", "notes", "sticky-notes", "profile", "payments"].includes(targetTab)) {
           targetTab = "bookmarks";
         }
         activeTab = targetTab;
@@ -579,6 +966,11 @@
         document.getElementById("knTabNotes").style.display = targetTab === "notes" ? "" : "none";
         document.getElementById("knTabStickyNotes").style.display = targetTab === "sticky-notes" ? "" : "none";
         document.getElementById("knTabProfile").style.display = targetTab === "profile" ? "" : "none";
+        document.getElementById("knTabPayments").style.display = targetTab === "payments" ? "" : "none";
+
+        if (targetTab === "payments") {
+          renderPayments();
+        }
 
         if (window.location.hash !== "#" + targetTab) {
           history.replaceState(null, "", "#" + targetTab);
@@ -588,7 +980,7 @@
 
       function handleHashChange() {
         const hash = (window.location.hash || "").replace(/^#/, "");
-        if (["bookmarks", "notes", "sticky-notes", "profile"].includes(hash)) {
+        if (["bookmarks", "notes", "sticky-notes", "profile", "payments"].includes(hash)) {
           switchTab(hash);
         }
       }
@@ -610,6 +1002,8 @@
         document.getElementById("knNotesSort")?.addEventListener("change", renderNotes);
         document.getElementById("knStickySearch")?.addEventListener("input", renderStickyNotes);
         document.getElementById("knStickyColorFilter")?.addEventListener("change", renderStickyNotes);
+        document.getElementById("knPaymentsSearch")?.addEventListener("input", renderPayments);
+        document.getElementById("knRefreshPaymentsBtn")?.addEventListener("click", renderPayments);
 
         // Bookmark category chips
         document.querySelectorAll("#knBmCategoryChips .kn-chip-btn").forEach((btn) => {

@@ -197,6 +197,8 @@ export async function validateUserSession(db, sessionId) {
         u.email,
         u.name,
         u.avatar_url,
+        u.auth_provider,
+        u.google_sub,
         u.status,
         u.created_at,
         u.updated_at
@@ -217,10 +219,82 @@ export async function validateUserSession(db, sessionId) {
       email: row.email,
       name: row.name,
       avatarUrl: row.avatar_url,
+      authProvider: row.auth_provider || 'local',
+      googleSub: row.google_sub || null,
       status: row.status,
       createdAt: row.created_at,
       updatedAt: row.updated_at
     }
   };
 }
+
+/**
+ * Generate a Set-Cookie header for short-lived OAuth state/CSRF token (10 mins)
+ */
+export function createOAuthStateCookie(cookieValue, maxAgeSeconds = 600) {
+  return `kn_oauth_state=${cookieValue}; HttpOnly; Secure; SameSite=Lax; Path=/api/auth/google; Max-Age=${maxAgeSeconds}`;
+}
+
+/**
+ * Clear OAuth state cookie
+ */
+export function clearOAuthStateCookie() {
+  return `kn_oauth_state=; HttpOnly; Secure; SameSite=Lax; Path=/api/auth/google; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+}
+
+/**
+ * Cryptographically verify a Google ID Token against Google's tokeninfo endpoint
+ * Validates issuer, audience, expiration, email_verified, and subject identifier.
+ */
+export async function verifyGoogleIdToken(idToken, expectedClientId = null) {
+  if (!idToken || typeof idToken !== 'string') {
+    throw new Error('Google ID token is required.');
+  }
+
+  const cleanToken = idToken.trim();
+  const url = `https://oauth2.googleapis.com/tokeninfo?id_token=${encodeURIComponent(cleanToken)}`;
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    const errText = await res.text().catch(() => '');
+    throw new Error(`Google tokeninfo endpoint rejected token: ${errText || 'Invalid ID token'}`);
+  }
+
+  const payload = await res.json();
+
+  // 1. Verify issuer
+  const validIssuers = ['https://accounts.google.com', 'accounts.google.com'];
+  if (!validIssuers.includes(payload.iss)) {
+    throw new Error(`Token issuer verification failed: ${payload.iss}`);
+  }
+
+  // 2. Verify audience (client ID) if configured
+  if (expectedClientId && payload.aud !== expectedClientId) {
+    throw new Error(`Token audience mismatch: expected ${expectedClientId}, got ${payload.aud}`);
+  }
+
+  // 3. Verify expiration
+  const nowSec = Math.floor(Date.now() / 1000);
+  if (payload.exp && Number(payload.exp) < nowSec) {
+    throw new Error('Google ID token has expired.');
+  }
+
+  // 4. Verify email verification status
+  const emailVerified = payload.email_verified === true || payload.email_verified === 'true';
+  if (!emailVerified) {
+    throw new Error('Google account email has not been verified by Google.');
+  }
+
+  if (!payload.email || !payload.sub) {
+    throw new Error('Google ID token missing required email or subject (sub) claim.');
+  }
+
+  return {
+    sub: String(payload.sub),
+    email: String(payload.email).toLowerCase().trim(),
+    name: payload.name ? String(payload.name).trim() : String(payload.email).split('@')[0],
+    picture: payload.picture ? String(payload.picture) : null
+  };
+}
+
 

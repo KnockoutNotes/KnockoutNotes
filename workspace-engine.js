@@ -96,6 +96,7 @@
       const res = await fetch(endpoint, {
         method,
         headers,
+        credentials: "include",
         body: body ? JSON.stringify(body) : null
       });
 
@@ -185,21 +186,6 @@
   async function login(email, password) {
     const res = await apiCall("/api/auth/login", "POST", { email, password });
     if (!res.ok) {
-      // For local testing on standalone python server where API returns 404 or 501, provide mock offline session
-      if (res.error.includes("404") || res.error.includes("501") || res.error.includes("Failed to fetch")) {
-        const mockUser = {
-          id: "u_" + Math.random().toString(36).substring(2, 9),
-          email,
-          name: email.split("@")[0],
-          avatar_url: null,
-          created_at: new Date().toISOString()
-        };
-        const mockToken = "mock_session_" + Date.now();
-        setSession(mockUser, mockToken);
-        showToast("Signed in (Offline/Local Mode)");
-        executePendingAction();
-        return { ok: true, user: mockUser };
-      }
       return { ok: false, error: res.error };
     }
 
@@ -213,20 +199,6 @@
   async function register(email, password, name) {
     const res = await apiCall("/api/auth/register", "POST", { email, password, name });
     if (!res.ok) {
-      if (res.error.includes("404") || res.error.includes("501") || res.error.includes("Failed to fetch")) {
-        const mockUser = {
-          id: "u_" + Math.random().toString(36).substring(2, 9),
-          email,
-          name: name || email.split("@")[0],
-          avatar_url: null,
-          created_at: new Date().toISOString()
-        };
-        const mockToken = "mock_session_" + Date.now();
-        setSession(mockUser, mockToken);
-        showToast("Account created (Offline/Local Mode)");
-        executePendingAction();
-        return { ok: true, user: mockUser };
-      }
       return { ok: false, error: res.error };
     }
 
@@ -238,57 +210,26 @@
   }
 
   async function loginWithGoogle(credentialOrProfile = null) {
-    let payload = {};
-
+    // If a Google ID token was passed from Google Identity Services
     if (credentialOrProfile && credentialOrProfile.credential) {
-      payload = { credential: credentialOrProfile.credential };
-    } else if (credentialOrProfile && credentialOrProfile.profile) {
-      payload = { profile: credentialOrProfile.profile };
-    } else if (window.google && window.google.accounts && window.google.accounts.id && window.KN_GOOGLE_CLIENT_ID) {
-      window.google.accounts.id.prompt();
-      return { ok: true, pending: true };
-    } else {
-      // Prompt modal or input for email
-      const email = prompt("Enter your Google Account email:", "doctor@gmail.com");
-      if (!email) return { ok: false, error: "Cancelled" };
-      const cleanEmail = email.trim();
-      const derivedName = cleanEmail.split("@")[0].replace(/[._-]/g, " ").replace(/\b\w/g, l => l.toUpperCase());
-      payload = {
-        profile: {
-          email: cleanEmail,
-          name: derivedName.startsWith("Dr") ? derivedName : ("Dr. " + derivedName),
-          picture: null
-        }
-      };
-    }
-
-    const res = await apiCall("/api/auth/google", "POST", payload);
-
-    if (!res.ok) {
-      if (res.error.includes("404") || res.error.includes("501") || res.error.includes("Failed to fetch")) {
-        const cleanEmail = payload.profile?.email || "dr.google@gmail.com";
-        const derivedName = payload.profile?.name || "Dr. Google";
-        const mockUser = {
-          id: "u_google_" + Math.random().toString(36).substring(2, 9),
-          email: cleanEmail,
-          name: derivedName,
-          avatar_url: payload.profile?.picture || null,
-          created_at: new Date().toISOString()
-        };
-        const mockToken = "mock_google_session_" + Date.now();
-        setSession(mockUser, mockToken);
-        showToast(`Signed in with Google! Welcome, ${derivedName}.`, "success");
-        executePendingAction();
-        return { ok: true, user: mockUser };
+      const res = await apiCall("/api/auth/google", "POST", { credential: credentialOrProfile.credential });
+      if (!res.ok) {
+        showToast(res.error || "Google Sign-In failed", "error");
+        return { ok: false, error: res.error };
       }
-      return { ok: false, error: res.error };
+      setSession(res.data.user, res.data.session_token);
+      showToast(`Signed in with Google! Welcome, ${res.data.user.name || "Doctor"}.`, "success");
+      await syncOfflineQueue();
+      executePendingAction();
+      return { ok: true, user: res.data.user };
     }
 
-    setSession(res.data.user, res.data.session_token);
-    showToast(`Signed in with Google! Welcome, ${res.data.user.name || "Doctor"}.`, "success");
-    await syncOfflineQueue();
-    executePendingAction();
-    return { ok: true, user: res.data.user };
+    // Real Google OAuth 2.0 Authorization Code Flow
+    // Redirect browser to server endpoint which initiates Google OAuth 2.0 flow
+    const currentUrl = window.location.href;
+    const returnUrl = encodeURIComponent(currentUrl);
+    window.location.href = `/api/auth/google/start?return_url=${returnUrl}`;
+    return { ok: true, pending: true };
   }
 
   async function logout() {
@@ -1242,9 +1183,39 @@
     triggerEvent("sync-status", { syncing: false, offline: true });
   });
 
+  // Verify session with backend to fail closed against local tampering or pick up OAuth cookie
+  async function verifySession() {
+    if (!navigator.onLine) return;
+    try {
+      const res = await apiCall("/api/auth/me", "GET");
+      if (res.ok && res.data && res.data.user) {
+        setSession(res.data.user, res.data.session_token || sessionToken);
+      } else {
+        // If server returns unauthorized or session invalid, clear any stale or tampered local session
+        if (currentUser || sessionToken) {
+          currentUser = null;
+          sessionToken = "";
+          localStorage.removeItem(STORAGE_KEYS.user);
+          localStorage.removeItem(STORAGE_KEYS.token);
+          triggerEvent("auth-change", { user: null });
+          updateNavUser();
+        }
+      }
+    } catch (_) {
+      // Network failure, do not purge offline cache
+    }
+  }
+
   // Auto-init on page load
   document.addEventListener("DOMContentLoaded", () => {
     updateNavUser();
+    verifySession().then(() => {
+      if (sessionToken && navigator.onLine) {
+        syncOfflineQueue();
+        executePendingAction();
+      }
+    });
+
     // Observe DOM changes to keep nav avatar present if header re-renders
     const observer = new MutationObserver(() => {
       if (!document.querySelector(".kn-user-nav-slot")) {
@@ -1252,12 +1223,6 @@
       }
     });
     observer.observe(document.body, { childList: true, subtree: true });
-
-    // Initial background sync & pending action execution
-    if (sessionToken && navigator.onLine) {
-      syncOfflineQueue();
-      executePendingAction();
-    }
   });
 
   // ==========================================================================
@@ -1272,6 +1237,7 @@
     register,
     loginWithGoogle,
     logout,
+    verifySession,
     openAuthModal,
     updateNavUser,
 

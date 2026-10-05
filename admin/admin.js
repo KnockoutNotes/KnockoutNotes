@@ -45,7 +45,14 @@ const appState = {
   activePickerTargetInputId: null,
 
   // Pending delete target
-  pendingDeleteAction: null
+  pendingDeleteAction: null,
+
+  // Chapter Pricing & Commerce
+  pricingList: [],
+  pricingSearch: '',
+  pricingCategoryFilter: 'all',
+  defaultPrice: 49.0,
+  pricingAuditLogs: []
 };
 
 // ==========================================
@@ -155,6 +162,7 @@ function switchView(viewName) {
     workstation: '3D Workstation Markers',
     subscribers: 'Subscribers Directory',
     email: 'Email Broadcasts & Delivery',
+    pricing: 'Chapter Pricing & Commerce',
     settings: 'System Status & Audit Logs'
   };
   const pageTitle = document.getElementById('pageTitle');
@@ -170,6 +178,7 @@ function switchView(viewName) {
   if (viewName === 'workstation' && typeof window.loadWorkstationAdmin === 'function') window.loadWorkstationAdmin();
   if (viewName === 'subscribers') loadSubscribers();
   if (viewName === 'email') loadLogs();
+  if (viewName === 'pricing') loadPricingData();
   if (viewName === 'settings') loadSettingsAndAudit();
 }
 
@@ -433,6 +442,43 @@ function setupEventListeners() {
       }
       closeModal('deleteModal');
     });
+  }
+
+  // CHAPTER PRICING CONTROLS
+  const pricingSearch = document.getElementById('pricingSearchInput');
+  if (pricingSearch) {
+    pricingSearch.addEventListener('input', (e) => {
+      appState.pricingSearch = e.target.value.toLowerCase().trim();
+      renderPricingTable();
+    });
+  }
+
+  const pricingCat = document.getElementById('pricingCategoryFilter');
+  if (pricingCat) {
+    pricingCat.addEventListener('change', (e) => {
+      appState.pricingCategoryFilter = e.target.value;
+      renderPricingTable();
+    });
+  }
+
+  const refreshPricingBtn = document.getElementById('refreshPricingBtn');
+  if (refreshPricingBtn) {
+    refreshPricingBtn.addEventListener('click', () => loadPricingData());
+  }
+
+  const bulkPriceBtn = document.getElementById('bulkPriceBtn');
+  if (bulkPriceBtn) {
+    bulkPriceBtn.addEventListener('click', () => openBulkPriceModal());
+  }
+
+  const savePriceBtn = document.getElementById('savePriceBtn');
+  if (savePriceBtn) {
+    savePriceBtn.addEventListener('click', handleSavePrice);
+  }
+
+  const saveBulkPriceBtn = document.getElementById('saveBulkPriceBtn');
+  if (saveBulkPriceBtn) {
+    saveBulkPriceBtn.addEventListener('click', handleSaveBulkPrice);
   }
 }
 
@@ -2044,6 +2090,329 @@ async function loadSettingsAndAudit() {
     `).join('');
   } catch (err) {
     tbody.innerHTML = `<tr><td colspan="6" class="adm-empty-state" style="color: var(--adm-danger);">Error: ${err.message}</td></tr>`;
+  }
+}
+
+// ==========================================
+// CHAPTER PRICING & MONETIZATION
+// ==========================================
+
+async function loadPricingData() {
+  const tbody = document.getElementById('pricingTableBody');
+  const alert = document.getElementById('pricingAlertBanner');
+  if (tbody) tbody.innerHTML = '<tr><td colspan="8" class="adm-empty-state">Loading chapter pricing catalog...</td></tr>';
+
+  try {
+    const res = await fetch('/api/admin/payments/overview');
+    if (!res.ok) {
+      if (res.status === 401 || res.status === 403) {
+        throw new Error('Access denied. Administrator privileges required.');
+      }
+      throw new Error(`Server returned HTTP ${res.status}`);
+    }
+
+    const data = await res.json();
+    appState.pricingList = data.pricing || [];
+    appState.defaultPrice = typeof data.defaultPrice === 'number' ? data.defaultPrice : 49.0;
+    appState.pricingAuditLogs = data.auditLogs || [];
+
+    // Update Overview Cards
+    const globalVal = document.getElementById('pricingGlobalDefaultVal');
+    if (globalVal) globalVal.textContent = `₹${appState.defaultPrice}`;
+
+    const totalChapters = document.getElementById('pricingTotalChapters');
+    if (totalChapters) totalChapters.textContent = appState.pricingList.length;
+
+    const customCount = document.getElementById('pricingCustomCount');
+    if (customCount) {
+      const customPriced = appState.pricingList.filter(p => p.is_custom).length;
+      customCount.textContent = customPriced;
+    }
+
+    const gatewayBadge = document.getElementById('pricingGatewayStatus');
+    if (gatewayBadge && data.gatewayConfig) {
+      if (data.gatewayConfig.configured) {
+        gatewayBadge.textContent = 'Production Live';
+        gatewayBadge.style.color = '#34d399';
+      } else {
+        gatewayBadge.textContent = 'Secrets Missing';
+        gatewayBadge.style.color = '#f87171';
+      }
+    }
+
+    renderPricingTable();
+    renderPricingAuditTable();
+  } catch (err) {
+    if (tbody) tbody.innerHTML = `<tr><td colspan="8" class="adm-empty-state" style="color: var(--adm-danger);">Failed to load pricing: ${escapeHtml(err.message)}</td></tr>`;
+    if (alert) {
+      alert.className = 'alert-banner error';
+      alert.textContent = `Pricing Error: ${err.message}`;
+      alert.style.display = 'block';
+    }
+  }
+}
+
+function getFilteredPricingList() {
+  let list = appState.pricingList || [];
+  const q = (appState.pricingSearch || '').toLowerCase().trim();
+  const cat = appState.pricingCategoryFilter || 'all';
+
+  if (q) {
+    list = list.filter(item => 
+      (item.title && item.title.toLowerCase().includes(q)) ||
+      (item.chapter_id && item.chapter_id.toLowerCase().includes(q)) ||
+      (item.category && item.category.toLowerCase().includes(q))
+    );
+  }
+
+  if (cat === 'custom_only') {
+    list = list.filter(item => item.is_custom);
+  } else if (cat === 'default_only') {
+    list = list.filter(item => !item.is_custom);
+  } else if (cat !== 'all') {
+    list = list.filter(item => (item.category || '').toLowerCase().includes(cat.toLowerCase()));
+  }
+
+  return list;
+}
+
+function renderPricingTable() {
+  const tbody = document.getElementById('pricingTableBody');
+  const countEl = document.getElementById('pricingResultsCount');
+  if (!tbody) return;
+
+  const filtered = getFilteredPricingList();
+  if (countEl) countEl.textContent = `Showing ${filtered.length} of ${appState.pricingList.length} chapters`;
+
+  if (!filtered.length) {
+    tbody.innerHTML = '<tr><td colspan="8" class="adm-empty-state">No matching chapters found. Try clearing your search or category filter.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = filtered.map(item => {
+    const isCustom = Boolean(item.is_custom);
+    const priceDisplay = `₹${typeof item.price_inr === 'number' ? item.price_inr : appState.defaultPrice}`;
+    const typeBadge = isCustom 
+      ? '<span class="status-pill active" style="font-size: 10px;">Custom</span>' 
+      : '<span class="status-pill" style="font-size: 10px; background: rgba(148, 163, 184, 0.1); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.2);">Default</span>';
+    const statusBadge = item.is_active === 0
+      ? '<span class="status-pill failed" style="font-size: 10px;">Inactive</span>'
+      : '<span class="status-pill active" style="font-size: 10px;">Active</span>';
+
+    return `
+      <tr data-chapter-id="${escapeHtml(item.chapter_id)}">
+        <td style="font-weight: 600; color: #f8fafc; max-width: 260px;">${escapeHtml(item.title)}</td>
+        <td><code style="font-family: var(--adm-font-mono); color: var(--adm-text-subtle); font-size: 11px;">${escapeHtml(item.chapter_id)}</code></td>
+        <td><span style="font-size: 11px; color: var(--adm-text-muted); text-transform: capitalize;">${escapeHtml(item.category || 'Study Notes')}</span></td>
+        <td style="font-weight: 700; color: #38bdf8; font-size: 14px;">${priceDisplay}</td>
+        <td>${typeBadge}</td>
+        <td>${statusBadge}</td>
+        <td style="font-size: 11px; color: var(--adm-text-muted); font-family: var(--adm-font-mono);">${formatDate(item.updated_at)}</td>
+        <td>
+          <button class="btn-secondary" style="padding: 4px 10px; font-size: 11px;" onclick="openEditPriceModal('${escapeHtml(item.chapter_id)}')">Edit Price</button>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function renderPricingAuditTable() {
+  const tbody = document.getElementById('pricingAuditTableBody');
+  if (!tbody) return;
+
+  const logs = appState.pricingAuditLogs || [];
+  if (!logs.length) {
+    tbody.innerHTML = '<tr><td colspan="6" class="adm-empty-state">No price modifications recorded in audit log yet.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = logs.map(l => {
+    let detailsSummary = l.details || '—';
+    try {
+      if (typeof l.details === 'string' && l.details.startsWith('{')) {
+        const parsed = JSON.parse(l.details);
+        if (parsed.previous_price_inr !== undefined && parsed.new_price_inr !== undefined) {
+          detailsSummary = `₹${parsed.previous_price_inr} → ₹${parsed.new_price_inr} (${parsed.title || parsed.chapter_id || ''})`;
+        } else if (parsed.new_price_inr !== undefined) {
+          detailsSummary = `New price: ₹${parsed.new_price_inr} (Scope: ${parsed.scope || 'all'})`;
+        }
+      }
+    } catch (_) {}
+
+    return `
+      <tr>
+        <td style="font-size: 11px; color: var(--adm-text-muted); font-family: var(--adm-font-mono);">${formatDate(l.created_at)}</td>
+        <td style="font-weight: 600; color: #fff;">${escapeHtml(l.admin_username)}</td>
+        <td><span class="status-pill active" style="font-size: 10px;">${escapeHtml(l.action)}</span></td>
+        <td><code style="font-family: var(--adm-font-mono); font-size: 11px; color: var(--adm-text-muted);">${escapeHtml(l.target_id || l.target_type || '—')}</code></td>
+        <td style="font-size: 12px; color: #cbd5e1;">${escapeHtml(detailsSummary)}</td>
+        <td style="font-family: var(--adm-font-mono); font-size: 11px; color: var(--adm-text-subtle);">${escapeHtml(l.ip_address || '—')}</td>
+      </tr>
+    `;
+  }).join('');
+}
+
+window.openEditPriceModal = function(chapterId) {
+  const item = (appState.pricingList || []).find(p => p.chapter_id === chapterId);
+  if (!item) return;
+
+  document.getElementById('editPriceChapterId').value = item.chapter_id;
+  document.getElementById('editPriceChapterTitle').value = item.title;
+  document.getElementById('editPriceChapterCat').value = item.category || 'Study Notes';
+
+  document.getElementById('editPriceDisplayTitle').textContent = item.title;
+  document.getElementById('editPriceDisplayId').textContent = `ID: ${item.chapter_id}`;
+  document.getElementById('editPriceInput').value = typeof item.price_inr === 'number' ? item.price_inr : appState.defaultPrice;
+  document.getElementById('editPriceIsActive').checked = item.is_active !== 0;
+
+  const alert = document.getElementById('editPriceModalAlert');
+  if (alert) alert.style.display = 'none';
+
+  openModal('editPriceModal');
+};
+
+async function handleSavePrice() {
+  const alert = document.getElementById('editPriceModalAlert');
+  const mainAlert = document.getElementById('pricingAlertBanner');
+  const chapterId = document.getElementById('editPriceChapterId').value;
+  const title = document.getElementById('editPriceChapterTitle').value;
+  const category = document.getElementById('editPriceChapterCat').value;
+  const rawPrice = document.getElementById('editPriceInput').value;
+  const isActive = document.getElementById('editPriceIsActive').checked ? 1 : 0;
+
+  const priceNum = parseFloat(rawPrice);
+  if (isNaN(priceNum) || priceNum < 0) {
+    if (alert) {
+      alert.className = 'alert-banner error';
+      alert.textContent = 'Please enter a valid price (₹0 or greater).';
+      alert.style.display = 'block';
+    }
+    return;
+  }
+
+  const saveBtn = document.getElementById('savePriceBtn');
+  if (saveBtn) {
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Saving...';
+  }
+
+  try {
+    const res = await fetch('/api/admin/payments/pricing', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chapterId,
+        title,
+        category,
+        priceInr: priceNum,
+        isActive
+      })
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.error || 'Failed to save price.');
+    }
+
+    closeModal('editPriceModal');
+    await loadPricingData();
+
+    if (mainAlert) {
+      mainAlert.className = 'alert-banner success';
+      mainAlert.textContent = data.message || `Price for "${title}" successfully saved.`;
+      mainAlert.style.display = 'block';
+      setTimeout(() => { mainAlert.style.display = 'none'; }, 6000);
+    }
+  } catch (err) {
+    if (alert) {
+      alert.className = 'alert-banner error';
+      alert.textContent = err.message;
+      alert.style.display = 'block';
+    }
+  } finally {
+    if (saveBtn) {
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'Save Price';
+    }
+  }
+}
+
+window.openBulkPriceModal = function() {
+  const filtered = getFilteredPricingList();
+  const label = document.getElementById('bulkScopeFilteredLabel');
+  if (label) {
+    label.textContent = `Currently Filtered Chapters (${filtered.length} chapters)`;
+  }
+
+  const alert = document.getElementById('bulkPriceModalAlert');
+  if (alert) alert.style.display = 'none';
+  document.getElementById('bulkPriceInput').value = appState.defaultPrice || 49;
+
+  openModal('bulkPriceModal');
+};
+
+async function handleSaveBulkPrice() {
+  const alert = document.getElementById('bulkPriceModalAlert');
+  const mainAlert = document.getElementById('pricingAlertBanner');
+  const rawPrice = document.getElementById('bulkPriceInput').value;
+  const scope = document.querySelector('input[name="bulkScope"]:checked')?.value || 'all';
+
+  const priceNum = parseFloat(rawPrice);
+  if (isNaN(priceNum) || priceNum < 0) {
+    if (alert) {
+      alert.className = 'alert-banner error';
+      alert.textContent = 'Please enter a valid price (₹0 or greater).';
+      alert.style.display = 'block';
+    }
+    return;
+  }
+
+  const saveBtn = document.getElementById('saveBulkPriceBtn');
+  if (saveBtn) {
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Applying...';
+  }
+
+  try {
+    let payload = { priceInr: priceNum };
+    if (scope === 'all') {
+      payload.applyToAll = true;
+    } else {
+      const filtered = getFilteredPricingList();
+      payload.chapterIds = filtered.map(f => f.chapter_id);
+    }
+
+    const res = await fetch('/api/admin/payments/pricing/bulk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.error || 'Failed to update bulk pricing.');
+    }
+
+    closeModal('bulkPriceModal');
+    await loadPricingData();
+
+    if (mainAlert) {
+      mainAlert.className = 'alert-banner success';
+      mainAlert.textContent = data.message || `Bulk price update completed: ₹${priceNum} applied.`;
+      mainAlert.style.display = 'block';
+      setTimeout(() => { mainAlert.style.display = 'none'; }, 6000);
+    }
+  } catch (err) {
+    if (alert) {
+      alert.className = 'alert-banner error';
+      alert.textContent = err.message;
+      alert.style.display = 'block';
+    }
+  } finally {
+    if (saveBtn) {
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'Apply Bulk Price';
+    }
   }
 }
 

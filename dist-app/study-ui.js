@@ -65,14 +65,21 @@
   const drugById = new Map((DATA.drugs || []).filter(Boolean).map((d) => [d.id, d]));
   const topicById = new Map((DATA.topics || []).filter(Boolean).map((t) => [t.id, t]));
   const catById = new Map((DATA.categories || []).filter(Boolean).map((c) => [c.id, c]));
-  const TOPIC_CATS = new Set(["anaesthesia", "examination", "ecg", "abg", "equipment", "pft"]);
-  const isDrugCat = (catId) => !TOPIC_CATS.has(catId);
+  const TOPIC_CATS = new Set([
+    "anaesthesia", "examination", "ecg", "abg", "equipment", "pft",
+    "antibiotics", "poisoning", "shock", "respiratory", "pain",
+    "cc_principles", "cc_airway", "cc_respiratory", "cc_hemodynamics",
+    "cc_sepsis", "cc_neuro", "cc_cardio", "cc_renal", "cc_gi",
+    "cc_trauma", "cc_tox", "cc_heme", "cc_obs", "cc_peds",
+    "cc_pharm", "cc_advances"
+  ]);
+  const isDrugCat = (catId) => (DATA.drugs || []).some((d) => d && d.cat === catId) && !(DATA.topics || []).some((t) => t && t.cat === catId);
 
-  function itemById(id) { return drugById.get(id) || topicById.get(id) || null; }
+  function itemById(id) { return topicById.get(id) || drugById.get(id) || null; }
   function itemsInCat(catId) {
-    return TOPIC_CATS.has(catId)
-      ? (DATA.topics || []).filter((t) => t && t.cat === catId)
-      : (DATA.drugs || []).filter((d) => d && d.cat === catId);
+    const topicMatches = (DATA.topics || []).filter((t) => t && t.cat === catId);
+    if (topicMatches.length > 0) return topicMatches;
+    return (DATA.drugs || []).filter((d) => d && d.cat === catId);
   }
 
   let state = { cat: "anaesthesia", item: null, filter: "" };
@@ -4295,9 +4302,10 @@
       window.KNUnmountAllTileMolecules();
     }
     $("#stList").hidden = true;
-    $("#stDetail").hidden = false;
     const item = itemById(state.item);
-    const drug = isDrugCat(item.cat);
+    if (!item) return;
+    $("#stDetail").hidden = false;
+    const drug = !item.sections;
     const cat = catById.get(item.cat);
     document.title = `${item.name} | Study Mode | KnockoutNotes`;
 
@@ -4326,9 +4334,17 @@
         <a class="st-back" href="${backHref}" data-back>← Back to ${esc(cat.label)}</a>
         <section class="st-card st-title-card st-reveal st-reveal-visible" data-cat="${item.cat}">
           <div class="st-title-card-media" aria-hidden="true">${titleMediaHTML}</div>
-          <div class="st-title-card-body">
-            <h1>${esc(item.name)}</h1>
-            <p class="st-tagline-lg">${esc(item.tagline)}</p>
+          <div class="st-title-card-body" style="flex:1;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;">
+              <div>
+                <h1>${esc(item.name)}</h1>
+                <p class="st-tagline-lg">${esc(item.tagline)}</p>
+              </div>
+              <button type="button" class="kn-download-pdf-btn" data-chapter-id="${esc(item.id)}" title="Download Official Branded PDF Monograph" onclick="if(window.KN_PAYMENTS)window.KN_PAYMENTS.initiateChapterDownload('${esc(item.id)}', '${esc(item.name).replace(/'/g, "\\'")}');">
+                <svg class="kn-download-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>Download PDF</span>
+              </button>
+            </div>
             ${tagsRow}
           </div>
         </section>

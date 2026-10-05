@@ -7,6 +7,7 @@
 import { timingSafeEqual, generateSecureToken, parseCookies, validateAdminSession } from './auth.js';
 import { generateChapterPdf } from './pdf-generator.js';
 import { STUDY_TOPICS } from './study-topics.js';
+import { recordAuditLog } from './cms.js';
 
 // Production API Base URL (Live directly — per strict project requirement)
 const CASHFREE_LIVE_BASE_URL = 'https://api.cashfree.com/pg';
@@ -499,72 +500,104 @@ export async function handleVerifyCashfreeOrder(request, env, userAuth) {
 export async function handleCashfreeWebhook(request, env) {
   const signature = request.headers.get('x-webhook-signature');
   const timestamp = request.headers.get('x-webhook-timestamp');
+  const webhookVersion = request.headers.get('x-webhook-version') || '2026-01-01';
+  const idempotencyKey = request.headers.get('x-idempotency-key') || '';
 
   if (!signature || !timestamp) {
     return jsonResponse({ error: 'Missing webhook signature headers' }, 401);
   }
 
+  console.log(`[Cashfree Webhook]: Incoming webhook event (version: ${webhookVersion}, timestamp: ${timestamp}${idempotencyKey ? ', idempotency: ' + idempotencyKey : ''})`);
+
   const rawBody = await request.text();
 
-  // Signature verification using Cashfree secret
-  const secretKey = env.CASHFREE_WEBHOOK_SECRET || env.CASHFREE_SECRET_KEY;
-  if (secretKey) {
-    try {
-      const encoder = new TextEncoder();
-      const dataToSign = encoder.encode(timestamp + rawBody);
-      const key = await crypto.subtle.importKey(
-        'raw',
-        encoder.encode(secretKey.trim()),
-        { name: 'HMAC', hash: 'SHA-256' },
-        false,
-        ['sign']
-      );
-      const sigBuffer = await crypto.subtle.sign('HMAC', key, dataToSign);
-      const computedBase64 = btoa(String.fromCharCode(...new Uint8Array(sigBuffer)));
-
-      if (!timingSafeEqual(signature, computedBase64)) {
-        console.error('[Cashfree Webhook Signature Mismatch]');
-        return jsonResponse({ error: 'Invalid webhook signature' }, 401);
-      }
-    } catch (err) {
-      console.error('[Webhook Signature Verify Error]:', err);
-      return jsonResponse({ error: 'Webhook cryptographic verification error' }, 500);
-    }
+  // 1. Mandatory HMAC-SHA256 Signature Verification per Cashfree Specification
+  const secretKey = (env.CASHFREE_WEBHOOK_SECRET || env.CASHFREE_SECRET_KEY || '').trim();
+  if (!secretKey) {
+    console.error('[Cashfree Webhook Error]: Gateway secret key not configured on server');
+    return jsonResponse({ error: 'Server gateway credentials not configured' }, 503);
   }
 
   try {
+    const encoder = new TextEncoder();
+    const dataToSign = encoder.encode(timestamp + rawBody);
+    const key = await crypto.subtle.importKey(
+      'raw',
+      encoder.encode(secretKey),
+      { name: 'HMAC', hash: 'SHA-256' },
+      false,
+      ['sign']
+    );
+    const sigBuffer = await crypto.subtle.sign('HMAC', key, dataToSign);
+    const computedBase64 = btoa(String.fromCharCode(...new Uint8Array(sigBuffer)));
+
+    if (!timingSafeEqual(signature, computedBase64)) {
+      console.warn('[Cashfree Webhook]: Signature mismatch for timestamp:', timestamp);
+      return jsonResponse({ error: 'Invalid webhook signature' }, 401);
+    }
+  } catch (err) {
+    console.error('[Cashfree Webhook Signature Error]:', err?.message);
+    return jsonResponse({ error: 'Webhook cryptographic verification error' }, 500);
+  }
+
+  // 2. Parse Event Payload
+  try {
     const event = JSON.parse(rawBody);
+    const eventType = (event.type || '').trim();
     const orderData = event.data && event.data.order ? event.data.order : null;
     const paymentData = event.data && event.data.payment ? event.data.payment : null;
 
     const orderId = (orderData && orderData.order_id) || (paymentData && paymentData.order_id) || null;
 
     if (!orderId) {
-      return jsonResponse({ status: 'ignored', reason: 'No order_id in webhook payload' });
+      return jsonResponse({ status: 'ignored', reason: 'No order_id in webhook payload' }, 200);
     }
 
+    // 3. Locate Pending/Existing Order in D1 Database
     const order = await env.DB
       .prepare('SELECT * FROM orders WHERE order_id = ?')
       .bind(orderId)
       .first();
 
     if (!order) {
-      return jsonResponse({ status: 'ignored', reason: 'Order not found in database' });
+      console.warn(`[Cashfree Webhook]: Order ${orderId} not found in database`);
+      return jsonResponse({ status: 'ignored', reason: 'Order not found in database' }, 200);
     }
 
-    // Process payment success / order paid
-    const eventType = event.type || '';
+    // 4. Validate Amount and Currency Integrity
+    const webhookAmount = Number(orderData?.order_amount || paymentData?.payment_amount || 0);
+    const webhookCurrency = (orderData?.order_currency || paymentData?.payment_currency || 'INR').toUpperCase();
+
+    if (webhookAmount > 0 && Math.abs(webhookAmount - order.amount_inr) > 0.01) {
+      console.error(`[Cashfree Webhook Security]: Amount mismatch for order ${orderId}. Expected ${order.amount_inr}, received ${webhookAmount}`);
+      return jsonResponse({ error: 'Order amount integrity check failed' }, 400);
+    }
+
+    if (webhookCurrency !== (order.currency || 'INR').toUpperCase()) {
+      console.error(`[Cashfree Webhook Security]: Currency mismatch for order ${orderId}. Expected ${order.currency}, received ${webhookCurrency}`);
+      return jsonResponse({ error: 'Order currency integrity check failed' }, 400);
+    }
+
+    // 5. Handle Specific Events: Success, Failed, User Dropped
     const isSuccess =
-      eventType.includes('PAYMENT_SUCCESS') ||
-      eventType.includes('ORDER_PAID') ||
+      eventType === 'PAYMENT_SUCCESS_WEBHOOK' ||
+      eventType === 'ORDER_PAID' ||
       (paymentData && paymentData.payment_status === 'SUCCESS') ||
       (orderData && orderData.order_status === 'PAID');
 
-    if (isSuccess) {
-      const cfPaymentId = paymentData ? String(paymentData.cf_payment_id || '') : null;
-      const paymentMethod = paymentData ? (paymentData.payment_group || null) : null;
+    const isFailed =
+      eventType === 'PAYMENT_FAILED_WEBHOOK' ||
+      (paymentData && paymentData.payment_status === 'FAILED');
 
-      // Update Order idempotently
+    const isUserDropped =
+      eventType === 'PAYMENT_USER_DROPPED_WEBHOOK' ||
+      (paymentData && paymentData.payment_status === 'USER_DROPPED');
+
+    const cfPaymentId = paymentData ? String(paymentData.cf_payment_id || '') : null;
+    const paymentMethod = paymentData ? (paymentData.payment_group || null) : null;
+
+    if (isSuccess) {
+      // Idempotently update order to SUCCESS
       await env.DB
         .prepare(`
           UPDATE orders
@@ -579,13 +612,43 @@ export async function handleCashfreeWebhook(request, env) {
         .bind(cfPaymentId, paymentMethod, rawBody, orderId)
         .run();
 
-      // Grant entitlement
+      // Idempotently grant chapter entitlement to the verified user and chapter
       await grantUserEntitlement(env.DB, order.user_id, order.user_email, order.chapter_id, orderId, 'payment');
+      console.log(`[Cashfree Webhook]: Entitlement confirmed for user ${order.user_id}, chapter ${order.chapter_id}`);
+    } else if (isFailed) {
+      // Update order to FAILED only if not already confirmed SUCCESS
+      await env.DB
+        .prepare(`
+          UPDATE orders
+          SET payment_status = 'FAILED',
+              cf_payment_id = COALESCE(?, cf_payment_id),
+              payment_method = COALESCE(?, payment_method),
+              raw_cf_response = ?,
+              updated_at = datetime('now')
+          WHERE order_id = ? AND payment_status != 'SUCCESS'
+        `)
+        .bind(cfPaymentId, paymentMethod, rawBody, orderId)
+        .run();
+      console.log(`[Cashfree Webhook]: Order ${orderId} marked FAILED`);
+    } else if (isUserDropped) {
+      // Update order to USER_DROPPED only if not already confirmed SUCCESS
+      await env.DB
+        .prepare(`
+          UPDATE orders
+          SET payment_status = 'USER_DROPPED',
+              raw_cf_response = ?,
+              updated_at = datetime('now')
+          WHERE order_id = ? AND payment_status != 'SUCCESS'
+        `)
+        .bind(rawBody, orderId)
+        .run();
+      console.log(`[Cashfree Webhook]: Order ${orderId} marked USER_DROPPED`);
     }
 
-    return jsonResponse({ status: 'acknowledged' }, 200);
+    // Always acknowledge Cashfree with HTTP 200 to prevent retry storms
+    return jsonResponse({ status: 'acknowledged', event_type: eventType, order_id: orderId }, 200);
   } catch (err) {
-    console.error('[Cashfree Webhook Processing Error]:', err);
+    console.error('[Cashfree Webhook Exception]:', err?.message);
     return jsonResponse({ error: 'Internal webhook processing error' }, 500);
   }
 }
@@ -753,9 +816,52 @@ export async function handleAdminPaymentsOverview(request, env, userAuth) {
       `)
       .all();
 
-    // Chapter pricing list
-    const prices = await env.DB
+    // Chapter pricing list from D1
+    const pricesResult = await env.DB
       .prepare('SELECT * FROM chapter_prices ORDER BY chapter_id ASC')
+      .all();
+    const pricesMap = new Map();
+    (pricesResult.results || []).forEach(p => {
+      pricesMap.set(p.chapter_id, p);
+    });
+
+    const defaultPriceRow = pricesMap.get('default');
+    const defaultPrice = defaultPriceRow ? defaultPriceRow.price_inr : 49.0;
+
+    // Build complete catalog of all 175 study topics merged with custom pricing
+    const catalog = STUDY_TOPICS.map(topic => {
+      const custom = pricesMap.get(topic.id);
+      return {
+        chapter_id: topic.id,
+        title: topic.name,
+        category: topic.cat,
+        price_inr: custom ? custom.price_inr : defaultPrice,
+        is_active: custom ? custom.is_active : 1,
+        is_custom: Boolean(custom),
+        updated_at: custom ? custom.updated_at : (defaultPriceRow?.updated_at || null)
+      };
+    });
+
+    // Also include 'default' setting row for global default
+    const globalDefault = {
+      chapter_id: 'default',
+      title: 'Global Default (All standard chapters)',
+      category: 'System Configuration',
+      price_inr: defaultPrice,
+      is_active: 1,
+      is_custom: true,
+      updated_at: defaultPriceRow ? defaultPriceRow.updated_at : null
+    };
+
+    // Recent Pricing Audit Logs
+    const auditResult = await env.DB
+      .prepare(`
+        SELECT id, admin_username, action, target_type, target_id, details, ip_address, created_at
+        FROM admin_audit_logs
+        WHERE target_type = 'chapter_price' OR action LIKE '%price%'
+        ORDER BY created_at DESC
+        LIMIT 50
+      `)
       .all();
 
     return jsonResponse({
@@ -767,7 +873,11 @@ export async function handleAdminPaymentsOverview(request, env, userAuth) {
         failedOrders: stats?.failed_orders || 0
       },
       orders: recentOrders.results || [],
-      pricing: prices.results || [],
+      defaultPrice,
+      globalDefault,
+      pricing: catalog,
+      customPricing: pricesResult.results || [],
+      auditLogs: auditResult.results || [],
       gatewayConfig: {
         configured: Boolean(env.CASHFREE_APP_ID && env.CASHFREE_SECRET_KEY),
         app_id_configured: Boolean(env.CASHFREE_APP_ID),
@@ -785,7 +895,7 @@ export async function handleAdminPaymentsOverview(request, env, userAuth) {
 
 /**
  * --------------------------------------------------------------------------
- * 8. ADMIN: UPDATE CHAPTER PRICING
+ * 8. ADMIN: UPDATE INDIVIDUAL CHAPTER PRICING
  * POST /api/admin/payments/pricing
  * --------------------------------------------------------------------------
  */
@@ -802,7 +912,12 @@ export async function handleAdminUpdatePricing(request, env, userAuth) {
       return jsonResponse({ error: 'Chapter ID is required' }, 400);
     }
 
-    const price = typeof priceInr === 'number' && priceInr >= 0 ? priceInr : 49.0;
+    // Strict validation: price must be a valid non-negative number
+    if (typeof priceInr !== 'number' || isNaN(priceInr) || priceInr < 0) {
+      return jsonResponse({ error: 'Price must be a valid non-negative number (₹0 or greater).' }, 400);
+    }
+
+    const price = Math.round(priceInr * 100) / 100;
     const active = isActive === 0 ? 0 : 1;
 
     let displayTitle = (title || '').trim();
@@ -817,8 +932,16 @@ export async function handleAdminUpdatePricing(request, env, userAuth) {
         displayTitle = cleanChapterId;
       }
     } else if (!displayTitle) {
-      displayTitle = 'Standard Chapter PDF';
+      displayTitle = 'Global Default Price';
     }
+
+    // Fetch previous price for audit trail
+    const prevRow = await env.DB
+      .prepare('SELECT price_inr, is_active FROM chapter_prices WHERE chapter_id = ?')
+      .bind(cleanChapterId)
+      .first();
+
+    const previousPrice = prevRow ? prevRow.price_inr : 49.0;
 
     await env.DB
       .prepare(`
@@ -834,14 +957,181 @@ export async function handleAdminUpdatePricing(request, env, userAuth) {
       .bind(cleanChapterId, displayTitle, displayCat, price, active)
       .run();
 
+    // Determine admin username for audit logging
+    let adminUser = 'admin';
+    if (userAuth && userAuth.user && userAuth.user.email) {
+      adminUser = userAuth.user.email;
+    } else if (request && env && env.DB) {
+      try {
+        const cookies = parseCookies(request);
+        if (cookies.admin_session) {
+          const sess = await validateAdminSession(env.DB, cookies.admin_session);
+          if (sess && sess.admin_username) adminUser = sess.admin_username;
+        }
+      } catch (_) {}
+    }
+
+    const ip = request.headers.get('CF-Connecting-IP') || request.headers.get('x-real-ip') || '';
+
+    // Record persistent audit log entry
+    await recordAuditLog(
+      env.DB,
+      adminUser,
+      'price_update',
+      'chapter_price',
+      cleanChapterId,
+      {
+        chapter_id: cleanChapterId,
+        title: displayTitle,
+        previous_price_inr: previousPrice,
+        new_price_inr: price,
+        is_active: active
+      },
+      ip
+    );
+
     return jsonResponse({
       success: true,
-      message: `Price for "${displayTitle}" successfully updated to ₹${price}.`,
+      message: `Price for "${displayTitle}" successfully updated from ₹${previousPrice} to ₹${price}.`,
       chapterId: cleanChapterId,
+      previousPriceInr: previousPrice,
       priceInr: price
     });
   } catch (err) {
     console.error('[Admin Update Pricing Error]:', err);
     return jsonResponse({ error: 'Failed to update pricing: ' + err.message }, 500);
+  }
+}
+
+/**
+ * --------------------------------------------------------------------------
+ * 9. ADMIN: BULK UPDATE CHAPTER PRICING
+ * POST /api/admin/payments/pricing/bulk
+ * --------------------------------------------------------------------------
+ */
+export async function handleAdminBulkUpdatePricing(request, env, userAuth) {
+  if (!(await isServerAdmin(userAuth, env, request))) {
+    return jsonResponse({ error: 'Administrator access required' }, 403);
+  }
+
+  try {
+    const { priceInr, applyToAll, chapterIds } = await request.json();
+
+    if (typeof priceInr !== 'number' || isNaN(priceInr) || priceInr < 0) {
+      return jsonResponse({ error: 'Price must be a valid non-negative number (₹0 or greater).' }, 400);
+    }
+
+    const price = Math.round(priceInr * 100) / 100;
+
+    let adminUser = 'admin';
+    if (userAuth && userAuth.user && userAuth.user.email) {
+      adminUser = userAuth.user.email;
+    } else if (request && env && env.DB) {
+      try {
+        const cookies = parseCookies(request);
+        if (cookies.admin_session) {
+          const sess = await validateAdminSession(env.DB, cookies.admin_session);
+          if (sess && sess.admin_username) adminUser = sess.admin_username;
+        }
+      } catch (_) {}
+    }
+
+    const ip = request.headers.get('CF-Connecting-IP') || request.headers.get('x-real-ip') || '';
+
+    let updatedCount = 0;
+
+    if (applyToAll) {
+      // 1. Update the 'default' fallback row
+      await env.DB
+        .prepare(`
+          INSERT INTO chapter_prices (chapter_id, title, category, price_inr, is_active, updated_at)
+          VALUES ('default', 'Global Default Price', 'System Configuration', ?, 1, datetime('now'))
+          ON CONFLICT(chapter_id) DO UPDATE SET
+            price_inr = excluded.price_inr,
+            updated_at = datetime('now')
+        `)
+        .bind(price)
+        .run();
+
+      // 2. Also update all existing rows in chapter_prices
+      const updateResult = await env.DB
+        .prepare(`
+          UPDATE chapter_prices
+          SET price_inr = ?, updated_at = datetime('now')
+        `)
+        .bind(price)
+        .run();
+
+      updatedCount = (updateResult.meta?.changes || 0) + 1;
+
+      await recordAuditLog(
+        env.DB,
+        adminUser,
+        'bulk_price_update_all',
+        'chapter_price',
+        'all_chapters',
+        {
+          scope: 'all_chapters',
+          new_price_inr: price,
+          updated_rows_count: updatedCount
+        },
+        ip
+      );
+
+      return jsonResponse({
+        success: true,
+        message: `Global price for all chapters successfully updated to ₹${price}.`,
+        updatedCount,
+        newPriceInr: price
+      });
+    } else if (Array.isArray(chapterIds) && chapterIds.length > 0) {
+      for (const id of chapterIds) {
+        const cleanId = String(id).trim();
+        if (!cleanId) continue;
+        const topic = getChapterContent(cleanId);
+        const title = topic ? topic.name : cleanId;
+        const cat = topic ? topic.cat : 'Study Notes';
+
+        await env.DB
+          .prepare(`
+            INSERT INTO chapter_prices (chapter_id, title, category, price_inr, is_active, updated_at)
+            VALUES (?, ?, ?, ?, 1, datetime('now'))
+            ON CONFLICT(chapter_id) DO UPDATE SET
+              price_inr = excluded.price_inr,
+              updated_at = datetime('now')
+          `)
+          .bind(cleanId, title, cat, price)
+          .run();
+
+        updatedCount++;
+      }
+
+      await recordAuditLog(
+        env.DB,
+        adminUser,
+        'bulk_price_update_subset',
+        'chapter_price',
+        `subset_${updatedCount}`,
+        {
+          scope: 'selected_chapters',
+          chapter_count: updatedCount,
+          new_price_inr: price,
+          chapter_ids: chapterIds
+        },
+        ip
+      );
+
+      return jsonResponse({
+        success: true,
+        message: `Updated price to ₹${price} for ${updatedCount} selected chapters.`,
+        updatedCount,
+        newPriceInr: price
+      });
+    } else {
+      return jsonResponse({ error: 'Please specify applyToAll or provide a list of chapterIds.' }, 400);
+    }
+  } catch (err) {
+    console.error('[Admin Bulk Update Pricing Error]:', err);
+    return jsonResponse({ error: 'Failed to bulk update pricing: ' + err.message }, 500);
   }
 }

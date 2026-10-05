@@ -70,6 +70,12 @@
           Email &amp; Delivery
         </button>
 
+        <div class="adm-nav-group-title">Commerce &amp; Monetization</div>
+        <button class="adm-nav-item" data-view="pricing">
+          <svg class="adm-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Chapter Pricing
+        </button>
+
         <div class="adm-nav-group-title">System</div>
         <button class="adm-nav-item" data-view="settings">
           <svg class="adm-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -894,6 +900,119 @@
         </section>
 
         <!-- ==========================================
+             VIEW: CHAPTER PRICING & COMMERCE
+             ========================================== -->
+        <section id="view-pricing" class="adm-view">
+          <!-- Overview Metric Cards -->
+          <div class="adm-stats-grid">
+            <div class="adm-stat-card">
+              <div class="adm-stat-header">
+                <span class="adm-stat-title">Global Default Price</span>
+              </div>
+              <div class="adm-stat-value" id="pricingGlobalDefaultVal">₹49</div>
+              <div class="adm-stat-subtext">Applied to all standard chapters</div>
+            </div>
+
+            <div class="adm-stat-card">
+              <div class="adm-stat-header">
+                <span class="adm-stat-title">Total Study Chapters</span>
+              </div>
+              <div class="adm-stat-value" id="pricingTotalChapters">175</div>
+              <div class="adm-stat-subtext">Full Syllabus Catalog</div>
+            </div>
+
+            <div class="adm-stat-card">
+              <div class="adm-stat-header">
+                <span class="adm-stat-title">Custom-Priced Chapters</span>
+              </div>
+              <div class="adm-stat-value" id="pricingCustomCount">0</div>
+              <div class="adm-stat-subtext">Active custom overrides</div>
+            </div>
+
+            <div class="adm-stat-card">
+              <div class="adm-stat-header">
+                <span class="adm-stat-title">Cashfree Gateway</span>
+              </div>
+              <div class="adm-stat-value" style="font-size: 16px; color: #34d399;" id="pricingGatewayStatus">Production Live</div>
+              <div class="adm-stat-subtext">HMAC-SHA256 Webhook (2026-01-01)</div>
+            </div>
+          </div>
+
+          <!-- Alert Notification Banner -->
+          <div id="pricingAlertBanner" class="alert-banner" style="display: none;"></div>
+
+          <!-- Main Pricing Management Card -->
+          <div class="adm-card">
+            <div class="adm-card-header">
+              <span class="adm-card-title">Study Notes Chapter Pricing Management</span>
+              <div style="display: flex; gap: 8px;">
+                <button id="bulkPriceBtn" class="btn-primary">⚡ Bulk Price Update</button>
+                <button id="refreshPricingBtn" class="btn-secondary">↻ Refresh</button>
+              </div>
+            </div>
+
+            <div style="padding: 14px 18px; border-bottom: 1px solid var(--adm-border-subtle);">
+              <div class="adm-controls-bar">
+                <input type="text" id="pricingSearchInput" class="form-input adm-search-input" placeholder="Search title, ID, category..." style="max-width: 280px;">
+                <select id="pricingCategoryFilter" class="form-select" style="width: auto;">
+                  <option value="all">All Categories</option>
+                  <option value="anaesthesia">Anaesthesia</option>
+                  <option value="critical-care">Critical Care</option>
+                  <option value="custom_only">Custom Priced Only</option>
+                  <option value="default_only">Default Priced Only</option>
+                </select>
+                <span id="pricingResultsCount" style="color: var(--adm-text-subtle); font-size: 12px; margin-left: auto;">Showing 175 chapters</span>
+              </div>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="adm-table">
+                <thead>
+                  <tr>
+                    <th>Chapter Title</th>
+                    <th>Chapter ID</th>
+                    <th>Category</th>
+                    <th>Current Price</th>
+                    <th>Pricing Type</th>
+                    <th>Status</th>
+                    <th>Last Updated</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="pricingTableBody">
+                  <tr><td colspan="8" class="adm-empty-state">Loading chapter pricing catalog...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Audit Trail Section -->
+          <div class="adm-card" style="margin-top: 24px;">
+            <div class="adm-card-header">
+              <span class="adm-card-title">Recent Pricing Audit Trail &amp; History</span>
+              <span style="font-size: 11px; color: var(--adm-text-subtle);">Immutable log of price changes and administrative updates</span>
+            </div>
+            <div class="table-wrapper">
+              <table class="adm-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Admin Account</th>
+                    <th>Action</th>
+                    <th>Chapter Target</th>
+                    <th>Change Details</th>
+                    <th>IP Address</th>
+                  </tr>
+                </thead>
+                <tbody id="pricingAuditTableBody">
+                  <tr><td colspan="6" class="adm-empty-state">No price modifications recorded yet.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
              VIEW 8: SETTINGS & AUDIT LOGS
              ========================================== -->
         <section id="view-settings" class="adm-view">
@@ -1147,6 +1266,92 @@
       <div class="adm-modal-footer">
         <button class="btn-secondary" onclick="closeModal('deleteModal')">Cancel</button>
         <button id="confirmDeleteBtn" class="btn-danger">Delete</button>
+      </div>
+    </div>
+  <!-- INDIVIDUAL CHAPTER PRICE MODAL -->
+  <div class="adm-modal-backdrop" id="editPriceModal">
+    <div class="adm-modal">
+      <div class="adm-modal-header">
+        <h3 class="adm-modal-title" id="editPriceModalTitle">Edit Chapter Price</h3>
+        <button class="adm-modal-close" onclick="closeModal('editPriceModal')">&times;</button>
+      </div>
+      <div class="adm-modal-body">
+        <div id="editPriceModalAlert" class="alert-banner" style="display: none;"></div>
+        <form id="editPriceForm" onsubmit="event.preventDefault();">
+          <input type="hidden" id="editPriceChapterId">
+          <input type="hidden" id="editPriceChapterTitle">
+          <input type="hidden" id="editPriceChapterCat">
+
+          <div class="form-group">
+            <label class="form-label">Selected Chapter</label>
+            <div id="editPriceDisplayTitle" style="font-weight: 600; color: #f8fafc; font-size: 14px; margin-bottom: 4px;"></div>
+            <div id="editPriceDisplayId" style="font-family: var(--adm-font-mono); color: var(--adm-text-subtle); font-size: 11px;"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="editPriceInput">Price in INR (₹)</label>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 16px; font-weight: 700; color: #38bdf8;">₹</span>
+              <input type="number" id="editPriceInput" class="form-input" min="0" step="1" required style="font-size: 16px; font-weight: 600; max-width: 140px;">
+            </div>
+            <span style="font-size: 11px; color: var(--adm-text-subtle); margin-top: 4px; display: block;">Set to ₹0 for free access or any non-negative integer amount.</span>
+          </div>
+
+          <div class="form-group">
+            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: #f8fafc; font-size: 13px;">
+              <input type="checkbox" id="editPriceIsActive" checked>
+              <span>Enable Custom Price (if unchecked, reverts to Global Default)</span>
+            </label>
+          </div>
+        </form>
+      </div>
+      <div class="adm-modal-footer">
+        <button class="btn-secondary" onclick="closeModal('editPriceModal')">Cancel</button>
+        <button id="savePriceBtn" class="btn-primary">Save Price</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BULK PRICE UPDATE MODAL -->
+  <div class="adm-modal-backdrop" id="bulkPriceModal">
+    <div class="adm-modal">
+      <div class="adm-modal-header">
+        <h3 class="adm-modal-title">Bulk Chapter Price Update</h3>
+        <button class="adm-modal-close" onclick="closeModal('bulkPriceModal')">&times;</button>
+      </div>
+      <div class="adm-modal-body">
+        <div id="bulkPriceModalAlert" class="alert-banner" style="display: none;"></div>
+        <form id="bulkPriceForm" onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label class="form-label">Scope</label>
+            <label style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 10px; cursor: pointer;">
+              <input type="radio" name="bulkScope" value="all" checked style="margin-top: 3px;">
+              <div>
+                <strong>Global Default (All Chapters)</strong>
+                <div style="font-size: 11px; color: var(--adm-text-subtle);">Sets new global fallback price for all chapters and updates existing price records.</div>
+              </div>
+            </label>
+            <label style="display: flex; align-items: flex-start; gap: 8px; cursor: pointer;">
+              <input type="radio" name="bulkScope" value="filtered" style="margin-top: 3px;">
+              <div>
+                <strong id="bulkScopeFilteredLabel">Currently Filtered Chapters</strong>
+                <div style="font-size: 11px; color: var(--adm-text-subtle);">Applies the price to all chapters currently visible in table view.</div>
+              </div>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="bulkPriceInput">New Price in INR (₹)</label>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 16px; font-weight: 700; color: #38bdf8;">₹</span>
+              <input type="number" id="bulkPriceInput" class="form-input" min="0" step="1" required style="font-size: 16px; font-weight: 600; max-width: 140px;" placeholder="49">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="adm-modal-footer">
+        <button class="btn-secondary" onclick="closeModal('bulkPriceModal')">Cancel</button>
+        <button id="saveBulkPriceBtn" class="btn-primary">Apply Bulk Price</button>
       </div>
     </div>
   </div>
