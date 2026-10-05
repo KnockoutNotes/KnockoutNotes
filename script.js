@@ -397,6 +397,21 @@
         }
       });
 
+      root.querySelectorAll("details.kn-active-recall").forEach(d => {
+        if (d.dataset.wired) return;
+        d.dataset.wired = "1";
+        d.addEventListener("toggle", () => {
+          const txt = d.querySelector(".kn-summary-text");
+          if (txt) {
+            txt.textContent = d.open ? "Hide Model Answer & Rationale" : "💡 Reveal Model Answer & Rationale";
+          }
+          if (d.open && window.KnockoutSpatialBg && typeof window.KnockoutSpatialBg.triggerRipple === "function") {
+            const rect = d.getBoundingClientRect();
+            window.KnockoutSpatialBg.triggerRipple(rect.left + rect.width * 0.5, rect.top + 20);
+          }
+        });
+      });
+
       root.querySelectorAll(".reveal").forEach(btn => {
         if (btn.dataset.wired) return;
         btn.dataset.wired = "1";
@@ -446,6 +461,12 @@
       const answer = target.classList.contains("answer") ? target : target.querySelector(".answer");
       if (answer) {
         answer.classList.add("open");
+        const details = answer.closest("details");
+        if (details) {
+          details.open = true;
+          const txt = details.querySelector(".kn-summary-text");
+          if (txt) txt.textContent = "Hide Model Answer & Rationale";
+        }
         const btn = target.closest(".card, .quick-card")?.querySelector(".reveal");
         if (btn) {
           btn.textContent = "Hide Answer";
@@ -532,6 +553,12 @@
             const ans = card.querySelector(".answer");
             if (ans && ans.textContent.toLowerCase().includes(q)) {
               ans.classList.add("open");
+              const details = ans.closest("details");
+              if (details) {
+                details.open = true;
+                const txt = details.querySelector(".kn-summary-text");
+                if (txt) txt.textContent = "Hide Model Answer & Rationale";
+              }
               const btn = card.querySelector(".reveal");
               if (btn) {
                 btn.textContent = "Hide Answer";
@@ -819,11 +846,47 @@
       let lastTime = performance.now();
       const sweepPixelsPerSecond = 68;
       const scanWidth = 24; // Erase bar ahead of sweep head
+      let ecgAnimFrame = null;
+      let anyEcgVisible = true;
+
+      if ("IntersectionObserver" in window) {
+        const ecgVisibleMap = new Map();
+        const ecgObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            ecgVisibleMap.set(entry.target, entry.isIntersecting);
+          });
+          anyEcgVisible = Array.from(ecgVisibleMap.values()).some(Boolean);
+          if (anyEcgVisible && !document.hidden && !ecgAnimFrame) {
+            lastTime = performance.now();
+            ecgAnimFrame = requestAnimationFrame(renderEcg);
+          } else if (!anyEcgVisible && ecgAnimFrame) {
+            cancelAnimationFrame(ecgAnimFrame);
+            ecgAnimFrame = null;
+          }
+        }, { threshold: 0.01 });
+        ecgCanvases.forEach(cvs => {
+          ecgVisibleMap.set(cvs, true);
+          ecgObserver.observe(cvs);
+        });
+      }
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          if (ecgAnimFrame) {
+            cancelAnimationFrame(ecgAnimFrame);
+            ecgAnimFrame = null;
+          }
+        } else {
+          if (anyEcgVisible && !ecgAnimFrame) {
+            lastTime = performance.now();
+            ecgAnimFrame = requestAnimationFrame(renderEcg);
+          }
+        }
+      });
 
       function renderEcg(now) {
-        if (document.hidden) {
-          lastTime = now;
-          requestAnimationFrame(renderEcg);
+        if (document.hidden || !anyEcgVisible) {
+          ecgAnimFrame = null;
           return;
         }
 
@@ -905,10 +968,12 @@
           }
         });
 
-        requestAnimationFrame(renderEcg);
+        ecgAnimFrame = requestAnimationFrame(renderEcg);
       }
 
-      requestAnimationFrame(renderEcg);
+      if (anyEcgVisible && !document.hidden) {
+        ecgAnimFrame = requestAnimationFrame(renderEcg);
+      }
     }
 
     // ------------------------------------------------------------------------

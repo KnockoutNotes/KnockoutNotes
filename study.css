@@ -1518,4 +1518,62 @@ body:not(.dark) .st-wf-ready-badge { fill: #059669; }
 body:not(.dark) .st-wf-ready-title { fill: #047857; font-weight: 900; }
 body:not(.dark) .st-wf-ready-line { stroke: rgba(5, 150, 105, 0.35); }
 body:not(.dark) .st-wf-ready-action { fill: #047857; font-weight: 900; }
-body:not(.dark) .st-wf-footer { fill: #64748b; font-weight: 600; }
+body:not(.dark) .st-wf-footer { fill: #94a3b8; font-weight: 600; }
+
+/* Active Recall Callout Details in Study Mode */
+details.kn-study-callout-details {
+  margin: 12px 0;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(15, 23, 42, 0.4);
+  overflow: hidden;
+}
+
+details.kn-study-callout-details > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-cyan, #38bdf8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  background: rgba(56, 189, 248, 0.05);
+  transition: background 0.2s ease;
+}
+
+details.kn-study-callout-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.kn-study-callout-details > summary:hover,
+details.kn-study-callout-details > summary:focus-visible {
+  background: rgba(56, 189, 248, 0.12);
+  outline: none;
+}
+
+details.kn-study-callout-details[open] > summary {
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+details.kn-study-callout-details > summary::after {
+  content: "▾ Reveal";
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  font-family: monospace;
+}
+
+details.kn-study-callout-details[open] > summary::after {
+  content: "▴ Hide";
+  background: rgba(56, 189, 248, 0.15);
+}
+
+details.kn-study-callout-details .st-callout {
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+}

@@ -103,18 +103,37 @@ function setupChecklists() {
 // ==========================================
 // CALCULATOR: MALIGNANT HYPERTHERMIA (MHAUS)
 // ==========================================
+function validateCrisisWeight(inputEl, onValid, onInvalid) {
+  if (!inputEl) return;
+  const validator = window.KnockoutClinicalValidator;
+  if (validator && typeof validator.checkAndRender === "function") {
+    const res = validator.checkAndRender(inputEl, "adultWeight");
+    if (res.valid) {
+      onValid(res.numVal);
+    } else {
+      onInvalid();
+    }
+  } else {
+    const val = parseFloat(inputEl.value);
+    if (!isNaN(val) && val >= 1 && val <= 400) {
+      onValid(val);
+    } else {
+      onInvalid();
+    }
+  }
+}
+
 function setupCalculators() {
   // MH Input
   const mhInput = document.getElementById('mhWeightInput');
   if (mhInput) {
-    mhInput.addEventListener('input', (e) => {
-      const val = parseFloat(e.target.value);
-      if (!isNaN(val) && val > 0) {
-        crisisState.mhWeight = val;
+    mhInput.addEventListener('input', () => {
+      validateCrisisWeight(mhInput, (w) => {
+        crisisState.mhWeight = w;
         calculateMH();
-      } else {
+      }, () => {
         clearMHOutputs();
-      }
+      });
     });
   }
 
@@ -123,22 +142,23 @@ function setupCalculators() {
     btn.addEventListener('click', () => {
       const kg = parseFloat(btn.dataset.mhPreset);
       if (mhInput) mhInput.value = kg;
-      crisisState.mhWeight = kg;
-      calculateMH();
+      validateCrisisWeight(mhInput, (w) => {
+        crisisState.mhWeight = w;
+        calculateMH();
+      }, clearMHOutputs);
     });
   });
 
   // LAST Input
   const lastInput = document.getElementById('lastWeightInput');
   if (lastInput) {
-    lastInput.addEventListener('input', (e) => {
-      const val = parseFloat(e.target.value);
-      if (!isNaN(val) && val > 0) {
-        crisisState.lastWeight = val;
+    lastInput.addEventListener('input', () => {
+      validateCrisisWeight(lastInput, (w) => {
+        crisisState.lastWeight = w;
         calculateLAST();
-      } else {
+      }, () => {
         clearLASTOutputs();
-      }
+      });
     });
   }
 
@@ -147,22 +167,23 @@ function setupCalculators() {
     btn.addEventListener('click', () => {
       const kg = parseFloat(btn.dataset.lastPreset);
       if (lastInput) lastInput.value = kg;
-      crisisState.lastWeight = kg;
-      calculateLAST();
+      validateCrisisWeight(lastInput, (w) => {
+        crisisState.lastWeight = w;
+        calculateLAST();
+      }, clearLASTOutputs);
     });
   });
 
   // Anaphylaxis Input
   const anaInput = document.getElementById('anaWeightInput');
   if (anaInput) {
-    anaInput.addEventListener('input', (e) => {
-      const val = parseFloat(e.target.value);
-      if (!isNaN(val) && val > 0) {
-        crisisState.anaWeight = val;
+    anaInput.addEventListener('input', () => {
+      validateCrisisWeight(anaInput, (w) => {
+        crisisState.anaWeight = w;
         calculateAnaphylaxis();
-      } else {
+      }, () => {
         clearAnaphylaxisOutputs();
-      }
+      });
     });
   }
 
@@ -171,22 +192,23 @@ function setupCalculators() {
     btn.addEventListener('click', () => {
       const kg = parseFloat(btn.dataset.anaPreset);
       if (anaInput) anaInput.value = kg;
-      crisisState.anaWeight = kg;
-      calculateAnaphylaxis();
+      validateCrisisWeight(anaInput, (w) => {
+        crisisState.anaWeight = w;
+        calculateAnaphylaxis();
+      }, clearAnaphylaxisOutputs);
     });
   });
 
   // Bronchospasm Input
   const bronchoInput = document.getElementById('bronchoWeightInput');
   if (bronchoInput) {
-    bronchoInput.addEventListener('input', (e) => {
-      const val = parseFloat(e.target.value);
-      if (!isNaN(val) && val > 0) {
-        crisisState.bronchoWeight = val;
+    bronchoInput.addEventListener('input', () => {
+      validateCrisisWeight(bronchoInput, (w) => {
+        crisisState.bronchoWeight = w;
         calculateBronchospasm();
-      } else {
+      }, () => {
         clearBronchospasmOutputs();
-      }
+      });
     });
   }
 
@@ -195,22 +217,23 @@ function setupCalculators() {
     btn.addEventListener('click', () => {
       const kg = parseFloat(btn.dataset.bronchoPreset);
       if (bronchoInput) bronchoInput.value = kg;
-      crisisState.bronchoWeight = kg;
-      calculateBronchospasm();
+      validateCrisisWeight(bronchoInput, (w) => {
+        crisisState.bronchoWeight = w;
+        calculateBronchospasm();
+      }, clearBronchospasmOutputs);
     });
   });
 
   // Laryngospasm Input
   const laryngoInput = document.getElementById('laryngoWeightInput');
   if (laryngoInput) {
-    laryngoInput.addEventListener('input', (e) => {
-      const val = parseFloat(e.target.value);
-      if (!isNaN(val) && val > 0) {
-        crisisState.laryngoWeight = val;
+    laryngoInput.addEventListener('input', () => {
+      validateCrisisWeight(laryngoInput, (w) => {
+        crisisState.laryngoWeight = w;
         calculateLaryngospasm();
-      } else {
+      }, () => {
         clearLaryngospasmOutputs();
-      }
+      });
     });
   }
 
@@ -219,8 +242,10 @@ function setupCalculators() {
     btn.addEventListener('click', () => {
       const kg = parseFloat(btn.dataset.laryngoPreset);
       if (laryngoInput) laryngoInput.value = kg;
-      crisisState.laryngoWeight = kg;
-      calculateLaryngospasm();
+      validateCrisisWeight(laryngoInput, (w) => {
+        crisisState.laryngoWeight = w;
+        calculateLaryngospasm();
+      }, clearLaryngospasmOutputs);
     });
   });
 }

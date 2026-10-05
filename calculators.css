@@ -1869,3 +1869,56 @@ body:not(.dark) .pft-pathology-title {
   }
 }
 
+/* Clinical Validation Badges & Input States */
+.kn-calc-validation-msg {
+  display: none;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  padding: 0.35rem 0.6rem;
+  margin-top: 0.35rem;
+  border-radius: 6px;
+  animation: knValFadeIn 0.2s ease-out;
+  box-sizing: border-box;
+}
+
+@keyframes knValFadeIn {
+  from { opacity: 0; transform: translateY(-3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.kn-calc-validation-msg.kn-val-warning {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  color: #fde68a;
+}
+
+.kn-calc-validation-msg.kn-val-invalid {
+  background: rgba(239, 68, 68, 0.18);
+  border: 1px solid rgba(239, 68, 68, 0.55);
+  color: #fca5a5;
+  font-weight: 600;
+}
+
+.kn-input-warning {
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.35) !important;
+}
+
+.kn-input-invalid {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.45) !important;
+  background-color: rgba(239, 68, 68, 0.05) !important;
+}
+
+body:not(.dark) .kn-calc-validation-msg.kn-val-warning {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  color: #92400e;
+}
+
+body:not(.dark) .kn-calc-validation-msg.kn-val-invalid {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #991b1b;
+}
+

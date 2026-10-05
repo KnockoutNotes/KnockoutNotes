@@ -81,7 +81,7 @@ html.dark,
   --bg-glass: rgba(10, 16, 32, 0.58);
   --text-main: #f8fafc;
   --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-muted: #94a3b8;
   --accent-cyan: #38bdf8;
   --accent-blue: #60a5fa;
   --accent-indigo: #818cf8;
@@ -1306,6 +1306,56 @@ a.kn-update-card:hover .kn-update-open {
 .answer.open {
   display: block;
   animation: fadeSlideDown 0.32s var(--ease-expo);
+}
+
+/* Active Recall Semantic Details & Summary */
+details.kn-active-recall {
+  margin-top: 14px;
+  width: 100%;
+}
+
+details.kn-active-recall > summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  font-size: 12.5px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent-cyan);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-specular);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--box-3d-bevel), 0 2px 6px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+details.kn-active-recall > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.kn-active-recall > summary:hover,
+details.kn-active-recall > summary:focus-visible {
+  background: var(--accent-cyan);
+  color: #ffffff;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.45);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+details.kn-active-recall[open] > summary {
+  background: rgba(56, 189, 248, 0.14);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+details.kn-active-recall .answer {
+  display: block !important;
+  margin-top: 14px;
 }
 
 .reference {

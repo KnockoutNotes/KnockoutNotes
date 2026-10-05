@@ -745,7 +745,51 @@ export function createWorkstationScene(container, opts) {
   ro.observe(container);
 
   let raf = null;
+  let isIntersecting = true;
+  let disposed = false;
+
+  function resumeAnimate() {
+    if (!raf && isIntersecting && !document.hidden && !disposed && container.isConnected) {
+      raf = requestAnimationFrame(animate);
+    }
+  }
+
+  function pauseAnimate() {
+    if (raf) {
+      cancelAnimationFrame(raf);
+      raf = null;
+    }
+  }
+
+  function onVisibilityChange() {
+    if (document.hidden) {
+      pauseAnimate();
+    } else {
+      resumeAnimate();
+    }
+  }
+  document.addEventListener("visibilitychange", onVisibilityChange);
+
+  let io = null;
+  if ("IntersectionObserver" in window) {
+    io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isIntersecting = entry.isIntersecting;
+        if (isIntersecting) {
+          resumeAnimate();
+        } else {
+          pauseAnimate();
+        }
+      });
+    }, { threshold: 0.05 });
+    io.observe(container);
+  }
+
   function animate() {
+    if (disposed || !container.isConnected || document.hidden || !isIntersecting) {
+      pauseAnimate();
+      return;
+    }
     raf = requestAnimationFrame(animate);
     stepTween();
     controls.update();
@@ -761,7 +805,7 @@ export function createWorkstationScene(container, opts) {
     isPlaceholder = res.isPlaceholder;
     resize();
     fitCameraToModel();
-    animate();
+    resumeAnimate();
     if (onLoaded) onLoaded({ isPlaceholder });
     return res;
   });
@@ -787,7 +831,10 @@ export function createWorkstationScene(container, opts) {
     getZoomPercent,
     zoomStep,
     dispose() {
-      cancelAnimationFrame(raf);
+      disposed = true;
+      pauseAnimate();
+      if (io) io.disconnect();
+      document.removeEventListener("visibilitychange", onVisibilityChange);
       ro.disconnect();
       renderer.domElement.removeEventListener("pointermove", onPointerMove);
       renderer.domElement.removeEventListener("click", onClick);
