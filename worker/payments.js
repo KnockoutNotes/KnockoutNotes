@@ -153,9 +153,9 @@ export function getDefaultPriceForChapter(chapterId, cat) {
  * Any price previously recorded as 49 is converted to its category default.
  * Custom prices changed by admin/user to any other value remain intact.
  */
-export async function getChapterPrice(db, chapterId) {
-  const defaultPrice = getDefaultPriceForChapter(chapterId);
-  if (!db || !chapterId) return defaultPrice;
+export async function getChapterPrice(db, chapterId, cat) {
+  const defaultPrice = getDefaultPriceForChapter(chapterId, cat);
+  if (!db || !chapterId || chapterId === 'default') return defaultPrice;
 
   try {
     const custom = await db
@@ -168,18 +168,6 @@ export async function getChapterPrice(db, chapterId) {
         return defaultPrice;
       }
       return custom.price_inr;
-    }
-
-    const fallback = await db
-      .prepare('SELECT price_inr FROM chapter_prices WHERE chapter_id = ?')
-      .bind('default')
-      .first();
-
-    if (fallback && typeof fallback.price_inr === 'number') {
-      if (fallback.price_inr === 49.0 || fallback.price_inr === 49) {
-        return defaultPrice;
-      }
-      return fallback.price_inr;
     }
   } catch (err) {
     console.warn('[Pricing Lookup Error, using category default]:', err);
@@ -256,7 +244,7 @@ export async function handleGetChapterPricing(request, env, userAuth) {
     isPurchased = await checkUserEntitlement(env.DB, userAuth.user.id, chapterId);
   }
 
-  const priceInr = await getChapterPrice(env.DB, chapterId);
+  const priceInr = await getChapterPrice(env.DB, chapterId, chapter.cat);
 
   return jsonResponse({
     chapterId,
@@ -322,7 +310,7 @@ export async function handleCreateCashfreeOrder(request, env, userAuth) {
     }
 
     // 3. Resolve exact price from database
-    const amountInr = await getChapterPrice(env.DB, cleanChapterId);
+    const amountInr = await getChapterPrice(env.DB, cleanChapterId, chapter.cat);
     const siteUrl = getSiteUrl(request, env);
 
     // 4. Verify Cashfree Production credentials configuration
