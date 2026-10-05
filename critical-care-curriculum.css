@@ -1,0 +1,645 @@
+/* ==========================================================================
+   KNOCKOUT NOTES — Critical Care Master Curriculum Explorer Styles
+   Matches Obsidian Sci-Fi Dark Cyber-Medical Aesthetic
+   ========================================================================== */
+
+.cc-curriculum-container {
+  width: 100%;
+  margin: 24px 0 48px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cc-curriculum-banner {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(8, 14, 28, 0.95));
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: var(--radius-lg, 16px);
+  padding: 24px 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.cc-banner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 9999px;
+  color: var(--accent-cyan, #38bdf8);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 12px;
+}
+
+.cc-badge-pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-cyan, #38bdf8);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-cyan, #38bdf8);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+.cc-banner-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-main, #f8fafc);
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.cc-banner-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary, #94a3b8);
+  margin: 0 0 20px 0;
+  max-width: 900px;
+}
+
+/* Search Box */
+.cc-search-wrap {
+  position: relative;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.cc-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--accent-cyan, #38bdf8);
+  pointer-events: none;
+}
+
+.cc-search-input {
+  width: 100%;
+  padding: 12px 40px 12px 38px;
+  background: rgba(4, 8, 18, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: var(--radius-md, 10px);
+  color: #ffffff;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.cc-search-input:focus {
+  outline: none;
+  border-color: var(--accent-cyan, #38bdf8);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+  background: rgba(6, 12, 28, 0.95);
+}
+
+.cc-search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-secondary, #94a3b8);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Nav Tabs */
+.cc-nav-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 16px;
+}
+
+.cc-nav-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md, 8px);
+  color: var(--text-secondary, #94a3b8);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cc-nav-tab:hover {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.35);
+  color: #ffffff;
+}
+
+.cc-nav-tab.active {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: var(--accent-cyan, #38bdf8);
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.3);
+}
+
+.cc-tab-count {
+  padding: 2px 7px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 999px;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent-cyan, #38bdf8);
+}
+
+/* Chapter Cards Grid */
+.cc-chapters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 20px;
+}
+
+.cc-chapter-card {
+  background: rgba(11, 18, 36, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: var(--radius-md, 12px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cc-chapter-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.15);
+}
+
+.cc-chapter-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cc-ch-icon {
+  font-size: 26px;
+  line-height: 1;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.cc-ch-num {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--accent-cyan, #38bdf8);
+  font-family: 'JetBrains Mono', monospace;
+  display: block;
+}
+
+.cc-ch-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 2px 0 0 0;
+  line-height: 1.35;
+}
+
+.cc-ch-weight-badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 3px 9px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 4px;
+  color: #fde68a;
+  font-size: 11.5px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cc-ch-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-secondary, #94a3b8);
+  margin: 0;
+}
+
+.cc-subchapters-list h4 {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #cbd5e1;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.04em;
+}
+
+.cc-subchapters-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cc-subchapters-list li {
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: #cbd5e1;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.cc-sub-id {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--accent-cyan, #38bdf8);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cc-mapped-topics {
+  margin-top: 6px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.cc-mapped-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #94a3b8;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.cc-topic-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.cc-topic-pill {
+  font-size: 11px;
+  padding: 3px 8px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 4px;
+  color: #e2e8f0;
+}
+
+/* 88 Source Topics Table */
+.cc-topics-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: rgba(11, 18, 36, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: var(--radius-md, 12px);
+}
+
+.cc-topics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+}
+
+.cc-topics-table th {
+  background: rgba(15, 23, 42, 0.95);
+  padding: 12px 14px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--accent-cyan, #38bdf8);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.cc-topics-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: middle;
+}
+
+.cc-topics-table tr:hover {
+  background: rgba(56, 189, 248, 0.04);
+}
+
+.cc-td-num {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent-cyan, #38bdf8);
+}
+
+.cc-topic-name {
+  color: #f8fafc;
+  font-size: 13.5px;
+}
+
+.cc-topic-sub {
+  font-size: 11.5px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.cc-cat-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
+.cc-ch-link {
+  font-size: 12.5px;
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.cc-td-dur {
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #94a3b8;
+}
+
+.cc-priority-pill {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cc-priority-pill.p0 {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+.cc-priority-pill.p1 {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fbbf24;
+}
+
+/* Formulas Grid */
+.cc-formulas-grid, .cc-trials-grid, .cc-guidelines-grid, .cc-mcqs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 20px;
+}
+
+.cc-formula-card, .cc-trial-card, .cc-guideline-card, .cc-mcq-card {
+  background: rgba(11, 18, 36, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: var(--radius-md, 12px);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cc-formula-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.cc-formula-title, .cc-trial-name, .cc-g-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+
+.cc-formula-units {
+  font-size: 11.5px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #94a3b8;
+}
+
+.cc-formula-equation {
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13.5px;
+  color: #38bdf8;
+  overflow-x: auto;
+}
+
+.cc-formula-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.cc-ref-link {
+  color: var(--accent-cyan, #38bdf8);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cc-ref-link:hover {
+  color: #7dd3fc;
+}
+
+.cc-worked-example {
+  padding: 12px 14px;
+  background: rgba(16, 185, 129, 0.08);
+  border-left: 3.5px solid var(--accent-emerald, #10b981);
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #d1fae5;
+}
+
+.cc-exam-trap {
+  padding: 12px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border-left: 3.5px solid var(--accent-rose, #ef4444);
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #fee2e2;
+}
+
+/* Landmark Trials */
+.cc-trial-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cc-trial-domain {
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--accent-cyan, #38bdf8);
+  letter-spacing: 0.05em;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cc-trial-year {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 7px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  color: #e2e8f0;
+}
+
+.cc-trial-journal {
+  font-size: 12.5px;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.cc-trial-detail-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cc-pvalue {
+  color: #34d399;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cc-takeaway-box {
+  padding: 10px 14px;
+  background: rgba(56, 189, 248, 0.08);
+  border-left: 3.5px solid var(--accent-cyan, #38bdf8);
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #e0f2fe;
+}
+
+.cc-mcq-point-box {
+  padding: 10px 14px;
+  background: rgba(245, 158, 11, 0.08);
+  border-left: 3.5px solid var(--accent-amber, #f59e0b);
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #fef3c7;
+}
+
+/* Guidelines */
+.cc-g-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cc-g-society {
+  font-size: 12px;
+  font-weight: 800;
+  color: #38bdf8;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cc-g-year {
+  font-size: 12px;
+  font-weight: 800;
+  color: #10b981;
+}
+
+.cc-g-recs h4 {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #e2e8f0;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+}
+
+.cc-g-recs ul {
+  list-style: square;
+  padding-left: 18px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #cbd5e1;
+}
+
+/* Practice MCQs */
+.cc-mcq-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cc-mcq-badge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #38bdf8;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cc-mcq-ch {
+  font-size: 11px;
+  color: #94a3b8;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cc-mcq-q {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.cc-mcq-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cc-mcq-option {
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+@media (max-width: 768px) {
+  .cc-curriculum-banner {
+    padding: 18px;
+  }
+  .cc-banner-title {
+    font-size: 20px;
+  }
+  .cc-chapters-grid, .cc-formulas-grid, .cc-trials-grid, .cc-guidelines-grid, .cc-mcqs-grid {
+    grid-template-columns: 1fr;
+  }
+}

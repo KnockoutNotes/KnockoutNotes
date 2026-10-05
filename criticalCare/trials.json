@@ -1,0 +1,173 @@
+[
+  {
+    "id": "trial-ardsnet-arma",
+    "domain": "ARDS",
+    "name": "ARDSNet (ARMA Trial)",
+    "year": 2000,
+    "journal": "New England Journal of Medicine (NEJM)",
+    "hyperlinkedReference": {
+      "label": "ARDSNet ARMA Trial (NEJM 2000; 342:1301-1308)",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJM200005043421801"
+    },
+    "population": "861 mechanically ventilated acute lung injury / ARDS patients",
+    "intervention": "Low tidal volume (6 mL/kg PBW) with target Pplat ≤ 30 cmH2O",
+    "control": "Traditional tidal volume (12 mL/kg PBW) with target Pplat ≤ 50 cmH2O",
+    "primaryOutcome": "All-cause in-hospital mortality before discharge home unassisted",
+    "result": "Mortality: 31.0% in 6 mL/kg group vs 39.8% in 12 mL/kg group",
+    "pValue": "P = 0.007",
+    "clinicalTakeaway": "Lowering tidal volume to 6 mL/kg PBW and capping plateau pressure at 30 cmH2O yields an absolute 8.8% mortality reduction (22% relative reduction) in ARDS.",
+    "examPoint": "NEET-SS HIGH YIELD: PBW must be calculated using height and sex, NOT actual body weight. Overweight ARDS patients ventilated to actual body weight suffer lethal volutrauma."
+  },
+  {
+    "id": "trial-proseva",
+    "domain": "ARDS",
+    "name": "PROSEVA Trial",
+    "year": 2013,
+    "journal": "New England Journal of Medicine (NEJM)",
+    "hyperlinkedReference": {
+      "label": "PROSEVA Trial (NEJM 2013; 368:2159-2168)",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1214103"
+    },
+    "population": "466 patients with severe ARDS (PaO2/FiO2 < 150 with PEEP ≥ 5 cmH2O, FiO2 ≥ 0.60)",
+    "intervention": "Early prolonged prone positioning (minimum 16 consecutive hours/session)",
+    "control": "Conventional supine positioning",
+    "primaryOutcome": "28-day all-cause mortality",
+    "result": "28-day mortality: 16.0% in prone group vs 32.8% in supine group (Hazard Ratio 0.39)",
+    "pValue": "P < 0.001",
+    "clinicalTakeaway": "Early prone positioning for at least 16 hours daily dramatically cuts mortality in half in severe ARDS (NNT = 6).",
+    "examPoint": "NEET-SS HIGH YIELD: Prone positioning improves ventilation-perfusion matching by unloading dorsal lung segments, improving transpulmonary pressure homogeneity, and reducing right ventricular afterload."
+  },
+  {
+    "id": "trial-rose-petal",
+    "domain": "ARDS",
+    "name": "ROSE Trial (PETAL Network)",
+    "year": 2019,
+    "journal": "New England Journal of Medicine (NEJM)",
+    "hyperlinkedReference": {
+      "label": "ROSE Trial (NEJM 2019; 380:1997-2008)",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1901686"
+    },
+    "population": "1006 moderate-to-severe ARDS patients (PaO2/FiO2 < 150)",
+    "intervention": "Early continuous 48-hour Cisatracurium infusion + heavy sedation",
+    "control": "Usual-care sedation strategy targeting light sedation without routine paralysis",
+    "primaryOutcome": "90-day in-hospital mortality",
+    "result": "90-day mortality: 42.5% in intervention vs 42.8% in control arm",
+    "pValue": "P = 0.93",
+    "clinicalTakeaway": "Routine early neuromuscular blockade infusion in ARDS managed with lighter sedation yields no survival benefit over as-needed paralysis.",
+    "examPoint": "NEET-SS HIGH YIELD: Reconciled with ACURASYS (2010): Continuous paralysis is NOT routinely indicated in all moderate-severe ARDS; reserve for severe patient-ventilator dyssynchrony, refractory hypoxemia, or elevated driving pressures."
+  },
+  {
+    "id": "trial-smart",
+    "domain": "Sepsis & Fluids",
+    "name": "SMART Trial",
+    "year": 2018,
+    "journal": "New England Journal of Medicine (NEJM)",
+    "hyperlinkedReference": {
+      "label": "SMART Trial (NEJM 2018; 378:829-839)",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1711584"
+    },
+    "population": "15,802 critically ill adults admitted to intensive care",
+    "intervention": "Balanced crystalloids (Plasma-Lyte A or Ringer's Lactate)",
+    "control": "Saline (0.9% sodium chloride)",
+    "primaryOutcome": "Major Adverse Kidney Events within 30 days (MAKE30: death, new RRT, persistent renal dysfunction)",
+    "result": "MAKE30: 14.3% in balanced group vs 15.4% in saline group (Odds Ratio 0.90)",
+    "pValue": "P = 0.04 (in septic subgroup P = 0.01 with lower 30-day mortality)",
+    "clinicalTakeaway": "Balanced crystalloids significantly reduce major adverse kidney events and mortality compared to 0.9% saline in critically ill patients, especially in sepsis.",
+    "examPoint": "NEET-SS HIGH YIELD: High-volume 0.9% normal saline causes hyperchloremic metabolic acidosis, renal afferent vasoconstriction, and decreases GFR."
+  },
+  {
+    "id": "trial-adrenal",
+    "domain": "Sepsis",
+    "name": "ADRENAL Trial",
+    "year": 2018,
+    "journal": "New England Journal of Medicine (NEJM)",
+    "hyperlinkedReference": {
+      "label": "ADRENAL Trial (NEJM 2018; 378:797-808)",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1705835"
+    },
+    "population": "3800 patients with septic shock requiring ongoing vasopressor support for ≥ 4 hours",
+    "intervention": "Hydrocortisone 200 mg/day continuous infusion for 7 days or until shock resolved",
+    "control": "Matching placebo infusion",
+    "primaryOutcome": "90-day all-cause mortality",
+    "result": "90-day mortality: 27.9% hydrocortisone vs 28.8% placebo (Odds Ratio 0.95)",
+    "pValue": "P = 0.50",
+    "clinicalTakeaway": "Low-dose hydrocortisone does not reduce 90-day mortality in septic shock, but significantly accelerates shock resolution (median 3 days vs 4 days, P < 0.001) and reduces ventilator days.",
+    "examPoint": "NEET-SS HIGH YIELD: SSC 2026 recommends IV corticosteroids for adults with septic shock and an ongoing requirement for vasopressor therapy (≥ 0.25 mcg/kg/min of norepinephrine for ≥ 4 hours)."
+  },
+  {
+    "id": "trial-starrt-aki",
+    "domain": "Renal & CRRT",
+    "name": "STARRT-AKI Trial",
+    "year": 2020,
+    "journal": "New England Journal of Medicine (NEJM)",
+    "hyperlinkedReference": {
+      "label": "STARRT-AKI Trial (NEJM 2020; 383:240-251)",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2000741"
+    },
+    "population": "3011 critically ill patients with severe AKI (KDIGO stage 2 or 3)",
+    "intervention": "Accelerated strategy (immediate RRT initiation within 12 hours)",
+    "control": "Standard strategy (delayed RRT until urgent classical indications arose or persistence ≥ 72h)",
+    "primaryOutcome": "90-day all-cause mortality",
+    "result": "90-day mortality: 43.9% in accelerated vs 43.7% in standard group",
+    "pValue": "P = 0.92",
+    "clinicalTakeaway": "Accelerated RRT initiation does not improve survival and leads to higher rates of persistent dialysis dependence (10.4% vs 6.0%, P = 0.006) and adverse events.",
+    "examPoint": "NEET-SS HIGH YIELD: Standard indications for emergent RRT remain the AEIOU rule: Acidosis (refractory pH < 7.15), Electrolytes (refractory K > 6.5 mEq/L), Ingestion/toxins, Overload (fluid overload refractory to diuretics), Uremia (pericarditis, encephalopathy)."
+  },
+  {
+    "id": "trial-ttm2",
+    "domain": "Cardiac Arrest",
+    "name": "TTM-2 Trial",
+    "year": 2021,
+    "journal": "New England Journal of Medicine (NEJM)",
+    "hyperlinkedReference": {
+      "label": "TTM-2 Trial (NEJM 2021; 384:2283-2294)",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2100591"
+    },
+    "population": "1900 comatose adult survivors of out-of-hospital cardiac arrest (OHCA)",
+    "intervention": "Targeted hypothermia at 33°C for 28 hours followed by controlled rewarming",
+    "control": "Targeted normothermia with early treatment of fever (temperature ≥ 37.8°C triggered active cooling to 37.5°C)",
+    "primaryOutcome": "All-cause mortality at 6 months",
+    "result": "6-month mortality: 50% in 33°C group vs 48% in normothermia group (Relative Risk 1.04)",
+    "pValue": "P = 0.37",
+    "clinicalTakeaway": "Hypothermia at 33°C does not improve survival or functional neurological outcome compared with targeted normothermia with strict fever prevention.",
+    "examPoint": "NEET-SS HIGH YIELD: Current post-cardiac arrest guidelines recommend active temperature control to prevent fever (maintaining 36.0–37.5°C) for at least 72 hours."
+  },
+  {
+    "id": "trial-tricc",
+    "domain": "Hematology & Transfusion",
+    "name": "TRICC Trial",
+    "year": 1999,
+    "journal": "New England Journal of Medicine (NEJM)",
+    "hyperlinkedReference": {
+      "label": "TRICC Trial (NEJM 1999; 340:409-417)",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJM199902113400601"
+    },
+    "population": "838 critically ill patients with normovolemic anemia",
+    "intervention": "Restrictive transfusion trigger (Hb < 7.0 g/dL, maintained at 7.0–9.0 g/dL)",
+    "control": "Liberal transfusion trigger (Hb < 10.0 g/dL, maintained at 10.0–12.0 g/dL)",
+    "primaryOutcome": "30-day all-cause mortality",
+    "result": "30-day mortality: 18.7% restrictive vs 23.3% liberal (P = 0.11; in patients aged < 55 years, restrictive mortality was significantly lower 5.7% vs 13.0%, P = 0.02)",
+    "pValue": "P = 0.11",
+    "clinicalTakeaway": "A restrictive transfusion strategy (trigger Hb < 7.0 g/dL) is safe, reduces blood exposure by > 50%, and is superior in younger and less severely ill patients.",
+    "examPoint": "NEET-SS HIGH YIELD: General ICU transfusion trigger is strictly Hb < 7.0 g/dL. Exceptions: acute coronary syndrome / myocardial ischemia (target Hb ≥ 8.0–9.0 g/dL, REALITY & MINT trials)."
+  },
+  {
+    "id": "trial-eolia",
+    "domain": "ECMO",
+    "name": "EOLIA Trial",
+    "year": 2018,
+    "journal": "New England Journal of Medicine (NEJM)",
+    "hyperlinkedReference": {
+      "label": "EOLIA Trial (NEJM 2018; 378:1965-1975)",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1800385"
+    },
+    "population": "249 severe ARDS patients (P/F < 50 for > 3h, or P/F < 80 for > 6h, or arterial pH < 7.15 with PaCO2 ≥ 60 for > 6h)",
+    "intervention": "Immediate early Veno-Venous (VV) ECMO",
+    "control": "Continued lung-protective mechanical ventilation with rescue ECMO allowed",
+    "primaryOutcome": "60-day all-cause mortality",
+    "result": "60-day mortality: 35% in early ECMO arm vs 46% in conventional arm (Relative Risk 0.76; P = 0.09). 28% of conventional arm crossed over to rescue ECMO due to refractory hypoxemia.",
+    "pValue": "P = 0.09 (Bayesian post-hoc analysis showed 91% posterior probability of ECMO superiority)",
+    "clinicalTakeaway": "Early VV-ECMO in severe refractory ARDS provides clinically meaningful mortality reduction (11% absolute risk reduction), though confounded by rescue cross-over.",
+    "examPoint": "NEET-SS HIGH YIELD: EOLIA criteria define contemporary international indications for VV-ECMO in refractory ARDS."
+  }
+]

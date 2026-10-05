@@ -1,0 +1,2114 @@
+[
+  {
+    "id": "cc-haemodynamic-monitoring-i",
+    "sourceIndex": 1,
+    "sourceDuration": "42 Min",
+    "sourceCategory": "BASICS OF CRITICAL CARE MEDICINE",
+    "title": "Haemodynamic Monitoring: I",
+    "chapterId": 3,
+    "subchapterId": "3.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Haemodynamic Monitoring: I"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-3"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-central-venous-line-and-cvp-measurement",
+    "sourceIndex": 2,
+    "sourceDuration": "27 Min",
+    "sourceCategory": "BASICS OF CRITICAL CARE MEDICINE",
+    "title": "Central Venous Line and CVP Measurement",
+    "chapterId": 3,
+    "subchapterId": "3.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Central Venous Line and CVP Measurement"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-3"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-cardiac-output-monitoring",
+    "sourceIndex": 3,
+    "sourceDuration": "67 Min",
+    "sourceCategory": "BASICS OF CRITICAL CARE MEDICINE",
+    "title": "Cardiac Output Monitoring",
+    "chapterId": 3,
+    "subchapterId": "3.2",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Cardiac Output Monitoring"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-3"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-assessing-fluid-responsiveness-in-the-icu",
+    "sourceIndex": 4,
+    "sourceDuration": "46 Min",
+    "sourceCategory": "BASICS OF CRITICAL CARE MEDICINE",
+    "title": "Assessing Fluid Responsiveness in the ICU",
+    "chapterId": 3,
+    "subchapterId": "3.3",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Assessing Fluid Responsiveness in the ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-3"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-assessing-adequacy-of-oxygen-delivery",
+    "sourceIndex": 5,
+    "sourceDuration": "47 Min",
+    "sourceCategory": "BASICS OF CRITICAL CARE MEDICINE",
+    "title": "Assessing Adequacy of Oxygen Delivery",
+    "chapterId": 2,
+    "subchapterId": "2.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Assessing Adequacy of Oxygen Delivery"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-2"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-basics-of-mechanical-ventilation",
+    "sourceIndex": 6,
+    "sourceDuration": "47 Min",
+    "sourceCategory": "MECHANICAL VENTILATION",
+    "title": "Basics of Mechanical Ventilation",
+    "chapterId": 8,
+    "subchapterId": "8.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Basics of Mechanical Ventilation"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-8"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-ventilator-graphics-and-basic-modes-of-mechanical-ventilation",
+    "sourceIndex": 7,
+    "sourceDuration": "47 Min",
+    "sourceCategory": "MECHANICAL VENTILATION",
+    "title": "Ventilator Graphics and Basic Modes of Mechanical Ventilation",
+    "chapterId": 8,
+    "subchapterId": "8.2",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Ventilator Graphics and Basic Modes of Mechanical Ventilation"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-8"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-patient-ventilator-asynchrony",
+    "sourceIndex": 8,
+    "sourceDuration": "68 Min",
+    "sourceCategory": "MECHANICAL VENTILATION",
+    "title": "Patient Ventilator Asynchrony",
+    "chapterId": 8,
+    "subchapterId": "8.3",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Patient Ventilator Asynchrony"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-8"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-weaning-from-mechanical-ventilation",
+    "sourceIndex": 9,
+    "sourceDuration": "87 Min",
+    "sourceCategory": "MECHANICAL VENTILATION",
+    "title": "Weaning from Mechanical Ventilation",
+    "chapterId": 8,
+    "subchapterId": "8.4",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Weaning from Mechanical Ventilation"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-8"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-advanced-modes-of-mechanical-ventilation",
+    "sourceIndex": 10,
+    "sourceDuration": "60 Min",
+    "sourceCategory": "MECHANICAL VENTILATION",
+    "title": "Advanced Modes of Mechanical Ventilation",
+    "chapterId": 8,
+    "subchapterId": "8.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Advanced Modes of Mechanical Ventilation"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-8"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-acute-respiratory-distress-syndrome-i",
+    "sourceIndex": 11,
+    "sourceDuration": "0 Min",
+    "sourceCategory": "RESPIRATORY DISORDERS",
+    "title": "Acute Respiratory Distress Syndrome: I",
+    "chapterId": 9,
+    "subchapterId": "9.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Acute Respiratory Distress Syndrome: I"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-9"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-acute-respiratory-distress-syndrome-ii",
+    "sourceIndex": 12,
+    "sourceDuration": "26 Min",
+    "sourceCategory": "RESPIRATORY DISORDERS",
+    "title": "Acute Respiratory Distress Syndrome: II",
+    "chapterId": 9,
+    "subchapterId": "9.2",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Acute Respiratory Distress Syndrome: II"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-9"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-pulmonary-embolism",
+    "sourceIndex": 13,
+    "sourceDuration": "68 Min",
+    "sourceCategory": "RESPIRATORY DISORDERS",
+    "title": "Pulmonary Embolism",
+    "chapterId": 11,
+    "subchapterId": "11.3",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Pulmonary Embolism"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-11"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-copd-and-asthma",
+    "sourceIndex": 14,
+    "sourceDuration": "50 Min",
+    "sourceCategory": "RESPIRATORY DISORDERS",
+    "title": "COPD and Asthma",
+    "chapterId": 10,
+    "subchapterId": "10.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "COPD and Asthma"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-10"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-respiratory-management-in-specific-clinical-scenarios-i",
+    "sourceIndex": 15,
+    "sourceDuration": "50 Min",
+    "sourceCategory": "RESPIRATORY DISORDERS",
+    "title": "Respiratory Management in Specific Clinical Scenarios: I",
+    "chapterId": 6,
+    "subchapterId": "6.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Respiratory Management in Specific Clinical Scenarios: I"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-6"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-respiratory-management-in-specific-clinical-scenarios-ii",
+    "sourceIndex": 16,
+    "sourceDuration": "33 Min",
+    "sourceCategory": "RESPIRATORY DISORDERS",
+    "title": "Respiratory Management in Specific Clinical Scenarios: II",
+    "chapterId": 6,
+    "subchapterId": "6.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Respiratory Management in Specific Clinical Scenarios: II"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-6"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-pa-catheter",
+    "sourceIndex": 17,
+    "sourceDuration": "36 Min",
+    "sourceCategory": "RESPIRATORY DISORDERS",
+    "title": "PA Catheter",
+    "chapterId": 3,
+    "subchapterId": "3.2",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "PA Catheter"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-3"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-pleural-disorders-in-icu",
+    "sourceIndex": 18,
+    "sourceDuration": "52 Min",
+    "sourceCategory": "RESPIRATORY DISORDERS",
+    "title": "Pleural Disorders in ICU",
+    "chapterId": 28,
+    "subchapterId": "28.2",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Pleural Disorders in ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-28"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-interpreting-abg",
+    "sourceIndex": 19,
+    "sourceDuration": "59 Min",
+    "sourceCategory": "ELECTROLYTE AND ACID BASE DISORDERS",
+    "title": "Interpreting ABG",
+    "chapterId": 14,
+    "subchapterId": "14.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Interpreting ABG"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-14"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-sodium-disorders-in-the-icu",
+    "sourceIndex": 20,
+    "sourceDuration": "51 Min",
+    "sourceCategory": "ELECTROLYTE AND ACID BASE DISORDERS",
+    "title": "Sodium Disorders in The ICU",
+    "chapterId": 13,
+    "subchapterId": "13.4",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Sodium Disorders in The ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-13"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-potassium-disorders-in-the-icu",
+    "sourceIndex": 21,
+    "sourceDuration": "52 Min",
+    "sourceCategory": "ELECTROLYTE AND ACID BASE DISORDERS",
+    "title": "Potassium Disorders in the ICU",
+    "chapterId": 13,
+    "subchapterId": "13.4",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Potassium Disorders in the ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-13"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-disorders-of-calcium-magnesium-phosphorus-metabolism",
+    "sourceIndex": 22,
+    "sourceDuration": "55 Min",
+    "sourceCategory": "ELECTROLYTE AND ACID BASE DISORDERS",
+    "title": "Disorders of Calcium, Magnesium & Phosphorus Metabolism",
+    "chapterId": 13,
+    "subchapterId": "13.4",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Disorders of Calcium, Magnesium & Phosphorus Metabolism"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-13"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-sepsis-and-septic-shock-evaluation-management",
+    "sourceIndex": 23,
+    "sourceDuration": "50 Min",
+    "sourceCategory": "SHOCK",
+    "title": "Sepsis and Septic Shock: Evaluation & Management",
+    "chapterId": 5,
+    "subchapterId": "5.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Sepsis and Septic Shock: Evaluation & Management"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-5"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-organ-dysfunction-in-sepsis",
+    "sourceIndex": 24,
+    "sourceDuration": "55 Min",
+    "sourceCategory": "SHOCK",
+    "title": "Organ Dysfunction in Sepsis",
+    "chapterId": 5,
+    "subchapterId": "5.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Organ Dysfunction in Sepsis"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-5"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-sepsis-2026-clinical-guidelines",
+    "sourceIndex": 25,
+    "sourceDuration": "31 Min",
+    "sourceCategory": "SHOCK",
+    "title": "Sepsis: 2026 Clinical Guidelines",
+    "chapterId": 5,
+    "subchapterId": "5.2",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Sepsis: 2026 Clinical Guidelines"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-5"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-cardiogenic-shock-i",
+    "sourceIndex": 26,
+    "sourceDuration": "31 Min",
+    "sourceCategory": "SHOCK",
+    "title": "Cardiogenic Shock: I",
+    "chapterId": 4,
+    "subchapterId": "4.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Cardiogenic Shock: I"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-4"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-cardiogenic-shock-ii",
+    "sourceIndex": 27,
+    "sourceDuration": "47 Min",
+    "sourceCategory": "SHOCK",
+    "title": "Cardiogenic Shock: II",
+    "chapterId": 4,
+    "subchapterId": "4.2",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Cardiogenic Shock: II"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-4"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-extracorporeal-therapies-in-sepsis",
+    "sourceIndex": 28,
+    "sourceDuration": "58 Min",
+    "sourceCategory": "SHOCK",
+    "title": "Extracorporeal Therapies In Sepsis",
+    "chapterId": 5,
+    "subchapterId": "5.4",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Extracorporeal Therapies In Sepsis"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-5"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-basic-echocardiography",
+    "sourceIndex": 29,
+    "sourceDuration": "27 Min",
+    "sourceCategory": "CARDIAC DISORDERS",
+    "title": "Basic Echocardiography",
+    "chapterId": 29,
+    "subchapterId": "29.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Basic Echocardiography"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-29"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-aortic-dissection",
+    "sourceIndex": 30,
+    "sourceDuration": "41 Min",
+    "sourceCategory": "CARDIAC DISORDERS",
+    "title": "Aortic Dissection",
+    "chapterId": 11,
+    "subchapterId": "11.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Aortic Dissection"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-11"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-right-ventricular-failure-in-the-icu",
+    "sourceIndex": 31,
+    "sourceDuration": "35 Min",
+    "sourceCategory": "CARDIAC DISORDERS",
+    "title": "Right Ventricular Failure in the ICU",
+    "chapterId": 11,
+    "subchapterId": "11.3",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Right Ventricular Failure in the ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-11"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-post-cardiac-arrest-management-prognostication",
+    "sourceIndex": 32,
+    "sourceDuration": "40 Min",
+    "sourceCategory": "CARDIAC DISORDERS",
+    "title": "Post Cardiac Arrest Management & Prognostication",
+    "chapterId": 12,
+    "subchapterId": "12.3",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Post Cardiac Arrest Management & Prognostication"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-12"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-pericarditis-and-myocarditis",
+    "sourceIndex": 33,
+    "sourceDuration": "22 Min",
+    "sourceCategory": "CARDIAC DISORDERS",
+    "title": "Pericarditis and Myocarditis",
+    "chapterId": 11,
+    "subchapterId": "11.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Pericarditis and Myocarditis"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-11"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-mi-acs",
+    "sourceIndex": 34,
+    "sourceDuration": "55 Min",
+    "sourceCategory": "CARDIAC DISORDERS",
+    "title": "MI & ACS",
+    "chapterId": 11,
+    "subchapterId": "11.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "MI & ACS"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-11"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-icu-management-of-acs-i",
+    "sourceIndex": 35,
+    "sourceDuration": "50 Min",
+    "sourceCategory": "CARDIAC DISORDERS",
+    "title": "ICU Management of ACS: I",
+    "chapterId": 11,
+    "subchapterId": "11.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "ICU Management of ACS: I"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-11"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-icu-management-of-acs-ii",
+    "sourceIndex": 36,
+    "sourceDuration": "35 Min",
+    "sourceCategory": "CARDIAC DISORDERS",
+    "title": "ICU Management of ACS: II",
+    "chapterId": 11,
+    "subchapterId": "11.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "ICU Management of ACS: II"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-11"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-2025-acc-aha-cpr-guidelines-updates",
+    "sourceIndex": 37,
+    "sourceDuration": "19 Min",
+    "sourceCategory": "CARDIAC DISORDERS",
+    "title": "2025 ACC/AHA CPR Guidelines Updates",
+    "chapterId": 12,
+    "subchapterId": "12.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "2025 ACC/AHA CPR Guidelines Updates"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-12"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-ventilator-associated-pneumonia",
+    "sourceIndex": 38,
+    "sourceDuration": "54 Min",
+    "sourceCategory": "INFECTIOUS DISEASES",
+    "title": "Ventilator Associated Pneumonia",
+    "chapterId": 18,
+    "subchapterId": "18.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Ventilator Associated Pneumonia"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-18"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-community-acquired-pneumonia",
+    "sourceIndex": 39,
+    "sourceDuration": "66 Min",
+    "sourceCategory": "INFECTIOUS DISEASES",
+    "title": "Community Acquired Pneumonia",
+    "chapterId": 18,
+    "subchapterId": "18.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Community Acquired Pneumonia"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-18"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-infections-in-the-immunocompromised-host",
+    "sourceIndex": 40,
+    "sourceDuration": "81 Min",
+    "sourceCategory": "INFECTIOUS DISEASES",
+    "title": "Infections in the Immunocompromised Host",
+    "chapterId": 31,
+    "subchapterId": "31.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Infections in the Immunocompromised Host"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-31"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-managing-mdr-gram-negative-infections-i",
+    "sourceIndex": 41,
+    "sourceDuration": "45 Min",
+    "sourceCategory": "INFECTIOUS DISEASES",
+    "title": "Managing MDR Gram-Negative Infections: I",
+    "chapterId": 18,
+    "subchapterId": "18.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Managing MDR Gram-Negative Infections: I"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-18"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-managing-mdr-gram-negative-infections-ii",
+    "sourceIndex": 42,
+    "sourceDuration": "14 Min",
+    "sourceCategory": "INFECTIOUS DISEASES",
+    "title": "Managing MDR Gram-Negative Infections: II",
+    "chapterId": 18,
+    "subchapterId": "18.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Managing MDR Gram-Negative Infections: II"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-18"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-interpreting-antibiogram-and-mic",
+    "sourceIndex": 43,
+    "sourceDuration": "29 Min",
+    "sourceCategory": "INFECTIOUS DISEASES",
+    "title": "Interpreting Antibiogram and MIC",
+    "chapterId": 18,
+    "subchapterId": "18.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Interpreting Antibiogram and MIC"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-18"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-cns-infections-in-icu",
+    "sourceIndex": 44,
+    "sourceDuration": "70 Min",
+    "sourceCategory": "INFECTIOUS DISEASES",
+    "title": "CNS Infections in ICU",
+    "chapterId": 18,
+    "subchapterId": "18.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "CNS Infections in ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-18"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-leptospirosis-rickettsial-diseases",
+    "sourceIndex": 45,
+    "sourceDuration": "29 Min",
+    "sourceCategory": "INFECTIOUS DISEASES",
+    "title": "Leptospirosis & Rickettsial Diseases",
+    "chapterId": 18,
+    "subchapterId": "18.4",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Leptospirosis & Rickettsial Diseases"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-18"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-dengue-fever",
+    "sourceIndex": 46,
+    "sourceDuration": "37 Min",
+    "sourceCategory": "INFECTIOUS DISEASES",
+    "title": "Dengue Fever",
+    "chapterId": 18,
+    "subchapterId": "18.4",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Dengue Fever"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-18"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-glucose-control-in-icu",
+    "sourceIndex": 47,
+    "sourceDuration": "65 Min",
+    "sourceCategory": "ENDOCRINE DISORDERS",
+    "title": "Glucose Control in ICU",
+    "chapterId": 20,
+    "subchapterId": "20.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Glucose Control in ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-20"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-endocrine-emergencies",
+    "sourceIndex": 48,
+    "sourceDuration": "45 Min",
+    "sourceCategory": "ENDOCRINE DISORDERS",
+    "title": "Endocrine Emergencies",
+    "chapterId": 20,
+    "subchapterId": "20.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Endocrine Emergencies"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-20"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-acute-kidney-injury-i",
+    "sourceIndex": 49,
+    "sourceDuration": "48 Min",
+    "sourceCategory": "RENAL DISORDERS",
+    "title": "Acute Kidney Injury: I",
+    "chapterId": 13,
+    "subchapterId": "13.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Acute Kidney Injury: I"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-13"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-acute-kidney-injury-ii",
+    "sourceIndex": 50,
+    "sourceDuration": "53 Min",
+    "sourceCategory": "RENAL DISORDERS",
+    "title": "Acute Kidney Injury: II",
+    "chapterId": 13,
+    "subchapterId": "13.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Acute Kidney Injury: II"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-13"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-renal-replacement-therapy-i",
+    "sourceIndex": 51,
+    "sourceDuration": "54 Min",
+    "sourceCategory": "RENAL DISORDERS",
+    "title": "Renal Replacement Therapy: I",
+    "chapterId": 13,
+    "subchapterId": "13.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Renal Replacement Therapy: I"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-13"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-renal-replacement-therapy-ii",
+    "sourceIndex": 52,
+    "sourceDuration": "45 Min",
+    "sourceCategory": "RENAL DISORDERS",
+    "title": "Renal Replacement Therapy: II",
+    "chapterId": 13,
+    "subchapterId": "13.3",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Renal Replacement Therapy: II"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-13"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-hematological-emergencies-in-critical-illness",
+    "sourceIndex": 53,
+    "sourceDuration": "56 Min",
+    "sourceCategory": "HEMATOLOGY",
+    "title": "Hematological Emergencies in Critical Illness",
+    "chapterId": 22,
+    "subchapterId": "22.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Hematological Emergencies in Critical Illness"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-22"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-thrombocytopenia-in-the-icu",
+    "sourceIndex": 54,
+    "sourceDuration": "31 Min",
+    "sourceCategory": "HEMATOLOGY",
+    "title": "Thrombocytopenia In the ICU",
+    "chapterId": 22,
+    "subchapterId": "22.4",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Thrombocytopenia In the ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-22"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-abdomen-in-the-icu",
+    "sourceIndex": 55,
+    "sourceDuration": "43 Min",
+    "sourceCategory": "GASTROINTESTINAL & HEPATOLOGICAL DISORDERS",
+    "title": "Abdomen in the ICU",
+    "chapterId": 19,
+    "subchapterId": "19.4",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Abdomen in the ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-19"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-acute-liver-failure",
+    "sourceIndex": 56,
+    "sourceDuration": "29 Min",
+    "sourceCategory": "GASTROINTESTINAL & HEPATOLOGICAL DISORDERS",
+    "title": "Acute Liver Failure",
+    "chapterId": 19,
+    "subchapterId": "19.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Acute Liver Failure"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-19"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-aclf-in-icu",
+    "sourceIndex": 57,
+    "sourceDuration": "56 Min",
+    "sourceCategory": "GASTROINTESTINAL & HEPATOLOGICAL DISORDERS",
+    "title": "ACLF in ICU",
+    "chapterId": 19,
+    "subchapterId": "19.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "ACLF in ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-19"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-decompensated-cld",
+    "sourceIndex": 58,
+    "sourceDuration": "29 Min",
+    "sourceCategory": "GASTROINTESTINAL & HEPATOLOGICAL DISORDERS",
+    "title": "Decompensated CLD",
+    "chapterId": 19,
+    "subchapterId": "19.3",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Decompensated CLD"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-19"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-acute-pancreatitis",
+    "sourceIndex": 59,
+    "sourceDuration": "51 Min",
+    "sourceCategory": "GASTROINTESTINAL & HEPATOLOGICAL DISORDERS",
+    "title": "Acute Pancreatitis",
+    "chapterId": 19,
+    "subchapterId": "19.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Acute Pancreatitis"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-19"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-acute-mesenteric-ischemia",
+    "sourceIndex": 60,
+    "sourceDuration": "42 Min",
+    "sourceCategory": "GASTROINTESTINAL & HEPATOLOGICAL DISORDERS",
+    "title": "Acute Mesenteric Ischemia",
+    "chapterId": 19,
+    "subchapterId": "19.4",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Acute Mesenteric Ischemia"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-19"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-intra-abdominal-hypertension-and-abdominal-compartment-syndrome",
+    "sourceIndex": 61,
+    "sourceDuration": "27 Min",
+    "sourceCategory": "GASTROINTESTINAL & HEPATOLOGICAL DISORDERS",
+    "title": "Intra-abdominal Hypertension And Abdominal Compartment Syndrome",
+    "chapterId": 19,
+    "subchapterId": "19.4",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Intra-abdominal Hypertension And Abdominal Compartment Syndrome"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-19"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-clostridioides-difficile-colitis",
+    "sourceIndex": 62,
+    "sourceDuration": "31 Min",
+    "sourceCategory": "GASTROINTESTINAL & HEPATOLOGICAL DISORDERS",
+    "title": "Clostridioides Difficile Colitis",
+    "chapterId": 18,
+    "subchapterId": "18.3",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Clostridioides Difficile Colitis"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-18"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-traumatic-brain-injury",
+    "sourceIndex": 63,
+    "sourceDuration": "35 Min",
+    "sourceCategory": "NEUROLOGIC EMERGENCIES",
+    "title": "Traumatic Brain Injury",
+    "chapterId": 15,
+    "subchapterId": "15.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Traumatic Brain Injury"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-15"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-icu-management-of-traumatic-brain-injury",
+    "sourceIndex": 64,
+    "sourceDuration": "46 Min",
+    "sourceCategory": "NEUROLOGIC EMERGENCIES",
+    "title": "ICU Management of Traumatic Brain Injury",
+    "chapterId": 15,
+    "subchapterId": "15.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "ICU Management of Traumatic Brain Injury"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-15"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-icp-monitoring",
+    "sourceIndex": 65,
+    "sourceDuration": "42 Min",
+    "sourceCategory": "NEUROLOGIC EMERGENCIES",
+    "title": "ICP Monitoring",
+    "chapterId": 15,
+    "subchapterId": "15.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "ICP Monitoring"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-15"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-intracranial-haemorrhage",
+    "sourceIndex": 66,
+    "sourceDuration": "29 Min",
+    "sourceCategory": "NEUROLOGIC EMERGENCIES",
+    "title": "Intracranial Haemorrhage",
+    "chapterId": 15,
+    "subchapterId": "15.3",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Intracranial Haemorrhage"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-15"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-subarachnoid-haemorrhage",
+    "sourceIndex": 67,
+    "sourceDuration": "50 Min",
+    "sourceCategory": "NEUROLOGIC EMERGENCIES",
+    "title": "Subarachnoid Haemorrhage",
+    "chapterId": 15,
+    "subchapterId": "15.3",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Subarachnoid Haemorrhage"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-15"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-neuromuscular-disorders-in-icu-i",
+    "sourceIndex": 68,
+    "sourceDuration": "41 Min",
+    "sourceCategory": "NEUROLOGIC EMERGENCIES",
+    "title": "Neuromuscular Disorders in ICU: I",
+    "chapterId": 16,
+    "subchapterId": "16.3",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Neuromuscular Disorders in ICU: I"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-16"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-neuromuscular-disorders-in-icu-ii",
+    "sourceIndex": 69,
+    "sourceDuration": "51 Min",
+    "sourceCategory": "NEUROLOGIC EMERGENCIES",
+    "title": "Neuromuscular Disorders in ICU: II",
+    "chapterId": 16,
+    "subchapterId": "16.3",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Neuromuscular Disorders in ICU: II"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-16"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-delirium-in-icu-padis-guidelines",
+    "sourceIndex": 70,
+    "sourceDuration": "41 Min",
+    "sourceCategory": "NEUROLOGIC EMERGENCIES",
+    "title": "Delirium in ICU & PADIS Guidelines",
+    "chapterId": 16,
+    "subchapterId": "16.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Delirium in ICU & PADIS Guidelines"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-16"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-management-of-brain-dead-organ-donors",
+    "sourceIndex": 71,
+    "sourceDuration": "27 Min",
+    "sourceCategory": "SPECIAL TOPICS",
+    "title": "Management of Brain Dead Organ Donors",
+    "chapterId": 1,
+    "subchapterId": "1.4",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Management of Brain Dead Organ Donors"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-1"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-nutrition-in-the-icu",
+    "sourceIndex": 72,
+    "sourceDuration": "41 Min",
+    "sourceCategory": "SPECIAL TOPICS",
+    "title": "Nutrition in the ICU",
+    "chapterId": 21,
+    "subchapterId": "21.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Nutrition in the ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-21"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-pharmacokinetics",
+    "sourceIndex": 73,
+    "sourceDuration": "54 Min",
+    "sourceCategory": "SPECIAL TOPICS",
+    "title": "Pharmacokinetics",
+    "chapterId": 17,
+    "subchapterId": "17.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Pharmacokinetics"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-17"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-haemodynamic-management-pharmacotherapy-in-acute-polytrauma",
+    "sourceIndex": 74,
+    "sourceDuration": "55 Min",
+    "sourceCategory": "SPECIAL TOPICS",
+    "title": "Haemodynamic Management & Pharmacotherapy in Acute Polytrauma",
+    "chapterId": 24,
+    "subchapterId": "24.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Haemodynamic Management & Pharmacotherapy in Acute Polytrauma"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-24"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-end-of-life-care-in-the-icu",
+    "sourceIndex": 75,
+    "sourceDuration": "45 Min",
+    "sourceCategory": "SPECIAL TOPICS",
+    "title": "End of life Care in the ICU",
+    "chapterId": 1,
+    "subchapterId": "1.4",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "End of life Care in the ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-1"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-ecmo-basics",
+    "sourceIndex": 76,
+    "sourceDuration": "55 Min",
+    "sourceCategory": "ECMO",
+    "title": "ECMO - Basics",
+    "chapterId": 30,
+    "subchapterId": "30.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "ECMO - Basics"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-30"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-managing-a-patient-on-ecmo",
+    "sourceIndex": 77,
+    "sourceDuration": "55 Min",
+    "sourceCategory": "ECMO",
+    "title": "Managing a patient on ECMO",
+    "chapterId": 30,
+    "subchapterId": "30.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Managing a patient on ECMO"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-30"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-general-approach-to-poisoning",
+    "sourceIndex": 78,
+    "sourceDuration": "50 Min",
+    "sourceCategory": "TOXICOLOGY",
+    "title": "General Approach to Poisoning",
+    "chapterId": 23,
+    "subchapterId": "23.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "General Approach to Poisoning"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-23"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-acetaminophen-toxicity",
+    "sourceIndex": 79,
+    "sourceDuration": "35 Min",
+    "sourceCategory": "TOXICOLOGY",
+    "title": "Acetaminophen Toxicity",
+    "chapterId": 23,
+    "subchapterId": "23.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Acetaminophen Toxicity"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-23"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-pesticides",
+    "sourceIndex": 80,
+    "sourceDuration": "62 Min",
+    "sourceCategory": "TOXICOLOGY",
+    "title": "Pesticides",
+    "chapterId": 23,
+    "subchapterId": "23.4",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Pesticides"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-23"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-management-of-snake-bites",
+    "sourceIndex": 81,
+    "sourceDuration": "41 Min",
+    "sourceCategory": "TOXICOLOGY",
+    "title": "Management of Snake Bites",
+    "chapterId": 23,
+    "subchapterId": "23.4",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Management of Snake Bites"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-23"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-recreational-drug-toxicity",
+    "sourceIndex": 82,
+    "sourceDuration": "35 Min",
+    "sourceCategory": "TOXICOLOGY",
+    "title": "Recreational Drug Toxicity",
+    "chapterId": 23,
+    "subchapterId": "23.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Recreational Drug Toxicity"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-23"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-important-clinical-trials-in-critical-care",
+    "sourceIndex": 83,
+    "sourceDuration": "45 Min",
+    "sourceCategory": "MISCELLANEOUS TOPICS",
+    "title": "Important Clinical Trials in Critical Care",
+    "chapterId": 1,
+    "subchapterId": "1.3",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Important Clinical Trials in Critical Care"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-1"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-catheter-related-blood-stream-infection",
+    "sourceIndex": 84,
+    "sourceDuration": "33 Min",
+    "sourceCategory": "MISCELLANEOUS TOPICS",
+    "title": "Catheter Related Blood Stream Infection",
+    "chapterId": 1,
+    "subchapterId": "1.3",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Catheter Related Blood Stream Infection"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-1"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-obstetric-critical-care-general-considerations",
+    "sourceIndex": 85,
+    "sourceDuration": "22 Min",
+    "sourceCategory": "MISCELLANEOUS TOPICS",
+    "title": "Obstetric Critical Care-general Considerations",
+    "chapterId": 26,
+    "subchapterId": "26.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Obstetric Critical Care-general Considerations"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-26"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-obstetric-critical-care-pregnancy-specific",
+    "sourceIndex": 86,
+    "sourceDuration": "53 Min",
+    "sourceCategory": "MISCELLANEOUS TOPICS",
+    "title": "Obstetric Critical Care: Pregnancy Specific",
+    "chapterId": 26,
+    "subchapterId": "26.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Obstetric Critical Care: Pregnancy Specific"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-26"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-management-of-burn-patient-in-icu",
+    "sourceIndex": 87,
+    "sourceDuration": "60 Min",
+    "sourceCategory": "MISCELLANEOUS TOPICS",
+    "title": "Management Of Burn Patient In ICU",
+    "chapterId": 25,
+    "subchapterId": "25.1",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Management Of Burn Patient In ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-25"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-novel-chemo-and-toxicity-in-icu",
+    "sourceIndex": 88,
+    "sourceDuration": "45 Min",
+    "sourceCategory": "MISCELLANEOUS TOPICS",
+    "title": "Novel Chemo And Toxicity In ICU",
+    "chapterId": 31,
+    "subchapterId": "31.2",
+    "level": "master",
+    "priority": "P1",
+    "sourceTopics": [
+      "Novel Chemo And Toxicity In ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-31"
+    ],
+    "lastUpdated": "2026-10"
+  }
+]

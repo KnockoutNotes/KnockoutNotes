@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="bubble-menu.css">
   <link rel="stylesheet" href="border-glow.css">
   <link rel="stylesheet" href="mobile-app.css">
+  <link rel="stylesheet" href="critical-care-curriculum.css">
   <script src="content-config.js"></script>
   <script src="sheet-config.js"></script>
   <script src="analytics-config.js"></script>
@@ -52,7 +53,7 @@
       <span id="knHudPath3d">KN // CRITICAL CARE & CODE</span>
     </div>
 
-    <div class="nav-links">
+    <nav class="nav-links" aria-label="Main Navigation">
       <a href="index.html">Home</a>
       <a href="notes.html#pearls">Pearls</a>
       <a href="notes.html">Notes</a>
@@ -63,7 +64,7 @@
       <a href="critical-care.html">Critical Care and Code</a>
       <a href="recent-updates.html">Updates</a>
       <a href="resources.html">About</a>
-    </div>
+    </nav>
 
     <div class="nav-actions">
       <button class="nav-search-trigger" data-open-search aria-label="Open search">
@@ -74,7 +75,7 @@
       <button class="menu-btn" id="menuBtn3d" aria-label="Open menu" aria-expanded="false">⋮</button>
     </div>
   </div>
-  <div class="mobile-menu" id="mobileMenu3d">
+  <nav class="mobile-menu" id="mobileMenu3d" aria-label="Mobile Navigation">
     <a data-close-menu href="index.html">Home <span>→</span></a>
     <a data-close-menu href="notes.html#pearls">Pearls <span>→</span></a>
     <a data-close-menu href="notes.html">Notes <span>→</span></a>
@@ -85,7 +86,7 @@
     <a data-close-menu href="critical-care.html">Critical Care and Code <span>→</span></a>
     <a data-close-menu href="recent-updates.html">Updates <span>→</span></a>
     <a data-close-menu href="resources.html">About <span>→</span></a>
-  </div>
+  </nav>
 </header>
 
   <div class="spatial-stage">
@@ -131,9 +132,14 @@
         </a>
       </section>
 
+      <!-- NEET-SS Critical Care Master Curriculum Explorer (3D View) -->
+      <section class="section" style="padding-top:0;">
+        <div id="knCriticalCareCurriculum3d"></div>
+      </section>
+
       <div class="section-head fade">
         <div class="kicker-pill">🚨 INTENSIVE CARE UNIT</div>
-        <h2>Critical Care Visuals & Scoring</h2>
+        <h2>Critical Care Visuals &amp; Scoring</h2>
         <p>Ventilation mechanics, ICU scoring systems (SOFA, NEWS2, MEWS), hemodynamic shock algorithms, and resuscitation protocols.</p>
       </div>
 
@@ -265,7 +271,7 @@
       <span id="knHudPath">KN // CRITICAL CARE & CODE</span>
     </div>
 
-    <div class="nav-links">
+    <nav class="nav-links" aria-label="Main Navigation">
       <a href="index.html">Home</a>
       <a href="notes.html#pearls">Pearls</a>
       <a href="notes.html">Notes</a>
@@ -276,7 +282,7 @@
       <a href="critical-care.html">Critical Care and Code</a>
       <a href="recent-updates.html">Updates</a>
       <a href="resources.html">About</a>
-    </div>
+    </nav>
 
     <div class="nav-actions">
       <button class="nav-search-trigger" data-open-search aria-label="Open search">
@@ -287,7 +293,7 @@
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">⋮</button>
     </div>
   </div>
-  <div class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
     <a data-close-menu href="index.html">Home <span>→</span></a>
     <a data-close-menu href="notes.html#pearls">Pearls <span>→</span></a>
     <a data-close-menu href="notes.html">Notes <span>→</span></a>
@@ -298,7 +304,7 @@
     <a data-close-menu href="critical-care.html">Critical Care and Code <span>→</span></a>
     <a data-close-menu href="recent-updates.html">Updates <span>→</span></a>
     <a data-close-menu href="resources.html">About <span>→</span></a>
-  </div>
+  </nav>
 </header>
 
   <div class="spatial-stage">
@@ -342,6 +348,11 @@
             </div>
           </div>
         </a>
+      </section>
+
+      <!-- NEET-SS Critical Care Master Curriculum Explorer (Lite View) -->
+      <section class="section" style="padding-top:0;">
+        <div id="knCriticalCareCurriculum"></div>
       </section>
 
       <div class="section-head fade">
@@ -490,6 +501,7 @@
 <script src="page-motion.js"></script>
 <script src="kn-site-search.js"></script>
 <script src="content-library.js"></script>
+<script src="critical-care-curriculum.js"></script>
 <script>
   if (window.KnockoutNotesLibrary) {
     window.KnockoutNotesLibrary.init('criticalCare');

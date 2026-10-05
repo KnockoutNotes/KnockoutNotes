@@ -1,0 +1,71 @@
+[
+  {
+    "id": "mcq-cc-001",
+    "chapterId": 9,
+    "question": "A 58-year-old male with severe secondary ARDS is mechanically ventilated on Volume Control mode: Tidal Volume 420 mL (6 mL/kg PBW), PEEP 14 cmH2O, FiO2 0.70. On inspiratory pause, the plateau pressure is measured at 31 cmH2O. According to landmark clinical trials (Amato et al. and ARDSNet), what is the calculated driving pressure, and what is the optimal immediate ventilator adjustment?",
+    "options": [
+      "A. Driving pressure is 14 cmH2O; increase tidal volume to 480 mL to improve PaO2",
+      "B. Driving pressure is 17 cmH2O; reduce tidal volume to lower driving pressure ≤ 14 cmH2O",
+      "C. Driving pressure is 31 cmH2O; decrease PEEP to 8 cmH2O",
+      "D. Driving pressure is 17 cmH2O; increase PEEP to 20 cmH2O without altering tidal volume"
+    ],
+    "answer": "B",
+    "explanation": "Driving pressure (ΔP) is calculated as Plateau Pressure minus PEEP (Pplat - PEEP). Here, ΔP = 31 - 14 = 17 cmH2O. Landmark trials by Amato et al. (NEJM 2015) demonstrated that driving pressure > 14-15 cmH2O is strongly and independently associated with increased mortality in ARDS. When driving pressure exceeds 14 cmH2O, the tidal volume should be reduced (e.g. by 1 mL/kg PBW down to 5 or 4 mL/kg PBW) to de-escalate volutrauma and stress on the functional baby lung.",
+    "whyWrong": {
+      "A": "Driving pressure is 17 cmH2O (31 - 14), not 14. Increasing tidal volume would further increase plateau and driving pressure.",
+      "C": "31 cmH2O is the plateau pressure, not driving pressure.",
+      "D": "Increasing PEEP to 20 cmH2O without changing tidal volume would increase plateau pressure and could worsen hyperinflation unless compliance dramatically improves."
+    },
+    "examPearl": "NEET-SS EXAM PEARL: Driving pressure (Pplat - PEEP) is the single ventilator parameter that best correlates with survival in ARDS. Target ΔP ≤ 14 cmH2O.",
+    "hyperlinkedReference": {
+      "label": "Amato et al. Driving Pressure and Survival in ARDS (NEJM 2015; 372:747-755)",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1410639"
+    }
+  },
+  {
+    "id": "mcq-cc-002",
+    "chapterId": 5,
+    "question": "A 65-year-old female presents with septic shock secondary to acute pyelonephritis. After receiving 30 mL/kg of balanced crystalloids over 2 hours, her MAP is 54 mmHg and serum lactate is 4.2 mmol/L. Central venous access is being established. According to the 2026 Surviving Sepsis Campaign guidelines, which of the following represents the recommended initial vasoactive management?",
+    "options": [
+      "A. Delay vasopressor initiation until central venous catheter placement is confirmed by post-procedure radiograph",
+      "B. Start Dopamine infusion at 10 mcg/kg/min through a peripheral line",
+      "C. Initiate Norepinephrine via an antecubital peripheral vein immediately to restore MAP ≥ 65 mmHg without waiting for central access",
+      "D. Infuse 500 mL of 20% Albumin as a rapid bolus before starting any vasoactive agents"
+    ],
+    "answer": "C",
+    "explanation": "The 2026 Surviving Sepsis Campaign guidelines strongly emphasize avoiding delays in vasopressor initiation. Norepinephrine is the first-line vasopressor (target MAP ≥ 65 mmHg). In patients with persistent hypotension, starting norepinephrine peripherally (in a vein at or proximal to the antecubital fossa) is safe for short durations (< 24-48 hours) while central access is being established, significantly reducing time to achieve target MAP and mortality.",
+    "whyWrong": {
+      "A": "Delaying vasopressor initiation while awaiting central line placement prolongs tissue hypoperfusion and increases mortality (SOAP trial).",
+      "B": "Dopamine is associated with significantly higher tachyarrhythmias and excess mortality in septic shock compared to norepinephrine (SOAP II trial).",
+      "D": "Additional fluid boluses should not delay vasopressor initiation in refractory hypotension once the 30 mL/kg threshold is reached."
+    },
+    "examPearl": "NEET-SS EXAM PEARL: Norepinephrine is first-line in septic shock. Vasopressin (0.03 units/min) is the preferred second-line adjunct when norepinephrine requirements reach 0.25–0.5 mcg/kg/min.",
+    "hyperlinkedReference": {
+      "label": "Surviving Sepsis Campaign 2026 Guidelines",
+      "url": "https://www.sccm.org/SurvivingSepsisCampaign/Guidelines"
+    }
+  },
+  {
+    "id": "mcq-cc-003",
+    "chapterId": 13,
+    "question": "A 62-year-old critically ill patient with septic shock and multiorgan failure is receiving Continuous Veno-Venous Hemodiafiltration (CVVHDF) with Regional Citrate Anticoagulation (RCA). On routine laboratory monitoring, the systemic total serum calcium is 11.2 mg/dL (2.80 mmol/L) and systemic ionized calcium is 3.6 mg/dL (0.90 mmol/L). What is the total-to-ionized calcium ratio, and what complication does this indicate?",
+    "options": [
+      "A. Ratio is 1.8; indicates normal citrate metabolism and adequate anticoagulation",
+      "B. Ratio is 3.1; indicates Citrate Accumulation ('Citrate Lock') due to impaired hepatic metabolism",
+      "C. Ratio is 0.32; indicates acute hypercalcemic crisis requiring immediate furosemide",
+      "D. Ratio is 2.2; indicates citrate under-dosing and impending filter clotting"
+    ],
+    "answer": "B",
+    "explanation": "In Regional Citrate Anticoagulation, citrate chelates calcium to inhibit the coagulation cascade. When citrate accumulates (most commonly due to severe hepatic dysfunction, shock, or severe hypoperfusion preventing citrate conversion to bicarbonate in the liver/mitochondria), circulating calcium-citrate complexes rise. This causes an elevated total serum calcium but low ionized calcium. The Total-to-Ionized Calcium Ratio = 11.2 mg/dL / 3.6 mg/dL = 3.11 (or 2.80 mmol/L / 0.90 mmol/L = 3.11). A ratio > 2.5 is pathognomonic for Citrate Accumulation ('Citrate Lock'). Management: immediately reduce or stop citrate infusion, increase dialysate clearance, and maintain IV calcium supplementation.",
+    "whyWrong": {
+      "A": "A ratio of 1.8 is normal; here the ratio is 3.11.",
+      "C": "The patient actually has ionized hypocalcemia despite high total calcium because the calcium is bound to accumulated citrate.",
+      "D": "A ratio > 2.5 indicates citrate intoxication/accumulation, not under-dosing."
+    },
+    "examPearl": "NEET-SS EXAM PEARL: Citrate accumulation presents with: (1) Total-to-ionized calcium ratio > 2.5, (2) Worsening metabolic acidosis with elevated anion gap, (3) Rising requirement for systemic calcium substitution.",
+    "hyperlinkedReference": {
+      "label": "KDIGO Clinical Practice Guideline for AKI",
+      "url": "https://kdigo.org/guidelines/acute-kidney-injury/"
+    }
+  }
+]

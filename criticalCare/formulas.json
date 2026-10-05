@@ -1,0 +1,184 @@
+[
+  {
+    "id": "form-map",
+    "title": "Mean Arterial Pressure (MAP)",
+    "equation": "\\text{MAP} = \\text{DBP} + \\frac{1}{3}(\\text{SBP} - \\text{DBP}) = \\frac{2\\text{DBP} + \\text{SBP}}{3}",
+    "units": "mmHg",
+    "normalRange": "70–105 mmHg (Target in shock ≥ 65 mmHg)",
+    "hyperlinkedReference": {
+      "label": "Surviving Sepsis Campaign (SSC 2026 Guidelines)",
+      "url": "https://www.sccm.org/SurvivingSepsisCampaign/Guidelines"
+    },
+    "interpretation": "Determines global organ perfusion pressure. At physiological heart rates, diastole occupies ~2/3 of the cardiac cycle, hence the 2:1 weighting for DBP.",
+    "workedExample": "Patient with BP 85/40 mmHg: MAP = [2(40) + 85] / 3 = 165 / 3 = 55 mmHg. Below the critical threshold of 65 mmHg; requires immediate vasopressor titration.",
+    "examTrap": "NEET-SS TRAP: During severe tachycardia (HR > 120 bpm), diastole shortens disproportionately, making MAP approximate the simple arithmetic mean (SBP + DBP)/2 instead of the classic 1/3:2/3 formula."
+  },
+  {
+    "id": "form-cpp",
+    "title": "Cerebral Perfusion Pressure (CPP)",
+    "equation": "\\text{CPP} = \\text{MAP} - \\text{ICP} \\quad (\\text{or } \\text{MAP} - \\text{CVP}, \\text{ whichever is higher})",
+    "units": "mmHg",
+    "normalRange": "60–70 mmHg in adults with TBI",
+    "hyperlinkedReference": {
+      "label": "Brain Trauma Foundation (BTF Guidelines 4th Ed)",
+      "url": "https://braintrauma.org/guidelines/guidelines-for-the-management-of-severe-tbi-4th-ed"
+    },
+    "interpretation": "Net pressure driving cerebral blood flow across the cerebral vascular bed against intracranial pressure.",
+    "workedExample": "Patient with severe TBI: MAP is 85 mmHg, ICP monitor shows 22 mmHg. CPP = 85 - 22 = 63 mmHg (within therapeutic target 60-70 mmHg).",
+    "examTrap": "NEET-SS TRAP: Driving CPP > 70 mmHg using aggressive vasopressors does NOT improve neurological outcome and dramatically increases the risk of ARDS (5-fold increase in pulmonary edema; BTF Level IIB recommendation against CPP > 70 mmHg)."
+  },
+  {
+    "id": "form-do2",
+    "title": "Total Oxygen Delivery (DO2)",
+    "equation": "\\text{DO}_2 = \\text{CO} \\times \\text{CaO}_2 \\times 10 = \\text{CO} \\times [(1.34 \\times \\text{Hb} \\times \\text{SaO}_2) + (0.0031 \\times \\text{PaO}_2)] \\times 10",
+    "units": "mL/min (Indexed: 500–600 mL/min/m²)",
+    "normalRange": "900–1100 mL/min",
+    "hyperlinkedReference": {
+      "label": "Marino's The ICU Book (5th Edition)",
+      "url": "https://shop.lww.com/Marino-s-The-ICU-Book/p/9781451121186"
+    },
+    "interpretation": "Total volume of oxygen delivered to the systemic microcirculation per minute. The factor of 10 converts dL to Liters.",
+    "workedExample": "CO 5.0 L/min, Hb 14 g/dL, SaO2 98%, PaO2 95 mmHg: CaO2 = (1.34 × 14 × 0.98) + (0.0031 × 95) = 18.38 + 0.29 = 18.67 mL/dL. DO2 = 5.0 × 18.67 × 10 = 933.5 mL/min.",
+    "examTrap": "NEET-SS TRAP: Dissolved oxygen (0.0031 × PaO2) contributes less than 1.5% of total DO2 at normal atmospheric pressures. Doubling PaO2 from 100 to 200 mmHg only adds ~0.3 mL O2/dL blood, while increasing Hb by 1 g/dL adds 1.34 mL O2/dL (over 4 times more effective!)."
+  },
+  {
+    "id": "form-vo2",
+    "title": "Oxygen Consumption (VO2 - Fick Principle)",
+    "equation": "\\text{VO}_2 = \\text{CO} \\times (\\text{CaO}_2 - \\text{CvO}_2) \\times 10",
+    "units": "mL/min (Indexed: 110–160 mL/min/m²)",
+    "normalRange": "200–300 mL/min",
+    "hyperlinkedReference": {
+      "label": "Nunn's Applied Respiratory Physiology (9th Edition)",
+      "url": "https://www.elsevier.com/books/nunns-applied-respiratory-physiology/lumb/978-0-7020-7798-2"
+    },
+    "interpretation": "Volume of oxygen extracted by all peripheral tissues per minute.",
+    "workedExample": "CO 5.0 L/min, CaO2 19 mL/dL, CvO2 14 mL/dL: VO2 = 5.0 × (19 - 14) × 10 = 250 mL/min.",
+    "examTrap": "NEET-SS TRAP: The Fick Principle can be rearranged to calculate Cardiac Output: CO = VO2 / [(CaO2 - CvO2) × 10]. In severe hypothermia, VO2 plummets by ~7% per °C drop."
+  },
+  {
+    "id": "form-o2er",
+    "title": "Oxygen Extraction Ratio (O2ER)",
+    "equation": "\\text{O}_2\\text{ER} = \\frac{\\text{VO}_2}{\\text{DO}_2} = \\frac{\\text{CaO}_2 - \\text{CvO}_2}{\\text{CaO}_2}",
+    "units": "Percentage (%) or fraction",
+    "normalRange": "20–30% (0.20–0.30)",
+    "hyperlinkedReference": {
+      "label": "Principles of Critical Care (McGraw Hill)",
+      "url": "https://accessmedicine.mhmedical.com/book.aspx?bookid=1907"
+    },
+    "interpretation": "The fraction of delivered oxygen that tissues actually consume. When DO2 drops below critical DO2, O2ER reaches its physiological maximum (~50-60%) and dysoxia/lactate production ensues.",
+    "workedExample": "DO2 = 1000 mL/min, VO2 = 250 mL/min: O2ER = 250 / 1000 = 25%. In severe cardiogenic shock, O2ER may rise to 55%. In severe septic shock with microvascular shunting/cytopathic hypoxia, O2ER may drop pathologically to < 15%.",
+    "examTrap": "NEET-SS TRAP: Low O2ER in sepsis does NOT mean adequate tissue oxygenation; it reflects mitochondrial failure (cytopathic dysoxia) and microvascular shunting where blood bypasses capillary beds."
+  },
+  {
+    "id": "form-p-to-f",
+    "title": "PaO2 / FiO2 Ratio (Carrico Index)",
+    "equation": "\\text{P/F Ratio} = \\frac{\\text{PaO}_2}{\\text{FiO}_2}",
+    "units": "mmHg",
+    "normalRange": "> 400–500 mmHg (on room air: ~100 / 0.21 ≈ 476)",
+    "hyperlinkedReference": {
+      "label": "Berlin Definition of ARDS (JAMA 2012)",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/1160073"
+    },
+    "interpretation": "Primary oxygenation metric used to stratify severity of ARDS under positive end-expiratory pressure (PEEP ≥ 5 cmH2O): Mild (200–300), Moderate (100–200), Severe (≤ 100).",
+    "workedExample": "Patient on 60% oxygen (FiO2 0.60) has PaO2 of 72 mmHg: P/F = 72 / 0.60 = 120 mmHg. Classified as Moderate ARDS.",
+    "examTrap": "NEET-SS TRAP: The P/F ratio is PEEP-dependent! Increasing PEEP from 5 to 15 cmH2O can recruit alveoli and artificially inflate the P/F ratio from 95 to 160 mmHg without altering underlying disease severity."
+  },
+  {
+    "id": "form-rox-index",
+    "title": "ROX Index (HFNC Success Predictor)",
+    "equation": "\\text{ROX Index} = \\frac{(\\text{SpO}_2 / \\text{FiO}_2)}{\\text{Respiratory Rate}}",
+    "units": "Unitless index",
+    "normalRange": "> 4.88 (predicts HFNC success)",
+    "hyperlinkedReference": {
+      "label": "Roca et al. ROX Index Validation (Lancet ID / Intensive Care Med)",
+      "url": "https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(16)30141-9/fulltext"
+    },
+    "interpretation": "Bedside tool used in acute hypoxemic respiratory failure to identify patients at high risk of HFNC failure requiring prompt tracheal intubation.",
+    "workedExample": "SpO2 92% on FiO2 0.70, RR 28: (92 / 0.70) / 28 = 131.4 / 28 = 4.69. Assessed at 12 hours: < 4.88 suggests high failure risk; at 2 hours: < 2.85 is an immediate intubation trigger.",
+    "examTrap": "NEET-SS TRAP: In the formula, FiO2 MUST be entered as a decimal (0.70, NOT 70), while SpO2 is entered as a percentage (92, NOT 0.92)."
+  },
+  {
+    "id": "form-rsbi",
+    "title": "Rapid Shallow Breathing Index (RSBI / Yang-Tobin Index)",
+    "equation": "\\text{RSBI} = \\frac{\\text{Respiratory Rate (breaths/min)}}{\\text{Tidal Volume (Liters)}}",
+    "units": "breaths/min/L",
+    "normalRange": "< 105 breaths/min/L indicates weaning readiness",
+    "hyperlinkedReference": {
+      "label": "Yang & Tobin Weaning Index (NEJM 1991)",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJM199105233242101"
+    },
+    "interpretation": "Measured during 1 minute of spontaneous breathing on room air/T-piece or low CPAP without pressure support. Values > 105 strongly predict weaning failure (sensitivity 97%, specificity 64%).",
+    "workedExample": "Patient breathing at RR 24 bpm with spontaneous Vt 350 mL (0.35 L): RSBI = 24 / 0.35 = 68.6. Value is < 105, supporting extubation readiness.",
+    "examTrap": "NEET-SS TRAP: Measuring RSBI while the patient is on Pressure Support (e.g. PS 10 cmH2O) falsely inflates Vt and lowers RSBI, giving a false-negative reassurance! It MUST be measured on T-piece or CPAP 0-5 cmH2O."
+  },
+  {
+    "id": "form-driving-pressure",
+    "title": "Ventilator Driving Pressure (ΔP)",
+    "equation": "\\Delta\\text{P} = \\text{P}_{\\text{plat}} - \\text{PEEP} = \\frac{\\text{V}_t}{\\text{C}_{\\text{stat}}}",
+    "units": "cmH2O",
+    "normalRange": "Target ≤ 14–15 cmH2O in ARDS",
+    "hyperlinkedReference": {
+      "label": "Amato et al. Driving Pressure in ARDS (NEJM 2015)",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1410639"
+    },
+    "interpretation": "The single best mechanical ventilator variable correlating with survival in ARDS. Reflects tidal volume scaled to the functional 'baby lung' size (Cstat).",
+    "workedExample": "Pplat = 28 cmH2O, PEEP = 12 cmH2O: ΔP = 28 - 12 = 16 cmH2O. Exceeds target 14 cmH2O; requires decreasing tidal volume by 1 mL/kg PBW.",
+    "examTrap": "NEET-SS TRAP: Driving pressure uses PLATEAU pressure (measured via inspiratory pause), NEVER Peak pressure! Ppeak includes resistive airway pressure and will falsely exaggerate driving pressure."
+  },
+  {
+    "id": "form-anion-gap",
+    "title": "Serum Anion Gap (Albumin-Corrected Figge Formula)",
+    "equation": "\\text{AG} = [\\text{Na}^+] - ([\\text{Cl}^-] + [\\text{HCO}_3^-]) \\quad \\| \\quad \\text{AG}_{\\text{corr}} = \\text{AG} + 2.5 \\times (4.0 - [\\text{Albumin in g/dL}])",
+    "units": "mEq/L or mmol/L",
+    "normalRange": "8–12 mEq/L (in laboratories using ion-selective electrodes)",
+    "hyperlinkedReference": {
+      "label": "Figge-Jabor Serum Anion Gap Correction (Crit Care Med 1998)",
+      "url": "https://journals.lww.com/ccmjournal/abstract/1998/11000/anion_gap_and_hypoalbuminemia.19.aspx"
+    },
+    "interpretation": "Identifies unmeasured serum anions (lactate, ketoacids, sulfates, phosphates, toxic organic acids). For every 1 g/dL drop in serum albumin below 4.0 g/dL, the baseline anion gap falls by 2.5 mEq/L.",
+    "workedExample": "Na 140, Cl 108, HCO3 16, Albumin 2.0 g/dL. Observed AG = 140 - (108 + 16) = 16 mEq/L. AGcorr = 16 + 2.5 × (4.0 - 2.0) = 16 + 5.0 = 21 mEq/L. A severe High Anion Gap Metabolic Acidosis (HAGMA) is unmasked!",
+    "examTrap": "NEET-SS TRAP: Ignoring severe hypoalbuminemia can cause severe HAGMA (e.g. lactic acidosis) to appear as a normal anion gap metabolic acidosis (NAGMA), leading to catastrophic diagnostic errors."
+  },
+  {
+    "id": "form-winters",
+    "title": "Winter's Formula for Metabolic Acidosis Compensation",
+    "equation": "\\text{Expected PaCO}_2 = (1.5 \\times [\\text{HCO}_3^-]) + 8 \\pm 2",
+    "units": "mmHg",
+    "normalRange": "Valid for primary metabolic acidosis compensation",
+    "hyperlinkedReference": {
+      "label": "Rose & Post Clinical Physiology of Acid-Base",
+      "url": "https://www.mheducation.com/highered/product/clinical-physiology-acid-base-electrolyte-disorders-rose-post/M9780071346207.html"
+    },
+    "interpretation": "Predicts the expected respiratory compensation (hyperventilation dropping PaCO2) in pure metabolic acidosis.",
+    "workedExample": "HCO3 = 12 mEq/L. Expected PaCO2 = (1.5 × 12) + 8 ± 2 = 18 + 8 ± 2 = 26 ± 2 mmHg (range 24 to 28 mmHg). If measured PaCO2 is 36 mmHg, a coexisting respiratory acidosis is present. If measured PaCO2 is 18 mmHg, a coexisting respiratory alkalosis is present.",
+    "examTrap": "NEET-SS TRAP: Maximum respiratory compensation cannot drop PaCO2 below 10–12 mmHg (due to limits of diaphragm work of breathing). If expected PaCO2 is calculated < 10, patient will rapidly exhaust and arrest without mechanical ventilation."
+  },
+  {
+    "id": "form-kdigo-aki",
+    "title": "KDIGO Staging Criteria for Acute Kidney Injury",
+    "equation": "\\text{Stage 1: SCr } 1.5\\text{-}1.9\\times \\text{baseline or } \\ge 0.3\\text{ mg/dL rise}; \\text{ UO } < 0.5\\text{ mL/kg/h for } 6\\text{-}12\\text{ h}\n\\text{Stage 2: SCr } 2.0\\text{-}2.9\\times \\text{baseline}; \\text{ UO } < 0.5\\text{ mL/kg/h for } \\ge 12\\text{ h}\n\\text{Stage 3: SCr } 3.0\\times \\text{baseline or } \\ge 4.0\\text{ mg/dL or RRT initiation}; \\text{ UO } < 0.3\\text{ mL/kg/h for } \\ge 24\\text{ h or anuria } \\ge 12\\text{ h}",
+    "units": "Staging: 1, 2, 3",
+    "normalRange": "Stage 0 (No AKI)",
+    "hyperlinkedReference": {
+      "label": "KDIGO Clinical Practice Guideline for AKI",
+      "url": "https://kdigo.org/guidelines/acute-kidney-injury/"
+    },
+    "interpretation": "Standardized international classification of AKI severity based on serum creatinine increments and duration of oliguria/anuria.",
+    "workedExample": "Patient weighing 70 kg has urine output of 150 mL over 6 hours: 150 / (70 × 6) = 0.35 mL/kg/h. Classified as KDIGO Stage 1 AKI based on urine output criteria even before serum creatinine rises.",
+    "examTrap": "NEET-SS TRAP: The patient is staged according to whichever criterion (serum creatinine OR urine output) achieves the HIGHEST stage. Oliguria precedes creatinine rise by 24–48 hours!"
+  },
+  {
+    "id": "form-parkland",
+    "title": "Parkland Formula for Major Burns Resuscitation",
+    "equation": "\\text{Fluid (24 hours)} = 4\\text{ mL} \\times \\text{Weight (kg)} \\times \\%\\text{TBSA Burn (2nd & 3rd degree)}",
+    "units": "mL of Ringer's Lactate / Balanced Crystalloid",
+    "normalRange": "First 8 hours: 50% of total; Next 16 hours: remaining 50%",
+    "hyperlinkedReference": {
+      "label": "American Burn Association Practice Guidelines",
+      "url": "https://ameriburn.org/education/resources/practice-guidelines/"
+    },
+    "interpretation": "Standard guideline for fluid resuscitation in burns > 20% TBSA. Time zero is calculated from the EXACT TIME OF BURN INJURY, NOT the time of hospital/ICU arrival!",
+    "workedExample": "70 kg patient with 40% TBSA burn: Total 24h = 4 × 70 × 40 = 11,200 mL. Give 5,600 mL in the first 8 hours (700 mL/h), and 5,600 mL over the next 16 hours (350 mL/h).",
+    "examTrap": "NEET-SS TRAP: If the patient arrives 2 hours after the burn injury, the first half (5,600 mL) must be infused over the REMAINING 6 HOURS (not 8 hours)! Titrate to target urine output of 0.5–1.0 mL/kg/h."
+  }
+]

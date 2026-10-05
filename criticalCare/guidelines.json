@@ -1,0 +1,88 @@
+[
+  {
+    "id": "g-ssc-2026",
+    "society": "Surviving Sepsis Campaign (SCCM & ESICM)",
+    "title": "Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock",
+    "year": 2026,
+    "url": "https://www.sccm.org/SurvivingSepsisCampaign/Guidelines",
+    "level": "International Multidisciplinary Consensus",
+    "keyRecommendations": [
+      "Initial resuscitation: ≥ 30 mL/kg balanced crystalloids within first 3 hours of sepsis-induced hypoperfusion (Weak recommendation, low quality evidence; dynamically re-evaluate for fluid overload).",
+      "Vasopressors: Norepinephrine is the first-line vasopressor (Target MAP ≥ 65 mmHg). Vasopressin (fixed 0.03 units/min) is the preferred second-line agent when norepinephrine dose is escalating (0.25–0.5 mcg/kg/min).",
+      "Peripheral vasopressors: Strongly endorsed to start norepinephrine peripherally in a vein at or proximal to the antecubital fossa to avoid resuscitation delays while central line is placed.",
+      "Antimicrobials: Administer IV antimicrobials immediately (ideally within 1 hour) for septic shock; within 3 hours for sepsis without shock if infection is confirmed.",
+      "Corticosteroids: IV Hydrocortisone (200 mg/day continuous infusion) recommended for septic shock refractory to ongoing vasopressor requirement (≥ 4 hours).",
+      "Vitamin C: Strongly advised AGAINST IV vitamin C for sepsis or septic shock based on LOVIT, VICTAS, and ACTS trial evidence."
+    ]
+  },
+  {
+    "id": "g-kdigo-aki",
+    "society": "Kidney Disease: Improving Global Outcomes (KDIGO)",
+    "title": "KDIGO Clinical Practice Guideline for Acute Kidney Injury",
+    "year": 2024,
+    "url": "https://kdigo.org/guidelines/acute-kidney-injury/",
+    "level": "Global Clinical Practice Guideline",
+    "keyRecommendations": [
+      "Staging: Combine serum creatinine rise with duration of hourly oliguria/anuria.",
+      "Fluids: Use balanced crystalloids rather than 0.9% normal saline for AKI prevention and volume resuscitation.",
+      "Timing of Dialysis: Avoid routine accelerated or prophylactic RRT initiation in the absence of urgent classical triggers (severe hyperkalemia, refractory metabolic acidosis, pulmonary edema).",
+      "Anticoagulation in CRRT: Regional Citrate Anticoagulation (RCA) is recommended over systemic heparin as first-line for CRRT in patients without contraindications."
+    ]
+  },
+  {
+    "id": "g-btf-tbi",
+    "society": "Brain Trauma Foundation (BTF)",
+    "title": "Guidelines for the Management of Severe Traumatic Brain Injury (4th Edition Update)",
+    "year": 2025,
+    "url": "https://braintrauma.org/guidelines/guidelines-for-the-management-of-severe-tbi-4th-ed",
+    "level": "Evidence-Based Consensus Guideline",
+    "keyRecommendations": [
+      "ICP Threshold: Treatment should be initiated for intracranial pressure (ICP) > 22 mmHg.",
+      "CPP Target: Maintain Cerebral Perfusion Pressure (CPP) strictly between 60 and 70 mmHg. Avoid aggressive attempts to push CPP > 70 mmHg.",
+      "Blood Pressure: Maintain Systolic Blood Pressure (SBP) ≥ 100 mmHg for patients aged 50–69 years, or SBP ≥ 110 mmHg for patients aged 15–49 or > 70 years.",
+      "Hyperventilation: Prophylactic severe hyperventilation (PaCO2 < 25 mmHg) is strongly contraindicated due to cerebral ischemia."
+    ]
+  },
+  {
+    "id": "g-aha-erc-cpr",
+    "society": "American Heart Association (AHA) & European Resuscitation Council (ERC)",
+    "title": "International Consensus on CPR and Emergency Cardiovascular Care Science",
+    "year": 2025,
+    "url": "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines",
+    "level": "ILCOR International Consensus",
+    "keyRecommendations": [
+      "Compression Quality: Rate 100–120 cpm, depth 5–6 cm (2–2.4 inches), complete chest recoil, pause minimization.",
+      "Capnography: Continuous waveform capnography recommended to confirm tube placement, monitor CPR quality (ETCO2 < 10 mmHg indicates poor compressions), and identify ROSC.",
+      "Targeted Temperature Management (TTM): Actively prevent fever (temperature ≥ 37.8°C) targeting 36.0–37.5°C for at least 72 hours post-ROSC in comatose patients.",
+      "Neuroprognostication: Multimodal neuroprognostication should be delayed until at least 72 hours post-ROSC after excluding confounders (hypothermia, residual sedation)."
+    ]
+  },
+  {
+    "id": "g-elso-ecmo",
+    "society": "Extracorporeal Life Support Organization (ELSO)",
+    "title": "ELSO Guidelines for Adult Respiratory and Cardiac Extracorporeal Life Support",
+    "year": 2025,
+    "url": "https://www.elso.org/resources/guidelines.aspx",
+    "level": "International ELSO Consensus",
+    "keyRecommendations": [
+      "VV-ECMO in ARDS: Consider when PaO2/FiO2 < 80 for > 6 hours or PaO2/FiO2 < 50 for > 3 hours despite optimal lung-protective ventilation and prone positioning.",
+      "Ultra-Protective Ventilation: During VV-ECMO, reduce tidal volume to 2–3 mL/kg PBW, cap Pplat < 25 cmH2O, and keep driving pressure < 10 cmH2O.",
+      "VA-ECMO Limb Perfusion: A distal perfusion catheter (DPC) must be placed at the time of femoral arterial cannulation to prevent severe lower extremity ischemia.",
+      "ECPR: Implement structured ECPR systems with strict inclusion criteria (witnessed arrest, bystander CPR, < 60 min to cannulation)."
+    ]
+  },
+  {
+    "id": "g-sccm-padis",
+    "society": "Society of Critical Care Medicine (SCCM)",
+    "title": "Clinical Practice Guidelines for the Prevention and Management of Pain, Agitation/Sedation, Delirium, Immobility, and Sleep Disruption (PADIS)",
+    "year": 2024,
+    "url": "https://www.sccm.org/Clinical-Resources/Guidelines/Guidelines/PADIS-Guidelines",
+    "level": "Clinical Practice Guideline",
+    "keyRecommendations": [
+      "Analgosedation: Prioritize pain control before or instead of sedative administration (analgesia-first sedation).",
+      "Non-Benzodiazepine Sedation: Use propofol or dexmedetomidine over benzodiazepines (midazolam) for sedation in mechanically ventilated adults.",
+      "Delirium Screening: Routine monitoring of delirium using validated tools (CAM-ICU or ICDSC) at least once per nursing shift.",
+      "Early Mobility: Implement early rehabilitation and mobilization protocols as part of the ABCDEF bundle."
+    ]
+  }
+]

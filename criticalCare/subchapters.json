@@ -1,0 +1,134 @@
+[
+  {"id": "1.1", "chapterId": 1, "title": "ICU Admission, Triage Models & Discharge Criteria"},
+  {"id": "1.2", "chapterId": 1, "title": "Physiological Severity Scores & Organ Failure Systems"},
+  {"id": "1.3", "chapterId": 1, "title": "Quality Indicators, Infection Prevention Bundles & Patient Safety"},
+  {"id": "1.4", "chapterId": 1, "title": "End-of-Life Decisions, Brain Death Protocol & Organ Donation"},
+
+  {"id": "2.1", "chapterId": 2, "title": "Oxygen Cascade, DO2/VO2 Balances & Dysoxia Physiology"},
+  {"id": "2.2", "chapterId": 2, "title": "Cellular Hypoxia, Lactate Metabolism & Microcirculation"},
+  {"id": "2.3", "chapterId": 2, "title": "Neuroendocrine Stress Response & ICU-Acquired Immunoparalysis"},
+
+  {"id": "3.1", "chapterId": 3, "title": "Arterial Line Physics, Dynamic Response & CVP Waveform Analysis"},
+  {"id": "3.2", "chapterId": 3, "title": "Pulmonary Artery Catheterization, Thermodilution & O2 Flux"},
+  {"id": "3.3", "chapterId": 3, "title": "Dynamic Fluid Responsiveness (PLR, EEOT, PPV, SVV)"},
+  {"id": "3.4", "chapterId": 3, "title": "Venous Congestion Assessment & VExUS Grading"},
+
+  {"id": "4.1", "chapterId": 4, "title": "Classification, Pathophysiology & Hemodynamic Profiling of Shock"},
+  {"id": "4.2", "chapterId": 4, "title": "Vasopressors, Inotropes & Inodilators Pharmacology"},
+  {"id": "4.3", "chapterId": 4, "title": "Temporary Mechanical Circulatory Support (IABP & Impella)"},
+  {"id": "4.4", "chapterId": 4, "title": "Veno-Arterial ECMO for Refractory Cardiogenic Shock"},
+
+  {"id": "5.1", "chapterId": 5, "title": "Sepsis-3 Definitions, Pathobiology & Organ Dysfunction Criteria"},
+  {"id": "5.2", "chapterId": 5, "title": "2026 Surviving Sepsis Campaign: Resuscitation & Fluid Selection"},
+  {"id": "5.3", "chapterId": 5, "title": "Antimicrobial Strategies, Source Control & Biomarker Guidance"},
+  {"id": "5.4", "chapterId": 5, "title": "Adjunctive Therapeutics, Steroids & Blood Purification in Sepsis"},
+
+  {"id": "6.1", "chapterId": 6, "title": "Hypoxemic vs Hypercapnic Acute Respiratory Failure"},
+  {"id": "6.2", "chapterId": 6, "title": "Alveolar Gas Equation, A-a Gradient & Shunt Fractions"},
+  {"id": "6.3", "chapterId": 6, "title": "Respiratory System Mechanics, Compliance & Resistance"},
+
+  {"id": "7.1", "chapterId": 7, "title": "High-Flow Nasal Cannula (HFNC) Mechanics & ROX Index"},
+  {"id": "7.2", "chapterId": 7, "title": "Non-Invasive Positive Pressure Ventilation (CPAP & BiPAP)"},
+  {"id": "7.3", "chapterId": 7, "title": "NIV Failure Predictors, HACOR Score & Intubation Triggers"},
+
+  {"id": "8.1", "chapterId": 8, "title": "Invasive Ventilator Modes (VCV, PCV, PRVC, APRV, NAVA)"},
+  {"id": "8.2", "chapterId": 8, "title": "Ventilator Graphics: Scalars, Loops & Dynamic Auto-PEEP"},
+  {"id": "8.3", "chapterId": 8, "title": "Patient-Ventilator Asynchrony: Recognition & Management"},
+  {"id": "8.4", "chapterId": 8, "title": "Liberation Protocols, Spontaneous Breathing Trials & RSBI"},
+
+  {"id": "9.1", "chapterId": 9, "title": "ARDS Definitions (Berlin & Global Updated) & Pathophysiology"},
+  {"id": "9.2", "chapterId": 9, "title": "Lung-Protective Ventilation, Driving Pressure & Mechanical Power"},
+  {"id": "9.3", "chapterId": 9, "title": "Prone Positioning Protocol & Neuromuscular Blockade Evidence"},
+  {"id": "9.4", "chapterId": 9, "title": "Advanced ARDS Rescues, Inhaled Vasodilators & VV-ECMO Indications"},
+
+  {"id": "10.1", "chapterId": 10, "title": "Status Asthmaticus: Dynamic Hyperinflation & Ventilator Strategy"},
+  {"id": "10.2", "chapterId": 10, "title": "Acute Exacerbation of COPD: NIV Titration & Intrinsic PEEP Matching"},
+  {"id": "10.3", "chapterId": 10, "title": "Intubation Hazards, Permissive Hypercapnia & Bronchodilator Delivery"},
+
+  {"id": "11.1", "chapterId": 11, "title": "Acute Coronary Syndromes in ICU & Mechanical Complications"},
+  {"id": "11.2", "chapterId": 11, "title": "Acute Decompensated Heart Failure & Cardiogenic Pulmonary Edema"},
+  {"id": "11.3", "chapterId": 11, "title": "Acute Right Ventricular Failure & Pulmonary Hypertensive Crisis"},
+  {"id": "11.4", "chapterId": 11, "title": "Life-Threatening ICU Arrhythmias, AF with RVR & Electrical Storm"},
+
+  {"id": "12.1", "chapterId": 12, "title": "AHA/ERC Advanced Resuscitation Protocols & CPR Quality Metrics"},
+  {"id": "12.2", "chapterId": 12, "title": "Reversible Arrest Causes (5 Hs & 5 Ts) & Capnography Guided ROSC"},
+  {"id": "12.3", "chapterId": 12, "title": "Targeted Temperature Management (TTM-2) & Neuroprognostication"},
+
+  {"id": "13.1", "chapterId": 13, "title": "KDIGO Acute Kidney Injury Staging & Diagnostic Indices"},
+  {"id": "13.2", "chapterId": 13, "title": "Continuous Renal Replacement Therapy: Modalities & Clearance Physics"},
+  {"id": "13.3", "chapterId": 13, "title": "Regional Citrate Anticoagulation (RCA) & Prescribed Effluent Dosing"},
+  {"id": "13.4", "chapterId": 13, "title": "Severe Dysnatremias, Dyskalemias & Divalent Cation Disorders"},
+
+  {"id": "14.1", "chapterId": 14, "title": "Stepwise Arterial Blood Gas Interpretation Framework"},
+  {"id": "14.2", "chapterId": 14, "title": "Albumin-Corrected Anion Gap, Delta Ratio & Winter's Formula"},
+  {"id": "14.3", "chapterId": 14, "title": "Stewart Physicochemical Approach (SIDa, SIDe, Strong Ion Gap)"},
+
+  {"id": "15.1", "chapterId": 15, "title": "Monro-Kellie Doctrine, ICP Waveforms & CPP Target Optimization"},
+  {"id": "15.2", "chapterId": 15, "title": "Tiered Management of Intracranial Hypertension & Brain Trauma Guidelines"},
+  {"id": "15.3", "chapterId": 15, "title": "Aneurysmal SAH, Vasospasm Prevention & Spontaneous ICH Blood Pressure Control"},
+  {"id": "15.4", "chapterId": 15, "title": "Refractory Status Epilepticus & Continuous EEG Burst Suppression"},
+
+  {"id": "16.1", "chapterId": 16, "title": "PADIS Guidelines: Analgosedation & Dexmedetomidine Protocols"},
+  {"id": "16.2", "chapterId": 16, "title": "ICU Delirium Subtypes, CAM-ICU Tool & Prevention Bundles"},
+  {"id": "16.3", "chapterId": 16, "title": "Neuromuscular Blockade Monitoring & ICU-Acquired Weakness"},
+
+  {"id": "17.1", "chapterId": 17, "title": "Altered Pharmacokinetics in Critical Illness (Capillary Leak & ARC)"},
+  {"id": "17.2", "chapterId": 17, "title": "Therapeutic Drug Monitoring of Antimicrobials in ICU"},
+  {"id": "17.3", "chapterId": 17, "title": "Emergency Reversal Agents for Anticoagulants & Antiplatelets"},
+
+  {"id": "18.1", "chapterId": 18, "title": "Severe Pneumonias: CAP, HAP & Ventilator-Associated Pneumonia"},
+  {"id": "18.2", "chapterId": 18, "title": "MDR Gram-Negative Pathogens: ESBL, CRE & Acinetobacter Therapy"},
+  {"id": "18.3", "chapterId": 18, "title": "Invasive Fungal Infections: Candidiasis, Aspergillosis & Antifungals"},
+  {"id": "18.4", "chapterId": 18, "title": "Tropical Infections in ICU: Severe Dengue, Malaria & Leptospirosis"},
+
+  {"id": "19.1", "chapterId": 19, "title": "Severe Acute Pancreatitis: Revised Atlanta Staging & Resuscitation"},
+  {"id": "19.2", "chapterId": 19, "title": "Acute Liver Failure, King's College Criteria & Cerebral Edema Control"},
+  {"id": "19.3", "chapterId": 19, "title": "Acute Upper GI Bleeding, Variceal Hemorrhage & TIPS"},
+  {"id": "19.4", "chapterId": 19, "title": "Intra-Abdominal Hypertension, Abdominal Compartment Syndrome & Mesenteric Ischemia"},
+
+  {"id": "20.1", "chapterId": 20, "title": "Diabetic Ketoacidosis & Hyperosmolar Hyperglycemic State Protocols"},
+  {"id": "20.2", "chapterId": 20, "title": "Thyroid Storm (Burch-Wartofsky Scale) & Myxedema Coma"},
+  {"id": "20.3", "chapterId": 20, "title": "Acute Adrenal Crisis & Cirrhotic Adrenal Exhaustion in Shock"},
+
+  {"id": "21.1", "chapterId": 21, "title": "Enteral vs Parenteral Nutrition: Timing, Calories & High-Protein Dosing"},
+  {"id": "21.2", "chapterId": 21, "title": "Refeeding Syndrome Pathophysiology, Monitoring & Calorie Advancement"},
+
+  {"id": "22.1", "chapterId": 22, "title": "Restrictive vs Liberal Transfusion Strategies & Blood Components"},
+  {"id": "22.2", "chapterId": 22, "title": "Viscoelastic Assays (TEG & ROTEM) Algorithms for Hemostasis"},
+  {"id": "22.3", "chapterId": 22, "title": "Massive Transfusion Protocol & Damage Control Resuscitation"},
+  {"id": "22.4", "chapterId": 22, "title": "HIT Type II (4Ts Score) & Acute Transfusion Reactions (TRALI vs TACO)"},
+
+  {"id": "23.1", "chapterId": 23, "title": "General Toxidromes & Approach to Toxic Ingestion in ICU"},
+  {"id": "23.2", "chapterId": 23, "title": "Acetaminophen Toxicity & IV N-Acetylcysteine Protocol"},
+  {"id": "23.3", "chapterId": 23, "title": "Cardiotoxic Drug Overdose (Beta-Blocker/CCB High-Dose Insulin Euglycemia)"},
+  {"id": "23.4", "chapterId": 23, "title": "Pesticides, Toxic Alcohols, Cyanide & Severe Snake Envenomation"},
+
+  {"id": "24.1", "chapterId": 24, "title": "ATLS Resuscitation, Primary/Secondary Survey & Permissive Hypotension"},
+  {"id": "24.2", "chapterId": 24, "title": "Traumatic Hemorrhagic Shock, Tranexamic Acid & Triad of Death"},
+  {"id": "24.3", "chapterId": 24, "title": "Severe Pelvic Ring Fractures, Crush Syndrome & Fat Embolism"},
+
+  {"id": "25.1", "chapterId": 25, "title": "Major Burns TBSA Calculation, Parkland Resuscitation & Fluid Creep"},
+  {"id": "25.2", "chapterId": 25, "title": "Inhalational Burn Injury, Carbon Monoxide, Cyanide & Escharotomy"},
+
+  {"id": "26.1", "chapterId": 26, "title": "Severe Preeclampsia, Eclampsia & Magnesium Neuroprotection"},
+  {"id": "26.2", "chapterId": 26, "title": "Massive Postpartum Hemorrhage & Amniotic Fluid Embolism"},
+  {"id": "26.3", "chapterId": 26, "title": "Maternal Cardiac Arrest & Resuscitative Hysterotomy (Perimortem C-Section)"},
+
+  {"id": "27.1", "chapterId": 27, "title": "Paediatric Shock, Sepsis Resuscitation & Weight-Based Formulas"},
+  {"id": "27.2", "chapterId": 27, "title": "Paediatric Upper Airway Obstruction, Status Asthmaticus & DKA"},
+
+  {"id": "28.1", "chapterId": 28, "title": "Ultrasound-Guided Central Line & Arterial Cannulation Techniques"},
+  {"id": "28.2", "chapterId": 28, "title": "Percutaneous Dilatational Tracheostomy & Emergency Tube Thoracostomy"},
+
+  {"id": "29.1", "chapterId": 29, "title": "Critical Care Lung Ultrasound (BLUE Protocol & Artifact Patterns)"},
+  {"id": "29.2", "chapterId": 29, "title": "Focused Cardiac Ultrasound (FOCUS) & Right Ventricular Strain Signs"},
+  {"id": "29.3", "chapterId": 29, "title": "Venous Congestion Grading (VExUS Score Protocol)"},
+
+  {"id": "30.1", "chapterId": 30, "title": "Veno-Venous (VV) ECMO for Severe ARDS & Ultra-Protective Vent"},
+  {"id": "30.2", "chapterId": 30, "title": "Veno-Arterial (VA) ECMO, Harlequin Syndrome & LV Unloading"},
+  {"id": "30.3", "chapterId": 30, "title": "Extracorporeal Cardiopulmonary Resuscitation (ECPR) Patient Selection"},
+
+  {"id": "31.1", "chapterId": 31, "title": "Neutropenic Sepsis & Infiltrates in the Immunocompromised"},
+  {"id": "31.2", "chapterId": 31, "title": "Tumor Lysis Syndrome & Novel Chemotherapy / CAR-T Toxicities"},
+  {"id": "31.3", "chapterId": 31, "title": "Accidental Hypothermia, Active Rewarming & Severe Heat Stroke"}
+]

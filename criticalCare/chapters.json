@@ -1,0 +1,281 @@
+[
+  {
+    "id": 1,
+    "slug": "fundamentals",
+    "title": "Fundamentals of Critical Care & ICU Systems",
+    "icon": "🏥",
+    "examWeight": "High (5-7 MCQs)",
+    "description": "ICU admission triage, physiological severity scores (APACHE, SAPS, SOFA, MPM), organ failure criteria, quality bundles, human factors, brain death protocols, and end-of-life ethics.",
+    "subchaptersCount": 4
+  },
+  {
+    "id": 2,
+    "slug": "physiology",
+    "title": "Applied Physiology of Critical Illness",
+    "icon": "🫀",
+    "examWeight": "Core High-Yield (6-8 MCQs)",
+    "description": "Oxygen transport, DO2/VO2 relationships, Fick principle, critical DO2 threshold, cellular dysoxia, Type A vs Type B lactate metabolism, microcirculation, and systemic inflammatory response.",
+    "subchaptersCount": 3
+  },
+  {
+    "id": 3,
+    "slug": "hemodynamics",
+    "title": "Advanced Hemodynamic Monitoring & Echocardiography",
+    "icon": "📈",
+    "examWeight": "Extremely High (8-10 MCQs)",
+    "description": "Arterial line physics, damping coefficient, CVP waveform analysis, PAC thermodilution, dynamic fluid responsiveness (PLR, EEOT, PPV, SVV), ScvO2 vs SvO2, PCO2 gap, and VExUS venous congestion score.",
+    "subchaptersCount": 4
+  },
+  {
+    "id": 4,
+    "slug": "shock",
+    "title": "Shock Syndromes & Vasoactive Therapeutics",
+    "icon": "⚡",
+    "examWeight": "Extremely High (8-10 MCQs)",
+    "description": "Classification & hemodynamic profiling of shock (hypovolemic, cardiogenic, distributive, obstructive), vasopressors, inotropes, inodilators, and mechanical circulatory support (IABP, Impella, VA-ECMO).",
+    "subchaptersCount": 4
+  },
+  {
+    "id": 5,
+    "slug": "sepsis",
+    "title": "Sepsis, Septic Shock & Host Response (2026 SSC)",
+    "icon": "🦠",
+    "examWeight": "Must-Know Master Domain (10-12 MCQs)",
+    "description": "Sepsis-3 criteria, SOFA dynamics, 2026 Surviving Sepsis Campaign guideline recommendations, crystalloids vs albumin, vasopressor escalation, antimicrobial timing, corticosteroids, and blood purification.",
+    "subchaptersCount": 4
+  },
+  {
+    "id": 6,
+    "slug": "respiratory-failure",
+    "title": "Acute Respiratory Failure & Mechanics",
+    "icon": "🫁",
+    "examWeight": "High (5-7 MCQs)",
+    "description": "Type 1 vs Type 2 respiratory failure, Alveolar Gas Equation, A-a oxygen gradient, compliance (static vs dynamic), airway resistance, and equation of motion.",
+    "subchaptersCount": 3
+  },
+  {
+    "id": 7,
+    "slug": "noninvasive-respiratory",
+    "title": "Non-Invasive Respiratory Support (HFNC & NIV)",
+    "icon": "💨",
+    "examWeight": "High (5-6 MCQs)",
+    "description": "High-Flow Nasal Cannula (HFNC), physiological mechanisms, ROX index thresholds, CPAP vs BiPAP, evidence-based indications (COPD, CPE), contraindications, and failure predictors.",
+    "subchaptersCount": 3
+  },
+  {
+    "id": 8,
+    "slug": "mechanical-ventilation",
+    "title": "Invasive Mechanical Ventilation & Graphics",
+    "icon": "⚙️",
+    "examWeight": "Must-Know Master Domain (10-12 MCQs)",
+    "description": "Core ventilator modes (VCV, PCV, PRVC, APRV, NAVA), scalar and loop interpretation, auto-PEEP quantification, patient-ventilator asynchronies, SBT trials, RSBI, and liberation protocols.",
+    "subchaptersCount": 4
+  },
+  {
+    "id": 9,
+    "slug": "ards",
+    "title": "Acute Respiratory Distress Syndrome (ARDS)",
+    "icon": "🔬",
+    "examWeight": "Must-Know Master Domain (10-12 MCQs)",
+    "description": "Berlin & Global ARDS definitions, low tidal volume protocol (ARDSNet), driving pressure, mechanical power, prone positioning (PROSEVA), neuromuscular blockade (ROSE/ACURASYS), and recruitment.",
+    "subchaptersCount": 4
+  },
+  {
+    "id": 10,
+    "slug": "obstructive-airway",
+    "title": "Obstructive Airway Emergencies in ICU (Asthma & COPD)",
+    "icon": "🌬️",
+    "examWeight": "High (5-7 MCQs)",
+    "description": "Status asthmaticus, intubation hazards, dynamic hyperinflation, controlled hypoventilation & permissive hypercapnia, auto-PEEP mitigation, and acute severe COPD exacerbation pathways.",
+    "subchaptersCount": 3
+  },
+  {
+    "id": 11,
+    "slug": "cardiac-critical-care",
+    "title": "Cardiac Critical Care & Acute Coronary Syndromes",
+    "icon": "❤️",
+    "examWeight": "High (6-8 MCQs)",
+    "description": "STEMI/NSTEMI in the critically ill, mechanical complications of AMI, acute heart failure (Forrester classification), acute RV failure, pulmonary hypertension crisis, and ICU dysrhythmias.",
+    "subchaptersCount": 4
+  },
+  {
+    "id": 12,
+    "slug": "cardiac-arrest-resuscitation",
+    "title": "Resuscitation, Cardiac Arrest & Post-ROSC Care",
+    "icon": "🚨",
+    "examWeight": "High (6-8 MCQs)",
+    "description": "AHA/ERC resuscitation guidelines, high-quality CPR metrics, capnography in CPR, reversible Hs & Ts, Targeted Temperature Management (TTM-2), and multimodal post-cardiac arrest neuroprognostication.",
+    "subchaptersCount": 3
+  },
+  {
+    "id": 13,
+    "slug": "renal-crrt",
+    "title": "Acute Kidney Injury & Renal Replacement Therapy",
+    "icon": "🧪",
+    "examWeight": "Master Domain (8-10 MCQs)",
+    "description": "KDIGO AKI staging, FeNa/FeUrea, HRS-AKI criteria, CRRT modalities (SCUF, CVVH, CVVHD, CVVHDF), effluent dosing, regional citrate anticoagulation (RCA), and severe dysnatremias/dyskalemias.",
+    "subchaptersCount": 4
+  },
+  {
+    "id": 14,
+    "slug": "acid-base",
+    "title": "Complex Acid-Base Disorders & Blood Gas Analysis",
+    "icon": "⚖️",
+    "examWeight": "Master Domain (8-10 MCQs)",
+    "description": "Stepwise ABG interpretation, albumin-corrected Anion Gap, Delta ratio, Winter's formula compensation rules, Stewart physicochemical approach (SIDa, SIDe, SIG), and mixed toxic metabolic acidoses.",
+    "subchaptersCount": 3
+  },
+  {
+    "id": 15,
+    "slug": "neurocritical-care",
+    "title": "Neurocritical Care & Raised ICP Management",
+    "icon": "🧠",
+    "examWeight": "Master Domain (8-10 MCQs)",
+    "description": "Monro-Kellie doctrine, ICP waveforms & Lundberg waves, CPP targets, tiered ICP management protocols, BTF guidelines for severe TBI, aSAH & vasospasm, spontaneous ICH, and status epilepticus.",
+    "subchaptersCount": 4
+  },
+  {
+    "id": 16,
+    "slug": "sedation-delirium",
+    "title": "Sedation, Analgesia, Delirium & Neuromuscular Blockade",
+    "icon": "😴",
+    "examWeight": "High (5-7 MCQs)",
+    "description": "PADIS guidelines, analgosedation, dexmedetomidine vs propofol, delirium screening (CAM-ICU), ICU-acquired weakness (CIP vs CIM), and neuromuscular monitoring.",
+    "subchaptersCount": 3
+  },
+  {
+    "id": 17,
+    "slug": "pharmacology",
+    "title": "Critical Care Applied Pharmacology & Pharmacokinetics",
+    "icon": "💊",
+    "examWeight": "High (6-8 MCQs)",
+    "description": "Altered pharmacokinetics in critical illness (capillary leak Vd, Augmented Renal Clearance ARC, hypoalbuminemia), therapeutic drug monitoring, vasoactive pharmacology, and anticoagulant reversal agents.",
+    "subchaptersCount": 3
+  },
+  {
+    "id": 18,
+    "slug": "infections-antimicrobials",
+    "title": "Severe ICU Infections & Antimicrobial Stewardship",
+    "icon": "🧫",
+    "examWeight": "Master Domain (8-10 MCQs)",
+    "description": "Severe pneumonia (CAP, HAP, VAP), MDR Gram-negative pathogens (ESBL, CRE, Acinetobacter), invasive candidiasis/aspergillosis, PK/PD dosing of beta-lactams, and tropical infections (dengue, leptospirosis).",
+    "subchaptersCount": 4
+  },
+  {
+    "id": 19,
+    "slug": "gi-hepatic",
+    "title": "Gastrointestinal, Hepatic & Abdominal Catastrophes",
+    "icon": "🩺",
+    "examWeight": "High (6-8 MCQs)",
+    "description": "Severe acute pancreatitis (Revised Atlanta), Acute Liver Failure (King's College Criteria), ACLF, variceal bleeding, intra-abdominal hypertension, Abdominal Compartment Syndrome (ACS), and acute mesenteric ischemia.",
+    "subchaptersCount": 4
+  },
+  {
+    "id": 20,
+    "slug": "endocrine-metabolic",
+    "title": "Endocrine & Metabolic Crises",
+    "icon": "⚡",
+    "examWeight": "High (5-6 MCQs)",
+    "description": "Diabetic Ketoacidosis (DKA), Hyperosmolar Hyperglycemic State (HHS), intensive insulin protocols, thyroid storm (Burch-Wartofsky score), myxedema coma, and acute adrenal crisis.",
+    "subchaptersCount": 3
+  },
+  {
+    "id": 21,
+    "slug": "nutrition-metabolism",
+    "title": "Critical Care Clinical Nutrition & Metabolism",
+    "icon": "🥗",
+    "examWeight": "Moderate (4-5 MCQs)",
+    "description": "ESPEN/ASPEN guidelines, enteral nutrition timing, indirect calorimetry vs predictive targets, protein dosing, refeeding syndrome prevention, and gastric residual volume management.",
+    "subchaptersCount": 2
+  },
+  {
+    "id": 22,
+    "slug": "hematology-transfusion",
+    "title": "ICU Hematology, Hemostasis & Transfusion Medicine",
+    "icon": "🩸",
+    "examWeight": "High (6-8 MCQs)",
+    "description": "Restrictive vs liberal RBC transfusion triggers (TRICC, TRISS), Massive Transfusion Protocols (MTP), viscoelastic hemostatic assays (TEG & ROTEM), HIT Type II (4Ts score), and acute transfusion reactions (TRALI vs TACO).",
+    "subchaptersCount": 4
+  },
+  {
+    "id": 23,
+    "slug": "toxicology",
+    "title": "Clinical Toxicology & Toxidromes",
+    "icon": "☠️",
+    "examWeight": "High (6-8 MCQs)",
+    "description": "General toxidrome recognition, acetaminophen toxicity (Rumack-Matthew nomogram), organophosphates & carbamates, beta-blocker/CCB overdose (high-dose insulin euglycemia), toxic alcohols, and snake bite envenomation.",
+    "subchaptersCount": 4
+  },
+  {
+    "id": 24,
+    "slug": "trauma-resuscitation",
+    "title": "Polytrauma & Damage Control Resuscitation",
+    "icon": "🩹",
+    "examWeight": "High (6-7 MCQs)",
+    "description": "ATLS principles, Damage Control Resuscitation (DCR), permissive hypotension, tranexamic acid (CRASH-2), severe pelvic ring fractures, crush syndrome, and fat embolism syndrome.",
+    "subchaptersCount": 3
+  },
+  {
+    "id": 25,
+    "slug": "burns",
+    "title": "Major Burns & Inhalational Injuries",
+    "icon": "🔥",
+    "examWeight": "Moderate to High (4-5 MCQs)",
+    "description": "Rule of Nines, Lund-Browder charts, Parkland formula fluid resuscitation titration, fluid creep prevention, carbon monoxide/cyanide inhalation, and escharotomy criteria.",
+    "subchaptersCount": 2
+  },
+  {
+    "id": 26,
+    "slug": "obstetric-critical-care",
+    "title": "Obstetric Critical Care & Maternal Emergencies",
+    "icon": "🤰",
+    "examWeight": "High (5-6 MCQs)",
+    "description": "Severe preeclampsia/eclampsia, HELLP syndrome, massive postpartum hemorrhage, Amniotic Fluid Embolism (AFE), and perimortem cesarean delivery (resuscitative hysterotomy).",
+    "subchaptersCount": 3
+  },
+  {
+    "id": 27,
+    "slug": "pediatric-critical-care",
+    "title": "Paediatric & Neonatal Emergencies in Adult ICU",
+    "icon": "👶",
+    "examWeight": "Moderate (4-5 MCQs)",
+    "description": "Paediatric shock recognition, weight-based resuscitation formulas, status epilepticus, croup vs epiglottitis, paediatric mechanical ventilation, and pediatric DKA protocols.",
+    "subchaptersCount": 2
+  },
+  {
+    "id": 28,
+    "slug": "procedures-devices",
+    "title": "Critical Care Bedside Procedures & Invasive Devices",
+    "icon": "💉",
+    "examWeight": "High (5-6 MCQs)",
+    "description": "Ultrasound-guided vascular access, percutaneous dilatational tracheostomy (Ciaglia technique), tube thoracostomy, lumbar puncture, and intraosseous infusion.",
+    "subchaptersCount": 2
+  },
+  {
+    "id": 29,
+    "slug": "ultrasound-pocus",
+    "title": "Critical Care Ultrasound & Echocardiography (POCUS)",
+    "icon": "📡",
+    "examWeight": "High (6-8 MCQs)",
+    "description": "Lung ultrasound (BLUE protocol, A/B lines, lung sliding, lung point, shred sign), focused cardiac ultrasound (FOCUS), McConnell's sign, tamponade physiology, and VExUS score.",
+    "subchaptersCount": 3
+  },
+  {
+    "id": 30,
+    "slug": "ecmo-organ-support",
+    "title": "Extracorporeal Membrane Oxygenation (ECMO) & ECPR",
+    "icon": "🔄",
+    "examWeight": "Must-Know Master Domain (8-10 MCQs)",
+    "description": "ELSO guidelines, VV-ECMO vs VA-ECMO physiology, cannulation configurations, distal perfusion catheter, sweep gas vs blood flow, Harlequin syndrome, LV distension management, and ECPR.",
+    "subchaptersCount": 3
+  },
+  {
+    "id": 31,
+    "slug": "special-icu-oncology",
+    "title": "Special ICU Populations, Oncology & Environmental Crises",
+    "icon": "🛡️",
+    "examWeight": "Moderate to High (4-5 MCQs)",
+    "description": "Febrile neutropenia, Tumor Lysis Syndrome (Cairo-Bishop criteria), novel chemotherapy toxicities (CAR-T cytokine release syndrome, immune checkpoint inhibitors), accidental hypothermia, and heat stroke.",
+    "subchaptersCount": 3
+  }
+]
