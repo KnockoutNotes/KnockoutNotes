@@ -985,6 +985,7 @@
                   placeholder="🔍 Search all 171 topics &amp; drugs (e.g. Propofol, RSI, TOF)..."
                   value="${esc(searchFilter)}" autocomplete="off">
               </div>
+              ${activeDomain === 'critical' ? `<button class="ron-mcq-pill-btn" title="High Yield MCQs — Coming Soon" disabled>📝 High Yield MCQs</button>` : ''}
             </div>
 
             <!-- New 3-Domain Vertical & Single Horizontal Category Track -->
@@ -1167,6 +1168,7 @@
                   placeholder="🔍 Search all 171 topics &amp; drugs..."
                   value="${esc(searchFilter)}" autocomplete="off">
               </div>
+              ${activeDomain === 'critical' ? `<button class="ron-mcq-pill-btn" title="High Yield MCQs — Coming Soon" disabled>📝 High Yield MCQs</button>` : ''}
             </div>
 
             <!-- New 3-Domain Vertical & Single Horizontal Category Track -->
