@@ -128,6 +128,15 @@ export function getCategoryDomain(cat, chapterId) {
     return 'critical_care';
   }
 
+  // Case Discussions Domain (Clinical Cases)
+  const caseCats = [
+    'cases', 'case', 'case_cardiac', 'case_resp', 'case_neuro',
+    'case_obstetric', 'case_pediatric', 'case_general_subspecialty', 'case_trauma_ortho_special'
+  ];
+  if (caseCats.includes(c) || c.startsWith('case_') || c.startsWith('case-') || id.startsWith('case-') || id.startsWith('case_')) {
+    return 'cases';
+  }
+
   return 'anaesthesia';
 }
 
@@ -160,6 +169,7 @@ export function isFreeChapter(chapterId, cat) {
 export function getDefaultPriceForDomain(domain) {
   if (domain === 'drugs') return 12.0;
   if (domain === 'critical_care') return 19.0;
+  if (domain === 'cases') return 19.0;
   return 9.0; // anaesthesia default
 }
 

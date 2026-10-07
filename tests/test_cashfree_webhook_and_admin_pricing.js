@@ -257,12 +257,21 @@ function checkAdminAuth(userEmail, adminSessionValid) {
       return 'critical_care';
     }
 
+    const caseCats = [
+      'cases', 'case', 'case_cardiac', 'case_resp', 'case_neuro',
+      'case_obstetric', 'case_pediatric', 'case_general_subspecialty', 'case_trauma_ortho_special'
+    ];
+    if (caseCats.includes(c) || c.startsWith('case_') || c.startsWith('case-') || id.startsWith('case-') || id.startsWith('case_')) {
+      return 'cases';
+    }
+
     return 'anaesthesia';
   }
 
   function getDefaultPriceForDomain(domain) {
     if (domain === 'drugs') return 12.0;
     if (domain === 'critical_care') return 19.0;
+    if (domain === 'cases') return 19.0;
     return 9.0;
   }
 
@@ -278,6 +287,7 @@ function checkAdminAuth(userEmail, adminSessionValid) {
   // Verification: Category defaults
   assert.strictEqual(resolvePrice(null, 'anaesthesia', 'airway-assessment'), 9.0, 'Anaesthesia default must be ₹9');
   assert.strictEqual(resolvePrice(null, 'cc_neuro', 'cc-tbi-icp'), 19.0, 'Critical care default must be ₹19');
+  assert.strictEqual(resolvePrice(null, 'case_cardiac', 'case-mitral-stenosis-phtn'), 19.0, 'Case discussion default must be ₹19');
   assert.strictEqual(resolvePrice(null, 'induction', 'propofol'), 12.0, 'Drug monograph default must be ₹12');
 
   // Verification: Legacy 49 mapped to category defaults

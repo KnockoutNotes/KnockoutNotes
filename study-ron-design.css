@@ -538,9 +538,10 @@ body.dark .ron-domain-nav-system {
   flex-direction: column;
   gap: 6px;
   flex-shrink: 0;
-  width: 195px;
+  width: 232px;
   border-right: 1.5px solid rgba(0, 0, 0, 0.06);
   padding-right: 14px;
+  box-sizing: border-box;
 }
 
 body.dark .ron-domain-vertical-menu {
@@ -551,21 +552,23 @@ body.dark .ron-domain-vertical-menu {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 9px 12px;
+  gap: 8px;
+  padding: 8px 10px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(0, 0, 0, 0.05);
   color: var(--ron-text-secondary);
   font-size: 12px;
-  font-weight: 750;
-  letter-spacing: 0.04em;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-align: left;
   user-select: none;
   min-height: 40px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 body.dark .ron-domain-tab {
@@ -604,24 +607,29 @@ body.dark .ron-domain-tab.active {
 }
 
 .ron-domain-tab-icon {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1;
   flex-shrink: 0;
 }
 
 .ron-domain-tab-text {
   flex: 1;
+  min-width: 0;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ron-domain-tab-count {
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 700;
-  padding: 1.5px 6.5px;
+  padding: 1.5px 6px;
   border-radius: 9999px;
   background: var(--ron-bg-muted);
   color: var(--ron-text-muted);
   transition: all 0.2s ease;
+  flex-shrink: 0;
+  line-height: 1.2;
 }
 
 .ron-domain-tab.active .ron-domain-tab-count {
@@ -734,20 +742,21 @@ body.dark .ron-domain-tab.active .ron-domain-tab-count {
   .ron-domain-nav-system {
     flex-direction: column;
     gap: 10px;
-    padding: 8px 10px;
-    border-radius: 20px;
+    padding: 10px 12px;
+    border-radius: 18px;
   }
 
   .ron-domain-vertical-menu {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     width: 100%;
     min-width: 0;
     max-width: 100%;
     border-right: none;
     border-bottom: 1.5px solid rgba(0, 0, 0, 0.06);
     padding-right: 0;
-    padding-bottom: 8px;
-    gap: 5px;
+    padding-bottom: 10px;
+    gap: 6px;
   }
 
   body.dark .ron-domain-vertical-menu {
@@ -755,9 +764,20 @@ body.dark .ron-domain-tab.active .ron-domain-tab-count {
   }
 
   .ron-domain-tab {
-    padding: 8px 12px;
-    font-size: 12px;
-    min-height: 44px; /* Accessible 44px touch target */
+    padding: 8px 10px;
+    font-size: 11.5px;
+    gap: 7px;
+    min-height: 42px; /* Accessible touch target */
+  }
+
+  .ron-domain-tab-text {
+    font-size: 11.5px;
+    letter-spacing: 0;
+  }
+
+  .ron-domain-tab-count {
+    font-size: 9.5px;
+    padding: 1px 5px;
   }
 
   .ron-secondary-horizontal-bar {
@@ -766,6 +786,33 @@ body.dark .ron-domain-tab.active .ron-domain-tab-count {
 
   .ron-secondary-sub {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .ron-domain-vertical-menu {
+    gap: 5px;
+  }
+
+  .ron-domain-tab {
+    padding: 7px 8px;
+    font-size: 11px;
+    gap: 5px;
+    min-height: 38px;
+  }
+
+  .ron-domain-tab-icon {
+    font-size: 13px;
+  }
+
+  .ron-domain-tab-text {
+    font-size: 10.5px;
+    letter-spacing: -0.01em;
+  }
+
+  .ron-domain-tab-count {
+    font-size: 9px;
+    padding: 1px 4px;
   }
 }
 
