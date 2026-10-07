@@ -1,0 +1,1087 @@
+[
+  {
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "A 35-year-old male (weight 70 kg) sustains 40% Total Body Surface Area (TBSA) second- and third-degree thermal burns. According to the updated American Burn Association (ABA) resuscitation guidelines and Consensus Parkland formula, how much balanced crystalloid fluid should be administered during the FIRST 8 HOURS from the time of injury?",
+    "options": [
+      "2,800 mL (using 2 mL/kg/%TBSA; half in first 8 hours)",
+      "5,600 mL (using 4 mL/kg/%TBSA; half in first 8 hours)",
+      "4,200 mL (using 3 mL/kg/%TBSA; half in first 8 hours)",
+      "11,200 mL (using 4 mL/kg/%TBSA over 8 hours)"
+    ],
+    "answer": "A",
+    "explanation": "Modern burn resuscitation guidelines (ABA 2023/2024 consensus and modified Parkland) recommend starting at 2 mL/kg/%TBSA of balanced crystalloid (e.g. Ringer's Lactate) for adult thermal flame/scald burns (reserving 4 mL/kg/%TBSA for electrical or pediatric burns) to prevent 'fluid creep' (excessive resuscitation leading to abdominal compartment syndrome, extremity compartment syndromes, and acute lung injury). Calculation: Total 24-hour volume = 2 mL x 70 kg x 40% = 5,600 mL. Half of this volume (2,800 mL) is infused during the first 8 hours calculated from the TIME OF INJURY (not arrival at the hospital), and the remaining half (2,800 mL) over the subsequent 16 hours. Hourly titration is strictly guided by urine output (target 0.5 mL/kg/h).",
+    "whyWrong": {
+      "B": "Using 4 mL/kg/%TBSA gives 5,600 mL in the first 8 hours; the 4 mL formula was the classic Baxter Parkland formula, which is now recognized to cause significant fluid creep and complications in non-electrical burns; the updated ABA starting point is 2 mL/kg/%TBSA.",
+      "C": "3 mL/kg/%TBSA is used for pediatric thermal burns.",
+      "D": "Administering the entire 4 mL/kg/%TBSA volume in 8 hours causes massive fluid overload, pulmonary edema, and abdominal compartment syndrome."
+    },
+    "difficulty": "Medium",
+    "sourceType": "memory-based recall — NEET-SS 2024",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "Modern Burn Resuscitation Rule (ABA): Start with 2 mL/kg/%TBSA of Ringer's Lactate for adult thermal burns (half in first 8h from time of injury). Target urine output = 0.5 mL/kg/h (or 30-50 mL/h in adults). Avoid fluid creep!",
+    "hyperlinkedReference": {
+      "label": "American Burn Association Practice Guidelines for Burn Shock Resuscitation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27532387/"
+    },
+    "tags": [
+      "Burns",
+      "Parkland Formula",
+      "Fluid Resuscitation",
+      "Fluid Creep",
+      "TBSA"
+    ],
+    "id": "mcq-cc-0263"
+  },
+  {
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "A patient with 50% TBSA deep circumferential burns to the chest and upper abdomen is receiving invasive mechanical ventilation. Four hours post-resuscitation, peak inspiratory pressure (PIP) surges from 24 to 48 cmH2O, tidal volumes drop, and urine output decreases to 10 mL/h despite fluid administration. What is the IMMEDIATELY INDICATED lifesaving intervention?",
+    "options": [
+      "Increase ventilator PEEP to 18 cmH2O and increase sedation",
+      "Perform bedside bilateral chest and abdominal escharotomy along the anterior axillary lines and costal margins",
+      "Administer 100 mg IV furosemide to induce diuresis",
+      "Change the endotracheal tube for a larger diameter tube"
+    ],
+    "answer": "B",
+    "explanation": "Circumferential full-thickness (third-degree) thoracic and abdominal burns form an inelastic, leathery eschar. During vigorous fluid resuscitation, third-space tissue edema creates a tourniquet effect beneath the eschar, causing severe restriction of chest wall compliance, dramatic spikes in peak inspiratory pressures, alveolar hypoventilation, and secondary abdominal compartment syndrome with renal vein compression. Bedside escharotomy (incising through the insensitive full-thickness dead eschar into subcutaneous fat until the wound edges separate and tissue releases) along the anterior axillary lines and connected transversely across the subcostal margin restores respiratory compliance and venous return immediately.",
+    "whyWrong": {
+      "A": "Increasing PEEP worsens intrathoracic pressure and further impedes venous return without relieving the external mechanical restriction.",
+      "C": "Diuretics in acute burn shock precipitate intravascular collapse and worsening acute tubular necrosis.",
+      "D": "The problem is external mechanical chest wall restriction from unyielding eschar, not airway diameter."
+    },
+    "difficulty": "Easy",
+    "sourceType": "NEET-SS style — original question",
+    "exam": "NEET-SS Critical Care",
+    "year": "2023",
+    "examPearl": "Circumferential Thoracic Burn: Leathery eschar + soaring peak pressures + hypoventilation = Urgent bedside escharotomy. No local anesthesia needed (full-thickness burns have destroyed cutaneous nerve endings). Incise down to subcutaneous fat until eschar gapes.",
+    "hyperlinkedReference": {
+      "label": "Gibran et al., J Burn Care Res 2013; ABA Guidelines",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23702865/"
+    },
+    "tags": [
+      "Burns",
+      "Escharotomy",
+      "Chest Wall Compliance",
+      "Circumferential Burns",
+      "Mechanical Ventilation"
+    ],
+    "id": "mcq-cc-0264"
+  },
+  {
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "A victim of an enclosed-space house fire presents with hoarseness, singed nasal vibrissae, and carbonaceous sputum. Arterial blood gas shows a normal PaO2 of 96 mmHg on room air, but the co-oximetry panel reveals a Carboxyhemoglobin (COHb) level of 34%. What is the ELIMINATION HALF-LIFE of Carboxyhemoglobin while breathing 100% normobaric oxygen via a non-rebreather mask?",
+    "options": [
+      "Approximately 300 to 320 minutes (5 hours)",
+      "Approximately 60 to 90 minutes",
+      "Approximately 20 minutes",
+      "Less than 5 minutes"
+    ],
+    "answer": "B",
+    "explanation": "The elimination half-life of carboxyhemoglobin (COHb) depends directly on the fraction of inspired oxygen: (1) On room air (FiO2 0.21): approximately 240 to 320 minutes (4–5 hours); (2) On 100% normobaric oxygen (FiO2 1.0 via non-rebreather mask or endotracheal tube): approximately 60 to 90 minutes (1–1.5 hours); (3) In a hyperbaric oxygen chamber (2.5 to 3.0 atmospheres absolute): approximately 20 to 30 minutes. Therefore, all smoke inhalation victims with suspected CO toxicity must receive immediate 100% high-flow oxygen until COHb drops to <5% (<10% in smokers). Standard pulse oximeters cannot distinguish between oxyhemoglobin and carboxyhemoglobin, giving a falsely reassuring normal SpO2 reading.",
+    "whyWrong": {
+      "A": "300-320 minutes is the half-life of COHb breathing room air (21% O2).",
+      "C": "20 minutes is the half-life under 3 atmospheres of hyperbaric oxygen (HBO).",
+      "D": "CO does not clear in <5 minutes under any physiological condition due to its 200-250 times higher affinity for hemoglobin compared to oxygen."
+    },
+    "difficulty": "Medium",
+    "sourceType": "memory-based recall — NEET-SS 2024",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "Carbon Monoxide Half-Life: Room air = 300 min (5h); 100% normobaric O2 = 60-90 min; Hyperbaric O2 (3 ATA) = 20-30 min. Beware: Standard pulse oximetry reads COHb as oxyhemoglobin (falsely normal SpO2)! Co-oximetry is mandatory.",
+    "hyperlinkedReference": {
+      "label": "Weaver et al., NEJM 2002; Hyperbaric Oxygen for Carbon Monoxide Poisoning",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12362006/"
+    },
+    "tags": [
+      "Burns",
+      "Smoke Inhalation",
+      "Carbon Monoxide",
+      "Carboxyhemoglobin",
+      "Co-oximetry"
+    ],
+    "id": "mcq-cc-0265"
+  },
+  {
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "A 28-year-old primigravida at 34 weeks gestation with severe pre-eclampsia is receiving a Magnesium Sulfate infusion for eclampsia seizure prophylaxis. Two hours later, her patellar deep tendon reflexes are absent, respiratory rate is 8 breaths/min, and urine output has dropped to 12 mL/h. What is the IMMEDIATELY INDICATED specific antidote?",
+    "options": [
+      "10 mL of 10% Calcium Gluconate IV administered slowly over 5 to 10 minutes",
+      "Flumazenil 0.5 mg IV bolus",
+      "Sodium polystyrene sulfonate 30 g orally",
+      "10 mL of 10% Calcium Chloride administered rapid IV push"
+    ],
+    "answer": "A",
+    "explanation": "Magnesium sulfate toxicity follows predictable serum concentration thresholds: (1) Therapeutic level: 4–7 mEq/L (2–3.5 mmol/L); (2) Loss of deep tendon reflexes (patellar): 8–10 mEq/L; (3) Respiratory depression (<12 bpm): 12–15 mEq/L; (4) Sinoatrial/AV conduction block and cardiac arrest: >15–20 mEq/L. Magnesium is cleared solely by the kidneys; oliguria rapidly causes toxic accumulation. Immediate management: (1) STOP the magnesium infusion; (2) Administer 10 mL of 10% Calcium Gluconate IV (1 gram) slowly over 5 to 10 minutes (calcium antagonizes magnesium competitively at the neuromuscular junction and myocardial membranes); (3) Support airway and ventilation.",
+    "whyWrong": {
+      "B": "Flumazenil reverses benzodiazepines, having zero effect on magnesium-induced motor endplate blockade.",
+      "C": "Polystyrene sulfonate binds potassium in the colon, not magnesium.",
+      "D": "Calcium chloride is 3 times more concentrated and carries a severe risk of extravasation necrosis and chemical phlebitis; 10% calcium gluconate is the established obstetric standard for magnesium toxicity."
+    },
+    "difficulty": "Easy",
+    "sourceType": "memory-based recall — NEET-SS 2023",
+    "exam": "NEET-SS Critical Care",
+    "year": "2023",
+    "examPearl": "Magnesium Sulfate Toxicity Progression: Loss of DTRs (8-10 mEq/L) -> Respiratory depression (12-15 mEq/L) -> Cardiac arrest (>15-20 mEq/L). Antidote: 10% Calcium Gluconate 10 mL (1g) IV over 5-10 min.",
+    "hyperlinkedReference": {
+      "label": "ACOG Practice Bulletin No. 222: Gestational Hypertension and Preeclampsia",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32443077/"
+    },
+    "tags": [
+      "Obstetrics",
+      "Pre-eclampsia",
+      "Magnesium Sulfate",
+      "Calcium Gluconate",
+      "Toxicity"
+    ],
+    "id": "mcq-cc-0266"
+  },
+  {
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "A 32-year-old woman in active labor at 39 weeks gestation experiences sudden agitation, dyspnea, cyanosis, and profound cardiovascular collapse within 2 minutes of membrane rupture. Rhythm reveals PEA arrest followed by profuse hemorrhage from IV sites and vaginal canal. According to the Society for Maternal-Fetal Medicine (SMFM), which pathophysiological cascade and targeted resuscitation protocol ('A-OK') characterizes Amniotic Fluid Embolism (AFE)?",
+    "options": [
+      "Mechanical macro-embolism of fetal squames obstructing the pulmonary trunk; treated with emergent surgical embolectomy",
+      "Anaphylactoid host immune activation with transient acute pulmonary vasospasm/RV failure, followed by LV failure and consumptive coagulopathy; treated with Atropine, Ondansetron, and Ketorolac (A-OK)",
+      "Septic shock from chorioamnionitis; treated with immediate high-dose broad-spectrum antibiotics and norepinephrine",
+      "Acute massive air embolism; treated with left lateral decubitus position and Durant maneuver"
+    ],
+    "answer": "B",
+    "explanation": "Amniotic Fluid Embolism (AFE) is now recognized as the 'Anaphylactoid Syndrome of Pregnancy'. Entry of amniotic fluid into the maternal venous circulation triggers severe immune activation with release of arachidonic acid metabolites and endothelin. Clinical triad: (1) Sudden cardiopulmonary collapse with acute severe pulmonary hypertension and RV failure; (2) Secondary left ventricular dysfunction; (3) Consumptive coagulopathy / massive DIC (due to tissue factor procoagulants in amniotic fluid). The novel 'A-OK' protocol addresses this: Atropine (0.8–1.0 mg, blocks vagal bradyarrhythmias), Ondansetron (8 mg, 5-HT3 receptor antagonist blocking serotonin-mediated pulmonary vasoconstriction and platelet aggregation), and Ketorolac (30 mg, blocks cyclooxygenase and thromboxane production). Immediate MTP transfusion is also vital.",
+    "whyWrong": {
+      "A": "AFE is not a mechanical macro-obstruction; microscopic squames are insufficient to mechanically block the pulmonary arteries; it is a humoral and anaphylactoid inflammatory cascade.",
+      "C": "Chorioamnionitis causes septic shock over hours/days, not instantaneous collapse within seconds of membrane rupture with acute DIC.",
+      "D": "Air embolism does not characteristically trigger profound fulminant consumptive DIC within minutes."
+    },
+    "difficulty": "Hard",
+    "sourceType": "NEET-SS style — original question",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "AFE Clinical Triad: (1) Acute hypoxemic respiratory failure, (2) Cardiogenic shock (acute RV failure -> LV failure), (3) Fulminant DIC/hemorrhage. Modern pharmacotherapy: 'A-OK' protocol (Atropine + Ondansetron + Ketorolac) + MTP + ECMO support.",
+    "hyperlinkedReference": {
+      "label": "Stafford et al., Am J Obstet Gynecol 2020; SMFM Consult on Amniotic Fluid Embolism",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32007429/"
+    },
+    "tags": [
+      "Obstetrics",
+      "AFE",
+      "Amniotic Fluid Embolism",
+      "DIC",
+      "A-OK Protocol"
+    ],
+    "id": "mcq-cc-0267"
+  },
+  {
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-general-considerations",
+    "question": "A pregnant woman at 30 weeks gestation experiences out-of-hospital cardiac arrest. During CPR in the ICU, continuous manual left uterine displacement (LUD) is applied. If Return of Spontaneous Circulation (ROSC) is NOT achieved within 4 minutes of witnessed arrest, what is the GUIDELINE-DIRECTED mandatory lifesaving step?",
+    "options": [
+      "Transfer immediately to the operating theatre for emergent sterile caesarean section",
+      "Perform immediate Resuscitative Hysterotomy / Perimortem Caesarean Delivery (PMCD) at the bedside, with delivery by 5 minutes",
+      "Withhold hysterotomy until 15 minutes of CPR to assess if ACLS medications achieve ROSC",
+      "Apply prone CPR to optimize cardiopulmonary physiology"
+    ],
+    "answer": "B",
+    "explanation": "According to the American Heart Association (AHA) and European Resuscitation Council (ERC) guidelines: In a pregnant female with the uterine fundus at or above the umbilicus (gestational age >=20 weeks) who remains in cardiac arrest without ROSC at 4 minutes of CPR, immediate bedside Resuscitative Hysterotomy (Perimortem Caesarean Delivery, PMCD) must be commenced immediately, aiming for delivery of the fetus by 5 minutes from arrest ('the 4-minute rule'). Rationale: Gravid uterine aortocaval compression severely reduces venous return, rendering closed-chest CPR hemodynamically futile (<10% normal cardiac output). Evacuating the uterus relieves caval compression, improves maternal venous return and chest wall mechanics, and offers the highest chance of maternal resuscitation as well as fetal survival. CPR must NOT be delayed by transferring to an OR or waiting for sterile setup.",
+    "whyWrong": {
+      "A": "Patient must NEVER be transported to an OR; PMCD must be performed at the bedside in the ICU/resuscitation bay without transport delays.",
+      "C": "Waiting 15 minutes leads to irreversible maternal anoxic brain death and fetal death; the golden window is delivery within 5 minutes.",
+      "D": "Prone CPR is not indicated in third-trimester arrest; manual left uterine displacement (LUD) or tilting the patient supine with LUD is standard."
+    },
+    "difficulty": "Medium",
+    "sourceType": "memory-based recall — NEET-SS 2023",
+    "exam": "NEET-SS Critical Care",
+    "year": "2023",
+    "examPearl": "Obstetric Cardiac Arrest Rule: Start PMCD at 4 minutes if no ROSC; deliver fetus by 5 minutes. Perform at bedside (do NOT move to OR). Primary objective is maternal resuscitation by eliminating aortocaval compression.",
+    "hyperlinkedReference": {
+      "label": "Jeejeebhoy et al., Circulation 2015 / 2020 AHA Cardiac Arrest in Pregnancy Guidelines",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26443611/"
+    },
+    "tags": [
+      "Obstetrics",
+      "Cardiac Arrest",
+      "PMCD",
+      "Resuscitative Hysterotomy",
+      "ACLS"
+    ],
+    "id": "mcq-cc-0268"
+  },
+  {
+    "chapterId": 27,
+    "topicId": "cc-paediatric-shock-sepsis-formulas",
+    "question": "A 4-year-old child (estimated weight 16 kg) is admitted to the ICU in septic shock with cold extremities, delayed capillary refill (4 seconds), weak femoral pulses, and blood pressure 68/38 mmHg. According to current Pediatric Advanced Life Support (PALS) and Surviving Sepsis Campaign International Guidelines for Children, what is the RECOMMENDED initial fluid resuscitation approach?",
+    "options": [
+      "Immediate bolus of 40 mL/kg of 0.9% Normal Saline over 10 minutes",
+      "Balanced crystalloid bolus of 10 to 20 mL/kg (e.g. 160–320 mL) infused over 10 to 20 minutes with frequent reassessment for signs of fluid overload",
+      "Fluid restriction and immediate initiation of dopamine at 5 mcg/kg/min",
+      "50 mL/kg 5% Dextrose in water to prevent hypoglycemia"
+    ],
+    "answer": "B",
+    "explanation": "According to the Surviving Sepsis Campaign International Guidelines for Pediatric Septic Shock and PALS: In healthcare systems with intensive care capabilities, initial fluid resuscitation should be administered as aliquots of 10 to 20 mL/kg of balanced crystalloid (preferred over 0.9% saline to avoid hyperchloremic acidosis) over 10 to 20 minutes (up to 40–60 mL/kg in the first hour), with immediate clinical reassessment after EACH bolus for signs of fluid responsiveness versus fluid overload (hepatomegaly, pulmonary rales, gallop rhythm). If signs of fluid overload appear or shock persists after 40–60 mL/kg, vasoactive infusions should be initiated immediately via peripheral or intraosseous lines without waiting for central venous catheterization.",
+    "whyWrong": {
+      "A": "A single massive 40 mL/kg bolus without reassessment increases mortality and pulmonary complications (as demonstrated in the FEAST trial).",
+      "C": "Initial fluid administration is essential in hypovolemic/distributive septic shock; dopamine is no longer preferred (epinephrine or norepinephrine are preferred first-line vasoactive agents).",
+      "D": "Dextrose-containing hypotonic fluids are strictly contraindicated for volume resuscitation as they cause hyponatremia and cerebral edema."
+    },
+    "difficulty": "Medium",
+    "sourceType": "NEET-SS style — original question",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "Pediatric Septic Shock: 10-20 mL/kg balanced crystalloid boluses over 10-20 min. Reassess for hepatomegaly/rales after each bolus. If refractory to 40-60 mL/kg, start inotropes early: Epinephrine for 'cold shock', Norepinephrine for 'warm shock'.",
+    "hyperlinkedReference": {
+      "label": "Weiss et al., Pediatr Crit Care Med 2020; Surviving Sepsis Campaign Pediatric Guidelines",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32032273/"
+    },
+    "tags": [
+      "Pediatrics",
+      "Septic Shock",
+      "Fluid Resuscitation",
+      "PALS",
+      "Crystalloids"
+    ],
+    "id": "mcq-cc-0269"
+  },
+  {
+    "chapterId": 27,
+    "topicId": "cc-paediatric-status-asthmaticus-dka",
+    "question": "A 10-year-old boy with newly diagnosed Type 1 Diabetes is admitted in severe DKA (pH 7.08, HCO3 6 mEq/L, blood glucose 480 mg/dL). Three hours into IV fluid rehydration and low-dose regular insulin infusion (0.05 U/kg/h), he suddenly complains of a severe headache, becomes bradycardic (HR 52 bpm), and develops hypertension (BP 140/92 mmHg) with fluctuating lethargy. What is the IMMEDIATELY INDICATED pharmacotherapy for suspected Cerebral Edema?",
+    "options": [
+      "Administer 3% Hypertonic Saline (5 mL/kg IV over 10–15 minutes) or Mannitol (0.5–1.0 g/kg IV)",
+      "Increase insulin infusion rate to 0.15 U/kg/h to clear ketones faster",
+      "Administer IV Sodium Bicarbonate 100 mEq to correct acidosis",
+      "Administer IV dexamethasone 8 mg"
+    ],
+    "answer": "A",
+    "explanation": "Cerebral edema is the leading cause of mortality in pediatric DKA (0.5–1% of episodes, 20–25% mortality). Classic warning signs include headache, lethargy, bradycardia + hypertension (Cushing's triad), incontinence, and cranial nerve palsies. Immediate treatment must NOT be delayed for neuroimaging: (1) Administer hyperosmolar therapy immediately with either 3% Hypertonic Saline (5 mL/kg IV over 10 to 15 minutes) or Mannitol (0.5 to 1.0 g/kg IV over 20 minutes); (2) Elevate head of bed to 30 degrees; (3) Reduce fluid infusion rate by one-third; (4) Avoid rapid drops in plasma osmolality. Corticosteroids (dexamethasone) and sodium bicarbonate are ineffective and contraindicated.",
+    "whyWrong": {
+      "B": "Increasing insulin accelerates rapid intracellular glucose uptake and osmolar drops, exacerbating cerebral edema.",
+      "C": "Sodium bicarbonate administration in pediatric DKA is an established risk factor that PRECIPITATES cerebral edema and causes paradoxical CSF acidosis.",
+      "D": "Cytotoxic and vasogenic edema in DKA does not respond to corticosteroids; dexamethasone is contraindicated."
+    },
+    "difficulty": "Hard",
+    "sourceType": "memory-based recall — NEET-SS 2023",
+    "exam": "NEET-SS Critical Care",
+    "year": "2023",
+    "examPearl": "Pediatric DKA Cerebral Edema: Sudden headache/lethargy + Cushing's triad (bradycardia, hypertension). Treat immediately at bedside: 3% Hypertonic Saline (5 mL/kg) or Mannitol (0.5-1 g/kg). Do NOT wait for CT scan! Never give bicarbonate in pediatric DKA.",
+    "hyperlinkedReference": {
+      "label": "Glaser et al., NEJM 2001; ISPAD Clinical Practice Guidelines on DKA 2022",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36294793/"
+    },
+    "tags": [
+      "Pediatrics",
+      "DKA",
+      "Cerebral Edema",
+      "Mannitol",
+      "Hypertonic Saline"
+    ],
+    "id": "mcq-cc-0270"
+  },
+  {
+    "chapterId": 28,
+    "topicId": "cc-pleural-disorders-in-icu",
+    "question": "A 64-year-old intubated male with severe community-acquired pneumonia develops a large left-sided parapneumonic pleural effusion. Diagnostic thoracentesis yields turbid pleural fluid. Analysis shows: pleural fluid pH 7.08, glucose 28 mg/dL, LDH 1,420 U/L, and Gram stain reveals Gram-positive cocci in pairs. According to British Thoracic Society (BTS) and CHEST guidelines, what is the DEFINITIVE management?",
+    "options": [
+      "Continue IV antibiotics alone and repeat diagnostic tap in 48 hours",
+      "Immediate chest tube intercostal drainage (tube thoracostomy) in addition to targeted IV antibiotics",
+      "Serial therapeutic thoracentesis draining 500 mL daily",
+      "Immediate open thoracotomy and decortication"
+    ],
+    "answer": "B",
+    "explanation": "According to the British Thoracic Society (BTS) and American College of Chest Physicians (CHEST) guidelines on pleural infection: A parapneumonic effusion is classified as 'Complicated' (or frank Empyema) if any of the following are present: (1) Pleural fluid pH <7.20 (the most sensitive marker of bacterial metabolism and loculation); (2) Pleural fluid glucose <60 mg/dL (or <3.4 mmol/L); (3) Pleural fluid LDH >1,000 U/L; (4) Positive bacterial Gram stain or culture; (5) Frank pus/macroscopic empyema. Complicated parapneumonic effusions and empyemas NEVER resolve with antibiotics alone; prompt tube thoracostomy (chest tube drainage) is mandatory to prevent fibrous organizing peel and progressive sepsis.",
+    "whyWrong": {
+      "A": "Antibiotics alone fail because antibiotics poorly penetrate thick fibropurulent fluid, leading to trapped lung, sepsis, and multiorgan failure.",
+      "C": "Serial thoracenteses are inadequate for infected complicated effusions and lead to multi-loculation.",
+      "D": "Open thoracotomy is invasive second-line therapy indicated only if tube drainage and intrapleural fibrinolytics fail."
+    },
+    "difficulty": "Easy",
+    "sourceType": "NEET-SS style — original question",
+    "exam": "NEET-SS Critical Care",
+    "year": "2023",
+    "examPearl": "Complicated Parapneumonic Effusion Cutoffs: Pleural fluid pH <7.20, Glucose <40-60 mg/dL, LDH >1,000 U/L, or positive Gram stain/pus = Tube thoracostomy (chest tube) is MANDATORY immediately.",
+    "hyperlinkedReference": {
+      "label": "Davies et al., Thorax 2010 / BTS Guidelines on Pleural Infection; Rahman et al., NEJM 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20671318/"
+    },
+    "tags": [
+      "Pleural Disorders",
+      "Empyema",
+      "Chest Tube",
+      "Parapneumonic Effusion",
+      "pH"
+    ],
+    "id": "mcq-cc-0271"
+  },
+  {
+    "chapterId": 28,
+    "topicId": "cc-pleural-disorders-in-icu",
+    "question": "In the landmark MIST-2 randomized trial (Rahman et al., NEJM 2011), which intrapleural therapy demonstrated a statistically significant improvement in radiographic clearance and reduced surgical referral and hospital stay for pleural infection (empyema)?",
+    "options": [
+      "Intrapleural Streptokinase monotherapy (250,000 IU)",
+      "Intrapleural Tissue Plasminogen Activator (tPA / alteplase 10 mg) combined with Deoxyribonuclease (DNase 5 mg) twice daily for 3 days",
+      "Intrapleural Alteplase (tPA 10 mg) monotherapy",
+      "Intrapleural DNase (5 mg) monotherapy"
+    ],
+    "answer": "B",
+    "explanation": "The landmark MIST-2 trial (Second Multicentre Intrapleural Sepsis Trial, NEJM 2011) proved that combination therapy with intrapleural tissue plasminogen activator (tPA / alteplase, 10 mg) PLUS recombinant human deoxyribonuclease (DNase / dornase alfa, 5 mg) administered twice daily via the chest tube for 3 days (total 6 doses) significantly improved fluid drainage (decreased pleural opacity on chest radiography by 30%), reduced surgical referrals (OR 0.17), and reduced hospital stay. Neither tPA alone nor DNase alone was effective. Rationale: tPA breaks down fibrin septations, while DNase degrades extracellular bacterial DNA that causes high pleural fluid viscosity; both are required synergistically.",
+    "whyWrong": {
+      "A": "MIST-1 trial (NEJM 2005) demonstrated that intrapleural streptokinase monotherapy was ineffective and did not improve mortality or reduce surgical referrals.",
+      "C": "In MIST-2, tPA monotherapy failed to show statistically significant benefit over placebo.",
+      "D": "In MIST-2, DNase monotherapy failed to show statistically significant benefit over placebo."
+    },
+    "difficulty": "Hard",
+    "sourceType": "memory-based recall — NEET-SS 2024",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "MIST-2 Trial Landmark Finding: Intrapleural tPA (10 mg) + DNase (5 mg) combined BID x 3 days significantly clears loculated empyema and reduces surgical referral. Neither drug works as monotherapy!",
+    "hyperlinkedReference": {
+      "label": "Rahman et al., NEJM 2011; MIST-2 Trial",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21830966/"
+    },
+    "tags": [
+      "Pleural Disorders",
+      "Empyema",
+      "tPA",
+      "DNase",
+      "MIST-2 Trial"
+    ],
+    "id": "mcq-cc-0272"
+  },
+  {
+    "chapterId": 29,
+    "topicId": "cc-basic-echocardiography",
+    "question": "A patient with acute hypoxemic respiratory failure undergoes bedside lung ultrasound according to the BLUE protocol (Lichtenstein). Anterior bilateral lung scans demonstrate absent lung sliding, prominent A-lines (horizontal repetitive artifact), and a distinct 'Lung Point' (alternating sliding and non-sliding lung with respiration). What is the DIAGNOSIS?",
+    "options": [
+      "Severe cardiogenic pulmonary edema",
+      "Pneumothorax (100% specificity confirmed by Lung Point)",
+      "Acute Respiratory Distress Syndrome (ARDS)",
+      "Complete lobar consolidation"
+    ],
+    "answer": "B",
+    "explanation": "According to the BLUE protocol established by François Lichtenstein: The combination of absent lung sliding (due to air separating parietal and visceral pleura) and A-lines creates the 'A-prime profile' (A'-profile). The pathognomonic sign that confirms Pneumothorax with 100% specificity is the LUNG POINT (the physical physical junction where normal lung contact resumes, demonstrating alternating normal lung sliding and absent sliding with respiration at the same pleural location). B-lines and lung pulse rule out pneumothorax at that intercostal space.",
+    "whyWrong": {
+      "A": "Cardiogenic pulmonary edema displays the B-profile (bilateral anterior diffuse vertical B-lines / 'lung rockets' with preserved lung sliding).",
+      "C": "ARDS exhibits a B-profile or A/B profile with non-homogeneous lung sliding, subpleural consolidations, and spared areas.",
+      "D": "Lobar consolidation displays the C-profile (tissue-like hepatization with air bronchograms)."
+    },
+    "difficulty": "Easy",
+    "sourceType": "memory-based recall — NEET-SS 2023",
+    "exam": "NEET-SS Critical Care",
+    "year": "2023",
+    "examPearl": "BLUE Protocol Lung Ultrasound: (1) Lung Point = 100% specific for Pneumothorax. (2) B-lines rule OUT pneumothorax at that probe site. (3) Diffuse bilateral B-lines = Pulmonary edema (cardiogenic B-profile vs ARDS).",
+    "hyperlinkedReference": {
+      "label": "Lichtenstein & Mezière, Chest 2008; BLUE Protocol",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18403664/"
+    },
+    "tags": [
+      "POCUS",
+      "BLUE Protocol",
+      "Pneumothorax",
+      "Lung Point",
+      "Lung Ultrasound"
+    ],
+    "id": "mcq-cc-0273"
+  },
+  {
+    "chapterId": 29,
+    "topicId": "cc-basic-echocardiography",
+    "question": "A 62-year-old patient in septic shock resuscitated with 6 liters of crystalloid develops worsening acute kidney injury and oliguria. Point-of-care venous Doppler reveals: an IVC diameter of 2.6 cm with <10% respiratory collapse, systolic reversal in the hepatic vein Doppler, pulsatile portal vein flow (pulsatility fraction 65%), and discontinuous biphasic flow in the intrarenal interlobar veins. What is the VExUS (Venous Excess Ultrasound) score and clinical interpretation?",
+    "options": [
+      "VExUS Grade 0: Normal venous hemodynamics; patient requires more fluids",
+      "VExUS Grade 1: Mild congestion; hypovolemia ruled out",
+      "VExUS Grade 3: Severe venous congestion; renal congestion is contributing to AKI and fluid de-resuscitation is indicated",
+      "VExUS Grade 2: Isolated portal congestion"
+    ],
+    "answer": "C",
+    "explanation": "The Venous Excess Ultrasound (VExUS) grading score quantifies systemic venous congestion: (1) Prerequisite: Plethoric IVC >=2.0 cm; (2) Evaluation of 3 Doppler patterns: Hepatic vein (systolic reversal = severe), Portal vein (pulsatility fraction >=50% = severe), Intrarenal vein (biphasic discontinuous flow during systole and diastole = severe). VExUS Grade 3 (Severe Congestion) is defined as a dilated IVC (>=2.0 cm) PLUS severe abnormalities in AT LEAST TWO of the three venous Doppler beds. Severe systemic venous congestion elevates renal afterload and venous back-pressure, collapsing renal perfusion pressure (RPP = MAP - CVP) and directly causing congestive acute kidney injury (AKI). Treatment: Restrict fluids, consider diuresis or ultrafiltration.",
+    "whyWrong": {
+      "A": "VExUS 0 requires normal IVC (<2.0 cm) or mild venous Doppler patterns.",
+      "B": "VExUS 1 is IVC >=2.0 cm with normal or only mildly abnormal patterns in one vessel.",
+      "D": "Two or more severe Doppler abnormalities with dilated IVC constitutes Grade 3, not Grade 2."
+    },
+    "difficulty": "Hard",
+    "sourceType": "NEET-SS style — original question",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "VExUS Grading: Dilated IVC (>=2 cm) + >=2 severe Doppler abnormalities (Hepatic systolic reversal, Portal pulsatility >=50%, Intrarenal biphasic) = VExUS Grade 3 (Severe Venous Congestion). Stop IV fluids! Venous hypertension causes congestive AKI.",
+    "hyperlinkedReference": {
+      "label": "Beaubien-Souligny et al., Ultrasound J 2020; VExUS Score Validation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32281096/"
+    },
+    "tags": [
+      "POCUS",
+      "VExUS",
+      "Venous Congestion",
+      "AKI",
+      "Echocardiography"
+    ],
+    "id": "mcq-cc-0274"
+  },
+  {
+    "chapterId": 30,
+    "topicId": "cc-ecmo-basics",
+    "question": "In the landmark EOLIA randomized trial (Combes et al., NEJM 2018), which group of patients with severe ARDS was evaluated for early venovenous extracorporeal membrane oxygenation (VV-ECMO)?",
+    "options": [
+      "Patients with mild ARDS failing non-invasive ventilation within 24 hours",
+      "Patients with severe ARDS meeting criteria: PaO2/FiO2 <50 mmHg for >3 hours, or PaO2/FiO2 <80 mmHg for >6 hours, or arterial pH <7.15 with PaCO2 >=60 mmHg for >6 hours",
+      "Patients with cardiogenic shock requiring mechanical circulatory support",
+      "Patients with septic shock and refractory vasoplegia"
+    ],
+    "answer": "B",
+    "explanation": "The EOLIA trial (EOLIA: ECMO to Rescue Lung Injury in Severe ARDS, NEJM 2018) established the modern international evidence base and inclusion thresholds for early initiation of VV-ECMO in severe ARDS: (1) PaO2/FiO2 <50 mmHg for >3 hours despite optimized lung-protective ventilation (including neuromuscular blockade and prone positioning); OR (2) PaO2/FiO2 <80 mmHg for >6 hours; OR (3) Arterial blood pH <7.15 with PaCO2 >=60 mmHg for >6 hours (with respiratory rate escalated to 35 bpm) resulting from severe uncorrectable respiratory acidosis. Although the primary 60-day mortality endpoint showed a non-statistically significant reduction (35% ECMO vs 46% control, p=0.09) due to a massive 28% emergency crossover from the control arm, post-hoc Bayesian analysis and meta-analyses confirmed a clear survival benefit.",
+    "whyWrong": {
+      "A": "EOLIA evaluated only intubated patients with refractory severe ARDS after conventional rescue measures (prone positioning, neuromuscular blockade).",
+      "C": "Cardiogenic shock requires Venoarterial (VA) ECMO, not Venovenous (VV) ECMO; EOLIA was strictly a VV-ECMO trial for respiratory failure.",
+      "D": "Refractory vasoplegia in septic shock is not an indication for VV-ECMO."
+    },
+    "difficulty": "Medium",
+    "sourceType": "memory-based recall — NEET-SS 2024",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "EOLIA Trial Criteria for VV-ECMO in ARDS: (1) P/F <50 for >3h, or (2) P/F <80 for >6h, or (3) pH <7.15 with PaCO2 >=60 for >6h. All patients should first undergo prone positioning (PROSEVA) unless contraindicated.",
+    "hyperlinkedReference": {
+      "label": "Combes et al., NEJM 2018; EOLIA Trial",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29791822/"
+    },
+    "tags": [
+      "ECMO",
+      "VV-ECMO",
+      "EOLIA Trial",
+      "ARDS",
+      "Refractory Hypoxemia"
+    ],
+    "id": "mcq-cc-0275"
+  },
+  {
+    "chapterId": 30,
+    "topicId": "cc-managing-a-patient-on-ecmo",
+    "question": "A 48-year-old male with cardiogenic shock is supported on peripheral Venoarterial (VA) ECMO (femoral vein drainage cannula, femoral artery return cannula). Two days later, he develops acute lung injury with severe pulmonary edema. Pulse oximeter on the RIGHT hand reads 82% (PaO2 48 mmHg on arterial blood gas from right radial line), while pulse oximeter on the LEFT foot reads 99% (PaO2 320 mmHg). What is this phenomenon called, and how is it resolved?",
+    "options": [
+      "Recirculation phenomenon; treated by increasing ECMO sweep gas flow",
+      "Differential Hypoxemia (Harlequin / North-South Syndrome); resolved by converting to Veno-Arterial-Venous (VAV) ECMO or improving native lung oxygenation",
+      "Circuit thrombosis; treated by urgent oxygenator exchange",
+      "Coronary steal syndrome; treated by reducing ECMO flow rates"
+    ],
+    "answer": "B",
+    "explanation": "In peripheral VA-ECMO with femoral arterial cannulation, oxygenated ECMO blood flows retrogradely up the descending aorta. Meanwhile, poorly oxygenated blood ejected by the recovering native left ventricle (perfusing diseased lungs) flows antegradely into the ascending aorta and arch vessels (innominate artery -> right subclavian and right carotid). When native cardiac output competes against retrograde ECMO flow, the mixing point ('watershed point') moves down the aorta, causing deoxygenated blood to perfuse the upper body (brain, coronary arteries, right arm) while the lower body receives hyperoxygenated ECMO blood. This is 'Differential Hypoxemia', 'North-South Syndrome', or 'Harlequin Syndrome'. Management: (1) Optimize native ventilator settings and PEEP; (2) Convert to VAV-ECMO (adding an internal jugular venous return cannula to oxygenate blood passing through native lungs); or (3) Re-cannulate centrally.",
+    "whyWrong": {
+      "A": "Recirculation occurs in VV-ECMO (re-aspirating oxygenated blood before it passes through systemic circulation), not in peripheral VA-ECMO.",
+      "C": "Circuit thrombosis causes failure of oxygenator transfer with low post-membrane PaO2 everywhere, not a discrepancy between upper and lower extremities.",
+      "D": "Coronary steal is a physiological shunting phenomenon in CAD, not the mixing of competing circulatory outputs."
+    },
+    "difficulty": "Hard",
+    "sourceType": "memory-based recall — NEET-SS 2023",
+    "exam": "NEET-SS Critical Care",
+    "year": "2023",
+    "examPearl": "Harlequin / North-South Syndrome in Peripheral VA-ECMO: Right radial arterial line detects cerebral/coronary hypoxemia! Occurs when recovering LV ejects deoxygenated blood into the aortic root against retrograde femoral ECMO flow. Solution: Convert to VAV-ECMO or optimize ventilator PEEP.",
+    "hyperlinkedReference": {
+      "label": "ELSO Guidelines for Adult Cardiac Failure; Extracorporeal Life Support Organization",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33136894/"
+    },
+    "tags": [
+      "ECMO",
+      "VA-ECMO",
+      "Harlequin Syndrome",
+      "Differential Hypoxemia",
+      "VAV-ECMO"
+    ],
+    "id": "mcq-cc-0276"
+  },
+  {
+    "chapterId": 31,
+    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "question": "A 45-year-old male with HIV infection (CD4 count 65 cells/mcL) is admitted to the ICU with severe subacute dyspnea, dry cough, bilateral perihilar ground-glass opacities, and severe hypoxemia (room air arterial blood gas: pH 7.46, PaO2 54 mmHg, PaCO2 31 mmHg, A-a gradient 58 mmHg). Sputum PCR confirms Pneumocystis jirovecii pneumonia (PCP). In addition to Trimethoprim-sulfamethoxazole (TMP-SMX), what is the CRITICAL adjunctive therapy to initiate immediately?",
+    "options": [
+      "Inhaled pentamidine 300 mg daily",
+      "Intravenous Corticosteroids (e.g. Prednisone 40 mg PO BID or IV methylprednisolone) initiated BEFORE or concurrently with TMP-SMX",
+      "Empirical Ganciclovir for cytomegalovirus co-infection",
+      "Immediate initiation of Antiretroviral Therapy (ART) on day 1"
+    ],
+    "answer": "B",
+    "explanation": "In Pneumocystis jirovecii pneumonia (PCP), dying organisms release massive inflammatory surface antigens (beta-glucan), triggering marked alveolar inflammation that worsens gas exchange during the first 48 to 72 hours of antimicrobial therapy. Adjunctive systemic corticosteroids significantly reduce early deterioration, respiratory failure, intubation, and mortality. Indications for adjunctive corticosteroids in PCP: (1) Arterial PaO2 <70 mmHg on room air; OR (2) Alveolar-arterial oxygen gradient (A-a gradient) >=35 mmHg. The standard regimen is Prednisone (40 mg BID days 1–5, 40 mg daily days 6–10, 20 mg daily days 11–21) or equivalent IV methylprednisolone, initiated ideally BEFORE or concurrently with TMP-SMX.",
+    "whyWrong": {
+      "A": "Inhaled pentamidine is for secondary prophylaxis, wholly ineffective for treatment of moderate-to-severe PCP.",
+      "C": "Empirical ganciclovir is not indicated unless tissue-invasive CMV disease is proven; CMV in BAL is often bystander shedding.",
+      "D": "ART should be delayed for approximately 1 to 2 weeks after starting PCP treatment to prevent catastrophic Immune Reconstitution Inflammatory Syndrome (IRIS)."
+    },
+    "difficulty": "Easy",
+    "sourceType": "memory-based recall — NEET-SS 2024",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "PCP Adjunctive Steroids Rule: PaO2 <70 mmHg or A-a gradient >=35 mmHg = Start Corticosteroids (Prednisone 40 mg BID) BEFORE or with TMP-SMX. Reduces 30-day mortality by 50%!",
+    "hyperlinkedReference": {
+      "label": "Briel et al., BMC Infect Dis 2006; Corticosteroids in PCP Meta-analysis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16472394/"
+    },
+    "tags": [
+      "Immunocompromised",
+      "Pneumocystis",
+      "PCP",
+      "Corticosteroids",
+      "A-a Gradient"
+    ],
+    "id": "mcq-cc-0277"
+  },
+  {
+    "chapterId": 31,
+    "topicId": "cc-novel-chemo-and-toxicity-in-icu",
+    "question": "A 26-year-old male with acute lymphoblastic leukemia (ALL) receiving induction chemotherapy develops Tumor Lysis Syndrome (TLS). Laboratory values show: serum uric acid 14.8 mg/dL, potassium 6.4 mEq/L, phosphate 8.2 mg/dL, and calcium 6.6 mg/dL. Urine output is 15 mL/h. Which pharmacotherapeutic principle is ESSENTIAL in managing this patient's hyperphosphatemia and hypocalcemia?",
+    "options": [
+      "Administer IV Calcium Gluconate immediately to normalize the serum calcium level",
+      "Administer Rasburicase (recombinant urate oxidase) for uric acid, and AVOID intravenous calcium administration unless symptomatic/life-threatening tetany or ECG changes occur",
+      "Infuse Sodium Bicarbonate to alkalinize the urine to pH >7.5",
+      "Administer high-dose oral allopurinol 900 mg daily as the primary hypouricemic agent"
+    ],
+    "answer": "B",
+    "explanation": "Tumor Lysis Syndrome (Cairo-Bishop criteria) results from massive lysis of malignant cells, releasing potassium, phosphate, and nucleic acids. In severe hyperphosphatemia (>8 mg/dL), the Calcium-Phosphate product (Ca x P) exceeds 60–70 mg2/dL2. Administering intravenous calcium causes acute precipitation of calcium phosphate crystals in renal tubules and tissues (metastatic calcification), worsening acute renal failure and precipitating fatal cardiac conduction blocks. Therefore, IV calcium must be STRICTLY AVOIDED unless life-threatening symptomatic hypocalcemia (seizures, tetany, prolonged QTc with arrhythmias) is present. Rasburicase (0.2 mg/kg IV) converts insoluble uric acid into soluble allantoin within 4 hours. Urinary alkalinization is CONTRAINDICATED because alkaline urine promotes calcium phosphate crystal precipitation.",
+    "whyWrong": {
+      "A": "Administering calcium in severe hyperphosphatemia causes fatal calcium phosphate precipitation in renal parenchyma and heart.",
+      "C": "Urinary alkalinization is obsolete; it worsens calcium phosphate deposition and is contraindicated when rasburicase is available.",
+      "D": "Allopurinol only prevents new uric acid synthesis and does not degrade existing uric acid; Rasburicase is required for established acute TLS with AKI."
+    },
+    "difficulty": "Medium",
+    "sourceType": "memory-based recall — NEET-SS 2023",
+    "exam": "NEET-SS Critical Care",
+    "year": "2023",
+    "examPearl": "Tumor Lysis Syndrome Pearls: (1) Drug of choice = Rasburicase (recombinant urate oxidase). (2) Never give calcium for asymptomatic hypocalcemia in TLS (causes calcium phosphate precipitation in kidneys). (3) Avoid urine alkalinization.",
+    "hyperlinkedReference": {
+      "label": "Cairo & Bishop, Br J Haematol 2004; Consensus Guidelines on TLS",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15461622/"
+    },
+    "tags": [
+      "Oncology",
+      "Tumor Lysis Syndrome",
+      "Rasburicase",
+      "Hyperphosphatemia",
+      "Hypocalcemia"
+    ],
+    "id": "mcq-cc-0278"
+  },
+  {
+    "chapterId": 31,
+    "topicId": "cc-novel-chemo-and-toxicity-in-icu",
+    "question": "A 54-year-old male with relapsed B-cell lymphoma receives CD19-directed Chimeric Antigen Receptor (CAR) T-cell therapy. Five days post-infusion, he develops fever of 39.8°C, hypotension (BP 82/46 mmHg) refractory to 2 liters of crystalloid and requiring norepinephrine 0.15 mcg/kg/min, and hypoxemia requiring 4 L/min nasal cannula. What is the diagnosis and FIRST-LINE targeted therapy according to ASTCT consensus guidelines?",
+    "options": [
+      "Grade 3 Cytokine Release Syndrome (CRS); treat with Tocilizumab (IL-6 receptor antagonist) plus IV Dexamethasone",
+      "Acute GVHD; treat with high-dose Cyclosporine A",
+      "Septic shock; treat with meropenem and vancomycin monotherapy without immunosuppressants",
+      "Grade 1 CRS; observe with antipyretics alone"
+    ],
+    "answer": "A",
+    "explanation": "According to the ASTCT (American Society for Transplantation and Cellular Therapy) consensus grading for Cytokine Release Syndrome (CRS): Grade 3 CRS is defined by fever (>=38.0°C) with hypotension requiring a vasopressor (with or without vasopressin) AND/OR hypoxia requiring high-flow nasal cannula or FiO2 >40%. Massive macrophage and T-cell release of interleukin-6 (IL-6), interferon-gamma, and TNF-alpha drives this syndrome. First-line targeted therapy is TOCILIZUMAB (an IL-6 receptor monoclonal antibody, 8 mg/kg IV up to 800 mg, repeatable up to 3 times in 24 hours) combined with IV Dexamethasone (10 mg IV every 6 hours) or methylprednisolone.",
+    "whyWrong": {
+      "B": "CAR-T therapy does not cause classic acute GVHD like allogeneic bone marrow transplantation.",
+      "C": "Empirical broad-spectrum antibiotics are given concurrently, but treating with antibiotics alone without cytokine blockade in Grade 3 CRS leads to multiorgan failure and death.",
+      "D": "Grade 1 CRS is fever only without hypotension or hypoxia; requiring vasopressors and oxygen classifies this as Grade 3 CRS."
+    },
+    "difficulty": "Hard",
+    "sourceType": "NEET-SS style — original question",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "CAR T-cell Toxicity: Cytokine Release Syndrome (CRS) = Fever + Hypotension + Hypoxia mediated by IL-6. Drug of choice: Tocilizumab (IL-6 receptor antagonist) +/- Dexamethasone. ICANS (neurotoxicity) = Dexamethasone (not tocilizumab, which does not cross BBB).",
+    "hyperlinkedReference": {
+      "label": "Lee et al., Biol Blood Marrow Transplant 2019; ASTCT Consensus Grading for CRS and ICANS",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30592998/"
+    },
+    "tags": [
+      "Oncology",
+      "CAR-T",
+      "Cytokine Release Syndrome",
+      "Tocilizumab",
+      "ASTCT"
+    ],
+    "id": "mcq-cc-0279"
+  },
+  {
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "A 40-year-old electrician sustains a high-voltage electrical injury (>1,000 Volts) with entrance wound on right hand and exit on left thigh. His urine is dark reddish-brown and tests positive for occult blood, but microscopic examination reveals no RBCs. What is the RECOMMENDED fluid resuscitation target for urine output in high-voltage electrical burns with myoglobinuria?",
+    "options": [
+      "0.5 mL/kg/h (standard adult thermal burn target)",
+      "1.0 to 1.5 mL/kg/h (or 75–100 mL/h in adults) until urine clears of myoglobin",
+      "3.0 to 5.0 mL/kg/h with immediate hemodialysis",
+      "Strict fluid restriction to prevent acute cerebral edema"
+    ],
+    "answer": "B",
+    "explanation": "High-voltage electrical injuries cause massive deep tissue coagulation necrosis, muscle destruction, and rhabdomyolysis beneath deceptively small cutaneous contact wounds. Free myoglobin precipitates in renal tubules under acidic conditions, causing acute tubular necrosis. The American Burn Association (ABA) practice guidelines recommend: In electrical burns with pigmenturia (myoglobinuria/hemoglobinuria), the target urine output is increased to 1.0 to 1.5 mL/kg/h (or 75 to 100 mL/h in adults, vs 0.5 mL/kg/h in thermal burns) until the urine becomes grossly clear. If pigmenturia persists despite high fluid rates, sodium bicarbonate may be added to maintain urine pH >6.5, or mannitol (12.5 g) infused to maintain osmotic flow.",
+    "whyWrong": {
+      "A": "0.5 mL/kg/h (30-50 mL/h) is the baseline target for thermal burns; in electrical burns with myoglobinuria, this inadequate rate allows myoglobin casts to obstruct and poison tubules.",
+      "C": "3-5 mL/kg/h causes massive fluid creep, pulmonary edema, and abdominal compartment syndrome without additional clearance benefit.",
+      "D": "Fluid restriction in acute myoglobinuria guarantees catastrophic pigment-induced acute renal failure."
+    },
+    "difficulty": "Medium",
+    "sourceType": "memory-based recall — NEET-SS 2024",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "Electrical Burn Resuscitation Target: Urine output 1.0-1.5 mL/kg/h (75-100 mL/h in adults) until urine clears of myoglobin (vs 0.5 mL/kg/h in standard thermal burns). Monitor for hidden compartment syndromes in affected limbs!",
+    "hyperlinkedReference": {
+      "label": "American Burn Association Practice Guidelines; J Burn Care Res 2017",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27532387/"
+    },
+    "tags": [
+      "Burns",
+      "Electrical Injury",
+      "Myoglobinuria",
+      "Rhabdomyolysis",
+      "Urine Output"
+    ],
+    "id": "mcq-cc-0280"
+  },
+  {
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "In inhalation injury, which diagnostic modality performed within the first 24 hours provides the MOST ACCURATE assessment of upper and lower airway mucosal injury and predicts the need for early mechanical ventilation?",
+    "options": [
+      "Chest computed tomography without contrast",
+      "Flexible Fiberoptic Bronchoscopy (grading mucosal edema, hyperemia, and soot deposition)",
+      "Serial spirometry measuring FEV1 and FVC",
+      "Radionuclide Xenon-133 lung scan"
+    ],
+    "answer": "B",
+    "explanation": "Flexible fiberoptic bronchoscopy is the gold standard diagnostic tool for inhalation injury. It directly visualizes and grades mucosal injury (hyperemia, edema, soot deposition, blistering, and mucosal necrosis) using validated scoring systems such as the Abbreviated Injury Score (AIS) or Denver criteria. Bronchoscopy allows immediate airway assessment, identifies subglottic narrowing before catastrophic airway closure occurs, facilitates therapeutic bronchial toilet (removing soot and thick mucus plugs), and predicts subsequent acute respiratory failure and ARDS.",
+    "whyWrong": {
+      "A": "Chest CT is insensitive in early inhalation injury and fails to visualize endobronchial mucosal edema or soot in the first 24 hours.",
+      "C": "Spirometry is impractical, unreliable, and potentially dangerous in critically ill burn patients facing airway compromise.",
+      "D": "Xenon-133 lung scanning was historically used to detect small-airway gas trapping, but is obsolete and unavailable in acute ICU care compared to bedside bronchoscopy."
+    },
+    "difficulty": "Easy",
+    "sourceType": "NEET-SS style — original question",
+    "exam": "NEET-SS Critical Care",
+    "year": "2023",
+    "examPearl": "Inhalation Injury Gold Standard: Flexible bronchoscopy at bedside. Direct visualization of mucosal edema, sloughing, and soot. Early intubation is mandatory before fluid resuscitation causes massive pharyngeal/laryngeal edema!",
+    "hyperlinkedReference": {
+      "label": "Walker et al., J Burn Care Res 2015; Bronchoscopy in Inhalation Injury",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25569420/"
+    },
+    "tags": [
+      "Burns",
+      "Inhalation Injury",
+      "Bronchoscopy",
+      "Airway",
+      "Smoke Inhalation"
+    ],
+    "id": "mcq-cc-0281"
+  },
+  {
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "A 30-year-old woman at 36 weeks gestation presents with persistent vomiting, right upper quadrant pain, profound jaundice, and confusion. Laboratory evaluation reveals: AST 320 U/L, ALT 280 U/L, total bilirubin 14.2 mg/dL, direct bilirubin 9.8 mg/dL, severe hypoglycemia (blood glucose 38 mg/dL), prolonged prothrombin time (INR 2.4), and ammonia 110 mcg/dL. Platelets are 160,000/mcL. What is the MOST LIKELY diagnosis according to the Swansea Criteria?",
+    "options": [
+      "HELLP syndrome",
+      "Acute Fatty Liver of Pregnancy (AFLP)",
+      "Intrahepatic cholestasis of pregnancy",
+      "Viral hepatitis A"
+    ],
+    "answer": "B",
+    "explanation": "Acute Fatty Liver of Pregnancy (AFLP) is a life-threatening obstetric emergency occurring in the third trimester (associated with fetal LCHAD deficiency). The Swansea diagnostic criteria (>=6 of 14 features) include: vomiting, abdominal pain, polydipsia/polyuria, encephalopathy, elevated bilirubin (>0.8 mg/dL), hypoglycemia (<72 mg/dL), elevated uric acid, leukocytosis, coagulopathy (prolonged PT/INR), microvesicular steatosis on ultrasound, and elevated transaminases. The presence of profound hypoglycemia, severe coagulopathy/hypofibrinogenemia, and marked hyperbilirubinemia with only moderate transaminase elevation (<500 U/L) and relatively preserved platelets strongly distinguishes AFLP from HELLP syndrome (where severe thrombocytopenia, microangiopathic hemolytic anemia, and soaring transaminases predominate). Immediate delivery and correction of hypoglycemia are mandatory.",
+    "whyWrong": {
+      "A": "HELLP syndrome characteristically presents with severe thrombocytopenia (<100,000/mcL) and microangiopathic hemolysis (schistocytes, high LDH); marked hypoglycemia and profound coagulopathy with hyperbilirubinemia are classic for AFLP.",
+      "C": "Cholestasis of pregnancy causes pruritus and elevated bile acids without acute liver failure, hypoglycemia, or coagulopathy.",
+      "D": "Acute viral hepatitis presents with transaminases in the thousands (AST/ALT >1,000-2,000 U/L)."
+    },
+    "difficulty": "Hard",
+    "sourceType": "memory-based recall — NEET-SS 2024",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "AFLP vs HELLP Differentiation: AFLP = Profound Hypoglycemia + High Bilirubin + Coagulopathy (prolonged PT/INR) + Swansea Criteria (>=6). HELLP = Severe Thrombocytopenia + Microangiopathic Hemolysis (high LDH, low haptoglobin). Delivery is curative for both.",
+    "hyperlinkedReference": {
+      "label": "Knight et al., Gut 2008; Swansea Criteria for Acute Fatty Liver of Pregnancy",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18445644/"
+    },
+    "tags": [
+      "Obstetrics",
+      "AFLP",
+      "Swansea Criteria",
+      "Liver Failure",
+      "Hypoglycemia"
+    ],
+    "id": "mcq-cc-0282"
+  },
+  {
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-general-considerations",
+    "question": "What are the guideline-recommended target blood pressure thresholds and preferred first-line parenteral antihypertensive agents for acute severe hypertension (BP >=160/110 mmHg) in pre-eclampsia / pregnancy?",
+    "options": [
+      "Reduce BP abruptly to <120/80 mmHg using sodium nitroprusside infusion",
+      "Reduce MAP by no more than 15–25%, targeting SBP 140–150 mmHg and DBP 90–100 mmHg; preferred IV agents are Labetalol or Hydralazine (or oral immediate-release Nifedipine)",
+      "Administer Enalaprilat IV bolus every 6 hours",
+      "Administer high-dose Furosemide infusion with Spironolactone"
+    ],
+    "answer": "B",
+    "explanation": "In acute severe gestational hypertension / pre-eclampsia (BP >=160/110 mmHg sustained for >=15 min): (1) Blood pressure must be lowered within 30–60 minutes to prevent maternal intracranial hemorrhage and hypertensive encephalopathy; (2) The target is a controlled reduction (MAP reduced by 15–25%), aiming for SBP 140–150 mmHg and DBP 90–100 mmHg. Abrupt excessive reduction must be strictly avoided as it causes acute placental hypoperfusion and fetal distress; (3) First-line agents: IV Labetalol (20 mg IV initial, then 40-80 mg q10min up to 300 mg max), IV Hydralazine (5-10 mg IV q20min up to 20 mg), or oral immediate-release Nifedipine (10-20 mg). ACE inhibitors, ARBs, and nitroprusside (fetal cyanide risk) are strictly contraindicated.",
+    "whyWrong": {
+      "A": "Abrupt normalization to <120/80 causes acute placental bed hypoperfusion and fetal demise; nitroprusside causes fetal cyanide toxicity.",
+      "C": "ACE inhibitors and ARBs (e.g. enalaprilat) are fetotoxic and teratogenic (causing fetal renal dysgenesis, oligohydramnios, and neonatal death) and are strictly contraindicated.",
+      "D": "Diuretics further deplete intravascular volume in pre-eclampsia (which is already characterized by hemoconcentration and reduced plasma volume)."
+    },
+    "difficulty": "Easy",
+    "sourceType": "NEET-SS style — original question",
+    "exam": "NEET-SS Critical Care",
+    "year": "2023",
+    "examPearl": "Hypertensive Crisis in Pregnancy Target: SBP 140-150 / DBP 90-100 mmHg. First-line drugs: IV Labetalol, IV Hydralazine, or Oral Nifedipine. Strictly contraindicated: ACE inhibitors, ARBs, and Sodium Nitroprusside.",
+    "hyperlinkedReference": {
+      "label": "ACOG Practice Bulletin No. 222: Gestational Hypertension and Preeclampsia 2020",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32443077/"
+    },
+    "tags": [
+      "Obstetrics",
+      "Pre-eclampsia",
+      "Labetalol",
+      "Hydralazine",
+      "Antihypertensives"
+    ],
+    "id": "mcq-cc-0283"
+  },
+  {
+    "chapterId": 27,
+    "topicId": "cc-paediatric-shock-sepsis-formulas",
+    "question": "What is the validated formula for calculating the appropriate internal diameter (ID in mm) for a CUFFED endotracheal tube in a child aged 2 to 10 years?",
+    "options": [
+      "Tube ID (mm) = (Age in years / 4) + 4.0",
+      "Tube ID (mm) = (Age in years / 4) + 3.5 (Motoyama / Khine formula)",
+      "Tube ID (mm) = (Age in years / 2) + 12",
+      "Tube ID (mm) = Age in years + 10"
+    ],
+    "answer": "B",
+    "explanation": "For pediatric endotracheal intubation: (1) Cuffed endotracheal tubes use the Khine / Motoyama formula: Cuffed Tube ID (mm) = (Age in years / 4) + 3.5. (Because the cuff occupies space, a half-size smaller tube is selected compared to uncuffed tubes); (2) Uncuffed endotracheal tubes use the classic Cole's formula: Uncuffed Tube ID (mm) = (Age in years / 4) + 4.0; (3) Depth of insertion (lip to tip in cm) is approximately: (Age in years / 2) + 12, or 3 times the internal diameter of the tube. Modern pediatric practice favors micro-cuff tubes (providing a low-pressure seal, reducing gas leak and aspiration risk, while keeping cuff pressure <20 cmH2O).",
+    "whyWrong": {
+      "A": "(Age / 4) + 4.0 is Cole's formula for UNCUFFED tubes; using this for a cuffed tube will result in a tube that is too large, causing subglottic mucosal ischemia and post-extubation stridor.",
+      "C": "(Age / 2) + 12 calculates the depth of insertion at the teeth/lip in centimeters, not the tube internal diameter.",
+      "D": "Arbitrary non-physiological formula."
+    },
+    "difficulty": "Easy",
+    "sourceType": "memory-based recall — NEET-SS 2023",
+    "exam": "NEET-SS Critical Care",
+    "year": "2023",
+    "examPearl": "Pediatric ETT Formulas: Cuffed ETT ID = (Age/4) + 3.5. Uncuffed ETT ID = (Age/4) + 4.0. Depth of insertion (cm) = (Age/2) + 12 (or 3 x ID). Always have one half-size smaller and larger available at bedside!",
+    "hyperlinkedReference": {
+      "label": "Khine et al., Anesthesiology 1997; Cuffed Tubes in Children",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9158354/"
+    },
+    "tags": [
+      "Pediatrics",
+      "Airway",
+      "Endotracheal Tube",
+      "Formulas",
+      "Cuffed Tube"
+    ],
+    "id": "mcq-cc-0284"
+  },
+  {
+    "chapterId": 27,
+    "topicId": "cc-paediatric-shock-sepsis-formulas",
+    "question": "Which anatomical and physiological difference in the infant airway compared to the adult airway is of PARAMOUNT importance during direct laryngoscopy and intubation?",
+    "options": [
+      "The infant larynx is positioned more caudally (at C6–C7 level) with a wide, flat epiglottis",
+      "The infant larynx is positioned more rostrally/cranially (at C3–C4 level) with a large, floppy, omega-shaped epiglottis, and the narrowest point of the airway is the non-distensible cricoid ring",
+      "The tongue is relatively small compared to the oral cavity, facilitating easy visualization of cords",
+      "The infant trachea is much longer than the adult trachea, making bronchial intubation rare"
+    ],
+    "answer": "B",
+    "explanation": "Key pediatric airway anatomical differences include: (1) Cranial/rostral position of larynx: infant larynx is at C3–C4 (versus C4–C5 in adults, C5–C6 in elderly); (2) Epiglottis is relatively larger, floppy, U- or Omega-shaped, and angled at 45 degrees over the laryngeal inlet, requiring a straight blade (Miller) to directly lift it; (3) Funnel-shaped airway: the narrowest portion of the infant larynx is at the non-distensible complete cartilaginous cricoid ring (versus the vocal cords in adults); (4) Large occiput (causes neck flexion when supine, requiring a shoulder roll rather than head ring to achieve the 'sniffing' position); (5) Large tongue relative to oral cavity; (6) Short trachea (4–5 cm in newborns), making accidental right mainstem intubation or extubation with neck movement very common.",
+    "whyWrong": {
+      "A": "The infant larynx is positioned more cephalad/cranial (C3-C4), NOT caudal.",
+      "C": "The infant tongue is disproportionately large, easily causing upper airway obstruction and obscuring direct visualization.",
+      "D": "The infant trachea is extremely short (only 4-5 cm in newborns), making endobronchial intubation very common upon neck flexion."
+    },
+    "difficulty": "Medium",
+    "sourceType": "NEET-SS style — original question",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "Infant Airway Characteristics: High larynx (C3-C4), large occiput (needs shoulder roll), floppy omega epiglottis (straight Miller blade preferred), funnel-shaped airway (narrowest at cricoid ring), short trachea (4-5 cm).",
+    "hyperlinkedReference": {
+      "label": "Coté & Lerman, A Practice of Anesthesia for Infants and Children, 6th ed.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20436444/"
+    },
+    "tags": [
+      "Pediatrics",
+      "Airway Anatomy",
+      "Larynx",
+      "Cricoid Ring",
+      "Miller Blade"
+    ],
+    "id": "mcq-cc-0285"
+  },
+  {
+    "chapterId": 28,
+    "topicId": "cc-pleural-disorders-in-icu",
+    "question": "A diagnostic thoracentesis is performed on a pleural effusion in an ICU patient with decompensated heart failure and pneumonia. Pleural fluid protein is 3.4 g/dL (serum protein 6.2 g/dL), pleural fluid LDH is 240 U/L (serum LDH 320 U/L, upper limit of normal for serum LDH is 200 U/L). According to Light's Criteria, how is this effusion classified?",
+    "options": [
+      "Transudate, because heart failure is the underlying cause",
+      "Exudate, because Pleural/Serum Protein ratio is >0.5 (0.55) and Pleural LDH is >2/3 the upper limit of normal serum LDH (240 > 133 U/L)",
+      "Chylothorax, because LDH is elevated",
+      "Cannot be determined without a cholesterol measurement"
+    ],
+    "answer": "B",
+    "explanation": "Light's Criteria classify a pleural effusion as an EXUDATE if AT LEAST ONE of the following three criteria is met: (1) Pleural fluid protein / Serum protein ratio >0.5 (here 3.4 / 6.2 = 0.55 > 0.5); (2) Pleural fluid LDH / Serum LDH ratio >0.6 (here 240 / 320 = 0.75 > 0.6); (3) Pleural fluid LDH > 2/3 of the laboratory upper limit of normal for serum LDH (here 240 > (2/3 x 200 = 133 U/L)). Meeting ANY single criterion classifies the fluid as an exudate (with sensitivity >98%). Note: Diuretic therapy in heart failure can cause 'pseudo-exudates'; if an exudate is diagnosed in suspected heart failure, the Serum-Pleural Albumin Gradient (Serum albumin - Pleural albumin >1.2 g/dL) or protein gradient (>3.1 g/dL) can confirm a true transudative etiology.",
+    "whyWrong": {
+      "A": "Even if heart failure is present, the fluid meets all three biochemical criteria for an exudate; concurrent pneumonia (parapneumonic effusion) must be evaluated.",
+      "C": "Chylothorax requires pleural fluid triglyceride level >110 mg/dL and chylomicrons, not just LDH.",
+      "D": "Light's criteria are the definitive standard; cholesterol is an adjunct used only when pseudo-exudate is suspected."
+    },
+    "difficulty": "Easy",
+    "sourceType": "memory-based recall — NEET-SS 2023",
+    "exam": "NEET-SS Critical Care",
+    "year": "2023",
+    "examPearl": "Light's Criteria for Exudate (meet >=1 of 3): (1) Pleural/Serum protein >0.5; (2) Pleural/Serum LDH >0.6; (3) Pleural LDH > 2/3 ULN serum LDH. In diuresed heart failure patients with pseudo-exudate, Serum-Pleural Albumin Gradient >1.2 g/dL confirms transudate.",
+    "hyperlinkedReference": {
+      "label": "Light et al., Ann Intern Med 1972; Light's Criteria Classic Paper",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/4642731/"
+    },
+    "tags": [
+      "Pleural Disorders",
+      "Light Criteria",
+      "Exudate",
+      "Thoracentesis",
+      "LDH"
+    ],
+    "id": "mcq-cc-0286"
+  },
+  {
+    "chapterId": 28,
+    "topicId": "cc-pleural-disorders-in-icu",
+    "question": "A 24-year-old trauma patient with blunt chest injury undergoes placement of a 32-Fr intercostal chest tube for a massive hemothorax. What initial chest tube drainage threshold, or ongoing hourly output threshold, represents a standard indication for URGENT EMERGENCY THORACOTOMY according to ATLS guidelines?",
+    "options": [
+      "Immediate initial output of >500 mL, or >50 mL/h for 2 hours",
+      "Immediate initial output of >=1,500 mL of blood, OR ongoing persistent output of >=200 mL/h for 2 to 4 consecutive hours",
+      "Any chest tube output that continues for more than 12 hours",
+      "Drainage of 1,000 mL over 24 hours"
+    ],
+    "answer": "B",
+    "explanation": "According to the Advanced Trauma Life Support (ATLS) and Eastern Association for the Surgery of Trauma (EAST) guidelines: In acute traumatic hemothorax, indications for urgent exploratory thoracotomy include: (1) Immediate initial evacuation of >=1,500 mL of blood upon tube thoracostomy insertion ('massive hemothorax'); OR (2) Ongoing persistent bleeding of >=200 mL per hour for 2 to 4 consecutive hours (or >=3–4 mL/kg/h); OR (3) Persistent hemodynamic instability despite vigorous balanced blood resuscitation. Massive bleeding usually indicates injury to major systemic vessels (internal mammary, intercostal arteries, or great vessels) that will not self-tamponade.",
+    "whyWrong": {
+      "A": "500 mL is not an operative threshold; most small hemothoraces resolve with tube drainage alone.",
+      "C": "Duration alone without high volume does not mandate thoracotomy.",
+      "D": "1,000 mL over 24 hours (approx 40 mL/h) is managed conservatively with tube drainage and observation."
+    },
+    "difficulty": "Medium",
+    "sourceType": "NEET-SS style — original question",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "ATLS Massive Hemothorax Thoracotomy Criteria: Immediate output >=1,500 mL blood upon insertion, OR >=200 mL/h for 2-4 consecutive hours, OR refractory shock. Autotransfusion of shed blood via cell saver is life-saving.",
+    "hyperlinkedReference": {
+      "label": "Advanced Trauma Life Support (ATLS) 10th ed., American College of Surgeons",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29598285/"
+    },
+    "tags": [
+      "Pleural Disorders",
+      "Hemothorax",
+      "Thoracotomy",
+      "ATLS",
+      "Chest Tube"
+    ],
+    "id": "mcq-cc-0287"
+  },
+  {
+    "chapterId": 29,
+    "topicId": "cc-basic-echocardiography",
+    "question": "A 56-year-old female with acute chest pain and hypoxemia undergoes focused cardiac ultrasound. Parasternal long-axis view shows a dilated right ventricle. In the apical 4-chamber view, there is severe akinesia/hypokinesia of the right ventricular free wall with preserved or hyperdynamic contraction of the RV apex. What is this pathognomonic sign called, and what does it indicate?",
+    "options": [
+      "60/60 Sign; indicates acute left ventricular failure",
+      "McConnell's Sign; highly suggestive of Acute Pulmonary Embolism",
+      "Kussmaul's Sign; indicates constrictive pericarditis",
+      "Ewart's Sign; indicates large pericardial effusion"
+    ],
+    "answer": "B",
+    "explanation": "McConnell's Sign is an echocardiographic finding characterized by distinct regional wall motion abnormality of the right ventricle: profound akinesia or hypokinesia of the RV mid- and basal free wall with normal or hyperdynamic contraction of the RV apex. It has a high specificity (>94%) for ACUTE PULMONARY EMBOLISM (PE). Rationale: Acute pressure overload from pulmonary arterial occlusion abruptly balloons the thin-walled RV free wall, while tethering to the hyperdynamic, contracting left ventricular apex spares apical motion. Other echo signs of acute PE include RV/LV diameter ratio >1.0, systolic flattening of the interventricular septum ('D-shaped LV'), and the 60/60 sign (pulmonary acceleration time <60 ms with peak systolic gradient <60 mmHg across the tricuspid valve).",
+    "whyWrong": {
+      "A": "The 60/60 sign is acceleration time <60 ms + peak TR gradient <60 mmHg; McConnell's sign specifically describes regional RV wall motion with apical sparing.",
+      "C": "Kussmaul's sign is paradoxical elevation of JVP during inspiration, a physical exam finding in constriction and RV infarction.",
+      "D": "Ewart's sign is dullness and bronchial breathing beneath the left scapula due to lung compression from a massive pericardial effusion."
+    },
+    "difficulty": "Medium",
+    "sourceType": "memory-based recall — NEET-SS 2024",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "Echo Signs of Acute Massive PE: (1) McConnell's Sign = RV free wall akinesia with hyperdynamic apex (specificity 94%). (2) 60/60 Sign = PAT <60 ms + TR gradient <60 mmHg. (3) D-shaped LV on short-axis. (4) TAPSE <17 mm.",
+    "hyperlinkedReference": {
+      "label": "McConnell et al., Am J Cardiol 1996; McConnell Sign in Pulmonary Embolism",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8765293/"
+    },
+    "tags": [
+      "POCUS",
+      "McConnell Sign",
+      "Pulmonary Embolism",
+      "RV Strain",
+      "Echocardiography"
+    ],
+    "id": "mcq-cc-0288"
+  },
+  {
+    "chapterId": 29,
+    "topicId": "cc-basic-echocardiography",
+    "question": "In assessing right ventricular systolic function by transthoracic echocardiography, what is the lower limit of normal for Tricuspid Annular Plane Systolic Excursion (TAPSE) measured by M-mode across the lateral tricuspid annulus?",
+    "options": [
+      "TAPSE <12 mm",
+      "TAPSE <17 mm (indicates RV systolic dysfunction)",
+      "TAPSE <25 mm",
+      "TAPSE <35 mm"
+    ],
+    "answer": "B",
+    "explanation": "According to the American Society of Echocardiography (ASE) and European Association of Cardiovascular Imaging (EACVI) guidelines for chamber quantification: Tricuspid Annular Plane Systolic Excursion (TAPSE) measures the longitudinal excursion of the lateral tricuspid annulus along the base-to-apex plane in the apical 4-chamber view using M-mode. Because the right ventricle is predominantly composed of longitudinal muscle fibers, TAPSE is an excellent surrogate for global RV systolic function. A TAPSE <17 mm is abnormal and defines RIGHT VENTRICULAR SYSTOLIC DYSFUNCTION (associated with poor prognosis in pulmonary embolism, pulmonary hypertension, and ARDS).",
+    "whyWrong": {
+      "A": "12 mm indicates severe RV failure; the cutoff defining dysfunction is <17 mm.",
+      "C": "Normal TAPSE ranges from 17 to 24 mm; <25 mm is not a pathological threshold.",
+      "D": "35 mm is well above normal range."
+    },
+    "difficulty": "Easy",
+    "sourceType": "NEET-SS style — original question",
+    "exam": "NEET-SS Critical Care",
+    "year": "2023",
+    "examPearl": "RV Systolic Function Echo Cutoffs (ASE): (1) TAPSE <17 mm; (2) Tissue Doppler S' wave velocity <9.5 cm/s; (3) Fractional Area Change (FAC) <35%. Normal RV/LV basal diameter ratio is <0.6 (>1.0 indicates severe RV dilatation).",
+    "hyperlinkedReference": {
+      "label": "Lang et al., J Am Soc Echocardiogr 2015; ASE Chamber Quantification Guidelines",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25709114/"
+    },
+    "tags": [
+      "POCUS",
+      "TAPSE",
+      "RV Function",
+      "Echocardiography",
+      "Hemodynamics"
+    ],
+    "id": "mcq-cc-0289"
+  },
+  {
+    "chapterId": 30,
+    "topicId": "cc-ecmo-basics",
+    "question": "A patient with severe ARDS is placed on Venovenous (VV) ECMO (femoral vein drainage cannula, right internal jugular vein reinfusion cannula). Despite ECMO blood flow of 4.5 L/min with sweep gas FiO2 of 1.0, the patient's arterial SpO2 remains 78%. Pre-membrane blood oxygen saturation is found to be 88%, while post-membrane oxygen saturation is 99%. What is the cause of this high pre-membrane saturation and persistent arterial hypoxemia?",
+    "options": [
+      "Severe oxygenator membrane lung failure with thrombus formation",
+      "Recirculation phenomenon (oxygenated reinfused blood is immediately re-aspirated by the drainage cannula)",
+      "Differential hypoxemia from aortic watershed competition",
+      "Acute massive systemic air embolism"
+    ],
+    "answer": "B",
+    "explanation": "Recirculation is a major efficiency complication in VV-ECMO. It occurs when freshly oxygenated blood returned via the reinfusion cannula is immediately sucked back into the nearby drainage cannula without traveling through the native right heart and systemic circulation. Diagnostic indicator: Abnormally HIGH pre-membrane venous oxygen saturation (Pre-SO2 >75–80%, when true mixed venous SvO2 should be 60–65%) alongside persistent arterial hypoxemia. Recirculation fraction is calculated as: Rf = (Pre-SO2 - True SvO2) / (Post-SO2 - True SvO2). Causes include: Cannula tips positioned too close together, high ECMO flow exceeding vena caval return, elevated intrathoracic/intra-abdominal pressure, or cannula migration. Solution: Increase distance between cannula tips (>=10-15 cm separation) or reposition under fluoroscopy/echocardiography.",
+    "whyWrong": {
+      "A": "If the membrane lung failed, the POST-membrane saturation would be low; here post-membrane saturation is 99%, proving the membrane lung is functioning perfectly.",
+      "C": "Differential hypoxemia occurs in peripheral VA-ECMO, not VV-ECMO (where all blood passes through the pulmonary circulation).",
+      "D": "Air embolism would cause circuit air lock, loss of flow, or acute circulatory arrest."
+    },
+    "difficulty": "Hard",
+    "sourceType": "memory-based recall — NEET-SS 2024",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "VV-ECMO Recirculation Signature: High pre-membrane saturation (>80%) + low systemic arterial SpO2 despite 100% post-membrane saturation. Solution: Separate cannula tips by at least 10-15 cm (drainage tip in IVC, reinfusion in mid-to-high RA).",
+    "hyperlinkedReference": {
+      "label": "ELSO Red Book, 5th ed.; Extracorporeal Life Support Organization",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30292723/"
+    },
+    "tags": [
+      "ECMO",
+      "VV-ECMO",
+      "Recirculation",
+      "Cannulation",
+      "Hypoxemia"
+    ],
+    "id": "mcq-cc-0290"
+  },
+  {
+    "chapterId": 30,
+    "topicId": "cc-managing-a-patient-on-ecmo",
+    "question": "What is the recommended mechanical ventilation strategy ('Rest Settings') for native lungs once a patient with severe ARDS is stabilized on adequate VV-ECMO support?",
+    "options": [
+      "Tidal volume 8–10 mL/kg, PEEP 5 cmH2O, respiratory rate 20 bpm to clear secretions",
+      "Ultra-protective lung ventilation: Tidal volume 3–4 mL/kg (or driving pressure <10–12 cmH2O), PEEP 10–14 cmH2O, low respiratory rate (4–10 bpm), and FiO2 <=0.40–0.50",
+      "Zero PEEP and high peak pressures to keep alveoli open",
+      "High-frequency oscillatory ventilation (HFOV) at 600 cycles/min"
+    ],
+    "answer": "B",
+    "explanation": "The primary purpose of VV-ECMO in ARDS is to allow 'lung rest' and minimize ventilator-induced lung injury (VILI: barotrauma, volutrauma, atelectrauma, and biotrauma). Because the ECMO membrane lung handles systemic oxygenation and CO2 elimination, the mechanical ventilator can be de-escalated to 'ultra-protective rest settings': (1) Tidal volume: 3 to 4 mL/kg ideal body weight (or driving pressure <10 cmH2O, plateau pressure <25 cmH2O); (2) Moderate-to-high PEEP: 10 to 14 cmH2O to prevent end-expiratory alveolar collapse and cyclic derecruitment; (3) Low respiratory rate: 4 to 10 breaths per minute; (4) FiO2 on ventilator: <=0.40 to 0.50 to prevent hyperoxic oxidative alveolar damage. Tachypnea and high driving pressures must be strictly eliminated.",
+    "whyWrong": {
+      "A": "8-10 mL/kg tidal volumes cause massive volutrauma and defeat the entire rationale of initiating ECMO.",
+      "C": "Zero PEEP causes complete alveolar collapse (atelectrauma) and progressive consolidated lung parenchymal necrosis.",
+      "D": "HFOV in ARDS was proven harmful and increased mortality in the OSCILLATE and OSCAR trials."
+    },
+    "difficulty": "Medium",
+    "sourceType": "NEET-SS style — original question",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "Ventilator 'Rest Settings' on VV-ECMO: Driving pressure <10 cmH2O (Vt 3-4 mL/kg), PEEP 10-14 cmH2O, Rate 4-10 bpm, FiO2 <=0.40. Let the ECMO membrane lung do the gas exchange while the native lungs rest and heal!",
+    "hyperlinkedReference": {
+      "label": "Combes et al., Lancet Respir Med 2017; Ventilator Management on ECMO",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28844838/"
+    },
+    "tags": [
+      "ECMO",
+      "Rest Settings",
+      "Ultra-protective Ventilation",
+      "ARDS",
+      "VILI"
+    ],
+    "id": "mcq-cc-0291"
+  },
+  {
+    "chapterId": 31,
+    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "question": "A 50-year-old female with acute myeloid leukemia undergoing consolidation chemotherapy presents with fever of 38.6°C and absolute neutrophil count (ANC) of 120 cells/mcL (severe neutropenia). According to IDSA and ASCO guidelines, what is the RECOMMENDED immediate empirical antimicrobial management for high-risk Febrile Neutropenia?",
+    "options": [
+      "Oral ciprofloxacin plus amoxicillin-clavulanate outpatient therapy",
+      "Immediate intravenous antipseudomonal beta-lactam monotherapy (e.g. Cefepime 2 g q8h, Piperacillin-tazobactam 4.5 g q6h, or Meropenem 1 g q8h) administered within 1 hour",
+      "Vancomycin monotherapy",
+      "Withhold antibiotics until blood and urine cultures identify the causative organism"
+    ],
+    "answer": "B",
+    "explanation": "Febrile Neutropenia (fever >=38.3°C single reading or >=38.0°C sustained for 1 hour, with ANC <500 cells/mcL or expected to fall <500 within 48h) in an inpatient setting is a high-risk medical emergency (MASCC score <21). Gram-negative bacteremia (especially Pseudomonas aeruginosa) causes fulminant septic shock with high mortality if treatment is delayed. Guidelines mandate immediate administration of IV antipseudomonal beta-lactam monotherapy (Cefepime 2 g q8h, Piperacillin-tazobactam 4.5 g q6h, or Meropenem 1 g q8h) within ONE HOUR of presentation ('door-to-antibiotic time <60 min'). Routine empirical vancomycin is NOT recommended upfront unless specific indications exist (hemodynamic instability, pneumonia, central line infection, MRSA colonization, or severe mucositis).",
+    "whyWrong": {
+      "A": "Oral ciprofloxacin/augmentin is reserved for low-risk outpatient febrile neutropenia (MASCC score >=21, solid tumors, brief expected neutropenia <7 days).",
+      "C": "Vancomycin lacks Gram-negative activity; Pseudomonas bacteremia will rapidly kill the patient if treated with vancomycin alone.",
+      "D": "Withholding antibiotics in febrile neutropenia is lethal negligence; pseudomonal bacteremia has a mortality approaching 50-70% if unaddressed within hours."
+    },
+    "difficulty": "Easy",
+    "sourceType": "memory-based recall — NEET-SS 2023",
+    "exam": "NEET-SS Critical Care",
+    "year": "2023",
+    "examPearl": "High-Risk Febrile Neutropenia: ANC <500 + Fever >=38.3°C = Immediate IV antipseudomonal beta-lactam monotherapy (Cefepime, Pip-Tazo, or Meropenem) within 1 HOUR! Do not add vancomycin routinely unless catheter infection, shock, or MRSA colonization.",
+    "hyperlinkedReference": {
+      "label": "Freifeld et al., Clin Infect Dis 2011; IDSA Guidelines for Neutropenic Patients",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21258094/"
+    },
+    "tags": [
+      "Immunocompromised",
+      "Febrile Neutropenia",
+      "Pseudomonas",
+      "Cefepime",
+      "MASCC Score"
+    ],
+    "id": "mcq-cc-0292"
+  },
+  {
+    "chapterId": 31,
+    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "question": "A hematopoietic stem cell transplant recipient with prolonged neutropenia develops fever, pleuritic chest pain, and hemoptysis. High-resolution chest CT reveals nodular consolidations surrounded by a ground-glass attenuation ('Halo Sign') and a positive serum galactomannan optical index of 1.4. What is the FIRST-LINE targeted antifungal therapy for Invasive Pulmonary Aspergillosis?",
+    "options": [
+      "Fluconazole 400 mg IV daily",
+      "Voriconazole (6 mg/kg IV q12h on day 1, then 4 mg/kg IV q12h) or Isavuconazole",
+      "Caspofungin monotherapy",
+      "Terbinafine oral"
+    ],
+    "answer": "B",
+    "explanation": "The 'Halo Sign' on chest CT (angioinvasive fungal nodule with surrounding ground-glass hemorrhage) combined with a positive serum/BAL galactomannan antigen (index >0.5) is diagnostic of Invasive Pulmonary Aspergillosis (IPA). According to the IDSA 2016 and ECIL guidelines: The first-line targeted antifungal of choice is VORICONAZOLE (loading dose 6 mg/kg IV q12h on day 1, followed by 4 mg/kg IV q12h maintenance; or oral equivalent), or ISAVUCONAZOLE (demonstrated non-inferiority with fewer adverse effects in the SECURE trial). Liposomal Amphotericin B is the preferred alternative. Fluconazole has ZERO activity against Aspergillus species. Echinocandins (caspofungin) are fungistatic against Aspergillus and are reserved for salvage/combination therapy.",
+    "whyWrong": {
+      "A": "Fluconazole has completely zero in vitro or in vivo activity against Aspergillus mold.",
+      "C": "Echinocandins are fungistatic against Aspergillus mycelia (target 1,3-beta-D-glucan synthase) and are second-line/salvage therapy, not first-line.",
+      "D": "Terbinafine is for superficial dermatophyte infections and has no role in angioinvasive pulmonary aspergillosis."
+    },
+    "difficulty": "Easy",
+    "sourceType": "memory-based recall — NEET-SS 2024",
+    "exam": "NEET-SS Critical Care",
+    "year": "2024",
+    "examPearl": "Invasive Aspergillosis Triad: Neutropenia + CT 'Halo Sign' + Positive Galactomannan. First-line therapy: Voriconazole (or Isavuconazole). Fluconazole is totally useless against Aspergillus!",
+    "hyperlinkedReference": {
+      "label": "Patterson et al., Clin Infect Dis 2016; IDSA Practice Guidelines for Aspergillosis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27365388/"
+    },
+    "tags": [
+      "Immunocompromised",
+      "Aspergillosis",
+      "Voriconazole",
+      "Galactomannan",
+      "Halo Sign"
+    ],
+    "id": "mcq-cc-0293"
+  }
+]

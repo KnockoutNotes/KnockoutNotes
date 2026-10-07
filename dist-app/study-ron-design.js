@@ -384,6 +384,32 @@
     return "anaesthesia";
   }
 
+  // Critical Care category to chapter ID mapping for MCQ engine integration
+  const CAT_TO_CHAPTER = {
+    "cc_principles": 1,
+    "cc_airway": 6,
+    "cc_respiratory": 8,
+    "respiratory": 8,
+    "cc_hemodynamics": 3,
+    "shock": 4,
+    "cc_sepsis": 5,
+    "antibiotics": 18,
+    "cc_neuro": 15,
+    "cc_cardio": 11,
+    "cc_renal": 13,
+    "abg": 14,
+    "cc_gi": 19,
+    "cc_trauma": 24,
+    "cc_tox": 23,
+    "poisoning": 23,
+    "cc_heme": 22,
+    "cc_obs": 26,
+    "cc_peds": 27,
+    "cc_pharm": 17,
+    "cc_advances": 30,
+    "pain": 16
+  };
+
   function getItemsForDomainAndCat(domainId, catId) {
     const data = getData();
     const all = [...(data.topics || []), ...(data.drugs || [])];
@@ -985,7 +1011,7 @@
                   placeholder="🔍 Search all 171 topics &amp; drugs (e.g. Propofol, RSI, TOF)..."
                   value="${esc(searchFilter)}" autocomplete="off">
               </div>
-              ${activeDomain === 'critical' ? `<button class="ron-mcq-pill-btn" title="High Yield MCQs — Coming Soon" disabled>📝 High Yield MCQs</button>` : ''}
+              ${activeDomain === 'critical' ? `<button type="button" class="ron-mcq-pill-btn" id="ronOpenMcqBtn" title="High Yield MCQ Practice — Critical Care" aria-label="Open High Yield MCQ Practice">📝 High Yield MCQs</button>` : ''}
             </div>
 
             <!-- New 3-Domain Vertical & Single Horizontal Category Track -->
@@ -1168,7 +1194,7 @@
                   placeholder="🔍 Search all 171 topics &amp; drugs..."
                   value="${esc(searchFilter)}" autocomplete="off">
               </div>
-              ${activeDomain === 'critical' ? `<button class="ron-mcq-pill-btn" title="High Yield MCQs — Coming Soon" disabled>📝 High Yield MCQs</button>` : ''}
+              ${activeDomain === 'critical' ? `<button type="button" class="ron-mcq-pill-btn" id="ronOpenMcqBtn" title="High Yield MCQ Practice — Critical Care" aria-label="Open High Yield MCQ Practice">📝 High Yield MCQs</button>` : ''}
             </div>
 
             <!-- New 3-Domain Vertical & Single Horizontal Category Track -->
@@ -1250,6 +1276,11 @@
                     <button type="button" class="kn-action-btn kn-pen-toggle-btn" title="Toggle Stylus / Pen Annotations" onclick="if(window.KN_ANNOTATIONS)window.KN_ANNOTATIONS.showToolbar();">
                       <span>✏️</span> <span>Draw</span>
                     </button>
+                    ${activeDomain === 'critical' ? `
+                      <button type="button" class="kn-action-btn kn-topic-mcq-btn" data-topic-mcq-target="${esc(item.id)}" title="Practice High Yield MCQs on this Topic">
+                        <span>📝</span> <span>MCQs</span>
+                      </button>
+                    ` : ''}
                   </div>
                 </div>
 
@@ -1292,6 +1323,21 @@
             <!-- Complete Clinical Description (All Subsections Point-Wise with Optimized Diagrams) -->
             <div class="ron-description-container" id="ronActiveDescriptionBox">
               ${completeDescriptionHTML}
+
+              ${activeDomain === 'critical' ? `
+                <div class="ron-topic-mcq-banner">
+                  <div class="ron-topic-mcq-banner-left">
+                    <span class="ron-topic-mcq-icon">📝</span>
+                    <div>
+                      <h4 class="ron-topic-mcq-title">Practice High Yield MCQs</h4>
+                      <p class="ron-topic-mcq-desc">Master this topic with authentic NEET-SS / INI-SS clinical recall and practice questions with detailed rationale.</p>
+                    </div>
+                  </div>
+                  <button type="button" class="ron-topic-mcq-launch-btn" data-topic-mcq-target="${esc(item.id)}">
+                    <span>Solve MCQs</span> <span>→</span>
+                  </button>
+                </div>
+              ` : ''}
             </div>
 
           </div>
@@ -2001,6 +2047,34 @@
       e.preventDefault();
       e.stopPropagation();
       resetStudyProgress();
+      return;
+    }
+
+    // 0c. High Yield MCQs Buttons (Header pill OR Topic button / banner)
+    const topicMcqBtn = e.target.closest("[data-topic-mcq-target]");
+    if (topicMcqBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      triggerHapticFeedback();
+      const topicId = topicMcqBtn.getAttribute("data-topic-mcq-target");
+      const mappedChapter = CAT_TO_CHAPTER[activeCat];
+      if (window.KN_MCQ && typeof window.KN_MCQ.open === "function") {
+        window.KN_MCQ.open({
+          topicId: topicId,
+          chapterId: mappedChapter
+        });
+      }
+      return;
+    }
+
+    if (e.target.closest(".ron-mcq-pill-btn")) {
+      e.preventDefault();
+      e.stopPropagation();
+      triggerHapticFeedback();
+      const mappedChapter = CAT_TO_CHAPTER[activeCat];
+      if (window.KN_MCQ && typeof window.KN_MCQ.open === "function") {
+        window.KN_MCQ.open(mappedChapter ? { chapterId: mappedChapter } : {});
+      }
       return;
     }
 

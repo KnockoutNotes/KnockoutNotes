@@ -148,6 +148,7 @@ const JS_FILES = [
   'ventilator-ui.js',
   'policy-config.js',
   'study-annotations.js',
+  'mcq-engine.js',
   'sw.js'
 ];
 JS_FILES.forEach(copyFile);
@@ -167,5 +168,8 @@ copyDir('vendor');
 // 6. Selected Asset Folders (core 3D models and regional sono-anatomy)
 copyDir('assets/models');
 copyDir('assets/regional');
+
+// 7. Critical Care Curriculum & MCQ Question Banks
+copyDir('criticalCare');
 
 console.log('[Bundle] Successfully assembled Android web distribution in dist-app/');

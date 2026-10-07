@@ -5,7 +5,7 @@
 // - Stale-While-Revalidate with safe response cloning for static app shell assets
 // ==========================================================================
 
-const CACHE_NAME = "knockoutnotes-cache-v83";
+const CACHE_NAME = "knockoutnotes-cache-v84";
 
 const PRECACHE_ASSETS = [
   "/",
@@ -92,7 +92,15 @@ const PRECACHE_ASSETS = [
   "/assets/references/gas-supply-pathway-schematic.png",
   "/assets/references/cylinder-valve-pin-index-yoke-diagram.png",
   "/assets/references/cylinder-yoke-check-valve-cross-section.png",
-  "/assets/references/mapleson-circuits-classification.jpg"
+  "/assets/references/mapleson-circuits-classification.jpg",
+  "/mcq-engine.js",
+  "/criticalCare/mcqs.json",
+  "/criticalCare/chapters.json",
+  "/criticalCare/topics.json",
+  "/criticalCare/chunks/mcqs_ch01_to_ch08.json",
+  "/criticalCare/chunks/mcqs_ch09_to_ch16.json",
+  "/criticalCare/chunks/mcqs_ch17_to_ch24.json",
+  "/criticalCare/chunks/mcqs_ch25_to_ch31.json"
 ];
 
 self.addEventListener("install", (event) => {
