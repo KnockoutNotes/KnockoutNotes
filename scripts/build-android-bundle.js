@@ -97,7 +97,8 @@ const CSS_FILES = [
   'border-glow.css',
   'subscribe-widget.css',
   'policy-common.css',
-  'study-annotations.css'
+  'study-annotations.css',
+  'mcq-platform.css'
 ];
 CSS_FILES.forEach(copyFile);
 

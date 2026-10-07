@@ -31,7 +31,8 @@
       "Driving Pressure",
       "Amato Trial",
       "Lung Protection"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0103",
@@ -65,7 +66,8 @@
       "Severity Classification",
       "P/F Ratio",
       "PEEP"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0104",
@@ -99,7 +101,8 @@
       "Prone Positioning",
       "ARDS Mortality",
       "Transpulmonary Pressure"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0105",
@@ -133,7 +136,8 @@
       "ACURASYS",
       "Neuromuscular Blockade",
       "ARDS Guidelines"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0106",
@@ -167,7 +171,8 @@
       "Recruitment Maneuvers",
       "Barotrauma",
       "ARDSNet"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0107",
@@ -201,7 +206,8 @@
       "Predicted Body Weight",
       "PBW Formula",
       "Tidal Volume"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0108",
@@ -235,7 +241,8 @@
       "Dynamic Hyperinflation",
       "Ventilator Disconnection",
       "Auto-PEEP Collapse"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0109",
@@ -269,7 +276,8 @@
       "Status Asthmaticus",
       "Controlled Hypoventilation",
       "Auto-PEEP"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0110",
@@ -303,7 +311,8 @@
       "COPD Exacerbation",
       "Prednisone",
       "GOLD Guidelines"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0111",
@@ -337,7 +346,8 @@
       "Mechanical Complications of MI",
       "Oxygen Step-up",
       "Cardiogenic Shock"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0112",
@@ -371,7 +381,8 @@
       "Systemic Thrombolysis",
       "Alteplase",
       "ESC Guidelines"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0113",
@@ -405,7 +416,8 @@
       "Cardiac Arrest",
       "Targeted Temperature Management",
       "Neuroprotection"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0114",
@@ -440,7 +452,8 @@
       "Cardiac Arrest",
       "SSEP N20",
       "ERC Guidelines"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0115",
@@ -474,7 +487,8 @@
       "Staging Criteria",
       "Creatinine",
       "Oliguria"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0116",
@@ -494,9 +508,9 @@
       "C": "Total calcium of 11.2 in this setting is falsely high due to calcium-citrate complexation; ionized calcium is actually critically LOW (0.90 mmol/L).",
       "D": "Total/ionized ratio > 2.5 is intoxication/accumulation, not under-dosing."
     },
-    "difficulty": "challenging",
+    "difficulty": "difficult",
     "sourceType": "ini-ss-style",
-    "exam": "NEET-SS",
+    "exam": "INI-SS",
     "year": null,
     "examPearl": "NEET-SS EXAM PEARL: Regional Citrate Anticoagulation (RCA): Target post-filter ionized Ca = 0.25-0.35 mmol/L. Citrate Accumulation ('Citrate Lock'): Total Ca / Ionized Ca ratio > 2.5 (mmol/L or mg/dL) + High Anion Gap Acidosis. Management: STOP or REDUCE citrate, escalate RRT clearance, switch to systemic heparin or no anticoagulation.",
     "hyperlinkedReference": {
@@ -508,7 +522,8 @@
       "Regional Citrate Anticoagulation",
       "Citrate Accumulation",
       "Calcium Ratio"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0117",
@@ -542,7 +557,8 @@
       "RENAL Trial",
       "ATN Trial",
       "KDIGO Guidelines"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0118",
@@ -576,7 +592,8 @@
       "NAGMA",
       "Winters Formula",
       "Acid-Base Interpretation"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0119",
@@ -598,7 +615,7 @@
     },
     "difficulty": "moderate",
     "sourceType": "ini-ss-style",
-    "exam": "NEET-SS",
+    "exam": "INI-SS",
     "year": null,
     "examPearl": "NEET-SS EXAM PEARL: Stewart's 3 Independent Variables: (1) Strong Ion Difference (SID, normal ~40 mEq/L), (2) Total weak acids (Atot: Albumin + Phosphate), (3) PaCO2. Normal saline causes acidosis by delivering equal Na and Cl (SID = 0), which dilutes plasma SID below 40 mEq/L.",
     "hyperlinkedReference": {
@@ -610,7 +627,8 @@
       "Strong Ion Difference",
       "SID",
       "Acid-Base Physiology"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0120",
@@ -630,7 +648,7 @@
       "B": "Ratio 1.0 indicates pure HAGMA.",
       "D": "Respiratory alkalosis does not alter the metabolic delta-delta calculation."
     },
-    "difficulty": "challenging",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -644,7 +662,8 @@
       "Mixed Acid-Base",
       "DKA",
       "Anion Gap"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0121",
@@ -678,7 +697,8 @@
       "ICP Threshold",
       "CPP Target",
       "Traumatic Brain Injury"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0122",
@@ -712,7 +732,8 @@
       "Foramen of Monro",
       "Tragus",
       "ICP Monitoring"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0123",
@@ -746,7 +767,8 @@
       "Lorazepam",
       "Midazolam",
       "RAMPART Trial"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0124",
@@ -781,7 +803,8 @@
       "Levetiracetam",
       "Fosphenytoin",
       "Valproate"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0125",
@@ -815,7 +838,8 @@
       "Pulmonary Embolism",
       "Echocardiography",
       "Right Ventricular Strain"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0126",
@@ -849,7 +873,8 @@
       "Stanford Type A",
       "Anti-Impulse Therapy",
       "Beta-Blockers"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0127",
@@ -883,7 +908,8 @@
       "Capnography in CPR",
       "ROSC Indicator",
       "Chest Compressions"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0128",
@@ -917,7 +943,8 @@
       "Epinephrine Timing",
       "PEA",
       "Asystole"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0129",
@@ -951,7 +978,8 @@
       "Osmotic Demyelination",
       "Correction Rate",
       "Electrolyte Emergencies"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0130",
@@ -985,7 +1013,8 @@
       "Calcium Gluconate",
       "Membrane Stabilization",
       "ECG Changes"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0131",
@@ -1019,7 +1048,8 @@
       "Toxic Alcohols",
       "Methanol",
       "Ethylene Glycol"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0132",
@@ -1053,7 +1083,8 @@
       "Nimodipine",
       "Vasospasm",
       "Delayed Cerebral Ischemia"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0133",
@@ -1087,7 +1118,8 @@
       "Hypertonic Saline",
       "ICP Management",
       "Osmolality Ceiling"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0134",
@@ -1107,9 +1139,9 @@
       "C": "Both spare cranial nerves.",
       "D": "Both cause FLACCID quadriplegia and hypo/areflexia, never hyperreflexia or clonus (which are upper motor neuron signs)."
     },
-    "difficulty": "challenging",
+    "difficulty": "difficult",
     "sourceType": "ini-ss-style",
-    "exam": "NEET-SS",
+    "exam": "INI-SS",
     "year": null,
     "examPearl": "NEET-SS EXAM PEARL: CIP vs CIM: CIP = Axonal Sensorimotor polyneuropathy (SNAP amplitude REDUCED, normal CK). CIM = Pure myopathy (SNAP is PRESERVED, muscle electrically inexcitable on direct stimulation, myosin filament loss).",
     "hyperlinkedReference": {
@@ -1121,7 +1153,8 @@
       "CIM",
       "ICU Acquired Weakness",
       "Electrophysiology"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0135",
@@ -1155,7 +1188,8 @@
       "Delirium",
       "PADIS Guidelines",
       "RASS"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0136",
@@ -1189,7 +1223,8 @@
       "V-V ECMO",
       "ARDS Rescue",
       "Indications"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0137",
@@ -1209,9 +1244,9 @@
       "C": "Electrical wattage is equipment power consumption, not mechanical power delivered to lungs.",
       "D": "Cough pressure reflects spontaneous muscular effort, not ventilator power transfer."
     },
-    "difficulty": "challenging",
+    "difficulty": "difficult",
     "sourceType": "ini-ss-style",
-    "exam": "NEET-SS",
+    "exam": "INI-SS",
     "year": null,
     "examPearl": "NEET-SS EXAM PEARL: Mechanical Power (Gattinoni equation): Unifying concept of VILI combining tidal volume, driving pressure, flow, PEEP, and respiratory rate. Threshold: Mechanical Power > 12-17 J/min is associated with increased ARDS mortality.",
     "hyperlinkedReference": {
@@ -1223,7 +1258,8 @@
       "VILI",
       "Gattinoni",
       "Driving Pressure"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0138",
@@ -1257,7 +1293,8 @@
       "Auto-PEEP Triggering",
       "Applied PEEP",
       "COPD Mechanical Ventilation"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0139",
@@ -1291,7 +1328,8 @@
       "COPD Exacerbation",
       "Antibiotics",
       "GOLD Guidelines"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0140",
@@ -1325,7 +1363,8 @@
       "Cardiogenic Shock",
       "PCWP",
       "Cardiac Index"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0141",
@@ -1359,7 +1398,8 @@
       "Cardiac Tamponade",
       "Beck Triad",
       "Ventricular Interdependence"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0142",
@@ -1393,7 +1433,8 @@
       "TOMAHAWK Trial",
       "Post-ROSC Angiography",
       "Cardiac Arrest Guidelines"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0143",
@@ -1428,7 +1469,8 @@
       "Lidocaine",
       "ALPS Trial",
       "Shockable Arrest"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0144",
@@ -1462,7 +1504,8 @@
       "FST",
       "AKI Progression",
       "Tubular Function"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0145",
@@ -1496,7 +1539,8 @@
       "RRT Timing",
       "Watchful Waiting",
       "CRRT Initiation"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0146",
@@ -1516,7 +1560,7 @@
       "C": "Transpulmonary pressure is Paw minus Pes, not Pes minus PEEP.",
       "D": "PIP minus Pplat is resistive airway pressure, not transpulmonary pressure."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2023,
@@ -1530,7 +1574,8 @@
       "Esophageal Balloon",
       "ARDS",
       "Chest Wall Elastance"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0147",
@@ -1550,7 +1595,7 @@
       "C": "Allowing flow to return to zero completely derecruits unstable alveoli.",
       "D": "APRV relies on extreme inverse ratio ventilation (T-high 4-6 seconds, T-low 0.4-0.8 seconds), not 1:1."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -1564,7 +1609,8 @@
       "T-low Titration",
       "PEFR",
       "Ventilator Modes"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0148",
@@ -1598,7 +1644,8 @@
       "Corticosteroids in ARDS",
       "Dexamethasone",
       "Ventilator Free Days"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0149",
@@ -1618,7 +1665,7 @@
       "C": "Dynamic compliance includes airway resistance and does not measure dead space.",
       "D": "ScvO2 reflects systemic cardiac output balance, not pulmonary dead space."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -1632,7 +1679,8 @@
       "Dead Space Fraction",
       "ARDS Prognostication",
       "Gas Exchange"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0150",
@@ -1652,7 +1700,7 @@
       "C": "Bronchospasm alters the initial resistive pressure step (Ppeak - Pplat), not the slope concavity.",
       "D": "Triggering asynchronies occur during the trigger phase, not during constant-flow inflation."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2024,
@@ -1666,7 +1714,8 @@
       "Ventilator Waveforms",
       "Alveolar Overdistension",
       "PEEP Titration"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0151",
@@ -1700,7 +1749,8 @@
       "Volatile Anesthetics",
       "Sevoflurane",
       "AnaConDa"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0152",
@@ -1720,7 +1770,7 @@
       "C": "Helium is chemically inert and has no pharmacological receptor action.",
       "D": "Helium does not alter hemoglobin chemistry."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -1734,7 +1784,8 @@
       "Reynolds Number",
       "Airway Resistance",
       "Asthma Mechanics"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0153",
@@ -1768,7 +1819,8 @@
       "COPD",
       "Airway Protection",
       "ATS/ERS Guidelines"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0154",
@@ -1802,7 +1854,8 @@
       "Status Asthmaticus",
       "Bronchodilation",
       "GINA Guidelines"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0155",
@@ -1836,7 +1889,8 @@
       "RV Systolic Function",
       "Echocardiography",
       "Right Ventricle"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0156",
@@ -1856,7 +1910,7 @@
       "C": "CVP of 60 mmHg is non-physiological.",
       "D": "RV/LV ratio > 1.0 indicates strain, but 60/60 refers specifically to Doppler PAAT and TR gradient."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -1870,7 +1924,8 @@
       "Pulmonary Embolism",
       "Echocardiography",
       "Pulmonary Hypertension"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0157",
@@ -1904,7 +1959,8 @@
       "Type A Dissection",
       "Cardiac Tamponade",
       "RCA Occlusion"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0158",
@@ -1938,7 +1994,8 @@
       "Mitral Regurgitation",
       "Mechanical Complications of MI",
       "PCWP v waves"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0159",
@@ -1958,7 +2015,7 @@
       "C": "Myocardial damage was not increased; survival was doubled.",
       "D": "Vector Change significantly improved VF termination and survival compared to standard."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2023,
@@ -1972,7 +2029,8 @@
       "DSED",
       "Refractory VF",
       "Defibrillation Strategies"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0160",
@@ -2006,7 +2064,8 @@
       "Amiodarone",
       "Lidocaine",
       "ACLS 2025"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0161",
@@ -2040,7 +2099,8 @@
       "NSE",
       "Neuroprognostication",
       "Post Cardiac Arrest"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0162",
@@ -2060,7 +2120,7 @@
       "C": "Neurological outcomes were identical between early and delayed groups.",
       "D": "Guidelines now recommend selective delayed angiography unless STEMI or refractory shock is present."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -2074,7 +2134,8 @@
       "TOMAHAWK Trial",
       "Coronary Angiography",
       "Post-Cardiac Arrest"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0163",
@@ -2108,7 +2169,8 @@
       "Convection vs Diffusion",
       "Solvent Drag",
       "Middle Molecules"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0164",
@@ -2142,7 +2204,8 @@
       "ATN Trial",
       "CRRT Dosing",
       "Effluent Flow Rate"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0165",
@@ -2162,7 +2225,7 @@
       "C": "Fluid restriction in CSW causes cerebral vasospasm and stroke; CSW requires volume loading.",
       "D": "Volume status is the differentiating factor (hypovolemic in CSW vs euvolemic in SIADH)."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2023,
@@ -2176,7 +2239,8 @@
       "SIADH",
       "Hyponatremia",
       "Neurocritical Care"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0166",
@@ -2210,7 +2274,8 @@
       "Zoledronic Acid",
       "Calcitonin",
       "Normal Saline"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0167",
@@ -2244,7 +2309,8 @@
       "Metabolic Acidosis",
       "Respiratory Compensation",
       "ABG"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0168",
@@ -2264,7 +2330,7 @@
       "C": "Sodium is a measured cation in SIDa.",
       "D": "SIG is elevated in almost all critically ill patients with unmeasured anion metabolic acidosis."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -2278,7 +2344,8 @@
       "SIG",
       "Stewart Model",
       "Unmeasured Anions"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0169",
@@ -2312,7 +2379,8 @@
       "NAGMA",
       "Renal Tubular Acidosis",
       "Diarrhea"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0170",
@@ -2332,7 +2400,7 @@
       "C": "Respiratory waves are slow baseline shifts, not the high-frequency pulse components.",
       "D": "ICP displays dynamic cardiac pulse waveforms and respiratory variations."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2022,
@@ -2346,7 +2414,8 @@
       "P1 P2 P3",
       "Intracranial Compliance",
       "Monro-Kellie"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0171",
@@ -2366,7 +2435,7 @@
       "C": "Systolic to diastolic ratio measures pulsatility index (Gosling index), not Lindegaard ratio.",
       "D": "Compares intracranial to extracranial carotid vessels."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -2380,7 +2449,8 @@
       "Transcranial Doppler",
       "Vasospasm",
       "Subarachnoid Hemorrhage"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0172",
@@ -2414,7 +2484,8 @@
       "Decompressive Craniectomy",
       "TBI",
       "Refractory ICP"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0173",
@@ -2448,7 +2519,8 @@
       "ICU Delirium",
       "PADIS Guidelines",
       "Hypoactive Delirium"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0174",
@@ -2468,7 +2540,7 @@
       "C": "Steroids worsen and trigger CIM (especially when combined with NMBs); neither responds to steroids or PLEX.",
       "D": "CIM spares sensory nerves (normal SNAP), whereas CIP involves sensory fibers (reduced/absent SNAP)."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2023,
@@ -2482,7 +2554,8 @@
       "Critical Illness Myopathy",
       "SNAP",
       "Direct Muscle Stimulation"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0175",
@@ -2516,7 +2589,8 @@
       "Guillain-Barre Syndrome",
       "Mechanical Ventilation Risk",
       "MRC Score"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0176",
@@ -2536,7 +2610,7 @@
       "C": "Hyper-inflammatory has more than double the mortality rate (~40-50% vs ~20%).",
       "D": "Phenotype 2 is associated with lower compliance and worse PaO2/FiO2."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -2550,7 +2624,8 @@
       "Calfee",
       "Hyperinflammatory",
       "Biomarkers"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0177",
@@ -2584,7 +2659,8 @@
       "Tracheostomy Timing",
       "Mechanical Ventilation",
       "ICU Outcomes"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0178",
@@ -2618,7 +2694,8 @@
       "COPD",
       "Inhaled Corticosteroids",
       "Eosinophils"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0179",
@@ -2652,7 +2729,8 @@
       "Dynamic Hyperinflation",
       "Post-Intubation Collapse",
       "Ventilator Disconnection"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0180",
@@ -2672,7 +2750,7 @@
       "B": "Dobutamine showed no statistically significant superiority.",
       "D": "Arrhythmia rates were similar between groups."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2022,
@@ -2686,7 +2764,8 @@
       "Milrinone",
       "Dobutamine",
       "Cardiogenic Shock"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0181",
@@ -2720,7 +2799,8 @@
       "RA Collapse",
       "RV Diastolic Collapse",
       "Echocardiography"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0182",
@@ -2754,7 +2834,8 @@
       "Preload Dependence",
       "Nitrates Contraindicated",
       "Kussmaul Sign"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0183",
@@ -2788,7 +2869,8 @@
       "Diastolic BP in CPR",
       "Arterial Line",
       "ROSC"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0184",
@@ -2808,7 +2890,7 @@
       "C": "The combination outperformed epinephrine alone in ROSC rate.",
       "D": "Myocardial rupture did not occur; steroids suppress post-resuscitation inflammation."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -2822,7 +2904,8 @@
       "Vasopressin",
       "Methylprednisolone",
       "Cardiac Arrest"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0185",
@@ -2856,7 +2939,8 @@
       "FeNa",
       "Prerenal vs ATN",
       "Diuretic Confounding"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0186",
@@ -2890,7 +2974,8 @@
       "Water Deficit Calculation",
       "Total Body Water",
       "Free Water Deficit"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0187",
@@ -2924,7 +3009,8 @@
       "High Anion Gap Acidosis",
       "Oxoproline",
       "Toxic Alcohols"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0188",
@@ -2944,7 +3030,7 @@
       "C": "Ethylene glycol involves antifreeze ingestion and elevated osmolal gap with oxalate crystals.",
       "D": "DKA features beta-hydroxybutyrate and acetoacetate, not selective D-lactate."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2024,
@@ -2958,7 +3044,8 @@
       "Short Bowel Syndrome",
       "Stereospecific Lactate",
       "Anion Gap"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0189",
@@ -2978,7 +3065,7 @@
       "C": "C waves are physiologic arterial pressure oscillations.",
       "D": "Alpha waves are cortical EEG rhythms."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -2992,7 +3079,8 @@
       "Plateau Waves",
       "ICP Monitoring",
       "Intracranial Hypertension"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0190",
@@ -3026,7 +3114,8 @@
       "Subarachnoid Hemorrhage",
       "Vasospasm",
       "Delayed Cerebral Ischemia"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0191",
@@ -3060,7 +3149,8 @@
       "Myasthenic Crisis",
       "SLUDGE",
       "Pyridostigmine Toxicity"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0192",
@@ -3094,7 +3184,8 @@
       "Post-Intensive Care Syndrome",
       "ABCDEF Bundle",
       "ICU Survivorship"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0193",
@@ -3114,7 +3205,7 @@
       "C": "Esophageal balloon placement had minimal adverse events; rupture was negligible.",
       "D": "Both arms were high-PEEP strategies; neither was inferior to low PEEP."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2023,
@@ -3128,7 +3219,8 @@
       "Esophageal Manometry",
       "PEEP Titration",
       "Transpulmonary Pressure"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0194",
@@ -3162,7 +3254,8 @@
       "HFNC",
       "Intubation Avoidance",
       "Hypoxemic Respiratory Failure"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0195",
@@ -3196,7 +3289,8 @@
       "Intra-Aortic Balloon Pump",
       "Cardiogenic Shock",
       "Guidelines Downgrade"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0196",
@@ -3216,7 +3310,7 @@
       "C": "Severe bleeding was doubled in the Impella arm.",
       "D": "Vascular and limb complications were significantly higher with Impella."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2024,
@@ -3230,7 +3324,8 @@
       "Impella CP",
       "Mechanical Circulatory Support",
       "Cardiogenic Shock"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0197",
@@ -3250,7 +3345,7 @@
       "C": "All ECPR survivors achieved good functional neurological recovery (CPC 1-2).",
       "D": "Refractory shockable rhythm with short no-flow time is the prime indication for ECPR."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2022,
@@ -3264,7 +3359,8 @@
       "ECPR",
       "VA-ECMO",
       "Refractory VF"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0198",
@@ -3298,7 +3394,8 @@
       "CRRT vs IHD",
       "Acute Liver Failure",
       "ICP Spikes"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0199",
@@ -3332,7 +3429,8 @@
       "Urine Chloride",
       "Chloride Responsive",
       "Hyperaldosteronism"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0200",
@@ -3366,7 +3464,8 @@
       "4F-PCC",
       "Warfarin",
       "Vitamin K"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0201",
@@ -3400,7 +3499,8 @@
       "Dabigatran Reversal",
       "DOAC",
       "Intracranial Hemorrhage"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0202",
@@ -3434,7 +3534,8 @@
       "ILAE Definition",
       "Time 1 and Time 2",
       "Neuronal Injury"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0203",
@@ -3454,7 +3555,7 @@
       "C": "LEMS is a neuromuscular junction disorder, not a demyelinating neuropathy.",
       "D": "LEMS shows increment; MG shows decrement on repetitive nerve stimulation."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2023,
@@ -3468,6 +3569,7 @@
       "Lambert-Eaton Syndrome",
       "Repetitive Nerve Stimulation",
       "Incremental Response"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   }
 ]

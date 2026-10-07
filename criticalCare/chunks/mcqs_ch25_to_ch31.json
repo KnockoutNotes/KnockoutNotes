@@ -16,9 +16,9 @@
       "C": "3 mL/kg/%TBSA is used for pediatric thermal burns.",
       "D": "Administering the entire 4 mL/kg/%TBSA volume in 8 hours causes massive fluid overload, pulmonary edema, and abdominal compartment syndrome."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "memory-based recall — NEET-SS 2024",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "Modern Burn Resuscitation Rule (ABA): Start with 2 mL/kg/%TBSA of Ringer's Lactate for adult thermal burns (half in first 8h from time of injury). Target urine output = 0.5 mL/kg/h (or 30-50 mL/h in adults). Avoid fluid creep!",
     "hyperlinkedReference": {
@@ -32,7 +32,8 @@
       "Fluid Creep",
       "TBSA"
     ],
-    "id": "mcq-cc-0263"
+    "id": "mcq-cc-0263",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 25,
@@ -51,9 +52,9 @@
       "C": "Diuretics in acute burn shock precipitate intravascular collapse and worsening acute tubular necrosis.",
       "D": "The problem is external mechanical chest wall restriction from unyielding eschar, not airway diameter."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "Circumferential Thoracic Burn: Leathery eschar + soaring peak pressures + hypoventilation = Urgent bedside escharotomy. No local anesthesia needed (full-thickness burns have destroyed cutaneous nerve endings). Incise down to subcutaneous fat until eschar gapes.",
     "hyperlinkedReference": {
@@ -67,7 +68,8 @@
       "Circumferential Burns",
       "Mechanical Ventilation"
     ],
-    "id": "mcq-cc-0264"
+    "id": "mcq-cc-0264",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 25,
@@ -86,9 +88,9 @@
       "C": "20 minutes is the half-life under 3 atmospheres of hyperbaric oxygen (HBO).",
       "D": "CO does not clear in <5 minutes under any physiological condition due to its 200-250 times higher affinity for hemoglobin compared to oxygen."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "memory-based recall — NEET-SS 2024",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "Carbon Monoxide Half-Life: Room air = 300 min (5h); 100% normobaric O2 = 60-90 min; Hyperbaric O2 (3 ATA) = 20-30 min. Beware: Standard pulse oximetry reads COHb as oxyhemoglobin (falsely normal SpO2)! Co-oximetry is mandatory.",
     "hyperlinkedReference": {
@@ -102,7 +104,8 @@
       "Carboxyhemoglobin",
       "Co-oximetry"
     ],
-    "id": "mcq-cc-0265"
+    "id": "mcq-cc-0265",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 26,
@@ -121,9 +124,9 @@
       "C": "Polystyrene sulfonate binds potassium in the colon, not magnesium.",
       "D": "Calcium chloride is 3 times more concentrated and carries a severe risk of extravasation necrosis and chemical phlebitis; 10% calcium gluconate is the established obstetric standard for magnesium toxicity."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "memory-based recall — NEET-SS 2023",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "Magnesium Sulfate Toxicity Progression: Loss of DTRs (8-10 mEq/L) -> Respiratory depression (12-15 mEq/L) -> Cardiac arrest (>15-20 mEq/L). Antidote: 10% Calcium Gluconate 10 mL (1g) IV over 5-10 min.",
     "hyperlinkedReference": {
@@ -137,7 +140,8 @@
       "Calcium Gluconate",
       "Toxicity"
     ],
-    "id": "mcq-cc-0266"
+    "id": "mcq-cc-0266",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 26,
@@ -156,9 +160,9 @@
       "C": "Chorioamnionitis causes septic shock over hours/days, not instantaneous collapse within seconds of membrane rupture with acute DIC.",
       "D": "Air embolism does not characteristically trigger profound fulminant consumptive DIC within minutes."
     },
-    "difficulty": "Hard",
+    "difficulty": "difficult",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "AFE Clinical Triad: (1) Acute hypoxemic respiratory failure, (2) Cardiogenic shock (acute RV failure -> LV failure), (3) Fulminant DIC/hemorrhage. Modern pharmacotherapy: 'A-OK' protocol (Atropine + Ondansetron + Ketorolac) + MTP + ECMO support.",
     "hyperlinkedReference": {
@@ -172,7 +176,8 @@
       "DIC",
       "A-OK Protocol"
     ],
-    "id": "mcq-cc-0267"
+    "id": "mcq-cc-0267",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 26,
@@ -191,9 +196,9 @@
       "C": "Waiting 15 minutes leads to irreversible maternal anoxic brain death and fetal death; the golden window is delivery within 5 minutes.",
       "D": "Prone CPR is not indicated in third-trimester arrest; manual left uterine displacement (LUD) or tilting the patient supine with LUD is standard."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "memory-based recall — NEET-SS 2023",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "Obstetric Cardiac Arrest Rule: Start PMCD at 4 minutes if no ROSC; deliver fetus by 5 minutes. Perform at bedside (do NOT move to OR). Primary objective is maternal resuscitation by eliminating aortocaval compression.",
     "hyperlinkedReference": {
@@ -207,7 +212,8 @@
       "Resuscitative Hysterotomy",
       "ACLS"
     ],
-    "id": "mcq-cc-0268"
+    "id": "mcq-cc-0268",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 27,
@@ -226,9 +232,9 @@
       "C": "Initial fluid administration is essential in hypovolemic/distributive septic shock; dopamine is no longer preferred (epinephrine or norepinephrine are preferred first-line vasoactive agents).",
       "D": "Dextrose-containing hypotonic fluids are strictly contraindicated for volume resuscitation as they cause hyponatremia and cerebral edema."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "Pediatric Septic Shock: 10-20 mL/kg balanced crystalloid boluses over 10-20 min. Reassess for hepatomegaly/rales after each bolus. If refractory to 40-60 mL/kg, start inotropes early: Epinephrine for 'cold shock', Norepinephrine for 'warm shock'.",
     "hyperlinkedReference": {
@@ -242,7 +248,8 @@
       "PALS",
       "Crystalloids"
     ],
-    "id": "mcq-cc-0269"
+    "id": "mcq-cc-0269",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 27,
@@ -261,9 +268,9 @@
       "C": "Sodium bicarbonate administration in pediatric DKA is an established risk factor that PRECIPITATES cerebral edema and causes paradoxical CSF acidosis.",
       "D": "Cytotoxic and vasogenic edema in DKA does not respond to corticosteroids; dexamethasone is contraindicated."
     },
-    "difficulty": "Hard",
+    "difficulty": "difficult",
     "sourceType": "memory-based recall — NEET-SS 2023",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "Pediatric DKA Cerebral Edema: Sudden headache/lethargy + Cushing's triad (bradycardia, hypertension). Treat immediately at bedside: 3% Hypertonic Saline (5 mL/kg) or Mannitol (0.5-1 g/kg). Do NOT wait for CT scan! Never give bicarbonate in pediatric DKA.",
     "hyperlinkedReference": {
@@ -277,7 +284,8 @@
       "Mannitol",
       "Hypertonic Saline"
     ],
-    "id": "mcq-cc-0270"
+    "id": "mcq-cc-0270",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 28,
@@ -296,9 +304,9 @@
       "C": "Serial thoracenteses are inadequate for infected complicated effusions and lead to multi-loculation.",
       "D": "Open thoracotomy is invasive second-line therapy indicated only if tube drainage and intrapleural fibrinolytics fail."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "Complicated Parapneumonic Effusion Cutoffs: Pleural fluid pH <7.20, Glucose <40-60 mg/dL, LDH >1,000 U/L, or positive Gram stain/pus = Tube thoracostomy (chest tube) is MANDATORY immediately.",
     "hyperlinkedReference": {
@@ -312,7 +320,8 @@
       "Parapneumonic Effusion",
       "pH"
     ],
-    "id": "mcq-cc-0271"
+    "id": "mcq-cc-0271",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 28,
@@ -331,9 +340,9 @@
       "C": "In MIST-2, tPA monotherapy failed to show statistically significant benefit over placebo.",
       "D": "In MIST-2, DNase monotherapy failed to show statistically significant benefit over placebo."
     },
-    "difficulty": "Hard",
+    "difficulty": "difficult",
     "sourceType": "memory-based recall — NEET-SS 2024",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "MIST-2 Trial Landmark Finding: Intrapleural tPA (10 mg) + DNase (5 mg) combined BID x 3 days significantly clears loculated empyema and reduces surgical referral. Neither drug works as monotherapy!",
     "hyperlinkedReference": {
@@ -347,7 +356,8 @@
       "DNase",
       "MIST-2 Trial"
     ],
-    "id": "mcq-cc-0272"
+    "id": "mcq-cc-0272",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 29,
@@ -366,9 +376,9 @@
       "C": "ARDS exhibits a B-profile or A/B profile with non-homogeneous lung sliding, subpleural consolidations, and spared areas.",
       "D": "Lobar consolidation displays the C-profile (tissue-like hepatization with air bronchograms)."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "memory-based recall — NEET-SS 2023",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "BLUE Protocol Lung Ultrasound: (1) Lung Point = 100% specific for Pneumothorax. (2) B-lines rule OUT pneumothorax at that probe site. (3) Diffuse bilateral B-lines = Pulmonary edema (cardiogenic B-profile vs ARDS).",
     "hyperlinkedReference": {
@@ -382,7 +392,8 @@
       "Lung Point",
       "Lung Ultrasound"
     ],
-    "id": "mcq-cc-0273"
+    "id": "mcq-cc-0273",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 29,
@@ -401,9 +412,9 @@
       "B": "VExUS 1 is IVC >=2.0 cm with normal or only mildly abnormal patterns in one vessel.",
       "D": "Two or more severe Doppler abnormalities with dilated IVC constitutes Grade 3, not Grade 2."
     },
-    "difficulty": "Hard",
+    "difficulty": "difficult",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "VExUS Grading: Dilated IVC (>=2 cm) + >=2 severe Doppler abnormalities (Hepatic systolic reversal, Portal pulsatility >=50%, Intrarenal biphasic) = VExUS Grade 3 (Severe Venous Congestion). Stop IV fluids! Venous hypertension causes congestive AKI.",
     "hyperlinkedReference": {
@@ -417,7 +428,8 @@
       "AKI",
       "Echocardiography"
     ],
-    "id": "mcq-cc-0274"
+    "id": "mcq-cc-0274",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 30,
@@ -436,9 +448,9 @@
       "C": "Cardiogenic shock requires Venoarterial (VA) ECMO, not Venovenous (VV) ECMO; EOLIA was strictly a VV-ECMO trial for respiratory failure.",
       "D": "Refractory vasoplegia in septic shock is not an indication for VV-ECMO."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "memory-based recall — NEET-SS 2024",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "EOLIA Trial Criteria for VV-ECMO in ARDS: (1) P/F <50 for >3h, or (2) P/F <80 for >6h, or (3) pH <7.15 with PaCO2 >=60 for >6h. All patients should first undergo prone positioning (PROSEVA) unless contraindicated.",
     "hyperlinkedReference": {
@@ -452,7 +464,8 @@
       "ARDS",
       "Refractory Hypoxemia"
     ],
-    "id": "mcq-cc-0275"
+    "id": "mcq-cc-0275",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 30,
@@ -471,9 +484,9 @@
       "C": "Circuit thrombosis causes failure of oxygenator transfer with low post-membrane PaO2 everywhere, not a discrepancy between upper and lower extremities.",
       "D": "Coronary steal is a physiological shunting phenomenon in CAD, not the mixing of competing circulatory outputs."
     },
-    "difficulty": "Hard",
+    "difficulty": "difficult",
     "sourceType": "memory-based recall — NEET-SS 2023",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "Harlequin / North-South Syndrome in Peripheral VA-ECMO: Right radial arterial line detects cerebral/coronary hypoxemia! Occurs when recovering LV ejects deoxygenated blood into the aortic root against retrograde femoral ECMO flow. Solution: Convert to VAV-ECMO or optimize ventilator PEEP.",
     "hyperlinkedReference": {
@@ -487,7 +500,8 @@
       "Differential Hypoxemia",
       "VAV-ECMO"
     ],
-    "id": "mcq-cc-0276"
+    "id": "mcq-cc-0276",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 31,
@@ -506,9 +520,9 @@
       "C": "Empirical ganciclovir is not indicated unless tissue-invasive CMV disease is proven; CMV in BAL is often bystander shedding.",
       "D": "ART should be delayed for approximately 1 to 2 weeks after starting PCP treatment to prevent catastrophic Immune Reconstitution Inflammatory Syndrome (IRIS)."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "memory-based recall — NEET-SS 2024",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "PCP Adjunctive Steroids Rule: PaO2 <70 mmHg or A-a gradient >=35 mmHg = Start Corticosteroids (Prednisone 40 mg BID) BEFORE or with TMP-SMX. Reduces 30-day mortality by 50%!",
     "hyperlinkedReference": {
@@ -522,7 +536,8 @@
       "Corticosteroids",
       "A-a Gradient"
     ],
-    "id": "mcq-cc-0277"
+    "id": "mcq-cc-0277",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 31,
@@ -541,9 +556,9 @@
       "C": "Urinary alkalinization is obsolete; it worsens calcium phosphate deposition and is contraindicated when rasburicase is available.",
       "D": "Allopurinol only prevents new uric acid synthesis and does not degrade existing uric acid; Rasburicase is required for established acute TLS with AKI."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "memory-based recall — NEET-SS 2023",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "Tumor Lysis Syndrome Pearls: (1) Drug of choice = Rasburicase (recombinant urate oxidase). (2) Never give calcium for asymptomatic hypocalcemia in TLS (causes calcium phosphate precipitation in kidneys). (3) Avoid urine alkalinization.",
     "hyperlinkedReference": {
@@ -557,7 +572,8 @@
       "Hyperphosphatemia",
       "Hypocalcemia"
     ],
-    "id": "mcq-cc-0278"
+    "id": "mcq-cc-0278",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 31,
@@ -576,9 +592,9 @@
       "C": "Empirical broad-spectrum antibiotics are given concurrently, but treating with antibiotics alone without cytokine blockade in Grade 3 CRS leads to multiorgan failure and death.",
       "D": "Grade 1 CRS is fever only without hypotension or hypoxia; requiring vasopressors and oxygen classifies this as Grade 3 CRS."
     },
-    "difficulty": "Hard",
+    "difficulty": "difficult",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "CAR T-cell Toxicity: Cytokine Release Syndrome (CRS) = Fever + Hypotension + Hypoxia mediated by IL-6. Drug of choice: Tocilizumab (IL-6 receptor antagonist) +/- Dexamethasone. ICANS (neurotoxicity) = Dexamethasone (not tocilizumab, which does not cross BBB).",
     "hyperlinkedReference": {
@@ -592,7 +608,8 @@
       "Tocilizumab",
       "ASTCT"
     ],
-    "id": "mcq-cc-0279"
+    "id": "mcq-cc-0279",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 25,
@@ -611,9 +628,9 @@
       "C": "3-5 mL/kg/h causes massive fluid creep, pulmonary edema, and abdominal compartment syndrome without additional clearance benefit.",
       "D": "Fluid restriction in acute myoglobinuria guarantees catastrophic pigment-induced acute renal failure."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "memory-based recall — NEET-SS 2024",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "Electrical Burn Resuscitation Target: Urine output 1.0-1.5 mL/kg/h (75-100 mL/h in adults) until urine clears of myoglobin (vs 0.5 mL/kg/h in standard thermal burns). Monitor for hidden compartment syndromes in affected limbs!",
     "hyperlinkedReference": {
@@ -627,7 +644,8 @@
       "Rhabdomyolysis",
       "Urine Output"
     ],
-    "id": "mcq-cc-0280"
+    "id": "mcq-cc-0280",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 25,
@@ -646,9 +664,9 @@
       "C": "Spirometry is impractical, unreliable, and potentially dangerous in critically ill burn patients facing airway compromise.",
       "D": "Xenon-133 lung scanning was historically used to detect small-airway gas trapping, but is obsolete and unavailable in acute ICU care compared to bedside bronchoscopy."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "Inhalation Injury Gold Standard: Flexible bronchoscopy at bedside. Direct visualization of mucosal edema, sloughing, and soot. Early intubation is mandatory before fluid resuscitation causes massive pharyngeal/laryngeal edema!",
     "hyperlinkedReference": {
@@ -662,7 +680,8 @@
       "Airway",
       "Smoke Inhalation"
     ],
-    "id": "mcq-cc-0281"
+    "id": "mcq-cc-0281",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 26,
@@ -681,9 +700,9 @@
       "C": "Cholestasis of pregnancy causes pruritus and elevated bile acids without acute liver failure, hypoglycemia, or coagulopathy.",
       "D": "Acute viral hepatitis presents with transaminases in the thousands (AST/ALT >1,000-2,000 U/L)."
     },
-    "difficulty": "Hard",
+    "difficulty": "difficult",
     "sourceType": "memory-based recall — NEET-SS 2024",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "AFLP vs HELLP Differentiation: AFLP = Profound Hypoglycemia + High Bilirubin + Coagulopathy (prolonged PT/INR) + Swansea Criteria (>=6). HELLP = Severe Thrombocytopenia + Microangiopathic Hemolysis (high LDH, low haptoglobin). Delivery is curative for both.",
     "hyperlinkedReference": {
@@ -697,7 +716,8 @@
       "Liver Failure",
       "Hypoglycemia"
     ],
-    "id": "mcq-cc-0282"
+    "id": "mcq-cc-0282",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 26,
@@ -716,9 +736,9 @@
       "C": "ACE inhibitors and ARBs (e.g. enalaprilat) are fetotoxic and teratogenic (causing fetal renal dysgenesis, oligohydramnios, and neonatal death) and are strictly contraindicated.",
       "D": "Diuretics further deplete intravascular volume in pre-eclampsia (which is already characterized by hemoconcentration and reduced plasma volume)."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "Hypertensive Crisis in Pregnancy Target: SBP 140-150 / DBP 90-100 mmHg. First-line drugs: IV Labetalol, IV Hydralazine, or Oral Nifedipine. Strictly contraindicated: ACE inhibitors, ARBs, and Sodium Nitroprusside.",
     "hyperlinkedReference": {
@@ -732,7 +752,8 @@
       "Hydralazine",
       "Antihypertensives"
     ],
-    "id": "mcq-cc-0283"
+    "id": "mcq-cc-0283",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 27,
@@ -751,9 +772,9 @@
       "C": "(Age / 2) + 12 calculates the depth of insertion at the teeth/lip in centimeters, not the tube internal diameter.",
       "D": "Arbitrary non-physiological formula."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "memory-based recall — NEET-SS 2023",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "Pediatric ETT Formulas: Cuffed ETT ID = (Age/4) + 3.5. Uncuffed ETT ID = (Age/4) + 4.0. Depth of insertion (cm) = (Age/2) + 12 (or 3 x ID). Always have one half-size smaller and larger available at bedside!",
     "hyperlinkedReference": {
@@ -767,7 +788,8 @@
       "Formulas",
       "Cuffed Tube"
     ],
-    "id": "mcq-cc-0284"
+    "id": "mcq-cc-0284",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 27,
@@ -786,9 +808,9 @@
       "C": "The infant tongue is disproportionately large, easily causing upper airway obstruction and obscuring direct visualization.",
       "D": "The infant trachea is extremely short (only 4-5 cm in newborns), making endobronchial intubation very common upon neck flexion."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "Infant Airway Characteristics: High larynx (C3-C4), large occiput (needs shoulder roll), floppy omega epiglottis (straight Miller blade preferred), funnel-shaped airway (narrowest at cricoid ring), short trachea (4-5 cm).",
     "hyperlinkedReference": {
@@ -802,7 +824,8 @@
       "Cricoid Ring",
       "Miller Blade"
     ],
-    "id": "mcq-cc-0285"
+    "id": "mcq-cc-0285",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 28,
@@ -821,9 +844,9 @@
       "C": "Chylothorax requires pleural fluid triglyceride level >110 mg/dL and chylomicrons, not just LDH.",
       "D": "Light's criteria are the definitive standard; cholesterol is an adjunct used only when pseudo-exudate is suspected."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "memory-based recall — NEET-SS 2023",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "Light's Criteria for Exudate (meet >=1 of 3): (1) Pleural/Serum protein >0.5; (2) Pleural/Serum LDH >0.6; (3) Pleural LDH > 2/3 ULN serum LDH. In diuresed heart failure patients with pseudo-exudate, Serum-Pleural Albumin Gradient >1.2 g/dL confirms transudate.",
     "hyperlinkedReference": {
@@ -837,7 +860,8 @@
       "Thoracentesis",
       "LDH"
     ],
-    "id": "mcq-cc-0286"
+    "id": "mcq-cc-0286",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 28,
@@ -856,9 +880,9 @@
       "C": "Duration alone without high volume does not mandate thoracotomy.",
       "D": "1,000 mL over 24 hours (approx 40 mL/h) is managed conservatively with tube drainage and observation."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "ATLS Massive Hemothorax Thoracotomy Criteria: Immediate output >=1,500 mL blood upon insertion, OR >=200 mL/h for 2-4 consecutive hours, OR refractory shock. Autotransfusion of shed blood via cell saver is life-saving.",
     "hyperlinkedReference": {
@@ -872,7 +896,8 @@
       "ATLS",
       "Chest Tube"
     ],
-    "id": "mcq-cc-0287"
+    "id": "mcq-cc-0287",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 29,
@@ -891,9 +916,9 @@
       "C": "Kussmaul's sign is paradoxical elevation of JVP during inspiration, a physical exam finding in constriction and RV infarction.",
       "D": "Ewart's sign is dullness and bronchial breathing beneath the left scapula due to lung compression from a massive pericardial effusion."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "memory-based recall — NEET-SS 2024",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "Echo Signs of Acute Massive PE: (1) McConnell's Sign = RV free wall akinesia with hyperdynamic apex (specificity 94%). (2) 60/60 Sign = PAT <60 ms + TR gradient <60 mmHg. (3) D-shaped LV on short-axis. (4) TAPSE <17 mm.",
     "hyperlinkedReference": {
@@ -907,7 +932,8 @@
       "RV Strain",
       "Echocardiography"
     ],
-    "id": "mcq-cc-0288"
+    "id": "mcq-cc-0288",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 29,
@@ -926,9 +952,9 @@
       "C": "Normal TAPSE ranges from 17 to 24 mm; <25 mm is not a pathological threshold.",
       "D": "35 mm is well above normal range."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "RV Systolic Function Echo Cutoffs (ASE): (1) TAPSE <17 mm; (2) Tissue Doppler S' wave velocity <9.5 cm/s; (3) Fractional Area Change (FAC) <35%. Normal RV/LV basal diameter ratio is <0.6 (>1.0 indicates severe RV dilatation).",
     "hyperlinkedReference": {
@@ -942,7 +968,8 @@
       "Echocardiography",
       "Hemodynamics"
     ],
-    "id": "mcq-cc-0289"
+    "id": "mcq-cc-0289",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 30,
@@ -961,9 +988,9 @@
       "C": "Differential hypoxemia occurs in peripheral VA-ECMO, not VV-ECMO (where all blood passes through the pulmonary circulation).",
       "D": "Air embolism would cause circuit air lock, loss of flow, or acute circulatory arrest."
     },
-    "difficulty": "Hard",
+    "difficulty": "difficult",
     "sourceType": "memory-based recall — NEET-SS 2024",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "VV-ECMO Recirculation Signature: High pre-membrane saturation (>80%) + low systemic arterial SpO2 despite 100% post-membrane saturation. Solution: Separate cannula tips by at least 10-15 cm (drainage tip in IVC, reinfusion in mid-to-high RA).",
     "hyperlinkedReference": {
@@ -977,7 +1004,8 @@
       "Cannulation",
       "Hypoxemia"
     ],
-    "id": "mcq-cc-0290"
+    "id": "mcq-cc-0290",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 30,
@@ -996,9 +1024,9 @@
       "C": "Zero PEEP causes complete alveolar collapse (atelectrauma) and progressive consolidated lung parenchymal necrosis.",
       "D": "HFOV in ARDS was proven harmful and increased mortality in the OSCILLATE and OSCAR trials."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "Ventilator 'Rest Settings' on VV-ECMO: Driving pressure <10 cmH2O (Vt 3-4 mL/kg), PEEP 10-14 cmH2O, Rate 4-10 bpm, FiO2 <=0.40. Let the ECMO membrane lung do the gas exchange while the native lungs rest and heal!",
     "hyperlinkedReference": {
@@ -1012,7 +1040,8 @@
       "ARDS",
       "VILI"
     ],
-    "id": "mcq-cc-0291"
+    "id": "mcq-cc-0291",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 31,
@@ -1031,9 +1060,9 @@
       "C": "Vancomycin lacks Gram-negative activity; Pseudomonas bacteremia will rapidly kill the patient if treated with vancomycin alone.",
       "D": "Withholding antibiotics in febrile neutropenia is lethal negligence; pseudomonal bacteremia has a mortality approaching 50-70% if unaddressed within hours."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "memory-based recall — NEET-SS 2023",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "High-Risk Febrile Neutropenia: ANC <500 + Fever >=38.3°C = Immediate IV antipseudomonal beta-lactam monotherapy (Cefepime, Pip-Tazo, or Meropenem) within 1 HOUR! Do not add vancomycin routinely unless catheter infection, shock, or MRSA colonization.",
     "hyperlinkedReference": {
@@ -1047,7 +1076,8 @@
       "Cefepime",
       "MASCC Score"
     ],
-    "id": "mcq-cc-0292"
+    "id": "mcq-cc-0292",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 31,
@@ -1066,9 +1096,9 @@
       "C": "Echinocandins are fungistatic against Aspergillus mycelia (target 1,3-beta-D-glucan synthase) and are second-line/salvage therapy, not first-line.",
       "D": "Terbinafine is for superficial dermatophyte infections and has no role in angioinvasive pulmonary aspergillosis."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "memory-based recall — NEET-SS 2024",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "Invasive Aspergillosis Triad: Neutropenia + CT 'Halo Sign' + Positive Galactomannan. First-line therapy: Voriconazole (or Isavuconazole). Fluconazole is totally useless against Aspergillus!",
     "hyperlinkedReference": {
@@ -1082,6 +1112,7 @@
       "Galactomannan",
       "Halo Sign"
     ],
-    "id": "mcq-cc-0293"
+    "id": "mcq-cc-0293",
+    "verificationStatus": "VERIFIED"
   }
 ]

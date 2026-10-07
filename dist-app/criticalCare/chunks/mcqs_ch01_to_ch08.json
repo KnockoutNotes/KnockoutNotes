@@ -31,7 +31,8 @@
       "Apnea Test",
       "Prerequisites",
       "ICU Ethics"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0002",
@@ -65,7 +66,8 @@
       "Apnea Test",
       "Criteria",
       "Organ Donation"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0003",
@@ -99,7 +101,8 @@
       "Diabetes Insipidus",
       "DDAVP",
       "Rule of 100s"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0004",
@@ -133,7 +136,8 @@
       "Methylprednisolone",
       "Thyroxine",
       "Vasopressin"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0005",
@@ -167,7 +171,8 @@
       "Infection Bundle",
       "Keystone Trial",
       "Central Line Safety"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0006",
@@ -201,7 +206,8 @@
       "DTTP",
       "Maki Roll Plate",
       "Blood Cultures"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0007",
@@ -235,7 +241,8 @@
       "Double Effect",
       "Palliative Care",
       "Withdrawal of Care"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0008",
@@ -269,7 +276,8 @@
       "Albumin",
       "TBI",
       "Fluid Resuscitation"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0009",
@@ -303,7 +311,8 @@
       "Transfusion Trigger",
       "Restrictive Transfusion",
       "TRISS Trial"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0010",
@@ -337,7 +346,8 @@
       "Organ Failure",
       "Sepsis-3",
       "Scoring Systems"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0011",
@@ -371,7 +381,8 @@
       "Severity Scores",
       "APS Variables",
       "Prognostication"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0012",
@@ -405,7 +416,8 @@
       "Glycemic Control",
       "Insulin Protocol",
       "Hypoglycemia"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0013",
@@ -439,7 +451,8 @@
       "CORTICUS Trial",
       "Hydrocortisone",
       "Septic Shock"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0014",
@@ -459,7 +472,7 @@
       "C": "Sensory/visual evoked potentials are not accepted legal confirmatory tests for whole-brain death.",
       "D": "Opening pressure on LP does not determine cerebral circulatory arrest and lumbar puncture is dangerous in herniation."
     },
-    "difficulty": "challenging",
+    "difficulty": "difficult",
     "sourceType": "ini-ss-style",
     "exam": "INI-SS",
     "year": null,
@@ -473,7 +486,8 @@
       "Ancillary Tests",
       "Cerebral Angiography",
       "TCD"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0015",
@@ -507,7 +521,8 @@
       "Living Will",
       "Supreme Court Guidelines",
       "ICU Ethics"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0016",
@@ -541,7 +556,8 @@
       "Activated Protein C",
       "Septic Shock",
       "Drug Withdrawal"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0017",
@@ -575,7 +591,8 @@
       "Balanced Crystalloids",
       "Saline vs Plasmalyte",
       "MAKE30"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0018",
@@ -609,7 +626,8 @@
       "Catheter Removal",
       "Candida",
       "Staph Aureus"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0019",
@@ -643,7 +661,8 @@
       "DO2 Formula",
       "CaO2",
       "Applied Physiology"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0020",
@@ -677,7 +696,8 @@
       "Oxygen Consumption",
       "Dysoxia",
       "Lactate"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0021",
@@ -711,7 +731,8 @@
       "Cytopathic Dysoxia",
       "Microcirculation",
       "Septic Shock"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0022",
@@ -745,7 +766,8 @@
       "Coronary Sinus",
       "Hemodynamics",
       "Oxygen Extraction"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0023",
@@ -765,7 +787,7 @@
       "C": "Anaerobic metabolism and hypoperfusion WIDEN the gap (> 6 mmHg); a low gap (< 2) is physiological or seen in hyperdynamic flow.",
       "D": "The PCO2 gap is directly inversely related to cardiac index; it is a surrogate for flow adequacy."
     },
-    "difficulty": "challenging",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -779,7 +801,8 @@
       "Tissue Hypoperfusion",
       "Flow Stagnation",
       "Fick Principle"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0024",
@@ -813,7 +836,8 @@
       "Type A vs Type B",
       "Cohen Woods",
       "Metformin"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0025",
@@ -847,7 +871,8 @@
       "Hyperlactatemia",
       "Beta-2 Agonism",
       "Aerobic Glycolysis"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0026",
@@ -881,7 +906,8 @@
       "P50",
       "Bohr Effect",
       "Right Shift"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0027",
@@ -915,7 +941,8 @@
       "Capillary Refill Time",
       "Lactate Clearance",
       "Septic Shock Resuscitation"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0028",
@@ -935,7 +962,7 @@
       "C": "Acidosis shifting the oxyhemoglobin curve right is the Bohr effect, not the Haldane effect.",
       "D": "Direct coronary vasodilation is unrelated to hemoglobin gas transport mechanisms."
     },
-    "difficulty": "challenging",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -949,7 +976,8 @@
       "COPD",
       "Oxygen-Induced Hypercapnia",
       "Bohr Effect"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0029",
@@ -983,7 +1011,8 @@
       "Damping Coefficient",
       "Underdamping",
       "Fast Flush Test"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0030",
@@ -1017,7 +1046,8 @@
       "a wave",
       "c wave",
       "Cardiac Cycle"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0031",
@@ -1051,7 +1081,8 @@
       "Cannon a waves",
       "AV Dissociation",
       "Tricuspid Valve"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0032",
@@ -1085,7 +1116,8 @@
       "SVV",
       "Fluid Responsiveness",
       "Heart-Lung Interactions"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0033",
@@ -1119,7 +1151,8 @@
       "PLR",
       "Fluid Responsiveness",
       "Frank-Starling"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0034",
@@ -1153,7 +1186,8 @@
       "Fluid Responsiveness",
       "ARDS",
       "Heart-Lung Interactions"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0035",
@@ -1187,7 +1221,8 @@
       "Swan-Ganz",
       "PCWP",
       "West Zone 3"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0036",
@@ -1207,7 +1242,7 @@
       "C": "Normal portal Doppler indicates absence of significant downstream venous congestion.",
       "D": "IVC collapse > 90% indicates profound intravascular underfilling, the exact opposite of congestion."
     },
-    "difficulty": "challenging",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -1221,7 +1256,8 @@
       "Venous Congestion",
       "Doppler Ultrasound",
       "POCUS"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0037",
@@ -1255,7 +1291,8 @@
       "GEDVI",
       "Preload",
       "Thermodilution"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0038",
@@ -1289,7 +1326,8 @@
       "E/e ratio",
       "Echocardiography",
       "PCWP"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0039",
@@ -1323,7 +1361,8 @@
       "Hemodynamic Profiles",
       "SVR",
       "PCWP"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0040",
@@ -1357,7 +1396,8 @@
       "Cardiogenic Shock Stages",
       "Inotropes",
       "MCS"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0041",
@@ -1391,7 +1431,8 @@
       "Inodilator",
       "Troponin C",
       "Cardiogenic Shock"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0042",
@@ -1425,7 +1466,8 @@
       "Contraindications",
       "Aortic Regurgitation",
       "Mechanical Support"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0043",
@@ -1459,7 +1501,8 @@
       "Dicrotic Notch",
       "Counterpulsation",
       "Afterload Reduction"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0044",
@@ -1479,9 +1522,9 @@
       "C": "VA-ECMO increases or maintains MAP.",
       "D": "LV stroke volume drops significantly because the LV cannot eject against high afterload."
     },
-    "difficulty": "challenging",
+    "difficulty": "difficult",
     "sourceType": "ini-ss-style",
-    "exam": "NEET-SS",
+    "exam": "INI-SS",
     "year": null,
     "examPearl": "NEET-SS EXAM PEARL: VA-ECMO Hazard: Retrograde arterial return increases LV afterload -> LV distension -> pulmonary edema. Solution: LV unloading (ECPELLA, IABP, or atrial septostomy).",
     "hyperlinkedReference": {
@@ -1493,7 +1536,8 @@
       "LV Afterload",
       "ECPELLA",
       "Cardiogenic Shock"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0045",
@@ -1527,7 +1571,8 @@
       "Vasoplegia",
       "Guanylate Cyclase",
       "cGMP"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0046",
@@ -1561,7 +1606,8 @@
       "Septic Shock Definition",
       "Lactate",
       "SOFA Score"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0047",
@@ -1595,7 +1641,8 @@
       "1-Hour Bundle",
       "Antimicrobial Timing",
       "Septic Shock"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0048",
@@ -1629,7 +1676,8 @@
       "VASST Trial",
       "Norepinephrine",
       "Septic Shock Guidelines"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0049",
@@ -1663,7 +1711,8 @@
       "Corticosteroids",
       "Septic Shock",
       "ADRENAL Trial"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0050",
@@ -1697,7 +1746,8 @@
       "Organ Dysfunction",
       "Sepsis-3",
       "Scoring Systems"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0051",
@@ -1731,7 +1781,8 @@
       "ATHOS-3",
       "Vasodilatory Shock",
       "AT1 Receptor"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0052",
@@ -1765,7 +1816,8 @@
       "PV Loop",
       "Mechanical Circulatory Support",
       "Cardiogenic Shock"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0053",
@@ -1799,7 +1851,8 @@
       "Right Ventricular Failure",
       "Norepinephrine",
       "Hemodynamics"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0054",
@@ -1833,7 +1886,8 @@
       "Dobutamine",
       "Milrinone",
       "Cardiogenic Shock"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0055",
@@ -1867,7 +1921,8 @@
       "MAP Target",
       "Surviving Sepsis",
       "Vasopressors"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0056",
@@ -1889,7 +1944,7 @@
     },
     "difficulty": "moderate",
     "sourceType": "ini-ss-style",
-    "exam": "NEET-SS",
+    "exam": "INI-SS",
     "year": null,
     "examPearl": "NEET-SS EXAM PEARL: Toraymyxin: Polymyxin B hemoperfusion column that specifically adsorbs Gram-negative endotoxin (LPS). EUPHRATES trial showed benefit only in intermediate-high endotoxin activity assay (EAA 0.6-0.89).",
     "hyperlinkedReference": {
@@ -1901,7 +1956,8 @@
       "Polymyxin B Hemoperfusion",
       "Endotoxin",
       "EUPHRATES Trial"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0057",
@@ -1935,7 +1991,8 @@
       "PEPTIC Trial",
       "SUP-ICU",
       "Surviving Sepsis 2026"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0058",
@@ -1969,7 +2026,8 @@
       "Antimicrobial Stewardship",
       "De-escalation",
       "Surviving Sepsis 2026"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0059",
@@ -2003,7 +2061,8 @@
       "Cholangitis",
       "Surviving Sepsis 2026",
       "Timing of Intervention"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0060",
@@ -2037,7 +2096,8 @@
       "ALBIOS Trial",
       "Fluid Overload",
       "Surviving Sepsis 2026"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0061",
@@ -2072,7 +2132,8 @@
       "Type 3 Failure",
       "Atelectasis",
       "Perioperative"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0062",
@@ -2106,7 +2167,8 @@
       "A-a Gradient",
       "Gas Exchange",
       "Hypoventilation"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0063",
@@ -2140,7 +2202,8 @@
       "V/Q Mismatch",
       "Hypoxemia Mechanisms",
       "Differential Diagnosis"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0064",
@@ -2174,7 +2237,8 @@
       "V/Q Mismatch",
       "Hyperoxia Test",
       "Gas Exchange"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0065",
@@ -2208,7 +2272,8 @@
       "Dynamic Compliance",
       "Respiratory Mechanics",
       "Calculations"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0066",
@@ -2243,7 +2308,8 @@
       "Airway Resistance",
       "Compliance",
       "Troubleshooting"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0067",
@@ -2277,7 +2343,8 @@
       "Plateau Pressure",
       "Pneumothorax",
       "Trauma ICU"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0068",
@@ -2311,7 +2378,8 @@
       "Formulas",
       "Respiratory Mechanics",
       "Asthma"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0069",
@@ -2331,7 +2399,7 @@
       "C": "In severe airflow obstruction, dynamic hyperinflation shifts tidal breathing toward total lung capacity, where compliance is very low, massively increasing elastic and threshold work of breathing.",
       "D": "Work is the integral of pressure over volume (∫P dV), not volume multiplied by flow."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -2345,7 +2413,8 @@
       "Campbell Diagram",
       "Esophageal Pressure",
       "Physiology"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0070",
@@ -2365,7 +2434,7 @@
       "C": "Neither Bohr nor Enghoff used mixed venous or pulmonary artery PCO2.",
       "D": "Enghoff's modification explicitly conflates shunt and V/Q inequality with dead space, rather than eliminating it."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -2379,7 +2448,8 @@
       "Bohr Equation",
       "Enghoff Modification",
       "ARDS Prognosis"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0071",
@@ -2399,7 +2469,7 @@
       "C": "Opening alveoli does not decrease systemic vascular resistance; high intrathoracic pressure can reduce venous return.",
       "D": "The patient has severe lactic acidosis with compensatory hyperventilation, not primary metabolic alkalosis."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "memory-based",
     "exam": "NEET-SS",
     "year": 2025,
@@ -2414,7 +2484,8 @@
       "Diaphragmatic Steal",
       "Oxygen Consumption",
       "INI-SS 2025"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0072",
@@ -2448,7 +2519,8 @@
       "DLCO",
       "Transit Time",
       "Perfusion Limited"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0073",
@@ -2468,7 +2540,7 @@
       "B": "20% underestimates the numerator difference created by the dissolved O2 in end-capillary blood at FiO2 1.0.",
       "D": "50% represents catastrophic shunt where PaO2 would fail to reach 100 mmHg even on 100% O2."
     },
-    "difficulty": "very-hard",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -2482,7 +2554,8 @@
       "Berggren Equation",
       "Oxygen Content",
       "Calculations"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0074",
@@ -2516,7 +2589,8 @@
       "Weaning",
       "Yang and Tobin",
       "Spontaneous Breathing Trial"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0075",
@@ -2536,7 +2610,7 @@
       "C": "τ is 1.0 s, not 1.5 s.",
       "D": "Overestimates the time constant and required Te."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "memory-based",
     "exam": "NEET-SS",
     "year": 2024,
@@ -2551,7 +2625,8 @@
       "Auto-PEEP",
       "COPD",
       "NEET-SS 2024"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0076",
@@ -2585,7 +2660,8 @@
       "Alveolar Dead Space",
       "PEEP",
       "Pulmonary Perfusion"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0077",
@@ -2619,7 +2695,8 @@
       "Kigali Modification",
       "Oxyhemoglobin Dissociation Curve",
       "Gas Exchange"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0078",
@@ -2639,7 +2716,7 @@
       "C": "LIP is an opening pressure during early inflation, not tidal volume completion.",
       "D": "These points reflect lung mechanics and parenchymal recruitment/distension, not diaphragmatic fatigue."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -2654,7 +2731,8 @@
       "Upper Inflection Point",
       "Atelectrauma",
       "Volutrauma"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0079",
@@ -2674,7 +2752,7 @@
       "C": "28 cmH2O is the sum of PEEP and Pes, not Paw - Pes.",
       "D": "Ptp is -4 cmH2O, demonstrating that the lungs are actively derecruited at end-expiration."
     },
-    "difficulty": "very-hard",
+    "difficulty": "difficult",
     "sourceType": "memory-based",
     "exam": "NEET-SS",
     "year": 2025,
@@ -2688,7 +2766,8 @@
       "Esophageal Balloon",
       "EPVent Trial",
       "NEET-SS 2025"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0080",
@@ -2722,7 +2801,8 @@
       "Formulas",
       "Pediatric ARDS",
       "ECMO Triggers"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0081",
@@ -2756,7 +2836,8 @@
       "PEEP Effect",
       "Pharyngeal Pressure",
       "FLORALI Trial"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0082",
@@ -2790,7 +2871,8 @@
       "Dead Space Washout",
       "Physiology",
       "Work of Breathing"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0083",
@@ -2824,7 +2906,8 @@
       "HFNC Failure",
       "Intubation Trigger",
       "FLORALI Trial"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0084",
@@ -2858,7 +2941,8 @@
       "COPD Exacerbation",
       "BiPAP",
       "Respiratory Failure"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0085",
@@ -2878,7 +2962,7 @@
       "C": "Bilirubin and albumin are hepatic scores, not respiratory failure predictive indices.",
       "D": "HACOR stands specifically for Heart rate, Acidosis, Consciousness, Oxygenation, and Respiratory rate."
     },
-    "difficulty": "challenging",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -2892,7 +2976,8 @@
       "NIV Failure",
       "Intubation",
       "Predictive Scoring"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0086",
@@ -2926,7 +3011,8 @@
       "Ppeak vs Pplat",
       "Airway Resistance",
       "Compliance"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0087",
@@ -2960,7 +3046,8 @@
       "Cstat Formula",
       "Driving Pressure",
       "Ventilator Mechanics"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0088",
@@ -2980,9 +3067,9 @@
       "C": "Constant compliance is SI = 1.0.",
       "D": "Trigger asynchronies show dips below baseline before the breath, unrelated to the SI mathematical slope."
     },
-    "difficulty": "challenging",
+    "difficulty": "difficult",
     "sourceType": "ini-ss-style",
-    "exam": "NEET-SS",
+    "exam": "INI-SS",
     "year": null,
     "examPearl": "NEET-SS EXAM PEARL: Stress Index (SI): SI = 1: Linear compliance (optimal). SI < 1: Downward concavity -> Tidal recruitment (increase PEEP). SI > 1: Upward concavity -> Tidal hyperinflation / overdistension (decrease Vt or PEEP).",
     "hyperlinkedReference": {
@@ -2994,7 +3081,8 @@
       "Ventilator Graphics",
       "Hyperinflation",
       "Alveolar Recruitment"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0089",
@@ -3028,7 +3116,8 @@
       "Dynamic Hyperinflation",
       "COPD Ventilation",
       "Expiratory Time"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0090",
@@ -3062,7 +3151,8 @@
       "Tobin Index",
       "Weaning",
       "Extubation Readiness"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0091",
@@ -3096,7 +3186,8 @@
       "SBT",
       "Pressure Support vs T-Piece",
       "Weaning Guidelines"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0092",
@@ -3116,7 +3207,7 @@
       "C": "Zero release time prevents ventilation and CO2 clearance.",
       "D": "T-low is titrated according to the expiratory flow waveform on the ventilator scalar, not SpO2."
     },
-    "difficulty": "challenging",
+    "difficulty": "difficult",
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
@@ -3130,7 +3221,8 @@
       "T-low Titration",
       "Alveolar Recruitment",
       "Ventilator Modes"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0093",
@@ -3164,7 +3256,8 @@
       "Asynchrony",
       "Volutrauma",
       "Breath Stacking"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0094",
@@ -3184,9 +3277,9 @@
       "C": "Exhalation through inspiratory limb is a valve failure.",
       "D": "Coughing is an active expulsive reflex."
     },
-    "difficulty": "challenging",
+    "difficulty": "difficult",
     "sourceType": "ini-ss-style",
-    "exam": "NEET-SS",
+    "exam": "INI-SS",
     "year": null,
     "examPearl": "NEET-SS EXAM PEARL: Reverse Triggering: Machine breath triggers reflex patient diaphragmatic contraction (entrainment). Occurs in DEEPLY SEDATED patients. Can cause breath stacking and high transpulmonary pressure.",
     "hyperlinkedReference": {
@@ -3198,7 +3291,8 @@
       "Entrainment",
       "Asynchrony",
       "Neuro-Ventilator Coupling"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0095",
@@ -3232,7 +3326,8 @@
       "Post-Extubation Stridor",
       "Steroid Prophylaxis",
       "Extubation Readiness"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0096",
@@ -3266,7 +3361,8 @@
       "Tracheostomy Timing",
       "Mechanical Ventilation",
       "Weaning"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0097",
@@ -3300,7 +3396,8 @@
       "Hyperchloremia",
       "Tubuloglomerular Feedback",
       "Renal Vasoconstriction"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0098",
@@ -3334,7 +3431,8 @@
       "Extended Infusion",
       "Augmented Renal Clearance",
       "Pharmacokinetics"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0099",
@@ -3368,7 +3466,8 @@
       "SICM",
       "Reversible Dysfunction",
       "Myocardial Depression"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0100",
@@ -3402,7 +3501,8 @@
       "Alpha-1 Agonist",
       "Tachyarrhythmias",
       "Septic Shock"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0101",
@@ -3436,6 +3536,7 @@
       "Cardiogenic Shock",
       "Norepinephrine",
       "Cardshock Study"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   }
 ]

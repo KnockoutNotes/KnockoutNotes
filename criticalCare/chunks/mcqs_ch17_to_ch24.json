@@ -31,7 +31,8 @@
       "Volume of Distribution",
       "Hydrophilic Antibiotics",
       "Septic Shock"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0205",
@@ -65,7 +66,8 @@
       "ARC",
       "Beta Lactam Elimination",
       "TDM"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0206",
@@ -85,7 +87,7 @@
       "C": "Neurotoxicity was rare and comparable between groups.",
       "D": "Intermittent infusion remains widely utilized."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2024,
@@ -99,7 +101,8 @@
       "Beta-Lactam Infusion",
       "Time-Dependent Killing",
       "Septic Shock"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0207",
@@ -133,7 +136,8 @@
       "AUC24/MIC",
       "Nephrotoxicity",
       "MRSA"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0208",
@@ -153,7 +157,7 @@
       "C": "Vaborbactam inhibits only KPC (Class A) carbapenemases; ineffective against MBL.",
       "D": "Relebactam inhibits Class A and Class C enzymes; ineffective against MBL."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2023,
@@ -167,7 +171,8 @@
       "Ceftazidime-Avibactam",
       "Aztreonam",
       "MBL"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0209",
@@ -187,7 +192,7 @@
       "C": "Fluoroquinolone resistance in CRAB exceeds 95%.",
       "D": "Nitrofurantoin is solely for uncomplicated cystitis and has no systemic activity."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2024,
@@ -201,7 +206,8 @@
       "Acinetobacter baumannii",
       "Sulbactam",
       "IDSA Guidance"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0210",
@@ -235,7 +241,8 @@
       "Severe CAP",
       "Hydrocortisone",
       "Mortality Reduction"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0211",
@@ -269,7 +276,8 @@
       "Dexamethasone Timing",
       "Streptococcus pneumoniae",
       "Hearing Loss"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0212",
@@ -303,7 +311,8 @@
       "Fidaxomicin",
       "Vancomycin",
       "IDSA/SHEA Guidelines"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0213",
@@ -323,7 +332,7 @@
       "C": "Encephalopathy grade alone does not fulfill the transplant criteria.",
       "D": "Thrombocytopenia is non-specific."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2022,
@@ -337,7 +346,8 @@
       "Acute Liver Failure",
       "Liver Transplantation",
       "Prothrombin Time"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0214",
@@ -371,7 +381,8 @@
       "Restrictive Transfusion",
       "Portal Hypertension",
       "Villanueva Trial"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0215",
@@ -391,7 +402,7 @@
       "C": "Terlipressin reduces portal inflow and variceal bleeding, not hemorrhage.",
       "D": "HRS is a functional renal vasoconstriction; terlipressin does not reverse underlying cirrhosis."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2023,
@@ -405,7 +416,8 @@
       "Terlipressin",
       "Hepatorenal Syndrome",
       "Respiratory Failure"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0216",
@@ -439,7 +451,8 @@
       "Acute Pancreatitis",
       "Fluid Overload",
       "Lactated Ringer"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0217",
@@ -473,7 +486,8 @@
       "Intra-Abdominal Hypertension",
       "Abdominal Compartment Syndrome",
       "Bladder Pressure"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0218",
@@ -507,7 +521,8 @@
       "Glycemic Control",
       "Hypoglycemia",
       "Insulin Infusion"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0219",
@@ -541,7 +556,8 @@
       "Hydrocortisone First",
       "Adrenal Crisis",
       "Levothyroxine"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0220",
@@ -561,7 +577,7 @@
       "C": "Iodine does not induce acute renal failure in thyroid storm.",
       "D": "Thionamides begin inhibiting organification within an hour."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2024,
@@ -575,7 +591,8 @@
       "Wolff-Chaikoff",
       "Jod-Basedow",
       "Burch-Wartofsky"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0221",
@@ -609,7 +626,8 @@
       "Protein Targets",
       "ESPEN Guidelines",
       "ASPEN Guidelines"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0222",
@@ -643,7 +661,8 @@
       "Enteral vs Parenteral",
       "Bowel Ischemia",
       "Vasopressors in Shock"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0223",
@@ -677,7 +696,8 @@
       "Massive Transfusion",
       "1:1:1 Ratio",
       "Exsanguination"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0224",
@@ -697,7 +717,7 @@
       "C": "K-time reflects kinetics; treated with Cryoprecipitate or FFP.",
       "D": "LY30 > 3% reflects hyperfibrinolysis, treated with Tranexamic Acid (TXA)."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2023,
@@ -711,7 +731,8 @@
       "ROTEM",
       "FIBTEM",
       "Fibrinogen Deficiency"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0225",
@@ -745,7 +766,8 @@
       "4Ts Score",
       "Argatroban",
       "Heparin-Induced Thrombocytopenia"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0226",
@@ -779,7 +801,8 @@
       "NAC",
       "Rumack-Matthew Nomogram",
       "NAPQI"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0227",
@@ -813,7 +836,8 @@
       "Atropinization",
       "Bronchorrhea",
       "Muscarinic Receptors"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0228",
@@ -833,7 +857,7 @@
       "C": "Malignant hyperthermia occurs after halogenated volatile anesthetics or succinylcholine, characterized by masseter spasm and jaw rigidity.",
       "D": "Anticholinergic toxidrome features dry flushed skin, absent sweating, and dilated sluggish pupils."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2024,
@@ -847,7 +871,8 @@
       "Hunter Criteria",
       "Clonus",
       "Cyproheptadine"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0229",
@@ -881,7 +906,8 @@
       "Tranexamic Acid",
       "Trauma Coagulopathy",
       "3-Hour Window"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0230",
@@ -915,7 +941,8 @@
       "Damage Control Resuscitation",
       "TBI Contraindication",
       "Trauma Hemodynamics"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0231",
@@ -949,7 +976,8 @@
       "Cmax/MIC",
       "Extended-Interval Dosing",
       "Concentration-Dependent Killing"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0232",
@@ -983,7 +1011,8 @@
       "CMS",
       "Colistin Base Activity",
       "Polymyxin"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0233",
@@ -1003,7 +1032,7 @@
       "C": "Sulfites are not metabolites of cefepime.",
       "D": "Cefepime does not trigger venous thrombosis."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2023,
@@ -1017,7 +1046,8 @@
       "GABA-A Antagonism",
       "Non-convulsive Status Epilepticus",
       "Renal Dose Adjustment"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0234",
@@ -1051,7 +1081,8 @@
       "Quantitative Cultures",
       "BAL",
       "CFU Cutoffs"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0235",
@@ -1085,7 +1116,8 @@
       "Critical Phase",
       "Capillary Leak",
       "Defervescence"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0236",
@@ -1119,7 +1151,8 @@
       "Weil Disease",
       "Conjunctival Suffusion",
       "Pulmonary Hemorrhage"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0237",
@@ -1153,7 +1186,8 @@
       "Ammonia",
       "Glutamine",
       "Cerebral Edema"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0238",
@@ -1187,7 +1221,8 @@
       "Albumin Infusion",
       "Sort Protocol",
       "Hepatorenal Syndrome Prevention"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0239",
@@ -1207,7 +1242,7 @@
       "C": "Mortality was similar (19% vs 16%), but major morbidity was drastically lower with step-up.",
       "D": "Percutaneous drainage is the first step of the step-up approach."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2024,
@@ -1221,7 +1256,8 @@
       "Step-Up Approach",
       "Infected Necrotizing Pancreatitis",
       "VARD"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0240",
@@ -1255,7 +1291,8 @@
       "Hypokalemia",
       "Insulin Withholding",
       "Electrolyte Safety"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0241",
@@ -1289,7 +1326,8 @@
       "SGLT2 Inhibitors",
       "Beta-hydroxybutyrate",
       "Insulin Deficiency"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0242",
@@ -1309,7 +1347,7 @@
       "C": "TTP is not an end-stage liver disease.",
       "D": "Heparin does not treat ADAMTS13 autoantibodies."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2024,
@@ -1323,7 +1361,8 @@
       "PLASMIC Score",
       "ADAMTS13",
       "Plasma Exchange"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0243",
@@ -1343,7 +1382,7 @@
       "C": "Standard physiological insulin doses (< 0.1 U/kg/h) are completely ineffective for HIET inotropic support.",
       "D": "HIET is specifically for CCB and beta-blocker poisoning; not digitalis."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2023,
@@ -1357,7 +1396,8 @@
       "Calcium Channel Blocker Toxicity",
       "Beta Blocker Overdose",
       "High Dose Insulin"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0244",
@@ -1391,7 +1431,8 @@
       "Big Four",
       "20WBCT",
       "Anti-Snake Venom"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0245",
@@ -1425,7 +1466,8 @@
       "Greater Trochanters",
       "Pelvic Fracture",
       "Damage Control"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "id": "mcq-cc-0246",
@@ -1445,7 +1487,7 @@
       "C": "Zone 2 contains visceral and renal arteries and is a strict NO-OCCLUSION zone.",
       "D": "Prolonged occlusion > 60 min causes irreversible spinal cord ischemia, bowel necrosis, and fatal reperfusion shock."
     },
-    "difficulty": "hard",
+    "difficulty": "difficult",
     "sourceType": "pyq",
     "exam": "NEET-SS",
     "year": 2024,
@@ -1459,7 +1501,8 @@
       "Aortic Occlusion",
       "Zone 1 and Zone 3",
       "Non-Compressible Torso Hemorrhage"
-    ]
+    ],
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 17,
@@ -1478,9 +1521,9 @@
       "C": "Lipophilic drugs have large volumes of distribution and are cleared hepatobiliary, meaning they are minimally removed by convective or diffusive CRRT.",
       "D": "Tissue sequestration protects drugs from filtration in the extracorporeal circuit."
     },
-    "difficulty": "Hard",
+    "difficulty": "difficult",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "CRRT Drug Clearance Rule: Sieving coefficient (SC) approx equals unbound fraction (fu = 1 - protein binding). For hydrophilic drugs (Vd < 0.7 L/kg) with low protein binding, CRRT clearance equals effluent rate. Never reduce loading doses in CRRT!",
     "hyperlinkedReference": {
@@ -1494,7 +1537,8 @@
       "Drug Dosing",
       "Beta-lactams"
     ],
-    "id": "mcq-cc-0247"
+    "id": "mcq-cc-0247",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 17,
@@ -1513,9 +1557,9 @@
       "C": "Cefepime does not have serotonergic activity; serotonin syndrome is caused by SSRIs, MAOIs, linezolid, or tramadol.",
       "D": "Cefepime does not cause hyperammonemia; it produces direct CNS neurotoxicity via GABA-A antagonism."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "memory-based recall — NEET-SS 2024",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "Cefepime neurotoxicity occurs predominantly with trough levels >20-35 mg/L in patients with unadjusted renal failure. Characteristic EEG finding: Generalized periodic discharges with triphasic morphology. Readily dialyzable.",
     "hyperlinkedReference": {
@@ -1529,7 +1573,8 @@
       "GABA-A",
       "EEG"
     ],
-    "id": "mcq-cc-0248"
+    "id": "mcq-cc-0248",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 18,
@@ -1549,9 +1594,9 @@
       "C": "Colistin has unpredictable and poor in vitro activity against S. maltophilia, with significant breakthrough and toxicity; it is NOT first-line.",
       "D": "S. maltophilia produces the L2 serine cephalosporinase which efficiently hydrolyzes piperacillin and clavulanate/tazobactam."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "S. maltophilia is intrinsically resistant to carbapenems due to chromosomal L1 metallo-beta-lactamase and L2 serine beta-lactamase. Preferred drug: TMP-SMX (12-15 mg/kg/day TMP). Alternate: Cefiderocol or Minocycline.",
     "hyperlinkedReference": {
@@ -1565,7 +1610,8 @@
       "TMP-SMX",
       "L1 Metallo-beta-lactamase"
     ],
-    "id": "mcq-cc-0249"
+    "id": "mcq-cc-0249",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 18,
@@ -1584,9 +1630,9 @@
       "C": "Relebactam is a diazabicyclooctane inhibitor that inhibits Class A (KPC) and Class C (AmpC) enzymes, but has zero activity against Class B metallo-beta-lactamases (NDM).",
       "D": "Vaborbactam also lacks activity against metallo-beta-lactamases (NDM, VIM, IMP)."
     },
-    "difficulty": "Hard",
+    "difficulty": "difficult",
     "sourceType": "memory-based recall — NEET-SS 2024",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "Metallo-beta-lactamase (NDM) trick: Aztreonam is structurally unaffected by metallo-enzymes, but destroyed by co-produced ESBLs/AmpC. Adding avibactam neutralizes ESBLs, freeing aztreonam to kill the bug. Cefiderocol is an alternative monotherapy.",
     "hyperlinkedReference": {
@@ -1600,7 +1646,8 @@
       "Aztreonam",
       "MDR Enterobacterales"
     ],
-    "id": "mcq-cc-0250"
+    "id": "mcq-cc-0250",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 19,
@@ -1619,9 +1666,9 @@
       "C": "Colonoscopy is contraindicated in suspected acute arterial mesenteric ischemia due to the high risk of perforation from insufflation and inability to assess the small intestine.",
       "D": "Doppler ultrasound is operator-dependent, severely hindered by bowel gas, cannot visualize distal mesenteric branches, and delays definitive care."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "memory-based recall — NEET-SS 2023",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "Pain out of proportion to exam + metabolic acidosis with elevated lactate = Acute Mesenteric Ischemia until proven otherwise. Gold standard investigation: Biphasic CTA abdomen (intravenous contrast only, NO oral contrast).",
     "hyperlinkedReference": {
@@ -1635,7 +1682,8 @@
       "Lactate",
       "Abdomen"
     ],
-    "id": "mcq-cc-0251"
+    "id": "mcq-cc-0251",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 19,
@@ -1654,9 +1702,9 @@
       "C": "Zeroing at the phlebostatic axis (4th ICS mid-axillary) is for CVP/arterial lines, not bladder pressure; and head-of-bed elevation increases IAP falsely.",
       "D": "Measurement must be at end-expiration to eliminate the artifactual transmission of diaphragmatic and positive ventilator inspiratory pressures."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "WSACS Bladder IAP Protocol: Patient supine, transducer zeroed at mid-axillary line at iliac crest, instillation volume <=25 mL normal saline, measured at end-expiration. Abdominal Perfusion Pressure (APP) = MAP - IAP (target >60 mmHg).",
     "hyperlinkedReference": {
@@ -1670,7 +1718,8 @@
       "IAP",
       "Bladder Pressure"
     ],
-    "id": "mcq-cc-0252"
+    "id": "mcq-cc-0252",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 20,
@@ -1689,9 +1738,9 @@
       "B": "Dexamethasone lacks mineralocorticoid activity (necessary for vascular tone and fluid balance) and has prolonged hypothalamic-pituitary suppression; hydrocortisone has balanced glucocorticoid and mineralocorticoid action.",
       "D": "High-dose pulse methylprednisolone increases mortality, secondary infections, and neuromuscular weakness in sepsis."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "memory-based recall — NEET-SS 2024",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "Septic shock steroid rule: Hydrocortisone 200 mg/day (continuous or 50 mg q6h) when vasopressor dose >=0.25 mcg/kg/min for >=4 hours. No ACTH test needed. Wean off once vasopressors are discontinued.",
     "hyperlinkedReference": {
@@ -1705,7 +1754,8 @@
       "CIRCI",
       "Hydrocortisone"
     ],
-    "id": "mcq-cc-0253"
+    "id": "mcq-cc-0253",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 20,
@@ -1724,9 +1774,9 @@
       "B": "Incomplete clinical framing.",
       "D": "Urea is an ineffective osmole because it diffuses freely into cells via urea transporters; it contributes to total measured osmolality, but NOT effective osmolality."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "HHS Diagnostic Triad: (1) Plasma glucose >600 mg/dL (33.3 mmol/L), (2) Effective serum osmolality >320 mOsm/kg, (3) Absence of significant ketoacidosis (pH >7.30, HCO3 >18). Effective osm = 2[Na] + [Glucose]/18 (urea omitted!).",
     "hyperlinkedReference": {
@@ -1740,7 +1790,8 @@
       "Diabetes",
       "Electrolytes"
     ],
-    "id": "mcq-cc-0254"
+    "id": "mcq-cc-0254",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 21,
@@ -1759,9 +1810,9 @@
       "C": "Hypercalcemia is not a feature; hypomagnesemia and hypokalemia are characteristically present.",
       "D": "Insulin drives potassium INTO cells, causing hypokalemia, not hyperkalemia."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "memory-based recall — NEET-SS 2023",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "Refeeding Triad: Hypophosphatemia (hallmark), Hypokalemia, Hypomagnesemia + Thiamine deficiency. Prevention: Start enteral feeding at 10-15 kcal/kg/day, replace thiamine 100-300 mg BEFORE feeding, and replete phosphate/potassium.",
     "hyperlinkedReference": {
@@ -1775,7 +1826,8 @@
       "Enteral Nutrition",
       "ATP"
     ],
-    "id": "mcq-cc-0255"
+    "id": "mcq-cc-0255",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 21,
@@ -1794,9 +1846,9 @@
       "B": "0.8-1.0 g/kg is the baseline allowance for healthy non-stressed adults, wholly inadequate for catabolic ICU patients.",
       "D": "Exceeding 2.5 g/kg/day provides no additional benefit and can cause azotemia, hyperammonemia, and metabolic acidosis."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "ICU Protein Targets: Standard critically ill = 1.2-1.5 g/kg/day (ESPEN/ASPEN). CRRT / severe burns / trauma = 1.5-2.5 g/kg/day. Never restrict protein in acute critical illness just because the BUN or creatinine is elevated!",
     "hyperlinkedReference": {
@@ -1810,7 +1862,8 @@
       "ESPEN",
       "Catabolism"
     ],
-    "id": "mcq-cc-0256"
+    "id": "mcq-cc-0256",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 22,
@@ -1829,9 +1882,9 @@
       "C": "Platelet transfusions can precipitate acute thrombotic occlusion ('fuel to the fire'), and warfarin monotherapy causes venous limb gangrene.",
       "D": "Discontinuing heparin without starting an alternative anticoagulant leaves the patient unprotected against the 50% risk of thrombosis in acute HIT."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "memory-based recall — NEET-SS 2024",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "HIT Management: Stop ALL heparins immediately. Start non-heparin direct thrombin inhibitor (Argatroban if renal impairment; Bivalirudin if hepatic impairment). Never give warfarin in acute HIT (causes venous limb gangrene). Never give prophylactic platelets.",
     "hyperlinkedReference": {
@@ -1845,7 +1898,8 @@
       "Thrombosis",
       "Thrombocytopenia"
     ],
-    "id": "mcq-cc-0257"
+    "id": "mcq-cc-0257",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 22,
@@ -1864,9 +1918,9 @@
       "C": "Platelets contribute to EXTEM/INTEM clot firmness, but FIBTEM isolates fibrinogen; an isolated low FIBTEM indicates fibrinogen deficiency, not platelet deficiency.",
       "D": "rFVIIa is a rescue agent that requires adequate fibrinogen (>1.5 g/L) and platelets (>50,000/mcL) to form a stable clot; administering it in severe hypofibrinogenemia is futile and thrombogenic."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "Viscoelastic Goal in Massive Hemorrhage: FIBTEM A10 <10 mm = Hypofibrinogenemia -> give Cryoprecipitate or Fibrinogen Concentrate. Only give platelets if EXTEM A10 is low despite a normal FIBTEM.",
     "hyperlinkedReference": {
@@ -1880,7 +1934,8 @@
       "Fibrinogen",
       "Trauma Hemorrhage"
     ],
-    "id": "mcq-cc-0258"
+    "id": "mcq-cc-0258",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 23,
@@ -1899,9 +1954,9 @@
       "C": "Methemoglobinemia causes refractory cyanosis with a normal PaO2 and chocolate-brown blood, not marked optic neuropathy with high osmolal gap.",
       "D": "Organophosphates cause cholinergic toxidrome (DUMBELS), not high osmolal gap metabolic acidosis."
     },
-    "difficulty": "Medium",
+    "difficulty": "moderate",
     "sourceType": "memory-based recall — NEET-SS 2024",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "Toxic Alcohol Differentiation: Methanol -> Visual 'snowstorm', optic disc papillitis, putaminal necrosis (Formic acid). Ethylene Glycol -> Calcium oxalate monohydrate crystals in urine, AKI, cranial nerve palsies (Glycolic/Oxalic acid). Both have High Anion Gap + High Osmolal Gap.",
     "hyperlinkedReference": {
@@ -1915,7 +1970,8 @@
       "Formic Acid",
       "Osmolal Gap"
     ],
-    "id": "mcq-cc-0259"
+    "id": "mcq-cc-0259",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 23,
@@ -1934,9 +1990,9 @@
       "C": "Nitrites induce methemoglobinemia, which further reduces oxygen delivery and is contraindicated in smoke inhalation victims who likely have co-existing carbon monoxide poisoning.",
       "D": "Hyperbaric oxygen treats CO toxicity, but does not rapidly reverse cyanide cytochrome oxidase inhibition in profound lactic acidosis."
     },
-    "difficulty": "Hard",
+    "difficulty": "difficult",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "Cyanide Poisoning Signature: Fire victim + Lactic acidosis >8-10 mmol/L + High ScvO2 (>90%, failure of oxygen extraction). Antidote: Hydroxocobalamin 5g IV. Avoid nitrites in smoke inhalation due to CO-induced methemoglobinemia risk!",
     "hyperlinkedReference": {
@@ -1950,7 +2006,8 @@
       "Smoke Inhalation",
       "Lactate"
     ],
-    "id": "mcq-cc-0260"
+    "id": "mcq-cc-0260",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 24,
@@ -1969,9 +2026,9 @@
       "C": "Routine bicarbonate alkalinization is no longer recommended; it exacerbates rhabdomyolysis-associated hypocalcemia and precipitates calcium phosphate in tissues.",
       "D": "Prophylactic CRRT is not indicated; myoglobin (17.8 kDa) is poorly cleared by standard filters. CRRT is reserved for established AKI with refractory hyperkalemia or acidosis."
     },
-    "difficulty": "Easy",
+    "difficulty": "easy",
     "sourceType": "memory-based recall — NEET-SS 2023",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2023",
     "examPearl": "Crush Syndrome / Rhabdomyolysis: Maintain high urine output (2-3 mL/kg/h or 200-300 mL/h) with balanced crystalloids. Avoid prophylactic bicarbonate (worsens hypocalcemia). Lethal early danger: Hyperkalemia from crushed myocytes.",
     "hyperlinkedReference": {
@@ -1985,7 +2042,8 @@
       "Myoglobin",
       "AKI"
     ],
-    "id": "mcq-cc-0261"
+    "id": "mcq-cc-0261",
+    "verificationStatus": "VERIFIED"
   },
   {
     "chapterId": 24,
@@ -2004,9 +2062,9 @@
       "C": "CPR must NEVER be withheld in cardiac arrest; continuous chest compressions are mandatory, and patients can have complete neurological recovery even after prolonged CPR in hypothermia ('not dead until warm and dead').",
       "D": "Bretylium is no longer manufactured or recommended; amiodarone is the preferred antiarrhythmic, but drugs are withheld below 30°C."
     },
-    "difficulty": "Hard",
+    "difficulty": "difficult",
     "sourceType": "NEET-SS style — original question",
-    "exam": "NEET-SS Critical Care",
+    "exam": "NEET-SS",
     "year": "2024",
     "examPearl": "Hypothermic Cardiac Arrest (<30°C): Max 3 defibrillation shocks -> then defer shocks until temp >=30°C. Withhold all ACLS drugs (epinephrine/amiodarone) until temp >=30°C. Rewarming of choice: VA-ECMO. 'No one is dead until warm and dead' (32-35°C).",
     "hyperlinkedReference": {
@@ -2020,6 +2078,7 @@
       "ACLS",
       "ECMO Rewarming"
     ],
-    "id": "mcq-cc-0262"
+    "id": "mcq-cc-0262",
+    "verificationStatus": "VERIFIED"
   }
 ]

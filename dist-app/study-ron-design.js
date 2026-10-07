@@ -410,6 +410,47 @@
     "pain": 16
   };
 
+  const STUDY_ITEM_TO_CHAPTER = {
+    "brain-death-organ-donation": 31,
+    "central-venous-pulmonary-artery-catheters": 2,
+    "icu-organization-scoring-ethics": 1,
+    "venturi-oxygen-devices": 2,
+    "hemodynamics-shock-approach": 3,
+    "asa-monitoring": 3,
+    "fluid-responsiveness-dynamic-indices": 3,
+    "cardiogenic-shock-scai": 4,
+    "anaphylactic-neurogenic-endocrine-shock": 4,
+    "sepsis3-hour1-bundle-resuscitation": 5,
+    "haemodialysis-crrt-dialysis-circuit": 13,
+    "acute-respiratory-failure-types": 7,
+    "thrive-hfno-apneic-oxygenation": 7,
+    "ventilators-classification": 8,
+    "ventilator-modes-waveforms-asynchrony": 8,
+    "ventilator-liberation-weaning-failure": 8,
+    "ards-berlin-lung-protective": 9,
+    "ards-refractory-rescue-ecmo": 9,
+    "status-asthmaticus-copd-icu": 10,
+    "acute-coronary-syndromes-cardiogenic-shock": 11,
+    "cardiac-arrhythmias-tamponade-pocus": 11,
+    "hypoxic-ischemic-encephalopathy-ttm-postarrest": 12,
+    "aki-kdigo-crrt-modalities": 13,
+    "abg-interpretation": 14,
+    "severe-electrolyte-disturbances-icu": 14,
+    "tbi-neuromonitoring-raised-icp": 15,
+    "status-epilepticus-rse-srse": 15,
+    "brain-death-organ-donor-resuscitation": 15,
+    "pkpd-organ-support-crrt-ecmo-vasodilators": 17,
+    "empiric-sepsis-mdr-bundles": 18,
+    "hypovolemic-hemorrhagic-shock": 22,
+    "toxidromes-general-approach": 23,
+    "organophosphates-carbamates": 23,
+    "burn-resuscitation-inhalation-injury": 24,
+    "trauma-resuscitation-damage-control": 24,
+    "preeclampsia-eclampsia-hellp-syndrome": 26,
+    "ecmo-vv-va-principles-cannulation": 30,
+    "antifungals-icu": 18
+  };
+
   function getItemsForDomainAndCat(domainId, catId) {
     const data = getData();
     const all = [...(data.topics || []), ...(data.drugs || [])];
@@ -914,7 +955,12 @@
         </div>
         <div class="ron-card-footer-row">
           ${drugBadge}
-          <span class="ron-card-read-link">Read Description →</span>
+          <div style="display:flex; align-items:center; gap:8px; margin-left:auto;">
+            <button type="button" class="kn-action-btn kn-topic-mcq-btn" data-topic-mcq-target="${esc(it.id)}" title="Practice High Yield MCQs on ${esc(it.short || it.name)}" style="padding:2px 8px; font-size:11px; display:inline-flex; align-items:center; gap:4px; border-radius:6px; background:rgba(2,132,199,0.08); border:1px solid rgba(2,132,199,0.25); color:var(--accent-cyan,#0284c7); font-weight:700;">
+              <span>📝</span><span>MCQs</span>
+            </button>
+            <span class="ron-card-read-link">Read →</span>
+          </div>
         </div>
       </div>
     `;
@@ -1011,7 +1057,7 @@
                   placeholder="🔍 Search all 171 topics &amp; drugs (e.g. Propofol, RSI, TOF)..."
                   value="${esc(searchFilter)}" autocomplete="off">
               </div>
-              ${activeDomain === 'critical' ? `<button type="button" class="ron-mcq-pill-btn" id="ronOpenMcqBtn" title="High Yield MCQ Practice — Critical Care" aria-label="Open High Yield MCQ Practice">📝 High Yield MCQs</button>` : ''}
+              <button type="button" class="ron-mcq-pill-btn" id="ronOpenMcqBtn" title="High Yield MCQ Practice — NEET-SS / INI-SS" aria-label="Open High Yield MCQ Practice">📝 High Yield MCQs</button>
             </div>
 
             <!-- New 3-Domain Vertical & Single Horizontal Category Track -->
@@ -1194,7 +1240,7 @@
                   placeholder="🔍 Search all 171 topics &amp; drugs..."
                   value="${esc(searchFilter)}" autocomplete="off">
               </div>
-              ${activeDomain === 'critical' ? `<button type="button" class="ron-mcq-pill-btn" id="ronOpenMcqBtn" title="High Yield MCQ Practice — Critical Care" aria-label="Open High Yield MCQ Practice">📝 High Yield MCQs</button>` : ''}
+              <button type="button" class="ron-mcq-pill-btn" id="ronOpenMcqBtn" title="High Yield MCQ Practice — NEET-SS / INI-SS" aria-label="Open High Yield MCQ Practice">📝 High Yield MCQs</button>
             </div>
 
             <!-- New 3-Domain Vertical & Single Horizontal Category Track -->
@@ -1276,11 +1322,9 @@
                     <button type="button" class="kn-action-btn kn-pen-toggle-btn" title="Toggle Stylus / Pen Annotations" onclick="if(window.KN_ANNOTATIONS)window.KN_ANNOTATIONS.showToolbar();">
                       <span>✏️</span> <span>Draw</span>
                     </button>
-                    ${activeDomain === 'critical' ? `
-                      <button type="button" class="kn-action-btn kn-topic-mcq-btn" data-topic-mcq-target="${esc(item.id)}" title="Practice High Yield MCQs on this Topic">
-                        <span>📝</span> <span>MCQs</span>
-                      </button>
-                    ` : ''}
+                    <button type="button" class="kn-action-btn kn-topic-mcq-btn" data-topic-mcq-target="${esc(item.id)}" title="Practice High Yield MCQs on this Topic">
+                      <span>📝</span> <span>MCQs</span>
+                    </button>
                   </div>
                 </div>
 
@@ -1324,20 +1368,18 @@
             <div class="ron-description-container" id="ronActiveDescriptionBox">
               ${completeDescriptionHTML}
 
-              ${activeDomain === 'critical' ? `
-                <div class="ron-topic-mcq-banner">
-                  <div class="ron-topic-mcq-banner-left">
-                    <span class="ron-topic-mcq-icon">📝</span>
-                    <div>
-                      <h4 class="ron-topic-mcq-title">Practice High Yield MCQs</h4>
-                      <p class="ron-topic-mcq-desc">Master this topic with authentic NEET-SS / INI-SS clinical recall and practice questions with detailed rationale.</p>
-                    </div>
+              <div class="ron-topic-mcq-banner">
+                <div class="ron-topic-mcq-banner-left">
+                  <span class="ron-topic-mcq-icon">📝</span>
+                  <div>
+                    <h4 class="ron-topic-mcq-title">Practice High Yield MCQs</h4>
+                    <p class="ron-topic-mcq-desc">Master this topic with authentic NEET-SS / INI-SS clinical recall and practice questions with detailed rationale.</p>
                   </div>
-                  <button type="button" class="ron-topic-mcq-launch-btn" data-topic-mcq-target="${esc(item.id)}">
-                    <span>Solve MCQs</span> <span>→</span>
-                  </button>
                 </div>
-              ` : ''}
+                <button type="button" class="ron-topic-mcq-launch-btn" data-topic-mcq-target="${esc(item.id)}">
+                  <span>Solve MCQs</span> <span>→</span>
+                </button>
+              </div>
             </div>
 
           </div>
@@ -2057,7 +2099,7 @@
       e.stopPropagation();
       triggerHapticFeedback();
       const topicId = topicMcqBtn.getAttribute("data-topic-mcq-target");
-      const mappedChapter = CAT_TO_CHAPTER[activeCat];
+      const mappedChapter = STUDY_ITEM_TO_CHAPTER[topicId] || CAT_TO_CHAPTER[activeCat] || CAT_TO_CHAPTER[activeDomain];
       if (window.KN_MCQ && typeof window.KN_MCQ.open === "function") {
         window.KN_MCQ.open({
           topicId: topicId,
@@ -2081,7 +2123,7 @@
     // 1. Topic Card clicked -> Open Topic Description
     const topicCard = e.target.closest("[data-topic-id]");
     if (topicCard) {
-      if (e.target.closest("[data-kn-bookmark-id], [data-kn-sticky-id], .kn-btn-icon-action, .kn-action-chip-btn, .kn-card-progress-pill")) {
+      if (e.target.closest("[data-kn-bookmark-id], [data-kn-sticky-id], .kn-btn-icon-action, .kn-action-chip-btn, .kn-card-progress-pill, [data-topic-mcq-target]")) {
         return;
       }
       e.preventDefault();
@@ -2317,6 +2359,9 @@
   }
 
   window.__RON_STUDY_ACTIVE = true;
+  window.KN_STUDY_RETURN = function () {
+    renderRonBoard();
+  };
 
   // Initial boot
   if (document.readyState === "loading") {
