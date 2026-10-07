@@ -2244,7 +2244,7 @@
   },
   {
     "id": "mcq-cc-0166",
-    "chapterId": 13,
+    "chapterId": 14,
     "topicId": "cc-disorders-of-calcium-magnesium-phosphorus-metabolism",
     "question": "A 55-year-old male with metastatic squamous cell lung carcinoma presents with lethargy and confusion. Serum calcium is 15.2 mg/dL, albumin is 3.0 g/dL, and ionized calcium is 2.1 mmol/L. What is the immediate first-line medical therapy for severe hypercalcemic crisis?",
     "options": [
@@ -3814,7 +3814,7 @@
   {
     "id": "mcq-cc-0346",
     "chapterId": 10,
-    "topicId": "cc-acute-severe-asthma",
+    "topicId": "cc-copd-and-asthma",
     "question": "In a mechanically ventilated patient with life-threatening status asthmaticus, what is the rationale and clinical target for 'Permissive Hypercapnia'?",
     "options": [
       "Deliberately targeting PaCO2 > 90 mmHg to stimulate peripheral chemoreceptors",
@@ -3848,7 +3848,7 @@
   {
     "id": "mcq-cc-0347",
     "chapterId": 10,
-    "topicId": "cc-acute-severe-asthma",
+    "topicId": "cc-copd-and-asthma",
     "question": "A mechanically ventilated asthma patient suddenly develops severe hypotension (BP 60/30 mmHg), sinus tachycardia (145/min), and loss of end-tidal CO2 trace. What is the immediate first step in management?",
     "options": [
       "Administer an IV bolus of Adrenaline 1 mg stat",
@@ -3882,7 +3882,7 @@
   {
     "id": "mcq-cc-0348",
     "chapterId": 10,
-    "topicId": "cc-acute-exacerbation-of-copd",
+    "topicId": "cc-copd-and-asthma",
     "question": "In a patient with severe acute exacerbation of COPD failing medical therapy, which arterial blood gas parameters fulfill the classical indications for initiating non-invasive positive pressure ventilation (BiPAP)?",
     "options": [
       "pH < 7.35 with PaCO2 > 45 mmHg (respiratory acidosis) despite standard medical management",
@@ -3914,77 +3914,9 @@
     "verificationStatus": "VERIFIED"
   },
   {
-    "id": "mcq-cc-0349",
-    "chapterId": 10,
-    "topicId": "cc-weaning-from-mechanical-ventilation",
-    "question": "Before extubation, a 'Cuff Leak Test' is performed in a patient who was intubated for 10 days. The endotracheal tube cuff is deflated. What cuff leak volume threshold indicates a high risk of post-extubation laryngeal edema and stridor?",
-    "options": [
-      "Leak volume > 300 mL (or > 50% of delivered tidal volume)",
-      "Leak volume < 110 mL (or < 15-24% of the delivered tidal volume)",
-      "Leak volume equal to delivered tidal volume",
-      "Any audible air leak around the tube"
-    ],
-    "answer": "B",
-    "explanation": "A negative cuff leak test (leak volume < 110 mL or < 15-24% of baseline tidal volume) indicates that airway secretions, laryngeal edema, or mucosal swelling are obstructing airflow around the deflated tube, signaling high risk for post-extubation stridor.",
-    "whyWrong": {
-      "A": "Leak > 300 mL confirms a patent laryngeal space around the tube (low stridor risk).",
-      "C": "Complete leak volume means no laryngeal obstruction.",
-      "D": "Audible leak indicates patency, not obstruction."
-    },
-    "difficulty": "moderate",
-    "sourceType": "neet-ss-style",
-    "exam": "NEET-SS",
-    "year": 2024,
-    "examPearl": "NEET-SS EXAM PEARL: When a cuff leak is absent (< 110 mL), administering IV Methylprednisolone (20-40 mg every 4-6 hours for 12-24 hours prior to extubation) significantly reduces post-extubation stridor and reintubation.",
-    "hyperlinkedReference": {
-      "label": "Ochoa ME, et al. Evaluation of extubation failure and the cuff leak test. Crit Care 2009;13:R141",
-      "url": "https://ccforum.biomedcentral.com/articles/10.1186/cc8024"
-    },
-    "tags": [
-      "Cuff Leak Test",
-      "Post-Extubation Stridor",
-      "Weaning"
-    ],
-    "verificationStatus": "VERIFIED"
-  },
-  {
-    "id": "mcq-cc-0350",
-    "chapterId": 10,
-    "topicId": "cc-weaning-from-mechanical-ventilation",
-    "question": "In the comparison between a T-Piece spontaneous breathing trial (SBT) and a Low-Pressure Support SBT (e.g. PSV 5-8 cmH2O with PEEP 0-5 cmH2O), what did modern clinical trials (e.g. Subira et al., JAMA 2019) demonstrate?",
-    "options": [
-      "T-piece trials resulted in higher successful extubation rates without reintubation",
-      "Pressure support SBT significantly increased successful extubation rates (82.3% vs 74.0%) compared to T-piece trials, without increasing reintubation rates",
-      "T-piece trials were associated with zero post-extubation complications",
-      "Both techniques are entirely identical in all clinical outcomes"
-    ],
-    "answer": "B",
-    "explanation": "Subira et al. (JAMA 2019, 1153 patients) demonstrated that an initial 30-minute pressure support SBT (PS 8 cmH2O, PEEP 0) led to significantly higher rates of successful extubation (82.3% vs 74.0%, p=0.001) compared to a 2-hour T-piece trial, without increasing reintubation rates within 72 hours.",
-    "whyWrong": {
-      "A": "T-piece had lower successful extubation rates due to higher work of breathing through the artificial tube.",
-      "C": "T-piece trials resulted in more muscle exhaustion.",
-      "D": "The difference was statistically significant in favor of pressure support."
-    },
-    "difficulty": "moderate",
-    "sourceType": "ini-ss-style",
-    "exam": "INI-SS",
-    "year": 2025,
-    "examPearl": "INI-SS EXAM PEARL: Modern ATS/CHEST weaning guidelines recommend conducting an initial SBT with inspiratory pressure augmentation (PS 5-8 cmH2O) rather than unassisted T-piece.",
-    "hyperlinkedReference": {
-      "label": "Subira C, et al. Effect of Pressure Support vs T-Piece SBT on Extubation. JAMA 2019;321:2175-2182",
-      "url": "https://jamanetwork.com/journals/jama/fullarticle/2735740"
-    },
-    "tags": [
-      "SBT",
-      "T-Piece vs PSV",
-      "Weaning Trials"
-    ],
-    "verificationStatus": "VERIFIED"
-  },
-  {
     "id": "mcq-cc-0351",
     "chapterId": 10,
-    "topicId": "cc-acute-severe-asthma",
+    "topicId": "cc-copd-and-asthma",
     "question": "What is the recommended dose and mechanism of Intravenous Magnesium Sulfate in acute refractory severe asthma failing inhaled bronchodilators?",
     "options": [
       "Magnesium Sulfate 2 g IV infused over 20 minutes; blocks calcium influx into airway smooth muscle, inhibits acetylcholine release, and promotes bronchial relaxation",
@@ -4052,7 +3984,7 @@
   {
     "id": "mcq-cc-0353",
     "chapterId": 11,
-    "topicId": "cc-cardiac-tamponade-and-pericardial-emergencies",
+    "topicId": "cc-pericarditis-and-myocarditis",
     "question": "What is the hemodynamic definition of 'Pulsus Paradoxus' in cardiac tamponade?",
     "options": [
       "An increase in systolic blood pressure > 10 mmHg during normal inspiration",
@@ -4086,7 +4018,7 @@
   {
     "id": "mcq-cc-0354",
     "chapterId": 11,
-    "topicId": "cc-cardiac-tamponade-and-pericardial-emergencies",
+    "topicId": "cc-pericarditis-and-myocarditis",
     "question": "On echocardiography, which sign represents the most SPECIFIC (though late) acoustic marker of hemodynamic cardiac tamponade?",
     "options": [
       "Early diastolic collapse of the Right Ventricle free wall",
@@ -4154,7 +4086,7 @@
   {
     "id": "mcq-cc-0356",
     "chapterId": 11,
-    "topicId": "cc-cardiogenic-shock-i",
+    "topicId": "cc-right-ventricular-failure-in-the-icu",
     "question": "What is the typical hemodynamic and echocardiographic hallmark of acute Right Ventricular (RV) failure in critical illness?",
     "options": [
       "Elevated PCWP with normal CVP",
@@ -4188,7 +4120,7 @@
   {
     "id": "mcq-cc-0357",
     "chapterId": 11,
-    "topicId": "cc-cardiogenic-shock-ii",
+    "topicId": "cc-icu-management-of-acs-i",
     "question": "On post-infarction day 4, a patient with STEMI develops sudden severe pulmonary edema and cardiogenic shock. Physical exam reveals a new, harsh, holosystolic murmur at the apex radiating to the axilla. Echocardiography confirms acute Papillary Muscle Rupture. Which papillary muscle is most commonly involved, and why?",
     "options": [
       "Anterolateral papillary muscle; because it receives dual blood supply from LAD and LCx",
@@ -4222,7 +4154,7 @@
   {
     "id": "mcq-cc-0358",
     "chapterId": 12,
-    "topicId": "cc-post-cardiac-arrest-care",
+    "topicId": "cc-post-cardiac-arrest-management-prognostication",
     "question": "According to the landmark TTM2 trial (Targeted Temperature Management 2, NEJM 2021) in comatose out-of-hospital cardiac arrest survivors, what was the primary finding comparing targeted hypothermia (33 deg C) versus targeted normothermia (<= 37.5 deg C)?",
     "options": [
       "Hypothermia at 33 deg C reduced 6-month mortality by 25%",
@@ -4256,7 +4188,7 @@
   {
     "id": "mcq-cc-0359",
     "chapterId": 12,
-    "topicId": "cc-post-cardiac-arrest-care",
+    "topicId": "cc-post-cardiac-arrest-management-prognostication",
     "question": "What is the earliest recommended time point following cardiac arrest and rewarming to perform multimodal neuroprognostication in comatose patients, to avoid premature withdrawal of life-sustaining therapy?",
     "options": [
       "12 hours post-ROSC",
@@ -4290,7 +4222,7 @@
   {
     "id": "mcq-cc-0360",
     "chapterId": 12,
-    "topicId": "cc-post-cardiac-arrest-care",
+    "topicId": "cc-2025-acc-aha-cpr-guidelines-updates",
     "question": "In the DOSE VF trial (Cheskes et al., NEJM 2022) for refractory ventricular fibrillation during out-of-hospital cardiac arrest, which defibrillation technique showed significant improvements in VF termination and survival to hospital discharge compared to standard defibrillation?",
     "options": [
       "Lowering the energy setting to 50 Joules",
@@ -4325,7 +4257,7 @@
   {
     "id": "mcq-cc-0361",
     "chapterId": 12,
-    "topicId": "cc-post-cardiac-arrest-care",
+    "topicId": "cc-2025-acc-aha-cpr-guidelines-updates",
     "question": "In ACLS cardiopulmonary resuscitation, what is the recommended target chest compression depth and rate for adult cardiac arrest?",
     "options": [
       "Depth 2 to 2.4 inches (5 to 6 cm); Rate 100 to 120 compressions per minute",
@@ -4359,7 +4291,7 @@
   {
     "id": "mcq-cc-0362",
     "chapterId": 12,
-    "topicId": "cc-post-cardiac-arrest-care",
+    "topicId": "cc-2025-acc-aha-cpr-guidelines-updates",
     "question": "During cardiac arrest resuscitation, capnography demonstrates a sudden, abrupt sustained increase in end-tidal CO2 (ETCO2) from 12 mmHg to 38 mmHg. What does this immediately indicate?",
     "options": [
       "Hyperventilation by the rescuer",
@@ -4393,7 +4325,7 @@
   {
     "id": "mcq-cc-0363",
     "chapterId": 12,
-    "topicId": "cc-post-cardiac-arrest-care",
+    "topicId": "cc-post-cardiac-arrest-management-prognostication",
     "question": "What is the recommended arterial blood gas oxygenation and carbon dioxide target during the post-cardiac arrest care bundle?",
     "options": [
       "Hyperoxia (PaO2 > 300 mmHg) and severe hypocapnia (PaCO2 < 28 mmHg) to shrink cerebral edema",
@@ -4427,7 +4359,7 @@
   {
     "id": "mcq-cc-0364",
     "chapterId": 13,
-    "topicId": "cc-acute-kidney-injury",
+    "topicId": "cc-acute-kidney-injury-i",
     "question": "According to the KDIGO (Kidney Disease: Improving Global Outcomes) acute kidney injury criteria, which parameter defines Stage 3 AKI based on serum creatinine?",
     "options": [
       "Serum creatinine 1.5 to 1.9 times baseline",
@@ -4461,7 +4393,7 @@
   {
     "id": "mcq-cc-0365",
     "chapterId": 13,
-    "topicId": "cc-renal-replacement-therapy",
+    "topicId": "cc-renal-replacement-therapy-i",
     "question": "What did landmark multicenter randomized trials (STARRT-AKI and AKIKI) demonstrate regarding the timing of initiating renal replacement therapy (accelerated/early vs standard/delayed strategy) in critically ill patients with AKI without urgent conventional indications?",
     "options": [
       "Accelerated early RRT significantly reduced 90-day mortality by 30%",
@@ -4496,7 +4428,7 @@
   {
     "id": "mcq-cc-0366",
     "chapterId": 13,
-    "topicId": "cc-renal-replacement-therapy",
+    "topicId": "cc-renal-replacement-therapy-i",
     "question": "According to the KDIGO guidelines and landmark trials (ATN and RENAL trials), what is the recommended effluent dose target for continuous renal replacement therapy (CRRT) in critically ill patients with acute kidney injury?",
     "options": [
       "10-15 mL/kg/hour",
@@ -4530,7 +4462,7 @@
   {
     "id": "mcq-cc-0367",
     "chapterId": 13,
-    "topicId": "cc-renal-replacement-therapy",
+    "topicId": "cc-renal-replacement-therapy-i",
     "question": "In Continuous Veno-Venous Hemofiltration (CVVH), solute removal occurs predominantly via which physical transport mechanism?",
     "options": [
       "Diffusion driven by a concentration gradient across a semipermeable membrane",
@@ -4564,7 +4496,7 @@
   {
     "id": "mcq-cc-0368",
     "chapterId": 13,
-    "topicId": "cc-renal-replacement-therapy",
+    "topicId": "cc-renal-replacement-therapy-i",
     "question": "During Regional Citrate Anticoagulation (RCA) in CRRT, what laboratory finding is the hallmark diagnostic indicator of 'Citrate Accumulation / Citrate Toxicity'?",
     "options": [
       "Ratio of total serum calcium to systemic ionized calcium > 2.5 (with high total Ca and refractory ionized hypocalcemia)",
@@ -4598,7 +4530,7 @@
   {
     "id": "mcq-cc-0369",
     "chapterId": 13,
-    "topicId": "cc-acute-kidney-injury",
+    "topicId": "cc-acute-kidney-injury-i",
     "question": "In the landmark STARRT-AKI trial (NEJM 2020) evaluating the timing of Renal Replacement Therapy (RRT) initiation in critically ill patients with severe Acute Kidney Injury (KDIGO Stage 2 or 3), what were the primary clinical findings comparing an Accelerated (immediate) strategy to a Standard (wait-and-see) strategy?",
     "options": [
       "Accelerated initiation showed NO difference in 90-day all-cause mortality, but had significantly higher rates of adverse events and persistent dialysis dependence at 90 days",
@@ -4838,7 +4770,7 @@
   {
     "id": "mcq-cc-0376",
     "chapterId": 15,
-    "topicId": "cc-monitoring-and-management-of-raised-icp",
+    "topicId": "cc-icp-monitoring",
     "question": "In the tiered management of acute intracranial hypertension in severe traumatic brain injury, which intervention is categorized as Tier 3 (refractory rescue therapy) due to significant systemic morbidity?",
     "options": [
       "Head elevation to 30 degrees and maintaining neutral neck position",
@@ -4975,7 +4907,7 @@
   {
     "id": "mcq-cc-0380",
     "chapterId": 16,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-delirium-in-icu-padis-guidelines",
     "question": "According to the SCCM PADIS (Pain, Agitation, Delirium, Immobility, and Sleep) clinical guidelines, which pharmacological sedation strategy is recommended for mechanically ventilated critically ill adults?",
     "options": [
       "Continuous deep sedation with lorazepam infusions to achieve RASS -4",
@@ -5010,7 +4942,7 @@
   {
     "id": "mcq-cc-0381",
     "chapterId": 16,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-delirium-in-icu-padis-guidelines",
     "question": "What are the core diagnostic features required to establish the diagnosis of ICU Delirium using the Confusion Assessment Method for the ICU (CAM-ICU)?",
     "options": [
       "Any hallucination reported by nursing staff",
@@ -5044,7 +4976,7 @@
   {
     "id": "mcq-cc-0382",
     "chapterId": 16,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-delirium-in-icu-padis-guidelines",
     "question": "What is Propofol Infusion Syndrome (PRIS), and what are the major clinical and laboratory hallmarks that signal this life-threatening toxicity?",
     "options": [
       "Transient skin rash appearing within 5 minutes of propofol administration",
@@ -5078,7 +5010,7 @@
   {
     "id": "mcq-cc-0383",
     "chapterId": 16,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-neuromuscular-disorders-in-icu-ii",
     "question": "When monitoring continuous neuromuscular blockade using Train-of-Four (TOF) stimulation of the ulnar nerve (adductor pollicis), what is the optimal clinical target for therapeutic paralysis?",
     "options": [
       "Zero twitches out of four (0/4)",

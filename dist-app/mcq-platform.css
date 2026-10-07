@@ -1201,6 +1201,38 @@ body.dark .kn-mcq-opt.is-selected {
   border-color: #38bdf8 !important;
 }
 
+body.dark .kn-mcq-opt.is-correct {
+  background: rgba(16, 185, 129, 0.2) !important;
+  border-color: #10b981 !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark .kn-mcq-opt.is-correct .kn-mcq-opt-letter {
+  background: #10b981 !important;
+  border-color: #10b981 !important;
+  color: #ffffff !important;
+}
+
+body.dark .kn-mcq-opt.is-correct .kn-mcq-opt-mark {
+  color: #34d399 !important;
+}
+
+body.dark .kn-mcq-opt.is-wrong {
+  background: rgba(239, 68, 68, 0.2) !important;
+  border-color: #ef4444 !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark .kn-mcq-opt.is-wrong .kn-mcq-opt-letter {
+  background: #ef4444 !important;
+  border-color: #ef4444 !important;
+  color: #ffffff !important;
+}
+
+body.dark .kn-mcq-opt.is-wrong .kn-mcq-opt-mark {
+  color: #f87171 !important;
+}
+
 body.dark .kn-mcq-opt-letter {
   background: rgba(255, 255, 255, 0.08) !important;
   border-color: rgba(255, 255, 255, 0.15) !important;

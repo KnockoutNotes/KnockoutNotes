@@ -1116,6 +1116,178 @@
     "verificationStatus": "VERIFIED"
   },
   {
+    "id": "mcq-cc-0394",
+    "chapterId": 31,
+    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "question": "According to IDSA and ESCMID guidelines, what is the recommended first-line empirical antifungal therapy for suspected or confirmed Invasive Candidiasis / Candidemia in critically ill adult ICU patients?",
+    "options": [
+      "An Echinocandin (Anidulafungin, Caspofungin, or Micafungin)",
+      "Oral Fluconazole 150 mg once weekly",
+      "Conventional Amphotericin B deoxycholate",
+      "Oral Itraconazole liquid"
+    ],
+    "answer": "A",
+    "explanation": "Guidelines recommend an Echinocandin (Anidulafungin, Caspofungin, or Micafungin) as first-line empiric therapy for invasive candidiasis/candidemia in critically ill patients. Echinocandins exhibit fungicidal activity against Candida species (including Candida glabrata and Candida krusei, which are often azole-resistant) and have a superior safety profile compared to amphotericin B.",
+    "whyWrong": {
+      "B": "Fluconazole is acceptable only in non-critically ill patients without prior azole exposure and where azole-resistant species are unlikely.",
+      "C": "Conventional amphotericin B deoxycholate carries high rates of infusion reactions and acute renal tubular necrosis.",
+      "D": "Itraconazole has poor bioavailability and no role in acute candidemia."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: For Candida auris (frequently multidrug-resistant), echinocandins remain first-line, but pan-resistant strains requiring liposomal amphotericin B or rezafungin are emerging.",
+    "hyperlinkedReference": {
+      "label": "Pappas PG, et al. IDSA Clinical Practice Guideline for the Management of Candidiasis. Clin Infect Dis 2016;62:e1-e50",
+      "url": "https://academic.oup.com/cid/article/62/4/e1/2462830"
+    },
+    "tags": [
+      "Invasive Candidiasis",
+      "Echinocandins",
+      "Candidemia"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0395",
+    "chapterId": 31,
+    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "question": "In a critically ill patient with severe COVID-19 or influenza ARDS who develops worsening respiratory failure, cavitary pulmonary nodules, and a positive bronchoalveolar lavage (BAL) Galactomannan index (> 1.0), which probable diagnosis is supported and what is the first-line antifungal therapy?",
+    "options": [
+      "Invasive Pulmonary Aspergillosis (CAPA / IAPA); treat with Voriconazole or Isavuconazole",
+      "Pneumocystis jirovecii pneumonia; treat with high-dose TMP-SMX",
+      "Mucormycosis; treat with Fluconazole",
+      "Pulmonary Cryptococcosis; treat with Caspofungin"
+    ],
+    "answer": "A",
+    "explanation": "Viral respiratory infections (severe influenza and COVID-19) frequently predispose to secondary Invasive Pulmonary Aspergillosis (IAPA / CAPA) due to respiratory epithelial denudation and immune dysregulation. According to 2020 ECMM/ISHAM consensus criteria, in critically ill patients with compatible cavitary imaging and clinical deterioration, a BAL galactomannan index >= 1.0 establishes probable CAPA when no alternative cause explains the infiltrate. Voriconazole or Isavuconazole are first-line targeted therapies.",
+    "whyWrong": {
+      "B": "Galactomannan is a cell wall component of Aspergillus, not Pneumocystis.",
+      "C": "Fluconazole has zero activity against Mucorales or Aspergillus.",
+      "D": "Echinocandins (caspofungin) lack activity against Cryptococcus and are second-line for Aspergillus."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Isavuconazole has non-inferior efficacy to voriconazole with fewer visual/neurotoxic adverse events, no QT-prolongation (it shortens QT), and predictable linear pharmacokinetics without CYP2C19 polymorphisms.",
+    "hyperlinkedReference": {
+      "label": "Koehler P, et al. Defining and managing COVID-19-associated pulmonary aspergillosis (CAPA). Lancet Infect Dis 2021;21:e149-e162",
+      "url": "https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30847-1/fulltext"
+    },
+    "tags": [
+      "CAPA",
+      "Aspergillus",
+      "Galactomannan",
+      "Voriconazole",
+      "Isavuconazole"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0440",
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "A 70 kg adult male sustains 40% Total Body Surface Area (TBSA) second- and third-degree thermal burns. Using the classic Parkland formula (4 mL/kg/%TBSA), calculate the total fluid volume and infusion rate for the first 8 hours post-injury:",
+    "options": [
+      "11,200 mL total; 5,600 mL infused over the first 8 hours (700 mL/hour)",
+      "5,600 mL total; 2,800 mL over the first 8 hours (350 mL/hour)",
+      "22,400 mL total; 11,200 mL over the first 8 hours",
+      "3,000 mL total; 1,000 mL over the first 8 hours"
+    ],
+    "answer": "A",
+    "explanation": "Parkland formula: Total fluid in 24 hours = 4 mL x weight (kg) x %TBSA burn. Total = 4 x 70 x 40 = 11,200 mL of Ringer's Lactate. Half of the total (5,600 mL) must be infused over the FIRST 8 HOURS calculated from the TIME OF INJURY (not time of arrival). 5,600 / 8 = 700 mL/hour. The remaining half (5,600 mL) is infused over the subsequent 16 hours (350 mL/hour).",
+    "whyWrong": {
+      "B": "Uses 2 mL/kg/%TBSA (American Burn Association modern starting formula), not classic Parkland 4 mL.",
+      "C": "Doubles the expected Parkland calculation.",
+      "D": "Severely underestimates burn fluid needs, leading to burn shock."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Target urine output during burn resuscitation is 0.5 mL/kg/h in adults (1.0-1.5 mL/kg/h in high-voltage electrical burns with myoglobinuria). Titrate fluids hourly to urine output to prevent 'fluid creep' and abdominal compartment syndrome.",
+    "hyperlinkedReference": {
+      "label": "Baxter CR. Fluid resuscitation, burn shock, and tissue perfusion. J Burn Care Rehabil 1981;2:86",
+      "url": "https://academic.oup.com/jbcr/article/2/2/86/4607736"
+    },
+    "tags": [
+      "Parkland Formula",
+      "Burn Resuscitation",
+      "Fluid Creep"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0441",
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "A patient rescued from a house fire has facial burns, singed nasal hairs, soot in the oral cavity, and hoarseness of voice. What is the immediate definitive management priority?",
+    "options": [
+      "Early prophylactic endotracheal intubation before progressive supraglottic edema causes complete upper airway obstruction",
+      "Observation in the ward on room air",
+      "Oral administration of cold iced saline",
+      "Inhaled nebulized budesonide alone"
+    ],
+    "answer": "A",
+    "explanation": "In thermal inhalation injury, chemical and heat exposure causes progressive, severe pharyngeal and laryngeal mucosal edema that peaks within 12 to 24 hours. The presence of stridor, hoarseness, carbonaceous sputum, or circumferential neck burns mandates EARLY endotracheal intubation with an uncut large-bore ETT before airway swelling makes direct or video laryngoscopy impossible.",
+    "whyWrong": {
+      "B": "Delayed observation leads to complete airway occlusion and death.",
+      "C": "Iced saline has zero role in systemic thermal airway injury.",
+      "D": "Steroids do not reverse rapid mechanical supraglottic swelling and are contraindicated in burns due to infection risk."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Fiberoptic bronchoscopy is the gold standard diagnostic tool to grade inhalation injury: erythema, edema, mucosal sloughing, and carbonaceous deposits.",
+    "hyperlinkedReference": {
+      "label": "Gauglitz GG, et al. Acute management of inhalation injury. Crit Care 2012;16:208",
+      "url": "https://ccforum.biomedcentral.com/articles/10.1186/cc11246"
+    },
+    "tags": [
+      "Inhalation Injury",
+      "Burn Airway",
+      "Early Intubation"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0443",
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "A patient with full-thickness circumferential burns to the entire thorax is mechanically ventilated. Peak inspiratory pressures suddenly surge from 22 to 48 cmH2O, tidal volumes fall, and SBP drops to 70 mmHg. What emergency bedside procedure is indicated?",
+    "options": [
+      "Emergency chest escharotomy along the anterior axillary lines and subcostal margins",
+      "Administration of high-dose intravenous bronchodilators",
+      "Insertion of a pulmonary artery catheter",
+      "Switching to high-frequency oscillatory ventilation"
+    ],
+    "answer": "A",
+    "explanation": "Full-thickness circumferential thoracic burns produce rigid, non-compliant, leathery eschar. As resuscitation fluid causes tissue edema, the unyielding eschar creates a thoracic compartment syndrome: restricting chest wall expansion, driving up airway pressures, causing severe hypoventilation, and compressing the vena cava. Immediate bedside escharotomy (incisions through dead insensitive eschar down to subcutaneous fat along anterior axillary lines and costal margins) releases chest restriction.",
+    "whyWrong": {
+      "B": "Bronchodilators do not relieve mechanical chest wall restriction from rigid skin eschar.",
+      "C": "PAC placement does not relieve mechanical chest constriction.",
+      "D": "Oscillatory ventilation cannot overcome rigid chest encasement."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Full-thickness burn eschar is insensate, but because decompressive incisions must extend across joints into viable unburned skin, local anesthetic infiltration at the margins (along with systemic analgesia/sedation) should be provided.",
+    "hyperlinkedReference": {
+      "label": "Orgill DP, et al. Escharotomy and decompressive therapies in burns. J Burn Care Res 2009;30:759",
+      "url": "https://academic.oup.com/jbcr/article/30/5/759/4603998"
+    },
+    "tags": [
+      "Escharotomy",
+      "Circumferential Burn",
+      "Thoracic Compartment Syndrome"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
     "id": "mcq-cc-0444",
     "chapterId": 25,
     "topicId": "cc-management-of-burn-patient-in-icu",

@@ -509,8 +509,8 @@
     "sourceDuration": "55 Min",
     "sourceCategory": "ELECTROLYTE AND ACID BASE DISORDERS",
     "title": "Disorders of Calcium, Magnesium & Phosphorus Metabolism",
-    "chapterId": 13,
-    "subchapterId": "13.4",
+    "chapterId": 14,
+    "subchapterId": "14.2",
     "level": "master",
     "priority": "P0",
     "sourceTopics": [
@@ -523,7 +523,7 @@
     "guidelines": [],
     "examTags": [
       "NEET-SS",
-      "CH-13"
+      "CH-14"
     ],
     "lastUpdated": "2026-10"
   },
@@ -2223,6 +2223,140 @@
     "examTags": [
       "NEET-SS",
       "CH-27"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-scoring-systems-in-the-icu",
+    "sourceIndex": 101,
+    "sourceDuration": "35 Min",
+    "sourceCategory": "ORGANIZATION & SYSTEMS",
+    "title": "Scoring Systems in the ICU",
+    "chapterId": 1,
+    "subchapterId": "1.2",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Scoring Systems in the ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [
+      "SOFA",
+      "APACHE II",
+      "SAPS II"
+    ],
+    "landmarkTrials": [],
+    "guidelines": [
+      "Sepsis-3 Guidelines"
+    ],
+    "examTags": [
+      "NEET-SS",
+      "CH-1"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-shock-pathophysiology-and-classification",
+    "sourceIndex": 102,
+    "sourceDuration": "35 Min",
+    "sourceCategory": "SHOCK SYNDROMES",
+    "title": "Shock Pathophysiology and Classification",
+    "chapterId": 4,
+    "subchapterId": "4.1",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Shock Pathophysiology and Classification"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [],
+    "examTags": [
+      "NEET-SS",
+      "CH-4"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-anaphylactic-shock",
+    "sourceIndex": 103,
+    "sourceDuration": "30 Min",
+    "sourceCategory": "SHOCK SYNDROMES",
+    "title": "Anaphylactic Shock",
+    "chapterId": 4,
+    "subchapterId": "4.2",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Anaphylactic Shock"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [
+      "WAO Guidelines for Anaphylaxis"
+    ],
+    "examTags": [
+      "NEET-SS",
+      "CH-4"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-malignant-arrhythmias-in-the-icu",
+    "sourceIndex": 104,
+    "sourceDuration": "35 Min",
+    "sourceCategory": "CARDIAC CRITICAL CARE",
+    "title": "Malignant Arrhythmias in the ICU",
+    "chapterId": 11,
+    "subchapterId": "11.2",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Malignant Arrhythmias in the ICU"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [],
+    "guidelines": [
+      "AHA/ACC Arrhythmia Guidelines"
+    ],
+    "examTags": [
+      "NEET-SS",
+      "CH-11"
+    ],
+    "lastUpdated": "2026-10"
+  },
+  {
+    "id": "cc-status-epilepticus",
+    "sourceIndex": 105,
+    "sourceDuration": "35 Min",
+    "sourceCategory": "NEUROCRITICAL CARE",
+    "title": "Status Epilepticus",
+    "chapterId": 15,
+    "subchapterId": "15.2",
+    "level": "master",
+    "priority": "P0",
+    "sourceTopics": [
+      "Status Epilepticus"
+    ],
+    "prerequisites": [],
+    "relatedTopics": [],
+    "formulas": [],
+    "landmarkTrials": [
+      "ESETT Trial"
+    ],
+    "guidelines": [
+      "AES Guidelines"
+    ],
+    "examTags": [
+      "NEET-SS",
+      "CH-15"
     ],
     "lastUpdated": "2026-10"
   }

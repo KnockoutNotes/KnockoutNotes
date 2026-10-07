@@ -66,6 +66,7 @@
     "cc-acute-severe-asthma": "status-asthmaticus-copd-icu",
     "cc-acute-exacerbation-of-copd": "status-asthmaticus-copd-icu",
     "cc-malignant-arrhythmias-in-the-icu": "acute-coronary-syndromes-cardiogenic-shock",
+    "cc-right-ventricular-failure-in-the-icu": "acute-coronary-syndromes-cardiogenic-shock",
     "cc-cardiac-tamponade-and-pericardial-emergencies": "cardiac-arrhythmias-tamponade-pocus",
     "cc-post-cardiac-arrest-care": "hypoxic-ischemic-encephalopathy-ttm-postarrest",
     "cc-acute-kidney-injury": "aki-kdigo-crrt-modalities",
@@ -103,7 +104,11 @@
   var STUDY_TO_TOPIC = {};
   for (var tk in TOPIC_TO_STUDY) {
     if (Object.prototype.hasOwnProperty.call(TOPIC_TO_STUDY, tk)) {
-      STUDY_TO_TOPIC[TOPIC_TO_STUDY[tk]] = tk;
+      var sKey = TOPIC_TO_STUDY[tk];
+      if (!STUDY_TO_TOPIC[sKey]) {
+        STUDY_TO_TOPIC[sKey] = [];
+      }
+      STUDY_TO_TOPIC[sKey].push(tk);
     }
   }
 
@@ -147,6 +152,7 @@
 
   var loadPromise = null;
   var container = null;
+  var hasWiredKeydown = false;
 
   // Restore LocalStorage
   try {
@@ -311,7 +317,13 @@
 
     state.practiceList = state.mcqs.filter(function (m) {
       if (ch && String(m.chapterId) !== String(ch)) return false;
-      if (tp && m.topicId !== tp) return false;
+      if (tp) {
+        if (Array.isArray(tp)) {
+          if (tp.indexOf(m.topicId) === -1) return false;
+        } else if (m.topicId !== tp) {
+          return false;
+        }
+      }
       if (ex !== "all" && m.exam !== ex) return false;
       if (df !== "all" && m.difficulty !== df) return false;
       if (vf === "bookmarks" && !state.bookmarks[m.id]) return false;
@@ -327,7 +339,7 @@
     });
 
     // If specific subtopic filter produced 0 results, fall back to chapter questions
-    if (state.practiceList.length === 0 && tp) {
+    if (state.practiceList.length === 0 && tp && (Array.isArray(tp) ? tp.length > 0 : true)) {
       state.practiceList = state.mcqs.filter(function (m) {
         if (ch && String(m.chapterId) !== String(ch)) return false;
         if (ex !== "all" && m.exam !== ex) return false;
@@ -353,7 +365,8 @@
     var isReview = state.viewMode === "review";
 
     var title = "NEET-SS / INI-SS Critical Care MCQ Master Engine";
-    var sub = "293 Verified Examination Questions & Landmark Trials";
+    var totalCount = state.mcqs.length || 505;
+    var sub = totalCount + " Verified Examination Questions & Landmark Trials";
 
     if (isExam) {
       title = state.exam.title || "Custom Examination";
@@ -1605,41 +1618,44 @@
     });
 
     // Keyboard Shortcuts (Arrows, 1-4, M)
-    document.addEventListener("keydown", function (e) {
-      if (!container || !container.offsetParent) return;
-      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.tagName === "SELECT") return;
+    if (!hasWiredKeydown) {
+      hasWiredKeydown = true;
+      document.addEventListener("keydown", function (e) {
+        if (!container || !container.offsetParent) return;
+        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.tagName === "SELECT") return;
 
-      if (state.viewMode === "practice") {
-        if (e.key === "ArrowLeft") {
-          if (state.practiceIndex > 0) {
-            state.practiceIndex--;
-            render();
-          }
-        } else if (e.key === "ArrowRight") {
-          if (state.practiceIndex < state.practiceList.length - 1) {
-            state.practiceIndex++;
-            render();
-          }
-        } else if (["1", "2", "3", "4", "a", "b", "c", "d", "A", "B", "C", "D"].indexOf(e.key) !== -1) {
-          var k = e.key.toUpperCase();
-          var idx = (k === "1" || k === "A") ? 0 : (k === "2" || k === "B") ? 1 : (k === "3" || k === "C") ? 2 : 3;
-          var curQ = state.practiceList[state.practiceIndex];
-          if (curQ && state.answers[curQ.id] === undefined) {
-            state.answers[curQ.id] = { selected: idx, correct: idx === correctIndex(curQ) };
-            persistProgress();
-            render();
-          }
-        } else if (e.key === "m" || e.key === "M") {
-          var curQ2 = state.practiceList[state.practiceIndex];
-          if (curQ2) {
-            if (state.bookmarks[curQ2.id]) delete state.bookmarks[curQ2.id];
-            else state.bookmarks[curQ2.id] = true;
-            persistBookmarks();
-            render();
+        if (state.viewMode === "practice") {
+          if (e.key === "ArrowLeft") {
+            if (state.practiceIndex > 0) {
+              state.practiceIndex--;
+              render();
+            }
+          } else if (e.key === "ArrowRight") {
+            if (state.practiceIndex < state.practiceList.length - 1) {
+              state.practiceIndex++;
+              render();
+            }
+          } else if (["1", "2", "3", "4", "a", "b", "c", "d", "A", "B", "C", "D"].indexOf(e.key) !== -1) {
+            var k = e.key.toUpperCase();
+            var idx = (k === "1" || k === "A") ? 0 : (k === "2" || k === "B") ? 1 : (k === "3" || k === "C") ? 2 : 3;
+            var curQ = state.practiceList[state.practiceIndex];
+            if (curQ && state.answers[curQ.id] === undefined) {
+              state.answers[curQ.id] = { selected: idx, correct: idx === correctIndex(curQ) };
+              persistProgress();
+              render();
+            }
+          } else if (e.key === "m" || e.key === "M") {
+            var curQ2 = state.practiceList[state.practiceIndex];
+            if (curQ2) {
+              if (state.bookmarks[curQ2.id]) delete state.bookmarks[curQ2.id];
+              else state.bookmarks[curQ2.id] = true;
+              persistBookmarks();
+              render();
+            }
           }
         }
-      }
-    });
+      });
+    }
   }
 
   // ── Public API ────────────────────────────────────────────────────────────
@@ -1670,18 +1686,16 @@
     }
 
     // Configure initial view based on options
-    if (opts.viewMode) {
-      state.viewMode = opts.viewMode;
-    } else if (opts.chapterId !== undefined || opts.topicId !== undefined) {
-      state.viewMode = "practice";
+    if (opts.chapterId !== undefined || opts.topicId !== undefined) {
+      state.viewMode = opts.viewMode || "practice";
       var tId = opts.topicId ? String(opts.topicId) : "";
-      if (tId && STUDY_TO_TOPIC[tId]) {
-        tId = STUDY_TO_TOPIC[tId];
-      }
+      var mappedTopics = tId ? (STUDY_TO_TOPIC[tId] || tId) : "";
       state.practiceFilter.chapterId = opts.chapterId ? String(opts.chapterId) : "";
-      state.practiceFilter.topicId = tId;
+      state.practiceFilter.topicId = mappedTopics;
       state.practiceFilter.view = opts.view || "all";
       state.practiceIndex = 0;
+    } else if (opts.viewMode) {
+      state.viewMode = opts.viewMode;
     } else {
       state.viewMode = "directory";
     }

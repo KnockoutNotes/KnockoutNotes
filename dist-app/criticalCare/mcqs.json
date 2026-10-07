@@ -5784,7 +5784,7 @@
   },
   {
     "id": "mcq-cc-0166",
-    "chapterId": 13,
+    "chapterId": 14,
     "topicId": "cc-disorders-of-calcium-magnesium-phosphorus-metabolism",
     "question": "A 55-year-old male with metastatic squamous cell lung carcinoma presents with lethargy and confusion. Serum calcium is 15.2 mg/dL, albumin is 3.0 g/dL, and ionized calcium is 2.1 mmol/L. What is the immediate first-line medical therapy for severe hypercalcemic crisis?",
     "options": [
@@ -11470,7 +11470,7 @@
   {
     "id": "mcq-cc-0328",
     "chapterId": 7,
-    "topicId": "cc-high-flow-nasal-cannula-hfnc-and-rox-index",
+    "topicId": "cc-hfnc-mechanics-rox-index",
     "question": "A patient with acute hypoxemic respiratory failure is managed with High-Flow Nasal Cannula (HFNC). At 6 hours, settings are: Flow 50 L/min, FiO2 0.60. The patient's SpO2 is 92% and RR is 28/min. What is the calculated ROX index, and how should it be clinically interpreted?",
     "options": [
       "ROX = 2.45; high risk of HFNC failure requiring immediate intubation",
@@ -11538,7 +11538,7 @@
   {
     "id": "mcq-cc-0330",
     "chapterId": 7,
-    "topicId": "cc-high-flow-nasal-cannula-hfnc-and-rox-index",
+    "topicId": "cc-hfnc-mechanics-rox-index",
     "question": "What is the primary physiological mechanism by which High-Flow Nasal Cannula (HFNC) at 60 L/min reduces work of breathing and improves oxygenation compared to conventional face masks?",
     "options": [
       "Generates continuous high PEEP equivalent to 15-20 cmH2O",
@@ -12083,7 +12083,7 @@
   {
     "id": "mcq-cc-0346",
     "chapterId": 10,
-    "topicId": "cc-acute-severe-asthma",
+    "topicId": "cc-copd-and-asthma",
     "question": "In a mechanically ventilated patient with life-threatening status asthmaticus, what is the rationale and clinical target for 'Permissive Hypercapnia'?",
     "options": [
       "Deliberately targeting PaCO2 > 90 mmHg to stimulate peripheral chemoreceptors",
@@ -12117,7 +12117,7 @@
   {
     "id": "mcq-cc-0347",
     "chapterId": 10,
-    "topicId": "cc-acute-severe-asthma",
+    "topicId": "cc-copd-and-asthma",
     "question": "A mechanically ventilated asthma patient suddenly develops severe hypotension (BP 60/30 mmHg), sinus tachycardia (145/min), and loss of end-tidal CO2 trace. What is the immediate first step in management?",
     "options": [
       "Administer an IV bolus of Adrenaline 1 mg stat",
@@ -12151,7 +12151,7 @@
   {
     "id": "mcq-cc-0348",
     "chapterId": 10,
-    "topicId": "cc-acute-exacerbation-of-copd",
+    "topicId": "cc-copd-and-asthma",
     "question": "In a patient with severe acute exacerbation of COPD failing medical therapy, which arterial blood gas parameters fulfill the classical indications for initiating non-invasive positive pressure ventilation (BiPAP)?",
     "options": [
       "pH < 7.35 with PaCO2 > 45 mmHg (respiratory acidosis) despite standard medical management",
@@ -12184,7 +12184,7 @@
   },
   {
     "id": "mcq-cc-0349",
-    "chapterId": 10,
+    "chapterId": 8,
     "topicId": "cc-weaning-from-mechanical-ventilation",
     "question": "Before extubation, a 'Cuff Leak Test' is performed in a patient who was intubated for 10 days. The endotracheal tube cuff is deflated. What cuff leak volume threshold indicates a high risk of post-extubation laryngeal edema and stridor?",
     "options": [
@@ -12194,7 +12194,7 @@
       "Any audible air leak around the tube"
     ],
     "answer": "B",
-    "explanation": "A negative cuff leak test (leak volume < 110 mL or < 15-24% of baseline tidal volume) indicates that airway secretions, laryngeal edema, or mucosal swelling are obstructing airflow around the deflated tube, signaling high risk for post-extubation stridor.",
+    "explanation": "A reduced cuff leak volume (< 110 mL or < 15-24% of baseline delivered tidal volume) indicates that laryngeal edema, airway secretions, or mucosal swelling are obstructing airflow around the deflated tube, predicting a high risk of post-extubation stridor and extubation failure.",
     "whyWrong": {
       "A": "Leak > 300 mL confirms a patent laryngeal space around the tube (low stridor risk).",
       "C": "Complete leak volume means no laryngeal obstruction.",
@@ -12218,7 +12218,7 @@
   },
   {
     "id": "mcq-cc-0350",
-    "chapterId": 10,
+    "chapterId": 8,
     "topicId": "cc-weaning-from-mechanical-ventilation",
     "question": "In the comparison between a T-Piece spontaneous breathing trial (SBT) and a Low-Pressure Support SBT (e.g. PSV 5-8 cmH2O with PEEP 0-5 cmH2O), what did modern clinical trials (e.g. Subira et al., JAMA 2019) demonstrate?",
     "options": [
@@ -12253,7 +12253,7 @@
   {
     "id": "mcq-cc-0351",
     "chapterId": 10,
-    "topicId": "cc-acute-severe-asthma",
+    "topicId": "cc-copd-and-asthma",
     "question": "What is the recommended dose and mechanism of Intravenous Magnesium Sulfate in acute refractory severe asthma failing inhaled bronchodilators?",
     "options": [
       "Magnesium Sulfate 2 g IV infused over 20 minutes; blocks calcium influx into airway smooth muscle, inhibits acetylcholine release, and promotes bronchial relaxation",
@@ -12321,7 +12321,7 @@
   {
     "id": "mcq-cc-0353",
     "chapterId": 11,
-    "topicId": "cc-cardiac-tamponade-and-pericardial-emergencies",
+    "topicId": "cc-pericarditis-and-myocarditis",
     "question": "What is the hemodynamic definition of 'Pulsus Paradoxus' in cardiac tamponade?",
     "options": [
       "An increase in systolic blood pressure > 10 mmHg during normal inspiration",
@@ -12355,7 +12355,7 @@
   {
     "id": "mcq-cc-0354",
     "chapterId": 11,
-    "topicId": "cc-cardiac-tamponade-and-pericardial-emergencies",
+    "topicId": "cc-pericarditis-and-myocarditis",
     "question": "On echocardiography, which sign represents the most SPECIFIC (though late) acoustic marker of hemodynamic cardiac tamponade?",
     "options": [
       "Early diastolic collapse of the Right Ventricle free wall",
@@ -12423,7 +12423,7 @@
   {
     "id": "mcq-cc-0356",
     "chapterId": 11,
-    "topicId": "cc-cardiogenic-shock-i",
+    "topicId": "cc-right-ventricular-failure-in-the-icu",
     "question": "What is the typical hemodynamic and echocardiographic hallmark of acute Right Ventricular (RV) failure in critical illness?",
     "options": [
       "Elevated PCWP with normal CVP",
@@ -12457,7 +12457,7 @@
   {
     "id": "mcq-cc-0357",
     "chapterId": 11,
-    "topicId": "cc-cardiogenic-shock-ii",
+    "topicId": "cc-icu-management-of-acs-i",
     "question": "On post-infarction day 4, a patient with STEMI develops sudden severe pulmonary edema and cardiogenic shock. Physical exam reveals a new, harsh, holosystolic murmur at the apex radiating to the axilla. Echocardiography confirms acute Papillary Muscle Rupture. Which papillary muscle is most commonly involved, and why?",
     "options": [
       "Anterolateral papillary muscle; because it receives dual blood supply from LAD and LCx",
@@ -12491,7 +12491,7 @@
   {
     "id": "mcq-cc-0358",
     "chapterId": 12,
-    "topicId": "cc-post-cardiac-arrest-care",
+    "topicId": "cc-post-cardiac-arrest-management-prognostication",
     "question": "According to the landmark TTM2 trial (Targeted Temperature Management 2, NEJM 2021) in comatose out-of-hospital cardiac arrest survivors, what was the primary finding comparing targeted hypothermia (33 deg C) versus targeted normothermia (<= 37.5 deg C)?",
     "options": [
       "Hypothermia at 33 deg C reduced 6-month mortality by 25%",
@@ -12525,7 +12525,7 @@
   {
     "id": "mcq-cc-0359",
     "chapterId": 12,
-    "topicId": "cc-post-cardiac-arrest-care",
+    "topicId": "cc-post-cardiac-arrest-management-prognostication",
     "question": "What is the earliest recommended time point following cardiac arrest and rewarming to perform multimodal neuroprognostication in comatose patients, to avoid premature withdrawal of life-sustaining therapy?",
     "options": [
       "12 hours post-ROSC",
@@ -12559,7 +12559,7 @@
   {
     "id": "mcq-cc-0360",
     "chapterId": 12,
-    "topicId": "cc-post-cardiac-arrest-care",
+    "topicId": "cc-2025-acc-aha-cpr-guidelines-updates",
     "question": "In the DOSE VF trial (Cheskes et al., NEJM 2022) for refractory ventricular fibrillation during out-of-hospital cardiac arrest, which defibrillation technique showed significant improvements in VF termination and survival to hospital discharge compared to standard defibrillation?",
     "options": [
       "Lowering the energy setting to 50 Joules",
@@ -12594,7 +12594,7 @@
   {
     "id": "mcq-cc-0361",
     "chapterId": 12,
-    "topicId": "cc-post-cardiac-arrest-care",
+    "topicId": "cc-2025-acc-aha-cpr-guidelines-updates",
     "question": "In ACLS cardiopulmonary resuscitation, what is the recommended target chest compression depth and rate for adult cardiac arrest?",
     "options": [
       "Depth 2 to 2.4 inches (5 to 6 cm); Rate 100 to 120 compressions per minute",
@@ -12628,7 +12628,7 @@
   {
     "id": "mcq-cc-0362",
     "chapterId": 12,
-    "topicId": "cc-post-cardiac-arrest-care",
+    "topicId": "cc-2025-acc-aha-cpr-guidelines-updates",
     "question": "During cardiac arrest resuscitation, capnography demonstrates a sudden, abrupt sustained increase in end-tidal CO2 (ETCO2) from 12 mmHg to 38 mmHg. What does this immediately indicate?",
     "options": [
       "Hyperventilation by the rescuer",
@@ -12662,7 +12662,7 @@
   {
     "id": "mcq-cc-0363",
     "chapterId": 12,
-    "topicId": "cc-post-cardiac-arrest-care",
+    "topicId": "cc-post-cardiac-arrest-management-prognostication",
     "question": "What is the recommended arterial blood gas oxygenation and carbon dioxide target during the post-cardiac arrest care bundle?",
     "options": [
       "Hyperoxia (PaO2 > 300 mmHg) and severe hypocapnia (PaCO2 < 28 mmHg) to shrink cerebral edema",
@@ -12696,7 +12696,7 @@
   {
     "id": "mcq-cc-0364",
     "chapterId": 13,
-    "topicId": "cc-acute-kidney-injury",
+    "topicId": "cc-acute-kidney-injury-i",
     "question": "According to the KDIGO (Kidney Disease: Improving Global Outcomes) acute kidney injury criteria, which parameter defines Stage 3 AKI based on serum creatinine?",
     "options": [
       "Serum creatinine 1.5 to 1.9 times baseline",
@@ -12730,7 +12730,7 @@
   {
     "id": "mcq-cc-0365",
     "chapterId": 13,
-    "topicId": "cc-renal-replacement-therapy",
+    "topicId": "cc-renal-replacement-therapy-i",
     "question": "What did landmark multicenter randomized trials (STARRT-AKI and AKIKI) demonstrate regarding the timing of initiating renal replacement therapy (accelerated/early vs standard/delayed strategy) in critically ill patients with AKI without urgent conventional indications?",
     "options": [
       "Accelerated early RRT significantly reduced 90-day mortality by 30%",
@@ -12765,7 +12765,7 @@
   {
     "id": "mcq-cc-0366",
     "chapterId": 13,
-    "topicId": "cc-renal-replacement-therapy",
+    "topicId": "cc-renal-replacement-therapy-i",
     "question": "According to the KDIGO guidelines and landmark trials (ATN and RENAL trials), what is the recommended effluent dose target for continuous renal replacement therapy (CRRT) in critically ill patients with acute kidney injury?",
     "options": [
       "10-15 mL/kg/hour",
@@ -12799,7 +12799,7 @@
   {
     "id": "mcq-cc-0367",
     "chapterId": 13,
-    "topicId": "cc-renal-replacement-therapy",
+    "topicId": "cc-renal-replacement-therapy-i",
     "question": "In Continuous Veno-Venous Hemofiltration (CVVH), solute removal occurs predominantly via which physical transport mechanism?",
     "options": [
       "Diffusion driven by a concentration gradient across a semipermeable membrane",
@@ -12833,7 +12833,7 @@
   {
     "id": "mcq-cc-0368",
     "chapterId": 13,
-    "topicId": "cc-renal-replacement-therapy",
+    "topicId": "cc-renal-replacement-therapy-i",
     "question": "During Regional Citrate Anticoagulation (RCA) in CRRT, what laboratory finding is the hallmark diagnostic indicator of 'Citrate Accumulation / Citrate Toxicity'?",
     "options": [
       "Ratio of total serum calcium to systemic ionized calcium > 2.5 (with high total Ca and refractory ionized hypocalcemia)",
@@ -12867,7 +12867,7 @@
   {
     "id": "mcq-cc-0369",
     "chapterId": 13,
-    "topicId": "cc-acute-kidney-injury",
+    "topicId": "cc-acute-kidney-injury-i",
     "question": "In the landmark STARRT-AKI trial (NEJM 2020) evaluating the timing of Renal Replacement Therapy (RRT) initiation in critically ill patients with severe Acute Kidney Injury (KDIGO Stage 2 or 3), what were the primary clinical findings comparing an Accelerated (immediate) strategy to a Standard (wait-and-see) strategy?",
     "options": [
       "Accelerated initiation showed NO difference in 90-day all-cause mortality, but had significantly higher rates of adverse events and persistent dialysis dependence at 90 days",
@@ -13107,7 +13107,7 @@
   {
     "id": "mcq-cc-0376",
     "chapterId": 15,
-    "topicId": "cc-monitoring-and-management-of-raised-icp",
+    "topicId": "cc-icp-monitoring",
     "question": "In the tiered management of acute intracranial hypertension in severe traumatic brain injury, which intervention is categorized as Tier 3 (refractory rescue therapy) due to significant systemic morbidity?",
     "options": [
       "Head elevation to 30 degrees and maintaining neutral neck position",
@@ -13244,7 +13244,7 @@
   {
     "id": "mcq-cc-0380",
     "chapterId": 16,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-delirium-in-icu-padis-guidelines",
     "question": "According to the SCCM PADIS (Pain, Agitation, Delirium, Immobility, and Sleep) clinical guidelines, which pharmacological sedation strategy is recommended for mechanically ventilated critically ill adults?",
     "options": [
       "Continuous deep sedation with lorazepam infusions to achieve RASS -4",
@@ -13279,7 +13279,7 @@
   {
     "id": "mcq-cc-0381",
     "chapterId": 16,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-delirium-in-icu-padis-guidelines",
     "question": "What are the core diagnostic features required to establish the diagnosis of ICU Delirium using the Confusion Assessment Method for the ICU (CAM-ICU)?",
     "options": [
       "Any hallucination reported by nursing staff",
@@ -13313,7 +13313,7 @@
   {
     "id": "mcq-cc-0382",
     "chapterId": 16,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-delirium-in-icu-padis-guidelines",
     "question": "What is Propofol Infusion Syndrome (PRIS), and what are the major clinical and laboratory hallmarks that signal this life-threatening toxicity?",
     "options": [
       "Transient skin rash appearing within 5 minutes of propofol administration",
@@ -13347,7 +13347,7 @@
   {
     "id": "mcq-cc-0383",
     "chapterId": 16,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-neuromuscular-disorders-in-icu-ii",
     "question": "When monitoring continuous neuromuscular blockade using Train-of-Four (TOF) stimulation of the ulnar nerve (adductor pollicis), what is the optimal clinical target for therapeutic paralysis?",
     "options": [
       "Zero twitches out of four (0/4)",
@@ -13727,7 +13727,7 @@
   },
   {
     "id": "mcq-cc-0394",
-    "chapterId": 18,
+    "chapterId": 31,
     "topicId": "cc-infections-in-the-immunocompromised-host",
     "question": "According to IDSA and ESCMID guidelines, what is the recommended first-line empirical antifungal therapy for suspected or confirmed Invasive Candidiasis / Candidemia in critically ill adult ICU patients?",
     "options": [
@@ -13761,9 +13761,9 @@
   },
   {
     "id": "mcq-cc-0395",
-    "chapterId": 18,
+    "chapterId": 31,
     "topicId": "cc-infections-in-the-immunocompromised-host",
-    "question": "In a critically ill patient with severe COVID-19 or influenza ARDS who develops worsening respiratory failure, cavitary pulmonary nodules, and a positive bronchoalveolar lavage (BAL) Galactomannan index (> 1.0), which diagnosis is established and what is the first-line antifungal therapy?",
+    "question": "In a critically ill patient with severe COVID-19 or influenza ARDS who develops worsening respiratory failure, cavitary pulmonary nodules, and a positive bronchoalveolar lavage (BAL) Galactomannan index (> 1.0), which probable diagnosis is supported and what is the first-line antifungal therapy?",
     "options": [
       "Invasive Pulmonary Aspergillosis (CAPA / IAPA); treat with Voriconazole or Isavuconazole",
       "Pneumocystis jirovecii pneumonia; treat with high-dose TMP-SMX",
@@ -13771,7 +13771,7 @@
       "Pulmonary Cryptococcosis; treat with Caspofungin"
     ],
     "answer": "A",
-    "explanation": "Viral respiratory infections (severe influenza and COVID-19) frequently predispose to secondary Invasive Pulmonary Aspergillosis (IAPA / CAPA) due to respiratory epithelial denudation and immune dysregulation. BAL galactomannan index >= 1.0 confirms the diagnosis. Voriconazole or Isavuconazole are first-line targeted therapies.",
+    "explanation": "Viral respiratory infections (severe influenza and COVID-19) frequently predispose to secondary Invasive Pulmonary Aspergillosis (IAPA / CAPA) due to respiratory epithelial denudation and immune dysregulation. According to 2020 ECMM/ISHAM consensus criteria, in critically ill patients with compatible cavitary imaging and clinical deterioration, a BAL galactomannan index >= 1.0 establishes probable CAPA when no alternative cause explains the infiltrate. Voriconazole or Isavuconazole are first-line targeted therapies.",
     "whyWrong": {
       "B": "Galactomannan is a cell wall component of Aspergillus, not Pneumocystis.",
       "C": "Fluconazole has zero activity against Mucorales or Aspergillus.",
@@ -13797,7 +13797,7 @@
   },
   {
     "id": "mcq-cc-0396",
-    "chapterId": 18,
+    "chapterId": 1,
     "topicId": "cc-catheter-related-blood-stream-infection",
     "question": "What is the CDC diagnostic definition of Catheter-Related Bloodstream Infection (CRBSI) based on Differential Time to Positivity (DTP)?",
     "options": [
@@ -13833,7 +13833,7 @@
   {
     "id": "mcq-cc-0397",
     "chapterId": 18,
-    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "topicId": "cc-ventilator-associated-pneumonia",
     "question": "In the management of Ventilator-Associated Pneumonia (VAP), which core component of the IHI / SHEA prevention bundle has proven to be the most effective non-pharmacological intervention in reducing aspiration of subglottic secretions?",
     "options": [
       "Routine daily endotracheal tube exchange",
@@ -13867,7 +13867,7 @@
   {
     "id": "mcq-cc-0398",
     "chapterId": 18,
-    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "topicId": "cc-managing-mdr-gram-negative-infections-i",
     "question": "What is the drug of choice for targeted treatment of severe, hospital-acquired Stenotrophomonas maltophilia pneumonia in the ICU?",
     "options": [
       "Trimethoprim-Sulfamethoxazole (TMP-SMX)",
@@ -13901,7 +13901,7 @@
   {
     "id": "mcq-cc-0399",
     "chapterId": 19,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-acute-pancreatitis",
     "question": "According to the Revised Atlanta Classification, how is 'Severe Acute Pancreatitis' specifically defined?",
     "options": [
       "Serum amylase or lipase > 10 times upper limit of normal",
@@ -13935,7 +13935,7 @@
   {
     "id": "mcq-cc-0400",
     "chapterId": 19,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-acute-pancreatitis",
     "question": "In the management of Infected Pancreatic Necrosis, what does the modern 'Step-Up Approach' (PANTER trial) advocate over immediate open surgical necrosectomy?",
     "options": [
       "Immediate emergency open laparotomy with packing within 24 hours of fever onset",
@@ -13970,7 +13970,7 @@
   {
     "id": "mcq-cc-0401",
     "chapterId": 19,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-acute-liver-failure",
     "question": "According to the King's College Hospital criteria for emergency liver transplantation in Acute Liver Failure (ALF), what are the criteria for Paracetamol (Acetaminophen)-induced liver failure?",
     "options": [
       "Arterial pH < 7.30 (after resuscitation), OR all three of: Grade III/IV encephalopathy, Serum Creatinine > 3.4 mg/dL (300 umol/L), and Prothrombin Time > 100 seconds (INR > 6.5)",
@@ -14005,7 +14005,7 @@
   {
     "id": "mcq-cc-0402",
     "chapterId": 19,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-acute-liver-failure",
     "question": "What is the primary pathophysiological cause of acute Cerebral Edema and Intracranial Hypertension in Acute Liver Failure (ALF), and which neuroprotective threshold is targeted?",
     "options": [
       "Osmotic swelling of brain astrocytes caused by accumulation of intracellular Glutamine derived from elevated arterial ammonia (> 150-200 umol/L)",
@@ -14040,7 +14040,7 @@
   {
     "id": "mcq-cc-0403",
     "chapterId": 19,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-decompensated-cld",
     "question": "In the initial resuscitation of acute Upper Gastrointestinal Bleeding secondary to ruptured gastroesophageal varices in cirrhosis, what is the recommended target hemoglobin threshold for blood transfusion (Villanueva et al. trial)?",
     "options": [
       "Liberal transfusion targeting Hemoglobin > 10-12 g/dL",
@@ -14075,7 +14075,7 @@
   {
     "id": "mcq-cc-0404",
     "chapterId": 19,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-intra-abdominal-hypertension-and-abdominal-compartment-syndrome",
     "question": "What is the definition of Abdominal Compartment Syndrome (ACS) according to the World Society of the Abdominal Compartment Syndrome (WSACS) consensus guidelines?",
     "options": [
       "Sustained intra-abdominal pressure (IAP) > 12 mmHg without clinical symptoms",
@@ -14110,7 +14110,7 @@
   {
     "id": "mcq-cc-0405",
     "chapterId": 19,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-intra-abdominal-hypertension-and-abdominal-compartment-syndrome",
     "question": "What is the standardized gold-standard technique for measuring Intra-Abdominal Pressure (IAP) at the bedside?",
     "options": [
       "Direct insertion of an 18G needle into the peritoneal cavity",
@@ -14144,7 +14144,7 @@
   {
     "id": "mcq-cc-0406",
     "chapterId": 19,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-decompensated-cld",
     "question": "In a patient with bleeding esophageal varices refractory to endoscopic band ligation and pharmacological vasoactive infusions, which temporary balloon tamponade tube is designed specifically with separate gastric and esophageal balloons and aspiration ports?",
     "options": [
       "Sengstaken-Blakemore tube",
@@ -14178,7 +14178,7 @@
   {
     "id": "mcq-cc-0407",
     "chapterId": 20,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-glucose-control-in-icu",
     "question": "In the initial management of Diabetic Ketoacidosis (DKA), which clinical parameter mandates WITHHOLDING intravenous insulin therapy until corrected?",
     "options": [
       "Serum Glucose > 600 mg/dL",
@@ -14213,7 +14213,7 @@
   {
     "id": "mcq-cc-0408",
     "chapterId": 20,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-glucose-control-in-icu",
     "question": "How is 'Corrected Sodium' calculated in the presence of severe hyperglycemia?",
     "options": [
       "Measured Sodium + 1.6 x [(Serum Glucose - 100) / 100]",
@@ -14247,7 +14247,7 @@
   {
     "id": "mcq-cc-0409",
     "chapterId": 20,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-glucose-control-in-icu",
     "question": "What is the primary clinical difference between Diabetic Ketoacidosis (DKA) and Hyperosmolar Hyperglycemic State (HHS)?",
     "options": [
       "HHS has profound ketoacidosis and normal serum osmolality",
@@ -14281,7 +14281,7 @@
   {
     "id": "mcq-cc-0410",
     "chapterId": 20,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-endocrine-emergencies",
     "question": "A 58-year-old female presents in coma with severe hypothermia (core temp 32.2 deg C), bradycardia (38/min), hypotension, periorbital non-pitting edema, and macroglossia. Myxedema coma is suspected. What is the critical first-line pharmacological management sequence?",
     "options": [
       "Administer IV Hydrocortisone (100 mg stat) BEFORE or concurrently with intravenous Levothyroxine (T4) / Liothyronine (T3)",
@@ -14315,7 +14315,7 @@
   {
     "id": "mcq-cc-0411",
     "chapterId": 20,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-endocrine-emergencies",
     "question": "Which validated scoring system quantifies clinical criteria (thermoregulatory dysfunction, CNS effects, gastrointestinal dysfunction, cardiovascular dysfunction, and precipitating factors) to diagnose Thyroid Storm?",
     "options": [
       "Burch-Wartofsky Point Scale (BWPS)",
@@ -14349,7 +14349,7 @@
   {
     "id": "mcq-cc-0412",
     "chapterId": 20,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-endocrine-emergencies",
     "question": "In the pharmacological sequence for treating acute Thyroid Storm, why MUST inorganic iodine (e.g. Lugol's iodine or Potassium iodide) be administered strictly at least ONE HOUR AFTER the antithyroid thionamide (PTU or Methimazole)?",
     "options": [
       "To prevent iodine from serving as substrate for new thyroid hormone synthesis (Wolff-Chaikoff effect enhancement vs Jod-Basedow phenomenon)",
@@ -14384,7 +14384,7 @@
   {
     "id": "mcq-cc-0413",
     "chapterId": 20,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-endocrine-emergencies",
     "question": "A patient with chronic steroid use who underwent emergent bowel resection develops refractory hypotension, hypoglycemia, hyperkalemia, and hyponatremia unresponsive to fluids and noradrenaline. Acute Adrenal Crisis is diagnosed. What is the immediate pharmacological intervention?",
     "options": [
       "Hydrocortisone 100 mg IV bolus stat, followed by 200 mg/24 hours (or 50 mg IV every 6 hours), along with normal saline resuscitation",
@@ -14418,7 +14418,7 @@
   {
     "id": "mcq-cc-0414",
     "chapterId": 20,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-endocrine-emergencies",
     "question": "What is 'Sick Euthyroid Syndrome' (Non-Thyroidal Illness Syndrome), and which laboratory pattern is most commonly seen in critically ill ICU patients?",
     "options": [
       "Elevated TSH with elevated Free T3 and T4",
@@ -14452,7 +14452,7 @@
   {
     "id": "mcq-cc-0415",
     "chapterId": 21,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-nutrition-in-the-icu",
     "question": "According to the ESPEN and ASPEN clinical guidelines for nutrition in the ICU, what is the recommended protein intake target for critically ill adult patients?",
     "options": [
       "0.5 to 0.8 g/kg body weight/day",
@@ -14487,7 +14487,7 @@
   {
     "id": "mcq-cc-0416",
     "chapterId": 21,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-nutrition-in-the-icu",
     "question": "What is the gold standard diagnostic method for measuring resting energy expenditure (REE) to avoid both underfeeding and overfeeding in mechanically ventilated ICU patients?",
     "options": [
       "Harris-Benedict predictive equation",
@@ -14521,7 +14521,7 @@
   {
     "id": "mcq-cc-0417",
     "chapterId": 21,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-nutrition-in-the-icu",
     "question": "Regarding the timing of initiating Enteral Nutrition (EN) in critically ill patients, what do current international guidelines (ESPEN / ASPEN) recommend?",
     "options": [
       "Wait at least 7 days until all ICU interventions are completed",
@@ -14555,7 +14555,7 @@
   {
     "id": "mcq-cc-0418",
     "chapterId": 21,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-nutrition-in-the-icu",
     "question": "What is the consensus view on routine monitoring of Gastric Residual Volume (GRV) during enteral nutrition in the ICU based on modern clinical trials (e.g., REGANE and NUTRIREA-1)?",
     "options": [
       "GRV must be checked hourly, stopping feeds if GRV exceeds 50 mL",
@@ -14589,7 +14589,7 @@
   {
     "id": "mcq-cc-0419",
     "chapterId": 21,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-nutrition-in-the-icu",
     "question": "In a critically ill patient receiving enteral nutrition who develops feeding intolerance (elevated GRV > 500 mL or abdominal distension), which prokinetic pharmacological regimen is recommended as first-line?",
     "options": [
       "Metoclopramide (10 mg IV) or low-dose Erythromycin (100-250 mg IV twice daily)",
@@ -14624,7 +14624,7 @@
   {
     "id": "mcq-cc-0420",
     "chapterId": 21,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-nutrition-in-the-icu",
     "question": "What is the respiratory consequence of 'Overfeeding' (delivering calories significantly exceeding resting energy expenditure, especially excess carbohydrates) in mechanically ventilated ICU patients?",
     "options": [
       "Severe acute metabolic alkalosis",
@@ -14659,7 +14659,7 @@
   {
     "id": "mcq-cc-0421",
     "chapterId": 21,
-    "topicId": "cc-scoring-systems-in-the-icu",
+    "topicId": "cc-nutrition-in-the-icu",
     "question": "Which validated nutritional risk screening score incorporates Age, APACHE II, SOFA score, Comorbidities, Days in hospital prior to ICU, and Interleukin-6 to quantify which critically ill patients benefit most from aggressive nutritional therapy?",
     "options": [
       "NUTRIC Score (Nutrition Risk in Critically Ill)",
@@ -14693,7 +14693,7 @@
   {
     "id": "mcq-cc-0422",
     "chapterId": 22,
-    "topicId": "cc-massive-transfusion-in-the-icu",
+    "topicId": "cc-hematological-emergencies-in-critical-illness",
     "question": "In the landmark PROPPR randomized clinical trial (JAMA 2015) for severe traumatic hemorrhage, what was the primary finding comparing a 1:1:1 transfusion ratio (PRBC : FFP : Platelets) versus a 1:1:2 ratio?",
     "options": [
       "1:1:1 significantly reduced 24-hour exsanguination mortality and achieved earlier hemostasis",
@@ -14728,7 +14728,7 @@
   {
     "id": "mcq-cc-0423",
     "chapterId": 22,
-    "topicId": "cc-massive-transfusion-in-the-icu",
+    "topicId": "cc-hematological-emergencies-in-critical-illness",
     "question": "According to the CRASH-2 trial, within what strict time window must Tranexamic Acid (TXA) be administered in bleeding trauma patients to achieve a mortality reduction?",
     "options": [
       "Within 3 hours of injury (ideally within 1 hour)",
@@ -14870,7 +14870,7 @@
     "topicId": "cc-hematological-emergencies-in-critical-illness",
     "question": "A patient with septic shock develops extensive purpura fulminans, oozing from central venous puncture sites, and digital ischemia. Coagulation panel reveals: Platelets 35,000/mcL, PT 32 s (INR 2.8), Fibrinogen 65 mg/dL, and D-Dimer > 20,000 ng/mL. According to the ISTH scoring system, what diagnosis is confirmed?",
     "options": [
-      "Over Disseminated Intravascular Coagulation (Overt DIC)",
+      "Overt Disseminated Intravascular Coagulation (Overt DIC)",
       "Isolated Vitamin K deficiency",
       "Immune Thrombocytopenic Purpura (ITP)",
       "Hemophilia A"
@@ -14936,7 +14936,7 @@
   {
     "id": "mcq-cc-0429",
     "chapterId": 22,
-    "topicId": "cc-massive-transfusion-in-the-icu",
+    "topicId": "cc-hematological-emergencies-in-critical-illness",
     "question": "During rapid massive blood transfusion of 12 units of PRBCs over 2 hours, which metabolic and electrolyte complications are most commonly encountered?",
     "options": [
       "Hypocalcemia (citrate toxicity), Hyperkalemia (from stored RBC lysis), Hypothermia, and Hypomagnesemia",
@@ -14971,7 +14971,7 @@
   {
     "id": "mcq-cc-0430",
     "chapterId": 23,
-    "topicId": "cc-paracetamol-poisoning",
+    "topicId": "cc-acetaminophen-toxicity",
     "question": "A 22-year-old female presents 6 hours after an acute intentional ingestion of 20 grams of Paracetamol (Acetaminophen). What is the mechanism of N-acetylcysteine (NAC), and what is the standard 21-hour intravenous infusion protocol?",
     "options": [
       "Acts as a precursor for Glutathione synthesis to detoxify the toxic metabolite N-acetyl-p-benzoquinone imine (NAPQI); 150 mg/kg over 1 hour, then 50 mg/kg over 4 hours, then 100 mg/kg over 16 hours",
@@ -15006,7 +15006,7 @@
   {
     "id": "mcq-cc-0431",
     "chapterId": 23,
-    "topicId": "cc-organophosphorus-poisoning",
+    "topicId": "cc-pesticides",
     "question": "In acute Organophosphate Poisoning, what is the primary endpoint for titrating intravenous Atropine therapy?",
     "options": [
       "Dilation of pupils (mydriasis) to >= 8 mm",
@@ -15212,7 +15212,7 @@
   {
     "id": "mcq-cc-0437",
     "chapterId": 24,
-    "topicId": "cc-polytrauma-resuscitation-and-damage-control",
+    "topicId": "cc-haemodynamic-management-pharmacotherapy-in-acute-polytrauma",
     "question": "What is the defining triad of the 'Lethal Triad' in severe trauma and exsanguinating hemorrhage?",
     "options": [
       "Hypothermia, Acidosis, and Coagulopathy",
@@ -15246,7 +15246,7 @@
   {
     "id": "mcq-cc-0438",
     "chapterId": 24,
-    "topicId": "cc-polytrauma-resuscitation-and-damage-control",
+    "topicId": "cc-haemodynamic-management-pharmacotherapy-in-acute-polytrauma",
     "question": "In the CRASH-2 trial evaluating Tranexamic Acid (TXA) in trauma patients with significant hemorrhage, what was the critical time-dependent therapeutic window within which TXA administration significantly reduced all-cause mortality, versus when its administration was associated with increased risk of death due to bleeding?",
     "options": [
       "Within 3 hours of injury (all-cause mortality significantly reduced); administration after 3 hours showed an increased risk of death due to bleeding",
@@ -15280,7 +15280,7 @@
   {
     "id": "mcq-cc-0439",
     "chapterId": 24,
-    "topicId": "cc-polytrauma-resuscitation-and-damage-control",
+    "topicId": "cc-haemodynamic-management-pharmacotherapy-in-acute-polytrauma",
     "question": "In Resuscitative Endovascular Balloon Occlusion of the Aorta (REBOA), what are the anatomical boundaries of Zone 1 and Zone 3 aortic occlusion?",
     "options": [
       "Zone 1: Distal descending thoracic aorta (left subclavian to celiac axis); Zone 3: Infrarenal aorta (lowest renal artery to aortic bifurcation)",
@@ -15313,7 +15313,7 @@
   },
   {
     "id": "mcq-cc-0440",
-    "chapterId": 24,
+    "chapterId": 25,
     "topicId": "cc-management-of-burn-patient-in-icu",
     "question": "A 70 kg adult male sustains 40% Total Body Surface Area (TBSA) second- and third-degree thermal burns. Using the classic Parkland formula (4 mL/kg/%TBSA), calculate the total fluid volume and infusion rate for the first 8 hours post-injury:",
     "options": [
@@ -15347,7 +15347,7 @@
   },
   {
     "id": "mcq-cc-0441",
-    "chapterId": 24,
+    "chapterId": 25,
     "topicId": "cc-management-of-burn-patient-in-icu",
     "question": "A patient rescued from a house fire has facial burns, singed nasal hairs, soot in the oral cavity, and hoarseness of voice. What is the immediate definitive management priority?",
     "options": [
@@ -15382,7 +15382,7 @@
   {
     "id": "mcq-cc-0442",
     "chapterId": 24,
-    "topicId": "cc-polytrauma-resuscitation-and-damage-control",
+    "topicId": "cc-haemodynamic-management-pharmacotherapy-in-acute-polytrauma",
     "question": "In a hemodynamically unstable blunt trauma patient with an open-book pelvic fracture (disruption of pubic symphysis > 2.5 cm), what is the immediate first-line bedside mechanical intervention to reduce pelvic volume and tamponade venous hemorrhage?",
     "options": [
       "Application of a pelvic circumferential compression binder (or bed sheet tied securely around the greater trochanters)",
@@ -15415,7 +15415,7 @@
   },
   {
     "id": "mcq-cc-0443",
-    "chapterId": 24,
+    "chapterId": 25,
     "topicId": "cc-management-of-burn-patient-in-icu",
     "question": "A patient with full-thickness circumferential burns to the entire thorax is mechanically ventilated. Peak inspiratory pressures suddenly surge from 22 to 48 cmH2O, tidal volumes fall, and SBP drops to 70 mmHg. What emergency bedside procedure is indicated?",
     "options": [
@@ -15435,7 +15435,7 @@
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": 2025,
-    "examPearl": "NEET-SS EXAM PEARL: Escharotomy cuts only insensitive full-thickness burned dead tissue and does not require local anesthesia; incisions must extend across joints into unburned skin to be effective.",
+    "examPearl": "NEET-SS EXAM PEARL: Full-thickness burn eschar is insensate, but because decompressive incisions must extend across joints into viable unburned skin, local anesthetic infiltration at the margins (along with systemic analgesia/sedation) should be provided.",
     "hyperlinkedReference": {
       "label": "Orgill DP, et al. Escharotomy and decompressive therapies in burns. J Burn Care Res 2009;30:759",
       "url": "https://academic.oup.com/jbcr/article/30/5/759/4603998"

@@ -4699,7 +4699,7 @@
   {
     "id": "mcq-cc-0328",
     "chapterId": 7,
-    "topicId": "cc-high-flow-nasal-cannula-hfnc-and-rox-index",
+    "topicId": "cc-hfnc-mechanics-rox-index",
     "question": "A patient with acute hypoxemic respiratory failure is managed with High-Flow Nasal Cannula (HFNC). At 6 hours, settings are: Flow 50 L/min, FiO2 0.60. The patient's SpO2 is 92% and RR is 28/min. What is the calculated ROX index, and how should it be clinically interpreted?",
     "options": [
       "ROX = 2.45; high risk of HFNC failure requiring immediate intubation",
@@ -4767,7 +4767,7 @@
   {
     "id": "mcq-cc-0330",
     "chapterId": 7,
-    "topicId": "cc-high-flow-nasal-cannula-hfnc-and-rox-index",
+    "topicId": "cc-hfnc-mechanics-rox-index",
     "question": "What is the primary physiological mechanism by which High-Flow Nasal Cannula (HFNC) at 60 L/min reduces work of breathing and improves oxygenation compared to conventional face masks?",
     "options": [
       "Generates continuous high PEEP equivalent to 15-20 cmH2O",
@@ -5067,6 +5067,109 @@
       "Mechanical Power",
       "VILI",
       "Gattinoni"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0349",
+    "chapterId": 8,
+    "topicId": "cc-weaning-from-mechanical-ventilation",
+    "question": "Before extubation, a 'Cuff Leak Test' is performed in a patient who was intubated for 10 days. The endotracheal tube cuff is deflated. What cuff leak volume threshold indicates a high risk of post-extubation laryngeal edema and stridor?",
+    "options": [
+      "Leak volume > 300 mL (or > 50% of delivered tidal volume)",
+      "Leak volume < 110 mL (or < 15-24% of the delivered tidal volume)",
+      "Leak volume equal to delivered tidal volume",
+      "Any audible air leak around the tube"
+    ],
+    "answer": "B",
+    "explanation": "A reduced cuff leak volume (< 110 mL or < 15-24% of baseline delivered tidal volume) indicates that laryngeal edema, airway secretions, or mucosal swelling are obstructing airflow around the deflated tube, predicting a high risk of post-extubation stridor and extubation failure.",
+    "whyWrong": {
+      "A": "Leak > 300 mL confirms a patent laryngeal space around the tube (low stridor risk).",
+      "C": "Complete leak volume means no laryngeal obstruction.",
+      "D": "Audible leak indicates patency, not obstruction."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: When a cuff leak is absent (< 110 mL), administering IV Methylprednisolone (20-40 mg every 4-6 hours for 12-24 hours prior to extubation) significantly reduces post-extubation stridor and reintubation.",
+    "hyperlinkedReference": {
+      "label": "Ochoa ME, et al. Evaluation of extubation failure and the cuff leak test. Crit Care 2009;13:R141",
+      "url": "https://ccforum.biomedcentral.com/articles/10.1186/cc8024"
+    },
+    "tags": [
+      "Cuff Leak Test",
+      "Post-Extubation Stridor",
+      "Weaning"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0350",
+    "chapterId": 8,
+    "topicId": "cc-weaning-from-mechanical-ventilation",
+    "question": "In the comparison between a T-Piece spontaneous breathing trial (SBT) and a Low-Pressure Support SBT (e.g. PSV 5-8 cmH2O with PEEP 0-5 cmH2O), what did modern clinical trials (e.g. Subira et al., JAMA 2019) demonstrate?",
+    "options": [
+      "T-piece trials resulted in higher successful extubation rates without reintubation",
+      "Pressure support SBT significantly increased successful extubation rates (82.3% vs 74.0%) compared to T-piece trials, without increasing reintubation rates",
+      "T-piece trials were associated with zero post-extubation complications",
+      "Both techniques are entirely identical in all clinical outcomes"
+    ],
+    "answer": "B",
+    "explanation": "Subira et al. (JAMA 2019, 1153 patients) demonstrated that an initial 30-minute pressure support SBT (PS 8 cmH2O, PEEP 0) led to significantly higher rates of successful extubation (82.3% vs 74.0%, p=0.001) compared to a 2-hour T-piece trial, without increasing reintubation rates within 72 hours.",
+    "whyWrong": {
+      "A": "T-piece had lower successful extubation rates due to higher work of breathing through the artificial tube.",
+      "C": "T-piece trials resulted in more muscle exhaustion.",
+      "D": "The difference was statistically significant in favor of pressure support."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: Modern ATS/CHEST weaning guidelines recommend conducting an initial SBT with inspiratory pressure augmentation (PS 5-8 cmH2O) rather than unassisted T-piece.",
+    "hyperlinkedReference": {
+      "label": "Subira C, et al. Effect of Pressure Support vs T-Piece SBT on Extubation. JAMA 2019;321:2175-2182",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/2735740"
+    },
+    "tags": [
+      "SBT",
+      "T-Piece vs PSV",
+      "Weaning Trials"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0396",
+    "chapterId": 1,
+    "topicId": "cc-catheter-related-blood-stream-infection",
+    "question": "What is the CDC diagnostic definition of Catheter-Related Bloodstream Infection (CRBSI) based on Differential Time to Positivity (DTP)?",
+    "options": [
+      "Blood culture drawn from the central line turns positive at least 2 hours earlier than blood culture drawn simultaneously from a peripheral vein (with identical organism identification)",
+      "Central line culture turns positive 12 hours after peripheral culture",
+      "Positive peripheral blood culture with negative central line culture",
+      "Colony count from peripheral blood is 10 times higher than central line blood"
+    ],
+    "answer": "A",
+    "explanation": "Differential Time to Positivity (DTP) confirms CRBSI without catheter removal when blood drawn simultaneously from the catheter hub turns positive in the automated blood culture system AT LEAST 2 HOURS EARLIER than blood drawn from a peripheral venipuncture, reflecting higher bacterial burden in the colonized catheter lumen.",
+    "whyWrong": {
+      "B": "Catheter culture must be positive earlier, not later.",
+      "C": "This suggests an alternative source of bacteremia, not catheter-related infection.",
+      "D": "In quantitative culture, catheter blood colony count must be at least 3-fold higher than peripheral blood."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Quantitative catheter blood culture ratio >= 3:1 over peripheral blood OR catheter blood turning positive >= 2 hours earlier (DTP) are diagnostic of CRBSI.",
+    "hyperlinkedReference": {
+      "label": "Mermel LA, et al. IDSA Clinical Practice Guidelines for the Diagnosis of Intravascular Catheter-Related Infections. Clin Infect Dis 2009;49:1-45",
+      "url": "https://academic.oup.com/cid/article/49/1/1/337190"
+    },
+    "tags": [
+      "CRBSI",
+      "Differential Time to Positivity",
+      "DTP",
+      "Central Line"
     ],
     "verificationStatus": "VERIFIED"
   }
