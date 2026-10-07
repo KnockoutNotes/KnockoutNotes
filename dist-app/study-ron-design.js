@@ -1465,6 +1465,7 @@
                 ${searchFilter ? `<button type="button" id="ronInlineSearchClearBtn" class="ron-inline-search-clear-btn" aria-label="Clear search">×</button>` : ""}
               </div>
               <button type="button" class="ron-mcq-pill-btn" id="ronOpenMcqBtn" title="High Yield MCQ Practice — NEET-SS / INI-SS" aria-label="Open High Yield MCQ Practice">📝 High Yield MCQs</button>
+              <button type="button" class="ron-mcq-pill-btn ron-mcq-recall-btn" id="ronOpenRecall2025Btn" title="NEET SS 2025 Critical Care Recall — 76 MCQs" aria-label="Open NEET SS 2025 Critical Care Recall">🎯 NEET SS CC 2025</button>
             </div>
 
             <!-- New 3-Domain Vertical & Single Horizontal Category Track -->
@@ -1667,6 +1668,7 @@
                 ${searchFilter ? `<button type="button" id="ronInlineSearchClearBtn" class="ron-inline-search-clear-btn" aria-label="Clear search">×</button>` : ""}
               </div>
               <button type="button" class="ron-mcq-pill-btn" id="ronOpenMcqBtn" title="High Yield MCQ Practice — NEET-SS / INI-SS" aria-label="Open High Yield MCQ Practice">📝 High Yield MCQs</button>
+              <button type="button" class="ron-mcq-pill-btn ron-mcq-recall-btn" id="ronOpenRecall2025Btn" title="NEET SS 2025 Critical Care Recall — 76 MCQs" aria-label="Open NEET SS 2025 Critical Care Recall">🎯 NEET SS CC 2025</button>
             </div>
 
             <!-- New 3-Domain Vertical & Single Horizontal Category Track -->
@@ -2584,6 +2586,19 @@
             chapterId: validCh
           });
         }
+      }
+      return;
+    }
+
+    if (e.target.closest("#ronOpenRecall2025Btn, .ron-mcq-recall-btn")) {
+      e.preventDefault();
+      e.stopPropagation();
+      triggerHapticFeedback();
+      if (window.KN_MCQ && typeof window.KN_MCQ.open === "function") {
+        window.KN_MCQ.open({
+          viewMode: "practice",
+          view: "recall2025"
+        });
       }
       return;
     }

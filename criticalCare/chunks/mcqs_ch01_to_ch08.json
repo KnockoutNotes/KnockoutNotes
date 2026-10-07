@@ -5172,5 +5172,1204 @@
       "Central Line"
     ],
     "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "NEETSS-CC-2025-R006",
+    "chapterId": 4,
+    "topicId": "cc-shock-pathophysiology-and-classification",
+    "question": "A 24-year-old polytrauma victim is brought to the resuscitation bay following a road traffic collision. He is pale, diaphoretic, with a heart rate of 138 beats/min and blood pressure of 74/46 mmHg. Hemodynamic profiling with a pulmonary artery catheter demonstrates which of the following combinations of Central Venous Pressure (CVP) / Pulmonary Capillary Wedge Pressure (PCWP), Cardiac Output (CO), and Systemic Vascular Resistance (SVR)?",
+    "options": [
+      "Decreased CVP/PCWP, Decreased Cardiac Output, Increased SVR",
+      "Increased CVP/PCWP, Decreased Cardiac Output, Increased SVR",
+      "Decreased CVP/PCWP, Increased Cardiac Output, Decreased SVR",
+      "Increased CVP/PCWP, Increased Cardiac Output, Decreased SVR"
+    ],
+    "answer": "A",
+    "explanation": "Hemorrhagic/hypovolemic shock results from significant intravascular volume loss. The physiological hallmarks are: 1. Decreased preload: reduced venous return leads to low CVP and low PCWP. 2. Decreased cardiac output (CO) / cardiac index (CI): Frank-Starling mechanism causes stroke volume and cardiac output to fall despite compensatory sinus tachycardia. 3. Increased systemic vascular resistance (SVR): intense sympathetic activation, release of norepinephrine, angiotensin II, and vasopressin lead to marked systemic vasoconstriction (increased afterload/SVR) to preserve perfusion to vital organs (brain and heart).",
+    "whyWrong": {
+      "A": "Correct answer: Hypovolemic shock characteristically shows low preload, low cardiac output, and high compensatory SVR.",
+      "B": "High preload with low CO and high SVR is characteristic of Cardiogenic Shock.",
+      "C": "Low preload with high CO and low SVR is characteristic of early Distributive/Septic Shock.",
+      "D": "High preload, high CO, and low SVR is seen in hyperdynamic/AV fistula states or severe cirrhosis, not hypovolemia."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Hypovolemic Shock: Preload (CVP/PCWP) low, CO low, SVR high, SvO2 low.\n• Cardiogenic Shock: Preload high, CO low, SVR high, SvO2 low.\n• Distributive/Septic Shock: Preload low to normal, CO high, SVR low, SvO2 high/normal.\n\nPOTENTIAL EXAM TRAP: Confusing the compensatory increase in SVR with distributive vasoplegia.",
+    "hyperlinkedReference": {
+      "label": "Marino's The ICU Book, 4th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Cardiovascular Critical Care",
+      "Hemodynamic Profiles of Shock"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Preload decreased, Cardiac output decreased, SVR increased",
+    "verified_answer": "Decreased CVP/PCWP, Decreased Cardiac Output, Increased SVR",
+    "answer_verification_note": "Verified against Marino's The ICU Book and Oh's Intensive Care Manual.",
+    "concept_tested": "Invasive hemodynamic differentiation of hypovolemic vs cardiogenic vs distributive shock",
+    "high_yield_takeaway": [
+      "Hypovolemic Shock: Preload (CVP/PCWP) low, CO low, SVR high, SvO2 low.",
+      "Cardiogenic Shock: Preload high, CO low, SVR high, SvO2 low.",
+      "Distributive/Septic Shock: Preload low to normal, CO high, SVR low, SvO2 high/normal."
+    ],
+    "potential_exam_trap": "Confusing the compensatory increase in SVR with distributive vasoplegia.",
+    "sources": [
+      "Marino's The ICU Book, 4th Ed.",
+      "Oh's Intensive Care Manual, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R011",
+    "chapterId": 8,
+    "topicId": "cc-ventilator-graphics-and-basic-modes-of-mechanical-ventilation",
+    "question": "A patient with severe acute respiratory distress syndrome (ARDS) is receiving volume-controlled mechanical ventilation. Examination of the bedside quasi-static pressure-volume (P-V) loop reveals an upward displacement where the terminal portion of the inspiratory limb flattens horizontally along the pressure axis, producing a distinctive bird's beak ('beaking') appearance. What is the pathological significance of this finding, and what is the appropriate ventilator modification?",
+    "options": [
+      "Alveolar derecruitment and atelectasis; Increase positive end-expiratory pressure (PEEP)",
+      "Alveolar overdistension and reduced dynamic compliance at end-inspiration; Decrease tidal volume or peak inspiratory pressure",
+      "Airway resistance and bronchospasm; Administer inhaled bronchodilators",
+      "Circuit air leak; Increase the inspiratory flow rate"
+    ],
+    "answer": "B",
+    "explanation": "In a pressure-volume (P-V) loop, pressure is plotted on the horizontal (x) axis and volume on the vertical (y) axis. The normal inspiratory limb shows an initial low-compliance zone (below the lower inflection point, where collapsed alveoli are recruited), a linear steep high-compliance zone, and an upper inflection point (UIP). Beyond the UIP, the alveoli reach their total elastic limit; further increases in airway pressure produce negligible increases in volume, bending the loop sharply to the right and creating a 'beak' or 'duck-bill' appearance. Beaking signifies alveolar overdistension and high risk of volutrauma/barotrauma. The definitive management is to decrease the delivered tidal volume (in VCV) or decrease the inspiratory driving pressure (in PCV) until the beak disappears.",
+    "whyWrong": {
+      "A": "Alveolar derecruitment is identified by a shift of the lower inflection point (LIP); increasing PEEP would worsen overdistension.",
+      "B": "Correct answer: Beaking indicates alveolar overdistension at end-inspiration; managed by reducing tidal volume.",
+      "C": "Increased airway resistance widens the area/hysteresis between inspiratory and expiratory limbs, rather than causing terminal beaking.",
+      "D": "A circuit leak causes failure of the expiratory volume limb to return to baseline on the y-axis."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Beaking on the P-V loop indicates alveolar overdistension (the lung compliance drops markedly as total lung capacity is reached).\n• Immediate therapeutic action: Reduce tidal volume (in VCV) or decrease inspiratory pressure/driving pressure (in PCV).\n• Upper Inflection Point (UIP) represents the threshold above which alveolar overdistension begins.\n\nPOTENTIAL EXAM TRAP: Increasing PEEP in the presence of beaking, which exacerbates overdistension and causes barotrauma/pneumothorax.",
+    "hyperlinkedReference": {
+      "label": "Tobin's Principles and Practice of Mechanical Ventilation, 3rd Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Mechanical Ventilation",
+      "Pressure-Volume Loops and Alveolar Overdistension (Beaking)"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Overdistension; decrease tidal volume",
+    "verified_answer": "Alveolar overdistension and reduced dynamic compliance at end-inspiration; Decrease tidal volume or peak inspiratory pressure",
+    "answer_verification_note": "Verified against Tobin's Principles and Practice of Mechanical Ventilation and ARDSNet protocols.",
+    "concept_tested": "Identification and clinical management of alveolar overdistension (beaking) on ventilator P-V loops",
+    "high_yield_takeaway": [
+      "Beaking on the P-V loop indicates alveolar overdistension (the lung compliance drops markedly as total lung capacity is reached).",
+      "Immediate therapeutic action: Reduce tidal volume (in VCV) or decrease inspiratory pressure/driving pressure (in PCV).",
+      "Upper Inflection Point (UIP) represents the threshold above which alveolar overdistension begins."
+    ],
+    "potential_exam_trap": "Increasing PEEP in the presence of beaking, which exacerbates overdistension and causes barotrauma/pneumothorax.",
+    "sources": [
+      "Tobin's Principles and Practice of Mechanical Ventilation, 3rd Ed.",
+      "ARDSNet Protocols"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R019",
+    "chapterId": 3,
+    "topicId": "cc-cardiac-output-monitoring",
+    "question": "In the hemodynamic monitoring of a critically ill septic patient, central venous oxygen saturation (ScvO2) sampled from the superior vena cava and mixed venous oxygen saturation (SvO2) sampled from the distal pulmonary artery catheter are evaluated. Under normal physiological resting conditions, which statement accurately reflects the relationship and normal baseline values of ScvO2 and SvO2?",
+    "options": [
+      "ScvO2 is normally ~70-75%, while SvO2 is normally ~65-70%; ScvO2 is typically 2-5% higher than SvO2",
+      "SvO2 is normally 85-90%, while ScvO2 is normally 50-55%; SvO2 is always 15% higher than ScvO2",
+      "ScvO2 and SvO2 are physiologically identical and interchangeable under all clinical conditions",
+      "SvO2 reflects oxygen consumption restricted entirely to the brain and upper extremities"
+    ],
+    "answer": "A",
+    "explanation": "Mixed venous oxygen saturation (SvO2) is sampled from the distal port of a pulmonary artery catheter, representing true mixed venous blood from the superior vena cava (SVC), inferior vena cava (IVC), and coronary sinus. In a resting healthy individual, normal SvO2 is approximately 65-70%. Central venous oxygen saturation (ScvO2) is sampled from a central venous catheter whose tip terminates in the lower third of the SVC. Under normal resting baseline conditions, oxygen extraction in the lower body/renal/splanchnic vascular beds (draining into IVC) is lower, but blood from the coronary sinus (very low saturation, ~30%) mixes into the right atrium; therefore, ScvO2 is typically 2% to 5% higher than true SvO2 (normal ScvO2 is ~70-75%). In shock states with impaired splanchnic and lower-body flow, this gradient may widen significantly.",
+    "whyWrong": {
+      "A": "Correct answer: Normal ScvO2 is 70-75%, normal SvO2 is 65-70%, and ScvO2 is usually 2-5% higher under resting conditions.",
+      "B": "SvO2 is not 85-90% (that indicates microvascular shunting or cyanide toxicity), and ScvO2 is not 50-55% normally.",
+      "C": "ScvO2 and SvO2 are not numerically identical; coronary sinus and IVC drainage create a physiological gradient.",
+      "D": "ScvO2 (from the SVC) reflects upper body and cerebral drainage; SvO2 reflects total whole-body venous drainage."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Normal resting SvO2: ~65-70% (measured from pulmonary artery).\n• Normal resting ScvO2: ~70-75% (measured from SVC via central line; ~2-5% higher than SvO2).\n• SvO2 reflects global whole-body oxygen supply/demand balance: SaO2, Hb, Cardiac Output, and VO2.\n\nPOTENTIAL EXAM TRAP: Assuming SvO2 is sampled from the right atrium or SVC, or that ScvO2 is lower than SvO2.",
+    "hyperlinkedReference": {
+      "label": "Marino's The ICU Book, 4th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Monitoring",
+      "ScvO2 vs SvO2 Physiology and Clinical Interpretation"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "reconstructed_recall",
+    "speaker_answer": "ScvO2 > 70% and SvO2 > 65%",
+    "verified_answer": "ScvO2 is normally ~70-75%, while SvO2 is normally ~65-70%; ScvO2 is typically 2-5% higher than SvO2",
+    "answer_verification_note": "Verified against Marino's The ICU Book and Nunn's Applied Respiratory Physiology.",
+    "concept_tested": "Physiological distinctions and normal reference ranges of ScvO2 and SvO2",
+    "high_yield_takeaway": [
+      "Normal resting SvO2: ~65-70% (measured from pulmonary artery).",
+      "Normal resting ScvO2: ~70-75% (measured from SVC via central line; ~2-5% higher than SvO2).",
+      "SvO2 reflects global whole-body oxygen supply/demand balance: SaO2, Hb, Cardiac Output, and VO2."
+    ],
+    "potential_exam_trap": "Assuming SvO2 is sampled from the right atrium or SVC, or that ScvO2 is lower than SvO2.",
+    "sources": [
+      "Marino's The ICU Book, 4th Ed.",
+      "Nunn's Applied Respiratory Physiology, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R021",
+    "chapterId": 1,
+    "topicId": "cc-catheter-related-blood-stream-infection",
+    "question": "A 62-year-old intubated patient has a triple-lumen central venous catheter (CVC) in the right internal jugular vein. On day 8 of ICU stay, he develops fever and rigors. Blood cultures drawn simultaneously from the catheter and peripheral vein show identical bacterial growth. Epidemiologically and microbiologically, which organism is the most common causative pathogen of catheter-related bloodstream infections (CRBSI) in non-tunneled central lines?",
+    "options": [
+      "Coagulase-Negative Staphylococci (e.g., Staphylococcus epidermidis)",
+      "Staphylococcus aureus",
+      "Pseudomonas aeruginosa",
+      "Candida albicans"
+    ],
+    "answer": "A",
+    "explanation": "Coagulase-Negative Staphylococci (CoNS), predominantly Staphylococcus epidermidis, account for 30% to 40% of all Catheter-Related Bloodstream Infections (CRBSI) and Central Line-Associated Bloodstream Infections (CLABSI). CoNS are normal skin commensals that produce polysaccharide intercellular adhesin (slime layer/biofilm) on catheter polymer surfaces, protecting them from host immune clearance and antimicrobials. Staphylococcus aureus is the second most common (and most virulent) pathogen, followed by Enterococci, Gram-negative bacilli (Klebsiella, Pseudomonas), and Candida species.",
+    "whyWrong": {
+      "A": "Correct answer: CoNS (Staphylococcus epidermidis) is the single most frequent organism causing CRBSI.",
+      "B": "Staphylococcus aureus is the second most common cause, highly virulent with higher metastatic complication rates, but lower in overall numerical incidence than CoNS.",
+      "C": "Pseudomonas aeruginosa causes ~5-10% of hospital CRBSI cases.",
+      "D": "Candida causes ~8-10% of CRBSI, usually associated with TPN, prolonged broad-spectrum antibiotics, or immunosuppression."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Coagulase-Negative Staphylococci (CoNS / S. epidermidis) = Most common CRBSI pathogen (biofilm production).\n• S. aureus = Most virulent pathogen (high risk of endocarditis, suppurative thrombophlebitis, osteomyelitis; requires line removal and echocardiography).\n• Candida CRBSI mandates immediate line removal, dilated fundoscopic eye exam, and >= 14 days of antifungal therapy.\n\nPOTENTIAL EXAM TRAP: Assuming S. aureus is more common because of its greater clinical severity; CoNS is numerically the most common.",
+    "hyperlinkedReference": {
+      "label": "IDSA CRBSI Guidelines (Clin Infect Dis 2009)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Infectious Diseases",
+      "Catheter-Related Bloodstream Infections (CRBSI) Microbiology"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Coagulase-negative Staphylococci (S. epidermidis)",
+    "verified_answer": "Coagulase-Negative Staphylococci (e.g., Staphylococcus epidermidis)",
+    "answer_verification_note": "Verified against IDSA Guidelines for the Diagnosis and Management of Intravascular Catheter-Related Infections.",
+    "concept_tested": "Etiological distribution of pathogens causing central line infections",
+    "high_yield_takeaway": [
+      "Coagulase-Negative Staphylococci (CoNS / S. epidermidis) = Most common CRBSI pathogen (biofilm production).",
+      "S. aureus = Most virulent pathogen (high risk of endocarditis, suppurative thrombophlebitis, osteomyelitis; requires line removal and echocardiography).",
+      "Candida CRBSI mandates immediate line removal, dilated fundoscopic eye exam, and >= 14 days of antifungal therapy."
+    ],
+    "potential_exam_trap": "Assuming S. aureus is more common because of its greater clinical severity; CoNS is numerically the most common.",
+    "sources": [
+      "IDSA CRBSI Guidelines (Clin Infect Dis 2009)",
+      "CDC NHSN Surveillance Definitions"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R022",
+    "chapterId": 5,
+    "topicId": "cc-sepsis-2026-clinical-guidelines",
+    "question": "According to the Surviving Sepsis Campaign (SSC) 2021 International Guidelines, which of the following interventions is an explicit, mandatory component of the 'Hour-1 Bundle' for patients presenting with septic shock?",
+    "options": [
+      "Immediate administration of broad-spectrum intravenous antimicrobials within 1 hour of recognition",
+      "Fluid restriction to no more than 500 mL of crystalloid during the first 6 hours",
+      "Withholding empiric antibiotics until blood and body fluid cultures have finalized at 48 hours",
+      "Immediate infusion of high-dose dopamine as the initial vasopressor prior to fluid resuscitation"
+    ],
+    "answer": "A",
+    "explanation": "The Surviving Sepsis Campaign (SSC) Hour-1 Bundle encompasses five key resuscitation elements to be initiated immediately (time zero = triage/recognition): 1. Measure blood lactate level (re-measure if initial lactate > 2 mmol/L); 2. Obtain blood cultures before administering antimicrobials (without substantial delay); 3. Administer broad-spectrum IV antimicrobials within 1 hour; 4. Rapidly administer 30 mL/kg crystalloid for hypotension or lactate >= 4 mmol/L; 5. Apply vasopressors (norepinephrine first-line) during or after fluid resuscitation to maintain MAP >= 65 mmHg.",
+    "whyWrong": {
+      "A": "Correct answer: Broad-spectrum antimicrobials within 1 hour of shock recognition is a core mandate.",
+      "B": "Fluid restriction is incorrect; the initial bundle specifies 30 mL/kg IV crystalloid bolus.",
+      "C": "Delaying antibiotics until culture results return leads to astronomical mortality increases (each hour delay increases mortality by 7-8%).",
+      "D": "Dopamine is not the first-line vasopressor (norepinephrine is), and vasopressors do not precede fluid resuscitation unless hypotension is life-threatening."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• SSC Hour-1 Bundle: Lactate measurement, Blood cultures before antibiotics, IV broad-spectrum antibiotics within 1 hr, 30 mL/kg crystalloid, Norepinephrine for MAP >= 65 mmHg.\n• Every 1-hour delay in antibiotic administration in septic shock increases mortality significantly.\n• Norepinephrine is the first-line vasopressor; vasopressin (0.03 units/min) is the second-line adjunct.\n\nPOTENTIAL EXAM TRAP: Delaying antibiotics to wait for sterile culture collection or radiographic confirmation.",
+    "hyperlinkedReference": {
+      "label": "Surviving Sepsis Campaign Guidelines 2021",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Sepsis",
+      "Surviving Sepsis Campaign 1-Hour Bundle"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Antibiotics within 1 hour",
+    "verified_answer": "Immediate administration of broad-spectrum intravenous antimicrobials within 1 hour of recognition",
+    "answer_verification_note": "Verified against Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021 (Crit Care Med 2021).",
+    "concept_tested": "Components and timing of the Surviving Sepsis Campaign Hour-1 bundle",
+    "high_yield_takeaway": [
+      "SSC Hour-1 Bundle: Lactate measurement, Blood cultures before antibiotics, IV broad-spectrum antibiotics within 1 hr, 30 mL/kg crystalloid, Norepinephrine for MAP >= 65 mmHg.",
+      "Every 1-hour delay in antibiotic administration in septic shock increases mortality significantly.",
+      "Norepinephrine is the first-line vasopressor; vasopressin (0.03 units/min) is the second-line adjunct."
+    ],
+    "potential_exam_trap": "Delaying antibiotics to wait for sterile culture collection or radiographic confirmation.",
+    "sources": [
+      "Surviving Sepsis Campaign Guidelines 2021",
+      "Marino's The ICU Book, 4th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R031",
+    "chapterId": 5,
+    "topicId": "cc-sepsis-and-septic-shock-evaluation-management",
+    "question": "A 62-year-old male with severe urosepsis has received 3 liters of balanced crystalloid solution over 2 hours. His current blood pressure is 78/48 mmHg (MAP 58 mmHg), heart rate is 112 beats/min, and blood lactate is 3.8 mmol/L. Bedside echocardiography demonstrates a hyperdynamic, underfilled left ventricle with normal ejection fraction and no regional wall motion abnormalities. What is the most appropriate next step in management?",
+    "options": [
+      "Initiate an intravenous infusion of norepinephrine titrated to a target MAP >= 65 mmHg",
+      "Infuse an additional 3 liters of 0.9% normal saline over the next hour",
+      "Initiate dobutamine monotherapy at 5 mcg/kg/min",
+      "Administer high-dose intravenous dopamine at 20 mcg/kg/min"
+    ],
+    "answer": "A",
+    "explanation": "According to the Surviving Sepsis Campaign (SSC) 2021 guidelines, norepinephrine is the first-choice vasopressor in septic shock. Septic shock is primarily a distributive, vasoplegic shock characterized by severe systemic arterial and venous vasodilation (low SVR). Once the initial 30 mL/kg fluid resuscitation (~2-3 L) has been administered and hypotension persists, continuing aggressive fluid loading leads to tissue edema, impaired pulmonary gas exchange, renal congestion, and increased mortality. Vasopressors should be initiated without delay to restore vascular tone and achieve a target MAP >= 65 mmHg. Dobutamine is indicated only if persistent hypoperfusion exists despite adequate MAP and fluid resuscitation when myocardial dysfunction or persistent hypoperfusion is documented. Dopamine is not recommended due to excess tachyarrhythmias and mortality.",
+    "whyWrong": {
+      "A": "Correct answer: Norepinephrine restores vascular tone and MAP >= 65 mmHg without delay.",
+      "B": "Excessive fluid loading beyond initial resuscitation increases capillary leak, worsening organ edema and mortality.",
+      "C": "Dobutamine is an inotrope with vasodilating beta-2 effects that would exacerbate vasoplegic hypotension; bedside echo shows hyperdynamic LV.",
+      "D": "Dopamine increases tachyarrhythmias and has higher mortality compared to norepinephrine in septic shock (SOAP-II trial)."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Norepinephrine is the first-line vasopressor in septic shock; target MAP >= 65 mmHg.\n• Avoid fluid overload: After initial crystalloid bolus (~30 mL/kg), assess fluid responsiveness dynamically rather than blindly continuing infusions.\n• Early vasopressor initiation restores diastolic perfusion pressure and recruits unstressed vascular volume.\n\nPOTENTIAL EXAM TRAP: Continuing aggressive fluid boluses in vasoplegic shock when bedside echo already demonstrates hyperdynamic function and euvolemia.",
+    "hyperlinkedReference": {
+      "label": "Surviving Sepsis Campaign Guidelines 2021",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Sepsis",
+      "Vasopressor Initiation and Fluid Stewardship"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Start norepinephrine",
+    "verified_answer": "Initiate an intravenous infusion of norepinephrine titrated to a target MAP >= 65 mmHg",
+    "answer_verification_note": "Verified against Surviving Sepsis Campaign 2021 Guidelines and SOAP-II Trial (NEJM 2010).",
+    "concept_tested": "Timing of vasopressor initiation (norepinephrine) in fluid-refractory septic shock",
+    "high_yield_takeaway": [
+      "Norepinephrine is the first-line vasopressor in septic shock; target MAP >= 65 mmHg.",
+      "Avoid fluid overload: After initial crystalloid bolus (~30 mL/kg), assess fluid responsiveness dynamically rather than blindly continuing infusions.",
+      "Early vasopressor initiation restores diastolic perfusion pressure and recruits unstressed vascular volume."
+    ],
+    "potential_exam_trap": "Continuing aggressive fluid boluses in vasoplegic shock when bedside echo already demonstrates hyperdynamic function and euvolemia.",
+    "sources": [
+      "Surviving Sepsis Campaign Guidelines 2021",
+      "SOAP-II Trial (NEJM 2010)"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R038",
+    "chapterId": 4,
+    "topicId": "cc-cardiogenic-shock-i",
+    "question": "A 68-year-old male with a history of ischemic cardiomyopathy presents to the ICU in acute respiratory failure. He is sitting upright, gasping for breath, coughing copious pink frothy sputum, with bilateral pulmonary crackles extending to the apices. Blood pressure is 190/105 mmHg, heart rate is 120 beats/min, and SpO2 is 84% on ambient air. Which combination of interventions represents the optimal initial emergency management?",
+    "options": [
+      "Non-Invasive Ventilation (CPAP/BiPAP) + Intravenous Furosemide + Intravenous Nitroglycerin",
+      "Immediate endotracheal intubation + High-volume crystalloid bolus + Intravenous Dobutamine",
+      "Low-flow nasal cannula + Intravenous Metoprolol + Oral Spironolactone",
+      "Inhaled Albuterol monotherapy + Intravenous Epinephrine"
+    ],
+    "answer": "A",
+    "explanation": "This patient has acute hypertensive cardiogenic pulmonary edema (flash pulmonary edema). The therapeutic triad comprises: 1. Non-Invasive Ventilation (NIV - CPAP or BiPAP): Decreases work of breathing, increases functional residual capacity, drives alveolar fluid back into capillaries, and reduces LV afterload by increasing positive intrathoracic pressure. 2. Intravenous Nitroglycerin (vasodilator): The most critical drug in hypertensive pulmonary edema; dilates venous capacitance vessels (decreasing preload) and lowers systemic vascular resistance (decreasing afterload), rapidly reducing left ventricular filling pressures. 3. Intravenous Furosemide: Causes acute venodilation (within 5-15 minutes) followed by sustained natriuresis and diuresis. Beta-blockers are contraindicated in acute decompensated heart failure with pulmonary edema. Crystalloid fluid boluses would be fatal.",
+    "whyWrong": {
+      "A": "Correct answer: NIV + IV Nitroglycerin + IV Furosemide rapidly reduces preload/afterload and relieves acute pulmonary flooding.",
+      "B": "Fluid boluses aggravate pulmonary flooding; NIV frequently prevents the need for emergency intubation.",
+      "C": "Beta-blockers acutely depress myocardial contractility during decompensation and precipitate cardiogenic collapse.",
+      "D": "Epinephrine markedly raises afterload and myocardial oxygen demand, worsening acute pulmonary edema."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Acute cardiogenic pulmonary edema triad: NIV (CPAP/BiPAP), IV Vasodilator (Nitroglycerin/Nitroprusside), and IV Loop Diuretic (Furosemide).\n• In hypertensive heart failure, rapid afterload reduction with IV Nitroglycerin is more critical and acts faster than diuresis.\n• Beta-blockers must NEVER be initiated during acute pulmonary edema/decompensation.\n\nPOTENTIAL EXAM TRAP: Giving beta-blockers for sinus tachycardia in acute decompensated heart failure.",
+    "hyperlinkedReference": {
+      "label": "2021 ESC Heart Failure Guidelines",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Cardiovascular Critical Care",
+      "Acute Cardiogenic Pulmonary Edema Emergency Management"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Furosemide + Nitroglycerin + NIV",
+    "verified_answer": "Non-Invasive Ventilation (CPAP/BiPAP) + Intravenous Furosemide + Intravenous Nitroglycerin",
+    "answer_verification_note": "Verified against ESC Guidelines for Acute Heart Failure (2021) and AHA/ACC Heart Failure Guidelines (2022).",
+    "concept_tested": "Initial medical management of acute hypertensive cardiogenic pulmonary edema",
+    "high_yield_takeaway": [
+      "Acute cardiogenic pulmonary edema triad: NIV (CPAP/BiPAP), IV Vasodilator (Nitroglycerin/Nitroprusside), and IV Loop Diuretic (Furosemide).",
+      "In hypertensive heart failure, rapid afterload reduction with IV Nitroglycerin is more critical and acts faster than diuresis.",
+      "Beta-blockers must NEVER be initiated during acute pulmonary edema/decompensation."
+    ],
+    "potential_exam_trap": "Giving beta-blockers for sinus tachycardia in acute decompensated heart failure.",
+    "sources": [
+      "2021 ESC Heart Failure Guidelines",
+      "2022 AHA/ACC/HFSA Heart Failure Guidelines"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R040",
+    "chapterId": 1,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "Which standardized communication tool, originally adapted from naval and aviation safety protocols and endorsed by the Joint Commission and WHO, is designed to structure clinical handovers and urgent interprofessional communication in the intensive care unit using four specific sequential components?",
+    "options": [
+      "SBAR (Situation, Background, Assessment, Recommendation)",
+      "SOAP (Subjective, Objective, Assessment, Plan)",
+      "WHO Surgical Safety Checklist",
+      "APACHE (Acute Physiology and Chronic Health Evaluation)"
+    ],
+    "answer": "A",
+    "explanation": "The SBAR (Situation, Background, Assessment, Recommendation) framework is the gold-standard structured communication tool recommended by the Joint Commission, WHO, and critical care societies for clinical handovers, emergency physician-nurse communications, and ICU shift changes: 1. Situation: What is happening right now (patient name, location, current problem/vital signs). 2. Background: Clinical context, admitting diagnosis, relevant history, and pertinent treatments to date. 3. Assessment: What the clinician thinks the problem is (clinical findings, analysis). 4. Recommendation: Specific actions requested or proposed plan of care. SOAP is a progress note documentation framework. The WHO Surgical Checklist is used for perioperative safety. APACHE is an ICU mortality risk prediction score.",
+    "whyWrong": {
+      "A": "Correct answer: SBAR is the globally recognized structured communication and handover model.",
+      "B": "SOAP is a four-part format for medical record progress note writing, not a real-time handover/critical communication tool.",
+      "C": "The WHO Surgical Safety Checklist consists of 19 items across Sign In, Time Out, and Sign Out for the operating theatre.",
+      "D": "APACHE is an ICU severity-of-illness and mortality prediction scoring system."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• SBAR = Situation, Background, Assessment, Recommendation (ISBAR includes Introduction/Identification).\n• Structured communication significantly reduces communication errors, adverse events, and unexpected ICU deaths.\n• SOAP is for clinical documentation; SBAR is for active verbal communication and handover.\n\nPOTENTIAL EXAM TRAP: Confusing SBAR (handover communication) with SOAP (documentation format).",
+    "hyperlinkedReference": {
+      "label": "Institute for Healthcare Improvement (IHI) SBAR Toolkit",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Miscellaneous",
+      "Structured Clinical Handover Protocols (SBAR / ISBAR)"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "SBAR protocol",
+    "verified_answer": "SBAR (Situation, Background, Assessment, Recommendation)",
+    "answer_verification_note": "Verified against WHO Patient Safety Curriculum and Institute for Healthcare Improvement (IHI) SBAR Tool.",
+    "concept_tested": "Structured communication tools in critical care patient handover",
+    "high_yield_takeaway": [
+      "SBAR = Situation, Background, Assessment, Recommendation (ISBAR includes Introduction/Identification).",
+      "Structured communication significantly reduces communication errors, adverse events, and unexpected ICU deaths.",
+      "SOAP is for clinical documentation; SBAR is for active verbal communication and handover."
+    ],
+    "potential_exam_trap": "Confusing SBAR (handover communication) with SOAP (documentation format).",
+    "sources": [
+      "Institute for Healthcare Improvement (IHI) SBAR Toolkit",
+      "WHO Patient Safety Solutions"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R046",
+    "chapterId": 1,
+    "topicId": "cc-important-clinical-trials-in-critical-care",
+    "question": "In clinical epidemiological research evaluating critical care therapeutic interventions, which study design is considered the methodological gold standard for establishing a true causal relationship between an exposure/intervention and a clinical outcome, primarily due to prospective investigator control and minimization of confounding through random allocation?",
+    "options": [
+      "Randomized Controlled Trial (RCT)",
+      "Prospective Cohort Study",
+      "Case-Control Study",
+      "Cross-Sectional Analytic Survey"
+    ],
+    "answer": "A",
+    "explanation": "In evidence-based medicine and epidemiological study design, the Randomized Controlled Trial (RCT) is the only design capable of robustly demonstrating true causality. Key reasons include: 1. Randomization distributes both known and unknown confounding variables equally across treatment and control arms; 2. The investigator actively assigns the exposure/intervention prospectively; 3. Temporality is unequivocally established (exposure occurs strictly before the outcome); 4. Blinding/masking minimizes selection, performance, and detection biases. In contrast, observational studies (cohort, case-control, cross-sectional) cannot completely eliminate residual confounding and can only establish association or correlation, not definitive causality.",
+    "whyWrong": {
+      "A": "Correct answer: RCTs provide the highest level of causal inference by eliminating confounding via randomization.",
+      "B": "Prospective cohort studies establish temporality but suffer from confounding by indication and unmeasured confounders.",
+      "C": "Case-control studies are retrospective, vulnerable to recall and selection bias, and cannot prove causation.",
+      "D": "Cross-sectional studies evaluate exposure and disease simultaneously, lacking temporal sequence."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Randomized Controlled Trial (RCT) = Gold standard for establishing causality.\n• Randomization controls for both measured and unmeasured confounding variables.\n• Observational studies (cohort, case-control, cross-sectional) show association, NOT direct causation.\n\nPOTENTIAL EXAM TRAP: Selecting prospective cohort study as causal; only randomized interventional trials establish true causality.",
+    "hyperlinkedReference": {
+      "label": "Guyatt G et al. Users' Guides to the Medical Literature, 3rd Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Miscellaneous",
+      "Epidemiological Study Designs and Causal Inference"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Randomized Controlled Trial (RCT)",
+    "verified_answer": "Randomized Controlled Trial (RCT)",
+    "answer_verification_note": "Verified against Fletcher's Clinical Epidemiology and Guyatt's Users' Guides to the Medical Literature.",
+    "concept_tested": "Hierarchical strength of study designs in establishing causal relationships",
+    "high_yield_takeaway": [
+      "Randomized Controlled Trial (RCT) = Gold standard for establishing causality.",
+      "Randomization controls for both measured and unmeasured confounding variables.",
+      "Observational studies (cohort, case-control, cross-sectional) show association, NOT direct causation."
+    ],
+    "potential_exam_trap": "Selecting prospective cohort study as causal; only randomized interventional trials establish true causality.",
+    "sources": [
+      "Guyatt G et al. Users' Guides to the Medical Literature, 3rd Ed.",
+      "Fletcher RH. Clinical Epidemiology, 6th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R047",
+    "chapterId": 8,
+    "topicId": "cc-basics-of-mechanical-ventilation",
+    "question": "In the management of hypoxemic respiratory failure, Positive End-Expiratory Pressure (PEEP) is applied to maintain alveolar recruitment and prevent derecruitment atelectrauma. Which of the following oxygen delivery and ventilatory interfaces provides the most reliable, leak-free, and precise delivery of a set level of PEEP throughout the entire respiratory cycle?",
+    "options": [
+      "Invasive mechanical ventilation via an inflatable-cuffed Endotracheal Tube in a closed ventilator circuit",
+      "Non-Invasive Ventilation (NIV) via an oro-nasal face mask",
+      "High-Flow Nasal Cannula (HFNC) set at 60 L/min",
+      "Non-Rebreathing Mask (NRBM) with reservoir bag"
+    ],
+    "answer": "A",
+    "explanation": "An invasive mechanical ventilator connected via a cuffed Endotracheal Tube (ETT) creates an airtight, closed pneumatic circuit. The ventilator's active exhalation valve precisely maintains the preset positive end-expiratory pressure throughout expiration without leakage, regardless of patient position, mouth opening, or respiratory rate. In contrast: 1. NIV via face mask is plagued by mask-interface air leaks, patient-ventilator dyssynchrony, and intentional leak ports that cause fluctuating delivered PEEP. 2. HFNC delivers an unmeasured, variable dynamic positive airway pressure (~0.7-1 cmH2O per 10 L/min flow, ~4-5 cmH2O at 60 L/min) that drops precipitously to zero if the patient opens their mouth. 3. Venturi and non-rebreathing masks generate zero PEEP.",
+    "whyWrong": {
+      "A": "Correct answer: Invasive ventilation via a cuffed ETT provides a closed, airtight circuit delivering exact set PEEP.",
+      "B": "NIV mask interfaces suffer from variable air leaks, resulting in inconsistent alveolar PEEP delivery.",
+      "C": "HFNC generates low, variable PEEP that is completely lost during mouth opening.",
+      "D": "NRBM is an open oxygen mask delivering high FiO2 but absolutely zero PEEP."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Endotracheal intubation with closed circuit = Gold standard for precise, leak-free PEEP delivery.\n• NIV delivery of PEEP is limited by mask leaks, patient intolerance, and gastric insufflation.\n• HFNC produces flow-dependent positive airway pressure (~4-5 cmH2O at 60 L/min) only when the mouth remains closed.\n\nPOTENTIAL EXAM TRAP: Assuming HFNC or NIV delivers a guaranteed, fixed PEEP level comparable to invasive mechanical ventilation.",
+    "hyperlinkedReference": {
+      "label": "Tobin's Principles and Practice of Mechanical Ventilation, 3rd Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Mechanical Ventilation",
+      "Reliability of PEEP Delivery Across Ventilatory Modalities"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Invasive mechanical ventilation / Endotracheal intubation",
+    "verified_answer": "Invasive mechanical ventilation via an inflatable-cuffed Endotracheal Tube in a closed ventilator circuit",
+    "answer_verification_note": "Verified against Tobin's Principles and Practice of Mechanical Ventilation and Marino's The ICU Book.",
+    "concept_tested": "Pneumatic mechanics and reliability of PEEP delivery across invasive vs non-invasive devices",
+    "high_yield_takeaway": [
+      "Endotracheal intubation with closed circuit = Gold standard for precise, leak-free PEEP delivery.",
+      "NIV delivery of PEEP is limited by mask leaks, patient intolerance, and gastric insufflation.",
+      "HFNC produces flow-dependent positive airway pressure (~4-5 cmH2O at 60 L/min) only when the mouth remains closed."
+    ],
+    "potential_exam_trap": "Assuming HFNC or NIV delivers a guaranteed, fixed PEEP level comparable to invasive mechanical ventilation.",
+    "sources": [
+      "Tobin's Principles and Practice of Mechanical Ventilation, 3rd Ed.",
+      "Marino's The ICU Book, 4th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R050",
+    "chapterId": 6,
+    "topicId": "cc-respiratory-management-in-specific-clinical-scenarios-i",
+    "question": "In a mechanically ventilated patient, which formula accurately defines Static Respiratory System Compliance (Cstat), and what does it physiologically represent?",
+    "options": [
+      "Cstat = Tidal Volume / (Plateau Pressure - PEEP); it reflects the elastic properties of the lung parenchyma and chest wall in the absence of airflow",
+      "Cstat = Tidal Volume / (Peak Inspiratory Pressure - PEEP); it reflects both airway resistance and elastance during dynamic airflow",
+      "Cstat = (Peak Inspiratory Pressure - Plateau Pressure) / Inspiratory Flow; it measures airway resistance",
+      "Cstat = Plateau Pressure / Tidal Volume; it represents pulmonary elastance"
+    ],
+    "answer": "A",
+    "explanation": "Static respiratory system compliance (Cstat) is calculated during an end-inspiratory pause (zero airflow) using the equation: Cstat = Tidal Volume / (Plateau Pressure - Total PEEP). Under conditions of zero airflow, resistive airway pressures dissipate completely, meaning plateau pressure (Pplat) reflects purely the static elastic recoil pressure of the respiratory system (lung parenchyma and thoracic cage). Normal Cstat in an intubated adult is 50 to 80 mL/cmH2O; in severe ARDS, Cstat often drops below 20-30 mL/cmH2O. Dynamic compliance (Cdyn) is calculated as: Cdyn = Tidal Volume / (Peak Inspiratory Pressure - PEEP), which reflects both airway resistance and static compliance during active gas delivery.",
+    "whyWrong": {
+      "A": "Correct answer: Cstat = Vt / (Pplat - PEEP) during zero airflow, reflecting pure elastic recoil.",
+      "B": "This formula defines Dynamic Compliance (Cdyn), which is influenced by airway resistance.",
+      "C": "This formula defines Airway Resistance (Raw = [Ppeak - Pplat] / Flow).",
+      "D": "This is the inverse of compliance, which equals Elastance (E = Delta P / Delta V)."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Static Compliance (Cstat) = Vt / (Pplat - PEEP) -> Evaluates lung and chest wall elastance (measured at zero airflow).\n• Dynamic Compliance (Cdyn) = Vt / (Ppeak - PEEP) -> Evaluates compliance PLUS airway resistance (measured during airflow).\n• If Ppeak rises while Pplat remains constant -> Increased Airway Resistance (bronchospasm, secretions, kinking).\n• If BOTH Ppeak and Pplat rise together -> Decreased Compliance (ARDS, pneumothorax, pulmonary edema, atelectasis).\n\nPOTENTIAL EXAM TRAP: Using Peak pressure instead of Plateau pressure in the static compliance formula.",
+    "hyperlinkedReference": {
+      "label": "West's Respiratory Physiology, 10th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Physiology",
+      "Static vs Dynamic Respiratory Compliance and Airway Resistance"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Cstat = Vt / (Pplat - PEEP)",
+    "verified_answer": "Cstat = Tidal Volume / (Plateau Pressure - PEEP); it reflects the elastic properties of the lung parenchyma and chest wall in the absence of airflow",
+    "answer_verification_note": "Verified against West's Respiratory Physiology and Nunn's Applied Respiratory Physiology.",
+    "concept_tested": "Formulas and physiological determinants of static vs dynamic respiratory compliance",
+    "high_yield_takeaway": [
+      "Static Compliance (Cstat) = Vt / (Pplat - PEEP) -> Evaluates lung and chest wall elastance (measured at zero airflow).",
+      "Dynamic Compliance (Cdyn) = Vt / (Ppeak - PEEP) -> Evaluates compliance PLUS airway resistance (measured during airflow).",
+      "If Ppeak rises while Pplat remains constant -> Increased Airway Resistance (bronchospasm, secretions, kinking).",
+      "If BOTH Ppeak and Pplat rise together -> Decreased Compliance (ARDS, pneumothorax, pulmonary edema, atelectasis)."
+    ],
+    "potential_exam_trap": "Using Peak pressure instead of Plateau pressure in the static compliance formula.",
+    "sources": [
+      "West's Respiratory Physiology, 10th Ed.",
+      "Nunn's Applied Respiratory Physiology, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R055",
+    "chapterId": 2,
+    "topicId": "cc-assessing-adequacy-of-oxygen-delivery",
+    "question": "A patient with severe lobar consolidation and alveolar collapse from bacterial pneumonia exhibits profound hypoxemia. The intensivist increases the fraction of inspired oxygen (FiO2) on the ventilator from 0.60 to 1.0 (100% oxygen), but the arterial PaO2 rises negligibly from 52 mmHg to 55 mmHg. Which physiological mechanism of hypoxemia is characterized by this complete failure to correct with 100% inspired oxygen?",
+    "options": [
+      "True Right-to-Left Intrapulmonary Shunt (V/Q = 0)",
+      "Ventilation-Perfusion (V/Q) inequality / mismatch",
+      "Alveolar hypoventilation",
+      "Diffusion impairment across the alveolar-capillary membrane"
+    ],
+    "answer": "A",
+    "explanation": "Five classical physiological mechanisms cause arterial hypoxemia: 1. Low inspired PO2 (high altitude); 2. Hypoventilation (elevated PaCO2, normal A-a gradient); 3. Diffusion impairment; 4. Ventilation-perfusion (V/Q) mismatch; and 5. Right-to-left shunt (intrapulmonary or intracardiac). While hypoxemia caused by hypoventilation, diffusion limitation, and simple V/Q mismatch readily corrects with administration of high FiO2 (100% O2), a TRUE SHUNT (V/Q = 0) is characterized by failure of PaO2 to significantly rise when breathing 100% oxygen. In true shunt (as in dense consolidation, complete atelectasis, or cyanotic congenital heart disease), mixed venous blood bypasses ventilated alveoli entirely and mixes directly with oxygenated pulmonary end-capillary blood, depressing final arterial PO2 regardless of alveolar PO2.",
+    "whyWrong": {
+      "A": "Correct answer: True intrapulmonary shunt (V/Q = 0) is pathognomonic for lack of response to 100% FiO2.",
+      "B": "V/Q mismatch readily corrects with supplemental oxygen because breathing 100% O2 saturates even poorly ventilated units.",
+      "C": "Hypoventilation corrects immediately with supplemental oxygen, producing high PaO2 despite elevated PaCO2.",
+      "D": "Diffusion impairment corrects with 100% O2 because the widened alveolar-capillary PO2 gradient overcomes the diffusion barrier."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• True shunt (V/Q = 0): Unresponsive to 100% FiO2; caused by dense consolidation, atelectasis, ARDS, or intracardiac R->L shunt.\n• V/Q mismatch (V/Q > 0 but < 1): Readily responsive to supplemental oxygen; seen in asthma, COPD, pulmonary embolism.\n• Shunt fraction calculation: Qs/Qt = (Cc'O2 - CaO2) / (Cc'O2 - CvO2).\n\nPOTENTIAL EXAM TRAP: Confusing low V/Q mismatch (oxygen-responsive) with true anatomical/physiological shunt (oxygen-unresponsive).",
+    "hyperlinkedReference": {
+      "label": "West's Respiratory Physiology, 10th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Physiology",
+      "Mechanisms of Hypoxemia and Shunt Physiology"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Shunt physiology",
+    "verified_answer": "True Right-to-Left Intrapulmonary Shunt (V/Q = 0)",
+    "answer_verification_note": "Verified against West's Respiratory Physiology and Nunn's Applied Respiratory Physiology.",
+    "concept_tested": "Differential diagnosis of hypoxemia and physiological signature of true intrapulmonary shunt",
+    "high_yield_takeaway": [
+      "True shunt (V/Q = 0): Unresponsive to 100% FiO2; caused by dense consolidation, atelectasis, ARDS, or intracardiac R->L shunt.",
+      "V/Q mismatch (V/Q > 0 but < 1): Readily responsive to supplemental oxygen; seen in asthma, COPD, pulmonary embolism.",
+      "Shunt fraction calculation: Qs/Qt = (Cc'O2 - CaO2) / (Cc'O2 - CvO2)."
+    ],
+    "potential_exam_trap": "Confusing low V/Q mismatch (oxygen-responsive) with true anatomical/physiological shunt (oxygen-unresponsive).",
+    "sources": [
+      "West's Respiratory Physiology, 10th Ed.",
+      "Nunn's Applied Respiratory Physiology, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R056",
+    "chapterId": 5,
+    "topicId": "cc-organ-dysfunction-in-sepsis",
+    "question": "Regarding the kinetics, cellular pathophysiology, and clinical utility of blood lactate measurement in patients with sepsis and septic shock, which statement is correct?",
+    "options": [
+      "Hyperlactatemia in sepsis results not only from tissue hypoperfusion/cellular dysoxia, but also significantly from catecholamine-stimulated aerobic glycolysis (beta-2 adrenoreceptor upregulation) and impaired hepatic clearance",
+      "Serum lactate is an absolute mandatory requirement to establish the diagnosis of sepsis according to Sepsis-3 consensus",
+      "Lactate is an inert, purely toxic metabolic waste product with no functional bioenergetic role",
+      "Failure to achieve complete normalization of lactate within 1 hour proves therapeutic failure and mandates ECMO"
+    ],
+    "answer": "A",
+    "explanation": "Modern critical care pathophysiology recognizes that hyperlactatemia in sepsis is multifactorial: 1. Type A (hypoperfusion/dysoxia): Cellular hypoxia forces pyruvate conversion to lactate by lactate dehydrogenase; 2. Type B (non-hypoperfusion/aerobic glycolysis): Endogenous and exogenous epinephrine stimulates skeletal muscle beta-2 adrenergic receptors, activating Na+/K+-ATPase and upregulating glycolysis faster than pyruvate dehydrogenase can metabolize pyruvate in the mitochondria; 3. Impaired hepatic clearance: Splanchnic hypoperfusion, shock liver, or microvascular dysfunction impairs hepatic lactate clearance (which normally metabolizes 70% of lactate). Sepsis-3 defines sepsis as infection with SOFA score increase >= 2 (elevated lactate is NOT mandatory for sepsis, though lactate > 2 mmol/L with persistent vasopressor requirement defines Septic Shock). Lactate is also a vital alternative metabolic fuel for the brain and myocardium during stress.",
+    "whyWrong": {
+      "A": "Correct answer: Septic hyperlactatemia is a complex interplay of microvascular dysoxia, beta-2 adrenergic aerobic glycolysis, and reduced hepatic clearance.",
+      "B": "Sepsis-3 requires an increase in total SOFA score >= 2 for sepsis; lactate is part of the septic shock definition, not mandatory for sepsis.",
+      "C": "Lactate is a valuable metabolic substrate (shuttled to heart and neurons) and signaling molecule, not merely an inert waste product.",
+      "D": "Lactate clearance is targeted at ~10-20% decrease every 2 hours during resuscitation, not instant normalization within 1 hour."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Septic hyperlactatemia = Tissue dysoxia + Beta-2 adrenergic-driven aerobic glycolysis + Decreased hepatic clearance.\n• Sepsis-3 definition of Septic Shock: Persistent hypotension requiring vasopressors to maintain MAP >= 65 mmHg AND serum lactate > 2 mmol/L despite adequate fluid resuscitation.\n• Lactate clearance (targeting >= 10-20% reduction every 2 hours) is a validated resuscitation endpoint.\n\nPOTENTIAL EXAM TRAP: Assuming hyperlactatemia in sepsis is exclusively due to tissue anaerobic hypoxia / debt of oxygen.",
+    "hyperlinkedReference": {
+      "label": "JAMA 2016 (Sepsis-3 Definitions)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Sepsis",
+      "Lactate Kinetics and Pathophysiology in Sepsis"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "reconstructed_recall",
+    "speaker_answer": "Serial lactate used for resuscitation monitoring; caused by dysoxia and altered metabolism",
+    "verified_answer": "Hyperlactatemia in sepsis results not only from tissue hypoperfusion/cellular dysoxia, but also significantly from catecholamine-stimulated aerobic glycolysis (beta-2 adrenoreceptor upregulation) and impaired hepatic clearance",
+    "answer_verification_note": "Verified against Sepsis-3 Consensus Definitions (Singer M et al., JAMA 2016) and Surviving Sepsis Campaign 2021.",
+    "concept_tested": "Multifactorial mechanisms of hyperlactatemia in sepsis (aerobic vs anaerobic) and Sepsis-3 definitions",
+    "high_yield_takeaway": [
+      "Septic hyperlactatemia = Tissue dysoxia + Beta-2 adrenergic-driven aerobic glycolysis + Decreased hepatic clearance.",
+      "Sepsis-3 definition of Septic Shock: Persistent hypotension requiring vasopressors to maintain MAP >= 65 mmHg AND serum lactate > 2 mmol/L despite adequate fluid resuscitation.",
+      "Lactate clearance (targeting >= 10-20% reduction every 2 hours) is a validated resuscitation endpoint."
+    ],
+    "potential_exam_trap": "Assuming hyperlactatemia in sepsis is exclusively due to tissue anaerobic hypoxia / debt of oxygen.",
+    "sources": [
+      "JAMA 2016 (Sepsis-3 Definitions)",
+      "Surviving Sepsis Campaign Guidelines 2021"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R059",
+    "chapterId": 3,
+    "topicId": "cc-central-venous-line-and-cvp-measurement",
+    "question": "A 45-year-old male with a history of metastatic lung adenocarcinoma presents with Beck's triad (hypotension, jugular venous distension, and muffled heart sounds). Evaluation of the central venous pressure (CVP) catheter waveform demonstrates a prominent 'x' descent, but the 'y' descent is completely absent or severely blunted. Which diagnosis does this characteristic venous waveform pattern confirm?",
+    "options": [
+      "Cardiac Tamponade",
+      "Constrictive Pericarditis",
+      "Severe Tricuspid Regurgitation",
+      "Right Ventricular Infarction without effusion"
+    ],
+    "answer": "A",
+    "explanation": "In normal central venous pressure (CVP) waveforms, the 'x' descent represents atrial relaxation and downward displacement of the tricuspid valve during ventricular systole, while the 'y' descent represents passive diastolic emptying of blood from the right atrium into the right ventricle upon tricuspid valve opening. In Cardiac Tamponade, intrapericardial pressure is elevated equally across all cardiac chambers throughout the entire cardiac cycle, particularly during diastole. When the tricuspid valve opens in early diastole, blood CANNOT passively flow into the compressed right ventricle because intracavitary ventricular diastolic pressure equals intrapericardial pressure; hence, the 'y' descent is completely absent or severely attenuated. Systolic ejection of blood, however, temporarily reduces total cardiac volume within the rigid pericardial sac, preserving atrial filling and creating a prominent, deep 'x' descent ('monophasic x-descent'). In contrast, Constrictive Pericarditis classically exhibits a deep, steep, rapid 'y' descent (Friedreich's sign) due to brisk early diastolic filling followed by abrupt mid-diastolic arrest.",
+    "whyWrong": {
+      "A": "Correct answer: Absent/attenuated 'y' descent with prominent 'x' descent is pathognomonic for Cardiac Tamponade.",
+      "B": "Constrictive pericarditis characteristically shows a deep, prominent, rapid 'y' descent (steep 'y' descent / W or M configuration).",
+      "C": "Tricuspid regurgitation obliterates the 'x' descent and creates a giant systolic 'cv' fusion wave.",
+      "D": "RV infarction typically shows elevated CVP with a prominent 'y' descent and Kussmaul's sign."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Cardiac Tamponade: Prominent 'x' descent, ABSENT or blunted 'y' descent (ventricle cannot fill in early diastole).\n• Constrictive Pericarditis: Steep, prominent, sharp 'y' descent (Friedreich's sign) with prominent 'x' descent -> 'W' or 'M' shaped CVP wave.\n• Tricuspid Regurgitation: Absent 'x' descent, tall systolic 'v' (or 'c-v') wave.\n\nPOTENTIAL EXAM TRAP: Confusing Cardiac Tamponade (absent 'y' descent) with Constrictive Pericarditis (prominent, steep 'y' descent).",
+    "hyperlinkedReference": {
+      "label": "Braunwald's Heart Disease, 11th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Monitoring",
+      "CVP Waveform Analysis: Cardiac Tamponade vs Constrictive Pericarditis"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Cardiac tamponade",
+    "verified_answer": "Cardiac Tamponade",
+    "answer_verification_note": "Verified against Braunwald's Heart Disease and Marino's The ICU Book.",
+    "concept_tested": "Distinction between Cardiac Tamponade and Constrictive Pericarditis using CVP/atrial waveforms",
+    "high_yield_takeaway": [
+      "Cardiac Tamponade: Prominent 'x' descent, ABSENT or blunted 'y' descent (ventricle cannot fill in early diastole).",
+      "Constrictive Pericarditis: Steep, prominent, sharp 'y' descent (Friedreich's sign) with prominent 'x' descent -> 'W' or 'M' shaped CVP wave.",
+      "Tricuspid Regurgitation: Absent 'x' descent, tall systolic 'v' (or 'c-v') wave."
+    ],
+    "potential_exam_trap": "Confusing Cardiac Tamponade (absent 'y' descent) with Constrictive Pericarditis (prominent, steep 'y' descent).",
+    "sources": [
+      "Braunwald's Heart Disease, 11th Ed.",
+      "Marino's The ICU Book, 4th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R063",
+    "chapterId": 1,
+    "topicId": "cc-catheter-related-blood-stream-infection",
+    "question": "What is the technological principle and primary clinical objective of implementing an 'Electronic Hand Hygiene Monitoring System' (EHHMS) in modern intensive care units?",
+    "options": [
+      "Utilizing wearable badges/sensors (RFID or Bluetooth) and dispenser sensors to continuously and objectively record hand hygiene compliance at patient entry and exit zones",
+      "Automatic administration of ultraviolet radiation to sterilization chambers whenever staff touch a patient",
+      "Measuring bacterial colony counts directly on healthcare workers' palms via laser spectrophotometry",
+      "Mandatory biometric retinal scanning prior to accessing the ICU medication automated dispensing cabinet"
+    ],
+    "answer": "A",
+    "explanation": "Electronic Hand Hygiene Monitoring Systems (EHHMS, e.g., BioVigil, CenTrak) are advanced hospital infection control technologies designed to overcome the well-known limitations of direct human observational audits ('secret shopper' / Hawthorne effect). They utilize wearable sensor badges (using Radiofrequency Identification [RFID], Bluetooth Low Energy [BLE], or infrared technology) coupled with networked sensors on alcohol-based hand rub/soap dispensers and patient-zone beacons. When a clinician enters or leaves a patient's immediate care zone (WHO '5 Moments for Hand Hygiene'), the system tracks whether the dispenser was activated, providing real-time visual feedback (e.g., green badge light) and transmitting granular compliance metrics to an infection control database.",
+    "whyWrong": {
+      "A": "Correct answer: Wearable badge sensors and dispenser sensors measuring real-time hand hygiene events continuously.",
+      "B": "Direct staff UV radiation is biologically hazardous and not part of electronic hand hygiene monitoring.",
+      "C": "Direct palm colony counts via spectrophotometry are non-existent in clinical ICU workflow.",
+      "D": "Retinal scanning for medication dispensing is security-related, not a hand hygiene monitoring tool."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• EHHMS uses wearable RFID/BLE badges and dispenser sensors to track hand hygiene compliance continuously.\n• Eliminates the Hawthorne effect and observer bias associated with manual direct observation.\n• Reinforces adherence to the WHO '5 Moments for Hand Hygiene' to reduce healthcare-associated infections (HAIs).\n\nPOTENTIAL EXAM TRAP: Confusing hand hygiene surveillance technology with automated medication dispensing cabinets.",
+    "hyperlinkedReference": {
+      "label": "WHO Hand Hygiene Guidelines",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Miscellaneous",
+      "Electronic Hand Hygiene Monitoring Systems (EHHMS)"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "moderate",
+    "question_status": "reconstructed_recall",
+    "speaker_answer": "Sensors and wearable gadgets monitoring hand hygiene compliance",
+    "verified_answer": "Utilizing wearable badges/sensors (RFID or Bluetooth) and dispenser sensors to continuously and objectively record hand hygiene compliance at patient entry and exit zones",
+    "answer_verification_note": "Verified against WHO Hand Hygiene Technical Reference Manual and CDC Infection Control Guidelines.",
+    "concept_tested": "Concepts and clinical rationale of automated electronic hand hygiene monitoring in ICU infection prevention",
+    "high_yield_takeaway": [
+      "EHHMS uses wearable RFID/BLE badges and dispenser sensors to track hand hygiene compliance continuously.",
+      "Eliminates the Hawthorne effect and observer bias associated with manual direct observation.",
+      "Reinforces adherence to the WHO '5 Moments for Hand Hygiene' to reduce healthcare-associated infections (HAIs)."
+    ],
+    "potential_exam_trap": "Confusing hand hygiene surveillance technology with automated medication dispensing cabinets.",
+    "sources": [
+      "WHO Hand Hygiene Guidelines",
+      "AJIC 2018 (Electronic Hand Hygiene Monitoring Systems Review)"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R066",
+    "chapterId": 2,
+    "topicId": "cc-assessing-adequacy-of-oxygen-delivery",
+    "question": "According to the Law of Laplace applied to spherical pulmonary alveoli (Pressure = 2T / r, where T is surface tension and r is alveolar radius), what would inevitably happen to smaller alveoli connected in parallel to larger alveoli in the absence of pulmonary surfactant?",
+    "options": [
+      "Smaller alveoli would generate higher inward collapsing pressures than larger alveoli, emptying their air contents into larger alveoli and causing widespread atelectasis",
+      "Smaller alveoli would expand preferentially, causing overinflation of small units",
+      "All alveoli would maintain identical transmural pressures regardless of radius",
+      "Surface tension would automatically decrease as alveolar radius increases"
+    ],
+    "answer": "A",
+    "explanation": "Laplace's Law for a spherical structure with a single liquid-air interface is P = 2T / r, where P is collapsing distending pressure, T is surface tension, and r is the alveolar radius. If surface tension (T) were constant throughout the lung: smaller alveoli (smaller r) would have a significantly higher internal collapsing pressure than larger alveoli (larger r). Because alveoli communicate via alveolar ducts and pores of Kohn, gas would flow along this pressure gradient from smaller alveoli (high pressure) into larger alveoli (low pressure), causing smaller alveoli to collapse completely (atelectasis) while larger alveoli become progressively hyperinflated. Pulmonary surfactant (dipalmitoylphosphatidylcholine produced by Type II pneumocytes) prevents this instability: as alveoli deflate, surfactant molecules are packed more tightly together per unit surface area, dramatically lowering surface tension (T) to near zero in smaller alveoli. This equalizes collapsing pressures across alveoli of different sizes, stabilizing the lung and reducing the work of breathing.",
+    "whyWrong": {
+      "A": "Correct answer: In the absence of surfactant, smaller alveoli generate higher collapsing pressures and empty into larger alveoli.",
+      "B": "Smaller alveoli collapse, they do not expand preferentially, because their collapsing pressure is higher.",
+      "C": "Transmural pressures are identical only because surfactant modulates surface tension; without surfactant, pressures diverge.",
+      "D": "Pure liquid surface tension is constant regardless of surface area; it is surfactant that modulates surface tension dynamically."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Laplace's Law: P = 2T / r (Collapsing pressure is inversely proportional to radius).\n• Without surfactant, small alveoli empty into large alveoli, causing massive atelectasis.\n• Surfactant (DPPC) concentrates in smaller alveoli during deflation, lowering surface tension (T) and stabilizing alveolar architecture.\n• Surfactant deficiency causes Infant Respiratory Distress Syndrome (IRDS) and contributes to ARDS atelectrauma.\n\nPOTENTIAL EXAM TRAP: Assuming Laplace's Law explains why alveoli are stable; Laplace's Law explains their inherent instability, which surfactant overcomes.",
+    "hyperlinkedReference": {
+      "label": "West's Respiratory Physiology, 10th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Physiology",
+      "Laplace's Law and Pulmonary Alveolar Stability"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Smaller alveoli have higher collapsing pressure (P = 2T/r); surfactant prevents collapse",
+    "verified_answer": "Smaller alveoli would generate higher inward collapsing pressures than larger alveoli, emptying their air contents into larger alveoli and causing widespread atelectasis",
+    "answer_verification_note": "Verified against West's Respiratory Physiology and Nunn's Applied Respiratory Physiology.",
+    "concept_tested": "Application of Laplace's law to alveolar mechanics and role of surfactant in preventing atelectasis",
+    "high_yield_takeaway": [
+      "Laplace's Law: P = 2T / r (Collapsing pressure is inversely proportional to radius).",
+      "Without surfactant, small alveoli empty into large alveoli, causing massive atelectasis.",
+      "Surfactant (DPPC) concentrates in smaller alveoli during deflation, lowering surface tension (T) and stabilizing alveolar architecture.",
+      "Surfactant deficiency causes Infant Respiratory Distress Syndrome (IRDS) and contributes to ARDS atelectrauma."
+    ],
+    "potential_exam_trap": "Assuming Laplace's Law explains why alveoli are stable; Laplace's Law explains their inherent instability, which surfactant overcomes.",
+    "sources": [
+      "West's Respiratory Physiology, 10th Ed.",
+      "Nunn's Applied Respiratory Physiology, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R068",
+    "chapterId": 1,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "In the emerging integration of Artificial Intelligence (AI) and Machine Learning (ML) into Intensive Care Medicine, which domain has demonstrated the greatest clinical utility and regulatory validation for early real-time warning before overt clinical decompensation occurs?",
+    "options": [
+      "Predictive analytics and early warning systems for the onset of sepsis and acute hemodynamic instability (hypotension)",
+      "Complete autonomous replacement of critical care physicians in making end-of-life decisions",
+      "Automated surgical insertion of central venous lines without human guidance",
+      "Independent dispensing of narcotics without pharmacist or physician prescription"
+    ],
+    "answer": "A",
+    "explanation": "Artificial Intelligence (AI) and Machine Learning (ML) in critical care medicine are primarily leveraged for Predictive Analytics and Clinical Decision Support. High-frequency physiologic data streams in the ICU (continuous arterial waveforms, heart rate variability, respiratory parameters, and lab results) are processed by deep learning and gradient-boosted algorithms to predict clinical deterioration hours before bedside overt manifestation. Key validated examples include: 1. Early prediction of sepsis (detecting subclinical systemic inflammation 4-12 hours prior to clinical diagnosis); 2. Hypotension Prediction Index (HPI, predicting arterial hypotension minutes in advance using arterial pressure waveform morphology); 3. Automated detection of ventilator dyssynchrony and predictive weaning models; 4. Diagnostic computer vision algorithms for automated CXR/CT interpretation.",
+    "whyWrong": {
+      "A": "Correct answer: Predictive analytics for sepsis, hypotension, and cardiorespiratory decompensation is the premier clinical AI application.",
+      "B": "AI tools serve as decision-support systems; autonomous end-of-life decision-making is ethically and legally prohibited.",
+      "C": "Autonomous vascular access robotics without human supervision is not an approved clinical reality.",
+      "D": "Unsupervised narcotic dispensing violates regulatory controlled-substance statutes."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• AI in Critical Care focuses on Predictive Analytics: early sepsis detection, hypotension forecasting, and automated image analysis.\n• AI functions as Clinical Decision Support (CDS) to assist clinicians, not to replace clinical judgment.\n• Key challenge: Algorithmic bias, alarm fatigue, and the need for prospective randomized clinical validation.\n\nPOTENTIAL EXAM TRAP: Selecting choices implying fully autonomous, unsupervised AI clinical decision-making.",
+    "hyperlinkedReference": {
+      "label": "Intensive Care Med 2020 (AI in Critical Care Medicine)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Miscellaneous",
+      "Machine Learning and Predictive Analytics in the ICU"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "moderate",
+    "question_status": "reconstructed_recall",
+    "speaker_answer": "Predictive analytics (early sepsis and hypotension prediction)",
+    "verified_answer": "Predictive analytics and early warning systems for the onset of sepsis and acute hemodynamic instability (hypotension)",
+    "answer_verification_note": "Verified against ESICM statements on Big Data and Artificial Intelligence in Intensive Care Medicine (Intensive Care Med 2020).",
+    "concept_tested": "Applications and capabilities of predictive machine learning algorithms in critical care",
+    "high_yield_takeaway": [
+      "AI in Critical Care focuses on Predictive Analytics: early sepsis detection, hypotension forecasting, and automated image analysis.",
+      "AI functions as Clinical Decision Support (CDS) to assist clinicians, not to replace clinical judgment.",
+      "Key challenge: Algorithmic bias, alarm fatigue, and the need for prospective randomized clinical validation."
+    ],
+    "potential_exam_trap": "Selecting choices implying fully autonomous, unsupervised AI clinical decision-making.",
+    "sources": [
+      "Intensive Care Med 2020 (AI in Critical Care Medicine)",
+      "Lancet Respir Med 2021 (Machine Learning in ICU)"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R072",
+    "chapterId": 1,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "The APACHE II (Acute Physiology and Chronic Health Evaluation II) scoring system is a widely utilized ICU severity-of-illness and mortality prediction tool calculated using data gathered within the first 24 hours of ICU admission. Which of the following correctly describes the three core structural scoring domains of APACHE II and its total score range?",
+    "options": [
+      "Acute Physiology Score (based on 12 physiologic variables) + Age points + Chronic Health points; total score ranges from 0 to 71",
+      "Sequential Organ Failure Assessment + Glasgow Coma Scale + APACHE baseline points; total score ranges from 0 to 100",
+      "Dynamic compliance + Lactate clearance + Base excess; total score ranges from 0 to 24",
+      "Charlson Comorbidity Index + SAPS III + Sepsis bundle points; total score ranges from 0 to 50"
+    ],
+    "answer": "A",
+    "explanation": "The APACHE II scoring system (Knaus et al., Crit Care Med 1985) is calculated within the first 24 hours of ICU admission using the worst physiological values recorded. It consists of three components: 1. Acute Physiology Score (APS): Sum of points assigned to 12 routine physiological variables (temperature, mean arterial pressure, heart rate, respiratory rate, oxygenation [PaO2 or A-a gradient], arterial pH or HCO3, serum sodium, potassium, creatinine, hematocrit, white blood cell count, and Glasgow Coma Scale [calculated as 15 minus actual GCS]); 2. Age Points: 0 points for age < 44 years up to 6 points for age >= 75 years; 3. Chronic Health Points: 2 to 5 points assigned for severe pre-existing organ dysfunction (cirrhosis, severe cardiovascular/pulmonary disease, immunocompromise, end-stage renal disease). The total score ranges from 0 to 71 points, with a strong direct sigmoid correlation with predicted in-hospital mortality.",
+    "whyWrong": {
+      "A": "Correct answer: APACHE II combines 12 APS variables + Age points + Chronic health points (Score: 0 to 71).",
+      "B": "SOFA and GCS are not structural sub-scores of APACHE II; APACHE II is an independent system.",
+      "C": "Dynamic compliance and lactate clearance are not components of the APACHE II physiological score.",
+      "D": "Charlson Index and SAPS III are entirely separate predictive scoring systems."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• APACHE II Total Score (0 to 71) = Acute Physiology Score (12 variables) + Age points (0-6) + Chronic Health points (2-5).\n• Calculated using the WORST values recorded in the first 24 hours of ICU stay.\n• Higher score directly correlates with higher predicted in-hospital mortality.\n\nPOTENTIAL EXAM TRAP: Confusing APACHE II (12 physiologic variables, max score 71) with APACHE III (17 variables, max score 299) or SOFA score (6 organ systems, max score 24).",
+    "hyperlinkedReference": {
+      "label": "Knaus WA et al. Crit Care Med 1985",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Miscellaneous",
+      "APACHE II Severity Score Architecture and Components"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "12 physiological variables + age + chronic health (score 0 to 71)",
+    "verified_answer": "Acute Physiology Score (based on 12 physiologic variables) + Age points + Chronic Health points; total score ranges from 0 to 71",
+    "answer_verification_note": "Verified against Knaus WA et al. (Crit Care Med 1985) and Oh's Intensive Care Manual.",
+    "concept_tested": "Structural domains and variables of the APACHE II prognostic scoring system",
+    "high_yield_takeaway": [
+      "APACHE II Total Score (0 to 71) = Acute Physiology Score (12 variables) + Age points (0-6) + Chronic Health points (2-5).",
+      "Calculated using the WORST values recorded in the first 24 hours of ICU stay.",
+      "Higher score directly correlates with higher predicted in-hospital mortality."
+    ],
+    "potential_exam_trap": "Confusing APACHE II (12 physiologic variables, max score 71) with APACHE III (17 variables, max score 299) or SOFA score (6 organ systems, max score 24).",
+    "sources": [
+      "Knaus WA et al. Crit Care Med 1985",
+      "Oh's Intensive Care Manual, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R073",
+    "chapterId": 3,
+    "topicId": "cc-pa-catheter",
+    "question": "A critical care resident places a flow-directed pulmonary artery catheter (PAC / Swan-Ganz). On fluoroscopy/bedside monitor inspection, the catheter tip has migrated deep into a distal subsegmental pulmonary capillary (alveolar level) and displays a continuous, non-pulsatile wedged pressure tracing even with the balloon deflated. What is the immediate correct management action?",
+    "options": [
+      "Ensure the balloon is completely deflated, and immediately withdraw the catheter 2 to 3 cm while continuously monitoring the pressure waveform until a typical pulmonary artery tracing reappears",
+      "Inflate the balloon with 3 mL of saline to wedge it more securely",
+      "Rapidly flush the catheter lumen with 50 mL of pressurized heparinized saline",
+      "Leave the catheter in position and advance it an additional 5 cm into the lung periphery"
+    ],
+    "answer": "A",
+    "explanation": "A pulmonary artery catheter (PAC) that has migrated distally into a small branch of the pulmonary artery or remains permanently wedged represents an immediate life-threatening emergency. Prolonged distal wedging causes localized mechanical vascular obstruction, leading to pulmonary infarction and catastrophic pulmonary artery rupture. Pulmonary artery rupture presents with massive hemoptysis, asphyxiation, cardiovascular collapse, and has a mortality rate exceeding 50-70%. Management: 1. Confirm that the balloon is completely deflated; 2. Never advance a catheter with the balloon deflated; 3. Slowly and carefully withdraw the catheter 2 to 3 cm while watching the monitor until the characteristic pulmonary artery waveform (with dicrotic notch and diastolic runoff) reappears. Pressurized flushing in a wedged vessel causes immediate vessel rupture.",
+    "whyWrong": {
+      "A": "Correct answer: Deflate balloon and immediately pull back the catheter to prevent pulmonary artery rupture and pulmonary infarction.",
+      "B": "Balloon inflation in a distal small branch immediately ruptures the pulmonary artery, producing fatal hemoptysis.",
+      "C": "Pressurizing or flushing a wedged catheter will blow out the thin-walled distal pulmonary vessel.",
+      "D": "Advancing a distally wedged catheter further causes immediate vascular perforation."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Distally wedged PAC carries extreme risk of pulmonary artery rupture (mortality > 50%).\n• Action: Deflate balloon immediately and withdraw catheter under continuous waveform monitoring.\n• Never inflate the balloon with liquid (use air only, max 1.5 mL), and never flush a wedged catheter.\n\nPOTENTIAL EXAM TRAP: Flushing a wedged pulmonary artery catheter to clear a suspected clot; the high pressure will rupture the vessel.",
+    "hyperlinkedReference": {
+      "label": "Marino's The ICU Book, 4th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "ICU Procedures",
+      "Pulmonary Artery Catheter Complications: Pulmonary Artery Rupture Prevention"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Deflate balloon and withdraw catheter",
+    "verified_answer": "Ensure the balloon is completely deflated, and immediately withdraw the catheter 2 to 3 cm while continuously monitoring the pressure waveform until a typical pulmonary artery tracing reappears",
+    "answer_verification_note": "Verified against Marino's The ICU Book and Miller's Anesthesia.",
+    "concept_tested": "Prevention of pulmonary artery rupture during pulmonary artery catheter placement and migration",
+    "high_yield_takeaway": [
+      "Distally wedged PAC carries extreme risk of pulmonary artery rupture (mortality > 50%).",
+      "Action: Deflate balloon immediately and withdraw catheter under continuous waveform monitoring.",
+      "Never inflate the balloon with liquid (use air only, max 1.5 mL), and never flush a wedged catheter."
+    ],
+    "potential_exam_trap": "Flushing a wedged pulmonary artery catheter to clear a suspected clot; the high pressure will rupture the vessel.",
+    "sources": [
+      "Marino's The ICU Book, 4th Ed.",
+      "Miller's Anesthesia, 9th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
   }
 ]

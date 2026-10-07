@@ -3394,5 +3394,1269 @@
       "Adjunctive Corticosteroids"
     ],
     "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "NEETSS-CC-2025-R002",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "A 28-year-old primigravida at 32 weeks of gestation develops septic shock secondary to acute pyelonephritis. Despite receiving an adequate initial crystalloid bolus of 30 mL/kg, her mean arterial pressure remains 52 mmHg with signs of persistent hypoperfusion. Which of the following is the first-line vasopressor of choice in this patient?",
+    "options": [
+      "Norepinephrine",
+      "Vasopressin",
+      "Phenylephrine",
+      "Dopamine"
+    ],
+    "answer": "A",
+    "explanation": "According to the Surviving Sepsis Campaign (SSC) guidelines and Society for Maternal-Fetal Medicine (SMFM) consensus, norepinephrine is the first-line vasopressor in septic shock, including during pregnancy. Norepinephrine's potent alpha-1 adrenergic vasoconstriction restores systemic vascular resistance while its modest beta-1 inotropic effect supports cardiac output. Restoring maternal perfusion pressure with norepinephrine preserves uteroplacental perfusion far better than allowing persistent maternal hypotension. Vasopressin causes uterine arterial vasoconstriction and tetanic contractions, which can compromise uteroplacental blood flow and cause fetal acidosis. Phenylephrine causes pure alpha-1 mediated vasoconstriction without inotropy, leading to reflex bradycardia and reduced cardiac output.",
+    "whyWrong": {
+      "A": "Correct answer: Norepinephrine is the recommended first-line agent in maternal septic shock.",
+      "B": "Vasopressin can reduce uteroplacental blood flow, precipitate uterine contractions, and is reserved only as a second-line rescue agent.",
+      "C": "Phenylephrine causes pure vasoconstriction with reflex bradycardia and decreased uterine perfusion.",
+      "D": "Dopamine is associated with higher tachyarrhythmia rates and excess mortality compared to norepinephrine."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Norepinephrine is the first-line vasopressor in septic shock for both pregnant and non-pregnant patients.\n• Restoring maternal mean arterial pressure (MAP >= 65 mmHg) is the primary determinant of uteroplacental perfusion.\n• Vasopressin and phenylephrine can severely compromise uteroplacental blood flow and are avoided as initial monotherapy.\n\nPOTENTIAL EXAM TRAP: Assuming pregnancy requires a different first-line vasopressor due to concerns of alpha-1 mediated uterine vasoconstriction; persistent hypotension is far more harmful to the fetus.",
+    "hyperlinkedReference": {
+      "label": "Surviving Sepsis Campaign Guidelines 2021",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Sepsis",
+      "Maternal Septic Shock and Vasoactive Therapy"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Norepinephrine",
+    "verified_answer": "Norepinephrine",
+    "answer_verification_note": "Verified against Surviving Sepsis Campaign (SSC) 2021 guidelines and SMFM Consult Series on Sepsis in Pregnancy.",
+    "concept_tested": "First-line vasopressor selection in pregnant patients with septic shock",
+    "high_yield_takeaway": [
+      "Norepinephrine is the first-line vasopressor in septic shock for both pregnant and non-pregnant patients.",
+      "Restoring maternal mean arterial pressure (MAP >= 65 mmHg) is the primary determinant of uteroplacental perfusion.",
+      "Vasopressin and phenylephrine can severely compromise uteroplacental blood flow and are avoided as initial monotherapy."
+    ],
+    "potential_exam_trap": "Assuming pregnancy requires a different first-line vasopressor due to concerns of alpha-1 mediated uterine vasoconstriction; persistent hypotension is far more harmful to the fetus.",
+    "sources": [
+      "Surviving Sepsis Campaign Guidelines 2021",
+      "SMFM Consult Series #47: Sepsis in Pregnancy"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R009",
+    "chapterId": 31,
+    "topicId": "cc-novel-chemo-and-toxicity-in-icu",
+    "question": "A 19-year-old male with newly diagnosed acute lymphoblastic leukemia develops laboratory Tumor Lysis Syndrome (TLS) within 12 hours of initiating induction chemotherapy. Shortly thereafter, he develops carpopedal spasms, perioral paresthesias, and generalized tonic-clonic seizures. What is the primary direct biochemical etiology responsible for the development of seizures in this clinical scenario?",
+    "options": [
+      "Severe acute hypocalcemia secondary to hyperphosphatemia",
+      "Direct neurotoxicity of extreme hyperuricemia",
+      "Hyperkalemia-induced cerebral cortical excitability",
+      "Severe metabolic acidosis with an elevated anion gap"
+    ],
+    "answer": "A",
+    "explanation": "Tumor Lysis Syndrome (TLS) involves massive intracellular release of potassium, phosphate, and purine nucleic acids. Malignant lymphoblasts contain up to 4 times higher intracellular phosphorus than normal cells. Rapid lysis floods the circulation with inorganic phosphorus, which rapidly binds and chelates ionized calcium, forming insoluble calcium phosphate precipitates in renal tubules and systemic vasculature. This precipitation results in profound, acute secondary hypocalcemia. Acute hypocalcemia dramatically increases neuronal membrane sodium permeability, lowering depolarization thresholds and precipitating neuromuscular irritability, tetany, laryngospasm, and generalized epileptic seizures.",
+    "whyWrong": {
+      "A": "Correct answer: Severe hypocalcemia induced by hyperphosphatemia is the direct cause of neuromuscular irritability and seizures.",
+      "B": "Uric acid precipitates in renal tubules causing AKI/nephropathy but does not cross the blood-brain barrier to cause acute seizures.",
+      "C": "Hyperkalemia causes fatal cardiac conduction defects and ventricular arrhythmias, not epileptic seizures.",
+      "D": "Metabolic acidosis can cause altered sensorium and tachypnea, but hypocalcemia-mediated tetany/seizures is the classic mechanism."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• TLS electrolyte tetrad: Hyperkalemia, Hyperphosphatemia, Hyperuricemia, and secondary Hypocalcemia.\n• Hypocalcemia occurs because massive phosphate release exceeds the calcium-phosphate solubility product (> 70 mg2/dL2), precipitating calcium phosphate.\n• Seizures, tetany, Chvostek's/Trousseau's signs, and prolonged QTc are direct manifestations of acute hypocalcemia.\n\nPOTENTIAL EXAM TRAP: Attributing seizures directly to hyperuricemia or uremia rather than acute severe hypocalcemia.",
+    "hyperlinkedReference": {
+      "label": "Cairo MS, Bishop M. Br J Haematol 2004",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Electrolytes",
+      "Tumor Lysis Syndrome and Hypocalcemia"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Hypocalcemia",
+    "verified_answer": "Severe acute hypocalcemia secondary to hyperphosphatemia",
+    "answer_verification_note": "Verified against Cairo-Bishop definition of TLS and Harrison's Principles of Internal Medicine.",
+    "concept_tested": "Pathophysiology of hypocalcemia and neuromuscular complications in Tumor Lysis Syndrome",
+    "high_yield_takeaway": [
+      "TLS electrolyte tetrad: Hyperkalemia, Hyperphosphatemia, Hyperuricemia, and secondary Hypocalcemia.",
+      "Hypocalcemia occurs because massive phosphate release exceeds the calcium-phosphate solubility product (> 70 mg2/dL2), precipitating calcium phosphate.",
+      "Seizures, tetany, Chvostek's/Trousseau's signs, and prolonged QTc are direct manifestations of acute hypocalcemia."
+    ],
+    "potential_exam_trap": "Attributing seizures directly to hyperuricemia or uremia rather than acute severe hypocalcemia.",
+    "sources": [
+      "Cairo MS, Bishop M. Br J Haematol 2004",
+      "Oh's Intensive Care Manual, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R014",
+    "chapterId": 28,
+    "topicId": "cc-pleural-disorders-in-icu",
+    "question": "The MACOCHA score is a validated bedside clinical tool specifically designed to predict difficult endotracheal intubation in critically ill ICU patients. Which of the following parameters is an operator-related variable included in the MACOCHA score?",
+    "options": [
+      "Intubation performed by a non-anesthesiologist operator",
+      "Experience of the intensivist < 5 years",
+      "Lack of video laryngoscope availability",
+      "Night-shift emergency intubation"
+    ],
+    "answer": "A",
+    "explanation": "The MACOCHA score (0-12 points) predicts difficult intubation in ICU settings outside the operating room. It uniquely incorporates patient anatomical factors, acute physiological derangements, and operator characteristics: 1. Patient factors: Mallampati class III or IV (5 points), Obstructive sleep apnea syndrome (2 points), Cervical spine mobility reduced (1 point), Opening of mouth < 3 cm (1 point); 2. Disease/physiological factors: Coma (GCS < 8) (1 point), Severe hypoxemia (SpO2 < 80%) (1 point); 3. Operator factor: Non-anesthesiologist operator (1 point). A score >= 3 points predicts difficult intubation with high sensitivity and specificity.",
+    "whyWrong": {
+      "A": "Correct answer: Non-anesthesiologist operator is the sole operator-related parameter, assigned 1 point.",
+      "B": "Years of experience is not scored; operator discipline (non-anesthesiologist) is the variable.",
+      "C": "Equipment type is not part of the MACOCHA score.",
+      "D": "Timing of intubation (night shift) is not a scoring variable."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• MACOCHA mnemonic: Mallampati III/IV (5), Apnea/OSA (2), Cervical mobility reduced (1), Opening mouth < 3 cm (1), Coma (1), Hypoxia < 80% (1), Non-Anesthesiologist (1).\n• Total score: 0 to 12. Score >= 3 indicates high probability of difficult intubation in ICU.\n• Unlike operating room scores, MACOCHA incorporates physiological variables (hypoxia, coma) and operator training.\n\nPOTENTIAL EXAM TRAP: Assuming MACOCHA only contains anatomical variables like the Mallampati score.",
+    "hyperlinkedReference": {
+      "label": "De Jong A et al. Crit Care Med 2013",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "ICU Procedures",
+      "MACOCHA Score for Difficult Airway in ICU"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Non-anesthesiologist operator",
+    "verified_answer": "Intubation performed by a non-anesthesiologist operator",
+    "answer_verification_note": "Verified against De Jong A, et al. Critical Care Medicine 2013 (Development and validation of MACOCHA score).",
+    "concept_tested": "Components and categories of the MACOCHA score for ICU intubation",
+    "high_yield_takeaway": [
+      "MACOCHA mnemonic: Mallampati III/IV (5), Apnea/OSA (2), Cervical mobility reduced (1), Opening mouth < 3 cm (1), Coma (1), Hypoxia < 80% (1), Non-Anesthesiologist (1).",
+      "Total score: 0 to 12. Score >= 3 indicates high probability of difficult intubation in ICU.",
+      "Unlike operating room scores, MACOCHA incorporates physiological variables (hypoxia, coma) and operator training."
+    ],
+    "potential_exam_trap": "Assuming MACOCHA only contains anatomical variables like the Mallampati score.",
+    "sources": [
+      "De Jong A et al. Crit Care Med 2013",
+      "Oh's Intensive Care Manual, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R016",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "Which of the following maternal characteristics or conditions is considered a major high-risk factor for the development of preeclampsia, warranting initiation of low-dose aspirin prophylaxis according to ACOG and USPSTF guidelines?",
+    "options": [
+      "Maternal age 25 to 30 years in a multiparous woman with prior uncomplicated deliveries",
+      "History of preeclampsia in a previous pregnancy",
+      "Cigarette smoking during pregnancy",
+      "Spontaneous singleton conception with BMI of 21 kg/m2"
+    ],
+    "answer": "B",
+    "explanation": "According to ACOG and USPSTF guidelines, major high-risk factors for preeclampsia (warranting low-dose aspirin prophylaxis from 12-16 weeks until delivery) include: 1. History of preeclampsia (especially early-onset or with adverse outcomes); 2. Multifetal gestation; 3. Chronic hypertension; 4. Pre-gestational diabetes mellitus (type 1 or 2); 5. Renal disease; 6. Autoimmune disease (systemic lupus erythematosus, antiphospholipid syndrome). Moderate risk factors include nulliparity, maternal age >= 35 years, pre-pregnancy BMI > 30 kg/m2, family history of preeclampsia, and conception via assisted reproductive technology (IVF).",
+    "whyWrong": {
+      "A": "Age 25-30 with prior normal pregnancies is a normal, low-risk demographic.",
+      "B": "Correct answer: Prior preeclampsia is the single strongest high-risk factor for recurrent preeclampsia.",
+      "C": "Cigarette smoking is paradoxically associated with a decreased risk of preeclampsia (though harmful for fetal growth/placental abruption).",
+      "D": "Normal BMI (21 kg/m2) and spontaneous singleton conception are low-risk baseline features."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• High-risk factors for preeclampsia: Previous preeclampsia, chronic hypertension, diabetes (type 1/2), CKD, autoimmune disease, multifetal pregnancy.\n• ACOG/USPSTF recommend low-dose aspirin (81-150 mg/day) starting at 12-16 weeks for women with >= 1 high-risk or >= 2 moderate-risk factors.\n• Smoking is paradoxically associated with reduced preeclampsia risk via carbon monoxide-mediated heme oxygenase upregulation.\n\nPOTENTIAL EXAM TRAP: Selecting multiparity or smoking as risk factors (multiparity without prior history is protective; smoking paradoxically lowers preeclampsia incidence).",
+    "hyperlinkedReference": {
+      "label": "ACOG Practice Bulletin #222 (2020)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Obstetric Critical Care",
+      "Risk Factors and Prophylaxis for Preeclampsia"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "reconstructed_recall",
+    "speaker_answer": "Previous history of preeclampsia",
+    "verified_answer": "History of preeclampsia in a previous pregnancy",
+    "answer_verification_note": "Verified against ACOG Practice Bulletin #222 and USPSTF 2021 Recommendations on Aspirin for Preeclampsia.",
+    "concept_tested": "Risk stratification and maternal risk factors for preeclampsia",
+    "high_yield_takeaway": [
+      "High-risk factors for preeclampsia: Previous preeclampsia, chronic hypertension, diabetes (type 1/2), CKD, autoimmune disease, multifetal pregnancy.",
+      "ACOG/USPSTF recommend low-dose aspirin (81-150 mg/day) starting at 12-16 weeks for women with >= 1 high-risk or >= 2 moderate-risk factors.",
+      "Smoking is paradoxically associated with reduced preeclampsia risk via carbon monoxide-mediated heme oxygenase upregulation."
+    ],
+    "potential_exam_trap": "Selecting multiparity or smoking as risk factors (multiparity without prior history is protective; smoking paradoxically lowers preeclampsia incidence).",
+    "sources": [
+      "ACOG Practice Bulletin #222 (2020)",
+      "USPSTF Preeclampsia Screening & Prophylaxis (JAMA 2021)"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R017",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "A 26-year-old primigravida at 34 weeks of gestation presents with new-onset generalized tonic-clonic convulsions and a blood pressure of 172/110 mmHg. An intravenous loading dose of magnesium sulfate (4 g over 15 minutes) followed by a 1 g/hour maintenance infusion is initiated, successfully aborting the seizures. Maternal hemodynamics are stabilized. What is the definitive management plan for this patient?",
+    "options": [
+      "Immediate delivery following maternal stabilization, regardless of gestational age",
+      "Expectant outpatient management with oral labetalol until 37 weeks of gestation",
+      "Hospitalization and expectant management with continuous fetal heart monitoring until 36 weeks",
+      "Immediate administration of phenytoin and continuation of pregnancy until spontaneous onset of labor"
+    ],
+    "answer": "A",
+    "explanation": "Eclampsia is defined as the occurrence of new-onset generalized seizures in a woman with preeclampsia that cannot be attributed to other neurologic causes. Eclampsia is an absolute obstetric and medical emergency representing end-stage severe preeclampsia. Once seizures are controlled with IV magnesium sulfate and maternal hypoxemia, acidosis, and severe hypertension are stabilized, prompt delivery is indicated regardless of gestational age. There is NO role for expectant management in eclampsia because delay carries high risks of maternal intracerebral hemorrhage, placental abruption, hepatic rupture, and intrauterine fetal demise.",
+    "whyWrong": {
+      "A": "Correct answer: Prompt delivery after maternal stabilization is mandatory in eclampsia.",
+      "B": "Expectant management is contraindicated in eclampsia; waiting for 37 weeks is lethal.",
+      "C": "Expectant management is reserved only for select cases of severe preeclampsia prior to 34 weeks without uncontrolled hypertension or maternal-fetal end-organ failure, never in eclampsia.",
+      "D": "Phenytoin is inferior to magnesium sulfate (Magpie trial), and pregnancy continuation is contraindicated."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Eclampsia = Seizures in preeclampsia; Magpie trial established Magnesium Sulfate as the drug of choice for prevention and treatment.\n• Once the mother is stabilized and seizures aborted, definitive treatment is prompt delivery regardless of gestational age.\n• Route of delivery (vaginal vs Cesarean) depends on cervical ripeness, gestational age, and fetal status; Cesarean is not universally mandatory if vaginal delivery is imminent.\n\nPOTENTIAL EXAM TRAP: Choosing expectant management to allow fetal maturation in a patient who has already convulsed (eclampsia).",
+    "hyperlinkedReference": {
+      "label": "ACOG Practice Bulletin #222",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Obstetric Critical Care",
+      "Eclampsia Management and Timing of Delivery"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Delivery after maternal stabilization",
+    "verified_answer": "Immediate delivery following maternal stabilization, regardless of gestational age",
+    "answer_verification_note": "Verified against ACOG Practice Bulletin #222 and Royal College of Obstetricians and Gynaecologists (RCOG) guidelines.",
+    "concept_tested": "Definitive management and delivery timing in eclampsia",
+    "high_yield_takeaway": [
+      "Eclampsia = Seizures in preeclampsia; Magpie trial established Magnesium Sulfate as the drug of choice for prevention and treatment.",
+      "Once the mother is stabilized and seizures aborted, definitive treatment is prompt delivery regardless of gestational age.",
+      "Route of delivery (vaginal vs Cesarean) depends on cervical ripeness, gestational age, and fetal status; Cesarean is not universally mandatory if vaginal delivery is imminent."
+    ],
+    "potential_exam_trap": "Choosing expectant management to allow fetal maturation in a patient who has already convulsed (eclampsia).",
+    "sources": [
+      "ACOG Practice Bulletin #222",
+      "RCOG Green-top Guideline No. 10A"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R018",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-general-considerations",
+    "question": "A 22-year-old woman at 10 weeks of gestation presents with severe hyperemesis gravidarum. She has been unable to tolerate oral intake for 4 days and presents with postural dizziness, sunken eyes, dry tongue, a blood pressure of 86/50 mmHg, and heart rate of 122 beats/min. Serum electrolytes show sodium 131 mEq/L, potassium 2.9 mEq/L, and chloride 88 mEq/L. Which of the following is the optimal initial intravenous resuscitation fluid strategy?",
+    "options": [
+      "0.9% Normal Saline with 20 to 40 mEq/L Potassium Chloride (KCl)",
+      "5% Dextrose in water (D5W) without additives",
+      "Ringer's Lactate without potassium replacement",
+      "0.45% Half-normal saline with sodium bicarbonate"
+    ],
+    "answer": "A",
+    "explanation": "Severe vomiting from hyperemesis gravidarum causes loss of gastric secretions containing hydrochloric acid (HCl), sodium, and potassium, resulting in hypovolemia, hypokalemia, and hypochloremic metabolic alkalosis. Resuscitation requires an isotonic crystalloid with high chloride content: 0.9% Normal Saline contains 154 mEq/L of chloride (superior to Ringer's Lactate which contains only 109 mEq/L of chloride). Supplemental potassium chloride (20-40 mEq/L) is critical to correct the severe hypokalemia. Crucially, dextrose-containing fluids MUST NOT be administered before parenteral thiamine (vitamin B1) supplementation, as glucose administration without thiamine can precipitate acute, fatal Wernicke's encephalopathy.",
+    "whyWrong": {
+      "A": "Correct answer: 0.9% NS provides high chloride (154 mEq/L) to treat hypochloremia, and added KCl corrects hypokalemia.",
+      "B": "D5W is hypotonic and infusing glucose without thiamine precipitates acute Wernicke's encephalopathy in malnourished patients.",
+      "C": "Ringer's Lactate contains insufficient chloride (109 mEq/L) to reverse hypochloremic alkalosis and lacks sufficient potassium.",
+      "D": "Half-normal saline exacerbates hyponatremia, and bicarbonate worsens the preexisting metabolic alkalosis."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Gastric fluid loss causes hypovolemia, hypochloremia, hypokalemia, and metabolic alkalosis.\n• 0.9% Normal Saline (chloride 154 mEq/L) + KCl is the fluid of choice.\n• Always administer IV Thiamine (100 mg) BEFORE any dextrose infusion to prevent Wernicke's encephalopathy.\n\nPOTENTIAL EXAM TRAP: Starting plain dextrose solutions before thiamine in a starving, vomiting pregnant patient.",
+    "hyperlinkedReference": {
+      "label": "RCOG Green-top Guideline No. 69 (2016)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Electrolytes",
+      "Hyperemesis Gravidarum, Fluid Resuscitation, and Electrolyte Replacement"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "reconstructed_recall",
+    "speaker_answer": "0.9% Normal Saline + KCl",
+    "verified_answer": "0.9% Normal Saline with 20 to 40 mEq/L Potassium Chloride (KCl)",
+    "answer_verification_note": "Verified against RCOG Green-top Guideline No. 69 (Hyperemesis Gravidarum) and Oh's Intensive Care Manual.",
+    "concept_tested": "Fluid and electrolyte replacement in hypochloremic hypokalemic metabolic alkalosis from hyperemesis",
+    "high_yield_takeaway": [
+      "Gastric fluid loss causes hypovolemia, hypochloremia, hypokalemia, and metabolic alkalosis.",
+      "0.9% Normal Saline (chloride 154 mEq/L) + KCl is the fluid of choice.",
+      "Always administer IV Thiamine (100 mg) BEFORE any dextrose infusion to prevent Wernicke's encephalopathy."
+    ],
+    "potential_exam_trap": "Starting plain dextrose solutions before thiamine in a starving, vomiting pregnant patient.",
+    "sources": [
+      "RCOG Green-top Guideline No. 69 (2016)",
+      "Oh's Intensive Care Manual, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R020",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-general-considerations",
+    "question": "A 29-year-old postpartum woman following an emergency cesarean delivery is being monitored in the recovery unit. She appears anxious and pale. The bedside nurse reports a heart rate of 115 beats/min and a blood pressure of 105/70 mmHg. What is her Obstetric Shock Index (OSI), and what is the validated clinical threshold that indicates significant blood loss and predicts the need for blood transfusion?",
+    "options": [
+      "OSI = 0.65; threshold for intervention is > 0.7",
+      "OSI = 1.10; threshold indicating significant shock/hemorrhage is > 0.9 to 1.0",
+      "OSI = 1.64; threshold indicating significant shock is > 2.0",
+      "OSI = 0.91; threshold indicating significant shock is > 1.4"
+    ],
+    "answer": "B",
+    "explanation": "Obstetric Shock Index (OSI) is calculated as Heart Rate (HR) divided by Systolic Blood Pressure (SBP). In pregnancy and postpartum, physiological adaptations (expanded plasma volume, low systemic vascular resistance) mask significant hemorrhage until late, when catastrophic decompensation occurs. A normal non-pregnant and obstetric shock index is 0.5 to 0.7. For this patient: OSI = 115 / 105 = 1.095 (~1.10). Multiple obstetric studies have established that an OSI >= 0.9 to 1.0 is an early, highly sensitive red flag for occult postpartum hemorrhage (PPH), predicting massive transfusion protocol activation and maternal morbidity, even before hypotension (SBP < 90 mmHg) develops. An OSI > 1.4 signals impending cardiovascular collapse.",
+    "whyWrong": {
+      "A": "115/105 = 1.10, not 0.65.",
+      "B": "Correct answer: OSI is 1.10, and an OSI > 0.9-1.0 is the validated cutoff for massive hemorrhage/transfusion.",
+      "C": "1.64 is a calculation error; 115/105 = 1.10.",
+      "D": "0.91 is inverted or miscalculated (105/115); the formula is HR / SBP."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Obstetric Shock Index (OSI) = Heart Rate / Systolic Blood Pressure.\n• Normal OSI range: 0.5 - 0.7.\n• OSI >= 0.9 to 1.0 indicates substantial hemorrhage and predicts need for blood products.\n• OSI > 1.4 indicates severe shock requiring immediate Massive Transfusion Protocol (MTP).\n\nPOTENTIAL EXAM TRAP: Inverting the ratio as SBP / HR instead of HR / SBP.",
+    "hyperlinkedReference": {
+      "label": "BJOG 2014 (Le Bas GA et al.)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Obstetric Critical Care",
+      "Obstetric Shock Index (OSI) in Maternal Hemorrhage"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "reconstructed_recall",
+    "speaker_answer": "OSI = HR / SBP; threshold > 1.0",
+    "verified_answer": "OSI = 1.10; threshold indicating significant shock/hemorrhage is > 0.9 to 1.0",
+    "answer_verification_note": "Verified against Le Bas et al. (BJOG 2014) and WHO Guidelines on Postpartum Hemorrhage.",
+    "concept_tested": "Calculation and clinical decision threshold of Obstetric Shock Index in postpartum hemorrhage",
+    "high_yield_takeaway": [
+      "Obstetric Shock Index (OSI) = Heart Rate / Systolic Blood Pressure.",
+      "Normal OSI range: 0.5 - 0.7.",
+      "OSI >= 0.9 to 1.0 indicates substantial hemorrhage and predicts need for blood products.",
+      "OSI > 1.4 indicates severe shock requiring immediate Massive Transfusion Protocol (MTP)."
+    ],
+    "potential_exam_trap": "Inverting the ratio as SBP / HR instead of HR / SBP.",
+    "sources": [
+      "BJOG 2014 (Le Bas GA et al.)",
+      "Oh's Intensive Care Manual, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R023",
+    "chapterId": 29,
+    "topicId": "cc-basic-echocardiography",
+    "question": "A critical care fellow performs point-of-care ultrasound (POCUS) to assess inferior vena cava (IVC) respiratory variation for fluid responsiveness in a spontaneously breathing hypotensive patient. Which threshold value of the IVC collapsibility (caval) index [(IVCmax - IVCmin) / IVCmax * 100] is widely accepted as predictive of volume responsiveness?",
+    "options": [
+      "Collapsibility index > 50%",
+      "Collapsibility index < 10%",
+      "Distensibility index > 12%",
+      "Collapsibility index between 5% and 15%"
+    ],
+    "answer": "A",
+    "explanation": "Respiratory variation of the inferior vena cava (IVC) diameter reflects dynamic cardiopulmonary interactions: 1. Spontaneously breathing patients generate negative intrathoracic pressure on inspiration, drawing venous blood into the right heart and collapsing the IVC. The Caval (Collapsibility) Index = (IVCmax - IVCmin) / IVCmax * 100. A collapsibility index > 50% strongly correlates with volume responsiveness. 2. Mechanically ventilated patients under controlled positive-pressure ventilation have positive intrathoracic pressure during inspiration, impeding venous return and causing IVC distension. The Distensibility Index = (IVCmax - IVCmin) / IVCmin * 100. A distensibility index > 18% (or > 12% if denominator is mean diameter) predicts fluid responsiveness.",
+    "whyWrong": {
+      "A": "Correct answer: Collapsibility > 50% in spontaneous breathing indicates fluid responsiveness.",
+      "B": "Collapsibility < 10% indicates a non-collapsing, plethoric IVC (high CVP / fluid non-responsive).",
+      "C": "Distensibility index is applied only in passive mechanically ventilated patients without spontaneous efforts.",
+      "D": "5-15% collapsibility indicates intravascular volume fullness and fluid non-responsiveness."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Spontaneously breathing: IVC Collapsibility Index [(IVCmax - IVCmin) / IVCmax] > 50% predicts fluid responsiveness.\n• Controlled Mechanical Ventilation: IVC Distensibility Index [(IVCmax - IVCmin) / IVCmin] > 18% predicts fluid responsiveness.\n• Confounders: RV failure, tricuspid regurgitation, cardiac tamponade, and increased intra-abdominal pressure invalidate IVC dynamics.\n\nPOTENTIAL EXAM TRAP: Applying collapsibility criteria to fully ventilated patients or ignoring spontaneous respiratory effort.",
+    "hyperlinkedReference": {
+      "label": "Intensive Care Med 2016 (Vieillard-Baron A et al.)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Monitoring",
+      "Inferior Vena Cava Respiratory Variation and Fluid Responsiveness"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "IVC collapsibility > 50%",
+    "verified_answer": "Collapsibility index > 50%",
+    "answer_verification_note": "Verified against Vieillard-Baron et al. (Intensive Care Med 2016) and Pinsky MR et al.",
+    "concept_tested": "Cutoffs and physiological differences between IVC collapsibility (spontaneous) and distensibility (mechanical)",
+    "high_yield_takeaway": [
+      "Spontaneously breathing: IVC Collapsibility Index [(IVCmax - IVCmin) / IVCmax] > 50% predicts fluid responsiveness.",
+      "Controlled Mechanical Ventilation: IVC Distensibility Index [(IVCmax - IVCmin) / IVCmin] > 18% predicts fluid responsiveness.",
+      "Confounders: RV failure, tricuspid regurgitation, cardiac tamponade, and increased intra-abdominal pressure invalidate IVC dynamics."
+    ],
+    "potential_exam_trap": "Applying collapsibility criteria to fully ventilated patients or ignoring spontaneous respiratory effort.",
+    "sources": [
+      "Intensive Care Med 2016 (Vieillard-Baron A et al.)",
+      "Marino's The ICU Book, 4th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R028",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "A 31-year-old primigravida at 33 weeks of gestation presents with epigastric pain, nausea, and headache. Her blood pressure is 156/98 mmHg. Laboratory evaluation shows microangiopathic hemolytic anemia with schistocytes on peripheral smear, total bilirubin 2.4 mg/dL, platelet count 68,000/microL, AST 180 U/L, and ALT 165 U/L. Which laboratory abnormality is a specific core diagnostic criterion that differentiates HELLP syndrome from isolated severe preeclampsia without HELLP?",
+    "options": [
+      "Elevated liver enzymes (transaminitis, AST/ALT >= 2x upper limit of normal)",
+      "New-onset hypertension > 140/90 mmHg",
+      "Proteinuria >= 300 mg/24 hours",
+      "Elevated serum uric acid"
+    ],
+    "answer": "A",
+    "explanation": "HELLP syndrome is defined by its laboratory triad: H - Hemolysis (microangiopathic hemolytic anemia with schistocytes on peripheral blood smear, elevated serum LDH >= 600 U/L, increased unconjugated bilirubin, or low haptoglobin); EL - Elevated Liver enzymes (transaminitis with serum AST/ALT >= 2 times the upper limit of normal); LP - Low Platelets (thrombocytopenia with platelet count < 100,000/microL). Severe preeclampsia may feature hypertension and proteinuria, but transaminitis (EL) along with hemolysis and thrombocytopenia is the diagnostic hallmark differentiating HELLP syndrome (Tennessee and Mississippi classifications).",
+    "whyWrong": {
+      "A": "Correct answer: Elevated liver enzymes (transaminitis) along with hemolysis and thrombocytopenia define HELLP syndrome.",
+      "B": "Hypertension is a baseline criterion for preeclampsia and does not differentiate HELLP (up to 15% of HELLP patients may even be normotensive).",
+      "C": "Proteinuria defines preeclampsia and is not part of the HELLP laboratory triad.",
+      "D": "Hyperuricemia is common to all forms of preeclampsia due to decreased renal clearance and is non-specific."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• HELLP = Hemolysis (LDH >= 600, schistocytes), Elevated Liver enzymes (AST/ALT >= 2x ULN), Low Platelets (< 100,000/microL).\n• Epigastric or right upper quadrant pain is present in 85-90% due to hepatic microvascular thrombosis and Glisson's capsule distension.\n• Delivery is the definitive cure once the mother is stabilized.\n\nPOTENTIAL EXAM TRAP: Selecting headache/visual disturbances, which occur in severe preeclampsia without HELLP.",
+    "hyperlinkedReference": {
+      "label": "Sibai BM. Am J Obstet Gynecol 2004",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Obstetric Critical Care",
+      "HELLP Syndrome Diagnostic Criteria and Distinctions"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Transaminitis / Elevated liver enzymes",
+    "verified_answer": "Elevated liver enzymes (transaminitis, AST/ALT >= 2x upper limit of normal)",
+    "answer_verification_note": "Verified against Sibai BM et al. (Tennessee Classification) and ACOG Practice Bulletin #222.",
+    "concept_tested": "Laboratory criteria defining HELLP syndrome vs uncomplicated preeclampsia",
+    "high_yield_takeaway": [
+      "HELLP = Hemolysis (LDH >= 600, schistocytes), Elevated Liver enzymes (AST/ALT >= 2x ULN), Low Platelets (< 100,000/microL).",
+      "Epigastric or right upper quadrant pain is present in 85-90% due to hepatic microvascular thrombosis and Glisson's capsule distension.",
+      "Delivery is the definitive cure once the mother is stabilized."
+    ],
+    "potential_exam_trap": "Selecting headache/visual disturbances, which occur in severe preeclampsia without HELLP.",
+    "sources": [
+      "Sibai BM. Am J Obstet Gynecol 2004",
+      "ACOG Practice Bulletin #222"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R041",
+    "chapterId": 28,
+    "topicId": "cc-pleural-disorders-in-icu",
+    "question": "Which of the following statements regarding the selection and insertion of artificial airway adjuncts (Oropharyngeal Airway / Guedel Airway vs Nasopharyngeal Airway) in emergency airway management is correct?",
+    "options": [
+      "The oropharyngeal airway is contraindicated in fully conscious or semi-conscious patients due to the risk of triggering laryngospasm, gagging, and vomiting",
+      "A nasopharyngeal airway is strictly contraindicated in patients with an intact gag reflex",
+      "An oropharyngeal airway length is correctly measured from the tip of the nose to the tragus of the ear",
+      "Nasopharyngeal airways are safe and indicated in patients with confirmed basilar skull fractures"
+    ],
+    "answer": "A",
+    "explanation": "An Oropharyngeal Airway (OPA, Guedel airway) holds the base of the tongue away from the posterior pharyngeal wall. It is strictly indicated ONLY in deeply unconscious patients who lack a cough or gag reflex. In awake, semi-conscious, or lightly sedated patients, inserting an OPA triggers active retching, vomiting, aspiration of gastric contents, and reflex laryngospasm. In contrast, a Nasopharyngeal Airway (NPA, nasal trumpet) is better tolerated in patients who are awake or have an intact gag reflex. Proper sizing: OPA is sized from the corner of the mouth to the angle of the mandible (or tragus); NPA is sized from the tip of the nose to the tragus of the ear. NPAs are contraindicated in suspected or confirmed basilar skull fractures due to risk of intracranial placement.",
+    "whyWrong": {
+      "A": "Correct answer: OPAs cannot be used in conscious/semi-conscious patients because they induce severe gagging, vomiting, and laryngospasm.",
+      "B": "NPAs are specifically well-tolerated in patients with an intact gag reflex.",
+      "C": "OPA is measured from the corner of the mouth (or incisors) to the angle of the mandible, not from the nose.",
+      "D": "NPAs are contraindicated in basilar skull fractures due to the risk of direct cranial vault entry."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Oropharyngeal airway (OPA/Guedel): Deeply unconscious patients without gag reflex only. Sized: mouth corner to mandibular angle.\n• Nasopharyngeal airway (NPA): Tolerated in conscious/semi-conscious patients with intact gag reflex. Sized: nose tip to ear tragus.\n• NPA contraindications: Basilar skull fracture (racoon eyes, Battle's sign, CSF rhinorrhea), severe coagulopathy.\n\nPOTENTIAL EXAM TRAP: Attempting to insert a Guedel airway in a conscious, vomiting patient.",
+    "hyperlinkedReference": {
+      "label": "Miller's Anesthesia, 9th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "ICU Procedures",
+      "Airway Adjuncts: Oropharyngeal vs Nasopharyngeal Airways"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Oropharyngeal airway triggers gag reflex in conscious patients",
+    "verified_answer": "The oropharyngeal airway is contraindicated in fully conscious or semi-conscious patients due to the risk of triggering laryngospasm, gagging, and vomiting",
+    "answer_verification_note": "Verified against AHA ACLS Airway Management Protocols and Miller's Anesthesia.",
+    "concept_tested": "Indications, contraindications, and anatomical sizing of OPA and NPA adjuncts",
+    "high_yield_takeaway": [
+      "Oropharyngeal airway (OPA/Guedel): Deeply unconscious patients without gag reflex only. Sized: mouth corner to mandibular angle.",
+      "Nasopharyngeal airway (NPA): Tolerated in conscious/semi-conscious patients with intact gag reflex. Sized: nose tip to ear tragus.",
+      "NPA contraindications: Basilar skull fracture (racoon eyes, Battle's sign, CSF rhinorrhea), severe coagulopathy."
+    ],
+    "potential_exam_trap": "Attempting to insert a Guedel airway in a conscious, vomiting patient.",
+    "sources": [
+      "Miller's Anesthesia, 9th Ed.",
+      "AHA ACLS Provider Manual 2020"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R042",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-general-considerations",
+    "question": "During cardiopulmonary resuscitation (CPR) of a pregnant woman at 30 weeks of gestation who has suffered in-hospital cardiac arrest, AHA resuscitation guidelines mandate that a second dedicated rescuer perform continuous Manual Left Uterine Displacement (LUD). What is the primary physiological rationale for this specific intervention?",
+    "options": [
+      "To relieve inferior vena cava and abdominal aortic compression (aortocaval compression), thereby restoring venous return and cardiac output generated during chest compressions",
+      "To induce uterine contractions and expedite spontaneous vaginal delivery",
+      "To prevent gastroesophageal reflux and pulmonary aspiration during chest compressions",
+      "To facilitate emergency endotracheal intubation by shifting the maternal diaphragm downward"
+    ],
+    "answer": "A",
+    "explanation": "In pregnant women beyond 20 weeks of gestation (or with fundal height at or above the umbilicus), the enlarged gravid uterus compresses the inferior vena cava (IVC) and abdominal aorta when the patient is in the supine position. This aortocaval compression severely impedes venous return to the right heart, reducing stroke volume and cardiac output by up to 30-40%. During cardiac arrest, standard closed-chest compressions generate only ~30% of normal cardiac output; persistent aortocaval compression reduces this further to near zero. A dedicated rescuer performing continuous Manual Left Uterine Displacement (LUD) with one or two hands lifts and shifts the uterus to the patient's left, decompressing the great vessels, restoring venous return, and dramatically improving the efficacy of CPR and the probability of ROSC.",
+    "whyWrong": {
+      "A": "Correct answer: Decompressing the IVC and aorta to restore venous return and stroke volume during compressions.",
+      "B": "LUD does not stimulate labor contractions; it is a purely mechanical vascular decompression maneuver.",
+      "C": "LUD does not prevent gastric aspiration; early endotracheal intubation is required for airway protection.",
+      "D": "LUD does not facilitate laryngoscopy; its purpose is strictly hemodynamic restoration of venous return."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Gravid uterus >= 20 weeks causes aortocaval compression in supine position -> profound reduction in venous return.\n• Continuous Manual Left Uterine Displacement (LUD) is mandatory during maternal CPR.\n• If ROSC is not achieved within 4 minutes of arrest in pregnancy >= 20 weeks, proceed immediately to Resuscitative Hysterotomy (Perimortem Cesarean Delivery) to deliver by minute 5.\n\nPOTENTIAL EXAM TRAP: Tilting the entire patient on a steep 30-degree spine board instead of manual left uterine displacement (steep full-body tilts impair chest compression depth and cause the patient to slide off).",
+    "hyperlinkedReference": {
+      "label": "Circulation 2015/2020 AHA Scientific Statement: Cardiac Arrest in Pregnancy",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Obstetric Critical Care",
+      "Maternal CPR and Left Uterine Displacement (LUD)"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Relieve aortocaval compression / Left uterine displacement",
+    "verified_answer": "To relieve inferior vena cava and abdominal aortic compression (aortocaval compression), thereby restoring venous return and cardiac output generated during chest compressions",
+    "answer_verification_note": "Verified against AHA Scientific Statement on Cardiac Arrest in Pregnancy (Circulation 2015/2020 update).",
+    "concept_tested": "Hemodynamic rationale for Left Uterine Displacement during resuscitation in advanced pregnancy",
+    "high_yield_takeaway": [
+      "Gravid uterus >= 20 weeks causes aortocaval compression in supine position -> profound reduction in venous return.",
+      "Continuous Manual Left Uterine Displacement (LUD) is mandatory during maternal CPR.",
+      "If ROSC is not achieved within 4 minutes of arrest in pregnancy >= 20 weeks, proceed immediately to Resuscitative Hysterotomy (Perimortem Cesarean Delivery) to deliver by minute 5."
+    ],
+    "potential_exam_trap": "Tilting the entire patient on a steep 30-degree spine board instead of manual left uterine displacement (steep full-body tilts impair chest compression depth and cause the patient to slide off).",
+    "sources": [
+      "Circulation 2015/2020 AHA Scientific Statement: Cardiac Arrest in Pregnancy",
+      "Oh's Intensive Care Manual, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R048",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "Which of the following cellular and molecular mechanisms represents the primary initiating defect in the two-stage pathophysiological model of preeclampsia?",
+    "options": [
+      "Defective endovascular trophoblast invasion of maternal spiral arteries, resulting in high-resistance, low-capacity vessels, placental ischemia, and release of anti-angiogenic factors (sFlt-1 and soluble endoglin)",
+      "Primary hyperaldosteronism with excessive renal sodium retention",
+      "Autoimmune destruction of maternal adrenal cortical cells",
+      "Acute viral infection of the maternal vascular endothelium causing nitric oxide synthase downregulation"
+    ],
+    "answer": "A",
+    "explanation": "The established two-stage model of preeclampsia pathogenesis: Stage 1 (Placental): During normal placentation, extravillous cytotrophoblasts remodel maternal spiral arteries from narrow, tortuous, muscular vessels into high-flow, low-resistance flaccid conduits. In preeclampsia, trophoblast invasion is abnormally shallow and incomplete, leaving spiral arteries narrow and muscular, causing placental hypoperfusion and intermittent ischemia-reperfusion injury. Stage 2 (Systemic Maternal Syndrome): The hypoxic placenta sheds microparticles and secretes excessive anti-angiogenic factors, primarily soluble fms-like tyrosine kinase-1 (sFlt-1, a VEGF and PlGF antagonist) and soluble endoglin (sEng, a TGF-beta antagonist). Elevated sFlt-1 binds and neutralizes VEGF, starving endothelial cells, causing systemic endothelial dysfunction, microvascular vasospasm, glomerular endotheliosis (proteinuria), and hypertension.",
+    "whyWrong": {
+      "A": "Correct answer: Impaired trophoblast remodeling of spiral arteries leading to anti-angiogenic excess (sFlt-1) is the unifying pathophysiology.",
+      "B": "In preeclampsia, the renin-angiotensin-aldosterone axis is paradoxically suppressed despite intense vascular sensitivity to angiotensin II.",
+      "C": "Adrenal autoimmunity is the cause of primary adrenal insufficiency (Addison's disease), not preeclampsia.",
+      "D": "Viral endothelial damage is not the etiology of preeclampsia."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Stage 1: Incomplete endovascular trophoblast invasion of spiral arteries -> placental ischemia.\n• Stage 2: Excess release of anti-angiogenic factors: sFlt-1 (neutralizes VEGF & PlGF) and Soluble Endoglin.\n• Endothelial dysfunction produces glomerular endotheliosis, capillary leak, hypertension, and multiorgan injury.\n\nPOTENTIAL EXAM TRAP: Confusing pro-angiogenic factors (VEGF, PlGF, which are DECREASED) with anti-angiogenic factors (sFlt-1, sEng, which are ELEVATED).",
+    "hyperlinkedReference": {
+      "label": "ACOG Practice Bulletin #222",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Obstetric Critical Care",
+      "Molecular Pathophysiology of Preeclampsia"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Defective trophoblast invasion of spiral arteries and placental ischemia",
+    "verified_answer": "Defective endovascular trophoblast invasion of maternal spiral arteries, resulting in high-resistance, low-capacity vessels, placental ischemia, and release of anti-angiogenic factors (sFlt-1 and soluble endoglin)",
+    "answer_verification_note": "Verified against Karumanchi SA et al. (Circulation 2004) and ACOG Practice Bulletin #222.",
+    "concept_tested": "Placental ischemia and anti-angiogenic signaling (sFlt-1 / sEng) in the pathogenesis of preeclampsia",
+    "high_yield_takeaway": [
+      "Stage 1: Incomplete endovascular trophoblast invasion of spiral arteries -> placental ischemia.",
+      "Stage 2: Excess release of anti-angiogenic factors: sFlt-1 (neutralizes VEGF & PlGF) and Soluble Endoglin.",
+      "Endothelial dysfunction produces glomerular endotheliosis, capillary leak, hypertension, and multiorgan injury."
+    ],
+    "potential_exam_trap": "Confusing pro-angiogenic factors (VEGF, PlGF, which are DECREASED) with anti-angiogenic factors (sFlt-1, sEng, which are ELEVATED).",
+    "sources": [
+      "ACOG Practice Bulletin #222",
+      "Levine RJ, Karumanchi SA et al. N Engl J Med 2004"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R053",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "According to the American College of Obstetricians and Gynecologists (ACOG) and International Society for the Study of Hypertension in Pregnancy (ISSHP), which of the following defines the modern diagnostic criteria for preeclampsia in a previously normotensive woman after 20 weeks of gestation?",
+    "options": [
+      "Systolic BP >= 140 mmHg or diastolic BP >= 90 mmHg on two occasions at least 4 hours apart, accompanied by proteinuria (>= 300 mg/24h or protein/creatinine ratio >= 0.3), OR in the absence of proteinuria, new-onset end-organ dysfunction",
+      "Blood pressure >= 130/85 mmHg accompanied by lower extremity dependent edema alone",
+      "Elevated blood pressure presenting prior to 12 weeks of gestation with normal renal and liver function",
+      "Mandatory presence of both massive proteinuria (> 3 g/24h) and generalized tonic-clonic convulsions"
+    ],
+    "answer": "A",
+    "explanation": "ACOG and ISSHP guidelines define preeclampsia as: 1. New-onset hypertension after 20 weeks of gestation in a previously normotensive woman (Systolic BP >= 140 mmHg or Diastolic BP >= 90 mmHg on 2 occasions at least 4 hours apart; or SBP >= 160 or DBP >= 110 confirmed within minutes); AND 2. Proteinuria: >= 300 mg per 24-hour urine collection, or protein/creatinine ratio >= 0.3 mg/mg, or urine dipstick >= 2+ (if quantitative methods unavailable); OR 3. In the ABSENCE of proteinuria, new-onset preeclampsia is diagnosed if hypertension occurs with any of the following end-organ dysfunctions: Thrombocytopenia (platelets < 100,000/microL), Renal insufficiency (serum Cr > 1.1 mg/dL or doubling of baseline), Impaired liver function (AST/ALT >= 2x upper limit of normal), Pulmonary edema, or New-onset headache/visual disturbances unresponsive to analgesics. Dependent edema is non-specific and was removed from the diagnostic criteria.",
+    "whyWrong": {
+      "A": "Correct answer: SBP >= 140 or DBP >= 90 after 20 weeks plus proteinuria OR end-organ dysfunction.",
+      "B": "Dependent edema occurs in > 80% of normal pregnancies and is explicitly excluded from the diagnostic criteria.",
+      "C": "Hypertension before 20 weeks represents Chronic Hypertension, not preeclampsia.",
+      "D": "Convulsions define Eclampsia, not preeclampsia; massive proteinuria is not mandatory."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Preeclampsia: BP >= 140/90 after 20 weeks gestation + Proteinuria (>= 300 mg/24h or PCR >= 0.3).\n• Proteinuria is NO LONGER mandatory if end-organ dysfunction is present (thrombocytopenia, high creatinine, transaminitis, pulmonary edema, cerebral symptoms).\n• Dependent peripheral edema is completely removed from diagnostic definitions.\n\nPOTENTIAL EXAM TRAP: Believing proteinuria is strictly mandatory to establish the diagnosis of preeclampsia.",
+    "hyperlinkedReference": {
+      "label": "ACOG Practice Bulletin #222 (Obstet Gynecol 2020)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Obstetric Critical Care",
+      "Diagnostic Criteria for Preeclampsia"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "BP >= 140/90 after 20 weeks with proteinuria or end-organ failure",
+    "verified_answer": "Systolic BP >= 140 mmHg or diastolic BP >= 90 mmHg on two occasions at least 4 hours apart, accompanied by proteinuria (>= 300 mg/24h or protein/creatinine ratio >= 0.3), OR in the absence of proteinuria, new-onset end-organ dysfunction",
+    "answer_verification_note": "Verified against ACOG Practice Bulletin #222 (Gestational Hypertension and Preeclampsia).",
+    "concept_tested": "Modern diagnostic criteria of preeclampsia per ACOG/ISSHP guidelines",
+    "high_yield_takeaway": [
+      "Preeclampsia: BP >= 140/90 after 20 weeks gestation + Proteinuria (>= 300 mg/24h or PCR >= 0.3).",
+      "Proteinuria is NO LONGER mandatory if end-organ dysfunction is present (thrombocytopenia, high creatinine, transaminitis, pulmonary edema, cerebral symptoms).",
+      "Dependent peripheral edema is completely removed from diagnostic definitions."
+    ],
+    "potential_exam_trap": "Believing proteinuria is strictly mandatory to establish the diagnosis of preeclampsia.",
+    "sources": [
+      "ACOG Practice Bulletin #222 (Obstet Gynecol 2020)",
+      "ISSHP Classification 2021"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R054",
+    "chapterId": 31,
+    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "question": "A 45-year-old patient with acute myeloid leukemia develops profound neutropenia (Absolute Neutrophil Count = 150/microL) following induction chemotherapy. Despite 5 days of empirical broad-spectrum antibacterial therapy with piperacillin-tazobactam and vancomycin, he has persistent daily temperature spikes > 38.6°C. High-resolution chest CT shows no pulmonary infiltrates. According to IDSA and ECIL guidelines, which class of antifungal agents is recommended as first-line empiric therapy for persistent febrile neutropenia?",
+    "options": [
+      "An Echinocandin (Caspofungin, Micafungin, or Anidulafungin) or Liposomal Amphotericin B",
+      "Oral Fluconazole 100 mg daily",
+      "Intravenous Terbinafine",
+      "Inhaled Pentamidine"
+    ],
+    "answer": "A",
+    "explanation": "In high-risk patients with profound, prolonged febrile neutropenia (ANC < 500/microL) who remain febrile despite 4 to 7 days of broad-spectrum antibacterial coverage and in whom no infectious source is identified, empiric antifungal therapy is indicated to treat occult invasive candidiasis or aspergillosis. According to IDSA and European Conference on Infections in Leukemia (ECIL) guidelines, the recommended first-line empiric agents are an Echinocandin (Caspofungin, Micafungin, or Anidulafungin) or Liposomal Amphotericin B. Echinocandins have demonstrated non-inferiority to liposomal amphotericin B with significantly lower nephrotoxicity and infusion-related reactions. Fluconazole is not recommended for empiric therapy in patients receiving azole prophylaxis and lacks activity against Aspergillus. Voriconazole is the drug of choice for targeted treatment of proven/probable invasive aspergillosis.",
+    "whyWrong": {
+      "A": "Correct answer: An Echinocandin or Liposomal Amphotericin B is the guideline standard for empiric antifungal therapy.",
+      "B": "Fluconazole lacks activity against Aspergillus species and many non-albicans Candida species (C. krusei, C. glabrata).",
+      "C": "Terbinafine is an allylamine used for superficial dermatophyte infections and has no role in invasive systemic mycoses.",
+      "D": "Pentamidine is an antiprotozoal used for PJP prophylaxis, not systemic empiric antifungal therapy."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Febrile neutropenia unresponsive to 4-7 days of broad-spectrum antibiotics -> Initiate empiric antifungal therapy.\n• First-line agents: Echinocandin (Caspofungin / Micafungin / Anidulafungin) or Liposomal Amphotericin B.\n• Echinocandins offer superior safety and minimal nephrotoxicity compared to amphotericin B formulations.\n\nPOTENTIAL EXAM TRAP: Selecting fluconazole for empiric coverage in persistent neutropenic fever (it has no mold/Aspergillus coverage).",
+    "hyperlinkedReference": {
+      "label": "IDSA Febrile Neutropenia Guidelines (CID 2011)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Infectious Diseases",
+      "Empiric Antifungal Therapy in Persistent Febrile Neutropenia"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Echinocandin or Liposomal Amphotericin B",
+    "verified_answer": "An Echinocandin (Caspofungin, Micafungin, or Anidulafungin) or Liposomal Amphotericin B",
+    "answer_verification_note": "Verified against IDSA Clinical Practice Guideline for the Use of Antimicrobial Agents in Neutropenic Patients with Cancer (Clin Infect Dis 2011) and ECIL guidelines.",
+    "concept_tested": "First-line empiric antifungal therapy for persistent febrile neutropenia per IDSA/ECIL",
+    "high_yield_takeaway": [
+      "Febrile neutropenia unresponsive to 4-7 days of broad-spectrum antibiotics -> Initiate empiric antifungal therapy.",
+      "First-line agents: Echinocandin (Caspofungin / Micafungin / Anidulafungin) or Liposomal Amphotericin B.",
+      "Echinocandins offer superior safety and minimal nephrotoxicity compared to amphotericin B formulations."
+    ],
+    "potential_exam_trap": "Selecting fluconazole for empiric coverage in persistent neutropenic fever (it has no mold/Aspergillus coverage).",
+    "sources": [
+      "IDSA Febrile Neutropenia Guidelines (CID 2011)",
+      "ECIL-6 Guidelines"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R062",
+    "chapterId": 31,
+    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "question": "A 58-year-old allogeneic hematopoietic stem cell transplant recipient develops fever, hemoptysis, and pleuritic chest pain. High-resolution thoracic CT demonstrates a dense, well-circumscribed nodule with an surrounding ground-glass attenuation ('halo sign'). Serum galactomannan antigen is strongly positive. Bronchoalveolar lavage culture grows Aspergillus fumigatus. According to the IDSA and ECIL clinical practice guidelines, what is the primary drug of choice for invasive pulmonary aspergillosis?",
+    "options": [
+      "Voriconazole",
+      "Fluconazole",
+      "Caspofungin monotherapy",
+      "Flucytosine monotherapy"
+    ],
+    "answer": "A",
+    "explanation": "According to IDSA and ECIL guidelines, Voriconazole is the primary drug of choice for the treatment of invasive pulmonary aspergillosis. In the landmark randomized trial by Herbrecht et al. (NEJM 2002), voriconazole demonstrated superior 12-week survival (71% vs 58%) and higher successful clinical and radiological response rates compared to conventional amphotericin B deoxycholate, with significantly less nephrotoxicity. Isavuconazole is an equally efficacious alternative with a favorable side effect profile and shorter QTc prolongation. Liposomal amphotericin B is the preferred alternative when azoles are contraindicated. Fluconazole has NO activity against Aspergillus species. Caspofungin and other echinocandins are fungistatic against molds and are reserved for salvage or combination therapy.",
+    "whyWrong": {
+      "A": "Correct answer: Voriconazole is the established first-line drug of choice for invasive aspergillosis.",
+      "B": "Fluconazole has zero microbiological activity against Aspergillus species.",
+      "C": "Echinocandins (caspofungin) are only fungistatic against Aspergillus (affecting hyphal tips) and are relegated to salvage/second-line options.",
+      "D": "Flucytosine monotherapy leads to rapid emergence of mutational resistance and has no activity against Aspergillus."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Invasive Pulmonary Aspergillosis -> Drug of choice: Voriconazole (or Isavuconazole).\n• CT chest hallmark: Halo sign (nodule with ground-glass perimeter representing hemorrhage) and Air crescent sign (late phase).\n• Fluconazole has NO activity against Aspergillus.\n• Voriconazole requires therapeutic drug monitoring (target trough 1.0 to 5.5 mcg/mL) to avoid neurotoxicity (visual hallucinations) and hepatotoxicity.\n\nPOTENTIAL EXAM TRAP: Selecting fluconazole or caspofungin monotherapy for acute invasive mold infections.",
+    "hyperlinkedReference": {
+      "label": "IDSA Aspergillosis Guidelines (CID 2016)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Infectious Diseases",
+      "Invasive Pulmonary Aspergillosis First-Line Therapy"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Voriconazole",
+    "verified_answer": "Voriconazole",
+    "answer_verification_note": "Verified against IDSA Guidelines for Diagnosis and Management of Aspergillosis (Patterson TF et al., Clin Infect Dis 2016).",
+    "concept_tested": "First-line antifungal therapy for invasive pulmonary aspergillosis per IDSA/ECIL guidelines",
+    "high_yield_takeaway": [
+      "Invasive Pulmonary Aspergillosis -> Drug of choice: Voriconazole (or Isavuconazole).",
+      "CT chest hallmark: Halo sign (nodule with ground-glass perimeter representing hemorrhage) and Air crescent sign (late phase).",
+      "Fluconazole has NO activity against Aspergillus.",
+      "Voriconazole requires therapeutic drug monitoring (target trough 1.0 to 5.5 mcg/mL) to avoid neurotoxicity (visual hallucinations) and hepatotoxicity."
+    ],
+    "potential_exam_trap": "Selecting fluconazole or caspofungin monotherapy for acute invasive mold infections.",
+    "sources": [
+      "IDSA Aspergillosis Guidelines (CID 2016)",
+      "Herbrecht R et al. N Engl J Med 2002"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R064",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-general-considerations",
+    "question": "A 32-year-old G2P1 woman at 39 weeks of gestation experiences sudden amniotomy during active labor, followed seconds later by severe dyspnea, cyanosis, generalized seizures, and catastrophic cardiovascular collapse with pulseless electrical activity (PEA). Following successful CPR and ROSC, she develops massive, uncontrollable vaginal bleeding and puncture site oozing, with blood failing to clot in collection tubes. What is the diagnosis, and what is the underlying pathophysiology?",
+    "options": [
+      "Amniotic Fluid Embolism (AFE) caused by entry of fetal antigens and procoagulant tissue factor into the maternal circulation, triggering severe anaphylactoid shock, acute pulmonary vasoconstriction, and fulminant DIC",
+      "Acute rupture of a maternal cerebral aneurysm with neurogenic pulmonary edema",
+      "Sudden tension pneumothorax secondary to violent labor contractions",
+      "Severe eclampsia with isolated intracranial hemorrhage without coagulopathy"
+    ],
+    "answer": "A",
+    "explanation": "Amniotic Fluid Embolism (AFE, also termed Anaphylactoid Syndrome of Pregnancy) is an unpredictable, catastrophic obstetric emergency occurring in approximately 1 in 40,000 deliveries. Pathophysiology involves breach of the maternal-fetal barrier (during labor, cesarean delivery, or membrane rupture), allowing amniotic fluid containing fetal squamous cells, vernix, and abundant procoagulant tissue factor to enter the maternal venous circulation. This triggers a biphasic response: 1. Phase 1: Intense pulmonary vasospasm producing acute severe pulmonary hypertension, acute right ventricular failure, hypoxemia, and cardiovascular collapse; 2. Phase 2: Massive activation of the extrinsic coagulation cascade by tissue factor, causing explosive consumptive Disseminated Intravascular Coagulation (DIC), hypofibrinogenemia, left ventricular failure, and massive postpartum hemorrhage.",
+    "whyWrong": {
+      "A": "Correct answer: AFE classic triad: acute cardiopulmonary collapse, hypoxemic respiratory failure, and fulminant DIC.",
+      "B": "Ruptured cerebral aneurysm causes sudden severe headache and subarachnoid hemorrhage without acute severe fulminant DIC/hypofibrinogenemia.",
+      "C": "Tension pneumothorax causes unilateral absent breath sounds, tracheal deviation, and obstructive shock, but not explosive consumptive coagulopathy.",
+      "D": "Eclampsia is preceded by severe hypertension and proteinuria; it does not present as sudden peripartum circulatory collapse with immediate DIC."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• AFE Triad: 1. Sudden hypoxia/respiratory arrest; 2. Hemodynamic collapse/RV failure; 3. Fulminant DIC and massive hemorrhage.\n• Triggered by entry of fetal tissue factor and antigens into maternal venous sinusoids -> anaphylactoid reaction and profound coagulopathy.\n• Management: High-quality CPR, Left Uterine Displacement, immediate perimortem cesarean if arrest persists > 4 min, massive transfusion with early cryoprecipitate (target fibrinogen > 200 mg/dL), and VA-ECMO for refractory shock.\n\nPOTENTIAL EXAM TRAP: Assuming AFE is purely a mechanical obstruction like thromboembolism; it is predominantly an immunological and procoagulant anaphylactoid syndrome.",
+    "hyperlinkedReference": {
+      "label": "SMFM Clinical Guideline #9 (AJOG 2016)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Obstetric Critical Care",
+      "Amniotic Fluid Embolism (AFE) Triad and Pathophysiology"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Amniotic fluid embolism",
+    "verified_answer": "Amniotic Fluid Embolism (AFE) caused by entry of fetal antigens and procoagulant tissue factor into the maternal circulation, triggering severe anaphylactoid shock, acute pulmonary vasoconstriction, and fulminant DIC",
+    "answer_verification_note": "Verified against SMFM Clinical Guideline #9: Amniotic Fluid Embolism (Am J Obstet Gynecol 2016).",
+    "concept_tested": "Pathophysiology and clinical triad of Amniotic Fluid Embolism (AFE)",
+    "high_yield_takeaway": [
+      "AFE Triad: 1. Sudden hypoxia/respiratory arrest; 2. Hemodynamic collapse/RV failure; 3. Fulminant DIC and massive hemorrhage.",
+      "Triggered by entry of fetal tissue factor and antigens into maternal venous sinusoids -> anaphylactoid reaction and profound coagulopathy.",
+      "Management: High-quality CPR, Left Uterine Displacement, immediate perimortem cesarean if arrest persists > 4 min, massive transfusion with early cryoprecipitate (target fibrinogen > 200 mg/dL), and VA-ECMO for refractory shock."
+    ],
+    "potential_exam_trap": "Assuming AFE is purely a mechanical obstruction like thromboembolism; it is predominantly an immunological and procoagulant anaphylactoid syndrome.",
+    "sources": [
+      "SMFM Clinical Guideline #9 (AJOG 2016)",
+      "Oh's Intensive Care Manual, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R065",
+    "chapterId": 31,
+    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "question": "A 38-year-old HIV-infected male (CD4 count 65 cells/microL) presents with a 3-week history of non-productive cough, exertional dyspnea, and low-grade fever. Arterial blood gas shows a widened alveolar-arterial oxygen gradient with PaO2 of 58 mmHg on room air. High-resolution thoracic CT (HRCT) is performed. Which of the following is the most frequent and characteristic radiological manifestation of Pneumocystis jirovecii pneumonia (PJP)?",
+    "options": [
+      "Bilateral, symmetric, perihilar ground-glass opacities (GGOs) with geographic sparing of subpleural spaces",
+      "Dense upper lobe cavitary lesions with prominent air-fluid levels",
+      "Large, unilateral pleural effusions with dense lobar consolidation",
+      "Extensive mediastinal and hilar calcified lymphadenopathy"
+    ],
+    "answer": "A",
+    "explanation": "High-Resolution Computed Tomography (HRCT) of the chest is highly sensitive (> 95%) for Pneumocystis jirovecii pneumonia (PJP, formerly PCP). The radiological hallmark is bilateral, relatively symmetric ground-glass opacities (GGOs), predominantly in a perihilar and apicobasal distribution, with characteristically spared subpleural spaces. GGOs reflect intra-alveolar foamy, eosinophilic exudates containing proliferating Pneumocystis trophozoites and cysts. Other common findings include thickened interlobular septa superimposed on ground-glass (producing a 'crazy-paving' pattern), upper lobe thin-walled cysts/pneumatoceles (in ~30-35% of cases), which carry a high risk of rupture producing spontaneous pneumothorax. Large pleural effusions and intrathoracic lymphadenopathy are exceedingly rare (< 5%) in uncomplicated PJP and should raise suspicion for co-existing tuberculosis, lymphoma, or Kaposi sarcoma.",
+    "whyWrong": {
+      "A": "Correct answer: Bilateral perihilar ground-glass opacities are present in > 80-90% of PJP patients on HRCT.",
+      "B": "Upper lobe cavitary lesions are typical of post-primary reactivated pulmonary tuberculosis, not PJP.",
+      "C": "Large pleural effusions are rare (< 5%) in PJP and suggest alternative diagnoses (bacterial empyema, Kaposi sarcoma).",
+      "D": "Calcified hilar lymphadenopathy represents healed granulomatous disease (histoplasmosis/TB), not acute PJP."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• PJP classic HRCT: Bilateral symmetric perihilar ground-glass opacities (GGO) with subpleural sparing.\n• Pneumatoceles/cysts develop in ~35% of cases -> predisposes to spontaneous pneumothorax.\n• Pleural effusions and adenopathy are rare (< 5%).\n• Treatment: High-dose Trimethoprim-Sulfamethoxazole (TMP-SMX) + adjunctive Corticosteroids if PaO2 < 70 mmHg or A-a gradient >= 35 mmHg.\n\nPOTENTIAL EXAM TRAP: Selecting pleural effusions or dense lobar cavitation as primary features of PJP.",
+    "hyperlinkedReference": {
+      "label": "Webb WR et al. High-Resolution CT of the Lung, 5th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Radiology",
+      "Pneumocystis jirovecii Pneumonia (PJP) Imaging and Diagnosis"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Bilateral perihilar ground-glass opacities",
+    "verified_answer": "Bilateral, symmetric, perihilar ground-glass opacities (GGOs) with geographic sparing of subpleural spaces",
+    "answer_verification_note": "Verified against ATS/IDSA Guidelines on Opportunistic Infections and Webb's High-Resolution CT of the Lung.",
+    "concept_tested": "High-resolution CT chest manifestations of Pneumocystis jirovecii pneumonia",
+    "high_yield_takeaway": [
+      "PJP classic HRCT: Bilateral symmetric perihilar ground-glass opacities (GGO) with subpleural sparing.",
+      "Pneumatoceles/cysts develop in ~35% of cases -> predisposes to spontaneous pneumothorax.",
+      "Pleural effusions and adenopathy are rare (< 5%).",
+      "Treatment: High-dose Trimethoprim-Sulfamethoxazole (TMP-SMX) + adjunctive Corticosteroids if PaO2 < 70 mmHg or A-a gradient >= 35 mmHg."
+    ],
+    "potential_exam_trap": "Selecting pleural effusions or dense lobar cavitation as primary features of PJP.",
+    "sources": [
+      "Webb WR et al. High-Resolution CT of the Lung, 5th Ed.",
+      "CDC/NIH/IDSA Opportunistic Infections Guidelines"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R070",
+    "chapterId": 31,
+    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "question": "A 42-year-old renal transplant recipient on tacrolimus and mycophenolate mofetil is admitted with subacute fever, dry cough, and headache. Lumbar puncture confirms Cryptococcus neoformans infection (positive India ink and cryptococcal capsular antigen). Chest imaging shows bilateral pulmonary nodules. According to the IDSA guidelines for cryptococcal disease, what is the standard induction therapy regimen of choice?",
+    "options": [
+      "Liposomal Amphotericin B (3 to 4 mg/kg/day IV) plus Flucytosine (100 mg/kg/day orally in 4 divided doses) for a minimum of 2 weeks",
+      "Oral Fluconazole 400 mg daily as monotherapy for 14 days",
+      "Intravenous Caspofungin 50 mg daily for 6 weeks",
+      "Intravenous Voriconazole plus Inhaled Pentamidine"
+    ],
+    "answer": "A",
+    "explanation": "According to IDSA and WHO guidelines, cryptococcal disease involving the central nervous system (cryptococcal meningitis) or severe disseminated/pulmonary disease in immunocompromised hosts requires a triphasic antifungal strategy: 1. Induction Phase: Liposomal Amphotericin B (3 to 4 mg/kg/day IV) PLUS Flucytosine (5-FC, 100 mg/kg/day in 4 divided doses) for a minimum of 2 weeks. In the landmark ACTA trial (NEJM 2018), this combination demonstrated superior fungal clearance and lowest all-cause mortality. 2. Consolidation Phase: Oral Fluconazole 400 to 800 mg/day for 8 weeks (after documentation of CSF sterilization). 3. Maintenance (Suppression) Phase: Oral Fluconazole 200 mg/day for 6 to 12 months. Fluconazole monotherapy is strictly inadequate for induction due to high failure and mortality rates. Echinocandins (caspofungin) have NO activity against Cryptococcus neoformans because the fungal cell wall contains negligible (1,3)-beta-D-glucan.",
+    "whyWrong": {
+      "A": "Correct answer: Amphotericin B + Flucytosine for 2 weeks is the gold-standard induction regimen.",
+      "B": "Fluconazole monotherapy has significantly higher mortality in induction and is reserved only as an inferior alternative if amphotericin is unavailable.",
+      "C": "Echinocandins (caspofungin) have zero activity against Cryptococcus species.",
+      "D": "Voriconazole is not first-line induction therapy; pentamidine has no activity against Cryptococcus."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Induction: Liposomal Amphotericin B + Flucytosine (5-FC) for at least 2 weeks (gold standard).\n• Consolidation: Oral Fluconazole (400-800 mg/day) for 8 weeks.\n• Maintenance: Oral Fluconazole (200 mg/day) for 6-12 months.\n• Echinocandins have NO clinical activity against Cryptococcus species (intrinsic resistance).\n\nPOTENTIAL EXAM TRAP: Selecting an echinocandin for cryptococcal infection (Cryptococcus lacks the target beta-1,3-glucan synthase).",
+    "hyperlinkedReference": {
+      "label": "IDSA Cryptococcal Guidelines (CID 2010)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Infectious Diseases",
+      "Cryptococcal Infection: Induction, Consolidation, and Maintenance"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Amphotericin B + Flucytosine induction, then Fluconazole",
+    "verified_answer": "Liposomal Amphotericin B (3 to 4 mg/kg/day IV) plus Flucytosine (100 mg/kg/day orally in 4 divided doses) for a minimum of 2 weeks",
+    "answer_verification_note": "Verified against IDSA Guidelines for the Management of Cryptococcal Disease (Perfect JR et al., Clin Infect Dis 2010) and WHO 2022 Guidelines.",
+    "concept_tested": "Antifungal treatment phases of cryptococcosis per IDSA guidelines",
+    "high_yield_takeaway": [
+      "Induction: Liposomal Amphotericin B + Flucytosine (5-FC) for at least 2 weeks (gold standard).",
+      "Consolidation: Oral Fluconazole (400-800 mg/day) for 8 weeks.",
+      "Maintenance: Oral Fluconazole (200 mg/day) for 6-12 months.",
+      "Echinocandins have NO clinical activity against Cryptococcus species (intrinsic resistance)."
+    ],
+    "potential_exam_trap": "Selecting an echinocandin for cryptococcal infection (Cryptococcus lacks the target beta-1,3-glucan synthase).",
+    "sources": [
+      "IDSA Cryptococcal Guidelines (CID 2010)",
+      "ACTA Trial (N Engl J Med 2018)"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R074",
+    "chapterId": 30,
+    "topicId": "cc-ecmo-basics",
+    "question": "The landmark EOLIA (ECMO to Rescue Lung Injury in Severe ARDS) clinical trial published in the New England Journal of Medicine (2018) evaluated early initiation of Veno-Venous Extracorporeal Membrane Oxygenation (VV-ECMO) in patients with very severe ARDS. What was the primary finding and statistical conclusion of this pivotal trial?",
+    "options": [
+      "60-day mortality was lower in the ECMO group (35% vs 46%), but the difference did not achieve conventional statistical significance (p = 0.09) in the primary intention-to-treat analysis, largely confounded by a 35% rescue crossover rate in the control group",
+      "VV-ECMO resulted in statistically significant excess mortality and was condemned as harmful",
+      "VV-ECMO achieved an absolute 50% mortality reduction with p < 0.001 without any patient crossover",
+      "The trial was terminated early because VV-ECMO completely cured ARDS within 48 hours"
+    ],
+    "answer": "A",
+    "explanation": "The EOLIA trial (Combes A et al., NEJM 2018) randomized 249 patients with severe ARDS (defined as PaO2/FiO2 < 50 mmHg for > 3 hours, PaO2/FiO2 < 80 mmHg for > 6 hours, or arterial pH < 7.15 with PaCO2 >= 60 mmHg for > 6 hours) to early VV-ECMO vs continued conventional lung-protective mechanical ventilation. Key findings: 1. Primary endpoint: 60-day mortality was 35% in the early ECMO group vs 46% in the control group (relative risk 0.76; 95% CI 0.55-1.04; p = 0.09). The 11% absolute mortality reduction did not achieve statistical significance under intention-to-treat analysis. 2. A major confounding factor was that 35 (28%) of the 125 control patients developed refractory catastrophic hypoxemic failure and crossed over to rescue ECMO (surviving at a rate of 43%). 3. Subsequent post-hoc Bayesian analyses (Goligher EC et al., JAMA 2018) demonstrated a > 90-99% posterior probability that early ECMO reduces mortality across plausible prior assumptions.",
+    "whyWrong": {
+      "A": "Correct answer: 60-day mortality reduction (35% vs 46%) did not reach p < 0.05 due to high rescue crossover, but post-hoc Bayesian analysis supported ECMO.",
+      "B": "ECMO did not cause excess mortality; the CESAR and EOLIA trials confirmed ECMO safety.",
+      "C": "The trial did not achieve p < 0.001 in primary intention-to-treat, and there was massive (35-patient) crossover.",
+      "D": "The trial was stopped for statistical futility according to predetermined stopping rules, not because of complete cure."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• EOLIA trial: 60-day mortality 35% (ECMO) vs 46% (control), p = 0.09 (not statistically significant due to 28-35% rescue crossover).\n• Post-hoc Bayesian analysis demonstrated high probability (> 90%) of mortality benefit with early VV-ECMO.\n• Indications for VV-ECMO: PaO2/FiO2 < 50 for > 3h, PaO2/FiO2 < 80 for > 6h, or severe uncompensated hypercapnic acidosis (pH < 7.15).\n\nPOTENTIAL EXAM TRAP: Stating that EOLIA showed VV-ECMO has no benefit; while primary ITT p-value was 0.09, control crossover diluted the treatment effect and post-hoc Bayesian analysis demonstrated robust clinical benefit.",
+    "hyperlinkedReference": {
+      "label": "Combes A et al. N Engl J Med 2018 (EOLIA Trial)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Respiratory Critical Care",
+      "EOLIA Trial and Evidence-Based VV-ECMO in Severe ARDS"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "EOLIA trial did not achieve statistical significance on ITT analysis but post-hoc Bayesian analysis showed benefit",
+    "verified_answer": "60-day mortality was lower in the ECMO group (35% vs 46%), but the difference did not achieve conventional statistical significance (p = 0.09) in the primary intention-to-treat analysis, largely confounded by a 35% rescue crossover rate in the control group",
+    "answer_verification_note": "Verified against Combes A et al. (N Engl J Med 2018) and Goligher EC et al. (JAMA 2018).",
+    "concept_tested": "Trial design, statistical results, and clinical implications of the EOLIA trial for VV-ECMO in ARDS",
+    "high_yield_takeaway": [
+      "EOLIA trial: 60-day mortality 35% (ECMO) vs 46% (control), p = 0.09 (not statistically significant due to 28-35% rescue crossover).",
+      "Post-hoc Bayesian analysis demonstrated high probability (> 90%) of mortality benefit with early VV-ECMO.",
+      "Indications for VV-ECMO: PaO2/FiO2 < 50 for > 3h, PaO2/FiO2 < 80 for > 6h, or severe uncompensated hypercapnic acidosis (pH < 7.15)."
+    ],
+    "potential_exam_trap": "Stating that EOLIA showed VV-ECMO has no benefit; while primary ITT p-value was 0.09, control crossover diluted the treatment effect and post-hoc Bayesian analysis demonstrated robust clinical benefit.",
+    "sources": [
+      "Combes A et al. N Engl J Med 2018 (EOLIA Trial)",
+      "Goligher EC et al. JAMA 2018"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R075",
+    "chapterId": 31,
+    "topicId": "cc-novel-chemo-and-toxicity-in-icu",
+    "question": "A 50-year-old female with breast cancer receives high-dose cyclophosphamide as part of an autologous stem cell transplant conditioning regimen. Within 10 days of infusion, she develops acute chest pain, orthopnea, low-voltage QRS complexes, cardiomegaly, and rapidly progressive biventricular heart failure. Echocardiography demonstrates massive pericardial effusion and severe biventricular systolic dysfunction. What is the mechanism of cardiotoxicity associated with high-dose alkylating chemotherapeutic agents (e.g., cyclophosphamide, ifosfamide)?",
+    "options": [
+      "Endothelial capillary damage, free-radical generation, and microvascular extravasation leading to acute hemorrhagic myopericarditis and myocardial necrosis",
+      "Competitive antagonism of cardiac beta-1 adrenergic receptors",
+      "Inhibition of HER2/neu receptor tyrosine kinase survival signaling",
+      "Direct stimulation of Ryanodine receptors causing fatal intracellular calcium depletion"
+    ],
+    "answer": "A",
+    "explanation": "High-dose alkylating agents, particularly Cyclophosphamide (typically at doses > 120-150 mg/kg) and Ifosfamide, cause acute, dose-dependent, non-anthracycline cardiotoxicity. Pathophysiology: The active metabolites (phosphoramide mustard and acrolein) generate intense oxidative stress, direct DNA cross-linking, and microvascular endothelial damage. This produces microvascular thrombosis, diffuse capillary extravasation, interstitial edema, microvascular hemorrhage, and acute hemorrhagic myopericarditis with cardiomyocyte necrosis. Patients present acutely (within 1-14 days of infusion) with cardiomegaly, severe biventricular systolic dysfunction, low-voltage ECG, cardiac tamponade, and cardiogenic shock. In contrast, Anthracyclines (doxorubicin) cause cumulative, dose-dependent cardiotoxicity mediated by topoisomerase II-beta inhibition and iron-dependent reactive oxygen species; and Trastuzumab (Herceptin) blocks HER2/neu tyrosine kinase signaling, causing reversible, dose-independent contractile dysfunction.",
+    "whyWrong": {
+      "A": "Correct answer: Alkylating agents (cyclophosphamide) cause direct endothelial microvascular damage, hemorrhage, and acute hemorrhagic myopericarditis.",
+      "B": "Cyclophosphamide does not block beta-1 adrenergic receptors.",
+      "C": "Inhibition of HER2/neu is the mechanism of Trastuzumab (Herceptin) cardiotoxicity.",
+      "D": "Ryanodine receptor mutations are implicated in malignant hyperthermia and CPVT, not cyclophosphamide toxicity."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Alkylating agents (high-dose Cyclophosphamide, Ifosfamide): Acute hemorrhagic myopericarditis and microvascular necrosis within 1-2 weeks.\n• Anthracyclines (Doxorubicin): Cumulative dose-dependent cardiomyopathy mediated by Topoisomerase II-beta and iron-reactive oxygen species.\n• HER2 inhibitors (Trastuzumab): Type II cardiotoxicity, reversible, not cumulative, contractile stunning without necrosis.\n\nPOTENTIAL EXAM TRAP: Confusing acute hemorrhagic cardiotoxicity of high-dose cyclophosphamide with cumulative anthracycline cardiomyopathy.",
+    "hyperlinkedReference": {
+      "label": "2022 ESC Guidelines on Cardio-Oncology",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Cardiovascular Critical Care",
+      "Chemotherapy-Induced Cardiotoxicity: Alkylating Agents vs Anthracyclines"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Endothelial damage, free radicals, and hemorrhagic cardiotoxicity",
+    "verified_answer": "Endothelial capillary damage, free-radical generation, and microvascular extravasation leading to acute hemorrhagic myopericarditis and myocardial necrosis",
+    "answer_verification_note": "Verified against ESC Cardio-Oncology Guidelines (2022) and Braunwald's Heart Disease.",
+    "concept_tested": "Mechanisms and clinical characteristics of alkylating agent-induced hemorrhagic myopericarditis",
+    "high_yield_takeaway": [
+      "Alkylating agents (high-dose Cyclophosphamide, Ifosfamide): Acute hemorrhagic myopericarditis and microvascular necrosis within 1-2 weeks.",
+      "Anthracyclines (Doxorubicin): Cumulative dose-dependent cardiomyopathy mediated by Topoisomerase II-beta and iron-reactive oxygen species.",
+      "HER2 inhibitors (Trastuzumab): Type II cardiotoxicity, reversible, not cumulative, contractile stunning without necrosis."
+    ],
+    "potential_exam_trap": "Confusing acute hemorrhagic cardiotoxicity of high-dose cyclophosphamide with cumulative anthracycline cardiomyopathy.",
+    "sources": [
+      "2022 ESC Guidelines on Cardio-Oncology",
+      "Braunwald's Heart Disease, 11th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
   }
 ]

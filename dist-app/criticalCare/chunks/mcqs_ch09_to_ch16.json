@@ -5040,5 +5040,1082 @@
       "Neuromuscular Blockade"
     ],
     "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "NEETSS-CC-2025-R008",
+    "chapterId": 11,
+    "topicId": "cc-pulmonary-embolism",
+    "question": "A 52-year-old woman presents to the ICU with acute pleuritic chest pain, dyspnea, and tachycardia. In the Modified Wells Score for predicting the pre-test probability of Pulmonary Embolism (PE), which of the following variables is assigned the highest point weight (3.0 points)?",
+    "options": [
+      "Heart rate > 100 beats/min",
+      "Clinical signs and symptoms of deep vein thrombosis (DVT)",
+      "Previous history of objectively diagnosed DVT or PE",
+      "Active malignancy with treatment within 6 months or palliative"
+    ],
+    "answer": "B",
+    "explanation": "In the Modified Wells Scoring system for Pulmonary Embolism, the variables and point allocations are: 1. Clinical signs and symptoms of DVT (minimum of leg swelling and pain with palpation) = 3.0 points; 2. An alternative diagnosis is less likely than PE = 3.0 points; 3. Heart rate > 100 beats/min = 1.5 points; 4. Immobilization for >= 3 consecutive days or surgery within previous 4 weeks = 1.5 points; 5. Previous objectively diagnosed PE or DVT = 1.5 points; 6. Hemoptysis = 1.0 point; 7. Malignancy = 1.0 point. Thus, clinical signs of DVT carries 3.0 points.",
+    "whyWrong": {
+      "A": "Heart rate > 100 bpm is assigned 1.5 points.",
+      "B": "Correct answer: Clinical signs of DVT and 'alternative diagnosis less likely' receive the highest score of 3.0 points each.",
+      "C": "Previous DVT/PE is assigned 1.5 points.",
+      "D": "Active malignancy is assigned 1.0 point."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• 3 points: Signs/symptoms of DVT; PE most likely / alternative diagnosis less likely.\n• 1.5 points: HR > 100 bpm; Previous DVT/PE; Immobilization >= 3 days or surgery in past 4 weeks.\n• 1 point: Hemoptysis; Malignancy.\n• Score > 4 indicates PE likely (proceed to CTPA); Score <= 4 indicates PE unlikely (high-sensitivity D-dimer rule-out).\n\nPOTENTIAL EXAM TRAP: Assigning 3 points to prior DVT/PE (it is only 1.5 points).",
+    "hyperlinkedReference": {
+      "label": "2019 ESC Guidelines on Pulmonary Embolism",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Cardiovascular Critical Care",
+      "Modified Wells Score for Pulmonary Embolism"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Clinical signs and symptoms of DVT / Alternative diagnosis less likely (3 points)",
+    "verified_answer": "Clinical signs and symptoms of deep vein thrombosis (DVT)",
+    "answer_verification_note": "Verified against ESC Guidelines on Acute Pulmonary Embolism and Wells et al. (Thromb Haemost 2000).",
+    "concept_tested": "Point scoring criteria and stratification in the Modified Wells Score for PE",
+    "high_yield_takeaway": [
+      "3 points: Signs/symptoms of DVT; PE most likely / alternative diagnosis less likely.",
+      "1.5 points: HR > 100 bpm; Previous DVT/PE; Immobilization >= 3 days or surgery in past 4 weeks.",
+      "1 point: Hemoptysis; Malignancy.",
+      "Score > 4 indicates PE likely (proceed to CTPA); Score <= 4 indicates PE unlikely (high-sensitivity D-dimer rule-out)."
+    ],
+    "potential_exam_trap": "Assigning 3 points to prior DVT/PE (it is only 1.5 points).",
+    "sources": [
+      "2019 ESC Guidelines on Pulmonary Embolism",
+      "Thromb Haemost 2000 (Wells PS et al.)"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R010",
+    "chapterId": 11,
+    "topicId": "cc-malignant-arrhythmias-in-the-icu",
+    "question": "A 65-year-old man with a temporary transvenous pacemaker is monitored in the ICU following an acute anterior myocardial infarction. On the bedside monitor and surface ECG, pacing spikes are clearly visible and each pacing spike is immediately followed by a wide, bizarre QRS complex. However, manual palpation of the femoral pulse reveals no corresponding pulsation, and the invasive arterial line demonstrates a flat waveform. Which of the following statements accurately characterizes this clinical state?",
+    "options": [
+      "Electrical capture is present, but mechanical capture is absent (electromechanical dissociation / PEA)",
+      "Both electrical capture and mechanical capture have failed",
+      "Undersensing of intrinsic cardiac rhythm with failure to capture",
+      "Oversensing leading to inappropriate pacemaker inhibition"
+    ],
+    "answer": "A",
+    "explanation": "Pacemaker capture involves two distinct stages: 1. Electrical capture: When the pacing impulse generates myocardial depolarization, recognized on ECG by a sharp pacing artifact (spike) immediately followed by a wide QRS complex (for ventricular pacing) or P wave (for atrial pacing). In this patient, electrical capture is fully intact. 2. Mechanical capture: When the electrical myocardial depolarization results in effective myocardial contraction generating mechanical stroke volume, detectable by a palpable arterial pulse, pulse oximetry plethysmograph upstroke, or arterial line arterial pressure wave. The presence of pacing spikes with QRS complexes but no arterial pulse or pressure waveform indicates intact electrical capture with absent mechanical capture (pulseless electrical activity / PEA).",
+    "whyWrong": {
+      "A": "Correct answer: Intact pacing spike + QRS confirms electrical capture; absence of pulse/arterial wave confirms absent mechanical capture.",
+      "B": "Electrical capture is fully demonstrated by the pacing spikes initiating depolarization (QRS).",
+      "C": "Undersensing occurs when the pacemaker fails to see intrinsic beats and fires competitively, not demonstrated here.",
+      "D": "Oversensing leads to inappropriate pausing/inhibition of pacing output, whereas spikes are actively firing here."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Electrical capture = Pacing spike followed immediately by myocardial depolarization wave (QRS complex in ventricular pacing).\n• Mechanical capture = Arterial pulsation, plethysmograph waveform, or arterial line upstroke corresponding to each paced QRS.\n• Electrical capture WITHOUT mechanical capture represents Pulseless Electrical Activity (PEA) and requires immediate cardiopulmonary resuscitation.\n\nPOTENTIAL EXAM TRAP: Assuming the presence of paced QRS complexes on the ECG monitor guarantees effective cardiac output.",
+    "hyperlinkedReference": {
+      "label": "Marino's The ICU Book, 4th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Monitoring",
+      "Temporary Cardiac Pacing: Electrical vs Mechanical Capture"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Electrical pacing present, mechanical capture absent",
+    "verified_answer": "Electrical capture is present, but mechanical capture is absent (electromechanical dissociation / PEA)",
+    "answer_verification_note": "Verified against ACC/AHA Pacing Guidelines and Marino's The ICU Book.",
+    "concept_tested": "Distinction between electrical capture on ECG and mechanical capture (pulse/arterial line)",
+    "high_yield_takeaway": [
+      "Electrical capture = Pacing spike followed immediately by myocardial depolarization wave (QRS complex in ventricular pacing).",
+      "Mechanical capture = Arterial pulsation, plethysmograph waveform, or arterial line upstroke corresponding to each paced QRS.",
+      "Electrical capture WITHOUT mechanical capture represents Pulseless Electrical Activity (PEA) and requires immediate cardiopulmonary resuscitation."
+    ],
+    "potential_exam_trap": "Assuming the presence of paced QRS complexes on the ECG monitor guarantees effective cardiac output.",
+    "sources": [
+      "Marino's The ICU Book, 4th Ed.",
+      "Miller's Anesthesia, 9th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R012",
+    "chapterId": 9,
+    "topicId": "cc-acute-respiratory-distress-syndrome-i",
+    "question": "A 58-year-old intubated male (predicted body weight 60 kg) with ARDS is being ventilated on volume control mode with a tidal volume of 400 mL, respiratory rate of 18/min, PEEP of 10 cmH2O, and FiO2 of 0.60. An inspiratory pause reveals a peak inspiratory pressure (Ppeak) of 42 cmH2O and an end-inspiratory plateau pressure (Pplat) of 35 cmH2O. According to ARDSNet lung-protective ventilation guidelines, what is the next best step in ventilator management?",
+    "options": [
+      "Decrease tidal volume by 1 mL/kg PBW (to 5 mL/kg, 300-340 mL) to target Pplat <= 30 cmH2O",
+      "Increase PEEP to 15 cmH2O to recruit non-aerated lung zones",
+      "Increase inspiratory flow rate to shorten inspiratory time",
+      "Switch immediately to High-Frequency Oscillatory Ventilation (HFOV)"
+    ],
+    "answer": "A",
+    "explanation": "Under the ARDS Network (ARDSNet) lung-protective mechanical ventilation protocol, the primary safety goal to prevent barotrauma and volutrauma is maintaining an end-inspiratory plateau pressure (Pplat) <= 30 cmH2O. The patient currently has a Pplat of 35 cmH2O on a tidal volume of ~6.7 mL/kg PBW. The ARDSNet guideline dictates that if Pplat exceeds 30 cmH2O, the tidal volume should be reduced stepwise by 1 mL/kg PBW (down to 5 mL/kg, or if necessary to 4 mL/kg PBW) until Pplat is <= 30 cmH2O (or down to the minimum 4 mL/kg limit).",
+    "whyWrong": {
+      "A": "Correct answer: Stepping down tidal volume to lower Pplat <= 30 cmH2O is the cornerstone of ARDSNet protocol.",
+      "B": "Increasing PEEP without reducing tidal volume will further raise the plateau pressure beyond 35 cmH2O, increasing barotrauma risk.",
+      "C": "Increasing inspiratory flow rate increases peak airway pressure (due to increased airway resistance) and does not lower Pplat.",
+      "D": "HFOV has shown lack of benefit or excess mortality in ARDS trials (OSCILLATE, OSCAR) and is not recommended as next-step care."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Lung-protective ventilation targets: Tidal volume 4-8 mL/kg PBW and Plateau Pressure (Pplat) <= 30 cmH2O.\n• If Pplat > 30 cmH2O, reduce Vt by 1 mL/kg PBW stepwise (minimum 4 mL/kg PBW).\n• Driving pressure (Pplat - PEEP) <= 14-15 cmH2O is strongly linked to improved survival.\n\nPOTENTIAL EXAM TRAP: Confusing peak airway pressure (Ppeak) with plateau pressure (Pplat); Pplat represents static alveolar distending pressure.",
+    "hyperlinkedReference": {
+      "label": "ARDS Network ARMA Trial (NEJM 2000)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Mechanical Ventilation",
+      "ARDSNet Lung-Protective Mechanical Ventilation"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Decrease tidal volume",
+    "verified_answer": "Decrease tidal volume by 1 mL/kg PBW (to 5 mL/kg, 300-340 mL) to target Pplat <= 30 cmH2O",
+    "answer_verification_note": "Verified against ARDSNet ARMA Trial (NEJM 2000) and Surviving Sepsis Campaign / ESICM guidelines.",
+    "concept_tested": "ARDSNet plateau pressure limits and stepwise tidal volume titration",
+    "high_yield_takeaway": [
+      "Lung-protective ventilation targets: Tidal volume 4-8 mL/kg PBW and Plateau Pressure (Pplat) <= 30 cmH2O.",
+      "If Pplat > 30 cmH2O, reduce Vt by 1 mL/kg PBW stepwise (minimum 4 mL/kg PBW).",
+      "Driving pressure (Pplat - PEEP) <= 14-15 cmH2O is strongly linked to improved survival."
+    ],
+    "potential_exam_trap": "Confusing peak airway pressure (Ppeak) with plateau pressure (Pplat); Pplat represents static alveolar distending pressure.",
+    "sources": [
+      "ARDS Network ARMA Trial (NEJM 2000)",
+      "ESICM ARDS Guidelines 2023"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R013",
+    "chapterId": 12,
+    "topicId": "cc-2025-acc-aha-cpr-guidelines-updates",
+    "question": "According to the American Heart Association (AHA) and European Resuscitation Council (ERC) Advanced Cardiovascular Life Support (ACLS) guidelines, what is the recommended minimum depth of manual chest compressions for an adult in cardiac arrest?",
+    "options": [
+      "At least 1.5 inches (4 cm) but not more than 2 inches (5 cm)",
+      "At least 2 inches (5 cm) but not exceeding 2.4 inches (6 cm)",
+      "At least 2.5 inches (6.5 cm) without an upper limit",
+      "At least 1 inch (2.5 cm)"
+    ],
+    "answer": "B",
+    "explanation": "High-quality CPR is the cornerstone of resuscitation in cardiac arrest. Per AHA and ERC guidelines, chest compression parameters in adults are: 1. Push hard: compress to a depth of at least 2 inches (5 cm) but not more than 2.4 inches (6 cm) to prevent visceral and thoracic skeletal trauma; 2. Push fast: rate of 100 to 120 compressions per minute; 3. Allow full chest recoil after each compression without leaning; 4. Minimize interruptions (chest compression fraction > 60-80%); 5. Avoid excessive ventilation.",
+    "whyWrong": {
+      "A": "1.5 inches (4 cm) is the compression depth for infants, not adults.",
+      "B": "Correct answer: 2 to 2.4 inches (5 to 6 cm) is the adult standard.",
+      "C": "Compressions exceeding 2.4 inches (6 cm) are associated with higher rates of rib fractures, sternal injury, and splenic/hepatic lacerations.",
+      "D": "1 inch is grossly inadequate for generating forward systemic perfusion in adults."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Compression depth: At least 2 inches (5 cm), maximum 2.4 inches (6 cm) in adults.\n• Compression rate: 100-120 compressions per minute.\n• Full recoil and chest compression fraction > 80% are essential for coronary perfusion pressure.\n\nPOTENTIAL EXAM TRAP: Omitting the upper limit (2.4 inches / 6 cm) or confusing adult depth (5 cm) with pediatric/infant depth (4 cm).",
+    "hyperlinkedReference": {
+      "label": "2020 AHA Guidelines for CPR and ECC",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "ICU Procedures",
+      "ACLS High-Quality CPR Metrics"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "At least 2 inches / 5 cm",
+    "verified_answer": "At least 2 inches (5 cm) but not exceeding 2.4 inches (6 cm)",
+    "answer_verification_note": "Verified against AHA/ERC Guidelines for CPR and ECC (Circulation 2020).",
+    "concept_tested": "High-quality cardiopulmonary resuscitation depth metrics per ACLS/BLS guidelines",
+    "high_yield_takeaway": [
+      "Compression depth: At least 2 inches (5 cm), maximum 2.4 inches (6 cm) in adults.",
+      "Compression rate: 100-120 compressions per minute.",
+      "Full recoil and chest compression fraction > 80% are essential for coronary perfusion pressure."
+    ],
+    "potential_exam_trap": "Omitting the upper limit (2.4 inches / 6 cm) or confusing adult depth (5 cm) with pediatric/infant depth (4 cm).",
+    "sources": [
+      "2020 AHA Guidelines for CPR and ECC",
+      "2021 ERC Guidelines for Adult Resuscitation"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R015",
+    "chapterId": 11,
+    "topicId": "cc-malignant-arrhythmias-in-the-icu",
+    "question": "A 70-year-old male with an inferior wall myocardial infarction demonstrates an ECG rhythm strip showing regular P-P intervals (atrial rate 85/min) and regular R-R intervals (ventricular rate 38/min), but with complete lack of relationship between the P waves and QRS complexes. The QRS duration is 136 ms. Which conduction abnormality is present?",
+    "options": [
+      "First-degree atrioventricular (AV) block",
+      "Mobitz Type I (Wenckebach) second-degree AV block",
+      "Mobitz Type II second-degree AV block",
+      "Third-degree (complete) AV block with atrioventricular dissociation"
+    ],
+    "answer": "D",
+    "explanation": "Third-degree (complete) AV block is characterized by complete failure of atrial electrical impulses to conduct to the ventricles. Key diagnostic criteria: 1. Complete AV dissociation: P waves and QRS complexes march out independently at their own intrinsic rates. 2. Regular P-P intervals (sinus rate usually 60-100 bpm) and regular R-R intervals (escape rate typically 30-45 bpm for ventricular escape, or 40-60 bpm for junctional escape). 3. PR intervals are completely variable, bearing no relationship to ventricular depolarization. 4. Wide QRS (> 120 ms) indicates an infranodal/ventricular escape pacemaker.",
+    "whyWrong": {
+      "A": "First-degree AV block has 1:1 AV conduction with fixed, prolonged PR interval > 0.20 s.",
+      "B": "Mobitz Type I displays progressive PR interval prolongation until a single P wave fails to conduct.",
+      "C": "Mobitz Type II displays constant PR intervals in conducted beats with intermittent non-conducted P waves.",
+      "D": "Correct answer: Regular independent P waves and regular independent QRS complexes constitute complete AV dissociation."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• First-degree: Constant prolonged PR > 200 ms, all P waves conduct.\n• Mobitz I (Wenckebach): Progressive PR prolongation until dropped QRS; usually AV nodal, benign.\n• Mobitz II: Constant PR intervals with intermittently dropped QRS; infranodal (His-Purkinje), high risk of asystole.\n• Third-degree: Total AV dissociation with independent P and QRS rates.\n\nPOTENTIAL EXAM TRAP: Confusing Mobitz II with 2:1 conduction or complete AV block with isorhythmic AV dissociation.",
+    "hyperlinkedReference": {
+      "label": "ACC/AHA/HRS Bradycardia Guidelines 2018",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Cardiovascular Critical Care",
+      "Atrioventricular Conduction Blocks"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Third-degree AV block / Complete heart block",
+    "verified_answer": "Third-degree (complete) AV block with atrioventricular dissociation",
+    "answer_verification_note": "Verified against ACC/AHA/HRS Guidelines for Bradycardia and Conduction Delay.",
+    "concept_tested": "ECG criteria differentiating AV block variants",
+    "high_yield_takeaway": [
+      "First-degree: Constant prolonged PR > 200 ms, all P waves conduct.",
+      "Mobitz I (Wenckebach): Progressive PR prolongation until dropped QRS; usually AV nodal, benign.",
+      "Mobitz II: Constant PR intervals with intermittently dropped QRS; infranodal (His-Purkinje), high risk of asystole.",
+      "Third-degree: Total AV dissociation with independent P and QRS rates."
+    ],
+    "potential_exam_trap": "Confusing Mobitz II with 2:1 conduction or complete AV block with isorhythmic AV dissociation.",
+    "sources": [
+      "ACC/AHA/HRS Bradycardia Guidelines 2018",
+      "Marino's The ICU Book, 4th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R029",
+    "chapterId": 12,
+    "topicId": "cc-2025-acc-aha-cpr-guidelines-updates",
+    "question": "A 45-year-old man who was choking on a solid bolus of meat received five abdominal thrusts (Heimlich maneuver) from a bystander. He suddenly becomes limp, loses consciousness, and collapses to the floor. What is the immediate next step in management according to the updated BLS/ACLS Foreign Body Airway Obstruction algorithm?",
+    "options": [
+      "Perform a blind digital finger sweep of the oropharynx",
+      "Lower the victim to the ground and immediately initiate Cardiopulmonary Resuscitation (CPR) starting with chest compressions",
+      "Attempt two vigorous rescue breaths using mouth-to-mouth ventilation",
+      "Position the patient in the recovery position and await emergency medical services"
+    ],
+    "answer": "B",
+    "explanation": "According to the American Heart Association (AHA) and ERC Basic Life Support algorithms for Foreign Body Airway Obstruction (FBAO): If a choking adult or child becomes unresponsive, the rescuer must carefully support the victim to the ground and immediately initiate Cardiopulmonary Resuscitation (CPR) beginning with 30 chest compressions (do not check pulse first). Chest compressions generate intrathoracic pressures that equal or exceed abdominal thrusts, potentially dislodging the foreign body while maintaining cerebral and coronary perfusion. Each time the airway is opened to deliver breaths during CPR, the rescuer should look into the mouth; if an object is clearly visible, it is removed. Blind finger sweeps are strictly contraindicated as they push foreign bodies deeper into the larynx.",
+    "whyWrong": {
+      "A": "Blind finger sweeps are strictly prohibited because they risk pushing the foreign body further into the larynx and damaging pharyngeal mucosa.",
+      "B": "Correct answer: Immediate initiation of standard CPR starting with chest compressions is the mandatory ACLS/BLS protocol.",
+      "C": "Delivering breaths before chest compressions delays circulation and chest compressions generate higher expulsory pressures.",
+      "D": "Recovery position is only for spontaneously breathing victims with a pulse, not an unresponsive choking victim."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Conscious choking adult: Alternating 5 back blows and 5 abdominal thrusts (or continuous abdominal thrusts per AHA).\n• If victim becomes UNRESPONSIVE: Lower to ground -> Call for help -> Start CPR immediately (30 compressions).\n• Check mouth before delivering rescue breaths; remove object ONLY if clearly visualized (NO blind finger sweeps).\n\nPOTENTIAL EXAM TRAP: Performing a blind finger sweep or checking for a pulse instead of immediately starting chest compressions.",
+    "hyperlinkedReference": {
+      "label": "2020 AHA Guidelines for CPR and ECC",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "ICU Procedures",
+      "Foreign Body Airway Obstruction (Choking) Algorithm"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Start CPR",
+    "verified_answer": "Lower the victim to the ground and immediately initiate Cardiopulmonary Resuscitation (CPR) starting with chest compressions",
+    "answer_verification_note": "Verified against AHA BLS Guidelines (Circulation 2020) and ERC Resuscitation Guidelines 2021.",
+    "concept_tested": "Management sequence when a choking victim becomes unresponsive",
+    "high_yield_takeaway": [
+      "Conscious choking adult: Alternating 5 back blows and 5 abdominal thrusts (or continuous abdominal thrusts per AHA).",
+      "If victim becomes UNRESPONSIVE: Lower to ground -> Call for help -> Start CPR immediately (30 compressions).",
+      "Check mouth before delivering rescue breaths; remove object ONLY if clearly visualized (NO blind finger sweeps)."
+    ],
+    "potential_exam_trap": "Performing a blind finger sweep or checking for a pulse instead of immediately starting chest compressions.",
+    "sources": [
+      "2020 AHA Guidelines for CPR and ECC",
+      "ERC Guidelines 2021"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R030",
+    "chapterId": 15,
+    "topicId": "cc-icu-management-of-traumatic-brain-injury",
+    "question": "A 32-year-old male with severe traumatic brain injury (TBI) is managed in the neuro-ICU with an intracranial pressure (ICP) parenchymal monitor. Despite Tier 1 interventions (head elevation 30 degrees, midline neck position, target normothermia, optimized analgosedation with propofol and fentanyl, intermittent boluses of 20% mannitol targeting serum osmolarity < 320 mOsm/L, and maintaining PaCO2 35-38 mmHg), his ICP remains persistently elevated at 26 mmHg. According to the Seattle International Severe Traumatic Brain Injury Consensus Conference (SIBICC) tiered algorithm, which intervention represents an appropriate Tier 2 management step?",
+    "options": [
+      "Institution of mild hypocapnia / hyperventilation targeting PaCO2 of 32 to 35 mmHg, consideration of neuromuscular blockade, or a MAP challenge test",
+      "Immediate high-dose pentobarbital coma infusion",
+      "Hypothermia induction targeting a core body temperature of 32°C",
+      "Routine prophylactic decompressive craniectomy as first response"
+    ],
+    "answer": "A",
+    "explanation": "The Seattle International Severe Traumatic Brain Injury Consensus Conference (SIBICC) tiered protocol stratifies refractory ICP management: 1. Tier 1: Analgosedation, head elevation, normothermia, PaCO2 35-38 mmHg, intermittent bolus osmotherapy (mannitol or hypertonic saline), and CSF drainage via EVD if present. 2. Tier 2 (for ICP > 22 mmHg refractory to Tier 1): Mild hyperventilation / controlled hypocapnia targeting PaCO2 32-35 mmHg (with brain tissue oxygenation monitoring if available), neuromuscular blockade trial, and a Mean Arterial Pressure (MAP) challenge test to assess cerebral autoregulation. 3. Tier 3 (refractory rescue): Barbiturate coma (pentobarbital/thiopental), secondary decompressive craniectomy, or therapeutic hypothermia (32-35°C). High-dose barbiturates and hypothermia belong to Tier 3.",
+    "whyWrong": {
+      "A": "Correct answer: Mild hyperventilation (PaCO2 32-35 mmHg), neuromuscular blockade, and MAP challenge are established Tier 2 interventions.",
+      "B": "Barbiturate coma is a Tier 3 rescue intervention associated with severe hypotension and infectious risks.",
+      "C": "Therapeutic hypothermia (< 35°C) is a Tier 3 rescue intervention carrying high risks of coagulopathy and arrhythmia.",
+      "D": "Decompressive craniectomy is a Tier 3 surgical rescue modality."
+    },
+    "difficulty": "hard",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Tier 1: Analgosedation, EVD CSF drainage, intermittent osmotherapy, PaCO2 35-38 mmHg, CPP 60-70 mmHg.\n• Tier 2: Mild hyperventilation (PaCO2 32-35 mmHg), neuromuscular blockade, MAP challenge to assess autoregulation.\n• Tier 3: Barbiturate coma, surgical decompressive craniectomy, moderate therapeutic hypothermia.\n• Severe hyperventilation (PaCO2 < 30 mmHg) causes dangerous cerebral vasoconstriction and secondary ischemic brain infarction.\n\nPOTENTIAL EXAM TRAP: Choosing barbiturate coma or decompressive craniectomy immediately after Tier 1 failure (they are Tier 3 interventions).",
+    "hyperlinkedReference": {
+      "label": "SIBICC Guidelines (Intensive Care Med 2019)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Neurocritical Care",
+      "SIBICC Tiered Protocol for Intracranial Hypertension"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Mild hyperventilation (PaCO2 32-35 mmHg) / Tier 2 approach",
+    "verified_answer": "Institution of mild hypocapnia / hyperventilation targeting PaCO2 of 32 to 35 mmHg, consideration of neuromuscular blockade, or a MAP challenge test",
+    "answer_verification_note": "Verified against SIBICC Guidelines (Hawryluk GWJ et al., Intensive Care Med 2019/2020) and Brain Trauma Foundation Guidelines.",
+    "concept_tested": "Tiered protocol (Tier 1 vs Tier 2 vs Tier 3) of SIBICC for intracranial hypertension in severe TBI",
+    "high_yield_takeaway": [
+      "Tier 1: Analgosedation, EVD CSF drainage, intermittent osmotherapy, PaCO2 35-38 mmHg, CPP 60-70 mmHg.",
+      "Tier 2: Mild hyperventilation (PaCO2 32-35 mmHg), neuromuscular blockade, MAP challenge to assess autoregulation.",
+      "Tier 3: Barbiturate coma, surgical decompressive craniectomy, moderate therapeutic hypothermia.",
+      "Severe hyperventilation (PaCO2 < 30 mmHg) causes dangerous cerebral vasoconstriction and secondary ischemic brain infarction."
+    ],
+    "potential_exam_trap": "Choosing barbiturate coma or decompressive craniectomy immediately after Tier 1 failure (they are Tier 3 interventions).",
+    "sources": [
+      "SIBICC Guidelines (Intensive Care Med 2019)",
+      "Brain Trauma Foundation TBI Guidelines, 4th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R032",
+    "chapterId": 9,
+    "topicId": "cc-acute-respiratory-distress-syndrome-i",
+    "question": "A first-year critical care resident performs a sustained lung recruitment maneuver (continuous positive airway pressure of 40 cmH2O for 30 seconds) on a patient with severe ARDS. Immediately following the maneuver, the patient's blood pressure drops from 120/75 mmHg to 82/48 mmHg and SpO2 transiently falls from 94% to 88%. Which pathophysiological mechanism explains these acute hemodynamic and gas-exchange alterations, and what is the initial management?",
+    "options": [
+      "Increased intrathoracic pressure causing impaired venous return (reduced RV preload) and transient overdistension of normal alveoli; closely observe the patient while monitoring for persistent deterioration and barotrauma",
+      "Acute massive pulmonary thromboembolism; initiate systemic fibrinolytic therapy immediately",
+      "Immediate development of tension pneumothorax requiring mandatory immediate bilateral needle thoracostomy",
+      "Cardiogenic shock from acute myocardial infarction; start immediate epinephrine infusion"
+    ],
+    "answer": "A",
+    "explanation": "Sustained high-pressure recruitment maneuvers (e.g., CPAP 40 cmH2O for 30-40 seconds) generate profound increases in intrathoracic pressure, collapsing the thoracic vena cava, reducing systemic venous return (preload) to the right atrium, and compressing pulmonary capillaries (increasing RV afterload). This sharply reduces cardiac output, producing acute hypotension. Concurrently, transient overdistension of compliant, healthy alveoli diverts blood flow to non-aerated shunt units, temporarily worsening V/Q mismatch and oxygen saturation. In most cases, these changes are transient and resolve within 1-2 minutes after releasing the pressure; thus, immediate close observation with continuous monitoring of vitals, airway pressures, and lung sliding on ultrasound is the primary next step. However, if hypotension and hypoxemia persist or worsen, barotrauma/tension pneumothorax must be urgently ruled out and treated.",
+    "whyWrong": {
+      "A": "Correct answer: Transient decrease in venous return and V/Q mismatch are known immediate physiological consequences of sustained recruitment.",
+      "B": "The acute drop occurred directly during the recruitment maneuver, consistent with cardiopulmonary interactions rather than PE.",
+      "C": "Needle thoracostomy is indicated only if clinical and sonographic signs of tension pneumothorax develop, not blindly.",
+      "D": "Hypotension is mechanical from decreased venous return, not primary ischemic LV failure."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Recruitment maneuvers increase intrathoracic pressure -> decreased venous return (preload), increased RV afterload -> hypotension.\n• Overdistension of compliant alveoli temporarily worsens V/Q mismatch -> transient desaturation.\n• High sustained pressures risk barotrauma/pneumothorax (ART trial demonstrated increased mortality with aggressive recruitment).\n• Initial step: Closely observe and monitor; if hypotension/hypoxia persists, urgently evaluate for tension pneumothorax.\n\nPOTENTIAL EXAM TRAP: Immediately performing invasive interventions like needle decompression before evaluating whether the transient hemodynamic dip resolves spontaneously post-maneuver.",
+    "hyperlinkedReference": {
+      "label": "JAMA 2017 (ART Trial, Cavalcanti AB et al.)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Mechanical Ventilation",
+      "Alveolar Recruitment Maneuvers and Hemodynamic Complications"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "reconstructed_recall",
+    "speaker_answer": "Observation and monitoring for barotrauma/pneumothorax",
+    "verified_answer": "Increased intrathoracic pressure causing impaired venous return (reduced RV preload) and transient overdistension of normal alveoli; closely observe the patient while monitoring for persistent deterioration and barotrauma",
+    "answer_verification_note": "Verified against ART Trial (Cavalcanti AB et al., JAMA 2017) and West's Respiratory Physiology.",
+    "concept_tested": "Cardiopulmonary interactions and adverse hemodynamic effects of alveolar recruitment maneuvers",
+    "high_yield_takeaway": [
+      "Recruitment maneuvers increase intrathoracic pressure -> decreased venous return (preload), increased RV afterload -> hypotension.",
+      "Overdistension of compliant alveoli temporarily worsens V/Q mismatch -> transient desaturation.",
+      "High sustained pressures risk barotrauma/pneumothorax (ART trial demonstrated increased mortality with aggressive recruitment).",
+      "Initial step: Closely observe and monitor; if hypotension/hypoxia persists, urgently evaluate for tension pneumothorax."
+    ],
+    "potential_exam_trap": "Immediately performing invasive interventions like needle decompression before evaluating whether the transient hemodynamic dip resolves spontaneously post-maneuver.",
+    "sources": [
+      "JAMA 2017 (ART Trial, Cavalcanti AB et al.)",
+      "Tobin's Principles and Practice of Mechanical Ventilation"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R035",
+    "chapterId": 11,
+    "topicId": "cc-malignant-arrhythmias-in-the-icu",
+    "question": "A 66-year-old woman admitted with severe sepsis develops sudden runs of polymorphic ventricular tachycardia with twisting of the QRS complexes around the isoelectric line (Torsades de Pointes). She remains conscious, alert, with a blood pressure of 108/68 mmHg and a baseline QTc interval of 560 ms. Which of the following is the definitive first-line intravenous pharmacological therapy for this hemodynamically stable patient?",
+    "options": [
+      "Intravenous Magnesium Sulfate 2 grams infused over 10 to 15 minutes",
+      "Intravenous Amiodarone 150 mg bolus over 10 minutes",
+      "Synchronized electrical cardioversion at 100 Joules",
+      "Intravenous Adenosine 6 mg rapid bolus"
+    ],
+    "answer": "A",
+    "explanation": "Torsades de Pointes (TdP) is a polymorphic ventricular tachycardia occurring in the setting of acquired or congenital prolongation of the QT interval. In a hemodynamically stable patient, intravenous Magnesium Sulfate (1 to 2 g diluted in 50-100 mL D5W given over 10-15 minutes, repeatable after 5-15 minutes) is the definitive first-line drug of choice, regardless of the baseline serum magnesium level. Magnesium acts by blocking L-type calcium channels, thereby suppressing early after-depolarizations (EADs) that trigger and sustain the arrhythmia. Amiodarone is strictly contraindicated in TdP because it further prolongs the QT interval and can precipitate intractable ventricular fibrillation. Electrical defibrillation (unsynchronized) is reserved for hemodynamically unstable patients or those who degenerate into ventricular fibrillation.",
+    "whyWrong": {
+      "A": "Correct answer: IV Magnesium sulfate is the definitive first-line agent in stable Torsades de Pointes.",
+      "B": "Amiodarone is a Class III antiarrhythmic that significantly prolongs the QT interval, worsening TdP.",
+      "C": "Cardioversion is indicated in hemodynamically unstable patients; however, synchronized cardioversion may fail because the shifting polymorphous QRS morphology impairs tracking.",
+      "D": "Adenosine is an AV nodal blocker ineffective for ventricular tachyarrhythmias and TdP."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Torsades de Pointes in hemodynamically stable patient -> IV Magnesium Sulfate 2 g bolus is drug of choice.\n• Amiodarone, sotalol, and procainamide are CONTRAINDICATED (they prolong QT).\n• Additional management: Discontinue all QT-prolonging drugs, correct hypokalemia (target K+ 4.5-5.0 mEq/L), and consider overdrive pacing or isoproterenol for bradycardia-dependent TdP.\n\nPOTENTIAL EXAM TRAP: Administering amiodarone for a ventricular tachycardia that has a prolonged baseline QT / polymorphic twisting pattern.",
+    "hyperlinkedReference": {
+      "label": "AHA/ACC/HRS Ventricular Arrhythmia Guidelines 2018",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Cardiovascular Critical Care",
+      "Torsades de Pointes Management"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "IV Magnesium Sulfate",
+    "verified_answer": "Intravenous Magnesium Sulfate 2 grams infused over 10 to 15 minutes",
+    "answer_verification_note": "Verified against AHA/ACC/HRS Guidelines for Management of Patients with Ventricular Arrhythmias (Circulation 2018).",
+    "concept_tested": "Emergency management of Torsades de Pointes and contraindications to QT-prolonging antiarrhythmics",
+    "high_yield_takeaway": [
+      "Torsades de Pointes in hemodynamically stable patient -> IV Magnesium Sulfate 2 g bolus is drug of choice.",
+      "Amiodarone, sotalol, and procainamide are CONTRAINDICATED (they prolong QT).",
+      "Additional management: Discontinue all QT-prolonging drugs, correct hypokalemia (target K+ 4.5-5.0 mEq/L), and consider overdrive pacing or isoproterenol for bradycardia-dependent TdP."
+    ],
+    "potential_exam_trap": "Administering amiodarone for a ventricular tachycardia that has a prolonged baseline QT / polymorphic twisting pattern.",
+    "sources": [
+      "AHA/ACC/HRS Ventricular Arrhythmia Guidelines 2018",
+      "Marino's The ICU Book, 4th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R036",
+    "chapterId": 14,
+    "topicId": "cc-disorders-of-calcium-magnesium-phosphorus-metabolism",
+    "question": "A 36-year-old female post-total thyroidectomy develops tingling around the mouth, perioral numbness, painful spasms of both hands on blood pressure cuff inflation, and involuntary muscular twitches. Serum calcium is 6.2 mg/dL (ionized calcium 0.72 mmol/L). What is the most appropriate immediate intravenous intervention?",
+    "options": [
+      "10 to 20 mL of 10% Calcium Gluconate IV infused over 10 to 20 minutes",
+      "Phenytoin 1 gram IV loading dose",
+      "Diazepam 10 mg IV bolus",
+      "Sodium bicarbonate 50 mEq IV push"
+    ],
+    "answer": "A",
+    "explanation": "The patient demonstrates classic signs of acute symptomatic hypocalcemia (perioral paresthesias, Trousseau's sign, tetany, and neuromuscular irritability) secondary to accidental parathyroid resection or devascularization during thyroidectomy. Acute symptomatic hypocalcemia is a medical emergency that can rapidly progress to laryngospasm, seizures, and lethal cardiac arrhythmias. The treatment of choice is intravenous calcium gluconate: 1 to 2 grams (10-20 mL of a 10% solution) diluted in 50-100 mL of 5% dextrose or normal saline infused over 10-20 minutes, followed by a continuous infusion (0.5 to 1.5 mg/kg/hour of elemental calcium). Calcium gluconate is preferred over calcium chloride for peripheral infusion because it causes significantly less vein irritation and tissue necrosis if extravasation occurs. Concomitant hypomagnesemia must be checked and corrected.",
+    "whyWrong": {
+      "A": "Correct answer: 10% IV Calcium gluconate is the definitive immediate therapy for symptomatic acute hypocalcemia.",
+      "B": "Phenytoin treats primary epileptic seizures but does not correct the underlying electrolyte hypocalcemia causing tetany.",
+      "C": "Diazepam may temporarily relieve spasms but does not correct the life-threatening hypocalcemia or prevent laryngospasm.",
+      "D": "Sodium bicarbonate promotes binding of ionized calcium to albumin, thereby exacerbating ionized hypocalcemia."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Acute symptomatic hypocalcemia (tetany, Trousseau/Chvostek sign, laryngospasm) -> 10-20 mL of 10% IV Calcium Gluconate.\n• Calcium gluconate is preferred over calcium chloride in peripheral veins to prevent thrombophlebitis and necrosis.\n• Always check and correct serum magnesium; hypomagnesemia impairs PTH release and causes refractory hypocalcemia.\n\nPOTENTIAL EXAM TRAP: Administering sodium bicarbonate, which dramatically drops ionized calcium and triggers acute laryngospasm.",
+    "hyperlinkedReference": {
+      "label": "Endocrine Society Clinical Practice Guidelines",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Electrolytes",
+      "Acute Hypocalcemia and Tetany Management"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "IV Calcium gluconate",
+    "verified_answer": "10 to 20 mL of 10% Calcium Gluconate IV infused over 10 to 20 minutes",
+    "answer_verification_note": "Verified against Endocrine Society Guidelines and Marino's The ICU Book.",
+    "concept_tested": "Emergency treatment of acute symptomatic hypocalcemia following thyroid surgery",
+    "high_yield_takeaway": [
+      "Acute symptomatic hypocalcemia (tetany, Trousseau/Chvostek sign, laryngospasm) -> 10-20 mL of 10% IV Calcium Gluconate.",
+      "Calcium gluconate is preferred over calcium chloride in peripheral veins to prevent thrombophlebitis and necrosis.",
+      "Always check and correct serum magnesium; hypomagnesemia impairs PTH release and causes refractory hypocalcemia."
+    ],
+    "potential_exam_trap": "Administering sodium bicarbonate, which dramatically drops ionized calcium and triggers acute laryngospasm.",
+    "sources": [
+      "Endocrine Society Clinical Practice Guidelines",
+      "Marino's The ICU Book, 4th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R037",
+    "chapterId": 13,
+    "topicId": "cc-sodium-disorders-in-the-icu",
+    "question": "A 32-year-old female with severe chronic hyponatremia (baseline serum sodium 108 mEq/L) secondary to psychogenic polydipsia receives rapid infusions of 3% hypertonic saline. Her serum sodium rises to 132 mEq/L over the first 18 hours. Three days later, she develops progressive spastic quadriparesis, pseudobulbar palsy, severe dysarthria, and dysphagia, while remaining fully conscious and alert. What is the diagnosis, and what was the pathophysiological error?",
+    "options": [
+      "Osmotic Demyelination Syndrome (Central Pontine Myelinolysis) caused by excessively rapid correction of chronic hyponatremia (> 8 to 10 mEq/L in 24 hours)",
+      "Acute ischemic stroke of the middle cerebral artery",
+      "Guillain-Barré syndrome triggered by hyponatremia",
+      "Acute cerebral edema secondary to water intoxication"
+    ],
+    "answer": "A",
+    "explanation": "Osmotic Demyelination Syndrome (ODS), classically presenting as Central Pontine Myelinolysis (CPM), occurs when chronic hyponatremia (> 48 hours duration) is corrected too rapidly (> 8-10 mEq/L in 24 hours or > 18 mEq/L in 48 hours). In chronic hyponatremia, brain astrocytes adapt by extruding organic osmolytes (myoinositol, glutamate, taurine) to prevent cerebral edema. When hypertonic saline rapidly raises extracellular osmolarity, the brain cannot synthesize or recapture osmolytes at the same rate. Water is rapidly drawn out of brain cells, causing acute dehydration, astrocyte apoptosis, disruption of the blood-brain barrier, and non-inflammatory demyelination of pontine and extrapontine oligodendrocytes. Patients classically present 2 to 6 days later with pseudobulbar palsy, dysarthria, dysphagia, spastic quadriparesis, and locked-in syndrome.",
+    "whyWrong": {
+      "A": "Correct answer: ODS from rapid sodium correction (> 8-10 mEq/L in 24h) causes pontine demyelination and locked-in state.",
+      "B": "Middle cerebral artery stroke presents acutely with hemiparesis and aphasia, not delayed bilateral pseudobulbar/quadriparetic locked-in syndrome.",
+      "C": "Guillain-Barré is an autoimmune post-infectious demyelinating polyneuropathy with ascending flaccid paralysis and areflexia.",
+      "D": "Cerebral edema occurs when hyponatremia develops rapidly or hypernatremia is rapidly lowered, not when hyponatremia is overcorrected."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Maximum rate of chronic hyponatremia correction: <= 8 to 10 mEq/L in 24 hours (<= 4 to 6 mEq/L in high-risk patients: malnutrition, alcoholism, liver disease).\n• Rapid correction causes astrocyte dehydration and oligodendrocyte demyelination (Central Pontine Myelinolysis).\n• Clinical presentation of ODS: Delayed by 2-6 days; dysarthria, dysphagia, quadriparesis, locked-in syndrome.\n\nPOTENTIAL EXAM TRAP: Correcting chronic hyponatremia to 'normal' (135-140 mEq/L) on day 1 instead of respecting the 8-10 mEq/L/day limit.",
+    "hyperlinkedReference": {
+      "label": "Eur J Endocrinol 2014 (Hyponatremia Guidelines)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Electrolytes",
+      "Osmotic Demyelination Syndrome and Hyponatremia Correction Limits"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Osmotic demyelination syndrome / Central pontine myelinolysis",
+    "verified_answer": "Osmotic Demyelination Syndrome (Central Pontine Myelinolysis) caused by excessively rapid correction of chronic hyponatremia (> 8 to 10 mEq/L in 24 hours)",
+    "answer_verification_note": "Verified against European Clinical Practice Guidelines on Diagnosis and Treatment of Hyponatremia (Eur J Endocrinol 2014).",
+    "concept_tested": "Limits of safe sodium correction and pathophysiology of Osmotic Demyelination Syndrome",
+    "high_yield_takeaway": [
+      "Maximum rate of chronic hyponatremia correction: <= 8 to 10 mEq/L in 24 hours (<= 4 to 6 mEq/L in high-risk patients: malnutrition, alcoholism, liver disease).",
+      "Rapid correction causes astrocyte dehydration and oligodendrocyte demyelination (Central Pontine Myelinolysis).",
+      "Clinical presentation of ODS: Delayed by 2-6 days; dysarthria, dysphagia, quadriparesis, locked-in syndrome."
+    ],
+    "potential_exam_trap": "Correcting chronic hyponatremia to 'normal' (135-140 mEq/L) on day 1 instead of respecting the 8-10 mEq/L/day limit.",
+    "sources": [
+      "Eur J Endocrinol 2014 (Hyponatremia Guidelines)",
+      "Marino's The ICU Book, 4th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R039",
+    "chapterId": 13,
+    "topicId": "cc-potassium-disorders-in-the-icu",
+    "question": "A patient undergoing chemotherapy for Burkitt lymphoma develops laboratory Tumor Lysis Syndrome. His serum potassium is 7.4 mEq/L, and a 12-lead ECG demonstrates tall, peaked, symmetrical T waves with widening of the QRS complex and prolongation of the PR interval. What is the immediate first step in the pharmacotherapy of this patient?",
+    "options": [
+      "Intravenous Calcium Gluconate (10 mL of 10% solution over 2 to 5 minutes)",
+      "Regular insulin 10 units IV with 50 mL of 50% Dextrose",
+      "Oral Sodium Polystyrene Sulfonate (Kayexalate) 30 grams",
+      "Nebulized Albuterol 10 mg"
+    ],
+    "answer": "A",
+    "explanation": "In severe hyperkalemia with ECG changes (tall peaked T waves, PR prolongation, QRS widening, sine wave), the immediate and lifesaving first step is intravenous Calcium (10% Calcium Gluconate 10-20 mL or Calcium Chloride 5-10 mL infused over 2-5 minutes). Calcium does NOT lower serum potassium; rather, it antagonizes potassium-induced cardiac toxicity by stabilizing the resting membrane potential of cardiac myocytes (raising the action potential threshold potential, thereby restoring the normal difference between resting membrane potential and threshold potential). Membrane stabilization occurs within 1 to 3 minutes and lasts 30 to 60 minutes. Once the cardiac membrane is stabilized, potassium-shifting agents (insulin + dextrose, beta-2 agonists) and potassium-eliminating strategies (diuretics, potassium binders, hemodialysis) must follow immediately.",
+    "whyWrong": {
+      "A": "Correct answer: IV Calcium gluconate immediately stabilizes the cardiac myocyte membrane against fatal arrhythmias.",
+      "B": "Insulin and dextrose shift potassium into cells but take 15-30 minutes to act; membrane stabilization with calcium must come first.",
+      "C": "Oral resin binders take hours to days to eliminate potassium and have no role in hyperkalemic emergencies.",
+      "D": "Nebulized albuterol takes 15-30 minutes to reduce potassium and is an adjunct to insulin/dextrose, not the primary membrane stabilizer."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Hyperkalemia + ECG changes -> Step 1: IV Calcium (gluconate/chloride) for immediate membrane stabilization.\n• Step 2 (Shift K+ into cells): IV Regular Insulin 10 U + 50 mL D50W, nebulized salbutamol 10-20 mg, IV NaHCO3 (if acidemic).\n• Step 3 (Eliminate K+ from body): Loop diuretics, K+ binders (Patiromer, ZS-9), or emergency Hemodialysis.\n\nPOTENTIAL EXAM TRAP: Selecting insulin-dextrose as the 'first' step; without immediate calcium stabilization, the patient may suffer ventricular fibrillation before insulin takes effect.",
+    "hyperlinkedReference": {
+      "label": "ERC Guidelines for Resuscitation 2021",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Electrolytes",
+      "Severe Hyperkalemia with ECG Changes and Membrane Stabilization"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "IV Calcium gluconate",
+    "verified_answer": "Intravenous Calcium Gluconate (10 mL of 10% solution over 2 to 5 minutes)",
+    "answer_verification_note": "Verified against ERC Guidelines for Resuscitation (2021) and AHA ACLS Protocols.",
+    "concept_tested": "Immediate management sequence and membrane stabilization in life-threatening hyperkalemia",
+    "high_yield_takeaway": [
+      "Hyperkalemia + ECG changes -> Step 1: IV Calcium (gluconate/chloride) for immediate membrane stabilization.",
+      "Step 2 (Shift K+ into cells): IV Regular Insulin 10 U + 50 mL D50W, nebulized salbutamol 10-20 mg, IV NaHCO3 (if acidemic).",
+      "Step 3 (Eliminate K+ from body): Loop diuretics, K+ binders (Patiromer, ZS-9), or emergency Hemodialysis."
+    ],
+    "potential_exam_trap": "Selecting insulin-dextrose as the 'first' step; without immediate calcium stabilization, the patient may suffer ventricular fibrillation before insulin takes effect.",
+    "sources": [
+      "ERC Guidelines for Resuscitation 2021",
+      "Marino's The ICU Book, 4th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R044",
+    "chapterId": 12,
+    "topicId": "cc-2025-acc-aha-cpr-guidelines-updates",
+    "question": "An intensivist witnesses a 60-year-old adult suddenly collapse to the floor in the hospital cafeteria. The intensivist immediately assesses the environment and ensures the scene is completely safe. What is the immediate next step according to the AHA Basic Life Support (BLS) adult cardiac arrest algorithm?",
+    "options": [
+      "Check for responsiveness (tap and shout) and simultaneously assess breathing and pulse within 10 seconds",
+      "Immediately perform 30 chest compressions without assessing responsiveness",
+      "Immediately administer 2 rescue breaths with a pocket mask",
+      "Attach an Automated External Defibrillator (AED) without checking the victim"
+    ],
+    "answer": "A",
+    "explanation": "According to the American Heart Association (AHA) 2020 adult BLS algorithm, the sequential steps for an adult sudden collapse are: 1. Verify scene safety. 2. Check for responsiveness: tap the victim's shoulders and shout 'Are you OK?'. 3. If unresponsive, simultaneously shout for nearby help, activate the emergency response system (call code blue / emergency services), and retrieve an AED/defibrillator. 4. Simultaneously check breathing (look for no breathing or only gasping) and pulse (carotid pulse) for at least 5 but no more than 10 seconds. 5. If no normal breathing and no definite pulse felt within 10 seconds, immediately initiate high-quality CPR (cycles of 30 compressions and 2 breaths) starting with chest compressions.",
+    "whyWrong": {
+      "A": "Correct answer: Verifying responsiveness and simultaneous breathing/pulse check is the mandatory first clinical step.",
+      "B": "Initiating chest compressions without verifying that the patient is unresponsive and pulseless is inappropriate (patient may have simple syncope).",
+      "C": "Rescue breaths are not delivered first in the C-A-B resuscitation sequence.",
+      "D": "AED is applied once cardiac arrest is confirmed and equipment arrives; checking the patient comes first."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• BLS sequence: Scene safety -> Check responsiveness -> Call for help/code blue + get AED -> Check pulse & breathing simultaneously (5-10 sec) -> Start CPR.\n• Compression-to-ventilation ratio for adult CPR: 30:2 (single or dual rescuer until advanced airway is placed).\n• Minimizing hands-off time is critical to maintaining coronary perfusion pressure.\n\nPOTENTIAL EXAM TRAP: Spending > 10 seconds attempting to palpate a carotid pulse; if unsure within 10 seconds, assume pulselessness and start compressions.",
+    "hyperlinkedReference": {
+      "label": "2020 AHA Guidelines for CPR and ECC",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "ICU Procedures",
+      "AHA BLS Adult Cardiac Arrest Algorithm"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Check responsiveness and pulse",
+    "verified_answer": "Check for responsiveness (tap and shout) and simultaneously assess breathing and pulse within 10 seconds",
+    "answer_verification_note": "Verified against 2020 AHA Guidelines for CPR and ECC (Circulation 2020).",
+    "concept_tested": "Initial clinical assessment sequence in adult sudden collapse per AHA BLS",
+    "high_yield_takeaway": [
+      "BLS sequence: Scene safety -> Check responsiveness -> Call for help/code blue + get AED -> Check pulse & breathing simultaneously (5-10 sec) -> Start CPR.",
+      "Compression-to-ventilation ratio for adult CPR: 30:2 (single or dual rescuer until advanced airway is placed).",
+      "Minimizing hands-off time is critical to maintaining coronary perfusion pressure."
+    ],
+    "potential_exam_trap": "Spending > 10 seconds attempting to palpate a carotid pulse; if unsure within 10 seconds, assume pulselessness and start compressions.",
+    "sources": [
+      "2020 AHA Guidelines for CPR and ECC",
+      "ERC Guidelines 2021"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R045",
+    "chapterId": 16,
+    "topicId": "cc-delirium-in-icu-padis-guidelines",
+    "question": "Opioids are widely used for analgesia in the ICU, but several agents exert clinically significant immunosuppressive effects. In contrast to morphine, which suppresses natural killer (NK) cell cytotoxicity and T-cell proliferation via mu-opioid receptor stimulation, tramadol is largely devoid of immunosuppressive effects. What is the pharmacological mechanism explaining this preservation of immune function with tramadol?",
+    "options": [
+      "Inhibition of neuronal reuptake of norepinephrine and serotonin (5-HT), which activates adrenergic and serotonergic pathways that stimulate natural killer cell activity",
+      "Selective kappa-opioid receptor antagonism",
+      "Potent stimulation of peripheral cannabinoid CB2 receptors",
+      "Direct blockade of NMDA receptors without opioid receptor affinity"
+    ],
+    "answer": "A",
+    "explanation": "Opioids modulate immunity through central hypothalamic-pituitary-adrenal (HPA) axis activation and direct peripheral mu-opioid receptors on immune cells. Morphine, fentanyl, and codeine significantly suppress Natural Killer (NK) cell activity, phagocytosis, and IL-2/interferon-gamma release. In contrast, tramadol is an atypical synthetic opioid with dual mechanisms of action: weak mu-opioid receptor agonism combined with potent inhibition of the neuronal reuptake of norepinephrine and serotonin (5-HT). Increased central and peripheral noradrenergic and serotonergic transmission stimulates beta-adrenoreceptors and 5-HT receptors on lymphocytes, augmenting NK cell cytotoxic activity and preserving cell-mediated immunity. Therefore, tramadol is considered non-immunosuppressive and may be preferred in oncologic and immunocompromised surgical patients.",
+    "whyWrong": {
+      "A": "Correct answer: Norepinephrine and serotonin reuptake inhibition by tramadol prevents immunosuppression and stimulates NK cells.",
+      "B": "Tramadol does not act as a selective kappa antagonist; its active metabolite M1 binds mu-receptors.",
+      "C": "Tramadol does not act via cannabinoid CB2 receptors.",
+      "D": "Tramadol's immune preservation is mediated by monoamine reuptake inhibition, not pure NMDA blockade."
+    },
+    "difficulty": "hard",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Morphine, fentanyl, and codeine suppress natural killer (NK) cell activity and cell-mediated immunity.\n• Tramadol does NOT suppress immunity; its monoamine (norepinephrine/serotonin) reuptake inhibition enhances NK cell activity.\n• Buprenorphine is also considered non-immunosuppressive in humans.\n\nPOTENTIAL EXAM TRAP: Assuming all opioids cause equal degrees of immunosuppression.",
+    "hyperlinkedReference": {
+      "label": "Goodman & Gilman's The Pharmacological Basis of Therapeutics, 14th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Pharmacology",
+      "Opioid-Induced Immunosuppression: Morphine vs Tramadol"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Tramadol inhibits norepinephrine/serotonin reuptake and does not cause immunosuppression",
+    "verified_answer": "Inhibition of neuronal reuptake of norepinephrine and serotonin (5-HT), which activates adrenergic and serotonergic pathways that stimulate natural killer cell activity",
+    "answer_verification_note": "Verified against Sacerdote P. et al. (Int Immunopharmacol 2008) and Goodman & Gilman's Pharmacological Basis of Therapeutics.",
+    "concept_tested": "Mechanisms of opioid-induced immunomodulation and non-immunosuppressive properties of tramadol",
+    "high_yield_takeaway": [
+      "Morphine, fentanyl, and codeine suppress natural killer (NK) cell activity and cell-mediated immunity.",
+      "Tramadol does NOT suppress immunity; its monoamine (norepinephrine/serotonin) reuptake inhibition enhances NK cell activity.",
+      "Buprenorphine is also considered non-immunosuppressive in humans."
+    ],
+    "potential_exam_trap": "Assuming all opioids cause equal degrees of immunosuppression.",
+    "sources": [
+      "Goodman & Gilman's The Pharmacological Basis of Therapeutics, 14th Ed.",
+      "Int Immunopharmacol 2008 (Sacerdote P)"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R058",
+    "chapterId": 16,
+    "topicId": "cc-delirium-in-icu-padis-guidelines",
+    "question": "A 28-year-old head-injured patient has been receiving a continuous propofol infusion at 5.5 mg/kg/hour (90 mcg/kg/min) for 54 hours for sedation and ICP control. He develops refractory bradycardia, widening QRS complexes, severe lactic acidosis (lactate 9.2 mmol/L), rhabdomyolysis with dark urine, hyperkalemia, and hepatomegaly. What are the two primary cellular metabolic mechanisms responsible for Propofol-Related Infusion Syndrome (PRIS)?",
+    "options": [
+      "Inhibition of mitochondrial electron transport chain (Complex I, II, and IV) and impairment of mitochondrial fatty acid oxidation via Carnitine Palmitoyl Transferase-1 (CPT-1) inhibition",
+      "Direct blockade of voltage-gated potassium channels and acute hepatic vein thrombosis",
+      "Activation of uncoupling protein-1 (UCP-1) in brown adipose tissue and glycogen synthase inhibition",
+      "Inhibition of microsomal cytochrome P450 3A4 leading to toxic acetaminophen metabolite accumulation"
+    ],
+    "answer": "A",
+    "explanation": "Propofol-Related Infusion Syndrome (PRIS) is a lethal complication classically associated with high-dose (> 4-5 mg/kg/hr or > 67-83 mcg/kg/min) and prolonged (> 48 hours) propofol infusions. The cellular pathogenesis involves two synergistic disruptions of energy metabolism: 1. Direct inhibition of the mitochondrial respiratory electron transport chain (specifically inhibiting Complex I, Complex II/coenzyme Q, and Complex IV/cytochrome c oxidase), halting ATP production. 2. Impairment of mitochondrial fatty acid oxidation: Propofol inhibits Carnitine Palmitoyltransferase-1 (CPT-1) and interferes with the entry of long-chain fatty acids into mitochondria, while medium- and short-chain fatty acids accumulate as toxic free fatty acids. Energy-starved cardiac and skeletal myocytes undergo necrosis, resulting in acute refractory bradycardia, Brugada-like ST elevation, severe lactic acidosis, rhabdomyolysis, hyperkalemia, renal failure, and cardiogenic shock. Treatment includes immediate propofol cessation, aggressive organ support, hemodialysis/hemofiltration, and administration of carnitine and high-dose glucose infusions to overcome the fuel deficit.",
+    "whyWrong": {
+      "A": "Correct answer: Mitochondrial respiratory chain inhibition plus CPT-1 mediated fatty acid oxidation blockade defines PRIS.",
+      "B": "PRIS is a primary bioenergetic mitochondrial disorder, not hepatic vein thrombosis (Budd-Chiari).",
+      "C": "UCP-1 activation is involved in non-shivering thermogenesis, not propofol mitochondrial toxicity.",
+      "D": "PRIS does not involve CYP3A4-mediated acetaminophen toxicity."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• PRIS risk factors: Propofol dose > 4-5 mg/kg/hr (> 67-83 mcg/kg/min) for > 48 hours, young age, critical illness, exogenous catecholamines/steroids.\n• Pathophysiology: Inhibits mitochondrial electron transport chain + inhibits CPT-1 (fatty acid oxidation).\n• Clinical presentation: Refractory bradycardia / Brugada ECG pattern, severe metabolic acidosis, rhabdomyolysis, hyperkalemia, acute renal failure.\n• Management: Stop propofol immediately; ECMO / CRRT / carnitine supplementation.\n\nPOTENTIAL EXAM TRAP: Exceeding the recommended maximum propofol infusion rate of 4 mg/kg/hr in prolonged ICU sedation.",
+    "hyperlinkedReference": {
+      "label": "Crit Care 2015 (Mirrakhimov AE et al.)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Pharmacology",
+      "Propofol Infusion Syndrome (PRIS) Molecular Mechanisms"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Inhibition of fatty acid oxidation (CPT-1) and mitochondrial electron transport chain",
+    "verified_answer": "Inhibition of mitochondrial electron transport chain (Complex I, II, and IV) and impairment of mitochondrial fatty acid oxidation via Carnitine Palmitoyl Transferase-1 (CPT-1) inhibition",
+    "answer_verification_note": "Verified against Mirrakhimov AE et al. (Crit Care 2015) and Kam PC, Cardone D (Anaesthesia 2007).",
+    "concept_tested": "Cellular pathophysiology and mitochondrial metabolic disruption in Propofol Infusion Syndrome",
+    "high_yield_takeaway": [
+      "PRIS risk factors: Propofol dose > 4-5 mg/kg/hr (> 67-83 mcg/kg/min) for > 48 hours, young age, critical illness, exogenous catecholamines/steroids.",
+      "Pathophysiology: Inhibits mitochondrial electron transport chain + inhibits CPT-1 (fatty acid oxidation).",
+      "Clinical presentation: Refractory bradycardia / Brugada ECG pattern, severe metabolic acidosis, rhabdomyolysis, hyperkalemia, acute renal failure.",
+      "Management: Stop propofol immediately; ECMO / CRRT / carnitine supplementation."
+    ],
+    "potential_exam_trap": "Exceeding the recommended maximum propofol infusion rate of 4 mg/kg/hr in prolonged ICU sedation.",
+    "sources": [
+      "Crit Care 2015 (Mirrakhimov AE et al.)",
+      "Anaesthesia 2007 (Kam PC et al. PRIS Review)"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R060",
+    "chapterId": 13,
+    "topicId": "cc-renal-replacement-therapy-i",
+    "question": "In a critically ill patient with septic shock and acute kidney injury (AKI) requiring renal replacement therapy who is currently receiving dual vasopressor infusions, what is the primary physiological and clinical advantage of Continuous Renal Replacement Therapy (CRRT / CVVH / CVVHD) over conventional Intermittent Hemodialysis (IHD)?",
+    "options": [
+      "Superior hemodynamic stability due to slow, continuous ultrafiltration and gradual solute clearance, avoiding rapid osmotic shifts and secondary myocardial/cerebral ischemia",
+      "Elimination of the need for any vascular catheter access",
+      "Significantly higher 90-day overall survival in all non-shock patient populations",
+      "Absence of any requirement for circuit anticoagulation under all operational conditions"
+    ],
+    "answer": "A",
+    "explanation": "Continuous Renal Replacement Therapy (CRRT, including CVVH and CVVHDF) operates at lower blood flow rates (150-250 mL/min) and low ultrafiltration rates (20-35 mL/kg/hour) continuously over 24 hours. In contrast, Intermittent Hemodialysis (IHD) removes large fluid volumes (2-4 liters) and solutes rapidly over 3 to 4 hours (blood flows 300-400 mL/min, dialysate flows 500-800 mL/min). In hemodynamically unstable critically ill patients, IHD causes acute intravascular volume depletion, precipitous drops in cardiac output and blood pressure, cerebral hypoperfusion, and renal ischemic insults that delay renal recovery. CRRT maintains stable intravascular volume and gradual plasma tonicity shifts, providing outstanding hemodynamic tolerance. While large randomized trials (ATN, RENAL) have not demonstrated an overall 90-day mortality advantage in unselected populations, KDIGO guidelines specifically recommend CRRT for hemodynamically unstable patients and those with acute brain injury/elevated ICP.",
+    "whyWrong": {
+      "A": "Correct answer: Hemodynamic stability via slow, continuous fluid and solute removal is the primary physiological advantage.",
+      "B": "CRRT requires large-bore dual-lumen central venous hemodialysis catheters identical to IHD.",
+      "C": "Large multicenter RCTs (RENAL, ATN) demonstrated equal 90-day survival between CRRT and IHD in unselected critically ill populations.",
+      "D": "CRRT circuits are highly susceptible to clotting due to continuous low flow rates, generally requiring regional citrate anticoagulation or heparin."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• CRRT provides superior hemodynamic stability compared to IHD due to slow, continuous fluid/solute removal.\n• KDIGO recommends CRRT over IHD in: 1. Hemodynamically unstable patients; 2. Acute brain injury / intracranial hypertension (prevents cerebral edema).\n• Regional Citrate Anticoagulation (RCA) is recommended by KDIGO as the first-line anticoagulant for CRRT in patients without contraindications.\n\nPOTENTIAL EXAM TRAP: Believing CRRT has proven overall mortality superiority in clinical trials; its benefit is hemodynamic stability and ICP control.",
+    "hyperlinkedReference": {
+      "label": "KDIGO AKI Guidelines (Kidney Int Suppl 2012)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Renal Critical Care",
+      "CRRT vs Intermittent Hemodialysis: Hemodynamic Mechanics and Indications"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Hemodynamic stability",
+    "verified_answer": "Superior hemodynamic stability due to slow, continuous ultrafiltration and gradual solute clearance, avoiding rapid osmotic shifts and secondary myocardial/cerebral ischemia",
+    "answer_verification_note": "Verified against KDIGO Clinical Practice Guideline for Acute Kidney Injury (Kidney Int Suppl 2012).",
+    "concept_tested": "Physiological rationale and hemodynamic stability of CRRT compared to Intermittent Hemodialysis",
+    "high_yield_takeaway": [
+      "CRRT provides superior hemodynamic stability compared to IHD due to slow, continuous fluid/solute removal.",
+      "KDIGO recommends CRRT over IHD in: 1. Hemodynamically unstable patients; 2. Acute brain injury / intracranial hypertension (prevents cerebral edema).",
+      "Regional Citrate Anticoagulation (RCA) is recommended by KDIGO as the first-line anticoagulant for CRRT in patients without contraindications."
+    ],
+    "potential_exam_trap": "Believing CRRT has proven overall mortality superiority in clinical trials; its benefit is hemodynamic stability and ICP control.",
+    "sources": [
+      "KDIGO AKI Guidelines (Kidney Int Suppl 2012)",
+      "Oh's Intensive Care Manual, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R076",
+    "chapterId": 14,
+    "topicId": "cc-interpreting-abg",
+    "question": "An arterial blood gas (ABG) drawn from an ICU patient demonstrates an elevated PaCO2 of 60 mmHg (normal baseline 40 mmHg) with a primary respiratory acidosis. Which of the following rules of compensation correctly describes the expected change in serum bicarbonate [HCO3-] in ACUTE versus CHRONIC respiratory acidosis?",
+    "options": [
+      "Acute: [HCO3-] increases by 1 mEq/L for every 10 mmHg increase in PaCO2; Chronic: [HCO3-] increases by 4 to 5 mEq/L for every 10 mmHg increase in PaCO2",
+      "Acute: [HCO3-] decreases by 2 mEq/L for every 10 mmHg increase in PaCO2; Chronic: [HCO3-] increases by 10 mEq/L for every 10 mmHg increase in PaCO2",
+      "Acute: [HCO3-] increases by 5 mEq/L for every 10 mmHg increase in PaCO2; Chronic: [HCO3-] does not change",
+      "In both acute and chronic respiratory acidosis, [HCO3-] increases by exactly 8 mEq/L for every 10 mmHg increase in PaCO2"
+    ],
+    "answer": "A",
+    "explanation": "Physiological compensation for respiratory acidosis depends on intracellular non-bicarbonate chemical buffering (acute) vs renal bicarbonate retention (chronic): 1. Acute Respiratory Acidosis (duration < 24-48 hours): Renal compensation has not yet occurred. The elevation in [HCO3-] is mediated purely by non-bicarbonate intracellular buffers (hemoglobin, intracellular proteins). Expected compensation: [HCO3-] increases by 1 mEq/L for every 10 mmHg elevation in PaCO2 above 40 mmHg. (For a PaCO2 of 60 mmHg [Delta 20 mmHg], expected HCO3- = 24 + 2 = 26 mEq/L). 2. Chronic Respiratory Acidosis (duration >= 3 to 5 days): Renal tubules adapt by upregulating H+ secretion, NH4+ synthesis, and new bicarbonate reclamation/regeneration. Expected compensation: [HCO3-] increases by 4 to 5 mEq/L for every 10 mmHg elevation in PaCO2 above 40 mmHg. (For a PaCO2 of 60 mmHg [Delta 20 mmHg], expected HCO3- = 24 + [2 x 4.5] = 33 mEq/L).",
+    "whyWrong": {
+      "A": "Correct answer: Acute: 1 mEq/L rise in HCO3- per 10 mmHg PaCO2 rise; Chronic: 4 to 5 mEq/L rise in HCO3- per 10 mmHg PaCO2 rise.",
+      "B": "Bicarbonate increases (never decreases) as a compensatory response to respiratory acidosis.",
+      "C": "Acute buffer capacity cannot generate a 5 mEq/L rise; that magnitude requires 3-5 days of renal proton secretion.",
+      "D": "Acute and chronic compensations are dramatically different due to the multi-day lag in renal tubular upregulation."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Acute Respiratory Acidosis: [HCO3-] rises by 1 mEq/L per 10 mmHg rise in PaCO2 (cellular buffering).\n• Chronic Respiratory Acidosis: [HCO3-] rises by 4 to 5 mEq/L per 10 mmHg rise in PaCO2 (renal H+ excretion).\n• Respiratory Alkalosis: Acute [HCO3-] drops by 2 mEq/L; Chronic [HCO3-] drops by 4 to 5 mEq/L per 10 mmHg drop in PaCO2.\n• Metabolic Acidosis (Winter's formula): Expected PaCO2 = (1.5 x [HCO3-]) + 8 +/- 2.\n\nPOTENTIAL EXAM TRAP: Applying chronic renal compensation formulas to acute respiratory failure (which causes misdiagnosis of an accompanying metabolic alkalosis).",
+    "hyperlinkedReference": {
+      "label": "Marino's The ICU Book, 4th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Acid Base",
+      "Physiological Compensation in Acute vs Chronic Respiratory Acidosis"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Acute: 1 per 10; Chronic: 4 per 10",
+    "verified_answer": "Acute: [HCO3-] increases by 1 mEq/L for every 10 mmHg increase in PaCO2; Chronic: [HCO3-] increases by 4 to 5 mEq/L for every 10 mmHg increase in PaCO2",
+    "answer_verification_note": "Verified against Marino's The ICU Book and Rose & Post's Clinical Physiology of Acid-Base and Electrolyte Disorders.",
+    "concept_tested": "Formulas and physiological mechanisms of acute vs chronic renal and chemical buffering in respiratory acidosis",
+    "high_yield_takeaway": [
+      "Acute Respiratory Acidosis: [HCO3-] rises by 1 mEq/L per 10 mmHg rise in PaCO2 (cellular buffering).",
+      "Chronic Respiratory Acidosis: [HCO3-] rises by 4 to 5 mEq/L per 10 mmHg rise in PaCO2 (renal H+ excretion).",
+      "Respiratory Alkalosis: Acute [HCO3-] drops by 2 mEq/L; Chronic [HCO3-] drops by 4 to 5 mEq/L per 10 mmHg drop in PaCO2.",
+      "Metabolic Acidosis (Winter's formula): Expected PaCO2 = (1.5 x [HCO3-]) + 8 +/- 2."
+    ],
+    "potential_exam_trap": "Applying chronic renal compensation formulas to acute respiratory failure (which causes misdiagnosis of an accompanying metabolic alkalosis).",
+    "sources": [
+      "Marino's The ICU Book, 4th Ed.",
+      "Rose & Post's Clinical Physiology of Acid-Base and Electrolyte Disorders, 5th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
   }
 ]

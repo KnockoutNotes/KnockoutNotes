@@ -3942,5 +3942,1270 @@
       "Trauma Hemorrhage"
     ],
     "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "NEETSS-CC-2025-R001",
+    "chapterId": 18,
+    "topicId": "cc-community-acquired-pneumonia",
+    "question": "A 68-year-old male presents to the emergency department with productive cough, fever, and shortness of breath. On evaluation, he is disoriented to time and place (abbreviated mental test score 6/10), his respiratory rate is 34 breaths/min, blood pressure is 84/52 mmHg, and serum urea is 8.4 mmol/L (BUN ~24 mg/dL). Which of the following parameters is NOT a component of the CURB-65 severity assessment score for community-acquired pneumonia?",
+    "options": [
+      "Abbreviated mental test score <= 8 or new disorientation",
+      "Serum urea > 7 mmol/L (blood urea nitrogen > 19 mg/dL)",
+      "Arterial oxygen saturation (SpO2) < 90% on room air",
+      "Systolic blood pressure < 90 mmHg or diastolic blood pressure <= 60 mmHg"
+    ],
+    "answer": "C",
+    "explanation": "CURB-65 is a validated severity prediction score for community-acquired pneumonia (CAP). The 5 criteria (1 point each) are: C - Confusion (defined as an Abbreviated Mental Test score <= 8 or new disorientation in person, place, or time); U - Urea > 7 mmol/L (BUN > 19 mg/dL); R - Respiratory rate >= 30 breaths/min; B - Blood pressure (systolic < 90 mmHg or diastolic <= 60 mmHg); 65 - Age >= 65 years. Arterial oxygen saturation (SpO2) is an essential clinical parameter but is not a component of the CURB-65 score (it is included in SMART-COP and PSI/PORT scores).",
+    "whyWrong": {
+      "A": "Confusion assessed via Abbreviated Mental Test score <= 8 is the 'C' criterion.",
+      "B": "Urea > 7 mmol/L (BUN > 19 mg/dL) is the 'U' criterion.",
+      "C": "Correct answer: Hypoxemia/SpO2 is not a component of CURB-65.",
+      "D": "Systolic BP < 90 mmHg or diastolic BP <= 60 mmHg is the 'B' criterion."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• CURB-65 components: Confusion (AMTS <= 8), Urea > 7 mmol/L, RR >= 30/min, BP < 90/60 mmHg, Age >= 65 years.\n• Score 0-1: Low risk, outpatient care. Score 2: Intermediate risk, hospital admission. Score >= 3: Severe pneumonia, consider ICU admission.\n• CRB-65 is used in primary care where biochemical urea measurement is unavailable.\n\nPOTENTIAL EXAM TRAP: Confusing CURB-65 components with SMART-COP (which includes PaO2/FiO2 and albumin) or PSI/PORT score.",
+    "hyperlinkedReference": {
+      "label": "British Thoracic Society (BTS) CAP Guidelines",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Respiratory Critical Care",
+      "CURB-65 Severity Assessment"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "reconstructed_recall",
+    "speaker_answer": "Arterial oxygen saturation (SpO2)",
+    "verified_answer": "Arterial oxygen saturation (SpO2)",
+    "answer_verification_note": "Verified against British Thoracic Society (BTS) and ATS/IDSA Community-Acquired Pneumonia Guidelines.",
+    "concept_tested": "Components and scoring criteria of CURB-65 for Community-Acquired Pneumonia",
+    "high_yield_takeaway": [
+      "CURB-65 components: Confusion (AMTS <= 8), Urea > 7 mmol/L, RR >= 30/min, BP < 90/60 mmHg, Age >= 65 years.",
+      "Score 0-1: Low risk, outpatient care. Score 2: Intermediate risk, hospital admission. Score >= 3: Severe pneumonia, consider ICU admission.",
+      "CRB-65 is used in primary care where biochemical urea measurement is unavailable."
+    ],
+    "potential_exam_trap": "Confusing CURB-65 components with SMART-COP (which includes PaO2/FiO2 and albumin) or PSI/PORT score.",
+    "sources": [
+      "British Thoracic Society (BTS) CAP Guidelines",
+      "ATS/IDSA CAP Guidelines"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R003",
+    "chapterId": 18,
+    "topicId": "cc-clostridioides-difficile-colitis",
+    "question": "A 72-year-old critically ill woman who recently completed a 10-day course of piperacillin-tazobactam develops 5-6 watery bowel movements per day, low-grade fever, and mild lower abdominal cramping. Her leukocyte count is 11,200/microL and serum creatinine is 0.9 mg/dL. Stool glutamate dehydrogenase (GDH) antigen and toxin A/B EIA testing are both positive. Which of the following is the preferred first-line antimicrobial therapy according to the current IDSA/SHEA guidelines?",
+    "options": [
+      "Oral fidaxomicin 200 mg twice daily for 10 days",
+      "Intravenous vancomycin 1 g every 12 hours for 10 days",
+      "Oral metronidazole 500 mg three times daily for 10 days",
+      "Intravenous metronidazole 500 mg three times daily plus oral rifaximin"
+    ],
+    "answer": "A",
+    "explanation": "According to the updated IDSA/SHEA guidelines for Clostridioides difficile infection (CDI), oral fidaxomicin (200 mg BID for 10 days) is the preferred initial regimen for an initial episode of non-severe (WBC < 15,000/microL and Cr < 1.5 mg/dL) as well as severe CDI, based on superior sustained clinical cure and significantly lower recurrence rates compared to oral vancomycin. Oral vancomycin (125 mg QID for 10 days) is an acceptable alternative if fidaxomicin is unavailable. IV vancomycin does not achieve therapeutic concentrations in the colonic lumen and is completely ineffective. Metronidazole is relegated to an alternative only when both fidaxomicin and vancomycin are unavailable.",
+    "whyWrong": {
+      "A": "Correct answer: Fidaxomicin is the preferred first-line agent under current IDSA/SHEA guidelines.",
+      "B": "IV vancomycin does not penetrate the intestinal mucosa into the colonic lumen; oral vancomycin is required.",
+      "C": "Metronidazole is inferior with higher recurrence and treatment failure rates; it is only fourth-line when vancomycin/fidaxomicin are unavailable.",
+      "D": "IV metronidazole is only an adjunct in fulminant CDI with ileus; rifaximin is not indicated for initial acute CDI."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• IDSA/SHEA guidelines recommend oral fidaxomicin over oral vancomycin for initial CDI episodes due to lower recurrence.\n• Non-severe CDI: WBC < 15,000/microL and SCr < 1.5 mg/dL; Severe CDI: WBC >= 15,000/microL or SCr >= 1.5 mg/dL.\n• IV vancomycin has zero efficacy in CDI because it is not excreted into the colonic lumen.\n\nPOTENTIAL EXAM TRAP: Selecting IV vancomycin instead of oral formulations, or choosing metronidazole based on outdated practice guidelines.",
+    "hyperlinkedReference": {
+      "label": "IDSA/SHEA CDI Focused Update 2021",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Infectious Diseases",
+      "Clostridioides difficile Infection (CDI) Management"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "reconstructed_recall",
+    "speaker_answer": "Oral fidaxomicin",
+    "verified_answer": "Oral fidaxomicin",
+    "answer_verification_note": "Verified against IDSA/SHEA 2021 Focused Update on Management of Clostridioides difficile Infection in Adults.",
+    "concept_tested": "First-line therapy for Clostridioides difficile infection per IDSA/SHEA guidelines",
+    "high_yield_takeaway": [
+      "IDSA/SHEA guidelines recommend oral fidaxomicin over oral vancomycin for initial CDI episodes due to lower recurrence.",
+      "Non-severe CDI: WBC < 15,000/microL and SCr < 1.5 mg/dL; Severe CDI: WBC >= 15,000/microL or SCr >= 1.5 mg/dL.",
+      "IV vancomycin has zero efficacy in CDI because it is not excreted into the colonic lumen."
+    ],
+    "potential_exam_trap": "Selecting IV vancomycin instead of oral formulations, or choosing metronidazole based on outdated practice guidelines.",
+    "sources": [
+      "IDSA/SHEA CDI Focused Update 2021",
+      "Oh's Intensive Care Manual, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R004",
+    "chapterId": 18,
+    "topicId": "cc-managing-mdr-gram-negative-infections-i",
+    "question": "An intensive care patient with ventilator-associated pneumonia grows Pseudomonas aeruginosa with difficult-to-treat resistance (DTR-P. aeruginosa), resistant to piperacillin-tazobactam, cefepime, ceftazidime, meropenem, and ciprofloxacin, but testing sensitive to colistin and novel beta-lactamase inhibitor combinations. According to the IDSA guidance for antimicrobial-resistant Gram-negative infections, which of the following is the preferred definitive therapy if the strain produces a metallo-beta-lactamase (such as NDM or VIM)?",
+    "options": [
+      "Ceftolozane-tazobactam monotherapy",
+      "Ceftazidime-avibactam plus aztreonam or a polymyxin-based regimen / Cefiderocol",
+      "Meropenem-vaborbactam monotherapy",
+      "Tigecycline high-dose monotherapy"
+    ],
+    "answer": "B",
+    "explanation": "Metallo-beta-lactamases (MBLs; Ambler Class B, such as NDM, VIM, IMP) hydrolyze all penicillins, cephalosporins, and carbapenems, and are NOT inhibited by avibactam, tazobactam, or vaborbactam. Aztreonam is unique among beta-lactams because it resists MBL hydrolysis; however, MBL-producing Gram-negative organisms usually co-produce ESBLs or AmpC cephalosporinases that degrade aztreonam. Avibactam protects aztreonam against these co-produced serin-beta-lactamases. Therefore, ceftazidime-avibactam plus aztreonam, or cefiderocol (a siderophore cephalosporin), or polymyxin-based regimens (colistin/polymyxin B) are active. In Pseudomonas, when MBL is present, ceftolozane-tazobactam and meropenem-vaborbactam are inactive. Note that Tigecycline has no clinically meaningful activity against Pseudomonas aeruginosa due to intrinsic multidrug efflux pumps (MexXY-OprM).",
+    "whyWrong": {
+      "A": "Ceftolozane-tazobactam is hydrolyzed by metallo-beta-lactamases (Class B) and is inactive.",
+      "B": "Correct answer: Aztreonam-containing combinations (or cefiderocol/colistin) provide activity against MBL producers.",
+      "C": "Meropenem-vaborbactam is designed for KPC (Class A) carbapenemases and has no activity against Class B MBLs.",
+      "D": "Pseudomonas aeruginosa is intrinsically resistant to tigecycline due to constitutively expressed efflux pumps."
+    },
+    "difficulty": "hard",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Class A (KPC) -> Inhibited by avibactam, vaborbactam, relebactam.\n• Class B (MBL: NDM, VIM, IMP) -> Hydrolyzes carbapenems; inhibited only by aztreonam (spared) combined with avibactam, or cefiderocol / polymyxins.\n• Class C (AmpC) -> Inducible cephalosporinase; carbapenems or cefepime preferred.\n• Pseudomonas aeruginosa has intrinsic resistance to tigecycline, eravacycline, and trimethoprim-sulfamethoxazole.\n\nPOTENTIAL EXAM TRAP: Prescribing tigecycline for Pseudomonas aeruginosa, which has intrinsic resistance due to active efflux pumps.",
+    "hyperlinkedReference": {
+      "label": "IDSA AMR Guidance 2023/2024",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Infectious Diseases",
+      "MDR / DTR Pseudomonas aeruginosa and Carbapenemase Classification"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "moderate",
+    "question_status": "reconstructed_recall",
+    "speaker_answer": "Ceftazidime-avibactam + Aztreonam / Colistin-based therapy",
+    "verified_answer": "Ceftazidime-avibactam plus aztreonam or a polymyxin-based regimen / Cefiderocol",
+    "answer_verification_note": "Verified against IDSA Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections (2023/2024 update).",
+    "concept_tested": "Ambler classification of beta-lactamases and antimicrobial selection for metallo-beta-lactamase producing Pseudomonas",
+    "high_yield_takeaway": [
+      "Class A (KPC) -> Inhibited by avibactam, vaborbactam, relebactam.",
+      "Class B (MBL: NDM, VIM, IMP) -> Hydrolyzes carbapenems; inhibited only by aztreonam (spared) combined with avibactam, or cefiderocol / polymyxins.",
+      "Class C (AmpC) -> Inducible cephalosporinase; carbapenems or cefepime preferred.",
+      "Pseudomonas aeruginosa has intrinsic resistance to tigecycline, eravacycline, and trimethoprim-sulfamethoxazole."
+    ],
+    "potential_exam_trap": "Prescribing tigecycline for Pseudomonas aeruginosa, which has intrinsic resistance due to active efflux pumps.",
+    "sources": [
+      "IDSA AMR Guidance 2023/2024",
+      "Mandell, Douglas, and Bennett's Principles and Practice of Infectious Diseases"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R005",
+    "chapterId": 18,
+    "topicId": "cc-interpreting-antibiogram-and-mic",
+    "question": "A 55-year-old intubated patient in the ICU develops hospital-acquired bacteremic pneumonia. Blood cultures flag positive for Methicillin-Resistant Staphylococcus aureus (MRSA). Which of the following is the standard-of-care parenteral antibiotic of choice, and what pharmacodynamic monitoring parameter correlates best with clinical efficacy and minimal nephrotoxicity?",
+    "options": [
+      "Vancomycin; target AUC24/MIC ratio of 400 to 600",
+      "Daptomycin; target trough concentration > 20 mcg/mL",
+      "Linezolid; target peak concentration > 50 mcg/mL",
+      "Cefazolin; target trough > 4 times the MIC"
+    ],
+    "answer": "A",
+    "explanation": "Intravenous vancomycin remains the standard first-line antimicrobial for serious MRSA infections, including bacteremia, hospital-acquired pneumonia, and endocarditis. According to the revised consensus guidelines by ASHP/IDSA/PIDS/SIDP, vancomycin efficacy and nephrotoxicity are best monitored using the 24-hour area under the concentration-time curve to minimum inhibitory concentration (AUC24/MIC) ratio, targeting 400 to 600 (assuming a broth microdilution MIC of 1 mg/L). Daptomycin is inactivated by pulmonary surfactant and is contraindicated in MRSA pneumonia. Linezolid is bacteriostatic and is an alternative for pneumonia, but AUC/MIC monitoring is not standard. Cefazolin is inactive against MRSA (only used in MSSA).",
+    "whyWrong": {
+      "A": "Correct answer: Vancomycin with AUC24/MIC target of 400-600 is standard of care.",
+      "B": "Daptomycin is inactivated by pulmonary surfactant and cannot be used to treat pneumonia.",
+      "C": "Linezolid does not require therapeutic drug peak monitoring and vancomycin is standard for bacteremic MRSA.",
+      "D": "Cefazolin is a first-generation cephalosporin completely hydrolyzed/ineffective against MRSA due to PBP2a."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Vancomycin is the gold standard for MRSA; monitored by AUC24/MIC target 400-600 rather than trough alone to minimize nephrotoxicity.\n• Daptomycin is inactivated by pulmonary surfactant and MUST NOT be used for MRSA pneumonia.\n• For MSSA, anti-staphylococcal penicillins (oxacillin, nafcillin) or cefazolin are significantly superior to vancomycin.\n\nPOTENTIAL EXAM TRAP: Selecting daptomycin for a patient with MRSA pneumonia (daptomycin is sequestered and inactivated by surfactant).",
+    "hyperlinkedReference": {
+      "label": "ASHP/IDSA/PIDS/SIDP Vancomycin Guidelines 2020",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Pharmacology",
+      "MRSA Therapeutics and Vancomycin Therapeutic Drug Monitoring"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "reconstructed_recall",
+    "speaker_answer": "Vancomycin",
+    "verified_answer": "Vancomycin; target AUC24/MIC ratio of 400 to 600",
+    "answer_verification_note": "Verified against ASHP/IDSA/PIDS/SIDP 2020 Consensus Guidelines on Vancomycin Therapeutic Monitoring.",
+    "concept_tested": "Treatment of invasive MRSA infections and updated AUC-guided vancomycin monitoring guidelines",
+    "high_yield_takeaway": [
+      "Vancomycin is the gold standard for MRSA; monitored by AUC24/MIC target 400-600 rather than trough alone to minimize nephrotoxicity.",
+      "Daptomycin is inactivated by pulmonary surfactant and MUST NOT be used for MRSA pneumonia.",
+      "For MSSA, anti-staphylococcal penicillins (oxacillin, nafcillin) or cefazolin are significantly superior to vancomycin."
+    ],
+    "potential_exam_trap": "Selecting daptomycin for a patient with MRSA pneumonia (daptomycin is sequestered and inactivated by surfactant).",
+    "sources": [
+      "ASHP/IDSA/PIDS/SIDP Vancomycin Guidelines 2020",
+      "Marino's The ICU Book, 4th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R007",
+    "chapterId": 19,
+    "topicId": "cc-intra-abdominal-hypertension-and-abdominal-compartment-syndrome",
+    "question": "Regarding the standardized measurement of intra-abdominal pressure (IAP) via the transvesical (urinary bladder) catheter method recommended by the Abdominal Compartment Society (WSACS), which of the following is correct?",
+    "options": [
+      "The transducer should be zeroed at the level of the symphysis pubis with the patient in a 30-degree semi-recumbent position",
+      "The measurement is taken at end-expiration in the complete supine position with an instillation volume not exceeding 25 mL of sterile saline",
+      "Instillation of 100 to 150 mL of saline is required to eliminate bladder dead space prior to pressure recording",
+      "Measurements must be obtained during peak inspiration to capture maximum diaphragmatic excursion"
+    ],
+    "answer": "B",
+    "explanation": "The Abdominal Compartment Society (WSACS, formerly World Society of the Abdominal Compartment Syndrome) defines the standardized transvesical measurement of IAP: 1. Patient in the complete supine position, fully relaxed without active abdominal contractions. 2. Zero reference line at the mid-axillary line at the level of the iliac crest (not symphysis pubis). 3. Priming/instillation volume <= 25 mL of sterile isotonic saline (larger volumes of 50-100 mL create detrusor muscle stretching and artifactually overestimate IAP). 4. Pressure measured at end-expiration to avoid positive intrathoracic pressure swings transmitting across the diaphragm.",
+    "whyWrong": {
+      "A": "The zero reference point must be the mid-axillary line at the iliac crest, and the patient must be completely supine (elevating the head of bed artifactually increases IAP).",
+      "B": "Correct answer: Supine position, end-expiration, and instillation volume <= 25 mL are standard WSACS criteria.",
+      "C": "Overfilling the bladder (> 25 mL) causes detrusor stretch and falsely elevates recorded pressures.",
+      "D": "Measuring during inspiration includes diaphragmatic downward pressure and artifactually elevates IAP; it must be at end-expiration."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Normal IAP is 5-7 mmHg in critically ill adults; Intra-Abdominal Hypertension (IAH) is sustained IAP >= 12 mmHg.\n• Abdominal Compartment Syndrome (ACS) is sustained IAP > 20 mmHg associated with new organ dysfunction.\n• Measurement protocol: Supine, zeroed at mid-axillary line/iliac crest, end-expiration, <= 25 mL saline instillation.\n\nPOTENTIAL EXAM TRAP: Using symphysis pubis as the zero level (an older, obsolete technique) or measuring with the head of bed elevated.",
+    "hyperlinkedReference": {
+      "label": "WSACS Guidelines (Intensive Care Med 2013)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "ICU Procedures",
+      "Intra-Abdominal Pressure Monitoring and Abdominal Compartment Syndrome"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Measurement at end-expiration in supine position with 25 mL saline",
+    "verified_answer": "The measurement is taken at end-expiration in the complete supine position with an instillation volume not exceeding 25 mL of sterile saline",
+    "answer_verification_note": "Verified against WSACS Consensus Guidelines on Intra-abdominal Hypertension and Abdominal Compartment Syndrome (Intensive Care Med 2013).",
+    "concept_tested": "WSACS consensus protocol for standardized intra-abdominal pressure monitoring",
+    "high_yield_takeaway": [
+      "Normal IAP is 5-7 mmHg in critically ill adults; Intra-Abdominal Hypertension (IAH) is sustained IAP >= 12 mmHg.",
+      "Abdominal Compartment Syndrome (ACS) is sustained IAP > 20 mmHg associated with new organ dysfunction.",
+      "Measurement protocol: Supine, zeroed at mid-axillary line/iliac crest, end-expiration, <= 25 mL saline instillation."
+    ],
+    "potential_exam_trap": "Using symphysis pubis as the zero level (an older, obsolete technique) or measuring with the head of bed elevated.",
+    "sources": [
+      "WSACS Guidelines (Intensive Care Med 2013)",
+      "Oh's Intensive Care Manual, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R024",
+    "chapterId": 22,
+    "topicId": "cc-thrombocytopenia-in-the-icu",
+    "question": "In a 70 kg adult patient without active ongoing consumptive coagulopathy, alloimmunization, or severe splenomegaly, transfusion of ONE unit of Random Donor Platelets (RDP) is expected to increase the peripheral platelet count by approximately:",
+    "options": [
+      "5,000 to 10,000 / microL",
+      "30,000 to 50,000 / microL",
+      "1,000 to 2,000 / microL",
+      "80,000 to 100,000 / microL"
+    ],
+    "answer": "A",
+    "explanation": "In an average 70 kg adult: 1. One unit of Random Donor Platelets (RDP, harvested from a single unit of whole blood, containing ~5.5 x 10^10 platelets) increases the systemic platelet count by approximately 5,000 to 10,000 / microL. 2. One unit of Single Donor Apheresis Platelets (SDP, harvested from a single donor by apheresis, containing ~3.0 x 10^11 platelets) is equivalent to 6 units of RDP and increases the platelet count by approximately 30,000 to 60,000 / microL. In critically ill patients with sepsis, DIC, splenomegaly, or platelet antibodies, the observed post-transfusion increment is frequently blunted.",
+    "whyWrong": {
+      "A": "Correct answer: 1 RDP unit increases platelets by ~5,000 to 10,000 / microL.",
+      "B": "30,000 to 50,000 / microL is the increment expected from one unit of Single Donor Apheresis Platelets (SDP) or a pool of 5-6 RDPs.",
+      "C": "1,000 to 2,000 / microL represents refractory consumptive destruction, not the standard theoretical yield.",
+      "D": "80,000 to 100,000 / microL is excessively high and cannot be achieved by a single RDP unit."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• 1 unit of RDP -> increases platelet count by 5,000 - 10,000 / microL.\n• 1 unit of SDP (apheresis) = 6 units of RDP -> increases platelet count by 30,000 - 60,000 / microL.\n• Corrected Count Increment (CCI) at 1 hour < 5,000 indicates immune or non-immune platelet refractoriness.\n\nPOTENTIAL EXAM TRAP: Confusing the expected increment of a single RDP (5-10k) with an SDP / 6-unit RDP pool (30-60k).",
+    "hyperlinkedReference": {
+      "label": "AABB Technical Manual, 20th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Hematology",
+      "Platelet Transfusion Dynamics (RDP vs SDP)"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "5,000 to 10,000 / microL (or 10 x 10^3)",
+    "verified_answer": "5,000 to 10,000 / microL",
+    "answer_verification_note": "Verified against AABB Technical Manual and Marino's The ICU Book.",
+    "concept_tested": "Expected platelet count increments following RDP vs SDP transfusions",
+    "high_yield_takeaway": [
+      "1 unit of RDP -> increases platelet count by 5,000 - 10,000 / microL.",
+      "1 unit of SDP (apheresis) = 6 units of RDP -> increases platelet count by 30,000 - 60,000 / microL.",
+      "Corrected Count Increment (CCI) at 1 hour < 5,000 indicates immune or non-immune platelet refractoriness."
+    ],
+    "potential_exam_trap": "Confusing the expected increment of a single RDP (5-10k) with an SDP / 6-unit RDP pool (30-60k).",
+    "sources": [
+      "AABB Technical Manual, 20th Ed.",
+      "Marino's The ICU Book, 4th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R025",
+    "chapterId": 22,
+    "topicId": "cc-hematological-emergencies-in-critical-illness",
+    "question": "A 56-year-old male receives 2 units of fresh frozen plasma following liver biopsy. Four hours post-transfusion, he develops acute respiratory distress, severe hypoxemia (SpO2 84% on room air), fever of 38.4°C, and a blood pressure of 88/54 mmHg. Chest radiography reveals new bilateral non-cardiogenic alveolar infiltrates. Transthoracic echocardiogram demonstrates normal left ventricular systolic function (EF 60%) and a normal left atrial size with a central venous pressure of 6 mmHg. Which of the following features most decisively distinguishes Transfusion-Related Acute Lung Injury (TRALI) from Transfusion-Associated Circulatory Overload (TACO)?",
+    "options": [
+      "Bilateral pulmonary infiltrates on chest radiograph",
+      "Presence of normal pulmonary capillary wedge pressure (or CVP), lack of circulatory volume overload, and hypotension",
+      "Rapid clinical improvement following high-dose intravenous loop diuretic therapy",
+      "Markedly elevated plasma B-type natriuretic peptide (BNP) levels"
+    ],
+    "answer": "B",
+    "explanation": "Transfusion-Related Acute Lung Injury (TRALI) is an immune-mediated acute lung injury caused by donor anti-HLA or anti-human neutrophil antigen (HNA) antibodies activating recipient neutrophils, producing pulmonary capillary endothelial damage, massive capillary leak, and non-cardiogenic pulmonary edema within 6 hours of transfusion. Key differentiators from Transfusion-Associated Circulatory Overload (TACO): 1. Hemodynamics: TRALI typically presents with normal or low blood pressure (or hypotension), normal CVP/PCWP (PCWP <= 18 mmHg), and no signs of volume overload. TACO is hydrostatic/cardiogenic pulmonary edema presenting with hypertension, elevated CVP, elevated PCWP (> 18 mmHg), and jugular venous distension. 2. Response to diuretics: TACO responds rapidly with brisk diuresis; TRALI does not improve and diuretics may worsen hypotension. 3. Biomarkers: NT-proBNP/BNP is markedly elevated in TACO but normal or minimally elevated in TRALI.",
+    "whyWrong": {
+      "A": "Both TRALI and TACO display bilateral pulmonary infiltrates on chest radiography.",
+      "B": "Correct answer: Normal hydrostatic pressures (CVP/PCWP), absence of left atrial hypertension, and hypotension characterize TRALI.",
+      "C": "Rapid improvement with diuretics is diagnostic of TACO, not TRALI.",
+      "D": "Markedly elevated BNP (> 1.5x pre-transfusion or > 1200 pg/mL) indicates circulatory overload (TACO)."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• TRALI: Immune-mediated (anti-HLA/HNA antibodies), non-cardiogenic pulmonary edema, normal PCWP/CVP, hypotension, fever, no response to diuretics.\n• TACO: Hydrostatic volume overload, cardiogenic pulmonary edema, high PCWP/CVP, hypertension, marked BNP elevation, prompt response to furosemide.\n• Both occur within 6 hours of blood product transfusion (especially plasma-rich components).\n\nPOTENTIAL EXAM TRAP: Treating suspected TRALI with aggressive loop diuretics, which precipitates severe hypovolemic shock due to preexisting capillary leak.",
+    "hyperlinkedReference": {
+      "label": "Lancet Haematol 2019 (Vlaar AP et al.)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Respiratory Critical Care",
+      "TRALI vs TACO Pathophysiology and Differential Diagnosis"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "reconstructed_recall",
+    "speaker_answer": "TRALI",
+    "verified_answer": "Presence of normal pulmonary capillary wedge pressure (or CVP), lack of circulatory volume overload, and hypotension",
+    "answer_verification_note": "Verified against International Consensus Definition of TRALI (Lancet Haematol 2019) and AABB guidelines.",
+    "concept_tested": "Clinical, radiological, and hemodynamic distinction between TRALI and TACO",
+    "high_yield_takeaway": [
+      "TRALI: Immune-mediated (anti-HLA/HNA antibodies), non-cardiogenic pulmonary edema, normal PCWP/CVP, hypotension, fever, no response to diuretics.",
+      "TACO: Hydrostatic volume overload, cardiogenic pulmonary edema, high PCWP/CVP, hypertension, marked BNP elevation, prompt response to furosemide.",
+      "Both occur within 6 hours of blood product transfusion (especially plasma-rich components)."
+    ],
+    "potential_exam_trap": "Treating suspected TRALI with aggressive loop diuretics, which precipitates severe hypovolemic shock due to preexisting capillary leak.",
+    "sources": [
+      "Lancet Haematol 2019 (Vlaar AP et al.)",
+      "Marino's The ICU Book, 4th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R026",
+    "chapterId": 22,
+    "topicId": "cc-hematological-emergencies-in-critical-illness",
+    "question": "A 60-year-old patient undergoes major emergency abdominal surgery with ongoing concerns for potential surgical site bleeding. Venous thromboembolism (VTE) prophylaxis is indicated. Which of the following anticoagulant agents has the shortest elimination half-life and can be initiated earliest postoperatively with rapid protamine reversibility if acute hemorrhage occurs?",
+    "options": [
+      "Low-molecular-weight heparin (Enoxaparin)",
+      "Unfractionated heparin (UFH)",
+      "Direct oral anticoagulant (Rivaroxaban)",
+      "Warfarin"
+    ],
+    "answer": "B",
+    "explanation": "Unfractionated heparin (UFH) has an elimination half-life of only 60 to 90 minutes when administered subcutaneously or intravenously, and its anticoagulant effect can be 100% neutralized within minutes by intravenous protamine sulfate (1 mg protamine per 100 units of heparin). Because of this short half-life and complete reversibility, low-dose subcutaneous UFH (5,000 units BID or TID) can be started as early as 6 to 12 hours postoperatively in surgical patients with borderline bleeding risks. In contrast, enoxaparin (LMWH) has a half-life of 4 to 7 hours, is only partially (~60%) reversed by protamine, and is typically withheld until 12 to 24 hours postoperatively. DOACs and warfarin have much longer half-lives and delayed onsets/offsets.",
+    "whyWrong": {
+      "A": "LMWH (enoxaparin) has a 4-7 hour half-life, requires waiting 12-24 hours postop, and is only incompletely reversed by protamine.",
+      "B": "Correct answer: UFH has the shortest half-life (60-90 min), earliest start window (6-12 hrs), and complete protamine reversibility.",
+      "C": "DOACs (rivaroxaban, apixaban) have 9-14 hour half-lives, no widely available bedside protamine-like reversal, and carry higher immediate postoperative bleeding risks.",
+      "D": "Warfarin has a 36-42 hour half-life, requires days to reach therapeutic INR, and cannot be finely titrated postoperatively."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Unfractionated Heparin (UFH): Half-life 60-90 min; completely reversed by protamine (1 mg per 100 units UFH); can be started earliest (6-12 hrs postop).\n• LMWH (Enoxaparin): Half-life 4-7 hrs; renal elimination; only partially (~60%) reversed by protamine; started 12-24 hrs postop.\n• UFH is preferred in patients with high bleeding risk, severe renal failure (CrCl < 30 mL/min), or fluctuating clinical status.\n\nPOTENTIAL EXAM TRAP: Choosing LMWH because it is the routine preferred agent overall; the question specifically asks for the agent that can be started EARLIEST due to short half-life and rapid reversibility.",
+    "hyperlinkedReference": {
+      "label": "CHEST Antithrombotic Guidelines",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Pharmacology",
+      "Postoperative VTE Prophylaxis: Pharmacokinetics and Reversibility"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Unfractionated heparin (UFH)",
+    "verified_answer": "Unfractionated heparin (UFH)",
+    "answer_verification_note": "Verified against CHEST Guidelines on Antithrombotic Therapy and Prevention of Thrombosis (Chest 2012/2016).",
+    "concept_tested": "Pharmacokinetic properties, timing of initiation, and reversibility of postoperative anticoagulants",
+    "high_yield_takeaway": [
+      "Unfractionated Heparin (UFH): Half-life 60-90 min; completely reversed by protamine (1 mg per 100 units UFH); can be started earliest (6-12 hrs postop).",
+      "LMWH (Enoxaparin): Half-life 4-7 hrs; renal elimination; only partially (~60%) reversed by protamine; started 12-24 hrs postop.",
+      "UFH is preferred in patients with high bleeding risk, severe renal failure (CrCl < 30 mL/min), or fluctuating clinical status."
+    ],
+    "potential_exam_trap": "Choosing LMWH because it is the routine preferred agent overall; the question specifically asks for the agent that can be started EARLIEST due to short half-life and rapid reversibility.",
+    "sources": [
+      "CHEST Antithrombotic Guidelines",
+      "Oh's Intensive Care Manual, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R027",
+    "chapterId": 22,
+    "topicId": "cc-hematological-emergencies-in-critical-illness",
+    "question": "A 64-year-old man with metastatic pancreatic adenocarcinoma is admitted to the ICU with severe abdominal pain. He has high Padua and Caprini scores predicting a high risk of venous thromboembolism (VTE), but has no active bleeding, normal platelet count, and normal coagulation parameters. Which thromboprophylactic strategy is recommended?",
+    "options": [
+      "Pharmacological thromboprophylaxis with Low-Molecular-Weight Heparin (LMWH)",
+      "Graduated compression stockings alone",
+      "Placement of a prophylactic inferior vena cava (IVC) filter",
+      "No prophylaxis due to underlying malignancy"
+    ],
+    "answer": "A",
+    "explanation": "In critically ill medical and surgical patients with a high risk of venous thromboembolism (VTE) and low bleeding risk, both the American College of Chest Physicians (CHEST) and American Society of Hematology (ASH) guidelines strongly recommend pharmacological thromboprophylaxis over mechanical prophylaxis alone. Low-Molecular-Weight Heparin (LMWH, e.g., enoxaparin 40 mg once daily or dalteparin 5,000 units once daily) is preferred over unfractionated heparin (UFH) due to superior efficacy in reducing DVT/PE, once-daily dosing, and significantly lower risk of Heparin-Induced Thrombocytopenia (HIT). Mechanical methods (compression stockings/IPCs) are added as adjuncts or used only when pharmacological agents are contraindicated due to active bleeding.",
+    "whyWrong": {
+      "A": "Correct answer: LMWH pharmacological prophylaxis is the gold standard when bleeding risk is low.",
+      "B": "Mechanical compression stockings alone are inferior to pharmacological anticoagulation and are only monotherapy if bleeding risk is prohibitive.",
+      "C": "Prophylactic IVC filter insertion has no mortality benefit and carries significant long-term thrombotic/mechanical complications.",
+      "D": "Withholding prophylaxis in a high-risk malignancy patient dramatically increases fatal pulmonary embolism."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Patients with high VTE risk and low bleeding risk must receive pharmacological thromboprophylaxis.\n• LMWH is preferred over UFH due to better bioavailability, lower VTE rates, and lower HIT incidence.\n• Mechanical prophylaxis (IPCs) should be combined with pharmacotherapy in very high-risk patients or used alone if active bleeding exists.\n\nPOTENTIAL EXAM TRAP: Relying on compression stockings alone in a patient with active metastatic cancer.",
+    "hyperlinkedReference": {
+      "label": "CHEST Guidelines for Prevention of VTE in Nonorthopedic Surgical Patients",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Hematology",
+      "VTE Prophylaxis in High-Risk Critical Care Patients"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Low-molecular-weight heparin (LMWH)",
+    "verified_answer": "Pharmacological thromboprophylaxis with Low-Molecular-Weight Heparin (LMWH)",
+    "answer_verification_note": "Verified against CHEST Guidelines (Chest 2012/2016) and ASH VTE Prophylaxis Guidelines.",
+    "concept_tested": "Indications and selection of pharmacological VTE thromboprophylaxis",
+    "high_yield_takeaway": [
+      "Patients with high VTE risk and low bleeding risk must receive pharmacological thromboprophylaxis.",
+      "LMWH is preferred over UFH due to better bioavailability, lower VTE rates, and lower HIT incidence.",
+      "Mechanical prophylaxis (IPCs) should be combined with pharmacotherapy in very high-risk patients or used alone if active bleeding exists."
+    ],
+    "potential_exam_trap": "Relying on compression stockings alone in a patient with active metastatic cancer.",
+    "sources": [
+      "CHEST Guidelines for Prevention of VTE in Nonorthopedic Surgical Patients",
+      "ASH VTE Guidelines 2018"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R033",
+    "chapterId": 18,
+    "topicId": "cc-community-acquired-pneumonia",
+    "question": "A 54-year-old previously healthy man hospitalized with severe community-acquired pneumonia was initiated on intravenous piperacillin-tazobactam. By day 3 of admission, his fever has completely resolved, cough has improved, respiratory rate is 16 breaths/min, and oxygen saturation is 96% on room air. Blood and sputum cultures demonstrate no bacterial growth. According to the ATS/IDSA guidelines, what is the recommended total duration of antimicrobial therapy?",
+    "options": [
+      "Complete a total minimum duration of 5 days of antibiotic therapy",
+      "Continue intravenous antibiotics for a full 14 days",
+      "Immediately discontinue all antibiotics at day 3 without completing 5 days",
+      "Switch to oral ciprofloxacin for an additional 21 days"
+    ],
+    "answer": "A",
+    "explanation": "According to the American Thoracic Society / Infectious Diseases Society of America (ATS/IDSA) Community-Acquired Pneumonia (CAP) guidelines: 1. Antibiotic therapy should be continued until the patient achieves clinical stability (afebrile for 48 hours, normal heart rate, respiratory rate, blood pressure, and oxygenation) and for a minimum total duration of 5 days. 2. Randomized controlled trials have demonstrated that a 5-day course is clinically equivalent to 7-10 or 14-day courses in terms of cure and relapse rates, while significantly reducing antibiotic pressure, secondary Clostridioides difficile infection, and emergence of resistant pathogens. Prolonging therapy to 10-14 days is unnecessary.",
+    "whyWrong": {
+      "A": "Correct answer: Completing a total of 5 days is the standard ATS/IDSA guideline recommendation once clinical stability is reached.",
+      "B": "14 days is an excessive duration associated with drug toxicity, resistance, and C. difficile.",
+      "C": "Stopping at day 3 before completing 5 days risks microbiological relapse.",
+      "D": "Ciprofloxacin has poor Streptococcus pneumoniae activity, is not a first-line respiratory fluoroquinolone, and 21 days is inappropriate."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Uncomplicated CAP: Total duration of 5 days is sufficient if the patient is clinically stable and afebrile for >= 48 hours.\n• Clinical stability criteria: Afebrile, HR < 100, RR < 24, SBP >= 90 mmHg, SpO2 >= 90%.\n• Shorter courses (5 days) reduce antibiotic resistance, adverse drug events, and hospital costs.\n\nPOTENTIAL EXAM TRAP: Selecting 10 to 14 days based on older historical practices.",
+    "hyperlinkedReference": {
+      "label": "ATS/IDSA CAP Guidelines 2019",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Infectious Diseases",
+      "Community-Acquired Pneumonia Duration of Therapy"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "5 days of antibiotic therapy",
+    "verified_answer": "Complete a total minimum duration of 5 days of antibiotic therapy",
+    "answer_verification_note": "Verified against ATS/IDSA CAP Guidelines (Metlay JP et al., Am J Respir Crit Care Med 2019).",
+    "concept_tested": "ATS/IDSA recommendations on antimicrobial stewardship and 5-day duration for CAP",
+    "high_yield_takeaway": [
+      "Uncomplicated CAP: Total duration of 5 days is sufficient if the patient is clinically stable and afebrile for >= 48 hours.",
+      "Clinical stability criteria: Afebrile, HR < 100, RR < 24, SBP >= 90 mmHg, SpO2 >= 90%.",
+      "Shorter courses (5 days) reduce antibiotic resistance, adverse drug events, and hospital costs."
+    ],
+    "potential_exam_trap": "Selecting 10 to 14 days based on older historical practices.",
+    "sources": [
+      "ATS/IDSA CAP Guidelines 2019",
+      "Oh's Intensive Care Manual, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R034",
+    "chapterId": 23,
+    "topicId": "cc-general-approach-to-poisoning",
+    "question": "A 48-year-old female presents following an intentional massive overdose of sustained-release verapamil and metoprolol. In the ICU, she is profoundly bradycardic (HR 34 bpm) and hypotensive (BP 70/40 mmHg) despite fluid resuscitation, high-dose intravenous glucagon boluses and infusion, calcium chloride, and high-dose norepinephrine and epinephrine infusions. What is the next recommended pharmacotherapeutic intervention for severe refractory calcium channel blocker and beta-blocker poisoning?",
+    "options": [
+      "High-Dose Insulin Euglycemia Therapy (HIET) with concurrent dextrose infusion",
+      "Urgent intermittent hemodialysis",
+      "Initiation of Veno-Venous (VV) ECMO",
+      "Intravenous physostigmine bolus"
+    ],
+    "answer": "A",
+    "explanation": "High-Dose Insulin Euglycemia Therapy (HIET) is the treatment of choice for severe, refractory calcium channel blocker (CCB) and beta-blocker (BB) toxicity unresponsive to fluids, calcium, and glucagon. Mechanism: In shock states induced by CCBs/BBs, the myocardium shifts from its preferred energy substrate (free fatty acids) to glucose; however, CCBs inhibit pancreatic insulin secretion, creating hypoinsulinemia and peripheral/myocardial insulin resistance. High-dose insulin exerts potent positive inotropic effects by facilitating myocardial glucose uptake, enhancing pyruvate dehydrogenase activity, and increasing cytosolic calcium within cardiac myocytes without increasing catecholamine-induced myocardial oxygen consumption. Dosing: Regular insulin IV bolus of 1 unit/kg followed by a continuous infusion of 0.5 to 1.0 units/kg/hour (titrated up to 2-10 units/kg/hr), accompanied by continuous 10-50% dextrose infusion and potassium monitoring. Hemodialysis is ineffective because verapamil and metoprolol have large volumes of distribution and high protein binding. VV-ECMO provides respiratory support only; VA-ECMO (veno-arterial) is used if circulatory collapse persists despite HIET.",
+    "whyWrong": {
+      "A": "Correct answer: HIET is the definitive metabolic inotrope for severe CCB/BB cardiotoxicity.",
+      "B": "Verapamil and metoprolol are not dialyzable due to high lipophilicity, large volume of distribution, and high protein binding.",
+      "C": "VV-ECMO provides only respiratory support; circulatory collapse requires Veno-Arterial (VA) ECMO.",
+      "D": "Physostigmine is an acetylcholinesterase inhibitor used in anticholinergic poisoning; it would worsen bradycardia and AV nodal blockade."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• First-line in CCB/BB overdose: IV fluids, Calcium salts (chloride/gluconate), IV Glucagon.\n• Refractory CCB/BB toxicity: High-Dose Insulin Euglycemia Therapy (HIET) is the preferred second-line therapy.\n• HIET protocol: 1 unit/kg bolus regular insulin -> 0.5 - 1.0 unit/kg/hr infusion + D10W/D25W to maintain euglycemia + monitor potassium.\n• Refractory circulatory shock: Veno-Arterial (VA) ECMO, not VV-ECMO.\n\nPOTENTIAL EXAM TRAP: Selecting hemodialysis (CCB/BB are non-dialyzable) or VV-ECMO instead of VA-ECMO.",
+    "hyperlinkedReference": {
+      "label": "Goldfrank's Toxicologic Emergencies, 11th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Toxicology",
+      "Calcium Channel Blocker and Beta-Blocker Poisoning and HIET"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "High-dose insulin euglycemic therapy (HIET)",
+    "verified_answer": "High-Dose Insulin Euglycemia Therapy (HIET) with concurrent dextrose infusion",
+    "answer_verification_note": "Verified against Extracorporeal Treatments in Poisoning (EXTRIP) workgroup and Goldfrank's Toxicologic Emergencies.",
+    "concept_tested": "Mechanism and application of High-Dose Insulin Euglycemic Therapy (HIET) in refractory cardiotoxicity",
+    "high_yield_takeaway": [
+      "First-line in CCB/BB overdose: IV fluids, Calcium salts (chloride/gluconate), IV Glucagon.",
+      "Refractory CCB/BB toxicity: High-Dose Insulin Euglycemia Therapy (HIET) is the preferred second-line therapy.",
+      "HIET protocol: 1 unit/kg bolus regular insulin -> 0.5 - 1.0 unit/kg/hr infusion + D10W/D25W to maintain euglycemia + monitor potassium.",
+      "Refractory circulatory shock: Veno-Arterial (VA) ECMO, not VV-ECMO."
+    ],
+    "potential_exam_trap": "Selecting hemodialysis (CCB/BB are non-dialyzable) or VV-ECMO instead of VA-ECMO.",
+    "sources": [
+      "Goldfrank's Toxicologic Emergencies, 11th Ed.",
+      "Crit Care Med 2011 (Engebretsen KM et al. HIET consensus)"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R043",
+    "chapterId": 18,
+    "topicId": "cc-managing-mdr-gram-negative-infections-i",
+    "question": "A critical care nurse sustains a deep percutaneous hollow-bore needle-stick injury from a patient known to be chronically infected with Hepatitis C Virus (HCV; positive HCV RNA). According to CDC and IDSA guidelines, what is the recommended post-exposure management protocol?",
+    "options": [
+      "Baseline HCV antibody and HCV RNA testing of the healthcare worker, followed by repeat testing at 4 to 6 weeks; initiate Direct-Acting Antivirals (DAAs) only if seroconversion/acute HCV RNA viremia is documented",
+      "Immediate administration of Hepatitis C Immunoglobulin (HCV-IG) within 24 hours",
+      "Immediate 12-week prophylactic course of Sofosbuvir-Velpatasvir starting on day 1",
+      "Immediate administration of pegylated interferon plus ribavirin within 48 hours"
+    ],
+    "answer": "A",
+    "explanation": "Unlike Hepatitis B (where Hepatitis B Immunoglobulin and vaccination provide effective post-exposure prophylaxis), there is NO approved post-exposure prophylaxis (PEP), vaccine, or immunoglobulin for Hepatitis C Virus (HCV). CDC and IDSA/AASLD guidelines recommend a 'test and treat' strategy: 1. Perform baseline testing of the exposed healthcare personnel for anti-HCV antibodies and HCV RNA (within 48 hours). 2. Perform follow-up HCV RNA testing at 4 to 6 weeks post-exposure (or anti-HCV Ab with reflex RNA at 4-6 months). 3. If transmission occurs (demonstrated by positive HCV RNA), the healthcare worker is treated with curative, highly effective (cure rate > 95%) Direct-Acting Antivirals (DAAs) for acute Hepatitis C infection. Routine empiric prophylactic DAA therapy is NOT recommended.",
+    "whyWrong": {
+      "A": "Correct answer: Serial testing for early detection of viremia followed by curative DAA treatment is standard protocol.",
+      "B": "Hepatitis C Immunoglobulin (HCV-IG) does not exist / has no efficacy in preventing transmission.",
+      "C": "Empiric prophylactic DAAs are not recommended because transmission rates are low (~0.2-1.8%) and spontaneous viral clearance occurs in up to 25%.",
+      "D": "Interferon-based regimens are toxic, obsolete, and never used as empiric PEP."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Hepatitis C has NO post-exposure prophylaxis (no vaccine, no immunoglobulin).\n• Management protocol: Baseline testing (anti-HCV, HCV RNA) -> Repeat HCV RNA at 4-6 weeks -> If RNA positive, initiate Direct-Acting Antivirals (DAA).\n• Transmission risk after percutaneous exposure to HCV-infected blood is ~0.2% - 1.8%.\n\nPOTENTIAL EXAM TRAP: Choosing Hepatitis C immunoglobulin (which does not exist, unlike HBIG for Hepatitis B).",
+    "hyperlinkedReference": {
+      "label": "CDC MMWR 2020 (HCV Postexposure Testing and Clinical Management)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Infectious Diseases",
+      "Occupational Exposure to Hepatitis C Virus (HCV PEP)"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Observation and serial testing; no HCV-IG; treat with DAAs if positive",
+    "verified_answer": "Baseline HCV antibody and HCV RNA testing of the healthcare worker, followed by repeat testing at 4 to 6 weeks; initiate Direct-Acting Antivirals (DAAs) only if seroconversion/acute HCV RNA viremia is documented",
+    "answer_verification_note": "Verified against CDC Updated Guidelines for the Management of Personnel Exposed to HCV (MMWR 2020) and AASLD/IDSA Guidance.",
+    "concept_tested": "Management of occupational bloodborne exposure to Hepatitis C Virus per CDC/AASLD/IDSA",
+    "high_yield_takeaway": [
+      "Hepatitis C has NO post-exposure prophylaxis (no vaccine, no immunoglobulin).",
+      "Management protocol: Baseline testing (anti-HCV, HCV RNA) -> Repeat HCV RNA at 4-6 weeks -> If RNA positive, initiate Direct-Acting Antivirals (DAA).",
+      "Transmission risk after percutaneous exposure to HCV-infected blood is ~0.2% - 1.8%."
+    ],
+    "potential_exam_trap": "Choosing Hepatitis C immunoglobulin (which does not exist, unlike HBIG for Hepatitis B).",
+    "sources": [
+      "CDC MMWR 2020 (HCV Postexposure Testing and Clinical Management)",
+      "AASLD/IDSA HCV Guidance 2023"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R049",
+    "chapterId": 21,
+    "topicId": "cc-nutrition-in-the-icu",
+    "question": "A 52-year-old chronic alcohol-dependent male is admitted to the ICU with severe alcoholic hepatitis and altered mental status. Prior to initiating intravenous dextrose infusions or enteral nutrition, which vitamin must be administered immediately as high-dose parenteral supplementation to prevent irreversible neurological damage?",
+    "options": [
+      "Thiamine (Vitamin B1)",
+      "Pyridoxine (Vitamin B6)",
+      "Cobalamin (Vitamin B12)",
+      "Ascorbic acid (Vitamin C)"
+    ],
+    "answer": "A",
+    "explanation": "Chronic alcohol dependence causes severe thiamine (Vitamin B1) deficiency through inadequate dietary intake, impaired intestinal absorption, depleted hepatic storage, and defective intracellular phosphorylation to active thiamine pyrophosphate (TPP). TPP is an indispensable co-factor for pyruvate dehydrogenase, alpha-ketoglutarate dehydrogenase, and transketolase in aerobic glucose metabolism. Infusing intravenous dextrose in a thiamine-deficient patient accelerates glycolysis, rapidly exhausting residual thiamine stores and causing acute bioenergetic failure, lactic acidosis, and neuronal necrosis in vulnerable periventricular brain regions (mammillary bodies, thalamus). This precipitates acute Wernicke's encephalopathy (triad: encephalopathy, ophthalmoplegia/nystagmus, ataxia) or irreversible Korsakoff psychosis. High-dose parenteral thiamine (500 mg IV TID for 3-5 days) must ALWAYS be given BEFORE or concurrently with glucose.",
+    "whyWrong": {
+      "A": "Correct answer: High-dose parenteral thiamine is mandatory before glucose to prevent Wernicke-Korsakoff syndrome.",
+      "B": "Pyridoxine deficiency causes peripheral neuropathy and sideroblastic anemia, but acute glucose-induced neurological death is prevented by thiamine.",
+      "C": "Vitamin B12 deficiency causes subacute combined degeneration and megaloblastic anemia, which develops over months to years.",
+      "D": "Vitamin C is an antioxidant but not the critical co-factor preventing acute glucose-induced neurotoxicity."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Classic Wernicke Triad: Altered mental status (encephalopathy), Ocular dysfunction (nystagmus/abducens palsy), Gait ataxia.\n• Never administer IV dextrose before parenteral thiamine in alcoholics or severely malnourished patients.\n• Therapeutic dose: IV Thiamine 500 mg TID for 3 days, then 250 mg daily.\n\nPOTENTIAL EXAM TRAP: Infusing 5% or 10% dextrose prior to thiamine administration, acutely triggering coma or irreversible Korsakoff amnesia.",
+    "hyperlinkedReference": {
+      "label": "EFNS Guidelines (Eur J Neurol 2010)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Nutrition",
+      "Thiamine Deficiency and Wernicke Encephalopathy in Alcoholism"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Thiamine (Vitamin B1)",
+    "verified_answer": "Thiamine (Vitamin B1)",
+    "answer_verification_note": "Verified against EFNS Guidelines on Diagnosis and Treatment of Wernicke's Encephalopathy (Eur J Neurol 2010).",
+    "concept_tested": "Thiamine supplementation in alcohol use disorder to prevent acute Wernicke-Korsakoff syndrome",
+    "high_yield_takeaway": [
+      "Classic Wernicke Triad: Altered mental status (encephalopathy), Ocular dysfunction (nystagmus/abducens palsy), Gait ataxia.",
+      "Never administer IV dextrose before parenteral thiamine in alcoholics or severely malnourished patients.",
+      "Therapeutic dose: IV Thiamine 500 mg TID for 3 days, then 250 mg daily."
+    ],
+    "potential_exam_trap": "Infusing 5% or 10% dextrose prior to thiamine administration, acutely triggering coma or irreversible Korsakoff amnesia.",
+    "sources": [
+      "EFNS Guidelines (Eur J Neurol 2010)",
+      "Marino's The ICU Book, 4th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R051",
+    "chapterId": 23,
+    "topicId": "cc-general-approach-to-poisoning",
+    "question": "A patient with refractory hypoxemia from severe ARDS is receiving inhaled nitric oxide (iNO) at 40 ppm. Over the subsequent 24 hours, pulse oximetry displays an SpO2 refractory at 85% despite 100% FiO2, and arterial blood drawn appears distinctly dark and chocolate-brown. Co-oximetry reveals a methemoglobin concentration of 28%. What is the definitive intravenous antidote?",
+    "options": [
+      "Methylene blue 1 to 2 mg/kg IV infused over 5 minutes",
+      "Sodium thiosulfate 12.5 g IV",
+      "N-acetylcysteine 150 mg/kg IV",
+      "Hydroxocobalamin 5 g IV"
+    ],
+    "answer": "A",
+    "explanation": "Inhaled nitric oxide (iNO) reacts with oxyhemoglobin in the pulmonary vasculature to produce methemoglobin and nitrate. Methemoglobin forms when the ferrous (Fe2+) iron in heme is oxidized to the ferric (Fe3+) state. Ferric heme cannot bind oxygen and causes an allosteric shift in remaining ferrous heme molecules to the left, severely impairing oxygen release to tissues. On standard pulse oximeters, methemoglobin absorbs equal light at 660 nm and 940 nm, producing a false fixed plateau SpO2 of ~85%. The blood characteristically turns chocolate-brown. The treatment of choice for symptomatic methemoglobinemia (> 20-30%) is intravenous Methylene Blue (1 to 2 mg/kg of a 1% solution over 5 minutes). Methylene blue acts as an electron acceptor from NADPH via NADPH-methemoglobin reductase, reducing methylene blue to leukomethylene blue, which non-enzymatically reduces ferric iron (Fe3+) back to ferrous iron (Fe2+). Note: Methylene blue is contraindicated in Glucose-6-Phosphate Dehydrogenase (G6PD) deficiency (causes severe hemolysis).",
+    "whyWrong": {
+      "A": "Correct answer: Methylene blue 1-2 mg/kg IV is the definitive antidote for methemoglobinemia.",
+      "B": "Sodium thiosulfate is the antidote for cyanide poisoning.",
+      "C": "N-acetylcysteine is the antidote for acetaminophen hepatotoxicity.",
+      "D": "Hydroxocobalamin is the first-line antidote for acute cyanide poisoning."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• iNO, dapsone, benzocaine, and nitrates oxidize Fe2+ -> Fe3+ (methemoglobin).\n• Methemoglobinemia features: Refractory cyanosis, pulse oximetry saturation stuck at ~85%, chocolate-brown blood.\n• Antidote: IV Methylene Blue 1-2 mg/kg over 5 minutes.\n• Contraindication: G6PD deficiency (risk of severe hemolysis and treatment failure); use IV High-Dose Vitamin C (Ascorbic acid) instead.\n\nPOTENTIAL EXAM TRAP: Relying on standard pulse oximetry rather than arterial co-oximetry to detect methemoglobin levels.",
+    "hyperlinkedReference": {
+      "label": "Goldfrank's Toxicologic Emergencies, 11th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Toxicology",
+      "Inhaled Nitric Oxide Toxicity and Methemoglobinemia Antidote"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "IV Methylene blue",
+    "verified_answer": "Methylene blue 1 to 2 mg/kg IV infused over 5 minutes",
+    "answer_verification_note": "Verified against Goldfrank's Toxicologic Emergencies and Marino's The ICU Book.",
+    "concept_tested": "Pathophysiology and antidotal treatment of acquired methemoglobinemia",
+    "high_yield_takeaway": [
+      "iNO, dapsone, benzocaine, and nitrates oxidize Fe2+ -> Fe3+ (methemoglobin).",
+      "Methemoglobinemia features: Refractory cyanosis, pulse oximetry saturation stuck at ~85%, chocolate-brown blood.",
+      "Antidote: IV Methylene Blue 1-2 mg/kg over 5 minutes.",
+      "Contraindication: G6PD deficiency (risk of severe hemolysis and treatment failure); use IV High-Dose Vitamin C (Ascorbic acid) instead."
+    ],
+    "potential_exam_trap": "Relying on standard pulse oximetry rather than arterial co-oximetry to detect methemoglobin levels.",
+    "sources": [
+      "Goldfrank's Toxicologic Emergencies, 11th Ed.",
+      "Marino's The ICU Book, 4th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R052",
+    "chapterId": 18,
+    "topicId": "cc-community-acquired-pneumonia",
+    "question": "A 62-year-old previously healthy man is admitted to the ICU with severe community-acquired pneumonia (CAP) requiring invasive mechanical ventilation. He has no prior history of hospitalization or colonization with multidrug-resistant pathogens. According to the ATS/IDSA guidelines, which empiric intravenous antimicrobial regimen is recommended?",
+    "options": [
+      "A potent parenteral beta-lactam (e.g., Ceftriaxone 2 g IV daily or Ampicillin-sulbactam) plus a Macrolide (e.g., Azithromycin 500 mg IV daily)",
+      "Ciprofloxacin monotherapy 400 mg IV every 12 hours",
+      "Vancomycin monotherapy 15 mg/kg IV every 12 hours",
+      "Oral Doxycycline 100 mg twice daily as monotherapy"
+    ],
+    "answer": "A",
+    "explanation": "According to the ATS/IDSA guidelines for Community-Acquired Pneumonia (CAP), patients admitted to the ICU with severe CAP (defined by major criteria: septic shock requiring vasopressors or respiratory failure requiring invasive mechanical ventilation) without risk factors for MRSA or Pseudomonas aeruginosa should receive empiric combination therapy targeting Streptococcus pneumoniae, Legionella pneumophila, and other atypical/Gram-negative pathogens. The recommended standard regimens are: 1. A beta-lactam (ceftriaxone, ampicillin-sulbactam, cefotaxime) PLUS a macrolide (azithromycin or clarithromycin), OR 2. A beta-lactam PLUS a respiratory fluoroquinolone (levofloxacin or moxifloxacin). Observational and prospective data demonstrate that beta-lactam + macrolide combination therapy confers a significant 30-day mortality benefit over monotherapy or other combinations, mediated by macrolide immunomodulatory effects.",
+    "whyWrong": {
+      "A": "Correct answer: Beta-lactam + Macrolide is the preferred guideline-recommended empiric regimen for severe CAP in the ICU.",
+      "B": "Ciprofloxacin has inadequate Streptococcus pneumoniae coverage and monotherapy is strictly contraindicated in severe CAP.",
+      "C": "Vancomycin monotherapy lacks coverage for typical Gram-negative and atypical CAP pathogens (Legionella, Mycoplasma).",
+      "D": "Oral doxycycline monotherapy is inadequate for life-threatening severe CAP requiring mechanical ventilation in the ICU."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Severe CAP in ICU without MRSA/Pseudomonas risk: Beta-lactam (Ceftriaxone/Amp-Sulbactam) + Macrolide (Azithromycin) OR Respiratory Fluoroquinolone.\n• Beta-lactam + Macrolide provides superior mortality reduction compared to beta-lactam monotherapy.\n• Add MRSA (vancomycin/linezolid) or antipseudomonal (pip-taz/meropenem) agents ONLY if prior isolation or validated local risk factors exist.\n\nPOTENTIAL EXAM TRAP: Using ciprofloxacin instead of a respiratory fluoroquinolone (levofloxacin/moxifloxacin); ciprofloxacin lacks reliable pneumococcal activity.",
+    "hyperlinkedReference": {
+      "label": "ATS/IDSA CAP Guidelines 2019",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Infectious Diseases",
+      "Severe Community-Acquired Pneumonia (CAP) Empiric Antibiotic Regimens"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Beta-lactam + Macrolide",
+    "verified_answer": "A potent parenteral beta-lactam (e.g., Ceftriaxone 2 g IV daily or Ampicillin-sulbactam) plus a Macrolide (e.g., Azithromycin 500 mg IV daily)",
+    "answer_verification_note": "Verified against ATS/IDSA CAP Guidelines (Am J Respir Crit Care Med 2019).",
+    "concept_tested": "ATS/IDSA empiric antibiotic regimens for severe CAP requiring ICU admission",
+    "high_yield_takeaway": [
+      "Severe CAP in ICU without MRSA/Pseudomonas risk: Beta-lactam (Ceftriaxone/Amp-Sulbactam) + Macrolide (Azithromycin) OR Respiratory Fluoroquinolone.",
+      "Beta-lactam + Macrolide provides superior mortality reduction compared to beta-lactam monotherapy.",
+      "Add MRSA (vancomycin/linezolid) or antipseudomonal (pip-taz/meropenem) agents ONLY if prior isolation or validated local risk factors exist."
+    ],
+    "potential_exam_trap": "Using ciprofloxacin instead of a respiratory fluoroquinolone (levofloxacin/moxifloxacin); ciprofloxacin lacks reliable pneumococcal activity.",
+    "sources": [
+      "ATS/IDSA CAP Guidelines 2019",
+      "Oh's Intensive Care Manual, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R057",
+    "chapterId": 22,
+    "topicId": "cc-hematological-emergencies-in-critical-illness",
+    "question": "A 35-year-old trauma patient with hemorrhagic shock receives 14 units of packed red blood cells and 10 units of fresh frozen plasma within 4 hours under a massive transfusion protocol. Shortly thereafter, the monitor shows widening of the QRS complex and prolongation of the QTc interval. Arterial blood gas demonstrates ionized calcium of 0.65 mmol/L (normal 1.15 to 1.33 mmol/L). What is the mechanism of hypocalcemia following massive blood transfusion?",
+    "options": [
+      "Citrate preservative in transfused blood components chelates ionized calcium, overwhelming the metabolic capacity of the hypoperfused liver",
+      "Excessive urinary calcium excretion driven by saline resuscitation",
+      "Phosphate leaching from stored erythrocytes causing precipitation of calcium",
+      "Direct binding of calcium to artificial plastic transfusion tubing"
+    ],
+    "answer": "A",
+    "explanation": "Stored blood products (packed red blood cells, fresh frozen plasma, and platelets) are anticoagulated using citrate (typically Citrate-Phosphate-Dextrose or Acid-Citrate-Dextrose). Citrate acts as an anticoagulant by binding and chelating ionized calcium (Factor IV), preventing activation of the coagulation cascade. Under normal conditions, the liver rapidly metabolizes citrate into bicarbonate via the Krebs cycle (each citrate molecule yields 3 bicarbonate molecules). However, during massive blood transfusion (> 10 units in 24 hours or > 4 units in 1 hour), especially when compounded by hypothermia, shock, and hepatic hypoperfusion, citrate metabolism is markedly impaired. The unbound citrate accumulates in plasma and avidly chelates serum ionized calcium (Ca2+), producing severe acute ionized hypocalcemia. This impairs myocardial contractility, exacerbates systemic coagulopathy, and can trigger lethal arrhythmias. Prophylactic IV calcium administration (1 g calcium chloride or 3 g calcium gluconate for every 3-4 units of PRBCs/FFP) is recommended.",
+    "whyWrong": {
+      "A": "Correct answer: Citrate chelates circulating ionized calcium, overwhelming hepatic clearance during shock and hypothermia.",
+      "B": "Renal wasting plays a negligible role compared to direct intravascular chelation by massive exogenous citrate loads.",
+      "C": "RBC lysis releases potassium, not massive phosphate that precipitates calcium during acute blood transfusion.",
+      "D": "Plastic PVC infusion tubing does not bind or adsorb divalent calcium ions."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Massive transfusion delivers large citrate loads -> chelates ionized calcium -> hypocalcemia and hypomagnesemia.\n• Ionized hypocalcemia severely worsens traumatic coagulopathy (coagulation factors requires Ca2+) and depresses myocardial contractility.\n• Empiric calcium repletion (calcium chloride preferred in shock via central line) is mandatory during MTP.\n\nPOTENTIAL EXAM TRAP: Checking total calcium instead of ionized calcium; total calcium remains deceptively normal while active ionized calcium is critically depressed.",
+    "hyperlinkedReference": {
+      "label": "Marino's The ICU Book, 4th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Hematology",
+      "Citrate Toxicity and Acute Ionized Hypocalcemia"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Citrate toxicity chelating calcium",
+    "verified_answer": "Citrate preservative in transfused blood components chelates ionized calcium, overwhelming the metabolic capacity of the hypoperfused liver",
+    "answer_verification_note": "Verified against Marino's The ICU Book and British Committee for Standards in Haematology (BCSH) Guidelines on Massive Transfusion.",
+    "concept_tested": "Etiology and management of citrate-induced ionized hypocalcemia during massive blood transfusion",
+    "high_yield_takeaway": [
+      "Massive transfusion delivers large citrate loads -> chelates ionized calcium -> hypocalcemia and hypomagnesemia.",
+      "Ionized hypocalcemia severely worsens traumatic coagulopathy (coagulation factors requires Ca2+) and depresses myocardial contractility.",
+      "Empiric calcium repletion (calcium chloride preferred in shock via central line) is mandatory during MTP."
+    ],
+    "potential_exam_trap": "Checking total calcium instead of ionized calcium; total calcium remains deceptively normal while active ionized calcium is critically depressed.",
+    "sources": [
+      "Marino's The ICU Book, 4th Ed.",
+      "BCSH Massive Transfusion Guidelines"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R061",
+    "chapterId": 18,
+    "topicId": "cc-ventilator-associated-pneumonia",
+    "question": "As part of the evidence-based bundle for the prevention of Ventilator-Associated Pneumonia (VAP) in intubated intensive care patients, what is the recommended target range for endotracheal tube (ETT) cuff pressure monitoring?",
+    "options": [
+      "20 to 30 cmH2O (15 to 22 mmHg)",
+      "5 to 10 cmH2O (4 to 7 mmHg)",
+      "40 to 50 cmH2O (30 to 37 mmHg)",
+      "50 to 60 cmH2O (37 to 44 mmHg)"
+    ],
+    "answer": "A",
+    "explanation": "In intubated ICU patients, maintaining the endotracheal tube cuff pressure within the therapeutic window of 20 to 30 cmH2O (equivalent to 15 to 22 mmHg) is a critical standard of care: 1. Pressure < 20 cmH2O: Fails to maintain an effective tracheal seal, allowing microaspiration of contaminated subglottic oropharyngeal secretions pooled above the cuff into the lower respiratory tract, significantly increasing the incidence of Ventilator-Associated Pneumonia (VAP). 2. Pressure > 30 cmH2O: Exceeds capillary perfusion pressure of the tracheal mucosal microcirculation (~30-32 cmH2O or 22-25 mmHg), resulting in mucosal ischemia, ulceration, chondritis, tracheal cartilage necrosis, and long-term complications including post-extubation tracheal stenosis and tracheoesophageal fistula.",
+    "whyWrong": {
+      "A": "Correct answer: 20 to 30 cmH2O maintains an effective seal against microaspiration without exceeding mucosal capillary perfusion pressure.",
+      "B": "Pressures < 15-20 cmH2O permit continuous leakage of secretions and microaspiration.",
+      "C": "Pressures of 40-50 cmH2O cause complete cessation of mucosal capillary blood flow and rapid tracheal ischemic ulceration.",
+      "D": "Pressures of 50-60 cmH2O carry extreme risks of transmural necrosis, tracheal rupture, and fistula formation."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Recommended ETT cuff pressure: 20 to 30 cmH2O (15 to 22 mmHg).\n• Cuff pressure < 20 cmH2O -> Microaspiration of subglottic secretions -> Ventilator-Associated Pneumonia (VAP).\n• Cuff pressure > 30 cmH2O -> Tracheal mucosal ischemia, ulceration, necrosis, tracheal stenosis.\n• Continuous or q8h monitoring with a dedicated manometer is recommended.\n\nPOTENTIAL EXAM TRAP: Confusing cmH2O (20-30) with mmHg (15-22).",
+    "hyperlinkedReference": {
+      "label": "CDC Healthcare-Associated Pneumonia Guidelines",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Mechanical Ventilation",
+      "Endotracheal Tube Cuff Pressure Management and VAP Prevention"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "20 to 30 cmH2O",
+    "verified_answer": "20 to 30 cmH2O (15 to 22 mmHg)",
+    "answer_verification_note": "Verified against CDC Guidelines for Preventing Healthcare-Associated Pneumonia and SHEA/IDSA VAP Prevention Strategies.",
+    "concept_tested": "Therapeutic cuff pressure window to balance microaspiration prevention against mucosal ischemia",
+    "high_yield_takeaway": [
+      "Recommended ETT cuff pressure: 20 to 30 cmH2O (15 to 22 mmHg).",
+      "Cuff pressure < 20 cmH2O -> Microaspiration of subglottic secretions -> Ventilator-Associated Pneumonia (VAP).",
+      "Cuff pressure > 30 cmH2O -> Tracheal mucosal ischemia, ulceration, necrosis, tracheal stenosis.",
+      "Continuous or q8h monitoring with a dedicated manometer is recommended."
+    ],
+    "potential_exam_trap": "Confusing cmH2O (20-30) with mmHg (15-22).",
+    "sources": [
+      "CDC Healthcare-Associated Pneumonia Guidelines",
+      "SHEA/IDSA VAP Strategies (Infect Control Hosp Epidemiol 2022)"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R067",
+    "chapterId": 24,
+    "topicId": "cc-haemodynamic-management-pharmacotherapy-in-acute-polytrauma",
+    "question": "In the initial resuscitation and damage-control surgery of a severely injured polytrauma patient, which triad of mutually reinforcing physiological derangements constitutes the classic 'Trauma Lethal Triad'?",
+    "options": [
+      "Hypothermia, Coagulopathy, and Acidosis",
+      "Hypotension, Bradycardia, and Hypothermia",
+      "Hyperkalemia, Hypocalcemia, and Hyperglycemia",
+      "Hypoxemia, Hypercapnia, and Oliguria"
+    ],
+    "answer": "A",
+    "explanation": "The Trauma Lethal Triad comprises: 1. Hypothermia (core temperature < 35°C): Inhibits coagulation enzyme kinetics and impairs platelet aggregation; 2. Acidosis (arterial pH < 7.20 / base deficit >= 6): Caused by anaerobic tissue hypoperfusion and excessive unbuffered saline infusions, which severely degrades the enzymatic activity of the clotting cascade (e.g., factor Xa/Va activity drops by 50% at pH 7.20 and 90% at pH 6.80); 3. Coagulopathy (Trauma-Induced Coagulopathy, TIC): Caused by consumption, hyperfibrinolysis, platelet dysfunction, and dilution from crystalloids. Each component worsens the others in a lethal self-reinforcing vicious cycle: hypothermia and acidosis exacerbate coagulopathy -> continuous hemorrhage causes worse shock -> worsening acidosis and hypothermia, leading to irreversible cardiovascular collapse. Damage Control Resuscitation (balanced blood ratios, permissive hypotension, warming, early tranexamic acid, and rapid surgical packing) is designed to interrupt this triad.",
+    "whyWrong": {
+      "A": "Correct answer: Hypothermia, Acidosis, and Coagulopathy form the classic Trauma Lethal Triad.",
+      "B": "Cushing's triad consists of hypertension, bradycardia, and irregular respirations (raised ICP), not trauma lethal triad.",
+      "C": "Electrolyte shifts occur during massive transfusion but do not define the core lethal triad.",
+      "D": "These are non-specific signs of organ dysfunction, not the recognized triad."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Trauma Lethal Triad = Hypothermia (< 35°C), Acidosis (pH < 7.20), Coagulopathy.\n• Acidosis directly inhibits clotting factor complexes; hypothermia paralyzes platelet function.\n• Management: Damage Control Surgery (rapid control of bleeding/contamination without prolonged definitive repair) and Hemostatic Damage Control Resuscitation (1:1:1 blood products, Tranexamic Acid, active rewarming).\n\nPOTENTIAL EXAM TRAP: Confusing the trauma lethal triad with Cushing's triad (raised ICP) or Beck's triad (cardiac tamponade).",
+    "hyperlinkedReference": {
+      "label": "ATLS 10th Ed. (American College of Surgeons)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Trauma",
+      "Trauma Lethal Triad and Damage Control Resuscitation"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Hypothermia, Acidosis, and Coagulopathy",
+    "verified_answer": "Hypothermia, Coagulopathy, and Acidosis",
+    "answer_verification_note": "Verified against ATLS 10th Edition and American College of Surgeons Trauma Guidelines.",
+    "concept_tested": "Components and pathophysiology of the lethal triad in severe hemorrhagic trauma",
+    "high_yield_takeaway": [
+      "Trauma Lethal Triad = Hypothermia (< 35°C), Acidosis (pH < 7.20), Coagulopathy.",
+      "Acidosis directly inhibits clotting factor complexes; hypothermia paralyzes platelet function.",
+      "Management: Damage Control Surgery (rapid control of bleeding/contamination without prolonged definitive repair) and Hemostatic Damage Control Resuscitation (1:1:1 blood products, Tranexamic Acid, active rewarming)."
+    ],
+    "potential_exam_trap": "Confusing the trauma lethal triad with Cushing's triad (raised ICP) or Beck's triad (cardiac tamponade).",
+    "sources": [
+      "ATLS 10th Ed. (American College of Surgeons)",
+      "Oh's Intensive Care Manual, 8th Ed."
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R069",
+    "chapterId": 17,
+    "topicId": "cc-pharmacokinetics",
+    "question": "Nanotechnology involves the engineering and application of materials engineered at the nanometer scale (typically 1 to 100 nm). Which established pharmaceutical formulation widely utilized in the ICU represents a premier clinical success of nanotechnology, significantly reducing target-organ toxicity while preserving antimicrobial efficacy?",
+    "options": [
+      "Liposomal Amphotericin B",
+      "Crystalline Cefazolin",
+      "Regular Insulin solution",
+      "0.9% Sodium Chloride crystalloid"
+    ],
+    "answer": "A",
+    "explanation": "Nanotechnology in medicine (nanomedicine) involves engineered structures with dimensions between 1 and 100 nm. Liposomal Amphotericin B (AmBisome) is the archetypal clinical nanotechnology success in critical care. Conventional amphotericin B deoxycholate is notorious for severe nephrotoxicity caused by non-selective binding to cholesterol in human renal tubular cells. In Liposomal Amphotericin B, the active drug is intercalated within a closed, spherical, nanoscale (diameter 60-80 nm) unilamellar lipid bilayer composed of hydrogenated soy phosphatidylcholine, distearoylphosphatidylglycerol, and cholesterol. This nanocarrier remains intact in the systemic circulation, avoiding contact with renal tubular membranes, and selectively releases amphotericin B when it encounters the fungal cell wall (which contains ergosterol with higher binding affinity). This dramatically reduces nephrotoxicity and infusion-related reactions while maintaining potent broad-spectrum fungicidal activity.",
+    "whyWrong": {
+      "A": "Correct answer: Liposomal Amphotericin B is a nanoscale lipid nanoparticle delivery system that mitigates nephrotoxicity.",
+      "B": "Cefazolin is a conventional small-molecule beta-lactam antibiotic, not a nanotechnology formulation.",
+      "C": "Regular insulin is a recombinant 51-amino-acid peptide hormone, not a nanoparticle construct.",
+      "D": "0.9% NaCl is a simple aqueous mineral crystalloid solution."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Nanoparticles range from 1 to 100 nm in diameter.\n• Liposomal Amphotericin B (nanoliposome ~60-80 nm) minimizes renal tubular toxicity while targeting fungal ergosterol.\n• Other ICU nanotech applications: Nano-biosensors for ultra-rapid biomarker detection (procalcitonin, interleukins) and targeted chemotherapeutic delivery.\n\nPOTENTIAL EXAM TRAP: Confusing liposomal formulations with lipid emulsions (like propofol or TPN fat emulsions).",
+    "hyperlinkedReference": {
+      "label": "Goodman & Gilman's The Pharmacological Basis of Therapeutics, 14th Ed.",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Pharmacology",
+      "Nanotechnology and Liposomal Drug Formulations"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Liposomal Amphotericin B (nanoparticles)",
+    "verified_answer": "Liposomal Amphotericin B",
+    "answer_verification_note": "Verified against Goodman & Gilman's Pharmacological Basis of Therapeutics and IDSA Guidelines.",
+    "concept_tested": "Nanomedicine mechanisms in liposomal drug delivery to reduce toxicity",
+    "high_yield_takeaway": [
+      "Nanoparticles range from 1 to 100 nm in diameter.",
+      "Liposomal Amphotericin B (nanoliposome ~60-80 nm) minimizes renal tubular toxicity while targeting fungal ergosterol.",
+      "Other ICU nanotech applications: Nano-biosensors for ultra-rapid biomarker detection (procalcitonin, interleukins) and targeted chemotherapeutic delivery."
+    ],
+    "potential_exam_trap": "Confusing liposomal formulations with lipid emulsions (like propofol or TPN fat emulsions).",
+    "sources": [
+      "Goodman & Gilman's The Pharmacological Basis of Therapeutics, 14th Ed.",
+      "Clin Infect Dis 2016"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2025-R071",
+    "chapterId": 18,
+    "topicId": "cc-managing-mdr-gram-negative-infections-i",
+    "question": "A 34-year-old man presents with an infected human bite wound on his right hand sustained during an altercation 18 hours ago. He has a documented record of receiving a full course of tetanus toxoid immunization, with his last booster vaccination administered 2 years ago. Following copious coplanar wound irrigation and debridement, what is the appropriate management regarding antimicrobial therapy and tetanus prophylaxis?",
+    "options": [
+      "Initiate oral Amoxicillin-Clavulanate; no additional tetanus toxoid booster or tetanus immunoglobulin is indicated",
+      "Initiate oral Ciprofloxacin; administer both tetanus toxoid booster and tetanus immunoglobulin immediately",
+      "Withhold all antibiotics unless blood cultures become positive; administer tetanus immunoglobulin only",
+      "Initiate oral Cephalexin monotherapy; administer tetanus toxoid vaccine booster"
+    ],
+    "answer": "A",
+    "explanation": "Human bite wounds are polymicrobial infections with high contamination from human oral flora, including viridans streptococci, Staphylococcus aureus, and uniquely Eikenella corrodens (a fastidious facultative anaerobic Gram-negative rod), along with oral anaerobes (Fusobacterium, Prevotella, Peptostreptococcus). According to IDSA guidelines, Amoxicillin-Clavulanate is the oral empiric drug of choice because the clavulanate component provides essential coverage against beta-lactamase-producing anaerobes and S. aureus, while amoxicillin covers Eikenella corrodens (which is characteristically resistant to cephalexin, clindamycin, and macrolides). Tetanus prophylaxis rules: For clean or contaminated/dirty wounds, if a patient has received >= 3 doses of tetanus toxoid and the last booster was within 5 years, NO booster vaccine and NO tetanus immunoglobulin (TIG) are required. Primary closure of human bite wounds (especially on the hand) is contraindicated due to extreme risk of closed-space fascial infections (tenosynovitis/septic arthritis).",
+    "whyWrong": {
+      "A": "Correct answer: Amoxicillin-clavulanate covers Eikenella corrodens and anaerobes; tetanus booster is not needed within 5 years of last vaccine.",
+      "B": "Tetanus booster and TIG are not indicated within 5 years of completed vaccination, and ciprofloxacin lacks adequate anaerobic/streptococcal coverage.",
+      "C": "Withholding antibiotics in human bites leads to catastrophic deep fascial space infections and tenosynovitis.",
+      "D": "Cephalexin lacks activity against Eikenella corrodens and oral anaerobes."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-2025-recall",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Human bite wounds: Causative organisms include Eikenella corrodens, Streptococcus, S. aureus, and oral anaerobes.\n• Antibiotic of choice: Amoxicillin-Clavulanate (E. corrodens is intrinsically resistant to first-gen cephalosporins and clindamycin).\n• Tetanus booster needed in dirty/contaminated wounds ONLY if > 5 years since last dose (TIG needed only if < 3 lifetime doses).\n• Wounds on the hand should not undergo primary closure.\n\nPOTENTIAL EXAM TRAP: Prescribing cephalexin or clindamycin, which fail to cover Eikenella corrodens.",
+    "hyperlinkedReference": {
+      "label": "IDSA SSTI Guidelines (CID 2014)",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2025",
+      "Recall 2025",
+      "NEET-SS",
+      "Infectious Diseases",
+      "Bite Wound Infections and Tetanus Prophylaxis Protocols"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "high",
+    "question_status": "exact_recall",
+    "speaker_answer": "Amoxicillin-clavulanate; no tetanus booster needed if vaccinated within 5 years",
+    "verified_answer": "Initiate oral Amoxicillin-Clavulanate; no additional tetanus toxoid booster or tetanus immunoglobulin is indicated",
+    "answer_verification_note": "Verified against IDSA Practice Guidelines for Skin and Soft Tissue Infections (Clin Infect Dis 2014) and CDC Tetanus Guidelines.",
+    "concept_tested": "Antimicrobial coverage of oral flora (Eikenella corrodens) and CDC tetanus prophylaxis guidelines",
+    "high_yield_takeaway": [
+      "Human bite wounds: Causative organisms include Eikenella corrodens, Streptococcus, S. aureus, and oral anaerobes.",
+      "Antibiotic of choice: Amoxicillin-Clavulanate (E. corrodens is intrinsically resistant to first-gen cephalosporins and clindamycin).",
+      "Tetanus booster needed in dirty/contaminated wounds ONLY if > 5 years since last dose (TIG needed only if < 3 lifetime doses).",
+      "Wounds on the hand should not undergo primary closure."
+    ],
+    "potential_exam_trap": "Prescribing cephalexin or clindamycin, which fail to cover Eikenella corrodens.",
+    "sources": [
+      "IDSA SSTI Guidelines (CID 2014)",
+      "CDC Tetanus Prophylaxis Recommendations"
+    ],
+    "source_videos": [
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care I",
+        "url": "https://youtu.be/uO2GT_tdWj4"
+      },
+      {
+        "title": "NEET-SS Dec 2025 Recall: Critical Care II",
+        "url": "https://youtu.be/t_ZCgUu2ag8"
+      }
+    ]
   }
 ]
