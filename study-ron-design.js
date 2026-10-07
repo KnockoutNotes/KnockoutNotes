@@ -289,9 +289,16 @@
       icon: "💉",
       desc: "Clinical anaesthesia practice, airway management, monitoring, equipment & subspecialty chapters",
       cats: [
-        { id: "all", label: "All Anaesthesia", icon: "✦", desc: "Comprehensive clinical anaesthesia syllabus based on Miller's Anesthesia (10th ed.) & Tata's Objective Anaesthesia", filter: (it) => (["anaesthesia", "examination", "ecg", "equipment", "pft"].includes(it.cat) || (it.cat === "pain" && ["acute-pain-multimodal-analgesia-pca", "regional-neuraxial-analgesia-catheters", "neuropathic-pain-crps-post-surgical", "chronic-post-surgical-pain-neuromodulation", "cancer-pain-opioid-rotation-palliative", "interventional-sympathetic-nerve-blocks", "novel-non-opioid-analgesic-pharmacology", "opioid-induced-hyperalgesia-tolerance-tapering"].includes(it.id))) },
+        { id: "all", label: "All Anaesthesia", icon: "✦", desc: "Comprehensive clinical anaesthesia syllabus based on Miller's Anesthesia (10th ed.) & standard curricula", filter: (it) => (["anaesthesia", "examination", "ecg", "equipment", "pft"].includes(it.cat) || (it.cat === "pain" && ["acute-pain-multimodal-analgesia-pca", "regional-neuraxial-analgesia-catheters", "neuropathic-pain-crps-post-surgical", "chronic-post-surgical-pain-neuromodulation", "cancer-pain-opioid-rotation-palliative", "interventional-sympathetic-nerve-blocks", "novel-non-opioid-analgesic-pharmacology", "opioid-induced-hyperalgesia-tolerance-tapering"].includes(it.id))) },
         // --- 5 PROMINENT CORE TABS (FIRST) ---
-        { id: "general", label: "General Anaesthesia", icon: "💉", desc: "Induction, maintenance, emergence, crisis checklists & peri-operative safety", filter: (it) => it.cat === "anaesthesia" || (it.cat === "equipment" && ["anaesthesia-machine", "anaesthesia-workstation-check"].includes(it.id)) },
+        { id: "general", label: "General Anaesthesia", icon: "💉", desc: "Induction, maintenance, emergence, crisis checklists & peri-operative safety", filter: (it) => [
+          "preop-assessment", "asa-pscore", "airway-assessment", "airway-devices-equipment",
+          "supraglottic-airways-lma", "rsi", "thrive-hfno-apneic-oxygenation", "jet-ventilation-hfjv-emergency",
+          "anaesthesia-machine", "anaesthesia-workstation-check", "asa-monitoring",
+          "nerve-stimulator-neuromuscular-monitoring", "fluid-transfusion", "regional-physiology",
+          "vaporizers-device", "infusion-pumps-tci", "ponv", "acute-pain-multimodal-analgesia-pca",
+          "malignant-hyperthermia", "anaphylaxis-anaesthesia", "eras", "dka-perioperative-glycaemic-protocols"
+        ].includes(it.id) },
         { id: "equipment", label: "Anaesthesia Equipment & Machine", icon: "⚙️", desc: "Workstations, breathing circuits, vaporizers, gas supply & monitoring hardware", filter: (it) => it.cat === "equipment" },
         { id: "examination", label: "Preoperative Examination / Evaluation", icon: "📋", desc: "Systematic bedside pre-anaesthetic evaluation — Airway, CVS, RS, CNS & GI", filter: (it) => it.cat === "examination" || ["preop-assessment", "airway-assessment"].includes(it.id) },
         { id: "ecg", label: "ECG", icon: "📈", desc: "Systematic 12-lead ECG analysis, axis, blocks, infarction, arrhythmias & pacemakers", filter: (it) => it.cat === "ecg" },
@@ -301,7 +308,13 @@
         { id: "sec_phys_pharm", label: "Sec II — Anesthetic Physiology & Pharmacology", icon: "🧪", desc: "Miller Sec II: Consciousness, autonomic physiology, inhalational kinetics, TCI, NMBAs & local anaesthetics", filter: (it) => ["regional-physiology", "vaporizers-device", "infusion-pumps-tci", "novel-non-opioid-analgesic-pharmacology", "opioid-induced-hyperalgesia-tolerance-tapering"].includes(it.id) },
         { id: "sec_management", label: "Sec III — Anaesthesia Management & Monitoring", icon: "🎛️", desc: "Miller Sec III: Airway algorithms, neuraxial/regional blocks, cardiovascular monitoring, fluids & transfusion", filter: (it) => ["airway-assessment", "airway-devices-equipment", "supraglottic-airways-lma", "rsi", "thrive-hfno-apneic-oxygenation", "jet-ventilation-hfjv-emergency", "asa-monitoring", "central-venous-pulmonary-artery-catheters", "nerve-stimulator-neuromuscular-monitoring", "fluid-transfusion", "regional-neuraxial-analgesia-catheters", "interventional-sympathetic-nerve-blocks", "ecg-pacemaker"].includes(it.id) },
         { id: "sec_subspecialties", label: "Sec IV — Adult Subspecialty Anaesthesia", icon: "🏥", desc: "Miller Sec IV: Cardiothoracic, neuroanaesthesia, obstetric, endocrine, renal, ophthalmic/ENT, trauma & geriatric", filter: (it) => ["thoracic-anaesthesia-one-lung-ventilation-dlt", "cardiac-anaesthesia-cpb-valvular-heart-disease", "neuroanaesthesia-cbf-icp-craniotomy", "obstetric-anaesthesia-labour-analgesia-high-risk", "endocrine-anaesthesia-pheochromocytoma-thyroid", "renal-transplant-turp-syndrome-esrd", "ophthalmic-ent-laser-airway-fire-protocols", "trauma-ortho-bcis-geriatric-anaesthesia"].includes(it.id) },
-        { id: "sec_pediatrics", label: "Sec V — Pediatric Anaesthesia", icon: "👶", desc: "Miller Sec V: Pediatric & neonatal anaesthesia, airway peculiarities, fasting guidelines & surgical emergencies", filter: (it) => ["pediatric-anaesthesia-neonatal-emergencies"].includes(it.id) },
+        { id: "sec_pediatrics", label: "Sec V — Pediatric Anaesthesia", icon: "👶", desc: "Miller Sec V: Pediatric applied physiology, surgical emergencies, pyloric stenosis, CDH, TEF, clefts & blocks", filter: (it) => [
+          "pediatric-anaesthesia-neonatal-emergencies", "peds-physiology-developmental",
+          "peds-pyloric-stenosis", "peds-congenital-diaphragmatic-hernia",
+          "peds-tracheoesophageal-fistula", "peds-cleft-lip-palate", "peds-adenotonsillectomy",
+          "peds-congenital-abdominal-wall-defects", "peds-inguinal-hernia-hydrocele",
+          "peds-exploratory-laparotomy", "peds-regional-nerve-blocks"
+        ].includes(it.id) },
         { id: "sec_postop", label: "Sec VI — Postoperative Care & Pain", icon: "🛌", desc: "Miller Sec VI: PACU discharge criteria, PONV, acute multimodal pain, PCA protocols & persistent post-surgical pain", filter: (it) => ["ponv", "acute-pain-multimodal-analgesia-pca", "neuropathic-pain-crps-post-surgical", "chronic-post-surgical-pain-neuromodulation", "cancer-pain-opioid-rotation-palliative"].includes(it.id) },
         { id: "sec_critical_care", label: "Sec VII — Critical Care & Resuscitation", icon: "⚡", desc: "Miller Sec VII: Perioperative critical care, CPB circuits, ECMO physiology, CRRT & malignant ventricular arrhythmias", filter: (it) => ["cardiopulmonary-bypass-cpb", "ecmo-extracorporeal-membrane-oxygenation", "haemodialysis-crrt-dialysis-circuit", "ambu-bag-bvm", "ecg-vt", "ecg-vf"].includes(it.id) },
         { id: "sec_safety_research", label: "Sec VIII — Professional, Safety & Environment", icon: "🛡️", desc: "Miller Sec VIII: Malignant hyperthermia, anaphylaxis, operating room hazards, gas supply & theatre safety", filter: (it) => ["malignant-hyperthermia", "anaphylaxis-anaesthesia", "medical-gas-cylinders", "humidification-scavenging", "soda-lime-absorbents", "warming-suction-devices"].includes(it.id) }
@@ -354,10 +367,30 @@
         { id: "pregnancy", label: "Obstetric & Pediatric Drugs", icon: "🤰", desc: "Drugs in pregnancy, lactation and uterotonics", filter: (it) => it.cat === "pregnancy" },
         { id: "miscellaneous", label: "Emergency Drugs", icon: "🚨", desc: "Dantrolene, intralipid, adrenaline & resuscitation drugs", filter: (it) => it.cat === "miscellaneous" }
       ]
+    },
+    cases: {
+      id: "cases",
+      label: "CASE DISCUSSIONS",
+      icon: "📑",
+      desc: "Clinical case discussions, exam viva scenarios & perioperative management plans (Objective Anaesthesia Review 6th ed.)",
+      cats: [
+        { id: "all", label: "All Cases", icon: "✦", desc: "Complete library of 39 clinical case scenarios & exam viva discussions", filter: (it) => it.cat && it.cat.startsWith("case_") },
+        { id: "case_cardiac", label: "Cardiovascular & Thoracic", icon: "❤️", desc: "Mitral stenosis, IHD, CABG, hypertension, TOF, PDA, pacemaker & vascular disease", filter: (it) => it.cat === "case_cardiac" },
+        { id: "case_resp", label: "Respiratory & Thoracic", icon: "🫁", desc: "Pneumonectomy, one-lung ventilation, bronchiectasis, lung abscess, COPD & intercostal drain management", filter: (it) => it.cat === "case_resp" },
+        { id: "case_neuro", label: "Neuroanaesthesia & Spine", icon: "🧠", desc: "Supratentorial brain tumours, posterior cranial fossa sitting craniotomy, TBI, hydrocephalus & spinal dysraphism", filter: (it) => it.cat === "case_neuro" },
+        { id: "case_obstetric", label: "Obstetric Anaesthesia", icon: "🤰", desc: "Severe preeclampsia, gestational anemia, emergency crash LSCS, non-obstetric surgery, AFE & massive PPH", filter: (it) => it.cat === "case_obstetric" },
+        { id: "case_pediatric", label: "Pediatric Surgical Cases", icon: "👶", desc: "Cleft lip & palate repair, tonsillectomy emergencies & pediatric surgical scenarios", filter: (it) => it.cat === "case_pediatric" },
+        { id: "case_general_subspecialty", label: "General, Endocrine & Renal", icon: "🏥", desc: "Portal hypertension & cirrhosis, lap/robotic cholecystectomy, retrosternal goiter, diabetes & renal transplant", filter: (it) => it.cat === "case_general_subspecialty" },
+        { id: "case_trauma_ortho_special", label: "Trauma, Ortho & Special", icon: "🩹", desc: "Anticipated difficult airway, major burns resuscitation, geriatric frailty, BCIS hip fracture, cataract & kyphoscoliosis", filter: (it) => it.cat === "case_trauma_ortho_special" }
+      ]
     }
   };
 
   function inferDomainFromCat(catId, item) {
+    if (catId && catId.startsWith("case_")) return "cases";
+    if (item && item.cat && item.cat.startsWith("case_")) return "cases";
+    if (item && item.id && (item.id.startsWith("case-") || item.id.startsWith("case_"))) return "cases";
+    if (activeDomain === "cases" && (!catId || catId === "all")) return "cases";
     if (item && item.cat === "pain") {
       const icuPainIds = [
         "icu-analgosedation-padis-delirium",
@@ -673,6 +706,96 @@
     "pft-postop-fev1-dlco": 8
   };
 
+  // Set of 156 topic IDs that have verified questions in NEET-SS / INI-SS Question Bank
+  const TOPICS_WITH_MCQS_SET = new Set([
+    "cc-management-of-brain-dead-organ-donors","brain-death-organ-donation",
+    "cc-catheter-related-blood-stream-infection","central-venous-pulmonary-artery-catheters",
+    "cc-end-of-life-care-in-the-icu","cc-important-clinical-trials-in-critical-care",
+    "icu-organization-scoring-ethics","cc-assessing-adequacy-of-oxygen-delivery",
+    "venturi-oxygen-devices","cc-haemodynamic-monitoring-i","asa-monitoring",
+    "cc-central-venous-line-and-cvp-measurement","cc-assessing-fluid-responsiveness-in-the-icu",
+    "fluid-responsiveness-dynamic-indices","cc-pa-catheter","cc-cardiac-output-monitoring",
+    "hemodynamics-shock-approach","cc-cardiogenic-shock-i","cardiogenic-shock-scai",
+    "cc-cardiogenic-shock-ii","cc-sepsis-and-septic-shock-evaluation-management",
+    "septic-shock-resuscitation","cc-sepsis-2026-clinical-guidelines",
+    "sepsis3-hour1-bundle-resuscitation","cc-organ-dysfunction-in-sepsis",
+    "cc-extracorporeal-therapies-in-sepsis","haemodialysis-crrt-dialysis-circuit",
+    "cc-respiratory-management-in-specific-clinical-scenarios-i","acute-respiratory-failure-types",
+    "cc-hfnc-mechanics-rox-index","thrive-hfno-apneic-oxygenation",
+    "cc-niv-failure-predictors-hacor-score","cc-basics-of-mechanical-ventilation",
+    "ventilators-classification","cc-ventilator-graphics-and-basic-modes-of-mechanical-ventilation",
+    "ventilator-modes-waveforms-asynchrony","cc-patient-ventilator-asynchrony",
+    "cc-weaning-from-mechanical-ventilation","ventilator-liberation-weaning-failure",
+    "cc-advanced-modes-of-mechanical-ventilation","cc-acute-respiratory-distress-syndrome-i",
+    "ards-berlin-lung-protective","cc-acute-respiratory-distress-syndrome-ii",
+    "ards-refractory-rescue-ecmo","cc-copd-and-asthma","status-asthmaticus-copd-icu",
+    "cc-mi-acs","acute-coronary-syndromes-cardiogenic-shock","cc-pulmonary-embolism",
+    "massive-pe-cor-pulmonale","cc-post-cardiac-arrest-management-prognostication",
+    "hypoxic-ischemic-encephalopathy-ttm-postarrest","cc-acute-kidney-injury-i",
+    "aki-kdigo-crrt-modalities","cc-renal-replacement-therapy-ii",
+    "citrate-anticoagulation-crrt-protocols","cc-renal-replacement-therapy-i",
+    "cc-interpreting-abg","abg-interpretation","cc-traumatic-brain-injury",
+    "tbi-neuromonitoring-raised-icp","cc-icp-monitoring","cc-neuromuscular-disorders-in-icu-ii",
+    "neuromuscular-blockade-train-of-four-icu","cc-right-ventricular-failure-in-the-icu",
+    "rv-failure-pulmonary-hypertension-icu","cc-aortic-dissection",
+    "acute-aortic-syndromes-hypertensive-crises","cc-2025-acc-aha-cpr-guidelines-updates",
+    "cc-sodium-disorders-in-the-icu","severe-electrolyte-disturbances-icu",
+    "cc-potassium-disorders-in-the-icu","cc-subarachnoid-haemorrhage",
+    "subarachnoid-intracerebral-hemorrhage-icu","cc-icu-management-of-traumatic-brain-injury",
+    "cc-neuromuscular-disorders-in-icu-i","neuromuscular-weakness-gbs-myasthenia-icu",
+    "cc-delirium-in-icu-padis-guidelines","icu-sedation-analgesia-delirium-padis",
+    "cc-pericarditis-and-myocarditis","cardiac-arrhythmias-tamponade-pocus",
+    "cc-acute-kidney-injury-ii","cc-disorders-of-calcium-magnesium-phosphorus-metabolism",
+    "cc-icu-management-of-acs-i","cc-icu-management-of-acs-ii","cc-intracranial-haemorrhage",
+    "cc-pharmacokinetics","pkpd-organ-support-crrt-ecmo-vasodilators",
+    "cc-managing-mdr-gram-negative-infections-i","multidrug-resistant-pathogens-icu",
+    "cc-managing-mdr-gram-negative-infections-ii","cc-community-acquired-pneumonia",
+    "severe-pneumonia-cap-hap-vap","cc-cns-infections-in-icu",
+    "cns-infections-meningitis-encephalitis-icu","cc-clostridioides-difficile-colitis",
+    "fungal-infections-clostridioides-oncology-icu","cc-acute-liver-failure",
+    "acute-liver-failure-nutrition-icu","cc-decompensated-cld","cc-acute-pancreatitis",
+    "acute-gi-bleeding-pancreatitis-icu",
+    "cc-intra-abdominal-hypertension-and-abdominal-compartment-syndrome",
+    "abdominal-compartment-syndrome-mesenteric-ischemia","cc-glucose-control-in-icu",
+    "rhabdomyolysis-endocrine-emergencies-icu","cc-endocrine-emergencies",
+    "cc-nutrition-in-the-icu","nutrition-in-the-icu",
+    "cc-hematological-emergencies-in-critical-illness",
+    "massive-transfusion-rotem-teg-coagulopathy","cc-thrombocytopenia-in-the-icu",
+    "dic-hit-thrombotic-microangiopathies","cc-acetaminophen-toxicity",
+    "toxicology-antidotes-extracorporeal-elimination","cc-pesticides",
+    "organophosphates-carbamates","cc-recreational-drug-toxicity",
+    "cc-haemodynamic-management-pharmacotherapy-in-acute-polytrauma",
+    "trauma-resuscitation-damage-control","cc-ventilator-associated-pneumonia",
+    "cc-dengue-fever","empiric-sepsis-mdr-bundles","cc-leptospirosis-rickettsial-diseases",
+    "cc-general-approach-to-poisoning","toxidromes-general-approach",
+    "cc-management-of-snake-bites","cc-interpreting-antibiogram-and-mic",
+    "cc-acute-mesenteric-ischemia","cc-management-of-burn-patient-in-icu",
+    "burn-resuscitation-inhalation-injury","cc-obstetric-critical-care-pregnancy-specific",
+    "preeclampsia-eclampsia-hellp-syndrome","cc-obstetric-critical-care-general-considerations",
+    "cc-paediatric-shock-sepsis-formulas","pediatric-septic-shock-resuscitation",
+    "cc-paediatric-status-asthmaticus-dka","pediatric-status-asthmaticus-epilepticus",
+    "cc-pleural-disorders-in-icu","icu-bronchoscopy-tracheostomy-complications",
+    "cc-basic-echocardiography","pocus-critical-care-vexus-blue-rush",
+    "cc-ecmo-basics","ecmo-vv-va-principles-cannulation",
+    "cc-managing-a-patient-on-ecmo","cc-infections-in-the-immunocompromised-host",
+    "antifungals-icu","cc-novel-chemo-and-toxicity-in-icu",
+    "cc-scoring-systems-in-the-icu","cc-shock-pathophysiology-and-classification",
+    "cc-anaphylactic-shock","anaphylactic-neurogenic-endocrine-shock",
+    "cc-respiratory-management-in-specific-clinical-scenarios-ii",
+    "cc-malignant-arrhythmias-in-the-icu","cc-status-epilepticus",
+    "status-epilepticus-rse-srse"
+  ]);
+
+  function hasTopicMCQs(id) {
+    if (!id) return false;
+    return TOPICS_WITH_MCQS_SET.has(id);
+  }
+
+  function hasChapterMCQs(chId) {
+    const num = parseInt(chId, 10);
+    return !isNaN(num) && num >= 1 && num <= 31;
+  }
+
   function getItemsForDomainAndCat(domainId, catId) {
     const data = getData();
     const all = [...(data.topics || []), ...(data.drugs || [])];
@@ -711,7 +834,8 @@
     const domainCounts = {
       anaesthesia: getItemsForDomainAndCat("anaesthesia", "all").length,
       critical: getItemsForDomainAndCat("critical", "all").length,
-      drugs: getItemsForDomainAndCat("drugs", "all").length
+      drugs: getItemsForDomainAndCat("drugs", "all").length,
+      cases: getItemsForDomainAndCat("cases", "all").length
     };
 
     // 1. Primary Vertical Domains Menu
@@ -897,12 +1021,12 @@
     if (!activeItem) {
       if (catParam) {
         activeCat = catParam;
-        if (domainParam && ["anaesthesia", "critical", "drugs"].includes(domainParam)) {
+        if (domainParam && ["anaesthesia", "critical", "drugs", "cases"].includes(domainParam)) {
           activeDomain = domainParam;
         } else {
           activeDomain = inferDomainFromCat(catParam);
         }
-      } else if (domainParam && ["anaesthesia", "critical", "drugs"].includes(domainParam)) {
+      } else if (domainParam && ["anaesthesia", "critical", "drugs", "cases"].includes(domainParam)) {
         activeDomain = domainParam;
         activeCat = "all";
       }
@@ -1125,8 +1249,20 @@
       ? `<div class="ron-med-capsule"><div class="ron-med-icon-bulb">${ICONS.pill}</div><div class="ron-med-name-bulb">${esc(it.brand || 'Rx Drug')}</div></div>`
       : `<div class="ron-med-capsule"><div class="ron-med-icon-bulb">${ICONS.doc}</div><div class="ron-med-name-bulb">${it.sections ? it.sections.length : 1} Sections</div></div>`;
 
-    const catBadgeText = getDrugClassificationBadge(it);
-    const badgeClass = getDrugClassificationBadgeClass(it);
+    let catBadgeText = "";
+    let badgeClass = "";
+    if (isDrug) {
+      catBadgeText = getDrugClassificationBadge(it);
+      badgeClass = getDrugClassificationBadgeClass(it);
+    } else {
+      if (activeDomain === "cases" || (it.cat && it.cat.startsWith("case_"))) {
+        catBadgeText = "CLINICAL CASE";
+      } else if (activeDomain === "critical" || (it.cat && it.cat.startsWith("cc_"))) {
+        catBadgeText = "CRITICAL CARE";
+      } else {
+        catBadgeText = "ANAESTHESIA";
+      }
+    }
 
     const progState = getItemProgressState(it.id);
     const progBadge = progState === "mastered"
@@ -1134,6 +1270,9 @@
       : progState === "revision"
       ? `<span class="kn-card-progress-pill kn-pill-revision" title="Flagged for Revision">⚑ Revision</span>`
       : "";
+
+    const mappedChapter = STUDY_ITEM_TO_CHAPTER[it.id] || CAT_TO_CHAPTER[it.cat];
+    const canShowMcqBtn = hasTopicMCQs(it.id) || (mappedChapter && hasChapterMCQs(mappedChapter));
 
     return `
       <div class="ron-card ron-interactive-topic-card ${has3D ? 'ron-card-has-3d' : ''} ${progState !== 'unstudied' ? 'kn-card-' + progState : ''}" data-topic-id="${it.id}" role="button" tabindex="0" title="Click to open ${esc(it.name)}">
@@ -1163,8 +1302,8 @@
           <div class="ron-card-text-col">
             <h4 class="ron-card-title">${esc(it.short || it.name)}</h4>
             <div class="ron-card-tagline">
-              ${it.classification ? `<div class="ron-card-cls-text">${esc(it.classification)}</div>` : ''}
-              ${it.tagline && it.tagline !== it.classification ? `<div class="ron-card-tagline-sub">${esc(it.tagline)}</div>` : ''}
+              ${isDrug && it.classification ? `<div class="ron-card-cls-text">${esc(it.classification)}</div>` : ''}
+              ${it.tagline && (!isDrug || it.tagline !== it.classification) ? `<div class="ron-card-tagline-sub">${esc(it.tagline)}</div>` : ''}
             </div>
           </div>
           ${has3D ? `
@@ -1178,9 +1317,11 @@
         <div class="ron-card-footer-row">
           ${drugBadge}
           <div style="display:flex; align-items:center; gap:8px; margin-left:auto;">
+            ${canShowMcqBtn ? `
             <button type="button" class="kn-action-btn kn-topic-mcq-btn" data-topic-mcq-target="${esc(it.id)}" title="Practice High Yield MCQs on ${esc(it.short || it.name)}" style="padding:2px 8px; font-size:11px; display:inline-flex; align-items:center; gap:4px; border-radius:6px; background:rgba(2,132,199,0.08); border:1px solid rgba(2,132,199,0.25); color:var(--accent-cyan,#0284c7); font-weight:700;">
               <span>📝</span><span>MCQs</span>
             </button>
+            ` : ''}
             <span class="ron-card-read-link">Read →</span>
           </div>
         </div>
@@ -1208,8 +1349,8 @@
           <p style="font-size:13px; color:var(--ron-text-hint);">Try selecting "All" or explore other categories across Anaesthesia, Critical Care, or Drugs above.</p>
         </div>
       `;
-    } else {
-      // Group items by classification
+    } else if (activeDomain === "drugs") {
+      // Group items by classification ONLY for drugs
       const groupsMap = new Map();
       items.forEach((it) => {
         const groupName = getDrugClassificationGroup(it);
@@ -1255,6 +1396,9 @@
           </div>
         `;
       }).join("");
+    } else {
+      // Clean flat grid for Anaesthesia, Critical Care, and Case Discussions without artificial classification subheaders
+      groupsHTML = `<div class="ron-flow-grid">${items.map(renderTopicCard).join("")}</div>`;
     }
 
     mount.innerHTML = `
@@ -1503,13 +1647,13 @@
                       <span>Download PDF</span>
                     </button>
                   </div>
-                  ${item.classification ? `
+                  ${isDrug && item.classification ? `
                     <div class="ron-topic-classification-hero">
                       <span class="ron-cls-hero-pill">STANDARD CLASSIFICATION</span>
                       <span class="ron-cls-hero-text">${esc(item.classification)}</span>
                     </div>
                   ` : ''}
-                  ${item.tagline && item.tagline !== item.classification ? `<p style="margin:6px 0 0; font-size:14px; color:var(--ron-text-tagline); line-height:1.5;">${esc(item.tagline)}</p>` : ''}
+                  ${item.tagline && (!isDrug || item.tagline !== item.classification) ? `<p style="margin:6px 0 0; font-size:14px; color:var(--ron-text-tagline); line-height:1.5;">${esc(item.tagline)}</p>` : ''}
                   <div class="kn-monograph-action-bar">
                     ${(() => {
                       const prog = getItemProgressState(item.id);
@@ -1546,19 +1690,24 @@
                     </button>
                     ${(() => {
                       const mappedChapter = STUDY_ITEM_TO_CHAPTER[item.id] || CAT_TO_CHAPTER[activeCat] || CAT_TO_CHAPTER[activeDomain];
-                      return `
+                      const showTopicMcq = hasTopicMCQs(item.id);
+                      const showChapterMcq = mappedChapter && hasChapterMCQs(mappedChapter);
+                      let buttons = "";
+                      if (showTopicMcq) {
+                        buttons += `
                         <button type="button" class="kn-action-btn kn-topic-mcq-btn" data-topic-mcq-target="${esc(item.id)}" data-mcq-mode="topic" title="Practice High Yield MCQs for ${esc(item.short || item.name)}">
                           <span>📝</span> <span>Topic MCQs</span>
                         </button>
-                        ${mappedChapter ? `
+                        `;
+                      }
+                      if (showChapterMcq) {
+                        buttons += `
                         <button type="button" class="kn-action-btn kn-topic-mcq-btn" data-topic-mcq-target="${esc(item.id)}" data-mcq-mode="chapter" data-chapter-id="${mappedChapter}" title="Practice All Chapter ${mappedChapter} MCQs">
                           <span>📚</span> <span>Ch ${mappedChapter} MCQs</span>
                         </button>
-                        ` : ''}
-                        <button type="button" class="kn-action-btn kn-topic-mcq-btn" data-topic-mcq-target="${esc(item.id)}" data-mcq-mode="all" title="View & Practice All 505 MCQs">
-                          <span>⚡</span> <span>All MCQs (505)</span>
-                        </button>
-                      `;
+                        `;
+                      }
+                      return buttons;
                     })()}
                   </div>
                 </div>
@@ -1603,18 +1752,27 @@
             <div class="ron-description-container" id="ronActiveDescriptionBox">
               ${completeDescriptionHTML}
 
-              <div class="ron-topic-mcq-banner">
-                <div class="ron-topic-mcq-banner-left">
-                  <span class="ron-topic-mcq-icon">📝</span>
-                  <div>
-                    <h4 class="ron-topic-mcq-title">Practice High Yield MCQs</h4>
-                    <p class="ron-topic-mcq-desc">Master this topic with authentic NEET-SS / INI-SS clinical recall and practice questions with detailed rationale.</p>
+              ${(() => {
+                const mappedChapter = STUDY_ITEM_TO_CHAPTER[item.id] || CAT_TO_CHAPTER[activeCat] || CAT_TO_CHAPTER[activeDomain];
+                const showTopicMcq = hasTopicMCQs(item.id);
+                const showChapterMcq = mappedChapter && hasChapterMCQs(mappedChapter);
+                if (!showTopicMcq && !showChapterMcq) return "";
+                const launchMode = showTopicMcq ? "topic" : "chapter";
+                return `
+                <div class="ron-topic-mcq-banner">
+                  <div class="ron-topic-mcq-banner-left">
+                    <span class="ron-topic-mcq-icon">📝</span>
+                    <div>
+                      <h4 class="ron-topic-mcq-title">Practice High Yield MCQs</h4>
+                      <p class="ron-topic-mcq-desc">Master this topic with authentic NEET-SS / INI-SS clinical recall and practice questions with detailed rationale.</p>
+                    </div>
                   </div>
+                  <button type="button" class="ron-topic-mcq-launch-btn" data-topic-mcq-target="${esc(item.id)}" data-mcq-mode="${launchMode}" ${launchMode === 'chapter' ? `data-chapter-id="${mappedChapter}"` : ''}>
+                    <span>Solve MCQs</span> <span>→</span>
+                  </button>
                 </div>
-                <button type="button" class="ron-topic-mcq-launch-btn" data-topic-mcq-target="${esc(item.id)}" data-mcq-mode="topic">
-                  <span>Solve MCQs</span> <span>→</span>
-                </button>
-              </div>
+                `;
+              })()}
             </div>
 
           </div>
@@ -2337,13 +2495,14 @@
       const mode = topicMcqBtn.getAttribute("data-mcq-mode") || "topic";
       const explicitChapter = topicMcqBtn.getAttribute("data-chapter-id");
       const mappedChapter = explicitChapter || STUDY_ITEM_TO_CHAPTER[topicId] || CAT_TO_CHAPTER[activeCat] || CAT_TO_CHAPTER[activeDomain];
+      const validCh = mappedChapter && hasChapterMCQs(mappedChapter) ? String(mappedChapter) : "";
       if (window.KN_MCQ && typeof window.KN_MCQ.open === "function") {
         if (mode === "all") {
           window.KN_MCQ.open({ viewMode: "practice", chapterId: "", topicId: "" });
         } else if (mode === "chapter") {
           window.KN_MCQ.open({
             viewMode: "practice",
-            chapterId: mappedChapter ? String(mappedChapter) : "",
+            chapterId: validCh,
             topicId: ""
           });
         } else {
@@ -2351,7 +2510,7 @@
           window.KN_MCQ.open({
             viewMode: "practice",
             topicId: topicId,
-            chapterId: mappedChapter ? String(mappedChapter) : ""
+            chapterId: validCh
           });
         }
       }
@@ -2363,10 +2522,11 @@
       e.stopPropagation();
       triggerHapticFeedback();
       const mappedChapter = CAT_TO_CHAPTER[activeCat] || CAT_TO_CHAPTER[activeDomain];
+      const validCh = mappedChapter && hasChapterMCQs(mappedChapter) ? String(mappedChapter) : "";
       if (window.KN_MCQ && typeof window.KN_MCQ.open === "function") {
         window.KN_MCQ.open({
-          viewMode: "practice",
-          chapterId: mappedChapter ? String(mappedChapter) : "",
+          viewMode: validCh ? "practice" : "directory",
+          chapterId: validCh,
           topicId: ""
         });
       }

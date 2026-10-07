@@ -13954,7 +13954,1845 @@
       "Kulkarni AP, Divatia JV. Tata Memorial Centre Objective Anaesthesia Review, Ch. 7 & Ch. 8. Jaypee Brothers.",
       "Barnett SR. Preoperative Frailty Assessment for the Older Surgical Patient. Anesthesiol Clin 2019;37(3):425–436."
     ]
-  }
+  },
+{
+  "id": "peds-physiology-developmental",
+  "cat": "anaesthesia",
+  "name": "Paediatric & Neonatal Applied Physiology",
+  "short": "Paediatric Physiology",
+  "tags": [
+    "Paediatric",
+    "Physiology",
+    "Neonatal",
+    "Airway",
+    "Pharmacology"
+  ],
+  "tagline": "Airway anatomy, respiratory mechanics, transitional circulation, and altered pharmacology in infants",
+  "source": "Miller's Anesthesia, 10th ed., Ch. 76 (Pediatric Anesthesia); Rebecca Jacob, Pediatric Anaesthesia, 2nd ed.; Cote CJ, Practice of Anesthesia for Infants and Children, 6th ed.",
+  "sections": [
+    {
+      "h": "1. Airway Anatomy & Technical Implications",
+      "b": "Anatomical differences between the neonate/infant and adult create distinct challenges for mask ventilation and intubation:\n\n• Large Occiput: Causes passive neck flexion when supine, occluding the upper airway. Placement of a shoulder roll (folded towel beneath shoulders) aligns the oral, pharyngeal, and laryngeal axes into the neutral \"sniffing\" position.\n• Obligate Nasal Breathing: Neonates preferentially breathe through the nose up to 3–6 months due to high apposition of the soft palate and epiglottis. Nasal secretions, choanal atresia, or small-bore feeding tubes significantly increase airway resistance.\n• Cephalad Larynx: The vocal cords lie at the level of C3–C4 in a full-term neonate (C3 in preterm) compared to C4–C5 in an older child and C5–C6 in an adult. The tongue is relatively large and fills the oral cavity, predisposing to airway obstruction upon loss of consciousness.\n• Epiglottis: Narrow, long, rigid, omega (Ω)-shaped, and angled 45 degrees posteriorly toward the glottis. A straight Miller blade (size 0 or 1) placed in the paraglossal space directly lifting the epiglottis provides superior glottic visualization compared to a curved Macintosh blade.\n• Cricoid Cartilage & Glottic Geometry: Historic teaching held that the cricoid was the narrowest circular point. High-resolution MRI and videobronchoscopy demonstrate that the glottic aperture (rima glottidis) and subglottic cricoid ring are elliptical. Modern pediatric practice routinely utilizes Microcuff cuffed endotracheal tubes with low-pressure cuffs (keeping cuff pressure ≤ 20 cmH₂O) down to term infants without increasing subglottic stenosis."
+    },
+    {
+      "h": "2. Respiratory Mechanics, Gas Exchange & Rapid Desaturation",
+      "b": "Neonates and infants have extraordinarily high metabolic demands and fragile respiratory reserves:\n\n• Oxygen Consumption (VO₂): 6 to 8 mL/kg/min in neonates (double the adult rate of 3 mL/kg/min). Coupled with a small Functional Residual Capacity (FRC ~25–30 mL/kg), the oxygen store-to-consumption ratio is severely depleted, causing catastrophic desaturation within seconds of apnoea.\n• Chest Wall & Lung Compliance: The infant thoracic cage is highly compliant and cartilaginous (horizontal ribs without mechanical bucket-handle advantage), while the lung parenchyma has low compliance due to immature collagen and elastin. During deep breathing or airway obstruction, strong diaphragmatic contractions pull the soft chest wall inward (sternal and intercostal retractions), reducing effective tidal volume.\n• Closing Capacity vs FRC: Closing capacity exceeds FRC in infants under 1 year of age during normal tidal breathing, causing constant basilar airway collapse, atelectasis, and intrapulmonary shunt. Application of 4–5 cmH₂O PEEP is mandatory on mechanical ventilation.\n• Diaphragmatic Muscle Composition: Type I slow-twitch fatigue-resistant muscle fibers constitute only 10%–20% of the preterm diaphragm and 25%–30% of the term infant diaphragm (compared to 50%–60% in adults), making infants highly vulnerable to diaphragmatic fatigue and hypercapnic respiratory failure."
+    },
+    {
+      "h": "3. Transitional Cardiovascular Physiology & Autonomic Regulation",
+      "b": "• Non-Compliant Left Ventricle: The neonatal myocardium has fewer, disorganized myofibrils and non-contractile mass with an underdeveloped sarcoplasmic reticulum, relying heavily on extracellular calcium influx. The left ventricle is relatively stiff and non-compliant, operating near the peak of its Frank-Starling curve.\n• Rate-Dependent Cardiac Output: Because stroke volume cannot significantly increase in response to fluid loading or inotropes, Cardiac Output = Heart Rate × Stroke Volume is strictly rate-dependent. Bradycardia (HR < 100 in neonate, < 80 in infant) plummets cardiac output and represents an immediate emergency.\n• Autonomic Imbalance: The parasympathetic nervous system is fully developed at birth, whereas sympathetic innervation of the heart and peripheral vasculature is immature. Vagal stimulation (laryngoscopy, suctioning, hypoxia, peritoneal traction) triggers profound, precipitous bradycardia. Premedication with Atropine (0.02 mg/kg IV, minimum 0.1 mg) or Glycopyrrolate (0.01 mg/kg IV) is recommended during difficult infant intubation or with succinylcholine.\n• Transitional Circulation & Persistent Pulmonary Hypertension (PPHN): Hypoxia, acidosis, hypothermia, or hypercapnia trigger severe pulmonary vasoconstriction, reopening the ductus arteriosus and foramen ovale with right-to-left shunting and refractory cyanosis."
+    },
+    {
+      "h": "4. Pediatric Pharmacokinetics & Drug Handling",
+      "b": "• Body Fluid Compartments: Total body water comprises 80% of body weight in preterm neonates and 70%–75% in term infants (vs 55%–60% in adults). Extracellular fluid volume is 40% of body weight (vs 20% in adults). Hydrophilic drugs (e.g. succinylcholine, non-depolarising NMBAs, aminoglycosides) distribute into a much larger volume of distribution (Vd), necessitating larger initial weight-based loading doses (e.g. Succinylcholine 2–3 mg/kg IV in infants vs 1 mg/kg in adults; Rocuronium 0.6–0.9 mg/kg).\n• Reduced Plasma Protein Binding: Serum albumin and alpha-1-acid glycoprotein concentrations are low in the first 6–12 months. Local anaesthetics (bupivacaine, ropivacaine) and highly protein-bound hypnotics have a larger free unbound active fraction, markedly increasing the risk of systemic toxicity (LAST).\n• Hepatic & Renal Clearance: Cytochrome P450 enzyme systems, phase II glucuronidation, and glomerular filtration rate (GFR ~30% of adult values at birth) are immature, reaching adult maturation between 6 and 12 months. Drug elimination half-lives are prolonged, requiring lengthened redosing intervals for repeat doses."
+    },
+    {
+      "h": "5. Thermoregulation & Hypothermia Consequences",
+      "b": "• High Surface Area-to-Volume Ratio: Neonates lose heat 3 to 4 times faster than adults via radiation (60%), convection (15%), evaporation (20%), and conduction (5%).\n• Non-Shivering Thermogenesis: Neonates cannot shiver to generate heat. Instead, cold stress stimulates norepinephrine release, activating non-shivering thermogenesis via metabolism of brown adipose tissue (located in the interscapular region, axillae, mediastinum, and around kidneys). This process consumes massive amounts of oxygen and glucose.\n• Sequelae of Intraoperative Hypothermia: Pulmonary vasoconstriction and right-to-left shunting, metabolic acidosis, delayed drug metabolism (prolonged neuromuscular blockade and delayed emergence), impaired platelet function and coagulopathy, and increased postoperative wound infection.\n• Thermal Protection Protocol: Maintain OR ambient temperature 24–26°C for neonates; use underbody forced-air warming blankets, fluid warmers, humidified breathing circuits, clear plastic wrap (cling wrap) around non-surgical extremities, and cotton hats covering the scalp."
+    }
+  ],
+  "references": [
+    "Miller's Anesthesia, 10th ed., Ch. 76 (Pediatric Anesthesia), Elsevier, 2025/2026.",
+    "Jacob R. Pediatric Anaesthesia, 2nd ed. Jaypee Brothers Medical Publishers.",
+    "Cote CJ, Lerman J, Anderson BJ. A Practice of Anesthesia for Infants and Children, 6th ed. Elsevier, 2019.",
+    "Holzman RS, et al. A Practical Approach to Pediatric Anesthesia, 3rd ed. Wolters Kluwer, 2022."
+  ]
+},
+{
+  "id": "peds-pyloric-stenosis",
+  "cat": "anaesthesia",
+  "name": "Infantile Hypertrophic Pyloric Stenosis (IHPS)",
+  "short": "Pyloric Stenosis",
+  "tags": [
+    "Paediatric",
+    "Pyloric Stenosis",
+    "Metabolic Alkalosis",
+    "Electrolytes",
+    "Stomach Decompression"
+  ],
+  "tagline": "Medical not surgical emergency — hypochloremic hypokalemic metabolic alkalosis resuscitation, stomach decompression & Ramstedt pyloromyotomy",
+  "source": "Miller's Anesthesia, 10th ed., Ch. 76; Rebecca Jacob, Pediatric Anaesthesia, 2nd ed.; UpToDate \"Infantile hypertrophic pyloric stenosis\" (2025/2026).",
+  "sections": [
+    {
+      "h": "1. Clinical Presentation & Biochemical Pathophysiology",
+      "b": "• Epidemiology: Affects infants typically between 3 and 6 weeks of life, with a 4:1 male-to-female predominance (classically first-born males). Hypertrophy of the circular and longitudinal muscular layers of the pylorus produces severe gastric outlet obstruction.\n• Triad of Symptoms: Non-bilious projectile vomiting immediately after feeds, persistent hunger, dehydration, weight loss, and a palpable olive-shaped mass in the right upper quadrant (\"pyloric olive\").\n• Classic Electrolyte Derangement: Loss of gastric hydrochloric acid (HCl) and potassium (KCl) in vomitus produces Hypochloremic Hypokalemic Metabolic Alkalosis:\n  1. Gastric Loss: Loss of H⁺ and Cl⁻ causes initial metabolic alkalosis with hypochloremia.\n  2. Renal Compensation: Kidneys initially excrete sodium and bicarbonate to mitigate alkalosis. With progressing dehydration and aldosterone activation, the kidney reabsorbs Na⁺ in exchange for K⁺ and H⁺.\n  3. Paradoxical Aciduria: As systemic hypokalemia worsens, renal distal tubules are forced to exchange H⁺ for Na⁺ to preserve intravascular volume, leading to excretion of acidic urine in the presence of severe systemic alkalosis."
+    },
+    {
+      "h": "2. Preoperative Resuscitation & Strict Surgical Readiness Criteria",
+      "b": "IHPS IS A MEDICAL RESUSCITATION EMERGENCY, NEVER A SURGICAL EMERGENCY. Surgery must NEVER proceed until dehydration, electrolyte disturbances, and acid-base status are fully corrected:\n\n• Resuscitation Fluid Regimen:\n  - Initial Bolus: 10–20 mL/kg of balanced crystalloid or 0.9% Normal Saline if infant is in clinical hypovolemic shock.\n  - Deficit & Maintenance: 5% Dextrose in 0.45% Saline + 20 mEq/L KCl (added only AFTER urine output is documented) at 1.5 times maintenance rate.\n• Mandatory Biochemical Readiness Criteria Before Induction:\n  - Serum Chloride > 100 mEq/L (most critical predictor of outcome and post-op apnoea prevention)\n  - Serum Potassium > 3.5 mEq/L\n  - Serum Bicarbonate (HCO₃⁻) < 28–30 mEq/L\n  - Blood pH < 7.45\n  - Urine Output > 1 to 2 mL/kg/h with specific gravity < 1.010."
+    },
+    {
+      "h": "3. Gastric Decompression & Induction Strategy",
+      "b": "Even after prolonged fasting, the infant with IHPS has a FULL STOMACH filled with thick curdled milk and secretions, posing an extreme risk of pulmonary aspiration upon induction:\n\n• Four-Position Stomach Suction Protocol:\n  - Insert a wide-bore 10 or 12 Fr orogastric/nasogastric tube immediately prior to induction.\n  - Aspirate the stomach thoroughly with a syringe in 4 positions: Supine, Left Lateral, Right Lateral, and Prone. Gently palpate the epigastrium while aspirating.\n  - Leave the tube open to air or apply gentle continuous suction during induction.\n• Induction Technique Options:\n  - Option A: Modified Rapid Sequence Induction (RSI) with Cricoid Pressure: Preoxygenate with 100% O₂ for 3 minutes; administer Atropine 0.02 mg/kg (blunts bradycardia), Propofol 2.5–3.0 mg/kg, and Rocuronium 0.9–1.2 mg/kg (or Succinylcholine 2 mg/kg). Cricoid pressure applied; intubate with a styleted cuffed or uncuffed ETT without positive pressure mask ventilation.\n  - Option B: Awake Endotracheal Intubation: Used in neonates with severe airway difficulty or extreme aspiration concern; require expert technique with swaddling and gentle suction."
+    },
+    {
+      "h": "4. Intraoperative Maintenance & Pyloromyotomy Technique",
+      "b": "• Surgical Procedure: Open or laparoscopic Ramstedt extramucosal pyloromyotomy. The hypertrophic pyloric muscle is longitudinally incised down to the submucosa until the mucosa bulges out, relieving obstruction.\n• Muscle Relaxation: Minimal relaxation required once incision is made. Avoid long-acting relaxants. If rocuronium was used, sugammadex (2–4 mg/kg) ensures prompt, complete neuromuscular reversal.\n• Mucosal Perforation Test: Surgeon injects 10–20 mL of air through the orogastric tube while immersing the duodenum in saline. If bubbles appear, mucosal perforation is present and repaired primarily."
+    },
+    {
+      "h": "5. Postoperative Analgesia & Apnoea Monitoring",
+      "b": "• Multimodal Opioid-Sparing Analgesia: Infiltration of surgical ports/incision with 0.2% Ropivacaine or 0.25% Bupivacaine (max 2 mg/kg). IV Paracetamol 15 mg/kg. Opioids should be strictly avoided due to profound respiratory depression risk.\n• Postoperative Apnoea Risk: Prolonged CSF alkalosis blunts the central hypercapnic respiratory drive. Infants with uncorrected preop alkalosis or given intraoperative opioids have high rates of postoperative central apnoea. Monitor in High-Dependency Unit with continuous pulse oximetry and apnoea alarms for at least 12–24 hours.\n• Feeding: Small volume oral electrolyte/glucose feeds initiated at 4–6 hours postoperatively, gradually escalating to breast milk/formula."
+    }
+  ],
+  "references": [
+    "Miller's Anesthesia, 10th ed., Ch. 76 (Pediatric Anesthesia), Elsevier, 2025/2026.",
+    "Jacob R. Pediatric Anaesthesia, 2nd ed. Jaypee Brothers.",
+    "MacDonald A, et al. Perioperative management of infantile hypertrophic pyloric stenosis. BJA Education 2018;18(12):370-375."
+  ]
+},
+{
+  "id": "peds-congenital-diaphragmatic-hernia",
+  "cat": "anaesthesia",
+  "name": "Congenital Diaphragmatic Hernia (CDH)",
+  "short": "Congenital Diaphragmatic Hernia",
+  "tags": [
+    "Paediatric",
+    "CDH",
+    "PPHN",
+    "Pulmonary Hypoplasia",
+    "Neonatal Emergency"
+  ],
+  "tagline": "Bochdalek posterolateral defect, severe pulmonary hypoplasia, PPHN gentle ventilation & delayed surgical repair",
+  "source": "Miller's Anesthesia, 10th ed., Ch. 76; Rebecca Jacob, Pediatric Anaesthesia, 2nd ed.; CDH EURO Consortium Consensus Guidelines (2020 update).",
+  "sections": [
+    {
+      "h": "1. Embryology, Anatomy & The Pathophysiological Triad",
+      "b": "• Anatomy: Defect in the closure of the pleuroperitoneal canal during embryonic development (8th–10th gestational week). Bochdalek posterolateral hernia accounts for 85%–90% of cases (predominantly left-sided, 85%); Morgagni retrosternal hernia accounts for 2%–5%.\n• Classic Clinical Triad at Delivery: Severe respiratory distress within hours of birth, cyanosis refractory to oxygen, and a scaphoid abdomen with barrel-shaped chest (bowel loops occupy the hemithorax).\n• The Pathophysiological Triad:\n  1. Pulmonary Hypoplasia: Bilateral reduction in bronchial branching, alveolar surface area, and total lung volume (most severe ipsilaterally, but present contralaterally due to mediastinal shift).\n  2. Pulmonary Vascular Remodeling & Hyperreactivity: Hypertrophied smooth muscle extending into peripheral pre-capillary intra-acinar arteries. Extremely responsive to vasoconstrictive stimuli (hypoxia, acidosis, hypothermia, agitation).\n  3. Persistent Pulmonary Hypertension of the Newborn (PPHN): Suprasystemic pulmonary artery pressures produce massive right-to-left shunting across the ductus arteriosus and foramen ovale, refractory hypoxemia, and right ventricular failure."
+    },
+    {
+      "h": "2. Immediate Delivery Room Resuscitation Rules",
+      "b": "The survival of a neonate with CDH is heavily dictated by avoiding iatrogenic barotrauma and bowel distension in the first 10 minutes of life:\n\n• ABSOLUTE RULE: DO NOT PERFORM BAG-VALVE-MASK VENTILATION! Mask ventilation forces air into the stomach and herniated intestinal loops, rapidly expanding bowel volume in the chest, compressing the lung, and shifting the mediastinum, precipitating cardiovascular collapse.\n• Immediate Gentle Endotracheal Intubation: Intubate immediately with an appropriate cuffed or uncuffed ETT without trial of face mask ventilation.\n• Large-Bore Decompression: Place a 10 Fr double-lumen Replogle or suction catheter to continuous low-pressure suction to continuously decompress the stomach.\n• Dual-Site Pulse Oximetry: Place pre-ductal probe on the right hand/wrist and post-ductal probe on the left hand or either foot. A pre-to-post-ductal saturation difference > 10% confirms active right-to-left ductal shunting from severe PPHN."
+    },
+    {
+      "h": "3. Gentle Lung-Protective Ventilation Strategy",
+      "b": "Historic aggressive hyperventilation to \"blow off CO₂ and dilate pulmonary vessels\" caused fatal barotrauma/volutrauma to the hypoplastic contralateral lung. Modern consensus enforces a strict Gentle Ventilation Strategy:\n\n• Conventional Mechanical Ventilation Parameters:\n  - Mode: Pressure-controlled or volume-targeted ventilation.\n  - Peak Inspiratory Pressure (PIP): Keep strictly < 20–25 cmH₂O (prevent pneumothorax of the single functional lung).\n  - PEEP: 3 to 5 cmH₂O.\n  - Tidal Volume: 3.5 to 5.0 mL/kg.\n  - Respiratory Rate: 40 to 60 breaths/min.\n• Target Physiological Goals (Permissive Hypercapnia):\n  - Pre-ductal SpO₂: 85%–95% (avoid hyperoxia-induced oxidative lung injury).\n  - PaCO₂: 45 to 60 mmHg (permissive hypercapnia) with arterial pH > 7.25.\n  - Mean Airway Pressure: Kept as low as compatible with oxygenation.\n• High-Frequency Oscillatory Ventilation (HFOV): Switched early if PIP > 25 cmH₂O is required to maintain oxygenation or if severe respiratory acidosis (pH < 7.20) persists."
+    },
+    {
+      "h": "4. Hemodynamic Management & PPHN Therapy",
+      "b": "• Target Mean Arterial Pressure (MAP): Maintain MAP at age-appropriate normal values (≥ 40–45 mmHg in term neonates) to minimize right-to-left ductal shunting.\n• Targeted Inotropic Support: Milrinone (0.33–0.5 mcg/kg/min) is the drug of choice for CDH with PPHN — provides pulmonary vasodilation and improves left ventricular diastolic compliance. Epinephrine or Dopamine added if systemic hypotension occurs.\n• Inhaled Nitric Oxide (iNO): Initiated at 10–20 ppm if pre-ductal SpO₂ < 85% persists despite optimal lung recruitment and echo confirms elevated PVR with preserved LV function.\n• Extracorporeal Membrane Oxygenation (ECMO): Veno-arterial (VA) ECMO used as a rescue modality in tertiary centers for reversible respiratory/cardiovascular failure (birth weight > 2.0 kg, gestational age > 34 weeks, absence of major lethal chromosomal abnormalities)."
+    },
+    {
+      "h": "5. Timing of Surgery & Intraoperative Anesthetic Plan",
+      "b": "• Delayed Surgery Protocol: CDH repair is NEVER an emergency. Surgery is delayed for 24 to 72 hours (sometimes up to a week) until physiological stabilization is achieved:\n  - Normal pulmonary artery pressures (sub-systemic on echo)\n  - Pre-ductal SpO₂ ≥ 90% on FiO₂ ≤ 0.50\n  - Urine output > 1 mL/kg/h and normal serum lactate\n  - Inotropic weaning progressing.\n• Intraoperative Anesthetic Technique:\n  - Maintain established ICU ventilator parameters — DO NOT hand-ventilate aggressively!\n  - Balanced High-Opioid / Muscle Relaxant Anaesthesia: Fentanyl 5–10 mcg/kg, Vecuronium/Pancuronium/Rocuronium. Avoid nitrous oxide (contraindicated; diffuses into bowel loops).\n  - Visceral Reduction: As the surgeon reduces bowel loops into the small abdominal cavity, peak airway pressures surge and venous return plummets (Abdominal Compartment Syndrome). If airway pressures exceed 25 cmH₂O, the surgeon must perform staged silo closure rather than primary fascia closure.\n  - Postoperative Care: Return to NICU intubated, muscle relaxed, and sedated; gradual weaning over several days."
+    }
+  ],
+  "references": [
+    "Miller's Anesthesia, 10th ed., Ch. 76 (Pediatric Anesthesia), Elsevier, 2025/2026.",
+    "Snoek KG, et al. Standardized Postnatal Management of Infants with Congenital Diaphragmatic Hernia in Europe: The CDH EURO Consortium Consensus - 2015 Update. Neonatology 2016;110(1):66-74.",
+    "Jacob R. Pediatric Anaesthesia, 2nd ed. Jaypee Brothers.",
+    "UpToDate: \"Congenital diaphragmatic hernia in the neonate\" (Wolters Kluwer, 2025/2026)."
+  ]
+},
+{
+  "id": "peds-tracheoesophageal-fistula",
+  "cat": "anaesthesia",
+  "name": "Tracheoesophageal Fistula & Esophageal Atresia (TEF / EA)",
+  "short": "Tracheoesophageal Fistula",
+  "tags": [
+    "Paediatric",
+    "TEF",
+    "Esophageal Atresia",
+    "VACTERL",
+    "Airway Isolation"
+  ],
+  "tagline": "Gross Type C anatomy, VACTERL association, avoiding gastric distension & positioning ETT bevel past fistula",
+  "source": "Miller's Anesthesia, 10th ed., Ch. 76; Rebecca Jacob, Pediatric Anaesthesia, 2nd ed.; UpToDate \"Tracheoesophageal fistula and esophageal atresia\" (2025/2026).",
+  "sections": [
+    {
+      "h": "1. Anatomical Classification & Clinical Recognition",
+      "b": "• Gross Classification of TEF / Esophageal Atresia:\n  - Type C (Vogt IIIb) — 85% to 87% (Most Common): Proximal blind-ending esophageal pouch with a distal tracheoesophageal fistula entering the posterior trachea within 1–2 cm above the carina.\n  - Type A (Vogt II) — 7% to 8%: Isolated Esophageal Atresia without fistula (gasless scaphoid abdomen on X-ray).\n  - Type E (H-type) — 3% to 4%: Tracheoesophageal fistula without atresia; presents later in infancy with coughing, choking during feeds, and recurrent pneumonias.\n  - Type B: Proximal fistula with distal atresia (<1%).\n  - Type D: Fistula from both proximal and distal pouches (<1%).\n• Clinical Presentation: Polyhydramnios in prenatal history; excessive frothy oral and nasal secretions, coughing, choking, and cyanosis with the very first feed. Inability to pass a stiff 10 Fr radiopaque catheter into the stomach (stops at 10–12 cm from lips). Chest radiograph demonstrates coiled catheter in the upper pouch; presence of air in the GI tract confirms a distal fistula."
+    },
+    {
+      "h": "2. Associated Anomalies (The VACTERL Association)",
+      "b": "Over 50% of infants with TEF/EA have associated congenital malformations, summarized by the VACTERL mnemonic:\n\n• V: Vertebral anomalies (hemivertebrae, scoliosis, sacral agenesis) — 60%\n• A: Anal atresia (imperforate anus) — 15%\n• C: Cardiac anomalies (VSD, ASD, Tetralogy of Fallot, Coarctation, PDA, Right-Sided Aortic Arch) — 35% (Preoperative echocardiography is mandatory! A right-sided aortic arch alters surgical thoracotomy from the standard right side to a left thoracotomy!)\n• TE: Tracheoesophageal fistula with esophageal atresia — 100%\n• R: Renal and urinary anomalies (renal agenesis, horseshoe kidney, hydronephrosis) — 20%\n• L: Limb anomalies (radial ray dysplasia, absent radius, polydactyly) — 10%.\n• Waterston Risk Stratification: Weight > 2.5 kg without severe pneumonia or cardiac anomaly carries >95% survival; birth weight < 1.8 kg or severe cyanotic heart disease drops survival to <60%."
+    },
+    {
+      "h": "3. Preoperative Optimization & Gastric Suctioning",
+      "b": "• Upper Pouch Suction: Continuous low-pressure suction (Replogle tube 8–10 Fr) placed in the upper esophageal pouch to prevent spillover aspiration into the trachea.\n• Positioning: Upright 45-degree head-up position minimizes passive gastroesophageal reflux through the distal fistula into the tracheobronchial tree.\n• Aspiration Pneumonia Treatment: Antibiotics (ampicillin + gentamicin), oxygen supplementation, and pulmonary physiotherapy before surgical correction if severe chemical pneumonitis has developed.\n• Avoid Bag-Mask Ventilation: Face mask ventilation forces gas preferentially down the low-resistance fistula into the stomach, causing gastric distension, diaphragmatic splinting, and potential gastric perforation!"
+    },
+    {
+      "h": "4. Intraoperative Airway & ETT Positioning Strategy",
+      "b": "THE DEFINITIVE ANAESTHETIC CHALLENGE IS AIRWAY MANAGEMENT PRIOR TO FISTULA LIGATION:\n\n• Spontaneous vs Gentle Controlled Ventilation:\n  - Inhalational or gentle intravenous induction maintaining spontaneous ventilation until the endotracheal tube is correctly positioned.\n  - If neuromuscular blockade is administered prematurely before the ETT seals the fistula, positive pressure ventilation inflates the stomach, causing cardiovascular collapse.\n• Endotracheal Tube Positioning Techniques:\n  1. Fiberoptic Bronchoscopic Guidance (Gold Standard): Pass an ultrathin 2.2 mm bronchoscope through the ETT, visualize the fistula orifice on the posterior tracheal wall, and advance the ETT under direct vision until the tip lies distal to the fistula but proximal to the carina.\n  2. Intentional Right Endobronchial Intubation & Pull-Back Technique: Advance the ETT deliberately into the right main bronchus (confirmed by unilateral right breath sounds and absent left sounds), then slowly withdraw the tube until bilateral breath sounds are restored. This places the tip just above the carina, effectively bypassing the distal fistula.\n  3. Bevel Rotation: Rotate the ETT 180 degrees so the bevel faces posteriorly, physically occluding the fistula orifice against the posterior tracheal wall.\n• Gastrostomy Caveat: If the infant has an existing gastrostomy tube, venting the tube underwater prevents gastric distension; if ventilation is lost down the fistula, the gastrostomy can be transiently clamped or fogarty catheter occlusion deployed."
+    },
+    {
+      "h": "5. Surgical Procedure & Postoperative Pitfalls",
+      "b": "• Procedure: Right extrapleural thoracotomy or thoracoscopic repair. The azygos vein is divided, the tracheoesophageal fistula is identified, dissected, and doubly ligated/transected, followed by primary end-to-end esophageal anastomosis.\n• Post-Ligation Ventilation: Once the fistula is ligated, conventional positive pressure ventilation can proceed without hazard.\n• Extubation Decision: Extubate awake in the OR only if the infant is vigorous, normothermic, has minimal lung disease, and no tracheomalacia. If tracheal collapse (tracheomalacia, common in TEF due to deficiency of tracheal cartilage) is present, maintain postoperative elective ventilation.\n• Strict Neck Positioning: DO NOT hyperextend the neck after esophageal anastomosis (disrupts surgical suture lines). Tape a suction catheter marked with maximum safe length to prevent accidental deep suctioning through the repair."
+    }
+  ],
+  "references": [
+    "Miller's Anesthesia, 10th ed., Ch. 76 (Pediatric Anesthesia), Elsevier, 2025/2026.",
+    "Jacob R. Pediatric Anaesthesia, 2nd ed. Jaypee Brothers.",
+    "Dingemann J, et al. ERNICA Consensus Conference on the Management of Patients with Esophageal Atresia and Tracheoesophageal Fistula. Eur J Pediatr Surg 2020;30(6):465-476."
+  ]
+},
+{
+  "id": "peds-cleft-lip-palate",
+  "cat": "anaesthesia",
+  "name": "Cleft Lip and Cleft Palate Surgery",
+  "short": "Cleft Lip & Palate",
+  "tags": [
+    "Paediatric",
+    "Cleft Lip",
+    "Cleft Palate",
+    "Airway",
+    "Dingman Gag",
+    "RAE Tube"
+  ],
+  "tagline": "Rule of 10s, syndromic craniofacial airway, oral south RAE tube, Dingman gag hazards & emergence tongue suture",
+  "source": "Miller's Anesthesia, 10th ed., Ch. 76; Rebecca Jacob, Pediatric Anaesthesia, 2nd ed.; Cote CJ, Practice of Anesthesia for Infants and Children, 6th ed.",
+  "sections": [
+    {
+      "h": "1. Embryology, Surgical Timing & The Rule of 10s",
+      "b": "• Embryology: Failure of fusion of the maxillary and frontonasal prominences (cleft lip, 6th gestational week) or secondary palate shelves (cleft palate, 8th–12th week). May occur in isolation or as part of complex syndromes (Pierre Robin sequence, Treacher Collins, Goldenhar syndrome, 22q11 deletion / DiGeorge syndrome).\n• The Classic \"Rule of 10s\" (Wilhelmmesen & Musgrave) for Cleft Lip Repair:\n  1. Age ≥ 10 weeks of age (allows physiological recovery from neonatal transitional circulation)\n  2. Weight ≥ 10 pounds (4.5 kg)\n  3. Hemoglobin ≥ 10 g/dL\n  4. White blood cell count < 10,000 /mm³ without active URI.\n• Timing of Cleft Palate Repair: Typically performed between 9 and 18 months of age — timed before significant phonation and speech development begins, balancing facial maxillary growth against velopharyngeal competence."
+    },
+    {
+      "h": "2. Preoperative Airway Assessment & Syndromic Features",
+      "b": "• Airway Examination: Evaluate for associated micrognathia, retrognathia, glossoptosis, and high-arched cleft palate. In Pierre Robin sequence (micrognathia, glossoptosis, cleft palate), the tongue falls posteriorly, causing severe upper airway obstruction and anticipated difficult direct laryngoscopy.\n• Associated Anomalies: Screen for congenital heart defects (ECHO), cervical spine abnormalities (Goldenhar), and immunodeficiency (DiGeorge syndrome).\n• Recent Upper Respiratory Tract Infection (URI): Common in cleft children due to abnormal Eustachian tube dysfunction and chronic otitis media. If active wheezing, purulent nasal discharge, or fever is present, postpone surgery for 2 to 4 weeks to avoid perioperative bronchospasm and laryngospasm."
+    },
+    {
+      "h": "3. Airway Management, Oral RAE Tube & Dingman Gag Hazards",
+      "b": "• Preformed South-Facing Oral RAE Endotracheal Tube:\n  - The tube of choice for cleft surgeries. The preformed pre-molded curve rests over the chin, directing the circuit inferiorly and clearing the surgical field for the surgeon.\n  - Secure Taping: Must be taped strictly in the midline over the mandible. If taped to the corner of the mouth, it distorts the lip anatomy and misguides surgical symmetry.\n• The Dingman Mouth Gag — Life-Threatening Hazards:\n  - Used during cleft palate repair to depress the tongue and open the oral cavity.\n  1. Accidental Extubation: Insertion of the gag can dislodge the tube out of the trachea.\n  2. Endobronchial Intubation: Flexion of the neck or downward pressure from the tongue blade can push the ETT tip deep into the right main bronchus.\n  3. Kinking / Obstruction: The blade can compress the lumen of the RAE tube against the lower teeth.\n  4. Tongue Ischemia: Excessive prolonged pressure can produce massive postoperative tongue edema and necrosis. Recheck bilateral breath sounds immediately after the Dingman gag is opened and locked!"
+    },
+    {
+      "h": "4. Intraoperative Analgesia & Adrenaline Infiltration Precautions",
+      "b": "• Surgical Infiltration: The surgeon infiltrates the lip and palate with Local Anaesthetic containing Epinephrine (typically 1:200,000 or 1:100,000) for surgical hemostasis and postoperative analgesia.\n• Epinephrine Safety Threshold: Maximum safe dose is 10 mcg/kg (0.1 mL/kg of 1:100,000 or 0.2 mL/kg of 1:200,000). Monitor ECG continuously for tachycardia, premature ventricular contractions (PVCs), and ventricular arrhythmias. If halothane or high-dose volatile agents are used, myocardial sensitization to catecholamines is marked; maintain deep anaesthesia or switch to sevoflurane/TIVA.\n• Multimodal Analgesia: IV Paracetamol 15 mg/kg, IV Dexamethasone 0.25–0.5 mg/kg (reduces airway and tongue swelling), and bilateral Infraorbital Nerve Blocks (for cleft lip) or Greater Palatine and Nasopalatine blocks (for cleft palate)."
+    },
+    {
+      "h": "5. Emergence, Tongue Traction Suture & Post-Extubation Airway",
+      "b": "• Emergence Strategy:\n  - Suction the oropharynx thoroughly under direct vision before gag removal to clear blood clots and secretions.\n  - Extubate only when the infant is fully awake, responding vigorously, and has intact protective laryngeal reflexes.\n• The Tongue Traction Suture (Lifesaving Technique):\n  - Before extubation, the surgeon places a heavy 2-0 or 3-0 silk traction suture through the anterior third of the tongue.\n  - If the infant develops glossoptosis and upper airway obstruction after extubation in recovery, gentle traction on the suture pulls the tongue forward, instantly opening the pharyngeal airway without needing oropharyngeal airways that would disrupt surgical suture lines.\n• Post-Palatoplasty Airway Obstruction: Closing a wide cleft palate converts a chronically wide pharyngeal airway into a narrow, swollen passage. Observe in HDU; place infant in lateral or prone position."
+    }
+  ],
+  "references": [
+    "Miller's Anesthesia, 10th ed., Ch. 76 (Pediatric Anesthesia), Elsevier, 2025/2026.",
+    "Jacob R. Pediatric Anaesthesia, 2nd ed. Jaypee Brothers.",
+    "Cote CJ, et al. A Practice of Anesthesia for Infants and Children, 6th ed. Elsevier, 2019."
+  ]
+},
+{
+  "id": "peds-adenotonsillectomy",
+  "cat": "anaesthesia",
+  "name": "Adenotonsillectomy & Paediatric OSA",
+  "short": "Adenotonsillectomy",
+  "tags": [
+    "Paediatric",
+    "Tonsillectomy",
+    "OSA",
+    "Bleeding Tonsil",
+    "Airway Fire"
+  ],
+  "tagline": "Severe obstructive sleep apnea, dexamethasone antiemesis, opioid sensitivity & emergency post-tonsillectomy bleeding resuscitation",
+  "source": "Miller's Anesthesia, 10th ed., Ch. 76; Rebecca Jacob, Pediatric Anaesthesia, 2nd ed.; AAO-HNS Clinical Practice Guideline: Tonsillectomy in Children (2019/2024 update).",
+  "sections": [
+    {
+      "h": "1. Indications, Severity Grading & Paediatric OSA Risk Factors",
+      "b": "• Core Surgical Indications:\n  1. Obstructive Sleep Apnea Syndrome (OSAS) secondary to adenotonsillar hypertrophy\n  2. Recurrent acute tonsillitis (Paradise criteria: ≥7 episodes in 1 year, ≥5 per year for 2 years, or ≥3 per year for 3 years).\n• Polysomnography (Sleep Study) Severity:\n  - Mild OSA: Apnea-Hypopnea Index (AHI) 1 to 5 events/hr\n  - Moderate OSA: AHI 5 to 10 events/hr\n  - Severe OSA: AHI > 10 events/hr or oxygen saturation nadir < 80%.\n• High-Risk Criteria for Postoperative Respiratory Complications:\n  - Age < 3 years old\n  - Severe OSA (AHI > 10 or nadir SpO₂ < 80%)\n  - Craniofacial anomalies (e.g. Down syndrome, achondroplasia)\n  - Failure to thrive, morbid obesity, or neuromuscular disorders\n  - Cor pulmonale or pulmonary hypertension (p-pulmonale on ECG, RV hypertrophy).\n  *These high-risk children require mandatory overnight inpatient admission with continuous pulse oximetry monitoring.*"
+    },
+    {
+      "h": "2. Preoperative Assessment & Premedication Rules",
+      "b": "• Airway Examination: Enlarge tonsils graded 1+ to 4+ (4+ = \"kissing tonsils\" meeting in the midline, predisposing to immediate obstruction upon induction of anaesthesia).\n• Premedication Protocol:\n  - In children with documented severe OSA, SEDATIVE PREMEDICATION (Midazolam) MUST BE STRICTLY AVOIDED OR REDUCED TO MINIMAL DOSES. Benzodiazepines abolish upper airway tone, causing catastrophic airway obstruction in the holding area.\n  - Parental presence during inhalational induction or non-pharmacological distraction is preferred."
+    },
+    {
+      "h": "3. Intraoperative Airway, Mouth Gag & Dexamethasone",
+      "b": "• Induction & Endotracheal Intubation:\n  - Inhalational induction with sevoflurane in 100% O₂; achieve adequate anaesthetic depth before attempting IV cannulation.\n  - Oral south-facing RAE tube or reinforced armoured tube. The tube must be positioned strictly in the midline groove of the Boyle-Davis mouth gag.\n  - Boyle-Davis Gag Checks: Once suspended by the Draffin bipod, recheck chest auscultation, inspect ETT depth (gag suspension can pull the tube up into the larynx or push it into the bronchus), and verify that the endotracheal tube is not kinked against the mandibular blade.\n• Dexamethasone (Mandatory Single-Dose Administration):\n  - Dose: 0.5 mg/kg IV (maximum 8–10 mg) administered early in surgery.\n  - Proven Benefits: Significantly reduces postoperative nausea and vomiting (PONV), dramatically reduces pharyngeal and uvular edema, shortens time to oral intake, and reduces post-discharge analgesic requirements."
+    },
+    {
+      "h": "4. Multimodal Analgesia & The Codeine Black Box Warning",
+      "b": "• Multimodal Opioid-Sparing Regimen:\n  - IV Paracetamol 15 mg/kg administered at induction.\n  - IV NSAIDs: Ibuprofen 10 mg/kg or Ketorolac 0.5 mg/kg (high-quality Cochrane reviews show NSAIDs do NOT increase postoperative tonsillectomy bleeding rates when used perioperatively).\n  - Local Anaesthetic Infiltration: Peritonsillar infiltration with 0.25% bupivacaine with 1:200,000 adrenaline provides immediate emergence analgesia and surgical hemostasis.\n• FDA BLACK BOX WARNING ON CODEINE & TRAMADOL:\n  - Codeine and Tramadol are ABSOLUTELY CONTRAINDICATED in children under 12 years (and under 18 following tonsillectomy/adenoidectomy).\n  - Mechanism: Both are prodrugs converted to morphine/active metabolites via hepatic CYP2D6. Children who are CYP2D6 \"ultra-rapid metabolizers\" generate lethal serum morphine concentrations even from normal doses, causing fatal postoperative respiratory depression."
+    },
+    {
+      "h": "5. Bleeding Post-Tonsillectomy: The Resuscitation Emergency Protocol",
+      "b": "POST-TONSILLECTOMY HEMORRHAGE (PTH) IS ONE OF THE MOST DANGEROUS EMERGENCIES IN PAEDIATRIC ANAESTHESIA:\n\n• Classification:\n  - Primary Hemorrhage (<24 hours post-op, 0.5%–1%): Usually technical/surgical failure of hemostasis.\n  - Secondary Hemorrhage (5 to 10 days post-op, 3%–5%): Occurs when the surgical eschar/fibrin clot sloughs off, often triggered by local infection.\n• The Hidden Blood Loss Danger:\n  - Children swallow large quantities of blood into the stomach without coughing or spitting. The child may present in profound hypovolemic shock (tachycardia, pallor, prolonged capillary refill, delayed hypotension) with a stomach completely full of clotted blood!\n• Resuscitation Before Anaesthesia:\n  1. Establish two large-bore IV lines immediately.\n  2. Resuscitate with 20 mL/kg balanced crystalloid bolus and request emergency cross-matched Packed Red Blood Cells.\n  3. NEVER induce anaesthesia until hypovolemia is corrected!\n• Modified Rapid Sequence Induction (RSI) Protocol:\n  - Prepare TWO working suction units with large-bore Yankauer suction catheters.\n  - Have a styleted endotracheal tube one half-size smaller than age-appropriate norm ready.\n  - 100% preoxygenation for 3–5 minutes with child in slight head-up or lateral position.\n  - Ketamine 1.5–2.0 mg/kg IV (preserves hemodynamics) or Propofol + Rocuronium 1.0–1.2 mg/kg (rapid onset).\n  - Cricoid pressure applied; intubate under direct vision while clearing massive blood clots from the pharynx.\n  - Decompress stomach thoroughly with an orogastric tube before extubation!"
+    }
+  ],
+  "references": [
+    "Miller's Anesthesia, 10th ed., Ch. 76 (Pediatric Anesthesia), Elsevier, 2025/2026.",
+    "Mitchell RB, et al. Clinical Practice Guideline: Tonsillectomy in Children. Otolaryngol Head Neck Surg 2019;160(1_suppl):S1-S42.",
+    "Jacob R. Pediatric Anaesthesia, 2nd ed. Jaypee Brothers.",
+    "FDA Drug Safety Communication: Codeine and tramadol in children (FDA Alert 2017/2023)."
+  ]
+},
+{
+  "id": "peds-congenital-abdominal-wall-defects",
+  "cat": "anaesthesia",
+  "name": "Omphalocele and Gastroschisis",
+  "short": "Omphalocele & Gastroschisis",
+  "tags": [
+    "Paediatric",
+    "Omphalocele",
+    "Gastroschisis",
+    "Abdominal Wall Defect",
+    "Neonatal Surgery"
+  ],
+  "tagline": "Distinguishing anatomical features, fluid/heat loss, staged silo reduction & intra-abdominal hypertension monitoring",
+  "source": "Miller's Anesthesia, 10th ed., Ch. 76; Rebecca Jacob, Pediatric Anaesthesia, 2nd ed.; Cote CJ, Practice of Anesthesia for Infants and Children, 6th ed.",
+  "sections": [
+    {
+      "h": "1. Distinguishing Anatomy, Pathophysiology & Associated Syndromes",
+      "b": "A clear understanding of the fundamental differences between Gastroschisis and Omphalocele dictates perioperative management:\n\n• GASTROSCHISIS:\n  - Defect Location: Small (< 4 cm) full-thickness abdominal wall defect strictly to the RIGHT of a normally inserted umbilical cord.\n  - Sac: ABSENT (no covering membrane). The bowel loops have been bathed in amniotic fluid for months, presenting thickened, edematous, inflamed, and matted with fibrinous peel.\n  - Associated Anomalies: Rare (< 10%), mostly intestinal atresia (25%) due to vascular compromise at the defect.\n  - Fluid & Heat Loss: MASSIVE evaporative fluid loss and hypothermia.\n\n• OMPHALOCELE:\n  - Defect Location: Central midline defect through the umbilical ring (often large, 4 to >10 cm). The umbilical cord inserts directly onto the apex of the hernia sac.\n  - Sac: PRESENT (bowel, liver, and spleen enclosed in a translucent sac composed of peritoneum internally and amnion externally).\n  - Associated Anomalies: VERY HIGH (> 50%–70%): Congenital heart defects (ASD, VSD, Tetralogy of Fallot in 35%), Chromosomal trisomies (Trisomy 13, 18, 21 in 20%), Beckwith-Wiedemann Syndrome (omphalocele, macroglossia, gigantism, severe neonatal hypoglycaemia due to pancreatic islet cell hyperplasia — check blood glucose every 30 minutes!)."
+    },
+    {
+      "h": "2. Immediate Preoperative Delivery Room Care & Fluid Resuscitation",
+      "b": "• Sterile Protection & Evaporative Loss Prevention:\n  - Place the lower half of the neonate and exposed viscera into a sterile transparent plastic \"bowel bag\" (sterile polyethylene silo/bag) up to the axillae.\n  - NEVER place wet gauze directly on exposed bowel (causes severe evaporative cooling and adheres to serosa).\n  - Support the eviscerated bowel upright in the midline; avoid acute lateral torsion of the mesentery, which produces mesenteric vascular thrombosis and intestinal gangrene.\n• Decompression:\n  - Insert an 8 to 10 Fr Replogle or nasogastric tube to continuous suction to prevent gastric and bowel distension.\n• Aggressive Fluid Therapy:\n  - Fluid requirements in gastroschisis can reach 150 to 200 mL/kg/day balanced crystalloid (Plasmalyte or Ringer's lactate) to compensate for massive retroperitoneal and evaporative 3rd space fluid shifts. Monitor urine output, lactate, and perfusion."
+    },
+    {
+      "h": "3. Surgical Repair Options: Primary Closure vs Staged Silo Reduction",
+      "b": "• Primary Fascial Closure:\n  - Preferred if the defect is small and the abdominal cavity can accommodate the viscera without excessive tension.\n• Staged Silo Reduction (Spring-Loaded Silo):\n  - In large gastroschisis or giant omphalocele containing the liver, primary closure is impossible.\n  - A preformed spring-loaded silo is placed at the bedside or in the OR; the surgeon gradually reduces the bowel loops into the abdominal cavity by gravity and gentle manual compression over 3 to 7 days, followed by delayed formal fascial/skin closure."
+    },
+    {
+      "h": "4. Intraoperative Anesthetic Strategy & Abdominal Compartment Syndrome",
+      "b": "THE CARDINAL LIFE-THREATENING INTRAOPERATIVE HAZARD IS ABDOMINAL COMPARTMENT SYNDROME (ACS):\n\n• Anesthetic Technique:\n  - Modified RSI or awake intubation with cuffed ETT.\n  - High-dose opioid / relaxant technique. AVOID NITROUS OXIDE (strictly contraindicated; diffuses into bowel, preventing reduction).\n• Pathophysiology of Sudden Reduction:\n  - Forcing edematous bowel into an underdeveloped peritoneal cavity produces sudden, massive elevations in Intra-Abdominal Pressure (IAP):\n    1. Inferior Vena Cava Compression: Decreases venous return to the heart, causing profound systemic hypotension and cardiac arrest.\n    2. Diaphragmatic Cephalad Splinting: Causes peak airway pressure to surge > 35–40 cmH₂O, severe hypercapnia, and hypoxemia.\n    3. Renal & Mesenteric Hypoperfusion: Renal vein compression triggers immediate anuria; mesenteric ischemia causes bowel necrosis.\n• Objective Intraoperative Monitoring Thresholds:\n  - Intrabladder Pressure (via urinary catheter) or Intragastric Pressure: Must stay strictly < 20 mmHg (27 cmH₂O).\n  - Airway Peak Inspiratory Pressure: If PIP increases by > 10 cmH₂O or exceeds 30 cmH₂O, the surgeon must ABORT primary closure and convert to a silo.\n  - Lower Extremity Perfusion: Continuously monitor pulse oximeter probe placed on the foot; loss of waveform or cyanosis indicates IVC occlusion."
+    },
+    {
+      "h": "5. Postoperative Care & Extubation Rules",
+      "b": "• Elective Postoperative Ventilation:\n  - All neonates undergoing abdominal wall defect repair must remain intubated and mechanically ventilated in the NICU for 24 to 72 hours postoperatively.\n• Total Parenteral Nutrition (TPN):\n  - Prolonged intestinal ileus and dysmotility (lasting 2 to 6 weeks in gastroschisis) necessitates central venous catheterization and early TPN.\n• Analgesia: Continuous fentanyl (1–2 mcg/kg/h) or morphine infusion; avoid regional epidural techniques in the presence of intra-abdominal hypertension."
+    }
+  ],
+  "references": [
+    "Miller's Anesthesia, 10th ed., Ch. 76 (Pediatric Anesthesia), Elsevier, 2025/2026.",
+    "Jacob R. Pediatric Anaesthesia, 2nd ed. Jaypee Brothers.",
+    "Cote CJ, et al. A Practice of Anesthesia for Infants and Children, 6th ed. Elsevier, 2019."
+  ]
+},
+{
+  "id": "peds-inguinal-hernia-hydrocele",
+  "cat": "anaesthesia",
+  "name": "Paediatric Inguinal Herniotomy & Incarcerated Hernia",
+  "short": "Inguinal Herniotomy",
+  "tags": [
+    "Paediatric",
+    "Hernia",
+    "Preterm Apnea",
+    "Caudal Block",
+    "Awake Spinal",
+    "Incarcerated Hernia"
+  ],
+  "tagline": "Prematurity apnoea risk < 60 weeks PCA, awake spinal vs caudal block, ilioinguinal nerve block & emergency strangulated hernia",
+  "source": "Miller's Anesthesia, 10th ed., Ch. 76; Rebecca Jacob, Pediatric Anaesthesia, 2nd ed.; Cote CJ, Practice of Anesthesia for Infants and Children, 6th ed.",
+  "sections": [
+    {
+      "h": "1. Embryology, Prematurity & Post-Anaesthetic Apnoea Risk",
+      "b": "• Embryology: Patent processus vaginalis (congenital persistence of peritoneal diverticulum) leading to indirect inguinal hernia. High incidence in preterm infants (up to 30%).\n• POST-ANAESTHETIC APNOEA IN EX-PREMATURE INFANTS (CRITICAL SAFETY THRESHOLD):\n  - Definition: Unexplained cessation of breathing for > 15–20 seconds, or shorter with bradycardia or desaturation, occurring up to 12 to 24 hours after general anaesthesia.\n  - The High-Risk Cutoff: Post-Conceptual Age (PCA = Gestational age at birth + Post-natal age in weeks) < 60 weeks (some centers use 52–56 weeks).\n  - Predisposing Risk Factors: Anemia (Hematocrit < 30% doubles apnoea risk!), ongoing history of apnoea in the NICU, administration of opioids or muscle relaxants.\n  - Practice Mandate: Any ex-preterm infant < 60 weeks PCA MUST be admitted for overnight cardiorespiratory apnoea and pulse oximetry monitoring for at least 24 hours. Elective surgery is ideally delayed until PCA > 60 weeks."
+    },
+    {
+      "h": "2. Anaesthetic Technique Choices: General vs Awake Regional",
+      "b": "Three established anaesthetic pathways exist for paediatric inguinal herniotomy:\n\n• Option A: General Anaesthesia with LMA + Regional Block:\n  - In older infants (> 60 weeks PCA) and children. LMA placement under sevoflurane maintains spontaneous ventilation with minimal airway instrumentation.\n  - Supplemented with a single-shot Caudal Block or Ilioinguinal/Iliohypogastric nerve block for complete intra- and post-op analgesia.\n• Option B: Awake Spinal Anaesthesia (GAS and PANDA Trials):\n  - Specifically employed in ex-premature infants < 60 weeks PCA to avoid general anaesthetic agents and reduce postoperative apnoea.\n  - Technique: Infant held in seated or lateral position; 25G or 27G pencil-point needle inserted at L4–L5 or L5–S1 (spinal cord ends at L3 in neonates!).\n  - Dose: 0.5% Hyperbaric Bupivacaine 1 mg/kg (0.2 mL/kg) for infants < 5 kg. Provides 60–75 minutes of dense motor and sensory blockade.\n• Option C: Awake Caudal Epidural Anaesthesia:\n  - High-volume caudal block (1.25–1.5 mL/kg of 0.25% bupivacaine or 0.2% ropivacaine) provides T10 surgical anaesthesia without endotracheal intubation."
+    },
+    {
+      "h": "3. Peripheral Nerve Blocks for Inguinal Hernia",
+      "b": "• Ultrasound-Guided / Landmark Ilioinguinal & Iliohypogastric (II/IH) Nerve Block:\n  - Landmark Technique: Needle entry point 1 cm medial and 1 cm superior to the anterior superior iliac spine (ASIS). Direct needle perpendicularly until a distinctive \"fascial pop\" through the external oblique aponeurosis is felt.\n  - Ultrasound Guidance (Gold Standard): Place high-frequency linear probe on a line connecting ASIS to umbilicus. Identify the external oblique, internal oblique, and transversus abdominis muscle layers. Inject local anaesthetic into the fascial plane between internal oblique and transversus abdominis around the II/IH nerves.\n  - Dose: 0.2% Ropivacaine or 0.25% Bupivacaine 0.25–0.3 mL/kg (max 2 mg/kg).\n  - Complications: Femoral nerve palsy (quadriceps weakness / transient knee bucking if LA tracks under fascia iliaca), intestinal puncture (if inserted too deep)."
+    },
+    {
+      "h": "4. The Incarcerated / Strangulated Inguinal Hernia Emergency",
+      "b": "• Presentation: Irreducible, tender, erythematous groin mass, bilious vomiting, abdominal distension, fever, and leukocytosis. High risk of testicle ischemia (compression of testicular vessels) and bowel necrosis.\n• Immediate Management:\n  - Attempt gentle taxis (reduction) under sedation only if within 6–8 hours and NO signs of peritonitis/strangulation.\n  - If taxis fails or signs of ischemia exist, emergency exploratory surgery is indicated immediately.\n• Anesthetic Execution: FULL STOMACH PROTOCOL. Correct dehydration with balanced crystalloid bolus; rapid sequence induction (RSI) with cuffed ETT; avoid nitrous oxide. Postoperative PICU admission."
+    }
+  ],
+  "references": [
+    "Miller's Anesthesia, 10th ed., Ch. 76 (Pediatric Anesthesia), Elsevier, 2025/2026.",
+    "Davidson AJ, et al. Neurodevelopmental outcome at 2 years of age after general anaesthesia and awake-regional anaesthesia in infancy (GAS): an international multicentre, randomised controlled trial. Lancet 2016;387(10015):239-250.",
+    "Jacob R. Pediatric Anaesthesia, 2nd ed. Jaypee Brothers."
+  ]
+},
+{
+  "id": "peds-exploratory-laparotomy",
+  "cat": "anaesthesia",
+  "name": "Paediatric Exploratory Laparotomy & Neonatal Bowel Emergencies",
+  "short": "Paediatric Laparotomy",
+  "tags": [
+    "Paediatric",
+    "Laparotomy",
+    "Volvulus",
+    "NEC",
+    "Septic Shock",
+    "Fluid Resuscitation"
+  ],
+  "tagline": "Malrotation with midgut volvulus, necrotizing enterocolitis, massive fluid shifts, temperature maintenance & inotropic resuscitation",
+  "source": "Miller's Anesthesia, 10th ed., Ch. 76; Rebecca Jacob, Pediatric Anaesthesia, 2nd ed.; Cote CJ, Practice of Anesthesia for Infants and Children, 6th ed.",
+  "sections": [
+    {
+      "h": "1. Core Surgical Etiologies & The Time-Critical Emergency",
+      "b": "Acute abdominal emergencies requiring exploratory laparotomy in neonates and young infants:\n\n• Intestinal Malrotation with Midgut Volvulus (True Hyper-Acute Surgical Emergency):\n  - Failure of normal 270-degree counterclockwise embryonic rotation of the midgut around the superior mesenteric artery (SMA). Narrow mesenteric base predisposes to clockwise twisting (volvulus) of the entire midgut, strangulating SMA flow.\n  - Presentation: Bilious vomiting in a previously healthy term neonate (first 30 days of life) followed by rapid abdominal distension, hematochezia, and catastrophic septic/hypovolemic shock. Surgical delay leads to complete bowel gangrene and short bowel syndrome.\n  - Surgical Solution: Ladd Procedure (counterclockwise untwisting, division of Ladd peritoneal bands, widening of mesentery, placing cecum in left lower quadrant and appendectomy).\n• Necrotizing Enterocolitis (NEC):\n  - Affects premature, low birth weight infants (< 1500 g). Ischemia and bacterial colonization of immature gut mucosa.\n  - Bell Staging: Stage I (suspected), Stage II (pneumatosis intestinalis on X-ray), Stage III (advanced with pneumoperitoneum / perforation, septic shock, thrombocytopenia, severe acidosis).\n• Other Etiologies: Intussusception (ileocolic, \"currant jelly\" stool, target sign on US), Meconium Ileus (cystic fibrosis), and Hirshsprung disease with toxic megacolon."
+    },
+    {
+      "h": "2. Preoperative Resuscitation & Correction of Derangements",
+      "b": "NEVER INDUCE ANAESTHESIA IN AN UNRESUSCITATED, MORIBUND INFANT UNLESS ACTIVE INTERNAL EXSANGUINATION IS OCCURRING:\n\n• Resuscitation Vascular Access: Establish at least two wide-bore peripheral IV lines (22G or 24G) in upper extremities (lower extremity lines may suffer compromised venous return during abdominal manipulation or IVC compression).\n• Fluid Replacement: 20 mL/kg balanced crystalloid bolus, repeated to restore capillary refill < 2 seconds, heart rate, and blood pressure. Correct severe metabolic acidosis and hyperkalemia.\n• Gastric Decompression: Wide-bore orogastric tube on continuous suction to decompress massive fluid and gas accumulation.\n• Transfusion Targets: Maintain Hematocrit > 35% in neonates, Platelets > 50,000–100,000/mm³, Fibrinogen > 150 mg/dL with Fresh Frozen Plasma and Cryoprecipitate."
+    },
+    {
+      "h": "3. Induction, Airway & The Nitrous Oxide Contraindication",
+      "b": "• Modified Rapid Sequence Induction (RSI):\n  - Preoxygenate with 100% O₂ for 3–5 minutes.\n  - Premedicate with Atropine (0.02 mg/kg IV) to blunt severe vagal bradycardia from laryngoscopy or peritoneal traction.\n  - Ketamine (1.5–2.0 mg/kg IV) is the induction agent of choice in septic, hemodynamically unstable infants. Etomidate (0.2–0.3 mg/kg) is an alternative.\n  - Rocuronium (0.9–1.2 mg/kg) or Succinylcholine (2 mg/kg) with cricoid pressure.\n• STRICT CONTRAINDICATION: NITROUS OXIDE (N₂O):\n  - Nitrous oxide is 34 times more soluble than nitrogen. It rapidly diffuses into air-filled closed spaces faster than nitrogen can leave, expanding closed intestinal gas volume by 200%–300% within 30 minutes, converting partial bowel obstruction into intestinal perforation and worsening abdominal compartment syndrome!"
+    },
+    {
+      "h": "4. Intraoperative Fluid Management & Temperature Control",
+      "b": "• Third-Space Evaporative Fluid Losses:\n  - Major neonatal laparotomy with exposed bowel produces massive 3rd space fluid shifts of 10 to 15 mL/kg/h of balanced crystalloid on top of maintenance (4-2-1 rule).\n  - Fluid warmer on all IV lines; use 10% Dextrose with electrolytes if infant at risk for hypoglycaemia.\n• Thermal Defense:\n  - Open neonatal laparotomy causes devastating convective and evaporative heat loss. Maintain OR temperature 25–26°C; overhead radiant warmers; plastic bowel drapes; warmed saline irrigation."
+    },
+    {
+      "h": "5. Hemodynamic Instability, Reperfusion & Post-Op PICU",
+      "b": "• The Reperfusion Shock Phenomenon:\n  - When the surgeon untwists a midgut volvulus or relieves strangulated bowel, massive ischemic toxins, lactic acid, potassium, and inflammatory cytokines wash into the systemic circulation, causing abrupt hypotension, severe acidemia, and malignant arrhythmias.\n  - Have Epinephrine infusion (0.05–0.2 mcg/kg/min) and Calcium Gluconate (100 mg/kg) ready.\n• Postoperative Disposition: Transfer to PICU/NICU intubated, sedated, and paralyzed on mechanical ventilation."
+    }
+  ],
+  "references": [
+    "Miller's Anesthesia, 10th ed., Ch. 76 (Pediatric Anesthesia), Elsevier, 2025/2026.",
+    "Jacob R. Pediatric Anaesthesia, 2nd ed. Jaypee Brothers.",
+    "Cote CJ, et al. A Practice of Anesthesia for Infants and Children, 6th ed. Elsevier, 2019."
+  ]
+},
+{
+  "id": "peds-regional-nerve-blocks",
+  "cat": "anaesthesia",
+  "name": "Paediatric Regional Anaesthesia & Caudal Block",
+  "short": "Paediatric Regional",
+  "tags": [
+    "Paediatric",
+    "Regional",
+    "Caudal Block",
+    "Armitage Formula",
+    "Penile Block",
+    "LAST"
+  ],
+  "tagline": "Sacral hiatus anatomy, Armitage dosing formula, penile and TAP blocks, additives & avoiding LAST in infants",
+  "source": "Miller's Anesthesia, 10th ed., Ch. 76; Rebecca Jacob, Pediatric Anaesthesia, 2nd ed.; European Society of Regional Anaesthesia & Pain Therapy (ESRA/ASRA) Pediatric Guidelines (2022/2024 update).",
+  "sections": [
+    {
+      "h": "1. Paediatric Neuraxial Anatomy Pearls",
+      "b": "Key developmental anatomical differences between infants and adults:\n\n• Termination of Spinal Cord (Conus Medullaris):\n  - In full-term neonates, the spinal cord terminates at L3 (compared to L1–L2 in adults).\n  - Reaches the adult L1 level by 12 months of age.\n• Termination of Dural Sac:\n  - In neonates, the dural sac extends down to S3–S4 (compared to S2 in adults).\n  - Consequently, during caudal epidural injection, the margin of safety between the sacrococcygeal ligament and the dural sac is narrow, increasing the risk of accidental dural puncture.\n• Loose Epidural Adipose Tissue:\n  - Infant epidural space contains gelatinous, loose, poorly lobulated fat, facilitating effortless cephalad spread of local anaesthetic solution."
+    },
+    {
+      "h": "2. Caudal Epidural Block: Landmarks & Needle Insertion Technique",
+      "b": "The single most common regional anaesthetic technique performed in pediatric practice worldwide:\n\n• Indications: Surgical procedures below the umbilicus — inguinal herniotomy, orchidopexy, circumcision, hypospadias repair, clubfoot correction, lower limb orthopedic surgery.\n• Landmark Triangle:\n  - Place child in lateral position with hips and knees flexed.\n  - Palpate the bilateral Posterior Superior Iliac Spines (PSIS). An equilateral triangle constructed with the base connecting both PSIS points has its downward apex resting precisely over the Sacral Hiatus.\n  - Palpate the bilateral Sacral Cornua (bony prominences on either side of the hiatus) and the central depression of the sacrococcygeal membrane.\n• Puncture Technique:\n  - Use a 22G or 24G short-bevel needle or 22G IV cannula.\n  - Insert needle in midline at a 45-to-60 degree angle to the skin until a distinctive \"pop\" or give is felt penetrating the sacrococcygeal ligament.\n  - Depress the needle angle to 20 degrees (almost parallel to sacrum) and advance NO MORE than 1 to 2 mm into the caudal canal (advancing further risks dural puncture!).\n  - Aspiration: Meticulous aspiration for blood or CSF. Resistance during injection must be minimal (the \"whoosh test\" with air or ultrasound confirmation)."
+    },
+    {
+      "h": "3. Armitage Dosing Formula & Local Anaesthetic Selection",
+      "b": "Cephalad spread of local anaesthetic in children is directly proportional to injected volume and body weight:\n\n• The Armitage Volume Formula (using 0.2% Ropivacaine or 0.25% Bupivacaine / Levobupivacaine):\n  - Lumbosacral Block (S1–S5, e.g. Circumcision, Penile surgery): 0.5 mL/kg\n  - Thoracolumbar Block (T10, e.g. Inguinal hernia, Orchidopexy): 1.0 mL/kg\n  - Mid-Thoracic Block (T6–T8, e.g. Lower abdominal, Umbilical surgery): 1.25 mL/kg (Maximum safe volume = 20 mL).\n• Drug of Choice:\n  - Ropivacaine 0.2% is preferred over bupivacaine due to superior motor sparing and substantially lower cardiotoxicity profile.\n• Evidence-Based Caudal Additives:\n  - Clonidine (1 mcg/kg): Extends analgesia duration from 4–6 hours up to 10–12 hours without increasing respiratory depression or urinary retention.\n  - Preservative-Free Morphine (30–50 mcg/kg): Used for major thoracic/abdominal surgery (gives 18–24h analgesia; requires 24h respiratory monitoring for delayed apnoea).\n  - Fentanyl (1 mcg/kg): Modest prolongation, higher incidence of nausea."
+    },
+    {
+      "h": "4. Peripheral Blocks: Penile Block & Ultrasound TAP Block",
+      "b": "• Dorsal Penile Nerve Block (DPNB):\n  - Indications: Circumcision, distal penile surgery.\n  - Subpubic Technique: Insert needle at 10:30 and 1:30 o'clock positions at the base of the penis just beneath the pubic symphysis, traversing Buck's fascia. Inject 0.5% lignocaine or 0.2% ropivacaine without adrenaline (1–2 mL per side).\n  - Ring Block: Subcutaneous infiltration around the base of the shaft.\n  - ABSOLUTE CONTRAINDICATION: EPINEPHRINE IS STRICTLY PROHIBITED in penile blocks (produces end-arterial vasospasm, penile ischemia, and gangrene!).\n• Transversus Abdominis Plane (TAP) Block:\n  - Ultrasound-guided deposition between internal oblique and transversus abdominis muscles (0.3–0.5 mL/kg 0.2% ropivacaine per side) for umbilical/lower abdominal surgery."
+    },
+    {
+      "h": "5. Local Anaesthetic Systemic Toxicity (LAST) in Infants",
+      "b": "• Why Infants are Extremely Vulnerable to LAST:\n  - Low alpha-1-acid glycoprotein concentrations result in higher free, pharmacologically active unbound fraction of bupivacaine/ropivacaine.\n  - Immature hepatic cytochrome P450 clearance prolongs elimination half-life.\n  - Cardiotoxicity can manifest suddenly without prodromal neurological warning signs under general anaesthesia: profound bradycardia, widening QRS, ventricular tachycardia/fibrillation, and asystole.\n• Maximum Weight-Based Local Anaesthetic Doses:\n  - Bupivacaine / Ropivacaine: 2.0 to 2.5 mg/kg (Plain), 3.0 mg/kg (with Epinephrine).\n  - Lignocaine: 4.0 mg/kg (Plain), 7.0 mg/kg (with Epinephrine).\n• Lipid Emulsion Rescue Protocol (Intralipid 20%):\n  - Bolus: 1.5 mL/kg IV over 2–3 minutes.\n  - Infusion: 0.25 mL/kg/min (continue for at least 10 minutes after hemodynamic stability returns)."
+    }
+  ],
+  "references": [
+    "Miller's Anesthesia, 10th ed., Ch. 76 (Pediatric Anesthesia), Elsevier, 2025/2026.",
+    "Jacob R. Pediatric Anaesthesia, 2nd ed. Jaypee Brothers.",
+    "Ivani G, et al. Pediatric Regional Anesthesia: Joint ESRA/ASRA Recommendations. Reg Anesth Pain Med 2018;43(2):129-141.",
+    "American Society of Regional Anesthesia and Pain Medicine (ASRA) Checklist for Management of LAST (2020 update)."
+  ]
+},
+{
+  "id": "case-mitral-stenosis-phtn",
+  "cat": "case_cardiac",
+  "name": "Mitral Stenosis with Pulmonary Hypertension",
+  "short": "Mitral Stenosis & PHTN",
+  "tags": [
+    "Cardiac",
+    "Mitral Stenosis",
+    "PHTN",
+    "Atrial Fibrillation",
+    "Case Discussion"
+  ],
+  "tagline": "Slow heart rate 60–70 bpm, maintain sinus rhythm & atrial kick, avoid tachycardia & prevent surges in PVR",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 1 (Mitral Stenosis with Pulmonary Hypertension); Miller's Anesthesia, 10th ed., Ch. 65; 2024 ESC/EACTS Guidelines for Valvular Heart Disease.",
+  "sections": [
+    {
+      "h": "1. Case Scenario & Bedside Clinical Examination",
+      "b": "A 36-year-old female (gravida 2 para 1) with rheumatic heart disease diagnosed 8 years ago presents for elective open cholecystectomy. She reports progressive dyspnea on exertion (NYHA Class III) and orthopnea requiring 3 pillows. Physical examination reveals a malar flush (mitral facies), pulse 86 bpm irregularly irregular (atrial fibrillation), BP 106/68 mmHg, elevated JVP with prominent v-wave, loud first heart sound (S1), sharp opening snap, and a low-pitched rumbling mid-diastolic murmur with presystolic accentuation at the apex (best heard with bell in left lateral decubitus position). Auscultation over the left second intercostal space reveals an accentuated, palpable pulmonary component of the second heart sound (P2). Transthoracic echocardiogram demonstrates a thickened, calcified mitral valve with \"hockey-stick\" anterior leaflet motion, mitral valve area (MVA) 0.9 cm² (severe MS), mean transmitral gradient 14 mmHg, severe left atrial enlargement (LA diameter 54 mm), severe pulmonary hypertension with estimated pulmonary artery systolic pressure (PASP) 65 mmHg, and preserved LV systolic function (LVEF 55%)."
+    },
+    {
+      "h": "2. Pathophysiology & Cardinal Haemodynamic Goals",
+      "b": "Mitral stenosis produces mechanical obstruction to left ventricular inflow during diastole, causing elevated left atrial pressures, left atrial dilatation (predisposing to AF and thrombus formation), retrograde pulmonary venous congestion, and reactive pulmonary arterial hypertension:\n\n• The Cardinal Haemodynamic Goals (The \"Slow, Sinus, Full & SVR Normal\" Rule):\n  1. HEART RATE (SLOW, 60–70 bpm — MOST CRITICAL): Diastole accounts for 65% of the cardiac cycle at 60 bpm, but drops to <35% at 120 bpm. Tachycardia drastically shortens diastolic filling time across the fixed stenotic orifice, precipitating immediate upstream left atrial hypertension, acute pulmonary edema, and simultaneous downstream LV underfilling with cardiovascular collapse.\n  2. RHYTHM (SINUS RHYTHM PRESERVATION): Loss of the \"atrial kick\" in atrial fibrillation reduces LV stroke volume by 20%–30% in mitral stenosis. Rapid ventricular response (RVR) in AF must be aggressively prevented or cardioverted.\n  3. PRELOAD (ADEQUATELY MAINTAINED): Avoid both hypovolemia (precipitates underfilling of the small, underfilled LV) and fluid overload (precipitates pulmonary edema).\n  4. AFTERLOAD / SVR (NORMAL TO SLIGHTLY ELEVATED): Maintain systemic vascular resistance to preserve coronary perfusion pressure.\n  5. PULMONARY VASCULAR RESISTANCE (KEEP LOW): Avoid all triggers that raise PVR: Hypoxia, Hypercapnia, Acidosis, Hypothermia, High PEEP, and Pain/Agitation, which precipitate acute right ventricular decompensation."
+    },
+    {
+      "h": "3. Preoperative Optimization & Investigation Review",
+      "b": "• Medical Optimization:\n  - Rate Control in AF: Continue beta-blockers (metoprolol) or digoxin up to the morning of surgery to keep resting HR 60–70 bpm (exercise HR < 90 bpm).\n  - Diuretic Optimization: Continue furosemide to treat pulmonary congestion; check serum potassium and magnesium (hypokalemia predisposes to digitalis toxicity and arrhythmias).\n  - Anticoagulation Bridging: Patients with severe MS and AF are on warfarin (target INR 2.0–3.0) for stroke prevention. Stop warfarin 5 days prior; bridge with therapeutic low-molecular-weight heparin (LMWH) or unfractionated heparin, holding LMWH 24h prior to surgery. Check INR on the morning of surgery (must be < 1.5).\n• Cardiology Review: If MVA < 1.0 cm² with pliable leaflets and no LA thrombus, consider Percutaneous Transvenous Mitral Commissurotomy (PTMC / BMV) before elective major non-cardiac surgery."
+    },
+    {
+      "h": "4. Anesthetic Technique & Intraoperative Strategy",
+      "b": "• Choice of Anesthesia:\n  - General Anesthesia with endotracheal intubation is the gold standard for major abdominal surgery in severe MS with severe PHTN. Allows tight control of ventilation (avoiding hypercapnia and hypoxia), depth of anaesthesia, and invasive monitoring.\n  - Neuraxial Anesthesia Precautions: Dense single-shot spinal anaesthesia is CONTRAINDICATED (sudden drop in SVR triggers severe reflex tachycardia and profound hypotension). Continuous epidural anaesthesia with slow, incremental titration can be considered for lower-limb procedures.\n• Induction & Intubation:\n  - Preoxygenation 100% O₂ for 3–5 minutes.\n  - Pre-induction blunting of sympathetic intubation response: Fentanyl 3–5 mcg/kg or Esmolol 0.5–1.0 mg/kg.\n  - Induction: Etomidate 0.2–0.3 mg/kg or titrated Propofol + Vecuronium / Rocuronium 0.9 mg/kg.\n  - Maintenance: Sevoflurane in O₂/Air (avoid Nitrous Oxide! N₂O increases pulmonary vascular resistance and is strictly contraindicated in PHTN!)."
+    },
+    {
+      "h": "5. Monitoring, Inotropic Support & Crisis Management",
+      "b": "• Monitoring Suite: Invasive Arterial Line placed pre-induction; Central Venous Line (to monitor central venous pressure and infuse vasoactive drugs); Transesophageal Echocardiography (TEE) for real-time LV filling and RV function.\n• Vasopressor of Choice for Hypotension:\n  - PHENYLEPHRINE (pure alpha-1 agonist): Drug of choice for hypotension in MS. It elevates SVR and produces a reflex bradycardia (which is highly beneficial!).\n  - AVOID EPHEDRINE: Ephedrine stimulates beta-1 receptors, causing tachycardia that can trigger fatal pulmonary edema.\n• Management of Sudden Intraoperative Atrial Fibrillation with RVR:\n  - If hemodynamically unstable (hypotension, pulmonary edema): Immediate Synchronized DC Cardioversion (50–100 J).\n  - If stable: IV Amiodarone (150 mg bolus over 10 min, then 1 mg/min) or Esmolol (titrated ultra-short acting beta-blocker)."
+    },
+    {
+      "h": "6. Postoperative Care & High-Yield Exam Viva Pearls",
+      "b": "• PACU / ICU Management:\n  - Strict fluid restriction; continue analgesia (multimodal opioid-sparing with TAP block or thoracic epidural).\n  - Avoid shivering (dramatically spikes VO₂ and heart rate); aggressive rewarming.\n• High-Yield Exam Viva Questions:\n  - Q: Why is mitral stenosis called a \"fixed-output state\"? A: Because stroke volume cannot increase across the mechanically stenotic orifice, and attempting to increase cardiac output via tachycardia decreases output further by truncating diastolic filling time.\n  - Q: How does pregnancy worsen mitral stenosis? A: Pregnancy increases plasma volume by 40%–50% and resting heart rate by 15–20 bpm, often precipitating first-time pulmonary edema in the second trimester."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 1, Jaypee Brothers Medical Publishers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 65 (Cardiac Anesthesia), Elsevier, 2025/2026.",
+    "Vahanian A, et al. 2021 ESC/EACTS Guidelines for the management of valvular heart disease. Eur Heart J 2022;43(7):561-632."
+  ]
+},
+{
+  "id": "case-ischemic-heart-disease",
+  "cat": "case_cardiac",
+  "name": "Ischemic Heart Disease (IHD) for Non-Cardiac Surgery",
+  "short": "Ischemic Heart Disease",
+  "tags": [
+    "Cardiac",
+    "IHD",
+    "CAD",
+    "Myocardial Ischemia",
+    "Case Discussion"
+  ],
+  "tagline": "Myocardial oxygen supply-demand balance, heart rate control 50–70 bpm, maintain CPP & lead II/V5 surveillance",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 2 (Ischemic Heart Disease); Miller's Anesthesia, 10th ed., Ch. 13 & 65; 2024 ESC Guidelines on Non-Cardiac Surgery.",
+  "sections": [
+    {
+      "h": "1. Case Scenario & Bedside Evaluation",
+      "b": "A 64-year-old male with a history of hypertension, dyslipidemia, and an anterior wall STEMI 18 months ago (treated with drug-eluting stent to LAD) presents for elective laparoscopic hemicolectomy. He reports CCS Class II angina (chest tightness when climbing two flights of stairs in cold weather, relieved by rest). Medications: Aspirin 75 mg OD, Clopidogrel 75 mg OD, Atorvastatin 40 mg OD, Metoprolol succinate 50 mg OD, Ramipril 5 mg OD. Bedside exam: HR 64 bpm regular, BP 138/82 mmHg, normal heart sounds with S4 gallop, no murmurs, chest clear. ECG: Normal sinus rhythm, Q-waves in V1–V3, flat T waves in aVL. Echocardiogram: Anterior wall hypokinesia, LVEF 45%, no significant valvular disease."
+    },
+    {
+      "h": "2. Pathophysiology of Myocardial Oxygen Supply vs Demand",
+      "b": "Perioperative myocardial infarction (PMI) is the leading cause of perioperative mortality in non-cardiac surgery. It occurs via two mechanisms: Type 1 MI (plaque rupture and coronary thrombosis triggered by perioperative surgical stress, catecholamines, and hypercoagulability) and Type 2 MI (supply-demand mismatch from prolonged tachycardia, hypotension, or anemia):\n\n• Determinants of Myocardial Oxygen Demand (MVO₂):\n  1. HEART RATE (Primary determinant; increases energy consumption and simultaneously shortens diastolic perfusion time!)\n  2. Left Ventricular Wall Tension / Afterload (Laplace law: P × r / 2h)\n  3. Myocardial Contractility (inotropy)\n• Determinants of Myocardial Oxygen Supply:\n  1. Coronary Perfusion Pressure (CPP = Aortic Diastolic BP - LV End-Diastolic Pressure [LVEDP])\n  2. Diastolic Perfusion Time (governed by heart rate)\n  3. Arterial Oxygen Content (CaO₂ = 1.34 × Hb × SaO₂)\n  4. Coronary Vascular Resistance & Anatomy (stenotic lesions prevent compensatory autoregulatory vasodilation).\n• The Cardinal Anesthetic Goal: Keep HR 50–70 bpm, maintain aortic diastolic pressure, avoid hypotension (reduces CPP), and avoid tachycardia (reduces diastolic time and spikes demand)."
+    },
+    {
+      "h": "3. Preoperative Optimization & Dual Antiplatelet Therapy (DAPT) Decisions",
+      "b": "• DAPT Timing Rules (2024 ESC / ACC/AHA Guidelines):\n  - Elective surgery should be delayed at least 6 months after Drug-Eluting Stent (DES) implantation (minimum 3 months if high-risk oncology surgery cannot wait).\n  - For non-cardiac surgery with intermediate-to-high bleeding risk: Hold P2Y12 inhibitor (Clopidogrel hold for 5 days, Ticagrelor for 3–5 days, Prasugrel for 7 days) while CONTINUING ASPIRIN throughout the perioperative period.\n  - Restart P2Y12 inhibitor within 48–72 hours postoperatively once surgical hemostasis is confirmed.\n• Medication Instructions on Morning of Surgery:\n  - Continue Aspirin, Beta-blocker, and Statin on morning of surgery with a sip of water.\n  - Withhold ACE inhibitor (Ramipril) on morning of surgery (prevents refractory post-induction vasoplegia)."
+    },
+    {
+      "h": "4. Anesthetic Management & Intraoperative Ischemia Monitoring",
+      "b": "• Monitoring Suite:\n  - 5-Lead ECG with automated ST-segment analysis: Lead II (monitors inferior wall / RCA) and Lead V5 (monitors anterolateral wall / LAD & LCx). Combined II + V5 monitoring detects >85% of intraoperative ischemic events.\n  - Radial Arterial Line placed pre-induction for beat-to-beat pressure control.\n• Induction Strategy:\n  - Smooth intravenous induction blunting the sympathetic surge of laryngoscopy: Fentanyl 3–5 mcg/kg or Lidocaine 1.5 mg/kg administered 90 seconds prior to intubation.\n  - Induction: Etomidate 0.2–0.3 mg/kg (cardiovascular stability) or carefully titrated Propofol + Vecuronium/Rocuronium.\n  - Maintenance: Sevoflurane (provides ischemic preconditioning) titrated to MAC 0.8–1.0 with opioid analgesia."
+    },
+    {
+      "h": "5. Intraoperative Management of Ischemia & Tachycardia",
+      "b": "• If ST-segment depression / T-wave inversion develops intraoperatively:\n  1. Check Heart Rate: If HR > 75 bpm, administer IV Esmolol (bolus 0.5 mg/kg, then infusion) or Metoprolol (1–2 mg IV increments) to lower HR to < 65 bpm.\n  2. Check Blood Pressure: If MAP is low, administer Phenylephrine or Norepinephrine to restore coronary perfusion pressure.\n  3. If BP is elevated with ischemia: Start Nitroglycerin (NTG) infusion (0.5–2 mcg/kg/min) to promote coronary vasodilation and lower preload/wall tension.\n  4. Optimize Oxygenation & Anemia: Keep FiO₂ > 0.50; maintain Hemoglobin > 8–9 g/dL."
+    },
+    {
+      "h": "6. Postoperative Surveillance & High-Yield Viva Points",
+      "b": "• Postoperative Peak Ischemia Window: >70% of perioperative MIs occur in the first 48–72 hours postoperatively (peak on Post-Op Day 1–2 due to cytokine surge, hypercoagulability, fluid shifts, and pain-induced sympathetic drive).\n• Silent Ischemia: Up to 80% of perioperative MIs are PAINLESS / SILENT because postoperative opioids and wound pain mask classic angina. High-risk patients require routine serial troponins and 12-lead ECGs for 48 hours.\n• High-Yield Viva Pearl:\n  - Q: Why is tachycardia more dangerous than hypertension in IHD? A: Hypertension increases myocardial oxygen demand, but simultaneously increases aortic diastolic pressure (raising coronary perfusion). Tachycardia increases demand while actively decreasing diastolic filling time, attacking oxygen balance from both sides."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 2, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 65, Elsevier, 2025/2026.",
+    "Halvorsen S, et al. 2022 ESC Guidelines on cardiovascular assessment and management of patients undergoing non-cardiac surgery. Eur Heart J 2022;43(38):3826-3924."
+  ]
+},
+{
+  "id": "case-cabg-cardiopulmonary-bypass",
+  "cat": "case_cardiac",
+  "name": "Coronary Artery Bypass Grafting (CABG) on CPB",
+  "short": "CABG on CPB",
+  "tags": [
+    "Cardiac",
+    "CABG",
+    "CPB",
+    "Cardioplegia",
+    "Heparin Protamine",
+    "Case Discussion"
+  ],
+  "tagline": "Hemodynamic goals 'slow, small & normotensive', systemic heparinization ACT > 480s, CPB phases & protamine reversal",
+  "source": "Objective Anaesthesia Review, 6th ed.; Miller's Anesthesia, 10th ed., Ch. 65 (Cardiac Anesthesia); Hensley's Practical Approach to Cardiothoracic Anesthesia, 6th ed.",
+  "sections": [
+    {
+      "h": "1. Case Scenario & Preoperative Anatomy",
+      "b": "A 58-year-old male with severe triple vessel coronary artery disease (CAD) and 85% distal left main stenosis presents for elective on-pump CABG (LIMA to LAD, saphenous vein grafts to OM and RCA). Echo demonstrates global LV hypokinesia, LVEF 40%, LVEDP elevated, no significant valvular regurgitation. Preoperative coronary angiography details are reviewed to identify target coronary vessels, viability, and collateral flow."
+    },
+    {
+      "h": "2. Cardinal Pre-Bypass Haemodynamic Goals",
+      "b": "Before going on Cardiopulmonary Bypass (CPB), the diseased heart must be protected from catastrophic ischemic arrest:\n\n• The \"Slow, Small, Normotensive\" Mantra:\n  - Slow Heart Rate: 50–65 bpm (minimizes MVO₂ and prolongs diastolic coronary perfusion).\n  - Small Ventricular Size: Avoid volume overload (decreases wall tension and reduces subendocardial compression).\n  - Normotensive to Mildly Hypertensive: Keep MAP 70–85 mmHg to perfuse critical stenotic vessels.\n  - Preserved Contractility: Avoid excessive inotropes (which waste oxygen) and excessive myocardial depressants."
+    },
+    {
+      "h": "3. Systemic Anticoagulation & Heparin Monitoring",
+      "b": "• Heparin Administration:\n  - Dose: 300 to 400 units/kg of bovine lung / porcine intestinal Heparin administered via a central line before aortic cannulation.\n  - Target Activated Clotting Time (ACT): Baseline ACT is typically 100–140 seconds. Safe full CPB initiation requires ACT > 400 to 480 seconds.\n• Heparin Resistance:\n  - Defined as failure to achieve ACT > 400–480 s despite 400–500 units/kg of heparin.\n  - Etiology: Antithrombin III (AT-III) deficiency (often caused by preoperative therapeutic heparin infusions or congenital deficiency).\n  - Treatment: Administer 2 units of Fresh Frozen Plasma (contains AT-III) or recombinant Antithrombin III concentrate (500–1000 units)."
+    },
+    {
+      "h": "4. Conduct of Cardiopulmonary Bypass (CPB)",
+      "b": "• Cannulation Phases: Ascortic cannulation first (keep SBP 90–100 to prevent aortic dissection), followed by venous cannulation (two-stage single cannula in right atrium or bicaval cannulation).\n• Initiation of Bypass: Full pump flow target 2.4 L/min/m² cardiac index; confirm arterial line pulsatility ceases; turn off mechanical ventilator once full flow is established; administer volatile anesthetic via oxygenator vaporizer.\n• Myocardial Protection (Cardioplegia Arrest):\n  - Aorta is cross-clamped; cold (4°C) hyperkalemic blood cardioplegia (e.g. Del Nido or 4:1 blood:crystalloid) delivered antegrade via aortic root and/or retrograde via coronary sinus.\n  - Mechanism: High potassium (K⁺ 16–20 mEq/L) depolarizes cardiac myocyte membrane, inducing rapid electromechanical arrest in diastole, reducing MVO₂ by >95%.\n• Rewarming: Rewarm gradually to 36.5°C (prevent hyperthermia > 37.5°C which causes cerebral injury)."
+    },
+    {
+      "h": "5. Weaning from CPB & Protamine Reversal",
+      "b": "• Checklists for Weaning (The \"RHYTHM\" mnemonic):\n  - Rhythm: Stable sinus rhythm or AV paced at 75–85 bpm; de-airing complete.\n  - Heart Rate / Temperature: Core temp > 36°C.\n  - Ventilation: Lungs re-expanded under direct vision (clear atelectasis); ventilator restarted.\n  - Metabolic: ABG normal (pH > 7.30, K⁺ 4.0–5.0, ionized calcium > 1.1 mmol/L, Hematocrit > 24%–26%).\n• Protamine Sulfate Reversal:\n  - Dose: 1 mg of Protamine per 100 units of initial Heparin administered.\n  - Administration Technique: Infuse SLOWLY over 10 to 15 minutes via peripheral vein or slow central line.\n  - PROTAMINE REACTIONS (Life-Threatening):\n    1. Type I (Rapid Injection): Systemic vasodilation and hypotension (histamine release).\n    2. Type II (Anaphylactoid/IgE-mediated): Bronchospasm, facial flushing, cardiovascular collapse (higher risk in NPH insulin users, vasectomized men, fish allergy).\n    3. Type III (Catastrophic Pulmonary Hypertension): Thromboxane A2 release triggering acute severe pulmonary vasoconstriction, acute RV failure, and systemic hypotension. Stop protamine immediately, administer inotropes, calcium, and consider returning to CPB."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 65, Elsevier, 2025/2026.",
+    "Hensley's Practical Approach to Cardiothoracic Anesthesia, 6th ed. Wolters Kluwer, 2019."
+  ]
+},
+{
+  "id": "case-anesthetic-hypertensive-patient",
+  "cat": "case_cardiac",
+  "name": "Anesthetic Considerations for a Hypertensive Patient",
+  "short": "Hypertensive Patient",
+  "tags": [
+    "Cardiac",
+    "Hypertension",
+    "Autoregulation",
+    "End-Organ Damage",
+    "Case Discussion"
+  ],
+  "tagline": "Right-shifted cerebral autoregulation, target BP within 20% baseline, ACEi vasoplegia & intraoperative crisis management",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 3 (Anesthetic Considerations for a Hypertensive Patient); Miller's Anesthesia, 10th ed., Ch. 18 & 40; 2024 ESH/ESC Hypertension Guidelines.",
+  "sections": [
+    {
+      "h": "1. Case Scenario & End-Organ Evaluation",
+      "b": "A 56-year-old male with poorly controlled essential hypertension for 12 years presents for elective open inguinal hernia repair. On presentation, his blood pressure is 184/108 mmHg, HR 78 bpm. He takes amlodipine 10 mg and telmisartan 40 mg irregularly. Fundoscopy reveals Grade II hypertensive retinopathy (arteriolar narrowing, arteriovenous nicking). ECG shows voltage criteria for Left Ventricular Hypertrophy (Sokolow-Lyon index > 35 mm) with lateral strain pattern. Serum creatinine is 1.4 mg/dL. He has no chest pain or dyspnea."
+    },
+    {
+      "h": "2. Pathophysiology: Vascular Sclerosis & The Right-Shifted Autoregulation Curve",
+      "b": "Chronic hypertension causes medial hypertrophy and arteriolar remodeling throughout the cerebral, renal, and coronary vascular beds:\n\n• Right-Shifted Autoregulation:\n  - Normal Cerebral Autoregulation: Constant cerebral blood flow between Mean Arterial Pressures (MAP) of 50 and 150 mmHg.\n  - Chronic Hypertensive Autoregulation: The entire curve shifts to the right (e.g. MAP 80 to 180 mmHg). Lowering blood pressure into a \"normal adult\" range (e.g. MAP 60 mmHg) can induce cerebral and renal hypoperfusion and ischemic stroke!\n• The Haemodynamic Rollercoaster:\n  - Hypertensive patients are intensely volume contracted (pressure natriuresis) with blunted baroreceptor reflexes.\n  - They exhibit marked hemodynamic lability: profound hypotension on induction of anaesthesia (vasodilation + volume depletion) followed by severe hypertensive surges during laryngoscopy, surgical incision, and emergence."
+    },
+    {
+      "h": "3. Decision to Cancel / Postpone Surgery",
+      "b": "• Cancellation Thresholds (2024 International Guidelines):\n  - Elective Surgery Postponement Cutoff: Stage 3 Severe Hypertension — Systolic BP ≥ 180 mmHg or Diastolic BP ≥ 110 mmHg.\n  - Why postpone? Severe Stage 3 hypertension increases the risk of perioperative myocardial infarction, ventricular arrhythmias, intracranial hemorrhage, and postoperative stroke.\n  - Delay elective surgery to titrate oral antihypertensives gradually over days to weeks (avoid acute oral or IV precipitous drops in the holding area).\n  - If surgery is urgent/emergency: Proceed with invasive arterial monitoring and continuous IV vasodilator infusions (labetalol, nicardipine)."
+    },
+    {
+      "h": "4. Perioperative Antihypertensive Drug Management",
+      "b": "• Beta-Blockers & Calcium Channel Blockers: CONTINUE up to the morning of surgery with a sip of water (abrupt beta-blocker withdrawal triggers rebound tachycardia, malignant hypertension, and MI).\n• ACE Inhibitors & Angiotensin Receptor Blockers (ARBs - e.g. Telmisartan, Ramipril):\n  - WITHHOLD ON THE MORNING OF SURGERY (24h prior).\n  - Rationale: Concomitant general anaesthesia and active AT1 blockade triggers refractory \"vasoplegic syndrome\" resistant to phenylephrine and ephedrine. Requires Vasopressin (0.5–1 unit bolus) or Terlipressin to restore vascular tone.\n• Diuretics: Withhold on morning of surgery (prevents additive hypovolemia and intraoperative hypotension)."
+    },
+    {
+      "h": "5. Intraoperative Management & Crisis Treatment",
+      "b": "• Blood Pressure Target: Maintain MAP within 20% of the patient's baseline pre-induction pressure.\n• Blunting the Pressor Response to Laryngoscopy:\n  - Intravenous Fentanyl (3 mcg/kg), Lignocaine (1.5 mg/kg IV 90s pre-intubation), or Esmolol (0.5–1 mg/kg) given before direct laryngoscopy.\n• Intraoperative Hypertensive Crisis Treatment:\n  - Labetalol: Combined alpha-1 and beta-blocker (ratio 1:7 IV). Dose: 5 to 20 mg IV slow boluses every 10 min. Ideal when hypertension is accompanied by tachycardia.\n  - Nicardipine: Dihydropyridine calcium channel blocker (5–15 mg/h infusion). Reduces afterload without depressing myocardium.\n  - Nitroglycerin: Infusion (0.5–3 mcg/kg/min) preferred if ischemia or pulmonary congestion is present.\n  - Sodium Nitroprusside (SNP): Reserved for severe refractory crisis (watch for cyanide toxicity with infusions > 2 mcg/kg/min for > 24h)."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 3, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 18 & 40, Elsevier, 2025/2026.",
+    "Mancia G, et al. 2023 ESH Guidelines for the management of arterial hypertension. J Hypertens 2023;41(12):1874-2071."
+  ]
+},
+{
+  "id": "case-tetralogy-of-fallot",
+  "cat": "case_cardiac",
+  "name": "Tetralogy of Fallot (TOF)",
+  "short": "Tetralogy of Fallot",
+  "tags": [
+    "Cardiac",
+    "TOF",
+    "Congenital",
+    "Cyanotic",
+    "Hypercyanotic Spell",
+    "Case Discussion"
+  ],
+  "tagline": "Anatomic tetrad, right-to-left shunt dynamics, hypercyanotic Tet spell protocol & avoiding air bubbles in IV lines",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 4 (Tetralogy of Fallot); Miller's Anesthesia, 10th ed., Ch. 66 (Pediatric Cardiac Anesthesia); Cote CJ, A Practice of Anesthesia for Infants and Children, 6th ed.",
+  "sections": [
+    {
+      "h": "1. Case Scenario & The Anatomic Tetrad",
+      "b": "A 4-year-old boy (weight 14 kg) with unrepaired Tetralogy of Fallot presents for elective dental extractions under general anaesthesia. The mother describes a history of squatting during physical play and two episodes of \"blue spells\" (hypercyanotic episodes) precipitated by crying and hunger. Physical examination: Central cyanosis, clubbing of fingers (Grade 3), pulse 100 bpm, SpO₂ 78% on room air. Auscultation reveals a single second heart sound and a harsh, ejection systolic murmur (Grade 3/6) at the left upper sternal border. Preoperative hematocrit is 56% (compensatory secondary polycythemia).\n\n• The Anatomic Tetrad of Fallot:\n  1. Large, non-restrictive subaortic Ventricular Septal Defect (VSD)\n  2. Right Ventricular Outflow Tract Obstruction (RVOTO - infundibular subvalvular, valvular, or supravalvular stenosis)\n  3. Overriding Aorta (straddling the VSD)\n  4. Right Ventricular Hypertrophy (secondary to chronic high RV pressure)."
+    },
+    {
+      "h": "2. Pathophysiology & Right-to-Left Shunt Dynamics",
+      "b": "Because the VSD is large and non-restrictive, pressures in the right and left ventricles are equal. The direction and magnitude of blood flow across the VSD are dictated entirely by the balance between Pulmonary Vascular Resistance + RVOTO vs Systemic Vascular Resistance (SVR):\n\n• If SVR drops or RVOTO increases: Right-to-left shunting increases, deoxygenated blood pours directly into the aorta, producing severe cyanosis and profound hypoxemia.\n• If SVR rises or RVOTO relaxes: Pulmonary blood flow increases, improving oxygenation.\n• CARDINAL HAEMODYNAMIC GOALS:\n  1. MAINTAIN OR INCREASE SVR: Avoid systemic vasodilation (propofol boluses, isoflurane overdose, histamine release).\n  2. AVOID INCREASING RVOTO: Prevent sympathetic stimulation, hypercontractility, tachycardia, and endogenous catecholamine surges which spasm the dynamic muscular infundibulum.\n  3. PRESERVE PRELOAD: Hypovolemia decreases RV cavity size, worsening dynamic subvalvular outflow tract obstruction.\n  4. AVOID SURGES IN PVR: Prevent hypoxia, hypercapnia, acidosis, and hypothermia."
+    },
+    {
+      "h": "3. The Hypercyanotic (\"Tet\") Spell — Emergency Resuscitation Protocol",
+      "b": "A dynamic spasm of the infundibular muscle triggered by crying, pain, dehydration, or light anaesthesia, causing near-complete cessation of pulmonary blood flow and acute life-threatening cyanosis:\n\n• Immediate Step-by-Step Treatment Protocol:\n  1. FiO₂ 1.0: Administer 100% inspired oxygen immediately (dilates pulmonary vasculature and supports tissue oxygenation).\n  2. Knee-Chest Position: Flex hips and knees tightly against the chest (in older child, squatting). Mechanically kinks the femoral arteries, abruptly elevating Systemic Vascular Resistance (SVR), which forces blood from the RV across the pulmonary valve rather than through the VSD!\n  3. Deepen Anaesthesia: Administer Ketamine (1–2 mg/kg IV) or Fentanyl; calms the child, relieves infundibular spasm, and raises SVR.\n  4. Fluid Bolus: Rapid IV infusion of 10–20 mL/kg balanced crystalloid to expand RV end-diastolic volume and dilate the infundibulum.\n  5. Phenylephrine (The Vasopressor of Choice): 5 to 10 mcg/kg IV bolus. Selectively constricts systemic vascular beds (skyrockets SVR), reversing the shunt from right-to-left to left-to-right!\n  6. Beta-Blocker (Esmolol / Propranolol): IV Esmolol (0.5 mg/kg bolus over 1 min) to relax the dynamic infundibular muscle spasm and slow heart rate."
+    },
+    {
+      "h": "4. Anesthetic Execution & Strict Safety Rules",
+      "b": "• Sedative Premedication: Oral Midazolam (0.5 mg/kg) given 30 minutes pre-induction is mandatory to prevent agitation and crying that precipitate Tet spells in the preoperative holding area.\n• Induction of Anaesthesia:\n  - Ketamine (2–3 mg/kg IV or 5–8 mg/kg IM) is the induction agent of choice in cyanotic heart disease. It maintains SVR, supports heart rate, and provides profound analgesia without depressing contractility.\n  - Inhalational Induction: Sevoflurane in 100% O₂ titrated gradually; avoid rapid concentration surges that drop SVR.\n• THE CRITICAL DE-AIRING MANDATE (PARADOXICAL EMBOLISM):\n  - ALL IV lines MUST be meticulously de-aired with air-eliminating filters or bubble traps!\n  - In the presence of a right-to-left shunt across the VSD, even a micro-bubble of air injected into a peripheral IV line passes directly into the systemic circulation and into the cerebral or coronary arteries, causing immediate stroke or cardiac arrest!"
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 4, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 66, Elsevier, 2025/2026.",
+    "Cote CJ, et al. A Practice of Anesthesia for Infants and Children, 6th ed. Elsevier, 2019."
+  ]
+},
+{
+  "id": "case-patent-ductus-arteriosus",
+  "cat": "case_cardiac",
+  "name": "Patent Ductus Arteriosus (PDA) Ligation",
+  "short": "PDA Ligation",
+  "tags": [
+    "Cardiac",
+    "PDA",
+    "Congenital",
+    "Preterm",
+    "Recurrent Laryngeal",
+    "Case Discussion"
+  ],
+  "tagline": "Left-to-right shunt in preterm neonates, pre/post-ductal SpO2 monitoring, test clamping & avoiding RLN injury",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 5 (Patent Ductus Arteriosus); Miller's Anesthesia, 10th ed., Ch. 66; Practice of Anesthesia for Infants and Children, 6th ed.",
+  "sections": [
+    {
+      "h": "1. Anatomy, Pathophysiology & Shunt Dynamics",
+      "b": "• Anatomy: The ductus arteriosus connects the pulmonary artery bifurcation to the descending aorta just distal to the left subclavian artery. In utero, it shunts 90% of RV output away from the unexpanded lungs into the placenta. In preterm neonates, lack of muscular media and low oxygen sensitivity leads to persistent patency.\n• Left-to-Right Shunting:\n  - After birth, as pulmonary vascular resistance drops, blood shunts left-to-right from the high-pressure aorta into the low-pressure pulmonary circulation.\n  - Sequelae: Massive pulmonary overcirculation (pulmonary edema, ventilator dependence, bronchopulmonary dysplasia) and \"diastolic steal\" from the systemic circulation, predisposing to necrotizing enterocolitis (NEC), intraventricular hemorrhage (IVH), and renal failure.\n• Medical vs Surgical Treatment: Medical closure attempted with cyclooxygenase inhibitors (Indomethacin, Ibuprofen, or IV Paracetamol). If medical therapy fails or is contraindicated (active bleeding, NEC, severe renal dysfunction), surgical or transcatheter ligation is indicated."
+    },
+    {
+      "h": "2. Intraoperative Monitoring & The Test Clamping Protocol",
+      "b": "• Dual-Site Pulse Oximetry:\n  - Pre-ductal: Right hand/wrist (reflects arterial oxygenation proximal to the ductus).\n  - Post-ductal: Left foot or right foot (reflects systemic oxygenation distal to the ductus).\n• Radial Arterial Line: Right radial arterial line preferred (preserves monitoring if the left subclavian artery is accidentally clamped or distorted).\n• Surgical Exposure: Left posterolateral thoracotomy via 3rd or 4th intercostal space.\n• THE CRITICAL TEST CLAMPING PROTOCOL:\n  - Before permanent ligation or titanium clip application, the surgeon test-clamps the suspected ductus for 1 to 2 minutes:\n    1. Confirm Rise in Diastolic Blood Pressure: Clamping the run-off ductus eliminates diastolic runoff, instantly raising systemic diastolic BP and narrowing pulse pressure.\n    2. Confirm Preserved Post-Ductal Perfusion: Verify that pulse oximeter waveform and pulse in the foot remain vigorous (rules out accidental clamping of the descending aorta!).\n    3. Verify Lung Perfusion: Confirm left pulmonary artery pulse is intact (rules out accidental clamping of the LPA!)."
+    },
+    {
+      "h": "3. Surgical Complications & Life-Threatening Hazards",
+      "b": "• Recurrent Laryngeal Nerve (RLN) Injury: The left RLN loops around the ligamentum arteriosum / ductus arteriosus. Traction or electrocautery injury produces vocal cord palsy, hoarseness, stridor, and extubation failure.\n• Catastrophic Hemorrhage: The preterm ductus is paper-thin and friable. Avulsion or tear causes torrential aortic hemorrhage. Blood products must be in the operating room prior to incision; maintain two secure IV lines.\n• Chylothorax: Thoracic duct injury during mediastinal dissection.\n• Sudden Left Ventricular Afterload Surge: Ligation suddenly removes the low-resistance pulmonary run-off, increasing LV afterload and occasionally triggering transient LV failure; inotropic support (milrinone or epinephrine) may be required."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 5, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 66, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-permanent-pacemaker",
+  "cat": "case_cardiac",
+  "name": "Permanent Pacemaker & CIED Management",
+  "short": "Pacemaker & CIED",
+  "tags": [
+    "Cardiac",
+    "Pacemaker",
+    "CIED",
+    "ICD",
+    "Electrocautery EMI",
+    "Case Discussion"
+  ],
+  "tagline": "Preoperative interrogation, NASPE/BPEG code, magnet application response, electrocautery EMI mitigation & reprogramming",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 6 (Permanent Pacemaker); Miller's Anesthesia, 10th ed., Ch. 42; 2023 HRS/ASA Expert Consensus on Perioperative Management of CIEDs.",
+  "sections": [
+    {
+      "h": "1. Case Scenario & The NASPE/BPEG Code",
+      "b": "A 72-year-old male with a dual-chamber permanent pacemaker (PPM) implanted 4 years ago for symptomatic complete heart block presents for open radical prostatectomy. Medications: Apixaban, Atorvastatin. He feels well and denies syncope or dizziness. Bedside evaluation requires decoding his device function:\n\n• The 5-Letter NASPE/BPEG (NBG) Pacemaker Code:\n  - Position I: Chamber Paced (A = Atrium, V = Ventricle, D = Dual A+V, O = None)\n  - Position II: Chamber Sensed (A, V, D, O)\n  - Position III: Response to Sensing (I = Inhibited, T = Triggered, D = Dual [I+T], O = None)\n  - Position IV: Rate Modulation (R = Rate responsive, O = None)\n  - Position V: Multisite Pacing (A, V, D, O — e.g. biventricular CRT).\n• Common Modes: DDD (dual chamber sensing and pacing, preserves AV synchrony), VVIR (single ventricle pacing with accelerometer rate adaptation for exercise in permanent AF)."
+    },
+    {
+      "h": "2. The Electromagnetic Interference (EMI) Hazard",
+      "b": "Monopolar electrocautery (\"bovie\") is the primary perioperative threat to cardiac implantable electronic devices (CIEDs):\n\n• Consequences of Monopolar Electrosurgery EMI:\n  1. Electrical Oversensing: The device interprets electrocautery radiofrequency noise as intrinsic cardiac activity, inhibiting pacemaker output (causing profound asystole in a pacemaker-dependent patient!).\n  2. Inappropriate Tachycardia Therapy in ICDs: An Implantable Cardioverter-Defibrillator (ICD) interprets electrical noise as ventricular fibrillation, delivering an inappropriate high-voltage shock to the awake or anesthetized patient!\n  3. Power-On Reset: High-energy EMI resets the device to factory back-up default mode (often VOO or VVI at 60 bpm).\n  4. Thermal Myocardial Injury: Current conducted along the lead causes thermal burn at the lead-myocardium interface, causing permanent threshold rise or perforation."
+    },
+    {
+      "h": "3. Magnet Application: Pacemaker vs ICD Behavior",
+      "b": "A CLINICAL DISTINCTION EXAMINERS TEST EXHAUSTIVELY:\n\n• Magnet Over a PACEMAKER (PPM):\n  - Converts the pacemaker into an ASYNCHRONOUS mode (e.g. VOO or DOO) at a fixed manufacturer-specific rate (e.g. Medtronic = 85 bpm, Boston Scientific = 100 bpm, St. Jude = 90 or 100 bpm).\n  - Sensing is completely disabled; therefore, electrocautery EMI CANNOT cause oversensing or asystole.\n  - Removing the magnet immediately restores normal programmed sensing and pacing.\n• Magnet Over an IMPLANTABLE CARDIOVERTER-DEFIBRILLATOR (ICD):\n  - SUSPENDS TACHYARRHYTHMIA DETECTION AND DEFIBRILLATION SHOCKS ONLY!\n  - DOES NOT ALTER PACEMAKER FUNCTION! (Does NOT make the pacemaker asynchronous!).\n  - In a pacemaker-dependent patient with an ICD, a magnet will prevent inappropriate shocks, but will NOT prevent pacemaker inhibition from EMI; formal interrogation and reprogramming to asynchronous pacing (VOO/DOO) before surgery is mandatory!"
+    },
+    {
+      "h": "4. Intraoperative Electrocautery Safety Rules",
+      "b": "• Positioning the Grounding Plate: Position the return electrode plate so the electrical current path DOES NOT cross the pulse generator or cardiac leads (e.g. place plate on the right thigh for pelvic/prostate surgery).\n• Bipolar Electrocautery: Use bipolar cautery wherever feasible (current passes only between forceps tips; negligible EMI).\n• Monopolar Rules: If monopolar must be used, use short, intermittent bursts (< 2–3 seconds), set to the lowest effective energy, and keep the active pencil > 15 cm away from the device.\n• External Defibrillator Ready: External defibrillator pads must be placed on the patient pre-induction whenever ICD therapies are disabled."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 6, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 42, Elsevier, 2025/2026.",
+    "Crossley GH, et al. The Heart Rhythm Society (HRS) / American Society of Anesthesiologists (ASA) Expert Consensus Statement on the perioperative management of patients with cardiac implantable electronic devices. Heart Rhythm 2011 (Reaffirmed 2023)."
+  ]
+},
+{
+  "id": "case-peripheral-vascular-disease",
+  "cat": "case_cardiac",
+  "name": "Peripheral Vascular Disease & Major Aortic Surgery",
+  "short": "PVD & Aortic Surgery",
+  "tags": [
+    "Vascular",
+    "PVD",
+    "Aorta",
+    "Cross-Clamp",
+    "Renal Protection",
+    "Spinal Cord Ischemia",
+    "Case Discussion"
+  ],
+  "tagline": "Aortic cross-clamping hemodynamics, declamping shock, renal preservation, heparinization & artery of Adamkiewicz protection",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 7 (Peripheral Vascular Disease); Miller's Anesthesia, 10th ed., Ch. 67 (Vascular Anesthesia); Rutherford's Vascular Surgery and Endovascular Therapy, 10th ed.",
+  "sections": [
+    {
+      "h": "1. Case Scenario & Vascular Patient Risk Profile",
+      "b": "A 68-year-old male with a 45 pack-year smoking history, severe peripheral vascular disease (ankle-brachial index 0.45 bilateral, rest pain), hypertension, and chronic kidney disease presents for open infrarenal abdominal aortic aneurysm (AAA) repair (aneurysm diameter 6.2 cm). Vascular surgery patients have the highest incidence of occult multi-organ atherosclerotic disease: >60% have significant coronary artery disease, 30% have carotid stenosis, and 40% have renal artery involvement."
+    },
+    {
+      "h": "2. The Physiology of Aortic Cross-Clamping",
+      "b": "Placement of a surgical cross-clamp on the aorta produces dramatic, immediate systemic hemodynamic derangements:\n\n• Cardiovascular Sequelae (Clamp Application):\n  - Massive Increase in Afterload: Aortic impedance surges, left ventricular end-systolic volume and wall stress rise abruptly, predisposing to acute LV failure and subendocardial ischemia.\n  - Blood Volume Redistribution: Blood volume is shifted from the splanchnic and lower extremity vascular beds into the central venous circulation, raising CVP and preload.\n  - Management: Deepen anaesthesia; administer vasodilators (Nitroglycerin or Nicardipine) before clamp application to blunt LV afterload spikes.\n• Renal & Spinal Cord Ischemia:\n  - Infrarenal clamping reduces renal blood flow by 35%–40% due to reflex renal vasoconstriction (renin-angiotensin activation).\n  - Suprarenal / Thoracic clamping jeopardizes the Artery of Adamkiewicz (arteria radicularis magna, originating between T9 and L2 in 85% of individuals), which supplies the anterior two-thirds of the spinal cord (anterior spinal artery syndrome: paraplegia, loss of pain and temperature with preserved dorsal column proprioception)."
+    },
+    {
+      "h": "3. The Physiology of Aortic Declamping (\"Declamping Shock\")",
+      "b": "Releasing the aortic clamp is the most hemodynamically hazardous phase of the operation:\n\n• Pathophysiology of Declamping Shock:\n  1. Sudden Loss of Afterload: SVR plummets instantaneously as blood pools into the dilated, paralyzed lower extremity vasculature.\n  2. Central Hypovolemia: Effective circulating blood volume drops into the reperfused ischemic vascular beds.\n  3. Reperfusion Washout Surge: Lactic acid, potassium, prostaglandins, and myocardial depressant factors accumulated in the ischemic lower extremities wash into the central circulation, causing acute metabolic acidosis, hyperkalemia, and myocardial depression.\n• Declamping Preparation Protocol:\n  - Volume Load: Pre-load the patient with balanced crystalloids / blood products to elevate CVP by 2–4 mmHg before release.\n  - Discontinue Vasodilators prior to declamping.\n  - Controlled Release: Request the surgeon to release the clamp SLOWLY and incrementally (\"partial declamping\").\n  - Vasopressors Ready: Phenylephrine or Norepinephrine running to support SVR."
+    },
+    {
+      "h": "4. Renal & Spinal Cord Protection Bundles",
+      "b": "• Renal Protection: Maintain intravascular volume, MAP > 70 mmHg, and urine output > 0.5 mL/kg/h. Mannitol (0.25–0.5 g/kg IV) given 15–20 minutes prior to clamp application promotes osmotic diuresis and scavenges free radicals.\n• Spinal Cord Protection (Thoracoabdominal Aneurysms):\n  - Cerebrospinal Fluid (CSF) Drainage: Place lumbar intrathecal catheter to keep CSF pressure < 10 cmH₂O (Spinal Perfusion Pressure = Distal MAP - CSF Pressure).\n  - Motor Evoked Potentials (MEP) / SSEP neuromonitoring.\n  - Mild hypothermia (34°C) and left heart bypass."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 7, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 67, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-pneumonectomy-olv",
+  "cat": "case_resp",
+  "name": "Pneumonectomy & One-Lung Ventilation",
+  "short": "Pneumonectomy & OLV",
+  "tags": [
+    "Thoracic",
+    "Pneumonectomy",
+    "OLV",
+    "Double Lumen Tube",
+    "HPV",
+    "Case Discussion"
+  ],
+  "tagline": "Preoperative ppoFEV1/ppoDLCO, left double-lumen tube positioning, managing hypoxemia & avoiding post-pneumonectomy pulmonary edema",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 8 (Pneumonectomy); Miller's Anesthesia, 10th ed., Ch. 64 (Thoracic Anesthesia); Kaplan's Thoracic Anesthesia, 2nd ed.",
+  "sections": [
+    {
+      "h": "1. Preoperative Pulmonary Assessment: The \"Three-Legged Stool\"",
+      "b": "Evaluating a patient for lung resection requires testing three distinct physiological components:\n\n• 1. Mechanics / Spirometry (ppoFEV1):\n  - Post-bronchodilator FEV1 measured. Calculate Predicted Postoperative FEV1 (ppoFEV1%) based on the number of functioning segments to be resected (19 total segments: 10 right, 9 left):\n  - ppoFEV1% = Preop FEV1% × (1 - [Number of functional segments resected / Total segments]).\n  - Safe threshold: ppoFEV1 > 40% (low risk); < 30% indicates extreme high risk for postoperative respiratory failure.\n• 2. Parenchymal Gas Exchange (ppoDLCO):\n  - Diffusing capacity for carbon monoxide. ppoDLCO > 40% is safe; < 30% carries high mortality.\n• 3. Cardiopulmonary Reserve / Exercise Capacity (VO₂ max):\n  - Formal CPET (Cardiopulmonary Exercise Testing) is indicated if ppoFEV1 or ppoDLCO < 40%.\n  - VO₂ max > 20 mL/kg/min (can climb > 3 flights of stairs / 15 meters) indicates safe resection.\n  - VO₂ max < 10 mL/kg/min (cannot climb 1 flight of stairs) indicates prohibitive operative mortality."
+    },
+    {
+      "h": "2. One-Lung Ventilation (OLV) & Hypoxic Pulmonary Vasoconstriction",
+      "b": "• Physiology of OLV in the Lateral Decubitus Position:\n  - The dependent (lower) lung is ventilated and carries ~60% of total blood flow.\n  - The non-dependent (upper, operative) lung is collapsed, creating an obligatory right-to-left intrapulmonary shunt of blood through unventilated lung.\n• Hypoxic Pulmonary Vasoconstriction (HPV):\n  - An intrinsic physiological defense mechanism of pulmonary vascular smooth muscle. In response to alveolar hypoxia (PAO₂ < 60 mmHg) in the collapsed lung, local pulmonary arterioles constrict, diverting 40%–50% of blood flow away from the non-ventilated lung to the ventilated dependent lung, significantly improving oxygenation.\n• Factors that Inhibit HPV (Worsening Hypoxemia):\n  - Inhalational anesthetics > 1.0 MAC (dose-dependently blunt HPV; keep volatile ≤ 1.0 MAC or use TIVA with propofol)\n  - Vasodilators (nitroglycerin, nitroprusside, nifedipine, beta-agonists)\n  - High or very low pulmonary artery pressures\n  - Hypocapnia (alkalosis) or severe hypothermia."
+    },
+    {
+      "h": "3. Double-Lumen Tube (DLT) Selection & Fiberoptic Confirmation",
+      "b": "• Left vs Right DLT Selection:\n  - LEFT DLT IS THE DEFAULT TUBE FOR ALMOST ALL PROCEDURES (including left pneumonectomy, where it is withdrawn into the trachea before the bronchus is stapled).\n  - Right DLT is avoided because the right upper lobe bronchus takes off only 1.5–2.0 cm distal to the carina; aligning the right DLT ventilation slot over the RUL orifice is notoriously difficult and easily obstructed.\n• Sizing:\n  - Adult Female: 35 or 37 Fr DLT.\n  - Adult Male: 39 or 41 Fr DLT.\n• Mandatory Bronchoscopic Confirmation Protocol (Two Checks):\n  1. Check via Tracheal Lumen: Advance pediatric bronchoscope through tracheal lumen. Visualize the tracheal carina. Confirm the blue bronchial cuff is situated just beneath the carina in the left main bronchus with zero cuff herniation over the carina.\n  2. Check via Bronchial Lumen: Advance scope through bronchial lumen. Visualize the bronchial tip and confirm clear visualization of the left upper and lower lobe bronchial bifurcations."
+    },
+    {
+      "h": "4. Stepwise Management of Hypoxemia During OLV",
+      "b": "If SpO₂ drops < 90% during one-lung ventilation, execute the standard stepwise protocol:\n\n1. Increase FiO₂ to 1.0 on the ventilator.\n2. Verify Tube Position: Pass bronchoscope immediately to rule out DLT dislodgement, cuff herniation, or mucus plugging.\n3. Optimize Dependent Lung: Apply 5 cmH₂O PEEP to the dependent lung and deliver a gentle recruitment maneuver.\n4. CPAP to Non-Dependent Lung (Most Effective Maneuver): Apply 2 to 5 cmH₂O of Continuous Positive Airway Pressure (CPAP) with 100% O₂ to the collapsed operative lung. This oxygenates blood traversing the non-dependent lung without expanding the lung enough to interfere with surgery.\n5. Intermittent Two-Lung Ventilation: If severe hypoxemia persists, ask the surgeon to pause surgery and ventilate both lungs."
+    },
+    {
+      "h": "5. Post-Pneumonectomy Pulmonary Edema (Fatal Complication)",
+      "b": "• Pathophysiology:\n  - Occurs 24 to 72 hours postoperatively with up to 50% mortality. The entire cardiac output is forced through the single remaining lung's vascular bed. High pulmonary capillary pressures combined with lymphatic disruption cause massive alveolar flooding.\n• Strict Fluid Restriction Protocol:\n  - TOTAL PERIOPERATIVE FLUIDS MUST BE STRICTLY LIMITED TO < 1.5 to 2.0 Liters in the first 24 hours (crystalloids < 1 mL/kg/h).\n  - Treat intraoperative hypotension with vasopressors (Norepinephrine / Phenylephrine), NEVER with crystalloid boluses!\n• Bronchial Stump Pressure Test: Before closure, the surgeon immerses the bronchial stump in saline; ventilate to 30 cmH₂O airway pressure to ensure zero air bubbles (absence of bronchopleural fistula)."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 8, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 64 (Thoracic Anesthesia), Elsevier, 2025/2026.",
+    "Slinger P. Principles and Practice of Anesthesia for Thoracic Surgery, 2nd ed. Springer, 2019."
+  ]
+},
+{
+  "id": "case-bronchiectasis-lung-abscess",
+  "cat": "case_resp",
+  "name": "Bronchiectasis with Lung Abscess",
+  "short": "Bronchiectasis & Abscess",
+  "tags": [
+    "Thoracic",
+    "Bronchiectasis",
+    "Lung Abscess",
+    "Spillage",
+    "Isolation",
+    "Case Discussion"
+  ],
+  "tagline": "Isolation of infected lung, preventing contralateral spillage, copious secretions & massive hemoptysis crisis plan",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 9 (Bronchiectasis with Lung Abscess); Miller's Anesthesia, 10th ed., Ch. 64; Kaplan's Thoracic Anesthesia.",
+  "sections": [
+    {
+      "h": "1. Clinical Scenario & The Contralateral Spillage Threat",
+      "b": "A 45-year-old male with long-standing bronchiectasis and a cavitary lung abscess in the right lower lobe producing > 150 mL/day of foul-smelling purulent sputum presents for right lower lobectomy. He has ongoing low-grade fever, clubbing, and coarse crackles over the right hemithorax.\n\n• THE CARDINAL LIFE-THREATENING ANAESTHETIC GOAL:\n  - Strict, immediate anatomical isolation of the diseased, infected lung to PREVENT CONTAMINATION AND FLOODING OF THE HEALTHY CONTRALATERAL LUNG.\n  - Spillage of purulent secretions or blood into the dependent healthy lung during induction produces catastrophic acute airway obstruction, asphyxiation, severe hypoxemia, and secondary contralateral pneumonia."
+    },
+    {
+      "h": "2. Preoperative Optimization & Postural Drainage",
+      "b": "• Secretion Clearance: Intensive chest physiotherapy and postural drainage in the days leading up to surgery; continue nebulized bronchodilators.\n• Antibiotic Therapy: Targeted intravenous antibiotics guided by sputum culture for at least 7–14 days.\n• Morning of Surgery: The patient should perform vigorous coughing and postural drainage immediately before entering the operating room to empty cavity contents."
+    },
+    {
+      "h": "3. Airway Isolation Strategy & Induction Protocol",
+      "b": "• Positioning During Induction:\n  - Keep the patient in a 30-degree head-up or sitting position, or tilted slightly TOWARD the diseased right side (dependent position) so that gravity retains purulent secretions in the right hemithorax.\n• Airway Isolation Options:\n  1. Left-Sided Double-Lumen Tube (Gold Standard): Provides absolute anatomical separation and allows independent suctioning and toilet of both lungs.\n  2. Bronchial Blocker with Suction Channel (e.g. Arndt or Cohen blocker): Useful if difficult intubation precludes DLT placement; blocker balloon is inflated in the right lower lobe bronchus or right intermediate bronchus.\n• Induction Technique:\n  - Rapid Sequence Induction or Awake Fiberoptic Intubation with DLT: Avoid vigorous positive pressure mask ventilation (forces infected secretions into distal alveolar units).\n  - Immediately upon intubation, inflate the bronchial cuff, position scope, verify absolute seal, and perform deep tracheobronchial suctioning."
+    },
+    {
+      "h": "4. Massive Hemoptysis Crisis Protocol",
+      "b": "• Erosion of hypertrophied bronchial arteries by the chronic abscess can trigger torrential hemoptysis (> 200–500 mL in minutes):\n  - Immediate Isolation: Inflate DLT cuff or bronchial blocker to isolate the bleeding lung and protect the healthy lung.\n  - 100% O₂, large-bore rigid bronchoscopy suction, reverse any coagulopathy, and consider emergency bronchial artery embolization (BAE) or emergency thoracotomy."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 9, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 64, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-copd-perioperative",
+  "cat": "case_resp",
+  "name": "Chronic Obstructive Pulmonary Disease (COPD)",
+  "short": "COPD Perioperative",
+  "tags": [
+    "Thoracic",
+    "COPD",
+    "Auto-PEEP",
+    "Dynamic Hyperinflation",
+    "Ventilation",
+    "Case Discussion"
+  ],
+  "tagline": "Expiratory flow limitation, dynamic hyperinflation / auto-PEEP, prolonged I:E ratio 1:3 & regional vs general anaesthesia",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 10 (Chronic Obstructive Pulmonary Disease); Miller's Anesthesia, 10th ed., Ch. 40; GOLD COPD Guidelines (2024 update).",
+  "sections": [
+    {
+      "h": "1. Case Scenario & Functional Staging",
+      "b": "A 66-year-old male with a 50 pack-year smoking history and severe COPD (GOLD Stage III, FEV1 38% predicted, FEV1/FVC 0.52) presents for elective open repair of an infraumbilical incisional hernia. He is on tiotropium, salmeterol/fluticasone, and salbutamol inhalers. Baseline room air ABG: pH 7.37, PaCO₂ 48 mmHg, PaO₂ 62 mmHg, HCO₃⁻ 27 mEq/L (compensated chronic respiratory acidosis with hypoxemia). Exam reveals barrel chest, prolonged expiratory phase, pursed-lip breathing, and scattered bilateral expiratory polyphonic wheezes."
+    },
+    {
+      "h": "2. Pathophysiology: Flow Limitation & Dynamic Hyperinflation (Auto-PEEP)",
+      "b": "• Loss of Elastic Recoil & Airway Collapse: Destruction of alveolar attachments (emphysema) causes early airway closure during expiration, trapping air inside the alveoli.\n• Dynamic Hyperinflation & Intrinsic PEEP (Auto-PEEP):\n  - When the mechanical ventilator initiates a breath before the patient has completed the previous exhalation, trapped gas progressively builds up with every cycle.\n  - Consequences of Auto-PEEP:\n    1. Severe Hypotension: Intrinsic PEEP of 15–20 cmH₂O compresses the IVC and right atrium, impeding venous return and plunging cardiac output.\n    2. Barotrauma: Alveolar overdistension leads to pneumothorax and tension pneumothorax.\n    3. Overestimated Plateau Pressures: Falsely suggests worsening lung compliance."
+    },
+    {
+      "h": "3. Mechanical Ventilation Strategy for COPD",
+      "b": "The cornerstone of mechanical ventilation in severe airflow obstruction is PROLONGING EXPIRATORY TIME:\n\n• Ventilator Setup:\n  - Mode: Volume-controlled or pressure-controlled ventilation.\n  - Tidal Volume: 6 to 8 mL/kg of predicted body weight.\n  - Low Respiratory Rate: 8 to 10 breaths/min (allows sufficient time for complete exhalation).\n  - Prolonged I:E Ratio: 1:3, 1:4, or 1:5.\n  - High Inspiratory Flow Rates (60–80 L/min): Delivers the tidal volume quickly, maximizing the remaining time in the respiratory cycle for exhalation.\n  - Extrinsic PEEP: Match extrinsic PEEP to ~70%–80% of intrinsic PEEP (reduces work of breathing and stents small airways open without increasing total hyperinflation).\n• Target Permissive Hypercapnia: Accept elevated PaCO₂ (50–60 mmHg) provided pH remains > 7.25. DO NOT attempt to normalize PaCO₂ to 40 mmHg in chronic CO₂ retainers (causes profound metabolic alkalosis, hypokalemia, and failure to wean!)."
+    },
+    {
+      "h": "4. Anesthetic Technique & Postoperative Extubation",
+      "b": "• Regional vs General: For infraumbilical surgery, regional anaesthesia (spinal or epidural) with sensory level restricted to T10 is safe and preserves diaphragmatic function. Avoid high thoracic levels (> T4) which paralyze intercostal and abdominal expiratory muscles.\n• Emergence & Extubation: Extubate awake in high Fowler position once bronchodilators have been administered and full neuromuscular reversal is confirmed. Have non-invasive ventilation (NIV / BiPAP) ready in PACU to prevent reintubation."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 10, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 40, Elsevier, 2025/2026.",
+    "Global Initiative for Chronic Obstructive Lung Disease (GOLD) Report 2024."
+  ]
+},
+{
+  "id": "case-intercostal-drain-empyema",
+  "cat": "case_resp",
+  "name": "Intercostal Drain (ICD) Insertion & Thoracic Empyema",
+  "short": "ICD & Empyema",
+  "tags": [
+    "Thoracic",
+    "ICD",
+    "Chest Tube",
+    "Empyema",
+    "Re-expansion Pulmonary Edema",
+    "Case Discussion"
+  ],
+  "tagline": "Safe triangle of chest drain insertion, underwater seal physics, avoiding neurovascular bundle & re-expansion pulmonary edema",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 11 (Intercostal Drain); Miller's Anesthesia, 10th ed., Ch. 64; BTS Pleural Disease Guideline.",
+  "sections": [
+    {
+      "h": "1. The Anatomical \"Safe Triangle\" for Chest Drain Insertion",
+      "b": "The British Thoracic Society (BTS) defines the Safe Triangle to minimize accidental injury to internal thoracic vessels, long thoracic nerve, heart, and abdominal viscera (liver/spleen):\n\n• Anatomical Boundaries of the Safe Triangle:\n  - Anterior Border: Lateral edge of the Pectoralis Major muscle\n  - Posterior Border: Anterior border of the Latissimus Dorsi muscle\n  - Inferior Border: 5th Intercostal Space (level of the nipple in men or inframammary fold)\n  - Apex: Axilla.\n• Insertion Rule: The needle, blunt clamp, and chest tube MUST always traverse the intercostal space DIRECTLY OVER THE SUPERIOR BORDER OF THE LOWER RIB to avoid the intercostal neurovascular bundle (Vein, Artery, Nerve - VAN) which runs along the subcostal groove on the inferior margin of the rib above."
+    },
+    {
+      "h": "2. The Three-Chamber Underwater Seal System",
+      "b": "• Underwater Seal Bottle Physics:\n  - Chamber 1 (Collection Chamber): Collects pleural fluid, blood, or pus.\n  - Chamber 2 (Water Seal Chamber): Contains 2 cm of sterile water acting as a one-way valve. Allows air and fluid to exit the pleural space during expiration, but prevents atmospheric air from entering during inspiration. Continuous bubbling in Chamber 2 indicates an active persistent air leak (bronchopleural fistula).\n  - Chamber 3 (Suction Control Chamber): Regulates the amount of negative pressure applied to the pleural cavity (typically set to -10 to -20 cmH₂O by water level, independent of wall suction regulator)."
+    },
+    {
+      "h": "3. Re-Expansion Pulmonary Edema (RPE) — Pathophysiology & Prevention",
+      "b": "A potentially fatal complication that occurs after rapid evacuation of large pneumothoraces or pleural effusions that have been present for > 3 to 7 days:\n\n• Pathophysiology:\n  - Rapid expansion of a chronically collapsed lung causes sudden mechanical alveolar shear stress, reperfusion injury, and massive free radical release, severely damaging the alveolar-capillary membrane and causing acute non-cardiogenic pulmonary edema in the re-expanded lung (and occasionally contralaterally).\n• The Golden Rule of Pleural Drainage:\n  - NEVER drain more than 1.0 to 1.5 Liters of pleural fluid in a single session!\n  - If > 1.0 L has drained rapidly, or if the patient develops persistent coughing, chest tightness, or dyspnea, clamp the drain for 1 to 2 hours before resuming drainage."
+    },
+    {
+      "h": "4. Anesthesia for Thoracoscopic Decortication for Empyema",
+      "b": "• Multiloculated chronic empyema requires VATS or open thoracotomy for decortication.\n• Requires One-Lung Ventilation (left DLT); significant pulmonary parenchymal restriction; septic profile requiring hemodynamic monitoring and invasive lines."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 11, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 64, Elsevier, 2025/2026.",
+    "Roberts ME, et al. British Thoracic Society Guideline for pleural disease. Thorax 2023;78(Suppl 3):s1-s42."
+  ]
+},
+{
+  "id": "case-hypertensive-disorders-pregnancy",
+  "cat": "case_obstetric",
+  "name": "Hypertensive Disorders in Pregnancy & Severe Preeclampsia",
+  "short": "Preeclampsia & HTN in Pregnancy",
+  "tags": [
+    "Obstetric",
+    "Preeclampsia",
+    "Eclampsia",
+    "Magnesium Sulfate",
+    "Neuraxial",
+    "Case Discussion"
+  ],
+  "tagline": "Multiorgan endothelial dysfunction, magnesium sulfate dosing, target BP 140–150/90–100 & neuraxial vs general anaesthesia",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 12 (Hypertensive Disorders in Pregnancy); Miller's Anesthesia, 10th ed., Ch. 69 (Obstetric Anesthesia); ACOG Practice Bulletin No. 222: Gestational Hypertension and Preeclampsia.",
+  "sections": [
+    {
+      "h": "1. Diagnostic Definitions & Severe Features",
+      "b": "• Diagnostic Definitions:\n  - Gestational Hypertension: New-onset SBP ≥ 140 mmHg or DBP ≥ 90 mmHg after 20 weeks of gestation in the absence of proteinuria or systemic features.\n  - Preeclampsia: Hypertension after 20 weeks plus either Proteinuria (≥ 300 mg/24h or urine protein:creatinine ratio ≥ 0.3) OR any feature of multiorgan dysfunction.\n• Preeclampsia with Severe Features (ACOG Criteria):\n  1. Blood Pressure: SBP ≥ 160 mmHg or DBP ≥ 110 mmHg on two occasions at least 4 hours apart.\n  2. Thrombocytopenia: Platelet count < 100,000 /mm³.\n  3. Impaired Liver Function: Serum transaminases > 2 times upper limit of normal or severe persistent right upper quadrant / epigastric pain.\n  4. Renal Insufficiency: Serum creatinine > 1.1 mg/dL or doubling of baseline.\n  5. Pulmonary Edema.\n  6. New-onset Cerebral or Visual Disturbances: Severe headache, scotomas, photopsia, hyperreflexia."
+    },
+    {
+      "h": "2. Pathophysiology: Systemic Endothelial Activation",
+      "b": "Defective trophoblastic invasion of uterine spiral arteries leads to chronic placental ischemia, releasing anti-angiogenic factors (soluble fms-like tyrosine kinase-1 [sFlt-1] and soluble endoglin [sEng]) that neutralize VEGF and PlGF, triggering widespread systemic maternal endothelial cell dysfunction:\n\n• Multisystem Manifestations:\n  - Vascular: Intense vasospasm, high SVR, capillary leak, and severe intravascular volume depletion (despite gross peripheral edema!).\n  - Airway: Marked pharyngeal, laryngeal, and vocal cord edema. The airway in preeclampsia is friable, narrow, and prone to catastrophic rapid desaturation during intubation.\n  - Hematological: Consumptive thrombocytopenia, microangiopathic hemolytic anemia, DIC.\n  - Uteroplacental: Decreased placental perfusion, fetal growth restriction, oligohydramnios."
+    },
+    {
+      "h": "3. Seizure Prophylaxis: The Magnesium Sulfate Protocol",
+      "b": "Magnesium sulfate is the undisputed gold-standard agent for eclampsia prevention and treatment (Collaborative Eclampsia Trial):\n\n• The Pritchard / Zuspan Regimens:\n  - IV Loading Dose: 4 to 6 grams of Magnesium Sulfate (20% solution) IV infused slowly over 15 to 20 minutes.\n  - IV Maintenance Infusion: 1 to 2 grams/hour continuous infusion, maintained for 24 hours postpartum.\n• Therapeutic Range & Toxicity Monitoring:\n  - Therapeutic Serum Magnesium Level: 4.8 to 8.4 mg/dL (2.0–3.5 mmol/L).\n  - Loss of Patellar Reflexes: 8 to 12 mg/dL (earliest warning sign of toxicity!).\n  - Respiratory Depression / Arrest: 12 to 15 mg/dL.\n  - Cardiac Conduction Arrest (Asystole): > 20 mg/dL.\n• Mandatory Bedside Monitoring Checks:\n  1. Patellar tendon reflex present\n  2. Respiratory rate > 12 breaths/min\n  3. Urine output > 25–30 mL/h (Magnesium is excreted 100% via kidneys; oliguria causes lethal accumulation!).\n• Antidote: CALCIUM GLUCONATE 10% — 10 mL (1 g) IV infused slowly over 5 minutes."
+    },
+    {
+      "h": "4. Acute Antihypertensive Therapy",
+      "b": "• Target Blood Pressure: Lower blood pressure smoothly to 140–150 / 90–100 mmHg. AVOID precipitous drops (reduces uteroplacental perfusion, causing acute fetal bradycardia/distress!):\n• First-Line Agents for Severe Hypertension (BP ≥ 160/110):\n  - IV Labetalol: 20 mg IV initial bolus, followed by 40 mg, then 80 mg every 10–20 min (max 300 mg cumulative), or continuous infusion. Avoid in maternal asthma or bradycardia.\n  - IV Hydralazine: 5 to 10 mg IV slow push every 20 min (max 20–30 mg). May cause maternal reflex tachycardia and headache.\n  - Oral Immediate-Release Nifedipine: 10 to 20 mg orally (do not give sublingually)."
+    },
+    {
+      "h": "5. Anesthetic Technique for Cesarean Delivery: Spinal vs General",
+      "b": "• Neuraxial Anesthesia is Strongly Preferred:\n  - Spinal or Epidural anaesthesia avoids the hypertensive surge and airway trauma of general anaesthesia.\n  - Platelet Count Threshold: Spinal or epidural anaesthesia is considered safe if platelet count is ≥ 70,000–80,000 /mm³, provided platelet count is stable and coagulation profile (PT/INR, aPTT, fibrinogen) is normal.\n  - Careful Pre-Hydration: Give modest crystalloid bolus (500–1000 mL); avoid large fluid loads (> 1500 mL) which precipitate pulmonary edema!\n• If General Anesthesia is Unavoidable (e.g. Platelets < 50,000 or Eclamptic Seizure):\n  - EXTREME HAZARD: Laryngoscopy triggers a massive sympathetic surge that can cause intracranial hemorrhage or acute LV failure.\n  - Blunting the Pressor Response: Administer IV Labetalol 10–20 mg, Remifentanil 1 mcg/kg, or Lignocaine 1.5 mg/kg immediately prior to RSI.\n  - Prepare styleted ETT one size smaller (6.0 or 6.5 mm) due to severe airway edema.\n  - Note: Magnesium sulfate potentiates non-depolarizing muscle relaxants by 3-fold; titrate rocuronium/vecuronium with TOF monitoring!"
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 12, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 69, Elsevier, 2025/2026.",
+    "ACOG Practice Bulletin No. 222: Gestational Hypertension and Preeclampsia. Obstet Gynecol 2020;135(6):e237-e260."
+  ]
+},
+{
+  "id": "case-pregnancy-anemia",
+  "cat": "case_obstetric",
+  "name": "Pregnancy: Physiological Changes & Severe Gestational Anemia",
+  "short": "Pregnancy Physiology & Anemia",
+  "tags": [
+    "Obstetric",
+    "Physiology",
+    "Aortocaval Compression",
+    "Severe Anemia",
+    "Transfusion",
+    "Case Discussion"
+  ],
+  "tagline": "40–50% plasma volume expansion, aortocaval compression left lateral tilt, severe anemia & cardiac compensation",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 13 (Pregnancy: Physiological Changes and Anemia); Miller's Anesthesia, 10th ed., Ch. 69; Chestnut's Obstetric Anesthesia, 6th ed.",
+  "sections": [
+    {
+      "h": "1. Cardiovascular & Respiratory Adaptations in Pregnancy",
+      "b": "Pregnancy produces profound physiological remodeling across every organ system to sustain fetal development:\n\n• Cardiovascular Adaptations:\n  - Plasma Volume & Red Cell Mass: Plasma volume increases by 45%–50%, while red blood cell mass increases by only 20%–30%. This physiological mismatch produces the \"Physiological Anemia of Pregnancy\" (normal nadir Hb ~11 g/dL at 28–32 weeks).\n  - Cardiac Output: Increases by 40%–50% above non-pregnant baseline by the end of the second trimester (via 30% increase in stroke volume and 15% increase in heart rate).\n  - Systemic Vascular Resistance (SVR): Decreases by 20%–30% due to the low-resistance placental vascular bed and circulating progesterone and prostacyclin.\n• Respiratory Adaptations:\n  - Minute Ventilation increases by 50% (driven primarily by increased tidal volume via progesterone stimulation of respiratory center), causing physiological chronic respiratory alkalosis (normal pregnancy ABG: pH 7.44, PaCO₂ 30–32 mmHg, HCO₃⁻ 20–22 mEq/L).\n  - Functional Residual Capacity (FRC): Decreases by 20%–30% at term as the gravid uterus elevates the diaphragm. Coupled with a 20% increase in oxygen consumption, term parturients desaturate with alarming rapidity during apnoea."
+    },
+    {
+      "h": "2. The Supine Hypotensive Syndrome (Aortocaval Compression)",
+      "b": "• Pathophysiology:\n  - Occurs beyond 20 weeks of gestation when the mother lies completely supine.\n  - The heavy gravid uterus compresses the Inferior Vena Cava (IVC), drastically decreasing venous return to the right atrium and reducing cardiac output by up to 30%–40%, causing maternal hypotension, pallor, dizziness, nausea, and severe fetal bradycardia.\n  - Simultaneous compression of the abdominal aorta compromises uteroplacental and lower limb perfusion.\n• Mandatory Preventive Rule:\n  - LEFT LATERAL TILT (15 degrees) must be maintained at all times on the operating table using a wedge placed under the right hip or tilting the table laterally to the left."
+    },
+    {
+      "h": "3. Severe Gestational Anemia: Staging & Haemodynamic Impact",
+      "b": "• Staging (WHO Criteria):\n  - Mild Anemia: Hb 10.0–10.9 g/dL\n  - Moderate Anemia: Hb 7.0–9.9 g/dL\n  - Severe Anemia: Hb < 7.0 g/dL\n  - Very Severe / Decompensated Anemia: Hb < 4.0 g/dL.\n• Cardiovascular Compensation & Heart Failure:\n  - In severe anemia, the hyperdynamic state is magnified to preserve tissue oxygen delivery (DO₂ = Cardiac Output × CaO₂). Viscosity drops, stroke volume surges, and high-output cardiac failure can precipitate with fluid loading or tachycardia.\n• Preoperative Optimization:\n  - If elective with time (> 2–3 weeks before delivery): Parenteral Iron Sucrose or Ferric Carboxymaltose infusions.\n  - If near delivery or symptomatic: Transfuse Packed Red Blood Cells slowly with furosemide diuresis to target Hb ≥ 8.5–9.0 g/dL prior to labor/delivery."
+    },
+    {
+      "h": "4. Anesthetic Technique in Severe Anemia",
+      "b": "• Regional Anesthesia (Spinal / Epidural) Considerations:\n  - Sympathectomy from spinal anaesthesia removes compensatory vasoconstriction; hypotension can be profound.\n  - Use co-loading with balanced crystalloids and a prophylactic Norepinephrine (4–8 mcg/min) or Phenylephrine infusion.\n• Oxygen Supplementation: High inspired oxygen concentration (FiO₂ 0.50–1.0) must be administered continuously."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 13, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 69, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-emergency-lscs",
+  "cat": "case_obstetric",
+  "name": "Emergency Lower Segment Cesarean Section (LSCS)",
+  "short": "Emergency LSCS",
+  "tags": [
+    "Obstetric",
+    "LSCS",
+    "Crash C-Section",
+    "Aspiration RSI",
+    "Uterotonics",
+    "Case Discussion"
+  ],
+  "tagline": "Category 1 crash cesarean decision-to-delivery < 30 min, spinal vs RSI general, aspiration prophylaxis & uterotonic rules",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 14 (Emergency Lower Segment Cesarean Section); Miller's Anesthesia, 10th ed., Ch. 69; RCOG Good Practice No. 11.",
+  "sections": [
+    {
+      "h": "1. The 4 Categories of Urgency for Cesarean Delivery",
+      "b": "• Category 1 (Emergency / \"Crash LSCS\"): Immediate threat to life of the woman or fetus (e.g. sustained fetal bradycardia, cord prolapse, uterine rupture, placental abruption with fetal compromise). Decision-to-delivery interval target: < 30 minutes (or < 15 minutes for acute cord prolapse).\n• Category 2 (Urgent): Maternal or fetal compromise which is not immediately life-threatening (e.g. failure to progress with maternal distress). Decision-to-delivery interval: < 75 minutes.\n• Category 3 (Scheduled): Needing early delivery but no maternal or fetal compromise.\n• Category 4 (Elective): Suited to maternal and team convenience."
+    },
+    {
+      "h": "2. The Full Stomach Mandate & Aspiration Prophylaxis",
+      "b": "EVERY PARTURIENT IS CONSIDERED TO HAVE A FULL STOMACH FROM 16 WEEKS GESTATION ONWARD:\n\n• Mechanisms:\n  1. Progesterone relaxes the lower esophageal sphincter (LES) and slows gastric motility.\n  2. The gravid uterus displaces the pylorus upward and backward, raising intragastric pressure.\n  3. Labor, anxiety, pain, and opioids virtually paralyze gastric emptying.\n• Immediate Pharmacological Aspiration Prophylaxis:\n  1. Sodium Citrate 0.3M (30 mL oral): Non-particulate antacid; instantly neutralizes gastric acid pH > 2.5 within 2 minutes.\n  2. IV Ranitidine (50 mg) or Famotidine (20 mg): H2-receptor antagonist; suppresses further gastric acid secretion.\n  3. IV Metoclopramide (10 mg): Prokinetic agent; increases lower esophageal sphincter tone and accelerates gastric emptying."
+    },
+    {
+      "h": "3. Anesthetic Technique: Rapid Sequence Spinal vs General RSI",
+      "b": "• Rapid Sequence Spinal Anesthesia (Default for Most Cat 1/2 Cases):\n  - If fetal heart rate is reassuring or an indwelling epidural catheter can be \"topped up\" with 2% Lignocaine + adrenaline + bicarbonate (within 5–10 minutes).\n  - Single-shot spinal: 0.5% Hyperbaric Bupivacaine (1.8–2.0 mL) + Fentanyl 15 mcg or Buprenorphine; achieves T4 sensory level.\n• General Anesthesia with Rapid Sequence Induction (RSI) — When Mandatory:\n  - Indicated for: Severe sustained bradycardia without working epidural, severe maternal hemorrhage, refusal of regional, or maternal eclamptic seizure.\n  - Step-by-Step RSI Execution:\n    1. 100% Preoxygenation for 3–5 minutes with tight mask seal (or 8 vital capacity breaths over 60 seconds).\n    2. Left lateral tilt 15 degrees.\n    3. Propofol (2–2.5 mg/kg) or Ketamine (1–1.5 mg/kg in hemorrhage/shock).\n    4. Succinylcholine (1.5 mg/kg) or Rocuronium (1.2 mg/kg with Sugammadex available).\n    5. Cricoid pressure (Sellick maneuver: 10N awake, 30N once unconscious) applied continuously until cuffed ETT position is confirmed by capnography.\n    6. Avoid hyperventilation (causes maternal alkalosis and uterine vasoconstriction)."
+    },
+    {
+      "h": "4. Uterotonic Management Following Delivery",
+      "b": "• Oxytocin (First-Line):\n  - Bolus: 3 units IV slow push over 15 seconds (AVOID rapid bolus of 5–10 units! Rapid oxytocin triggers severe hypotension, tachycardia, ST-segment depression, and cardiovascular collapse!).\n  - Infusion: Follow with continuous infusion of 10 to 20 units in 500 mL balanced crystalloid at 125 mL/h.\n• Second-Line Uterotonics for Uterine Atony:\n  - Methylergometrine (0.2 mg IM): Potent ergot alkaloid. ABSOLUTELY CONTRAINDICATED in preeclampsia and hypertension (causes severe hypertensive crisis and intracranial hemorrhage!).\n  - Carboprost / PGF2-alpha (250 mcg IM or intramyometrial): ABSOLUTELY CONTRAINDICATED in asthma (causes bronchospasm!).\n  - Misoprostol (800–1000 mcg per rectum or sublingual): Safe in asthma and hypertension."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 14, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 69, Elsevier, 2025/2026.",
+    "RCOG Good Practice No. 11: Classification of urgency of Caesarean section."
+  ]
+},
+{
+  "id": "case-non-obstetric-surgery-pregnancy",
+  "cat": "case_obstetric",
+  "name": "Non-Obstetric Surgery in a Pregnant Patient",
+  "short": "Non-Obstetric Surgery in Pregnancy",
+  "tags": [
+    "Obstetric",
+    "Non-Obstetric Surgery",
+    "Teratogenicity",
+    "Appendicitis",
+    "Fetal Heart Rate",
+    "Case Discussion"
+  ],
+  "tagline": "Teratogenicity timing, avoiding nitrous oxide, maintenance of uteroplacental perfusion & perioperative fetal monitoring",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 15 (Nonobstetric Surgery in a Pregnant Patient); Miller's Anesthesia, 10th ed., Ch. 69; ASA/ACOG Committee Opinion No. 775.",
+  "sections": [
+    {
+      "h": "1. Clinical Context & Surgical Indications",
+      "b": "Approximately 1% to 2% of pregnant women undergo non-obstetric surgery. Commonest emergencies: Acute Appendicitis (commonest, 1 in 1500), Acute Cholecystitis, Ovarian Torsion, Trauma, and breast/cervical malignancies. The cardinal anaesthetic directive is dual patient care: ensure maternal safety while simultaneously preserving fetal viability and preventing preterm labor."
+    },
+    {
+      "h": "2. Teratogenicity Concerns & Anesthetic Drug Safety",
+      "b": "• Critical Gestational Windows:\n  - Pre-implantation (Days 0–14): \"All-or-none\" phenomenon (embryo either dies or recovers completely without structural defects).\n  - Organogenesis (Days 15–56 / Weeks 3–8): Highest susceptibility to structural teratogens (neural tube, heart, limbs).\n  - Fetal Period (> Week 8): Growth and functional development; susceptibility to behavioral and functional abnormalities.\n• Safety Profile of Modern Anesthetic Drugs:\n  - NONE of the commonly used contemporary anesthetic agents (propofol, etomidate, ketamine, sevoflurane, isoflurane, rocuronium, opioids, bupivacaine, ropivacaine) are proven human teratogens at clinical concentrations.\n  - NITROUS OXIDE (N₂O): INHIBITS METHIONINE SYNTHASE, interfering with vitamin B12 metabolism, folate synthesis, and DNA synthesis. Avoid in the first trimester.\n  - Fetal Loss Trigger: Fetal demise is almost always caused by maternal physiological derangements (hypotension, hypoxia, severe acidosis, hypothermia) or underlying surgical disease, NOT by the anesthetic drugs themselves."
+    },
+    {
+      "h": "3. Maintenance of Uteroplacental Perfusion",
+      "b": "The uteroplacental circulation has NO AUTOREGULATION. Uterine blood flow (UBF) is completely pressure-dependent:\n\n• UBF = (Uterine Arterial Pressure - Uterine Venous Pressure) / Uterine Vascular Resistance.\n• Factors that Severely Compromise UBF:\n  1. Maternal Hypotension (drops uterine arterial pressure)\n  2. Maternal Hypoxia and Hypercapnia (trigger uterine vasoconstriction)\n  3. Severe Maternal Hypocapnia (PaCO₂ < 28 mmHg caused by aggressive hyperventilation leads to uterine vasoconstriction and left-shifted maternal oxyhemoglobin curve, impairing oxygen unloading to fetus)\n  4. High Airway Pressures / PEEP (reduces venous return)\n  5. Aortocaval Compression (requires strict 15-degree left tilt).\n• Vasopressor of Choice: Ephedrine or Phenylephrine (titrated to maintain maternal MAP at baseline; phenylephrine preserves fetal acid-base balance better when monitored)."
+    },
+    {
+      "h": "4. Fetal Heart Rate (FHR) Monitoring & Tocolysis",
+      "b": "• FHR Monitoring Protocol:\n  - Prior to 24 Weeks: Doppler verification of FHR before and after the procedure.\n  - Beyond 24 Weeks (Viable Gestation): Continuous intraoperative cardiotocography (CTG) monitoring by a designated obstetrics team if the fetus is viable and emergency delivery would be performed if fetal distress occurs.\n• Tocolysis: Prophylactic tocolytic therapy is NOT routinely indicated. Postoperative tocolysis (Indomethacin, Nifedipine, Atosiban) is initiated only if active uterine contractions are documented."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 15, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 69, Elsevier, 2025/2026.",
+    "ACOG Committee Opinion No. 775: Nonobstetric Surgery During Pregnancy. Obstet Gynecol 2019 (Reaffirmed 2023)."
+  ]
+},
+{
+  "id": "case-amniotic-fluid-embolism",
+  "cat": "case_obstetric",
+  "name": "Amniotic Fluid Embolism (AFE)",
+  "short": "Amniotic Fluid Embolism",
+  "tags": [
+    "Obstetric",
+    "AFE",
+    "Collapse",
+    "DIC",
+    "A-OK Protocol",
+    "Perimortem C-Section",
+    "Case Discussion"
+  ],
+  "tagline": "Anaphylactoid syndrome of pregnancy, sudden cardiovascular collapse, consumptive DIC & A-OK resuscitation protocol",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 16 (Amniotic Fluid Embolism); Miller's Anesthesia, 10th ed., Ch. 69; Society for Maternal-Fetal Medicine (SMFM) Consult Series #38.",
+  "sections": [
+    {
+      "h": "1. Clinical Triad & Pathophysiological Mechanism",
+      "b": "Amniotic Fluid Embolism (AFE), more accurately termed the \"Anaphylactoid Syndrome of Pregnancy,\" is an unpredictable, catastrophic obstetric emergency (mortality 20%–40%):\n\n• The Classic Clinical Triad:\n  1. Sudden Acute Cardiovascular Collapse & Severe Hypotension\n  2. Profound Hypoxemic Respiratory Failure & Cyanosis\n  3. Consumptive Coagulopathy / Massive Disseminated Intravascular Coagulation (DIC).\n• Pathophysiology:\n  - Entry of amniotic fluid and fetal debris into the maternal endocervical / uterine venous circulation triggers a massive biphasic immunological anaphylactoid reaction:\n  - Phase 1 (Transient Pulmonary Vasoconstriction): Release of endothelin, thromboxane, and leukotrienes triggers severe acute pulmonary vasoconstriction, acute right ventricular failure, and profound cardiogenic shock.\n  - Phase 2 (Left Ventricular Failure & DIC): Release of tissue factor-like procoagulants triggers fulminant systemic activation of the clotting cascade, consumptive coagulopathy, massive uterine atony, and pulmonary edema."
+    },
+    {
+      "h": "2. Immediate Resuscitation & High-Quality CPR Protocol",
+      "b": "• Immediate Multidisciplinary Emergency Call: Alert obstetrics, anaesthesia, hematology, blood bank, and ICU teams.\n• High-Quality Maternal Resuscitation:\n  - 100% O₂ and immediate endotracheal intubation.\n  - LEFT UTERINE DISPLACEMENT: If the patient is supine, manual left uterine displacement (LUD) is mandatory during chest compressions to relieve aortocaval compression.\n• THE 4-MINUTE RULE / PERIMORTEM CESAREAN SECTION (RESUSCITATIVE HYSTEROTOMY):\n  - If maternal Return of Spontaneous Circulation (ROSC) is NOT achieved within 4 minutes of cardiac arrest in a patient ≥ 20 weeks gestation, DELIVERY OF THE FETUS MUST BE INITIATED IMMEDIATELY AT THE BEDSIDE, WITH COMPLETE DELIVERY WITHIN 5 MINUTES.\n  - Rationale: Emptying the uterus relieves IVC compression, improving maternal venous return by > 60%, drastically increasing the likelihood of successful maternal resuscitation!"
+    },
+    {
+      "h": "3. The \"A-OK\" Pharmacological Protocol for AFE",
+      "b": "A targeted evidence-based pharmacological cocktail proposed by Clark and colleagues to block the pathophysiological cascade in AFE:\n\n• A — ATROPINE (0.5 to 1.0 mg IV): Blunts vagal-mediated pulmonary vasoconstriction and bradycardia.\n• O — ONDANSETRON (8 mg IV): Potent 5-HT3 serotonin receptor antagonist; blocks serotonin release from degranulating platelets, relieving pulmonary vasoconstriction.\n• K — KETOROLAC (30 mg IV): Blocks cyclooxygenase and thromboxane generation, halting the pulmonary hypertensive cascade."
+    },
+    {
+      "h": "4. Aggressive Coagulopathy & Transfusion Protocol",
+      "b": "• DIC develops with lightning speed in >80% of cases.\n• Immediate Activation of Massive Transfusion Protocol (MTP):\n  - Transfuse Packed Red Blood Cells, Fresh Frozen Plasma, and Platelets in a 1:1:1 ratio.\n  - Cryoprecipitate: Fibrinogen is consumed rapidly; transfuse cryoprecipitate (10–20 units) early to maintain serum fibrinogen > 200 mg/dL.\n  - Tranexamic Acid (TXA): 1 gram IV bolus infused over 10 minutes (repeat 1 g at 30 min if ongoing hemorrhage)."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 16, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 69, Elsevier, 2025/2026.",
+    "Society for Maternal-Fetal Medicine (SMFM) Consult Series #38: Amniotic fluid embolism. Am J Obstet Gynecol 2016;214(2):B6-B10."
+  ]
+},
+{
+  "id": "case-obstetric-hemorrhage-pph",
+  "cat": "case_obstetric",
+  "name": "Obstetric Hemorrhage & Placenta Accreta Spectrum",
+  "short": "Obstetric Hemorrhage & PAS",
+  "tags": [
+    "Obstetric",
+    "PPH",
+    "Placenta Accreta",
+    "MTP",
+    "Bakri Balloon",
+    "Case Discussion"
+  ],
+  "tagline": "Primary PPH 4 Ts, stepped uterotonics, placenta accreta spectrum surgical preparation & massive transfusion protocol",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 17 (Obstetric Hemorrhage); Miller's Anesthesia, 10th ed., Ch. 69; FIGO Guidelines on Placenta Accreta Spectrum Disorders.",
+  "sections": [
+    {
+      "h": "1. Definition, Etiology & The \"4 Ts\"",
+      "b": "• Definition: Postpartum Hemorrhage (PPH) is blood loss ≥ 1000 mL or blood loss accompanied by symptoms/signs of hypovolemia within 24 hours postpartum.\n• The \"4 Ts\" Differential Diagnosis:\n  1. TONE (Atony — 70%–80% of cases): Multiparity, prolonged labor, chorioamnionitis, polyhydramnios, multiple gestation, tocolytics.\n  2. TISSUE (Retained placenta, cotyledons, invasive placenta accreta spectrum) — 10%–15%.\n  3. TRAUMA (Cervical/vaginal lacerations, uterine rupture, hematomas) — 10%.\n  4. THROMBIN (Coagulopathy — preeclampsia, abruptio placentae, sepsis, AFE) — 1%."
+    },
+    {
+      "h": "2. Stepped Medical & Mechanical Hemostasis",
+      "b": "• Stepped Uterotonic Protocol:\n  - 1st Line: Oxytocin (3–5 units slow IV bolus, followed by 20–40 units/L infusion).\n  - 2nd Line: Methylergometrine 0.2 mg IM (contraindicated in HTN) OR Carboprost 250 mcg IM/intramyometrial (contraindicated in asthma).\n  - 3rd Line: Misoprostol 800–1000 mcg per rectum.\n  - Hemostatic Adjunct: Tranexamic Acid (TXA) 1 g IV given within 3 hours of bleeding onset (WOMAN trial proved 30% reduction in bleeding death).\n• Mechanical & Surgical Interventions:\n  - Uterine Tamponade: Bakri intrauterine balloon catheter (inflated with 300–500 mL sterile saline).\n  - Compressive Sutures: B-Lynch or Hayman uterine compression sutures.\n  - Uterine Artery Embolization (UAE) or Emergency Peripartum Hysterectomy."
+    },
+    {
+      "h": "3. Placenta Accreta Spectrum (PAS) — The Extreme Surgical Challenge",
+      "b": "• Pathology: Defective decidua basalis leading to direct attachment of chorionic villi to the myometrium (Accreta), invasion into myometrium (Increta), or penetration through the serosa into adjacent bladder/pelvic structures (Percreta). Major risk factors: previous cesarean section + placenta previa.\n• Specialized Surgical Setup:\n  - Invasive arterial line, wide-bore central venous access, and rapid fluid infuser (Belmont / Level 1) primed.\n  - Cell Salvage in the OR (safe in obstetrics with leucocyte depletion filters).\n  - Interventional Radiology: Placement of prophylactic internal iliac / balloon occlusion catheters prior to delivery.\n  - Hysterectomy with placenta left in situ: Avoid attempting manual placental removal (triggers torrential fatal hemorrhage)."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 17, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 69, Elsevier, 2025/2026.",
+    "Jauniaux E, et al. FIGO consensus guidelines on placenta accreta spectrum disorders. Int J Gynaecol Obstet 2018;140(3):265-273."
+  ]
+},
+{
+  "id": "case-hydrocephalus-vp-shunt",
+  "cat": "case_neuro",
+  "name": "Hydrocephalus & Ventriculoperitoneal (VP) Shunt",
+  "short": "Hydrocephalus & VP Shunt",
+  "tags": [
+    "Neuro",
+    "Hydrocephalus",
+    "VP Shunt",
+    "Monroe Kellie",
+    "Raised ICP",
+    "Case Discussion"
+  ],
+  "tagline": "Monroe-Kellie doctrine, Cushing triad, smooth intravenous induction & peritoneal tunneling complications",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 18 (Hydrocephalus); Miller's Anesthesia, 10th ed., Ch. 63 (Neuroanesthesia); Cottrell & Patel's Neuroanesthesia, 7th ed.",
+  "sections": [
+    {
+      "h": "1. Etiology, Pathophysiology & The Monroe-Kellie Doctrine",
+      "b": "• Etiology of Hydrocephalus:\n  - Communicating (Non-obstructive): Impaired CSF reabsorption at arachnoid granulations (post-meningitis, subarachnoid hemorrhage, post-trauma).\n  - Non-Communicating (Obstructive): Physical blockage within the ventricular system (aqueductal stenosis, Dandy-Walker malformation, colloid cyst, posterior fossa tumors).\n• The Monroe-Kellie Doctrine:\n  - The intracranial vault is a rigid, non-compliant box containing Brain Parenchyma (80%), Blood (10%), and CSF (10%).\n  - An increase in any one component must be compensated by a reciprocal decrease in another, or Intracranial Pressure (ICP) will rise steeply once compensatory spatial reserves (CSF displacement into spinal sac and venous blood extrusion) are exhausted.\n• The Cushing Triad (Impending Herniation Alert):\n  - 1. Systemic Hypertension with widening pulse pressure\n  - 2. Bradycardia (reflex vagal activation via medullary baroreceptors)\n  - 3. Irregular, depressed respiration (Cheyne-Stokes or ataxic breathing)."
+    },
+    {
+      "h": "2. Preoperative Assessment & Anesthetic Strategy",
+      "b": "• Bedside Evaluation: Look for signs of raised ICP (headache, projectile vomiting, papilledema, sunsetting eyes in infants, bulging fontanelle). Avoid sedative premedication (hypoventilation causes hypercapnia, which triggers massive cerebral vasodilation and intracranial herniation!).\n• Induction & Airway Strategy:\n  - Smooth induction with Propofol / Thiopental + Opioids (Fentanyl 3–5 mcg/kg) to completely blunt the intubation response.\n  - Non-depolarizing muscle relaxant (Rocuronium / Vecuronium). Avoid succinylcholine if alternative available (transiently raises ICP by 5–10 mmHg).\n  - Target PaCO₂ 32–35 mmHg (mild hyperventilation constricts cerebral arterioles and relaxes brain tissue)."
+    },
+    {
+      "h": "3. Intraoperative Complications of Shunt Tunneling",
+      "b": "• Subcutaneous Tunneling Hazards:\n  - The surgeon tunnels the distal shunt catheter from the scalp incision, through the neck and chest wall, into the peritoneum.\n  - Complications during tunneling:\n    1. Severe Vagal Bradycardia / Asystole: Traction on the neck or carotid sheath.\n    2. Accidental Vessel Puncture: Subclavian or internal jugular vein laceration causing hematoma or pneumothorax.\n    3. Visceral Perforation: Trocar puncture of bowel or bladder during peritoneal entry."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 18, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 63, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-meningomyelocele-repair",
+  "cat": "case_neuro",
+  "name": "Meningomyelocele & Spinal Dysraphism",
+  "short": "Meningomyelocele",
+  "tags": [
+    "Neuro",
+    "Pediatric",
+    "Meningomyelocele",
+    "Latex Allergy",
+    "Chiari II",
+    "Case Discussion"
+  ],
+  "tagline": "Chiari II malformation, sterile sac doughnut positioning, latex allergy precautions & prone emergence",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 19 (Meningomyelocele); Miller's Anesthesia, 10th ed., Ch. 63 & 76; Cote CJ, Practice of Anesthesia for Infants and Children.",
+  "sections": [
+    {
+      "h": "1. Pathology & Associated Anomalies",
+      "b": "• Pathology: Neural tube defect resulting from failure of closure of the posterior neuropore at the 4th gestational week. Herniation of meninges and dysplastic spinal cord elements through a bifid spine, usually lumbosacral.\n• Associated Anomalies:\n  - Chiari II Malformation (>90%): Downward displacement of cerebellar vermis, 4th ventricle, and brainstem through the foramen magnum, producing hydrocephalus, stridor, and central apnea.\n  - Hydrocephalus (80%): Usually requires VP shunt placement."
+    },
+    {
+      "h": "2. The Positioning Challenge During Intubation",
+      "b": "THE DORSAL SAC MUST NEVER BEAR PRESSURE OR SUFFER RUPTURE DURING INDUCTION:\n\n• Airway Positioning Technique Options:\n  - Technique A (Doughnut / Foam Bolster): Place a circular padded foam ring or wrapped sterile drape beneath the infant's sacrum, suspending the neural placode untouched in the center.\n  - Technique B (Lateral Position): Intubate with the neonate positioned in the lateral decubitus position.\n  - Technique C (Held by Assistant): Assistant holds the baby with hips suspended off the bed."
+    },
+    {
+      "h": "3. Intraoperative Conduct & Strict Latex Allergy Protocol",
+      "b": "• Prone Positioning Care: Patient is turned prone for surgery. Support chest and pelvis on soft rolls; abdomen must hang completely free to prevent IVC compression and epidural venous engorgement.\n• LATEX ANAPHYLAXIS SENSITIVITY:\n  - Children with meningomyelocele have a > 50% incidence of life-threatening Type I IgE-mediated Latex Allergy due to repeated early mucosal and surgical exposure.\n  - ALL MENINGOMYELOCELE PATIENTS MUST BE MANAGED IN A STRICT 100% LATEX-FREE ENVIRONMENT (latex-free gloves, catheters, bungs, and tourniquets) from the moment of birth!"
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 19, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 63 & 76, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-traumatic-brain-injury-tbi",
+  "cat": "case_neuro",
+  "name": "Traumatic Brain Injury (TBI) & Emergency Craniotomy",
+  "short": "Traumatic Brain Injury",
+  "tags": [
+    "Neuro",
+    "TBI",
+    "Raised ICP",
+    "C-Spine MILS",
+    "CPP Target",
+    "Mannitol",
+    "Case Discussion"
+  ],
+  "tagline": "Secondary brain insult prevention, CPP = MAP - ICP target 60–70 mmHg, C-spine MILS & hyperosmolar therapy",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 20 (Traumatic Brain Injury); Miller's Anesthesia, 10th ed., Ch. 63; Brain Trauma Foundation Guidelines (4th ed.).",
+  "sections": [
+    {
+      "h": "1. Primary vs Secondary Brain Injury & Target Physiological Goals",
+      "b": "• Primary Injury: Mechanical mechanical damage at the moment of impact (contusions, lacerations, diffuse axonal injury, extradural/subdural hematoma). Irreversible.\n• Secondary Injury: Ongoing cellular ischemic cascade in the hours to days following trauma. PREVENTING SECONDARY INJURY IS THE PRIMARY JOB OF THE NEUROANAESTHETIST:\n• The Brain Trauma Foundation (BTF) Physiological Targets:\n  - Cerebral Perfusion Pressure (CPP = MAP - ICP): Maintain CPP strictly 60 to 70 mmHg.\n  - Systolic Blood Pressure: SBP ≥ 100 mmHg for age 50–69, ≥ 110 mmHg for age 15–49 or > 70 years (A single episode of SBP < 90 mmHg doubles mortality!).\n  - Oxygenation: PaO₂ > 80 mmHg (SaO₂ ≥ 95%). A single episode of hypoxemia (SpO₂ < 90%) doubles mortality.\n  - Ventilation: PaCO₂ 35 to 38 mmHg (mild normocapnia). Avoid aggressive hyperventilation (PaCO₂ < 30 mmHg causes severe cerebral vasoconstriction and secondary ischemic stroke!).\n  - Intracranial Pressure (ICP): Target < 20 to 22 mmHg.\n  - Core Temperature: Normothermia 36.0–37.0°C (hyperthermia dramatically spikes cerebral metabolic rate CMRO₂).\n  - Blood Glucose: 140 to 180 mg/dL (hyperglycemia accelerates neuronal lactic acidosis)."
+    },
+    {
+      "h": "2. Airway Management with Cervical Spine Precautions (MILS)",
+      "b": "ALL TBI PATIENTS ARE PRESUMED TO HAVE AN UNSTABLE CERVICAL SPINE FRACTURE UNTIL CLEARED RADIOLOGICALLY:\n\n• Manual In-Line Stabilization (MILS):\n  - An experienced assistant holds the mastoid processes and occiput with both hands, stabilizing the head and neck in neutral alignment.\n  - The anterior collar of the rigid cervical collar is opened to allow mouth opening.\n  - Videolaryngoscopy (Hyperangulated or Macintosh-blade VL) is the preferred intubation tool, minimizing C-spine movement compared to direct laryngoscopy.\n• Modified RSI Protocol: Preoxygenate; administer Fentanyl (3 mcg/kg) to blunt intracranial hypertension; Propofol/Etomidate + Rocuronium (1.2 mg/kg) or Succinylcholine."
+    },
+    {
+      "h": "3. Hyperosmolar Therapy & Fluid Selection",
+      "b": "• Mannitol 20%:\n  - Dose: 0.5 to 1.0 g/kg IV infused over 15 to 20 minutes.\n  - Mechanism: Expands intravascular volume, decreases blood viscosity (rheological effect), and creates an osmotic gradient drawing water from the brain parenchyma.\n  - Caveat: Causes osmotic diuresis; contraindicated in hypotensive or severely hypovolemic patients; keep serum osmolarity < 320 mOsm/L.\n• Hypertonic Saline (3% NaCl):\n  - Dose: 250 mL bolus (or 2–5 mL/kg) over 15 minutes.\n  - Advantages: Expands plasma volume, restores MAP, and lowers ICP without diuresis; preferred in polytrauma with concomitant hemorrhagic shock.\n• Fluid Selection in TBI:\n  - ISOTONIC CRYSTALLOIDS (0.9% Normal Saline or Plasmalyte) ONLY!\n  - STRICTLY AVOID HYPOTONIC FLUIDS (Ringer's Lactate is mildly hypotonic [273 mOsm/L], Dextrose solutions are hypotonic); hypotonic water rapidly crosses the injured blood-brain barrier, triggering massive fatal cerebral edema!"
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 20, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 63, Elsevier, 2025/2026.",
+    "Carney N, et al. Guidelines for the Management of Severe Traumatic Brain Injury, Fourth Edition. Neurosurgery 2017;80(1):6-15."
+  ]
+},
+{
+  "id": "case-supratentorial-tumour-craniotomy",
+  "cat": "case_neuro",
+  "name": "Supratentorial Brain Tumour & Craniotomy",
+  "short": "Supratentorial Tumour",
+  "tags": [
+    "Neuro",
+    "Craniotomy",
+    "Supratentorial",
+    "Brain Relaxation",
+    "TIVA",
+    "Case Discussion"
+  ],
+  "tagline": "Mass effect, peritumoral edema, brain relaxation triad, TIVA propofol-remifentanil & smooth cough-free emergence",
+  "source": "Objective Anaesthesia Review, 6th ed.; Miller's Anesthesia, 10th ed., Ch. 63 (Neuroanesthesia); Cottrell & Patel's Neuroanesthesia, 7th ed.",
+  "sections": [
+    {
+      "h": "1. Case Scenario & Preoperative Imaging",
+      "b": "A 52-year-old female presents with progressive morning headaches, vomiting, new-onset left hemiparesis, and a focal motor seizure. MRI brain demonstrates a 5.5 cm heterogeneously enhancing high-grade glioma in the right frontoparietal cortex with prominent vasogenic peritumoral edema, 8 mm midline shift, and subfalcine herniation. She is on dexamethasone 8 mg daily and levetiracetam 1000 mg BD."
+    },
+    {
+      "h": "2. The Brain Relaxation Triad",
+      "b": "Providing a soft, slack, non-bulging brain allows the neurosurgeon to dissect without retractor-induced cortical contusion:\n\n• The 4 Interventions for Optimal Brain Relaxation:\n  1. Mild Hyperventilation: Titrate PaCO₂ to 30–35 mmHg (causes cerebral arteriolar vasoconstriction, shrinking cerebral blood volume).\n  2. Hyperosmolar Diuresis: Administer Mannitol (0.5–1.0 g/kg) or 3% Hypertonic Saline at the start of craniotomy.\n  3. Venous Drainage Optimization: 15–30 degree head-up tilt; ensure the head is in a neutral position without extreme neck flexion or rotation that would compress internal jugular veins.\n  4. Pharmacological Suppression of CMRO₂: Propofol infusion decreases cerebral metabolic rate and cerebral blood flow."
+    },
+    {
+      "h": "3. Anesthetic Technique: Total Intravenous Anesthesia (TIVA)",
+      "b": "• Why TIVA is Preferred in Craniotomy:\n  - Volatile anesthetics (Sevoflurane, Isoflurane) cause dose-dependent intrinsic cerebral vasodilation (especially > 1.0 MAC), raising cerebral blood volume and ICP.\n  - Propofol preserves intact cerebral autoregulation and flow-metabolism coupling, producing lower ICP and superior surgical brain relaxation compared to volatile agents.\n• Maintenance Regimen:\n  - Propofol (TCI 3–5 mcg/mL or 100–150 mcg/kg/min) + Remifentanil (0.1–0.3 mcg/kg/min) or Fentanyl.\n  - Neuromuscular blockade titrated with TOF monitoring (avoid deep block if intraoperative motor evoked potential mapping is planned)."
+    },
+    {
+      "h": "4. Emergence: Preventing the Hypertensive Surge",
+      "b": "• The Threat of Post-Craniotomy Hypertension:\n  - Coughing, bucking, or shivering upon extubation causes spikes in venous and arterial pressure, triggering catastrophic post-craniotomy intracranial hematoma formation.\n  - Emergence Protocol: Smooth extubation with IV Lignocaine (1.5 mg/kg), Labetalol, or Dexmedetomidine; extubate awake once neurological examination can be documented."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 63, Elsevier, 2025/2026.",
+    "Cottrell JE, Patel P. Cottrell and Patel's Neuroanesthesia, 7th ed. Elsevier, 2024."
+  ]
+},
+{
+  "id": "case-posterior-cranial-fossa-lesion",
+  "cat": "case_neuro",
+  "name": "Posterior Cranial Fossa (PCF) Lesion & Sitting Position",
+  "short": "PCF Lesion & Sitting Position",
+  "tags": [
+    "Neuro",
+    "PCF",
+    "Sitting Position",
+    "Venous Air Embolism",
+    "VAE",
+    "Brainstem",
+    "Case Discussion"
+  ],
+  "tagline": "Sitting craniotomy, Venous Air Embolism (VAE) precordial Doppler detection & brainstem hemodynamic monitoring",
+  "source": "Objective Anaesthesia Review, 6th ed.; Miller's Anesthesia, 10th ed., Ch. 63 (Neuroanesthesia); Cottrell & Patel's Neuroanesthesia, 7th ed.",
+  "sections": [
+    {
+      "h": "1. Anatomy, Surgical Positions & The Sitting Position Dilemma",
+      "b": "• Anatomy: The posterior cranial fossa contains the brainstem (midbrain, pons, medulla), cerebellum, 4th ventricle, and lower cranial nerves (CN IX, X, XI, XII). Intracranial space is tight; small volume increments produce acute obstructive hydrocephalus and brainstem compression.\n• Surgical Positions: Prone, Concorde, Park-Bench, and SITTING POSITION.\n• Advantages of Sitting Position:\n  - Superior surgical visualization of midline posterior fossa structures\n  - Gravity drainage of blood and CSF keeping the surgical field clean\n  - Decreased surgical bleeding and less tissue retraction.\n• Disadvantages & Hazards:\n  1. Venous Air Embolism (VAE — 25%–45% incidence!)\n  2. Severe Postural Hypotension (blood pooling in lower extremities)\n  3. Paradoxical Air Embolism in patients with Patent Foramen Ovale (PFO)\n  4. Macroglossia / Tongue Edema from acute neck flexion\n  5. Quadriplegia from cervical cord ischemia."
+    },
+    {
+      "h": "2. Venous Air Embolism (VAE) — Pathophysiology & Surveillance",
+      "b": "• Pathophysiology:\n  - When the surgical operative site is elevated above the level of the right atrium, the hydrostatic pressure inside non-collapsing dural venous sinuses and diploic skull veins becomes sub-atmospheric (negative pressure).\n  - Atmospheric air is sucked directly into the open venous system and carried into the right heart, pulmonary circulation, and pulmonary capillary bed.\n• Sensitivity of VAE Detection Tools (Most to Least Sensitive):\n  1. Transesophageal Echocardiography (TEE - Gold Standard): Detects micro-bubbles as small as 0.02 mL/kg.\n  2. Precordial Doppler Ultrasound: Highly sensitive (detects 0.05 mL/kg); positioned at the 3rd to 6th intercostal space at the right sternal border; produces distinctive \"washing-machine / mill-wheel\" roaring sound.\n  3. End-Tidal CO₂ (EtCO₂): Most reliable non-invasive clinical monitor; air occluding pulmonary vessels increases alveolar dead space, producing an ABRUPT, PRECIPITOUS DROP IN EtCO₂ (and rise in PaCO₂).\n  4. Pulmonary Artery Catheter (surge in PAP).\n  5. Precordial Stethoscope (Mill-wheel murmur — very late sign; indicates massive air lock > 2 mL/kg)."
+    },
+    {
+      "h": "3. Immediate Step-by-Step VAE Treatment Protocol",
+      "b": "When VAE is detected, execute the emergency protocol simultaneously:\n\n1. Alert the Surgical Team: Surgeon immediately floods the operative field with sterile saline and waxes open bone edges.\n2. Discontinue Nitrous Oxide: 100% O₂ on ventilator (N₂O diffuses into air bubbles, expanding bubble volume by 300%!).\n3. Aspirate the Multi-Orifice Right Atrial Catheter (Bunegin-Albin catheter): Aspirate air directly from the right atrium/superior vena cava junction.\n4. Compress Bilateral Jugular Veins: Transient manual compression elevates intracranial venous pressure, reversing the pressure gradient and forcing air out of open veins.\n5. Hemodynamic Support: Support blood pressure with volume and phenylephrine / norepinephrine.\n6. Reposition if Refractory: If cardiovascular collapse occurs, lower the head and place patient in Left Lateral Decubitus position (Durant maneuver) to trap air in the right ventricular apex."
+    },
+    {
+      "h": "4. Brainstem Manipulation & Cardiac Arrhythmias",
+      "b": "• Dissection near the floor of the 4th ventricle and brainstem nuclei triggers sudden profound hemodynamic instability:\n  - Bradycardia, ventricular ectopic beats, or asystole (trigeminovagal / vagal nuclei stimulation)\n  - Sudden surges in blood pressure or respiratory changes.\n  - Directive: Instruct the surgeon to pause manipulation immediately upon observing arrhythmias; usually resolves spontaneously within seconds."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 63, Elsevier, 2025/2026.",
+    "Mirski MA, et al. Diagnosis and treatment of venous air embolism. Anesthesiology 2007;106(1):164-177."
+  ]
+},
+{
+  "id": "case-managing-difficult-airway",
+  "cat": "case_trauma_ortho_special",
+  "name": "Managing Difficult Airway",
+  "short": "Difficult Airway",
+  "tags": [
+    "Airway",
+    "AFOI",
+    "Difficult Intubation",
+    "DAS Algorithm",
+    "CICO",
+    "Case Discussion"
+  ],
+  "tagline": "Anticipated difficult airway, Awake Fiberoptic Intubation (AFOI) airway blocks, DAS guidelines & emergency CICO protocol",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 21 (Managing Difficult Airway); Miller's Anesthesia, 10th ed., Ch. 44 (Airway Management); 2022 ASA Difficult Airway Guidelines; DAS Guidelines.",
+  "sections": [
+    {
+      "h": "1. Bedside Prediction & The LEMON Criteria",
+      "b": "Systematic pre-induction airway examination dictates strategy:\n\n• The LEMON Mnemonic:\n  - L (Look Externally): Facial trauma, retrognathia, macroglossia, beard, morbid obesity, neck contractures.\n  - E (Evaluate 3-3-2 Rule): Inter-incisor gap < 3 finger breadths (4 cm); Hyomental distance < 3 finger breadths (6 cm); Thyroid-to-hyoid distance < 2 finger breadths.\n  - M (Mallampati Score): Class III or IV.\n  - O (Obstruction / Stridor): Upper airway pathology (tumors, epiglotitis, abscess).\n  - N (Neck Mobility): Flexion/extension limited to < 35 degrees (ankylosing spondylitis, cervical spine fusion).\n• The Critical Strategic Decision: ANTICIPATED DIFFICULT AIRWAY = AWAKE INTUBATION IS THE GOLD STANDARD."
+    },
+    {
+      "h": "2. Awake Fiberoptic Intubation (AFOI) — Step-by-Step Masterclass",
+      "b": "The safest and most reliable technique for the anticipated difficult airway:\n\n• Step 1: Psychological Preparation & Informed Consent: Explain the procedure reassuringly to gain absolute patient cooperation.\n• Step 2: Antisialagogue Administration: Glycopyrrolate (0.2 mg IV or IM) given 30 minutes prior to dry up secretions (saliva obscures the fiberoptic camera lens).\n• Step 3: Thorough Airway Topicalization (The Secret to Success):\n  - 4% Lignocaine nebulization (4 mL via oxygen mask for 15 minutes) achieves widespread pharyngeal topicalization.\n  - Lignocaine 10% pump spray (1–2 puffs) to posterior pharyngeal wall.\n  - \"Spray-as-you-go\" technique: Instill 2 mL aliquots of 2% Lignocaine through the working channel of the bronchoscope as vocal cords and trachea are encountered.\n  - Maximum safe lignocaine dose: 9 mg/kg (accounting for mucosal absorption).\n• Step 4: Conscious Sedation: Target-controlled infusion of Remifentanil (0.05–0.1 mcg/kg/min) or Dexmedetomidine (1 mcg/kg load over 10 min, then 0.5 mcg/kg/h) — maintains patient comfort while preserving spontaneous ventilation and patent airway!\n• Step 5: Bronchoscopic Navigation & Railroad: Pass scope through oral Ovassapian airway or lubricated nostril, visualize vocal cords, pass into mid-trachea, visualize rings and carina, and gently railroad the warm, lubricated ETT."
+    },
+    {
+      "h": "3. The \"Cannot Intubate Cannot Oxygenate\" (CICO) Emergency Protocol",
+      "b": "When both face mask ventilation and supraglottic airway (SGA) rescue have failed, the patient enters the CICO emergency (Plan D of Difficult Airway Society):\n\n• SCALPEL-BOUGIE-TUBE EMERGENCY CRICOTHYROIDOTOMY (DAS 2015/2024):\n  1. Extend neck (shoulder roll) to make cricothyroid membrane prominent.\n  2. Palpate the cricothyroid membrane between thyroid cartilage and cricoid ring.\n  3. \"Laryngeal Shake\": Grasp thyroid lamina with non-dominant hand.\n  4. Transverse stab incision through skin and membrane with a No. 10 scalpel blade.\n  5. Turn blade 90 degrees with sharp edge facing caudally to open the space.\n  6. Slide angled tip of coudé bougie along the flat blade into the trachea.\n  7. Railroad a lubricated cuffed 6.0 mm ETT over the bougie into the trachea.\n  8. Inflate cuff, confirm bilateral breath sounds with end-tidal CO₂ capnography."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 21, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 44, Elsevier, 2025/2026.",
+    "Frerk C, et al. Difficult Airway Society 2015 guidelines for management of unanticipated difficult intubation in adults. Br J Anaesth 2015;115(6):827-848."
+  ]
+},
+{
+  "id": "case-major-burns-management",
+  "cat": "case_trauma_ortho_special",
+  "name": "Burns & Inhalational Injury Management",
+  "short": "Major Burns",
+  "tags": [
+    "Trauma",
+    "Burns",
+    "Parkland Formula",
+    "Succinylcholine Warning",
+    "Inhalation Injury",
+    "Case Discussion"
+  ],
+  "tagline": "Parkland fluid formula, carbon monoxide & cyanide poisoning, succinylcholine lethal hyperkalemia & difficult airway",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 22 (Burns); Miller's Anesthesia, 10th ed., Ch. 73 (Burn Injury); ABA Practice Guidelines for Burn Care.",
+  "sections": [
+    {
+      "h": "1. Fluid Resuscitation: The Parkland & Brooke Formulas",
+      "b": "Major burn trauma (>20% Total Body Surface Area [TBSA]) produces massive systemic endothelial injury, generalized capillary leak, and profound hypovolemic burn shock:\n\n• The Parkland Formula:\n  - Total Fluid in First 24 Hours = 4 mL × Body Weight (kg) × % TBSA burned.\n  - Fluid of Choice: Balanced crystalloid (Ringer's Lactate or Plasmalyte).\n  - Timing: Half of the total calculated volume is infused in the first 8 hours FROM THE TIME OF BURN INJURY (not from arrival at the hospital!), and the remaining half over the subsequent 16 hours.\n• Urine Output Targets (The Real Endpoint of Resuscitation):\n  - Adult: 0.5 to 1.0 mL/kg/h\n  - Children: 1.0 to 1.5 mL/kg/h\n  - High-voltage electrical burns with myoglobinuria: Target 1.5 to 2.0 mL/kg/h to prevent acute renal tubular necrosis."
+    },
+    {
+      "h": "2. Inhalation Injury: Carbon Monoxide & Cyanide Toxicity",
+      "b": "• Carbon Monoxide (CO) Poisoning:\n  - CO has 200–250 times higher affinity for hemoglobin than oxygen, forming carboxyhemoglobin (COHb) and shifting the oxyhemoglobin dissociation curve sharply to the left (inhibiting tissue oxygen release).\n  - FALSE-NORMAL PULSE OXIMETRY: Standard pulse oximeters cannot distinguish oxyhemoglobin from carboxyhemoglobin; SpO₂ reads 99%–100% even when patient is dying of cellular hypoxia! Co-oximetry is mandatory.\n  - Treatment: 100% FiO₂ (reduces COHb half-life from 320 minutes on room air down to 60–80 minutes) or Hyperbaric Oxygen.\n• Cyanide Toxicity:\n  - Combustion of plastics, wool, and synthetic polymers generates hydrogen cyanide, which inhibits mitochondrial cytochrome c oxidase, blocking aerobic ATP production (severe lactic acidosis with elevated venous SvO₂).\n  - Antidote: HYDROXOCOBALAMIN (5 g IV infused over 15 minutes; binds cyanide to form non-toxic cyanocobalamin, excreted in urine)."
+    },
+    {
+      "h": "3. THE SUCCINYLCHOLINE CONTRAINDICATION (LETHAL HYPERKALEMIA)",
+      "b": "A CARDINAL PHARMACOLOGICAL SAFETY RULE IN PERIOPERATIVE MEDICINE:\n\n• Pathophysiology:\n  - Burn injury stimulates widespread denervation-like proliferation and up-regulation of immature fetal-type (alpha-2, beta, gamma, delta) extrajunctional acetylcholine receptors across all skeletal muscle membranes.\n  - Administration of succinylcholine causes massive, prolonged potassium efflux from these hypersensitive receptors.\n• Timing:\n  - SUCCINYLCHOLINE IS STRICTLY CONTRAINDICATED FROM 24 TO 48 HOURS POST-BURN UNTIL COMPLETE HEALING HAS OCCURRED (UP TO 1 TO 2 YEARS POST-BURN)!\n  - Succinylcholine administration in this window triggers acute hyperkalemia (K⁺ surges to > 8–10 mEq/L within 2 minutes), causing immediate refractory ventricular fibrillation and cardiac arrest!\n• Altered Response to Non-Depolarizers: Down-regulation of mature receptors causes profound resistance to non-depolarizing NMBAs (Rocuronium, Vecuronium); requires 2- to 3-fold larger doses."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 22, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 73, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-anesthesia-cleft-lip-palate",
+  "cat": "case_trauma_ortho_special",
+  "name": "Anesthesia for Cleft Lip and Palate Surgery",
+  "short": "Cleft Lip & Palate Case",
+  "tags": [
+    "Pediatric",
+    "Cleft Lip",
+    "Cleft Palate",
+    "Airway",
+    "Dingman Gag",
+    "Case Discussion"
+  ],
+  "tagline": "Rule of 10s, syndromic craniofacial airway, oral south RAE tube & emergence tongue traction suture",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 23 (Anesthesia for Cleft Lip and Palate Surgery); Miller's Anesthesia, 10th ed., Ch. 76; Cote CJ, Practice of Anesthesia for Infants and Children.",
+  "sections": [
+    {
+      "h": "1. Case Scenario & The Rule of 10s",
+      "b": "A 3-month-old infant (weight 5.2 kg) presents for elective primary cleft lip repair. The Rule of 10s is confirmed: Age > 10 weeks, Weight > 10 lbs, Hemoglobin > 10 g/dL (patient's Hb is 11.2 g/dL), WBC < 10,000. Examination shows unilateral complete left cleft lip and alveolar cleft. Cardiac evaluation is normal."
+    },
+    {
+      "h": "2. Technical Airway Execution & Oral RAE Taping",
+      "b": "• Intubation with South-Facing Oral RAE Endotracheal Tube:\n  - The preformed bend sits over the lower chin; directs circuit away from the operative field.\n  - Midline Taping: Tube MUST be taped strictly in the midline over the mandible (taping to the corner of the mouth distorts the surgical philtrum and lip symmetry).\n• Dingman Mouth Gag Hazards:\n  - Insertion can compress the tube, push it endobronchial, or dislodge it out of the trachea. Re-auscultate bilateral chest sounds immediately upon gag placement!"
+    },
+    {
+      "h": "3. Emergence & The Tongue Traction Suture",
+      "b": "• Emergence Strategy:\n  - Suction the pharynx under direct vision to clear blood clots.\n  - The surgeon places a heavy 2-0 silk traction suture through the tongue before extubation.\n  - If the infant develops upper airway obstruction in recovery, gentle traction on the tongue suture pulls the tongue forward, instantly clearing the airway without touching the delicate lip repair."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 23, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 76, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-geriatric-patient-anaesthesia",
+  "cat": "case_trauma_ortho_special",
+  "name": "Geriatric Patient with Multimorbidity & Frailty",
+  "short": "Geriatric Patient",
+  "tags": [
+    "Geriatric",
+    "Frailty",
+    "Pharmacology",
+    "Postoperative Delirium",
+    "POCD",
+    "Case Discussion"
+  ],
+  "tagline": "Organ reserve decline, 'start low go slow' titration, multimodal opioid-sparing analgesia & delirium prevention",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 24 (Geriatric Patient); Miller's Anesthesia, 10th ed., Ch. 74 (Anesthesia for the Older Patient); 2023 AGS/ASA Guidelines.",
+  "sections": [
+    {
+      "h": "1. Organ System Aging & Loss of Physiological Reserve",
+      "b": "• Cardiovascular: Arterial elastance increases (stiff aorta), leading to systolic hypertension, wide pulse pressure, and severe diastolic dysfunction (LV filling is heavily dependent on atrial kick!). Decreased beta-adrenergic sensitivity and blunted baroreflexes produce severe post-induction hypotension without compensatory tachycardia.\n• Respiratory: Closing capacity exceeds Functional Residual Capacity (FRC) in the supine position by age 65, producing baseline atelectasis and V/Q mismatch. Blunted ventilatory responses to hypoxia and hypercapnia.\n• Central Nervous: Brain mass decreases; loss of neurons and neurotransmitters reduces MAC of volatile agents by 6%–7% per decade past age 40. High susceptibility to Postoperative Delirium (POD).\n• Pharmacokinetics (\"Start Low, Go Slow\"): Decreased total body water (smaller Vd for hydrophilic drugs = higher peak drug concentrations) and increased body fat (prolongs elimination half-life of lipophilic drugs like fentanyl and diazepam). Decreased GFR and hepatic clearance prolong drug action."
+    },
+    {
+      "h": "2. Postoperative Delirium (POD) vs POCD Prevention",
+      "b": "• POD: Acute fluctuating disturbance in attention and awareness peaking on POD 1–3.\n• Prevention Bundle:\n  - Avoid preoperative benzodiazepines (Midazolam) and anticholinergics (Atropine/Scopolamine)\n  - Use processed EEG (BIS) monitoring to avoid prolonged deep burst suppression\n  - Multimodal opioid-sparing regional nerve blocks\n  - Early return of sensory aids (eyeglasses, hearing aids) and day-night circadian cycle in recovery."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 24, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 74, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-turp-and-turp-syndrome",
+  "cat": "case_trauma_ortho_special",
+  "name": "Transurethral Resection of Prostate (TURP) & TURP Syndrome",
+  "short": "TURP & TURP Syndrome",
+  "tags": [
+    "Renal",
+    "TURP",
+    "Hyponatremia",
+    "Glycine",
+    "Spinal T10",
+    "Case Discussion"
+  ],
+  "tagline": "Irrigation fluid absorption, dilutional hyponatremia < 120 mEq/L, glycine visual blurring & spinal T10 gold standard",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 25 (Transurethral Resection of Prostate); Miller's Anesthesia, 10th ed., Ch. 68 (Urologic Anesthesia); Campbell-Walsh-Wein Urology, 12th ed.",
+  "sections": [
+    {
+      "h": "1. Pathophysiology of TURP Syndrome",
+      "b": "Absorption of large volumes (> 1–2 Liters) of non-conductive, hypotonic irrigation fluid (1.5% Glycine, Sorbitol, or Mannitol) through open prostatic venous sinuses into the systemic circulation:\n\n• The Clinical Triad of TURP Syndrome:\n  1. Circulatory Volume Overload (Early): Hypertension, bradycardia (reflex baroreceptor activation), pulmonary edema, and congestive heart failure.\n  2. Dilutional Hyponatremia (Serum Na⁺ < 120 mEq/L): Lethargy, headache, restlessness, cerebral edema, seizures, and coma.\n  3. Solute-Specific Toxicity (Glycine Toxicity):\n     - Glycine is an inhibitory neurotransmitter in the retina; causes transient visual blurring, halos, and \"amaurosis\" (temporary blindness).\n     - Hepatic metabolism of glycine releases ammonia, triggering hyperammonemic encephalopathy."
+    },
+    {
+      "h": "2. Anesthetic Technique: Why Spinal at T10 is Gold Standard",
+      "b": "• Spinal Anesthesia to T10 Sensory Level (The Technique of Choice):\n  - Sensory Level T10 (umbilicus) blocks bladder distension pain and prostatic pain.\n  - CRITICAL ADVANTAGE: The patient remains conscious, allowing IMMEDIATE DETECTION OF EARLY TURP SYNDROME (confusion, nausea, restlessness, visual disturbances) and ACCIDENTAL BLADDER PERFORATION (sudden periumbilical, shoulder tip, or abdominal pain)!"
+    },
+    {
+      "h": "3. Management of Severe TURP Syndrome",
+      "b": "• Immediate Actions:\n  1. Terminate surgery immediately; coagulate bleeding vessels.\n  2. Restrict IV fluids; administer Furosemide (20–40 mg IV).\n  3. If severe symptomatic hyponatremia (Na⁺ < 120 mEq/L with seizures/coma): Infuse 3% Hypertonic Saline (100 mL boluses or 1–2 mL/kg/h) to raise serum sodium by no more than 8–10 mEq/L in 24 hours (prevents Osmotic Demyelination Syndrome / Central Pontine Myelinolysis).\n  4. Seizure control with Propofol, Midazolam, or Levetiracetam."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 25, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 68, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-proximal-fracture-femur-bcis",
+  "cat": "case_trauma_ortho_special",
+  "name": "Proximal Fracture Femur & Bone Cement Implantation Syndrome",
+  "short": "Hip Fracture & BCIS",
+  "tags": [
+    "Ortho",
+    "Fracture Femur",
+    "BCIS",
+    "Spinal",
+    "Bone Cement",
+    "PENG Block",
+    "Case Discussion"
+  ],
+  "tagline": "Fragility hip fracture, early surgery within 24–48h, BCIS Grades 1–3 resuscitation & PENG/FICB analgesia",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 26 (Proximal Fracture Femur); Miller's Anesthesia, 10th ed., Ch. 72; AAGBI Safety Guideline on Bone Cement Implantation Syndrome.",
+  "sections": [
+    {
+      "h": "1. Fragility Hip Fractures & Timing of Surgery",
+      "b": "• The 24–48 Hour Target: Early surgical repair within 24 to 48 hours is strongly recommended by all international guidelines (NICE, AAOS). Delays > 48 hours double 30-day mortality due to immobility, DVT/PE, delirium, and pneumonia.\n• Preoperative Bedside Blocks: Perform Pericapsular Nerve Group (PENG) block or Fascia Iliaca Compartment Block (FICB) immediately on admission; relieves agonizing pain, blunts tachycardia, and facilitates comfortable positioning for spinal anaesthesia."
+    },
+    {
+      "h": "2. Bone Cement Implantation Syndrome (BCIS) — Classification & Pathophysiology",
+      "b": "Occurs during pressurized insertion of polymethylmethacrylate (PMMA) bone cement and femoral stem prosthesis:\n\n• Pathophysiology:\n  - High medullary pressure during cement pressurization forces bone marrow fat, microthrombi, methylmethacrylate monomer, and tissue debris into torn femoral venous channels, embolizing directly into the pulmonary circulation. Causes acute pulmonary hypertension, RV failure, systemic hypotension, and severe hypoxemia.\n• Donaldson BCIS Severity Classification:\n  - Grade 1: Moderate hypotension (drop in SBP 20%–40%) or drop in SpO₂ to 88%–93%.\n  - Grade 2: Severe hypotension (drop in SBP > 40%) or drop in SpO₂ < 88% or unexplained loss of consciousness.\n  - Grade 3: Cardiovascular collapse requiring CPR / asystole.\n• The BCIS Prevention Protocol:\n  1. Increase FiO₂ to 1.0 prior to cement insertion.\n  2. Ensure adequate intravascular volume (give fluid bolus 500 mL pre-cement).\n  3. Have Phenylephrine / Ephedrine drawn up and ready.\n  4. Remind surgeon to perform thorough femoral canal lavage and vacuum venting."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 26, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 72, Elsevier, 2025/2026.",
+    "Griffiths R, et al. AAGBI Safety Guideline: Reducing the risk from bone cement implantation syndrome. Anaesthesia 2015;70(5):623-626."
+  ]
+},
+{
+  "id": "case-cataract-ophthalmic-blocks",
+  "cat": "case_trauma_ortho_special",
+  "name": "Cataract Surgery & Ophthalmic Regional Blocks",
+  "short": "Cataract & Ophthalmic Blocks",
+  "tags": [
+    "Ophthalmic",
+    "Cataract",
+    "Peribulbar Block",
+    "Oculocardiac Reflex",
+    "Retrobulbar",
+    "Case Discussion"
+  ],
+  "tagline": "Oculocardiac reflex trigeminovagal pathway, peribulbar vs retrobulbar technique & brainstem anaesthesia complications",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 27 (Cataract); Miller's Anesthesia, 10th ed., Ch. 70 (Ophthalmic Anesthesia); British Ophthalmic Anaesthesia Society Guidelines.",
+  "sections": [
+    {
+      "h": "1. The Oculocardiac Reflex (OCR) — The Trigeminovagal Arc",
+      "b": "Triggered by traction on extraocular muscles (especially the MEDIAL RECTUS), direct pressure on the globe, or ocular retrobulbar injection:\n\n• Neural Pathway:\n  - Afferent Limb: Trigeminal Nerve (CN V) — Ciliary nerves → Ophthalmic division (V1) → Gasserian ganglion → Main sensory nucleus of trigeminal nerve.\n  - Efferent Limb: Vagus Nerve (CN X) — Originates from motor nucleus of vagus, terminating in cardiac SA and AV nodes.\n• Manifestations: Sudden severe sinus bradycardia, junctional rhythm, AV block, ventricular ectopics, or asystole!\n• Management:\n  1. Immediately tell the surgeon: \"STOP TRACTION ON THE EYE!\" (Releasing traction instantly terminates the reflex in >90% of cases!).\n  2. Verify 100% O₂ and depth of anaesthesia.\n  3. If bradycardia persists: Administer IV Atropine (0.01–0.02 mg/kg) or Glycopyrrolate (0.005–0.01 mg/kg)."
+    },
+    {
+      "h": "2. Peribulbar vs Retrobulbar Block: Landmarks & Safety",
+      "b": "• Peribulbar Block (Gold Standard — Superior Safety Profile):\n  - Needle remains EXTRACONAL (outside the muscle cone), dramatically reducing the risk of optic nerve injury and retrobulbar hemorrhage.\n  - Inferotemporal Injection: 25G 25 mm needle entered at junction of lateral third and medial two-thirds of lower orbital rim; inject 4–6 mL.\n  - Superonasal Injection: (if needed) 2–3 mL beneath the supraorbital notch.\n  - Local Anesthetic Mixture: 2% Lignocaine + 0.5% Bupivacaine with Hyaluronidase (15–30 IU/mL; facilitates tissue spreading).\n• Retrobulbar Block Hazards: Needle enters the INTRACONAL space. Hazards: Globe perforation, retrobulbar hemorrhage (rapid proptosis and tense globe; requires immediate lateral canthotomy to prevent central retinal artery occlusion), and BRAINSTEM ANAESTHESIA (accidental injection into the optic nerve sheath; local anesthetic tracks into the subarachnoid space, producing contralateral amaurosis, cranial nerve palsies, convulsions, apnoea, and cardiac arrest within 5 minutes!)."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 27, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 70, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-morbid-obesity-bariatric",
+  "cat": "case_trauma_ortho_special",
+  "name": "Morbid Obesity & Bariatric Surgery",
+  "short": "Morbid Obesity & Bariatric",
+  "tags": [
+    "Bariatric",
+    "Morbid Obesity",
+    "OSA",
+    "RAMP Position",
+    "Drug Dosing",
+    "Case Discussion"
+  ],
+  "tagline": "RAMP position alignment, drug dosing weights (TBW vs IBW vs LBM), rapid desaturation & CPAP recovery",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 28 (Morbid Obesity); Miller's Anesthesia, 10th ed., Ch. 68 & 71; Society for Obesity and Bariatric Anaesthesia (SOBA) Guidelines.",
+  "sections": [
+    {
+      "h": "1. Respiratory Mechanics & The RAMPed Position",
+      "b": "• Respiratory Alterations: Functional Residual Capacity (FRC) and Expiratory Reserve Volume (ERV) decrease exponentially with increasing BMI. The heavy chest wall and elevated diaphragm cause constant basilar airway closure and rapid arterial desaturation within 60 seconds of apnoea.\n• The RAMPed Head-Elevated Laryngoscopy Position (HELP):\n  - Supine position causes breast and chest fat to crowd the submental space, making direct laryngoscopy impossible.\n  - Position blankets or commercial foam ramps under the head and upper back until an imaginary horizontal line connects the External Auditory Meatus (Tragus) with the Sternal Notch.\n  - Dramatically improves FRC, lengthens safe apnoea time, and aligns oral, pharyngeal, and laryngeal axes for effortless intubation."
+    },
+    {
+      "h": "2. The Pharmacological Dosing Weight Matrix",
+      "b": "A HIGH-YIELD EXAM BOARD MATRIX TO PREVENT DRUG OVERDOSING OR UNDERDOSING:\n\n• TOTAL BODY WEIGHT (TBW - Actual Weight):\n  - Succinylcholine (1.0–1.2 mg/kg TBW; accounts for elevated pseudocholinesterase levels and larger extracellular fluid)\n  - Sugammadex (2–4 mg/kg TBW).\n• IDEAL BODY WEIGHT (IBW):\n  - Rocuronium / Vecuronium / Cisatracurium (dose to IBW to prevent prolonged residual paralysis!)\n  - Remifentanil.\n• LEAN BODY MASS (LBM - Fat-Free Mass):\n  - Propofol Induction (1.5–2.0 mg/kg LBM; dosing to TBW causes severe cardiac arrest!)\n  - Fentanyl / Sufentanil."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 28, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 71, Elsevier, 2025/2026.",
+    "Nightingale CE, et al. Peri-operative management of the obese surgical patient 2015: Association of Anaesthetists of Great Britain and Ireland. Anaesthesia 2015;70(7):859-876."
+  ]
+},
+{
+  "id": "case-colles-fracture-regional",
+  "cat": "case_trauma_ortho_special",
+  "name": "Colles' Fracture & Upper Extremity Regional Anaesthesia",
+  "short": "Colles' Fracture",
+  "tags": [
+    "Regional",
+    "Colles Fracture",
+    "Bier Block",
+    "IVRA",
+    "Brachial Plexus",
+    "Case Discussion"
+  ],
+  "tagline": "Intravenous Regional Anaesthesia (Bier block) double cuff safety, tourniquet times & supraclavicular block",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 31 (Colles' Fracture); Miller's Anesthesia, 10th ed., Ch. 53; NYSORA Regional Anesthesia Guide.",
+  "sections": [
+    {
+      "h": "1. Intravenous Regional Anaesthesia (Bier Block) — Double-Cuff Safety",
+      "b": "A fast, highly effective technique for closed reduction and manipulation of distal forearm fractures:\n\n• Technique & Equipment:\n  - Place a 20G or 22G IV cannula in the dorsum of the fractured hand.\n  - Apply a Double-Pneumatic Tourniquet on the upper arm over soft padding.\n  - Exsanguinate the extremity with an Esmarch bandage (or elevate for 3 minutes if fracture is too painful).\n  - Inflate the PROXIMAL cuff to 100 mmHg above systolic BP (minimum 250 mmHg).\n  - Inject 0.5% Prilocaine (3 mg/kg) or 0.5% Plain Lignocaine (3 mg/kg, max 200 mg / 40 mL). NEVER USE BUPIVAACINE (fatal cardiotoxicity if released!).\n• Tourniquet Pain & The Distal Cuff Switch:\n  - At 25–45 minutes, ischemic tourniquet pain develops. Inflate the DISTAL cuff (resting over anesthetized skin), and then DEFLATE the proximal cuff.\n• THE TOURNIQUET DEFLATION SAFETY TIMELINE:\n  - MINIMUM INFLATION TIME: 20 TO 25 MINUTES. Even if the manipulation finishes in 10 minutes, the cuff MUST remain inflated for at least 20 minutes to allow local anesthetic tissue binding and prevent massive systemic bolus release (LAST)!\n  - Cyclic Deflation: Deflate for 10 seconds, reinflate for 1 minute, and repeat twice to wash out local anesthetic in fractional increments."
+    },
+    {
+      "h": "2. Ultrasound-Guided Supraclavicular Brachial Plexus Block",
+      "b": "• The \"Spinal of the Upper Extremity\": Highly reliable block for distal radius plating.\n• Landmarks: High-frequency probe above clavicle; identify pulsating subclavian artery over 1st rib. Brachial plexus trunks lie superolateral (\"cluster of grapes\"). Inject 15–20 mL of 0.5% ropivacaine/bupivacaine with in-plane needle technique."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 31, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 53, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-kyphoscoliosis-spine-surgery",
+  "cat": "case_trauma_ortho_special",
+  "name": "Kyphoscoliosis for Corrective Spine Surgery",
+  "short": "Kyphoscoliosis Spine Surgery",
+  "tags": [
+    "Spine",
+    "Kyphoscoliosis",
+    "IONM",
+    "MEP SSEP",
+    "Stagnara Wake-up",
+    "Case Discussion"
+  ],
+  "tagline": "Severe restrictive lung disease, TIVA without relaxants for IONM, Stagnara wake-up test & massive blood loss",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 32 (Kyphoscoliosis); Miller's Anesthesia, 10th ed., Ch. 63 & 72; Cottrell & Patel's Neuroanesthesia.",
+  "sections": [
+    {
+      "h": "1. Respiratory & Cardiovascular Pathophysiology",
+      "b": "Severe spinal curvature (Cobb angle > 60–100 degrees) severely deforms the thoracic cage:\n\n• Respiratory: Asymmetric restriction of chest wall expansion, vital capacity < 50% predicted, ventilation-perfusion mismatch, chronic alveolar hypoventilation.\n• Cardiovascular: Chronic hypoxemia triggers pulmonary vasoconstriction, leading to pulmonary arterial hypertension and Cor Pulmonale (right ventricular hypertrophy and failure).\n• Risk of Postoperative Ventilatory Dependence: High if Vital Capacity < 30%–35% predicted or Cobb angle > 100 degrees."
+    },
+    {
+      "h": "2. Intraoperative Neuromonitoring (IONM) & Anesthetic Requirements",
+      "b": "Surgical spine distraction and rod placement jeopardize spinal cord perfusion (anterior spinal artery ischemia):\n\n• Somatosensory Evoked Potentials (SSEP): Monitors dorsal columns (sensory pathway via posterior spinal arteries). Significant alert: >50% drop in amplitude or >10% increase in latency.\n• Motor Evoked Potentials (MEP): Transcranial electrical stimulation monitoring anterior corticospinal tracts (motor pathway via anterior spinal artery). Highly sensitive to ischemia.\n• ANTAGONISM BY ANESTHETICS:\n  - Volatile agents suppress synaptic transmission in anterior horn cells. Maintain Total Intravenous Anesthesia (TIVA with Propofol and Remifentanil) or keep volatile < 0.5 MAC.\n  - NEUROMUSCULAR BLOCKERS MUST BE COMPLETELY AVOIDED AFTER INTUBATION to allow muscle contraction recording during MEPs!\n• The Stagnara Wake-Up Test: The historic clinical test of motor function; patient is lightened intraoperatively until they can squeeze hands and wiggle toes on command."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 32, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 63 & 72, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-cirrhosis-portal-hypertension",
+  "cat": "case_general_subspecialty",
+  "name": "Cirrhosis with Portal Hypertension",
+  "short": "Cirrhosis & Portal HTN",
+  "tags": [
+    "GI",
+    "Cirrhosis",
+    "Portal HTN",
+    "MELD",
+    "Coagulopathy",
+    "ROTEM",
+    "Case Discussion"
+  ],
+  "tagline": "Hyperdynamic circulation, rebalanced hemostasis, ROTEM/TEG guidance, portopulmonary HTN & terlipressin",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 29 (Cirrhosis with Portal Hypertension); Miller's Anesthesia, 10th ed., Ch. 68 (Anesthesia and the Liver); AASLD Practice Guidelines.",
+  "sections": [
+    {
+      "h": "1. Staging & Multisystem Pathophysiology",
+      "b": "• Risk Stratification: Child-Turcotte-Pugh (CTP Class A, B, C) and MELD-Na score. Elective surgery is contraindicated in CTP Class C or MELD > 20.\n• The Hyperdynamic Circulatory State:\n  - Splanchnic vasodilation driven by nitric oxide produces profound systemic vasodilation (low SVR, low MAP) and compensatory high cardiac output.\n• The Concept of \"Rebalanced Hemostasis\":\n  - While the liver produces fewer procoagulants (factors II, VII, IX, X), it SIMULTANEOUSLY produces fewer natural anticoagulants (Protein C, Protein S, Antithrombin III). Standard PT/INR measures procoagulants only, giving a false impression of \"bleeding risk\". Patients are actually at risk for both bleeding and thrombosis! Viscoelastic testing (ROTEM/TEG) is mandatory to guide transfusion."
+    },
+    {
+      "h": "2. Perioperative Complications & Drug Handling",
+      "b": "• Hepatorenal Syndrome (HRS): Splanchnic pooling leads to severe renal vasoconstriction. Treat intraoperative hypotension with Terlipressin or Noradrenaline; avoid nephrotoxins (NSAIDs, aminoglycosides).\n• Portopulmonary Hypertension (PoPH): Pulmonary hypertension in cirrhosis (mean PAP > 25 mmHg); severe PoPH (> 45 mmHg) carries >50% mortality.\n• Drug Selection: Prolonged duration of vecuronium/rocuronium (decreased biliary excretion); Cisatracurium (Hofmann elimination) is the muscle relaxant of choice."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 29, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 68, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-laparoscopic-robotic-cholecystectomy",
+  "cat": "case_general_subspecialty",
+  "name": "Laparoscopic and Robotic Cholecystectomy",
+  "short": "Lap & Robotic Cholecystectomy",
+  "tags": [
+    "GI",
+    "Laparoscopy",
+    "Robotic",
+    "Pneumoperitoneum",
+    "Gas Embolism",
+    "Case Discussion"
+  ],
+  "tagline": "CO2 pneumoperitoneum hemodynamics, reverse Trendelenburg, gas embolism Durant maneuver & subcostal TAP block",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 30 (Laparoscopic and Robotic Cholecystectomy); Miller's Anesthesia, 10th ed., Ch. 68; SAGES Guidelines.",
+  "sections": [
+    {
+      "h": "1. The Physiology of CO2 Pneumoperitoneum",
+      "b": "Insufflation of carbon dioxide to 12–15 mmHg intra-abdominal pressure produces distinct cardiovascular and respiratory changes:\n\n• Cardiovascular:\n  - Increased SVR & MAP: Vasopressin and renin-angiotensin release plus mechanical compression of the splanchnic bed elevate afterload.\n  - Decreased Cardiac Output: Compression of the IVC reduces venous return.\n  - Vagal Bradycardia: Sudden peritoneal stretch by the Veress needle or trocar triggers severe vagal bradycardia or asystole.\n• Respiratory:\n  - Cephalad diaphragm displacement reduces FRC by 20%–30%, producing basilar atelectasis and increasing peak airway pressures.\n  - CO₂ Absorption: Systemic absorption of CO₂ increases PaCO₂; minute ventilation must be increased by 20%–30% to maintain normocapnia."
+    },
+    {
+      "h": "2. Complications & The Gas Embolism Crisis",
+      "b": "• Carbon Dioxide Venous Gas Embolism:\n  - Occurs if the Veress needle or trocar penetrates a major hepatic or mesenteric vein.\n  - Signs: Sudden precipitous drop in End-Tidal CO₂, severe hypotension, hypoxia, mill-wheel murmur, and acute RV strain.\n  - Immediate Management:\n    1. Discontinue insufflation immediately and vent the abdomen.\n    2. 100% O₂; turn off nitrous oxide.\n    3. Durant Maneuver: Turn patient into Left Lateral Decubitus and Trendelenburg position (traps air bubble in the right ventricular apex, preventing pulmonary outflow tract obstruction).\n    4. Aspirate gas via central line; support circulation."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 30, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 68, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-large-thyroid-mass-stridor",
+  "cat": "case_general_subspecialty",
+  "name": "Large Thyroid Mass & Retrosternal Goiter",
+  "short": "Large Thyroid Mass",
+  "tags": [
+    "Endocrine",
+    "Thyroid",
+    "Retrosternal Goiter",
+    "Airway",
+    "Stridor",
+    "RLN",
+    "Case Discussion"
+  ],
+  "tagline": "Retrosternal goiter tracheal compression, awake fiberoptic intubation, NIM tube RLN monitoring & post-thyroidectomy emergencies",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 33 (Large Thyroid Mass); Miller's Anesthesia, 10th ed., Ch. 44 & 68 (Endocrine Surgery); British Association of Endocrine and Thyroid Surgeons.",
+  "sections": [
+    {
+      "h": "1. Preoperative Airway Imaging & Compressive Symptoms",
+      "b": "• Compressive Symptoms: Dyspnea (worse when supine), orthopnea, stridor (inspiratory = extrathoracic; expiratory = intrathoracic), dysphagia, Pemberton sign (facial flushing, cyanosis, and elevated JVP when raising both arms above head for 1 minute, confirming thoracic inlet venous obstruction).\n• CT Neck & Thorax Evaluation: Evaluate tracheal caliber, deviation, distance of retrosternal extension beneath aortic arch, and presence of tracheomalacia (cartilage softening)."
+    },
+    {
+      "h": "2. Induction Strategy: Inhalational vs Awake Fiberoptic",
+      "b": "• Induction Hazards: Loss of consciousness and muscle relaxation abolish upper airway muscular splinting, allowing the heavy thyroid mass to collapse the compressed trachea completely (\"Cannot Intubate Cannot Oxygenate\")!\n• Anesthetic Options:\n  - Option A: Awake Fiberoptic Intubation (AFOI): Gold standard for severe tracheal deviation or critical airway narrowing (< 5 mm caliber).\n  - Option B: Inhalational Induction with Sevoflurane in 100% O₂: Maintains spontaneous ventilation until depth is adequate and vocal cords are visualized.\n  - Tube Choice: Reinforced (armoured / wire-spiral) endotracheal tube to prevent external compression by the heavy mass."
+    },
+    {
+      "h": "3. Recurrent Laryngeal Nerve (RLN) Monitoring & Post-Op Crises",
+      "b": "• Nerve Integrity Monitor (NIM) Tube: Endotracheal tube with integrated surface electrodes that contact true vocal cords. Requires avoiding long-acting muscle relaxants after intubation.\n• Life-Threatening Postoperative Thyroid Emergencies:\n  1. Tension Hematoma in Neck: Venous/arterial bleed into deep cervical fascia; compress trachea within minutes. TREATMENT: Cut sutures/clips at bedside immediately and evacuate clot before reintubation!\n  2. Bilateral RLN Injury: Vocal cords fall into paramedian position upon extubation, producing acute inspiratory stridor and aphonia. Requires immediate emergency reintubation or tracheostomy.\n  3. Tracheomalacia: Tracheal collapse upon extubation from prolonged pressure atrophy of tracheal rings.\n  4. Hypocalcemic Tetany (Post-Op Day 1–3): Accidental parathyroidectomy; Chvostek and Trousseau signs, laryngospasm. Treat with IV Calcium Gluconate."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 33, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 68, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-diabetes-mellitus-perioperative",
+  "cat": "case_general_subspecialty",
+  "name": "Diabetes Mellitus & Perioperative Glycemic Emergencies",
+  "short": "Diabetes Perioperative",
+  "tags": [
+    "Endocrine",
+    "Diabetes",
+    "VRIII",
+    "SGLT2 euDKA",
+    "Autonomic Neuropathy",
+    "Case Discussion"
+  ],
+  "tagline": "Autonomic neuropathy, stiff joint syndrome, SGLT2 inhibitor euDKA, VRIII sliding scale & target glucose 140–180 mg/dL",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 34 (Diabetes Mellitus); Miller's Anesthesia, 10th ed., Ch. 40; 2024 ADA Standards of Care in Diabetes.",
+  "sections": [
+    {
+      "h": "1. Systemic Complications & Preoperative Evaluation",
+      "b": "• Autonomic Neuropathy: Resting tachycardia (> 100 bpm), loss of heart rate variability during deep breathing, orthostatic hypotension, gastroparesis (full stomach aspiration risk even after 8h fasting!), and painless silent myocardial infarction.\n• Stiff Joint Syndrome: Non-enzymatic glycosylation of collagen causes stiff joints. Demonstrated by the \"Prayer Sign\" (inability to approximate palmar surfaces of digits) and stiff cervical spine, predicting difficult direct laryngoscopy.\n• SGLT2 INHIBITORS (EUGLYCEMIC DKA WARNING):\n  - SGLT2 inhibitors (Empagliflozin, Dapagliflozin) MUST BE STOPPED 3 TO 4 DAYS PRIOR TO SURGERY.\n  - Withholding failure triggers Euglycemic Diabetic Ketoacidosis (euDKA) with normal or mildly elevated blood glucose (< 200 mg/dL) and severe high anion gap metabolic acidosis."
+    },
+    {
+      "h": "2. Intraoperative Glycemic Targets & VRIII Protocols",
+      "b": "• Target Blood Glucose: 140 to 180 mg/dL (7.8 to 10.0 mmol/L). Strict tight control (< 110 mg/dL) is dangerous, increasing hypoglycemic mortality by 3-fold (NICE-SUGAR trial).\n• Variable-Rate Intravenous Insulin Infusion (VRIII):\n  - 50 units regular human insulin in 50 mL 0.9% saline (1 unit/mL) via syringe pump.\n  - Co-infuse 5% Dextrose in 0.45% Saline with 20 mEq/L KCl at 100 mL/h to prevent hypoglycemia and hypokalemia."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 34, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 40, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-ckd-renal-transplant",
+  "cat": "case_general_subspecialty",
+  "name": "Chronic Kidney Disease & Renal Transplantation",
+  "short": "CKD & Renal Transplant",
+  "tags": [
+    "Renal",
+    "CKD",
+    "Renal Transplant",
+    "Hyperkalemia",
+    "Cisatracurium",
+    "Case Discussion"
+  ],
+  "tagline": "Pre-transplant dialysis timing, hyperkalemia thresholds, cisatracurium Hofmann clearance & vascular unclamping flush",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 35 (Chronic Kidney Disease and Renal Transplant); Miller's Anesthesia, 10th ed., Ch. 68 & 75; KDIGO Guidelines.",
+  "sections": [
+    {
+      "h": "1. Preoperative Assessment & Dialysis Timing",
+      "b": "• Dialysis Timing: Hemodialysis should ideally be performed 18 to 24 hours prior to surgery (allows fluid equilibration and dissipates heparin effect). Perform repeat serum potassium immediately prior to induction (must be < 5.5 mEq/L).\n• Vascular Access Protection: Protect the arteriovenous fistula (AVF) on the non-dominant arm: NO blood pressure cuffs, NO venipunctures, NO arterial lines; pad carefully."
+    },
+    {
+      "h": "2. Anesthetic Drug Selection in ESRD",
+      "b": "• Muscle Relaxants: CISATRACURIUM is the drug of choice (spontaneous organ-independent Hofmann elimination and ester hydrolysis). Avoid Vecuronium/Pancuronium (accumulate).\n• Opioids: Fentanyl and Remifentanil are safe. STRICTLY AVOID MORPHINE (active metabolite M6G and neurotoxic M3G accumulate, causing prolonged respiratory depression) and PETHIDINE (normeperidine accumulation causes seizures).\n• Reversal: Sugammadex is excreted renally; cyclodextrin-rocuronium complex remains in circulation for days; neostigmine-glycopyrrolate is safe."
+    },
+    {
+      "h": "3. Intraoperative Hydration & Reperfusion Hemodynamics",
+      "b": "• Volume Expansion During Vascular Anastomosis: To ensure immediate allograft perfusion, volume-load aggressively with balanced crystalloids to maintain CVP 10–14 mmHg and SBP > 130–140 mmHg prior to clamp release.\n• Reperfusion Phenomenon: Unclamping the external iliac vessels flushes cold, acidemic, hyperkalemic, preservative-laden fluid from the donor kidney into the systemic circulation; have calcium gluconate and bicarbonate ready."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 35, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 75, Elsevier, 2025/2026."
+  ]
+},
+{
+  "id": "case-tonsillectomy-airway-emergencies",
+  "cat": "case_pediatric",
+  "name": "Tonsillectomy & Post-Tonsillectomy Hemorrhage",
+  "short": "Tonsillectomy Hemorrhage",
+  "tags": [
+    "Pediatric",
+    "Tonsillectomy",
+    "Post-Op Bleeding",
+    "Full Stomach",
+    "Resuscitation",
+    "Case Discussion"
+  ],
+  "tagline": "Hidden swallowed blood hypovolemia, modified RSI with 2 suctions, fluid resuscitation & extubation criteria",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 36 (Tonsillectomy); Miller's Anesthesia, 10th ed., Ch. 76; Cote CJ, Practice of Anesthesia for Infants and Children.",
+  "sections": [
+    {
+      "h": "1. The Clinical Crisis: Hidden Swallowed Blood",
+      "b": "A 6-year-old child presents 6 days after elective tonsillectomy with active secondary oral bleeding. The child is pale, heart rate 145 bpm, BP 82/48 mmHg, capillary refill 4 seconds. The parents report spitting up small amounts of blood, but the child has swallowed large volumes of blood unnoticed into the stomach, presenting in unappreciated severe hypovolemic shock with a stomach filled with heavy clots."
+    },
+    {
+      "h": "2. Pre-Induction Resuscitation & The 2-Suction RSI",
+      "b": "• Resuscitation First: NEVER induce until hypovolemia is corrected with 20 mL/kg balanced crystalloids and cross-matched blood.\n• Induction Execution:\n  - Prepare TWO fully functional suction units with large rigid Yankauer tips.\n  - Styleted ETT one size smaller.\n  - Ketamine or Propofol + Rocuronium (1.2 mg/kg) with cricoid pressure.\n  - Evacuate stomach thoroughly before extubation awake."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 36, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 76, Elsevier, 2025/2026."
+  ]
+}
 ];
 
   const drugs = [

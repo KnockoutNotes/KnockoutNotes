@@ -1651,19 +1651,33 @@ details.kn-study-callout-details .st-callout {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
+  padding: 6px 14px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.04);
-  color: #cbd5e1;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #f8fafc;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
 .kn-study-progress-btn:hover {
-  background: rgba(255, 255, 255, 0.09);
+  background: #0f172a;
+  border-color: #475569;
+  color: #ffffff;
+}
+
+body.dark .kn-study-progress-btn {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+body.dark .kn-study-progress-btn:hover {
+  background: #334155;
+  border-color: #475569;
 }
 
 .kn-progress-master-btn.active-mastered {
