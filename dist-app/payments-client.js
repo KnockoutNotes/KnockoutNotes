@@ -115,6 +115,8 @@
     if (drugCats.includes(cat)) return 12;
     const critCats = ['cc_airway', 'cc_respiratory', 'cc_hemodynamics', 'cc_sepsis', 'cc_neuro', 'cc_cardio', 'cc_renal', 'cc_gi', 'cc_trauma', 'cc_tox', 'cc_heme', 'cc_obs', 'cc_peds', 'cc_pharm', 'cc_advances', 'critical_care', 'critical', 'shock', 'respiratory', 'abg', 'antibiotics', 'poisoning'];
     if (critCats.includes(cat) || cat.startsWith('cc_') || cat.startsWith('cc-') || id.startsWith('cc-') || id.startsWith('cc_')) return 19;
+    const caseCats = ['cases', 'case', 'case_cardiac', 'case_resp', 'case_neuro', 'case_obstetric', 'case_pediatric', 'case_general_subspecialty', 'case_trauma_ortho_special'];
+    if (caseCats.includes(cat) || cat.startsWith('case_') || cat.startsWith('case-') || id.startsWith('case-') || id.startsWith('case_')) return 19;
     return 9;
   }
 
