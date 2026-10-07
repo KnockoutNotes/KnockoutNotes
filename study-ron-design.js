@@ -173,61 +173,61 @@
     const text = (item.name + " " + (item.tags || []).join(" ") + " " + (item.cat || "")).toLowerCase();
 
     if (text.includes("local") || text.includes("lignocaine") || text.includes("bupivacaine") || text.includes("ropivacaine") || text.includes("nerve")) {
-      tools.push({ label: "🧮 Local Anaesthetic Max Dose", url: "calculators.html?calc=local" });
+      tools.push({ label: "🧮 Local Anaesthetic Max Dose", url: "calculators.html#calcWeights3d" });
       tools.push({ label: "🚨 Crisis: LAST Protocol", url: "crisis.html#last" });
-      tools.push({ label: "🎯 Regional Blocks 3D", url: "regional.html" });
+      tools.push({ label: "🎯 Regional Blocks 3D", url: "regional-anaesthesia.html" });
     }
     if (text.includes("hyperthermia") || text.includes("succinylcholine") || text.includes("scoline") || text.includes("volatile")) {
       tools.push({ label: "🚨 Malignant Hyperthermia Protocol", url: "crisis.html#mh" });
     }
     if (text.includes("airway") || text.includes("intubation") || text.includes("cricoid") || text.includes("rsi") || text.includes("laryngo") || text.includes("broncho")) {
-      tools.push({ label: "🚨 Crisis: Difficult Airway / CICO", url: "crisis.html#airway" });
+      tools.push({ label: "🚨 Crisis: CICO / Difficult Airway", url: "crisis.html#cico" });
       tools.push({ label: "🚨 Bronchospasm Protocol", url: "crisis.html#bronchospasm" });
       tools.push({ label: "🫁 Ventilator Station 3D", url: "ventilator.html" });
     }
     if (text.includes("blood") || text.includes("transfusion") || text.includes("fluid") || text.includes("ebl") || text.includes("shock")) {
-      tools.push({ label: "🧮 Estimated Blood Loss & Transfusion", url: "calculators.html?calc=ebl" });
-      tools.push({ label: "🧮 Maintenance Fluid & Deficit", url: "calculators.html?calc=fluid" });
+      tools.push({ label: "🧮 Estimated Blood Loss & Transfusion", url: "calculators.html#mablCard3d" });
+      tools.push({ label: "🧮 Maintenance Fluid & Deficit", url: "calculators.html#calcParkland3d" });
     }
     if (text.includes("abg") || text.includes("acid") || text.includes("bicarbonate") || text.includes("anion") || text.includes("gas")) {
-      tools.push({ label: "🧮 ABG Anion Gap & Delta Ratio", url: "calculators.html?calc=abg" });
+      tools.push({ label: "🧮 ABG Anion Gap & Delta Ratio", url: "calculators.html#tabAbg3d" });
     }
     if (text.includes("cvs") || text.includes("cardiac") || text.includes("hypertens") || text.includes("pressure") || text.includes("pressor") || text.includes("vaso") || text.includes("ecg") || text.includes("rhythm") || text.includes("murmur")) {
-      tools.push({ label: "🧮 MAP & SVR Calculator", url: "calculators.html?calc=map" });
-      tools.push({ label: "🧮 Revised Cardiac Risk Index (RCRI)", url: "calculators.html?calc=rcri" });
-      tools.push({ label: "🚨 Code Room: ACLS Algorithms", url: "crisis.html#acls" });
+      tools.push({ label: "🧮 MAP & SVR Calculator", url: "calculators.html#vasoCard3d" });
+      tools.push({ label: "🧮 Revised Cardiac Risk Index (RCRI)", url: "calculators.html#calcRcri3d" });
+      tools.push({ label: "⚡ Code Room: ACLS Algorithms", url: "resuscitation-chamber.html" });
     }
     if (text.includes("peds") || text.includes("paediatric") || text.includes("child") || text.includes("neonate")) {
-      tools.push({ label: "🧮 Paediatric Dosing & Vitals", url: "calculators.html?calc=peds" });
-      tools.push({ label: "🚨 Neonatal Resuscitation Protocol", url: "crisis.html#neonatal" });
+      tools.push({ label: "🧮 Paediatric Dosing & Vitals", url: "calculators.html#paedsHero" });
+      tools.push({ label: "👶 Paediatric Airway & Resuscitation", url: "calculators.html#paedsHero" });
     }
     if (text.includes("obstetric") || text.includes("pregnancy") || text.includes("eclampsia") || text.includes("labour")) {
-      tools.push({ label: "🚨 Maternal Collapse & Eclampsia", url: "crisis.html#ob" });
+      tools.push({ label: "🤰 Maternal Collapse & Eclampsia", url: "notes.html?cat=obs" });
     }
     if (text.includes("relaxant") || text.includes("rocuronium") || text.includes("vecuronium") || text.includes("sugammadex") || text.includes("tof")) {
-      tools.push({ label: "🧮 Neuromuscular Blockade Reversal", url: "calculators.html?calc=peds" });
+      tools.push({ label: "💊 Neuromuscular Blockade & Reversal", url: "study.html?cat=induction" });
     }
     if (text.includes("anaphylaxis") || text.includes("allergy") || text.includes("histamine")) {
       tools.push({ label: "🚨 Anaphylaxis Emergency Protocol", url: "crisis.html#anaphylaxis" });
     }
     if (text.includes("antibiotic") || text.includes("sepsis") || text.includes("infection") || text.includes("microb") || text.includes("carbapenem") || text.includes("colistin")) {
-      tools.push({ label: "🧮 Sepsis Bundle & Fluids", url: "calculators.html?calc=fluid" });
-      tools.push({ label: "🧮 ABG Anion Gap & Delta", url: "calculators.html?calc=abg" });
+      tools.push({ label: "🧮 Sepsis Bundle & Fluids", url: "calculators.html#calcParkland3d" });
+      tools.push({ label: "🧮 ABG Anion Gap & Delta", url: "calculators.html#tabAbg3d" });
       tools.push({ label: "🚨 Crisis: Anaphylaxis", url: "crisis.html#anaphylaxis" });
     }
     if (text.includes("poison") || text.includes("toxic") || text.includes("overdose") || text.includes("organophosphate") || text.includes("paracetamol") || text.includes("celphos") || text.includes("snake")) {
       tools.push({ label: "🚨 Crisis: LAST / Toxin Rescue", url: "crisis.html#last" });
-      tools.push({ label: "🚨 Code Room: ACLS Protocols", url: "crisis.html#acls" });
-      tools.push({ label: "🧮 MAP & SVR Calculator", url: "calculators.html?calc=map" });
+      tools.push({ label: "⚡ Code Room: ACLS Protocols", url: "resuscitation-chamber.html" });
+      tools.push({ label: "🧮 MAP & SVR Calculator", url: "calculators.html#vasoCard3d" });
     }
     if (text.includes("shock") || text.includes("hemodynamic") || text.includes("inotrope") || text.includes("tamponade")) {
-      tools.push({ label: "🧮 MAP & SVR Calculator", url: "calculators.html?calc=map" });
-      tools.push({ label: "🧮 Estimated Blood Loss & MTP", url: "calculators.html?calc=ebl" });
-      tools.push({ label: "🚨 Crisis: ACLS & Resuscitation", url: "crisis.html#acls" });
+      tools.push({ label: "🧮 MAP & SVR Calculator", url: "calculators.html#vasoCard3d" });
+      tools.push({ label: "🧮 Estimated Blood Loss & MTP", url: "calculators.html#mablCard3d" });
+      tools.push({ label: "⚡ Crisis: ACLS & Resuscitation", url: "resuscitation-chamber.html" });
     }
     if (text.includes("respiratory") || text.includes("ards") || text.includes("weaning") || text.includes("hyperinflation") || text.includes("peep") || text.includes("extubation")) {
       tools.push({ label: "🫁 Ventilator Station 3D", url: "ventilator.html" });
-      tools.push({ label: "🧮 ABG Anion Gap & Delta", url: "calculators.html?calc=abg" });
+      tools.push({ label: "🧮 ABG Anion Gap & Delta", url: "calculators.html#tabAbg3d" });
       tools.push({ label: "🚨 Crisis: Bronchospasm & Airway", url: "crisis.html#bronchospasm" });
     }
 
@@ -442,21 +442,13 @@
     "cc_pharm": 17,
     "cc_advances": 30,
     "pain": 16,
-    // Anaesthesia Curriculum & Core Pillars
-    "general": 32,
-    "equipment": 33,
-    "examination": 34,
-    "ecg": 35,
-    "pft": 36,
-    // Miller 10th Edition Curriculum Sections
-    "sec_intro": 37,
-    "sec_phys_pharm": 38,
-    "sec_management": 39,
-    "sec_subspecialties": 40,
-    "sec_pediatrics": 41,
-    "sec_postop": 42,
-    "sec_critical_care": 43,
-    "sec_safety_research": 44,
+    // Anaesthesia Clinical Cross-over Mappings (valid question bank chapters 1-31)
+    "equipment": 8,
+    "ecg": 11,
+    "pft": 14,
+    "sec_pediatrics": 27,
+    "sec_critical_care": 1,
+    "sec_postop": 30,
     // Drug Monographs Category Mappings
     "induction": 17,
     "relaxants": 16,
@@ -969,9 +961,18 @@
     if (mount) mount.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  function backToCategory() {
+  function backToCategory(newCatId) {
     activeItem = null;
     searchFilter = "";
+    if (newCatId) {
+      for (const dKey of Object.keys(DOMAIN_DEFS)) {
+        if (DOMAIN_DEFS[dKey].cats.some(c => c.id === newCatId)) {
+          activeDomain = dKey;
+          activeCat = newCatId;
+          break;
+        }
+      }
+    }
     try {
       const url = new URL(window.location.href);
       url.searchParams.delete("item");
@@ -1717,10 +1718,10 @@
                     ${(() => {
                       const prog = getItemProgressState(item.id);
                       return `
-                        <button type="button" class="kn-action-btn kn-study-progress-btn kn-progress-master-btn ${prog === 'mastered' ? 'active-mastered' : ''}" data-kn-progress-target="${esc(item.id)}" data-kn-progress-action="mastered" title="Mark as Mastered">
+                        <button type="button" class="kn-action-btn kn-study-progress-btn kn-progress-master-btn ${prog === 'mastered' ? 'active-mastered' : ''}" data-kn-progress-target="${esc(item.id)}" data-kn-progress-action="mastered" title="Mark as Mastered" aria-pressed="${prog === 'mastered' ? 'true' : 'false'}" aria-label="Mark ${esc(item.name)} as Mastered">
                           <span>${prog === 'mastered' ? '✓' : '○'}</span> <span>Mastered</span>
                         </button>
-                        <button type="button" class="kn-action-btn kn-study-progress-btn kn-progress-revision-btn ${prog === 'revision' ? 'active-revision' : ''}" data-kn-progress-target="${esc(item.id)}" data-kn-progress-action="revision" title="Flag for Revision">
+                        <button type="button" class="kn-action-btn kn-study-progress-btn kn-progress-revision-btn ${prog === 'revision' ? 'active-revision' : ''}" data-kn-progress-target="${esc(item.id)}" data-kn-progress-action="revision" title="Flag for Revision" aria-pressed="${prog === 'revision' ? 'true' : 'false'}" aria-label="Flag ${esc(item.name)} for Revision">
                           <span>${prog === 'revision' ? '⚑' : '⚐'}</span> <span>Revision</span>
                         </button>
                       `;
@@ -2853,6 +2854,17 @@
     }, { passive: true });
   }
 
+  // Keyboard accessibility for topic cards
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      const topicCard = e.target.closest(".ron-interactive-topic-card, [data-topic-id]");
+      if (topicCard && !e.target.closest("button, a, input, select, textarea")) {
+        e.preventDefault();
+        topicCard.click();
+      }
+    }
+  });
+
   window.__RON_STUDY_ACTIVE = true;
   window.KN_STUDY_RETURN = function () {
     renderRonBoard();
@@ -2860,6 +2872,9 @@
   window.StudyRonDesign = {
     openTopic: openTopic,
     backToCategory: backToCategory,
+    selectCategory: function (catId) {
+      backToCategory(catId);
+    },
     setFilter: function (q) {
       searchFilter = q || "";
       renderRonBoard();

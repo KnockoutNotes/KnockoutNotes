@@ -8104,18 +8104,24 @@
       });
     });
 
-    // Handle hash on initial load or default to 'paeds'
+    // Handle hash or query parameter on initial load or default to 'paeds'
     let initialTab = "paeds";
-    const hash = (window.location.hash || "").replace("#", "").toLowerCase();
+    let hash = (window.location.hash || "").replace("#", "").toLowerCase();
+    if (!hash) {
+      try {
+        const calcQ = new URLSearchParams(window.location.search).get("calc");
+        if (calcQ) hash = calcQ.toLowerCase();
+      } catch (_) {}
+    }
     if (hash) {
       if (hash === "all") initialTab = "all";
-      else if (hash.includes("adv") || hash.includes("vaso") || hash.includes("tci") || hash.includes("vent") || hash.includes("mabl") || hash.includes("mtp") || hash.includes("teg") || hash.includes("rotem")) initialTab = "advanced";
+      else if (hash.includes("adv") || hash.includes("vaso") || hash.includes("tci") || hash.includes("vent") || hash.includes("mabl") || hash.includes("ebl") || hash.includes("mtp") || hash.includes("teg") || hash.includes("rotem") || hash.includes("visco")) initialTab = "advanced";
       else if (hash.includes("abg")) initialTab = "abg";
-      else if (hash.includes("emerg") || hash.includes("parkland")) initialTab = "emergency";
-      else if (hash.includes("pft") || hash.includes("fev") || hash.includes("dlco") || hash.includes("spiro") || hash.includes("resect") || hash.includes("lung")) initialTab = "pft";
-      else if (hash.includes("periop") || hash.includes("wilson") || hash.includes("dasi") || hash.includes("stop") || hash.includes("bmi") || hash.includes("child") || hash.includes("mets")) initialTab = "periop";
+      else if (hash.includes("emerg") || hash.includes("parkland") || hash.includes("fluid")) initialTab = "emergency";
+      else if (hash.includes("pft") || hash.includes("fev") || hash.includes("dlco") || hash.includes("spiro") || hash.includes("resect") || hash.includes("lung") || hash.includes("ppo")) initialTab = "pft";
+      else if (hash.includes("periop") || hash.includes("wilson") || hash.includes("dasi") || hash.includes("stop") || hash.includes("bmi") || hash.includes("child") || hash.includes("mets") || hash.includes("rcri") || hash.includes("weights") || hash.includes("local") || hash.includes("cha2ds2") || hash.includes("meld") || hash.includes("frail") || hash.includes("cfs")) initialTab = "periop";
       else if (hash.includes("renal") || hash.includes("cockcroft") || hash.includes("crcl")) initialTab = "renal";
-      else if (hash.includes("paed") || hash.includes("airway") || hash.includes("copur")) initialTab = "paeds";
+      else if (hash.includes("paed") || hash.includes("airway") || hash.includes("copur") || hash.includes("peds") || hash.includes("flacc") || hash.includes("cheops")) initialTab = "paeds";
     }
     activateTab(initialTab);
   }
@@ -8170,7 +8176,30 @@
   function setupAccordion() {
     const calcBoxes = document.querySelectorAll(".calc-box");
     const heroCards = document.querySelectorAll(".calc-hero-card");
-    const initialHash = (window.location.hash || "").replace("#", "").toLowerCase();
+    let initialHash = (window.location.hash || "").replace("#", "").toLowerCase();
+    if (!initialHash) {
+      try {
+        const calcQ = new URLSearchParams(window.location.search).get("calc");
+        if (calcQ) {
+          const calcMap = {
+            'local': 'calcweights3d',
+            'ebl': 'mablcard3d',
+            'mabl': 'mablcard3d',
+            'mtp': 'mtpcard3d',
+            'fluid': 'calcparkland3d',
+            'abg': 'tababg3d',
+            'map': 'vasocard3d',
+            'vaso': 'vasocard3d',
+            'rcri': 'calcrcri3d',
+            'peds': 'paedshero',
+            'vent': 'ventcard3d',
+            'tci': 'tcicard3d',
+            'visco': 'viscocard3d'
+          };
+          initialHash = (calcMap[calcQ.toLowerCase()] || calcQ).toLowerCase();
+        }
+      } catch (_) {}
+    }
 
     calcBoxes.forEach(box => {
       const header = box.querySelector(".calc-box-header");
@@ -8252,7 +8281,30 @@
     });
 
     const handleHash = () => {
-      const h = (window.location.hash || "").replace("#", "").toLowerCase();
+      let h = (window.location.hash || "").replace("#", "").toLowerCase();
+      if (!h) {
+        try {
+          const calcQ = new URLSearchParams(window.location.search).get("calc");
+          if (calcQ) {
+            const calcMap = {
+              'local': 'calcweights3d',
+              'ebl': 'mablcard3d',
+              'mabl': 'mablcard3d',
+              'mtp': 'mtpcard3d',
+              'fluid': 'calcparkland3d',
+              'abg': 'tababg3d',
+              'map': 'vasocard3d',
+              'vaso': 'vasocard3d',
+              'rcri': 'calcrcri3d',
+              'peds': 'paedshero',
+              'vent': 'ventcard3d',
+              'tci': 'tcicard3d',
+              'visco': 'viscocard3d'
+            };
+            h = (calcMap[calcQ.toLowerCase()] || calcQ).toLowerCase();
+          }
+        } catch (_) {}
+      }
       if (!h) return;
       const targetEl = document.getElementById(h) || document.querySelector(`[id*="${h}"]`);
       if (targetEl) {

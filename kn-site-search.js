@@ -42,14 +42,19 @@
     const cleanText = text.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
     if (!query) return esc(cleanText.slice(0, maxLen) + (cleanText.length > maxLen ? "…" : ""));
 
-    const qLower = norm(query);
-    const textLower = norm(cleanText);
+    const qLower = query.toLowerCase().trim();
+    const textLower = cleanText.toLowerCase();
     let idx = textLower.indexOf(qLower);
 
     // If whole phrase not found, look for first token
     if (idx === -1) {
       const firstTok = qLower.split(/\s+/).find(t => t.length > 2);
       if (firstTok) idx = textLower.indexOf(firstTok);
+    }
+    if (idx === -1) {
+      const qNorm = norm(query);
+      const textNorm = norm(cleanText);
+      idx = textNorm.indexOf(qNorm);
     }
     if (idx === -1) idx = 0;
 
@@ -2851,6 +2856,23 @@
           }
         }
 
+        // If on study.html and navigating to a category:
+        if (currentPath === "study.html" && item.href.includes("?cat=")) {
+          const modal = document.getElementById("knSearchModal");
+          if (modal && modal.classList.contains("open")) {
+            modal.classList.remove("open");
+            if (window.KnockoutScrollLock) window.KnockoutScrollLock.set("search", false);
+          }
+          const catMatch = item.href.match(/[?&]cat=([^&#]+)/);
+          const catId = catMatch ? decodeURIComponent(catMatch[1]) : null;
+          if (catId && window.StudyRonDesign && typeof window.StudyRonDesign.backToCategory === "function") {
+            window.StudyRonDesign.backToCategory(catId);
+            return;
+          }
+          window.location.assign(item.href);
+          return;
+        }
+
         // If on study.html and navigating to another topic/drug:
         if (currentPath === "study.html" && item.href.includes("?item=")) {
           const modal = document.getElementById("knSearchModal");
@@ -3158,6 +3180,9 @@
           if (selectedIndex >= 0 && items[selectedIndex]) {
             e.preventDefault();
             items[selectedIndex].click();
+          } else if (items.length > 0) {
+            e.preventDefault();
+            items[0].click();
           }
         }
       });
