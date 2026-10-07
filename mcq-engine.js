@@ -527,8 +527,8 @@
           'or configure timed custom tests tailored to your weak areas.' +
         '</p>' +
         '<div class="kn-mcq-hero-actions">' +
-          '<button type="button" class="kn-mcq-btn kn-mcq-btn--accent" data-action="practice-filter-view" data-view="recall2025" style="background: linear-gradient(135deg, #0284c7, #0369a1); box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35); font-weight:800;">🎯 NEET SS 2025 Critical Care Recall (76)</button>' +
           '<button type="button" class="kn-mcq-btn kn-mcq-btn--primary" data-action="practice-all">Solve All ' + totalQuestions + ' MCQs</button>' +
+          '<button type="button" class="kn-mcq-btn kn-mcq-btn--accent" data-action="practice-filter-view" data-view="recall2025" style="background: linear-gradient(135deg, #0284c7, #0369a1); box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35); font-weight:800;">🎯 NEET SS 2025 Critical Care Recall (76)</button>' +
           '<button type="button" class="kn-mcq-btn kn-mcq-btn--accent" data-action="go-builder">⚡ Build Custom Mock Test</button>' +
           '<button type="button" class="kn-mcq-btn" data-action="practice-filter-view" data-view="bookmarks">⭐ Starred (' + bookmarkedCount + ')</button>' +
           '<button type="button" class="kn-mcq-btn" data-action="practice-filter-view" data-view="incorrect">❌ Mistakes (' + (answeredCount - correctCount) + ')</button>' +
@@ -1027,7 +1027,10 @@
           '<div class="kn-mcq-badges">' +
             '<span class="kn-mcq-badge kn-mcq-badge--ch">Ch ' + currentQ.chapterId + ' · ' + esc(chapterTitle(currentQ.chapterId)) + '</span>' +
             '<span class="kn-mcq-badge kn-mcq-badge--diff" data-diff="' + esc(currentQ.difficulty) + '">' + esc(currentQ.difficulty) + '</span>' +
-            '<span class="kn-mcq-badge kn-mcq-badge--exam">' + esc(currentQ.exam) + '</span>' +
+            (currentQ.sourceType === "neet-ss-2025-recall" || (currentQ.id && currentQ.id.indexOf("NEETSS-CC-2025-") !== -1) ?
+              '<span class="kn-mcq-badge kn-mcq-badge--recall" style="background:#0284c7; color:#fff; font-weight:800; border-color:#38bdf8;">NEET SS CC 2025</span>'
+              : '<span class="kn-mcq-badge kn-mcq-badge--exam">' + esc(currentQ.exam) + '</span>'
+            ) +
           '</div>' +
           '<button type="button" class="kn-mcq-btn kn-mcq-btn--sm" data-action="toggle-exam-review">' +
             (isMarked ? '🚩 Marked for Review' : '⚐ Mark for Review') +
@@ -1184,6 +1187,10 @@
             '<span class="kn-mcq-badge kn-mcq-badge--ch">Ch ' + m.chapterId + ' · ' + esc(chapterTitle(m.chapterId)) + '</span>' +
             '<span class="kn-mcq-badge kn-mcq-badge--topic">' + esc(topicTitle(m.topicId)) + '</span>' +
             '<span class="kn-mcq-badge kn-mcq-badge--diff" data-diff="' + esc(m.difficulty) + '">' + esc(m.difficulty) + '</span>' +
+            (m.sourceType === "neet-ss-2025-recall" || (m.id && m.id.indexOf("NEETSS-CC-2025-") !== -1) ?
+              '<span class="kn-mcq-badge kn-mcq-badge--recall" style="background:#0284c7; color:#fff; font-weight:800; border-color:#38bdf8;">NEET SS CC 2025</span>'
+              : '<span class="kn-mcq-badge kn-mcq-badge--exam">' + esc(m.exam) + '</span>'
+            ) +
           '</div>' +
         '</div>' +
 
@@ -1563,7 +1570,15 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else if (action === "practice-filter-view") {
         triggerHaptic();
-        state.practiceFilter.view = btn.getAttribute("data-view");
+        var targetV = btn.getAttribute("data-view");
+        state.practiceFilter.view = targetV;
+        if (targetV === "recall2025") {
+          state.practiceFilter.chapterId = "";
+          state.practiceFilter.topicId = "";
+          state.practiceFilter.exam = "all";
+          state.practiceFilter.difficulty = "all";
+          state.practiceFilter.search = "";
+        }
         state.practiceIndex = 0;
         filterPracticeList();
         state.viewMode = "practice";

@@ -14443,69 +14443,90 @@
     ]
   },
   {
-    "id": "case-ischemic-heart-disease",
-    "cat": "case_cardiac",
-    "name": "Ischemic Heart Disease (IHD) for Non-Cardiac Surgery",
-    "short": "Ischemic Heart Disease",
-    "tags": [
-      "Cardiac",
-      "IHD",
-      "CAD",
-      "Myocardial Ischemia",
-      "RCRI",
-      "DAPT",
-      "Case Discussion"
-    ],
-    "tagline": "Myocardial oxygen supply-demand balance, heart rate control 50–70 bpm, maintain CPP & lead II/V5 surveillance",
-    "source": "Objective Anaesthesia Review, 6th ed., Ch. 2; Miller's Anesthesia, 10th ed., Ch. 13 & 65; 2024 ESC Guidelines on Non-Cardiac Surgery.",
-    "sections": [
-      {
-        "h": "1. Definition, Classification & CCS Angina Staging",
-        "b": "• Definition: Myocardial oxygen supply-demand mismatch secondary to atheromatous coronary stenosis.\n• Canadian Cardiovascular Society (CCS) Functional Angina Staging:\n  - Class I: Angina only with strenuous or prolonged exertion.\n  - Class II: Slight limitation; angina walking >2 blocks or climbing >1 flight of stairs at normal pace.\n  - Class III: Marked limitation; angina walking 1–2 blocks or climbing 1 flight of stairs under normal conditions.\n  - Class IV: Inability to perform any activity without angina; angina present at rest.\n• Types of Perioperative Myocardial Infarction (PMI):\n  - Type 1 MI: Spontaneous plaque rupture, ulceration, and occlusive coronary thrombosis triggered by surgical stress, sympathetic catecholamines, and hypercoagulability.\n  - Type 2 MI: Ischemic necrosis secondary to supply-demand imbalance (prolonged tachycardia, hypotension, anemia, or hypoxemia) in the absence of plaque rupture."
+  "id": "case-ischemic-heart-disease",
+  "cat": "case_cardiac",
+  "name": "Ischemic Heart Disease (IHD) for Non-Cardiac Surgery",
+  "short": "Ischemic Heart Disease",
+  "tags": [
+    "Cardiac",
+    "IHD",
+    "CAD",
+    "Myocardial Ischemia",
+    "RCRI",
+    "DAPT",
+    "Case Discussion"
+  ],
+  "tagline": "Myocardial oxygen supply-demand balance, heart rate control 50–70 bpm, maintain CPP & lead II/V5 surveillance",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 2; Miller's Anesthesia, 10th ed., Ch. 13 & 65; 2024 AHA/ACC & ESC Guidelines on Non-Cardiac Surgery.",
+  "sections": [
+    {
+      "h": "1. Definition, MI Mechanisms & Functional Staging (NYHA vs CCS)",
+      "image": {
+        "src": "assets/cardiology/ihd-functional-classification-nyha-ccs.jpg",
+        "alt": "Functional Classification in IHD: NYHA and CCS comparison",
+        "caption": "Functional Classification in IHD: NYHA Functional Classification of Heart Failure (Class I–IV) and Canadian Cardiovascular Society (CCS) Grading of Angina (Class I–IV) with Exam Pearls & Clinical Relevance (2024 Guidelines)"
       },
-      {
-        "h": "2. Pathophysiology: Supply vs Demand & The Subendocardial Vulnerability",
-        "b": "• Determinants of Myocardial Oxygen Demand (MVO₂):\n  1. HEART RATE: Single most critical factor; increases beat frequency while shortening diastolic perfusion.\n  2. Afterload / Wall Tension: Governed by Laplace Law (T = P × r / 2h; systolic pressure and ventricular dilation increase wall tension).\n  3. Myocardial Contractility: Excessive inotropes waste energy.\n• Determinants of Myocardial Oxygen Supply:\n  1. Coronary Perfusion Pressure (CPP): CPP = Aortic Diastolic Pressure (ADP) - Left Ventricular End-Diastolic Pressure (LVEDP).\n  2. Diastolic Perfusion Time: The LV subendocardium is perfused exclusively during diastole. Tachycardia reduces diastole precipitously.\n  3. Arterial Oxygen Content (CaO₂ = 1.34 × Hb × SaO₂): Anemia (Hb < 8 g/dL) or hypoxemia severely curtails oxygen delivery.\n  4. Fixed Atherosclerotic Obstruction: Prevents distal autoregulatory vasodilatation, making regional myocardial blood flow entirely pressure-dependent.\n• Subendocardial Vulnerability: Highest intracavitary compressive force; first tissue layer to suffer ischemic necrosis."
+      "b": "• Definition: Myocardial oxygen supply-demand mismatch secondary to atheromatous coronary stenosis or acute plaque disruption.\n• Types of Perioperative Myocardial Infarction (PMI — Fourth Universal Definition of MI):\n  - TYPE 1 MI: Spontaneous plaque disruption (rupture, ulceration, erosion) with intraluminal coronary thrombosis triggered by intense surgical neuroendocrine stress, sympathetic catecholamine surge, and hypercoagulability.\n  - TYPE 2 MI: Myocardial ischemic necrosis secondary to severe supply-demand imbalance (prolonged tachycardia, hypotension, severe anemia, hypoxemia, or sepsis) without acute plaque rupture.\n• Canadian Cardiovascular Society (CCS) Grading of Angina (Ischemia Severity):\n  - CCS CLASS I: Ordinary physical activity (walking, climbing stairs) does not cause angina. Angina occurs only with strenuous, rapid, or prolonged exertion.\n  - CCS CLASS II: Slight limitation of ordinary activity. Angina occurs walking rapidly, walking uphill, walking >2 blocks on level ground, or climbing >1 flight of stairs at normal pace, or walking in cold/wind.\n  - CCS CLASS III: Marked limitation of ordinary activity. Angina occurs walking 1–2 blocks on level ground or climbing 1 flight of stairs at normal pace.\n  - CCS CLASS IV: Inability to perform any physical activity without discomfort. Anginal symptoms may be present at rest.\n• NYHA Functional Classification of Heart Failure (Functional Limitation due to Symptoms):\n  - CLASS I: No limitation of physical activity. Ordinary physical activity does not cause undue fatigue, palpitation, or dyspnea.\n  - CLASS II: Slight limitation of physical activity. Comfortable at rest; ordinary physical activity causes fatigue, palpitation, or dyspnea.\n  - CLASS III: Marked limitation of physical activity. Comfortable at rest; less than ordinary activity causes fatigue, palpitation, or dyspnea.\n  - CLASS IV: Inability to carry out any physical activity without discomfort. Symptoms of cardiac insufficiency present even at rest.\n• Functional Capacity Scoring (METs & DASI):\n  - METS (Metabolic Equivalents of Task): 1 MET = 3.5 mL O₂/kg/min (resting basal consumption). < 4 METs (unable to climb 2 flights of stairs, walk 4 km/h, or carry groceries) identifies poor cardiac reserve and predicts high perioperative morbidity. ≥ 4 METs with stable disease allows proceeding to elective surgery.\n  - DASI (Duke Activity Status Index): Validated 12-item questionnaire. A score ≤ 34 corresponds to peak VO₂ < 14 mL/kg/min (< 4 METs) and correlates with high 30-day myocardial injury (MINS) and mortality."
+    },
+    {
+      "h": "2. Pathophysiology: Plaque Disruption, Cellular Injury & The Wavefront of Necrosis",
+      "image": {
+        "src": "assets/cardiology/ihd-pathophysiology-mi-flowchart.jpg",
+        "alt": "Pathophysiology of Myocardial Infarction Flowchart",
+        "caption": "Pathophysiology of Myocardial Infarction (MI): From vulnerable plaque and disruption (rupture vs erosion) to cellular events during ischemia, time course of injury, and patterns of infarction (LAD, LCX, RCA)"
       },
-      {
-        "h": "3. Preoperative Evaluation, RCRI Scoring & AHA/ACC Flowchart",
-        "b": "• Revised Cardiac Risk Index (RCRI / Lee Criteria - 6 Independent Predictors, 1 Point Each):\n  1. High-risk surgery (Intraperitoneal, intrathoracic, or suprainguinal vascular)\n  2. History of ischemic heart disease (MI, positive stress test, angina, nitrate use, Q-waves)\n  3. History of congestive heart failure (pulmonary edema, PND, S3 gallop, rales, peripheral edema)\n  4. History of cerebrovascular disease (stroke, TIA)\n  5. Diabetes mellitus requiring preoperative insulin therapy\n  6. Preoperative serum creatinine > 2.0 mg/dL (177 mcmol/L)\n  - Risk of Major Adverse Cardiac Events (Cardiac Death, Arrest, Non-fatal MI):\n    * 0 points = 0.4% (Class I - Low Risk)\n    * 1 point = 0.9% (Class II - Low Risk)\n    * 2 points = 6.6% (Class III - Moderate Risk)\n    * ≥3 points = >11.0% (Class IV - High Risk)\n• AHA/ACC Flowchart for Preoperative Non-Cardiac Surgery:\n  - Emergency Surgery: Proceed directly to OR with invasive monitoring and postop surveillance.\n  - Acute Coronary Syndrome (ACS): Halt elective surgery; cardiology evaluation and revascularization.\n  - Stable CAD + Functional Capacity ≥ 4 METs (climbing 2 flights of stairs): Proceed to surgery without further testing.\n  - Elevated Risk Surgery + Poor / Unknown Functional Capacity (<4 METs): Pharmacological stress test (Dobutamine Echo or MPI) indicated ONLY if results will change clinical decision-making."
+      "b": "• Underlying Atherosclerotic Pathology:\n  - Chronic atherosclerosis involves lipid accumulation, chronic intimal inflammation, and fibrous cap formation.\n  - Vulnerable Plaque: Characterized by a large lipid-rich necrotic core, thin fibrous cap (<65 mcm), intense macrophage/T-cell infiltration, and intraplaque neovascularization.\n• Plaque Disruption Mechanisms:\n  1. PLAQUE RUPTURE (Most Common, 60%–75%): Rupture of thin fibrous cap exposes thrombogenic core to circulating blood.\n  2. PLAQUE EROSION (20%–30%): Endothelial denudation without cap rupture; more common in younger patients and smokers.\n  3. CALCIFIED NODULE (2%–5%): Disruption of heavily calcified plaque with protruding calcified nodules.\n• Thrombus Formation Sequence:\n  - Exposure of subendothelial collagen and tissue factor -> Platelet adhesion via von Willebrand factor (vWF) -> Platelet activation and aggregation via GP IIb/IIIa receptors -> Coagulation cascade activation with burst of thrombin generation -> Fibrin-rich occlusive/subocclusive thrombus.\n• Cellular Events During Myocardial Ischemia:\n  - Sudden drop in oxygen supply forces an immediate switch to anaerobic metabolism.\n  - ATP production collapses within seconds; lactate and inorganic phosphate accumulate, producing intracellular acidosis.\n  - Failure of membrane ion pumps (Na⁺/K⁺-ATPase and Ca²⁺-ATPase) produces intracellular Na⁺ and Ca²⁺ overload and K⁺ efflux.\n  - Mitochondrial dysfunction and calcium hypercontracture open the Mitochondrial Permeability Transition Pore (mPTP), producing irreversible cell death.\n• Time Course of Myocardial Injury (Wavefront of Necrosis):\n  - 0–20 MINUTES: Reversible injury. Metabolic changes, glycogen depletion, loss of contractility, but no permanent necrosis.\n  - 20–40 MINUTES: Irreversible cell injury begins. Myocyte necrosis starts in the vulnerable subendocardium and advances as a \"wavefront\" toward the epicardium.\n  - 3–12 HOURS: Coagulative necrosis, contraction band necrosis, pyknosis of nuclei, early neutrophilic infiltration (6–24h).\n  - 1–3 DAYS: Extensive coagulative necrosis, loss of nuclei, dense neutrophilic infiltrate.\n  - 3–7 DAYS: Macrophage infiltration, active phagocytosis and removal of necrotic myocytes.\n  - 1–2 WEEKS: Granulation tissue ingrowth, prominent neo-vascularization, fibroblast proliferation.\n  - WEEKS TO MONTHS: Dense collagenous scar formation; permanent loss of functional myocardium.\n• Coronary Vascular Anatomy & Infarct Patterns:\n  - LAD (Left Anterior Descending): Anteroseptal wall, anterior wall, apex, bundle branches. Transmural infarction produces STEMI in Leads V1–V4.\n  - LCX (Left Circumflex): Lateral LV wall, posterior LV base. Leads I, aVL, V5–V6.\n  - RCA (Right Coronary Artery): Inferior wall, RV free wall, posterior wall, SA node (60%), AV node (90%). Leads II, III, aVF. High risk of AV blocks and RV infarction."
+    },
+    {
+      "h": "3. Preoperative Cardiac Evaluation, Risk Calculators & AHA/ACC 2024 Stepwise Algorithm",
+      "image": {
+        "src": "assets/cardiology/ihd-perioperative-cardiovascular-evaluation-aha-acc-2024.jpg",
+        "alt": "AHA/ACC 2024 Stepwise Algorithm for Perioperative Cardiovascular Evaluation",
+        "caption": "Stepwise Algorithm for Perioperative Cardiovascular Evaluation & Management for Non-Cardiac Surgery (NCS) — AHA/ACC 2024 Guideline: Emergency pathway, acute cardiac syndromes, risk modifiers, functional capacity (METs/DASI), cardiac biomarkers (BNP/troponin), and surveillance"
       },
-      {
-        "h": "4. Preoperative Optimization & Dual Antiplatelet Therapy (DAPT) Decisions",
-        "b": "• DAPT Timing Rules (2024 ESC / ACC/AHA Guidelines):\n  - Elective surgery should be delayed at least 6 MONTHS following Drug-Eluting Stent (DES) implantation.\n  - In time-sensitive surgery (e.g. oncology): May proceed after 3 MONTHS if P2Y12 inhibitor cannot be continued.\n  - Elective surgery should be delayed at least 1 MONTH after Bare-Metal Stent (BMS) implantation.\n• Management for Intermediate-to-High Bleeding Risk Procedures:\n  - Discontinue P2Y12 inhibitor: Clopidogrel 5 days prior; Ticagrelor 3–5 days prior; Prasugrel 7 days prior.\n  - CONTINUE ASPIRIN throughout the perioperative period (unless intracranial surgery).\n  - Resume P2Y12 inhibitor within 48–72 hours postoperatively once surgical hemostasis is verified.\n• Morning of Surgery Drug Guidelines:\n  - CONTINUE: Beta-blockers, Statins (statins stabilize plaques and reduce 30-day mortality), Aspirin.\n  - WITHHOLD: ACE inhibitors / ARBs on morning of surgery (prevents refractory post-induction vasoplegia); SGLT2 inhibitors 3 days prior (prevents euglycemic DKA)."
+      "b": "• AHA/ACC 2024 Stepwise Evaluation Algorithm:\n  - STEP 1 (Emergency Surgery?): If YES, proceed directly to surgery with invasive hemodynamic monitoring, baseline biomarkers, and postoperative surveillance.\n  - STEP 2 (Acute Cardiac Conditions?): Check for Acute Coronary Syndrome (ACS), unstable cardiac arrhythmias, or decompensated heart failure. If YES, halt elective surgery; multidisciplinary team discussion for deferral, non-invasive therapy, or cardiology intervention.\n  - STEP 3 (Estimation of Perioperative Risk): Use validated risk calculators (RCRI or ACS-NSQIP / MICA).\n    * Revised Cardiac Risk Index (RCRI — 6 variables, 1 point each): High-risk surgery, IHD, Heart failure, Cerebrovascular disease, Preoperative insulin therapy, Serum Creatinine > 2.0 mg/dL. Scores ≥2 denote elevated risk (MACE ≥ 6.6%).\n  - STEP 4 (Risk Modifiers Screen): Severe valvular heart disease, severe pulmonary hypertension, elevated-risk congenital heart disease, prior coronary stents/CABG, recent stroke (<3 months), CIED (Pacemaker/ICD), frailty.\n  - STEP 5 (Low Risk & No Risk Modifiers): Proceed directly to surgery.\n  - STEP 6 (Elevated Calculated Risk or Risk Modifiers Present):\n    * Consider 12-lead ECG in elevated-risk asymptomatic patients (Class 2b; Class 2a if established CVD or symptoms).\n    * Echocardiography indicated for suspected moderate/severe valvular stenosis/regurgitation, new dyspnea, or unexplained ventricular dysfunction (Class 1/2a).\n    * Assess Functional Capacity (DASI ≤34 or METs <4).\n  - STEP 7 (Poor or Unknown Functional Capacity):\n    * Ask: \"Will further testing impact decision-making or perioperative care?\"\n    * If NO: Proceed to surgery with risk-reduction strategies or consider alternative non-invasive treatments.\n    * If YES: Preoperative biomarker assessment (BNP / NT-proBNP [Class 2a] and high-sensitivity Troponin [Class 2b]).\n    * Normal biomarkers -> Proceed to surgery.\n    * Abnormal biomarkers -> Echocardiography, non-invasive stress testing (Class 2b), or CCTA (Class 2b). High-risk findings prompt coronary revascularization or deferral."
+    },
+    {
+      "h": "4. Preoperative Optimization, PCI Stent Timing & DAPT Management Protocols",
+      "image": {
+        "src": "assets/cardiology/ihd-timing-ncs-after-pci-dapt-guideline.jpg",
+        "alt": "Timing of Non-Cardiac Surgery After PCI and DAPT Considerations",
+        "caption": "Timing of Non-Cardiac Surgery (NCS) After PCI & Perioperative DAPT Management (2024 AHA/ACC Guideline): Safe delay intervals for Balloon Angioplasty (>14d), BMS (>30d), and DES (ACS >12m vs Chronic >6m; time-sensitive >3m) and DAPT continuation rules"
       },
-      {
-        "h": "5. Anesthetic Strategy & The Cardinal Hemodynamic Goals",
-        "b": "• The Cardinal Hemodynamic Goals (\"The IHD Golden Rules\"):\n  1. HEART RATE: 50 to 70 bpm. Avoid tachycardia aggressively.\n  2. BLOOD PRESSURE: Keep MAP within 20% of baseline. Maintain Aortic Diastolic Pressure (ADP) > 50–60 mmHg to preserve CPP.\n  3. PRELOAD: Keep LV volume normal. Avoid hypovolemia (reduces SV) and volume overload (elevates LVEDP, dropping CPP).\n  4. SVR: Maintain normal SVR. SVR drops compromise coronary perfusion pressure.\n  5. MYOCARDIAL CONTRACTILITY: Avoid excessive inotropes which waste oxygen.\n• Technique Selection:\n  - General Anesthesia: Permits controlled ventilation, tight hemodynamic monitoring, and cardioprotection via volatile-induced ischemic preconditioning.\n  - Regional / Neuraxial Anesthesia: Epidural or peripheral nerve blocks reduce neuroendocrine stress response and hypercoagulability. However, sudden high spinal block with rapid vasodilation and reflex tachycardia must be rigorously prevented."
-      },
-      {
-        "h": "6. Intraoperative Monitoring & Lead V5 / II Surveillance",
-        "b": "• Continuous ECG Surveillance:\n  - 5-Lead ECG with automated ST-segment trend monitoring is mandatory.\n  - Lead II: Monitors RCA / inferior wall ischemia and P-wave morphology / arrhythmias.\n  - Lead V5: Monitors LAD and circumflex / anterolateral wall ischemia (detects 75% of ischemic episodes alone; combined Lead II + V5 detects >85%; II + V4 + V5 detects >96%).\n• Invasive Arterial Line:\n  - Place prior to induction in patients with severe CAD, left main disease, low LVEF (<40%), or undergoing major fluid-shift surgery. Permits immediate detection of hypotension and pulse contour analysis (SVV / PPV).\n• Central Venous Pressure / TEE:\n  - TEE is the most sensitive monitor of intraoperative ischemia, detecting regional wall motion abnormalities (RWMA) within seconds of hypoperfusion, long before ECG ST changes or hemodynamic deterioration occur."
-      },
-      {
-        "h": "7. Detailed Induction & Maintenance Pharmacology",
-        "b": "• Blunting the Pressor Response of Laryngoscopy:\n  - Laryngoscopy stimulates sympathetic fibers, spiking HR and BP within 15 seconds.\n  - Pre-treatment 90 seconds prior to intubation: Fentanyl 3–5 mcg/kg IV, or Lignocaine 1.5 mg/kg IV, or Esmolol 0.5–1.0 mg/kg IV.\n• Induction Agents:\n  - ETOMIDATE (0.2–0.3 mg/kg IV): Agent of choice for compromised LV function or critical multivessel CAD. Maintains hemodynamics and CPP.\n  - PROPOFOL (1.0–1.5 mg/kg slow titration): Can be used if co-titrated with small doses of Phenylephrine or Norepinephrine; blunts sympathetic tone.\n  - KETAMINE: CONTRAINDICATED (causes sympathetic surge, tachycardia, hypertension, and marked increase in MVO₂).\n• Neuromuscular Blockers:\n  - VECURONIUM (0.1 mg/kg) or ROCURONIUM (0.6 mg/kg): Hemodynamically neutral.\n  - PANCURONIUM: STRICTLY CONTRAINDICATED (vagolytic tachycardia).\n• Maintenance:\n  - Volatile Anaesthetics (Sevoflurane or Isoflurane at 0.8–1.0 MAC): Provide pharmacological \"Anesthetic Preconditioning\" (mimics ischemic preconditioning via mitochondrial K_ATP channels, protecting myocardium against ischemic insults)."
-      },
-      {
-        "h": "8. Specific Intraoperative Concerns & Management of Ischemia",
-        "b": "• Protocol for Sudden Intraoperative ST-Segment Depression:\n  1. STEP 1: Check Heart Rate. If HR > 75 bpm, administer IV Esmolol (0.5 mg/kg bolus, then 50–100 mcg/kg/min infusion) or Metoprolol 1–2 mg IV.\n  2. STEP 2: Check Blood Pressure. If hypotension (MAP < 65 or >20% below baseline), administer PHENYLEPHRINE (50–100 mcg) or NOREPINEPHRINE to restore CPP.\n  3. STEP 3: If BP is high and HR is controlled, start NITROGLYCERIN (NTG) infusion (0.5–2 mcg/kg/min) to dilate coronary arteries and lower preload/wall tension.\n  4. STEP 4: Optimize Oxygen Carrying Capacity: Ensure FiO₂ > 0.50, check ABG, transfuse packed RBCs if Hemoglobin < 8–9 g/dL.\n  5. STEP 5: If refractory ischemia or cardiogenic shock ensues, alert surgical team, insert Intra-Aortic Balloon Pump (IABP), and consider urgent coronary angiography."
-      },
-      {
-        "h": "9. Postoperative Concerns, Silent MI & Extubation Criteria",
-        "b": "• Postoperative Myocardial Infarction (PMI) Timeline:\n  - The peak incidence of PMI is on Postoperative Days 1 to 3 (POD 1–3), driven by postoperative inflammatory cytokine storm, prothrombotic surge, hypercoagulability, fluid shifts, and acute surgical pain.\n  - SILENT ISCHEMIA: Up to 75%–85% of postoperative MIs are completely PAINLESS because systemic opioids and incisional pain mask anginal chest pain. Symptoms are atypical: unexplained hypotension, new tachycardia, dyspnea, or altered mental status.\n• Mandatory Postoperative Surveillance:\n  - High-risk patients require routine 12-lead ECG and serial high-sensitivity Troponin I/T measurements at 24 and 48 hours postoperatively.\n• Extubation Protocol:\n  - Smooth awake extubation avoiding coughing, bucking, shivering, or hypoxia. Administer IV Lignocaine 1 mg/kg or Dexmedetomidine 0.5 mcg/kg 10 minutes prior to extubation to prevent sympathetic surge."
-      },
-      {
-        "h": "10. Clinical Vignette & High-Yield Exam Viva Pearls (Tata 6th ed.)",
-        "b": "• Clinical Vignette:\n  A 67-year-old diabetic male with known CAD (DES to LAD 9 months ago, baseline HR 62 bpm, BP 130/80) undergoes open hemicolectomy under GA. Post-induction, SBP drops to 85/50 with HR 60. Ephedrine 6 mg is given; within 90 seconds HR spikes to 105 bpm and Lead V5 displays 2.5 mm ST-segment depression. The anesthesiologist recognizes that Ephedrine caused beta-1 tachycardia that tipped the myocardial oxygen balance. Esmolol 40 mg IV is administered immediately, dropping HR back to 64 bpm. SBP is restored to 125/75 using a low-dose Phenylephrine infusion. Within 4 minutes, ST segments in V5 return to baseline without enzyme elevation.\n• High-Yield Exam Viva Pearls:\n  - Q: Why is tachycardia far more hazardous than hypertension in IHD?\n    A: Hypertension increases MVO₂, but simultaneously increases aortic diastolic pressure (CPP). Tachycardia increases MVO₂ while simultaneously shortening diastole, starving the myocardium from both sides.\n  - Q: What are the two types of perioperative myocardial infarction?\n    A: Type 1 MI is acute plaque rupture and thrombosis caused by perioperative stress and hypercoagulability. Type 2 MI is myocardial ischemia caused by supply-demand mismatch (tachycardia, hypotension, anemia, or hypoxemia) without acute plaque rupture.\n  - Q: Why is Lead V5 the single most important monitoring lead in CAD?\n    A: Because it overlies the anterolateral left ventricle and reflects blood flow from the left anterior descending and circumflex arteries, capturing ~75% of all intraoperative ischemic episodes."
-      }
-    ],
-    "references": [
-      "Objective Anaesthesia Review, 6th ed., Ch. 2, Jaypee Brothers Medical Publishers, 2024.",
-      "Miller's Anesthesia, 10th ed., Ch. 65 (Cardiac Anesthesia), Elsevier, 2025/2026.",
-      "Halvorsen S, et al. 2022 ESC Guidelines on cardiovascular assessment and management of patients undergoing non-cardiac surgery. Eur Heart J 2022;43(38):3826-3924."
-    ]
-  },
+      "b": "• Timing of Non-Cardiac Surgery After Percutaneous Coronary Intervention (PCI — 2024 AHA/ACC Guideline):\n  1. BALLOON ANGIOPLASTY ONLY (No coronary stent placed):\n     - Delay elective non-cardiac surgery ≥ 14 DAYS.\n  2. BARE-METAL STENT (BMS):\n     - Delay elective non-cardiac surgery ≥ 30 DAYS.\n  3. DRUG-ELUTING STENT (DES) FOR ACUTE CORONARY SYNDROME (ACS):\n     - Ideally delay elective non-cardiac surgery ≥ 12 MONTHS.\n  4. DRUG-ELUTING STENT (DES) FOR CHRONIC CORONARY DISEASE:\n     - Delay elective non-cardiac surgery ≥ 6 MONTHS.\n  5. TIME-SENSITIVE SURGERY AFTER DES (e.g. progressive malignancy):\n     - May be considered ≥ 3 MONTHS after PCI if the harm of delay outweighs perioperative cardiac risk.\n  6. POTENTIALLY HARMFUL INTERVALS:\n     - If surgery requires interruption of ≥1 antiplatelet agent: Elective surgery within 30 days of BMS or < 3 months of DES is POTENTIALLY HARMFUL!\n• Perioperative DAPT Management Protocols:\n  - Continue ASPIRIN perioperatively in patients with prior PCI whenever possible.\n  - Continue DAPT when surgery is required within 30 days of BMS or < 3 months of DES, unless bleeding risk strictly outweighs benefit (coordinate with cardiology, surgeon, and anaesthesia).\n  - P2Y12 Inhibitor Discontinuation Timeline for High Bleeding-Risk Surgery:\n    * CLOPIDOGREL: Stop 5 days prior to surgery.\n    * TICAGRELOR: Stop 3 to 5 days prior to surgery.\n    * PRASUGREL: Stop 7 days prior to surgery.\n    * CANGRELOR: Short-acting IV bridge; stop 1 to 6 hours prior to surgery.\n  - Restart P2Y12 inhibitor within 24–72 hours postoperatively once surgical hemostasis is verified.\n• Morning-of-Surgery Medication Rules:\n  - CONTINUE: Beta-blockers (if on chronic therapy; DO NOT initiate acute high-dose beta-blocker on day of surgery without titration — POISE trial showed increased stroke and mortality!), Statins (plaque stabilization), Aspirin.\n  - WITHHOLD: ACE inhibitors / ARBs on morning of surgery (prevents severe post-induction vasoplegic shock); SGLT2 inhibitors 3 days prior (prevents euglycemic DKA)."
+    },
+    {
+      "h": "5. Anesthetic Strategy & The 5 Cardinal Hemodynamic Goals",
+      "b": "• The 5 Cardinal Hemodynamic Goals (\"The IHD Golden Compass\"):\n  1. HEART RATE (50 to 70 bpm — Single Most Critical Factor!):\n     - Tachycardia is lethal in CAD: it doubles MVO₂ while precipitously shortening diastolic coronary filling time.\n     - Maintain resting HR 50–70 bpm at all times; treat any surge above 75 bpm aggressively.\n  2. BLOOD PRESSURE (MAP within 20% of baseline; Aortic Diastolic Pressure > 50–60 mmHg):\n     - Coronary Perfusion Pressure (CPP) = Aortic Diastolic Pressure (ADP) - Left Ventricular End-Diastolic Pressure (LVEDP).\n     - Hypotension drops ADP and starves the subendocardium.\n  3. PRELOAD (Maintain normal LV end-diastolic volume):\n     - Hypovolemia decreases SV and triggers reflex tachycardia.\n     - Hypervolemia dilates LV, elevates LVEDP, and increases wall tension (Laplace law: T = P×r/2h), compressing subendocardial microvasculature.\n  4. AFTERLOAD / SVR (Maintain normal to slightly elevated SVR):\n     - Sudden vasodilation drops coronary perfusion pressure and precipitates ischemia.\n  5. MYOCARDIAL CONTRACTILITY (Maintain baseline):\n     - Avoid unnecessary beta-agonists / positive inotropes (which waste ATP and oxygen) unless cardiogenic shock supervenes.\n• Technique Selection:\n  - General Anesthesia: Permits controlled ventilation, tight PaCO₂ and PaO₂ control, invasive hemodynamic tracking, and cardioprotection via volatile-induced ischemic preconditioning.\n  - Regional / Neuraxial Anesthesia: Epidural analgesia reduces the neuroendocrine catecholamine stress response and hypercoagulability. However, rapid-onset single-shot spinal with profound vasodilation and reflex tachycardia is hazardous."
+    },
+    {
+      "h": "6. Intraoperative Monitoring & Lead V5 / II Surveillance",
+      "b": "• Continuous ECG Monitoring (5-Lead System with Automated ST-Segment Analysis):\n  - Lead II: Monitors RCA / inferior wall ischemia and P-wave morphology / rhythm disturbances.\n  - Lead V5: Overlies the anterolateral left ventricle (LAD and circumflex territory). Detects 75% of all intraoperative ischemic episodes alone.\n  - Lead II + V5: Combined surveillance captures >85% of ischemic episodes.\n  - Lead II + V4 + V5: Captures >96% of ischemic episodes.\n  - Set ST-segment alarms to trigger at 1.0 mm (0.1 mV) J-point depression or elevation.\n• Pre-Induction Invasive Radial Arterial Line:\n  - Indications: Severe CAD (left main or triple vessel), LVEF < 40%, recent PCI, high-risk surgery, or major anticipated fluid shifts.\n  - Allows beat-to-beat pressure monitoring during laryngoscopy and immediate titration of vasopressors, plus serial ABG, lactate, and hemoglobin measurements.\n• Transesophageal Echocardiography (TEE):\n  - The gold standard intraoperative monitor. Visualizes Regional Wall Motion Abnormalities (RWMA) within seconds of hypoperfusion, long before ECG ST-segment changes or hemodynamic collapse appear."
+    },
+    {
+      "h": "7. Detailed Induction & Maintenance Pharmacology",
+      "b": "• Blunting the Pressor Response of Laryngoscopy:\n  - Laryngoscopy stimulates sympathetic fibers in the epipharynx, spiking HR and BP within 15 seconds.\n  - Pre-treatment given 90–120 seconds prior to intubation:\n    * FENTANYL (3–5 mcg/kg IV) or REMIFENTANIL (1 mcg/kg IV).\n    * LIGNOCAINE (1.5 mg/kg IV) to blunt airway reflexes.\n    * ESMOLOL (0.5–1.0 mg/kg IV) to strictly suppress tachycardia.\n• Induction Agents:\n  - ETOMIDATE (0.2–0.3 mg/kg IV): Agent of choice in patients with compromised LV function or critical multi-vessel CAD. Complete hemodynamic stability, zero myocardial depression, zero reflex tachycardia.\n  - PROPOFOL (1.0–1.5 mg/kg slow titration): Can be used if co-titrated with small doses of Phenylephrine or Norepinephrine; blunts sympathetic tone.\n  - KETAMINE: STRICTLY CONTRAINDICATED (sympathetic surge produces marked tachycardia, hypertension, and spikes MVO₂).\n• Neuromuscular Blockers:\n  - VECURONIUM (0.1 mg/kg) or ROCURONIUM (0.6 mg/kg): Hemodynamically neutral.\n  - CISATRACURIUM (0.15 mg/kg): Ideal if renal or hepatic impairment.\n  - PANCURONIUM: STRICTLY CONTRAINDICATED (vagolytic tachycardia triggers myocardial ischemia).\n• Maintenance of Anesthesia:\n  - Volatile Anesthetics (Sevoflurane or Isoflurane at 0.8–1.0 MAC): Provide pharmacological \"Anesthetic Preconditioning\" (activates mitochondrial K_ATP channels, protecting myocardium against subsequent ischemic insults).\n  - AVOID Nitrous Oxide (N₂O increases MVO₂, elevates PVR, and inhibits methionine synthase)."
+    },
+    {
+      "h": "8. Specific Intraoperative Concerns & Management of Ischemia",
+      "b": "• Step-by-Step Intraoperative Ischemia Rescue Algorithm:\n  1. STEP 1 (Check Heart Rate): If HR > 75 bpm, administer IV ESMOLOL (0.5 mg/kg bolus over 1 min, then 50–100 mcg/kg/min infusion) or METOPROLOL 1–2 mg IV. Slowing HR immediately prolongs diastole and restores coronary blood flow.\n  2. STEP 2 (Check Blood Pressure): If hypotension (MAP < 65 or >20% below baseline), administer PHENYLEPHRINE (50–100 mcg IV) or NOREPINEPHRINE (0.02–0.1 mcg/kg/min) to restore aortic diastolic pressure and CPP.\n  3. STEP 3 (If BP Elevated with Ischemia): Start NITROGLYCERIN (NTG) infusion (0.5–2 mcg/kg/min). Venodilates capacitance vessels, lowers LVEDP, decreases wall tension, and dilates large epicardial coronary arteries.\n  4. STEP 4 (Optimize Oxygen Delivery): Ensure FiO₂ > 0.50, confirm adequate ventilation, check ABG, transfuse packed RBCs if Hemoglobin < 8–9 g/dL.\n  5. STEP 5 (Refractory Ischemia / Cardiogenic Shock): Alert surgical team, initiate inodilators (Milrinone / Levosimendan) or inotropes (Epinephrine), insert Intra-Aortic Balloon Pump (IABP), and mobilize interventional cardiology for emergency PCI."
+    },
+    {
+      "h": "9. Postoperative Concerns, Silent MI & Extubation Criteria",
+      "b": "• Postoperative Myocardial Infarction (PMI) Timeline:\n  - Peak incidence of PMI is on Postoperative Days 1 to 3 (POD 1–3), driven by the postoperative neuroendocrine inflammatory storm, prothrombotic surge, hypercoagulability, fluid shifts, and acute surgical pain.\n  - SILENT ISCHEMIA: Up to 75%–85% of postoperative MIs are completely PAINLESS because systemic opioids and acute surgical wound pain mask anginal chest pain. Symptoms are atypical: unexplained hypotension, new tachycardia, dyspnea, or altered mental status.\n• Mandatory Postoperative Surveillance:\n  - High-risk patients require routine 12-lead ECG and serial high-sensitivity Troponin I/T measurements at 24 and 48 hours postoperatively.\n• Extubation Protocol:\n  - Smooth awake extubation avoiding coughing, bucking, shivering, or hypoxia. Administer IV Lignocaine 1 mg/kg or Dexmedetomidine 0.5 mcg/kg 10 minutes prior to extubation to prevent sympathetic surge."
+    },
+    {
+      "h": "10. Clinical Vignette & High-Yield Exam Viva Pearls (Tata 6th ed.)",
+      "b": "• Clinical Vignette:\n  A 67-year-old male with known CAD (DES to LAD 9 months ago, baseline HR 62 bpm, BP 130/80) undergoes open hemicolectomy under GA. Post-induction, SBP drops to 85/50 with HR 60. Ephedrine 6 mg is given; within 90 seconds HR spikes to 105 bpm and Lead V5 displays 2.5 mm ST-segment depression. The anesthesiologist recognizes that Ephedrine caused beta-1 tachycardia that tipped the myocardial oxygen balance. Esmolol 40 mg IV is administered immediately, dropping HR back to 64 bpm. SBP is restored to 125/75 using a low-dose Phenylephrine infusion. Within 4 minutes, ST segments in V5 return to baseline without enzyme elevation.\n• High-Yield Exam Viva Pearls:\n  - Q: Why is tachycardia far more hazardous than hypertension in IHD?\n    A: Hypertension increases MVO₂, but simultaneously increases aortic diastolic pressure (CPP). Tachycardia increases MVO₂ while simultaneously shortening diastole, starving the myocardium from both sides.\n  - Q: What are the two types of perioperative myocardial infarction?\n    A: Type 1 MI is acute plaque rupture and thrombosis caused by perioperative stress and hypercoagulability. Type 2 MI is myocardial ischemia caused by supply-demand mismatch (tachycardia, hypotension, anemia, or hypoxemia) without acute plaque rupture.\n  - Q: Why is Lead V5 the single most important monitoring lead in CAD?\n    A: Because it overlies the anterolateral left ventricle and reflects blood flow from the left anterior descending and circumflex arteries, capturing ~75% of all intraoperative ischemic episodes."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 2, Jaypee Brothers Medical Publishers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 13 & 65, Elsevier, 2025/2026.",
+    "2024 AHA/ACC Guideline for Perioperative Cardiovascular Evaluation and Management of Patients Undergoing Noncardiac Surgery. Circulation 2024.",
+    "Halvorsen S, et al. 2022 ESC Guidelines on cardiovascular assessment and management of patients undergoing non-cardiac surgery. Eur Heart J 2022;43(38):3826-3924."
+  ]
+},
   {
     "id": "case-cabg-cardiopulmonary-bypass",
     "cat": "case_cardiac",
@@ -14833,99 +14854,132 @@
     ]
   },
   {
-    "id": "case-bronchiectasis-lung-abscess",
-    "cat": "case_resp",
-    "name": "Bronchiectasis with Lung Abscess",
-    "short": "Bronchiectasis & Abscess",
-    "tags": [
-      "Respiratory",
-      "Bronchiectasis",
-      "Lung Abscess",
-      "Airway Soiling",
-      "Cross-Contamination",
-      "Case Discussion"
-    ],
-    "tagline": "Lung isolation prior to induction, posture optimization, spillage prevention & bronchial toilet",
-    "source": "Objective Anaesthesia Review, 6th ed., Ch. 9; Miller's Anesthesia, 10th ed., Ch. 67.",
-    "sections": [
-      {
-        "h": "1. Definition, Pathophysiology & The Cross-Contamination Threat",
-        "b": "• Definition: Chronic, irreversible abnormal dilatation of bronchi and bronchioles accompanied by chronic necrotizing infection, copious purulent sputum production (>50–100 mL/day), and localized cavitation with necrotic debris (lung abscess).\n• The Primary Anesthetic Danger (Contamination of Healthy Lung):\n  - Copious secretions (often foul-smelling, anaerobic, and blood-stained) can flood the trachea upon induction of anaesthesia or loss of protective airway reflexes.\n  - Aspiration of infected pus into the contralateral healthy lung produces acute asphyxiation, severe necrotizing pneumonia, and bilateral respiratory failure.\n• Pathophysiological Impairment: Severe ventilation-perfusion mismatch, intrapulmonary shunting, chronic hypoxemia, reactive pulmonary hypertension, and secondary cor pulmonale."
-      },
-      {
-        "h": "2. Preoperative Optimization & Postural Drainage",
-        "b": "• Antimicrobial Therapy: Culture-directed parenteral antibiotics for 7–14 days to minimize active sputum volume and microbial load.\n• Postural Drainage & Chest Physiotherapy:\n  - Vigorous postural drainage (prone, head-down, or lateral depending on abscess segment) combined with chest percussion.\n  - Morning of Surgery: Patient performs active coughing and postural drainage immediately before entering the operating theatre to clear pooled secretions.\n• Bronchodilator Therapy: Inhaled salbutamol and ipratropium to optimize baseline airway caliber."
-      },
-      {
-        "h": "3. Airway Strategy & Lung Isolation Protocols",
-        "b": "• Airway Strategy to Prevent Spillage:\n  1. AWAKE INTUBATION OR SITTING INDUCTION:\n     - If abscess is large and secretions are uncontrollable: Awake fibreoptic intubation with topical local anesthesia OR intubation in the semi-upright / sitting position preserves active airway reflexes.\n  2. IMMEDIATE BRONCHIAL ISOLATION:\n     - Place a Left-Sided Double Lumen Tube (DLT) immediately.\n     - If left lung is diseased: Use a right-sided DLT or Univent tube / Arndt bronchial blocker placed under direct bronchoscopic guidance.\n  3. IMMEDIATE ISOLATION & BRONCHIAL TOILET:\n     - Inflate the bronchial cuff immediately upon tracheal entry.\n     - Suction both lumens thoroughly with separate sterile suction catheters before placing patient into lateral decubitus position."
-      },
-      {
-        "h": "4. High-Yield Exam Viva Pearls (Tata 6th ed.)",
-        "b": "• High-Yield Exam Viva Pearls:\n  - Q: How do you position a patient with unilateral lung abscess before lung isolation is achieved?\n    A: Place the patient with the diseased lung DEPENDENT (downward) or keep head elevated. This uses gravity to keep purulent secretions trapped in the diseased lung, preventing spillage across the carina into the healthy upright lung.\n  - Q: What are the bronchial blocker alternatives to DLT in bronchiectasis?\n    A: Arndt wire-guided endobronchial blocker, Cohen tip-deflecting blocker, or Fuji Uniblocker. They can be inserted through a single-lumen ETT, avoiding tube exchange for postoperative ventilation.\n  - Q: Why is post-operative extubation hazardous in bronchiectasis?\n    A: Secretions continue to pool. Extubation should be performed ONLY when the patient is wide awake with a strong cough reflex; bronchoaspiration and toilet must be performed immediately prior to extubation."
-      }
-    ],
-    "references": [
-      "Objective Anaesthesia Review, 6th ed., Ch. 9, Jaypee Brothers, 2024.",
-      "Miller's Anesthesia, 10th ed., Ch. 67, Elsevier, 2025/2026."
-    ]
-  },
+  "id": "case-bronchiectasis-lung-abscess",
+  "cat": "case_resp",
+  "name": "Bronchiectasis with Lung Abscess",
+  "short": "Bronchiectasis & Abscess",
+  "tags": [
+    "Respiratory",
+    "Bronchiectasis",
+    "Lung Abscess",
+    "Airway Soiling",
+    "Cross-Contamination",
+    "Case Discussion"
+  ],
+  "tagline": "Lung isolation prior to induction, posture optimization, spillage prevention & bronchial toilet",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 9; Miller's Anesthesia, 10th ed., Ch. 67; Slinger's Principles and Practice of Anesthesia for Thoracic Surgery.",
+  "sections": [
+    {
+      "h": "1. Definition, Reid Classification & Etiological Spectrum",
+      "b": "• Definition: Chronic, irreversible abnormal dilatation of bronchi and bronchioles accompanied by destruction of muscular and elastic tissue of the bronchial walls, chronic necrotizing infection, copious purulent sputum production (>50–100 mL/day), and localized cavitation with necrotic debris (lung abscess).\n• Reid Morphological Classification:\n  1. CYLINDRICAL (TUBULAR) BRONCHIECTASIS: Uniform dilatation of medium-sized bronchi terminating abruptly in obstructed distal bronchioles.\n  2. VARICOSE BRONCHIECTASIS: Irregular, beaded dilatation resembling varicose veins, caused by localized areas of constricting bronchial fibrosis.\n  3. SACCULAR (CYSTIC) BRONCHIECTASIS: Most severe form; balloon-like cystic cavities with fluid/air levels, complete destruction of bronchial cartilage, and massive pooling of purulent secretions.\n• Etiological Spectrum:\n  - Post-Infectious (Most common): Measles, pertussis, tuberculosis, severe necrotizing pneumonia.\n  - Genetic & Ciliary Disorders: Cystic fibrosis (CFTR mutation), Primary ciliary dyskinesia / Kartagener syndrome (situs inversus, bronchiectasis, chronic sinusitis).\n  - Airway Obstruction: Foreign body, endobronchial tumor, extrinsic nodal compression.\n  - Immunodeficiency: Hypogammaglobulinemia, HIV, Allergic Bronchopulmonary Aspergillosis (ABPA)."
+    },
+    {
+      "h": "2. Pathophysiology: Bronchial Artery Hypertrophy & The Threat of Exsanguinating Hemoptysis",
+      "b": "• Vascular Remodeling & Neovascularization:\n  - Chronic transmural infection stimulates massive hypertrophy and tortuosity of the BRONCHIAL ARTERIAL CIRCULATION (systemic high-pressure vessels arising from aorta).\n  - Extensive systemic-to-pulmonary vascular anastomoses develop in the inflamed bronchial walls.\n  - Thin-walled neo-vessels erode into the airway lumen, producing sudden, massive life-threatening hemoptysis (>200–600 mL / 24 hours).\n• Gas Exchange Impairment:\n  - Chronic purulent plugs and bronchial destruction produce severe ventilation-perfusion mismatch, large intrapulmonary anatomical shunt, chronic arterial hypoxemia, and secondary pulmonary hypertension with cor pulmonale."
+    },
+    {
+      "h": "3. The Dual Anesthetic Disasters: Contralateral Spillage & Airway Asphyxiation",
+      "b": "• The Primary Anesthetic Danger (Contamination of Healthy Lung):\n  - Copious secretions (often foul-smelling, anaerobic, and blood-stained) can flood the trachea upon induction of anaesthesia or loss of protective airway reflexes.\n  - Aspiration of infected pus into the contralateral healthy lung produces acute asphyxiation, severe necrotizing pneumonia, and bilateral respiratory failure.\n• The Secondary Danger (Exsanguinating Airway Hemorrhage):\n  - Laryngoscopy, rigid bronchoscopy, or suctioning can rupture friable bronchial vessels, flooding the tracheobronchial tree with blood and causing immediate drowning."
+    },
+    {
+      "h": "4. Preoperative Evaluation: 24-Hour Sputum Quantitation & HRCT Chest Signs",
+      "b": "• Bedside Sputum Quantitation (Sputum Cup Test):\n  - Grade 1 (Mild): < 20 mL purulent sputum / 24 hours.\n  - Grade 2 (Moderate): 20 to 50 mL purulent sputum / 24 hours.\n  - Grade 3 (Severe): > 50 to 100 mL purulent sputum / 24 hours (Mandates strict awake or isolated airway strategy!).\n  - Three-Layer Sputum Appearance: Top frothy layer, middle cloudy mucoid layer, and bottom dense sediment layer of pus and cellular debris.\n• Preoperative HRCT Chest Review:\n  - Gold-standard imaging. Look for:\n    1. \"Signet Ring Sign\": Bronchial lumen diameter > 1.5 times the diameter of adjacent pulmonary artery.\n    2. \"Tram-Track Opacities\": Parallel thickened bronchial walls.\n    3. Cavitary lesion with air-fluid level (lung abscess) and segmental anatomical location.\n• Laboratory & Microbiologic Workup:\n  - Sputum Gram stain, culture, and sensitivity (Pseudomonas aeruginosa, Haemophilus influenzae, anaerobes, Aspergillus, AFB).\n  - ABG: Assess baseline PaO₂, PaCO₂, and shunt fraction.\n  - Spirometry: Mixed obstructive-restrictive defect; ppoFEV₁ assessment before planned lung resection."
+    },
+    {
+      "h": "5. Preoperative Optimization: Postural Drainage, Antibiotics & Chest Physiotherapy",
+      "b": "• Antimicrobial Therapy: Culture-directed parenteral antibiotics for 7–14 days to minimize active sputum volume and microbial load.\n• Postural Drainage & Chest Physiotherapy:\n  - Vigorous postural drainage (prone, head-down, or lateral depending on abscess segment) combined with chest percussion.\n  - Morning of Surgery: Patient performs active coughing and postural drainage immediately before entering the operating theatre to clear pooled secretions.\n• Bronchodilator Therapy: Inhaled salbutamol and ipratropium to optimize baseline airway caliber."
+    },
+    {
+      "h": "6. Airway Strategy & Lung Isolation Protocols: Left DLT vs Right DLT vs Blockers",
+      "b": "• Airway Strategy to Prevent Spillage:\n  1. AWAKE INTUBATION OR SITTING INDUCTION:\n     - If abscess is large and secretions are uncontrollable: Awake fibreoptic intubation with topical local anesthesia OR intubation in the semi-upright / sitting position preserves active airway reflexes.\n  2. IMMEDIATE BRONCHIAL ISOLATION:\n     - Place a Left-Sided Double Lumen Tube (DLT) immediately.\n     - If left lung is diseased: Use a right-sided DLT or Univent tube / Arndt bronchial blocker placed under direct bronchoscopic guidance.\n  3. IMMEDIATE ISOLATION & BRONCHIAL TOILET:\n     - Inflate the bronchial cuff immediately upon tracheal entry.\n     - Suction both lumens thoroughly with separate sterile suction catheters before placing patient into lateral decubitus position."
+    },
+    {
+      "h": "7. Intraoperative Positioning: Gravitational Secretion Management",
+      "b": "• Principles of Gravitational Control:\n  - DURING INDUCTION: Keep patient head-up or with the diseased lung DEPENDENT (downward) if lung isolation is not yet secured. This uses gravity to trap purulent secretions in the diseased lung.\n  - DURING THORACOTOMY: Patient is turned into lateral decubitus position with the diseased operative lung UPPERMOST (non-dependent). Bronchial cuff of DLT MUST be confirmed fully inflated and sealed prior to turning to prevent gravitational drainage into the lower dependent healthy lung.\n• Frequent Fiberoptic Verification:\n  - Position of DLT cuff must be verified via fiberoptic bronchoscope immediately after lateral positioning, as tube displacement occurs in up to 35% of turns."
+    },
+    {
+      "h": "8. One-Lung Ventilation (OLV) Management & Hypoxemia Protocols",
+      "b": "• Protective OLV Protocol:\n  - Tidal Volume: 4 to 6 mL/kg PBW.\n  - Respiratory Rate: 12 to 16 bpm to maintain normocapnia.\n  - PEEP: 5 cmH₂O to the dependent ventilated lung.\n  - Peak airway pressure < 30 cmH₂O; driving pressure < 15 cmH₂O.\n• Step-by-Step Hypoxemia Protocol during OLV:\n  1. Increase FiO₂ to 1.0.\n  2. Confirm DLT position by fiberoptic bronchoscope.\n  3. Apply 5 cmH₂O CPAP with oxygen to the non-dependent (collapsed) lung.\n  4. Suction the dependent ventilated lung.\n  5. If severe hypoxemia persists, request surgeon to intermittently re-inflate non-dependent lung or clamp the non-dependent pulmonary artery."
+    },
+    {
+      "h": "9. Induction Pharmacology, Bronchial Toilet & Postoperative Extubation",
+      "b": "• Induction Pharmacology:\n  - Agent of choice: Etomidate or Propofol titrated to hemodynamics.\n  - Avoid Ketamine (increases bronchial secretions and salivation).\n  - Muscle relaxant: Rocuronium (0.6–0.9 mg/kg) or Vecuronium.\n• Bronchial Toilet Protocol:\n  - Frequent suctioning using separate sterile suction catheters for tracheal and bronchial lumens.\n  - Bronchodilator administration via ETT adapter if wheezing develops.\n• Postoperative Extubation Criteria:\n  - Thorough bronchoscopic suctioning and toilet of both lungs prior to reversal.\n  - Extubate ONLY when wide awake, fully reversed (TOF > 0.9), normothermic, and with a strong, vigorous cough reflex capable of clearing secretions.\n  - If postoperative mechanical ventilation is required, exchange DLT for a single-lumen tube over an airway exchange catheter (AEC) under direct vision."
+    },
+    {
+      "h": "10. Clinical Vignette & High-Yield Exam Viva Pearls (Tata 6th ed.)",
+      "b": "• Clinical Vignette:\n  A 45-year-old male with left lower lobe bronchiectasis and lung abscess producing 80 mL/day of purulent sputum undergoes left lower lobectomy. Induction is performed semi-sitting with rapid placement of a 37 Fr Left DLT under fiberoptic guidance. Immediately upon cuff inflation, 35 mL of foul-smelling pus is suctioned from the bronchial lumen while the tracheal lumen remains completely clear. During lateral turning, bronchial cuff position is re-confirmed. Surgery proceeds smoothly under OLV without contamination of the right lung. Bronchial toilet is performed, and patient is extubated fully awake in PACU without respiratory compromise.\n• High-Yield Exam Viva Pearls:\n  - Q: How do you position a patient with unilateral lung abscess before lung isolation is achieved?\n    A: Place the patient with the diseased lung DEPENDENT (downward) or keep head elevated. This uses gravity to keep purulent secretions trapped in the diseased lung, preventing spillage across the carina into the healthy upright lung.\n  - Q: What are the bronchial blocker alternatives to DLT in bronchiectasis?\n    A: Arndt wire-guided endobronchial blocker, Cohen tip-deflecting blocker, or Fuji Uniblocker. They can be inserted through a single-lumen ETT, avoiding tube exchange for postoperative ventilation.\n  - Q: Why is post-operative extubation hazardous in bronchiectasis?\n    A: Secretions continue to pool. Extubation should be performed ONLY when the patient is wide awake with a strong cough reflex; bronchoaspiration and toilet must be performed immediately prior to extubation."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 9, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 67, Elsevier, 2025/2026.",
+    "Slinger P. Principles and Practice of Anesthesia for Thoracic Surgery, 2nd ed. Springer."
+  ]
+},
   {
-    "id": "case-copd-perioperative",
-    "cat": "case_resp",
-    "name": "Chronic Obstructive Pulmonary Disease (COPD)",
-    "short": "COPD Perioperative",
-    "tags": [
-      "Respiratory",
-      "COPD",
-      "GOLD Criteria",
-      "Bedside PFTs",
-      "Auto-PEEP",
-      "Bronchospasm",
-      "Case Discussion"
-    ],
-    "tagline": "GOLD 2024 staging, bedside PFTs, expiratory time prolongation, auto-PEEP disconnect test & bronchodilators",
-    "source": "Objective Anaesthesia Review, 6th ed., Ch. 10; Miller's Anesthesia, 10th ed., Ch. 45; GOLD 2024 Report.",
-    "sections": [
-      {
-        "h": "1. Definition, GOLD 2024 Criteria & BODE Index",
-        "b": "• Definition (GOLD 2024): A heterogeneous lung condition characterized by chronic respiratory symptoms (dyspnea, cough, sputum) due to abnormalities of the airways (bronchitis) and/or alveoli (emphysema) that cause persistent, often progressive, airflow obstruction.\n• Spirometric Diagnostic Criterion: Post-bronchodilator FEV₁ / FVC ratio < 0.70 (or < Lower Limit of Normal).\n• Severity of Airflow Obstruction (GOLD 1–4 Staging based on Post-Bronchodilator FEV₁):\n  - GOLD 1 (Mild): FEV₁ ≥ 80% predicted.\n  - GOLD 2 (Moderate): 50% ≤ FEV₁ < 80% predicted.\n  - GOLD 3 (Severe): 30% ≤ FEV₁ < 50% predicted.\n  - GOLD 4 (Very Severe): FEV₁ < 30% predicted.\n• Combined Assessment Framework (GOLD 2024 Groups A, B, E):\n  - Group A: 0–1 moderate exacerbations (not requiring hospital admission), mMRC 0–1 or CAT < 10.\n  - Group B: 0–1 moderate exacerbations, mMRC ≥ 2 or CAT ≥ 10.\n  - Group E (Exacerbation-Prone): ≥ 2 moderate exacerbations or ≥ 1 exacerbation requiring hospitalization.\n• The BODE Index (0–10 Score predicting 4-year survival):\n  - B: Body Mass Index (BMI < 21 = 1 point)\n  - O: Obstruction (FEV₁ % predicted: >65% = 0, 50–64% = 1, 36–49% = 2, ≤35% = 3)\n  - D: Dyspnea (mMRC scale 0–4)\n  - E: Exercise capacity (6-minute walk distance in meters)."
-      },
-      {
-        "h": "2. Bedside Pulmonary Function Tests (Clinical Assessment at Bedside)",
-        "b": "• When full formal spirometry is unavailable or for rapid bedside assessment in pre-anesthesia clinic:\n  1. SABRASEZ BREATH-HOLDING TEST:\n     - Patient inhales maximally and holds breath.\n     - Normal: > 25 to 30 seconds.\n     - Abnormal / Compromised Reserve: 15 to 25 seconds.\n     - Severe Cardiopulmonary Disease: < 15 seconds (high risk of postoperative ventilatory failure!).\n  2. SINGLE BREATH COUNT TEST:\n     - Patient takes a deep breath and counts out loud at 2 counts per second.\n     - Normal: Counts > 30.\n     - Impaired: Counts 15–20.\n     - Severe Impairment (VC < 1 Liter): Inability to count to 15.\n  3. SNIDER MATCH TEST (Match-Blowing Test):\n     - Lighted paper match held 15 cm (6 inches) from patient's mouth with mouth held wide open (patient must NOT purse lips).\n     - Extinguishing the match indicates Peak Expiratory Flow Rate > 150 L/min and FEV₁ > 1.6 Liters.\n     - Inability to blow out match correlates with FEV₁ < 1.0 Liter.\n  4. GREENE'S COUGH TEST:\n     - Assess the strength and quality of patient's cough.\n     - Hollow, wet, feeble cough indicates poor expiratory muscle strength and inability to clear secretions postoperatively.\n  5. WRIGHT'S PEAK FLOW METER:\n     - Normal adult PEFR: 450–600 L/min in males, 350–450 L/min in females. Value < 200 L/min indicates severe obstruction."
-      },
-      {
-        "h": "3. Pathophysiology: Dynamic Hyperinflation & Auto-PEEP",
-        "b": "• Airflow Limitation & Expiratory Time Constant:\n  - Loss of elastic recoil (emphysema) and airway narrowing (bronchitis) dramatically prolong the expiratory time constant (τ = R × C).\n  - If the expiratory time during mechanical ventilation is shorter than the time required for passive exhalation, the next breath is delivered before alveolar emptying is complete.\n• Dynamic Hyperinflation & Auto-PEEP (Intrinsic PEEP):\n  - Progressive air-trapping \"stacks\" breaths, creating elevated positive end-expiratory pressure within alveoli (Auto-PEEP of 10–25 cmH₂O).\n  - Consequences of Severe Auto-PEEP:\n    1. Hemodynamic Collapse: High intrathoracic pressure compresses superior and inferior vena cava, severely impeding venous return, decreasing RV preload, dropping cardiac output, and causing profound hypotension.\n    2. Pulmonary Barotrauma / Volutrauma: Alveolar rupture causing tension pneumothorax or pneumomediastinum.\n    3. Increased Work of Breathing & Trigger Failure during weaning."
-      },
-      {
-        "h": "4. Preoperative Optimization & Smoking Cessation",
-        "b": "• Smoking Cessation Timeline:\n  - 12 to 24 Hours: Carbon monoxide half-life is 4–6 hours; carboxyhemoglobin drops from 8%–10% to normal (<1%), shifting oxyhemoglobin dissociation curve to the right and improving tissue oxygen delivery; nicotine levels fall.\n  - 48 Hours: Sputum volume temporarily spikes as ciliary motility recovers.\n  - 2 to 4 Weeks: Sputum volume decreases; small airway function improves.\n  - 6 to 8 Weeks: Airway reactivity normalizes, ciliary clearance fully recovers, and postoperative pulmonary complications (PPC) decrease significantly (by >40%–50%).\n• Pharmacological Optimization:\n  - Continue baseline inhaled LABA/LAMA and inhaled corticosteroids (ICS) up to and including the morning of surgery.\n  - In patients with active wheezing or recent exacerbation: 5–7 day course of oral Prednisolone (30–40 mg OD) prior to elective surgery."
-      },
-      {
-        "h": "5. Intraoperative Mechanical Ventilation Strategy",
-        "b": "• Lung-Protective & Expiratory-Prolonging Ventilation Guidelines:\n  1. Tidal Volume: 6 to 8 mL/kg of Predicted Body Weight (PBW). Avoid high volumes.\n  2. Respiratory Rate: Low (8 to 10 breaths/min). Low rate provides a long expiratory time (Te).\n  3. I:E Ratio: 1:3 or 1:4 (prolongs expiration to permit complete alveolar emptying).\n  4. Inspiratory Flow Rate: High peak flow (60–80 L/min) delivers tidal volume quickly, leaving more time for expiration.\n  5. Applied PEEP: Low (0 to 5 cmH₂O). Do not apply high external PEEP.\n  6. Permissive Hypercapnia: Tolerate elevated PaCO₂ (50–65 mmHg) provided arterial pH > 7.20–7.25.\n• THE DISCONNECT TEST FOR INTRAOPERATIVE HYPOTENSION IN COPD:\n  - If a patient with COPD develops sudden hypotension and tachycardia on the ventilator:\n  - IMMEDIATELY DISCONNECT THE ENDOTRACHEAL TUBE FROM THE BREATHING CIRCUIT!\n  - Allow 20–30 seconds for passive exhalation and decompress the stacked air.\n  - If blood pressure recovers immediately, the hypotension was caused by severe Auto-PEEP!"
-      },
-      {
-        "h": "6. Treatment of Intraoperative Bronchospasm",
-        "b": "• Clinical Signs: High peak airway pressures with normal plateau pressure (increased airway resistance: Ppeak - Pplat > 10 cmH₂O), wheezing on auscultation, upward-sloping \"shark-fin\" capnograph waveform, and falling tidal volumes.\n• Step-by-Step Bronchospasm Treatment Protocol:\n  1. 100% FiO₂; deepen anaesthesia immediately by increasing volatile anaesthetic (Sevoflurane is a potent bronchodilator).\n  2. Inhaled Beta-2 Agonist: Salbutamol (albuterol) 8–10 puffs delivered directly into ETT via in-line MDI spacer adapter.\n  3. Inhaled Ipratropium Bromide: 4–6 puffs via MDI.\n  4. IV Hydrocortisone (100 mg) or Methylprednisolone (60–120 mg).\n  5. IV Magnesium Sulfate (1.5 to 2.0 grams infused over 15 minutes): Relaxes bronchial smooth muscle by inhibiting calcium influx.\n  6. IV Ketamine (0.5–1.0 mg/kg): Potent bronchodilator via sympathomimetic and direct antimuscarinic actions.\n  7. Subcutaneous / IV Epinephrine (10–50 mcg IV or 0.3 mg IM/SC) if refractory life-threatening bronchospasm with cardiovascular collapse."
-      },
-      {
-        "h": "7. Postoperative Care, Extubation & PPC Prevention",
-        "b": "• ARISCAT Risk Score for Postoperative Pulmonary Complications (PPC):\n  - 7 variables: Age, Preop SpO₂, Respiratory infection within 1 month, Preop anemia, Surgical incision site (upper abdominal/thoracic), Duration of surgery (>2h), Emergency surgery.\n  - High score (>45 points): >42% risk of pulmonary complications.\n• Extubation Checklist: Extubate fully awake when patient is breathing spontaneously with clear airway, normal capnography, and adequate reversal (TOF > 0.9). Early transition to Non-Invasive Ventilation (NIV / BiPAP) in PACU prevents re-intubation.\n• Postoperative Analgesia: Thoracic epidural, erector spinae plane (ESP) block, or rectus sheath blocks provide superior analgesia without systemic opioid-induced respiratory depression."
-      },
-      {
-        "h": "8. High-Yield Exam Viva Pearls (Tata 6th ed.)",
-        "b": "• High-Yield Exam Viva Pearls:\n  - Q: What does the shark-fin waveform on capnography indicate?\n    A: Prolonged, obstructed expiratory gas flow characteristic of bronchospasm or severe chronic obstructive airway disease.\n  - Q: Why should Desflurane be avoided during induction or airway manipulation in COPD?\n    A: Desflurane is pungent and irritates the airway, triggering severe coughing, laryngospasm, and reflex bronchoconstriction at concentrations > 1 MAC.\n  - Q: What is the target PaO₂ / SpO₂ in chronic CO₂-retainers?\n    A: Target SpO₂ 88%–92% (PaO₂ 60–70 mmHg). Excessive oxygen administration (FiO₂ 1.0) eliminates hypoxic drive and worsens V/Q mismatch by reversing regional hypoxic pulmonary vasoconstriction."
-      }
-    ],
-    "references": [
-      "Objective Anaesthesia Review, 6th ed., Ch. 10, Jaypee Brothers, 2024.",
-      "Miller's Anesthesia, 10th ed., Ch. 45, Elsevier, 2025/2026.",
-      "Global Initiative for Chronic Obstructive Lung Disease (GOLD). Global Strategy for the Diagnosis, Management, and Prevention of COPD (2024 Report)."
-    ]
-  },
+  "id": "case-copd-perioperative",
+  "cat": "case_resp",
+  "name": "Chronic Obstructive Pulmonary Disease (COPD)",
+  "short": "COPD Perioperative",
+  "tags": [
+    "Respiratory",
+    "COPD",
+    "GOLD Criteria",
+    "Bedside PFTs",
+    "Auto-PEEP",
+    "Bronchospasm",
+    "Case Discussion"
+  ],
+  "tagline": "GOLD 2024/2025 staging, bedside PFTs, expiratory time prolongation, auto-PEEP disconnect test & bronchospasm protocol",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 10; Miller's Anesthesia, 10th ed., Ch. 45; GOLD 2024/2025 Report.",
+  "sections": [
+    {
+      "h": "1. Definition, GOLD 2024/2025 Criteria & Airflow Staging (GOLD 1–4, Groups A, B, E)",
+      "b": "• Definition (GOLD 2024/2025): A heterogeneous lung condition characterized by chronic respiratory symptoms (dyspnea, cough, sputum production) due to abnormalities of the airways (bronchitis, bronchiolitis) and/or alveoli (emphysema) that cause persistent, often progressive, airflow obstruction.\n• Spirometric Diagnostic Criterion: Post-bronchodilator FEV₁ / FVC ratio < 0.70 (or < 5th percentile Lower Limit of Normal).\n• Severity of Airflow Obstruction (GOLD 1–4 Staging based on Post-Bronchodilator FEV₁):\n  - GOLD 1 (MILD): FEV₁ ≥ 80% predicted.\n  - GOLD 2 (MODERATE): 50% ≤ FEV₁ < 80% predicted.\n  - GOLD 3 (SEVERE): 30% ≤ FEV₁ < 50% predicted.\n  - GOLD 4 (VERY SEVERE): FEV₁ < 30% predicted.\n• Refined Assessment Framework (GOLD Groups A, B, E):\n  - GROUP A: 0 or 1 moderate exacerbation not leading to hospital admission; mMRC 0–1 or CAT < 10.\n  - GROUP B: 0 or 1 moderate exacerbation not leading to hospital admission; mMRC ≥ 2 or CAT ≥ 10.\n  - GROUP E (Exacerbation-Prone — Replaced C & D): ≥ 2 moderate exacerbations or ≥ 1 exacerbation requiring hospital admission, regardless of symptom burden."
+    },
+    {
+      "h": "2. Clinical Scorings: BODE Index, mMRC Dyspnea Scale & CAT Score",
+      "b": "• The BODE Index (Multidimensional 10-Point Score predicting 4-year mortality):\n  - B (Body Mass Index): BMI > 21 (0 pts); BMI ≤ 21 (1 pt).\n  - O (Airflow Obstruction / FEV₁ % predicted): ≥ 65% (0 pts); 50%–64% (1 pt); 36%–49% (2 pts); ≤ 35% (3 pts).\n  - D (Dyspnea / mMRC scale): Grade 0–1 (0 pts); Grade 2 (1 pt); Grade 3 (2 pts); Grade 4 (3 pts).\n  - E (Exercise Capacity / 6-Minute Walk Distance): ≥ 350 m (0 pts); 250–349 m (1 pt); 150–249 m (2 pts); ≤ 149 m (3 pts).\n  - Scoring Interpretation: Score 0–2 (mortality 19%); 3–4 (mortality 32%); 5–6 (mortality 40%); 7–10 (mortality 80% at 4 years).\n• Modified Medical Research Council (mMRC) Dyspnea Scale:\n  - Grade 0: Breathless only with strenuous exercise.\n  - Grade 1: Short of breath when hurrying on level ground or walking up a slight hill.\n  - Grade 2: Walks slower than people of the same age on level ground because of breathlessness, or has to stop for breath when walking at own pace.\n  - Grade 3: Stops for breath after walking ~100 meters or after a few minutes on level ground.\n  - Grade 4: Too breathless to leave the house, or breathless when dressing/undressing.\n• COPD Assessment Test (CAT Score): 8-item questionnaire (0–40 range). CAT < 10 denotes low symptom impact; CAT ≥ 10 denotes high symptom impact."
+    },
+    {
+      "h": "3. Bedside Pulmonary Function Tests (Clinical Bedside Evaluation)",
+      "b": "• When full formal spirometry is unavailable or for rapid pre-anesthetic clinic evaluation:\n  1. SABRASEZ BREATH-HOLDING TEST:\n     - Patient inhales maximally and holds breath as long as possible.\n     - Normal: > 25 to 30 seconds.\n     - Borderline Reserve: 15 to 25 seconds.\n     - Severe Cardiopulmonary Disease: < 15 seconds (high risk of postoperative ventilatory failure and prolonged mechanical ventilation!).\n  2. SINGLE BREATH COUNT TEST:\n     - Patient takes a deep breath and counts aloud at 2 counts per second without inhaling.\n     - Normal: Counts > 30.\n     - Impaired: Counts 15–20.\n     - Severe Impairment (Vital Capacity < 1 Liter): Inability to count to 15.\n  3. SNIDER MATCH TEST (Match-Blowing Test):\n     - Lighted paper match held 15 cm (6 inches) from patient's mouth with mouth held wide open (patient must NOT purse lips).\n     - Extinguishing the match indicates Peak Expiratory Flow Rate (PEFR) > 150 L/min and FEV₁ > 1.6 Liters.\n     - Inability to extinguish match correlates with FEV₁ < 1.0 Liter.\n  4. GREENE'S COUGH TEST:\n     - Assess the strength, resonance, and quality of patient's voluntary cough.\n     - Hollow, wet, feeble cough indicates poor expiratory muscle strength and high risk of postoperative sputum retention and atelectasis.\n  5. WRIGHT'S PEAK FLOW METER:\n     - Normal adult PEFR: 450–600 L/min in males, 350–450 L/min in females. Value < 200 L/min indicates severe airway obstruction."
+    },
+    {
+      "h": "4. Formal Spirometry, Flow-Volume Loops & Blood Gas Patterns",
+      "b": "• Spirometric Indices in COPD:\n  - FEV₁ / FVC ratio: < 0.70 confirms obstructive defect.\n  - Reversibility Testing: Post-bronchodilator increase in FEV₁ > 12% AND > 200 mL indicates significant reversible component (asthma-COPD overlap).\n  - Lung Volumes: Total Lung Capacity (TLC) and Residual Volume (RV) are elevated due to air-trapping (RV/TLC > 35%–40%).\n  - DLCO (Diffusion Capacity for Carbon Monoxide): Decreased in emphysema due to alveolar-capillary destruction; normal in chronic bronchitis.\n• Flow-Volume Loop Morphology:\n  - Displays classic \"scooped-out\" coving of the expiratory limb with reduced peak expiratory flow (PEF) and prolonged expiratory phase.\n• Arterial Blood Gas (ABG) Phenotypes:\n  - \"Pink Puffer\" (Emphysema-predominant): Normal PaO₂ / PaCO₂ at rest, high work of breathing, hyperventilation, thin habitus.\n  - \"Blue Bloater\" (Chronic Bronchitis-predominant): Chronic hypoxemia (PaO₂ 50–60 mmHg), chronic hypercapnia (PaCO₂ 50–65 mmHg), elevated serum bicarbonate (HCO₃⁻ 30–36 mEq/L) indicating compensated respiratory acidosis, polycythemia, and cor pulmonale.\n  - Caution: In chronic CO₂ retainers, hypoxemia provides the respiratory drive via carotid body chemoreceptors. Overzealous oxygen therapy (FiO₂ > 0.40–0.50) blunts ventilation and provokes life-threatening CO₂ narcosis!"
+    },
+    {
+      "h": "5. Pathophysiology: Loss of Elastic Recoil, Dynamic Hyperinflation & Auto-PEEP",
+      "b": "• Expiratory Time Constant (τ = R × C):\n  - Loss of alveolar elastic tethering (emphysema) causes early expiratory airway collapse. Combined with mucosal edema and secretions, airway resistance (R) increases dramatically, markedly prolonging the expiratory time constant.\n  - During positive pressure ventilation, passive exhalation requires 3 to 5 time constants (usually > 3–4 seconds).\n• Dynamic Hyperinflation & Auto-PEEP (Intrinsic PEEP):\n  - If the expiratory time (Te) is shorter than the time required for complete exhalation, the next mandatory breath is delivered before alveolar emptying is complete.\n  - Trapped air stacks progressively, creating intrinsic positive end-expiratory pressure (Auto-PEEP of 10–25 cmH₂O).\n• Catastrophic Consequences of Auto-PEEP:\n  1. PROFOUND HEMODYNAMIC COLLAPSE: High intrathoracic pressure compresses superior and inferior vena cava, drastically curtailing venous return, dropping RV/LV preload, and causing sudden cardiovascular collapse.\n  2. BAROTRAUMA: Rupture of subpleural blebs producing tension pneumothorax.\n  3. VENTILATORY WORK: Patient must generate negative pressure exceeding Auto-PEEP before triggering a breath during weaning."
+    },
+    {
+      "h": "6. Preoperative Optimization: Smoking Cessation Timeline & Bronchodilators",
+      "b": "• Smoking Cessation Physiological Timeline:\n  - 12 to 24 HOURS: Carbon monoxide half-life is 4–6 hours; carboxyhemoglobin drops from 8%–10% to <1%, shifting oxyhemoglobin curve to the right and improving tissue O₂ delivery; nicotine levels clear.\n  - 48 HOURS: Sputum volume temporarily spikes as paralyzed respiratory cilia recover beat frequency.\n  - 2 to 4 WEEKS: Sputum production declines; small airway reactivity decreases.\n  - 6 to 8 WEEKS: Airway reactivity normalizes, immune and macrophage function recovers, and postoperative pulmonary complications (PPC) drop significantly (by >40%–50%).\n• Pharmacological Optimization:\n  - Continue baseline inhaled LABA (Formoterol/Salmeterol), LAMA (Tiotropium), and Inhaled Corticosteroids (ICS) up to the morning of surgery.\n  - In patients with recent exacerbation or wheezing: 5–7 day course of oral Prednisolone (30–40 mg daily) prior to elective surgery.\n  - Incentive spirometry and chest physiotherapy instruction preoperatively."
+    },
+    {
+      "h": "7. Intraoperative Mechanical Ventilation Strategy & The Disconnect Test",
+      "b": "• Lung-Protective & Expiratory-Prolonging Ventilation Protocol:\n  1. TIDAL VOLUME: 6 to 8 mL/kg of Predicted Body Weight (PBW). Avoid high volumes.\n  2. RESPIRATORY RATE: Low (8 to 10 breaths/min). Low rate provides a long expiratory time (Te > 4–5 seconds).\n  3. I:E RATIO: 1:3 or 1:4 (prolongs expiration to permit complete alveolar emptying).\n  4. INSPIRATORY FLOW RATE: High peak flow (60–80 L/min) delivers tidal volume quickly, maximizing expiratory duration.\n  5. APPLIED PEEP: Low (0 to 5 cmH₂O). Do not apply high external PEEP (which adds to hyperinflation).\n  6. PERMISSIVE HYPERCAPNIA: Tolerate elevated PaCO₂ (50–65 mmHg) provided arterial pH > 7.20–7.25.\n• THE ETT DISCONNECT TEST FOR SUDDEN INTRAOPERATIVE HYPOTENSION:\n  - If a ventilated patient with COPD develops sudden hypotension and tachycardia:\n  - IMMEDIATELY DISCONNECT THE ENDOTRACHEAL TUBE FROM THE VENTILATOR CIRCUIT!\n  - Allow 20–30 seconds for passive exhalation and decompress the stacked air.\n  - Listen for escaping gas and observe chest descent.\n  - If blood pressure recovers immediately, the hypotension was caused by severe Auto-PEEP!\n  - Adjust ventilator: decrease rate, increase expiratory time, and reduce tidal volume."
+    },
+    {
+      "h": "8. Acute Intraoperative Bronchospasm Management Protocol",
+      "b": "• Clinical Diagnosis:\n  - Increased airway resistance (elevated peak inspiratory pressure with normal plateau pressure: Ppeak - Pplat > 10–15 cmH₂O).\n  - Auscultation: Expiratory wheezing, prolonged expiration.\n  - Capnography: Upward-sloping \"shark-fin\" expiratory capnograph waveform with delayed alveolar plateau.\n• Step-by-Step Bronchospasm Treatment Protocol:\n  1. 100% FiO₂; deepen anaesthesia immediately by increasing volatile anaesthetic (Sevoflurane is a potent bronchodilator).\n  2. Inhaled Beta-2 Agonist: Salbutamol (albuterol) 8–10 puffs delivered directly into ETT via in-line MDI spacer adapter.\n  3. Inhaled Ipratropium Bromide: 4–6 puffs via MDI.\n  4. IV Hydrocortisone (100 mg) or Methylprednisolone (60–120 mg).\n  5. IV Magnesium Sulfate (1.5 to 2.0 grams infused over 15 minutes): Relaxes bronchial smooth muscle by inhibiting calcium influx.\n  6. IV Ketamine (0.5–1.0 mg/kg): Potent bronchodilator via sympathomimetic and direct antimuscarinic actions.\n  7. Subcutaneous / IV Epinephrine (10–50 mcg IV or 0.3 mg IM/SC) if refractory life-threatening bronchospasm with cardiovascular collapse."
+    },
+    {
+      "h": "9. Regional vs General Anesthesia & PPC Prevention (ARISCAT Score)",
+      "b": "• Anesthetic Technique Selection:\n  - Peripheral Nerve Blocks & Regional Techniques: Technique of choice whenever surgically feasible; avoids airway instrumentation, mechanical ventilation, and respiratory depression.\n  - Neuraxial Anesthesia (Spinal/Epidural): Highly beneficial for lower abdominal and lower extremity procedures. Caution: Avoid sensory levels above T6 (blocks thoracic intercostal expiratory muscles, impairing active coughing and clearing of secretions).\n• ARISCAT Risk Score for Postoperative Pulmonary Complications (PPC — 7 variables):\n  - Age (>50y), Preoperative SpO₂ (≤95%), Respiratory infection in past month, Preoperative anemia (Hb ≤ 10 g/dL), Surgical incision (upper abdominal / intrathoracic), Duration of surgery (>2h), Emergency surgery.\n  - Score ≥ 45 points predicts high risk (>42% incidence of PPC).\n• Extubation & Postoperative Protocol:\n  - Fully awake extubation with complete reversal of neuromuscular blockade (TOF > 0.9 confirmed by quantitative monitor).\n  - Early transition to Non-Invasive Ventilation (NIV / BiPAP) in PACU prevents re-intubation.\n  - Multimodal opioid-sparing analgesia: Thoracic epidural, erector spinae plane (ESP) block, or rectus sheath blocks provide superior analgesia without opioid-induced hypoventilation."
+    },
+    {
+      "h": "10. Clinical Vignette & High-Yield Exam Viva Pearls (Tata 6th ed.)",
+      "b": "• Clinical Vignette:\n  A 62-year-old chronic smoker with severe COPD (FEV₁ 42% predicted, GOLD 3, Group E) undergoes open umbilical hernia repair under GA. Thirty minutes into surgery, peak inspiratory pressure rises from 22 to 38 cmH₂O with plateau pressure remaining at 18 cmH₂O. Capnography shows a classic \"shark-fin\" waveform. Over 2 minutes, BP drops from 120/75 to 70/40 mmHg and HR climbs to 118 bpm. The resident suspects bronchospasm and tension pneumothorax. The consultant immediately disconnects the ETT from the breathing circuit. A rush of stacked gas exhausts for 15 seconds. Within 20 seconds of deflation, BP recovers to 115/70 mmHg, confirming Auto-PEEP collapse. Ventilator rate is reduced from 14 to 8 bpm, I:E ratio lengthened to 1:4, and Salbutamol puffs administered, normalizing airway pressures.\n• High-Yield Exam Viva Pearls:\n  - Q: What does the shark-fin waveform on capnography indicate?\n    A: Prolonged, obstructed expiratory gas flow characteristic of bronchospasm or severe chronic obstructive airway disease.\n  - Q: Why should Desflurane be avoided during induction or airway manipulation in COPD?\n    A: Desflurane is pungent and irritates the airway, triggering severe coughing, laryngospasm, and reflex bronchoconstriction at concentrations > 1 MAC.\n  - Q: What is the target PaO₂ / SpO₂ in chronic CO₂-retainers?\n    A: Target SpO₂ 88%–92% (PaO₂ 60–70 mmHg). Excessive oxygen administration (FiO₂ 1.0) eliminates hypoxic drive and worsens V/Q mismatch by reversing regional hypoxic pulmonary vasoconstriction."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 10, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 45, Elsevier, 2025/2026.",
+    "Global Initiative for Chronic Obstructive Lung Disease (GOLD). Global Strategy for the Diagnosis, Management, and Prevention of COPD (2024/2025 Reports)."
+  ]
+},
   {
     "id": "case-intercostal-drain-empyema",
     "cat": "case_resp",
@@ -14971,105 +15025,133 @@
     ]
   },
   {
-    "id": "case-supratentorial-tumour-craniotomy",
-    "cat": "case_neuro",
-    "name": "Supratentorial Brain Tumour & Craniotomy",
-    "short": "Supratentorial Tumour Craniotomy",
-    "tags": [
-      "Neuro",
-      "Brain Tumour",
-      "ICP",
-      "Cerebral Perfusion",
-      "Brain Relaxation",
-      "Craniotomy",
-      "Case Discussion"
-    ],
-    "tagline": "Monro-Kellie doctrine, Cushing's triad, 4-step brain relaxation bundle, tight PaCO2 control & smooth extubation",
-    "source": "Objective Anaesthesia Review, 6th ed., Ch. 20; Miller's Anesthesia, 10th ed., Ch. 64 (Anesthesia for Neurosurgery); Cottrell and Patel's Neuroanesthesia, 6th ed.",
-    "sections": [
-      {
-        "h": "1. Definition, Anatomical Compartments & The Monro-Kellie Doctrine",
-        "b": "• Definition: Space-occupying intracranial lesion situated above the tentorium cerebelli (e.g., glioblastoma multiforme, meningioma, metastasis, low-grade astrocytoma).\n• The Monro-Kellie Hypothesis:\n  - The cranium is a rigid, non-compliant container with fixed total volume (≈1400–1500 mL) housing 3 incompressible components:\n    1. Brain Parenchyma: 80% (≈1100–1200 mL)\n    2. Blood (Arterial + Venous): 10% (≈150 mL)\n    3. Cerebrospinal Fluid (CSF): 10% (≈150 mL)\n  - Principle: Any increase in volume of one compartment (e.g. tumor, peritumoral vasogenic edema) MUST be matched by an equal decrease in volume of another compartment, or Intracranial Pressure (ICP) will rise.\n• Intracranial Volume-Pressure Curve & Spatial Compensation:\n  - Phase 1 (Compensated): Initial tumor expansion displaces CSF into spinal subarachnoid space and compresses venous blood into dural sinuses; ICP remains normal (5–15 mmHg).\n  - Phase 2 (Decompensated): Spatial compensation is exhausted; compliance drops to near zero. Tiny increments in tumor volume, hypercapnia, or coughing produce exponential, lethal spikes in ICP (>40–60 mmHg), precipitating cerebral herniation."
-      },
-      {
-        "h": "2. Pathophysiology: Cerebral Blood Flow & Perfusion Pressure",
-        "b": "• Cerebral Perfusion Pressure (CPP) Equation:\n  - CPP = Mean Arterial Pressure (MAP) - Intracranial Pressure (ICP) [or CVP, whichever is higher].\n  - Normal CPP: 60 to 80 mmHg. Critical threshold: CPP < 50 mmHg triggers cerebral ischemia and infarction.\n• Cerebral Blood Flow (CBF) Autoregulation:\n  - Normal CBF is 50 mL/100g brain tissue/min.\n  - Autoregulated across MAP 50 to 150 mmHg in normotensive adults.\n  - Autoregulation is IMPAIRED OR ABOLISHED within and around brain tumors (vasoparalysis): blood flow in the tumor bed is strictly pressure-passive!\n• Carbon Dioxide Reactivity (PaCO₂ Response):\n  - CBF changes by 3%–4% per 1 mmHg change in PaCO₂ (≈1–2 mL/100g/min per mmHg PaCO₂) across the physiological range (20–80 mmHg).\n  - Mild Hyperventilation (PaCO₂ 32–35 mmHg) induces cerebral arteriolar vasoconstriction, decreases Cerebral Blood Volume (CBV), and shrinks the brain within seconds."
-      },
-      {
-        "h": "3. Preoperative Evaluation & Cushing's Triad",
-        "b": "• Signs of Raised Intracranial Pressure:\n  - Early: Morning headache (worse with coughing/straining), projectile vomiting without nausea, papilledema on fundoscopy.\n  - Late / Impending Herniation (Cushing's Triad - Life-Threatening):\n    1. Hypertension (Reflex sympathetic surge to preserve CPP).\n    2. Bradycardia (Baroreceptor reflex triggered by high SBP).\n    3. Irregular Respiration (Brainstem compression of medullary respiratory centers).\n• Neuroimaging Review (CT / MRI):\n  - Note midline shift (> 5 mm indicates severe ICP and impending herniation), effacement of basal cisterns, compression of the third/lateral ventricles, and subfalcine or uncal herniation (ipsilateral dilated fixed pupil from CN III compression, contralateral hemiparesis)."
-      },
-      {
-        "h": "4. The 4-Step Brain Relaxation Protocol (Slack Brain Bundle)",
-        "b": "• When the surgeon opens the dura, the brain must be slack and sunken, not bulging or tense:\n  1. POSITIONING: Head elevated 15–30 degrees to maximize internal jugular venous drainage. Ensure neck is in neutral position without flexion, extension, or tight taping of ETT (prevents jugular venous compression!).\n  2. VENTILATION: Controlled hyperventilation to target PaCO₂ 32 to 35 mmHg. Avoid extreme hyperventilation (PaCO₂ < 28 mmHg causes severe vasoconstriction and ischemic tissue damage!).\n  3. OSMOTIC DIURETICS:\n     - MANNITOL (20% solution): 0.5 to 1.0 g/kg IV infused over 15–20 minutes at start of craniotomy. Creates osmotic gradient drawing water from uninjured brain tissue into intravascular space (onset 15 min, duration 4–6h).\n     - HYPERTONIC SALINE (3% NaCl): 3 mL/kg IV bolus. Highly effective for tight brain; rapidly expands intravascular volume and shrinks glial cells without systemic hypotension.\n  4. PHARMACOLOGICAL SUPPRESSION: Deepen anaesthesia with Propofol infusion or increase volatile agent (keep MAC < 1.0); administer IV Dexamethasone (8–16 mg IV) to reduce peritumoral vasogenic edema."
-      },
-      {
-        "h": "5. Detailed Induction & Maintenance Pharmacology",
-        "b": "• Induction Goals: Smooth induction preventing any coughing, bucking, or hypertensive surge (which spikes ICP) while avoiding hypotension (which drops CPP).\n• Blunting Laryngoscopy Response:\n  - Fentanyl 3–5 mcg/kg or Remifentanil 1 mcg/kg given 2 minutes prior, plus IV Lignocaine 1.5 mg/kg 90s prior to intubation.\n• Induction Agent of Choice:\n  - PROPOFOL (1.5–2.5 mg/kg): Drug of choice in neuroanaesthesia. Decreases Cerebral Metabolic Rate of Oxygen (CMRO₂), decreases CBF, and lowers ICP.\n  - THIOPENTONE (3–5 mg/kg): Potent neuroprotective agent; decreases CMRO₂ and ICP.\n  - KETAMINE: CONTRAINDICATED (dilates cerebral vessels, increases CMRO₂, spikes CBF and ICP).\n• Muscle Relaxants: Rocuronium (0.6–0.9 mg/kg) or Vecuronium (0.1 mg/kg). Succinylcholine causes a transient 5–10 mmHg rise in ICP (due to muscle spindle afferent stimulation); if used for difficult airway, defasciculate with a non-depolarizing relaxant.\n• Maintenance: Propofol/Remifentanil TIVA or Sevoflurane (0.5–0.8 MAC) in O₂/Air. AVOID Nitrous Oxide (N₂O increases CMRO₂, increases CBF, expands pneumocephalus, and worsens brain swelling)."
-      },
-      {
-        "h": "6. Emergence & Postoperative Neurological Assessment",
-        "b": "• Extubation Protocol:\n  - Goal: Immediate awake extubation allowing rapid neurological examination in the OR, but WITHOUT coughing, straining, or hypertensive spikes (which cause catastrophic postoperative intracranial hematoma formation!).\n  - Lignocaine 1.0–1.5 mg/kg IV or Dexmedetomidine 0.5 mcg/kg IV given 10 minutes prior to pin removal.\n• Postoperative Surveillance:\n  - Serial Glasgow Coma Scale (GCS) and pupillary light reflex tracking.\n  - Acute deterioration (drop in GCS ≥ 2 points, new pupil dilation) indicates postoperative surgical site hematoma, acute hydrocephalus, or cerebral edema; mandates immediate non-contrast head CT and emergency re-exploration."
-      },
-      {
-        "h": "7. High-Yield Exam Viva Pearls (Tata 6th ed.)",
-        "b": "• High-Yield Exam Viva Pearls:\n  - Q: Why is intraoperative fluid management strictly restricted to isotonic solutions in neurosurgery?\n    A: Because hypotonic fluids (e.g. Ringer's Lactate [273 mOsm/L], 5% Dextrose) decrease serum osmolarity, creating an osmotic gradient that drives water into brain tissue, exacerbating cerebral edema. Plasmalyte or 0.9% Normal Saline (308 mOsm/L) must be used.\n  - Q: What is the target serum osmolarity when using Mannitol?\n    A: Maintain serum osmolarity < 320 mOsm/L. Values > 320 mOsm/L induce acute tubular necrosis and renal failure.\n  - Q: How does volatile anesthetic affect cerebral autoregulation?\n    A: Volatile agents produce dose-dependent cerebral vasodilation. Below 1 MAC, vasoconstriction from mild hyperventilation preserves normal ICP. Above 1.0–1.5 MAC, intrinsic vasodilation overrides autoregulation, uncoupling CBF from CMRO₂ and increasing ICP."
-      }
-    ],
-    "references": [
-      "Objective Anaesthesia Review, 6th ed., Ch. 20, Jaypee Brothers, 2024.",
-      "Miller's Anesthesia, 10th ed., Ch. 64, Elsevier, 2025/2026.",
-      "Cottrell JE, Patel P. Cottrell and Patel's Neuroanesthesia, 6th ed. Elsevier."
-    ]
-  },
+  "id": "case-supratentorial-tumour-craniotomy",
+  "cat": "case_neuro",
+  "name": "Supratentorial Brain Tumour & Craniotomy",
+  "short": "Supratentorial Tumour Craniotomy",
+  "tags": [
+    "Neuro",
+    "Brain Tumour",
+    "ICP",
+    "Cerebral Perfusion",
+    "Brain Relaxation",
+    "Craniotomy",
+    "Case Discussion"
+  ],
+  "tagline": "Monro-Kellie doctrine, Cushing's triad, 5-step brain relaxation bundle, tight PaCO2 control & smooth extubation",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 20; Miller's Anesthesia, 10th ed., Ch. 64 (Anesthesia for Neurosurgery); Cottrell and Patel's Neuroanesthesia, 6th ed.",
+  "sections": [
+    {
+      "h": "1. Definition, Compartments & The Monro-Kellie Hypothesis",
+      "b": "• Definition: Space-occupying intracranial lesion situated above the tentorium cerebelli (e.g., glioblastoma multiforme, meningioma, brain metastasis, low-grade astrocytoma, oligodendroglioma).\n• The Monro-Kellie Hypothesis:\n  - The cranium is a rigid, non-compliant container with fixed total volume (≈1400–1500 mL) housing 3 incompressible components:\n    1. Brain Parenchyma: 80% (≈1100–1200 mL)\n    2. Blood (Arterial + Venous): 10% (≈150 mL)\n    3. Cerebrospinal Fluid (CSF): 10% (≈150 mL)\n  - Principle: Any increase in volume of one compartment (e.g. tumor, peritumoral vasogenic edema) MUST be matched by an equal decrease in volume of another compartment, or Intracranial Pressure (ICP) will rise.\n• Intracranial Volume-Pressure Curve & Spatial Compensation:\n  - Phase 1 (Compensated): Initial tumor expansion displaces CSF into spinal subarachnoid space and compresses venous blood into dural sinuses; ICP remains normal (5–15 mmHg).\n  - Phase 2 (Decompensated): Spatial compensation is exhausted; compliance drops to near zero. Tiny increments in tumor volume, hypercapnia, or coughing produce exponential, lethal spikes in ICP (>40–60 mmHg), precipitating cerebral herniation."
+    },
+    {
+      "h": "2. Pathophysiology: Cerebral Blood Flow Autoregulation & Perfusion Pressure",
+      "b": "• Cerebral Perfusion Pressure (CPP) Equation:\n  - CPP = Mean Arterial Pressure (MAP) - Intracranial Pressure (ICP) [or CVP, whichever is higher].\n  - Normal CPP: 60 to 80 mmHg. Critical threshold: CPP < 50 mmHg triggers cerebral ischemia and infarction.\n• Cerebral Blood Flow (CBF) Autoregulation:\n  - Normal CBF is 50 mL/100g brain tissue/min.\n  - Autoregulated across MAP 50 to 150 mmHg in normotensive adults.\n  - Autoregulation is IMPAIRED OR ABOLISHED within and around brain tumors (vasoparalysis): blood flow in the tumor bed is strictly pressure-passive!\n• Carbon Dioxide Reactivity (PaCO₂ Response):\n  - CBF changes by 3%–4% per 1 mmHg change in PaCO₂ (≈1–2 mL/100g/min per mmHg PaCO₂) across the physiological range (20–80 mmHg).\n  - Mild Hyperventilation (PaCO₂ 32–35 mmHg) induces cerebral arteriolar vasoconstriction, decreases Cerebral Blood Volume (CBV), and shrinks the brain within seconds."
+    },
+    {
+      "h": "3. Preoperative Evaluation, Raised ICP Signs & Cushing's Triad",
+      "b": "• Signs of Raised Intracranial Pressure:\n  - Early: Morning headache (worse with coughing/straining), projectile vomiting without nausea, papilledema on fundoscopy.\n  - Late / Impending Herniation (Cushing's Triad - Life-Threatening):\n    1. Hypertension (Reflex sympathetic surge to preserve CPP).\n    2. Bradycardia (Baroreceptor reflex triggered by high SBP).\n    3. Irregular Respiration (Brainstem compression of medullary respiratory centers).\n• Neuroimaging Review (CT / MRI):\n  - Note midline shift (> 5 mm indicates severe ICP and impending herniation), effacement of basal cisterns, compression of the third/lateral ventricles, and subfalcine or uncal herniation (ipsilateral dilated fixed pupil from CN III compression, contralateral hemiparesis)."
+    },
+    {
+      "h": "4. Preoperative Optimization: Antiepileptics, Steroids & Fluid Strategy",
+      "b": "• Corticosteroid Therapy:\n  - DEXAMETHASONE (8–16 mg IV daily in divided doses): Drug of choice for reducing peritumoral vasogenic edema.\n  - Onset within 12–24 hours; stabilizes blood-brain barrier tight junctions.\n• Antiepileptic Prophylaxis:\n  - LEVETIRACETAM (Keppra 500–1000 mg IV q12h) or PHENYTOIN (15–20 mg/kg IV loading over 30 min).\n  - Routine prophylaxis indicated in supratentorial tumors involving cortex or with history of seizures.\n• Fluid & Electrolyte Workup:\n  - Baseline serum sodium, potassium, and osmolality.\n  - Identify Syndrome of Inappropriate Antidiuretic Hormone (SIADH — hyponatremia with euvolemia) vs Cerebral Salt Wasting (CSW — hyponatremia with hypovolemia)."
+    },
+    {
+      "h": "5. The 5-Step Brain Relaxation Protocol (\"Slack Brain Bundle\")",
+      "b": "• When the surgeon opens the dura, the brain must be slack and sunken, not bulging or tense:\n  1. POSITIONING: Head elevated 15–30 degrees to maximize internal jugular venous drainage. Ensure neck is in neutral position without flexion, extension, or tight taping of ETT (prevents jugular venous compression!).\n  2. VENTILATION: Controlled hyperventilation to target PaCO₂ 32 to 35 mmHg. Avoid extreme hyperventilation (PaCO₂ < 28 mmHg causes severe vasoconstriction and ischemic tissue damage!).\n  3. OSMOTIC DIURETICS:\n     - MANNITOL (20% solution): 0.5 to 1.0 g/kg IV infused over 15–20 minutes at start of craniotomy. Creates osmotic gradient drawing water from uninjured brain tissue into intravascular space (onset 15 min, duration 4–6h).\n     - HYPERTONIC SALINE (3% NaCl): 3 mL/kg IV bolus. Highly effective for tight brain; rapidly expands intravascular volume and shrinks glial cells without systemic hypotension.\n  4. PHARMACOLOGICAL SUPPRESSION: Deepen anaesthesia with Propofol infusion or increase volatile agent (keep MAC < 1.0); administer IV Dexamethasone (8–16 mg IV) to reduce peritumoral vasogenic edema.\n  5. CSF DRAINAGE: If lumbar drain or ventriculostomy present, gentle drainage of 15–25 mL of CSF."
+    },
+    {
+      "h": "6. Detailed Induction & Maintenance Pharmacology",
+      "b": "• Induction Goals: Smooth induction preventing any coughing, bucking, or hypertensive surge (which spikes ICP) while avoiding hypotension (which drops CPP).\n• Blunting Laryngoscopy Response:\n  - Fentanyl 3–5 mcg/kg or Remifentanil 1 mcg/kg given 2 minutes prior, plus IV Lignocaine 1.5 mg/kg 90s prior to intubation.\n• Induction Agent of Choice:\n  - PROPOFOL (1.5–2.5 mg/kg): Drug of choice in neuroanaesthesia. Decreases Cerebral Metabolic Rate of Oxygen (CMRO₂), decreases CBF, and lowers ICP.\n  - THIOPENTONE (3–5 mg/kg): Potent neuroprotective agent; decreases CMRO₂ and ICP.\n  - KETAMINE: CONTRAINDICATED (dilates cerebral vessels, increases CMRO₂, spikes CBF and ICP).\n• Muscle Relaxants: Rocuronium (0.6–0.9 mg/kg) or Vecuronium (0.1 mg/kg). Succinylcholine causes a transient 5–10 mmHg rise in ICP (due to muscle spindle afferent stimulation); if used for difficult airway, defasciculate with a non-depolarizing relaxant.\n• Maintenance: Propofol/Remifentanil TIVA or Sevoflurane (0.5–0.8 MAC) in O₂/Air. AVOID Nitrous Oxide (N₂O increases CMRO₂, increases CBF, expands pneumocephalus, and worsens brain swelling).\n• Intravenous Fluids: Strictly isotonic fluids (0.9% Normal Saline or Plasmalyte). AVOID hypotonic solutions (Ringer's Lactate [273 mOsm/L] or 5% Dextrose) which drive water into brain parenchyma."
+    },
+    {
+      "h": "7. Intraoperative Tight Brain / Bulging Brain Rescue Protocol",
+      "b": "• If Brain is Tight or Bulging upon Dural Opening:\n  1. CHECK POSITION: Confirm head is elevated 15–30°; check that head is in neutral position and neck is not kinked or venous drainage obstructed by tapes/ties.\n  2. CHECK VENTILATION: Verify PaCO₂ is 30–35 mmHg; check peak airway pressures (bronchospasm or high PEEP impedes venous return).\n  3. CHECK HYPOXEMIA & HYPERTHERMIA: Ensure 100% O₂, normothermia (hyperthermia increases CMRO₂ and CBF).\n  4. ADMINISTER RESCUE HYPERTONIC SALINE: 3% NaCl 150–250 mL rapid infusion or additional Mannitol (0.5 g/kg).\n  5. METABOLIC SUPPRESSION: Administer Propofol 50–100 mg IV bolus and deepen TIVA.\n  6. SURGICAL ACTION: Ventriculostomy drainage or temporary brain retractor release."
+    },
+    {
+      "h": "8. Emergence & Postoperative Neurological Assessment",
+      "b": "• Extubation Protocol:\n  - Goal: Immediate awake extubation allowing rapid neurological examination in the OR, but WITHOUT coughing, straining, or hypertensive spikes (which cause catastrophic postoperative intracranial hematoma formation!).\n  - Lignocaine 1.0–1.5 mg/kg IV or Dexmedetomidine 0.5 mcg/kg IV given 10 minutes prior to pin removal.\n• Postoperative Surveillance:\n  - Serial Glasgow Coma Scale (GCS) and pupillary light reflex tracking.\n  - Acute deterioration (drop in GCS ≥ 2 points, new pupil dilation) indicates postoperative surgical site hematoma, acute hydrocephalus, or cerebral edema; mandates immediate non-contrast head CT and emergency re-exploration."
+    },
+    {
+      "h": "9. Postoperative ICU Concerns: SIADH vs CSW vs Diabetes Insipidus",
+      "b": "• Neuroendocrine Electrolyte Disorders:\n  1. SIADH (Syndrome of Inappropriate ADH):\n     - Excessive ADH secretion. Hyponatremia (<135 mEq/L), serum hypo-osmolality (<280 mOsm/kg), urine hyper-osmolality (>100 mOsm/kg), urine Na⁺ > 40 mEq/L, and EUVOLEMIA.\n     - Management: Fluid restriction (500–1000 mL/day), hypertonic saline if severe symptomatic hyponatremia.\n  2. CEREBRAL SALT WASTING (CSW):\n     - Brain natriuretic peptide surge. Hyponatremia, high urine sodium (>40 mEq/L), but HYPOVOLEMIA and dehydration.\n     - Management: Volume repletion with 0.9% Normal Saline or 3% Hypertonic Saline, Fludrocortisone.\n  3. DIABETES INSIPIDUS (DI — common in suprasellar/pituitary tumors):\n     - Deficient ADH. Hypernatremia, serum hyper-osmolality, polyuria (>300 mL/hr for 2h), dilute urine (specific gravity < 1.005, urine osmolality < 200 mOsm/kg).\n     - Management: Water replacement, IV Desmopressin (DDAVP 1–2 mcg IV/SC)."
+    },
+    {
+      "h": "10. Clinical Vignette & High-Yield Exam Viva Pearls (Tata 6th ed.)",
+      "b": "• Clinical Vignette:\n  A 54-year-old female with a right frontal glioblastoma (midline shift 7 mm) presents with worsening morning headaches and papilledema. Pre-induction radial arterial line is placed. Smooth induction is performed with Fentanyl 250 mcg, Lignocaine 80 mg, Propofol 140 mg, and Rocuronium 60 mg. Target PaCO₂ is maintained at 33 mmHg. Mannitol 20% (0.8 g/kg) is infused. Upon dural opening, the brain is perfectly slack and pulsations are visible. The tumor is resected uneventfully. At conclusion, Dexmedetomidine 0.4 mcg/kg/hr is titrated, pins removed without cough, and smooth extubation accomplished within 8 minutes. Neurological exam in OR confirms GCS 15 with no motor deficit.\n• High-Yield Exam Viva Pearls:\n  - Q: Why is intraoperative fluid management strictly restricted to isotonic solutions in neurosurgery?\n    A: Because hypotonic fluids (e.g. Ringer's Lactate [273 mOsm/L], 5% Dextrose) decrease serum osmolarity, creating an osmotic gradient that drives water into brain tissue, exacerbating cerebral edema. Plasmalyte or 0.9% Normal Saline (308 mOsm/L) must be used.\n  - Q: What is the target serum osmolarity when using Mannitol?\n    A: Maintain serum osmolarity < 320 mOsm/L. Values > 320 mOsm/L induce acute tubular necrosis and renal failure.\n  - Q: How does volatile anesthetic affect cerebral autoregulation?\n    A: Volatile agents produce dose-dependent cerebral vasodilation. Below 1 MAC, vasoconstriction from mild hyperventilation preserves normal ICP. Above 1.0–1.5 MAC, intrinsic vasodilation overrides autoregulation, uncoupling CBF from CMRO₂ and increasing ICP."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 20, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 64, Elsevier, 2025/2026.",
+    "Cottrell JE, Patel P. Cottrell and Patel's Neuroanesthesia, 6th ed. Elsevier."
+  ]
+},
   {
-    "id": "case-posterior-cranial-fossa-lesion",
-    "cat": "case_neuro",
-    "name": "Posterior Cranial Fossa (PCF) Lesion & Sitting Position",
-    "short": "PCF Lesion & Sitting Craniotomy",
-    "tags": [
-      "Neuro",
-      "Posterior Fossa",
-      "Sitting Position",
-      "Venous Air Embolism",
-      "PFO",
-      "Brainstem",
-      "Case Discussion"
-    ],
-    "tagline": "Venous Air Embolism detection & aspiration, PFO bubble contrast echo, brainstem hemodynamic reflexes & sitting position",
-    "source": "Objective Anaesthesia Review, 6th ed., Ch. 21; Miller's Anesthesia, 10th ed., Ch. 64; Cottrell & Patel's Neuroanesthesia.",
-    "sections": [
-      {
-        "h": "1. Definition, Surgical Anatomy & The Sitting Position Rationale",
-        "b": "• Definition: Lesions situated in the posterior cranial fossa (infratentorial space below the tentorium), including vestibular schwannomas (acoustic neuroma), cerebellar astrocytomas, medulloblastomas, and ependymomas.\n• Confined Anatomy: The posterior fossa is a rigid, non-yielding space housing the cerebellum, brainstem (pons and medulla), 4th ventricle, and lower cranial nerves (CN IX–XII). Even minor swelling rapidly causes tonsillar herniation through the foramen magnum and respiratory arrest.\n• Rationale for the Sitting Position:\n  - Advantages: Superb surgical access to midline structures, excellent gravitational venous and CSF drainage, clean operative field, reduced blood loss, preservation of facial cranial nerve anatomy.\n  - Hazards: VENOUS AIR EMBOLISM (VAE), paradoxical air embolism, postural hypotension, pneumocephalus, quadriplegia/cervical cord ischemia."
-      },
-      {
-        "h": "2. Pathophysiology of Venous Air Embolism (VAE) & Detection Hierarchy",
-        "b": "• Mechanism of VAE in Sitting Position:\n  - The operative surgical field is elevated 20–40 cm ABOVE the right atrium.\n  - Negative hydrostatic pressure inside non-collapsing suboccipital venous sinuses and diploic skull veins sucks atmospheric air into the venous circulation.\n  - Air enters the right atrium, travels to the right ventricle, and lodges in the pulmonary arterial microvasculature, producing mechanical obstruction, dead-space ventilation, hypoxemia, acute RV strain, and cardiovascular collapse.\n• Hierarchy of VAE Detection Sensitivity:\n  1. TRANSESOPHAGEAL ECHOCARDIOGRAPHY (TEE - Most Sensitive): Detects microbubbles as small as 0.02 mL/kg air (can visualize air entering right atrium).\n  2. PRECORDIAL DOPPLER ULTRASOUND (Most Practical Non-Invasive): Detects 0.05 mL/kg air. Emits characteristic roaring / washing-machine murmur. Probe placed at right sternal border (3rd to 6th intercostal space).\n  3. END-TIDAL CO₂ (EtCO₂ Monitoring): Sudden, unexplained DROP in EtCO₂ (due to acute increase in alveolar dead space ventilation) is the primary clinical monitor.\n  4. PULMONARY ARTERY PRESSURE (PAP): Rises due to microvascular occlusion.\n  5. LATE CLINICAL SIGNS: Mill-wheel murmur on esophageal stethoscope, hypotension, arterial desaturation, and cardiac arrest."
-      },
-      {
-        "h": "3. Preoperative Screening for Patent Foramen Ovale (PFO)",
-        "b": "• PARADOXICAL AIR EMBOLISM HAZARD:\n  - Normal adult prevalence of Patent Foramen Ovale (PFO) is 25%–30%.\n  - If venous air enters the right atrium in the presence of a PFO, even transient elevations in right atrial pressure (coughing, PEEP, VAE-induced RV strain) will force air across the septum into the left atrium and systemic circulation, causing fatal massive cerebral stroke or coronary air embolism.\n• Mandatory Preoperative Screening:\n  - Transthoracic or Transesophageal Echocardiography with AGITATED SALINE BUBBLE CONTRAST under Valsalva maneuver.\n  - Finding of PFO is an ABSOLUTE CONTRAINDICATION TO SITTING POSITION! (Patient must be operated in prone, lateral, or park-bench position)."
-      },
-      {
-        "h": "4. Step-by-Step VAE Treatment Protocol (Immediate Action Bundle)",
-        "b": "• If Venous Air Embolism is Detected Intraoperatively:\n  1. ALERT SURGICAL TEAM IMMEDIATELY: Surgeon floods surgical field with warm saline and packs wound with wet sponges to block air entry.\n  2. DISCONTINUE NITROUS OXIDE (N₂O): Switch to 100% Oxygen immediately (N₂O rapidly diffuses into air bubbles, expanding their volume by 3-fold!).\n  3. ASPIRATE AIR VIA MULTI-ORIFICE RIGHT ATRIAL CATHETER (Bunegin-Albin Catheter): Aspirate air directly from the junction of the superior vena cava and right atrium.\n  4. BILATERAL JUGULAR VEIN COMPRESSION: Compress internal jugular veins gently for 5–10 seconds; this raises intracranial venous pressure, causing blood to vent out of the open skull veins, allowing the surgeon to identify and coagulate/wax the open bone sinus.\n  5. FLUIDS & VASOPRESSORS: Rapid fluid infusion and Phenylephrine/Norepinephrine to support RV perfusion and systemic blood pressure.\n  6. RESCUE POSITIONING: If massive air lock produces cardiovascular collapse, place patient in Trendelenburg and Left Lateral Decubitus position (Durant's maneuver) to trap air in the RV apex away from the pulmonary outflow tract; initiate CPR."
-      },
-      {
-        "h": "5. Brainstem Reflexes & Cranial Nerve Monitoring",
-        "b": "• Surgical Manipulation of the Brainstem & Floor of 4th Ventricle:\n  - Manipulation of the Pons / Medulla triggers sudden severe hemodynamic reflexes:\n    * Trigeminal-Cardiac Reflex: Severe bradycardia, asystole, or ventricular ectopic beats.\n    * Vagal / Medullary Retraction: Acute profound hypertension followed by bradycardia or apnea.\n  - Mandatory Action: Inform surgeon IMMEDIATELY upon any abrupt change in heart rate or rhythm. The surgeon must release retractor pressure instantly.\n• Lower Cranial Nerve Dysfunction (CN IX, X, XII):\n  - Postoperative damage to glossopharyngeal and vagus nerves causes loss of protective gag and swallow reflexes, vocal cord paralysis, and severe aspiration. Patients MUST be assessed for intact gag reflex before extubation."
-      },
-      {
-        "h": "6. High-Yield Exam Viva Pearls (Tata 6th ed.)",
-        "b": "• High-Yield Exam Viva Pearls:\n  - Q: Where should the tip of a multi-orifice central venous catheter be positioned for air aspiration in the sitting position?\n    A: At the junction of the superior vena cava and the right atrium (approximately 2 cm below the cavoatrial junction), verified by transesophageal echo, chest X-ray, or intravascular ECG.\n  - Q: Why is hyperflexion of the neck dangerous in the sitting position?\n    A: Extreme cervical flexion compresses the vertebral and anterior spinal arteries, precipitating cervical spinal cord ischemia and postoperative quadriplegia. Maintain at least 2 fingers' breadth (3 cm) between the chin and sternum.\n  - Q: What is tension pneumocephalus in the sitting position?\n    A: Air enters the subarachnoid space as CSF drains out (\"inverted pop bottle effect\"). Upon dural closure, air is trapped. If N₂O is used during emergence, it expands the trapped air, causing mass effect, herniation, and delayed awakening."
-      }
-    ],
-    "references": [
-      "Objective Anaesthesia Review, 6th ed., Ch. 21, Jaypee Brothers, 2024.",
-      "Miller's Anesthesia, 10th ed., Ch. 64, Elsevier, 2025/2026.",
-      "Cottrell JE, Patel P. Cottrell and Patel's Neuroanesthesia, 6th ed. Elsevier."
-    ]
-  },
+  "id": "case-posterior-cranial-fossa-lesion",
+  "cat": "case_neuro",
+  "name": "Posterior Cranial Fossa (PCF) Lesion & Sitting Position",
+  "short": "PCF Lesion & Sitting Craniotomy",
+  "tags": [
+    "Neuro",
+    "Posterior Fossa",
+    "Sitting Position",
+    "Venous Air Embolism",
+    "PFO",
+    "Brainstem",
+    "Case Discussion"
+  ],
+  "tagline": "Venous Air Embolism detection & aspiration, PFO bubble contrast echo, brainstem hemodynamic reflexes & sitting position",
+  "source": "Objective Anaesthesia Review, 6th ed., Ch. 21; Miller's Anesthesia, 10th ed., Ch. 64; Cottrell & Patel's Neuroanesthesia.",
+  "sections": [
+    {
+      "h": "1. Definition, Surgical Anatomy & The Sitting Position Rationale",
+      "b": "• Definition: Lesions situated in the posterior cranial fossa (infratentorial space below the tentorium), including vestibular schwannomas (acoustic neuroma), cerebellar astrocytomas, medulloblastomas, and ependymomas.\n• Confined Anatomy: The posterior fossa is a rigid, non-yielding space housing the cerebellum, brainstem (pons and medulla), 4th ventricle, and lower cranial nerves (CN IX–XII). Even minor swelling rapidly causes tonsillar herniation through the foramen magnum and respiratory arrest.\n• Rationale for the Sitting Position:\n  - Advantages: Superb surgical access to midline structures, excellent gravitational venous and CSF drainage, clean operative field, reduced blood loss, preservation of facial cranial nerve anatomy.\n  - Hazards: VENOUS AIR EMBOLISM (VAE), paradoxical air embolism, postural hypotension, pneumocephalus, quadriplegia/cervical cord ischemia."
+    },
+    {
+      "h": "2. Pathophysiology of Venous Air Embolism (VAE) & Detection Hierarchy",
+      "b": "• Mechanism of VAE in Sitting Position:\n  - The operative surgical field is elevated 20–40 cm ABOVE the right atrium.\n  - Negative hydrostatic pressure inside non-collapsing suboccipital venous sinuses and diploic skull veins sucks atmospheric air into the venous circulation.\n  - Air enters the right atrium, travels to the right ventricle, and lodges in the pulmonary arterial microvasculature, producing mechanical obstruction, dead-space ventilation, hypoxemia, acute RV strain, and cardiovascular collapse.\n• Hierarchy of VAE Detection Sensitivity:\n  1. TRANSESOPHAGEAL ECHOCARDIOGRAPHY (TEE - Most Sensitive): Detects microbubbles as small as 0.02 mL/kg air (can visualize air entering right atrium).\n  2. PRECORDIAL DOPPLER ULTRASOUND (Most Practical Non-Invasive): Detects 0.05 mL/kg air. Emits characteristic roaring / washing-machine murmur. Probe placed at right sternal border (3rd to 6th intercostal space).\n  3. END-TIDAL CO₂ (EtCO₂ Monitoring): Sudden, unexplained DROP in EtCO₂ (due to acute increase in alveolar dead space ventilation) is the primary clinical monitor.\n  4. PULMONARY ARTERY PRESSURE (PAP): Rises due to microvascular occlusion.\n  5. LATE CLINICAL SIGNS: Mill-wheel murmur on esophageal stethoscope, hypotension, arterial desaturation, and cardiac arrest."
+    },
+    {
+      "h": "3. Preoperative Screening for Patent Foramen Ovale (PFO)",
+      "b": "• PARADOXICAL AIR EMBOLISM HAZARD:\n  - Normal adult prevalence of Patent Foramen Ovale (PFO) is 25%–30%.\n  - If venous air enters the right atrium in the presence of a PFO, even transient elevations in right atrial pressure (coughing, PEEP, VAE-induced RV strain) will force air across the septum into the left atrium and systemic circulation, causing fatal massive cerebral stroke or coronary air embolism.\n• Mandatory Preoperative Screening:\n  - Transthoracic or Transesophageal Echocardiography with AGITATED SALINE BUBBLE CONTRAST under Valsalva maneuver.\n  - Finding of PFO is an ABSOLUTE CONTRAINDICATION TO SITTING POSITION! (Patient must be operated in prone, lateral, or park-bench position)."
+    },
+    {
+      "h": "4. Step-by-Step VAE Treatment Protocol (Immediate Action Bundle)",
+      "b": "• If Venous Air Embolism is Detected Intraoperatively:\n  1. ALERT SURGICAL TEAM IMMEDIATELY: Surgeon floods surgical field with warm saline and packs wound with wet sponges to block air entry.\n  2. DISCONTINUE NITROUS OXIDE (N₂O): Switch to 100% Oxygen immediately (N₂O rapidly diffuses into air bubbles, expanding their volume by 3-fold!).\n  3. ASPIRATE AIR VIA MULTI-ORIFICE RIGHT ATRIAL CATHETER (Bunegin-Albin Catheter): Aspirate air directly from the junction of the superior vena cava and right atrium.\n  4. BILATERAL JUGULAR VEIN COMPRESSION: Compress internal jugular veins gently for 5–10 seconds; this raises intracranial venous pressure, causing blood to vent out of the open skull veins, allowing the surgeon to identify and coagulate/wax the open bone sinus.\n  5. FLUIDS & VASOPRESSORS: Rapid fluid infusion and Phenylephrine/Norepinephrine to support RV perfusion and systemic blood pressure.\n  6. RESCUE POSITIONING: If massive air lock produces cardiovascular collapse, place patient in Trendelenburg and Left Lateral Decubitus position (Durant's maneuver) to trap air in the RV apex away from the pulmonary outflow tract; initiate CPR."
+    },
+    {
+      "h": "5. Brainstem Reflexes & Cranial Nerve Monitoring",
+      "b": "• Surgical Manipulation of the Brainstem & Floor of 4th Ventricle:\n  - Manipulation of the Pons / Medulla triggers sudden severe hemodynamic reflexes:\n    * Trigeminal-Cardiac Reflex: Severe bradycardia, asystole, or ventricular ectopic beats.\n    * Vagal / Medullary Retraction: Acute profound hypertension followed by bradycardia or apnea.\n  - Mandatory Action: Inform surgeon IMMEDIATELY upon any abrupt change in heart rate or rhythm. The surgeon must release retractor pressure instantly.\n• Lower Cranial Nerve Dysfunction (CN IX, X, XII):\n  - Postoperative damage to glossopharyngeal and vagus nerves causes loss of protective gag and swallow reflexes, vocal cord paralysis, and severe aspiration. Patients MUST be assessed for intact gag reflex before extubation."
+    },
+    {
+      "h": "6. Sitting Position Mechanics, Hemodynamics & Cervical Cord Safety",
+      "b": "• Hemodynamic Changes upon Sitting:\n  - Venous pooling in splanchnic and lower limb capacitance vessels decreases venous return, cardiac output, and MAP by 15%–25%.\n  - Preventive protocol: Apply graded elastic compression stockings or pneumatic sequential compression devices to legs; wrap abdomen; slowly raise head in stepwise increments with pre-load volume loading.\n  - Transducer Level: Blood pressure transducer MUST be leveled at the external auditory meatus (tragus) or circle of Willis, NOT the right atrium! The hydrostatic pressure column between heart and brain is 20–30 cm (meaning cerebral MAP is 15–20 mmHg lower than brachial MAP!).\n• Cervical Spinal Cord Ischemia Prevention:\n  - Maintain at least 2 to 3 fingers' breadth (3 cm) between patient's chin and sternum. Extreme flexion occludes vertebral and anterior spinal arteries, precipitating quadriplegia.\n• Macroglossia Prevention:\n  - Ensure oral packing or ETT bite blocks do not compromise venous/lymphatic lingual drainage, which causes life-threatening postoperative macroglossia and immediate airway obstruction upon extubation."
+    },
+    {
+      "h": "7. Detailed Induction, Neuromonitoring & Maintenance Pharmacology",
+      "b": "• Induction & Airway Strategy:\n  - Smooth induction with Propofol, Fentanyl, and Vecuronium/Rocuronium.\n  - Armored / reinforced endotracheal tube is mandatory to prevent kinking during neck flexion.\n• Cranial Nerve Neuromonitoring (CN VII, IX, X, XI, XII & Brainstem Auditory Evoked Potentials - BAEP):\n  - If motor cranial nerve monitoring (facial nerve EMG) is used, avoid long-acting neuromuscular blockade after intubation. Maintain anaesthesia with Propofol/Remifentanil TIVA or low-dose Sevoflurane (<0.5 MAC).\n• Maintenance:\n  - TIVA (Propofol + Remifentanil or Fentanyl) is the technique of choice. Completely AVOID Nitrous Oxide (N₂O expands air emboli and pneumocephalus)."
+    },
+    {
+      "h": "8. Emergence, Tension Pneumocephalus & Bulbar Reflex Testing",
+      "b": "• Tension Pneumocephalus Hazard:\n  - As CSF drains during surgery in the sitting position, air enters the intracranial vault (\"inverted bottle effect\"). When dura is closed, air is trapped.\n  - If N₂O is administered during emergence, or if intracranial air expands as body warms, it produces mass effect, delayed awakening, headache, and pupillary dilation (\"Mount Fuji sign\" on head CT).\n• Bulbar Reflex & Gag Reflex Verification:\n  - Damage or edema to lower cranial nerves (CN IX, X, XII) causes loss of gag reflex and vocal cord abduction failure.\n  - Do NOT extubate if gag/swallow reflex is absent or questionable. Keep intubated and transfer to Neuro-ICU for delayed extubation."
+    },
+    {
+      "h": "9. Postoperative ICU Concerns & Complication Surveillance",
+      "b": "• Postoperative Surveillance in Neuro-ICU:\n  - Quadriplegia / sensory loss from cervical cord stretch or ischemia.\n  - Subdural or epidural hematoma at operative site.\n  - Acute hydrocephalus secondary to cerebellar swelling or 4th ventricle obstruction.\n  - Sciatic nerve neuropraxia or peroneal nerve palsy from sitting position.\n  - Macroglossia requiring urgent re-intubation."
+    },
+    {
+      "h": "10. Clinical Vignette & High-Yield Exam Viva Pearls (Tata 6th ed.)",
+      "b": "• Clinical Vignette:\n  A 42-year-old female with a large vestibular schwannoma (acoustic neuroma) is scheduled for resection in the sitting position. Preoperative bubble-contrast echo confirms absence of PFO. A multi-orifice catheter is placed at the cavoatrial junction and precordial Doppler placed at the right sternal border. During bone resection of the suboccipital skull, a sudden loud \"roaring washing-machine\" sound is heard on Doppler, accompanied by a precipitous drop in EtCO₂ from 34 to 19 mmHg and SBP drop from 110 to 80 mmHg. The anaesthesiologist immediately alerts the surgeon, discontinues N₂O (100% O₂ delivered), and aspirates 25 mL of frothy air from the right atrial catheter while the surgeon floods the field with saline and waxes the emissary vein. Within 90 seconds, Doppler tone clears, EtCO₂ recovers to 33 mmHg, and blood pressure normalizes.\n• High-Yield Exam Viva Pearls:\n  - Q: Where should the tip of a multi-orifice central venous catheter be positioned for air aspiration in the sitting position?\n    A: At the junction of the superior vena cava and the right atrium (approximately 2 cm below the cavoatrial junction), verified by transesophageal echo, chest X-ray, or intravascular ECG.\n  - Q: Why is hyperflexion of the neck dangerous in the sitting position?\n    A: Extreme cervical flexion compresses the vertebral and anterior spinal arteries, precipitating cervical spinal cord ischemia and postoperative quadriplegia. Maintain at least 2 fingers' breadth (3 cm) between the chin and sternum.\n  - Q: What is tension pneumocephalus in the sitting position?\n    A: Air enters the subarachnoid space as CSF drains out (\"inverted pop bottle effect\"). Upon dural closure, air is trapped. If N₂O is used during emergence, it expands the trapped air, causing mass effect, herniation, and delayed awakening."
+    }
+  ],
+  "references": [
+    "Objective Anaesthesia Review, 6th ed., Ch. 21, Jaypee Brothers, 2024.",
+    "Miller's Anesthesia, 10th ed., Ch. 64, Elsevier, 2025/2026.",
+    "Cottrell JE, Patel P. Cottrell and Patel's Neuroanesthesia, 6th ed. Elsevier."
+  ]
+},
   {
     "id": "case-traumatic-brain-injury-tbi",
     "cat": "case_neuro",
