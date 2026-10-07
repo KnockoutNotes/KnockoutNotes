@@ -289,21 +289,22 @@
       icon: "💉",
       desc: "Clinical anaesthesia practice, airway management, monitoring, equipment & subspecialty chapters",
       cats: [
-        { id: "all", label: "All Anaesthesia", icon: "✦", desc: "Comprehensive clinical anaesthesia syllabus based on Miller's Anesthesia & Tata's Objective Anaesthesia", filter: (it) => (["anaesthesia", "examination", "ecg", "equipment", "pft"].includes(it.cat) || (it.cat === "pain" && ["acute-pain-multimodal-analgesia-pca", "regional-neuraxial-analgesia-catheters", "neuropathic-pain-crps-post-surgical", "chronic-post-surgical-pain-neuromodulation"].includes(it.id))) },
-        { id: "general", label: "General Anaesthesia", icon: "💉", desc: "Induction, maintenance, emergence, crisis checklists & peri-operative safety", filter: (it) => it.cat === "anaesthesia" },
-        { id: "airway", label: "Airway", icon: "🫁", desc: "Airway assessment, video laryngoscopy, difficult airway algorithms & RSI", filter: (it) => it.cat === "anaesthesia" && (it.id.includes("airway") || it.id.includes("cricoid") || it.id.includes("lma") || it.id.includes("intubat") || (it.name || "").toLowerCase().includes("airway")) },
-        { id: "regional", label: "Regional Anaesthesia", icon: "📍", desc: "Neuraxial blocks (spinal, epidural, CSE) and peripheral nerve catheters", filter: (it) => (it.cat === "anaesthesia" || it.cat === "pain") && (it.id.includes("spinal") || it.id.includes("epidural") || it.id.includes("block") || (it.name || "").toLowerCase().includes("spinal") || (it.name || "").toLowerCase().includes("epidural")) },
-        { id: "obstetrics", label: "Obstetric Anaesthesia", icon: "🤰", desc: "Labour analgesia, Caesarean delivery, high-risk pregnancy, pre-eclampsia, PPH & AFE", filter: (it) => it.cat === "anaesthesia" && (it.id.includes("obstetric") || it.id.includes("labour") || it.id.includes("pregnancy") || (it.tags || []).some(t => (t || "").toLowerCase().includes("obstetric") || (t || "").toLowerCase().includes("labour") || (t || "").toLowerCase().includes("caesarean"))) },
-        { id: "neuro", label: "Neuroanaesthesia", icon: "🧠", desc: "Cerebral physiology, CBF, ICP, supratentorial craniotomy, sitting position, VAE & SAH", filter: (it) => it.cat === "anaesthesia" && (it.id.includes("neuro") || it.id.includes("craniotomy") || (it.tags || []).some(t => (t || "").toLowerCase().includes("neuro") || (t || "").toLowerCase().includes("icp") || (t || "").toLowerCase().includes("craniotomy"))) },
-        { id: "cardiothoracic", label: "Cardiothoracic & Vascular", icon: "🫀", desc: "One-lung ventilation, double-lumen tubes, CPB, valvular heart disease & vascular surgery", filter: (it) => it.cat === "anaesthesia" && (it.id.startsWith("thoracic-") || it.id.startsWith("cardiac-") || (it.tags || []).some(t => ["cardiac anaesthesia", "thoracic anaesthesia", "cardiopulmonary bypass", "valvular heart disease", "cpb"].includes((t || "").toLowerCase()))) },
-        { id: "pediatrics", label: "Pediatric Anaesthesia", icon: "👶", desc: "Pediatric airway, neonatal surgical emergencies, fasting guidelines & laryngospasm", filter: (it) => it.cat === "anaesthesia" && (it.id.startsWith("pediatric-") || (it.tags || []).some(t => ["pediatric anaesthesia", "neonatal emergencies", "cuffed ett"].includes((t || "").toLowerCase()))) },
-        { id: "endocrine_renal", label: "Endocrine & Renal Anaesthesia", icon: "🧪", desc: "Pheochromocytoma, thyroid storm, ESRD, renal transplantation & TURP syndrome", filter: (it) => it.cat === "anaesthesia" && (it.id.startsWith("endocrine-") || it.id.startsWith("renal-transplant") || (it.tags || []).some(t => ["endocrine anaesthesia", "renal anaesthesia", "pheochromocytoma", "turp syndrome"].includes((t || "").toLowerCase()))) },
-        { id: "specialties", label: "ENT, Eyes, Trauma & Ortho", icon: "👁️", desc: "Oculocardiac reflex, airway fire, bleeding tonsil, BCIS, fat embolism & geriatric care", filter: (it) => it.cat === "anaesthesia" && (it.id.startsWith("ophthalmic-") || it.id.startsWith("trauma-ortho-") || (it.tags || []).some(t => ["ophthalmic anaesthesia", "ent anaesthesia", "orthopaedic anaesthesia", "geriatric anaesthesia", "bcis"].includes((t || "").toLowerCase()))) },
-        { id: "monitoring", label: "Monitoring & ECG", icon: "📈", desc: "Hemodynamic monitoring, ECG interpretation & capnography", filter: (it) => it.cat === "ecg" },
-        { id: "equipment", label: "Equipment", icon: "⚙️", desc: "Anaesthesia machines, breathing circuits & vaporizers", filter: (it) => it.cat === "equipment" },
-        { id: "pft", label: "Pulmonary Function Tests", icon: "📊", desc: "Preoperative spirometry, flow-volume loops & gas exchange", filter: (it) => it.cat === "pft" },
-        { id: "examination", label: "Preop & Examination", icon: "📋", desc: "Preoperative assessment, system examination & risk indices", filter: (it) => it.cat === "examination" },
-        { id: "pain", label: "Pain Medicine", icon: "⚡", desc: "Acute perioperative pain protocols, multimodal analgesia, regional catheters, neuropathic syndromes & interventional blocks", filter: (it) => it.cat === "pain" && ["acute-pain-multimodal-analgesia-pca", "regional-neuraxial-analgesia-catheters", "neuropathic-pain-crps-post-surgical", "chronic-post-surgical-pain-neuromodulation"].includes(it.id) }
+        { id: "all", label: "All Anaesthesia", icon: "✦", desc: "Comprehensive clinical anaesthesia syllabus based on Miller's Anesthesia (10th ed.) & Tata's Objective Anaesthesia", filter: (it) => (["anaesthesia", "examination", "ecg", "equipment", "pft"].includes(it.cat) || (it.cat === "pain" && ["acute-pain-multimodal-analgesia-pca", "regional-neuraxial-analgesia-catheters", "neuropathic-pain-crps-post-surgical", "chronic-post-surgical-pain-neuromodulation", "cancer-pain-opioid-rotation-palliative", "interventional-sympathetic-nerve-blocks", "novel-non-opioid-analgesic-pharmacology", "opioid-induced-hyperalgesia-tolerance-tapering"].includes(it.id))) },
+        // --- 5 PROMINENT CORE TABS (FIRST) ---
+        { id: "general", label: "General Anaesthesia", icon: "💉", desc: "Induction, maintenance, emergence, crisis checklists & peri-operative safety", filter: (it) => it.cat === "anaesthesia" || (it.cat === "equipment" && ["anaesthesia-machine", "anaesthesia-workstation-check"].includes(it.id)) },
+        { id: "equipment", label: "Anaesthesia Equipment & Machine", icon: "⚙️", desc: "Workstations, breathing circuits, vaporizers, gas supply & monitoring hardware", filter: (it) => it.cat === "equipment" },
+        { id: "examination", label: "Preoperative Examination / Evaluation", icon: "📋", desc: "Systematic bedside pre-anaesthetic evaluation — Airway, CVS, RS, CNS & GI", filter: (it) => it.cat === "examination" || ["preop-assessment", "airway-assessment"].includes(it.id) },
+        { id: "ecg", label: "ECG", icon: "📈", desc: "Systematic 12-lead ECG analysis, axis, blocks, infarction, arrhythmias & pacemakers", filter: (it) => it.cat === "ecg" },
+        { id: "pft", label: "PFT / Pulmonary Function Tests", icon: "📊", desc: "Preoperative spirometry, flow-volume loops, DLCO & post-op predicted lung function", filter: (it) => it.cat === "pft" },
+        // --- MILLER'S ANESTHESIA (10TH EDITION) CURRICULUM SECTIONS ---
+        { id: "sec_intro", label: "Sec I — Introduction & Perioperative Medicine", icon: "🏛️", desc: "Miller Sec I: Scope of practice, perioperative medicine, patient safety, human factors & ERAS", filter: (it) => ["eras", "asa-pscore", "preop-assessment", "dka-perioperative-glycaemic-protocols", "anaesthesia-workstation-check"].includes(it.id) },
+        { id: "sec_phys_pharm", label: "Sec II — Anesthetic Physiology & Pharmacology", icon: "🧪", desc: "Miller Sec II: Consciousness, autonomic physiology, inhalational kinetics, TCI, NMBAs & local anaesthetics", filter: (it) => ["regional-physiology", "vaporizers-device", "infusion-pumps-tci", "novel-non-opioid-analgesic-pharmacology", "opioid-induced-hyperalgesia-tolerance-tapering"].includes(it.id) },
+        { id: "sec_management", label: "Sec III — Anaesthesia Management & Monitoring", icon: "🎛️", desc: "Miller Sec III: Airway algorithms, neuraxial/regional blocks, cardiovascular monitoring, fluids & transfusion", filter: (it) => ["airway-assessment", "airway-devices-equipment", "supraglottic-airways-lma", "rsi", "thrive-hfno-apneic-oxygenation", "jet-ventilation-hfjv-emergency", "asa-monitoring", "central-venous-pulmonary-artery-catheters", "nerve-stimulator-neuromuscular-monitoring", "fluid-transfusion", "regional-neuraxial-analgesia-catheters", "interventional-sympathetic-nerve-blocks", "ecg-pacemaker"].includes(it.id) },
+        { id: "sec_subspecialties", label: "Sec IV — Adult Subspecialty Anaesthesia", icon: "🏥", desc: "Miller Sec IV: Cardiothoracic, neuroanaesthesia, obstetric, endocrine, renal, ophthalmic/ENT, trauma & geriatric", filter: (it) => ["thoracic-anaesthesia-one-lung-ventilation-dlt", "cardiac-anaesthesia-cpb-valvular-heart-disease", "neuroanaesthesia-cbf-icp-craniotomy", "obstetric-anaesthesia-labour-analgesia-high-risk", "endocrine-anaesthesia-pheochromocytoma-thyroid", "renal-transplant-turp-syndrome-esrd", "ophthalmic-ent-laser-airway-fire-protocols", "trauma-ortho-bcis-geriatric-anaesthesia"].includes(it.id) },
+        { id: "sec_pediatrics", label: "Sec V — Pediatric Anaesthesia", icon: "👶", desc: "Miller Sec V: Pediatric & neonatal anaesthesia, airway peculiarities, fasting guidelines & surgical emergencies", filter: (it) => ["pediatric-anaesthesia-neonatal-emergencies"].includes(it.id) },
+        { id: "sec_postop", label: "Sec VI — Postoperative Care & Pain", icon: "🛌", desc: "Miller Sec VI: PACU discharge criteria, PONV, acute multimodal pain, PCA protocols & persistent post-surgical pain", filter: (it) => ["ponv", "acute-pain-multimodal-analgesia-pca", "neuropathic-pain-crps-post-surgical", "chronic-post-surgical-pain-neuromodulation", "cancer-pain-opioid-rotation-palliative"].includes(it.id) },
+        { id: "sec_critical_care", label: "Sec VII — Critical Care & Resuscitation", icon: "⚡", desc: "Miller Sec VII: Perioperative critical care, CPB circuits, ECMO physiology, CRRT & malignant ventricular arrhythmias", filter: (it) => ["cardiopulmonary-bypass-cpb", "ecmo-extracorporeal-membrane-oxygenation", "haemodialysis-crrt-dialysis-circuit", "ambu-bag-bvm", "ecg-vt", "ecg-vf"].includes(it.id) },
+        { id: "sec_safety_research", label: "Sec VIII — Professional, Safety & Environment", icon: "🛡️", desc: "Miller Sec VIII: Malignant hyperthermia, anaphylaxis, operating room hazards, gas supply & theatre safety", filter: (it) => ["malignant-hyperthermia", "anaphylaxis-anaesthesia", "medical-gas-cylinders", "humidification-scavenging", "soda-lime-absorbents", "warming-suction-devices"].includes(it.id) }
       ]
     },
     critical: {
@@ -407,7 +408,36 @@
     "cc_peds": 27,
     "cc_pharm": 17,
     "cc_advances": 30,
-    "pain": 16
+    "pain": 16,
+    // Anaesthesia Curriculum & Core Pillars
+    "general": 32,
+    "equipment": 33,
+    "examination": 34,
+    "ecg": 35,
+    "pft": 36,
+    // Miller 10th Edition Curriculum Sections
+    "sec_intro": 37,
+    "sec_phys_pharm": 38,
+    "sec_management": 39,
+    "sec_subspecialties": 40,
+    "sec_pediatrics": 41,
+    "sec_postop": 42,
+    "sec_critical_care": 43,
+    "sec_safety_research": 44,
+    // Drug Monographs Category Mappings
+    "induction": 17,
+    "relaxants": 16,
+    "reversal": 16,
+    "opioids": 16,
+    "nsaids": 16,
+    "vasopressors": 4,
+    "local": 16,
+    "pregnancy": 26,
+    "antihypertensives": 11,
+    "alpha2": 17,
+    "steroids": 20,
+    "antidiabetics": 20,
+    "miscellaneous": 17
   };
 
   const STUDY_ITEM_TO_CHAPTER = {
@@ -571,7 +601,76 @@
 
     // Ch 31: Special ICU Populations, Oncology & Environmental Crises
     "antifungals-icu": 31,
-    "environmental-emergencies-heat-hypothermia-drowning": 31
+    "environmental-emergencies-heat-hypothermia-drowning": 31,
+
+    // Ch 32–44: Anaesthesia Core Pillars & Miller 10th Edition Curriculum
+    "preop-assessment": 34,
+    "asa-pscore": 34,
+    "airway-assessment": 6,
+    "anaesthesia-machine": 33,
+    "anaesthesia-workstation-check": 33,
+    "rsi": 6,
+    "fluid-transfusion": 22,
+    "malignant-hyperthermia": 44,
+    "ponv": 42,
+    "regional-physiology": 38,
+    "anaphylaxis-anaesthesia": 4,
+    "eras": 37,
+    "dka-perioperative-glycaemic-protocols": 20,
+    "obstetric-anaesthesia-labour-analgesia-high-risk": 26,
+    "neuroanaesthesia-cbf-icp-craniotomy": 15,
+    "thoracic-anaesthesia-one-lung-ventilation-dlt": 40,
+    "cardiac-anaesthesia-cpb-valvular-heart-disease": 11,
+    "pediatric-anaesthesia-neonatal-emergencies": 27,
+    "endocrine-anaesthesia-pheochromocytoma-thyroid": 20,
+    "renal-transplant-turp-syndrome-esrd": 13,
+    "ophthalmic-ent-laser-airway-fire-protocols": 40,
+    "trauma-ortho-bcis-geriatric-anaesthesia": 24,
+
+    // Clinical Examination Bedside Topics
+    "exam-airway": 6,
+    "exam-cvs": 11,
+    "exam-respiratory": 8,
+    "exam-cns": 15,
+    "exam-gi": 19,
+
+    // ECG Topics
+    "ecg-basic": 11,
+    "ecg-axis": 11,
+    "ecg-lvh": 11,
+    "ecg-rvh": 11,
+    "ecg-bbb": 11,
+    "ecg-mi": 11,
+    "ecg-blocks": 11,
+    "ecg-vt": 11,
+    "ecg-vf": 12,
+    "ecg-hyperkalemia": 13,
+    "ecg-hypokalemia": 13,
+    "ecg-pacemaker": 11,
+
+    // Equipment Topics
+    "breathing-systems-mapleson": 8,
+    "circle-system": 8,
+    "vaporizers-device": 33,
+    "airway-devices-equipment": 6,
+    "supraglottic-airways-lma": 6,
+    "humidification-scavenging": 33,
+    "warming-suction-devices": 33,
+    "medical-gas-cylinders": 33,
+    "infusion-pumps-tci": 17,
+    "soda-lime-absorbents": 33,
+    "cardiopulmonary-bypass-cpb": 30,
+    "jet-ventilation-hfjv-emergency": 28,
+    "haemodialysis-crrt-dialysis-circuit": 13,
+    "nerve-stimulator-neuromuscular-monitoring": 16,
+    "ambu-bag-bvm": 12,
+
+    // PFT Topics
+    "pft-how-to-read": 8,
+    "pft-obstructive": 10,
+    "pft-restrictive": 8,
+    "pft-flow-volume-loops": 8,
+    "pft-postop-fev1-dlco": 8
   };
 
   function getItemsForDomainAndCat(domainId, catId) {

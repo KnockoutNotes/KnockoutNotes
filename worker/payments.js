@@ -131,6 +131,32 @@ export function getCategoryDomain(cat, chapterId) {
   return 'anaesthesia';
 }
 
+export function isFreeChapter(chapterId, cat) {
+  const cleanId = String(chapterId || '').toLowerCase().trim();
+  const cleanCat = String(cat || '').toLowerCase().trim();
+
+  // 1. General Principles in Critical Care (always 100% free)
+  if (cleanCat === 'cc_principles' || cleanId.startsWith('cc-icu-') || cleanId.startsWith('cc-triage-') || cleanId.startsWith('cc-severity-') || cleanId.startsWith('cc-ethics-')) {
+    return true;
+  }
+
+  // 2. General Anaesthesia (always 100% free)
+  if (cleanCat === 'general' || cleanId === 'general' || cleanId === 'cc_principles') return true;
+  const generalAnaesthesiaIds = [
+    'preop-assessment', 'asa-pscore', 'airway-assessment', 'anaesthesia-machine',
+    'anaesthesia-workstation-check', 'rsi', 'asa-monitoring', 'fluid-transfusion',
+    'malignant-hyperthermia', 'ponv', 'regional-physiology', 'anaphylaxis-anaesthesia',
+    'eras', 'dka-perioperative-glycaemic-protocols', 'icu-organization-scoring-ethics',
+    'brain-death-organ-donation', 'icu-triage-communication-ethics', 'icu-quality-infection-bundles',
+    'brain-death-organ-donor-resuscitation'
+  ];
+  if (generalAnaesthesiaIds.includes(cleanId)) {
+    return true;
+  }
+
+  return false;
+}
+
 export function getDefaultPriceForDomain(domain) {
   if (domain === 'drugs') return 12.0;
   if (domain === 'critical_care') return 19.0;
@@ -138,8 +164,10 @@ export function getDefaultPriceForDomain(domain) {
 }
 
 export function getDefaultPriceForChapter(chapterId, cat) {
+  if (isFreeChapter(chapterId, cat)) return 0.0;
   const chapter = chapterId ? getChapterContent(chapterId) : null;
   const category = cat || chapter?.cat || '';
+  if (isFreeChapter(chapterId, category)) return 0.0;
   const domain = getCategoryDomain(category, chapterId);
   return getDefaultPriceForDomain(domain);
 }
@@ -147,6 +175,7 @@ export function getDefaultPriceForChapter(chapterId, cat) {
 /**
  * Resolve price for a chapter in INR
  * Defaults:
+ * - ₹0 for General Anaesthesia and General Principles in Critical Care
  * - ₹9 for anaesthesia
  * - ₹12 for drugs
  * - ₹19 for critical care
@@ -154,6 +183,7 @@ export function getDefaultPriceForChapter(chapterId, cat) {
  * Custom prices changed by admin/user to any other value remain intact.
  */
 export async function getChapterPrice(db, chapterId, cat) {
+  if (isFreeChapter(chapterId, cat)) return 0.0;
   const defaultPrice = getDefaultPriceForChapter(chapterId, cat);
   if (!db || !chapterId || chapterId === 'default') return defaultPrice;
 
@@ -236,15 +266,17 @@ export async function handleGetChapterPricing(request, env, userAuth) {
   }
 
   const isAdmin = await isServerAdmin(userAuth, env, request);
+  const isFree = isFreeChapter(chapterId, chapter.cat);
   let isPurchased = false;
 
-  if (isAdmin) {
+  if (isAdmin || isFree) {
     isPurchased = true;
   } else if (userAuth && userAuth.user) {
     isPurchased = await checkUserEntitlement(env.DB, userAuth.user.id, chapterId);
   }
 
-  const priceInr = await getChapterPrice(env.DB, chapterId, chapter.cat);
+  let priceInr = isFree ? 0.0 : await getChapterPrice(env.DB, chapterId, chapter.cat);
+  if (isFree) priceInr = 0.0;
 
   return jsonResponse({
     chapterId,
@@ -253,6 +285,7 @@ export async function handleGetChapterPricing(request, env, userAuth) {
     priceInr,
     currency: 'INR',
     isPurchased,
+    isFree,
     isAdminExempt: isAdmin,
     isAdmin: isAdmin,
     downloadUrl: isPurchased ? `/api/study/download-pdf?chapter_id=${encodeURIComponent(chapterId)}` : null
@@ -755,13 +788,18 @@ export async function handleDownloadChapterPDF(request, env, userAuth) {
 
   const user = userAuth.user;
   const isAdmin = await isServerAdmin(userAuth, env, request);
+  const isFree = isFreeChapter(chapterId, chapter.cat);
 
-  // Authorization check: User must be Admin OR have active entitlement in DB
+  // Authorization check: User must be Admin, chapter is Free, OR user has active entitlement in DB
   let isAuthorized = false;
 
-  if (isAdmin) {
+  if (isAdmin || isFree) {
     isAuthorized = true;
-    await grantUserEntitlement(env.DB, user.id, user.email, chapterId, null, 'admin_exempt');
+    if (isAdmin) {
+      await grantUserEntitlement(env.DB, user.id, user.email, chapterId, null, 'admin_exempt');
+    } else if (isFree) {
+      await grantUserEntitlement(env.DB, user.id, user.email, chapterId, null, 'free_monograph');
+    }
   } else {
     isAuthorized = await checkUserEntitlement(env.DB, user.id, chapterId);
   }

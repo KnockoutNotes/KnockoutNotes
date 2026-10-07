@@ -295,13 +295,14 @@
   }
 
   function letterAt(i) {
+    if (typeof i !== "number" || i < 0 || i > 25) return "?";
     return String.fromCharCode(65 + i);
   }
 
   function correctIndex(m) {
     var a = String(m.answer || "").trim().toUpperCase();
     var code = a.charCodeAt(0) - 65;
-    return (code >= 0 && code < m.options.length) ? code : -1;
+    return (code >= 0 && m.options && code < m.options.length) ? code : -1;
   }
 
   function chapterObj(id) {
@@ -410,7 +411,7 @@
     var sq = (f.search || "").trim().toLowerCase();
 
     state.practiceList = state.mcqs.filter(function (m) {
-      if (ch && String(m.chapterId) !== String(ch)) return false;
+      if (!tp && ch && String(m.chapterId) !== String(ch)) return false;
       if (tp) {
         if (Array.isArray(tp)) {
           if (tp.indexOf(m.topicId) === -1) return false;
@@ -836,7 +837,9 @@
 
     // Rationale section once answered
     if (ans) {
-      var correctText = letterAt(cIdx) + ". " + m.options[cIdx];
+      var correctText = (cIdx >= 0 && m.options && m.options[cIdx])
+        ? letterAt(cIdx) + ". " + m.options[cIdx]
+        : (m.answer || "(Unspecified)");
       var bannerClass = ans.correct ? "is-correct" : "is-wrong";
       var bannerIcon = ans.correct ? "✓" : "✗";
       var bannerMsg = ans.correct
@@ -1322,10 +1325,7 @@
     var selectedQuestions = shuffled.slice(0, Math.min(count, shuffled.length));
     var totalSeconds = timerPerQ > 0 ? selectedQuestions.length * timerPerQ : 0;
 
-    // Clear prior timer
-    if (state.exam && state.exam.timerInterval) {
-      clearInterval(state.exam.timerInterval);
-    }
+    clearExamTimer();
 
     state.exam = {
       id: "exam-" + Date.now(),
@@ -1366,6 +1366,13 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  function clearExamTimer() {
+    if (state.exam && state.exam.timerInterval) {
+      clearInterval(state.exam.timerInterval);
+      state.exam.timerInterval = null;
+    }
+  }
+
   function submitExam(auto) {
     if (!state.exam || state.exam.isSubmitted) return;
 
@@ -1378,10 +1385,7 @@
       if (!window.confirm(msg)) return;
     }
 
-    if (state.exam.timerInterval) {
-      clearInterval(state.exam.timerInterval);
-      state.exam.timerInterval = null;
-    }
+    clearExamTimer();
 
     state.exam.isSubmitted = true;
 
@@ -1472,11 +1476,13 @@
 
       if (action === "go-directory") {
         triggerHaptic();
+        clearExamTimer();
         state.viewMode = "directory";
         render();
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else if (action === "go-builder") {
         triggerHaptic();
+        clearExamTimer();
         state.viewMode = "builder";
         render();
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1487,6 +1493,7 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else if (action === "practice-all") {
         triggerHaptic();
+        clearExamTimer();
         state.practiceFilter.chapterId = "";
         state.practiceFilter.topicId = "";
         state.practiceFilter.view = "all";
@@ -1497,6 +1504,7 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else if (action === "open-chapter") {
         triggerHaptic();
+        clearExamTimer();
         var chId = btn.getAttribute("data-chapter-id");
         state.practiceFilter.chapterId = chId;
         state.practiceFilter.topicId = "";
@@ -1508,6 +1516,7 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else if (action === "practice-chapter") {
         triggerHaptic();
+        clearExamTimer();
         var chId2 = btn.getAttribute("data-chapter-id");
         state.practiceFilter.chapterId = chId2;
         state.practiceFilter.topicId = "";
@@ -1736,7 +1745,7 @@
     if (!hasWiredKeydown) {
       hasWiredKeydown = true;
       document.addEventListener("keydown", function (e) {
-        if (!container || !container.offsetParent) return;
+        if (!container || !document.body.contains(container) || !container.offsetParent) return;
         if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.tagName === "SELECT") return;
 
         if (state.viewMode === "practice") {
@@ -1852,26 +1861,30 @@
   }
 
   function close() {
+    clearExamTimer();
     try {
       var url = new URL(window.location.href);
       url.searchParams.delete("view");
       url.searchParams.delete("mcq");
       url.searchParams.delete("chapter");
       url.searchParams.delete("chapterId");
-      url.searchParams.delete("topic");
-      url.searchParams.delete("topicId");
+      // Note: Preserve 'topic' / 'topicId' so Study Mode retains the active topic upon return
       window.history.replaceState({}, "", url.toString());
     } catch (_) {}
 
+    if (container && container.parentElement) {
+      container.parentElement.removeChild(container);
+      container = null;
+    }
+
     if (typeof window.KN_STUDY_RETURN === "function") {
-      if (container && container.parentElement) {
-        container.parentElement.removeChild(container);
-        container = null;
-      }
       window.KN_STUDY_RETURN();
     } else {
-      state.viewMode = "directory";
-      render();
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = "study.html";
+      }
     }
   }
 

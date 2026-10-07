@@ -5,7 +5,7 @@
 // - Stale-While-Revalidate with safe response cloning for static app shell assets
 // ==========================================================================
 
-const CACHE_NAME = "knockoutnotes-cache-v86";
+const CACHE_NAME = "knockoutnotes-cache-v87";
 
 const PRECACHE_ASSETS = [
   "/",
@@ -97,11 +97,7 @@ const PRECACHE_ASSETS = [
   "/mcq-engine.js",
   "/criticalCare/mcqs.json",
   "/criticalCare/chapters.json",
-  "/criticalCare/topics.json",
-  "/criticalCare/chunks/mcqs_ch01_to_ch08.json",
-  "/criticalCare/chunks/mcqs_ch09_to_ch16.json",
-  "/criticalCare/chunks/mcqs_ch17_to_ch24.json",
-  "/criticalCare/chunks/mcqs_ch25_to_ch31.json"
+  "/criticalCare/topics.json"
 ];
 
 self.addEventListener("install", (event) => {

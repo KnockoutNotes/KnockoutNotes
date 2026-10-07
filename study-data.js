@@ -279,6 +279,7 @@
       "ASA guideline",
       "Risk stratification"
     ],
+    "classification": "Perioperative Medicine • Clinical Risk Assessment & Optimization",
     "tagline": "History, airway exam, risk scoring, and medication management before surgery",
     "source": "ASA Practice Advisory for Preanesthesia Evaluation (2022 update); Miller's Anesthesia, 10th ed., Ch. 12; UpToDate \"Preoperative medical evaluation of the healthy adult patient\" (2025).",
     "sections": [
@@ -329,6 +330,7 @@
       "Risk",
       "Classification"
     ],
+    "classification": "Risk Stratification • ASA Physical Status & Emergency Sub-classifications",
     "tagline": "Six-tier system describing a patient's systemic disease burden before anaesthesia",
     "source": "American Society of Anesthesiologists — ASA Physical Status Classification System (approved Oct 2014, reaffirmed 2020); Miller's Anesthesia, 10th ed., Ch. 12.",
     "sections": [
@@ -371,6 +373,7 @@
       "ASA algorithm",
       "DAS guideline"
     ],
+    "classification": "Airway Management • Bedside Prediction & Difficult Airway Algorithm",
     "tagline": "Predicting and managing the anticipated and unanticipated difficult airway",
     "source": "ASA Practice Guidelines for Management of the Difficult Airway (2022); Difficult Airway Society (DAS) 2015 guidelines for unanticipated difficult intubation in adults; Miller's Anesthesia, 10th ed., Ch. 30.",
     "sections": [
@@ -422,6 +425,7 @@
       "Circle system",
       "Vaporizers"
     ],
+    "classification": "Anaesthetic Delivery Systems • Workstation Architecture & Breathing Circuits",
     "tagline": "Physical architecture across high, intermediate, and low pressure systems, gas pathways, vaporizers, and circle circuits",
     "source": "Miller's Anesthesia, 10th ed., Ch. 21–22 (Anesthesia Delivery Systems); Dorsch & Dorsch Understanding Anesthesia Equipment, 5th ed., Ch. 2–5; ASTM F1850 Standard Specification for Anesthesia Workstations.",
     "sections": [
@@ -512,6 +516,7 @@
       "Safety check",
       "Negative pressure leak test"
     ],
+    "classification": "Patient Safety & Equipment • Pre-Use Checkout Protocol (ASA/APSF)",
     "tagline": "Sequential flowchart protocol for daily and pre-case anaesthesia machine checkout based on Miller and Dorsch",
     "source": "Miller's Anesthesia, 10th ed., Ch. 21–22; Dorsch & Dorsch Understanding Anesthesia Equipment, 5th ed., Ch. 2 (The Anesthesia Machine Checkout); ASA Recommendations for Pre-Anesthesia Checkout Procedures (2008 / 2021 update); AAGBI Checking Anaesthetic Equipment (2012 / 2023).",
     "sections": [
@@ -565,6 +570,7 @@
       "Aspiration prophylaxis",
       "Full stomach"
     ],
+    "classification": "Airway & Induction • Rapid Sequence Induction, Cricoid Pressure & Aspiration Prophylaxis",
     "tagline": "Induction technique to minimise the aspiration window in patients at high aspiration risk",
     "source": "Morgan & Mikhail's Clinical Anesthesiology, 7th ed., Ch. 19; UpToDate \"Rapid sequence induction and intubation (RSII) in adults\" (2025).",
     "sections": [
@@ -611,6 +617,7 @@
       "ASA standard",
       "Safety"
     ],
+    "classification": "Intraoperative Monitoring • ASA Standard Monitoring & Vigilance",
     "tagline": "Minimum monitoring standards during all anaesthesia care",
     "source": "ASA Standards for Basic Anesthetic Monitoring (amended 2020); Miller's Anesthesia, 10th ed., Ch. 40.",
     "sections": [
@@ -658,6 +665,7 @@
       "MTP",
       "Viscoelastic TEG/ROTEM"
     ],
+    "classification": "Perioperative Fluid Therapy • Crystalloids, Colloids & Patient Blood Management",
     "tagline": "Composition, pH, osmolarity, pharmacokinetics, and transfusion guidelines",
     "source": "Miller's Anesthesia 10th ed. (Ch. 52); Barash Clinical Anesthesia 9th ed. (Ch. 16 & 24); Stoelting's Pharmacology & Physiology 5th ed.; AABB 2023 Guidelines; Surviving Sepsis Campaign 2021; NICE NG24.",
     "sections": [
@@ -909,6 +917,7 @@
       "MHAUS protocol",
       "Emergency"
     ],
+    "classification": "Anaesthetic Emergencies • Ryanodine Receptor Pharmacogenetics & Dantrolene",
     "tagline": "Life-threatening hypermetabolic crisis triggered by volatile agents/succinylcholine",
     "source": "Malignant Hyperthermia Association of the United States (MHAUS) treatment protocol; Miller's Anesthesia, 10th ed., Ch. 39; UpToDate \"Malignant hyperthermia: Diagnosis and management of acute crisis\" (2025).",
     "sections": [
@@ -956,6 +965,7 @@
       "Apfel score",
       "Prophylaxis"
     ],
+    "classification": "Postoperative Care • Apfel Score Stratification & Multimodal Antiemetic Prophylaxis",
     "tagline": "Risk-stratified multimodal prevention and rescue treatment",
     "source": "Society for Ambulatory Anesthesia (SAMBA) Consensus Guidelines for the Management of PONV (4th ed., 2020); Miller's Anesthesia, 10th ed., Ch. 74.",
     "sections": [
@@ -1002,6 +1012,7 @@
       "Spinal",
       "Epidural"
     ],
+    "classification": "Regional Anaesthesia • Neuraxial Blockade Physiology & Differential Block",
     "tagline": "Physiologic effects of spinal/epidural block and outcome comparisons with general anaesthesia",
     "source": "Barash Clinical Anesthesia, 8th ed., Ch. 17; Miller's Anesthesia, 10th ed., Ch. 55; Cochrane systematic reviews on neuraxial vs general anaesthesia outcomes.",
     "sections": [
@@ -1047,6 +1058,7 @@
       "Emergency",
       "NMBA allergy"
     ],
+    "classification": "Anaesthetic Emergencies • Immediate Resuscitation & Mast Cell Tryptase",
     "tagline": "Recognition and immediate management of intraoperative anaphylaxis",
     "source": "Association of Anaesthetists (AAGBI) Suspected Anaphylactic Reactions Associated with Anaesthesia guideline (2021); Miller's Anesthesia, 10th ed., Ch. 38.",
     "sections": [
@@ -1094,6 +1106,7 @@
       "ERAS Society",
       "Multimodal"
     ],
+    "classification": "Perioperative Medicine • Enhanced Recovery After Surgery Evidence Bundles",
     "tagline": "Evidence-based perioperative care bundle to accelerate functional recovery",
     "source": "ERAS Society consensus guidelines (colorectal, 2018 update, and procedure-specific pathways); Miller's Anesthesia, 10th ed., Ch. 84.",
     "sections": [
@@ -1145,6 +1158,7 @@
       "Hypokalaemia",
       "Perioperative Diabetes"
     ],
+    "classification": "Endocrine & Metabolic Management • Perioperative Glycaemic Control & DKA",
     "tagline": "Latest ADA 2024–2026 & JBDS standard DKA insulin protocols, step-by-step fluid/potassium resuscitation, euglycaemic DKA recognition, comprehensive insulin classification table, and perioperative glycaemic targets",
     "source": "American Diabetes Association (ADA) Standards of Care in Diabetes (2024/2025/2026), Ch. 16 (Diabetes Care in the Hospital); Joint British Diabetes Societies (JBDS) for Inpatient Care Guidelines for the Management of Diabetic Ketoacidosis; Miller's Anesthesia, 10th ed., Ch. 48 (Anesthesia and Endocrine Disease); Stoelting's Pharmacology & Physiology; UpToDate (2025/2026).",
     "sections": [
@@ -1190,6 +1204,7 @@
       "SHORT Criteria",
       "Difficult Mask"
     ],
+    "classification": "Clinical Examination • Bedside Airway & Predictors of Difficult Intubation",
     "tagline": "Systematic 11-point bedside airway assessment, clinical measurement procedures, difficult airway prediction scores (LEMON, MOANS, RODS, SHORT), and algorithm-driven airway management planning",
     "source": "Miller's Anesthesia, 10th ed., Ch. 44 (Airway Management); ASA Practice Guidelines for Management of the Difficult Airway (2022); Difficult Airway Society (DAS) Guidelines; UpToDate \"Evaluation of the airway for anesthesia in adults\" (2025/2026).",
     "sections": [
@@ -1332,6 +1347,7 @@
       "Valvular Targets",
       "METs Scoring"
     ],
+    "classification": "Clinical Examination • Cardiovascular Examination & Valvular Murmurs",
     "tagline": "Bedside cardiovascular examination for anaesthesia: arterial pulse waveform morphology, blood pressure and orthostatics, jugular venous pressure (JVP), precordial palpation & auscultation, valvular murmurs, and hemodynamic targets",
     "source": "Braunwald's Heart Disease: A Textbook of Cardiovascular Medicine, 12th ed.; Miller's Anesthesia, 10th ed., Ch. 35 & 64; 2020 ACC/AHA Guideline for the Management of Patients With Valvular Heart Disease; Macleod's Clinical Examination, 15th ed.",
     "sections": [
@@ -1444,6 +1460,7 @@
       "Breath Sounds",
       "ARISCAT Score"
     ],
+    "classification": "Clinical Examination • Respiratory System Examination & Bedside PFTs",
     "tagline": "Comprehensive pre-anaesthetic respiratory evaluation: 4-pillar chest examination (inspection, palpation, percussion, auscultation), 7 bedside pulmonary function tests, and perioperative pulmonary risk stratification",
     "source": "Miller's Anesthesia, 10th ed., Ch. 36 (Thoracic Surgical Anesthesia); Macleod's Clinical Examination, 15th ed.; West's Respiratory Physiology, 11th ed.; ARISCAT Risk Scoring; UpToDate (2025/2026).",
     "sections": [
@@ -1554,6 +1571,7 @@
       "Bromage Score",
       "Pupils"
     ],
+    "classification": "Clinical Examination • Central Nervous System & Cranial Nerves",
     "tagline": "Systematic perioperative neurological assessment: Glasgow Coma Scale (GCS), 30-point Mini-Mental State Examination (MMSE), delirium screening, and all 12 cranial nerves simplified for anaesthesia practice",
     "source": "Adams and Victor's Principles of Neurology, 12th ed.; Miller's Anesthesia, 10th ed., Ch. 39 & 55; BJA Education Neurological Assessment; Folstein MF, et al. Mini-Mental State Examination.",
     "sections": [
@@ -1711,6 +1729,7 @@
       "IAP / Compartment",
       "Aspiration Risk"
     ],
+    "classification": "Clinical Examination • Gastrointestinal Examination & Gastric Ultrasound",
     "tagline": "Bedside abdominal examination, intra-abdominal hypertension, full stomach aspiration risk stratification, and point-of-care ultrasound (POCUS) gastric evaluation using the Perlas protocol",
     "source": "Perlas A, et al. Anesthesiology (Validation of gastric ultrasound); ASA Practice Guidelines for Preoperative Fasting (2023 update); Miller's Anesthesia, 10th ed., Ch. 44 & 48; World Society of the Abdominal Compartment Syndrome (WSACS) Guidelines.",
     "sections": [
@@ -1815,6 +1834,7 @@
       "P-QRS-T",
       "Systematic Reading"
     ],
+    "classification": "Electrocardiography • Systematic 12-Lead ECG Analysis",
     "tagline": "Standard calibration 25 mm/s & 10 mm/mV, wave morphology, interval durations, and 7-step reading sequence",
     "source": "Goldberger's Clinical Electrocardiography, 10th ed., 2024; Miller's Anesthesia, 10th ed., Ch. 38 (Intraoperative Monitoring).",
     "sections": [
@@ -1929,6 +1949,7 @@
       "Quadrant Rule",
       "Fascicular Blocks"
     ],
+    "classification": "Electrocardiography • Hexaxial Reference & Quadrant Rules",
     "tagline": "Hexaxial lead angles, normal axis (-30° to +90°), left & right axis deviations, quadrant methods, and clinical causes",
     "source": "Goldberger's Clinical Electrocardiography, 10th ed., 2024; Hampton's The ECG in Practice, 7th ed.",
     "sections": [
@@ -2006,6 +2027,7 @@
       "LV Strain",
       "Voltage Criteria"
     ],
+    "classification": "Electrocardiography • Left Ventricular Hypertrophy (Sokolow-Lyon & Cornell)",
     "tagline": "Voltage cutoffs, Cornell product, Romhilt-Estes point score, and secondary ST-T strain patterns",
     "source": "AHA/ACCF/HRS Recommendations for the Standardization and Interpretation of the Electrocardiogram (JACC 2009/2021 update); Goldberger's Clinical Electrocardiography, 10th ed.",
     "sections": [
@@ -2084,6 +2106,7 @@
       "P-Pulmonale",
       "Cor Pulmonale"
     ],
+    "classification": "Electrocardiography • Right Ventricular Hypertrophy Criteria",
     "tagline": "Tall R wave in V1, deep S in V5/V6, right axis deviation, RV strain pattern, and cor pulmonale signs",
     "source": "AHA/ACCF/HRS Recommendations for the Standardization of Electrocardiography (JACC 2009/2021); Goldberger's Clinical Electrocardiography, 10th ed.",
     "sections": [
@@ -2169,6 +2192,7 @@
       "Sgarbossa Criteria",
       "Modified Smith-Sgarbossa"
     ],
+    "classification": "Electrocardiography • Bundle Branch Blocks & Sgarbossa Criteria",
     "tagline": "QRS >=120 ms, notched lateral R waves, rsR' rabbit ears in V1, and Sgarbossa criteria for acute MI in LBBB",
     "source": "2023 ACC/AHA/ACCP/HRS Guideline for Management of Patients With Bradycardia and Cardiac Conduction Delay; Smith SW, et al. Ann Emerg Med 2012.",
     "sections": [
@@ -2247,6 +2271,7 @@
       "de Winter",
       "Posterior MI"
     ],
+    "classification": "Electrocardiography • Myocardial Infarction & STEMI Equivalents",
     "tagline": "Fourth Universal Definition thresholds, contiguous lead rules, Wellens, de Winter, and coronary territories",
     "source": "Fourth Universal Definition of Myocardial Infarction (ESC/ACC/AHA/WHF 2018/2023 update); 2023 ESC Guidelines for the Management of Acute Coronary Syndromes.",
     "sections": [
@@ -2325,6 +2350,7 @@
       "Complete Heart Block",
       "AV Dissociation"
     ],
+    "classification": "Electrocardiography • Atrioventricular Heart Blocks (1st, 2nd & 3rd Degree)",
     "tagline": "First-degree, Mobitz I (Wenckebach), Mobitz II, and third-degree complete heart block with pacing protocols",
     "source": "2023 ACC/AHA/ACCP/HRS Guideline for Management of Patients With Bradycardia and Cardiac Conduction Delay; Circulation 2023.",
     "sections": [
@@ -2390,6 +2416,7 @@
       "Fusion Beats",
       "Torsades de Pointes"
     ],
+    "classification": "Electrocardiography • Ventricular Tachyarrhythmias & Diagnostic Algorithms",
     "tagline": "Monomorphic vs polymorphic VT, Brugada 4-step algorithm, Vereckei aVR, and emergency cardioversion protocols",
     "source": "2022/2024 ESC Guidelines for the Management of Patients With Ventricular Arrhythmias; Circulation 2020/2025 ACLS Guidelines.",
     "sections": [
@@ -2483,6 +2510,7 @@
       "ACLS",
       "Shockable Rhythms"
     ],
+    "classification": "Electrocardiography • ACLS Pulseless Arrest & Defibrillation Protocols",
     "tagline": "Coarse vs fine VF, avoiding mistaking fine VF for asystole, 200 J biphasic defibrillation, and ACLS algorithms",
     "source": "American Heart Association (AHA) Guidelines for CPR and ECC; Circulation 2020 / 2025 update.",
     "sections": [
@@ -2555,6 +2583,7 @@
       "Calcium Gluconate",
       "Insulin Dextrose"
     ],
+    "classification": "Electrocardiography • Hyperkalaemia Progressive ECG Changes",
     "tagline": "Serum level-wise ECG changes, peaked tented T waves, QRS widening, Sine-Wave rhythm, and emergency management",
     "source": "European Resuscitation Council Guidelines 2021/2025; Goldberger's Clinical Electrocardiography, 10th ed.; Miller's Anesthesia, 10th ed.",
     "sections": [
@@ -2627,6 +2656,7 @@
       "KCl Infusion Limits",
       "Magnesium"
     ],
+    "classification": "Electrocardiography • Hypokalaemia Progressive ECG Changes",
     "tagline": "Serum level-wise ECG changes, pathognomonic U waves, pseudo-prolonged QU, and replacement safety constraints",
     "source": "European Resuscitation Council Guidelines 2021/2025; Stoelting's Pharmacology & Physiology, 6th ed.; Miller's Anesthesia, 10th ed.",
     "sections": [
@@ -2694,6 +2724,7 @@
       "Magnet Response",
       "Sgarbossa in Pacing"
     ],
+    "classification": "Electrocardiography • Cardiac Pacing & Pacemaker Rhythms",
     "tagline": "NASPE/BPEG (NBG) 5-letter pacemaker nomenclature, surface ECG waveforms (AAI, VVI, DDD, BiV/CRT), lead location vector axes, failure to capture/sense, and perioperative magnet management",
     "source": "AHA/ACC/HRS Guideline on the Evaluation and Management of Patients With Bradycardia and Cardiac Conduction Delay (2018/2023); NASPE/BPEG Revised Generic Pacemaker Code (NBG); Miller's Anesthesia, 10th ed., Ch. 41 & 51; ASA Practice Advisory for CIEDs (2020/2025).",
     "sections": [
@@ -3253,6 +3284,7 @@
       "Classification",
       "Non-rebreathing"
     ],
+    "classification": "Breathing Systems • Mapleson Circuits (A–F) & Spontaneous/Controlled Ventilation",
     "tagline": "Classification of anaesthetic breathing systems and the six Mapleson (A–F) circuits",
     "source": "Miller's Anesthesia, 10th ed., Ch. 21 (Anesthesia Delivery Systems); Dorsch & Dorsch, Understanding Anesthesia Equipment, 5th ed.; Morgan & Mikhail's Clinical Anesthesiology, 7th ed., Ch. 4.",
     "sections": [
@@ -3377,6 +3409,7 @@
       "Semi-closed",
       "CO2 absorption"
     ],
+    "classification": "Breathing Systems • Circle System Architecture & Low-Flow Anaesthesia",
     "tagline": "The semi-closed rebreathing circuit that is the standard adult breathing system today",
     "source": "Miller's Anesthesia, 10th ed., Ch. 21; Dorsch & Dorsch, Understanding Anesthesia Equipment, 5th ed.",
     "sections": [
@@ -3427,6 +3460,7 @@
       "Bellows",
       "Ventilation modes"
     ],
+    "classification": "Anaesthesia Workstation • Ventilator Classification & Bellows Mechanics",
     "tagline": "How anaesthesia ventilators are powered, cycled, and the modes available on modern workstations",
     "source": "Miller's Anesthesia, 10th ed., Ch. 21; Dorsch & Dorsch, Understanding Anesthesia Equipment, 5th ed.",
     "sections": [
@@ -3475,6 +3509,7 @@
       "Classification",
       "Physics"
     ],
+    "classification": "Equipment & Physics • Vaporizer Physics & Hazard Interlocks",
     "tagline": "Comprehensive classification, core thermodynamics, variable-bypass vs heated dual-circuit mechanisms, commercial models, and safety rules",
     "source": "Miller's Anesthesia, 10th ed., Ch. 21; Dorsch & Dorsch, Understanding Anesthesia Equipment, 5th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.; Aston, Equipment in Anaesthesia and Critical Care (2014).",
     "sections": [
@@ -3535,6 +3570,7 @@
       "Bougies",
       "Videolaryngoscopy"
     ],
+    "classification": "Airway Equipment • Laryngoscopes, Video Laryngoscopy & ETTs",
     "tagline": "The essential hardware of airway management: laryngoscope blades, videolaryngoscopes, tubes, supraglottic airways, and introducers",
     "source": "Miller's Anesthesia, 10th ed., Ch. 28–30; Difficult Airway Society (DAS) 2015 guidelines for unanticipated difficult intubation; Dorsch & Dorsch, Understanding Anesthesia Equipment, 5th ed.; UpToDate \"Devices for difficult airway management in adults\" (2025).",
     "sections": [
@@ -3616,6 +3652,7 @@
       "Difficult Airway",
       "Classification"
     ],
+    "classification": "Airway Equipment • Supraglottic Airway Devices & LMA Generations",
     "tagline": "Generational classification (1st, 2nd & 3rd gen), i-gel anatomy & size chart, perilaryngeal seals, and difficult airway conduit role",
     "source": "Miller's Anesthesia, 10th ed., Ch. 44 (Airway Management in the Adult); Cook et al., NAP4: Major Complications of Airway Management in the UK, Br J Anaesth (2011); Difficult Airway Society (DAS) 2015 Guidelines; Intersurgical i-gel User Guide; Dorsch & Dorsch, Understanding Anesthesia Equipment, 5th ed.",
     "sections": [
@@ -3797,6 +3834,7 @@
       "HME",
       "Waste gas"
     ],
+    "classification": "Environmental Safety • Scavenging Systems & Humidification",
     "tagline": "Conditioning inspired gas and safely removing waste anaesthetic gas from the operating room",
     "source": "Miller's Anesthesia, 10th ed., Ch. 21; NIOSH Publication No. 2007-151, Waste Anesthetic Gases: Occupational Hazards in Hospitals; Dorsch & Dorsch, Understanding Anesthesia Equipment, 5th ed.",
     "sections": [
@@ -3850,6 +3888,7 @@
       "Normothermia",
       "Massive transfusion"
     ],
+    "classification": "Patient Safety • Active Patient Warming & Suction Systems",
     "tagline": "Equipment used to prevent perioperative hypothermia and manage airway/surgical suction",
     "source": "Miller's Anesthesia, 10th ed., Ch. 89 (Perioperative Temperature Regulation); Barash Clinical Anesthesia, 8th ed.",
     "sections": [
@@ -3907,6 +3946,7 @@
       "Manifold",
       "Bodok Seal"
     ],
+    "classification": "Gas Supply Systems • Medical Gas Cylinders & Pin Index Safety",
     "tagline": "Cylinder metallurgy, Pin Index Safety System, Bodok seal, pipeline supply, Boyle's vs non-liquefied gas physics, and pressure regulators",
     "source": "Miller's Anesthesia, 10th ed., Ch. 21 (Anesthesia Delivery Systems); Dorsch & Dorsch, Understanding Anesthesia Equipment, 5th ed.; ISO 32 (Gas cylinders for medical use — Marking for identification of content); ISO 407 (Small medical gas cylinders — Pin-index yoke-type valve connections); CGA Pamphlet C-9.",
     "sections": [
@@ -3978,6 +4018,7 @@
       "Oxygen Therapy",
       "Jet Injector"
     ],
+    "classification": "Oxygen Delivery • Venturi Principle & Fixed FiO2 Systems",
     "tagline": "The fluid mechanics of air entrainment, fixed vs variable performance masks, high-flow systems, jet injectors, and clinical COPD titration",
     "source": "Davis & Kenny, Basic Physics and Measurement in Anaesthesia, 5th ed., Ch. 2; Miller's Anesthesia, 10th ed., Ch. 88 (Respiratory Care); British Thoracic Society (BTS) Guideline for Oxygen Use in Adults in Healthcare and Emergency Settings; Dorsch & Dorsch, Understanding Anesthesia Equipment, 5th ed.",
     "sections": [
@@ -4029,6 +4070,7 @@
       "Smart Pumps",
       "PCA"
     ],
+    "classification": "IV Drug Delivery • Target-Controlled Infusion & Syringe Drivers",
     "tagline": "Syringe driver mechanics, volumetric pumps, Target-Controlled Infusion (Marsh, Schnider, Eleveld, Minto), PCA programming, and critical infusion hazards",
     "source": "Miller's Anesthesia, 10th ed., Ch. 26 (Total Intravenous Anesthesia); Absalom & Struys, Overview of Target-Controlled Infusion (TCI), British Journal of Anaesthesia (2016); Dorsch & Dorsch, Understanding Anesthesia Equipment, 5th ed.; MHRA Device Bulletin: Infusion Systems (DB2010/01).",
     "sections": [
@@ -4257,6 +4299,7 @@
       "Rebound Phenomenon",
       "Ethyl Violet"
     ],
+    "classification": "Environmental Safety • CO2 Absorbents & Soda Lime Chemistry",
     "tagline": "Chemical composition, exothermic neutralization reactions, ethyl violet indicator, rebound phenomenon, mesh sizing, and toxic degradation hazards",
     "source": "Miller's Anesthesia, 10th ed., Ch. 21 (Anesthesia Delivery Systems); Dorsch & Dorsch, Understanding Anesthesia Equipment, 5th ed.; Stoelting's Pharmacology and Physiology in Anesthetic Practice, 5th ed.; Kharasch ED, et al., Compound A and Sevoflurane Metabolism, Anesthesiology.",
     "sections": [
@@ -4305,6 +4348,7 @@
       "Waveforms",
       "Invasive Monitoring"
     ],
+    "classification": "Hemodynamic Hardware • Central Venous & PA Catheters (Swan-Ganz)",
     "tagline": "Anatomy of Swan-Ganz catheter, port identification, cardiac navigation waveforms, CVP a-c-v analysis, thermodilution cardiac output, and critical complications",
     "source": "Miller's Anesthesia, 10th ed., Ch. 40 (Intravascular Monitoring); Stoelting's Pharmacology & Physiology; UpToDate \"Pulmonary artery catheterization: Indications, contraindications, and complications in adults\" (2025); ASA Practice Guidelines for Central Venous Access.",
     "sections": [
@@ -4427,6 +4471,7 @@
       "ACT",
       "Cardioplegia"
     ],
+    "classification": "Perfusion Systems • Cardiopulmonary Bypass Circuit & Components",
     "tagline": "Circuit mechanics, roller vs centrifugal pumps, membrane oxygenators, cardioplegia, ACT monitoring, protamine reversal, and separation protocols",
     "source": "Miller's Anesthesia, 10th ed., Ch. 65 (Cardiac Anesthesia); Hensley's Practical Approach to Cardiac Anesthesia, 6th ed.; Society of Cardiovascular Anesthesiologists (SCA) Guidelines; UpToDate \"Initiation and management of cardiopulmonary bypass\".",
     "sections": [
@@ -4487,6 +4532,7 @@
       "Optiflow",
       "Tubeless ENT"
     ],
+    "classification": "Oxygenation Systems • High-Flow Nasal Oxygen & THRIVE",
     "tagline": "Physiology of avenous oxygen uptake, cardiogenic oscillations, PEEP generation, safe apnea time extension, and shared-airway ENT surgery",
     "source": "Patel & Nouraei, Transnasal Humidified Rapid-Insufflation Ventilatory Exchange (THRIVE) in difficult airway management, Anaesthesia (2015); Miller's Anesthesia, 10th ed., Ch. 44; Difficult Airway Society (DAS) Guidelines; UpToDate \"High-flow nasal cannula oxygen therapy in adults\" (2025).",
     "sections": [
@@ -4539,6 +4585,7 @@
       "Venturi Principle",
       "Barotrauma"
     ],
+    "classification": "Specialized Ventilation • High-Frequency & Emergency Jet Ventilation",
     "tagline": "Venturi entrainment physics, high-frequency non-convective gas transport, elective microlaryngeal jetting, emergency cricothyroidotomy rescue, and catastrophic barotrauma hazards",
     "source": "Miller's Anesthesia, 10th ed., Ch. 82 (Anesthesia for Thoracic and Airway Surgery); Difficult Airway Society (DAS) Guidelines: \"Cannot Intubate, Cannot Oxygenate\" (CICO); Dorsch & Dorsch, Understanding Anesthesia Equipment, 5th ed.; UpToDate \"Emergency front-of-neck airway in adults\" (2025).",
     "sections": [
@@ -4599,6 +4646,7 @@
       "Centrifugal Pump",
       "Anticoagulation"
     ],
+    "classification": "Extracorporeal Life Support • ECMO Cannulation & Circuit Architecture",
     "tagline": "Demystifying the ECMO circuit: VV vs VA classification, step-by-step circuit mechanics, pressure monitoring, sweep gas titration, and life-threatening clinical traps",
     "source": "Extracorporeal Life Support Organization (ELSO) General Guidelines (2021/2024 update); Miller's Anesthesia, 10th ed., Ch. 65 & 88; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.; UpToDate \"Extracorporeal membrane oxygenation (ECMO) in adults\" (2025).",
     "sections": [
@@ -4716,6 +4764,7 @@
       "Citrate Anticoagulation",
       "Dialysis Disequilibrium"
     ],
+    "classification": "Renal Replacement Hardware • Hemodialysis & CRRT Circuit Physiology",
     "tagline": "The artificial nephron in simple language: IHD vs CRRT modalities, step-by-step circuit mechanics, diffusion vs convection, regional citrate anticoagulation, and critical safety hazards",
     "source": "KDIGO Clinical Practice Guideline for Acute Kidney Injury (2012/2023 update); Miller's Anesthesia, 10th ed., Ch. 73 (Renal Function & Renal Replacement Therapy); Stoelting's Pharmacology & Physiology; UpToDate \"Continuous renal replacement therapy in acute kidney injury\" (2025).",
     "sections": [
@@ -4855,6 +4904,7 @@
       "Regional Nerve Block",
       "Residual Curarization"
     ],
+    "classification": "Neuromuscular Hardware • Quantitative TOF & Peripheral Nerve Stimulators",
     "tagline": "Principles of electrical stimulation, electrode polarity rules, TOF/PTC/DBS/tetanic waveforms, reversal titration with Sugammadex vs Neostigmine, and nerve block localization",
     "source": "Miller's Anesthesia, 10th ed., Ch. 43 (Neuromuscular Monitoring); Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.; 2023 American Society of Anesthesiologists (ASA) Practice Guidelines for Monitoring and Antagonism of Neuromuscular Blockade; 2023 European Society of Anaesthesiology and Intensive Care (ESAIC) Guidelines on Perioperative Neuromuscular Monitoring.",
     "sections": [
@@ -5092,6 +5142,7 @@
       "Pre-use Check",
       "Self-inflating"
     ],
+    "classification": "Resuscitation Hardware • Bag-Valve-Mask Manual Resuscitators",
     "tagline": "Self-inflating manual resuscitator — components, pre-use check, one-person vs two-person technique, and anaesthetic implications",
     "source": "Dorsch & Dorsch Understanding Anesthesia Equipment, 5th ed., Ch. 10 (Manual Resuscitators); Miller's Anesthesia, 10th ed., Ch. 44; ILCOR Basic Life Support Guidelines 2020; AAGBI Guidelines on Safe Anaesthetic Practice (2023).",
     "sections": [
@@ -12505,6 +12556,7 @@
       "ERAS",
       "Opioid-Sparing"
     ],
+    "classification": "Postoperative Care & Pain • Acute Multimodal Analgesia & PCA Protocols",
     "tagline": "Opioid-sparing multimodal analgesia, subanesthetic ketamine/lidocaine infusions, patient-controlled analgesia & validated behavioral pain scales",
     "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 37; ASA/ASRA Practice Guidelines for Acute Pain Management; SCCM PADIS Guidelines; Anesthesiology 2016; 124:387–405.",
     "sections": [
@@ -12594,6 +12646,7 @@
       "ASRA Guidelines",
       "LAST Rescue"
     ],
+    "classification": "Regional Anaesthesia & Pain • Thoracic Epidural & Fascial Plane Blocks",
     "tagline": "Thoracic epidural loss-of-resistance technique, erector spinae plane catheters, ASRA anticoagulation intervals & local anesthetic toxicity rescue",
     "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 37; ASRA Anticoagulation Guidelines (4th ed.); Reg Anesth Pain Med 2018; 43:263–309.",
     "sections": [
@@ -12684,6 +12737,7 @@
       "Duloxetine",
       "Stellate Ganglion"
     ],
+    "classification": "Postoperative Care & Pain • Neuropathic Pain Syndromes & CRPS (Budapest)",
     "tagline": "Central sensitization mechanisms, the Budapest criteria for CRPS, prevention of persistent post-surgical pain & sympatholytic interventions",
     "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 37; IASP Neuropathic Pain Guidelines; Lancet Neurol 2015; 14:162–173; Pain 2010; 150:61–67.",
     "sections": [
@@ -12762,6 +12816,7 @@
       "Celiac Plexus Block",
       "Palliative Care"
     ],
+    "classification": "Postoperative Care & Pain • Cancer Pain & WHO Opioid Rotation",
     "tagline": "The revised 4-step WHO analgesic ladder, equianalgesic conversion formulas, breakthrough fentanyl formulations & neurolytic celiac plexus blocks",
     "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 37 & Ch. 40; NCCN Guidelines for Adult Cancer Pain 2024; EAPC Recommendations on Opioids in Cancer Pain; Lancet Oncol 2012; 13:e58–e68.",
     "sections": [
@@ -13005,6 +13060,7 @@
       "COWS Score",
       "NEET SS Critical Care"
     ],
+    "classification": "Opioid Pharmacology • Opioid-Induced Hyperalgesia & Weaning Protocols",
     "tagline": "Distinguishing OIH from pharmacological tolerance, neuroinflammatory mechanisms, subanesthetic ketamine reversal, and structured ICU tapering protocols",
     "source": "The Washington Manual of Critical Care (3rd/4th ed.), Ch. 40; SCCM PADIS Guidelines; Ballantyne JC, et al. Opioid-Induced Hyperalgesia: A Clinical Review. Pain 2019;160:S45–S53; Stoelting's Pharmacology & Physiology, 5th ed.; Miller's Anesthesia, 10th ed.",
     "sections": [
@@ -13111,6 +13167,7 @@
       "Electrical Storm",
       "NEET SS Critical Care"
     ],
+    "classification": "Regional Anaesthesia & Pain • Interventional Sympathetic Neurolysis",
     "tagline": "Sonoanatomy, fluoroscopic guidance, chemical neurolysis techniques, hemodynamic sequelae, and ICU autonomic modulation",
     "source": "Hadzic's Peripheral Nerve Blocks and Anatomy for Ultrasound-Guided Regional Anesthesia, 3rd ed.; The Washington Manual of Critical Care, 4th ed., Ch. 37; Waldman's Atlas of Interventional Pain Management, 5th ed.; Anesthesiology 2021; 134:648–670.",
     "sections": [
@@ -13205,6 +13262,7 @@
       "Failed Back Surgery",
       "NEET SS Critical Care"
     ],
+    "classification": "Postoperative Care & Pain • Chronic Post-Surgical Pain & Neuromodulation",
     "tagline": "ICD-11 diagnostic criteria for CPSP, surgical risk hierarchy, dorsal column stimulation waveforms (Tonic, HF10, Burst), and IDDS pump pharmacology",
     "source": "ICD-11 International Classification of Diseases (IASP Taskforce); Deer TR, et al. The Polyanalgesic Consensus Conference (PACC): Recommendations on Intrathecal Drug Delivery Systems. Neuromodulation 2024;27(2):165–199; British Journal of Anaesthesia 2021; 126:1201–1215; Miller's Anesthesia, 10th ed.",
     "sections": [
@@ -13305,6 +13363,7 @@
       "Multimodal Analgesia",
       "NEET SS Critical Care"
     ],
+    "classification": "Anesthetic Pharmacology • Systemic Lidocaine, Magnesium & Gabapentinoids",
     "tagline": "Mechanisms, dosing protocols, pharmacokinetic pitfalls, and safety boundaries for systemic lidocaine, magnesium infusions, and α2δ ligands",
     "source": "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.; Miller's Anesthesia, 10th ed., Ch. 27 & 48; The Washington Manual of Critical Care, 4th ed., Ch. 40; ASRA Practice Advisory on Local Anesthetic Systemic Toxicity (LAST); Anesth Analg 2021; 132:614–626.",
     "sections": [
@@ -13422,6 +13481,7 @@
       "Miller 10th",
       "Tata Objective"
     ],
+    "classification": "Adult Subspecialties • Obstetric Anaesthesia, Labour Analgesia & PPH",
     "tagline": "Maternal-fetal physiology, CSE/DPE labour analgesia, phenylephrine prophylaxis, oxytocin titration, and emergency obstetric crisis protocols",
     "source": "Miller's Anesthesia, 10th ed., Ch. 65 (Obstetric Anesthesia); Chestnut's Obstetric Anesthesia: Principles and Practice, 6th ed.; Tata Memorial Centre Objective Anaesthesia Review, Ch. 1; ACOG Practice Bulletin No. 209 (Obstetric Analgesia and Anesthesia); SOAP Consensus Statement on Spinal Hypotension (2020/2024 update).",
     "sections": [
@@ -13480,6 +13540,7 @@
       "Miller 10th",
       "Tata Objective"
     ],
+    "classification": "Adult Subspecialties • Neuroanaesthesia, ICP Dynamics & Sitting Position",
     "tagline": "Cerebral autoregulation, brain relaxation, TIVA vs volatiles, sitting position VAE monitoring, and aneurysmal clipping protocols",
     "source": "Miller's Anesthesia, 10th ed., Ch. 60–62 (Neuroanesthesia); Cottrell & Patel's Neuroanesthesia, 6th ed.; Tata Memorial Centre Objective Anaesthesia Review, Ch. 2; SNACC Consensus Guidelines on Perioperative Management of Patients Undergoing Craniotomy.",
     "sections": [
@@ -13534,6 +13595,7 @@
       "Miller 10th",
       "Tata Objective"
     ],
+    "classification": "Adult Subspecialties • Thoracic Anaesthesia, OLV & Lung Isolation",
     "tagline": "Lung isolation indications, DLT sono/bronchoscopic placement, HPV physiology, protective OLV, and refractory desaturation rescue",
     "source": "Miller's Anesthesia, 10th ed., Ch. 58 (Anesthesia for Thoracic Surgery); Tata Memorial Centre Objective Anaesthesia Review, Ch. 3; Slinger P. Principles and Practice of Anesthesia for Thoracic Surgery, 2nd ed.; EACTAIC Guidelines on Thoracic Anesthesia.",
     "sections": [
@@ -13587,6 +13649,7 @@
       "Miller 10th",
       "Tata Objective"
     ],
+    "classification": "Adult Subspecialties • Cardiac Anaesthesia, CPB Circuit & Valvular Lesions",
     "tagline": "CPB cannulation, ACT monitoring, cardioplegia, weaning checklists, protamine reactions, and hemodynamic goals for stenotic/regurgitant valves",
     "source": "Miller's Anesthesia, 10th ed., Ch. 57 (Anesthesia for Cardiac Surgical Procedures); Kaplan's Cardiac Anesthesia, 8th ed.; Tata Memorial Centre Objective Anaesthesia Review, Ch. 3; Society of Cardiovascular Anesthesiologists (SCA) Guidelines.",
     "sections": [
@@ -13644,6 +13707,7 @@
       "Miller 10th",
       "Tata Objective"
     ],
+    "classification": "Pediatric Anaesthesia • Neonatal Airway, Fasting & Surgical Emergencies",
     "tagline": "Pediatric airway anatomy, 1-hour clear fluid fasting rules, CDH/TEF/pyloric stenosis resuscitation, and acute laryngospasm management",
     "source": "Miller's Anesthesia, 10th ed., Ch. 66–69 (Pediatric Anesthesia); Gregory's Pediatric Anesthesia, 6th ed.; Tata Memorial Centre Objective Anaesthesia Review, Ch. 4; ASA/ESAIC Consensus Fasting Guidelines (2023/2024 update); PALS 2024.",
     "sections": [
@@ -13696,6 +13760,7 @@
       "Miller 10th",
       "Tata Objective"
     ],
+    "classification": "Adult Subspecialties • Endocrine Resection & Roizen Optimization",
     "tagline": "Alpha-before-beta blockade rules, intraoperative hypertensive crisis suppression, post-clamp shock rescue, and thyroid airway emergencies",
     "source": "Miller's Anesthesia, 10th ed., Ch. 63 (Anesthesia and the Endocrine System); Tata Memorial Centre Objective Anaesthesia Review, Ch. 5; Roizen MF Preoperative Medical Evaluation; Endocrine Society Clinical Practice Guidelines.",
     "sections": [
@@ -13749,6 +13814,7 @@
       "Miller 10th",
       "Tata Objective"
     ],
+    "classification": "Adult Subspecialties • Renal Transplantation & TURP Syndrome Prevention",
     "tagline": "Pre-transplant optimization, balanced crystalloids vs saline, vascular unclamping hemodynamics, and irrigation fluid absorption toxicity",
     "source": "Miller's Anesthesia, 10th ed., Ch. 64 & 73; Tata Memorial Centre Objective Anaesthesia Review, Ch. 6; UpToDate 'Anesthesia for kidney transplantation' (2025/2026); EAU Guidelines on TURP Complications.",
     "sections": [
@@ -13798,6 +13864,7 @@
       "Miller 10th",
       "Tata Objective"
     ],
+    "classification": "Adult Subspecialties • Airway Fire Protocol & Oculocardiac Reflex",
     "tagline": "Aschner-Dagnini reflex pathway, peribulbar vs retrobulbar safety, operating room airway fire action protocol, and post-tonsillectomy bleed RSI",
     "source": "Miller's Anesthesia, 10th ed., Ch. 70 & 71 (Anesthesia for Ophthalmic & ENT Surgery); Tata Memorial Centre Objective Anaesthesia Review, Ch. 7; ASA Practice Advisory for the Prevention and Management of Operating Room Fires (2023 Update).",
     "sections": [
@@ -13851,6 +13918,7 @@
       "Miller 10th",
       "Tata Objective"
     ],
+    "classification": "Adult Subspecialties • BCIS Resuscitation, Fat Embolism & Frailty",
     "tagline": "PMMA bone cement toxicity staging, Gurd criteria for fat embolism, tourniquet systemic release shifts, and geriatric pharmacodynamics",
     "source": "Miller's Anesthesia, 10th ed., Ch. 72–75; Tata Memorial Centre Objective Anaesthesia Review, Ch. 7 & 8; AAGBI Safety Guideline: Reducing the Risk from Bone Cement Implantation Syndrome (2021/2024 update); British Journal of Anaesthesia 2022; 128:802–813.",
     "sections": [

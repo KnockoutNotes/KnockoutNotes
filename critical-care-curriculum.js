@@ -3728,7 +3728,7 @@
               <div>
                 <span style="display:inline-block; font-size:11px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; color:#38bdf8; background:rgba(56,189,248,0.12); padding:4px 10px; border-radius:999px; margin-bottom:8px; border:1px solid rgba(56,189,248,0.3);">⚡ NEET-SS / INI-SS CRITICAL CARE MASTER BANK</span>
                 <h3 style="margin:0 0 6px 0; font-size:22px; font-weight:800; color:#f8fafc;">Full-Page Practice &amp; Examination Engine</h3>
-                <p style="margin:0; font-size:14px; color:#94a3b8; max-width:640px; line-height:1.5;">Practice all 293 verified chapter-wise MCQs, build timed custom exams with zero duplicate questions, analyze performance diagnostics, and review detailed why-wrong rationales.</p>
+                <p style="margin:0; font-size:14px; color:#94a3b8; max-width:640px; line-height:1.5;">Practice all 505+ verified chapter-wise MCQs, build timed custom exams with zero duplicate questions, analyze performance diagnostics, and review detailed why-wrong rationales.</p>
               </div>
               <div style="display:flex; gap:10px; flex-wrap:wrap;">
                 <button type="button" class="kn-launch-mcq-engine" data-view="directory" style="padding:10px 18px; background:linear-gradient(135deg, #0284c7, #0ea5e9); color:#fff; border:none; border-radius:10px; font-size:13px; font-weight:750; cursor:pointer; box-shadow:0 4px 12px rgba(2,132,199,0.3); display:flex; align-items:center; gap:6px;">

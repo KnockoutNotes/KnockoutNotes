@@ -293,6 +293,72 @@ function checkAdminAuth(userEmail, adminSessionValid) {
   console.log('✓ Test 8: Category pricing defaults (Anaesthesia ₹9, Drugs ₹12, Critical Care ₹19) & legacy 49 migration passed');
 }
 
+// --------------------------------------------------------------------------
+// 8. FREE MONOGRAPHS: GENERAL ANAESTHESIA & GENERAL PRINCIPLES (CRITICAL CARE)
+// --------------------------------------------------------------------------
+{
+  function isFreeChapter(chapterId, cat) {
+    const cleanId = String(chapterId || '').toLowerCase().trim();
+    const cleanCat = String(cat || '').toLowerCase().trim();
+
+    if (cleanCat === 'cc_principles' || cleanId.startsWith('cc-icu-') || cleanId.startsWith('cc-triage-') || cleanId.startsWith('cc-severity-') || cleanId.startsWith('cc-ethics-')) {
+      return true;
+    }
+
+    if (cleanCat === 'general' || cleanId === 'general' || cleanId === 'cc_principles') return true;
+    const generalAnaesthesiaIds = [
+      'preop-assessment', 'asa-pscore', 'airway-assessment', 'anaesthesia-machine',
+      'anaesthesia-workstation-check', 'rsi', 'asa-monitoring', 'fluid-transfusion',
+      'malignant-hyperthermia', 'ponv', 'regional-physiology', 'anaphylaxis-anaesthesia',
+      'eras', 'dka-perioperative-glycaemic-protocols', 'icu-organization-scoring-ethics',
+      'brain-death-organ-donation', 'icu-triage-communication-ethics', 'icu-quality-infection-bundles',
+      'brain-death-organ-donor-resuscitation'
+    ];
+    if (generalAnaesthesiaIds.includes(cleanId)) {
+      return true;
+    }
+
+    return false;
+  }
+
+  function getDomain(cat, chapterId) {
+    const c = String(cat || '').toLowerCase().trim();
+    const id = String(chapterId || '').toLowerCase().trim();
+    const drugCats = ['induction', 'relaxants', 'reversal', 'opioids', 'nsaids', 'vasopressors', 'antihypertensives', 'alpha2', 'local', 'steroids', 'antidiabetics', 'pregnancy', 'miscellaneous', 'drugs'];
+    if (drugCats.includes(c)) return 'drugs';
+    const critCats = ['cc_principles', 'cc_airway', 'cc_respiratory', 'cc_hemodynamics', 'cc_sepsis', 'cc_neuro', 'cc_cardio', 'cc_renal', 'cc_gi', 'cc_trauma', 'cc_tox', 'cc_heme', 'cc_obs', 'cc_peds', 'cc_pharm', 'cc_advances', 'critical_care', 'critical', 'shock', 'respiratory', 'abg', 'antibiotics', 'poisoning'];
+    if (critCats.includes(c) || c.startsWith('cc_') || c.startsWith('cc-') || id.startsWith('cc-') || id.startsWith('cc_')) return 'critical_care';
+    return 'anaesthesia';
+  }
+
+  function getDomainPrice(domain) {
+    if (domain === 'drugs') return 12.0;
+    if (domain === 'critical_care') return 19.0;
+    return 9.0;
+  }
+
+  function resolvePriceWithFree(customPrice, cat, chapterId) {
+    if (isFreeChapter(chapterId, cat)) return 0.0;
+    const domain = getDomain(cat, chapterId);
+    const def = getDomainPrice(domain);
+    if (customPrice === 49.0 || customPrice === 49 || customPrice == null) {
+      return def;
+    }
+    return customPrice;
+  }
+
+  assert.strictEqual(isFreeChapter('icu-organization-scoring-ethics', 'cc_principles'), true, 'General Principles must be free');
+  assert.strictEqual(isFreeChapter('cc-severity-scoring-systems', 'cc_principles'), true, 'Severity scoring must be free');
+  assert.strictEqual(isFreeChapter('preop-assessment', 'anaesthesia'), true, 'General anaesthesia topic must be free');
+  assert.strictEqual(isFreeChapter('rsi', 'anaesthesia'), true, 'RSI must be free');
+  assert.strictEqual(resolvePriceWithFree(null, 'cc_principles', 'icu-organization-scoring-ethics'), 0.0, 'Price for General Principles must be ₹0');
+  assert.strictEqual(resolvePriceWithFree(null, 'general', 'preop-assessment'), 0.0, 'Price for General Anaesthesia must be ₹0');
+  assert.strictEqual(resolvePriceWithFree(null, 'induction', 'propofol'), 12.0, 'Drug prices remain ₹12');
+  assert.strictEqual(resolvePriceWithFree(null, 'cc_neuro', 'cc-tbi-icp'), 19.0, 'Critical care subspecialty prices remain ₹19');
+
+  console.log('✓ Test 9: Free access on General Anaesthesia and General Principles in Critical Care passed');
+}
+
 console.log('\n=======================================================');
-console.log('ALL VERIFICATION ASSERTIONS PASSED (8/8 TESTS SUCCESSFUL)');
+console.log('ALL VERIFICATION ASSERTIONS PASSED (9/9 TESTS SUCCESSFUL)');
 console.log('=======================================================');

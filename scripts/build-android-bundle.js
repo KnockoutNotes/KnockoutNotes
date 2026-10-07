@@ -150,6 +150,7 @@ const JS_FILES = [
   'policy-config.js',
   'study-annotations.js',
   'mcq-engine.js',
+  'payments-client.js',
   'sw.js'
 ];
 JS_FILES.forEach(copyFile);

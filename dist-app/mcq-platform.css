@@ -1040,7 +1040,7 @@
   box-shadow: var(--shadow-sm, 0 4px 12px -2px rgba(45, 35, 25, 0.05));
   flex-wrap: wrap;
   position: sticky;
-  bottom: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
   z-index: 50;
 }
 
@@ -1311,7 +1311,7 @@ body.dark .kn-mcq-btn:hover {
   }
   .kn-mcq-bottombar {
     padding: 10px 14px;
-    bottom: 8px;
+    bottom: calc(8px + env(safe-area-inset-bottom, 0px));
   }
   .kn-mcq-btn {
     min-height: 38px;

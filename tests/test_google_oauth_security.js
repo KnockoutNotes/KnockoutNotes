@@ -24,7 +24,7 @@ class MockD1Database {
     ];
     this.sessions = [];
     this.entitlements = [
-      { user_id: 1, chapter_id: 'preop-assessment', access_status: 'active' }
+      { user_id: 1, chapter_id: 'tbi-neuromonitoring-raised-icp', access_status: 'active' }
     ];
     this.adminSessions = [];
   }
@@ -331,8 +331,8 @@ async function runTests() {
   // TEST 9: PRESERVATION OF USER PURCHASES AND ENTITLEMENTS FOR NORMAL USERS
   {
     console.log('\n[TEST 9] Verify user purchases & entitlements remain active...');
-    // user 1 has entitlement for preop-assessment
-    const reqPdf = new Request('https://knockoutnotes.workers.dev/api/study/download-pdf?chapter_id=preop-assessment', {
+    // user 1 has entitlement for tbi-neuromonitoring-raised-icp
+    const reqPdf = new Request('https://knockoutnotes.workers.dev/api/study/download-pdf?chapter_id=tbi-neuromonitoring-raised-icp', {
       method: 'GET',
       headers: { 'Authorization': 'Bearer user_kmaneesh_session_token_111' }
     });
@@ -345,7 +345,7 @@ async function runTests() {
       user_id: 2,
       expires_at: new Date(Date.now() + 3600000).toISOString()
     });
-    const reqUnpurchased = new Request('https://knockoutnotes.workers.dev/api/study/download-pdf?chapter_id=preop-assessment', {
+    const reqUnpurchased = new Request('https://knockoutnotes.workers.dev/api/study/download-pdf?chapter_id=tbi-neuromonitoring-raised-icp', {
       method: 'GET',
       headers: { 'Authorization': 'Bearer user_2_session_token_222' }
     });

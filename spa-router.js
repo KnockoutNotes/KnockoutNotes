@@ -239,8 +239,12 @@
       ensureNotesLibrary("notes");
     } else if (targetPath === "drugs.html" || targetPath === "drugs") {
       ensureNotesLibrary("drugs");
-    } else if (targetPath === "critical-care.html") {
+    } else if (targetPath === "critical-care.html" || targetPath === "critical-care") {
       ensureNotesLibrary("criticalCare");
+      if (typeof window.initCriticalCareCurriculum === "function") {
+        window.initCriticalCareCurriculum("knCriticalCareCurriculum3d");
+        window.initCriticalCareCurriculum("knCriticalCareCurriculum");
+      }
     } else if (targetPath === "pearls.html" || targetPath === "pearls") {
       ensureNotesLibrary("pearls");
     } else if (targetPath === "calculators.html") {
