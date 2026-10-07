@@ -1326,3 +1326,84 @@ body.dark .kn-mcq-btn:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Contextual Empty State Box (When 0 MCQs match topic/filter) ── */
+.kn-mcq-empty-box {
+  background: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-subtle, rgba(45, 35, 25, 0.08));
+  border-radius: var(--radius-xl, 24px);
+  padding: 48px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-md, 0 12px 32px -4px rgba(45, 35, 25, 0.08));
+  margin: 20px auto;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+body.dark .kn-mcq-empty-box {
+  background: var(--bg-card, #1e293b);
+  border-color: var(--border-subtle, rgba(255, 255, 255, 0.08));
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.4);
+}
+
+.kn-mcq-empty-icon {
+  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.kn-mcq-empty-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-main, #0f172a);
+}
+
+body.dark .kn-mcq-empty-title {
+  color: #f1f5f9;
+}
+
+.kn-mcq-empty-desc {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-muted, #64748b);
+  max-width: 480px;
+}
+
+body.dark .kn-mcq-empty-desc {
+  color: #94a3b8;
+}
+
+.kn-mcq-empty-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+@media (max-width: 640px) {
+  .kn-mcq-empty-box {
+    padding: 36px 16px;
+    margin: 12px auto;
+  }
+  .kn-mcq-empty-title {
+    font-size: 19px;
+  }
+  .kn-mcq-empty-desc {
+    font-size: 13.5px;
+  }
+  .kn-mcq-empty-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .kn-mcq-empty-actions .kn-mcq-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

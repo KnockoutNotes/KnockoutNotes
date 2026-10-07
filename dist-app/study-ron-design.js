@@ -411,44 +411,167 @@
   };
 
   const STUDY_ITEM_TO_CHAPTER = {
-    "brain-death-organ-donation": 31,
-    "central-venous-pulmonary-artery-catheters": 2,
+    // Ch 1: Fundamentals of Critical Care & ICU Systems
     "icu-organization-scoring-ethics": 1,
+    "brain-death-organ-donation": 1,
+    "icu-triage-communication-ethics": 1,
+    "icu-quality-infection-bundles": 1,
+    "brain-death-organ-donor-resuscitation": 1,
+
+    // Ch 2: Applied Physiology of Critical Illness
     "venturi-oxygen-devices": 2,
+
+    // Ch 3: Advanced Hemodynamic Monitoring & Echocardiography
     "hemodynamics-shock-approach": 3,
     "asa-monitoring": 3,
+    "central-venous-pulmonary-artery-catheters": 3,
+    "advanced-hemodynamic-monitoring-picco": 3,
     "fluid-responsiveness-dynamic-indices": 3,
+
+    // Ch 4: Shock Syndromes & Vasoactive Therapeutics
     "cardiogenic-shock-scai": 4,
     "anaphylactic-neurogenic-endocrine-shock": 4,
+    "obstructive-shock-icu": 4,
+    "vasopressors-inotropes-titration-protocols": 4,
+
+    // Ch 5: Sepsis, Septic Shock & Host Response (2026 SSC)
+    "septic-shock-resuscitation": 5,
     "sepsis3-hour1-bundle-resuscitation": 5,
-    "haemodialysis-crrt-dialysis-circuit": 13,
-    "acute-respiratory-failure-types": 7,
+
+    // Ch 6: Acute Respiratory Failure & Mechanics
+    "acute-respiratory-failure-types": 6,
+    "difficult-airway-icu-extubation": 6,
+
+    // Ch 7: Non-Invasive Respiratory Support (HFNC & NIV)
     "thrive-hfno-apneic-oxygenation": 7,
+
+    // Ch 8: Invasive Mechanical Ventilation & Graphics
     "ventilators-classification": 8,
     "ventilator-modes-waveforms-asynchrony": 8,
     "ventilator-liberation-weaning-failure": 8,
+    "aprv-titration-lung-protective": 8,
+
+    // Ch 9: Acute Respiratory Distress Syndrome (ARDS)
     "ards-berlin-lung-protective": 9,
     "ards-refractory-rescue-ecmo": 9,
+    "ards-advanced-rescue-therapies": 9,
+
+    // Ch 10: Obstructive Airway Emergencies in ICU (Asthma & COPD)
     "status-asthmaticus-copd-icu": 10,
+
+    // Ch 11: Cardiac Critical Care & Acute Coronary Syndromes
     "acute-coronary-syndromes-cardiogenic-shock": 11,
     "cardiac-arrhythmias-tamponade-pocus": 11,
+    "massive-pe-cor-pulmonale": 11,
+    "rv-failure-pulmonary-hypertension-icu": 11,
+    "acute-aortic-syndromes-hypertensive-crises": 11,
+    "acute-decompensated-heart-failure-valvular": 11,
+
+    // Ch 12: Resuscitation, Cardiac Arrest & Post-ROSC Care
     "hypoxic-ischemic-encephalopathy-ttm-postarrest": 12,
+
+    // Ch 13: Acute Kidney Injury & Renal Replacement Therapy
     "aki-kdigo-crrt-modalities": 13,
+    "haemodialysis-crrt-dialysis-circuit": 13,
+    "citrate-anticoagulation-crrt-protocols": 13,
+
+    // Ch 14: Complex Acid-Base Disorders & Blood Gas Analysis
     "abg-interpretation": 14,
     "severe-electrolyte-disturbances-icu": 14,
+
+    // Ch 15: Neurocritical Care & Raised ICP Management
     "tbi-neuromonitoring-raised-icp": 15,
     "status-epilepticus-rse-srse": 15,
-    "brain-death-organ-donor-resuscitation": 15,
+    "acute-ischemic-stroke-evt-icu": 15,
+    "subarachnoid-intracerebral-hemorrhage-icu": 15,
+    "coma-altered-mental-status-encephalopathy": 15,
+
+    // Ch 16: Sedation, Analgesia, Delirium & Neuromuscular Blockade
+    "icu-sedation-analgesia-delirium-padis": 16,
+    "icu-analgosedation-padis-delirium": 16,
+    "neuromuscular-weakness-gbs-myasthenia-icu": 16,
+    "neuromuscular-blockade-train-of-four-icu": 16,
+    "propofol-infusion-syndrome-icu-withdrawal": 16,
+    "acute-pain-multimodal-analgesia-pca": 16,
+    "regional-neuraxial-analgesia-catheters": 16,
+    "neuropathic-pain-crps-post-surgical": 16,
+    "cancer-pain-opioid-rotation-palliative": 16,
+    "trauma-burn-procedural-analgesia-icu": 16,
+    "opioid-induced-hyperalgesia-tolerance-tapering": 16,
+    "interventional-sympathetic-nerve-blocks": 16,
+    "novel-non-opioid-analgesic-pharmacology": 16,
+
+    // Ch 17: Critical Care Applied Pharmacology & Pharmacokinetics
     "pkpd-organ-support-crrt-ecmo-vasodilators": 17,
+
+    // Ch 18: Severe ICU Infections & Antimicrobial Stewardship
     "empiric-sepsis-mdr-bundles": 18,
+    "multidrug-resistant-pathogens-icu": 18,
+    "severe-pneumonia-cap-hap-vap": 18,
+    "cns-infections-meningitis-encephalitis-icu": 18,
+    "fungal-infections-clostridioides-oncology-icu": 18,
+
+    // Ch 19: Gastrointestinal, Hepatic & Abdominal Catastrophes
+    "acute-gi-bleeding-pancreatitis-icu": 19,
+    "acute-liver-failure-nutrition-icu": 19,
+    "abdominal-compartment-syndrome-mesenteric-ischemia": 19,
+    "hepatorenal-syndrome-icu-nutrition-protocols": 19,
+
+    // Ch 20: Endocrine & Metabolic Crises
+    "rhabdomyolysis-endocrine-emergencies-icu": 20,
+
+    // Ch 21: Critical Care Clinical Nutrition & Metabolism
+    "nutrition-in-the-icu": 21,
+
+    // Ch 22: ICU Hematology, Hemostasis & Transfusion Medicine
     "hypovolemic-hemorrhagic-shock": 22,
+    "massive-transfusion-rotem-teg-coagulopathy": 22,
+    "dic-hit-thrombotic-microangiopathies": 22,
+    "acute-transfusion-reactions-trali-taco": 22,
+    "doac-reversal-ttp-hlh-critical-care": 22,
+
+    // Ch 23: Clinical Toxicology & Toxidromes
     "toxidromes-general-approach": 23,
     "organophosphates-carbamates": 23,
-    "burn-resuscitation-inhalation-injury": 24,
+    "toxicology-antidotes-extracorporeal-elimination": 23,
+    "toxic-alcohols-cyanide-co-poisoning": 23,
+    "cardiotoxic-drug-overdose-serotonin-syndrome": 23,
+
+    // Ch 24: Polytrauma & Damage Control Resuscitation
     "trauma-resuscitation-damage-control": 24,
+    "thoracic-trauma-flail-chest-cardiac-contusion": 24,
+    "extremity-compartment-syndrome-fat-embolism": 24,
+
+    // Ch 25: Major Burns & Inhalational Injuries
+    "burn-resuscitation-inhalation-injury": 25,
+
+    // Ch 26: Obstetric Critical Care & Maternal Emergencies
     "preeclampsia-eclampsia-hellp-syndrome": 26,
+    "amniotic-fluid-embolism-obstetric-hemorrhage": 26,
+    "cardiac-arrest-pregnancy-resuscitative-hysterotomy": 26,
+    "acute-fatty-liver-pregnancy-obstetric-sepsis": 26,
+
+    // Ch 27: Paediatric & Neonatal Emergencies in Adult ICU
+    "pediatric-respiratory-failure-pals": 27,
+    "pediatric-septic-shock-resuscitation": 27,
+    "pediatric-status-asthmaticus-epilepticus": 27,
+    "pediatric-dka-cerebral-edema-misc": 27,
+
+    // Ch 28: Critical Care Bedside Procedures & Invasive Devices
+    "percutaneous-tracheostomy-icu": 28,
+    "efona-surgical-airway-crico": 28,
+    "icu-bronchoscopy-tracheostomy-complications": 28,
+
+    // Ch 29: Critical Care Ultrasound & Echocardiography (POCUS)
+    "pocus-critical-care-vexus-blue-rush": 29,
+
+    // Ch 30: Extracorporeal Membrane Oxygenation (ECMO) & ECPR
     "ecmo-vv-va-principles-cannulation": 30,
-    "antifungals-icu": 18
+    "ecco2r-cytokine-adsorption-blood-purification": 30,
+
+    // Ch 31: Special ICU Populations, Oncology & Environmental Crises
+    "antifungals-icu": 31,
+    "environmental-emergencies-heat-hypothermia-drowning": 31
   };
 
   function getItemsForDomainAndCat(domainId, catId) {
@@ -1325,9 +1448,14 @@
                     ${(() => {
                       const mappedChapter = STUDY_ITEM_TO_CHAPTER[item.id] || CAT_TO_CHAPTER[activeCat] || CAT_TO_CHAPTER[activeDomain];
                       return `
-                        <button type="button" class="kn-action-btn kn-topic-mcq-btn" data-topic-mcq-target="${esc(item.id)}" data-mcq-mode="chapter" title="Practice Chapter ${mappedChapter || ''} MCQs">
-                          <span>📝</span> <span>${mappedChapter ? `Ch ${mappedChapter} MCQs` : 'Topic MCQs'}</span>
+                        <button type="button" class="kn-action-btn kn-topic-mcq-btn" data-topic-mcq-target="${esc(item.id)}" data-mcq-mode="topic" title="Practice High Yield MCQs for ${esc(item.short || item.name)}">
+                          <span>📝</span> <span>Topic MCQs</span>
                         </button>
+                        ${mappedChapter ? `
+                        <button type="button" class="kn-action-btn kn-topic-mcq-btn" data-topic-mcq-target="${esc(item.id)}" data-mcq-mode="chapter" data-chapter-id="${mappedChapter}" title="Practice All Chapter ${mappedChapter} MCQs">
+                          <span>📚</span> <span>Ch ${mappedChapter} MCQs</span>
+                        </button>
+                        ` : ''}
                         <button type="button" class="kn-action-btn kn-topic-mcq-btn" data-topic-mcq-target="${esc(item.id)}" data-mcq-mode="all" title="View & Practice All 505 MCQs">
                           <span>⚡</span> <span>All MCQs (505)</span>
                         </button>
@@ -1384,7 +1512,7 @@
                     <p class="ron-topic-mcq-desc">Master this topic with authentic NEET-SS / INI-SS clinical recall and practice questions with detailed rationale.</p>
                   </div>
                 </div>
-                <button type="button" class="ron-topic-mcq-launch-btn" data-topic-mcq-target="${esc(item.id)}">
+                <button type="button" class="ron-topic-mcq-launch-btn" data-topic-mcq-target="${esc(item.id)}" data-mcq-mode="topic">
                   <span>Solve MCQs</span> <span>→</span>
                 </button>
               </div>
@@ -2107,15 +2235,24 @@
       e.stopPropagation();
       triggerHapticFeedback();
       const topicId = topicMcqBtn.getAttribute("data-topic-mcq-target");
-      const mode = topicMcqBtn.getAttribute("data-mcq-mode");
-      const mappedChapter = STUDY_ITEM_TO_CHAPTER[topicId] || CAT_TO_CHAPTER[activeCat] || CAT_TO_CHAPTER[activeDomain];
+      const mode = topicMcqBtn.getAttribute("data-mcq-mode") || "topic";
+      const explicitChapter = topicMcqBtn.getAttribute("data-chapter-id");
+      const mappedChapter = explicitChapter || STUDY_ITEM_TO_CHAPTER[topicId] || CAT_TO_CHAPTER[activeCat] || CAT_TO_CHAPTER[activeDomain];
       if (window.KN_MCQ && typeof window.KN_MCQ.open === "function") {
         if (mode === "all") {
           window.KN_MCQ.open({ viewMode: "practice", chapterId: "", topicId: "" });
-        } else {
+        } else if (mode === "chapter") {
           window.KN_MCQ.open({
+            viewMode: "practice",
+            chapterId: mappedChapter ? String(mappedChapter) : "",
+            topicId: ""
+          });
+        } else {
+          // Topic mode: must open filtered to this exact topic!
+          window.KN_MCQ.open({
+            viewMode: "practice",
             topicId: topicId,
-            chapterId: mappedChapter
+            chapterId: mappedChapter ? String(mappedChapter) : ""
           });
         }
       }
@@ -2126,9 +2263,13 @@
       e.preventDefault();
       e.stopPropagation();
       triggerHapticFeedback();
-      const mappedChapter = CAT_TO_CHAPTER[activeCat];
+      const mappedChapter = CAT_TO_CHAPTER[activeCat] || CAT_TO_CHAPTER[activeDomain];
       if (window.KN_MCQ && typeof window.KN_MCQ.open === "function") {
-        window.KN_MCQ.open(mappedChapter ? { chapterId: mappedChapter } : {});
+        window.KN_MCQ.open({
+          viewMode: "practice",
+          chapterId: mappedChapter ? String(mappedChapter) : "",
+          topicId: ""
+        });
       }
       return;
     }
