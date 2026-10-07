@@ -86,10 +86,18 @@
     "cc-management-of-burn-patient-in-icu": "burn-resuscitation-inhalation-injury",
     "cc-polytrauma-resuscitation-and-damage-control": "trauma-resuscitation-damage-control",
     "cc-obstetric-critical-care-general-considerations": "preeclampsia-eclampsia-hellp-syndrome",
+    "cc-obstetric-critical-care-pregnancy-specific": "preeclampsia-eclampsia-hellp-syndrome",
     "cc-preeclampsia-eclampsia-and-hellp": "preeclampsia-eclampsia-hellp-syndrome",
+    "cc-paediatric-shock-sepsis-formulas": "sepsis3-hour1-bundle-resuscitation",
+    "cc-paediatric-status-asthmaticus-dka": "status-asthmaticus-copd-icu",
+    "cc-pleural-disorders-in-icu": "burn-resuscitation-inhalation-injury",
+    "cc-basic-echocardiography": "cardiac-arrhythmias-tamponade-pocus",
     "cc-vv-and-va-ecmo-indications-and-circuits": "ecmo-vv-va-principles-cannulation",
     "cc-ecmo-cannulation-mechanics-and-troubleshooting": "ecmo-vv-va-principles-cannulation",
-    "cc-infections-in-the-immunocompromised-host": "antifungals-icu"
+    "cc-ecmo-basics": "ecmo-vv-va-principles-cannulation",
+    "cc-managing-a-patient-on-ecmo": "ecmo-vv-va-principles-cannulation",
+    "cc-infections-in-the-immunocompromised-host": "antifungals-icu",
+    "cc-novel-chemo-and-toxicity-in-icu": "antifungals-icu"
   };
 
   var STUDY_TO_TOPIC = {};
@@ -258,25 +266,22 @@
     };
 
     loadPromise = Promise.all([
-      fetchJson(MASTER_MCQ_FILE).catch(function () { return []; }),
       fetchJson(CHAPTERS_FILE).catch(function () { return []; }),
       fetchJson(TOPICS_FILE).catch(function () { return []; }),
-      Promise.all(CHUNK_FILES.map(function (c) {
-        return fetchJson(c).catch(function () { return []; });
-      }))
+      fetchJson(MASTER_MCQ_FILE).catch(function () {
+        // Fallback to chunks only if master file fails
+        return Promise.all(CHUNK_FILES.map(function (c) {
+          return fetchJson(c).catch(function () { return []; });
+        })).then(function (chunkResults) {
+          return [].concat.apply([], chunkResults);
+        });
+      })
     ]).then(function (results) {
-      var master = results[0];
-      var chaps = results[1] || [];
-      var topics = results[2] || [];
-      var chunks = results[3] || [];
+      var chaps = results[0] || [];
+      var topics = results[1] || [];
+      var rawMcqs = results[2] || [];
 
-      var arrays = [];
-      if (Array.isArray(master) && master.length) arrays.push(master);
-      chunks.forEach(function (c) {
-        if (Array.isArray(c) && c.length) arrays.push(c);
-      });
-
-      var merged = mergeMcqs(arrays);
+      var merged = mergeMcqs([rawMcqs]);
       state.mcqs = merged;
       state.chapters = Array.isArray(chaps) ? chaps : [];
       state.topics = Array.isArray(topics) ? topics : [];
@@ -635,8 +640,9 @@
 
     var html = (
       '<div class="kn-mcq-filter-bar">' +
-        '<div class="kn-mcq-filter-group" style="flex:1;">' +
+        '<div class="kn-mcq-filter-group" style="flex:1; flex-wrap:wrap; gap:8px;">' +
           '<select class="kn-mcq-select" id="knPracticeChapSelect">' + chapterSelectOpts + '</select>' +
+          (state.practiceFilter.chapterId ? '<button type="button" class="kn-mcq-btn kn-mcq-btn--sm" data-action="practice-all" title="View all questions across all chapters">View All MCQs (' + state.mcqs.length + ')</button>' : '') +
           '<select class="kn-mcq-select" id="knPracticeViewSelect">' +
             '<option value="all"' + (state.practiceFilter.view === "all" ? " selected" : "") + '>All Questions</option>' +
             '<option value="bookmarks"' + (state.practiceFilter.view === "bookmarks" ? " selected" : "") + '>⭐ Bookmarked (' + Object.keys(state.bookmarks).length + ')</option>' +
@@ -748,8 +754,8 @@
       // Links: Study This Topic + External Citation
       html += (
         '<div class="kn-mcq-links-row">' +
-          '<a href="' + esc(getStudyLink(m.topicId, m.chapterId)) + '" class="kn-mcq-study-link">' +
-            '📚 Study This Topic in Knockout Notes →' +
+          '<a href="' + esc(getStudyLink(m.topicId, m.chapterId)) + '" target="_blank" rel="noopener noreferrer" class="kn-mcq-study-link">' +
+            '📚 Study This Topic in Knockout Notes ↗' +
           '</a>'
       );
 
@@ -964,7 +970,7 @@
               '<strong>' + esc(wt.title) + '</strong> ' +
               '<span style="font-size:12px; color:var(--text-muted);">(Ch ' + wt.chapterId + ')</span>' +
             '</div>' +
-            '<a href="' + esc(getStudyLink(wt.topicId, wt.chapterId)) + '" class="kn-mcq-btn kn-mcq-btn--sm kn-mcq-btn--primary">📖 Study Topic in Knockout Notes →</a>' +
+            '<a href="' + esc(getStudyLink(wt.topicId, wt.chapterId)) + '" target="_blank" rel="noopener noreferrer" class="kn-mcq-btn kn-mcq-btn--sm kn-mcq-btn--primary">📖 Study Topic in Knockout Notes ↗</a>' +
           '</div>'
         );
       });
@@ -1073,8 +1079,8 @@
 
     html += (
       '<div class="kn-mcq-links-row">' +
-        '<a href="' + esc(getStudyLink(m.topicId, m.chapterId)) + '" class="kn-mcq-study-link">' +
-          '📚 Study This Topic in Knockout Notes →' +
+        '<a href="' + esc(getStudyLink(m.topicId, m.chapterId)) + '" target="_blank" rel="noopener noreferrer" class="kn-mcq-study-link">' +
+          '📚 Study This Topic in Knockout Notes ↗' +
         '</a>'
     );
     if (m.hyperlinkedReference && m.hyperlinkedReference.url) {

@@ -2080,5 +2080,2074 @@
     ],
     "id": "mcq-cc-0262",
     "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0384",
+    "chapterId": 17,
+    "topicId": "cc-pharmacokinetics",
+    "question": "In critically ill patients with severe sepsis or septic shock, what primary pharmacokinetic change affects hydrophilic antimicrobial agents (e.g., beta-lactams, aminoglycosides, glycopeptides)?",
+    "options": [
+      "Marked decrease in volume of distribution (Vd) requiring reduced loading doses",
+      "Massive expansion in volume of distribution (Vd) due to capillary leak and aggressive fluid resuscitation, requiring higher initial loading doses to achieve therapeutic peak concentrations",
+      "Immediate cessation of all hepatic phase I metabolism",
+      "Increased plasma protein binding preventing tissue distribution"
+    ],
+    "answer": "B",
+    "explanation": "Hydrophilic drugs distribute primarily into extracellular water. In severe sepsis, widespread endothelial glycocalyx shedding, capillary leak, and large-volume fluid resuscitation dramatically expand extracellular water, causing a massive increase in volume of distribution (Vd). Consequently, standard loading doses achieve subtherapeutic peak plasma concentrations. Higher initial loading doses are required regardless of renal function.",
+    "whyWrong": {
+      "A": "Vd expands significantly; reducing loading doses causes early treatment failure.",
+      "C": "Hepatic metabolism changes vary and do not account for immediate hydrophilic dilution.",
+      "D": "Hypoalbuminemia in critical illness decreases protein binding, increasing free fraction."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In critical illness: ALWAYS give a full or higher initial loading dose of hydrophilic antibiotics (e.g. Meropenem 2g, Vancomycin 25-30 mg/kg), even in severe renal impairment.",
+    "hyperlinkedReference": {
+      "label": "Roberts JA, et al. DALI study. Clin Infect Dis 2014;58:1072-1083",
+      "url": "https://academic.oup.com/cid/article/58/8/1072/358245"
+    },
+    "tags": [
+      "Pharmacokinetics",
+      "Volume of Distribution",
+      "Hydrophilic Drugs",
+      "Sepsis"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0385",
+    "chapterId": 17,
+    "topicId": "cc-pharmacokinetics",
+    "question": "What is 'Augmented Renal Clearance' (ARC), and in which patient population is it most commonly observed?",
+    "options": [
+      "Creatinine clearance > 130 mL/min/1.73m2; typically seen in young trauma, burn, and neurotrauma patients with hyperdynamic circulations",
+      "Severe acute renal failure requiring emergent continuous dialysis",
+      "Isolated reduction in tubular creatinine secretion caused by cimetidine",
+      "Accumulation of active drug metabolites in end-stage liver disease"
+    ],
+    "answer": "A",
+    "explanation": "Augmented Renal Clearance (ARC) is defined as a measured creatinine clearance > 130 mL/min/1.73m2 (frequently exceeding 160-200 mL/min). It is common in younger critically ill patients (< 50 years) with major trauma, burns, sepsis, or TBI due to hyperdynamic circulation and systemic inflammation, leading to rapid renal elimination of renally-cleared drugs (beta-lactams, vancomycin) and treatment failure.",
+    "whyWrong": {
+      "B": "ARC is hyper-filtration, the polar opposite of acute renal failure.",
+      "C": "Tubular secretion blockage reduces clearance, not increases it.",
+      "D": "Hepatic metabolite accumulation is unrelated to renal hyper-clearance."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Serum creatinine is a deceptively poor marker for ARC (often appearing 'normal' at 0.5-0.7 mg/dL). An 8- or 24-hour measured urinary creatinine clearance is necessary to diagnose ARC.",
+    "hyperlinkedReference": {
+      "label": "Udy AA, et al. Augmented renal clearance in the critically ill. Clin Pharmacokinet 2010;49:1-16",
+      "url": "https://link.springer.com/article/10.2165/11318140-000000000-00000"
+    },
+    "tags": [
+      "Augmented Renal Clearance",
+      "ARC",
+      "Pharmacokinetics",
+      "Trauma"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0386",
+    "chapterId": 17,
+    "topicId": "cc-pharmacokinetics",
+    "question": "What is the optimal pharmacokinetic/pharmacodynamic (PK/PD) target for Beta-Lactam antibiotics (e.g., Piperacillin-tazobactam, Meropenem) to maximize clinical cure and suppress resistance in critically ill patients?",
+    "options": [
+      "Peak concentration to MIC ratio (Cmax / MIC > 10)",
+      "Time that unbound drug concentration remains above the Minimum Inhibitory Concentration (%fT > MIC) for 100% of the dosing interval, or fCmin >= 4x MIC",
+      "Area under the curve to MIC ratio (AUC24 / MIC > 400)",
+      "High intermittent post-antibiotic effect"
+    ],
+    "answer": "B",
+    "explanation": "Beta-lactams exhibit time-dependent bactericidal activity. While in non-ICU patients %fT > MIC of 40-70% suffices, in critically ill septic patients with high bacterial loads and altered PK, modern guidelines recommend achieving 100% fT > MIC or maintaining steady-state trough concentrations 1-4 times the MIC (100% fT > 1-4x MIC), best achieved via extended (3-4 hour) or continuous IV infusions.",
+    "whyWrong": {
+      "A": "Cmax / MIC > 10 is the PK/PD index for concentration-dependent antibiotics (aminoglycosides).",
+      "C": "AUC24 / MIC > 400 is the PK/PD index for glycopeptides (vancomycin) and fluoroquinolones.",
+      "D": "Beta-lactams have minimal to no post-antibiotic effect against Gram-negative bacilli."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2024,
+    "examPearl": "INI-SS EXAM PEARL: The BLING III trial (JAMA 2024) evaluated continuous vs intermittent beta-lactam infusions; continuous infusion showed improved clinical cure and reduced time to infection resolution.",
+    "hyperlinkedReference": {
+      "label": "Abdul-Aziz MH, et al. Antimicrobial therapeutic drug monitoring in critically ill. Intensive Care Med 2020;46:1123-1153",
+      "url": "https://link.springer.com/article/10.1007/s00134-020-06050-1"
+    },
+    "tags": [
+      "Beta-Lactam PK/PD",
+      "Time-Dependent Killing",
+      "Continuous Infusion"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0387",
+    "chapterId": 17,
+    "topicId": "cc-pharmacokinetics",
+    "question": "According to the updated consensus guidelines for Therapeutic Drug Monitoring (TDM) of Vancomycin in serious MRSA infections, what is the recommended target PK/PD parameter to maximize efficacy while minimizing nephrotoxicity?",
+    "options": [
+      "Trough concentration strictly between 15 and 20 mcg/mL",
+      "Area under the curve to MIC ratio over 24 hours (AUC24 / MIC) between 400 and 600 (assuming MIC <= 1 mg/L)",
+      "Peak concentration (Cmax) > 80 mcg/mL",
+      "Trough concentration < 5 mcg/mL"
+    ],
+    "answer": "B",
+    "explanation": "The 2020 consensus guideline abandoned isolated trough concentrations (15-20 mcg/mL) because trough-guided dosing caused excessive acute kidney injury without improved outcomes. The modern standard is Bayesian-guided or two-point AUC/MIC monitoring, targeting an AUC24/MIC between 400 and 600 (mg*h/L). AUC > 600 significantly increases nephrotoxicity without increasing efficacy.",
+    "whyWrong": {
+      "A": "Trough-only monitoring (15-20) is replaced by AUC monitoring due to high nephrotoxicity.",
+      "C": "Cmax > 80 is dangerously supratherapeutic and causes ototoxicity and renal damage.",
+      "D": "Troughs < 5 result in treatment failure and selection for VISA/VRSA strains."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: AUC24/MIC 400-600 achieves optimal clinical cure for MRSA bacteremia while reducing nephrotoxicity by ~50% compared to traditional trough-guided dosing.",
+    "hyperlinkedReference": {
+      "label": "Rybak MJ, et al. Vancomycin TDM guidelines. Am J Health Syst Pharm 2020;77:835-864",
+      "url": "https://academic.oup.com/ajhp/article/77/11/835/5810249"
+    },
+    "tags": [
+      "Vancomycin",
+      "AUC24/MIC",
+      "TDM",
+      "Nephrotoxicity"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0388",
+    "chapterId": 17,
+    "topicId": "cc-pharmacokinetics",
+    "question": "When dosing once-daily extended-interval Aminoglycosides (e.g. Amikacin 25-30 mg/kg or Gentamicin 5-7 mg/kg) in septic shock, what PK/PD principle is being optimized, and why is toxicity minimized?",
+    "options": [
+      "Time-dependent killing is maximized; ototoxicity is prevented by maintaining a constant continuous serum level",
+      "Concentration-dependent bactericidal killing (Cmax / MIC >= 8-10) is maximized, while nephrotoxicity is minimized by allowing prolonged drug-free troughs (< 1 mcg/mL) that prevent saturable renal cortical accumulation",
+      "Active transport across bacterial ribosomes is enhanced only at low serum concentrations",
+      "It completely eliminates the need for any serum concentration monitoring"
+    ],
+    "answer": "B",
+    "explanation": "Aminoglycosides exhibit concentration-dependent killing and a prolonged post-antibiotic effect (PAE). High single doses achieve high peak-to-MIC ratios (Cmax/MIC >= 8-10), maximizing bacterial kill. Renal tubular uptake of aminoglycosides is saturable; thus, high peaks do not increase renal uptake, and the subsequent prolonged low trough (< 1 mcg/mL for gentamicin, < 2.5-5 for amikacin) allows drug washout from renal cortical cells, minimizing nephrotoxicity.",
+    "whyWrong": {
+      "A": "Aminoglycosides are concentration-dependent, not time-dependent; continuous levels maximize nephrotoxicity.",
+      "C": "Uptake into bacteria is concentration-driven.",
+      "D": "TDM (trough and peak monitoring) is still mandatory in critical illness."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In severe septic shock, initial Amikacin dosing should be 25-30 mg/kg (based on adjusted body weight in obesity) to overcome expanded volume of distribution.",
+    "hyperlinkedReference": {
+      "label": "Nicolau DP, et al. Once-daily aminoglycoside dosing. Antimicrob Agents Chemother 1995;39:650-655",
+      "url": "https://journals.asm.org/doi/10.1128/aac.39.3.650"
+    },
+    "tags": [
+      "Aminoglycosides",
+      "Concentration-Dependent Killing",
+      "Amikacin"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0389",
+    "chapterId": 17,
+    "topicId": "cc-pharmacokinetics",
+    "question": "For drugs with high hepatic extraction ratios (flow-limited clearance, e.g. Lidocaine, Morphine, Propofol), what is the primary determinant of hepatic clearance in the critically ill patient?",
+    "options": [
+      "Total hepatic blood flow (cardiac output and splanchnic perfusion)",
+      "Intrinsic enzymatic activity of cytochrome P450 enzymes (CYP3A4)",
+      "Serum albumin concentration alone",
+      "Urine flow rate"
+    ],
+    "answer": "A",
+    "explanation": "Drugs with a high hepatic extraction ratio (> 0.7) are cleared so efficiently by hepatocytes that clearance is limited solely by delivery of blood to the liver (hepatic blood flow). In states of low cardiac output, shock, or severe PEEP-induced venous congestion, hepatic clearance of these drugs plummets, causing rapid drug accumulation and toxicity.",
+    "whyWrong": {
+      "B": "Intrinsic clearance determines elimination of low-extraction (capacity-limited) drugs (e.g., diazepam, phenytoin, theophylline).",
+      "C": "Protein binding does not limit clearance of high-extraction drugs.",
+      "D": "Urine flow reflects renal, not hepatic clearance."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: In cardiogenic shock, Lidocaine clearance falls by > 50% purely secondary to decreased cardiac output, necessitating a 50% dose reduction to avoid neurotoxicity/seizures.",
+    "hyperlinkedReference": {
+      "label": "Wilkinson GR. Clearance approaches in pharmacology. N Engl J Med 2005;352:2211-2221",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMra041535"
+    },
+    "tags": [
+      "Hepatic Clearance",
+      "Flow-Limited Drugs",
+      "Pharmacology"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0390",
+    "chapterId": 17,
+    "topicId": "cc-pharmacokinetics",
+    "question": "During Continuous Renal Replacement Therapy (CRRT), which physicochemical characteristic of a drug causes it to be EXTENSIVELY cleared by the artificial hemofilter?",
+    "options": [
+      "High molecular weight (> 50,000 Daltons), high plasma protein binding (> 90%), and large volume of distribution (> 5 L/kg)",
+      "Low molecular weight (< 1,000 Daltons), low plasma protein binding (< 20%), and small volume of distribution (< 0.5-0.7 L/kg)",
+      "High lipophilicity with extensive adipose tissue sequestration",
+      "Extensive biliary excretion"
+    ],
+    "answer": "B",
+    "explanation": "CRRT filters clear only the unbound (free) fraction of drugs present in plasma water. A drug is cleared extensively by CRRT if it has: (1) Low molecular weight (< filter cut-off, typically 20-30 kDa), (2) Low protein binding (high free fraction), and (3) Small volume of distribution (meaning most drug resides in the intravascular/extracellular space available to the filter, e.g., aminoglycosides, beta-lactams, fluconazole).",
+    "whyWrong": {
+      "A": "High protein binding and large Vd protect drugs from CRRT clearance (e.g., amiodarone, propofol, digoxin).",
+      "C": "Lipophilic drugs have high Vd and are poorly dialyzed.",
+      "D": "Biliary excretion is independent of extracorporeal hemodialysis."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Sieving coefficient (S) in hemofiltration represents: C_ultrafiltrate / C_plasma_water. For non-protein-bound small solutes, S ~ 1.0 (unrestricted convective passage).",
+    "hyperlinkedReference": {
+      "label": "Choi G, et al. Principles of antibacterial dosing during CRRT. Crit Care 2009;13:214",
+      "url": "https://ccforum.biomedcentral.com/articles/10.1186/cc7790"
+    },
+    "tags": [
+      "CRRT Clearance",
+      "Sieving Coefficient",
+      "Protein Binding"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0391",
+    "chapterId": 18,
+    "topicId": "cc-interpreting-antibiogram-and-mic",
+    "question": "Which novel beta-lactam/beta-lactamase inhibitor combination is considered the first-line targeted therapy for infections caused by Klebsiella pneumoniae Carbapenemase (KPC) and OXA-48 producing Enterobacterales, but has NO activity against Metallo-Beta-Lactamases (NDM, VIM, IMP)?",
+    "options": [
+      "Ceftazidime-Avibactam",
+      "Ceftolozane-Tazobactam",
+      "Ampicillin-Sulbactam",
+      "Piperacillin-Tazobactam"
+    ],
+    "answer": "A",
+    "explanation": "Ceftazidime-avibactam (CAZ-AVI) inhibits Class A (KPC, ESBL), Class C (AmpC), and Class D (OXA-48) carbapenemases. However, it lacks activity against Class B Metallo-Beta-Lactamases (MBLs like NDM-1). To treat NDM-producing strains, Ceftazidime-avibactam must be combined with Aztreonam (CAZ-AVI + ATM), as aztreonam resists MBL hydrolysis while avibactam neutralizes co-produced ESBL/AmpC enzymes.",
+    "whyWrong": {
+      "B": "Ceftolozane-tazobactam is active against MDR Pseudomonas aeruginosa (including derepressed AmpC and porin mutants), but lacks activity against KPC and MBL carbapenemases.",
+      "C": "Ampicillin-sulbactam is degraded by carbapenemases.",
+      "D": "Piperacillin-tazobactam is ineffective against carbapenemase producers."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: For Metallo-Beta-Lactamases (NDM-1, common in South Asia), the synergistic combination of Ceftazidime-Avibactam plus Aztreonam or Cefiderocol are the definitive therapeutic options.",
+    "hyperlinkedReference": {
+      "label": "Tamma PD, et al. IDSA Guidance on AmpC, CRE, and Pseudomonas. Clin Infect Dis 2023;77:187-219",
+      "url": "https://academic.oup.com/cid/article/77/3/e187/7222453"
+    },
+    "tags": [
+      "Ceftazidime-Avibactam",
+      "CRE",
+      "KPC",
+      "OXA-48",
+      "MDR Pathogens"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0392",
+    "chapterId": 18,
+    "topicId": "cc-interpreting-antibiogram-and-mic",
+    "question": "What is the unique mechanism of action of Cefiderocol, allowing it to penetrate the outer membrane of Gram-negative pathogens and overcome carbapenem resistance across all Ambler classes (A, B, C, and D)?",
+    "options": [
+      "Direct degradation of the bacterial peptidoglycan wall via enzymatic hydrolysis",
+      "Siderophore-conjugated cephalosporin that binds extracellular ferric iron (Fe3+) and utilizes active bacterial iron-transport systems ('Trojan Horse' mechanism) to bypass porin channel loss",
+      "Inhibition of bacterial DNA gyrase and topoisomerase IV",
+      "Disruption of the lipopolysaccharide outer membrane via detergent action"
+    ],
+    "answer": "B",
+    "explanation": "Cefiderocol is a novel siderophore cephalosporin. Its chlorocatechol moiety binds extracellular ferric iron, allowing it to be actively transported across the outer membrane of Gram-negative bacteria via bacterial iron transport systems (TonB-dependent iron receptors). This bypasses porin channel down-regulation and efflux pump upregulation, and it resists hydrolysis by Serine carbapenemases (KPC, OXA) and Metallo-beta-lactamases (NDM, VIM).",
+    "whyWrong": {
+      "A": "Cefiderocol inhibits penicillin-binding proteins, not enzymatic peptidoglycan degradation.",
+      "C": "DNA gyrase inhibition is the mechanism of fluoroquinolones.",
+      "D": "LPS membrane disruption is the mechanism of polymyxins (Colistin)."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: Cefiderocol is active against difficult non-fermenters including Carbapenem-resistant Acinetobacter baumannii (CRAB), Stenotrophomonas maltophilia, and Pseudomonas aeruginosa.",
+    "hyperlinkedReference": {
+      "label": "Bassetti M, et al. CREDIBLE-CR trial. Lancet Infect Dis 2021;21:226-240",
+      "url": "https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30796-9/fulltext"
+    },
+    "tags": [
+      "Cefiderocol",
+      "Siderophore",
+      "MBL",
+      "Trojan Horse"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0393",
+    "chapterId": 18,
+    "topicId": "cc-interpreting-antibiogram-and-mic",
+    "question": "Which newly FDA-approved co-formulation represents targeted first-line therapy specifically for Carbapenem-Resistant Acinetobacter baumannii (CRAB) infections?",
+    "options": [
+      "Sulbactam-Durlobactam (SUL-DUR)",
+      "Meropenem-Vaborbactam",
+      "Imipenem-Relebactam",
+      "Ceftolozane-Tazobactam"
+    ],
+    "answer": "A",
+    "explanation": "Sulbactam has intrinsic bactericidal activity against Acinetobacter baumannii via PBP1 and PBP3 binding, but is commonly degraded by beta-lactamases. Durlobactam is a novel broad-spectrum diazabicyclooctane beta-lactamase inhibitor that protects sulbactam from degradation by Class A, C, and D (OXA-23, OXA-24/40, OXA-58) enzymes. Sulbactam-durlobactam (ATTACK trial) showed superiority over colistin for CRAB with significantly lower nephrotoxicity.",
+    "whyWrong": {
+      "B": "Meropenem-vaborbactam is approved for KPC-producing Enterobacterales, not Acinetobacter.",
+      "C": "Imipenem-relebactam treats KPC and Pseudomonas, but lacks activity against Acinetobacter.",
+      "D": "Ceftolozane-tazobactam lacks activity against Acinetobacter."
+    },
+    "difficulty": "difficult",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: In the ATTACK trial (Lancet Infect Dis 2023), Sulbactam-durlobactam demonstrated 28-day mortality of 19% vs 32% for colistin in CRAB infections.",
+    "hyperlinkedReference": {
+      "label": "Kaye KS, et al. ATTACK trial. Lancet Infect Dis 2023;23:1072-1084",
+      "url": "https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(23)00184-6/fulltext"
+    },
+    "tags": [
+      "Sulbactam-Durlobactam",
+      "CRAB",
+      "Acinetobacter",
+      "ATTACK Trial"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0394",
+    "chapterId": 18,
+    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "question": "According to IDSA and ESCMID guidelines, what is the recommended first-line empirical antifungal therapy for suspected or confirmed Invasive Candidiasis / Candidemia in critically ill adult ICU patients?",
+    "options": [
+      "An Echinocandin (Anidulafungin, Caspofungin, or Micafungin)",
+      "Oral Fluconazole 150 mg once weekly",
+      "Conventional Amphotericin B deoxycholate",
+      "Oral Itraconazole liquid"
+    ],
+    "answer": "A",
+    "explanation": "Guidelines recommend an Echinocandin (Anidulafungin, Caspofungin, or Micafungin) as first-line empiric therapy for invasive candidiasis/candidemia in critically ill patients. Echinocandins exhibit fungicidal activity against Candida species (including Candida glabrata and Candida krusei, which are often azole-resistant) and have a superior safety profile compared to amphotericin B.",
+    "whyWrong": {
+      "B": "Fluconazole is acceptable only in non-critically ill patients without prior azole exposure and where azole-resistant species are unlikely.",
+      "C": "Conventional amphotericin B deoxycholate carries high rates of infusion reactions and acute renal tubular necrosis.",
+      "D": "Itraconazole has poor bioavailability and no role in acute candidemia."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: For Candida auris (frequently multidrug-resistant), echinocandins remain first-line, but pan-resistant strains requiring liposomal amphotericin B or rezafungin are emerging.",
+    "hyperlinkedReference": {
+      "label": "Pappas PG, et al. IDSA Clinical Practice Guideline for the Management of Candidiasis. Clin Infect Dis 2016;62:e1-e50",
+      "url": "https://academic.oup.com/cid/article/62/4/e1/2462830"
+    },
+    "tags": [
+      "Invasive Candidiasis",
+      "Echinocandins",
+      "Candidemia"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0395",
+    "chapterId": 18,
+    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "question": "In a critically ill patient with severe COVID-19 or influenza ARDS who develops worsening respiratory failure, cavitary pulmonary nodules, and a positive bronchoalveolar lavage (BAL) Galactomannan index (> 1.0), which diagnosis is established and what is the first-line antifungal therapy?",
+    "options": [
+      "Invasive Pulmonary Aspergillosis (CAPA / IAPA); treat with Voriconazole or Isavuconazole",
+      "Pneumocystis jirovecii pneumonia; treat with high-dose TMP-SMX",
+      "Mucormycosis; treat with Fluconazole",
+      "Pulmonary Cryptococcosis; treat with Caspofungin"
+    ],
+    "answer": "A",
+    "explanation": "Viral respiratory infections (severe influenza and COVID-19) frequently predispose to secondary Invasive Pulmonary Aspergillosis (IAPA / CAPA) due to respiratory epithelial denudation and immune dysregulation. BAL galactomannan index >= 1.0 confirms the diagnosis. Voriconazole or Isavuconazole are first-line targeted therapies.",
+    "whyWrong": {
+      "B": "Galactomannan is a cell wall component of Aspergillus, not Pneumocystis.",
+      "C": "Fluconazole has zero activity against Mucorales or Aspergillus.",
+      "D": "Echinocandins (caspofungin) lack activity against Cryptococcus and are second-line for Aspergillus."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Isavuconazole has non-inferior efficacy to voriconazole with fewer visual/neurotoxic adverse events, no QT-prolongation (it shortens QT), and predictable linear pharmacokinetics without CYP2C19 polymorphisms.",
+    "hyperlinkedReference": {
+      "label": "Koehler P, et al. Defining and managing COVID-19-associated pulmonary aspergillosis (CAPA). Lancet Infect Dis 2021;21:e149-e162",
+      "url": "https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30847-1/fulltext"
+    },
+    "tags": [
+      "CAPA",
+      "Aspergillus",
+      "Galactomannan",
+      "Voriconazole",
+      "Isavuconazole"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0396",
+    "chapterId": 18,
+    "topicId": "cc-catheter-related-blood-stream-infection",
+    "question": "What is the CDC diagnostic definition of Catheter-Related Bloodstream Infection (CRBSI) based on Differential Time to Positivity (DTP)?",
+    "options": [
+      "Blood culture drawn from the central line turns positive at least 2 hours earlier than blood culture drawn simultaneously from a peripheral vein (with identical organism identification)",
+      "Central line culture turns positive 12 hours after peripheral culture",
+      "Positive peripheral blood culture with negative central line culture",
+      "Colony count from peripheral blood is 10 times higher than central line blood"
+    ],
+    "answer": "A",
+    "explanation": "Differential Time to Positivity (DTP) confirms CRBSI without catheter removal when blood drawn simultaneously from the catheter hub turns positive in the automated blood culture system AT LEAST 2 HOURS EARLIER than blood drawn from a peripheral venipuncture, reflecting higher bacterial burden in the colonized catheter lumen.",
+    "whyWrong": {
+      "B": "Catheter culture must be positive earlier, not later.",
+      "C": "This suggests an alternative source of bacteremia, not catheter-related infection.",
+      "D": "In quantitative culture, catheter blood colony count must be at least 3-fold higher than peripheral blood."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Quantitative catheter blood culture ratio >= 3:1 over peripheral blood OR catheter blood turning positive >= 2 hours earlier (DTP) are diagnostic of CRBSI.",
+    "hyperlinkedReference": {
+      "label": "Mermel LA, et al. IDSA Clinical Practice Guidelines for the Diagnosis of Intravascular Catheter-Related Infections. Clin Infect Dis 2009;49:1-45",
+      "url": "https://academic.oup.com/cid/article/49/1/1/337190"
+    },
+    "tags": [
+      "CRBSI",
+      "Differential Time to Positivity",
+      "DTP",
+      "Central Line"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0397",
+    "chapterId": 18,
+    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "question": "In the management of Ventilator-Associated Pneumonia (VAP), which core component of the IHI / SHEA prevention bundle has proven to be the most effective non-pharmacological intervention in reducing aspiration of subglottic secretions?",
+    "options": [
+      "Routine daily endotracheal tube exchange",
+      "Endotracheal tubes with subglottic secretion drainage ports, maintaining cuff pressure 20-30 cmH2O, and semi-recumbent head-of-bed elevation to 30-45 degrees",
+      "Prophylactic instillation of normal saline before every suctioning pass",
+      "Routine systemic antibiotic prophylaxis throughout mechanical ventilation"
+    ],
+    "answer": "B",
+    "explanation": "Core VAP prevention bundles include: (1) Semi-recumbent positioning (head of bed 30-45 degrees) to prevent gastroesophageal reflux, (2) Endotracheal tubes with continuous or intermittent subglottic secretion suctioning (evacuating pooling above the cuff), (3) Maintaining ETT cuff pressure 20-30 cmH2O, (4) Daily sedation interruptions and readiness-to-wean assessment, and (5) Oral care with regular tooth brushing.",
+    "whyWrong": {
+      "A": "Routine ETT exchange increases mucosal trauma and aspiration risk.",
+      "C": "Saline instillation dislodges bacterial biofilms into lower airways and increases VAP.",
+      "D": "Routine prophylactic antibiotics promote multidrug-resistant pathogens."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: ETT cuff pressure < 20 cmH2O allows microaspiration of subglottic secretions; pressure > 30 cmH2O compromises tracheal capillary perfusion, causing mucosal ischemia and tracheal stenosis.",
+    "hyperlinkedReference": {
+      "label": "Klompas M, et al. Strategies to prevent ventilator-associated pneumonia (SHEA/IDSA). Infect Control Hosp Epidemiol 2022;43:687-713",
+      "url": "https://www.cambridge.org/core/journals/infection-control-and-hospital-epidemiology/article/strategies-to-prevent-ventilatorassociated-pneumonia-ventilatorassociated-events-and-nonventilator-hospitalacquired-pneumonia-in-acute-care-hospitals-2022-update/BA044ED2CBE3A6020E2F5E595D34C68B"
+    },
+    "tags": [
+      "VAP Bundle",
+      "Subglottic Drainage",
+      "Cuff Pressure"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0398",
+    "chapterId": 18,
+    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "question": "What is the drug of choice for targeted treatment of severe, hospital-acquired Stenotrophomonas maltophilia pneumonia in the ICU?",
+    "options": [
+      "Trimethoprim-Sulfamethoxazole (TMP-SMX)",
+      "Meropenem",
+      "Imipenem-Cilastatin",
+      "Ertapenem"
+    ],
+    "answer": "A",
+    "explanation": "Stenotrophomonas maltophilia is intrinsically resistant to carbapenems due to chromosomal production of an L1 Metallo-beta-lactamase (hydrolyzing all carbapenems) and L2 cephalosporinase. High-dose Trimethoprim-Sulfamethoxazole (TMP-SMX, 15 mg/kg/day of TMP component IV) is the historical and current first-line drug of choice (often combined with levofloxacin, minocycline, or ceftazidime in refractory cases).",
+    "whyWrong": {
+      "B": "S. maltophilia is intrinsically 100% resistant to all carbapenems via L1 MBL.",
+      "C": "Imipenem is hydrolyzed by the L1 enzyme.",
+      "D": "Ertapenem has zero activity against S. maltophilia."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Carbapenem exposure in the ICU is the strongest independent risk factor for superinfection with Stenotrophomonas maltophilia.",
+    "hyperlinkedReference": {
+      "label": "Falagas ME, et al. Treatment of Stenotrophomonas maltophilia infections. Lancet Infect Dis 2008;8:714-723",
+      "url": "https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(08)70259-8/fulltext"
+    },
+    "tags": [
+      "Stenotrophomonas",
+      "TMP-SMX",
+      "Carbapenem Resistance"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0399",
+    "chapterId": 19,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "According to the Revised Atlanta Classification, how is 'Severe Acute Pancreatitis' specifically defined?",
+    "options": [
+      "Serum amylase or lipase > 10 times upper limit of normal",
+      "Presence of persistent organ failure (> 48 hours), defined by a modified Marshall score >= 2 for the cardiovascular, respiratory, or renal systems",
+      "Presence of local peripancreatic fluid collections resolving within 48 hours",
+      "Biliary etiology confirmed on abdominal ultrasound"
+    ],
+    "answer": "B",
+    "explanation": "Under the Revised Atlanta Classification: Mild = no organ failure or local complications; Moderately severe = transient organ failure (< 48 hours) or local/systemic complications; Severe Acute Pancreatitis = PERSISTENT organ failure (> 48 hours) affecting respiratory (PaO2/FiO2), cardiovascular (SBP requiring inotropes), or renal (Cr >= 1.9 mg/dL) systems according to the modified Marshall scoring system.",
+    "whyWrong": {
+      "A": "Enzyme level does not correlate with severity or prognosis.",
+      "C": "Transient organ failure or sterile collections define moderately severe, not severe pancreatitis.",
+      "D": "Etiology does not define physiological severity."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In severe pancreatitis, early aggressive hydration (lactated Ringer's) is beneficial only during the first 12-24 hours; persistent aggressive fluid overload after 24 hours increases mortality and abdominal compartment syndrome (WATERFALL trial).",
+    "hyperlinkedReference": {
+      "label": "Banks PA, et al. Revised Atlanta classification of acute pancreatitis. Gut 2013;62:102-111",
+      "url": "https://gut.bmj.com/content/62/1/102"
+    },
+    "tags": [
+      "Acute Pancreatitis",
+      "Revised Atlanta",
+      "Modified Marshall Score"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0400",
+    "chapterId": 19,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "In the management of Infected Pancreatic Necrosis, what does the modern 'Step-Up Approach' (PANTER trial) advocate over immediate open surgical necrosectomy?",
+    "options": [
+      "Immediate emergency open laparotomy with packing within 24 hours of fever onset",
+      "Initial conservative percutaneous or endoscopic catheter drainage, followed by minimally invasive retroperitoneal necrosectomy (VARD) only if clinical deterioration persists",
+      "Exclusive treatment with prophylactic intravenous ciprofloxacin without drainage",
+      "Lifelong total parenteral nutrition without interventional procedures"
+    ],
+    "answer": "B",
+    "explanation": "The landmark PANTER trial demonstrated that a minimally invasive 'step-up approach' (beginning with percutaneous drainage or endoscopic transgastric drainage, followed by minimally invasive video-assisted retroperitoneal debridement [VARD] if unrecovered) reduced major complications, new-onset organ failure, incisional hernias, and long-term diabetes compared with primary open necrosectomy.",
+    "whyWrong": {
+      "A": "Open necrosectomy carries high mortality (~40%) and high morbidity.",
+      "C": "Routine prophylactic antibiotics without documented infection are not recommended.",
+      "D": "Drainage of infected collections is mandatory."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Necrosectomy should be delayed whenever possible for at least 4 weeks until acute collections mature and wall off ('walled-off pancreatic necrosis' - WOPN).",
+    "hyperlinkedReference": {
+      "label": "van Santvoort HC, et al. PANTER trial. N Engl J Med 2010;362:1491-1502",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa0908863"
+    },
+    "tags": [
+      "Pancreatitis",
+      "Step-Up Approach",
+      "PANTER Trial",
+      "VARD"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0401",
+    "chapterId": 19,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "According to the King's College Hospital criteria for emergency liver transplantation in Acute Liver Failure (ALF), what are the criteria for Paracetamol (Acetaminophen)-induced liver failure?",
+    "options": [
+      "Arterial pH < 7.30 (after resuscitation), OR all three of: Grade III/IV encephalopathy, Serum Creatinine > 3.4 mg/dL (300 umol/L), and Prothrombin Time > 100 seconds (INR > 6.5)",
+      "Isolated elevation of ALT > 5,000 IU/L",
+      "Platelet count < 50,000/mcL with mild jaundice",
+      "Total bilirubin > 15 mg/dL regardless of INR"
+    ],
+    "answer": "A",
+    "explanation": "King's College Criteria for Paracetamol ALF: Arterial pH < 7.30 (irrespective of encephalopathy grade) after adequate fluid resuscitation, OR the concurrent presence of all three: (1) Grade III or IV hepatic encephalopathy, (2) Serum Creatinine > 3.4 mg/dL (300 umol/L), and (3) Prothrombin Time > 100 seconds (INR > 6.5).",
+    "whyWrong": {
+      "B": "Transaminases peak very high in paracetamol toxicity but do not predict mortality or transplant need.",
+      "C": "Platelets are not part of King's College criteria.",
+      "D": "Bilirubin is used in non-paracetamol ALF, not paracetamol criteria."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In Non-Paracetamol ALF, criteria include: INR > 6.5 alone, OR any 3 of: age < 10 or > 40, etiology (non-A/non-B hepatitis, halothane, idiosyncratic drug), duration of jaundice before encephalopathy > 7 days, INR > 3.5, bilirubin > 17.5 mg/dL.",
+    "hyperlinkedReference": {
+      "label": "O'Grady JG, et al. King's College Criteria. Gastroenterology 1989;97:439-445",
+      "url": "https://www.gastrojournal.org/article/0016-5085(89)90081-4/fulltext"
+    },
+    "tags": [
+      "King's College Criteria",
+      "Acute Liver Failure",
+      "Paracetamol Toxicity",
+      "Liver Transplant"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0402",
+    "chapterId": 19,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "What is the primary pathophysiological cause of acute Cerebral Edema and Intracranial Hypertension in Acute Liver Failure (ALF), and which neuroprotective threshold is targeted?",
+    "options": [
+      "Osmotic swelling of brain astrocytes caused by accumulation of intracellular Glutamine derived from elevated arterial ammonia (> 150-200 umol/L)",
+      "Rupture of cerebral berry aneurysms from hypertension",
+      "Direct toxic accumulation of unconjugated bilirubin in the basal ganglia",
+      "Severe acute hypokalemia"
+    ],
+    "answer": "A",
+    "explanation": "In ALF, failing hepatocytes cannot clear ammonia. High arterial ammonia cross the blood-brain barrier into astrocytes, where glutamine synthetase metabolizes ammonia and glutamate into GLUTAMINE. Glutamine is an active organic osmolyte that causes astrocyte swelling, brain edema, and intracranial hypertension. Arterial ammonia > 150-200 umol/L strongly correlates with cerebral herniation.",
+    "whyWrong": {
+      "B": "Aneurysmal rupture causes subarachnoid hemorrhage, not ALF cerebral edema.",
+      "C": "Bilirubin causes kernicterus in neonates, not acute cytotoxic cerebral edema in adult ALF.",
+      "D": "Hypokalemia does not generate astrocyte swelling."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: Continuous Renal Replacement Therapy (CRRT) should be initiated early in ALF even without severe azotemia to clear circulating ammonia and prevent brain herniation.",
+    "hyperlinkedReference": {
+      "label": "Bernal W, et al. Acute liver failure. Lancet 2010;376:190-201",
+      "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(10)60274-7/fulltext"
+    },
+    "tags": [
+      "Acute Liver Failure",
+      "Ammonia",
+      "Glutamine",
+      "Cerebral Edema"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0403",
+    "chapterId": 19,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "In the initial resuscitation of acute Upper Gastrointestinal Bleeding secondary to ruptured gastroesophageal varices in cirrhosis, what is the recommended target hemoglobin threshold for blood transfusion (Villanueva et al. trial)?",
+    "options": [
+      "Liberal transfusion targeting Hemoglobin > 10-12 g/dL",
+      "Restrictive transfusion targeting Hemoglobin between 7.0 and 8.0 g/dL (transfusing when Hb < 7 g/dL)",
+      "Transfusing whole blood to achieve hematocrit > 45%",
+      "Zero blood transfusion under any circumstances"
+    ],
+    "answer": "B",
+    "explanation": "The landmark trial by Villanueva et al. (NEJM 2013) demonstrated that a RESTRICTIVE transfusion strategy (transfusion threshold Hb < 7 g/dL, target 7-8 g/dL) significantly improved 6-week survival (95% vs 91%) and reduced rebleeding compared to a liberal strategy (Hb < 9, target 9-11). Liberal transfusion overdistends portal venous pressure, causing clot disruption and catastrophic variceal rebleeding.",
+    "whyWrong": {
+      "A": "Targeting Hb > 10 elevates portal pressures and significantly increases rebleeding and mortality.",
+      "C": "Hematocrit > 45 causes extreme hyperviscosity and portal hypertension.",
+      "D": "Severe anemia (Hb < 7) requires transfusion to maintain tissue oxygen delivery."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Pharmacological management of bleeding varices: start IV Terlipressin (2 mg IV bolus every 4 hours) or Octreotide immediately, along with prophylactic Ceftriaxone (1 g/day for 7 days).",
+    "hyperlinkedReference": {
+      "label": "Villanueva C, et al. Transfusion strategies for acute upper GI bleeding. N Engl J Med 2013;368:11-21",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1211801"
+    },
+    "tags": [
+      "Variceal Bleeding",
+      "Restrictive Transfusion",
+      "Villanueva Trial",
+      "Terlipressin"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0404",
+    "chapterId": 19,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "What is the definition of Abdominal Compartment Syndrome (ACS) according to the World Society of the Abdominal Compartment Syndrome (WSACS) consensus guidelines?",
+    "options": [
+      "Sustained intra-abdominal pressure (IAP) > 12 mmHg without clinical symptoms",
+      "A sustained intra-abdominal pressure (IAP) > 20 mmHg (with or without an Abdominal Perfusion Pressure < 60 mmHg) that is associated with NEW organ dysfunction or failure",
+      "Presence of abdominal distension following laparotomy",
+      "Bladder pressure equal to central venous pressure"
+    ],
+    "answer": "B",
+    "explanation": "WSACS defines Intra-Abdominal Hypertension (IAH) as sustained IAP >= 12 mmHg. Abdominal Compartment Syndrome (ACS) is defined as a sustained IAP > 20 mmHg associated with new-onset organ dysfunction/failure (e.g., oliguria, respiratory failure with high peak pressures, hemodynamic instability). It is a surgical emergency requiring medical decompression or decompressive laparotomy.",
+    "whyWrong": {
+      "A": "IAP > 12 mmHg defines Intra-Abdominal Hypertension (IAH), not ACS.",
+      "C": "Distension alone without measured pressures and organ failure is not ACS.",
+      "D": "Bladder pressure reflects IAP, but equality with CVP is not the definition."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Abdominal Perfusion Pressure (APP) = Mean Arterial Pressure (MAP) - Intra-Abdominal Pressure (IAP). An APP >= 60 mmHg is a superior resuscitation target for survival than MAP alone.",
+    "hyperlinkedReference": {
+      "label": "Kirkpatrick AW, et al. WSACS consensus definitions. Intensive Care Med 2013;39:1190-1206",
+      "url": "https://link.springer.com/article/10.1007/s00134-013-2906-z"
+    },
+    "tags": [
+      "ACS",
+      "Intra-Abdominal Hypertension",
+      "WSACS",
+      "Bladder Pressure"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0405",
+    "chapterId": 19,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "What is the standardized gold-standard technique for measuring Intra-Abdominal Pressure (IAP) at the bedside?",
+    "options": [
+      "Direct insertion of an 18G needle into the peritoneal cavity",
+      "Measurement of end-expiratory intra-bladder pressure via an indwelling Foley catheter, instilling a maximum of 25 mL of sterile saline, zeroed at the mid-axillary line at the level of the iliac crest",
+      "Measuring central venous pressure and dividing by two",
+      "Abdominal girth measurement with a tape measure at the umbilicus"
+    ],
+    "answer": "B",
+    "explanation": "The WSACS gold-standard method for indirect IAP monitoring is transvesical bladder pressure measurement: instill a maximum of 25 mL of sterile saline into the bladder via a Foley catheter, clamp the drainage tube, zero the transducer at the mid-axillary line at the level of the iliac crest, and measure pressure at end-expiration in the complete supine position.",
+    "whyWrong": {
+      "A": "Direct needle puncture carries high risk of bowel perforation and peritonitis.",
+      "C": "CVP does not correlate with intra-abdominal pressure.",
+      "D": "Abdominal girth has zero correlation with internal pressure."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Historically, protocols instilled 50-100 mL of saline into the bladder, which caused detrusor stretch and falsely elevated IAP readings. WSACS recommends strictly <= 25 mL.",
+    "hyperlinkedReference": {
+      "label": "Malbrain ML, et al. Intra-abdominal pressure measurement. Intensive Care Med 2006;32:1722-1732",
+      "url": "https://link.springer.com/article/10.1007/s00134-006-0349-5"
+    },
+    "tags": [
+      "IAP Measurement",
+      "Bladder Pressure",
+      "WSACS"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0406",
+    "chapterId": 19,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "In a patient with bleeding esophageal varices refractory to endoscopic band ligation and pharmacological vasoactive infusions, which temporary balloon tamponade tube is designed specifically with separate gastric and esophageal balloons and aspiration ports?",
+    "options": [
+      "Sengstaken-Blakemore tube",
+      "Minnesota tube (modified Sengstaken with esophageal aspiration port)",
+      "Linton-Nachlas tube",
+      "Ewald tube"
+    ],
+    "answer": "B",
+    "explanation": "The Minnesota tube is a modified Sengstaken-Blakemore tube with 4 lumens: gastric balloon, esophageal balloon, gastric aspiration port, and an ESOPHAGEAL aspiration port (which prevents fatal pulmonary aspiration of pooled secretions above the esophageal balloon). The original Sengstaken-Blakemore tube had only 3 lumens (lacking the esophageal aspiration lumen).",
+    "whyWrong": {
+      "A": "Sengstaken-Blakemore has only 3 lumens (lacks esophageal suction port).",
+      "C": "Linton-Nachlas tube has a single large gastric balloon (600 mL) for isolated gastric varices.",
+      "D": "Ewald tube is a large-bore orogastric lavage tube without balloons."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Always intubate the trachea before placing a balloon tamponade tube to prevent fatal aspiration. Gastric balloon inflation must be confirmed by X-ray before applying traction or inflating the esophageal balloon.",
+    "hyperlinkedReference": {
+      "label": "García-Pagán JC, et al. Management of variceal bleeding. Hepatology 2010;52:2190",
+      "url": "https://aasldpubs.onlinelibrary.wiley.com/doi/full/10.1002/hep.24038"
+    },
+    "tags": [
+      "Balloon Tamponade",
+      "Minnesota Tube",
+      "Varices"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0407",
+    "chapterId": 20,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "In the initial management of Diabetic Ketoacidosis (DKA), which clinical parameter mandates WITHHOLDING intravenous insulin therapy until corrected?",
+    "options": [
+      "Serum Glucose > 600 mg/dL",
+      "Serum Potassium < 3.3 mEq/L",
+      "Arterial pH < 7.10",
+      "Serum Sodium < 130 mEq/L"
+    ],
+    "answer": "B",
+    "explanation": "Insulin drives potassium into cells. If serum potassium is < 3.3 mEq/L, starting insulin will cause catastrophic hypokalemia, lethal cardiac arrhythmias (ventricular fibrillation, asystole), and respiratory muscle arrest. Insulin must be withheld and aggressive IV potassium repletion (20-40 mEq/h) initiated until K+ is >= 3.3 mEq/L.",
+    "whyWrong": {
+      "A": "High glucose is an indication for insulin, not a reason to withhold.",
+      "C": "Severe acidemia requires insulin to halt ketoacid generation.",
+      "D": "Hyponatremia is expected pseudohyponatremia due to hyperosmolar fluid shifting."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In DKA, when blood glucose drops to 200-250 mg/dL, add 5% or 10% dextrose to IV fluids while CONTINUING insulin infusion (0.05-0.1 U/kg/h) until the anion gap closes.",
+    "hyperlinkedReference": {
+      "label": "Dhatariya KK, et al. Management of diabetic ketoacidosis. Nat Rev Dis Primers 2020;6:40",
+      "url": "https://www.nature.com/articles/s41572-020-0165-1"
+    },
+    "tags": [
+      "DKA",
+      "Insulin",
+      "Hypokalemia",
+      "Endocrine Emergency"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0408",
+    "chapterId": 20,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "How is 'Corrected Sodium' calculated in the presence of severe hyperglycemia?",
+    "options": [
+      "Measured Sodium + 1.6 x [(Serum Glucose - 100) / 100]",
+      "Measured Sodium - 1.6 x [(Serum Glucose - 100) / 100]",
+      "Measured Sodium + 0.6 x Serum Glucose",
+      "Measured Sodium / 2"
+    ],
+    "answer": "A",
+    "explanation": "Katz formula: Corrected Na = Measured Na + 0.016 x (Glucose - 100) [or Measured Na + 1.6 mEq/L for every 100 mg/dL rise in glucose above 100 mg/dL]. In extreme hyperglycemia (> 400 mg/dL), Hillier et al. demonstrated a factor of 2.0 to 2.4 mEq/L per 100 mg/dL glucose is more accurate.",
+    "whyWrong": {
+      "B": "Corrected sodium adds to measured sodium because glucose draws water into the intravascular space, diluting sodium.",
+      "C": "0.6 x glucose overestimates correction.",
+      "D": "Arbitrary division error."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: If measured sodium is normal (e.g. 140 mEq/L) in severe DKA (glucose 800 mg/dL), the corrected sodium is severely elevated (~151 mEq/L), indicating profound total-body water deficit.",
+    "hyperlinkedReference": {
+      "label": "Hillier TA, et al. Hyponatremia: evaluating the correction factor for hyperglycemia. Am J Med 1999;106:399-403",
+      "url": "https://www.amjmed.com/article/S0002-9343(99)00055-8/fulltext"
+    },
+    "tags": [
+      "Corrected Sodium",
+      "Hyperglycemia",
+      "Katz Formula"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0409",
+    "chapterId": 20,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "What is the primary clinical difference between Diabetic Ketoacidosis (DKA) and Hyperosmolar Hyperglycemic State (HHS)?",
+    "options": [
+      "HHS has profound ketoacidosis and normal serum osmolality",
+      "HHS is characterized by extreme hyperglycemia (often > 600-1000 mg/dL), hyperosmolality (effective serum osmolality > 320 mOsm/kg), severe dehydration (8-10 L deficit), and ABSENCE of significant ketoacidosis (pH > 7.30, HCO3 > 18)",
+      "DKA occurs exclusively in elderly patients with Type 2 diabetes",
+      "HHS requires immediate high-dose bicarbonate infusions"
+    ],
+    "answer": "B",
+    "explanation": "HHS typically occurs in elderly Type 2 diabetics who have just enough circulating endogenous insulin to suppress lipolysis and ketogenesis, but insufficient insulin to control hyperglycemia. Blood glucose climbs to extreme levels (> 600-1000 mg/dL), causing massive osmotic diuresis, profound dehydration (8-10 L loss), and serum hyperosmolality (> 320 mOsm/kg), with minimal or no ketoacidosis.",
+    "whyWrong": {
+      "A": "HHS lacks significant ketoacidosis and has marked hyperosmolality.",
+      "C": "DKA is most classic in younger Type 1 diabetics (though can occur in Type 2).",
+      "D": "Bicarbonate is not indicated in HHS because severe metabolic acidosis is absent."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In HHS, mortality is higher (~10-20%) than DKA (~1-2%) due to severe dehydration, advanced age, and thromboembolic complications.",
+    "hyperlinkedReference": {
+      "label": "Pasquel FJ, Umpierrez GE. Hyperosmolar hyperglycemic state. Diabetes Care 2014;37:3124-3131",
+      "url": "https://diabetesjournals.org/care/article/37/11/3124/30282/Hyperosmolar-Hyperglycemic-State-A-Historic-Review"
+    },
+    "tags": [
+      "HHS",
+      "DKA vs HHS",
+      "Hyperosmolality"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0410",
+    "chapterId": 20,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "A 58-year-old female presents in coma with severe hypothermia (core temp 32.2 deg C), bradycardia (38/min), hypotension, periorbital non-pitting edema, and macroglossia. Myxedema coma is suspected. What is the critical first-line pharmacological management sequence?",
+    "options": [
+      "Administer IV Hydrocortisone (100 mg stat) BEFORE or concurrently with intravenous Levothyroxine (T4) / Liothyronine (T3)",
+      "High-dose intravenous T4 alone; steroids are contraindicated",
+      "Immediate active external rewarming with warm water immersion to 40 deg C",
+      "Propranolol infusion to block peripheral conversion"
+    ],
+    "answer": "A",
+    "explanation": "Myxedema coma requires immediate IV stress-dose Hydrocortisone (100 mg IV every 8 hours) prior to or with thyroid hormone administration. Giving thyroid hormone alone accelerates metabolism and hepatic cortisol clearance, which can precipitate fatal acute adrenal crisis in a patient with coexisting primary or secondary adrenal insufficiency.",
+    "whyWrong": {
+      "B": "Thyroid hormone without steroids can precipitate fatal adrenal crisis.",
+      "C": "Rapid aggressive external rewarming causes peripheral vasodilation and cardiovascular collapse; rewarming must be gradual with passive blankets.",
+      "D": "Propranolol is a beta-blocker used in thyroid storm, fatal in myxedema coma."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In myxedema coma, IV Levothyroxine (T4) loading dose is 200-400 mcg IV, followed by 50-100 mcg/day, optionally combined with low-dose Liothyronine (T3 5-20 mcg).",
+    "hyperlinkedReference": {
+      "label": "Wiersinga WM. Myxedema coma. Endocr Connect 2018;7:R28-R41",
+      "url": "https://ec.bioscientifica.com/view/journals/ec/7/1/EC-17-0368.xml"
+    },
+    "tags": [
+      "Myxedema Coma",
+      "Hydrocortisone",
+      "Thyroid Emergency"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0411",
+    "chapterId": 20,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "Which validated scoring system quantifies clinical criteria (thermoregulatory dysfunction, CNS effects, gastrointestinal dysfunction, cardiovascular dysfunction, and precipitating factors) to diagnose Thyroid Storm?",
+    "options": [
+      "Burch-Wartofsky Point Scale (BWPS)",
+      "Fournier Score",
+      "Rockall Score",
+      "Child-Pugh Score"
+    ],
+    "answer": "A",
+    "explanation": "The Burch-Wartofsky Point Scale (BWPS) assigns points for: temperature (up to 30), CNS effects (mild agitation to coma, up to 30), GI/hepatic dysfunction (up to 20), tachycardia/AF/CHF (up to 30), and precipitant history (10). A score >= 45 is highly suggestive of Thyroid Storm; 25-44 indicates impending storm; < 25 is storm unlikely.",
+    "whyWrong": {
+      "B": "Fournier gangrene is necrotizing fasciitis of the perineum.",
+      "C": "Rockall score stratifies upper GI bleed risk.",
+      "D": "Child-Pugh evaluates chronic cirrhosis severity."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: A BWPS score >= 45 mandates immediate multimodal storm therapy: (1) Propylthiouracil (PTU), (2) Potassium iodide (Lugol's), (3) Beta-blocker (Esmolol/Propranolol), and (4) Hydrocortisone.",
+    "hyperlinkedReference": {
+      "label": "Burch HB, Wartofsky L. Life-threatening thyrotoxicosis: thyroid storm. Endocrinol Metab Clin North Am 1993;22:263-277",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0889852918301511"
+    },
+    "tags": [
+      "Burch-Wartofsky",
+      "Thyroid Storm",
+      "BWPS"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0412",
+    "chapterId": 20,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "In the pharmacological sequence for treating acute Thyroid Storm, why MUST inorganic iodine (e.g. Lugol's iodine or Potassium iodide) be administered strictly at least ONE HOUR AFTER the antithyroid thionamide (PTU or Methimazole)?",
+    "options": [
+      "To prevent iodine from serving as substrate for new thyroid hormone synthesis (Wolff-Chaikoff effect enhancement vs Jod-Basedow phenomenon)",
+      "Because iodine destroys antithyroid drug molecules in the stomach",
+      "To prevent acute hyperkalemia from potassium iodide",
+      "Iodine takes 72 hours to dissolve"
+    ],
+    "answer": "A",
+    "explanation": "Thionamides (PTU/methimazole) block the synthesis of new thyroid hormones by inhibiting thyroid peroxidase. Inorganic iodine acutely inhibits thyroid hormone RELEASE from the colloid via the Wolff-Chaikoff effect. However, if iodine is given before thionamides, the thyroid gland will utilize the iodine load as new substrate (organification) to manufacture more hormone, severely worsening thyrotoxicosis.",
+    "whyWrong": {
+      "B": "There is no physical drug destruction in the stomach; the issue is intrathyroidal biochemistry.",
+      "C": "Potassium iodide does not cause acute hyperkalemia in normal kidney function.",
+      "D": "Lugol's iodine is a liquid solution immediately absorbed."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: PTU is preferred over methimazole in thyroid storm because PTU also inhibits peripheral conversion of T4 to T3 (by ~20-30%).",
+    "hyperlinkedReference": {
+      "label": "Ross DS, et al. 2016 ATA Guidelines for Hyperthyroidism. Thyroid 2016;26:1343-1421",
+      "url": "https://www.liebertpub.com/doi/full/10.1089/thy.2016.0229"
+    },
+    "tags": [
+      "Thyroid Storm",
+      "Lugol Iodine",
+      "PTU",
+      "Wolff-Chaikoff"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0413",
+    "chapterId": 20,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "A patient with chronic steroid use who underwent emergent bowel resection develops refractory hypotension, hypoglycemia, hyperkalemia, and hyponatremia unresponsive to fluids and noradrenaline. Acute Adrenal Crisis is diagnosed. What is the immediate pharmacological intervention?",
+    "options": [
+      "Hydrocortisone 100 mg IV bolus stat, followed by 200 mg/24 hours (or 50 mg IV every 6 hours), along with normal saline resuscitation",
+      "Fludrocortisone 1 mg orally once daily",
+      "Dexamethasone 0.5 mg orally",
+      "Epinephrine infusion alone"
+    ],
+    "answer": "A",
+    "explanation": "Acute adrenal crisis is a life-threatening endocrine emergency. Immediate therapy is Hydrocortisone 100 mg IV bolus stat, followed by 200 mg/24 hours as continuous infusion or 50 mg IV every 6 hours, plus 0.9% normal saline with dextrose. At doses >= 100 mg/day, hydrocortisone provides full glucocorticoid and mineralocorticoid receptor coverage, eliminating the need for fludrocortisone during acute crisis.",
+    "whyWrong": {
+      "B": "Fludrocortisone is oral only and unnecessary because high-dose hydrocortisone provides sufficient mineralocorticoid activity.",
+      "C": "Dexamethasone 0.5 mg is too low and lacks mineralocorticoid activity.",
+      "D": "Vasopressors fail in adrenal crisis due to downregulation of adrenergic receptors in the absence of cortisol."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: If a diagnostic ACTH stimulation test is planned immediately, Dexamethasone 4 mg IV can be given instead of hydrocortisone because dexamethasone does not cross-react with the serum cortisol laboratory assay.",
+    "hyperlinkedReference": {
+      "label": "Bornstein SR, et al. Diagnosis and treatment of primary adrenal insufficiency. J Clin Endocrinol Metab 2016;101:364-389",
+      "url": "https://academic.oup.com/jcem/article/101/2/364/2804753"
+    },
+    "tags": [
+      "Adrenal Crisis",
+      "Hydrocortisone",
+      "ACTH Test"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0414",
+    "chapterId": 20,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "What is 'Sick Euthyroid Syndrome' (Non-Thyroidal Illness Syndrome), and which laboratory pattern is most commonly seen in critically ill ICU patients?",
+    "options": [
+      "Elevated TSH with elevated Free T3 and T4",
+      "Low serum Free T3 (and Total T3), normal or low TSH, normal Free T4 (dropping in severe illness), and elevated Reverse T3 (rT3)",
+      "High TSH with low Free T4 and positive thyroid antibodies",
+      "Normal Free T3 with undetectable reverse T3"
+    ],
+    "answer": "B",
+    "explanation": "Non-thyroidal illness syndrome (euthyroid sick syndrome) is an adaptive physiological downregulation in critical illness. Deiodinase-1 activity decreases (reducing T4 to T3 conversion), while deiodinase-3 activity increases (converting T4 to inactive reverse T3 [rT3]). The classic hallmark is low T3, normal/low TSH, normal/low T4, and high reverse T3. Thyroid hormone supplementation does NOT improve clinical outcomes and is not recommended.",
+    "whyWrong": {
+      "A": "Elevated T3/T4 describes hyperthyroidism.",
+      "C": "Elevated TSH with low T4 defines primary hypothyroidism.",
+      "D": "Reverse T3 is characteristically elevated, not undetectable."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: The magnitude of T3 and T4 suppression in non-thyroidal illness correlates directly with ICU mortality.",
+    "hyperlinkedReference": {
+      "label": "Van den Berghe G. Non-thyroidal illness in the ICU: a reflection of pituitary dysfunction? J Endocrinol Invest 2014;37:11-21",
+      "url": "https://link.springer.com/article/10.1007/s40618-013-0008-0"
+    },
+    "tags": [
+      "Sick Euthyroid Syndrome",
+      "Reverse T3",
+      "Endocrine"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0415",
+    "chapterId": 21,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "According to the ESPEN and ASPEN clinical guidelines for nutrition in the ICU, what is the recommended protein intake target for critically ill adult patients?",
+    "options": [
+      "0.5 to 0.8 g/kg body weight/day",
+      "1.2 to 2.0 g/kg body weight/day (and up to 2.5 g/kg/day in severe burns or trauma)",
+      "3.5 to 4.5 g/kg body weight/day",
+      "Zero protein during the first 14 days"
+    ],
+    "answer": "B",
+    "explanation": "ESPEN and ASPEN guidelines recommend an escalated protein intake of 1.2 to 2.0 g/kg/day for critically ill patients (up to 2.0-2.5 g/kg/day in burn and major trauma patients) to offset severe hypercatabolism and muscle protein breakdown. Standard non-stressed RDA (0.8 g/kg/day) is insufficient.",
+    "whyWrong": {
+      "A": "0.8 g/kg is the normal non-stressed dietary allowance, causing negative nitrogen balance in critical illness.",
+      "C": "Protein > 2.5 g/kg in unselected ICU patients increases azotemia without clinical benefit (EFFORT trial).",
+      "D": "Protein starvation causes rapid diaphragmatic and skeletal muscle atrophy."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In the TARGET trial and EFFORT trial, high protein delivery without adequate metabolic stabilization in early acute shock showed no benefit; optimal timing is gradual trophic escalation to target over 3-5 days.",
+    "hyperlinkedReference": {
+      "label": "Singer P, et al. ESPEN guideline on clinical nutrition in the intensive care unit. Clin Nutr 2019;38:48-79",
+      "url": "https://www.clinicalnutritionjournal.com/article/S0261-5614(18)32432-4/fulltext"
+    },
+    "tags": [
+      "ICU Nutrition",
+      "Protein Targets",
+      "ESPEN",
+      "ASPEN"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0416",
+    "chapterId": 21,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "What is the gold standard diagnostic method for measuring resting energy expenditure (REE) to avoid both underfeeding and overfeeding in mechanically ventilated ICU patients?",
+    "options": [
+      "Harris-Benedict predictive equation",
+      "Indirect Calorimetry (measuring VO2 and VCO2 via metabolic cart)",
+      "Daily bioelectrical impedance analysis",
+      "Rule-of-thumb weight-based formula (25 kcal/kg/day)"
+    ],
+    "answer": "B",
+    "explanation": "Indirect Calorimetry is the gold standard for measuring resting energy expenditure (REE) in the ICU. By measuring real-time VO2 and VCO2 from inspired/expired respiratory gases, the Weir equation calculates true caloric expenditure, avoiding the 30-50% error inherent in predictive formulas.",
+    "whyWrong": {
+      "A": "Harris-Benedict equation has poor accuracy (+/- 30-50% error) in critical illness.",
+      "C": "Bioimpedance is invalidated by third-spacing and massive fluid shifts.",
+      "D": "Weight-based estimates are approximate surrogates, not the gold standard."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: The Weir equation: Energy Expenditure (kcal/day) = [3.94 x VO2 (L/min) + 1.11 x VCO2 (L/min)] x 1440.",
+    "hyperlinkedReference": {
+      "label": "Oshima T, et al. Indirect calorimetry in nutritional therapy. Clin Nutr 2017;36:651-662",
+      "url": "https://www.clinicalnutritionjournal.com/article/S0261-5614(16)31267-5/fulltext"
+    },
+    "tags": [
+      "Indirect Calorimetry",
+      "Weir Equation",
+      "Energy Expenditure"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0417",
+    "chapterId": 21,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "Regarding the timing of initiating Enteral Nutrition (EN) in critically ill patients, what do current international guidelines (ESPEN / ASPEN) recommend?",
+    "options": [
+      "Wait at least 7 days until all ICU interventions are completed",
+      "Initiate early enteral nutrition within 24 to 48 hours of ICU admission once the patient is hemodynamically stabilized",
+      "Total Parenteral Nutrition (TPN) should always precede enteral feeding",
+      "Feed only when normal bowel movements occur"
+    ],
+    "answer": "B",
+    "explanation": "Guidelines strongly recommend initiating early enteral nutrition within 24-48 hours of ICU admission once resuscitation is established and shock is stabilizing. Early EN maintains gut mucosal integrity, preserves tight junctions, stimulates mesenteric blood flow, prevents bacterial translocation, and reduces infectious complications.",
+    "whyWrong": {
+      "A": "Waiting 7 days results in severe malnutrition and gut mucosal atrophy.",
+      "C": "Enteral route is preferred over parenteral nutrition due to lower infectious risk.",
+      "D": "Awaiting bowel movements is unnecessary and causes starvation."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Early EN is contraindicated in uncontrolled shock (escalating high-dose vasopressors, rising lactate) due to risk of non-occlusive mesenteric ischemia (NOMI).",
+    "hyperlinkedReference": {
+      "label": "McClave SA, et al. ASPEN Guidelines for Critically Ill Patients. JPEN J Parenter Enteral Nutr 2016;40:159-211",
+      "url": "https://aspenjournals.onlinelibrary.wiley.com/doi/10.1177/0148607115621863"
+    },
+    "tags": [
+      "Enteral Nutrition",
+      "Early Feeding",
+      "Gut Barrier"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0418",
+    "chapterId": 21,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "What is the consensus view on routine monitoring of Gastric Residual Volume (GRV) during enteral nutrition in the ICU based on modern clinical trials (e.g., REGANE and NUTRIREA-1)?",
+    "options": [
+      "GRV must be checked hourly, stopping feeds if GRV exceeds 50 mL",
+      "Routine GRV monitoring does not reduce pneumonia or mortality, increases feeding interruptions, and leads to underfeeding; feeds should not be stopped for GRV < 250-500 mL in the absence of signs of intolerance (vomiting, distension)",
+      "GRV is the only reliable diagnostic test for mesenteric ischemia",
+      "All aspirated GRV must be discarded immediately"
+    ],
+    "answer": "B",
+    "explanation": "Multiple clinical trials have shown that routine GRV measurement correlates poorly with gastric emptying or aspiration risk. Eliminating routine GRV monitoring increased enteral nutrition delivery without increasing vomiting, VAP, or mortality. Guidelines advise against stopping feeds for GRV < 250-500 mL unless physical signs of intolerance (distension, nausea, vomiting) occur.",
+    "whyWrong": {
+      "A": "Stopping feeds for 50 mL causes severe iatrogenic calorie deficit.",
+      "C": "GRV does not diagnose mesenteric ischemia.",
+      "D": "Aspirate should generally be returned to prevent fluid and electrolyte loss."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: ASPEN guidelines recommend NOT using gastric residual volumes as part of routine ICU care for patients receiving enteral nutrition.",
+    "hyperlinkedReference": {
+      "label": "Reignier J, et al. Effect of not monitoring residual gastric volume (NUTRIREA1). JAMA 2013;309:249-256",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/1557731"
+    },
+    "tags": [
+      "GRV",
+      "Gastric Residual Volume",
+      "Enteral Nutrition"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0419",
+    "chapterId": 21,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "In a critically ill patient receiving enteral nutrition who develops feeding intolerance (elevated GRV > 500 mL or abdominal distension), which prokinetic pharmacological regimen is recommended as first-line?",
+    "options": [
+      "Metoclopramide (10 mg IV) or low-dose Erythromycin (100-250 mg IV twice daily)",
+      "High-dose oral senna and lactulose enemas",
+      "Neostigmine 2.5 mg IV bolus",
+      "Continuous Octreotide infusion"
+    ],
+    "answer": "A",
+    "explanation": "First-line pharmacological therapy for gastric feeding intolerance is a prokinetic agent: IV Metoclopramide (10 mg 2-3 times daily, dopamine D2 receptor antagonist) or IV Erythromycin (100-250 mg 2-3 times daily, motilin receptor agonist), or a combination of both if monotherapy fails.",
+    "whyWrong": {
+      "B": "Laxatives stimulate colonic evacuation but do not improve gastric emptying.",
+      "C": "Neostigmine is indicated for acute colonic pseudo-obstruction (Ogilvie syndrome), not routine gastroparesis.",
+      "D": "Octreotide inhibits gastric motility and worsens gastroparesis."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Erythromycin causes tachyphylaxis after 48-72 hours due to down-regulation of motilin receptors; both erythromycin and metoclopramide prolong the QT interval.",
+    "hyperlinkedReference": {
+      "label": "Nguyen NQ, et al. Prokinetics in the critically ill. Intensive Care Med 2007;33:603-614",
+      "url": "https://link.springer.com/article/10.1007/s00134-007-0536-1"
+    },
+    "tags": [
+      "Prokinetics",
+      "Metoclopramide",
+      "Erythromycin",
+      "Gastroparesis"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0420",
+    "chapterId": 21,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "What is the respiratory consequence of 'Overfeeding' (delivering calories significantly exceeding resting energy expenditure, especially excess carbohydrates) in mechanically ventilated ICU patients?",
+    "options": [
+      "Severe acute metabolic alkalosis",
+      "Increased carbon dioxide production (VCO2) and elevated respiratory quotient (RQ > 1.0), leading to hypercapnia and weaning failure",
+      "Immediate alveolar recruitment",
+      "Decreased work of breathing"
+    ],
+    "answer": "B",
+    "explanation": "Overfeeding, particularly with excess carbohydrates, stimulates lipogenesis, which has a Respiratory Quotient (RQ = VCO2 / VO2) > 1.0 (approaching 1.0-1.2). This dramatically increases carbon dioxide production (VCO2). In patients with limited ventilatory reserve (COPD, ARDS), the respiratory pump cannot eliminate the excess CO2 load, precipitating respiratory acidosis and failure to wean from mechanical ventilation.",
+    "whyWrong": {
+      "A": "Overfeeding causes CO2-driven respiratory acidosis, not alkalosis.",
+      "C": "Overfeeding does not recruit alveoli.",
+      "D": "Work of breathing increases significantly due to high minute ventilation demands."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Respiratory Quotient (RQ): Pure Fat metabolism = 0.70; Pure Protein = 0.80; Pure Carbohydrate = 1.00; Lipogenesis (Overfeeding) = 1.0 to 1.2.",
+    "hyperlinkedReference": {
+      "label": "Askanazi J, et al. Respiratory changes induced by large glucose loads of total parenteral nutrition. JAMA 1980;243:1444-1447",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/346853"
+    },
+    "tags": [
+      "Overfeeding",
+      "VCO2",
+      "Respiratory Quotient",
+      "Weaning"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0421",
+    "chapterId": 21,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "Which validated nutritional risk screening score incorporates Age, APACHE II, SOFA score, Comorbidities, Days in hospital prior to ICU, and Interleukin-6 to quantify which critically ill patients benefit most from aggressive nutritional therapy?",
+    "options": [
+      "NUTRIC Score (Nutrition Risk in Critically Ill)",
+      "MUST score (Malnutrition Universal Screening Tool)",
+      "MNA (Mini Nutritional Assessment)",
+      "BMI calculation alone"
+    ],
+    "answer": "A",
+    "explanation": "The NUTRIC score is the first nutritional risk assessment tool specifically developed and validated for critically ill patients. A high NUTRIC score (>= 5-6 points) identifies patients with high mortality risk who derive the greatest survival benefit from achieving full caloric and protein targets.",
+    "whyWrong": {
+      "B": "MUST is an outpatient/ward screening tool.",
+      "C": "MNA is designed for geriatric community/nursing home populations.",
+      "D": "BMI fails to capture acute critical illness catabolism."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In high-risk NUTRIC patients (>= 5), achieving >= 80% of protein and calorie targets is associated with reduced 28-day mortality.",
+    "hyperlinkedReference": {
+      "label": "Heyland DK, et al. The NUTRIC score. Crit Care 2011;15:R268",
+      "url": "https://ccforum.biomedcentral.com/articles/10.1186/cc10546"
+    },
+    "tags": [
+      "NUTRIC Score",
+      "Nutrition Risk",
+      "Critical Illness"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0422",
+    "chapterId": 22,
+    "topicId": "cc-massive-transfusion-in-the-icu",
+    "question": "In the landmark PROPPR randomized clinical trial (JAMA 2015) for severe traumatic hemorrhage, what was the primary finding comparing a 1:1:1 transfusion ratio (PRBC : FFP : Platelets) versus a 1:1:2 ratio?",
+    "options": [
+      "1:1:1 significantly reduced 24-hour exsanguination mortality and achieved earlier hemostasis",
+      "1:1:1 caused severe hypercoagulability and increased overall 30-day mortality",
+      "1:1:2 was statistically superior in all endpoints",
+      "Ratios had zero impact on any coagulation parameter"
+    ],
+    "answer": "A",
+    "explanation": "In the PROPPR trial, while 24-hour and 30-day all-cause mortality were not significantly different, patients in the 1:1:1 group were significantly less likely to die of exsanguination within 24 hours (9.2% vs 14.6%, p=0.03) and achieved anatomical hemostasis significantly faster without increasing thromboembolic complications.",
+    "whyWrong": {
+      "B": "1:1:1 did not increase thromboembolism or 30-day mortality.",
+      "C": "1:1:2 had higher exsanguination mortality.",
+      "D": "Ratios directly corrected dilution and trauma-induced coagulopathy."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Massive Transfusion Protocol (MTP) activation: 1:1:1 ratio (e.g. 6 units PRBC : 6 units FFP : 1 adult dose apheresis platelets), accompanied by early Tranexamic Acid and calcium repletion.",
+    "hyperlinkedReference": {
+      "label": "Holcomb JB, et al. PROPPR trial. JAMA 2015;313:471-482",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/2109855"
+    },
+    "tags": [
+      "PROPPR Trial",
+      "Massive Transfusion",
+      "MTP",
+      "1:1:1 Ratio"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0423",
+    "chapterId": 22,
+    "topicId": "cc-massive-transfusion-in-the-icu",
+    "question": "According to the CRASH-2 trial, within what strict time window must Tranexamic Acid (TXA) be administered in bleeding trauma patients to achieve a mortality reduction?",
+    "options": [
+      "Within 3 hours of injury (ideally within 1 hour)",
+      "Between 6 and 12 hours after injury",
+      "Only after 24 hours of ongoing resuscitation",
+      "Immediately prior to hospital discharge"
+    ],
+    "answer": "A",
+    "explanation": "The CRASH-2 trial demonstrated that Tranexamic Acid (1 g IV over 10 min, followed by 1 g IV over 8 hours) significantly reduced all-cause mortality when given within 3 hours of injury. When administered > 3 hours after injury, TXA paradoxically INCREASED the risk of death due to bleeding (due to secondary fibrinolysis shut-down and thromboembolism).",
+    "whyWrong": {
+      "B": "Administration after 3 hours is associated with increased bleeding death.",
+      "C": "24 hours is far beyond the beneficial window.",
+      "D": "TXA is acute hemostatic therapy, not discharge medication."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: CRASH-2 timing: 'Every 15-minute delay in TXA administration decreases the survival benefit by approximately 10%.' Give TXA immediately in trauma hemorrhage.",
+    "hyperlinkedReference": {
+      "label": "CRASH-2 trial collaborators. Effects of tranexamic acid. Lancet 2010;376:23-32",
+      "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(10)60835-5/fulltext"
+    },
+    "tags": [
+      "CRASH-2",
+      "Tranexamic Acid",
+      "TXA",
+      "Trauma Hemorrhage"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0424",
+    "chapterId": 22,
+    "topicId": "cc-hematological-emergencies-in-critical-illness",
+    "question": "On rotational thromboelastometry (ROTEM), a patient in hemorrhagic shock demonstrates: EXTEM clotting time (CT) = normal, EXTEM maximum clot firmness (MCF) = 38 mm (reduced), and FIBTEM MCF = 6 mm (severely reduced). What is the specific targeted factor therapy indicated?",
+    "options": [
+      "Fibrinogen concentrate (or Cryoprecipitate)",
+      "Unfractionated heparin infusion",
+      "Recombinant Factor VIIa immediately",
+      "Platelet transfusion as sole monotherapy"
+    ],
+    "answer": "A",
+    "explanation": "FIBTEM uses cytochalasin D to inhibit platelets, isolating the contribution of fibrinogen to clot strength. A FIBTEM MCF < 9-10 mm indicates severe hypofibrinogenemia (fibrinogen < 1.5-2.0 g/L). Fibrinogen concentrate (or Cryoprecipitate) is indicated to restore clot firmness. Transfusing platelets without correcting hypofibrinogenemia will fail to generate an intact clot.",
+    "whyWrong": {
+      "B": "Heparin will cause catastrophic bleeding in hemorrhagic shock.",
+      "C": "Factor VIIa is an expensive rescue agent requiring adequate fibrinogen and platelets first.",
+      "D": "FIBTEM specifically isolates fibrinogen deficiency, which must be corrected with fibrinogen, not platelets."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Fibrinogen is the first coagulation factor to reach critically low levels (< 1.5 g/L) during massive hemorrhage and hemodilution.",
+    "hyperlinkedReference": {
+      "label": "Görlinger K, et al. ROTEM-guided algorithms for bleeding. Br J Anaesth 2013;111:i2-i10",
+      "url": "https://academic.oup.com/bja/article/111/suppl_1/i2/245229"
+    },
+    "tags": [
+      "ROTEM",
+      "FIBTEM",
+      "Fibrinogen",
+      "Cryoprecipitate"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0425",
+    "chapterId": 22,
+    "topicId": "cc-hematological-emergencies-in-critical-illness",
+    "question": "A 52-year-old male receiving prophylactic low-molecular-weight heparin following orthopedic surgery experiences a 60% drop in platelet count (from 240,000 to 95,000/mcL) on post-operative day 7, with a new right lower extremity DVT. 4T score is 8 (high probability). What is the mandatory immediate management?",
+    "options": [
+      "Discontinue all heparin products immediately and initiate therapeutic non-heparin anticoagulation (e.g. Argatroban, Fondaparinux, or Bivalirudin)",
+      "Transfuse 2 pools of platelets immediately",
+      "Switch from LMWH to unfractionated heparin IV",
+      "Wait 7 days for anti-PF4 ELISA results before altering therapy"
+    ],
+    "answer": "A",
+    "explanation": "Heparin-Induced Thrombocytopenia (HIT Type II) is an immune-mediated prothrombotic disorder caused by antibodies to the PF4-heparin complex. Immediate management: (1) Stop all heparin exposure (including flushes and catheter locks), and (2) Start an alternative non-heparin anticoagulant (Argatroban, Bivalirudin, or Fondaparinux) at therapeutic doses because HIT carries a massive ~50% risk of arterial and venous thrombosis.",
+    "whyWrong": {
+      "B": "Platelet transfusions in HIT are strongly contraindicated because transfused platelets fuel thrombosis ('fueling the fire').",
+      "C": "UFH will cross-react with anti-PF4 antibodies and worsen catastrophic thrombosis.",
+      "D": "Waiting for lab results without switching anticoagulants leads to fatal pulmonary embolism or limb gangrene."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Warfarin is CONTRAINDICATED in acute HIT until platelets have recovered to > 150,000/mcL; early warfarin depletes protein C and causes venous limb gangrene and skin necrosis.",
+    "hyperlinkedReference": {
+      "label": "Cuker A, et al. American Society of Hematology guidelines for HIT. Blood Adv 2018;2:3360-3392",
+      "url": "https://ashpublications.org/bloodadvances/article/2/22/3360/16086/American-Society-of-Hematology-2018-guidelines-for"
+    },
+    "tags": [
+      "HIT",
+      "4T Score",
+      "Argatroban",
+      "PF4 Antibodies"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0426",
+    "chapterId": 22,
+    "topicId": "cc-hematological-emergencies-in-critical-illness",
+    "question": "What is the defining clinical and laboratory differentiation between Transfusion-Related Acute Lung Injury (TRALI) and Transfusion-Associated Circulatory Overload (TACO)?",
+    "options": [
+      "TRALI is non-cardiogenic pulmonary edema with normal or low PAWP, normal BNP/NT-proBNP, and no response to diuretics; TACO is hydrostatic cardiogenic pulmonary edema characterized by elevated PAWP, high BNP/NT-proBNP, signs of volume overload, and rapid response to diuretics",
+      "TRALI responds dramatically to loop diuretics",
+      "TACO is caused exclusively by anti-HLA class II donor antibodies",
+      "TRALI has hypertension and elevated central venous pressure"
+    ],
+    "answer": "A",
+    "explanation": "TRALI is immune/neutrophil-mediated non-cardiogenic pulmonary edema (capillary leak triggered by donor anti-HLA/anti-HNA antibodies), characterized by normal or low filling pressures, normal or minimally elevated BNP, fever, hypotension, and no improvement with diuretics. TACO is hydrostatic cardiogenic pulmonary overload caused by excessive fluid/volume infusion, presenting with hypertension, high CVP/PAWP, elevated BNP (> 1.5x pre-transfusion), and rapid improvement with diuretics.",
+    "whyWrong": {
+      "B": "Diuretics are ineffective in TRALI and worsen hypotension.",
+      "C": "Anti-HLA antibodies cause TRALI, not TACO.",
+      "D": "TRALI typically features hypotension; TACO features hypertension and high CVP."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Both TRALI and TACO develop within 6 hours of blood transfusion. In TACO, post-transfusion BNP / pre-transfusion BNP ratio > 1.5 strongly supports circulatory overload.",
+    "hyperlinkedReference": {
+      "label": "Vlaar APJ, et al. Consensus definition of TRALI. Lancet Haematol 2019;6:e574-e583",
+      "url": "https://www.thelancet.com/journals/lanhae/article/PIIS2352-3026(19)30179-2/fulltext"
+    },
+    "tags": [
+      "TRALI",
+      "TACO",
+      "Transfusion Reactions"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0427",
+    "chapterId": 22,
+    "topicId": "cc-hematological-emergencies-in-critical-illness",
+    "question": "A patient with septic shock develops extensive purpura fulminans, oozing from central venous puncture sites, and digital ischemia. Coagulation panel reveals: Platelets 35,000/mcL, PT 32 s (INR 2.8), Fibrinogen 65 mg/dL, and D-Dimer > 20,000 ng/mL. According to the ISTH scoring system, what diagnosis is confirmed?",
+    "options": [
+      "Over Disseminated Intravascular Coagulation (Overt DIC)",
+      "Isolated Vitamin K deficiency",
+      "Immune Thrombocytopenic Purpura (ITP)",
+      "Hemophilia A"
+    ],
+    "answer": "A",
+    "explanation": "The International Society on Thrombosis and Haemostasis (ISTH) Overt DIC score assigns: Platelets (< 50k = 2), D-dimer (strongly elevated = 3), Prolonged PT (> 6s = 2), and Fibrinogen (< 100 mg/dL = 1). A total score >= 5 confirms Overt DIC. Here: 2 + 3 + 2 + 1 = 8 points (Overt DIC).",
+    "whyWrong": {
+      "B": "Vitamin K deficiency does not cause profound thrombocytopenia, hypofibrinogenemia, or massive D-dimer elevation.",
+      "C": "ITP features isolated thrombocytopenia with completely normal PT, fibrinogen, and D-dimer.",
+      "D": "Hemophilia A causes isolated prolonged aPTT with normal platelets and PT."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In DIC, treating the underlying primary trigger (source control for sepsis, broad-spectrum antibiotics) is the paramount therapy; blood products are reserved for active bleeding or planned procedures.",
+    "hyperlinkedReference": {
+      "label": "Taylor FB, et al. Scientific and Standardization Committee of the ISTH. Thromb Haemost 2001;86:1327",
+      "url": "https://www.thieme-connect.com/products/ejournals/abstract/10.1055/s-0037-1616068"
+    },
+    "tags": [
+      "DIC",
+      "ISTH Score",
+      "Purpura Fulminans"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0428",
+    "chapterId": 22,
+    "topicId": "cc-hematological-emergencies-in-critical-illness",
+    "question": "A 32-year-old female presents with confusion, acute renal failure, fever, severe thrombocytopenia (18,000/mcL), and microangiopathic hemolytic anemia with numerous schistocytes (4%) on peripheral smear. Coagulation panel (PT, aPTT, fibrinogen) is entirely NORMAL. What is the diagnosis and urgent first-line therapy?",
+    "options": [
+      "Thrombotic Thrombocytopenic Purpura (TTP); urgent Therapeutic Plasma Exchange (TPE) with fresh frozen plasma",
+      "Disseminated Intravascular Coagulation; transfuse 4 units of cryoprecipitate",
+      "Immune Thrombocytopenia; start IVIG",
+      "Heparin-Induced Thrombocytopenia; start Argatroban"
+    ],
+    "answer": "A",
+    "explanation": "The classic pentad of TTP: Microangiopathic hemolytic anemia (schistocytes, high LDH, low haptoglobin), severe thrombocytopenia, neurological deficits, fever, and renal dysfunction. Crucially, in TTP the coagulation panel (PT, aPTT, fibrinogen) is completely NORMAL (unlike DIC). TTP is caused by severe deficiency of ADAMTS13 (< 10%). Immediate Therapeutic Plasma Exchange (TPE) is life-saving, reducing mortality from > 90% to < 15%.",
+    "whyWrong": {
+      "B": "Normal PT and fibrinogen rule out DIC.",
+      "C": "Schistocytes and hemolysis are absent in primary ITP.",
+      "D": "The patient has no heparin exposure and displays classic microangiopathic hemolysis."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Platelet transfusions are STRICTLY CONTRAINDICATED in TTP (unless life-threatening intracranial hemorrhage occurs) because they precipitate massive microvascular thrombosis and fatal strokes.",
+    "hyperlinkedReference": {
+      "label": "George JN. Thrombotic thrombocytopenic purpura. N Engl J Med 2006;354:1927-1935",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMcp053024"
+    },
+    "tags": [
+      "TTP",
+      "ADAMTS13",
+      "Plasmapheresis",
+      "Schistocytes"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0429",
+    "chapterId": 22,
+    "topicId": "cc-massive-transfusion-in-the-icu",
+    "question": "During rapid massive blood transfusion of 12 units of PRBCs over 2 hours, which metabolic and electrolyte complications are most commonly encountered?",
+    "options": [
+      "Hypocalcemia (citrate toxicity), Hyperkalemia (from stored RBC lysis), Hypothermia, and Hypomagnesemia",
+      "Severe Hypercalcemia and Hypokalemia",
+      "Severe acute Hyperchloremia without temperature change",
+      "Profound metabolic acidosis that permanently persists for weeks"
+    ],
+    "answer": "A",
+    "explanation": "Massive transfusion complications: (1) Hypocalcemia & Hypomagnesemia: Citrate anticoagulant in PRBCs chelates ionized calcium and magnesium, (2) Hyperkalemia: Potassium leaches from erythrocytes during refrigerated storage (up to 30-50 mEq/L in older blood), (3) Hypothermia: Cold refrigerated blood drops core body temperature, impairing clotting cascade enzymes, and (4) Late metabolic alkalosis: Citrate is metabolized by the liver to bicarbonate.",
+    "whyWrong": {
+      "B": "Citrate chelates calcium, causing hypocalcemia, not hypercalcemia.",
+      "C": "PRBCs cause hypocalcemia and potassium shifts, not isolated hyperchloremia.",
+      "D": "Once resuscitated and perfused, citrate metabolism generates alkalosis."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Administer 1 g of Calcium Chloride (or 3 g Calcium Gluconate) IV for every 4-5 units of blood transfused to prevent citrate-induced myocardial depression and vasoplegia.",
+    "hyperlinkedReference": {
+      "label": "Dzik WH. Massive transfusion. In: Rossi's Principles of Transfusion Medicine (5th Ed, 2016)",
+      "url": "https://www.wiley.com/en-us/Rossi%27s+Principles+of+Transfusion+Medicine%2C+5th+Edition-p-9781119012993"
+    },
+    "tags": [
+      "Massive Transfusion Complications",
+      "Citrate Toxicity",
+      "Hypocalcemia",
+      "Hyperkalemia"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0430",
+    "chapterId": 23,
+    "topicId": "cc-paracetamol-poisoning",
+    "question": "A 22-year-old female presents 6 hours after an acute intentional ingestion of 20 grams of Paracetamol (Acetaminophen). What is the mechanism of N-acetylcysteine (NAC), and what is the standard 21-hour intravenous infusion protocol?",
+    "options": [
+      "Acts as a precursor for Glutathione synthesis to detoxify the toxic metabolite N-acetyl-p-benzoquinone imine (NAPQI); 150 mg/kg over 1 hour, then 50 mg/kg over 4 hours, then 100 mg/kg over 16 hours",
+      "Directly oxidizes paracetamol into an inert glucuronide conjugate; 1 g orally every 12 hours",
+      "Inhibits cytochrome P450 2E1 irreversibly; 10 mg/kg IV stat",
+      "Chelates paracetamol in the gastric lumen to prevent absorption"
+    ],
+    "answer": "A",
+    "explanation": "Paracetamol is metabolized via CYP2E1 into the hepatotoxic electrophile NAPQI. In overdose, glutathione is depleted, and NAPQI covalently binds hepatic macromolecules, causing centrilobular necrosis. NAC replenishes hepatic glutathione stores and acts directly as a glutathione surrogate. The classic Prescott 21-hour protocol: Loading dose 150 mg/kg over 1 hour, second dose 50 mg/kg over 4 hours, and third dose 100 mg/kg over 16 hours (total 300 mg/kg).",
+    "whyWrong": {
+      "B": "NAC replenishes glutathione; it does not glucuronidate paracetamol.",
+      "C": "NAC does not inhibit CYP2E1.",
+      "D": "NAC is a systemic biochemical antidote, not a gastric chelator."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: When administered within 8 hours of acute paracetamol ingestion, NAC virtually eliminates the risk of hepatotoxicity (hepatoprotection ~100%).",
+    "hyperlinkedReference": {
+      "label": "Prescott LF, et al. Treatment of paracetamol poisoning with N-acetylcysteine. Lancet 1979;2:109-113",
+      "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(79)90119-0/fulltext"
+    },
+    "tags": [
+      "Paracetamol",
+      "NAC Protocol",
+      "NAPQI",
+      "Glutathione"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0431",
+    "chapterId": 23,
+    "topicId": "cc-organophosphorus-poisoning",
+    "question": "In acute Organophosphate Poisoning, what is the primary endpoint for titrating intravenous Atropine therapy?",
+    "options": [
+      "Dilation of pupils (mydriasis) to >= 8 mm",
+      "Clear lung fields on auscultation (reversal of bronchorrhea and bronchospasm), Heart Rate > 80/min, and dry axillae / mouth",
+      "Complete cessation of skeletal muscle fasciculations",
+      "Normal serum cholinesterase level"
+    ],
+    "answer": "B",
+    "explanation": "Atropine is a competitive antagonist of muscarinic acetylcholine receptors. The primary life-threatening feature of organophosphate poisoning is respiratory failure from massive bronchorrhea and bronchospasm (the 'killer Bs'). Atropine titration endpoints: (1) Clear chest on auscultation with resolution of bronchial secretions, (2) Heart rate > 80 bpm, and (3) Systolic BP > 80 mmHg with dry axillae. Pupil size and tachycardia are NOT reliable endpoints.",
+    "whyWrong": {
+      "A": "Pupillary dilation is a poor and unreliable indicator of adequate atropinization.",
+      "C": "Atropine works ONLY at muscarinic receptors; it has zero effect on nicotinic neuromuscular junctions (muscle fasciculations).",
+      "D": "Atropine does not reactivate cholinesterase enzymes."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Muscle fasciculations and diaphragmatic paralysis are NICOTINIC manifestations that respond to Oximes (Pralidoxime), NOT Atropine.",
+    "hyperlinkedReference": {
+      "label": "Eddleston M, et al. Management of acute organophosphorus pesticide poisoning. Lancet 2008;371:597-607",
+      "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(07)61202-1/fulltext"
+    },
+    "tags": [
+      "Organophosphate",
+      "Atropine Titration",
+      "Muscarinic Endpoints"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0432",
+    "chapterId": 23,
+    "topicId": "cc-general-approach-to-poisoning",
+    "question": "What is the first-line targeted antidote therapy for severe acute Calcium Channel Blocker (CCB) toxicity presenting with profound cardiogenic shock and vasodilation refractory to calcium salts and vasopressors?",
+    "options": [
+      "High-Dose Insulin Euglycemic Therapy (HIET) with supplemental dextrose infusion",
+      "Intravenous Flumazenil bolus",
+      "High-dose Physostigmine infusion",
+      "Methylene Blue bolus as sole monotherapy"
+    ],
+    "answer": "A",
+    "explanation": "High-Dose Insulin Euglycemia Therapy (HIET) is the treatment of choice for severe CCB (and beta-blocker) overdose. CCBs block L-type calcium channels on pancreatic beta cells (halting insulin release) and induce severe myocardial insulin resistance. High-dose insulin (1 unit/kg IV bolus, followed by 1 to 10 units/kg/hour infusion) drives glucose uptake into starved myocytes, exerting a potent positive inotropic effect and restoring microvascular tone.",
+    "whyWrong": {
+      "B": "Flumazenil is a benzodiazepine antagonist.",
+      "C": "Physostigmine is for anticholinergic toxicity; in CCB toxicity it would worsen fatal bradycardia.",
+      "D": "Methylene blue is an adjuvant for refractory vasoplegia, not first-line."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: During HIET, monitor blood glucose every 15-30 minutes and infuse 10-50% dextrose to prevent hypoglycemia. Supplement potassium only if K+ drops < 2.5-3.0 mEq/L (hypokalemia reflects therapeutic intracellular shifting).",
+    "hyperlinkedReference": {
+      "label": "St-Onge M, et al. Management of calcium channel blocker poisoning. Crit Care Med 2017;45:e306-e315",
+      "url": "https://journals.lww.com/ccmjournal/Fulltext/2017/03000/Experts_Consensus_Recommendations_for_the.24.aspx"
+    },
+    "tags": [
+      "Calcium Channel Blocker",
+      "HIET",
+      "High-Dose Insulin"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0433",
+    "chapterId": 23,
+    "topicId": "cc-general-approach-to-poisoning",
+    "question": "A 28-year-old female presents comatose with a wide-complex QRS tachycardia (QRS duration 140 ms), terminal R wave > 3 mm in lead aVR, and hypotension following an intentional Tricyclic Antidepressant (TCA) overdose. What is the immediate pharmacological antidote of choice?",
+    "options": [
+      "Intravenous Sodium Bicarbonate (1-2 mEq/kg IV bolus, titrated to serum pH 7.45-7.55 and QRS narrowing)",
+      "Intravenous Amiodarone 300 mg bolus",
+      "Intravenous Procainamide 100 mg",
+      "Intravenous Magnesium Sulfate 10 g"
+    ],
+    "answer": "A",
+    "explanation": "TCAs block fast inward myocardial sodium channels (Phase 0 depolarization), producing QRS widening, rightward axis deviation (terminal R wave in aVR >= 3 mm), and ventricular arrhythmias. Intravenous Sodium Bicarbonate narrows the QRS complex via dual mechanisms: (1) Sodium load outcompetes TCA binding at sodium channels, and (2) Alkalization (target pH 7.45-7.55) uncouples the lipophilic TCA drug molecule from the channel receptor.",
+    "whyWrong": {
+      "B": "Amiodarone is Class III and further prolongs cardiac repolarization.",
+      "C": "Procainamide is Class IA (sodium channel blocker) and is STRICTLY CONTRAINDICATED (causes fatal asystole in TCA toxicity).",
+      "D": "Magnesium does not reverse sodium channel blockade."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: QRS duration > 100 ms predicts a 34% risk of seizures; QRS duration > 160 ms predicts a 50% risk of life-threatening ventricular arrhythmias (Boehnert and Lovejoy).",
+    "hyperlinkedReference": {
+      "label": "Boehnert MT, Lovejoy FH. Value of the QRS duration in predicting serious toxicity in acute alkylamine tricyclic overdose. N Engl J Med 1985;313:474-479",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJM198508223130804"
+    },
+    "tags": [
+      "TCA Toxicity",
+      "Sodium Bicarbonate",
+      "QRS Widening",
+      "Lead aVR"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0434",
+    "chapterId": 23,
+    "topicId": "cc-general-approach-to-poisoning",
+    "question": "In the management of Ethylene Glycol and Methanol toxic alcohol poisoning, what is the competitive inhibitor of Alcohol Dehydrogenase (ADH) that prevents conversion into toxic metabolites (glycolic/oxalic acid and formic acid)?",
+    "options": [
+      "Fomepizole (4-methylpyrazole)",
+      "N-acetylcysteine",
+      "Pralidoxime",
+      "Deferoxamine"
+    ],
+    "answer": "A",
+    "explanation": "Fomepizole is a potent competitive inhibitor of Alcohol Dehydrogenase (affinity > 8,000 times higher than ethanol). By blocking ADH, fomepizole halts the conversion of ethylene glycol into glycolic/oxalic acid (preventing renal failure and brain damage) and methanol into formic acid (preventing blindness and putaminal necrosis). If fomepizole is unavailable, oral or IV Ethanol is the alternative.",
+    "whyWrong": {
+      "B": "NAC is for paracetamol toxicity.",
+      "C": "Pralidoxime is an oxime for organophosphates.",
+      "D": "Deferoxamine chelates iron."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Fomepizole dosing: 15 mg/kg IV loading dose, followed by 10 mg/kg every 12 hours for 4 doses, then 15 mg/kg every 12 hours (due to auto-induction of metabolism).",
+    "hyperlinkedReference": {
+      "label": "Brent J. Fomepizole for ethylene glycol and methanol poisoning. N Engl J Med 2009;360:2216-2223",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMct0806112"
+    },
+    "tags": [
+      "Fomepizole",
+      "Toxic Alcohols",
+      "Methanol",
+      "Ethylene Glycol"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0435",
+    "chapterId": 23,
+    "topicId": "cc-general-approach-to-poisoning",
+    "question": "What is the defining clinical difference between Heat Stroke and Heat Exhaustion?",
+    "options": [
+      "Heat stroke features core body temperature > 40.0 deg C (104 deg F) accompanied by Central Nervous System dysfunction (encephalopathy, delirium, seizures, coma) and multiorgan failure; heat exhaustion features preserved mental status",
+      "Heat stroke has normal core temperature",
+      "Heat exhaustion is caused by uncoupling of oxidative phosphorylation",
+      "Heat stroke patients sweat profusely in 100% of cases"
+    ],
+    "answer": "A",
+    "explanation": "Heat exhaustion presents with headache, dizziness, nausea, tachycardia, and sweating, but with NORMAL mental status and core temp < 40 deg C. Heat stroke is a medical emergency defined by core temperature > 40 deg C (104 deg F) WITH Central Nervous System abnormalities (confusion, ataxia, seizures, coma) and systemic inflammatory response leading to multiorgan failure.",
+    "whyWrong": {
+      "B": "Heat stroke is severe hyperthermia (> 40 deg C).",
+      "C": "Heat exhaustion is volume/salt depletion, not mitochondrial uncoupling.",
+      "D": "Anhidrosis (cessation of sweating) is classic in non-exertional (classic) heat stroke, but exertional heat stroke patients frequently continue sweating."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Cold water immersion (conductive cooling at ~0.15-0.2 deg C/min) is the fastest and most effective cooling method for exertional heat stroke.",
+    "hyperlinkedReference": {
+      "label": "Bouchama A, Knochel JP. Heat stroke. N Engl J Med 2002;346:1978-1988",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMra011089"
+    },
+    "tags": [
+      "Heat Stroke",
+      "Heat Exhaustion",
+      "Hyperthermia"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0436",
+    "chapterId": 23,
+    "topicId": "cc-general-approach-to-poisoning",
+    "question": "According to the Swiss Staging System for Accidental Hypothermia, which clinical stage corresponds to severe hypothermia with core temperature < 24 deg C, apnea, and cardiac arrest / death-like state?",
+    "options": [
+      "Stage I (Mild, shivering present, 32-35 deg C)",
+      "Stage II (Moderate, shivering ceases, 28-32 deg C)",
+      "Stage III (Severe, unconscious with vital signs present, 24-28 deg C)",
+      "Stage IV (No vital signs / cardiac arrest, < 24 deg C)"
+    ],
+    "answer": "D",
+    "explanation": "Swiss Hypothermia Classification: Stage I (32-35 deg C): conscious, shivering; Stage II (28-32 deg C): impaired consciousness, no shivering; Stage III (24-28 deg C): unconscious with detectable vitals; Stage IV (< 24 deg C): apparent death, no vital signs / cardiac arrest (mandates prolonged CPR and ECMO rewarming: 'No one is dead until warm and dead'). Stage V: death due to irreversible hypothermia.",
+    "whyWrong": {
+      "A": "Stage I is mild with shivering.",
+      "B": "Stage II is moderate.",
+      "C": "Stage III has detectable vital signs."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In severe accidental hypothermia with cardiac arrest (Stage IV), extracorporeal life support (ECLS / VA-ECMO) achieves the highest survival rates (~50-70% with good neurological outcome).",
+    "hyperlinkedReference": {
+      "label": "Brown DJ, et al. Accidental hypothermia. N Engl J Med 2012;367:1930-1938",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMra1114208"
+    },
+    "tags": [
+      "Hypothermia",
+      "Swiss Staging",
+      "ECMO Rewarming"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0437",
+    "chapterId": 24,
+    "topicId": "cc-polytrauma-resuscitation-and-damage-control",
+    "question": "What is the defining triad of the 'Lethal Triad' in severe trauma and exsanguinating hemorrhage?",
+    "options": [
+      "Hypothermia, Acidosis, and Coagulopathy",
+      "Hypertension, Bradycardia, and Irregular respiration",
+      "Hypoglycemia, Hypocalcemia, and Hyponatremia",
+      "Hypoxemia, Hypercapnia, and Tachypnea"
+    ],
+    "answer": "A",
+    "explanation": "The Trauma Lethal Triad consists of: (1) Hypothermia (< 35 deg C impairs clotting enzyme kinetics and platelet aggregation), (2) Acidosis (pH < 7.20 inhibits coagulation factor complexes), and (3) Coagulopathy (trauma-induced coagulopathy exacerbated by dilution). This creates a self-reinforcing vicious cycle resulting in refractory exsanguination and death.",
+    "whyWrong": {
+      "B": "Cushing triad indicates raised intracranial pressure with brain herniation.",
+      "C": "Reflects metabolic derangements, not the trauma lethal triad.",
+      "D": "Reflects respiratory failure signs."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Damage Control Surgery (DCS) was specifically created to interrupt the lethal triad: rapid surgical control of bleeding and contamination, followed by ICU resuscitation to warm the patient and reverse acidosis/coagulopathy before definitive anatomical repair.",
+    "hyperlinkedReference": {
+      "label": "Rotondo MF, et al. Damage control: an approach for improved survival in exsanguinating penetrating abdominal injury. J Trauma 1993;35:375-382",
+      "url": "https://journals.lww.com/jtrauma/abstract/1993/09000/damage_control__an_approach_for_improved_survival.8.aspx"
+    },
+    "tags": [
+      "Lethal Triad",
+      "Damage Control Surgery",
+      "Trauma Coagulopathy"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0438",
+    "chapterId": 24,
+    "topicId": "cc-polytrauma-resuscitation-and-damage-control",
+    "question": "In the CRASH-2 trial evaluating Tranexamic Acid (TXA) in trauma patients with significant hemorrhage, what was the critical time-dependent therapeutic window within which TXA administration significantly reduced all-cause mortality, versus when its administration was associated with increased risk of death due to bleeding?",
+    "options": [
+      "Within 3 hours of injury (all-cause mortality significantly reduced); administration after 3 hours showed an increased risk of death due to bleeding",
+      "Within 24 hours of injury",
+      "Only within the first 15 minutes of injury",
+      "Within 12 hours of injury regardless of surgery timing"
+    ],
+    "answer": "A",
+    "explanation": "The CRASH-2 trial (Lancet 2010, 2011 exploratory analysis) established that early administration of TXA (1 g IV over 10 min, followed by 1 g IV infusion over 8 hours) within 3 hours of injury significantly reduces risk of death due to bleeding (RR 0.72) and all-cause mortality without increasing thrombotic complications. Crucially, giving TXA beyond 3 hours from injury was associated with a statistically significant increase in risk of death due to bleeding (RR 1.44), likely due to consumptive fibrinolysis shutdown and late thrombotic microangiopathy.",
+    "whyWrong": {
+      "B": "Giving TXA at 24 hours is associated with increased bleeding death and thromboembolic harm.",
+      "C": "TXA remains highly beneficial when initiated up to 3 hours from trauma.",
+      "D": "Giving TXA at 12 hours falls well into the harmful post-3-hour window."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: TXA timing rule in trauma: Benefit is greatest when administered within 1 hour; beneficial up to 3 hours; STRICTLY HARMFUL if initiated > 3 hours after injury.",
+    "hyperlinkedReference": {
+      "label": "CRASH-2 trial collaborators. The importance of early treatment with tranexamic acid in bleeding trauma patients. Lancet 2011;377:1096-1101",
+      "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(11)60278-X/fulltext"
+    },
+    "tags": [
+      "CRASH-2",
+      "Tranexamic Acid",
+      "TXA 3-Hour Window"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0439",
+    "chapterId": 24,
+    "topicId": "cc-polytrauma-resuscitation-and-damage-control",
+    "question": "In Resuscitative Endovascular Balloon Occlusion of the Aorta (REBOA), what are the anatomical boundaries of Zone 1 and Zone 3 aortic occlusion?",
+    "options": [
+      "Zone 1: Distal descending thoracic aorta (left subclavian to celiac axis); Zone 3: Infrarenal aorta (lowest renal artery to aortic bifurcation)",
+      "Zone 1: Aortic root to coronaries; Zone 3: Femoral artery",
+      "Zone 1: Paravisceral aorta (celiac to renal); Zone 3: Thoracic aorta",
+      "Zone 1: Subclavian artery; Zone 3: Iliac artery"
+    ],
+    "answer": "A",
+    "explanation": "REBOA aortic zones: Zone 1 extends from the origin of the left subclavian artery to the celiac artery (used for non-compressible subdiaphragmatic intra-abdominal or retroperitoneal hemorrhage). Zone 2 is the paravisceral aorta (celiac to lowest renal artery; designated NO-OCCLUSION zone). Zone 3 extends from the lowest renal artery to the aortic bifurcation (used for severe pelvic fracture or junctional groin hemorrhage).",
+    "whyWrong": {
+      "B": "Zone 1 does not occlude coronaries.",
+      "C": "Zone 2 is the visceral zone where occlusion is avoided.",
+      "D": "Inaccurate anatomical landmarks."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Maximum balloon inflation time in Zone 1 is strictly limited to 30-45 minutes to prevent irreversible visceral and spinal cord ischemia-reperfusion injury.",
+    "hyperlinkedReference": {
+      "label": "Brenner M, et al. REBOA in trauma resuscitation. J Trauma Acute Care Surg 2018;84:800-808",
+      "url": "https://journals.lww.com/jtrauma/abstract/2018/05000/resuscitative_endovascular_balloon_occlusion_of.23.aspx"
+    },
+    "tags": [
+      "REBOA",
+      "Aortic Zones",
+      "Endovascular Resuscitation"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0440",
+    "chapterId": 24,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "A 70 kg adult male sustains 40% Total Body Surface Area (TBSA) second- and third-degree thermal burns. Using the classic Parkland formula (4 mL/kg/%TBSA), calculate the total fluid volume and infusion rate for the first 8 hours post-injury:",
+    "options": [
+      "11,200 mL total; 5,600 mL infused over the first 8 hours (700 mL/hour)",
+      "5,600 mL total; 2,800 mL over the first 8 hours (350 mL/hour)",
+      "22,400 mL total; 11,200 mL over the first 8 hours",
+      "3,000 mL total; 1,000 mL over the first 8 hours"
+    ],
+    "answer": "A",
+    "explanation": "Parkland formula: Total fluid in 24 hours = 4 mL x weight (kg) x %TBSA burn. Total = 4 x 70 x 40 = 11,200 mL of Ringer's Lactate. Half of the total (5,600 mL) must be infused over the FIRST 8 HOURS calculated from the TIME OF INJURY (not time of arrival). 5,600 / 8 = 700 mL/hour. The remaining half (5,600 mL) is infused over the subsequent 16 hours (350 mL/hour).",
+    "whyWrong": {
+      "B": "Uses 2 mL/kg/%TBSA (American Burn Association modern starting formula), not classic Parkland 4 mL.",
+      "C": "Doubles the expected Parkland calculation.",
+      "D": "Severely underestimates burn fluid needs, leading to burn shock."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Target urine output during burn resuscitation is 0.5 mL/kg/h in adults (1.0-1.5 mL/kg/h in high-voltage electrical burns with myoglobinuria). Titrate fluids hourly to urine output to prevent 'fluid creep' and abdominal compartment syndrome.",
+    "hyperlinkedReference": {
+      "label": "Baxter CR. Fluid resuscitation, burn shock, and tissue perfusion. J Burn Care Rehabil 1981;2:86",
+      "url": "https://academic.oup.com/jbcr/article/2/2/86/4607736"
+    },
+    "tags": [
+      "Parkland Formula",
+      "Burn Resuscitation",
+      "Fluid Creep"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0441",
+    "chapterId": 24,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "A patient rescued from a house fire has facial burns, singed nasal hairs, soot in the oral cavity, and hoarseness of voice. What is the immediate definitive management priority?",
+    "options": [
+      "Early prophylactic endotracheal intubation before progressive supraglottic edema causes complete upper airway obstruction",
+      "Observation in the ward on room air",
+      "Oral administration of cold iced saline",
+      "Inhaled nebulized budesonide alone"
+    ],
+    "answer": "A",
+    "explanation": "In thermal inhalation injury, chemical and heat exposure causes progressive, severe pharyngeal and laryngeal mucosal edema that peaks within 12 to 24 hours. The presence of stridor, hoarseness, carbonaceous sputum, or circumferential neck burns mandates EARLY endotracheal intubation with an uncut large-bore ETT before airway swelling makes direct or video laryngoscopy impossible.",
+    "whyWrong": {
+      "B": "Delayed observation leads to complete airway occlusion and death.",
+      "C": "Iced saline has zero role in systemic thermal airway injury.",
+      "D": "Steroids do not reverse rapid mechanical supraglottic swelling and are contraindicated in burns due to infection risk."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Fiberoptic bronchoscopy is the gold standard diagnostic tool to grade inhalation injury: erythema, edema, mucosal sloughing, and carbonaceous deposits.",
+    "hyperlinkedReference": {
+      "label": "Gauglitz GG, et al. Acute management of inhalation injury. Crit Care 2012;16:208",
+      "url": "https://ccforum.biomedcentral.com/articles/10.1186/cc11246"
+    },
+    "tags": [
+      "Inhalation Injury",
+      "Burn Airway",
+      "Early Intubation"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0442",
+    "chapterId": 24,
+    "topicId": "cc-polytrauma-resuscitation-and-damage-control",
+    "question": "In a hemodynamically unstable blunt trauma patient with an open-book pelvic fracture (disruption of pubic symphysis > 2.5 cm), what is the immediate first-line bedside mechanical intervention to reduce pelvic volume and tamponade venous hemorrhage?",
+    "options": [
+      "Application of a pelvic circumferential compression binder (or bed sheet tied securely around the greater trochanters)",
+      "Immediate exploratory laparotomy via midline incision",
+      "External fixator placement in the emergency bay without anesthesia",
+      "Log-rolling the patient every 15 minutes"
+    ],
+    "answer": "A",
+    "explanation": "Blunt pelvic fractures cause life-threatening hemorrhage primarily from the presacral and prevesical venous plexus (85%) and cancellous bone surfaces. Immediate application of a commercial Pelvic Binder (centered directly over the GREATER TROCHANTERS, not iliac crests) closes the pelvic ring volume, promotes retroperitoneal tamponade, and stabilizes bone fragments.",
+    "whyWrong": {
+      "B": "Opening the retroperitoneum during laparotomy releases the natural retroperitoneal tamponade and causes exsanguination.",
+      "C": "External fixation requires operating room setup.",
+      "D": "Log-rolling dislodges pelvic clots and must be avoided in unstable pelvic fractures."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: If hemodynamics remain unstable after pelvic binder placement and MTP, preperitoneal pelvic packing and/or interventional radiology transcatheter arterial embolization (TAE) are indicated.",
+    "hyperlinkedReference": {
+      "label": "Coccolini F, et al. Pelvic trauma: WSES guidelines. World J Emerg Surg 2017;12:5",
+      "url": "https://wjes.biomedcentral.com/articles/10.1186/s13017-017-0117-6"
+    },
+    "tags": [
+      "Pelvic Binder",
+      "Pelvic Fracture",
+      "Trauma Hemorrhage"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0443",
+    "chapterId": 24,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "A patient with full-thickness circumferential burns to the entire thorax is mechanically ventilated. Peak inspiratory pressures suddenly surge from 22 to 48 cmH2O, tidal volumes fall, and SBP drops to 70 mmHg. What emergency bedside procedure is indicated?",
+    "options": [
+      "Emergency chest escharotomy along the anterior axillary lines and subcostal margins",
+      "Administration of high-dose intravenous bronchodilators",
+      "Insertion of a pulmonary artery catheter",
+      "Switching to high-frequency oscillatory ventilation"
+    ],
+    "answer": "A",
+    "explanation": "Full-thickness circumferential thoracic burns produce rigid, non-compliant, leathery eschar. As resuscitation fluid causes tissue edema, the unyielding eschar creates a thoracic compartment syndrome: restricting chest wall expansion, driving up airway pressures, causing severe hypoventilation, and compressing the vena cava. Immediate bedside escharotomy (incisions through dead insensitive eschar down to subcutaneous fat along anterior axillary lines and costal margins) releases chest restriction.",
+    "whyWrong": {
+      "B": "Bronchodilators do not relieve mechanical chest wall restriction from rigid skin eschar.",
+      "C": "PAC placement does not relieve mechanical chest constriction.",
+      "D": "Oscillatory ventilation cannot overcome rigid chest encasement."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Escharotomy cuts only insensitive full-thickness burned dead tissue and does not require local anesthesia; incisions must extend across joints into unburned skin to be effective.",
+    "hyperlinkedReference": {
+      "label": "Orgill DP, et al. Escharotomy and decompressive therapies in burns. J Burn Care Res 2009;30:759",
+      "url": "https://academic.oup.com/jbcr/article/30/5/759/4603998"
+    },
+    "tags": [
+      "Escharotomy",
+      "Circumferential Burn",
+      "Thoracic Compartment Syndrome"
+    ],
+    "verificationStatus": "VERIFIED"
   }
 ]

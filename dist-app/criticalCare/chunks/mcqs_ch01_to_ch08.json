@@ -3538,5 +3538,1536 @@
       "Cardshock Study"
     ],
     "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0294",
+    "chapterId": 1,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "A 68-year-old male with severe pneumonia has RR 24/min, BP 94/58 mmHg, and GCS 15 in the emergency department. According to Sepsis-3 consensus definitions, what is his quick SOFA (qSOFA) score, and what clinical action is indicated?",
+    "options": [
+      "qSOFA score of 1; manage on general ward without escalation",
+      "qSOFA score of 2; prompts immediate assessment for organ dysfunction (full SOFA calculation) and closer monitoring for sepsis",
+      "qSOFA score of 3; establishes microbiological diagnosis of septic shock",
+      "qSOFA score of 0; rules out sepsis with 99% negative predictive value"
+    ],
+    "answer": "B",
+    "explanation": "qSOFA assigns 1 point each for: RR >= 22/min (present = 1), SBP <= 100 mmHg (present = 1), and altered mentation (GCS < 15, absent = 0). Total qSOFA = 2. A score >= 2 identifies patients outside the ICU at higher risk of death or prolonged ICU stay.",
+    "whyWrong": {
+      "A": "Score is 2, not 1 (both tachypnea and hypotension criteria are met).",
+      "C": "qSOFA is an outcome risk predictor, not a diagnostic microbiological criterion.",
+      "D": "qSOFA has low sensitivity (~55%) and cannot be used to rule out sepsis."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: The 2026 SSC guidelines recommend AGAINST using qSOFA as a standalone screening tool due to poor sensitivity compared to NEWS, MEWS, or SIRS.",
+    "hyperlinkedReference": {
+      "label": "Singer M, et al. Sepsis-3 Definitions. JAMA 2016;315:801-810",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/2492881"
+    },
+    "tags": [
+      "qSOFA",
+      "Sepsis-3",
+      "Scoring Systems"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0295",
+    "chapterId": 1,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "In the calculation of the Sequential Organ Failure Assessment (SOFA) score, which variable constitutes the neurological subscore component?",
+    "options": [
+      "Glasgow Coma Scale (GCS) score alone",
+      "FOUR (Full Outline of UnResponsiveness) score",
+      "Richmond Agitation-Sedation Scale (RASS) score",
+      "CAM-ICU delirium assessment"
+    ],
+    "answer": "A",
+    "explanation": "SOFA uses the Glasgow Coma Scale (GCS) exclusively for its neurological domain: GCS 13-14 = 1, 10-12 = 2, 6-9 = 3, <6 = 4 points.",
+    "whyWrong": {
+      "B": "FOUR score evaluates brainstem reflexes but is not part of standard SOFA.",
+      "C": "RASS measures sedation depth, not baseline acute neurological failure.",
+      "D": "CAM-ICU assesses delirium, not numerical SOFA organ failure."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: An acute change in total SOFA score >= 2 points secondary to infection defines organ dysfunction in Sepsis-3.",
+    "hyperlinkedReference": {
+      "label": "Vincent JL, et al. The SOFA score. Intensive Care Med 1996;22:707-710",
+      "url": "https://link.springer.com/article/10.1007/BF01709751"
+    },
+    "tags": [
+      "SOFA",
+      "GCS",
+      "Neurological Failure"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0296",
+    "chapterId": 1,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "On the National Early Warning Score 2 (NEWS2), which patient population has a dedicated, adjusted oxygen saturation (SpO2) scoring scale (Scale 2)?",
+    "options": [
+      "Patients with confirmed or suspected hypercapnic respiratory failure (target SpO2 88-92%)",
+      "Pregnant women beyond 20 weeks of gestation",
+      "Trauma patients receiving massive blood transfusion",
+      "Morbidly obese patients with acute pulmonary embolism"
+    ],
+    "answer": "A",
+    "explanation": "NEWS2 features Scale 2 for patients with confirmed hypercapnic respiratory failure (e.g., severe COPD) with target SpO2 88-92%, avoiding over-scoring when saturation is kept at its intended physiological target.",
+    "whyWrong": {
+      "B": "Pregnant women are evaluated using MEOWS (Modified Obstetric Early Warning System).",
+      "C": "Trauma patients are scored using standard Scale 1 (target >= 96%).",
+      "D": "Pulmonary embolism patients use standard Scale 1."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2024,
+    "examPearl": "INI-SS HIGH YIELD: On NEWS2 Scale 2, an SpO2 of >= 97% while breathing supplementary oxygen receives 3 points due to the danger of oxygen-induced hypercapnia.",
+    "hyperlinkedReference": {
+      "label": "Royal College of Physicians. NEWS2 Guidelines (2017)",
+      "url": "https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news-2"
+    },
+    "tags": [
+      "NEWS2",
+      "Hypercapnic Failure",
+      "Triage"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0297",
+    "chapterId": 1,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "A 74-year-old woman admitted to the ICU is described as: 'Completely dependent on personal care for all basic ADLs, but appears medically stable and not terminally ill.' What is her Clinical Frailty Scale (CFS) score?",
+    "options": [
+      "CFS 4 (Vulnerable)",
+      "CFS 5 (Mildly Frail)",
+      "CFS 7 (Severely Frail)",
+      "CFS 9 (Terminally Ill)"
+    ],
+    "answer": "C",
+    "explanation": "CFS 7 represents 'Severely Frail' (completely dependent for personal care from any cause, but medically stable). CFS 8 is 'Very Severely Frail' (approaching end of life), and CFS 9 is 'Terminally Ill'.",
+    "whyWrong": {
+      "A": "CFS 4 indicates not dependent on others for daily help.",
+      "B": "CFS 5 indicates needing help in higher-order instrumental ADLs (finances, heavy chores).",
+      "D": "CFS 9 is reserved for patients with life expectancy < 6 months."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: In older critically ill patients, a CFS score >= 5 is an independent predictor of in-hospital mortality and failure to return to independent living.",
+    "hyperlinkedReference": {
+      "label": "Rockwood K, et al. Clinical Frailty Scale. CMAJ 2005;173:489-495",
+      "url": "https://www.cmaj.ca/content/173/5/489"
+    },
+    "tags": [
+      "Clinical Frailty Scale",
+      "CFS",
+      "Geriatrics"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0298",
+    "chapterId": 1,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "Which ICU scoring system calculates predicted hospital mortality based on physiological variables from the first 24 hours of ICU stay, pre-existing chronic conditions, and specific acute admission diagnosis codes?",
+    "options": [
+      "APACHE IV (Acute Physiology and Chronic Health Evaluation IV)",
+      "Daily SOFA score",
+      "NEWS2 score",
+      "Glasgow-Blatchford score"
+    ],
+    "answer": "A",
+    "explanation": "APACHE IV incorporates the worst physiological values during the first 24 hours in ICU, patient age, chronic health status, and specific acute admission diagnostic categories to predict ICU mortality and length of stay.",
+    "whyWrong": {
+      "B": "SOFA is a daily dynamic organ dysfunction score.",
+      "C": "NEWS2 is a pre-ICU track-and-trigger deterioration score.",
+      "D": "Glasgow-Blatchford score stratifies upper GI bleed risk."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: APACHE IV includes 14 physiological variables, GCS score, acute admission diagnosis, and prior hospital length of stay.",
+    "hyperlinkedReference": {
+      "label": "Zimmerman JE, et al. APACHE IV. Crit Care Med 2006;34:1297-1310",
+      "url": "https://journals.lww.com/ccmjournal/abstract/2006/05000/acute_physiology_and_chronic_health_evaluation.1.aspx"
+    },
+    "tags": [
+      "APACHE IV",
+      "Prognostication",
+      "ICU Scoring"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0299",
+    "chapterId": 1,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "In critical care bioethics, what does the principle of 'Double Effect' state regarding palliative symptom control during terminal weaning?",
+    "options": [
+      "Requiring agreement from two independent ICU consultants before extubation",
+      "Administering opioids/sedatives with the primary intention of relieving intractable dyspnea or pain, even if a foreseeable unintended consequence may be the shortening of life",
+      "Providing two sedatives concurrently to achieve rapid unconsciousness",
+      "Using dual extracorporeal life support systems"
+    ],
+    "answer": "B",
+    "explanation": "The doctrine of Double Effect holds that an action having a foreseeable bad outcome (potential respiratory depression/shortened life) is morally permissible if the primary intention is good (relief of intractable suffering) and the bad outcome is unintended.",
+    "whyWrong": {
+      "A": "Consultant consensus is a clinical governance protocol, not the ethical doctrine of double effect.",
+      "C": "Dual sedation describes pharmacology, not an ethical doctrine.",
+      "D": "Extracorporeal support is a clinical rescue technique."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: Titrating opioids to abolish air hunger and distress during palliative extubation is legally and ethically protected under the principle of double effect.",
+    "hyperlinkedReference": {
+      "label": "Truog RD, et al. End-of-life care in the ICU. Crit Care Med 2008;36:953-963",
+      "url": "https://journals.lww.com/ccmjournal/Abstract/2008/03000/Recommendations_for_end_of_life_care_in_the.47.aspx"
+    },
+    "tags": [
+      "Double Effect",
+      "Ethics",
+      "Palliative Care"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0300",
+    "chapterId": 2,
+    "topicId": "cc-assessing-adequacy-of-oxygen-delivery",
+    "question": "A critically ill patient has Hb 10 g/dL, SaO2 98%, and PaO2 100 mmHg. What is the calculated arterial oxygen content (CaO2)?",
+    "options": [
+      "10.2 mL/dL",
+      "13.4 mL/dL",
+      "17.8 mL/dL",
+      "20.4 mL/dL"
+    ],
+    "answer": "B",
+    "explanation": "CaO2 = (1.34 x Hb x SaO2) + (0.0031 x PaO2) = (1.34 x 10 x 0.98) + (0.0031 x 100) = 13.13 + 0.31 = 13.44 mL/dL (~13.4 mL/dL).",
+    "whyWrong": {
+      "A": "Omits hemoglobin binding coefficient (1.34).",
+      "C": "Represents normal CaO2 with Hb 13-14 g/dL (~18 mL/dL).",
+      "D": "Represents normal CaO2 with Hb 15 g/dL."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Normal CaO2 is 18-20 mL/dL. Dissolved O2 contributes only ~0.3 mL/dL at PaO2 100 mmHg.",
+    "hyperlinkedReference": {
+      "label": "West JB. Respiratory Physiology (11th Ed, 2021)",
+      "url": "https://www.wolterskluwer.com/en/solutions/ovid/wests-respiratory-physiology-11e"
+    },
+    "tags": [
+      "CaO2",
+      "Oxygen Content",
+      "Physiology"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0301",
+    "chapterId": 2,
+    "topicId": "cc-assessing-adequacy-of-oxygen-delivery",
+    "question": "In oxygen transport physiology, what is the significance of the Critical DO2 (DO2crit) threshold?",
+    "options": [
+      "The point where VO2 becomes supply-independent",
+      "The inflection point below which oxygen extraction ratio cannot further increase, making VO2 supply-dependent and precipitating cellular dysoxia",
+      "The point where PaO2 falls below 60 mmHg",
+      "The point where blood lactate clearance exceeds production"
+    ],
+    "answer": "B",
+    "explanation": "Below DO2crit (~7-8 mL/kg/min or ~330 mL/min/m2), tissue oxygen extraction ratio reaches its ceiling (60-70%). Further declines in DO2 force VO2 to become supply-dependent, leading to cellular dysoxia and anaerobic lactic acidosis.",
+    "whyWrong": {
+      "A": "Above DO2crit, VO2 is physiological and supply-independent.",
+      "C": "Hypoxemia is only one component of delivery; DO2 depends equally on CO and Hb.",
+      "D": "Below DO2crit, lactate production outpaces clearance, causing lactic acidosis."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Normal DO2 is ~1000 mL/min; normal VO2 is ~250 mL/min; normal oxygen extraction ratio (OER) is 20-30%.",
+    "hyperlinkedReference": {
+      "label": "Vincent JL. Oxygen transport basics. Intensive Care Med 2004;30:1990",
+      "url": "https://link.springer.com/article/10.1007/s00134-004-2457-5"
+    },
+    "tags": [
+      "DO2crit",
+      "Cellular Dysoxia",
+      "VO2/DO2"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0302",
+    "chapterId": 2,
+    "topicId": "cc-assessing-adequacy-of-oxygen-delivery",
+    "question": "Which of the following clinical scenarios represents Type B lactic acidosis rather than Type A lactic acidosis?",
+    "options": [
+      "Cardiogenic shock secondary to acute myocardial infarction",
+      "Metformin-associated lactic acidosis (MALA) or Linezolid-induced mitochondrial toxicity",
+      "Hemorrhagic shock following massive trauma",
+      "Mesenteric ischemia with bowel necrosis"
+    ],
+    "answer": "B",
+    "explanation": "Type A lactic acidosis is caused by overt tissue hypoperfusion or hypoxia. Type B occurs without overt tissue hypoperfusion (B1: disease-associated like liver failure/DKA; B2: toxin/drug-induced like metformin, linezolid, propofol; B3: inborn errors).",
+    "whyWrong": {
+      "A": "Cardiogenic shock is classic Type A due to systemic hypoperfusion.",
+      "C": "Hemorrhagic shock is severe hypovolemic Type A lactic acidosis.",
+      "D": "Mesenteric ischemia produces Type A ischemia-induced lactic acidosis."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In septic shock, hyperlactatemia is often mixed: an initial Type A hypoperfusion followed by dominant Type B aerobic glycolysis driven by beta-2 adrenergic stimulation.",
+    "hyperlinkedReference": {
+      "label": "Kraut JA, Madias NE. Lactic Acidosis. N Engl J Med 2014;371:2309-2319",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMra1309483"
+    },
+    "tags": [
+      "Lactic Acidosis",
+      "Type A vs Type B",
+      "MALA"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0303",
+    "chapterId": 2,
+    "topicId": "cc-assessing-adequacy-of-oxygen-delivery",
+    "question": "What is the primary physiological function of the endothelial glycocalyx, and which circulating molecule is a biomarker of its acute degradation?",
+    "options": [
+      "Acts as a pro-coagulant meshwork; measured by Prothrombin Time",
+      "Maintains the microvascular permeability barrier, prevents leukocyte adhesion, and regulates shear stress; measured by Syndecan-1",
+      "Facilitates albumin extravasation into the interstitium; measured by Troponin I",
+      "Synthesizes Angiotensin Converting Enzyme exclusively; measured by Aldosterone"
+    ],
+    "answer": "B",
+    "explanation": "The endothelial glycocalyx lines the healthy microvasculature. It maintains the revised Starling vascular barrier, prevents pathological leukocyte adherence, and mediates nitric oxide release. Syndecan-1 is shed into the blood during sepsis and hypervolemia as a biomarker of barrier disruption.",
+    "whyWrong": {
+      "A": "Glycocalyx has anticoagulant properties via bound antithrombin III.",
+      "C": "An intact glycocalyx strictly prevents albumin extravasation.",
+      "D": "ACE is a membrane-bound enzyme, not a glycocalyx degradation biomarker."
+    },
+    "difficulty": "difficult",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: Rapid unbuffered crystalloid boluses stimulate ANP release, which cleaves the endothelial glycocalyx and accelerates tissue edema.",
+    "hyperlinkedReference": {
+      "label": "Woodcock TE. Revised Starling equation and glycocalyx. BJA 2012;108:384-394",
+      "url": "https://academic.oup.com/bja/article/108/3/384/242273"
+    },
+    "tags": [
+      "Glycocalyx",
+      "Syndecan-1",
+      "Permeability"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0304",
+    "chapterId": 2,
+    "topicId": "cc-assessing-adequacy-of-oxygen-delivery",
+    "question": "Using the direct Fick principle, calculate cardiac output for: VO2 = 240 mL/min, CaO2 = 18 mL/dL, and CvO2 = 14 mL/dL.",
+    "options": [
+      "4.0 L/min",
+      "6.0 L/min",
+      "8.5 L/min",
+      "12.0 L/min"
+    ],
+    "answer": "B",
+    "explanation": "Cardiac Output = VO2 / (CaO2 - CvO2). Arteriovenous O2 content difference = 18 - 14 = 4 mL/dL = 40 mL/L. CO = 240 / 40 = 6.0 L/min.",
+    "whyWrong": {
+      "A": "Calculates 240 / 60 instead of 240 / 40.",
+      "C": "Fails to convert dL to L in the denominator.",
+      "D": "Arithmetic doubling error."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: A widening arteriovenous O2 content difference (> 5 mL/dL) indicates increased tissue extraction due to inadequate cardiac output.",
+    "hyperlinkedReference": {
+      "label": "Marino PL. The ICU Book (4th Ed, 2014)",
+      "url": "https://shop.lww.com/The-ICU-Book/p/9781451121186"
+    },
+    "tags": [
+      "Fick Principle",
+      "Cardiac Output",
+      "Calculations"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0305",
+    "chapterId": 3,
+    "topicId": "cc-haemodynamic-monitoring-i",
+    "question": "During a fast-flush test of an arterial line, you observe 1.5 oscillations before returning to baseline, with an amplitude ratio between successive waves of 0.4. What is the damping status?",
+    "options": [
+      "Underdamped circuit (systolic pressure falsely high)",
+      "Optimally damped circuit (accurate systolic, mean, and diastolic readings)",
+      "Overdamped circuit (systolic pressure falsely low)",
+      "Severely resonant circuit requiring catheter removal"
+    ],
+    "answer": "B",
+    "explanation": "An optimal arterial line circuit (damping coefficient zeta ~ 0.5-0.7) produces 1 to 2 oscillations following the fast-flush with a crisp dicrotic notch and accurate pressure readings.",
+    "whyWrong": {
+      "A": "Underdamping shows > 2-3 reverberations with spiked overshoots.",
+      "C": "Overdamping displays < 1 oscillation and a blunted dicrotic notch.",
+      "D": "Resonant circuits need air bubble removal, not catheter extubation."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Mean Arterial Pressure (MAP) remains mathematically accurate regardless of underdamping or overdamping because total area under the pulse curve is conserved.",
+    "hyperlinkedReference": {
+      "label": "Gardner RM. Direct blood pressure measurement. Anesthesiology 1981;54:227",
+      "url": "https://pubs.asahq.org/anesthesiology/article/54/3/227/24360"
+    },
+    "tags": [
+      "Arterial Line",
+      "Damping Coefficient",
+      "Hemodynamics"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0306",
+    "chapterId": 3,
+    "topicId": "cc-central-venous-line-and-cvp-measurement",
+    "question": "Which mechanical event in the cardiac cycle corresponds to the 'c' wave on a CVP waveform?",
+    "options": [
+      "Right atrial active contraction",
+      "Isovolumetric ventricular contraction causing tricuspid valve bulging into the right atrium",
+      "Passive right atrial filling against a closed tricuspid valve",
+      "Rapid ventricular filling following tricuspid opening"
+    ],
+    "answer": "B",
+    "explanation": "The 'c' wave is caused by the tricuspid valve closing and bulging upward into the right atrium during early right ventricular isovolumetric contraction (immediately following the QRS complex).",
+    "whyWrong": {
+      "A": "Atrial contraction causes the 'a' wave.",
+      "C": "Passive venous filling against closed tricuspid valve produces the 'v' wave.",
+      "D": "Ventricular emptying produces the 'y' descent."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: 'Cannon a waves' occur in AV dissociation (complete heart block, VT) when the right atrium contracts against a closed tricuspid valve.",
+    "hyperlinkedReference": {
+      "label": "Mark JB. Atlas of Cardiovascular Monitoring (1998)",
+      "url": "https://www.elsevier.com/books/atlas-of-cardiovascular-monitoring/mark/978-0-443-08892-6"
+    },
+    "tags": [
+      "CVP Waveform",
+      "c Wave",
+      "Cannon A Waves"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0307",
+    "chapterId": 3,
+    "topicId": "cc-assessing-fluid-responsiveness-in-the-icu",
+    "question": "Which of the following conditions INVALIDATES Pulse Pressure Variation (PPV) and Stroke Volume Variation (SVV) as dynamic indices of fluid responsiveness?",
+    "options": [
+      "Controlled ventilation with tidal volume 8 mL/kg PBW and no spontaneous efforts",
+      "Frequent ventricular ectopics or atrial fibrillation",
+      "Noradrenaline infusion via central venous catheter",
+      "Prone positioning in a deeply paralyzed patient"
+    ],
+    "answer": "B",
+    "explanation": "PPV/SVV require sinus rhythm, fully passive mechanical ventilation with tidal volume >= 8 mL/kg PBW, and closed chest. Arrhythmias cause beat-to-beat stroke volume variations independent of heart-lung interactions.",
+    "whyWrong": {
+      "A": "Controlled ventilation with Vt >= 8 mL/kg PBW is the prerequisite condition.",
+      "C": "Vasopressors do not invalidate PPV provided stroke volume can be tracked.",
+      "D": "Prone positioning does not invalidate PPV if tidal volume criteria are met."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In patients with low tidal volume (6 mL/kg), spontaneous breathing, or arrhythmias, the Passive Leg Raising (PLR) test or End-Expiratory Occlusion Test (EEOT) are the reliable alternatives.",
+    "hyperlinkedReference": {
+      "label": "Michard F, et al. Pulse pressure variation. AJRCCM 1999;159:935",
+      "url": "https://www.atsjournals.org/doi/10.1164/ajrccm.159.3.9805077"
+    },
+    "tags": [
+      "PPV",
+      "SVV",
+      "Fluid Responsiveness"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0308",
+    "chapterId": 3,
+    "topicId": "cc-assessing-fluid-responsiveness-in-the-icu",
+    "question": "During a Passive Leg Raising (PLR) test, what physiological change defines a positive response confirming fluid responsiveness?",
+    "options": [
+      "Increase in Mean Arterial Pressure (MAP) >= 20 mmHg",
+      "Increase in real-time Cardiac Output or Stroke Volume >= 10% within 60-90 seconds",
+      "Decrease in Central Venous Pressure >= 4 mmHg",
+      "Increase in Heart Rate >= 15 beats/min"
+    ],
+    "answer": "B",
+    "explanation": "PLR acts as a reversible endogenous volume challenge (~300 mL). A positive test is defined as an increase in real-time cardiac output or stroke volume >= 10% peaking within 60-90 seconds. Blood pressure changes alone are poorly sensitive.",
+    "whyWrong": {
+      "A": "Blood pressure changes have low sensitivity due to variable arterial tone.",
+      "C": "PLR increases venous return, raising CVP.",
+      "D": "Heart rate changes do not reliably reflect stroke volume increases."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: The PLR test must start from a 45-degree semi-recumbent posture (not flat) to recruit splanchnic blood volume effectively.",
+    "hyperlinkedReference": {
+      "label": "Monnet X, Teboul JL. Passive leg raising rules. Crit Care 2015;19:18",
+      "url": "https://ccforum.biomedcentral.com/articles/10.1186/s13054-014-0708-5"
+    },
+    "tags": [
+      "PLR",
+      "Fluid Responsiveness",
+      "Cardiac Output"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0309",
+    "chapterId": 3,
+    "topicId": "cc-cardiac-output-monitoring",
+    "question": "A patient with septic shock has ScvO2 74% and MAP 68 mmHg, but serum lactate is rising (3.8 mmol/L). PaCO2 is 36 mmHg and PcvCO2 is 45 mmHg. What is the interpretation of this PCO2 gap (Delta PCO2)?",
+    "options": [
+      "Normal PCO2 gap (< 6 mmHg); rules out inadequate tissue perfusion",
+      "Elevated PCO2 gap (9 mmHg); indicates persistent microcirculatory hypoperfusion / stagnation despite normal ScvO2",
+      "Severe acute respiratory acidosis requiring increased minute ventilation",
+      "Laboratory artifact; central venous PCO2 cannot exceed arterial PCO2"
+    ],
+    "answer": "B",
+    "explanation": "Normal venoarterial PCO2 difference (Delta PCO2 = PcvCO2 - PaCO2) is <= 6 mmHg. Here it is 45 - 36 = 9 mmHg. An elevated gap indicates stagnant microcirculatory blood flow where CO2 produced by tissues accumulates due to low flow.",
+    "whyWrong": {
+      "A": "Gap is 9 mmHg, which is abnormal (> 6 mmHg).",
+      "C": "Reflects tissue perfusion stagnation, not primary ventilator failure.",
+      "D": "Venous PCO2 is always higher than arterial PCO2 due to cellular metabolism."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: A ratio of Delta PCO2 / Delta (C[a-v]O2) > 1.4 mmHg/mL indicates anaerobic metabolism and dysoxia.",
+    "hyperlinkedReference": {
+      "label": "Vallet B. Venoarterial PCO2 difference. Crit Care 2013;17:222",
+      "url": "https://ccforum.biomedcentral.com/articles/10.1186/cc12586"
+    },
+    "tags": [
+      "PCO2 Gap",
+      "ScvO2",
+      "Dysoxia"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0310",
+    "chapterId": 3,
+    "topicId": "cc-cardiac-output-monitoring",
+    "question": "In the Venous Excess Ultrasound (VExUS) grading system for systemic venous congestion, which venous vessels are evaluated using pulsed-wave Doppler?",
+    "options": [
+      "Internal jugular, femoral, and subclavian veins",
+      "Inferior vena cava (IVC) size, Hepatic vein, Portal vein, and Intra-renal venous parenchymal Doppler",
+      "Popliteal, common femoral, and iliac veins",
+      "Pulmonary veins and coronary sinus"
+    ],
+    "answer": "B",
+    "explanation": "VExUS grades venous congestion by combining IVC diameter (>= 2 cm) with Doppler of: Hepatic vein (systolic reversal), Portal vein (pulsatility fraction >= 50%), and Intra-renal veins (discontinuous biphasic or monophasic flow).",
+    "whyWrong": {
+      "A": "Jugular veins are not part of the validated VExUS grading protocol.",
+      "C": "Femoral veins are evaluated for DVT, not congestion staging.",
+      "D": "Pulmonary veins evaluate left atrial pressure, not systemic venous congestion."
+    },
+    "difficulty": "difficult",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: VExUS Grade 3 venous congestion strongly predicts acute kidney injury (AKI) progression due to elevated renal venous backpressure ('renal tamponade').",
+    "hyperlinkedReference": {
+      "label": "Beaubien-Souligny W. VExUS score. Ultrasound J 2020;12:19",
+      "url": "https://theultrasoundjournal.springeropen.com/articles/10.1186/s13089-020-00163-w"
+    },
+    "tags": [
+      "VExUS",
+      "Venous Congestion",
+      "POCUS"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0311",
+    "chapterId": 4,
+    "topicId": "cc-shock-pathophysiology-and-classification",
+    "question": "According to the SCAI (Society for Cardiovascular Angiography and Interventions) shock staging system, which clinical stage corresponds to 'Deteriorating / Doom' shock that is refractory to initial vasoactive therapies?",
+    "options": [
+      "Stage A (At Risk)",
+      "Stage B (Beginning)",
+      "Stage C (Classic)",
+      "Stage D (Deteriorating / Doom)"
+    ],
+    "answer": "D",
+    "explanation": "The SCAI shock classification: Stage A = At risk, Stage B = Beginning (pre-shock/hypotension without hypoperfusion), Stage C = Classic (hypoperfusion requiring one intervention), Stage D = Deteriorating (failure to respond to initial therapy, escalating vasopressors or mechanical circulatory support), Stage E = Extremis (cardiac arrest with ongoing CPR or ECMO).",
+    "whyWrong": {
+      "A": "Stage A is patients at risk without hemodynamic compromise.",
+      "B": "Stage B is compensated hypotension or tachycardia without hypoperfusion.",
+      "C": "Stage C is classic shock responsive to single vasoactive/fluid intervention."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Hospital mortality increases exponentially across SCAI stages: Stage A (~2%), Stage C (~10-20%), Stage D (~40%), and Stage E (~60-70%).",
+    "hyperlinkedReference": {
+      "label": "Baran DA, et al. SCAI clinical expert consensus on classification of cardiogenic shock. Catheter Cardiovasc Interv 2019;94:29-37",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/ccd.28329"
+    },
+    "tags": [
+      "SCAI Shock",
+      "Cardiogenic Shock",
+      "Staging"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0312",
+    "chapterId": 4,
+    "topicId": "cc-cardiogenic-shock-i",
+    "question": "A 62-year-old male with acute anterior STEMI is in cardiogenic shock. Hemodynamic profile shows: Cardiac Index 1.6 L/min/m2, Pulmonary Capillary Wedge Pressure (PCWP) 24 mmHg, SVR 1800 dynes.sec.cm-5, MAP 56 mmHg. Which hemodynamic subset (Forrester classification) does this represent?",
+    "options": [
+      "Subset I: Warm and Dry (Normal)",
+      "Subset II: Warm and Wet (Pulmonary Congestion)",
+      "Subset III: Cold and Dry (Hypovolemic Shock)",
+      "Subset IV: Cold and Wet (Cardiogenic Shock)"
+    ],
+    "answer": "D",
+    "explanation": "Forrester Subset IV is defined by Cardiac Index < 2.2 L/min/m2 ('Cold' / hypoperfused) and PCWP > 18 mmHg ('Wet' / congested). This classic cardiogenic shock profile carries the highest in-hospital mortality (~50%).",
+    "whyWrong": {
+      "A": "Subset I has CI > 2.2 and PCWP <= 18.",
+      "B": "Subset II has CI > 2.2 and PCWP > 18 (isolated pulmonary congestion).",
+      "C": "Subset III has CI < 2.2 and PCWP <= 18 (hypovolemic shock)."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In Forrester Subset IV cardiogenic shock, inotropes (dobutamine) and afterload reducers or mechanical unloading (Impella) are indicated once MAP >= 65 mmHg is stabilized with noradrenaline.",
+    "hyperlinkedReference": {
+      "label": "Forrester JS, et al. Hemodynamic therapy of myocardial infarction. N Engl J Med 1976;295:1356-1362",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJM197612092952406"
+    },
+    "tags": [
+      "Forrester Classification",
+      "Cardiogenic Shock",
+      "PCWP",
+      "Cardiac Index"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0313",
+    "chapterId": 4,
+    "topicId": "cc-cardiogenic-shock-ii",
+    "question": "In the landmark VASST trial, in which prespecified subgroup of septic shock patients did the early addition of low-dose Vasopressin (0.01-0.03 units/min) to Noradrenaline demonstrate a statistically significant mortality reduction?",
+    "options": [
+      "Patients requiring high-dose noradrenaline (> 15 mcg/min)",
+      "Patients requiring low-dose noradrenaline (< 15 mcg/min / less severe shock)",
+      "Patients with acute mesenteric ischemia",
+      "Patients with left ventricular ejection fraction < 20%"
+    ],
+    "answer": "B",
+    "explanation": "In the VASST trial, the overall 28-day mortality was not different between vasopressin and noradrenaline. However, in the prespecified stratum of less severe septic shock (noradrenaline < 15 mcg/min at randomization), 28-day mortality was significantly lower with vasopressin (26.5% vs 35.7%, p=0.05).",
+    "whyWrong": {
+      "A": "In high-dose noradrenaline (>= 15 mcg/min), 28-day mortality was identical (44.0% vs 42.5%).",
+      "C": "Vasopressin can worsen mesenteric ischemia via V1a splanchnic vasoconstriction.",
+      "D": "Severe LV dysfunction was not a stratum benefiting in VASST."
+    },
+    "difficulty": "difficult",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: SSC 2026 guidelines recommend adding Vasopressin (fixed at 0.03 units/min) when noradrenaline reaches 0.25 mcg/kg/min rather than escalating noradrenaline alone.",
+    "hyperlinkedReference": {
+      "label": "Russell JA, et al. VASST trial. N Engl J Med 2008;358:877-887",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa067373"
+    },
+    "tags": [
+      "VASST Trial",
+      "Vasopressin",
+      "Septic Shock"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0314",
+    "chapterId": 4,
+    "topicId": "cc-anaphylactic-shock",
+    "question": "What is the recommended first-line dose, route, and anatomical site of adrenaline (epinephrine) administration for acute severe anaphylactic shock in an adult?",
+    "options": [
+      "Adrenaline 1 mg IV bolus over 10 seconds",
+      "Adrenaline 0.5 mg (0.5 mL of 1:1,000) Intramuscular (IM) into the anterolateral mid-thigh",
+      "Adrenaline 0.5 mg Subcutaneous (SC) into the deltoid muscle",
+      "Adrenaline 5 mg via nebulization"
+    ],
+    "answer": "B",
+    "explanation": "First-line treatment for anaphylaxis is immediate Adrenaline 0.5 mg (0.5 mL of 1:1,000 / 1 mg/mL) given Intramuscularly into the vastus lateralis (anterolateral mid-thigh). Absorption from the thigh is significantly faster and achieves higher peak plasma concentrations than deltoid or subcutaneous routes.",
+    "whyWrong": {
+      "A": "IV bolus 1 mg is for cardiac arrest; in anaphylaxis with pulse, IV bolus can cause fatal tachyarrhythmias or myocardial infarction.",
+      "C": "Subcutaneous absorption is delayed due to local vasoconstriction.",
+      "D": "Nebulized adrenaline treats upper airway stridor but does not reverse systemic distributive shock."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: If IM adrenaline fails after two doses (spaced 5 minutes apart), initiate an IV adrenaline infusion titrated at 0.05-0.2 mcg/kg/min.",
+    "hyperlinkedReference": {
+      "label": "Simons FE, et al. World Allergy Organization Guidelines for Anaphylaxis. World Allergy Organ J 2020;13:100102",
+      "url": "https://www.waojournal.org/article/S1939-4551(20)30102-3/fulltext"
+    },
+    "tags": [
+      "Anaphylaxis",
+      "Adrenaline",
+      "Vasoactive"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0315",
+    "chapterId": 4,
+    "topicId": "cc-cardiogenic-shock-ii",
+    "question": "Which of the following inodilator agents acts primarily as a calcium-sensitizer by binding to cardiac troponin C without increasing intracellular cyclic AMP (cAMP) or myocardial oxygen consumption?",
+    "options": [
+      "Milrinone",
+      "Levosimendan",
+      "Dobutamine",
+      "Isoprenaline"
+    ],
+    "answer": "B",
+    "explanation": "Levosimendan is a calcium-sensitizing inodilator. It stabilizes the calcium-bound conformation of cardiac troponin C during systole, increasing inotropy without increasing intracellular calcium, cAMP, or myocardial oxygen consumption. It also opens ATP-sensitive potassium channels in vascular smooth muscle, causing peripheral and coronary vasodilation.",
+    "whyWrong": {
+      "A": "Milrinone is a phosphodiesterase-3 (PDE3) inhibitor that increases cAMP.",
+      "C": "Dobutamine is a beta-1 adrenergic agonist that increases cAMP.",
+      "D": "Isoprenaline is a non-selective beta-1/beta-2 agonist."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Levosimendan has an active metabolite (OR-1896) with an elimination half-life of 70-80 hours, providing hemodynamic effects lasting up to 7-9 days after a 24-hour infusion.",
+    "hyperlinkedReference": {
+      "label": "Packer M, et al. REVIVE-II trial. JACC Heart Fail 2013;1:103-111",
+      "url": "https://www.jacc.org/doi/10.1016/j.jchf.2012.10.004"
+    },
+    "tags": [
+      "Levosimendan",
+      "Inodilators",
+      "Calcium Sensitizer"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0316",
+    "chapterId": 4,
+    "topicId": "cc-cardiogenic-shock-ii",
+    "question": "Which mechanical circulatory support device actively unloads the left ventricle by continuously aspirating blood from the LV cavity across the aortic valve and expelling it into the ascending aorta, reducing LV end-diastolic pressure and myocardial oxygen demand?",
+    "options": [
+      "Intra-Aortic Balloon Pump (IABP)",
+      "Impella microaxial transvalvular pump",
+      "Veno-Arterial (VA) ECMO alone",
+      "TandemHeart left atrial-femoral arterial bypass"
+    ],
+    "answer": "B",
+    "explanation": "The Impella is a catheter-based microaxial flow pump placed across the aortic valve into the LV cavity. It continuously draws blood directly from the left ventricle and expels it into the ascending aorta (LV unloading), reducing LV end-diastolic volume and wall stress while increasing systemic perfusion.",
+    "whyWrong": {
+      "A": "IABP provides counterpulsation in the descending aorta, not direct transvalvular aspiration.",
+      "C": "VA-ECMO increases LV afterload due to retrograde arterial flow, often causing LV distension.",
+      "D": "TandemHeart draws blood from the left atrium via transeptal puncture, not direct LV aspiration."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: Aortic stenosis and mechanical aortic valve prostheses are absolute contraindications to Impella insertion.",
+    "hyperlinkedReference": {
+      "label": "Ouweneel DM, et al. Impella in cardiogenic shock. J Am Coll Cardiol 2017;69:278-287",
+      "url": "https://www.jacc.org/doi/10.1016/j.jacc.2016.10.079"
+    },
+    "tags": [
+      "Impella",
+      "LV Unloading",
+      "Mechanical Circulatory Support"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0317",
+    "chapterId": 5,
+    "topicId": "cc-sepsis-2026-clinical-guidelines",
+    "question": "According to the 2026 Surviving Sepsis Campaign guidelines, which intravenous fluid is strongly recommended as first-line for the initial resuscitation of sepsis-induced hypoperfusion or septic shock?",
+    "options": [
+      "0.9% Normal Saline (Sodium Chloride)",
+      "Balanced crystalloids (e.g., Plasmalyte, Ringer's Lactate)",
+      "4% or 20% Albumin as the sole initial bolus",
+      "Hydroxyethyl starch (HES 130/0.4)"
+    ],
+    "answer": "B",
+    "explanation": "The SSC guidelines recommend balanced crystalloids (Plasma-Lyte or Ringer's Lactate) over 0.9% Normal Saline for initial resuscitation. Large-volume 0.9% saline causes hyperchloremic metabolic acidosis, renal vasoconstriction, and increases acute kidney injury risk (SMART and SALT-ED trials).",
+    "whyWrong": {
+      "A": "0.9% saline causes hyperchloremic acidosis and higher rates of renal replacement therapy.",
+      "C": "Albumin is suggested only when patients have received large volumes of crystalloids, not as sole initial fluid.",
+      "D": "Hydroxyethyl starches are strongly contraindicated in sepsis due to increased mortality and nephrotoxicity."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: SSC suggests giving at least 30 mL/kg of balanced crystalloids within the first 3 hours of sepsis-induced hypoperfusion.",
+    "hyperlinkedReference": {
+      "label": "Semler MW, et al. SMART trial. N Engl J Med 2018;378:829-839",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1711584"
+    },
+    "tags": [
+      "SSC Guidelines",
+      "Balanced Crystalloids",
+      "SMART Trial"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0318",
+    "chapterId": 5,
+    "topicId": "cc-sepsis-2026-clinical-guidelines",
+    "question": "In a patient with septic shock whose mean arterial pressure remains < 65 mmHg despite adequate fluid resuscitation and high-dose Noradrenaline (>= 0.25 mcg/kg/min), what is the recommended second-line vasopressor to add?",
+    "options": [
+      "Dopamine infusion",
+      "Vasopressin (fixed dose 0.03 units/min)",
+      "Phenylephrine boluses",
+      "Ephedrine infusion"
+    ],
+    "answer": "B",
+    "explanation": "SSC guidelines recommend adding Vasopressin (fixed at 0.03 units/min) as the second-line vasopressor when noradrenaline is escalating (>= 0.25 mcg/kg/min) to raise MAP and reduce noradrenaline dosage requirements.",
+    "whyWrong": {
+      "A": "Dopamine is associated with significantly more tachyarrhythmias and higher mortality.",
+      "C": "Phenylephrine causes pure vasoconstriction and decreases stroke volume.",
+      "D": "Ephedrine is an indirect sympathomimetic prone to tachyphylaxis."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Vasopressin should NOT be titrated; it is administered at a fixed infusion of 0.03 units/min (up to 0.04 in select protocols) to avoid ischemic skin and mesenteric necrosis.",
+    "hyperlinkedReference": {
+      "label": "Evans L, et al. Surviving Sepsis Campaign Guidelines 2021/2026. Crit Care Med 2021;49:e1063",
+      "url": "https://journals.lww.com/ccmjournal/fulltext/2021/11000/surviving_sepsis_campaign__international.21.aspx"
+    },
+    "tags": [
+      "Vasopressin",
+      "Septic Shock",
+      "Vasoactive"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0319",
+    "chapterId": 5,
+    "topicId": "cc-sepsis-2026-clinical-guidelines",
+    "question": "According to the APROCCHSS and ADRENAL trials and SSC recommendations, which corticosteroid regimen is indicated for refractory septic shock requiring ongoing vasopressor support?",
+    "options": [
+      "High-dose Dexamethasone 20 mg IV daily for 3 days",
+      "Intravenous Hydrocortisone 200 mg/day (administered as 50 mg IV every 6 hours or continuous infusion)",
+      "Methylprednisolone 1 g IV pulse daily for 3 days",
+      "Oral Prednisolone 10 mg daily"
+    ],
+    "answer": "B",
+    "explanation": "SSC guidelines recommend IV Hydrocortisone at a dose of 200 mg/day (given as 50 mg every 6 hours or continuous infusion) for septic shock patients with an ongoing requirement for vasopressor therapy (noradrenaline >= 0.25 mcg/kg/min for at least 4 hours). High-dose steroids (> 400 mg/day) are harmful.",
+    "whyWrong": {
+      "A": "High-dose dexamethasone increases secondary infections and mortality.",
+      "C": "Methylprednisolone 1 g pulse is contraindicated in sepsis.",
+      "D": "Oral prednisolone is unreliable due to altered GI absorption in shock."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Hydrocortisone significantly accelerates shock reversal and time to vasopressor weaning in septic shock (APROCCHSS & ADRENAL trials).",
+    "hyperlinkedReference": {
+      "label": "Annane D, et al. APROCCHSS trial. N Engl J Med 2018;378:809-818",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1705716"
+    },
+    "tags": [
+      "Hydrocortisone",
+      "APROCCHSS",
+      "Septic Shock"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0320",
+    "chapterId": 5,
+    "topicId": "cc-organ-dysfunction-in-sepsis",
+    "question": "What is the primary hemodynamic characteristic of Sepsis-Induced Cardiomyopathy (SIC)?",
+    "options": [
+      "Isolated severe left ventricular diastolic stiffness with hyperdynamic ejection fraction",
+      "Reversible acute global biventricular systolic dysfunction (reduced ejection fraction) with acute ventricular dilatation, typically recovering within 7-10 days",
+      "Permanent transmural myocardial infarction with fixed Q waves",
+      "Fixed asymmetrical septal hypertrophy causing dynamic LV outflow obstruction"
+    ],
+    "answer": "B",
+    "explanation": "Sepsis-induced cardiomyopathy is characterized by: (1) Reversible global LV and/or RV systolic depression (decreased LVEF), (2) Acute ventricular dilatation with blunted response to volume/catecholamines, and (3) Complete recovery to baseline within 7-10 days in survivors.",
+    "whyWrong": {
+      "A": "Ventricular dilatation is classic, not isolated concentric stiffness.",
+      "C": "SIC is a functional, reversible cytokine-mediated myocardial depression without coronary occlusion.",
+      "D": "Dynamic LVOTO is seen in Takotsubo or hypovolemic hypertrophic cardiomyopathy, not classic SIC."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: Interestingly, Parker et al. noted that septic patients who dilate their ventricles and lower their LVEF paradoxically have higher survival rates than those with fixed non-compliant ventricles.",
+    "hyperlinkedReference": {
+      "label": "Parker MM, et al. Reversible cardiac dysfunction in septic shock. Ann Intern Med 1984;100:483-490",
+      "url": "https://www.acpjournals.org/doi/10.7326/0003-4819-100-4-483"
+    },
+    "tags": [
+      "Sepsis Cardiomyopathy",
+      "SIC",
+      "Echocardiography"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0321",
+    "chapterId": 5,
+    "topicId": "cc-sepsis-2026-clinical-guidelines",
+    "question": "Within what timeframe does the 2026 Surviving Sepsis Campaign bundle mandate the administration of broad-spectrum intravenous antimicrobials when sepsis is suspected and shock is present?",
+    "options": [
+      "Within 1 hour of recognition",
+      "Within 3 hours of recognition",
+      "Within 6 hours of recognition",
+      "Only after blood culture results identify the pathogen (48 hours)"
+    ],
+    "answer": "A",
+    "explanation": "For patients with septic shock or a high likelihood of sepsis, broad-spectrum IV antimicrobials must be administered immediately, ideally within 1 hour of recognition. For patients with possible sepsis without shock, a rapid assessment within 3 hours is recommended before antibiotics.",
+    "whyWrong": {
+      "B": "3 hours applies only when shock is absent and infection is uncertain.",
+      "C": "6 hours is obsolete and increases mortality significantly.",
+      "D": "Waiting for microbiological identification in septic shock leads to unacceptably high mortality."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: For every hour of delay in antimicrobial administration in septic shock, mortality increases by approximately 7.6% (Kumar et al.).",
+    "hyperlinkedReference": {
+      "label": "Kumar A, et al. Duration of hypotension and antimicrobial timing. Crit Care Med 2006;34:1589",
+      "url": "https://journals.lww.com/ccmjournal/Abstract/2006/06000/Duration_of_hypotension_before_initiation_of.23.aspx"
+    },
+    "tags": [
+      "Antimicrobial Timing",
+      "Sepsis Bundle",
+      "Kumar Study"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0322",
+    "chapterId": 5,
+    "topicId": "cc-extracorporeal-therapies-in-sepsis",
+    "question": "Which extracorporeal blood purification device utilizes an immobilized polymyxin B fiber cartridge specifically designed to bind circulating endotoxin (lipopolysaccharide) in Gram-negative septic shock?",
+    "options": [
+      "CytoSorb cartridge",
+      "Toraymyxin (Polymyxin B hemoperfusion - PMX-HP)",
+      "Oxiris hemodialysis filter",
+      "Theralite high cut-off membrane"
+    ],
+    "answer": "B",
+    "explanation": "Toraymyxin is a polystyrene-derivative fiber cartridge with covalently bonded polymyxin B that specifically neutralizes circulating Gram-negative bacterial endotoxin (LPS) without systemic polymyxin toxicity.",
+    "whyWrong": {
+      "A": "CytoSorb is a biocompatible polymer bead column designed to adsorb mid-molecular cytokines (IL-6, TNF-alpha), not endotoxin specifically.",
+      "C": "Oxiris adsorbs both endotoxin and cytokines via polyacrylonitrile mesh and PEI coating.",
+      "D": "Theralite is a high cut-off membrane for free light chain removal in myeloma."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: The EUPHRATES trial evaluated Toraymyxin; a post-hoc analysis suggested benefit in patients with endotoxin activity assay (EAA) levels between 0.60 and 0.89.",
+    "hyperlinkedReference": {
+      "label": "Dellinger RP, et al. EUPHRATES trial. JAMA 2018;320:1455-1463",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/2706173"
+    },
+    "tags": [
+      "Endotoxin",
+      "Polymyxin B Hemoperfusion",
+      "Blood Purification"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0323",
+    "chapterId": 6,
+    "topicId": "cc-respiratory-management-in-specific-clinical-scenarios-i",
+    "question": "A patient breathing 50% oxygen (FiO2 0.50) at sea level (Patm 760 mmHg, water vapor pressure 47 mmHg) has PaCO2 40 mmHg and PaO2 120 mmHg. Assuming a respiratory quotient (R) of 0.8, what is the calculated Alveolar-arterial oxygen gradient (A-a DO2)?",
+    "options": [
+      "86 mmHg",
+      "186.5 mmHg",
+      "220 mmHg",
+      "310 mmHg"
+    ],
+    "answer": "B",
+    "explanation": "Alveolar Gas Equation: PAO2 = FiO2 x (Patm - 47) - (PaCO2 / R) = 0.50 x (760 - 47) - (40 / 0.8) = 0.50 x 713 - 50 = 356.5 - 50 = 306.5 mmHg. A-a gradient = PAO2 - PaO2 = 306.5 - 120 = 186.5 mmHg.",
+    "whyWrong": {
+      "A": "Calculates using FiO2 0.35 or miscalculates PAO2.",
+      "C": "Arithmetic error subtracting PaO2.",
+      "D": "Takes PAO2 without subtracting PaO2."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Normal A-a gradient on room air is estimated as: (Age / 4) + 4 mmHg. A markedly elevated A-a gradient on supplemental O2 confirms intrapulmonary pathology (shunt, V/Q mismatch, diffusion defect).",
+    "hyperlinkedReference": {
+      "label": "West JB. Respiratory Physiology (11th Ed, 2021)",
+      "url": "https://www.wolterskluwer.com/en/solutions/ovid/wests-respiratory-physiology-11e"
+    },
+    "tags": [
+      "Alveolar Gas Equation",
+      "A-a Gradient",
+      "Respiratory Mechanics"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0324",
+    "chapterId": 6,
+    "topicId": "cc-respiratory-management-in-specific-clinical-scenarios-i",
+    "question": "In a mechanically ventilated patient, volume-controlled mode delivers Tidal Volume 500 mL. Peak Inspiratory Pressure (Ppeak) is 35 cmH2O, Plateau Pressure (Pplat) is 25 cmH2O, and total PEEP is 10 cmH2O. What is the calculated Static Respiratory System Compliance (Cstat)?",
+    "options": [
+      "15 mL/cmH2O",
+      "20 mL/cmH2O",
+      "33.3 mL/cmH2O",
+      "50 mL/cmH2O"
+    ],
+    "answer": "C",
+    "explanation": "Static Compliance (Cstat) = Tidal Volume / (Pplat - PEEP) = 500 mL / (25 - 10 cmH2O) = 500 / 15 = 33.3 mL/cmH2O.",
+    "whyWrong": {
+      "A": "Denominator value (Pplat - PEEP = 15 cmH2O), not the compliance.",
+      "B": "Dynamic compliance: 500 / (35 - 10) = 500 / 25 = 20 mL/cmH2O.",
+      "D": "Uses 500 / 10."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Normal Cstat in ventilated patients is 50-80 mL/cmH2O. In severe ARDS, Cstat frequently drops below 30 mL/cmH2O.",
+    "hyperlinkedReference": {
+      "label": "Tobin MJ. Principles and Practice of Mechanical Ventilation (3rd Ed, 2013)",
+      "url": "https://accessmedicine.mhmedical.com/book.aspx?bookid=520"
+    },
+    "tags": [
+      "Static Compliance",
+      "Respiratory Mechanics",
+      "Calculations"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0325",
+    "chapterId": 6,
+    "topicId": "cc-respiratory-management-in-specific-clinical-scenarios-i",
+    "question": "If Peak Inspiratory Pressure (Ppeak) increases sharply from 25 to 42 cmH2O while Plateau Pressure (Pplat) remains stable at 20 cmH2O (with PEEP 5 cmH2O), what is the primary underlying pathological mechanism?",
+    "options": [
+      "Sudden decrease in chest wall compliance (e.g. abdominal compartment syndrome)",
+      "Severe acute worsening of pulmonary parenchymal compliance (e.g. tension pneumothorax)",
+      "Acute increase in airway resistance (e.g. bronchospasm, mucus plug, or biting the endotracheal tube)",
+      "Overdistension of lung units from excessive PEEP"
+    ],
+    "answer": "C",
+    "explanation": "The difference between Peak and Plateau pressure (Ppeak - Pplat) reflects resistive pressure (Raw x Flow). An isolated increase in Ppeak with unchanged Pplat indicates increased airway resistance (bronchospasm, secretions, kinked tube). In contrast, parenchymal/chest wall compliance drops elevate both Ppeak and Pplat together.",
+    "whyWrong": {
+      "A": "Abdominal compartment syndrome decreases compliance, increasing Pplat.",
+      "B": "Tension pneumothorax decreases compliance, sharply elevating Pplat.",
+      "D": "Excessive PEEP causes alveolar overdistension, elevating Pplat."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Resistive pressure = Ppeak - Pplat. At an inspiratory flow of 60 L/min (1 L/s), Raw (cmH2O/L/s) equals (Ppeak - Pplat) directly.",
+    "hyperlinkedReference": {
+      "label": "Hess DR. Respiratory mechanics in mechanically ventilated patients. Respir Care 2014;59:1773",
+      "url": "https://rc.rcjournal.com/content/59/11/1773"
+    },
+    "tags": [
+      "Ppeak vs Pplat",
+      "Airway Resistance",
+      "Ventilator Graphics"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0326",
+    "chapterId": 6,
+    "topicId": "cc-respiratory-management-in-specific-clinical-scenarios-ii",
+    "question": "What is the defining physiological hallmark of Type 1 (hypoxemic) versus Type 2 (hypercapnic) acute respiratory failure?",
+    "options": [
+      "Type 1 has PaCO2 > 50 mmHg; Type 2 has normal PaCO2",
+      "Type 1 has PaO2 < 60 mmHg with normal or low PaCO2 (lung parenchymal failure); Type 2 has PaCO2 > 50 mmHg with respiratory acidosis (pump/ventilatory failure)",
+      "Type 1 is caused solely by central respiratory drive depression; Type 2 is caused by pulmonary edema",
+      "Type 1 always demonstrates an entirely normal Alveolar-arterial oxygen gradient"
+    ],
+    "answer": "B",
+    "explanation": "Type 1 respiratory failure is hypoxemic (PaO2 < 60 mmHg on room air) with normal or reduced PaCO2 caused by parenchymal V/Q mismatch or shunt. Type 2 is hypercapnic (PaCO2 > 50 mmHg with pH < 7.35) caused by ventilatory pump failure (CNS, neuromuscular, chest wall, severe COPD).",
+    "whyWrong": {
+      "A": "Inverts PaCO2 definitions.",
+      "C": "CNS depression causes Type 2 failure; pulmonary edema causes Type 1.",
+      "D": "Type 1 has an elevated A-a gradient reflecting parenchymal lung pathology."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Pure hypoventilation (e.g. opioid overdose) causes Type 2 failure with a NORMAL A-a gradient on room air.",
+    "hyperlinkedReference": {
+      "label": "Roussos C, Koutsoukou A. Respiratory failure. Eur Respir J 2003;22:3s-14s",
+      "url": "https://erj.ersjournals.com/content/22/suppl_47/3s"
+    },
+    "tags": [
+      "Type 1 vs Type 2",
+      "Respiratory Failure",
+      "Blood Gas"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0327",
+    "chapterId": 6,
+    "topicId": "cc-respiratory-management-in-specific-clinical-scenarios-ii",
+    "question": "In the Equation of Motion for the respiratory system: Pvent + Pmus = (Volume / Compliance) + (Resistance x Flow) + PEEPt. Which component represents the elastic work of breathing?",
+    "options": [
+      "Resistance x Flow",
+      "Volume / Compliance (or Elastance x Volume)",
+      "PEEPt",
+      "Pmus"
+    ],
+    "answer": "B",
+    "explanation": "The Equation of Motion divides pressure into: (1) Elastic pressure required to inflate the lungs and chest wall = Volume / Compliance (or Elastance x Volume), (2) Resistive pressure to overcome gas friction in the airways = Resistance x Flow, and (3) Baseline baseline PEEP.",
+    "whyWrong": {
+      "A": "Resistance x Flow represents resistive (frictional) work.",
+      "C": "PEEPt is total positive end-expiratory pressure.",
+      "D": "Pmus is patient muscular pressure effort."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: When a patient is fully paralyzed, Pmus = 0, so airway pressure generated by the ventilator directly reflects total respiratory mechanics.",
+    "hyperlinkedReference": {
+      "label": "Chatburn RL. Computer control of mechanical ventilation. Respir Care 2004;49:507",
+      "url": "https://rc.rcjournal.com/content/49/5/507"
+    },
+    "tags": [
+      "Equation of Motion",
+      "Respiratory Mechanics",
+      "Elastance"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0328",
+    "chapterId": 7,
+    "topicId": "cc-high-flow-nasal-cannula-hfnc-and-rox-index",
+    "question": "A patient with acute hypoxemic respiratory failure is managed with High-Flow Nasal Cannula (HFNC). At 6 hours, settings are: Flow 50 L/min, FiO2 0.60. The patient's SpO2 is 92% and RR is 28/min. What is the calculated ROX index, and how should it be clinically interpreted?",
+    "options": [
+      "ROX = 2.45; high risk of HFNC failure requiring immediate intubation",
+      "ROX = 5.48; indicates successful response and very low risk of failure",
+      "ROX = 3.65; indeterminate gray zone requiring close reassessment at 12 hours",
+      "ROX = 7.82; patient can be weaned immediately to low-flow nasal cannula"
+    ],
+    "answer": "B",
+    "explanation": "ROX Index = (SpO2 / FiO2) / Respiratory Rate = (92 / 0.60) / 28 = 153.33 / 28 = 5.48. A ROX index >= 4.88 at 2, 6, or 12 hours indicates a low risk of HFNC failure and safe continuation of therapy.",
+    "whyWrong": {
+      "A": "ROX < 2.85 is high risk; this patient is 5.48.",
+      "C": "3.85 to 4.87 is the intermediate risk zone; 5.48 is safely above.",
+      "D": "While stable, immediate weaning to nasal prongs at FiO2 0.60 is premature."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: A ROX index < 3.85 at 12 hours strongly predicts HFNC failure; delaying intubation in this subgroup significantly increases mortality.",
+    "hyperlinkedReference": {
+      "label": "Roca O, et al. Predicting success of high-flow nasal cannula in pneumonia (ROX index). J Crit Care 2016;35:200-205",
+      "url": "https://www.sciencedirect.com/science/article/pii/S088394411630130X"
+    },
+    "tags": [
+      "ROX Index",
+      "HFNC",
+      "Hypoxemic Failure"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0329",
+    "chapterId": 7,
+    "topicId": "cc-niv-failure-predictors-hacor-score",
+    "question": "Which validated clinical scoring system predicts Non-Invasive Ventilation (NIV) failure in patients with acute hypoxemic respiratory failure within the first 1-2 hours of initiation using Heart rate, Acidosis, Consciousness, Oxygenation, and Respiratory rate?",
+    "options": [
+      "HACOR score",
+      "APACHE II score",
+      "LODS score",
+      "NEWS2 score"
+    ],
+    "answer": "A",
+    "explanation": "The HACOR score evaluates Heart rate, Acidosis (pH), Consciousness (GCS), Oxygenation (PaO2/FiO2), and Respiratory rate. A HACOR score > 5 at 1-2 hours of NIV predicts failure with > 80% accuracy.",
+    "whyWrong": {
+      "B": "APACHE II predicts hospital mortality, not specific early NIV failure.",
+      "C": "LODS measures logistic organ dysfunction.",
+      "D": "NEWS2 is a general track-and-trigger score."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In hypoxemic ARF, a HACOR score > 5 after 1 hour of NIV warrants prompt endotracheal intubation to avoid emergency crash intubation.",
+    "hyperlinkedReference": {
+      "label": "Duan J, et al. Assessment of HACOR score. Crit Care Med 2017;45:483-489",
+      "url": "https://journals.lww.com/ccmjournal/Abstract/2017/03000/Assessment_of_Heart_Rate,_Acidosis,.13.aspx"
+    },
+    "tags": [
+      "HACOR Score",
+      "NIV Failure",
+      "Hypoxemic ARF"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0330",
+    "chapterId": 7,
+    "topicId": "cc-high-flow-nasal-cannula-hfnc-and-rox-index",
+    "question": "What is the primary physiological mechanism by which High-Flow Nasal Cannula (HFNC) at 60 L/min reduces work of breathing and improves oxygenation compared to conventional face masks?",
+    "options": [
+      "Generates continuous high PEEP equivalent to 15-20 cmH2O",
+      "Flushes anatomical dead space in the nasopharynx, creates low-level dynamic PEEP (3-5 cmH2O with closed mouth), matches inspiratory peak flow demand, and delivers fully humidified warm gas",
+      "Directly increases hemoglobin affinity for oxygen by alkalizing blood",
+      "Acts as a synchronized pressure support ventilator"
+    ],
+    "answer": "B",
+    "explanation": "HFNC mechanisms: (1) Anatomical dead space CO2 washout (nasopharyngeal reservoir), (2) Delivers modest dynamic PEEP (~0.8-1 cmH2O per 10 L/min flow with closed mouth, typically 3-5 cmH2O at 60 L/min), (3) Meets or exceeds patient's peak inspiratory flow, eliminating room air entrainment, and (4) Delivers 100% relative humidity at 37 deg C, optimizing mucociliary clearance.",
+    "whyWrong": {
+      "A": "HFNC generates only modest PEEP (3-5 cmH2O), not high PEEP.",
+      "C": "HFNC does not alter hemoglobin chemistry or blood pH directly.",
+      "D": "HFNC is a continuous flow device, not a synchronized pressure-triggered ventilator."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: In the FLORALI trial (Frat et al.), HFNC significantly reduced 90-day mortality compared to standard oxygen and NIV in severe hypoxemic respiratory failure (PaO2/FiO2 <= 200).",
+    "hyperlinkedReference": {
+      "label": "Frat JP, et al. FLORALI trial. N Engl J Med 2015;372:2185-2196",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1503326"
+    },
+    "tags": [
+      "HFNC",
+      "FLORALI Trial",
+      "Dead Space Washout"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0331",
+    "chapterId": 7,
+    "topicId": "cc-niv-failure-predictors-hacor-score",
+    "question": "Which of the following clinical conditions has the STRONGEST guideline recommendation (Grade 1A) for first-line Non-Invasive Ventilation (NIV)?",
+    "options": [
+      "Severe acute exacerbation of COPD with hypercapnic respiratory acidosis (pH < 7.35, PaCO2 > 45 mmHg)",
+      "Severe ARDS with PaO2/FiO2 < 100 mmHg",
+      "Coma secondary to acute intracerebral hemorrhage",
+      "Upper airway obstruction from laryngeal tumor"
+    ],
+    "answer": "A",
+    "explanation": "NIV (BiPAP) has the strongest evidence (Grade 1A) in acute hypercapnic respiratory failure secondary to COPD exacerbation (pH < 7.35 and PaCO2 > 45 mmHg). It significantly reduces intubation rates, hospital length of stay, and mortality.",
+    "whyWrong": {
+      "B": "NIV in severe ARDS carries high failure rates (> 50%) and risks delayed intubation.",
+      "C": "Coma / inability to protect airway is an absolute contraindication to NIV.",
+      "D": "Fixed anatomical upper airway obstruction requires immediate invasive intubation or tracheostomy."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Continuous Positive Airway Pressure (CPAP 8-10 cmH2O) or BiPAP are equally effective in reducing intubation in cardiogenic pulmonary edema (3CPO trial).",
+    "hyperlinkedReference": {
+      "label": "Rochwerg B, et al. ERS/ATS guidelines on noninvasive ventilation. Eur Respir J 2017;50:1602426",
+      "url": "https://erj.ersjournals.com/content/50/2/1602426"
+    },
+    "tags": [
+      "NIV Guidelines",
+      "COPD Exacerbation",
+      "BiPAP"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0332",
+    "chapterId": 7,
+    "topicId": "cc-niv-failure-predictors-hacor-score",
+    "question": "What is 'Patient Self-Inflicted Lung Injury' (P-SILI), and in which setting is it most frequently encountered?",
+    "options": [
+      "Barotrauma caused by biting on the endotracheal tube",
+      "Spontaneous vigorous inspiratory efforts generating huge transpulmonary pressure swings, pendelluft gas shifts, and high tidal volumes during non-invasive support or unassisted breathing in acute hypoxemic lung injury",
+      "Aspiration pneumonia occurring during extubation",
+      "Pneumothorax caused by central venous line insertion"
+    ],
+    "answer": "B",
+    "explanation": "P-SILI occurs when patients with injured lungs generate excessive spontaneous inspiratory efforts. The resulting large swings in pleural pressure generate high transpulmonary pressures, pendelluft (gas shifting between lung regions), and increased transvascular fluid filtration, mimicking ventilator-induced lung injury (VILI) without mechanical ventilation.",
+    "whyWrong": {
+      "A": "Biting on tube causes negative pressure pulmonary edema, not P-SILI.",
+      "C": "Aspiration is chemical/bacterial pneumonitis.",
+      "D": "Iatrogenic pneumothorax is a procedural complication."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: In severe hypoxemic ARF on NIV, failure to suppress high spontaneous tidal volumes (> 9-10 mL/kg PBW) reflects uncontrolled P-SILI and mandates sedation with invasive mechanical ventilation.",
+    "hyperlinkedReference": {
+      "label": "Brochard L, et al. Mechanical ventilation to prevent P-SILI. AJRCCM 2017;195:438-442",
+      "url": "https://www.atsjournals.org/doi/10.1164/rccm.201605-0908CP"
+    },
+    "tags": [
+      "P-SILI",
+      "Transpulmonary Pressure",
+      "Pendelluft"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0333",
+    "chapterId": 8,
+    "topicId": "cc-basics-of-mechanical-ventilation",
+    "question": "In the landmark clinical trial by Amato et al. and subsequent confirmatory meta-analyses, which ventilator variable was identified as the single best predictor of survival in ARDS?",
+    "options": [
+      "Peak Inspiratory Pressure (Ppeak)",
+      "Driving Pressure (Delta P = Plateau Pressure - PEEP)",
+      "Set PEEP level alone",
+      "Inspiratory-to-Expiratory (I:E) ratio"
+    ],
+    "answer": "B",
+    "explanation": "Amato et al. (NEJM 2015) demonstrated that Driving Pressure (Delta P = Pplat - PEEP) is the variable most strongly associated with survival in ARDS. Decreases in Delta P strongly predicted survival, and a Driving Pressure threshold > 14-15 cmH2O was associated with increased mortality.",
+    "whyWrong": {
+      "A": "Ppeak includes airway resistance and does not correlate with alveolar strain.",
+      "C": "PEEP alone did not predict survival unless it reduced driving pressure.",
+      "D": "I:E ratio had no independent correlation with survival."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Driving Pressure = Tidal Volume / Static Compliance. Delta P reflects tidal volume normalized to the patient's individual functional lung size ('baby lung'). Target Delta P < 14 cmH2O.",
+    "hyperlinkedReference": {
+      "label": "Amato MB, et al. Driving pressure and survival in ARDS. N Engl J Med 2015;372:747-755",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1410639"
+    },
+    "tags": [
+      "Driving Pressure",
+      "Amato Study",
+      "ARDS Mechanics"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0334",
+    "chapterId": 8,
+    "topicId": "cc-ventilator-graphics-and-basic-modes-of-mechanical-ventilation",
+    "question": "On an expiratory flow-time scalar, the expiratory flow tracing fails to return to the zero baseline before the next mandatory inspiratory breath begins. What does this ventilator waveform graphic indicate?",
+    "options": [
+      "Circuit leak around the endotracheal tube cuff",
+      "Presence of intrinsic PEEP (auto-PEEP) due to incomplete lung emptying",
+      "Normal expiratory valve closure",
+      "Severe active exhalation by the patient"
+    ],
+    "answer": "B",
+    "explanation": "When expiratory flow does not reach the zero baseline before the next inspiration begins, gas remains trapped in the alveoli at end-expiration. This produces dynamic hyperinflation and Intrinsic PEEP (auto-PEEP). It can be quantified by performing an End-Expiratory Hold maneuver.",
+    "whyWrong": {
+      "A": "Circuit leak causes inspired volume to be greater than expired volume on volume-time loop, but not persistent flow.",
+      "C": "Normal expiration reaches zero flow well before the next breath.",
+      "D": "Active exhalation shows a spiked high peak expiratory flow, but still returns to baseline if emptied."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Auto-PEEP increases the work of breathing because the patient must generate a negative inspiratory pressure exceeding auto-PEEP plus trigger sensitivity to trigger a breath.",
+    "hyperlinkedReference": {
+      "label": "Hess DR. Respiratory graphics. Respir Care 2005;50:166",
+      "url": "https://rc.rcjournal.com/content/50/2/166"
+    },
+    "tags": [
+      "Auto-PEEP",
+      "Ventilator Graphics",
+      "Flow-Time Scalar"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0335",
+    "chapterId": 8,
+    "topicId": "cc-patient-ventilator-asynchrony",
+    "question": "What is 'Reverse Triggering' asynchrony, and how is it distinguished from standard patient triggering?",
+    "options": [
+      "The patient exhales while the ventilator is delivering an inspiratory breath",
+      "A mandatory ventilator-delivered breath rhythmically triggers a diaphragmatic muscle contraction via a stretch reflex (entrainment), causing a second stacked breath or delayed contraction",
+      "The ventilator triggers without any patient effort due to cardiac oscillations or water condensation",
+      "The inspiratory valve sticks closed during patient demand"
+    ],
+    "answer": "B",
+    "explanation": "Reverse triggering is a form of patient-ventilator asynchrony where a machine-initiated mandatory breath reflexively triggers a diaphragmatic contraction (respiratory entrainment). It is common in deeply sedated ARDS patients and can cause breath stacking, high tidal volumes, and elevated transpulmonary pressure.",
+    "whyWrong": {
+      "A": "Exhaling against inspiration describes fighting the ventilator / dyssynchronous exhalation.",
+      "C": "Auto-triggering is triggering from cardiac oscillations or circuit condensation.",
+      "D": "Valve failure is a mechanical equipment malfunction."
+    },
+    "difficulty": "difficult",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: Esophageal pressure (Pes) monitoring clearly differentiates reverse triggering: Pes drops AFTER the machine breath starts, whereas in normal triggering Pes drops BEFORE the breath starts.",
+    "hyperlinkedReference": {
+      "label": "Akoumianaki E, et al. Mechanical ventilation-induced reverse triggering. Intensive Care Med 2013;39:1823-1828",
+      "url": "https://link.springer.com/article/10.1007/s00134-013-3064-3"
+    },
+    "tags": [
+      "Reverse Triggering",
+      "Asynchrony",
+      "Esophageal Pressure"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0336",
+    "chapterId": 8,
+    "topicId": "cc-advanced-modes-of-mechanical-ventilation",
+    "question": "In Airway Pressure Release Ventilation (APRV), what is the primary recommended method for setting the release time (T-low)?",
+    "options": [
+      "Fixed duration of 2.0 seconds in all adult patients",
+      "Terminated when peak expiratory flow drops to 75% of Peak Expiratory Flow Rate (PEFR), usually 0.2 to 0.8 seconds",
+      "Extended until expiratory flow reaches zero to guarantee complete lung deflation",
+      "Matched to equal the inspiratory time (T-high)"
+    ],
+    "answer": "B",
+    "explanation": "In APRV, T-low is intentionally brief (typically 0.2-0.8 seconds) and is titrated dynamically so that release flow terminates when expiratory flow reaches 75% of the Peak Expiratory Flow Rate (PEFR). This creates intentional end-expiratory gas trapping, preventing alveolar derecruitment while clearing CO2.",
+    "whyWrong": {
+      "A": "2 seconds is far too long and causes derecruitment of unstable alveoli.",
+      "C": "Allowing flow to reach zero causes total alveolar collapse (atelectrauma).",
+      "D": "APRV relies on an inverted I:E ratio where T-high occupies 85-90% of the cycle."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: T-high in APRV is usually set at 4.0 to 6.0 seconds, maintaining continuous alveolar recruitment while allowing unrestricted spontaneous breathing throughout the cycle.",
+    "hyperlinkedReference": {
+      "label": "Habashi NM. Other approaches to open-lung ventilation: APRV. Crit Care Med 2005;33:S228-S240",
+      "url": "https://journals.lww.com/ccmjournal/Abstract/2005/03001/Other_approaches_to_open_lung_ventilation__Airway.13.aspx"
+    },
+    "tags": [
+      "APRV",
+      "T-low Setting",
+      "Advanced Ventilation"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0337",
+    "chapterId": 8,
+    "topicId": "cc-weaning-from-mechanical-ventilation",
+    "question": "What is the calculation and cutoff value for the Rapid Shallow Breathing Index (RSBI / Tobin Index) predicting successful weaning and extubation during a spontaneous breathing trial?",
+    "options": [
+      "Respiratory Rate / Tidal Volume (in Liters); RSBI < 105 breaths/min/L",
+      "Tidal Volume (in mL) / Respiratory Rate; RSBI > 250 mL/breath",
+      "Minute Ventilation x PaCO2; RSBI < 400",
+      "Plateau Pressure - PEEP; RSBI < 15 cmH2O"
+    ],
+    "answer": "A",
+    "explanation": "The RSBI (Tobin index) = Respiratory Rate (breaths/min) / Tidal Volume (in Liters). An RSBI < 105 breaths/min/L measured during unassisted breathing (T-piece or CPAP 5 cmH2O) predicts successful extubation with high sensitivity (~97%).",
+    "whyWrong": {
+      "B": "Inverts the numerator and denominator.",
+      "C": "Minute ventilation x PaCO2 is not a recognized weaning index.",
+      "D": "Plateau - PEEP is driving pressure, not RSBI."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Yang and Tobin established that an RSBI > 105 has a high negative predictive value (95%), indicating that rapid shallow breathing is highly predictive of weaning failure.",
+    "hyperlinkedReference": {
+      "label": "Yang KL, Tobin MJ. A prospective study of indexes predicting the outcome of trials of weaning from mechanical ventilation. N Engl J Med 1991;324:1445-1450",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJM199105233242101"
+    },
+    "tags": [
+      "RSBI",
+      "Tobin Index",
+      "Weaning"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0338",
+    "chapterId": 8,
+    "topicId": "cc-basics-of-mechanical-ventilation",
+    "question": "What is 'Mechanical Power' of mechanical ventilation, and which of its components contributes most heavily to ventilator-induced lung injury (VILI) in mathematical models?",
+    "options": [
+      "The electrical wattage consumed by the ventilator motor",
+      "The amount of mechanical energy transferred from the ventilator to the respiratory system per unit time (Joules/min); with Respiratory Rate and Driving Pressure exerting dominant non-linear exponential impacts",
+      "The gas temperature delivered through the heated humidifier",
+      "The product of blood pressure and cardiac output"
+    ],
+    "answer": "B",
+    "explanation": "Gattinoni et al. defined Mechanical Power as the energy transferred from the ventilator to the lungs per minute (Joules/min): Power = 0.098 x RR x Vt x [Ppeak - 0.5 x Delta P]. In mathematical models, respiratory rate and driving pressure contribute exponentially to lung strain and VILI. Mechanical power > 17-20 J/min is strongly linked to mortality in ARDS.",
+    "whyWrong": {
+      "A": "Refers to electrical power, not biophysical respiratory work.",
+      "C": "Humidification temperature is a thermodynamic parameter.",
+      "D": "Cardiac power output is a cardiovascular parameter."
+    },
+    "difficulty": "difficult",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: Increasing respiratory rate to compensate for hypercapnia during low-tidal-volume ventilation increases mechanical power linearly and can precipitate VILI despite 'lung-protective' volumes.",
+    "hyperlinkedReference": {
+      "label": "Gattinoni L, et al. Ventilator-related causes of lung injury: the mechanical power. Intensive Care Med 2016;42:1567-1575",
+      "url": "https://link.springer.com/article/10.1007/s00134-016-4505-2"
+    },
+    "tags": [
+      "Mechanical Power",
+      "VILI",
+      "Gattinoni"
+    ],
+    "verificationStatus": "VERIFIED"
   }
 ]

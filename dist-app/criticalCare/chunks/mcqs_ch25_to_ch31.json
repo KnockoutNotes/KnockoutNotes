@@ -1114,5 +1114,2113 @@
     ],
     "id": "mcq-cc-0293",
     "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0444",
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "According to the American Burn Association (ABA) updated resuscitation guidelines, what is the recommended initial fluid resuscitation rate for adult thermal burn injury (>20% TBSA)?",
+    "options": [
+      "2 mL/kg/% TBSA of Lactated Ringer's over 24 hours (half given in first 8 hours from time of burn)",
+      "4 mL/kg/% TBSA of 0.9% Normal Saline over 24 hours",
+      "6 mL/kg/% TBSA of 5% Albumin solution in the first 8 hours",
+      "1 mL/kg/% TBSA of Plasmalyte plus boluses of hypertonic saline"
+    ],
+    "answer": "A",
+    "explanation": "Modern consensus guidelines (ABA and ISBI) favor starting adult thermal burn resuscitation at 2 mL/kg/% TBSA of balanced crystalloid (Lactated Ringer's) over 24 hours (with half administered in the first 8 hours from the time of injury, not time of hospital arrival). This revised initial rate aims to curb 'fluid creep' (excessive resuscitation leading to abdominal compartment syndrome and ARDS), with hourly titration guided by target urine output (0.5 mL/kg/h).",
+    "whyWrong": {
+      "B": "The classic Baxter/Parkland formula of 4 mL/kg/% TBSA often results in fluid overload and hyperchloremic metabolic acidosis if NS is used.",
+      "C": "Colloids are generally avoided in the initial 8-12 hours during peak capillary leak.",
+      "D": "Hypertonic saline is not recommended for routine first-line initial resuscitation."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Target urine output during adult thermal burn resuscitation is 0.5 mL/kg/h (30-50 mL/h). For electrical burns with myoglobinuria, target higher UO: 1.0-1.5 mL/kg/h (75-100 mL/h).",
+    "hyperlinkedReference": {
+      "label": "ISBI Practice Guidelines for Burn Care. Burns 2016;42:953-1021",
+      "url": "https://www.sciencedirect.com/science/article/pii/S030541791630164X"
+    },
+    "tags": [
+      "Burn Resuscitation",
+      "Parkland Formula",
+      "Fluid Creep"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0445",
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "A firefighter rescued from an enclosed structural fire presents with headache, confusion, cherry-red skin, normal pulse oximetry (SpO2 99%), but arterial blood gas shows severe lactic acidosis. Co-oximetry reveals a carboxyhemoglobin (COHb) level of 34%. What is the half-life of COHb breathing 100% normobaric oxygen compared to room air?",
+    "options": [
+      "Approximately 80 minutes on 100% O2 vs 320 minutes on room air",
+      "Approximately 20 minutes on 100% O2 vs 60 minutes on room air",
+      "Approximately 240 minutes on 100% O2 vs 720 minutes on room air",
+      "Approximately 5 minutes on 100% O2 vs 20 minutes on room air"
+    ],
+    "answer": "A",
+    "explanation": "Carbon monoxide has an affinity for hemoglobin 200-250 times greater than oxygen and shifts the oxyhemoglobin dissociation curve to the left (Haldane effect). On room air (21% O2), the elimination half-life of COHb is 240 to 320 minutes (~4-5 hours). Breathing 100% normobaric oxygen reduces the half-life to approximately 60-90 minutes (mean ~80 min). Under Hyperbaric Oxygen (HBO at 2.5-3.0 ATA), the half-life is further reduced to 20-30 minutes.",
+    "whyWrong": {
+      "B": "20 minutes is the half-life during hyperbaric oxygen therapy (HBO at 3 ATA), not normobaric 100% O2.",
+      "C": "Overestimates the half-life on 100% oxygen.",
+      "D": "Grossly underestimates the elimination half-life."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Pulse oximetry cannot distinguish carboxyhemoglobin from oxyhemoglobin, falsely reading near 100%. Co-oximetry is essential for accurate COHb and methemoglobin quantification.",
+    "hyperlinkedReference": {
+      "label": "Rose JJ, et al. Carbon Monoxide Poisoning: Pathogenesis, Management, and Future Directions of Therapy. Am J Respir Crit Care Med 2017;195:596-606",
+      "url": "https://www.atsjournals.org/doi/full/10.1164/rccm.201606-1275CI"
+    },
+    "tags": [
+      "Carbon Monoxide",
+      "Carboxyhemoglobin",
+      "Inhalational Injury"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0446",
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "A patient with smoke inhalation in an enclosed synthetic fabric fire has profound hypotension, altered mental status, and a blood lactate of 14 mmol/L. Cyanide toxicity is suspected. What is the preferred first-line antidote that directly binds cyanide to form cyanocobalamin without inducing methemoglobinemia?",
+    "options": [
+      "Hydroxocobalamin (Vitamin B12a) 5 g IV",
+      "Sodium Nitrite followed by Sodium Thiosulfate",
+      "Amyl Nitrite per inhalation",
+      "Methylene Blue 1-2 mg/kg IV"
+    ],
+    "answer": "A",
+    "explanation": "Hydroxocobalamin (5 g IV infused over 15 minutes) is the preferred antidote for cyanide poisoning in smoke inhalation victims. It binds cyanide directly with high affinity to form non-toxic cyanocobalamin, which is excreted harmlessly in the urine. Unlike nitrites (sodium/amyl nitrite), hydroxocobalamin does NOT induce methemoglobinemia, making it safe in fire victims who often have concurrent carboxyhemoglobinemia.",
+    "whyWrong": {
+      "B": "Sodium nitrite induces methemoglobinemia, which severely compromises oxygen carrying capacity in patients with concomitant CO toxicity.",
+      "C": "Amyl nitrite is inhaled, causes methemoglobinemia and severe hypotension, and is obsolete in smoke inhalation.",
+      "D": "Methylene blue is the treatment for methemoglobinemia, not cyanide poisoning."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Hydroxocobalamin turns urine and skin dark reddish-purple and can transiently elevate blood pressure due to nitric oxide scavenging. It can also interfere with co-oximetry and hemodialysis machine blood leak detectors.",
+    "hyperlinkedReference": {
+      "label": "Hall AH, et al. Hydroxocobalamin for acute cyanide poisoning: an evidence-based review. Crit Rev Toxicol 2007;37:805-820",
+      "url": "https://www.tandfonline.com/doi/abs/10.1080/10408440701662334"
+    },
+    "tags": [
+      "Cyanide Toxicity",
+      "Hydroxocobalamin",
+      "Smoke Inhalation"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0447",
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "Which topical antimicrobial agent used in burn wound care is notorious for causing metabolic acidosis via carbonic anhydrase inhibition and burning pain on application?",
+    "options": [
+      "Mafenide acetate (Sulfamylon)",
+      "Silver sulfadiazine (Silvadene)",
+      "Silver nitrate (0.5%)",
+      "Bacitracin-polymyxin ointment"
+    ],
+    "answer": "A",
+    "explanation": "Mafenide acetate penetrates thick burn eschar and cartilage exceptionally well (valuable in ear and nose burns), but it is a carbonic anhydrase inhibitor. It causes renal bicarbonate wasting resulting in a hyperchloremic non-anion gap metabolic acidosis and compensatory tachypnea. It also causes significant localized pain upon application.",
+    "whyWrong": {
+      "B": "Silver sulfadiazine causes transient, self-limiting leukopenia/neutropenia and poor eschar penetration.",
+      "C": "Silver nitrate causes hyponatremia and hypochloremia due to leeching of electrolytes into the wet dressing, and black staining of tissues.",
+      "D": "Bacitracin does not inhibit carbonic anhydrase or cause systemic acidosis."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Topical burn agent toxicities: Mafenide acetate -> Carbonic anhydrase inhibition + metabolic acidosis; Silver sulfadiazine -> Transient neutropenia; Silver nitrate -> Hyponatremia + methemoglobinemia.",
+    "hyperlinkedReference": {
+      "label": "Rowan MP, et al. Burn wound infections and topical therapies. Crit Care 2015;19:243",
+      "url": "https://ccforum.biomedcentral.com/articles/10.1186/s13054-015-0961-2"
+    },
+    "tags": [
+      "Mafenide Acetate",
+      "Burn Topical Agents",
+      "Carbonic Anhydrase"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0448",
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "A 40-year-old male sustains high-voltage electrical injury (>1000 V) from a live power line. What is the most common delayed catastrophic vascular complication in high-voltage electrical trauma?",
+    "options": [
+      "Delayed progressive arterial thrombosis and secondary ischemic tissue necrosis",
+      "Acute rupture of the thoracic aorta",
+      "Superior mesenteric artery embolism",
+      "Coronary artery dissection"
+    ],
+    "answer": "A",
+    "explanation": "High-voltage electrical injury generates immense heat primarily along low-resistance deep tissue planes (blood vessels, nerves, and muscle), while skin may show minimal surface injury (iceberg phenomenon). Endothelial injury causes delayed progressive media necrosis and microvascular thrombosis, leading to secondary gangrene and necrosis days after initial presentation, frequently necessitating repeated surgical debridements.",
+    "whyWrong": {
+      "B": "Aortic rupture is characteristic of high-energy deceleration blunt trauma, not electrical injury.",
+      "C": "SMA embolism is typically cardioembolic in atrial fibrillation.",
+      "D": "Coronary artery dissection is rarely the primary vascular consequence compared to peripheral arterial thrombosis."
+    },
+    "difficulty": "hard",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: High-voltage electrical injury mandates screening for compartment syndrome, rhabdomyolysis/myoglobinuria, cardiac arrhythmias, and vertebral compression fractures from violent tetanic muscle spasms.",
+    "hyperlinkedReference": {
+      "label": "Zemaitis MR, et al. Electrical Injuries. StatPearls Publishing, 2023",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK448087/"
+    },
+    "tags": [
+      "Electrical Injury",
+      "Microvascular Thrombosis",
+      "High Voltage"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0449",
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "Which clinical sign is the most reliable early predictor of impending upper airway compromise warranting proactive endotracheal intubation in an inhalational burn injury?",
+    "options": [
+      "Stridor and marked hoarseness of voice",
+      "Singed nasal vibrissae alone",
+      "Presence of facial soot without erythema",
+      "Carboxyhemoglobin level of 10%"
+    ],
+    "answer": "A",
+    "explanation": "Stridor, hoarseness, dynamic change in voice quality, and dyspnea indicate severe progressive supraglottic laryngeal edema with critical narrowing of the glottic aperture. This is a definitive indication for immediate awake or fiberoptic endotracheal intubation before complete airway occlusion occurs. Singed nasal hairs or soot alone indicate exposure but do not correlate reliably with impending airway obstruction.",
+    "whyWrong": {
+      "B": "Singed nasal hairs are common in flash burns without true thermal or chemical airway injury.",
+      "C": "Facial soot has low specificity for upper airway obstruction.",
+      "D": "COHb of 10% reflects systemic CO absorption, not anatomical upper airway edema."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In burn inhalational injury, endotracheal intubation should be performed early with an uncut, appropriately sized tube (>= 7.5-8.0 mm ID) to facilitate subsequent therapeutic bronchoscopy and pulmonary toilet.",
+    "hyperlinkedReference": {
+      "label": "Walker PF, et al. Diagnosis and management of inhalation injury. Burns 2015;41:1387-1396",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0305417915001558"
+    },
+    "tags": [
+      "Inhalation Injury",
+      "Stridor",
+      "Airway Intubation"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0450",
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "A 28-year-old worker sustains hydrofluoric acid (HF) burns to both hands and forearms. Within hours, he complains of excruciating deep agonizing pain disproportionate to skin appearance, and the monitor demonstrates prolonged QTc with ventricular arrhythmias. What is the biochemical mechanism of toxicity and specific therapy?",
+    "options": [
+      "Fluoride ions bind calcium and magnesium forming insoluble precipitates; treat with Calcium Gluconate (topical, subcutaneous, or intra-arterial)",
+      "Acid liquefactive necrosis causing severe hypercalcemia; treat with Calcitonin",
+      "Fluoride inhibits cytochrome oxidase; treat with Sodium Thiosulfate",
+      "Fluoride induces acute severe methemoglobinemia; treat with Methylene Blue"
+    ],
+    "answer": "A",
+    "explanation": "Hydrofluoric acid (HF) penetrates deeply through intact skin and dissociates into fluoride ions. Free fluoride rapidly chelates divalent cations, causing profound systemic hypocalcemia and hypomagnesemia, and binds cellular potassium channels causing hyperkalemia. This causes intractable cardiac arrhythmias (ventricular fibrillation, asystole). Specific treatment is calcium replenishment: topical 2.5% calcium gluconate gel, intradermal/subcutaneous infiltration, or regional intra-arterial calcium gluconate infusion.",
+    "whyWrong": {
+      "B": "HF causes severe hypocalcemia, not hypercalcemia.",
+      "C": "Cyanide inhibits cytochrome oxidase, not fluoride.",
+      "D": "HF does not primarily cause methemoglobinemia."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: In HF exposure, burns covering > 1% TBSA with >= 50% HF or > 5% TBSA with any concentration can cause lethal systemic hypocalcemia. Serial ECG monitoring and aggressive IV calcium/magnesium replacement are vital.",
+    "hyperlinkedReference": {
+      "label": "McKee D, et al. Hydrofluoric acid burns: A review. J Burn Care Res 2014;35:e307-e314",
+      "url": "https://academic.oup.com/jbcr/article/35/5/e307/4566374"
+    },
+    "tags": [
+      "Hydrofluoric Acid",
+      "Hypocalcemia",
+      "Calcium Gluconate"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0451",
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "On post-burn day 5, a patient with 45% TBSA burn develops hypothermia (35.8 deg C), tachypnea, severe thrombocytopenia (platelets dropping from 180,000 to 45,000/mcL), feeding intolerance, and dark focal discoloration of previously healthy granulation tissue. What is the most likely diagnosis?",
+    "options": [
+      "Invasive Burn Wound Sepsis",
+      "Heparin-Induced Thrombocytopenia (HIT)",
+      "Systemic Capillary Leak Syndrome",
+      "Normal hypermetabolic post-burn phase"
+    ],
+    "answer": "A",
+    "explanation": "Burn wound sepsis presents uniquely because the hypermetabolic baseline obscures classic SIRS criteria. The American Burn Association criteria for burn sepsis include: temperature < 36.5 or > 39 deg C, progressive tachypnea/tachycardia, thrombocytopenia, hyperglycemia/feeding intolerance, and local signs such as rapid conversion of partial-thickness to full-thickness injury, ecthyma gangrenosum, or black/violaceous discoloration of viable granulation tissue. Pseudomonas aeruginosa and fungal organisms are common culprits.",
+    "whyWrong": {
+      "B": "HIT causes isolated thrombocytopenia and thrombosis, not focal wound necrosis or hypothermic sepsis.",
+      "C": "Capillary leak syndrome occurs in the first 24-48 hours, not day 5.",
+      "D": "Normal hypermetabolism causes fever and tachycardia, but not hypothermia, severe thrombocytopenia, or local wound breakdown."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Quantitative burn wound biopsy showing > 10^5 organisms per gram of viable unburned subeschar tissue with histological evidence of microbial invasion distinguishes true invasive burn sepsis from superficial colonization.",
+    "hyperlinkedReference": {
+      "label": "Greenhalgh DG, et al. American Burn Association consensus conference to define sepsis and infection in burns. J Burn Care Res 2007;28:776-790",
+      "url": "https://academic.oup.com/jbcr/article/28/6/776/4597926"
+    },
+    "tags": [
+      "Burn Sepsis",
+      "Wound Biopsy",
+      "ABA Criteria"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0452",
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "Why is succinylcholine strictly contraindicated in a burn patient presenting for elective skin grafting on post-burn day 21?",
+    "options": [
+      "Proliferation of extrajunctional immature nicotinic acetylcholine receptors causing lethal hyperkalemic cardiac arrest",
+      "Severe prolongation of neuromuscular blockade due to plasma cholinesterase depletion",
+      "Precipitation of malignant hyperthermia in all burn patients",
+      "Massive release of histamine triggering severe bronchospasm"
+    ],
+    "answer": "A",
+    "explanation": "Following significant thermal trauma (>10% TBSA), denervation or immobility leads to widespread upregulation and proliferation of immature fetal gamma- and alpha7-subunit containing extrajunctional nicotinic acetylcholine receptors (nAChRs) across the entire sarcolemmal membrane. Depolarization by succinylcholine triggers massive, uncoordinated efflux of intracellular potassium, precipitating abrupt hyperkalemic cardiac arrest. This contraindication begins ~24-48 hours post-injury and persists for at least 1-2 years.",
+    "whyWrong": {
+      "B": "Pseudocholinesterase levels may vary, but the lethal risk is hyperkalemic cardiac arrest, not simply prolonged block.",
+      "C": "Burns do not intrinsically predispose to malignant hyperthermia.",
+      "D": "Histamine release is minor compared to catastrophic hyperkalemia."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Succinylcholine is safe ONLY in the first 24 hours post-burn. From 24-48 hours onward until complete healing/rehabilitation (>1 year), succinylcholine is strictly contraindicated.",
+    "hyperlinkedReference": {
+      "label": "Martyn JA, Richtsfeld M. Succinylcholine-induced hyperkalemia in acquired pathologic states. Anesthesiology 2006;104:158-169",
+      "url": "https://pubs.asahq.org/anesthesiology/article/104/1/158/9140"
+    },
+    "tags": [
+      "Succinylcholine",
+      "Hyperkalemia",
+      "Extrajunctional Receptors"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0453",
+    "chapterId": 25,
+    "topicId": "cc-management-of-burn-patient-in-icu",
+    "question": "What is the primary hemodynamic mechanism explaining the hyperdynamic shock state in the late 'flow phase' (after 48 hours) of severe burn injury?",
+    "options": [
+      "Profound catecholamine- and corticosteroid-driven hypermetabolism with doubled cardiac output and resting energy expenditure",
+      "Severe systemic vasoplegia secondary to adrenal insufficiency",
+      "Progressive myocardial contractile failure due to circulating TNF-alpha",
+      "Persistent capillary leak with sustained hypovolemia"
+    ],
+    "answer": "A",
+    "explanation": "Severe thermal injury displays a biphasic hemodynamic response: the initial 'ebb phase' (0-48 h, characterized by hypovolemia, depressed cardiac output, and increased SVR) is followed by the hypermetabolic 'flow phase' (commencing around 48-72 h). In the flow phase, sustained elevations of catecholamines, cortisol, and glucagon elevate the basal metabolic rate up to 100-200% above normal, producing high cardiac output, tachycardia, elevated body temperature set-point, and severe skeletal muscle catabolism.",
+    "whyWrong": {
+      "B": "The flow phase is characterized by intense sympathetic activation, not adrenal failure.",
+      "C": "Cardiac output is typically elevated (often >10-12 L/min) rather than suppressed in uncomplicated flow phase.",
+      "D": "Capillary integrity is largely restored by 24-48 hours."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Propranolol (non-selective beta-blocker titrated to reduce resting heart rate by 15-20%) and Oxandrolone (anabolic steroid) are validated therapies to attenuate burn hypermetabolism and muscle wasting.",
+    "hyperlinkedReference": {
+      "label": "Jeschke MG, et al. Burn injury. Nat Rev Dis Primers 2020;6:11",
+      "url": "https://www.nature.com/articles/s41572-020-0145-5"
+    },
+    "tags": [
+      "Burn Flow Phase",
+      "Hypermetabolism",
+      "Propranolol"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0454",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "A 32-week primigravida presents with severe preeclampsia, BP 170/110 mmHg, and persistent hyperreflexia. A continuous infusion of Magnesium Sulfate is running. During rounds, the nurse notes absent patellar deep tendon reflexes and a respiratory rate of 8 breaths/min. What is the immediate antidote and dosage?",
+    "options": [
+      "Calcium Gluconate 10% solution, 10 mL (1 g) IV over 5-10 minutes",
+      "Sodium Polystyrene Sulfonate 30 g orally",
+      "Furosemide 80 mg IV bolus",
+      "Neostigmine 2.5 mg with Glycopyrrolate IV"
+    ],
+    "answer": "A",
+    "explanation": "Magnesium toxicity manifests hierarchically: loss of deep tendon reflexes occurs at 7-10 mEq/L (3.5-5.0 mmol/L), respiratory depression at 10-12 mEq/L, and asystolic cardiac arrest at >15 mEq/L. The immediate antidote is Calcium Gluconate (10 mL of 10% solution = 1 g) administered IV slowly over 5-10 minutes, which directly antagonizes magnesium at motor endplate calcium channels.",
+    "whyWrong": {
+      "B": "Kayexalate binds potassium, not magnesium.",
+      "C": "Furosemide promotes renal magnesium excretion but does not immediately reverse neuromuscular blockade or respiratory arrest.",
+      "D": "Neostigmine inhibits acetylcholinesterase but is ineffective against magnesium-induced presynaptic acetylcholine release blockade."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Magnesium is cleared 100% renally. If urine output falls below 30 mL/h or creatinine rises, magnesium infusion must be paused or closely monitored with serial serum levels (therapeutic range: 4.8 - 8.4 mg/dL / 2.0 - 3.5 mmol/L).",
+    "hyperlinkedReference": {
+      "label": "ACOG Practice Bulletin No. 222: Gestational Hypertension and Preeclampsia. Obstet Gynecol 2020;135:e237-e260",
+      "url": "https://journals.lww.com/greenjournal/fulltext/2020/06000/gestational_hypertension_and_preeclampsia__acog.46.aspx"
+    },
+    "tags": [
+      "Magnesium Toxicity",
+      "Calcium Gluconate",
+      "Preeclampsia"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0455",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "Which of the following laboratory profiles fulfills the strict Tennessee criteria for Complete HELLP Syndrome?",
+    "options": [
+      "Hemolysis (schistocytes on smear, LDH >= 600 IU/L), AST >= 70 IU/L, and Platelets < 100,000/mcL",
+      "LDH >= 300 IU/L, AST >= 40 IU/L, and Platelets < 150,000/mcL",
+      "Bilirubin > 3 mg/dL, ALT > 200 IU/L, and Fibrinogen < 100 mg/dL",
+      "Haptoglobin normal, AST >= 100 IU/L, and Platelets < 50,000/mcL"
+    ],
+    "answer": "A",
+    "explanation": "The Sibai/Tennessee criteria for Complete HELLP syndrome require: (1) Hemolysis (microangiopathic hemolytic anemia with abnormal peripheral smear, total bilirubin >= 1.2 mg/dL, or LDH >= 600 IU/L), (2) Elevated liver enzymes (AST >= 70 IU/L or twice upper limit of normal), and (3) Low platelets (thrombocytopenia < 100,000/mcL). Class 1 Mississippi criteria defines platelet count < 50,000/mcL.",
+    "whyWrong": {
+      "B": "These thresholds are too low to meet the strict Tennessee diagnostic cutoff.",
+      "C": "Fibrinogen consumption is typical of overt DIC rather than isolated HELLP.",
+      "D": "In hemolysis, haptoglobin is profoundly decreased or undetectable, not normal."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: The definitive treatment for HELLP syndrome is delivery of the fetus. Subcapsular hepatic hematoma should be suspected if sudden severe right upper quadrant/epigastric pain radiates to the shoulder with hemorrhagic shock.",
+    "hyperlinkedReference": {
+      "label": "Sibai BM. Diagnosis, controversies, and management of the HELLP syndrome. Obstet Gynecol 2004;103:981-991",
+      "url": "https://journals.lww.com/greenjournal/fulltext/2004/05000/diagnosis,_controversies,_and_management_of_the.24.aspx"
+    },
+    "tags": [
+      "HELLP Syndrome",
+      "Tennessee Criteria",
+      "LDH"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0456",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "A 36-year-old multipara in active labor experiences sudden dyspnea, cyanosis, seizure, and cardiovascular collapse followed by refractory consumptive coagulopathy with bleeding from venipuncture sites. What is the classic pathophysiologic triad and first-line medical regimen for Amniotic Fluid Embolism (AFE)?",
+    "options": [
+      "Cardiopulmonary collapse, DIC, and altered mental status; treat with the 'A-OK' regimen (Atropine, Ondansetron, Ketorolac)",
+      "Bacterial endotoxemia, septic shock, and leukopenia; treat with Piperacillin-tazobactam",
+      "Massive mechanical obstruction of pulmonary arteries; treat with catheter embolectomy",
+      "Coronary vasospasm, ST elevation, and flash pulmonary edema; treat with Nitroglycerin"
+    ],
+    "answer": "A",
+    "explanation": "Amniotic Fluid Embolism (AFE), or anaphylactoid syndrome of pregnancy, is an immune-mediated hypersensitivity reaction to fetal antigens entering the maternal circulation, characterized by a triad of: (1) acute cardiopulmonary collapse, (2) catastrophic consumptive DIC, and (3) encephalopathy/seizures. The modern resuscitation bundle is the 'A-OK' protocol: Atropine (0.8-1 mg to block vagally mediated bradycardia/vasovagal pulmonary reflex), Ondansetron (8 mg to block 5-HT3 receptors inhibiting pulmonary vasoconstriction), and Ketorolac (30 mg to block thromboxane production).",
+    "whyWrong": {
+      "B": "AFE is non-infectious; antibiotics do not reverse anaphylactoid collapse.",
+      "C": "AFE is primarily an immune/biochemical catastrophe rather than pure mechanical macroscopic thromboembolism.",
+      "D": "Nitroglycerin causes fatal venodilation in acute right heart failure."
+    },
+    "difficulty": "hard",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: In AFE, acute right ventricular failure occurs first due to pulmonary vasospasm, followed by catastrophic left ventricular failure and consumptive coagulopathy. Echocardiography shows acute cor pulmonale.",
+    "hyperlinkedReference": {
+      "label": "Clark SL. Amniotic fluid embolism. Obstet Gynecol 2014;123:337-348",
+      "url": "https://journals.lww.com/greenjournal/fulltext/2014/02000/amniotic_fluid_embolism.24.aspx"
+    },
+    "tags": [
+      "AFE",
+      "A-OK Regimen",
+      "Amniotic Fluid Embolism"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0457",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-general-considerations",
+    "question": "A pregnant woman at 30 weeks gestation experiences in-hospital cardiac arrest. CPR is initiated immediately. To relieve aortocaval compression, manual left uterine displacement (LUD) is applied. If Return of Spontaneous Circulation (ROSC) is not achieved, at what time threshold should Resuscitative Hysterotomy (perimortem cesarean delivery) be initiated?",
+    "options": [
+      "Initiated at 4 minutes, with delivery of fetus accomplished by 5 minutes from arrest",
+      "Initiated at 10 minutes to allow standard ACLS drugs to circulate",
+      "Only after 15 minutes of uninterrupted chest compressions",
+      "Only if viable fetal heart tones are documented by bedside Doppler"
+    ],
+    "answer": "A",
+    "explanation": "AHA and Obstetric Cardiac Arrest guidelines mandate the '4-minute rule': if maternal ROSC is not achieved within 4 minutes of cardiac arrest in a gravid patient with uterine size at or above the umbilicus (>= 20-24 weeks gestation), resuscitative hysterotomy must be initiated immediately, aiming for delivery by the 5th minute. Emptying the uterus relieves severe aortocaval compression, restoring maternal venous return and increasing maternal cardiac output from chest compressions by 25-60%, which is essential for maternal survival.",
+    "whyWrong": {
+      "B": "Waiting 10 minutes results in irreversible maternal anoxic brain damage.",
+      "C": "15 minutes delay is associated with zero maternal survival and fetal demise.",
+      "D": "Resuscitative hysterotomy is performed primarily for maternal resuscitation; fetal heart monitoring should NOT delay the procedure."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Resuscitative hysterotomy should be performed at the bedside in the ICU/ER without transport to the operating room. No surgical draping or sterile pack prep should delay abdominal entry.",
+    "hyperlinkedReference": {
+      "label": "Jeejeebhoy FM, et al. Cardiac Arrest in Pregnancy: A Scientific Statement From the American Heart Association. Circulation 2015;132:1747-1773",
+      "url": "https://www.ahajournals.org/doi/10.1161/CIR.0000000000000300"
+    },
+    "tags": [
+      "Perimortem C-section",
+      "Resuscitative Hysterotomy",
+      "Maternal Cardiac Arrest"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0458",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "Which uterotonic agent is strictly contraindicated in patients with severe asthma due to potent bronchial smooth muscle constriction?",
+    "options": [
+      "Carboprost tromethamine (15-methyl PGF2alpha)",
+      "Oxytocin",
+      "Methylergonovine maleate",
+      "Misoprostol (PGE1)"
+    ],
+    "answer": "A",
+    "explanation": "Carboprost (15-methyl prostaglandin F2-alpha) is a potent bronchoconstrictor and pulmonary vasoconstrictor. It is strictly contraindicated in patients with active asthma or significant reactive airway disease. In contrast, Methylergonovine causes peripheral arterial vasoconstriction and is contraindicated in hypertension/preeclampsia, but not asthma.",
+    "whyWrong": {
+      "B": "Oxytocin does not cause bronchoconstriction (it can cause transient hypotension and water intoxication with prolonged high-dose infusions).",
+      "C": "Methylergonovine causes systemic vasoconstriction; contraindicated in hypertension, not asthma.",
+      "D": "Misoprostol (PGE1) causes mild bronchodilation and is safe in asthmatic patients."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Uterotonic contraindications: Carboprost (PGF2a) -> Contraindicated in ASTHMA. Methylergonovine (Methergine) -> Contraindicated in HYPERTENSION/PREECLAMPSIA.",
+    "hyperlinkedReference": {
+      "label": "ACOG Practice Bulletin No. 183: Postpartum Hemorrhage. Obstet Gynecol 2017;130:e168-e186",
+      "url": "https://journals.lww.com/greenjournal/fulltext/2017/10000/practice_bulletin_no__183__postpartum_hemorrhage.50.aspx"
+    },
+    "tags": [
+      "Postpartum Hemorrhage",
+      "Carboprost",
+      "Uterotonics"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0459",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-general-considerations",
+    "question": "What is the physiological arterial blood gas (ABG) reference range in a healthy pregnant woman in the third trimester?",
+    "options": [
+      "pH 7.40-7.45, PaCO2 28-32 mmHg, PaO2 100-105 mmHg, HCO3 18-22 mEq/L",
+      "pH 7.35-7.40, PaCO2 40-45 mmHg, PaO2 80-90 mmHg, HCO3 24-26 mEq/L",
+      "pH 7.48-7.52, PaCO2 20-24 mmHg, PaO2 110-120 mmHg, HCO3 14-16 mEq/L",
+      "pH 7.30-7.34, PaCO2 48-52 mmHg, PaO2 75-85 mmHg, HCO3 28-30 mEq/L"
+    ],
+    "answer": "A",
+    "explanation": "High circulating progesterone stimulates the maternal respiratory center in the medulla, increasing tidal volume by ~40-50% and minute ventilation. This creates a physiological compensated respiratory alkalosis: PaCO2 drops to 28-32 mmHg, with compensatory renal excretion of bicarbonate (serum HCO3 declines to 18-22 mEq/L), keeping maternal arterial pH at 7.40-7.45. A 'normal' adult non-pregnant PaCO2 of 40 mmHg in pregnancy indicates severe hypercapnia and impending respiratory muscle fatigue.",
+    "whyWrong": {
+      "B": "This represents the non-pregnant adult reference range. In pregnancy, a PaCO2 of 40-45 mmHg indicates severe hypoventilation.",
+      "C": "Represents an uncompensated acute severe alkalemia.",
+      "D": "Represents respiratory acidosis, pathological in pregnancy."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In mechanical ventilation of a pregnant patient, target PaCO2 must be set to 28-32 mmHg (not 40 mmHg) to maintain the transplacental CO2 gradient driving fetal CO2 elimination.",
+    "hyperlinkedReference": {
+      "label": "Lapinsky SE. Management of acute respiratory failure in pregnancy. Semin Respir Crit Care Med 2017;38:201-207",
+      "url": "https://www.thieme-connect.com/products/ejournals/abstract/10.1055/s-0037-1600909"
+    },
+    "tags": [
+      "Pregnancy ABG",
+      "Respiratory Alkalosis",
+      "Physiological Changes"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0460",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "A 34-week pregnant female with twin gestation presents with persistent vomiting, lethargy, marked hypoglycemia, hyperuricemia, jaundice, and microvesicular hepatic steatosis on biopsy. What is the most definitive emergency treatment for Acute Fatty Liver of Pregnancy (AFLP)?",
+    "options": [
+      "Prompt stabilization and delivery of the fetuses regardless of gestational age",
+      "High-dose intravenous N-acetylcysteine without delivery",
+      "Therapeutic plasma exchange followed by expectative management until 37 weeks",
+      "High-dose methylprednisolone pulse therapy"
+    ],
+    "answer": "A",
+    "explanation": "Acute Fatty Liver of Pregnancy (AFLP) is caused by a defect in fetal mitochondrial fatty acid beta-oxidation (commonly long-chain 3-hydroxyacyl-CoA dehydrogenase [LCHAD] mutation). Toxic intermediate free fatty acids accumulate and overwhelm the maternal liver. The definitive management that halts progressive fulminant hepatic failure, coagulopathy, and mortality is immediate delivery following maternal stabilization, accompanied by aggressive glucose infusion.",
+    "whyWrong": {
+      "B": "NAC may be used adjunctively for liver support, but continuing the pregnancy is fatal.",
+      "C": "Expectant management is contraindicated once AFLP is diagnosed.",
+      "D": "Steroids do not reverse the metabolic fatty acid defect."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: AFLP is diagnosed using the Swansea Criteria (>= 6 criteria). Hypoglycemia is a hallmark distinguishing AFLP from severe preeclampsia/HELLP.",
+    "hyperlinkedReference": {
+      "label": "Knight M, et al. A prospective national study of acute fatty liver of pregnancy in the UK. Gut 2008;57:951-956",
+      "url": "https://gut.bmj.com/content/57/7/951"
+    },
+    "tags": [
+      "AFLP",
+      "Swansea Criteria",
+      "Hypoglycemia"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0461",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "In a post-cesarean patient who has lost 2500 mL of blood from uterine atony, massive transfusion protocol (MTP) is activated. In postpartum hemorrhage (PPH), what is the target fibrinogen level recommended by international obstetric critical care guidelines before surgical hemostasis?",
+    "options": [
+      "Maintain plasma fibrinogen > 200 mg/dL (2.0 g/L)",
+      "Maintain plasma fibrinogen > 100 mg/dL (1.0 g/L)",
+      "Maintain plasma fibrinogen > 50 mg/dL (0.5 g/L)",
+      "Fibrinogen level is irrelevant if platelet count is > 100,000/mcL"
+    ],
+    "answer": "A",
+    "explanation": "Normal third-trimester pregnancy is a hypercoagulable state with baseline fibrinogen levels elevated to 400-600 mg/dL (4.0-6.0 g/L). In postpartum hemorrhage, a fibrinogen level dropping below 200 mg/dL (2.0 g/L) has a positive predictive value of 100% for the progression to severe, life-threatening PPH. Obstetric guidelines mandate maintaining fibrinogen > 200 mg/dL using cryoprecipitate or fibrinogen concentrate.",
+    "whyWrong": {
+      "B": "100 mg/dL is the standard trauma target, which is dangerously inadequate in obstetrics.",
+      "C": "50 mg/dL represents catastrophic hypofibrinogenemia with diffuse microvascular bleeding.",
+      "D": "Fibrinogen is the earliest and most critical factor depleted in severe PPH."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: WOMAN Trial: Tranexamic Acid (1 g IV over 10 min, repeated once after 30 min if bleeding persists) reduces death due to bleeding in PPH if given within 3 hours of delivery.",
+    "hyperlinkedReference": {
+      "label": "WOMAN Trial Collaborators. Effect of early tranexamic acid on maternal mortality in women with post-partum haemorrhage. Lancet 2017;389:2105-2116",
+      "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(17)30638-4/fulltext"
+    },
+    "tags": [
+      "PPH",
+      "Fibrinogen Target",
+      "WOMAN Trial"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0462",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-pregnancy-specific",
+    "question": "A 26-year-old postpartum patient develops severe eclampsia with refractory seizures that fail to terminate despite two 2-gram boluses of Magnesium Sulfate. What is the recommended second-line anticonvulsant therapy?",
+    "options": [
+      "Intravenous Lorazepam (2-4 mg) or Midazolam (5-10 mg), followed by Levetiracetam or Phenytoin",
+      "Repeated high-dose Magnesium boluses of 10 grams IV",
+      "Immediate Phenobarbital infusion 20 mg/kg",
+      "Propofol infusion at 150 mcg/kg/min with muscle relaxation only"
+    ],
+    "answer": "A",
+    "explanation": "If eclamptic seizures persist or recur despite full-dose Magnesium Sulfate therapy (6 g loading + maintenance + 2 g repeat bolus), the patient has status epilepticus. Second-line treatment consists of intravenous short-acting benzodiazepines (Lorazepam 2-4 mg IV or Midazolam 5-10 mg IV), followed by non-sedating antiepileptics such as IV Levetiracetam (40-60 mg/kg) or Phenytoin/Fosphenytoin (20 mg PE/kg).",
+    "whyWrong": {
+      "B": "Additional 10 g magnesium boluses will induce fatal neuromuscular paralysis and cardiac arrest.",
+      "C": "Phenobarbital has a slow onset and causes prolonged respiratory depression.",
+      "D": "Muscle relaxation alone paralyzes the motor manifestations without treating electrographic seizure activity."
+    },
+    "difficulty": "hard",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Magnesium sulfate is superior to both Phenytoin and Diazepam for PREVENTING recurrent eclamptic seizures (Eclampsia Trial Collaborative Group). Benzodiazepines are reserved for refractory seizures.",
+    "hyperlinkedReference": {
+      "label": "The Eclampsia Trial Collaborative Group. Which anticonvulsant for women with eclampsia? Evidence from the Collaborative Eclampsia Trial. Lancet 1995;345:1455-1463",
+      "url": "https://www.thelancet.com/journals/lancet/article/S0140-6736(95)91034-4/abstract"
+    },
+    "tags": [
+      "Refractory Eclampsia",
+      "Magnesium",
+      "Anticonvulsants"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0463",
+    "chapterId": 26,
+    "topicId": "cc-obstetric-critical-care-general-considerations",
+    "question": "What is the primary hemodynamic goal during labor and delivery in a pregnant patient with severe uncorrected Mitral Stenosis (valve area < 1.0 cm2)?",
+    "options": [
+      "Strict control of heart rate (target 60-70 bpm) to prevent shortening of diastolic filling time and flash pulmonary edema",
+      "Induction of tachycardia to increase forward cardiac output",
+      "Administration of high-volume crystalloid boluses to augment preload",
+      "Permissive systemic hypotension to reduce left ventricular afterload"
+    ],
+    "answer": "A",
+    "explanation": "In mitral stenosis, left ventricular filling occurs strictly during diastole. Any tachycardia (pain, anxiety, fever, labor contractions) markedly shortens diastole, driving left atrial pressure precipitously upward, triggering acute pulmonary edema. The cornerstone of management is strict heart rate control (beta-1 blockers like Esmolol or Metoprolol), slow epidural analgesia to prevent sympathetic tachycardia, and avoidance of fluid overload.",
+    "whyWrong": {
+      "B": "Tachycardia is catastrophic in mitral stenosis because it shortens diastolic filling time.",
+      "C": "Fluid boluses cause acute left atrial volume overload and pulmonary edema.",
+      "D": "Afterload reduction has little role in isolated rheumatic mitral stenosis."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Immediately following delivery, auto-transfusion of 300-500 mL of blood from the contracting uterus into the systemic circulation causes a sudden surge in preload, making the immediate postpartum period high-risk for pulmonary edema.",
+    "hyperlinkedReference": {
+      "label": "Regitz-Zagrosek V, et al. 2018 ESC Guidelines for the management of cardiovascular diseases during pregnancy. Eur Heart J 2018;39:3165-3241",
+      "url": "https://academic.oup.com/eurheartj/article/39/34/3165/5078465"
+    },
+    "tags": [
+      "Mitral Stenosis",
+      "Cardiac Disease in Pregnancy",
+      "Diastolic Filling"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0464",
+    "chapterId": 27,
+    "topicId": "cc-paediatric-shock-sepsis-formulas",
+    "question": "In a 3-year-old child presenting with septic shock refractory to 40 mL/kg of balanced crystalloid resuscitation, clinical examination reveals 'cold shock' (cool extremities, delayed capillary refill > 3 sec, narrow pulse pressure, and weak peripheral pulses). According to ACCM-PALS guidelines, what is the first-line vasoactive infusion?",
+    "options": [
+      "Epinephrine (0.05 - 0.3 mcg/kg/min)",
+      "Norepinephrine (0.05 - 0.2 mcg/kg/min)",
+      "Dopamine (10 mcg/kg/min)",
+      "Phenylephrine (0.5 mcg/kg/min)"
+    ],
+    "answer": "A",
+    "explanation": "According to the ACCM-PALS guidelines and Surviving Sepsis Campaign pediatric guidelines, fluid-refractory pediatric septic shock is classified into cold shock vs warm shock. For pediatric 'cold shock' (poor perfusion, myocardial dysfunction, high SVR), Epinephrine (0.05 - 0.3 mcg/kg/min) is the first-line vasoactive agent because of its potent inotropic (beta-1) and lusitropic effects. For 'warm shock' (vasodilated, bounding pulses), Norepinephrine is preferred.",
+    "whyWrong": {
+      "B": "Norepinephrine is preferred for warm shock (low SVR/hyperdynamic).",
+      "C": "Dopamine is no longer recommended as first-line due to inferior efficacy and increased mortality in randomized pediatric trials.",
+      "D": "Phenylephrine increases SVR without providing inotropy, worsening cardiac output in cold shock."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Unlike adults who predominantly exhibit vasodilatory 'warm shock', pediatric septic shock is predominantly 'cold shock' characterized by low cardiac output and high systemic vascular resistance.",
+    "hyperlinkedReference": {
+      "label": "Weiss SL, et al. Surviving Sepsis Campaign International Guidelines for the Management of Septic Shock and Sepsis-Associated Organ Dysfunction in Children. Pediatr Crit Care Med 2020;21:e52-e106",
+      "url": "https://journals.lww.com/pccmjournal/fulltext/2020/02000/surviving_sepsis_campaign_international.20.aspx"
+    },
+    "tags": [
+      "Pediatric Septic Shock",
+      "Cold Shock",
+      "Epinephrine"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0465",
+    "chapterId": 27,
+    "topicId": "cc-paediatric-shock-sepsis-formulas",
+    "question": "What is the updated formula to calculate the internal diameter (ID in mm) of a cuffed endotracheal tube in a child older than 2 years of age?",
+    "options": [
+      "(Age in years / 4) + 3.5 mm",
+      "(Age in years / 4) + 4.0 mm",
+      "(Age in years / 2) + 4.0 mm",
+      "(Age in years / 3) + 2.5 mm"
+    ],
+    "answer": "A",
+    "explanation": "Modern PALS and pediatric anesthesia guidelines endorse routine use of cuffed endotracheal tubes. The Motoyama/Khine formula for a CUFFED tube is: Tube ID (mm) = (Age in years / 4) + 3.5 mm. For an UNCUFFED tube, the classic Cole formula is: Tube ID (mm) = (Age in years / 4) + 4.0 mm. Depth of insertion (at teeth/lip) is approximately Tube ID x 3, or (Age/2) + 12 cm.",
+    "whyWrong": {
+      "B": "This is the Cole formula for an UNCUFFED endotracheal tube.",
+      "C": "Results in an excessively large tube size causing laryngeal trauma and subglottic stenosis.",
+      "D": "Incorrect mathematical denominator."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Keep cuffed ETT cuff pressure <= 20 cmH2O in pediatric patients to prevent ischemic injury to the cricoid mucosal capillaries.",
+    "hyperlinkedReference": {
+      "label": "Khine HH, et al. Comparison of cuffed and uncuffed endotracheal tubes in young children during general anesthesia. Anesthesiology 1997;86:627-631",
+      "url": "https://pubs.asahq.org/anesthesiology/article/86/3/627/36109"
+    },
+    "tags": [
+      "Pediatric ETT",
+      "Cuffed Tube Formula",
+      "PALS Formulas"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0466",
+    "chapterId": 27,
+    "topicId": "cc-paediatric-status-asthmaticus-dka",
+    "question": "During resuscitation of a 10-year-old child with severe Diabetic Ketoacidosis (pH 7.02, glucose 580 mg/dL), 4 hours into therapy the child complains of severe headache, becomes lethargic, vomits, and develops bradycardia with hypertension. What is the immediate life-saving intervention for acute pediatric DKA-associated cerebral edema?",
+    "options": [
+      "Administer 3% Hypertonic Saline (5 mL/kg over 10-15 min) or Mannitol (0.5 - 1.0 g/kg) immediately without delaying for a CT scan",
+      "Perform emergency non-contrast CT brain followed by neurosurgical burr hole",
+      "Administer an IV bolus of regular insulin (0.1 U/kg) and increase fluid infusion rate",
+      "Hyperventilate mechanically to a PaCO2 < 20 mmHg"
+    ],
+    "answer": "A",
+    "explanation": "Cerebral edema is the leading cause of mortality in pediatric DKA (0.5-1% of episodes). The onset is heralded by headache, lethargy, bradycardia, hypertension (Cushing's triad), and cranial nerve palsies. Osmotherapy with 3% Hypertonic Saline (5 mL/kg over 10-15 min) or Mannitol (0.5 - 1.0 g/kg over 20 min) must be administered IMMEDIATELY at the bedside upon clinical suspicion, prior to neuroimaging. Fluid rate must simultaneously be reduced by 30%.",
+    "whyWrong": {
+      "B": "Transport to CT scanner causes fatal delay in osmotherapy during brainstem herniation.",
+      "C": "Insulin boluses and rapid hypoosmolar fluid shifts exacerbate cerebral edema.",
+      "D": "Aggressive prophylactic hyperventilation causes cerebral vasoconstriction, ischemia, and worse neurological outcomes."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: ISPAD Guidelines 2022: Insulin bolus should NEVER be given at the start of pediatric DKA therapy. Start continuous IV infusion at 0.05-0.1 U/kg/h 1 hour AFTER initiating rehydration fluids.",
+    "hyperlinkedReference": {
+      "label": "Glaser N, et al. ISPAD Clinical Practice Consensus Guidelines 2022: Diabetic ketoacidosis and hyperglycemic hyperosmolar state. Pediatr Diabetes 2022;23:835-856",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/pedi.13406"
+    },
+    "tags": [
+      "Pediatric DKA",
+      "Cerebral Edema",
+      "Hypertonic Saline"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0467",
+    "chapterId": 27,
+    "topicId": "cc-paediatric-status-asthmaticus-dka",
+    "question": "A 2-year-old child presents with a barking seal-like cough, inspiratory stridor at rest, and sternal retractions. AP neck radiograph shows symmetric subglottic narrowing ('steeple sign'). What is the definitive initial medical pharmacotherapy for moderate-to-severe viral croup (laryngotracheobronchitis)?",
+    "options": [
+      "Nebulized Racemic Epinephrine (0.5 mL of 2.25% in 3 mL NS) plus single-dose Dexamethasone (0.6 mg/kg oral/IM/IV)",
+      "Intravenous Ceftriaxone plus Vancomycin",
+      "Inhaled Budesonide alone twice daily for 7 days",
+      "Continuous nebulized Albuterol with normal saline"
+    ],
+    "answer": "A",
+    "explanation": "Viral croup (parainfluenza virus) produces subglottic edema. Moderate-to-severe croup (stridor at rest, retractions) is treated with: (1) Nebulized Racemic Epinephrine (0.5 mL of 2.25% solution or 5 mL of 1:1000 L-epinephrine), which constricts mucosal alpha-1 adrenergic arterioles rapidly shrinking subglottic edema within 10-30 minutes, and (2) Dexamethasone (0.6 mg/kg, max 16 mg), which provides sustained anti-inflammatory reduction in edema.",
+    "whyWrong": {
+      "B": "Antibiotics are indicated for acute bacterial epiglottitis or bacterial tracheitis, not viral croup.",
+      "C": "Inhaled steroids alone have a slower onset than nebulized epinephrine.",
+      "D": "Albuterol acts on beta-2 receptors in lower airways and does not relieve upper subglottic mucosal edema."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Croup patients treated with nebulized epinephrine must be observed for at least 2-3 hours post-treatment because the mucosal vasoconstrictive effect wears off, risking a 'rebound phenomenon'.",
+    "hyperlinkedReference": {
+      "label": "Bjornson C, Russell KF, et al. Nebulized epinephrine for croup in children. Cochrane Database Syst Rev 2013;10:CD006619",
+      "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD006619.pub3/full"
+    },
+    "tags": [
+      "Croup",
+      "Racemic Epinephrine",
+      "Steeple Sign"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0468",
+    "chapterId": 27,
+    "topicId": "cc-paediatric-status-asthmaticus-dka",
+    "question": "A 4-year-old child presents with sudden high fever, toxic appearance, refusal to speak, drooling of saliva, and sits leaning forward in a 'tripod position'. Lateral neck radiograph confirms the 'thumbprint sign'. What is the critical rule of management?",
+    "options": [
+      "Avoid agitating the child, maintain 100% blow-by oxygen, and perform endotracheal intubation only in the operating room with ENT surgical backup ready for emergency tracheostomy",
+      "Immediately examine the posterior pharynx with a wooden tongue blade to visualize the epiglottis",
+      "Place the child supine, perform IV cannulation, and attempt bedside endotracheal intubation in the ER",
+      "Administer oral Amoxicillin-clavulanate and discharge after 4 hours of observation"
+    ],
+    "answer": "A",
+    "explanation": "Acute epiglottitis (Haemophilus influenzae type b, Streptococcus spp.) is a pediatric airway emergency. The enlarged, cherry-red, edematous epiglottis ('thumbprint sign') can cause sudden complete, fatal laryngospasm if the child is agitated. Never attempt invasive oral examination or painful IV lines in the ER. The child must be kept calm in a parent's arms, given blow-by O2, and transferred immediately to the OR for inhalational induction and intubation by the most experienced anesthesiologist with ENT ready for surgical airway.",
+    "whyWrong": {
+      "B": "Examining the throat with a tongue depressor precipitates fatal laryngospasm and total airway obstruction.",
+      "C": "Placing the child supine and painful IV attempts cause severe agitation and airway collapse.",
+      "D": "Acute epiglottitis has high mortality without definitive airway protection."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Thumbprint sign on lateral neck X-ray = Acute Epiglottitis (supraglottic). Steeple sign on AP neck X-ray = Viral Croup (subglottic).",
+    "hyperlinkedReference": {
+      "label": "Sobol SE, Zapata S. Epiglottitis and croup. Otolaryngol Clin North Am 2008;41:551-566",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0030666508000305"
+    },
+    "tags": [
+      "Epiglottitis",
+      "Thumbprint Sign",
+      "Airway Emergency"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0469",
+    "chapterId": 27,
+    "topicId": "cc-paediatric-shock-sepsis-formulas",
+    "question": "What is the lower limit of acceptable normal Systolic Blood Pressure (5th percentile) defining hypotension in a child aged 1 to 10 years according to PALS guidelines?",
+    "options": [
+      "70 mmHg + (2 x Age in years)",
+      "80 mmHg + (2 x Age in years)",
+      "90 mmHg + (2 x Age in years)",
+      "60 mmHg + (1.5 x Age in years)"
+    ],
+    "answer": "A",
+    "explanation": "According to PALS guidelines, hypotension (5th percentile systolic blood pressure) is defined as: Neonates (0-28 days): < 60 mmHg; Infants (1-12 months): < 70 mmHg; Children (1-10 years): < 70 mmHg + (2 x age in years); Children > 10 years: < 90 mmHg.",
+    "whyWrong": {
+      "B": "80 + 2x age is often cited as median normal, but 70 + 2x age is the exact cutoff for hypotension (5th percentile).",
+      "C": "90 + 2x age is an adult/adolescent threshold.",
+      "D": "Incorrect formula."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Children maintain normal systolic blood pressure despite significant intravascular volume loss through intense peripheral vasoconstriction. Hypotension is a late, ominous sign of decompensated shock heralded by imminent cardiopulmonary arrest.",
+    "hyperlinkedReference": {
+      "label": "Topjian AA, et al. Part 4: Pediatric Basic and Advanced Life Support: 2020 AHA Guidelines. Circulation 2020;142:S469-S523",
+      "url": "https://www.ahajournals.org/doi/10.1161/CIR.0000000000000901"
+    },
+    "tags": [
+      "PALS Formulas",
+      "Pediatric Hypotension",
+      "Decompensated Shock"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0470",
+    "chapterId": 27,
+    "topicId": "cc-paediatric-status-asthmaticus-dka",
+    "question": "In a 6-year-old child with status asthmaticus refractory to continuous nebulized albuterol, ipratropium, and IV methylprednisolone, what intravenous adjunct has the strongest evidence for preventing mechanical ventilation and promoting bronchodilation via smooth muscle relaxation?",
+    "options": [
+      "Intravenous Magnesium Sulfate (25 - 50 mg/kg IV over 20-30 minutes, max 2 g)",
+      "Intravenous Aminophylline bolus (10 mg/kg)",
+      "Intravenous Terbutaline continuous infusion without prior fluids",
+      "Inhaled Heliox (80:20) as sole therapy"
+    ],
+    "answer": "A",
+    "explanation": "Intravenous Magnesium Sulfate (25 - 50 mg/kg, max 2 g, infused over 20-30 min) is a well-established, safe, and effective second-line bronchodilator in acute severe pediatric asthma. It inhibits calcium influx into bronchial smooth muscle cells, inhibits acetylcholine release at motor endplates, and stabilizes mast cells, significantly reducing hospital admission and mechanical ventilation rates.",
+    "whyWrong": {
+      "B": "Aminophylline has a narrow therapeutic window, high proarrhythmic and neurotoxic profile, and is reserved for refractory ICU cases.",
+      "C": "Terbutaline requires extensive monitoring due to tachycardia and myocardial ischemia risk.",
+      "D": "Heliox can be an adjunct for laminar gas flow, but cannot serve as sole therapy in severe bronchospasm."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Intravenous magnesium sulfate is safe and effective in status asthmaticus; monitor blood pressure for transient vasodilation/hypotension during rapid infusion.",
+    "hyperlinkedReference": {
+      "label": "Griffiths B, Kew KM. Intravenous magnesium sulfate for treating children with acute severe asthma in the emergency department. Cochrane Database Syst Rev 2016;4:CD011050",
+      "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD011050.pub2/full"
+    },
+    "tags": [
+      "Status Asthmaticus",
+      "Magnesium Sulfate",
+      "Pediatric Asthma"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0471",
+    "chapterId": 27,
+    "topicId": "cc-paediatric-shock-sepsis-formulas",
+    "question": "In pediatric resuscitation, when intravenous (IV) access cannot be rapidly established within 60 to 90 seconds in a critically ill or arrested child, what is the recommended immediate alternative access route?",
+    "options": [
+      "Intraosseous (IO) access, typically in the proximal tibia",
+      "Internal jugular vein cutdown",
+      "Blind femoral vein central catheterization",
+      "Subclavian vein cannulation"
+    ],
+    "answer": "A",
+    "explanation": "PALS guidelines mandate that if peripheral IV access cannot be obtained within 60 to 90 seconds (or after 2-3 attempts) in a critically ill pediatric patient, Intraosseous (IO) cannulation must be established without delay. The proximal tibia (anteromedial surface, 1-2 cm below the tibial tuberosity) provides a non-collapsible venous plexus capable of infusing all resuscitation fluids, blood products, and emergency medications at rates and onset times comparable to central venous access.",
+    "whyWrong": {
+      "B": "Venous cutdowns are time-consuming and obsolete in initial emergency resuscitation.",
+      "C": "Blind central venous cannulation in a crashing infant carries high risks of arterial puncture and retroperitoneal hematoma.",
+      "D": "Subclavian cannulation has a high risk of pneumothorax in agitated infants."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: The marrow cavity never collapses during severe hypovolemic shock. Any medication that can be given IV (including epinephrine, adenosine, blood products, and antibiotics) can be safely given IO.",
+    "hyperlinkedReference": {
+      "label": "Dornhofer P, Kellar JZ. Intraosseous Vascular Access. StatPearls Publishing, 2023",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK554453/"
+    },
+    "tags": [
+      "Intraosseous Access",
+      "PALS Access",
+      "Proximal Tibia"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0472",
+    "chapterId": 27,
+    "topicId": "cc-paediatric-status-asthmaticus-dka",
+    "question": "What is the recommended fluid protocol ('two-bag method') widely adopted in pediatric ICUs for managing Diabetic Ketoacidosis?",
+    "options": [
+      "Running two identical base electrolyte bags concurrently, one with 10% Dextrose and one without Dextrose, adjusting relative rates to smoothly maintain blood glucose between 150-200 mg/dL",
+      "One bag of normal saline and one bag of sodium bicarbonate infused alternately",
+      "One bag of 0.45% saline with potassium and one bag of pure albumin 5%",
+      "One bag of hypertonic saline and one bag of mannitol given at fixed hourly intervals"
+    ],
+    "answer": "A",
+    "explanation": "The 'two-bag system' uses two IV fluid bags containing identical concentrations of sodium, potassium, and chloride, but one bag contains 10% (or 12.5%) Dextrose while the other has 0% Dextrose. By varying the infusion rates of the two bags while keeping total fluid rate constant, clinicians can instantly and precisely adjust dextrose delivery to prevent rapid drops in blood glucose (< 200 mg/dL) while maintaining steady insulin infusion and electrolyte replacement, dramatically minimizing hypoglycemia and cerebral edema risk.",
+    "whyWrong": {
+      "B": "Sodium bicarbonate is contraindicated in routine pediatric DKA resuscitation.",
+      "C": "Albumin is not part of standard DKA rehydration.",
+      "D": "Hypertonic saline and mannitol are rescue osmotherapy agents, not continuous rehydration fluids."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In pediatric DKA, blood glucose falls faster than ketoacidosis resolves. Adding dextrose when glucose reaches 250-300 mg/dL allows continued insulin infusion to close the anion gap without precipitating neuroglycopenic coma.",
+    "hyperlinkedReference": {
+      "label": "Grimberg A, et al. 'Two-bag system' for intravenous fluid management in pediatric diabetic ketoacidosis. Pediatr Emerg Care 2006;22:643-647",
+      "url": "https://journals.lww.com/pec-online/abstract/2006/09000/_two_bag_system__for_intravenous_fluid_management.6.aspx"
+    },
+    "tags": [
+      "Two-Bag Method",
+      "Pediatric DKA",
+      "Dextrose Titration"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0473",
+    "chapterId": 28,
+    "topicId": "cc-pleural-disorders-in-icu",
+    "question": "What are the anatomical boundaries of the 'Triangle of Safety' recommended for safe insertion of a chest tube (intercostal drain) to minimize injury to the heart, great vessels, and abdominal viscera?",
+    "options": [
+      "Anterior border of Latissimus dorsi, lateral border of Pectoralis major, a horizontal line level with the 5th intercostal space (nipple line), and apex below the axilla",
+      "Midclavicular line, anterior axillary line, 2nd intercostal space, and clavicle",
+      "Posterior axillary line, vertebral border, 8th intercostal space, and scapular line",
+      "Parasternal line, 3rd intercostal space, midclavicular line, and 6th rib"
+    ],
+    "answer": "A",
+    "explanation": "The British Thoracic Society (BTS) defines the 'Triangle of Safety' as: (1) Anterior border of latissimus dorsi, (2) Lateral border of pectoralis major, (3) Horizontal line at the level of the 5th intercostal space (horizontal line from the inframammary fold/nipple), and (4) Apex just below the axilla. Inserting a tube within this region (typically the 4th or 5th ICS in the anterior axillary line) avoids injury to major pectoral muscles, long thoracic and thoracodorsal nerves, internal mammary vessels, and subdiaphragmatic organs (liver, spleen).",
+    "whyWrong": {
+      "B": "This describes the classic needle decompression site for tension pneumothorax in 2nd ICS MCL.",
+      "C": "Posterior placement below the 8th ICS risks diaphragmatic perforation and liver/spleen laceration.",
+      "D": "Risks internal mammary artery transection and cardiac laceration."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Chest tubes must always be introduced immediately ABOVE the upper border of the rib to avoid lacerating the intercostal neurovascular bundle (VAN: Vein, Artery, Nerve) running in the subcostal groove of the rib above.",
+    "hyperlinkedReference": {
+      "label": "Havelock T, et al. Pleural procedures and thoracic ultrasound: British Thoracic Society pleural disease guideline 2010. Thorax 2010;65:i61-i76",
+      "url": "https://thorax.bmj.com/content/65/Suppl_2/i61"
+    },
+    "tags": [
+      "Chest Tube",
+      "Triangle of Safety",
+      "Thoracostomy"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0474",
+    "chapterId": 28,
+    "topicId": "cc-pleural-disorders-in-icu",
+    "question": "During real-time ultrasound-guided internal jugular vein (IJV) catheterization, which maneuver and probe orientation provides optimal visualization to prevent unintended through-and-through puncture of the posterior vein wall and carotid artery laceration?",
+    "options": [
+      "Dynamic in-plane (longitudinal) visualization of the needle tip entering the anterior wall, or continuous short-axis tracking keeping the hyper-echoic needle tip visualized at all times",
+      "Static pre-procedure ultrasound marking of skin followed by blind landmark puncture",
+      "Using Doppler sound alone without 2D B-mode grayscale image",
+      "Inserting the needle at a 90-degree perpendicular angle to the skin"
+    ],
+    "answer": "A",
+    "explanation": "Real-time ultrasound guidance significantly reduces arterial puncture, pneumothorax, and hematoma. Dynamic tracking of the needle tip—either via short-axis view with step-wise advancement keeping the hyperechoic tip visible, or in-plane longitudinal axis displaying the entire needle shaft and tip penetrating the anterior wall—prevents posterior wall 'double puncture' and accidental common carotid puncture.",
+    "whyWrong": {
+      "B": "Static ultrasound (marking skin prior to puncture) is proven inferior to real-time dynamic guidance because patient movement and anatomical shifts occur.",
+      "C": "Acoustic Doppler alone does not provide visual depth or spatial relation to the carotid artery.",
+      "D": "Perpendicular needle insertion increases posterior wall perforation risk."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Ultrasound sign of venous puncture: 'Tenting' of the anterior wall of the IJV as the needle pushes against it, followed by sudden release as the needle enters the vascular lumen.",
+    "hyperlinkedReference": {
+      "label": "Lamperti M, et al. International evidence-based recommendations on ultrasound-guided vascular access. Intensive Care Med 2012;38:1105-1117",
+      "url": "https://link.springer.com/article/10.1007/s00134-012-2597-x"
+    },
+    "tags": [
+      "Ultrasound Vascular Access",
+      "IJV Cannulation",
+      "In-Plane Technique"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0475",
+    "chapterId": 28,
+    "topicId": "cc-pleural-disorders-in-icu",
+    "question": "What is the recommended anatomical landmark and tracheal ring interspace for needle insertion during elective Percutaneous Dilatational Tracheostomy (PDT)?",
+    "options": [
+      "Between the 2nd and 3rd (or 1st and 2nd) tracheal rings, strictly in the midline below the cricoid cartilage",
+      "Directly through the cricothyroid membrane",
+      "Between the 4th and 5th tracheal rings near the sternal notch",
+      "Directly through the thyroid cartilage lamina"
+    ],
+    "answer": "A",
+    "explanation": "Elective percutaneous dilatational tracheostomy (PDT, e.g., Ciaglia Blue Rhino technique) is performed strictly in the midline between the 1st and 2nd or between the 2nd and 3rd tracheal rings. Puncture through the cricoid cartilage or 1st ring causes subglottic stenosis; puncture below the 4th ring risks lacerating the thyroid ima artery, brachiocephalic (innominate) artery, or mediastinal vessels causing catastrophic tracheoinnominate fistula.",
+    "whyWrong": {
+      "B": "Puncture through the cricothyroid membrane is an emergency cricothyroidotomy, not an elective tracheostomy; causes subglottic stenosis if left long-term.",
+      "C": "Puncture below the 4th ring risks erosion into the brachiocephalic/innominate artery.",
+      "D": "Puncturing the thyroid cartilage causes permanent laryngeal fracture and vocal cord destruction."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Real-time bronchoscopy guidance during PDT confirms needle entry strictly in the midline, avoids posterior tracheal wall puncture, and ensures the endotracheal tube cuff is retracted above the puncture site.",
+    "hyperlinkedReference": {
+      "label": "Cheung NH, Napolitano LM. Tracheostomy: epidemiology, indications, timing, technique, and complications. Respir Care 2014;59:895-915",
+      "url": "https://rc.rcjournal.com/content/59/6/895"
+    },
+    "tags": [
+      "Tracheostomy",
+      "PDT",
+      "Tracheal Rings"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0476",
+    "chapterId": 28,
+    "topicId": "cc-pleural-disorders-in-icu",
+    "question": "A patient with a tracheostomy in situ for 2 weeks suddenly develops brisk, pulsing, bright red hemorrhage around the stoma and through the tracheostomy tube. A Tracheoinnominate Artery Fistula (TIAF) is suspected. What is the immediate bedside emergency temporizing maneuver?",
+    "options": [
+      "Overinflate the tracheostomy cuff with 10-15 mL of air, or introduce a finger through the stoma to compress the innominate artery anteriorly against the posterior manubrium (Utley maneuver)",
+      "Deflate the tracheostomy cuff immediately and remove the tube",
+      "Administer IV protamine and tranexamic acid boluses",
+      "Perform emergency cricothyroidotomy"
+    ],
+    "answer": "A",
+    "explanation": "Tracheoinnominate artery fistula (TIAF) is a catastrophic complication (0.7% incidence, >80% mortality) typically occurring 1-3 weeks post-tracheostomy due to low placement, excessive cuff pressures, or repetitive friction eroding into the innominate artery. Immediate life-saving temporizing steps: (1) Overinflate the tracheostomy cuff to tamponade the bleed, (2) If bleeding continues, intubate from above, remove tracheostomy tube, and insert a finger into the pretracheal stoma to manually compress the innominate artery anteriorly against the posterior surface of the manubrium sterni (Utley maneuver) while rushing to the OR.",
+    "whyWrong": {
+      "B": "Deflating the cuff or removing the tube without tamponade results in immediate fatal exsanguination and asphyxiation.",
+      "C": "Systemic antifibrinolytics cannot control high-pressure arterial disruption.",
+      "D": "Cricothyroidotomy does not address the bleeding innominate artery."
+    },
+    "difficulty": "hard",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Any 'herald bleed' (minor pulsing bleeding from a tracheostomy stoma occurring > 48 hours to weeks post-procedure) must be assumed to be an impending TIAF until ruled out by rigid bronchoscopy or CT angiography.",
+    "hyperlinkedReference": {
+      "label": "Grant CA, et al. Tracheo-innominate artery fistula: a review of the literature. J Cardiothorac Vasc Anesth 2006;20:599-604",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S1053077005003666"
+    },
+    "tags": [
+      "Tracheoinnominate Fistula",
+      "Utley Maneuver",
+      "Tracheostomy Emergency"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0477",
+    "chapterId": 28,
+    "topicId": "cc-pleural-disorders-in-icu",
+    "question": "Which complication of central venous catheterization is characterized by the sudden onset of dyspnea, hypotension, churning 'mill-wheel' cardiac murmur, and cyanosis during catheter removal?",
+    "options": [
+      "Venous Air Embolism (VAE)",
+      "Tension pneumothorax",
+      "Catheter fracture and embolization",
+      "Acute cardiac tamponade"
+    ],
+    "answer": "A",
+    "explanation": "Venous air embolism (VAE) occurs when atmospheric air enters the central venous system via an unoccluded catheter hub or patent tract during inspiration (when intrathoracic pressure is negative). Entrained air forms a vapor lock in the right ventricle and pulmonary outflow tract, producing cardiovascular collapse, hypoxia, and the classic 'mill-wheel murmur' (bruit de moulin). Immediate treatment is the Durant maneuver: left lateral decubitus and Trendelenburg position (traps air in the right atrium apex, away from the RVOT), 100% O2, and air aspiration via central catheter.",
+    "whyWrong": {
+      "B": "Tension pneumothorax produces tracheal deviation and absent breath sounds, not a churning mill-wheel murmur.",
+      "C": "Catheter fracture embolizes a radiopaque fragment without a churning murmur.",
+      "D": "Tamponade produces muffled heart sounds and Beck's triad, not a mill-wheel murmur."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: To prevent VAE during CVC removal: place patient in Trendelenburg position, ask them to perform a Valsalva maneuver or exhale, remove smoothly, and seal immediately with an occlusive petroleum-gauze dressing for 24-48 hours.",
+    "hyperlinkedReference": {
+      "label": "Gordy S, Rowell S. Vascular air embolism. Int J Crit Illn Inj Sci 2013;3:73-76",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3665124/"
+    },
+    "tags": [
+      "Venous Air Embolism",
+      "Durant Maneuver",
+      "CVC Complications"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0478",
+    "chapterId": 28,
+    "topicId": "cc-pleural-disorders-in-icu",
+    "question": "What is the most common cause of persistent, continuous bubbling in the water-seal chamber of a three-chamber pleural drainage system throughout both inspiration and expiration in a mechanically ventilated patient?",
+    "options": [
+      "Large Bronchopleural Fistula (BPF) or an external leak in the chest tube drainage tubing/connections",
+      "Normal evacuation of a simple pneumothorax",
+      "Rapid re-expansion pulmonary edema",
+      "Excessive suction applied to the suction control chamber"
+    ],
+    "answer": "A",
+    "explanation": "Continuous bubbling in the water seal chamber during both inspiration and expiration signifies either: (1) a massive persistent bronchopleural fistula (air leaking continuously from the tracheobronchial tree/lung parenchyma), or (2) an atmospheric air leak in the external tubing or insertion site. In contrast, bubbling occurring intermittently only during expiration (or positive pressure inspiration) represents typical active evacuation of a simple pneumothorax.",
+    "whyWrong": {
+      "B": "A resolving simple pneumothorax causes intermittent bubbling that decreases over time.",
+      "C": "Re-expansion edema produces copious frothy serous fluid, not continuous air leaks.",
+      "D": "Excess suction causes vigorous bubbling in the suction chamber, not the water-seal chamber."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Cross-clamping test: Momentarily cross-clamp the chest tube close to the chest wall. If bubbling in the water seal stops immediately, the leak is inside the patient's thorax (BPF). If bubbling continues, the leak is in the external tubing/drain system.",
+    "hyperlinkedReference": {
+      "label": "Baumann MH. What to do about the persistent air leak? J Bronchology Interv Pulmonol 2010;17:119-122",
+      "url": "https://journals.lww.com/jbronchology/citation/2010/04000/what_to_do_about_the_persistent_air_leak_.5.aspx"
+    },
+    "tags": [
+      "Chest Drain",
+      "Bronchopleural Fistula",
+      "Water Seal"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0479",
+    "chapterId": 28,
+    "topicId": "cc-pleural-disorders-in-icu",
+    "question": "A diagnostic lumbar puncture (LP) is performed in a suspected meningitis patient in the lateral recumbent position. At what anatomical interspace is an LP safely performed to avoid injury to the conus medullaris?",
+    "options": [
+      "L3-L4 or L4-L5 intervertebral space (below the termination of the adult spinal cord at L1-L2)",
+      "T12-L1 intervertebral space",
+      "L1-L2 intervertebral space",
+      "L5-S1 interspace strictly"
+    ],
+    "answer": "A",
+    "explanation": "In adults, the spinal cord terminates as the conus medullaris at the lower border of L1 (or upper border of L2). An LP needle is safely inserted into the subarachnoid space at the L3-L4 or L4-L5 intervertebral space, which lies below the conus medullaris. The supracristal plane (Tuffier's line), connecting the highest points of the iliac crests, typically intersects the L4 spinous process or L4-L5 interspace.",
+    "whyWrong": {
+      "B": "T12-L1 puncture strikes the conus medullaris, causing permanent paraplegia.",
+      "C": "L1-L2 carries a significant risk of puncturing the terminal tip of the spinal cord.",
+      "D": "L5-S1 is technically difficult due to pelvic anatomy and the sacral promontory."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Opening pressure must always be measured with the patient in the lateral recumbent position with legs gently extended; sitting position invalidates opening pressure readings.",
+    "hyperlinkedReference": {
+      "label": "Straus SE, et al. How do I perform a lumbar puncture and analyze the results to diagnose bacterial meningitis? JAMA 2006;296:2012-2022",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/203809"
+    },
+    "tags": [
+      "Lumbar Puncture",
+      "Conus Medullaris",
+      "Tuffier Line"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0480",
+    "chapterId": 28,
+    "topicId": "cc-pleural-disorders-in-icu",
+    "question": "What is the single most important safety step to prevent accidental intra-arterial injection and subsequent extremity necrosis when placing an indwelling arterial line?",
+    "options": [
+      "Verify radial artery patency and collateral ulnar flow, and use clear labeling with specialized non-luer-lock red tubing indicating 'ARTERIAL LINE - NO MEDICATIONS'",
+      "Flush the arterial catheter with high-dose undiluted potassium chloride",
+      "Inject a test bolus of 5 mg diazepam to verify vasodilatory response",
+      "Connect the arterial catheter directly to a gravity crystalloid infusion set"
+    ],
+    "answer": "A",
+    "explanation": "Accidental intra-arterial injection of medications intended for IV use (e.g., thiopental, promethazine, phenytoin, vasopressors) causes immediate intense vasospasm, thrombosis, and limb gangrene requiring amputation. Arterial lines must be clearly tagged with red color-coded labels, kept on continuous pressurized flush systems, and staff strictly trained never to administer medications through arterial access ports.",
+    "whyWrong": {
+      "B": "Potassium chloride intra-arterially causes excruciating pain and tissue necrosis.",
+      "C": "Diazepam causes severe crystal embolization and arterial occlusion.",
+      "D": "Gravity infusions cannot overcome arterial blood pressure and result in retrograde blood flow."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: If accidental intra-arterial injection occurs: leave the catheter in place, inject intra-arterial vasodilators (Papavarine, Lidocaine, or Phentolamine), heparinize, and initiate stellate ganglion or brachial plexus sympathetic block.",
+    "hyperlinkedReference": {
+      "label": "Sen S, et al. Accidental intra-arterial injection of drugs. J Anaesthesiol Clin Pharmacol 2012;28:547-548",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3511964/"
+    },
+    "tags": [
+      "Arterial Line Safety",
+      "Intra-arterial Injection",
+      "Vascular Complications"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0481",
+    "chapterId": 28,
+    "topicId": "cc-pleural-disorders-in-icu",
+    "question": "In a patient undergoing ultrasound-guided thoracentesis for massive pleural effusion, what is the maximum volume of pleural fluid that should be evacuated in a single session to prevent Re-expansion Pulmonary Edema (REPE)?",
+    "options": [
+      "1000 to 1500 mL (terminate early if patient develops persistent cough or chest tightness)",
+      "3000 to 4000 mL",
+      "Any amount until the pleural space is completely dry",
+      "Strictly limited to 250 mL"
+    ],
+    "answer": "A",
+    "explanation": "Evacuating large volumes of pleural fluid (>1.5 L) rapidly creates high negative intrapleural pressures, increasing microvascular hydrostatic pressure and permeability, precipitating Re-expansion Pulmonary Edema (REPE). Guidelines recommend limiting fluid evacuation to 1.0 - 1.5 L in a single sitting, and stopping immediately if the patient develops persistent coughing, chest pain, or vagal symptoms, or if pleural manometry shows pleural pressure dropping below -20 cmH2O.",
+    "whyWrong": {
+      "B": "Removing 3-4 liters rapidly carries high mortality from catastrophic bilateral re-expansion edema.",
+      "C": "Completely drying the space in one go risks REPE.",
+      "D": "250 mL is inadequate for therapeutic thoracentesis."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Development of persistent coughing during thoracentesis is an early clinical warning of excessive negative intrapleural pressure and impending re-expansion pulmonary edema; stop the procedure immediately.",
+    "hyperlinkedReference": {
+      "label": "Feller-Kopman D. Large-volume thoracentesis. Chest 2007;131:340-343",
+      "url": "https://journal.chestnet.org/article/S0012-3692(15)38392-1/fulltext"
+    },
+    "tags": [
+      "Thoracentesis",
+      "Re-expansion Pulmonary Edema",
+      "Pleural Fluid"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0482",
+    "chapterId": 29,
+    "topicId": "cc-basic-echocardiography",
+    "question": "In the lung ultrasound BLUE (Bedside Lung Ultrasound in Emergency) protocol described by Lichtenstein, what does the 'B-profile' (predominant bilateral anterior lung rockets with lung sliding) indicate with >95% sensitivity and specificity in acute dyspnea?",
+    "options": [
+      "Hemodynamically significant Cardiogenic Pulmonary Edema",
+      "Acute Pulmonary Embolism",
+      "Exacerbation of COPD / Asthma",
+      "Pneumothorax"
+    ],
+    "answer": "A",
+    "explanation": "According to the BLUE protocol: A 'B-profile' is defined as bilateral, anterior lung rockets (>= 3 laser-like, hyperechoic vertical B-lines arising from the pleural line, erasing A-lines, and extending to the bottom of the screen without fading) accompanied by lung sliding. This profile has a 97% sensitivity and 95% specificity for cardiogenic pulmonary edema (alveolar-interstitial syndrome).",
+    "whyWrong": {
+      "B": "Pulmonary embolism typically displays an A-profile with DVT on venous ultrasound.",
+      "C": "COPD/Asthma presents with an A-profile with normal lung sliding and no DVT.",
+      "D": "Pneumothorax presents with absent lung sliding, A-lines, and the presence of a 'lung point'."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: BLUE Protocol summary: A-profile with DVT = Pulmonary Embolism; B-profile = Pulmonary Edema; A/B profile (asymmetric) or C-profile (consolidation) = Pneumonia; Absent lung sliding + Lung point = Pneumothorax.",
+    "hyperlinkedReference": {
+      "label": "Lichtenstein DA, Meziere GA. Relevance of lung ultrasound in the diagnosis of acute respiratory failure: the BLUE protocol. Chest 2008;134:117-125",
+      "url": "https://journal.chestnet.org/article/S0012-3692(08)60312-0/fulltext"
+    },
+    "tags": [
+      "BLUE Protocol",
+      "B-Profile",
+      "Lung Ultrasound"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0483",
+    "chapterId": 29,
+    "topicId": "cc-basic-echocardiography",
+    "question": "Which sonographic finding on M-mode lung ultrasound is pathognomonic for Pneumothorax and represents the physical boundary where the collapsed lung intermittently contacts the parietal pleura?",
+    "options": [
+      "Lung Point (alternating 'Stratosphere/Barcode' sign and 'Seashore' sign)",
+      "Sinusoid sign in M-mode",
+      "Quad sign in 2D B-mode",
+      "Jellyfish sign of atelectasis"
+    ],
+    "answer": "A",
+    "explanation": "The 'Lung Point' is the pathognomonic sign of pneumothorax, possessing 100% specificity. On 2D ultrasound, it is the transition point where absent lung sliding alternates with normal sliding as the lung expands with respiration. On M-mode, it shows alternating 'Stratosphere/Barcode sign' (pneumothorax) and normal granular 'Seashore sign' (expanding lung) at the same probe location.",
+    "whyWrong": {
+      "B": "The sinusoid sign indicates free-flowing pleural effusion.",
+      "C": "The quad sign outlines the boundaries of a pleural effusion.",
+      "D": "The jellyfish sign represents a consolidated, floating lung tip inside a massive pleural effusion."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: The presence of 'lung pulse' (cardiac pulsations transmitted to the pleural line) or 'B-lines' definitively rules OUT a pneumothorax at that specific intercostal space.",
+    "hyperlinkedReference": {
+      "label": "Lichtenstein D, et al. The 'lung point': an ultrasound sign specific to pneumothorax. Intensive Care Med 2000;26:1434-1440",
+      "url": "https://link.springer.com/article/10.1007/s001340000627"
+    },
+    "tags": [
+      "Lung Point",
+      "Pneumothorax",
+      "M-Mode Seashore Sign"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0484",
+    "chapterId": 29,
+    "topicId": "cc-basic-echocardiography",
+    "question": "What is 'McConnell's sign' on focused transthoracic echocardiography (TTE), and what pathology does it strongly suggest in the context of sudden shock and hypoxemia?",
+    "options": [
+      "Severe akinesia/hypokinesia of the right ventricular free wall with preserved or hyperdynamic contraction of the RV apex; highly specific for Acute Pulmonary Embolism",
+      "Systolic anterior motion (SAM) of the anterior mitral valve leaflet in hypertrophic cardiomyopathy",
+      "Late diastolic collapse of the right atrium indicating cardiac tamponade",
+      " paradoxical septal bouncing during early inspiration indicating constrictive pericarditis"
+    ],
+    "answer": "A",
+    "explanation": "McConnell's sign is an echocardiographic finding characterized by severe hypokinesia or akinesia of the mid-free wall of the right ventricle with distinct sparing and hyperkinesia of the RV apex. In acute hemodynamic collapse or PE, this sign has an exceptional specificity (up to 94-96%) for acute pulmonary embolism, helping differentiate acute massive PE from chronic pulmonary hypertension (where the entire RV free wall including apex is uniformly depressed).",
+    "whyWrong": {
+      "B": "Describes SAM in HOCM or dynamic LVOT obstruction.",
+      "C": "Describes tamponade physiology.",
+      "D": "Describes ventricular interdependence in constrictive pericarditis."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Other echo signs of acute PE: RV/LV end-diastolic diameter ratio > 1.0 (apical 4-chamber), systolic flattening of the interventricular septum ('D-shaped LV' on parasternal short-axis), and 60/60 sign.",
+    "hyperlinkedReference": {
+      "label": "McConnell MV, et al. Regional right ventricular dysfunction in acute pulmonary embolism. Am J Cardiol 1996;78:469-473",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0002914996003348"
+    },
+    "tags": [
+      "McConnell Sign",
+      "Pulmonary Embolism",
+      "RV Strain"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0485",
+    "chapterId": 29,
+    "topicId": "cc-basic-echocardiography",
+    "question": "Which echocardiographic sign represents the earliest and most sensitive marker of hemodynamic compromise transitioning into Cardiac Tamponade?",
+    "options": [
+      "Late diastolic inversion/collapse of the Right Atrium lasting > 1/3 of the cardiac cycle",
+      "Early diastolic collapse of the Right Ventricle free wall",
+      "Dilated, non-collapsing Inferior Vena Cava (IVC plethoric > 2.1 cm)",
+      "Left ventricular diastolic collapse"
+    ],
+    "answer": "A",
+    "explanation": "Tamponade physiology develops sequentially as intrapericardial pressure exceeds intracardiac chamber pressures. The Right Atrium (thin-walled, lowest resting pressure: 2-5 mmHg) collapses first during end-diastole/early systole. Right atrial collapse persisting for > 33% of the cardiac cycle is the most SENSITIVE early sign of tamponade. Right ventricular early diastolic collapse is more SPECIFIC, indicating higher pericardial pressures and impending cardiovascular collapse.",
+    "whyWrong": {
+      "B": "RV diastolic collapse is more SPECIFIC for tamponade, but RA collapse occurs EARLIER.",
+      "C": "A plethoric IVC confirms elevated central venous pressure but is non-specific (seen in RV failure, PE, ventilator PEEP).",
+      "D": "LV collapse is very rare, occurring only with localized left-sided pericardial hematomas."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Doppler sign of tamponade: > 25% respiratory variation in mitral inflow E-velocity and > 40% respiratory variation in tricuspid inflow E-velocity (sonographic correlate of pulsus paradoxus).",
+    "hyperlinkedReference": {
+      "label": "Alerhand S, Adrian RJ, et al. The POCUS pulse: Cardiac tamponade. Ann Emerg Med 2022;80:334-342",
+      "url": "https://www.annemergmed.com/article/S0196-0644(22)00216-0/fulltext"
+    },
+    "tags": [
+      "Cardiac Tamponade",
+      "Right Atrial Collapse",
+      "POCUS Echo"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0486",
+    "chapterId": 29,
+    "topicId": "cc-basic-echocardiography",
+    "question": "In the Venous Excess Ultrasound (VExUS) grading system for assessing systemic venous congestion and organ edema, which four sonographic vascular components are evaluated?",
+    "options": [
+      "Inferior Vena Cava (IVC), Hepatic Vein Doppler, Portal Vein Doppler, and Intra-renal Venous Doppler",
+      "Internal Jugular Vein, Subclavian Vein, Femoral Vein, and Splenic Vein",
+      "Superior Vena Cava, Pulmonary Vein, Left Atrium, and Aorta",
+      "IVC, Renal Artery resistive index, Femoral Artery pulsatility, and Carotid flow time"
+    ],
+    "answer": "A",
+    "explanation": "The VExUS protocol (Beaubien-Souligny et al.) grades systemic venous congestion to guide decongestion and avoid fluid overload. It requires: (1) IVC diameter >= 2.0 cm, combined with pulsed-wave Doppler assessment of: (2) Hepatic vein (systolic reversal: S-wave reversed), (3) Portal vein (pulsatility fraction >= 50%), and (4) Intra-renal/interlobar veins (biphasic discontinuous or monophasic diastolic-only flow). VExUS Grade 3 (plethoric IVC + severe abnormalities in >= 2 vascular beds) strongly predicts acute kidney injury from renal venous hypertension.",
+    "whyWrong": {
+      "B": "Subclavian and femoral veins are not parts of the standardized VExUS score.",
+      "C": "Pulmonary veins evaluate left-sided filling pressures, not systemic venous congestion.",
+      "D": "Renal and carotid arteries are arterial, not systemic venous congestion Doppler targets."
+    },
+    "difficulty": "hard",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: High CVP causes venous congestion that transmits backward into encapsulated organs like the kidney, raising renal interstitial pressure, choking off glomerular filtration pressure, and driving AKI. VExUS Grade 3 identifies this congestive nephropathy.",
+    "hyperlinkedReference": {
+      "label": "Beaubien-Souligny W, et al. Development and validation of a venous excess ultrasound score for the prediction of acute kidney injury in cardiac surgery patients. Ultrasound J 2020;12:49",
+      "url": "https://theultrasoundjournal.springeropen.com/articles/10.1186/s13089-020-00196-1"
+    },
+    "tags": [
+      "VExUS",
+      "Venous Congestion",
+      "Portal Vein Pulsatility"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0487",
+    "chapterId": 29,
+    "topicId": "cc-basic-echocardiography",
+    "question": "In a mechanically ventilated patient in septic shock, which dynamic echocardiographic parameter measured at the Left Ventricular Outflow Tract (LVOT) using Pulsed-Wave (PW) Doppler has the highest accuracy for predicting fluid responsiveness?",
+    "options": [
+      "Velocity Time Integral Respiratory Variation (Delta VTI > 12-15%)",
+      "Static Left Ventricular End-Diastolic Area (LVEDA)",
+      "Peak E/A ratio of mitral inflow",
+      "Left ventricular ejection fraction (LVEF)"
+    ],
+    "answer": "A",
+    "explanation": "Respiratory variation of aortic/LVOT blood flow peak velocity or Velocity-Time Integral (Delta VTI = [VTI_max - VTI_min] / [(VTI_max + VTI_min)/2] x 100) measured in an apical 5-chamber view under controlled mechanical ventilation without spontaneous breathing efforts has high diagnostic accuracy (>90%) for predicting fluid responsiveness. A threshold of Delta VTI > 12-15% predicts a >= 15% increase in cardiac output in response to fluid challenge.",
+    "whyWrong": {
+      "B": "Static chamber dimensions like LVEDA correlate poorly with fluid responsiveness (static markers do not predict volume response).",
+      "C": "E/A ratio reflects LV diastolic function and filling pressure, not preload responsiveness.",
+      "D": "LVEF measures systolic contractility, not volume status or Frank-Starling reserve."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Requirements for heart-lung interaction indices (Delta VTI, PPV, SVV): (1) Fully passive mechanical ventilation, (2) Tidal volume >= 8 mL/kg PBW, (3) Regular sinus rhythm, (4) Normal chest wall compliance.",
+    "hyperlinkedReference": {
+      "label": "Monnet X, Marik PE, Teboul JL. Prediction of fluid responsiveness: an update. Ann Intensive Care 2016;6:111",
+      "url": "https://annalsofintensivecare.springeropen.com/articles/10.1186/s13613-016-0216-7"
+    },
+    "tags": [
+      "Delta VTI",
+      "Fluid Responsiveness",
+      "LVOT Doppler"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0488",
+    "chapterId": 29,
+    "topicId": "cc-basic-echocardiography",
+    "question": "Which measurement on Tissue Doppler Imaging (TDI) at the lateral and septal mitral annulus reflects left ventricular relaxation (diastolic function), and how is the E/e' ratio interpreted?",
+    "options": [
+      "Early diastolic tissue velocity (e'); an average E/e' ratio > 14 indicates elevated LV filling pressures (PCWP > 15-18 mmHg)",
+      "Systolic tissue velocity (s'); s' > 10 cm/s indicates severe aortic stenosis",
+      "Late atrial contraction velocity (a'); E/e' < 8 indicates severe volume overload",
+      "Velocity of circumferential fiber shortening; E/e' ratio > 5 indicates cardiac amyloidosis"
+    ],
+    "answer": "A",
+    "explanation": "Tissue Doppler Imaging measures myocardial velocities. The early diastolic myocardial velocity (e') at the mitral annulus reflects myocardial relaxation (diastolic recoil). Dividing transmitral early inflow velocity (E) by e' yields the E/e' ratio, which normalizes for myocardial relaxation and estimates LV filling pressure (pulmonary capillary wedge pressure). An average E/e' > 14 strongly suggests elevated LV end-diastolic pressure / PCWP (>15-18 mmHg), whereas E/e' < 8 is typically normal.",
+    "whyWrong": {
+      "B": "s' reflects longitudinal systolic function, not aortic valve stenosis.",
+      "C": "E/e' < 8 signifies normal LV filling pressures, not volume overload.",
+      "D": "E/e' is not related to circumferential shortening."
+    },
+    "difficulty": "hard",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In septic shock with normal ejection fraction, an e' < 8 cm/s and E/e' > 14 reveals occult septic cardiomyopathy with diastolic dysfunction, which is associated with increased mortality.",
+    "hyperlinkedReference": {
+      "label": "Nagueh SF, et al. Recommendations for the Evaluation of Left Ventricular Diastolic Function by Echocardiography: An Update from the ASE and EACVI. J Am Soc Echocardiogr 2016;29:277-314",
+      "url": "https://www.onlinejase.com/article/S0894-7317(16)00127-9/fulltext"
+    },
+    "tags": [
+      "Diastolic Function",
+      "Tissue Doppler",
+      "E/e Ratio"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0489",
+    "chapterId": 29,
+    "topicId": "cc-basic-echocardiography",
+    "question": "What is Tricuspid Annular Plane Systolic Excursion (TAPSE), and what value definitively indicates significant Right Ventricular systolic dysfunction?",
+    "options": [
+      "M-mode measurement of the longitudinal excursion of the lateral tricuspid annulus toward the apex; TAPSE < 17 mm indicates RV dysfunction",
+      "Color Doppler measurement of tricuspid regurgitation jet; TAPSE > 35 mm indicates RV dysfunction",
+      "Measurement of right atrial diameter; TAPSE < 25 mm indicates RV failure",
+      "Pulsed Doppler velocity of the pulmonary artery; TAPSE < 5 cm/s indicates RV failure"
+    ],
+    "answer": "A",
+    "explanation": "Because the right ventricle contracts predominantly longitudinally (from base to apex), M-mode evaluation of the displacement of the lateral tricuspid annulus from end-diastole to peak systole (TAPSE) in the apical 4-chamber view is an easily reproducible, robust marker of global RV systolic performance. A TAPSE < 17 mm (or RV S' velocity on TDI < 9.5 cm/s) defines clinically significant RV systolic dysfunction.",
+    "whyWrong": {
+      "B": "TAPSE is an M-mode linear distance (in mm), not a color Doppler jet.",
+      "C": "TAPSE does not measure right atrial diameter.",
+      "D": "TAPSE is not pulmonary artery velocity."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: In ARDS, acute cor pulmonale (ACP) is diagnosed when RV end-diastolic area / LV end-diastolic area > 0.6 accompanied by septal dyskinesia on parasternal short-axis view. Severe ACP occurs when RV/LV area ratio > 1.0.",
+    "hyperlinkedReference": {
+      "label": "Lang RM, et al. Recommendations for cardiac chamber quantification by echocardiography in adults: an update from the ASE and EACVI. J Am Soc Echocardiogr 2015;28:1-39",
+      "url": "https://www.onlinejase.com/article/S0894-7317(14)00788-3/fulltext"
+    },
+    "tags": [
+      "TAPSE",
+      "Right Ventricular Dysfunction",
+      "M-Mode Echo"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0490",
+    "chapterId": 29,
+    "topicId": "cc-basic-echocardiography",
+    "question": "On lung ultrasound, which finding confirms consolidation with ongoing airway obstruction (such as resorption atelectasis due to a mucus plug) versus patent bronchus consolidation (such as bacterial pneumonia)?",
+    "options": [
+      "Static air bronchograms (lack of respiratory motion) indicate obstruction/atelectasis, whereas Dynamic air bronchograms (centrifugal motion of air bubbles with respiration) indicate patent airway consolidation/pneumonia",
+      "Dynamic air bronchograms indicate resorption atelectasis, whereas static bronchograms indicate pneumonia",
+      "Presence of B-lines rules out all consolidations",
+      "A-lines are always present inside lung consolidations"
+    ],
+    "answer": "A",
+    "explanation": "Air bronchograms are hyperechoic punctate or linear branched structures within consolidated lung parenchyma (tissue-like/hepatized appearance). 'Dynamic air bronchograms' show clear respiratory movement of air bubbles within the bronchi with respiration and indicate a patent airway (typical of community-acquired pneumonia, >90% specificity). 'Static air bronchograms' do not move with respiration, confirming that the feeding bronchus is occluded (resorption atelectasis from a mucus plug or endobronchial tumor).",
+    "whyWrong": {
+      "B": "Inverses the clinical definitions.",
+      "C": "B-lines frequently surround subpleural consolidations.",
+      "D": "A-lines represent aerated lung artifacts and are absent within dense tissue consolidation."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Seeing static air bronchograms in an intubated patient with sudden hypoxemia prompts immediate therapeutic bronchoscopy to clear the obstructing mucus plug.",
+    "hyperlinkedReference": {
+      "label": "Lichtenstein D, et al. The dynamic air bronchogram: a lung ultrasound sign of pneumonia. Chest 2009;135:1421-1425",
+      "url": "https://journal.chestnet.org/article/S0012-3692(09)60317-5/fulltext"
+    },
+    "tags": [
+      "Air Bronchogram",
+      "Dynamic vs Static",
+      "Lung Ultrasound Consolidation"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0491",
+    "chapterId": 29,
+    "topicId": "cc-basic-echocardiography",
+    "question": "What is the 'shred sign' (fractal sign) on thoracic ultrasonography?",
+    "options": [
+      "An irregular, jagged, serrated border separating subpleural consolidation from the underlying aerated lung tissue",
+      "Disruption of the visceral pleural line by an intraparenchymal cavity",
+      "Rapid fragmentation of an embolus visualized in the pulmonary artery trunk",
+      "Shredding of the pericardial lining in purulent pericarditis"
+    ],
+    "answer": "A",
+    "explanation": "The 'shred sign' (also called the fractal sign) is observed in non-translobar lung consolidation (partial alveolar consolidation, such as bronchopneumonia, pulmonary infarction, or contusion). The boundary between the consolidated hepatized lung and the deeper aerated lung is non-anatomic, irregular, jagged, and frayed ('shredded'), producing multiple reverberation artifacts at the interface.",
+    "whyWrong": {
+      "B": "Cavities produce round hypoechoic lesions, not the shred sign.",
+      "C": "Describes thromboembolism lysis, not an ultrasound sign.",
+      "D": "Pericardial disease does not produce lung shredding."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Translobar consolidation has a smooth anatomic border demarcated by the visceral pleural fissure, while partial non-translobar consolidation always exhibits the jagged 'shred sign'.",
+    "hyperlinkedReference": {
+      "label": "Volpicelli G, et al. International evidence-based recommendations for point-of-care lung ultrasound. Intensive Care Med 2012;38:577-591",
+      "url": "https://link.springer.com/article/10.1007/s00134-012-2513-4"
+    },
+    "tags": [
+      "Shred Sign",
+      "Fractal Sign",
+      "Lung Consolidation"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0492",
+    "chapterId": 30,
+    "topicId": "cc-ecmo-basics",
+    "question": "In a patient on Veno-Arterial (VA) ECMO cannulated via the femoral vein and femoral artery, what is the underlying mechanism of 'Harlequin Syndrome' (North-South Syndrome or Differential Hypoxemia)?",
+    "options": [
+      "Recovering native cardiac contractility pumping deoxygenated blood from poorly ventilated native lungs to the brain and upper body (upper watershed), while retrograde well-oxygenated ECMO blood perfuses only the lower body",
+      "Excessive sweep gas flow rate resulting in severe cerebral alkalosis and vasoconstriction",
+      "Recirculation of oxygenated blood between closely positioned venous cannulae",
+      "Severe differential cooling of the upper extremities compared to the lower extremities"
+    ],
+    "answer": "A",
+    "explanation": "In peripheral femoral-femoral VA-ECMO, retrograde arterial flow from the femoral artery meets the antegrade stroke volume ejected by the native heart at a 'watershed' or mixing point. If the native lungs have severe gas-exchange impairment (ARDS, pulmonary edema) and native LV systolic function recovers, the LV ejects poorly oxygenated blood into the ascending aorta, aortic arch, and coronaries/brain ('North'), while the well-oxygenated ECMO blood perfuses only the abdominal viscera and legs ('South').",
+    "whyWrong": {
+      "B": "Sweep gas controls CO2 clearance, not differential regional perfusion.",
+      "C": "Recirculation is an issue in VV-ECMO, not VA-ECMO differential hypoxemia.",
+      "D": "Differential hypoxemia is driven by native cardiac output competing with retrograde ECMO flow, not temperature."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: To detect Harlequin syndrome early, continuous pulse oximetry and arterial blood gases must ALWAYS be monitored from the RIGHT UPPER EXTREMITY (right radial artery), which reflects blood flow to the brachiocephalic trunk and brain.",
+    "hyperlinkedReference": {
+      "label": "Rao P, et al. Differential hypoxemia during venoarterial extracorporeal membrane oxygenation: Harlequin syndrome. J Cardiothorac Vasc Anesth 2020;34:1062-1065",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S1053077019310619"
+    },
+    "tags": [
+      "VA ECMO",
+      "Harlequin Syndrome",
+      "Differential Hypoxemia"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0493",
+    "chapterId": 30,
+    "topicId": "cc-managing-a-patient-on-ecmo",
+    "question": "What is the definitive initial management strategy to resolve Harlequin Syndrome in a patient receiving peripheral VA-ECMO whose native heart is ejecting deoxygenated blood to the brain?",
+    "options": [
+      "Conversion to a V-A-V configuration (adding an oxygenated venous return cannula to the right internal jugular vein) or central cannulation",
+      "Increase positive end-expiratory pressure (PEEP) to 30 cmH2O and stop inotropes",
+      "Immediately clamp the arterial ECMO return cannula",
+      "Administer high-dose phenylephrine to elevate systemic vascular resistance"
+    ],
+    "answer": "A",
+    "explanation": "Management of Harlequin syndrome includes: (1) Optimizing native lung mechanical ventilation (increasing PEEP, recruitment, recruitment prone positioning if feasible), (2) If refractory, converting to V-A-V ECMO (splitting the oxygenated return flow so that part goes to the femoral artery for hemodynamic support and part goes to the right internal jugular vein to deliver oxygenated blood to the right heart and native lungs), or converting to central cannulation (aortic arch return).",
+    "whyWrong": {
+      "B": "Excessive PEEP further impairs cardiac output and increases pulmonary vascular resistance.",
+      "C": "Clamping the arterial cannula halts circulatory support, leading to immediate hemodynamic collapse.",
+      "D": "Phenylephrine increases afterload, worsening LV distension."
+    },
+    "difficulty": "hard",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: V-A-V ECMO combines the circulatory support of VA-ECMO with the upper-body oxygenation delivery of VV-ECMO. An adjustable flow restrictor clamp is used to balance flow between the arterial and venous reinfusion limbs.",
+    "hyperlinkedReference": {
+      "label": "Guglin M, et al. Venoarterial ECMO for Adults: JACC Scientific Expert Panel. J Am Coll Cardiol 2019;73:698-716",
+      "url": "https://www.jacc.org/doi/10.1016/j.jacc.2018.11.038"
+    },
+    "tags": [
+      "V-A-V ECMO",
+      "Harlequin Management",
+      "ECMO Configuration"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0494",
+    "chapterId": 30,
+    "topicId": "cc-ecmo-basics",
+    "question": "On an Extracorporeal Membrane Oxygenation (ECMO) circuit, which parameter is primarily altered to control arterial PaCO2 elimination, and which parameter controls arterial PaO2 oxygenation?",
+    "options": [
+      "Sweep Gas Flow Rate controls PaCO2; Circuit Blood Flow Rate (RPM/L/min) and membrane FiO2 control PaO2",
+      "Circuit Blood Flow controls PaCO2; Sweep Gas controls PaO2",
+      "Centrifugal Pump RPM controls PaCO2; Anticoagulation levels control PaO2",
+      "Patient's tidal volume controls both PaCO2 and PaO2 independent of the circuit"
+    ],
+    "answer": "A",
+    "explanation": "In an extracorporeal membrane oxygenator: (1) Carbon dioxide removal is highly efficient and depends primarily on the SWEEP GAS FLOW RATE (L/min) flushing through the hollow fibers (increasing sweep gas increases the concentration gradient and rapidly drives off CO2). (2) Oxygenation is limited by blood flow across the membrane and depends on the CIRCUIT BLOOD FLOW RATE (ECMO flow in L/min, typically aiming for 60-80 mL/kg/min in VV-ECMO) and the delivered fraction of oxygen in the sweep gas (FiO2).",
+    "whyWrong": {
+      "B": "Inverses the fundamental physiological principles of extracorporeal gas exchange.",
+      "C": "Anticoagulation prevents circuit thrombosis but does not directly control gas exchange.",
+      "D": "In full VV-ECMO, ultra-protective lung rest ventilation deliberately minimizes patient mechanical ventilation."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In severe hypercapnia, sweep gas flow rate should be increased gradually. Rapidly plunging PaCO2 causes cerebral vasoconstriction and acute shifts in intracellular pH, triggering seizures and intracranial hemorrhage.",
+    "hyperlinkedReference": {
+      "label": "ELSO Guidelines for Adult Respiratory Failure. Ann Transl Med 2017;5:70",
+      "url": "https://atm.amegroups.com/article/view/13768/html"
+    },
+    "tags": [
+      "ECMO Sweep Gas",
+      "PaCO2 Clearance",
+      "Blood Flow vs Sweep"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0495",
+    "chapterId": 30,
+    "topicId": "cc-managing-a-patient-on-ecmo",
+    "question": "What is the phenomenon of 'Recirculation' in Veno-Venous (VV) ECMO, and which clinical parameter confirms high recirculation fraction (>30%)?",
+    "options": [
+      "Re-aspiration of newly oxygenated blood from the reinfusion cannula back into the drainage cannula; confirmed by a Drainage/Pre-membrane venous oxygen saturation (SpreO2) approaching the Post-membrane saturation (SpostO2 > 80-85%) despite persistent patient arterial hypoxemia",
+      "Backflow of blood from the membrane oxygenator into the centrifugal pump",
+      "Retrograde blood flow through the aortic valve causing LV distension",
+      "Shunting of arterial blood through a patent ductus arteriosus"
+    ],
+    "answer": "A",
+    "explanation": "In VV-ECMO, recirculation occurs when freshly oxygenated blood ejected from the return cannula is immediately drawn back into the drainage cannula without passing through the patient's systemic microcirculation. This is confirmed when the pre-membrane (drainage blood) saturation (SpreO2) is unexpectedly high (often >75-80%), while the patient's arterial blood saturation (SaO2) remains low (<85%). Remedies include increasing cannula separation distance or repositioning cannulae under ultrasound/fluoroscopy.",
+    "whyWrong": {
+      "B": "Mechanical backflow is prevented by non-return valves and circuit pressures.",
+      "C": "LV distension is a complication of VA-ECMO, not VV-ECMO.",
+      "D": "Recirculation is an extracorporeal circuit phenomenon, not a PDA shunt."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Recirculation Formula: Recirculation Fraction = (SpreO2 - SvO2) / (SpostO2 - SvO2) x 100%. A fraction > 30% severely impairs systemic oxygen delivery and mandates anatomical repositioning.",
+    "hyperlinkedReference": {
+      "label": "Abrams D, et al. Extracorporeal membrane oxygenation in adults. Lancet 2014;384:190-203",
+      "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(14)60448-5/fulltext"
+    },
+    "tags": [
+      "VV ECMO",
+      "Recirculation Fraction",
+      "Pre-membrane Saturation"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0496",
+    "chapterId": 30,
+    "topicId": "cc-managing-a-patient-on-ecmo",
+    "question": "In a patient on femoral VA-ECMO, what is the primary purpose of inserting a 6-to-8 Fr antegrade 'Distal Perfusion Catheter' (DPC) into the superficial femoral artery?",
+    "options": [
+      "To prevent acute lower extremity limb ischemia and compartment syndrome caused by the large occlusive arterial return cannula",
+      "To administer continuous intra-arterial vasodilators directly to the foot",
+      "To measure distal blood pressure accurately",
+      "To filter microemboli before reaching the pedal pulses"
+    ],
+    "answer": "A",
+    "explanation": "Femoral arterial cannulation for VA-ECMO involves large 15-to-19 Fr arterial catheters that can completely occlude forward arterial flow down the common femoral artery into the superficial femoral artery. Up to 20-30% of patients develop acute lower limb ischemia, rhabdomyolysis, and foot necrosis without distal perfusion. Placement of an antegrade 6-to-8 Fr distal perfusion catheter (DPC) branched off the arterial ECMO limb perfuses the distal limb, reducing ischemia risk by >85%.",
+    "whyWrong": {
+      "B": "DPC provides mechanical blood perfusion, not drug infusion alone.",
+      "C": "Pressure monitoring is secondary to vital limb preservation.",
+      "D": "DPC does not act as an embolic filter."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Routine placement of an antegrade distal perfusion catheter at the time of femoral arterial cannulation is recommended by ELSO guidelines, combined with continuous near-infrared spectroscopy (NIRS) pedal oximetry.",
+    "hyperlinkedReference": {
+      "label": "Lamb KM, et al. Routine insertion of a distal limb perfusion cannula reduces ischemic complications in femoral VA ECMO. J Thorac Cardiovasc Surg 2017;154:197-202",
+      "url": "https://www.jtcvs.org/article/S0022-5223(17)30182-0/fulltext"
+    },
+    "tags": [
+      "Distal Perfusion Catheter",
+      "VA ECMO Limb Ischemia",
+      "DPC"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0497",
+    "chapterId": 30,
+    "topicId": "cc-managing-a-patient-on-ecmo",
+    "question": "A patient with cardiogenic shock supported with peripheral VA-ECMO has non-opening aortic valve leaflets on echocardiography, a flat arterial line trace (pulse pressure < 10 mmHg), worsening pulmonary edema on chest X-ray, and PCWP rising to 32 mmHg. What lethal complication is occurring, and how is it managed?",
+    "options": [
+      "Severe Left Ventricular (LV) distension and stasis due to increased afterload; managed by LV venting (Impella / ECPELLA, atrial septostomy, or transapical vent)",
+      "Acute rupture of the mitral valve apparatus; managed by emergency valve replacement",
+      "Massive intracardiac right-to-left shunt; managed by closure of PFO",
+      "Hypovolemic circuit collapse; managed by rapid 2-liter fluid bolus"
+    ],
+    "answer": "A",
+    "explanation": "Retrograde high-pressure arterial flow from peripheral VA-ECMO significantly increases LV afterload. In severe myocardial stunning, the weakened LV cannot generate enough pressure to overcome this afterload; the aortic valve remains permanently closed. Blood from bronchial veins and thebesian veins accumulates in the LV, producing progressive LV dilation, high end-diastolic pressure, massive hydrostatic pulmonary edema, and intracavity thrombus formation. Immediate 'LV venting' is required—most commonly with an axial flow pump (Impella, termed 'ECPELLA') or percutaneous balloon atrial septostomy.",
+    "whyWrong": {
+      "B": "Mitral leaflets are intact; the issue is backward pressure transmission from a distended, non-ejecting LV.",
+      "C": "Left-to-right decompressing shunts relieve LV pressure, not cause distension.",
+      "D": "Giving fluid boluses further overloads the failing LV."
+    },
+    "difficulty": "hard",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: On VA-ECMO, maintain a pulse pressure >= 15-20 mmHg (showing regular aortic valve opening) with low-dose inotropes (dobutamine or milrinone) to prevent LV blood stasis and aortic root thrombosis.",
+    "hyperlinkedReference": {
+      "label": "Rao P, et al. Left ventricular decompression on venoarterial extracorporeal membrane oxygenation: A review. J Thorac Cardiovasc Surg 2018;156:1083-1089",
+      "url": "https://www.jtcvs.org/article/S0022-5223(18)31024-4/fulltext"
+    },
+    "tags": [
+      "LV Distension",
+      "ECPELLA",
+      "VA ECMO Afterload"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0498",
+    "chapterId": 30,
+    "topicId": "cc-ecmo-basics",
+    "question": "What are the ventilation goals ('lung rest' strategy) for a patient with severe ARDS supported on Veno-Venous (VV) ECMO?",
+    "options": [
+      "Low tidal volume (3-4 mL/kg PBW or driving pressure < 10 cmH2O), low respiratory rate (4-10 bpm), PEEP 10-15 cmH2O, and plateau pressure < 20-25 cmH2O",
+      "High tidal volume (10-12 mL/kg) with high PEEP (25 cmH2O) to aggressively recruit alveoli",
+      "Zero PEEP and high respiratory rate (35 bpm) to promote CO2 washout",
+      "Complete disconnection from mechanical ventilator for 72 hours"
+    ],
+    "answer": "A",
+    "explanation": "Because VV-ECMO handles gas exchange (oxygenation and decarboxylation), the native lungs should be placed in 'ultra-protective lung rest' to minimize ventilator-induced lung injury (VILI), barotrauma, volutrauma, and ergotrauma. Target parameters: Low tidal volume (3-4 mL/kg PBW), plateau pressure <= 20-25 cmH2O, driving pressure <= 10 cmH2O, low respiratory rate (4-10 breaths/min), and moderate-to-high PEEP (10-15 cmH2O) to prevent cyclic derecruitment atelectrauma.",
+    "whyWrong": {
+      "B": "High tidal volume causes severe volutrauma and propagates inflammatory alveolar destruction.",
+      "C": "Zero PEEP causes complete alveolar collapse, derecruitment, and shear stress atelectrauma.",
+      "D": "Complete disconnection leads to total derecruitment and severe hypoxemia."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: EOLIA Trial: Early initiation of VV-ECMO in severe ARDS (PaO2/FiO2 < 50 for > 3h, or PaO2/FiO2 < 80 for > 6h, or pH < 7.15 with PaCO2 >= 60) was associated with 11% absolute reduction in 60-day mortality upon post-hoc Bayesian analysis.",
+    "hyperlinkedReference": {
+      "label": "Combes A, et al. Extracorporeal Membrane Oxygenation for Severe Acute Respiratory Distress Syndrome (EOLIA). N Engl J Med 2018;378:1965-1975",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1800385"
+    },
+    "tags": [
+      "Lung Rest",
+      "VV ECMO ARDS",
+      "EOLIA Trial"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0499",
+    "chapterId": 30,
+    "topicId": "cc-managing-a-patient-on-ecmo",
+    "question": "What parameter is most commonly utilized for routine unfractionated heparin anticoagulation monitoring during adult ECMO support according to updated Extracorporeal Life Support Organization (ELSO) guidelines?",
+    "options": [
+      "Anti-Factor Xa assay (target 0.3 - 0.7 IU/mL), often paired with Activated Partial Thromboplastin Time (aPTT target 1.5 - 2.0x control / 50-70 seconds)",
+      "Prothrombin Time (PT) and INR alone",
+      "Serum fibrinogen levels alone",
+      "Platelet count alone"
+    ],
+    "answer": "A",
+    "explanation": "Unfractionated heparin remains the primary anticoagulant for ECMO circuits to prevent circuit thrombosis and patient thromboembolism. ELSO consensus guidelines recommend using Anti-Factor Xa (Anti-Xa) activity assays (target 0.3 to 0.7 IU/mL) as the preferred monitoring method because Anti-Xa is less susceptible to coagulopathy-related confounders (e.g., elevated acute-phase factor VIII, lupus anticoagulants) than activated clotting time (ACT) or aPTT. Many centers also monitor aPTT (target 50-70 s).",
+    "whyWrong": {
+      "B": "PT/INR measures the extrinsic pathway and is insensitive to heparin titration.",
+      "C": "Fibrinogen is monitored to avoid consumptive hypofibrinogenemia, but does not measure heparin efficacy.",
+      "D": "Platelet count monitors for HIT and consumptive thrombocytopenia, not heparin level."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Heparin Resistance in ECMO: If increasing doses of unfractionated heparin fail to achieve therapeutic aPTT or Anti-Xa levels, check Antithrombin III (AT-III) activity. Supplementing AT-III concentrate restores heparin sensitivity.",
+    "hyperlinkedReference": {
+      "label": "McMichael ABV, et al. Anticoagulation in Extracorporeal Life Support. Crit Care Clin 2020;36:397-414",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0749070420300185"
+    },
+    "tags": [
+      "ECMO Anticoagulation",
+      "Anti-Factor Xa",
+      "Heparin Resistance"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0500",
+    "chapterId": 31,
+    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "question": "A 45-year-old male undergoing chemotherapy for acute myeloid leukemia (AML) develops fever of 38.6 deg C and an absolute neutrophil count (ANC) of 180 cells/mcL. What is the mandatory immediate empiric intravenous monotherapy antimicrobial agent with antipseudomonal activity within 60 minutes?",
+    "options": [
+      "Piperacillin-Tazobactam (4.5 g q6h) or Cefepime (2 g q8h) or Meropenem (1 g q8h)",
+      "Vancomycin alone (15-20 mg/kg q12h)",
+      "Ceftriaxone (2 g q24h) plus Metronidazole",
+      "Ciprofloxacin (400 mg q12h) oral"
+    ],
+    "answer": "A",
+    "explanation": "Febrile neutropenia (single oral temp >= 38.3 deg C or >= 38.0 deg C sustained for 1 hour with ANC < 500 cells/mcL, or expected to drop < 500) is a medical emergency with high risk of rapid fatal Pseudomonas bacteremia. IDSA guidelines require immediate administration of IV antipseudomonal beta-lactam monotherapy (Cefepime 2 g IV q8h, Piperacillin-tazobactam 4.5 g IV q6h, or Meropenem 1 g IV q8h) within 60 minutes of presentation.",
+    "whyWrong": {
+      "B": "Vancomycin is NOT routinely indicated upfront unless specific criteria are present (hemodynamic instability, pneumonia, catheter site infection, severe mucositis).",
+      "C": "Ceftriaxone lacks antipseudomonal activity.",
+      "D": "Oral ciprofloxacin is restricted to low-risk outpatient candidates (MASCC score >= 21)."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: MASCC score >= 21 identifies low-risk febrile neutropenia eligible for outpatient oral therapy. Any high-risk patient (MASCC < 21, in ICU, or ANC < 100 for > 7 days) requires urgent IV antipseudomonal coverage.",
+    "hyperlinkedReference": {
+      "label": "Freifeld AG, et al. Clinical Practice Guideline for the Use of Antimicrobial Agents in Neutropenic Patients with Cancer: 2010 Update by the IDSA. Clin Infect Dis 2011;52:e56-e93",
+      "url": "https://academic.oup.com/cid/article/52/4/e56/389025"
+    },
+    "tags": [
+      "Febrile Neutropenia",
+      "Antipseudomonal Beta-lactams",
+      "MASCC Score"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0501",
+    "chapterId": 31,
+    "topicId": "cc-novel-chemo-and-toxicity-in-icu",
+    "question": "According to the Cairo-Bishop criteria, what constellation of laboratory abnormalities defines Laboratory Tumor Lysis Syndrome (LTLS) occurring within 3 to 7 days of cytotoxic therapy?",
+    "options": [
+      "Two or more of the following: Hyperuricemia (>= 8.0 mg/dL), Hyperkalemia (>= 6.0 mEq/L), Hyperphosphatemia (>= 4.5 mg/dL), and Hypocalcemia (<= 7.0 mg/dL)",
+      "Hypercalcemia, Hyponatremia, Hypokalemia, and Hypophosphatemia",
+      "Hyperglycemia, Hypernatremia, Hypocalcemia, and Hypercholesterolemia",
+      "Hyperuricemia, Hypokalemia, Hypophosphatemia, and Hypercalcemia"
+    ],
+    "answer": "A",
+    "explanation": "Tumor Lysis Syndrome results from rapid massive intracellular lysis of neoplastic cells (e.g., Burkitt lymphoma, ALL). Intracellular contents flood the systemic circulation, producing: (1) Hyperkalemia (>= 6.0 mEq/L or 25% increase), (2) Hyperphosphatemia (>= 4.5 mg/dL in adults), (3) Hyperuricemia (>= 8.0 mg/dL), and (4) Secondary Hypocalcemia (<= 7.0 mg/dL or 25% decrease) as calcium precipitates with phosphate forming calcium phosphate crystals in renal tubules.",
+    "whyWrong": {
+      "B": "TLS causes hypocalcemia and hyperphosphatemia, not hypercalcemia.",
+      "C": "Completely unrelated metabolic profile.",
+      "D": "Inverts phosphate and potassium abnormalities."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2023,
+    "examPearl": "NEET-SS EXAM PEARL: Rasburicase (recombinant urate oxidase) catalyzes conversion of insoluble uric acid to highly soluble allantoin (5-10x more soluble in urine). Unlike allopurinol, rasburicase degrades preexisting uric acid rapidly within 4 hours.",
+    "hyperlinkedReference": {
+      "label": "Cairo MS, Bishop M. Tumour lysis syndrome: new therapeutic strategies and classification. Br J Haematol 2004;127:3-11",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/j.1365-2141.2004.05094.x"
+    },
+    "tags": [
+      "Tumor Lysis Syndrome",
+      "Cairo-Bishop Criteria",
+      "Rasburicase"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0502",
+    "chapterId": 31,
+    "topicId": "cc-novel-chemo-and-toxicity-in-icu",
+    "question": "What is the critical contraindication to administering Rasburicase for acute hyperuricemia in Tumor Lysis Syndrome due to the risk of severe drug-induced methemoglobinemia and hemolytic crisis?",
+    "options": [
+      "Glucose-6-Phosphate Dehydrogenase (G6PD) deficiency",
+      "Renal failure requiring continuous renal replacement therapy",
+      "Baseline serum uric acid > 15 mg/dL",
+      "Concomitant administration of intravenous hydration"
+    ],
+    "answer": "A",
+    "explanation": "Rasburicase (urate oxidase) metabolizes uric acid into allantoin, generating hydrogen peroxide (H2O2) as an equimolar byproduct. In patients with G6PD deficiency, deficient NADPH production prevents the reduction of glutathione needed to detoxify hydrogen peroxide. The accumulated oxidant stress causes catastrophic red blood cell hemolysis and severe life-threatening methemoglobinemia. G6PD deficiency is an absolute contraindication.",
+    "whyWrong": {
+      "B": "CRRT is an indication for aggressive management, not a contraindication to rasburicase.",
+      "C": "High uric acid is the primary indication for rasburicase.",
+      "D": "Aggressive IV hydration is the mandatory foundation of TLS prevention and management."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Rasburicase laboratory artifact: Blood samples for uric acid measurement from patients treated with rasburicase must be collected in pre-chilled heparin tubes and immediately plunged into ice water; otherwise rasburicase continues enzymatically destroying uric acid in the collection tube at room temp.",
+    "hyperlinkedReference": {
+      "label": "Coiffier B, et al. Guidelines for the management of pediatric and adult tumor lysis syndrome. J Clin Oncol 2008;26:2767-2778",
+      "url": "https://ascopubs.org/doi/10.1200/JCO.2007.15.0151"
+    },
+    "tags": [
+      "Rasburicase Contraindication",
+      "G6PD Deficiency",
+      "Methemoglobinemia"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0503",
+    "chapterId": 31,
+    "topicId": "cc-novel-chemo-and-toxicity-in-icu",
+    "question": "A 55-year-old patient receives Chimeric Antigen Receptor (CAR) T-cell therapy for refractory large B-cell lymphoma. On day 6 post-infusion, the patient develops high fever (40 deg C), severe hypotension requiring high-dose norepinephrine, and hypoxia requiring high-flow oxygen. What is the diagnosis and targeted first-line monoclonal antibody antidote?",
+    "options": [
+      "Cytokine Release Syndrome (CRS); treated with Tocilizumab (IL-6 receptor antagonist) +/- Corticosteroids",
+      "Acute graft-versus-host disease; treated with Infliximab",
+      "Bacterial septic shock; treated with Vancomycin monotherapy",
+      "Anaphylactoid drug reaction; treated with Epinephrine auto-injector"
+    ],
+    "answer": "A",
+    "explanation": "Cytokine Release Syndrome (CRS) is an acute systemic inflammatory response caused by massive in vivo CAR-T activation and bystander macrophage activation, driving a surge in inflammatory cytokines, particularly Interleukin-6 (IL-6), interferon-gamma, and TNF-alpha. Severe CRS manifests with fever, vasodilatory shock, capillary leak, and pulmonary edema. The cornerstone of targeted therapy is Tocilizumab (8 mg/kg IV, max 800 mg), a humanized monoclonal antibody targeting the IL-6 receptor, combined with Dexamethasone for high-grade CRS (ASTCT Grade >= 3).",
+    "whyWrong": {
+      "B": "GvHD typically presents weeks to months later with skin, liver, and GI involvement, not acute hyperacute day 6 septic shock picture.",
+      "C": "Broad spectrum antibiotics are given empirically, but targeted IL-6 blockade is the specific life-saving therapy.",
+      "D": "CRS is driven by sustained cytokine release rather than IgE-mediated type 1 hypersensitivity."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Immune effector cell-associated neurotoxicity syndrome (ICANS) manifests with expressive dysphasia, tremor, and encephalopathy (measured by ICE score). Dexamethasone is the primary treatment for ICANS; Tocilizumab does not cross the blood-brain barrier and can transiently worsen ICANS by increasing serum IL-6.",
+    "hyperlinkedReference": {
+      "label": "Lee DW, et al. ASTCT Consensus Grading for Cytokine Release Syndrome and Neurologic Toxicity Associated with Immune Effector Cells. Biol Blood Marrow Transplant 2019;25:625-638",
+      "url": "https://www.astctjournal.org/article/S1083-8791(18)31548-X/fulltext"
+    },
+    "tags": [
+      "CAR-T Toxicity",
+      "Cytokine Release Syndrome",
+      "Tocilizumab"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0504",
+    "chapterId": 31,
+    "topicId": "cc-novel-chemo-and-toxicity-in-icu",
+    "question": "A patient with metastatic melanoma treated with Nivolumab (anti-PD-1) and Ipilimumab (anti-CTLA-4) immune checkpoint inhibitors (ICIs) presents with profound fatigue, complete heart block, markedly elevated troponin I (14 ng/mL), and normal coronaries on angiography. What is the diagnosis and urgent first-line therapy?",
+    "options": [
+      "Immune Checkpoint Inhibitor-associated Myocarditis; treat immediately with high-dose Methylprednisolone pulse therapy (1000 mg/day IV)",
+      "Acute viral pericarditis; treat with high-dose NSAIDs and Colchicine",
+      "Takotsubo cardiomyopathy; treat with observation and beta-blockers",
+      "Coronary vasospasm; treat with Diltiazem infusion"
+    ],
+    "answer": "A",
+    "explanation": "ICI-associated myocarditis (incidence 1-2%, but mortality up to 40-50%) is an immune-related adverse event (irAE) characterized by T-cell infiltration into the myocardium. It presents early (often within first 1-2 months) with conduction abnormalities (high-grade AV block, ventricular arrhythmias), cardiogenic shock, and massive troponin elevation. Immediate high-dose corticosteroid pulse therapy (Methylprednisolone 1000 mg IV daily for 3 days) must be started immediately upon clinical suspicion. In refractory cases, Abatacept (CTLA-4 agonist) or Infliximab is added.",
+    "whyWrong": {
+      "B": "NSAIDs and colchicine are inadequate for lethal autoimmune lymphocytic myocarditis.",
+      "C": "Assuming Takotsubo and delaying pulse steroids leads to sudden fatal asystole or VT.",
+      "D": "Coronary vasospasm does not explain T-cell mediated conduction necrosis."
+    },
+    "difficulty": "hard",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: ICI myocarditis frequently co-occurs with myasthenia gravis-like syndrome (ptosis, diplopia, diaphragmatic weakness) and skeletal myositis. Check CPK in every suspected ICI myocarditis patient.",
+    "hyperlinkedReference": {
+      "label": "Moslehi JJ, et al. Immune checkpoint inhibitor myocarditis. Circulation 2021;144:1062-1083",
+      "url": "https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.121.053486"
+    },
+    "tags": [
+      "ICI Myocarditis",
+      "Pulse Methylprednisolone",
+      "Immune Checkpoint Inhibitors"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0505",
+    "chapterId": 31,
+    "topicId": "cc-infections-in-the-immunocompromised-host",
+    "question": "A 52-year-old renal transplant recipient maintained on Tacrolimus, Mycophenolate mofetil, and Prednisone presents with progressive dyspnea, non-productive dry cough, severe exercise desaturation (SpO2 drops from 95% to 78% on walking), and bilateral perihilar ground-glass opacities on chest CT. Serum (1,3)-beta-D-glucan is markedly elevated (>500 pg/mL). What is the preferred definitive antimicrobial therapy and secondary prophylaxis for Pneumocystis jirovecii Pneumonia (PJP)?",
+    "options": [
+      "Trimethoprim-Sulfamethoxazole (TMP-SMX: TMP 15-20 mg/kg/day IV divided q6-8h) plus Adjunctive Corticosteroids (if PaO2 < 70 mmHg or A-a gradient >= 35 mmHg)",
+      "Liposomal Amphotericin B (3-5 mg/kg/day)",
+      "Intravenous Voriconazole (6 mg/kg q12h loading)",
+      "Inhaled Tobramycin alone"
+    ],
+    "answer": "A",
+    "explanation": "Pneumocystis jirovecii Pneumonia (PJP/PCP) in solid organ transplant recipients manifests with subacute hypoxemic respiratory failure, dry cough, markedly elevated (1,3)-beta-D-glucan and LDH. The first-line treatment is Trimethoprim-Sulfamethoxazole (TMP 15-20 mg/kg/day plus SMX 75-100 mg/kg/day IV in divided doses for 21 days). Adjunctive corticosteroids (Prednisone 40 mg BID x 5 d, tapered over 21 d) are indicated if PaO2 on room air is < 70 mmHg or alveolar-arterial (A-a) oxygen gradient is >= 35 mmHg to prevent deterioration from lysis of organisms.",
+    "whyWrong": {
+      "B": "Amphotericin B is ineffective against Pneumocystis (its cell membrane lacks ergosterol; cholesterol is present instead).",
+      "C": "Azoles lack efficacy against PJP.",
+      "D": "Inhaled tobramycin treats Pseudomonas, not fungal PJP."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Pneumocystis lacks ergosterol in its fungal cell membrane, making it intrinsically resistant to Amphotericin B and Azole antifungals. TMP-SMX acts by inhibiting fungal folic acid synthesis.",
+    "hyperlinkedReference": {
+      "label": "Fishman JA. Pneumocystis jiroveci strain in solid organ transplantation. Am J Transplant 2020;20:259-268",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/ajt.15587"
+    },
+    "tags": [
+      "PJP Pneumonia",
+      "TMP-SMX",
+      "Adjunctive Corticosteroids"
+    ],
+    "verificationStatus": "VERIFIED"
   }
 ]

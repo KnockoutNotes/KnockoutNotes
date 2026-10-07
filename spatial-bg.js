@@ -119,6 +119,7 @@
     width = canvas.width = document.documentElement.clientWidth || window.innerWidth;
     height = canvas.height = window.innerHeight;
     initParticles();
+    initCalmClouds();
   });
 
   let mouse = { x: width * 0.5, y: height * 0.5, targetX: width * 0.5, targetY: height * 0.5 };
@@ -192,7 +193,42 @@
       });
     }
   }
+
+  // Calming Interactive Clouds Layer (Light Mode Exclusive)
+  let calmClouds = [];
+
+  function initCalmClouds() {
+    calmClouds = [];
+    const count = isSmallScreen() ? 4 : 7;
+    for (let i = 0; i < count; i++) {
+      const cloud = {
+        x: Math.random() * width,
+        y: (0.06 + (i / count) * 0.76) * height,
+        vx: 0.12 + Math.random() * 0.16,
+        scale: 0.65 + Math.random() * 0.5,
+        alpha: 0.26 + Math.random() * 0.14,
+        puffs: []
+      };
+      const puffCount = 5 + Math.floor(Math.random() * 3);
+      for (let j = 0; j < puffCount; j++) {
+        const angle = (j / puffCount) * Math.PI * 2;
+        const radius = (26 + Math.random() * 32) * cloud.scale;
+        const dist = (Math.random() * 42) * cloud.scale;
+        cloud.puffs.push({
+          ox: Math.cos(angle) * dist,
+          oy: Math.sin(angle) * (dist * 0.45) - (j === 0 ? 8 * cloud.scale : 0),
+          baseR: radius,
+          r: radius,
+          reachX: 0,
+          reachY: 0
+        });
+      }
+      calmClouds.push(cloud);
+    }
+  }
+
   initParticles();
+  initCalmClouds();
 
   let waveTime = 0;
 
@@ -377,6 +413,55 @@
       ctx.beginPath();
       ctx.arc(px, py, orb.r, 0, Math.PI * 2);
       ctx.fill();
+    }
+
+    // 1c. Calming Interactive Clouds Layer (Light Mode Exclusive)
+    if (!isDark && calmClouds && calmClouds.length) {
+      const reachRadius = isSmallScreen() ? 190 : 280;
+      for (let c = 0; c < calmClouds.length; c++) {
+        const cloud = calmClouds[c];
+        cloud.x += cloud.vx;
+        if (cloud.x - 200 * cloud.scale > width) {
+          cloud.x = -200 * cloud.scale;
+          cloud.y = (0.05 + Math.random() * 0.78) * height;
+        }
+
+        const cdx = mouse.x - cloud.x;
+        const cdy = mouse.y - cloud.y;
+        const cloudDist = Math.sqrt(cdx * cdx + cdy * cdy);
+        const isNear = cloudDist < reachRadius;
+
+        for (let p = 0; p < cloud.puffs.length; p++) {
+          const puff = cloud.puffs[p];
+          if (isNear) {
+            // Smoothly reach toward cursor with elastic spring pull
+            const pullFactor = (1 - cloudDist / reachRadius) * 0.36;
+            const targetX = cdx * pullFactor;
+            const targetY = cdy * pullFactor;
+            puff.reachX += (targetX - puff.reachX) * 0.055;
+            puff.reachY += (targetY - puff.reachY) * 0.055;
+            puff.r += ((puff.baseR * 1.12) - puff.r) * 0.055;
+          } else {
+            // Gently spring back to tranquil resting state
+            puff.reachX += (0 - puff.reachX) * 0.03;
+            puff.reachY += (0 - puff.reachY) * 0.03;
+            puff.r += (puff.baseR - puff.r) * 0.03;
+          }
+
+          const px = cloud.x + puff.ox + puff.reachX;
+          const py = cloud.y + puff.oy + puff.reachY;
+
+          const grad = ctx.createRadialGradient(px, py - puff.r * 0.15, puff.r * 0.12, px, py, puff.r);
+          grad.addColorStop(0, `rgba(255, 255, 255, ${cloud.alpha * 0.88})`);
+          grad.addColorStop(0.65, `rgba(240, 249, 255, ${cloud.alpha * 0.52})`);
+          grad.addColorStop(1, "rgba(224, 242, 254, 0)");
+
+          ctx.beginPath();
+          ctx.arc(px, py, puff.r, 0, Math.PI * 2);
+          ctx.fillStyle = grad;
+          ctx.fill();
+        }
+      }
     }
 
     // 2. Breathing Circuit Geometry Motifs (Rotary Anesthetic Vaporizer Dial Accent)

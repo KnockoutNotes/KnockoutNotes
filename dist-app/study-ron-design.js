@@ -1322,9 +1322,17 @@
                     <button type="button" class="kn-action-btn kn-pen-toggle-btn" title="Toggle Stylus / Pen Annotations" onclick="if(window.KN_ANNOTATIONS)window.KN_ANNOTATIONS.showToolbar();">
                       <span>✏️</span> <span>Draw</span>
                     </button>
-                    <button type="button" class="kn-action-btn kn-topic-mcq-btn" data-topic-mcq-target="${esc(item.id)}" title="Practice High Yield MCQs on this Topic">
-                      <span>📝</span> <span>MCQs</span>
-                    </button>
+                    ${(() => {
+                      const mappedChapter = STUDY_ITEM_TO_CHAPTER[item.id] || CAT_TO_CHAPTER[activeCat] || CAT_TO_CHAPTER[activeDomain];
+                      return `
+                        <button type="button" class="kn-action-btn kn-topic-mcq-btn" data-topic-mcq-target="${esc(item.id)}" data-mcq-mode="chapter" title="Practice Chapter ${mappedChapter || ''} MCQs">
+                          <span>📝</span> <span>${mappedChapter ? `Ch ${mappedChapter} MCQs` : 'Topic MCQs'}</span>
+                        </button>
+                        <button type="button" class="kn-action-btn kn-topic-mcq-btn" data-topic-mcq-target="${esc(item.id)}" data-mcq-mode="all" title="View & Practice All 505 MCQs">
+                          <span>⚡</span> <span>All MCQs (505)</span>
+                        </button>
+                      `;
+                    })()}
                   </div>
                 </div>
 
@@ -2099,12 +2107,17 @@
       e.stopPropagation();
       triggerHapticFeedback();
       const topicId = topicMcqBtn.getAttribute("data-topic-mcq-target");
+      const mode = topicMcqBtn.getAttribute("data-mcq-mode");
       const mappedChapter = STUDY_ITEM_TO_CHAPTER[topicId] || CAT_TO_CHAPTER[activeCat] || CAT_TO_CHAPTER[activeDomain];
       if (window.KN_MCQ && typeof window.KN_MCQ.open === "function") {
-        window.KN_MCQ.open({
-          topicId: topicId,
-          chapterId: mappedChapter
-        });
+        if (mode === "all") {
+          window.KN_MCQ.open({ viewMode: "practice", chapterId: "", topicId: "" });
+        } else {
+          window.KN_MCQ.open({
+            topicId: topicId,
+            chapterId: mappedChapter
+          });
+        }
       }
       return;
     }

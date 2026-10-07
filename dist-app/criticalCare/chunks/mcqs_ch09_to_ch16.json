@@ -3571,5 +3571,1542 @@
       "Incremental Response"
     ],
     "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0339",
+    "chapterId": 9,
+    "topicId": "cc-acute-respiratory-distress-syndrome-i",
+    "question": "According to the landmark ARDS Network (ARMA) trial, what is the target tidal volume and plateau pressure threshold for lung-protective ventilation in acute respiratory distress syndrome?",
+    "options": [
+      "10-12 mL/kg actual body weight; Plateau pressure < 40 cmH2O",
+      "6 mL/kg predicted body weight (PBW); Plateau pressure <= 30 cmH2O",
+      "8 mL/kg actual body weight; Peak pressure < 35 cmH2O",
+      "4 mL/kg ideal body weight; PEEP strictly > 20 cmH2O"
+    ],
+    "answer": "B",
+    "explanation": "The ARDSNet ARMA trial demonstrated a 22% relative reduction in mortality (31% vs 40%) with low tidal volume ventilation: 6 mL/kg predicted body weight (PBW) (range 4-8 mL/kg) and maintaining plateau pressure <= 30 cmH2O. Predicted body weight (based on sex and height) must be used rather than actual weight because lung size does not increase with adipose tissue.",
+    "whyWrong": {
+      "A": "Traditional 10-12 mL/kg caused significant volutrauma and higher mortality.",
+      "C": "Actual body weight causes fatal overinflation in obese patients; plateau pressure is the critical parameter, not peak.",
+      "D": "4 mL/kg is not the standard starting target and high PEEP > 20 is not universally indicated."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: PBW formula: Males = 50 + 0.91 x (height in cm - 152.4); Females = 45.5 + 0.91 x (height in cm - 152.4). Never set tidal volume based on actual weight.",
+    "hyperlinkedReference": {
+      "label": "ARDS Network. Ventilation with lower tidal volumes. N Engl J Med 2000;342:1301-1308",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJM200005043421801"
+    },
+    "tags": [
+      "ARDSNet",
+      "Lung Protective Ventilation",
+      "ARMA Trial"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0340",
+    "chapterId": 9,
+    "topicId": "cc-acute-respiratory-distress-syndrome-i",
+    "question": "In the PROSEVA trial by Guerin et al., which patient population and session duration demonstrated a dramatic reduction in 28-day mortality (16% vs 32.8%) with prone positioning in ARDS?",
+    "options": [
+      "Mild ARDS (PaO2/FiO2 200-300); prone for 4-6 hours per day",
+      "Severe ARDS (PaO2/FiO2 < 150 mmHg on PEEP >= 5 cmH2O and FiO2 >= 0.6); prone for at least 16 consecutive hours per session",
+      "Refractory hypercapnic COPD; prone for 2 hours post-extubation",
+      "Cardiogenic pulmonary edema with EF < 25%; prone for 24 hours continuously"
+    ],
+    "answer": "B",
+    "explanation": "The PROSEVA trial proved that in severe ARDS (PaO2/FiO2 < 150 with PEEP >= 5 and FiO2 >= 0.6), early and prolonged prone positioning for at least 16 consecutive hours per day significantly halved 28-day mortality (16.0% prone vs 32.8% supine, p < 0.001).",
+    "whyWrong": {
+      "A": "Mild ARDS does not benefit from proning, and short durations (< 12 hours) failed in earlier trials.",
+      "C": "Proning is not indicated for COPD exacerbation.",
+      "D": "Proning is an ARDS intervention, not an acute heart failure therapy."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Physiological benefits of proning: homogeneous ventilation distribution, decreased ventral-dorsal transpulmonary pressure gradient, improved ventilation-perfusion matching, and relief of cardiac compression on lower lung lobes.",
+    "hyperlinkedReference": {
+      "label": "Guerin C, et al. PROSEVA trial. N Engl J Med 2013;368:2159-2168",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1214103"
+    },
+    "tags": [
+      "PROSEVA",
+      "Prone Positioning",
+      "ARDS"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0341",
+    "chapterId": 9,
+    "topicId": "cc-acute-respiratory-distress-syndrome-i",
+    "question": "Regarding the use of continuous Neuromuscular Blockade (NMBA) in early severe ARDS, how did the findings of the ROSE trial (PETAL Network, 2019) contrast with the earlier ACURASYS trial (2010)?",
+    "options": [
+      "ROSE demonstrated that NMBA increased mortality by 50%",
+      "ROSE showed no 90-day mortality difference between early cisatracurium with deep sedation versus a light-sedation strategy without routine paralysis",
+      "ROSE proved that rocuronium is superior to cisatracurium in ARDS",
+      "ROSE demonstrated that NMBA eliminated the need for prone positioning"
+    ],
+    "answer": "B",
+    "explanation": "While the 2010 ACURASYS trial suggested a 90-day survival benefit with 48 hours of cisatracurium infusion in severe ARDS, the larger ROSE trial (2019) utilized modern light-sedation targets in the control arm and found no significant difference in 90-day mortality (42.5% vs 42.8%). Consequently, continuous paralysis is now reserved for patients with severe patient-ventilator dyssynchrony, refractory hypoxemia, or high plateau pressures despite deep sedation.",
+    "whyWrong": {
+      "A": "ROSE did not show increased mortality with NMBA; it showed equivalence.",
+      "C": "ROSE tested cisatracurium, not rocuronium.",
+      "D": "Proning remains independently indicated regardless of NMBA protocol."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: The key difference between ACURASYS and ROSE was that the control group in ROSE received light sedation, allowing spontaneous breathing, whereas ACURASYS deeply sedated both groups.",
+    "hyperlinkedReference": {
+      "label": "Moss M, et al. ROSE trial (PETAL Network). N Engl J Med 2019;380:1997-2008",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1901686"
+    },
+    "tags": [
+      "ROSE Trial",
+      "ACURASYS",
+      "Neuromuscular Blockade",
+      "ARDS"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0342",
+    "chapterId": 9,
+    "topicId": "cc-acute-respiratory-distress-syndrome-ii",
+    "question": "What critical safety warning did the ART trial (Alveolar Recruitment for ARDS Trial, 2017) reveal regarding high-pressure staircase lung recruitment maneuvers and PEEP titration to best compliance?",
+    "options": [
+      "Recruitment maneuvers caused higher 28-day mortality, increased barotrauma (pneumothorax), and hemodynamic collapse",
+      "Recruitment maneuvers permanently cured severe ARDS within 24 hours",
+      "Recruitment maneuvers caused severe acute hypernatremia",
+      "Recruitment maneuvers led to profound pulmonary vasodilation"
+    ],
+    "answer": "A",
+    "explanation": "The ART trial evaluated aggressive staircase recruitment maneuvers (airway pressures up to 50-60 cmH2O) combined with decremental PEEP titration. The recruitment group had significantly higher 28-day mortality (55.3% vs 49.3%), higher pneumothorax rates requiring drainage, and frequent hemodynamic collapse. Aggressive high-pressure recruitment maneuvers are therefore strongly advised against.",
+    "whyWrong": {
+      "B": "The trial was negative and demonstrated harm, not a cure.",
+      "C": "Recruitment affects hemodynamics and barotrauma, not sodium balance.",
+      "D": "High intrathoracic pressures compress pulmonary capillaries, increasing RV afterload."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: SSC and ATS/ESICM ARDS guidelines recommend AGAINST routine high-pressure staircase recruitment maneuvers in ARDS.",
+    "hyperlinkedReference": {
+      "label": "Cavalcanti AB, et al. ART trial. JAMA 2017;318:1335-1345",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/2654894"
+    },
+    "tags": [
+      "ART Trial",
+      "Recruitment Maneuver",
+      "Barotrauma"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0343",
+    "chapterId": 9,
+    "topicId": "cc-acute-respiratory-distress-syndrome-i",
+    "question": "What is the defining threshold for 'Severe ARDS' under the Berlin definition regarding the PaO2/FiO2 ratio on a minimum PEEP of 5 cmH2O?",
+    "options": [
+      "PaO2/FiO2 <= 100 mmHg",
+      "PaO2/FiO2 between 101 and 200 mmHg",
+      "PaO2/FiO2 between 201 and 300 mmHg",
+      "PaO2/FiO2 > 300 mmHg"
+    ],
+    "answer": "A",
+    "explanation": "Under the Berlin definition: Mild ARDS = PaO2/FiO2 201-300 mmHg (with PEEP/CPAP >= 5); Moderate ARDS = PaO2/FiO2 101-200 mmHg (with PEEP >= 5); Severe ARDS = PaO2/FiO2 <= 100 mmHg (with PEEP >= 5).",
+    "whyWrong": {
+      "B": "101-200 mmHg is Moderate ARDS.",
+      "C": "201-300 mmHg is Mild ARDS.",
+      "D": "> 300 mmHg is normal / non-ARDS."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Severe ARDS carries an observed in-hospital mortality of approximately 45%, Moderate ARDS ~32%, and Mild ARDS ~27%.",
+    "hyperlinkedReference": {
+      "label": "ARDS Definition Task Force. Berlin Definition. JAMA 2012;307:2526-2533",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/1160029"
+    },
+    "tags": [
+      "Berlin Definition",
+      "Severe ARDS",
+      "PaO2/FiO2"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0344",
+    "chapterId": 9,
+    "topicId": "cc-acute-respiratory-distress-syndrome-ii",
+    "question": "In the management of refractory hypoxemia in ARDS, how does Inhaled Nitric Oxide (iNO) selectively improve oxygenation without causing systemic hypotension?",
+    "options": [
+      "It diffuses across the chest wall to relax the diaphragm directly",
+      "It produces selective vasodilation exclusively in well-ventilated lung units, redistributing blood flow away from non-ventilated consolidated units (reducing shunt), and is rapidly inactivated by hemoglobin upon entering the circulation",
+      "It increases systemic vascular resistance by activating alpha-1 receptors",
+      "It induces systemic methemoglobinemia that shifts the oxygen dissociation curve leftwards"
+    ],
+    "answer": "B",
+    "explanation": "Inhaled nitric oxide (iNO, 5-20 ppm) is delivered directly into ventilated alveoli, causing selective local pulmonary vasodilation. Blood flow is diverted from non-ventilated/atelectatic regions to ventilated regions, improving V/Q matching and reducing intrapulmonary shunt. Once it enters the bloodstream, it binds instantaneously with hemoglobin (forming nitrosyl-hemoglobin and methemoglobin), preventing systemic vasodilation.",
+    "whyWrong": {
+      "A": "iNO has no effect on diaphragmatic contractility.",
+      "C": "iNO is a vasodilator, not a vasoconstrictor.",
+      "D": "Methemoglobinemia is a potential toxic side effect that must be monitored, not the therapeutic mechanism."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: While iNO transiently improves oxygenation and reduces pulmonary vascular resistance in ARDS, randomized trials show no reduction in overall mortality.",
+    "hyperlinkedReference": {
+      "label": "Taylor RW, et al. Low-dose inhaled nitric oxide in ARDS. JAMA 2004;291:1603-1609",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/198535"
+    },
+    "tags": [
+      "Inhaled Nitric Oxide",
+      "Refractory Hypoxemia",
+      "Shunt Fraction"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0345",
+    "chapterId": 9,
+    "topicId": "cc-acute-respiratory-distress-syndrome-ii",
+    "question": "According to the updated global consensus proposal on ARDS, which modification was introduced to address resource-limited settings where arterial blood gas sampling and mechanical PEEP are unavailable?",
+    "options": [
+      "Inclusion of non-intubated patients on HFNC (>= 30 L/min) or NIV, and using SpO2/FiO2 ratio <= 315 (when SpO2 <= 97%) as a validated surrogate for PaO2/FiO2",
+      "Requiring mandatory pulmonary artery catheter placement in all patients",
+      "Using chest MRI as the sole imaging modality",
+      "Abolishing the requirement for bilateral infiltrates"
+    ],
+    "answer": "A",
+    "explanation": "The 2023 Global Definition of ARDS expands the Berlin criteria by: (1) Allowing SpO2/FiO2 ratio (Kigali modification: SpO2/FiO2 <= 315 when SpO2 <= 97%) when PaO2 is unavailable, (2) Allowing lung ultrasound as an alternative to chest CT/X-ray, and (3) Including non-intubated patients receiving HFNC >= 30 L/min.",
+    "whyWrong": {
+      "B": "Pulmonary artery catheters are not required for ARDS diagnosis.",
+      "C": "Chest MRI is impractical in critically ill patients.",
+      "D": "Bilateral lung opacities remain a fundamental diagnostic requirement."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: The Kigali modification proved that SpO2/FiO2 <= 315 corresponds closely to PaO2/FiO2 <= 300, and SpO2/FiO2 <= 235 corresponds to PaO2/FiO2 <= 200.",
+    "hyperlinkedReference": {
+      "label": "Matthay MA, et al. A new global definition of ARDS. AJRCCM 2024;209:37-47",
+      "url": "https://www.atsjournals.org/doi/10.1164/rccm.202303-0558WS"
+    },
+    "tags": [
+      "Global ARDS Definition",
+      "Kigali Modification",
+      "SpO2/FiO2"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0346",
+    "chapterId": 10,
+    "topicId": "cc-acute-severe-asthma",
+    "question": "In a mechanically ventilated patient with life-threatening status asthmaticus, what is the rationale and clinical target for 'Permissive Hypercapnia'?",
+    "options": [
+      "Deliberately targeting PaCO2 > 90 mmHg to stimulate peripheral chemoreceptors",
+      "Accepting an elevated PaCO2 (often 60-80 mmHg) while maintaining pH >= 7.20, to allow low respiratory rates (10-12/min), small tidal volumes (5-7 mL/kg), and prolonged expiratory times (I:E 1:4 to 1:5) that prevent catastrophic dynamic hyperinflation and barotrauma",
+      "Hyperventilating to pH > 7.60 to induce bronchodilation",
+      "Infusing sodium bicarbonate to strictly maintain PaCO2 < 35 mmHg"
+    ],
+    "answer": "B",
+    "explanation": "In severe status asthmaticus, the primary ventilatory objective is to prevent fatal dynamic hyperinflation, breath stacking, and tension pneumothorax. Permissive hypercapnia allows PaCO2 to rise while keeping plateau pressure < 30 cmH2O and pH >= 7.20 by using low rates (10-14/min) and long expiratory times (I:E 1:4).",
+    "whyWrong": {
+      "A": "Extreme PaCO2 > 90 causes severe intracranial hypertension and myocardial depression.",
+      "C": "Hyperventilating severely worsens dynamic hyperinflation and causes cardiac arrest.",
+      "D": "Bicarbonate does not lower PaCO2; it increases CO2 generation."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In ventilated asthma, absolute contraindications to permissive hypercapnia include traumatic brain injury (raised ICP) and severe pulmonary hypertension.",
+    "hyperlinkedReference": {
+      "label": "Tuxen DV. Permissive hypercapnic hypoventilation. Am Rev Respir Dis 1992;146:1136",
+      "url": "https://www.atsjournals.org/doi/abs/10.1164/ajrccm/146.5_Pt_1.1136"
+    },
+    "tags": [
+      "Status Asthmaticus",
+      "Permissive Hypercapnia",
+      "Dynamic Hyperinflation"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0347",
+    "chapterId": 10,
+    "topicId": "cc-acute-severe-asthma",
+    "question": "A mechanically ventilated asthma patient suddenly develops severe hypotension (BP 60/30 mmHg), sinus tachycardia (145/min), and loss of end-tidal CO2 trace. What is the immediate first step in management?",
+    "options": [
+      "Administer an IV bolus of Adrenaline 1 mg stat",
+      "Disconnect the patient from the ventilator circuit immediately and manually compress the chest to allow passive exhalation of trapped gas",
+      "Perform bilateral emergency tube thoracostomy blindly",
+      "Start an immediate infusion of Milrinone"
+    ],
+    "answer": "B",
+    "explanation": "Sudden hemodynamic collapse in a ventilated asthma patient is most commonly due to severe dynamic hyperinflation (tension auto-PEEP) compressing the vena cava and arresting venous return, or tension pneumothorax. The immediate priority is 'D-disconnect' from the ventilator to allow trapped intrathoracic gas to escape passively.",
+    "whyWrong": {
+      "A": "Adrenaline will not restore cardiac output if venous return is mechanically obstructed by auto-PEEP.",
+      "C": "Thoracostomy is done if hypotension persists after desufflation and decompression.",
+      "D": "Inotropes cannot overcome severe mechanical preload obstruction."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Disconnecting from the ventilator for 30-60 seconds relieves auto-PEEP; if BP rebounds immediately, excessive minute ventilation and air trapping was the culprit.",
+    "hyperlinkedReference": {
+      "label": "Oddo M, et al. Management of mechanical ventilation in acute severe asthma. Ann Intensive Care 2017;7:75",
+      "url": "https://annalsofintensivecare.springeropen.com/articles/10.1186/s13613-017-0298-6"
+    },
+    "tags": [
+      "Auto-PEEP Collapse",
+      "Ventilator Disconnection",
+      "Asthma Emergency"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0348",
+    "chapterId": 10,
+    "topicId": "cc-acute-exacerbation-of-copd",
+    "question": "In a patient with severe acute exacerbation of COPD failing medical therapy, which arterial blood gas parameters fulfill the classical indications for initiating non-invasive positive pressure ventilation (BiPAP)?",
+    "options": [
+      "pH < 7.35 with PaCO2 > 45 mmHg (respiratory acidosis) despite standard medical management",
+      "pH > 7.45 with PaCO2 < 30 mmHg (respiratory alkalosis)",
+      "Isolated PaO2 < 80 mmHg with normal PaCO2",
+      "Metabolic acidosis with normal PaCO2"
+    ],
+    "answer": "A",
+    "explanation": "The established indication for NIV in COPD exacerbation is acute or acute-on-chronic respiratory acidosis: pH < 7.35 and PaCO2 > 45 mmHg. Early NIV reduces endotracheal intubation by > 60% and in-hospital mortality by ~50%.",
+    "whyWrong": {
+      "B": "Respiratory alkalosis indicates hyperventilation without ventilatory failure.",
+      "C": "Isolated hypoxemia with normal PaCO2 is treated with controlled oxygen, not immediate BiPAP.",
+      "D": "Metabolic acidosis alone does not warrant BiPAP unless ventilatory compensation is exhausted."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: If pH is < 7.25 after 1-2 hours of NIV in COPD, the failure rate is high (> 50%), prompting consideration of invasive intubation.",
+    "hyperlinkedReference": {
+      "label": "Lightowler JV, et al. Non-invasive positive pressure ventilation for acute respiratory failure in COPD. BMJ 2003;326:185",
+      "url": "https://www.bmj.com/content/326/7382/185"
+    },
+    "tags": [
+      "COPD Exacerbation",
+      "NIV Indication",
+      "BiPAP"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0349",
+    "chapterId": 10,
+    "topicId": "cc-weaning-from-mechanical-ventilation",
+    "question": "Before extubation, a 'Cuff Leak Test' is performed in a patient who was intubated for 10 days. The endotracheal tube cuff is deflated. What cuff leak volume threshold indicates a high risk of post-extubation laryngeal edema and stridor?",
+    "options": [
+      "Leak volume > 300 mL (or > 50% of delivered tidal volume)",
+      "Leak volume < 110 mL (or < 15-24% of the delivered tidal volume)",
+      "Leak volume equal to delivered tidal volume",
+      "Any audible air leak around the tube"
+    ],
+    "answer": "B",
+    "explanation": "A negative cuff leak test (leak volume < 110 mL or < 15-24% of baseline tidal volume) indicates that airway secretions, laryngeal edema, or mucosal swelling are obstructing airflow around the deflated tube, signaling high risk for post-extubation stridor.",
+    "whyWrong": {
+      "A": "Leak > 300 mL confirms a patent laryngeal space around the tube (low stridor risk).",
+      "C": "Complete leak volume means no laryngeal obstruction.",
+      "D": "Audible leak indicates patency, not obstruction."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: When a cuff leak is absent (< 110 mL), administering IV Methylprednisolone (20-40 mg every 4-6 hours for 12-24 hours prior to extubation) significantly reduces post-extubation stridor and reintubation.",
+    "hyperlinkedReference": {
+      "label": "Ochoa ME, et al. Evaluation of extubation failure and the cuff leak test. Crit Care 2009;13:R141",
+      "url": "https://ccforum.biomedcentral.com/articles/10.1186/cc8024"
+    },
+    "tags": [
+      "Cuff Leak Test",
+      "Post-Extubation Stridor",
+      "Weaning"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0350",
+    "chapterId": 10,
+    "topicId": "cc-weaning-from-mechanical-ventilation",
+    "question": "In the comparison between a T-Piece spontaneous breathing trial (SBT) and a Low-Pressure Support SBT (e.g. PSV 5-8 cmH2O with PEEP 0-5 cmH2O), what did modern clinical trials (e.g. Subira et al., JAMA 2019) demonstrate?",
+    "options": [
+      "T-piece trials resulted in higher successful extubation rates without reintubation",
+      "Pressure support SBT significantly increased successful extubation rates (82.3% vs 74.0%) compared to T-piece trials, without increasing reintubation rates",
+      "T-piece trials were associated with zero post-extubation complications",
+      "Both techniques are entirely identical in all clinical outcomes"
+    ],
+    "answer": "B",
+    "explanation": "Subira et al. (JAMA 2019, 1153 patients) demonstrated that an initial 30-minute pressure support SBT (PS 8 cmH2O, PEEP 0) led to significantly higher rates of successful extubation (82.3% vs 74.0%, p=0.001) compared to a 2-hour T-piece trial, without increasing reintubation rates within 72 hours.",
+    "whyWrong": {
+      "A": "T-piece had lower successful extubation rates due to higher work of breathing through the artificial tube.",
+      "C": "T-piece trials resulted in more muscle exhaustion.",
+      "D": "The difference was statistically significant in favor of pressure support."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: Modern ATS/CHEST weaning guidelines recommend conducting an initial SBT with inspiratory pressure augmentation (PS 5-8 cmH2O) rather than unassisted T-piece.",
+    "hyperlinkedReference": {
+      "label": "Subira C, et al. Effect of Pressure Support vs T-Piece SBT on Extubation. JAMA 2019;321:2175-2182",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/2735740"
+    },
+    "tags": [
+      "SBT",
+      "T-Piece vs PSV",
+      "Weaning Trials"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0351",
+    "chapterId": 10,
+    "topicId": "cc-acute-severe-asthma",
+    "question": "What is the recommended dose and mechanism of Intravenous Magnesium Sulfate in acute refractory severe asthma failing inhaled bronchodilators?",
+    "options": [
+      "Magnesium Sulfate 2 g IV infused over 20 minutes; blocks calcium influx into airway smooth muscle, inhibits acetylcholine release, and promotes bronchial relaxation",
+      "Magnesium Sulfate 10 g IV bolus over 1 minute; directly stimulates beta-2 receptors",
+      "Magnesium Sulfate 500 mg orally once daily",
+      "Magnesium Sulfate continuous infusion at 5 g/hour targeting serum level > 12 mg/dL"
+    ],
+    "answer": "A",
+    "explanation": "IV Magnesium Sulfate (2.0 g in adults infused over 20 minutes) acts as a physiological calcium antagonist, inhibiting calcium entry into bronchial smooth muscle cells and blocking acetylcholine release at motor nerve terminals, producing bronchodilation.",
+    "whyWrong": {
+      "B": "Rapid 10 g bolus can cause fatal asystole, respiratory paralysis, and profound vasodilation.",
+      "C": "Oral magnesium is an osmotic laxative without acute pulmonary bioavailability.",
+      "D": "Serum levels > 10-12 mg/dL cause respiratory arrest and loss of deep tendon reflexes."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: IV magnesium sulfate is recommended by GINA for patients presenting with severe acute asthma (FEV1 < 50% or PEF < 50%) unresponsive to initial nebulization.",
+    "hyperlinkedReference": {
+      "label": "Goodacre S, et al. 3Mg trial. Lancet Respir Med 2013;1:293-300",
+      "url": "https://www.thelancet.com/journals/lanres/article/PIIS2213-2600(13)70070-5/fulltext"
+    },
+    "tags": [
+      "Magnesium Sulfate",
+      "Severe Asthma",
+      "Bronchodilator"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0352",
+    "chapterId": 11,
+    "topicId": "cc-malignant-arrhythmias-in-the-icu",
+    "question": "In a patient presenting with polymorphic ventricular tachycardia and a prolonged baseline QT interval (Torsades de Pointes) who is hemodynamically stable, what is the initial first-line pharmacological treatment of choice?",
+    "options": [
+      "Intravenous Amiodarone 150 mg bolus",
+      "Intravenous Magnesium Sulfate 2 g bolus over 2-3 minutes",
+      "Intravenous Procainamide 100 mg",
+      "Intravenous Digoxin 0.5 mg"
+    ],
+    "answer": "B",
+    "explanation": "Intravenous Magnesium Sulfate (2 g IV over 1-2 minutes, repeatable) is the first-line therapy for Torsades de Pointes with prolonged QT, regardless of the baseline serum magnesium level. It suppresses early afterdepolarizations (EADs). Class IA (procainamide) and Class III (amiodarone) antiarrhythmics are strictly CONTRAINDICATED as they further prolong the QT interval.",
+    "whyWrong": {
+      "A": "Amiodarone prolongs the QT interval and can precipitate intractable ventricular fibrillation.",
+      "C": "Procainamide is Class IA and further lengthens QT.",
+      "D": "Digoxin can trigger triggered activity and worsening arrhythmias."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: For recurrent Torsades refractory to magnesium, temporary transvenous pacing or isoproterenol infusion targeting a heart rate of 100-110/min shortens the QT interval ('overdrive suppression').",
+    "hyperlinkedReference": {
+      "label": "Al-Khatib SM, et al. AHA/ACC/HRS Ventricular Arrhythmias Guidelines. Circulation 2018;138:e272",
+      "url": "https://www.ahajournals.org/doi/10.1161/CIR.0000000000000549"
+    },
+    "tags": [
+      "Torsades de Pointes",
+      "Magnesium",
+      "Long QT"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0353",
+    "chapterId": 11,
+    "topicId": "cc-cardiac-tamponade-and-pericardial-emergencies",
+    "question": "What is the hemodynamic definition of 'Pulsus Paradoxus' in cardiac tamponade?",
+    "options": [
+      "An increase in systolic blood pressure > 10 mmHg during normal inspiration",
+      "An inspiratory drop in systolic blood pressure greater than 10 mmHg during spontaneous breathing",
+      "A decrease in pulse rate during inspiration",
+      "An alternating QRS amplitude on electrocardiogram"
+    ],
+    "answer": "B",
+    "explanation": "Pulsus paradoxus is defined as an abnormally large decrease in systolic blood pressure (> 10 mmHg) during spontaneous inspiration. In cardiac tamponade, ventricular interdependence is exaggerated within the constrained pericardial space: inspiratory RV filling pushes the interventricular septum leftward, encroaching on LV filling and dropping LV stroke volume.",
+    "whyWrong": {
+      "A": "Inspiration causes an exaggerated drop, not an increase.",
+      "C": "Heart rate change with respiration is sinus arrhythmia.",
+      "D": "Alternating QRS amplitude is electrical alternans, not pulsus paradoxus."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: During mechanical positive-pressure ventilation, the respiratory cycle is reversed: pulsus paradoxus presents as an expiratory drop in blood pressure.",
+    "hyperlinkedReference": {
+      "label": "Spodick DH. Acute cardiac tamponade. N Engl J Med 2003;349:684-690",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMra022643"
+    },
+    "tags": [
+      "Pulsus Paradoxus",
+      "Cardiac Tamponade",
+      "Echocardiography"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0354",
+    "chapterId": 11,
+    "topicId": "cc-cardiac-tamponade-and-pericardial-emergencies",
+    "question": "On echocardiography, which sign represents the most SPECIFIC (though late) acoustic marker of hemodynamic cardiac tamponade?",
+    "options": [
+      "Early diastolic collapse of the Right Ventricle free wall",
+      "Late diastolic inversion / collapse of the Right Atrium free wall",
+      "Presence of a trivial anterior pericardial effusion",
+      "Hyperdynamic left ventricular ejection fraction"
+    ],
+    "answer": "A",
+    "explanation": "Right ventricular early diastolic collapse (seen when pericardial pressure exceeds RV diastolic pressure at the moment of mitral/tricuspid opening) is the most specific echocardiographic sign of tamponade (~90% specificity). Right atrial late diastolic collapse occurs earlier and is more sensitive (~100%), but less specific.",
+    "whyWrong": {
+      "B": "Right atrial collapse is more sensitive (early sign), but less specific than RV diastolic collapse.",
+      "C": "Trivial anterior fluid does not cause tamponade.",
+      "D": "Hyperdynamic EF is non-specific and occurs in hyperadrenergic states."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Mitral inflow Doppler variation > 25% and Tricuspid inflow variation > 40% across respiration are quantitative spectral Doppler criteria for tamponade.",
+    "hyperlinkedReference": {
+      "label": "Adler Y, et al. ESC Guidelines on pericardial diseases. Eur Heart J 2015;36:2921-2964",
+      "url": "https://academic.oup.com/eurheartj/article/36/42/2921/2293375"
+    },
+    "tags": [
+      "Tamponade",
+      "RV Diastolic Collapse",
+      "POCUS Echo"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0355",
+    "chapterId": 11,
+    "topicId": "cc-malignant-arrhythmias-in-the-icu",
+    "question": "A patient with refractory ventricular tachycardia (Electrical Storm) has received multiple shocks, amiodarone, and lidocaine. Which autonomic intervention is highly effective in terminating VT storm driven by sympathetic hyperactivation?",
+    "options": [
+      "High-dose Isoprenaline infusion",
+      "Left Stellate Ganglion Block (LSGB) / thoracic epidural anesthesia with sympathetic blockade",
+      "Atropine 3 mg IV bolus",
+      "Epinephrine boluses"
+    ],
+    "answer": "B",
+    "explanation": "In ventricular electrical storm, massive sympathetic hyperactivation perpetuates ventricular arrhythmogenicity. Left Stellate Ganglion Block (LSGB) percutaneously with local anesthetic interrupts cardiac sympathetic outflow, dramatically suppressing arrhythmias refractory to antiarrhythmic drugs and defibrillation.",
+    "whyWrong": {
+      "A": "Isoprenaline increases sympathetic activity and triggers VT.",
+      "C": "Atropine increases sinus rate without blocking ventricular adrenergic storm.",
+      "D": "Epinephrine will exacerbate ventricular fibrillation/tachycardia."
+    },
+    "difficulty": "difficult",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: Non-selective beta-blockade with oral Propranolol or IV Esmolol is superior to metoprolol in electrical storm because it blocks both beta-1 and presynaptic beta-2 adrenergic transmission.",
+    "hyperlinkedReference": {
+      "label": "Bourke T, et al. Autonomic modulation for ventricular arrhythmias. JACC 2010;55:2355-2362",
+      "url": "https://www.jacc.org/doi/10.1016/j.jacc.2010.01.038"
+    },
+    "tags": [
+      "Electrical Storm",
+      "Stellate Ganglion Block",
+      "Sympathetic Modulation"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0356",
+    "chapterId": 11,
+    "topicId": "cc-cardiogenic-shock-i",
+    "question": "What is the typical hemodynamic and echocardiographic hallmark of acute Right Ventricular (RV) failure in critical illness?",
+    "options": [
+      "Elevated PCWP with normal CVP",
+      "Elevated CVP, low or normal PCWP, dilated RV with D-shaped left ventricle in diastole/systole, and pulmonary hypertension or RV outflow tract obstruction",
+      "High cardiac index with low systemic vascular resistance",
+      "Isolated left ventricular apical ballooning with basilar hypercontractility"
+    ],
+    "answer": "B",
+    "explanation": "Acute cor pulmonale / RV failure presents with: elevated right-sided filling pressures (high CVP), low or normal left-sided pressures (PCWP), RV dilatation (RV/LV end-diastolic area ratio > 0.6 to 1.0), and interventricular septal flattening producing a 'D-shaped LV'.",
+    "whyWrong": {
+      "A": "High PCWP with normal CVP characterizes isolated LV failure.",
+      "C": "High CI with low SVR characterizes hyperdynamic distributive septic shock.",
+      "D": "Apical ballooning is Takotsubo cardiomyopathy."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: In acute RV failure, excessive fluid administration causes RV overdistension, worsens tricuspid regurgitation, and precipitates LV compression (ventricular interdependence). Judicious diuresis and inotropes (milrinone/dobutamine) are indicated.",
+    "hyperlinkedReference": {
+      "label": "Vieillard-Baron A, et al. Acute cor pulmonale in ARDS. Intensive Care Med 2016;42:686-697",
+      "url": "https://link.springer.com/article/10.1007/s00134-016-4320-9"
+    },
+    "tags": [
+      "RV Failure",
+      "Acute Cor Pulmonale",
+      "D-Shaped LV"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0357",
+    "chapterId": 11,
+    "topicId": "cc-cardiogenic-shock-ii",
+    "question": "On post-infarction day 4, a patient with STEMI develops sudden severe pulmonary edema and cardiogenic shock. Physical exam reveals a new, harsh, holosystolic murmur at the apex radiating to the axilla. Echocardiography confirms acute Papillary Muscle Rupture. Which papillary muscle is most commonly involved, and why?",
+    "options": [
+      "Anterolateral papillary muscle; because it receives dual blood supply from LAD and LCx",
+      "Posteromedial papillary muscle; because it has a single blood supply exclusively from the Posterior Descending Artery (PDA)",
+      "Septal papillary muscle; because of high RV wall tension",
+      "Both muscles are ruptured simultaneously in 100% of cases"
+    ],
+    "answer": "B",
+    "explanation": "The posteromedial papillary muscle ruptures 6 to 10 times more frequently than the anterolateral muscle because it has a solitary arterial blood supply (either from the RCA or LCx via the PDA). In contrast, the anterolateral papillary muscle receives dual blood supply from both the LAD and the LCx diagonal/marginal branches.",
+    "whyWrong": {
+      "A": "The anterolateral muscle rarely ruptures because its dual blood supply protects it from total ischemia.",
+      "C": "The septal muscle is in the right ventricle (tricuspid valve).",
+      "D": "Simultaneous rupture of both mitral papillary muscles is exceptionally rare and rapidly fatal."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Acute severe mitral regurgitation from papillary muscle rupture requires emergency afterload reduction (IABP / sodium nitroprusside) and emergent surgical mitral valve replacement.",
+    "hyperlinkedReference": {
+      "label": "Kutty RS, et al. Mechanical complications of acute myocardial infarction. Postgrad Med J 2013;89:524-532",
+      "url": "https://pmj.bmj.com/content/89/1055/524"
+    },
+    "tags": [
+      "Papillary Muscle Rupture",
+      "Mitral Regurgitation",
+      "Post-MI Complications"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0358",
+    "chapterId": 12,
+    "topicId": "cc-post-cardiac-arrest-care",
+    "question": "According to the landmark TTM2 trial (Targeted Temperature Management 2, NEJM 2021) in comatose out-of-hospital cardiac arrest survivors, what was the primary finding comparing targeted hypothermia (33 deg C) versus targeted normothermia (<= 37.5 deg C)?",
+    "options": [
+      "Hypothermia at 33 deg C reduced 6-month mortality by 25%",
+      "Targeted hypothermia at 33 deg C did not reduce 6-month mortality or improve functional neurological outcomes compared to targeted normothermia with early fever prevention (<= 37.5 deg C)",
+      "Targeted normothermia doubled the rate of intracranial hemorrhage",
+      "Hypothermia at 33 deg C eliminated all cardiac arrhythmias"
+    ],
+    "answer": "B",
+    "explanation": "In the TTM2 trial (1900 patients), targeted hypothermia at 33 deg C did not lead to lower 6-month mortality compared with targeted normothermia (maintaining temperature <= 37.5 deg C with active cooling only for temp >= 37.8 deg C) (50% vs 48%, p=0.37), and functional outcomes were identical. Arrhythmias were significantly more frequent in the 33 deg C group.",
+    "whyWrong": {
+      "A": "Hypothermia showed zero mortality benefit in TTM2.",
+      "C": "Normothermia did not increase intracranial hemorrhage.",
+      "D": "Hypothermia increased arrhythmias causing hemodynamic compromise (24% vs 17%)."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Current 2026 post-resuscitation guidelines recommend actively preventing fever (temperature strictly <= 37.5 deg C) for at least 72 hours post-cardiac arrest.",
+    "hyperlinkedReference": {
+      "label": "Dankiewicz J, et al. TTM2 trial. N Engl J Med 2021;384:2283-2294",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2100591"
+    },
+    "tags": [
+      "TTM2 Trial",
+      "Targeted Temperature Management",
+      "Post-Cardiac Arrest"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0359",
+    "chapterId": 12,
+    "topicId": "cc-post-cardiac-arrest-care",
+    "question": "What is the earliest recommended time point following cardiac arrest and rewarming to perform multimodal neuroprognostication in comatose patients, to avoid premature withdrawal of life-sustaining therapy?",
+    "options": [
+      "12 hours post-ROSC",
+      "24 hours post-ROSC",
+      "At least 72 hours post-ROSC (and after major sedative clearance)",
+      "Strictly 14 days post-ROSC"
+    ],
+    "answer": "C",
+    "explanation": "Neuroprognostication should never be finalized before at least 72 hours post-ROSC (and at least 72 hours post-normothermia if cooled), after excluding confounders such as residual sedation, neuromuscular blockade, severe hypothermia, or metabolic encephalopathy.",
+    "whyWrong": {
+      "A": "12 hours is far too early; neurological stunning / transient coma can recover.",
+      "B": "24 hours risks premature withdrawal of life support in patients who may recover.",
+      "D": "14 days is unnecessarily delayed for initial formal multimodal prognostic assessment."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Bilaterally absent pupillary light reflexes AND bilaterally absent somatosensory evoked potential (SSEP) N20 cortical responses at >= 72 hours predict poor outcome with false-positive rates near 0%.",
+    "hyperlinkedReference": {
+      "label": "Nolan JP, et al. ERC-ESICM Post-resuscitation care guidelines. Intensive Care Med 2021;47:369-421",
+      "url": "https://link.springer.com/article/10.1007/s00134-021-06368-4"
+    },
+    "tags": [
+      "Neuroprognostication",
+      "Post-ROSC",
+      "SSEP N20"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0360",
+    "chapterId": 12,
+    "topicId": "cc-post-cardiac-arrest-care",
+    "question": "In the DOSE VF trial (Cheskes et al., NEJM 2022) for refractory ventricular fibrillation during out-of-hospital cardiac arrest, which defibrillation technique showed significant improvements in VF termination and survival to hospital discharge compared to standard defibrillation?",
+    "options": [
+      "Lowering the energy setting to 50 Joules",
+      "Dual Sequential External Defibrillation (DSED) or Vector Change (VC) defibrillation",
+      "Subcutaneous defibrillator placement during CPR",
+      "Intracardiac cardioversion via temporary pacemaker wire"
+    ],
+    "answer": "B",
+    "explanation": "In the DOSE VF trial, patients with refractory VF after 3 standard shocks were randomized to standard defibrillation, vector change (VC: switching pads from anterolateral to anteroposterior), or dual sequential external defibrillation (DSED: two shocks delivered rapidly in sequence using two defibrillators). DSED was associated with higher survival to hospital discharge (30.4% vs 13.3% standard).",
+    "whyWrong": {
+      "A": "Lower energy settings fail to terminate refractory VF.",
+      "C": "Subcutaneous ICD placement is an elective surgical procedure.",
+      "D": "Intracardiac shock is not feasible or indicated during active closed-chest CPR."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: DSED works by altering vector pathways across the myocardium and reducing defibrillation threshold through sequential rapid depolarization.",
+    "hyperlinkedReference": {
+      "label": "Cheskes S, et al. DOSE VF trial. N Engl J Med 2022;387:1947-1956",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2207304"
+    },
+    "tags": [
+      "DOSE VF",
+      "DSED",
+      "Refractory VF",
+      "ACLS"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0361",
+    "chapterId": 12,
+    "topicId": "cc-post-cardiac-arrest-care",
+    "question": "In ACLS cardiopulmonary resuscitation, what is the recommended target chest compression depth and rate for adult cardiac arrest?",
+    "options": [
+      "Depth 2 to 2.4 inches (5 to 6 cm); Rate 100 to 120 compressions per minute",
+      "Depth 1 inch (2.5 cm); Rate 60 to 80 compressions per minute",
+      "Depth > 3 inches (8 cm); Rate 140 to 160 compressions per minute",
+      "Depth strictly 4 inches; Rate 80 compressions per minute"
+    ],
+    "answer": "A",
+    "explanation": "High-quality CPR parameters according to AHA/ERC guidelines: (1) Compression rate 100-120/min, (2) Depth at least 2 inches (5 cm) but not exceeding 2.4 inches (6 cm), (3) Full chest recoil between compressions, (4) Minimizing interruptions (Chest Compression Fraction >= 60-80%), and (5) Avoiding excessive ventilation (10 breaths/min).",
+    "whyWrong": {
+      "B": "Inadequate depth (< 5 cm) produces insufficient coronary perfusion pressure.",
+      "C": "Excessive rate (> 120) and depth (> 6 cm) cause rescuer fatigue, incomplete recoil, and thoracic trauma.",
+      "D": "Depth of 4 inches causes catastrophic sternal and visceral injury."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Coronary Perfusion Pressure (CPP = aortic diastolic pressure - right atrial diastolic pressure) > 15 mmHg during CPR is the critical determinant of successful ROSC.",
+    "hyperlinkedReference": {
+      "label": "Panchal AR, et al. 2020 AHA Guidelines for CPR and ECC. Circulation 2020;142:S366-S468",
+      "url": "https://www.ahajournals.org/doi/10.1161/CIR.0000000000000916"
+    },
+    "tags": [
+      "High Quality CPR",
+      "ACLS",
+      "Coronary Perfusion Pressure"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0362",
+    "chapterId": 12,
+    "topicId": "cc-post-cardiac-arrest-care",
+    "question": "During cardiac arrest resuscitation, capnography demonstrates a sudden, abrupt sustained increase in end-tidal CO2 (ETCO2) from 12 mmHg to 38 mmHg. What does this immediately indicate?",
+    "options": [
+      "Hyperventilation by the rescuer",
+      "Sudden Return of Spontaneous Circulation (ROSC)",
+      "Severe pulmonary embolism occurrence",
+      "Esophageal intubation"
+    ],
+    "answer": "B",
+    "explanation": "During CPR, ETCO2 directly reflects pulmonary blood flow (cardiac output produced by chest compressions). A sudden sustained increase in ETCO2 (typically rising to >= 35-40 mmHg) is the most reliable real-time physiological indicator of Return of Spontaneous Circulation (ROSC), reflecting an abrupt surge in cardiac output washing out accumulated tissue CO2.",
+    "whyWrong": {
+      "A": "Hyperventilation decreases ETCO2 via dilution.",
+      "C": "Pulmonary embolism causes a sudden drop in ETCO2 due to increased alveolar dead space.",
+      "D": "Esophageal intubation results in flatline / zero ETCO2."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: An ETCO2 consistently < 10 mmHg after 20 minutes of high-quality CPR is a strong predictor of resuscitation failure and futility.",
+    "hyperlinkedReference": {
+      "label": "Neumar RW, et al. ACC/AHA CPR Guidelines. Circulation 2008;118:2452",
+      "url": "https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.108.190862"
+    },
+    "tags": [
+      "ETCO2",
+      "ROSC",
+      "Capnography in CPR"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0363",
+    "chapterId": 12,
+    "topicId": "cc-post-cardiac-arrest-care",
+    "question": "What is the recommended arterial blood gas oxygenation and carbon dioxide target during the post-cardiac arrest care bundle?",
+    "options": [
+      "Hyperoxia (PaO2 > 300 mmHg) and severe hypocapnia (PaCO2 < 28 mmHg) to shrink cerebral edema",
+      "Normoxia (target SpO2 94-98% or PaO2 75-100 mmHg) and strict normocapnia (PaCO2 35-45 mmHg)",
+      "Permissive hypoxemia (SpO2 85-88%) and extreme hypercapnia (PaCO2 > 65 mmHg)",
+      "100% FiO2 continuously for the first 48 hours"
+    ],
+    "answer": "B",
+    "explanation": "Post-cardiac arrest guidelines recommend avoiding both hyperoxia (PaO2 > 300 mmHg generates reactive oxygen species and reperfusion injury) and hypoxia (PaO2 < 60 causes secondary brain ischemia). Target SpO2 is 94-98% (PaO2 75-100 mmHg). Strict normocapnia (PaCO2 35-45 mmHg) is targeted because hypocapnia causes cerebral vasoconstriction and ischemia, while hypercapnia raises intracranial pressure.",
+    "whyWrong": {
+      "A": "Hyperoxia causes reperfusion brain damage; hypocapnia causes cerebral ischemia.",
+      "C": "Hypoxemia causes secondary hypoxic-ischemic neuronal death.",
+      "D": "100% FiO2 is weaned as soon as SpO2 can be maintained >= 94%."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Cerebral blood flow changes by approximately 2-4% per 1 mmHg change in PaCO2 within the range of 20 to 60 mmHg.",
+    "hyperlinkedReference": {
+      "label": "Callaway CW, et al. Post-Cardiac Arrest Care. Circulation 2015;132:S465-S482",
+      "url": "https://www.ahajournals.org/doi/10.1161/CIR.0000000000000262"
+    },
+    "tags": [
+      "Post-Cardiac Arrest",
+      "Normoxia",
+      "Normocapnia"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0364",
+    "chapterId": 13,
+    "topicId": "cc-acute-kidney-injury",
+    "question": "According to the KDIGO (Kidney Disease: Improving Global Outcomes) acute kidney injury criteria, which parameter defines Stage 3 AKI based on serum creatinine?",
+    "options": [
+      "Serum creatinine 1.5 to 1.9 times baseline",
+      "Serum creatinine 2.0 to 2.9 times baseline",
+      "Increase in serum creatinine to >= 3.0 times baseline, OR serum creatinine >= 4.0 mg/dL (>= 353.6 umol/L) with acute rise of at least 0.5 mg/dL, OR initiation of renal replacement therapy",
+      "Isolated 10% increase in baseline creatinine"
+    ],
+    "answer": "C",
+    "explanation": "KDIGO Stage 3 AKI criteria: (1) Serum creatinine >= 3.0 times baseline, OR (2) Serum creatinine >= 4.0 mg/dL (>= 353.6 umol/L) with an acute rise of >= 0.5 mg/dL, OR (3) Initiation of renal replacement therapy, OR (4) In patients < 18 years, eGFR decrease to < 35 mL/min/1.73m2. Urine output criterion: < 0.3 mL/kg/h for >= 24 hours or anuria for >= 12 hours.",
+    "whyWrong": {
+      "A": "1.5 to 1.9 times baseline is Stage 1 AKI.",
+      "B": "2.0 to 2.9 times baseline is Stage 2 AKI.",
+      "D": "10% increase does not fulfill diagnostic criteria for AKI."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: KDIGO defines AKI as any of: increase in Cr by >= 0.3 mg/dL within 48 hours, increase to >= 1.5 times baseline within 7 days, or urine volume < 0.5 mL/kg/h for 6 hours.",
+    "hyperlinkedReference": {
+      "label": "KDIGO AKI Work Group. KDIGO Clinical Practice Guideline for AKI. Kidney Int Suppl 2012;2:1-138",
+      "url": "https://kdigo.org/guidelines/acute-kidney-injury/"
+    },
+    "tags": [
+      "KDIGO",
+      "AKI Stage 3",
+      "Nephrology"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0365",
+    "chapterId": 13,
+    "topicId": "cc-renal-replacement-therapy",
+    "question": "What did landmark multicenter randomized trials (STARRT-AKI and AKIKI) demonstrate regarding the timing of initiating renal replacement therapy (accelerated/early vs standard/delayed strategy) in critically ill patients with AKI without urgent conventional indications?",
+    "options": [
+      "Accelerated early RRT significantly reduced 90-day mortality by 30%",
+      "Accelerated early RRT showed no mortality benefit compared to a watchful waiting strategy, and resulted in higher rates of RRT dependence, hypotension, and central venous catheter complications",
+      "Delayed strategy increased ICU length of stay by 14 days",
+      "Early RRT permanently prevented sepsis progression"
+    ],
+    "answer": "B",
+    "explanation": "Both the STARRT-AKI (NEJM 2020) and AKIKI (NEJM 2016) trials showed that in the absence of urgent life-threatening indications (severe refractory hyperkalemia, profound acidemia, refractory pulmonary edema), an accelerated/early strategy did NOT reduce mortality, and led to more adverse events, higher ongoing dialysis dependence, and unnecessary RRT in patients whose kidneys would have recovered spontaneously.",
+    "whyWrong": {
+      "A": "Early RRT showed zero survival benefit.",
+      "C": "Delayed/watchful strategy allowed many patients to recover without needing dialysis, saving ICU resources.",
+      "D": "RRT does not prevent sepsis progression."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: Up to 40% of patients randomized to the delayed strategy in AKIKI and STARRT-AKI recovered kidney function spontaneously and never required RRT.",
+    "hyperlinkedReference": {
+      "label": "STARRT-AKI Investigators. Timing of initiation of RRT in AKI. N Engl J Med 2020;383:240-251",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2000741"
+    },
+    "tags": [
+      "STARRT-AKI",
+      "AKIKI",
+      "RRT Timing",
+      "CRRT"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0366",
+    "chapterId": 13,
+    "topicId": "cc-renal-replacement-therapy",
+    "question": "According to the KDIGO guidelines and landmark trials (ATN and RENAL trials), what is the recommended effluent dose target for continuous renal replacement therapy (CRRT) in critically ill patients with acute kidney injury?",
+    "options": [
+      "10-15 mL/kg/hour",
+      "20-25 mL/kg/hour",
+      "40-45 mL/kg/hour",
+      "> 60 mL/kg/hour"
+    ],
+    "answer": "B",
+    "explanation": "The RENAL (NEJM 2009) and VA/NIH ATN (NEJM 2008) trials demonstrated that high-intensity effluent doses (35-40 mL/kg/h) provide no survival benefit compared to standard dosing (20-25 mL/kg/h). KDIGO guidelines recommend an effluent dose of 20-25 mL/kg/h. To account for downtime, a prescribed dose of 25-30 mL/kg/h is typically set.",
+    "whyWrong": {
+      "A": "10-15 mL/kg/h is underdosing and leads to inadequate solute clearance.",
+      "C": "40-45 mL/kg/h (high intensity) showed no survival benefit and causes hypokalemia, hypophosphatemia, and micronutrient washout.",
+      "D": "> 60 mL/kg/h is extreme and harmful."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Prescribe 25-30 mL/kg/h to reliably deliver the KDIGO-recommended 20-25 mL/kg/h accounting for filter clotted time, imaging transfers, and bag changes.",
+    "hyperlinkedReference": {
+      "label": "RENAL Replacement Therapy Study Investigators. Intensity of CRRT. N Engl J Med 2009;361:1627-1638",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa0902413"
+    },
+    "tags": [
+      "CRRT Dose",
+      "RENAL Trial",
+      "Effluent Target"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0367",
+    "chapterId": 13,
+    "topicId": "cc-renal-replacement-therapy",
+    "question": "In Continuous Veno-Venous Hemofiltration (CVVH), solute removal occurs predominantly via which physical transport mechanism?",
+    "options": [
+      "Diffusion driven by a concentration gradient across a semipermeable membrane",
+      "Convection (solvent drag) driven by a transmembrane hydrostatic pressure gradient",
+      "Active carrier-mediated transport",
+      "Osmotic fluid shift without solute movement"
+    ],
+    "answer": "B",
+    "explanation": "In CVVH (Hemofiltration), solute clearance is achieved primarily through CONVECTION (solvent drag). Hydrostatic pressure forces plasma water across the membrane (ultrafiltration), dragging dissolved middle and small solutes along with it. In contrast, CVVHD (Hemodialysis) uses DIFFUSION across a dialysate concentration gradient.",
+    "whyWrong": {
+      "A": "Diffusion is the primary mechanism of hemodialysis (CVVHD).",
+      "C": "Artificial synthetic membranes do not possess active carrier enzymes.",
+      "D": "Solute is cleared together with water in convection."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Convective clearance is superior for middle-molecular-weight solutes (500 to 5000 Da e.g. cytokines, myoglobin), whereas diffusion is most efficient for small molecules (< 500 Da e.g. urea, potassium).",
+    "hyperlinkedReference": {
+      "label": "Ronco C, et al. Continuous Renal Replacement Therapy (Oxford University Press, 2016)",
+      "url": "https://global.oup.com/academic/product/continuous-renal-replacement-therapy-9780199349944"
+    },
+    "tags": [
+      "Convection vs Diffusion",
+      "CVVH",
+      "Solvent Drag"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0368",
+    "chapterId": 13,
+    "topicId": "cc-renal-replacement-therapy",
+    "question": "During Regional Citrate Anticoagulation (RCA) in CRRT, what laboratory finding is the hallmark diagnostic indicator of 'Citrate Accumulation / Citrate Toxicity'?",
+    "options": [
+      "Ratio of total serum calcium to systemic ionized calcium > 2.5 (with high total Ca and refractory ionized hypocalcemia)",
+      "Ratio of total calcium to ionized calcium < 1.5 with severe hypernatremia",
+      "Elevated serum bicarbonate > 40 mEq/L with severe metabolic alkalosis",
+      "Profound isolated hyperkalemia > 7.0 mEq/L"
+    ],
+    "answer": "A",
+    "explanation": "Citrate toxicity occurs when the liver and muscle fail to metabolize citrate (common in severe hepatic failure, shock, or lactic acidosis). Unmetabolized citrate binds calcium in the blood, creating calcium-citrate complexes. Total serum calcium rises (or stays high) while free ionized calcium drops. A Total-to-Ionized Calcium ratio > 2.5 (both in mmol/L or mg/dL converted) along with high anion gap metabolic acidosis confirms citrate accumulation.",
+    "whyWrong": {
+      "B": "The ratio increases (> 2.5), not decreases.",
+      "C": "Normal citrate metabolism generates bicarbonate causing metabolic alkalosis; citrate toxicity causes failure of metabolism with high anion gap acidosis.",
+      "D": "Hyperkalemia is not the diagnostic marker of citrate accumulation."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2025,
+    "examPearl": "INI-SS EXAM PEARL: Normal citrate metabolism converts 1 mole of citrate into 3 moles of bicarbonate. If the liver is healthy, over-infusion causes metabolic alkalosis; if liver is failing, it causes citrate accumulation with anion-gap acidosis.",
+    "hyperlinkedReference": {
+      "label": "Schneider AG, et al. Citrate anticoagulation in CRRT. Crit Care 2017;21:281",
+      "url": "https://ccforum.biomedcentral.com/articles/10.1186/s13054-017-1874-8"
+    },
+    "tags": [
+      "Citrate Toxicity",
+      "RCA",
+      "Total-to-Ionized Calcium Ratio"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0369",
+    "chapterId": 13,
+    "topicId": "cc-acute-kidney-injury",
+    "question": "In the landmark STARRT-AKI trial (NEJM 2020) evaluating the timing of Renal Replacement Therapy (RRT) initiation in critically ill patients with severe Acute Kidney Injury (KDIGO Stage 2 or 3), what were the primary clinical findings comparing an Accelerated (immediate) strategy to a Standard (wait-and-see) strategy?",
+    "options": [
+      "Accelerated initiation showed NO difference in 90-day all-cause mortality, but had significantly higher rates of adverse events and persistent dialysis dependence at 90 days",
+      "Accelerated initiation significantly reduced 90-day all-cause mortality by 15%",
+      "Accelerated initiation doubled ICU length of stay but significantly accelerated renal tubular recovery",
+      "Standard strategy resulted in a four-fold increase in refractory hyperkalemia and early death"
+    ],
+    "answer": "A",
+    "explanation": "The STARRT-AKI multinational trial (NEJM 2020) randomized 3011 critically ill patients with Stage 2 or 3 AKI to accelerated RRT (within 12 hours) vs standard strategy (RRT initiated only for urgent indications or persistent AKI > 72 hours). Accelerated RRT showed NO benefit in 90-day mortality (43.9% vs 43.7%, RR 1.00), while causing higher adverse events (hypotension, hypophosphatemia) and a statistically significant increase in persistent dialysis dependence at day 90 among survivors (10.4% vs 6.0%).",
+    "whyWrong": {
+      "B": "Multiple RCTs (STARRT-AKI, AKIKI, IDEAL-ICU) have definitively demonstrated no survival advantage with early/accelerated RRT.",
+      "C": "Accelerated strategy did not improve renal recovery; in fact, more patients remained dialysis-dependent at day 90.",
+      "D": "Standard watchful-waiting strategy permitted 38% of patients to recover spontaneous renal function without ever receiving RRT."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: STARRT-AKI & AKIKI trials establish that 'watchful waiting' is safe in AKI without conventional urgent indications; 38-49% of patients in standard arms recover spontaneously without needing RRT.",
+    "hyperlinkedReference": {
+      "label": "The STARRT-AKI Investigators. Timing of Initiation of Renal-Replacement Therapy in Acute Kidney Injury. N Engl J Med 2020;383:240-251",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2000741"
+    },
+    "tags": [
+      "STARRT-AKI",
+      "RRT Timing",
+      "Dialysis Dependence"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0370",
+    "chapterId": 14,
+    "topicId": "cc-interpreting-abg",
+    "question": "In the physicochemical (Stewart) approach to acid-base chemistry, what are the three independent variables that exclusively determine plasma pH and bicarbonate?",
+    "options": [
+      "PaCO2, Strong Ion Difference (SID), and Total Weak Acid concentration (Atot, primarily albumin and phosphate)",
+      "Hemoglobin, Platelets, and Fibrinogen",
+      "Sodium, Potassium, and Chloride only",
+      "Base Excess, Anion Gap, and Delta Ratio"
+    ],
+    "answer": "A",
+    "explanation": "Stewart demonstrated that water dissociation and plasma [H+] are governed strictly by three independent variables: (1) PaCO2 (respiratory component), (2) Apparent Strong Ion Difference (SID = [Na+ + K+ + Ca2+ + Mg2+] - [Cl- + lactate-]), and (3) Total concentration of non-volatile weak acids (Atot = predominantly albumin and phosphate). Bicarbonate and H+ are dependent variables.",
+    "whyWrong": {
+      "B": "Hematological parameters are not primary chemical determinants of plasma water dissociation.",
+      "C": "Atot and PaCO2 are omitted in this choice.",
+      "D": "Base excess and anion gap are derived parameters in the traditional Boston/Copenhagen approach."
+    },
+    "difficulty": "moderate",
+    "sourceType": "ini-ss-style",
+    "exam": "INI-SS",
+    "year": 2024,
+    "examPearl": "INI-SS EXAM PEARL: Normal plasma SID is ~40-42 mEq/L. Infusion of large-volume 0.9% saline (SID = 154 - 154 = 0) reduces plasma SID, driving hydrogen ion liberation and producing hyperchloremic metabolic acidosis.",
+    "hyperlinkedReference": {
+      "label": "Stewart PA. Modern quantitative acid-base chemistry. Can J Physiol Pharmacol 1983;61:1444-1461",
+      "url": "https://cdnsciencepub.com/doi/10.1139/y83-207"
+    },
+    "tags": [
+      "Stewart Approach",
+      "SID",
+      "Acid-Base"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0371",
+    "chapterId": 14,
+    "topicId": "cc-interpreting-abg",
+    "question": "A patient with DKA has: Na+ 136 mEq/L, Cl- 96 mEq/L, HCO3- 10 mEq/L, and Albumin 4.0 g/dL. What is the calculated Anion Gap and the Delta-Delta ratio (Delta AG / Delta HCO3-)?",
+    "options": [
+      "Anion Gap 30 mEq/L; Delta ratio = 1.29 (Pure High Anion Gap Metabolic Acidosis)",
+      "Anion Gap 12 mEq/L; Delta ratio = 0.5 (Normal Anion Gap Acidosis)",
+      "Anion Gap 40 mEq/L; Delta ratio = 2.5 (Concurrent Metabolic Alkalosis)",
+      "Anion Gap 20 mEq/L; Delta ratio = 0.4 (Concurrent Hyperchloremic Acidosis)"
+    ],
+    "answer": "A",
+    "explanation": "Anion Gap = Na - (Cl + HCO3) = 136 - (96 + 10) = 136 - 106 = 30 mEq/L (normal = 12). Delta AG = 30 - 12 = 18 mEq/L. Delta HCO3 = 24 - 10 = 14 mEq/L. Delta-Delta ratio = Delta AG / Delta HCO3 = 18 / 14 = 1.29. A ratio between 1.0 and 2.0 indicates pure high anion gap metabolic acidosis (uncomplicated ketoacidosis).",
+    "whyWrong": {
+      "B": "Anion gap is 30, markedly elevated above 12.",
+      "C": "Delta ratio is 1.29, not 2.5.",
+      "D": "Delta ratio < 0.8 represents concurrent normal anion gap acidosis; here it is 1.29."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Delta ratio interpretation: < 0.8 = Mixed HAGMA and NAGMA; 1.0 to 2.0 = Pure HAGMA; > 2.0 = Mixed HAGMA and Metabolic Alkalosis (or pre-existing chronic compensated respiratory acidosis).",
+    "hyperlinkedReference": {
+      "label": "Kraut JA, Madias NE. Serum anion gap: its uses and limitations in clinical medicine. Clin J Am Soc Nephrol 2007;2:162-174",
+      "url": "https://cjasn.asnjournals.org/content/2/1/162"
+    },
+    "tags": [
+      "Anion Gap",
+      "Delta Ratio",
+      "HAGMA",
+      "DKA"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0372",
+    "chapterId": 14,
+    "topicId": "cc-disorders-of-calcium-magnesium-phosphorus-metabolism",
+    "question": "A 65-year-old male with end-stage renal disease has severe hyperkalemia (K+ 7.4 mEq/L) with peaked T waves, flattened P waves, and widened QRS complex (140 ms). What is the immediate first pharmacological intervention to administer?",
+    "options": [
+      "10 units of regular insulin with 50 mL of 50% dextrose IV",
+      "10 mL of 10% Calcium Gluconate (or Calcium Chloride) IV over 2-3 minutes",
+      "Sodium Polystyrene Sulfonate (Kayexalate) 30 g orally",
+      "Hemodialysis catheter placement"
+    ],
+    "answer": "B",
+    "explanation": "In hyperkalemia with ECG changes (widened QRS, peaked T waves, conduction block), the immediate first step is intravenous Calcium Gluconate (10 mL of 10% solution over 2-3 minutes; or Calcium Chloride via central line). Calcium antagonizes the membrane excitability effects of hyperkalemia by raising the myocardial threshold potential, stabilizing the cardiac membrane within 1-3 minutes without altering serum potassium concentration.",
+    "whyWrong": {
+      "A": "Insulin-dextrose shifts potassium intracellularly but takes 15-30 minutes to work; membrane stabilization with calcium must come first.",
+      "C": "Exchange resins take hours to days and have no role in hyperkalemic emergencies.",
+      "D": "Hemodialysis is definitive removal, but the membrane must be stabilized immediately to prevent asystole/VF while preparing dialysis."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Calcium Chloride contains 3 times more elemental calcium (13.6 mEq per 10 mL) than Calcium Gluconate (4.65 mEq per 10 mL), but carries a risk of severe tissue necrosis if peripheral extravasation occurs.",
+    "hyperlinkedReference": {
+      "label": "Weisberg LS. Management of severe hyperkalemia. Crit Care Med 2008;36:3246-3251",
+      "url": "https://journals.lww.com/ccmjournal/Abstract/2008/12000/Management_of_severe_hyperkalemia.24.aspx"
+    },
+    "tags": [
+      "Hyperkalemia",
+      "Calcium Gluconate",
+      "ECG Changes"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0373",
+    "chapterId": 14,
+    "topicId": "cc-disorders-of-calcium-magnesium-phosphorus-metabolism",
+    "question": "What is the maximum recommended safe rate of correction for chronic severe hyponatremia (serum Na < 120 mEq/L) to prevent Osmotic Demyelination Syndrome (central pontine myelinolysis)?",
+    "options": [
+      "No more than 8 mEq/L in 24 hours (and <= 4-6 mEq/L in high-risk patients)",
+      "At least 15-20 mEq/L in 24 hours",
+      "Normal saline bolus of 2 Liters over 1 hour",
+      "Rapid elevation to 140 mEq/L within 6 hours"
+    ],
+    "answer": "A",
+    "explanation": "In chronic hyponatremia (> 48 hours), brain cells adapt by extruding organic osmolytes. Overly rapid correction causes rapid brain dehydration and Osmotic Demyelination Syndrome (central pontine myelinolysis). Guidelines recommend a correction limit of <= 8 mEq/L in any 24-hour period (and <= 4-6 mEq/L/day in patients with high risk: cirrhosis, malnutrition, alcoholism).",
+    "whyWrong": {
+      "B": "15-20 mEq/L carries high risk of irreversible quadriplegia and locked-in syndrome.",
+      "C": "Rapid saline boluses cause uncontrolled overcorrection.",
+      "D": "Correcting to 140 within 6 hours is catastrophic."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: If severe hyponatremia with acute seizures/coma is present, administer 100-150 mL of 3% hypertonic saline over 10-20 minutes, repeated up to twice, to raise sodium rapidly by 4-6 mEq/L, then stop.",
+    "hyperlinkedReference": {
+      "label": "Spasovski G, et al. Clinical practice guideline on diagnosis and treatment of hyponatraemia. Eur J Endocrinol 2014;170:G1-G47",
+      "url": "https://academic.oup.com/eje/article/170/3/G1/6698642"
+    },
+    "tags": [
+      "Hyponatremia",
+      "Osmotic Demyelination",
+      "Electrolytes"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0374",
+    "chapterId": 14,
+    "topicId": "cc-disorders-of-calcium-magnesium-phosphorus-metabolism",
+    "question": "In a chronically malnourished alcoholic patient receiving total parenteral nutrition, which electrolyte disturbance characteristically precipitates Refeeding Syndrome, causing diaphragmatic failure, myocardial depression, and hemolysis?",
+    "options": [
+      "Severe Hypophosphatemia",
+      "Severe Hypermagnesemia",
+      "Severe Hypercalcemia",
+      "Hyperphosphatemia"
+    ],
+    "answer": "A",
+    "explanation": "Refeeding syndrome is triggered by carbohydrate administration, stimulating insulin surge. Insulin drives glucose, potassium, and phosphorus into cells. Severe intracellular shifting depletes extracellular phosphate, leading to cellular ATP depletion, 2,3-DPG deficiency (tissue hypoxia), diaphragmatic weakness, respiratory failure, cardiac arrhythmias, and rhabdomyolysis.",
+    "whyWrong": {
+      "B": "Hypomagnesemia occurs in refeeding, not hypermagnesemia.",
+      "C": "Calcium is not the primary depleted driver.",
+      "D": "Phosphate drops precipitously (hypophosphatemia), not rises."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Prophylactic thiamine (200-300 mg IV) and aggressive phosphate repletion must precede nutritional reintroduction in high-risk refeeding patients.",
+    "hyperlinkedReference": {
+      "label": "Mehanna HM, et al. Refeeding syndrome: what it is, and how to prevent and treat it. BMJ 2008;336:1495-1498",
+      "url": "https://www.bmj.com/content/336/7659/1495"
+    },
+    "tags": [
+      "Refeeding Syndrome",
+      "Hypophosphatemia",
+      "Nutrition"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0375",
+    "chapterId": 15,
+    "topicId": "cc-icu-management-of-traumatic-brain-injury",
+    "question": "According to the Brain Trauma Foundation (BTF) 4th Edition guidelines for severe traumatic brain injury, what are the target thresholds for Intracranial Pressure (ICP) and Cerebral Perfusion Pressure (CPP)?",
+    "options": [
+      "ICP threshold < 22 mmHg; CPP target 60 to 70 mmHg",
+      "ICP threshold < 10 mmHg; CPP target > 90 mmHg",
+      "ICP threshold < 35 mmHg; CPP target 40 to 50 mmHg",
+      "ICP threshold < 15 mmHg; CPP target > 100 mmHg"
+    ],
+    "answer": "A",
+    "explanation": "BTF Guidelines recommend: (1) Treating ICP when it exceeds 22 mmHg, as pressures above this level correlate with increased mortality, and (2) Maintaining Cerebral Perfusion Pressure (CPP = MAP - ICP) between 60 and 70 mmHg. Aggressively pushing CPP > 70 mmHg with fluids and vasopressors increases ARDS risk without neurological benefit.",
+    "whyWrong": {
+      "B": "Targeting CPP > 90 causes pulmonary edema and ARDS.",
+      "C": "ICP > 22 is harmful; CPP 40-50 causes severe secondary cerebral ischemia.",
+      "D": "CPP > 100 is contraindicated."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: The Monro-Kellie doctrine states that the intracranial vault is a rigid box containing brain parenchyma (80%), blood (10%), and CSF (10%). An increase in one component must be compensated by a decrease in others.",
+    "hyperlinkedReference": {
+      "label": "Carney N, et al. Brain Trauma Foundation Guidelines 4th Edition. Neurosurgery 2017;80:6-15",
+      "url": "https://academic.oup.com/neurosurgery/article/80/1/6/2756858"
+    },
+    "tags": [
+      "BTF Guidelines",
+      "ICP Monitoring",
+      "CPP Target",
+      "TBI"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0376",
+    "chapterId": 15,
+    "topicId": "cc-monitoring-and-management-of-raised-icp",
+    "question": "In the tiered management of acute intracranial hypertension in severe traumatic brain injury, which intervention is categorized as Tier 3 (refractory rescue therapy) due to significant systemic morbidity?",
+    "options": [
+      "Head elevation to 30 degrees and maintaining neutral neck position",
+      "Hyperosmolar therapy with 3% hypertonic saline or Mannitol boluses",
+      "Decompressive craniectomy or high-dose Barbiturate coma (e.g. thiopental/pentobarbital infusion)",
+      "Sedation and analgesia with propofol and fentanyl"
+    ],
+    "answer": "C",
+    "explanation": "Tier 1: head elevation 30 deg, midline neck, sedation/analgesia, normothermia, external ventricular drain (EVD) CSF drainage. Tier 2: hyperosmolar therapy (3% NaCl or Mannitol), mild neuromuscular blockade, mild hypocapnia (PaCO2 30-35). Tier 3 (rescue for refractory ICP): high-dose barbiturate infusion, secondary decompressive craniectomy, or deep hypothermia.",
+    "whyWrong": {
+      "A": "Head elevation is Tier 0 / baseline neurocritical nursing.",
+      "B": "Hyperosmolar therapy is standard Tier 1-2 therapy.",
+      "D": "Sedation and analgesia are Tier 1 baseline therapies."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: The RESCUEicp trial demonstrated that decompressive craniectomy for refractory ICP reduced 6-month mortality compared to medical therapy (26.9% vs 48.9%), but increased vegetative state and severe disability.",
+    "hyperlinkedReference": {
+      "label": "Hutchinson PJ, et al. RESCUEicp trial. N Engl J Med 2016;375:1119-1130",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1605258"
+    },
+    "tags": [
+      "RESCUEicp",
+      "Tiered ICP Management",
+      "Decompressive Craniectomy"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0377",
+    "chapterId": 15,
+    "topicId": "cc-status-epilepticus",
+    "question": "In the landmark ESETT trial (Established Status Epilepticus Treatment Trial, NEJM 2019), which second-line intravenous antiepileptic drug was proven to be superior for benzodiazepine-refractory status epilepticus?",
+    "options": [
+      "Levetiracetam was statistically superior to Fosphenytoin and Valproate",
+      "Valproate was statistically superior to Levetiracetam and Fosphenytoin",
+      "All three drugs (Levetiracetam, Fosphenytoin, and Valproate) demonstrated statistically equivalent efficacy (~50% seizure cessation) and safety",
+      "Phenobarbital was superior to all other agents"
+    ],
+    "answer": "C",
+    "explanation": "The ESETT trial evaluated Levetiracetam (60 mg/kg), Fosphenytoin (20 mg PE/kg), and Sodium Valproate (40 mg/kg) in established benzodiazepine-refractory status epilepticus. All three agents demonstrated statistically equivalent efficacy: ~47% to 46% seizure termination and freedom from relapse at 60 minutes, with similar safety profiles.",
+    "whyWrong": {
+      "A": "Levetiracetam was non-inferior but not superior.",
+      "B": "Valproate showed equal efficacy (~46%).",
+      "D": "Phenobarbital was not evaluated as a primary comparison arm in ESETT."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Status epilepticus timeline: 5 minutes = start Tier 1 (Lorazepam 0.1 mg/kg or Midazolam 10 mg IM); 20-30 minutes = start Tier 2 (Levetiracetam, Valproate, or Fosphenytoin); > 60 minutes = Refractory SE requiring general anaesthetic infusions (propofol, midazolam, or ketamine).",
+    "hyperlinkedReference": {
+      "label": "Kapur J, et al. ESETT trial. N Engl J Med 2019;381:2103-2113",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1905795"
+    },
+    "tags": [
+      "ESETT Trial",
+      "Status Epilepticus",
+      "Levetiracetam"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0378",
+    "chapterId": 15,
+    "topicId": "cc-icu-management-of-traumatic-brain-injury",
+    "question": "In aneurysmal subarachnoid hemorrhage (aSAH), which oral pharmacological agent is proven to improve neurological outcomes and reduce cerebral infarction secondary to delayed cerebral ischemia (DCI)?",
+    "options": [
+      "Oral Nimodipine 60 mg every 4 hours for 21 days",
+      "Intravenous Magnesium Sulfate infusion for 14 days",
+      "Intravenous Nicardipine infusion exclusively",
+      "Oral Amlodipine 10 mg daily"
+    ],
+    "answer": "A",
+    "explanation": "Enteral Nimodipine (60 mg orally or via NG tube every 4 hours for 21 consecutive days) is the only pharmacological agent with Grade 1A evidence for improving neurological outcomes and reducing secondary ischemic deficits in aSAH. It acts via neuroprotection and microvascular antispasm.",
+    "whyWrong": {
+      "B": "MASH-2 trial showed no benefit for magnesium infusions in aSAH.",
+      "C": "Nicardipine lowers BP but has not shown functional outcome improvement comparable to oral nimodipine.",
+      "D": "Amlodipine does not have evidence for prevention of DCI in aSAH."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Triple-H therapy (Hypervolemia, Hemodilution, Hypertension) is obsolete; current guidelines mandate maintaining strict EUVOLEMIA and induced hypertension only if symptomatic vasospasm develops.",
+    "hyperlinkedReference": {
+      "label": "Connolly ES, et al. Guidelines for management of aneurysmal subarachnoid hemorrhage. Stroke 2012;43:1711-1737",
+      "url": "https://www.ahajournals.org/doi/10.1161/STR.0b013e3182587839"
+    },
+    "tags": [
+      "Subarachnoid Hemorrhage",
+      "Nimodipine",
+      "Vasospasm",
+      "DCI"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0379",
+    "chapterId": 15,
+    "topicId": "cc-icu-management-of-traumatic-brain-injury",
+    "question": "In acute spontaneous intracerebral hemorrhage (ICH) presenting within 6 hours of onset with SBP > 150 mmHg, what is the blood pressure lowering target recommended by the ATACH-2 and INTERACT-2 trials and AHA/ASA guidelines?",
+    "options": [
+      "Rapid reduction of SBP to < 110 mmHg within 30 minutes",
+      "Smooth, rapid reduction of SBP to a target between 130 and 140 mmHg (avoiding SBP < 130 mmHg and wide BP variability)",
+      "Maintaining SBP > 180 mmHg to preserve cerebral perfusion",
+      "Allowing permissive hypertension up to SBP 220 mmHg"
+    ],
+    "answer": "B",
+    "explanation": "Guidelines recommend smooth, rapid lowering of SBP to a target range of 130-140 mmHg. The ATACH-2 trial demonstrated that aggressive lowering below 130 mmHg (target 110-139) did not improve functional outcomes and significantly increased acute renal adverse events.",
+    "whyWrong": {
+      "A": "Aggressive lowering < 110-130 mmHg causes acute kidney injury and cerebral hypoperfusion.",
+      "C": "SBP > 180 dramatically increases the risk of hematoma expansion.",
+      "D": "Permissive hypertension is contraindicated in acute hemorrhagic stroke."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2025,
+    "examPearl": "NEET-SS EXAM PEARL: IV labetalol or nicardipine infusions are first-line for titratable BP control in ICH; nitroprusside is avoided due to potential for increasing ICP.",
+    "hyperlinkedReference": {
+      "label": "Qureshi AI, et al. ATACH-2 trial. N Engl J Med 2016;375:1033-1043",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1603460"
+    },
+    "tags": [
+      "ATACH-2",
+      "Intracerebral Hemorrhage",
+      "Blood Pressure Target"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0380",
+    "chapterId": 16,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "According to the SCCM PADIS (Pain, Agitation, Delirium, Immobility, and Sleep) clinical guidelines, which pharmacological sedation strategy is recommended for mechanically ventilated critically ill adults?",
+    "options": [
+      "Continuous deep sedation with lorazepam infusions to achieve RASS -4",
+      "Non-benzodiazepine sedatives (Propofol or Dexmedetomidine) over benzodiazepines, targeting light sedation (RASS -1 to 0)",
+      "High-dose ketamine infusions as sole monotherapy",
+      "Routine paralytic infusions for all ventilated patients"
+    ],
+    "answer": "B",
+    "explanation": "SCCM PADIS guidelines recommend targeting light sedation (RASS -1 to 0) using non-benzodiazepine sedatives (propofol or dexmedetomidine) over benzodiazepines (midazolam, lorazepam). Benzodiazepine infusions are associated with longer ventilation times, delirium, and prolonged ICU length of stay.",
+    "whyWrong": {
+      "A": "Benzodiazepines significantly increase delirium incidence and duration.",
+      "C": "Ketamine is an adjuvant, not recommended as sole first-line monotherapy.",
+      "D": "Paralytics are restricted to severe ARDS dyssynchrony, not routine ventilation."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Daily Spontaneous Awakening Trials (SAT) paired with Spontaneous Breathing Trials (SBT) ('Wake Up and Breathe' protocol) significantly reduce ICU mortality and ventilation duration.",
+    "hyperlinkedReference": {
+      "label": "Devlin JW, et al. SCCM PADIS Guidelines. Crit Care Med 2018;46:e825-e873",
+      "url": "https://journals.lww.com/ccmjournal/Fulltext/2018/09000/Clinical_Practice_Guidelines_for_the_Prevention.29.aspx"
+    },
+    "tags": [
+      "PADIS Guidelines",
+      "Sedation",
+      "Propofol",
+      "Dexmedetomidine"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0381",
+    "chapterId": 16,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "What are the core diagnostic features required to establish the diagnosis of ICU Delirium using the Confusion Assessment Method for the ICU (CAM-ICU)?",
+    "options": [
+      "Any hallucination reported by nursing staff",
+      "Feature 1 (Acute onset or fluctuating course) AND Feature 2 (Inattention), PLUS either Feature 3 (Altered level of consciousness) OR Feature 4 (Disorganized thinking)",
+      "Feature 3 alone",
+      "Presence of hyperactive agitation with RASS score +3"
+    ],
+    "answer": "B",
+    "explanation": "CAM-ICU diagnosis strictly requires: Feature 1 (Acute change or fluctuating course of mental status) AND Feature 2 (Inattention e.g. < 8/10 on 'SAVEAHAART' letter test), PLUS either Feature 3 (Altered level of consciousness: current RASS other than 0) OR Feature 4 (Disorganized thinking: errors on simple logical questions).",
+    "whyWrong": {
+      "A": "Hallucinations alone are not the diagnostic algorithm.",
+      "C": "Feature 1 and 2 are mandatory prerequisites.",
+      "D": "Hyperactive delirium is only one subtype (~5-10%); hypoactive delirium is far more common (~60-70%) and frequently missed without CAM-ICU."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Hypoactive delirium ('quiet delirium') carries a worse long-term cognitive and survival prognosis than hyperactive delirium because of delayed recognition.",
+    "hyperlinkedReference": {
+      "label": "Ely EW, et al. Evaluation of delirium in critically ill patients (CAM-ICU). Crit Care Med 2001;29:1370-1379",
+      "url": "https://journals.lww.com/ccmjournal/Abstract/2001/07000/Evaluation_of_delirium_in_critically_ill.18.aspx"
+    },
+    "tags": [
+      "CAM-ICU",
+      "Delirium",
+      "Inattention"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0382",
+    "chapterId": 16,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "What is Propofol Infusion Syndrome (PRIS), and what are the major clinical and laboratory hallmarks that signal this life-threatening toxicity?",
+    "options": [
+      "Transient skin rash appearing within 5 minutes of propofol administration",
+      "Severe metabolic acidosis, rhabdomyolysis, hyperkalemia, acute renal failure, hepatomegaly, hypertriglyceridemia, and refractory Brugada-like arrhythmia / cardiovascular collapse; typically associated with high doses (> 4-5 mg/kg/h) for > 48 hours",
+      "Isolated mild hyperglycemia that resolves spontaneously",
+      "Acute hypocalcemia caused by lipid binding"
+    ],
+    "answer": "B",
+    "explanation": "PRIS is a lethal toxic syndrome caused by propofol uncoupling mitochondrial oxidative phosphorylation and impairing beta-oxidation of fatty acids. Hallmarks: refractory high anion gap lactic acidosis, rhabdomyolysis (elevated CK, myoglobinuria), hyperkalemia, acute kidney injury, hypertriglyceridemia, and Brugada-pattern ST elevation leading to fatal asystolic cardiac arrest. Associated with prolonged (> 48h) high-dose infusions (> 67-83 mcg/kg/min or > 4-5 mg/kg/h).",
+    "whyWrong": {
+      "A": "Simple rash is allergic contact hypersensitivity.",
+      "C": "Hyperglycemia is non-specific; PRIS is a multiorgan metabolic collapse.",
+      "D": "Calcium binding is not the mechanism of PRIS."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: At the earliest sign of unexplained lactic acidosis, hyperkalemia, or hypertriglyceridemia, propofol must be discontinued immediately, and ECMO / renal replacement considered for refractory collapse.",
+    "hyperlinkedReference": {
+      "label": "Kam PC, Cardone D. Propofol infusion syndrome. Anaesthesia 2007;62:690-701",
+      "url": "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2044.2007.05055.x"
+    },
+    "tags": [
+      "PRIS",
+      "Propofol Toxicity",
+      "Mitochondrial Collapse"
+    ],
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "mcq-cc-0383",
+    "chapterId": 16,
+    "topicId": "cc-scoring-systems-in-the-icu",
+    "question": "When monitoring continuous neuromuscular blockade using Train-of-Four (TOF) stimulation of the ulnar nerve (adductor pollicis), what is the optimal clinical target for therapeutic paralysis?",
+    "options": [
+      "Zero twitches out of four (0/4)",
+      "1 to 2 twitches out of four (1-2/4)",
+      "4 twitches out of four with a TOF ratio > 0.9",
+      "Continuous tetanic contraction"
+    ],
+    "answer": "B",
+    "explanation": "The recommended goal for therapeutic neuromuscular blockade in the ICU is 1 to 2 twitches out of 4 (correlating with approximately 85% to 90% receptor blockade). 0/4 twitches indicates excessive paralysis and profound overdosing, which drastically increases the risk of critical illness myopathy and prolonged weakness.",
+    "whyWrong": {
+      "A": "0/4 indicates deep over-paralysis and increases intensive care unit acquired weakness (ICUAW).",
+      "C": "4/4 with TOF ratio > 0.9 indicates minimal or absent blockade (adequate for extubation).",
+      "D": "Tetanic contraction is not a monitoring target."
+    },
+    "difficulty": "easy",
+    "sourceType": "neet-ss-style",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "NEET-SS EXAM PEARL: Facial nerve stimulation (orbicularis oculi) tends to underestimate the degree of peripheral blockade; the ulnar nerve (adductor pollicis) or posterior tibial nerve are the preferred sites.",
+    "hyperlinkedReference": {
+      "label": "Murray MJ, et al. Guidelines for sustained neuromuscular blockade. Crit Care Med 2016;44:2079",
+      "url": "https://journals.lww.com/ccmjournal/Fulltext/2016/11000/Clinical_Practice_Guidelines_for_Sustained.22.aspx"
+    },
+    "tags": [
+      "TOF",
+      "Train of Four",
+      "Neuromuscular Blockade"
+    ],
+    "verificationStatus": "VERIFIED"
   }
 ]
