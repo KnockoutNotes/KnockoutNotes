@@ -950,6 +950,7 @@
     if (!id) return;
     const item = findItem(id);
     if (!item) return;
+    searchFilter = "";
     activeItem = item;
     activeCat = item.cat;
     activeDomain = inferDomainFromCat(item.cat, item);
@@ -970,6 +971,7 @@
 
   function backToCategory() {
     activeItem = null;
+    searchFilter = "";
     try {
       const url = new URL(window.location.href);
       url.searchParams.delete("item");
@@ -1006,7 +1008,9 @@
     const catParam = urlParams.get("cat");
     const itemParam = urlParams.get("item") || urlParams.get("topic");
 
-    if (itemParam) {
+    if (searchFilter.trim().length > 0) {
+      activeItem = null;
+    } else if (itemParam) {
       if (!activeItem || activeItem.id !== itemParam) {
         activeItem = findItem(itemParam);
       }
@@ -1333,22 +1337,57 @@
   // VIEW 1: CATEGORY OVERVIEW
   // ==========================================================================
   function renderCategoryOverview(mount, catId, currentCatObj) {
-    let items = getItemsForDomainAndCat(activeDomain, catId);
-    if (searchFilter.trim()) {
+    const isSearching = !!searchFilter.trim();
+    let items;
+    if (isSearching) {
       const q = searchFilter.trim().toLowerCase();
-      items = items.filter((it) => {
-        return [it.name, it.short, it.tagline, it.cat, it.brand, it.classification].concat(it.tags || []).filter(Boolean).join(" ").toLowerCase().includes(q);
+      const tokens = q.split(/\s+/).filter(Boolean);
+      const data = getData();
+      const all = [...(data.topics || []), ...(data.drugs || [])];
+      items = all.filter((it) => {
+        const text = [
+          it.name,
+          it.short,
+          it.tagline,
+          it.cat,
+          it.brand,
+          it.classification,
+          (it.aliases || []).join(" "),
+          (it.tags || []).join(" ")
+        ].filter(Boolean).join(" ").toLowerCase();
+        return tokens.every(tok => text.includes(tok));
       });
+      // Sort: exact matches first, then prefix matches
+      items.sort((a, b) => {
+        const aName = (a.short || a.name || "").toLowerCase();
+        const bName = (b.short || b.name || "").toLowerCase();
+        const aExact = aName === q;
+        const bExact = bName === q;
+        if (aExact && !bExact) return -1;
+        if (!aExact && bExact) return 1;
+        const aStarts = aName.startsWith(q);
+        const bStarts = bName.startsWith(q);
+        if (aStarts && !bStarts) return -1;
+        if (!aStarts && bStarts) return 1;
+        return 0;
+      });
+    } else {
+      items = getItemsForDomainAndCat(activeDomain, catId);
     }
 
     let groupsHTML = "";
     if (!items.length) {
       groupsHTML = `
         <div style="grid-column: 1 / -1; background:var(--ron-bg-card); border-radius:24px; padding:36px; text-align:center; color:var(--ron-text-empty);">
-          <p style="font-size:16px; font-weight:700;">No items found matching "${esc(searchFilter)}" in this category</p>
-          <p style="font-size:13px; color:var(--ron-text-hint);">Try selecting "All" or explore other categories across Anaesthesia, Critical Care, or Drugs above.</p>
+          <div style="font-size:32px; margin-bottom:12px;">🔍</div>
+          <p style="font-size:17px; font-weight:700;">No items found matching "${esc(searchFilter)}"</p>
+          <p style="font-size:13px; color:var(--ron-text-hint); margin-top:8px;">Try searching for a drug (e.g. <em>Propofol</em>), clinical case (<em>CABG</em>, <em>Posterior Fossa</em>), or topic (<em>PFT</em>, <em>ARDS</em>, <em>Spinal</em>).</p>
+          <button type="button" class="ron-clear-search-btn" id="ronClearSearchEmptyBtn" style="margin-top:16px; padding:8px 18px; background:rgba(56, 189, 248, 0.15); border:1px solid rgba(56, 189, 248, 0.4); color:#38bdf8; border-radius:10px; cursor:pointer; font-weight:700;">Clear Search</button>
         </div>
       `;
+    } else if (isSearching) {
+      // Universal search returns flat connected grid across all domains
+      groupsHTML = `<div class="ron-flow-grid">${items.map(renderTopicCard).join("")}</div>`;
     } else if (activeDomain === "drugs") {
       // Group items by classification ONLY for drugs
       const groupsMap = new Map();
@@ -1413,15 +1452,16 @@
                   ${ICONS.close}
                 </button>
                 <div class="ron-title-scoop">
-                  <h1>${esc(currentCatObj.label)}</h1>
+                  <h1>${esc(isSearching ? 'Search Results' : currentCatObj.label)}</h1>
                 </div>
               </div>
 
               <!-- Top Inline Search Input -->
               <div class="ron-inline-search-wrap">
                 <input type="search" id="ronInlineSearchInput" class="ron-inline-search-input"
-                  placeholder="🔍 Search all 171 topics &amp; drugs (e.g. Propofol, RSI, TOF)..."
+                  placeholder="🔍 Search all 308 topics, cases &amp; drugs (e.g. Propofol, CABG, ARDS, TOF)..."
                   value="${esc(searchFilter)}" autocomplete="off">
+                ${searchFilter ? `<button type="button" id="ronInlineSearchClearBtn" class="ron-inline-search-clear-btn" aria-label="Clear search">×</button>` : ""}
               </div>
               <button type="button" class="ron-mcq-pill-btn" id="ronOpenMcqBtn" title="High Yield MCQ Practice — NEET-SS / INI-SS" aria-label="Open High Yield MCQ Practice">📝 High Yield MCQs</button>
             </div>
@@ -1431,42 +1471,60 @@
           </div>
 
           <!-- 2. Summary Banner -->
-          <div class="ron-summary-banner">
-            <div class="ron-profile-card">
-              <div class="ron-avatar-wrap" style="font-size:32px;">
-                ${currentCatObj.icon}
-              </div>
-              <div class="ron-profile-info">
-                <span class="ron-profile-meta">${esc(currentCatObj.domain.label)} SYLLABUS</span>
-                <span class="ron-profile-name">${esc(currentCatObj.label)}</span>
-                <div class="ron-profile-progress"></div>
-              </div>
-            </div>
-
-            <div class="ron-stats-area">
-              <div class="ron-stats-header">
-                <div class="ron-diagnosis-block">
-                  <span class="ron-diagnosis-label">${esc(currentCatObj.domain.label)} OVERVIEW</span>
-                  <h2 class="ron-diagnosis-title">${esc(currentCatObj.desc)}</h2>
-                </div>
-
-                <div class="ron-vitals-strip">
-                  <div class="ron-vital-item">
-                    <span class="ron-vital-label">Available Entries</span>
-                    <span class="ron-vital-val">${items.length} <small>topics</small></span>
-                  </div>
-                  <div class="ron-vital-item">
-                    <span class="ron-vital-label">Exam Yield</span>
-                    <span class="ron-vital-val">High <small>★★★★★</small></span>
-                  </div>
-                  <div class="ron-vital-item">
-                    <span class="ron-vital-label">Source</span>
-                    <span class="ron-vital-val">Miller / FDA</span>
+          ${isSearching ? `
+            <div class="ron-summary-banner ron-search-active-banner" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 20px; padding: 18px 22px; margin-bottom: 20px; backdrop-filter: blur(12px);">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+                <div style="display:flex; align-items:center; gap:16px;">
+                  <div style="font-size:28px; background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.3); border-radius:14px; width:48px; height:48px; display:flex; align-items:center; justify-content:center;">🔍</div>
+                  <div>
+                    <span style="font-size:11px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:#38bdf8;">UNIVERSAL STUDY SEARCH</span>
+                    <h2 style="font-size:17px; font-weight:700; color:var(--ron-text-primary,#f8fafc); margin:2px 0 0 0;">${items.length} ${items.length === 1 ? 'match' : 'matches'} for "${esc(searchFilter)}"</h2>
+                    <p style="font-size:12px; color:var(--ron-text-secondary,#94a3b8); margin:3px 0 0 0;">Searching across 308 topics, cases &amp; drug monographs.</p>
                   </div>
                 </div>
+                <button type="button" class="ron-clear-search-btn" id="ronClearSearchBtn" style="padding:8px 16px; background:rgba(239, 68, 68, 0.15); border:1px solid rgba(239, 68, 68, 0.4); color:#f87171; border-radius:10px; font-size:12.5px; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+                  ✕ Clear Search
+                </button>
               </div>
             </div>
-          </div>
+          ` : `
+            <div class="ron-summary-banner">
+              <div class="ron-profile-card">
+                <div class="ron-avatar-wrap" style="font-size:32px;">
+                  ${currentCatObj.icon}
+                </div>
+                <div class="ron-profile-info">
+                  <span class="ron-profile-meta">${esc(currentCatObj.domain.label)} SYLLABUS</span>
+                  <span class="ron-profile-name">${esc(currentCatObj.label)}</span>
+                  <div class="ron-profile-progress"></div>
+                </div>
+              </div>
+
+              <div class="ron-stats-area">
+                <div class="ron-stats-header">
+                  <div class="ron-diagnosis-block">
+                    <span class="ron-diagnosis-label">${esc(currentCatObj.domain.label)} OVERVIEW</span>
+                    <h2 class="ron-diagnosis-title">${esc(currentCatObj.desc)}</h2>
+                  </div>
+
+                  <div class="ron-vitals-strip">
+                    <div class="ron-vital-item">
+                      <span class="ron-vital-label">Available Entries</span>
+                      <span class="ron-vital-val">${items.length} <small>topics</small></span>
+                    </div>
+                    <div class="ron-vital-item">
+                      <span class="ron-vital-label">Exam Yield</span>
+                      <span class="ron-vital-val">High <small>★★★★★</small></span>
+                    </div>
+                    <div class="ron-vital-item">
+                      <span class="ron-vital-label">Source</span>
+                      <span class="ron-vital-val">Miller / FDA</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `}
 
           <!-- Study Progress & Recall Metrics Bar -->
           ${(() => {
@@ -1603,8 +1661,9 @@
               <!-- Top Inline Search Input -->
               <div class="ron-inline-search-wrap">
                 <input type="search" id="ronInlineSearchInput" class="ron-inline-search-input"
-                  placeholder="🔍 Search all 171 topics &amp; drugs..."
+                  placeholder="🔍 Search all 308 topics, cases &amp; drugs (e.g. Propofol, CABG, ARDS, TOF)..."
                   value="${esc(searchFilter)}" autocomplete="off">
+                ${searchFilter ? `<button type="button" id="ronInlineSearchClearBtn" class="ron-inline-search-clear-btn" aria-label="Clear search">×</button>` : ""}
               </div>
               <button type="button" class="ron-mcq-pill-btn" id="ronOpenMcqBtn" title="High Yield MCQ Practice — NEET-SS / INI-SS" aria-label="Open High Yield MCQ Practice">📝 High Yield MCQs</button>
             </div>
@@ -2416,7 +2475,7 @@
               <span style="font-size:24px;">✦</span>
               <div>
                 <h2>Knockout Notes Study Library</h2>
-                <p style="margin:2px 0 0; font-size:12.5px; color:var(--ron-text-empty);">Browse 171 source-cited anaesthesia &amp; critical care topics, clinical exams, ECGs, antibiotics, toxicology &amp; drug monographs</p>
+                <p style="margin:2px 0 0; font-size:12.5px; color:var(--ron-text-empty);">Browse 308 source-cited anaesthesia &amp; critical care topics, clinical case discussions, exams, ECGs, antibiotics, toxicology &amp; drug monographs</p>
               </div>
             </div>
             <button class="ron-close-btn" id="ronCloseModalBtn" aria-label="Close dialog">
@@ -2460,6 +2519,17 @@
   // GLOBAL CLICK LISTENER DELEGATION
   // ==========================================================================
   document.addEventListener("click", (e) => {
+    // 00. Clear Search Action
+    if (e.target.closest("#ronClearSearchBtn, #ronClearSearchEmptyBtn, #ronInlineSearchClearBtn, .ron-clear-search-btn")) {
+      e.preventDefault();
+      e.stopPropagation();
+      searchFilter = "";
+      renderRonBoard();
+      const input = document.getElementById("ronInlineSearchInput");
+      if (input) input.focus();
+      return;
+    }
+
     // 0a. Progress Toggle Action (Mastered / Revision)
     const progBtn = e.target.closest(".kn-study-progress-btn");
     if (progBtn) {
@@ -2697,6 +2767,15 @@
   document.addEventListener("input", (e) => {
     if (e.target.id === "ronInlineSearchInput") {
       searchFilter = e.target.value;
+      if (searchFilter.trim().length > 0 && activeItem) {
+        activeItem = null;
+        try {
+          const url = new URL(window.location.href);
+          url.searchParams.delete("item");
+          url.searchParams.delete("topic");
+          window.history.replaceState({ domain: activeDomain, cat: activeCat }, "", url.toString());
+        } catch (_) {}
+      }
       renderRonBoard();
       const input = document.getElementById("ronInlineSearchInput");
       if (input) {
@@ -2711,6 +2790,9 @@
 
   // Browser navigation
   window.addEventListener("popstate", () => {
+    renderRonBoard();
+  });
+  window.addEventListener("hashchange", () => {
     renderRonBoard();
   });
 
@@ -2774,6 +2856,16 @@
   window.__RON_STUDY_ACTIVE = true;
   window.KN_STUDY_RETURN = function () {
     renderRonBoard();
+  };
+  window.StudyRonDesign = {
+    openTopic: openTopic,
+    backToCategory: backToCategory,
+    setFilter: function (q) {
+      searchFilter = q || "";
+      renderRonBoard();
+    },
+    renderRonBoard: renderRonBoard,
+    getData: getData
   };
 
   // Initial boot

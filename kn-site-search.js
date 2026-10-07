@@ -85,7 +85,7 @@
       Category: "Drugs • Induction",
       Title: "Induction Agents",
       Summary: "High-yield induction pharmacology and anaesthesia pearls (Propofol, Etomidate, Ketamine, Thiopentone).",
-      href: "drugs.html#induction"
+      href: "study.html?cat=induction"
     },
     {
       Type: "Subtopic",
@@ -93,7 +93,7 @@
       Title: "Propofol",
       ImageFileName: "induction_1.jpg",
       Summary: "GABA-A agonist, rapid redistribution, profound vasodilation and myocardial depression.",
-      href: "drugs.html#induction"
+      href: "study.html?item=propofol"
     },
     {
       Type: "Subtopic",
@@ -101,7 +101,7 @@
       Title: "Etomidate",
       ImageFileName: "induction_2.jpg",
       Summary: "Haemodynamically stable induction agent, preserves autonomic baroreflex, 11-beta-hydroxylase adrenocortical suppression.",
-      href: "drugs.html#induction"
+      href: "study.html?item=etomidate"
     },
     {
       Type: "Subtopic",
@@ -109,7 +109,7 @@
       Title: "Ketamine",
       ImageFileName: "induction_3.jpg",
       Summary: "NMDA receptor antagonist, dissociative anaesthesia, bronchodilation, sympathomimetic central stimulation.",
-      href: "drugs.html#induction"
+      href: "study.html?item=ketamine"
     },
     {
       Type: "Subtopic",
@@ -117,14 +117,14 @@
       Title: "Thiopentone",
       ImageFileName: "induction_4.jpg",
       Summary: "Barbiturate induction agent, potent neuroprotection, decreases cerebral metabolic rate of oxygen (CMRO2) and ICP.",
-      href: "drugs.html#induction"
+      href: "study.html?item=thiopentone"
     },
     {
       Type: "Topic",
       Category: "Drugs • Opioids",
       Title: "Opioid Agents",
       Summary: "High-yield opioid pharmacology: Morphine, Fentanyl, Remifentanil, Nalbuphine, Tramadol, Pethidine, Buprenorphine, Naloxone.",
-      href: "drugs.html#opioids"
+      href: "study.html?cat=opioids"
     },
     {
       Type: "Subtopic",
@@ -132,7 +132,7 @@
       Title: "Morphine",
       ImageFileName: "opioid_03_morphine.jpg",
       Summary: "Natural phenanthrene alkaloid, active M6G and neurotoxic M3G metabolites, histamine release.",
-      href: "drugs.html#opioids"
+      href: "study.html?item=morphine"
     },
     {
       Type: "Subtopic",
@@ -140,7 +140,7 @@
       Title: "Fentanyl",
       ImageFileName: "opioid_04_fentanyl.jpg",
       Summary: "Synthetic phenylpiperidine, 100x potency of morphine, high lipophilicity, rapid redistribution.",
-      href: "drugs.html#opioids"
+      href: "study.html?item=fentanyl"
     },
     {
       Type: "Subtopic",
@@ -148,7 +148,7 @@
       Title: "Remifentanil",
       ImageFileName: "opioid_05_remifentanil.jpg",
       Summary: "Ultra-short-acting esterase-metabolized opioid with context-insensitive half-time of 3–4 minutes.",
-      href: "drugs.html#opioids"
+      href: "study.html?item=remifentanil"
     },
     {
       Type: "Subtopic",
@@ -156,14 +156,14 @@
       Title: "Naloxone",
       ImageFileName: "opioid_10_naloxone.jpg",
       Summary: "Pure competitive mu/kappa/delta opioid antagonist for acute respiratory depression reversal.",
-      href: "drugs.html#opioids"
+      href: "study.html?item=naloxone"
     },
     {
       Type: "Topic",
       Category: "Drugs • Neuromuscular Blockers",
       Title: "Muscle Relaxants & Reversal",
       Summary: "Neuromuscular blocking agents and selective reversal mechanisms (Suxamethonium, Rocuronium, Vecuronium, Atracurium, Cisatracurium, Neostigmine, Sugammadex).",
-      href: "drugs.html#muscle-relaxant"
+      href: "study.html?cat=relaxants"
     },
     {
       Type: "Subtopic",
@@ -171,7 +171,7 @@
       Title: "Suxamethonium (Succinylcholine)",
       ImageFileName: "muscle-relaxant_03_suxamethonium.jpg",
       Summary: "Depolarizing NMBA with rapid onset (30–60s), duration 5–10 mins, fasciculations, hyperkalaemia risk.",
-      href: "drugs.html#muscle-relaxant"
+      href: "study.html?item=suxamethonium"
     },
     {
       Type: "Subtopic",
@@ -179,7 +179,7 @@
       Title: "Rocuronium",
       ImageFileName: "muscle-relaxant_04_rocuronium.jpg",
       Summary: "Steroidal non-depolarizing NMBA, rapid onset at 1.2 mg/kg for RSI, selectively encapsulated by sugammadex.",
-      href: "drugs.html#muscle-relaxant"
+      href: "study.html?item=rocuronium"
     },
     {
       Type: "Subtopic",
@@ -187,14 +187,14 @@
       Title: "Sugammadex",
       ImageFileName: "muscle-relaxant_09_sugammadex.jpg",
       Summary: "Modified gamma-cyclodextrin for rapid and deep reversal of rocuronium and vecuronium (2, 4, 16 mg/kg).",
-      href: "drugs.html#muscle-relaxant"
+      href: "study.html?item=sugammadex"
     },
     {
       Type: "Topic",
       Category: "Drugs • Inotropes & Vasopressors",
       Title: "Vasoactive Agents",
       Summary: "Noradrenaline, Adrenaline, Dopamine, Dobutamine, Vasopressin, Phenylephrine, Milrinone, Nitroglycerin, Methylene Blue.",
-      href: "drugs.html#vasoactive"
+      href: "study.html?cat=vasopressors"
     },
     {
       Type: "Subtopic",
@@ -202,7 +202,7 @@
       Title: "Noradrenaline (Norepinephrine)",
       ImageFileName: "vasoactive_03_noradrenaline.png",
       Summary: "Potent alpha-1 and modest beta-1 agonist; first-line vasopressor for septic and vasodilatory distributive shock.",
-      href: "drugs.html#vasoactive"
+      href: "study.html?item=noradrenaline"
     },
     {
       Type: "Subtopic",
@@ -210,7 +210,7 @@
       Title: "Adrenaline (Epinephrine)",
       ImageFileName: "vasoactive_04_adrenaline.png",
       Summary: "Potent non-selective alpha and beta adrenergic agonist; anaphylaxis and cardiac arrest first-line inotrope/vasopressor.",
-      href: "drugs.html#vasoactive"
+      href: "study.html?item=adrenaline"
     },
     {
       Type: "Subtopic",
@@ -218,7 +218,7 @@
       Title: "Vasopressin",
       ImageFileName: "vasoactive_07_vasopressin.png",
       Summary: "V1a vascular smooth muscle Gq receptor agonist; non-adrenergic second-line vasopressor in catecholamine-resistant shock.",
-      href: "drugs.html#vasoactive"
+      href: "study.html?item=vasopressin"
     },
     {
       Type: "Subtopic",
@@ -226,7 +226,7 @@
       Title: "Milrinone",
       ImageFileName: "vasoactive_09_milrinone.png",
       Summary: "Phosphodiesterase-3 (PDE3) inhibitor; inodilator increasing myocardial cAMP and reducing pulmonary vascular resistance.",
-      href: "drugs.html#vasoactive"
+      href: "study.html?item=milrinone"
     },
     {
       Type: "Subtopic",
@@ -234,14 +234,14 @@
       Title: "Methylene Blue",
       ImageFileName: "vasoactive_11_methylene-blue.png",
       Summary: "Guanylyl cyclase inhibitor blocking nitric oxide-mediated vasoplegia in refractory cardiac vasoplegic shock.",
-      href: "drugs.html#vasoactive"
+      href: "study.html?item=methylene-blue"
     },
     {
       Type: "Topic",
       Category: "Drugs • Local Anaesthetics",
       Title: "Local Anaesthetics & LAST Protocol",
       Summary: "Voltage-gated sodium channel blockers, amino-ester vs amino-amide metabolism, and LAST recognition and 20% lipid emulsion management.",
-      href: "drugs.html#local-anaesthetics"
+      href: "study.html?cat=local"
     },
     {
       Type: "Subtopic",
@@ -249,7 +249,7 @@
       Title: "Lignocaine (Lidocaine)",
       ImageFileName: "local-anaesthetics_03_lignocaine.png",
       Summary: "Amide local anaesthetic, intermediate duration, max safe dose 3 mg/kg plain, 7 mg/kg with adrenaline.",
-      href: "drugs.html#local-anaesthetics"
+      href: "study.html?item=lignocaine"
     },
     {
       Type: "Subtopic",
@@ -257,7 +257,7 @@
       Title: "Bupivacaine & Levobupivacaine",
       ImageFileName: "local-anaesthetics_04_bupivacaine-levobupivacaine.png",
       Summary: "Long-acting amide local anaesthetic with high cardiotoxicity index; S(-)-enantiomer levobupivacaine has wider safety margin.",
-      href: "drugs.html#local-anaesthetics"
+      href: "study.html?item=bupivacaine"
     },
     {
       Type: "Subtopic",
@@ -265,7 +265,7 @@
       Title: "Ropivacaine",
       ImageFileName: "local-anaesthetics_05_ropivacaine.png",
       Summary: "Pure S(-)-enantiomer amide local anaesthetic with sensory-motor differentiation and reduced cardiotoxicity compared to bupivacaine.",
-      href: "drugs.html#local-anaesthetics"
+      href: "study.html?item=ropivacaine"
     },
     {
       Type: "Subtopic",
@@ -273,7 +273,7 @@
       Title: "LAST Signs and Symptoms",
       ImageFileName: "local-anaesthetics_08_last-signs-symptoms.png",
       Summary: "Perioral numbness, metallic taste, tinnitus, visual disturbance, seizures, followed by ventricular arrhythmias and cardiovascular collapse.",
-      href: "drugs.html#local-anaesthetics"
+      href: "study.html?item=last-syndrome"
     },
     {
       Type: "Subtopic",
@@ -281,7 +281,7 @@
       Title: "LAST Management & 20% Lipid Emulsion Protocol",
       ImageFileName: "local-anaesthetics_09_last-management.png",
       Summary: "Stop injection, call for help, 100% O2, airway control, manage seizures with benzodiazepines, 20% Lipid emulsion: 1.5 mL/kg IV bolus over 1 min, then 0.25 mL/kg/min infusion. Avoid vasopressin and local anaesthetic antiarrhythmics.",
-      href: "drugs.html#local-anaesthetics"
+      href: "study.html?item=last-syndrome"
     },
 
     // --- TOPICS & SUBTOPICS: CRITICAL CARE & VENTILATION ---
@@ -2599,17 +2599,46 @@
     async function buildSearchCatalog() {
       if (memoryCatalog) return memoryCatalog;
 
+      // Ensure study data is loaded before building catalog
+      let study = window.KN_STUDY;
+      if (!study && typeof loadStudyDataIfNeeded === "function") {
+        try {
+          study = await loadStudyDataIfNeeded();
+        } catch (_) {}
+      }
+      if (!study) study = window.KN_STUDY;
+
       const catalog = [...STATIC_ENTRIES];
 
-      // 1. Deep Ingestion of Study Mode data (Topics, 277 Sections, 84 Drugs)
+      // 1. Deep Ingestion of Study Mode data (Topics, Cases, Sections, Drugs)
       try {
-        const study = window.KN_STUDY;
         if (study && Array.isArray(study.topics)) {
           study.topics.forEach(t => {
+            if (!t || !t.name) return;
+            const isCase = (t.id || "").startsWith("case-");
+            const typeLabel = isCase ? "Case Discussion" : "Study Topic";
+            const firstSecText = (t.sections && t.sections[0] && t.sections[0].b)
+              ? t.sections[0].b.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 240)
+              : "";
+
+            // Primary topic entry for direct navigation
+            catalog.push({
+              Type: typeLabel,
+              Category: `Study Mode • ${t.cat || (isCase ? 'Clinical Cases' : 'Anaesthesia')}`,
+              Title: t.name,
+              CanonicalTitle: t.short || t.name,
+              Summary: t.tagline || (firstSecText ? (firstSecText + "…") : ""),
+              Content: [t.name, t.short, t.tagline, (t.tags || []).join(" ")].filter(Boolean).join(" "),
+              Tags: (t.tags || []).concat([t.cat, t.short || ""]).filter(Boolean).join(", "),
+              Aliases: t.short ? [t.short] : [],
+              href: `study.html?item=${t.id}`
+            });
+
             // Index each structured section inside the topic
             if (Array.isArray(t.sections)) {
               t.sections.forEach((sec, sIdx) => {
-                let rawText = sec.b || "";
+                let rawText = sec.h ? (sec.h + " ") : "";
+                rawText += sec.b || "";
                 if (sec.table) {
                   rawText += " " + (sec.table.headers || []).join(" ") + " " + (sec.table.rows || []).map(r => r.join(" ")).join(" ");
                 }
@@ -2630,6 +2659,7 @@
 
         if (study && Array.isArray(study.drugs)) {
           study.drugs.forEach(d => {
+            if (!d || !d.name) return;
             const pharmacologyText = [d.pd, d.pk, d.dosage, d.complications, d.structure, d.offLabel]
               .filter(Boolean)
               .map(s => s.replace(/<[^>]+>/g, " "))
@@ -2645,7 +2675,7 @@
               Summary: d.tagline || (d.pd ? d.pd.replace(/<[^>]+>/g, " ").slice(0, 180) : ""),
               Content: pharmacologyText,
               Tags: (d.tags || []).concat([d.classification, d.brand]).filter(Boolean).join(", "),
-              Aliases: Array.isArray(d.aliases) ? d.aliases : [],
+              Aliases: [d.name, d.brand].concat(Array.isArray(d.aliases) ? d.aliases : []).filter(Boolean),
               href: `study.html?item=${d.id}`
             });
           });
@@ -2828,7 +2858,20 @@
             modal.classList.remove("open");
             if (window.KnockoutScrollLock) window.KnockoutScrollLock.set("search", false);
           }
-          window.location.href = item.href;
+          const itemMatch = item.href.match(/[?&]item=([^&#]+)/);
+          const itemId = itemMatch ? itemMatch[1] : null;
+          if (itemId && window.StudyRonDesign && typeof window.StudyRonDesign.openTopic === "function") {
+            window.StudyRonDesign.openTopic(itemId);
+            const targetHash = item.href.split("#")[1];
+            if (targetHash) {
+              setTimeout(() => {
+                const secEl = document.getElementById(targetHash) || document.querySelector(`[data-section-id="${targetHash}"]`);
+                if (secEl) secEl.scrollIntoView({ behavior: "smooth", block: "start" });
+              }, 220);
+            }
+            return;
+          }
+          window.location.assign(item.href);
           return;
         }
       }
@@ -2861,7 +2904,7 @@
         results.innerHTML = "";
 
         if (!q) {
-          if (status) status.textContent = "Start typing to search 64 topics, 277 study sections, 84 drugs, 35 calculators, and viva pearls.";
+          showRecentSearches();
           return;
         }
 
@@ -2893,11 +2936,22 @@
           // Check aliases
           for (const al of aliases) {
             if (al === q) {
-              if (score < 135) { score = 135; matchContext = "alias"; matchedAlias = al; }
+              if (score < 140) { score = 140; matchContext = "alias"; matchedAlias = al; }
             } else if (al.startsWith(q)) {
-              if (score < 115) { score = 115; matchContext = "alias"; matchedAlias = al; }
+              if (score < 120) { score = 120; matchContext = "alias"; matchedAlias = al; }
             } else if (al.includes(q)) {
               if (score < 88) { score = 88; matchContext = "alias"; matchedAlias = al; }
+            }
+          }
+
+          if (item.CanonicalTitle) {
+            const ct = norm(item.CanonicalTitle);
+            if (ct === q) {
+              score = Math.max(score, 145);
+              if (score === 145) matchContext = "title";
+            } else if (ct.startsWith(q)) {
+              score = Math.max(score, 122);
+              if (score === 122) matchContext = "title";
             }
           }
 
@@ -2905,11 +2959,11 @@
             score = 150;
             matchContext = "title";
           } else if (title.startsWith(q)) {
-            score = Math.max(score, 120);
-            if (score === 120) matchContext = "title";
+            score = Math.max(score, 125);
+            if (score === 125) matchContext = "title";
           } else if (title.includes(q)) {
-            score = Math.max(score, 90);
-            if (score === 90) matchContext = "title";
+            score = Math.max(score, 95);
+            if (score === 95) matchContext = "title";
           } else if (imgFile && imgFile.includes(q)) {
             score = Math.max(score, 85);
             if (score === 85) matchContext = "image";
@@ -2945,6 +2999,9 @@
           }
 
           if (score > 0) {
+            if (["Study Topic", "Case Discussion", "Study Drug", "Calculator"].includes(item.Type)) {
+              score += 10;
+            }
             scoredMatches.push({ item, score, matchContext });
           }
         }
@@ -3035,7 +3092,7 @@
         if (input.value.trim()) return;
         const recents = getRecentSearches();
         if (!recents.length) {
-          if (status) status.textContent = "Start typing to search 64 topics, 277 study sections, 84 drugs, 35 calculators, and viva pearls.";
+          if (status) status.textContent = "Start typing to search 224 topics & clinical cases, 84 drugs, 37 calculators, and viva pearls.";
           results.innerHTML = "";
           return;
         }

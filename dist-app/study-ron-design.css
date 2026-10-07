@@ -216,7 +216,8 @@ body:not(.dark)[data-content-page="study"] .st-hero,
 body:not(.dark)[data-content-page="study"] .st-cat-nav,
 body:not(.dark)[data-content-page="study"] .st-top-index,
 body:not(.dark)[data-content-page="study"] #stGrid,
-body:not(.dark)[data-content-page="study"] #stDetail {
+body:not(.dark)[data-content-page="study"] #stDetail,
+body:not(.dark)[data-content-page="study"] #stList {
   display: none !important;
 }
 
@@ -416,9 +417,30 @@ body[data-content-page="study"] .st-page.container {
 }
 
 .ron-inline-search-wrap {
+  position: relative;
   flex: 1;
   max-width: 480px;
   min-width: 240px;
+}
+
+.ron-inline-search-clear-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--ron-text-secondary, #94a3b8);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: color 0.15s ease;
+}
+
+.ron-inline-search-clear-btn:hover {
+  color: #ef4444;
 }
 
 .ron-inline-search-input {
