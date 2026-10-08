@@ -162,9 +162,12 @@ body:not(.dark) .kn-site-search:focus-within {
   text-decoration: none;
   color: var(--text-main);
   box-shadow: var(--box-3d-bevel), var(--shadow-sm);
-  transition: all var(--transition-fast);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
   transform-style: preserve-3d;
-  will-change: transform, box-shadow;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 60px;
 }
 
 .dark .kn-search-result {

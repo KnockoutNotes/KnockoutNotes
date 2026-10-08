@@ -2893,14 +2893,15 @@
     }
 
     let ticking = false;
+    let isBttVisible = false;
     window.addEventListener("scroll", () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           if (btn) {
-            if (window.scrollY > 480) {
-              btn.classList.add("ron-btt-visible");
-            } else {
-              btn.classList.remove("ron-btt-visible");
+            const shouldShow = window.scrollY > 480;
+            if (shouldShow !== isBttVisible) {
+              isBttVisible = shouldShow;
+              btn.classList.toggle("ron-btt-visible", shouldShow);
             }
           }
           ticking = false;
