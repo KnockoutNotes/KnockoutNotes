@@ -1859,6 +1859,9 @@
   // CARD 3D MOLECULE THUMBNAIL CONTROLLER (Shared Single-Context WebGL)
   // ==========================================================================
   function mountAllCard3D(root) {
+    const initialBoxes = (root || document).querySelectorAll("[data-tile-drug]");
+    if (!initialBoxes.length) return;
+
     function tryMountCards() {
       const boxes = Array.from((root || document).querySelectorAll("[data-tile-drug]"));
       if (!boxes.length) return true;
@@ -1892,15 +1895,20 @@
       attempts++;
       if (typeof window.KNMountTileMolecule === "function") {
         const allDone = tryMountCards();
-        if (allDone || attempts > 35) clearInterval(timer);
+        if (allDone || attempts > 20) clearInterval(timer);
+      } else if (attempts > 20) {
+        clearInterval(timer);
       }
-    }, 80);
+    }, 100);
   }
 
   // ==========================================================================
   // 3D MOLECULE MOUNTING CONTROLLER (Interactive WebGL Rotating Conformer)
   // ==========================================================================
   function mountAll3D(root) {
+    const initialNodes = (root || document).querySelectorAll(".st-molecule-viewer[data-drug]");
+    if (!initialNodes.length) return;
+
     function attemptAll() {
       const nodes = Array.from((root || document).querySelectorAll(".st-molecule-viewer[data-drug]"));
       if (!nodes.length) return true;
@@ -1946,7 +1954,6 @@
       setTimeout(attemptAll, 60);
       setTimeout(attemptAll, 200);
       setTimeout(attemptAll, 600);
-      setTimeout(attemptAll, 1200);
     }
 
     window.addEventListener("kn-molecule3d-ready", attemptAll, { once: true });
@@ -1955,15 +1962,33 @@
       count++;
       if (typeof window.KNMountMolecule3D === "function" || typeof window.KNMountTileMolecule === "function") {
         const done = attemptAll();
-        if (done || count > 35) clearInterval(interval);
+        if (done || count > 20) clearInterval(interval);
+      } else if (count > 20) {
+        clearInterval(interval);
       }
-    }, 80);
+    }, 100);
   }
 
   // ==========================================================================
   // COMPLETE DESCRIPTION RENDERER (ALL SUBSECTIONS IN FULL POINT-WISE APPROACH)
   // ==========================================================================
   function renderCompleteDescription(item, isDrug) {
+    const renderFigureItem = (img) => {
+      if (!img || !img.src) return "";
+      const isWide = !!(img.wide || img.fullWidth);
+      const wrapCls = isWide ? "ron-figure-wrap-full" : "ron-figure-wrap-float";
+      return `
+        <figure class="${wrapCls}" data-zoom-src="${esc(img.src)}" data-zoom-caption="${esc(img.caption || '')}" data-zoom-alt="${esc(img.alt || 'Clinical Reference Diagram')}" role="button" tabindex="0" title="Click to inspect and zoom">
+          <div class="ron-figure-zoom-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            <span>Zoom</span>
+          </div>
+          <img src="${esc(img.src)}" alt="${esc(img.alt || 'Clinical Diagram')}" class="ron-figure-img" loading="lazy">
+          ${img.caption ? `<figcaption class="ron-figure-caption"><span class="ron-caption-mag">🔍</span> ${esc(img.caption)}</figcaption>` : ''}
+        </figure>
+      `;
+    };
+
     const sourceCalloutHTML = item.source ? `
       <div class="ron-source-callout">
         <span class="ron-source-icon">📚</span>
@@ -2046,6 +2071,15 @@
           </div>
         ` : "";
 
+        let monographFigureHTML = "";
+        if (s.id === "sec-overview" && (item.image || item.images)) {
+          if (Array.isArray(item.images)) {
+            monographFigureHTML = item.images.map(renderFigureItem).join("");
+          } else if (item.image) {
+            monographFigureHTML = renderFigureItem(item.image);
+          }
+        }
+
         return `
           <div class="ron-card ron-notes-card" id="${s.id}">
             <div class="ron-card-header">
@@ -2054,8 +2088,9 @@
               </h3>
               <span class="ron-card-scale-icon">${ICONS.scale}</span>
             </div>
-            <div class="ron-prose" style="margin-top:14px;">
+            <div class="ron-prose ron-figure-tight-prose" style="margin-top:14px;">
               ${classificationCallout}
+              ${monographFigureHTML}
               ${formatProseLines(s.text)}
             </div>
           </div>
@@ -2141,22 +2176,27 @@
           }
         }
 
-        // Section Images / Figures (Floated to wrap tight with text)
+        // Section Images / Figures (Floated or full-width, with zoom dock triggers)
         let imagesHTML = "";
-        if (Array.isArray(sec.images)) {
-          imagesHTML = sec.images.map(img => `
-            <div class="ron-figure-wrap-float">
+        const renderFigureItem = (img) => {
+          if (!img || !img.src) return "";
+          const isWide = !!(img.wide || img.fullWidth);
+          const wrapCls = isWide ? "ron-figure-wrap-full" : "ron-figure-wrap-float";
+          return `
+            <figure class="${wrapCls}" data-zoom-src="${esc(img.src)}" data-zoom-caption="${esc(img.caption || '')}" data-zoom-alt="${esc(img.alt || 'Clinical Reference Diagram')}" role="button" tabindex="0" title="Click to inspect and zoom">
+              <div class="ron-figure-zoom-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                <span>Zoom</span>
+              </div>
               <img src="${esc(img.src)}" alt="${esc(img.alt || 'Clinical Diagram')}" class="ron-figure-img" loading="lazy">
-              ${img.caption ? `<p class="ron-figure-caption">🔍 ${esc(img.caption)}</p>` : ''}
-            </div>
-          `).join("");
-        } else if (sec.image) {
-          imagesHTML = `
-            <div class="ron-figure-wrap-float">
-              <img src="${esc(sec.image.src)}" alt="${esc(sec.image.alt || 'Clinical Diagram')}" class="ron-figure-img" loading="lazy">
-              ${sec.image.caption ? `<p class="ron-figure-caption">🔍 ${esc(sec.image.caption)}</p>` : ''}
-            </div>
+              ${img.caption ? `<figcaption class="ron-figure-caption"><span class="ron-caption-mag">🔍</span> ${esc(img.caption)}</figcaption>` : ''}
+            </figure>
           `;
+        };
+        if (Array.isArray(sec.images)) {
+          imagesHTML = sec.images.map(renderFigureItem).join("");
+        } else if (sec.image) {
+          imagesHTML = renderFigureItem(sec.image);
         }
 
         // Table
@@ -2522,7 +2562,34 @@
   // GLOBAL CLICK LISTENER DELEGATION
   // ==========================================================================
   document.addEventListener("click", (e) => {
-    // 00. Clear Search Action
+    // 00a. Clinical Figure / Flowchart Zoom Trigger (Top priority: clicking any image opens dock!)
+    const figTrigger = e.target.closest(
+      "[data-zoom-src], .ron-figure-wrap-float, .ron-figure-wrap-full, .ron-figure-img, figure, .st-diagram-wrap, .st-section-img, .ron-prose img, #ronMainContentBox img"
+    );
+    if (figTrigger && !e.target.closest(".ron-zoom-dock-container, [data-close-zoom-dock]")) {
+      const wrap = figTrigger.closest("[data-zoom-src]") || figTrigger;
+      const imgEl = wrap.querySelector("img") || (wrap.tagName === "IMG" ? wrap : null);
+      const src = wrap.getAttribute("data-zoom-src") || (imgEl && (imgEl.getAttribute("src") || imgEl.src)) || "";
+      const caption = wrap.getAttribute("data-zoom-caption") || (wrap.querySelector(".ron-figure-caption, figcaption") && wrap.querySelector(".ron-figure-caption, figcaption").textContent) || "";
+      const alt = wrap.getAttribute("data-zoom-alt") || (imgEl && (imgEl.getAttribute("alt") || imgEl.alt)) || "Clinical Reference Diagram";
+
+      if (src && !src.startsWith("data:image/svg+xml;base64")) {
+        e.preventDefault();
+        e.stopPropagation();
+        openImageZoomDock({ src, caption, alt });
+        return;
+      }
+    }
+
+    // 00b. Zoom Dock Close Trigger
+    if (e.target.closest("[data-close-zoom-dock]") || e.target.id === "ronImageZoomDock") {
+      e.preventDefault();
+      e.stopPropagation();
+      closeImageZoomDock();
+      return;
+    }
+
+    // 00c. Clear Search Action
     if (e.target.closest("#ronClearSearchBtn, #ronClearSearchEmptyBtn, #ronInlineSearchClearBtn, .ron-clear-search-btn")) {
       e.preventDefault();
       e.stopPropagation();
@@ -2742,42 +2809,16 @@
       if (modal) modal.hidden = true;
       return;
     }
-  });
 
-  // Smooth hover preview for primary domains (smooth horizontal category reveal)
-  document.addEventListener("pointerover", (e) => {
-    if (e.pointerType && e.pointerType !== "mouse") return;
-    const tab = e.target.closest && e.target.closest(".ron-domain-tab");
-    if (!tab) return;
-    const targetDomain = tab.getAttribute("data-ron-domain");
-    if (!targetDomain) return;
-
-    clearTimeout(hoverPreviewTimeout);
-    hoverPreviewTimeout = setTimeout(() => {
-      previewCategoriesForDomain(targetDomain);
-    }, 60);
-  });
-
-  document.addEventListener("pointerout", (e) => {
-    if (e.pointerType && e.pointerType !== "mouse") return;
-    const navSys = e.target.closest && e.target.closest(".ron-domain-nav-system");
-    if (!navSys) return;
-    if (e.relatedTarget && navSys.contains(e.relatedTarget)) return;
-
-    clearTimeout(hoverPreviewTimeout);
-    hoverPreviewTimeout = setTimeout(() => {
-      previewCategoriesForDomain(activeDomain);
-    }, 120);
   });
 
   // Smooth horizontal wheel scrolling for horizontal category row
   document.addEventListener("wheel", (e) => {
-    const singleRow = e.target.closest(".ron-category-single-row");
+    const singleRow = e.target.closest && e.target.closest(".ron-category-single-row");
     if (singleRow && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-      e.preventDefault();
       singleRow.scrollLeft += e.deltaY;
     }
-  }, { passive: false });
+  }, { passive: true });
 
   // Real-time search inputs
   document.addEventListener("input", (e) => {
@@ -2869,9 +2910,263 @@
     }, { passive: true });
   }
 
-  // Keyboard accessibility for topic cards
+  // ==========================================================================
+  // CLINICAL IMAGE ZOOM DOCK / LIGHTBOX CONTROLLER
+  // ==========================================================================
+  let currentZoomScale = 1.0;
+  let isPanning = false;
+  let startPanX = 0;
+  let startPanY = 0;
+  let panTranslateX = 0;
+  let panTranslateY = 0;
+  let initialPinchDistance = 0;
+  let initialPinchScale = 1.0;
+
+  function updateZoomTransform() {
+    const img = document.getElementById("ronZoomImage");
+    const levelText = document.getElementById("ronZoomLevelText");
+    if (!img) return;
+    img.style.transform = `translate(${panTranslateX}px, ${panTranslateY}px) scale(${currentZoomScale})`;
+    if (levelText) levelText.textContent = `${Math.round(currentZoomScale * 100)}%`;
+  }
+
+  function setZoom(scale) {
+    const newScale = Math.min(Math.max(scale, 0.4), 4.5);
+    currentZoomScale = newScale;
+    if (currentZoomScale <= 1.0) {
+      panTranslateX = 0;
+      panTranslateY = 0;
+    }
+    updateZoomTransform();
+  }
+
+  function ensureZoomDockDOM() {
+    let dock = document.getElementById("ronImageZoomDock");
+    if (!dock) {
+      dock = document.createElement("div");
+      dock.id = "ronImageZoomDock";
+      dock.className = "ron-zoom-dock-modal";
+      dock.setAttribute("role", "dialog");
+      dock.setAttribute("aria-modal", "true");
+      dock.setAttribute("aria-label", "Image Zoom Inspection Dock");
+      dock.hidden = true;
+      dock.innerHTML = `
+        <div class="ron-zoom-dock-backdrop" data-close-zoom-dock></div>
+        <div class="ron-zoom-dock-container">
+          <header class="ron-zoom-dock-header">
+            <div class="ron-zoom-dock-title-group">
+              <span class="ron-zoom-dock-tag">CLINICAL REFERENCE FIGURE</span>
+              <h4 class="ron-zoom-dock-title" id="ronZoomDockTitle">Clinical Diagram</h4>
+            </div>
+            <div class="ron-zoom-dock-header-actions">
+              <button type="button" class="ron-zoom-btn-close" data-close-zoom-dock aria-label="Close Zoom Dock (ESC)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <span>Close (ESC)</span>
+              </button>
+            </div>
+          </header>
+
+          <main class="ron-zoom-stage" id="ronZoomStage">
+            <div class="ron-zoom-viewport" id="ronZoomViewport">
+              <img id="ronZoomImage" src="" alt="Clinical Figure" draggable="false">
+            </div>
+          </main>
+
+          <footer class="ron-zoom-dock-footer">
+            <p class="ron-zoom-dock-caption" id="ronZoomDockCaption"></p>
+            <div class="ron-zoom-pill-controls" role="toolbar" aria-label="Zoom controls">
+              <button type="button" class="ron-zoom-pill-btn" id="ronZoomOutBtn" title="Zoom Out (−)" aria-label="Zoom Out">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </button>
+              <button type="button" class="ron-zoom-pill-level" id="ronZoomResetBtn" title="Reset Zoom (100%)" aria-label="Reset Zoom">
+                <span id="ronZoomLevelText">100%</span>
+              </button>
+              <button type="button" class="ron-zoom-pill-btn" id="ronZoomInBtn" title="Zoom In (+)" aria-label="Zoom In">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </button>
+              <div class="ron-zoom-pill-sep"></div>
+              <button type="button" class="ron-zoom-pill-btn" id="ronZoomFitBtn" title="Fit to Screen" aria-label="Fit to Screen">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="12" cy="12" r="3"></circle></svg>
+                <span>Fit</span>
+              </button>
+              <button type="button" class="ron-zoom-pill-btn" id="ronZoomActualBtn" title="Actual Size (1:1)" aria-label="Actual Size">
+                <span>1:1</span>
+              </button>
+            </div>
+          </footer>
+        </div>
+      `;
+      document.body.appendChild(dock);
+
+      const outBtn = dock.querySelector("#ronZoomOutBtn");
+      if (outBtn) outBtn.addEventListener("click", () => setZoom(currentZoomScale * 0.8));
+
+      const inBtn = dock.querySelector("#ronZoomInBtn");
+      if (inBtn) inBtn.addEventListener("click", () => setZoom(currentZoomScale * 1.25));
+
+      const resetBtn = dock.querySelector("#ronZoomResetBtn");
+      if (resetBtn) resetBtn.addEventListener("click", () => setZoom(1.0));
+
+      const fitBtn = dock.querySelector("#ronZoomFitBtn");
+      if (fitBtn) fitBtn.addEventListener("click", () => setZoom(1.0));
+
+      const actualBtn = dock.querySelector("#ronZoomActualBtn");
+      if (actualBtn) actualBtn.addEventListener("click", () => {
+        setZoom(currentZoomScale === 1.0 ? 1.5 : 1.0);
+      });
+
+      const zoomImg = dock.querySelector("#ronZoomImage");
+      if (zoomImg) {
+        zoomImg.addEventListener("click", (e) => {
+          e.stopPropagation();
+          setZoom(currentZoomScale > 1.2 ? 1.0 : 1.8);
+        });
+      }
+
+      const stage = dock.querySelector("#ronZoomStage");
+      if (stage) {
+        stage.addEventListener("dblclick", (e) => {
+          e.preventDefault();
+          setZoom(currentZoomScale > 1.2 ? 1.0 : 2.0);
+        });
+
+        stage.addEventListener("wheel", (e) => {
+          e.preventDefault();
+          const factor = e.deltaY < 0 ? 1.15 : 0.87;
+          setZoom(currentZoomScale * factor);
+        }, { passive: false });
+
+        stage.addEventListener("pointerdown", (e) => {
+          if (e.target.closest(".ron-zoom-pill-controls, .ron-zoom-btn-close")) return;
+          isPanning = true;
+          startPanX = e.clientX - panTranslateX;
+          startPanY = e.clientY - panTranslateY;
+          stage.setPointerCapture(e.pointerId);
+          stage.classList.add("is-panning");
+        });
+        stage.addEventListener("pointermove", (e) => {
+          if (!isPanning) return;
+          panTranslateX = e.clientX - startPanX;
+          panTranslateY = e.clientY - startPanY;
+          updateZoomTransform();
+        });
+        stage.addEventListener("pointerup", () => {
+          isPanning = false;
+          stage.classList.remove("is-panning");
+        });
+        stage.addEventListener("pointercancel", () => {
+          isPanning = false;
+          stage.classList.remove("is-panning");
+        });
+
+        stage.addEventListener("touchstart", (e) => {
+          if (e.touches.length === 2) {
+            initialPinchDistance = Math.hypot(
+              e.touches[0].clientX - e.touches[1].clientX,
+              e.touches[0].clientY - e.touches[1].clientY
+            );
+            initialPinchScale = currentZoomScale;
+          }
+        }, { passive: true });
+        stage.addEventListener("touchmove", (e) => {
+          if (e.touches.length === 2 && initialPinchDistance > 0) {
+            e.preventDefault();
+            const currentDist = Math.hypot(
+              e.touches[0].clientX - e.touches[1].clientX,
+              e.touches[0].clientY - e.touches[1].clientY
+            );
+            const ratio = currentDist / initialPinchDistance;
+            setZoom(initialPinchScale * ratio);
+          }
+        }, { passive: false });
+      }
+    }
+    return dock;
+  }
+
+  function openImageZoomDock(opts) {
+    if (!opts || !opts.src) return;
+    const dock = ensureZoomDockDOM();
+    const img = dock.querySelector("#ronZoomImage");
+    const titleEl = dock.querySelector("#ronZoomDockTitle");
+    const captionEl = dock.querySelector("#ronZoomDockCaption");
+
+    currentZoomScale = 1.0;
+    panTranslateX = 0;
+    panTranslateY = 0;
+
+    if (img) {
+      img.src = opts.src;
+      img.alt = opts.alt || opts.caption || "Clinical Reference Diagram";
+    }
+    if (titleEl) {
+      titleEl.textContent = opts.alt && opts.alt !== "Clinical Reference Diagram" ? opts.alt : (opts.caption || "Inspection View");
+    }
+    if (captionEl) {
+      captionEl.textContent = opts.caption || "";
+      captionEl.style.display = opts.caption ? "block" : "none";
+    }
+
+    updateZoomTransform();
+    dock.removeAttribute("hidden");
+    dock.hidden = false;
+    dock.style.display = "flex";
+    void dock.offsetWidth;
+    dock.classList.add("open");
+    document.body.classList.add("ron-zoom-dock-open");
+  }
+
+  function closeImageZoomDock() {
+    const dock = document.getElementById("ronImageZoomDock");
+    if (dock) {
+      dock.classList.remove("open");
+      document.body.classList.remove("ron-zoom-dock-open");
+      setTimeout(() => {
+        if (!dock.classList.contains("open")) {
+          dock.setAttribute("hidden", "true");
+          dock.hidden = true;
+          dock.style.display = "none";
+        }
+      }, 200);
+    }
+  }
+
+  window.openImageZoomDock = openImageZoomDock;
+  window.closeImageZoomDock = closeImageZoomDock;
+
+  // Keyboard accessibility for topic cards and Zoom Dock
   document.addEventListener("keydown", (e) => {
+    const dock = document.getElementById("ronImageZoomDock");
+    if (dock && dock.classList.contains("open")) {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeImageZoomDock();
+        return;
+      }
+      if (e.key === "+" || e.key === "=") {
+        e.preventDefault();
+        setZoom(currentZoomScale * 1.2);
+        return;
+      }
+      if (e.key === "-" || e.key === "_") {
+        e.preventDefault();
+        setZoom(currentZoomScale * 0.8);
+        return;
+      }
+      if (e.key === "0") {
+        e.preventDefault();
+        setZoom(1.0);
+        return;
+      }
+    }
+
     if (e.key === "Enter" || e.key === " ") {
+      const zoomFig = e.target.closest && e.target.closest("[data-zoom-src]");
+      if (zoomFig) {
+        e.preventDefault();
+        zoomFig.click();
+        return;
+      }
       const topicCard = e.target.closest(".ron-interactive-topic-card, [data-topic-id]");
       if (topicCard && !e.target.closest("button, a, input, select, textarea")) {
         e.preventDefault();
