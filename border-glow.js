@@ -41,7 +41,15 @@
     return false;
   }
 
-  function getEdgeProximityFast(cx, cy, x, y) {
+  function getCenterOfElement(el) {
+    var rect = el.getBoundingClientRect();
+    return [rect.width / 2, rect.height / 2];
+  }
+
+  function getEdgeProximity(el, x, y) {
+    var center = getCenterOfElement(el);
+    var cx = center[0];
+    var cy = center[1];
     var dx = x - cx;
     var dy = y - cy;
     var kx = Infinity;
@@ -53,9 +61,10 @@
     return Math.min(Math.max(1 / minK, 0), 1);
   }
 
-  function getCursorAngleFast(cx, cy, x, y) {
-    var dx = x - cx;
-    var dy = y - cy;
+  function getCursorAngle(el, x, y) {
+    var center = getCenterOfElement(el);
+    var dx = x - center[0];
+    var dy = y - center[1];
     if (dx === 0 && dy === 0) return 0;
     var radians = Math.atan2(dy, dx);
     var degrees = radians * (180 / Math.PI) + 90;
@@ -91,30 +100,19 @@
     var rafId = null;
     var pendingX = 0;
     var pendingY = 0;
-    var rectLeft = 0;
-    var rectTop = 0;
-    var cx = 0;
-    var cy = 0;
-
-    function onPointerEnter() {
-      var rect = card.getBoundingClientRect();
-      rectLeft = rect.left;
-      rectTop = rect.top;
-      cx = rect.width * 0.5;
-      cy = rect.height * 0.5;
-    }
 
     function onPointerMove(e) {
-      pendingX = e.clientX - rectLeft;
-      pendingY = e.clientY - rectTop;
+      var rect = card.getBoundingClientRect();
+      pendingX = e.clientX - rect.left;
+      pendingY = e.clientY - rect.top;
 
       if (!rafId) {
         rafId = requestAnimationFrame(function () {
           rafId = null;
-          var edge = getEdgeProximityFast(cx, cy, pendingX, pendingY);
-          var angle = getCursorAngleFast(cx, cy, pendingX, pendingY);
-          card.style.setProperty("--edge-proximity", (edge * 100).toFixed(1));
-          card.style.setProperty("--cursor-angle", angle.toFixed(1) + "deg");
+          var edge = getEdgeProximity(card, pendingX, pendingY);
+          var angle = getCursorAngle(card, pendingX, pendingY);
+          card.style.setProperty("--edge-proximity", (edge * 100).toFixed(2));
+          card.style.setProperty("--cursor-angle", angle.toFixed(2) + "deg");
         });
       }
     }
@@ -127,7 +125,6 @@
       card.style.setProperty("--edge-proximity", "0");
     }
 
-    card.addEventListener("pointerenter", onPointerEnter, { passive: true });
     card.addEventListener("pointermove", onPointerMove, { passive: true });
     card.addEventListener("pointerleave", onPointerLeave, { passive: true });
   }

@@ -775,7 +775,6 @@
 
     var lastY = window.scrollY;
     var ticking = false;
-    var isScrolledOff = false;
 
     function handleScroll() {
       ticking = false;
@@ -784,17 +783,12 @@
       var y = Math.max(0, window.scrollY || window.pageYOffset || (document.documentElement ? document.documentElement.scrollTop : 0) || 0);
       var delta = y - lastY;
 
-      // Smooth deadband: prevents jitter from micro-scrolls and finger rest
-      if (delta > 16 && y > 80) {
-        if (!isScrolledOff) {
-          isScrolledOff = true;
-          document.body.classList.add("kn-nav-scrolled-off", "kn-nav-autohidden");
-        }
-      } else if (delta < -14 || y <= 24) {
-        if (isScrolledOff) {
-          isScrolledOff = false;
-          document.body.classList.remove("kn-nav-scrolled-off", "kn-nav-autohidden");
-        }
+      // The moment user scrolls down past the top (y > 10), scroll off immediately!
+      if (delta > 2 && y > 10) {
+        document.body.classList.add("kn-nav-scrolled-off", "kn-nav-autohidden");
+      } else if (delta < -4 || y <= 10) {
+        // Scrolling up or near top reveals it smoothly
+        document.body.classList.remove("kn-nav-scrolled-off", "kn-nav-autohidden");
       }
       lastY = y;
     }
@@ -807,6 +801,8 @@
     };
 
     window.addEventListener("scroll", triggerScroll, { passive: true });
+    window.addEventListener("touchmove", triggerScroll, { passive: true });
+    window.addEventListener("wheel", triggerScroll, { passive: true });
   }
 
   function initNavigation() {

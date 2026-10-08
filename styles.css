@@ -113,9 +113,6 @@ html.dark,
 
 html {
   scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
   overflow-x: clip;
 }
@@ -1108,10 +1105,7 @@ body:not(.dark) .vital-box.teal .vital-val { color: #0f766e !important; }
   display: flex;
   flex-direction: column;
   transform-style: preserve-3d;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 240px;
+  will-change: transform, box-shadow;
 }
 
 .dark .card, .dark .quick-card, .dark .bento-card, .dark .explore-card {
@@ -1128,8 +1122,7 @@ body:not(.dark) .card, body:not(.dark) .quick-card, body:not(.dark) .bento-card,
     inset 0 2px 2px 0 #ffffff,
     inset 0 -2px 3px 0 rgba(45, 35, 25, 0.03);
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  will-change: transform, box-shadow;
 }
 
 body:not(.dark) .card:hover, body:not(.dark) .quick-card:hover, body:not(.dark) .bento-card:hover, body:not(.dark) .explore-card:hover {

@@ -33,8 +33,8 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.35,
-      density: 45,
-      glowPoints: 3
+      density: 294,
+      glowPoints: 4
     },
     pearls: {
       accent: [56, 189, 248],     // Cyan
@@ -44,8 +44,8 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.3,
-      density: 40,
-      glowPoints: 2
+      density: 266,
+      glowPoints: 3
     },
     drugs: {
       accent: [129, 140, 248],    // Indigo #818cf8
@@ -55,8 +55,8 @@
       pleth: false,
       circuitRings: false,
       particleSpeed: 0.25,
-      density: 35,
-      glowPoints: 2
+      density: 280,
+      glowPoints: 3
     },
     criticalCare: {
       accent: [251, 191, 36],    // Amber #fbbf24
@@ -66,8 +66,8 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.45,
-      density: 48,
-      glowPoints: 3
+      density: 308,
+      glowPoints: 4
     },
     viva: {
       accent: [167, 139, 250],   // Violet #a78bfa
@@ -77,8 +77,8 @@
       pleth: false,
       circuitRings: false,
       particleSpeed: 0.3,
-      density: 30,
-      glowPoints: 2
+      density: 252,
+      glowPoints: 3
     },
     resources: {
       accent: [56, 189, 248],    // Cyan
@@ -88,7 +88,7 @@
       pleth: false,
       circuitRings: true,
       particleSpeed: 0.2,
-      density: 24,
+      density: 210,
       glowPoints: 2
     },
     study: {
@@ -99,7 +99,7 @@
       pleth: false,
       circuitRings: false,
       particleSpeed: 0.18,
-      density: 18,
+      density: 190,
       glowPoints: 2
     }
   };
@@ -494,71 +494,76 @@
 
     // A. Lead II ECG (Green/Cyan CRT phosphor in dark, vivid cerulean in day)
     if (env.ecg) {
-      const ecgWaveLength = 220;
-      // Soft glow base stroke
       ctx.beginPath();
-      ctx.strokeStyle = isDark ? "rgba(56, 189, 248, 0.20)" : "rgba(2, 132, 199, 0.28)";
-      ctx.lineWidth = isDark ? 3.6 : 4.0;
-      for (let x = 0; x <= width; x += 6) {
-        const progress = (x / ecgWaveLength - waveTime * 1.5);
-        const y = baseY - getEcgY(progress) * 44;
-        if (x === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
+      ctx.strokeStyle = isDark ? "rgba(56, 189, 248, 0.45)" : "rgba(2, 132, 199, 0.85)";
+      ctx.lineWidth = isDark ? 1.6 : 1.8;
+      if (isDark) {
+        ctx.shadowColor = "rgba(56, 189, 248, 0.55)";
+        ctx.shadowBlur = 6;
+      } else {
+        ctx.shadowColor = "rgba(2, 132, 199, 0.4)";
+        ctx.shadowBlur = 4;
       }
-      ctx.stroke();
 
-      // Sharp core stroke
-      ctx.beginPath();
-      ctx.strokeStyle = isDark ? "rgba(56, 189, 248, 0.75)" : "rgba(2, 132, 199, 0.95)";
-      ctx.lineWidth = isDark ? 1.4 : 1.6;
-      for (let x = 0; x <= width; x += 6) {
+      const ecgWaveLength = 220;
+      for (let x = 0; x <= width; x += 3) {
         const progress = (x / ecgWaveLength - waveTime * 1.5);
-        const y = baseY - getEcgY(progress) * 44;
+        const yOffset = getEcgY(progress) * 44;
+        const y = baseY - yOffset;
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
       ctx.stroke();
+      ctx.shadowBlur = 0;
 
       // Soft glowing phosphor sweep head on ECG (Both Dark and Day Mode)
       const sweepY = baseY - getEcgY(sweepHeadX / ecgWaveLength - waveTime * 1.5) * 44;
       ctx.beginPath();
-      ctx.arc(sweepHeadX, sweepY, isDark ? 4 : 4.5, 0, Math.PI * 2);
-      ctx.fillStyle = isDark ? "rgba(56, 189, 248, 0.35)" : "rgba(2, 132, 199, 0.35)";
-      ctx.fill();
-
-      ctx.beginPath();
-      ctx.arc(sweepHeadX, sweepY, isDark ? 2.5 : 2.8, 0, Math.PI * 2);
+      ctx.arc(sweepHeadX, sweepY, isDark ? 3 : 3.5, 0, Math.PI * 2);
       ctx.fillStyle = isDark ? "#38bdf8" : "#0284c7";
+      ctx.shadowColor = isDark ? "#38bdf8" : "rgba(2, 132, 199, 0.8)";
+      ctx.shadowBlur = isDark ? 10 : 8;
       ctx.fill();
+      ctx.shadowBlur = 0;
     }
 
     // B. Arterial Blood Pressure (ABP / Invasive Arterial Line, Ruby / Coral Red)
     if (env.ecg && !isSmallScreen()) {
-      const abpWaveLength = 220;
       ctx.beginPath();
-      ctx.strokeStyle = isDark ? "rgba(244, 63, 94, 0.40)" : "rgba(225, 29, 72, 0.78)";
-      ctx.lineWidth = isDark ? 1.3 : 1.5;
+      ctx.strokeStyle = isDark ? "rgba(244, 63, 94, 0.35)" : "rgba(225, 29, 72, 0.78)";
+      ctx.lineWidth = isDark ? 1.4 : 1.6;
+      if (isDark) {
+        ctx.shadowColor = "rgba(244, 63, 94, 0.45)";
+        ctx.shadowBlur = 5;
+      } else {
+        ctx.shadowColor = "rgba(225, 29, 72, 0.35)";
+        ctx.shadowBlur = 3;
+      }
 
-      for (let x = 0; x <= width; x += 6) {
+      const abpWaveLength = 220;
+      for (let x = 0; x <= width; x += 3) {
         // Synchronized with ECG with physiologic ~120ms electromechanical delay
         const progress = ((x - 28) / abpWaveLength - waveTime * 1.5);
-        const y = (baseY - 45) - getAbpY(progress) * 36;
+        const yOffset = getAbpY(progress) * 36;
+        const y = (baseY - 45) - yOffset;
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
       ctx.stroke();
+      ctx.shadowBlur = 0;
     }
 
     // C. Capnography Waveform (EtCO2, Amber / Yellow Plateau)
     if (env.capno) {
       ctx.beginPath();
-      ctx.strokeStyle = isDark ? "rgba(251, 191, 36, 0.35)" : "rgba(217, 119, 6, 0.75)";
+      ctx.strokeStyle = isDark ? "rgba(251, 191, 36, 0.32)" : "rgba(217, 119, 6, 0.75)";
       ctx.lineWidth = isDark ? 1.3 : 1.5;
 
       const capnoWaveLength = 360;
-      for (let x = 0; x <= width; x += 6) {
+      for (let x = 0; x <= width; x += 4) {
         const progress = (x / capnoWaveLength - waveTime * 0.75);
-        const y = (baseY - 95) - getCapnoY(progress) * 32;
+        const yOffset = getCapnoY(progress) * 32;
+        const y = (baseY - 95) - yOffset;
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
@@ -568,24 +573,25 @@
     // D. SpO2 Plethysmograph (Emerald Green)
     if (env.pleth) {
       ctx.beginPath();
-      ctx.strokeStyle = isDark ? "rgba(52, 211, 153, 0.35)" : "rgba(5, 150, 105, 0.75)";
-      ctx.lineWidth = isDark ? 1.2 : 1.4;
+      ctx.strokeStyle = isDark ? "rgba(52, 211, 153, 0.30)" : "rgba(5, 150, 105, 0.75)";
+      ctx.lineWidth = isDark ? 1.2 : 1.5;
 
       const plethWaveLength = 190;
-      for (let x = 0; x <= width; x += 6) {
+      for (let x = 0; x <= width; x += 4) {
         const progress = (x / plethWaveLength - waveTime * 1.35);
-        const y = (baseY + 44) - getPlethY(progress) * 22;
+        const yOffset = getPlethY(progress) * 22;
+        const y = (baseY + 44) - yOffset;
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
       ctx.stroke();
     }
 
-    // 4. Volatile Anaesthetic Vapor & Alveolar Gas Dispersion Physics (Batched 120 FPS single draw)
+    // 4. Volatile Anaesthetic Vapor & Alveolar Gas Dispersion Physics
+    // Simulated mechanical ventilation tidal breathing rhythm (~12 bpm)
     const tidalBreathing = Math.sin(waveTime * 0.9) * 0.15;
-    const repelRadius = isSmallScreen() ? 80 : 130;
+    const repelRadius = isSmallScreen() ? 90 : 150;
 
-    ctx.beginPath();
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
 
@@ -601,6 +607,7 @@
       p.repelVx *= 0.93;
       p.repelVy *= 0.93;
 
+      // Laminar gas flow with tidal breathing modulation
       p.x += p.vx * (1 + tidalBreathing) + p.repelVx;
       p.y += p.vy + p.repelVy;
 
@@ -612,15 +619,14 @@
       const depthFactor = (p.z + 400) / 800;
       const px = p.x + (mouse.x - width * 0.5) * 0.015 * depthFactor;
       const py = p.y + (mouse.y - height * 0.5) * 0.015 * depthFactor;
-      const pr = Math.max(1, p.size * depthFactor);
 
-      ctx.moveTo(px + pr, py);
-      ctx.arc(px, py, pr, 0, Math.PI * 2);
+      ctx.beginPath();
+      ctx.arc(px, py, p.size * depthFactor, 0, Math.PI * 2);
+      ctx.fillStyle = isDark
+        ? `rgba(${r}, ${g}, ${b}, ${p.alpha * 0.72})`
+        : `rgba(2, 132, 199, ${p.alpha * 0.68})`;
+      ctx.fill();
     }
-    ctx.fillStyle = isDark
-      ? `rgba(${r}, ${g}, ${b}, 0.28)`
-      : `rgba(2, 132, 199, 0.32)`;
-    ctx.fill();
 
     // 5. Tactile Acoustic Transducer Pressure Ripples
     for (let i = ripples.length - 1; i >= 0; i--) {
@@ -633,8 +639,13 @@
       ctx.strokeStyle = isDark
         ? `rgba(${r}, ${g}, ${b}, ${rip.alpha})`
         : `rgba(2, 132, 199, ${rip.alpha * 0.8})`;
-      ctx.lineWidth = 1.4;
+      ctx.lineWidth = 1.5;
+      if (isDark) {
+        ctx.shadowColor = `rgba(${r}, ${g}, ${b}, 0.5)`;
+        ctx.shadowBlur = 8;
+      }
       ctx.stroke();
+      ctx.shadowBlur = 0;
 
       if (rip.alpha < 0.01 || rip.radius > rip.maxRadius) {
         ripples.splice(i, 1);
@@ -643,30 +654,6 @@
 
     animId = requestAnimationFrame(render);
   }
-
-  // Smooth scroll and visibility lifecycle listeners to preserve 120 FPS
-  let isScrolling = false;
-  let scrollThrottleTimer = null;
-  window.addEventListener("scroll", function () {
-    isScrolling = true;
-    if (scrollThrottleTimer) clearTimeout(scrollThrottleTimer);
-    scrollThrottleTimer = setTimeout(function () {
-      isScrolling = false;
-    }, 120);
-  }, { passive: true });
-
-  document.addEventListener("visibilitychange", function () {
-    if (document.hidden) {
-      if (animId) {
-        cancelAnimationFrame(animId);
-        animId = null;
-      }
-    } else {
-      if (!animId) {
-        animId = requestAnimationFrame(render);
-      }
-    }
-  });
 
   function setEnvironment(key) {
     if (ENVIRONMENTS[key]) {
