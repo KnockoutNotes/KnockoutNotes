@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
+const os = require('os');
 
 const PORT = 8099;
 const ROOT = path.resolve(__dirname, '..');
@@ -37,12 +38,14 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, async () => {
-  const chrome = spawn('C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', [
+  const chromePath = process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+  const userDataDir = path.join(os.tmpdir(), 'chrome-sitewide-audit');
+  const chrome = spawn(chromePath, [
     '--headless=new',
     '--remote-debugging-port=9239',
     '--window-size=1280,900',
     '--disable-extensions',
-    '--user-data-dir=C:\\temp\\chrome-sitewide-audit'
+    `--user-data-dir=${userDataDir}`
   ]);
   await new Promise(r => setTimeout(r, 2000));
   const res = await fetch('http://127.0.0.1:9239/json');
