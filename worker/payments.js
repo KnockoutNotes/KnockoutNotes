@@ -1496,3 +1496,316 @@ export async function handleAdminBulkUpdatePricing(request, env, userAuth) {
     return jsonResponse({ error: 'Failed to bulk update pricing: ' + err.message }, 500);
   }
 }
+
+/**
+ * --------------------------------------------------------------------------
+ * 8. CANCEL PENDING ORDER
+ * POST /api/payments/cashfree/cancel-order
+ * --------------------------------------------------------------------------
+ */
+export async function handleCancelOrder(request, env, userAuth) {
+  if (!userAuth || !userAuth.user) {
+    return jsonResponse({ error: 'Authentication required' }, 401);
+  }
+  const user = userAuth.user;
+
+  try {
+    const { orderId } = await request.json();
+    const cleanOrderId = String(orderId || '').trim();
+    if (!cleanOrderId) {
+      return jsonResponse({ error: 'Order ID is required' }, 400);
+    }
+
+    const order = await env.DB
+      .prepare('SELECT * FROM orders WHERE order_id = ?')
+      .bind(cleanOrderId)
+      .first();
+
+    if (!order) {
+      return jsonResponse({ error: 'Order not found' }, 404);
+    }
+
+    if (order.user_id !== user.id && !(await isServerAdmin(userAuth, env, request))) {
+      return jsonResponse({ error: 'Unauthorized to cancel this order' }, 403);
+    }
+
+    // Never cancel an already successful order
+    if (order.payment_status === 'SUCCESS') {
+      return jsonResponse({ error: 'Payment has already succeeded. Content is unlocked and order cannot be cancelled.' }, 400);
+    }
+
+    // Check authoritative state with Cashfree before allowing cancellation
+    if (env.CASHFREE_APP_ID && env.CASHFREE_SECRET_KEY) {
+      const cfHeaders = {
+        'x-client-id': env.CASHFREE_APP_ID.trim(),
+        'x-client-secret': env.CASHFREE_SECRET_KEY.trim(),
+        'x-api-version': env.CASHFREE_API_VERSION || '2023-08-01',
+        'Content-Type': 'application/json'
+      };
+
+      try {
+        const cfRes = await fetch(`${CASHFREE_LIVE_BASE_URL}/orders/${encodeURIComponent(cleanOrderId)}`, { headers: cfHeaders });
+        if (cfRes.ok) {
+          const cfData = await cfRes.json();
+          if (cfData.order_status === 'PAID') {
+            // Cannot cancel - payment was actually paid! Update status to SUCCESS
+            await env.DB.prepare(`
+              UPDATE orders
+              SET payment_status = 'SUCCESS', verified_at = datetime('now'), updated_at = datetime('now')
+              WHERE order_id = ?
+            `).bind(cleanOrderId).run();
+            await grantUserEntitlement(env.DB, order.user_id, order.user_email, order.chapter_id, cleanOrderId, 'payment');
+            await ensureInvoiceForOrder(env.DB, { ...order, payment_status: 'SUCCESS' }, user);
+            return jsonResponse({ error: 'Payment was confirmed as successful by the bank. Your monograph is unlocked!' }, 400);
+          }
+        }
+      } catch (e) {
+        console.warn('[Cancel Order Live CF Check Error]:', e);
+      }
+    }
+
+    // Mark as USER_CANCELLED in DB
+    await env.DB
+      .prepare(`
+        UPDATE orders
+        SET payment_status = 'CANCELLED',
+            updated_at = datetime('now')
+        WHERE order_id = ? AND payment_status != 'SUCCESS'
+      `)
+      .bind(cleanOrderId)
+      .run();
+
+    return jsonResponse({
+      success: true,
+      orderId: cleanOrderId,
+      paymentStatus: 'CANCELLED',
+      message: 'Pending payment request cancelled successfully.'
+    });
+  } catch (err) {
+    console.error('[Handle Cancel Order Error]:', err);
+    return jsonResponse({ error: 'Failed to cancel order: ' + err.message }, 500);
+  }
+}
+
+let disputesTableChecked = false;
+export async function ensureDisputesTable(db) {
+  if (disputesTableChecked || !db) return;
+  try {
+    await db.prepare(`
+      CREATE TABLE IF NOT EXISTS payment_disputes (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        ticket_id TEXT UNIQUE NOT NULL,
+        user_id INTEGER NOT NULL,
+        user_name TEXT,
+        user_email TEXT NOT NULL,
+        order_id TEXT NOT NULL,
+        cf_payment_id TEXT,
+        amount_inr REAL NOT NULL,
+        currency TEXT NOT NULL DEFAULT 'INR',
+        issue_category TEXT NOT NULL,
+        message TEXT NOT NULL,
+        status TEXT NOT NULL DEFAULT 'OPEN',
+        email_sent INTEGER DEFAULT 0,
+        email_error TEXT,
+        created_at TEXT NOT NULL DEFAULT (datetime('now')),
+        updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+      )
+    `).run();
+    await db.prepare("CREATE INDEX IF NOT EXISTS idx_payment_disputes_user_id ON payment_disputes(user_id)").run();
+    await db.prepare("CREATE INDEX IF NOT EXISTS idx_payment_disputes_ticket_id ON payment_disputes(ticket_id)").run();
+    disputesTableChecked = true;
+  } catch (err) {
+    console.warn('[ensureDisputesTable]:', err);
+  }
+}
+
+/**
+ * --------------------------------------------------------------------------
+ * 9. RAISE PAYMENT DISPUTE / SUPPORT REQUEST
+ * POST /api/payments/disputes
+ * --------------------------------------------------------------------------
+ */
+export async function handleRaisePaymentDispute(request, env, userAuth) {
+  if (!userAuth || !userAuth.user) {
+    return jsonResponse({ error: 'Authentication required' }, 401);
+  }
+  const user = userAuth.user;
+  if (env && env.DB) {
+    await ensureDisputesTable(env.DB);
+  }
+
+  try {
+    const body = await request.json();
+    const orderId = String(body.orderId || '').trim();
+    const issueCategory = String(body.issueCategory || '').trim();
+    const message = String(body.message || '').trim();
+    const cfPaymentId = body.cfPaymentId ? String(body.cfPaymentId).trim() : null;
+
+    if (!orderId) {
+      return jsonResponse({ error: 'Order reference is required' }, 400);
+    }
+    if (!issueCategory) {
+      return jsonResponse({ error: 'Issue category is required' }, 400);
+    }
+    if (!message || message.length < 10) {
+      return jsonResponse({ error: 'Please provide a clear description of the issue (min 10 characters).' }, 400);
+    }
+
+    // Verify order exists and belongs to user
+    const order = await env.DB
+      .prepare('SELECT * FROM orders WHERE order_id = ?')
+      .bind(orderId)
+      .first();
+
+    if (!order) {
+      return jsonResponse({ error: 'Selected order reference was not found' }, 404);
+    }
+    if (order.user_id !== user.id && !(await isServerAdmin(userAuth, env, request))) {
+      return jsonResponse({ error: 'Unauthorized to raise dispute on this order' }, 403);
+    }
+
+    const ticketId = `TICKET-KN-${Date.now().toString(36).toUpperCase()}-${generateSecureToken(3).toUpperCase()}`;
+    const amountInr = order.amount_inr || 0;
+    const currency = order.currency || 'INR';
+
+    // 1. Persist dispute in D1
+    await env.DB
+      .prepare(`
+        INSERT INTO payment_disputes (
+          ticket_id, user_id, user_name, user_email, order_id,
+          cf_payment_id, amount_inr, currency, issue_category,
+          message, status, created_at, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'OPEN', datetime('now'), datetime('now'))
+      `)
+      .bind(
+        ticketId,
+        user.id,
+        user.name || 'Learner',
+        user.email,
+        orderId,
+        cfPaymentId || order.cf_payment_id || null,
+        amountInr,
+        currency,
+        issueCategory,
+        message
+      )
+      .run();
+
+    // 2. Dispatch secure email notification to designated administrator
+    let emailSent = 0;
+    let emailError = null;
+
+    if (env.MAILERSEND_API_TOKEN) {
+      const emailHtml = `
+        <div style="font-family:sans-serif; max-width:600px; margin:0 auto; padding:20px; border:1px solid #e2e8f0; border-radius:12px; background:#ffffff;">
+          <div style="border-bottom:2px solid #00e5ff; padding-bottom:12px; margin-bottom:16px;">
+            <h2 style="color:#0f172a; margin:0;">[Payment Dispute] ${ticketId}</h2>
+            <p style="color:#64748b; font-size:13px; margin:4px 0 0;">KnockoutNotes Payment Support Desk</p>
+          </div>
+          
+          <table style="width:100%; border-collapse:collapse; font-size:14px; margin-bottom:20px;">
+            <tr><td style="padding:6px 0; color:#64748b; width:140px;"><strong>Ticket ID:</strong></td><td style="color:#0f172a; font-family:monospace;">${ticketId}</td></tr>
+            <tr><td style="padding:6px 0; color:#64748b;"><strong>Customer:</strong></td><td style="color:#0f172a;">${user.name || 'N/A'} (&lt;${user.email}&gt;)</td></tr>
+            <tr><td style="padding:6px 0; color:#64748b;"><strong>Order ID:</strong></td><td style="color:#0f172a; font-family:monospace;">${orderId}</td></tr>
+            <tr><td style="padding:6px 0; color:#64748b;"><strong>Chapter / Item:</strong></td><td style="color:#0f172a;">${order.chapter_title || order.chapter_id}</td></tr>
+            <tr><td style="padding:6px 0; color:#64748b;"><strong>Amount:</strong></td><td style="color:#0f172a; font-weight:bold;">₹${amountInr.toFixed(2)} ${currency}</td></tr>
+            <tr><td style="padding:6px 0; color:#64748b;"><strong>Payment Status:</strong></td><td style="color:#0f172a;">${order.payment_status}</td></tr>
+            <tr><td style="padding:6px 0; color:#64748b;"><strong>Gateway Ref:</strong></td><td style="color:#0f172a; font-family:monospace;">${cfPaymentId || order.cf_payment_id || 'N/A'}</td></tr>
+            <tr><td style="padding:6px 0; color:#64748b;"><strong>Issue Category:</strong></td><td style="color:#e11d48; font-weight:bold;">${issueCategory}</td></tr>
+          </table>
+
+          <div style="background:#f8fafc; border-left:4px solid #0284c7; padding:12px; border-radius:4px; margin-bottom:20px;">
+            <p style="margin:0 0 6px; font-weight:bold; color:#0f172a;">Customer Description:</p>
+            <p style="margin:0; color:#334155; white-space:pre-wrap; line-height:1.5;">${message}</p>
+          </div>
+
+          <div style="font-size:12px; color:#94a3b8; border-top:1px solid #f1f5f9; padding-top:12px;">
+            Submitted: ${new Date().toISOString()}<br>
+            KnockoutNotes Automated System
+          </div>
+        </div>
+      `;
+
+      try {
+        const mailRes = await fetch('https://api.mailersend.com/v1/email', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${env.MAILERSEND_API_TOKEN}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            from: {
+              email: env.FROM_EMAIL || 'notifications@test-86org8e1w31gew13.mlsender.net',
+              name: 'KnockoutNotes Payment Desk'
+            },
+            to: [{ email: env.ADMIN_NOTIFICATION_EMAIL || env.ADMIN_EMAIL || PRIMARY_ADMIN_EMAIL, name: 'KnockoutNotes Admin' }],
+            reply_to: { email: user.email, name: user.name || 'Learner' },
+            subject: `[Payment Dispute ${ticketId}] ${issueCategory} (Order: ${orderId})`,
+            html: emailHtml
+          })
+        });
+
+        if (mailRes.ok || mailRes.status === 202) {
+          emailSent = 1;
+        } else {
+          emailError = `MailerSend HTTP ${mailRes.status}`;
+          console.warn('[Dispute Email Error]:', emailError);
+        }
+      } catch (err) {
+        emailError = err.message;
+        console.warn('[Dispute Email Exception]:', err);
+      }
+
+      // Update email delivery status in D1
+      await env.DB
+        .prepare('UPDATE payment_disputes SET email_sent = ?, email_error = ? WHERE ticket_id = ?')
+        .bind(emailSent, emailError, ticketId)
+        .run();
+    }
+
+    return jsonResponse({
+      success: true,
+      ticketId,
+      message: 'Your dispute has been registered successfully. Our administrative team will review the transaction with the payment gateway.',
+      emailSent: emailSent === 1
+    }, 201);
+  } catch (err) {
+    console.error('[Handle Raise Dispute Error]:', err);
+    return jsonResponse({ error: 'Server error processing dispute: ' + err.message }, 500);
+  }
+}
+
+/**
+ * --------------------------------------------------------------------------
+ * 10. GET USER PAYMENT DISPUTES
+ * GET /api/user/disputes
+ * --------------------------------------------------------------------------
+ */
+export async function handleGetUserDisputes(request, env, userAuth) {
+  if (!userAuth || !userAuth.user) {
+    return jsonResponse({ error: 'Unauthorized' }, 401);
+  }
+  const user = userAuth.user;
+  if (env && env.DB) {
+    await ensureDisputesTable(env.DB);
+  }
+
+  try {
+    const disputes = await env.DB
+      .prepare(`
+        SELECT id, ticket_id, order_id, cf_payment_id, amount_inr, currency,
+               issue_category, message, status, created_at
+        FROM payment_disputes
+        WHERE user_id = ?
+        ORDER BY created_at DESC
+        LIMIT 20
+      `)
+      .bind(user.id)
+      .all();
+
+    return jsonResponse({ disputes: disputes.results || [] });
+  } catch (err) {
+    console.error('[Get User Disputes Error]:', err);
+    return jsonResponse({ error: 'Failed to retrieve disputes' }, 500);
+  }
+}

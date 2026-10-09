@@ -728,7 +728,7 @@
       }
 
       async function initReceipt() {
-        if (!isExplicitSample && orderIdParam) {
+        if (orderIdParam) {
           // Attempt to load authoritative server-side invoice
           try {
             const res = await fetch(`/api/user/invoices/${encodeURIComponent(orderIdParam)}`, { credentials: "include" });
@@ -742,15 +742,42 @@
                 renderReceipt(activeReceipt);
                 return;
               }
+            } else if (res.status === 401) {
+              window.location.href = `workspace.html?return=${encodeURIComponent(window.location.href)}#profile`;
+              return;
             }
           } catch (err) {
-            console.warn("[Receipt] Server invoice load failed, rendering sample fallback:", err);
+            console.warn("[Receipt] Server invoice load failed:", err);
           }
         }
 
-        // Render Sample Receipt Preview
-        activeReceipt = SAMPLE_RECEIPT;
-        renderReceipt(activeReceipt);
+        // If explicitly requested preview mode, verify if user is authorized admin
+        if (isExplicitSample) {
+          try {
+            const meRes = await fetch("/api/auth/me", { credentials: "include" }).catch(() => null);
+            if (meRes && meRes.ok) {
+              const meData = await meRes.json();
+              if (meData?.user?.email === "knockoutnotes.anaesthesia@gmail.com") {
+                activeReceipt = SAMPLE_RECEIPT;
+                renderReceipt(activeReceipt);
+                return;
+              }
+            }
+            const adminRes = await fetch("/api/admin/me", { credentials: "include" }).catch(() => null);
+            if (adminRes && adminRes.ok) {
+              const adminData = await adminRes.json();
+              if (adminData && adminData.authenticated) {
+                activeReceipt = SAMPLE_RECEIPT;
+                renderReceipt(activeReceipt);
+                return;
+              }
+            }
+          } catch (_) {}
+        }
+
+        // Ordinary users without valid order or without admin authorization:
+        // Redirect to workspace payment records immediately
+        window.location.replace("workspace.html#payments");
       }
 
       function renderReceipt(data) {

@@ -168,6 +168,9 @@
 
         <div class="kn-pay-footer-note">
           Supports UPI (GPay, PhonePe, Paytm), Debit/Credit Cards &amp; NetBanking.
+          <div style="margin-top:6px; font-size:11px; color:#94a3b8;">
+            By completing payment, you agree to our <a href="terms-and-conditions.html" target="_blank" style="color:var(--accent-cyan, #00e5ff); text-decoration:underline;">Terms &amp; Conditions</a> and <a href="refund-policy.html" target="_blank" style="color:var(--accent-cyan, #00e5ff); text-decoration:underline;">Refund Policy</a>.
+          </div>
         </div>
       </div>
     `;
@@ -474,6 +477,189 @@
       console.error("[Update Pricing Error]:", err);
       throw err;
     }
+  }
+
+  /**
+   * Cancel a pending order
+   */
+  async function cancelOrder(orderId) {
+    if (!orderId) return;
+    try {
+      const res = await fetch("/api/payments/cashfree/cancel-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ orderId })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to cancel order");
+      return data;
+    } catch (err) {
+      console.error("[Cancel Order Error]:", err);
+      throw err;
+    }
+  }
+
+  /**
+   * Open Payment Dispute Modal
+   */
+  function openDisputeModal(order = {}) {
+    const user = window.KN_WORKSPACE ? window.KN_WORKSPACE.getUser() : null;
+    let disputeModal = document.getElementById("knDisputeModal");
+    if (!disputeModal) {
+      disputeModal = document.createElement("div");
+      disputeModal.id = "knDisputeModal";
+      disputeModal.className = "kn-payment-modal-backdrop";
+      document.body.appendChild(disputeModal);
+    }
+
+    const orderIdVal = order.order_id || "";
+    const chapterTitleVal = order.chapter_title || order.chapter_id || "Educational Monograph";
+    const amountVal = order.amount_inr != null ? `₹${Number(order.amount_inr).toFixed(2)}` : "";
+    const cfPayVal = order.cf_payment_id || "";
+
+    disputeModal.innerHTML = `
+      <div class="kn-payment-modal-card" style="max-width:520px; text-align:left;">
+        <button type="button" class="kn-payment-modal-close" id="knDisputeCloseBtn" aria-label="Close">✕</button>
+
+        <div class="kn-pay-header" style="text-align:left;">
+          <div class="kn-pay-badge" style="background:rgba(239,68,68,0.15); color:#ef4444; border-color:rgba(239,68,68,0.3);">
+            Payment Support &amp; Disputes Desk
+          </div>
+          <h3 class="kn-pay-title" style="margin-top:6px; font-size:18px;">Raise Payment Issue / Dispute</h3>
+          <p style="font-size:12.5px; color:var(--kn-ws-text-muted); margin:4px 0 0;">
+            Direct escalation to the KnockoutNotes administration desk. We will review gateway settlement records promptly.
+          </p>
+        </div>
+
+        <form id="knDisputeForm" style="display:flex; flex-direction:column; gap:12px; margin-top:16px;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <div>
+              <label style="font-size:12px; color:var(--kn-ws-text-muted); display:block; margin-bottom:4px;">Learner Name</label>
+              <input type="text" class="kn-form-input" id="knDispName" value="${esc(user?.name || '')}" required style="font-size:13px; padding:7px 10px; width:100%; border-radius:6px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#fff;">
+            </div>
+            <div>
+              <label style="font-size:12px; color:var(--kn-ws-text-muted); display:block; margin-bottom:4px;">Account Email</label>
+              <input type="email" class="kn-form-input" id="knDispEmail" value="${esc(user?.email || '')}" disabled style="font-size:13px; padding:7px 10px; width:100%; border-radius:6px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); color:#94a3b8; cursor:not-allowed;">
+            </div>
+          </div>
+
+          <div>
+            <label style="font-size:12px; color:var(--kn-ws-text-muted); display:block; margin-bottom:4px;">Order Reference ID</label>
+            <input type="text" class="kn-form-input" id="knDispOrderId" value="${esc(orderIdVal)}" ${orderIdVal ? 'readonly' : 'required'} placeholder="e.g. order_kn_1728000000_abc" style="font-size:13px; padding:7px 10px; width:100%; border-radius:6px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#fff; font-family:monospace;">
+          </div>
+
+          ${orderIdVal ? `
+            <div style="background:rgba(255,255,255,0.04); padding:8px 12px; border-radius:6px; font-size:12px; display:flex; justify-content:space-between;">
+              <span><strong>Item:</strong> ${esc(chapterTitleVal)}</span>
+              <span><strong>Amount:</strong> ${esc(amountVal)}</span>
+            </div>
+          ` : ''}
+
+          <div>
+            <label style="font-size:12px; color:var(--kn-ws-text-muted); display:block; margin-bottom:4px;">Gateway / UTR Transaction ID (Optional)</label>
+            <input type="text" class="kn-form-input" id="knDispCfPaymentId" value="${esc(cfPayVal)}" placeholder="UPI Ref / Bank UTR / Cashfree Reference" style="font-size:13px; padding:7px 10px; width:100%; border-radius:6px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#fff; font-family:monospace;">
+          </div>
+
+          <div>
+            <label style="font-size:12px; color:var(--kn-ws-text-muted); display:block; margin-bottom:4px;">Issue Category *</label>
+            <select id="knDispCategory" required style="font-size:13px; padding:8px 10px; width:100%; border-radius:6px; background:#0f172a; border:1px solid rgba(255,255,255,0.2); color:#fff;">
+              <option value="">Select category of dispute...</option>
+              <option value="Money debited but payment still pending">Money debited but payment still pending</option>
+              <option value="Payment marked failed but money was debited">Payment marked failed but money was debited</option>
+              <option value="Payment successful but content unavailable">Payment successful but content unavailable</option>
+              <option value="Receipt missing or incorrect">Receipt missing or incorrect</option>
+              <option value="Duplicate payment deduction">Duplicate payment deduction</option>
+              <option value="Cancellation or refund inquiry">Cancellation or refund inquiry</option>
+              <option value="Other payment-related issue">Other payment-related issue</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="font-size:12px; color:var(--kn-ws-text-muted); display:block; margin-bottom:4px;">Problem Description *</label>
+            <textarea id="knDispMessage" required rows="3" placeholder="Explain what occurred (e.g. UPI app showed debited at 15:42, but page stayed pending...)" style="font-size:13px; padding:8px 10px; width:100%; border-radius:6px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#fff; resize:vertical;"></textarea>
+            <div style="font-size:11px; color:#94a3b8; margin-top:2px;">Do NOT submit sensitive card numbers, CVVs, PINs or bank passwords.</div>
+          </div>
+
+          <div id="knDisputeError" class="kn-pay-error" style="display:none; font-size:12px;"></div>
+
+          <div class="kn-pay-actions" style="margin-top:8px;">
+            <button type="submit" class="kn-btn kn-pay-submit-btn" id="knDisputeSubmitBtn" style="background:#0284c7;">
+              <span>Submit Dispute &amp; Alert Administrator</span>
+            </button>
+            <button type="button" class="kn-btn kn-pay-cancel-btn" id="knDisputeCancelBtn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    `;
+
+    disputeModal.style.display = "flex";
+
+    const close = () => {
+      disputeModal.style.display = "none";
+      disputeModal.innerHTML = "";
+    };
+
+    document.getElementById("knDisputeCloseBtn")?.addEventListener("click", close);
+    document.getElementById("knDisputeCancelBtn")?.addEventListener("click", close);
+
+    document.getElementById("knDisputeForm")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById("knDisputeSubmitBtn");
+      const errBox = document.getElementById("knDisputeError");
+      if (errBox) errBox.style.display = "none";
+
+      const orderId = document.getElementById("knDispOrderId").value.trim();
+      const issueCategory = document.getElementById("knDispCategory").value;
+      const message = document.getElementById("knDispMessage").value.trim();
+      const cfPaymentId = document.getElementById("knDispCfPaymentId").value.trim();
+
+      if (!orderId || !issueCategory || !message) {
+        if (errBox) {
+          errBox.textContent = "Please fill in all required fields.";
+          errBox.style.display = "block";
+        }
+        return;
+      }
+
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<span class="kn-pay-spinner"></span> Registering dispute...`;
+      }
+
+      try {
+        const res = await fetch("/api/payments/disputes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({
+            orderId,
+            issueCategory,
+            message,
+            cfPaymentId: cfPaymentId || null
+          })
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Failed to submit dispute");
+
+        close();
+        showToast(`Dispute registered! Ticket: ${data.ticketId}. Our administrator has been alerted.`, "success");
+        if (typeof window.switchWorkspaceTab === "function") {
+          window.switchWorkspaceTab("payments");
+        }
+      } catch (err) {
+        console.error("[Submit Dispute Error]:", err);
+        if (errBox) {
+          errBox.textContent = err.message || "Failed to submit dispute.";
+          errBox.style.display = "block";
+        }
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = `<span>Retry Submission</span>`;
+        }
+      }
+    });
   }
 
   // Inject Modal & Button Styles
@@ -802,7 +988,9 @@
     triggerPdfDownload,
     loadUserPaymentHistory,
     loadAdminPaymentsOverview,
-    updateChapterPrice
+    updateChapterPrice,
+    cancelOrder,
+    openDisputeModal
   };
 
 })();

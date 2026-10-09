@@ -96,6 +96,9 @@ import {
   handleAdminPaymentsOverview,
   handleAdminUpdatePricing,
   handleAdminBulkUpdatePricing,
+  handleCancelOrder,
+  handleRaisePaymentDispute,
+  handleGetUserDisputes,
   isServerAdmin,
   PRIMARY_ADMIN_EMAIL
 } from './payments.js';
@@ -228,16 +231,22 @@ export default {
       pathname === '/sample-receipt' ||
       pathname === '/receipt-preview'
     ) {
+      // Disallow public sample receipt routes: Only server-verified administrator can preview sample receipts
+      if (pathname === '/sample-receipt' || pathname === '/receipt-preview' || url.searchParams.get('mode') === 'preview') {
+        const isAdmin = await isServerAdmin(null, env, request);
+        if (!isAdmin) {
+          // Normal users are redirected to their real workspace payments tab
+          return redirectResponse('/workspace.html#payments');
+        }
+      }
+
       if (env.ASSETS) {
-        // If client visited /sample-receipt or /receipt-preview, redirect or pass query params to /receipt
         if (pathname === '/sample-receipt' || pathname === '/receipt-preview') {
-          const targetUrl = new URL('/receipt', request.url);
+          const targetUrl = new URL('/receipt.html', request.url);
           targetUrl.searchParams.set('mode', 'preview');
           return redirectResponse(targetUrl.pathname + targetUrl.search);
         }
-        // Cloudflare Workers Assets canonicalizes HTML files without extension (e.g. /receipt.html -> 307 /receipt).
-        // To fetch the actual HTML asset safely without an internal loop, fetch /receipt via env.ASSETS:
-        const assetReq = new Request(new URL('/receipt', request.url), request);
+        const assetReq = new Request(new URL('/receipt.html', request.url), request);
         return env.ASSETS.fetch(assetReq);
       }
     }
@@ -757,6 +766,11 @@ export default {
         const invId = decodeURIComponent(pathname.replace('/api/user/invoices/', ''));
         return handleGetSingleInvoice(request, env, userAuth, invId);
       }
+
+      // User Disputes History
+      if (pathname === '/api/user/disputes' && request.method === 'GET') {
+        return handleGetUserDisputes(request, env, userAuth);
+      }
     }
 
     // ==========================================
@@ -784,6 +798,20 @@ export default {
       const userAuth = await validateUserSession(env.DB, sessionId);
       if (!userAuth) return jsonResponse({ error: 'Unauthorized. Please log in.', authenticated: false }, 401);
       return handleVerifyCashfreeOrder(request, env, userAuth);
+    }
+
+    if (pathname === '/api/payments/cashfree/cancel-order' && request.method === 'POST') {
+      const sessionId = extractUserSessionId(request);
+      const userAuth = await validateUserSession(env.DB, sessionId);
+      if (!userAuth) return jsonResponse({ error: 'Unauthorized. Please log in.', authenticated: false }, 401);
+      return handleCancelOrder(request, env, userAuth);
+    }
+
+    if (pathname === '/api/payments/disputes' && request.method === 'POST') {
+      const sessionId = extractUserSessionId(request);
+      const userAuth = await validateUserSession(env.DB, sessionId);
+      if (!userAuth) return jsonResponse({ error: 'Unauthorized. Please log in.', authenticated: false }, 401);
+      return handleRaisePaymentDispute(request, env, userAuth);
     }
 
     if (pathname === '/api/study/download-pdf' && request.method === 'GET') {
@@ -822,6 +850,14 @@ export default {
       if (!isAdmin) {
         return jsonResponse({ error: 'Unauthorized. Admin privileges required.' }, 401);
       }
+
+      // Initialize session object with admin_username for downstream audit logging and route handlers
+      const cookies = parseCookies(request);
+      const adminSess = (cookies.admin_session && env.DB) ? await validateAdminSession(env.DB, cookies.admin_session) : null;
+      const adminUsername = (userAuth && userAuth.user && userAuth.user.email === PRIMARY_ADMIN_EMAIL)
+        ? (userAuth.user.name || userAuth.user.email)
+        : (adminSess?.admin_username || env.ADMIN_USERNAME || 'admin.knockoutnotes');
+      const session = { admin_username: adminUsername };
 
       // GET /api/admin/stats
       if (pathname === '/api/admin/stats' && request.method === 'GET') {

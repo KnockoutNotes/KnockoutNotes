@@ -308,12 +308,15 @@
       <!-- Order Transaction History -->
       <div style="margin-bottom: 32px;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
-          <h3 style="font-size:18px; font-weight:700; margin:0; display:flex; align-items:center; gap:8px;">
-            <span>🧾</span> <span>Cashfree Transaction Receipts</span>
-          </h3>
-          <a href="receipt.html?mode=preview" class="kn-btn kn-btn-secondary" style="font-size:12px; padding:5px 12px; border-color:rgba(0,229,255,0.4); color:var(--accent-cyan, #00e5ff); text-decoration:none;">
-            <span>🔍 Inspect Sample Receipt Preview →</span>
-          </a>
+          <div>
+            <h3 style="font-size:18px; font-weight:700; margin:0; display:flex; align-items:center; gap:8px;">
+              <span>🧾</span> <span>Payment History &amp; Orders</span>
+            </h3>
+            <p style="font-size:13px; color:var(--kn-ws-text-muted); margin:4px 0 0;">Review your transactions, access receipts, retry pending payments, or raise payment support requests.</p>
+          </div>
+          <button type="button" class="kn-btn kn-btn-secondary" id="knRaiseGeneralDisputeBtn" style="font-size:12px; padding:6px 12px;">
+            <span>⚠️ Report a Payment Issue</span>
+          </button>
         </div>
         <div id="knOrdersList" class="kn-orders-table-wrap">
           <!-- Order table rendered dynamically -->
@@ -794,6 +797,12 @@
                   } else if (status === "FAILED" || status === "EXPIRED") {
                     pillClass = "kn-status-failed";
                     statusLabel = status;
+                  } else if (status === "CANCELLED") {
+                    pillClass = "kn-status-failed";
+                    statusLabel = "Cancelled";
+                  } else if (status === "USER_DROPPED") {
+                    pillClass = "kn-status-pending";
+                    statusLabel = "Abandoned";
                   }
 
                   return `
@@ -801,6 +810,7 @@
                       <td style="white-space:nowrap; font-size:12px; color:var(--kn-ws-text-muted);">${esc(dateStr)}</td>
                       <td>
                         <strong>${esc(o.chapter_title || o.chapter_id)}</strong>
+                        ${status === 'PENDING' ? '<div style="font-size:11px; color:#f59e0b; margin-top:2px;">Bank confirmation in progress</div>' : ''}
                       </td>
                       <td style="font-weight:700;">₹${Number(o.amount_inr || 0).toFixed(2)}</td>
                       <td>
@@ -819,15 +829,34 @@
                             <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 9px; font-size:11.5px;" onclick="downloadOrderInvoice('${esc(o.order_id)}')">
                               📥 PDF
                             </button>
+                            <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 8px; font-size:11px; color:#94a3b8;" title="Report issue with this order" onclick="openDisputeForOrder('${esc(o.order_id)}', '${esc(o.chapter_title || o.chapter_id)}', ${o.amount_inr}, '${esc(o.cf_payment_id || '')}')">
+                              ⚠️ Issue
+                            </button>
                           </div>
                         ` : status === "PENDING" ? `
-                          <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 10px; font-size:11.5px;" onclick="verifyPendingOrder('${esc(o.order_id)}', '${esc(o.chapter_title || o.chapter_id)}')">
-                            🔄 Verify Status
-                          </button>
+                          <div style="display:inline-flex; gap:6px; flex-wrap:wrap;">
+                            <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 9px; font-size:11.5px;" onclick="verifyPendingOrder('${esc(o.order_id)}', '${esc(o.chapter_title || o.chapter_id)}')">
+                              🔄 Check Status
+                            </button>
+                            <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 9px; font-size:11.5px;" onclick="window.KN_PAYMENTS.initiateChapterDownload('${esc(o.chapter_id)}')">
+                              💳 Retry
+                            </button>
+                            <button type="button" class="kn-btn kn-btn-danger" style="padding:4px 8px; font-size:11.5px;" onclick="cancelPendingOrder('${esc(o.order_id)}')">
+                              ✕ Cancel
+                            </button>
+                            <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 8px; font-size:11px;" title="Raise dispute" onclick="openDisputeForOrder('${esc(o.order_id)}', '${esc(o.chapter_title || o.chapter_id)}', ${o.amount_inr}, '${esc(o.cf_payment_id || '')}')">
+                              ⚠️ Dispute
+                            </button>
+                          </div>
                         ` : `
-                          <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 10px; font-size:11.5px;" onclick="window.KN_PAYMENTS.initiateChapterDownload('${esc(o.chapter_id)}')">
-                            Retry
-                          </button>
+                          <div style="display:inline-flex; gap:6px; flex-wrap:wrap;">
+                            <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 10px; font-size:11.5px;" onclick="window.KN_PAYMENTS.initiateChapterDownload('${esc(o.chapter_id)}')">
+                              💳 Retry
+                            </button>
+                            <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 8px; font-size:11px;" title="Report issue" onclick="openDisputeForOrder('${esc(o.order_id)}', '${esc(o.chapter_title || o.chapter_id)}', ${o.amount_inr}, '${esc(o.cf_payment_id || '')}')">
+                              ⚠️ Issue
+                            </button>
+                          </div>
                         `}
                       </td>
                     </tr>
@@ -904,6 +933,44 @@
         }
       }
       window.verifyPendingOrder = verifyPendingOrder;
+
+      async function cancelPendingOrder(orderId) {
+        if (!orderId) return;
+        if (!confirm("Are you sure you want to cancel this pending payment request? If money was already debited by your bank, please check status or raise a dispute instead.")) {
+          return;
+        }
+
+        window.KN_WORKSPACE?.showToast("Cancelling pending order...", "info");
+        try {
+          const res = await fetch("/api/payments/cashfree/cancel-order", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({ orderId })
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || "Failed to cancel order");
+          window.KN_WORKSPACE?.showToast("Pending order cancelled.", "info");
+          renderPayments();
+        } catch (err) {
+          window.KN_WORKSPACE?.showToast(err.message || "Failed to cancel order", "error");
+        }
+      }
+      window.cancelPendingOrder = cancelPendingOrder;
+
+      function openDisputeForOrder(orderId, chapterTitle, amount, cfPaymentId) {
+        if (window.KN_PAYMENTS && typeof window.KN_PAYMENTS.openDisputeModal === "function") {
+          window.KN_PAYMENTS.openDisputeModal({
+            order_id: orderId,
+            chapter_title: chapterTitle,
+            amount_inr: amount,
+            cf_payment_id: cfPaymentId
+          });
+        } else {
+          window.KN_WORKSPACE?.showToast("Payment dispute desk is initializing...", "info");
+        }
+      }
+      window.openDisputeForOrder = openDisputeForOrder;
 
       async function renderAdminPricingConsole() {
         const adminSection = document.getElementById("knAdminPricingSection");
@@ -1062,6 +1129,11 @@
         document.getElementById("knStickyColorFilter")?.addEventListener("change", renderStickyNotes);
         document.getElementById("knPaymentsSearch")?.addEventListener("input", renderPayments);
         document.getElementById("knRefreshPaymentsBtn")?.addEventListener("click", renderPayments);
+        document.getElementById("knRaiseGeneralDisputeBtn")?.addEventListener("click", () => {
+          if (window.KN_PAYMENTS && typeof window.KN_PAYMENTS.openDisputeModal === "function") {
+            window.KN_PAYMENTS.openDisputeModal({});
+          }
+        });
 
         // Bookmark category chips
         document.querySelectorAll("#knBmCategoryChips .kn-chip-btn").forEach((btn) => {
