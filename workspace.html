@@ -839,30 +839,10 @@
 
       async function downloadOrderInvoice(orderId) {
         if (!orderId) return;
-        const user = window.KN_WORKSPACE ? window.KN_WORKSPACE.getUser() : null;
         let invoicePayload = null;
 
         if (userPaymentsData && Array.isArray(userPaymentsData.invoices)) {
           invoicePayload = userPaymentsData.invoices.find(i => i.order_id === orderId);
-        }
-
-        if (!invoicePayload && userPaymentsData && Array.isArray(userPaymentsData.orders)) {
-          const ord = userPaymentsData.orders.find(o => o.order_id === orderId);
-          if (ord) {
-            invoicePayload = {
-              order_id: ord.order_id,
-              invoice_number: `INV-KN-${new Date().getFullYear()}-${String(ord.id || Math.floor(1000 + Math.random() * 9000)).padStart(5, '0')}`,
-              invoice_date: ord.verified_at || ord.created_at || new Date().toISOString(),
-              user_name: user?.name,
-              user_email: user?.email || ord.user_email,
-              item_title: ord.chapter_title || ord.chapter_id || "Study Monograph",
-              amount_inr: ord.amount_inr || 49,
-              currency: ord.currency || "INR",
-              cf_payment_id: ord.cf_payment_id,
-              payment_method: ord.payment_method || "UPI/Card",
-              payment_status: "PAID"
-            };
-          }
         }
 
         if (!invoicePayload) {
@@ -876,7 +856,7 @@
         }
 
         if (!invoicePayload) {
-          window.KN_WORKSPACE?.showToast("Invoice details could not be found.", "error");
+          window.KN_WORKSPACE?.showToast("Official invoice is not available for this record yet.", "error");
           return;
         }
 

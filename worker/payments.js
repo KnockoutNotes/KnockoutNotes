@@ -921,9 +921,26 @@ export async function ensureInvoiceForOrder(db, order, user = null) {
       .first();
     if (existing) return existing;
 
-    const year = new Date().getFullYear();
-    const rawId = order.id || Math.floor(1000 + Math.random() * 9000);
-    const invNumber = `INV-KN-${year}-${String(rawId).padStart(5, '0')}`;
+    const orderDate = new Date(order.verified_at || order.created_at || Date.now());
+    const year = !isNaN(orderDate.getFullYear()) ? orderDate.getFullYear() : new Date().getFullYear();
+
+    // Stable, deterministic invoice identifier based on order
+    let stableId = order.id;
+    if (!stableId && order.order_id) {
+      const match = String(order.order_id).match(/\d+/g);
+      if (match) {
+        stableId = match.join('').slice(-6);
+      } else {
+        let hash = 0;
+        for (let i = 0; i < order.order_id.length; i++) {
+          hash = ((hash << 5) - hash) + order.order_id.charCodeAt(i);
+          hash |= 0;
+        }
+        stableId = Math.abs(hash) % 100000;
+      }
+    }
+    stableId = stableId || '1';
+    const invNumber = `INV-KN-${year}-${String(stableId).padStart(5, '0')}`;
     const userName = (user && user.name) || order.user_name || (order.user_email ? order.user_email.split('@')[0] : 'Verified Student');
 
     await db
@@ -1085,10 +1102,19 @@ export async function handleGetSingleInvoice(request, env, userAuth, invoiceId) 
 
   try {
     await ensureInvoicesTable(env.DB);
-    const invoice = await env.DB
-      .prepare('SELECT * FROM invoices WHERE id = ? OR invoice_number = ?')
-      .bind(invoiceId, invoiceId)
-      .first();
+    let invoice = null;
+
+    if (isAdmin) {
+      invoice = await env.DB
+        .prepare('SELECT * FROM invoices WHERE id = ? OR invoice_number = ? OR order_id = ?')
+        .bind(invoiceId, invoiceId, invoiceId)
+        .first();
+    } else {
+      invoice = await env.DB
+        .prepare('SELECT * FROM invoices WHERE (id = ? OR invoice_number = ? OR order_id = ?) AND user_id = ?')
+        .bind(invoiceId, invoiceId, invoiceId, user.id)
+        .first();
+    }
 
     if (!invoice) {
       return jsonResponse({ error: 'Invoice not found' }, 404);
