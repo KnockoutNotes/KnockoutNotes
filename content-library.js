@@ -22,6 +22,14 @@
     return fetch('content-config.js?_=' + Date.now(), { cache: 'no-store' })
       .then(r => r.text())
       .then(t => {
+        try {
+          const fn = new Function(t + '; return window.KNOCKOUTNOTES_CONTENT;');
+          const res = fn();
+          if (res) {
+            window.KNOCKOUTNOTES_CONTENT = res;
+            return res;
+          }
+        } catch (_) {}
         const start = t.indexOf('{');
         const end = t.lastIndexOf('}');
         if (start < 0 || end < 0) throw new Error('Invalid content-config.js');

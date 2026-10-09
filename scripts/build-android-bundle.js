@@ -151,6 +151,7 @@ const JS_FILES = [
   'study-annotations.js',
   'mcq-engine.js',
   'payments-client.js',
+  'invoice-generator.js',
   'sw.js'
 ];
 JS_FILES.forEach(copyFile);
@@ -167,9 +168,10 @@ STATIC_ASSETS.forEach(copyFile);
 // 5. Vendor Libraries (Three.js, Draco, GSAP, jsPDF)
 copyDir('vendor');
 
-// 6. Selected Asset Folders (core 3D models and regional sono-anatomy)
+// 6. Selected Asset Folders (core 3D models, regional sono-anatomy, website content)
 copyDir('assets/models');
 copyDir('assets/regional');
+copyDir('assets/website');
 
 // 7. Critical Care Curriculum & MCQ Question Banks
 copyDir('criticalCare');

@@ -563,6 +563,14 @@ export async function handleVerifyCashfreeOrder(request, env, userAuth) {
       // 4. Grant Entitlement
       await grantUserEntitlement(env.DB, order.user_id, order.user_email, order.chapter_id, orderId, 'payment');
 
+      // 5. Generate and store invoice
+      await ensureInvoiceForOrder(env.DB, {
+        ...order,
+        cf_payment_id: cfPaymentId,
+        payment_method: paymentMethod,
+        payment_status: 'SUCCESS'
+      }, userAuth.user);
+
       return jsonResponse({
         success: true,
         paymentStatus: 'SUCCESS',
@@ -734,6 +742,12 @@ export async function handleCashfreeWebhook(request, env) {
 
       // Idempotently grant chapter entitlement to the verified user and chapter
       await grantUserEntitlement(env.DB, order.user_id, order.user_email, order.chapter_id, orderId, 'payment');
+      await ensureInvoiceForOrder(env.DB, {
+        ...order,
+        cf_payment_id: cfPaymentId,
+        payment_method: paymentMethod,
+        payment_status: 'SUCCESS'
+      });
       console.log(`[Cashfree Webhook]: Entitlement confirmed for user ${order.user_id}, chapter ${order.chapter_id}`);
     } else if (isFailed) {
       // Update order to FAILED only if not already confirmed SUCCESS
@@ -865,6 +879,93 @@ export async function handleDownloadChapterPDF(request, env, userAuth) {
  * GET /api/user/payments
  * --------------------------------------------------------------------------
  */
+let invoicesTableChecked = false;
+export async function ensureInvoicesTable(db) {
+  if (invoicesTableChecked) return;
+  try {
+    await db.prepare(`
+      CREATE TABLE IF NOT EXISTS invoices (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        invoice_number TEXT UNIQUE NOT NULL,
+        order_id TEXT UNIQUE NOT NULL,
+        user_id INTEGER NOT NULL,
+        user_name TEXT,
+        user_email TEXT NOT NULL,
+        item_title TEXT NOT NULL,
+        amount_inr REAL NOT NULL,
+        currency TEXT NOT NULL DEFAULT 'INR',
+        cf_payment_id TEXT,
+        payment_status TEXT NOT NULL DEFAULT 'PAID',
+        payment_method TEXT,
+        invoice_date TEXT NOT NULL DEFAULT (datetime('now')),
+        created_at TEXT NOT NULL DEFAULT (datetime('now')),
+        updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+      )
+    `).run();
+    await db.prepare("CREATE INDEX IF NOT EXISTS idx_invoices_user_id ON invoices(user_id)").run();
+    await db.prepare("CREATE INDEX IF NOT EXISTS idx_invoices_order_id ON invoices(order_id)").run();
+    invoicesTableChecked = true;
+  } catch (err) {
+    console.warn('[ensureInvoicesTable]:', err);
+  }
+}
+
+export async function ensureInvoiceForOrder(db, order, user = null) {
+  if (!order || order.payment_status !== 'SUCCESS') return null;
+  await ensureInvoicesTable(db);
+
+  try {
+    const existing = await db
+      .prepare('SELECT * FROM invoices WHERE order_id = ?')
+      .bind(order.order_id)
+      .first();
+    if (existing) return existing;
+
+    const year = new Date().getFullYear();
+    const rawId = order.id || Math.floor(1000 + Math.random() * 9000);
+    const invNumber = `INV-KN-${year}-${String(rawId).padStart(5, '0')}`;
+    const userName = (user && user.name) || order.user_name || (order.user_email ? order.user_email.split('@')[0] : 'Verified Student');
+
+    await db
+      .prepare(`
+        INSERT OR IGNORE INTO invoices (
+          invoice_number, order_id, user_id, user_name, user_email,
+          item_title, amount_inr, currency, cf_payment_id, payment_status,
+          payment_method, invoice_date, created_at, updated_at
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'PAID', ?, COALESCE(?, datetime('now')), datetime('now'), datetime('now'))
+      `)
+      .bind(
+        invNumber,
+        order.order_id,
+        order.user_id,
+        userName,
+        order.user_email,
+        order.chapter_title || order.chapter_id || 'Study Monograph',
+        order.amount_inr || 0,
+        order.currency || 'INR',
+        order.cf_payment_id || null,
+        order.payment_method || 'UPI/Card',
+        order.verified_at || order.created_at || null
+      )
+      .run();
+
+    return await db
+      .prepare('SELECT * FROM invoices WHERE order_id = ?')
+      .bind(order.order_id)
+      .first();
+  } catch (err) {
+    console.warn('[ensureInvoiceForOrder]:', err);
+    return null;
+  }
+}
+
+/**
+ * --------------------------------------------------------------------------
+ * 6. USER PAYMENT HISTORY, PURCHASES & INVOICES
+ * GET /api/user/payments
+ * --------------------------------------------------------------------------
+ */
 export async function handleGetUserPaymentHistory(request, env, userAuth) {
   if (!userAuth || !userAuth.user) {
     return jsonResponse({ error: 'Unauthorized' }, 401);
@@ -873,10 +974,12 @@ export async function handleGetUserPaymentHistory(request, env, userAuth) {
   const user = userAuth.user;
 
   try {
+    await ensureInvoicesTable(env.DB);
+
     // Fetch user orders
     const orders = await env.DB
       .prepare(`
-        SELECT order_id, chapter_id, chapter_title, amount_inr, currency,
+        SELECT id, order_id, chapter_id, chapter_title, amount_inr, currency,
                payment_status, cf_payment_id, payment_method, created_at, verified_at
         FROM orders
         WHERE user_id = ?
@@ -885,6 +988,12 @@ export async function handleGetUserPaymentHistory(request, env, userAuth) {
       `)
       .bind(user.id)
       .all();
+
+    // Auto-backfill invoices for any successful orders lacking one
+    const successfulOrders = (orders.results || []).filter(o => o.payment_status === 'SUCCESS');
+    for (const ord of successfulOrders) {
+      await ensureInvoiceForOrder(env.DB, { ...ord, user_email: user.email }, user);
+    }
 
     // Fetch user entitlements
     const entitlements = await env.DB
@@ -897,14 +1006,102 @@ export async function handleGetUserPaymentHistory(request, env, userAuth) {
       .bind(user.id)
       .all();
 
+    // Fetch user invoices
+    const invoices = await env.DB
+      .prepare(`
+        SELECT id, invoice_number, order_id, user_name, user_email,
+               item_title, amount_inr, currency, cf_payment_id, payment_status,
+               payment_method, invoice_date, created_at
+        FROM invoices
+        WHERE user_id = ?
+        ORDER BY invoice_date DESC
+      `)
+      .bind(user.id)
+      .all();
+
     return jsonResponse({
       orders: orders.results || [],
       entitlements: entitlements.results || [],
+      invoices: invoices.results || [],
       isAdmin: await isServerAdmin(userAuth, env, request)
     });
   } catch (err) {
     console.error('[User Payment History Error]:', err);
     return jsonResponse({ error: 'Failed to retrieve payment records' }, 500);
+  }
+}
+
+/**
+ * GET /api/user/invoices
+ * Retrieve all downloadable payment invoices for the authenticated user
+ */
+export async function handleGetUserInvoices(request, env, userAuth) {
+  if (!userAuth || !userAuth.user) {
+    return jsonResponse({ error: 'Unauthorized' }, 401);
+  }
+  const user = userAuth.user;
+
+  try {
+    await ensureInvoicesTable(env.DB);
+
+    // Auto-backfill any successful orders without invoice
+    const orders = await env.DB
+      .prepare("SELECT * FROM orders WHERE user_id = ? AND payment_status = 'SUCCESS'")
+      .bind(user.id)
+      .all();
+    for (const ord of (orders.results || [])) {
+      await ensureInvoiceForOrder(env.DB, { ...ord, user_email: user.email }, user);
+    }
+
+    const invoices = await env.DB
+      .prepare(`
+        SELECT id, invoice_number, order_id, user_name, user_email,
+               item_title, amount_inr, currency, cf_payment_id, payment_status,
+               payment_method, invoice_date, created_at
+        FROM invoices
+        WHERE user_id = ?
+        ORDER BY invoice_date DESC
+      `)
+      .bind(user.id)
+      .all();
+
+    return jsonResponse({ invoices: invoices.results || [] });
+  } catch (err) {
+    console.error('[Get Invoices Error]:', err);
+    return jsonResponse({ error: 'Failed to retrieve invoices' }, 500);
+  }
+}
+
+/**
+ * GET /api/user/invoices/:invoiceId
+ * Retrieve specific invoice record with ownership verification
+ */
+export async function handleGetSingleInvoice(request, env, userAuth, invoiceId) {
+  if (!userAuth || !userAuth.user) {
+    return jsonResponse({ error: 'Unauthorized' }, 401);
+  }
+  const user = userAuth.user;
+  const isAdmin = await isServerAdmin(userAuth, env, request);
+
+  try {
+    await ensureInvoicesTable(env.DB);
+    const invoice = await env.DB
+      .prepare('SELECT * FROM invoices WHERE id = ? OR invoice_number = ?')
+      .bind(invoiceId, invoiceId)
+      .first();
+
+    if (!invoice) {
+      return jsonResponse({ error: 'Invoice not found' }, 404);
+    }
+
+    if (invoice.user_id !== user.id && !isAdmin) {
+      return jsonResponse({ error: 'Forbidden' }, 403);
+    }
+
+    return jsonResponse({ invoice });
+  } catch (err) {
+    console.error('[Get Single Invoice Error]:', err);
+    return jsonResponse({ error: 'Failed to retrieve invoice' }, 500);
   }
 }
 

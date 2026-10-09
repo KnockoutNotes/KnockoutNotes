@@ -403,7 +403,7 @@
   // whatever category/page this carousel belongs to, never hardcoded.
   Carousel.prototype._itemsFromCards = function () {
     return this.cards.map(c => {
-      const url = c.getAttribute("href") || "";
+      const url = c.getAttribute("href") || (c.querySelector && c.querySelector("a")?.getAttribute("href")) || "";
       const titleEl = c.querySelector(".kn-file-title");
       const title = (titleEl ? titleEl.textContent : c.textContent || "").trim();
       return { url, title };
@@ -418,6 +418,11 @@
       // always opens the holographic viewer immediately for that note.
       // A click on the general body of a non-centred card brings it to the centre.
       card.addEventListener("click", e => {
+        // Workspace bookmark buttons inside card wrappers handle their own clicks
+        if (e.target && e.target.closest(".kn-workspace-bookmark-btn")) {
+          return;
+        }
+
         const idx = Number(card.dataset.kcIndex);
         const isCta = Boolean(e.target && (
           e.target.closest(".kn-file-arrow, .kn-file-thumb") ||

@@ -345,6 +345,9 @@
   <script src="bubble-menu.js"></script>
   <script src="workspace-engine.js"></script>
   <script src="payments-client.js"></script>
+  <script src="vendor/jspdf/jspdf.umd.min.js"></script>
+  <script src="vendor/jspdf/jspdf.plugin.autotable.min.js"></script>
+  <script src="invoice-generator.js"></script>
   <script>
     (function () {
       "use strict";
@@ -801,9 +804,14 @@
                       <td style="font-family:monospace; font-size:11.5px; color:var(--kn-ws-text-muted);">${esc(o.order_id)}</td>
                       <td>
                         ${status === "SUCCESS" ? `
-                          <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 10px; font-size:11.5px;" onclick="window.KN_PAYMENTS.triggerPdfDownload('/api/study/download-pdf?chapter_id=${encodeURIComponent(o.chapter_id)}', 'KnockoutNotes_${esc(o.chapter_id)}.pdf')">
-                            📥 Download
-                          </button>
+                          <div style="display:inline-flex; gap:6px; flex-wrap:wrap;">
+                            <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 9px; font-size:11.5px;" onclick="window.KN_PAYMENTS.triggerPdfDownload('/api/study/download-pdf?chapter_id=${encodeURIComponent(o.chapter_id)}', 'KnockoutNotes_${esc(o.chapter_id)}.pdf')">
+                              📥 Monograph
+                            </button>
+                            <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 9px; font-size:11.5px; background:rgba(0,229,255,0.08); border-color:rgba(0,229,255,0.35); color:var(--accent-cyan, #00e5ff);" onclick="downloadOrderInvoice('${esc(o.order_id)}')">
+                              🧾 Invoice
+                            </button>
+                          </div>
                         ` : status === "PENDING" ? `
                           <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 10px; font-size:11.5px;" onclick="verifyPendingOrder('${esc(o.order_id)}', '${esc(o.chapter_title || o.chapter_id)}')">
                             🔄 Verify Status
@@ -828,6 +836,64 @@
           renderAdminPricingConsole();
         }
       }
+
+      async function downloadOrderInvoice(orderId) {
+        if (!orderId) return;
+        const user = window.KN_WORKSPACE ? window.KN_WORKSPACE.getUser() : null;
+        let invoicePayload = null;
+
+        if (userPaymentsData && Array.isArray(userPaymentsData.invoices)) {
+          invoicePayload = userPaymentsData.invoices.find(i => i.order_id === orderId);
+        }
+
+        if (!invoicePayload && userPaymentsData && Array.isArray(userPaymentsData.orders)) {
+          const ord = userPaymentsData.orders.find(o => o.order_id === orderId);
+          if (ord) {
+            invoicePayload = {
+              order_id: ord.order_id,
+              invoice_number: `INV-KN-${new Date().getFullYear()}-${String(ord.id || Math.floor(1000 + Math.random() * 9000)).padStart(5, '0')}`,
+              invoice_date: ord.verified_at || ord.created_at || new Date().toISOString(),
+              user_name: user?.name,
+              user_email: user?.email || ord.user_email,
+              item_title: ord.chapter_title || ord.chapter_id || "Study Monograph",
+              amount_inr: ord.amount_inr || 49,
+              currency: ord.currency || "INR",
+              cf_payment_id: ord.cf_payment_id,
+              payment_method: ord.payment_method || "UPI/Card",
+              payment_status: "PAID"
+            };
+          }
+        }
+
+        if (!invoicePayload) {
+          try {
+            const res = await fetch(`/api/user/invoices/${encodeURIComponent(orderId)}`, { credentials: "include" });
+            if (res.ok) {
+              const data = await res.json();
+              invoicePayload = data.invoice;
+            }
+          } catch (_) {}
+        }
+
+        if (!invoicePayload) {
+          window.KN_WORKSPACE?.showToast("Invoice details could not be found.", "error");
+          return;
+        }
+
+        window.KN_WORKSPACE?.showToast("Generating official tax invoice PDF...", "info");
+        try {
+          if (window.KN_INVOICES && typeof window.KN_INVOICES.downloadInvoice === "function") {
+            await window.KN_INVOICES.downloadInvoice(invoicePayload);
+            window.KN_WORKSPACE?.showToast("Invoice downloaded successfully!", "success");
+          } else {
+            throw new Error("Invoice generator is not ready.");
+          }
+        } catch (err) {
+          console.error("[Download Invoice Error]:", err);
+          window.KN_WORKSPACE?.showToast("Failed to generate PDF: " + err.message, "error");
+        }
+      }
+      window.downloadOrderInvoice = downloadOrderInvoice;
 
       async function verifyPendingOrder(orderId, chapterTitle) {
         if (!orderId) return;

@@ -91,6 +91,8 @@ import {
   handleCashfreeWebhook,
   handleDownloadChapterPDF,
   handleGetUserPaymentHistory,
+  handleGetUserInvoices,
+  handleGetSingleInvoice,
   handleAdminPaymentsOverview,
   handleAdminUpdatePricing,
   handleAdminBulkUpdatePricing,
@@ -720,6 +722,15 @@ export default {
       // User Payments & Entitlements
       if (pathname === '/api/user/payments' && request.method === 'GET') {
         return handleGetUserPaymentHistory(request, env, userAuth);
+      }
+
+      // Downloadable Payment Invoices
+      if (pathname === '/api/user/invoices' && request.method === 'GET') {
+        return handleGetUserInvoices(request, env, userAuth);
+      }
+      if (pathname.startsWith('/api/user/invoices/') && request.method === 'GET') {
+        const invId = decodeURIComponent(pathname.replace('/api/user/invoices/', ''));
+        return handleGetSingleInvoice(request, env, userAuth, invId);
       }
     }
 

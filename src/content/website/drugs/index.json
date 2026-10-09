@@ -1,0 +1,108 @@
+{
+  "section": "drugs",
+  "title": "Drugs & Pharmacology",
+  "description": "High-yield pharmacology, mechanism of action, dosing, and toxicity management pearls for anaesthesia and intensive care.",
+  "categories": [
+    {
+      "id": "induction",
+      "title": "Induction Agents",
+      "kicker": "INDUCTION",
+      "description": "High-yield induction drug pearls.",
+      "assetFolder": "assets/website/drugs/induction",
+      "files": [
+        { "url": "assets/website/drugs/induction/induction_1.jpg", "title": "Propofol" },
+        { "url": "assets/website/drugs/induction/induction_2.jpg", "title": "Etomidate" },
+        { "url": "assets/website/drugs/induction/induction_3.jpg", "title": "Ketamine" },
+        { "url": "assets/website/drugs/induction/induction_4.jpg", "title": "Thiopentone" }
+      ]
+    },
+    {
+      "id": "opioids",
+      "title": "Opioid Agents",
+      "kicker": "OPIOIDS",
+      "description": "High-yield opioid pharmacology and anaesthesia pearls.",
+      "assetFolder": "assets/website/drugs/opioids",
+      "files": [
+        { "url": "assets/website/drugs/opioids/opioid_01_intro.jpg", "title": "Opioids — introduction" },
+        { "url": "assets/website/drugs/opioids/opioid_02_overview.jpg", "title": "Opioid overview" },
+        { "url": "assets/website/drugs/opioids/opioid_03_morphine.jpg", "title": "Morphine" },
+        { "url": "assets/website/drugs/opioids/opioid_04_fentanyl.jpg", "title": "Fentanyl" },
+        { "url": "assets/website/drugs/opioids/opioid_05_remifentanil.jpg", "title": "Remifentanil" },
+        { "url": "assets/website/drugs/opioids/opioid_06_nalbuphine.jpg", "title": "Nalbuphine" },
+        { "url": "assets/website/drugs/opioids/opioid_07_tramadol.jpg", "title": "Tramadol" },
+        { "url": "assets/website/drugs/opioids/opioid_08_pethidine.jpg", "title": "Pethidine" },
+        { "url": "assets/website/drugs/opioids/opioid_09_buprenorphine.jpg", "title": "Buprenorphine" },
+        { "url": "assets/website/drugs/opioids/opioid_10_naloxone.jpg", "title": "Naloxone" }
+      ]
+    },
+    {
+      "id": "muscle-relaxant",
+      "title": "Muscle Relaxants",
+      "kicker": "NEUROMUSCULAR BLOCKERS",
+      "description": "High-yield muscle-relaxant pharmacology and anaesthesia pearls.",
+      "assetFolder": "assets/website/drugs/muscle-relaxant",
+      "files": [
+        { "url": "assets/website/drugs/muscle-relaxant/muscle-relaxant_01_intro.jpg", "title": "Muscle relaxants — introduction" },
+        { "url": "assets/website/drugs/muscle-relaxant/muscle-relaxant_02_overview.jpg", "title": "Muscle relaxant overview" },
+        { "url": "assets/website/drugs/muscle-relaxant/muscle-relaxant_03_suxamethonium.jpg", "title": "Suxamethonium" },
+        { "url": "assets/website/drugs/muscle-relaxant/muscle-relaxant_04_rocuronium.jpg", "title": "Rocuronium" },
+        { "url": "assets/website/drugs/muscle-relaxant/muscle-relaxant_05_vecuronium.jpg", "title": "Vecuronium" },
+        { "url": "assets/website/drugs/muscle-relaxant/muscle-relaxant_06_atracurium.jpg", "title": "Atracurium" },
+        { "url": "assets/website/drugs/muscle-relaxant/muscle-relaxant_07_cisatracurium.jpg", "title": "Cisatracurium" },
+        { "url": "assets/website/drugs/muscle-relaxant/muscle-relaxant_08_neostigmine.jpg", "title": "Neostigmine" },
+        { "url": "assets/website/drugs/muscle-relaxant/muscle-relaxant_09_sugammadex.jpg", "title": "Sugammadex" }
+      ]
+    },
+    {
+      "id": "vasoactive",
+      "title": "Vasoactive Agents",
+      "kicker": "INOTROPES & VASOPRESSORS",
+      "description": "High-yield vasopressor, inotrope and vasodilator pharmacology for anaesthesia and critical care.",
+      "assetFolder": "assets/website/drugs/vasoactive",
+      "files": [
+        { "url": "assets/website/drugs/vasoactive/vasoactive_01_intro.png", "title": "Introduction to vasoactive agents" },
+        { "url": "assets/website/drugs/vasoactive/vasoactive_02_ionotropes.png", "title": "Inotropes — classification & receptors" },
+        { "url": "assets/website/drugs/vasoactive/vasoactive_03_noradrenaline.png", "title": "Noradrenaline" },
+        { "url": "assets/website/drugs/vasoactive/vasoactive_04_adrenaline.png", "title": "Adrenaline" },
+        { "url": "assets/website/drugs/vasoactive/vasoactive_05_dopamine.png", "title": "Dopamine" },
+        { "url": "assets/website/drugs/vasoactive/vasoactive_06_dobutamine.png", "title": "Dobutamine" },
+        { "url": "assets/website/drugs/vasoactive/vasoactive_07_vasopressin.png", "title": "Vasopressin" },
+        { "url": "assets/website/drugs/vasoactive/vasoactive_08_phenylephrine.png", "title": "Phenylephrine" },
+        { "url": "assets/website/drugs/vasoactive/vasoactive_09_milrinone.png", "title": "Milrinone" },
+        { "url": "assets/website/drugs/vasoactive/vasoactive_10_nitroglycerin.png", "title": "Nitroglycerin" },
+        { "url": "assets/website/drugs/vasoactive/vasoactive_11_methylene-blue.png", "title": "Methylene blue" }
+      ]
+    },
+    {
+      "id": "local-anaesthetics",
+      "title": "Local Anaesthetics",
+      "kicker": "LOCAL ANAESTHETICS",
+      "description": "Mechanism of action, individual agents and the recognition and management of systemic toxicity (LAST).",
+      "assetFolder": "assets/website/drugs/local-anaesthetics",
+      "files": [
+        { "url": "assets/website/drugs/local-anaesthetics/local-anaesthetics_01_intro.png", "title": "Local Anaesthetics — Introduction" },
+        { "url": "assets/website/drugs/local-anaesthetics/local-anaesthetics_02_mechanism.png", "title": "Mechanism of Action" },
+        { "url": "assets/website/drugs/local-anaesthetics/local-anaesthetics_03_lignocaine.png", "title": "Lignocaine (Lidocaine)" },
+        { "url": "assets/website/drugs/local-anaesthetics/local-anaesthetics_04_bupivacaine-levobupivacaine.png", "title": "Bupivacaine and Levobupivacaine" },
+        { "url": "assets/website/drugs/local-anaesthetics/local-anaesthetics_05_ropivacaine.png", "title": "Ropivacaine" },
+        { "url": "assets/website/drugs/local-anaesthetics/local-anaesthetics_06_chloroprocaine.png", "title": "2-Chloroprocaine" },
+        { "url": "assets/website/drugs/local-anaesthetics/local-anaesthetics_07_emla-prilocaine.png", "title": "EMLA & Prilocaine" },
+        { "url": "assets/website/drugs/local-anaesthetics/local-anaesthetics_08_last-signs-symptoms.png", "title": "Local Anaesthetic Toxicity (LAST) — Signs and Symptoms" },
+        { "url": "assets/website/drugs/local-anaesthetics/local-anaesthetics_09_last-management.png", "title": "Local Anaesthetic Systemic Toxicity (LAST) — Management" }
+      ]
+    },
+    {
+      "id": "non-opioid-analgesics",
+      "title": "Non-Opioid Analgesics",
+      "kicker": "INTRA & POST-OPERATIVE",
+      "description": "NSAIDs and adjunct agents for intra-operative and post-operative multimodal analgesia.",
+      "assetFolder": "assets/website/drugs/non-opioid-analgesics",
+      "files": [
+        { "url": "assets/website/drugs/non-opioid-analgesics/non-opioid_01_diclofenac.png", "title": "Diclofenac" },
+        { "url": "assets/website/drugs/non-opioid-analgesics/non-opioid_02_ketorolac.png", "title": "Ketorolac" },
+        { "url": "assets/website/drugs/non-opioid-analgesics/non-opioid_03_ibuprofen.png", "title": "Ibuprofen" },
+        { "url": "assets/website/drugs/non-opioid-analgesics/non-opioid_04_gabapentin.png", "title": "Gabapentin" }
+      ]
+    }
+  ]
+}

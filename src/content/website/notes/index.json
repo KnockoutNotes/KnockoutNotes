@@ -1,0 +1,71 @@
+{
+  "section": "notes",
+  "title": "Study Notes",
+  "description": "Curated clinical summaries and procedural guides for anaesthesia and critical care.",
+  "categories": [
+    {
+      "id": "cardiology",
+      "title": "Valve Lesions — Cardiology Pearls",
+      "kicker": "VALVE LESIONS",
+      "description": "Valvular heart disease — haemodynamic goals for anaesthesia.",
+      "assetFolder": "assets/website/carousels",
+      "files": [
+        { "url": "assets/website/carousels/cardiology_pearl_1_of_4.jpg", "title": "Aortic stenosis" },
+        { "url": "assets/website/carousels/cardiology_pearl_2_of_4.jpg", "title": "Aortic regurgitation" },
+        { "url": "assets/website/carousels/cardiology_pearl_3_of_4.jpg", "title": "Mitral stenosis" },
+        { "url": "assets/website/carousels/cardiology_pearl_4_of_4.jpg", "title": "Mitral regurgitation" }
+      ]
+    },
+    {
+      "id": "airway",
+      "title": "Airway Notes",
+      "kicker": "AIRWAY",
+      "description": "Percutaneous tracheostomy and cricothyroidotomy — essential front-of-neck airway procedures.",
+      "assetFolder": "assets/website/notes/airway",
+      "files": [
+        { "url": "assets/website/notes/airway/airway_01_pct-cric-intro.png", "title": "Percutaneous Tracheostomy & Cricothyroidotomy — Introduction" },
+        { "url": "assets/website/notes/airway/airway_02_pct-basics.png", "title": "Percutaneous Tracheostomy — The Basics" },
+        { "url": "assets/website/notes/airway/airway_03_pct-procedure.png", "title": "Percutaneous Tracheostomy — The Procedure (Step by Step)" },
+        { "url": "assets/website/notes/airway/airway_04_pct-equipment.png", "title": "Percutaneous Tracheostomy — Equipment and Types" },
+        { "url": "assets/website/notes/airway/airway_05_pct-complications.png", "title": "Percutaneous Tracheostomy — Complications" },
+        { "url": "assets/website/notes/airway/airway_06_cricothyroidotomy.png", "title": "Cricothyroidotomy — The Emergency Front of Neck Airway" },
+        { "url": "assets/website/notes/airway/airway_07_pct-vs-cric.png", "title": "Percutaneous Tracheostomy vs Cricothyroidotomy — Key Differences" }
+      ]
+    },
+    {
+      "id": "pft",
+      "title": "Pulmonary Function Tests",
+      "kicker": "PFT",
+      "description": "A stepwise guide to reading PFTs with confidence — from spirometry quality checks to obstructive, restrictive and mixed patterns.",
+      "assetFolder": "assets/website/notes/pft",
+      "files": [
+        { "url": "assets/website/notes/pft/pft_01_intro.png", "title": "Pulmonary Function Tests (PFT) — Interpret, Understand, Apply" },
+        { "url": "assets/website/notes/pft/pft_02_start-here.png", "title": "PFT Interpretation 1 — Start Here: Is the Test Reliable?" },
+        { "url": "assets/website/notes/pft/pft_03_obstructive.png", "title": "PFT Interpretation 2 — Obstructive Ventilatory Defect" },
+        { "url": "assets/website/notes/pft/pft_04_restrictive-mixed.png", "title": "PFT Interpretation 3 — Restrictive & Mixed Patterns" },
+        { "url": "assets/website/notes/pft/pft_05_lung-volumes-dlco.png", "title": "PFT Interpretation 4 — Lung Volumes & DLCO" },
+        { "url": "assets/website/notes/pft/pft_06_putting-it-together.png", "title": "PFT Interpretation 5 — Putting It All Together" }
+      ]
+    },
+    {
+      "id": "ventilator-modes",
+      "title": "Ventilator Modes",
+      "kicker": "VENTILATION",
+      "description": "A guide to modes, mechanics and mindful ventilation — from conventional volume/pressure control through adaptive, patient-centred and specialist strategies.",
+      "assetFolder": "assets/website/critical-care/ventilation",
+      "files": [
+        { "url": "assets/website/critical-care/ventilation/ventilation_01_modes-overview.png", "title": "Modes of Mechanical Ventilation — Overview" },
+        { "url": "assets/website/critical-care/ventilation/ventilation_02_vcv.png", "title": "Volume Control Ventilation (VCV)" },
+        { "url": "assets/website/critical-care/ventilation/ventilation_03_pcv.png", "title": "Pressure Control Ventilation (PCV)" },
+        { "url": "assets/website/critical-care/ventilation/ventilation_04_simv.png", "title": "Synchronized Intermittent Mandatory Ventilation (SIMV)" },
+        { "url": "assets/website/critical-care/ventilation/ventilation_05_psv.png", "title": "Pressure Support Ventilation (PSV)" },
+        { "url": "assets/website/critical-care/ventilation/ventilation_06_asv.png", "title": "Adaptive Support Ventilation (ASV)" },
+        { "url": "assets/website/critical-care/ventilation/ventilation_07_prvc.png", "title": "Pressure Regulated Volume Control (PRVC)" },
+        { "url": "assets/website/critical-care/ventilation/ventilation_08_cpap-niv.png", "title": "CPAP / Noninvasive Ventilation (NIV)" },
+        { "url": "assets/website/critical-care/ventilation/ventilation_09_aprv.png", "title": "Airway Pressure Release Ventilation (APRV)" },
+        { "url": "assets/website/critical-care/ventilation/ventilation_10_hfov.png", "title": "High-Frequency Oscillatory Ventilation (HFOV)" },
+        { "url": "assets/website/critical-care/ventilation/ventilation_11_pav-vaps.png", "title": "PAV+ & VAPS — Advanced Ventilation Modes" }
+      ]
+    }
+  ]
+}

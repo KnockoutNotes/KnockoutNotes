@@ -1,0 +1,32 @@
+{
+  "carousels": [
+    {
+      "id": "notes-carousel",
+      "target": "#sheetContent3d",
+      "page": "notes.html",
+      "engine": "KnCarousel",
+      "type": "spatial-3d"
+    },
+    {
+      "id": "drugs-carousel",
+      "target": "#sheetContent3d",
+      "page": "drugs.html",
+      "engine": "KnCarousel",
+      "type": "spatial-3d"
+    },
+    {
+      "id": "critical-care-carousel",
+      "target": "#sheetContent3d",
+      "page": "critical-care.html",
+      "engine": "KnCarousel",
+      "type": "spatial-3d"
+    },
+    {
+      "id": "critical-care-curriculum",
+      "target": "#knCriticalCareCurriculum3d",
+      "page": "critical-care.html",
+      "engine": "KnCarousel",
+      "type": "spatial-3d"
+    }
+  ]
+}

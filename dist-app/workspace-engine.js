@@ -1020,6 +1020,15 @@
             <span class="kn-menu-item-arrow">›</span>
           </a>
 
+          <a href="workspace.html#payments" class="kn-user-menu-item" data-tab="payments">
+            <span class="kn-menu-item-icon kn-icon-payments">🧾</span>
+            <div class="kn-menu-item-content">
+              <span class="kn-menu-item-text">My Invoices &amp; Purchases</span>
+              <span class="kn-menu-item-desc">Download PDF invoices &amp; study monographs</span>
+            </div>
+            <span class="kn-menu-item-arrow">›</span>
+          </a>
+
           <a href="workspace.html#profile" class="kn-user-menu-item" data-tab="profile">
             <span class="kn-menu-item-icon kn-icon-settings">⚙️</span>
             <div class="kn-menu-item-content">
@@ -1124,6 +1133,9 @@
         <a href="workspace.html#sticky-notes" class="kn-user-menu-item" role="menuitem">
           <span>🟨</span> <span>My Sticky Notes</span>
           <span class="kn-menu-item-badge" style="margin-left:auto;">${stickyCache.length}</span>
+        </a>
+        <a href="workspace.html#payments" class="kn-user-menu-item" role="menuitem">
+          <span>🧾</span> <span>My Invoices &amp; Purchases</span>
         </a>
         <a href="workspace.html#profile" class="kn-user-menu-item" role="menuitem">
           <span>⚙️</span> <span>Account Settings</span>

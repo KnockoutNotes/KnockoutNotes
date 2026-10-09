@@ -51,7 +51,7 @@
 
           <div class="viewer-stage" id="knViewerStage">
             <div class="viewer-content-plane" id="knViewerContentPlane">
-              <img id="knViewerImg" src="" alt="Clinical Document" decoding="async" style="display:none;">
+              <img id="knViewerImg" alt="Clinical Document" decoding="async" style="display:none;">
               <iframe id="knViewerFrame" src="" style="display:none;" title="Document Preview"></iframe>
               <div id="knViewerFallback" class="viewer-fallback" style="display:none;">
                 <div class="viewer-fallback-icon">📄</div>
@@ -125,7 +125,8 @@
         stage.style.overflow = "hidden";
       }
 
-      let url = item.url || item.href || item;
+      let url = item.url || item.href || (typeof item === "string" ? item : "");
+      if (!url) return;
       // Ensure asset URLs have a root slash so relative URLs resolve identically
       // across routes like /notes, /notes.html, or nested paths.
       if (typeof url === "string" && !url.startsWith("http://") && !url.startsWith("https://") && !url.startsWith("/") && !url.startsWith("data:") && !url.startsWith("blob:")) {
@@ -160,10 +161,21 @@
       } else {
         img.style.display = "block";
         img.style.opacity = "0.85";
+        delete img.dataset.triedFallback;
         img.onload = () => {
           img.style.opacity = "1";
         };
         img.onerror = () => {
+          if (!img.dataset.triedFallback) {
+            img.dataset.triedFallback = "1";
+            if (url.startsWith("/assets/website/")) {
+              img.src = url.replace("/assets/website/", "/assets/");
+              return;
+            } else if (url.startsWith("/assets/")) {
+              img.src = url.replace("/assets/", "/assets/website/");
+              return;
+            }
+          }
           img.style.display = "none";
           fallback.style.display = "block";
           fallbackTitle.textContent = title + " (Direct View Available)";
@@ -197,7 +209,11 @@
     function closeViewer() {
       modal.classList.remove("open");
       lockScroll(false);
-      if (img) img.src = "";
+      if (img) {
+        img.removeAttribute("src");
+        img.style.display = "none";
+        delete img.dataset.triedFallback;
+      }
       if (frame) frame.src = "";
       if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
       lastFocused = null;
