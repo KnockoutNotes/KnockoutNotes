@@ -33,8 +33,8 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.35,
-      density: 45,
-      glowPoints: 3
+      density: 294,
+      glowPoints: 4
     },
     pearls: {
       accent: [56, 189, 248],     // Cyan
@@ -44,8 +44,8 @@
       pleth: true,
       circuitRings: true,
       particleSpeed: 0.3,
-      density: 40,
-      glowPoints: 2
+      density: 266,
+      glowPoints: 3
     },
     drugs: {
       accent: [129, 140, 248],    // Indigo #818cf8
@@ -55,8 +55,8 @@
       pleth: false,
       circuitRings: false,
       particleSpeed: 0.25,
-      density: 35,
-      glowPoints: 2
+      density: 280,
+      glowPoints: 3
     },
     criticalCare: {
       accent: [251, 191, 36],    // Amber #fbbf24
@@ -65,9 +65,9 @@
       capno: true,
       pleth: true,
       circuitRings: true,
-      particleSpeed: 0.35,
-      density: 48,
-      glowPoints: 3
+      particleSpeed: 0.45,
+      density: 308,
+      glowPoints: 4
     },
     viva: {
       accent: [167, 139, 250],   // Violet #a78bfa
@@ -77,8 +77,8 @@
       pleth: false,
       circuitRings: false,
       particleSpeed: 0.3,
-      density: 30,
-      glowPoints: 2
+      density: 252,
+      glowPoints: 3
     },
     resources: {
       accent: [56, 189, 248],    // Cyan
@@ -88,7 +88,7 @@
       pleth: false,
       circuitRings: true,
       particleSpeed: 0.2,
-      density: 24,
+      density: 210,
       glowPoints: 2
     },
     study: {
@@ -99,7 +99,7 @@
       pleth: false,
       circuitRings: false,
       particleSpeed: 0.18,
-      density: 18,
+      density: 190,
       glowPoints: 2
     }
   };
@@ -590,9 +590,8 @@
     // 4. Volatile Anaesthetic Vapor & Alveolar Gas Dispersion Physics
     // Simulated mechanical ventilation tidal breathing rhythm (~12 bpm)
     const tidalBreathing = Math.sin(waveTime * 0.9) * 0.15;
-    const repelRadius = isSmallScreen() ? 80 : 130;
+    const repelRadius = isSmallScreen() ? 90 : 150;
 
-    ctx.beginPath();
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
 
@@ -620,15 +619,14 @@
       const depthFactor = (p.z + 400) / 800;
       const px = p.x + (mouse.x - width * 0.5) * 0.015 * depthFactor;
       const py = p.y + (mouse.y - height * 0.5) * 0.015 * depthFactor;
-      const pr = Math.max(1, p.size * depthFactor);
 
-      ctx.moveTo(px + pr, py);
-      ctx.arc(px, py, pr, 0, Math.PI * 2);
+      ctx.beginPath();
+      ctx.arc(px, py, p.size * depthFactor, 0, Math.PI * 2);
+      ctx.fillStyle = isDark
+        ? `rgba(${r}, ${g}, ${b}, ${p.alpha * 0.72})`
+        : `rgba(2, 132, 199, ${p.alpha * 0.68})`;
+      ctx.fill();
     }
-    ctx.fillStyle = isDark
-      ? `rgba(${r}, ${g}, ${b}, 0.28)`
-      : `rgba(2, 132, 199, 0.32)`;
-    ctx.fill();
 
     // 5. Tactile Acoustic Transducer Pressure Ripples
     for (let i = ripples.length - 1; i >= 0; i--) {
@@ -656,30 +654,6 @@
 
     animId = requestAnimationFrame(render);
   }
-
-  // Smooth scroll and visibility lifecycle listeners to preserve CPU budget
-  let isScrolling = false;
-  let scrollThrottleTimer = null;
-  window.addEventListener("scroll", function () {
-    isScrolling = true;
-    if (scrollThrottleTimer) clearTimeout(scrollThrottleTimer);
-    scrollThrottleTimer = setTimeout(function () {
-      isScrolling = false;
-    }, 120);
-  }, { passive: true });
-
-  document.addEventListener("visibilitychange", function () {
-    if (document.hidden) {
-      if (animId) {
-        cancelAnimationFrame(animId);
-        animId = null;
-      }
-    } else {
-      if (!animId && isCanvasIntersecting && !document.body.classList.contains("mode-lite")) {
-        animId = requestAnimationFrame(render);
-      }
-    }
-  });
 
   function setEnvironment(key) {
     if (ENVIRONMENTS[key]) {

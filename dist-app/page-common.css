@@ -393,7 +393,7 @@ body:not(.dark) .kn-search-result {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 2400;
+  z-index: 99990;
   align-items: flex-start;
   justify-content: center;
   padding: 90px 20px 24px;
@@ -403,6 +403,7 @@ body:not(.dark) .kn-search-result {
   display: flex;
 }
 
+.kn-modal .kn-modal-backdrop,
 .kn-modal-backdrop {
   position: fixed;
   inset: 0;
@@ -410,8 +411,11 @@ body:not(.dark) .kn-search-result {
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   animation: fadeIn 0.2s var(--ease-expo);
+  z-index: 1;
+  pointer-events: auto;
 }
 
+.kn-modal .kn-modal-box,
 .kn-modal-box {
   position: relative;
   width: 100%;
@@ -421,11 +425,12 @@ body:not(.dark) .kn-search-result {
   border-radius: var(--radius-xl);
   box-shadow: var(--box-3d-bevel), 0 30px 90px rgba(0, 0, 0, 0.85), 0 0 70px rgba(56, 189, 248, 0.35);
   overflow: hidden;
-  z-index: 10;
+  z-index: 2;
   animation: modalEnter 0.28s var(--ease-expo);
   max-height: calc(100vh - 140px);
   display: flex;
   flex-direction: column;
+  pointer-events: auto;
 }
 
 .dark .kn-modal-box {

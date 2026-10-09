@@ -137,11 +137,9 @@
     }
   }
 
-  var observerInitialized = false;
   // Observe dynamically created cards (e.g. content-library category changes, search results)
   function initObserver() {
-    if (observerInitialized || !("MutationObserver" in window)) return;
-    observerInitialized = true;
+    if (!("MutationObserver" in window)) return;
     var observer = new MutationObserver(function (mutations) {
       for (var i = 0; i < mutations.length; i++) {
         var addedNodes = mutations[i].addedNodes;

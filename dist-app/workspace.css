@@ -426,7 +426,9 @@ body:not(.dark) .kn-bubble-user-btn {
 /* ==========================================================================
    3. MODALS (Sign In, Sticky Notes, Notes Editor)
    ========================================================================== */
-.kn-modal-backdrop {
+.kn-ws-modal-backdrop,
+#knActiveModal.kn-modal-backdrop,
+#knActiveModal {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
@@ -896,7 +898,9 @@ body:not(.dark) .kn-bubble-user-btn {
     width: 100%;
     margin-bottom: 8px;
   }
-  .kn-modal-backdrop {
+  .kn-ws-modal-backdrop,
+  #knActiveModal.kn-modal-backdrop,
+  #knActiveModal {
     align-items: flex-end;
   }
   .kn-modal-sheet {

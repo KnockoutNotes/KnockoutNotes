@@ -524,7 +524,7 @@
 
     const backdrop = document.createElement("div");
     backdrop.id = "knActiveModal";
-    backdrop.className = "kn-modal-backdrop";
+    backdrop.className = "kn-modal-backdrop kn-ws-modal-backdrop";
 
     backdrop.innerHTML = `
       <div class="kn-modal-sheet" role="dialog" aria-modal="true" aria-label="Sign In or Register">
@@ -673,7 +673,7 @@
 
     const backdrop = document.createElement("div");
     backdrop.id = "knActiveModal";
-    backdrop.className = "kn-modal-backdrop";
+    backdrop.className = "kn-modal-backdrop kn-ws-modal-backdrop";
 
     backdrop.innerHTML = `
       <div class="kn-modal-sheet" role="dialog" aria-modal="true" aria-label="Personal Sticky Note">
@@ -779,7 +779,7 @@
 
     const backdrop = document.createElement("div");
     backdrop.id = "knActiveModal";
-    backdrop.className = "kn-modal-backdrop";
+    backdrop.className = "kn-modal-backdrop kn-ws-modal-backdrop";
 
     backdrop.innerHTML = `
       <div class="kn-modal-sheet wide" role="dialog" aria-modal="true" aria-label="Personal Clinical Note">
