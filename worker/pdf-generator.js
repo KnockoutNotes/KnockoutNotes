@@ -2,13 +2,15 @@
  * KnockoutNotes Branded Chapter PDF Generator
  * Built with pdf-lib for native Cloudflare Workers isolate execution.
  * Creates publication-quality, A4 medical revision monographs from canonical Study Notes data.
- * Uses authentic Comic Sans MS typography and embedded vector QR connectivity codes.
+ * Typography: Authentic Comic Sans MS for headings & hierarchy; Calibri for all body content.
+ * Features comfortable leading (1.35x–1.45x), anti-orphan section guards, and embedded vector QR codes.
  */
 
 import { PDFDocument, rgb } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import qrcode from 'qrcode-generator';
 import { getComicSansRegularBytes, getComicSansBoldBytes } from './fonts/comic-fonts.js';
+import { getCalibriRegularBytes, getCalibriBoldBytes, getCalibriItalicBytes } from './fonts/calibri-fonts.js';
 
 // Color Palette
 const COLORS = {
@@ -29,11 +31,11 @@ const COLORS = {
 // Page Dimensions (A4 in points: 595.28 x 841.89)
 const PAGE_WIDTH = 595.28;
 const PAGE_HEIGHT = 841.89;
-const MARGIN_LEFT = 40;
-const MARGIN_RIGHT = 40;
-const CONTENT_WIDTH = PAGE_WIDTH - MARGIN_LEFT - MARGIN_RIGHT; // 515.28 pt
+const MARGIN_LEFT = 42;
+const MARGIN_RIGHT = 42;
+const CONTENT_WIDTH = PAGE_WIDTH - MARGIN_LEFT - MARGIN_RIGHT; // 511.28 pt
 const MARGIN_TOP = 46;
-const MARGIN_BOTTOM = 44;
+const MARGIN_BOTTOM = 46;
 
 // Default Brand URLs for End-of-PDF QR Codes
 const DEFAULT_QR_URLS = {
@@ -43,7 +45,8 @@ const DEFAULT_QR_URLS = {
 };
 
 /**
- * Sanitize text to ensure clean medical typography and prevent glyph encoding errors
+ * Sanitize text to ensure clean medical typography and prevent glyph encoding errors.
+ * Preserves unicode symbols natively supported by the subsetted font tables (•, ≥, ≤, ±, °, ×, →, ←, μ, ², ³, ₁, ₂).
  */
 function sanitizeText(str) {
   if (!str) return '';
@@ -170,15 +173,23 @@ function drawQrCode(page, text, x, y, size, options = {}) {
 }
 
 /**
- * Generate a complete, branded A4 PDF document for a study chapter using Comic Sans MS
+ * Generate a complete, branded A4 PDF document for a study chapter.
+ * Typography Hierarchy:
+ * - Headings & Section Titles: Authentic Comic Sans MS Bold / Regular
+ * - Body Prose, Bullets, Tables, Citations & Notes: Authentic Calibri Regular / Bold / Italic
  */
 export async function generateChapterPdf(chapter, options = {}) {
   const pdfDoc = await PDFDocument.create();
   pdfDoc.registerFontkit(fontkit);
 
-  // Embed Authentic Comic Sans MS Fonts
-  const fontRegular = await pdfDoc.embedFont(getComicSansRegularBytes());
-  const fontBold = await pdfDoc.embedFont(getComicSansBoldBytes());
+  // 1. Embed Headings Font: Authentic Comic Sans MS
+  const fontComicRegular = await pdfDoc.embedFont(getComicSansRegularBytes());
+  const fontComicBold = await pdfDoc.embedFont(getComicSansBoldBytes());
+
+  // 2. Embed Body Font: Authentic Calibri
+  const fontCalibriRegular = await pdfDoc.embedFont(getCalibriRegularBytes());
+  const fontCalibriBold = await pdfDoc.embedFont(getCalibriBoldBytes());
+  const fontCalibriItalic = await pdfDoc.embedFont(getCalibriItalicBytes());
 
   // Resolve QR code destination links
   const siteUrl = (options.siteUrl || DEFAULT_QR_URLS.website).replace(/\/$/, '') + '/';
@@ -199,7 +210,9 @@ export async function generateChapterPdf(chapter, options = {}) {
   function ensureSpace(requiredHeight) {
     if (!currentPage || cursorY - requiredHeight < MARGIN_BOTTOM + 28) {
       addNewPage();
+      return true; // Indicates page break occurred
     }
+    return false;
   }
 
   function drawRunningHeader(page, chapterName, isCoverPage) {
@@ -217,25 +230,25 @@ export async function generateChapterPdf(chapter, options = {}) {
         x: MARGIN_LEFT + 10,
         y: PAGE_HEIGHT - 29,
         size: 9.5,
-        font: fontBold,
+        font: fontComicBold,
         color: COLORS.white
       });
 
       page.drawText('Medical Revision Monograph  |  Anaesthesia & Critical Care', {
-        x: MARGIN_LEFT + 120,
+        x: MARGIN_LEFT + 124,
         y: PAGE_HEIGHT - 29,
         size: 8,
-        font: fontRegular,
+        font: fontCalibriRegular,
         color: rgb(0.85, 0.92, 0.98)
       });
 
       const urlText = 'knockoutnotes-anaesthesia.workers.dev';
-      const urlWidth = fontRegular.widthOfTextAtSize(urlText, 7.5);
+      const urlWidth = fontCalibriRegular.widthOfTextAtSize(urlText, 7.5);
       page.drawText(urlText, {
         x: MARGIN_LEFT + CONTENT_WIDTH - urlWidth - 10,
         y: PAGE_HEIGHT - 29,
         size: 7.5,
-        font: fontRegular,
+        font: fontCalibriRegular,
         color: COLORS.white
       });
       return;
@@ -253,28 +266,28 @@ export async function generateChapterPdf(chapter, options = {}) {
       x: MARGIN_LEFT,
       y: PAGE_HEIGHT - 28,
       size: 8,
-      font: fontBold,
+      font: fontComicBold,
       color: COLORS.accent
     });
 
     const handleText = ' |  @knock.out.notes';
     page.drawText(handleText, {
-      x: MARGIN_LEFT + fontBold.widthOfTextAtSize('KNOCKOUT NOTES', 8),
+      x: MARGIN_LEFT + fontComicBold.widthOfTextAtSize('KNOCKOUT NOTES', 8),
       y: PAGE_HEIGHT - 28,
       size: 7.5,
-      font: fontRegular,
+      font: fontCalibriRegular,
       color: COLORS.textMuted
     });
 
     const sanitizedTitle = sanitizeText(chapterName);
     const titleSnippet = sanitizedTitle.length > 50 ? sanitizedTitle.slice(0, 48) + '...' : sanitizedTitle;
-    const titleWidth = fontRegular.widthOfTextAtSize(titleSnippet, 8);
+    const titleWidth = fontCalibriRegular.widthOfTextAtSize(titleSnippet, 8);
 
     page.drawText(titleSnippet, {
       x: MARGIN_LEFT + CONTENT_WIDTH - titleWidth,
       y: PAGE_HEIGHT - 28,
       size: 8,
-      font: fontRegular,
+      font: fontCalibriRegular,
       color: COLORS.textMuted
     });
   }
@@ -287,54 +300,54 @@ export async function generateChapterPdf(chapter, options = {}) {
   // --------------------------------------------------------------------------
   cursorY -= 16;
 
-  // Domain kicker
+  // Domain kicker (Comic Sans Bold)
   const domainText = sanitizeText((chapter.cat || 'CLINICAL STUDY NOTES').toUpperCase().replace(/_/g, ' ') + '  •  REVISION HANDOUT');
   currentPage.drawText(domainText, {
     x: MARGIN_LEFT,
     y: cursorY,
     size: 8.5,
-    font: fontBold,
+    font: fontComicBold,
     color: COLORS.accent
   });
   cursorY -= 18;
 
-  // Chapter Name
+  // Chapter Name (Comic Sans Bold, size 17, leading 23)
   const cleanTitle = sanitizeText(chapter.name || 'Clinical Monograph');
-  const titleLines = wrapText(cleanTitle, fontBold, 17, CONTENT_WIDTH);
+  const titleLines = wrapText(cleanTitle, fontComicBold, 17, CONTENT_WIDTH);
   for (const line of titleLines) {
     currentPage.drawText(line, {
       x: MARGIN_LEFT,
       y: cursorY,
       size: 17,
-      font: fontBold,
+      font: fontComicBold,
       color: COLORS.primary
     });
-    cursorY -= 22;
+    cursorY -= 23;
   }
 
-  // Tagline or Classification
+  // Tagline or Classification (Calibri Regular, size 9.5, leading 14)
   const tagline = sanitizeText(chapter.tagline || chapter.classification || '');
   if (tagline) {
-    cursorY -= 2;
-    const tagLines = wrapText(tagline, fontRegular, 9.5, CONTENT_WIDTH);
+    cursorY -= 4;
+    const tagLines = wrapText(tagline, fontCalibriRegular, 9.5, CONTENT_WIDTH);
     for (const tl of tagLines) {
       currentPage.drawText(tl, {
         x: MARGIN_LEFT,
         y: cursorY,
         size: 9.5,
-        font: fontRegular,
+        font: fontCalibriRegular,
         color: COLORS.textMuted
       });
       cursorY -= 14;
     }
   }
 
-  cursorY -= 6;
+  cursorY -= 8;
 
-  // Metadata & Sourcing Card
+  // Metadata & Clinical Sourcing Box
   const sourceText = sanitizeText(chapter.source || "Miller's Anesthesia / Washington Manual of Critical Care / ASA Guidelines.");
-  const sourceLines = wrapText(`Clinical Evidence Source: ${sourceText}`, fontRegular, 8, CONTENT_WIDTH - 24);
-  const sourceBoxHeight = 16 + (sourceLines.length * 11);
+  const sourceLines = wrapText(`Clinical Evidence Source: ${sourceText}`, fontCalibriRegular, 8.5, CONTENT_WIDTH - 24);
+  const sourceBoxHeight = 16 + (sourceLines.length * 12);
 
   currentPage.drawRectangle({
     x: MARGIN_LEFT,
@@ -346,7 +359,7 @@ export async function generateChapterPdf(chapter, options = {}) {
     borderWidth: 0.8
   });
 
-  // Vertical accent bar on left of source box
+  // Vertical cyan accent bar on left of source box
   currentPage.drawRectangle({
     x: MARGIN_LEFT,
     y: cursorY - sourceBoxHeight,
@@ -360,27 +373,28 @@ export async function generateChapterPdf(chapter, options = {}) {
     currentPage.drawText(sourceLines[i], {
       x: MARGIN_LEFT + 14,
       y: sourceTextY,
-      size: 8,
-      font: fontRegular,
+      size: 8.5,
+      font: fontCalibriRegular,
       color: COLORS.primary
     });
-    sourceTextY -= 11;
+    sourceTextY -= 12;
   }
 
-  cursorY -= (sourceBoxHeight + 14);
+  cursorY -= (sourceBoxHeight + 16);
 
   // --------------------------------------------------------------------------
   // 2. TABLE OF CONTENTS SUMMARY (IF >= 2 SECTIONS)
   // --------------------------------------------------------------------------
   const sections = chapter.sections || [];
   if (sections.length >= 2) {
-    ensureSpace(38 + (sections.length * 13));
+    const tocBoxHeight = 24 + (sections.length * 14);
+    ensureSpace(tocBoxHeight + 16);
 
     currentPage.drawRectangle({
       x: MARGIN_LEFT,
-      y: cursorY - (22 + sections.length * 13),
+      y: cursorY - tocBoxHeight,
       width: CONTENT_WIDTH,
-      height: 22 + sections.length * 13,
+      height: tocBoxHeight,
       color: COLORS.cardBg,
       borderColor: COLORS.border,
       borderWidth: 0.6
@@ -388,28 +402,28 @@ export async function generateChapterPdf(chapter, options = {}) {
 
     currentPage.drawText('CHAPTER CONTENTS & HIGH-YIELD TOPIC OUTLINE', {
       x: MARGIN_LEFT + 12,
-      y: cursorY - 14,
-      size: 8,
-      font: fontBold,
+      y: cursorY - 15,
+      size: 8.5,
+      font: fontComicBold,
       color: COLORS.primary
     });
 
-    let tocY = cursorY - 26;
+    let tocY = cursorY - 30;
     for (let i = 0; i < sections.length; i++) {
       const secTitle = sanitizeText(sections[i].h || `Section ${i + 1}`);
       const lineStr = `${i + 1}.  ${secTitle}`;
-      const wrappedToc = wrapText(lineStr, fontRegular, 8, CONTENT_WIDTH - 26);
+      const wrappedToc = wrapText(lineStr, fontCalibriRegular, 8.5, CONTENT_WIDTH - 26);
       currentPage.drawText(wrappedToc[0], {
         x: MARGIN_LEFT + 12,
         y: tocY,
-        size: 8,
-        font: fontRegular,
+        size: 8.5,
+        font: fontCalibriRegular,
         color: COLORS.textMain
       });
-      tocY -= 13;
+      tocY -= 14;
     }
 
-    cursorY -= (34 + sections.length * 13);
+    cursorY -= (tocBoxHeight + 16);
   }
 
   // --------------------------------------------------------------------------
@@ -419,29 +433,32 @@ export async function generateChapterPdf(chapter, options = {}) {
     const sec = sections[sIdx];
     const secTitle = sanitizeText(sec.h || `Section ${sIdx + 1}`);
 
-    // Section Header Pill
-    ensureSpace(42);
-    cursorY -= 6;
+    // Anti-Orphan Heading Guard: Must have room for section heading + at least 50pt of body content
+    const didBreak = ensureSpace(72);
+    if (!didBreak && sIdx > 0) {
+      cursorY -= 14; // Breathing room above new section on same page
+    }
 
+    // Section Header Pill (Comic Sans Bold)
     currentPage.drawRectangle({
       x: MARGIN_LEFT,
-      y: cursorY - 20,
+      y: cursorY - 22,
       width: CONTENT_WIDTH,
-      height: 20,
+      height: 22,
       color: COLORS.primaryLight
     });
 
     currentPage.drawText(`${sIdx + 1}.  ${secTitle}`, {
       x: MARGIN_LEFT + 10,
-      y: cursorY - 14,
-      size: 9.5,
-      font: fontBold,
+      y: cursorY - 15.5,
+      size: 10,
+      font: fontComicBold,
       color: COLORS.white
     });
 
-    cursorY -= 28;
+    cursorY -= 32;
 
-    // Section Body Prose / Bullets
+    // Section Body Prose / Bullets (Calibri)
     if (sec.b) {
       const cleanBody = sanitizeText(sec.b);
       const paragraphs = cleanBody.split(/\n\s*\n/);
@@ -454,7 +471,7 @@ export async function generateChapterPdf(chapter, options = {}) {
         for (const line of lines) {
           const cleanLine = line.trim();
           if (!cleanLine) {
-            cursorY -= 4;
+            cursorY -= 5;
             continue;
           }
 
@@ -462,8 +479,11 @@ export async function generateChapterPdf(chapter, options = {}) {
           const bulletIndent = isBullet ? 14 : 0;
           const displayLine = isBullet ? cleanLine.replace(/^[*•-]\s*/, '') : cleanLine;
 
-          const wrappedLines = wrapText(displayLine, fontRegular, 9, CONTENT_WIDTH - bulletIndent);
-          ensureSpace(wrappedLines.length * 12.5 + 4);
+          // Comfortable leading: 13.5pt on 9.5pt font (1.42x body size)
+          const bodyFontSize = 9.5;
+          const lineHeight = 13.5;
+          const wrappedLines = wrapText(displayLine, fontCalibriRegular, bodyFontSize, CONTENT_WIDTH - bulletIndent);
+          ensureSpace(wrappedLines.length * lineHeight + 4);
 
           for (let lIdx = 0; lIdx < wrappedLines.length; lIdx++) {
             const lText = wrappedLines[lIdx];
@@ -472,51 +492,51 @@ export async function generateChapterPdf(chapter, options = {}) {
               currentPage.drawText('•', {
                 x: MARGIN_LEFT + 4,
                 y: cursorY,
-                size: 9,
-                font: fontBold,
+                size: 9.5,
+                font: fontCalibriBold,
                 color: COLORS.accent
               });
             }
 
-            // Bold prefix detection e.g. "Label:"
+            // Bold prefix detection e.g. "Preop Warning:"
             const colonIdx = lText.indexOf(':');
             if (colonIdx > 0 && colonIdx < 35 && lIdx === 0) {
               const labelPart = lText.slice(0, colonIdx + 1);
               const restPart = lText.slice(colonIdx + 1);
-              const labelWidth = fontBold.widthOfTextAtSize(labelPart, 9);
+              const labelWidth = fontCalibriBold.widthOfTextAtSize(labelPart, bodyFontSize);
 
               currentPage.drawText(labelPart, {
                 x: MARGIN_LEFT + bulletIndent,
                 y: cursorY,
-                size: 9,
-                font: fontBold,
+                size: bodyFontSize,
+                font: fontCalibriBold,
                 color: COLORS.primary
               });
 
               currentPage.drawText(restPart, {
                 x: MARGIN_LEFT + bulletIndent + labelWidth,
                 y: cursorY,
-                size: 9,
-                font: fontRegular,
+                size: bodyFontSize,
+                font: fontCalibriRegular,
                 color: COLORS.textMain
               });
             } else {
               currentPage.drawText(lText, {
                 x: MARGIN_LEFT + bulletIndent,
                 y: cursorY,
-                size: 9,
-                font: fontRegular,
+                size: bodyFontSize,
+                font: fontCalibriRegular,
                 color: COLORS.textMain
               });
             }
 
-            cursorY -= 12.5;
+            cursorY -= lineHeight;
           }
 
-          cursorY -= 2;
+          cursorY -= 3.5; // Gap between bullet points
         }
 
-        cursorY -= 4;
+        cursorY -= 6; // Gap between paragraphs
       }
     }
 
@@ -527,34 +547,39 @@ export async function generateChapterPdf(chapter, options = {}) {
       const numCols = headers.length;
 
       if (numCols > 0) {
-        cursorY -= 6;
+        cursorY -= 8;
         const colWidth = CONTENT_WIDTH / numCols;
+        const tableHeaderHeight = 22;
 
-        ensureSpace(32);
+        // Anti-orphan guard: Ensure room for header + first data row
+        ensureSpace(tableHeaderHeight + 28);
 
-        // Header Row
+        // Table Header Row (Comic Sans Bold)
         currentPage.drawRectangle({
           x: MARGIN_LEFT,
-          y: cursorY - 18,
+          y: cursorY - tableHeaderHeight,
           width: CONTENT_WIDTH,
-          height: 18,
+          height: tableHeaderHeight,
           color: COLORS.tableHeaderBg
         });
 
         for (let c = 0; c < numCols; c++) {
           const hText = headers[c];
           currentPage.drawText(hText, {
-            x: MARGIN_LEFT + (c * colWidth) + 6,
-            y: cursorY - 13,
+            x: MARGIN_LEFT + (c * colWidth) + 7,
+            y: cursorY - 15,
             size: 8,
-            font: fontBold,
+            font: fontComicBold,
             color: COLORS.white
           });
         }
 
-        cursorY -= 18;
+        cursorY -= tableHeaderHeight;
 
-        // Data Rows
+        // Table Data Rows (Calibri Regular)
+        const cellFontSize = 8;
+        const cellLineHeight = 11.5;
+
         for (let rIdx = 0; rIdx < rows.length; rIdx++) {
           const rowData = rows[rIdx];
           let maxCellLines = 1;
@@ -562,15 +587,15 @@ export async function generateChapterPdf(chapter, options = {}) {
 
           for (let c = 0; c < numCols; c++) {
             const cellText = rowData[c] || '';
-            const cellLines = wrapText(cellText, fontRegular, 7.5, colWidth - 10);
+            const cellLines = wrapText(cellText, fontCalibriRegular, cellFontSize, colWidth - 14);
             wrappedCells.push(cellLines);
             if (cellLines.length > maxCellLines) maxCellLines = cellLines.length;
           }
 
-          const rowHeight = Math.max(16, maxCellLines * 10 + 6);
+          const rowHeight = Math.max(18, maxCellLines * cellLineHeight + 8);
           ensureSpace(rowHeight);
 
-          // Alternating row background
+          // Alternating row background tint
           if (rIdx % 2 === 1) {
             currentPage.drawRectangle({
               x: MARGIN_LEFT,
@@ -581,7 +606,7 @@ export async function generateChapterPdf(chapter, options = {}) {
             });
           }
 
-          // Row bottom border
+          // Row bottom separator line
           currentPage.drawLine({
             start: { x: MARGIN_LEFT, y: cursorY - rowHeight },
             end: { x: MARGIN_LEFT + CONTENT_WIDTH, y: cursorY - rowHeight },
@@ -592,23 +617,23 @@ export async function generateChapterPdf(chapter, options = {}) {
           // Cell text
           for (let c = 0; c < numCols; c++) {
             const cLines = wrappedCells[c];
-            let cellY = cursorY - 10;
+            let cellY = cursorY - 11;
             for (const cl of cLines) {
               currentPage.drawText(cl, {
-                x: MARGIN_LEFT + (c * colWidth) + 6,
+                x: MARGIN_LEFT + (c * colWidth) + 7,
                 y: cellY,
-                size: 7.5,
-                font: fontRegular,
+                size: cellFontSize,
+                font: fontCalibriRegular,
                 color: COLORS.textMain
               });
-              cellY -= 10;
+              cellY -= cellLineHeight;
             }
           }
 
           cursorY -= rowHeight;
         }
 
-        cursorY -= 10;
+        cursorY -= 12; // Gap after table
       }
     }
   }
@@ -620,26 +645,26 @@ export async function generateChapterPdf(chapter, options = {}) {
     const exampleText = sanitizeText(chapter.example);
     const exampleParas = exampleText.split(/\n\s*\n/);
 
-    ensureSpace(40);
-    cursorY -= 8;
+    ensureSpace(46);
+    cursorY -= 12;
 
     currentPage.drawRectangle({
       x: MARGIN_LEFT,
-      y: cursorY - 20,
+      y: cursorY - 22,
       width: CONTENT_WIDTH,
-      height: 20,
+      height: 22,
       color: COLORS.alertBorder
     });
 
     currentPage.drawText('CLINICAL VIGNETTE & HIGH-YIELD PRACTICAL SCENARIO', {
       x: MARGIN_LEFT + 10,
-      y: cursorY - 14,
+      y: cursorY - 15.5,
       size: 9.5,
-      font: fontBold,
+      font: fontComicBold,
       color: COLORS.white
     });
 
-    cursorY -= 28;
+    cursorY -= 32;
 
     for (const para of exampleParas) {
       const trimmed = para.trim();
@@ -649,26 +674,28 @@ export async function generateChapterPdf(chapter, options = {}) {
       for (const line of lines) {
         const cleanLine = line.trim();
         if (!cleanLine) {
-          cursorY -= 4;
+          cursorY -= 5;
           continue;
         }
 
-        const wrappedLines = wrapText(cleanLine, fontRegular, 8.5, CONTENT_WIDTH - 12);
-        ensureSpace(wrappedLines.length * 11.5 + 4);
+        const vignetteFontSize = 9;
+        const vignetteLineHeight = 13;
+        const wrappedLines = wrapText(cleanLine, fontCalibriRegular, vignetteFontSize, CONTENT_WIDTH - 14);
+        ensureSpace(wrappedLines.length * vignetteLineHeight + 4);
 
         for (const wl of wrappedLines) {
           currentPage.drawText(wl, {
-            x: MARGIN_LEFT + 6,
+            x: MARGIN_LEFT + 8,
             y: cursorY,
-            size: 8.5,
-            font: fontRegular,
+            size: vignetteFontSize,
+            font: fontCalibriRegular,
             color: COLORS.textMain
           });
-          cursorY -= 11.5;
+          cursorY -= vignetteLineHeight;
         }
-        cursorY -= 2;
+        cursorY -= 3;
       }
-      cursorY -= 4;
+      cursorY -= 6;
     }
   }
 
@@ -676,56 +703,56 @@ export async function generateChapterPdf(chapter, options = {}) {
   // 5. PRIMARY REFERENCES & CITATIONS (IF PRESENT)
   // --------------------------------------------------------------------------
   if (Array.isArray(chapter.references) && chapter.references.length > 0) {
-    ensureSpace(35 + (chapter.references.length * 12));
-    cursorY -= 8;
+    ensureSpace(40 + (chapter.references.length * 13));
+    cursorY -= 12;
 
     currentPage.drawRectangle({
       x: MARGIN_LEFT,
-      y: cursorY - 18,
+      y: cursorY - 20,
       width: CONTENT_WIDTH,
-      height: 18,
+      height: 20,
       color: COLORS.primaryLight
     });
 
     currentPage.drawText('PRIMARY MEDICAL REFERENCES & CITATIONS', {
       x: MARGIN_LEFT + 10,
-      y: cursorY - 13,
+      y: cursorY - 14,
       size: 8.5,
-      font: fontBold,
+      font: fontComicBold,
       color: COLORS.white
     });
 
-    cursorY -= 26;
+    cursorY -= 30;
 
     for (let rIdx = 0; rIdx < chapter.references.length; rIdx++) {
       const refText = sanitizeText(chapter.references[rIdx]);
-      const refLines = wrapText(`${rIdx + 1}.  ${refText}`, fontRegular, 8, CONTENT_WIDTH - 10);
-      ensureSpace(refLines.length * 11 + 2);
+      const refLines = wrapText(`${rIdx + 1}.  ${refText}`, fontCalibriRegular, 8, CONTENT_WIDTH - 12);
+      ensureSpace(refLines.length * 11.5 + 4);
 
       for (const rl of refLines) {
         currentPage.drawText(rl, {
           x: MARGIN_LEFT + 6,
           y: cursorY,
           size: 8,
-          font: fontRegular,
+          font: fontCalibriRegular,
           color: COLORS.textMuted
         });
-        cursorY -= 11;
+        cursorY -= 11.5;
       }
-      cursorY -= 2;
+      cursorY -= 3;
     }
 
-    cursorY -= 6;
+    cursorY -= 10;
   }
 
   // --------------------------------------------------------------------------
   // 6. END-OF-PDF QR SECTION: "CONNECT WITH KNOCKOUT NOTES"
   // --------------------------------------------------------------------------
-  const REQUIRED_QR_HEIGHT = 160;
+  const REQUIRED_QR_HEIGHT = 165;
   if (!currentPage || cursorY - REQUIRED_QR_HEIGHT < MARGIN_BOTTOM + 24) {
     addNewPage();
   } else {
-    cursorY -= 12;
+    cursorY -= 16;
   }
 
   // Section Container Box
@@ -740,7 +767,7 @@ export async function generateChapterPdf(chapter, options = {}) {
     borderWidth: 0.8
   });
 
-  // Header Banner of QR Box
+  // Header Banner of QR Box (Comic Sans Bold)
   currentPage.drawRectangle({
     x: MARGIN_LEFT,
     y: cursorY - 26,
@@ -750,23 +777,23 @@ export async function generateChapterPdf(chapter, options = {}) {
   });
 
   const headerTitle = 'CONNECT WITH KNOCKOUT NOTES';
-  const headerTitleWidth = fontBold.widthOfTextAtSize(headerTitle, 10.5);
+  const headerTitleWidth = fontComicBold.widthOfTextAtSize(headerTitle, 10.5);
   currentPage.drawText(headerTitle, {
     x: MARGIN_LEFT + (CONTENT_WIDTH - headerTitleWidth) / 2,
     y: cursorY - 18,
     size: 10.5,
-    font: fontBold,
+    font: fontComicBold,
     color: COLORS.white
   });
 
-  // Subtitle under header
+  // Subtitle under header (Calibri Regular)
   const subtitle = 'Scan to visit our revision portal, follow Instagram updates, or support our open clinical resources.';
-  const subWidth = fontRegular.widthOfTextAtSize(subtitle, 7.8);
+  const subWidth = fontCalibriRegular.widthOfTextAtSize(subtitle, 8);
   currentPage.drawText(subtitle, {
     x: MARGIN_LEFT + (CONTENT_WIDTH - subWidth) / 2,
     y: cursorY - 40,
-    size: 7.8,
-    font: fontRegular,
+    size: 8,
+    font: fontCalibriRegular,
     color: COLORS.textMuted
   });
 
@@ -789,9 +816,9 @@ export async function generateChapterPdf(chapter, options = {}) {
     }
   ];
 
-  const cardWidth = 148;
-  const cardGap = (CONTENT_WIDTH - (cardWidth * 3)) / 2; // ~35.64 pt
-  const qrSize = 68; // 68x68 pt crisp vector QR
+  const cardWidth = 146;
+  const cardGap = (CONTENT_WIDTH - (cardWidth * 3)) / 2;
+  const qrSize = 68; // 68x68 pt vector QR
   const qrTopY = cursorY - 50;
 
   for (let i = 0; i < qrItems.length; i++) {
@@ -820,23 +847,23 @@ export async function generateChapterPdf(chapter, options = {}) {
       darkColor: COLORS.primary
     });
 
-    // Label (WEBSITE / INSTAGRAM / SUPPORT US)
-    const labelWidth = fontBold.widthOfTextAtSize(item.label, 8.5);
+    // Label: Comic Sans Bold (size 8.5)
+    const labelWidth = fontComicBold.widthOfTextAtSize(item.label, 8.5);
     currentPage.drawText(item.label, {
       x: cardX + (cardWidth - labelWidth) / 2,
       y: cardY + 22,
       size: 8.5,
-      font: fontBold,
+      font: fontComicBold,
       color: COLORS.accent
     });
 
-    // Caption (Knockout Notes / @knock.out.notes / Buy Me a Coffee)
-    const capWidth = fontRegular.widthOfTextAtSize(item.caption, 8);
+    // Caption: Calibri Regular (size 8)
+    const capWidth = fontCalibriRegular.widthOfTextAtSize(item.caption, 8);
     currentPage.drawText(item.caption, {
       x: cardX + (cardWidth - capWidth) / 2,
       y: cardY + 10,
       size: 8,
-      font: fontRegular,
+      font: fontCalibriRegular,
       color: COLORS.textMain
     });
   }
@@ -866,27 +893,27 @@ export async function generateChapterPdf(chapter, options = {}) {
       x: MARGIN_LEFT,
       y: MARGIN_BOTTOM + 4,
       size: 8,
-      font: fontBold,
+      font: fontComicBold,
       color: COLORS.primary
     });
 
     const footerNotice = 'Verified Revision Monograph  •  Educational Clinical Practice Only';
-    const noticeWidth = fontRegular.widthOfTextAtSize(footerNotice, 7);
+    const noticeWidth = fontCalibriRegular.widthOfTextAtSize(footerNotice, 7.5);
     page.drawText(footerNotice, {
       x: MARGIN_LEFT + (CONTENT_WIDTH - noticeWidth) / 2,
       y: MARGIN_BOTTOM + 4,
-      size: 7,
-      font: fontRegular,
+      size: 7.5,
+      font: fontCalibriRegular,
       color: COLORS.textMuted
     });
 
     const pageStr = `Page ${pIdx + 1} of ${totalPages}`;
-    const pageStrWidth = fontBold.widthOfTextAtSize(pageStr, 8);
+    const pageStrWidth = fontComicBold.widthOfTextAtSize(pageStr, 8);
     page.drawText(pageStr, {
       x: MARGIN_LEFT + CONTENT_WIDTH - pageStrWidth,
       y: MARGIN_BOTTOM + 4,
       size: 8,
-      font: fontBold,
+      font: fontComicBold,
       color: COLORS.primary
     });
   }

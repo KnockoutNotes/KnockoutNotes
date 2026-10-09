@@ -497,11 +497,19 @@
       color: #94a3b8;
     }
 
-    /* Print Styles */
+    /* Print Styles — Optimized to fit on a Single A4 Page */
     @media print {
-      body {
+      @page {
+        size: A4 portrait;
+        margin: 8mm 10mm;
+      }
+      html, body {
         background: #ffffff !important;
         padding: 0 !important;
+        margin: 0 !important;
+        font-size: 12px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
       }
       .kn-receipt-nav,
       .kn-sample-banner {
@@ -511,6 +519,48 @@
         box-shadow: none !important;
         border-radius: 0 !important;
         max-width: 100% !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      .kn-receipt-header {
+        padding: 20px 28px !important;
+      }
+      .kn-receipt-body {
+        padding: 20px 28px !important;
+      }
+      .kn-receipt-info-grid {
+        margin-bottom: 16px !important;
+        gap: 12px !important;
+      }
+      .kn-info-card {
+        padding: 12px 16px !important;
+      }
+      .kn-receipt-table-section {
+        margin-bottom: 16px !important;
+      }
+      .kn-items-table th {
+        padding: 8px 12px !important;
+      }
+      .kn-items-table td {
+        padding: 10px 12px !important;
+      }
+      .kn-totals-section {
+        margin-bottom: 16px !important;
+      }
+      .kn-totals-row {
+        padding: 4px 0 !important;
+      }
+      .kn-totals-grand {
+        padding: 8px 14px !important;
+        margin-top: 6px !important;
+      }
+      .kn-receipt-terms {
+        padding: 12px 16px !important;
+        margin-bottom: 16px !important;
+        line-height: 1.45 !important;
+      }
+      .kn-receipt-footer {
+        padding-top: 12px !important;
       }
     }
   </style>
