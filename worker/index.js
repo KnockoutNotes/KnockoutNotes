@@ -242,12 +242,11 @@ export default {
 
       if (env.ASSETS) {
         if (pathname === '/sample-receipt' || pathname === '/receipt-preview') {
-          const targetUrl = new URL('/receipt.html', request.url);
+          const targetUrl = new URL('/receipt', request.url);
           targetUrl.searchParams.set('mode', 'preview');
           return redirectResponse(targetUrl.pathname + targetUrl.search);
         }
-        const assetReq = new Request(new URL('/receipt.html', request.url), request);
-        return env.ASSETS.fetch(assetReq);
+        return env.ASSETS.fetch(request);
       }
     }
 
