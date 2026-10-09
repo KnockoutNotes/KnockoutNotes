@@ -285,6 +285,18 @@
   gap: 5px;
 }
 
+.cc-study-launch-btn:hover {
+  background: rgba(56, 189, 248, 0.22) !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+  transform: translateY(-1px);
+}
+
+.cc-sub-title:hover {
+  color: #38bdf8 !important;
+}
+
 .cc-topic-pill {
   font-size: 11px;
   padding: 3px 8px;
@@ -292,6 +304,15 @@
   border: 1px solid rgba(56, 189, 248, 0.2);
   border-radius: 4px;
   color: #e2e8f0;
+  transition: all 0.18s ease;
+}
+
+.cc-topic-pill:hover {
+  background: rgba(56, 189, 248, 0.22);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25);
 }
 
 /* 88 Source Topics Table */
@@ -362,6 +383,12 @@
   font-size: 12.5px;
   color: #38bdf8;
   font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.cc-ch-link:hover {
+  color: #7dd3fc;
+  text-decoration: underline;
 }
 
 .cc-td-dur {

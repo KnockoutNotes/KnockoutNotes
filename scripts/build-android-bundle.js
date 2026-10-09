@@ -99,7 +99,8 @@ const CSS_FILES = [
   'subscribe-widget.css',
   'policy-common.css',
   'study-annotations.css',
-  'mcq-platform.css'
+  'mcq-platform.css',
+  'critical-care-curriculum.css'
 ];
 CSS_FILES.forEach(copyFile);
 
@@ -151,6 +152,7 @@ const JS_FILES = [
   'policy-config.js',
   'study-annotations.js',
   'mcq-engine.js',
+  'critical-care-curriculum.js',
   'payments-client.js',
   'invoice-generator.js',
   'sw.js'

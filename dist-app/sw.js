@@ -5,7 +5,7 @@
 // - Stale-While-Revalidate with safe response cloning for static app shell assets
 // ==========================================================================
 
-const CACHE_NAME = "knockoutnotes-cache-v101";
+const CACHE_NAME = "knockoutnotes-cache-v102";
 
 const PRECACHE_ASSETS = [
   "/",
@@ -99,6 +99,8 @@ const PRECACHE_ASSETS = [
   "/assets/references/mapleson-circuits-classification.jpg",
   "/mcq-platform.css",
   "/mcq-engine.js",
+  "/critical-care-curriculum.css",
+  "/critical-care-curriculum.js",
   "/criticalCare/mcqs.json",
   "/criticalCare/chapters.json",
   "/criticalCare/topics.json"

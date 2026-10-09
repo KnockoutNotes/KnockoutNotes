@@ -6,6 +6,42 @@
 (function() {
   'use strict';
 
+  // Authoritative NEET-SS Chapter -> Study Section Topic Mapping
+  // Links every curriculum chapter directly to its comprehensive module in study.html
+  const CHAPTER_TO_STUDY_MAP = {
+    1: { domain: 'critical', cat: 'cc_principles', item: 'icu-triage-communication-ethics', title: 'ICU Triage, Ethics & Systems' },
+    2: { domain: 'critical', cat: 'cc_hemodynamics', item: 'fluid-responsiveness-dynamic-indices', title: 'Applied ICU Physiology & Dysoxia' },
+    3: { domain: 'critical', cat: 'cc_hemodynamics', item: 'advanced-hemodynamic-monitoring-picco', title: 'Advanced Hemodynamic Monitoring (PiCCO/PAC)' },
+    4: { domain: 'critical', cat: 'cc_hemodynamics', item: 'vasopressors-inotropes-titration-protocols', title: 'Shock Syndromes & Vasoactive Protocols' },
+    5: { domain: 'critical', cat: 'cc_sepsis', item: 'sepsis3-hour1-bundle-resuscitation', title: 'Sepsis-3 & Surviving Sepsis Bundles' },
+    6: { domain: 'critical', cat: 'cc_respiratory', item: 'ventilator-modes-waveforms-asynchrony', title: 'Acute Respiratory Failure & Mechanics' },
+    7: { domain: 'critical', cat: 'cc_respiratory', item: 'aprv-titration-lung-protective', title: 'Non-Invasive Respiratory Support (HFNC/NIV)' },
+    8: { domain: 'critical', cat: 'cc_respiratory', item: 'ventilator-modes-waveforms-asynchrony', title: 'Mechanical Ventilation Modes & Graphics' },
+    9: { domain: 'critical', cat: 'cc_respiratory', item: 'ards-advanced-rescue-therapies', title: 'ARDS Driving Pressure & Rescue Therapies' },
+    10: { domain: 'critical', cat: 'cc_respiratory', item: 'massive-hemoptysis-pneumothorax-pe-icu', title: 'Obstructive Airway Emergencies & PE' },
+    11: { domain: 'critical', cat: 'cc_cardio', item: 'acute-coronary-syndromes-cardiogenic-shock', title: 'ACS & Cardiogenic Shock (SCAI)' },
+    12: { domain: 'critical', cat: 'cc_cardio', item: 'cardiac-arrhythmias-tamponade-pocus', title: 'Cardiac Arrest Resuscitation & Arrhythmias' },
+    13: { domain: 'critical', cat: 'cc_renal', item: 'aki-kdigo-crrt-modalities', title: 'Acute Kidney Injury (KDIGO) & CRRT' },
+    14: { domain: 'critical', cat: 'abg', item: 'abg-interpretation', title: 'Arterial Blood Gas Analysis & Acid-Base' },
+    15: { domain: 'critical', cat: 'cc_neuro', item: 'tbi-neuromonitoring-raised-icp', title: 'Neurocritical Care, TBI & Raised ICP' },
+    16: { domain: 'critical', cat: 'cc_pharm', item: 'icu-sedation-analgesia-delirium-padis', title: 'PADIS Sedation, Delirium & Analgesia' },
+    17: { domain: 'critical', cat: 'cc_pharm', item: 'pkpd-organ-support-crrt-ecmo-vasodilators', title: 'ICU Pharmacokinetics & TDM' },
+    18: { domain: 'critical', cat: 'cc_sepsis', item: 'multidrug-resistant-pathogens-icu', title: 'MDR Pathogens & Antimicrobial Stewardship' },
+    19: { domain: 'critical', cat: 'cc_gi', item: 'acute-gi-bleeding-pancreatitis-icu', title: 'Acute GI Bleeding, Pancreatitis & IAH' },
+    20: { domain: 'critical', cat: 'cc_renal', item: 'rhabdomyolysis-endocrine-emergencies-icu', title: 'Endocrine & Metabolic Crises (DKA/HHS)' },
+    21: { domain: 'critical', cat: 'cc_gi', item: 'acute-liver-failure-nutrition-icu', title: 'ICU Clinical Nutrition & Refeeding' },
+    22: { domain: 'critical', cat: 'cc_heme', item: 'massive-transfusion-rotem-teg-coagulopathy', title: 'Massive Transfusion (MTP) & ROTEM/TEG' },
+    23: { domain: 'critical', cat: 'cc_tox', item: 'toxicology-antidotes-extracorporeal-elimination', title: 'Toxicology, Antidotes & EXTRIP' },
+    24: { domain: 'critical', cat: 'cc_trauma', item: 'trauma-resuscitation-damage-control', title: 'Polytrauma & Damage Control Resuscitation' },
+    25: { domain: 'critical', cat: 'cc_trauma', item: 'burn-resuscitation-inhalation-injury', title: 'Major Burns, Parkland & Inhalation Injury' },
+    26: { domain: 'critical', cat: 'cc_obs', item: 'preeclampsia-eclampsia-hellp-syndrome', title: 'Obstetric Critical Care & Preeclampsia' },
+    27: { domain: 'critical', cat: 'cc_peds', item: 'pediatric-respiratory-failure-pals', title: 'Pediatric Emergencies & PALS Resuscitation' },
+    28: { domain: 'critical', cat: 'cc_airway', item: 'percutaneous-tracheostomy-icu', title: 'Bedside Procedures & Percutaneous Trach' },
+    29: { domain: 'critical', cat: 'cc_advances', item: 'pocus-critical-care-vexus-blue-rush', title: 'Critical Care POCUS (BLUE, RUSH, VExUS)' },
+    30: { domain: 'critical', cat: 'cc_advances', item: 'ecmo-vv-va-principles-cannulation', title: 'ECMO (VV vs VA) Principles & Cannulation' },
+    31: { domain: 'critical', cat: 'cc_advances', item: 'ecco2r-cytokine-adsorption-blood-purification', title: 'Special Populations & Blood Purification' }
+  };
+
   const CC_DATA = {
     chapters: [
   {
@@ -3522,6 +3558,9 @@
             ${filtered.map(ch => {
               const subs = CC_DATA.subchapters.filter(s => s.chapterId === ch.id);
               const chTopics = CC_DATA.topics.filter(t => t.chapterId === ch.id);
+              const studyTarget = CHAPTER_TO_STUDY_MAP[ch.id] || { domain: 'critical', cat: 'cc_principles', item: 'icu-triage-communication-ethics' };
+              const studyHref = `study.html?domain=${encodeURIComponent(studyTarget.domain)}&cat=${encodeURIComponent(studyTarget.cat)}&item=${encodeURIComponent(studyTarget.item)}`;
+
               return `
                 <div class="cc-chapter-card">
                   <div class="cc-chapter-header">
@@ -3531,7 +3570,13 @@
                       <h3 class="cc-ch-title">${esc(ch.title)}</h3>
                     </div>
                   </div>
-                  <div class="cc-ch-weight-badge">${esc(ch.examWeight)}</div>
+                  <div class="cc-ch-action-bar" style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; margin-top:2px;">
+                    <span class="cc-ch-weight-badge">${esc(ch.examWeight)}</span>
+                    <a href="${studyHref}" class="cc-study-launch-btn" title="Open Chapter in Study section" style="display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:800; color:#38bdf8; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); padding:4px 10px; border-radius:6px; text-decoration:none; transition:all 0.2s ease;">
+                      <span>Open in Study</span>
+                      <span style="font-size:12px;">↗</span>
+                    </a>
+                  </div>
                   <p class="cc-ch-desc">${esc(ch.description)}</p>
                   
                   <div class="cc-subchapters-list">
@@ -3540,7 +3585,7 @@
                       ${subs.map(s => `
                         <li>
                           <span class="cc-sub-id">${s.id}</span>
-                          <span class="cc-sub-title">${esc(s.title)}</span>
+                          <a href="${studyHref}" class="cc-sub-title" title="Study this submodule" style="color:#cbd5e1; text-decoration:none; transition:color 0.15s ease;">${esc(s.title)} <span style="color:#38bdf8; font-size:10.5px; opacity:0.8;">↗</span></a>
                         </li>
                       `).join('')}
                     </ul>
@@ -3551,7 +3596,7 @@
                       <span class="cc-mapped-label">Mapped Core Topics (${chTopics.length}):</span>
                       <div class="cc-topic-pills">
                         ${chTopics.map(t => `
-                          <span class="cc-topic-pill" title="${esc(t.sourceDuration)}">#${t.sourceIndex} ${esc(t.title)}</span>
+                          <a href="${studyHref}" class="cc-topic-pill" title="Open in Study: ${esc(t.sourceDuration)}" style="text-decoration:none; cursor:pointer;">#${t.sourceIndex} ${esc(t.title)} <span style="font-size:9.5px; opacity:0.75;">↗</span></a>
                         `).join('')}
                       </div>
                     </div>
@@ -3583,16 +3628,19 @@
               <tbody>
                 ${filtered.map(t => {
                   const ch = CC_DATA.chapters.find(c => c.id === t.chapterId);
+                  const studyTarget = CHAPTER_TO_STUDY_MAP[t.chapterId] || { domain: 'critical', cat: 'cc_principles', item: 'icu-triage-communication-ethics' };
+                  const topicHref = `study.html?domain=${encodeURIComponent(studyTarget.domain)}&cat=${encodeURIComponent(studyTarget.cat)}&item=${encodeURIComponent(studyTarget.item)}`;
+
                   return `
                     <tr>
                       <td class="cc-td-num"><strong>${t.sourceIndex}</strong></td>
                       <td>
-                        <div class="cc-topic-name"><strong>${esc(t.title)}</strong></div>
+                        <div class="cc-topic-name"><a href="${topicHref}" style="color:#f8fafc; text-decoration:none; font-weight:700;">${esc(t.title)} <span style="color:#38bdf8; font-size:11px; opacity:0.85;">↗</span></a></div>
                         <div class="cc-topic-sub">Subchapter: ${t.subchapterId}</div>
                       </td>
                       <td><span class="cc-cat-badge">${esc(t.sourceCategory)}</span></td>
                       <td>
-                        <span class="cc-ch-link">Ch ${t.chapterId}: ${ch ? esc(ch.title) : ''}</span>
+                        <a href="${topicHref}" class="cc-ch-link" style="text-decoration:none;">Ch ${t.chapterId}: ${ch ? esc(ch.title) : ''} ↗</a>
                       </td>
                       <td class="cc-td-dur">⏱ ${esc(t.sourceDuration)}</td>
                       <td><span class="cc-priority-pill ${t.priority.toLowerCase()}">${t.priority}</span></td>

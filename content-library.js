@@ -228,9 +228,22 @@
         const thumb = document.createElement('div');
         thumb.className = 'kn-file-thumb';
         if (catId) thumb.dataset.cat = catId;
-        const isPdf = !row.querySelector('.kn-badge-image');
+        const href = row.getAttribute('href') || '';
+        const titleEl = row.querySelector('.kn-file-title');
+        const itemTitle = (titleEl ? titleEl.textContent : row.textContent || '').trim();
+        const isPdf = !row.querySelector('.kn-badge-image') && /\.pdf(?:$|\?)/i.test(href);
+        const isImg = /\.(?:jpg|jpeg|png|webp|avif|gif)(?:$|\?)/i.test(href);
         const iconKey = isPdf ? 'document' : (CATEGORY_ICONS[catId] || IMAGE_ICON_CYCLE[i % IMAGE_ICON_CYCLE.length]);
-        thumb.innerHTML = PICTOGRAMS[iconKey];
+        const fallbackSvg = `<div class="kn-thumb-svg-fallback" style="${isImg ? 'display:none;' : ''}">${PICTOGRAMS[iconKey] || PICTOGRAMS.document}</div>`;
+
+        if (isImg && href) {
+          thumb.innerHTML = `
+            <img src="${esc(href)}" alt="${esc(itemTitle)}" decoding="async" class="kn-file-thumb-img" onerror="this.style.display='none'; const fb = this.parentElement.querySelector('.kn-thumb-svg-fallback'); if(fb) fb.style.display='flex';">
+            ${fallbackSvg}
+          `;
+        } else {
+          thumb.innerHTML = fallbackSvg;
+        }
         row.insertBefore(thumb, row.firstChild);
       }
       if (!row.querySelector('.kn-file-descriptor')) {
