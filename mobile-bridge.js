@@ -66,11 +66,13 @@
   // 1. OFFLINE MODAL & INTERCEPTION
   // =========================================================================
   function createOfflineModal() {
-    if (document.getElementById('knOfflineModal')) return;
+    let modal = document.getElementById('knOfflineModal');
+    if (modal) return modal;
 
-    const modal = document.createElement('div');
+    modal = document.createElement('div');
     modal.id = 'knOfflineModal';
     modal.className = 'kn-modal kn-offline-modal';
+    modal.style.display = 'none';
     modal.setAttribute('role', 'dialog');
     modal.setAttribute('aria-modal', 'true');
     modal.setAttribute('aria-label', 'Internet Connection Required');
@@ -120,8 +122,13 @@
 
     document.body.appendChild(modal);
 
+    const closeModal = () => {
+      modal.classList.remove('active');
+      modal.style.display = 'none';
+    };
+
     modal.querySelectorAll('[data-close-offline-modal]').forEach(el => {
-      el.addEventListener('click', () => modal.classList.remove('active'));
+      el.addEventListener('click', closeModal);
     });
 
     const retryBtn = document.getElementById('knOfflineRetryBtn');
@@ -130,7 +137,7 @@
         retryBtn.textContent = 'Checking connection...';
         setTimeout(() => {
           if (navigator.onLine) {
-            modal.classList.remove('active');
+            closeModal();
             if (window._knPendingOfflineTarget) {
               window.location.href = window._knPendingOfflineTarget;
             }
@@ -145,18 +152,21 @@
         }, 500);
       });
     }
+    return modal;
   }
 
   function showOfflineModal(targetUrl, sectionName) {
-    createOfflineModal();
+    const modal = createOfflineModal();
     window._knPendingOfflineTarget = targetUrl;
-    const modal = document.getElementById('knOfflineModal');
     const msg = document.getElementById('knOfflineTargetMsg');
     if (msg) {
       const name = sectionName || SECTION_TITLES[normalizeRoute(targetUrl)] || 'This section';
       msg.textContent = `${name} requires an active internet connection. Please connect to Wi-Fi or mobile data to access this content.`;
     }
-    if (modal) modal.classList.add('active');
+    if (modal) {
+      modal.style.display = 'flex';
+      modal.classList.add('active');
+    }
   }
 
   // Intercept clicks on links that require internet when offline
@@ -250,8 +260,9 @@
       window.Capacitor.Plugins.App.addListener('backButton', () => {
         // Priority 1: Close active offline modal
         const offModal = document.getElementById('knOfflineModal');
-        if (offModal && offModal.classList.contains('active')) {
+        if (offModal && (offModal.classList.contains('active') || offModal.style.display !== 'none')) {
           offModal.classList.remove('active');
+          offModal.style.display = 'none';
           return;
         }
 
@@ -299,7 +310,6 @@
   // 4. INITIALIZATION
   // =========================================================================
   function init() {
-    createOfflineModal();
     setupLinkInterception();
     setupNetworkListeners();
     setupHardwareBackButton();

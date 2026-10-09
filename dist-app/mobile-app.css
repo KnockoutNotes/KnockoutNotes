@@ -267,7 +267,7 @@
   position: fixed;
   inset: 0;
   z-index: 10000;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   padding: 16px;
@@ -277,8 +277,19 @@
 }
 
 .kn-offline-modal.active {
+  display: flex !important;
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: auto !important;
+}
+
+.kn-offline-modal:not(.active) {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+.kn-offline-modal:not(.active) * {
+  display: none !important;
+  pointer-events: none !important;
 }
 
 .kn-offline-modal-box {

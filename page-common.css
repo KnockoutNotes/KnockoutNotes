@@ -397,10 +397,24 @@ body:not(.dark) .kn-search-result {
   align-items: flex-start;
   justify-content: center;
   padding: 90px 20px 24px;
+  pointer-events: none;
 }
 
-.kn-modal.open {
+.kn-modal.open,
+.kn-modal.active {
   display: flex;
+  pointer-events: auto;
+}
+
+.kn-modal:not(.open):not(.active) {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+.kn-modal:not(.open):not(.active) .kn-modal-backdrop,
+.kn-modal:not(.open):not(.active) .kn-modal-box {
+  display: none !important;
+  pointer-events: none !important;
 }
 
 .kn-modal .kn-modal-backdrop,
