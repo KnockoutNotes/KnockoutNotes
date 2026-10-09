@@ -229,11 +229,16 @@ export default {
       pathname === '/receipt-preview'
     ) {
       if (env.ASSETS) {
-        const reqUrl = new URL('/receipt.html', request.url);
-        if ((pathname === '/sample-receipt' || pathname === '/receipt-preview') && !url.searchParams.has('mode')) {
-          reqUrl.searchParams.set('mode', 'preview');
+        // If client visited /sample-receipt or /receipt-preview, redirect or pass query params to /receipt
+        if (pathname === '/sample-receipt' || pathname === '/receipt-preview') {
+          const targetUrl = new URL('/receipt', request.url);
+          targetUrl.searchParams.set('mode', 'preview');
+          return redirectResponse(targetUrl.pathname + targetUrl.search);
         }
-        return env.ASSETS.fetch(new Request(reqUrl.toString(), request));
+        // Cloudflare Workers Assets canonicalizes HTML files without extension (e.g. /receipt.html -> 307 /receipt).
+        // To fetch the actual HTML asset safely without an internal loop, fetch /receipt via env.ASSETS:
+        const assetReq = new Request(new URL('/receipt', request.url), request);
+        return env.ASSETS.fetch(assetReq);
       }
     }
 
