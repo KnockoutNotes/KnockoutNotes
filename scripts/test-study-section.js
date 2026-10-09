@@ -37,12 +37,14 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, async () => {
-  const chrome = spawn('C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', [
+  const chromePath = process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+  const userDataDir = path.join(require('os').tmpdir(), 'chrome-study-test');
+  const chrome = spawn(chromePath, [
     '--headless=new',
     '--remote-debugging-port=9238',
     '--window-size=1280,900',
     '--disable-extensions',
-    '--user-data-dir=C:\\temp\\chrome-study-test'
+    `--user-data-dir=${userDataDir}`
   ]);
   await new Promise(r => setTimeout(r, 2000));
   const res = await fetch('http://127.0.0.1:9238/json');
@@ -98,14 +100,15 @@ server.listen(PORT, async () => {
       const topics = (window.KN_STUDY && window.KN_STUDY.topics) || [];
       const caseTopics = topics.filter(t => t.category === 'case-discussions' || t.category === 'Case Discussions' || (t.tags && t.tags.includes('Case Discussion')));
       out.caseTopicsCount = caseTopics.length;
-      out.ihdCase = Boolean(topics.find(c => c.id && c.id.includes('ihd')));
+      out.ihdCase = Boolean(topics.find(c => c.id && (c.id.includes('ischemic') || c.id.includes('ihd'))));
       out.copdCase = Boolean(topics.find(c => c.id && c.id.includes('copd')));
       out.pneumonectomyCase = Boolean(topics.find(c => c.id && (c.id.includes('pneumonectomy') || c.id.includes('olv'))));
 
       // Check IHD case images
-      const ihd = topics.find(c => c.id && c.id.includes('ihd'));
+      const ihd = topics.find(c => c.id && (c.id.includes('ischemic') || c.id.includes('ihd')));
+      out.ihdId = ihd ? ihd.id : null;
       out.ihdTitle = ihd ? ihd.title : null;
-      out.ihdImages = ihd && ihd.images ? ihd.images : [];
+      out.ihdSectionImages = ihd && ihd.sections ? ihd.sections.filter(s => s.image).map(s => s.image.src) : [];
 
       return out;
     })()`,

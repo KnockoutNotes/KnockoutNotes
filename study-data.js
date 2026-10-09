@@ -404,13 +404,6 @@ window.KN_STUDY = {
         {
           "h": "Three Pressure Systems Architecture & Gas Supply Pathway",
           "b": "The modern anaesthesia workstation is an integrated life-support apparatus engineered to receive compressed medical gases, meter their flows with absolute precision, vaporize liquid volatile anaesthetics into the gas stream, and deliver the resulting respirable mixture safely to the patient's breathing circuit.\n\nTo understand machine mechanics and safety engineering, the workstation is physically divided into three distinct, sequentially regulated pressure zones separated by valves, regulators, and flow controls:\n\n1. High-Pressure System (Cylinder Supply: 45 to 150 bar / 600 to 2200 psi):\n• Extends from the medical gas cylinder supply up to the primary cylinder pressure regulator.\n• Components: Hanger yokes, Pin Index Safety System (PISS), Bodok seals, cylinder Bourdon pressure gauges, check valves, and primary pressure regulators.\n• Function: Receives gas stored under extreme pressure in compressed gas cylinders and reduces that variable pressure down to a stable intermediate working pressure (typically 45 psi / 3.1 bar).\n\n2. Intermediate-Pressure System (Pipeline & Regulated Gas: 3.5 to 4.0 bar / 50 to 55 psi):\n• Extends from the central hospital pipeline inlets (and output of primary cylinder regulators) up to the needle valves of the flowmeter assembly.\n• Components: Central pipeline inlet connections, Diameter Index Safety System (DISS) or NIST fittings, pipeline pressure gauges, in-line check valves, oxygen fail-safe proportioning systems, oxygen supply-failure warning whistle (Ritchie whistle), oxygen flush valve (35–75 L/min at 50 psi), second-stage regulators (where fitted), auxiliary oxygen flowmeter, and driving gas supply to the mechanical ventilator.\n• Function: Distributes gas at a uniform operating pressure of 50–55 psi, powering emergency bypass flushes and safety interlocks while protecting fragile flowmeters from pressure surges.\n\n3. Low-Pressure System (Flowmeters to Patient: <1 bar / ambient):\n• Extends downstream from the flowmeter needle valves and flow control knobs all the way to the Common Gas Outlet (CGO).\n• Components: Flowmeter control needle valves, precision glass Thorpe tubes (rotameters) or electronic flow sensors, minimum oxygen proportioning systems (hypoxic guard / Link-25), vaporizers and Selectatec mounting backbar manifold, backpressure check valves, and the Common Gas Outlet (CGO).\n• Function: Delivers the final custom-blended, volatile-enriched fresh gas flow into the patient's breathing circuit. This is the most delicate and leak-vulnerable section of the machine, evaluated before every case with the negative-pressure suction bulb test.",
-          "images": [
-            {
-              "src": "assets/references/gas-supply-pathway-schematic.png",
-              "alt": "Schematic Gas Supply Pathway in the Anaesthesia Workstation",
-              "caption": "Schematic Gas Supply Pathway: Tracing medical gases from high-pressure cylinders and intermediate-pressure wall pipelines through regulators, fail-safe valves, flowmeters, vaporizers, and the common gas outlet (CGO)."
-            }
-          ],
           "video": {
             "title": "Anaesthesia Machine & Gas Delivery Systems Overview",
             "externalUrl": "https://www.instagram.com/p/DcqHv_Umc1o/?stkn=cDB1dGIwYW92cmJy",
@@ -420,18 +413,6 @@ window.KN_STUDY = {
         {
           "h": "High-Pressure System: Cylinders, Hanger Yokes, PISS & Primary Regulators",
           "b": "The high-pressure system receives gas stored in compressed medical gas cylinders mounted on the rear of the workstation. It operates under immense physical forces: up to 137 bar (2000 psi) for compressed gaseous Oxygen and Medical Air, and 51 bar (745 psi) for liquefied Nitrous Oxide at 20°C:\n\n1. Hanger Yoke Assembly:\n• The heavy metal bracket supporting the cylinder on the machine backbar.\n• Components:\n  - Clamping / retaining screw: Screws tightly against the conical depression on the back of the cylinder post to force the cylinder valve firmly against the yoke face.\n  - Gas inlet nipple: Protrudes from the yoke into the cylinder valve discharge port.\n  - Unidirectional plunger check valve: Sits inside the yoke bore. It prevents gas from escaping into room air when a cylinder is removed from the yoke, and prevents transfilling of gas from a high-pressure cylinder into an adjacent lower-pressure cylinder when two yokes are connected in parallel.\n  - Pin Index Safety System (PISS) pins.\n\n2. Pin Index Safety System (PISS):\n• A mechanical geometric safety standard (ISO 407 / CGA V-1) engineered to physically prevent mounting the wrong gas cylinder onto a designated yoke.\n• Geometry: Two stainless steel pins (4 mm diameter, 6 mm length) protrude from the yoke face. They mate with matching holes drilled into the valve block on the cylinder neck. The pins are situated on a 9/16-inch (14.3 mm) diameter circle centered on the gas discharge orifice.\n• Standard Pin Index Coordinates (Pin positions numbered 1 to 7 clockwise):\n  - Oxygen: 2, 5\n  - Nitrous Oxide: 3, 5\n  - Medical Air: 1, 5\n  - Entonox (50% O₂ / 50% N₂O): 7 (single center pin)\n  - Carbon Dioxide (liquid >7%): 1, 6\n  - Heliox (helium/oxygen): 2, 4 (for >80% He) or 4, 6\n• Critical Safety Rule: Never force a cylinder onto a yoke. Never tamper with, file down, or remove index pins. Never stack more than one Bodok seal (stacking two seals bypasses the pin length, allowing misconnection of a lethal gas!).\n\n3. Bodok Seal:\n• A non-combustible elastomeric washer (neoprene) with a peripheral aluminum reinforcing ring.\n• Forms an airtight compression seal between the cylinder valve post and the yoke inlet nipple.\n• Inspect every seal before mounting: must be clean, pliable, free of cracks, and strictly ONE washer only.\n\n4. Cylinder Pressure Gauges:\n• Heavy-duty Bourdon tube gauges mounted on the front or side of the workstation.\n• Measures internal cylinder pressure. A curved, hollow, oval-cross-section copper-beryllium tube straightens under pressure, rotating a geared needle pointer over a calibrated dial.\n• Clinical Interpretation:\n  - For Oxygen and Air (stored as true compressed gases): Pressure drops in exact linear proportion to gas volume. A full size E-cylinder contains 660 L at 1900–2200 psi. At 1000 psi, exactly half (330 L) remains.\n  - For Nitrous Oxide (stored as a liquid in equilibrium with vapour): Gauge reads 745 psi continuously at 20°C as long as ANY liquid remains in the cylinder! The gauge drops precipitously ONLY when all liquid has evaporated (at which point roughly 250 L of gaseous N₂O remains, ~16% capacity). The only reliable way to measure N₂O contents is by weighing the cylinder (Tare Weight).\n\n5. Primary Pressure Regulators:\n• Large spring-loaded diaphragm reducing valves that decrease cylinder pressure (137 bar / 2000 psi) to an intermediate operating pressure of ~45 psi (3.1 bar).\n• Deliberate Design Feature: The cylinder regulator output (45 psi) is calibrated slightly LOWER than the hospital pipeline operating pressure (50–55 psi). This ensures that if a cylinder is inadvertently left open while the machine is connected to pipeline gas, the machine preferentially draws from the pipeline, preserving emergency cylinder reserves.\n\n6. High-Pressure Relief Mechanisms:\n• Safety relief devices located on the cylinder valve block to prevent explosive cylinder rupture in fires:\n  - Frangible burst disc: Ruptures at a predetermined hydraulic pressure (~3000 psi).\n  - Fusible plug: Composed of Wood's metal (bismuth, lead, tin, cadmium) with a low melting point (~70–74°C / 165°F) that melts to vent gas safely during a fire.\n  - Spring-loaded pressure relief valve.",
-          "images": [
-            {
-              "src": "assets/references/cylinder-valve-pin-index-yoke-diagram.png",
-              "alt": "Pin Index Safety System (PISS) and Cylinder Valve Geometry",
-              "caption": "Pin Index Safety System (PISS) and Cylinder Valve: Coordinate pin layout (Oxygen 2-5, Nitrous Oxide 3-5, Air 1-5) and Bodok seal seating interface."
-            },
-            {
-              "src": "assets/references/cylinder-yoke-check-valve-cross-section.png",
-              "alt": "Hanger Yoke Cross-Section Diagram",
-              "caption": "Hanger Yoke Cross-Section: Detailed internal anatomy showing clamping screw, gas inlet nipple, Bodok seal, and unidirectional plunger check valve preventing backleak and transfilling."
-            }
-          ],
           "video": {
             "title": "High Pressure System & Pin Index Safety System (PISS)",
             "externalUrl": "https://www.instagram.com/p/DcqHv_Umc1o/?stkn=cDB1dGIwYW92cmJy",
@@ -458,14 +439,7 @@ window.KN_STUDY = {
         },
         {
           "h": "Breathing Circuits Integration & Waste Gas Scavenging (AGSS)",
-          "b": "Gas leaving the Common Gas Outlet enters the breathing circuit to exchange oxygen and volatile agent with the patient's lungs while eliminating carbon dioxide:\n\n1. The Circle Breathing System:\n• The universal standard adult rebreathing circuit.\n• Consists of 7 mandatory components: fresh gas inlet, inspiratory unidirectional check valve, inspiratory corrugated limb, Y-piece patient connector (the only mechanical dead space!), expiratory corrugated limb, expiratory unidirectional check valve, and carbon dioxide absorber canister (soda lime).\n• Allows low-flow anaesthesia (FGF 0.5–1.0 L/min), recycling exhaled volatile agent and preserving airway warmth and humidity.\n\n2. Mapleson Classification (Semi-Closed Non-Rebreathing Circuits):\n• Classified by Mapleson (1954) from A to F based on the relative position of the fresh gas inlet, reservoir bag, corrugated tubing, and APL valve:\n  - Mapleson A (Magill): Most efficient for SPONTANEOUS breathing (FGF equal to alveolar minute ventilation ~0.8–1.0 × VE). Very inefficient for controlled ventilation (requires FGF 2–3 × VE).\n  - Mapleson D (Bain): Coaxial system with fresh gas running through a narrow inner tube. The most efficient Mapleson system for CONTROLLED mechanical ventilation (FGF 1.5–2.0 × VE).\n  - Mapleson E & F (Ayre's T-piece & Jackson-Rees modification): Valveless, minimal resistance circuits ideal for neonates and infants <20 kg.\n\n3. Anaesthetic Gas Scavenging System (AGSS):\n• Collects waste gases discharged from the circuit's APL valve and ventilator spill valve, disposing them safely outside the hospital building.\n• Active Scavenging: Employs a dedicated hospital vacuum pipeline (flow rate 25–50 L/min). Requires an open or closed scavenging interface with positive- and negative-pressure relief valves to prevent vacuum suction from transferring to the patient's lungs or backpressure bursting the circuit.\n• Occupational Safety: Prevents chronic OR exposure to halogenated agents (OSHA threshold <2 ppm) and nitrous oxide (<25 ppm), mitigating reproductive and neurological hazards.",
-          "images": [
-            {
-              "src": "assets/references/mapleson-circuits-classification.jpg",
-              "alt": "Mapleson Circuits Classification Diagram (A to F)",
-              "caption": "Mapleson Breathing Systems Classification (A through F): Relative component layout and efficiency rankings for spontaneous versus controlled mechanical ventilation."
-            }
-          ]
+          "b": "Gas leaving the Common Gas Outlet enters the breathing circuit to exchange oxygen and volatile agent with the patient's lungs while eliminating carbon dioxide:\n\n1. The Circle Breathing System:\n• The universal standard adult rebreathing circuit.\n• Consists of 7 mandatory components: fresh gas inlet, inspiratory unidirectional check valve, inspiratory corrugated limb, Y-piece patient connector (the only mechanical dead space!), expiratory corrugated limb, expiratory unidirectional check valve, and carbon dioxide absorber canister (soda lime).\n• Allows low-flow anaesthesia (FGF 0.5–1.0 L/min), recycling exhaled volatile agent and preserving airway warmth and humidity.\n\n2. Mapleson Classification (Semi-Closed Non-Rebreathing Circuits):\n• Classified by Mapleson (1954) from A to F based on the relative position of the fresh gas inlet, reservoir bag, corrugated tubing, and APL valve:\n  - Mapleson A (Magill): Most efficient for SPONTANEOUS breathing (FGF equal to alveolar minute ventilation ~0.8–1.0 × VE). Very inefficient for controlled ventilation (requires FGF 2–3 × VE).\n  - Mapleson D (Bain): Coaxial system with fresh gas running through a narrow inner tube. The most efficient Mapleson system for CONTROLLED mechanical ventilation (FGF 1.5–2.0 × VE).\n  - Mapleson E & F (Ayre's T-piece & Jackson-Rees modification): Valveless, minimal resistance circuits ideal for neonates and infants <20 kg.\n\n3. Anaesthetic Gas Scavenging System (AGSS):\n• Collects waste gases discharged from the circuit's APL valve and ventilator spill valve, disposing them safely outside the hospital building.\n• Active Scavenging: Employs a dedicated hospital vacuum pipeline (flow rate 25–50 L/min). Requires an open or closed scavenging interface with positive- and negative-pressure relief valves to prevent vacuum suction from transferring to the patient's lungs or backpressure bursting the circuit.\n• Occupational Safety: Prevents chronic OR exposure to halogenated agents (OSHA threshold <2 ppm) and nitrous oxide (<25 ppm), mitigating reproductive and neurological hazards."
         }
       ],
       "references": [
@@ -495,33 +469,15 @@ window.KN_STUDY = {
         {
           "h": "Simple Flowchart: 7-Step Anaesthesia Machine Check",
           "diagram": "workstation-flowchart",
-          "b": "A defective or unchecked anaesthesia machine can asphyxiate, barotraumatise, or fail to ventilate a paralysed patient within seconds. Closed-claims analysis reveals that human equipment check omission remains the single largest preventable factor in machine-related morbidity.\n\nBased on Miller's Anesthesia (10th ed. Ch. 21–22) and Dorsch & Dorsch (5th ed. Ch. 2), the complete pre-use checkout follows an unalterable 7-step sequence executed before the start of every operating list:\n\n• Step 1: Emergency & Auxiliary Equipment — Autonomous Ambu bag, independent suction (<-500 mmHg), and aux O₂ cylinder.\n• Step 2: High-Pressure System — Cylinder yokes, single Bodok seal, PISS alignment, and 1-minute spindle leak decay test (<100 psi).\n• Step 3: Intermediate-Pressure System — Pipeline connections (50–55 psi), high-flow O₂ flush valve (35–75 L/min), and fail-safe cut-off / whistle alarm challenge.\n• Step 4: Low-Pressure System — Universal negative-pressure bulb leak test at CGO (holds flat ≥10s) and individual vaporizer leak / interlock check.\n• Step 5: Breathing System & Absorber — Soda lime inspection, O₂ sensor calibration (21% and 100%), 30 cmH₂O circuit hold, and two-bag test for unidirectional valves.\n• Step 6: Mechanical Ventilator & AGSS — Ascending bellows ascent, disconnect alarm simulation (sounds ≤15s), and waste gas scavenger float verification.\n• Step 7: Final Pre-Induction Verification — Vaporizers locked OFF, APL fully OPEN, Bag/Vent set to BAG, emergency airway kit ready, and suction under pillow.\n\nFollow each detailed step below in exact sequence before inducing anaesthesia.",
-          "image": {
-            "src": "assets/references/cylinder-valve-pin-index-yoke-diagram.png",
-            "alt": "Pin Index Safety System (PISS) and Cylinder Valve Architecture",
-            "caption": "Pin Index Safety System (PISS): Cylinder Valve Geometry & Gas-Specific Pin Positions (Oxygen 2-5, Nitrous Oxide 3-5, Air 1-5)",
-            "wide": true
-          }
+          "b": "A defective or unchecked anaesthesia machine can asphyxiate, barotraumatise, or fail to ventilate a paralysed patient within seconds. Closed-claims analysis reveals that human equipment check omission remains the single largest preventable factor in machine-related morbidity.\n\nBased on Miller's Anesthesia (10th ed. Ch. 21–22) and Dorsch & Dorsch (5th ed. Ch. 2), the complete pre-use checkout follows an unalterable 7-step sequence executed before the start of every operating list:\n\n• Step 1: Emergency & Auxiliary Equipment — Autonomous Ambu bag, independent suction (<-500 mmHg), and aux O₂ cylinder.\n• Step 2: High-Pressure System — Cylinder yokes, single Bodok seal, PISS alignment, and 1-minute spindle leak decay test (<100 psi).\n• Step 3: Intermediate-Pressure System — Pipeline connections (50–55 psi), high-flow O₂ flush valve (35–75 L/min), and fail-safe cut-off / whistle alarm challenge.\n• Step 4: Low-Pressure System — Universal negative-pressure bulb leak test at CGO (holds flat ≥10s) and individual vaporizer leak / interlock check.\n• Step 5: Breathing System & Absorber — Soda lime inspection, O₂ sensor calibration (21% and 100%), 30 cmH₂O circuit hold, and two-bag test for unidirectional valves.\n• Step 6: Mechanical Ventilator & AGSS — Ascending bellows ascent, disconnect alarm simulation (sounds ≤15s), and waste gas scavenger float verification.\n• Step 7: Final Pre-Induction Verification — Vaporizers locked OFF, APL fully OPEN, Bag/Vent set to BAG, emergency airway kit ready, and suction under pillow.\n\nFollow each detailed step below in exact sequence before inducing anaesthesia."
         },
         {
           "h": "Step 1: Emergency & Auxiliary Equipment (Autonomous Preparedness)",
-          "b": "Before turning on the machine or connecting any patient to electricity or pipeline gas, the clinician must guarantee autonomous survival equipment that functions independent of all hospital infrastructure:\n\n1. Self-Inflating Resuscitation Bag (Ambu Bag / BVM):\n• Must be present, fully assembled, and hanging within arm's reach of the workstation.\n• Squeeze test: occlude mask connector with palm, squeeze bag — verify hard resistance and zero leak; release bag — verify instant elastic recoil. Verify oxygen reservoir bag and tubing are attached.\n\n2. Auxiliary Emergency Oxygen Cylinder:\n• Must be separate from the machine yokes, mounted on a mobile cylinder trolley with its own dedicated flowmeter, regulator, and cylinder key.\n• Turn spindle: verify pressure >=1000 psi. This is your lifeline if the central hospital oxygen supply fails or catches fire.\n\n3. Independent Suction System:\n• Turn on suction unit.\n• Occlude suction tubing with thumb: verify gauge generates at least -500 mmHg (-65 kPa) within 10 seconds.\n• Verify rigid Yankauer handle and flexible suction catheters are immediately available under the head of the operating table.",
-          "image": {
-            "src": "assets/references/cylinder-yoke-check-valve-cross-section.png",
-            "alt": "Cylinder Yoke Check Valve Cross-Section and Flow Pathway",
-            "caption": "High-Pressure Cylinder Yoke: Bodok Seal, Strainer, Check Valve & Pressure Regulator Cross-Section",
-            "wide": true
-          }
+          "b": "Before turning on the machine or connecting any patient to electricity or pipeline gas, the clinician must guarantee autonomous survival equipment that functions independent of all hospital infrastructure:\n\n1. Self-Inflating Resuscitation Bag (Ambu Bag / BVM):\n• Must be present, fully assembled, and hanging within arm's reach of the workstation.\n• Squeeze test: occlude mask connector with palm, squeeze bag — verify hard resistance and zero leak; release bag — verify instant elastic recoil. Verify oxygen reservoir bag and tubing are attached.\n\n2. Auxiliary Emergency Oxygen Cylinder:\n• Must be separate from the machine yokes, mounted on a mobile cylinder trolley with its own dedicated flowmeter, regulator, and cylinder key.\n• Turn spindle: verify pressure >=1000 psi. This is your lifeline if the central hospital oxygen supply fails or catches fire.\n\n3. Independent Suction System:\n• Turn on suction unit.\n• Occlude suction tubing with thumb: verify gauge generates at least -500 mmHg (-65 kPa) within 10 seconds.\n• Verify rigid Yankauer handle and flexible suction catheters are immediately available under the head of the operating table."
         },
         {
           "h": "Step 2: High-Pressure System Checkout (Cylinders & Yokes)",
-          "b": "Verifies reserve gas supply integrity and catches high-pressure leaks at the cylinder-yoke interface:\n\n1. Visual & PISS Inspection:\n• Inspect cylinder post, index pins, and Bodok seal on the machine yoke.\n• Verify only ONE Bodok seal is seated. Inspect seal for fraying or crushing.\n\n2. Spindle Opening & Pressure Verification:\n• Mount Oxygen cylinder, tighten clamping screw firmly.\n• Using cylinder wrench, open cylinder spindle counter-clockwise by one full turn.\n• Read Bourdon gauge: verify pressure >=1000 psi (full E-cylinder = 1900–2200 psi / 660 L). If <1000 psi, replace with a fresh cylinder before starting the list.\n\n3. High-Pressure Spindle Leak Decay Test:\n• CLOSE the cylinder spindle completely.\n• Observe the pressure gauge pointer for 1 full minute: pressure drop must be <100 psi (0.7 bar). A larger drop indicates a severe leak around the Bodok seal or yoke check valve.\n• Bleed the line down to 0 psi by pressing the O2 flush button.\n• Repeat procedure for Nitrous Oxide (gauge reads 745 psi) and Medical Air.",
-          "image": {
-            "src": "assets/references/gas-supply-pathway-schematic.png",
-            "alt": "Anaesthesia Machine Gas Supply Pathway Schematic Diagram",
-            "caption": "Anaesthesia Workstation Pneumatic Circuit: High, Intermediate, and Low-Pressure Gas Pathways & Safety Relief Valves",
-            "wide": true
-          }
+          "b": "Verifies reserve gas supply integrity and catches high-pressure leaks at the cylinder-yoke interface:\n\n1. Visual & PISS Inspection:\n• Inspect cylinder post, index pins, and Bodok seal on the machine yoke.\n• Verify only ONE Bodok seal is seated. Inspect seal for fraying or crushing.\n\n2. Spindle Opening & Pressure Verification:\n• Mount Oxygen cylinder, tighten clamping screw firmly.\n• Using cylinder wrench, open cylinder spindle counter-clockwise by one full turn.\n• Read Bourdon gauge: verify pressure >=1000 psi (full E-cylinder = 1900–2200 psi / 660 L). If <1000 psi, replace with a fresh cylinder before starting the list.\n\n3. High-Pressure Spindle Leak Decay Test:\n• CLOSE the cylinder spindle completely.\n• Observe the pressure gauge pointer for 1 full minute: pressure drop must be <100 psi (0.7 bar). A larger drop indicates a severe leak around the Bodok seal or yoke check valve.\n• Bleed the line down to 0 psi by pressing the O2 flush button.\n• Repeat procedure for Nitrous Oxide (gauge reads 745 psi) and Medical Air."
         },
         {
           "h": "Step 3: Intermediate-Pressure System Checkout (Pipelines & Fail-Safe)",
@@ -1008,18 +964,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Classification of Neuraxial Blockade Levels & Differential Nerve Block",
-          "images": [
-            {
-              "src": "assets/drugs/local-anaesthetics/local-anaesthetics_01_intro.png",
-              "alt": "Local anaesthetics introduction pearl",
-              "caption": "Local Anaesthetics: Aminoamide vs aminoester classification, physicochemical properties, and clinical selection."
-            },
-            {
-              "src": "assets/drugs/local-anaesthetics/local-anaesthetics_02_mechanism.png",
-              "alt": "Local anaesthetics mechanism of action pearl",
-              "caption": "Mechanism of Neural Blockade: Voltage-gated sodium channel inhibition, pKa, lipid solubility, and differential blockade."
-            }
-          ],
           "b": "Spinal and epidural anesthesia produce progressive physiological denervation governed by local anesthetic concentration and nerve fiber susceptibility:\n\n1. Differential Nerve Block Classification:\n• Sympathetic Blockade (Small B and C unmyelinated fibers): Blocks 2 to 4 dermatomes HIGHER than the sensory level in spinal anesthesia (same level in epidural).\n• Sensory Blockade (A-delta myelinated pinprick and C pain/temperature fibers): Marks the tested dermatomal level (ice cold sensation or pinprick).\n• Motor Blockade (Large A-alpha myelinated motor fibers): Blocks 2 to 4 dermatomes LOWER than the sensory level. Evaluated clinically via the Bromage Scale:\n  - Bromage 0: No motor impairment (full flexion of knees and ankles).\n  - Bromage 1: Partial block (just able to flex knees, full ankle movement).\n  - Bromage 2: Almost complete block (unable to flex knees, flexible ankles only).\n  - Bromage 3: Complete motor paralysis (unable to move feet, knees, or toes).\n\n2. Autonomic Segmental Milestone Classification:\n• T1 to T4 (Cardiac Accelerator Fibers): Blockade of cardioaccelerator sympathetics removes intrinsic chronotropic/inotropic drive, resulting in profound bradycardia, decreased ejection fraction, and decreased cardiac output. Treated with ephedrine, atropine, or epinephrine.\n• T5 to L1 (Splanchnic Sympathetic Vasomotor Bed): Blockade produces massive venous pooling in the splanchnic and mesenteric vessels, decreasing venous return (preload) and systemic vascular resistance (afterload). Produces the characteristic post-spinal hypotension.\n• S2 to S4 (Pelvic Parasympathetic Splanchnics): Blockade produces atony of the detrusor muscle and urinary retention, mandating bladder catheterization for prolonged blocks."
         },
         {
@@ -3292,13 +3236,7 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Classification of Breathing Systems (Operational & Mapleson A–F)",
-          "b": "Breathing circuits are classified operationally by gas exchange architecture, and functionally by Mapleson classification:\n\n1. Operational Classification of Breathing Systems:\n• Open Systems: No reservoir bag, no rebreathing, no valves (e.g. open drop ether mask, insufflation). Expired gases escape freely into the environment.\n• Semi-Open Systems: Reservoir bag present, no rebreathing, high fresh gas flow pushes all expired gas out through an escape valve (e.g. Mapleson circuits with high FGF).\n• Semi-Closed Systems: Reservoir bag present, partial rebreathing occurs, APL valve allows excess gas release, and CO2 is chemically removed (e.g. Circle system with medium or high fresh gas flow).\n• Closed Systems: Reservoir bag present, total rebreathing of gas, APL valve is completely closed, fresh gas flow exactly matches the patient's metabolic oxygen consumption (3u20134 mL/kg/min) and volatile uptake, with total CO2 chemical neutralization in the absorber canister.\n\n2. Mapleson Functional Classification (A through F):\n• Mapleson A (Magill): APL valve at patient end, FGF at bag end. Most efficient for spontaneous breathing (FGF = alveolar minute ventilation, ~70–100 mL/kg/min). Worst for controlled ventilation (requires 2–3x minute ventilation).\n• Mapleson B: APL valve and FGF both at patient end. Inefficient for both spontaneous and controlled ventilation.\n• Mapleson C (Water's to-and-fro bag): Compact version of B without corrugated tubing. Used in resuscitation.\n• Mapleson D (Bain system): FGF at patient end (inner coaxial tube in Bain), APL valve at bag end. Most efficient for controlled ventilation (IPPV; requires ~1–1.5x minute ventilation, ~70 mL/kg/min). Inefficient for spontaneous breathing.\n• Mapleson E (Ayre's T-piece): No APL valve, no reservoir bag; corrugated expiratory limb acts as reservoir. Low resistance; ideal for pediatric spontaneous ventilation.\n• Mapleson F (Jackson-Rees modification): Mapleson E with an open-tailed reservoir bag attached to the expiratory limb. Allows assisted/controlled ventilation and tactile monitoring of spontaneous breathing in pediatric patients.",
-          "image": {
-            "src": "assets/references/mapleson-circuits-classification.jpg",
-            "alt": "Mapleson Breathing Systems Classification (A to F)",
-            "caption": "Classification of Mapleson Semi-Closed Breathing Systems (A to F): Component Configurations (FGF Inflow, Reservoir Bag, APL Expiratory Valve)",
-            "wide": true
-          }
+          "b": "Breathing circuits are classified operationally by gas exchange architecture, and functionally by Mapleson classification:\n\n1. Operational Classification of Breathing Systems:\n• Open Systems: No reservoir bag, no rebreathing, no valves (e.g. open drop ether mask, insufflation). Expired gases escape freely into the environment.\n• Semi-Open Systems: Reservoir bag present, no rebreathing, high fresh gas flow pushes all expired gas out through an escape valve (e.g. Mapleson circuits with high FGF).\n• Semi-Closed Systems: Reservoir bag present, partial rebreathing occurs, APL valve allows excess gas release, and CO2 is chemically removed (e.g. Circle system with medium or high fresh gas flow).\n• Closed Systems: Reservoir bag present, total rebreathing of gas, APL valve is completely closed, fresh gas flow exactly matches the patient's metabolic oxygen consumption (3u20134 mL/kg/min) and volatile uptake, with total CO2 chemical neutralization in the absorber canister.\n\n2. Mapleson Functional Classification (A through F):\n• Mapleson A (Magill): APL valve at patient end, FGF at bag end. Most efficient for spontaneous breathing (FGF = alveolar minute ventilation, ~70–100 mL/kg/min). Worst for controlled ventilation (requires 2–3x minute ventilation).\n• Mapleson B: APL valve and FGF both at patient end. Inefficient for both spontaneous and controlled ventilation.\n• Mapleson C (Water's to-and-fro bag): Compact version of B without corrugated tubing. Used in resuscitation.\n• Mapleson D (Bain system): FGF at patient end (inner coaxial tube in Bain), APL valve at bag end. Most efficient for controlled ventilation (IPPV; requires ~1–1.5x minute ventilation, ~70 mL/kg/min). Inefficient for spontaneous breathing.\n• Mapleson E (Ayre's T-piece): No APL valve, no reservoir bag; corrugated expiratory limb acts as reservoir. Low resistance; ideal for pediatric spontaneous ventilation.\n• Mapleson F (Jackson-Rees modification): Mapleson E with an open-tailed reservoir bag attached to the expiratory limb. Allows assisted/controlled ventilation and tactile monitoring of spontaneous breathing in pediatric patients."
         },
         {
           "h": "Why this alphabet soup is actually worth learning properly",
@@ -3307,12 +3245,6 @@ window.KN_STUDY = {
         {
           "h": "The one arrangement question that explains all six systems",
           "b": "Every Mapleson system is built from the same four components — a reservoir bag, a length of corrugated tubing, an adjustable pressure-limiting (APL) valve, and a fresh gas inlet — arranged differently around the patient. Because none of these systems has one-way valves, gas can move back and forth freely through the tubing, and the only thing standing between the patient and rebreathing their own exhaled CO2 is having enough fresh gas flow, positioned in the right place, to flush that exhaled gas out through the APL valve before the next breath washes it back in. So really, there's only one question you're answering for each letter: where, relative to the patient, do the fresh gas inlet and the APL valve sit — and what does that arrangement mean for how much fresh gas you need?",
-          "image": {
-            "src": "assets/references/mapleson-ventilation-efficiency-table.png",
-            "alt": "Mapleson Fresh Gas Flow Requirements and Efficiency Table",
-            "caption": "Mapleson Breathing Systems Efficiency Hierarchy: Spontaneous Breathing (A > DFE > CB) vs Controlled Mechanical Ventilation (DFE > BC > A)",
-            "wide": true
-          },
           "diagram": "mapleson-grid"
         },
         {
@@ -3335,12 +3267,6 @@ window.KN_STUDY = {
         },
         {
           "h": "The exam-ready summary, and where the circle system fits in",
-          "image": {
-            "src": "assets/references/mapleson-ventilation-efficiency-table.png",
-            "alt": "Mapleson classification fresh gas flow ventilation efficiency table",
-            "caption": "Mapleson systems relative fresh gas flow efficiency hierarchy for spontaneous respiration (A > DFE > CB) versus controlled ventilation (DFE > BC > A).",
-            "wide": true
-          },
           "b": "If you remember only two facts from this entire topic, make them these: Mapleson A is the most efficient system for a spontaneously breathing patient because its valve sits right where the useless dead-space gas needs to be vented; Mapleson D (and its coaxial descendant, the Bain circuit) is the most efficient for a mechanically ventilated patient because it's built the opposite way round. Everything else — B, C being flow-inefficient all-rounders, E and F being valveless paediatric designs — sits around those two anchor points. And it's worth being explicit that none of the six Mapleson systems allow truly low-flow anaesthesia the way a circle system does, because without one-way valves and a CO2 absorber, you can never safely turn fresh gas flow down below what's needed to physically flush CO2 out of the circuit on every single breath — which is exactly the limitation the circle system, covered next, was built to overcome.",
           "table": {
             "headers": [
@@ -3481,12 +3407,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Comprehensive Classification of Anaesthesia Ventilators",
-          "image": {
-            "src": "assets/references/ventilator-ui-reference.png",
-            "alt": "Modern anaesthesia workstation architecture and interactive components",
-            "caption": "Modern microprocessor-controlled anaesthesia workstation architecture: integrated ventilator display, pneumatic flowmeter manifold, vaporizers, absorber canister, and circle circuit.",
-            "wide": true
-          },
           "b": "Anaesthesia ventilators are classified across three fundamental engineering domains: power source, drive mechanism, and phase cycling:\n\n1. Classification by Power Source:\n• Pneumatically Powered: Driven entirely by compressed pipeline gas (high-pressure oxygen or medical air at 3.5–4.0 bar / 50 psi). Consumes large volumes of driving gas (equal to or greater than patient minute ventilation). Essential during total electrical power failure.\n• Electrically Powered: Driven by electric AC mains power or internal DC backup battery. Uses an electric motor or piston, consuming zero compressed gas for machine driving.\n• Electronically Controlled / Pneumatically Driven: The modern standard (e.g. Datex-Ohmeda / GE Aespire/Avance). Microprocessors govern electronic timing and solenoid valves, while compressed oxygen or air drives the physical bellows.\n\n2. Classification by Drive Mechanism:\n• Ascending Bellows (Standing Bellows — The Gold Standard for Safety):\n  - The bellows ascend (rise) during expiration and descend (fall) during inspiration.\n  - Vital Safety Feature: If a breathing circuit disconnection occurs, room air is drawn into the leak, pressure is lost, and the bellows FAIL TO RISE! Disconnection is immediately visually obvious even before audible alarms fire.\n• Descending Bellows (Hanging Bellows — Obsolete / High Hazard):\n  - The bellows hang upside down; gravity pulls them down during expiration.\n  - Lethal Hazard: In the event of a circuit disconnection, gravity pulls the bellows downward anyway, drawing ambient air through the disconnection leak and falsely appearing to cycle normally!\n• Piston Ventilator (e.g. Dräger Apollo / Fabius):\n  - An electrically driven motor-driven piston displaces exact tidal volumes independent of fresh gas flow without using any driving gas. Highly precise for neonatal and pediatric ventilation.\n• Turbine Ventilator (e.g. Getinge Flow-i):\n  - High-speed electric blower turbine provides ultra-fast flow delivery and instantaneous pressure response.\n\n3. Classification by Phase Cycling Mechanism:\n• Volume-Cycled: Inspiration terminates when a preset tidal volume is delivered.\n• Pressure-Cycled: Inspiration terminates when a preset circuit pressure threshold is reached.\n• Time-Cycled: Inspiration terminates after a preset inspiratory time (Tᵢ) has elapsed.\n• Flow-Cycled: Inspiration terminates when inspiratory flow drops to a designated percentage (e.g. 25%) of peak flow (used in Pressure Support Ventilation PSV)."
         },
         {
@@ -3495,12 +3415,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Ascending versus descending bellows: a safety feature you can literally watch happen",
-          "image": {
-            "src": "assets/references/ventilator-specification-reference.jpeg",
-            "alt": "Anaesthesia workstation front and back anatomy specifications",
-            "caption": "Engineering and component layout of anaesthesia workstation front and rear panels: pipeline/cylinder inputs, ascending bellows drive assembly, ACGO, and scavenging port.",
-            "wide": true
-          },
           "b": "If you've ever glanced at an anaesthesia machine and seen a clear plastic cylinder with a bellows rising and falling rhythmically, you've been looking at exactly the feature this section is about. Ascending (or 'standing') bellows rise upward during exhalation, refilling from the bottom — and modern machines almost universally use this design because of what happens if something goes wrong: if the circuit disconnects or develops a major leak, the bellows simply fails to refill and visibly, unambiguously collapses under gravity, which both alerts anyone glancing at the machine and reliably triggers a low-pressure or low-volume alarm. Older descending (or 'hanging') bellows work the opposite way — they're pulled downward by a weight during exhalation and pushed upward during inspiration — and here's the genuinely dangerous part: if a disconnection occurs, a descending bellows can keep moving up and down under gravity, entraining room air in through the leak with each cycle, and to a glance it can look almost exactly like it's still working normally. That's a false reassurance you never want built into your safety equipment, which is precisely why the ascending design became the near-universal standard — you want your equipment's failure mode to be obvious, not one that mimics normal operation.",
           "example": "Imagine a breathing circuit accidentally disconnects mid-case on an ascending-bellows machine: the bellows stops rising, sits collapsed at the bottom of its housing, and the low-pressure alarm sounds within one or two breath cycles — a fast, visible, unambiguous signal. On an older descending-bellows machine, the same disconnection might let the bellows keep cycling up and down for several breaths, entraining room air instead of delivering the intended tidal volume, delaying recognition until the alarms alone (not the bellows' own visible behaviour) finally catch it."
         },
@@ -3510,12 +3424,6 @@ window.KN_STUDY = {
         },
         {
           "h": "The modes you'll actually dial in on a real case",
-          "image": {
-            "src": "assets/critical-care/ventilation/ventilation_04_simv.png",
-            "alt": "Synchronized Intermittent Mandatory Ventilation (SIMV) Waveforms and Trigger Windows",
-            "caption": "Synchronized Intermittent Mandatory Ventilation (SIMV): Synchronized mandatory breaths interspersed with spontaneous pressure-supported patient efforts.",
-            "wide": true
-          },
           "b": "Volume-controlled ventilation (VCV) delivers a fixed tidal volume every breath, with the resulting airway pressure varying depending on the patient's lung and chest wall compliance — predictable volume, unpredictable pressure. Pressure-controlled ventilation (PCV) delivers a fixed inspiratory pressure every breath, with the resulting tidal volume varying depending on compliance — the reverse trade-off, but with a decelerating inspiratory flow pattern that many find distributes gas more evenly and can lower peak airway pressures compared with VCV's more constant flow pattern. Pressure-controlled ventilation with volume guarantee (sold under different names by different manufacturers) tries to get the best of both: the ventilator automatically adjusts its delivered pressure, breath by breath, to hit a clinician-set target tidal volume, combining PCV's gentler flow pattern with VCV's more predictable volume delivery. For a patient who's starting to breathe for themselves — during emergence, or under a combined general/regional technique — modes like SIMV (synchronised intermittent mandatory ventilation) and pressure-support ventilation let the patient trigger and shape their own breaths, with the ventilator assisting rather than fully controlling."
         },
         {
@@ -3609,12 +3517,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Comprehensive Classification of Airway Devices & Laryngoscope Blades",
-          "image": {
-            "src": "assets/references/laryngoscope-macintosh-standard.jpg",
-            "alt": "Standard curved Macintosh laryngoscope blade and handle",
-            "caption": "Standard Macintosh Laryngoscope: Classic curved blade design for vallecular placement and indirect vocal cord visualization during direct laryngoscopy.",
-            "wide": true
-          },
           "b": "Airway devices are categorized by anatomical relationship to the vocal cords, optical geometry, and blade design:\n\n1. Anatomical Classification of Airway Devices:\n• Supraglottic Devices (Pharyngeal Seal): Sit above the larynx outside the vocal cords (e.g. LMA Classic, ProSeal, Supreme, i-gel, AuraGain).\n• Infraglottic / Transglottic Devices (Tracheal Seal): Pass through the vocal cords directly into the trachea (Endotracheal tubes: oral, nasal, reinforced, RAE, double-lumen tubes).\n• Surgical Infraglottic Devices: Enter the airway below the vocal cords through the neck wall (Cricothyroidotomy cannula, tracheostomy tubes).\n\n2. Direct Laryngoscope Blade Classification:\n• Curved Macintosh Blade (Sizes 1, 2, 3, 4):\n  - Blade tip is positioned in the vallecula (the space between the base of tongue and the anterior surface of the epiglottis).\n  - Levering the blade anteriorly tensions the hypoepiglottic ligament, indirectly flipping the epiglottis upward to reveal the glottis.\n• Straight Miller Blade (Sizes 00, 0, 1, 2, 3, 4):\n  - Blade tip passes posterior to the epiglottis, directly scooping and lifting the epiglottis upward.\n  - The gold standard in infants and neonates with large, floppy, U-shaped epiglottis.\n• Levering McCoy Blade (Sizes 3, 4):\n  - Features a hinged, lever-operated tip controlled by a spring-loaded lever on the handle.\n  - Squeezing the lever lifts the hinged tip in the vallecula, elevating the epiglottis without tilting the laryngoscope handle. Excellent for restricted cervical spine movement.\n• Specialized Blades:\n  - Wisconsin / Guedel: Straight blade with a higher flange for better tongue displacement.\n  - Polio Blade: Offset at 135° to the handle to clear chest deformities, massive breasts, or iron lung frames.\n\n3. Endotracheal Tube Classification:\n• Standard Murphy Eye Oral/Nasal ETT: Beveled tip with secondary Murphy eye side hole to prevent complete asphyxiation if the primary bevel abuts the tracheal wall.\n• Armoured / Reinforced (Flexometallic) ETT: Integrated spiral wire coil prevents kinking when the patient's head is flexed or rotated (prone, neuro, dental, ENT surgery).\n• RAE Preformed Tubes (Ring-Adair-Elwyn): Preformed right-angle bends (South-facing for oral/dental surgery, North-facing for ophthalmology and ENT surgery) to keep connections away from the surgical field.\n• Double-Lumen Endobronchial Tubes (DLT — Left vs Right): Allows independent lung isolation and one-lung ventilation in thoracic surgery."
         },
         {
@@ -3623,30 +3525,7 @@ window.KN_STUDY = {
         },
         {
           "h": "Conventional Direct Laryngoscopes: Macintosh, Miller, McCoy & Specialised Blades",
-          "b": "Direct laryngoscopy remains the cornerstone skill of endotracheal intubation, utilizing mechanical displacement of the tongue, soft palate, and pharyngeal tissues to establish a continuous direct optical line-of-sight from the operator's eye to the glottic aperture. Blades are classified into four major functional designs:\n\n1. Macintosh Curved Blade (Sizes 1 to 4; Mac 3 standard adult, Mac 4 tall adult):\nEngineered with a gently curved blade and a broad, Z-shaped vertical flange. Inserted into the right oral commissure, sweeping the tongue to the left side of the mouth. The spatula tip is seated precisely into the vallecula (the anatomical groove between the base of the tongue and the lingual surface of the epiglottis). An anterior-superior lift along the 45-degree axis of the handle stretches the median hypo-epiglottic ligament, indirectly tilting the epiglottis forward to expose the vocal cords. Key advantages include minimal dental trauma (wide tongue flange protects teeth), ample room for endotracheal tube passage, and avoidance of bruising the posterior epiglottis.\n\n2. Miller Straight Blade (Sizes 00 to 4; Miller 0/1 neonates, Miller 2/3 adults):\nFeatures a straight, low-profile blade with a small C-shaped or cylindrical flange. Instead of seating in the vallecula, the tip is passed directly beneath (posterior to) the laryngeal surface of the epiglottis, scooping and lifting the epiglottis directly upward. It is the gold standard for neonates and infants under 1 year of age, whose epiglottis is characteristically floppy, elongated, and U/omega-shaped, causing indirect elevation to fail. In adults, Miller blades are superior in patients with a long, retroverted epiglottis, floppy supraglottic redundant tissue, micrognathia (small receded mandible), prominent upper incisors, or narrow oral apertures.\n\n3. McCoy Levering / Flexing-Tip Blade (Sizes 2 to 4):\nDesigned by Dr. E.P. McCoy, this blade incorporates a hinged, pivoting distal tip controlled via a spring-loaded mechanical lever on the laryngoscope handle. Once the blade tip is positioned in the vallecula in standard fashion, depressing the lever flexes the tip 35 to 45 degrees anteriorly. This selectively elevates the hypo-epiglottic ligament and epiglottis without necessitating extension of the atlanto-occipital joint or applying excessive lifting force against the maxillary incisors. It reliably improves Cormack-Lehane laryngoscopic view by 1 to 2 grades in patients with rigid cervical spine pathology, trauma with in-line cervical stabilization collars, halo fixators, or ankylosing spondylitis.\n\n4. Specialised & Rescue Direct Blades:\n• Polio Blade: Positioned at an obtuse 135-degree angle relative to the handle, enabling insertion in patients with extreme morbid obesity, huge pendulous breasts, barrel chest, or patients confined in iron lungs/body jackets.\n• Wisconsin & Guedel Blades: Straight blades with tall, fully tubular or circular flanges providing an expansive, protected field of vision.\n• Left-Handed Macintosh: Mirror-image design for left-handed laryngoscopists or patients with right-sided facial deformities, maxillofacial trauma, or extensive oral resections.",
-          "images": [
-            {
-              "src": "assets/references/laryngoscope-curved-macintosh-vs-straight-miller.svg",
-              "alt": "Direct laryngoscope comparison showing curved Macintosh blade with vallecular placement versus straight Miller blade with direct epiglottic scoop",
-              "caption": "Blade Geometry & Anatomical Landmarks: Macintosh Curved Blade (tip seated in the vallecula, stretching the hypo-epiglottic ligament to indirectly elevate the epiglottis) versus Miller Straight Blade (tip passed beneath/posterior to the epiglottis to scoop and elevate it directly, the gold standard in neonates/infants)."
-            },
-            {
-              "src": "assets/references/laryngoscopy-mac3-sagittal-view.png",
-              "alt": "Sagittal cross section view of direct laryngoscopy intubation with Macintosh 3 blade",
-              "caption": "Sagittal Anatomical Placement: Macintosh 3 blade tip seated precisely in the vallecula, stretching the hypo-epiglottic ligament to indirectly elevate the epiglottis and expose the vocal cords."
-            },
-            {
-              "src": "assets/references/laryngoscope-blades-set.jpg",
-              "alt": "Curved Macintosh laryngoscope blades set (sizes 2, 3, 4) with battery handle",
-              "caption": "Macintosh Curved Blade System: Adult battery handle with sizes 2, 3, and 4 curved Macintosh blades with integral fiberoptic light bundle (ISO 7376 green standard)."
-            }
-          ],
-          "image": {
-            "src": "assets/references/laryngoscope-blades-set.jpg",
-            "alt": "Laryngoscope Blade Geometries: Curved Macintosh vs Straight Miller Blades",
-            "caption": "Direct Laryngoscopy Blades: Curved Macintosh (Vallecular Placement) vs Straight Miller (Epiglottic Paraglossal Lifting) for Neonates and Adults",
-            "wide": true
-          }
+          "b": "Direct laryngoscopy remains the cornerstone skill of endotracheal intubation, utilizing mechanical displacement of the tongue, soft palate, and pharyngeal tissues to establish a continuous direct optical line-of-sight from the operator's eye to the glottic aperture. Blades are classified into four major functional designs:\n\n1. Macintosh Curved Blade (Sizes 1 to 4; Mac 3 standard adult, Mac 4 tall adult):\nEngineered with a gently curved blade and a broad, Z-shaped vertical flange. Inserted into the right oral commissure, sweeping the tongue to the left side of the mouth. The spatula tip is seated precisely into the vallecula (the anatomical groove between the base of the tongue and the lingual surface of the epiglottis). An anterior-superior lift along the 45-degree axis of the handle stretches the median hypo-epiglottic ligament, indirectly tilting the epiglottis forward to expose the vocal cords. Key advantages include minimal dental trauma (wide tongue flange protects teeth), ample room for endotracheal tube passage, and avoidance of bruising the posterior epiglottis.\n\n2. Miller Straight Blade (Sizes 00 to 4; Miller 0/1 neonates, Miller 2/3 adults):\nFeatures a straight, low-profile blade with a small C-shaped or cylindrical flange. Instead of seating in the vallecula, the tip is passed directly beneath (posterior to) the laryngeal surface of the epiglottis, scooping and lifting the epiglottis directly upward. It is the gold standard for neonates and infants under 1 year of age, whose epiglottis is characteristically floppy, elongated, and U/omega-shaped, causing indirect elevation to fail. In adults, Miller blades are superior in patients with a long, retroverted epiglottis, floppy supraglottic redundant tissue, micrognathia (small receded mandible), prominent upper incisors, or narrow oral apertures.\n\n3. McCoy Levering / Flexing-Tip Blade (Sizes 2 to 4):\nDesigned by Dr. E.P. McCoy, this blade incorporates a hinged, pivoting distal tip controlled via a spring-loaded mechanical lever on the laryngoscope handle. Once the blade tip is positioned in the vallecula in standard fashion, depressing the lever flexes the tip 35 to 45 degrees anteriorly. This selectively elevates the hypo-epiglottic ligament and epiglottis without necessitating extension of the atlanto-occipital joint or applying excessive lifting force against the maxillary incisors. It reliably improves Cormack-Lehane laryngoscopic view by 1 to 2 grades in patients with rigid cervical spine pathology, trauma with in-line cervical stabilization collars, halo fixators, or ankylosing spondylitis.\n\n4. Specialised & Rescue Direct Blades:\n• Polio Blade: Positioned at an obtuse 135-degree angle relative to the handle, enabling insertion in patients with extreme morbid obesity, huge pendulous breasts, barrel chest, or patients confined in iron lungs/body jackets.\n• Wisconsin & Guedel Blades: Straight blades with tall, fully tubular or circular flanges providing an expansive, protected field of vision.\n• Left-Handed Macintosh: Mirror-image design for left-handed laryngoscopists or patients with right-sided facial deformities, maxillofacial trauma, or extensive oral resections."
         },
         {
           "h": "Endotracheal tubes: the gold standard for airway protection, with real variation underneath",
@@ -3659,12 +3538,6 @@ window.KN_STUDY = {
         {
           "h": "Videolaryngoscopy: Macintosh-Geometry, Hyperangulated & Channeled Systems",
           "b": "Videolaryngoscopy (VL) incorporates a miniature digital camera (CMOS or CCD sensor) and high-intensity LED light source at the distal tip of the blade, transmitting a magnified, high-resolution glottic image to an integrated or external digital display. By projecting the operator's vantage point directly to the hypopharynx, videolaryngoscopy eliminates the fundamental requirement of direct laryngoscopy — namely, aligning the oral, pharyngeal, and laryngeal axes into a single straight line. Modern VL devices fall into three distinct architectural classes:\n\n1. Standard Macintosh-Geometry VL (e.g., Karl Storz C-MAC, McGrath MAC, GlideScope Titanium Mac):\nPreserves the familiar curve and dimensions of a standard Macintosh blade. Allows the operator to perform conventional direct line-of-sight laryngoscopy while simultaneously presenting an identical digital image to assistants, learners, and supervisors on screen. Enables rapid rescue transition: if direct view is impaired by secretions or anatomy, the operator simply glances up at the monitor. Because the path to the glottis remains anatomically standard, endotracheal tubes can be placed using either a standard malleable stylet or an Eschmann bougie.\n\n2. Hyperangulated Blades (e.g., GlideScope GVL/LoPro, C-MAC D-Blade, McGrath X-Blade):\nEngineered with an aggressive 60-degree anatomical curve. The camera 'looks around the corner' over the base of the tongue without requiring neck extension, head manipulation, or external laryngeal pressure — the undisputed gold standard for severe anterior airways (Cormack-Lehane Grade 3/4) and suspected cervical spine trauma with rigid collars in place. CRITICAL CLINICAL HAZARD: Obtaining a Grade 1 view on the screen does NOT guarantee successful tube delivery! Because the optical axis curves 60 degrees around the tongue, standard straight tubes cannot reach the glottic plane. Hyperangulated VL MANDATES the routine use of a rigid, pre-curved stylet (e.g., GlideRite 60-degree rigid stylet) shaped to replicate the blade curvature.\n\n3. Channeled Videolaryngoscopes (e.g., Airtraq, King Vision Channeled Blade, Pentax AWS):\nFeatures an integrated guide track alongside the optical lens that cradles and directs the endotracheal tube directly toward the centre of the screen target. The operator maneuvers the blade until the vocal cords are centered in crosshairs, then gently advances the pre-loaded tube directly through the cords without needing any separate stylet or bougie. Primary limitation: requires adequate mouth opening (inter-incisor distance ≥ 18 mm) to accommodate the bulk of the channeled blade.",
-          "image": {
-            "src": "assets/references/videolaryngoscope-mcgrath.jpg",
-            "alt": "McGrath Videolaryngoscope Geometry and Screen Display",
-            "caption": "Videolaryngoscopy in Difficult Airway Management: Macintosh Geometry vs Hyperangulated Blades with Anti-Fog CMOS Digital Sensors",
-            "wide": true
-          },
           "example": "A trainee achieves a perfect Cormack-Lehane Grade 1 view of the vocal cords using a hyperangulated GlideScope blade, but loads the endotracheal tube onto a straight malleable stylet. During delivery, the tube repeatedly impacts the anterior tracheal cartilage and cannot be advanced. Swapping to a rigid 60° GlideRite stylet immediately directs the tube tip upward into the glottic aperture, allowing successful intubation on the first attempt.",
           "pearl": "Hyperangulated videolaryngoscopes solve visualization, not tube delivery. Never attempt hyperangulated videolaryngoscopy without a matched, rigid 60-degree stylet or steerable tip catheter ready at hand."
         },
@@ -3704,45 +3577,11 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Classification of Laryngeal Mask Airways: 1st, 2nd & 3rd Generation SADs",
-          "b": "Supraglottic airway devices (SADs) sit above the vocal cords rather than passing through them, providing a patent airway with less hemodynamic disturbance, less coughing, and reduced anesthetic depth requirements compared to tracheal intubation. According to the international consensus classification established by Cook and Brimacombe, SADs are grouped into three distinct generations based on functional architecture and aspiration protection:\n\n1. First-Generation SADs (Simple Airway Conduits):\nComprise an airway tube leading to an inflatable elliptical silicone or PVC cuff that seals the perilaryngeal perimeter around the glottis. They possess NO gastric drainage channel and offer minimal protection against regurgitation or pulmonary aspiration. Oropharyngeal leak seal pressure is typically 18 to 20 cmH2O, making them suitable primarily for spontaneously breathing patients or low-pressure controlled ventilation. Key examples include:\n• LMA Classic (cLMA): The historic 1988 reusable silicone prototype developed by Dr. Archie Brain.\n• LMA Unique (uLMA): Single-use PVC counterpart of the Classic.\n• LMA Flexible (FLMA): Wire-reinforced, crush-resistant flexible tube allowing the airway conduit to be angled away from the surgical field in head and neck, dental, and ENT procedures.\n• Ambu AuraOnce: Single-use device with a pre-formed 90-degree anatomical bend matching human airway curves.\n\n2. Second-Generation SADs (Gastric Access & High-Seal Safety):\nEngineered specifically to overcome the safety limitations of first-generation masks, second-generation devices are the contemporary standard of care for positive-pressure ventilation (PPV). They incorporate four hallmark design upgrades:\n(a) An integrated gastric drainage channel that separates the alimentary tract from the respiratory tract, allowing continuous gastric venting, passive regurgitant discharge, and passage of an orogastric/nasogastric tube.\n(b) Markedly higher oropharyngeal leak seal pressures (> 25 to 35 cmH2O), preventing hypoventilation during PPV.\n(c) An integrated bite block preventing catastrophic airway obstruction from patient clenching.\n(d) Anatomical shaping or stabilizing tabs that resist axial malrotation.\nKey examples include:\n• LMA ProSeal (PLMA): The gold-standard reusable 2nd-gen device with a dorsal cuff providing seal pressures up to 30 cmH2O and an esophageal drain tube.\n• LMA Supreme (SLMA): Single-use curved semi-rigid device with dual drain channels and fixation tab.\n• i-gel (Intersurgical): Innovative non-inflatable thermoplastic elastomer gel cuff with wide gastric port.\n• Ambu AuraGain: Pre-formed curved SAD featuring a large gastric conduit and direct fiberoptic intubation capability.\n• Baska Mask: Advanced device with a self-inflating membranous cuff that seals tighter as positive inspiratory airway pressure rises.\n\n3. Third-Generation / Intubating Conduit SADs:\nSpecially engineered to act as conduits for blind or fiberoptic-guided tracheal intubation during difficult airway management and 'Cannot Intubate, Cannot Oxygenate' (CICO) rescue protocols:\n• LMA Fastrach (Intubating LMA / ILMA): Heavy-duty anatomical curved metal tube with an integrated stainless-steel handle for single-handed positioning without placing fingers in the mouth, a silicone cuff, an epiglottic elevator bar (which lifts the epiglottis as an ETT advances), and a dedicated stabilizing rod (pusher) to hold the ETT in place while withdrawing the LMA over it.\n• Air-Q / Cookgas: Removable 15 mm connector with a wide, straight internal conduit that accommodates standard cuffed tracheal tubes.",
-          "images": [
-            {
-              "src": "assets/references/lma-classic-first-generation.jpg",
-              "alt": "LMA Classic 1st generation supraglottic airway",
-              "caption": "First-Generation Prototype: LMA Classic (cLMA) featuring a simple inflatable elliptical perilaryngeal cuff without a gastric drain channel."
-            },
-            {
-              "src": "assets/references/lma-proseal-second-generation.jpg",
-              "alt": "LMA ProSeal 2nd generation supraglottic airway with drain tube",
-              "caption": "Second-Generation Gold Standard: LMA ProSeal (PLMA) featuring a dorsal cuff for enhanced leak pressure (>30 cmH2O) and a separate esophageal drain tube."
-            },
-            {
-              "src": "assets/references/lma-fastrach-ilma.jpg",
-              "alt": "LMA Fastrach Intubating LMA 3rd generation",
-              "caption": "Intubating Conduit: LMA Fastrach (ILMA) featuring a rigid anatomically curved metal airway tube, integrated guiding handle, and epiglottic elevating bar."
-            },
-            {
-              "src": "assets/references/lma-unique-and-igel.jpg",
-              "alt": "LMA Unique first generation alongside i-gel second generation",
-              "caption": "Direct Comparison: LMA Unique (1st gen inflatable cuff, left) alongside i-gel (2nd gen non-inflatable thermoplastic gel cuff with gastric channel, right)."
-            }
-          ],
-          "image": {
-            "src": "assets/references/lma-proseal-second-generation.jpg",
-            "alt": "Second-Generation Supraglottic Airway: LMA ProSeal with Gastric Drain Tube",
-            "caption": "Second-Generation LMA ProSeal: Integrated Gastric Decompression Channel, Posterior Cuff Seal & Bite Block Architecture",
-            "wide": true
-          }
+          "b": "Supraglottic airway devices (SADs) sit above the vocal cords rather than passing through them, providing a patent airway with less hemodynamic disturbance, less coughing, and reduced anesthetic depth requirements compared to tracheal intubation. According to the international consensus classification established by Cook and Brimacombe, SADs are grouped into three distinct generations based on functional architecture and aspiration protection:\n\n1. First-Generation SADs (Simple Airway Conduits):\nComprise an airway tube leading to an inflatable elliptical silicone or PVC cuff that seals the perilaryngeal perimeter around the glottis. They possess NO gastric drainage channel and offer minimal protection against regurgitation or pulmonary aspiration. Oropharyngeal leak seal pressure is typically 18 to 20 cmH2O, making them suitable primarily for spontaneously breathing patients or low-pressure controlled ventilation. Key examples include:\n• LMA Classic (cLMA): The historic 1988 reusable silicone prototype developed by Dr. Archie Brain.\n• LMA Unique (uLMA): Single-use PVC counterpart of the Classic.\n• LMA Flexible (FLMA): Wire-reinforced, crush-resistant flexible tube allowing the airway conduit to be angled away from the surgical field in head and neck, dental, and ENT procedures.\n• Ambu AuraOnce: Single-use device with a pre-formed 90-degree anatomical bend matching human airway curves.\n\n2. Second-Generation SADs (Gastric Access & High-Seal Safety):\nEngineered specifically to overcome the safety limitations of first-generation masks, second-generation devices are the contemporary standard of care for positive-pressure ventilation (PPV). They incorporate four hallmark design upgrades:\n(a) An integrated gastric drainage channel that separates the alimentary tract from the respiratory tract, allowing continuous gastric venting, passive regurgitant discharge, and passage of an orogastric/nasogastric tube.\n(b) Markedly higher oropharyngeal leak seal pressures (> 25 to 35 cmH2O), preventing hypoventilation during PPV.\n(c) An integrated bite block preventing catastrophic airway obstruction from patient clenching.\n(d) Anatomical shaping or stabilizing tabs that resist axial malrotation.\nKey examples include:\n• LMA ProSeal (PLMA): The gold-standard reusable 2nd-gen device with a dorsal cuff providing seal pressures up to 30 cmH2O and an esophageal drain tube.\n• LMA Supreme (SLMA): Single-use curved semi-rigid device with dual drain channels and fixation tab.\n• i-gel (Intersurgical): Innovative non-inflatable thermoplastic elastomer gel cuff with wide gastric port.\n• Ambu AuraGain: Pre-formed curved SAD featuring a large gastric conduit and direct fiberoptic intubation capability.\n• Baska Mask: Advanced device with a self-inflating membranous cuff that seals tighter as positive inspiratory airway pressure rises.\n\n3. Third-Generation / Intubating Conduit SADs:\nSpecially engineered to act as conduits for blind or fiberoptic-guided tracheal intubation during difficult airway management and 'Cannot Intubate, Cannot Oxygenate' (CICO) rescue protocols:\n• LMA Fastrach (Intubating LMA / ILMA): Heavy-duty anatomical curved metal tube with an integrated stainless-steel handle for single-handed positioning without placing fingers in the mouth, a silicone cuff, an epiglottic elevator bar (which lifts the epiglottis as an ETT advances), and a dedicated stabilizing rod (pusher) to hold the ETT in place while withdrawing the LMA over it.\n• Air-Q / Cookgas: Removable 15 mm connector with a wide, straight internal conduit that accommodates standard cuffed tracheal tubes."
         },
         {
           "h": "Anatomy & Mechanical Components of the i-gel Supraglottic Airway",
           "b": "The i-gel (Intersurgical, Wokingham, UK) represents a major paradigm shift in supraglottic airway design, completely replacing the traditional inflatable pneumatic cuff with a non-inflatable anatomical seal made from medical-grade thermoplastic elastomer (SEBS: styrene ethylene butadiene styrene). Each structural component is tailored to patient airway anatomy:\n\n1. The Non-Inflatable Gel Cuff:\nFormed from a unique, ultra-soft, transparent medical elastomer that accurately mirrors the shape of the perilaryngeal framework (aryepiglottic folds, piriform fossae, thyroid and cricoid cartilages). It requires NO cuff inflation, completely eliminating:\n• Cuff over-inflation hyper-pressurization.\n• Capillary hypoperfusion and ischemic mucosal necrosis (perilaryngeal tissue pressures remain < 20 mmHg, far below mucosal capillary perfusion pressure, whereas overinflated pneumatic cuffs routinely exert > 60–100 mmHg).\n• Delayed neuropraxia of the lingual, hypoglossal, and recurrent laryngeal nerves.\n• Nitrous oxide diffusion hyper-expansion during prolonged anesthesia.\n\n2. Gastric Channel:\nIncorporates an auxiliary esophageal drain channel running parallel to the airway tube (present in sizes 1.5 to 5; omitted only in Size 1 neonate). Its proximal orifice sits beside the 15 mm airway connector, and its distal tip seats snugly against the upper esophageal sphincter (cricopharyngeus). It provides three life-saving functions:\n• Early visual warning of passive regurgitation (fluid appears in the clear gastric channel before contaminating the airway).\n• Continuous venting of swallowed or insufflated gastric gases.\n• Unobstructed passage of a lubricated nasogastric/orogastric tube (up to 12–14 Fr) to evacuate stomach contents.\n\n3. Integral Bite Block:\nA reinforced, rigid central section running through the middle third of the airway tube that prevents accidental teeth clenching from occluding the airway channel during lightening of anesthesia or emergence.\n\n4. Buccal Cavity Stabiliser:\nA wide, flattened, anatomically curved housing that adapts to the contours of the patient's hard and soft palate. It stabilizes the device in the sagittal plane, facilitates smooth 'glide' insertion, and completely eliminates the potential for axial rotation or lateral dislodgement.\n\n5. Epiglottic Rest:\nA contoured soft shelf located at the proximal entrance of the mask bowl designed to cradle the lingual surface of the epiglottis. It prevents downward folding ('down-folding') of the epiglottis over the laryngeal inlet during insertion, which is the most frequent cause of mechanical airway obstruction in conventional LMAs.\n\n6. Distal Tip of Gastric Channel:\nThe tapered, bullet-shaped distal extremity that seats into the hypopharynx and upper esophagus. It acts as an esophageal plug, preventing positive-pressure ventilation gases from entering the stomach while guiding regurgitated fluids exclusively into the drain tube.",
-          "image": {
-            "src": "assets/references/igel-supraglottic-airway-parts.jpg",
-            "alt": "Anatomy and Components of the i-gel Supraglottic Airway",
-            "caption": "i-gel Airway Anatomy: Non-Inflatable Thermoplastic Elastomer Cuff, Gastric Suction Channel, Epiglottic Rest & Integral Bite Block",
-            "wide": true
-          },
           "pearl": "Because the i-gel cuff is made from a thermoplastic elastomer, it softens at body temperature (37°C) over the first 5 to 10 minutes following insertion, causing the perilaryngeal seal to actually improve and seat tighter during the early phase of the surgical case."
         },
         {
@@ -3852,12 +3691,6 @@ window.KN_STUDY = {
               ]
             ],
             "caption": "Official Intersurgical i-gel product codes, color codes, patient body weight ranges, maximum compatible nasogastric (NG) tube sizes, and maximum tracheal tube diameters for intubation."
-          },
-          "image": {
-            "src": "assets/references/igel-airway-sizes-chart.jpg",
-            "alt": "i-gel Supraglottic Airway Sizing Chart and Weight Guidelines",
-            "caption": "i-gel Colour-Coded Sizing Matrix: Weight Thresholds (Size 1 Neonate 2–5 kg to Size 5 Large Adult >90 kg) & Max Suction Catheter Gauges",
-            "wide": true
           }
         },
         {
@@ -3868,13 +3701,7 @@ window.KN_STUDY = {
         {
           "h": "Clinical Indications, Absolute Contraindications & Difficult Airway Role",
           "b": "Supraglottic airways are indicated for elective day-care surgical procedures under general anesthesia without muscle relaxants, short-to-moderate duration operations, difficult airway rescue, and out-of-hospital cardiopulmonary resuscitation (CPR) by emergency responders.\n\n1. Absolute & Strong Relative Contraindications:\n• High Risk of Aspiration: Non-fasted patients, acute trauma, full stomach, active gastroesophageal reflux disease (GERD), morbid obesity with symptomatic reflux, bowel obstruction, hiatus hernia, and pregnancy > 14 weeks.\n• Severe Glottic or Subglottic Pathology: Epiglottitis, laryngeal tumor, retropharyngeal abscess, acute laryngeal edema, or foreign body obstruction.\n• Restricted Mouth Opening: Inter-incisor gap < 1.5–2.0 cm precludes passage of the mask bowl.\n• Extremely Low Pulmonary Compliance / High Airway Resistance: Severe bronchospasm, morbid obesity (BMI > 40), or high peak inspiratory pressures (> 30–35 cmH2O) will exceed the oropharyngeal seal pressure, resulting in massive oropharyngeal leak and gastric insufflation.\n\n2. Difficult Airway Society (DAS) Algorithm Role:\nIn the DAS 2015 Guidelines for the Management of Unanticipated Difficult Intubation in Adults, the Second-Generation SAD occupies the central position of Plan B (Secondary Intubation / Rescue Oxygenation). If direct laryngoscopy fails (Plan A), the immediate priority is to insert a second-generation SAD (such as i-gel or ProSeal) to establish oxygenation and ventilation, preventing progression to hypoxic brain damage and 'Cannot Intubate, Cannot Oxygenate' (CICO / Plan D). A maximum of 3 attempts at SAD placement is recommended, changing size or device if the initial attempt fails.",
-          "example": "During an unanticipated failed intubation (Cormack-Lehane Grade 4 on direct laryngoscopy), immediate placement of a Size 4 i-gel restores oxygenation within 15 seconds, producing a normal capnograph trace and avoiding a tracheostomy emergency.",
-          "image": {
-            "src": "assets/references/lma-fastrach-ilma.jpg",
-            "alt": "Intubating Laryngeal Mask Airway (ILMA / Fastrach) for Difficult Airway Rescue",
-            "caption": "Intubating LMA (ILMA / Fastrach): Rigid Guiding Handle, Epiglottic Elevating Bar & Channeled Conduit for Blind or Fibreoptic ETT Passage",
-            "wide": true
-          }
+          "example": "During an unanticipated failed intubation (Cormack-Lehane Grade 4 on direct laryngoscopy), immediate placement of a Size 4 i-gel restores oxygenation within 15 seconds, producing a normal capnograph trace and avoiding a tracheostomy emergency."
         }
       ],
       "references": [
@@ -4022,11 +3849,6 @@ window.KN_STUDY = {
           "h": "The Pin Index Safety System (PISS) & The Critical Bodok Seal",
           "b": "The Pin Index Safety System (PISS) is an international standard geometry (ISO 407) designed to physically eliminate the catastrophic risk of mounting the wrong medical gas cylinder onto an anaesthesia machine yoke. The system features two stainless steel pins projecting 4 mm forward from the inner face of the machine yoke, positioned along a circular arc with a 9/16-inch (14.3 mm) radius centered directly at the gas outlet port. The flush-type cylinder valve body contains two corresponding precision-drilled blind holes that accept only the specific pin combination for that designated gas. Pin positions are numbered 1 through 7 from left to right when viewing the flush valve face. High-yield examination pin positions include: Oxygen = 2, 5; Nitrous Oxide = 3, 5; Medical Air = 1, 5; Entonox (50% O₂ / 50% N₂O) = 7 (single central pin); Carbon Dioxide = 1, 6; Cyclopropane = 3, 6; and Heliox (He/O₂ with >80% He) = 2, 4. The Bodok seal is the essential high-pressure gasket placed between the flush valve face and the machine yoke nipple; it consists of a resilient non-combustible neoprene rubber washer bonded inside a peripheral aluminum retaining ring, measuring exactly 2.4 mm in thickness. Stacking two Bodok seals is a well-documented lethal hazard: two washers create sufficient physical standoff distance that prevents the yoke pins from engaging the cylinder holes, completely bypassing the pin index safety mechanism and allowing any cylinder to be mistakenly clamped and connected.",
           "diagram": "cylinder-pin-index",
-          "image": {
-            "src": "assets/references/cylinder-valve-pin-index-yoke-diagram.png",
-            "alt": "Pin Index Safety System cylinder valve and yoke cross-section diagram",
-            "caption": "Standard flush-type medical gas cylinder valve face showing the 7-pin radial arc, Bodok seal seating face, and yoke retaining clamp screw (ISO 407 standard)."
-          },
           "pitfall": "Never use more than one Bodok seal on a yoke connection. A second washer pushes the cylinder valve face back just enough that the index pins cannot enter the valve body, allowing an incorrect gas cylinder (e.g. nitrous oxide into an oxygen yoke) to be connected without resistance."
         },
         {
@@ -4041,21 +3863,11 @@ window.KN_STUDY = {
         },
         {
           "h": "Cylinder Color Coding: International ISO 32 vs US CGA vs UK/India Standards",
-          "b": "Colour-coding of medical gas cylinders has historically varied across geographic regions, creating a critical safety hazard during international medical relief or military deployments. To standardize global safety, the International Organization for Standardization established ISO 32, which is now adopted across Europe, the UK, Australia, and increasingly worldwide. Under ISO 32: Oxygen has a White body and shoulder; Nitrous Oxide has a French Blue body and shoulder; Medical Air has a White and Black quartered shoulder on a Grey (or White) body; Entonox (50/50 O₂/N₂O) has a French Blue body with a Blue and White quartered shoulder; Carbon Dioxide has a Grey body and shoulder; and Heliox has a Brown shoulder with a White body. In the United States (Compressed Gas Association / CGA standards): Oxygen is Green; Medical Air is Yellow; Nitrous Oxide is Light Blue; Carbon Dioxide is Grey; and Heliox is Brown and Green. In India and historical UK practice: Oxygen cylinders have a Black body with a White shoulder; Nitrous oxide is French Blue; and Medical Air is Grey with White and Black quartered shoulder.",
-          "image": {
-            "src": "assets/references/cylinder-yoke-check-valve-cross-section.png",
-            "alt": "Cylinder yoke check valve cross section",
-            "caption": "Cylinder yoke assembly with internal spring-loaded check valve preventing gas transfer between parallel cylinders or transfilling during cylinder exchange."
-          }
+          "b": "Colour-coding of medical gas cylinders has historically varied across geographic regions, creating a critical safety hazard during international medical relief or military deployments. To standardize global safety, the International Organization for Standardization established ISO 32, which is now adopted across Europe, the UK, Australia, and increasingly worldwide. Under ISO 32: Oxygen has a White body and shoulder; Nitrous Oxide has a French Blue body and shoulder; Medical Air has a White and Black quartered shoulder on a Grey (or White) body; Entonox (50/50 O₂/N₂O) has a French Blue body with a Blue and White quartered shoulder; Carbon Dioxide has a Grey body and shoulder; and Heliox has a Brown shoulder with a White body. In the United States (Compressed Gas Association / CGA standards): Oxygen is Green; Medical Air is Yellow; Nitrous Oxide is Light Blue; Carbon Dioxide is Grey; and Heliox is Brown and Green. In India and historical UK practice: Oxygen cylinders have a Black body with a White shoulder; Nitrous oxide is French Blue; and Medical Air is Grey with White and Black quartered shoulder."
         },
         {
           "h": "Pressure Regulators, Safety Relief Devices & Central Pipeline Manifolds",
           "b": "High cylinder pressures (137 bar) cannot be admitted directly into an anaesthetic machine's internal piping. A first-stage pressure regulator (reducing valve) reduces cylinder pressure down to an intermediate working pressure of 4 bar (50 to 60 psi) — identical to central pipeline supply pressure. Regulators utilize a spring-loaded diaphragm and balanced poppet valve mechanism that automatically opens when downstream pressure drops and closes when target pressure is reached. Safety relief mechanisms protect against thermal rupture and regulator failure: a fusible plug composed of Wood's metal (bismuth-lead-tin-cadmium alloy) melts at 70°C to vent gas safely during a hospital fire; a frangible bursting disc ruptures when internal pressure exceeds a pre-set ceiling (~200 to 250 bar); and a spring-loaded safety relief valve vents transient over-pressures. Hospital central pipeline gas supplies (Medical Gas Pipeline System / MGPS) supply gases at 4 bar (400 kPa / 58 psi) from central manifold banks or liquid oxygen vacuum insulated evaporators (VIE). Wall terminal outlets and machine pipeline hoses utilize Diameter Index Safety System (DISS) or Non-Interchangeable Screw Thread (NIST) fittings with gas-specific diameters and pitches, accompanied by internal spring-loaded check valves that seal instantly upon disconnection.",
-          "image": {
-            "src": "assets/references/gas-supply-pathway-schematic.png",
-            "alt": "Medical gas pipeline supply pathway schematic",
-            "caption": "Central medical gas pipeline manifold distribution system: liquid oxygen VIE (vacuum insulated evaporator), pipeline pressure regulators (4 bar / 50 psi), and DISS/NIST terminal outlets."
-          },
           "pearl": "Adiabatic compression: When a high-pressure cylinder valve is cracked open rapidly into a closed regulator, gas in the connecting space is compressed almost instantaneously, generating localized temperatures exceeding 1000°C. In the presence of grease, dust, or oil, this causes spontaneous explosive ignition (flash fire). Always crack cylinder valves slowly and ensure connections are completely free of oil or grease."
         }
       ],
@@ -4094,11 +3906,6 @@ window.KN_STUDY = {
         {
           "h": "The 6 Colour-Coded Venturi Valves & Mathematical Entrainment Ratio",
           "b": "Standard commercial Venturi valves follow an internationally accepted colour-coded system calibrated for specific oxygen input flows and resulting air-entrainment ratios. The mathematical air-to-oxygen entrainment ratio is governed by the classic exam formula: Air : Oxygen Ratio = (100 - FiO₂) / (FiO₂ - 21). The six standard valves are: Blue: FiO₂ 24%, driven at 2 L/min O₂, entraining air at 25:1, generating a massive total flow of 2 × (25 + 1) = 52 L/min. White: FiO₂ 28%, driven at 4 L/min O₂, entraining air at 10:1, generating 4 × (10 + 1) = 44 L/min. Orange: FiO₂ 31%, driven at 6 L/min O₂, entraining air at 7:1, generating 6 × (7 + 1) = 48 L/min. Yellow: FiO₂ 35%, driven at 8 L/min O₂, entraining air at 5:1, generating 8 × (5 + 1) = 48 L/min. Red: FiO₂ 40%, driven at 10 L/min O₂, entraining air at 3:1, generating 10 × (3 + 1) = 40 L/min. Green: FiO₂ 60%, driven at 15 L/min O₂, entraining air at 1:1, generating 15 × (1 + 1) = 30 L/min. Notice the crucial physiological pattern: as target FiO₂ increases, the entrainment ratio drops, and total gas flow steadily declines. For 60% (green), total flow drops to 30 L/min, which may fall below a severely tachypnoeic patient's peak inspiratory flow, allowing slight room air dilution unless oxygen driving flow is increased.",
-          "image": {
-            "src": "assets/references/venturi-mask-valves-colors.jpg",
-            "alt": "Venturi Mask Valves color coding and oxygen flow rates",
-            "caption": "Standard commercial Venturi mask valves (24% blue 2–4 L/min, 28% white 4–6 L/min, 31% orange 6–8 L/min, 35% yellow 8–10 L/min, 40% red 10–12 L/min, 60% green 12–15 L/min) ensuring fixed-performance oxygen delivery."
-          },
           "example": "To calculate the entrainment ratio for a 40% Venturi mask: Air:O₂ = (100 - 40) / (40 - 21) = 60 / 19 ≈ 3.16 : 1 (roughly 3 parts air to 1 part O₂). If the oxygen flowmeter is set to 10 L/min, entrained room air is 3.16 × 10 = 31.6 L/min, delivering a total flow of 10 + 31.6 = 41.6 L/min to the patient."
         },
         {
@@ -4418,14 +4225,7 @@ window.KN_STUDY = {
         },
         {
           "h": "Anatomy of a Swan-Ganz Catheter: Ports, Markings & Dimensions",
-          "b": "The standard Swan-Ganz pulmonary artery catheter (PAC) is a 110 cm long, 7.0 to 7.5 French polyvinyl chloride catheter engineered for flow-directed navigation through the cardiac chambers into the pulmonary artery. The catheter features clear visual depth markings: narrow rings represent 10 cm increments, and wide rings represent 50 cm increments. The catheter incorporates distinct functional lumens and ports:\n\n1. Distal Pulmonary Artery Port (Yellow Hub):\nTerminates at the extreme catheter tip. When the balloon is deflated, it transduces pulsatile pulmonary artery pressure (PAP). When the balloon is inflated and flow-directed into a small pulmonary arterial branch, it measures pulmonary artery occlusion pressure (PAOP / pulmonary capillary wedge pressure, PCWP), reflecting left atrial filling pressure. It also serves as the dedicated port for drawing true mixed venous blood samples (SvO2) from the pulmonary artery.\n\n2. Proximal Right Atrial Port (Blue Hub):\nPositioned exactly 30 cm proximal to the catheter tip. In an average-sized adult, this orifice resides within the right atrium (or cavoatrial junction). It continuously transduces Central Venous Pressure (CVP / RAP) and acts as the delivery lumen for cold or room-temperature fluid boluses during thermodilution cardiac output determinations.\n\n3. Variable Infusion Port (VIP, White or Clear Hub):\nPositioned 31 cm proximal to the catheter tip, also terminating in the right atrium. It provides a dedicated, independent route for continuous infusions of vasoactive drugs, inotropes, or maintenance fluids into the central circulation without interrupting CVP pressure transducing or contaminating thermodilution thermal measurements.\n\n4. Balloon Inflation Lumen (Red Hub with Gate Valve):\nLeads to an inflatable latex balloon situated 1 to 2 mm proximal to the catheter tip. The balloon has a maximum volume capacity of 1.5 mL (inflated diameter 13 mm). When inflated, it completely covers and cushions the stiff plastic catheter tip, allowing blood flow to float the catheter through the tricuspid and pulmonic valves while shielding fragile right ventricular trabeculae from mechanical perforation. Inflation must ALWAYS be performed using the dedicated 1.5 mL syringe with air (never liquid, and never carbon dioxide unless in patients with right-to-left shunts where accidental rupture could cause cerebral air embolism). A sliding safety gate valve locks the syringe to prevent accidental persistent inflation.\n\n5. Thermistor Lumen & Connector:\nInsulated electrical wires lead to a temperature-sensitive thermistor bead located 4 cm proximal to the catheter tip. The thermistor continuously senses pulmonary artery blood temperature (core body temperature) and records rapid temperature-time decay curves following proximal cold saline injection to calculate cardiac output via the Stewart-Hamilton equation.\n\n6. Fiberoptic Optical Connector (Advanced Diagnostic Models):\nIn continuous cardiac output / continuous SvO2 PACs, two fiberoptic light bundles transmit and receive infrared light (660 nm and 805 nm) from the tip, providing continuous reflectance spectrophotometry monitoring of mixed venous oxygen saturation.",
-          "images": [
-            {
-              "src": "assets/references/swan-ganz-catheter-anatomy.jpg",
-              "alt": "Swan-Ganz catheter anatomy diagram showing balloon, ports, thermistor and markings",
-              "caption": "Anatomy of a Swan-Ganz Pulmonary Artery Catheter: Comprehensive breakdown of distal PA yellow port, proximal RA blue port, VIP white infusion lumen, balloon inflation syringe with safety gate, thermistor connector, and 10 cm/50 cm depth markings."
-            }
-          ]
+          "b": "The standard Swan-Ganz pulmonary artery catheter (PAC) is a 110 cm long, 7.0 to 7.5 French polyvinyl chloride catheter engineered for flow-directed navigation through the cardiac chambers into the pulmonary artery. The catheter features clear visual depth markings: narrow rings represent 10 cm increments, and wide rings represent 50 cm increments. The catheter incorporates distinct functional lumens and ports:\n\n1. Distal Pulmonary Artery Port (Yellow Hub):\nTerminates at the extreme catheter tip. When the balloon is deflated, it transduces pulsatile pulmonary artery pressure (PAP). When the balloon is inflated and flow-directed into a small pulmonary arterial branch, it measures pulmonary artery occlusion pressure (PAOP / pulmonary capillary wedge pressure, PCWP), reflecting left atrial filling pressure. It also serves as the dedicated port for drawing true mixed venous blood samples (SvO2) from the pulmonary artery.\n\n2. Proximal Right Atrial Port (Blue Hub):\nPositioned exactly 30 cm proximal to the catheter tip. In an average-sized adult, this orifice resides within the right atrium (or cavoatrial junction). It continuously transduces Central Venous Pressure (CVP / RAP) and acts as the delivery lumen for cold or room-temperature fluid boluses during thermodilution cardiac output determinations.\n\n3. Variable Infusion Port (VIP, White or Clear Hub):\nPositioned 31 cm proximal to the catheter tip, also terminating in the right atrium. It provides a dedicated, independent route for continuous infusions of vasoactive drugs, inotropes, or maintenance fluids into the central circulation without interrupting CVP pressure transducing or contaminating thermodilution thermal measurements.\n\n4. Balloon Inflation Lumen (Red Hub with Gate Valve):\nLeads to an inflatable latex balloon situated 1 to 2 mm proximal to the catheter tip. The balloon has a maximum volume capacity of 1.5 mL (inflated diameter 13 mm). When inflated, it completely covers and cushions the stiff plastic catheter tip, allowing blood flow to float the catheter through the tricuspid and pulmonic valves while shielding fragile right ventricular trabeculae from mechanical perforation. Inflation must ALWAYS be performed using the dedicated 1.5 mL syringe with air (never liquid, and never carbon dioxide unless in patients with right-to-left shunts where accidental rupture could cause cerebral air embolism). A sliding safety gate valve locks the syringe to prevent accidental persistent inflation.\n\n5. Thermistor Lumen & Connector:\nInsulated electrical wires lead to a temperature-sensitive thermistor bead located 4 cm proximal to the catheter tip. The thermistor continuously senses pulmonary artery blood temperature (core body temperature) and records rapid temperature-time decay curves following proximal cold saline injection to calculate cardiac output via the Stewart-Hamilton equation.\n\n6. Fiberoptic Optical Connector (Advanced Diagnostic Models):\nIn continuous cardiac output / continuous SvO2 PACs, two fiberoptic light bundles transmit and receive infrared light (660 nm and 805 nm) from the tip, providing continuous reflectance spectrophotometry monitoring of mixed venous oxygen saturation."
         },
         {
           "h": "Intracardiac Navigation Pathway & Real-Time Waveform Progression",
@@ -4486,13 +4286,6 @@ window.KN_STUDY = {
             ],
             "caption": "Table: Intracardiac distance milestones, normal pressure values, and characteristic waveform morphology during Swan-Ganz catheterization via the Right Internal Jugular Vein."
           },
-          "images": [
-            {
-              "src": "assets/references/swan-ganz-heart-pathway-diagram.jpg",
-              "alt": "Intracardiac navigation pathway diagram from SVC to Pulmonary Artery",
-              "caption": "Intracardiac Navigation & Port Positioning: Catheter passage from Right Internal Jugular vein through SVC, RA (port 1 proximal injectate), RV, and into Pulmonary Artery with balloon inflated (port 3) and thermistor bead (port 2) measuring cardiac output."
-            }
-          ],
           "pitfall": "Never advance the catheter with the balloon deflated (sharp tip can perforate the RV wall), and NEVER pull the catheter backwards with the balloon inflated (inflated balloon will snag and tear the tricuspid or pulmonic valve leaflets)."
         },
         {
@@ -4538,13 +4331,6 @@ window.KN_STUDY = {
         {
           "h": "CPB Overview & Indications: On-Pump vs Off-Pump CABG (OPCAB)",
           "b": "Cardiopulmonary Bypass (CPB) temporarily takes over the mechanical pumping function of the heart and the gas-exchange function of the lungs, providing a bloodless, motionless operative field for cardiac surgery. Coronary Artery Bypass Grafting (CABG) is performed either:\n\n1. On-Pump CABG (Using CPB):\nThe heart is arrested using cardioplegia, and the circulation is sustained entirely by the heart-lung machine. It provides pristine surgical exposure and visualization for complete revascularization, especially in small, calcified, intramyocardial vessels or diffuse multivessel disease.\n\n2. Off-Pump CABG (OPCAB - Without CPB):\nGraft anastomoses are constructed on the beating heart utilizing mechanical vacuum suction stabilizers (e.g. Octopus) and apical cardiac positioners. Eliminates the systemic inflammatory response syndrome (SIRS), hemodilution, and aortic cross-clamping atheroembolism associated with CPB, reducing stroke and renal dysfunction in high-risk patients with porcelain aortas, but requires careful haemodynamic management during vertical cardiac displacement.",
-          "images": [
-            {
-              "src": "assets/references/cpb-circuit-diagram.jpg",
-              "alt": "Cardiopulmonary bypass circuit diagram showing venous return, reservoir, pump, and oxygenator",
-              "caption": "Cardiopulmonary Bypass Circuit & Perioperative Architecture (Infographic from @knock.out.notes). Watch clinical walkthrough post on Instagram: https://www.instagram.com/p/Ddkm4fEmekC/?stkn=Ym12c2Q4c3R0aWhx"
-            }
-          ],
           "link": {
             "url": "https://www.instagram.com/p/Ddkm4fEmekC/?stkn=Ym12c2Q4c3R0aWhx",
             "label": "View Original High-Res Post on Instagram (@knock.out.notes)"
@@ -4602,14 +4388,7 @@ window.KN_STUDY = {
         },
         {
           "h": "Principles of High-Flow Nasal Oxygen & Dedicated Equipment",
-          "b": "High-Flow Nasal Oxygen (HFNO), commercialized as Optiflow and popularized in anaesthesia as Transnasal Humidified Rapid-Insufflation Ventilatory Exchange (THRIVE), delivers high-flow, conditioned oxygen therapy via specialized equipment:\n\n1. Gas Conditioning & Delivery System:\nDelivers 100% oxygen at flow rates reaching 50 to 70 L/min in adults (or 1 to 2 L/kg/min in children). Delivering high gas flows without conditioning would instantaneously destroy respiratory ciliated mucosa; therefore, the gas is passed through an active heated pass-over humidifier, delivering gas heated to core body temperature (37°C) and 100% relative humidity (yielding an absolute humidity of 44 mg H2O/L). Heated breathing tubes incorporate internal spiral heating wires that eliminate condensational 'rainout' along the circuit.\n\n2. Patient Interface:\nAdministered via soft, wide-bore silicone nasal prongs that occlude approximately 50% of the patient's nares. Unlike tight-fitting non-invasive ventilation masks, HFNO prongs leave an open circumferential air gap, allowing continuous passive expiration and gas venting through the nose and mouth.",
-          "images": [
-            {
-              "src": "assets/references/thrive-hfno-nasal-cannula.png",
-              "alt": "High Flow Nasal Cannula HFNO THRIVE interface",
-              "caption": "High-Flow Nasal Cannula (HFNO / THRIVE Interface): Soft silicone wide-bore contoured nasal prongs with lightweight corrugated heated tubing delivering high-velocity humidified oxygen."
-            }
-          ]
+          "b": "High-Flow Nasal Oxygen (HFNO), commercialized as Optiflow and popularized in anaesthesia as Transnasal Humidified Rapid-Insufflation Ventilatory Exchange (THRIVE), delivers high-flow, conditioned oxygen therapy via specialized equipment:\n\n1. Gas Conditioning & Delivery System:\nDelivers 100% oxygen at flow rates reaching 50 to 70 L/min in adults (or 1 to 2 L/kg/min in children). Delivering high gas flows without conditioning would instantaneously destroy respiratory ciliated mucosa; therefore, the gas is passed through an active heated pass-over humidifier, delivering gas heated to core body temperature (37°C) and 100% relative humidity (yielding an absolute humidity of 44 mg H2O/L). Heated breathing tubes incorporate internal spiral heating wires that eliminate condensational 'rainout' along the circuit.\n\n2. Patient Interface:\nAdministered via soft, wide-bore silicone nasal prongs that occlude approximately 50% of the patient's nares. Unlike tight-fitting non-invasive ventilation masks, HFNO prongs leave an open circumferential air gap, allowing continuous passive expiration and gas venting through the nose and mouth."
         },
         {
           "h": "Physiological Mechanisms: Avenous Difference, PEEP & Micro-Ventilation",
@@ -4655,14 +4434,7 @@ window.KN_STUDY = {
         },
         {
           "h": "Physics of Jet Delivery: Venturi Entrainment & Non-Convective Gas Transport",
-          "b": "Jet ventilation delivers pulsed jets of high-pressure driving gas (1.5 to 4.0 bar / 20 to 50 psi) through a narrow-bore injector nozzle (internal diameter 0.8 to 1.5 mm). It operates via unique physical and fluid mechanical principles:\n\n1. The Venturi Entrainment Principle:\nAccording to Bernoulli's principle, as gas passes through a narrow nozzle, velocity accelerates dramatically while lateral pressure drops below atmospheric. This high-velocity jet stream creates a localized negative pressure vortex at the nozzle tip, entraining surrounding air or humidified supplemental oxygen. The entrained gas volume combines with the jet driving volume, delivering a total tidal volume significantly larger than the primary jet pulse itself.\n\n2. High-Frequency Jet Ventilation (HFJV) Mechanisms:\nIn standard mechanical ventilation, gas exchange occurs via bulk convective flow (tidal volume > anatomical dead space). In contrast, HFJV delivers very small tidal volumes (1 to 3 mL/kg — often LESS than anatomical dead space) at high respiratory rates (100 to 600 breaths/min or 1.5 to 10 Hz). Gas transport occurs via non-convective physical mechanisms:\n• Bulk Convection: To proximal conducting airways.\n• Taylor-Type Turbulent Dispersion: Rapid axial dispersion driven by turbulent velocity profiles.\n• Pendelluft: Out-of-phase gas redistribution between adjacent alveoli with differing regional time constants.\n• Molecular Diffusion: Across the alveolar-capillary membrane.\n• Asymmetric Velocity Profiles: Inspiratory gas travels down the centre of the airway lumen at high velocity, while expiratory gas exits concurrently along the peripheral airway margins.",
-          "images": [
-            {
-              "src": "assets/references/jet-ventilation-alveolar-mechanics.png",
-              "alt": "Drawing of air movement in alveoli during jet ventilation",
-              "caption": "Alveolar Gas Transport in Jet Ventilation: Schematic of asymmetric velocity profiles showing central inspiratory high-velocity jet stream and peripheral concentric expiratory gas egress."
-            }
-          ]
+          "b": "Jet ventilation delivers pulsed jets of high-pressure driving gas (1.5 to 4.0 bar / 20 to 50 psi) through a narrow-bore injector nozzle (internal diameter 0.8 to 1.5 mm). It operates via unique physical and fluid mechanical principles:\n\n1. The Venturi Entrainment Principle:\nAccording to Bernoulli's principle, as gas passes through a narrow nozzle, velocity accelerates dramatically while lateral pressure drops below atmospheric. This high-velocity jet stream creates a localized negative pressure vortex at the nozzle tip, entraining surrounding air or humidified supplemental oxygen. The entrained gas volume combines with the jet driving volume, delivering a total tidal volume significantly larger than the primary jet pulse itself.\n\n2. High-Frequency Jet Ventilation (HFJV) Mechanisms:\nIn standard mechanical ventilation, gas exchange occurs via bulk convective flow (tidal volume > anatomical dead space). In contrast, HFJV delivers very small tidal volumes (1 to 3 mL/kg — often LESS than anatomical dead space) at high respiratory rates (100 to 600 breaths/min or 1.5 to 10 Hz). Gas transport occurs via non-convective physical mechanisms:\n• Bulk Convection: To proximal conducting airways.\n• Taylor-Type Turbulent Dispersion: Rapid axial dispersion driven by turbulent velocity profiles.\n• Pendelluft: Out-of-phase gas redistribution between adjacent alveoli with differing regional time constants.\n• Molecular Diffusion: Across the alveolar-capillary membrane.\n• Asymmetric Velocity Profiles: Inspiratory gas travels down the centre of the airway lumen at high velocity, while expiratory gas exits concurrently along the peripheral airway margins."
         },
         {
           "h": "Elective HFJV in Shared-Airway ENT & Thoracic Surgery",
@@ -4670,14 +4442,7 @@ window.KN_STUDY = {
         },
         {
           "h": "Emergency Transtracheal Jet Ventilation (TTJV) in the CICO Algorithm",
-          "b": "Emergency Transtracheal Jet Ventilation (TTJV) is a critical rescue modality in the Difficult Airway Society (DAS) and ASA 'Cannot Intubate, Cannot Oxygenate' (CICO) algorithm:\n\n1. Needle Cricothyroidotomy Technique:\nA large-bore, kink-resistant cannula (14-gauge or 12-gauge, e.g. Cook Melker or Ravussin cannula) attached to a 5 mL syringe half-filled with saline is inserted through the cricothyroid membrane at a 45-degree angle caudally. Continuous gentle aspiration is maintained during advancement; sudden aspiration of free air bubbles confirms tracheal entry. The flexible cannula is advanced into the trachea and the metal needle is withdrawn.\n\n2. Connection & Pressure Regulation:\nThe cannula is connected to a manual jet injector (e.g. Manujet 4000 or Sanders injector) attached to a 50 psi wall oxygen source. The driving pressure must be regulated: 1.0 to 1.5 bar for children; 2.0 to 3.0 bar for adults.\n\n3. Strict Duty Cycle (Inspiratory-to-Expiratory Ratio):\nThe trigger is depressed for 1 second (inspiration) followed by a MANDATORY 3 to 4 seconds release (expiration). An I:E ratio of 1:3 or 1:4 is essential to allow adequate passive exhalation through the upper airway.",
-          "images": [
-            {
-              "src": "assets/references/emergency-jet-cricothyrotomy-kit.jpg",
-              "alt": "Emergency needle cricothyroidotomy and jet ventilation kit",
-              "caption": "Emergency Front-of-Neck Access & Jet Ventilation Kit: Cricothyroidotomy needle cannula, syringe for tracheal aspiration confirmation, and high-pressure jet connection system."
-            }
-          ]
+          "b": "Emergency Transtracheal Jet Ventilation (TTJV) is a critical rescue modality in the Difficult Airway Society (DAS) and ASA 'Cannot Intubate, Cannot Oxygenate' (CICO) algorithm:\n\n1. Needle Cricothyroidotomy Technique:\nA large-bore, kink-resistant cannula (14-gauge or 12-gauge, e.g. Cook Melker or Ravussin cannula) attached to a 5 mL syringe half-filled with saline is inserted through the cricothyroid membrane at a 45-degree angle caudally. Continuous gentle aspiration is maintained during advancement; sudden aspiration of free air bubbles confirms tracheal entry. The flexible cannula is advanced into the trachea and the metal needle is withdrawn.\n\n2. Connection & Pressure Regulation:\nThe cannula is connected to a manual jet injector (e.g. Manujet 4000 or Sanders injector) attached to a 50 psi wall oxygen source. The driving pressure must be regulated: 1.0 to 1.5 bar for children; 2.0 to 3.0 bar for adults.\n\n3. Strict Duty Cycle (Inspiratory-to-Expiratory Ratio):\nThe trigger is depressed for 1 second (inspiration) followed by a MANDATORY 3 to 4 seconds release (expiration). An I:E ratio of 1:3 or 1:4 is essential to allow adequate passive exhalation through the upper airway."
         },
         {
           "h": "CATASTROPHIC HAZARD: Pulmonary Barotrauma & Mandatory Passive Expiration",
@@ -4780,14 +4545,7 @@ window.KN_STUDY = {
         },
         {
           "h": "Walking the Circuit: Step-by-Step Breakdown of the Hardware",
-          "b": "Take a close look at the ECMO circuit diagram embedded right above. Picture yourself standing next to the bed at 2 AM, tracing the blood from the moment it leaves the patient until it returns bright red. The whole system is a continuous closed extracorporeal loop:\n\n1. Drainage Cannula ('CO₂ Blood In'):\nA large-bore, wire-reinforced multi-stage cannula (21 to 25 French in adults) inserted through the femoral vein into the inferior vena cava. It has side holes along its length to drain dark, deoxygenated venous blood under negative suction pressure. Wire reinforcement is critical: without it, the flexible cannula would collapse completely under pump suction like a pinched drinking straw.\n\n2. Pre-Pump Line & Venous Access Stopcock:\nCarries venous blood toward the pump head. An integrated stopcock allows central venous blood sampling (pre-oxygenator venous blood gas) and emergency volume infusion.\n\n3. The Blood Pump (Centrifugal Vortex Impeller):\nForget the clunky roller pumps used for short cardiopulmonary bypass cases in the OR — long-term ECMO relies almost universally on magnetically levitated centrifugal pumps (such as the Maquet Rotaflow or Abbott CentriMag) spinning at 1500 to 4500 RPM. A spinning acrylic cone creates a constrained vortex that propels blood forward non-occlusively. Because it doesn't crush red cells against tubing walls, hemolysis is kept remarkably low even over weeks of continuous pumping.\n\n4. Pre-Membrane Pressure & Gas Monitor (P_{pre}):\nContinuously measures positive pressure generated by the pump as it forces viscous blood into the tight micro-fibers of the oxygenator.\n\n5. Polymethylpentene (PMP) Hollow-Fiber Membrane Oxygenator:\nThe artificial lung itself. Blood flows on the OUTSIDE of thousands of microscopic hollow fibers made of non-porous polymethylpentene (PMP), while sweep gas flows through the INSIDE of the fibers. Why PMP? Older polypropylene hollow fibers suffered from plasma leakage after 24–48 hours; modern PMP membranes prevent plasma breakthrough entirely, permitting weeks of continuous gas exchange without failure.\n\n6. Oxygen Blender (Sweep Gas Engine):\nA precision gas blender mixes pure medical oxygen and room air to supply 'sweep gas' into the fiber lumens. Here is the single most tested physiological concept in ECMO: Sweep gas flow rate (in L/min) regulates CO₂ removal (higher sweep gas flow = more CO₂ washed out = lower PaCO₂). ECMO blood flow rate (in L/min) and sweep FiO₂ regulate oxygenation (higher blood flow = more hemoglobin saturated = higher PaO₂).\n\n7. Heat Exchanger with Warm H₂O Bath:\nBlood running through extensive plastic tubing exposed to cold operating room or ICU air loses heat fast. An integrated counter-current water-jacket heat exchanger connected to a thermostatically regulated warm water bath warms blood back to 37.0°C before returning it to the body, preventing hypothermic coagulopathy.\n\n8. Post-Membrane Pressure & Gas Monitor (P_{post}):\nMonitors pressure exiting the oxygenator and verifies that post-membrane blood is hyper-oxygenated (PaO₂ typically 350 to 500 mmHg leaving the membrane).\n\n9. Reinfusion Cannula ('O₂ Blood Out'):\nA smaller, single-stage cannula (15 to 19 French) delivering fully oxygenated, warm blood back to the patient — into the internal jugular vein for VV-ECMO, or into the femoral artery for peripheral VA-ECMO.",
-          "images": [
-            {
-              "src": "assets/references/ecmo-circuit-diagram.png",
-              "alt": "ECMO Circuit diagram showing drainage cannula, pump, pre and post monitors, membrane oxygenator, oxygen blender, heat exchanger and reinfusion cannula",
-              "caption": "The Extracorporeal Membrane Oxygenation (ECMO) Circuit: Complete schematic illustrating the closed-loop pathway from venous drainage cannula, centrifugal blood pump, pre/post pressure & O₂/CO₂ monitoring points, polymethylpentene (PMP) hollow-fiber membrane oxygenator with oxygen blender sweep gas, water-jacket heat exchanger, and arterial/venous reinfusion cannula."
-            }
-          ]
+          "b": "Take a close look at the ECMO circuit diagram embedded right above. Picture yourself standing next to the bed at 2 AM, tracing the blood from the moment it leaves the patient until it returns bright red. The whole system is a continuous closed extracorporeal loop:\n\n1. Drainage Cannula ('CO₂ Blood In'):\nA large-bore, wire-reinforced multi-stage cannula (21 to 25 French in adults) inserted through the femoral vein into the inferior vena cava. It has side holes along its length to drain dark, deoxygenated venous blood under negative suction pressure. Wire reinforcement is critical: without it, the flexible cannula would collapse completely under pump suction like a pinched drinking straw.\n\n2. Pre-Pump Line & Venous Access Stopcock:\nCarries venous blood toward the pump head. An integrated stopcock allows central venous blood sampling (pre-oxygenator venous blood gas) and emergency volume infusion.\n\n3. The Blood Pump (Centrifugal Vortex Impeller):\nForget the clunky roller pumps used for short cardiopulmonary bypass cases in the OR — long-term ECMO relies almost universally on magnetically levitated centrifugal pumps (such as the Maquet Rotaflow or Abbott CentriMag) spinning at 1500 to 4500 RPM. A spinning acrylic cone creates a constrained vortex that propels blood forward non-occlusively. Because it doesn't crush red cells against tubing walls, hemolysis is kept remarkably low even over weeks of continuous pumping.\n\n4. Pre-Membrane Pressure & Gas Monitor (P_{pre}):\nContinuously measures positive pressure generated by the pump as it forces viscous blood into the tight micro-fibers of the oxygenator.\n\n5. Polymethylpentene (PMP) Hollow-Fiber Membrane Oxygenator:\nThe artificial lung itself. Blood flows on the OUTSIDE of thousands of microscopic hollow fibers made of non-porous polymethylpentene (PMP), while sweep gas flows through the INSIDE of the fibers. Why PMP? Older polypropylene hollow fibers suffered from plasma leakage after 24–48 hours; modern PMP membranes prevent plasma breakthrough entirely, permitting weeks of continuous gas exchange without failure.\n\n6. Oxygen Blender (Sweep Gas Engine):\nA precision gas blender mixes pure medical oxygen and room air to supply 'sweep gas' into the fiber lumens. Here is the single most tested physiological concept in ECMO: Sweep gas flow rate (in L/min) regulates CO₂ removal (higher sweep gas flow = more CO₂ washed out = lower PaCO₂). ECMO blood flow rate (in L/min) and sweep FiO₂ regulate oxygenation (higher blood flow = more hemoglobin saturated = higher PaO₂).\n\n7. Heat Exchanger with Warm H₂O Bath:\nBlood running through extensive plastic tubing exposed to cold operating room or ICU air loses heat fast. An integrated counter-current water-jacket heat exchanger connected to a thermostatically regulated warm water bath warms blood back to 37.0°C before returning it to the body, preventing hypothermic coagulopathy.\n\n8. Post-Membrane Pressure & Gas Monitor (P_{post}):\nMonitors pressure exiting the oxygenator and verifies that post-membrane blood is hyper-oxygenated (PaO₂ typically 350 to 500 mmHg leaving the membrane).\n\n9. Reinfusion Cannula ('O₂ Blood Out'):\nA smaller, single-stage cannula (15 to 19 French) delivering fully oxygenated, warm blood back to the patient — into the internal jugular vein for VV-ECMO, or into the femoral artery for peripheral VA-ECMO."
         },
         {
           "h": "Pressure Monitoring & Circuit Physics: The Three Pressures That Save Lives",
@@ -4919,14 +4677,7 @@ window.KN_STUDY = {
         },
         {
           "h": "Walking the Circuit: Step-by-Step Anatomy of the Haemodialysis Loop",
-          "b": "Examine the haemodialysis circuit diagram shown right above. Let's trace the journey of the blood from the patient's vascular access, through the pump, through the artificial kidney, and safely back:\n\n1. Vascular Access ('Blood removed for dialysis'):\nBlood is accessed via a surgical native arteriovenous fistula (AVF, Brescia-Cimino), an arteriovenous synthetic graft (AVG), or a dual-lumen non-cuffed (VasCath) or tunneled cuffed central catheter (PermCath) placed in the internal jugular vein. The RED tubing represents the arterial line (carrying blood out of the patient).\n\n2. Arterial Pressure Monitor:\nPositioned upstream of the blood pump. Because the pump is pulling blood from the vascular access, this transducer measures NEGATIVE suction pressure (normally -50 to -150 mmHg). Critical warning: if this reading plunges below -200 to -250 mmHg, the machine alarms for 'arterial access occlusion' — caused by cannula kink, catheter sucked against the vein wall, hypovolemia, or a clotted line!\n\n3. Peristaltic Roller Blood Pump:\nA precision electric drive head featuring two rotating roller pegs that compress flexible silicone blood tubing against a U-shaped curved race, squeezing blood forward at the programmed flow rate (100 to 450 mL/min).\n\n4. Heparin Syringe Pump (Anticoagulation Port):\nImmediately downstream of the blood pump, a computer-controlled syringe driver infuses unfractionated heparin (or pre-filter citrate) to prevent blood from clotting upon reaching the artificial plastic membrane.\n\n5. Dialyzer Inflow Pressure Monitor:\nMeasures the positive hydrostatic pressure of blood entering the top header of the dialyzer.\n\n6. The Dialyzer (The Artificial Nephron):\nA clear polycarbonate cylindrical housing containing 10,000 to 15,000 hollow microscopic capillary fibers made of biocompatible synthetic polymers (polysulfone, polyacrylonitrile, or polymethylmethacrylate). Blood flows DOWNWARD inside the hollow fibers, while warmed, sterile dialysate fluid flows UPWARD on the outside of the fibers. This is the counter-current flow principle: by moving blood and dialysate in opposite directions, a fresh concentration gradient is maintained across the entire length of the filter, maximizing solute diffusion according to Fick's law!\n\n7. Venous Blood Outflow Line:\nPurified, dialyzed blood exits the bottom of the dialyzer (green tubing) and travels upward toward the venous return assembly.\n\n8. Venous Bubble Trap / Drip Chamber & Pressure Monitor:\nA vertical chamber that acts as an air trap and clot filter. Blood enters at the top and pools at the bottom, allowing any micro-bubbles to float to the surface. A transducer continuously measures positive venous return pressure (normally +50 to +150 mmHg). A spike above +200 mmHg warns that the venous return needle or vein is obstructed.\n\n9. Ultrasonic Air Detector & Safety Shut-Off Clamp:\nSituated on the final return line. A piezoelectric crystal transmits high-frequency ultrasound through the tubing. If an air bubble as tiny as 20 microlitres passes, acoustic transmission is interrupted: within milliseconds, the spring-loaded electromagnetic clamp snaps shut on the tubing and halts the blood pump, preventing fatal venous air embolism!\n\n10. Return to Body ('Dialyzed blood returned to body'):\nClean, bubble-free blood returns safely into the patient's venous access needle or catheter lumen.",
-          "images": [
-            {
-              "src": "assets/references/haemodialysis-circuit-diagram.jpg",
-              "alt": "Haemodialysis circuit diagram showing blood removal, arterial monitor, roller pump, heparin syringe, dialyzer, venous drip chamber, and air detector clamp",
-              "caption": "The Haemodialysis Circuit: Complete schematic illustrating the closed-loop flow from patient access, negative pre-pump arterial pressure monitor, peristaltic blood pump, heparin anticoagulant infusion, hollow-fiber counter-current dialyzer, venous drip chamber and pressure monitor, ultrasonic air detector with emergency shut-off clamp, and venous return to the body."
-            }
-          ]
+          "b": "Examine the haemodialysis circuit diagram shown right above. Let's trace the journey of the blood from the patient's vascular access, through the pump, through the artificial kidney, and safely back:\n\n1. Vascular Access ('Blood removed for dialysis'):\nBlood is accessed via a surgical native arteriovenous fistula (AVF, Brescia-Cimino), an arteriovenous synthetic graft (AVG), or a dual-lumen non-cuffed (VasCath) or tunneled cuffed central catheter (PermCath) placed in the internal jugular vein. The RED tubing represents the arterial line (carrying blood out of the patient).\n\n2. Arterial Pressure Monitor:\nPositioned upstream of the blood pump. Because the pump is pulling blood from the vascular access, this transducer measures NEGATIVE suction pressure (normally -50 to -150 mmHg). Critical warning: if this reading plunges below -200 to -250 mmHg, the machine alarms for 'arterial access occlusion' — caused by cannula kink, catheter sucked against the vein wall, hypovolemia, or a clotted line!\n\n3. Peristaltic Roller Blood Pump:\nA precision electric drive head featuring two rotating roller pegs that compress flexible silicone blood tubing against a U-shaped curved race, squeezing blood forward at the programmed flow rate (100 to 450 mL/min).\n\n4. Heparin Syringe Pump (Anticoagulation Port):\nImmediately downstream of the blood pump, a computer-controlled syringe driver infuses unfractionated heparin (or pre-filter citrate) to prevent blood from clotting upon reaching the artificial plastic membrane.\n\n5. Dialyzer Inflow Pressure Monitor:\nMeasures the positive hydrostatic pressure of blood entering the top header of the dialyzer.\n\n6. The Dialyzer (The Artificial Nephron):\nA clear polycarbonate cylindrical housing containing 10,000 to 15,000 hollow microscopic capillary fibers made of biocompatible synthetic polymers (polysulfone, polyacrylonitrile, or polymethylmethacrylate). Blood flows DOWNWARD inside the hollow fibers, while warmed, sterile dialysate fluid flows UPWARD on the outside of the fibers. This is the counter-current flow principle: by moving blood and dialysate in opposite directions, a fresh concentration gradient is maintained across the entire length of the filter, maximizing solute diffusion according to Fick's law!\n\n7. Venous Blood Outflow Line:\nPurified, dialyzed blood exits the bottom of the dialyzer (green tubing) and travels upward toward the venous return assembly.\n\n8. Venous Bubble Trap / Drip Chamber & Pressure Monitor:\nA vertical chamber that acts as an air trap and clot filter. Blood enters at the top and pools at the bottom, allowing any micro-bubbles to float to the surface. A transducer continuously measures positive venous return pressure (normally +50 to +150 mmHg). A spike above +200 mmHg warns that the venous return needle or vein is obstructed.\n\n9. Ultrasonic Air Detector & Safety Shut-Off Clamp:\nSituated on the final return line. A piezoelectric crystal transmits high-frequency ultrasound through the tubing. If an air bubble as tiny as 20 microlitres passes, acoustic transmission is interrupted: within milliseconds, the spring-loaded electromagnetic clamp snaps shut on the tubing and halts the blood pump, preventing fatal venous air embolism!\n\n10. Return to Body ('Dialyzed blood returned to body'):\nClean, bubble-free blood returns safely into the patient's venous access needle or catheter lumen."
         },
         {
           "h": "Clearance Mechanisms & Physical Principles: Diffusion, Convection & Ultrafiltration",
@@ -4970,12 +4721,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Classification of Neuromuscular Monitoring: Qualitative vs Quantitative & Stimulation Patterns",
-          "image": {
-            "src": "assets/drugs/muscle-relaxant/muscle-relaxant_02_overview.jpg",
-            "alt": "Neuromuscular relaxants overview pearl",
-            "caption": "Neuromuscular Blockade Monitoring: Train-of-Four (TOF), double burst stimulation (DBS), and post-tetanic count (PTC).",
-            "wide": true
-          },
           "b": "Neuromuscular monitoring devices in modern anaesthesia practice are divided into two fundamental diagnostic tiers:\n\n1. Qualitative (Subjective) Monitoring — The Conventional Peripheral Nerve Stimulator (PNS):\nRelies entirely on the clinician's visual inspection or tactile palpation of evoked muscle twitches. While excellent for detecting intense or deep blockade (TOF count 0 vs 1–4), human fingers and eyes are notoriously incapable of detecting fade once the Train-of-Four (TOF) ratio exceeds 0.40! Extensive clinical trials prove that over 30% of patients extubated on the basis of 'normal tactile 4/4 twitches' actually harbor severe residual curarization (TOF ratio < 0.90).\n\n2. Quantitative (Objective) Neuromuscular Monitors — The 2023 Standard of Care:\nMeasures and calculates an exact numerical TOF ratio (T₄/T₁). The 2023 ASA and ESAIC Practice Guidelines make an unequivocal recommendation: whenever neuromuscular blocking agents are administered, quantitative monitoring at the adductor pollicis muscle MUST be utilized, and extubation must not occur until an objective TOF ratio ≥ 0.90 (≥ 90%) is documented!\n\n• Quantitative Technologies:\n  - Acceleromyography (AMG): Uses a piezoelectric ceramic crystal taped to the thumb. Acceleration is directly proportional to force (F = m × a). Most popular in clinical practice (e.g., TOFscan, Stimpod).\n  - Electromyography (EMG): Measures the Compound Muscle Action Potential (CMAP) electrical depolarization across muscle electrodes. Does not require free thumb mobility; ideal when hands are tucked or in robotic surgery.\n  - Kinemyography (KMG): Employs a flexible piezoelectric sensor in the thumb-index web space that measures bending angle.\n  - Mechanomyography (MMG): Measures isometric muscle contraction force via a strain gauge; historically the scientific gold standard, but bulky and limited to research.",
           "table": {
             "headers": [
@@ -5067,24 +4812,11 @@ window.KN_STUDY = {
         },
         {
           "h": "Electrode Placement & Polarity Rules: Where & How Leads are Attached",
-          "b": "Proper electrode placement and strict adherence to electrical polarity are mandatory to prevent false diagnoses of block depth. Examine the comprehensive reference schematic illustrated above.\n\n1. The Golden Rule of Polarity — Black is Cathode (-), Red is Anode (+):\n• Negative CATHODE (Black Wire):\n  - Must ALWAYS be placed DISTALLY, directly over the most superficial point of the target nerve path.\n  - Mechanism: Current enters the body at the negative cathode. The accumulation of negative electrons on the skin surface draws positive ions away from the outer surface of the nerve axon membrane, producing local membrane DEPOLARIZATION and triggering the action potential.\n• Positive ANODE (Red Wire):\n  - Placed PROXIMALLY along the course of the nerve, 2 to 5 cm proximal to the cathode (or on a non-excitable area).\n  - Hazard of Reversal (Anodal Block): If the positive anode is accidentally placed distally over the nerve, the positive charge hyperpolarizes the nerve membrane beneath it, blocking the forward propagation of action potentials initiated proximally! This 'anodal block' can falsely extinguish muscle twitches.\n\n2. Clinical Monitoring Sites & Muscle Sensitivities:\n\n• Site 1: Ulnar Nerve / Adductor Pollicis (The Gold Standard):\n  - Cathode (Black): Placed 1 to 2 cm proximal to the wrist crease on the volar aspect, just lateral to the flexor carpi ulnaris tendon.\n  - Anode (Red): Placed 2 to 3 cm proximally along the forearm.\n  - Evoked Movement: Pure ADDUCTION of the thumb (adductor pollicis muscle). Avoid confusing thumb flexion (flexor pollicis brevis, partly median-innervated) with true ulnar adduction!\n  - Clinical Profile: The adductor pollicis has a high proportion of slow-twitch fibers and is SENSITIVE to neuromuscular blockers. It is slower to recover than the diaphragm or larynx. Therefore, recovery at the adductor pollicis guarantees that the diaphragm, larynx, and upper airway musculature have fully recovered!\n\n• Site 2: Facial Nerve / Orbicularis Oculi & Corrugator Supercilii:\n  - Cathode (Black): Placed over the lateral eyebrow or temple (corrugator supercilii) or lateral canthus (orbicularis oculi).\n  - Anode (Red): Placed anterior to the tragus of the ear (over the parotid/main trunk of CN VII).\n  - Evoked Movement: Frowning of the eyebrow (corrugator) or eyelid closure (orbicularis).\n  - Critical Clinical Warning: Facial muscles — especially the corrugator supercilii — receive massive blood flow and mirror the onset and resistance of the DIAPHRAGM and VOCAL CORDS. Facial monitoring is excellent for confirming rapid readiness for endotracheal intubation. HOWEVER, NEVER EXTUBATE BASED ON FACIAL MONITORING! Facial twitches return long before the adductor pollicis and pharyngeal muscles. Extubating when facial TOF is 4/4 while adductor pollicis TOF is only 1/4 results in catastrophic postoperative pharyngeal collapse, upper airway obstruction, and pulmonary aspiration!\n\n• Site 3: Posterior Tibial Nerve / Flexor Hallucis Brevis:\n  - Cathode (Black): Placed posterior to the medial malleolus.\n  - Anode (Red): Placed 2 to 3 cm proximally along the medial lower leg.\n  - Evoked Movement: Plantar flexion of the great toe. Valuable alternative when hands and face are inaccessible (prone, spine, or head-and-neck surgery).",
-          "images": [
-            {
-              "src": "assets/references/nerve-stimulator-tof-ptc-diagram.png",
-              "alt": "Peripheral nerve stimulator setup, electrode polarity, TOF fade with rocuronium, post-tetanic count (PTC) after 50 Hz tetanus, and sugammadex recovery",
-              "caption": "Neuromuscular Monitoring Essentials: (Left) Ulnar electrode placement with distal black cathode (-) and proximal red anode (+). (Center-Top) TOF progression: 4 equal baseline twitches transition into progressive fade after Rocuronium, reaching deep block (TOF = 0). (Center-Bottom) When TOF = 0, application of 50 Hz tetanus mobilizes presynaptic ACh vesicles; following a 3s pause, 1 Hz twitches produce a Post-Tetanic Count (e.g. PTC = 6). (Right) Sugammadex administration rapidly encapsulates rocuronium, achieving complete recovery (TOF ratio >= 0.90)."
-            }
-          ]
+          "b": "Proper electrode placement and strict adherence to electrical polarity are mandatory to prevent false diagnoses of block depth. Examine the comprehensive reference schematic illustrated above.\n\n1. The Golden Rule of Polarity — Black is Cathode (-), Red is Anode (+):\n• Negative CATHODE (Black Wire):\n  - Must ALWAYS be placed DISTALLY, directly over the most superficial point of the target nerve path.\n  - Mechanism: Current enters the body at the negative cathode. The accumulation of negative electrons on the skin surface draws positive ions away from the outer surface of the nerve axon membrane, producing local membrane DEPOLARIZATION and triggering the action potential.\n• Positive ANODE (Red Wire):\n  - Placed PROXIMALLY along the course of the nerve, 2 to 5 cm proximal to the cathode (or on a non-excitable area).\n  - Hazard of Reversal (Anodal Block): If the positive anode is accidentally placed distally over the nerve, the positive charge hyperpolarizes the nerve membrane beneath it, blocking the forward propagation of action potentials initiated proximally! This 'anodal block' can falsely extinguish muscle twitches.\n\n2. Clinical Monitoring Sites & Muscle Sensitivities:\n\n• Site 1: Ulnar Nerve / Adductor Pollicis (The Gold Standard):\n  - Cathode (Black): Placed 1 to 2 cm proximal to the wrist crease on the volar aspect, just lateral to the flexor carpi ulnaris tendon.\n  - Anode (Red): Placed 2 to 3 cm proximally along the forearm.\n  - Evoked Movement: Pure ADDUCTION of the thumb (adductor pollicis muscle). Avoid confusing thumb flexion (flexor pollicis brevis, partly median-innervated) with true ulnar adduction!\n  - Clinical Profile: The adductor pollicis has a high proportion of slow-twitch fibers and is SENSITIVE to neuromuscular blockers. It is slower to recover than the diaphragm or larynx. Therefore, recovery at the adductor pollicis guarantees that the diaphragm, larynx, and upper airway musculature have fully recovered!\n\n• Site 2: Facial Nerve / Orbicularis Oculi & Corrugator Supercilii:\n  - Cathode (Black): Placed over the lateral eyebrow or temple (corrugator supercilii) or lateral canthus (orbicularis oculi).\n  - Anode (Red): Placed anterior to the tragus of the ear (over the parotid/main trunk of CN VII).\n  - Evoked Movement: Frowning of the eyebrow (corrugator) or eyelid closure (orbicularis).\n  - Critical Clinical Warning: Facial muscles — especially the corrugator supercilii — receive massive blood flow and mirror the onset and resistance of the DIAPHRAGM and VOCAL CORDS. Facial monitoring is excellent for confirming rapid readiness for endotracheal intubation. HOWEVER, NEVER EXTUBATE BASED ON FACIAL MONITORING! Facial twitches return long before the adductor pollicis and pharyngeal muscles. Extubating when facial TOF is 4/4 while adductor pollicis TOF is only 1/4 results in catastrophic postoperative pharyngeal collapse, upper airway obstruction, and pulmonary aspiration!\n\n• Site 3: Posterior Tibial Nerve / Flexor Hallucis Brevis:\n  - Cathode (Black): Placed posterior to the medial malleolus.\n  - Anode (Red): Placed 2 to 3 cm proximally along the medial lower leg.\n  - Evoked Movement: Plantar flexion of the great toe. Valuable alternative when hands and face are inaccessible (prone, spine, or head-and-neck surgery)."
         },
         {
           "h": "Detailed Stimulation Waveforms: Single Twitch, TOF, DBS, Tetanic & PTC",
-          "b": "To interpret a nerve stimulator like an expert, master each waveform pattern and its specific clinical application:\n\n1. Single Twitch (ST):\n• Delivery: Monophasic pulse at 0.1 Hz (one twitch every 10 seconds) or 1 Hz (one twitch per second).\n• Physiology: Measures the percentage depression of twitch height relative to a pre-relaxant supramaximal baseline (T₁ / T₀). By definition, the effective dose ED₉₅ is the dose of relaxant that depresses single twitch height by 95%.\n• Limitation: Requires establishing a baseline control before giving muscle relaxants; cannot detect subtle residual curarization.\n\n2. Train-of-Four (TOF):\n• Delivery: Four supramaximal pulses delivered at 2 Hz (0.5-second intervals) over exactly 2.0 seconds.\n• Frequency Mechanics: At 2 Hz, each pulse arrives before local acetylcholine vesicle replenishment can occur. In a unparalyzed patient, presynaptic ACh release has a 4- to 5-fold safety margin, so all 4 twitches are equal (T₁ = T₂ = T₃ = T₄, TOF ratio 1.0).\n• Non-Depolarising Block (The Fade Mechanism): Non-depolarising relaxants block presynaptic alpha-3-beta-2 (α_3β_2) nicotinic autoreceptors that normally govern positive feedback and mobilize reserve ACh vesicles. Consequently, available ACh runs down with each successive pulse, producing progressive FADE:\n  - T₄ disappears when ~75% of post-junctional receptors are occupied.\n  - T₃ disappears when ~80% of receptors are occupied.\n  - T₂ disappears when ~85% of receptors are occupied.\n  - T₁ disappears when ~90% to 95% of receptors are occupied (intense/deep block).\n• TOF Count vs TOF Ratio: When twitches are fading, we count visible twitches (0 to 4). Once all 4 twitches are visible, we measure the quantitative TOF ratio: T₄ / T₁.\n\n3. Double Burst Stimulation (DBS 3,3 & DBS 3,2):\n• Delivery: DBS 3,3 consists of two short bursts of three 50 Hz rectangular pulses (each burst lasting 40 ms) separated by a 750 ms pause. DBS 3,2 consists of 3 pulses followed 750 ms later by 2 pulses.\n• Tactical Advantage: Developed specifically to overcome the tactile limitations of human fingers. Evaluating fade between four tiny 2 Hz twitches is difficult; but feeling two distinct, separated muscle contractions is dramatically easier! The human hand can reliably detect tactile fade on DBS when the TOF ratio is between 0.60 and 0.70 (whereas tactile TOF fade is missed above 0.40).\n\n4. Tetanic Stimulation (50 Hz & 100 Hz):\n• Delivery: High-frequency continuous stimulation delivered at 50 Hz or 100 Hz for 5 seconds.\n• Physiology: Delivers 250 to 500 impulses in 5 seconds, placing immense demand on ACh synthesis and release. In normal muscle, sustained tetanus is maintained. In non-depolarising blockade, rapid exhaustion of ACh produces dramatic, steep fading of muscle tension.\n• Clinical Hazard: Highly painful! Strictly contraindicated in awake or lightly anaesthetized patients. Also causes marked post-tetanic facilitation that distorts subsequent TOF monitoring for up to 2 to 3 minutes.\n\n5. Post-Tetanic Potentiation & Post-Tetanic Count (PTC):\n• The Clinical Problem: When the patient is in a 'deep block' with a TOF count of 0, standard TOF cannot tell you whether the patient is 5 minutes or 60 minutes away from starting to recover!\n• The PTC Solution: Apply a 50 Hz tetanus for 5 seconds → wait a 3-second rest period → deliver 1 Hz single twitches at 1-second intervals, counting how many twitches appear!\n• The Mechanism: The 5-second 50 Hz tetanus drives a massive influx of presynaptic calcium, mobilizing large quantities of acetylcholine from reserve stores to the active release zones ('post-tetanic facilitation'). During the subsequent 1 Hz pulses, this flood of ACh temporarily overcomes the competitive non-depolarising blockade, generating detectable twitches!\n• Interpretation:\n  - PTC = 0: Intense block (even post-tetanic facilitation cannot evoke a twitch; surgical immobility for retinal or open abdominal surgery).\n  - PTC = 1 to 2: Deep block (first twitch appears after facilitation; this is the EXACT threshold for reversal with Sugammadex 4 mg/kg).\n  - PTC = 8 to 10: Moderate block is imminent; the first spontaneous TOF twitch (T₁) will appear within minutes.",
-          "image": {
-            "src": "assets/references/nerve-stimulator-tof-ptc-diagram.png",
-            "alt": "Neuromuscular Monitoring Waveforms: Train-of-Four (TOF) and Post-Tetanic Count (PTC)",
-            "caption": "Quantitative Neuromuscular Monitoring Waveforms: Single Twitch, TOF Ratio, Double Burst Stimulation (DBS) & Post-Tetanic Count (PTC)",
-            "wide": true
-          }
+          "b": "To interpret a nerve stimulator like an expert, master each waveform pattern and its specific clinical application:\n\n1. Single Twitch (ST):\n• Delivery: Monophasic pulse at 0.1 Hz (one twitch every 10 seconds) or 1 Hz (one twitch per second).\n• Physiology: Measures the percentage depression of twitch height relative to a pre-relaxant supramaximal baseline (T₁ / T₀). By definition, the effective dose ED₉₅ is the dose of relaxant that depresses single twitch height by 95%.\n• Limitation: Requires establishing a baseline control before giving muscle relaxants; cannot detect subtle residual curarization.\n\n2. Train-of-Four (TOF):\n• Delivery: Four supramaximal pulses delivered at 2 Hz (0.5-second intervals) over exactly 2.0 seconds.\n• Frequency Mechanics: At 2 Hz, each pulse arrives before local acetylcholine vesicle replenishment can occur. In a unparalyzed patient, presynaptic ACh release has a 4- to 5-fold safety margin, so all 4 twitches are equal (T₁ = T₂ = T₃ = T₄, TOF ratio 1.0).\n• Non-Depolarising Block (The Fade Mechanism): Non-depolarising relaxants block presynaptic alpha-3-beta-2 (α_3β_2) nicotinic autoreceptors that normally govern positive feedback and mobilize reserve ACh vesicles. Consequently, available ACh runs down with each successive pulse, producing progressive FADE:\n  - T₄ disappears when ~75% of post-junctional receptors are occupied.\n  - T₃ disappears when ~80% of receptors are occupied.\n  - T₂ disappears when ~85% of receptors are occupied.\n  - T₁ disappears when ~90% to 95% of receptors are occupied (intense/deep block).\n• TOF Count vs TOF Ratio: When twitches are fading, we count visible twitches (0 to 4). Once all 4 twitches are visible, we measure the quantitative TOF ratio: T₄ / T₁.\n\n3. Double Burst Stimulation (DBS 3,3 & DBS 3,2):\n• Delivery: DBS 3,3 consists of two short bursts of three 50 Hz rectangular pulses (each burst lasting 40 ms) separated by a 750 ms pause. DBS 3,2 consists of 3 pulses followed 750 ms later by 2 pulses.\n• Tactical Advantage: Developed specifically to overcome the tactile limitations of human fingers. Evaluating fade between four tiny 2 Hz twitches is difficult; but feeling two distinct, separated muscle contractions is dramatically easier! The human hand can reliably detect tactile fade on DBS when the TOF ratio is between 0.60 and 0.70 (whereas tactile TOF fade is missed above 0.40).\n\n4. Tetanic Stimulation (50 Hz & 100 Hz):\n• Delivery: High-frequency continuous stimulation delivered at 50 Hz or 100 Hz for 5 seconds.\n• Physiology: Delivers 250 to 500 impulses in 5 seconds, placing immense demand on ACh synthesis and release. In normal muscle, sustained tetanus is maintained. In non-depolarising blockade, rapid exhaustion of ACh produces dramatic, steep fading of muscle tension.\n• Clinical Hazard: Highly painful! Strictly contraindicated in awake or lightly anaesthetized patients. Also causes marked post-tetanic facilitation that distorts subsequent TOF monitoring for up to 2 to 3 minutes.\n\n5. Post-Tetanic Potentiation & Post-Tetanic Count (PTC):\n• The Clinical Problem: When the patient is in a 'deep block' with a TOF count of 0, standard TOF cannot tell you whether the patient is 5 minutes or 60 minutes away from starting to recover!\n• The PTC Solution: Apply a 50 Hz tetanus for 5 seconds → wait a 3-second rest period → deliver 1 Hz single twitches at 1-second intervals, counting how many twitches appear!\n• The Mechanism: The 5-second 50 Hz tetanus drives a massive influx of presynaptic calcium, mobilizing large quantities of acetylcholine from reserve stores to the active release zones ('post-tetanic facilitation'). During the subsequent 1 Hz pulses, this flood of ACh temporarily overcomes the competitive non-depolarising blockade, generating detectable twitches!\n• Interpretation:\n  - PTC = 0: Intense block (even post-tetanic facilitation cannot evoke a twitch; surgical immobility for retinal or open abdominal surgery).\n  - PTC = 1 to 2: Deep block (first twitch appears after facilitation; this is the EXACT threshold for reversal with Sugammadex 4 mg/kg).\n  - PTC = 8 to 10: Moderate block is imminent; the first spontaneous TOF twitch (T₁) will appear within minutes."
         },
         {
           "h": "Relationship to Reversal: Titrating Sugammadex vs Neostigmine (2023 Guidelines)",
@@ -5224,13 +4956,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Anatomy of the BVM: Every Component and Its Function",
-          "images": [
-            {
-              "src": "assets/references/ambu-bag-parts-labelled.jpg",
-              "alt": "Labelled parts of the Bag-Valve-Mask (BVM) Resuscitator",
-              "caption": "Anatomical Components of the Ambu Bag / BVM: Face mask, expiratory valve, PEEP valve, pop-off valve, self-inflating bag body, air-inlet one-way valve, pressure release valve, oxygen inlet tubing, and reservoir bag."
-            }
-          ],
           "b": "A standard adult BVM resuscitator consists of 8 major components that must each be present and functional:\n\n1. Self-Inflating Bag (Body Bag / Reservoir Bag):\n• Material: Flexible non-collapsing polyurethane, silicone, or EVA elastomeric shell that recoils automatically to its original shape after squeezing.\n• Adult Volume: 1400 to 1600 mL total capacity. Tidal volume per squeeze: 500 to 700 mL (6 to 8 mL/kg for a 70 kg adult). Paediatric: 250 mL (neonatal/infant), 500 mL (child).\n• Self-inflating mechanism: Bag refills passively from elastic recoil — drawing gas through the inlet valve from the oxygen reservoir behind it — without needing a pressurized gas source. This is the defining feature that distinguishes a BVM from an anaesthesia circuit.\n• Critical Limitation: If the oxygen reservoir bag/tube is empty or disconnected, the bag refills with room air (FiO₂ 0.21) SILENTLY with no alarm or visual warning.\n\n2. Patient Valve (Non-Rebreathing Valve / Duck-bill Valve / Fish-Mouth Valve):\n• Located at the patient end of the bag where the mask or ETT/LMA connector attaches.\n• Function: A one-way duck-bill or disc valve system with two critical jobs:\n  - During SQUEEZE (Inspiration): Opens to direct bag contents forward into the patient; simultaneously closes the expiratory port to prevent backflow into the bag.\n  - During RELEASE (Expiration): Closes the inspiratory port and opens the expiratory port to vent exhaled gas sideways to atmosphere — preventing CO₂ rebreathing.\n• Made of clear plastic — allows visual inspection for mucus plugs, blood, or vomitus blocking the valve.\n• Failure mode: If the duck-bill disc sticks, inverts, or is absent (e.g., not reassembled after cleaning), the patient's exhaled CO₂ recirculates into the bag — they rebreathe with each cycle without any clinical warning sign!\n\n3. Face Mask:\n• A clear, anatomically contoured, cushioned rim mask providing an airtight seal over the nose and mouth.\n• Clear mask preferred: Allows immediate detection of condensation (confirming airflow), fogging, vomitus, or secretions through the transparent body.\n• Sizes: 0 (preterm neonate) through 5 (large adult). Correct sizing: covers the bridge of the nose, sides of the face, and the chin dimple without compressing the eyes (risk of vagally-mediated bradycardia) or slipping off the chin.\n• Cuff: Inflatable cushion ring provides a conformable seal to irregular facial anatomy (beards, edentulous patients, facial trauma).\n\n4. Oxygen Reservoir System (Reservoir Bag or Reservoir Tube):\n• Adult standard: 2600 mL reservoir bag or a 0.5-metre reservoir tube attached to the oxygen inlet at the back of the self-inflating bag.\n• Function: Stores a pool of 100% oxygen adjacent to the inlet valve. When the self-inflating bag recoils between breaths, it draws from this reservoir — maintaining FiO₂ ≥ 0.85 to 1.0 at oxygen flow rates of 10 to 15 L/min.\n• Without reservoir: Even at 15 L/min O₂ flow, maximum FiO₂ delivered is only 0.40 to 0.60 — the bag refills faster than the oxygen flow can fill the inlet.\n• With a full reservoir at 15 L/min O₂: FiO₂ reliably ≥ 0.85 to 1.0 — the reservoir pre-fills with pure oxygen between breaths and provides a large bolus on the next bag recoil.\n• Critical danger: If the reservoir bag is absent, crimped, disconnected, or empty (oxygen supply failure) — FiO₂ delivered to the patient drops to 0.21 (room air). Clinically SILENT.\n\n5. Oxygen Inlet Port (Nipple / Tail Piece):\n• A standard barbed connector at the back of the bag.\n• Connects to the oxygen flowmeter tubing (standard green barbed oxygen connector).\n• Incorporates a spring-loaded check valve to prevent bag gas from back-flushing into the oxygen tubing during compression.\n\n6. Air Inlet Valve (Ambient Air Intake / One-Way Inlet Valve):\n• Located at the back of the bag adjacent to the oxygen inlet.\n• Opens during bag recoil to allow entry of oxygen (and room air if the oxygen reservoir is depleted) to refill the bag.\n• Contains a disc or duckbill valve — closes during bag compression to prevent delivered gas from backflowing into the reservoir.\n\n7. Pressure Relief / Pop-off Valve (Pressure Limiting Valve):\n• Paediatric BVMs ONLY (neonatal and child sizes): Pre-set pressure relief valve that opens at 40 to 45 cmH₂O to prevent barotrauma (neonatal lungs are extremely compliant and susceptible to pulmonary interstitial emphysema or pneumothorax at high pressures).\n• Adult BVMs: Generally do NOT have a pop-off valve — adult resuscitation requires the ability to deliver high inspiratory pressures to overcome high airway resistance and poor compliance during CPR.\n• Occlusion override: In neonatal bags, the pop-off valve can be manually occluded with the thumb during CPR when higher pressures are absolutely necessary (e.g., meconium aspiration syndrome).\n\n8. PEEP Valve (Optional Add-on Component):\n• A threshold resistor valve that screws onto the expiratory port of the patient valve.\n• Provides Positive End-Expiratory Pressure (5 to 20 cmH₂O) during manual ventilation — critical for ARDS, pulmonary oedema, or severe bronchospasm to maintain alveolar recruitment between breaths.\n• Not routinely attached; must be deliberately added when clinically indicated."
         },
         {
@@ -5304,12 +5029,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Spirometry Quality & Acceptability: Validating the Test First",
-          "image": {
-            "src": "assets/notes/pft/pft_01_intro.png",
-            "alt": "Pulmonary Function Testing Systematic Interpretation Framework",
-            "caption": "PFT Systematic Interpretation Roadmap: ATS/ERS acceptability criteria, spirometry loops, and volume-time curves.",
-            "wide": true
-          },
           "b": "Never interpret a Pulmonary Function Test without first confirming that the data meets international acceptability and repeatability criteria (ATS/ERS 2022 standards). Interpreting sub-maximal effort leads to false diagnoses of restriction or obstruction.\n\nEssential Technical Quality Criteria:\n1. Acceptable Start of Test:\n   • Rapid, sharp rise to Peak Expiratory Flow (PEF) without hesitation.\n   • Back-extrapolated volume (BEV) must be < 5% of FVC or < 0.100 L (whichever is greater). Excessive BEV (> 100 mL) indicates a hesitant start and artificially lowers FEV1.\n2. Exhalation Duration & End-of-Test Criteria:\n   • Minimum exhalation duration of ≥ 6 seconds in adults (≥ 3 seconds in children < 10 years).\n   • Plateau on volume-time curve: volume change < 0.025 L (25 mL) over the final 1.0 second of expiration, or inability to exhale further despite continuous verbal encouragement (e.g. up to 15 seconds).\n   • Absence of glottic closure, coughing during the first second, early termination, or leaks around the mouthpiece.\n3. Repeatability (Reproducibility):\n   • Patient performs a minimum of 3 acceptable maneuvers.\n   • The two highest FEV1 values must be within 150 mL (0.150 L) of each other.\n   • The two highest FVC values must be within 150 mL (0.150 L) of each other (100 mL if FVC < 1.0 L).\n   • Report the single HIGHEST FEV1 and HIGHEST FVC across all acceptable efforts (even if from different maneuvers). Note: The FEV1/FVC ratio is calculated from the single best maneuver with the largest sum of FEV1 + FVC."
         },
         {
@@ -5600,12 +5319,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Intrinsic Parenchymal Restriction: Pathology & Gas Transfer Deficits",
-          "image": {
-            "src": "assets/notes/pft/pft_04_restrictive-mixed.png",
-            "alt": "Restrictive and Mixed Ventilatory Defect PFT Pattern and Algorithms",
-            "caption": "Restrictive and mixed ventilatory defect differentiation: reduced TLC, normal vs low DLCO, and intrinsic versus extrinsic thoracic causes.",
-            "wide": true
-          },
           "b": "Intrinsic restrictive disorders involve inflammation and fibrosis of the alveolar walls, pulmonary interstitium, and capillary bed, leading to stiff, non-compliant lungs (reduced lung compliance CL).\n\nKey Etiologies:\n1. Idiopathic Interstitial Pneumonias: Idiopathic Pulmonary Fibrosis (IPF / UIP pattern), Non-Specific Interstitial Pneumonia (NSIP), Cryptogenic Organizing Pneumonia (COP).\n2. Connective Tissue Disease-Associated ILD: Systemic Sclerosis (Scleroderma), Rheumatoid Arthritis, SLE, Polymyositis/Dermatomyositis.\n3. Occupational & Environmental: Asbestosis, Silicosis, Chronic Hypersensitivity Pneumonitis (bird fancier's / farmer's lung), Berylliosis.\n4. Drug-Induced Pulmonary Toxicity:\n   • Bleomycin (cumulative dose > 400 units; synergistic lung injury with oxygen!).\n   • Amiodarone (lysosomal accumulation and free radical pneumonitis).\n   • Methotrexate, Busulfan, Nitrofurantoin, Checkpoint inhibitors (anti-PD-1 / CTLA-4).\n5. Radiation Fibrosis: Post-thoracic radiotherapy for breast or lung malignancy.\n\nPFT Signature of Intrinsic Restriction:\n• TLC < 80%, FVC < 80%, FEV1/FVC normal or high (> 0.80).\n• DLCO is MARKEDLY REDUCED (< 60–70% predicted) due to thickening of the alveolar-capillary barrier and loss of capillary bed surface area.\n• Transfer Coefficient (KCO = DLCO/VA) is REDUCED."
         },
         {
@@ -6830,12 +6543,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Sepsis-3 Diagnostic Criteria & Pathophysiological Cascade",
-          "image": {
-            "src": "assets/critical-care/icu_scoring_3_of_5.jpg",
-            "alt": "SOFA Score Organ Failure Assessment across six physiological domains",
-            "caption": "Sequential Organ Failure Assessment (SOFA) scoring matrix (0–4 points per organ): Respiratory (P/F ratio), Coagulation (platelets), Liver (bilirubin), Cardiovascular (vasopressors), CNS (GCS), and Renal (creatinine/urine output).",
-            "wide": true
-          },
           "b": "The Sepsis-3 International Consensus Definitions (Singer et al., JAMA 2016):\n• Sepsis: Life-threatening organ dysfunction caused by a dysregulated host response to infection.\n• Operational Diagnostic Criterion: An acute increase in total Sequential Organ Failure Assessment (SOFA) score by ≥ 2 points attributable to the infection (associated with in-hospital mortality > 10%).\n• Baseline SOFA: Assumed to be 0 unless known preexisting organ dysfunction.\n\nSeptic Shock Definition:\n• A subset of sepsis in which particularly profound circulatory, cellular, and metabolic abnormalities are associated with a greater risk of mortality (> 40%) than with sepsis alone.\n• Clinical Triad for Septic Shock:\n  1. Persistent hypotension requiring vasopressors to maintain Mean Arterial Pressure (MAP) ≥ 65 mmHg, AND\n  2. Serum lactate > 2.0 mmol/L (> 18 mg/dL), DESPITE adequate volume resuscitation.\n\nQuick SOFA (qSOFA) Bedside Screening (Not diagnostic; prompts bedside workup):\n• Respiratory rate ≥ 22 breaths/min (1 point).\n• Altered mentation / GCS < 15 (1 point).\n• Systolic blood pressure ≤ 100 mmHg (1 point).\n• Score ≥ 2 suggests high risk of poor outcome and sepsis.\n\nPathophysiological Cascade of Vasodilation & Shock:\n• Pathogen components (LPS, peptidoglycans) bind Toll-Like Receptors (TLR-4, TLR-2), activating NF-κB and releasing massive pro-inflammatory cytokines (TNF-α, IL-1β, IL-6).\n• Overexpression of Inducible Nitric Oxide Synthase (iNOS) produces excessive nitric oxide (NO), stimulating soluble guanylate cyclase and cGMP, causing profound arteriolar vasodilation refractory to sympathetic tone.\n• Endothelial glycocalyx shedding causes massive capillary leak and intravascular fluid extravasation into the interstitium.\n• Microvascular microthrombi and cytopathic hypoxia cause mitochondrial uncoupling and energetic failure.",
           "callout": {
             "type": "pearl",
@@ -6849,12 +6556,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Vasopressor & Inotrope Escalation Hierarchy",
-          "image": {
-            "src": "assets/drugs/vasoactive/vasoactive_11_methylene-blue.png",
-            "alt": "Methylene blue vasoplegia rescue pharmacology pearl",
-            "caption": "Methylene Blue: Guanylate cyclase inhibition, nitric oxide pathway blockade, and vasoplegia rescue in refractory septic shock.",
-            "wide": true
-          },
           "b": "When fluid resuscitation fails to restore MAP ≥ 65 mmHg, vasopressors must be escalated according to a standardized hierarchy:",
           "table": {
             "headers": [
@@ -6941,12 +6642,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Inotropic & Inodilator Pharmacotherapy",
-          "image": {
-            "src": "assets/drugs/vasoactive/vasoactive_09_milrinone.png",
-            "alt": "Milrinone inodilator pharmacology pearl",
-            "caption": "Milrinone: PDE3 inhibition, cyclic AMP accumulation, positive inotropy, and pulmonary/systemic vasodilation.",
-            "wide": true
-          },
           "b": "Selection of inotropic agents depends on blood pressure, pulmonary vascular resistance, and underlying beta-receptor sensitivity:",
           "table": {
             "headers": [
@@ -7352,13 +7047,7 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Classification & Physiological Mechanisms of the 4 Types",
-          "b": "Acute respiratory failure occurs when the respiratory system cannot adequately perform its fundamental functions of oxygenation (transferring O2 to pulmonary capillary blood) or carbon dioxide elimination (clearing CO2 from systemic venous blood).\n\nThe 4 Distinct Types of Respiratory Failure:\n\n1. Type 1: Acute Hypoxemic Respiratory Failure (Lung / Alveolar Failure):\n• Definition: PaO2 < 60 mmHg on room air with normal or low PaCO2.\n• Pathophysiologic Mechanisms:\n  - Ventilation-Perfusion (V/Q) Mismatch: Most common mechanism (COPD, asthma, pulmonary embolism). Responds well to supplemental oxygen.\n  - Intrapulmonary Right-to-Left Shunt: Blood perfuses completely non-aerated alveoli (ARDS, severe lobar pneumonia, complete atelectasis). Hallmark: Hypoxemia refractory to 100% FiO2; requires Positive End-Expiratory Pressure (PEEP) to recruit collapsed alveoli!\n  - Diffusion Limitation: Interstitial fibrosis, pulmonary edema.\n  - Alveolar Hypoventilation (High altitude or hypopnea).\n\n2. Type 2: Acute Hypercapnic Respiratory Failure (Pump / Ventilatory Failure):\n• Definition: PaCO2 > 45–50 mmHg with an uncompensated respiratory acidemia (pH < 7.35).\n• Pathophysiologic Mechanisms: Failure of the neuromuscular ventilatory pump or excessive respiratory load:\n  - Central Respiratory Depression: Opioid overdose, sedative toxicity, brainstem stroke.\n  - Neuromuscular Disorders: Guillain-Barré Syndrome, Myasthenia Gravis crisis, amyotrophic lateral sclerosis (ALS), cervical cord injury.\n  - Chest Wall / Pleural Deformities: Severe kyphoscoliosis, flail chest, morbid obesity-hypoventilation syndrome.\n  - High Resistive / Elastic Work of Breathing: Severe acute COPD exacerbation, dynamic hyperinflation.\n\n3. Type 3: Perioperative / Atelectatic Respiratory Failure:\n• Definition: Postoperative atelectasis and functional residual capacity (FRC) collapse occurring within 24–72 hours of surgery.\n• Mechanisms: General anesthesia and neuromuscular blockade promote dorsal basal atelectasis; diaphragmatic dysfunction; abdominal pain splinting; supine immobilization; opioid sedation blunting sigh reflexes.\n• Prevention & Treatment: Upright positioning, thoracic epidural / multimodal regional analgesia, incentive spirometry, early ambulation, and prophylactic post-op CPAP/NIV.\n\n4. Type 4: Shock / Hypoperfusion-Related Respiratory Failure:\n• Definition: Respiratory exhaustion occurring secondary to profound circulatory failure and systemic tissue hypoperfusion (cardiogenic shock, septic shock).\n• Physiology: Under normal conditions, respiratory muscles consume < 3–5% of total cardiac output. In severe shock and lactic acidosis, the work of breathing surges to consume up to 30% to 40% of the entire cardiac output!\n• Rationale for Early Elective Intubation: Mechanically unloading the respiratory muscles immediately diverts precious cardiac output and oxygen delivery back to the brain, heart, and kidneys!",
-          "image": {
-            "src": "assets/critical-care/ventilation/ventilation_01_modes-overview.png",
-            "alt": "Ventilator Modes Overview for Acute Respiratory Failure",
-            "caption": "Mechanical Ventilator Modes & Pressure/Volume Delivery Waveforms for Acute Hypoxemic and Hypercapnic Respiratory Failure",
-            "wide": true
-          }
+          "b": "Acute respiratory failure occurs when the respiratory system cannot adequately perform its fundamental functions of oxygenation (transferring O2 to pulmonary capillary blood) or carbon dioxide elimination (clearing CO2 from systemic venous blood).\n\nThe 4 Distinct Types of Respiratory Failure:\n\n1. Type 1: Acute Hypoxemic Respiratory Failure (Lung / Alveolar Failure):\n• Definition: PaO2 < 60 mmHg on room air with normal or low PaCO2.\n• Pathophysiologic Mechanisms:\n  - Ventilation-Perfusion (V/Q) Mismatch: Most common mechanism (COPD, asthma, pulmonary embolism). Responds well to supplemental oxygen.\n  - Intrapulmonary Right-to-Left Shunt: Blood perfuses completely non-aerated alveoli (ARDS, severe lobar pneumonia, complete atelectasis). Hallmark: Hypoxemia refractory to 100% FiO2; requires Positive End-Expiratory Pressure (PEEP) to recruit collapsed alveoli!\n  - Diffusion Limitation: Interstitial fibrosis, pulmonary edema.\n  - Alveolar Hypoventilation (High altitude or hypopnea).\n\n2. Type 2: Acute Hypercapnic Respiratory Failure (Pump / Ventilatory Failure):\n• Definition: PaCO2 > 45–50 mmHg with an uncompensated respiratory acidemia (pH < 7.35).\n• Pathophysiologic Mechanisms: Failure of the neuromuscular ventilatory pump or excessive respiratory load:\n  - Central Respiratory Depression: Opioid overdose, sedative toxicity, brainstem stroke.\n  - Neuromuscular Disorders: Guillain-Barré Syndrome, Myasthenia Gravis crisis, amyotrophic lateral sclerosis (ALS), cervical cord injury.\n  - Chest Wall / Pleural Deformities: Severe kyphoscoliosis, flail chest, morbid obesity-hypoventilation syndrome.\n  - High Resistive / Elastic Work of Breathing: Severe acute COPD exacerbation, dynamic hyperinflation.\n\n3. Type 3: Perioperative / Atelectatic Respiratory Failure:\n• Definition: Postoperative atelectasis and functional residual capacity (FRC) collapse occurring within 24–72 hours of surgery.\n• Mechanisms: General anesthesia and neuromuscular blockade promote dorsal basal atelectasis; diaphragmatic dysfunction; abdominal pain splinting; supine immobilization; opioid sedation blunting sigh reflexes.\n• Prevention & Treatment: Upright positioning, thoracic epidural / multimodal regional analgesia, incentive spirometry, early ambulation, and prophylactic post-op CPAP/NIV.\n\n4. Type 4: Shock / Hypoperfusion-Related Respiratory Failure:\n• Definition: Respiratory exhaustion occurring secondary to profound circulatory failure and systemic tissue hypoperfusion (cardiogenic shock, septic shock).\n• Physiology: Under normal conditions, respiratory muscles consume < 3–5% of total cardiac output. In severe shock and lactic acidosis, the work of breathing surges to consume up to 30% to 40% of the entire cardiac output!\n• Rationale for Early Elective Intubation: Mechanically unloading the respiratory muscles immediately diverts precious cardiac output and oxygen delivery back to the brain, heart, and kidneys!"
         },
         {
           "h": "The Alveolar-Arterial (A-a) Oxygen Gradient",
@@ -7413,13 +7102,7 @@ window.KN_STUDY = {
         },
         {
           "h": "High-Flow Nasal Cannula (HFNC) & The ROX Index",
-          "b": "Mechanisms & Physiological Benefits of HFNC:\n• Delivers warmed (37°C), fully humidified gas at flow rates up to 60 to 80 L/min with titratable FiO2 (0.21 to 1.0).\n• Dead-Space Washout: Flushes nasopharyngeal anatomical dead space, clearing expired CO2 and creating a reservoir of fresh gas.\n• Dynamic Flow-Dependent PEEP: Generates modest PEEP (~0.7 to 1.0 cmH2O per 10 L/min flow with closed mouth).\n• Matches Peak Inspiratory Demand: Critically ill tachypneic patients have peak inspiratory flow rates of 60 to 100 L/min. HFNC eliminates entrainment of room air, delivering precise FiO2.\n\nThe ROX Index (Prediction of HFNC Success vs Failure):\n• Formula: ROX Index = (SpO2 / FiO2) / Respiratory Rate (breaths/min).\n• Example: SpO2 94% on FiO2 0.60, RR 24 bpm → (94 / 0.60) / 24 = 156.7 / 24 = 6.53.\n\nROX Decision Thresholds (FLORALI Trial & Roca et al.):\n• ROX ≥ 4.88 (measured at 2, 6, and 12 hours): Highly predictive of HFNC success; patient can safely remain on HFNC.\n• ROX 3.85 to 4.87: Intermediate zone; repeat measurement within 1 to 2 hours with close clinical monitoring.\n• ROX less than 3.85: HIGH RISK OF FAILURE (greater than 85% fail). DO NOT DELAY ENDOTRACHEAL INTUBATION!\n• Crucial Clinical Rule: Delayed intubation under a failing trial of HFNC is associated with increased emergency airway complications and significantly higher mortality!",
-          "image": {
-            "src": "assets/references/thrive-hfno-nasal-cannula.png",
-            "alt": "High-Flow Nasal Cannula (HFNC) Physiological Mechanisms",
-            "caption": "High-Flow Nasal Cannula (HFNC / THRIVE): Dynamic Dead-Space Washout, PEEP Generation (0.7 cmH2O / 10 L/min) & ROX Index Monitoring",
-            "wide": true
-          }
+          "b": "Mechanisms & Physiological Benefits of HFNC:\n• Delivers warmed (37°C), fully humidified gas at flow rates up to 60 to 80 L/min with titratable FiO2 (0.21 to 1.0).\n• Dead-Space Washout: Flushes nasopharyngeal anatomical dead space, clearing expired CO2 and creating a reservoir of fresh gas.\n• Dynamic Flow-Dependent PEEP: Generates modest PEEP (~0.7 to 1.0 cmH2O per 10 L/min flow with closed mouth).\n• Matches Peak Inspiratory Demand: Critically ill tachypneic patients have peak inspiratory flow rates of 60 to 100 L/min. HFNC eliminates entrainment of room air, delivering precise FiO2.\n\nThe ROX Index (Prediction of HFNC Success vs Failure):\n• Formula: ROX Index = (SpO2 / FiO2) / Respiratory Rate (breaths/min).\n• Example: SpO2 94% on FiO2 0.60, RR 24 bpm → (94 / 0.60) / 24 = 156.7 / 24 = 6.53.\n\nROX Decision Thresholds (FLORALI Trial & Roca et al.):\n• ROX ≥ 4.88 (measured at 2, 6, and 12 hours): Highly predictive of HFNC success; patient can safely remain on HFNC.\n• ROX 3.85 to 4.87: Intermediate zone; repeat measurement within 1 to 2 hours with close clinical monitoring.\n• ROX less than 3.85: HIGH RISK OF FAILURE (greater than 85% fail). DO NOT DELAY ENDOTRACHEAL INTUBATION!\n• Crucial Clinical Rule: Delayed intubation under a failing trial of HFNC is associated with increased emergency airway complications and significantly higher mortality!"
         },
         {
           "h": "Non-Invasive Positive Pressure Ventilation (NIV)",
@@ -7456,12 +7139,6 @@ window.KN_STUDY = {
         },
         {
           "h": "The ARMA Lung-Protective Ventilation Protocol",
-          "image": {
-            "src": "assets/critical-care/ventilation/ventilation_03_pcv.png",
-            "alt": "Pressure-Controlled Ventilation (PCV) Waveforms and Decelerating Flow Dynamics",
-            "caption": "Pressure-Controlled Ventilation (PCV) in ARDS: Fixed inspiratory pressure, decelerating ramp flow, and tight airway pressure limits to prevent barotrauma.",
-            "wide": true
-          },
           "b": "The ARMA Landmark Trial (ARDS Network, NEJM 2000):\n• Demonstrated that lower tidal volume ventilation (6 mL/kg PBW) reduced 28-day mortality from 39.8% to 31.0% (an 8.8% absolute mortality reduction!) compared to traditional ventilation (12 mL/kg).\n\nStep 1: Calculate Predicted Body Weight (PBW):\n• NEVER use actual body weight! Adipose tissue does not increase lung volume; ventilating an obese patient based on actual weight causes catastrophic volutrauma.\n• Male PBW (kg) = 50 + 0.91 × [Height in cm - 152.4]\n• Female PBW (kg) = 45.5 + 0.91 × [Height in cm - 152.4]\n\nStep 2: Set Initial Tidal Volume (VT):\n• Start at 6 mL/kg PBW in Volume Assist-Control mode.\n• Titrate down by 1 mL/kg increments (down to 5 or 4 mL/kg PBW) if Plateau Pressure exceeds 30 cmH2O.\n\nStep 3: Plateau Pressure (Pplat) Ceiling:\n• Target Pplat ≤ 30 cmH2O.\n• Measured by performing a 0.5-second end-inspiratory pause during passive mechanical ventilation (zero patient inspiratory effort).",
           "callout": {
             "type": "pearl",
@@ -7514,13 +7191,7 @@ window.KN_STUDY = {
         },
         {
           "h": "Neuromuscular Blockade & Sedation Strategies",
-          "b": "Reconciling ACURASYS vs ROSE Trials:\n\n1. The ACURASYS Trial (Papazian et al., NEJM 2010):\n• Protocol: Continuous infusion of Cisatracurium besylate for 48 hours in early severe ARDS (PaO2/FiO2 < 150).\n• Findings: Significant improvement in 90-day survival (adjusted HR 0.68) and increased ventilator-free days without causing ICU-acquired weakness.\n\n2. The ROSE Trial (PETAL Network, NEJM 2019):\n• Protocol: Routine early paralysis with deep sedation vs light sedation with as-needed paralysis.\n• Findings: No significant difference in 90-day mortality (42.5% vs 42.8%). The light sedation arm had fewer cardiovascular events and earlier mobilization.\n\nModern Evidence-Based Consensus:\n• Routine 48-hour neuromuscular blockade is NO LONGER mandatory for all ARDS patients.\n• Specific Indications for Neuromuscular Blockade in ARDS:\n  1. Severe patient-ventilator dyssynchrony refractory to deep sedation.\n  2. Breath-stacking and double-triggering generating excessive tidal volumes (reverse triggering).\n  3. Pendelluft phenomenon (occult gas movement between lung units causing regional alveolar overdistension).\n  4. Inability to maintain target plateau pressure (≤ 30 cmH2O) or driving pressure (≤ 14 cmH2O).\n  5. Facilitation of safe prone positioning.",
-          "image": {
-            "src": "assets/references/ecmo-circuit-diagram.png",
-            "alt": "Extracorporeal Membrane Oxygenation (ECMO) Circuit Architecture",
-            "caption": "Veno-Venous (V-V) and Veno-Arterial (V-A) ECMO Circuit Architecture: Centrifugal Pump, Membrane Oxygenator & Cannulation Configurations",
-            "wide": true
-          }
+          "b": "Reconciling ACURASYS vs ROSE Trials:\n\n1. The ACURASYS Trial (Papazian et al., NEJM 2010):\n• Protocol: Continuous infusion of Cisatracurium besylate for 48 hours in early severe ARDS (PaO2/FiO2 < 150).\n• Findings: Significant improvement in 90-day survival (adjusted HR 0.68) and increased ventilator-free days without causing ICU-acquired weakness.\n\n2. The ROSE Trial (PETAL Network, NEJM 2019):\n• Protocol: Routine early paralysis with deep sedation vs light sedation with as-needed paralysis.\n• Findings: No significant difference in 90-day mortality (42.5% vs 42.8%). The light sedation arm had fewer cardiovascular events and earlier mobilization.\n\nModern Evidence-Based Consensus:\n• Routine 48-hour neuromuscular blockade is NO LONGER mandatory for all ARDS patients.\n• Specific Indications for Neuromuscular Blockade in ARDS:\n  1. Severe patient-ventilator dyssynchrony refractory to deep sedation.\n  2. Breath-stacking and double-triggering generating excessive tidal volumes (reverse triggering).\n  3. Pendelluft phenomenon (occult gas movement between lung units causing regional alveolar overdistension).\n  4. Inability to maintain target plateau pressure (≤ 30 cmH2O) or driving pressure (≤ 14 cmH2O).\n  5. Facilitation of safe prone positioning."
         },
         {
           "h": "Inhaled Pulmonary Vasodilators (Epoprostenol & Nitric Oxide)",
@@ -7557,23 +7228,11 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Pathophysiology: Dynamic Hyperinflation & Auto-PEEP",
-          "b": "The Core Obstruction Mechanism:\n• Severe diffuse bronchospasm, extensive mucosal edema, and tenacious intraluminal mucus plugging cause massive increases in airway resistance (Raw).\n• The Expiratory Time Constant (τ = Raw × Crs) is markedly prolonged. Normal lung empties in 3 time constants (~0.6–0.9 seconds); in severe asthma, complete exhalation requires > 3 to 5 seconds!\n\nDynamic Hyperinflation & Auto-PEEP:\n• When the respiratory rate is too rapid, the patient initiates the next breath before the lungs have fully exhaled to functional residual capacity (incomplete expiration).\n• Gas is trapped in the alveoli with each breath (breath-stacking), causing end-expiratory lung volume to increase progressively.\n• This generates Intrinsic PEEP (Auto-PEEP), which can easily reach 15 to 25 cmH2O!\n\nHemodynamic Consequences (The Death Trap):\n• Extreme intrathoracic pressure compresses the pulmonary capillary bed and superior/inferior vena cava, halting venous return to the right heart.\n• Induces acute right ventricular afterload mismatch and reduces left ventricular filling, causing profound hypotension, electromechanical dissociation (PEA), and circulatory arrest upon intubation!\n\nBedside Measurement of Auto-PEEP:\n• Perform an END-EXPIRATORY HOLD maneuver for 2 to 3 seconds on the ventilator during passive breathing:\n• Total PEEP = Measured plateau pressure at end-expiration.\n• Auto-PEEP (Intrinsic PEEP) = Total PEEP - Set Extrinsic PEEP.",
-          "image": {
-            "src": "assets/notes/pft/pft_03_obstructive.png",
-            "alt": "Obstructive Flow-Volume Curve & Dynamic Airway Compression",
-            "caption": "Expiratory Flow Limitation and Dynamic Hyperinflation in Status Asthmaticus and Severe COPD Exacerbation",
-            "wide": true
-          }
+          "b": "The Core Obstruction Mechanism:\n• Severe diffuse bronchospasm, extensive mucosal edema, and tenacious intraluminal mucus plugging cause massive increases in airway resistance (Raw).\n• The Expiratory Time Constant (τ = Raw × Crs) is markedly prolonged. Normal lung empties in 3 time constants (~0.6–0.9 seconds); in severe asthma, complete exhalation requires > 3 to 5 seconds!\n\nDynamic Hyperinflation & Auto-PEEP:\n• When the respiratory rate is too rapid, the patient initiates the next breath before the lungs have fully exhaled to functional residual capacity (incomplete expiration).\n• Gas is trapped in the alveoli with each breath (breath-stacking), causing end-expiratory lung volume to increase progressively.\n• This generates Intrinsic PEEP (Auto-PEEP), which can easily reach 15 to 25 cmH2O!\n\nHemodynamic Consequences (The Death Trap):\n• Extreme intrathoracic pressure compresses the pulmonary capillary bed and superior/inferior vena cava, halting venous return to the right heart.\n• Induces acute right ventricular afterload mismatch and reduces left ventricular filling, causing profound hypotension, electromechanical dissociation (PEA), and circulatory arrest upon intubation!\n\nBedside Measurement of Auto-PEEP:\n• Perform an END-EXPIRATORY HOLD maneuver for 2 to 3 seconds on the ventilator during passive breathing:\n• Total PEEP = Measured plateau pressure at end-expiration.\n• Auto-PEEP (Intrinsic PEEP) = Total PEEP - Set Extrinsic PEEP."
         },
         {
           "h": "Mechanical Ventilation Strategies in Obstructive Airway Disease",
-          "b": "Mechanical ventilation in severe obstructive disease is supportive, NOT curative. The sole goal is to buy time for medical therapy to work while preventing fatal dynamic hyperinflation.\n\nThe 4 Golden Mechanical Rules:\n1. Low Respiratory Rate: Set RR to 10 to 12 breaths/min (maximizes expiratory time Te).\n2. Long Expiratory Time (I:E Ratio): Set I:E ratio to 1:3, 1:4, or 1:5.\n3. High Inspiratory Flow Rate: 70 to 90 L/min using a square inspiratory waveform (delivers the tidal volume rapidly, shortening inspiratory time Ti and leaving maximum time for expiration).\n4. Low-to-Moderate Tidal Volume: 6 to 8 mL/kg PBW.\n\nSetting Extrinsic PEEP — The Critical Divergence:\n• In Acute COPD Exacerbation (Dynamic Airway Collapse): Set extrinsic PEEP to 70% to 80% of measured auto-PEEP. This acts as a pneumatic stent, keeping collapsed distal airways open during expiration and reducing the patient's inspiratory trigger work of breathing without increasing alveolar pressure ('the waterfall concept').\n• In Severe Acute Asthma (Fixed Inflammatory Bronchospasm): Extrinsic PEEP does NOT stent airways open; it adds directly to auto-PEEP, worsening hyperinflation and hemodynamic collapse! Keep extrinsic PEEP minimal (0 to 5 cmH2O).\n\nPermissive Hypercapnia Mandate:\n• Prioritize alveolar emptying over carbon dioxide clearance! Allow PaCO2 to rise to 60 to 90 mmHg as long as arterial pH remains ≥ 7.15–7.20. Administer IV sodium bicarbonate only if pH drops below 7.15.",
-          "image": {
-            "src": "assets/critical-care/ventilation/ventilation_08_cpap-niv.png",
-            "alt": "Mechanical Ventilation Waveforms in Obstructive Airway Disease",
-            "caption": "Mechanical Ventilation in Severe Airway Obstruction: Expiratory Time Prolongation, Permissive Hypercapnia & Auto-PEEP Mitigation",
-            "wide": true
-          }
+          "b": "Mechanical ventilation in severe obstructive disease is supportive, NOT curative. The sole goal is to buy time for medical therapy to work while preventing fatal dynamic hyperinflation.\n\nThe 4 Golden Mechanical Rules:\n1. Low Respiratory Rate: Set RR to 10 to 12 breaths/min (maximizes expiratory time Te).\n2. Long Expiratory Time (I:E Ratio): Set I:E ratio to 1:3, 1:4, or 1:5.\n3. High Inspiratory Flow Rate: 70 to 90 L/min using a square inspiratory waveform (delivers the tidal volume rapidly, shortening inspiratory time Ti and leaving maximum time for expiration).\n4. Low-to-Moderate Tidal Volume: 6 to 8 mL/kg PBW.\n\nSetting Extrinsic PEEP — The Critical Divergence:\n• In Acute COPD Exacerbation (Dynamic Airway Collapse): Set extrinsic PEEP to 70% to 80% of measured auto-PEEP. This acts as a pneumatic stent, keeping collapsed distal airways open during expiration and reducing the patient's inspiratory trigger work of breathing without increasing alveolar pressure ('the waterfall concept').\n• In Severe Acute Asthma (Fixed Inflammatory Bronchospasm): Extrinsic PEEP does NOT stent airways open; it adds directly to auto-PEEP, worsening hyperinflation and hemodynamic collapse! Keep extrinsic PEEP minimal (0 to 5 cmH2O).\n\nPermissive Hypercapnia Mandate:\n• Prioritize alveolar emptying over carbon dioxide clearance! Allow PaCO2 to rise to 60 to 90 mmHg as long as arterial pH remains ≥ 7.15–7.20. Administer IV sodium bicarbonate only if pH drops below 7.15."
         },
         {
           "h": "Acute Post-Intubation Collapse & The Ventilator Disconnect Rule",
@@ -7695,12 +7354,6 @@ window.KN_STUDY = {
         },
         {
           "h": "The Spontaneous Breathing Trial (SBT): Protocols & Failure Triggers",
-          "image": {
-            "src": "assets/critical-care/ventilation/ventilation_05_psv.png",
-            "alt": "Pressure Support Ventilation (PSV) Waveforms and Cycling Dynamics",
-            "caption": "Pressure Support Ventilation (PSV) in SBT: Patient-triggered, pressure-limited, flow-cycled ventilation overcoming endotracheal tube resistance.",
-            "wide": true
-          },
           "b": "SBT Modality: Low-PSV vs T-Piece Trial:\n• Low-Pressure Support Ventilation (PSV): Pressure Support 5 to 8 cmH2O with PEEP 0 to 5 cmH2O for 30 to 120 minutes.\n• T-Piece Trial: Complete disconnection from the ventilator, breathing humidified oxygen via a T-piece circuit for 30 to 120 minutes.\n• Landmark Evidence (Subira et al., JAMA 2019):\n  - A 30-minute SBT conducted with low-level Pressure Support significantly increased successful extubation rates (82.5% vs 75.9%) compared to a 2-hour T-piece trial!\n  - Low-PSV overcomes the artificial resistive work of breathing imposed by the endotracheal tube without providing unearned assistance.\n\nObjective SBT Failure Criteria (Terminate trial immediately if ANY are present):\n1. Tachypnea: Respiratory rate > 35 breaths/min (or less than 8 breaths/min) for greater than 5 minutes.\n2. Hypoxemia: SpO2 < 90% on FiO2 ≤ 0.40 (or PaO2 < 60 mmHg).\n3. Hemodynamic Instability: Heart rate > 140 bpm or sustained change > 20%; Systolic BP > 180 mmHg or < 90 mmHg.\n4. Work of Breathing: Intercostal indrawing, suprasternal retractions, diaphoresis, or thoracoabdominal paradoxical breathing (diaphragmatic fatigue!).\n5. Mental Status Deterioration: Agitation, panic, anxiety, somnolence, or obtundation."
         },
         {
@@ -7709,12 +7362,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Post-Extubation Failure & Prophylactic NIV/HFNC",
-          "image": {
-            "src": "assets/critical-care/ventilation/ventilation_08_cpap-niv.png",
-            "alt": "Non-Invasive Ventilation (NIV) and CPAP Mechanisms and Waveforms",
-            "caption": "Non-Invasive Ventilation (NIV) & CPAP: Bilevel positive airway pressure (IPAP/EPAP) mechanics preventing post-extubation failure in high-risk patients.",
-            "wide": true
-          },
           "b": "The High-Risk Extubation Failure Population:\n• Age > 65 years.\n• Underlying Chronic Obstructive Pulmonary Disease (COPD) or Congestive Heart Failure (CHF).\n• Hypercapnia at the end of the SBT (PaCO2 > 45 mmHg).\n• High Body Mass Index (BMI > 30).\n• Multiple failed previous weaning attempts or prolonged mechanical ventilation (> 7 days).\n\nProphylactic Post-Extubation Protocol (NIV / HFNC):\n• In high-risk patients, DO NOT wait for respiratory failure to develop post-extubation!\n• Apply Non-Invasive Ventilation (NIV) or High-Flow Nasal Cannula (HFNC) IMMEDIATELY upon extubation in the ICU.\n• Evidence: Prophylactic post-extubation NIV/HFNC reduces re-intubation rates from 15.9% to 7.4% and significantly lowers 90-day mortality.\n\nThe Trap of Rescue NIV in Unselected Patients:\n• If an unselected patient without underlying COPD or CHF develops acute respiratory distress hours after extubation, RESCUE NIV IS HARMFUL!\n• Several randomized trials demonstrate that rescue NIV delays inevitable re-intubation, increases aspiration risk, and significantly increases mortality!\n• Rule: If respiratory failure develops post-extubation in an unselected patient, promptly RE-INTUBATE without delay."
         }
       ],
@@ -7745,12 +7392,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "ICU Organization, Staffing Models & Triage Principles",
-          "image": {
-            "src": "assets/critical-care/icu_scoring_1_of_5.jpg",
-            "alt": "ICU Scoring Pearl: Why do we score and key recommendations",
-            "caption": "Why do we score in critical care: quantifying severity of illness, predicting mortality, guiding escalation decisions, and tracking clinical trends over time.",
-            "wide": true
-          },
           "b": "• Levels of ICU Care:\n  - Level 1 (Community ICU): Provides basic mechanical ventilation, invasive monitoring, and resuscitation; transfers complex multisystem failure.\n  - Level 2 (Intermediate ICU): Capable of managing most critical illnesses with multi-organ failure, invasive monitoring, hemodialysis, and comprehensive surgical support.\n  - Level 3 (Tertiary/Quaternary Academic ICU): Comprehensive apex tertiary care with advanced subspecialty services, mechanical circulatory support (ECMO, VAD), cardiothoracic surgery, neurotrauma, and 24/7 in-house intensivists.\n\n• Staffing Models:\n  - Closed ICU: Patients admitted directly under the primary care of a dedicated board-certified Intensivist team. Proven to reduce ICU mortality (RR 0.85), decrease ventilator days, and shorten ICU length of stay.\n  - Open ICU: Primary admitting physician retains overall care and requests elective critical care consultations.\n  - Staffing Ratios: Physician-to-patient ratio optimal at **1:8 to 1:14**; Nurse-to-patient ratio **1:1** for mechanically ventilated, unstable, or ECMO/CRRT patients, and **1:2** for stabilized ICU patients.\n\n• SCCM ICU Triage Priorities:\n  - Priority 1: Critically ill, unstable patients requiring immediate intensive monitoring and interventions unavailable outside the ICU (e.g., severe shock, status asthmaticus, acute respiratory failure requiring invasive ventilation) with zero limitations on therapy.\n  - Priority 2: Stable patients with high risk of immediate decompensation who require intensive hemodynamic monitoring (e.g., post-carotid endarterectomy, severe metabolic acidosis, acute pancreatitis).\n  - Priority 3: Unstable patients with severe underlying chronic comorbid illness or acute irreversible disease, where intensive therapy may achieve short-term recovery but long-term prognosis is poor; limits placed on CPR or invasive ventilation.\n  - Priority 4: Patients not appropriate for ICU admission: Either too well to benefit (e.g., mild DKA, peripheral vascular surgery) OR too sick with irreversible terminal condition where interventions offer no clinical benefit (e.g., brain death non-donors, end-stage multi-organ failure unresponsive to full support).",
           "callout": {
             "type": "pearl",
@@ -7760,12 +7401,6 @@ window.KN_STUDY = {
         },
         {
           "h": "ICU Severity Scoring Systems: APACHE IV, SOFA, qSOFA & NEWS2",
-          "image": {
-            "src": "assets/critical-care/icu_scoring_1_of_5.jpg",
-            "alt": "ICU Severity Scoring Systems (APACHE, SOFA, SAPS, MODS)",
-            "caption": "ICU Severity Scoring Systems & Mortality Prediction Models: SOFA, qSOFA, APACHE II/IV & SAPS II for Critical Illness Stratification",
-            "wide": true
-          },
           "b": "Severity scoring tools provide risk-adjusted mortality prediction, benchmarking for clinical audit, and standardized organ dysfunction tracking:\n\n1. APACHE IV (Acute Physiology and Chronic Health Evaluation IV):\n• Calculated within the first **24 hours** of ICU admission.\n• Incorporates 12 physiological variables (temperature, MAP, HR, RR, PaO2/FiO2, arterial pH, Na, K, Cr, Hct, WBC, GCS), plus age, chronic health conditions, and specific ICU admission diagnostic categories.\n• Generates an accurate predicted hospital mortality percentage for benchmarking.\n\n2. SOFA (Sequential Organ Failure Assessment):\n• Evaluates 6 organ systems scored **0 to 4** points each (total score **0 to 24**):\n  - Respiration: PaO2/FiO2 ratio (0: ≥400, 1: <400, 2: <300, 3: <200 with vent, 4: <100 with vent).\n  - Coagulation: Platelets (0: ≥150k, 1: <150k, 2: <100k, 3: <50k, 4: <20k/mcL).\n  - Liver: Total Bilirubin (0: <1.2, 1: 1.2–1.9, 2: 2.0–5.9, 3: 6.0–11.9, 4: ≥12.0 mg/dL).\n  - Cardiovascular: Hypotension / Vasopressor dose (0: MAP ≥70, 1: MAP <70, 2: Dopamine ≤5 or dobutamine, 3: Noradrenaline ≤0.1, 4: Noradrenaline >0.1 mcg/kg/min).\n  - CNS: Glasgow Coma Scale (0: 15, 1: 13–14, 2: 10–12, 3: 6–9, 4: <6).\n  - Renal: Creatinine or Urine Output (0: <1.2, 1: 1.2–1.9, 2: 2.0–3.4, 3: 3.5–4.9 or UO <500 mL/d, 4: ≥5.0 mg/dL or UO <200 mL/d).\n• An acute increase of **≥ 2 points** defines new organ dysfunction under Sepsis-3 definitions (associated with an in-hospital mortality of **> 10%**).\n\n3. qSOFA (Quick SOFA) Bedside Screen:\n• Non-laboratory bedside screening tool (1 point each, total 3):\n  - Respiratory rate **≥ 22 breaths/min**.\n  - Altered mental status (GCS **< 15**).\n  - Systolic blood pressure **≤ 100 mmHg**.\n• A score of **≥ 2** identifies non-ICU patients at high risk of deterioration.\n\n4. NEWS2 (National Early Warning Score 2):\n• Tracks 6 physiological parameters: RR, SpO2, systolic BP, pulse rate, level of consciousness (ACVPU), and temperature.\n• Score **≥ 5** or a score of 3 in a single parameter triggers an urgent bedside medical emergency team (MET) review.",
           "table": {
             "headers": [
@@ -8022,12 +7657,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Indications, Optimal Timing & Contraindications",
-          "image": {
-            "src": "assets/notes/airway/airway_02_pct-basics.png",
-            "alt": "Percutaneous Tracheostomy Clinical Indications and Airway Principles",
-            "caption": "Percutaneous Tracheostomy (PCT) Fundamentals: Airway anatomy, timing criteria, and physiological indications in prolonged mechanical ventilation.",
-            "wide": true
-          },
           "b": "• Clinical Indications for Tracheostomy in ICU:\n  1. Prolonged Mechanical Ventilation: Patients failing multiple weaning trials with anticipated ventilator dependence > 10–14 days.\n  2. Severe Neurological Injury / Coma: Poor GCS (< 8), absent cough/swallowing reflexes, inability to clear airway secretions despite weaning from ventilator.\n  3. Severe Upper Airway Obstruction: Laryngeal edema, trauma, or bilateral vocal cord paralysis.\n  4. Reduction of Airway Resistance & Dead Space: Tracheostomy reduces anatomical dead space by approximately **50% (75 to 100 mL)** and lowers work of breathing compared to long endotracheal tubes.\n  5. Patient Comfort & Nursing Care: Facilitates oral hygiene, communication, early mobilization, enteral nutrition, and avoids vocal cord pressure ulceration.\n\n• Optimal Timing (The TracMan Trial Consensus):\n  - Early (Day 1 to 4) vs Late (After Day 10): The landmark multicenter TracMan trial (JAMA 2013) demonstrated that routine early tracheostomy (< 4 days) does not reduce 30-day mortality or overall ICU stay compared to waiting until day 10–14.\n  - Current Standard of Care: Formally evaluate around **Day 7 to 10** of mechanical ventilation; proceed if patient is unlikely to be successfully extubated within the subsequent 7 days.\n\n• Contraindications to Percutaneous Dilatational Tracheostomy (PDT):\n  - Absolute Contraindications: Severe local infection / active cellulitis or phlegmon at the neck site; Grossly distorted neck anatomy (massive goiter, previous radical neck dissection); Uncorrected severe coagulopathy (INR > 2.0, Platelets < 30,000/mcL); Cervical spine instability (cannot extend neck).\n  - Relative Contraindications: Morbid obesity (short, thick neck / unpalpable anatomical landmarks); High ventilatory requirements (PEEP **> 15 cmH2O**, FiO2 **> 0.70**); Known tracheal pathology (severe tracheomalacia, prior tracheal resection).",
           "callout": {
             "type": "pearl",
@@ -8037,20 +7666,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Percutaneous Dilatational Techniques (Ciaglia Blue Rhino)",
-          "images": [
-            {
-              "src": "assets/notes/airway/airway_03_pct-procedure.png",
-              "alt": "Percutaneous Dilatational Tracheostomy (PCT) step-by-step modified Seldinger technique",
-              "caption": "Step-by-step modified Seldinger percutaneous tracheostomy: positioning, bronchoscopic visualization, midline tracheal puncture, guidewire insertion, single tapered dilation (Ciaglia Blue Rhino), and tube placement.",
-              "wide": true
-            },
-            {
-              "src": "assets/notes/airway/airway_04_pct-equipment.png",
-              "alt": "Ciaglia Blue Rhino and Seldinger Tracheostomy Equipment Kit",
-              "caption": "Ciaglia Blue Rhino equipment layout: introducer needle, J-tip Seldinger guidewire, guiding catheter, 14 Fr dilator, hydrophilic single-stage dilator, and tracheostomy tube loader.",
-              "wide": true
-            }
-          ],
           "b": "• The Ciaglia Single-Dilator Technique (Ciaglia Blue Rhino) Step-by-Step:\n  1. Preparation & Monitoring: 100% FiO2, continuous arterial line and EtCO2 monitoring. Adequate deep sedation and neuromuscular blockade.\n  2. Patient Positioning: Hyperextend the neck using a shoulder roll (brings trachea anteriorly; avoid in cervical trauma).\n  3. Palpation of Landmarks: Cricoid cartilage, thyroid notch, tracheal rings, and sternal notch.\n  4. Laryngoscopy & ETT Repositioning: Under direct vision or bronchoscopy, deflate ETT cuff and withdraw ETT to just below the vocal cords (cuff at subglottic level). Re-inflate cuff.\n  5. Asepsis & Local Infiltration: Prep neck sterilely; infiltrate skin and pre-tracheal tissue with **1% or 2% lidocaine with epinephrine (1:200,000)** for anesthesia and vasoconstriction.\n  6. Incision & Needle Puncture: 1.5 cm transverse or vertical incision between cricoid and 1st ring, or between 1st and 2nd rings. Insert 14-gauge introducer needle with saline-filled syringe in midline directed 45° caudally; aspirate air bubbles to confirm tracheal lumen entry.\n  7. Guidewire Insertion: Feed J-tip Seldinger guidewire through the needle into the trachea. Remove needle.\n  8. Short Dilator: Pass 14-Fr preliminary dilator over the guidewire to dilate the pre-tracheal fascia and anterior wall.\n  9. Ciaglia Blue Rhino Dilator: Thread the hydrophobic-coated Blue Rhino dilator (lubricated with sterile water/saline) over the guiding catheter and wire. In a smooth, controlled single motion, advance the dilator to the skin level marking to dilate the stoma.\n  10. Tracheostomy Tube Placement: Load appropriate tracheostomy tube (typically **size 7.5 to 8.5 mm ID** for males, **7.0 to 8.0 mm ID** for females) onto the matching loading dilator. Advance over the guidewire into the trachea.\n  11. Confirmation & Fixation: Remove dilator and wire; insert inner cannula; inflate cuff. Confirm ventilation by bilateral breath sounds, chest rise, and continuous waveform EtCO2. Secure tube with neck flange sutures and tracheostomy collar ties.",
           "table": {
             "headers": [
@@ -8084,12 +7699,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Acute & Late Complications & Emergency Management",
-          "image": {
-            "src": "assets/notes/airway/airway_05_pct-complications.png",
-            "alt": "Percutaneous tracheostomy immediate, early, and late complications",
-            "caption": "Percutaneous tracheostomy complications timeline: immediate procedural hazards, posterior wall injury, pneumothorax, stomal infections, and late tracheo-innominate artery fistula management.",
-            "wide": true
-          },
           "b": "• Immediate / Intra-procedural Complications:\n  1. Hemorrhage: Usually venous oozing from thyroid isthmus or anterior jugular veins. Managed by tamponade with lubricated gauze or topical tranexamic acid; if refractory, surgical exploration.\n  2. False Tract Insertion: Tracheostomy tube placed anteriorly in pre-tracheal tissue or mediastinum. Recognized by high peak airway pressures, absent chest rise, absent EtCO2, and subcutaneous emphysema. Immediately remove tube, re-intubate orally from above!\n  3. Posterior Tracheal Wall Laceration / Perforation: Caused by forceful needle or dilator insertion. Can lead to fatal pneumomediastinum or tracheoesophageal fistula.\n  4. Loss of Airway / Accidental Decannulation: Oral airway equipment, laryngoscope, and ETT must ALWAYS remain at the head of the bed ready for immediate re-intubation from above.\n\n• Late / Chronic Complications:\n  1. Tracheoinnominate Artery Fistula (TIAF):\n     - Catastrophic erosion of low tracheostomy tube cuff (usually below 4th ring) into the adjacent brachiocephalic (innominate) artery. Peak incidence: **1 to 3 weeks post-procedure**.\n     - Warning sign: 'Sentinel bleed' (pulsatile blood spurting or rhythmic tube pulsations).\n     - Emergency Management: Hyperinflate cuff to tamponade artery; if bleeding persists, insert index finger through the stoma and forcefully compress the innominate artery anteriorly against the posterior surface of the sternal manubrium while rushing to the operating room (Utley maneuver)!\n  2. Tracheal Stenosis: Fibrotic cicatricial narrowing at cuff site or stoma level from prolonged high cuff pressures (> 25–30 cmH2O). Prevent by keeping cuff pressure **20 to 25 cmH2O (or 15–18 mmHg)**.\n  3. Tracheoesophageal Fistula (TEF): Caused by ischemic necrosis between high-pressure tracheostomy cuff and rigid nasogastric tube."
         },
         {
@@ -8218,18 +7827,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Mechanical Ventilator Modes: Physics & Operational Principles",
-          "images": [
-            {
-              "src": "assets/critical-care/ventilation/ventilation_01_modes-overview.png",
-              "alt": "Mechanical Ventilation Modes Flow, Pressure, and Volume Waveforms Overview",
-              "caption": "Mechanical Ventilation Waveforms: VCV, PCV, SIMV, PSV and APRV Principles"
-            },
-            {
-              "src": "assets/critical-care/ventilation/ventilation_07_prvc.png",
-              "alt": "Pressure Regulated Volume Control PRVC and VC+ Waveforms",
-              "caption": "Pressure-Regulated Volume Control (PRVC / VC+): Decelerating flow delivering target volume at minimal peak inspiratory pressure."
-            }
-          ],
           "b": "Every mechanical breath is governed by the Equation of Motion:\n**P(airway) = Flow × Resistance + Volume / Compliance + PEEP**.\n\n• Volume Control Ventilation (VCV / AC-VC):\n  - Control Variable: Tidal Volume (VT) and inspiratory flow rate are set and guaranteed.\n  - Independent Variable: Airway pressure (Ppeak and Pplat) varies based on the patient's respiratory system compliance and airway resistance.\n  - Key Advantage: Guarantees minute ventilation; essential for strict lung-protective protocols in ARDS.\n  - Key Drawback: High peak pressures if compliance falls; fixed flow can cause severe flow starvation in tachypneic patients.\n\n• Pressure Control Ventilation (PCV / AC-PC):\n  - Control Variable: Inspiratory pressure (Pinsp) and inspiratory time (Ti) are set.\n  - Independent Variable: Tidal volume varies based on compliance and resistance.\n  - Flow Pattern: Decelerating flow pattern (delivers highest flow at breath initiation when lungs are emptiest, resulting in better gas distribution and lower peak alveolar pressures).\n  - Key Advantage: Limits maximal airway pressure, protects against barotrauma.\n  - Key Drawback: Tidal volume drops unpredictably if lung compliance worsens (e.g., worsening pulmonary edema or pneumothorax).\n\n• Pressure Regulated Volume Control (PRVC / VC+):\n  - Dual-control mode: Delivers a set target tidal volume using a decelerating pressure-controlled breath.\n  - Breath-to-breath feedback: The ventilator calculates dynamic compliance and adjusts the inspiratory pressure by **1 to 3 cmH2O** per breath to deliver the target VT at the lowest possible airway pressure.\n\n• Airway Pressure Release Ventilation (APRV / Bi-Level):\n  - CPAP with intermittent releases: Applies high continuous airway pressure (Phigh) for a prolonged time (Thigh) to recruit collapsed alveoli, with brief cyclic releases to a low pressure (Plow) for a short time (Tlow) to clear CO2.\n  - Spontaneous breathing is unrestricted throughout the entire respiratory cycle.\n  - Initial APRV Settings: Phigh = Previous Pplat (typically **25 to 30 cmH2O**); Thigh = **4.0 to 6.0 seconds**; Plow = **0 cmH2O**; Tlow = **0.4 to 0.8 seconds** (strictly titrated so that expiratory flow terminates at **75%** of peak expiratory flow rate to maintain intrinsic PEEP and prevent alveolar derecruitment!).",
           "table": {
             "headers": [
@@ -8274,12 +7871,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Waveform Analysis: Pressure-Time, Flow-Time & Loops",
-          "image": {
-            "src": "assets/critical-care/ventilation/ventilation_02_vcv.png",
-            "alt": "Volume Control Ventilation Pressure and Flow Waveforms with Peak and Plateau Pressure",
-            "caption": "Volume Control (VCV) Scalar Analysis: Peak vs Plateau Pressure & End-Inspiratory Pause",
-            "wide": true
-          },
           "b": "• Flow-Time Scalar Analysis:\n  - Normal Expiratory Curve: Smooth, exponential decay returning completely to baseline (zero flow) before the next breath initiates.\n  - Auto-PEEP / Dynamic Hyperinflation: Expiratory flow does NOT return to the zero baseline before the next breath begins! This proves that air remains trapped in the alveoli at end-expiration (pathognomonic of severe COPD or asthma bronchospasm).\n  - Measuring Intrinsic PEEP (Auto-PEEP): Perform an **End-Expiratory Pause** of **2 to 3 seconds** in a relaxed patient; Total PEEP = Set PEEP + Auto-PEEP.\n\n• Pressure-Time Scalar Analysis:\n  - Peak Inspiratory Pressure (Ppeak): Total pressure required to overcome BOTH airway resistance and lung/chest wall elastance.\n  - Plateau Pressure (Pplat): Measured during an **End-Inspiratory Pause** (0.5 s, zero flow); reflects purely elastic recoil of the alveoli and chest wall.\n  - Transairway Pressure = Ppeak - Pplat: Reflects resistive properties (airway resistance = [Ppeak - Pplat] / Flow).\n  - Diagnostic Differentiation:\n    * High Ppeak with NORMAL Pplat (< 30 cmH2O): High airway resistance (bronchospasm, secretions, kinked ETT, mucous plug).\n    * High Ppeak with HIGH Pplat (> 30 cmH2O): Low respiratory compliance (ARDS, tension pneumothorax, pulmonary edema, severe abdominal compartment syndrome, massive pleural effusion).\n\n• Pressure-Volume (P-V) Loop:\n  - Lower Inflection Point (LIP): The pressure at which collapsed alveoli suddenly pop open (recruitment pressure); setting PEEP **2 cmH2O above LIP** prevents cyclic atelectrauma.\n  - Upper Inflection Point (UIP): The pressure at which alveoli become overdistended; VT should be adjusted to keep end-inspiratory pressure below the UIP ('beak' or 'duck bill' appearance indicates dangerous alveolar overdistension!).",
           "callout": {
             "type": "pearl",
@@ -8289,12 +7880,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Patient-Ventilator Asynchrony: Classification, Detection & Management",
-          "image": {
-            "src": "assets/critical-care/ventilation/ventilation_11_pav-vaps.png",
-            "alt": "Proportional Assist Ventilation (PAV) and Volume-Assured Pressure Support (VAPS) principles",
-            "caption": "Advanced Synchrony Modes: Proportional Assist Ventilation (PAV) and Volume-Assured Pressure Support (VAPS) targeting patient effort and synchrony.",
-            "wide": true
-          },
           "b": "Patient-ventilator asynchrony occurs in up to **25% to 80%** of mechanically ventilated patients and is independently associated with prolonged ICU stay and higher mortality:\n\n1. Ineffective Triggering (Wasted Efforts):\n• Patient makes an inspiratory effort, but it fails to trigger a ventilator breath.\n• Waveform Sign: A small negative dip on the pressure curve with an upward deflection on expiratory flow curve that fails to cross trigger threshold.\n• Primary Cause: Auto-PEEP (dynamic hyperinflation). The patient must first generate enough negative pressure to overcome intrinsic PEEP before triggering the machine.\n• Management: Treat bronchospasm (bronchodilators); prolong expiratory time (decrease RR, shorten Ti); apply external PEEP to equal approximately **70% to 80% of auto-PEEP** ('waterfall effect' makes triggering easier!).\n\n2. Double Triggering (Breath Stacking):\n• Two consecutive ventilator breaths separated by a very short expiratory time (< 0.5 s), delivering twice the set tidal volume into the lung.\n• Primary Cause: High patient drive and short set inspiratory time (Ti). The patient's neural inspiratory effort outlasts the machine's breath, re-triggering a second breath immediately.\n• Management: Increase inspiratory time (Ti) or tidal volume in VCV, optimize sedation, or switch to Pressure Support.\n\n3. Reverse Triggering (Entrainment):\n• A deep diaphragmatic contraction triggered reflexively by the ventilator's mechanical insufflation (entrainment of the respiratory center by lung stretch receptors).\n• Causes secondary breath stacking and high transpulmonary pressures in heavily sedated ARDS patients.\n• Management: Adjust ventilator rate, deepen sedation or initiate neuromuscular blockade in early ARDS.\n\n4. Auto-Triggering:\n• The ventilator triggers breaths spontaneously without any patient effort.\n• Causes: Leaks in the breathing circuit or ETT cuff; cardiac oscillations (rhythmic stroke volume changes triggering sensitive flow triggers).\n• Management: Fix circuit leaks; change trigger type from flow trigger to pressure trigger or raise flow trigger threshold (e.g., from 1.0 to **2.5–3.0 L/min**).",
           "table": {
             "headers": [
@@ -8369,12 +7954,6 @@ window.KN_STUDY = {
             "type": "pearl",
             "title": "PHYSICS PEARL — The Square Wave Test Interpretation",
             "text": "Perform a fast flush: If the oscillation following the square wave terminates with exactly **1 to 2 oscillations** before resuming the waveform, the system is optimally damped (damping coefficient **0.6 to 0.7**). Zero oscillations = overdamped; > 2 oscillations = underdamped."
-          },
-          "image": {
-            "src": "assets/references/swan-ganz-catheter-anatomy.jpg",
-            "alt": "Swan-Ganz Pulmonary Artery Catheter Anatomical Architecture",
-            "caption": "Pulmonary Artery Catheter (PAC / Swan-Ganz): Balloon Flotation, Thermistor Lumen & Port Configurations for Hemodynamic Profiling",
-            "wide": true
           }
         },
         {
@@ -8426,12 +8005,6 @@ window.KN_STUDY = {
               ]
             ],
             "caption": "Classic hemodynamic profiles measured via pulmonary artery catheterization."
-          },
-          "image": {
-            "src": "assets/references/swan-ganz-heart-pathway-diagram.jpg",
-            "alt": "Pulmonary Artery Catheter Waveform Progression through Cardiac Chambers",
-            "caption": "PAC Waveform Progression: Right Atrium (RA) -> Right Ventricle (RV) -> Pulmonary Artery (PA) -> Pulmonary Capillary Wedge Pressure (PCWP)",
-            "wide": true
           }
         },
         {
@@ -8476,18 +8049,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Adrenergic & Non-Adrenergic Receptor Pharmacology Matrix",
-          "images": [
-            {
-              "src": "assets/drugs/vasoactive/vasoactive_01_intro.png",
-              "alt": "Vasoactive agents introduction overview pearl",
-              "caption": "Vasoactive Agents: Adrenergic receptors, cellular mechanisms and haemodynamic classification."
-            },
-            {
-              "src": "assets/drugs/vasoactive/vasoactive_02_ionotropes.png",
-              "alt": "Inotropes classification and receptor mapping pearl",
-              "caption": "Inotropes & Vasopressors: Receptor profile mapping (Alpha-1, Beta-1, Beta-2, V1, DA) and clinical pharmacology."
-            }
-          ],
           "b": "• Receptor Profiles & Downstream Second Messengers:\n  - Alpha-1 (α1): Gq-protein coupled → Phospholipase C activation → IP3/DAG → intracellular calcium release → potent vascular smooth muscle contraction (vasoconstriction) and increased SVR.\n  - Beta-1 (β1): Gs-protein coupled → Adenylyl cyclase activation → cyclic AMP (cAMP) → Protein Kinase A → increased myocardial inotropy (contractility), chronotropy (heart rate), and dromotropy (conduction velocity).\n  - Beta-2 (β2): Gs-protein coupled → increased cAMP in vascular smooth muscle → relaxation and vasodilation; bronchodilation; stimulates skeletal muscle Na+/K+ ATPase (causing hypokalemia and lactic acidosis).\n  - Vasopressin-1a (V1a): Gq-protein coupled → vascular smooth muscle contraction; maintains vasoconstriction during severe acidosis when adrenergic receptors become desensitized.\n  - Dopamine-1 (DA1): Gs-protein coupled → renal, mesenteric, and coronary vasodilation.\n  - Phosphodiesterase-3 (PDE3) Inhibition: Prevents cAMP degradation in cardiomyocytes and vascular smooth muscle → positive inotropy WITH systemic and pulmonary vasodilation ('inodilator').",
           "table": {
             "headers": [
@@ -8582,12 +8143,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Peripheral Vasopressor Safety & Extravasation Protocol",
-          "image": {
-            "src": "assets/drugs/vasoactive/vasoactive_10_nitroglycerin.png",
-            "alt": "Nitroglycerin vasodilator pharmacology pearl",
-            "caption": "Nitroglycerin (NTG): Venodilator kinetics, preload reduction, coronary perfusion, and topical extravasation rescue.",
-            "wide": true
-          },
           "b": "• Safe Peripheral Administration of Noradrenaline:\n  - Waiting for central venous catheter (CVC) insertion causes dangerous resuscitation delays. Peripheral noradrenaline can be safely initiated through a large-bore IV catheter (**18- or 20-gauge**) placed in the forearm or antecubital fossa.\n  - Safe Duration: Up to **4 to 6 hours** (or longer with strict protocolized checks) while central access is being secured.\n  - Safety Protocol: Check IV site for blanching, swelling, or redness every **15 to 30 minutes**; never infuse through veins of the hand, wrist, or lower extremities.\n\n• Management of Peripheral Vasopressor Extravasation (Emergency Protocol):\n  - Extravasation of alpha-1 agonists causes intense local vasoconstriction leading to ischemic skin necrosis and gangrene.\n  - Step-by-Step Extravasation Rescue Protocol:\n    1. Immediately STOP the infusion; do NOT remove the peripheral cannula immediately!\n    2. Aspirate as much extravasated drug as possible through the existing catheter.\n    3. Remove the catheter after aspiration.\n    4. Specific Antidote — Phentolamine:\n       * Phentolamine is a competitive non-selective alpha-adrenergic antagonist.\n       * Dose: **5 to 10 mg** reconstituted in **10 to 15 mL of 0.9% normal saline**.\n       * Infiltrate subcutaneously using a fine needle (25-gauge) throughout the entire blanched, ischemic area in a circular ring pattern within **12 hours** of extravasation.\n       * Immediate reversal: Skin reperfusion and flush should be visible within 10 to 15 minutes.\n    5. Topical Nitroglycerin Paste: Apply **1 to 2 inches of 2% nitroglycerin paste** locally to promote collateral vasodilation if phentolamine is unavailable.\n    6. Elevate the extremity and apply warm compresses to enhance blood flow."
         }
       ],
@@ -8619,12 +8174,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Sepsis-3 Consensus Definitions & Diagnostic Criteria",
-          "image": {
-            "src": "assets/critical-care/icu_scoring_4_of_5.jpg",
-            "alt": "Surviving Sepsis Campaign ICU Scoring and Diagnostic Recommendations",
-            "caption": "Surviving Sepsis Campaign screening, diagnosis, and organ dysfunction monitoring workflow: NEWS2/MEWS screening, qSOFA risk flag, SOFA diagnosis, and serial trend monitoring.",
-            "wide": true
-          },
           "b": "• The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3):\n  - Sepsis: Life-threatening organ dysfunction caused by a dysregulated host response to infection.\n    * Operational Criterion: An acute change in total Sequential Organ Failure Assessment (SOFA) score of **≥ 2 points** consequent to the infection (reflects an overall in-hospital mortality rate of **> 10%**).\n    * SIRS criteria (fever, tachycardia, tachypnea, leukocytosis) are no longer required for definition, as they represent general inflammation rather than true dysregulated organ failure.\n\n  - Septic Shock: A subset of sepsis in which underlying circulatory and cellular/metabolic abnormalities are profound enough to substantially increase mortality.\n    * Operational Criteria (Must fulfill BOTH):\n      1. Persistent hypotension requiring vasopressors to maintain Mean Arterial Pressure (MAP) **≥ 65 mmHg**, AND\n      2. Serum lactate level **> 2.0 mmol/L (18 mg/dL)** despite adequate volume resuscitation.\n    * In-hospital mortality for septic shock exceeds **40% to 50%**!",
           "callout": {
             "type": "pearl",
@@ -8634,12 +8183,6 @@ window.KN_STUDY = {
         },
         {
           "h": "The Surviving Sepsis Campaign (SSC) Hour-1 Bundle",
-          "image": {
-            "src": "assets/critical-care/icu_scoring_5_of_5.jpg",
-            "alt": "Surviving Sepsis Guidelines Key ICU Recommendations and Steps",
-            "caption": "Surviving Sepsis Campaign step-by-step ICU resuscitation pathway: early recognition, SOFA scoring, 1-hour bundle resuscitation, organ support, and antimicrobial de-escalation.",
-            "wide": true
-          },
           "b": "The Hour-1 Bundle represents a high-priority emergency resuscitation target to be initiated immediately upon recognition:\n\n1. Measure Blood Lactate Level:\n• Point-of-care or laboratory lactate drawn immediately.\n• If initial lactate is **> 2.0 mmol/L**, remeasure within **2 to 4 hours** to guide resuscitation towards lactate clearance (target: clearance of **> 10% to 20%** every 2 hours).\n\n2. Obtain Blood Cultures Prior to Starting Antibiotics:\n• Draw at least **2 sets of blood cultures** (one percutaneous peripheral venipuncture, and one from each indwelling vascular catheter in place > 48 h; each set = 1 aerobic + 1 anaerobic bottle, total **20 to 30 mL blood per set**).\n• Do not delay antimicrobial initiation by > 45 minutes if cultures are difficult to obtain!\n\n3. Administer Broad-Spectrum Empiric Antimicrobials:\n• Infuse targeted IV antimicrobials within **1 hour** of sepsis recognition.\n• In shock, every 1-hour delay in effective antibiotic administration increases mortality by **7.6%** (Kumar et al., Crit Care Med).\n\n4. Rapid Administration of 30 mL/kg Intravenous Crystalloid:\n• Mandated for patients with hypotension (MAP < 65 or SBP < 90) OR initial serum lactate **≥ 4.0 mmol/L**.\n• Infuse **30 mL/kg of balanced crystalloid** (Plasmalyte or Lactated Ringer's) within the first **3 hours**.\n• Why Balanced Crystalloids (SMART / SALT-ED Trials): 0.9% Normal Saline causes hyperchloremic metabolic acidosis, renal vasoconstriction, and increases the composite outcome of death, new RRT, and persistent renal dysfunction.\n\n5. Apply Vasopressors for Persistent Hypotension:\n• Initiate Norepinephrine (Noradrenaline) during or immediately after fluid resuscitation to maintain MAP **≥ 65 mmHg**.\n• Do NOT wait to complete the full 30 mL/kg fluid bolus before starting vasopressors if the patient is profoundly hypotensive!",
           "table": {
             "headers": [
@@ -10360,12 +9903,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Pediatric Acute Respiratory Failure: Croup vs Bronchiolitis",
-          "image": {
-            "src": "assets/critical-care/ventilation/ventilation_10_hfov.png",
-            "alt": "High-Frequency Oscillatory Ventilation (HFOV) Mechanics and Lung Volume Strategy",
-            "caption": "High-Frequency Oscillatory Ventilation (HFOV) in PARDS: Active inspiration and active expiration with mean airway pressure titration to recruit and protect pediatric lungs.",
-            "wide": true
-          },
           "b": "• Viral Croup (Laryngotracheobronchitis):\n• Parainfluenza virus types 1–3; subglottic edema producing the classic barking cough, inspiratory stridor, and hoarseness ('Steeple sign' on AP neck radiograph).\n  - Westley Croup Score (Graded 0 to 17: Stridor, Retractions, Air Entry, Cyanosis, Level of Consciousness):\n    * Mild (Score ≤ 2): Single dose of oral **Dexamethasone 0.15 to 0.60 mg/kg**.\n    * Moderate to Severe (Score **≥ 6**): Stridor at rest and chest wall retractions.\n  - Medical Resuscitation Protocol:\n    1. **Nebulized Racemic Epinephrine (2.25%)**: Dose **0.05 mL/kg (max 0.5 mL)** diluted in 3 mL saline, OR standard **L-Epinephrine (1:1000 / 1 mg/mL): 0.5 mL/kg (max 5.0 mL)** nebulized.\n       * Rapidly stimulates alpha-1 mucosal vasoconstriction, dramatically shrinking subglottic edema within 10–30 minutes.\n       * Caveat: Rebound phenomenon occurs after **2 hours**; monitor in ICU/ED for at least 3–4 hours!\n    2. **Corticosteroids**: **Dexamethasone 0.6 mg/kg IV/IM/PO (max 16 mg)** or Nebulized Budesonide 2.0 mg.\n\n• Severe Bronchiolitis (RSV / Metapneumovirus):\n  - Small airway inflammation, mucus plugging, and alveolar atelectasis in infants < 2 years.\n  - First-Line PICU Support: **High-Flow Nasal Cannula (HFNC)**:\n    * Flow rate: **1.0 to 2.0 L/kg/min** with heated, humidified oxygen.\n    * Provides continuous distending positive pharyngeal pressure (PEEP ~4–6 cmH2O), unloads respiratory muscles, flushes nasopharyngeal dead space, and reduces intubation rates by **> 50%**.\n  - Routine bronchodilators, systemic steroids, and hypertonic saline are strictly NOT recommended by AAP guidelines.",
           "table": {
             "headers": [
@@ -10599,12 +10136,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Indications for Sustained Neuromuscular Blockade in Critical Care",
-          "image": {
-            "src": "assets/drugs/muscle-relaxant/muscle-relaxant_01_intro.jpg",
-            "alt": "Muscle relaxants introduction pharmacology pearl",
-            "caption": "Neuromuscular Blockers: Indications, physiology of neuromuscular junction, and critical care considerations.",
-            "wide": true
-          },
           "b": "• Evidence-Based Indications for Continuous NMBA Infusion in ICU:\n  1. **Severe Acute Respiratory Distress Syndrome (ARDS)**:\n     - Refractory patient-ventilator dyssynchrony, persistent double-triggering, breath-stacking, reverse triggering, or elevated transpulmonary driving pressures (ΔP > 14 cmH2O).\n     - Eliminates muscular oxygen consumption and improves chest wall compliance.\n  2. **Refractory Intracranial Hypertension (Raised ICP)**:\n     - Prevents coughing, straining, and thoracic venous obstruction in severe TBI.\n  3. **Targeted Temperature Management (TTM / Hypothermia)**:\n     - Suppresses shivering (which increases metabolic rate and oxygen consumption by **> 200% to 500%**!).\n  4. **Refractory Status Epilepticus**:\n     - Controls peripheral muscular manifestations and metabolic acidosis during emergent airway control and anesthetic coma initiation.\n  5. **Open Abdomen Packing / Severe Abdominal Wall Tension**.\n\n• The Landmark ARDS Trial Synthesis (ACURASYS vs ROSE Trials):\n  - **ACURASYS Trial (NEJM 2010)**: Early continuous infusion of Cisatracurium for **48 hours** in severe ARDS (PaO2/FiO2 < 150) significantly reduced 90-day mortality (**31.6% vs 40.7%**) and increased ventilator-free days.\n  - **ROSE Trial (PETAL Network, NEJM 2019)**: Early neuromuscular blockade with high PEEP strategy showed zero mortality difference compared to light sedation with intermittent paralytics.\n  - **Modern Consensus Guideline**: Routine universal paralysis for all ARDS is NOT recommended; use sustained NMBAs selectively for **severe ARDS with persistent patient-ventilator dyssynchrony or refractory hypoxemia** for a maximum of **24 to 48 hours**.",
           "callout": {
             "type": "pearl",
@@ -11087,12 +10618,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "The 'Can't Intubate, Can't Oxygenate' (CICO) Emergency: Algorithm & Declaration",
-          "image": {
-            "src": "assets/notes/airway/airway_01_pct-cric-intro.png",
-            "alt": "Airway emergencies: Surgical cricothyroidotomy vs percutaneous tracheostomy overview",
-            "caption": "Emergency Front-of-Neck Access (eFONA) & Surgical Airway: Transitioning to Plan D and procedural foundations.",
-            "wide": true
-          },
           "b": "• Transition from Plan A/B/C to Plan D:\n  - Plan A: Primary tracheal intubation attempts (maximum **3 attempts**; 3+1 if an expert arrives, utilizing video-laryngoscopy, bougie, and head re-positioning).\n  - Plan B: Secondary supraglottic airway device (SAD) insertion (maximum **2 attempts** with 2nd-generation LMA, e.g., i-gel, ProSeal).\n  - Plan C: Facemask ventilation with two-person technique, Guedel airway, and 100% FiO2.\n  - Plan D (Declaration of CICO): When all attempts at oxygenation via face mask, SAD, and tracheal tube have failed and life-threatening hypoxemia (SpO2 rapidly falling **< 80%** with bradycardia) ensues.\n\n• Psychology and Human Factors in Declaring CICO:\n  - Task fixation and reluctance to perform an invasive neck incision are the primary causes of fatal hypoxemic brain death in airway crises.\n  - Any team member must be empowered to vocalize: *'This is a CICO emergency; call for surgical airway equipment immediately.'*\n  - While preparing neck access, administer neuromuscular blockade (Rocuronium **1.2 to 1.6 mg/kg** or Succinylcholine **1.5 to 2 mg/kg**) if not already given, to eliminate laryngospasm and thoracic wall rigidity.",
           "callout": {
             "type": "pitfall",
@@ -11102,12 +10627,6 @@ window.KN_STUDY = {
         },
         {
           "h": "The Scalpel-Bougie-Tube Technique: Step-by-Step Surgical Execution",
-          "image": {
-            "src": "assets/notes/airway/airway_06_cricothyroidotomy.png",
-            "alt": "Emergency cricothyroidotomy and scalpel-bougie-tube technique",
-            "caption": "Emergency Front of Neck Airway (eFONA): anatomical landmarks, scalpel-bougie-tube step-by-step execution, and comparison to percutaneous tracheostomy.",
-            "wide": true
-          },
           "b": "• The DAS Standardized eFONA Procedure (The 'Three-Step Technique'):\n  1. Equipment: No. 10 or No. 20 scalpel blade (curved wide belly), coudé-tipped tracheal bougie (15 Fr / 60 cm), and cuffed endotracheal tube (size **6.0 mm ID** cuffed ETT).\n  2. Neck Extension & Laryngeal Handshake:\n     - Extend cervical spine (unless unstable cervical fracture suspected; even in spine trauma, oxygenation takes precedence over collar immobilization in CICO).\n     - Non-dominant hand stabilizes the larynx: Index finger and thumb grasp thyroid laminae and slide down to identify the cricothyroid membrane (palpable depression between inferior thyroid cartilage and superior cricoid cartilage ring).\n  3. Palpable Anatomy Technique:\n     - Step 1: Transverse stab incision through the skin and cricothyroid membrane using scalpel blade.\n     - Step 2: Rotate scalpel **90 degrees** so the blunt back of the blade faces cephalad (pulling tissue toward you to create a patent vertical tract).\n     - Step 3: Slide bougie coudé tip along the scalpel flat into the trachea until hold-up or clicks are felt (advance **10 to 15 cm**).\n     - Step 4: Remove scalpel, advance lubricated 6.0 mm ETT over the bougie with gentle rotation, inflate cuff, verify capnography, and secure.",
           "table": {
             "headers": [
@@ -11141,12 +10660,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Post-eFONA Resuscitation, Complications & Definitive Conversion",
-          "image": {
-            "src": "assets/notes/airway/airway_07_pct-vs-cric.png",
-            "alt": "Percutaneous tracheostomy versus cricothyroidotomy comparison",
-            "caption": "Percutaneous tracheostomy (elective/planned, 2nd-3rd tracheal rings, bronchoscopy-guided) versus cricothyroidotomy (emergency CICO rescue, cricothyroid membrane, rapid scalpel-bougie-tube).",
-            "wide": true
-          },
           "b": "• Immediate Post-eFONA Care:\n  - Confirm ventilation with **≥ 5 consecutive waveform capnography cycles**.\n  - Auscultate bilateral lung fields to rule out mainstem bronchus intubation (a 6.0 mm ETT inserted via cricothyroid membrane enters the carina within **5 to 7 cm**; do not push tube deep).\n  - Secure tube with ties; apply sterile gauze around neck stoma.\n  - Perform arterial blood gas and chest radiography immediately.\n\n• Complications:\n  - False passage / pre-tracheal placement (revealed by absent end-tidal CO2 and massive surgical emphysema).\n  - Hemorrhage from cricothyroid arteries or anterior jugular veins (tamponade with cuff inflation or sterile gauze packing).\n  - Posterior tracheal wall perforation and esophageal laceration.\n  - Subglottic stenosis (long-term risk if tube remains across cricothyroid membrane > 48–72 hours).\n\n• Conversion to Definitive Airway:\n  - Surgical cricothyroidotomy is an emergency bridge to life, not a permanent tracheostomy.\n  - Transition to formal surgical tracheostomy or transoral intubation within **24 to 72 hours** once the patient is hemodynamically stabilized and laryngeal swelling subsides.",
           "callout": {
             "type": "pearl",
@@ -11258,12 +10771,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Physiological Principles of APRV: The CPAP with Release Concept",
-          "image": {
-            "src": "assets/critical-care/ventilation/ventilation_09_aprv.png",
-            "alt": "Airway Pressure Release Ventilation (APRV) physics, waveforms, and settings",
-            "caption": "Airway Pressure Release Ventilation (APRV): P-high, P-low, T-high, T-low settings, pressure-time and flow-time waveforms, and spontaneous breathing integration.",
-            "wide": true
-          },
           "b": "• Core APRV Architecture:\n  - Continuous Positive Airway Pressure (CPAP) maintained at a high pressure (**P-high**) for a prolonged duration (**T-high**) to maximize alveolar recruitment and lung surface area.\n  - Intermittent, rapid, brief pressure releases to a lower pressure (**P-low**) for an extremely short duration (**T-low**) to facilitate passive CO2 clearance.\n  - Unrestricted spontaneous breathing is permitted throughout the entire respiratory cycle, independent of the ventilator release phase.\n\n• Hemodynamic and Physiological Advantages over Conventional VC/PC:\n  - Alveolar Recruitment & Stability: Sustained high mean airway pressure (Paw) recruits atelectatic dependent lung units and prevents repetitive end-expiratory alveolar collapse and reopening (atelectotrauma).\n  - Preservation of Spontaneous Diaphragmatic Effort: Spontaneous contractions pull the diaphragm downward, redirecting ventilation to well-perfused dependent lung regions (improving V/Q matching and reducing dead space).\n  - Decreased Sedation Requirements: Patients breathe spontaneously, eliminating the need for deep paralysis or heavy sedation once synchronized.",
           "callout": {
             "type": "pearl",
@@ -12819,12 +12326,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Artificial Intelligence & Clinical Decision Support Systems in ICU: Predictive Sepsis Modeling, Automated Weaning & Safety Oversight",
-          "image": {
-            "src": "assets/critical-care/ventilation/ventilation_06_asv.png",
-            "alt": "Adaptive Support Ventilation (ASV) Closed-Loop Algorithm and Mechanics",
-            "caption": "Adaptive Support Ventilation (ASV): Closed-loop intelligent ventilation titrating tidal volume and respiratory rate via the Otis equation to minimize the work of breathing.",
-            "wide": true
-          },
           "b": "• AI Applications in Intensive Care:\n  - Early Sepsis Prediction Models: Analyze high-frequency vital signs, lab trends, and nursing notes to predict septic shock 4 to 12 hours before overt clinical deterioration.\n  - Hypotension Prediction Index (HPI): Machine learning algorithm analyzing arterial waveform morphology to predict hypotension 5 to 15 minutes before blood pressure drops.\n  - Automated Closed-Loop Ventilator Weaning: Continuous waveform analysis guiding automated SBT trials.\n  - Physician-in-the-Loop Governance: AI models augment clinical judgment; definitive treatment decisions require human clinician verification."
         }
       ],
@@ -12858,12 +12359,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Physiological Pain Pathways & The Multimodal Opioid-Sparing Principle",
-          "image": {
-            "src": "assets/drugs/opioids/opioid_01_intro.jpg",
-            "alt": "Opioids introduction pharmacology pearl",
-            "caption": "Opioid Pharmacology & Analgesia: Receptor mechanisms (Mu, Kappa, Delta) and systemic clinical pathways.",
-            "wide": true
-          },
           "b": "• Pain Transmission Neurobiology:\n  - Nociception: Tissue trauma activates peripheral A-delta (fast, myelinated, sharp pain) and C-fibers (slow, unmyelinated, dull aching pain).\n  - Primary afferents synapse in the dorsal horn of the spinal cord (Rexed laminae I, II [substantia gelatinosa], and V), releasing glutamate (acting on NMDA and AMPA receptors) and Substance P.\n  - Second-order neurons ascend via the lateral spinothalamic tract to the thalamus, somatosensory cortex, and limbic system.\n  - Descending inhibitory modulation: Serotonergic and noradrenergic pathways originating in the periaqueductal gray (PAG) and rostral ventromedial medulla (RVM) suppress dorsal horn transmission.\n\n• The Multimodal Analgesia Core Mechanism:\n  - Combining ≥ 2 non-opioid analgesic classes acting through distinct physiological mechanisms at different anatomical sites along the pain pathway.\n  - Synergistic analgesic efficacy produces an Opioid-Sparing Effect of 30% to 50%, significantly decreasing postoperative nausea and vomiting (PONV), ileus, sedation, urinary retention, and respiratory depression.\n\n• Core Non-Opioid Pharmacological Classes:\n  - Acetaminophen (Paracetamol): Central COX-3 / cannabinoid-mediated analgesic; 1 g IV Q6H (max 4 g/day; max 2–3 g/day in hepatic impairment).\n  - NSAIDs / COX-2 Inhibitors: Peripheral and spinal COX inhibition, blunting pro-inflammatory prostaglandins. Ketorolac 15–30 mg IV Q6H (max 5 days) or Celecoxib 200–400 mg PO.\n  - Gabapentinoids (Pregabalin / Gabapentin): Presynaptic alpha-2-delta voltage-gated calcium channel ligands; inhibit excitatory glutamate exocytosis in dorsal horn.\n  - Alpha-2 Adrenergic Agonists: Dexmedetomidine (0.2–0.7 mcg/kg/h) and Clonidine augment descending inhibitory pathways.",
           "callout": {
             "type": "pearl",
@@ -12963,33 +12458,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Fascial Plane Blocks: ESPB, Paravertebral & Abdominal Wall Blocks",
-          "images": [
-            {
-              "src": "assets/regional/esp-usg.jpg",
-              "alt": "Erector spinae plane block ESP sonoanatomy",
-              "caption": "Erector Spinae Plane (ESP) Block: Thoracic transverse process, erector spinae muscle, and interfascial plane local anaesthetic spread."
-            },
-            {
-              "src": "assets/regional/tap-usg.jpg",
-              "alt": "Transversus abdominis plane TAP block sonoanatomy",
-              "caption": "Classical Lateral TAP Block: External oblique, internal oblique, transversus abdominis muscle, and neurovascular fascial plane."
-            },
-            {
-              "src": "assets/regional/subcostal-tap-usg.jpg",
-              "alt": "Subcostal TAP block sonoanatomy",
-              "caption": "Subcostal TAP Block: Oblique subcostal needle trajectory targeting upper abdominal dermatomes (T6–T9)."
-            },
-            {
-              "src": "assets/regional/ql-usg.jpg",
-              "alt": "Quadratus lumborum QL block sonoanatomy",
-              "caption": "Quadratus Lumborum (QL) Sonoanatomy: Transversus abdominis aponeurosis, QL muscle, psoas major, and thoracolumbar fascia."
-            },
-            {
-              "src": "assets/regional/transversalis-fascia-plane-usg.jpg",
-              "alt": "Transversalis fascia plane TFP block sonoanatomy",
-              "caption": "Transversalis Fascia Plane (TFP) Block: Posterior transversus abdominis tapering, transversalis fascia, and iliohypogastric/T12 nerve target."
-            }
-          ],
           "b": "• Erector Spinae Plane Block (ESPB):\n  - Ultrasound-guided deposition of high-volume local anesthetic (20 to 30 mL) deep to the erector spinae muscle and superficial to the transverse process.\n  - Solution diffuses anteriorly through the intertransverse connective tissue into the thoracic paravertebral space, blocking dorsal and ventral rami of spinal nerves and sympathetic chain.\n  - Excellent safety profile: The needle endpoint is bone (transverse process), far away from the pleura, neuraxis, and major vascular structures (safe in mild coagulopathy).\n  - Indications: Multiple rib fractures, thoracotomy, post-sternotomy pain, and lumbar spine surgery.\n\n• Thoracic Paravertebral Block (PVB):\n  - Local anesthetic injected into the wedge-shaped space bordered by superior costotransverse ligament posteriorly, parietal pleura anteriorly, and vertebral body medially.\n  - Produces dense ipsilateral somatic and sympathetic segmental nerve root anesthesia equivalent to unilateral epidural without bilateral sympathectomy.\n\n• Transversus Abdominis Plane (TAP) & Rectus Sheath Blocks:\n  - TAP Block: Local anesthetic deposited in the neurofascial plane between internal oblique and transversus abdominis muscles (targeting anterior rami T7–L1); provides somatic anterior abdominal wall analgesia.\n  - Rectus Sheath Block: Deposition posterior to rectus abdominis muscle, anterior to posterior rectus sheath; ideal for midline laparotomy incisions.",
           "table": {
             "headers": [
@@ -13151,12 +12619,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "The Revised WHO 4-Step Analgesic Ladder & Breakthrough Pain",
-          "image": {
-            "src": "assets/drugs/opioids/opioid_02_overview.jpg",
-            "alt": "Opioid overview and equianalgesic conversion pearl",
-            "caption": "Opioid Selection & Equianalgesic Dosing: Stepwise escalation, equianalgesic conversion factors, and rotation protocols.",
-            "wide": true
-          },
           "b": "• The Four Steps of the WHO Cancer Pain Ladder:\n  - Step 1: Mild Pain (NRS 1–3): Non-opioid analgesics (Acetaminophen, NSAIDs) ± non-opioid adjuvant.\n  - Step 2: Mild to Moderate Pain (NRS 4–6): Weak opioids (Tramadol, Codeine, low-dose Morphine) ± non-opioid ± adjuvant.\n  - Step 3: Moderate to Severe Pain (NRS 7–10): Strong opioids (Morphine, Oxycodone, Hydromorphone, Fentanyl, Methadone, Buprenorphine) ± non-opioid ± adjuvant.\n  - Step 4: Refractory / Severe Intractable Pain: Interventional minimally invasive procedures (Intrathecal drug delivery systems [ITDD], epidural infusions, neurolytic blocks, cordotomy, vertebroplasty).\n\n• Core Principles of Opioid Maintenance:\n  - Administer opioids 'By the Clock': Around-the-clock scheduled extended-release formulations to maintain therapeutic steady-state serum levels (not PRN).\n  - 'By the Mouth': Oral route is preferred whenever functional; transdermal or subcutaneous if oral impossible.\n\n• Breakthrough Cancer Pain (BTcP) Management:\n  - Transient flare of moderate-to-severe pain that 'breaks through' an otherwise controlled baseline persistent pain.\n  - Rescue Dosing Rule: Immediate-release opioid dosed at **10% to 15% of the total 24-hour baseline Oral Morphine Equivalent (OME)**, available every 1 to 2 hours PRN.\n  - Rapid-Onset Transmucosal Fentanyl Formulations: Sublingual tablets (Abstral), buccal tablets (Fentora), or nasal sprays (PecFent) cross mucosal capillaries rapidly (onset 10–15 min, mirroring the rapid peak of incident breakthrough pain).",
           "callout": {
             "type": "pearl",
@@ -13255,78 +12717,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Severe Burn Injury Analgesia: Background, Breakthrough & Dressing Changes",
-          "images": [
-            {
-              "src": "assets/regional/femoral-usg.jpg",
-              "alt": "Femoral nerve block ultrasound sonoanatomy",
-              "caption": "Femoral Nerve Sonoanatomy: Femoral artery, fascia iliaca, femoral nerve, and iliopsoas muscle for hip and femur trauma."
-            },
-            {
-              "src": "assets/regional/fascia-iliaca-usg.jpg",
-              "alt": "Fascia iliaca compartment block FICB sonoanatomy",
-              "caption": "Infra-Inguinal Fascia Iliaca (FICB) Sonoanatomy: Fascia lata, fascia iliaca, and local anaesthetic spread beneath fascia."
-            },
-            {
-              "src": "assets/regional/fascia-iliaca-supra-usg.jpg",
-              "alt": "Supra-inguinal fascia iliaca block S-FICB sonoanatomy",
-              "caption": "Supra-Inguinal Fascia Iliaca (S-FICB): Deep circumflex iliac artery, iliacus muscle, and cranial spread to lumbar plexus."
-            },
-            {
-              "src": "assets/regional/peng-usg.jpg",
-              "alt": "Pericapsular nerve group PENG block sonoanatomy",
-              "caption": "Pericapsular Nerve Group (PENG) Block: Anterior inferior iliac spine (AIIS), iliopubic eminence (IPE), and psoas tendon."
-            },
-            {
-              "src": "assets/regional/adductor-canal-usg.jpg",
-              "alt": "Adductor canal block ACB sonoanatomy",
-              "caption": "Adductor Canal (ACB) Sonoanatomy: Sartorius muscle, vastus medialis, femoral artery, and saphenous nerve (motor-sparing)."
-            },
-            {
-              "src": "assets/regional/ilioinguinal-usg.jpg",
-              "alt": "Ilioinguinal and iliohypogastric nerve sonoanatomy",
-              "caption": "Ilioinguinal / Iliohypogastric Sonoanatomy: Internal oblique and transversus abdominis interfascial plane near ASIS."
-            },
-            {
-              "src": "assets/regional/lumbar-plexus-usg.jpg",
-              "alt": "Lumbar plexus psoas compartment block sonoanatomy",
-              "caption": "Lumbar Plexus (Psoas Compartment) Sonoanatomy: L4 transverse process, psoas major muscle, quadratus lumborum, and lumbar roots."
-            },
-            {
-              "src": "assets/regional/obturator-usg.jpg",
-              "alt": "Obturator nerve block sonoanatomy",
-              "caption": "Obturator Nerve Sonoanatomy: Pectineus, adductor brevis, adductor longus, and anterior/posterior obturator divisions."
-            },
-            {
-              "src": "assets/regional/lfcn-usg.jpg",
-              "alt": "Lateral femoral cutaneous nerve LFCN sonoanatomy",
-              "caption": "Lateral Femoral Cutaneous Nerve (LFCN) Sonoanatomy: Tensor fasciae latae, sartorius, and meralgia paresthetica nerve plane."
-            },
-            {
-              "src": "assets/regional/popliteal-usg.jpg",
-              "alt": "Popliteal sciatic nerve block sonoanatomy",
-              "caption": "Popliteal Sciatic Nerve Sonoanatomy: Popliteal artery, biceps femoris, semimembranosus, and sciatic bifurcation."
-            },
-            {
-              "src": "assets/regional/sciatic-infragluteal-usg.jpg",
-              "alt": "Infragluteal sciatic nerve block sonoanatomy",
-              "caption": "Infragluteal Sciatic Nerve Sonoanatomy: Gluteus maximus inferior border, greater trochanter, ischial tuberosity, and sciatic nerve."
-            },
-            {
-              "src": "assets/regional/sciatic-transgluteal-usg.jpg",
-              "alt": "Transgluteal sciatic nerve block sonoanatomy",
-              "caption": "Transgluteal Sciatic Nerve Sonoanatomy: Greater trochanter, ischial tuberosity, gluteus maximus, and deep subgluteal sciatic nerve."
-            },
-            {
-              "src": "assets/regional/sciatic-anterior-usg.jpg",
-              "alt": "Anterior sciatic nerve block sonoanatomy",
-              "caption": "Anterior Sciatic Nerve Sonoanatomy: Femoral artery, lesser trochanter, adductor magnus, and deep anterior approach sciatic nerve."
-            },
-            {
-              "src": "assets/regional/saphenous-ankle-usg.jpg",
-              "alt": "Saphenous nerve block at ankle sonoanatomy",
-              "caption": "Saphenous Nerve at Ankle Sonoanatomy: Medial malleolus, great saphenous vein, and accompanying sensory saphenous nerve."
-            }
-          ],
           "b": "Burn injury pain is among the most intense and complex pain states encountered in clinical medicine, combining severe inflammatory nociceptive, neuropathic, and procedural components:\n\n1. The Three Components of Burn Pain:\n• Background Resting Pain: Constant, dull, burning pain present at rest due to thermal nerve terminal destruction and extensive inflammatory prostaglandin/cytokine release.\n• Breakthrough Pain: Intermittent, sharp exacerbations triggered by minor movement or positional changes.\n• Procedural Pain: Intense, excruciating pain during daily wound debridement, dressing changes, and physical therapy, often exceeding the threshold of standard analgesic regimens.\n\n2. Pharmacokinetic Alterations in Severe Burns:\n• Massive Fluid Resuscitation & Hypoalbuminemia: Profound fluid shifts during the first 48 hours increase volume of distribution; hypoalbuminemia elevates the free active fraction of acidic drugs.\n• Hypermetabolic State (After 48–72 Hours): Marked upregulation of hepatic cytochrome P450 enzymes and augmented renal clearance accelerate drug metabolism, requiring 2- to 3-fold higher opioid and sedative doses.\n• Receptor Alterations: Upregulation of peripheral opioid receptors and extrajunctional nicotinic acetylcholine receptors occurs systemically.\n\n3. Protocolized Step-Ladder Regimen:\n• Background Control: Scheduled long-acting opioids or continuous infusions (Hydromorphone or Fentanyl), supplemented by subanesthetic IV Ketamine (0.15–0.3 mg/kg/h) and Gabapentin (300–600 mg TID) to suppress hyperalgesia.\n• Procedural Regimen: Short-acting IV opioid boluses (Fentanyl 1–2 mcg/kg or Hydromorphone 0.5–1 mg) combined with IV Ketamine bolus (0.5–1.0 mg/kg) or IV Dexmedetomidine (0.5–1.0 mcg/kg over 10 min) for dressing changes."
         },
         {
@@ -13776,18 +13166,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Systemic Intravenous Lidocaine Infusion: Pharmacokinetics, Anti-Inflammatory Actions & Protocol",
-          "images": [
-            {
-              "src": "assets/drugs/local-anaesthetics/local-anaesthetics_08_last-signs-symptoms.png",
-              "alt": "Local anaesthetic systemic toxicity LAST signs and symptoms pearl",
-              "caption": "Local Anaesthetic Systemic Toxicity (LAST): Prodromal CNS excitation, seizures, cardiovascular collapse, and warning signs."
-            },
-            {
-              "src": "assets/drugs/local-anaesthetics/local-anaesthetics_09_last-management.png",
-              "alt": "Local anaesthetic systemic toxicity LAST management and Intralipid protocol pearl",
-              "caption": "LAST Management Algorithm: Airway oxygenation, seizure suppression, 20% lipid emulsion resuscitation (Intralipid), and ACLS modifications."
-            }
-          ],
           "b": "• Multi-Mechanistic Analgesic & Cytokine Suppression Profile:\n  - Sodium Channel Blockade: Systemic lidocaine at low, sub-toxic plasma concentrations selectively blocks hyperactive, aberrantly firing voltage-gated sodium channels (**Nav1.7, Nav1.8, Nav1.9**) on damaged primary afferents and dorsal root ganglia, without blunting normal physiological nerve conduction.\n  - Dampening of Central Sensitization: Suppresses spinal dorsal horn wide dynamic range (WDR) neuron hyperexcitability and reduces NMDA receptor-mediated wind-up.\n  - Potent Anti-Inflammatory Actions: Inhibits neutrophil priming, adhesion, and trans-endothelial migration; significantly suppresses systemic release of pro-inflammatory cytokines: **IL-1β, IL-6, IL-8, and TNF-α**.\n  - Gastrointestinal Motility Preservation: Selectively dampens sympathetic inhibitory gastrointestinal reflexes, reverses postoperative ileus, accelerates return of bowel motility, and shortens hospital stay following major colorectal surgery.\n\n• Evidence-Based Indications:\n  - Open and laparoscopic colorectal, abdominal, and gynecological oncologic surgeries (Cochrane meta-analyses confirm 30% to 40% reduction in opioid consumption, shorter ileus duration, and lower PONV incidence).\n  - Acute neuropathic pain crises, refractory renal colic, and opioid-induced hyperalgesia in ICU.\n\n• Standard Dosing Protocol:\n  - Loading Dose: **1.5 mg/kg Ideal Body Weight (IBW)** IV infused slowly over 10 to 20 minutes at induction of anesthesia (maximum initial bolus: 100 mg).\n  - Maintenance Continuous Infusion: **1.0 to 2.0 mg/kg/h IBW** intraoperatively, continuing into PACU/ICU for 24 hours (maximum 48 hours).\n  - Therapeutic Plasma Window: **2.0 to 5.0 mcg/mL (10 to 20 mcmol/L)**.\n\n• Absolute Contraindications & Pharmacokinetic Cautions:\n  - Severe cardiac conduction blocks (second-degree or third-degree AV block), severe sinus bradycardia, severe heart failure (NYHA III/IV).\n  - Severe hepatic impairment: Lidocaine is metabolized 90% by hepatic CYP1A2 and CYP3A4 into active metabolites monoethylglycinexylidide (MEGX) and glycinexylidide (GX). Liver failure leads to rapid toxic accumulation.\n  - **The Regional Anesthesia Rule**: NEVER run systemic IV lidocaine concurrently with high-volume local anesthetic regional blocks (epidural, TAP block, fascia iliaca block). Additive systemic absorption precipitates catastrophic LAST.",
           "callout": {
             "type": "alert",
@@ -13806,12 +13184,6 @@ window.KN_STUDY = {
         },
         {
           "h": "Gabapentinoids (Pregabalin & Gabapentin): α2δ Calcium Subunit Ligands",
-          "image": {
-            "src": "assets/drugs/non-opioid-analgesics/non-opioid_04_gabapentin.png",
-            "alt": "Gabapentin pharmacology pearl",
-            "caption": "Gabapentin: Alpha-2-delta voltage-gated calcium channel subunit modulation, neuropathic pain, and perioperative opioid-sparing.",
-            "wide": true
-          },
           "b": "• The True Molecular Mechanism (The Universal Board Exam Pitfall):\n  - Despite their chemical nomenclature, gabapentinoids do NOT bind to GABA-A or GABA-B receptors, do NOT stimulate GABA synthesis, and do NOT inhibit GABA transaminase!\n  - Molecular Target: High-affinity binding to the **presynaptic α₂δ-1 and α₂δ-2 auxiliary subunits of voltage-gated calcium channels** (VGCCs) in the dorsal root ganglion and superficial dorsal horn.\n  - Clinical Effect: Impedes the trafficking of calcium channels to the presynaptic terminal, attenuating depolarization-induced calcium influx and halting the vesicular release of excitatory neurotransmitters: **glutamate, substance P, and CGRP**.\n\n• Key Pharmacokinetic Differences Between Gabapentin and Pregabalin:\n  - **Gabapentin (Neurontin)**:\n    • Absorbed exclusively via the saturable L-amino acid transport system in the duodenum/jejunum.\n    • Exhibits **non-linear, dose-dependent saturable pharmacokinetics**: Bioavailability falls precipitously from 60% at 300 mg/day down to less than 35% at 1600 mg/day!\n    • Requires slow, multi-week dose titration (300 mg TID up to 1200 mg TID). Slow onset (2–3 hours).\n  - **Pregabalin (Lyrica)**:\n    • Rapid, linear, dose-proportional absorption across its entire therapeutic range (150 to 600 mg/day).\n    • Oral bioavailability is **> 90% and independent of dose**.\n    • Rapid onset (1 hour); exhibits 6-fold higher binding affinity for the α₂δ-1 subunit than gabapentin.\n\n• Renal Elimination & Mandatory Dose Adjustments:\n  - Both agents are cleared **100% unchanged by the kidneys** without hepatic cytochrome P450 metabolism.\n  - In patients with renal insufficiency (eGFR < 60 mL/min), clearance falls linearly.\n  - Failure to adjust doses in renal impairment leads to severe neurotoxicity: **drug-induced myoclonus, asterixis, profound sedation, ataxia, encephalopathy, and coma**.\n\n• FDA Black Box Warning: Respiratory Depression with Opioids:\n  - Co-administration of gabapentinoids with opioids, benzodiazepines, or other sedatives creates profound synergistic respiratory depression.\n  - High-risk populations: Elderly patients, patients with severe COPD, and undiagnosed Obstructive Sleep Apnea (OSA).",
           "table": {
             "headers": [
@@ -14026,23 +13398,11 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Indications for Lung Isolation & Tracheobronchial Anatomy",
-          "b": "• Indications for Lung Isolation:\n  - Absolute Indications:\n    1. Isolation to protect a healthy lung from contamination: Massive pulmonary hemorrhage, unilateral pulmonary abscess/infection.\n    2. Control of ventilation distribution: Bronchopleural fistula (air leak bypasses operative lung), bronchopleurocutaneous fistula, giant unilateral bullae/cyst (risk of rupture under positive pressure).\n    3. Unilateral bronchopulmonary lavage (e.g. pulmonary alveolar proteinosis).\n  - Relative Indications (Surgical Exposure & Operative Feasibility):\n    1. Thoracic aortic aneurysm repair.\n    2. Pneumonectomy, lobectomy, segmentectomy, and sleeve resection.\n    3. Video-Assisted Thoracoscopic Surgery (VATS) and Robotic-Assisted Thoracic Surgery (RATS).\n    4. Esophagectomy and mediastinal tumor resection.\n\n• Tracheobronchial Anatomy & Asymmetry:\n  - Trachea: Length 10 to 13 cm, internal diameter 1.5 to 2.0 cm. Carina bifurcates at T4–T5 level.\n  - Right Mainstem Bronchus: Shorter (1.5 to 2.0 cm), wider, and more vertical (diverges from trachea at an angle of 25°). Crucial Feature: The Right Upper Lobe (RUL) bronchus branches off very early—only 1.5 to 2.0 cm from the carina! This anatomical proximity makes right-sided double-lumen tubes hazardous (easy to obstruct RUL orifice).\n  - Left Mainstem Bronchus: Longer (4.5 to 5.0 cm), narrower, and more horizontal (diverges at an angle of 45°). The Left Upper Lobe bronchus branches at 4.5 to 5.0 cm from the carina. This long bronchial cuff landing zone makes Left DLTs far easier and safer to position.",
-          "image": {
-            "src": "assets/references/laryngoscopy-mac3-sagittal-view.png",
-            "alt": "Tracheobronchial Branching Anatomy and DLT Insertion Landmarks",
-            "caption": "Tracheobronchial Architecture & Bronchial Angulation: Left vs Right Bronchial Length for Lung Isolation Safety Margins",
-            "wide": true
-          }
+          "b": "• Indications for Lung Isolation:\n  - Absolute Indications:\n    1. Isolation to protect a healthy lung from contamination: Massive pulmonary hemorrhage, unilateral pulmonary abscess/infection.\n    2. Control of ventilation distribution: Bronchopleural fistula (air leak bypasses operative lung), bronchopleurocutaneous fistula, giant unilateral bullae/cyst (risk of rupture under positive pressure).\n    3. Unilateral bronchopulmonary lavage (e.g. pulmonary alveolar proteinosis).\n  - Relative Indications (Surgical Exposure & Operative Feasibility):\n    1. Thoracic aortic aneurysm repair.\n    2. Pneumonectomy, lobectomy, segmentectomy, and sleeve resection.\n    3. Video-Assisted Thoracoscopic Surgery (VATS) and Robotic-Assisted Thoracic Surgery (RATS).\n    4. Esophagectomy and mediastinal tumor resection.\n\n• Tracheobronchial Anatomy & Asymmetry:\n  - Trachea: Length 10 to 13 cm, internal diameter 1.5 to 2.0 cm. Carina bifurcates at T4–T5 level.\n  - Right Mainstem Bronchus: Shorter (1.5 to 2.0 cm), wider, and more vertical (diverges from trachea at an angle of 25°). Crucial Feature: The Right Upper Lobe (RUL) bronchus branches off very early—only 1.5 to 2.0 cm from the carina! This anatomical proximity makes right-sided double-lumen tubes hazardous (easy to obstruct RUL orifice).\n  - Left Mainstem Bronchus: Longer (4.5 to 5.0 cm), narrower, and more horizontal (diverges at an angle of 45°). The Left Upper Lobe bronchus branches at 4.5 to 5.0 cm from the carina. This long bronchial cuff landing zone makes Left DLTs far easier and safer to position."
         },
         {
           "h": "Double-Lumen Endobronchial Tubes (DLTs): Left vs Right Selection, Sizing & Insertion Technique",
-          "b": "• Tube Selection: Left-Sided vs Right-Sided DLT:\n  - Left-Sided DLT (The Universal Default): Used in >90% of all thoracic cases (regardless of whether the surgery is right-sided or left-sided!). A Left DLT is preferred because the 5 cm length of the left main bronchus provides a generous margin of safety for the bronchial cuff without occluding the left upper lobe bronchus.\n  - Right-Sided DLT (Strict Indications Only): Reserved exclusively for cases where left endobronchial anatomy is distorted: left pneumonectomy, left sleeve resection, tumor compressing left main bronchus, or descending thoracic aortic aneurysm distorting left hilum. Right DLTs feature a specialized slotted, fenestrated bronchial cuff that must be aligned precisely over the right upper lobe bronchus orifice under continuous fiberoptic guidance.\n\n• Sizing Guidelines (External Diameter in French Gauge):\n  - Height- and Sex-Based Sizing:\n    • Adult Females: Height < 160 cm -> 35 Fr; Height ≥ 160 cm -> 37 Fr.\n    • Adult Males: Height < 170 cm -> 37–39 Fr; Height ≥ 170 cm -> 39–41 Fr.\n  - CT-Guided Sizing: Measure tracheal diameter and left mainstem bronchus width on preoperative chest CT at the level of aortic arch.\n  - Clinical Importance of Proper Sizing: An undersized tube requires high bronchial cuff inflation volumes, causing mucosal ischemic necrosis and herniation into carina; an oversized tube causes bronchial laceration or rupture.\n\n• Stepwise Insertion Technique:\n  1. Insert under direct or video laryngoscopy with the distal bronchial curve facing anteriorly (concavity anterior) through the vocal cords.\n  2. Once the bronchial cuff passes through the cords, remove the stylet.\n  3. Rotate the tube 90° towards the intended bronchus (counter-clockwise 90° for Left DLT; clockwise 90° for Right DLT).\n  4. Advance smoothly until moderate resistance is felt (average depth: 29 cm at incisors in adults, adjusted by patient height: Height (cm)/10 + 12.5 cm).",
-          "image": {
-            "src": "assets/notes/pft/pft_02_start-here.png",
-            "alt": "Preoperative Respiratory Assessment Algorithm for Thoracic Surgery Resectability",
-            "caption": "Preoperative Spirometry & Functional Capacity Evaluation Algorithm for Thoracic Surgical Resection Candidates",
-            "wide": true
-          }
+          "b": "• Tube Selection: Left-Sided vs Right-Sided DLT:\n  - Left-Sided DLT (The Universal Default): Used in >90% of all thoracic cases (regardless of whether the surgery is right-sided or left-sided!). A Left DLT is preferred because the 5 cm length of the left main bronchus provides a generous margin of safety for the bronchial cuff without occluding the left upper lobe bronchus.\n  - Right-Sided DLT (Strict Indications Only): Reserved exclusively for cases where left endobronchial anatomy is distorted: left pneumonectomy, left sleeve resection, tumor compressing left main bronchus, or descending thoracic aortic aneurysm distorting left hilum. Right DLTs feature a specialized slotted, fenestrated bronchial cuff that must be aligned precisely over the right upper lobe bronchus orifice under continuous fiberoptic guidance.\n\n• Sizing Guidelines (External Diameter in French Gauge):\n  - Height- and Sex-Based Sizing:\n    • Adult Females: Height < 160 cm -> 35 Fr; Height ≥ 160 cm -> 37 Fr.\n    • Adult Males: Height < 170 cm -> 37–39 Fr; Height ≥ 170 cm -> 39–41 Fr.\n  - CT-Guided Sizing: Measure tracheal diameter and left mainstem bronchus width on preoperative chest CT at the level of aortic arch.\n  - Clinical Importance of Proper Sizing: An undersized tube requires high bronchial cuff inflation volumes, causing mucosal ischemic necrosis and herniation into carina; an oversized tube causes bronchial laceration or rupture.\n\n• Stepwise Insertion Technique:\n  1. Insert under direct or video laryngoscopy with the distal bronchial curve facing anteriorly (concavity anterior) through the vocal cords.\n  2. Once the bronchial cuff passes through the cords, remove the stylet.\n  3. Rotate the tube 90° towards the intended bronchus (counter-clockwise 90° for Left DLT; clockwise 90° for Right DLT).\n  4. Advance smoothly until moderate resistance is felt (average depth: 29 cm at incisors in adults, adjusted by patient height: Height (cm)/10 + 12.5 cm)."
         },
         {
           "h": "Fiberoptic Bronchoscopic Confirmation of DLT Position & Malposition Troubleshooting",
@@ -14054,23 +13414,11 @@ window.KN_STUDY = {
         },
         {
           "h": "Physiology of One-Lung Ventilation & Lung-Protective Mechanical Ventilation Strategy",
-          "b": "• Pathophysiology of OLV Shunt:\n  - Ceasing ventilation to the non-dependent (operative) lung while continuing its perfusion creates a massive Right-to-Left Transpulmonary Shunt (blood perfuses unventilated alveoli, PaO₂ plummets). Shunt fraction typically reaches 20% to 30%.\n  - Hypoxic Pulmonary Vasoconstriction (HPV): The physiological compensatory mechanism. Alveolar hypoxia in the collapsed lung triggers local precapillary pulmonary vasoconstriction, diverting 40% to 50% of non-dependent lung blood flow away towards the well-ventilated dependent lung, partially preserving arterial oxygenation.\n  - Factors Inhibiting HPV (Worsening Hypoxemia!):\n    • Volatile anesthetics > 1.0 MAC (Sevoflurane/Desflurane > 1 MAC dose-dependently inhibit HPV; keep volatile at ≤0.7 MAC or switch to Propofol TIVA).\n    • Pulmonary vasodilators (Nitroglycerin, Nitroprusside, Calcium channel blockers).\n    • Hypocapnia (alkalosis) or excessive hypercapnia (acidosis).\n    • Excessive PEEP or high airway pressures in the dependent lung (compresses alveolar capillaries, diverting blood back into the collapsed lung!).\n    • Hypothermia.\n\n• Modern Lung-Protective Mechanical Ventilation Strategy for OLV:\n  - Historical practice of using large tidal volumes (10–12 mL/kg) to prevent atelectasis causes severe volutrauma and Acute Lung Injury (ALI) in the dependent lung!\n  - Protective Protocol (Consensus Guidelines):\n    1. Low Tidal Volume (Vt): 4 to 6 mL/kg of Predicted Body Weight (PBW).\n    2. Positive End-Expiratory Pressure (PEEP): 5 to 8 cmH₂O to the dependent lung (keeps alveoli open, prevents cyclic atelectrauma).\n    3. Peak Airway Pressure: Keep Ppeak < 30 cmH₂O; Plateau Pressure Pplat < 20–25 cmH₂O.\n    4. Driving Pressure (Pplat – PEEP): Maintain < 14 cmH₂O (the strongest predictor of postoperative pulmonary complications).\n    5. FiO₂ Titration: Lowest FiO₂ required to maintain SpO₂ 92% to 96% (avoid 100% FiO₂ routinely to prevent hyperoxic resorption atelectasis and free radical injury).\n    6. Permissive Hypercapnia: Allow PaCO₂ 45–55 mmHg (pH > 7.25); hypercapnia actually enhances HPV!",
-          "image": {
-            "src": "assets/critical-care/ventilation/ventilation_02_vcv.png",
-            "alt": "Lung-Protective Ventilation Waveforms during One-Lung Ventilation",
-            "caption": "Lung-Protective OLV Strategy: Low Tidal Volume (4–5 mL/kg PBW), PEEP (5 cmH2O), and Plateau Pressure Limitation (< 25 cmH2O)",
-            "wide": true
-          }
+          "b": "• Pathophysiology of OLV Shunt:\n  - Ceasing ventilation to the non-dependent (operative) lung while continuing its perfusion creates a massive Right-to-Left Transpulmonary Shunt (blood perfuses unventilated alveoli, PaO₂ plummets). Shunt fraction typically reaches 20% to 30%.\n  - Hypoxic Pulmonary Vasoconstriction (HPV): The physiological compensatory mechanism. Alveolar hypoxia in the collapsed lung triggers local precapillary pulmonary vasoconstriction, diverting 40% to 50% of non-dependent lung blood flow away towards the well-ventilated dependent lung, partially preserving arterial oxygenation.\n  - Factors Inhibiting HPV (Worsening Hypoxemia!):\n    • Volatile anesthetics > 1.0 MAC (Sevoflurane/Desflurane > 1 MAC dose-dependently inhibit HPV; keep volatile at ≤0.7 MAC or switch to Propofol TIVA).\n    • Pulmonary vasodilators (Nitroglycerin, Nitroprusside, Calcium channel blockers).\n    • Hypocapnia (alkalosis) or excessive hypercapnia (acidosis).\n    • Excessive PEEP or high airway pressures in the dependent lung (compresses alveolar capillaries, diverting blood back into the collapsed lung!).\n    • Hypothermia.\n\n• Modern Lung-Protective Mechanical Ventilation Strategy for OLV:\n  - Historical practice of using large tidal volumes (10–12 mL/kg) to prevent atelectasis causes severe volutrauma and Acute Lung Injury (ALI) in the dependent lung!\n  - Protective Protocol (Consensus Guidelines):\n    1. Low Tidal Volume (Vt): 4 to 6 mL/kg of Predicted Body Weight (PBW).\n    2. Positive End-Expiratory Pressure (PEEP): 5 to 8 cmH₂O to the dependent lung (keeps alveoli open, prevents cyclic atelectrauma).\n    3. Peak Airway Pressure: Keep Ppeak < 30 cmH₂O; Plateau Pressure Pplat < 20–25 cmH₂O.\n    4. Driving Pressure (Pplat – PEEP): Maintain < 14 cmH₂O (the strongest predictor of postoperative pulmonary complications).\n    5. FiO₂ Titration: Lowest FiO₂ required to maintain SpO₂ 92% to 96% (avoid 100% FiO₂ routinely to prevent hyperoxic resorption atelectasis and free radical injury).\n    6. Permissive Hypercapnia: Allow PaCO₂ 45–55 mmHg (pH > 7.25); hypercapnia actually enhances HPV!"
         },
         {
           "h": "Stepwise Crisis Algorithm for Severe Hypoxemia During One-Lung Ventilation (OLV)",
-          "b": "• When SpO₂ drops < 90% during OLV, execute this rapid stepwise crisis protocol:\n\n1. Step 1 (Immediate Oxygenation & Position Check):\n   - Increase FiO₂ to 1.0 (100% O₂) on the ventilator.\n   - Re-confirm DLT position with flexible fiberoptic bronchoscope immediately! (DLT dislodgement or migration from surgical lung retraction is the single most common cause of acute hypoxemia during OLV).\n   - Suction secretions, blood, or mucus plugs from the dependent lung airway.\n\n2. Step 2 (Dependent Lung Optimization):\n   - Perform an Alveolar Recruitment Maneuver on the dependent lung (gentle breath hold at 30 cmH₂O for 20–30 seconds).\n   - Adjust PEEP on the dependent lung (titrate to 6–10 cmH₂O to optimize compliance).\n\n3. Step 3 (Continuous Positive Airway Pressure to Non-Dependent Lung — The Gold Standard Rescue):\n   - Apply CPAP of 2 to 5 cmH₂O with 1 to 2 L/min O₂ flow directly to the non-dependent (collapsed) lung using a dedicated CPAP valve assembly.\n   - Why this works: Oxygenates the small volume of blood perfusing the non-dependent lung without re-inflating the lung enough to interfere with surgical vision. This is the single most effective intervention for refractory hypoxemia!\n\n4. Step 4 (Surgical Intervention):\n   - Ask the surgeon to temporarily clamp the pulmonary artery of the non-dependent lung (during pneumonectomy/lobectomy). This instantly eliminates the shunt by halting perfusion to the unventilated lung!\n\n5. Step 5 (Definitive Rescue):\n   - If severe hypoxemia persists (SpO₂ < 85%): Inform the surgeon, temporarily halt one-lung ventilation, and resume two-lung ventilation until the patient's oxygenation recovers.",
-          "image": {
-            "src": "assets/references/jet-ventilation-alveolar-mechanics.png",
-            "alt": "Crisis Algorithm for Refractory Hypoxemia during One-Lung Ventilation",
-            "caption": "Stepwise Crisis Algorithm for Severe Desaturation during OLV: CPAP to Non-Dependent Lung, PEEP to Dependent Lung & Alveolar Recruitment",
-            "wide": true
-          }
+          "b": "• When SpO₂ drops < 90% during OLV, execute this rapid stepwise crisis protocol:\n\n1. Step 1 (Immediate Oxygenation & Position Check):\n   - Increase FiO₂ to 1.0 (100% O₂) on the ventilator.\n   - Re-confirm DLT position with flexible fiberoptic bronchoscope immediately! (DLT dislodgement or migration from surgical lung retraction is the single most common cause of acute hypoxemia during OLV).\n   - Suction secretions, blood, or mucus plugs from the dependent lung airway.\n\n2. Step 2 (Dependent Lung Optimization):\n   - Perform an Alveolar Recruitment Maneuver on the dependent lung (gentle breath hold at 30 cmH₂O for 20–30 seconds).\n   - Adjust PEEP on the dependent lung (titrate to 6–10 cmH₂O to optimize compliance).\n\n3. Step 3 (Continuous Positive Airway Pressure to Non-Dependent Lung — The Gold Standard Rescue):\n   - Apply CPAP of 2 to 5 cmH₂O with 1 to 2 L/min O₂ flow directly to the non-dependent (collapsed) lung using a dedicated CPAP valve assembly.\n   - Why this works: Oxygenates the small volume of blood perfusing the non-dependent lung without re-inflating the lung enough to interfere with surgical vision. This is the single most effective intervention for refractory hypoxemia!\n\n4. Step 4 (Surgical Intervention):\n   - Ask the surgeon to temporarily clamp the pulmonary artery of the non-dependent lung (during pneumonectomy/lobectomy). This instantly eliminates the shunt by halting perfusion to the unventilated lung!\n\n5. Step 5 (Definitive Rescue):\n   - If severe hypoxemia persists (SpO₂ < 85%): Inform the surgeon, temporarily halt one-lung ventilation, and resume two-lung ventilation until the patient's oxygenation recovers."
         }
       ],
       "example": "CLINICAL VIGNETTE: A 64-year-old male with chronic COPD (FEV1 62% predicted, 40 pack-year smoking history) undergoes a right video-assisted thoracoscopic surgery (VATS) upper lobectomy for suspected T2N0 bronchogenic carcinoma. Following induction and intubation with a 37 Fr Left-sided Double-Lumen Tube, the patient is positioned in the left lateral decubitus position. Initial two-lung ventilation shows SpO₂ 98% on FiO₂ 0.40. Right-lung isolation is initiated, and surgery commences. Twelve minutes into one-lung ventilation, SpO₂ drops rapidly from 98% to 84% on the pulse oximeter.\n\nExecution of the Stepwise OLV Hypoxemia Algorithm:\n1. Immediate Action: FiO₂ is turned immediately to 1.0 (100% O₂). Sevoflurane concentration is lowered from 1.8% to 1.0% and Propofol infusion is increased to reduce inhalational inhibition of Hypoxic Pulmonary Vasoconstriction (HPV).\n2. Fiberoptic Verification: A 3.5 mm pediatric fiberoptic bronchoscope is passed down the tracheal lumen. The carina is visualized; however, the blue bronchial cuff has herniated partially over the carinal spur, partially occluding the dependent left mainstem bronchus. The DLT is advanced 1.5 cm under direct vision until the upper margin of the blue cuff sits precisely at the carinal junction without herniation. SpO₂ rises to 87%.\n3. Alveolar Recruitment: A gentle recruitment maneuver (Ppeak 30 cmH₂O for 10 seconds) is delivered to the dependent left lung, followed by optimization of PEEP to 6 cmH₂O. SpO₂ reaches 89%.\n4. Application of Operative-Lung CPAP: A dedicated Mapleson/CPAP circuit is attached to the non-dependent right bronchial limb, and 3 cmH₂O of CPAP with 100% O₂ is applied to the collapsed right lung.\n5. Clinical Outcome: Within 3 minutes of initiating 3 cmH₂O CPAP, arterial oxygen saturation surges from 89% to 97%. Surgical visualization is unimpeded. Arterial blood gas confirms PaO₂ 145 mmHg, PaCO₂ 44 mmHg, and pH 7.36. The lobectomy proceeds smoothly without requiring interruption of one-lung ventilation.",
@@ -14104,12 +13452,6 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "Cardiopulmonary Bypass (CPB): Circuit Components, Anticoagulation (ACT > 480s) & Cardioplegia",
-          "image": {
-            "src": "assets/references/cpb-circuit-diagram.jpg",
-            "alt": "Cardiopulmonary Bypass (CPB) Circuit Diagram and Extracorporeal Pathway",
-            "caption": "Cardiopulmonary Bypass (CPB) Extracorporeal Circuit Architecture & Reservoirs",
-            "wide": true
-          },
           "b": "• The Cardiopulmonary Bypass (CPB) Circuit:\n  - Venous Drainage: Deoxygenated venous blood drains by gravity or vacuum-assisted venous drainage (VAVD) from right atrium (two-stage single cannula) or bicaval cannulation (superior and inferior vena cava) into venous reservoir.\n  - Main Blood Pump: Roller pump (displacement) or Centrifugal pump (constrained vortex; afterload-sensitive, reduced hemolysis).\n  - Oxygenator & Heat Exchanger: Hollow-fiber microporous membrane oxygenator transfers oxygen and clears CO₂; integrated heat exchanger regulates patient core temperature (normothermia vs mild/moderate hypothermia 28–34°C).\n  - Arterial Line Filter: 20–40 micron screen filter traps microbubbles and particulate debris before blood re-enters the ascending aorta via the aortic cannula.\n\n• Systemic Anticoagulation & Heparin Management:\n  - Anticoagulation Target: Activated Clotting Time (ACT) > 480 seconds (measured by Hemochron or Medtronic ACT cartridge) before aortic and venous cannulation!\n  - Unfractionated Heparin: Initial loading dose 300 to 400 units/kg via central venous line. Confirm ACT exceeds 480s after 3–5 minutes. Re-check ACT every 30 minutes on bypass; administer additional heparin (50–100 units/kg) if ACT drops below 480s.\n  - Heparin Resistance: Failure of ACT to reach 480 seconds despite 400–500 units/kg heparin. Primary Cause: Antithrombin III (AT-III) deficiency (often induced by pre-op heparin infusion). Treatment: Administer Fresh Frozen Plasma (2 to 4 units, rich in AT-III) or Antithrombin III Concentrate (500–1000 units IV).\n\n• Myocardial Protection & Cardioplegia Protocols:\n  - Aortic Cross-Clamping isolates the coronary circulation, creating deliberate global myocardial ischemia.\n  - Cardioplegia Solution: High-potassium cold crystalloid or blood-cardioplegia (typically 4:1 blood-to-crystalloid ratio, potassium 15–20 mEq/L at 4°C).\n  - Mechanism: High extracellular potassium depolarizes myocardial cell membrane, inducing rapid diastolic cardiac arrest within seconds. Reduces myocardial oxygen consumption (MVO₂) by 90%–95%.\n  - Delivery Routes: Antegrade (via aortic root cannula into coronary ostia) or Retrograde (via coronary sinus catheter). Re-dosed every 15–20 minutes to maintain arrest and hypothermia."
         },
         {
@@ -14126,44 +13468,10 @@ window.KN_STUDY = {
         },
         {
           "h": "Hemodynamic Goals for Aortic Valve Lesions: Severe Aortic Stenosis (AS) vs Aortic Regurgitation (AR)",
-          "images": [
-            {
-              "src": "assets/cardiology/cardiology_pearl_1_of_4.jpg",
-              "alt": "Aortic Stenosis Hemodynamic Goals and Clinical Pearls",
-              "caption": "Aortic Stenosis (AS) Cardinal Goals: Sinus rhythm, 60–75 bpm, high preload, maintained/high SVR, avoiding hypotension.",
-              "wide": true
-            },
-            {
-              "src": "assets/cardiology/cardiology_pearl_2_of_4.jpg",
-              "alt": "Aortic Regurgitation Hemodynamic Goals and Clinical Pearls",
-              "caption": "Aortic Regurgitation (AR) Cardinal Goals: 'Fast, Forward, and Full' (80–100 bpm, low SVR, adequate preload).",
-              "wide": true
-            }
-          ],
           "b": "• Severe Aortic Stenosis (AS):\n  - Diagnostic Thresholds: Aortic Valve Area (AVA) ≤ 1.0 cm² (indexed < 0.6 cm²/m²), Mean Pressure Gradient ≥ 40 mmHg, Peak Jet Velocity ≥ 4.0 m/s.\n  - Pathophysiology: Severe concentric left ventricular hypertrophy (LVH), non-compliant stiff ventricle, reduced capillary-to-myocyte ratio, high myocardial oxygen demand, low coronary perfusion pressure.\n  - Strict Hemodynamic Goals:\n    • Heart Rate: 60 to 75 bpm (Normal sinus rhythm is mandatory! Loss of atrial kick decreases stroke volume by 30% to 40%). Avoid tachycardia (drastically shortens diastolic coronary filling time). Avoid severe bradycardia (<50 bpm; fixed stroke volume cannot compensate).\n    • Rhythm: Strict sinus rhythm. Cardiovert atrial fibrillation immediately.\n    • Preload: Generous to high (a stiff, non-compliant LV requires elevated filling pressures, CVP 12–16 mmHg, to maintain end-diastolic volume).\n    • Afterload / SVR: Maintain normal to high SVR. Vasodilation is catastrophic because fixed outflow obstruction prevents compensatory increase in cardiac output, precipitating sudden fatal coronary ischemia!\n    • Contractility: Maintain baseline.\n  - Emergency Rescue for Post-Induction AS Collapse: CPR is notoriously ineffective due to fixed anatomical obstruction. Immediately administer Phenylephrine (100–200 mcg IV) or Noradrenaline to restore SVR and coronary perfusion.\n\n• Aortic Regurgitation (AR):\n  - Pathophysiology: Diastolic backflow of blood from aorta into LV produces combined volume and pressure overload, eccentric LV hypertrophy, and widened systemic pulse pressure.\n  - Hemodynamic Goals ('Fast, Forward, and Full'):\n    • Heart Rate: 80 to 100 bpm ('Fast'). Shorter diastolic duration directly reduces the time available for regurgitant backflow!\n    • Afterload: Low SVR ('Forward'). Vasodilation reduces resistance to forward aortic flow and minimizes retrograde regurgitant fraction. (ACE inhibitors, Milrinone, Nicardipine).\n    • Preload: Adequate to generous ('Full') to support high forward stroke volume.\n    • Rhythm: Sinus rhythm preferred, though well-tolerated at faster rates.\n    • STRICT CONTRAINDICATION: Intra-Aortic Balloon Pump (IABP) is ABSOLUTELY CONTRAINDICATED in moderate-to-severe AR (balloon inflation during diastole massively forces blood retrograde across the incompetent valve into the LV, causing acute pulmonary edema and LV rupture!)."
         },
         {
           "h": "Hemodynamic Goals for Mitral Valve Lesions: Mitral Stenosis (MS) vs Mitral Regurgitation (MR)",
-          "images": [
-            {
-              "src": "assets/cardiology/cardiology_pearl_3_of_4.jpg",
-              "alt": "Mitral Stenosis Hemodynamic Goals and Clinical Pearls",
-              "caption": "Mitral Stenosis (MS) Cardinal Goals: 'Slow, Sinus, and Dry' (60–70 bpm, maintain sinus rhythm, avoid tachycardia and high PVR).",
-              "wide": true
-            },
-            {
-              "src": "assets/cardiology/cardiology_pearl_4_of_4.jpg",
-              "alt": "Mitral Regurgitation Hemodynamic Goals and Clinical Pearls",
-              "caption": "Mitral Regurgitation (MR) Cardinal Goals: 'Fast, Forward, and Vasodilated' (85–100 bpm, low SVR afterload reduction, normal-high preload).",
-              "wide": true
-            },
-            {
-              "src": "assets/references/swan-ganz-heart-pathway-diagram.jpg",
-              "alt": "Swan-Ganz Pulmonary Artery Catheter Pathway and Chamber Pressures",
-              "caption": "Pulmonary Artery Catheter Pathway & Normal Chamber Pressures in Valvular Disease",
-              "wide": true
-            }
-          ],
           "b": "• Mitral Stenosis (MS):\n  - Diagnostic Thresholds: Mitral Valve Area ≤ 1.5 cm² (severe ≤ 1.0 cm²), Mean Gradient > 5–10 mmHg.\n  - Pathophysiology: Mechanical obstruction to left ventricular inflow causes chronically elevated left atrial pressure, pulmonary venous hypertension, reactive pulmonary arterial vasoconstriction, right ventricular hypertrophy and failure. Atrial fibrillation is exceedingly common.\n  - Strict Hemodynamic Goals ('Slow, Sinus, and Dry'):\n    • Heart Rate: 60 to 70 bpm ('Slow'). Tachycardia is lethal: it shortens diastolic filling time across the narrowed valve, precipitating acute pulmonary venous congestion and pulmonary edema while collapsing LV stroke volume!\n    • Rhythm: Sinus rhythm is vital. If atrial fibrillation develops with rapid ventricular response, immediately administer Esmolol, Metoprolol, or synchronized DC cardioversion.\n    • Preload: Adequate, but avoid fluid overload (readily triggers pulmonary edema).\n    • Pulmonary Vascular Resistance (PVR): AVOID all triggers of acute RV strain: Hypoxia, hypercapnia, acidosis, and excessive PEEP must be aggressively prevented.\n    • Afterload: Maintain normal SVR.\n\n• Mitral Regurgitation (MR):\n  - Pathophysiology: Systolic backflow of blood from LV into low-pressure left atrium. Regurgitant fraction depends directly on left ventricular afterload (SVR) and regurgitant orifice size.\n  - Hemodynamic Goals ('Fast, Forward, and Vasodilated'):\n    • Heart Rate: 85 to 100 bpm. Tachycardia shortens systole, minimizing the duration of regurgitant flow, and keeps the LV smaller, reducing annular dilation. Avoid bradycardia!\n    • Afterload / SVR: Low SVR ('Forward flow'). Aggressive afterload reduction promotes forward ejection into the aorta and reduces backflow into the atrium. Milrinone, Nitroprusside, and IABP are beneficial.\n    • Preload: Maintain normal to high.\n    • Contractility: Maintain inotropic support (LV ejection fraction on echo often overestimates true contractility because regurgitation acts as an ejection pop-off)."
         },
         {
@@ -14842,23 +14150,10 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "1. Paediatric Neuraxial Anatomy Pearls",
-          "image": {
-            "src": "assets/drugs/local-anaesthetics/local-anaesthetics_07_emla-prilocaine.png",
-            "alt": "EMLA cream and prilocaine pharmacology pearl",
-            "caption": "EMLA Cream & Prilocaine: Topical anaesthesia formulation, methemoglobinemia pathophysiology, and paediatric safety limits.",
-            "wide": true
-          },
           "b": "Key developmental anatomical differences between infants and adults:\n\n• Termination of Spinal Cord (Conus Medullaris):\n  - In full-term neonates, the spinal cord terminates at L3 (compared to L1–L2 in adults).\n  - Reaches the adult L1 level by 12 months of age.\n• Termination of Dural Sac:\n  - In neonates, the dural sac extends down to S3–S4 (compared to S2 in adults).\n  - Consequently, during caudal epidural injection, the margin of safety between the sacrococcygeal ligament and the dural sac is narrow, increasing the risk of accidental dural puncture.\n• Loose Epidural Adipose Tissue:\n  - Infant epidural space contains gelatinous, loose, poorly lobulated fat, facilitating effortless cephalad spread of local anaesthetic solution."
         },
         {
           "h": "2. Caudal Epidural Block: Landmarks & Needle Insertion Technique",
-          "images": [
-            {
-              "src": "assets/regional/paeds-caudal-usg.jpg",
-              "alt": "Paediatric ultrasound caudal block sonoanatomy",
-              "caption": "Paediatric Caudal Epidural Sonoanatomy: Sacral cornua, sacrococcygeal ligament, sacral canal, and local anaesthetic spread."
-            }
-          ],
           "b": "The single most common regional anaesthetic technique performed in pediatric practice worldwide:\n\n• Indications: Surgical procedures below the umbilicus — inguinal herniotomy, orchidopexy, circumcision, hypospadias repair, clubfoot correction, lower limb orthopedic surgery.\n• Landmark Triangle:\n  - Place child in lateral position with hips and knees flexed.\n  - Palpate the bilateral Posterior Superior Iliac Spines (PSIS). An equilateral triangle constructed with the base connecting both PSIS points has its downward apex resting precisely over the Sacral Hiatus.\n  - Palpate the bilateral Sacral Cornua (bony prominences on either side of the hiatus) and the central depression of the sacrococcygeal membrane.\n• Puncture Technique:\n  - Use a 22G or 24G short-bevel needle or 22G IV cannula.\n  - Insert needle in midline at a 45-to-60 degree angle to the skin until a distinctive \"pop\" or give is felt penetrating the sacrococcygeal ligament.\n  - Depress the needle angle to 20 degrees (almost parallel to sacrum) and advance NO MORE than 1 to 2 mm into the caudal canal (advancing further risks dural puncture!).\n  - Aspiration: Meticulous aspiration for blood or CSF. Resistance during injection must be minimal (the \"whoosh test\" with air or ultrasound confirmation)."
         },
         {
@@ -14867,38 +14162,6 @@ window.KN_STUDY = {
         },
         {
           "h": "4. Peripheral Blocks: Penile Block & Ultrasound TAP Block",
-          "images": [
-            {
-              "src": "assets/regional/paeds-penile-usg.jpg",
-              "alt": "Paediatric ultrasound penile block sonoanatomy",
-              "caption": "Paediatric Dorsal Penile Nerve Block: Symphysis pubis, Buck's fascia, dorsal penile nerves and vessels."
-            },
-            {
-              "src": "assets/regional/paeds-rectus-sheath-usg.jpg",
-              "alt": "Paediatric ultrasound rectus sheath block sonoanatomy",
-              "caption": "Paediatric Rectus Sheath Block: Rectus abdominis muscle, posterior rectus sheath, and fascial plane hydrodissection."
-            },
-            {
-              "src": "assets/regional/paeds-ql-usg.jpg",
-              "alt": "Paediatric ultrasound quadratus lumborum block sonoanatomy",
-              "caption": "Paediatric Quadratus Lumborum (QL) Block: Lateral abdominal wall muscles, QL muscle, and psoas major plane."
-            },
-            {
-              "src": "assets/regional/paeds-axillary-usg.jpg",
-              "alt": "Paediatric ultrasound axillary block sonoanatomy",
-              "caption": "Paediatric Axillary Brachial Plexus: Axillary artery, median, ulnar, and radial nerves with perivascular spread."
-            },
-            {
-              "src": "assets/regional/paeds-femoral-usg.jpg",
-              "alt": "Paediatric ultrasound femoral block sonoanatomy",
-              "caption": "Paediatric Femoral Nerve Block: Femoral artery, fascia iliaca, femoral nerve, and iliopsoas muscle bed."
-            },
-            {
-              "src": "assets/regional/paeds-popliteal-usg.jpg",
-              "alt": "Paediatric ultrasound popliteal sciatic block sonoanatomy",
-              "caption": "Paediatric Popliteal Sciatic Block: Sciatic nerve division into tibial and common peroneal nerves at the popliteal fossa."
-            }
-          ],
           "b": "• Dorsal Penile Nerve Block (DPNB):\n  - Indications: Circumcision, distal penile surgery.\n  - Subpubic Technique: Insert needle at 10:30 and 1:30 o'clock positions at the base of the penis just beneath the pubic symphysis, traversing Buck's fascia. Inject 0.5% lignocaine or 0.2% ropivacaine without adrenaline (1–2 mL per side).\n  - Ring Block: Subcutaneous infiltration around the base of the shaft.\n  - ABSOLUTE CONTRAINDICATION: EPINEPHRINE IS STRICTLY PROHIBITED in penile blocks (produces end-arterial vasospasm, penile ischemia, and gangrene!).\n• Transversus Abdominis Plane (TAP) Block:\n  - Ultrasound-guided deposition between internal oblique and transversus abdominis muscles (0.3–0.5 mL/kg 0.2% ropivacaine per side) for umbilical/lower abdominal surgery."
         },
         {
@@ -14935,12 +14198,6 @@ window.KN_STUDY = {
         },
         {
           "h": "2. Pathophysiology, Pressure Gradients & Reactive PHTN",
-          "image": {
-            "src": "assets/references/swan-ganz-heart-pathway-diagram.jpg",
-            "alt": "Pulmonary Artery Catheter Trajectory Through Right Atrium, RV and Pulmonary Artery with Normal Pressures",
-            "caption": "Swan-Ganz Catheter Pathway & Normal Intracardiac Chamber Pressures",
-            "wide": true
-          },
           "b": "• Obstruction to LV Inflow: Elevated transmitral pressure gradient raises Left Atrial Pressure (LAP) from normal (6–10 mmHg) to 25–35 mmHg.\n• Retrograde Pulmonary Congestion: Elevated LAP increases pulmonary venous and capillary pressures. When PCWP exceeds 25 mmHg (plasma oncotic pressure), transudation produces pulmonary edema.\n• Two-Phase Pulmonary Hypertension:\n  1. Passive / Reactive PHTN: Direct retrograde backpressure from high LAP.\n  2. Obliterative / Vasoconstrictive PHTN: Longstanding congestion causes medial hypertrophy and intimal proliferation of pulmonary arterioles, producing fixed, precapillary PHTN (PASP > 60–80 mmHg), right ventricular strain, and secondary tricuspid regurgitation.\n• Atrial Fibrillation (AF): LA stretching causes chronic AF. Loss of atrial kick decreases LV end-diastolic volume by 20%–30%; rapid ventricular response precipitates flash pulmonary edema."
         },
         {
@@ -14957,11 +14214,6 @@ window.KN_STUDY = {
         },
         {
           "h": "6. Intraoperative Monitoring & Vascular Access",
-          "image": {
-            "src": "assets/references/swan-ganz-catheter-anatomy.jpg",
-            "alt": "Swan-Ganz Catheter Anatomy, Balloon Lumen, Thermistor, and Distal Port Details",
-            "caption": "Pulmonary Artery Catheter Structural Anatomy & Lumina Designation"
-          },
           "b": "• Mandatory Monitoring Suite:\n  - 5-Lead ECG with automated ST-segment and arrhythmia analysis (Leads II and V5).\n  - Pre-induction Radial Arterial Line: Continuous beat-to-beat BP tracking, early identification of tachycardia, and blood gas analysis.\n  - Central Venous Catheter (US-guided Right IJV): Monitors CVP (reflecting RV function) and provides dedicated access for inotropes/vasopressors.\n  - Transesophageal Echocardiography (TEE): Gold-standard intraoperative monitor. Visualizes LV filling, transmitral pressure gradients, LA de-airing, RV contractility, and PASP via tricuspid regurgitant jet (4 × TRV² + RAP)."
         },
         {
@@ -15111,12 +14363,6 @@ window.KN_STUDY = {
         },
         {
           "h": "5. Cardiopulmonary Bypass Phases & Myocardial Protection",
-          "image": {
-            "src": "assets/references/cpb-circuit-diagram.jpg",
-            "alt": "Cardiopulmonary Bypass (CPB) Circuit Diagram, Reservoirs, Oxygenator, and Heat Exchanger",
-            "caption": "Cardiopulmonary Bypass (CPB) Extracorporeal Circuit Architecture",
-            "wide": true
-          },
           "b": "• Cannulation Sequence: Ascending aorta cannulated first (keep SBP 90–100 mmHg to prevent aortic dissection), followed by venous cannulation (two-stage single cannula in right atrium or bicaval cannulation).\n• Initiation of CPB: Pump flow targeted to 2.4 L/min/m² cardiac index; confirm arterial line flat/non-pulsatile; turn OFF mechanical ventilation; administer volatile anesthetic via pump oxygenator vaporizer; maintain MAP 50–70 mmHg on pump.\n• Myocardial Protection (Cardioplegia Arrest):\n  - Aortic cross-clamp applied; cold (4°C) hyperkalemic blood cardioplegia (e.g. Del Nido or 4:1 blood:crystalloid) delivered antegrade via aortic root and/or retrograde via coronary sinus.\n  - Mechanism: K⁺ (16–20 mEq/L) depolarizes cardiac myocyte membrane, arresting heart in diastole and reducing MVO₂ by >95%.\n• Rewarming: Rewarm gradually to 36.5°C; avoid arterial outlet temperature > 37.0°C to prevent cerebral hyperthermia."
         },
         {
@@ -15159,13 +14405,7 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "1. Definition, Classification & Target Organ Damage",
-          "b": "• Definition & Staging (2024 ESH / ACC/AHA Criteria):\n  - Normal BP: < 120/80 mmHg.\n  - Stage 1 Hypertension: 130–139 / 80–89 mmHg.\n  - Stage 2 Hypertension: ≥ 140 / ≥ 90 mmHg.\n  - Severe / Grade 3 Hypertension: SBP ≥ 180 mmHg or DBP ≥ 110 mmHg.\n• Target Organ Damage (TOD) Checklist:\n  1. Cardiac: Left ventricular hypertrophy (LVH), diastolic dysfunction, CAD, heart failure.\n  2. Cerebral: Transient ischemic attack (TIA), ischemic stroke, intracerebral hemorrhage, vascular dementia.\n  3. Renal: Nephrosclerosis, microalbuminuria, elevated serum creatinine, CKD.\n  4. Vascular: Peripheral artery disease, aortic aneurysm/dissection.\n  5. Retinal: Keith-Wagener-Barker retinopathy (Grade I–IV).",
-          "image": {
-            "src": "assets/cardiology/cardiology_pearl_1_of_4.jpg",
-            "alt": "Hypertension and Perioperative Hemodynamic Targets",
-            "caption": "Hypertension Management: Autoregulation Shift, SVR Targets & Perioperative Antihypertensive Drug Continuance Rules",
-            "wide": true
-          }
+          "b": "• Definition & Staging (2024 ESH / ACC/AHA Criteria):\n  - Normal BP: < 120/80 mmHg.\n  - Stage 1 Hypertension: 130–139 / 80–89 mmHg.\n  - Stage 2 Hypertension: ≥ 140 / ≥ 90 mmHg.\n  - Severe / Grade 3 Hypertension: SBP ≥ 180 mmHg or DBP ≥ 110 mmHg.\n• Target Organ Damage (TOD) Checklist:\n  1. Cardiac: Left ventricular hypertrophy (LVH), diastolic dysfunction, CAD, heart failure.\n  2. Cerebral: Transient ischemic attack (TIA), ischemic stroke, intracerebral hemorrhage, vascular dementia.\n  3. Renal: Nephrosclerosis, microalbuminuria, elevated serum creatinine, CKD.\n  4. Vascular: Peripheral artery disease, aortic aneurysm/dissection.\n  5. Retinal: Keith-Wagener-Barker retinopathy (Grade I–IV)."
         },
         {
           "h": "2. Pathophysiology: Vascular Sclerosis & The Right-Shifted Autoregulation Curve",
@@ -15220,13 +14460,7 @@ window.KN_STUDY = {
         },
         {
           "h": "2. Pathophysiology: Shunt Dynamics & The Hypercyanotic 'Tet Spell'",
-          "b": "• Determinants of Right-to-Left Shunt:\n  - In TOF, the VSD is non-restrictive (RV systolic pressure equals LV systolic pressure).\n  - The direction and magnitude of blood flow is dictated strictly by the ratio of Systemic Vascular Resistance (SVR) to Pulmonary Vascular Resistance (PVR + RVOTO):\n    * Shunt = SVR / (PVR + RVOTO)\n    * Decreased SVR or Increased RVOTO / PVR increases right-to-left shunting, bypassing the lungs and causing profound hypoxemia.\n• Pathophysiology of the 'Tet Spell' (Hypercyanotic Crisis):\n  - Triggered by crying, agitation, pain, tachycardia, acidosis, or hypovolemia.\n  - Sympathetic surge causes acute muscular spasm of the dynamic subpulmonary infundibulum (RVOTO spikes dramatically).\n  - Blood is diverted entirely away from the lungs across the VSD into the aorta, precipitating acute severe arterial desaturation (SpO₂ < 40%), hyperpnea, syncope, seizures, or cardiac arrest.",
-          "image": {
-            "src": "assets/cardiology/cardiology_pearl_3_of_4.jpg",
-            "alt": "Tetralogy of Fallot Anatomy, Cyanotic Spells & Shunt Physiology",
-            "caption": "Tetralogy of Fallot (TOF): The 4 Components, Hypercyanotic \"Tet\" Spell Crisis Protocol & SVR Maintenance",
-            "wide": true
-          }
+          "b": "• Determinants of Right-to-Left Shunt:\n  - In TOF, the VSD is non-restrictive (RV systolic pressure equals LV systolic pressure).\n  - The direction and magnitude of blood flow is dictated strictly by the ratio of Systemic Vascular Resistance (SVR) to Pulmonary Vascular Resistance (PVR + RVOTO):\n    * Shunt = SVR / (PVR + RVOTO)\n    * Decreased SVR or Increased RVOTO / PVR increases right-to-left shunting, bypassing the lungs and causing profound hypoxemia.\n• Pathophysiology of the 'Tet Spell' (Hypercyanotic Crisis):\n  - Triggered by crying, agitation, pain, tachycardia, acidosis, or hypovolemia.\n  - Sympathetic surge causes acute muscular spasm of the dynamic subpulmonary infundibulum (RVOTO spikes dramatically).\n  - Blood is diverted entirely away from the lungs across the VSD into the aorta, precipitating acute severe arterial desaturation (SpO₂ < 40%), hyperpnea, syncope, seizures, or cardiac arrest."
         },
         {
           "h": "3. Preoperative Evaluation & Compensatory Polycythemia",
@@ -15316,13 +14550,7 @@ window.KN_STUDY = {
         },
         {
           "h": "2. Electromagnetic Interference (EMI) Hazards & Electrosurgery",
-          "b": "• The 4 Surgical EMI Risks:\n  1. INAPPROPRIATE INHIBITION: EMI from monopolar cautery is sensed as intrinsic cardiac activity, causing the pacemaker to inhibit firing, precipitating asystole in a pacemaker-dependent patient!\n  2. INADVERTENT REPROGRAMMING: Strong radiofrequency current resets generator into factory backup mode (VVI or VOO).\n  3. ICD FALSE SHOCKS: EMI sensed as ventricular fibrillation, triggering painful, dangerous high-voltage internal defibrillator shocks.\n  4. THERMAL MYOCARDIAL INJURY: Electrical energy conducted down the lead tip causes endocardial thermal burn and loss of capture.\n• Rules for Monopolar Electrosurgery:\n  - Use BIPOLAR cautery whenever possible (current restricted between forceps tips).\n  - If monopolar necessary: Place return pad as close to surgical site and as far from CIED generator as possible (current path must NEVER cross the heart or generator).\n  - Keep bursts short (< 4–5 seconds) and use lowest effective power.",
-          "image": {
-            "src": "assets/cardiology/cardiology_pearl_2_of_4.jpg",
-            "alt": "Cardiac Implantable Electronic Devices (CIED) Perioperative Management",
-            "caption": "Cardiac Pacemakers & ICDs: NBG/NBD Code, Intraoperative Magnet Application & EMI Electrocautery Safeguards",
-            "wide": true
-          }
+          "b": "• The 4 Surgical EMI Risks:\n  1. INAPPROPRIATE INHIBITION: EMI from monopolar cautery is sensed as intrinsic cardiac activity, causing the pacemaker to inhibit firing, precipitating asystole in a pacemaker-dependent patient!\n  2. INADVERTENT REPROGRAMMING: Strong radiofrequency current resets generator into factory backup mode (VVI or VOO).\n  3. ICD FALSE SHOCKS: EMI sensed as ventricular fibrillation, triggering painful, dangerous high-voltage internal defibrillator shocks.\n  4. THERMAL MYOCARDIAL INJURY: Electrical energy conducted down the lead tip causes endocardial thermal burn and loss of capture.\n• Rules for Monopolar Electrosurgery:\n  - Use BIPOLAR cautery whenever possible (current restricted between forceps tips).\n  - If monopolar necessary: Place return pad as close to surgical site and as far from CIED generator as possible (current path must NEVER cross the heart or generator).\n  - Keep bursts short (< 4–5 seconds) and use lowest effective power."
         },
         {
           "h": "3. Magnet Application Behavior: Pacemaker vs ICD",
@@ -15362,13 +14590,7 @@ window.KN_STUDY = {
         },
         {
           "h": "2. Hemodynamics of Aortic Cross-Clamping & Declamping Shock",
-          "b": "• Hemodynamic Sequelae of Aortic Cross-Clamping:\n  - Sudden massive increase in Afterload: Systemic Vascular Resistance (SVR) spikes by 40%–100% depending on clamp level (infrarenal vs suprarenal vs thoracic).\n  - Left Ventricular Strain: SBP, MAP, and PCWP spike; acute subendocardial ischemia or LV failure may develop in patients with CAD.\n  - Distal Tissue Hypoperfusion: Severe anaerobic metabolism below the clamp produces lactic acid, prostaglandins, and endotoxins.\n• The Declamping Reperfusion Shock (The Danger Moment!):\n  - Sudden removal of clamp drops SVR dramatically.\n  - Ischemic metabolites (lactic acid, potassium, adenosine, kinins) wash into central circulation, triggering profound systemic vasodilation, myocardial depression, and severe hypotensive collapse.\n  - Prevention: Pre-load with 500–1000 mL crystalloid before declamp; inform surgeon to release clamp slowly; start Norepinephrine infusion; ensure K⁺ and pH are optimized.",
-          "image": {
-            "src": "assets/cardiology/cardiology_pearl_4_of_4.jpg",
-            "alt": "Peripheral Vascular Disease & Vascular Cross-Clamping Hemodynamics",
-            "caption": "Peripheral Arterial Disease (PAD): Aortic Cross-Clamping / Unclamping Hemodynamics, Heparinization & Renal Protection",
-            "wide": true
-          }
+          "b": "• Hemodynamic Sequelae of Aortic Cross-Clamping:\n  - Sudden massive increase in Afterload: Systemic Vascular Resistance (SVR) spikes by 40%–100% depending on clamp level (infrarenal vs suprarenal vs thoracic).\n  - Left Ventricular Strain: SBP, MAP, and PCWP spike; acute subendocardial ischemia or LV failure may develop in patients with CAD.\n  - Distal Tissue Hypoperfusion: Severe anaerobic metabolism below the clamp produces lactic acid, prostaglandins, and endotoxins.\n• The Declamping Reperfusion Shock (The Danger Moment!):\n  - Sudden removal of clamp drops SVR dramatically.\n  - Ischemic metabolites (lactic acid, potassium, adenosine, kinins) wash into central circulation, triggering profound systemic vasodilation, myocardial depression, and severe hypotensive collapse.\n  - Prevention: Pre-load with 500–1000 mL crystalloid before declamp; inform surgeon to release clamp slowly; start Norepinephrine infusion; ensure K⁺ and pH are optimized."
         },
         {
           "h": "3. Spinal Cord Ischemia & The Artery of Adamkiewicz",
@@ -15405,33 +14627,15 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "1. Definition, Indications for Lung Isolation & Preoperative Resectability (\"Rule of 40s\")",
-          "image": {
-            "src": "assets/notes/pft/pft_02_start-here.png",
-            "alt": "PFT Preoperative Resectability & Functional Spirometry Flowchart (ACCP/ESTS Guidelines)",
-            "caption": "PFT Preoperative Resectability & Functional Spirometry Flowchart (ACCP/ESTS Guidelines)",
-            "wide": true
-          },
           "b": "• Definition: Complete surgical excision of an entire lung (right or left), most commonly indicated for centrally located bronchogenic carcinoma.\n• Indications for Lung Isolation:\n  1. ABSOLUTE INDICATIONS:\n     - Protection of healthy lung from massive contralateral spillage of pus (lung abscess, severe bronchiectasis) or blood (massive hemoptysis > 600 mL/24h).\n     - Control of distribution of ventilation: Bronchopleural fistula (BPF), giant unilateral bulla/cyst (prevent positive-pressure rupture/tension pneumothorax), tracheobronchial tree disruption.\n     - Unilateral bronchopulmonary lavage (pulmonary alveolar proteinosis).\n  2. RELATIVE INDICATIONS (Surgical Exposure & Ergonomics):\n     - Thoracic aortic aneurysm repair, pneumonectomy, lobectomy, esophageal resection, minimally invasive thoracic surgery (VATS/robotic thoracoscopy).\n• ACCP / ESTS 3-Tier Preoperative Resectability Algorithm:\n  1. Spirometry & Diffusion Screening:\n     - Baseline FEV₁ > 2.0 L (for pneumonectomy) or > 1.5 L (for lobectomy) or > 80% predicted with DLCO > 80% = Low surgical risk; safe for resection without further testing.\n     - If FEV₁ < 80% or DLCO < 80%, calculate Predicted Postoperative (ppo) values.\n  2. Calculation of ppoFEV₁ & ppoDLCO:\n     - Anatomical Calculation: ppoFEV₁ = Preop FEV₁ × [1 - (Number of functional subsegments removed / 19 total segments)].\n     - Segmental Distribution: Right lung = 10 segments (55% total function); Left lung = 9 segments (45% total function).\n     - Quantitative V/Q Lung Scan: Mandatory when FEV₁ is borderline or prior lobectomy has distorted anatomy (ppoFEV₁ = Preop FEV₁ × % perfusion in non-diseased lung).\n  3. The \"Rule of 40s\" Risk Stratification:\n     - ppoFEV₁ > 40% AND ppoDLCO > 40%: Normal low risk (<5% perioperative mortality).\n     - ppoFEV₁ or ppoDLCO 30%–40%: Intermediate risk; mandates formal Cardiopulmonary Exercise Testing (CPET).\n     - ppoFEV₁ or ppoDLCO < 30%: High risk for postoperative respiratory failure, ventilator dependency, and death.\n  4. Cardiopulmonary Exercise Testing (CPET — Gold Standard Indicator):\n     - VO₂ max > 20 mL/kg/min (or >75% predicted): Safe for pneumonectomy; low risk (<5% mortality).\n     - VO₂ max 10–20 mL/kg/min (35%–75% predicted): Moderate risk; consider lobectomy, wedge resection, or stereotactic radiotherapy.\n     - VO₂ max < 10 mL/kg/min (or <35% predicted): Prohibitive surgical mortality (>25%–30%); anatomical lung resection is CONTRAINDICATED.\n• Bedside Exercise Tolerance Screening:\n  - Stair Climbing Test: Climbing > 5 flights of stairs unassisted correlates with VO₂ max > 20 mL/kg/min. Inability to climb 2 flights correlates with VO₂ max < 10 mL/kg/min.\n  - Shuttle Walk Test: Distance > 400 meters (or >25 shuttles) predicts VO₂ max > 15 mL/kg/min."
         },
         {
           "h": "2. Tracheobronchial Surgical Anatomy: Left vs Right Bronchial Architecture",
-          "image": {
-            "src": "assets/references/laryngoscopy-mac3-sagittal-view.png",
-            "alt": "Airway Anatomy & Tracheobronchial Branching Landmarks",
-            "caption": "Tracheobronchial Branching Landmarks & Bronchial Angulation",
-            "wide": true
-          },
           "b": "• Comparative Anatomical Dimensions (Crucial for DLT Safety Margin):\n  - RIGHT MAIN BRONCHUS:\n    • Length: Very short (1.5 to 2.0 cm from carina to right upper lobe bronchus takeoff).\n    • Caliber: Wider diameter, more vertical take-off (25° angle with trachea).\n    • Right Upper Lobe (RUL) Orifice: Originates only 1.5–2.0 cm from carina (in 0.5%–1% of patients, RUL arises directly from trachea as a \"tracheal bronchus\" / bronchus suis).\n    • Clinical Hazard: Because the safety margin is only 1–2 mm, any minor migration of a right DLT immediately occludes the RUL takeoff, producing severe RUL atelectasis and acute hypoxemia.\n  - LEFT MAIN BRONCHUS:\n    • Length: Substantially longer (4.5 to 5.0 cm from carina to secondary carina / LUL division).\n    • Caliber: Narrower diameter, more horizontal takeoff (45° angle with trachea, curving under the aortic arch).\n    • Left Upper Lobe (LUL) Orifice: Lies 4.5–5.0 cm distal to carina.\n    • Clinical Safety Margin: Offers a generous 3.0 to 4.0 cm margin of safety where the bronchial cuff can sit securely without occluding either the carina or the upper lobe division.\n• Why a LEFT-SIDED DLT is Preferred for Almost ALL Thoracic Surgeries (Including Right Pneumonectomy!):\n  - Because of the 4 cm margin of safety, a Left DLT is universally the first-line choice for both left AND right thoracic resections.\n  - A Right DLT is reserved STRICTLY for:\n    1. Distortion or obstruction of left main bronchus by tumor, aneurysm, or endobronchial mass.\n    2. Left sleeve pneumonectomy or left main bronchus surgical resection/transection."
         },
         {
           "h": "3. Double-Lumen Endobronchial Tubes (DLT): Types, Sizing & Insertion Protocol",
-          "b": "• Evolution & Types of DLT:\n  1. Carlens Tube (1949): First modern left-sided red rubber tube with a carinal hook. Hook secured placement at carina but caused vocal cord trauma during insertion and could tear friable tissue.\n  2. White Tube: Right-sided modification of the Carlens tube with a carinal hook and slotted bronchial cuff.\n  3. Bryce-Smith Tube: Rubber tube with slotted cuff, no carinal hook.\n  4. Robertshaw Tube (Standard Modern DLT): Disposable polyvinyl chloride (PVC) tube, anatomically pre-molded, no carinal hook. Features high-volume low-pressure tracheal cuff and low-volume high-pressure bronchial cuff. Available in distinct Left and Right configurations.\n• DLT Sizing Guidelines:\n  - Patient Height & Sex Guidelines:\n    • Adult Females < 160 cm: 35 Fr.\n    • Adult Females ≥ 160 cm: 37 Fr.\n    • Adult Males < 170 cm: 37 to 39 Fr.\n    • Adult Males ≥ 170 cm: 39 to 41 Fr.\n    • Adolescents & petite adults: 26 Fr, 28 Fr, 32 Fr.\n  - Slinger's CT-Measured Left Mainstem Bronchial Diameter (LMBD):\n    • LMBD ≥ 18 mm -> 41 Fr DLT.\n    • LMBD 16 to 18 mm -> 39 Fr DLT.\n    • LMBD 15 to 16 mm -> 37 Fr DLT.\n    • LMBD < 15 mm -> 35 Fr DLT.\n  - DLT Insertion Depth Formula: Depth at incisors (cm) = 12 + [Height in cm / 10] (e.g., 29 cm for 170 cm patient).\n• Insertion Technique:\n  1. Insert through vocal cords under direct/video laryngoscopy with bronchial tip pointing anteriorly.\n  2. Immediately upon passing cords, withdraw stylet.\n  3. Rotate tube 90° toward the bronchus being intubated (90° counterclockwise for Left DLT; 90° clockwise for Right DLT).\n  4. Advance gently down the trachea until mild resistance is felt or estimated depth is reached.\n  5. Inflate tracheal cuff (5–10 mL air). Inflate bronchial cuff with minimal air (<1–3 mL) using \"just-seal\" technique under auscultation/manometry (NEVER >3 mL air!).",
-          "image": {
-            "src": "assets/references/videolaryngoscope-mcgrath.jpg",
-            "alt": "Videolaryngoscopic Guidance for Double-Lumen Endobronchial Tube Placement",
-            "caption": "Videolaryngoscopy & Fibreoptic-Assisted Placement of Double-Lumen Endobronchial Tubes (DLT) for Precise Anatomical Sizing",
-            "wide": true
-          }
+          "b": "• Evolution & Types of DLT:\n  1. Carlens Tube (1949): First modern left-sided red rubber tube with a carinal hook. Hook secured placement at carina but caused vocal cord trauma during insertion and could tear friable tissue.\n  2. White Tube: Right-sided modification of the Carlens tube with a carinal hook and slotted bronchial cuff.\n  3. Bryce-Smith Tube: Rubber tube with slotted cuff, no carinal hook.\n  4. Robertshaw Tube (Standard Modern DLT): Disposable polyvinyl chloride (PVC) tube, anatomically pre-molded, no carinal hook. Features high-volume low-pressure tracheal cuff and low-volume high-pressure bronchial cuff. Available in distinct Left and Right configurations.\n• DLT Sizing Guidelines:\n  - Patient Height & Sex Guidelines:\n    • Adult Females < 160 cm: 35 Fr.\n    • Adult Females ≥ 160 cm: 37 Fr.\n    • Adult Males < 170 cm: 37 to 39 Fr.\n    • Adult Males ≥ 170 cm: 39 to 41 Fr.\n    • Adolescents & petite adults: 26 Fr, 28 Fr, 32 Fr.\n  - Slinger's CT-Measured Left Mainstem Bronchial Diameter (LMBD):\n    • LMBD ≥ 18 mm -> 41 Fr DLT.\n    • LMBD 16 to 18 mm -> 39 Fr DLT.\n    • LMBD 15 to 16 mm -> 37 Fr DLT.\n    • LMBD < 15 mm -> 35 Fr DLT.\n  - DLT Insertion Depth Formula: Depth at incisors (cm) = 12 + [Height in cm / 10] (e.g., 29 cm for 170 cm patient).\n• Insertion Technique:\n  1. Insert through vocal cords under direct/video laryngoscopy with bronchial tip pointing anteriorly.\n  2. Immediately upon passing cords, withdraw stylet.\n  3. Rotate tube 90° toward the bronchus being intubated (90° counterclockwise for Left DLT; 90° clockwise for Right DLT).\n  4. Advance gently down the trachea until mild resistance is felt or estimated depth is reached.\n  5. Inflate tracheal cuff (5–10 mL air). Inflate bronchial cuff with minimal air (<1–3 mL) using \"just-seal\" technique under auscultation/manometry (NEVER >3 mL air!)."
         },
         {
           "h": "4. Bronchial Blockers in Full Detail: Arndt, Cohen, Uniblocker, Univent & EZ-Blocker",
@@ -15443,33 +14647,15 @@ window.KN_STUDY = {
         },
         {
           "h": "6. STEP-BY-STEP EMERGENCY PROTOCOL: \"NOT ABLE TO VENTILATE INTRAOP FOR OLV\" & ACUTE HYPOXEMIA",
-          "image": {
-            "src": "assets/notes/pft/pft_05_lung-volumes-dlco.png",
-            "alt": "Lung Volumes & DLCO Diffusion Capacity Interpretation for Thoracic Surgery",
-            "caption": "Lung Mechanics, Functional Residual Capacity & Driving Pressure Targets during OLV",
-            "wide": true
-          },
           "b": "• Immediate Clinical Scenario: During one-lung ventilation in lateral decubitus position, the high-pressure ventilator alarm sounds, peak inspiratory pressure spikes > 40 cmH₂O, expired tidal volume plummets to < 100 mL, and SpO₂ drops precipitously.\n• The Step-by-Step Algorithmic Rescue Protocol:\n  1. STEP 1: IMMEDIATE RESCUE ACTIONS (Within 10 Seconds):\n     - Switch ventilator to 100% FiO₂ (Oxygen Flow 10 L/min).\n     - Immediately switch from mechanical ventilator to MANUAL BAG VENTILATION on the anaesthesia machine.\n     - Feel the breathing bag: Is it completely rigid/non-compliant (airway obstruction/pneumothorax) or flaccid (circuit disconnection/cuff failure)?\n     - Announce to the thoracic surgeon: \"Pausing OLV — high airway resistance / inability to ventilate dependent lung.\"\n  2. STEP 2: PRESSURE ANALYSIS (Peak Pressure vs Plateau Pressure):\n     - High Ppeak with Normal Pplat (Ppeak - Pplat > 15 cmH₂O): Resistance problem (kinked DLT, mucus plug, blood clot, bronchial cuff herniation, or acute bronchospasm).\n     - High Ppeak with High Pplat (Pplat > 30 cmH₂O): Compliance problem (DLT migrated too deep into single lobar bronchus, tension pneumothorax of dependent lung, dependent lung pulmonary edema, or excessive surgical retractor pressure).\n  3. STEP 3: EMERGENCY FIBEROPTIC BRONCHOSCOPY (FOB) DIAGNOSTIC CHECK:\n     - Pass FOB down TRACHEAL lumen immediately:\n       • Has the DLT backed out into the trachea, causing the inflated bronchial cuff to herniate across the carina and completely seal the dependent lung?\n       • If so: Deflate bronchial cuff, advance tube back into left main bronchus under direct FOB vision, and re-inflate cuff with 1–2 mL air.\n       • If Bronchial Blocker used: Has the blocker balloon herniated into the trachea? Deflate blocker balloon immediately!\n     - Pass FOB down BRONCHIAL lumen:\n       • Has the tube migrated too deep into a lobar bronchus (e.g., lower lobe bronchus, occluding upper lobe)?\n       • Is the bronchial tip abutted against the bronchial wall or secondary carina?\n       • Is there a mucus plug, pus, or blood clot? SUCTION UNDER DIRECT FOB VISION.\n  4. STEP 4: PHARMACOLOGIC & MECHANICAL RESCUE OF DEPENDENT LUNG:\n     - Treat Bronchospasm: Deliver 8–10 puffs of Salbutamol MDI into inspiratory limb via spacer adapter; administer IV Ketamine (0.5 mg/kg) or IV Magnesium (2 g); deepen volatile anaesthetic (Sevoflurane) or propofol infusion.\n     - Adjust Ventilator to Lung-Protective Parameters:\n       • Tidal Volume: 4 to 6 mL/kg PBW (never 8–10 mL/kg; prevents barotrauma and shear stress in solitary lung).\n       • Applied PEEP: 5 cmH₂O (titrate between 4–8 cmH₂O based on driving pressure).\n       • Keep Plateau Pressure < 25–28 cmH₂O and Driving Pressure (Pplat - PEEP) < 15 cmH₂O.\n       • Increase expiratory time (I:E ratio 1:2.5 or 1:3) to eliminate dynamic hyperinflation (Auto-PEEP).\n  5. STEP 5: RESCUE PROTOCOL FOR REFRACTORY HYPOXEMIA (SpO₂ < 90%):\n     - Step A: Verify 100% FiO₂.\n     - Step B: Apply CPAP (2 to 5 cmH₂O) with 100% O₂ to the NON-DEPENDENT (Operative/Collapsed) LUNG:\n       • Uses a dedicated CPAP valve/circuit (e.g., Boehringer or Mapleson circuit with 2–5 cmH₂O PEEP).\n       • Oxygenates blood traversing the non-dependent shunt without causing lung distension that obscures the surgeon's view. THE MOST EFFECTIVE INTERVENTION FOR OLV HYPOXEMIA!\n     - Step C: Titrate Dependent Lung PEEP (5–8 cmH₂O) to optimize FRC and recruit dependent alveoli.\n     - Step D: Surgical Maneuver — Temporary Pulmonary Artery Clamping:\n       • Ask the surgeon to temporarily cross-clamp the main pulmonary artery of the operative lung.\n       • This instantly converts a 30% right-to-left intrapulmonary shunt to 0%, immediately raising SpO₂ to 99%–100%!\n  6. STEP 6: ULTIMATE ESCALATION (If SpO₂ continues dropping < 85% or ventilation remains impossible):\n     - ABORT ONE-LUNG VENTILATION IMMEDIATELY!\n     - Deflate bronchial cuff / blocker balloon.\n     - Resume TWO-LUNG VENTILATION with 100% O₂.\n     - Inform surgical team to pack lung and suspend resection until oxygenation, compliance, and hemodynamic stability are fully restored."
         },
         {
           "h": "7. Pathophysiology of One-Lung Ventilation: Shunt Fraction & HPV Modulation",
-          "b": "• One-Lung Ventilation Shunt Dynamics:\n  - Normal supine awake shunt fraction (Qs/Qt) is ~2%–5%.\n  - In lateral decubitus position during two-lung ventilation, dependent lung receives ~60% of perfusion and non-dependent lung receives ~40%.\n  - Upon lung collapse (OLV), the non-dependent lung receives 40% of pulmonary blood flow without ANY ventilation, creating a massive true right-to-left intrapulmonary shunt (Qs/Qt increases from normal 5% to 25%–35%).\n• Hypoxic Pulmonary Vasoconstriction (HPV):\n  - Intrinsic physiological defense mechanism of pulmonary arteriolar smooth muscle in response to alveolar hypoxia (PAO₂ < 60 mmHg).\n  - Diverts 40%–50% of blood flow AWAY from the collapsed, hypoxic operative lung toward the well-ventilated dependent lung, significantly mitigating life-threatening hypoxemia.\n• Factors Blunting HPV (Directly Worsening Shunt & Arterial Hypoxemia!):\n  1. Volatile Anesthetic Agents > 1.0 MAC (Sevoflurane/Desflurane inhibit HPV in a dose-dependent fashion; maintain MAC ≤ 1.0 or switch to Propofol TIVA).\n  2. Pulmonary Vasodilators (Nitroglycerin, Nitroprusside, Calcium Channel Blockers, Sildenafil, Milrinone).\n  3. Hypocapnia (Alkalosis blunts pulmonary arteriolar vasoconstriction; maintain PaCO₂ 40–45 mmHg).\n  4. Extreme Pulmonary Artery Pressures (both severe pulmonary hypertension and severe hypotension impair HPV redistribution).\n  5. Excessive PEEP in the Dependent Lung (> 10 cmH₂O increases dependent lung PVR and paradoxically forces blood back into the collapsed lung!).\n• TIVA vs Volatile Anesthesia:\n  - Propofol does NOT inhibit HPV at clinical doses. Total Intravenous Anesthesia (Propofol + Remifentanil) provides superior oxygenation during OLV in patients with severe baseline ventilation-perfusion mismatch.",
-          "image": {
-            "src": "assets/references/jet-ventilation-alveolar-mechanics.png",
-            "alt": "Transpulmonary Shunt Mechanics and Alveolar Ventilation Gradients during OLV",
-            "caption": "Transpulmonary Shunt Dynamics & Hypoxic Pulmonary Vasoconstriction (HPV) Modulation in Lateral Decubitus Position",
-            "wide": true
-          }
+          "b": "• One-Lung Ventilation Shunt Dynamics:\n  - Normal supine awake shunt fraction (Qs/Qt) is ~2%–5%.\n  - In lateral decubitus position during two-lung ventilation, dependent lung receives ~60% of perfusion and non-dependent lung receives ~40%.\n  - Upon lung collapse (OLV), the non-dependent lung receives 40% of pulmonary blood flow without ANY ventilation, creating a massive true right-to-left intrapulmonary shunt (Qs/Qt increases from normal 5% to 25%–35%).\n• Hypoxic Pulmonary Vasoconstriction (HPV):\n  - Intrinsic physiological defense mechanism of pulmonary arteriolar smooth muscle in response to alveolar hypoxia (PAO₂ < 60 mmHg).\n  - Diverts 40%–50% of blood flow AWAY from the collapsed, hypoxic operative lung toward the well-ventilated dependent lung, significantly mitigating life-threatening hypoxemia.\n• Factors Blunting HPV (Directly Worsening Shunt & Arterial Hypoxemia!):\n  1. Volatile Anesthetic Agents > 1.0 MAC (Sevoflurane/Desflurane inhibit HPV in a dose-dependent fashion; maintain MAC ≤ 1.0 or switch to Propofol TIVA).\n  2. Pulmonary Vasodilators (Nitroglycerin, Nitroprusside, Calcium Channel Blockers, Sildenafil, Milrinone).\n  3. Hypocapnia (Alkalosis blunts pulmonary arteriolar vasoconstriction; maintain PaCO₂ 40–45 mmHg).\n  4. Extreme Pulmonary Artery Pressures (both severe pulmonary hypertension and severe hypotension impair HPV redistribution).\n  5. Excessive PEEP in the Dependent Lung (> 10 cmH₂O increases dependent lung PVR and paradoxically forces blood back into the collapsed lung!).\n• TIVA vs Volatile Anesthesia:\n  - Propofol does NOT inhibit HPV at clinical doses. Total Intravenous Anesthesia (Propofol + Remifentanil) provides superior oxygenation during OLV in patients with severe baseline ventilation-perfusion mismatch."
         },
         {
           "h": "8. Post-Pneumonectomy Pulmonary Edema (PPPE) & Strict Fluid Restriction Strategy",
-          "b": "• Pathogenesis & Lethality:\n  - Most catastrophic post-pneumonectomy pulmonary complication (incidence 2%–4%, mortality > 50%–70%), occurring characteristically 24 to 72 hours postoperatively.\n  - Pathophysiologic Mechanism: The entire cardiac output (100%) is forced through a single remaining pulmonary vascular bed, reducing the total microvascular area by 50% (left pneumonectomy) to 55% (right pneumonectomy).\n  - Increased capillary flow velocity and shear stress, elevated microvascular hydrostatic pressure, combined with surgical lymphatic disruption and inflammatory endothelial damage, trigger acute low-pressure permeability pulmonary edema.\n• Strict Intraoperative Fluid Restriction Guidelines:\n  - Total Intraoperative Crystalloid Administration: Limit to < 1.5 to 2.0 Liters total (or < 15 to 20 mL/kg for the entire duration of surgery).\n  - Fluid Infusion Rate: Maintain baseline maintenance at ≤ 1.5 to 2.0 mL/kg/hr.\n  - Replace Blood Loss with Colloid / Blood Products 1:1, rather than standard 3:1 crystalloid resuscitation (avoid flooding the remaining microvascular bed!).\n  - Prefer Balanced Salt Crystalloids (Plasmalyte/Ringer's Lactate) over Normal Saline to prevent hyperchloremic metabolic acidosis.\n  - Postoperative Maintenance: Cap at 1 mL/kg/hr. Net fluid balance on Postoperative Day 0 must not exceed +1000 mL.",
-          "image": {
-            "src": "assets/critical-care/ventilation/ventilation_03_pcv.png",
-            "alt": "Pressure-Controlled Ventilation & Driving Pressure Optimization for Post-Pneumonectomy Lung Protection",
-            "caption": "Lung-Protective Mechanical Ventilation (PCV, Driving Pressure < 14 cmH2O) to Prevent Post-Pneumonectomy Pulmonary Edema (PPPE)",
-            "wide": true
-          }
+          "b": "• Pathogenesis & Lethality:\n  - Most catastrophic post-pneumonectomy pulmonary complication (incidence 2%–4%, mortality > 50%–70%), occurring characteristically 24 to 72 hours postoperatively.\n  - Pathophysiologic Mechanism: The entire cardiac output (100%) is forced through a single remaining pulmonary vascular bed, reducing the total microvascular area by 50% (left pneumonectomy) to 55% (right pneumonectomy).\n  - Increased capillary flow velocity and shear stress, elevated microvascular hydrostatic pressure, combined with surgical lymphatic disruption and inflammatory endothelial damage, trigger acute low-pressure permeability pulmonary edema.\n• Strict Intraoperative Fluid Restriction Guidelines:\n  - Total Intraoperative Crystalloid Administration: Limit to < 1.5 to 2.0 Liters total (or < 15 to 20 mL/kg for the entire duration of surgery).\n  - Fluid Infusion Rate: Maintain baseline maintenance at ≤ 1.5 to 2.0 mL/kg/hr.\n  - Replace Blood Loss with Colloid / Blood Products 1:1, rather than standard 3:1 crystalloid resuscitation (avoid flooding the remaining microvascular bed!).\n  - Prefer Balanced Salt Crystalloids (Plasmalyte/Ringer's Lactate) over Normal Saline to prevent hyperchloremic metabolic acidosis.\n  - Postoperative Maintenance: Cap at 1 mL/kg/hr. Net fluid balance on Postoperative Day 0 must not exceed +1000 mL."
         },
         {
           "h": "9. Postoperative Management: Chest Drain Rules, Atrial Arrhythmias & Acute Bronchopleural Fistula",
@@ -15599,13 +14785,7 @@ window.KN_STUDY = {
       "sections": [
         {
           "h": "1. Definition, Reid Classification & Etiological Spectrum",
-          "b": "• Definition: Chronic, irreversible abnormal dilatation of bronchi and bronchioles accompanied by destruction of muscular and elastic tissue of the bronchial walls, chronic necrotizing infection, copious purulent sputum production (>50–100 mL/day), and localized cavitation with necrotic debris (lung abscess).\n• Reid Morphological Classification:\n  1. CYLINDRICAL (TUBULAR) BRONCHIECTASIS: Uniform dilatation of medium-sized bronchi terminating abruptly in obstructed distal bronchioles.\n  2. VARICOSE BRONCHIECTASIS: Irregular, beaded dilatation resembling varicose veins, caused by localized areas of constricting bronchial fibrosis.\n  3. SACCULAR (CYSTIC) BRONCHIECTASIS: Most severe form; balloon-like cystic cavities with fluid/air levels, complete destruction of bronchial cartilage, and massive pooling of purulent secretions.\n• Etiological Spectrum:\n  - Post-Infectious (Most common): Measles, pertussis, tuberculosis, severe necrotizing pneumonia.\n  - Genetic & Ciliary Disorders: Cystic fibrosis (CFTR mutation), Primary ciliary dyskinesia / Kartagener syndrome (situs inversus, bronchiectasis, chronic sinusitis).\n  - Airway Obstruction: Foreign body, endobronchial tumor, extrinsic nodal compression.\n  - Immunodeficiency: Hypogammaglobulinemia, HIV, Allergic Bronchopulmonary Aspergillosis (ABPA).",
-          "image": {
-            "src": "assets/notes/pft/pft_03_obstructive.png",
-            "alt": "Spirometry and Flow-Volume Curve in Suppurative Lung Disease with Fixed Obstruction",
-            "caption": "Obstructive Flow-Volume Loop and Expiratory Flow Coving in Advanced Bronchiectasis with Bronchial Wall Destruction",
-            "wide": true
-          }
+          "b": "• Definition: Chronic, irreversible abnormal dilatation of bronchi and bronchioles accompanied by destruction of muscular and elastic tissue of the bronchial walls, chronic necrotizing infection, copious purulent sputum production (>50–100 mL/day), and localized cavitation with necrotic debris (lung abscess).\n• Reid Morphological Classification:\n  1. CYLINDRICAL (TUBULAR) BRONCHIECTASIS: Uniform dilatation of medium-sized bronchi terminating abruptly in obstructed distal bronchioles.\n  2. VARICOSE BRONCHIECTASIS: Irregular, beaded dilatation resembling varicose veins, caused by localized areas of constricting bronchial fibrosis.\n  3. SACCULAR (CYSTIC) BRONCHIECTASIS: Most severe form; balloon-like cystic cavities with fluid/air levels, complete destruction of bronchial cartilage, and massive pooling of purulent secretions.\n• Etiological Spectrum:\n  - Post-Infectious (Most common): Measles, pertussis, tuberculosis, severe necrotizing pneumonia.\n  - Genetic & Ciliary Disorders: Cystic fibrosis (CFTR mutation), Primary ciliary dyskinesia / Kartagener syndrome (situs inversus, bronchiectasis, chronic sinusitis).\n  - Airway Obstruction: Foreign body, endobronchial tumor, extrinsic nodal compression.\n  - Immunodeficiency: Hypogammaglobulinemia, HIV, Allergic Bronchopulmonary Aspergillosis (ABPA)."
         },
         {
           "h": "2. Pathophysiology: Bronchial Artery Hypertrophy & The Threat of Exsanguinating Hemoptysis",
@@ -15617,12 +14797,6 @@ window.KN_STUDY = {
         },
         {
           "h": "4. Preoperative Evaluation: 24-Hour Sputum Quantitation & HRCT Chest Signs",
-          "image": {
-            "src": "assets/notes/pft/pft_06_putting-it-together.png",
-            "alt": "Comprehensive Diagnostic Algorithm for Obstructive and Suppurative Lung Disease",
-            "caption": "Diagnostic PFT Integration: Airflow Limitation, Bronchial Hyperresponsiveness & Air-Trapping",
-            "wide": true
-          },
           "b": "• Bedside Sputum Quantitation (Sputum Cup Test):\n  - Grade 1 (Mild): < 20 mL purulent sputum / 24 hours.\n  - Grade 2 (Moderate): 20 to 50 mL purulent sputum / 24 hours.\n  - Grade 3 (Severe): > 50 to 100 mL purulent sputum / 24 hours (Mandates strict awake or isolated airway strategy!).\n  - Three-Layer Sputum Appearance: Top frothy layer, middle cloudy mucoid layer, and bottom dense sediment layer of pus and cellular debris.\n• Preoperative HRCT Chest Review:\n  - Gold-standard imaging. Look for:\n    1. \"Signet Ring Sign\": Bronchial lumen diameter > 1.5 times the diameter of adjacent pulmonary artery.\n    2. \"Tram-Track Opacities\": Parallel thickened bronchial walls.\n    3. Cavitary lesion with air-fluid level (lung abscess) and segmental anatomical location.\n• Laboratory & Microbiologic Workup:\n  - Sputum Gram stain, culture, and sensitivity (Pseudomonas aeruginosa, Haemophilus influenzae, anaerobes, Aspergillus, AFB).\n  - ABG: Assess baseline PaO₂, PaCO₂, and shunt fraction.\n  - Spirometry: Mixed obstructive-restrictive defect; ppoFEV₁ assessment before planned lung resection."
         },
         {
@@ -15631,13 +14805,7 @@ window.KN_STUDY = {
         },
         {
           "h": "6. Airway Strategy & Lung Isolation Protocols: Left DLT vs Right DLT vs Blockers",
-          "b": "• Airway Strategy to Prevent Spillage:\n  1. AWAKE INTUBATION OR SITTING INDUCTION:\n     - If abscess is large and secretions are uncontrollable: Awake fibreoptic intubation with topical local anesthesia OR intubation in the semi-upright / sitting position preserves active airway reflexes.\n  2. IMMEDIATE BRONCHIAL ISOLATION:\n     - Place a Left-Sided Double Lumen Tube (DLT) immediately.\n     - If left lung is diseased: Use a right-sided DLT or Univent tube / Arndt bronchial blocker placed under direct bronchoscopic guidance.\n  3. IMMEDIATE ISOLATION & BRONCHIAL TOILET:\n     - Inflate the bronchial cuff immediately upon tracheal entry.\n     - Suction both lumens thoroughly with separate sterile suction catheters before placing patient into lateral decubitus position.\n• Detailed Sizing and Tube Selection for Suppurative Disease:\n  - Left DLT is preferred for Right-sided bronchiectasis/abscess.\n  - Right DLT vs Bronchial Blocker for Left-sided disease:\n    * Left-sided pathology with high sputum volume: A Right DLT provides definitive isolation, but carries the risk of Right Upper Lobe (RUL) obstruction due to short right bronchus (1.5–2 cm).\n    * Alternative: Single-lumen ETT with Arndt or Cohen Bronchial Blocker placed under fibreoptic guidance directly into the left main bronchus or targeted lobar bronchus.\n    * Crucial Rule: Always suction the diseased side frequently with dedicated small-gauge endobronchial suction catheters; NEVER apply continuous suction that could collapse the bronchial mucosa.",
-          "image": {
-            "src": "assets/references/laryngoscopy-mac3-sagittal-view.png",
-            "alt": "Anatomical Airway Trajectory and DLT Positioning Landmarks",
-            "caption": "Endobronchial Tube (DLT) Placement Geometry & Carinal Trajectory to Prevent Abscess Rupture and Contralateral Spillage",
-            "wide": true
-          }
+          "b": "• Airway Strategy to Prevent Spillage:\n  1. AWAKE INTUBATION OR SITTING INDUCTION:\n     - If abscess is large and secretions are uncontrollable: Awake fibreoptic intubation with topical local anesthesia OR intubation in the semi-upright / sitting position preserves active airway reflexes.\n  2. IMMEDIATE BRONCHIAL ISOLATION:\n     - Place a Left-Sided Double Lumen Tube (DLT) immediately.\n     - If left lung is diseased: Use a right-sided DLT or Univent tube / Arndt bronchial blocker placed under direct bronchoscopic guidance.\n  3. IMMEDIATE ISOLATION & BRONCHIAL TOILET:\n     - Inflate the bronchial cuff immediately upon tracheal entry.\n     - Suction both lumens thoroughly with separate sterile suction catheters before placing patient into lateral decubitus position.\n• Detailed Sizing and Tube Selection for Suppurative Disease:\n  - Left DLT is preferred for Right-sided bronchiectasis/abscess.\n  - Right DLT vs Bronchial Blocker for Left-sided disease:\n    * Left-sided pathology with high sputum volume: A Right DLT provides definitive isolation, but carries the risk of Right Upper Lobe (RUL) obstruction due to short right bronchus (1.5–2 cm).\n    * Alternative: Single-lumen ETT with Arndt or Cohen Bronchial Blocker placed under fibreoptic guidance directly into the left main bronchus or targeted lobar bronchus.\n    * Crucial Rule: Always suction the diseased side frequently with dedicated small-gauge endobronchial suction catheters; NEVER apply continuous suction that could collapse the bronchial mucosa."
         },
         {
           "h": "7. Intraoperative Positioning: Gravitational Secretion Management",
@@ -15645,23 +14813,11 @@ window.KN_STUDY = {
         },
         {
           "h": "8. One-Lung Ventilation (OLV) Management & Hypoxemia Protocols",
-          "b": "• Protective OLV Protocol:\n  - Tidal Volume: 4 to 6 mL/kg PBW.\n  - Respiratory Rate: 12 to 16 bpm to maintain normocapnia.\n  - PEEP: 5 cmH₂O to the dependent ventilated lung.\n  - Peak airway pressure < 30 cmH₂O; driving pressure < 15 cmH₂O.\n• Step-by-Step Hypoxemia Protocol during OLV:\n  1. Increase FiO₂ to 1.0.\n  2. Confirm DLT position by fiberoptic bronchoscope.\n  3. Apply 5 cmH₂O CPAP with oxygen to the non-dependent (collapsed) lung.\n  4. Suction the dependent ventilated lung.\n  5. If severe hypoxemia persists, request surgeon to intermittently re-inflate non-dependent lung or clamp the non-dependent pulmonary artery.\n• Stepwise OLV Hypoxemia Rescue Algorithm:\n  - 1. FiO2 1.0 immediately.\n  - 2. Verify DLT position and clear dependent bronchus of any spilt secretions with FOB suction.\n  - 3. Apply 5–10 cmH2O PEEP to the dependent ventilating lung (if not overdistended).\n  - 4. Apply CPAP (2–5 cmH2O) with 100% O2 to the non-dependent diseased lung using a dedicated CPAP valve.\n  - 5. Intermittent two-lung ventilation if desaturation persists below 88% (inform surgeon to pause resection).\n  - 6. Clamp the pulmonary artery branch to the diseased lung early during dissection to eliminate shunt completely!",
-          "image": {
-            "src": "assets/critical-care/ventilation/ventilation_08_cpap-niv.png",
-            "alt": "CPAP Alveolar Recruitment Waveforms for Non-Dependent Lung during OLV",
-            "caption": "Continuous Positive Airway Pressure (CPAP) Mechanics to Non-Dependent Operative Lung to Mitigate Transpulmonary Shunt",
-            "wide": true
-          }
+          "b": "• Protective OLV Protocol:\n  - Tidal Volume: 4 to 6 mL/kg PBW.\n  - Respiratory Rate: 12 to 16 bpm to maintain normocapnia.\n  - PEEP: 5 cmH₂O to the dependent ventilated lung.\n  - Peak airway pressure < 30 cmH₂O; driving pressure < 15 cmH₂O.\n• Step-by-Step Hypoxemia Protocol during OLV:\n  1. Increase FiO₂ to 1.0.\n  2. Confirm DLT position by fiberoptic bronchoscope.\n  3. Apply 5 cmH₂O CPAP with oxygen to the non-dependent (collapsed) lung.\n  4. Suction the dependent ventilated lung.\n  5. If severe hypoxemia persists, request surgeon to intermittently re-inflate non-dependent lung or clamp the non-dependent pulmonary artery.\n• Stepwise OLV Hypoxemia Rescue Algorithm:\n  - 1. FiO2 1.0 immediately.\n  - 2. Verify DLT position and clear dependent bronchus of any spilt secretions with FOB suction.\n  - 3. Apply 5–10 cmH2O PEEP to the dependent ventilating lung (if not overdistended).\n  - 4. Apply CPAP (2–5 cmH2O) with 100% O2 to the non-dependent diseased lung using a dedicated CPAP valve.\n  - 5. Intermittent two-lung ventilation if desaturation persists below 88% (inform surgeon to pause resection).\n  - 6. Clamp the pulmonary artery branch to the diseased lung early during dissection to eliminate shunt completely!"
         },
         {
           "h": "9. Induction Pharmacology, Bronchial Toilet & Postoperative Extubation",
-          "b": "• Induction Pharmacology:\n  - Agent of choice: Etomidate or Propofol titrated to hemodynamics.\n  - Avoid Ketamine (increases bronchial secretions and salivation).\n  - Muscle relaxant: Rocuronium (0.6–0.9 mg/kg) or Vecuronium.\n• Bronchial Toilet Protocol:\n  - Frequent suctioning using separate sterile suction catheters for tracheal and bronchial lumens.\n  - Bronchodilator administration via ETT adapter if wheezing develops.\n• Postoperative Extubation Criteria:\n  - Thorough bronchoscopic suctioning and toilet of both lungs prior to reversal.\n  - Extubate ONLY when wide awake, fully reversed (TOF > 0.9), normothermic, and with a strong, vigorous cough reflex capable of clearing secretions.\n  - If postoperative mechanical ventilation is required, exchange DLT for a single-lumen tube over an airway exchange catheter (AEC) under direct vision.",
-          "image": {
-            "src": "assets/references/thrive-hfno-nasal-cannula.png",
-            "alt": "Transnasal Humidified Rapid-Insufflation Ventilatory Exchange (THRIVE) for Secretion Clearance",
-            "caption": "High-Flow Nasal Oxygen (THRIVE / HFNO): High-Flow Humidified Gas Delivery to Assist Sputum Mobilization and Postoperative Extubation Bridge",
-            "wide": true
-          }
+          "b": "• Induction Pharmacology:\n  - Agent of choice: Etomidate or Propofol titrated to hemodynamics.\n  - Avoid Ketamine (increases bronchial secretions and salivation).\n  - Muscle relaxant: Rocuronium (0.6–0.9 mg/kg) or Vecuronium.\n• Bronchial Toilet Protocol:\n  - Frequent suctioning using separate sterile suction catheters for tracheal and bronchial lumens.\n  - Bronchodilator administration via ETT adapter if wheezing develops.\n• Postoperative Extubation Criteria:\n  - Thorough bronchoscopic suctioning and toilet of both lungs prior to reversal.\n  - Extubate ONLY when wide awake, fully reversed (TOF > 0.9), normothermic, and with a strong, vigorous cough reflex capable of clearing secretions.\n  - If postoperative mechanical ventilation is required, exchange DLT for a single-lumen tube over an airway exchange catheter (AEC) under direct vision."
         },
         {
           "h": "10. Clinical Vignette & High-Yield Exam Viva Pearls (Tata 6th ed.)",
@@ -15705,53 +14861,23 @@ window.KN_STUDY = {
         },
         {
           "h": "4. Formal Spirometry, Flow-Volume Loops & Blood Gas Patterns",
-          "image": {
-            "src": "assets/notes/pft/pft_03_obstructive.png",
-            "alt": "Obstructive Lung Disease Spirometry, FEV1/FVC Curve & Flow-Volume Loop Coving",
-            "caption": "Obstructive Pattern: FEV1/FVC < 0.70 & Flow-Volume Loop Expiratory Coving",
-            "wide": true
-          },
           "b": "• Spirometric Indices in COPD:\n  - FEV₁ / FVC ratio: < 0.70 confirms obstructive defect.\n  - Reversibility Testing: Post-bronchodilator increase in FEV₁ > 12% AND > 200 mL indicates significant reversible component (asthma-COPD overlap).\n  - Lung Volumes: Total Lung Capacity (TLC) and Residual Volume (RV) are elevated due to air-trapping (RV/TLC > 35%–40%).\n  - DLCO (Diffusion Capacity for Carbon Monoxide): Decreased in emphysema due to alveolar-capillary destruction; normal in chronic bronchitis.\n• Flow-Volume Loop Morphology:\n  - Displays classic \"scooped-out\" coving of the expiratory limb with reduced peak expiratory flow (PEF) and prolonged expiratory phase.\n• Arterial Blood Gas (ABG) Phenotypes:\n  - \"Pink Puffer\" (Emphysema-predominant): Normal PaO₂ / PaCO₂ at rest, high work of breathing, hyperventilation, thin habitus.\n  - \"Blue Bloater\" (Chronic Bronchitis-predominant): Chronic hypoxemia (PaO₂ 50–60 mmHg), chronic hypercapnia (PaCO₂ 50–65 mmHg), elevated serum bicarbonate (HCO₃⁻ 30–36 mEq/L) indicating compensated respiratory acidosis, polycythemia, and cor pulmonale.\n  - Caution: In chronic CO₂ retainers, hypoxemia provides the respiratory drive via carotid body chemoreceptors. Overzealous oxygen therapy (FiO₂ > 0.40–0.50) blunts ventilation and provokes life-threatening CO₂ narcosis!"
         },
         {
           "h": "5. Pathophysiology: Loss of Elastic Recoil, Dynamic Hyperinflation & Auto-PEEP",
-          "b": "• Expiratory Time Constant (τ = R × C):\n  - Loss of alveolar elastic tethering (emphysema) causes early expiratory airway collapse. Combined with mucosal edema and secretions, airway resistance (R) increases dramatically, markedly prolonging the expiratory time constant.\n  - During positive pressure ventilation, passive exhalation requires 3 to 5 time constants (usually > 3–4 seconds).\n• Dynamic Hyperinflation & Auto-PEEP (Intrinsic PEEP):\n  - If the expiratory time (Te) is shorter than the time required for complete exhalation, the next mandatory breath is delivered before alveolar emptying is complete.\n  - Trapped air stacks progressively, creating intrinsic positive end-expiratory pressure (Auto-PEEP of 10–25 cmH₂O).\n• Catastrophic Consequences of Auto-PEEP:\n  1. PROFOUND HEMODYNAMIC COLLAPSE: High intrathoracic pressure compresses superior and inferior vena cava, drastically curtailing venous return, dropping RV/LV preload, and causing sudden cardiovascular collapse.\n  2. BAROTRAUMA: Rupture of subpleural blebs producing tension pneumothorax.\n  3. VENTILATORY WORK: Patient must generate negative pressure exceeding Auto-PEEP before triggering a breath during weaning.",
-          "image": {
-            "src": "assets/notes/pft/pft_05_lung-volumes-dlco.png",
-            "alt": "Static Lung Volumes & DLCO Gas Transfer in Obstructive Lung Disease",
-            "caption": "Static Lung Volumes (TLC, FRC, RV) & Diffusion Capacity (DLCO) in COPD: Hyperinflation, Air Trapping & Differentiating Emphysema from Chronic Bronchitis",
-            "wide": true
-          }
+          "b": "• Expiratory Time Constant (τ = R × C):\n  - Loss of alveolar elastic tethering (emphysema) causes early expiratory airway collapse. Combined with mucosal edema and secretions, airway resistance (R) increases dramatically, markedly prolonging the expiratory time constant.\n  - During positive pressure ventilation, passive exhalation requires 3 to 5 time constants (usually > 3–4 seconds).\n• Dynamic Hyperinflation & Auto-PEEP (Intrinsic PEEP):\n  - If the expiratory time (Te) is shorter than the time required for complete exhalation, the next mandatory breath is delivered before alveolar emptying is complete.\n  - Trapped air stacks progressively, creating intrinsic positive end-expiratory pressure (Auto-PEEP of 10–25 cmH₂O).\n• Catastrophic Consequences of Auto-PEEP:\n  1. PROFOUND HEMODYNAMIC COLLAPSE: High intrathoracic pressure compresses superior and inferior vena cava, drastically curtailing venous return, dropping RV/LV preload, and causing sudden cardiovascular collapse.\n  2. BAROTRAUMA: Rupture of subpleural blebs producing tension pneumothorax.\n  3. VENTILATORY WORK: Patient must generate negative pressure exceeding Auto-PEEP before triggering a breath during weaning."
         },
         {
           "h": "6. Preoperative Optimization: Smoking Cessation Timeline & Bronchodilators",
-          "b": "• Smoking Cessation Physiological Timeline:\n  - 12 to 24 HOURS: Carbon monoxide half-life is 4–6 hours; carboxyhemoglobin drops from 8%–10% to <1%, shifting oxyhemoglobin curve to the right and improving tissue O₂ delivery; nicotine levels clear.\n  - 48 HOURS: Sputum volume temporarily spikes as paralyzed respiratory cilia recover beat frequency.\n  - 2 to 4 WEEKS: Sputum production declines; small airway reactivity decreases.\n  - 6 to 8 WEEKS: Airway reactivity normalizes, immune and macrophage function recovers, and postoperative pulmonary complications (PPC) drop significantly (by >40%–50%).\n• Pharmacological Optimization:\n  - Continue baseline inhaled LABA (Formoterol/Salmeterol), LAMA (Tiotropium), and Inhaled Corticosteroids (ICS) up to the morning of surgery.\n  - In patients with recent exacerbation or wheezing: 5–7 day course of oral Prednisolone (30–40 mg daily) prior to elective surgery.\n  - Incentive spirometry and chest physiotherapy instruction preoperatively.",
-          "image": {
-            "src": "assets/references/venturi-mask-valves-colors.jpg",
-            "alt": "Fixed-Performance Venturi Mask Colour-Coded Valves for Controlled Oxygen Therapy",
-            "caption": "Fixed-Performance Venturi Mask Valves: Color-Coded FiO2 Delivery (24%–60%) for Controlled Oxygen Therapy to Prevent Loss of Hypoxic Drive in Chronic Hypercapnia",
-            "wide": true
-          }
+          "b": "• Smoking Cessation Physiological Timeline:\n  - 12 to 24 HOURS: Carbon monoxide half-life is 4–6 hours; carboxyhemoglobin drops from 8%–10% to <1%, shifting oxyhemoglobin curve to the right and improving tissue O₂ delivery; nicotine levels clear.\n  - 48 HOURS: Sputum volume temporarily spikes as paralyzed respiratory cilia recover beat frequency.\n  - 2 to 4 WEEKS: Sputum production declines; small airway reactivity decreases.\n  - 6 to 8 WEEKS: Airway reactivity normalizes, immune and macrophage function recovers, and postoperative pulmonary complications (PPC) drop significantly (by >40%–50%).\n• Pharmacological Optimization:\n  - Continue baseline inhaled LABA (Formoterol/Salmeterol), LAMA (Tiotropium), and Inhaled Corticosteroids (ICS) up to the morning of surgery.\n  - In patients with recent exacerbation or wheezing: 5–7 day course of oral Prednisolone (30–40 mg daily) prior to elective surgery.\n  - Incentive spirometry and chest physiotherapy instruction preoperatively."
         },
         {
           "h": "7. Intraoperative Mechanical Ventilation Strategy & The Disconnect Test",
-          "image": {
-            "src": "assets/critical-care/ventilation/ventilation_08_cpap-niv.png",
-            "alt": "NIV & CPAP Pressure Waveforms for COPD Postoperative Management",
-            "caption": "NIV & CPAP Waveforms for Postoperative Alveolar Recruitment",
-            "wide": true
-          },
           "b": "• Lung-Protective & Expiratory-Prolonging Ventilation Protocol:\n  1. TIDAL VOLUME: 6 to 8 mL/kg of Predicted Body Weight (PBW). Avoid high volumes.\n  2. RESPIRATORY RATE: Low (8 to 10 breaths/min). Low rate provides a long expiratory time (Te > 4–5 seconds).\n  3. I:E RATIO: 1:3 or 1:4 (prolongs expiration to permit complete alveolar emptying).\n  4. INSPIRATORY FLOW RATE: High peak flow (60–80 L/min) delivers tidal volume quickly, maximizing expiratory duration.\n  5. APPLIED PEEP: Low (0 to 5 cmH₂O). Do not apply high external PEEP (which adds to hyperinflation).\n  6. PERMISSIVE HYPERCAPNIA: Tolerate elevated PaCO₂ (50–65 mmHg) provided arterial pH > 7.20–7.25.\n• THE ETT DISCONNECT TEST FOR SUDDEN INTRAOPERATIVE HYPOTENSION:\n  - If a ventilated patient with COPD develops sudden hypotension and tachycardia:\n  - IMMEDIATELY DISCONNECT THE ENDOTRACHEAL TUBE FROM THE VENTILATOR CIRCUIT!\n  - Allow 20–30 seconds for passive exhalation and decompress the stacked air.\n  - Listen for escaping gas and observe chest descent.\n  - If blood pressure recovers immediately, the hypotension was caused by severe Auto-PEEP!\n  - Adjust ventilator: decrease rate, increase expiratory time, and reduce tidal volume."
         },
         {
           "h": "8. Acute Intraoperative Bronchospasm Management Protocol",
-          "b": "• Clinical Diagnosis:\n  - Increased airway resistance (elevated peak inspiratory pressure with normal plateau pressure: Ppeak - Pplat > 10–15 cmH₂O).\n  - Auscultation: Expiratory wheezing, prolonged expiration.\n  - Capnography: Upward-sloping \"shark-fin\" expiratory capnograph waveform with delayed alveolar plateau.\n• Step-by-Step Bronchospasm Treatment Protocol:\n  1. 100% FiO₂; deepen anaesthesia immediately by increasing volatile anaesthetic (Sevoflurane is a potent bronchodilator).\n  2. Inhaled Beta-2 Agonist: Salbutamol (albuterol) 8–10 puffs delivered directly into ETT via in-line MDI spacer adapter.\n  3. Inhaled Ipratropium Bromide: 4–6 puffs via MDI.\n  4. IV Hydrocortisone (100 mg) or Methylprednisolone (60–120 mg).\n  5. IV Magnesium Sulfate (1.5 to 2.0 grams infused over 15 minutes): Relaxes bronchial smooth muscle by inhibiting calcium influx.\n  6. IV Ketamine (0.5–1.0 mg/kg): Potent bronchodilator via sympathomimetic and direct antimuscarinic actions.\n  7. Subcutaneous / IV Epinephrine (10–50 mcg IV or 0.3 mg IM/SC) if refractory life-threatening bronchospasm with cardiovascular collapse.",
-          "image": {
-            "src": "assets/references/jet-ventilation-alveolar-mechanics.png",
-            "alt": "Dynamic Airway Resistance & Alveolar Pressure Mechanics during Severe Bronchospasm",
-            "caption": "Dynamic Airway Resistance, Expiratory Flow Limitation & Alveolar Pressure Gradients during Severe Acute Bronchospasm",
-            "wide": true
-          }
+          "b": "• Clinical Diagnosis:\n  - Increased airway resistance (elevated peak inspiratory pressure with normal plateau pressure: Ppeak - Pplat > 10–15 cmH₂O).\n  - Auscultation: Expiratory wheezing, prolonged expiration.\n  - Capnography: Upward-sloping \"shark-fin\" expiratory capnograph waveform with delayed alveolar plateau.\n• Step-by-Step Bronchospasm Treatment Protocol:\n  1. 100% FiO₂; deepen anaesthesia immediately by increasing volatile anaesthetic (Sevoflurane is a potent bronchodilator).\n  2. Inhaled Beta-2 Agonist: Salbutamol (albuterol) 8–10 puffs delivered directly into ETT via in-line MDI spacer adapter.\n  3. Inhaled Ipratropium Bromide: 4–6 puffs via MDI.\n  4. IV Hydrocortisone (100 mg) or Methylprednisolone (60–120 mg).\n  5. IV Magnesium Sulfate (1.5 to 2.0 grams infused over 15 minutes): Relaxes bronchial smooth muscle by inhibiting calcium influx.\n  6. IV Ketamine (0.5–1.0 mg/kg): Potent bronchodilator via sympathomimetic and direct antimuscarinic actions.\n  7. Subcutaneous / IV Epinephrine (10–50 mcg IV or 0.3 mg IM/SC) if refractory life-threatening bronchospasm with cardiovascular collapse."
         },
         {
           "h": "9. Regional vs General Anesthesia & PPC Prevention (ARISCAT Score)",
@@ -16530,13 +15656,7 @@ window.KN_STUDY = {
         },
         {
           "h": "2. Pathophysiology: Hyperdynamic State, Anemia & Uremic Coagulopathy",
-          "b": "• Cardiovascular Alterations:\n  - Accelerated atherosclerosis, left ventricular hypertrophy (LVH), uremic pericarditis, and high-output arteriovenous fistula flow.\n• Normochromic Normocytic Anemia:\n  - Erythropoietin deficiency and shortened RBC lifespan. Well tolerated due to compensatory rightward shift of oxygen-hemoglobin dissociation curve (high 2,3-DPG).\n• Uremic Coagulopathy & Platelet Dysfunction:\n  - Defective platelet aggregation and adhesion due to guanidinosuccinic acid inhibiting Von Willebrand Factor (vWF) binding to glycoprotein IIb/IIIa.\n  - Treatment of active uremic bleeding: DESMOPRESSIN (DDAVP 0.3 mcg/kg IV over 30 min) transiently stimulates vWF and Factor VIII release from Weibel-Palade bodies.",
-          "image": {
-            "src": "assets/references/haemodialysis-circuit-diagram.jpg",
-            "alt": "Haemodialysis Circuit Diagram and Extracorporeal Blood Flow Architecture",
-            "caption": "Haemodialysis Circuit Architecture: Dialyser Membrane Clearance, Counter-Current Dialysate Flow & Anticoagulation Controls",
-            "wide": true
-          }
+          "b": "• Cardiovascular Alterations:\n  - Accelerated atherosclerosis, left ventricular hypertrophy (LVH), uremic pericarditis, and high-output arteriovenous fistula flow.\n• Normochromic Normocytic Anemia:\n  - Erythropoietin deficiency and shortened RBC lifespan. Well tolerated due to compensatory rightward shift of oxygen-hemoglobin dissociation curve (high 2,3-DPG).\n• Uremic Coagulopathy & Platelet Dysfunction:\n  - Defective platelet aggregation and adhesion due to guanidinosuccinic acid inhibiting Von Willebrand Factor (vWF) binding to glycoprotein IIb/IIIa.\n  - Treatment of active uremic bleeding: DESMOPRESSIN (DDAVP 0.3 mcg/kg IV over 30 min) transiently stimulates vWF and Factor VIII release from Weibel-Palade bodies."
         },
         {
           "h": "3. Hyperkalemia Emergency Protocol (K⁺ > 5.5 mEq/L)",
@@ -16680,13 +15800,7 @@ window.KN_STUDY = {
         },
         {
           "h": "2. Pathophysiology: Hypovolemic Shock & Difficult Laryngoscopy",
-          "b": "• Hemodynamic Cascade:\n  - Tachycardia is the earliest compensatory sign. Hypotension is a very late and ominous sign in pediatric shock (indicates > 30%–40% circulating volume loss!).\n  - Lethal Induction Trap: Administering standard induction agents (Propofol) in an unresuscitated child with hypovolemia causes immediate catastrophic cardiovascular collapse!\n• Airway Nightmare:\n  - Blood, active oozing, and large clots pool in the posterior oropharynx.\n  - Laryngoscopic blade view is instantly obscured by blood upon insertion; glottis cannot be visualized.\n  - High risk of pulmonary aspiration of acidic gastric blood.",
-          "image": {
-            "src": "assets/references/laryngoscope-macintosh-standard.jpg",
-            "alt": "Standard Macintosh Laryngoscope for Airway Emergencies",
-            "caption": "Direct Laryngoscopy Equipment: Curved Macintosh Blade & Large-Bore Suction for Post-Tonsillectomy Bleeding Rescue",
-            "wide": true
-          }
+          "b": "• Hemodynamic Cascade:\n  - Tachycardia is the earliest compensatory sign. Hypotension is a very late and ominous sign in pediatric shock (indicates > 30%–40% circulating volume loss!).\n  - Lethal Induction Trap: Administering standard induction agents (Propofol) in an unresuscitated child with hypovolemia causes immediate catastrophic cardiovascular collapse!\n• Airway Nightmare:\n  - Blood, active oozing, and large clots pool in the posterior oropharynx.\n  - Laryngoscopic blade view is instantly obscured by blood upon insertion; glottis cannot be visualized.\n  - High risk of pulmonary aspiration of acidic gastric blood."
         },
         {
           "h": "3. Preoperative Evaluation, Resuscitation & Blood Cross-Match",
@@ -16735,23 +15849,11 @@ window.KN_STUDY = {
         },
         {
           "h": "2. The Difficult Airway Algorithms (2022 ASA & 2015 DAS)",
-          "b": "• The 4 Progressive Plan Architecture:\n  - PLAN A: Facemask Ventilation & Primary Tracheal Intubation:\n    • Optimize head position (sniffing position / ramped in obesity), pre-oxygenate to ETO₂ > 90%.\n    • Use Videolaryngoscope (VL) as first-line device + Bougie/Stylet.\n    • MAXIMUM 3 ATTEMPTS allowed (changing blade size, operator, or device between attempts).\n  - PLAN B: Secondary Intubation Rescue / Supraglottic Airway Device (SAD):\n    • Insert 2nd-generation SAD (e.g. i-gel, ProSeal LMA) with gastric drainage port.\n    • Maximum 2 attempts. If SAD achieves adequate ventilation: oxygenate, wake patient up, or intubate via SAD using AFOI.\n  - PLAN C: Facemask Ventilation Rescue:\n    • If SAD fails: Attempt two-person facemask ventilation with oropharyngeal/nasopharyngeal airways.\n    • Administer Sugammadex (16 mg/kg) if Rocuronium used to reverse neuromuscular block.\n  - PLAN D: CANNOT INTUBATE, CANNOT OXYGENATE (CICO):\n    • DECLARE CICO EMERGENCY! Call for immediate help.\n    • 100% O₂, ensure 100% neuromuscular relaxation (prevents laryngeal spasm).",
-          "image": {
-            "src": "assets/references/emergency-jet-cricothyrotomy-kit.jpg",
-            "alt": "Emergency Jet Cricothyrotomy Kit & Cannot Intubate Cannot Oxygenate (CICO) Rescue",
-            "caption": "Emergency Jet Cricothyrotomy Kit: Front-of-Neck Airway (FONA) Equipment for Scalpel-Bougie-Tube CICO Emergency Rescue",
-            "wide": true
-          }
+          "b": "• The 4 Progressive Plan Architecture:\n  - PLAN A: Facemask Ventilation & Primary Tracheal Intubation:\n    • Optimize head position (sniffing position / ramped in obesity), pre-oxygenate to ETO₂ > 90%.\n    • Use Videolaryngoscope (VL) as first-line device + Bougie/Stylet.\n    • MAXIMUM 3 ATTEMPTS allowed (changing blade size, operator, or device between attempts).\n  - PLAN B: Secondary Intubation Rescue / Supraglottic Airway Device (SAD):\n    • Insert 2nd-generation SAD (e.g. i-gel, ProSeal LMA) with gastric drainage port.\n    • Maximum 2 attempts. If SAD achieves adequate ventilation: oxygenate, wake patient up, or intubate via SAD using AFOI.\n  - PLAN C: Facemask Ventilation Rescue:\n    • If SAD fails: Attempt two-person facemask ventilation with oropharyngeal/nasopharyngeal airways.\n    • Administer Sugammadex (16 mg/kg) if Rocuronium used to reverse neuromuscular block.\n  - PLAN D: CANNOT INTUBATE, CANNOT OXYGENATE (CICO):\n    • DECLARE CICO EMERGENCY! Call for immediate help.\n    • 100% O₂, ensure 100% neuromuscular relaxation (prevents laryngeal spasm)."
         },
         {
           "h": "3. Plan D Emergency Protocol: Emergency Front-of-Neck Access (eFONA)",
-          "b": "• SCALPEL-BOUGIE-TUBE EMERGENCY CRICOTHYROIDOTOMY (DAS Technique of Choice):\n  1. Laryngeal Hand: Stabilize the thyroid and cricoid cartilages with non-dominant hand.\n  2. Transverse Stab: Make a transverse incision through cricothyroid membrane using a No. 10 scalpel blade (if anatomy palpated; vertical incision if impalpable/obese).\n  3. Rotate Scalpel: Turn blade 90° so cutting edge faces caudally (feet), gently retracting to create a triangular gap.\n  4. Bougie Insertion: Slide coude-tip gum elastic bougie along scalpel flat into the trachea (confirm tracheal clicks or hold-up at carina at 10–15 cm).\n  5. Rail-Road Tube: Rail-road a cuffed 6.0 mm (or 5.0 mm) cuffed endotracheal tube over bougie into the trachea.\n  6. Inflate cuff, confirm EtCO₂ waveform, and secure tube.",
-          "image": {
-            "src": "assets/references/videolaryngoscope-mcgrath.jpg",
-            "alt": "Videolaryngoscope McGrath Blade & Difficult Intubation Equipment",
-            "caption": "Videolaryngoscopy (Hyperangulated & Mac-Blade): Primary Technique for Difficult Intubation in DAS Guidelines",
-            "wide": true
-          }
+          "b": "• SCALPEL-BOUGIE-TUBE EMERGENCY CRICOTHYROIDOTOMY (DAS Technique of Choice):\n  1. Laryngeal Hand: Stabilize the thyroid and cricoid cartilages with non-dominant hand.\n  2. Transverse Stab: Make a transverse incision through cricothyroid membrane using a No. 10 scalpel blade (if anatomy palpated; vertical incision if impalpable/obese).\n  3. Rotate Scalpel: Turn blade 90° so cutting edge faces caudally (feet), gently retracting to create a triangular gap.\n  4. Bougie Insertion: Slide coude-tip gum elastic bougie along scalpel flat into the trachea (confirm tracheal clicks or hold-up at carina at 10–15 cm).\n  5. Rail-Road Tube: Rail-road a cuffed 6.0 mm (or 5.0 mm) cuffed endotracheal tube over bougie into the trachea.\n  6. Inflate cuff, confirm EtCO₂ waveform, and secure tube."
         },
         {
           "h": "4. Awake Fibreoptic Intubation (AFOI) Protocol (Gold Standard for Known Difficult Airway)",
@@ -17042,43 +16144,6 @@ window.KN_STUDY = {
         },
         {
           "h": "3. Ultrasound-Guided Supraclavicular Brachial Plexus Block",
-          "images": [
-            {
-              "src": "assets/regional/supraclavicular-usg.jpg",
-              "alt": "Supraclavicular brachial plexus block sonoanatomy",
-              "caption": "Supraclavicular Brachial Plexus Sonoanatomy: Subclavian artery, first rib, pleura, and 'bunch of grapes' plexus divisions."
-            },
-            {
-              "src": "assets/regional/interscalene-usg.jpg",
-              "alt": "Interscalene brachial plexus sonoanatomy",
-              "caption": "Interscalene Brachial Plexus Sonoanatomy: Anterior and middle scalene muscles with C5, C6, C7 nerve roots in the interscalene groove."
-            },
-            {
-              "src": "assets/regional/infraclavicular-usg.jpg",
-              "alt": "Infraclavicular brachial plexus sonoanatomy",
-              "caption": "Infraclavicular Brachial Plexus Sonoanatomy: Pectoralis major/minor, axillary artery, lateral, posterior, and medial cords."
-            },
-            {
-              "src": "assets/regional/axillary-usg.jpg",
-              "alt": "Axillary brachial plexus sonoanatomy",
-              "caption": "Axillary Brachial Plexus Sonoanatomy: Axillary artery, median, ulnar, radial, and musculocutaneous nerves."
-            },
-            {
-              "src": "assets/regional/axillary-nerve-usg.jpg",
-              "alt": "Axillary circumflex nerve block sonoanatomy",
-              "caption": "Axillary (Circumflex) Nerve Sonoanatomy: Posterior circumflex humeral artery, humerus surgical neck, and deltoid motor nerve."
-            },
-            {
-              "src": "assets/regional/suprascapular-usg.jpg",
-              "alt": "Suprascapular nerve block sonoanatomy",
-              "caption": "Suprascapular Nerve Sonoanatomy: Supraspinatus muscle, suprascapular notch, superior transverse scapular ligament, and nerve."
-            },
-            {
-              "src": "assets/regional/intercostobrachial-usg.jpg",
-              "alt": "Intercostobrachial nerve block sonoanatomy",
-              "caption": "Intercostobrachial Nerve Sonoanatomy: Axillary subcutaneous tissue infiltration covering tourniquet and inner arm sensation."
-            }
-          ],
           "b": "• Anatomy (\"The Spinal Cord of the Arm\"):\n  - Brachial plexus trunks/divisions lie compact posterosuperior to the pulsating subclavian artery above the first rib.\n• Ultrasound Sonoanatomy & Technique:\n  - High-frequency linear probe placed in the supraclavicular fossa transverse to the clavicle.\n  - Identify: Subclavian artery on the hyperechoic first rib, pleural line, and brachial plexus (\"cluster of grapes\" appearance).\n  - In-plane needle approach from lateral to medial.\n  - Target \"Corner Pocket\": Deposit 5–8 mL of LA at the junction of the first rib and subclavian artery to block the inferior trunk (C8–T1) for ulnar sparing.\n  - Total LA Volume: 20 to 25 mL of 0.375% Ropivacaine or 0.25% Bupivacaine.\n  - Complications: Pneumothorax (1%), phrenic nerve block / hemidiaphragmatic paresis (50%), Horner's syndrome, recurrent laryngeal nerve block."
         },
         {
@@ -17167,12 +16232,6 @@ window.KN_STUDY = {
         "GABA-A agonist",
         "TIVA"
       ],
-      "image": {
-        "src": "assets/drugs/induction/induction_1.jpg",
-        "alt": "Propofol induction pharmacology pearl",
-        "caption": "Propofol (Diprivan): GABA-A receptor kinetics, TIVA dosing, and clinical pharmacology.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Diprivan (propofol) injectable emulsion label (Fresenius Kabi/AstraZeneca); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Propofol is 2,6-diisopropylphenol — chemically, just a phenol ring with two bulky isopropyl groups hanging off it. That simple structure makes it intensely lipophilic and essentially insoluble in water, which is why it can't be dissolved in a normal saline-type vehicle the way most IV drugs are. Instead it's suspended as a white, milky oil-in-water emulsion — soybean oil, glycerol and egg lecithin — the same reason it stings on the way in (the drug itself irritates the vein) and why an opened vial is a genuine infection risk if it isn't handled with strict aseptic technique: that lipid emulsion is a perfectly good culture medium for bacteria.",
       "pd": "Its main job is potentiating the GABA-A receptor — it increases how long the receptor's chloride channel stays open in response to GABA, hyperpolarising neurons and damping down the whole CNS. At higher concentrations it also dampens NMDA receptor activity, which contributes to the depth of unconsciousness it produces. Clinically that translates into reliable hypnosis and amnesia, a genuinely useful antiemetic effect (patients who wake up on propofol are far less nauseated than after a volatile-only anaesthetic), and some anticonvulsant activity. The trade-off is real and dose-dependent: it drops blood pressure by both dilating vessels and mildly depressing the myocardium, and it depresses breathing enough to cause outright apnoea at induction doses — which is exactly why you always have airway equipment ready before you push it.",
@@ -17201,12 +16260,6 @@ window.KN_STUDY = {
         "Cardiac-stable induction",
         "Adrenal suppression"
       ],
-      "image": {
-        "src": "assets/drugs/induction/induction_2.jpg",
-        "alt": "Etomidate induction pharmacology pearl",
-        "caption": "Etomidate: Hemodynamic stability, adrenal cortical suppression, and RSI principles.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Amidate (etomidate) injection label (Hospira/Pfizer); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Etomidate is an imidazole-containing compound, structurally unrelated to propofol, barbiturates, or any other induction agent — it sits in a chemical family of its own. The imidazole ring gives it a useful trick: it's water-soluble at acidic pH but converts to a more lipid-soluble, CNS-active form once it hits the body's physiological pH after injection. It's formulated in propylene glycol rather than a lipid emulsion, which is part of why it stings going in and can cause superficial phlebitis at the injection site.",
       "pd": "Like propofol, it works mainly through the GABA-A receptor, producing hypnosis with essentially no analgesia of its own. What actually sets it apart clinically is what it doesn't do to the cardiovascular system — heart rate, blood pressure, and contractility barely move after an induction dose, which is precisely why it's the go-to choice for a patient whose heart has very little reserve to spare. It also lowers cerebral metabolic rate and intracranial pressure while keeping cerebral perfusion pressure intact, useful in neuro cases. The trade-off that limits its use everywhere else is adrenal suppression: even a single induction dose measurably and reversibly inhibits 11β-hydroxylase, the enzyme the adrenal cortex needs to make cortisol, for several hours afterward.",
@@ -17236,12 +16289,6 @@ window.KN_STUDY = {
         "NMDA antagonist",
         "Dissociative anaesthesia"
       ],
-      "image": {
-        "src": "assets/drugs/induction/induction_3.jpg",
-        "alt": "Ketamine NMDA antagonist pharmacology pearl",
-        "caption": "Ketamine: NMDA receptor antagonism, dissociative anaesthesia, analgesia, and bronchodilation.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Ketalar (ketamine hydrochloride) injection label (Par Pharmaceutical); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Ketamine is an arylcycloalkylamine, chemically related to phencyclidine (PCP) — a lineage that explains some of its more unusual psychoactive effects. It's used clinically as a racemic mixture of its two mirror-image forms (R and S enantiomers); the S(+) form alone is also separately marketed (as esketamine) and is roughly twice as potent as the racemic mixture.",
       "pd": "Almost everything distinctive about ketamine follows from one fact: it's a non-competitive antagonist at the NMDA receptor, not a GABA-A agonist like the other induction agents. That gives it a completely different clinical signature — a 'dissociative' state where the patient looks disconnected from their surroundings rather than simply unconscious, combined with profound analgesia (something none of the other induction agents provide at all) and, usefully, often-preserved airway reflexes, spontaneous breathing, and muscle tone. It's also the one induction agent that tends to raise heart rate and blood pressure rather than lower them, because it stimulates the sympathetic nervous system centrally and blocks catecholamine reuptake — though in a patient whose own catecholamine stores are already exhausted (severe shock, prolonged critical illness), its direct negative inotropic effect can be unmasked and it may drop blood pressure instead. It's a genuine bronchodilator too, which matters in anyone with reactive airway disease.",
@@ -17272,12 +16319,6 @@ window.KN_STUDY = {
         "Barbiturate",
         "Historic agent"
       ],
-      "image": {
-        "src": "assets/drugs/induction/induction_4.jpg",
-        "alt": "Thiopental barbiturate pharmacology pearl",
-        "caption": "Thiopental (Sodium Pentothal): Barbiturate kinetics, neuroprotection, and metabolic suppression.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information for Pentothal (thiopental sodium), last US-marketed formulation (Hospira) — product discontinued from the US market in 2011; UpToDate \"Barbiturates\" monograph (2025); Miller's Anesthesia, 10th ed., Ch. 21.",
       "structure": "Thiopental is a thiobarbiturate — an oxybarbiturate with a sulfur atom swapped in for oxygen at one position on the barbituric-acid ring. That single substitution increases its lipid solubility and speeds up both its onset and its redistribution-driven offset compared with older oxybarbiturates. It's formulated as a strongly alkaline powder (pH 10–11) for reconstitution, and that alkalinity is genuinely dangerous if the injection goes wrong — extravasation or accidental intra-arterial injection causes severe tissue and vascular damage.",
       "pd": "It potentiates GABA-A receptor chloride conductance, much like propofol, and at higher concentrations can activate the receptor directly even without GABA present. It has no analgesic effect of its own — in fact it can be mildly antanalgesic at low doses. It causes dose-dependent myocardial depression and venodilation (so hypotension is a real risk, especially in anyone hypovolaemic), and dose-dependent respiratory depression up to outright apnoea. On the positive side, it reduces cerebral metabolic rate, cerebral blood flow and intracranial pressure, which is why it was historically used for cerebral protection and to produce burst suppression.",
@@ -17407,12 +16448,6 @@ window.KN_STUDY = {
           "item": "malignant-hyperthermia"
         }
       ],
-      "image": {
-        "src": "assets/drugs/muscle-relaxant/muscle-relaxant_03_suxamethonium.jpg",
-        "alt": "Succinylcholine pharmacology pearl",
-        "caption": "Succinylcholine (Suxamethonium): Depolarising neuromuscular blockade, phase I/II block, and hyperkalemia risks.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Anectine (succinylcholine chloride) injection label (Hospira/Pfizer); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Structurally, succinylcholine is just two acetylcholine molecules joined back-to-back at their acetate ends. That resemblance to acetylcholine is the whole story — it's why the drug can activate the same receptor acetylcholine does, and why the body's own plasma cholinesterase can chew through it almost as fast as it would chew through acetylcholine itself. It's the only depolarising neuromuscular blocker in routine clinical use.",
       "pd": "Unlike every other relaxant on this list, succinylcholine doesn't block the nicotinic acetylcholine receptor (nAChR) at the neuromuscular junction — it activates it as a long-acting agonist, causing sustained depolarisation of the motor endplate. That depolarisation triggers uncoordinated muscle contraction seen clinically as fasciculations right after injection, followed rapidly by flaccid paralysis because perijunctional voltage-gated sodium channels inactivate in their closed conformation (the classic Phase I depolarising block). On a peripheral nerve stimulator, Phase I block is characterised by equal reduction of all four twitches (no train-of-four fade, TOF ratio remains 1.0), absence of post-tetanic facilitation, and sustained contraction without fade during 50 Hz tetanic stimulation. Phase II (Desensitization or Dual) Blockade: When the junction is subjected to continuous exposure, repeated boluses, high cumulative doses (>7 to 10 mg/kg or >500 to 1000 mg in adults), prolonged continuous infusions, or impaired breakdown from atypical plasma cholinesterase, the block shifts into Phase II. The mechanism in simple terms: 1) Receptor Desensitization: Continuous agonist exposure causes post-junctional nicotinic receptors to change shape and lock in an inactive, closed conformation unresponsive to acetylcholine. 2) Channel Plugging: Succinylcholine physically enters and blocks the open receptor ion pore. 3) Electrolyte Uncoupling: Ongoing intracellular sodium and calcium accumulation with potassium egress drops ionic gradients and prevents normal membrane excitability. 4) Shift to Non-Depolarising Behaviour: Even though the endplate repolarizes, receptors remain closed, causing the block to electrophysiologically mimic a non-depolarising block! Diagnostic hallmarks on a nerve stimulator [⚡ See Train-of-Four & Tetanic Monitoring Waveforms](item:nerve-stimulator-neuromuscular-monitoring): pronounced train-of-four fade (TOF ratio drops < 0.70), marked tetanic fade at 50/100 Hz, and distinct post-tetanic potentiation (facilitation). Reversal Danger: Anticholinesterases (neostigmine) are contraindicated in early Phase II block because neostigmine inhibits plasma cholinesterase as well, worsening succinylcholine accumulation and prolonging apnea — management requires continued mechanical ventilation and sedation until spontaneous recovery. Potassium Warning: It causes a predictable potassium release of ~0.5 mEq/L in healthy patients, but causes catastrophic life-threatening hyperkalaemia in burns, denervation injury, spinal cord trauma, prolonged immobility, or muscular dystrophies due to proliferation of extrajunctional acetylcholine receptors.",
@@ -17443,12 +16478,6 @@ window.KN_STUDY = {
         "Non-depolarising NMBA",
         "Aminosteroid"
       ],
-      "image": {
-        "src": "assets/drugs/muscle-relaxant/muscle-relaxant_04_rocuronium.jpg",
-        "alt": "Rocuronium pharmacology pearl",
-        "caption": "Rocuronium (Zemuron): Intermediate aminosteroid NMBA, rapid sequence intubation, and sugammadex encapsulation.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Zemuron (rocuronium bromide) injection label (Merck); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Rocuronium is an aminosteroid neuromuscular blocker — built on a steroid backbone, structurally related to vecuronium but modified specifically to make it act faster. It carries a single quaternary ammonium group (monoquaternary), which is where it binds the nicotinic receptor.",
       "pd": "It's a straightforward competitive antagonist at the nicotinic acetylcholine receptor on the postjunctional membrane — it sits in the receptor without activating it, blocking acetylcholine from getting in and producing flaccid paralysis. Because it's non-depolarising, there's no fasciculation phase and no potassium release the way there is with succinylcholine. It causes minimal histamine release and very little cardiovascular disturbance at normal clinical doses. What makes it clinically distinctive among the non-depolarisers is speed: at an intubating dose it comes on in roughly 1–2 minutes, and at the higher doses used for RSI, its onset genuinely approaches succinylcholine's — which is exactly why it's the standard substitute when succinylcholine is contraindicated.",
@@ -17477,12 +16506,6 @@ window.KN_STUDY = {
         "Non-depolarising NMBA",
         "Aminosteroid"
       ],
-      "image": {
-        "src": "assets/drugs/muscle-relaxant/muscle-relaxant_05_vecuronium.jpg",
-        "alt": "Vecuronium pharmacology pearl",
-        "caption": "Vecuronium: Aminosteroid neuromuscular blocker, organ-dependent clearance, and cardiovascular stability.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Norcuron (vecuronium bromide) injection label (brand discontinued; generic vecuronium bromide for injection remains FDA-approved) (originally Organon); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Vecuronium is a monoquaternary aminosteroid — it's essentially pancuronium's des-methyl analogue, with one of pancuronium's two quaternary methyl groups removed. That single change is what strips out most of pancuronium's vagolytic (heart rate-raising) activity while keeping a similar intermediate duration of action.",
       "pd": "It's a competitive nicotinic antagonist at the neuromuscular junction, working the same way rocuronium does. What sets it apart is how cardiovascularly quiet it is — essentially no histamine release and almost no effect on heart rate or blood pressure at clinical doses, making it about as haemodynamically 'silent' as this drug class gets. That's a genuine clinical advantage in a patient where you don't want the relaxant itself introducing any haemodynamic noise into the picture.",
@@ -17511,12 +16534,6 @@ window.KN_STUDY = {
         "Non-depolarising NMBA",
         "Hofmann elimination"
       ],
-      "image": {
-        "src": "assets/drugs/muscle-relaxant/muscle-relaxant_06_atracurium.jpg",
-        "alt": "Atracurium pharmacology pearl",
-        "caption": "Atracurium: Benzylisoquinolinium NMBA, Hofmann elimination, ester hydrolysis, and laudanosine kinetics.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Tracrium (atracurium besylate) injection label (originally GlaxoSmithKline); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Atracurium is a benzylisoquinolinium compound — a structurally distinct family from the aminosteroids (rocuronium, vecuronium, pancuronium) — marketed as a mixture of ten different stereoisomers. What makes it genuinely unusual is that it doesn't rely purely on enzymes to be broken down: at normal body pH and temperature, it spontaneously degrades through a chemical process called Hofmann elimination, alongside some additional breakdown by plasma esterases.",
       "pd": "Mechanistically it's a standard competitive nicotinic antagonist, same as the others. The clinically relevant difference is that it can cause dose- and rate-dependent histamine release, especially if you push it in quickly — showing up as transient flushing, hypotension, and either reflex tachycardia or occasionally bradycardia. Effects on ganglia and cardiac muscarinic receptors are minimal at normal doses.",
@@ -17546,12 +16563,6 @@ window.KN_STUDY = {
         "Non-depolarising NMBA",
         "Hofmann elimination"
       ],
-      "image": {
-        "src": "assets/drugs/muscle-relaxant/muscle-relaxant_07_cisatracurium.jpg",
-        "alt": "Cisatracurium pharmacology pearl",
-        "caption": "Cisatracurium (Nimbex): Pure Hofmann elimination, organ-independent clearance in ARDS and renal failure.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Nimbex (cisatracurium besylate) injection label (AbbVie); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Cisatracurium is a single stereoisomer isolated out of atracurium's original ten-isomer mixture — specifically the 1R-cis,1'R-cis form. Isolating just this one isomer roughly quadruples potency compared with atracurium while dramatically cutting down the histamine-releasing activity that atracurium carries.",
       "pd": "It's a competitive nicotinic antagonist, same mechanism as every other non-depolariser here. The genuinely distinguishing feature is how quiet it is: essentially no clinically significant histamine release even at doses well above what's needed for effect, and no meaningful vagolytic or ganglion-blocking activity — making it, alongside vecuronium, one of the most haemodynamically stable relaxants available.",
@@ -17663,12 +16674,6 @@ window.KN_STUDY = {
         "Selective relaxant binding agent",
         "Encapsulation"
       ],
-      "image": {
-        "src": "assets/drugs/muscle-relaxant/muscle-relaxant_09_sugammadex.jpg",
-        "alt": "Sugammadex reversal pharmacology pearl",
-        "caption": "Sugammadex (Bridion): Modified gamma-cyclodextrin selective relaxant binding agent for rocuronium and vecuronium.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Bridion (sugammadex) injection label (Merck); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Sugammadex is a modified gamma-cyclodextrin — picture a ring-shaped sugar molecule with a lipophilic cavity in the middle and a hydrophilic exterior, engineered with thioether side chains ending in carboxyl groups. That cavity is sized and shaped almost perfectly to fit an aminosteroid neuromuscular blocker, which is the entire basis for how it works.",
       "pd": "This is genuinely a different mechanism from anything else in the anaesthetic toolkit — sugammadex doesn't act on any receptor or enzyme at all. It physically encapsulates the relaxant molecule, forming a tight 1:1 host-guest complex, with by far its highest affinity for rocuronium, and meaningful but somewhat lower affinity for vecuronium and pancuronium. As free rocuronium gets trapped inside sugammadex molecules, plasma concentration of the free drug drops, creating a concentration gradient that pulls more rocuronium away from the neuromuscular junction and back into the plasma to be captured too. Because it's physically removing the drug rather than trying to out-compete it at the receptor, it works regardless of how deep the block is — a genuine advantage over neostigmine, which simply can't reverse a very deep block no matter how much you give. And because it doesn't touch acetylcholinesterase at all, it causes none of neostigmine's muscarinic side effects — no bradycardia from that mechanism, no need to co-administer an antimuscarinic.",
@@ -17697,12 +16702,6 @@ window.KN_STUDY = {
         "Anticholinesterase",
         "Reversal agent"
       ],
-      "image": {
-        "src": "assets/drugs/muscle-relaxant/muscle-relaxant_08_neostigmine.jpg",
-        "alt": "Neostigmine reversal pharmacology pearl",
-        "caption": "Neostigmine: Acetylcholinesterase inhibitor, glycopyrrolate co-administration, and ceiling effect.",
-        "wide": true
-      },
       "source": "UpToDate \"Prostigmin (neostigmine methylsulfate)\" drug information; Miller's Anesthesia, 10th ed.; generic neostigmine widely available.",
       "structure": "Neostigmine is a synthetic quaternary ammonium carbamate ester. That quaternary charge is functionally important: it means the molecule can't cross the blood-brain barrier in any meaningful amount, so unlike physostigmine (a related tertiary-amine anticholinesterase), its cholinergic effects stay confined to the periphery rather than causing central effects.",
       "pd": "Neostigmine works by a completely different route than sugammadex — it reversibly inhibits acetylcholinesterase, the enzyme that normally breaks acetylcholine down almost instantly at the synapse. Block that breakdown, and acetylcholine concentration at the neuromuscular junction rises, competitively out-competing whatever non-depolarising relaxant is still occupying the receptors and restoring transmission. The catch is that acetylcholine doesn't only act at the neuromuscular junction — it builds up at muscarinic receptors too, throughout the body, causing bradycardia, salivation, bronchospasm, and increased gut motility. That's exactly why neostigmine is essentially never given alone — it's routinely paired with an antimuscarinic, glycopyrrolate or atropine, to block those muscarinic effects while leaving the desired nicotinic effect at the neuromuscular junction untouched.",
@@ -17730,12 +16729,6 @@ window.KN_STUDY = {
         "Mu agonist",
         "Synthetic opioid"
       ],
-      "image": {
-        "src": "assets/drugs/opioids/opioid_04_fentanyl.jpg",
-        "alt": "Fentanyl pharmacology pearl",
-        "caption": "Fentanyl (Sublimaze): Synthetic phenylpiperidine, lipophilicity, context-sensitive half-time, and wooden chest syndrome.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Sublimaze (fentanyl citrate) injection label (Akorn/generic); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Fentanyl is a synthetic phenylpiperidine — structurally quite different from morphine, but sharing the same core pharmacophore that lets it bind the mu-opioid receptor. What really defines its clinical behaviour is how extraordinarily lipid-soluble it is, far more than morphine, which is what drives its fast brain penetration and also why it works well as a transdermal patch or a transmucosal lozenge, formulations morphine simply can't achieve.",
       "pd": "It's a high-affinity full agonist at the mu-opioid receptor, with weaker activity at kappa and delta receptors too, producing analgesia, sedation, euphoria and dose-dependent respiratory depression by blunting the brainstem's response to rising CO2. Compared with morphine, it causes very little histamine release, giving it a more haemodynamically stable profile — a real reason it's favoured in cardiac and haemodynamically fragile patients. It can cause bradycardia through central vagal stimulation. And at high doses given quickly, it can cause chest wall and glottic rigidity — 'wooden chest syndrome' — which can genuinely interfere with mask ventilation if you're not ready for it.",
@@ -17765,12 +16758,6 @@ window.KN_STUDY = {
         "Mu agonist",
         "Phenanthrene opioid"
       ],
-      "image": {
-        "src": "assets/drugs/opioids/opioid_03_morphine.jpg",
-        "alt": "Morphine pharmacology pearl",
-        "caption": "Morphine: Prototypical phenanthrene opioid, M6G/M3G active metabolites, and histamine release.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Duramorph (morphine sulfate) injection label (Baxter/generic); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Morphine is a naturally occurring phenanthrene alkaloid extracted from the opium poppy — the drug every other opioid gets measured against, historically and pharmacologically. It's considerably less lipid-soluble than fentanyl, and that single difference explains most of the practical distinctions between the two drugs.",
       "pd": "It's a full agonist at the mu-opioid receptor, with weaker kappa activity, producing the classic opioid picture — analgesia, sedation, euphoria, miosis, and dose-dependent respiratory depression. Where it genuinely differs from fentanyl is histamine release: given quickly IV, morphine causes real, sometimes clinically significant flushing, pruritus and hypotension through mast-cell histamine release, something fentanyl barely does. It also slows gut motility and delays gastric emptying more noticeably and more persistently than fentanyl does.",
@@ -17828,12 +16815,6 @@ window.KN_STUDY = {
         "Mu agonist",
         "Ester-metabolised"
       ],
-      "image": {
-        "src": "assets/drugs/opioids/opioid_05_remifentanil.jpg",
-        "alt": "Remifentanil pharmacology pearl",
-        "caption": "Remifentanil (Ultiva): Ultra-short acting esterase-metabolized opioid, context-insensitive half-life, and TIVA infusion.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Ultiva (remifentanil hydrochloride) injection label (originally GlaxoSmithKline/generic); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Remifentanil belongs to the same phenylpiperidine (fentanyl-class) family as fentanyl, but with one deliberate structural addition: an ester linkage built into the molecule. That single feature — the same basic trick remimazolam later borrowed for its own ultra-fast offset — is what makes remifentanil metabolically unlike every other opioid in routine use.",
       "pd": "It's a high-affinity full mu-opioid receptor agonist, producing analgesia and dose-dependent respiratory depression that's pharmacodynamically much like fentanyl's — the distinguishing feature here is entirely kinetic, not dynamic. It can cause bradycardia and hypotension, more noticeably when combined with propofol, and rapid administration can cause the same chest wall rigidity seen with other potent mu agonists.",
@@ -17919,12 +16900,6 @@ window.KN_STUDY = {
         "Phenylpiperidine opioid",
         "Toxic active metabolite"
       ],
-      "image": {
-        "src": "assets/drugs/opioids/opioid_08_pethidine.jpg",
-        "alt": "Pethidine pharmacology pearl",
-        "caption": "Pethidine (Meperidine): Synthetic opioid, anti-shivering kappa effects, norpethidine toxicity, and MAOI interactions.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Demerol (meperidine hydrochloride) injection label (Sanofi/generic); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Pethidine — meperidine in US naming — was the first fully synthetic opioid, a phenylpiperidine structurally unrelated to morphine's phenanthrene skeleton, though it shares the same core pharmacophore that lets any opioid engage the mu receptor. Its structure also carries a mild atropine-like antimuscarinic character, which is exactly why it behaves so differently from every other opioid on the heart rate and pupil.",
       "pd": "It's a mu-opioid agonist, but meaningfully weaker than morphine — roughly a tenth of the potency. What makes it genuinely distinctive is everything outside classic mu agonism: real local-anaesthetic-like sodium-channel blockade at high concentrations, mild anticholinergic activity that tends to raise heart rate rather than cause the bradycardia typical of other opioids, and a specific, well-documented kappa-mediated effect on the thermoregulatory centre that makes it unusually effective at stopping postoperative or post-anaesthesia shivering — a use no other opioid here matches as reliably.",
@@ -17955,12 +16930,6 @@ window.KN_STUDY = {
         "SNRI activity",
         "Dual mechanism"
       ],
-      "image": {
-        "src": "assets/drugs/opioids/opioid_07_tramadol.jpg",
-        "alt": "Tramadol pharmacology pearl",
-        "caption": "Tramadol: Dual-action atypical analgesic, mu-opioid agonist, SNRI inhibition, and seizure/serotonin risks.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Ultram (tramadol hydrochloride) tablet label (Janssen/generic); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Tramadol is a synthetic cyclohexanol analogue structurally related to codeine, marketed as a racemic mixture of two enantiomers that genuinely do different jobs: the (+)-enantiomer is the one with meaningful opioid-receptor affinity, while the (−)-enantiomer mainly inhibits noradrenaline reuptake.",
       "pd": "This dual mechanism is the whole clinical story: it's a weak mu-opioid agonist — roughly a tenth of morphine's affinity — combined with genuine inhibition of serotonin and noradrenaline reuptake, similar in spirit to an SNRI. Analgesia comes from both mechanisms together, which is exactly why naloxone only partially reverses a tramadol overdose rather than fully reversing it the way it does with a pure mu agonist. That same dual mechanism is also why tramadol lowers the seizure threshold more than a typical weak opioid would, and why it carries a real serotonin syndrome risk when combined with other serotonergic drugs.",
@@ -17991,12 +16960,6 @@ window.KN_STUDY = {
         "Kappa antagonist",
         "High receptor affinity"
       ],
-      "image": {
-        "src": "assets/drugs/opioids/opioid_09_buprenorphine.jpg",
-        "alt": "Buprenorphine pharmacology pearl",
-        "caption": "Buprenorphine: Partial mu-agonist / kappa-antagonist, high binding affinity, slow dissociation, and sublingual/transdermal dosing.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Buprenex (buprenorphine hydrochloride) injection label; Suboxone/Subutex, Butrans and Belbuca labels for the respective non-parenteral products (Indivior/generic); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Buprenorphine is a semi-synthetic derivative of thebaine, structurally a morphinan core with an added 6,14-ethano bridge and a bulky substituent carrying a tertiary alcohol and a tert-butyl group — a considerably more complex, more lipophilic molecule than morphine itself, which is part of why it binds the mu receptor so much more tightly.",
       "pd": "It's a partial agonist at the mu receptor and an antagonist at kappa, with exceptionally high mu-receptor affinity and slow dissociation. Two consequences follow directly from that combination, and both are genuinely important: first, being a partial agonist gives it a ceiling effect on respiratory depression — pushing the dose higher stops producing proportionally more respiratory depression the way it would with a full agonist, a real safety advantage in overdose. Second, that same high affinity and slow dissociation mean it can displace a full agonist already occupying the receptor without providing an equivalent level of agonism, which is exactly why giving buprenorphine to someone who's recently had a full mu agonist on board can precipitate acute withdrawal.",
@@ -18023,12 +16986,6 @@ window.KN_STUDY = {
         "Mu antagonist",
         "Agonist-antagonist"
       ],
-      "image": {
-        "src": "assets/drugs/opioids/opioid_06_nalbuphine.jpg",
-        "alt": "Nalbuphine pharmacology pearl",
-        "caption": "Nalbuphine (Nubain): Mixed kappa-agonist / mu-antagonist, ceiling effect for respiratory depression, and opioid pruritus reversal.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Nubain (nalbuphine hydrochloride) injection label (Hikma/generic); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Nalbuphine is derived from noroxymorphone, structurally close to both naloxone and oxymorphone within the morphinan family, differing mainly in the substituent on the piperidine nitrogen.",
       "pd": "It's a kappa-receptor agonist and a mu-receptor antagonist (or, by some accounts, weak partial agonist) at the same time — the defining 'mixed agonist-antagonist' pattern shared with pentazocine and butorphanol. The kappa agonism gives genuine analgesia and sedation; the mu antagonism gives it a ceiling effect on respiratory depression, and means it can precipitate withdrawal in someone already on a full mu agonist. That mu-blocking property is also exploited deliberately in a specific, well-known technique: small IV doses of nalbuphine can partially reverse the pruritus, nausea and respiratory depression from a full mu agonist — particularly after neuraxial opioids — while still leaving some analgesia intact, a titratable trade a straight naloxone reversal can't offer.",
@@ -18084,12 +17041,6 @@ window.KN_STUDY = {
         "Pure opioid antagonist",
         "Reversal agent"
       ],
-      "image": {
-        "src": "assets/drugs/opioids/opioid_10_naloxone.jpg",
-        "alt": "Naloxone reversal pharmacology pearl",
-        "caption": "Naloxone (Narcan): Competitive pure opioid antagonist, acute titration, duration mismatch, and renarcotization vigilance.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Narcan (naloxone hydrochloride) injection and Narcan Nasal Spray labels (Emergent BioSolutions/generic); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Naloxone is the N-allyl derivative of noroxymorphone — take morphine's morphinan skeleton, oxidise the C6 alcohol to a ketone, add a hydroxyl at C14, and replace the N-methyl with an N-allyl group, and the result binds the same receptors morphine does but produces no agonist effect of its own.",
       "pd": "It's a competitive antagonist at mu, kappa and delta opioid receptors with no intrinsic agonist activity at clinical doses, so it reverses analgesia, sedation and respiratory depression from any opioid on board rather than treating one specific drug.",
@@ -18143,12 +17094,6 @@ window.KN_STUDY = {
         "NSAID",
         "COX-1/COX-2 inhibitor"
       ],
-      "image": {
-        "src": "assets/drugs/non-opioid-analgesics/non-opioid_02_ketorolac.png",
-        "alt": "Ketorolac NSAID pearl",
-        "caption": "Ketorolac (Toradol): Potent injectable pyrrolo-pyrrole NSAID, acute post-op pain, and strict 5-day duration ceiling.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Toradol (ketorolac tromethamine) injection label (Roche/generic); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Ketorolac is a pyrrolizine carboxylic acid, structurally related to indomethacin and tolmetin. What sets it apart practically from most other NSAIDs is that it comes in a genuinely effective parenteral (IV/IM) form, not just oral and ophthalmic formulations — one of the few NSAIDs with analgesic potency for acute pain comparable to a moderate opioid dose.",
       "pd": "It works the way every non-selective NSAID does — reversibly inhibiting both COX-1 and COX-2, cutting prostaglandin synthesis, and producing analgesic, anti-inflammatory and antipyretic effects without touching opioid receptors at all, which is exactly why it causes none of the respiratory depression or sedation opioids do. That same non-selective COX-1 inhibition also reversibly impairs platelet aggregation for as long as the drug is on board — a meaningfully different, shorter-lived effect than aspirin's irreversible platelet inhibition, but still a genuine bleeding consideration.",
@@ -18173,12 +17118,6 @@ window.KN_STUDY = {
         "NSAID",
         "Propionic acid derivative"
       ],
-      "image": {
-        "src": "assets/drugs/non-opioid-analgesics/non-opioid_03_ibuprofen.png",
-        "alt": "Ibuprofen NSAID pearl",
-        "caption": "Ibuprofen (Caldolor): Propionic acid derivative, reversible COX-1/2 inhibition, and parenteral/oral analgesic dosing.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Caldolor (ibuprofen) injection label; Motrin/generic ibuprofen oral label (Cumberland Pharmaceuticals (IV)/generic (oral)); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Ibuprofen is a propionic acid derivative — one of the earliest members of this NSAID subclass and still one of the most widely used drugs of any kind, in either its familiar oral form or, less familiarly to some, an IV formulation (Caldolor) used perioperatively.",
       "pd": "It works through the same mechanism as any non-selective NSAID — reversible inhibition of both COX-1 and COX-2, reducing prostaglandin synthesis to give analgesic, antipyretic and anti-inflammatory effects. It reversibly inhibits platelet function through COX-1 too, though less pronounced and shorter-lived than aspirin's irreversible effect.",
@@ -18204,12 +17143,6 @@ window.KN_STUDY = {
         "NSAID",
         "Phenylacetic acid derivative"
       ],
-      "image": {
-        "src": "assets/drugs/non-opioid-analgesics/non-opioid_01_diclofenac.png",
-        "alt": "Diclofenac NSAID pearl",
-        "caption": "Diclofenac (Voltaren): Acetic acid NSAID, COX-2 selectivity balance, and perioperative multimodal analgesia.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Dyloject (diclofenac sodium) injection label; Voltaren/generic diclofenac oral and topical labels (Hikma (IV)/generic); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Diclofenac is a phenylacetic acid derivative, built around a distinctive diphenylamine backbone carrying two chlorine substituents. Compared with some other non-selective NSAIDs it shows a degree of relative preference for COX-2 over COX-1, though it still meaningfully inhibits COX-1 too — it isn't selective in the way celecoxib is.",
       "pd": "It reversibly inhibits both COX-1 and COX-2, with that mild COX-2 preference, reducing prostaglandin synthesis to give analgesic, anti-inflammatory and antipyretic effects. There are some additional proposed actions on the lipoxygenase pathway and phospholipase A2, though the clinical significance of these beyond the core COX effect is less well established.",
@@ -18294,12 +17227,6 @@ window.KN_STUDY = {
         "Alpha-1 agonist",
         "Vasopressor"
       ],
-      "image": {
-        "src": "assets/drugs/vasoactive/vasoactive_08_phenylephrine.png",
-        "alt": "Phenylephrine vasopressor pharmacology pearl",
-        "caption": "Phenylephrine (Neo-Synephrine): Pure alpha-1 vasopressor, baroreceptor reflex bradycardia, and spinal hypotension management.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Vazculep (phenylephrine hydrochloride) injection label (Eagle Pharmaceuticals/generic); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Phenylephrine is a synthetic phenylethylamine, structurally related to epinephrine but missing the catechol hydroxyl group at one ring position. That missing hydroxyl matters pharmacokinetically: it makes phenylephrine resistant to breakdown by COMT (though MAO can still metabolise it), giving it a longer duration of action than the endogenous catecholamines.",
       "pd": "It's a direct, near-selective alpha-1 adrenergic agonist — essentially a pure vasoconstrictor, with negligible direct beta-adrenergic activity of its own. That means it raises systemic vascular resistance and blood pressure without any direct inotropic or chronotropic push, and as blood pressure rises, the baroreceptor reflex actually slows the heart down further — so phenylephrine characteristically raises pressure while lowering heart rate, the opposite pattern to ephedrine. That makes it the natural choice whenever you want a pressor without adding tachycardia: hypotension with a reflex or baseline tachycardia already present, hypertrophic cardiomyopathy, or severe aortic stenosis.",
@@ -18329,12 +17256,6 @@ window.KN_STUDY = {
         "Alpha/beta agonist",
         "Catecholamine"
       ],
-      "image": {
-        "src": "assets/drugs/vasoactive/vasoactive_03_noradrenaline.png",
-        "alt": "Noradrenaline pharmacology pearl",
-        "caption": "Norepinephrine (Levophed): First-line alpha-1/beta-1 vasopressor in septic shock and systemic vasoplegia.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Levophed (norepinephrine bitartrate) injection label (Hospira/Pfizer); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Norepinephrine is the body's own primary sympathetic neurotransmitter — an endogenous catecholamine, structurally identical to epinephrine except that it lacks epinephrine's N-methyl group on the amine.",
       "pd": "It's a potent alpha-1 agonist — its dominant effect, driving marked vasoconstriction and raising systemic vascular resistance and blood pressure — combined with modest beta-1 agonism (a mild boost to contractility and heart rate) and very little beta-2 activity. The net picture is a rise in mean arterial pressure with cardiac output generally preserved or only modestly changed, and — because the modest beta-1 stimulation roughly counterbalances any reflex slowing — typically little to no significant reflex tachycardia at clinical doses, unlike phenylephrine's more purely reflex-driven bradycardia.",
@@ -18364,12 +17285,6 @@ window.KN_STUDY = {
         "Alpha/beta agonist",
         "Catecholamine"
       ],
-      "image": {
-        "src": "assets/drugs/vasoactive/vasoactive_04_adrenaline.png",
-        "alt": "Adrenaline pharmacology pearl",
-        "caption": "Epinephrine (Adrenaline): Potent alpha/beta adrenergic agonist for anaphylaxis, cardiac arrest, and cardiogenic shock.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Adrenalin (epinephrine) injection label (Par Pharmaceutical/generic); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Epinephrine is the body's principal adrenal medullary catecholamine — structurally the same as norepinephrine, just with an added N-methyl group on the amine.",
       "pd": "It's a non-selective agonist at alpha-1, alpha-2, beta-1 and beta-2 receptors all at once, and the genuinely important thing to understand is that its net effect shifts substantially with dose. At lower doses, beta-2-mediated vasodilation in some vascular beds can partly offset alpha-mediated constriction, alongside beta-1-driven increases in heart rate and contractility; at higher doses, alpha-1 vasoconstriction takes over and dominates, raising systemic vascular resistance and blood pressure more forcefully. Beta-2 activity also drives bronchodilation and mast-cell stabilisation — the whole reason it's first-line for anaphylaxis — while beta-1 activity raises myocardial oxygen demand and carries real pro-arrhythmic potential at higher doses.",
@@ -18399,12 +17314,6 @@ window.KN_STUDY = {
         "V1 receptor agonist",
         "Non-catecholamine"
       ],
-      "image": {
-        "src": "assets/drugs/vasoactive/vasoactive_07_vasopressin.png",
-        "alt": "Vasopressin pharmacology pearl",
-        "caption": "Vasopressin (Argipressin): Non-adrenergic V1a receptor agonist, acidemic pressor responsiveness, and fixed-dose infusion.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Vasostrict (vasopressin) injection label (Par Pharmaceutical/Endo); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Vasopressin is a nonapeptide hormone, structurally identical to the body's own endogenous arginine vasopressin (antidiuretic hormone) — made in the hypothalamus and released from the posterior pituitary. It's not a catecholamine at all, which is exactly why it works through a completely different receptor system than every other vasopressor on this list.",
       "pd": "It acts on V1 receptors on vascular smooth muscle, causing direct vasoconstriction through a pathway entirely independent of the adrenergic system. That independence is precisely its value in vasodilatory or septic shock that's become 'catecholamine-resistant' — where adrenergic receptors may be downregulated or desensitised after prolonged high-dose catecholamine exposure, vasopressin can still constrict vessels through its own separate pathway. It also acts on renal V2 receptors, promoting free-water reabsorption — an antidiuretic effect that becomes clinically relevant with sustained use. It has no direct inotropic or chronotropic activity of its own, and unlike the catecholamines, doesn't directly raise myocardial oxygen demand, though excessive vasoconstriction can still reduce cardiac output by raising afterload too much.",
@@ -18432,12 +17341,6 @@ window.KN_STUDY = {
         "Dopaminergic/alpha/beta agonist",
         "Catecholamine"
       ],
-      "image": {
-        "src": "assets/drugs/vasoactive/vasoactive_05_dopamine.png",
-        "alt": "Dopamine pharmacology pearl",
-        "caption": "Dopamine: Dose-dependent DA1/beta-1/alpha-1 adrenergic receptor stimulation and arrhythmogenic considerations.",
-        "wide": true
-      },
       "source": "UpToDate and Miller's Anesthesia, 10th ed. — generic dopamine hydrochloride injection (brand Intropin discontinued; originally DuPont).",
       "structure": "Dopamine is itself an endogenous catecholamine — the direct metabolic precursor to norepinephrine in the body's own catecholamine synthesis pathway.",
       "pd": "The classic teaching describes dose-dependent receptor effects, and while it's a genuine simplification with real overlap in practice, it's still a useful starting framework: at low doses (roughly 1–3 mcg/kg/min), dopaminergic D1-receptor activation predominates, causing renal and splanchnic vasodilation — the origin of so-called 'renal-dose dopamine,' a practice now known not to confer any real renoprotection and largely abandoned. At moderate doses (roughly 3–10 mcg/kg/min), beta-1 activity takes over, raising heart rate and contractility. At higher doses (above roughly 10 mcg/kg/min), alpha-1-mediated vasoconstriction dominates, raising systemic vascular resistance.",
@@ -18467,12 +17370,6 @@ window.KN_STUDY = {
         "Beta-1 agonist",
         "Inotrope"
       ],
-      "image": {
-        "src": "assets/drugs/vasoactive/vasoactive_06_dobutamine.png",
-        "alt": "Dobutamine inotrope pharmacology pearl",
-        "caption": "Dobutamine: Synthetic beta-1 inotrope, mild beta-2 vasodilation, and septic cardiomyopathy support.",
-        "wide": true
-      },
       "source": "UpToDate and Miller's Anesthesia, 10th ed. — generic dobutamine injection (brand Dobutrex discontinued; originally Eli Lilly).",
       "structure": "Dobutamine is a synthetic catecholamine analogue, structurally related to dopamine but deliberately engineered for more selective beta-1 activity. It's marketed as a racemic mixture of two stereoisomers with somewhat different receptor selectivity, which together produce its overall pharmacologic profile.",
       "pd": "This is the drug to reach for when what you actually need is more cardiac output, not more blood pressure — it's predominantly a beta-1 agonist, producing genuine positive inotropy (increased contractility and stroke volume) with modest positive chronotropy, alongside weaker beta-2 activity (mild vasodilation) and minimal alpha-1 effect. Net result: cardiac output rises while systemic vascular resistance and blood pressure stay roughly the same or even drop slightly — functionally quite different from every vasopressor covered above, and a genuinely important distinction to keep straight.",
@@ -18503,12 +17400,6 @@ window.KN_STUDY = {
         "Amide LA",
         "Class Ib antiarrhythmic"
       ],
-      "image": {
-        "src": "assets/drugs/local-anaesthetics/local-anaesthetics_03_lignocaine.png",
-        "alt": "Lidocaine local anaesthetic pearl",
-        "caption": "Lidocaine (Xylocaine): Prototype aminoamide local anaesthetic, class Ib antiarrhythmic, and systemic IV infusion.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Xylocaine (lidocaine hydrochloride) injection label (Fresenius Kabi/generic); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Lidocaine is the prototype amide local anaesthetic — an amide linkage joins an aromatic, lipid-loving ring to a hydrophilic tertiary amine tail through an intermediate alkyl chain. That amide linkage is the key structural fact to remember about this whole drug family: amide local anaesthetics are broken down by the liver, which is exactly why they behave so differently in hepatic disease compared with the ester local anaesthetics, which are instead hydrolysed by plasma cholinesterase.",
       "pd": "It works by blocking voltage-gated sodium channels from inside the nerve cell membrane — the drug has to cross the membrane in its uncharged, lipid-soluble form first, then re-ionise inside the cell to actually plug the channel from within. Block sodium influx and you block action-potential propagation, which is the whole basis of local anaesthesia, whether that's a peripheral nerve block, a spinal, or simple infiltration. Smaller, less myelinated fibres are generally blocked first and at lower concentrations, though the classic teaching that this follows fibre size in a clean, simple order has real, well-documented exceptions. Beyond its use as a local anaesthetic, lidocaine also blocks cardiac sodium channels — the basis of its separate use as a Class Ib antiarrhythmic — and given IV, it has genuine systemic analgesic and anti-hyperalgesic effects independent of any nerve block at the injection site.",
@@ -18537,12 +17428,6 @@ window.KN_STUDY = {
         "Amide LA",
         "Long-acting"
       ],
-      "image": {
-        "src": "assets/drugs/local-anaesthetics/local-anaesthetics_04_bupivacaine-levobupivacaine.png",
-        "alt": "Bupivacaine local anaesthetic pearl",
-        "caption": "Bupivacaine & Levobupivacaine (Marcaine / Chirocaine): Long-acting aminoamides, differential sensory block, and cardiotoxicity.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Marcaine (bupivacaine hydrochloride) injection label; Exparel (bupivacaine liposome injectable suspension) label (Pfizer (Marcaine)/Pacira (Exparel)); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Bupivacaine is an amide local anaesthetic, a butyl-substituted analogue of mepivacaine — that longer alkyl chain on the piperidine nitrogen is what increases its lipid solubility, potency and duration compared with mepivacaine or lidocaine, but it's also exactly what makes it more cardiotoxic. It's marketed both as the standard hydrochloride solution and as a liposomal extended-release suspension (Exparel) built for prolonged single-injection analgesia.",
       "pd": "It blocks sodium channels the same way every amide local anaesthetic does, but with a pharmacological quirk that genuinely matters: it binds to and dissociates from cardiac sodium channels much more slowly than lidocaine does — sometimes described as 'fast-in, slow-out' kinetics. That slow dissociation is exactly why bupivacaine's cardiotoxicity is disproportionately severe relative to its CNS-toxicity threshold, compared with other amide local anaesthetics: cardiac arrest can occur with little or no preceding CNS warning, and resuscitation from bupivacaine-induced arrest is notoriously difficult without lipid emulsion therapy specifically.",
@@ -18571,12 +17456,6 @@ window.KN_STUDY = {
         "Long-acting",
         "Single enantiomer"
       ],
-      "image": {
-        "src": "assets/drugs/local-anaesthetics/local-anaesthetics_05_ropivacaine.png",
-        "alt": "Ropivacaine local anaesthetic pearl",
-        "caption": "Ropivacaine (Naropin): Pure S-(-)-enantiomer, wide safety margin, reduced cardiac/CNS toxicity, and motor-sparing block.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Naropin (ropivacaine hydrochloride) injection label (originally AstraZeneca/generic); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Ropivacaine is structurally close to bupivacaine and mepivacaine — a propyl-substituted piperidine analogue in the same amide family — but with one deliberate design choice: it's manufactured and marketed as a single, pure S(-)-enantiomer, rather than as a racemic mixture the way bupivacaine is. That's not a marketing detail — the S-enantiomer genuinely binds cardiac sodium channels less avidly and is inherently less cardiotoxic than the R-enantiomer, which is exactly the rationale behind the whole molecule.",
       "pd": "It blocks sodium channels through the same core mechanism as any amide local anaesthetic. Clinically, at lower concentrations it shows a useful degree of differential sensory-over-motor block compared with bupivacaine — genuinely helpful for labour analgesia or ambulatory regional techniques where you want good sensory coverage without heavy motor block. And because of that single-enantiomer design, it has a meaningfully wider margin between the dose that causes CNS toxicity and the dose that causes cardiotoxicity than bupivacaine does — a real safety advantage if accidental intravascular injection happens, though it's important to be clear this margin is wider, not zero; ropivacaine toxicity is still a genuine emergency.",
@@ -18604,12 +17483,6 @@ window.KN_STUDY = {
         "Ester LA",
         "Rapid onset/offset"
       ],
-      "image": {
-        "src": "assets/drugs/local-anaesthetics/local-anaesthetics_06_chloroprocaine.png",
-        "alt": "Chloroprocaine local anaesthetic pearl",
-        "caption": "2-Chloroprocaine (Nesacaine): Ultra-fast aminoester, plasma pseudocholinesterase hydrolysis, and day-case spinal anaesthesia.",
-        "wide": true
-      },
       "source": "FDA-approved prescribing information — Nesacaine (chloroprocaine hydrochloride) injection label (Sintetica/generic); UpToDate \"Drug information\" monograph (2025); Miller's Anesthesia, 10th ed.; Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed.",
       "structure": "Chloroprocaine is an ester local anaesthetic — a chlorinated derivative of procaine — and that ester linkage, rather than the amide linkage lidocaine, bupivacaine and ropivacaine all share, is the single most important structural fact about it. Ester linkages are hydrolysed by plasma (pseudo)cholinesterase, which is exactly what gives chloroprocaine the fastest systemic clearance of any local anaesthetic in clinical use.",
       "pd": "It blocks sodium channels through the same basic mechanism as every local anaesthetic here. What genuinely distinguishes it is that this ester structure means its metabolism doesn't depend on the liver at all — and its plasma hydrolysis is so rapid (a half-life of only around 20 to 45 seconds in adults) that both its short duration of action and its comparatively wide safety margin against systemic toxicity, even with fairly large epidural doses, follow directly from that single structural feature.",
