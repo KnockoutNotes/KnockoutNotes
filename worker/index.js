@@ -218,6 +218,26 @@ export default {
     }
 
     // ==========================================
+    // RECEIPT & INVOICE PAGE ROUTES
+    // ==========================================
+    if (
+      pathname === '/receipt' ||
+      pathname === '/receipt.html' ||
+      pathname === '/invoice' ||
+      pathname === '/invoice.html' ||
+      pathname === '/sample-receipt' ||
+      pathname === '/receipt-preview'
+    ) {
+      if (env.ASSETS) {
+        const reqUrl = new URL('/receipt.html', request.url);
+        if ((pathname === '/sample-receipt' || pathname === '/receipt-preview') && !url.searchParams.has('mode')) {
+          reqUrl.searchParams.set('mode', 'preview');
+        }
+        return env.ASSETS.fetch(new Request(reqUrl.toString(), request));
+      }
+    }
+
+    // ==========================================
     // 1. PUBLIC SUBSCRIPTION ROUTES
     // ==========================================
 

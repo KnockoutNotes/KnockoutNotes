@@ -307,9 +307,14 @@
 
       <!-- Order Transaction History -->
       <div style="margin-bottom: 32px;">
-        <h3 style="font-size:18px; font-weight:700; margin:0 0 14px; display:flex; align-items:center; gap:8px;">
-          <span>🧾</span> <span>Cashfree Transaction Receipts</span>
-        </h3>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+          <h3 style="font-size:18px; font-weight:700; margin:0; display:flex; align-items:center; gap:8px;">
+            <span>🧾</span> <span>Cashfree Transaction Receipts</span>
+          </h3>
+          <a href="receipt.html?mode=preview" class="kn-btn kn-btn-secondary" style="font-size:12px; padding:5px 12px; border-color:rgba(0,229,255,0.4); color:var(--accent-cyan, #00e5ff); text-decoration:none;">
+            <span>🔍 Inspect Sample Receipt Preview →</span>
+          </a>
+        </div>
         <div id="knOrdersList" class="kn-orders-table-wrap">
           <!-- Order table rendered dynamically -->
         </div>
@@ -808,8 +813,11 @@
                             <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 9px; font-size:11.5px;" onclick="window.KN_PAYMENTS.triggerPdfDownload('/api/study/download-pdf?chapter_id=${encodeURIComponent(o.chapter_id)}', 'KnockoutNotes_${esc(o.chapter_id)}.pdf')">
                               📥 Monograph
                             </button>
-                            <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 9px; font-size:11.5px; background:rgba(0,229,255,0.08); border-color:rgba(0,229,255,0.35); color:var(--accent-cyan, #00e5ff);" onclick="downloadOrderInvoice('${esc(o.order_id)}')">
-                              🧾 Invoice
+                            <a href="receipt.html?order_id=${encodeURIComponent(o.order_id)}" class="kn-btn kn-btn-secondary" style="padding:4px 9px; font-size:11.5px; background:rgba(0,229,255,0.08); border-color:rgba(0,229,255,0.35); color:var(--accent-cyan, #00e5ff); text-decoration:none;">
+                              👁️ Receipt
+                            </a>
+                            <button type="button" class="kn-btn kn-btn-secondary" style="padding:4px 9px; font-size:11.5px;" onclick="downloadOrderInvoice('${esc(o.order_id)}')">
+                              📥 PDF
                             </button>
                           </div>
                         ` : status === "PENDING" ? `

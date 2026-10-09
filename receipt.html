@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Receipt | KnockoutNotes</title>
+  <link rel="icon" type="image/png" href="knockoutnotes_icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --kn-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --kn-font-mono: 'JetBrains Mono', monospace;
+      --kn-bg-dark: #070b14;
+      --kn-card-dark: #0e1526;
+      --kn-border-dark: #1e293b;
+      --kn-text-primary: #f8fafc;
+      --kn-text-secondary: #94a3b8;
+      --kn-accent-cyan: #00e5ff;
+      --kn-accent-teal: #0d9488;
+      --kn-emerald: #10b981;
+      --kn-amber: #f59e0b;
+      --kn-rose: #f43f5e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--kn-font-sans);
+      background-color: var(--kn-bg-dark);
+      color: var(--kn-text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 60px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navigation Toolbar */
+    .kn-receipt-nav {
+      width: 100%;
+      max-width: 860px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .kn-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .kn-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid var(--kn-border-dark);
+      border-radius: 8px;
+      color: var(--kn-text-primary);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .kn-back-btn:hover {
+      background: rgba(51, 65, 85, 0.9);
+      border-color: var(--kn-accent-cyan);
+      color: var(--kn-accent-cyan);
+    }
+
+    .kn-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .kn-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .kn-btn-primary {
+      background: linear-gradient(135deg, #00e5ff 0%, #00b4d8 100%);
+      color: #070b14;
+      box-shadow: 0 2px 10px rgba(0, 229, 255, 0.25);
+    }
+
+    .kn-btn-primary:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 4px 16px rgba(0, 229, 255, 0.4);
+    }
+
+    .kn-btn-secondary {
+      background: rgba(30, 41, 59, 0.7);
+      border-color: var(--kn-border-dark);
+      color: var(--kn-text-primary);
+    }
+
+    .kn-btn-secondary:hover {
+      background: rgba(51, 65, 85, 0.9);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Disclaimer Notice */
+    .kn-sample-banner {
+      width: 100%;
+      max-width: 860px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(244, 63, 94, 0.1));
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: 10px;
+      padding: 12px 18px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      color: #fef08a;
+    }
+
+    .kn-sample-banner-text {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+
+    .kn-sample-tag {
+      background: #f59e0b;
+      color: #000;
+      font-weight: 800;
+      font-size: 10.5px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* Main Receipt Canvas (White Paper Style) */
+    .kn-receipt-container {
+      width: 100%;
+      max-width: 860px;
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 14px;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Watermark for Sample Mode */
+    .kn-watermark {
+      position: absolute;
+      top: 52%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      font-size: 64px;
+      font-weight: 900;
+      color: rgba(220, 38, 38, 0.08);
+      border: 6px dashed rgba(220, 38, 38, 0.12);
+      padding: 18px 36px;
+      border-radius: 12px;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: 2px;
+      text-align: center;
+      line-height: 1.1;
+      z-index: 5;
+    }
+
+    /* Header Banner */
+    .kn-receipt-header {
+      background: #0b1329;
+      color: #ffffff;
+      padding: 32px 40px;
+      border-bottom: 4px solid #00e5ff;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .kn-brand-title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .kn-brand-title img {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+    }
+
+    .kn-brand-subtitle {
+      font-size: 11px;
+      font-weight: 600;
+      color: #94a3b8;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .kn-brand-url {
+      font-size: 12px;
+      color: #00e5ff;
+      margin-top: 6px;
+      font-family: var(--kn-font-mono);
+    }
+
+    .kn-receipt-meta-right {
+      text-align: right;
+    }
+
+    .kn-receipt-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #00e5ff;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .kn-receipt-num {
+      font-family: var(--kn-font-mono);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-top: 6px;
+    }
+
+    .kn-receipt-date {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    /* Body Details Grid */
+    .kn-receipt-body {
+      padding: 36px 40px;
+    }
+
+    .kn-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 640px) {
+      .kn-info-grid {
+        grid-template-columns: 1fr;
+      }
+      .kn-receipt-header {
+        padding: 24px;
+      }
+      .kn-receipt-body {
+        padding: 24px;
+      }
+      .kn-receipt-meta-right {
+        text-align: left;
+      }
+    }
+
+    .kn-info-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .kn-info-heading {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #64748b;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 6px;
+    }
+
+    .kn-info-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .kn-info-row {
+      font-size: 13px;
+      color: #334155;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .kn-info-label {
+      color: #64748b;
+      font-size: 12.5px;
+    }
+
+    .kn-info-val {
+      font-weight: 600;
+      color: #0f172a;
+      text-align: right;
+    }
+
+    .kn-info-val-mono {
+      font-family: var(--kn-font-mono);
+      font-size: 12px;
+      word-break: break-all;
+    }
+
+    .kn-badge-paid {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .kn-badge-sample {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #fef3c7;
+      color: #b45309;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Items Table */
+    .kn-items-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 28px;
+    }
+
+    .kn-items-table th {
+      background: #f1f5f9;
+      color: #334155;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 12px 14px;
+      border-bottom: 2px solid #cbd5e1;
+      text-align: left;
+    }
+
+    .kn-items-table th.tar {
+      text-align: right;
+    }
+
+    .kn-items-table th.tac {
+      text-align: center;
+    }
+
+    .kn-items-table td {
+      padding: 16px 14px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 13.5px;
+      color: #1e293b;
+      vertical-align: top;
+    }
+
+    .kn-items-table td.tar {
+      text-align: right;
+    }
+
+    .kn-items-table td.tac {
+      text-align: center;
+    }
+
+    .kn-item-title {
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 3px;
+    }
+
+    .kn-item-desc {
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    /* Totals Box */
+    .kn-totals-section {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 32px;
+    }
+
+    .kn-totals-box {
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .kn-totals-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 13.5px;
+      color: #475569;
+    }
+
+    .kn-totals-grand {
+      background: #f0fdfa;
+      border: 1px solid #ccfbf1;
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .kn-totals-grand-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .kn-totals-grand-val {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0d9488;
+      font-family: var(--kn-font-mono);
+    }
+
+    /* Terms & Footer */
+    .kn-receipt-terms {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 11.5px;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .kn-receipt-terms-title {
+      font-weight: 700;
+      color: #334155;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .kn-receipt-footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 11.5px;
+      color: #94a3b8;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+      .kn-receipt-nav,
+      .kn-sample-banner {
+        display: none !important;
+      }
+      .kn-receipt-container {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <div class="kn-receipt-nav">
+    <div class="kn-nav-left">
+      <a href="workspace.html#payments" class="kn-back-btn" id="knBackBtn">
+        <span>←</span> <span>Return to Workspace</span>
+      </a>
+      <span style="font-size: 13px; color: var(--kn-text-secondary);" id="knReceiptContextLabel">
+        Enrolment &amp; Payment Record
+      </span>
+    </div>
+    <div class="kn-nav-actions">
+      <button type="button" class="kn-btn kn-btn-secondary" id="knPrintBtn">
+        <span>🖨️</span> <span>Print Receipt</span>
+      </button>
+      <button type="button" class="kn-btn kn-btn-primary" id="knDownloadPdfBtn">
+        <span>📥</span> <span>Download Sample PDF</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Sample Notice Banner (Visible in Preview Mode) -->
+  <div class="kn-sample-banner" id="knSampleBanner">
+    <div class="kn-sample-banner-text">
+      <span class="kn-sample-tag">SAMPLE PREVIEW</span>
+      <span>This is a realistic sample preview using fictional learner data. No real transaction has occurred.</span>
+    </div>
+    <button type="button" class="kn-btn kn-btn-secondary" style="padding: 4px 10px; font-size: 11.5px;" id="knDismissBannerBtn">
+      Acknowledge
+    </button>
+  </div>
+
+  <!-- Main Rendered Receipt Card -->
+  <div class="kn-receipt-container" id="knReceiptCard">
+
+    <!-- Watermark in Sample Mode -->
+    <div class="kn-watermark" id="knWatermark">
+      SAMPLE<br>NOT A VALID RECEIPT
+    </div>
+
+    <!-- Header Banner -->
+    <header class="kn-receipt-header">
+      <div>
+        <div class="kn-brand-title">
+          <img src="knockoutnotes_icon.png" alt="KnockoutNotes Logo">
+          <span>KnockoutNotes</span>
+        </div>
+        <div class="kn-brand-subtitle">Medical Education &amp; Anaesthesia Academy</div>
+        <div class="kn-brand-url" id="knBrandUrl">https://knockoutnotes.com</div>
+      </div>
+      <div class="kn-receipt-meta-right">
+        <div class="kn-receipt-title" id="knReceiptTitle">PAYMENT RECEIPT</div>
+        <div class="kn-receipt-num" id="knReceiptNum">KN-SAMPLE-2026-000123</div>
+        <div class="kn-receipt-date" id="knIssueDate">Issued: October 9, 2026</div>
+        <div class="kn-receipt-date" id="knPaymentDate">Paid: October 9, 2026, 15:30 IST</div>
+      </div>
+    </header>
+
+    <!-- Body Information Details -->
+    <div class="kn-receipt-body">
+      
+      <!-- 2-Column Metadata Grid -->
+      <div class="kn-info-grid">
+        
+        <!-- Billed To -->
+        <div class="kn-info-card">
+          <div class="kn-info-heading">Billed To / Student Details</div>
+          <div class="kn-info-name" id="knCustomerName">Sample Learner</div>
+          <div class="kn-info-row">
+            <span class="kn-info-label">Email:</span>
+            <span class="kn-info-val" id="knCustomerEmail">learner@sample.knockoutnotes.com</span>
+          </div>
+          <div class="kn-info-row">
+            <span class="kn-info-label">Enrolment Track:</span>
+            <span class="kn-info-val">Anaesthesia &amp; Critical Care</span>
+          </div>
+          <div class="kn-info-row">
+            <span class="kn-info-label">Country of Supply:</span>
+            <span class="kn-info-val">India</span>
+          </div>
+        </div>
+
+        <!-- Payment & Order Metadata -->
+        <div class="kn-info-card">
+          <div class="kn-info-heading">Transaction &amp; Gateway Details</div>
+          <div class="kn-info-row">
+            <span class="kn-info-label">Order Reference:</span>
+            <span class="kn-info-val kn-info-val-mono" id="knOrderId">KN_ORD_SMPL_VENT_2026</span>
+          </div>
+          <div class="kn-info-row">
+            <span class="kn-info-label">Transaction Ref:</span>
+            <span class="kn-info-val kn-info-val-mono" id="knTxnRef">TEST_TXN_8F31A2</span>
+          </div>
+          <div class="kn-info-row">
+            <span class="kn-info-label">Payment Method:</span>
+            <span class="kn-info-val" id="knPayMethod">UPI / Net Banking / Card</span>
+          </div>
+          <div class="kn-info-row" style="margin-top: 8px;">
+            <span class="kn-info-label">Payment Status:</span>
+            <span id="knStatusBadge" class="kn-badge-sample">SAMPLE — NOT A REAL PAYMENT</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Itemized Table -->
+      <table class="kn-items-table">
+        <thead>
+          <tr>
+            <th style="width: 35px;">#</th>
+            <th>Description &amp; Educational Module</th>
+            <th class="tac" style="width: 60px;">Qty</th>
+            <th class="tar" style="width: 100px;">Tax Rate</th>
+            <th class="tar" style="width: 120px;">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>
+              <div class="kn-item-title" id="knProductTitle">Critical Care — Mechanical Ventilation</div>
+              <div class="kn-item-desc">
+                Interactive Clinical Monograph, Pressure/Flow Waveform Asynchrony Analysis, Mode Protocols &amp; Lifetime Workspace Notes Entitlement
+              </div>
+            </td>
+            <td class="tac">1</td>
+            <td class="tar">0% (Exempt)</td>
+            <td class="tar" style="font-weight: 700;" id="knItemAmount">Rs. 499.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Totals Summary -->
+      <div class="kn-totals-section">
+        <div class="kn-totals-box">
+          <div class="kn-totals-row">
+            <span>Subtotal:</span>
+            <span id="knSubtotal">Rs. 499.00</span>
+          </div>
+          <div class="kn-totals-row">
+            <span>Tax (Educational Exemption):</span>
+            <span>Rs. 0.00</span>
+          </div>
+          <div class="kn-totals-grand">
+            <span class="kn-totals-grand-label">Total Amount Paid:</span>
+            <span class="kn-totals-grand-val" id="knGrandTotal">Rs. 499.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Terms & Notes -->
+      <div class="kn-receipt-terms">
+        <div class="kn-receipt-terms-title">Terms of Supply &amp; Digital Access</div>
+        <p>• This receipt certifies the electronic enrolment and educational monograph unlock for postgraduate medical and anaesthesia study.</p>
+        <p>• Educational digital supply for academic preparation. Access is perpetual and bound to the authenticated student email address.</p>
+        <p>• For support, academic queries, or institutional licensing, contact: <strong>knockoutnotes.anaesthesia@gmail.com</strong></p>
+      </div>
+
+      <!-- Footer -->
+      <footer class="kn-receipt-footer">
+        <div>
+          <strong>KnockoutNotes Academic Publishing</strong> &bull; Verified Learning System
+        </div>
+        <div>
+          Computer-generated receipt &bull; Secure Electronic Delivery
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- Vendor Scripts for PDF generation -->
+  <script src="vendor/jspdf/jspdf.umd.min.js"></script>
+  <script src="vendor/jspdf/jspdf.plugin.autotable.min.js"></script>
+  <script src="invoice-generator.js"></script>
+
+  <!-- Receipt Logic Script -->
+  <script>
+    (function () {
+      "use strict";
+
+      // 1. Sample Data Configuration (As requested)
+      const SAMPLE_RECEIPT = {
+        is_sample: true,
+        invoice_number: "KN-SAMPLE-2026-000123",
+        issue_date: "2026-10-09T10:00:00.000Z",
+        payment_date: "2026-10-09T10:00:00.000Z",
+        order_id: "KN_ORD_SMPL_VENT_2026",
+        cf_payment_id: "TEST_TXN_8F31A2",
+        payment_method: "UPI / Net Banking / Card",
+        payment_status: "SAMPLE — NOT A REAL PAYMENT",
+        user_name: "Sample Learner",
+        user_email: "learner@sample.knockoutnotes.com",
+        item_title: "Critical Care — Mechanical Ventilation",
+        amount_inr: 499.00,
+        currency: "INR"
+      };
+
+      let activeReceipt = SAMPLE_RECEIPT;
+
+      // 2. Parse Query Params
+      const params = new URLSearchParams(window.location.search);
+      const isExplicitSample = params.get("mode") === "preview" || params.get("preview") === "sample" || !params.get("order_id");
+      const orderIdParam = params.get("order_id") || params.get("invoice_id");
+
+      // Set Site Brand URL dynamically to current origin
+      const brandUrlEl = document.getElementById("knBrandUrl");
+      if (brandUrlEl) {
+        brandUrlEl.textContent = window.location.origin;
+      }
+
+      async function initReceipt() {
+        if (!isExplicitSample && orderIdParam) {
+          // Attempt to load authoritative server-side invoice
+          try {
+            const res = await fetch(`/api/user/invoices/${encodeURIComponent(orderIdParam)}`, { credentials: "include" });
+            if (res.ok) {
+              const data = await res.json();
+              if (data && data.invoice) {
+                activeReceipt = {
+                  ...data.invoice,
+                  is_sample: false
+                };
+                renderReceipt(activeReceipt);
+                return;
+              }
+            }
+          } catch (err) {
+            console.warn("[Receipt] Server invoice load failed, rendering sample fallback:", err);
+          }
+        }
+
+        // Render Sample Receipt Preview
+        activeReceipt = SAMPLE_RECEIPT;
+        renderReceipt(activeReceipt);
+      }
+
+      function renderReceipt(data) {
+        const isSample = Boolean(data.is_sample);
+
+        // UI Watermark & Banner visibility
+        const banner = document.getElementById("knSampleBanner");
+        const watermark = document.getElementById("knWatermark");
+        const downloadBtn = document.getElementById("knDownloadPdfBtn");
+        const statusBadge = document.getElementById("knStatusBadge");
+
+        if (banner) banner.style.display = isSample ? "flex" : "none";
+        if (watermark) watermark.style.display = isSample ? "block" : "none";
+
+        if (downloadBtn) {
+          downloadBtn.innerHTML = isSample 
+            ? "<span>📥</span> <span>Download Sample PDF</span>" 
+            : "<span>📥</span> <span>Download Official PDF</span>";
+        }
+
+        // Set Fields
+        document.getElementById("knReceiptNum").textContent = data.invoice_number || "KN-INV-RECORD";
+        
+        const fmtDate = (dStr) => {
+          if (!dStr) return "N/A";
+          try {
+            return new Date(dStr).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' });
+          } catch (_) { return dStr; }
+        };
+
+        const fmtDateTime = (dStr) => {
+          if (!dStr) return "N/A";
+          try {
+            return new Date(dStr).toLocaleString('en-IN', { 
+              year: 'numeric', month: 'long', day: 'numeric', 
+              hour: '2-digit', minute: '2-digit', timeZoneName: 'short' 
+            });
+          } catch (_) { return dStr; }
+        };
+
+        document.getElementById("knIssueDate").textContent = `Issued: ${fmtDate(data.issue_date || data.invoice_date || data.created_at)}`;
+        document.getElementById("knPaymentDate").textContent = `Paid: ${fmtDateTime(data.payment_date || data.verified_at || data.invoice_date || data.created_at)}`;
+
+        document.getElementById("knCustomerName").textContent = data.user_name || "Verified Student";
+        document.getElementById("knCustomerEmail").textContent = data.user_email || "student@knockoutnotes.com";
+
+        document.getElementById("knOrderId").textContent = data.order_id || "N/A";
+        document.getElementById("knTxnRef").textContent = data.cf_payment_id || data.payment_id || "N/A";
+        document.getElementById("knPayMethod").textContent = data.payment_method || "UPI / Card / Net Banking";
+
+        // Status badge
+        if (isSample) {
+          statusBadge.className = "kn-badge-sample";
+          statusBadge.textContent = "SAMPLE — NOT A REAL PAYMENT";
+        } else {
+          statusBadge.className = "kn-badge-paid";
+          statusBadge.textContent = "PAID // SYSTEM VERIFIED";
+        }
+
+        // Product & Amounts
+        const title = data.item_title || data.chapter_title || "Critical Care — Mechanical Ventilation";
+        const amt = Number(data.amount_inr || data.amount || 0).toFixed(2);
+
+        document.getElementById("knProductTitle").textContent = title;
+        document.getElementById("knItemAmount").textContent = `Rs. ${amt}`;
+        document.getElementById("knSubtotal").textContent = `Rs. ${amt}`;
+        document.getElementById("knGrandTotal").textContent = `Rs. ${amt}`;
+
+        document.title = `${isSample ? 'Sample Receipt Preview' : 'Official Receipt'} (${data.invoice_number}) | KnockoutNotes`;
+      }
+
+      // Action Listeners
+      document.getElementById("knPrintBtn")?.addEventListener("click", () => {
+        window.print();
+      });
+
+      document.getElementById("knDownloadPdfBtn")?.addEventListener("click", async () => {
+        if (window.KN_INVOICES && typeof window.KN_INVOICES.downloadInvoice === "function") {
+          await window.KN_INVOICES.downloadInvoice(activeReceipt);
+        } else {
+          alert("PDF generator is initializing, please wait a moment.");
+        }
+      });
+
+      document.getElementById("knDismissBannerBtn")?.addEventListener("click", () => {
+        const b = document.getElementById("knSampleBanner");
+        if (b) b.style.display = "none";
+      });
+
+      initReceipt();
+    })();
+  </script>
+</body>
+</html>

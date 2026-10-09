@@ -72,6 +72,7 @@ const HTML_PAGES = [
   'pricing.html',
   'contact.html',
   'workspace.html',
+  'receipt.html',
   'terms-and-conditions.html',
   'privacy-policy.html',
   'refund-policy.html',

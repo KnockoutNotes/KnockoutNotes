@@ -1,7 +1,7 @@
 /**
- * KnockoutNotes — Downloadable Payment Invoice PDF Generator (invoice-generator.js)
- * Generates branded, verifiable, educational payment receipts and tax invoices
- * for user chapter purchases and subscriptions using client-side jsPDF.
+ * KnockoutNotes — Downloadable Payment Receipt & Invoice PDF Generator (invoice-generator.js)
+ * Generates branded, verifiable, educational payment receipts and enrolment records
+ * for user chapter purchases, sample previews, and subscriptions using client-side jsPDF.
  */
 
 (function () {
@@ -36,8 +36,8 @@
   }
 
   /**
-   * Generate and trigger download of branded PDF invoice
-   * @param {Object} inv - Invoice record details
+   * Generate and trigger download of branded PDF receipt
+   * @param {Object} inv - Receipt / Invoice record details
    */
   async function generateInvoicePdf(inv) {
     const jsPDF = await ensureJsPdf();
@@ -57,27 +57,42 @@
     const margin = 40;
     const contentWidth = pageWidth - (margin * 2);
 
-    const invNum = inv.invoice_number || `INV-KN-${new Date().getFullYear()}-${String(inv.id || 1).padStart(5, '0')}`;
-    const invDate = inv.invoice_date ? new Date(inv.invoice_date).toLocaleDateString('en-IN', {
-      year: 'numeric', month: 'long', day: 'numeric'
-    }) : new Date().toLocaleDateString('en-IN', {
-      year: 'numeric', month: 'long', day: 'numeric'
-    });
-    const studentName = inv.user_name || (inv.user_email ? inv.user_email.split('@')[0] : "Verified Student");
-    const studentEmail = inv.user_email || "student@knockoutnotes.com";
-    const amount = Number(inv.amount_inr || inv.amount || 0).toFixed(2);
-    const itemTitle = inv.item_title || inv.chapter_title || "Anaesthesia & Critical Care Study Monograph";
-    const orderId = inv.order_id || "N/A";
-    const paymentId = inv.cf_payment_id || inv.payment_id || "CF-DIRECT-LIVE";
-    const paymentMethod = (inv.payment_method || "UPI / Net Banking / Card").toUpperCase();
+    const isSample = Boolean(inv.is_sample || inv.isSample || (inv.payment_status && inv.payment_status.includes("SAMPLE")));
+    const invNum = inv.invoice_number || (isSample ? "KN-SAMPLE-2026-000123" : `INV-KN-${new Date().getFullYear()}-${String(inv.id || 1).padStart(5, '0')}`);
+    
+    const fmtDate = (dStr) => {
+      if (!dStr) return new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' });
+      try {
+        return new Date(dStr).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' });
+      } catch (_) { return String(dStr); }
+    };
+
+    const fmtDateTime = (dStr) => {
+      if (!dStr) return new Date().toLocaleString('en-IN', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+      try {
+        return new Date(dStr).toLocaleString('en-IN', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+      } catch (_) { return String(dStr); }
+    };
+
+    const issueDate = fmtDate(inv.issue_date || inv.invoice_date || inv.created_at);
+    const paymentDate = fmtDateTime(inv.payment_date || inv.verified_at || inv.invoice_date || inv.created_at);
+
+    const studentName = inv.user_name || (inv.user_email ? inv.user_email.split('@')[0] : (isSample ? "Sample Learner" : "Verified Student"));
+    const studentEmail = inv.user_email || (isSample ? "learner@sample.knockoutnotes.com" : "student@knockoutnotes.com");
+    const amount = Number(inv.amount_inr || inv.amount || (isSample ? 499.00 : 0)).toFixed(2);
+    const itemTitle = inv.item_title || inv.chapter_title || (isSample ? "Critical Care — Mechanical Ventilation" : "Anaesthesia & Critical Care Study Monograph");
+    const orderId = inv.order_id || (isSample ? "KN_ORD_SMPL_VENT_2026" : "N/A");
+    const paymentId = inv.cf_payment_id || inv.payment_id || (isSample ? "TEST_TXN_8F31A2" : "CF-DIRECT-LIVE");
+    const paymentMethod = (inv.payment_method || (isSample ? "UPI / Net Banking / Card" : "UPI / Card")).toUpperCase();
+    const siteUrl = (typeof window !== 'undefined' && window.location && window.location.origin) ? window.location.origin : "https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev";
 
     // 1. Top Header Banner (Deep Navy #0b1329)
     doc.setFillColor(11, 19, 41);
-    doc.rect(0, 0, pageWidth, 90, "F");
+    doc.rect(0, 0, pageWidth, 92, "F");
 
     // Header Accent Strip (Cyan Neon #00e5ff)
     doc.setFillColor(0, 229, 255);
-    doc.rect(0, 87, pageWidth, 3, "F");
+    doc.rect(0, 89, pageWidth, 3, "F");
 
     // Title / Brand
     doc.setFont("helvetica", "bold");
@@ -86,26 +101,42 @@
     doc.text("KnockoutNotes", margin, 42);
 
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(9.5);
+    doc.setFontSize(9);
     doc.setTextColor(148, 163, 184); // Slate 400
     doc.text("MEDICAL EDUCATION & ANAESTHESIA ACADEMY", margin, 60);
-    doc.text("https://knockoutnotes.com", margin, 73);
-
-    // Right-aligned "TAX INVOICE / RECEIPT"
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(16);
     doc.setTextColor(0, 229, 255);
-    doc.text("TAX INVOICE", pageWidth - margin, 40, { align: "right" });
+    doc.text(siteUrl, margin, 74);
+
+    // Right-aligned Title & Metadata
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(isSample ? 13 : 15);
+    doc.setTextColor(0, 229, 255);
+    doc.text(isSample ? "SAMPLE PAYMENT RECEIPT" : "PAYMENT RECEIPT", pageWidth - margin, 38, { align: "right" });
 
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(9.5);
+    doc.setFontSize(8.5);
     doc.setTextColor(241, 245, 249);
-    doc.text(`Invoice No: ${invNum}`, pageWidth - margin, 58, { align: "right" });
-    doc.text(`Date: ${invDate}`, pageWidth - margin, 73, { align: "right" });
+    doc.text(`Receipt No: ${invNum}`, pageWidth - margin, 53, { align: "right" });
+    doc.setTextColor(148, 163, 184);
+    doc.text(`Issued: ${issueDate}`, pageWidth - margin, 66, { align: "right" });
+    doc.text(`Paid: ${paymentDate}`, pageWidth - margin, 79, { align: "right" });
 
-    // 2. Summary Boxes (Billed To vs Transaction Info)
+    // Watermark if Sample
+    if (isSample) {
+      doc.saveGraphicsState && doc.saveGraphicsState();
+      doc.setTextColor(220, 38, 38);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(38);
+      doc.text("SAMPLE — NOT A VALID RECEIPT", pageWidth / 2, 420, {
+        align: "center",
+        angle: 35
+      });
+      doc.restoreGraphicsState && doc.restoreGraphicsState();
+    }
+
+    // 2. Summary Information Boxes (Billed To vs Transaction Info)
     const boxY = 110;
-    const boxH = 92;
+    const boxH = 96;
     const halfW = (contentWidth - 16) / 2;
 
     // Box 1: Billed To
@@ -114,7 +145,7 @@
     doc.roundedRect(margin, boxY, halfW, boxH, 4, 4, "FD");
 
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(9);
+    doc.setFontSize(8.5);
     doc.setTextColor(100, 116, 139);
     doc.text("BILLED TO / STUDENT DETAILS", margin + 12, boxY + 18);
 
@@ -124,11 +155,11 @@
     doc.text(studentName, margin + 12, boxY + 36);
 
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(9.5);
+    doc.setFontSize(9);
     doc.setTextColor(71, 85, 105);
     doc.text(`Email: ${studentEmail}`, margin + 12, boxY + 52);
     doc.text("Course: Anaesthesia & Critical Care Residency", margin + 12, boxY + 67);
-    doc.text("Country of Supply: India", margin + 12, boxY + 80);
+    doc.text("Country of Supply: India", margin + 12, boxY + 82);
 
     // Box 2: Payment & Order Information
     const box2X = margin + halfW + 16;
@@ -137,56 +168,64 @@
     doc.roundedRect(box2X, boxY, halfW, boxH, 4, 4, "FD");
 
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(9);
+    doc.setFontSize(8.5);
     doc.setTextColor(100, 116, 139);
-    doc.text("PAYMENT & ORDER METADATA", box2X + 12, boxY + 18);
+    doc.text("TRANSACTION & GATEWAY DETAILS", box2X + 12, boxY + 18);
 
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(9);
+    doc.setFontSize(8.5);
     doc.setTextColor(71, 85, 105);
-    doc.text(`Order ID:`, box2X + 12, boxY + 36);
+    doc.text(`Order ID:`, box2X + 12, boxY + 35);
     doc.setFont("helvetica", "bold");
-    doc.text(orderId, box2X + 68, boxY + 36);
+    doc.text(orderId, box2X + 70, boxY + 35);
 
     doc.setFont("helvetica", "normal");
-    doc.text(`Payment ID:`, box2X + 12, boxY + 51);
-    doc.text(paymentId, box2X + 68, boxY + 51);
+    doc.text(`Txn Ref:`, box2X + 12, boxY + 50);
+    doc.text(paymentId, box2X + 70, boxY + 50);
 
-    doc.text(`Payment Mode:`, box2X + 12, boxY + 66);
-    doc.text(paymentMethod, box2X + 80, boxY + 66);
+    doc.text(`Method:`, box2X + 12, boxY + 65);
+    doc.text(paymentMethod, box2X + 70, boxY + 65);
 
     doc.text(`Status:`, box2X + 12, boxY + 81);
     doc.setFont("helvetica", "bold");
-    doc.setTextColor(16, 185, 129); // Emerald Green
-    doc.text("PAID // COMPLETED", box2X + 50, boxY + 81);
+    if (isSample) {
+      doc.setTextColor(180, 83, 9); // Amber
+      doc.text("SAMPLE — NOT A REAL PAYMENT", box2X + 70, boxY + 81);
+    } else {
+      doc.setTextColor(16, 185, 129); // Emerald
+      doc.text("PAID // SYSTEM VERIFIED", box2X + 70, boxY + 81);
+    }
 
     // 3. Line Items Table
     const tableY = boxY + boxH + 24;
     doc.setFillColor(241, 245, 249);
-    doc.rect(margin, tableY, contentWidth, 26, "F");
+    doc.rect(margin, tableY, contentWidth, 24, "F");
 
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(9);
+    doc.setFontSize(8.5);
     doc.setTextColor(51, 65, 85);
-    doc.text("#", margin + 10, tableY + 17);
-    doc.text("DESCRIPTION & EDUCATIONAL MONOGRAPH", margin + 35, tableY + 17);
-    doc.text("QTY", margin + contentWidth - 140, tableY + 17, { align: "center" });
-    doc.text("TAX RATE", margin + contentWidth - 75, tableY + 17, { align: "right" });
-    doc.text("TOTAL (INR)", margin + contentWidth - 10, tableY + 17, { align: "right" });
+    doc.text("#", margin + 10, tableY + 16);
+    doc.text("DESCRIPTION & EDUCATIONAL MODULE", margin + 35, tableY + 16);
+    doc.text("QTY", margin + contentWidth - 140, tableY + 16, { align: "center" });
+    doc.text("TAX RATE", margin + contentWidth - 75, tableY + 16, { align: "right" });
+    doc.text("AMOUNT (INR)", margin + contentWidth - 10, tableY + 16, { align: "right" });
 
-    // Item Row 1
-    const rowY = tableY + 44;
+    // Item Row 1 with text wrapping
+    const rowY = tableY + 40;
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9.5);
     doc.setTextColor(15, 23, 42);
     doc.text("1", margin + 10, rowY);
 
     doc.setFont("helvetica", "bold");
-    doc.text(itemTitle, margin + 35, rowY);
+    const titleLines = doc.splitTextToSize(itemTitle, contentWidth - 210);
+    doc.text(titleLines, margin + 35, rowY);
+
+    const descY = rowY + (titleLines.length * 12);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(8);
     doc.setTextColor(100, 116, 139);
-    doc.text("Lifetime Digital Monograph Download & Study Platform Access", margin + 35, rowY + 13);
+    doc.text("Interactive Clinical Monograph, Pressure/Flow Waveforms & Lifetime Study Notes Access", margin + 35, descY);
 
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9.5);
@@ -196,53 +235,58 @@
     doc.text(`Rs. ${amount}`, margin + contentWidth - 10, rowY, { align: "right" });
 
     // Divider Line
+    const dividerY = Math.max(descY + 18, rowY + 32);
     doc.setDrawColor(226, 232, 240);
-    doc.line(margin, rowY + 28, margin + contentWidth, rowY + 28);
+    doc.line(margin, dividerY, margin + contentWidth, dividerY);
 
     // 4. Totals Calculation Box
-    const totalY = rowY + 45;
+    const totalY = dividerY + 28;
     const totalsLeft = margin + contentWidth - 220;
 
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(9.5);
+    doc.setFontSize(9);
     doc.setTextColor(71, 85, 105);
     doc.text("Subtotal:", totalsLeft, totalY);
     doc.text(`Rs. ${amount}`, margin + contentWidth - 10, totalY, { align: "right" });
 
-    doc.text("Goods & Services Tax (GST):", totalsLeft, totalY + 16);
+    doc.text("Tax (Educational Exemption):", totalsLeft, totalY + 16);
     doc.text("Rs. 0.00", margin + contentWidth - 10, totalY + 16, { align: "right" });
 
     doc.setFillColor(240, 253, 250); // Light emerald
     doc.setDrawColor(204, 251, 241);
-    doc.roundedRect(totalsLeft - 10, totalY + 28, 230, 32, 3, 3, "FD");
+    doc.roundedRect(totalsLeft - 10, totalY + 26, 230, 32, 3, 3, "FD");
 
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(12);
+    doc.setFontSize(11);
     doc.setTextColor(15, 23, 42);
-    doc.text("Total Paid:", totalsLeft, totalY + 49);
+    doc.text("Total Paid:", totalsLeft, totalY + 47);
     doc.setTextColor(13, 148, 136); // Teal 600
-    doc.text(`Rs. ${amount}`, margin + contentWidth - 10, totalY + 49, { align: "right" });
+    doc.text(`Rs. ${amount}`, margin + contentWidth - 10, totalY + 47, { align: "right" });
 
-    // 5. Notes & Legal Terms
-    const notesY = totalY + 90;
+    // 5. Notes & Terms Box
+    const notesY = totalY + 84;
     doc.setFillColor(248, 250, 252);
     doc.setDrawColor(226, 232, 240);
     doc.roundedRect(margin, notesY, contentWidth, 75, 4, 4, "FD");
 
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(8.5);
+    doc.setFontSize(8);
     doc.setTextColor(51, 65, 85);
     doc.text("TERMS OF SUPPLY & EDUCATIONAL ACCESS", margin + 12, notesY + 16);
 
     doc.setFont("helvetica", "normal");
     doc.setFontSize(7.5);
     doc.setTextColor(100, 116, 139);
-    doc.text("• This document constitutes an official electronic receipt and tax invoice for peer-reviewed medical study materials.", margin + 12, notesY + 29);
-    doc.text("• Educational supplies under digital delivery for medical residency and exam preparations.", margin + 12, notesY + 41);
-    doc.text("• Entitlement is perpetual and tied to your verified registered email address and workspace.", margin + 12, notesY + 53);
-    doc.text("• For queries, disputes, or institutional licensing, contact: knockoutnotes.anaesthesia@gmail.com", margin + 12, notesY + 65);
+    doc.text("• This receipt certifies the electronic enrolment and educational monograph unlock for medical residency study.", margin + 12, notesY + 29);
+    doc.text("• Educational supplies under digital delivery. Access is perpetual and bound to your verified registered email address.", margin + 12, notesY + 41);
+    doc.text("• For academic support, inquiries, or institutional access: knockoutnotes.anaesthesia@gmail.com", margin + 12, notesY + 53);
+    if (isSample) {
+      doc.setTextColor(220, 38, 38);
+      doc.setFont("helvetica", "bold");
+      doc.text("• NOTICE: This is a fictional sample receipt for preview purposes only. No actual payment has been collected.", margin + 12, notesY + 66);
+    }
 
-    // 6. Footer & Digital Signature Badge
+    // 6. Footer & Digital Notice
     const footerY = pageHeight - 55;
     doc.setDrawColor(226, 232, 240);
     doc.line(margin, footerY, margin + contentWidth, footerY);
@@ -255,16 +299,17 @@
     doc.setFont("helvetica", "normal");
     doc.setFontSize(7.5);
     doc.setTextColor(148, 163, 184);
-    doc.text("Generated securely via Cashfree Production Gateway // System Verified", margin, footerY + 28);
+    doc.text("Verified Learning System // Secure Electronic Delivery", margin, footerY + 28);
 
     doc.setFont("helvetica", "italic");
     doc.setFontSize(7.5);
     doc.setTextColor(100, 116, 139);
-    doc.text("Computer-generated invoice. No physical signature required.", pageWidth - margin, footerY + 16, { align: "right" });
+    doc.text("Computer-generated receipt. No physical signature required.", pageWidth - margin, footerY + 16, { align: "right" });
 
     // Trigger download
-    const cleanFileName = `Invoice_${invNum}.pdf`.replace(/[^a-zA-Z0-9_\-\.]/g, '_');
+    const cleanFileName = `${isSample ? 'Sample_' : ''}Receipt_${invNum}.pdf`.replace(/[^a-zA-Z0-9_\-\.]/g, '_');
     doc.save(cleanFileName);
+    return { success: true, fileName: cleanFileName };
   }
 
   window.KN_INVOICES = {
