@@ -6117,5 +6117,99 @@
         "url": "https://youtu.be/t_ZCgUu2ag8"
       }
     ]
+  },
+  {
+    "id": "NEETSS-CC-2024-Q004",
+    "chapterId": 15,
+    "topicId": "cc-icu-management-of-traumatic-brain-injury",
+    "question": "A severe TBI patient (GCS 6) with ICP monitoring shows ICP waves characterized by rapid spikes to 60 mmHg lasting 15 minutes, then returning to baseline. What are these waves?",
+    "options": [
+      "Lundberg A waves (P plateau waves)",
+      "Lundberg B waves",
+      "Lundberg C waves",
+      "Traube-Hering-Mayer waves"
+    ],
+    "answer": "A",
+    "explanation": "Lundberg A (plateau) waves are steep ICP spikes (50-100 mmHg) lasting 5-20 minutes, indicating loss of intracranial compliance and tissue ischemia.",
+    "whyWrong": {
+      "A": "Pathognomonic for severe intracranial hypertension and imminent herniation risk.",
+      "B": "Rhythmic oscillations (0.5 to 2 per min) related to vascular tone fluctuations.",
+      "C": "Rhythmic waves correlated with systemic arterial pressure fluctuations (4-8 per min).",
+      "D": "Systemic arterial pressure waves, not ICP plateau waves."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2024-recall",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Lundberg A waves = Plateau waves (ICP > 50 mmHg for 5-20 mins); indicates dangerous loss of intracranial compliance.",
+    "hyperlinkedReference": {
+      "label": "NEET-SS 2024 Critical Care Recall Faculty Verification Panel",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2024",
+      "Recall 2024",
+      "NEET-SS",
+      "Neurocritical Care",
+      "NeuroICU Advanced Management"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "High (100% agreement)",
+    "question_status": "verified_recall",
+    "speaker_answer": "A",
+    "verified_answer": "A",
+    "high_yield_takeaway": [
+      "Lundberg A waves = Plateau waves (ICP > 50 mmHg for 5-20 mins); indicates dangerous loss of intracranial compliance."
+    ],
+    "sources": [
+      "NEET-SS 2024 Critical Care Recall Faculty Verification Panel"
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2024-Q005",
+    "chapterId": 13,
+    "topicId": "cc-interpreting-abg",
+    "question": "A patient with severe diarrhea presents with pH 7.22, PaCO2 25 mmHg, HCO3- 10 mEq/L, Na+ 138, Cl- 114, K+ 3.2. What is the acid-base disorder?",
+    "options": [
+      "Normal Anion Gap Metabolic Acidosis (NAGMA) with appropriate respiratory compensation",
+      "High Anion Gap Metabolic Acidosis (HAGMA)",
+      "Mixed NAGMA and Metabolic Alkalosis",
+      "Primary Respiratory Alkalosis"
+    ],
+    "answer": "A",
+    "explanation": "AG = 14 (Normal). Winter's formula: expected PaCO2 = (1.5 x 10) + 8 ± 2 = 23 ± 2. Actual PaCO2 is 25, fitting pure compensated NAGMA from GI bicarbonate loss.",
+    "whyWrong": {
+      "A": "AG = 138 - (114 + 10) = 14 (normal range 8-12 ± 4); Winter's formula target PaCO2 = 1.5(10)+8 ± 2 = 23 ± 2 mmHg.",
+      "B": "Anion gap is normal.",
+      "C": "Winter's formula confirms pure respiratory compensation.",
+      "D": "Primary disorder is metabolic (pH 7.22, low HCO3-)."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2024-recall",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Diarrhea causes NAGMA (hyperchloremic). Winter's formula validates expected respiratory compensation PaCO2 = 1.5[HCO3-] + 8 ± 2.",
+    "hyperlinkedReference": {
+      "label": "NEET-SS 2024 Critical Care Recall Faculty Verification Panel",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2024",
+      "Recall 2024",
+      "NEET-SS",
+      "Acid-Base Disorders",
+      "Acid-Base Advanced Management"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "Verified (Faculty Consensus)",
+    "question_status": "verified_recall",
+    "speaker_answer": "A",
+    "verified_answer": "A",
+    "high_yield_takeaway": [
+      "Diarrhea causes NAGMA (hyperchloremic). Winter's formula validates expected respiratory compensation PaCO2 = 1.5[HCO3-] + 8 ± 2."
+    ],
+    "sources": [
+      "NEET-SS 2024 Critical Care Recall Faculty Verification Panel"
+    ]
   }
 ]

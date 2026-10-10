@@ -6371,5 +6371,146 @@
         "url": "https://youtu.be/t_ZCgUu2ag8"
       }
     ]
+  },
+  {
+    "id": "NEETSS-CC-2024-Q001",
+    "chapterId": 8,
+    "topicId": "cc-ventilator-graphics-and-basic-modes-of-mechanical-ventilation",
+    "question": "A 45-year-old intubated ARDS patient on VCV (Vt 6 mL/kg, PEEP 10 cmH2O) develops sudden peak airway pressure increase from 28 to 42 cmH2O. Plateau pressure remains unchanged at 24 cmH2O. What is the primary etiology?",
+    "options": [
+      "Increased airway resistance (e.g., secretions, bronchospasm, endotracheal tube biting)",
+      "Decreased pulmonary compliance (e.g., pneumothorax, atelectasis)",
+      "Development of auto-PEEP",
+      "Abdominal compartment syndrome"
+    ],
+    "answer": "A",
+    "explanation": "Ppeak measures total pressure (resistive + elastic). Pplat measures elastic pressure of lungs and chest wall. An isolated rise in Ppeak with stable Pplat indicates an airway resistance problem.",
+    "whyWrong": {
+      "A": "Peak pressure increases while plateau remains constant, indicating increased resistive pressure (Ppeak - Pplat).",
+      "B": "Decreased compliance increases both Ppeak and Pplat equally.",
+      "C": "Auto-PEEP elevates baseline end-expiratory pressure and Pplat.",
+      "D": "Increased intra-abdominal pressure decreases thoracoabdominal compliance, raising Pplat."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2024-recall",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Peak - Plateau pressure gap > 4 cmH2O isolates airway resistance issues from parenchymal/compliance changes.",
+    "hyperlinkedReference": {
+      "label": "NEET-SS 2024 Critical Care Recall Faculty Verification Panel",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2024",
+      "Recall 2024",
+      "NEET-SS",
+      "Mechanical Ventilation",
+      "Ventilation Advanced Management"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "High (100% agreement)",
+    "question_status": "verified_recall",
+    "speaker_answer": "A",
+    "verified_answer": "A",
+    "high_yield_takeaway": [
+      "Peak - Plateau pressure gap > 4 cmH2O isolates airway resistance issues from parenchymal/compliance changes."
+    ],
+    "sources": [
+      "NEET-SS 2024 Critical Care Recall Faculty Verification Panel"
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2024-Q002",
+    "chapterId": 3,
+    "topicId": "cc-pa-catheter",
+    "question": "In a patient with septic shock undergoing pulmonary artery catheterization, which parameters are expected in hyperdynamic phase?",
+    "options": [
+      "Low Cardiac Index, High SVRI, High ScvO2",
+      "High Cardiac Index, Low SVRI, High ScvO2",
+      "High Cardiac Index, High SVRI, Low ScvO2",
+      "Low Cardiac Index, Low SVRI, Low ScvO2"
+    ],
+    "answer": "B",
+    "explanation": "Septic shock is hyperdynamic with high CI, reduced systemic vascular resistance index (SVRI), and elevated central venous oxygen saturation (ScvO2) due to microvascular shunting.",
+    "whyWrong": {
+      "A": "Incorrect profile, indicative of cardiogenic shock.",
+      "B": "Classic vasodilatory/septic shock profile due to impaired systemic oxygen extraction and reduced SVR.",
+      "C": "Incompatible with vasodilatory shock mechanisms.",
+      "D": "Seen in late hypovolemic/septic collapse."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2024-recall",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Septic shock presents with High CI + Low SVR + Normal/High ScvO2 due to peripheral vasodilation and tissue dysoxia.",
+    "hyperlinkedReference": {
+      "label": "NEET-SS 2024 Critical Care Recall Faculty Verification Panel",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2024",
+      "Recall 2024",
+      "NEET-SS",
+      "Hemodynamics",
+      "Hemodynamics Advanced Management"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "Verified (Faculty Consensus)",
+    "question_status": "verified_recall",
+    "speaker_answer": "B",
+    "verified_answer": "B",
+    "high_yield_takeaway": [
+      "Septic shock presents with High CI + Low SVR + Normal/High ScvO2 due to peripheral vasodilation and tissue dysoxia."
+    ],
+    "sources": [
+      "NEET-SS 2024 Critical Care Recall Faculty Verification Panel"
+    ]
+  },
+  {
+    "id": "NEETSS-CC-2024-Q003",
+    "chapterId": 5,
+    "topicId": "cc-sepsis-2026-clinical-guidelines",
+    "question": "According to Sepsis-3 definitions and Surviving Sepsis Campaign guidelines, what is the initial recommended fluid bolus volume and vasopressor of choice?",
+    "options": [
+      "30 mL/kg balanced crystalloid within 3 hrs; Norepinephrine target MAP ≥ 65 mmHg",
+      "20 mL/kg 0.9% Normal Saline; Dopamine target MAP ≥ 70 mmHg",
+      "50 mL/kg Albumin 5%; Epinephrine target MAP ≥ 65 mmHg",
+      "30 mL/kg Hydroxyethyl starch; Vasopressin monotherapy"
+    ],
+    "answer": "A",
+    "explanation": "Sepsis-3 bundle mandates minimum 30 mL/kg crystalloids (balanced preferred) for sepsis-induced hypoperfusion and Norepinephrine as first-choice vasopressor.",
+    "whyWrong": {
+      "A": "First-line recommended resuscitation bundle and target vasopressor.",
+      "B": "Dopamine carries higher arrhythmia risk compared to Norepinephrine.",
+      "C": "Albumin is second-line; Epinephrine is added when Norepinephrine is insufficient.",
+      "D": "Starches are contraindicated due to nephrotoxicity."
+    },
+    "difficulty": "moderate",
+    "sourceType": "neet-ss-2024-recall",
+    "exam": "NEET-SS",
+    "year": 2024,
+    "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Norepinephrine is 1st-line vasopressor in Septic Shock; target MAP ≥ 65 mmHg with initial 30 mL/kg crystalloid resuscitation.",
+    "hyperlinkedReference": {
+      "label": "NEET-SS 2024 Critical Care Recall Faculty Verification Panel",
+      "url": "https://youtu.be/uO2GT_tdWj4"
+    },
+    "tags": [
+      "NEET SS CC 2024",
+      "Recall 2024",
+      "NEET-SS",
+      "Sepsis",
+      "Sepsis Advanced Management"
+    ],
+    "verificationStatus": "VERIFIED",
+    "recall_confidence": "Verified (Faculty Consensus)",
+    "question_status": "verified_recall",
+    "speaker_answer": "A",
+    "verified_answer": "A",
+    "high_yield_takeaway": [
+      "Norepinephrine is 1st-line vasopressor in Septic Shock; target MAP ≥ 65 mmHg with initial 30 mL/kg crystalloid resuscitation."
+    ],
+    "sources": [
+      "NEET-SS 2024 Critical Care Recall Faculty Verification Panel"
+    ]
   }
 ]
