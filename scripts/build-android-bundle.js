@@ -164,7 +164,9 @@ const STATIC_ASSETS = [
   'knockoutnotes_icon.png',
   'knockoutnotes_wordmark.png',
   'manifest.json',
-  'manifest-calculators.json'
+  'manifest-calculators.json',
+  'NEET_SS_2024_Critical_Care_Recall_Consolidated.json',
+  'NEET_SS_2025_Critical_Care_Recall_V03.json'
 ];
 STATIC_ASSETS.forEach(copyFile);
 

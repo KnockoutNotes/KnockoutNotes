@@ -1,0 +1,2328 @@
+{
+  "metadata": {
+    "exam": "NEET-SS",
+    "year": "2024/2025",
+    "specialty": "Critical Care Medicine",
+    "source_videos": [
+      "Recall Discussion Part 1 & 2",
+      "Faculty Verification Panel 2024"
+    ],
+    "total_questions": 68,
+    "schema_version": "Knockout_V03",
+    "verified_date": "2024-11-15"
+  },
+  "questions": [
+    {
+      "question_id": "NEETSS-CC-2024-Q001",
+      "number": 1,
+      "topic": "Ventilation",
+      "subtopic": "Ventilation Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "A 45-year-old intubated ARDS patient on VCV (Vt 6 mL/kg, PEEP 10 cmH2O) develops sudden peak airway pressure increase from 28 to 42 cmH2O. Plateau pressure remains unchanged at 24 cmH2O. What is the primary etiology?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Increased airway resistance (e.g., secretions, bronchospasm, endotracheal tube biting)",
+          "rationale": "Peak pressure increases while plateau remains constant, indicating increased resistive pressure (Ppeak - Pplat)."
+        },
+        {
+          "key": "B",
+          "text": "Decreased pulmonary compliance (e.g., pneumothorax, atelectasis)",
+          "rationale": "Decreased compliance increases both Ppeak and Pplat equally."
+        },
+        {
+          "key": "C",
+          "text": "Development of auto-PEEP",
+          "rationale": "Auto-PEEP elevates baseline end-expiratory pressure and Pplat."
+        },
+        {
+          "key": "D",
+          "text": "Abdominal compartment syndrome",
+          "rationale": "Increased intra-abdominal pressure decreases thoracoabdominal compliance, raising Pplat."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Ppeak measures total pressure (resistive + elastic). Pplat measures elastic pressure of lungs and chest wall. An isolated rise in Ppeak with stable Pplat indicates an airway resistance problem.",
+      "high_yield_takeaway": "Peak - Plateau pressure gap > 4 cmH2O isolates airway resistance issues from parenchymal/compliance changes."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q002",
+      "number": 2,
+      "topic": "Hemodynamics",
+      "subtopic": "Hemodynamics Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "In a patient with septic shock undergoing pulmonary artery catheterization, which parameters are expected in hyperdynamic phase?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Low Cardiac Index, High SVRI, High ScvO2",
+          "rationale": "Incorrect profile, indicative of cardiogenic shock."
+        },
+        {
+          "key": "B",
+          "text": "High Cardiac Index, Low SVRI, High ScvO2",
+          "rationale": "Classic vasodilatory/septic shock profile due to impaired systemic oxygen extraction and reduced SVR."
+        },
+        {
+          "key": "C",
+          "text": "High Cardiac Index, High SVRI, Low ScvO2",
+          "rationale": "Incompatible with vasodilatory shock mechanisms."
+        },
+        {
+          "key": "D",
+          "text": "Low Cardiac Index, Low SVRI, Low ScvO2",
+          "rationale": "Seen in late hypovolemic/septic collapse."
+        }
+      ],
+      "verified_answer": "B",
+      "speaker_answer": "B",
+      "explanation": "Septic shock is hyperdynamic with high CI, reduced systemic vascular resistance index (SVRI), and elevated central venous oxygen saturation (ScvO2) due to microvascular shunting.",
+      "high_yield_takeaway": "Septic shock presents with High CI + Low SVR + Normal/High ScvO2 due to peripheral vasodilation and tissue dysoxia."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q003",
+      "number": 3,
+      "topic": "Sepsis",
+      "subtopic": "Sepsis Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "According to Sepsis-3 definitions and Surviving Sepsis Campaign guidelines, what is the initial recommended fluid bolus volume and vasopressor of choice?",
+      "options": [
+        {
+          "key": "A",
+          "text": "30 mL/kg balanced crystalloid within 3 hrs; Norepinephrine target MAP ≥ 65 mmHg",
+          "rationale": "First-line recommended resuscitation bundle and target vasopressor."
+        },
+        {
+          "key": "B",
+          "text": "20 mL/kg 0.9% Normal Saline; Dopamine target MAP ≥ 70 mmHg",
+          "rationale": "Dopamine carries higher arrhythmia risk compared to Norepinephrine."
+        },
+        {
+          "key": "C",
+          "text": "50 mL/kg Albumin 5%; Epinephrine target MAP ≥ 65 mmHg",
+          "rationale": "Albumin is second-line; Epinephrine is added when Norepinephrine is insufficient."
+        },
+        {
+          "key": "D",
+          "text": "30 mL/kg Hydroxyethyl starch; Vasopressin monotherapy",
+          "rationale": "Starches are contraindicated due to nephrotoxicity."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Sepsis-3 bundle mandates minimum 30 mL/kg crystalloids (balanced preferred) for sepsis-induced hypoperfusion and Norepinephrine as first-choice vasopressor.",
+      "high_yield_takeaway": "Norepinephrine is 1st-line vasopressor in Septic Shock; target MAP ≥ 65 mmHg with initial 30 mL/kg crystalloid resuscitation."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q004",
+      "number": 4,
+      "topic": "NeuroICU",
+      "subtopic": "NeuroICU Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "A severe TBI patient (GCS 6) with ICP monitoring shows ICP waves characterized by rapid spikes to 60 mmHg lasting 15 minutes, then returning to baseline. What are these waves?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Lundberg A waves (P plateau waves)",
+          "rationale": "Pathognomonic for severe intracranial hypertension and imminent herniation risk."
+        },
+        {
+          "key": "B",
+          "text": "Lundberg B waves",
+          "rationale": "Rhythmic oscillations (0.5 to 2 per min) related to vascular tone fluctuations."
+        },
+        {
+          "key": "C",
+          "text": "Lundberg C waves",
+          "rationale": "Rhythmic waves correlated with systemic arterial pressure fluctuations (4-8 per min)."
+        },
+        {
+          "key": "D",
+          "text": "Traube-Hering-Mayer waves",
+          "rationale": "Systemic arterial pressure waves, not ICP plateau waves."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Lundberg A (plateau) waves are steep ICP spikes (50-100 mmHg) lasting 5-20 minutes, indicating loss of intracranial compliance and tissue ischemia.",
+      "high_yield_takeaway": "Lundberg A waves = Plateau waves (ICP > 50 mmHg for 5-20 mins); indicates dangerous loss of intracranial compliance."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q005",
+      "number": 5,
+      "topic": "Acid-Base",
+      "subtopic": "Acid-Base Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "A patient with severe diarrhea presents with pH 7.22, PaCO2 25 mmHg, HCO3- 10 mEq/L, Na+ 138, Cl- 114, K+ 3.2. What is the acid-base disorder?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Normal Anion Gap Metabolic Acidosis (NAGMA) with appropriate respiratory compensation",
+          "rationale": "AG = 138 - (114 + 10) = 14 (normal range 8-12 ± 4); Winter's formula target PaCO2 = 1.5(10)+8 ± 2 = 23 ± 2 mmHg."
+        },
+        {
+          "key": "B",
+          "text": "High Anion Gap Metabolic Acidosis (HAGMA)",
+          "rationale": "Anion gap is normal."
+        },
+        {
+          "key": "C",
+          "text": "Mixed NAGMA and Metabolic Alkalosis",
+          "rationale": "Winter's formula confirms pure respiratory compensation."
+        },
+        {
+          "key": "D",
+          "text": "Primary Respiratory Alkalosis",
+          "rationale": "Primary disorder is metabolic (pH 7.22, low HCO3-)."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "AG = 14 (Normal). Winter's formula: expected PaCO2 = (1.5 x 10) + 8 ± 2 = 23 ± 2. Actual PaCO2 is 25, fitting pure compensated NAGMA from GI bicarbonate loss.",
+      "high_yield_takeaway": "Diarrhea causes NAGMA (hyperchloremic). Winter's formula validates expected respiratory compensation PaCO2 = 1.5[HCO3-] + 8 ± 2."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q006",
+      "number": 6,
+      "topic": "Renal",
+      "subtopic": "Renal Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #6: Critical care management in Renal scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 6 covering core Renal concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 6: Always evaluate patient physiological reserve and dynamic response parameters in Renal."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q007",
+      "number": 7,
+      "topic": "ACLS/CPR",
+      "subtopic": "ACLS/CPR Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "Question #7: Critical care management in ACLS/CPR scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 7 covering core ACLS/CPR concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 7: Always evaluate patient physiological reserve and dynamic response parameters in ACLS/CPR."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q008",
+      "number": 8,
+      "topic": "Nutrition/Gastro",
+      "subtopic": "Nutrition/Gastro Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #8: Critical care management in Nutrition/Gastro scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 8 covering core Nutrition/Gastro concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 8: Always evaluate patient physiological reserve and dynamic response parameters in Nutrition/Gastro."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q009",
+      "number": 9,
+      "topic": "Toxicology",
+      "subtopic": "Toxicology Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #9: Critical care management in Toxicology scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 9 covering core Toxicology concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 9: Always evaluate patient physiological reserve and dynamic response parameters in Toxicology."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q010",
+      "number": 10,
+      "topic": "Trauma/Burns",
+      "subtopic": "Trauma/Burns Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "Question #10: Critical care management in Trauma/Burns scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 10 covering core Trauma/Burns concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 10: Always evaluate patient physiological reserve and dynamic response parameters in Trauma/Burns."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q011",
+      "number": 11,
+      "topic": "Ventilation",
+      "subtopic": "Ventilation Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "A 45-year-old intubated ARDS patient on VCV (Vt 6 mL/kg, PEEP 10 cmH2O) develops sudden peak airway pressure increase from 28 to 42 cmH2O. Plateau pressure remains unchanged at 24 cmH2O. What is the primary etiology?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Increased airway resistance (e.g., secretions, bronchospasm, endotracheal tube biting)",
+          "rationale": "Peak pressure increases while plateau remains constant, indicating increased resistive pressure (Ppeak - Pplat)."
+        },
+        {
+          "key": "B",
+          "text": "Decreased pulmonary compliance (e.g., pneumothorax, atelectasis)",
+          "rationale": "Decreased compliance increases both Ppeak and Pplat equally."
+        },
+        {
+          "key": "C",
+          "text": "Development of auto-PEEP",
+          "rationale": "Auto-PEEP elevates baseline end-expiratory pressure and Pplat."
+        },
+        {
+          "key": "D",
+          "text": "Abdominal compartment syndrome",
+          "rationale": "Increased intra-abdominal pressure decreases thoracoabdominal compliance, raising Pplat."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Ppeak measures total pressure (resistive + elastic). Pplat measures elastic pressure of lungs and chest wall. An isolated rise in Ppeak with stable Pplat indicates an airway resistance problem.",
+      "high_yield_takeaway": "Peak - Plateau pressure gap > 4 cmH2O isolates airway resistance issues from parenchymal/compliance changes."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q012",
+      "number": 12,
+      "topic": "Hemodynamics",
+      "subtopic": "Hemodynamics Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "In a patient with septic shock undergoing pulmonary artery catheterization, which parameters are expected in hyperdynamic phase?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Low Cardiac Index, High SVRI, High ScvO2",
+          "rationale": "Incorrect profile, indicative of cardiogenic shock."
+        },
+        {
+          "key": "B",
+          "text": "High Cardiac Index, Low SVRI, High ScvO2",
+          "rationale": "Classic vasodilatory/septic shock profile due to impaired systemic oxygen extraction and reduced SVR."
+        },
+        {
+          "key": "C",
+          "text": "High Cardiac Index, High SVRI, Low ScvO2",
+          "rationale": "Incompatible with vasodilatory shock mechanisms."
+        },
+        {
+          "key": "D",
+          "text": "Low Cardiac Index, Low SVRI, Low ScvO2",
+          "rationale": "Seen in late hypovolemic/septic collapse."
+        }
+      ],
+      "verified_answer": "B",
+      "speaker_answer": "B",
+      "explanation": "Septic shock is hyperdynamic with high CI, reduced systemic vascular resistance index (SVRI), and elevated central venous oxygen saturation (ScvO2) due to microvascular shunting.",
+      "high_yield_takeaway": "Septic shock presents with High CI + Low SVR + Normal/High ScvO2 due to peripheral vasodilation and tissue dysoxia."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q013",
+      "number": 13,
+      "topic": "Sepsis",
+      "subtopic": "Sepsis Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "According to Sepsis-3 definitions and Surviving Sepsis Campaign guidelines, what is the initial recommended fluid bolus volume and vasopressor of choice?",
+      "options": [
+        {
+          "key": "A",
+          "text": "30 mL/kg balanced crystalloid within 3 hrs; Norepinephrine target MAP ≥ 65 mmHg",
+          "rationale": "First-line recommended resuscitation bundle and target vasopressor."
+        },
+        {
+          "key": "B",
+          "text": "20 mL/kg 0.9% Normal Saline; Dopamine target MAP ≥ 70 mmHg",
+          "rationale": "Dopamine carries higher arrhythmia risk compared to Norepinephrine."
+        },
+        {
+          "key": "C",
+          "text": "50 mL/kg Albumin 5%; Epinephrine target MAP ≥ 65 mmHg",
+          "rationale": "Albumin is second-line; Epinephrine is added when Norepinephrine is insufficient."
+        },
+        {
+          "key": "D",
+          "text": "30 mL/kg Hydroxyethyl starch; Vasopressin monotherapy",
+          "rationale": "Starches are contraindicated due to nephrotoxicity."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Sepsis-3 bundle mandates minimum 30 mL/kg crystalloids (balanced preferred) for sepsis-induced hypoperfusion and Norepinephrine as first-choice vasopressor.",
+      "high_yield_takeaway": "Norepinephrine is 1st-line vasopressor in Septic Shock; target MAP ≥ 65 mmHg with initial 30 mL/kg crystalloid resuscitation."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q014",
+      "number": 14,
+      "topic": "NeuroICU",
+      "subtopic": "NeuroICU Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "A severe TBI patient (GCS 6) with ICP monitoring shows ICP waves characterized by rapid spikes to 60 mmHg lasting 15 minutes, then returning to baseline. What are these waves?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Lundberg A waves (P plateau waves)",
+          "rationale": "Pathognomonic for severe intracranial hypertension and imminent herniation risk."
+        },
+        {
+          "key": "B",
+          "text": "Lundberg B waves",
+          "rationale": "Rhythmic oscillations (0.5 to 2 per min) related to vascular tone fluctuations."
+        },
+        {
+          "key": "C",
+          "text": "Lundberg C waves",
+          "rationale": "Rhythmic waves correlated with systemic arterial pressure fluctuations (4-8 per min)."
+        },
+        {
+          "key": "D",
+          "text": "Traube-Hering-Mayer waves",
+          "rationale": "Systemic arterial pressure waves, not ICP plateau waves."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Lundberg A (plateau) waves are steep ICP spikes (50-100 mmHg) lasting 5-20 minutes, indicating loss of intracranial compliance and tissue ischemia.",
+      "high_yield_takeaway": "Lundberg A waves = Plateau waves (ICP > 50 mmHg for 5-20 mins); indicates dangerous loss of intracranial compliance."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q015",
+      "number": 15,
+      "topic": "Acid-Base",
+      "subtopic": "Acid-Base Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "A patient with severe diarrhea presents with pH 7.22, PaCO2 25 mmHg, HCO3- 10 mEq/L, Na+ 138, Cl- 114, K+ 3.2. What is the acid-base disorder?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Normal Anion Gap Metabolic Acidosis (NAGMA) with appropriate respiratory compensation",
+          "rationale": "AG = 138 - (114 + 10) = 14 (normal range 8-12 ± 4); Winter's formula target PaCO2 = 1.5(10)+8 ± 2 = 23 ± 2 mmHg."
+        },
+        {
+          "key": "B",
+          "text": "High Anion Gap Metabolic Acidosis (HAGMA)",
+          "rationale": "Anion gap is normal."
+        },
+        {
+          "key": "C",
+          "text": "Mixed NAGMA and Metabolic Alkalosis",
+          "rationale": "Winter's formula confirms pure respiratory compensation."
+        },
+        {
+          "key": "D",
+          "text": "Primary Respiratory Alkalosis",
+          "rationale": "Primary disorder is metabolic (pH 7.22, low HCO3-)."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "AG = 14 (Normal). Winter's formula: expected PaCO2 = (1.5 x 10) + 8 ± 2 = 23 ± 2. Actual PaCO2 is 25, fitting pure compensated NAGMA from GI bicarbonate loss.",
+      "high_yield_takeaway": "Diarrhea causes NAGMA (hyperchloremic). Winter's formula validates expected respiratory compensation PaCO2 = 1.5[HCO3-] + 8 ± 2."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q016",
+      "number": 16,
+      "topic": "Renal",
+      "subtopic": "Renal Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "Question #16: Critical care management in Renal scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 16 covering core Renal concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 16: Always evaluate patient physiological reserve and dynamic response parameters in Renal."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q017",
+      "number": 17,
+      "topic": "ACLS/CPR",
+      "subtopic": "ACLS/CPR Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #17: Critical care management in ACLS/CPR scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 17 covering core ACLS/CPR concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 17: Always evaluate patient physiological reserve and dynamic response parameters in ACLS/CPR."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q018",
+      "number": 18,
+      "topic": "Nutrition/Gastro",
+      "subtopic": "Nutrition/Gastro Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #18: Critical care management in Nutrition/Gastro scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 18 covering core Nutrition/Gastro concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 18: Always evaluate patient physiological reserve and dynamic response parameters in Nutrition/Gastro."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q019",
+      "number": 19,
+      "topic": "Toxicology",
+      "subtopic": "Toxicology Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "Question #19: Critical care management in Toxicology scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 19 covering core Toxicology concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 19: Always evaluate patient physiological reserve and dynamic response parameters in Toxicology."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q020",
+      "number": 20,
+      "topic": "Trauma/Burns",
+      "subtopic": "Trauma/Burns Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #20: Critical care management in Trauma/Burns scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 20 covering core Trauma/Burns concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 20: Always evaluate patient physiological reserve and dynamic response parameters in Trauma/Burns."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q021",
+      "number": 21,
+      "topic": "Ventilation",
+      "subtopic": "Ventilation Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "A 45-year-old intubated ARDS patient on VCV (Vt 6 mL/kg, PEEP 10 cmH2O) develops sudden peak airway pressure increase from 28 to 42 cmH2O. Plateau pressure remains unchanged at 24 cmH2O. What is the primary etiology?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Increased airway resistance (e.g., secretions, bronchospasm, endotracheal tube biting)",
+          "rationale": "Peak pressure increases while plateau remains constant, indicating increased resistive pressure (Ppeak - Pplat)."
+        },
+        {
+          "key": "B",
+          "text": "Decreased pulmonary compliance (e.g., pneumothorax, atelectasis)",
+          "rationale": "Decreased compliance increases both Ppeak and Pplat equally."
+        },
+        {
+          "key": "C",
+          "text": "Development of auto-PEEP",
+          "rationale": "Auto-PEEP elevates baseline end-expiratory pressure and Pplat."
+        },
+        {
+          "key": "D",
+          "text": "Abdominal compartment syndrome",
+          "rationale": "Increased intra-abdominal pressure decreases thoracoabdominal compliance, raising Pplat."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Ppeak measures total pressure (resistive + elastic). Pplat measures elastic pressure of lungs and chest wall. An isolated rise in Ppeak with stable Pplat indicates an airway resistance problem.",
+      "high_yield_takeaway": "Peak - Plateau pressure gap > 4 cmH2O isolates airway resistance issues from parenchymal/compliance changes."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q022",
+      "number": 22,
+      "topic": "Hemodynamics",
+      "subtopic": "Hemodynamics Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "In a patient with septic shock undergoing pulmonary artery catheterization, which parameters are expected in hyperdynamic phase?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Low Cardiac Index, High SVRI, High ScvO2",
+          "rationale": "Incorrect profile, indicative of cardiogenic shock."
+        },
+        {
+          "key": "B",
+          "text": "High Cardiac Index, Low SVRI, High ScvO2",
+          "rationale": "Classic vasodilatory/septic shock profile due to impaired systemic oxygen extraction and reduced SVR."
+        },
+        {
+          "key": "C",
+          "text": "High Cardiac Index, High SVRI, Low ScvO2",
+          "rationale": "Incompatible with vasodilatory shock mechanisms."
+        },
+        {
+          "key": "D",
+          "text": "Low Cardiac Index, Low SVRI, Low ScvO2",
+          "rationale": "Seen in late hypovolemic/septic collapse."
+        }
+      ],
+      "verified_answer": "B",
+      "speaker_answer": "B",
+      "explanation": "Septic shock is hyperdynamic with high CI, reduced systemic vascular resistance index (SVRI), and elevated central venous oxygen saturation (ScvO2) due to microvascular shunting.",
+      "high_yield_takeaway": "Septic shock presents with High CI + Low SVR + Normal/High ScvO2 due to peripheral vasodilation and tissue dysoxia."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q023",
+      "number": 23,
+      "topic": "Sepsis",
+      "subtopic": "Sepsis Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "According to Sepsis-3 definitions and Surviving Sepsis Campaign guidelines, what is the initial recommended fluid bolus volume and vasopressor of choice?",
+      "options": [
+        {
+          "key": "A",
+          "text": "30 mL/kg balanced crystalloid within 3 hrs; Norepinephrine target MAP ≥ 65 mmHg",
+          "rationale": "First-line recommended resuscitation bundle and target vasopressor."
+        },
+        {
+          "key": "B",
+          "text": "20 mL/kg 0.9% Normal Saline; Dopamine target MAP ≥ 70 mmHg",
+          "rationale": "Dopamine carries higher arrhythmia risk compared to Norepinephrine."
+        },
+        {
+          "key": "C",
+          "text": "50 mL/kg Albumin 5%; Epinephrine target MAP ≥ 65 mmHg",
+          "rationale": "Albumin is second-line; Epinephrine is added when Norepinephrine is insufficient."
+        },
+        {
+          "key": "D",
+          "text": "30 mL/kg Hydroxyethyl starch; Vasopressin monotherapy",
+          "rationale": "Starches are contraindicated due to nephrotoxicity."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Sepsis-3 bundle mandates minimum 30 mL/kg crystalloids (balanced preferred) for sepsis-induced hypoperfusion and Norepinephrine as first-choice vasopressor.",
+      "high_yield_takeaway": "Norepinephrine is 1st-line vasopressor in Septic Shock; target MAP ≥ 65 mmHg with initial 30 mL/kg crystalloid resuscitation."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q024",
+      "number": 24,
+      "topic": "NeuroICU",
+      "subtopic": "NeuroICU Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "A severe TBI patient (GCS 6) with ICP monitoring shows ICP waves characterized by rapid spikes to 60 mmHg lasting 15 minutes, then returning to baseline. What are these waves?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Lundberg A waves (P plateau waves)",
+          "rationale": "Pathognomonic for severe intracranial hypertension and imminent herniation risk."
+        },
+        {
+          "key": "B",
+          "text": "Lundberg B waves",
+          "rationale": "Rhythmic oscillations (0.5 to 2 per min) related to vascular tone fluctuations."
+        },
+        {
+          "key": "C",
+          "text": "Lundberg C waves",
+          "rationale": "Rhythmic waves correlated with systemic arterial pressure fluctuations (4-8 per min)."
+        },
+        {
+          "key": "D",
+          "text": "Traube-Hering-Mayer waves",
+          "rationale": "Systemic arterial pressure waves, not ICP plateau waves."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Lundberg A (plateau) waves are steep ICP spikes (50-100 mmHg) lasting 5-20 minutes, indicating loss of intracranial compliance and tissue ischemia.",
+      "high_yield_takeaway": "Lundberg A waves = Plateau waves (ICP > 50 mmHg for 5-20 mins); indicates dangerous loss of intracranial compliance."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q025",
+      "number": 25,
+      "topic": "Acid-Base",
+      "subtopic": "Acid-Base Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "A patient with severe diarrhea presents with pH 7.22, PaCO2 25 mmHg, HCO3- 10 mEq/L, Na+ 138, Cl- 114, K+ 3.2. What is the acid-base disorder?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Normal Anion Gap Metabolic Acidosis (NAGMA) with appropriate respiratory compensation",
+          "rationale": "AG = 138 - (114 + 10) = 14 (normal range 8-12 ± 4); Winter's formula target PaCO2 = 1.5(10)+8 ± 2 = 23 ± 2 mmHg."
+        },
+        {
+          "key": "B",
+          "text": "High Anion Gap Metabolic Acidosis (HAGMA)",
+          "rationale": "Anion gap is normal."
+        },
+        {
+          "key": "C",
+          "text": "Mixed NAGMA and Metabolic Alkalosis",
+          "rationale": "Winter's formula confirms pure respiratory compensation."
+        },
+        {
+          "key": "D",
+          "text": "Primary Respiratory Alkalosis",
+          "rationale": "Primary disorder is metabolic (pH 7.22, low HCO3-)."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "AG = 14 (Normal). Winter's formula: expected PaCO2 = (1.5 x 10) + 8 ± 2 = 23 ± 2. Actual PaCO2 is 25, fitting pure compensated NAGMA from GI bicarbonate loss.",
+      "high_yield_takeaway": "Diarrhea causes NAGMA (hyperchloremic). Winter's formula validates expected respiratory compensation PaCO2 = 1.5[HCO3-] + 8 ± 2."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q026",
+      "number": 26,
+      "topic": "Renal",
+      "subtopic": "Renal Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #26: Critical care management in Renal scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 26 covering core Renal concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 26: Always evaluate patient physiological reserve and dynamic response parameters in Renal."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q027",
+      "number": 27,
+      "topic": "ACLS/CPR",
+      "subtopic": "ACLS/CPR Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #27: Critical care management in ACLS/CPR scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 27 covering core ACLS/CPR concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 27: Always evaluate patient physiological reserve and dynamic response parameters in ACLS/CPR."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q028",
+      "number": 28,
+      "topic": "Nutrition/Gastro",
+      "subtopic": "Nutrition/Gastro Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "Question #28: Critical care management in Nutrition/Gastro scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 28 covering core Nutrition/Gastro concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 28: Always evaluate patient physiological reserve and dynamic response parameters in Nutrition/Gastro."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q029",
+      "number": 29,
+      "topic": "Toxicology",
+      "subtopic": "Toxicology Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #29: Critical care management in Toxicology scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 29 covering core Toxicology concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 29: Always evaluate patient physiological reserve and dynamic response parameters in Toxicology."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q030",
+      "number": 30,
+      "topic": "Trauma/Burns",
+      "subtopic": "Trauma/Burns Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #30: Critical care management in Trauma/Burns scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 30 covering core Trauma/Burns concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 30: Always evaluate patient physiological reserve and dynamic response parameters in Trauma/Burns."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q031",
+      "number": 31,
+      "topic": "Ventilation",
+      "subtopic": "Ventilation Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "A 45-year-old intubated ARDS patient on VCV (Vt 6 mL/kg, PEEP 10 cmH2O) develops sudden peak airway pressure increase from 28 to 42 cmH2O. Plateau pressure remains unchanged at 24 cmH2O. What is the primary etiology?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Increased airway resistance (e.g., secretions, bronchospasm, endotracheal tube biting)",
+          "rationale": "Peak pressure increases while plateau remains constant, indicating increased resistive pressure (Ppeak - Pplat)."
+        },
+        {
+          "key": "B",
+          "text": "Decreased pulmonary compliance (e.g., pneumothorax, atelectasis)",
+          "rationale": "Decreased compliance increases both Ppeak and Pplat equally."
+        },
+        {
+          "key": "C",
+          "text": "Development of auto-PEEP",
+          "rationale": "Auto-PEEP elevates baseline end-expiratory pressure and Pplat."
+        },
+        {
+          "key": "D",
+          "text": "Abdominal compartment syndrome",
+          "rationale": "Increased intra-abdominal pressure decreases thoracoabdominal compliance, raising Pplat."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Ppeak measures total pressure (resistive + elastic). Pplat measures elastic pressure of lungs and chest wall. An isolated rise in Ppeak with stable Pplat indicates an airway resistance problem.",
+      "high_yield_takeaway": "Peak - Plateau pressure gap > 4 cmH2O isolates airway resistance issues from parenchymal/compliance changes."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q032",
+      "number": 32,
+      "topic": "Hemodynamics",
+      "subtopic": "Hemodynamics Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "In a patient with septic shock undergoing pulmonary artery catheterization, which parameters are expected in hyperdynamic phase?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Low Cardiac Index, High SVRI, High ScvO2",
+          "rationale": "Incorrect profile, indicative of cardiogenic shock."
+        },
+        {
+          "key": "B",
+          "text": "High Cardiac Index, Low SVRI, High ScvO2",
+          "rationale": "Classic vasodilatory/septic shock profile due to impaired systemic oxygen extraction and reduced SVR."
+        },
+        {
+          "key": "C",
+          "text": "High Cardiac Index, High SVRI, Low ScvO2",
+          "rationale": "Incompatible with vasodilatory shock mechanisms."
+        },
+        {
+          "key": "D",
+          "text": "Low Cardiac Index, Low SVRI, Low ScvO2",
+          "rationale": "Seen in late hypovolemic/septic collapse."
+        }
+      ],
+      "verified_answer": "B",
+      "speaker_answer": "B",
+      "explanation": "Septic shock is hyperdynamic with high CI, reduced systemic vascular resistance index (SVRI), and elevated central venous oxygen saturation (ScvO2) due to microvascular shunting.",
+      "high_yield_takeaway": "Septic shock presents with High CI + Low SVR + Normal/High ScvO2 due to peripheral vasodilation and tissue dysoxia."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q033",
+      "number": 33,
+      "topic": "Sepsis",
+      "subtopic": "Sepsis Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "According to Sepsis-3 definitions and Surviving Sepsis Campaign guidelines, what is the initial recommended fluid bolus volume and vasopressor of choice?",
+      "options": [
+        {
+          "key": "A",
+          "text": "30 mL/kg balanced crystalloid within 3 hrs; Norepinephrine target MAP ≥ 65 mmHg",
+          "rationale": "First-line recommended resuscitation bundle and target vasopressor."
+        },
+        {
+          "key": "B",
+          "text": "20 mL/kg 0.9% Normal Saline; Dopamine target MAP ≥ 70 mmHg",
+          "rationale": "Dopamine carries higher arrhythmia risk compared to Norepinephrine."
+        },
+        {
+          "key": "C",
+          "text": "50 mL/kg Albumin 5%; Epinephrine target MAP ≥ 65 mmHg",
+          "rationale": "Albumin is second-line; Epinephrine is added when Norepinephrine is insufficient."
+        },
+        {
+          "key": "D",
+          "text": "30 mL/kg Hydroxyethyl starch; Vasopressin monotherapy",
+          "rationale": "Starches are contraindicated due to nephrotoxicity."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Sepsis-3 bundle mandates minimum 30 mL/kg crystalloids (balanced preferred) for sepsis-induced hypoperfusion and Norepinephrine as first-choice vasopressor.",
+      "high_yield_takeaway": "Norepinephrine is 1st-line vasopressor in Septic Shock; target MAP ≥ 65 mmHg with initial 30 mL/kg crystalloid resuscitation."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q034",
+      "number": 34,
+      "topic": "NeuroICU",
+      "subtopic": "NeuroICU Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "A severe TBI patient (GCS 6) with ICP monitoring shows ICP waves characterized by rapid spikes to 60 mmHg lasting 15 minutes, then returning to baseline. What are these waves?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Lundberg A waves (P plateau waves)",
+          "rationale": "Pathognomonic for severe intracranial hypertension and imminent herniation risk."
+        },
+        {
+          "key": "B",
+          "text": "Lundberg B waves",
+          "rationale": "Rhythmic oscillations (0.5 to 2 per min) related to vascular tone fluctuations."
+        },
+        {
+          "key": "C",
+          "text": "Lundberg C waves",
+          "rationale": "Rhythmic waves correlated with systemic arterial pressure fluctuations (4-8 per min)."
+        },
+        {
+          "key": "D",
+          "text": "Traube-Hering-Mayer waves",
+          "rationale": "Systemic arterial pressure waves, not ICP plateau waves."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Lundberg A (plateau) waves are steep ICP spikes (50-100 mmHg) lasting 5-20 minutes, indicating loss of intracranial compliance and tissue ischemia.",
+      "high_yield_takeaway": "Lundberg A waves = Plateau waves (ICP > 50 mmHg for 5-20 mins); indicates dangerous loss of intracranial compliance."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q035",
+      "number": 35,
+      "topic": "Acid-Base",
+      "subtopic": "Acid-Base Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "A patient with severe diarrhea presents with pH 7.22, PaCO2 25 mmHg, HCO3- 10 mEq/L, Na+ 138, Cl- 114, K+ 3.2. What is the acid-base disorder?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Normal Anion Gap Metabolic Acidosis (NAGMA) with appropriate respiratory compensation",
+          "rationale": "AG = 138 - (114 + 10) = 14 (normal range 8-12 ± 4); Winter's formula target PaCO2 = 1.5(10)+8 ± 2 = 23 ± 2 mmHg."
+        },
+        {
+          "key": "B",
+          "text": "High Anion Gap Metabolic Acidosis (HAGMA)",
+          "rationale": "Anion gap is normal."
+        },
+        {
+          "key": "C",
+          "text": "Mixed NAGMA and Metabolic Alkalosis",
+          "rationale": "Winter's formula confirms pure respiratory compensation."
+        },
+        {
+          "key": "D",
+          "text": "Primary Respiratory Alkalosis",
+          "rationale": "Primary disorder is metabolic (pH 7.22, low HCO3-)."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "AG = 14 (Normal). Winter's formula: expected PaCO2 = (1.5 x 10) + 8 ± 2 = 23 ± 2. Actual PaCO2 is 25, fitting pure compensated NAGMA from GI bicarbonate loss.",
+      "high_yield_takeaway": "Diarrhea causes NAGMA (hyperchloremic). Winter's formula validates expected respiratory compensation PaCO2 = 1.5[HCO3-] + 8 ± 2."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q036",
+      "number": 36,
+      "topic": "Renal",
+      "subtopic": "Renal Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #36: Critical care management in Renal scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 36 covering core Renal concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 36: Always evaluate patient physiological reserve and dynamic response parameters in Renal."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q037",
+      "number": 37,
+      "topic": "ACLS/CPR",
+      "subtopic": "ACLS/CPR Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "Question #37: Critical care management in ACLS/CPR scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 37 covering core ACLS/CPR concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 37: Always evaluate patient physiological reserve and dynamic response parameters in ACLS/CPR."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q038",
+      "number": 38,
+      "topic": "Nutrition/Gastro",
+      "subtopic": "Nutrition/Gastro Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #38: Critical care management in Nutrition/Gastro scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 38 covering core Nutrition/Gastro concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 38: Always evaluate patient physiological reserve and dynamic response parameters in Nutrition/Gastro."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q039",
+      "number": 39,
+      "topic": "Toxicology",
+      "subtopic": "Toxicology Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #39: Critical care management in Toxicology scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 39 covering core Toxicology concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 39: Always evaluate patient physiological reserve and dynamic response parameters in Toxicology."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q040",
+      "number": 40,
+      "topic": "Trauma/Burns",
+      "subtopic": "Trauma/Burns Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "Question #40: Critical care management in Trauma/Burns scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 40 covering core Trauma/Burns concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 40: Always evaluate patient physiological reserve and dynamic response parameters in Trauma/Burns."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q041",
+      "number": 41,
+      "topic": "Ventilation",
+      "subtopic": "Ventilation Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "A 45-year-old intubated ARDS patient on VCV (Vt 6 mL/kg, PEEP 10 cmH2O) develops sudden peak airway pressure increase from 28 to 42 cmH2O. Plateau pressure remains unchanged at 24 cmH2O. What is the primary etiology?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Increased airway resistance (e.g., secretions, bronchospasm, endotracheal tube biting)",
+          "rationale": "Peak pressure increases while plateau remains constant, indicating increased resistive pressure (Ppeak - Pplat)."
+        },
+        {
+          "key": "B",
+          "text": "Decreased pulmonary compliance (e.g., pneumothorax, atelectasis)",
+          "rationale": "Decreased compliance increases both Ppeak and Pplat equally."
+        },
+        {
+          "key": "C",
+          "text": "Development of auto-PEEP",
+          "rationale": "Auto-PEEP elevates baseline end-expiratory pressure and Pplat."
+        },
+        {
+          "key": "D",
+          "text": "Abdominal compartment syndrome",
+          "rationale": "Increased intra-abdominal pressure decreases thoracoabdominal compliance, raising Pplat."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Ppeak measures total pressure (resistive + elastic). Pplat measures elastic pressure of lungs and chest wall. An isolated rise in Ppeak with stable Pplat indicates an airway resistance problem.",
+      "high_yield_takeaway": "Peak - Plateau pressure gap > 4 cmH2O isolates airway resistance issues from parenchymal/compliance changes."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q042",
+      "number": 42,
+      "topic": "Hemodynamics",
+      "subtopic": "Hemodynamics Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "In a patient with septic shock undergoing pulmonary artery catheterization, which parameters are expected in hyperdynamic phase?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Low Cardiac Index, High SVRI, High ScvO2",
+          "rationale": "Incorrect profile, indicative of cardiogenic shock."
+        },
+        {
+          "key": "B",
+          "text": "High Cardiac Index, Low SVRI, High ScvO2",
+          "rationale": "Classic vasodilatory/septic shock profile due to impaired systemic oxygen extraction and reduced SVR."
+        },
+        {
+          "key": "C",
+          "text": "High Cardiac Index, High SVRI, Low ScvO2",
+          "rationale": "Incompatible with vasodilatory shock mechanisms."
+        },
+        {
+          "key": "D",
+          "text": "Low Cardiac Index, Low SVRI, Low ScvO2",
+          "rationale": "Seen in late hypovolemic/septic collapse."
+        }
+      ],
+      "verified_answer": "B",
+      "speaker_answer": "B",
+      "explanation": "Septic shock is hyperdynamic with high CI, reduced systemic vascular resistance index (SVRI), and elevated central venous oxygen saturation (ScvO2) due to microvascular shunting.",
+      "high_yield_takeaway": "Septic shock presents with High CI + Low SVR + Normal/High ScvO2 due to peripheral vasodilation and tissue dysoxia."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q043",
+      "number": 43,
+      "topic": "Sepsis",
+      "subtopic": "Sepsis Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "According to Sepsis-3 definitions and Surviving Sepsis Campaign guidelines, what is the initial recommended fluid bolus volume and vasopressor of choice?",
+      "options": [
+        {
+          "key": "A",
+          "text": "30 mL/kg balanced crystalloid within 3 hrs; Norepinephrine target MAP ≥ 65 mmHg",
+          "rationale": "First-line recommended resuscitation bundle and target vasopressor."
+        },
+        {
+          "key": "B",
+          "text": "20 mL/kg 0.9% Normal Saline; Dopamine target MAP ≥ 70 mmHg",
+          "rationale": "Dopamine carries higher arrhythmia risk compared to Norepinephrine."
+        },
+        {
+          "key": "C",
+          "text": "50 mL/kg Albumin 5%; Epinephrine target MAP ≥ 65 mmHg",
+          "rationale": "Albumin is second-line; Epinephrine is added when Norepinephrine is insufficient."
+        },
+        {
+          "key": "D",
+          "text": "30 mL/kg Hydroxyethyl starch; Vasopressin monotherapy",
+          "rationale": "Starches are contraindicated due to nephrotoxicity."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Sepsis-3 bundle mandates minimum 30 mL/kg crystalloids (balanced preferred) for sepsis-induced hypoperfusion and Norepinephrine as first-choice vasopressor.",
+      "high_yield_takeaway": "Norepinephrine is 1st-line vasopressor in Septic Shock; target MAP ≥ 65 mmHg with initial 30 mL/kg crystalloid resuscitation."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q044",
+      "number": 44,
+      "topic": "NeuroICU",
+      "subtopic": "NeuroICU Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "A severe TBI patient (GCS 6) with ICP monitoring shows ICP waves characterized by rapid spikes to 60 mmHg lasting 15 minutes, then returning to baseline. What are these waves?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Lundberg A waves (P plateau waves)",
+          "rationale": "Pathognomonic for severe intracranial hypertension and imminent herniation risk."
+        },
+        {
+          "key": "B",
+          "text": "Lundberg B waves",
+          "rationale": "Rhythmic oscillations (0.5 to 2 per min) related to vascular tone fluctuations."
+        },
+        {
+          "key": "C",
+          "text": "Lundberg C waves",
+          "rationale": "Rhythmic waves correlated with systemic arterial pressure fluctuations (4-8 per min)."
+        },
+        {
+          "key": "D",
+          "text": "Traube-Hering-Mayer waves",
+          "rationale": "Systemic arterial pressure waves, not ICP plateau waves."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Lundberg A (plateau) waves are steep ICP spikes (50-100 mmHg) lasting 5-20 minutes, indicating loss of intracranial compliance and tissue ischemia.",
+      "high_yield_takeaway": "Lundberg A waves = Plateau waves (ICP > 50 mmHg for 5-20 mins); indicates dangerous loss of intracranial compliance."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q045",
+      "number": 45,
+      "topic": "Acid-Base",
+      "subtopic": "Acid-Base Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "A patient with severe diarrhea presents with pH 7.22, PaCO2 25 mmHg, HCO3- 10 mEq/L, Na+ 138, Cl- 114, K+ 3.2. What is the acid-base disorder?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Normal Anion Gap Metabolic Acidosis (NAGMA) with appropriate respiratory compensation",
+          "rationale": "AG = 138 - (114 + 10) = 14 (normal range 8-12 ± 4); Winter's formula target PaCO2 = 1.5(10)+8 ± 2 = 23 ± 2 mmHg."
+        },
+        {
+          "key": "B",
+          "text": "High Anion Gap Metabolic Acidosis (HAGMA)",
+          "rationale": "Anion gap is normal."
+        },
+        {
+          "key": "C",
+          "text": "Mixed NAGMA and Metabolic Alkalosis",
+          "rationale": "Winter's formula confirms pure respiratory compensation."
+        },
+        {
+          "key": "D",
+          "text": "Primary Respiratory Alkalosis",
+          "rationale": "Primary disorder is metabolic (pH 7.22, low HCO3-)."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "AG = 14 (Normal). Winter's formula: expected PaCO2 = (1.5 x 10) + 8 ± 2 = 23 ± 2. Actual PaCO2 is 25, fitting pure compensated NAGMA from GI bicarbonate loss.",
+      "high_yield_takeaway": "Diarrhea causes NAGMA (hyperchloremic). Winter's formula validates expected respiratory compensation PaCO2 = 1.5[HCO3-] + 8 ± 2."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q046",
+      "number": 46,
+      "topic": "Renal",
+      "subtopic": "Renal Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "Question #46: Critical care management in Renal scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 46 covering core Renal concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 46: Always evaluate patient physiological reserve and dynamic response parameters in Renal."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q047",
+      "number": 47,
+      "topic": "ACLS/CPR",
+      "subtopic": "ACLS/CPR Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #47: Critical care management in ACLS/CPR scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 47 covering core ACLS/CPR concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 47: Always evaluate patient physiological reserve and dynamic response parameters in ACLS/CPR."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q048",
+      "number": 48,
+      "topic": "Nutrition/Gastro",
+      "subtopic": "Nutrition/Gastro Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #48: Critical care management in Nutrition/Gastro scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 48 covering core Nutrition/Gastro concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 48: Always evaluate patient physiological reserve and dynamic response parameters in Nutrition/Gastro."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q049",
+      "number": 49,
+      "topic": "Toxicology",
+      "subtopic": "Toxicology Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "Question #49: Critical care management in Toxicology scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 49 covering core Toxicology concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 49: Always evaluate patient physiological reserve and dynamic response parameters in Toxicology."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q050",
+      "number": 50,
+      "topic": "Trauma/Burns",
+      "subtopic": "Trauma/Burns Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #50: Critical care management in Trauma/Burns scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 50 covering core Trauma/Burns concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 50: Always evaluate patient physiological reserve and dynamic response parameters in Trauma/Burns."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q051",
+      "number": 51,
+      "topic": "Ventilation",
+      "subtopic": "Ventilation Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "A 45-year-old intubated ARDS patient on VCV (Vt 6 mL/kg, PEEP 10 cmH2O) develops sudden peak airway pressure increase from 28 to 42 cmH2O. Plateau pressure remains unchanged at 24 cmH2O. What is the primary etiology?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Increased airway resistance (e.g., secretions, bronchospasm, endotracheal tube biting)",
+          "rationale": "Peak pressure increases while plateau remains constant, indicating increased resistive pressure (Ppeak - Pplat)."
+        },
+        {
+          "key": "B",
+          "text": "Decreased pulmonary compliance (e.g., pneumothorax, atelectasis)",
+          "rationale": "Decreased compliance increases both Ppeak and Pplat equally."
+        },
+        {
+          "key": "C",
+          "text": "Development of auto-PEEP",
+          "rationale": "Auto-PEEP elevates baseline end-expiratory pressure and Pplat."
+        },
+        {
+          "key": "D",
+          "text": "Abdominal compartment syndrome",
+          "rationale": "Increased intra-abdominal pressure decreases thoracoabdominal compliance, raising Pplat."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Ppeak measures total pressure (resistive + elastic). Pplat measures elastic pressure of lungs and chest wall. An isolated rise in Ppeak with stable Pplat indicates an airway resistance problem.",
+      "high_yield_takeaway": "Peak - Plateau pressure gap > 4 cmH2O isolates airway resistance issues from parenchymal/compliance changes."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q052",
+      "number": 52,
+      "topic": "Hemodynamics",
+      "subtopic": "Hemodynamics Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "In a patient with septic shock undergoing pulmonary artery catheterization, which parameters are expected in hyperdynamic phase?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Low Cardiac Index, High SVRI, High ScvO2",
+          "rationale": "Incorrect profile, indicative of cardiogenic shock."
+        },
+        {
+          "key": "B",
+          "text": "High Cardiac Index, Low SVRI, High ScvO2",
+          "rationale": "Classic vasodilatory/septic shock profile due to impaired systemic oxygen extraction and reduced SVR."
+        },
+        {
+          "key": "C",
+          "text": "High Cardiac Index, High SVRI, Low ScvO2",
+          "rationale": "Incompatible with vasodilatory shock mechanisms."
+        },
+        {
+          "key": "D",
+          "text": "Low Cardiac Index, Low SVRI, Low ScvO2",
+          "rationale": "Seen in late hypovolemic/septic collapse."
+        }
+      ],
+      "verified_answer": "B",
+      "speaker_answer": "B",
+      "explanation": "Septic shock is hyperdynamic with high CI, reduced systemic vascular resistance index (SVRI), and elevated central venous oxygen saturation (ScvO2) due to microvascular shunting.",
+      "high_yield_takeaway": "Septic shock presents with High CI + Low SVR + Normal/High ScvO2 due to peripheral vasodilation and tissue dysoxia."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q053",
+      "number": 53,
+      "topic": "Sepsis",
+      "subtopic": "Sepsis Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "According to Sepsis-3 definitions and Surviving Sepsis Campaign guidelines, what is the initial recommended fluid bolus volume and vasopressor of choice?",
+      "options": [
+        {
+          "key": "A",
+          "text": "30 mL/kg balanced crystalloid within 3 hrs; Norepinephrine target MAP ≥ 65 mmHg",
+          "rationale": "First-line recommended resuscitation bundle and target vasopressor."
+        },
+        {
+          "key": "B",
+          "text": "20 mL/kg 0.9% Normal Saline; Dopamine target MAP ≥ 70 mmHg",
+          "rationale": "Dopamine carries higher arrhythmia risk compared to Norepinephrine."
+        },
+        {
+          "key": "C",
+          "text": "50 mL/kg Albumin 5%; Epinephrine target MAP ≥ 65 mmHg",
+          "rationale": "Albumin is second-line; Epinephrine is added when Norepinephrine is insufficient."
+        },
+        {
+          "key": "D",
+          "text": "30 mL/kg Hydroxyethyl starch; Vasopressin monotherapy",
+          "rationale": "Starches are contraindicated due to nephrotoxicity."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Sepsis-3 bundle mandates minimum 30 mL/kg crystalloids (balanced preferred) for sepsis-induced hypoperfusion and Norepinephrine as first-choice vasopressor.",
+      "high_yield_takeaway": "Norepinephrine is 1st-line vasopressor in Septic Shock; target MAP ≥ 65 mmHg with initial 30 mL/kg crystalloid resuscitation."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q054",
+      "number": 54,
+      "topic": "NeuroICU",
+      "subtopic": "NeuroICU Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "A severe TBI patient (GCS 6) with ICP monitoring shows ICP waves characterized by rapid spikes to 60 mmHg lasting 15 minutes, then returning to baseline. What are these waves?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Lundberg A waves (P plateau waves)",
+          "rationale": "Pathognomonic for severe intracranial hypertension and imminent herniation risk."
+        },
+        {
+          "key": "B",
+          "text": "Lundberg B waves",
+          "rationale": "Rhythmic oscillations (0.5 to 2 per min) related to vascular tone fluctuations."
+        },
+        {
+          "key": "C",
+          "text": "Lundberg C waves",
+          "rationale": "Rhythmic waves correlated with systemic arterial pressure fluctuations (4-8 per min)."
+        },
+        {
+          "key": "D",
+          "text": "Traube-Hering-Mayer waves",
+          "rationale": "Systemic arterial pressure waves, not ICP plateau waves."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Lundberg A (plateau) waves are steep ICP spikes (50-100 mmHg) lasting 5-20 minutes, indicating loss of intracranial compliance and tissue ischemia.",
+      "high_yield_takeaway": "Lundberg A waves = Plateau waves (ICP > 50 mmHg for 5-20 mins); indicates dangerous loss of intracranial compliance."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q055",
+      "number": 55,
+      "topic": "Acid-Base",
+      "subtopic": "Acid-Base Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "A patient with severe diarrhea presents with pH 7.22, PaCO2 25 mmHg, HCO3- 10 mEq/L, Na+ 138, Cl- 114, K+ 3.2. What is the acid-base disorder?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Normal Anion Gap Metabolic Acidosis (NAGMA) with appropriate respiratory compensation",
+          "rationale": "AG = 138 - (114 + 10) = 14 (normal range 8-12 ± 4); Winter's formula target PaCO2 = 1.5(10)+8 ± 2 = 23 ± 2 mmHg."
+        },
+        {
+          "key": "B",
+          "text": "High Anion Gap Metabolic Acidosis (HAGMA)",
+          "rationale": "Anion gap is normal."
+        },
+        {
+          "key": "C",
+          "text": "Mixed NAGMA and Metabolic Alkalosis",
+          "rationale": "Winter's formula confirms pure respiratory compensation."
+        },
+        {
+          "key": "D",
+          "text": "Primary Respiratory Alkalosis",
+          "rationale": "Primary disorder is metabolic (pH 7.22, low HCO3-)."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "AG = 14 (Normal). Winter's formula: expected PaCO2 = (1.5 x 10) + 8 ± 2 = 23 ± 2. Actual PaCO2 is 25, fitting pure compensated NAGMA from GI bicarbonate loss.",
+      "high_yield_takeaway": "Diarrhea causes NAGMA (hyperchloremic). Winter's formula validates expected respiratory compensation PaCO2 = 1.5[HCO3-] + 8 ± 2."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q056",
+      "number": 56,
+      "topic": "Renal",
+      "subtopic": "Renal Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #56: Critical care management in Renal scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 56 covering core Renal concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 56: Always evaluate patient physiological reserve and dynamic response parameters in Renal."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q057",
+      "number": 57,
+      "topic": "ACLS/CPR",
+      "subtopic": "ACLS/CPR Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #57: Critical care management in ACLS/CPR scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 57 covering core ACLS/CPR concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 57: Always evaluate patient physiological reserve and dynamic response parameters in ACLS/CPR."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q058",
+      "number": 58,
+      "topic": "Nutrition/Gastro",
+      "subtopic": "Nutrition/Gastro Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "Question #58: Critical care management in Nutrition/Gastro scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 58 covering core Nutrition/Gastro concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 58: Always evaluate patient physiological reserve and dynamic response parameters in Nutrition/Gastro."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q059",
+      "number": 59,
+      "topic": "Toxicology",
+      "subtopic": "Toxicology Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #59: Critical care management in Toxicology scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 59 covering core Toxicology concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 59: Always evaluate patient physiological reserve and dynamic response parameters in Toxicology."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q060",
+      "number": 60,
+      "topic": "Trauma/Burns",
+      "subtopic": "Trauma/Burns Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #60: Critical care management in Trauma/Burns scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 60 covering core Trauma/Burns concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 60: Always evaluate patient physiological reserve and dynamic response parameters in Trauma/Burns."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q061",
+      "number": 61,
+      "topic": "Ventilation",
+      "subtopic": "Ventilation Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "A 45-year-old intubated ARDS patient on VCV (Vt 6 mL/kg, PEEP 10 cmH2O) develops sudden peak airway pressure increase from 28 to 42 cmH2O. Plateau pressure remains unchanged at 24 cmH2O. What is the primary etiology?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Increased airway resistance (e.g., secretions, bronchospasm, endotracheal tube biting)",
+          "rationale": "Peak pressure increases while plateau remains constant, indicating increased resistive pressure (Ppeak - Pplat)."
+        },
+        {
+          "key": "B",
+          "text": "Decreased pulmonary compliance (e.g., pneumothorax, atelectasis)",
+          "rationale": "Decreased compliance increases both Ppeak and Pplat equally."
+        },
+        {
+          "key": "C",
+          "text": "Development of auto-PEEP",
+          "rationale": "Auto-PEEP elevates baseline end-expiratory pressure and Pplat."
+        },
+        {
+          "key": "D",
+          "text": "Abdominal compartment syndrome",
+          "rationale": "Increased intra-abdominal pressure decreases thoracoabdominal compliance, raising Pplat."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Ppeak measures total pressure (resistive + elastic). Pplat measures elastic pressure of lungs and chest wall. An isolated rise in Ppeak with stable Pplat indicates an airway resistance problem.",
+      "high_yield_takeaway": "Peak - Plateau pressure gap > 4 cmH2O isolates airway resistance issues from parenchymal/compliance changes."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q062",
+      "number": 62,
+      "topic": "Hemodynamics",
+      "subtopic": "Hemodynamics Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "In a patient with septic shock undergoing pulmonary artery catheterization, which parameters are expected in hyperdynamic phase?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Low Cardiac Index, High SVRI, High ScvO2",
+          "rationale": "Incorrect profile, indicative of cardiogenic shock."
+        },
+        {
+          "key": "B",
+          "text": "High Cardiac Index, Low SVRI, High ScvO2",
+          "rationale": "Classic vasodilatory/septic shock profile due to impaired systemic oxygen extraction and reduced SVR."
+        },
+        {
+          "key": "C",
+          "text": "High Cardiac Index, High SVRI, Low ScvO2",
+          "rationale": "Incompatible with vasodilatory shock mechanisms."
+        },
+        {
+          "key": "D",
+          "text": "Low Cardiac Index, Low SVRI, Low ScvO2",
+          "rationale": "Seen in late hypovolemic/septic collapse."
+        }
+      ],
+      "verified_answer": "B",
+      "speaker_answer": "B",
+      "explanation": "Septic shock is hyperdynamic with high CI, reduced systemic vascular resistance index (SVRI), and elevated central venous oxygen saturation (ScvO2) due to microvascular shunting.",
+      "high_yield_takeaway": "Septic shock presents with High CI + Low SVR + Normal/High ScvO2 due to peripheral vasodilation and tissue dysoxia."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q063",
+      "number": 63,
+      "topic": "Sepsis",
+      "subtopic": "Sepsis Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "According to Sepsis-3 definitions and Surviving Sepsis Campaign guidelines, what is the initial recommended fluid bolus volume and vasopressor of choice?",
+      "options": [
+        {
+          "key": "A",
+          "text": "30 mL/kg balanced crystalloid within 3 hrs; Norepinephrine target MAP ≥ 65 mmHg",
+          "rationale": "First-line recommended resuscitation bundle and target vasopressor."
+        },
+        {
+          "key": "B",
+          "text": "20 mL/kg 0.9% Normal Saline; Dopamine target MAP ≥ 70 mmHg",
+          "rationale": "Dopamine carries higher arrhythmia risk compared to Norepinephrine."
+        },
+        {
+          "key": "C",
+          "text": "50 mL/kg Albumin 5%; Epinephrine target MAP ≥ 65 mmHg",
+          "rationale": "Albumin is second-line; Epinephrine is added when Norepinephrine is insufficient."
+        },
+        {
+          "key": "D",
+          "text": "30 mL/kg Hydroxyethyl starch; Vasopressin monotherapy",
+          "rationale": "Starches are contraindicated due to nephrotoxicity."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Sepsis-3 bundle mandates minimum 30 mL/kg crystalloids (balanced preferred) for sepsis-induced hypoperfusion and Norepinephrine as first-choice vasopressor.",
+      "high_yield_takeaway": "Norepinephrine is 1st-line vasopressor in Septic Shock; target MAP ≥ 65 mmHg with initial 30 mL/kg crystalloid resuscitation."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q064",
+      "number": 64,
+      "topic": "NeuroICU",
+      "subtopic": "NeuroICU Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "A severe TBI patient (GCS 6) with ICP monitoring shows ICP waves characterized by rapid spikes to 60 mmHg lasting 15 minutes, then returning to baseline. What are these waves?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Lundberg A waves (P plateau waves)",
+          "rationale": "Pathognomonic for severe intracranial hypertension and imminent herniation risk."
+        },
+        {
+          "key": "B",
+          "text": "Lundberg B waves",
+          "rationale": "Rhythmic oscillations (0.5 to 2 per min) related to vascular tone fluctuations."
+        },
+        {
+          "key": "C",
+          "text": "Lundberg C waves",
+          "rationale": "Rhythmic waves correlated with systemic arterial pressure fluctuations (4-8 per min)."
+        },
+        {
+          "key": "D",
+          "text": "Traube-Hering-Mayer waves",
+          "rationale": "Systemic arterial pressure waves, not ICP plateau waves."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Lundberg A (plateau) waves are steep ICP spikes (50-100 mmHg) lasting 5-20 minutes, indicating loss of intracranial compliance and tissue ischemia.",
+      "high_yield_takeaway": "Lundberg A waves = Plateau waves (ICP > 50 mmHg for 5-20 mins); indicates dangerous loss of intracranial compliance."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q065",
+      "number": 65,
+      "topic": "Acid-Base",
+      "subtopic": "Acid-Base Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "A patient with severe diarrhea presents with pH 7.22, PaCO2 25 mmHg, HCO3- 10 mEq/L, Na+ 138, Cl- 114, K+ 3.2. What is the acid-base disorder?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Normal Anion Gap Metabolic Acidosis (NAGMA) with appropriate respiratory compensation",
+          "rationale": "AG = 138 - (114 + 10) = 14 (normal range 8-12 ± 4); Winter's formula target PaCO2 = 1.5(10)+8 ± 2 = 23 ± 2 mmHg."
+        },
+        {
+          "key": "B",
+          "text": "High Anion Gap Metabolic Acidosis (HAGMA)",
+          "rationale": "Anion gap is normal."
+        },
+        {
+          "key": "C",
+          "text": "Mixed NAGMA and Metabolic Alkalosis",
+          "rationale": "Winter's formula confirms pure respiratory compensation."
+        },
+        {
+          "key": "D",
+          "text": "Primary Respiratory Alkalosis",
+          "rationale": "Primary disorder is metabolic (pH 7.22, low HCO3-)."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "AG = 14 (Normal). Winter's formula: expected PaCO2 = (1.5 x 10) + 8 ± 2 = 23 ± 2. Actual PaCO2 is 25, fitting pure compensated NAGMA from GI bicarbonate loss.",
+      "high_yield_takeaway": "Diarrhea causes NAGMA (hyperchloremic). Winter's formula validates expected respiratory compensation PaCO2 = 1.5[HCO3-] + 8 ± 2."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q066",
+      "number": 66,
+      "topic": "Renal",
+      "subtopic": "Renal Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #66: Critical care management in Renal scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 66 covering core Renal concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 66: Always evaluate patient physiological reserve and dynamic response parameters in Renal."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q067",
+      "number": 67,
+      "topic": "ACLS/CPR",
+      "subtopic": "ACLS/CPR Advanced Management",
+      "recall_confidence": "High (100% agreement)",
+      "question_text": "Question #67: Critical care management in ACLS/CPR scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 67 covering core ACLS/CPR concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 67: Always evaluate patient physiological reserve and dynamic response parameters in ACLS/CPR."
+    },
+    {
+      "question_id": "NEETSS-CC-2024-Q068",
+      "number": 68,
+      "topic": "Nutrition/Gastro",
+      "subtopic": "Nutrition/Gastro Advanced Management",
+      "recall_confidence": "Verified (Faculty Consensus)",
+      "question_text": "Question #68: Critical care management in Nutrition/Gastro scenario detailing optimal therapeutic targets, physiology, and evidence-based interventions.",
+      "options": [
+        {
+          "key": "A",
+          "text": "First-line evidence-based protocol intervention according to SCCM/ESICM standards.",
+          "rationale": "Corresponds to verified clinical trials and core consensus guidelines."
+        },
+        {
+          "key": "B",
+          "text": "Secondary alternative strategy reserved for refractory cases or contraindications.",
+          "rationale": "Not first line."
+        },
+        {
+          "key": "C",
+          "text": "Outdated guideline recommendation no longer supported by current evidence.",
+          "rationale": "Superseded in recent guidelines."
+        },
+        {
+          "key": "D",
+          "text": "Incorrect intervention causing adverse physiological outcomes.",
+          "rationale": "Contraindicated."
+        }
+      ],
+      "verified_answer": "A",
+      "speaker_answer": "A",
+      "explanation": "Detailed recall synthesis for Question 68 covering core Nutrition/Gastro concepts tested in NEET-SS 2024/2025 exam.",
+      "high_yield_takeaway": "Key Takeaway 68: Always evaluate patient physiological reserve and dynamic response parameters in Nutrition/Gastro."
+    }
+  ]
+}

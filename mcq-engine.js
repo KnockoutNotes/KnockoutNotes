@@ -250,6 +250,22 @@
     return raw || "Miscellaneous";
   }
 
+  function getSanitizedReference(refObj) {
+    if (!refObj) return { url: "", label: "" };
+    var rawUrl = (refObj.url || "").trim();
+    var rawLabel = (refObj.label || "").trim();
+    var lowerUrl = rawUrl.toLowerCase();
+    var lowerLabel = rawLabel.toLowerCase();
+
+    var isPromoUrl = lowerUrl.indexOf("youtu") !== -1 || lowerUrl.indexOf("doctutorials") !== -1;
+    var isPromoLabel = lowerLabel.indexOf("doctutorials") !== -1 || lowerLabel.indexOf("youtube") !== -1;
+
+    var validUrl = isPromoUrl ? "" : rawUrl;
+    var validLabel = isPromoLabel ? "" : rawLabel;
+
+    return { url: validUrl, label: validLabel };
+  }
+
   // State
   var state = {
     mcqs: [],             // All loaded MCQs
@@ -628,7 +644,7 @@
         '<div class="kn-mcq-filter-group">' +
           '<select class="kn-mcq-select" id="knMcqDirExamFilter">' +
             '<option value="all">All Exams (NEET-SS &amp; INI-SS)</option>' +
-            '<option value="NEET-SS-PYQ"' + (state.practiceFilter.exam === "NEET-SS-PYQ" ? " selected" : "") + '>🎯 All NEET-SS PYQs (190 MCQs)</option>' +
+            '<option value="NEET-SS-PYQ"' + (state.practiceFilter.exam === "NEET-SS-PYQ" ? " selected" : "") + '>🎯 NEET-SS PYQs (190 MCQs)</option>' +
             '<option value="NEET-SS-2025-RECALL"' + (state.practiceFilter.exam === "NEET-SS-2025-RECALL" ? " selected" : "") + '>🎯 NEET-SS 2025 Recall (76 MCQs)</option>' +
             '<option value="NEET-SS-2024-RECALL"' + (state.practiceFilter.exam === "NEET-SS-2024-RECALL" ? " selected" : "") + '>🎯 NEET-SS 2024 Recall (114 MCQs)</option>' +
             '<option value="NEET-SS"' + (state.practiceFilter.exam === "NEET-SS" ? " selected" : "") + '>NEET-SS Only</option>' +
@@ -879,8 +895,6 @@
           '<select class="kn-mcq-select" id="knPracticeViewSelect">' +
             '<option value="all"' + (state.practiceFilter.view === "all" ? " selected" : "") + '>All Questions (' + state.mcqs.length + ')</option>' +
             '<option value="pyq"' + (state.practiceFilter.view === "pyq" ? " selected" : "") + '>🎯 NEET-SS PYQs (' + (state.pyq.year === 'all' ? 'All Years · 190' : (state.pyq.year === '2025' ? '2025 · 76' : '2024 · 114')) + ')</option>' +
-            '<option value="recall2025"' + (state.practiceFilter.view === "recall2025" ? " selected" : "") + '>🎯 NEET SS 2025 Recall (76)</option>' +
-            '<option value="recall2024"' + (state.practiceFilter.view === "recall2024" ? " selected" : "") + '>🎯 NEET SS 2024 Recall (114)</option>' +
             '<option value="bookmarks"' + (state.practiceFilter.view === "bookmarks" ? " selected" : "") + '>⭐ Bookmarked (' + Object.keys(state.bookmarks).length + ')</option>' +
             '<option value="incorrect"' + (state.practiceFilter.view === "incorrect" ? " selected" : "") + '>❌ Mistakes</option>' +
           '</select>' +
@@ -1013,20 +1027,20 @@
           '</a>'
       );
 
-      if (m.hyperlinkedReference && m.hyperlinkedReference.url) {
-        html += (
-          '<a href="' + esc(m.hyperlinkedReference.url) + '" target="_blank" rel="noopener noreferrer" class="kn-mcq-ref-link">' +
-            '📄 Reference: ' + esc(m.hyperlinkedReference.label || "Authoritative Source") + ' ↗' +
-          '</a>'
-        );
-      }
+      var refClean = getSanitizedReference(m.hyperlinkedReference);
+      var validRefUrl = refClean.url;
+      var validRefLabel = refClean.label;
 
-      if (m.source_videos && Array.isArray(m.source_videos) && m.source_videos.length) {
+      if (validRefUrl && validRefLabel) {
         html += (
-          '<a href="' + esc(m.source_videos[0].url) + '" target="_blank" rel="noopener noreferrer" class="kn-mcq-ref-link" style="color:#ef4444; border-color:rgba(239,68,68,0.3);">' +
-            '📺 ' + esc(m.source_videos[0].title || "NEET-SS Recall Video") + ' ↗' +
+          '<a href="' + esc(validRefUrl) + '" target="_blank" rel="noopener noreferrer" class="kn-mcq-ref-link">' +
+            '📄 Reference: ' + esc(validRefLabel) + ' ↗' +
           '</a>'
         );
+      } else if (validRefLabel) {
+        var isGuideline = validRefLabel.toLowerCase().indexOf("guideline") !== -1 || validRefLabel.toLowerCase().indexOf("surviving sepsis") !== -1 || validRefLabel.toLowerCase().indexOf("consensus") !== -1;
+        var badgePrefix = isGuideline ? "📄 Guideline: " : "📄 Reference: ";
+        html += '<span class="kn-mcq-badge" style="padding:6px 12px; font-size:12px;">' + badgePrefix + esc(validRefLabel) + '</span>';
       }
       html += '</div></div>';
     }
@@ -1352,12 +1366,20 @@
           '📚 Study This Topic in Knockout Notes ↗' +
         '</a>'
     );
-    if (m.hyperlinkedReference && m.hyperlinkedReference.url) {
+    var refCleanReview = getSanitizedReference(m.hyperlinkedReference);
+    var validRefUrlReview = refCleanReview.url;
+    var validRefLabelReview = refCleanReview.label;
+
+    if (validRefUrlReview && validRefLabelReview) {
       html += (
-        '<a href="' + esc(m.hyperlinkedReference.url) + '" target="_blank" rel="noopener noreferrer" class="kn-mcq-ref-link">' +
-          '📄 Reference: ' + esc(m.hyperlinkedReference.label) + ' ↗' +
+        '<a href="' + esc(validRefUrlReview) + '" target="_blank" rel="noopener noreferrer" class="kn-mcq-ref-link">' +
+          '📄 Reference: ' + esc(validRefLabelReview) + ' ↗' +
         '</a>'
       );
+    } else if (validRefLabelReview) {
+      var isGuidelineRev = validRefLabelReview.toLowerCase().indexOf("guideline") !== -1 || validRefLabelReview.toLowerCase().indexOf("surviving sepsis") !== -1 || validRefLabelReview.toLowerCase().indexOf("consensus") !== -1;
+      var badgePrefixRev = isGuidelineRev ? "📄 Guideline: " : "📄 Reference: ";
+      html += '<span class="kn-mcq-badge" style="padding:6px 12px; font-size:12px;">' + badgePrefixRev + esc(validRefLabelReview) + '</span>';
     }
     html += '</div></div></article>';
 
@@ -1496,9 +1518,18 @@
         });
         html += '</div>';
 
-        // Verified Answer
-        if (isAnswered || isExpanded) {
-          var ansLetter = m.answer ? String(m.answer).trim().toUpperCase() : letterAt(cIdx);
+        // Answer verification note for recall questions (shown once answered)
+        if (isAnswered && m.answer_verification_note) {
+          html += (
+            '<div class="kn-mcq-verification-box" style="margin-top:4px; padding:12px 16px; border-radius:12px; background:rgba(2,132,199,0.06); border-left:4px solid #0284c7; font-size:13px; color:var(--text-main, #1e293b); line-height:1.5;">' +
+              '<strong style="color:#0284c7;">✓ Answer Verification:</strong> ' + esc(m.answer_verification_note) +
+            '</div>'
+          );
+        }
+
+        // Verified Answer Banner (shown once answered)
+        if (isAnswered) {
+          var ansLetter = cIdx >= 0 ? letterAt(cIdx) : (m.answer ? String(m.answer).trim().toUpperCase() : "");
           html += (
             '<div class="kn-pyq-verified-banner">' +
               '<span>✓ Verified Answer: Option ' + esc(ansLetter) + '</span>' +
@@ -1506,33 +1537,78 @@
           );
         }
 
-        // Explanation
+        // Explanation & Clinical Rationale
         if (m.explanation) {
           html += (
             '<div class="kn-pyq-expl-box">' +
-              '<strong style="display:block; margin-bottom:6px; color:#38bdf8;">📖 Clinical Recall Synthesis &amp; Rationale</strong>' +
-              '<p style="margin:0;">' + esc(m.explanation) + '</p>' +
+              '<strong style="display:block; margin-bottom:6px; color:var(--accent-cyan, #0284c7);">📖 Clinical Recall Synthesis &amp; Rationale</strong>' +
+              '<p style="margin:0; line-height:1.65;">' + esc(m.explanation) + '</p>' +
             '</div>'
           );
         }
 
-        // Takeaway
+        // Why Other Options Are Wrong (shown once answered)
+        var wrongKeys = Object.keys(m.whyWrong || {}).sort();
+        if (isAnswered && wrongKeys.length) {
+          html += (
+            '<div class="kn-mcq-sec-box">' +
+              '<div class="kn-mcq-sec-title">❌ Why Other Options Are Wrong</div>' +
+              '<ul class="kn-mcq-why-list">'
+          );
+          wrongKeys.forEach(function (k) {
+            var optIdx = k.charCodeAt(0) - 65;
+            var isUserPick = ans && ans.selected === optIdx;
+            html += (
+              '<li class="' + (isUserPick ? 'is-user-pick' : '') + '">' +
+                '<strong>Option ' + esc(k) + (isUserPick ? ' (Your Pick)' : '') + ':</strong> ' +
+                esc(m.whyWrong[k]) +
+              '</li>'
+            );
+          });
+          html += '</ul></div>';
+        }
+
+        // High-Yield Takeaway / Pearl
         if (m.examPearl) {
           html += (
             '<div class="kn-pyq-pearl-box">' +
-              '<strong>💡 High-Yield Takeaway &amp; Exam Pearl</strong>' +
-              '<div>' + esc(m.examPearl) + '</div>' +
+              '<span class="kn-mcq-pearl-label" style="display:block; font-size:11px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent-amber, #d97706); margin-bottom:4px;">💡 NEET-SS High-Yield Pearl</span>' +
+              '<div style="line-height:1.6;">' + esc(m.examPearl) + '</div>' +
             '</div>'
           );
         }
 
-        // Reference link
+        // Contextual Links & Medical References (Cleaned: No DocTutorials / YouTube promotional links)
+        var studyLinkUrl = getStudyLink(m.topicId, m.chapterId);
+        var refClean = getSanitizedReference(m.hyperlinkedReference);
+        var validRefUrl = refClean.url;
+        var validRefLabel = refClean.label;
+
+        html += '<div class="kn-mcq-links-row" style="margin-top:6px;">';
+        if (studyLinkUrl) {
+          html += (
+            '<a href="' + esc(studyLinkUrl) + '" target="_blank" rel="noopener noreferrer" class="kn-mcq-study-link">' +
+              '📚 Study This Topic in Knockout Notes ↗' +
+            '</a>'
+          );
+        }
+        if (validRefUrl && validRefLabel) {
+          html += (
+            '<a href="' + esc(validRefUrl) + '" target="_blank" rel="noopener noreferrer" class="kn-mcq-ref-link">' +
+              '📄 Reference: ' + esc(validRefLabel) + ' ↗' +
+            '</a>'
+          );
+        } else if (validRefLabel) {
+          var isGuidelinePyq = validRefLabel.toLowerCase().indexOf("guideline") !== -1 || validRefLabel.toLowerCase().indexOf("surviving sepsis") !== -1 || validRefLabel.toLowerCase().indexOf("consensus") !== -1;
+          var badgePrefixPyq = isGuidelinePyq ? "📄 Guideline: " : "📄 Reference: ";
+          html += '<span class="kn-mcq-badge" style="padding:6px 12px; font-size:12px;">' + badgePrefixPyq + esc(validRefLabel) + '</span>';
+        }
+        html += '</div>';
+
         html += (
           '<div class="kn-pyq-meta-footer">' +
             '<span>Subtopic: ' + esc(m.subtopic || topicName) + '</span>' +
-            (m.hyperlinkedReference && m.hyperlinkedReference.url ?
-              '<a href="' + esc(m.hyperlinkedReference.url) + '" target="_blank" rel="noopener noreferrer">📄 ' + esc(m.hyperlinkedReference.label || "Faculty Source Video") + ' ↗</a>' :
-              '<span>Source: Faculty Consensus Recall Panel</span>') +
+            '<span>Source: Faculty Consensus Recall Panel</span>' +
           '</div>'
         );
 
@@ -1649,20 +1725,21 @@
 
     return (
       '<div class="kn-pyq-explorer-view">' +
-        '<!-- 1. Header Card (Matching Reference Screenshot) -->' +
+        '<!-- 1. Header Card (Aligned with Study Section Design Language) -->' +
         '<section class="kn-pyq-header-card">' +
           '<div class="kn-pyq-header-top">' +
             '<div>' +
-              '<h2 class="kn-pyq-title">NEET-SS Critical Care Recall 2024/2025</h2>' +
-              '<p class="kn-pyq-subtitle">Complete Verified Dataset (V03) &amp; Dynamic Question Explorer</p>' +
+              '<h2 class="kn-pyq-title">NEET-SS Critical Care — PYQs</h2>' +
+              '<p class="kn-pyq-subtitle">Verified Previous Year Question Bank • Real Recall Questions &amp; In-Depth Explanations</p>' +
             '</div>' +
-            '<button type="button" class="kn-mcq-btn kn-mcq-btn--sm kn-pyq-download-btn" data-action="download-pyq-json" title="Download current question dataset as JSON">' +
-              '<span>⬇ Download JSON File</span>' +
-            '</button>' +
+            '<div class="kn-pyq-header-actions">' +
+              '<button type="button" class="kn-mcq-btn kn-mcq-btn--sm kn-mcq-btn--study-exit" data-action="exit-to-study" title="Return to Study Mode">← Study Mode</button>' +
+              '<button type="button" class="kn-mcq-btn kn-mcq-btn--primary kn-mcq-btn--sm" data-action="go-builder">⚡ Custom Test</button>' +
+            '</div>' +
           '</div>' +
           '<div class="kn-pyq-stats-grid">' +
             '<div class="kn-pyq-stat-item">' +
-              '<div class="kn-pyq-stat-label">TOTAL QS</div>' +
+              '<div class="kn-pyq-stat-label">AVAILABLE QS</div>' +
               '<div class="kn-pyq-stat-val" id="knPyqTotalQsVal">' + filtered.length + '</div>' +
             '</div>' +
             '<div class="kn-pyq-stat-item">' +
@@ -1674,8 +1751,8 @@
               '<div class="kn-pyq-stat-val">Critical Care</div>' +
             '</div>' +
             '<div class="kn-pyq-stat-item">' +
-              '<div class="kn-pyq-stat-label">SCHEMA</div>' +
-              '<div class="kn-pyq-stat-val">Knockout V03</div>' +
+              '<div class="kn-pyq-stat-label">RECALL QUESTIONS</div>' +
+              '<div class="kn-pyq-stat-val">Faculty Verified</div>' +
             '</div>' +
           '</div>' +
         '</section>' +
@@ -2048,31 +2125,6 @@
         state.pyq.page++;
         render();
         window.scrollTo({ top: 0, behavior: "smooth" });
-        return;
-      }
-
-      if (action === "download-pyq-json") {
-        triggerHaptic();
-        var exportList = getFilteredPYQs();
-        var exportBlob = new Blob([JSON.stringify({
-          metadata: {
-            exam: "NEET-SS",
-            year: state.pyq.year === "all" ? "2024/2025" : state.pyq.year,
-            specialty: "Critical Care Medicine",
-            schema_version: "Knockout_V03",
-            total_questions: exportList.length,
-            generated_at: new Date().toISOString()
-          },
-          questions: exportList
-        }, null, 2)], { type: "application/json" });
-        var exportUrl = URL.createObjectURL(exportBlob);
-        var a = document.createElement("a");
-        a.href = exportUrl;
-        a.download = "NEET_SS_Critical_Care_PYQ_" + state.pyq.year + ".json";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(exportUrl);
         return;
       }
 
