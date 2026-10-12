@@ -1627,7 +1627,44 @@ export default {
     // 5. STATIC ASSET FALLBACK (100% OF SITE FILES)
     // ==========================================
     if (env.ASSETS) {
-      return env.ASSETS.fetch(request);
+      const response = await env.ASSETS.fetch(request);
+      if (response && response.status === 200) {
+        const lowerPath = pathname.toLowerCase();
+        // Immutable long-lived cache for vendor libraries (Three.js, GSAP, jsPDF) and 3D models
+        if (
+          lowerPath.startsWith('/vendor/') ||
+          lowerPath.startsWith('/assets/models/') ||
+          lowerPath.endsWith('.glb') ||
+          lowerPath.endsWith('.wasm')
+        ) {
+          const headers = new Headers(response.headers);
+          headers.set('Cache-Control', 'public, max-age=2592000, immutable');
+          return new Response(response.body, { status: response.status, headers });
+        }
+        // Cache images and static graphics for 7 days
+        if (
+          lowerPath.endsWith('.png') ||
+          lowerPath.endsWith('.jpg') ||
+          lowerPath.endsWith('.jpeg') ||
+          lowerPath.endsWith('.svg') ||
+          lowerPath.endsWith('.webp') ||
+          lowerPath.endsWith('.ico')
+        ) {
+          const headers = new Headers(response.headers);
+          headers.set('Cache-Control', 'public, max-age=604800, stale-while-revalidate=86400');
+          return new Response(response.body, { status: response.status, headers });
+        }
+        // Public question banks & curriculum datasets: 1 day with stale-while-revalidate
+        if (
+          lowerPath.startsWith('/criticalcare/') ||
+          lowerPath.includes('recall')
+        ) {
+          const headers = new Headers(response.headers);
+          headers.set('Cache-Control', 'public, max-age=86400, stale-while-revalidate=3600');
+          return new Response(response.body, { status: response.status, headers });
+        }
+      }
+      return response;
     }
 
     return new Response('Not Found', { status: 404 });

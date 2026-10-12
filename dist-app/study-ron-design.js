@@ -1005,6 +1005,22 @@
 
     // Read URL state
     const urlParams = new URLSearchParams(window.location.search);
+    const viewParam = urlParams.get("view");
+    if (viewParam === "pyq" || urlParams.get("pyq") === "true") {
+      // In PYQ mode, clean up any active 3D WebGL viewers and hide the study board
+      try {
+        if (typeof window.KNDisposeMolecule3D === "function" && mount) {
+          mount.querySelectorAll(".st-molecule-viewer.st-has-canvas").forEach((node) => {
+            window.KNDisposeMolecule3D(node);
+          });
+        }
+        if (typeof window.KNUnmountAllTileMolecules === "function") {
+          window.KNUnmountAllTileMolecules();
+        }
+      } catch (_) {}
+      if (mount) mount.style.display = "none";
+      return;
+    }
     const domainParam = urlParams.get("domain");
     const catParam = urlParams.get("cat");
     const itemParam = urlParams.get("item") || urlParams.get("topic");

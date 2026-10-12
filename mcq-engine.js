@@ -2599,24 +2599,26 @@
     _ready: true
   };
 
-  // Auto-init if on a page with #knMcqSection or query param mcq=true
-  document.addEventListener("DOMContentLoaded", function () {
+  // Auto-init if on a page with #knMcqSection or query param mcq=true or view=pyq
+  function checkUrlAndInit() {
     var urlParams = new URLSearchParams(window.location.search);
+    var isPyqParam = urlParams.get("view") === "pyq" || urlParams.get("pyq") === "true";
+    if (isPyqParam) {
+      open({ viewMode: "pyq", view: "pyq" });
+      return;
+    }
     if (urlParams.get("view") === "mcq" || urlParams.get("mcq") === "true") {
       var chParam = urlParams.get("chapter") || urlParams.get("chapterId");
       var tpParam = urlParams.get("topic") || urlParams.get("topicId");
-      var isPyqParam = urlParams.get("view") === "pyq" || urlParams.get("pyq") === "true";
-      if (isPyqParam) {
-        setTimeout(function () {
-          open({ viewMode: "pyq", view: "pyq" });
-        }, 100);
-        return;
-      }
       var vParam = urlParams.get("recall") === "2025" ? "recall2025" : (urlParams.get("subview") || "all");
-      setTimeout(function () {
-        open({ chapterId: chParam, topicId: tpParam, view: vParam });
-      }, 100);
+      open({ chapterId: chParam, topicId: tpParam, view: vParam });
     }
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", checkUrlAndInit);
+  } else {
+    checkUrlAndInit();
+  }
 
 })();
