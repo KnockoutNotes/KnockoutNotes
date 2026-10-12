@@ -166,7 +166,8 @@ const STATIC_ASSETS = [
   'manifest.json',
   'manifest-calculators.json',
   'NEET_SS_2024_Critical_Care_Recall_Consolidated.json',
-  'NEET_SS_2025_Critical_Care_Recall_V03.json'
+  'NEET_SS_2025_Critical_Care_Recall_V03.json',
+  'INI_SS_CC_NOV_2025_Recall.json'
 ];
 STATIC_ASSETS.forEach(copyFile);
 

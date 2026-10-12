@@ -7,20 +7,25 @@ console.log("==================================================");
 
 // 1. Verify criticalCare/mcqs.json
 const mcqs = JSON.parse(fs.readFileSync('criticalCare/mcqs.json', 'utf8'));
-console.log(`\n[Test 1] Total MCQs in master JSON: ${mcqs.length}`);
+console.log(`\n[Test 1] Total MCQs in master JSON: ${mcqs.length} (Expected: 761)`);
+assert.strictEqual(mcqs.length, 761, "Master MCQs count must be 761");
 
 const recalls2025 = mcqs.filter(m => m.sourceType === 'neet-ss-2025-recall' || (m.tags && m.tags.includes('NEET SS CC 2025')));
 const recalls2024 = mcqs.filter(m => m.sourceType === 'neet-ss-2024-recall' || (m.tags && m.tags.includes('NEET SS CC 2024')));
+const inissRecalls = mcqs.filter(m => m.sourceType === 'ini-ss-nov2025-recall' || (m.tags && m.tags.includes('INI SS CC Nov 2025')));
 
-console.log(`  - 2025 recalls count: ${recalls2025.length} (Expected: 76)`);
-assert.strictEqual(recalls2025.length, 76, "2025 recalls must equal 76");
+console.log(`  - NEET-SS 2025 recalls count: ${recalls2025.length} (Expected: 76)`);
+assert.strictEqual(recalls2025.length, 76, "NEET-SS 2025 recalls must equal 76");
 
-console.log(`  - 2024 recalls count: ${recalls2024.length} (Expected: 114)`);
-assert.strictEqual(recalls2024.length, 114, "2024 recalls must equal 114");
+console.log(`  - NEET-SS 2024 recalls count: ${recalls2024.length} (Expected: 114)`);
+assert.strictEqual(recalls2024.length, 114, "NEET-SS 2024 recalls must equal 114");
 
-const totalPYQs = recalls2025.length + recalls2024.length;
-console.log(`  - All Years combined: ${totalPYQs} (Expected: 190)`);
-assert.strictEqual(totalPYQs, 190, "Combined PYQs must equal 190");
+const totalNeetPYQs = recalls2025.length + recalls2024.length;
+console.log(`  - NEET-SS combined: ${totalNeetPYQs} (Expected: 190)`);
+assert.strictEqual(totalNeetPYQs, 190, "NEET-SS combined must equal 190");
+
+console.log(`  - INI-SS Nov 2025 recalls count: ${inissRecalls.length} (Expected: 66)`);
+assert.strictEqual(inissRecalls.length, 66, "INI-SS Nov 2025 recalls must equal 66");
 
 // Verify zero placeholder records
 const placeholders = mcqs.filter(m => m.question && m.question.includes('Critical care management in') && m.question.includes('detailing optimal therapeutic targets'));
@@ -32,7 +37,20 @@ const q24Ids = new Set(recalls2024.map(q => q.id));
 assert.strictEqual(q24Ids.size, 114, "All 114 2024 question IDs must be unique");
 const q24Stems = new Set(recalls2024.map(q => q.question));
 assert.strictEqual(q24Stems.size, 114, "All 114 2024 question stems must be unique");
-console.log("  ✓ All 114 2024 records have unique IDs and distinct genuine stems.");
+console.log("  ✓ All 114 NEET-SS 2024 records have unique IDs and distinct genuine stems.");
+
+// Verify INI-SS questions have unique IDs and stems
+const iniIds = new Set(inissRecalls.map(q => q.id));
+assert.strictEqual(iniIds.size, 66, "All 66 INI-SS question IDs must be unique");
+const iniStems = new Set(inissRecalls.map(q => q.question));
+assert.strictEqual(iniStems.size, 66, "All 66 INI-SS question stems must be unique");
+console.log("  ✓ All 66 INI-SS records have unique IDs and distinct genuine stems.");
+
+// Verify standalone INI-SS JSON file
+const inissFile = JSON.parse(fs.readFileSync('INI_SS_CC_NOV_2025_Recall.json', 'utf8'));
+assert.strictEqual(inissFile.questions.length, 66, "Standalone INI-SS dataset must contain 66 questions");
+assert.strictEqual(inissFile.metadata.exam, "INI-SS", "Standalone metadata exam must be INI-SS");
+console.log("  ✓ Standalone INI_SS_CC_NOV_2025_Recall.json verified with 66 questions.");
 
 // 2. Verify Study Section Navigation in study-ron-design.js
 const studyJs = fs.readFileSync('study-ron-design.js', 'utf8');
@@ -51,9 +69,16 @@ console.log("\n[Test 3] Testing PYQ Helper Functions & Filtering");
 
 function isPYQ(m) {
   if (!m) return false;
-  if (m.sourceType === "neet-ss-2025-recall" || m.sourceType === "neet-ss-2024-recall") return true;
-  if (m.tags && (m.tags.indexOf("NEET SS CC 2025") !== -1 || m.tags.indexOf("NEET SS CC 2024") !== -1 || m.tags.indexOf("Recall 2025") !== -1 || m.tags.indexOf("Recall 2024") !== -1)) return true;
+  if (m.sourceType === "neet-ss-2025-recall" || m.sourceType === "neet-ss-2024-recall" || m.sourceType === "ini-ss-nov2025-recall") return true;
+  if (m.tags && (m.tags.indexOf("NEET SS CC 2025") !== -1 || m.tags.indexOf("NEET SS CC 2024") !== -1 || m.tags.indexOf("INI SS CC Nov 2025") !== -1 || m.tags.indexOf("Recall Nov 2025") !== -1 || m.tags.indexOf("Recall 2025") !== -1 || m.tags.indexOf("Recall 2024") !== -1)) return true;
   return false;
+}
+
+function getPYQExam(m) {
+  if (!m) return "NEET-SS";
+  if (m.exam === "INI-SS" || m.sourceType === "ini-ss-nov2025-recall") return "INI-SS";
+  if (m.tags && (m.tags.indexOf("INI-SS") !== -1 || m.tags.indexOf("INI SS CC Nov 2025") !== -1)) return "INI-SS";
+  return "NEET-SS";
 }
 
 function getPYQYear(m) {
@@ -93,19 +118,25 @@ function getPYQTopic(m) {
 }
 
 const pyqs = mcqs.filter(isPYQ);
-assert.strictEqual(pyqs.length, 190);
+assert.strictEqual(pyqs.length, 256, "Total PYQs must equal 190 (NEET) + 66 (INI-SS) = 256");
 
-// Test year filters
-const p2025 = pyqs.filter(q => getPYQYear(q) === 2025);
+// Test exam partition
+const neetOnly = pyqs.filter(q => getPYQExam(q) === "NEET-SS");
+assert.strictEqual(neetOnly.length, 190, "NEET-SS filtered questions must be 190");
+const iniOnly = pyqs.filter(q => getPYQExam(q) === "INI-SS");
+assert.strictEqual(iniOnly.length, 66, "INI-SS filtered questions must be 66");
+
+// Test NEET year filters
+const p2025 = neetOnly.filter(q => getPYQYear(q) === 2025);
 assert.strictEqual(p2025.length, 76);
-const p2024 = pyqs.filter(q => getPYQYear(q) === 2024);
+const p2024 = neetOnly.filter(q => getPYQYear(q) === 2024);
 assert.strictEqual(p2024.length, 114);
 
 // Test topic filter
 const ventQs = pyqs.filter(q => getPYQTopic(q) === "Mechanical Ventilation");
-console.log(`  - Mechanical Ventilation PYQs: ${ventQs.length} (contains questions from both 2024 and 2025)`);
-assert.ok(ventQs.some(q => getPYQYear(q) === 2024), "Must contain 2024 ventilation recall");
-assert.ok(ventQs.some(q => getPYQYear(q) === 2025), "Must contain 2025 ventilation recall");
+console.log(`  - Mechanical Ventilation PYQs: ${ventQs.length} (contains questions across examinations)`);
+assert.ok(ventQs.some(q => getPYQExam(q) === "NEET-SS"), "Must contain NEET-SS ventilation recall");
+assert.ok(ventQs.some(q => getPYQExam(q) === "INI-SS"), "Must contain INI-SS ventilation recall");
 
 // Test search filter
 const lundbergMatches = pyqs.filter(q => (q.question + " " + q.explanation).toLowerCase().includes("lundberg"));
@@ -117,6 +148,11 @@ const curbMatches = pyqs.filter(q => (q.question + " " + q.explanation).toLowerC
 console.log(`  - Search for 'curb-65' matched: ${curbMatches.length} questions`);
 assert.strictEqual(curbMatches.length, 1);
 assert.strictEqual(curbMatches[0].id, "NEETSS-CC-2025-R001");
+
+const durlobactamMatches = pyqs.filter(q => (q.question + " " + q.explanation).toLowerCase().includes("durlobactam"));
+console.log(`  - Search for 'durlobactam' matched: ${durlobactamMatches.length} questions`);
+assert.strictEqual(durlobactamMatches.length, 1);
+assert.strictEqual(durlobactamMatches[0].id, "INISS-CC-NOV2025-R035");
 
 // 4. Verify mcq-platform.css styles
 const cssContent = fs.readFileSync('mcq-platform.css', 'utf8');

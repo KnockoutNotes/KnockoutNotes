@@ -209,9 +209,16 @@
   // PYQ Helper Functions
   function isPYQ(m) {
     if (!m) return false;
-    if (m.sourceType === "neet-ss-2025-recall" || m.sourceType === "neet-ss-2024-recall") return true;
-    if (m.tags && (m.tags.indexOf("NEET SS CC 2025") !== -1 || m.tags.indexOf("NEET SS CC 2024") !== -1 || m.tags.indexOf("Recall 2025") !== -1 || m.tags.indexOf("Recall 2024") !== -1)) return true;
+    if (m.sourceType === "neet-ss-2025-recall" || m.sourceType === "neet-ss-2024-recall" || m.sourceType === "ini-ss-nov2025-recall") return true;
+    if (m.tags && (m.tags.indexOf("NEET SS CC 2025") !== -1 || m.tags.indexOf("NEET SS CC 2024") !== -1 || m.tags.indexOf("INI SS CC Nov 2025") !== -1 || m.tags.indexOf("Recall Nov 2025") !== -1 || m.tags.indexOf("Recall 2025") !== -1 || m.tags.indexOf("Recall 2024") !== -1)) return true;
     return false;
+  }
+
+  function getPYQExam(m) {
+    if (!m) return "NEET-SS";
+    if (m.exam === "INI-SS" || m.sourceType === "ini-ss-nov2025-recall") return "INI-SS";
+    if (m.tags && (m.tags.indexOf("INI-SS") !== -1 || m.tags.indexOf("INI SS CC Nov 2025") !== -1)) return "INI-SS";
+    return "NEET-SS";
   }
 
   function getPYQYear(m) {
@@ -281,7 +288,8 @@
       search: ""
     },
     pyq: {
-      year: "all",        // "all" | "2025" | "2024"
+      exam: "NEET-SS",    // "NEET-SS" | "INI-SS"
+      year: "all",        // "all" | "2025" | "2024" (or "nov2025" for INI-SS)
       mode: "topic",      // "topic" (Topic-wise Explorer) | "all" (All Questions list)
       topic: "all",       // "all" | normalized topic string
       search: "",
@@ -486,8 +494,12 @@
         if (m.sourceType !== "neet-ss-2024-recall" && (!m.tags || m.tags.indexOf("NEET SS CC 2024") === -1)) return false;
       } else if (vf === "pyq") {
         if (!isPYQ(m)) return false;
-        if (state.pyq.year === "2025" && getPYQYear(m) !== 2025) return false;
-        if (state.pyq.year === "2024" && getPYQYear(m) !== 2024) return false;
+        var pExam = state.pyq.exam || "NEET-SS";
+        if (pExam !== "all" && getPYQExam(m) !== pExam) return false;
+        if (pExam === "NEET-SS") {
+          if (state.pyq.year === "2025" && getPYQYear(m) !== 2025) return false;
+          if (state.pyq.year === "2024" && getPYQYear(m) !== 2024) return false;
+        }
         if (state.pyq.topic && state.pyq.topic !== "all" && getPYQTopic(m) !== state.pyq.topic) return false;
       }
       if (!tp && ch && String(m.chapterId) !== String(ch)) return false;
@@ -502,8 +514,12 @@
         if (m.sourceType !== "neet-ss-2025-recall" && (!m.tags || m.tags.indexOf("NEET SS CC 2025") === -1)) return false;
       } else if (ex === "NEET-SS-2024-RECALL") {
         if (m.sourceType !== "neet-ss-2024-recall" && (!m.tags || m.tags.indexOf("NEET SS CC 2024") === -1)) return false;
+      } else if (ex === "INI-SS-2025-RECALL" || ex === "INI-SS-NOV2025-RECALL") {
+        if (m.sourceType !== "ini-ss-nov2025-recall" && (!m.tags || m.tags.indexOf("INI SS CC Nov 2025") === -1)) return false;
       } else if (ex === "NEET-SS-PYQ") {
-        if (!isPYQ(m)) return false;
+        if (!isPYQ(m) || getPYQExam(m) !== "NEET-SS") return false;
+      } else if (ex === "INI-SS-PYQ") {
+        if (!isPYQ(m) || getPYQExam(m) !== "INI-SS") return false;
       } else if (ex !== "all" && m.exam !== ex) {
         return false;
       }
@@ -876,10 +892,17 @@
 
     var pyqBanner = '';
     if (state.practiceFilter.view === "pyq") {
-      var pyqYearLabel = state.pyq.year === "all" ? "All Years (2024 & 2025)" : ("Year " + state.pyq.year);
+      var pExam = state.pyq.exam || "NEET-SS";
+      var pyqYearLabel = "";
+      if (pExam === "INI-SS") {
+        pyqYearLabel = "November 2025 Session";
+      } else {
+        pyqYearLabel = state.pyq.year === "all" ? "All Years (2024 & 2025)" : ("Year " + state.pyq.year);
+      }
+      var bannerExamIcon = pExam === "INI-SS" ? "🏛️ INI-SS" : "🎯 NEET-SS";
       pyqBanner = (
         '<div class="kn-pyq-banner-bar">' +
-          '<span>🎯 NEET-SS Critical Care PYQs · ' + esc(pyqYearLabel) + ' (' + total + ' Questions)</span>' +
+          '<span>' + bannerExamIcon + ' Critical Care PYQs · ' + esc(pyqYearLabel) + ' (' + total + ' Questions)</span>' +
           '<button type="button" class="kn-mcq-btn kn-mcq-btn--sm" data-action="pyq-return-to-explorer">🗂️ Switch to Topic Explorer</button>' +
         '</div>'
       );
@@ -894,7 +917,9 @@
           topicBadgeHTML +
           '<select class="kn-mcq-select" id="knPracticeViewSelect">' +
             '<option value="all"' + (state.practiceFilter.view === "all" ? " selected" : "") + '>All Questions (' + state.mcqs.length + ')</option>' +
-            '<option value="pyq"' + (state.practiceFilter.view === "pyq" ? " selected" : "") + '>🎯 NEET-SS PYQs (' + (state.pyq.year === 'all' ? 'All Years · 190' : (state.pyq.year === '2025' ? '2025 · 76' : '2024 · 114')) + ')</option>' +
+            '<option value="pyq"' + (state.practiceFilter.view === "pyq" ? " selected" : "") + '>' +
+              (state.pyq.exam === 'INI-SS' ? '🏛️ INI-SS PYQs (Nov 2025 · 66)' : ('🎯 NEET-SS PYQs (' + (state.pyq.year === 'all' ? 'All Years · 190' : (state.pyq.year === '2025' ? '2025 · 76' : '2024 · 114')) + ')')) +
+            '</option>' +
             '<option value="bookmarks"' + (state.practiceFilter.view === "bookmarks" ? " selected" : "") + '>⭐ Bookmarked (' + Object.keys(state.bookmarks).length + ')</option>' +
             '<option value="incorrect"' + (state.practiceFilter.view === "incorrect" ? " selected" : "") + '>❌ Mistakes</option>' +
           '</select>' +
@@ -913,7 +938,10 @@
             '<span class="kn-mcq-badge kn-mcq-badge--topic">' + esc(topicTitle(m.topicId)) + '</span>' +
             '<span class="kn-mcq-badge kn-mcq-badge--diff" data-diff="' + esc(m.difficulty) + '">' + esc(m.difficulty) + '</span>' +
             (isPYQ(m) ?
-              '<span class="kn-mcq-badge kn-mcq-badge--recall" style="background:#0284c7; color:#fff; font-weight:800; border-color:#38bdf8;">' + (m.year === 2024 ? 'NEET SS CC 2024' : 'NEET SS CC 2025') + '</span>' +
+              (getPYQExam(m) === "INI-SS" ?
+                '<span class="kn-mcq-badge kn-mcq-badge--recall" style="background:#4338ca; color:#fff; font-weight:800; border-color:#6366f1;">INI-SS CC Nov 2025</span>' :
+                '<span class="kn-mcq-badge kn-mcq-badge--recall" style="background:#0284c7; color:#fff; font-weight:800; border-color:#38bdf8;">' + (m.year === 2024 ? 'NEET SS CC 2024' : 'NEET SS CC 2025') + '</span>'
+              ) +
               '<span class="kn-mcq-badge" style="background:rgba(56,189,248,0.12); color:#0284c7; font-weight:700;">' + (m.question_status === 'exact_recall' ? '🎯 Exact Recall' : '🔬 Reconstructed') + '</span>' +
               '<span class="kn-mcq-badge" style="background:rgba(16,185,129,0.12); color:#059669; font-weight:700;">✓ Verified</span>' +
               '<span class="kn-mcq-badge" style="color:var(--text-secondary); font-size:10.5px;">' + (m.recall_confidence ? esc(m.recall_confidence) : 'Verified') + '</span>'
@@ -1398,15 +1426,21 @@
 
   // ── UI: PYQ Explorer View (Matching Knockout V03 Screenshot Reference) ───────
   function getFilteredPYQs() {
+    var exam = state.pyq.exam || "NEET-SS";
     var yr = state.pyq.year;
     var sq = (state.pyq.search || "").trim().toLowerCase();
     var tp = state.pyq.topic;
 
     return state.mcqs.filter(function (m) {
       if (!isPYQ(m)) return false;
+      var qExam = getPYQExam(m);
+      if (exam !== "all" && qExam !== exam) return false;
+
       var qYr = getPYQYear(m);
-      if (yr === "2025" && qYr !== 2025) return false;
-      if (yr === "2024" && qYr !== 2024) return false;
+      if (exam === "NEET-SS") {
+        if (yr === "2025" && qYr !== 2025) return false;
+        if (yr === "2024" && qYr !== 2024) return false;
+      }
       if (tp && tp !== "all" && getPYQTopic(m) !== tp) return false;
       if (sq) {
         var tagStr = (m.tags || []).join(" ");
@@ -1418,13 +1452,19 @@
   }
 
   function getPYQTopicCounts() {
+    var exam = state.pyq.exam || "NEET-SS";
     var yr = state.pyq.year;
     var counts = { "all": 0 };
     state.mcqs.forEach(function (m) {
       if (!isPYQ(m)) return;
+      var qExam = getPYQExam(m);
+      if (exam !== "all" && qExam !== exam) return;
+
       var qYr = getPYQYear(m);
-      if (yr === "2025" && qYr !== 2025) return;
-      if (yr === "2024" && qYr !== 2024) return;
+      if (exam === "NEET-SS") {
+        if (yr === "2025" && qYr !== 2025) return;
+        if (yr === "2024" && qYr !== 2024) return;
+      }
       counts["all"]++;
       var t = getPYQTopic(m);
       counts[t] = (counts[t] || 0) + 1;
@@ -1645,19 +1685,30 @@
     var counts = getPYQTopicCounts();
     var filtered = getFilteredPYQs();
 
-    // Calculate total counts per year
-    var countAll = 0, count2025 = 0, count2024 = 0;
+    // Calculate total counts per exam and year
+    var countNeetAll = 0, countNeet2025 = 0, countNeet2024 = 0;
+    var countIniAll = 0;
     state.mcqs.forEach(function (m) {
       if (!isPYQ(m)) return;
-      countAll++;
-      var yr = getPYQYear(m);
-      if (yr === 2025) count2025++;
-      if (yr === 2024) count2024++;
+      var ex = getPYQExam(m);
+      if (ex === "INI-SS") {
+        countIniAll++;
+      } else {
+        countNeetAll++;
+        var yr = getPYQYear(m);
+        if (yr === 2025) countNeet2025++;
+        if (yr === 2024) countNeet2024++;
+      }
     });
 
+    var selectedExam = state.pyq.exam || "NEET-SS";
     var selectedYear = state.pyq.year;
     var activeTopic = state.pyq.topic;
-    var examTargetText = selectedYear === "all" ? "NEET-SS 2024/25" : ("NEET-SS " + selectedYear);
+
+    var examTitle = selectedExam === "INI-SS" ? "INI-SS Critical Care — PYQs" : "NEET-SS Critical Care — PYQs";
+    var examTargetText = selectedExam === "INI-SS"
+      ? "INI-SS Nov 2025"
+      : (selectedYear === "all" ? "NEET-SS 2024/25" : ("NEET-SS " + selectedYear));
 
     // Predefined topic chip ordering
     var topicOrder = [
@@ -1723,13 +1774,33 @@
       );
     });
 
+    // Sub-filters: for NEET-SS show Years, for INI-SS show Sessions
+    var periodSelectorHTML = "";
+    if (selectedExam === "INI-SS") {
+      periodSelectorHTML = (
+        '<div class="kn-pyq-pill-group" role="tablist" aria-label="Examination Session">' +
+          '<span class="kn-pyq-group-label">Session:</span>' +
+          '<button type="button" class="kn-pyq-pill-btn active" data-action="pyq-set-session" data-session="nov2025">Nov 2025 (' + countIniAll + ')</button>' +
+        '</div>'
+      );
+    } else {
+      periodSelectorHTML = (
+        '<div class="kn-pyq-pill-group" role="tablist" aria-label="Examination Year">' +
+          '<span class="kn-pyq-group-label">Year:</span>' +
+          '<button type="button" class="kn-pyq-pill-btn ' + (selectedYear === "all" ? "active" : "") + '" data-action="pyq-set-year" data-year="all">All Years (' + countNeetAll + ')</button>' +
+          '<button type="button" class="kn-pyq-pill-btn ' + (selectedYear === "2025" ? "active" : "") + '" data-action="pyq-set-year" data-year="2025">2025 (' + countNeet2025 + ')</button>' +
+          '<button type="button" class="kn-pyq-pill-btn ' + (selectedYear === "2024" ? "active" : "") + '" data-action="pyq-set-year" data-year="2024">2024 (' + countNeet2024 + ')</button>' +
+        '</div>'
+      );
+    }
+
     return (
       '<div class="kn-pyq-explorer-view">' +
         '<!-- 1. Header Card (Aligned with Study Section Design Language) -->' +
         '<section class="kn-pyq-header-card">' +
           '<div class="kn-pyq-header-top">' +
             '<div>' +
-              '<h2 class="kn-pyq-title">NEET-SS Critical Care — PYQs</h2>' +
+              '<h2 class="kn-pyq-title">' + esc(examTitle) + '</h2>' +
               '<p class="kn-pyq-subtitle">Verified Previous Year Question Bank • Real Recall Questions &amp; In-Depth Explanations</p>' +
             '</div>' +
             '<div class="kn-pyq-header-actions">' +
@@ -1757,15 +1828,16 @@
           '</div>' +
         '</section>' +
 
-        '<!-- 2. Controls Wrap: Year Filter, Viewing Mode & Search -->' +
+        '<!-- 2. Controls Wrap: Exam Switcher, Year/Session Filter, Viewing Mode & Search -->' +
         '<div class="kn-pyq-controls-wrap">' +
           '<div class="kn-pyq-switchers-row">' +
-            '<div class="kn-pyq-pill-group" role="tablist" aria-label="Examination Year">' +
-              '<span class="kn-pyq-group-label">Year:</span>' +
-              '<button type="button" class="kn-pyq-pill-btn ' + (selectedYear === "all" ? "active" : "") + '" data-action="pyq-set-year" data-year="all">All Years (' + countAll + ')</button>' +
-              '<button type="button" class="kn-pyq-pill-btn ' + (selectedYear === "2025" ? "active" : "") + '" data-action="pyq-set-year" data-year="2025">2025 (' + count2025 + ')</button>' +
-              '<button type="button" class="kn-pyq-pill-btn ' + (selectedYear === "2024" ? "active" : "") + '" data-action="pyq-set-year" data-year="2024">2024 (' + count2024 + ')</button>' +
+            '<div class="kn-pyq-pill-group" role="tablist" aria-label="Select Examination">' +
+              '<span class="kn-pyq-group-label">Exam:</span>' +
+              '<button type="button" class="kn-pyq-pill-btn ' + (selectedExam === "NEET-SS" ? "active" : "") + '" data-action="pyq-set-exam" data-exam="NEET-SS">🎯 NEET-SS (' + countNeetAll + ')</button>' +
+              '<button type="button" class="kn-pyq-pill-btn ' + (selectedExam === "INI-SS" ? "active" : "") + '" data-action="pyq-set-exam" data-exam="INI-SS">🏛️ INI-SS (' + countIniAll + ')</button>' +
             '</div>' +
+
+            periodSelectorHTML +
 
             '<div class="kn-pyq-pill-group" role="tablist" aria-label="Viewing Mode">' +
               '<span class="kn-pyq-group-label">View:</span>' +
@@ -2029,6 +2101,17 @@
         state.pyq.mode = "topic";
         render();
         window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+
+      if (action === "pyq-set-exam") {
+        triggerHaptic();
+        state.pyq.exam = btn.getAttribute("data-exam") || "NEET-SS";
+        state.pyq.year = "all";
+        state.pyq.page = 0;
+        state.pyq.topic = "all";
+        filterPracticeList();
+        render();
         return;
       }
 
@@ -2363,6 +2446,9 @@
         render();
       } else if (e.target.id === "knPracticeViewSelect") {
         state.practiceFilter.view = e.target.value;
+        if (e.target.value === "pyq") {
+          state.practiceFilter.exam = "all";
+        }
         state.practiceIndex = 0;
         filterPracticeList();
         render();
