@@ -207,15 +207,18 @@
   }
 
   // PYQ Helper Functions
+  // PYQ Helper Functions
   function isPYQ(m) {
     if (!m) return false;
-    if (m.sourceType === "neet-ss-2025-recall" || m.sourceType === "neet-ss-2024-recall" || m.sourceType === "ini-ss-nov2025-recall") return true;
-    if (m.tags && (m.tags.indexOf("NEET SS CC 2025") !== -1 || m.tags.indexOf("NEET SS CC 2024") !== -1 || m.tags.indexOf("INI SS CC Nov 2025") !== -1 || m.tags.indexOf("Recall Nov 2025") !== -1 || m.tags.indexOf("Recall 2025") !== -1 || m.tags.indexOf("Recall 2024") !== -1)) return true;
+    if (m.sourceType === "neet-ss-2025-recall" || m.sourceType === "neet-ss-2024-recall" || m.sourceType === "ini-ss-nov2025-recall" || m.sourceType === "ini-cet-ss-2026-recall") return true;
+    if (m.tags && (m.tags.indexOf("NEET SS CC 2025") !== -1 || m.tags.indexOf("NEET SS CC 2024") !== -1 || m.tags.indexOf("INI SS CC Nov 2025") !== -1 || m.tags.indexOf("INI SS CC April 2026") !== -1 || m.tags.indexOf("INI-CET SS 2026") !== -1 || m.tags.indexOf("Recall Nov 2025") !== -1 || m.tags.indexOf("Recall 2026") !== -1 || m.tags.indexOf("Recall 2025") !== -1 || m.tags.indexOf("Recall 2024") !== -1)) return true;
     return false;
   }
 
   function getPYQExam(m) {
     if (!m) return "NEET-SS";
+    if (m.exam === "INI-CET SS" || m.sourceType === "ini-cet-ss-2026-recall") return "INI-CET-SS-2026";
+    if (m.tags && (m.tags.indexOf("INI-CET SS 2026") !== -1 || m.tags.indexOf("INI SS CC April 2026") !== -1)) return "INI-CET-SS-2026";
     if (m.exam === "INI-SS" || m.sourceType === "ini-ss-nov2025-recall") return "INI-SS";
     if (m.tags && (m.tags.indexOf("INI-SS") !== -1 || m.tags.indexOf("INI SS CC Nov 2025") !== -1)) return "INI-SS";
     return "NEET-SS";
@@ -224,6 +227,7 @@
   function getPYQYear(m) {
     if (!m) return 2025;
     if (m.year) return Number(m.year);
+    if (m.sourceType === "ini-cet-ss-2026-recall" || (m.tags && (m.tags.indexOf("INI-CET SS 2026") !== -1 || m.tags.indexOf("Recall 2026") !== -1))) return 2026;
     if (m.sourceType === "neet-ss-2024-recall" || (m.tags && m.tags.indexOf("NEET SS CC 2024") !== -1)) return 2024;
     return 2025;
   }
@@ -516,10 +520,14 @@
         if (m.sourceType !== "neet-ss-2024-recall" && (!m.tags || m.tags.indexOf("NEET SS CC 2024") === -1)) return false;
       } else if (ex === "INI-SS-2025-RECALL" || ex === "INI-SS-NOV2025-RECALL") {
         if (m.sourceType !== "ini-ss-nov2025-recall" && (!m.tags || m.tags.indexOf("INI SS CC Nov 2025") === -1)) return false;
+      } else if (ex === "INI-CET-SS-2026-RECALL" || ex === "INICET-SS-2026-RECALL") {
+        if (m.sourceType !== "ini-cet-ss-2026-recall" && (!m.tags || m.tags.indexOf("INI-CET SS 2026") === -1)) return false;
       } else if (ex === "NEET-SS-PYQ") {
         if (!isPYQ(m) || getPYQExam(m) !== "NEET-SS") return false;
       } else if (ex === "INI-SS-PYQ") {
         if (!isPYQ(m) || getPYQExam(m) !== "INI-SS") return false;
+      } else if (ex === "INI-CET-SS-2026-PYQ") {
+        if (!isPYQ(m) || getPYQExam(m) !== "INI-CET-SS-2026") return false;
       } else if (ex !== "all" && m.exam !== ex) {
         return false;
       }
@@ -1688,10 +1696,13 @@
     // Calculate total counts per exam and year
     var countNeetAll = 0, countNeet2025 = 0, countNeet2024 = 0;
     var countIniAll = 0;
+    var countIniCet2026 = 0;
     state.mcqs.forEach(function (m) {
       if (!isPYQ(m)) return;
       var ex = getPYQExam(m);
-      if (ex === "INI-SS") {
+      if (ex === "INI-CET-SS-2026") {
+        countIniCet2026++;
+      } else if (ex === "INI-SS") {
         countIniAll++;
       } else {
         countNeetAll++;
@@ -1705,10 +1716,15 @@
     var selectedYear = state.pyq.year;
     var activeTopic = state.pyq.topic;
 
-    var examTitle = selectedExam === "INI-SS" ? "INI-SS Critical Care — PYQs" : "NEET-SS Critical Care — PYQs";
-    var examTargetText = selectedExam === "INI-SS"
-      ? "INI-SS Nov 2025"
-      : (selectedYear === "all" ? "NEET-SS 2024/25" : ("NEET-SS " + selectedYear));
+    var examTitle = "NEET-SS Critical Care — PYQs";
+    var examTargetText = selectedYear === "all" ? "NEET-SS 2024/25" : ("NEET-SS " + selectedYear);
+    if (selectedExam === "INI-CET-SS-2026") {
+      examTitle = "INI-CET SS 2026 Critical Care — Recall PYQs";
+      examTargetText = "INI-CET SS April 2026";
+    } else if (selectedExam === "INI-SS") {
+      examTitle = "INI-SS Critical Care — Recall PYQs";
+      examTargetText = "INI-SS Nov 2025";
+    }
 
     // Predefined topic chip ordering
     var topicOrder = [
@@ -1774,9 +1790,16 @@
       );
     });
 
-    // Sub-filters: for NEET-SS show Years, for INI-SS show Sessions
+    // Sub-filters: for NEET-SS show Years, for INI-SS / INI-CET show Sessions
     var periodSelectorHTML = "";
-    if (selectedExam === "INI-SS") {
+    if (selectedExam === "INI-CET-SS-2026") {
+      periodSelectorHTML = (
+        '<div class="kn-pyq-pill-group" role="tablist" aria-label="Examination Session">' +
+          '<span class="kn-pyq-group-label">Session:</span>' +
+          '<button type="button" class="kn-pyq-pill-btn active" data-action="pyq-set-session" data-session="april2026">April 2026 (' + countIniCet2026 + ')</button>' +
+        '</div>'
+      );
+    } else if (selectedExam === "INI-SS") {
       periodSelectorHTML = (
         '<div class="kn-pyq-pill-group" role="tablist" aria-label="Examination Session">' +
           '<span class="kn-pyq-group-label">Session:</span>' +
@@ -1834,7 +1857,8 @@
             '<div class="kn-pyq-pill-group" role="tablist" aria-label="Select Examination">' +
               '<span class="kn-pyq-group-label">Exam:</span>' +
               '<button type="button" class="kn-pyq-pill-btn ' + (selectedExam === "NEET-SS" ? "active" : "") + '" data-action="pyq-set-exam" data-exam="NEET-SS">🎯 NEET-SS (' + countNeetAll + ')</button>' +
-              '<button type="button" class="kn-pyq-pill-btn ' + (selectedExam === "INI-SS" ? "active" : "") + '" data-action="pyq-set-exam" data-exam="INI-SS">🏛️ INI-SS (' + countIniAll + ')</button>' +
+              '<button type="button" class="kn-pyq-pill-btn ' + (selectedExam === "INI-SS" ? "active" : "") + '" data-action="pyq-set-exam" data-exam="INI-SS">🏛️ INI-SS Nov 25 (' + countIniAll + ')</button>' +
+              '<button type="button" class="kn-pyq-pill-btn ' + (selectedExam === "INI-CET-SS-2026" ? "active" : "") + '" data-action="pyq-set-exam" data-exam="INI-CET-SS-2026">⭐ INI-CET SS 2026 (' + countIniCet2026 + ')</button>' +
             '</div>' +
 
             periodSelectorHTML +
