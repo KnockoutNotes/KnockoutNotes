@@ -360,6 +360,20 @@ export default {
       }
     }
 
+    if (pathname === '/robots.txt') {
+      if (env.ASSETS) {
+        const robotsReq = new Request(new URL('/robots.txt', request.url), request);
+        const robotsRes = await env.ASSETS.fetch(robotsReq);
+        if (robotsRes && robotsRes.status === 200) {
+          const headers = new Headers(robotsRes.headers);
+          headers.set('Content-Type', 'text/plain; charset=utf-8');
+          headers.set('Cache-Control', 'public, max-age=86400');
+          headers.set('X-Content-Type-Options', 'nosniff');
+          return new Response(robotsRes.body, { status: 200, headers });
+        }
+      }
+    }
+
     // ==========================================
     // RECEIPT & INVOICE PAGE ROUTES
     // ==========================================
