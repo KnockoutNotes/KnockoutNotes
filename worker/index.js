@@ -335,6 +335,13 @@ export default {
     // SEO: XML SITEMAP & ROBOTS
     // ==========================================
     if (pathname === '/sitemap.xml') {
+      if (request.method === 'HEAD') {
+        const headHeaders = new Headers();
+        headHeaders.set('Content-Type', 'application/xml; charset=utf-8');
+        headHeaders.set('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
+        headHeaders.set('X-Content-Type-Options', 'nosniff');
+        return new Response(null, { status: 200, headers: headHeaders });
+      }
       if (env.ASSETS) {
         const sitemapReq = new Request(new URL('/sitemap.xml', request.url), request);
         const sitemapRes = await env.ASSETS.fetch(sitemapReq);
@@ -346,7 +353,8 @@ export default {
           }
           const headers = new Headers(sitemapRes.headers);
           headers.set('Content-Type', 'application/xml; charset=utf-8');
-          headers.set('Cache-Control', 'public, max-age=86400, stale-while-revalidate=3600');
+          headers.set('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
+          headers.set('X-Content-Type-Options', 'nosniff');
           return new Response(sitemapText, { status: 200, headers });
         }
       }
