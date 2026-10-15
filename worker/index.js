@@ -1857,6 +1857,16 @@ export default {
           headers.set('Cache-Control', 'public, max-age=86400, stale-while-revalidate=3600');
           return new Response(response.body, { status: response.status, headers });
         }
+        // Core static stylesheets and client scripts: 1 day browser cache with 7 days stale-while-revalidate
+        // Ensures immediate fast loads for returning users while guaranteeing newly deployed code propagates within seconds
+        if (
+          !isHtml &&
+          lowerPath !== '/sw.js' &&
+          (lowerPath.endsWith('.css') || lowerPath.endsWith('.js') || lowerPath.endsWith('.mjs'))
+        ) {
+          headers.set('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
+          return new Response(response.body, { status: response.status, headers });
+        }
         return new Response(response.body, { status: response.status, headers });
       }
 
