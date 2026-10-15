@@ -17,6 +17,7 @@ import {
   parseCookies
 } from './auth.js';
 import { sendEmail } from './mailersend.js';
+import { checkRateLimit, resetRateLimit, getClientIp } from './rate-limit.js';
 
 function jsonResponse(data, status = 200, headers = {}) {
   return new Response(JSON.stringify(data), {
@@ -32,6 +33,35 @@ function isValidEmail(email) {
   return typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 }
 
+export function escapeHtml(str) {
+  if (str == null) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+export function getSafeReturnUrl(rawUrl, siteUrl) {
+  if (!rawUrl || typeof rawUrl !== 'string') return '/workspace.html';
+  const trimmed = rawUrl.trim();
+  // Safe relative path: must begin with single / and not // or /\ and no protocol/control chars
+  if (trimmed.startsWith('/') && !trimmed.startsWith('//') && !trimmed.includes('\\')) {
+    if (/^[a-zA-Z0-9_\-.~%/?#=]+$/.test(trimmed)) {
+      return trimmed;
+    }
+  }
+  try {
+    const parsed = new URL(trimmed);
+    const siteOrigin = new URL(siteUrl).origin;
+    if (parsed.origin === siteOrigin) {
+      return parsed.pathname + parsed.search + parsed.hash;
+    }
+  } catch (_) {}
+  return '/workspace.html';
+}
+
 /**
  * --------------------------------------------------------------------------
  * 1. AUTHENTICATION & PROFILE CONTROLLERS
@@ -41,16 +71,26 @@ function isValidEmail(email) {
 // POST /api/auth/register
 export async function handleRegister(request, env) {
   try {
+    const clientIp = getClientIp(request);
+    const rl = await checkRateLimit(env.DB, 'reg_ip:' + clientIp, 5, 3600, 3600);
+    if (!rl.allowed) {
+      return jsonResponse(
+        { error: `Too many registration attempts. Please try again in ${Math.ceil(rl.retryAfter / 60)} minutes.` },
+        429,
+        { 'Retry-After': String(rl.retryAfter) }
+      );
+    }
+
     const { email, name, password } = await request.json();
 
     if (!isValidEmail(email)) {
       return jsonResponse({ error: 'Please enter a valid email address.' }, 400);
     }
-    if (!name || typeof name !== 'string' || name.trim().length < 2) {
-      return jsonResponse({ error: 'Please enter a name with at least 2 characters.' }, 400);
+    if (!name || typeof name !== 'string' || name.trim().length < 2 || name.trim().length > 100) {
+      return jsonResponse({ error: 'Please enter a valid name (2 to 100 characters).' }, 400);
     }
-    if (!password || typeof password !== 'string' || password.length < 8) {
-      return jsonResponse({ error: 'Password must be at least 8 characters long.' }, 400);
+    if (!password || typeof password !== 'string' || password.length < 8 || password.length > 128) {
+      return jsonResponse({ error: 'Password must be between 8 and 128 characters long.' }, 400);
     }
 
     const cleanEmail = email.trim().toLowerCase();
@@ -118,6 +158,16 @@ export async function handleRegister(request, env) {
 // POST /api/auth/login
 export async function handleLogin(request, env) {
   try {
+    const clientIp = getClientIp(request);
+    const ipRl = await checkRateLimit(env.DB, 'login_ip:' + clientIp, 10, 600, 900);
+    if (!ipRl.allowed) {
+      return jsonResponse(
+        { error: `Too many login attempts from this network. Please try again in ${Math.ceil(ipRl.retryAfter / 60)} minutes.` },
+        429,
+        { 'Retry-After': String(ipRl.retryAfter) }
+      );
+    }
+
     const { email, password } = await request.json();
 
     if (!email || !password) {
@@ -125,6 +175,16 @@ export async function handleLogin(request, env) {
     }
 
     const cleanEmail = email.trim().toLowerCase();
+
+    // Check account lockout
+    const userRl = await checkRateLimit(env.DB, 'fail_user:' + cleanEmail, 5, 900, 900);
+    if (!userRl.allowed) {
+      return jsonResponse(
+        { error: `Too many failed attempts for this account. Locked out for security. Try again in ${Math.ceil(userRl.retryAfter / 60)} minutes.` },
+        429,
+        { 'Retry-After': String(userRl.retryAfter) }
+      );
+    }
 
     const user = await env.DB
       .prepare('SELECT * FROM users WHERE email = ?')
@@ -143,6 +203,9 @@ export async function handleLogin(request, env) {
     if (!isMatch) {
       return jsonResponse({ error: 'Invalid email or password.' }, 401);
     }
+
+    // Reset account lockout on successful auth
+    await resetRateLimit(env.DB, 'fail_user:' + cleanEmail);
 
     // Update last_login_at
     await env.DB
@@ -237,7 +300,8 @@ export async function handleGoogleAuthStart(request, env) {
   const url = new URL(request.url);
   const siteUrl = (env.SITE_URL || `${url.protocol}//${url.host}`).replace(/\/$/, '');
   const callbackUrl = `${siteUrl}/api/auth/google/callback`;
-  const returnUrl = url.searchParams.get('return_url') || '/workspace.html';
+  const rawReturnUrl = url.searchParams.get('return_url') || '/workspace.html';
+  const returnUrl = getSafeReturnUrl(rawReturnUrl, siteUrl);
 
   const clientId = (env.GOOGLE_CLIENT_ID || '').trim();
   const clientSecret = (env.GOOGLE_CLIENT_SECRET || '').trim();
@@ -271,10 +335,10 @@ export async function handleGoogleAuthStart(request, env) {
       <div>1. <code>GOOGLE_CLIENT_ID</code></div>
       <div style="margin-top: 4px;">2. <code>GOOGLE_CLIENT_SECRET</code></div>
       <p style="margin: 12px 0 6px 0;"><strong>Authorized Redirect URI (Google Cloud Console):</strong></p>
-      <code>${callbackUrl}</code>
+      <code>${escapeHtml(callbackUrl)}</code>
     </div>
     <p>In the meantime, you can create a free account or sign in using email &amp; password.</p>
-    <a href="${returnUrl}" class="btn">&larr; Return to KnockoutNotes</a>
+    <a href="${escapeHtml(returnUrl)}" class="btn">&larr; Return to KnockoutNotes</a>
   </div>
 </body>
 </html>`, {
@@ -365,8 +429,9 @@ export async function handleGoogleAuthCallback(request, env) {
   try {
     const raw = atob(state.replace(/-/g, '+').replace(/_/g, '/'));
     const parsed = JSON.parse(raw);
-    if (parsed.r && (parsed.r.startsWith('/') || parsed.r.startsWith(siteUrl))) {
-      returnUrl = parsed.r.startsWith('/') ? `${siteUrl}${parsed.r}` : parsed.r;
+    if (parsed.r) {
+      const safeRel = getSafeReturnUrl(parsed.r, siteUrl);
+      returnUrl = safeRel.startsWith('/') ? `${siteUrl}${safeRel}` : safeRel;
     }
     // Expiration check (10 minutes)
     if (parsed.t && Date.now() - parsed.t > 10 * 60 * 1000) {
@@ -717,6 +782,16 @@ export async function handleChangePassword(request, env, userAuth) {
 // POST /api/auth/forgot-password
 export async function handleForgotPassword(request, env) {
   try {
+    const clientIp = getClientIp(request);
+    const rl = await checkRateLimit(env.DB, 'forgot_ip:' + clientIp, 3, 3600, 3600);
+    if (!rl.allowed) {
+      return jsonResponse(
+        { error: `Too many password reset requests. Please try again in ${Math.ceil(rl.retryAfter / 60)} minutes.` },
+        429,
+        { 'Retry-After': String(rl.retryAfter) }
+      );
+    }
+
     const { email } = await request.json();
     if (!isValidEmail(email)) {
       return jsonResponse({ error: 'Please provide a valid email address.' }, 400);
@@ -744,10 +819,11 @@ export async function handleForgotPassword(request, env) {
       // If MailerSend is configured, dispatch password reset email
       if (env.MAILERSEND_API_TOKEN && env.FROM_EMAIL) {
         const resetUrl = `${env.SITE_URL || ''}/workspace.html?action=reset&token=${resetToken}`;
+        const safeName = escapeHtml(user.name || 'there');
         const emailHtml = `
           <div style="font-family: sans-serif; max-width: 560px; margin: 0 auto; padding: 24px; color: #1e293b;">
             <h2 style="color: #0284c7;">KnockoutNotes Password Reset</h2>
-            <p>Hello ${user.name || 'there'},</p>
+            <p>Hello ${safeName},</p>
             <p>You requested a password reset for your KnockoutNotes account. Click the button below to set a new password:</p>
             <div style="margin: 28px 0;">
               <a href="${resetUrl}" style="background: #0284c7; color: #ffffff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">Reset Password</a>

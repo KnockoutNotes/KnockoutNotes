@@ -248,6 +248,8 @@ export async function serveFile(storageKey, env, request) {
   object.writeHttpMetadata(headers);
   headers.set('etag', object.httpEtag);
   headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+  headers.set('X-Content-Type-Options', 'nosniff');
+  headers.set('Content-Security-Policy', "default-src 'none'; sandbox");
 
   return new Response(object.body, {
     status: 200,

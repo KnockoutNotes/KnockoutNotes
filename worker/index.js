@@ -15,6 +15,7 @@ import {
   extractUserSessionId,
   validateUserSession
 } from './auth.js';
+import { checkRateLimit, resetRateLimit, getClientIp } from './rate-limit.js';
 
 import {
   handleRegister,
@@ -104,21 +105,114 @@ import {
 } from './payments.js';
 
 
-// Standard CORS headers
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
-};
+// Standard CORS headers fallback
+const DEFAULT_ALLOWED_METHODS = 'GET, POST, PUT, DELETE, OPTIONS';
+const DEFAULT_ALLOWED_HEADERS = 'Content-Type, Authorization, X-Requested-With, x-webhook-signature, x-webhook-timestamp, x-webhook-version, x-idempotency-key';
 
-function jsonResponse(data, status = 200, extraHeaders = {}) {
+function getSiteUrl(request, env) {
+  if (env && env.SITE_URL) return env.SITE_URL.replace(/\/$/, '');
+  const url = new URL(request.url);
+  return `${url.protocol}//${url.host}`;
+}
+
+function getCorsHeaders(request, env) {
+  const origin = request.headers.get('Origin');
+  if (!origin) {
+    return {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': DEFAULT_ALLOWED_METHODS,
+      'Access-Control-Allow-Headers': DEFAULT_ALLOWED_HEADERS
+    };
+  }
+
+  const siteUrl = getSiteUrl(request, env);
+  let isAllowed = false;
+
+  try {
+    const originUrl = new URL(origin);
+    const siteOrigin = new URL(siteUrl).origin;
+    const reqOrigin = new URL(request.url).origin;
+
+    if (
+      originUrl.origin === siteOrigin ||
+      originUrl.origin === reqOrigin ||
+      originUrl.hostname === 'localhost' ||
+      originUrl.hostname === '127.0.0.1' ||
+      origin === 'capacitor://localhost'
+    ) {
+      isAllowed = true;
+    }
+  } catch (_) {}
+
+  if (isAllowed) {
+    return {
+      'Access-Control-Allow-Origin': origin,
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Methods': DEFAULT_ALLOWED_METHODS,
+      'Access-Control-Allow-Headers': DEFAULT_ALLOWED_HEADERS,
+      'Vary': 'Origin'
+    };
+  }
+
+  return {
+    'Access-Control-Allow-Origin': siteUrl,
+    'Access-Control-Allow-Methods': DEFAULT_ALLOWED_METHODS,
+    'Access-Control-Allow-Headers': DEFAULT_ALLOWED_HEADERS,
+    'Vary': 'Origin'
+  };
+}
+
+function applySecurityHeaders(headers, request, isHtml = false) {
+  headers.set('X-Content-Type-Options', 'nosniff');
+  headers.set('X-Frame-Options', 'SAMEORIGIN');
+  headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+
+  try {
+    const url = new URL(request.url);
+    if (url.protocol === 'https:') {
+      headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+    }
+  } catch (_) {}
+
+  if (isHtml) {
+    const csp = [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://bondin.io https://sdk.cashfree.com https://accounts.google.com",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "font-src 'self' https://fonts.gstatic.com data:",
+      "img-src 'self' data: blob: https:",
+      "connect-src 'self' https://api.cashfree.com https://sandbox.cashfree.com https://cloudflareinsights.com https://accounts.google.com https://oauth2.googleapis.com https://script.google.com https://script.googleusercontent.com",
+      "frame-src 'self' https://bondin.io https://api.cashfree.com",
+      "frame-ancestors 'self'",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self' https://accounts.google.com"
+    ].join('; ');
+    headers.set('Content-Security-Policy', csp);
+  }
+  return headers;
+}
+
+function jsonResponse(data, status = 200, extraHeaders = {}, request = null, env = null) {
+  const cors = (request && env) ? getCorsHeaders(request, env) : {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': DEFAULT_ALLOWED_METHODS,
+    'Access-Control-Allow-Headers': DEFAULT_ALLOWED_HEADERS
+  };
+  const headers = new Headers({
+    'Content-Type': 'application/json',
+    ...cors,
+    ...extraHeaders
+  });
+  if (request) {
+    applySecurityHeaders(headers, request, false);
+  } else {
+    headers.set('X-Content-Type-Options', 'nosniff');
+  }
   return new Response(JSON.stringify(data), {
     status,
-    headers: {
-      'Content-Type': 'application/json',
-      ...CORS_HEADERS,
-      ...extraHeaders
-    }
+    headers
   });
 }
 
@@ -132,10 +226,21 @@ function redirectResponse(url, extraHeaders = {}) {
   });
 }
 
-function getSiteUrl(request, env) {
-  if (env.SITE_URL) return env.SITE_URL.replace(/\/$/, '');
-  const url = new URL(request.url);
-  return `${url.protocol}//${url.host}`;
+async function parseJsonBody(request, maxBytes = 65536) {
+  const contentLength = parseInt(request.headers.get('content-length') || '0', 10);
+  if (contentLength > maxBytes) {
+    return { errorResponse: jsonResponse({ error: 'Payload too large. Maximum size exceeded.' }, 413) };
+  }
+  try {
+    const text = await request.text();
+    if (text.length > maxBytes) {
+      return { errorResponse: jsonResponse({ error: 'Payload too large. Maximum size exceeded.' }, 413) };
+    }
+    const data = JSON.parse(text);
+    return { data };
+  } catch (err) {
+    return { errorResponse: jsonResponse({ error: 'Malformed JSON payload.' }, 400) };
+  }
 }
 
 function isValidEmail(email) {
@@ -149,9 +254,16 @@ export default {
     const url = new URL(request.url);
     const pathname = url.pathname;
 
-    // Handle preflight OPTIONS
+    // Handle preflight OPTIONS with origin-validated CORS
     if (request.method === 'OPTIONS') {
-      return new Response(null, { status: 204, headers: CORS_HEADERS });
+      const cors = getCorsHeaders(request, env);
+      return new Response(null, {
+        status: 204,
+        headers: {
+          ...cors,
+          'Access-Control-Max-Age': '86400'
+        }
+      });
     }
 
     // ==========================================
@@ -214,8 +326,28 @@ export default {
         if (res && res.status === 200) {
           const headers = new Headers(res.headers);
           headers.set('Content-Type', 'application/vnd.android.package-archive');
-          headers.set('Content-Disposition', 'attachment; filename="knockoutnotes.apk"');
           return new Response(res.body, { status: 200, headers });
+        }
+      }
+    }
+
+    // ==========================================
+    // SEO: XML SITEMAP & ROBOTS
+    // ==========================================
+    if (pathname === '/sitemap.xml') {
+      if (env.ASSETS) {
+        const sitemapReq = new Request(new URL('/sitemap.xml', request.url), request);
+        const sitemapRes = await env.ASSETS.fetch(sitemapReq);
+        if (sitemapRes && sitemapRes.status === 200) {
+          let sitemapText = await sitemapRes.text();
+          const host = url.host;
+          if (host && !host.includes('workers.dev')) {
+            sitemapText = sitemapText.replaceAll('https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev', url.origin);
+          }
+          const headers = new Headers(sitemapRes.headers);
+          headers.set('Content-Type', 'application/xml; charset=utf-8');
+          headers.set('Cache-Control', 'public, max-age=86400, stale-while-revalidate=3600');
+          return new Response(sitemapText, { status: 200, headers });
         }
       }
     }
@@ -262,10 +394,22 @@ export default {
       }
 
       try {
-        const body = await request.json();
-        const email = (body.email || '').trim().toLowerCase();
-        const name = (body.name || '').trim();
-        const sourcePage = (body.sourcePage || 'website').trim();
+        const clientIp = getClientIp(request);
+        const rl = await checkRateLimit(env.DB, 'sub_ip:' + clientIp, 10, 3600, 3600);
+        if (!rl.allowed) {
+          return jsonResponse(
+            { error: `Too many subscription attempts. Please try again in ${Math.ceil(rl.retryAfter / 60)} minutes.` },
+            429,
+            { 'Retry-After': String(rl.retryAfter) }
+          );
+        }
+
+        const { data: body, errorResponse } = await parseJsonBody(request, 16384);
+        if (errorResponse) return errorResponse;
+
+        const email = (body?.email || '').trim().toLowerCase();
+        const name = (body?.name || '').trim().substring(0, 100);
+        const sourcePage = (body?.sourcePage || 'website').trim().substring(0, 100);
 
         if (!isValidEmail(email)) {
           return jsonResponse({ error: 'Please enter a valid email address.' }, 400);
@@ -546,7 +690,21 @@ export default {
     // POST /api/admin/login
     if (pathname === '/api/admin/login' && request.method === 'POST') {
       try {
-        const { username, password } = await request.json();
+        const clientIp = getClientIp(request);
+        const rl = await checkRateLimit(env.DB, 'admin_ip:' + clientIp, 5, 900, 900);
+        if (!rl.allowed) {
+          return jsonResponse(
+            { error: `Too many failed login attempts. Locked out for security. Try again in ${Math.ceil(rl.retryAfter / 60)} minutes.` },
+            429,
+            { 'Retry-After': String(rl.retryAfter) }
+          );
+        }
+
+        const { data, errorResponse } = await parseJsonBody(request, 16384);
+        if (errorResponse) return errorResponse;
+
+        const username = data?.username;
+        const password = data?.password;
         const expectedUsername = env.ADMIN_USERNAME || 'admin.knockoutnotes';
         const expectedPasswordHash = env.ADMIN_PASSWORD_HASH || '';
 
@@ -560,6 +718,9 @@ export default {
         if (!isUserValid || !isPassValid) {
           return jsonResponse({ error: 'Invalid credentials' }, 401);
         }
+
+        // Clear lock on successful login
+        await resetRateLimit(env.DB, 'admin_ip:' + clientIp);
 
         const sessionId = generateSecureToken(32);
         const expiresAt = new Date(Date.now() + 7 * 24 * 3600 * 1000).toISOString();
@@ -789,6 +950,15 @@ export default {
       const sessionId = extractUserSessionId(request);
       const userAuth = await validateUserSession(env.DB, sessionId);
       if (!userAuth) return jsonResponse({ error: 'Unauthorized. Please log in.', authenticated: false }, 401);
+
+      const rl = await checkRateLimit(env.DB, 'order_user:' + userAuth.user.id, 15, 3600, 1800);
+      if (!rl.allowed) {
+        return jsonResponse(
+          { error: `Too many payment order requests. Please try again in ${Math.ceil(rl.retryAfter / 60)} minutes.` },
+          429,
+          { 'Retry-After': String(rl.retryAfter) }
+        );
+      }
       return handleCreateCashfreeOrder(request, env, userAuth);
     }
 
@@ -1630,6 +1800,11 @@ export default {
       const response = await env.ASSETS.fetch(request);
       if (response && response.status === 200) {
         const lowerPath = pathname.toLowerCase();
+        const contentType = response.headers.get('content-type') || '';
+        const isHtml = contentType.includes('text/html') || lowerPath.endsWith('.html') || lowerPath === '/' || lowerPath === '';
+        const headers = new Headers(response.headers);
+        applySecurityHeaders(headers, request, isHtml);
+
         // Immutable long-lived cache for vendor libraries (Three.js, GSAP, jsPDF) and 3D models
         if (
           lowerPath.startsWith('/vendor/') ||
@@ -1637,7 +1812,6 @@ export default {
           lowerPath.endsWith('.glb') ||
           lowerPath.endsWith('.wasm')
         ) {
-          const headers = new Headers(response.headers);
           headers.set('Cache-Control', 'public, max-age=2592000, immutable');
           return new Response(response.body, { status: response.status, headers });
         }
@@ -1650,7 +1824,6 @@ export default {
           lowerPath.endsWith('.webp') ||
           lowerPath.endsWith('.ico')
         ) {
-          const headers = new Headers(response.headers);
           headers.set('Cache-Control', 'public, max-age=604800, stale-while-revalidate=86400');
           return new Response(response.body, { status: response.status, headers });
         }
@@ -1659,13 +1832,38 @@ export default {
           lowerPath.startsWith('/criticalcare/') ||
           lowerPath.includes('recall')
         ) {
-          const headers = new Headers(response.headers);
           headers.set('Cache-Control', 'public, max-age=86400, stale-while-revalidate=3600');
           return new Response(response.body, { status: response.status, headers });
         }
+        return new Response(response.body, { status: response.status, headers });
+      }
+
+      // Branded 404 response for missing static assets
+      if (!response || response.status === 404) {
+        try {
+          const notFoundReq = new Request(new URL('/404', request.url));
+          const notFoundRes = await env.ASSETS.fetch(notFoundReq);
+          if (notFoundRes && notFoundRes.status === 200) {
+            const headers = new Headers(notFoundRes.headers);
+            applySecurityHeaders(headers, request, true);
+            return new Response(notFoundRes.body, { status: 404, headers });
+          }
+        } catch (_) {}
       }
       return response;
     }
+
+    try {
+      if (env.ASSETS) {
+        const notFoundReq = new Request(new URL('/404', request.url));
+        const notFoundRes = await env.ASSETS.fetch(notFoundReq);
+        if (notFoundRes && notFoundRes.status === 200) {
+          const headers = new Headers(notFoundRes.headers);
+          applySecurityHeaders(headers, request, true);
+          return new Response(notFoundRes.body, { status: 404, headers });
+        }
+      }
+    } catch (_) {}
 
     return new Response('Not Found', { status: 404 });
   }

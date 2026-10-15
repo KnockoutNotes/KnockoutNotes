@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found (404) | KnockoutNotes</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0284c7">
+  <link rel="icon" type="image/png" href="knockoutnotes_icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page-common.css">
+  <link rel="stylesheet" href="bubble-menu.css">
+  <style>
+    .kn-error-stage {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .kn-error-code {
+      font-size: clamp(4rem, 12vw, 8rem);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      background: linear-space, linear-gradient(135deg, #38bdf8 0%, #0284c7 50%, #0369a1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .kn-error-title {
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 1rem;
+    }
+    .kn-error-desc {
+      font-size: 1.05rem;
+      color: #94a3b8;
+      max-width: 540px;
+      margin: 0 auto 2rem auto;
+      line-height: 1.6;
+    }
+    .kn-error-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .kn-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #0284c7;
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+    .kn-btn-primary:hover {
+      background: #0369a1;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4);
+    }
+    .kn-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(15, 23, 42, 0.8);
+      color: #e2e8f0;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+    .kn-btn-secondary:hover {
+      background: rgba(30, 41, 59, 0.9);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    .kn-quick-links {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.15);
+      width: 100%;
+      max-width: 600px;
+    }
+    .kn-quick-links h3 {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      margin-bottom: 1rem;
+    }
+    .kn-links-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 1.5rem;
+    }
+    .kn-links-grid a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .kn-links-grid a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body class="mode-3d">
+
+  <header class="site-hud">
+    <div class="hud-capsule">
+      <a class="brand" href="/" aria-label="KnockoutNotes home">
+        <div class="brand-icon-wrap"><img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem"></div>
+        <div class="brand-name">Knockout<span>Notes</span></div>
+      </a>
+      <div class="hud-path-indicator">
+        <span class="hud-pulse-dot"></span>
+        <span>ERROR // 404 NOT FOUND</span>
+      </div>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="/">Home</a>
+        <a href="/study">Study</a>
+        <a href="/critical-care">Critical Care</a>
+        <a href="/drugs">Drugs</a>
+        <a href="/calculators">Calculators</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="kn-error-stage">
+    <div class="kn-error-code">404</div>
+    <h1 class="kn-error-title">Page Not Found</h1>
+    <p class="kn-error-desc">
+      The clinical topic, module, or resource you are looking for may have moved, been reorganized, or is temporarily unavailable.
+    </p>
+
+    <div class="kn-error-actions">
+      <a href="/" class="kn-btn-primary">Return to Home</a>
+      <a href="/study" class="kn-btn-secondary">Explore Study Modules</a>
+    </div>
+
+    <div class="kn-quick-links">
+      <h3>Recommended Knowledge Hubs</h3>
+      <div class="kn-links-grid">
+        <a href="/study">Anaesthesia Syllabus</a>
+        <a href="/critical-care">Critical Care Curriculum</a>
+        <a href="/drugs">Drug Monographs</a>
+        <a href="/notes">Chapter Notes</a>
+        <a href="/calculators">Clinical Calculators</a>
+        <a href="/ventilator">Workstation Simulator</a>
+        <a href="/regional-anaesthesia">Nerve Blocks</a>
+        <a href="/crisis">Crisis Checklists</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="bubble-menu.js" defer></script>
+</body>
+</html>

@@ -24,13 +24,23 @@ const BASE_STYLES = `
   .raw-link { word-break: break-all; font-size: 13px; color: #38bdf8; }
 `;
 
+function escapeHtml(str) {
+  if (str == null) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function wrapLayout(title, contentHtml, footerHtml = '') {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title}</title>
+  <title>${escapeHtml(title)}</title>
   <style>${BASE_STYLES}</style>
 </head>
 <body>
@@ -173,13 +183,13 @@ export function renderContentNotificationEmail({ siteUrl, eventType, title, summ
 
   const content = `
     <div style="display: inline-block; padding: 4px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: ${badge.color}; background: ${badge.bg}; border-radius: 4px; margin-bottom: 12px;">
-      ${badge.label}
+      ${escapeHtml(badge.label)}
     </div>
-    <h2>${title}</h2>
-    ${summary ? `<p style="font-size: 15px; color: #cbd5e1; white-space: pre-line;">${summary}</p>` : ''}
+    <h2>${escapeHtml(title)}</h2>
+    ${summary ? `<p style="font-size: 15px; color: #cbd5e1; white-space: pre-line;">${escapeHtml(summary)}</p>` : ''}
     
     <div class="btn-container">
-      <a href="${targetUrl}" class="btn" target="_blank">View on KnockoutNotes</a>
+      <a href="${escapeHtml(targetUrl)}" class="btn" target="_blank">View on KnockoutNotes</a>
     </div>
   `;
 
@@ -211,13 +221,13 @@ export function renderBroadcastEmail({ siteUrl, subject, message, actionUrl, act
   const unsubUrl = `${siteUrl.replace(/\/$/, '')}/unsubscribe?token=${encodeURIComponent(unsubscribeToken)}`;
 
   const content = `
-    <h2>${subject}</h2>
+    <h2>${escapeHtml(subject)}</h2>
     <div style="font-size: 15px; color: #cbd5e1; white-space: pre-line; margin-bottom: 20px;">
-      ${message}
+      ${escapeHtml(message)}
     </div>
     ${actionUrl ? `
       <div class="btn-container">
-        <a href="${actionUrl}" class="btn" target="_blank">${actionText || 'Learn More'}</a>
+        <a href="${escapeHtml(actionUrl)}" class="btn" target="_blank">${escapeHtml(actionText || 'Learn More')}</a>
       </div>
     ` : ''}
   `;
@@ -251,12 +261,12 @@ export function renderAdminAlertEmail({ type, email, details = {} }) {
   const title = isSubscribe ? 'New Subscriber Confirmed' : 'Subscriber Opt-Out';
 
   const content = `
-    <h2 style="color: ${isSubscribe ? '#10b981' : '#f59e0b'};">${title}</h2>
+    <h2 style="color: ${isSubscribe ? '#10b981' : '#f59e0b'};">${escapeHtml(title)}</h2>
     <div class="highlight-card">
-      <p><strong>Email:</strong> ${email}</p>
-      ${details.source ? `<p><strong>Source:</strong> ${details.source}</p>` : ''}
-      ${details.date ? `<p><strong>Time:</strong> ${details.date}</p>` : ''}
-      ${details.totalActive !== undefined ? `<p><strong>Total Active Subscribers:</strong> ${details.totalActive}</p>` : ''}
+      <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+      ${details.source ? `<p><strong>Source:</strong> ${escapeHtml(details.source)}</p>` : ''}
+      ${details.date ? `<p><strong>Time:</strong> ${escapeHtml(details.date)}</p>` : ''}
+      ${details.totalActive !== undefined ? `<p><strong>Total Active Subscribers:</strong> ${escapeHtml(String(details.totalActive))}</p>` : ''}
     </div>
   `;
 

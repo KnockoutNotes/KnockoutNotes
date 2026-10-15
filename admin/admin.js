@@ -693,7 +693,7 @@ async function loadContent() {
     renderContentTable(data.items || []);
     updateContentPagination(data.page, Math.ceil(data.total / data.limit));
   } catch (err) {
-    tbody.innerHTML = `<tr><td colspan="7" class="adm-empty-state" style="color: var(--adm-danger);">Error: ${err.message}</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7" class="adm-empty-state" style="color: var(--adm-danger);">Error: ${escapeHtml(err.message)}</td></tr>`;
   }
 }
 
@@ -723,7 +723,7 @@ function renderContentTable(items) {
           ${item.status === 'published' 
             ? `<button class="btn-secondary" style="padding: 3px 8px; font-size: 11px;" onclick="setContentStatus(${item.id}, 'draft')">Unpublish</button>`
             : `<button class="btn-secondary" style="padding: 3px 8px; font-size: 11px;" onclick="setContentStatus(${item.id}, 'published')">Publish</button>`}
-          <button class="btn-danger" style="padding: 3px 8px; font-size: 11px;" onclick="promptDeleteContent(${item.id}, '${escapeHtml(item.title)}')">Delete</button>
+          <button class="btn-danger" style="padding: 3px 8px; font-size: 11px;" onclick="promptDeleteContent(${item.id}, decodeURIComponent(${safeJsArg(item.title)}))">Delete</button>
         </div>
       </td>
     </tr>
@@ -909,7 +909,7 @@ function renderCategoriesTable() {
       <td>
         <div style="display: flex; gap: 6px;">
           <button class="btn-secondary" style="padding: 3px 8px; font-size: 11px;" onclick="openEditCategoryModal(${cat.id})">Edit</button>
-          <button class="btn-danger" style="padding: 3px 8px; font-size: 11px;" onclick="promptDeleteCategory(${cat.id}, '${escapeHtml(cat.name)}')">Delete</button>
+          <button class="btn-danger" style="padding: 3px 8px; font-size: 11px;" onclick="promptDeleteCategory(${cat.id}, decodeURIComponent(${safeJsArg(cat.name)}))">Delete</button>
         </div>
       </td>
     </tr>
@@ -1054,7 +1054,7 @@ async function loadFiles() {
     renderFileGrid(data.files || []);
     updateFilePagination(data.page, Math.ceil(data.total / data.limit));
   } catch (err) {
-    grid.innerHTML = `<div class="adm-empty-state" style="grid-column: 1/-1; color: var(--adm-danger);">Error: ${err.message}</div>`;
+    grid.innerHTML = `<div class="adm-empty-state" style="grid-column: 1/-1; color: var(--adm-danger);">Error: ${escapeHtml(err.message)}</div>`;
   }
 }
 
@@ -1081,8 +1081,8 @@ function renderFileGrid(files) {
         <div class="adm-file-name" title="${escapeHtml(f.filename)}">${escapeHtml(f.filename)}</div>
         <div class="adm-file-meta">${f.folder} &bull; ${sizeStr}</div>
         <div class="adm-file-actions">
-          <button class="btn-secondary" style="padding: 3px 6px; font-size: 10px; flex: 1;" onclick="copyToClipboard('${f.public_url}')">Copy Link</button>
-          <button class="btn-danger" style="padding: 3px 6px; font-size: 10px;" onclick="promptDeleteFile(${f.id}, '${escapeHtml(f.filename)}', ${f.reference_count || 0})">Del</button>
+          <button class="btn-secondary" style="padding: 3px 6px; font-size: 10px; flex: 1;" onclick="copyToClipboard(decodeURIComponent(${safeJsArg(f.public_url)}))">Copy Link</button>
+          <button class="btn-danger" style="padding: 3px 6px; font-size: 10px;" onclick="promptDeleteFile(${f.id}, decodeURIComponent(${safeJsArg(f.filename)}), ${f.reference_count || 0})">Del</button>
         </div>
       </div>
     `;
@@ -1266,9 +1266,9 @@ function renderRegionalTable() {
       <td>
         <div style="display: flex; gap: 6px; flex-wrap: wrap;">
           <a href="${escapeHtml(r.image_url)}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 3px 8px; font-size: 11px;">View</a>
-          <button class="btn-secondary" style="padding: 3px 8px; font-size: 11px;" onclick="editRegionalImage('${r.block_id}')">Edit</button>
-          <button class="btn-secondary" style="padding: 3px 8px; font-size: 11px;" onclick="openMarkerEditor('${r.block_id}')">Markers${(r.labels || []).length ? ` (${r.labels.length})` : ''}</button>
-          <button class="btn-danger" style="padding: 3px 8px; font-size: 11px;" onclick="promptDeleteRegionalImage('${r.block_id}', '${escapeHtml(label)}')">Delete</button>
+          <button class="btn-secondary" style="padding: 3px 8px; font-size: 11px;" onclick="editRegionalImage(decodeURIComponent(${safeJsArg(r.block_id)}))">Edit</button>
+          <button class="btn-secondary" style="padding: 3px 8px; font-size: 11px;" onclick="openMarkerEditor(decodeURIComponent(${safeJsArg(r.block_id)}))">Markers${(r.labels || []).length ? ` (${r.labels.length})` : ''}</button>
+          <button class="btn-danger" style="padding: 3px 8px; font-size: 11px;" onclick="promptDeleteRegionalImage(decodeURIComponent(${safeJsArg(r.block_id)}), decodeURIComponent(${safeJsArg(label)}))">Delete</button>
         </div>
       </td>
     </tr>`;
@@ -1826,7 +1826,7 @@ async function loadSubscribers() {
     renderSubscribers(data.subscribers || []);
     updateSubscribersPagination(data.page, data.totalPages);
   } catch (err) {
-    tbody.innerHTML = `<tr><td colspan="7" class="adm-empty-state" style="color: var(--adm-danger);">Error: ${err.message}</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7" class="adm-empty-state" style="color: var(--adm-danger);">Error: ${escapeHtml(err.message)}</td></tr>`;
   }
 }
 
@@ -1852,7 +1852,7 @@ function renderSubscribers(list) {
           ${sub.status === 'active' 
             ? `<button class="btn-secondary" style="padding: 3px 8px; font-size: 11px;" onclick="toggleSubscriberStatus(${sub.id}, 'unsubscribed')">Deactivate</button>` 
             : `<button class="btn-secondary" style="padding: 3px 8px; font-size: 11px;" onclick="toggleSubscriberStatus(${sub.id}, 'active')">Activate</button>`}
-          <button class="btn-danger" style="padding: 3px 8px; font-size: 11px;" onclick="promptDeleteSubscriber(${sub.id}, '${escapeHtml(sub.email)}')">Delete</button>
+          <button class="btn-danger" style="padding: 3px 8px; font-size: 11px;" onclick="promptDeleteSubscriber(${sub.id}, decodeURIComponent(${safeJsArg(sub.email)}))">Delete</button>
         </div>
       </td>
     </tr>
@@ -2021,7 +2021,7 @@ async function loadLogs() {
       </tr>
     `).join('');
   } catch (err) {
-    tbody.innerHTML = `<tr><td colspan="4" class="adm-empty-state" style="color: var(--adm-danger);">Error: ${err.message}</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="4" class="adm-empty-state" style="color: var(--adm-danger);">Error: ${escapeHtml(err.message)}</td></tr>`;
   }
 }
 
@@ -2089,7 +2089,7 @@ async function loadSettingsAndAudit() {
       </tr>
     `).join('');
   } catch (err) {
-    tbody.innerHTML = `<tr><td colspan="6" class="adm-empty-state" style="color: var(--adm-danger);">Error: ${err.message}</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6" class="adm-empty-state" style="color: var(--adm-danger);">Error: ${escapeHtml(err.message)}</td></tr>`;
   }
 }
 
@@ -2209,7 +2209,7 @@ function renderPricingTable() {
         <td>${statusBadge}</td>
         <td style="font-size: 11px; color: var(--adm-text-muted); font-family: var(--adm-font-mono);">${formatDate(item.updated_at)}</td>
         <td>
-          <button class="btn-secondary" style="padding: 4px 10px; font-size: 11px;" onclick="openEditPriceModal('${escapeHtml(item.chapter_id)}')">Edit Price</button>
+          <button class="btn-secondary" style="padding: 4px 10px; font-size: 11px;" onclick="openEditPriceModal(decodeURIComponent(${safeJsArg(item.chapter_id)}))">Edit Price</button>
         </td>
       </tr>
     `;
@@ -2441,6 +2441,11 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+function safeJsArg(str) {
+  if (str == null) return "''";
+  return `'${encodeURIComponent(String(str)).replace(/'/g, '%27')}'`;
 }
 
 function formatDate(iso) {

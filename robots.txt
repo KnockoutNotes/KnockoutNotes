@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Disallow: /receipt
+Disallow: /receipt.html
+Disallow: /invoice
+Disallow: /invoice.html
+Disallow: /workspace
+Disallow: /workspace.html
+Disallow: /subscribe-confirmed
+Disallow: /unsubscribe-confirmed
+
+# Production Sitemaps
+Sitemap: https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/sitemap.xml
+Sitemap: https://knockoutnotes.com/sitemap.xml

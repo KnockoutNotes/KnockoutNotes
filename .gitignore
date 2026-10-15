@@ -4,3 +4,21 @@ scratch/
 __pycache__/
 *.pyc
 knockoutnotes-debug.apk
+
+# Cloudflare Worker local secrets & environment variables
+.dev.vars
+.dev.vars.*
+.env
+.env.*
+!.dev.vars.example
+
+# Credentials, keys & certificates
+*.pem
+*.key
+*.cert
+*.pfx
+*.p12
+
+# OS generated files
+.DS_Store
+Thumbs.db

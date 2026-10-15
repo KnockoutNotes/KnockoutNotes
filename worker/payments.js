@@ -635,6 +635,19 @@ export async function handleCashfreeWebhook(request, env) {
     return jsonResponse({ error: 'Missing webhook signature headers' }, 401);
   }
 
+  // Replay attack protection: verify timestamp is within +/- 10 minutes tolerance
+  const parsedTs = Number(timestamp);
+  const eventTimeMs = !isNaN(parsedTs)
+    ? (parsedTs > 1e11 ? parsedTs : parsedTs * 1000)
+    : Date.parse(timestamp);
+  if (!isNaN(eventTimeMs)) {
+    const ageMs = Math.abs(Date.now() - eventTimeMs);
+    if (ageMs > 10 * 60 * 1000) {
+      console.warn('[Cashfree Webhook]: Timestamp out of allowable window (age:', Math.round(ageMs / 1000), 's)');
+      return jsonResponse({ error: 'Webhook timestamp expired or out of allowable tolerance' }, 401);
+    }
+  }
+
   console.log(`[Cashfree Webhook]: Incoming webhook event (version: ${webhookVersion}, timestamp: ${timestamp}${idempotencyKey ? ', idempotency: ' + idempotencyKey : ''})`);
 
   const rawBody = await request.text();
