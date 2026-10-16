@@ -373,29 +373,37 @@ export function createWorkstationScene(container, opts) {
       loader.load(
         modelUrl,
         gltf => {
-          const root = gltf.scene || gltf.scenes[0];
-          const maxAniso = renderer.capabilities.getMaxAnisotropy ? renderer.capabilities.getMaxAnisotropy() : 8;
-          root.traverse(child => {
-            if (child.isMesh && child.material) {
-              const mat = child.material;
-              if (mat.map) {
-                mat.map.colorSpace = THREE.SRGBColorSpace;
-                mat.map.anisotropy = Math.min(maxAniso, 8);
+          try {
+            const root = gltf.scene || gltf.scenes[0];
+            const maxAniso = renderer.capabilities.getMaxAnisotropy ? renderer.capabilities.getMaxAnisotropy() : 8;
+            root.traverse(child => {
+              if (child.isMesh && child.material) {
+                const mat = child.material;
+                if (mat.map) {
+                  mat.map.colorSpace = THREE.SRGBColorSpace;
+                  mat.map.anisotropy = Math.min(maxAniso, 8);
+                }
+                if (mat.roughnessMap) mat.roughnessMap.anisotropy = Math.min(maxAniso, 4);
+                if (mat.metalnessMap) mat.metalnessMap.anisotropy = Math.min(maxAniso, 4);
+                if (mat.normalMap) mat.normalMap.anisotropy = Math.min(maxAniso, 4);
+                // Ensure plastics and metals have realistic specular response without washing out
+                mat.envMapIntensity = 0.9;
               }
-              if (mat.roughnessMap) mat.roughnessMap.anisotropy = Math.min(maxAniso, 4);
-              if (mat.metalnessMap) mat.metalnessMap.anisotropy = Math.min(maxAniso, 4);
-              if (mat.normalMap) mat.normalMap.anisotropy = Math.min(maxAniso, 4);
-              // Ensure plastics and metals have realistic specular response without washing out
-              mat.envMapIntensity = 0.9;
-            }
-          });
-          addBrandConcealment(root);
-          frameModel(root);
-          modelGroup.add(root);
-          resolve({ isPlaceholder: false, root });
+            });
+            addBrandConcealment(root);
+            frameModel(root);
+            modelGroup.add(root);
+            resolve({ isPlaceholder: false, root });
+          } catch (err) {
+            console.warn("Failed processing GLTF model hierarchy, using stand-in:", err);
+            const placeholder = buildPlaceholderMachine();
+            modelGroup.add(placeholder);
+            resolve({ isPlaceholder: true, root: placeholder });
+          }
         },
         undefined,
-        () => {
+        (err) => {
+          console.warn("GLTFLoader error loading workstation model, using stand-in:", err);
           const placeholder = buildPlaceholderMachine();
           modelGroup.add(placeholder);
           resolve({ isPlaceholder: true, root: placeholder });

@@ -182,7 +182,7 @@ function applySecurityHeaders(headers, request, isHtml = false) {
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com data:",
       "img-src 'self' data: blob: https:",
-      "connect-src 'self' https://api.cashfree.com https://sandbox.cashfree.com https://cloudflareinsights.com https://accounts.google.com https://oauth2.googleapis.com https://script.google.com https://script.googleusercontent.com",
+      "connect-src 'self' blob: data: https://api.cashfree.com https://sandbox.cashfree.com https://cloudflareinsights.com https://accounts.google.com https://oauth2.googleapis.com https://script.google.com https://script.googleusercontent.com",
       "frame-src 'self' https://bondin.io https://api.cashfree.com",
       "frame-ancestors 'self'",
       "object-src 'none'",
@@ -874,7 +874,10 @@ export default {
       const userAuth = await validateUserSession(env.DB, sessionId);
 
       if (!userAuth) {
-        return jsonResponse({ error: 'Unauthorized. Please log in.', authenticated: false }, 401);
+        if (pathname === '/api/auth/me' && request.method === 'GET') {
+          return jsonResponse({ authenticated: false, user: null }, 200, {}, request, env);
+        }
+        return jsonResponse({ error: 'Unauthorized. Please log in.', authenticated: false }, 401, {}, request, env);
       }
 
       if (pathname === '/api/auth/me' && request.method === 'GET') {

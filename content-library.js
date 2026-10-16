@@ -19,22 +19,21 @@
     if (window.KNOCKOUTNOTES_CONTENT) {
       return Promise.resolve(window.KNOCKOUTNOTES_CONTENT);
     }
-    return fetch('content-config.js?_=' + Date.now(), { cache: 'no-store' })
-      .then(r => r.text())
-      .then(t => {
-        try {
-          const fn = new Function(t + '; return window.KNOCKOUTNOTES_CONTENT;');
-          const res = fn();
-          if (res) {
-            window.KNOCKOUTNOTES_CONTENT = res;
-            return res;
-          }
-        } catch (_) {}
-        const start = t.indexOf('{');
-        const end = t.lastIndexOf('}');
-        if (start < 0 || end < 0) throw new Error('Invalid content-config.js');
-        return Function('return (' + t.slice(start, end + 1) + ')')();
-      });
+    return new Promise((resolve) => {
+      if (window.KNOCKOUTNOTES_CONTENT) {
+        resolve(window.KNOCKOUTNOTES_CONTENT);
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = 'content-config.js?_=' + Date.now();
+      script.onload = () => {
+        resolve(window.KNOCKOUTNOTES_CONTENT || {});
+      };
+      script.onerror = () => {
+        resolve(window.KNOCKOUTNOTES_CONTENT || {});
+      };
+      document.head.appendChild(script);
+    });
   }
 
   const cfgPromise = loadConfig();
