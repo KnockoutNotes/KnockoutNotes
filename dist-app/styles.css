@@ -4,8 +4,6 @@
    Theme: Futuristic Clinical Workstation & 3D Spatial Knowledge Engine
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
-
 :root {
   /* 3D Spatial Plane Depths */
   --z-bg: -800px;
@@ -695,8 +693,12 @@ body:not([data-content-page="home"]) .menu-btn {
   transform: translateZ(var(--z-fore));
 }
 
-.hero > .fade {
+.hero > .fade,
+.hero-visual {
   min-width: 0;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
 }
 
 .telemetry-channel,

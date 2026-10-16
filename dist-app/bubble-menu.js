@@ -581,6 +581,10 @@
       }
       if (window.KnockoutNotesSiteSearch && typeof window.KnockoutNotesSiteSearch.trigger === "function") {
         window.KnockoutNotesSiteSearch.trigger("");
+      } else if (typeof window.ensureSearchLoaded === "function") {
+        window.ensureSearchLoaded().then(function (s) {
+          if (s && typeof s.trigger === "function") s.trigger("");
+        });
       }
     }
   });

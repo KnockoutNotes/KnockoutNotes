@@ -620,6 +620,33 @@
     const modalInput = document.getElementById("knModalSearchInput");
     const modalClose = document.querySelectorAll("[data-close-modal]");
     const searchTriggers = document.querySelectorAll("[data-open-search], .nav-search-trigger, .btn-hud-tool");
+    let searchScriptLoading = null;
+
+    function ensureSearchLoaded() {
+      if (window.KnockoutNotesSiteSearch) return Promise.resolve(window.KnockoutNotesSiteSearch);
+      if (searchScriptLoading) return searchScriptLoading;
+
+      searchScriptLoading = new Promise((resolve, reject) => {
+        const existingScript = document.querySelector('script[src*="kn-site-search.js"]');
+        if (existingScript && window.KnockoutNotesSiteSearch) {
+          return resolve(window.KnockoutNotesSiteSearch);
+        }
+        const script = document.createElement("script");
+        script.src = "kn-site-search.js";
+        script.async = true;
+        script.onload = () => {
+          searchScriptLoading = null;
+          resolve(window.KnockoutNotesSiteSearch);
+        };
+        script.onerror = (err) => {
+          searchScriptLoading = null;
+          reject(err);
+        };
+        document.body.appendChild(script);
+      });
+      return searchScriptLoading;
+    }
+    window.ensureSearchLoaded = ensureSearchLoaded;
 
     function openSearchModal() {
       if (!searchModal) return;
@@ -629,7 +656,25 @@
         modalInput.value = "";
         setTimeout(() => modalInput.focus(), 60);
       }
-      if (window.KnockoutNotesSiteSearch && typeof window.KnockoutNotesSiteSearch.trigger === "function") {
+      
+      const modalStatus = document.getElementById("knModalSearchStatus");
+      if (!window.KnockoutNotesSiteSearch) {
+        if (modalStatus) modalStatus.textContent = "Loading medical knowledge catalog…";
+        ensureSearchLoaded().then(() => {
+          if (window.KnockoutNotesSiteSearch && typeof window.KnockoutNotesSiteSearch.trigger === "function") {
+            window.KnockoutNotesSiteSearch.trigger("");
+          }
+        }).catch(() => {
+          if (modalStatus) modalStatus.innerHTML = 'Unable to load search catalog. <button type="button" class="kn-recent-clear-btn" id="knRetrySearchLoad">Retry</button>';
+          const retryBtn = document.getElementById("knRetrySearchLoad");
+          if (retryBtn) {
+            retryBtn.addEventListener("click", () => {
+              searchScriptLoading = null;
+              openSearchModal();
+            });
+          }
+        });
+      } else if (typeof window.KnockoutNotesSiteSearch.trigger === "function") {
         window.KnockoutNotesSiteSearch.trigger("");
       }
     }
@@ -640,7 +685,14 @@
       setScrollLock("search", false);
     }
 
-    searchTriggers.forEach(btn => btn.addEventListener("click", openSearchModal));
+    // Universal delegated click for any search buttons (including dynamically created ones)
+    document.addEventListener("click", e => {
+      const trigger = e.target.closest && e.target.closest("[data-open-search], .nav-search-trigger, .btn-hud-tool");
+      if (trigger) {
+        e.preventDefault();
+        openSearchModal();
+      }
+    });
     modalClose.forEach(btn => btn.addEventListener("click", closeSearchModal));
 
     window.addEventListener("keydown", e => {
@@ -655,6 +707,17 @@
         closeSearchModal();
       }
     });
+
+    // Idle-time prefetch of search engine to ensure instant response on click
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(() => {
+        if (!window.KnockoutNotesSiteSearch) ensureSearchLoaded();
+      }, { timeout: 3500 });
+    } else {
+      setTimeout(() => {
+        if (!window.KnockoutNotesSiteSearch) ensureSearchLoaded();
+      }, 3500);
+    }
 
     // ------------------------------------------------------------------------
     // 10. Live Animated ECG Waveform Monitor & Vitals Engine (Hero Centerpiece)

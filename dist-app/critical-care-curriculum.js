@@ -3779,6 +3779,9 @@
                 <p style="margin:0; font-size:14px; color:#94a3b8; max-width:640px; line-height:1.5;">Practice all 505+ verified chapter-wise MCQs, build timed custom exams with zero duplicate questions, analyze performance diagnostics, and review detailed why-wrong rationales.</p>
               </div>
               <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <button type="button" class="kn-launch-mcq-engine" data-view="pyq" style="padding:10px 18px; background:linear-gradient(135deg, #0d9488, #14b8a6); color:#fff; border:none; border-radius:10px; font-size:13px; font-weight:750; cursor:pointer; box-shadow:0 4px 12px rgba(13,148,136,0.3); display:flex; align-items:center; gap:6px;">
+                  <span>🎯 Previous Year Questions (PYQs)</span>
+                </button>
                 <button type="button" class="kn-launch-mcq-engine" data-view="directory" style="padding:10px 18px; background:linear-gradient(135deg, #0284c7, #0ea5e9); color:#fff; border:none; border-radius:10px; font-size:13px; font-weight:750; cursor:pointer; box-shadow:0 4px 12px rgba(2,132,199,0.3); display:flex; align-items:center; gap:6px;">
                   <span>🚀 Launch MCQ Platform</span>
                 </button>

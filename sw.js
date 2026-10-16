@@ -5,7 +5,7 @@
 // - Stale-While-Revalidate with safe response cloning for static app shell assets
 // ==========================================================================
 
-const CACHE_NAME = "knockoutnotes-cache-v104";
+const CACHE_NAME = "knockoutnotes-cache-v106";
 
 const PRECACHE_ASSETS = [
   "/",
@@ -104,7 +104,8 @@ const PRECACHE_ASSETS = [
   "/critical-care-curriculum.js",
   "/criticalCare/mcqs.json",
   "/criticalCare/chapters.json",
-  "/criticalCare/topics.json"
+  "/criticalCare/topics.json",
+  "/INI_CET_SS_2026_Critical_Care_PYQs.json"
 ];
 
 self.addEventListener("install", (event) => {

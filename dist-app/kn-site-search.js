@@ -2598,9 +2598,7 @@
       });
     }
 
-    // Trigger lazy background load immediately
-    loadStudyDataIfNeeded();
-
+    // study-data.js is loaded on demand when user searches, keeping initial page load fast
     async function buildSearchCatalog() {
       if (memoryCatalog) return memoryCatalog;
 

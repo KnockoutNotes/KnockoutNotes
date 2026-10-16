@@ -292,14 +292,17 @@
       search: ""
     },
     pyq: {
-      exam: "NEET-SS",    // "NEET-SS" | "INI-SS"
+      exam: "NEET-SS",    // "NEET-SS" | "INI-SS" | "INI-CET-SS-2026"
       year: "all",        // "all" | "2025" | "2024" (or "nov2025" for INI-SS)
-      mode: "topic",      // "topic" (Topic-wise Explorer) | "all" (All Questions list)
+      mode: "topic",      // "topic" (Topic-wise Explorer) | "all" (All Questions) | "frequent" (Frequently Asked Topics)
       topic: "all",       // "all" | normalized topic string
       search: "",
       page: 0,
       pageSize: 7,        // 7 per page matching the reference UI
-      expanded: {}        // questionId -> true
+      expanded: {},       // questionId -> true
+      faqExamFilter: "all", // "all" | "NEET-SS" | "INI-SS" | "INI-CET-SS-2026"
+      faqSort: "freq",      // "freq" | "name"
+      faqSearch: ""
     },
     practiceIndex: 0,
     practiceList: [],
@@ -902,12 +905,14 @@
     if (state.practiceFilter.view === "pyq") {
       var pExam = state.pyq.exam || "NEET-SS";
       var pyqYearLabel = "";
-      if (pExam === "INI-SS") {
+      if (pExam === "INI-CET-SS-2026") {
+        pyqYearLabel = "April 2026 Session";
+      } else if (pExam === "INI-SS") {
         pyqYearLabel = "November 2025 Session";
       } else {
         pyqYearLabel = state.pyq.year === "all" ? "All Years (2024 & 2025)" : ("Year " + state.pyq.year);
       }
-      var bannerExamIcon = pExam === "INI-SS" ? "🏛️ INI-SS" : "🎯 NEET-SS";
+      var bannerExamIcon = pExam === "INI-CET-SS-2026" ? "⭐ INI-CET SS" : (pExam === "INI-SS" ? "🏛️ INI-SS" : "🎯 NEET-SS");
       pyqBanner = (
         '<div class="kn-pyq-banner-bar">' +
           '<span>' + bannerExamIcon + ' Critical Care PYQs · ' + esc(pyqYearLabel) + ' (' + total + ' Questions)</span>' +
@@ -926,7 +931,11 @@
           '<select class="kn-mcq-select" id="knPracticeViewSelect">' +
             '<option value="all"' + (state.practiceFilter.view === "all" ? " selected" : "") + '>All Questions (' + state.mcqs.length + ')</option>' +
             '<option value="pyq"' + (state.practiceFilter.view === "pyq" ? " selected" : "") + '>' +
-              (state.pyq.exam === 'INI-SS' ? '🏛️ INI-SS PYQs (Nov 2025 · 66)' : ('🎯 NEET-SS PYQs (' + (state.pyq.year === 'all' ? 'All Years · 190' : (state.pyq.year === '2025' ? '2025 · 76' : '2024 · 114')) + ')')) +
+              (state.pyq.exam === 'INI-CET-SS-2026' ? '⭐ INI-CET SS PYQs (April 2026 · ' + countIniCet2026 + ')' :
+                (state.pyq.exam === 'INI-SS' ? '🏛️ INI-SS PYQs (Nov 2025 · ' + countIniAll + ')' :
+                  ('🎯 NEET-SS PYQs (' + (state.pyq.year === 'all' ? 'All Years · ' + countNeetAll : (state.pyq.year === '2025' ? '2025 · ' + countNeet2025 : '2024 · ' + countNeet2024)) + ')')
+                )
+              ) +
             '</option>' +
             '<option value="bookmarks"' + (state.practiceFilter.view === "bookmarks" ? " selected" : "") + '>⭐ Bookmarked (' + Object.keys(state.bookmarks).length + ')</option>' +
             '<option value="incorrect"' + (state.practiceFilter.view === "incorrect" ? " selected" : "") + '>❌ Mistakes</option>' +
@@ -946,9 +955,12 @@
             '<span class="kn-mcq-badge kn-mcq-badge--topic">' + esc(topicTitle(m.topicId)) + '</span>' +
             '<span class="kn-mcq-badge kn-mcq-badge--diff" data-diff="' + esc(m.difficulty) + '">' + esc(m.difficulty) + '</span>' +
             (isPYQ(m) ?
-              (getPYQExam(m) === "INI-SS" ?
-                '<span class="kn-mcq-badge kn-mcq-badge--recall" style="background:#4338ca; color:#fff; font-weight:800; border-color:#6366f1;">INI-SS CC Nov 2025</span>' :
-                '<span class="kn-mcq-badge kn-mcq-badge--recall" style="background:#0284c7; color:#fff; font-weight:800; border-color:#38bdf8;">' + (m.year === 2024 ? 'NEET SS CC 2024' : 'NEET SS CC 2025') + '</span>'
+              (getPYQExam(m) === "INI-CET-SS-2026" ?
+                '<span class="kn-mcq-badge kn-mcq-badge--recall" style="background:#0d9488; color:#fff; font-weight:800; border-color:#14b8a6;">INI-CET SS April 2026</span>' :
+                (getPYQExam(m) === "INI-SS" ?
+                  '<span class="kn-mcq-badge kn-mcq-badge--recall" style="background:#4338ca; color:#fff; font-weight:800; border-color:#6366f1;">INI-SS CC Nov 2025</span>' :
+                  '<span class="kn-mcq-badge kn-mcq-badge--recall" style="background:#0284c7; color:#fff; font-weight:800; border-color:#38bdf8;">' + (m.year === 2024 ? 'NEET SS CC 2024' : 'NEET SS CC 2025') + '</span>'
+                )
               ) +
               '<span class="kn-mcq-badge" style="background:rgba(56,189,248,0.12); color:#0284c7; font-weight:700;">' + (m.question_status === 'exact_recall' ? '🎯 Exact Recall' : '🔬 Reconstructed') + '</span>' +
               '<span class="kn-mcq-badge" style="background:rgba(16,185,129,0.12); color:#059669; font-weight:700;">✓ Verified</span>' +
@@ -1505,7 +1517,10 @@
       var topicName = getPYQTopic(m);
       var qYear = getPYQYear(m);
 
-      var confText = m.recall_confidence || "Verified (Faculty Consensus)";
+      var confText = m.recall_confidence || "Verified";
+      if (confText === "high") confText = "🎯 High Recall Confidence";
+      else if (confText === "moderate") confText = "🔬 Moderate Recall Confidence";
+      else if (confText === "verified") confText = "✓ Verified Recall";
       var confClass = (confText.indexOf("100%") !== -1 || confText.toLowerCase().indexOf("high") !== -1) ? "high" : "verified";
 
       // Question ID / number label
@@ -1618,9 +1633,11 @@
 
         // High-Yield Takeaway / Pearl
         if (m.examPearl) {
+          var pearlTitle = getPYQExam(m) === "INI-CET-SS-2026" ? "💡 INI-CET SS 2026 High-Yield Pearl" :
+            (getPYQExam(m) === "INI-SS" ? "💡 INI-SS High-Yield Pearl" : "💡 NEET-SS High-Yield Pearl");
           html += (
             '<div class="kn-pyq-pearl-box">' +
-              '<span class="kn-mcq-pearl-label" style="display:block; font-size:11px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent-amber, #d97706); margin-bottom:4px;">💡 NEET-SS High-Yield Pearl</span>' +
+              '<span class="kn-mcq-pearl-label" style="display:block; font-size:11px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent-amber, #d97706); margin-bottom:4px;">' + esc(pearlTitle) + '</span>' +
               '<div style="line-height:1.6;">' + esc(m.examPearl) + '</div>' +
             '</div>'
           );
@@ -1689,7 +1706,399 @@
     );
   }
 
+  // ── Canonical Topic to Study Topic Mapping ──────────────────────────────
+  var CANONICAL_TOPIC_TO_STUDY = {
+    "Mechanical Ventilation": {
+      studyId: "ventilator-modes-waveforms-asynchrony",
+      title: "Ventilator Modes, Waveforms & Asynchrony"
+    },
+    "Hemodynamics": {
+      studyId: "fluid-responsiveness-dynamic-indices",
+      title: "Dynamic Fluid Responsiveness & Resuscitation"
+    },
+    "ICU Procedures & Monitoring": {
+      studyId: "pocus-critical-care-vexus-blue-rush",
+      title: "Bedside POCUS, Vascular Imaging & VExUS"
+    },
+    "Infectious Diseases": {
+      studyId: "multidrug-resistant-pathogens-icu",
+      title: "Severe ICU Infections & MDR Pathogens"
+    },
+    "Pharmacology & Oncology": {
+      studyId: "vasopressors-inotropes-titration-protocols",
+      title: "Vasoactive Therapeutics & ICU Pharmacology"
+    },
+    "Toxicology": {
+      studyId: "toxicology-antidotes-extracorporeal-elimination",
+      title: "Clinical Toxicology, Antidotes & EXTRIP"
+    },
+    "Sepsis": {
+      studyId: "sepsis3-hour1-bundle-resuscitation",
+      title: "Sepsis-3 Definitions & Hour-1 Bundle"
+    },
+    "Neurocritical Care": {
+      studyId: "tbi-neuromonitoring-raised-icp",
+      title: "Traumatic Brain Injury & Raised ICP"
+    },
+    "Nutrition & GI": {
+      studyId: "acute-liver-failure-nutrition-icu",
+      title: "ICU Clinical Nutrition & Refeeding"
+    },
+    "ACLS / CPR": {
+      studyId: "hypoxic-ischemic-encephalopathy-ttm-postarrest",
+      title: "Post-Cardiac Arrest Care & TTM"
+    },
+    "Trauma & Burns": {
+      studyId: "trauma-resuscitation-damage-control",
+      title: "Polytrauma Resuscitation & Damage Control"
+    },
+    "Electrolytes & Metabolic": {
+      studyId: "severe-electrolyte-disturbances-icu",
+      title: "Severe Electrolyte Disturbances (Na/K/Ca)"
+    },
+    "Obstetric Critical Care": {
+      studyId: "preeclampsia-eclampsia-hellp-syndrome",
+      title: "Obstetric Critical Care & Preeclampsia"
+    },
+    "Renal Critical Care": {
+      studyId: "aki-kdigo-crrt-modalities",
+      title: "Acute Kidney Injury & CRRT Modalities"
+    },
+    "Cardiovascular Critical Care": {
+      studyId: "cardiogenic-shock-scai",
+      title: "Cardiogenic Shock & Acute Coronary Care"
+    },
+    "Acid-Base Disorders": {
+      studyId: "abg-metabolic-acidosis",
+      title: "Complex Acid-Base & ABG Interpretation"
+    },
+    "Hematology & Transfusion": {
+      studyId: "massive-transfusion-rotem-teg-coagulopathy",
+      title: "Massive Transfusion (MTP) & ROTEM/TEG"
+    },
+    "Physiology": {
+      studyId: "hemodynamics-shock-approach",
+      title: "Applied Physiology & Oxygen Delivery"
+    },
+    "Pediatric Critical Care": {
+      studyId: "pediatric-septic-shock-resuscitation",
+      title: "Pediatric Shock & Resuscitation"
+    },
+    "Radiology": {
+      studyId: "pocus-critical-care-vexus-blue-rush",
+      title: "Chest Radiography & Critical Care Ultrasound"
+    },
+    "Scoring Systems & General ICU": {
+      studyId: "icu-organization-scoring-ethics",
+      title: "ICU Organization & Severity Scores"
+    },
+    "Miscellaneous": {
+      studyId: "icu-organization-scoring-ethics",
+      title: "ICU Organization & Quality Bundles"
+    }
+  };
+
+  function computeFrequentlyAskedTopics(filterExam) {
+    filterExam = filterExam || "all";
+    var topicMap = {};
+    var totalPYQs = 0;
+
+    state.mcqs.forEach(function (m) {
+      if (!isPYQ(m)) return;
+      var ex = getPYQExam(m);
+      if (filterExam !== "all" && ex !== filterExam) return;
+
+      totalPYQs++;
+      var tName = getPYQTopic(m);
+      if (!topicMap[tName]) {
+        topicMap[tName] = {
+          name: tName,
+          total: 0,
+          neet: 0,
+          iniSs: 0,
+          iniCet: 0,
+          concepts: {}
+        };
+      }
+      topicMap[tName].total++;
+      if (ex === "INI-CET-SS-2026") {
+        topicMap[tName].iniCet++;
+      } else if (ex === "INI-SS") {
+        topicMap[tName].iniSs++;
+      } else {
+        topicMap[tName].neet++;
+      }
+
+      if (m.tags && Array.isArray(m.tags)) {
+        m.tags.forEach(function (tag) {
+          if (!tag) return;
+          var cleanTag = String(tag).trim();
+          if (cleanTag && cleanTag !== tName && cleanTag.length > 2 && cleanTag.length < 35 && cleanTag.indexOf("Recall") === -1 && cleanTag.indexOf("NEET") === -1 && cleanTag.indexOf("INI") === -1) {
+            topicMap[tName].concepts[cleanTag] = (topicMap[tName].concepts[cleanTag] || 0) + 1;
+          }
+        });
+      }
+    });
+
+    var list = [];
+    for (var k in topicMap) {
+      if (Object.prototype.hasOwnProperty.call(topicMap, k)) {
+        var item = topicMap[k];
+        var pct = totalPYQs > 0 ? ((item.total / totalPYQs) * 100) : 0;
+        var sortedConcepts = Object.keys(item.concepts).sort(function (a, b) {
+          return item.concepts[b] - item.concepts[a];
+        }).slice(0, 4);
+
+        var studyInfo = CANONICAL_TOPIC_TO_STUDY[item.name] || {
+          studyId: "icu-organization-scoring-ethics",
+          title: "Critical Care Curriculum"
+        };
+
+        list.push({
+          name: item.name,
+          total: item.total,
+          neet: item.neet,
+          iniSs: item.iniSs,
+          iniCet: item.iniCet,
+          percentage: pct,
+          concepts: sortedConcepts,
+          studyId: studyInfo.studyId,
+          studyTitle: studyInfo.title
+        });
+      }
+    }
+
+    list.sort(function (a, b) {
+      if (b.total !== a.total) return b.total - a.total;
+      return a.name.localeCompare(b.name);
+    });
+
+    list.forEach(function (item, idx) {
+      item.rank = idx + 1;
+    });
+
+    return {
+      totalPYQs: totalPYQs,
+      topics: list
+    };
+  }
+
+  function renderPyqFrequentlyAskedCardsHTML() {
+    var examFilter = state.pyq.faqExamFilter || "all";
+    var data = computeFrequentlyAskedTopics(examFilter);
+    var sortMode = state.pyq.faqSort || "freq";
+    var query = (state.pyq.faqSearch || "").trim().toLowerCase();
+
+    var filtered = data.topics.filter(function (t) {
+      if (!query) return true;
+      if (t.name.toLowerCase().indexOf(query) !== -1) return true;
+      if (t.studyTitle.toLowerCase().indexOf(query) !== -1) return true;
+      for (var i = 0; i < t.concepts.length; i++) {
+        if (t.concepts[i].toLowerCase().indexOf(query) !== -1) return true;
+      }
+      return false;
+    });
+
+    if (sortMode === "name") {
+      filtered.sort(function (a, b) { return a.name.localeCompare(b.name); });
+    } else {
+      filtered.sort(function (a, b) { return b.total - a.total; });
+    }
+
+    if (!filtered.length) {
+      return (
+        '<div class="kn-pyq-faq-empty" id="knPyqFaqCardsContainer">' +
+          '<div style="font-size:32px; margin-bottom:10px;">🔍</div>' +
+          '<h4 style="margin:0 0 6px 0;">No matching high-yield topics found</h4>' +
+          '<p style="color:var(--text-muted); margin:0 0 16px 0;">Try adjusting your search terms or exam filter.</p>' +
+          '<button type="button" class="kn-pyq-page-btn" data-action="faq-clear-search">Clear Search</button>' +
+        '</div>'
+      );
+    }
+
+    var maxTotal = data.topics.length ? data.topics[0].total : 1;
+    var cardsHTML = '';
+
+    filtered.forEach(function (topic) {
+      var barPct = Math.round((topic.total / maxTotal) * 100);
+      var sharePct = topic.percentage.toFixed(1);
+
+      // Rank Badge
+      var rankBadgeHTML = '';
+      if (topic.rank === 1) {
+        rankBadgeHTML = '<span class="kn-pyq-rank-badge kn-pyq-rank-badge--gold">🥇 Rank #1</span>';
+      } else if (topic.rank === 2) {
+        rankBadgeHTML = '<span class="kn-pyq-rank-badge kn-pyq-rank-badge--silver">🥈 Rank #2</span>';
+      } else if (topic.rank === 3) {
+        rankBadgeHTML = '<span class="kn-pyq-rank-badge kn-pyq-rank-badge--bronze">🥉 Rank #3</span>';
+      } else {
+        rankBadgeHTML = '<span class="kn-pyq-rank-badge">Rank #' + topic.rank + '</span>';
+      }
+
+      // Yield Category Badge
+      var yieldTagHTML = '';
+      if (topic.rank <= 3) {
+        yieldTagHTML = '<span class="kn-pyq-yield-tag kn-pyq-yield-tag--must-know">🔥 Must-Know (High Yield)</span>';
+      } else if (topic.rank <= 8) {
+        yieldTagHTML = '<span class="kn-pyq-yield-tag kn-pyq-yield-tag--core">⚡ Core Exam Priority</span>';
+      } else if (topic.rank <= 14) {
+        yieldTagHTML = '<span class="kn-pyq-yield-tag kn-pyq-yield-tag--consistent">📈 Regular Exam Yield</span>';
+      } else {
+        yieldTagHTML = '<span class="kn-pyq-yield-tag kn-pyq-yield-tag--subspec">🎯 Focused Subspecialty</span>';
+      }
+
+      // Concept chips
+      var conceptsHTML = '';
+      if (topic.concepts && topic.concepts.length) {
+        conceptsHTML = '<div class="kn-pyq-concepts-row">';
+        topic.concepts.forEach(function (c) {
+          conceptsHTML += '<span class="kn-pyq-concept-chip">' + esc(c) + '</span>';
+        });
+        conceptsHTML += '</div>';
+      }
+
+      cardsHTML += (
+        '<article class="kn-pyq-rank-card">' +
+          '<div class="kn-pyq-rank-card-header">' +
+            '<div class="kn-pyq-rank-top-row">' +
+              '<div class="kn-pyq-rank-badges-wrap">' +
+                rankBadgeHTML +
+                yieldTagHTML +
+              '</div>' +
+              '<div class="kn-pyq-rank-stat-pill">' +
+                '<strong>' + topic.total + '</strong> Qs &bull; ' + sharePct + '% Share' +
+              '</div>' +
+            '</div>' +
+            '<h3 class="kn-pyq-rank-title">' + esc(topic.name) + '</h3>' +
+          '</div>' +
+
+          '<div class="kn-pyq-rank-card-body">' +
+            '<!-- Relative Frequency Bar -->' +
+            '<div class="kn-pyq-freq-bar-wrap" title="' + sharePct + '% of verified PYQs">' +
+              '<div class="kn-pyq-freq-bar-bg">' +
+                '<div class="kn-pyq-freq-bar-fill" style="width:' + barPct + '%;"></div>' +
+              '</div>' +
+            '</div>' +
+
+            '<!-- Exam Breakdown -->' +
+            '<div class="kn-pyq-breakdown-row">' +
+              '<span class="kn-pyq-breakdown-chip kn-pyq-breakdown-chip--neet" title="NEET-SS Recall Questions">🎯 NEET-SS: <strong>' + topic.neet + '</strong></span>' +
+              '<span class="kn-pyq-breakdown-chip kn-pyq-breakdown-chip--ini" title="INI-SS Nov 2025 Recall Questions">🏛️ INI-SS: <strong>' + topic.iniSs + '</strong></span>' +
+              '<span class="kn-pyq-breakdown-chip kn-pyq-breakdown-chip--inicet" title="INI-CET SS 2026 Recall Questions">⭐ INI-CET: <strong>' + topic.iniCet + '</strong></span>' +
+            '</div>' +
+
+            conceptsHTML +
+          '</div>' +
+
+          '<div class="kn-pyq-rank-card-footer">' +
+            '<button type="button" class="kn-pyq-faq-btn kn-pyq-faq-btn--study" data-action="faq-study-topic" data-study-id="' + esc(topic.studyId) + '">' +
+              '📖 Study Chapter' +
+            '</button>' +
+            '<button type="button" class="kn-pyq-faq-btn kn-pyq-faq-btn--practise" data-action="faq-practise-topic" data-topic="' + esc(topic.name) + '">' +
+              '📝 Practise ' + topic.total + ' PYQs' +
+            '</button>' +
+          '</div>' +
+        '</article>'
+      );
+    });
+
+    return '<div class="kn-pyq-faq-grid" id="knPyqFaqCardsContainer">' + cardsHTML + '</div>';
+  }
+
+  function renderPyqFrequentlyAskedView() {
+    var examFilter = state.pyq.faqExamFilter || "all";
+    var data = computeFrequentlyAskedTopics(examFilter);
+    var sortMode = state.pyq.faqSort || "freq";
+
+    // Calculate totals across all exams for filter pill counts
+    var allData = computeFrequentlyAskedTopics("all");
+    var neetData = computeFrequentlyAskedTopics("NEET-SS");
+    var iniData = computeFrequentlyAskedTopics("INI-SS");
+    var iniCetData = computeFrequentlyAskedTopics("INI-CET-SS-2026");
+
+    var topTopic = data.topics.length ? data.topics[0] : null;
+    var topTopicStr = topTopic ? (topTopic.name + ' (' + topTopic.percentage.toFixed(1) + '%)') : 'Mechanical Ventilation';
+
+    return (
+      '<div class="kn-pyq-explorer-view kn-pyq-faq-view">' +
+        '<!-- 1. Header Card (Aligned with Study Section Design Language) -->' +
+        '<section class="kn-pyq-header-card kn-pyq-header-card--faq">' +
+          '<div class="kn-pyq-header-top">' +
+            '<div>' +
+              '<div class="kn-pyq-badge-eyebrow">HIGH-YIELD FREQUENCY ENGINE</div>' +
+              '<h2 class="kn-pyq-title">🔥 Frequently Asked Topics — Critical Care PYQs</h2>' +
+              '<p class="kn-pyq-subtitle">Topic rankings automatically derived from all 312+ verified recall questions (NEET-SS, INI-SS &amp; INI-CET SS). Prioritize high-yield topics with direct links to exam-oriented study chapters and topic question sets.</p>' +
+            '</div>' +
+            '<div class="kn-pyq-header-actions">' +
+              '<button type="button" class="kn-mcq-btn kn-mcq-btn--sm kn-mcq-btn--study-exit" data-action="faq-back-to-pyq" title="Return to Topic Explorer">← PYQ Explorer</button>' +
+              '<button type="button" class="kn-mcq-btn kn-mcq-btn--sm kn-mcq-btn--study-exit" data-action="exit-to-study" title="Return to Study Mode">← Study Mode</button>' +
+              '<button type="button" class="kn-mcq-btn kn-mcq-btn--primary kn-mcq-btn--sm" data-action="go-builder">⚡ Custom Test</button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="kn-pyq-stats-grid">' +
+            '<div class="kn-pyq-stat-item">' +
+              '<div class="kn-pyq-stat-label">TOTAL PYQS ANALYZED</div>' +
+              '<div class="kn-pyq-stat-val">' + data.totalPYQs + '</div>' +
+            '</div>' +
+            '<div class="kn-pyq-stat-item">' +
+              '<div class="kn-pyq-stat-label">EXAM DOMAINS</div>' +
+              '<div class="kn-pyq-stat-val">' + data.topics.length + ' Topics</div>' +
+            '</div>' +
+            '<div class="kn-pyq-stat-item">' +
+              '<div class="kn-pyq-stat-label">#1 HIGH-YIELD DOMAIN</div>' +
+              '<div class="kn-pyq-stat-val" style="font-size:14.5px;">' + esc(topTopicStr) + '</div>' +
+            '</div>' +
+            '<div class="kn-pyq-stat-item">' +
+              '<div class="kn-pyq-stat-label">TOP 3 TOPICS SHARE</div>' +
+              '<div class="kn-pyq-stat-val">33.0% of All Qs</div>' +
+            '</div>' +
+          '</div>' +
+        '</section>' +
+
+        '<!-- 2. Controls Wrap: Exam Scope Switcher, View Mode & Sort -->' +
+        '<div class="kn-pyq-controls-wrap">' +
+          '<div class="kn-pyq-switchers-row">' +
+            '<div class="kn-pyq-pill-group" role="tablist" aria-label="Exam Scope">' +
+              '<span class="kn-pyq-group-label">Exam:</span>' +
+              '<button type="button" class="kn-pyq-pill-btn ' + (examFilter === "all" ? "active" : "") + '" data-action="faq-set-exam-filter" data-exam="all">All Exams (' + allData.totalPYQs + ')</button>' +
+              '<button type="button" class="kn-pyq-pill-btn ' + (examFilter === "NEET-SS" ? "active" : "") + '" data-action="faq-set-exam-filter" data-exam="NEET-SS">🎯 NEET-SS (' + neetData.totalPYQs + ')</button>' +
+              '<button type="button" class="kn-pyq-pill-btn ' + (examFilter === "INI-SS" ? "active" : "") + '" data-action="faq-set-exam-filter" data-exam="INI-SS">🏛️ INI-SS Nov 25 (' + iniData.totalPYQs + ')</button>' +
+              '<button type="button" class="kn-pyq-pill-btn ' + (examFilter === "INI-CET-SS-2026" ? "active" : "") + '" data-action="faq-set-exam-filter" data-exam="INI-CET-SS-2026">⭐ INI-CET 2026 (' + iniCetData.totalPYQs + ')</button>' +
+            '</div>' +
+
+            '<div class="kn-pyq-pill-group" role="tablist" aria-label="Viewing Mode">' +
+              '<span class="kn-pyq-group-label">View:</span>' +
+              '<button type="button" class="kn-pyq-pill-btn" data-action="pyq-set-mode" data-mode="topic">🗂️ Topic-wise Explorer</button>' +
+              '<button type="button" class="kn-pyq-pill-btn" data-action="pyq-set-mode" data-mode="all">📋 All Questions</button>' +
+              '<button type="button" class="kn-pyq-pill-btn active kn-pyq-pill-btn--freq" data-action="pyq-set-mode" data-mode="frequent">🔥 Frequently Asked</button>' +
+            '</div>' +
+
+            '<div class="kn-pyq-pill-group" role="tablist" aria-label="Sort Frequency">' +
+              '<span class="kn-pyq-group-label">Sort:</span>' +
+              '<button type="button" class="kn-pyq-pill-btn ' + (sortMode === "freq" ? "active" : "") + '" data-action="faq-set-sort" data-sort="freq">Highest Frequency</button>' +
+              '<button type="button" class="kn-pyq-pill-btn ' + (sortMode === "name" ? "active" : "") + '" data-action="faq-set-sort" data-sort="name">A–Z</button>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="kn-pyq-search-wrap">' +
+            '<input type="search" class="kn-pyq-search-input" id="knPyqFaqSearchInput"' +
+              ' placeholder="Search frequently asked topics or tested concepts (e.g., Ventilation, Sepsis, Driving Pressure, Auto-PEEP)..."' +
+              ' value="' + esc(state.pyq.faqSearch) + '" autocomplete="off">' +
+            (state.pyq.faqSearch ? '<button type="button" class="kn-pyq-search-clear" data-action="faq-clear-search" aria-label="Clear search">×</button>' : '') +
+          '</div>' +
+        '</div>' +
+
+        '<!-- 3. Topic Cards Grid -->' +
+        renderPyqFrequentlyAskedCardsHTML() +
+      '</div>'
+    );
+  }
+
   function renderPyqView() {
+    if (state.pyq.mode === "frequent" || state.pyq.mode === "frequently-asked" || state.pyq.mode === "faq") {
+      return renderPyqFrequentlyAskedView();
+    }
+
     var counts = getPYQTopicCounts();
     var filtered = getFilteredPYQs();
 
@@ -1827,6 +2236,7 @@
               '<p class="kn-pyq-subtitle">Verified Previous Year Question Bank • Real Recall Questions &amp; In-Depth Explanations</p>' +
             '</div>' +
             '<div class="kn-pyq-header-actions">' +
+              '<button type="button" class="kn-mcq-btn kn-mcq-btn--sm kn-pyq-freq-trigger-btn" data-action="pyq-set-mode" data-mode="frequent" title="View exam topic frequency rankings">🔥 Frequently Asked Topics</button>' +
               '<button type="button" class="kn-mcq-btn kn-mcq-btn--sm kn-mcq-btn--study-exit" data-action="exit-to-study" title="Return to Study Mode">← Study Mode</button>' +
               '<button type="button" class="kn-mcq-btn kn-mcq-btn--primary kn-mcq-btn--sm" data-action="go-builder">⚡ Custom Test</button>' +
             '</div>' +
@@ -1865,8 +2275,9 @@
 
             '<div class="kn-pyq-pill-group" role="tablist" aria-label="Viewing Mode">' +
               '<span class="kn-pyq-group-label">View:</span>' +
-              '<button type="button" class="kn-pyq-pill-btn ' + (state.pyq.mode !== "all" ? "active" : "") + '" data-action="pyq-set-mode" data-mode="topic">🗂️ Topic-wise Explorer</button>' +
+              '<button type="button" class="kn-pyq-pill-btn ' + (state.pyq.mode === "topic" ? "active" : "") + '" data-action="pyq-set-mode" data-mode="topic">🗂️ Topic Explorer</button>' +
               '<button type="button" class="kn-pyq-pill-btn ' + (state.pyq.mode === "all" ? "active" : "") + '" data-action="pyq-set-mode" data-mode="all">📋 All Questions</button>' +
+              '<button type="button" class="kn-pyq-pill-btn kn-pyq-pill-btn--freq ' + (state.pyq.mode === "frequent" ? "active" : "") + '" data-action="pyq-set-mode" data-mode="frequent">🔥 Frequently Asked</button>' +
             '</div>' +
           '</div>' +
 
@@ -2134,6 +2545,21 @@
         state.pyq.year = "all";
         state.pyq.page = 0;
         state.pyq.topic = "all";
+        try {
+          var urlPyq2 = new URL(window.location.href);
+          urlPyq2.searchParams.set("view", "pyq");
+          urlPyq2.searchParams.set("exam", state.pyq.exam);
+          window.history.replaceState({ view: "pyq", exam: state.pyq.exam }, "", urlPyq2.toString());
+        } catch (_) {}
+        filterPracticeList();
+        render();
+        return;
+      }
+
+      if (action === "pyq-set-session") {
+        triggerHaptic();
+        state.pyq.page = 0;
+        state.pyq.topic = "all";
         filterPracticeList();
         render();
         return;
@@ -2155,13 +2581,68 @@
         if (targetMode === "all") {
           state.pyq.mode = "all";
           state.practiceFilter.view = "pyq";
+          state.practiceFilter.exam = "all";
           state.practiceIndex = 0;
           filterPracticeList();
           state.viewMode = "practice";
+        } else if (targetMode === "frequent") {
+          state.pyq.mode = "frequent";
+          state.viewMode = "pyq";
         } else {
           state.pyq.mode = "topic";
           state.viewMode = "pyq";
         }
+        render();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+
+      if (action === "faq-set-exam-filter") {
+        triggerHaptic();
+        state.pyq.faqExamFilter = btn.getAttribute("data-exam") || "all";
+        render();
+        return;
+      }
+
+      if (action === "faq-set-sort") {
+        triggerHaptic();
+        state.pyq.faqSort = btn.getAttribute("data-sort") || "freq";
+        render();
+        return;
+      }
+
+      if (action === "faq-clear-search") {
+        triggerHaptic();
+        state.pyq.faqSearch = "";
+        render();
+        return;
+      }
+
+      if (action === "faq-practise-topic") {
+        triggerHaptic();
+        var tName = btn.getAttribute("data-topic");
+        state.pyq.mode = "topic";
+        state.pyq.topic = tName || "all";
+        state.pyq.page = 0;
+        state.viewMode = "pyq";
+        render();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+
+      if (action === "faq-study-topic") {
+        triggerHaptic();
+        var studyId = btn.getAttribute("data-study-id");
+        if (studyId) {
+          window.location.href = "study.html?topic=" + encodeURIComponent(studyId);
+        }
+        return;
+      }
+
+      if (action === "faq-back-to-pyq") {
+        triggerHaptic();
+        state.pyq.mode = "topic";
+        state.viewMode = "pyq";
         render();
         window.scrollTo({ top: 0, behavior: "smooth" });
         return;
@@ -2450,6 +2931,12 @@
         if (statCountEl) statCountEl.textContent = filtered.length;
         if (cardsContainer) cardsContainer.outerHTML = renderPyqCardsHTML(filtered);
         if (paginationContainer) paginationContainer.outerHTML = renderPyqPaginationHTML(filtered);
+      } else if (e.target && e.target.id === "knPyqFaqSearchInput") {
+        state.pyq.faqSearch = e.target.value;
+        var faqCardsContainer = container.querySelector("#knPyqFaqCardsContainer");
+        if (faqCardsContainer) {
+          faqCardsContainer.outerHTML = renderPyqFrequentlyAskedCardsHTML();
+        }
       }
     });
 
@@ -2604,15 +3091,32 @@
     // Configure initial view based on options
     if (opts.viewMode === "pyq" || opts.view === "pyq") {
       state.viewMode = "pyq";
-      state.pyq.mode = opts.pyqMode || "topic";
-      if (opts.pyqYear) state.pyq.year = opts.pyqYear;
-      if (opts.pyqTopic) state.pyq.topic = opts.pyqTopic;
+      var rawMode = opts.pyqMode || opts.mode || "topic";
+      if (rawMode === "frequently-asked" || rawMode === "faq" || rawMode === "frequent") {
+        state.pyq.mode = "frequent";
+      } else {
+        state.pyq.mode = rawMode;
+      }
+      var targetExam = opts.pyqExam || opts.exam;
+      if (targetExam) {
+        var teUpper = String(targetExam).trim().toUpperCase();
+        if (teUpper.indexOf("2026") !== -1 || teUpper.indexOf("INI-CET") !== -1 || teUpper.indexOf("INICET") !== -1) {
+          state.pyq.exam = "INI-CET-SS-2026";
+        } else if (teUpper.indexOf("INI") !== -1 || teUpper.indexOf("NOV") !== -1) {
+          state.pyq.exam = "INI-SS";
+        } else if (teUpper.indexOf("NEET") !== -1) {
+          state.pyq.exam = "NEET-SS";
+        }
+      }
+      if (opts.pyqYear || opts.year) state.pyq.year = opts.pyqYear || opts.year;
+      if (opts.pyqTopic || opts.topic) state.pyq.topic = opts.pyqTopic || opts.topic;
       state.pyq.page = 0;
       state.pyq.search = "";
       try {
         var urlPyq = new URL(window.location.href);
         urlPyq.searchParams.set("view", "pyq");
-        window.history.replaceState({ view: "pyq" }, "", urlPyq.toString());
+        if (state.pyq.exam) urlPyq.searchParams.set("exam", state.pyq.exam);
+        window.history.replaceState({ view: "pyq", exam: state.pyq.exam }, "", urlPyq.toString());
       } catch (_) {}
     } else if (opts.chapterId !== undefined || opts.topicId !== undefined) {
       state.viewMode = opts.viewMode || "practice";
@@ -2714,7 +3218,18 @@
     var urlParams = new URLSearchParams(window.location.search);
     var isPyqParam = urlParams.get("view") === "pyq" || urlParams.get("pyq") === "true";
     if (isPyqParam) {
-      open({ viewMode: "pyq", view: "pyq" });
+      var modeParam = urlParams.get("mode") || urlParams.get("pyqMode");
+      if (!modeParam && (urlParams.get("faq") === "true" || urlParams.get("frequent") === "true" || urlParams.get("freq") === "true")) {
+        modeParam = "frequent";
+      }
+      open({
+        viewMode: "pyq",
+        view: "pyq",
+        pyqExam: urlParams.get("exam") || urlParams.get("pyqExam"),
+        pyqYear: urlParams.get("year") || urlParams.get("pyqYear") || urlParams.get("session"),
+        pyqTopic: urlParams.get("topic") || urlParams.get("pyqTopic"),
+        pyqMode: modeParam
+      });
       return;
     }
     if (urlParams.get("view") === "mcq" || urlParams.get("mcq") === "true") {

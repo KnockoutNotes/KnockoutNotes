@@ -7797,6 +7797,73 @@ window.KN_STUDY = {
         {
           "h": "Veno-Venous (VV) ECMO Criteria & The EOLIA Trial",
           "b": "• Veno-Venous (VV) ECMO in Severe Refractory ARDS:\n  - Replaces pulmonary gas exchange: Deoxygenated blood is drained from the vena cava, pumped through an extracorporeal polymethylpentene membrane lung where O2 is added and CO2 removed, and returned to the venous circulation.\n  - Allows 'ultra-lung-protective ventilation' (resting the lung: VT **2–3 mL/kg**, Pplat **< 24 cmH2O**, PEEP 10–14, RR 10 breaths/min).\n\n• EOLIA Trial (NEJM 2018) Inclusion Criteria (Standard VV-ECMO Indications):\n  1. PaO2/FiO2 **less than 50 mmHg** for **greater than 3 hours** despite FiO2 1.0 and optimal PEEP, OR\n  2. PaO2/FiO2 **less than 80 mmHg** for **greater than 6 hours** despite FiO2 1.0, OR\n  3. Arterial pH **< 7.15** with PaCO2 **≥ 60 mmHg** for **> 6 hours** resulting from hypercapnia due to limitation of tidal volume (Pplat kept ≤ 32 cmH2O).\n\n• Exclusion Criteria for ECMO:\n  - Mechanical ventilation > 7 to 10 days at high settings (fibroproliferative irreversible lung disease).\n  - Severe intracranial hemorrhage or uncorrectable coagulopathy (contraindication to systemic heparinization).\n  - Irreversible terminal illness or advanced multiorgan failure with no recovery potential."
+        },
+        {
+          "h": "Landmark Evidence Synthesis & Guideline Consensus (ARMA, PROSEVA, ROSE, EOLIA & ART)",
+          "b": "Critical care exit examinations require mastery of trial names, sample sizes, interventions, and exact mortality reductions in ARDS:\n\n• ARMA Trial (ARDSNet, NEJM 2000, n = 861):\n  - Randomized patients to Low Tidal Volume (6 mL/kg PBW, Pplat ≤ 30 cmH2O) vs Traditional Tidal Volume (12 mL/kg PBW, Pplat ≤ 50 cmH2O).\n  - Outcome: 28-day mortality was **31.0% vs 39.8%** (Absolute Risk Reduction 8.8%, p = 0.007; 22% relative reduction in mortality).\n  - Established 6 mL/kg PBW as the non-negotiable worldwide standard of care.\n\n• PROSEVA Trial (Guérin et al., NEJM 2013, n = 466):\n  - Early, prolonged prone positioning (≥ 16 consecutive hours/day) vs supine positioning in severe ARDS (PaO2/FiO2 < 150 mmHg on PEEP ≥ 10 and FiO2 ≥ 0.60).\n  - Outcome: 28-day mortality was **16.0% in prone vs 32.8% in supine** (p < 0.001; Absolute Risk Reduction 16.8%, Number Needed to Treat = 6!). 90-day mortality was 23.6% vs 41.0% (p < 0.001).\n  - Key Rule: Must be initiated within 12–24 hours of severe ARDS confirmation.\n\n• ACURASYS (NEJM 2010, n = 340) vs ROSE Trial (PETAL Network, NEJM 2019, n = 1,006):\n  - ACURASYS: 48-hour continuous Cisatracurium infusion in severe ARDS (P/F < 150) reduced 90-day adjusted mortality (31.6% vs 40.7%, p = 0.04).\n  - ROSE: Re-evaluated neuromuscular blockade in the modern era of light sedation (RASS -1 to 0). Found NO mortality difference between early cisatracurium with deep sedation vs light sedation with as-needed paralysis (42.5% vs 42.4% at 90 days).\n  - Modern Guideline Recommendation: Routine continuous neuromuscular blockade is NOT recommended for all ARDS; reserve for severe patient-ventilator dyssynchrony, refractory hypoxemia, or high transpulmonary driving pressure.\n\n• EOLIA Trial (Combes et al., NEJM 2018, n = 249):\n  - Early VV-ECMO vs standard conventional mechanical ventilation in very severe ARDS.\n  - Outcome: 60-day mortality was 35% in ECMO group vs 46% in conventional group (Relative Risk 0.76, p = 0.09). However, 28% of the conventional arm crossed over to emergency rescue ECMO due to refractory collapse, diluting the mortality difference.\n  - Post-hoc Bayesian Analysis: High probability (92–99%) that ECMO provides a true mortality benefit in refractory severe ARDS.",
+          "table": {
+            "headers": [
+              "Landmark Trial",
+              "Patient Cohort (n)",
+              "Tested Intervention",
+              "Primary Outcome / Mortality Impact",
+              "Postgraduate Exam Pearl"
+            ],
+            "rows": [
+              [
+                "ARMA (NEJM 2000)",
+                "ARDS (n = 861)",
+                "6 mL/kg PBW vs 12 mL/kg PBW",
+                "31.0% vs 39.8% mortality (p = 0.007; ARR 8.8%)",
+                "PBW calculated from height, never actual total body weight!"
+              ],
+              [
+                "PROSEVA (NEJM 2013)",
+                "P/F < 150 (n = 466)",
+                "Prone ≥ 16 h/day vs Supine",
+                "16.0% vs 32.8% mortality (p < 0.001; ARR 16.8%, NNT = 6)",
+                "Largest single mortality reduction in intensive care medicine history"
+              ],
+              [
+                "ACURASYS (NEJM 2010)",
+                "P/F < 150 (n = 340)",
+                "Cisatracurium 48h infusion",
+                "Adjusted 90-day mortality 31.6% vs 40.7% (p = 0.04)",
+                "Must monitor TOF; maintain deep sedation (RASS -5)"
+              ],
+              [
+                "ROSE (NEJM 2019)",
+                "P/F < 150 (n = 1,006)",
+                "Early NMB + deep sedation vs light sedation",
+                "90-day mortality 42.5% vs 42.4% (no difference)",
+                "Avoid routine deep paralysis; target light sedation if patient synchronous"
+              ],
+              [
+                "ART (JAMA 2017)",
+                "Moderate/Severe (n = 1,010)",
+                "Lung recruitment + decremental PEEP titration",
+                "Increased 28-day mortality (55.3% vs 49.3%, p = 0.041)",
+                "Aggressive stair-step recruitment maneuvers are actively harmful and contraindicated!"
+              ],
+              [
+                "EOLIA (NEJM 2018)",
+                "Refractory ARDS (n = 249)",
+                "Early VV-ECMO vs standard lung-protective",
+                "60-day mortality 35% vs 46% (RR 0.76; 28% crossover)",
+                "Strict indication: P/F < 50 for >3h, P/F < 80 for >6h, or pH < 7.15 for >6h"
+              ]
+            ],
+            "caption": "Summary of landmark multicenter randomized clinical trials establishing evidence-based ARDS protocols."
+          }
+        },
+        {
+          "h": "Stepwise Evidence-Based Rescue Hierarchy in Severe ARDS (2023–2026 Guidelines)",
+          "b": "When a mechanically ventilated patient deteriorates into severe ARDS (PaO2/FiO2 < 150 mmHg), execute rescue therapies in this strict algorithmic order:\n\n1. Baseline Lung-Protective Optimization:\n• Re-check PBW calculation and verify tidal volume is **4 to 6 mL/kg PBW**.\n• Measure Plateau Pressure (end-inspiratory hold): Ensure **Pplat ≤ 30 cmH2O**.\n• Calculate Driving Pressure: **ΔP = Pplat - PEEP**. Ensure **ΔP < 14 cmH2O** (each 1 cmH2O drop improves survival).\n• Set PEEP using the ARDSNet Higher PEEP / Lower FiO2 table (typically **12 to 16 cmH2O** in severe ARDS).\n\n2. Early Prone Positioning (First-Line Rescue Therapy — Grade 1A):\n• Indicated if PaO2/FiO2 remains **< 150 mmHg** after 12–24 hours on PEEP ≥ 10 and FiO2 ≥ 0.60.\n• Prone for at least **16 consecutive hours daily**.\n• Continue daily sessions until PaO2/FiO2 is **≥ 150 mmHg** with PEEP ≤ 10 and FiO2 ≤ 0.60 for at least 4 hours after return to supine.\n\n3. Neuromuscular Blockade Infusion (Second-Line / Adjunct):\n• If patient exhibits ventilator fighting, double-triggering, reverse triggering, or elevated transpulmonary driving pressure despite optimal sedation, infuse Cisatracurium for up to **48 hours**.\n\n4. Inhaled Pulmonary Vasodilators (Bridge Therapy):\n• Inhaled Nitric Oxide (iNO 10–20 ppm) or Inhaled Epoprostenol (10–50 ng/kg/min).\n• Acts as a temporary oxygenation bridge while organizing ECMO or awaiting response to prone positioning.\n• Does not improve mortality; wean within 48–72 hours if no oxygenation response.\n\n5. Veno-Venous (VV) ECMO (Definitive Rescue Therapy):\n• Evaluate immediately if patient meets EOLIA criteria (P/F < 50 for > 3h, or P/F < 80 for > 6h, or uncorrectable respiratory acidosis pH < 7.15 with PaCO2 ≥ 60 mmHg for > 6h).\n• Cannulation: Femoro-jugular (drainage from IVC, reinfusion into SVC/right atrium) or dual-lumen single cannula (Avalon).",
+          "callout": {
+            "type": "pitfall",
+            "title": "EXAM PITFALL — Stair-Step Recruitment Maneuvers in ARDS",
+            "text": "Never recommend aggressive stair-step recruitment maneuvers (e.g., CPAP 40 cmH2O for 40 seconds, or stepwise PEEP up to 45 cmH2O). The landmark **ART Trial (JAMA 2017)** demonstrated that aggressive recruitment maneuvers significantly increased 28-day mortality, barotrauma, and cardiac arrest. Safe PEEP titration without hyperinflation is the current standard."
+          }
         }
       ],
       "example": "CLINICAL CASE: A 46-year-old male with severe influenza A pneumonia is intubated on Day 2 of ICU admission. Height: 178 cm (PBW = 73 kg). Current ventilator settings: Volume Control, VT 580 mL (8 mL/kg PBW), PEEP 14 cmH2O, FiO2 1.0, RR 28. ABG: pH 7.24, PaCO2 54, PaO2 62 mmHg (PaO2/FiO2 = 62 mmHg, severe ARDS). End-inspiratory pause reveals Pplat 34 cmH2O (Driving Pressure = 20 cmH2O!).\n\nStepwise Evidence-Based ARDS Management:\n1. Lung-Protective Adjustment: Immediate down-titration of tidal volume to 6 mL/kg PBW (440 mL), then 5 mL/kg PBW (365 mL). Pplat drops to 27 cmH2O (Driving Pressure drops to 13 cmH2O, meeting the <14 target). pH is 7.21 (permissive hypercapnia accepted).\n2. Neuromuscular Blockade: Severe patient-ventilator dyssynchrony with double-triggering observed; cisatracurium continuous infusion started at 2 mcg/kg/min with deep sedation (RASS -5).\n3. Early Prone Positioning: PaO2/FiO2 remains 88 mmHg. The multidisciplinary team turns the patient prone for a 16-hour session.\n4. Response: At hour 4 of proning, PaO2 rises to 142 mmHg on FiO2 0.70 (P/F improves to 202 mmHg). Daily 16-hour prone sessions are continued for 3 consecutive days.\n5. Outcome: On Day 6, the patient is supine with P/F 240 on PEEP 10 and FiO2 0.40. Cisatracurium is stopped, sedation lightened, and he is successfully liberated from mechanical ventilation on Day 11 without requiring ECMO.",
@@ -7805,7 +7872,9 @@ window.KN_STUDY = {
         "The ARDS Definition Task Force. Acute Respiratory Distress Syndrome: The Berlin Definition. JAMA 2012;307(23):2526–2533.",
         "Guérin C, et al. Prone Positioning in Severe Acute Respiratory Distress Syndrome (PROSEVA Trial). N Engl J Med 2013;368(23):2159–2168.",
         "Amato MB, et al. Driving Pressure and Survival in the Acute Respiratory Distress Syndrome. N Engl J Med 2015;372(8):747–755.",
-        "Combes A, et al. Extracorporeal Membrane Oxygenation for Severe Acute Respiratory Distress Syndrome (EOLIA Trial). N Engl J Med 2018;378(21):1965–1975."
+        "Combes A, et al. Extracorporeal Membrane Oxygenation for Severe Acute Respiratory Distress Syndrome (EOLIA Trial). N Engl J Med 2018;378(21):1965–1975.",
+        "The National Heart, Lung, and Blood Institute PETAL Clinical Trials Network. Early Neuromuscular Blockade in the Acute Respiratory Distress Syndrome (ROSE Trial). N Engl J Med 2019;380(21):1997–2008.",
+        "Cavalcanti AB, et al. Effect of Lung Recruitment and Titrated Positive End-Expiratory Pressure (PEEP) vs Low PEEP on Mortality in Patients With Acute Respiratory Distress Syndrome: A Randomized Clinical Trial (ART Trial). JAMA 2017;318(14):1335–1345."
       ]
     },
     {
@@ -7920,6 +7989,66 @@ window.KN_STUDY = {
         {
           "h": "Management of Severe Auto-PEEP & Dynamic Hyperinflation",
           "b": "• Life-Threatening Consequences of Auto-PEEP in COPD / Asthma:\n  - Massive dynamic hyperinflation increases intrathoracic pressure to > 20 cmH2O, compressing the superior and inferior vena cava.\n  - Venous return crashes, precipitating acute pulseless electrical activity (PEA) arrest within minutes of intubation!\n\n• Emergency Bedside Action for Acute Hemodynamic Collapse in Ventilated Asthmatic:\n  1. Immediately DISCONNECT the patient from the mechanical ventilator!\n  2. Manually compress the chest wall: Allow a prolonged expiration of **30 to 60 seconds** to vent trapped gas.\n  3. If blood pressure and pulse immediately return, the diagnosis is confirmed as severe auto-PEEP!\n\n• Ventilator Prescription for Severe Airflow Obstruction:\n  - Low Respiratory Rate: **10 to 14 breaths/min** (allows adequate expiratory time: Te **> 3 to 4 seconds**).\n  - Short Inspiratory Time: High inspiratory flow rate (**70 to 90 L/min**) to keep Ti short (**0.6 to 0.8 seconds**).\n  - I:E Ratio: Target **1:3 to 1:5**.\n  - Modest Tidal Volume: **6 to 8 mL/kg PBW**.\n  - Accept Permissive Hypercapnia: Allow PaCO2 to rise (60–90 mmHg) provided pH remains **≥ 7.15 to 7.20**."
+        },
+        {
+          "h": "Advanced Respiratory Mechanics: Mechanical Power, Stress Index & Esophageal Manometry (Ptp)",
+          "b": "Beyond tidal volume and plateau pressure, modern lung protection focuses on the cumulative energy delivered to the lung tissue per unit time and true distending transpulmonary pressures:\n\n• Mechanical Power of Ventilation (Gattinoni Equation):\n  - Represents the energy transferred from the mechanical ventilator to the respiratory system per minute:\n  - Simplified Clinical Formula: **Mechanical Power (J/min) = 0.098 × RR × VT × [Ppeak - (ΔP / 2)]**.\n  - High-Risk Threshold: Values **> 17.0 J/min** cause measurable microstructural lung injury; values **> 27.0 J/min** directly drive ventilator-induced lung injury (VILI) and increase mortality independently of Pplat!\n  - Clinical Action: If Mechanical Power is high despite normal Pplat, lower the respiratory rate (RR) and accept permissive hypercapnia.\n\n• The Stress Index (Dynamic Tidal Mechanics in Constant-Flow VCV):\n  - Assessed from the shape of the airway pressure-time scalar during constant-flow inspiration between 20% and 80% of inspiratory time:\n  - **Stress Index = 1.0 (Straight Linear Slope)**: Compliance is constant throughout tidal insufflation; tidal volume is well-matched to the baby lung.\n  - **Stress Index < 1.0 (Downwards Concavity / Flattening)**: Compliance increases as volume is delivered (tidal recruitment of collapsed alveoli!); indication to safely INCREASE PEEP.\n  - **Stress Index > 1.0 (Upwards Concavity / Steepening)**: Compliance decreases progressively during inspiration (alveolar overdistension / tidal stiffening!); indication to REDUCE tidal volume or decrease PEEP.\n\n• Esophageal Manometry & Transpulmonary Pressure (Ptp):\n  - Airway pressure (Paw) reflects the sum of chest wall elastance and lung elastance: Paw = P(lung) + P(chest wall).\n  - In morbid obesity, severe abdominal compartment syndrome, or massive chest wall edema, chest wall elastance is drastically elevated; a high Pplat (e.g., 34 cmH2O) does NOT necessarily indicate alveolar overdistension!\n  - Measurement: Esophageal balloon catheter positioned in the lower third of the esophagus (reflects pleural pressure, Ppl).\n  - Formula: **Transpulmonary Pressure (Ptp) = Paw - Pes**.\n  - Target Cutoffs (EPVent-2 Protocol):\n    * End-Inspiratory Ptp (Pplat - Pes,insp): Keep **≤ 20 to 25 cmH2O** to prevent barotrauma/volutrauma.\n    * End-Expiratory Ptp (PEEP - Pes,exp): Keep **≥ 0 to 2 cmH2O** (positive at end-expiration!) to prevent cyclical alveolar derecruitment and atelectrauma in morbidly obese patients.",
+          "table": {
+            "headers": [
+              "Advanced Parameter",
+              "Measurement Method",
+              "Normal / Safe Target",
+              "Injurious / Pathologic Cutoff",
+              "Immediate Bedside Ventilator Adjustment"
+            ],
+            "rows": [
+              [
+                "Mechanical Power",
+                "0.098 × RR × VT × [Ppeak - ΔP/2]",
+                "< 17.0 Joules/min",
+                "> 27.0 Joules/min",
+                "Reduce RR; decrease VT to 4–5 mL/kg PBW; accept permissive hypercapnia"
+              ],
+              [
+                "Stress Index",
+                "Shape of P-t curve in constant-flow VCV",
+                "Equal to 1.0 (linear)",
+                "> 1.0 (overdistension) / < 1.0 (recruitment)",
+                "If > 1.0: lower VT or PEEP; if < 1.0: titrate PEEP upward"
+              ],
+              [
+                "End-Inspiratory Ptp",
+                "Pplat - Pes (end-inspiratory hold)",
+                "15–20 cmH2O",
+                "> 20–25 cmH2O",
+                "Alveolar hyperinflation confirmed; down-titrate tidal volume"
+              ],
+              [
+                "End-Expiratory Ptp",
+                "PEEP - Pes (end-expiratory hold)",
+                "0 to +2 cmH2O",
+                "< 0 cmH2O (negative end-exp Ptp)",
+                "Pleural pressure exceeds PEEP; increase PEEP to achieve positive Ptp"
+              ],
+              [
+                "Time Constant (τ)",
+                "Compliance (C) × Resistance (R)",
+                "0.5 to 0.7 seconds",
+                "> 1.5 s (COPD/Asthma) / < 0.3 s (severe ARDS)",
+                "Set Te ≥ 3–5 τ in obstructive lung disease to prevent auto-PEEP"
+              ]
+            ],
+            "caption": "Advanced physiological targets in mechanical ventilation and their bedside interpretations."
+          }
+        },
+        {
+          "h": "High-Yield Exam Pearls & Verified PYQ Provenance (NEET-SS, INI-SS & INI-CET SS)",
+          "b": "Mechanical ventilation is the #1 tested domain across all national critical care exit examinations (46 verified PYQs, accounting for 14.7% of all questions). Key proven examination questions and concepts include:\n\n1. APRV Termination Rule (INI-CET SS 2026 & NEET-SS 2024):\n• Question Concept: Titration of Tlow (release time) in Airway Pressure Release Ventilation.\n• Verified Rule: Tlow must be set strictly so that expiratory flow terminates at **75% of peak expiratory flow rate (PEFR)**. Terminating exhalation at 75% of PEFR maintains intrinsic PEEP and prevents alveolar collapse, avoiding cyclical derecruitment!\n\n2. The 'Waterfall Effect' of Intrinsic PEEP (NEET-SS 2025 & INI-SS Nov 2025):\n• Question Concept: Setting extrinsic PEEP (PEEPe) in dynamic hyperinflation (COPD).\n• Verified Rule: In severe dynamic hyperinflation, flow limitation occurs in collapsed small airways (the 'choke point'). Setting extrinsic PEEP to **70% to 80% of auto-PEEP** decreases the trigger threshold without increasing total PEEP or lung volume (the 'waterfall principle'). If PEEPe exceeds auto-PEEP, dynamic hyperinflation worsens!\n\n3. Reverse Triggering (Entrainment) (NEET-SS 2024 & INI-CET SS 2026):\n• Question Concept: Mechanism and recognition of reverse triggering in deeply sedated ARDS patients.\n• Verified Rule: Mechanically delivered breath activates lung mechanoreceptors (Hering-Breuer stretch reflex), which entrains the respiratory rhythm generator in the medulla, triggering a diaphragmatic contraction in mid- or late inspiration. This produces a second breath (breath-stacking) with dangerous transpulmonary pressure spikes. Treatment: Deepen sedation or initiate neuromuscular blockade.\n\n4. Ventilator Time Constant Calculation (τ = R × C) (INI-SS Nov 2025):\n• Formula: **Time Constant (τ) = Airway Resistance (R) × Respiratory System Compliance (C)**.\n• Expiratory emptying: 1 τ = 63.2% volume exhaled; 2 τ = 86.5%; **3 τ = 95.0%**; **5 τ = 99.3%**.\n• Exam Pitfall: In severe asthma (high R, normal C), τ is prolonged to > 1.5 seconds. For complete exhalation (95%), the expiratory time (Te) must be at least **3 × 1.5 = 4.5 seconds**! If Te is set to only 2 seconds, massive dynamic hyperinflation and PEA arrest occur.",
+          "callout": {
+            "type": "pitfall",
+            "title": "EXAM TRAP — Pressure Support Ventilation (PSV) Cycling Criteria",
+            "text": "PSV is flow-cycled! The breath terminates when inspiratory flow drops to a set percentage of peak flow (usually **25%**). In COPD (long time constant), flow decays slowly, delaying cycling and causing premature termination or double-triggering. Remedy: Increase cycle-off sensitivity to **40% to 50%**. In restrictive disease/ARDS (short time constant), flow drops rapidly, terminating the breath prematurely. Remedy: Decrease cycle-off sensitivity to **10% to 15%**."
+          }
         }
       ],
       "example": "CLINICAL CASE: A 52-year-old female with severe COPD exacerbation is intubated in the ICU. Within 10 minutes on Volume Control (VT 450 mL, RR 24, I:E 1:2, PEEP 5 cmH2O), she develops profound hypotension: BP drops from 120/70 to 62/34 mmHg, HR 145 bpm, SpO2 88%. Flow-time waveform demonstrates that expiratory flow does not return to baseline before the next breath. An end-expiratory pause reveals an intrinsic PEEP (Auto-PEEP) of 18 cmH2O (Total PEEP = 23 cmH2O!).\n\nBedside Management:\n1. Immediate Disconnection: The ventilator is immediately disconnected from the ETT. An audible rush of air escapes, and after 30 seconds of passive exhalation, her BP recovers to 118/74 mmHg and HR drops to 105 bpm.\n2. Waveform Troubleshooting: The severe hypotension was caused by dynamic hyperinflation compressing the vena cava and eliminating cardiac preload.\n3. Ventilator Reset: Settings adjusted to: RR 12 breaths/min, VT 380 mL, Inspiratory Flow increased to 80 L/min (shortening Ti to 0.7 s), achieving an I:E ratio of 1:4. External PEEP set to 5 cmH2O.\n4. Bronchodilators: Continuous nebulized salbutamol and ipratropium delivered via in-line circuit adapter + IV methylprednisolone 60 mg.\n5. Follow-up: Repeat end-expiratory pause shows Auto-PEEP reduced to 4 cmH2O. Hemodynamics remain stable with arterial pH 7.28 and PaCO2 56 mmHg (permissive hypercapnia).",
@@ -7927,7 +8056,9 @@ window.KN_STUDY = {
         "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 3. Wolters Kluwer.",
         "Tobin MJ. Principles and Practice of Mechanical Ventilation, 3rd ed. McGraw-Hill, 2013.",
         "De Wit M, et al. Patient-Ventilator Asynchrony: A Review. Crit Care Med 2009;37(8):2459–2465.",
-        "Marini JJ. Dynamic Hyperinflation and Auto-PEEP: Lessons Learned over 30 Years. Am J Respir Crit Care Med 2011;184(7):756–762."
+        "Marini JJ. Dynamic Hyperinflation and Auto-PEEP: Lessons Learned over 30 Years. Am J Respir Crit Care Med 2011;184(7):756–762.",
+        "Gattinoni L, et al. Ventilator-related causes of lung injury: the mechanical power. Intensive Care Med 2016;42(10):1567–1575.",
+        "Grasso S, et al. Airway pressure release ventilation in adult patients with acute respiratory distress syndrome. Curr Opin Crit Care 2012;18(1):67–72."
       ]
     },
     {
@@ -8238,6 +8369,66 @@ window.KN_STUDY = {
         {
           "h": "Source Control, Corticosteroids & Refractory Shock Management",
           "b": "• Emergency Source Control (The 6-Hour Window):\n  - Source control is the single most important intervention in sepsis after antibiotics!\n  - Rapid diagnostic identification: Bedside ultrasound, CT abdomen/pelvis, or diagnostic paracentesis/thoracentesis.\n  - Emergent intervention within **6 to 12 hours** of recognition: Surgical debridement of necrotizing fasciitis, percutaneous drainage of intra-abdominal abscess, cholecystostomy, nephrostomy for pyonephrosis, or removal of infected central venous catheters.\n\n• Adjunctive Corticosteroid Therapy (ADRENAL & APROCCHSS Trials):\n  - Indication: Refractory septic shock requiring ongoing vasopressor therapy (norepinephrine dose **≥ 0.25 mcg/kg/min** or vasopressin escalation) despite adequate fluid resuscitation.\n  - Drug & Dosing: Intravenous **Hydrocortisone 200 mg/day** (administered as **50 mg IV every 6 hours** or as a continuous IV infusion of 200 mg over 24 hours).\n  - Benefits: Accelerates shock resolution, shortens time on vasopressors, and reduces ICU length of stay; taper once vasopressors are weaned.\n  - Routine fludrocortisone is optional (used in APROCCHSS, not in ADRENAL).\n\n• Second-Line Vasoactive Strategy in Refractory Septic Shock:\n  - Add Vasopressin at fixed **0.03 units/min** when norepinephrine reaches 0.25 mcg/kg/min.\n  - Add Epinephrine (0.05–0.5 mcg/kg/min) if MAP remains < 65 mmHg.\n  - Inotropic Dobutamine (2.5–20 mcg/kg/min) added for myocardial depression / low ScvO2 (< 70%)."
+        },
+        {
+          "h": "Landmark Sepsis Resuscitation Trials & Evidence Synthesis (EGDT, Vasopressin & Steroids)",
+          "b": "The evolution of sepsis resuscitation from protocolized catheter-based protocols to modern individualized care is anchored in major multicenter trials:\n\n• The EGDT Paradigm Shift (ProCESS, ARISE & ProMISe Trials, 2014–2015):\n  - Rivers et al. (NEJM 2001) originally proposed Early Goal-Directed Therapy (EGDT) targeting CVP 8–12 mmHg, MAP ≥ 65 mmHg, and ScvO2 ≥ 70% using red cell transfusions (hematocrit ≥ 30%) and dobutamine.\n  - The 'EGDT Trio' (ProCESS in USA [n=1,341], ARISE in Australasia [n=1,600], and ProMISe in UK [n=1,260]): Compared protocolized EGDT against protocolized standard therapy and usual care without central venous catheter.\n  - Outcome: Zero difference in 60- or 90-day mortality across all 3 trials! Routine central venous pressure monitoring, continuous ScvO2 catheters, and protocolized RBC transfusions were retired from routine guidelines.\n\n• The VASST Trial (Russell et al., NEJM 2008, n = 778):\n  - Tested adding Vasopressin (fixed dose 0.03 units/min) vs Norepinephrine alone in septic shock.\n  - Overall 28-day mortality was not statistically different (35.4% vs 39.3%, p = 0.26).\n  - Crucial Stratification Finding: In less severe septic shock (baseline norepinephrine dose < 15 mcg/min), 28-day mortality was significantly lower in the vasopressin group (**26.5% vs 35.7%**, p = 0.05).\n  - Established the guideline recommendation to add vasopressin early (at norepinephrine dose 0.25 mcg/kg/min) rather than as a terminal salvage therapy.\n\n• ADRENAL (NEJM 2018, n = 3,800) vs APROCCHSS (NEJM 2018, n = 1,241):\n  - ADRENAL: Continuous hydrocortisone infusion (200 mg/day) vs placebo in ventilated septic shock on vasopressors for ≥ 4 hours. Result: Faster shock reversal (median 3 vs 4 days, p < 0.001) and shorter ICU discharge time, but no 90-day mortality reduction (27.9% vs 28.8%).\n  - APROCCHSS: Hydrocortisone 50 mg q6h + Fludrocortisone 50 mcg daily in refractory septic shock (high pressor doses for ≥ 6 hours). Result: Significant reduction in 90-day all-cause mortality (**43.0% vs 49.1%**, p = 0.03; ARR 6.1%, NNT = 17!).\n  - Consensus: Initiate Hydrocortisone 200 mg/day in septic shock when norepinephrine dose is ≥ 0.25 mcg/kg/min for at least 4 hours.",
+          "table": {
+            "headers": [
+              "Landmark Trial",
+              "Patients (n)",
+              "Tested Intervention",
+              "Primary Outcome / Clinical Finding",
+              "Postgraduate Exam Pearl"
+            ],
+            "rows": [
+              [
+                "Rivers EGDT (NEJM 2001)",
+                "Septic Shock (n = 263)",
+                "Protocolized CVP + ScvO2 + RBC transfusion",
+                "30.5% vs 46.5% hospital mortality (p = 0.009)",
+                "Historic pioneer; highlighted prompt early antibiotic and volume delivery"
+              ],
+              [
+                "ProCESS / ARISE / ProMISe (2014–15)",
+                "Septic Shock (n = 4,201 total)",
+                "Protocolized EGDT vs Usual Modern Care",
+                "No difference in 60- or 90-day mortality",
+                "ScvO2 and CVP central lines are NOT mandatory for routine resuscitation"
+              ],
+              [
+                "VASST (NEJM 2008)",
+                "Septic Shock (n = 778)",
+                "Vasopressin 0.03 U/min + NE vs NE alone",
+                "Mortality benefit in moderate shock (NE < 15 mcg/min, p = 0.05)",
+                "Fixed dose 0.03 U/min; noradrenaline-sparing; never titrate vasopressin"
+              ],
+              [
+                "APROCCHSS (NEJM 2018)",
+                "Refractory Shock (n = 1,241)",
+                "Hydrocortisone + Fludrocortisone vs Placebo",
+                "Significant reduction in 90-day mortality (43.0% vs 49.1%, p = 0.03)",
+                "Mortality benefit seen in severe refractory shock on high-dose pressors"
+              ],
+              [
+                "ADRENAL (NEJM 2018)",
+                "Ventilated Shock (n = 3,800)",
+                "Continuous Hydrocortisone (200 mg/d) vs Placebo",
+                "Faster shock resolution, fewer transfusion needs, no 90d mortality change",
+                "Accelerates shock reversal by 1 full day; improves hemodynamic stability"
+              ]
+            ],
+            "caption": "Comparison of pivotal randomized clinical trials shaping international sepsis resuscitation protocols."
+          }
+        },
+        {
+          "h": "High-Yield Sepsis Exam Traps & Verified PYQ Provenance (NEET-SS, INI-SS & INI-CET SS)",
+          "b": "Sepsis and shock resuscitation account for 20 verified exit examination recall questions (6.4% of total PYQ database). Key concepts tested include:\n\n1. Sepsis-3 Septic Shock Diagnostic Criteria (NEET-SS 2024 & INI-CET SS 2026):\n• Exam Trap: Requiring SIRS criteria or CVP targets to diagnose septic shock.\n• Verified Rule: Septic shock is clinically diagnosed by persistent hypotension requiring vasopressors to maintain MAP ≥ 65 mmHg **AND** serum lactate > 2.0 mmol/L (18 mg/dL) despite adequate volume resuscitation. Fluid-refractory hypotension without elevated lactate is vasodilatory hypotension, not Sepsis-3 septic shock!\n\n2. The Hour-1 Bundle Window (INI-SS Nov 2025 & NEET-SS 2025):\n• Exam Trap: Believing the entire 30 mL/kg fluid bolus must be fully completed within 60 minutes.\n• Verified Rule: The Hour-1 bundle mandates that all 5 elements (lactate, blood cultures, broad-spectrum antibiotics, crystalloid fluid, and vasopressors for MAP < 65) must be **INITIATED** within 1 hour. The 30 mL/kg fluid bolus is targeted for completion over the first **3 hours**!\n\n3. Balanced Crystalloids vs 0.9% Normal Saline (NEET-SS 2024 & INI-CET SS 2026):\n• Tested Mechanism: Why 0.9% Normal Saline worsens outcomes in septic shock.\n• Verified Rule: Normal Saline contains 154 mEq/L chloride (Strong Ion Difference = 0). Massive infusion produces hyperchloremic metabolic acidosis, decreases renal cortical perfusion via tubuloglomerular feedback, and increases acute kidney injury and dialysis rates (SMART and SALT-ED trials).\n\n4. Peripheral Vasopressor Administration (INI-SS Nov 2025):\n• Tested Practice: Can norepinephrine be infused through a peripheral intravenous cannula?\n• Verified Guideline (SSC 2021): It is completely safe and recommended to initiate norepinephrine through a well-sited peripheral vein (preferably at or proximal to the antecubital fossa) to avoid dangerous delays in restoring perfusion pressure while CVC access is secured.",
+          "callout": {
+            "type": "pitfall",
+            "title": "EXAM TRAP — Corticosteroids in Septic Shock",
+            "text": "Never administer intravenous corticosteroids as initial or empiric therapy in sepsis or mild shock! Corticosteroids are indicated **ONLY** as an adjunctive therapy in refractory septic shock when fluid resuscitation and escalating vasopressors (norepinephrine ≥ 0.25 mcg/kg/min for ≥ 4 hours) fail to maintain hemodynamic stability."
+          }
         }
       ],
       "example": "CLINICAL CASE: A 69-year-old female presents with acute delirium, chills, and fever. Vitals: HR 126 bpm, BP 78/42 mmHg (MAP 54 mmHg), RR 28 bpm, SpO2 93% on room air. Point-of-care lactate is 4.8 mmol/L, CRT is 5.2 seconds, and urinalysis shows abundant WBCs and bacteria.\n\nHour-1 Resuscitation & De-escalation Protocol:\n1. Diagnosis: Sepsis-3 Septic Shock secondary to acute urosepsis (hypotension + lactate 4.8).\n2. Hour-1 Bundle Execution: Two sets of blood cultures drawn. Piperacillin-tazobactam 4.5 g IV infusion started immediately (within 35 minutes). 30 mL/kg balanced crystalloid (Plasmalyte 2100 mL for 70 kg) started.\n3. Vasopressors: Due to profound initial MAP of 54 mmHg, peripheral noradrenaline is initiated at 0.10 mcg/kg/min via a 20-G forearm cannula while fluid is running. MAP increases to 68 mmHg within 15 minutes.\n4. Source Control: Bedside POCUS reveals severe right hydronephrosis with internal echoes (pyonephrosis). Emergent urology consult called; percutaneous nephrostomy placed under ultrasound guidance at hour 4, draining 80 mL of frank pus (source controlled!).\n5. Adjunctive Hydrocortisone: Noradrenaline requirements reach 0.28 mcg/kg/min; vasopressin 0.03 U/min and IV hydrocortisone 50 mg q6h are added. Over the next 12 hours, pressors are successfully weaned off, CRT normalizes to 2.1 seconds, and lactate drops to 1.4 mmol/L.",
@@ -8246,7 +8437,9 @@ window.KN_STUDY = {
         "Evans L, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Crit Care Med 2021;49(11):e1063–e1143.",
         "Hernández G, et al. Effect of a Resuscitation Strategy Targeting Peripheral Perfusion Status vs Serum Lactate Levels on 28-Day Mortality (ANDROMEDA-SHOCK). JAMA 2019;321(7):654–664.",
         "Annane D, et al. Hydrocortisone plus Fludrocortisone for Adults with Septic Shock (APROCCHSS Trial). N Engl J Med 2018;378(9):809–818.",
-        "Venkatesh B, et al. Adjunctive Glucocorticoid Therapy in Patients with Septic Shock (ADRENAL Trial). N Engl J Med 2018;378(9):797–808."
+        "Venkatesh B, et al. Adjunctive Glucocorticoid Therapy in Patients with Septic Shock (ADRENAL Trial). N Engl J Med 2018;378(9):797–808.",
+        "Russell JA, et al. Vasopressin versus Norepinephrine Infusion in Patients with Septic Shock (VASST Trial). N Engl J Med 2008;358(9):877–887.",
+        "Semler MW, et al. Balanced Crystalloids versus Saline in Critically Ill Adults (SMART Trial). N Engl J Med 2018;378(9):829–839."
       ]
     },
     {
@@ -10995,6 +11188,68 @@ window.KN_STUDY = {
             "title": "CLINICAL PITFALL — Interpreting PPV in Spontaneously Breathing Patients",
             "text": "Never calculate or trust automated monitor PPV or SVV numbers in a patient with spontaneous respiratory efforts or atrial fibrillation. The numbers are completely artifactual and frequently lead to lethal fluid overload in non-responsive patients."
           }
+        },
+        {
+          "h": "VExUS Congestion Grading & Venous Doppler Protocols (IVC, Hepatic, Portal & Renal)",
+          "b": "When intravascular volume exceeds the unstressed vascular volume, venous congestion develops, causing backward pressure that impairs microvascular perfusion and precipitates acute kidney injury (congestive nephropathy):\n\n• The Venous Excess Ultrasound (VExUS) Score (Beaubein-Souligny et al., 2020):\n  - Combines IVC diameter with pulsed-wave Doppler assessment of 3 organ vascular beds: Hepatic Vein, Portal Vein, and Intrarenal Vein.\n  - Step 1: Inferior Vena Cava (IVC) Assessment:\n    * If IVC < 2.0 cm: Severe venous congestion is ruled out (VExUS Grade 0).\n    * If IVC ≥ 2.0 cm: Proceed to interrogate hepatic, portal, and intrarenal veins.\n  - Step 2: Hepatic Vein Doppler:\n    * Normal: Retrograde A wave, Antegrade Systolic (S) wave, Antegrade Diastolic (D) wave, with S > D.\n    * Mild Congestion: Systolic wave blunted (S < D).\n    * Severe Congestion: Systolic wave reversed / retrograde (retrograde S wave with forward flow only in diastole).\n  - Step 3: Portal Vein Pulsatility Fraction (Pulsatility Index):\n    * Formula: Pulsatility Fraction (%) = [(Vmax - Vmin) / Vmax] × 100.\n    * Normal: Continuous, non-pulsatile or gentle undulation (pulsatility < 30%).\n    * Mild Congestion: Pulsatility fraction **30% to 49%**.\n    * Severe Congestion: Pulsatility fraction **≥ 50%** (biphasic flow with complete flow cessation or retrograde spikes).\n  - Step 4: Intrarenal Venous Doppler (Interlobar Veins at Corticomedullary Junction):\n    * Normal: Continuous forward flow through both systole and diastole.\n    * Mild Congestion: Pulsatile flow with distinct systolic and diastolic peaks, but continuous nadir.\n    * Severe Congestion: Biphasic discontinuous flow (separated S and D peaks with zero flow between), or monophasic flow (isolated diastolic-only spike with complete systolic flow arrest!).",
+          "table": {
+            "headers": [
+              "VExUS Grade",
+              "IVC Diameter",
+              "Organ Doppler Severity",
+              "Pathophysiological Implication",
+              "Clinical Action"
+            ],
+            "rows": [
+              [
+                "Grade 0 (No Congestion)",
+                "< 2.0 cm",
+                "Any pattern",
+                "Normal venous pressure; low risk of congestive AKI",
+                "Fluid resuscitation safe if dynamic indices positive"
+              ],
+              [
+                "Grade 1 (Mild Congestion)",
+                "≥ 2.0 cm",
+                "Normal or mildly abnormal Doppler across all 3 beds",
+                "Early venous compliance exhaustion; unstressed volume filled",
+                "Careful fluid titration; monitor microcirculation"
+              ],
+              [
+                "Grade 2 (Moderate Congestion)",
+                "≥ 2.0 cm",
+                "At least 1 severe abnormality in hepatic, portal, or renal",
+                "Transmitted venous hypertension; renal parenchymal congestion begins",
+                "Withhold further fluids; consider vasopressor/inodilator"
+              ],
+              [
+                "Grade 3 (Severe Congestion)",
+                "≥ 2.0 cm",
+                "≥ 2 severe abnormalities in hepatic, portal, or renal beds",
+                "Massive systemic venous hypertension; independently predicts AKI (HR 3.7!)",
+                "Strict fluid restriction; active diuresis or CRRT net ultrafiltration"
+              ]
+            ],
+            "caption": "The VExUS venous excess ultrasound scoring system for assessing systemic venous congestion and guiding de-resuscitation."
+          }
+        },
+        {
+          "h": "The 4 Resuscitation Phases (ROSE Conceptual Model) & De-resuscitation Endpoints",
+          "b": "Modern critical care management recognizes that fluid requirements evolve dynamically across four distinct phases of shock (ROSE framework):\n\n1. Resuscitation (R-Phase) — 'Life-Saving Salvage':\n• Goal: Correction of life-threatening shock and restoration of critical perfusion pressure (MAP ≥ 65 mmHg).\n• Modality: Rapid fluid bolus (e.g., 30 mL/kg balanced crystalloids within first 1–3 hours) + early Norepinephrine.\n• Fluid Balance: Highly positive (+2 to +3 L).\n\n2. Optimization (O-Phase) — 'Organ Perfusion & Titration':\n• Goal: Maximize cardiac output and microvascular cellular perfusion without inducing hydrostatic interstitial edema.\n• Rule: Fluid boluses ONLY if dynamic indices of fluid responsiveness (PLR, EEOT, mini-fluid challenge) are strictly positive.\n• Fluid Balance: Modestly positive (+1 to +2 L).\n\n3. Stabilization (S-Phase) — 'Equilibrium & Homeostasis':\n• Goal: Organ recovery, hemodynamic stability, wean vasopressors, prevent iatrogenic fluid creep.\n• Rule: ZERO elective fluid boluses; maintenance fluids strictly restricted or discontinued. Aim for neutral daily balance (net zero).\n• Fluid Balance: Zero to slightly negative.\n\n4. Evacuation (E-Phase) — 'De-resuscitation & Convalescence':\n• Goal: Mobilization of excess accumulated fluid (extravascular lung water, interstitial soft tissue edema, congestive hepatopathy/nephropathy).\n• Modality: Loop diuretics (furosemide infusion), mineralocorticoid antagonists, or active negative fluid balance via CRRT ultrafiltration.\n• Target: Negative daily fluid balance (**-1.0 to -2.0 L/day**) until clinical euvolemia is restored.",
+          "callout": {
+            "type": "pearl",
+            "title": "EXAM PEARL — The 'Two-Hit' Phenomenon of Fluid Resuscitation",
+            "text": "The first hit is the primary disease (sepsis, pancreatitis, trauma). The second hit is often iatrogenic fluid overload. In ARDS and septic shock, achieving a cumulative negative fluid balance within **Day 3 to Day 5** is strongly associated with faster liberation from mechanical ventilation, lower mortality, and reduced ICU length of stay (FACTT Trial benchmark: 7.0 vs 8.3 ventilator-free days, p < 0.001!)."
+          }
+        },
+        {
+          "h": "Landmark Resuscitation Trials & High-Yield Exam Traps (ANDROMEDA-SHOCK, CLOVERS, SMART)",
+          "b": "• ANDROMEDA-SHOCK Trial (JAMA 2019):\n  - Randomized 424 patients with early septic shock to peripheral perfusion-guided resuscitation (Capillary Refill Time [CRT] normalized to **< 3.0 seconds** using a glass slide test on the finger pulp) vs Lactate-guided resuscitation (lactate clearance > 20% every 2 hours).\n  - Results: CRT-guided resuscitation significantly reduced organ dysfunction (SOFA score at 72 hours, p = 0.045) and was associated with lower 28-day mortality in the per-protocol analysis (31.5% vs 44.5%, p = 0.01!).\n  - High-Yield Takeaway: CRT is an instantaneous, non-invasive bedside window into microcirculatory perfusion that responds faster than circulating lactate.\n\n• CLOVERS Trial (NEJM 2023):\n  - Randomized 1,563 patients with sepsis-induced hypotension to a Restrictive fluid strategy (early norepinephrine, median 1,267 mL fluid in first 24h) vs a Liberal fluid strategy (median 3,400 mL fluid in first 24h).\n  - Results: 90-day mortality was identical between restrictive and liberal groups (14.0% vs 14.9%, p = 0.61).\n  - Conclusion: Early vasopressor support is completely safe and avoids gratuitous fluid overload without increasing ischemic complications.\n\n• SMART & SALT-ED Trials (NEJM 2018):\n  - Compared Balanced Crystalloids (Lactated Ringer's or Plasma-Lyte A) vs 0.9% Normal Saline in ICU and non-ICU patients.\n  - Results: Balanced crystalloids significantly reduced the composite endpoint of Major Adverse Kidney Events at 30 days (MAKE30: death, new renal replacement therapy, or persistent renal dysfunction, p = 0.04 in SMART, p = 0.01 in SALT-ED).\n  - Mechanism: Saline contains 154 mmol/L of chloride (supraphysiological); hyperchloremia induces renal afferent arteriolar vasoconstriction and reduces glomerular filtration rate via the tubuloglomerular feedback mechanism.",
+          "callout": {
+            "type": "pitfall",
+            "title": "DO NOT CONFUSE — Static Pressure (CVP) vs Dynamic Volume Indices",
+            "text": "NEVER use CVP as a binary cutoff to decide fluid administration (e.g., 'CVP < 8 means give fluid, CVP > 12 means withhold fluid'). A CVP of 14 mmHg can occur in a hypovolemic patient with severe pulmonary hypertension, while a CVP of 6 mmHg can occur in an already fluid-overloaded patient with massive venous compliance. Always use functional dynamic tests (PLR, EEOT, VTI change)."
+          }
         }
       ],
       "example": "CLINICAL VIGNETTE: A 68-year-old male with septic shock secondary to pneumonia receives 30 mL/kg crystalloids (2.5 L) over 3 hours. His BP remains 84/48 mmHg on noradrenaline 0.25 mcg/kg/min, lactate is 3.8 mmol/L, and urine output is 15 mL/h. The bedside resident suggests another 1000 mL bolus.\n\nBedside Dynamic Hemodynamic Assessment:\n1. Heart-Lung Interaction Screen: The patient is on VC ventilation at 6 mL/kg PBW with occasional spontaneous trigger efforts. Monitor PPV is 11% (uninterpretable due to low Vt and spontaneous triggering).\n2. Passive Leg Raise (PLR) Execution: Bedside echocardiography measures baseline Left Ventricular Outflow Tract Velocity Time Integral (LVOT VTI) at 14.2 cm (Stroke Volume 54 mL, Cardiac Output 4.8 L/min). Patient is shifted from 45° semi-recumbent to leg-elevated 45° position.\n3. Hemodynamic Response: At 75 seconds of PLR, LVOT VTI increases from 14.2 cm to 14.5 cm (a 2.1% increase, failing the ≥10% threshold). Concurrently, VExUS ultrasound reveals a dilated IVC (2.5 cm) with severe portal vein pulsatility (>50%).\n4. Clinical Decision: Patient is a fluid non-responder with emerging systemic venous congestion. Additional fluid boluses are strictly withheld; vasopressin (0.03 U/min) is added to noradrenaline, maintaining organ perfusion pressure without inducing pulmonary edema.",
@@ -11002,7 +11257,10 @@ window.KN_STUDY = {
         "The Washington Manual of Critical Care, 3rd/4th ed., Ch. 9 & Ch. 10. Wolters Kluwer.",
         "Monnet X, et al. Prediction of Fluid Responsiveness: An Update. Ann Intensive Care 2016;6(1):111.",
         "Marik PE, et al. Does the Central Venous Pressure Predict Fluid Responsiveness? An Updated Meta-Analysis. Crit Care Med 2013;41(7):1774–1781.",
-        "Evans L, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Crit Care Med 2021;49(11):e1063–e1143."
+        "Evans L, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Crit Care Med 2021;49(11):e1063–e1143.",
+        "Beaubien-Souligny W, et al. Quantifying systemic congestion with Point-Of-Care ultrasound: development of the venous excess ultrasound grading system. Ultrasound J 2020;12(1):16.",
+        "Hernández G, et al. Effect of a Resuscitation Strategy Targeting Peripheral Perfusion vs Serum Lactate on 28-Day Mortality Among Patients With Septic Shock: The ANDROMEDA-SHOCK Randomized Clinical Trial. JAMA 2019;321(7):654–664.",
+        "National Heart, Lung, and Blood Institute Prevention and Early Treatment of Acute Lung Injury (PETAL) Clinical Trials Network. Early Restrictive or Liberal Fluid Management for Sepsis-Induced Hypotension (CLOVERS). N Engl J Med 2023;388(6):499–510."
       ]
     },
     {

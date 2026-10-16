@@ -23,24 +23,24 @@
       "subtopic": "VAP Quantitative Culture Diagnostic Cutoffs",
       "question": "In a mechanically ventilated patient suspected of having ventilator-associated pneumonia (VAP), what is the accepted diagnostic quantitative culture threshold for bronchoalveolar lavage (BAL) fluid?",
       "options": [
-        "≥ 10^3 CFU/mL",
-        "≥ 10^4 CFU/mL",
-        "≥ 10^5 CFU/mL",
-        "≥ 10^6 CFU/mL"
+        "\u2265 10^3 CFU/mL",
+        "\u2265 10^4 CFU/mL",
+        "\u2265 10^5 CFU/mL",
+        "\u2265 10^6 CFU/mL"
       ],
       "answer": "B",
-      "explanation": "Quantitative microbiological diagnostic thresholds for ventilator-associated pneumonia (VAP) are standardized based on the sampling technique: for protected specimen brush (PSB) it is ≥ 10^3 CFU/mL; for bronchoalveolar lavage (BAL) it is ≥ 10^4 CFU/mL; and for non-bronchoscopic endotracheal aspirate (ETA) it is ≥ 10^5 CFU/mL. These thresholds distinguish true alveolar infection from upper airway colonization.",
+      "explanation": "Quantitative microbiological diagnostic thresholds for ventilator-associated pneumonia (VAP) are standardized based on the sampling technique: for protected specimen brush (PSB) it is \u2265 10^3 CFU/mL; for bronchoalveolar lavage (BAL) it is \u2265 10^4 CFU/mL; and for non-bronchoscopic endotracheal aspirate (ETA) it is \u2265 10^5 CFU/mL. These thresholds distinguish true alveolar infection from upper airway colonization.",
       "whyWrong": {
-        "A": "≥ 10^3 CFU/mL is the quantitative cutoff for protected specimen brush (PSB) samples, which sample a smaller volume (approx 0.001 mL) protected by a wax plug.",
-        "B": "Correct answer: ≥ 10^4 CFU/mL is the established diagnostic threshold for BAL fluid in VAP.",
-        "C": "≥ 10^5 CFU/mL is the diagnostic threshold for blind endotracheal aspirates (ETA).",
-        "D": "≥ 10^6 CFU/mL is excessively high and would result in an unacceptable false-negative rate."
+        "A": "\u2265 10^3 CFU/mL is the quantitative cutoff for protected specimen brush (PSB) samples, which sample a smaller volume (approx 0.001 mL) protected by a wax plug.",
+        "B": "Correct answer: \u2265 10^4 CFU/mL is the established diagnostic threshold for BAL fluid in VAP.",
+        "C": "\u2265 10^5 CFU/mL is the diagnostic threshold for blind endotracheal aspirates (ETA).",
+        "D": "\u2265 10^6 CFU/mL is excessively high and would result in an unacceptable false-negative rate."
       },
       "difficulty": "medium",
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Quantitative thresholds: PSB = 10^3 CFU/mL, BAL = 10^4 CFU/mL, Endotracheal Aspirate = 10^5 CFU/mL.\n• Clinical Pulmonary Infection Score (CPIS) > 6 also suggests pneumonia but has lower specificity than quantitative cultures.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Quantitative thresholds: PSB = 10^3 CFU/mL, BAL = 10^4 CFU/mL, Endotracheal Aspirate = 10^5 CFU/mL.\n\u2022 Clinical Pulmonary Infection Score (CPIS) > 6 also suggests pneumonia but has lower specificity than quantitative cultures.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -56,9 +56,9 @@
       "recall_confidence": "high",
       "question_status": "verified_recall",
       "speaker_answer": "B",
-      "speaker_answer_text": "≥ 10^4 CFU/mL",
+      "speaker_answer_text": "\u2265 10^4 CFU/mL",
       "verified_answer": "B",
-      "verified_answer_text": "≥ 10^4 CFU/mL",
+      "verified_answer_text": "\u2265 10^4 CFU/mL",
       "concept_tested": "Quantitative diagnostic cutoffs for microbiological confirmation of ventilator-associated pneumonia across different sampling modalities",
       "high_yield_takeaway": [
         "Protected specimen brush (PSB) threshold is 10^3 CFU/mL.",
@@ -69,14 +69,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "IDSA/ATS VAP Guidelines",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Ventilator Associated Pneumonia"
     },
     {
       "id": "INICET-SS-2026-CC-R002",
       "number": 2,
       "chapterId": 22,
       "chapter": "ICU Hematology, Hemostasis & Transfusion Medicine",
-      "topicId": "cc-anticoagulation-reversal",
+      "topicId": "cc-hematological-emergencies-in-critical-illness",
       "subject": "Pharmacology & Hematology",
       "subtopic": "LMWH & Neuraxial Anesthesia",
       "question": "A patient is receiving therapeutic-dose low-molecular-weight heparin (LMWH, enoxaparin 1 mg/kg BID) for pulmonary embolism. According to ASRA guidelines, what is the minimum recommended interval between the last therapeutic dose and the placement of a central neuraxial block?",
@@ -98,7 +99,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Prophylactic LMWH: wait 12 hours before block.\n• Therapeutic LMWH: wait 24 hours before block.\n• Catheter removal: wait 24 hours after therapeutic dose, and restart therapeutic dose at least 4 hours after catheter removal.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Prophylactic LMWH: wait 12 hours before block.\n\u2022 Therapeutic LMWH: wait 24 hours before block.\n\u2022 Catheter removal: wait 24 hours after therapeutic dose, and restart therapeutic dose at least 4 hours after catheter removal.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -126,14 +127,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "ASRA Regional Anesthesia in the Patient Receiving Antithrombotic or Thrombolytic Therapy Guidelines",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Hematological Emergencies in Critical Illness"
     },
     {
       "id": "INICET-SS-2026-CC-R003",
       "number": 3,
       "chapterId": 8,
       "chapter": "Invasive Mechanical Ventilation & Graphics",
-      "topicId": "cc-weaning-and-extubation",
+      "topicId": "cc-weaning-from-mechanical-ventilation",
       "subject": "Mechanical Ventilation",
       "subtopic": "Spontaneous Breathing Trial (SBT) Failure Criteria",
       "question": "A 62-year-old patient with an acute exacerbation of COPD is undergoing a spontaneous breathing trial (SBT) on pressure support ventilation (PSV 5 cmH2O, PEEP 5 cmH2O). After 30 minutes, the patient becomes agitated, respiratory rate increases to 38 breaths/min, SpO2 drops to 88%, and ABG reveals worsening hypercapnia (PaCO2 68 mmHg, pH 7.24). What is the most appropriate immediate action?",
@@ -155,7 +157,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• SBT failure criteria: RR > 35 breaths/min, RSBI (f/Vt) > 105, SpO2 < 90%, HR change > 20%, pH < 7.30 with rising PaCO2, diaphoresis, or agitation.\n• When failure occurs, rest the diaphragm on assist-control mode for at least 24 hours before repeating.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 SBT failure criteria: RR > 35 breaths/min, RSBI (f/Vt) > 105, SpO2 < 90%, HR change > 20%, pH < 7.30 with rising PaCO2, diaphoresis, or agitation.\n\u2022 When failure occurs, rest the diaphragm on assist-control mode for at least 24 hours before repeating.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -183,14 +185,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "ATS/CHEST Weaning Guidelines",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Weaning from Mechanical Ventilation"
     },
     {
       "id": "INICET-SS-2026-CC-R004",
       "number": 4,
       "chapterId": 13,
       "chapter": "Acute Kidney Injury & Renal Replacement Therapy",
-      "topicId": "cc-peritoneal-dialysis",
+      "topicId": "cc-renal-replacement-therapy-i",
       "subject": "Renal Critical Care",
       "subtopic": "Peritoneal Dialysis Osmotic Agents",
       "question": "In conventional peritoneal dialysis (PD), which substance is most widely used as the primary osmotically active agent to generate the transmembrane osmotic gradient required for ultrafiltration?",
@@ -212,7 +215,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Glucose: crystalloid osmosis, rapid absorption, standard in 1.5%, 2.5%, 4.25% bags.\n• Icodextrin: colloid osmosis, absorbed via lymphatics, ideal for long 8–16 hr dwells and high-transporters.\n• Three-pore model: small pores (solute + water), ultra-small pores/aquaporin-1 (free water only), large pores (macromolecules).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Glucose: crystalloid osmosis, rapid absorption, standard in 1.5%, 2.5%, 4.25% bags.\n\u2022 Icodextrin: colloid osmosis, absorbed via lymphatics, ideal for long 8\u201316 hr dwells and high-transporters.\n\u2022 Three-pore model: small pores (solute + water), ultra-small pores/aquaporin-1 (free water only), large pores (macromolecules).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -240,14 +243,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "ISPD Practice Guidelines",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Renal Replacement Therapy: I"
     },
     {
       "id": "INICET-SS-2026-CC-R005",
       "number": 5,
       "chapterId": 16,
       "chapter": "Sedation, Analgesia, Delirium & Neuromuscular Blockade",
-      "topicId": "cc-neuromuscular-blockade-reversal",
+      "topicId": "cc-neuromuscular-disorders-in-icu-i",
       "subject": "Pharmacology & ICU Procedures",
       "subtopic": "Sugammadex Dosing for CICI",
       "question": "During a rapid sequence induction (RSI), rocuronium (1.2 mg/kg) was administered. A 'Cannot Intubate, Cannot Oxygenate' (CICO) scenario develops immediately. What is the recommended dose of sugammadex for immediate rescue reversal of rocuronium-induced neuromuscular blockade?",
@@ -258,7 +262,7 @@
         "16 mg/kg IV"
       ],
       "answer": "D",
-      "explanation": "For immediate rescue reversal of high-dose rocuronium (1.0–1.2 mg/kg) within minutes of administration (such as in a CICO/CICI crisis), the recommended dose of sugammadex is 16 mg/kg IV. This high dose encapsulates all free and receptor-bound rocuronium molecules within approximately 3 minutes, restoring spontaneous ventilation faster than succinylcholine spontaneous recovery. For routine reversal of moderate block (TOF = 2), the dose is 2 mg/kg; for deep block (PTC 1–2), the dose is 4 mg/kg.",
+      "explanation": "For immediate rescue reversal of high-dose rocuronium (1.0\u20131.2 mg/kg) within minutes of administration (such as in a CICO/CICI crisis), the recommended dose of sugammadex is 16 mg/kg IV. This high dose encapsulates all free and receptor-bound rocuronium molecules within approximately 3 minutes, restoring spontaneous ventilation faster than succinylcholine spontaneous recovery. For routine reversal of moderate block (TOF = 2), the dose is 2 mg/kg; for deep block (PTC 1\u20132), the dose is 4 mg/kg.",
       "whyWrong": {
         "A": "2 mg/kg is the dose for routine reversal of moderate neuromuscular blockade (reappearance of T2 on TOF).",
         "B": "4 mg/kg is the dose for deep neuromuscular blockade (1 to 2 post-tetanic twitches, no TOF twitches).",
@@ -269,7 +273,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Sugammadex Dosing: Moderate block (TOF ≥ 2) = 2 mg/kg; Deep block (PTC 1-2) = 4 mg/kg; Immediate RSI rescue reversal (3 min post 1.2 mg/kg rocuronium) = 16 mg/kg.\n• Sugammadex binds steroidal NMBAs (rocuronium > vecuronium > pancuronium); it has zero effect on benzylisoquinoliniums (cisatracurium).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Sugammadex Dosing: Moderate block (TOF \u2265 2) = 2 mg/kg; Deep block (PTC 1-2) = 4 mg/kg; Immediate RSI rescue reversal (3 min post 1.2 mg/kg rocuronium) = 16 mg/kg.\n\u2022 Sugammadex binds steroidal NMBAs (rocuronium > vecuronium > pancuronium); it has zero effect on benzylisoquinoliniums (cisatracurium).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -297,25 +301,26 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Difficult Airway Society (DAS) Guidelines",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Neuromuscular Disorders in ICU: I"
     },
     {
       "id": "INICET-SS-2026-CC-R006",
       "number": 6,
       "chapterId": 20,
       "chapter": "Endocrine & Metabolic Crises",
-      "topicId": "cc-diabetic-ketoacidosis",
+      "topicId": "cc-endocrine-emergencies",
       "subject": "Electrolytes & Metabolic",
       "subtopic": "DKA Protocol Fluid & Insulin Adjustment",
       "question": "A 24-year-old patient with diabetic ketoacidosis (DKA) is receiving IV isotonic saline and regular insulin infusion at 0.1 U/kg/hr. After 4 hours, plasma glucose has decreased from 480 mg/dL to 230 mg/dL, but ABG still shows pH 7.18, bicarbonate 11 mEq/L, and an elevated anion gap of 18 mEq/L. What is the next best step in management?",
       "options": [
         "Stop insulin infusion and start subcutaneous basal insulin",
-        "Add 5% dextrose to IV fluids and continue insulin infusion at 0.05–0.1 U/kg/hr",
+        "Add 5% dextrose to IV fluids and continue insulin infusion at 0.05\u20130.1 U/kg/hr",
         "Decrease insulin infusion rate to 0.01 U/kg/hr without adding dextrose",
         "Administer 100 mmol of sodium bicarbonate bolus"
       ],
       "answer": "B",
-      "explanation": "In DKA management, when plasma glucose drops below 200–250 mg/dL while the anion gap and ketoacidosis remain unresolved (pH < 7.30, HCO3 < 18, high anion gap), insulin must NOT be discontinued or excessively reduced. Halting insulin allows continued lipolysis and ketogenesis. The standard protocol is to add 5% to 10% dextrose to the IV fluids while continuing insulin infusion (titrated to 0.02–0.05 U/kg/hr) to maintain euglycemia (150–200 mg/dL) while clearing ketoacidosis.",
+      "explanation": "In DKA management, when plasma glucose drops below 200\u2013250 mg/dL while the anion gap and ketoacidosis remain unresolved (pH < 7.30, HCO3 < 18, high anion gap), insulin must NOT be discontinued or excessively reduced. Halting insulin allows continued lipolysis and ketogenesis. The standard protocol is to add 5% to 10% dextrose to the IV fluids while continuing insulin infusion (titrated to 0.02\u20130.05 U/kg/hr) to maintain euglycemia (150\u2013200 mg/dL) while clearing ketoacidosis.",
       "whyWrong": {
         "A": "Stopping insulin while the anion gap is wide leads to persistent ketogenesis and clinical deterioration.",
         "B": "Correct answer: Adding 5% dextrose allows uninterrupted insulin infusion to suppress hepatic ketogenesis and close the anion gap safely.",
@@ -326,7 +331,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Target blood glucose during DKA resolution: 150–200 mg/dL.\n• When blood glucose falls < 200–250 mg/dL before anion gap closes, add 5% Dextrose in 0.45% Saline and maintain insulin.\n• DKA resolution criteria: Blood glucose < 200 mg/dL PLUS two of: serum bicarbonate ≥ 15 mEq/L, venous pH > 7.30, and normal anion gap (≤ 12 mEq/L).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Target blood glucose during DKA resolution: 150\u2013200 mg/dL.\n\u2022 When blood glucose falls < 200\u2013250 mg/dL before anion gap closes, add 5% Dextrose in 0.45% Saline and maintain insulin.\n\u2022 DKA resolution criteria: Blood glucose < 200 mg/dL PLUS two of: serum bicarbonate \u2265 15 mEq/L, venous pH > 7.30, and normal anion gap (\u2264 12 mEq/L).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -342,9 +347,9 @@
       "recall_confidence": "high",
       "question_status": "verified_recall",
       "speaker_answer": "B",
-      "speaker_answer_text": "Add 5% dextrose to IV fluids and continue insulin infusion at 0.05–0.1 U/kg/hr",
+      "speaker_answer_text": "Add 5% dextrose to IV fluids and continue insulin infusion at 0.05\u20130.1 U/kg/hr",
       "verified_answer": "B",
-      "verified_answer_text": "Add 5% dextrose to IV fluids and continue insulin infusion at 0.05–0.1 U/kg/hr",
+      "verified_answer_text": "Add 5% dextrose to IV fluids and continue insulin infusion at 0.05\u20130.1 U/kg/hr",
       "concept_tested": "Management of glucose-ketosis dissociation during DKA resuscitation",
       "high_yield_takeaway": [
         "Never stop insulin when glucose drops < 250 mg/dL if ketoacidosis is unclosed; add dextrose.",
@@ -354,14 +359,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "ADA Consensus Statement on Hyperglycemic Crises",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Endocrine Emergencies"
     },
     {
       "id": "INICET-SS-2026-CC-R007",
       "number": 7,
       "chapterId": 21,
       "chapter": "Critical Care Clinical Nutrition & Metabolism",
-      "topicId": "cc-parenteral-nutrition",
+      "topicId": "cc-nutrition-in-the-icu",
       "subject": "Nutrition & GI",
       "subtopic": "Peripheral Line Osmolarity Limits",
       "question": "What is the generally accepted maximum osmolarity limit for parenteral solutions or infusions administered through a peripheral intravenous catheter to prevent chemical thrombophlebitis?",
@@ -372,7 +378,7 @@
         "1500 mOsm/L"
       ],
       "answer": "B",
-      "explanation": "According to ASPEN and Infusion Nurses Society (INS) standards, solutions with an osmolarity greater than 900 mOsm/L should be infused via a central venous catheter. Infusing hypertonic solutions (> 900 mOsm/L) through peripheral veins leads to high rates of endothelial irritation, chemical thrombophlebitis, and extravasation injury. Peripheral parenteral nutrition (PPN) formulations are strictly tailored to stay below 800–900 mOsm/L.",
+      "explanation": "According to ASPEN and Infusion Nurses Society (INS) standards, solutions with an osmolarity greater than 900 mOsm/L should be infused via a central venous catheter. Infusing hypertonic solutions (> 900 mOsm/L) through peripheral veins leads to high rates of endothelial irritation, chemical thrombophlebitis, and extravasation injury. Peripheral parenteral nutrition (PPN) formulations are strictly tailored to stay below 800\u2013900 mOsm/L.",
       "whyWrong": {
         "A": "500 mOsm/L is well below the allowable peripheral threshold and is typical of low-concentration crystalloids.",
         "B": "Correct answer: 900 mOsm/L is the international guideline cutoff for safe peripheral venous administration.",
@@ -383,7 +389,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Peripheral vein osmolarity cutoff: ≤ 900 mOsm/L.\n• Central line mandatory for osmolarity > 900 mOsm/L.\n• Dextrose 10% has ~505 mOsm/L; Dextrose 20% has ~1010 mOsm/L (requires central line); D50W has ~2525 mOsm/L.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Peripheral vein osmolarity cutoff: \u2264 900 mOsm/L.\n\u2022 Central line mandatory for osmolarity > 900 mOsm/L.\n\u2022 Dextrose 10% has ~505 mOsm/L; Dextrose 20% has ~1010 mOsm/L (requires central line); D50W has ~2525 mOsm/L.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -405,20 +411,21 @@
       "concept_tested": "Upper limits of solution osmolarity for peripheral venous administration vs central access indication",
       "high_yield_takeaway": [
         "Solutions > 900 mOsm/L require central venous catheterization to prevent severe chemical thrombophlebitis.",
-        "Peripheral TPN is limited to ≤ 800-900 mOsm/L."
+        "Peripheral TPN is limited to \u2264 800-900 mOsm/L."
       ],
       "sources": [
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "ASPEN Parenteral Nutrition Guidelines",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Nutrition in the ICU"
     },
     {
       "id": "INICET-SS-2026-CC-R008",
       "number": 8,
       "chapterId": 15,
       "chapter": "Neurocritical Care & Raised ICP Management",
-      "topicId": "cc-subarachnoid-hemorrhage",
+      "topicId": "cc-subarachnoid-haemorrhage",
       "subject": "Neurocritical Care",
       "subtopic": "Thunderclap Headache Diagnostic Algorithm",
       "question": "A 45-year-old previously healthy female presents to the emergency department with a severe 'thunderclap' headache that reached maximum intensity within 1 minute. A non-contrast head CT performed 8 hours after symptom onset is completely normal. What is the most appropriate next step in management?",
@@ -440,7 +447,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Ottawa SAH Rule: Thunderclap headache reaches peak in < 1 minute.\n• Non-contrast CT sensitivity: > 99% within 6 hours, drops to ~85% at 24 hours and ~50% at 1 week.\n• LP protocol: Xanthochromia takes 6–12 hours to develop (due to RBC breakdown to bilirubin) and persists for 2 weeks.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Ottawa SAH Rule: Thunderclap headache reaches peak in < 1 minute.\n\u2022 Non-contrast CT sensitivity: > 99% within 6 hours, drops to ~85% at 24 hours and ~50% at 1 week.\n\u2022 LP protocol: Xanthochromia takes 6\u201312 hours to develop (due to RBC breakdown to bilirubin) and persists for 2 weeks.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -468,14 +475,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "AHA/ASA Subarachnoid Hemorrhage Guidelines",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Subarachnoid Haemorrhage"
     },
     {
       "id": "INICET-SS-2026-CC-R009",
       "number": 9,
       "chapterId": 17,
       "chapter": "Critical Care Applied Pharmacology & Pharmacokinetics",
-      "topicId": "cc-anesthetic-gases",
+      "topicId": "cc-pharmacokinetics",
       "subject": "Pharmacology & ICU Procedures",
       "subtopic": "Nitrous Oxide Contraindications",
       "question": "Nitrous oxide (N2O) is strictly contraindicated in which of the following clinical conditions due to its rapid diffusion into air-filled closed body cavities?",
@@ -497,7 +505,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Absolute contraindications to N2O: Pneumothorax, pneumocephalus, bowel obstruction, air embolism, intraocular gas bubble (sulfur hexafluoride/C3F8), and middle ear surgery.\n• N2O can increase pneumothorax volume by 100% in 10 minutes and 200% in 30 minutes.\n• N2O inactivates methionine synthase (vitamin B12 oxidation).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Absolute contraindications to N2O: Pneumothorax, pneumocephalus, bowel obstruction, air embolism, intraocular gas bubble (sulfur hexafluoride/C3F8), and middle ear surgery.\n\u2022 N2O can increase pneumothorax volume by 100% in 10 minutes and 200% in 30 minutes.\n\u2022 N2O inactivates methionine synthase (vitamin B12 oxidation).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -525,25 +533,26 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Miller's Anesthesia",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Pharmacokinetics"
     },
     {
       "id": "INICET-SS-2026-CC-R010",
       "number": 10,
       "chapterId": 10,
       "chapter": "Obstructive Airway Emergencies in ICU (Asthma & COPD)",
-      "topicId": "cc-ventilating-obstructive-lung-disease",
+      "topicId": "cc-copd-and-asthma",
       "subject": "Mechanical Ventilation",
       "subtopic": "Mechanical Ventilation in Severe Status Asthmaticus",
       "question": "Which of the following ventilatory strategies is most appropriate when initiating invasive mechanical ventilation in a patient with severe acute status asthmaticus and severe airflow obstruction?",
       "options": [
-        "High respiratory rate (28–32/min) and long inspiratory time to maximize minute ventilation",
-        "Low respiratory rate (10–12/min), high inspiratory flow rate (70–80 L/min), and prolonged expiratory time",
+        "High respiratory rate (28\u201332/min) and long inspiratory time to maximize minute ventilation",
+        "Low respiratory rate (10\u201312/min), high inspiratory flow rate (70\u201380 L/min), and prolonged expiratory time",
         "High PEEP (15 cmH2O) to stent open all medium and small bronchioles",
-        "Tidal volume of 10–12 mL/kg of actual body weight to overcome high airway resistance"
+        "Tidal volume of 10\u201312 mL/kg of actual body weight to overcome high airway resistance"
       ],
       "answer": "B",
-      "explanation": "In severe obstructive lung disease (asthma/COPD), the primary physiological hazard is dynamic hyperinflation and intrinsic PEEP (auto-PEEP) due to incomplete exhalation. The goal is to provide adequate expiratory time (Te) by adopting a low respiratory rate (10–12 breaths/min), small tidal volumes (6–8 mL/kg PBW), and a high peak inspiratory flow rate (70–80 L/min or higher). This shortens inspiratory time (Ti), maximizes I:E ratio (1:3 or 1:4), and minimizes air-trapping while tolerating permissive hypercapnia.",
+      "explanation": "In severe obstructive lung disease (asthma/COPD), the primary physiological hazard is dynamic hyperinflation and intrinsic PEEP (auto-PEEP) due to incomplete exhalation. The goal is to provide adequate expiratory time (Te) by adopting a low respiratory rate (10\u201312 breaths/min), small tidal volumes (6\u20138 mL/kg PBW), and a high peak inspiratory flow rate (70\u201380 L/min or higher). This shortens inspiratory time (Ti), maximizes I:E ratio (1:3 or 1:4), and minimizes air-trapping while tolerating permissive hypercapnia.",
       "whyWrong": {
         "A": "High respiratory rate dramatically shortens expiratory time, leading to severe breath-stacking, massive auto-PEEP, and circulatory arrest.",
         "B": "Correct answer: Low rate, high inspiratory flow, and prolonged expiratory time prevent dynamic hyperinflation.",
@@ -554,7 +563,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Mechanical ventilation in severe asthma: Target Pplat < 30 cmH2O, low tidal volume (6 mL/kg), low rate (8–12 bpm), high flow rate (70–90 L/min) to lengthen Te.\n• Accept permissive hypercapnia as long as pH > 7.15–7.20.\n• Sudden hypotension after intubation = disconnect ventilator and decompress chest.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Mechanical ventilation in severe asthma: Target Pplat < 30 cmH2O, low tidal volume (6 mL/kg), low rate (8\u201312 bpm), high flow rate (70\u201390 L/min) to lengthen Te.\n\u2022 Accept permissive hypercapnia as long as pH > 7.15\u20137.20.\n\u2022 Sudden hypotension after intubation = disconnect ventilator and decompress chest.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -570,9 +579,9 @@
       "recall_confidence": "high",
       "question_status": "verified_recall",
       "speaker_answer": "B",
-      "speaker_answer_text": "Low respiratory rate (10–12/min), high inspiratory flow rate (70–80 L/min), and prolonged expiratory time",
+      "speaker_answer_text": "Low respiratory rate (10\u201312/min), high inspiratory flow rate (70\u201380 L/min), and prolonged expiratory time",
       "verified_answer": "B",
-      "verified_answer_text": "Low respiratory rate (10–12/min), high inspiratory flow rate (70–80 L/min), and prolonged expiratory time",
+      "verified_answer_text": "Low respiratory rate (10\u201312/min), high inspiratory flow rate (70\u201380 L/min), and prolonged expiratory time",
       "concept_tested": "Mechanical ventilatory strategies to prevent dynamic hyperinflation in severe status asthmaticus",
       "high_yield_takeaway": [
         "Ventilator settings in severe asthma prioritize prolonged expiratory time via low respiratory rates (8-12 bpm) and high inspiratory flows.",
@@ -582,14 +591,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "ATS Guidelines on Mechanical Ventilation in Status Asthmaticus",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "COPD and Asthma"
     },
     {
       "id": "INICET-SS-2026-CC-R011",
       "number": 11,
       "chapterId": 15,
       "chapter": "Neurocritical Care & Raised ICP Management",
-      "topicId": "cc-delayed-cerebral-ischemia",
+      "topicId": "cc-subarachnoid-haemorrhage",
       "subject": "Neurocritical Care",
       "subtopic": "Post-SAH Vasospasm & Lindegaard Ratio",
       "question": "A 52-year-old patient on day 6 post-clipping of an anterior communicating artery aneurysm develops new-onset left arm pronator drift. Transcranial Doppler (TCD) shows a right middle cerebral artery (MCA) mean flow velocity of 210 cm/s and an extracranial internal carotid artery (ICA) velocity of 40 cm/s, yielding a Lindegaard ratio of 5.25. What is the diagnosis and the recommended immediate hemodynamic management?",
@@ -600,7 +610,7 @@
         "Acute cerebral infarction; administer recombinant tissue plasminogen activator (rtPA)"
       ],
       "answer": "B",
-      "explanation": "A Lindegaard ratio (mean MCA velocity / extracranial ICA velocity) > 3 indicates vasospasm, and a ratio > 6 (or MCA velocity > 200 cm/s with ratio > 3) confirms severe true intracranial arterial vasospasm, distinguishing it from generalized hyperemic flow (where ICA velocity is also proportionally elevated, keeping ratio < 3). Current guidelines for Delayed Cerebral Ischemia (DCI) / vasospasm recommend maintaining euvolemia and stepwise induced hypertension using vasopressors (e.g., norepinephrine, target MAP increase 20–25%) to augment collateral perfusion.",
+      "explanation": "A Lindegaard ratio (mean MCA velocity / extracranial ICA velocity) > 3 indicates vasospasm, and a ratio > 6 (or MCA velocity > 200 cm/s with ratio > 3) confirms severe true intracranial arterial vasospasm, distinguishing it from generalized hyperemic flow (where ICA velocity is also proportionally elevated, keeping ratio < 3). Current guidelines for Delayed Cerebral Ischemia (DCI) / vasospasm recommend maintaining euvolemia and stepwise induced hypertension using vasopressors (e.g., norepinephrine, target MAP increase 20\u201325%) to augment collateral perfusion.",
       "whyWrong": {
         "A": "Hyperemia would cause a parallel increase in extracranial ICA velocity, resulting in a Lindegaard ratio < 3.",
         "B": "Correct answer: Lindegaard ratio > 3 with elevated MCA velocity confirms vasospasm; induced hypertension with euvolemia is the cornerstone of hemodynamic rescue.",
@@ -611,7 +621,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Lindegaard Ratio = MCA mean velocity / Extracranial ICA mean velocity.\n• Ratio < 3: Hyperemia. Ratio 3–6: Mild-moderate vasospasm. Ratio > 6: Severe vasospasm.\n• Modern DCI management: Euvolemia + Induced Hypertension (Hypervolemia has been abandoned). Nimodipine 60 mg Q4H improves outcomes.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Lindegaard Ratio = MCA mean velocity / Extracranial ICA mean velocity.\n\u2022 Ratio < 3: Hyperemia. Ratio 3\u20136: Mild-moderate vasospasm. Ratio > 6: Severe vasospasm.\n\u2022 Modern DCI management: Euvolemia + Induced Hypertension (Hypervolemia has been abandoned). Nimodipine 60 mg Q4H improves outcomes.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -639,14 +649,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Neurocritical Care Society Consensus Conference on SAH",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Subarachnoid Haemorrhage"
     },
     {
       "id": "INICET-SS-2026-CC-R012",
       "number": 12,
-      "chapterId": 5,
-      "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
-      "topicId": "cc-surviving-sepsis-2026",
+      "chapterId": 6,
+      "chapter": "Acute Respiratory Failure & Mechanics",
+      "topicId": "cc-respiratory-management-in-specific-clinical-scenarios-ii",
       "subject": "Sepsis",
       "subtopic": "SSC 2026 Antimicrobial Timing Guidelines",
       "question": "According to the Surviving Sepsis Campaign guidelines, what is the recommended timeframe for administration of appropriate intravenous antimicrobials when septic shock is present or sepsis is highly probable?",
@@ -662,13 +673,13 @@
         "A": "Correct answer: Within 1 hour ('the golden hour') is the universal strong recommendation for septic shock.",
         "B": "Within 3 hours is acceptable only when sepsis is possible without shock while rapid diagnostic workup is underway.",
         "C": "6 hours is an unacceptable delay associated with significantly increased mortality.",
-        "D": "Waiting for cultures delays therapy by 24–48 hours, leading to refractory shock and organ failure."
+        "D": "Waiting for cultures delays therapy by 24\u201348 hours, leading to refractory shock and organ failure."
       },
       "difficulty": "easy",
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Septic shock / Definite Sepsis: Start broad-spectrum IV antimicrobials within 1 hour.\n• Possible sepsis without shock: Rapid diagnostic investigation; start antibiotics within 3 hours if infection remains suspected.\n• Blood cultures before antibiotics, provided doing so does not delay initiation beyond 45 minutes.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Septic shock / Definite Sepsis: Start broad-spectrum IV antimicrobials within 1 hour.\n\u2022 Possible sepsis without shock: Rapid diagnostic investigation; start antibiotics within 3 hours if infection remains suspected.\n\u2022 Blood cultures before antibiotics, provided doing so does not delay initiation beyond 45 minutes.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -696,14 +707,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Surviving Sepsis Campaign International Guidelines",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Respiratory Management in Specific Clinical Scenarios: II"
     },
     {
       "id": "INICET-SS-2026-CC-R013",
       "number": 13,
-      "chapterId": 2,
-      "chapter": "Applied Physiology of Critical Illness",
-      "topicId": "cc-endothelial-glycocalyx",
+      "chapterId": 1,
+      "chapter": "Fundamentals of Critical Care & ICU Systems",
+      "topicId": "cc-management-of-brain-dead-organ-donors",
       "subject": "Physiology",
       "subtopic": "Endothelial Glycocalyx Shedding Biomarkers",
       "question": "Which of the following circulating biomarkers is considered the most specific and widely studied marker of endothelial glycocalyx degradation and vascular barrier breakdown in sepsis and critical illness?",
@@ -725,7 +737,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Glycocalyx components: Core proteins (Syndecan, Glypican) + side chains (Heparan sulfate, Chondroitin sulfate, Hyaluronan).\n• Biomarkers of degradation: Elevated plasma Syndecan-1 and Heparan sulfate.\n• Causes of shedding: Sepsis, ANP (triggered by rapid hypervolemic crystalloid boluses), trauma, ischemia-reperfusion.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Glycocalyx components: Core proteins (Syndecan, Glypican) + side chains (Heparan sulfate, Chondroitin sulfate, Hyaluronan).\n\u2022 Biomarkers of degradation: Elevated plasma Syndecan-1 and Heparan sulfate.\n\u2022 Causes of shedding: Sepsis, ANP (triggered by rapid hypervolemic crystalloid boluses), trauma, ischemia-reperfusion.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -753,14 +765,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Anesthesiology & Intensive Care Physiology Standards",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Management of Brain Dead Organ Donors"
     },
     {
       "id": "INICET-SS-2026-CC-R014",
       "number": 14,
       "chapterId": 20,
       "chapter": "Endocrine & Metabolic Crises",
-      "topicId": "cc-glycemic-control-icu",
+      "topicId": "cc-glucose-control-in-icu",
       "subject": "Electrolytes & Metabolic",
       "subtopic": "ICU Blood Glucose Targets (NICE-SUGAR Trial)",
       "question": "Based on the landmark NICE-SUGAR trial and current international sepsis guidelines, what is the recommended target blood glucose range for critically ill adult patients receiving intravenous insulin therapy?",
@@ -771,7 +784,7 @@
         "200 to 250 mg/dL"
       ],
       "answer": "B",
-      "explanation": "The NICE-SUGAR multicenter randomized trial (6,104 patients) compared intensive insulin therapy (target 80–110 mg/dL) with conventional control (target 140–180 mg/dL). Intensive control resulted in higher 90-day mortality (27.5% vs 24.9%, p=0.02) and a significant increase in severe hypoglycemia (< 40 mg/dL, 6.8% vs 0.5%). Consequently, the Surviving Sepsis Campaign and major critical care societies endorse initiating insulin when blood glucose is > 180 mg/dL and targeting 140–180 mg/dL.",
+      "explanation": "The NICE-SUGAR multicenter randomized trial (6,104 patients) compared intensive insulin therapy (target 80\u2013110 mg/dL) with conventional control (target 140\u2013180 mg/dL). Intensive control resulted in higher 90-day mortality (27.5% vs 24.9%, p=0.02) and a significant increase in severe hypoglycemia (< 40 mg/dL, 6.8% vs 0.5%). Consequently, the Surviving Sepsis Campaign and major critical care societies endorse initiating insulin when blood glucose is > 180 mg/dL and targeting 140\u2013180 mg/dL.",
       "whyWrong": {
         "A": "80 to 110 mg/dL was the Leuven trial target, which proved hazardous in the larger multicenter NICE-SUGAR trial due to lethal neuroglycopenic hypoglycemia.",
         "B": "Correct answer: 140 to 180 mg/dL represents the evidence-based optimal target balancing hyperglycemia control with hypoglycemia prevention.",
@@ -782,7 +795,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Leuven study (2001, Van den Berghe): Monocentric surgical ICU, reported benefit of 80–110 mg/dL.\n• NICE-SUGAR (2009): Multicenter medical/surgical ICU, showed tight control (80–110) increased mortality and severe hypoglycemia.\n• Standard target today: 140–180 mg/dL, initiate insulin when BG > 180 mg/dL.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Leuven study (2001, Van den Berghe): Monocentric surgical ICU, reported benefit of 80\u2013110 mg/dL.\n\u2022 NICE-SUGAR (2009): Multicenter medical/surgical ICU, showed tight control (80\u2013110) increased mortality and severe hypoglycemia.\n\u2022 Standard target today: 140\u2013180 mg/dL, initiate insulin when BG > 180 mg/dL.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -810,14 +823,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "NICE-SUGAR Study Group NEJM",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Glucose Control in ICU"
     },
     {
       "id": "INICET-SS-2026-CC-R015",
       "number": 15,
       "chapterId": 11,
       "chapter": "Cardiac Critical Care & Acute Coronary Syndromes",
-      "topicId": "cc-chronic-thromboembolic-pulmonary-hypertension",
+      "topicId": "cc-pulmonary-embolism",
       "subject": "Cardiovascular Critical Care",
       "subtopic": "CTEPH Diagnostic Gold Standards",
       "question": "A 48-year-old male with a history of unprovoked pulmonary embolism 6 months ago presents with progressive dyspnea on exertion. Echocardiography suggests pulmonary hypertension. What is the most sensitive screening imaging modality to rule out Chronic Thromboembolic Pulmonary Hypertension (CTEPH)?",
@@ -828,7 +842,7 @@
         "Serum D-dimer assay"
       ],
       "answer": "A",
-      "explanation": "A planar Ventilation-Perfusion (V/Q) lung scan is the recommended screening test of choice for Chronic Thromboembolic Pulmonary Hypertension (CTEPH), with a sensitivity of 96–97% and specificity > 90%. A normal V/Q scan completely rules out CTEPH. While CT pulmonary angiography (CTPA) is essential for surgical planning (pulmonary endarterectomy) and characterization of webs/bands, a normal CTPA does not definitively exclude distal CTEPH where V/Q scan remains superior.",
+      "explanation": "A planar Ventilation-Perfusion (V/Q) lung scan is the recommended screening test of choice for Chronic Thromboembolic Pulmonary Hypertension (CTEPH), with a sensitivity of 96\u201397% and specificity > 90%. A normal V/Q scan completely rules out CTEPH. While CT pulmonary angiography (CTPA) is essential for surgical planning (pulmonary endarterectomy) and characterization of webs/bands, a normal CTPA does not definitively exclude distal CTEPH where V/Q scan remains superior.",
       "whyWrong": {
         "A": "Correct answer: V/Q scan has the highest diagnostic sensitivity (96-99%) and is the mandatory initial screening modality for CTEPH.",
         "B": "Chest radiography is non-specific, showing only enlarged pulmonary arteries or right ventricular enlargement.",
@@ -839,7 +853,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• CTEPH definition: Mean PAP > 20 mmHg, PCWP ≤ 15 mmHg, PVR > 2 Wood Units, with chronic organized fibrotic thromboemboli after ≥ 3 months of therapeutic anticoagulation.\n• Screening: V/Q scan is more sensitive than CTPA (normal V/Q rules out CTEPH).\n• Definitive hemodynamic confirmation: Right heart catheterization.\n• Treatment of choice: Pulmonary Endarterectomy (PEA).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 CTEPH definition: Mean PAP > 20 mmHg, PCWP \u2264 15 mmHg, PVR > 2 Wood Units, with chronic organized fibrotic thromboemboli after \u2265 3 months of therapeutic anticoagulation.\n\u2022 Screening: V/Q scan is more sensitive than CTPA (normal V/Q rules out CTEPH).\n\u2022 Definitive hemodynamic confirmation: Right heart catheterization.\n\u2022 Treatment of choice: Pulmonary Endarterectomy (PEA).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -867,14 +881,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "ESC/ERS Guidelines for the Diagnosis and Treatment of Pulmonary Hypertension",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Pulmonary Embolism"
     },
     {
       "id": "INICET-SS-2026-CC-R016",
       "number": 16,
       "chapterId": 5,
       "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
-      "topicId": "cc-sepsis-screening-tools",
+      "topicId": "cc-sepsis-and-septic-shock-evaluation-management",
       "subject": "Sepsis",
       "subtopic": "Sepsis Bedside Screening Scores",
       "question": "In the updated Surviving Sepsis Campaign guidelines, which bedside screening tool is recommended over quick SOFA (qSOFA) for detecting sepsis and deteriorating patients outside the ICU?",
@@ -896,7 +911,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• qSOFA: RR ≥ 22, Altered mental status (GCS < 15), SBP ≤ 100 mmHg. High specificity, but poor sensitivity (~50%); no longer recommended as single screening tool.\n• NEWS2: Incorporates RR, SpO2, supplemental oxygen, temperature, SBP, heart rate, and consciousness. Highly sensitive for early sepsis detection.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 qSOFA: RR \u2265 22, Altered mental status (GCS < 15), SBP \u2264 100 mmHg. High specificity, but poor sensitivity (~50%); no longer recommended as single screening tool.\n\u2022 NEWS2: Incorporates RR, SpO2, supplemental oxygen, temperature, SBP, heart rate, and consciousness. Highly sensitive for early sepsis detection.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -924,17 +939,18 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Surviving Sepsis Campaign Guidelines",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Sepsis and Septic Shock: Evaluation & Management"
     },
     {
       "id": "INICET-SS-2026-CC-R017",
       "number": 17,
       "chapterId": 30,
       "chapter": "Extracorporeal Membrane Oxygenation (ECMO) & ECPR",
-      "topicId": "cc-ecmo-monitoring-and-troubleshooting",
+      "topicId": "cc-managing-a-patient-on-ecmo",
       "subject": "ICU Procedures & Monitoring",
       "subtopic": "ECMO Transmembrane Pressure Elevation",
-      "question": "A patient on venovenous (VV) ECMO for severe ARDS develops a progressive increase in the transmembrane pressure (TMP = Ppre-membrane − Ppost-membrane) from 20 mmHg to 90 mmHg over 12 hours, accompanied by a rising plasma free hemoglobin and falling platelet count. What is the primary cause?",
+      "question": "A patient on venovenous (VV) ECMO for severe ARDS develops a progressive increase in the transmembrane pressure (TMP = Ppre-membrane \u2212 Ppost-membrane) from 20 mmHg to 90 mmHg over 12 hours, accompanied by a rising plasma free hemoglobin and falling platelet count. What is the primary cause?",
       "options": [
         "Access cannula drainage insufficiency",
         "Clot formation and thrombosis within the membrane oxygenator",
@@ -942,7 +958,7 @@
         "Severe systemic vasodilation"
       ],
       "answer": "B",
-      "explanation": "Transmembrane pressure (TMP) represents the pressure gradient across the membrane oxygenator (Ppre-membrane − Ppost-membrane). Under normal conditions, TMP is < 30–50 mmHg depending on sweep and blood flow. A progressive, significant elevation in TMP (often > 50–60 mmHg) indicates increased resistance to blood flow within the oxygenator hollow fibers, pathognomonic of oxygenator thrombosis / clot formation. This causes mechanical shear stress, hemolysis (elevated plasma free Hb), consumptive thrombocytopenia, and oxygenator failure, necessitating emergency circuit/oxygenator exchange.",
+      "explanation": "Transmembrane pressure (TMP) represents the pressure gradient across the membrane oxygenator (Ppre-membrane \u2212 Ppost-membrane). Under normal conditions, TMP is < 30\u201350 mmHg depending on sweep and blood flow. A progressive, significant elevation in TMP (often > 50\u201360 mmHg) indicates increased resistance to blood flow within the oxygenator hollow fibers, pathognomonic of oxygenator thrombosis / clot formation. This causes mechanical shear stress, hemolysis (elevated plasma free Hb), consumptive thrombocytopenia, and oxygenator failure, necessitating emergency circuit/oxygenator exchange.",
       "whyWrong": {
         "A": "Access cannula drainage insufficiency manifests as negative drainage pressure (Ppre-pump becoming excessively negative, e.g. < -100 mmHg) and circuit chattering, not elevated TMP.",
         "B": "Correct answer: Oxygenator thrombosis increases internal resistance, driving up TMP and causing shear-induced hemolysis and thrombocytopenia.",
@@ -953,7 +969,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• ECMO Pressures: P1 (pre-pump / drainage: negative, normal -20 to -60 mmHg); P2 (pre-membrane: positive); P3 (post-membrane: lower than P2).\n• TMP = P2 − P3. Rising TMP (> 50–60 mmHg) = Oxygenator thrombosis.\n• Signs of failing oxygenator: High TMP, impaired gas transfer (drop in post-membrane PaO2), rising D-dimer, drop in platelets, and hemolysis.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 ECMO Pressures: P1 (pre-pump / drainage: negative, normal -20 to -60 mmHg); P2 (pre-membrane: positive); P3 (post-membrane: lower than P2).\n\u2022 TMP = P2 \u2212 P3. Rising TMP (> 50\u201360 mmHg) = Oxygenator thrombosis.\n\u2022 Signs of failing oxygenator: High TMP, impaired gas transfer (drop in post-membrane PaO2), rising D-dimer, drop in platelets, and hemolysis.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -981,14 +997,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "ELSO Guidelines for ECMO Circuit Monitoring and Troubleshooting",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Managing a patient on ECMO"
     },
     {
       "id": "INICET-SS-2026-CC-R018",
       "number": 18,
-      "chapterId": 29,
-      "chapter": "Critical Care Ultrasound & Echocardiography (POCUS)",
-      "topicId": "cc-thoracic-ultrasound-pneumothorax",
+      "chapterId": 28,
+      "chapter": "Critical Care Bedside Procedures & Invasive Devices",
+      "topicId": "cc-pleural-disorders-in-icu",
       "subject": "Radiology",
       "subtopic": "Pneumothorax Ultrasound Signs",
       "question": "On bedside thoracic point-of-care ultrasound (POCUS), which of the following findings has a 100% specificity for the diagnosis of pneumothorax?",
@@ -999,7 +1016,7 @@
         "Presence of the 'Barcode' (Stratosphere) sign on M-mode"
       ],
       "answer": "C",
-      "explanation": "The 'Lung Point' sign is the pathognomonic ultrasound finding for pneumothorax, with virtually 100% specificity. It represents the physical transition zone at the margin of the pneumothorax where normal sliding lung (seashore sign) periodically alternates with motionless, air-separated parietal pleura (stratosphere/barcode sign) during respiratory excursion. In contrast, absence of lung sliding has high sensitivity (95–100%) but lower specificity (can occur in severe ARDS, consolidation, apnea, pleurodesis, and mainstem intubation).",
+      "explanation": "The 'Lung Point' sign is the pathognomonic ultrasound finding for pneumothorax, with virtually 100% specificity. It represents the physical transition zone at the margin of the pneumothorax where normal sliding lung (seashore sign) periodically alternates with motionless, air-separated parietal pleura (stratosphere/barcode sign) during respiratory excursion. In contrast, absence of lung sliding has high sensitivity (95\u2013100%) but lower specificity (can occur in severe ARDS, consolidation, apnea, pleurodesis, and mainstem intubation).",
       "whyWrong": {
         "A": "Absence of lung sliding is sensitive but not specific; it occurs in pleurodesis, massive atelectasis, severe ARDS, apnea, and endobronchial intubation.",
         "B": "Absence of B-lines is non-specific; B-lines rule out pneumothorax at that interspace, but their absence alone is seen in normal dry lung.",
@@ -1010,7 +1027,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Lung Point: Pathognomonic sign of pneumothorax (100% specific). Absent in total lung collapse.\n• Lung sliding: Sensitive for ruling out pneumothorax (NPV ~100%).\n• B-lines & Lung Pulse: Rules out pneumothorax at that specific rib space.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Lung Point: Pathognomonic sign of pneumothorax (100% specific). Absent in total lung collapse.\n\u2022 Lung sliding: Sensitive for ruling out pneumothorax (NPV ~100%).\n\u2022 B-lines & Lung Pulse: Rules out pneumothorax at that specific rib space.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1038,20 +1055,21 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "International Evidence-Based Recommendations for Point-of-Care Lung Ultrasound",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Pleural Disorders in ICU"
     },
     {
       "id": "INICET-SS-2026-CC-R019",
       "number": 19,
-      "chapterId": 15,
-      "chapter": "Neurocritical Care & Raised ICP Management",
-      "topicId": "cc-myasthenia-gravis-crisis",
+      "chapterId": 16,
+      "chapter": "Sedation, Analgesia, Delirium & Neuromuscular Blockade",
+      "topicId": "cc-neuromuscular-disorders-in-icu-ii",
       "subject": "Neurocritical Care",
       "subtopic": "Myasthenia Gravis Clinical Presentation & Diagnosis",
       "question": "A 65-year-old female with a 10-year history of rheumatoid arthritis presents with progressive bilateral ptosis, diplopia, and generalized proximal muscle weakness that characteristically worsens toward the evening and improves after resting. Physical examination demonstrates intact deep tendon reflexes and preserved sensory examination. What is the most likely diagnosis?",
       "options": [
         "Myasthenia Gravis",
-        "Guillain-Barré Syndrome (GBS)",
+        "Guillain-Barr\u00e9 Syndrome (GBS)",
         "Lambert-Eaton Myasthenic Syndrome (LEMS)",
         "Polymyositis"
       ],
@@ -1067,7 +1085,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Myasthenia Gravis: Post-synaptic AChR antibodies (85%) or MuSK (10-15%). Fatigable ptosis/diplopia, normal reflexes, normal pupils.\n• Diagnostic tests: Ice pack test, repetitive nerve stimulation (decremental response > 10%), single-fiber EMG (most sensitive).\n• Myasthenic crisis trigger: Infections, aminoglycosides, beta-blockers, fluoroquinolones.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Myasthenia Gravis: Post-synaptic AChR antibodies (85%) or MuSK (10-15%). Fatigable ptosis/diplopia, normal reflexes, normal pupils.\n\u2022 Diagnostic tests: Ice pack test, repetitive nerve stimulation (decremental response > 10%), single-fiber EMG (most sensitive).\n\u2022 Myasthenic crisis trigger: Infections, aminoglycosides, beta-blockers, fluoroquinolones.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1095,14 +1113,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Myasthenia Gravis Foundation of America Guidelines",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Neuromuscular Disorders in ICU: II"
     },
     {
       "id": "INICET-SS-2026-CC-R020",
       "number": 20,
-      "chapterId": 15,
-      "chapter": "Neurocritical Care & Raised ICP Management",
-      "topicId": "cc-brain-death-determination",
+      "chapterId": 1,
+      "chapter": "Fundamentals of Critical Care & ICU Systems",
+      "topicId": "cc-management-of-brain-dead-organ-donors",
       "subject": "Neurocritical Care",
       "subtopic": "Ancillary Testing in Brain Death (EEG)",
       "question": "When electroencephalography (EEG) is utilized as an ancillary confirmatory test for the determination of brain death in an adult, which of the following electrical patterns must be demonstrated?",
@@ -1113,10 +1132,10 @@
         "Triphasic waves with fronto-occipital phase lag"
       ],
       "answer": "B",
-      "explanation": "According to the American Academy of Neurology (AAN) and international brain death guidelines, when EEG is used as an ancillary test for brain death, it must demonstrate electrocerebral inactivity (ECI) or electrocerebral silence (ECS). ECI is defined as no electrical activity greater than 2 microvolts when recording from scalp electrode pairs at least 10 cm apart, using standard 10–20 electrode montage and high-sensitivity settings for a minimum of 30 minutes, with no response to intense somatosensory or auditory stimulation.",
+      "explanation": "According to the American Academy of Neurology (AAN) and international brain death guidelines, when EEG is used as an ancillary test for brain death, it must demonstrate electrocerebral inactivity (ECI) or electrocerebral silence (ECS). ECI is defined as no electrical activity greater than 2 microvolts when recording from scalp electrode pairs at least 10 cm apart, using standard 10\u201320 electrode montage and high-sensitivity settings for a minimum of 30 minutes, with no response to intense somatosensory or auditory stimulation.",
       "whyWrong": {
         "A": "Burst suppression reflects deep cortical depression (seen in hypothermia, high-dose propofol/barbiturates, or postanoxic injury), but represents viable cortical neurons and is NOT brain death.",
-        "B": "Correct answer: Electrocerebral inactivity (< 2 µV) is mandatory for brain death confirmation on EEG.",
+        "B": "Correct answer: Electrocerebral inactivity (< 2 \u00b5V) is mandatory for brain death confirmation on EEG.",
         "C": "Continuous delta-theta slowing indicates non-specific encephalopathy with intact cerebral electrical generation.",
         "D": "Triphasic waves are characteristic of metabolic (e.g., hepatic or uremic) or toxic encephalopathy."
       },
@@ -1124,7 +1143,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Brain death is fundamentally a clinical diagnosis (coma, absent brainstem reflexes, positive apnea test).\n• Ancillary tests (mandatory if apnea test unsafe or clinical exam incomplete): 4-vessel cerebral angiography (absent flow), radionuclide SPECT (empty light bulb sign), CTA/MRA, TCD (reverberating / oscillating flow or small systolic spikes), and EEG (electrocerebral inactivity < 2 µV).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Brain death is fundamentally a clinical diagnosis (coma, absent brainstem reflexes, positive apnea test).\n\u2022 Ancillary tests (mandatory if apnea test unsafe or clinical exam incomplete): 4-vessel cerebral angiography (absent flow), radionuclide SPECT (empty light bulb sign), CTA/MRA, TCD (reverberating / oscillating flow or small systolic spikes), and EEG (electrocerebral inactivity < 2 \u00b5V).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1152,14 +1171,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "AAN Updated Guidelines for Brain Death Determination",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Management of Brain Dead Organ Donors"
     },
     {
       "id": "INICET-SS-2026-CC-R021",
       "number": 21,
-      "chapterId": 16,
-      "chapter": "Sedation, Analgesia, Delirium & Neuromuscular Blockade",
-      "topicId": "cc-post-dural-puncture-headache",
+      "chapterId": 15,
+      "chapter": "Neurocritical Care & Raised ICP Management",
+      "topicId": "cc-icp-monitoring",
       "subject": "ICU Procedures & Monitoring",
       "subtopic": "Post-Dural Puncture Headache (PDPH) Management",
       "question": "A 28-year-old postpartum female develops a severe throbbing frontal-occipital headache 36 hours after uneventful spinal anesthesia. The headache is markedly aggravated by sitting or standing and completely relieved when lying flat. She also complains of mild tinnitus. What is the most appropriate first-line conservative management strategy?",
@@ -1170,7 +1190,7 @@
         "High-dose intravenous dexamethasone infusion"
       ],
       "answer": "B",
-      "explanation": "Post-dural puncture headache (PDPH) typically presents 24–48 hours following dural puncture with a classic postural component (worse upright, relieved supine). Initial management during the first 24–48 hours is conservative: bed rest in a comfortable recumbent position, aggressive oral or IV hydration, simple analgesics (acetaminophen, NSAIDs), and oral or IV caffeine (caffeine is an adenosine receptor antagonist that causes cerebral vasoconstriction, counteracting compensatory intracranial vasodilation). Epidural blood patch (EBP) is the gold standard for definitive rescue if conservative management fails after 24–48 hours or if symptoms are debilitating.",
+      "explanation": "Post-dural puncture headache (PDPH) typically presents 24\u201348 hours following dural puncture with a classic postural component (worse upright, relieved supine). Initial management during the first 24\u201348 hours is conservative: bed rest in a comfortable recumbent position, aggressive oral or IV hydration, simple analgesics (acetaminophen, NSAIDs), and oral or IV caffeine (caffeine is an adenosine receptor antagonist that causes cerebral vasoconstriction, counteracting compensatory intracranial vasodilation). Epidural blood patch (EBP) is the gold standard for definitive rescue if conservative management fails after 24\u201348 hours or if symptoms are debilitating.",
       "whyWrong": {
         "A": "Surgical exploration is invasive, dangerous, and completely unwarranted for an uncomplicated dural puncture.",
         "B": "Correct answer: Conservative measures including hydration, caffeine, analgesics, and supine position are the first-line treatment.",
@@ -1181,7 +1201,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• PDPH mechanism: Persistent CSF leak through dural defect -> intracranial hypotension -> downward traction on pain-sensitive structures + compensatory cerebral venous dilation.\n• Conservative therapy: Hydration, analgesics, caffeine (300-500 mg PO or 500 mg IV in 1L fluid).\n• Epidural Blood Patch: Gold standard if refractory, inject 15–20 mL of autologous sterile blood into epidural space; 70–90% first-attempt success rate.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 PDPH mechanism: Persistent CSF leak through dural defect -> intracranial hypotension -> downward traction on pain-sensitive structures + compensatory cerebral venous dilation.\n\u2022 Conservative therapy: Hydration, analgesics, caffeine (300-500 mg PO or 500 mg IV in 1L fluid).\n\u2022 Epidural Blood Patch: Gold standard if refractory, inject 15\u201320 mL of autologous sterile blood into epidural space; 70\u201390% first-attempt success rate.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1209,25 +1229,26 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "ASRA Practice Advisory on Postdural Puncture Headache",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "ICP Monitoring"
     },
     {
       "id": "INICET-SS-2026-CC-R022",
       "number": 22,
-      "chapterId": 4,
-      "chapter": "Shock Syndromes & Vasoactive Therapeutics",
-      "topicId": "cc-early-vasopressor-initiation",
+      "chapterId": 5,
+      "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
+      "topicId": "cc-sepsis-and-septic-shock-evaluation-management",
       "subject": "Shock & Resuscitation",
       "subtopic": "Early Vasopressor Use in Septic Shock",
       "question": "A 58-year-old male presents with severe septic shock secondary to peritonitis. Blood pressure is 74/40 mmHg (MAP 51 mmHg) and heart rate is 126 bpm. He has received 1,000 mL of balanced crystalloid over 20 minutes, but MAP remains 52 mmHg with persistent hypoperfusion. What is the recommended strategy regarding vasopressor initiation?",
       "options": [
         "Delay vasopressors until a strict minimum of 30 mL/kg crystalloid has completed over 3 hours",
-        "Initiate norepinephrine infusion immediately alongside ongoing fluid resuscitation to achieve a target MAP ≥ 65 mmHg",
+        "Initiate norepinephrine infusion immediately alongside ongoing fluid resuscitation to achieve a target MAP \u2265 65 mmHg",
         "Administer high-dose dopamine as the initial vasopressor of choice",
         "Start phenylephrine monotherapy to avoid worsening tachycardia"
       ],
       "answer": "B",
-      "explanation": "Modern septic shock guidelines and evidence from trials (e.g., CENSER trial) recommend the early initiation of norepinephrine—concomitantly with ongoing fluid resuscitation—rather than waiting for full volume loading (30 mL/kg) to finish. In profound hypotension (MAP < 60 mmHg), early norepinephrine restores vascular tone, recruits unstressed blood volume to stressed volume (increasing venous return and cardiac output), prevents prolonged vital organ hypoperfusion, and reduces total fluid requirement and fluid overload.",
+      "explanation": "Modern septic shock guidelines and evidence from trials (e.g., CENSER trial) recommend the early initiation of norepinephrine\u2014concomitantly with ongoing fluid resuscitation\u2014rather than waiting for full volume loading (30 mL/kg) to finish. In profound hypotension (MAP < 60 mmHg), early norepinephrine restores vascular tone, recruits unstressed blood volume to stressed volume (increasing venous return and cardiac output), prevents prolonged vital organ hypoperfusion, and reduces total fluid requirement and fluid overload.",
       "whyWrong": {
         "A": "Waiting for 30 mL/kg while MAP remains 50 mmHg prolongs severe organ ischemia and increases acute tubular necrosis and mortality.",
         "B": "Correct answer: Early norepinephrine initiation simultaneously with ongoing fluid resuscitation restores perfusion pressure promptly.",
@@ -1238,7 +1259,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• CENSER Trial: Early norepinephrine in septic shock achieved earlier shock control and lower 28-day mortality.\n• Norepinephrine: First-line vasopressor; increases MAP via alpha-1 vasoconstriction with modest beta-1 chronotropy/inotropy.\n• Target MAP ≥ 65 mmHg (higher target 80–85 mmHg only in chronic uncontrolled hypertension with oliguria).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 CENSER Trial: Early norepinephrine in septic shock achieved earlier shock control and lower 28-day mortality.\n\u2022 Norepinephrine: First-line vasopressor; increases MAP via alpha-1 vasoconstriction with modest beta-1 chronotropy/inotropy.\n\u2022 Target MAP \u2265 65 mmHg (higher target 80\u201385 mmHg only in chronic uncontrolled hypertension with oliguria).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1254,9 +1275,9 @@
       "recall_confidence": "high",
       "question_status": "verified_recall",
       "speaker_answer": "B",
-      "speaker_answer_text": "Initiate norepinephrine infusion immediately alongside ongoing fluid resuscitation to achieve a target MAP ≥ 65 mmHg",
+      "speaker_answer_text": "Initiate norepinephrine infusion immediately alongside ongoing fluid resuscitation to achieve a target MAP \u2265 65 mmHg",
       "verified_answer": "B",
-      "verified_answer_text": "Initiate norepinephrine infusion immediately alongside ongoing fluid resuscitation to achieve a target MAP ≥ 65 mmHg",
+      "verified_answer_text": "Initiate norepinephrine infusion immediately alongside ongoing fluid resuscitation to achieve a target MAP \u2265 65 mmHg",
       "concept_tested": "Timing of vasopressor initiation and hemodynamic benefits of early norepinephrine in septic shock",
       "high_yield_takeaway": [
         "Early norepinephrine initiation alongside crystalloid resuscitation prevents prolonged ischemic organ injury.",
@@ -1267,17 +1288,18 @@
         "Surviving Sepsis Campaign International Guidelines",
         "CENSER Trial AJRCCM",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Sepsis and Septic Shock: Evaluation & Management"
     },
     {
       "id": "INICET-SS-2026-CC-R023",
       "number": 23,
-      "chapterId": 15,
-      "chapter": "Neurocritical Care & Raised ICP Management",
-      "topicId": "cc-guillain-barre-syndrome",
+      "chapterId": 16,
+      "chapter": "Sedation, Analgesia, Delirium & Neuromuscular Blockade",
+      "topicId": "cc-neuromuscular-disorders-in-icu-i",
       "subject": "Neurocritical Care",
-      "subtopic": "Guillain-Barré Syndrome Immunotherapy",
-      "question": "A 34-year-old male with Guillain-Barré Syndrome (GBS) following Campylobacter jejuni enteritis develops rapidly progressive quadriparesis and respiratory failure requiring endotracheal intubation. What is the evidence-based definitive immunotherapy of choice?",
+      "subtopic": "Guillain-Barr\u00e9 Syndrome Immunotherapy",
+      "question": "A 34-year-old male with Guillain-Barr\u00e9 Syndrome (GBS) following Campylobacter jejuni enteritis develops rapidly progressive quadriparesis and respiratory failure requiring endotracheal intubation. What is the evidence-based definitive immunotherapy of choice?",
       "options": [
         "High-dose intravenous methylprednisolone pulse therapy alone",
         "Intravenous immunoglobulin (IVIG) or Plasma Exchange (PLEX); both have equivalent efficacy",
@@ -1285,7 +1307,7 @@
         "Oral azathioprine plus cyclophosphamide"
       ],
       "answer": "B",
-      "explanation": "In Guillain-Barré Syndrome (GBS), Intravenous Immunoglobulin (IVIG, 0.4 g/kg/day for 5 days, total 2 g/kg) and Plasma Exchange (PLEX, 200–250 mL/kg over 4 to 6 sessions over 10–14 days) are the two proven definitive immunotherapies, demonstrating equivalent therapeutic efficacy in accelerating motor recovery and shortening ventilator dependency. Systemic corticosteroids are completely ineffective in GBS and may actually delay recovery. Combining IVIG and PLEX sequentially offers no added benefit over either modality alone.",
+      "explanation": "In Guillain-Barr\u00e9 Syndrome (GBS), Intravenous Immunoglobulin (IVIG, 0.4 g/kg/day for 5 days, total 2 g/kg) and Plasma Exchange (PLEX, 200\u2013250 mL/kg over 4 to 6 sessions over 10\u201314 days) are the two proven definitive immunotherapies, demonstrating equivalent therapeutic efficacy in accelerating motor recovery and shortening ventilator dependency. Systemic corticosteroids are completely ineffective in GBS and may actually delay recovery. Combining IVIG and PLEX sequentially offers no added benefit over either modality alone.",
       "whyWrong": {
         "A": "Corticosteroids have been proven ineffective in multiple RCTs in GBS and should NOT be administered.",
         "B": "Correct answer: IVIG and PLEX are equally efficacious; choice depends on availability, contraindications, and local expertise.",
@@ -1296,7 +1318,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• GBS Immunotherapy: IVIG (2 g/kg over 5 days) OR Plasma Exchange (4-6 sessions). Both equal.\n• Corticosteroids: INEFFECTIVE in GBS (unlike CIDP where steroids work).\n• Erasmus GBS Respiratory Weakness Score (EGRIS): Predicts mechanical ventilation need in early GBS.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 GBS Immunotherapy: IVIG (2 g/kg over 5 days) OR Plasma Exchange (4-6 sessions). Both equal.\n\u2022 Corticosteroids: INEFFECTIVE in GBS (unlike CIDP where steroids work).\n\u2022 Erasmus GBS Respiratory Weakness Score (EGRIS): Predicts mechanical ventilation need in early GBS.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1306,7 +1328,7 @@
         "INI SS CC April 2026",
         "Recall 2026",
         "Neurocritical Care",
-        "Guillain-Barré Syndrome"
+        "Guillain-Barr\u00e9 Syndrome"
       ],
       "verificationStatus": "VERIFIED",
       "recall_confidence": "high",
@@ -1315,23 +1337,24 @@
       "speaker_answer_text": "Intravenous immunoglobulin (IVIG) or Plasma Exchange (PLEX); both have equivalent efficacy",
       "verified_answer": "B",
       "verified_answer_text": "Intravenous immunoglobulin (IVIG) or Plasma Exchange (PLEX); both have equivalent efficacy",
-      "concept_tested": "Definitive disease-modifying immunotherapy in Guillain-Barré syndrome and the lack of steroid efficacy",
+      "concept_tested": "Definitive disease-modifying immunotherapy in Guillain-Barr\u00e9 syndrome and the lack of steroid efficacy",
       "high_yield_takeaway": [
         "IVIG and Plasma Exchange are equally effective first-line treatments for GBS.",
-        "Corticosteroids are not beneficial in Guillain-Barré syndrome."
+        "Corticosteroids are not beneficial in Guillain-Barr\u00e9 syndrome."
       ],
       "sources": [
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
-        "Cochrane Review on Immunotherapy in Guillain-Barré Syndrome",
+        "Cochrane Review on Immunotherapy in Guillain-Barr\u00e9 Syndrome",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Neuromuscular Disorders in ICU: I"
     },
     {
       "id": "INICET-SS-2026-CC-R024",
       "number": 24,
-      "chapterId": 8,
-      "chapter": "Invasive Mechanical Ventilation & Graphics",
-      "topicId": "cc-auto-peep-and-air-trapping",
+      "chapterId": 10,
+      "chapter": "Obstructive Airway Emergencies in ICU (Asthma & COPD)",
+      "topicId": "cc-copd-and-asthma",
       "subject": "Mechanical Ventilation",
       "subtopic": "Acute Ventilator Disconnection in Dynamic Hyperinflation",
       "question": "A mechanically ventilated patient with severe COPD exacerbation suddenly develops profound hypotension (blood pressure 65/35 mmHg) and tachycardia (140 bpm). Bilateral wheezing is heard, and the ventilator expiratory flow waveform fails to reach zero baseline before the next breath. Which immediate diagnostic and therapeutic maneuver should be performed first?",
@@ -1353,7 +1376,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Sudden PEA arrest or shock post-intubation in asthma/COPD: Disconnect ventilator first!\n• Allow 30–60 seconds of apnea / manual chest compression.\n• If hemodynamics recover = Dynamic hyperinflation was the culprit. Resume ventilation at lower rate and volume.\n• If no recovery = Rule out tension pneumothorax (POCUS/needle decompression).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Sudden PEA arrest or shock post-intubation in asthma/COPD: Disconnect ventilator first!\n\u2022 Allow 30\u201360 seconds of apnea / manual chest compression.\n\u2022 If hemodynamics recover = Dynamic hyperinflation was the culprit. Resume ventilation at lower rate and volume.\n\u2022 If no recovery = Rule out tension pneumothorax (POCUS/needle decompression).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1381,14 +1404,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Principles and Practice of Mechanical Ventilation (Tobin)",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "COPD and Asthma"
     },
     {
       "id": "INICET-SS-2026-CC-R025",
       "number": 25,
       "chapterId": 19,
       "chapter": "Gastrointestinal, Hepatic & Abdominal Catastrophes",
-      "topicId": "cc-abdominal-compartment-syndrome",
+      "topicId": "cc-intra-abdominal-hypertension-and-abdominal-compartment-syndrome",
       "subject": "Trauma & Burns",
       "subtopic": "Abdominal Compartment Syndrome (ACS) Management",
       "question": "A 42-year-old male on day 1 post-exploratory laparotomy for perforated bowel develops oliguria (urine output 12 mL/hr), tachycardia, and worsening peak airway pressures. Transvesical bladder pressure measurement reveals an intra-abdominal pressure (IAP) of 28 mmHg with stable abdominal CT findings. What is the diagnosis and initial non-surgical management step?",
@@ -1410,7 +1434,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• WSACS Definitions: Normal IAP = 0–5 mmHg (ICU 5–7 mmHg). IAH = Sustained IAP ≥ 12 mmHg. ACS = Sustained IAP > 20 mmHg with new organ dysfunction.\n• Bladder pressure: Measured at end-expiration, supine, instilling max 25 mL sterile saline.\n• APP = MAP − IAP (target > 60 mmHg). Decompressive laparostomy is definitive for refractory ACS.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 WSACS Definitions: Normal IAP = 0\u20135 mmHg (ICU 5\u20137 mmHg). IAH = Sustained IAP \u2265 12 mmHg. ACS = Sustained IAP > 20 mmHg with new organ dysfunction.\n\u2022 Bladder pressure: Measured at end-expiration, supine, instilling max 25 mL sterile saline.\n\u2022 APP = MAP \u2212 IAP (target > 60 mmHg). Decompressive laparostomy is definitive for refractory ACS.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1438,14 +1462,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "WSACS Consensus Guidelines on Intra-Abdominal Hypertension and Abdominal Compartment Syndrome",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Intra-abdominal Hypertension And Abdominal Compartment Syndrome"
     },
     {
       "id": "INICET-SS-2026-CC-R026",
       "number": 26,
       "chapterId": 4,
       "chapter": "Shock Syndromes & Vasoactive Therapeutics",
-      "topicId": "cc-vasomotor-tone-index",
+      "topicId": "cc-shock-pathophysiology-and-classification",
       "subject": "Hemodynamics",
       "subtopic": "Vasomotor Tone Index & Diastolic Shock Index",
       "question": "Which of the following formulas correctly describes the Diastolic Shock Index (DSI), a novel physiological index used to evaluate vasomotor tone and vascular failure in septic shock?",
@@ -1456,9 +1481,9 @@
         "Mean Arterial Pressure / Heart Rate"
       ],
       "answer": "B",
-      "explanation": "The Diastolic Shock Index (DSI) is calculated as Heart Rate divided by Diastolic Blood Pressure (HR / DBP). While the conventional Shock Index is HR / SBP, the diastolic pressure is predominantly determined by peripheral vasomotor tone (arterial elastance) and heart rate. A DSI > 2.0–2.2 indicates profound loss of arterial vascular tone, severe vasoplegia, and is a strong predictor of early mortality and the urgent need for vasopressor initiation.",
+      "explanation": "The Diastolic Shock Index (DSI) is calculated as Heart Rate divided by Diastolic Blood Pressure (HR / DBP). While the conventional Shock Index is HR / SBP, the diastolic pressure is predominantly determined by peripheral vasomotor tone (arterial elastance) and heart rate. A DSI > 2.0\u20132.2 indicates profound loss of arterial vascular tone, severe vasoplegia, and is a strong predictor of early mortality and the urgent need for vasopressor initiation.",
       "whyWrong": {
-        "A": "HR / SBP is the conventional Shock Index (SI, normal 0.5–0.7; abnormal > 0.9).",
+        "A": "HR / SBP is the conventional Shock Index (SI, normal 0.5\u20130.7; abnormal > 0.9).",
         "B": "Correct answer: HR / DBP is the Diastolic Shock Index (DSI).",
         "C": "DBP / HR is the inverse ratio (sometimes called the vascular resistance index component).",
         "D": "MAP / HR is not the Diastolic Shock Index."
@@ -1467,7 +1492,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Shock Index (SI) = HR / SBP (> 0.9 indicates hypoperfusion).\n• Diastolic Shock Index (DSI) = HR / DBP (> 2.0 indicates loss of vasomotor tone/vasoplegia).\n• DBP is key in septic shock: DBP < 50 mmHg suggests vasoplegia requiring immediate alpha-1 vasopressor therapy.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Shock Index (SI) = HR / SBP (> 0.9 indicates hypoperfusion).\n\u2022 Diastolic Shock Index (DSI) = HR / DBP (> 2.0 indicates loss of vasomotor tone/vasoplegia).\n\u2022 DBP is key in septic shock: DBP < 50 mmHg suggests vasoplegia requiring immediate alpha-1 vasopressor therapy.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1495,14 +1520,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Intensive Care Medicine Hemodynamic Monitoring Standards",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Shock Pathophysiology and Classification"
     },
     {
       "id": "INICET-SS-2026-CC-R027",
       "number": 27,
       "chapterId": 23,
       "chapter": "Clinical Toxicology & Toxidromes",
-      "topicId": "cc-organophosphate-poisoning",
+      "topicId": "cc-pesticides",
       "subject": "Toxicology",
       "subtopic": "Organophosphate Intermediate Syndrome Pathophysiology",
       "question": "A 32-year-old male treated with atropine and pralidoxime for acute organophosphate poisoning develops sudden weakness of neck flexors, proximal limb muscles, motor cranial nerves, and respiratory muscles 48 hours after ingestion. What is the underlying pathophysiology of this 'Intermediate Syndrome'?",
@@ -1517,14 +1543,14 @@
       "whyWrong": {
         "A": "Muscarinic symptoms (salivation, lacrimation, bradycardia) characterize the initial acute cholinergic phase (Type I), responsive to atropine.",
         "B": "Correct answer: Persistent stimulation and nicotinic receptor exhaustion at the motor endplate cause intermediate syndrome.",
-        "C": "OPIDN (organophosphate-induced delayed polyneuropathy) is a separate entity occurring 2–3 weeks later due to neuropathy target esterase (NTE) inhibition, causing distal axonopathy.",
+        "C": "OPIDN (organophosphate-induced delayed polyneuropathy) is a separate entity occurring 2\u20133 weeks later due to neuropathy target esterase (NTE) inhibition, causing distal axonopathy.",
         "D": "Lambert-Eaton syndrome, not OP poisoning, involves anti-VGCC antibodies."
       },
       "difficulty": "medium",
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Type I (Acute cholinergic crisis): Muscarinic + nicotinic + CNS (0-24 hr). Treat with Atropine + Pralidoxime.\n• Type II (Intermediate Syndrome): 24-96 hr post-exposure. Neck flexor weakness, proximal muscles, respiratory arrest. Unresponsive to atropine; requires mechanical ventilation.\n• Type III (OPIDN): 2-3 weeks post-exposure. NTE inhibition -> motor axonopathy / foot drop.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Type I (Acute cholinergic crisis): Muscarinic + nicotinic + CNS (0-24 hr). Treat with Atropine + Pralidoxime.\n\u2022 Type II (Intermediate Syndrome): 24-96 hr post-exposure. Neck flexor weakness, proximal muscles, respiratory arrest. Unresponsive to atropine; requires mechanical ventilation.\n\u2022 Type III (OPIDN): 2-3 weeks post-exposure. NTE inhibition -> motor axonopathy / foot drop.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1552,14 +1578,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Goldfrank's Toxicologic Emergencies",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Pesticides"
     },
     {
       "id": "INICET-SS-2026-CC-R028",
       "number": 28,
-      "chapterId": 19,
-      "chapter": "Gastrointestinal, Hepatic & Abdominal Catastrophes",
-      "topicId": "cc-liver-transplant-complications",
+      "chapterId": 3,
+      "chapter": "Advanced Hemodynamic Monitoring & Echocardiography",
+      "topicId": "cc-haemodynamic-monitoring-i",
       "subject": "ICU Procedures & Monitoring",
       "subtopic": "Intraoperative Venous Air Embolism in Liver Transplantation",
       "question": "During orthotopic liver transplantation, the surgical team accidentally lacerates a major hepatic vein. Within seconds, the patient develops sudden severe hypotension, tachycardia, and an abrupt drop in end-tidal CO2 (ETCO2) from 38 mmHg to 14 mmHg. What is the most likely diagnosis and immediate positioning maneuver?",
@@ -1581,7 +1608,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• VAE Presentation: Abrupt drop in ETCO2, sudden hypotension, mill-wheel murmur, elevated CVP, hypoxemia.\n• Most sensitive non-invasive monitor: Transesophageal Echocardiography (TEE) > Precordial Doppler.\n• Emergency Durant Maneuver: Left lateral decubitus (air floats up into RV lateral wall) + Trendelenburg (keeps air away from RV outflow tract).\n• Aspirate air via multi-orifice central venous catheter.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 VAE Presentation: Abrupt drop in ETCO2, sudden hypotension, mill-wheel murmur, elevated CVP, hypoxemia.\n\u2022 Most sensitive non-invasive monitor: Transesophageal Echocardiography (TEE) > Precordial Doppler.\n\u2022 Emergency Durant Maneuver: Left lateral decubitus (air floats up into RV lateral wall) + Trendelenburg (keeps air away from RV outflow tract).\n\u2022 Aspirate air via multi-orifice central venous catheter.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1609,14 +1636,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Miller's Anesthesia",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Haemodynamic Monitoring: I"
     },
     {
       "id": "INICET-SS-2026-CC-R029",
       "number": 29,
       "chapterId": 27,
       "chapter": "Paediatric & Neonatal Emergencies in Adult ICU",
-      "topicId": "cc-tetralogy-of-fallot-spells",
+      "topicId": "cc-paediatric-shock-sepsis-formulas",
       "subject": "Cardiovascular Critical Care",
       "subtopic": "Tetralogy of Fallot Hypercyanotic Spells",
       "question": "During an acute hypercyanotic 'tet spell' in an infant with unrepaired Tetralogy of Fallot, what is the fundamental hemodynamic objective of therapy?",
@@ -1638,7 +1666,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• TOF Components: VSD, Overriding aorta, Right ventricular outflow tract obstruction (RVOTO), RV hypertrophy.\n• Tet Spell Management: 100% Oxygen, Knee-chest position (increases SVR), Morphine (reduces infundibular spasm and distress), IV volume bolus, Phenylephrine (pure alpha-1 to raise SVR), Esmolol/Propranolol.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 TOF Components: VSD, Overriding aorta, Right ventricular outflow tract obstruction (RVOTO), RV hypertrophy.\n\u2022 Tet Spell Management: 100% Oxygen, Knee-chest position (increases SVR), Morphine (reduces infundibular spasm and distress), IV volume bolus, Phenylephrine (pure alpha-1 to raise SVR), Esmolol/Propranolol.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1666,14 +1694,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Moss and Adams' Heart Disease in Infants, Children, and Adolescents",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Paediatric Shock, Sepsis Resuscitation & Weight-Based Formulas"
     },
     {
       "id": "INICET-SS-2026-CC-R030",
       "number": 30,
-      "chapterId": 4,
-      "chapter": "Shock Syndromes & Vasoactive Therapeutics",
-      "topicId": "cc-vasoplegic-shock-mechanisms",
+      "chapterId": 5,
+      "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
+      "topicId": "cc-organ-dysfunction-in-sepsis",
       "subject": "Shock & Resuscitation",
       "subtopic": "Molecular Mechanisms of Septic Vasoplegia",
       "question": "Which of the following cellular mechanisms plays a central role in the pathogenesis of refractory vasoplegic shock in severe sepsis?",
@@ -1695,7 +1724,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Mechanisms of Septic Vasoplegia: Excess NO/cGMP pathway activation; Activation of K_ATP and K_Ca channels -> vascular hyperpolarization; Desensitization and down-regulation of adrenergic receptors; Relative deficiency of vasopressin and corticosteroid resistance.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Mechanisms of Septic Vasoplegia: Excess NO/cGMP pathway activation; Activation of K_ATP and K_Ca channels -> vascular hyperpolarization; Desensitization and down-regulation of adrenergic receptors; Relative deficiency of vasopressin and corticosteroid resistance.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1723,14 +1752,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Circulation Research on Mechanisms of Vasoplegia",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Organ Dysfunction in Sepsis"
     },
     {
       "id": "INICET-SS-2026-CC-R031",
       "number": 31,
-      "chapterId": 11,
-      "chapter": "Cardiac Critical Care & Acute Coronary Syndromes",
-      "topicId": "cc-valvular-emergencies-aortic-stenosis",
+      "chapterId": 4,
+      "chapter": "Shock Syndromes & Vasoactive Therapeutics",
+      "topicId": "cc-cardiogenic-shock-i",
       "subject": "Cardiovascular Critical Care",
       "subtopic": "Hemodynamic Goals in Severe Aortic Stenosis",
       "question": "Which of the following sets of hemodynamic goals is critical for maintaining cardiac output and coronary perfusion in a patient with severe, fixed aortic stenosis undergoing critical care management?",
@@ -1738,10 +1768,10 @@
         "Tachycardia (HR > 110 bpm), low preload, and low systemic vascular resistance",
         "Strict maintenance of normal sinus rhythm, avoidance of tachycardia, maintenance of adequate preload, and preservation of SVR to ensure coronary perfusion",
         "Aggressive systemic vasodilation to reduce LV afterload",
-        "Permissive hypotension (MAP 50–55 mmHg)"
+        "Permissive hypotension (MAP 50\u201355 mmHg)"
       ],
       "answer": "B",
-      "explanation": "Severe aortic stenosis represents a fixed left ventricular outflow obstruction with concentric LV hypertrophy and reduced LV compliance. Hemodynamic goals: (1) Sinus rhythm is vital because the 'atrial kick' contributes up to 30–40% of LV end-diastolic filling; (2) Avoid tachycardia (aim HR 60–80 bpm) to maximize diastolic filling and coronary perfusion time; (3) Maintain adequate-to-high preload to fill the stiff, non-compliant ventricle; (4) Maintain normal-to-high systemic vascular resistance (SVR) because hypotension dramatically decreases coronary perfusion pressure, precipitating subendocardial ischemia, LV failure, and cardiovascular collapse.",
+      "explanation": "Severe aortic stenosis represents a fixed left ventricular outflow obstruction with concentric LV hypertrophy and reduced LV compliance. Hemodynamic goals: (1) Sinus rhythm is vital because the 'atrial kick' contributes up to 30\u201340% of LV end-diastolic filling; (2) Avoid tachycardia (aim HR 60\u201380 bpm) to maximize diastolic filling and coronary perfusion time; (3) Maintain adequate-to-high preload to fill the stiff, non-compliant ventricle; (4) Maintain normal-to-high systemic vascular resistance (SVR) because hypotension dramatically decreases coronary perfusion pressure, precipitating subendocardial ischemia, LV failure, and cardiovascular collapse.",
       "whyWrong": {
         "A": "Tachycardia shortens diastole, reducing coronary perfusion and stroke volume in a stiff hypertrophied LV.",
         "B": "Correct answer: Sinus rhythm, controlled rate, adequate preload, and normal/high SVR are the mandatory hemodynamic triad.",
@@ -1752,7 +1782,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Severe Aortic Stenosis Goals: Sinus rhythm (atrial kick essential), Normal/slow HR (60–80 bpm), High preload, High SVR.\n• Phenylephrine is the preferred vasopressor for hypotension (increases SVR without tachycardia).\n• Loss of sinus rhythm (e.g., AF) causes immediate decompensation -> prompt cardioversion.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Severe Aortic Stenosis Goals: Sinus rhythm (atrial kick essential), Normal/slow HR (60\u201380 bpm), High preload, High SVR.\n\u2022 Phenylephrine is the preferred vasopressor for hypotension (increases SVR without tachycardia).\n\u2022 Loss of sinus rhythm (e.g., AF) causes immediate decompensation -> prompt cardioversion.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1780,14 +1810,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "AHA/ACC Guideline for the Management of Patients With Valvular Heart Disease",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Cardiogenic Shock: I"
     },
     {
       "id": "INICET-SS-2026-CC-R032",
       "number": 32,
       "chapterId": 4,
       "chapter": "Shock Syndromes & Vasoactive Therapeutics",
-      "topicId": "cc-methylene-blue-in-shock",
+      "topicId": "cc-shock-pathophysiology-and-classification",
       "subject": "Shock & Resuscitation",
       "subtopic": "Methylene Blue Mechanism in Vasoplegia",
       "question": "What is the primary molecular mechanism of action of intravenous methylene blue when used as a rescue agent in refractory septic or post-cardiopulmonary bypass vasoplegic shock?",
@@ -1809,7 +1840,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Methylene Blue Dosing: 1.5–2 mg/kg IV over 20–60 minutes, followed by an infusion of 0.25–0.5 mg/kg/hr.\n• Major Adverse Effects: Serotonin syndrome (potent MAO-A inhibitor when combined with SSRIs), pulse oximetry artifact (transient spurious SpO2 drop to ~85%), and hemolysis in G6PD deficiency.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Methylene Blue Dosing: 1.5\u20132 mg/kg IV over 20\u201360 minutes, followed by an infusion of 0.25\u20130.5 mg/kg/hr.\n\u2022 Major Adverse Effects: Serotonin syndrome (potent MAO-A inhibitor when combined with SSRIs), pulse oximetry artifact (transient spurious SpO2 drop to ~85%), and hemolysis in G6PD deficiency.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1837,14 +1868,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Anesthesiology Pharmacotherapy Reviews on Vasoplegia",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Shock Pathophysiology and Classification"
     },
     {
       "id": "INICET-SS-2026-CC-R033",
       "number": 33,
-      "chapterId": 3,
-      "chapter": "Advanced Hemodynamic Monitoring & Echocardiography",
-      "topicId": "cc-mcconnell-sign",
+      "chapterId": 11,
+      "chapter": "Cardiac Critical Care & Acute Coronary Syndromes",
+      "topicId": "cc-pulmonary-embolism",
       "subject": "Radiology",
       "subtopic": "Echocardiographic Signs in Acute Pulmonary Embolism",
       "question": "A 55-year-old female presents with acute pleuritic chest pain, dyspnea, and tachycardia. Bedside transthoracic echocardiography reveals right ventricular mid-to-basal free wall akinesia with preserved, hyperdynamic motion of the right ventricular apex. What is the name of this classic echocardiographic sign?",
@@ -1866,7 +1898,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• McConnell's Sign: RV mid-free wall akinesia with apical sparing (sensitivity ~77%, specificity ~94% for acute PE).\n• 60/60 Sign: Pulmonary valve acceleration time < 60 ms in presence of tricuspid regurgitant gradient < 60 mmHg.\n• D-shaped LV: Systolic and diastolic flattening of interventricular septum indicating RV pressure/volume overload.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 McConnell's Sign: RV mid-free wall akinesia with apical sparing (sensitivity ~77%, specificity ~94% for acute PE).\n\u2022 60/60 Sign: Pulmonary valve acceleration time < 60 ms in presence of tricuspid regurgitant gradient < 60 mmHg.\n\u2022 D-shaped LV: Systolic and diastolic flattening of interventricular septum indicating RV pressure/volume overload.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1894,27 +1926,28 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "American Journal of Cardiology / ASE Guidelines for Echocardiography",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Pulmonary Embolism"
     },
     {
       "id": "INICET-SS-2026-CC-R034",
       "number": 34,
       "chapterId": 9,
       "chapter": "Acute Respiratory Distress Syndrome (ARDS)",
-      "topicId": "cc-driving-pressure-in-ards",
+      "topicId": "cc-acute-respiratory-distress-syndrome-i",
       "subject": "Mechanical Ventilation",
       "subtopic": "Driving Pressure Calculation & Target in ARDS",
-      "question": "In a mechanically ventilated patient with moderate-to-severe ARDS receiving volume-controlled ventilation, the plateau pressure (Pplat) is 28 cmH2O and positive end-expiratory pressure (PEEP) is 14 cmH2O. What is the calculated driving pressure (ΔP), and what is the evidence-based safe upper threshold established by Amato et al.?",
+      "question": "In a mechanically ventilated patient with moderate-to-severe ARDS receiving volume-controlled ventilation, the plateau pressure (Pplat) is 28 cmH2O and positive end-expiratory pressure (PEEP) is 14 cmH2O. What is the calculated driving pressure (\u0394P), and what is the evidence-based safe upper threshold established by Amato et al.?",
       "options": [
-        "14 cmH2O; safe upper threshold is ≤ 14–15 cmH2O",
-        "42 cmH2O; safe upper threshold is ≤ 30 cmH2O",
-        "2.0 cmH2O; safe upper threshold is ≤ 5 cmH2O",
-        "28 cmH2O; safe upper threshold is ≤ 20 cmH2O"
+        "14 cmH2O; safe upper threshold is \u2264 14\u201315 cmH2O",
+        "42 cmH2O; safe upper threshold is \u2264 30 cmH2O",
+        "2.0 cmH2O; safe upper threshold is \u2264 5 cmH2O",
+        "28 cmH2O; safe upper threshold is \u2264 20 cmH2O"
       ],
       "answer": "A",
-      "explanation": "Driving pressure (ΔP) is calculated as Plateau Pressure minus PEEP (ΔP = Pplat − PEEP), which reflects the ratio of tidal volume to respiratory system compliance (ΔP = Vt / Crs). In this patient, ΔP = 28 − 14 = 14 cmH2O. Landmark clinical research by Amato et al. demonstrated that driving pressure is the ventilatory variable most strongly associated with survival in ARDS; driving pressures > 14–15 cmH2O are associated with a marked increase in mortality due to cyclic lung strain and ventilator-induced lung injury (VILI).",
+      "explanation": "Driving pressure (\u0394P) is calculated as Plateau Pressure minus PEEP (\u0394P = Pplat \u2212 PEEP), which reflects the ratio of tidal volume to respiratory system compliance (\u0394P = Vt / Crs). In this patient, \u0394P = 28 \u2212 14 = 14 cmH2O. Landmark clinical research by Amato et al. demonstrated that driving pressure is the ventilatory variable most strongly associated with survival in ARDS; driving pressures > 14\u201315 cmH2O are associated with a marked increase in mortality due to cyclic lung strain and ventilator-induced lung injury (VILI).",
       "whyWrong": {
-        "A": "Correct answer: ΔP = 28 − 14 = 14 cmH2O, and ≤ 14–15 cmH2O is the accepted protective threshold.",
+        "A": "Correct answer: \u0394P = 28 \u2212 14 = 14 cmH2O, and \u2264 14\u201315 cmH2O is the accepted protective threshold.",
         "B": "42 cmH2O is the sum of Pplat + PEEP, which is physiologically meaningless.",
         "C": "2.0 is the quotient, not the difference.",
         "D": "28 cmH2O is the plateau pressure, not the driving pressure."
@@ -1923,7 +1956,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Driving Pressure Formula: ΔP = Pplat − PEEP = Vt / Crs.\n• Targets in ARDS: ΔP ≤ 14 cmH2O, Pplat ≤ 30 cmH2O, Tidal volume 4–8 mL/kg PBW.\n• Amato et al. (NEJM 2015): Reductions in ΔP strongly correlate with reduced ARDS mortality, serving as the best surrogate of functional 'baby lung' stress.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Driving Pressure Formula: \u0394P = Pplat \u2212 PEEP = Vt / Crs.\n\u2022 Targets in ARDS: \u0394P \u2264 14 cmH2O, Pplat \u2264 30 cmH2O, Tidal volume 4\u20138 mL/kg PBW.\n\u2022 Amato et al. (NEJM 2015): Reductions in \u0394P strongly correlate with reduced ARDS mortality, serving as the best surrogate of functional 'baby lung' stress.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -1939,26 +1972,27 @@
       "recall_confidence": "high",
       "question_status": "verified_recall",
       "speaker_answer": "A",
-      "speaker_answer_text": "14 cmH2O; safe upper threshold is ≤ 14–15 cmH2O",
+      "speaker_answer_text": "14 cmH2O; safe upper threshold is \u2264 14\u201315 cmH2O",
       "verified_answer": "A",
-      "verified_answer_text": "14 cmH2O; safe upper threshold is ≤ 14–15 cmH2O",
+      "verified_answer_text": "14 cmH2O; safe upper threshold is \u2264 14\u201315 cmH2O",
       "concept_tested": "Calculation of respiratory system driving pressure and evidence-based safety thresholds in ARDS",
       "high_yield_takeaway": [
-        "Driving pressure equals Plateau pressure minus PEEP (ΔP = Pplat - PEEP).",
-        "Target driving pressure in lung-protective ventilation is ≤ 14-15 cmH2O."
+        "Driving pressure equals Plateau pressure minus PEEP (\u0394P = Pplat - PEEP).",
+        "Target driving pressure in lung-protective ventilation is \u2264 14-15 cmH2O."
       ],
       "sources": [
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Amato MB et al. NEJM 2015",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Acute Respiratory Distress Syndrome: I"
     },
     {
       "id": "INICET-SS-2026-CC-R035",
       "number": 35,
       "chapterId": 31,
       "chapter": "Special ICU Populations, Oncology & Environmental Crises",
-      "topicId": "cc-tumor-lysis-syndrome",
+      "topicId": "cc-novel-chemo-and-toxicity-in-icu",
       "subject": "Pharmacology & Oncology",
       "subtopic": "Tumor Lysis Syndrome Laboratory Abnormalities",
       "question": "Which of the following electrolyte constellations is characteristically seen in laboratory Tumor Lysis Syndrome (Cairo-Bishop criteria)?",
@@ -1969,7 +2003,7 @@
         "Hyponatremia, Hypokalemia, Hypercalcemia, and Hypomagnesemia"
       ],
       "answer": "A",
-      "explanation": "Tumor Lysis Syndrome (TLS) occurs when massive numbers of malignant cells lyse, dumping their intracellular contents into the bloodstream. According to the Cairo-Bishop diagnostic classification, laboratory TLS requires ≥ 2 of the following within 3 to 7 days of chemotherapy: (1) Hyperuricemia (uric acid ≥ 8.0 mg/dL), (2) Hyperkalemia (potassium ≥ 6.0 mmol/L), (3) Hyperphosphatemia (phosphate ≥ 4.5 mg/dL), and (4) Hypocalcemia (corrected calcium ≤ 7.0 mg/dL or ionized Ca < 1.12 mmol/L, caused by secondary precipitation with excess phosphate as calcium phosphate crystals).",
+      "explanation": "Tumor Lysis Syndrome (TLS) occurs when massive numbers of malignant cells lyse, dumping their intracellular contents into the bloodstream. According to the Cairo-Bishop diagnostic classification, laboratory TLS requires \u2265 2 of the following within 3 to 7 days of chemotherapy: (1) Hyperuricemia (uric acid \u2265 8.0 mg/dL), (2) Hyperkalemia (potassium \u2265 6.0 mmol/L), (3) Hyperphosphatemia (phosphate \u2265 4.5 mg/dL), and (4) Hypocalcemia (corrected calcium \u2264 7.0 mg/dL or ionized Ca < 1.12 mmol/L, caused by secondary precipitation with excess phosphate as calcium phosphate crystals).",
       "whyWrong": {
         "A": "Correct answer: Hyperuricemia, hyperkalemia, hyperphosphatemia, and hypocalcemia form the pathognomonic tetrad.",
         "B": "The reverse constellation is completely incorrect.",
@@ -1980,7 +2014,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• TLS Tetrad: High Uric Acid, High Potassium, High Phosphate, Low Calcium.\n• Clinical TLS: Lab TLS + any 1 of: Renal insufficiency (Cr 1.5x ULN), Cardiac arrhythmia/arrest, or Seizure.\n• Prophylaxis & Treatment: Vigorous IV hydration without potassium, Allopurinol (prevents new uric acid formation by xanthine oxidase inhibition), Rasburicase (recombinant urate oxidase converts existing uric acid to allantoin).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 TLS Tetrad: High Uric Acid, High Potassium, High Phosphate, Low Calcium.\n\u2022 Clinical TLS: Lab TLS + any 1 of: Renal insufficiency (Cr 1.5x ULN), Cardiac arrhythmia/arrest, or Seizure.\n\u2022 Prophylaxis & Treatment: Vigorous IV hydration without potassium, Allopurinol (prevents new uric acid formation by xanthine oxidase inhibition), Rasburicase (recombinant urate oxidase converts existing uric acid to allantoin).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2008,14 +2042,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Cairo-Bishop Definition and Classification of Tumor Lysis Syndrome",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Novel Chemo And Toxicity In ICU"
     },
     {
       "id": "INICET-SS-2026-CC-R036",
       "number": 36,
       "chapterId": 21,
       "chapter": "Critical Care Clinical Nutrition & Metabolism",
-      "topicId": "cc-nutrition-ecmo-critical-illness",
+      "topicId": "cc-nutrition-in-the-icu",
       "subject": "Nutrition & GI",
       "subtopic": "Caloric Targets in Acute Phase of ECMO / Critical Illness",
       "question": "In a critically ill adult patient on venoarterial (VA) ECMO during the acute, hypermetabolic early phase of critical illness (Days 1 to 3), which of the following nutritional strategies is recommended according to ESPEN guidelines?",
@@ -2026,7 +2061,7 @@
         "Immediate total parenteral nutrition with 3.0 g/kg/day protein starting on day 1"
       ],
       "answer": "B",
-      "explanation": "During the acute, unstable phase of critical illness (first 24–72 hours, including patients on ECMO), endogenous catabolism releases large amounts of glucose, fatty acids, and amino acids. Exogenous overfeeding during this window induces severe metabolic complications: refeeding syndrome, azotemia, hypercapnia (increasing respiratory load), hepatic steatosis, and worsened mortality. ESPEN and ASPEN guidelines recommend hypocaloric enteral nutrition (15–20 kcal/kg/day or ≤ 70% of estimated energy requirement) with standard protein (1.2–1.5 g/kg/day), gradually increasing toward full targets (25–30 kcal/kg/day) after Day 3 to 4 as hemodynamics stabilize.",
+      "explanation": "During the acute, unstable phase of critical illness (first 24\u201372 hours, including patients on ECMO), endogenous catabolism releases large amounts of glucose, fatty acids, and amino acids. Exogenous overfeeding during this window induces severe metabolic complications: refeeding syndrome, azotemia, hypercapnia (increasing respiratory load), hepatic steatosis, and worsened mortality. ESPEN and ASPEN guidelines recommend hypocaloric enteral nutrition (15\u201320 kcal/kg/day or \u2264 70% of estimated energy requirement) with standard protein (1.2\u20131.5 g/kg/day), gradually increasing toward full targets (25\u201330 kcal/kg/day) after Day 3 to 4 as hemodynamics stabilize.",
       "whyWrong": {
         "A": "Early hypercaloric feeding causes severe hyperglycemia, hypercapnia, hepatic steatosis, and increased mortality.",
         "B": "Correct answer: Hypocaloric/trophic feeding (15-20 kcal/kg/day) is recommended during early acute phase.",
@@ -2037,7 +2072,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• ESPEN ICU Nutrition Guidelines: Acute early phase (Days 1-2): Hypocaloric nutrition (≤ 70% energy expenditure or 15–20 kcal/kg/day). Post-acute phase (Days 3-7): Target 25–30 kcal/kg/day.\n• Protein: 1.2–2.0 g/kg/day.\n• Avoid overfeeding: Excessive carbs generate CO2 (high respiratory quotient), increasing minute ventilation demands and weaning failure.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 ESPEN ICU Nutrition Guidelines: Acute early phase (Days 1-2): Hypocaloric nutrition (\u2264 70% energy expenditure or 15\u201320 kcal/kg/day). Post-acute phase (Days 3-7): Target 25\u201330 kcal/kg/day.\n\u2022 Protein: 1.2\u20132.0 g/kg/day.\n\u2022 Avoid overfeeding: Excessive carbs generate CO2 (high respiratory quotient), increasing minute ventilation demands and weaning failure.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2065,14 +2100,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "ESPEN Guidelines on Clinical Nutrition in the Intensive Care Unit",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Nutrition in the ICU"
     },
     {
       "id": "INICET-SS-2026-CC-R037",
       "number": 37,
       "chapterId": 13,
       "chapter": "Acute Kidney Injury & Renal Replacement Therapy",
-      "topicId": "cc-rrt-timing-trials",
+      "topicId": "cc-renal-replacement-therapy-i",
       "subject": "Renal Critical Care",
       "subtopic": "Timing of RRT Initiation in AKI (STARRT-AKI & AKIKI Trials)",
       "question": "What has been the consistent finding of major landmark multicenter clinical trials (e.g., STARRT-AKI, AKIKI, IDEAL-ICU) regarding the routine 'accelerated/early' initiation of renal replacement therapy (RRT) versus a 'delayed/standard' strategy in critically ill patients with acute kidney injury lacking urgent emergency indications?",
@@ -2083,7 +2119,7 @@
         "Early RRT should be initiated as soon as KDIGO Stage 1 is reached"
       ],
       "answer": "B",
-      "explanation": "Multiple large multicenter randomized controlled trials (including AKIKI, IDEAL-ICU, and the definitive STARRT-AKI trial involving 3,011 patients) compared an accelerated (early) RRT strategy with a 'watch-and-wait' delayed strategy (initiating RRT only when conventional urgent indications arise: severe hyperkalemia, severe metabolic acidosis, refractory pulmonary edema, or persistent oliguria/anuria > 72 hours). The trials unanimously demonstrated NO difference in 90-day mortality. Furthermore, accelerated RRT resulted in a substantial number of patients receiving unnecessary invasive dialysis (40–50% in the delayed group recovered renal function without needing RRT at all) and suffered higher rates of hypotension, catheter infections, hypophosphatemia, and prolonged dialysis dependence.",
+      "explanation": "Multiple large multicenter randomized controlled trials (including AKIKI, IDEAL-ICU, and the definitive STARRT-AKI trial involving 3,011 patients) compared an accelerated (early) RRT strategy with a 'watch-and-wait' delayed strategy (initiating RRT only when conventional urgent indications arise: severe hyperkalemia, severe metabolic acidosis, refractory pulmonary edema, or persistent oliguria/anuria > 72 hours). The trials unanimously demonstrated NO difference in 90-day mortality. Furthermore, accelerated RRT resulted in a substantial number of patients receiving unnecessary invasive dialysis (40\u201350% in the delayed group recovered renal function without needing RRT at all) and suffered higher rates of hypotension, catheter infections, hypophosphatemia, and prolonged dialysis dependence.",
       "whyWrong": {
         "A": "Early RRT does NOT reduce mortality; STARRT-AKI showed identical 90-day mortality (43.9% vs 43.7%).",
         "B": "Correct answer: Early RRT shows zero survival benefit and exposes patients to procedural and hemodynamic risks; 40-50% in the delayed arm recover without any dialysis.",
@@ -2094,7 +2130,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• STARRT-AKI (NEJM 2020) & AKIKI (NEJM 2016): No mortality difference between early and delayed RRT.\n• Delayed strategy avoided RRT completely in up to 49% of patients without adverse effects.\n• Standard practice: Wait until definitive urgent indications develop (Refractory hyperkalemia > 6.5 mEq/L, severe acidosis pH < 7.15, refractory pulmonary edema, uremic complications: pericarditis/encephalopathy).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 STARRT-AKI (NEJM 2020) & AKIKI (NEJM 2016): No mortality difference between early and delayed RRT.\n\u2022 Delayed strategy avoided RRT completely in up to 49% of patients without adverse effects.\n\u2022 Standard practice: Wait until definitive urgent indications develop (Refractory hyperkalemia > 6.5 mEq/L, severe acidosis pH < 7.15, refractory pulmonary edema, uremic complications: pericarditis/encephalopathy).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2123,14 +2159,15 @@
         "STARRT-AKI Trial Investigators NEJM 2020",
         "AKIKI Study Group NEJM 2016",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Renal Replacement Therapy: I"
     },
     {
       "id": "INICET-SS-2026-CC-R038",
       "number": 38,
       "chapterId": 13,
       "chapter": "Acute Kidney Injury & Renal Replacement Therapy",
-      "topicId": "cc-diuretic-resistance-cardiorenal",
+      "topicId": "cc-acute-kidney-injury-ii",
       "subject": "Renal Critical Care",
       "subtopic": "Diuretic Resistance & Sequential Nephron Blockade",
       "question": "A 68-year-old male with acute decompensated heart failure and type 1 cardiorenal syndrome remains severely volume-overloaded and breathless despite intravenous furosemide boluses of 80 mg twice daily. Serum creatinine has risen from 1.4 to 2.1 mg/dL, and urine output is < 20 mL/hr. Blood pressure is 124/76 mmHg. What is the most appropriate next pharmacotherapeutic strategy to overcome diuretic resistance?",
@@ -2152,7 +2189,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Sequential Nephron Blockade: Loop diuretic (thick ascending limb NKCC2) + Thiazide/Metolazone (distal tubule NCC) + Acetazolamide/SGLT2i (proximal tubule).\n• Breaking Phenomenon: Chronic loop diuretic exposure causes distal convoluted tubule hypertrophy, blunting natriuresis.\n• Spot urine sodium at 2 hours: < 50–70 mmol/L indicates diuretic resistance requiring immediate dose escalation.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Sequential Nephron Blockade: Loop diuretic (thick ascending limb NKCC2) + Thiazide/Metolazone (distal tubule NCC) + Acetazolamide/SGLT2i (proximal tubule).\n\u2022 Breaking Phenomenon: Chronic loop diuretic exposure causes distal convoluted tubule hypertrophy, blunting natriuresis.\n\u2022 Spot urine sodium at 2 hours: < 50\u201370 mmol/L indicates diuretic resistance requiring immediate dose escalation.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2180,14 +2217,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "CARRESS-HF & DOSE Trials NEJM",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Acute Kidney Injury: II"
     },
     {
       "id": "INICET-SS-2026-CC-R039",
       "number": 39,
       "chapterId": 18,
       "chapter": "Severe ICU Infections & Antimicrobial Stewardship",
-      "topicId": "cc-carbapenem-resistant-acinetobacter",
+      "topicId": "cc-managing-mdr-gram-negative-infections-i",
       "subject": "Infectious Diseases",
       "subtopic": "CRAB Antimicrobial Therapy & ATTACK Trial",
       "question": "According to the updated IDSA guidance and landmark phase 3 ATTACK trial, which of the following novel antimicrobial agents is recommended as a preferred, pathogen-specific therapeutic backbone for severe infections caused by Carbapenem-Resistant Acinetobacter baumannii (CRAB)?",
@@ -2209,7 +2247,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• ATTACK Phase 3 Trial: Sulbactam-durlobactam vs Colistin for CRAB. SUL-DUR achieved 28-day mortality 19% vs 32% with colistin, with dramatically lower acute kidney injury (13% vs 38%).\n• IDSA Guidance: Sulbactam-durlobactam (usually combined with imipenem-cilastatin as a carrier) is the preferred regimen for CRAB infections.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 ATTACK Phase 3 Trial: Sulbactam-durlobactam vs Colistin for CRAB. SUL-DUR achieved 28-day mortality 19% vs 32% with colistin, with dramatically lower acute kidney injury (13% vs 38%).\n\u2022 IDSA Guidance: Sulbactam-durlobactam (usually combined with imipenem-cilastatin as a carrier) is the preferred regimen for CRAB infections.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2238,14 +2276,15 @@
         "ATTACK Trial Lancet Infectious Diseases 2023",
         "IDSA Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Managing MDR Gram-Negative Infections: I"
     },
     {
       "id": "INICET-SS-2026-CC-R040",
       "number": 40,
       "chapterId": 18,
       "chapter": "Severe ICU Infections & Antimicrobial Stewardship",
-      "topicId": "cc-stenotrophomonas-maltophilia",
+      "topicId": "cc-managing-mdr-gram-negative-infections-ii",
       "subject": "Infectious Diseases",
       "subtopic": "MDR Stenotrophomonas maltophilia Regimens",
       "question": "A mechanically ventilated patient develops VAP due to multidrug-resistant Stenotrophomonas maltophilia. The patient has a severe hypersensitivity to trimethoprim-sulfamethoxazole (TMP-SMX). According to current IDSA guidelines, which of the following represents the preferred alternative combination antimicrobial regimen?",
@@ -2267,7 +2306,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• S. maltophilia: Non-fermenting Gram-negative rod; intrinsically resistant to carbapenems (L1 MBL + L2 cephalosporinase).\n• First-line: High-dose TMP-SMX (12–15 mg/kg/day of trimethoprim component in 3–4 divided doses).\n• TMP-SMX Allergy/Resistance: Combination of Minocycline + Levofloxacin, or Cefiderocol monotherapy/combination.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 S. maltophilia: Non-fermenting Gram-negative rod; intrinsically resistant to carbapenems (L1 MBL + L2 cephalosporinase).\n\u2022 First-line: High-dose TMP-SMX (12\u201315 mg/kg/day of trimethoprim component in 3\u20134 divided doses).\n\u2022 TMP-SMX Allergy/Resistance: Combination of Minocycline + Levofloxacin, or Cefiderocol monotherapy/combination.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2295,14 +2334,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "IDSA Guidance on Treatment of MDR Gram-Negative Infections",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Managing MDR Gram-Negative Infections: II"
     },
     {
       "id": "INICET-SS-2026-CC-R041",
       "number": 41,
-      "chapterId": 20,
-      "chapter": "Endocrine & Metabolic Crises",
-      "topicId": "cc-hyperkalemia-cardiac-membrane-stabilization",
+      "chapterId": 13,
+      "chapter": "Acute Kidney Injury & Renal Replacement Therapy",
+      "topicId": "cc-potassium-disorders-in-the-icu",
       "subject": "Electrolytes & Metabolic",
       "subtopic": "Hyperkalemia Cardiac Membrane Stabilization",
       "question": "A 60-year-old ESRD patient presents with severe hyperkalemia (serum potassium 7.6 mEq/L). The ECG displays wide QRS complexes, peaked T waves, and loss of P waves. According to ERC/AHA resuscitation guidelines, what is the immediate first-line medication to administer for cardiac membrane stabilization?",
@@ -2310,21 +2350,21 @@
         "Regular insulin 10 units IV with 50 mL of 50% dextrose",
         "Intravenous calcium (10 mL of 10% calcium chloride or 30 mL of 10% calcium gluconate)",
         "Sodium polystyrene sulfonate (Kayexalate) orally",
-        "Nebulized albuterol (salbutamol) 10–20 mg"
+        "Nebulized albuterol (salbutamol) 10\u201320 mg"
       ],
       "answer": "B",
-      "explanation": "In severe hyperkalemia with ECG changes (peaked T waves, PR prolongation, wide QRS, sine-wave pattern), the immediate priority is to antagonize potassium's cardiotoxic effects on cardiac myocytes by administering intravenous calcium (10 mL of 10% calcium chloride or 30 mL of 10% calcium gluconate over 2–5 minutes). Calcium raises the action potential threshold potential toward normal, restoring the normal difference between resting membrane potential and threshold, thereby immediately stabilizing the myocyte membrane and preventing ventricular fibrillation/asystole within 1–3 minutes. It does not lower serum potassium; intracellular shifting agents (insulin/dextrose, salbutamol) must follow immediately.",
+      "explanation": "In severe hyperkalemia with ECG changes (peaked T waves, PR prolongation, wide QRS, sine-wave pattern), the immediate priority is to antagonize potassium's cardiotoxic effects on cardiac myocytes by administering intravenous calcium (10 mL of 10% calcium chloride or 30 mL of 10% calcium gluconate over 2\u20135 minutes). Calcium raises the action potential threshold potential toward normal, restoring the normal difference between resting membrane potential and threshold, thereby immediately stabilizing the myocyte membrane and preventing ventricular fibrillation/asystole within 1\u20133 minutes. It does not lower serum potassium; intracellular shifting agents (insulin/dextrose, salbutamol) must follow immediately.",
       "whyWrong": {
-        "A": "Insulin/dextrose shifts potassium intracellularly, but takes 15–30 minutes to begin acting and does not provide instantaneous membrane stabilization.",
+        "A": "Insulin/dextrose shifts potassium intracellularly, but takes 15\u201330 minutes to begin acting and does not provide instantaneous membrane stabilization.",
         "B": "Correct answer: IV Calcium acts within 1-3 minutes to stabilize the cardiac membrane and prevent fatal dysrhythmias.",
         "C": "Potassium binders take hours to days to eliminate potassium through the colon.",
-        "D": "Inhaled beta-2 agonists take 15–30 minutes to lower potassium and are adjuncts to insulin, not the initial membrane stabilizer."
+        "D": "Inhaled beta-2 agonists take 15\u201330 minutes to lower potassium and are adjuncts to insulin, not the initial membrane stabilizer."
       },
       "difficulty": "easy",
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Hyperkalemia Management Hierarchy:\n  1. Membrane Stabilization (immediate, lasts 30–60 min): IV Calcium (gluconate or chloride).\n  2. Intracellular Shift (acts in 15–30 min, lasts 4–6 hr): Insulin 10U + D50W 50 mL, Salbutamol 10–20 mg neb, NaHCO3 (only if metabolic acidosis).\n  3. Elimination (acts in hr): Loop diuretics, K+ binders (Patiromer, ZS-9), Hemodialysis (definitive workhorse).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Hyperkalemia Management Hierarchy:\n  1. Membrane Stabilization (immediate, lasts 30\u201360 min): IV Calcium (gluconate or chloride).\n  2. Intracellular Shift (acts in 15\u201330 min, lasts 4\u20136 hr): Insulin 10U + D50W 50 mL, Salbutamol 10\u201320 mg neb, NaHCO3 (only if metabolic acidosis).\n  3. Elimination (acts in hr): Loop diuretics, K+ binders (Patiromer, ZS-9), Hemodialysis (definitive workhorse).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2352,14 +2392,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "ERC/AHA Guidelines for Resuscitation in Electrolyte Emergencies",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Potassium Disorders in the ICU"
     },
     {
       "id": "INICET-SS-2026-CC-R042",
       "number": 42,
       "chapterId": 8,
       "chapter": "Invasive Mechanical Ventilation & Graphics",
-      "topicId": "cc-auto-peep-measurement",
+      "topicId": "cc-patient-ventilator-asynchrony",
       "subject": "Mechanical Ventilation",
       "subtopic": "Auto-PEEP Measurement in Ventilated vs Spontaneously Breathing Patients",
       "question": "Which of the following statements regarding the measurement of intrinsic PEEP (auto-PEEP) is TRUE?",
@@ -2370,7 +2411,7 @@
         "Dynamic auto-PEEP is always higher than static auto-PEEP because it includes all slow lung units"
       ],
       "answer": "B",
-      "explanation": "Static intrinsic PEEP (auto-PEEP) in mechanically ventilated patients is accurately measured using an end-expiratory occlusion hold (usually 2 to 3 seconds) on a passive, well-sedated or paralyzed patient. During occlusion, alveolar and airway pressures equilibrate across all lung units, allowing the ventilator transducer to measure total PEEP (auto-PEEP = Total PEEP − Set PEEP). However, in actively or spontaneously breathing patients, patient efforts distort the circuit pressure during the hold; therefore, an esophageal balloon catheter is required to measure dynamic auto-PEEP (defined as the negative esophageal pressure deflection before the onset of inspiratory flow). Dynamic auto-PEEP measures fast-emptying units and is typically lower than static auto-PEEP.",
+      "explanation": "Static intrinsic PEEP (auto-PEEP) in mechanically ventilated patients is accurately measured using an end-expiratory occlusion hold (usually 2 to 3 seconds) on a passive, well-sedated or paralyzed patient. During occlusion, alveolar and airway pressures equilibrate across all lung units, allowing the ventilator transducer to measure total PEEP (auto-PEEP = Total PEEP \u2212 Set PEEP). However, in actively or spontaneously breathing patients, patient efforts distort the circuit pressure during the hold; therefore, an esophageal balloon catheter is required to measure dynamic auto-PEEP (defined as the negative esophageal pressure deflection before the onset of inspiratory flow). Dynamic auto-PEEP measures fast-emptying units and is typically lower than static auto-PEEP.",
       "whyWrong": {
         "A": "Auto-PEEP can be measured in spontaneously breathing patients using an esophageal balloon catheter.",
         "B": "Correct answer: End-expiratory hold requires passive breathing; spontaneous breathing necessitates esophageal balloon manometry.",
@@ -2381,7 +2422,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Static auto-PEEP: Requires end-expiratory hold in a relaxed/paralyzed patient. Equilibrates fast and slow compartments.\n• Dynamic auto-PEEP in spontaneous breathing: Esophageal catheter measures negative ΔPes required to overcome intrinsic PEEP and trigger inspiratory flow.\n• Auto-PEEP causes patient-ventilator asynchrony (ineffective triggering).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Static auto-PEEP: Requires end-expiratory hold in a relaxed/paralyzed patient. Equilibrates fast and slow compartments.\n\u2022 Dynamic auto-PEEP in spontaneous breathing: Esophageal catheter measures negative \u0394Pes required to overcome intrinsic PEEP and trigger inspiratory flow.\n\u2022 Auto-PEEP causes patient-ventilator asynchrony (ineffective triggering).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2409,14 +2450,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Tobin's Principles and Practice of Mechanical Ventilation",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Patient Ventilator Asynchrony"
     },
     {
       "id": "INICET-SS-2026-CC-R043",
       "number": 43,
-      "chapterId": 19,
-      "chapter": "Gastrointestinal, Hepatic & Abdominal Catastrophes",
-      "topicId": "cc-stress-ulcer-prophylaxis",
+      "chapterId": 1,
+      "chapter": "Fundamentals of Critical Care & ICU Systems",
+      "topicId": "cc-important-clinical-trials-in-critical-care",
       "subject": "Pharmacology & Oncology",
       "subtopic": "Stress Ulcer Prophylaxis Indications & Evidence (REVISE / PEPTIC)",
       "question": "Which of the following clinical conditions constitutes a major independent risk factor mandating stress ulcer prophylaxis (SUP) in critically ill ICU patients?",
@@ -2438,7 +2480,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Two major independent risk factors for clinically important GI bleeding: Mechanical ventilation > 48 hr, Coagulopathy.\n• PEPTIC Trial (JAMA 2020) & REVISE Trial (NEJM 2024): PPIs vs H2RAs show similar mortality and modest reduction in overt GI bleeding, with low baseline bleeding rates (~1–2%).\n• Discontinue SUP once patients are extubated and tolerating enteral feeds.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Two major independent risk factors for clinically important GI bleeding: Mechanical ventilation > 48 hr, Coagulopathy.\n\u2022 PEPTIC Trial (JAMA 2020) & REVISE Trial (NEJM 2024): PPIs vs H2RAs show similar mortality and modest reduction in overt GI bleeding, with low baseline bleeding rates (~1\u20132%).\n\u2022 Discontinue SUP once patients are extubated and tolerating enteral feeds.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2466,17 +2508,18 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Surviving Sepsis Campaign Guidelines & REVISE Trial NEJM 2024",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Important Clinical Trials in Critical Care"
     },
     {
       "id": "INICET-SS-2026-CC-R044",
       "number": 44,
       "chapterId": 8,
       "chapter": "Invasive Mechanical Ventilation & Graphics",
-      "topicId": "cc-respiratory-time-constant",
+      "topicId": "cc-basics-of-mechanical-ventilation",
       "subject": "Mechanical Ventilation",
       "subtopic": "Calculation of Respiratory Time Constant",
-      "question": "A mechanically ventilated patient with COPD has a total respiratory system compliance (Crs) of 100 mL/cmH2O (0.1 L/cmH2O) and an inspiratory airway resistance (R) of 20 cmH2O/L/s. What is the respiratory time constant (τ, Tau), and what percentage of passive lung volume is exhaled after 3 time constants?",
+      "question": "A mechanically ventilated patient with COPD has a total respiratory system compliance (Crs) of 100 mL/cmH2O (0.1 L/cmH2O) and an inspiratory airway resistance (R) of 20 cmH2O/L/s. What is the respiratory time constant (\u03c4, Tau), and what percentage of passive lung volume is exhaled after 3 time constants?",
       "options": [
         "Time constant = 2.0 seconds; 95% of volume exhaled",
         "Time constant = 0.2 seconds; 50% of volume exhaled",
@@ -2484,10 +2527,10 @@
         "Time constant = 0.5 seconds; 99% of volume exhaled"
       ],
       "answer": "A",
-      "explanation": "The respiratory time constant (τ, Tau) is the product of respiratory compliance and resistance: τ = Compliance × Resistance. Converting compliance to Liters: Crs = 100 mL/cmH2O = 0.1 L/cmH2O. Airway resistance R = 20 cmH2O/L/s. Therefore: τ = 0.1 L/cmH2O × 20 cmH2O/L/s = 2.0 seconds. Under exponential lung emptying: 1 time constant (1τ) empties 63.2% of the tidal volume; 2 time constants (2τ) empty 86.5%; 3 time constants (3τ = 6.0 seconds) empty 95.0%; and 4–5 time constants (8–10 seconds) empty > 98–99%. In COPD, a prolonged time constant (2.0 s) dictates that expiratory time must be at least 6 to 8 seconds to prevent breath-stacking and auto-PEEP.",
+      "explanation": "The respiratory time constant (\u03c4, Tau) is the product of respiratory compliance and resistance: \u03c4 = Compliance \u00d7 Resistance. Converting compliance to Liters: Crs = 100 mL/cmH2O = 0.1 L/cmH2O. Airway resistance R = 20 cmH2O/L/s. Therefore: \u03c4 = 0.1 L/cmH2O \u00d7 20 cmH2O/L/s = 2.0 seconds. Under exponential lung emptying: 1 time constant (1\u03c4) empties 63.2% of the tidal volume; 2 time constants (2\u03c4) empty 86.5%; 3 time constants (3\u03c4 = 6.0 seconds) empty 95.0%; and 4\u20135 time constants (8\u201310 seconds) empty > 98\u201399%. In COPD, a prolonged time constant (2.0 s) dictates that expiratory time must be at least 6 to 8 seconds to prevent breath-stacking and auto-PEEP.",
       "whyWrong": {
-        "A": "Correct answer: τ = 0.1 × 20 = 2.0 seconds, and 3τ corresponds to 95% volume exhalation.",
-        "B": "0.2 seconds is an arithmetic error by a factor of 10, and 50% corresponds to half-life (t1/2 = 0.693τ), not 3τ.",
+        "A": "Correct answer: \u03c4 = 0.1 \u00d7 20 = 2.0 seconds, and 3\u03c4 corresponds to 95% volume exhalation.",
+        "B": "0.2 seconds is an arithmetic error by a factor of 10, and 50% corresponds to half-life (t1/2 = 0.693\u03c4), not 3\u03c4.",
         "C": "5.0 seconds is incorrect compliance/resistance inversion.",
         "D": "0.5 seconds is the time constant of a stiff ARDS lung, not an obstructed COPD lung."
       },
@@ -2495,7 +2538,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Time Constant Formula: τ = Crs × Raw (Units: L/cmH2O × cmH2O/L/sec = seconds).\n• Exponential Emptying: 1τ = 63% exhaled; 2τ = 86% exhaled; 3τ = 95% exhaled; 4τ = 98% exhaled; 5τ = 99.3% exhaled.\n• Normal lung: τ ~ 0.5 s (exhalation complete in ~2.0 s).\n• ARDS lung: Low compliance -> Short τ (< 0.3 s, fast emptying).\n• COPD/Asthma: High resistance -> Long τ (> 1.5–2.0 s, requires long Te > 6 s).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Time Constant Formula: \u03c4 = Crs \u00d7 Raw (Units: L/cmH2O \u00d7 cmH2O/L/sec = seconds).\n\u2022 Exponential Emptying: 1\u03c4 = 63% exhaled; 2\u03c4 = 86% exhaled; 3\u03c4 = 95% exhaled; 4\u03c4 = 98% exhaled; 5\u03c4 = 99.3% exhaled.\n\u2022 Normal lung: \u03c4 ~ 0.5 s (exhalation complete in ~2.0 s).\n\u2022 ARDS lung: Low compliance -> Short \u03c4 (< 0.3 s, fast emptying).\n\u2022 COPD/Asthma: High resistance -> Long \u03c4 (> 1.5\u20132.0 s, requires long Te > 6 s).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2516,21 +2559,22 @@
       "verified_answer_text": "Time constant = 2.0 seconds; 95% of volume exhaled",
       "concept_tested": "Calculation and clinical physiological application of the respiratory time constant in mechanical ventilation",
       "high_yield_takeaway": [
-        "Time constant τ equals Compliance multiplied by Resistance (τ = Crs × R).",
+        "Time constant \u03c4 equals Compliance multiplied by Resistance (\u03c4 = Crs \u00d7 R).",
         "Three time constants are required to exhale 95% of the tidal volume."
       ],
       "sources": [
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Nunn's Applied Respiratory Physiology",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Basics of Mechanical Ventilation"
     },
     {
       "id": "INICET-SS-2026-CC-R045",
       "number": 45,
       "chapterId": 24,
       "chapter": "Polytrauma & Damage Control Resuscitation",
-      "topicId": "cc-blunt-abdominal-trauma-fast",
+      "topicId": "cc-haemodynamic-management-pharmacotherapy-in-acute-polytrauma",
       "subject": "Trauma & Burns",
       "subtopic": "FAST Positive in Hemodynamically Stable Trauma",
       "question": "A 26-year-old male is brought to the resuscitation bay following a motor vehicle collision with blunt torso trauma. His vital signs show heart rate 98 bpm, blood pressure 124/82 mmHg, and GCS 15. An extended focused assessment with sonography for trauma (eFAST) is positive for free fluid in Morison's pouch. What is the most appropriate next step in management?",
@@ -2552,7 +2596,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Blunt Trauma Algorithm:\n  • FAST (+) + Unstable -> Operating Room (Exploratory Laparotomy).\n  • FAST (+) + Stable -> CECT Abdomen & Pelvis (determines Non-Operative Management vs Angioembolization).\n  • FAST (-) + Unstable -> Rule out other shock sources (pelvic binder, chest tube, re-FAST).\n  • FAST (-) + Stable -> Serial exams / CT if high clinical suspicion.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Blunt Trauma Algorithm:\n  \u2022 FAST (+) + Unstable -> Operating Room (Exploratory Laparotomy).\n  \u2022 FAST (+) + Stable -> CECT Abdomen & Pelvis (determines Non-Operative Management vs Angioembolization).\n  \u2022 FAST (-) + Unstable -> Rule out other shock sources (pelvic binder, chest tube, re-FAST).\n  \u2022 FAST (-) + Stable -> Serial exams / CT if high clinical suspicion.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2580,14 +2624,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "ATLS Advanced Trauma Life Support 10th Edition",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Haemodynamic Management & Pharmacotherapy in Acute Polytrauma"
     },
     {
       "id": "INICET-SS-2026-CC-R046",
       "number": 46,
       "chapterId": 18,
       "chapter": "Severe ICU Infections & Antimicrobial Stewardship",
-      "topicId": "cc-clostridioides-difficile-infection",
+      "topicId": "cc-clostridioides-difficile-colitis",
       "subject": "Infectious Diseases",
       "subtopic": "Clostridioides difficile First-Line Therapy (IDSA Guidelines)",
       "question": "According to the updated IDSA/SHEA clinical practice guidelines for an initial episode of Clostridioides difficile infection (CDI) in adults, which oral antimicrobial is recommended as the preferred first-line therapy over oral vancomycin?",
@@ -2609,7 +2654,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Initial CDI Episode: Fidaxomicin 200 mg BID x 10 days (preferred) OR Vancomycin 125 mg QID x 10 days.\n• Severe Fulminant CDI (shock, ileus, megacolon): High-dose oral Vancomycin (500 mg Q6H via NG tube + retention enemas) PLUS IV Metronidazole (500 mg Q8H).\n• Recurrent CDI: Bezlotoxumab (anti-toxin B monoclonal antibody) or Fecal Microbiota Transplantation (FMT for ≥ 2 recurrences).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Initial CDI Episode: Fidaxomicin 200 mg BID x 10 days (preferred) OR Vancomycin 125 mg QID x 10 days.\n\u2022 Severe Fulminant CDI (shock, ileus, megacolon): High-dose oral Vancomycin (500 mg Q6H via NG tube + retention enemas) PLUS IV Metronidazole (500 mg Q8H).\n\u2022 Recurrent CDI: Bezlotoxumab (anti-toxin B monoclonal antibody) or Fecal Microbiota Transplantation (FMT for \u2265 2 recurrences).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2637,25 +2682,26 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "IDSA/SHEA Focused Update on Clostridioides difficile Infection in Adults",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Clostridioides Difficile Colitis"
     },
     {
       "id": "INICET-SS-2026-CC-R047",
       "number": 47,
       "chapterId": 6,
       "chapter": "Acute Respiratory Failure & Mechanics",
-      "topicId": "cc-nebulization-aerosol-mechanics",
+      "topicId": "cc-respiratory-management-in-specific-clinical-scenarios-i",
       "subject": "Pharmacology & ICU Procedures",
       "subtopic": "Aerosol Particle Size & Lower Airway Deposition",
       "question": "For inhaled aerosol therapy and nebulization, what Mass Median Aerodynamic Diameter (MMAD) particle size range is optimal for therapeutic drug deposition in the human lower respiratory tract and bronchioles?",
       "options": [
-        "1 to 5 microns (µm)",
-        "> 15 microns (µm)",
-        "< 0.5 microns (µm)",
-        "25 to 50 microns (µm)"
+        "1 to 5 microns (\u00b5m)",
+        "> 15 microns (\u00b5m)",
+        "< 0.5 microns (\u00b5m)",
+        "25 to 50 microns (\u00b5m)"
       ],
       "answer": "A",
-      "explanation": "Aerosol particle deposition in the respiratory tract is strictly governed by particle diameter (MMAD): (1) Particles > 10 µm impact in the oropharynx and upper airway; (2) Particles between 5 and 10 µm deposit in the large conducting airways (trachea and main bronchi); (3) Particles between 1 and 5 µm achieve optimal deposition in the lower airways, medium/small bronchioles, and terminal airways via sedimentation; and (4) Ultra-fine particles < 0.5 µm remain suspended like a gas and are largely exhaled without deposition. Therefore, 1 to 5 µm is the target size for bronchodilators and inhaled corticosteroids.",
+      "explanation": "Aerosol particle deposition in the respiratory tract is strictly governed by particle diameter (MMAD): (1) Particles > 10 \u00b5m impact in the oropharynx and upper airway; (2) Particles between 5 and 10 \u00b5m deposit in the large conducting airways (trachea and main bronchi); (3) Particles between 1 and 5 \u00b5m achieve optimal deposition in the lower airways, medium/small bronchioles, and terminal airways via sedimentation; and (4) Ultra-fine particles < 0.5 \u00b5m remain suspended like a gas and are largely exhaled without deposition. Therefore, 1 to 5 \u00b5m is the target size for bronchodilators and inhaled corticosteroids.",
       "whyWrong": {
         "A": "Correct answer: 1 to 5 microns is the respirable fraction depositing in small airways and bronchioles.",
         "B": "> 15 microns particles impact almost exclusively in the oropharynx, mouth, and upper larynx.",
@@ -2666,7 +2712,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Aerosol Mechanics:\n  • > 10 µm: Upper airway / oropharyngeal impaction (inertial impaction).\n  • 5–10 µm: Tracheobronchial conducting airways.\n  • 1–5 µm: Lower airways and bronchioles (gravitational sedimentation) — OPTIMAL RESPIRABLE FRACTION.\n  • < 1 µm (especially < 0.5 µm): Diffusion / Brownian motion, ~80% exhaled.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Aerosol Mechanics:\n  \u2022 > 10 \u00b5m: Upper airway / oropharyngeal impaction (inertial impaction).\n  \u2022 5\u201310 \u00b5m: Tracheobronchial conducting airways.\n  \u2022 1\u20135 \u00b5m: Lower airways and bronchioles (gravitational sedimentation) \u2014 OPTIMAL RESPIRABLE FRACTION.\n  \u2022 < 1 \u00b5m (especially < 0.5 \u00b5m): Diffusion / Brownian motion, ~80% exhaled.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2682,9 +2728,9 @@
       "recall_confidence": "high",
       "question_status": "verified_recall",
       "speaker_answer": "A",
-      "speaker_answer_text": "1 to 5 microns (µm)",
+      "speaker_answer_text": "1 to 5 microns (\u00b5m)",
       "verified_answer": "A",
-      "verified_answer_text": "1 to 5 microns (µm)",
+      "verified_answer_text": "1 to 5 microns (\u00b5m)",
       "concept_tested": "Aerodynamic particle size distribution and respiratory deposition mechanics for aerosolized medications",
       "high_yield_takeaway": [
         "Mass Median Aerodynamic Diameter (MMAD) between 1 and 5 microns provides optimal deposition in lower airways.",
@@ -2694,17 +2740,18 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "American College of Chest Physicians Aerosol Therapy Consensus",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Respiratory Management in Specific Clinical Scenarios: I"
     },
     {
       "id": "INICET-SS-2026-CC-R048",
       "number": 48,
       "chapterId": 9,
       "chapter": "Acute Respiratory Distress Syndrome (ARDS)",
-      "topicId": "cc-transpulmonary-pressure-monitoring",
+      "topicId": "cc-acute-respiratory-distress-syndrome-ii",
       "subject": "Mechanical Ventilation",
       "subtopic": "Transpulmonary Pressure Targets in ARDS",
-      "question": "When utilizing esophageal manometry (Pes) as a surrogate for pleural pressure in severe ARDS, what is the recommended upper limit of end-inspiratory transpulmonary pressure (P_L,insp = Pplat − Pes,insp) to prevent alveolar hyperinflation and barotrauma?",
+      "question": "When utilizing esophageal manometry (Pes) as a surrogate for pleural pressure in severe ARDS, what is the recommended upper limit of end-inspiratory transpulmonary pressure (P_L,insp = Pplat \u2212 Pes,insp) to prevent alveolar hyperinflation and barotrauma?",
       "options": [
         "< 20 to 25 cmH2O",
         "< 5 cmH2O",
@@ -2712,7 +2759,7 @@
         "< 60 cmH2O"
       ],
       "answer": "A",
-      "explanation": "Transpulmonary pressure (P_L) represents the true distending stress applied directly across the lung parenchyma, independent of chest wall elastance, calculated as airway pressure minus pleural pressure (approximated by esophageal balloon pressure: P_L = Paw − Pes). In conditions with stiff chest walls (obesity, intra-abdominal hypertension), high airway plateau pressures (e.g., 34 cmH2O) may reflect chest wall stiffness rather than lung hyperdistension. Guidelines recommend titrating ventilation to keep end-inspiratory transpulmonary pressure < 20 to 25 cmH2O to prevent stress-induced barotrauma, and end-expiratory P_L between 0 and +5 cmH2O to prevent cyclical alveolar collapse/atelectrauma.",
+      "explanation": "Transpulmonary pressure (P_L) represents the true distending stress applied directly across the lung parenchyma, independent of chest wall elastance, calculated as airway pressure minus pleural pressure (approximated by esophageal balloon pressure: P_L = Paw \u2212 Pes). In conditions with stiff chest walls (obesity, intra-abdominal hypertension), high airway plateau pressures (e.g., 34 cmH2O) may reflect chest wall stiffness rather than lung hyperdistension. Guidelines recommend titrating ventilation to keep end-inspiratory transpulmonary pressure < 20 to 25 cmH2O to prevent stress-induced barotrauma, and end-expiratory P_L between 0 and +5 cmH2O to prevent cyclical alveolar collapse/atelectrauma.",
       "whyWrong": {
         "A": "Correct answer: End-inspiratory transpulmonary pressure < 20-25 cmH2O prevents lung overdistension and VILI.",
         "B": "< 5 cmH2O is the target for end-expiratory transpulmonary pressure, not inspiratory pressure.",
@@ -2723,7 +2770,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Transpulmonary Pressure: P_L = Paw − Ppl (using Pes as surrogate).\n• Targets in ARDS:\n  • End-Inspiratory P_L: Maintain < 20–25 cmH2O (prevents overdistension/volutrauma).\n  • End-Expiratory P_L: Maintain > 0 to +5 cmH2O (prevents end-expiratory alveolar collapse/atelectrauma).\n• Especially valuable in obese patients and abdominal compartment syndrome where chest wall elastance is elevated.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Transpulmonary Pressure: P_L = Paw \u2212 Ppl (using Pes as surrogate).\n\u2022 Targets in ARDS:\n  \u2022 End-Inspiratory P_L: Maintain < 20\u201325 cmH2O (prevents overdistension/volutrauma).\n  \u2022 End-Expiratory P_L: Maintain > 0 to +5 cmH2O (prevents end-expiratory alveolar collapse/atelectrauma).\n\u2022 Especially valuable in obese patients and abdominal compartment syndrome where chest wall elastance is elevated.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2751,14 +2798,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "EPVent-1 & EPVent-2 Trials NEJM / JAMA",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Acute Respiratory Distress Syndrome: II"
     },
     {
       "id": "INICET-SS-2026-CC-R049",
       "number": 49,
       "chapterId": 7,
       "chapter": "Non-Invasive Respiratory Support (HFNC & NIV)",
-      "topicId": "cc-niv-evidence-based-indications",
+      "topicId": "cc-niv-failure-predictors-hacor-score",
       "subject": "Mechanical Ventilation",
       "subtopic": "First-Line Indications for Non-Invasive Ventilation (NIV)",
       "question": "For which of the following acute respiratory failure presentations is Non-Invasive Ventilation (NIV, bilevel positive airway pressure) established as the unequivocal first-line therapy with Level 1A evidence for reducing endotracheal intubation and mortality?",
@@ -2769,7 +2817,7 @@
         "Comatose patient with acute massive intracerebral hemorrhage (GCS 4)"
       ],
       "answer": "A",
-      "explanation": "European Respiratory Society (ERS) and American Thoracic Society (ATS) clinical practice guidelines assign strong Level 1A recommendations for Non-Invasive Ventilation (NIV) in two primary conditions: (1) Acute hypercapnic respiratory failure due to acute COPD exacerbation with respiratory acidosis (pH ≤ 7.35 and PaCO2 > 45 mmHg), where NIV reduces intubation rates by > 60% and reduces hospital mortality by ~50%; and (2) Acute Cardiogenic Pulmonary Edema (ACPE), where CPAP or BiPAP rapidly relieves dyspnea, improves hemodynamics by decreasing LV preload and afterload, and reduces intubation rates. In severe de novo hypoxemic ARDS (P/F < 150), NIV has high failure rates (> 50%) and may delay necessary intubation.",
+      "explanation": "European Respiratory Society (ERS) and American Thoracic Society (ATS) clinical practice guidelines assign strong Level 1A recommendations for Non-Invasive Ventilation (NIV) in two primary conditions: (1) Acute hypercapnic respiratory failure due to acute COPD exacerbation with respiratory acidosis (pH \u2264 7.35 and PaCO2 > 45 mmHg), where NIV reduces intubation rates by > 60% and reduces hospital mortality by ~50%; and (2) Acute Cardiogenic Pulmonary Edema (ACPE), where CPAP or BiPAP rapidly relieves dyspnea, improves hemodynamics by decreasing LV preload and afterload, and reduces intubation rates. In severe de novo hypoxemic ARDS (P/F < 150), NIV has high failure rates (> 50%) and may delay necessary intubation.",
       "whyWrong": {
         "A": "Correct answer: COPD exacerbation with acidosis and acute cardiogenic pulmonary edema are the two premier Level 1A indications for NIV.",
         "B": "Severe ARDS (P/F < 100) is a major predictor of NIV failure and increased mortality due to patient self-inflicted lung injury (P-SILI); early intubation or HFNC is favored.",
@@ -2780,7 +2828,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Level 1A Indications for NIV:\n  1. Acute COPD exacerbation with respiratory acidosis (pH 7.25–7.35, PaCO2 > 45).\n  2. Acute Cardiogenic Pulmonary Edema.\n• Other good indications: Post-extubation prophylaxis in high-risk patients (hypercapnic, age > 65), immunocompromised hypoxemic patients, chest trauma/flail chest.\n• Contraindications: Cardiac/respiratory arrest, severe encephalopathy (GCS < 8), severe hemodynamic instability, facial trauma, high aspiration risk.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Level 1A Indications for NIV:\n  1. Acute COPD exacerbation with respiratory acidosis (pH 7.25\u20137.35, PaCO2 > 45).\n  2. Acute Cardiogenic Pulmonary Edema.\n\u2022 Other good indications: Post-extubation prophylaxis in high-risk patients (hypercapnic, age > 65), immunocompromised hypoxemic patients, chest trauma/flail chest.\n\u2022 Contraindications: Cardiac/respiratory arrest, severe encephalopathy (GCS < 8), severe hemodynamic instability, facial trauma, high aspiration risk.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2808,14 +2856,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "ERS/ATS Clinical Practice Guidelines on Non-Invasive Ventilation",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "NIV Failure Predictors, HACOR Score & Intubation Triggers"
     },
     {
       "id": "INICET-SS-2026-CC-R050",
       "number": 50,
       "chapterId": 19,
       "chapter": "Gastrointestinal, Hepatic & Abdominal Catastrophes",
-      "topicId": "cc-cirrhosis-perioperative-risk",
+      "topicId": "cc-decompensated-cld",
       "subject": "Nutrition & GI",
       "subtopic": "Cirrhosis Perioperative Risk Assessment (VOCAL-Penn Score)",
       "question": "Which modern validated prognostic scoring system integrates age, albumin, bilirubin, platelet count, BMI, ASA physical status class, and specific surgical category/approach to provide superior 30- and 90-day postoperative mortality prediction in patients with liver cirrhosis undergoing non-transplant surgery?",
@@ -2837,7 +2886,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Perioperative Cirrhosis Risk:\n  • Historical: Child-Pugh class (Class A = ~10% mortality; Class B = ~30%; Class C = 70–80% mortality). MELD score (> 15 carries high surgical risk).\n  • Modern Gold Standard: VOCAL-Penn Score (validated specifically for non-transplant surgeries; available as online calculator).\n• Laparoscopic approaches markedly reduce bleeding and postoperative ascites decompensation.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Perioperative Cirrhosis Risk:\n  \u2022 Historical: Child-Pugh class (Class A = ~10% mortality; Class B = ~30%; Class C = 70\u201380% mortality). MELD score (> 15 carries high surgical risk).\n  \u2022 Modern Gold Standard: VOCAL-Penn Score (validated specifically for non-transplant surgeries; available as online calculator).\n\u2022 Laparoscopic approaches markedly reduce bleeding and postoperative ascites decompensation.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2865,14 +2914,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Mahmud N et al. Gastroenterology / Hepatology (VOCAL-Penn Study)",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Decompensated CLD"
     },
     {
       "id": "INICET-SS-2026-CC-R051",
       "number": 51,
-      "chapterId": 15,
-      "chapter": "Neurocritical Care & Raised ICP Management",
-      "topicId": "cc-critical-illness-polyneuropathy",
+      "chapterId": 16,
+      "chapter": "Sedation, Analgesia, Delirium & Neuromuscular Blockade",
+      "topicId": "cc-neuromuscular-disorders-in-icu-ii",
       "subject": "Neurocritical Care",
       "subtopic": "Critical Illness Polyneuropathy (CIP) Electrodiagnostics",
       "question": "In a patient with ICU-acquired weakness (ICUAW) secondary to septic shock, which electrodiagnostic pattern on nerve conduction studies (NCS) and electromyography (EMG) is characteristic of pure Critical Illness Polyneuropathy (CIP), distinguishing it from acute inflammatory demyelinating polyneuropathy (AIDP/GBS)?",
@@ -2894,7 +2944,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• ICUAW Differential Diagnosis:\n  • CIP (Axonal polyneuropathy): Reduced CMAP + Reduced SNAP amplitudes; conduction velocities near-normal. Fibrillations on EMG.\n  • CIM (Myopathy): Reduced CMAP, NORMAL SNAP (sensory spared). Decreased muscle membrane excitability on direct muscle stimulation (dms).\n  • GBS (Demyelinating): Slow conduction velocities, conduction block, prolonged F-wave latencies, albuminocytological dissociation on LP.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 ICUAW Differential Diagnosis:\n  \u2022 CIP (Axonal polyneuropathy): Reduced CMAP + Reduced SNAP amplitudes; conduction velocities near-normal. Fibrillations on EMG.\n  \u2022 CIM (Myopathy): Reduced CMAP, NORMAL SNAP (sensory spared). Decreased muscle membrane excitability on direct muscle stimulation (dms).\n  \u2022 GBS (Demyelinating): Slow conduction velocities, conduction block, prolonged F-wave latencies, albuminocytological dissociation on LP.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2922,25 +2972,26 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Muscle & Nerve / Neurocritical Care Society Guidelines on ICU-Acquired Weakness",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Neuromuscular Disorders in ICU: II"
     },
     {
       "id": "INICET-SS-2026-CC-R052",
       "number": 52,
       "chapterId": 23,
       "chapter": "Clinical Toxicology & Toxidromes",
-      "topicId": "cc-local-anesthetic-systemic-toxicity",
+      "topicId": "cc-general-approach-to-poisoning",
       "subject": "Toxicology",
       "subtopic": "LAST Resuscitation & 20% Lipid Emulsion Protocol",
       "question": "A patient experiences local anesthetic systemic toxicity (LAST) with tonic-clonic seizures followed by wide-complex ventricular tachycardia after an axillary brachial plexus block with bupivacaine. After securing the airway with 100% oxygen, what is the recommended initial bolus dose and infusion rate of 20% lipid emulsion according to ASRA guidelines?",
       "options": [
-        "1.5 mL/kg IV bolus over 2–3 minutes, followed by a continuous infusion of 0.25 mL/kg/min",
+        "1.5 mL/kg IV bolus over 2\u20133 minutes, followed by a continuous infusion of 0.25 mL/kg/min",
         "0.1 mL/kg IV bolus, followed by 0.01 mL/kg/min",
         "10 mL/kg IV bolus, followed by 1.0 mL/kg/min",
         "100 mL of 50% dextrose bolus with 20 units of insulin"
       ],
       "answer": "A",
-      "explanation": "According to the American Society of Regional Anesthesia and Pain Medicine (ASRA) LAST guidelines, the definitive antidote for bupivacaine-induced LAST is 20% intravenous lipid emulsion (Intralipid): (1) Initial bolus: 1.5 mL/kg lean body mass over 2–3 minutes (approx. 100 mL for a 70 kg adult); (2) Continuous infusion: immediately start 0.25 mL/kg/min (approx. 18 mL/min for 70 kg); (3) For persistent cardiovascular instability, repeat the 1.5 mL/kg bolus once or twice and double the infusion to 0.5 mL/kg/min; (4) Recommended maximum total dose is 10–12 mL/kg over the first 30 minutes. In ACLS modifications: avoid vasopressin, reduce epinephrine doses to < 1 mcg/kg boluses, and avoid calcium channel blockers and local anesthetics (e.g., lidocaine).",
+      "explanation": "According to the American Society of Regional Anesthesia and Pain Medicine (ASRA) LAST guidelines, the definitive antidote for bupivacaine-induced LAST is 20% intravenous lipid emulsion (Intralipid): (1) Initial bolus: 1.5 mL/kg lean body mass over 2\u20133 minutes (approx. 100 mL for a 70 kg adult); (2) Continuous infusion: immediately start 0.25 mL/kg/min (approx. 18 mL/min for 70 kg); (3) For persistent cardiovascular instability, repeat the 1.5 mL/kg bolus once or twice and double the infusion to 0.5 mL/kg/min; (4) Recommended maximum total dose is 10\u201312 mL/kg over the first 30 minutes. In ACLS modifications: avoid vasopressin, reduce epinephrine doses to < 1 mcg/kg boluses, and avoid calcium channel blockers and local anesthetics (e.g., lidocaine).",
       "whyWrong": {
         "A": "Correct answer: 1.5 mL/kg bolus followed by 0.25 mL/kg/min infusion is the standard ASRA protocol.",
         "B": "0.1 mL/kg is subtherapeutic by a factor of 15.",
@@ -2951,7 +3002,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• LAST Lipid Protocol: 20% Lipid emulsion 1.5 mL/kg IV bolus -> 0.25 mL/kg/min infusion. Max total dose ~12 mL/kg.\n• Mechanism of Lipid Rescue: 'Lipid sink' / shuttle (sequesters lipophilic bupivacaine away from myocardium) + metabolic conditioning (restores myocardial fatty acid oxidation).\n• ACLS Modifications for LAST: Small epinephrine doses (≤ 1 mcg/kg), NO vasopressin, NO lidocaine/procainamide, prioritize cardiopulmonary bypass/ECPR if refractory.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 LAST Lipid Protocol: 20% Lipid emulsion 1.5 mL/kg IV bolus -> 0.25 mL/kg/min infusion. Max total dose ~12 mL/kg.\n\u2022 Mechanism of Lipid Rescue: 'Lipid sink' / shuttle (sequesters lipophilic bupivacaine away from myocardium) + metabolic conditioning (restores myocardial fatty acid oxidation).\n\u2022 ACLS Modifications for LAST: Small epinephrine doses (\u2264 1 mcg/kg), NO vasopressin, NO lidocaine/procainamide, prioritize cardiopulmonary bypass/ECPR if refractory.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -2967,9 +3018,9 @@
       "recall_confidence": "high",
       "question_status": "verified_recall",
       "speaker_answer": "A",
-      "speaker_answer_text": "1.5 mL/kg IV bolus over 2–3 minutes, followed by a continuous infusion of 0.25 mL/kg/min",
+      "speaker_answer_text": "1.5 mL/kg IV bolus over 2\u20133 minutes, followed by a continuous infusion of 0.25 mL/kg/min",
       "verified_answer": "A",
-      "verified_answer_text": "1.5 mL/kg IV bolus over 2–3 minutes, followed by a continuous infusion of 0.25 mL/kg/min",
+      "verified_answer_text": "1.5 mL/kg IV bolus over 2\u20133 minutes, followed by a continuous infusion of 0.25 mL/kg/min",
       "concept_tested": "Dosing protocol and clinical modifications of 20% lipid emulsion in local anesthetic systemic toxicity",
       "high_yield_takeaway": [
         "20% lipid emulsion is given as a 1.5 mL/kg bolus followed by a 0.25 mL/kg/min infusion in LAST.",
@@ -2979,14 +3030,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "ASRA Checklist for Managing Local Anesthetic Systemic Toxicity",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "General Approach to Poisoning"
     },
     {
       "id": "INICET-SS-2026-CC-R053",
       "number": 53,
-      "chapterId": 8,
-      "chapter": "Invasive Mechanical Ventilation & Graphics",
-      "topicId": "cc-cardiovascular-effects-of-peep",
+      "chapterId": 11,
+      "chapter": "Cardiac Critical Care & Acute Coronary Syndromes",
+      "topicId": "cc-right-ventricular-failure-in-the-icu",
       "subject": "Mechanical Ventilation",
       "subtopic": "Hemodynamic Impact of Increasing PEEP on Right Ventricular Function",
       "question": "In a patient with pre-existing right ventricular dysfunction and pulmonary hypertension on mechanical ventilation, which of the following cardiovascular adverse effects is most likely to occur if PEEP is increased from 5 to 18 cmH2O?",
@@ -3008,7 +3060,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Cardiovascular Effects of PEEP:\n  • RV Preload: Decreased (elevated CVP reduces venous return gradient).\n  • RV Afterload: Increased (compression of intra-alveolar vessels; PVR follows a U-shaped curve with lowest PVR at FRC).\n  • LV Preload: Decreased (due to reduced RV output + leftward septal shift).\n  • LV Afterload: Decreased (decreased transmural LV systolic pressure — beneficial in left heart failure!).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Cardiovascular Effects of PEEP:\n  \u2022 RV Preload: Decreased (elevated CVP reduces venous return gradient).\n  \u2022 RV Afterload: Increased (compression of intra-alveolar vessels; PVR follows a U-shaped curve with lowest PVR at FRC).\n  \u2022 LV Preload: Decreased (due to reduced RV output + leftward septal shift).\n  \u2022 LV Afterload: Decreased (decreased transmural LV systolic pressure \u2014 beneficial in left heart failure!).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -3036,14 +3088,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Robotham & Scharf Heart-Lung Interactions in Health and Disease",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Right Ventricular Failure in the ICU"
     },
     {
       "id": "INICET-SS-2026-CC-R054",
       "number": 54,
-      "chapterId": 19,
-      "chapter": "Gastrointestinal, Hepatic & Abdominal Catastrophes",
-      "topicId": "cc-post-reperfusion-syndrome",
+      "chapterId": 1,
+      "chapter": "Fundamentals of Critical Care & ICU Systems",
+      "topicId": "cc-management-of-brain-dead-organ-donors",
       "subject": "ICU Procedures & Monitoring",
       "subtopic": "Post-Reperfusion Syndrome in Organ Transplantation",
       "question": "Immediately following vascular clamp release and reperfusion of a donor renal allograft during kidney transplantation, the patient abruptly develops profound hypotension (MAP drops by 35%), bradycardia, and ST-segment depression. What is the diagnosis and the underlying pathophysiological cause?",
@@ -3054,7 +3107,7 @@
         "Protamine-induced anaphylaxis"
       ],
       "answer": "B",
-      "explanation": "Post-Reperfusion Syndrome (PRS)—commonly recognized in liver and kidney transplantation—is defined as a significant decrease in mean arterial pressure (> 30% below baseline for ≥ 5 minutes) occurring within the first 5 minutes of vascular un-clamping and graft reperfusion. The sudden release of vascular clamps floods the systemic circulation with cold allograft effluent containing acidic metabolites, high potassium (from preservative flush solutions like UW solution), lactate, free radicals, cytokines, and micro-aggregates. This causes sudden acute myocardial depression, peripheral vasoplegia, and transient bradyarrhythmias. Management involves volume loading, calcium chloride, sodium bicarbonate, and vasopressor boluses (norepinephrine/epinephrine).",
+      "explanation": "Post-Reperfusion Syndrome (PRS)\u2014commonly recognized in liver and kidney transplantation\u2014is defined as a significant decrease in mean arterial pressure (> 30% below baseline for \u2265 5 minutes) occurring within the first 5 minutes of vascular un-clamping and graft reperfusion. The sudden release of vascular clamps floods the systemic circulation with cold allograft effluent containing acidic metabolites, high potassium (from preservative flush solutions like UW solution), lactate, free radicals, cytokines, and micro-aggregates. This causes sudden acute myocardial depression, peripheral vasoplegia, and transient bradyarrhythmias. Management involves volume loading, calcium chloride, sodium bicarbonate, and vasopressor boluses (norepinephrine/epinephrine).",
       "whyWrong": {
         "A": "Hyperacute rejection causes microvascular graft thrombosis over hours to days with graft cyanosis, not instantaneous hemodynamic collapse upon clamp release.",
         "B": "Correct answer: Post-reperfusion syndrome is caused by the sudden influx of cold, hyperkalemic, acidotic preservation washout.",
@@ -3065,7 +3118,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• Post-Reperfusion Syndrome (Aggarwal Criteria): Drop in MAP > 30% for ≥ 1 min within 5 min of reperfusion.\n• Mediators: High potassium, cold temperature, low pH (< 7.0), adenosine, cytokines, reactive oxygen species.\n• Prophylaxis & Management: Thorough graft flushing with albumin/cold saline before release, pre-emptive volume loading, Calcium chloride (1 g IV) to counter hyperkalemic myocardial depression, and Norepinephrine/epinephrine boluses.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 Post-Reperfusion Syndrome (Aggarwal Criteria): Drop in MAP > 30% for \u2265 1 min within 5 min of reperfusion.\n\u2022 Mediators: High potassium, cold temperature, low pH (< 7.0), adenosine, cytokines, reactive oxygen species.\n\u2022 Prophylaxis & Management: Thorough graft flushing with albumin/cold saline before release, pre-emptive volume loading, Calcium chloride (1 g IV) to counter hyperkalemic myocardial depression, and Norepinephrine/epinephrine boluses.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -3093,14 +3146,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Transplantation Anesthesia Standards & Liver/Renal Transplantation Guidelines",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Management of Brain Dead Organ Donors"
     },
     {
       "id": "INICET-SS-2026-CC-R055",
       "number": 55,
       "chapterId": 13,
       "chapter": "Acute Kidney Injury & Renal Replacement Therapy",
-      "topicId": "cc-regional-citrate-anticoagulation",
+      "topicId": "cc-renal-replacement-therapy-ii",
       "subject": "Renal Critical Care",
       "subtopic": "Regional Citrate Anticoagulation (RCA) in CRRT",
       "question": "During regional citrate anticoagulation (RCA) in continuous renal replacement therapy (CRRT), what is the metabolic fate of the systemic citrate returned to the patient, and why is continuous intravenous calcium chloride/gluconate infusion mandatory?",
@@ -3111,7 +3165,7 @@
         "Citrate is converted into lactic acid; calcium buffers the lactic acidosis"
       ],
       "answer": "B",
-      "explanation": "In regional citrate anticoagulation (RCA), citrate is infused pre-filter to chelate ionized calcium (target circuit iCa < 0.25–0.35 mmol/L), inhibiting the tenase and prothrombinase coagulation cascades within the extracorporeal circuit. Approximately 40–50% of the calcium-citrate complex is removed across the dialyzer into the effluent. The remaining citrate enters the patient's systemic circulation, where it is rapidly metabolized in hepatocytes and skeletal muscle mitochondria via the Krebs cycle to produce 3 moles of sodium bicarbonate (HCO3-) per mole of citrate. Because ionized calcium was lost in the effluent, a separate, dedicated systemic calcium infusion is mandatory post-filter to normalize systemic ionized calcium (target 1.1–1.3 mmol/L) and prevent severe hypocalcemic tetany, hypotension, and myocardial depression.",
+      "explanation": "In regional citrate anticoagulation (RCA), citrate is infused pre-filter to chelate ionized calcium (target circuit iCa < 0.25\u20130.35 mmol/L), inhibiting the tenase and prothrombinase coagulation cascades within the extracorporeal circuit. Approximately 40\u201350% of the calcium-citrate complex is removed across the dialyzer into the effluent. The remaining citrate enters the patient's systemic circulation, where it is rapidly metabolized in hepatocytes and skeletal muscle mitochondria via the Krebs cycle to produce 3 moles of sodium bicarbonate (HCO3-) per mole of citrate. Because ionized calcium was lost in the effluent, a separate, dedicated systemic calcium infusion is mandatory post-filter to normalize systemic ionized calcium (target 1.1\u20131.3 mmol/L) and prevent severe hypocalcemic tetany, hypotension, and myocardial depression.",
       "whyWrong": {
         "A": "Citrate is metabolized to bicarbonate, not excreted unchanged; calcium infusion replaces lost calcium to prevent hypocalcemia, not hypercalcemia.",
         "B": "Correct answer: Citrate metabolizes to bicarbonate (3:1 ratio); systemic calcium replaces filter calcium losses.",
@@ -3122,7 +3176,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• RCA Principles: Circuit iCa target = 0.25–0.35 mmol/L (prevents filter clotting). Systemic iCa target = 1.12–1.30 mmol/L.\n• 1 molecule of trisodium citrate yields 3 molecules of HCO3- (risk of metabolic alkalosis if over-infused).\n• Citrate Accumulation ('Citrate Lock'): Occurs in severe hepatic failure or shock. Hallmarks: High total calcium to ionized calcium ratio (> 2.5), refractory metabolic acidosis with wide anion gap, and hypocalcemia.",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 RCA Principles: Circuit iCa target = 0.25\u20130.35 mmol/L (prevents filter clotting). Systemic iCa target = 1.12\u20131.30 mmol/L.\n\u2022 1 molecule of trisodium citrate yields 3 molecules of HCO3- (risk of metabolic alkalosis if over-infused).\n\u2022 Citrate Accumulation ('Citrate Lock'): Occurs in severe hepatic failure or shock. Hallmarks: High total calcium to ionized calcium ratio (> 2.5), refractory metabolic acidosis with wide anion gap, and hypocalcemia.",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -3150,14 +3204,15 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "KDIGO Clinical Practice Guideline for Acute Kidney Injury",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Renal Replacement Therapy: II"
     },
     {
       "id": "INICET-SS-2026-CC-R056",
       "number": 56,
       "chapterId": 9,
       "chapter": "Acute Respiratory Distress Syndrome (ARDS)",
-      "topicId": "cc-electrical-impedance-tomography",
+      "topicId": "cc-acute-respiratory-distress-syndrome-ii",
       "subject": "Mechanical Ventilation",
       "subtopic": "Electrical Impedance Tomography (EIT) in Mechanical Ventilation",
       "question": "What is the primary clinical application of bedside Electrical Impedance Tomography (EIT) during mechanical ventilation in patients with Acute Respiratory Distress Syndrome (ARDS)?",
@@ -3168,7 +3223,7 @@
         "Continuous optical monitoring of bronchial ciliary beat frequency"
       ],
       "answer": "B",
-      "explanation": "Electrical Impedance Tomography (EIT) is an advanced, non-invasive, radiation-free bedside imaging technology that uses a circular belt containing 16 or 32 electrodes placed around the patient's thorax (typically at the 4th–5th intercostal space). By injecting tiny, imperceptible high-frequency electrical currents and measuring voltage drops across the thorax, it constructs continuous cross-sectional dynamic images of lung impedance, which correlate directly with regional ventilation and aeration. During a decremental PEEP titration trial, EIT uniquely quantifies the percentage of alveolar collapse in dependent lung regions versus alveolar hyperdistension in non-dependent regions, pinpointing the individual 'optimal PEEP' that minimizes both VILI mechanisms.",
+      "explanation": "Electrical Impedance Tomography (EIT) is an advanced, non-invasive, radiation-free bedside imaging technology that uses a circular belt containing 16 or 32 electrodes placed around the patient's thorax (typically at the 4th\u20135th intercostal space). By injecting tiny, imperceptible high-frequency electrical currents and measuring voltage drops across the thorax, it constructs continuous cross-sectional dynamic images of lung impedance, which correlate directly with regional ventilation and aeration. During a decremental PEEP titration trial, EIT uniquely quantifies the percentage of alveolar collapse in dependent lung regions versus alveolar hyperdistension in non-dependent regions, pinpointing the individual 'optimal PEEP' that minimizes both VILI mechanisms.",
       "whyWrong": {
         "A": "PAWP requires invasive pulmonary artery catheterization, not surface thoracic impedance tomography.",
         "B": "Correct answer: EIT provides real-time cross-sectional functional imaging of regional ventilation, collapse, and overdistension to optimize PEEP.",
@@ -3179,7 +3234,7 @@
       "sourceType": "ini-cet-ss-2026-recall",
       "exam": "INI-CET SS",
       "year": 2026,
-      "examPearl": "HIGH-YIELD TAKEAWAYS:\n• EIT Principles: Lung tissue electrical impedance changes linearly with lung aeration (air is a poor electrical conductor; impedance increases with inhalation).\n• Optimal PEEP on EIT: Identified at the intersection where the curve of collapsed lung units (dependent zones) and hyperdistended lung units (non-dependent zones) crosses with minimal combined lung injury.\n• EIT also detects real-time regional pendelluft and perfusion distribution (via hypertonic saline bolus contrast).",
+      "examPearl": "HIGH-YIELD TAKEAWAYS:\n\u2022 EIT Principles: Lung tissue electrical impedance changes linearly with lung aeration (air is a poor electrical conductor; impedance increases with inhalation).\n\u2022 Optimal PEEP on EIT: Identified at the intersection where the curve of collapsed lung units (dependent zones) and hyperdistended lung units (non-dependent zones) crosses with minimal combined lung injury.\n\u2022 EIT also detects real-time regional pendelluft and perfusion distribution (via hypertonic saline bolus contrast).",
       "hyperlinkedReference": {
         "label": "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "url": "https://youtu.be/eEJF3CC5Qx8"
@@ -3207,7 +3262,8 @@
         "Marrow Super Speciality INI-SS April 2026 Recall Session (YouTube eEJF3CC5Qx8)",
         "Consensus Statement on Electrical Impedance Tomography in Mechanical Ventilation",
         "KnockoutNotes Critical Care Medicine Verification Panel"
-      ]
+      ],
+      "topicTitle": "Acute Respiratory Distress Syndrome: II"
     }
   ]
 }

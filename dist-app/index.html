@@ -3,20 +3,264 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KnockoutNotes — Futuristic Anaesthesia Knowledge Engine</title>
+  <title>KnockoutNotes — Advanced Anaesthesia &amp; Critical Care Knowledge Engine</title>
+  <meta name="description" content="Peer-reviewed postgraduate anaesthesiology and critical care knowledge engine. 175+ syllabus topics, 84 drug monographs, 3D workstation simulators, and PYQs.">
+  <link rel="canonical" href="https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/">
+  <meta property="og:title" content="KnockoutNotes — Advanced Anaesthesia &amp; Critical Care Knowledge Engine">
+  <meta property="og:description" content="Peer-reviewed postgraduate anaesthesiology and critical care knowledge engine. 175+ syllabus topics, 84 drug monographs, 3D workstation simulators, and PYQs.">
+  <meta property="og:image" content="https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/knockoutnotes_icon.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KnockoutNotes — Advanced Anaesthesia &amp; Critical Care Knowledge Engine">
+  <meta name="twitter:description" content="Peer-reviewed postgraduate anaesthesiology and critical care knowledge engine. 175+ syllabus topics, 84 drug monographs, 3D workstation simulators, and PYQs.">
+  <meta name="twitter:image" content="https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/knockoutnotes_icon.png">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/#website",
+        "url": "https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/",
+        "name": "KnockoutNotes",
+        "description": "Advanced Anaesthesia & Critical Care Knowledge Engine",
+        "publisher": {
+          "@type": "Organization",
+          "name": "KnockoutNotes",
+          "url": "https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/",
+          "logo": "https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/knockoutnotes_icon.png"
+        }
+      },
+      {
+        "@type": "MedicalWebPage",
+        "@id": "https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/#webpage",
+        "url": "https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/",
+        "name": "KnockoutNotes — Advanced Anaesthesia & Critical Care Knowledge Engine",
+        "isPartOf": {
+          "@id": "https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/#website"
+        },
+        "about": [
+          { "@type": "MedicalSpecialty", "name": "Anesthesia" },
+          { "@type": "MedicalSpecialty", "name": "Critical Care" }
+        ],
+        "audience": {
+          "@type": "MedicalAudience",
+          "medicalAudienceType": "Clinician"
+        }
+      }
+    ]
+  }
+  </script>
+
   <meta name="theme-color" content="#0284c7">
+  <link rel="icon" type="image/png" href="knockoutnotes_icon.png">
   <link rel="manifest" href="manifest.json">
+    <!-- Google Fonts Preconnect & Optimized Non-Blocking Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700;800&display=optional" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700;800&display=optional">
+  </noscript>
+  <style id="kn-critical-css">
+    :root {
+      --bg-void: #f6f4ee;
+      --bg-surface: #ffffff;
+      --text-main: #1e293b;
+      --accent-cyan: #0284c7;
+      --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .dark, html.dark {
+      --bg-void: #030712;
+      --bg-surface: rgba(8, 14, 28, 0.74);
+      --text-main: #f8fafc;
+      --accent-cyan: #38bdf8;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: clip; }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-void);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: clip;
+    }
+    #knSpatialCanvas {
+      position: fixed; inset: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0; opacity: 0.9;
+    }
+    .site-hud {
+      position: sticky;
+      top: 16px;
+      z-index: 1000;
+      padding: 0 16px;
+      display: flex;
+      justify-content: center;
+    }
+    .hud-capsule {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 8px 14px 8px 18px;
+      border-radius: var(--radius-full);
+      max-width: 1220px;
+      width: auto;
+      min-height: 54px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: max-content;
+    }
+    .brand-icon-wrap {
+      position: relative;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .brand img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .kn-app-status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 8px 14px;
+      margin: 12px auto 20px auto;
+      max-width: 1200px;
+      font-size: 13px;
+      min-height: 48px;
+    }
+    .kn-app-status-left,
+    .kn-app-status-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .hero {
+      padding: 80px 0 60px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 56px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero > .fade {
+      min-width: 0;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .hero-visual {
+      position: relative;
+      min-width: 0;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .kicker-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 86px);
+      line-height: 0.94;
+      letter-spacing: -3.5px;
+      margin: 0 0 24px;
+      font-weight: 900;
+      color: var(--text-main);
+      text-transform: uppercase;
+    }
+    .hero p.hero-lead {
+      font-size: clamp(16px, 1.35vw, 19.5px);
+      line-height: 1.68;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 0 36px;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4f46e5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+    .dark .gradient-text {
+      background: linear-gradient(135deg, #38bdf8 0%, #60a5fa 50%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+    @media (max-width: 1040px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 48px 0 36px;
+        gap: 40px;
+      }
+    }
+    @media (max-width: 680px) {
+      .site-hud {
+        top: 10px;
+        padding: 0 10px;
+      }
+      .hud-capsule {
+        padding: 6px 10px 6px 14px;
+        min-height: 48px;
+      }
+      .hud-path-indicator {
+        display: none;
+      }
+      .hero {
+        padding: 32px 0 24px;
+        gap: 28px;
+      }
+      .hero h1 {
+        font-size: clamp(34px, 10vw, 48px);
+        letter-spacing: -1.5px;
+      }
+      .hero p.hero-lead {
+        font-size: 15px;
+        line-height: 1.55;
+      }
+    }
+  </style>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="page-common.css">
   <link rel="stylesheet" href="bubble-menu.css">
-  <link rel="stylesheet" href="workspace.css">
+  <link rel="stylesheet" href="workspace.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="workspace.css"></noscript>
   <link rel="stylesheet" href="border-glow.css">
   <link rel="stylesheet" href="subscribe-widget.css">
   <link rel="stylesheet" href="mobile-app.css">
-  <script src="sheet-config.js"></script>
-  <script src="content-config.js"></script>
-  <script src="analytics-config.js"></script>
-  <script src="cf-beacon.js"></script>
+  <script src="sheet-config.js" defer></script>
+  <script src="content-config.js" defer></script>
+  <script src="analytics-config.js" defer></script>
+  <script src="cf-beacon.js" defer></script>
 </head>
 <body data-content-page="home" class="mode-3d">
 
@@ -42,7 +286,7 @@
   <div class="hud-capsule">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
       <div class="brand-icon-wrap">
-        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+        <img src="knockoutnotes_icon-72.png" alt="KnockoutNotes emblem" width="36" height="36" fetchpriority="high">
       </div>
       <div class="brand-name">Knockout<span>Notes</span></div>
     </a>
@@ -508,7 +752,7 @@
     <div class="footer-brand">
       <div class="brand">
         <div class="brand-icon-wrap">
-          <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+          <img src="knockoutnotes_icon-72.png" alt="KnockoutNotes icon" width="36" height="36" loading="lazy" decoding="async">
         </div>
         <div class="brand-name">Knockout<span>Notes</span></div>
       </div>
@@ -554,7 +798,7 @@
   <div class="hud-capsule">
     <a class="brand" href="index.html" aria-label="KnockoutNotes home">
       <div class="brand-icon-wrap">
-        <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem">
+        <img src="knockoutnotes_icon-72.png" alt="KnockoutNotes emblem" width="36" height="36" fetchpriority="high">
       </div>
       <div class="brand-name">Knockout<span>Notes</span></div>
     </a>
@@ -1020,7 +1264,7 @@
     <div class="footer-brand">
       <div class="brand">
         <div class="brand-icon-wrap">
-          <img src="knockoutnotes_icon.png" alt="KnockoutNotes icon">
+          <img src="knockoutnotes_icon-72.png" alt="KnockoutNotes icon" width="36" height="36" loading="lazy" decoding="async">
         </div>
         <div class="brand-name">Knockout<span>Notes</span></div>
       </div>
@@ -1095,22 +1339,21 @@
   </a>
 </aside>
 
-<script src="spatial-bg.js"></script>
-<script src="spatial-camera.js"></script>
-<script src="spatial-scroll.js"></script>
-<script src="spatial-viewer.js"></script>
-<script src="script.js"></script>
-<script src="page-motion.js"></script>
-<script src="kn-site-search.js"></script>
-<script src="content-library.js"></script>
-<script src="vendor/gsap/gsap.min.js"></script>
-<script src="spa-router.js"></script>
-<script src="workspace-engine.js"></script>
-<script src="bubble-menu.js"></script>
-<script src="border-glow.js"></script>
-<script src="subscribe-widget.js"></script>
-<script src="mobile-bridge.js"></script>
-<script src="sync-engine.js"></script>
+<script src="spatial-bg.js" defer></script>
+<script src="spatial-camera.js" defer></script>
+<script src="spatial-scroll.js" defer></script>
+<script src="spatial-viewer.js" defer></script>
+<script src="script.js" defer></script>
+<script src="page-motion.js" defer></script>
+<script src="content-library.js" defer></script>
+<script src="vendor/gsap/gsap.min.js" defer></script>
+<script src="spa-router.js" defer></script>
+<script src="workspace-engine.js" defer></script>
+<script src="bubble-menu.js" defer></script>
+<script src="border-glow.js" defer></script>
+<script src="subscribe-widget.js" defer></script>
+<script src="mobile-bridge.js" defer></script>
+<script src="sync-engine.js" defer></script>
 
 </body>
 </html>
