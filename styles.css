@@ -693,8 +693,12 @@ body:not([data-content-page="home"]) .menu-btn {
   transform: translateZ(var(--z-fore));
 }
 
-.hero > .fade {
+.hero > .fade,
+.hero-visual {
   min-width: 0;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
 }
 
 .telemetry-channel,
