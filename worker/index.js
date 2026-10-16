@@ -210,6 +210,7 @@ function jsonResponse(data, status = 200, extraHeaders = {}, request = null, env
   } else {
     headers.set('X-Content-Type-Options', 'nosniff');
   }
+  headers.set('Cache-Control', 'no-store, no-cache, must-revalidate');
   return new Response(JSON.stringify(data), {
     status,
     headers
@@ -1827,12 +1828,15 @@ export default {
         const headers = new Headers(response.headers);
         applySecurityHeaders(headers, request, isHtml);
 
-        // Immutable long-lived cache for vendor libraries (Three.js, GSAP, jsPDF) and 3D models
+        // Immutable long-lived cache for vendor libraries (Three.js, GSAP, jsPDF), web fonts, and 3D models
         if (
           lowerPath.startsWith('/vendor/') ||
           lowerPath.startsWith('/assets/models/') ||
           lowerPath.endsWith('.glb') ||
-          lowerPath.endsWith('.wasm')
+          lowerPath.endsWith('.wasm') ||
+          lowerPath.endsWith('.woff2') ||
+          lowerPath.endsWith('.woff') ||
+          lowerPath.endsWith('.ttf')
         ) {
           headers.set('Cache-Control', 'public, max-age=2592000, immutable');
           return new Response(response.body, { status: response.status, headers });
@@ -1865,6 +1869,11 @@ export default {
           (lowerPath.endsWith('.css') || lowerPath.endsWith('.js') || lowerPath.endsWith('.mjs'))
         ) {
           headers.set('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
+          return new Response(response.body, { status: response.status, headers });
+        }
+        // Freshness revalidation for HTML pages ensuring deployed updates are seen immediately
+        if (isHtml) {
+          headers.set('Cache-Control', 'public, no-cache, must-revalidate');
           return new Response(response.body, { status: response.status, headers });
         }
         return new Response(response.body, { status: response.status, headers });

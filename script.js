@@ -646,6 +646,7 @@
       });
       return searchScriptLoading;
     }
+    window.ensureSearchLoaded = ensureSearchLoaded;
 
     function openSearchModal() {
       if (!searchModal) return;
@@ -684,7 +685,14 @@
       setScrollLock("search", false);
     }
 
-    searchTriggers.forEach(btn => btn.addEventListener("click", openSearchModal));
+    // Universal delegated click for any search buttons (including dynamically created ones)
+    document.addEventListener("click", e => {
+      const trigger = e.target.closest && e.target.closest("[data-open-search], .nav-search-trigger, .btn-hud-tool");
+      if (trigger) {
+        e.preventDefault();
+        openSearchModal();
+      }
+    });
     modalClose.forEach(btn => btn.addEventListener("click", closeSearchModal));
 
     window.addEventListener("keydown", e => {
@@ -699,6 +707,17 @@
         closeSearchModal();
       }
     });
+
+    // Idle-time prefetch of search engine to ensure instant response on click
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(() => {
+        if (!window.KnockoutNotesSiteSearch) ensureSearchLoaded();
+      }, { timeout: 3500 });
+    } else {
+      setTimeout(() => {
+        if (!window.KnockoutNotesSiteSearch) ensureSearchLoaded();
+      }, 3500);
+    }
 
     // ------------------------------------------------------------------------
     // 10. Live Animated ECG Waveform Monitor & Vitals Engine (Hero Centerpiece)
