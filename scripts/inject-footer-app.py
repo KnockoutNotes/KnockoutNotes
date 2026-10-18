@@ -13,7 +13,7 @@ APP_ROW_STANDARD = """      <!-- Android App Download Row -->
         <span class="footer-app-row-text">📱 Knockout Notes Android App (Offline)</span>
         <a href="knockoutnotes.apk" download="knockoutnotes.apk" class="footer-app-row-btn" title="Download Knockout Notes Android App (APK)">
           <span>⬇ Download APK</span>
-          <span class="footer-app-row-size">23.8 MB</span>
+          <span class="footer-app-row-size">v3.0.0 • 26 MB</span>
         </a>
       </div>
 """
@@ -23,7 +23,7 @@ APP_ROW_POLICY = """    <!-- Android App Download Row -->
       <span class="footer-app-row-text">📱 Knockout Notes Android App (Offline)</span>
       <a href="knockoutnotes.apk" download="knockoutnotes.apk" class="footer-app-row-btn" title="Download Knockout Notes Android App (APK)">
         <span>⬇ Download APK</span>
-        <span class="footer-app-row-size">23.8 MB</span>
+        <span class="footer-app-row-size">v3.0.0 • 26 MB</span>
       </a>
     </div>
 """
@@ -33,7 +33,7 @@ APP_ROW_CRISIS = """    <!-- Android App Download Row -->
       <span class="footer-app-row-text">📱 Knockout Notes Android App (Offline)</span>
       <a href="knockoutnotes.apk" download="knockoutnotes.apk" class="footer-app-row-btn" title="Download Knockout Notes Android App (APK)">
         <span>⬇ Download APK</span>
-        <span class="footer-app-row-size">23.8 MB</span>
+        <span class="footer-app-row-size">v3.0.0 • 26 MB</span>
       </a>
     </div>
 """

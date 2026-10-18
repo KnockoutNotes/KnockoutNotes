@@ -176,10 +176,11 @@ STATIC_ASSETS.forEach(copyFile);
 // 5. Vendor Libraries (Three.js, Draco, GSAP, jsPDF)
 copyDir('vendor');
 
-// 6. Selected Asset Folders (core 3D models, regional sono-anatomy, website content)
+// 6. Selected Asset Folders (core 3D models, regional sono-anatomy)
 copyDir('assets/models');
 copyDir('assets/regional');
-copyDir('assets/website');
+// Note: assets/website is intentionally omitted to keep offline APK lean (~25MB);
+// high-res scans and monographs stream on-demand when viewed.
 
 // 7. Critical Care Curriculum & MCQ Question Banks
 copyDir('criticalCare');
