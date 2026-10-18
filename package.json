@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "cap": "cap",
-    "build:android": "cap sync android"
+    "build:android": "node scripts/build-android-bundle.js && cap sync android"
   },
   "author": "KnockoutNotes",
   "license": "UNLICENSED",

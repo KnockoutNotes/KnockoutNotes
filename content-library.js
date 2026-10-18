@@ -19,7 +19,7 @@
     if (window.KNOCKOUTNOTES_CONTENT) {
       return Promise.resolve(window.KNOCKOUTNOTES_CONTENT);
     }
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       if (window.KNOCKOUTNOTES_CONTENT) {
         resolve(window.KNOCKOUTNOTES_CONTENT);
         return;
@@ -27,10 +27,18 @@
       const script = document.createElement('script');
       script.src = 'content-config.js?_=' + Date.now();
       script.onload = () => {
-        resolve(window.KNOCKOUTNOTES_CONTENT || {});
+        if (window.KNOCKOUTNOTES_CONTENT) {
+          resolve(window.KNOCKOUTNOTES_CONTENT);
+        } else {
+          resolve({});
+        }
       };
-      script.onerror = () => {
-        resolve(window.KNOCKOUTNOTES_CONTENT || {});
+      script.onerror = (err) => {
+        if (window.KNOCKOUTNOTES_CONTENT) {
+          resolve(window.KNOCKOUTNOTES_CONTENT);
+        } else {
+          reject(new Error('Failed to load content-config.js'));
+        }
       };
       document.head.appendChild(script);
     });
@@ -329,7 +337,13 @@
   }
 
   async function initLibrary(page){
-    const cfg = await cfgPromise;
+    let cfg;
+    try {
+      cfg = await cfgPromise;
+    } catch (err) {
+      console.warn('Could not load library configuration:', err);
+      return;
+    }
     const categories = cfg.pages?.[page]?.categories || [];
     const mounts = document.querySelectorAll('#knLibrary, #knLibrary3d, .kn-library-mount');
     if (!mounts.length) return;

@@ -19,22 +19,29 @@
     if (window.KNOCKOUTNOTES_CONTENT) {
       return Promise.resolve(window.KNOCKOUTNOTES_CONTENT);
     }
-    return fetch('content-config.js?_=' + Date.now(), { cache: 'no-store' })
-      .then(r => r.text())
-      .then(t => {
-        try {
-          const fn = new Function(t + '; return window.KNOCKOUTNOTES_CONTENT;');
-          const res = fn();
-          if (res) {
-            window.KNOCKOUTNOTES_CONTENT = res;
-            return res;
-          }
-        } catch (_) {}
-        const start = t.indexOf('{');
-        const end = t.lastIndexOf('}');
-        if (start < 0 || end < 0) throw new Error('Invalid content-config.js');
-        return Function('return (' + t.slice(start, end + 1) + ')')();
-      });
+    return new Promise((resolve, reject) => {
+      if (window.KNOCKOUTNOTES_CONTENT) {
+        resolve(window.KNOCKOUTNOTES_CONTENT);
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = 'content-config.js?_=' + Date.now();
+      script.onload = () => {
+        if (window.KNOCKOUTNOTES_CONTENT) {
+          resolve(window.KNOCKOUTNOTES_CONTENT);
+        } else {
+          resolve({});
+        }
+      };
+      script.onerror = (err) => {
+        if (window.KNOCKOUTNOTES_CONTENT) {
+          resolve(window.KNOCKOUTNOTES_CONTENT);
+        } else {
+          reject(new Error('Failed to load content-config.js'));
+        }
+      };
+      document.head.appendChild(script);
+    });
   }
 
   const cfgPromise = loadConfig();
@@ -330,7 +337,13 @@
   }
 
   async function initLibrary(page){
-    const cfg = await cfgPromise;
+    let cfg;
+    try {
+      cfg = await cfgPromise;
+    } catch (err) {
+      console.warn('Could not load library configuration:', err);
+      return;
+    }
     const categories = cfg.pages?.[page]?.categories || [];
     const mounts = document.querySelectorAll('#knLibrary, #knLibrary3d, .kn-library-mount');
     if (!mounts.length) return;
