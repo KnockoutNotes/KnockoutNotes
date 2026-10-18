@@ -23,7 +23,10 @@ import { DRACOLoader } from "./vendor/three/examples/jsm/loaders/DRACOLoader.js"
 // without a DRACOLoader attached. One decoder instance is shared across
 // loads; the decoder files are vendored locally, same as the rest of Three.js.
 const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath("./vendor/three/examples/jsm/libs/draco/gltf/");
+const dracoDecoderPath = (typeof window !== "undefined" && window.location && window.location.protocol.startsWith("http"))
+  ? "/vendor/three/examples/jsm/libs/draco/gltf/"
+  : "./vendor/three/examples/jsm/libs/draco/gltf/";
+dracoLoader.setDecoderPath(dracoDecoderPath);
 
 const MARKER_COLOR = 0x38bdf8;
 const MARKER_ACTIVE_COLOR = 0xfbbf24;

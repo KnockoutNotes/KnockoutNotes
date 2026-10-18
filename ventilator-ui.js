@@ -119,7 +119,9 @@ export async function initVentilatorPage() {
   const zoomFitBtn = document.getElementById("ventZoomFitBtn");
 
   const scene = createWorkstationScene(stageHost, {
-    modelUrl: "assets/models/ventilatormodel.glb",
+    modelUrl: (typeof window !== "undefined" && window.location && window.location.protocol.startsWith("http"))
+      ? "/assets/models/ventilatormodel.glb"
+      : "assets/models/ventilatormodel.glb",
     components: data.components,
     onSelect: (id, comp) => renderInfoPanel(comp),
     onHover: (id, comp) => {

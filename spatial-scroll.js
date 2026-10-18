@@ -404,7 +404,7 @@
   // whatever category/page this carousel belongs to, never hardcoded.
   Carousel.prototype._itemsFromCards = function () {
     return this.cards.map(c => {
-      const url = c.getAttribute("href") || (c.querySelector && c.querySelector("a")?.getAttribute("href")) || "";
+      const url = c.getAttribute("href") || c.getAttribute("data-href") || (c.querySelector && c.querySelector("a")?.getAttribute("href")) || "";
       const titleEl = c.querySelector(".kn-file-title");
       const title = (titleEl ? titleEl.textContent : c.textContent || "").trim();
       return { url, title };
@@ -420,7 +420,7 @@
       // A click on the general body of a non-centred card brings it to the centre.
       card.addEventListener("click", e => {
         // Workspace bookmark buttons inside card wrappers handle their own clicks
-        if (e.target && e.target.closest(".kn-workspace-bookmark-btn")) {
+        if (e.target && (e.target.closest(".kn-workspace-bookmark-btn") || e.target.closest(".kn-bookmark-btn") || e.target.closest("[data-kn-bookmark-id]"))) {
           return;
         }
 
@@ -439,7 +439,7 @@
         }
 
         // CTA clicked or centered card clicked: open the holographic viewer
-        const href = (card.getAttribute && card.getAttribute("href")) || (card.querySelector && card.querySelector("a")?.getAttribute("href")) || "";
+        const href = (card.getAttribute && (card.getAttribute("href") || card.getAttribute("data-href"))) || (card.querySelector && card.querySelector("a")?.getAttribute("href")) || "";
         const viewer = window.KnockoutSpatialViewer || window.KnockoutViewer;
         if (href && ASSET_HREF_RE.test(href) && viewer && typeof viewer.open === "function") {
           e.preventDefault();

@@ -228,6 +228,15 @@
   function carouselizePanel(panel, catId){
     const fileList = panel.querySelector('.kn-file-list');
     if (!fileList || !window.KnCarousel) return;
+
+    // Safety unwrap: ensure .kn-file-row elements are direct children of .kn-file-list
+    fileList.querySelectorAll('.kn-file-row-wrap').forEach(wrap => {
+      const row = wrap.querySelector('.kn-file-row');
+      if (row) {
+        wrap.replaceWith(row);
+      }
+    });
+
     const descriptor = panel.querySelector('.kn-library-head h3')?.textContent || '';
 
     fileList.querySelectorAll('.kn-file-row').forEach((row, i) => {
@@ -235,7 +244,7 @@
         const thumb = document.createElement('div');
         thumb.className = 'kn-file-thumb';
         if (catId) thumb.dataset.cat = catId;
-        const href = row.getAttribute('href') || '';
+        const href = row.getAttribute('href') || row.getAttribute('data-href') || '';
         const titleEl = row.querySelector('.kn-file-title');
         const itemTitle = (titleEl ? titleEl.textContent : row.textContent || '').trim();
         const isPdf = !row.querySelector('.kn-badge-image') && /\.pdf(?:$|\?)/i.test(href);
@@ -279,7 +288,7 @@
     }
   }
 
-  function renderCategory(cat){
+  function renderCategory(cat, is3D = false){
     const files = resolveCategoryFiles(cat);
     const count = files.length;
     const wrap = document.createElement('section');
@@ -317,6 +326,19 @@
             category: cat.title || 'Clinical Notes',
             route: item.url
           }) : '';
+
+          if (is3D) {
+            return `
+              <div class="kn-file-row" data-href="${esc(item.url)}" role="listitem">
+                <span class="kn-file-num">${pad(item.number)}</span>
+                <span class="kn-file-title">${esc(item.title)}</span>
+                <span class="kn-file-badge kn-badge-${item.type}">${item.type.toUpperCase()}</span>
+                <a class="kn-file-arrow" href="${esc(item.url)}" target="_blank" rel="noopener noreferrer">→</a>
+                ${bookmarkBtn}
+              </div>
+            `;
+          }
+
           return `
             <div class="kn-file-row-wrap" style="display:flex; align-items:center; gap:8px; width:100%;">
               <a class="kn-file-row" href="${esc(item.url)}" target="_blank" rel="noopener noreferrer" role="listitem" style="flex:1;">
@@ -571,7 +593,7 @@
           }
         });
 
-        const content = renderCategory(cat);
+        const content = renderCategory(cat, is3D);
         panel.appendChild(content);
       }
 

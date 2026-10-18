@@ -23,7 +23,10 @@ import { DRACOLoader } from "./vendor/three/examples/jsm/loaders/DRACOLoader.js"
 // without a DRACOLoader attached. One decoder instance is shared across
 // loads; the decoder files are vendored locally, same as the rest of Three.js.
 const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath("./vendor/three/examples/jsm/libs/draco/gltf/");
+const dracoDecoderPath = (typeof window !== "undefined" && window.location && window.location.protocol.startsWith("http"))
+  ? "/vendor/three/examples/jsm/libs/draco/gltf/"
+  : "./vendor/three/examples/jsm/libs/draco/gltf/";
+dracoLoader.setDecoderPath(dracoDecoderPath);
 
 const MARKER_COLOR = 0x38bdf8;
 const MARKER_ACTIVE_COLOR = 0xfbbf24;
@@ -373,29 +376,37 @@ export function createWorkstationScene(container, opts) {
       loader.load(
         modelUrl,
         gltf => {
-          const root = gltf.scene || gltf.scenes[0];
-          const maxAniso = renderer.capabilities.getMaxAnisotropy ? renderer.capabilities.getMaxAnisotropy() : 8;
-          root.traverse(child => {
-            if (child.isMesh && child.material) {
-              const mat = child.material;
-              if (mat.map) {
-                mat.map.colorSpace = THREE.SRGBColorSpace;
-                mat.map.anisotropy = Math.min(maxAniso, 8);
+          try {
+            const root = gltf.scene || gltf.scenes[0];
+            const maxAniso = renderer.capabilities.getMaxAnisotropy ? renderer.capabilities.getMaxAnisotropy() : 8;
+            root.traverse(child => {
+              if (child.isMesh && child.material) {
+                const mat = child.material;
+                if (mat.map) {
+                  mat.map.colorSpace = THREE.SRGBColorSpace;
+                  mat.map.anisotropy = Math.min(maxAniso, 8);
+                }
+                if (mat.roughnessMap) mat.roughnessMap.anisotropy = Math.min(maxAniso, 4);
+                if (mat.metalnessMap) mat.metalnessMap.anisotropy = Math.min(maxAniso, 4);
+                if (mat.normalMap) mat.normalMap.anisotropy = Math.min(maxAniso, 4);
+                // Ensure plastics and metals have realistic specular response without washing out
+                mat.envMapIntensity = 0.9;
               }
-              if (mat.roughnessMap) mat.roughnessMap.anisotropy = Math.min(maxAniso, 4);
-              if (mat.metalnessMap) mat.metalnessMap.anisotropy = Math.min(maxAniso, 4);
-              if (mat.normalMap) mat.normalMap.anisotropy = Math.min(maxAniso, 4);
-              // Ensure plastics and metals have realistic specular response without washing out
-              mat.envMapIntensity = 0.9;
-            }
-          });
-          addBrandConcealment(root);
-          frameModel(root);
-          modelGroup.add(root);
-          resolve({ isPlaceholder: false, root });
+            });
+            addBrandConcealment(root);
+            frameModel(root);
+            modelGroup.add(root);
+            resolve({ isPlaceholder: false, root });
+          } catch (err) {
+            console.warn("Failed processing GLTF model hierarchy, using stand-in:", err);
+            const placeholder = buildPlaceholderMachine();
+            modelGroup.add(placeholder);
+            resolve({ isPlaceholder: true, root: placeholder });
+          }
         },
         undefined,
-        () => {
+        (err) => {
+          console.warn("GLTFLoader error loading workstation model, using stand-in:", err);
           const placeholder = buildPlaceholderMachine();
           modelGroup.add(placeholder);
           resolve({ isPlaceholder: true, root: placeholder });

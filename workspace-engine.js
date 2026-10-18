@@ -1355,6 +1355,7 @@
     // 1. Bookmark Click
     const bmBtn = e.target.closest("[data-kn-bookmark-id]");
     if (bmBtn) {
+      e.preventDefault();
       e.stopPropagation();
       const raw = bmBtn.getAttribute("data-kn-item");
       const item = safeJSONParse(raw, { content_id: bmBtn.dataset.knBookmarkId });

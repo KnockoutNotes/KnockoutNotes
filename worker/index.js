@@ -178,11 +178,12 @@ function applySecurityHeaders(headers, request, isHtml = false) {
   if (isHtml) {
     const csp = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://bondin.io https://sdk.cashfree.com https://accounts.google.com",
+      "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' blob: https://static.cloudflareinsights.com https://bondin.io https://sdk.cashfree.com https://accounts.google.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com data:",
       "img-src 'self' data: blob: https:",
       "connect-src 'self' blob: data: https://api.cashfree.com https://sandbox.cashfree.com https://cloudflareinsights.com https://accounts.google.com https://oauth2.googleapis.com https://script.google.com https://script.googleusercontent.com",
+      "worker-src 'self' blob:",
       "frame-src 'self' https://bondin.io https://api.cashfree.com",
       "frame-ancestors 'self'",
       "object-src 'none'",
@@ -1842,6 +1843,11 @@ export default {
           lowerPath.endsWith('.ttf')
         ) {
           headers.set('Cache-Control', 'public, max-age=2592000, immutable');
+          if (lowerPath.endsWith('.glb')) {
+            headers.set('Content-Type', 'model/gltf-binary');
+          } else if (lowerPath.endsWith('.wasm')) {
+            headers.set('Content-Type', 'application/wasm');
+          }
           return new Response(response.body, { status: response.status, headers });
         }
         // Cache images and static graphics for 7 days
