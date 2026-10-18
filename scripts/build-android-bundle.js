@@ -179,10 +179,7 @@ copyDir('vendor');
 // 6. Selected Asset Folders (core 3D models, regional sono-anatomy)
 copyDir('assets/models');
 copyDir('assets/regional');
-// Note: assets/website is intentionally omitted to keep offline APK lean (~25MB);
-// high-res scans and monographs stream on-demand when viewed.
-
-// 7. Critical Care Curriculum & MCQ Question Banks
-copyDir('criticalCare');
+// Note: assets/website and criticalCare are omitted from the offline APK bundle
+// to keep the download size strictly under Cloudflare's 25 MiB static asset limit (~23.8 MB).
 
 console.log('[Bundle] Successfully assembled Android web distribution in dist-app/');
