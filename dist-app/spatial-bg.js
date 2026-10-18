@@ -156,14 +156,9 @@
   let glowOrbs = [];
   function initParticles() {
     particles = [];
-    // The width-based ceiling existed to keep dot spacing sane on very
-    // narrow canvases, but at its old /14 divisor it silently clamped
-    // desktop counts to ~100-110 regardless of density — capping out well
-    // below the density values above once those were raised ~3.5x. /4
-    // gives those values real headroom on typical viewports while still
-    // tapering off on genuinely narrow ones.
-    const densityCap = isSmallScreen() ? Math.ceil(env.density * 0.6) : env.density;
-    const count = Math.min(densityCap, Math.floor(width / 4));
+    const isMobile = isSmallScreen();
+    const densityCap = isMobile ? Math.ceil(env.density * 0.35) : env.density;
+    const count = Math.min(densityCap, Math.floor(width / (isMobile ? 6 : 4)));
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * width,
@@ -178,10 +173,9 @@
       });
     }
 
-    // A handful of larger, softly-blurred "light points" — bounded, slow,
-    // never a busy starfield — that read as ambient depth rather than icons.
+    // A handful of larger, softly-blurred "light points"
     glowOrbs = [];
-    const orbCount = isSmallScreen() ? Math.max(1, Math.floor((env.glowPoints || 2) * 0.5)) : (env.glowPoints || 2);
+    const orbCount = isMobile ? 1 : (env.glowPoints || 2);
     for (let i = 0; i < orbCount; i++) {
       glowOrbs.push({
         x: width * (0.15 + Math.random() * 0.7),
@@ -199,7 +193,7 @@
 
   function initCalmClouds() {
     calmClouds = [];
-    const count = isSmallScreen() ? 4 : 7;
+    const count = isSmallScreen() ? 3 : 7;
     for (let i = 0; i < count; i++) {
       const cloud = {
         x: Math.random() * width,
@@ -226,9 +220,6 @@
       calmClouds.push(cloud);
     }
   }
-
-  initParticles();
-  initCalmClouds();
 
   let waveTime = 0;
 
@@ -330,12 +321,14 @@
 
   let animId = null;
   let isCanvasIntersecting = true;
+  let isExplicitlyPaused = false;
+  let isStartupReady = false;
 
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         isCanvasIntersecting = entry.isIntersecting;
-        if (isCanvasIntersecting && !document.hidden && !document.body.classList.contains("mode-lite")) {
+        if (isStartupReady && !isExplicitlyPaused && isCanvasIntersecting && !document.hidden && !document.body.classList.contains("mode-lite")) {
           if (!animId) animId = requestAnimationFrame(render);
         } else if (!isCanvasIntersecting && animId) {
           cancelAnimationFrame(animId);
@@ -353,7 +346,7 @@
         animId = null;
       }
     } else {
-      if (isCanvasIntersecting && !document.body.classList.contains("mode-lite") && !animId) {
+      if (isStartupReady && !isExplicitlyPaused && isCanvasIntersecting && !document.body.classList.contains("mode-lite") && !animId) {
         animId = requestAnimationFrame(render);
       }
     }
@@ -662,10 +655,36 @@
     }
   }
 
-  render();
+  function startCanvas() {
+    isStartupReady = true;
+    initParticles();
+    initCalmClouds();
+    if (!animId && !isExplicitlyPaused && isCanvasIntersecting && !document.hidden && !document.body.classList.contains("mode-lite")) {
+      animId = requestAnimationFrame(render);
+    }
+  }
+
+  if (typeof requestIdleCallback === "function") {
+    requestIdleCallback(startCanvas, { timeout: 600 });
+  } else {
+    setTimeout(startCanvas, 350);
+  }
 
   window.KnockoutSpatialBg = {
     setEnvironment: setEnvironment,
+    pause: () => {
+      isExplicitlyPaused = true;
+      if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+    },
+    resume: () => {
+      isExplicitlyPaused = false;
+      if (isStartupReady && !animId && isCanvasIntersecting && !document.hidden && !document.body.classList.contains("mode-lite")) {
+        animId = requestAnimationFrame(render);
+      }
+    },
     triggerRipple: (x, y) => {
       ripples.push({
         x: x || width * 0.5,

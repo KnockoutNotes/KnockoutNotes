@@ -224,6 +224,7 @@
 
     this.currentIndex = clamp(this.currentIndex, 0, this.cards.length - 1);
     this.targetIndex = this.currentIndex;
+    this._lastDrawnIndex = -999;
 
     // Height is driven purely by the tallest card's real rendered height —
     // no reserved strip for controls, since the arrows now float beside the
@@ -742,7 +743,12 @@
       this.currentIndex = lerp(this._animFrom, this.targetIndex, eased);
       if (t >= 1) this.currentIndex = this.targetIndex;
     }
-    this._layout();
+
+    // Only recalculate and mutate styles when moving, dragging, or deploying
+    if (this._deploying || Math.abs(this.currentIndex - this._lastDrawnIndex) > 0.0005) {
+      this._lastDrawnIndex = this.currentIndex;
+      this._layout();
+    }
   };
 
   Carousel.prototype.refresh = function () {

@@ -79,7 +79,6 @@
     card.dataset.borderGlowInit = "true";
     card.classList.add("border-glow-card");
 
-    // Detect light surface theme if applied locally
     var computed = window.getComputedStyle(card);
     var br = computed.borderRadius;
     if (br && br !== "0px") {

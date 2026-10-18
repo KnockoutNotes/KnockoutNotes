@@ -162,6 +162,7 @@ JS_FILES.forEach(copyFile);
 // 4. Manifests & Icons
 const STATIC_ASSETS = [
   'knockoutnotes_icon.png',
+  'knockoutnotes_icon-72.png',
   'knockoutnotes_wordmark.png',
   'manifest.json',
   'manifest-calculators.json',

@@ -93,7 +93,7 @@
     nav.innerHTML = [
       '<div class="kn-desktop-nav-capsule">',
       '  <a class="kn-desktop-brand" href="index.html" aria-label="KnockoutNotes Home">',
-      '    <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem" class="kn-desktop-logo">',
+      '    <img src="knockoutnotes_icon-72.png" alt="KnockoutNotes emblem" class="kn-desktop-logo" width="36" height="36" fetchpriority="high">',
       '    <span class="kn-desktop-brand-name">Knockout<span>Notes</span></span>',
       '  </a>',
       '  <div class="kn-desktop-links" role="menubar">',
@@ -224,7 +224,7 @@
     bubbleNav.innerHTML = [
       '<div class="bubble-bar-capsule">',
       '  <a class="bubble-logo-link" href="index.html" aria-label="KnockoutNotes Home">',
-      '    <img src="knockoutnotes_icon.png" alt="KnockoutNotes emblem" class="bubble-logo">',
+      '    <img src="knockoutnotes_icon-72.png" alt="KnockoutNotes emblem" class="bubble-logo" width="36" height="36" fetchpriority="high">',
       '  </a>',
       '  <div class="bubble-nav-links" role="menubar">',
       '    <div class="kn-mobile-indicator" aria-hidden="true"></div>',

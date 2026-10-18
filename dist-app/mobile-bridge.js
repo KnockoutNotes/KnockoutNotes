@@ -282,14 +282,14 @@
 
         // Priority 4: Crisis mode internal subview back button
         const cmBackBtn = document.getElementById('cmBackBtn');
-        if (cmBackBtn && cmBackBtn.offsetParent !== null) {
+        if (cmBackBtn && cmBackBtn.getClientRects().length > 0 && !cmBackBtn.closest('[hidden]')) {
           cmBackBtn.click();
           return;
         }
 
         // Priority 5: Regional blocks detail back button
         const rgBackBtn = document.getElementById('rgBackBtn');
-        if (rgBackBtn && rgBackBtn.offsetParent !== null) {
+        if (rgBackBtn && rgBackBtn.getClientRects().length > 0 && !rgBackBtn.closest('[hidden]')) {
           rgBackBtn.click();
           return;
         }
@@ -307,12 +307,53 @@
   }
 
   // =========================================================================
-  // 4. INITIALIZATION
+  // 4. ANDROID APP RUNTIME OPTIMIZATIONS
+  // =========================================================================
+  function setupAppOptimizations() {
+    const isApp = Boolean(window.Capacitor || (window.location.protocol === 'capacitor:'));
+    if (!isApp) return;
+
+    document.documentElement.classList.add('kn-app-runtime');
+
+    // Hide APK download link inside the Android application
+    const hideApkButtons = () => {
+      document.querySelectorAll('.kn-btn-android-download, .footer-app-row').forEach(el => {
+        el.style.display = 'none';
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', hideApkButtons);
+    } else {
+      hideApkButtons();
+    }
+
+    // Default to clean Lite mode in the native APK to save battery and boost frame rate
+    const applyAppMode = () => {
+      if (document.body) {
+        document.body.classList.remove('mode-3d');
+        document.body.classList.add('mode-lite');
+      }
+      if (window.KnockoutSpatialBg && typeof window.KnockoutSpatialBg.pause === 'function') {
+        window.KnockoutSpatialBg.pause();
+      }
+    };
+
+    if (document.body) {
+      applyAppMode();
+    } else {
+      document.addEventListener('DOMContentLoaded', applyAppMode);
+    }
+  }
+
+  // =========================================================================
+  // 5. INITIALIZATION
   // =========================================================================
   function init() {
     setupLinkInterception();
     setupNetworkListeners();
     setupHardwareBackButton();
+    setupAppOptimizations();
   }
 
   if (document.readyState === 'loading') {

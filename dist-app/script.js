@@ -22,6 +22,13 @@
         const is3D = mode === "3d";
         body.classList.toggle("mode-3d", is3D);
         body.classList.toggle("mode-lite", !is3D);
+        if (window.KnockoutSpatialBg) {
+          if (is3D && typeof window.KnockoutSpatialBg.resume === "function") {
+            window.KnockoutSpatialBg.resume();
+          } else if (!is3D && typeof window.KnockoutSpatialBg.pause === "function") {
+            window.KnockoutSpatialBg.pause();
+          }
+        }
         try { localStorage.setItem("kn_view_mode", mode); } catch (_) {}
 
         // Update mode toggle buttons
@@ -954,6 +961,7 @@
       const scanWidth = 24; // Erase bar ahead of sweep head
       let ecgAnimFrame = null;
       let anyEcgVisible = true;
+      let ecgStartupReady = false;
 
       if ("IntersectionObserver" in window) {
         const ecgVisibleMap = new Map();
@@ -962,7 +970,7 @@
             ecgVisibleMap.set(entry.target, entry.isIntersecting);
           });
           anyEcgVisible = Array.from(ecgVisibleMap.values()).some(Boolean);
-          if (anyEcgVisible && !document.hidden && !ecgAnimFrame) {
+          if (ecgStartupReady && anyEcgVisible && !document.hidden && !ecgAnimFrame) {
             lastTime = performance.now();
             ecgAnimFrame = requestAnimationFrame(renderEcg);
           } else if (!anyEcgVisible && ecgAnimFrame) {
@@ -983,7 +991,7 @@
             ecgAnimFrame = null;
           }
         } else {
-          if (anyEcgVisible && !ecgAnimFrame) {
+          if (ecgStartupReady && anyEcgVisible && !ecgAnimFrame) {
             lastTime = performance.now();
             ecgAnimFrame = requestAnimationFrame(renderEcg);
           }
@@ -1077,8 +1085,18 @@
         ecgAnimFrame = requestAnimationFrame(renderEcg);
       }
 
-      if (anyEcgVisible && !document.hidden) {
-        ecgAnimFrame = requestAnimationFrame(renderEcg);
+      function startEcg() {
+        ecgStartupReady = true;
+        if (anyEcgVisible && !document.hidden && !ecgAnimFrame) {
+          lastTime = performance.now();
+          ecgAnimFrame = requestAnimationFrame(renderEcg);
+        }
+      }
+
+      if (typeof requestIdleCallback === "function") {
+        requestIdleCallback(startEcg, { timeout: 600 });
+      } else {
+        setTimeout(startEcg, 350);
       }
     }
 
