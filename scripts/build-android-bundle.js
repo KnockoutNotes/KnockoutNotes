@@ -7,7 +7,7 @@
  * Modes:
  *   node scripts/build-android-bundle.js         -> Staged, validated atomic generation with rollback
  *   node scripts/build-android-bundle.js --check -> Read-only verification of dist-app parity
- *   node scripts/build-android-bundle.js --force-clean-recovery -> Cleans unrecovered backup before build
+ *   node scripts/build-android-bundle.js --force-clean-recovery -> Safely archives unrecovered backup before build
  */
 
 const fs = require('fs');
@@ -180,20 +180,79 @@ function getAllExpectedFiles() {
 }
 
 /**
+ * Synchronous delay using Atomics.wait for transient Windows lock backoff.
+ */
+function sleepSync(ms) {
+  try {
+    const sab = new SharedArrayBuffer(4);
+    const int32 = new Int32Array(sab);
+    Atomics.wait(int32, 0, 0, ms);
+  } catch (_) {
+    const start = Date.now();
+    while (Date.now() - start < ms) { /* spin */ }
+  }
+}
+
+function renameWithRetrySync(src, dst, maxRetries = 3, delayMs = 50) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      fs.renameSync(src, dst);
+      return;
+    } catch (err) {
+      if (attempt === maxRetries || (err.code !== 'EBUSY' && err.code !== 'EPERM' && err.code !== 'EACCES')) {
+        throw err;
+      }
+      sleepSync(delayMs);
+    }
+  }
+}
+
+function rmWithRetrySync(target, maxRetries = 3, delayMs = 50) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      fs.rmSync(target, { recursive: true, force: true });
+      return;
+    } catch (err) {
+      if (attempt === maxRetries || (err.code !== 'EBUSY' && err.code !== 'EPERM' && err.code !== 'EACCES')) {
+        throw err;
+      }
+      sleepSync(delayMs);
+    }
+  }
+}
+
+function isRecoveryPath(p) {
+  if (!p) return false;
+  const base = path.basename(p);
+  return base === '.dist-app-backup' ||
+         base.startsWith('.dist-app-backup-archived-') ||
+         base.startsWith('.dist-app-quarantine-');
+}
+
+/**
  * Safely moves src to dst.
- * Prefers atomic fs.renameSync.
- * If rename fails (e.g. cross-volume, EXDEV, or Windows file-handle contention),
+ * Prefers atomic fs.renameSync with retry for transient Windows file-handle contention.
+ * If rename fails (e.g. cross-volume, EXDEV, or Windows directory-swap limitations),
  * falls back to copying into a temporary sibling directory first, validating,
  * and then swapping, ensuring that a failed copy never leaves a partial/corrupt destination.
+ * 
+ * Safety invariants:
+ * - Never overwrites an existing recovery backup or quarantine directory.
+ * - In fallback, never deletes a destination that may be the only recovery copy.
  */
 function safeMove(src, dst) {
   if (!fs.existsSync(src)) return false;
+
+  // Never allow safeMove to target and overwrite an existing recovery directory
+  if (isRecoveryPath(dst) && fs.existsSync(dst)) {
+    throw new Error(`Refusing to overwrite existing recovery directory at: ${dst}`);
+  }
 
   const forceFallback = process.env.__KN_FORCE_MOVE_FALLBACK === '1';
 
   if (!forceFallback) {
     try {
-      fs.renameSync(src, dst);
+      renameWithRetrySync(src, dst, 3, 50);
       return true;
     } catch (renameErr) {
       // Fall through to staged copy fallback on Windows rename/handle errors
@@ -205,7 +264,7 @@ function safeMove(src, dst) {
   const copyTmp = path.join(path.dirname(dst), `.copy-tmp-${Date.now()}-${Math.floor(Math.random() * 10000)}`);
   try {
     if (fs.existsSync(copyTmp)) {
-      fs.rmSync(copyTmp, { recursive: true, force: true });
+      rmWithRetrySync(copyTmp, 3, 50);
     }
     fs.cpSync(src, copyTmp, { recursive: true });
 
@@ -215,14 +274,21 @@ function safeMove(src, dst) {
     }
 
     if (fs.existsSync(dst)) {
-      fs.rmSync(dst, { recursive: true, force: true });
+      // NEVER delete a destination that may be the only recovery copy or unbacked dist-app
+      if (isRecoveryPath(dst)) {
+        throw new Error(`Refusing to remove destination recovery path during fallback: ${dst}`);
+      }
+      if (dst === DEST && !fs.existsSync(BACKUP)) {
+        throw new Error(`Refusing to remove destination dist-app/ during fallback without an existing backup: ${dst}`);
+      }
+      rmWithRetrySync(dst, 3, 50);
     }
-    fs.renameSync(copyTmp, dst);
-    fs.rmSync(src, { recursive: true, force: true });
+    renameWithRetrySync(copyTmp, dst, 3, 50);
+    rmWithRetrySync(src, 3, 50);
     return true;
   } catch (copyErr) {
     if (fs.existsSync(copyTmp)) {
-      try { fs.rmSync(copyTmp, { recursive: true, force: true }); } catch (_) {}
+      try { rmWithRetrySync(copyTmp, 3, 50); } catch (_) {}
     }
     throw copyErr;
   }
@@ -303,13 +369,29 @@ function buildBundle() {
   // Step 0: Detect unresolved recovery backup from prior failure
   if (fs.existsSync(BACKUP)) {
     if (process.argv.includes('--force-clean-recovery')) {
-      console.warn(`[Bundle Warning] Removing unresolved recovery backup at ${BACKUP} due to explicit --force-clean-recovery flag.`);
-      fs.rmSync(BACKUP, { recursive: true, force: true });
+      const archiveTimestamp = Date.now();
+      const archiveRand = Math.floor(Math.random() * 10000);
+      const archivePath = path.resolve(ROOT, 'scratch', `.dist-app-backup-archived-${archiveTimestamp}-${archiveRand}`);
+      console.warn(`[Bundle Warning] Archiving unresolved recovery backup at ${BACKUP} due to explicit --force-clean-recovery flag...`);
+
+      try {
+        // Injection hook for testing archive failure preservation
+        if (process.env.__KN_INJECT_ARCHIVE_FAILURE === '1') {
+          throw new Error('Simulated archive failure for safety verification');
+        }
+
+        safeMove(BACKUP, archivePath);
+        console.warn(`[Bundle Recovery] Successfully archived unresolved backup to: ${archivePath}`);
+      } catch (archiveErr) {
+        console.error(`[Bundle Safety Error] Failed to archive unresolved recovery backup: ${archiveErr.message}`);
+        console.error(`[Bundle Safety Error] Aborting build without deleting or altering backup at: ${BACKUP}`);
+        process.exit(1);
+      }
     } else {
       console.error(`[Bundle Safety Error] Unresolved recovery backup detected at: ${BACKUP}`);
       console.error('A previous build may have failed during promotion or rollback.');
       console.error('To protect potentially recoverable artifacts, this script will not automatically overwrite or delete this backup.');
-      console.error('Please inspect and manually restore or remove the backup directory before proceeding (or pass --force-clean-recovery).');
+      console.error('Please inspect and manually restore or remove the backup directory before proceeding (or pass --force-clean-recovery to archive it safely).');
       process.exit(1);
     }
   }
@@ -327,7 +409,7 @@ function buildBundle() {
 
   // Step 2: Clean and prepare staging directory
   if (fs.existsSync(STAGE)) {
-    fs.rmSync(STAGE, { recursive: true, force: true });
+    rmWithRetrySync(STAGE, 3, 50);
   }
   fs.mkdirSync(STAGE, { recursive: true });
 
@@ -371,21 +453,30 @@ function buildBundle() {
     }
 
     try {
-      // Failure injection hook for automated testing of rollback safety
+      // Failure injection hooks for automated testing of promotion and rollback safety
       if (process.env.__KN_INJECT_PROMOTION_FAILURE === '1' || process.env.__KN_INJECT_ROLLBACK_FAILURE === '1') {
         throw new Error('Simulated promotion failure for rollback testing');
+      }
+      if (process.env.__KN_INJECT_QUARANTINE_FAILURE === '1') {
+        // Triggered after safeMove(DEST, BACKUP) has completed
+        // Simulate promotion leaving a partial/corrupted destination before failing
+        if (!fs.existsSync(DEST)) {
+          fs.mkdirSync(DEST, { recursive: true });
+          fs.writeFileSync(path.join(DEST, '.corrupted-dest-artifact.txt'), 'partial-promotion-data');
+        }
+        throw new Error('Simulated promotion failure with partial destination');
       }
 
       safeMove(STAGE, DEST);
 
       // Promotion succeeded: cleanup backup and staging
       if (fs.existsSync(BACKUP)) {
-        try { fs.rmSync(BACKUP, { recursive: true, force: true }); } catch (cleanupErr) {
+        try { rmWithRetrySync(BACKUP, 3, 50); } catch (cleanupErr) {
           console.warn(`[Bundle Warning] Could not remove backup after successful promotion: ${cleanupErr.message}`);
         }
       }
       if (fs.existsSync(STAGE)) {
-        try { fs.rmSync(STAGE, { recursive: true, force: true }); } catch (_) {}
+        try { rmWithRetrySync(STAGE, 3, 50); } catch (_) {}
       }
 
     } catch (promoErr) {
@@ -393,22 +484,32 @@ function buildBundle() {
 
       if (hadExistingDest && fs.existsSync(BACKUP)) {
         console.warn('[Bundle Rollback] Attempting to restore previous valid dist-app/ from backup...');
+        let quarantineDir = null;
         try {
           // Failure injection hook for automated testing of rollback restoration failure
           if (process.env.__KN_INJECT_ROLLBACK_FAILURE === '1') {
             throw new Error('Simulated rollback restoration failure');
           }
 
-          // If a partial/corrupted DEST exists, quarantine it instead of blindly deleting
+          // If a partial/corrupted DEST exists, quarantine it without blindly deleting
           if (fs.existsSync(DEST)) {
-            const quarantineDir = path.resolve(ROOT, 'scratch', `.dist-app-quarantine-${Date.now()}`);
+            quarantineDir = path.resolve(ROOT, 'scratch', `.dist-app-quarantine-${Date.now()}`);
             try {
+              if (process.env.__KN_INJECT_QUARANTINE_FAILURE === '1') {
+                throw new Error('Simulated quarantine failure for safety verification');
+              }
               safeMove(DEST, quarantineDir);
               console.warn(`[Bundle Rollback] Moved corrupted/partial destination to quarantine at: ${quarantineDir}`);
             } catch (qErr) {
               console.error(`[Bundle Rollback Error] Could not quarantine destination: ${qErr.message}`);
-              try { fs.rmSync(DEST, { recursive: true, force: true }); } catch (_) {}
+              // Fallback removal of DEST is intentionally omitted to avoid deleting unquarantined data
             }
+          }
+
+          // If DEST still exists and cannot be quarantined, abort restoration without deleting or overwriting it.
+          // Preserve BACKUP, STAGE, and any existing quarantine artifacts intact.
+          if (fs.existsSync(DEST)) {
+            throw new Error('Destination dist-app/ exists and could not be safely quarantined; aborting restoration without deleting or overwriting it.');
           }
 
           safeMove(BACKUP, DEST);
@@ -419,6 +520,12 @@ function buildBundle() {
           console.error(`  - Original Backup: ${BACKUP}`);
           if (fs.existsSync(STAGE)) {
             console.error(`  - Staging Artifact: ${STAGE}`);
+          }
+          if (quarantineDir && fs.existsSync(quarantineDir)) {
+            console.error(`  - Quarantine Artifact: ${quarantineDir}`);
+          }
+          if (fs.existsSync(DEST)) {
+            console.error(`  - Preserved Destination: ${DEST}`);
           }
           console.error(`[Bundle Rollback] Please inspect or restore ${BACKUP} manually.`);
           throw new Error(`Promotion failed (${promoErr.message}) AND Rollback failed (${rollbackErr.message})`);
@@ -436,9 +543,9 @@ function buildBundle() {
 
   } catch (err) {
     console.error(`[Bundle Error] Build failed: ${err.message}`);
-    // If BACKUP exists (i.e. restoration failed), preserve STAGE as well for manual recovery
+    // If BACKUP exists (i.e. restoration failed or was aborted), preserve STAGE as well for manual recovery
     if (fs.existsSync(STAGE) && !fs.existsSync(BACKUP)) {
-      try { fs.rmSync(STAGE, { recursive: true, force: true }); } catch (_) {}
+      try { rmWithRetrySync(STAGE, 3, 50); } catch (_) {}
     }
     process.exit(1);
   }
