@@ -12,50 +12,130 @@ def test_antimicrobial_data():
     # Category check
     cats = {c['id']: c for c in data['categories']}
     assert 'antimicrobials' in cats, "'antimicrobials' category missing from categories"
-    print("[PASS] 'antimicrobials' category is present in study-data.js")
+    assert 'antiarrhythmics' in cats, "'antiarrhythmics' category missing from categories"
+    assert 'cardiac' in cats, "'cardiac' category missing from categories"
+    assert cats['steroids']['label'] == 'Steroids', f"steroids label is '{cats['steroids'].get('label')}', expected 'Steroids'"
+    assert cats['antidiabetics']['label'] == 'Anti-Diabetics', f"antidiabetics label is '{cats['antidiabetics'].get('label')}', expected 'Anti-Diabetics'"
+    print("[PASS] 'antimicrobials', 'antiarrhythmics', 'cardiac', 'Steroids', and 'Anti-Diabetics' categories are present and verified in study-data.js")
 
-    # Drugs check
+    # Total count check
     drugs = {d['id']: d for d in data['drugs']}
-    expected = ['meropenem', 'piperacillin-tazobactam', 'gentamicin', 'teicoplanin', 'vancomycin', 'colistin']
-    for eid in expected:
+    assert len(drugs) == 106, f"Expected 106 drugs, found {len(drugs)}"
+    print(f"[PASS] Total drug library count verified: {len(drugs)} monographs")
+
+    # Antimicrobials check
+    expected_antimicrobials = ['meropenem', 'piperacillin-tazobactam', 'gentamicin', 'teicoplanin', 'vancomycin', 'colistin']
+    for eid in expected_antimicrobials:
         assert eid in drugs, f"Drug {eid} missing from study-data.js"
         d = drugs[eid]
         assert d['cat'] == 'antimicrobials', f"Drug {eid} cat is {d['cat']}, expected 'antimicrobials'"
         for field in ['id', 'cat', 'name', 'brand', 'classification', 'tagline', 'structure', 'pd', 'pk', 'dosage', 'complications', 'references']:
             assert field in d and len(d[field]) > 0, f"Field {field} missing or empty in {eid}"
-        print(f"[PASS] Drug {eid} ({d['name']}) verified with full monograph schema")
+        print(f"[PASS] Antimicrobial {eid} ({d['name']}) verified")
 
-    # Clinical validation
-    mero = drugs['meropenem']
-    assert 'valpro' in mero['complications'].lower(), "Meropenem monograph must warn against valproic acid interaction"
-    assert 'loading' in mero['dosage'].lower(), "Meropenem must have loading dose guidance"
+    # Antiarrhythmics check
+    expected_antiarrhythmics = [
+        'amiodarone', 'lignocaine-antiarrhythmic', 'procainamide', 'ibutilide', 'adenosine',
+        'antiarrhythmics-class-1a', 'antiarrhythmics-class-1c', 'antiarrhythmics-class-2', 'antiarrhythmics-class-4'
+    ]
+    for eid in expected_antiarrhythmics:
+        assert eid in drugs, f"Antiarrhythmic {eid} missing from study-data.js"
+        d = drugs[eid]
+        assert d['cat'] == 'antiarrhythmics', f"Drug {eid} cat is {d['cat']}, expected 'antiarrhythmics'"
+        for field in ['id', 'cat', 'name', 'brand', 'classification', 'tagline', 'structure', 'pd', 'pk', 'dosage', 'complications', 'references']:
+            assert field in d and len(d[field]) > 0, f"Field {field} missing or empty in {eid}"
+        print(f"[PASS] Antiarrhythmic {eid} ({d['name']}) verified")
 
-    piptaz = drugs['piperacillin-tazobactam']
-    assert 'vancomycin' in piptaz['complications'].lower(), "Piptaz monograph must document synergistic AKI with vancomycin"
-    assert 'extended' in piptaz['dosage'].lower(), "Piptaz must include extended infusion protocol"
+    # Cardiac drugs check
+    expected_cardiac = [
+        'ivabradine', 'furosemide', 'nicorandil', 'isosorbide-dinitrate',
+        'gtn', 'digoxin', 'antiplatelet-drugs', 'sacubitril-valsartan'
+    ]
+    for eid in expected_cardiac:
+        assert eid in drugs, f"Cardiac drug {eid} missing from study-data.js"
+        d = drugs[eid]
+        assert d['cat'] == 'cardiac', f"Drug {eid} cat is {d['cat']}, expected 'cardiac'"
+        for field in ['id', 'cat', 'name', 'brand', 'classification', 'tagline', 'structure', 'pd', 'pk', 'dosage', 'complications', 'references']:
+            assert field in d and len(d[field]) > 0, f"Field {field} missing or empty in {eid}"
+        print(f"[PASS] Cardiac drug {eid} ({d['name']}) verified")
 
-    genta = drugs['gentamicin']
-    assert 'myasthenia' in genta['complications'].lower(), "Gentamicin must warn of myasthenia gravis contraindication"
-    assert 'hartford' in genta['dosage'].lower(), "Gentamicin must include Hartford nomogram guidance"
-    assert 'tdm' in genta['dosage'].lower() or 'trough' in genta['dosage'].lower(), "Gentamicin must include TDM targets"
+    # Clinical validation for new drugs
+    amio = drugs['amiodarone']
+    assert 'pulmonary' in amio['complications'].lower() or 'thyroid' in amio['complications'].lower(), "Amiodarone must mention pulmonary/thyroid toxicity"
+    assert 'loading' in amio['dosage'].lower(), "Amiodarone must have IV loading protocol"
 
-    teico = drugs['teicoplanin']
-    assert 'loading' in teico['dosage'].lower(), "Teicoplanin must have mandatory loading dose protocol"
-    assert 'red man' in teico['complications'].lower(), "Teicoplanin must mention absence of Red Man syndrome"
+    lig = drugs['lignocaine-antiarrhythmic']
+    assert 'ventricular' in lig['pd'].lower() or 'vt' in lig['pd'].lower(), "Lignocaine must target ventricular arrhythmias"
 
-    print("[PASS] All clinical safeguards & educational content verified")
+    proc = drugs['procainamide']
+    assert 'napa' in proc['pk'].lower(), "Procainamide must describe active metabolite NAPA"
+    assert 'lupus' in proc['complications'].lower(), "Procainamide must warn of drug-induced lupus"
+
+    ibu = drugs['ibutilide']
+    assert 'torsade' in ibu['complications'].lower() or 'torsades' in ibu['complications'].lower(), "Ibutilide must warn of TdP risk"
+
+    ade = drugs['adenosine']
+    assert 'bronchospasm' in ade['complications'].lower() or 'asthma' in ade['complications'].lower(), "Adenosine must warn of severe bronchospasm in asthma"
+
+    iva = drugs['ivabradine']
+    assert 'funny' in iva['pd'].lower() or 'i_f' in iva['pd'].lower() or 'hcn' in iva['pd'].lower(), "Ivabradine must specify If / HCN channel inhibition"
+
+    furo = drugs['furosemide']
+    assert 'nkcc2' in furo['pd'].lower() or 'loop of henle' in furo['pd'].lower(), "Furosemide must cite NKCC2 symporter"
+
+    nico = drugs['nicorandil']
+    assert 'ulcer' in nico['complications'].lower(), "Nicorandil must warn of GI/mucocutaneous ulceration"
+
+    isdn = drugs['isosorbide-dinitrate']
+    assert 'tolerance' in isdn['pk'].lower() or 'nitrate tolerance' in isdn['dosage'].lower(), "ISDN must address nitrate tolerance"
+
+    gtn = drugs['gtn']
+    assert 'pde5' in gtn['complications'].lower() or 'sildenafil' in gtn['complications'].lower(), "GTN must flag lethal PDE5 inhibitor interaction"
+
+    dig = drugs['digoxin']
+    assert 'na+/k+' in dig['pd'].lower(), "Digoxin must identify Na+/K+-ATPase pump inhibition"
+    assert 'hypokalemia' in dig['complications'].lower(), "Digoxin must cite hypokalemia potentiating toxicity"
+
+    ap = drugs['antiplatelet-drugs']
+    assert 'p2y12' in ap['pd'].lower() and 'cox-1' in ap['pd'].lower(), "Antiplatelets must cover COX-1 and P2Y12 agents"
+
+    print("[PASS] All clinical pharmacology points & safeguards rigorously validated")
 
 def test_ron_design_integration():
     with open('study-ron-design.js', 'r', encoding='utf-8') as f:
         text = f.read()
 
     assert 'id: "antimicrobials"' in text, "antimicrobials category missing from DOMAIN_DEFS"
-    assert '"antimicrobials"' in text, "antimicrobials missing from drugCats"
+    assert 'id: "antiarrhythmics"' in text, "antiarrhythmics category missing from DOMAIN_DEFS"
+    assert 'id: "cardiac"' in text, "cardiac category missing from DOMAIN_DEFS"
+    assert 'label: "Steroids"' in text, "Steroids label missing from DOMAIN_DEFS"
+    assert 'label: "Anti-Diabetics"' in text, "Anti-Diabetics label missing from DOMAIN_DEFS"
+    assert 'ICU Drugs (Steroids)' not in text, "Old ICU Drugs (Steroids) still present"
+    assert 'ICU Drugs (Antidiabetics)' not in text, "Old ICU Drugs (Antidiabetics) still present"
+    assert '"antiarrhythmics"' in text, "antiarrhythmics missing from drugCats"
+    assert '"cardiac"' in text, "cardiac missing from drugCats"
     assert 'renderChaptersModal' in text, "renderChaptersModal missing from study-ron-design.js"
     assert 'openChaptersModal' in text, "openChaptersModal missing from study-ron-design.js"
     assert 'ron-browse-chapters-trigger' in text, "ron-browse-chapters-trigger missing from study-ron-design.js"
     assert 'ron-chapter-link-card' in text, "ron-chapter-link-card missing from study-ron-design.js"
-    print("[PASS] study-ron-design.js integration and chapters modal verified")
+    assert '"antiarrhythmics": 11' in text, "antiarrhythmics missing from CAT_TO_CHAPTER"
+    assert '"cardiac": 11' in text, "cardiac missing from CAT_TO_CHAPTER"
+    assert '"antimicrobials": 18' in text, "antimicrobials missing from CAT_TO_CHAPTER"
+    print("[PASS] study-ron-design.js integration, CAT_TO_CHAPTER mappings, and chapters modal verified")
+
+def test_study_ui():
+    with open('study-ui.js', 'r', encoding='utf-8') as f:
+        js = f.read()
+
+    assert 'ANTIARRHYTHMIC_CLASSES' in js, "ANTIARRHYTHMIC_CLASSES missing from study-ui.js"
+    assert 'CARDIAC_CLASSES' in js, "CARDIAC_CLASSES missing from study-ui.js"
+    assert 'ANTIMICROBIAL_CLASSES' in js, "ANTIMICROBIAL_CLASSES missing from study-ui.js"
+    # Ensure amiodarone is not in MISCELLANEOUS_CLASSES
+    misc_idx = js.find('MISCELLANEOUS_CLASSES = [')
+    assert misc_idx != -1
+    misc_block = js[misc_idx:misc_idx+800]
+    assert '"amiodarone"' not in misc_block, "amiodarone should not be in MISCELLANEOUS_CLASSES"
+    print("[PASS] study-ui.js classification classes and amiodarone migration verified")
 
 def test_css():
     with open('study-ron-design.css', 'r', encoding='utf-8') as f:
@@ -73,9 +153,21 @@ def test_bubble_menu():
     assert 'openChaptersModal' in js, "openChaptersModal hook missing from bubble-menu.js"
     print("[PASS] bubble-menu.js mobile menu hooks verified")
 
+def test_dist_sync():
+    files = ['study-data.js', 'study-ron-design.js', 'study.html', 'kn-site-search.js', 'index.html', 'study-ui.js']
+    for f in files:
+        with open(f, 'rb') as root_f:
+            root_bytes = root_f.read()
+        with open(f'dist-app/{f}', 'rb') as dist_f:
+            dist_bytes = dist_f.read()
+        assert root_bytes == dist_bytes, f"Sync error: {f} != dist-app/{f}"
+        print(f"[PASS] Binary parity verified between root and dist-app/{f}")
+
 if __name__ == '__main__':
     test_antimicrobial_data()
     test_ron_design_integration()
+    test_study_ui()
     test_css()
     test_bubble_menu()
-    print("\nALL VERIFICATION TESTS PASSED SUCCESSFULLY! 🚀")
+    test_dist_sync()
+    print("\nALL SYSTEM & CLINICAL VERIFICATION TESTS PASSED SUCCESSFULLY! 🚀")

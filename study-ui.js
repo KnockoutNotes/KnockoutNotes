@@ -298,9 +298,36 @@
     { label: "Long-Acting & Basal Insulins (Peakless Analogues)", desc: "Microprecipitating modified insulin providing 24-hour flat basal suppression of hepatic glucose output; taken at 75–80% normal dose on morning of surgery.", members: ["insulin-glargine"] },
   ];
 
+  const ANTIARRHYTHMIC_CLASSES = [
+    { label: "Class Ia Antiarrhythmics", desc: "Intermediate sodium channel kinetics, lengthens action potential duration and QT interval.", members: ["procainamide", "antiarrhythmics-class-1a"] },
+    { label: "Class Ib Antiarrhythmics", desc: "Rapid sodium channel kinetics, shortens action potential duration, ventricular tachycardia/fibrillation.", members: ["lignocaine-antiarrhythmic"] },
+    { label: "Class Ic Antiarrhythmics", desc: "Slow sodium channel kinetics, marked Phase 0 depression without changing APD; avoid in structural heart disease.", members: ["antiarrhythmics-class-1c"] },
+    { label: "Class II Antiarrhythmics (Beta-Blockers)", desc: "Depresses SA/AV nodal automaticity, decreases mortality post-MI, rate control in tachyarrhythmias.", members: ["antiarrhythmics-class-2"] },
+    { label: "Class III Antiarrhythmics (K+ Channel Blockers)", desc: "Prolongs action potential duration and effective refractory period; ventricular and supraventricular arrhythmias.", members: ["amiodarone", "ibutilide"] },
+    { label: "Class IV Antiarrhythmics (Calcium Channel Blockers)", desc: "Slows AV nodal conduction and lengthens PR interval; first-line SVT/AF rate control.", members: ["antiarrhythmics-class-4"] },
+    { label: "Class V / Miscellaneous Antiarrhythmics", desc: "Endogenous purinergic nucleoside; transient complete AV block for acute AVNRT/AVRT reversion.", members: ["adenosine"] }
+  ];
+
+  const CARDIAC_CLASSES = [
+    { label: "HCN Channel Blockers (If Funny Current)", desc: "Selective sinus node If current inhibitor for chronic heart failure and stable angina without inotropic or BP reduction.", members: ["ivabradine"] },
+    { label: "Loop Diuretics (High-Ceiling Diuretics)", desc: "Inhibits luminal NKCC2 cotransporter in thick ascending limb of Henle; first-line for acute pulmonary oedema and congestive failure.", members: ["furosemide"] },
+    { label: "K-ATP Channel Openers & Nitrate Hybrids", desc: "Dual mechanism coronary arterial vasodilator and preload reducer with ischaemic preconditioning properties.", members: ["nicorandil"] },
+    { label: "Organic Nitrates & Nitrovasodilators", desc: "Bioactivation to nitric oxide (NO) stimulating guanylyl cyclase and cGMP; potent venodilator relieving myocardial wall stress.", members: ["gtn", "isosorbide-dinitrate"] },
+    { label: "Cardiac Glycosides (Na+/K+-ATPase Inhibitors)", desc: "Positive inotrope and vagomimetic AV nodal blocker for atrial fibrillation with concomitant systolic heart failure.", members: ["digoxin"] },
+    { label: "Antiplatelet Therapies & Coronary Antithrombotics", desc: "Irreversible COX-1 inhibition and P2Y12 ADP receptor blockade for ACS, percutaneous coronary interventions, and stent thrombosis prevention.", members: ["antiplatelet-drugs"] },
+    { label: "Angiotensin Receptor-Neprilysin Inhibitors (ARNI)", desc: "First-line guideline-directed medical therapy for HFrEF; simultaneous AT1 receptor blockade and neprilysin inhibition.", members: ["sacubitril-valsartan"] }
+  ];
+
+  const ANTIMICROBIAL_CLASSES = [
+    { label: "Carbapenems (Beta-Lactams)", desc: "Broad-spectrum bactericidal beta-lactam stability against ESBL and AmpC beta-lactamases; first-line for nosocomial sepsis.", members: ["meropenem"] },
+    { label: "Antipseudomonal Penicillins & Inhibitors", desc: "Broad-spectrum coverage for hospital-acquired pneumonia, intra-abdominal, and neutropenic sepsis.", members: ["piperacillin-tazobactam"] },
+    { label: "Aminoglycosides (30S Inhibitors)", desc: "Concentration-dependent bactericidal action with post-antibiotic effect against multidrug-resistant gram-negative bacilli.", members: ["gentamicin"] },
+    { label: "Glycopeptides & Lipoglycopeptides", desc: "Inhibits bacterial cell wall peptidoglycan synthesis; reserve agents for severe MRSA, enterococcal, and prosthetic infections.", members: ["teicoplanin", "vancomycin"] },
+    { label: "Polymyxins (Cell Membrane Disruptors)", desc: "Cationic detergent disruption of bacterial outer membrane; last-resort reserve for carbapenem-resistant gram-negative pathogens.", members: ["colistin"] }
+  ];
+
   const MISCELLANEOUS_CLASSES = [
     { label: "Antimuscarinic Vagolytics (Anticholinergics)", desc: "Competitive antagonists at muscarinic acetylcholine receptors; vagolysis for bradycardia, antisialagogues, and neostigmine reversal partners.", members: ["atropine", "glycopyrrolate"] },
-    { label: "Class III Antiarrhythmics & Multi-Channel Blockers", desc: "Blocks potassium, sodium, and calcium channels with non-competitive anti-adrenergic action; first-line for shock-refractory VF/pVT and rapid AF.", members: ["amiodarone"] },
     { label: "5-HT3 Receptor Antagonists / Antiemetics", desc: "Selective 5-hydroxytryptamine type 3 receptor antagonism; first-line prophylaxis and treatment for postoperative nausea and vomiting (PONV).", members: ["ondansetron"] },
     { label: "Electrolytes & Membrane Stabilisers", desc: "Critical intravenous ions for neuromuscular excitability, cardiac conduction, acid-base buffering, and hyperkalaemia/hypocalcaemia emergencies.", members: ["magnesium-sulphate", "sodium-bicarbonate", "potassium-chloride", "calcium-gluconate-chloride"] },
     { label: "Toxicology, Lipid Rescue & Pharmacogenetic Antidotes", desc: "Targeted antidotes for Local Anaesthetic Systemic Toxicity (LAST) and life-threatening Malignant Hyperthermia crisis.", members: ["intralipid-20", "dantrolene"] },
@@ -350,6 +377,15 @@
   function antidiabeticsClassificationHTML() {
     return buildClassificationHTML("Classification — by Pharmacological Class & Glycaemic Mechanism", ANTIDIABETIC_CLASSES);
   }
+  function antiarrhythmicsClassificationHTML() {
+    return buildClassificationHTML("Classification — Vaughan Williams & Antiarrhythmic Classes", ANTIARRHYTHMIC_CLASSES);
+  }
+  function cardiacClassificationHTML() {
+    return buildClassificationHTML("Classification — Heart Failure, Nitrates & Antiplatelet Classes", CARDIAC_CLASSES);
+  }
+  function antimicrobialsClassificationHTML() {
+    return buildClassificationHTML("Classification — Antimicrobial Classes & Mechanisms", ANTIMICROBIAL_CLASSES);
+  }
   function miscellaneousClassificationHTML() {
     return buildClassificationHTML("Classification — by Pharmacological Class & Clinical Target", MISCELLANEOUS_CLASSES);
   }
@@ -368,6 +404,9 @@
       if (!list.length) return;
       if (state.cat === "all" || f) html += `<h2 class="st-group-title"><span>${c.icon}</span> ${esc(c.label)}</h2>`;
       if (c.id === "opioids" && state.cat === "opioids" && !f) html += opioidClassificationHTML();
+      if (c.id === "antiarrhythmics" && state.cat === "antiarrhythmics" && !f) html += antiarrhythmicsClassificationHTML();
+      if (c.id === "cardiac" && state.cat === "cardiac" && !f) html += cardiacClassificationHTML();
+      if (c.id === "antimicrobials" && state.cat === "antimicrobials" && !f) html += antimicrobialsClassificationHTML();
       if (c.id === "relaxants" && state.cat === "relaxants" && !f) html += relaxantClassificationHTML();
       if (c.id === "induction" && state.cat === "induction" && !f) html += inductionClassificationHTML();
       if (c.id === "local" && state.cat === "local" && !f) html += localClassificationHTML();

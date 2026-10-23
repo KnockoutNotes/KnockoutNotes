@@ -352,19 +352,21 @@
       icon: "💊",
       desc: "Pharmacological monographs, receptor dynamics, kinetics and dosing guidelines",
       cats: [
-        { id: "all", label: "All Drugs", icon: "✦", desc: "Complete library of 90 drug monographs", filter: (it) => !it.sections },
+        { id: "all", label: "All Drugs", icon: "✦", desc: "Complete library of 106 drug monographs", filter: (it) => !it.sections },
         { id: "antimicrobials", label: "Antimicrobial Therapy", icon: "🦠", desc: "ICU antibiotics — Meropenem, Piperacillin-Tazobactam (Piptaz), Gentamicin, Teicoplanin, Vancomycin & Colistin", filter: (it) => it.cat === "antimicrobials" },
+        { id: "antiarrhythmics", label: "Antiarrhythmics", icon: "⚡", desc: "Vaughan Williams classification — Amiodarone, Lignocaine, Procainamide, Ibutilide, Adenosine & class overviews", filter: (it) => it.cat === "antiarrhythmics" },
+        { id: "cardiac", label: "Cardiac Drugs", icon: "🫀", desc: "Heart failure, nitrates, anti-anginal & antiplatelet drugs — Ivabradine, Furosemide, GTN, ISDN, Nicorandil, Digoxin, Antiplatelets & ARNI", filter: (it) => it.cat === "cardiac" || it.cat === "cardiac_drugs" },
         { id: "induction", label: "Induction Agents", icon: "💉", desc: "Intravenous hypnotics (propofol, etomidate, ketamine, thiopental)", filter: (it) => it.cat === "induction" },
         { id: "relaxants", label: "Neuromuscular Blockers", icon: "⚡", desc: "Depolarising and non-depolarising neuromuscular blockers", filter: (it) => it.cat === "relaxants" },
         { id: "reversal", label: "Reversal Agents", icon: "🔄", desc: "Sugammadex, neostigmine, glycopyrrolate & atropine", filter: (it) => it.cat === "reversal" },
         { id: "opioids", label: "Opioids", icon: "🌿", desc: "Analgesic opioids and pure opioid receptor antagonists", filter: (it) => it.cat === "opioids" },
         { id: "nsaids", label: "Non-opioid Analgesics", icon: "💊", desc: "NSAIDs, paracetamol, parecoxib and adjuvant analgesics", filter: (it) => it.cat === "nsaids" },
         { id: "vasopressors", label: "Vasopressors & Inotropes", icon: "❤️", desc: "Catecholamines, vasopressin, milrinone & inotropes", filter: (it) => it.cat === "vasopressors" },
-        { id: "antihypertensives", label: "Cardiovascular Drugs", icon: "🩸", desc: "Antihypertensives, beta-blockers and antiarrhythmics", filter: (it) => it.cat === "antihypertensives" },
+        { id: "antihypertensives", label: "Antihypertensives", icon: "🩸", desc: "ACE inhibitors, ARBs, calcium channel blockers & systemic antihypertensives", filter: (it) => it.cat === "antihypertensives" },
         { id: "alpha2", label: "Sedatives (Alpha-2)", icon: "🧠", desc: "Dexmedetomidine, clonidine & neuro-sedatives", filter: (it) => it.cat === "alpha2" },
         { id: "local", label: "Local Anaesthetics", icon: "💉", desc: "Aminoamides and aminoesters for regional anaesthesia", filter: (it) => it.cat === "local" },
-        { id: "steroids", label: "ICU Drugs (Steroids)", icon: "🧬", desc: "Hydrocortisone, dexamethasone & methylprednisolone", filter: (it) => it.cat === "steroids" },
-        { id: "antidiabetics", label: "ICU Drugs (Antidiabetics)", icon: "🩸", desc: "Insulin protocols and glycemic management", filter: (it) => it.cat === "antidiabetics" },
+        { id: "steroids", label: "Steroids", icon: "🧬", desc: "Hydrocortisone, dexamethasone & methylprednisolone", filter: (it) => it.cat === "steroids" },
+        { id: "antidiabetics", label: "Anti-Diabetics", icon: "🩸", desc: "Insulin protocols and glycemic management", filter: (it) => it.cat === "antidiabetics" },
         { id: "pregnancy", label: "Obstetric & Pediatric Drugs", icon: "🤰", desc: "Drugs in pregnancy, lactation and uterotonics", filter: (it) => it.cat === "pregnancy" },
         { id: "miscellaneous", label: "Emergency Drugs", icon: "🚨", desc: "Dantrolene, intralipid, adrenaline & resuscitation drugs", filter: (it) => it.cat === "miscellaneous" }
       ]
@@ -408,7 +410,7 @@
     if (item && item.id && (item.id.startsWith("cc-") || item.id.startsWith("cc_") || item.cat === "cc_neuro")) return "critical";
     if (!catId || catId === "all") return activeDomain || "anaesthesia";
     if (catId.startsWith("cc_") || catId === "cc_neuro") return "critical";
-    const drugCats = ["induction", "relaxants", "reversal", "opioids", "nsaids", "vasopressors", "antihypertensives", "alpha2", "local", "steroids", "antidiabetics", "pregnancy", "miscellaneous", "antimicrobials"];
+    const drugCats = ["induction", "relaxants", "reversal", "opioids", "nsaids", "vasopressors", "antihypertensives", "alpha2", "local", "steroids", "antidiabetics", "pregnancy", "miscellaneous", "antimicrobials", "antiarrhythmics", "cardiac"];
     if (drugCats.includes(catId)) return "drugs";
     const critCats = ["respiratory", "shock", "abg", "antibiotics", "poisoning", "sepsis", "neuro_icu", "airway_icu", "cardio_icu"];
     if (critCats.includes(catId)) return "critical";
@@ -463,7 +465,10 @@
     "alpha2": 17,
     "steroids": 20,
     "antidiabetics": 20,
-    "miscellaneous": 17
+    "miscellaneous": 17,
+    "antiarrhythmics": 11,
+    "cardiac": 11,
+    "antimicrobials": 18
   };
 
   const STUDY_ITEM_TO_CHAPTER = {
@@ -1155,6 +1160,28 @@
       return "Antihypertensive Agents";
     }
 
+    if (cat === "antiarrhythmics") {
+      if (cls.includes("class ia") || cls.includes("class 1a")) return "CLASS IA ANTIARRHYTHMIC";
+      if (cls.includes("class ib") || cls.includes("class 1b")) return "CLASS IB ANTIARRHYTHMIC";
+      if (cls.includes("class ic") || cls.includes("class 1c")) return "CLASS IC ANTIARRHYTHMIC";
+      if (cls.includes("class ii") || cls.includes("class 2")) return "CLASS II ANTIARRHYTHMIC";
+      if (cls.includes("class iii") || cls.includes("class 3")) return "CLASS III ANTIARRHYTHMIC";
+      if (cls.includes("class iv") || cls.includes("class 4")) return "CLASS IV ANTIARRHYTHMIC";
+      if (cls.includes("purinergic") || cls.includes("nucleoside") || (it.name || "").toLowerCase().includes("adenosine")) return "CLASS V • PURINERGIC";
+      return "ANTIARRHYTHMIC";
+    }
+
+    if (cat === "cardiac") {
+      if (cls.includes("hcn") || (it.name || "").toLowerCase().includes("ivabradine")) return "HCN CHANNEL BLOCKER";
+      if (cls.includes("loop diuretic") || (it.name || "").toLowerCase().includes("furosemide")) return "LOOP DIURETIC";
+      if (cls.includes("k-atp") || (it.name || "").toLowerCase().includes("nicorandil")) return "K-ATP OPENER / NITRATE";
+      if (cls.includes("nitrate") || (it.name || "").toLowerCase().includes("isosorbide") || (it.name || "").toLowerCase().includes("nitroglycerin") || (it.name || "").toLowerCase().includes("gtn")) return "ORGANIC NITRATE";
+      if (cls.includes("glycoside") || (it.name || "").toLowerCase().includes("digoxin")) return "CARDIAC GLYCOSIDE";
+      if (cls.includes("antiplatelet") || (it.name || "").toLowerCase().includes("antiplatelet")) return "ANTIPLATELET AGENT";
+      if (cls.includes("arni") || (it.name || "").toLowerCase().includes("sacubitril")) return "ARNI / NEPRILYSIN INHIBITOR";
+      return "CARDIAC DRUG";
+    }
+
     if (cat === "antidiabetics") {
       if (cls.includes("insulin")) return "Insulins & Basal Analogues";
       if (cls.includes("biguanide")) return "Biguanides";
@@ -1164,6 +1191,28 @@
       if (cls.includes("dpp-4")) return "DPP-4 Inhibitors";
       if (cls.includes("thiazolidinedione") || cls.includes("tzd")) return "Thiazolidinediones";
       return "Antidiabetic Agents";
+    }
+
+    if (cat === "antiarrhythmics") {
+      if (cls.includes("class ia") || cls.includes("class 1a")) return "Class Ia — Fast Sodium Channel Blockers (Intermediate Kinetics)";
+      if (cls.includes("class ib") || cls.includes("class 1b")) return "Class Ib — Fast Sodium Channel Blockers (Rapid Kinetics)";
+      if (cls.includes("class ic") || cls.includes("class 1c")) return "Class Ic — Fast Sodium Channel Blockers (Slow Kinetics)";
+      if (cls.includes("class ii") || cls.includes("class 2") || cls.includes("beta-blocker")) return "Class II — Beta-Adrenoceptor Blockers";
+      if (cls.includes("class iii") || cls.includes("class 3") || cls.includes("potassium channel")) return "Class III — Potassium Channel Blockers (Action Potential Prolongers)";
+      if (cls.includes("class iv") || cls.includes("class 4") || cls.includes("calcium channel")) return "Class IV — L-Type Calcium Channel Blockers (AV Nodal Retarders)";
+      if (cls.includes("class v") || cls.includes("purinergic") || cls.includes("cardiac glycoside") || cls.includes("nucleoside")) return "Class V / Miscellaneous Antiarrhythmic Agents";
+      return "Antiarrhythmic Agents";
+    }
+
+    if (cat === "cardiac") {
+      if (cls.includes("hcn") || cls.includes("funny current") || cls.includes("hyperpolarization-activated")) return "HCN Channel Blockers (Sinus Node Retarders)";
+      if (cls.includes("loop diuretic") || cls.includes("sulfamoyl")) return "Loop Diuretics (High-Ceiling Diuretics)";
+      if (cls.includes("k-atp") || cls.includes("potassium channel opener") || cls.includes("nicorandil")) return "Potassium Channel Openers & Nitrate Hybrids";
+      if (cls.includes("organic nitrate") || cls.includes("nitroglycerin") || cls.includes("nitrate vasodilator")) return "Organic Nitrates & Nitrovasodilators";
+      if (cls.includes("cardiac glycoside") || cls.includes("na+/k+-atpase")) return "Cardiac Glycosides (Na+/K+-ATPase Inhibitors)";
+      if (cls.includes("antiplatelet") || cls.includes("p2y12") || cls.includes("cyclooxygenase-1") || cls.includes("glycoprotein iib/iiia")) return "Antiplatelet Therapies & Coronary Antithrombotics";
+      if (cls.includes("arni") || cls.includes("neprilysin") || cls.includes("sacubitril")) return "Angiotensin Receptor-Neprilysin Inhibitors (ARNI)";
+      return "Cardiac & Heart Failure Pharmacology";
     }
 
     if (cat === "antimicrobials") {
@@ -1287,6 +1336,10 @@
     if (cls.includes("carbapenem") || cls.includes("penicillin") || cls.includes("beta-lactam")) return "ron-badge-nondepol";
     if (cls.includes("aminoglycoside") || cls.includes("glycopeptide")) return "ron-badge-amide";
     if (cls.includes("polymyxin")) return "ron-badge-depol";
+    if (cls.includes("class iii") || cls.includes("class 3") || cls.includes("amiodarone") || cls.includes("ibutilide")) return "ron-badge-antagonist";
+    if (cls.includes("class ib") || cls.includes("class 1b") || cls.includes("lignocaine")) return "ron-badge-amide";
+    if (cls.includes("loop diuretic") || cls.includes("furosemide")) return "ron-badge-depol";
+    if (cls.includes("nitrate") || cls.includes("antiplatelet") || cls.includes("arni")) return "ron-badge-nondepol";
     return "";
   }
 

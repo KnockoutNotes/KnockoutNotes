@@ -116,13 +116,13 @@ window.KN_STUDY = {
     },
     {
       "id": "steroids",
-      "label": "Corticosteroids",
+      "label": "Steroids",
       "icon": "🛡️",
       "desc": "Perioperative anti-inflammatory, antiemetic & stress-dose glucocorticoids"
     },
     {
       "id": "antidiabetics",
-      "label": "Antidiabetic Agents",
+      "label": "Anti-Diabetics",
       "icon": "🩸",
       "desc": "Oral hypoglycaemics, GLP-1 receptor agonists & perioperative insulin management"
     },
@@ -245,6 +245,18 @@ window.KN_STUDY = {
       "label": "Antimicrobial Therapy",
       "icon": "🦠",
       "desc": "ICU Antimicrobials & Antibiotics — Meropenem, Piperacillin-Tazobactam (Piptaz), Gentamicin, Teicoplanin, Vancomycin & Colistin"
+    },
+    {
+      "id": "antiarrhythmics",
+      "label": "Antiarrhythmics",
+      "icon": "⚡",
+      "desc": "Vaughan Williams Antiarrhythmics — Amiodarone, Lignocaine, Procainamide, Ibutilide, Adenosine & Class Overviews"
+    },
+    {
+      "id": "cardiac",
+      "label": "Cardiac Drugs",
+      "icon": "🫀",
+      "desc": "Heart Failure, Anti-Anginal, Nitrates & Antiplatelet Drugs — Ivabradine, Furosemide, GTN, ISDN, Nicorandil, Digoxin, Antiplatelets & ARNI"
     }
   ],
   "topics": [
@@ -18912,7 +18924,7 @@ window.KN_STUDY = {
     },
     {
       "id": "amiodarone",
-      "cat": "miscellaneous",
+      "cat": "antiarrhythmics",
       "name": "Amiodarone",
       "aliases": [
         "cordarone",
@@ -19156,6 +19168,592 @@ window.KN_STUDY = {
         "Tsuji BT, et al. International Consensus Guidelines for the Optimal Use of the Polymyxins. Pharmacotherapy (2019).",
         "Sanford Guide to Antimicrobial Therapy, 54th ed.",
         "Nation RL, et al. Colistin in the 21st century. Curr Opin Infect Dis."
+      ]
+    },
+    {
+      "id": "lignocaine-antiarrhythmic",
+      "cat": "antiarrhythmics",
+      "name": "Lignocaine (Lidocaine IV)",
+      "aliases": [
+        "lignocaine iv",
+        "lidocaine antiarrhythmic",
+        "xylocaine iv",
+        "class 1b antiarrhythmic"
+      ],
+      "brand": "Xylocaine IV / Lignocaine 2%",
+      "classification": "Vaughan Williams Class Ib Antiarrhythmic • Fast Inactivated Sodium Channel Blocker",
+      "tagline": "State-dependent, use-dependent Class Ib sodium channel blocker — gold standard for ventricular arrhythmias in ischemia and cardiac arrest",
+      "tags": [
+        "antiarrhythmic",
+        "class 1b",
+        "ventricular tachycardia",
+        "ventricular fibrillation",
+        "ACLS",
+        "ischemia",
+        "cardiac"
+      ],
+      "source": "AHA ACLS Guidelines (2020 / reaffirmed 2024); FDA Prescribing Information — Lidocaine Hydrochloride Injection; Miller's Anesthesia, 10th ed., Ch. 18 & 65; Stoelting's Pharmacology & Physiology, 5th ed.",
+      "structure": "Lignocaine (2-(diethylamino)-N-(2,6-dimethylphenyl)acetamide) is an aminoethylamide derivative. Structurally, it consists of a lipophilic aromatic ring (2,6-dimethylbenzene) linked via an intermediate amide bond to a hydrophilic tertiary amine group (diethylamino). Unlike Class Ia agents, lignocaine has high lipid solubility and a low pKa (7.9), with approximately 25% non-ionized at physiological pH (7.4), allowing rapid transmembrane diffusion. In IV antiarrhythmic formulations, it is supplied as preservative-free lignocaine hydrochloride (1% or 2% sterile aqueous solution, 10 mg/mL or 20 mg/mL).",
+      "pd": "Classified as a Vaughan Williams Class Ib antiarrhythmic:\n\n• Electrophysiological Mechanism:\n  - Fast, State-Dependent Sodium Channel Inactivation: Selectively binds with high affinity to voltage-gated cardiac sodium channels (Nav1.5) in the open and inactivated states, dissociating rapidly during diastole (fast on-off kinetics, tau < 0.5 s).\n  - Preferential Affinity for Ischemic & Tachycardic Myocardium: Binds predominantly to partially depolarized, ischemic, or rapidly firing cardiac myocytes (where channels spend more time in the inactivated state). In normal tissue at physiological rates, drug dissociates completely during diastole, causing minimal conduction slowing (no QRS widening in normal myocardium).\n  - Shortens Action Potential Duration (APD) & Effective Refractory Period (ERP): Blocks the small late persistent inward sodium current (INa-late), accelerating phase 3 repolarization and shortening APD, while proportionally increasing the ERP/APD ratio (suppressing re-entry circuits).\n  - Automaticity Suppression: Depresses phase 4 diastolic depolarization in ectopic ventricular pacemakers (Purkinje fibers) without significantly impairing normal sinoatrial (SA) or atrioventricular (AV) nodal conduction.\n  - Digitalis Toxicity Reversal: Counteracts digoxin-induced delayed afterdepolarizations (DADs) and triggered activity by attenuating intracellular sodium accumulation.",
+      "pk": "• Rapid Biphasic Distribution: High initial volume of distribution (Vdss ≈ 1.1–1.5 L/kg) with rapid alpha-distribution half-life (t1/2alpha ≈ 8–10 minutes) into brain, myocardium, liver, and kidneys, terminating the clinical effect of an initial single bolus within 15–20 minutes.\n• Plasma Protein Binding: 60%–80%, bound predominantly to alpha-1-acid glycoprotein (AAG) and secondarily to albumin. AAG levels rise sharply after acute myocardial infarction, trauma, surgery, and inflammation, binding more free drug.\n• Hepatic Metabolism (High Extraction Ratio ≈ 0.7): Rapidly metabolized in the liver via cytochrome P450 enzymes (CYP1A2 and CYP3A4) through N-deethylation into active metabolites: monoethylglycinexylidide (MEGX, possesses 80% antiarrhythmic potency and proconvulsant liability) and glycinexylidide (GX, less active, excreted renally). Clearance depends heavily on hepatic blood flow (cardiogenic shock, severe heart failure, or co-administered beta-blockers reduce clearance by 30%–50%).\n• Elimination Half-Life: Terminal half-life is 1.5–2 hours following a single IV bolus, but extends to 3–5+ hours (context-sensitive half-time increases) after continuous infusions lasting > 24 hours due to saturation of peripheral tissue compartments.\n• Excretion: Less than 10% excreted unchanged in urine.",
+      "dosage": "AHA ACLS & Resuscitation Protocols:\n\n• Pulseless Ventricular Fibrillation (VF) / Pulseless Ventricular Tachycardia (pVT) Refractory to Defibrillation:\n  - Initial Dose: 1.0 mg/kg to 1.5 mg/kg IV/IO rapid push (administer after 2nd or 3rd shock if amiodarone is unavailable or as second-line agent).\n  - Repeat Dose: 0.5 mg/kg to 0.75 mg/kg IV/IO push every 5 to 10 minutes if VF/pVT persists (maximum cumulative dose: 3.0 mg/kg).\n\n• Stable Monomorphic Ventricular Tachycardia / Frequent Polymorphic PVCs in Acute Ischemia:\n  - Loading Dose: 1.0 mg/kg to 1.5 mg/kg slow IV bolus over 2 to 3 minutes.\n  - Maintenance Infusion: Immediately follow loading dose with a continuous IV infusion of 1 to 4 mg/min (20 to 50 mcg/kg/min).\n  - Preparation: 1 g in 250 mL D5W or Normal Saline (4 mg/mL) or 2 g in 500 mL.\n\n• Dosage Adjustments in Heart Failure, Shock & Hepatic Disease:\n  - Reduce maintenance infusion rate by 50% (1 to 2 mg/min) in patients with congestive heart failure, cardiogenic shock, cirrhosis, or age > 70 years to prevent toxic accumulation.\n  - Therapeutic Serum Concentration Range: 1.5 to 5.0 mcg/mL (toxicity manifests above 5.0 mcg/mL; severe seizures and cardiac arrest occur > 10.0 mcg/mL).",
+      "offLabel": "Systemic multimodal analgesia and opioid-sparing perioperative infusion (1.5 mg/kg bolus, then 1.5–2 mg/kg/h continuous IV); suppression of hemodynamic and cough response to tracheal intubation and extubation (1.0–1.5 mg/kg IV 90 seconds prior); treatment of persistent hiccups (singultus); blunting propofol injection pain (20–40 mg IV with venous occlusion).",
+      "complications": "• Central Nervous System Toxicity (LAST Spectrum): Progresses dose-dependently from lightheadedness, circumoral numbness, metallic taste, tinnitus, slurred speech, visual disturbances, and tremor to confusion, generalized tonic-clonic seizures, and profound coma with respiratory arrest.\n• Cardiovascular Depression (at toxic concentrations > 5–10 mcg/mL): Sinus bradycardia, sinus arrest, PR and QRS prolongation, severe hypotension, high-grade AV block, and asystole.\n• Accumulation of MEGX Metabolite: Prolonged continuous infusions (> 24–48 hours) or renal impairment lead to MEGX accumulation, triggering confusion, agitation, and lowered seizure threshold even with therapeutic parent drug levels.\n• Contraindications: Severe SA nodal dysfunction, 2nd or 3rd degree AV nodal block without functioning pacemaker, Stokes-Adams attacks, Wolff-Parkinson-White syndrome with accessory pathway conduction, and severe hypersensitivity to amide local anaesthetics.\n• Overdose Treatment: Discontinue infusion immediately. Support airway and oxygenation; administer IV Lipid Emulsion 20% (Intralipid: 1.5 mL/kg bolus, then 0.25 mL/kg/min) for cardiovascular collapse; administer benzodiazepines (midazolam 1–2 mg) for seizures.",
+      "references": [
+        "AHA Guidelines for CPR and ECC: Adult Advanced Cardiovascular Life Support (ACLS 2020 / reaffirmed 2024). Circulation.",
+        "FDA Prescribing Information — Lidocaine Hydrochloride Injection, Hospira / Pfizer.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 35 (Local Anesthetics), Elsevier.",
+        "Stoelting's Pharmacology & Physiology in Anesthetic Practice, 5th ed., Wolters Kluwer."
+      ]
+    },
+    {
+      "id": "procainamide",
+      "cat": "antiarrhythmics",
+      "name": "Procainamide",
+      "aliases": [
+        "procainamide hcl",
+        "pronestyl",
+        "procanbid",
+        "class 1a antiarrhythmic"
+      ],
+      "brand": "Pronestyl / Procanbid",
+      "classification": "Vaughan Williams Class Ia Antiarrhythmic • Intermediate Sodium & Potassium Channel Blocker",
+      "tagline": "Intermediate Class Ia sodium and potassium channel blocker — drug of choice for stable pre-excited atrial fibrillation in WPW and refractory ventricular tachycardia",
+      "tags": [
+        "antiarrhythmic",
+        "class 1a",
+        "WPW",
+        "atrial fibrillation",
+        "ventricular tachycardia",
+        "NAPA",
+        "lupus-like"
+      ],
+      "source": "AHA ACLS Guidelines (2020 / reaffirmed 2024); FDA Prescribing Information — Procainamide Hydrochloride Injection; ACC/AHA/HRS Guidelines for Management of Adult Patients with Supraventricular Tachycardia; UpToDate (2025/2026).",
+      "structure": "Procainamide hydrochloride (4-amino-N-[2-(diethylamino)ethyl]benzamide monohydrochloride) is a synthetic derivative of the local anaesthetic procaine. Chemically, it differs from procaine by substitution of a stable amide bond (-CO-NH-) for the labile ester bond (-CO-O-). This structural modification dramatically slows enzymatic degradation by plasma pseudocholinesterases, prolonging systemic half-life and conferring oral and intravenous antiarrhythmic utility.",
+      "pd": "Classified as a Vaughan Williams Class Ia antiarrhythmic with dual channel-blocking properties:\n\n• Electrophysiological Actions:\n  - Intermediate Sodium Channel Blockade (INa): Binds to open state voltage-gated sodium channels with intermediate dissociation kinetics (tau ≈ 1–5 s). Depresses phase 0 maximum upstroke velocity (dV/dt), slowing conduction velocity across atrial muscle, ventricular myocardium, the His-Purkinje network, and accessory bypass tracts.\n  - Potassium Channel Blockade (IKr): Concurrently blocks delayed rectifier potassium currents, delaying phase 3 repolarization and prolonging the cardiac action potential duration (APD) and effective refractory period (ERP) in atrial and ventricular tissues.\n  - Wolff-Parkinson-White (WPW) Specificity: Markedly increases refractoriness and slows antegrade conduction velocity within the accessory bypass tract (Bundle of Kent), making it the primary drug of choice for hemodynamically stable pre-excited atrial fibrillation!\n  - ECG Effects: Modest widening of the QRS complex (conduction slowing) and prolongation of the QT/QTc interval (delayed repolarization); increases PR interval mildly.\n  - Peripheral Vasodilation & Ganglionic Blockade: Causes peripheral arteriolar dilation via weak alpha-adrenergic blockade and ganglionic inhibition, which can precipitate hypotension during rapid IV infusion.",
+      "pk": "• Volume of Distribution: 1.5 to 2.2 L/kg, distributing widely into myocardial and peripheral tissues.\n• Protein Binding: Approximately 15% to 20% bound to plasma proteins.\n• Hepatic Metabolism & Active Metabolite (NAPA):\n  - Metabolized in the liver via polymorphic N-acetyltransferase 2 (NAT2) into N-acetylprocainamide (NAPA).\n  - Clinical Phenotypes: 'Rapid acetylators' convert up to 30%–40% to NAPA; 'slow acetylators' convert only 15%–20% (slow acetylators are at much higher risk for drug-induced lupus).\n  - Electrophysiological Profile of NAPA: NAPA possesses pure Class III antiarrhythmic activity (blocks potassium channels, prolongs QTc without significant sodium channel block) and has an elimination half-life twice as long as parent procainamide (6–8 hours vs 3–4 hours).\n• Elimination Half-Life: Parent procainamide t1/2 is 2.5 to 4 hours in healthy adults; extends to 10–14 hours in severe renal failure.\n• Excretion: 50%–70% excreted unchanged in urine; NAPA is eliminated almost exclusively (>85%) by renal excretion (accumulates dangerously in renal impairment, triggering Torsades de Pointes).",
+      "dosage": "AHA ACLS & Acute Arrhythmia Guidelines:\n\n• Hemodynamically Stable Monomorphic VT / Pre-Excited Atrial Fibrillation in WPW / Recurrent Hemodynamically Stable SVT:\n  - IV Loading Infusion: Administer 20 to 50 mg/min as a controlled continuous infusion (avoid rapid bolus pushes to prevent acute cardiovascular collapse).\n  - Alternative Intermittent Bolus: 100 mg IV given slowly over 5 minutes every 5 minutes.\n  - Maximum Loading Dose: Continue until one of the following 4 endpoints is reached:\n    (1) Arrhythmia is terminated / suppressed;\n    (2) Severe hypotension ensues;\n    (3) QRS complex widens by > 50% from baseline;\n    (4) Maximum cumulative dose of 17 mg/kg (approximately 1,000 mg to 1,200 mg in a 70 kg adult) has been administered.\n  - Continuous Maintenance Infusion: Immediately follow successful loading with 1 to 4 mg/min continuous IV infusion (diluted in D5W or Normal Saline).\n\n• Renal Impairment Dosage Adjustments:\n  - CrCl 10–50 mL/min: Reduce maintenance infusion rate by 25%–50% (1 to 2 mg/min).\n  - CrCl < 10 mL/min or Dialysis: Reduce infusion by 50%–75% (0.5 to 1 mg/min) and monitor both procainamide and NAPA levels closely.\n  - Therapeutic Serum Drug Targets: Procainamide 4 to 10 mcg/mL; NAPA 10 to 20 mcg/mL (combined procainamide + NAPA level must remain < 25–30 mcg/mL).",
+      "offLabel": "Chemical cardioversion of recent-onset atrial fibrillation in patients without structural heart disease; suppression of junctional ectopic tachycardia (JET) in paediatric postoperative cardiac surgery.",
+      "complications": "• ACUTE TOXICITY (During IV Infusion):\n  - Hypotension & Cardiovascular Collapse: Caused by ganglionic blockade and peripheral arteriolar vasodilation; manage by slowing infusion rate and IV fluids/vasopressors.\n  - Conduction Blocks & Asystole: Marked QRS widening (>50%) or PR prolongation warns of impending complete heart block, ventricular standstill, or asystole.\n  - Torsades de Pointes (Proarrhythmia): QTc prolongation mediated by procainamide and NAPA accumulation can trigger pause-dependent Torsades de Pointes polymorphic VT (especially in hypokalemia, hypomagnesemia, or bradycardia).\n• CHRONIC TOXICITY (Prolonged Therapy):\n  - Drug-Induced Systemic Lupus Erythematosus (DILE): Occurs in 20%–30% of patients treated chronically (> 6 months). Manifests as polyarthralgia, arthritis, pleuritis, pericarditis, fever, and positive antinuclear antibodies (ANA) and anti-histone antibodies (95%+ positive). Sparing of CNS and kidneys; resolves upon drug discontinuation. Significantly more frequent in slow acetylators.\n  - Bone Marrow Suppression: Agranulocytosis, neutropenia, and thrombocytopenia (rare but fatal; requires baseline and periodic CBC).\n• Contraindications: Second- or third-degree AV block (without permanent pacemaker), baseline severe QTc prolongation (>500 ms), Torsades de Pointes history, systemic lupus erythematosus, and severe heart failure (decompensated).",
+      "references": [
+        "AHA Guidelines for CPR and Emergency Cardiovascular Care: Adult ACLS. Circulation (2020 / 2024).",
+        "FDA Prescribing Information — Procainamide Hydrochloride Injection, Hospira / US FDA.",
+        "Page RL, et al. 2015 ACC/AHA/HRS Guideline for the Management of Adult Patients With Supraventricular Tachycardia. J Am Coll Cardiol.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 41 (Management of Arrhythmias)."
+      ]
+    },
+    {
+      "id": "ibutilide",
+      "cat": "antiarrhythmics",
+      "name": "Ibutilide",
+      "aliases": [
+        "ibutilide fumarate",
+        "corvert",
+        "class 3 antiarrhythmic"
+      ],
+      "brand": "Corvert",
+      "classification": "Vaughan Williams Class III Antiarrhythmic • Rapid Inward Sodium & Delayed Rectifier Potassium Modulator",
+      "tagline": "Pure Class III antiarrhythmic for rapid pharmacological cardioversion of acute atrial flutter & fibrillation — carries high Torsades de Pointes risk requiring ECG surveillance",
+      "tags": [
+        "antiarrhythmic",
+        "class 3",
+        "atrial fibrillation",
+        "atrial flutter",
+        "cardioversion",
+        "torsades",
+        "corvert"
+      ],
+      "source": "FDA Prescribing Information — Corvert (ibutilide fumarate injection), Pfizer; ACC/AHA/ESC Guidelines for the Management of Patients With Atrial Fibrillation; UpToDate (2025/2026).",
+      "structure": "Ibutilide fumarate (N-[4-[4-(ethylheptylamino)-1-hydroxybutyl]phenyl]methanesulfonamide (2E)-but-2-enedioate) is a synthetic methanesulfonamide derivative structurally related to sotalol and dofetilide. It contains a sulfonamide moiety linked to a substituted aromatic core. Formulated as a sterile clear aqueous solution of the fumarate salt (0.1 mg/mL) intended exclusively for intravenous infusion.",
+      "pd": "Classified as a pure Vaughan Williams Class III antiarrhythmic with a unique dual electrophysiological mechanism:\n\n• Dual Electrophysiological Actions:\n  (1) Activation of Slow Inward Sodium Current (INa-slow): Uniquely promotes and enhances a slow, inward sodium window current during phase 2 of the cardiac action potential, directly sustaining myocardial depolarization.\n  (2) Blockade of Rapid Delayed Rectifier Potassium Current (IKr): Concurrently blocks the IKr potassium channel (HERG channel), retarding outward potassium movement during phase 3 repolarization.\n  - Prolongation of APD & Refractoriness: These synergistic actions produce profound prolongation of the cardiac action potential duration (APD) and effective refractory period (ERP) in both atrial and ventricular myocardium.\n  - Zero Effect on Conduction Velocity: Has no significant inhibitory effect on fast sodium channels (phase 0 dV/dt is unaltered; QRS width remains narrow) and does not block beta-adrenoceptors or L-type calcium channels (minimal negative inotropic effect).\n  - Atrial Flutter vs Atrial Fibrillation Conversion Efficacy: Exceptionally effective for terminating re-entrant atrial flutter (conversion rates 70%–80%, typical time to conversion < 30 minutes); converts recent-onset atrial fibrillation (<90 days) in 45%–50% of patients.",
+      "pk": "• Volume of Distribution: Large steady-state volume of distribution (Vdss ≈ 11 L/kg), reflecting extensive peripheral tissue uptake.\n• Plasma Protein Binding: Approximately 40%, primarily bound to serum albumin.\n• Hepatic Metabolism: Extensively oxidized in the liver via multiple cytochrome P450 pathways into 8 metabolites. One metabolite (omega-hydroxyibutilide) possesses Class III electrophysiological activity equivalent to parent ibutilide.\n• Elimination Half-Life: Terminal elimination half-life averages 6 hours (range 2 to 12 hours).\n• Clearance & Excretion: High systemic clearance (≈ 29 mL/min/kg). Approximately 80% is excreted in urine (7% unchanged parent drug), with remainder eliminated in feces.",
+      "dosage": "AHA/ACC & FDA Labeling Protocol (Requires Continuous Defibrillator & ECG Telemetry):\n\n• Adult Dosing for Rapid Cardioversion of Atrial Fibrillation / Atrial Flutter:\n  - Patient Weight ≥ 60 kg (132 lbs):\n    * Dose: 1.0 mg (10 mL of 0.1 mg/mL solution) administered as a slow IV infusion over exactly 10 minutes.\n    * Second Dose Rule: If the arrhythmia has not terminated within 10 minutes following completion of the first infusion, a second 1.0 mg infusion may be administered over 10 minutes.\n  - Patient Weight < 60 kg:\n    * Dose: 0.01 mg/kg IV (0.1 mL/kg) infused over 10 minutes.\n    * Second Dose: Same dose (0.01 mg/kg) repeated once after 10 minutes if arrhythmia persists.\n  - Discontinue Infusion Immediately if: Arrhythmia terminates into sinus rhythm, ventricular tachycardia occurs, or marked QTc prolongation (>500 ms) develops.\n\n• Mandatory Post-Infusion Monitoring Protocol:\n  - Patients MUST remain under continuous 12-lead ECG telemetry monitoring with immediate defibrillator access and trained resuscitation personnel for AT LEAST 4 to 6 HOURS after infusion, or until QTc interval returns to baseline!\n\n• Pre-Administration Electrolyte Targets:\n  - Serum potassium MUST be verified and corrected to ≥ 4.0–4.5 mEq/L and serum magnesium to ≥ 2.0 mg/dL prior to infusion to minimize proarrhythmia.",
+      "offLabel": "Chemical cardioversion of postoperative atrial fibrillation and flutter following coronary artery bypass graft (CABG) and valvular surgery; facilitation of biphasic transthoracic electrical cardioversion by lowering defibrillation threshold (DFT) in refractory AF.",
+      "complications": "• TORSADES DE POINTES & PROARRHYTHMIA (BOXED WARNING):\n  - Sustained Polymorphic Ventricular Tachycardia (Torsades de Pointes): Occurs in 4% to 8% of all treated patients (approximately 1.7% develop sustained VT requiring emergent DC electrical cardioversion or defibrillation!).\n  - Onset Timing: The vast majority (>90%) of proarrhythmic episodes occur during the infusion or within the first 40 minutes post-infusion; rarely occurs after 3 hours.\n  - Predictors of Torsades: Severe left ventricular dysfunction (LVEF < 35%), baseline prolonged QTc (>440 ms), female sex, hypokalemia, hypomagnesemia, and history of congestive heart failure.\n• Acute Management of Ibutilide-Induced Torsades de Pointes:\n  - Immediate IV Magnesium Sulfate: 2 g to 4 g IV push over 1 to 2 minutes, followed by an infusion.\n  - Emergent Synchronized / Unsynchronized Defibrillation if sustained or hemodynamically unstable.\n  - Overdrive Transcutaneous or Transvenous Pacing (rate 100–120 bpm) or Isoprenaline infusion to shorten ventricular repolarization and suppress pause-dependent early afterdepolarizations (EADs).\n• Other Complications: Non-sustained monomorphic VT, AV block, bundle branch block, nausea, and headache.\n• Absolute Contraindications: Baseline QTc > 440 ms; concurrent use of other QTc-prolonging antiarrhythmics (Class Ia or Class III); severe uncorrected hypokalemia (<4.0 mEq/L) or hypomagnesemia (<2.0 mg/dL); severe heart failure (NYHA Class IV or LVEF < 20%); previous history of polymorphic VT / Torsades de Pointes.",
+      "references": [
+        "FDA Prescribing Information — Corvert (ibutilide fumarate injection), Pfizer / US FDA.",
+        "January CT, et al. 2014 AHA/ACC/HRS Guideline for the Management of Patients With Atrial Fibrillation. J Am Coll Cardiol.",
+        "Stambler BS, et al. Efficacy and safety of ibutilide for conversion of atrial flutter and fibrillation. Circulation.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 & 41, Elsevier, 2025/2026."
+      ]
+    },
+    {
+      "id": "adenosine",
+      "cat": "antiarrhythmics",
+      "name": "Adenosine",
+      "aliases": [
+        "adenosine iv",
+        "adenocard",
+        "adenoscan",
+        "class 5 antiarrhythmic"
+      ],
+      "brand": "Adenocard / Adenoscan",
+      "classification": "Purinergic P1/A1 Receptor Agonist • Transient AV Nodal Conductor Blocker (Class V)",
+      "tagline": "Ultra-short-acting AV nodal conduction blocker — first-line therapy for acute termination of paroxysmal supraventricular tachycardia (PSVT)",
+      "tags": [
+        "antiarrhythmic",
+        "SVT",
+        "AVNRT",
+        "AV nodal block",
+        "purinergic",
+        "ACLS",
+        "adenocard"
+      ],
+      "source": "AHA ACLS Guidelines (2020 / reaffirmed 2024); FDA Prescribing Information — Adenocard (adenosine injection), Astellas Pharma; ACC/AHA/HRS Guidelines for Supraventricular Tachycardia; UpToDate (2025/2026).",
+      "structure": "Adenosine (9-beta-D-ribofuranosyl-9H-purin-6-amine) is an endogenous purine nucleoside composed of the purine base adenine attached to a D-ribose sugar moiety via a beta-N9-glycosidic bond. Highly water-soluble; supplied as a clear, sterile, non-pyrogenic aqueous solution (3 mg/mL in 0.9% sodium chloride) without preservatives.",
+      "pd": "Classified as an endogenous purinergic Class V antiarrhythmic with marked selectivity for cardiac nodal tissue:\n\n• Electrophysiological Actions:\n  - Cardiac A1 Purinergic Receptor Activation: Binds to cell-surface G-protein coupled adenosine A1 receptors (Gi/o) on sinoatrial (SA) and atrioventricular (AV) nodal pacemaker cells.\n  - Potassium Channel Activation (IKAdo / IKAch): Gi beta-gamma subunits directly open inwardly rectifying potassium channels, driving potassium efflux and causing profound hyperpolarization of the cell membrane.\n  - Calcium Channel & cAMP Inhibition: Inhibits adenylate cyclase, depressing intracellular cAMP and blunting voltage-dependent L-type calcium current (ICa-L).\n  - Transient Complete AV Nodal Block: Markedly slows conduction velocity, prolongs AV nodal refractoriness, and halts re-entrant electrical circuits that involve the AV node (e.g. AV Nodal Re-entrant Tachycardia — AVNRT, and Atrioventricular Reciprocating Tachycardia — AVRT).\n  - Atrial vs Ventricular Tissue Sparing: Has negligible direct electrophysiological effect on ventricular myocardium or accessory pathways; does NOT convert atrial fibrillation, atrial flutter, or ventricular tachycardia (though transient AV block unmasks underlying flutter waves or atrial activity, serving as a diagnostic tool!).\n  - Vascular A2A/A2B Receptor Action: Stimulates endothelial and smooth muscle A2 receptors, producing transient systemic and coronary arteriolar vasodilation.",
+      "pk": "• Ultra-Short Elimination Half-Life: Less than 10 seconds (typically 0.6 to 10 seconds) in human blood.\n• Rapid Enzymatic Clearance & Cellular Uptake:\n  - Rapidly taken up into erythrocytes and vascular endothelial cells via specialized bidirectional equilibrative nucleoside transporters (ENT1/ENT2).\n  - Once intracellular, it is rapidly converted via two primary metabolic pathways: (1) deamination by adenosine deaminase (ADA) to inosine; (2) phosphorylation by adenosine kinase to adenosine monophosphate (AMP).\n• Zero Hepatic or Renal Dependency: Clearance is entirely independent of hepatic or renal function; no dosage adjustment is ever required in organ failure.\n• Administration Requirement: Because half-life is <10 seconds, it MUST be administered as a rapid IV bolus directly into a central or large proximal vein (antecubital fossa), followed immediately by a rapid saline flush!",
+      "dosage": "AHA ACLS & ERC Guidelines for Paroxysmal Supraventricular Tachycardia (PSVT):\n\n• Peripheral Intravenous Administration Protocol:\n  - First Dose: 6 mg rapid IV push over 1 to 2 seconds into a large proximal peripheral vein (e.g. antecubital fossa).\n  - Immediate Flush: Follow IMMEDIATELY with a rapid 20 mL Normal Saline flush, and briefly elevate the arm to accelerate transit to the heart.\n  - Second Dose: If PSVT does not convert within 1 to 2 minutes, administer 12 mg rapid IV push followed immediately by 20 mL Normal Saline flush.\n  - Third Dose: If still refractory after 1 to 2 minutes, a second 12 mg rapid IV push may be administered once.\n\n• Dosage Adjustments in Specific Clinical Scenarios:\n  - Central Venous Access (CVC / PICC line): REDUCE DOSE BY 50% (initial dose 3 mg IV, followed by 6 mg) to avoid excessive peak concentration at the SA/AV node.\n  - Patient Taking Dipyridamole (Persantine) or Ticagrelor: Reduce dose by 75% (dipyridamole blocks cellular nucleoside reuptake, markedly potentiating adenosine).\n  - Heart Transplant Recipients: Reduce initial dose to 1 mg to 3 mg (denervated donor heart displays extreme supersensitivity to adenosine receptor activation).\n  - Patient Taking Methylxanthines (Theophylline, Aminophylline, Caffeine): Requires HIGHER doses (methylxanthines competitively block adenosine A1 receptors).",
+      "offLabel": "Diagnostic agent during fractional flow reserve (FFR) invasive coronary angiography (administered as intracoronary bolus or peripheral continuous infusion at 140 mcg/kg/min); diagnostic unmasking of dormant pulmonary vein conduction during catheter ablation for atrial fibrillation.",
+      "complications": "• Transient Subjective Symptoms (Common but Rapidly Self-Limiting < 1 minute):\n  - Intense Sense of Impending Doom: Profound, distressing feeling of dying or anxiety (cranial purinergic receptor stimulation).\n  - Chest Tightness & Dyspnea: Bronchial C-fiber activation and pulmonary receptor stimulation.\n  - Facial Flushing & Lightheadedness: Cutaneous vasodilation.\n• Electrocardiographic Phenomena Post-Administration:\n  - Transient Sinus Bradycardia, Ventricular Ectopy (PVCs), and Brief Asystole / Sinus Pause (typically lasts 2–6 seconds; patient and monitoring staff should be pre-warned).\n  - Transient Atrial Fibrillation: Occurs in 1%–3% of patients due to abbreviation of atrial action potential duration.\n• CRITICAL CONTRAINDICATIONS:\n  - Asthma & Severe Active Reactive Airway Disease: Can precipitate severe, life-threatening bronchospasm through stimulation of mast-cell A2B/A3 receptors (contraindicated in active bronchospasm; safe in mild COPD without active wheezing).\n  - Pre-Excited Atrial Fibrillation / Flutter in WPW Syndrome: STRICTLY CONTRAINDICATED! Blocking the AV node causes preferential, unopposed rapid conduction down the accessory pathway, which can accelerate the ventricular rate to > 300 bpm and degenerate into fatal Ventricular Fibrillation!\n  - Second- or Third-Degree AV Nodal Block or Sick Sinus Syndrome: (Unless a functioning electronic pacemaker is in place).",
+      "references": [
+        "AHA Guidelines for CPR and ECC: Adult Advanced Cardiovascular Life Support. Circulation (2020 / reaffirmed 2024).",
+        "FDA Prescribing Information — Adenocard (adenosine injection), Astellas Pharma US.",
+        "Page RL, et al. 2015 ACC/AHA/HRS Guideline for Management of Adult Patients With Supraventricular Tachycardia. J Am Coll Cardiol.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 41 (Management of Arrhythmias)."
+      ]
+    },
+    {
+      "id": "antiarrhythmics-class-1a",
+      "cat": "antiarrhythmics",
+      "name": "Class Ia Antiarrhythmics (Overview: Quinidine & Disopyramide)",
+      "aliases": [
+        "class 1a",
+        "quinidine",
+        "disopyramide",
+        "norpace",
+        "class ia"
+      ],
+      "brand": "Norpace (Disopyramide) / Quinidine",
+      "classification": "Vaughan Williams Class Ia Antiarrhythmics • Intermediate Na+ & IKr K+ Channel Blockers",
+      "tagline": "Intermediate-kinetics sodium and delayed-rectifier potassium blockers that prolong APD, QRS, and QTc across atria and ventricles",
+      "tags": [
+        "antiarrhythmic",
+        "class 1a",
+        "quinidine",
+        "disopyramide",
+        "intermediate sodium blocker",
+        "vaughan williams"
+      ],
+      "source": "Vaughan Williams Classification Consensus; Miller's Anesthesia, 10th ed., Ch. 18 & 41; Goodman & Gilman's Pharmacological Basis of Therapeutics, 14th ed.",
+      "structure": "Class Ia antiarrhythmics comprise synthetic and natural aromatic amine derivatives. Quinidine (stereoisomer of quinine) is a cinchona alkaloid with a quinoline ring linked to a quinuclidine ring. Disopyramide (alpha-[2-(diisopropylamino)ethyl]-alpha-phenyl-2-pyridineacetamide) is a synthetic tertiary amine with structural similarities to anticholinergic agents.",
+      "pd": "• Mechanism: Intermediate-affinity blockade of voltage-gated fast sodium channels (Nav1.5) with intermediate dissociation time constants (tau 1–5 seconds). Simultaneously blocks rapid delayed rectifier potassium current (IKr).\n• Electrophysiological Effects: Depresses phase 0 maximum rate of depolarization (dV/dt), slowing conduction velocity. Prolongs phase 3 repolarization, lengthening the action potential duration (APD) and effective refractory period (ERP) in atria, ventricles, and accessory tracts.\n• ECG Changes: Widens QRS complex and prolongs QTc interval; modest PR prolongation.\n• Drug Profiles:\n  - Disopyramide: Possesses profound negative inotropic effects and strong anticholinergic (antimuscarinic) activity. Clinically valuable in Hypertrophic Obstructive Cardiomyopathy (HOCM) to reduce dynamic left ventricular outflow tract (LVOT) gradients and suppress associated atrial/ventricular arrhythmias. Causes marked urinary retention, dry mouth, blurred vision, and worsening of glaucoma.\n  - Quinidine: Historical prototype Class Ia agent; produces alpha-adrenergic antagonism (vasodilation) and vagolytic effect that can paradoxically accelerate AV nodal conduction.",
+      "pk": "• Oral Bioavailability: Disopyramide 80%–90%; Quinidine 70%–80%.\n• Protein Binding: Disopyramide 50%–80% (concentration-dependent binding to alpha-1-acid glycoprotein); Quinidine 80%–90%.\n• Metabolism: Both undergo extensive hepatic metabolism via CYP3A4.\n• Elimination Half-Life: Disopyramide 6–8 hours; Quinidine 6–8 hours. Excreted renally (50% unchanged for disopyramide).",
+      "dosage": "Clinical Dosing:\n• Disopyramide (Norpace):\n  - Adult Oral Dosing: 100 mg to 150 mg PO every 6 hours (or 300 mg CR every 12 hours); max 800 mg/day.\n  - Acute IV (where available outside US): 1.5–2 mg/kg IV over 10–15 minutes.\n• Quinidine:\n  - Sulfate 200–400 mg PO every 6 hours; Gluconate 324–648 mg PO every 8 hours.\n  - Therapeutic Serum Levels: Disopyramide 2–5 mcg/mL; Quinidine 2–5 mcg/mL.",
+      "offLabel": "Disopyramide for gradient reduction in symptomatic obstructive hypertrophic cardiomyopathy (HOCM); suppression of ventricular arrhythmias in Brugada syndrome (quinidine inhibits Ito).",
+      "complications": "• Proarrhythmia & Torsades de Pointes: Significant risk of pause-dependent Torsades de Pointes VT secondary to excessive QTc prolongation and early afterdepolarizations (EADs).\n• Heart Failure Decompensation: Disopyramide possesses the most potent negative inotropic liability of all Class I antiarrhythmics; strictly avoided in systolic heart failure.\n• Cinchonism (Quinidine): Tinnitus, high-frequency hearing loss, blurred vision, headache, delirium, and gastrointestinal distress.\n• Digoxin Toxicity Interaction: Quinidine displaces digoxin from tissue binding sites and inhibits P-glycoprotein, doubling serum digoxin concentrations.",
+      "references": [
+        "Vaughan Williams EM. Classification of anti-arrhythmic drugs. Symposium on Cardiac Arrhythmias.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 41 (Management of Arrhythmias).",
+        "Goodman & Gilman's The Pharmacological Basis of Therapeutics, 14th ed., McGraw Hill."
+      ]
+    },
+    {
+      "id": "antiarrhythmics-class-1c",
+      "cat": "antiarrhythmics",
+      "name": "Class Ic Antiarrhythmics (Overview: Flecainide & Propafenone)",
+      "aliases": [
+        "class 1c",
+        "flecainide",
+        "propafenone",
+        "tambocor",
+        "rythmol",
+        "pill in the pocket"
+      ],
+      "brand": "Tambocor (Flecainide) / Rythmol (Propafenone)",
+      "classification": "Vaughan Williams Class Ic Antiarrhythmic • Slow-Dissociating Potent Sodium Channel Blockers",
+      "tagline": "Potent, slow-offset sodium channel blockers for pharmacological cardioversion and pill-in-the-pocket suppression of AF in structurally normal hearts",
+      "tags": [
+        "antiarrhythmic",
+        "class 1c",
+        "flecainide",
+        "propafenone",
+        "pill-in-the-pocket",
+        "atrial fibrillation",
+        "CAST contraindication"
+      ],
+      "source": "AHA/ACC/HRS Atrial Fibrillation Guidelines; Cardiac Arrhythmia Suppression Trial (CAST); FDA Prescribing Information — Flecainide Acetate; Miller's Anesthesia, 10th ed.",
+      "structure": "Flecainide acetate is a fluorinated benzamide derivative (N-(piperidin-2-ylmethyl)-2,5-bis(2,2,2-trifluoroethoxy)benzamide). Propafenone hydrochloride (1-[2-[2-hydroxy-3-(propylamino)propoxy]phenyl]-3-phenylpropan-1-one) is an aryl-substituted alkylamine structurally related to beta-blockers.",
+      "pd": "• Mechanism: Potent blockade of cardiac voltage-gated fast sodium channels (Nav1.5) characterized by extremely slow association and dissociation kinetics (tau > 10–30 seconds; slow-binding, slow-unbinding).\n• Electrophysiological Actions:\n  - Marked Depressed Phase 0 Depolarization: Profoundly depresses phase 0 dV/dt and markedly slows intra-atrial, His-Purkinje, and intraventricular conduction velocity across all heart rates, with dramatic rate-dependent use-dependence (conduction slowing increases substantially at faster heart rates!).\n  - Negligible Effect on Repolarization / APD: Has minimal effect on potassium channels or action potential duration, resulting in prominent QRS widening without significant QTc prolongation.\n  - Propafenone Beta-Blocking Property: Propafenone possesses mild non-selective beta-adrenoceptor antagonism (approximately 1/40th potency of propranolol).\n• Clinical Efficacy: Highly effective for chemical cardioversion of recent-onset atrial fibrillation and maintenance of sinus rhythm in paroxysmal AF ('pill-in-the-pocket' regimen) in patients WITHOUT structural heart disease.",
+      "pk": "• Oral Bioavailability: Flecainide 90%–95%; Propafenone 5%–50% (saturable, dose-dependent first-pass hepatic metabolism).\n• Metabolism: Flecainide is metabolized via CYP2D6 to inactive metabolites (30% excreted unchanged renally); Propafenone is extensively metabolized via CYP2D6 (polymorphic: poor vs extensive metabolizers).\n• Elimination Half-Life: Flecainide 12–20 hours; Propafenone 2–10 hours (extensive metabolizers) to 12–32 hours (poor metabolizers).",
+      "dosage": "Clinical Regimens:\n• Flecainide (Tambocor):\n  - Maintenance: 50 mg to 100 mg PO twice daily (max 300–400 mg/day).\n  - Acute 'Pill-in-the-Pocket' for Paroxysmal AF: 200 mg to 300 mg single oral dose taken upon onset of palpitations in ambulatory patients (pretreated with beta-blocker/CCB).\n  - Acute IV (where available): 1.5–2 mg/kg IV infused over 10–20 minutes.\n• Propafenone (Rythmol):\n  - Maintenance: 150 mg to 300 mg PO every 8 hours (or extended-release 225–425 mg PO twice daily).\n  - Pill-in-the-Pocket AF: 450 mg to 600 mg single oral dose.\n• Therapeutic Serum Target (Flecainide): 0.2 to 1.0 mcg/mL (toxicity sharply increases > 1.0 mcg/mL).",
+      "offLabel": "Suppression of fetal supraventricular tachycardia via maternal administration; catecholaminergic polymorphic ventricular tachycardia (CPVT) via direct RyR2 ryanodine receptor inhibition.",
+      "complications": "• CRITICAL BOXED WARNING — THE CAST TRIAL CONTRAINDICATION:\n  - The landmark Cardiac Arrhythmia Suppression Trial (CAST) demonstrated that Class Ic agents (flecainide, encainide) significantly INCREASED mortality (due to fatal proarrhythmic ventricular tachycardia and cardiac arrest) in patients with prior myocardial infarction or structural heart disease!\n  - STRICTLY CONTRAINDICATED in patients with: previous myocardial infarction, ischemic heart disease, left ventricular hypertrophy, congestive heart failure, or any structural heart disease.\n• Atrial Flutter 1:1 Conduction Danger: Can convert atrial fibrillation into slow atrial flutter (rate ≈ 200 bpm); because AV nodal conduction is not blocked, the AV node can conduct 1:1, precipitating paradoxical ventricular tachycardia at 200 bpm! Always co-prescribe an AV nodal blocking agent (beta-blocker or diltiazem/verapamil).\n• Significant QRS Widening: Prolongs QRS; stop therapy if QRS widens by > 25%–50% from baseline.",
+      "references": [
+        "Echt DS, et al. Mortality and morbidity in patients receiving encainide, flecainide, or placebo. The Cardiac Arrhythmia Suppression Trial (CAST). N Engl J Med.",
+        "Alboni P, et al. Outpatient treatment of recent-onset atrial fibrillation with the 'pill-in-the-pocket' approach. N Engl J Med.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 & 41, Elsevier."
+      ]
+    },
+    {
+      "id": "antiarrhythmics-class-2",
+      "cat": "antiarrhythmics",
+      "name": "Class II Antiarrhythmics (Overview: Beta-Blockers in Arrhythmias)",
+      "aliases": [
+        "class 2",
+        "beta blockers antiarrhythmics",
+        "esmolol",
+        "metoprolol",
+        "class ii"
+      ],
+      "brand": "Brevibloc (Esmolol) / Lopressor (Metoprolol)",
+      "classification": "Vaughan Williams Class II Antiarrhythmics • Beta-Adrenoceptor Antagonists",
+      "tagline": "Competitive beta-1 adrenergic antagonists that depress SA/AV nodal automaticity and conduction — frontline rate control in atrial tachyarrhythmias",
+      "tags": [
+        "antiarrhythmic",
+        "class 2",
+        "beta-blockers",
+        "esmolol",
+        "metoprolol",
+        "rate control",
+        "AV node"
+      ],
+      "source": "ACC/AHA/ESC Guidelines for Management of Atrial Fibrillation; Miller's Anesthesia, 10th ed., Ch. 18; Stoelting's Pharmacology & Physiology, 5th ed.",
+      "structure": "Beta-adrenergic receptor antagonists possess an aryloxypropanolamine core structure that competitively mimics the catecholamine structure of adrenaline and noradrenaline. Esmolol hydrochloride contains an internal methyl ester linkage on the aromatic para-substituent, which acts as a metabolic substrate for rapid hydrolytic cleavage by blood esterases.",
+      "pd": "• Mechanism: Competitive inhibition of beta-1 adrenergic receptors in cardiac pacemaker and conduction tissues.\n• Electrophysiological Actions:\n  - Depresses Phase 4 Spontaneous Diastolic Depolarization: Reduces funny pacemaker current (If) and L-type calcium current (ICa-L) in the sinoatrial node, slowing resting and exercise heart rates.\n  - Prolongs AV Nodal Refractoriness & Conduction Time: Slows conduction velocity through the AV node, increasing the PR interval on ECG and reducing ventricular rate in atrial fibrillation and atrial flutter.\n  - Anti-Ischemic & Sympatholytic: Decreases myocardial oxygen consumption, blunts stress-induced catecholamine surges, and suppresses triggered automaticity from delayed afterdepolarizations (DADs).\n• Representative Agents:\n  - Esmolol (Brevibloc): Cardioselective beta-1 blocker with ultra-short duration of action (t1/2 ≈ 9 minutes) metabolized by red blood cell cytosol esterases; ideal for acute perioperative rate control.\n  - Metoprolol: Cardioselective beta-1 blocker available IV (tartrate) and oral (tartrate/succinate).\n  - Sotalol: Non-selective beta-blocker that ALSO possesses potent Class III IKr potassium channel blocking activity.",
+      "pk": "• Esmolol: Onset < 2 minutes; distribution half-life 2 minutes; elimination half-life 9 minutes; metabolized by RBC esterases into inactive acid metabolite (zero hepatic/renal dependence).\n• Metoprolol: Lipophilic; hepatic CYP2D6 metabolism; elimination half-life 3 to 7 hours.",
+      "dosage": "Clinical Protocols:\n• Esmolol IV Protocol (Acute Ventricular Rate Control in AF/Flutter & SVT):\n  - Loading Dose: 500 mcg/kg (0.5 mg/kg) IV infused over 1 minute.\n  - Maintenance Infusion: Start at 50 mcg/kg/min; titrate in increments of 50 mcg/kg/min every 4 minutes (optionally repeating 500 mcg/kg loading bolus before each step) up to a maximum of 200–300 mcg/kg/min.\n• Metoprolol IV Protocol:\n  - 2.5 mg to 5.0 mg slow IV push over 2 minutes; may repeat every 5 minutes up to a total of 15 mg.",
+      "offLabel": "Blunting hemodynamic response to direct laryngoscopy, intubation, and surgical stimulation; controlled intraoperative hypotension; acute management of thyroid storm-induced tachyarrhythmias.",
+      "complications": "• Severe Bradycardia & High-Grade AV Block: Excess nodal suppression can produce profound bradycardia, PR prolongation, and heart block.\n• Acute Decompensated Heart Failure: Negative inotropy can precipitate cardiogenic shock or acute pulmonary edema in patients with severe baseline systolic dysfunction.\n• Bronchospasm: High doses can lose cardioselectivity and antagonize bronchial beta-2 receptors in severe asthma.\n• Masking Hypoglycemia: Blunts autonomic warning signs (tachycardia, tremor) of hypoglycemia in diabetic patients (sweating is preserved).",
+      "references": [
+        "AHA Guidelines for CPR and ECC: ACLS. Circulation (2020 / 2024).",
+        "FDA Prescribing Information — Brevibloc (esmolol HCl injection), Baxter.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs), Elsevier."
+      ]
+    },
+    {
+      "id": "antiarrhythmics-class-4",
+      "cat": "antiarrhythmics",
+      "name": "Class IV Antiarrhythmics (Overview: Verapamil & Diltiazem)",
+      "aliases": [
+        "class 4",
+        "calcium channel blockers",
+        "verapamil",
+        "diltiazem",
+        "cardizem",
+        "calan",
+        "class iv"
+      ],
+      "brand": "Cardizem (Diltiazem) / Calan (Verapamil)",
+      "classification": "Vaughan Williams Class IV Antiarrhythmics • Non-Dihydropyridine L-Type Calcium Channel Blockers",
+      "tagline": "Slow-inward L-type calcium channel blockers for acute ventricular rate control in atrial fibrillation and termination of AVNRT",
+      "tags": [
+        "antiarrhythmic",
+        "class 4",
+        "diltiazem",
+        "verapamil",
+        "calcium channel blocker",
+        "AV node",
+        "rate control"
+      ],
+      "source": "ACC/AHA/ESC Atrial Fibrillation Guidelines; AHA ACLS Guidelines; Miller's Anesthesia, 10th ed., Ch. 18; Goodman & Gilman's Pharmacological Basis of Therapeutics.",
+      "structure": "Non-dihydropyridine calcium channel blockers belong to distinct chemical classes: Verapamil is a phenylalkylamine derivative (benzeneacetonitrile). Diltiazem is a benzothiazepine derivative. Both possess asymmetric centers and distinct channel-binding loci compared to dihydropyridines (such as nifedipine or amlodipine).",
+      "pd": "• Mechanism: Voltage- and frequency-dependent (use-dependent) blockade of slow inward L-type calcium channels (Cav1.2 / ICa-L) in cardiac pacemaker and conduction tissue.\n• Electrophysiological Actions:\n  - SA and AV Nodal Depression: Calcium entry drives phase 0 depolarization in SA and AV nodal action potentials (unlike ventricular myocytes where phase 0 is sodium-driven). Class IV agents depress phase 0 upstroke velocity and slow phase 4 spontaneous diastolic depolarization in nodal tissue.\n  - Prolongs AV Nodal Conduction Time & Refractoriness: Slows transmission through the AV node, increasing the PR interval on ECG and reducing ventricular rate during atrial fibrillation and atrial flutter.\n  - Terminates AV Nodal Re-entrant Circuits: Highly effective in terminating supraventricular tachycardia (AVNRT/AVRT) by disrupting re-entry in the slow and fast AV nodal pathways.\n  - Negative Inotropy & Vasodilation: Inhibits excitation-contraction coupling in vascular smooth muscle (vasodilation) and ventricular myocardium (negative inotropy; verapamil is significantly more negatively inotropic than diltiazem).",
+      "pk": "• Diltiazem: Onset of IV rate control within 3 minutes (peak 7 minutes); hepatic deacetylation via CYP3A4 to active metabolite desacetyldiltiazem (25%–50% activity); elimination half-life 3 to 4.5 hours.\n• Verapamil: Onset of IV action 3 to 5 minutes; extensive first-pass hepatic metabolism (CYP3A4) to norverapamil; elimination half-life 3 to 7 hours.",
+      "dosage": "Acute ICU / Emergency Protocols:\n• Diltiazem (Cardizem IV) — Preferred in Acute Care:\n  - Initial Bolus: 0.25 mg/kg actual body weight (typical adult dose 15 mg to 20 mg) administered IV over 2 minutes.\n  - Second Bolus (if response inadequate after 15 min): 0.35 mg/kg IV (typical dose 25 mg) over 2 minutes.\n  - Continuous Maintenance Infusion: Immediately start continuous IV infusion at 5 mg/hr to 15 mg/hr, titrated to target heart rate (<100 bpm).\n• Verapamil (Calan IV):\n  - 2.5 mg to 5.0 mg slow IV push over 2 minutes; if inadequate response, repeat 5 mg to 10 mg after 15–30 minutes (max 20–30 mg).",
+      "offLabel": "Coronary artery spasm prophylaxis during coronary artery bypass grafting (CABG) and cardiac catheterization; perioperative management of acute supraventricular tachycardias.",
+      "complications": "• Hemodynamic Hypotension: Peripheral vasodilation combined with negative inotropic depression can precipitate acute hypotension.\n• Decompensated Heart Failure: Avoid in patients with moderate-to-severe left ventricular systolic dysfunction (LVEF < 40%) or pulmonary congestion.\n• Severe Bradycardia & High-Grade Heart Block: Avoid in sick sinus syndrome or pre-existing 2nd/3rd degree AV block.\n• PRE-EXCITED ATRIAL FIBRILLATION DANGER (WPW): ABSOLUTELY CONTRAINDICATED in patients with Wolff-Parkinson-White syndrome and atrial fibrillation! Blocking the AV node causes preferential fast conduction down the accessory pathway, precipitating fatal Ventricular Fibrillation.\n• Dangerous Interaction with Beta-Blockers: Concurrent IV administration of beta-blockers and IV verapamil/diltiazem can precipitate profound bradycardia, complete heart block, and asystole.\n• Reversal of Toxicity: IV Calcium gluconate / Calcium chloride (1 g to 2 g) and high-dose insulin euglycemic therapy (HIET) for severe CCB overdose.",
+      "references": [
+        "AHA Guidelines for CPR and ECC: Adult ACLS. Circulation (2020 / 2024).",
+        "FDA Prescribing Information — Cardizem (diltiazem HCl injection), Hospira / US FDA.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs), Elsevier."
+      ]
+    },
+    {
+      "id": "ivabradine",
+      "cat": "cardiac",
+      "name": "Ivabradine",
+      "aliases": [
+        "ivabradine hcl",
+        "corlanor",
+        "procoralan",
+        "funny current inhibitor"
+      ],
+      "brand": "Corlanor / Procoralan",
+      "classification": "Hyperpolarization-Activated Cyclic Nucleotide-Gated (HCN) Channel Blocker • If Current Inhibitor",
+      "tagline": "Pure heart-rate reducing agent that selectively inhibits the sinoatrial pacemaker If current without negative inotropy or blood pressure reduction",
+      "tags": [
+        "cardiac",
+        "heart failure",
+        "HFrEF",
+        "ivabradine",
+        "funny current",
+        "HCN",
+        "angina"
+      ],
+      "source": "FDA Prescribing Information — Corlanor (ivabradine), Amgen; ESC Heart Failure Guidelines (2021/2026); AHA/ACC/HFSA Guideline for the Management of Heart Failure; UpToDate (2025/2026).",
+      "structure": "Ivabradine hydrochloride (3-[3-[[(7S)-3,4-dimethoxy-7-bicyclo[4.2.0]octa-1,3,5-trienyl]methyl-methylamino]propyl]-7,8-dimethoxy-2,3,4,5-tetrahydro-1H-3-benzazepin-2-one hydrochloride) is a synthetic benzazepine derivative. Structurally, it features a tetrahydro-3-benzazepin-2-one nucleus linked via a flexible propyl chain to a dimethoxybicyclo-octatrienylamine moiety. The molecule is a weak base, existing predominantly in ionized form at physiological pH.",
+      "pd": "• Mechanism of Action:\n  - Selective and Specific Blockade of the Pacemaker If Current: Enters and binds from the intracellular side to the pore of hyperpolarization-activated cyclic nucleotide-gated (HCN4) channels located predominantly in the sinoatrial node.\n  - Pure Heart Rate Lowering: Selectively slows the slope of spontaneous diastolic phase 4 depolarization in SA nodal pacemaker cells, reducing resting and exercise heart rates in a dose-dependent manner.\n  - Zero Negative Inotropic or Vasodilatory Action: Has zero affinity for vascular alpha- or beta-adrenoceptors, L-type calcium channels, or sodium channels; preserves myocardial contractility (no negative inotropy), ventricular repolarization, and systemic blood pressure!\n  - Prolongation of Diastole: Slower heart rate prolongs diastolic filling time, significantly improving left ventricular end-diastolic volume, myocardial perfusion, and coronary collateral blood flow while reducing myocardial oxygen demand.\n• Landmark Clinical Trial Evidence:\n  - SHIFT Trial: In patients with symptomatic heart failure with reduced ejection fraction (HFrEF, LVEF ≤ 35%) in sinus rhythm with resting heart rate ≥ 70 bpm despite maximally tolerated beta-blocker therapy, ivabradine significantly reduced cardiovascular death and heart failure hospitalizations.",
+      "pk": "• Oral Bioavailability: Approximately 40% due to first-pass hepatic metabolism. Absorption is enhanced when taken with meals (take with food).\n• Plasma Protein Binding: Approximately 70% bound to human serum albumin.\n• Metabolism: Extensively oxidized in the liver and gut wall via CYP3A4 into an active N-demethylated metabolite (S-18982) with equal pharmacodynamic potency.\n• Elimination Half-Life: Effective half-life is approximately 2 hours; terminal elimination half-life averages 11 hours.\n• Excretion: Metabolites are excreted in equal parts in urine and feces; less than 4% excreted unchanged in urine.",
+      "dosage": "Clinical Dosing Protocols (HFrEF & Stable Angina):\n• Starting Dose: 5.0 mg PO twice daily with meals.\n  - For patients with history of conduction defects, age ≥ 75 years, or baseline bradycardia, initiate at 2.5 mg PO twice daily.\n• Dose Titration (after 2 weeks of therapy based on resting heart rate):\n  - If resting HR > 60 bpm: Increase dose to 7.5 mg PO twice daily.\n  - If resting HR 50 to 60 bpm: Maintain current dose (5.0 mg PO twice daily).\n  - If resting HR < 50 bpm or symptomatic bradycardia: Reduce dose by 2.5 mg BID (or discontinue if on 2.5 mg BID).\n• Target Resting Heart Rate: 50 to 60 beats per minute.",
+      "offLabel": "Inappropriate sinus tachycardia (IST); postural orthostatic tachycardia syndrome (POTS) refractory to volume and beta-blockers; heart rate control prior to coronary computed tomography angiography (CCTA).",
+      "complications": "• Visual Phosphenes / Luminous Phenomena: Occurs in approximately 3%–15% of patients. Manifests as transient, enhanced brightness in a limited area of the visual field (halos, sparks, colored flashes) triggered by sudden changes in light intensity. Caused by reversible inhibition of retinal hyperpolarization-activated HCN1 channels (Ih current); benign, usually onset within 2 months, and resolves during ongoing treatment or upon discontinuation.\n• Symptomatic Bradycardia: Excessive heart rate reduction (<50 bpm); managed with dose reduction or cessation.\n• Atrial Fibrillation: Increased incidence of AF (8% vs 6% placebo in trials); monitor regularly for rhythm changes. Drug loses efficacy if patient develops AF (because AF pacemaker activity is not driven by SA nodal If current).\n• Contraindications: Acute decompensated heart failure; cardiogenic shock; resting HR < 60 bpm prior to initiation; severe hypotension (<90/50 mmHg); sick sinus syndrome or 2nd/3rd degree AV block (without pacemaker); pacemaker dependence; severe hepatic impairment; and concurrent use of strong CYP3A4 inhibitors (ketoconazole, clarithromycin, protease inhibitors).",
+      "references": [
+        "Swedberg K, et al. Ivabradine and outcomes in chronic heart failure (SHIFT trial): a randomised placebo-controlled study. Lancet.",
+        "FDA Prescribing Information — Corlanor (ivabradine tablets and oral solution), Amgen.",
+        "McDonagh TA, et al. 2021 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 & 65, Elsevier."
+      ]
+    },
+    {
+      "id": "furosemide",
+      "cat": "cardiac",
+      "name": "Furosemide",
+      "aliases": [
+        "lasix",
+        "frusemide",
+        "loop diuretic"
+      ],
+      "brand": "Lasix",
+      "classification": "High-Ceiling Loop Diuretic • Renal Medullary NKCC2 Symporter Inhibitor",
+      "tagline": "Potent sulfonamide loop diuretic — first-line for acute cardiogenic pulmonary edema, acute decompensated heart failure, and severe fluid overload",
+      "tags": [
+        "cardiac",
+        "heart failure",
+        "diuretic",
+        "loop",
+        "lasix",
+        "pulmonary edema",
+        "preload reduction"
+      ],
+      "source": "FDA Prescribing Information — Lasix (furosemide injection/tablets), Sanofi-Aventis; ESC Heart Failure Guidelines; ACC/AHA/HFSA Heart Failure Guidelines; UpToDate (2025/2026).",
+      "structure": "Furosemide (4-chloro-2-[(furan-2-ylmethyl)amino]-5-sulfamoylbenzoic acid) is a sulfonamide-derived anthranilic acid derivative. Structurally, it features a central benzoic acid core substituted with a chloro group at C-4, an essential sulfamoyl moiety (-SO2NH2) at C-5, and a furfurylamino side chain at C-2. The carboxyl and sulfonamide groups confer high water solubility in alkaline solutions (supplied as a sterile alkaline solution, pH 8.0–9.3, containing 10 mg/mL furosemide).",
+      "pd": "Classified as a high-ceiling loop diuretic with rapid dual hemodynamic and renal actions:\n\n• Renal Tubular Actions:\n  - Inhibition of the Luminal NKCC2 Symporter: Actively secreted into the proximal tubule via organic anion transporters (OAT1/OAT3), traveling to the thick ascending limb (TAL) of the loop of Henle. There it reversibly binds to the chloride-binding site of the apical Na+-K+-2Cl- cotransporter (NKCC2), blocking reabsorption of 20% to 25% of the filtered sodium and chloride load.\n  - Disruption of the Corticomedullary Osmotic Gradient: By blocking sodium and chloride reabsorption into the medullary interstitium, it dissipates the hypertonic medullary gradient required for water reabsorption in the collecting ducts, driving massive natriuresis, chloruresis, and water diuresis.\n  - Abolition of the Lumen-Positive Transepithelial Potential: NKCC2 inhibition stops potassium recycling through ROMK channels, eliminating the normal lumen-positive electrical potential (+10 mV) that drives paracellular reabsorption of divalent cations. This results in heavy urinary excretion of magnesium and calcium.\n• Immediate Biphasic Hemodynamic Effect in Acute Heart Failure:\n  (1) Immediate Venodilation (0–15 minutes): Rapid IV administration triggers acute intrarenal prostaglandin (PGE2, PGI2) release and systemic venodilation within 5 to 15 minutes, lowering right atrial pressure, pulmonary capillary wedge pressure (PCWP), and left ventricular preload BEFORE the onset of diuresis!\n  (2) Osmotic Diuresis (begins 20–30 minutes): Natriuretic diuresis peaks at 1 to 2 hours, reducing extracellular fluid volume and resolving pulmonary and peripheral edema.",
+      "pk": "• Bioavailability: Oral bioavailability is 50% to 60% (erratic, 10%–90%, delayed by food and bowel wall edema in severe heart failure; oral-to-IV dose ratio is approximately 2:1).\n• Protein Binding: Extremely high (95% to 98%), bound almost entirely to serum albumin. Hypoalbuminemia impairs delivery to proximal tubular secretory sites.\n• Metabolism: Approximately 10%–20% undergoes glucuronidation in the kidneys and liver.\n• Elimination Half-Life: 1 to 1.5 hours in healthy adults; prolonged to 2.5–4+ hours in severe congestive heart failure and end-stage renal disease.\n• Excretion: 60%–70% excreted unchanged in urine via tubular secretion and glomerular filtration; remainder excreted in feces.",
+      "dosage": "Clinical Protocols in Heart Failure & Acute Care:\n\n• Acute Cardiogenic Pulmonary Edema / Acute Decompensated Heart Failure (ADHF):\n  - Diuretic-Naïve Patient: 20 mg to 40 mg slow IV push over 1 to 2 minutes.\n  - Chronic Oral Diuretic User: Administer an initial IV bolus equal to or 2 to 2.5 times their chronic home daily oral dose (e.g., if on 40 mg PO daily, give 40 mg to 80 mg IV bolus; DOSE trial protocol).\n  - Continuous IV Infusion Protocol: For refractory fluid overload, administer a loading bolus followed by continuous infusion of 5 to 40 mg/hr (titrated to achieve hourly urine output of 100–200 mL/hr).\n• Chronic Heart Failure Maintenance:\n  - Initial 20 mg to 40 mg PO once daily (or divided BID); titrate to dry weight up to 80–160 mg/day.\n• Oliguric Acute Kidney Injury (KDIGO Guidance):\n  - High-dose boluses (100 mg to 200 mg IV) can be tested in fluid-overloaded patients with acute tubular necrosis (Furosemide Stress Test: 1.0–1.5 mg/kg IV bolus; urine output <200 mL in 2 hours predicts progression to severe AKI/RRT).",
+      "offLabel": "Acute hypercalcemia of malignancy (forced saline diuresis with furosemide); management of acute hyperkalemia; rapid reduction of intracranial pressure (in conjunction with mannitol).",
+      "complications": "• Electrolyte & Acid-Base Derangements: Severe hypokalemia, hypomagnesemia, hyponatremia, and hypocalcemia; contraction metabolic alkalosis (loss of H+ and volume depletion).\n• Prerenal Azotemia & Acute Kidney Injury: Overdiuresis can cause severe intravascular volume depletion, worsening renal perfusion, elevating serum BUN and creatinine ('cardiorenal syndrome' from overzealous diuresis).\n• Ototoxicity (Tinnitus, Hearing Loss, Deafness): Characteristically occurs with high-dose rapid intravenous boluses (> 4 mg/min) or concurrent administration of aminoglycosides (gentamicin). Furosemide inhibits NKCC1 cotransporters in the stria vascularis of the inner ear, disrupting endolymph electrolyte balance; usually reversible, but can be permanent with co-toxins.\n• Hyperuricemia & Gout: Competition for organic anion secretory pathways and volume contraction elevate serum uric acid, triggering acute gouty arthritis.\n• Sulfonamide Cross-Reactivity: Rare allergic rash, interstitial nephritis, or anaphylaxis in patients with sulfonamide hypersensitivity.",
+      "references": [
+        "Felker GM, et al. Diuretic strategies in patients with acute decompensated heart failure (DOSE trial). N Engl J Med.",
+        "FDA Prescribing Information — Lasix (furosemide injection), Sanofi-Aventis.",
+        "Chawla LS, et al. Development and standardization of a furosemide stress test to predict the severity of acute kidney injury. Crit Care.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 65 (Cardiac Anesthesia)."
+      ]
+    },
+    {
+      "id": "nicorandil",
+      "cat": "cardiac",
+      "name": "Nicorandil",
+      "aliases": [
+        "ikorel",
+        "angina treatment",
+        "k-atp channel opener"
+      ],
+      "brand": "Ikorel",
+      "classification": "Potassium ATP Channel Opener & Organic Nitrate Hybrid • Dual-Action Anti-Anginal",
+      "tagline": "Dual-mechanism anti-anginal agent combining K-ATP channel opening and nitrate-mediated venodilation with ischemic preconditioning properties",
+      "tags": [
+        "cardiac",
+        "angina",
+        "nicorandil",
+        "K-ATP opener",
+        "nitrate",
+        "ischemia",
+        "cardioprotection"
+      ],
+      "source": "European Society of Cardiology (ESC) Guidelines for the Management of Chronic Coronary Syndromes; British National Formulary (BNF); UpToDate (2025/2026).",
+      "structure": "Nicorandil (N-[2-(nitrooxy)ethyl]pyridine-3-carboxamide) is a nicotinamide nitrate ester derivative. Chemically, it incorporates a nicotinamide moiety linked via an ethyl chain to an organic nitrate ester group (-O-NO2). This dual hybrid chemical architecture directly confers its unique dual electrophysiological and biochemical mechanisms of action.",
+      "pd": "Classified as a dual-action balanced anti-anginal and cardioprotective agent:\n\n• Dual Molecular Mechanisms:\n  (1) ATP-Sensitive Potassium Channel (K-ATP) Opening: Opens Kir6.2/SUR2A potassium channels in vascular smooth muscle and cardiac myocytes. This drives potassium efflux, causing membrane hyperpolarization and closing voltage-gated L-type calcium channels. Result: Selective relaxation and dilation of coronary and systemic arteriolar resistance vessels (reducing cardiac afterload and increasing coronary collateral blood flow).\n  (2) Nitric Oxide / Nitrate-Mediated Venodilation: The nitrate ester moiety releases nitric oxide (NO) in vascular smooth muscle, stimulating soluble guanylyl cyclase (sGC) and raising intracellular cGMP. Result: Potent dilation of large systemic venous capacitance beds (reducing cardiac preload, left ventricular end-diastolic pressure, and wall tension).\n• Cardioprotective Ischemic Preconditioning Mimicry: Nicorandil opens mitochondrial K-ATP (mitoK-ATP) channels in cardiac myocytes, mimicking the endogenous mechanism of ischemic preconditioning. This preserves mitochondrial respiratory function, prevents mitochondrial permeability transition pore (mPTP) opening, and reduces myocardial infarct size during acute ischemic episodes.\n• Absence of Nitrate Tolerance: Unlike classical organic nitrates (GTN, ISDN), nicorandil rarely induces hemodynamic or anti-anginal tolerance during prolonged continuous therapy.",
+      "pk": "• Oral Bioavailability: High (approximately 75% to 80%); rapid gastrointestinal absorption with peak plasma concentrations reached within 30 to 60 minutes.\n• Protein Binding: Low (approximately 25%), circulating largely unbound in plasma.\n• Metabolism: Extensively denitrated in the liver via non-enzymatic pathways into active metabolite N-(2-hydroxyethyl)nicotinamide and subsequent nicotinic acid derivatives.\n• Elimination Half-Life: Biphasic with an elimination half-life of approximately 1 hour (terminal phase ≈ 8 hours).\n• Excretion: Primarily excreted in urine as metabolites (<2% unchanged drug).",
+      "dosage": "Clinical Dosing (Chronic Coronary Syndrome & Refractory Angina):\n• Initial Starting Dose: 10 mg PO twice daily (taken in morning and evening).\n  - For patients prone to nitrate headache, initiate at 5 mg PO twice daily for the first week.\n• Maintenance Dose Titration: Titrate up to 20 mg PO twice daily based on clinical response and tolerance (maximum dose: 30 mg PO twice daily / 60 mg/day).\n• Perioperative Management: Continue up to the morning of cardiac and non-cardiac surgery in patients with severe coronary artery disease (exerts protective preconditioning against perioperative myocardial ischemia).",
+      "offLabel": "Coronary microvascular dysfunction (cardiac syndrome X); prevention of slow-flow / no-reflow phenomenon during percutaneous coronary intervention (PCI); adjunct in refractory unstable angina.",
+      "complications": "• DRUG-INDUCED MUCOCUTANEOUS & GASTROINTESTINAL ULCERATIONS (MAJOR WARNING):\n  - Severe, painful, persistent ulcerations occurring throughout the gastrointestinal tract (oral aphthous ulcers, tongue ulceration, esophageal ulcers, small bowel/colonic ulcerations, and anal/perianal ulcers).\n  - Gastrointestinal Fistulae & Perforation: Can penetrate deeply into muscularis, causing intestinal fistulas, severe gastrointestinal hemorrhage, and free bowel perforation!\n  - Clinical Rule: Ulcers are completely refractory to standard medical/surgical wound care but heal rapidly upon PERMANENT DISCONTINUATION of nicorandil. If ulcers appear, stop nicorandil immediately.\n• Ocular Ulceration: Corneal ulceration and conjunctival erosions (rare; requires urgent ophthalmological referral and drug cessation).\n• Vasodilatory Side Effects: Throbbing headache (very common in first 1–2 weeks; usually diminishes with continued therapy), flushing, dizziness, and postural hypotension.\n• ABSOLUTE CONTRAINDICATION WITH PDE-5 INHIBITORS: Concomitant use with sildenafil, tadalafil, or vardenafil is STRICTLY CONTRAINDICATED due to synergistic cGMP surges that trigger profound, life-threatening, uncorrectable arterial hypotension!\n• Other Contraindications: Cardiogenic shock, severe left ventricular failure with low filling pressures, and acute pulmonary edema.",
+      "references": [
+        "IONA Study Group. Effect of nicorandil on coronary events in patients with stable angina (IONA): a randomised trial. Lancet.",
+        "British National Formulary (BNF 87), Nicorandil Monograph, NICE / BMJ Group.",
+        "Knuuti J, et al. 2019 ESC Guidelines for the diagnosis and management of chronic coronary syndromes. Eur Heart J.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs), Elsevier."
+      ]
+    },
+    {
+      "id": "isosorbide-dinitrate",
+      "cat": "cardiac",
+      "name": "Isosorbide Dinitrate (ISDN)",
+      "aliases": [
+        "isdn",
+        "isordil",
+        "sorbitrate",
+        "isosorbide dinitrate"
+      ],
+      "brand": "Isordil / Sorbitrate",
+      "classification": "Long-Acting Organic Nitrate Vasodilator • Soluble Guanylyl Cyclase (sGC) Activator",
+      "tagline": "Long-acting organic nitrate for preload reduction in chronic heart failure (with hydralazine) and stable angina pectoris",
+      "tags": [
+        "cardiac",
+        "heart failure",
+        "nitrate",
+        "ISDN",
+        "HFrEF",
+        "A-HeFT",
+        "preload reduction",
+        "angina"
+      ],
+      "source": "FDA Prescribing Information — Isordil (isosorbide dinitrate tablets), Bausch Health; ACC/AHA/HFSA Heart Failure Guidelines; A-HeFT Trial; UpToDate (2025/2026).",
+      "structure": "Isosorbide dinitrate (1,4:3,6-dianhydro-D-glucitol 2,5-dinitrate) is a synthetic organic nitrate vasodilator. Chemically, it is an ether-linked bicyclic sugar alcohol derivative (dianhydrosorbitol) esterified with two nitric acid ester groups (-O-NO2) at the 2- and 5-positions. Moderately lipophilic; available as oral tablets (sublingual, immediate-release, and sustained-release) and intravenous formulations.",
+      "pd": "Classified as an organic nitrate prodrug that releases vasoactive nitric oxide:\n\n• Molecular Mechanism:\n  - Nitric Oxide Generation: Enters vascular smooth muscle cells and undergoes bioactivation via mitochondrial aldehyde dehydrogenase (ALDH-2) and microsomal enzymes, releasing free nitric oxide (NO) or S-nitrosothiols.\n  - sGC Activation & cGMP Elevation: Free NO stimulates soluble guanylyl cyclase (sGC), catalyzing conversion of GTP to cyclic guanosine monophosphate (cGMP).\n  - Protein Kinase G (PKG) Cascade: cGMP activates PKG, which phosphorylates phospholamban (stimulating sarcoplasmic reticulum calcium uptake via SERCA), inhibits inositol triphosphate (IP3) calcium release, and dephosphorylates myosin light chain kinase (MLCK).\n  - Predominant Venodilation: Produces potent, preferential dilation of large systemic venous capacitance beds. This decreases central venous return, reducing right and left ventricular end-diastolic volumes, ventricular wall tension, and myocardial oxygen consumption (preload reduction).\n  - Coronary Vasodilation: Dilates large epicardial coronary vessels and redistributes myocardial blood flow toward ischemic subendocardial zones.\n• Landmark A-HeFT Evidence in HFrEF:\n  - The African-American Heart Failure Trial (A-HeFT) demonstrated that the combination of Isosorbide Dinitrate (ISDN) + Hydralazine in patients with HFrEF produced a 43% reduction in mortality, a 33% reduction in heart failure hospitalizations, and significant quality of life improvement (hydralazine acts as an arterial antioxidant, preventing nitrate tolerance!).",
+      "pk": "• Oral Bioavailability: Approximately 20%–30% for immediate-release oral tablets due to extensive first-pass hepatic metabolism; sublingual administration bypasses portal circulation, achieving 40%–50% bioavailability.\n• Active Hepatic Metabolites:\n  - Isosorbide-5-Mononitrate (ISMN): Long elimination half-life (4 to 6 hours); highly active vasodilator.\n  - Isosorbide-2-Mononitrate: Shorter half-life (1.5 to 2 hours); moderately active.\n• Elimination Half-Life: Parent ISDN is rapidly cleared with a half-life of 20 to 60 minutes, but active metabolites provide therapeutic coverage lasting 4 to 8 hours.\n• Excretion: Metabolites are excreted almost entirely in urine as glucuronides.",
+      "dosage": "Clinical Dosing Protocols:\n• Heart Failure with Reduced Ejection Fraction (HFrEF, with Hydralazine):\n  - Initial Dose: ISDN 20 mg + Hydralazine 37.5 mg PO three times daily (or fixed-dose BiDil 1 tablet TID).\n  - Target Maintenance Dose: ISDN 40 mg + Hydralazine 75 mg PO three times daily (BiDil 2 tablets TID).\n• Chronic Stable Angina Prophylaxis:\n  - Oral Immediate-Release: 10 mg to 40 mg PO two to three times daily.\n  - CRITICAL NITRATE-FREE INTERVAL: To prevent nitrate tolerance, administer with an eccentric dosing schedule (e.g. 8:00 AM, 1:00 PM, and 6:00 PM) ensuring a mandatory 10- to 12-hour nitrate-free interval overnight!\n• Acute Angina / Sublingual Dosing:\n  - 2.5 mg to 5.0 mg sublingual tablet dissolved under tongue every 5 to 10 minutes (max 3 doses in 15 minutes).\n• Acute IV Infusion (for Acute Heart Failure / Unstable Angina):\n  - Initial 1 mg to 2 mg/hr, titrating up to 5 to 10 mg/hr based on blood pressure and PCWP.",
+      "offLabel": "Achalasia cardia (sublingual 5 mg prior to meals to relax lower esophageal sphincter); acute diffuse esophageal spasm; perioperative coronary vasospasm prevention during bypass grafting.",
+      "complications": "• Nitrate Tolerance (Tachyphylaxis): Continuous 24-hour nitrate exposure causes rapid tolerance within 24–48 hours due to depletion of intracellular sulfhydryl donors, ALDH-2 enzyme oxidation, and increased superoxide generation. Prevented strictly by prescribing an asymmetric, eccentric dosing schedule with a 10–12 hour nitrate-free interval daily.\n• Headaches & Hypotension: Pulsatile, throbbing bifrontal headache (frequently severe in first 1–2 weeks; treat with paracetamol); orthostatic hypotension, syncope, and reflex tachycardia.\n• ABSOLUTE CONTRAINDICATION WITH PDE-5 INHIBITORS:\n  - Concurrent administration with Sildenafil or Vardenafil within 24 hours, or Tadalafil within 48 hours, is STRICTLY CONTRAINDICATED due to catastrophic, irreversible hypotension and fatal cardiovascular collapse!\n• Other Contraindications: Severe aortic stenosis, hypertrophic obstructive cardiomyopathy (HOCM), cardiac tamponade, and suspected right ventricular infarction (where preload dependence maintains cardiac output).",
+      "references": [
+        "Taylor AL, et al. Combination of isosorbide dinitrate and hydralazine in blacks with heart failure (A-HeFT). N Engl J Med.",
+        "FDA Prescribing Information — Isordil (isosorbide dinitrate), Bausch Health US.",
+        "Heidenreich PA, et al. 2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure. Circulation.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs), Elsevier."
+      ]
+    },
+    {
+      "id": "gtn",
+      "cat": "cardiac",
+      "name": "Glyceryl Trinitrate (Nitroglycerin / GTN)",
+      "aliases": [
+        "gtn",
+        "nitroglycerin",
+        "tridil",
+        "nitrolingual",
+        "nitrostat",
+        "glyceryl trinitrate"
+      ],
+      "brand": "Tridil / Nitrolingual / Nitrostat",
+      "classification": "Rapid-Acting Organic Nitrate • Potent Venodilator & Nitric Oxide Donor",
+      "tagline": "Rapid-acting nitric oxide donor and selective venodilator — cornerstone for acute coronary syndromes, hypertensive pulmonary edema, and perioperative controlled hypotension",
+      "tags": [
+        "cardiac",
+        "nitrate",
+        "GTN",
+        "nitroglycerin",
+        "ACS",
+        "pulmonary edema",
+        "preload",
+        "vasodilator"
+      ],
+      "source": "FDA Prescribing Information — Nitroglycerin Injection; AHA/ACC Guidelines for the Management of Acute Coronary Syndromes; Miller's Anesthesia, 10th ed., Ch. 18 & 42; UpToDate (2025/2026).",
+      "structure": "Glyceryl trinitrate (1,2,3-propanetriyl trinitrate; C3H5N3O9) is a volatile, heavy, oily organic nitrate ester of glycerol and nitric acid. Structurally, it consists of a three-carbon glycerol backbone esterified at all three positions with nitrate groups (-O-NO2). Extremely lipophilic with high volatility; formulated in alcohol/lactose in sublingual tablets, propellant-based sublingual pumpsprays, transdermal matrices, and clear aqueous intravenous solutions (0.5 to 5.0 mg/mL). In IV solutions, it readily adsorbs to standard polyvinyl chloride (PVC) tubing, requiring dedicated non-PVC infusion equipment.",
+      "pd": "Classified as an ultra-rapid nitric oxide donor and selective capacitance venodilator:\n\n• Molecular Mechanism:\n  - Mitochondrial Aldehyde Dehydrogenase (ALDH-2) Bioactivation: In vascular endothelial and smooth muscle cells, GTN is bioactivated by ALDH-2, generating free nitric oxide (NO) or an active S-nitrosothiol intermediate.\n  - sGC Activation & cGMP Synthesis: NO binds to the heme moiety of soluble guanylyl cyclase (sGC), stimulating conversion of GTP to cGMP. cGMP activates PKG, stimulating calcium sequestration into the sarcoplasmic reticulum and dephosphorylating myosin light chains, inducing smooth muscle relaxation.\n• Hemodynamic Dose-Response Curve:\n  (1) Low Infusion Doses (< 50 to 100 mcg/min): Highly selective for systemic VENOUS capacitance vessels. Markedly reduces central venous pressure, pulmonary capillary wedge pressure (PCWP), left ventricular end-diastolic volume, and wall stress (preload reduction), with minimal direct effect on systemic vascular resistance (SVR) or blood pressure.\n  (2) High Infusion Doses (> 100 to 200 mcg/min): Recruits systemic ARTERIAL and arteriolar dilation, reducing afterload and mean arterial pressure (MAP).\n  (3) Coronary Specificity: Dilates large epicardial coronary arteries, relieves dynamic coronary vasospasm, and opens collateral vessels, redirecting blood flow to ischemic subendocardial myocardium without causing coronary steal (unlike adenosine or dipyridamole).",
+      "pk": "• Extremely Rapid Clearance & Half-Life: Very high systemic clearance (exceeding hepatic blood flow), with a terminal elimination half-life of 1 to 4 minutes.\n• Sublingual Absorption: Rapid sublingual mucosal absorption; onset within 1 to 3 minutes, peak effect at 5 minutes, duration 20 to 30 minutes.\n• Transdermal Absorption: Slow, sustained transdermal absorption; onset 30–60 minutes, duration 24 hours.\n• Hepatic & Erythrocyte Metabolism: Extensively hydrolyzed by hepatic glutathione-organic nitrate reductase and erythrocytes into active dinitrate metabolites (1,2-glyceryl dinitrate and 1,3-glyceryl dinitrate, possessing approximately 10% potency and longer half-lives of 40–90 minutes) and inactive mononitrate/glycerol.\n• Excretion: Inactive glucuronidated metabolites excreted in urine.",
+      "dosage": "Acute Resuscitation & Intensive Care Protocols:\n\n• Acute Coronary Syndrome (Unstable Angina / NSTEMI / STEMI):\n  - Sublingual: 0.4 mg (1 spray or 1 tablet under tongue) every 5 minutes up to 3 doses. If pain persists, immediately initiate IV infusion.\n  - Intravenous Infusion: Start at 5 mcg/min to 10 mcg/min using a non-PVC infusion set.\n  - Titration: Increase by 5 to 10 mcg/min every 3 to 5 minutes until ischemic chest discomfort is relieved or target blood pressure is reached (keep SBP > 100 mmHg; typical effective range 20 to 200 mcg/min).\n• Acute Cardiogenic Pulmonary Edema / Hypertensive Emergency:\n  - High-Dose IV Infusion: Start at 20 mcg/min to 40 mcg/min; rapidly titrate by 20 mcg/min every 3 to 5 minutes up to 100–250 mcg/min to rapidly unload the left ventricle and resolve pulmonary capillary transudation.\n• Controlled Intraoperative Hypotension (Cardiac & Spine Surgery):\n  - Continuous IV infusion 0.5 to 5.0 mcg/kg/min titrated to target surgical mean arterial pressure (MAP 60–70 mmHg).\n• Administration Equipment Requirement:\n  - Highly adsorbs to standard PVC plastic bags and tubing (adsorption loss up to 40%–80%!). MUST be administered using glass/polyolefin containers and dedicated non-PVC infusion sets.",
+      "offLabel": "Acute uterine relaxation for fetal extraction during emergency Caesarean section, retained placenta, or uterine inversion (50 to 100 mcg IV bolus); prevention of radial artery graft spasm in CABG; acute ergotamine-induced peripheral vasospasm.",
+      "complications": "• Hemodynamic Pitfalls & Absolute Contraindications:\n  - RIGHT VENTRICULAR INFARCTION (CRITICAL DANGER): Patients with acute inferior STEMI involving the right ventricle are profoundly preload-dependent. GTN venodilation precipitates catastrophic, irreversible cardiogenic shock! Always perform right-sided ECG leads (V4R) before administering nitrates in inferior MI!\n  - Severe Aortic Stenosis: Fixed outflow obstruction cannot increase stroke volume; preload reduction causes sudden, severe syncope and circulatory arrest.\n  - Severe Hypotension (SBP < 90 mmHg) or Marked Bradycardia (<50 bpm) / Tachycardia (>100 bpm).\n• FATAL INTERACTION WITH PDE-5 INHIBITORS (BOXED WARNING):\n  - Concomitant use with Sildenafil / Vardenafil (within 24 hours) or Tadalafil (within 48 hours) triggers uncontrollable, refractory vasodilation, precipitating profound hypotension, myocardial infarction, and death.\n• Nitrate Tolerance & Methemoglobinemia:\n  - Tolerance develops within 24 to 48 hours of continuous IV infusion; overcome by establishing a 10–12 hour nitrate-free window daily.\n  - Methemoglobinemia: High-dose prolonged infusions (> 7 mcg/kg/min for > 24 hours) generate nitrite ions that oxidize ferrous (Fe2+) to ferric (Fe3+) hemoglobin. Manifests as unexplained cyanosis refractory to oxygen and dark brownish blood; treated with IV Methylene Blue (1 to 2 mg/kg over 5 minutes).\n• Common Adverse Effects: Severe throbbing bifrontal headache, facial flushing, postural dizziness, and reflex tachycardia.",
+      "references": [
+        "O'Gara PT, et al. 2013 ACCF/AHA Guideline for the Management of ST-Elevation Myocardial Infarction. Circulation.",
+        "FDA Prescribing Information — Nitroglycerin Injection, Hospira / Pfizer.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 42 (Controlled Hypotension).",
+        "UpToDate 'Drug information: Nitroglycerin' (Wolters Kluwer, 2025/2026)."
+      ]
+    },
+    {
+      "id": "digoxin",
+      "cat": "cardiac",
+      "name": "Digoxin",
+      "aliases": [
+        "lanoxin",
+        "digitalis",
+        "cardiac glycoside"
+      ],
+      "brand": "Lanoxin",
+      "classification": "Cardiac Glycoside • Sarcolemmal Na+/K+ ATPase Inhibitor & Vagal Sensitizer",
+      "tagline": "Cardiac glycoside providing positive inotropy via Na+/K+ ATPase inhibition and ventricular rate control in atrial fibrillation via central vagal stimulation",
+      "tags": [
+        "cardiac",
+        "heart failure",
+        "atrial fibrillation",
+        "digoxin",
+        "lanoxin",
+        "Na/K ATPase",
+        "inotropic",
+        "TDM"
+      ],
+      "source": "FDA Prescribing Information — Lanoxin (digoxin injection/tablets), Concordia / US FDA; Digitalis Investigation Group (DIG Trial); ACC/AHA/HFSA Heart Failure Guidelines; UpToDate (2025/2026).",
+      "structure": "Digoxin (3-beta-[[O-2,6-dideoxy-beta-D-ribo-hexopyranosyl-(1->4)-O-2,6-dideoxy-beta-D-ribo-hexopyranosyl-(1->4)-2,6-dideoxy-beta-D-ribo-hexopyranosyl]oxy]-14-hydroxy-5beta,20(22)-cardenolide) is a naturally occurring cardiac glycoside extracted from the foxglove plant Digitalis purpurea and Digitalis lanata. Structurally, it consists of a steroid aglycone nucleus (cyclopentanoperhydrophenanthrene) bearing an unsaturated five-membered lactone ring at C-17 and three beta-D-digitoxose sugar residues at C-3.",
+      "pd": "Classified as an inotropic and parasympathomimetic cardiac glycoside with dual direct and autonomic mechanisms:\n\n• Cellular & Inotropic Mechanism:\n  - Reversible Inhibition of Sarcolemmal Na+/K+ ATPase: Binds specifically to the extracellular, potassium-binding alpha-subunit of the myocardial sarcolemmal sodium-potassium pump (Na+/K+ ATPase). (Extracellular potassium competitively inhibits digoxin binding; hence hypokalemia dramatically increases digoxin binding and toxicity!).\n  - Intracellular Calcium Accumulation: Na+/K+ ATPase inhibition increases intracellular sodium concentration. This reduces the transmembranous sodium electrochemical gradient, thereby slowing calcium extrusion through the sodium-calcium exchanger (NCX: 3 Na+ in / 1 Ca2+ out).\n  - Enhanced Myocardial Contractility: Intracellular calcium rises and is sequestered into the sarcoplasmic reticulum by SERCA. During subsequent action potentials, increased calcium is released into the cytosol, enhancing actin-myosin cross-bridge cycling and producing a positive inotropic effect.\n• Autonomic & Electrophysiological Mechanism (Rate Control):\n  - Vagal Nuclei Stimulation & Baroreceptor Sensitization: Stimulates central vagal nuclei in the medulla and sensitizes carotid sinus baroreceptors, producing powerful parasympathomimetic (vagotonic) output to the heart.\n  - AV Nodal Conduction Slowing: Prolongs effective refractory period and slows conduction velocity across the AV node (prolongs PR interval on ECG), effectively controlling the ventricular rate in atrial fibrillation and atrial flutter.\n  - Shortening of Atrial and Ventricular APD: Direct electrophysiological effect shortens action potential duration and refractoriness in atrial and ventricular myocardium, increasing automaticity and predisposing to triggered arrhythmias (delayed afterdepolarizations — DADs).",
+      "pk": "• Bioavailability: Oral tablets 60%–80%; oral elixir 80%; IV administration 100%.\n• Massive Volume of Distribution (Vdss ≈ 6 to 7 L/kg): Binds extensively to peripheral skeletal and cardiac muscle (myocardial concentration is 15 to 30 times higher than serum concentration!). In obese patients, calculate dosage based on Ideal Body Weight (IBW), not actual weight, because digoxin does not distribute into adipose tissue.\n• Protein Binding: Approximately 20% to 25% bound to plasma albumin.\n• Elimination Half-Life: Approximately 36 to 48 hours in healthy adults; extends to 3.5 to 5+ days in end-stage renal disease.\n• Excretion: 70% to 80% excreted unchanged in urine via combined glomerular filtration and active tubular secretion mediated by P-glycoprotein. Renal clearance parallels creatinine clearance; dose must be reduced in proportion to renal impairment.",
+      "dosage": "AHA/ACC & Clinical Practice Protocols:\n\n• Heart Failure with Reduced Ejection Fraction (HFrEF, Sinus Rhythm):\n  - Maintenance Dosing (No Loading Dose Needed): 0.125 mg to 0.25 mg PO once daily (in elderly or renal impairment: 0.0625 mg to 0.125 mg daily or every other day).\n  - Target Serum Concentration for Heart Failure: 0.5 to 0.9 ng/mL (DIG trial re-analysis demonstrated that serum levels of 0.5–0.9 ng/mL reduce mortality and hospitalizations, whereas levels > 1.0 ng/mL increase mortality!).\n• Atrial Fibrillation / Rapid Ventricular Rate (Acute Loading Protocol):\n  - Total Digitalizing Loading Dose: 0.75 mg to 1.5 mg IV (or 1.0 to 1.5 mg PO) administered in divided fractions:\n    * Step 1: Administer 0.5 mg IV slow push over 5 minutes.\n    * Step 2: Administer 0.25 mg IV after 4 to 8 hours if needed.\n    * Step 3: Administer 0.25 mg IV after an additional 4 to 8 hours.\n  - Target Serum Concentration for Atrial Fibrillation: 0.8 to 1.5 ng/mL.\n• Therapeutic Drug Monitoring (TDM) Rules:\n  - Blood sample MUST be drawn at least 6 to 8 hours after the previous dose (preferably immediately prior to next scheduled dose) to allow completion of the post-distribution phase!\n  - Therapeutic Window: 0.5 to 0.9 ng/mL (HF) / 0.8 to 1.5 ng/mL (AF); toxicity frequently occurs above 2.0 ng/mL.",
+      "offLabel": "Conversion or rate control in fetal supraventricular tachycardia via maternal administration; chronic inotropic support in right ventricular failure secondary to pulmonary hypertension.",
+      "complications": "• DIGITALIS TOXICITY (NARROW THERAPEUTIC INDEX):\n  - Precipitating Factors: Hypokalemia (strongly potentiates toxicity!), hypomagnesemia, hypercalcemia, renal failure, and drug interactions (amiodarone, verapamil, quinidine, clarithromycin double digoxin levels by inhibiting P-glycoprotein).\n  - Gastrointestinal Symptoms: Earliest and most common warning signs — anorexia, nausea, vomiting, abdominal pain, diarrhea.\n  - Neurological & Visual Symptoms: Fatigue, confusion, delirium, headache, and classic XANTHOPSIA (yellow-green color halos around lights, blurred vision, photophobia).\n  - Cardiac Arrhythmias (Toxicity can mimic virtually every known arrhythmia):\n    * Most Characteristic: Frequent ventricular premature beats (PVCs; ventricular bigeminy/trigeminy).\n    * Pathognomonic: Bidirectional Ventricular Tachycardia (alternating QRS axis polarity) and Paroxysmal Atrial Tachycardia (PAT) with 2:1 AV block.\n    * Bradyarrhythmias: Severe sinus bradycardia, sinoatrial arrest, and complete heart block.\n• Management of Digoxin Toxicity:\n  (1) Stop digoxin immediately; check serum digoxin, potassium, magnesium, and creatinine.\n  (2) Correct Hypokalemia & Hypomagnesemia (maintain K+ 4.0–4.5 mEq/L; avoid calcium administration!).\n  (3) SPECIFIC ANTIDOTE — Digoxin Immune Fab (DigiFab):\n      - Indicated for life-threatening arrhythmias, severe hyperkalemia (>5.0 mEq/L in acute overdose), or acute ingestion > 10 mg (adults).\n      - Dosing: Number of vials = [Serum Digoxin (ng/mL) × Weight (kg)] / 100, or 10 to 20 vials empiric IV push in acute cardiac arrest.\n• Contraindications: Ventricular fibrillation / ventricular tachycardia; Wolff-Parkinson-White syndrome with atrial fibrillation; 2nd or 3rd degree AV block; hypertrophic obstructive cardiomyopathy (HOCM); and constrictive pericarditis.",
+      "references": [
+        "The Digitalis Investigation Group. The effect of digoxin on mortality and morbidity in patients with heart failure. N Engl J Med.",
+        "Ahmed A, et al. What is the optimal serum digoxin concentration in heart failure? J Am Coll Cardiol.",
+        "FDA Prescribing Information — Lanoxin (digoxin injection), Concordia Pharmaceuticals.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 65 (Cardiac Anesthesia)."
+      ]
+    },
+    {
+      "id": "antiplatelet-drugs",
+      "cat": "cardiac",
+      "name": "Antiplatelet Therapies (Aspirin, P2Y12 Inhibitors & GP IIb/IIIa)",
+      "aliases": [
+        "antiplatelet agents",
+        "aspirin",
+        "clopidogrel",
+        "ticagrelor",
+        "prasugrel",
+        "dual antiplatelet therapy",
+        "dapt"
+      ],
+      "brand": "Aspirin / Plavix (Clopidogrel) / Brilinta (Ticagrelor) / Effient (Prasugrel)",
+      "classification": "Antiplatelet Pharmacotherapy • COX-1, P2Y12 Receptor & Glycoprotein IIb/IIIa Antagonists",
+      "tagline": "Comprehensive antiplatelet armamentarium for acute coronary syndromes, coronary stents, and secondary vascular prevention — balancing thrombosis prevention vs perioperative bleeding",
+      "tags": [
+        "cardiac",
+        "antiplatelet",
+        "aspirin",
+        "clopidogrel",
+        "ticagrelor",
+        "prasugrel",
+        "DAPT",
+        "PCI",
+        "stent thrombosis"
+      ],
+      "source": "AHA/ACC Coronary Artery Revascularization Guidelines; ESC Guidelines on Dual Antiplatelet Therapy (DAPT); ASA/ESAIC Guidelines on Perioperative Antiplatelet Management; UpToDate (2025/2026).",
+      "structure": "Antiplatelet agents encompass three distinct chemical and pharmacological classes:\n  (1) Salicylates: Acetylsalicylic acid (Aspirin; 2-acetyloxybenzoic acid) contains an esterified acetyl group that irreversibly acylates target enzymes.\n  (2) Thienopyridines & Non-Thienopyridines (P2Y12 Inhibitors): Clopidogrel and Prasugrel are thienopyridine prodrugs containing a tetrahydrothienopyridine nucleus. Ticagrelor is an orally active cyclopentyltriazolopyrimidine (CPTP) nucleoside analogue. Cangrelor is an intravenous adenosine triphosphate (ATP) analogue.\n  (3) Glycoprotein IIb/IIIa Antagonists: Tirofiban (non-peptide tyrosine derivative), Eptifibatide (cyclic heptapeptide), and Abciximab (chimeric Fab monoclonal antibody).",
+      "pd": "• Multi-Targeted Antiplatelet Mechanisms:\n  (1) ASPIRIN (Irreversible COX-1 Inactivation):\n    - Selectively and irreversibly acetylates the Serine-529 residue near the catalytic site of platelet cyclooxygenase-1 (COX-1).\n    - Permanently blocks conversion of arachidonic acid to prostaglandin H2 (PGH2) and thromboxane A2 (TXA2, a potent platelet aggregator and vasoconstrictor).\n    - Because platelets lack nuclei and cannot synthesize new proteins, TXA2 synthesis is permanently inhibited for the entire 7- to 10-day lifespan of the circulating platelet.\n  (2) P2Y12 ADENOSINE DIPHOSPHATE (ADP) RECEPTOR INHIBITORS:\n    - Block the platelet Gi-coupled P2Y12 purinergic receptor, preventing ADP-mediated inhibition of adenylate cyclase and blunting inside-out signaling required for Glycoprotein IIb/IIIa receptor activation.\n    - Clopidogrel (Plavix): Inactive prodrug requiring two-step hepatic CYP450 bioactivation (CYP2C19, CYP1A2, CYP3A4). Irreversibly binds P2Y12. CYP2C19 loss-of-function alleles (*2, *3) reduce active metabolite generation by 30%–50%, causing clopidogrel resistance and stent thrombosis.\n    - Prasugrel (Effient): Potent prodrug requiring rapid single-step intestinal and hepatic esterase/CYP bioactivation; irreversibly binds P2Y12 with greater speed and consistency than clopidogrel (TRITON-TIMI 38).\n    - Ticagrelor (Brilinta): Direct-acting, oral, REVERSIBLE allosteric P2Y12 antagonist; does not require metabolic activation; produces faster onset and greater platelet inhibition than clopidogrel (PLATO trial).\n    - Cangrelor (Kengreal): Ultra-rapid, intravenous, reversible P2Y12 antagonist; onset within 2 minutes, recovery of platelet function within 60 minutes post-infusion.\n  (3) GLYCOPROTEIN IIb/IIIa RECEPTOR INHIBITORS (Tirofiban, Eptifibatide):\n    - Competitively block the final common pathway of platelet aggregation by preventing fibrinogen and von Willebrand factor cross-linking between activated GP IIb/IIIa (integrin alpha-IIb-beta-3) receptors.",
+      "pk": "• Aspirin: Rapid gastric and upper intestinal absorption; peak plasma levels in 30–60 minutes; platelet inhibition occurs within 20–30 minutes (chewed tablet); parent half-life 15–20 minutes (hydrolyzed to salicylic acid); platelet functional defect lasts 7 to 10 days.\n• Clopidogrel: Peak inhibition after 300–600 mg loading dose occurs in 2 to 4 hours; recovery of normal platelet function requires 5 to 7 days after cessation.\n• Prasugrel: Peak inhibition in 30 minutes; recovery requires 7 days after cessation.\n• Ticagrelor: Rapid absorption; active metabolite AR-C124910XX; terminal half-life 7 to 9 hours; platelet function recovers in 3 to 5 days after cessation.\n• Cangrelor: Elimination half-life 3 to 6 minutes; complete platelet function recovery in 60 minutes.",
+      "dosage": "AHA/ACC & Perioperative Clinical Protocols:\n\n• Acute Coronary Syndrome (ACS) / Percutaneous Coronary Intervention (PCI) Dosing:\n  - Aspirin: Initial loading dose 162 mg to 325 mg (non-enteric coated, chewed for rapid absorption), then 75 mg to 100 mg PO once daily indefinitely.\n  - Clopidogrel: Loading dose 300 mg to 600 mg PO, then 75 mg PO once daily.\n  - Ticagrelor: Loading dose 180 mg PO, then 90 mg PO twice daily (co-prescribed with aspirin ≤ 100 mg daily).\n  - Prasugrel: Loading dose 60 mg PO, then 10 mg PO once daily (5 mg daily if weight < 60 kg or age ≥ 75 years).\n\n• DURATION OF DUAL ANTIPLATELET THERAPY (DAPT):\n  - Post-PCI for Acute Coronary Syndrome: Minimum 12 months of DAPT (Aspirin + Ticagrelor/Prasugrel/Clopidogrel) unless high bleeding risk dictates shorter course (3–6 months).\n  - Post-PCI for Chronic Coronary Syndrome (Elective Stent): Minimum 6 months of DAPT (Aspirin + Clopidogrel).\n\n• PERIOPERATIVE WITHHOLDING GUIDELINES PRIOR TO ELECTIVE SURGERY:\n  - Aspirin: Continue throughout perioperative period for high-risk cardiac/vascular surgery; withhold 3 to 7 days before high-bleeding-risk procedures (neurosurgery, posterior eye surgery, spinal canal surgery).\n  - Clopidogrel: Discontinue 5 days prior to elective surgery.\n  - Ticagrelor: Discontinue 3 to 5 days prior to elective surgery.\n  - Prasugrel: Discontinue 7 days prior to elective surgery.\n  - Neuraxial Anaesthesia (Spinal/Epidural): ASRA guidelines require 5 days for clopidogrel, 5–7 days for ticagrelor, 7–10 days for prasugrel; aspirin alone does not prohibit neuraxial block.",
+      "offLabel": "Secondary stroke prevention (aspirin + clopidogrel for 21 days following minor ischemic stroke or high-risk TIA; POINT & CHANCE trials); pre-eclampsia prevention in high-risk pregnant women (aspirin 75–150 mg daily started before 16 weeks gestation).",
+      "complications": "• Hemorrhagic Risk & Major Bleeding: Major gastrointestinal bleeding, intracranial hemorrhage, and surgical site bleeding.\n• Acute Stent Thrombosis (Catastrophic Risk with Premature DAPT Discontinuation):\n  - Stopping DAPT prematurely during the first 1–6 months following drug-eluting stent (DES) placement triggers acute stent thrombosis in up to 10%–20% of cases, carrying a 30%–50% mortality rate!\n  - Elective surgery MUST be postponed for at least 6 months after DES placement whenever possible.\n• Emergency Reversal of Antiplatelet Effects:\n  (1) Platelet Transfusion: 1 to 2 adult pools (apheresis units); effective for aspirin and clopidogrel, but LESS effective for ticagrelor (circulating free ticagrelor inhibits newly transfused platelets!).\n  (2) Desmopressin (DDAVP): 0.3 mcg/kg IV infused over 30 minutes; stimulates Weibel-Palade body release of von Willebrand factor and factor VIII, improving platelet adhesion.\n  (3) Tranexamic Acid (TXA): 1 g IV bolus promotes hemostasis.\n• Ticagrelor-Specific Side Effects: Dyspnea (occurs in 10%–15% due to inhibition of adenosine reuptake; usually self-limiting and does not reflect heart failure or bronchospasm); ventricular pauses (>2.5 seconds); hyperuricemia.\n• Prasugrel Contraindication: CONTRAINDICATED in patients with prior stroke or transient ischemic attack (TIA) due to significant increase in fatal intracranial hemorrhage.",
+      "references": [
+        "Valgimigli M, et al. 2017 ESC focused update on dual antiplatelet therapy in coronary artery disease. Eur Heart J.",
+        "Lawton JM, et al. 2021 ACC/AHA/SCAI Guideline for Coronary Artery Revascularization. J Am Coll Cardiol.",
+        "Horlocker TT, et al. Regional Anesthesia in the Patient Receiving Antithrombotic or Thrombolytic Therapy: ASRA Evidence-Based Guidelines. Reg Anesth Pain Med.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 65 (Cardiac Anesthesia)."
+      ]
+    },
+    {
+      "id": "sacubitril-valsartan",
+      "cat": "cardiac",
+      "name": "Sacubitril/Valsartan (Entresto)",
+      "aliases": [
+        "entresto",
+        "arni",
+        "sacubitril",
+        "valsartan",
+        "neprilysin inhibitor"
+      ],
+      "brand": "Entresto",
+      "classification": "Angiotensin Receptor-Neprilysin Inhibitor (ARNI) • Dual Neurohormonal Modulator",
+      "tagline": "First-line ARNI guideline-directed medical therapy for heart failure with reduced ejection fraction — reduces cardiovascular death and hospitalizations",
+      "tags": [
+        "cardiac",
+        "heart failure",
+        "HFrEF",
+        "ARNI",
+        "entresto",
+        "sacubitril",
+        "valsartan",
+        "neprilysin"
+      ],
+      "source": "FDA Prescribing Information — Entresto (sacubitril and valsartan tablets), Novartis; PARADIGM-HF Trial; ESC Heart Failure Guidelines; ACC/AHA/HFSA Heart Failure Guidelines; UpToDate (2025/2026).",
+      "structure": "Sacubitril/Valsartan is formulated as a single co-crystallized supramolecular complex containing the sodium salts of sacubitril, an ethyl ester prodrug neprilysin inhibitor (C24H29NO5), and valsartan, a non-peptide angiotensin II receptor antagonist (C24H29N5O3), in a fixed 1:1 molar ratio linked via water molecules into a stable hexasodium complex (C48H55N6O8Na3 · 2.5 H2O).",
+      "pd": "Classified as an Angiotensin Receptor-Neprilysin Inhibitor (ARNI) providing simultaneous dual neurohormonal modulation:\n\n• Dual Molecular Mechanisms:\n  (1) Neprilysin (Neutral Endopeptidase) Inhibition by Sacubitrilat:\n    - Sacubitril is rapidly cleaved by plasma and tissue esterases into active metabolite sacubitrilat (LBQ657).\n    - Sacubitrilat potently inhibits neprilysin, the zinc-dependent metallopeptidase responsible for enzymatic degradation of beneficial endogenous vasoactive peptides: Atrial Natriuretic Peptide (ANP), B-type Natriuretic Peptide (BNP), C-type Natriuretic Peptide (CNP), bradykinin, adrenomedullin, and substance P.\n    - Result: Elevation of natriuretic peptides activates particulate guanylyl cyclase (pGC-A/B), increasing intracellular cGMP. This drives natriuresis, diuresis, systemic vasodilation, inhibition of renin and aldosterone release, and anti-hypertrophic / anti-fibrotic myocardial remodeling.\n  (2) Angiotensin II Type 1 (AT1) Receptor Blockade by Valsartan:\n    - Because neprilysin also degrades angiotensin II, inhibiting neprilysin alone paradoxically raises angiotensin II levels.\n    - Valsartan selectively and potently blocks AT1 receptors, preventing angiotensin II-mediated vasoconstriction, aldosterone and vasopressin secretion, sympathetic activation, and adverse cardiac remodeling.\n• Landmark PARADIGM-HF Trial Results:\n  - In patients with chronic HFrEF (LVEF ≤ 40%), sacubitril/valsartan was superior to gold-standard enalapril (10 mg BID), producing a 20% reduction in cardiovascular death, a 21% reduction in heart failure hospitalizations, and a 16% reduction in all-cause mortality!",
+      "pk": "• Oral Bioavailability: Sacubitril >60%; Valsartan 25% (absorption not affected by food).\n• Protein Binding: Highly bound to plasma proteins (sacubitril 97%, sacubitrilat 97%, valsartan 95%).\n• Metabolism: Sacubitril is rapidly converted by esterases to active sacubitrilat (t1/2 ≈ 12 hours); valsartan is minimally metabolized (approx 20%).\n• Elimination Half-Life: Sacubitril 1.5 hours; Sacubitrilat 11.5 to 12.5 hours; Valsartan 9 to 10 hours.\n• Excretion: Sacubitrilat is excreted predominantly in urine (52%–68%) and feces; Valsartan is excreted primarily in bile and feces (86%) and urine (13%).",
+      "dosage": "Guideline-Directed Medical Therapy (GDMT) Protocol:\n\n• MANDATORY 36-HOUR ACE INHIBITOR WASHOUT RULE:\n  - If switching from an ACE inhibitor (e.g. enalapril, ramipril, lisinopril) to sacubitril/valsartan, you MUST wait AT LEAST 36 HOURS after the last ACE inhibitor dose before administering the first dose of sacubitril/valsartan to prevent life-threatening angioedema!\n  - No washout period is needed when switching from an Angiotensin Receptor Blocker (ARB).\n• Stepwise Dosing Schedule:\n  - Initial Starting Dose: 49/51 mg (sacubitril 24 mg / valsartan 26 mg) PO twice daily.\n  - For ACEi/ARB naïve patients, low baseline BP, eGFR < 30 mL/min, or moderate hepatic impairment: Start at 24/26 mg PO twice daily.\n  - Dose Titration: Double the dose every 2 to 4 weeks as tolerated to the target maintenance dose of 97/103 mg (sacubitril 97 mg / valsartan 103 mg) PO twice daily.\n• Diagnostic Biomarker Pearl (BNP vs NT-proBNP):\n  - Because neprilysin degrades BNP but does NOT degrade NT-proBNP, patients on sacubitril/valsartan display paradoxically ELEVATED serum BNP levels (which reflects drug action, not worsening heart failure!).\n  - To monitor heart failure status, ALWAYS measure NT-proBNP (which drops as the patient improves)!",
+      "offLabel": "Heart failure with preserved ejection fraction (HFpEF; PARAGON-HF trial showed benefits in patients with LVEF below normal range 45%–57% and women); resistant hypertension.",
+      "complications": "• Symptomatic Hypotension: Frequent adverse effect (14%–18% vs 9% on enalapril), especially in elderly or volume-depleted patients. Manage by adjusting concurrent diuretics.\n• Hyperkalemia: Potassium accumulation (monitor serum potassium and creatinine; caution with spironolactone/eplerenone).\n• Angioedema: Driven by bradykinin accumulation (due to dual inhibition of neprilysin and aminopeptidase P). Fatal angioedema occurs if administered concurrently with ACE inhibitors (strict 36-hour washout mandatory!).\n• Acute Kidney Injury: Modest transient decline in eGFR; continue therapy unless progressive deterioration occurs.\n• Contraindications: Concurrent use of ACE inhibitors (or within 36 hours); history of hereditary, idiopathic, or ACEi/ARB-related angioedema; severe hepatic impairment (Child-Pugh C); bilateral renal artery stenosis; and pregnancy (BOXED WARNING: fetal toxicity/death).",
+      "references": [
+        "McMurray JJ, et al. Angiotensin-neprilysin inhibition versus enalapril in heart failure (PARADIGM-HF). N Engl J Med.",
+        "FDA Prescribing Information — Entresto (sacubitril and valsartan tablets), Novartis.",
+        "Heidenreich PA, et al. 2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure. Circulation.",
+        "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 65 (Cardiac Anesthesia)."
       ]
     }
   ]
