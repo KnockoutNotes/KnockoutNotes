@@ -352,7 +352,8 @@
       icon: "💊",
       desc: "Pharmacological monographs, receptor dynamics, kinetics and dosing guidelines",
       cats: [
-        { id: "all", label: "All Drugs", icon: "✦", desc: "Complete library of 84 drug monographs", filter: (it) => !it.sections },
+        { id: "all", label: "All Drugs", icon: "✦", desc: "Complete library of 90 drug monographs", filter: (it) => !it.sections },
+        { id: "antimicrobials", label: "Antimicrobial Therapy", icon: "🦠", desc: "ICU antibiotics — Meropenem, Piperacillin-Tazobactam (Piptaz), Gentamicin, Teicoplanin, Vancomycin & Colistin", filter: (it) => it.cat === "antimicrobials" },
         { id: "induction", label: "Induction Agents", icon: "💉", desc: "Intravenous hypnotics (propofol, etomidate, ketamine, thiopental)", filter: (it) => it.cat === "induction" },
         { id: "relaxants", label: "Neuromuscular Blockers", icon: "⚡", desc: "Depolarising and non-depolarising neuromuscular blockers", filter: (it) => it.cat === "relaxants" },
         { id: "reversal", label: "Reversal Agents", icon: "🔄", desc: "Sugammadex, neostigmine, glycopyrrolate & atropine", filter: (it) => it.cat === "reversal" },
@@ -407,7 +408,7 @@
     if (item && item.id && (item.id.startsWith("cc-") || item.id.startsWith("cc_") || item.cat === "cc_neuro")) return "critical";
     if (!catId || catId === "all") return activeDomain || "anaesthesia";
     if (catId.startsWith("cc_") || catId === "cc_neuro") return "critical";
-    const drugCats = ["induction", "relaxants", "reversal", "opioids", "nsaids", "vasopressors", "antihypertensives", "alpha2", "local", "steroids", "antidiabetics", "pregnancy", "miscellaneous"];
+    const drugCats = ["induction", "relaxants", "reversal", "opioids", "nsaids", "vasopressors", "antihypertensives", "alpha2", "local", "steroids", "antidiabetics", "pregnancy", "miscellaneous", "antimicrobials"];
     if (drugCats.includes(catId)) return "drugs";
     const critCats = ["respiratory", "shock", "abg", "antibiotics", "poisoning", "sepsis", "neuro_icu", "airway_icu", "cardio_icu"];
     if (critCats.includes(catId)) return "critical";
@@ -880,6 +881,10 @@
               <span class="ron-secondary-domain-title">${esc(dom.label)}</span>
               <span class="ron-secondary-sub">— ${esc(dom.desc)}</span>
             </div>
+            <button type="button" class="ron-browse-chapters-trigger" id="ronBrowseChaptersTrigger" data-open-chapters="${dom.id}" aria-haspopup="dialog" aria-expanded="false" title="View all chapters in ${esc(dom.label)}">
+              <span class="ron-browse-icon">☰</span>
+              <span class="ron-browse-label">Chapters (▾)</span>
+            </button>
             <div class="ron-scroll-indicator-wrap" aria-hidden="true">
               <span class="ron-scroll-hint">Swipe categories</span>
               <span class="ron-scroll-arrow">→</span>
@@ -1006,6 +1011,16 @@
     // Read URL state
     const urlParams = new URLSearchParams(window.location.search);
     const viewParam = urlParams.get("view");
+    if (urlParams.get("chapters") === "open" || urlParams.get("modal") === "chapters" || urlParams.get("openChapters") === "true") {
+      setTimeout(() => openChaptersModal(activeDomain), 80);
+      try {
+        const cleanUrl = new URL(window.location.href);
+        cleanUrl.searchParams.delete("chapters");
+        cleanUrl.searchParams.delete("modal");
+        cleanUrl.searchParams.delete("openChapters");
+        window.history.replaceState(window.history.state, "", cleanUrl.toString());
+      } catch (_) {}
+    }
     if (viewParam === "pyq" || urlParams.get("pyq") === "true") {
       // In PYQ mode, clean up any active 3D WebGL viewers and hide the study board
       try {
@@ -1151,6 +1166,15 @@
       return "Antidiabetic Agents";
     }
 
+    if (cat === "antimicrobials") {
+      if (cls.includes("carbapenem")) return "Carbapenems (Beta-Lactams)";
+      if (cls.includes("ureidopenicillin") || cls.includes("penicillin")) return "Antipseudomonal Penicillins & Beta-Lactamase Inhibitors";
+      if (cls.includes("aminoglycoside")) return "Aminoglycosides (30S Ribosomal Inhibitors)";
+      if (cls.includes("glycopeptide") || cls.includes("lipoglycopeptide")) return "Glycopeptides & Lipoglycopeptides";
+      if (cls.includes("polymyxin")) return "Polymyxins (Outer Membrane Disruptors)";
+      return "ICU Antimicrobials";
+    }
+
     if (cat === "pregnancy") {
       if (cls.includes("uterotonic") || cls.includes("oxytocin") || cls.includes("prostaglandin") || cls.includes("ergot")) return "Uterotonics & Myometrial Active Agents";
       return "Obstetric Pharmacology";
@@ -1260,6 +1284,9 @@
     if (cls.includes("antagonist") || cls.includes("reversal")) return "ron-badge-antagonist";
     if (cls.includes("aminoamide")) return "ron-badge-amide";
     if (cls.includes("aminoester")) return "ron-badge-ester";
+    if (cls.includes("carbapenem") || cls.includes("penicillin") || cls.includes("beta-lactam")) return "ron-badge-nondepol";
+    if (cls.includes("aminoglycoside") || cls.includes("glycopeptide")) return "ron-badge-amide";
+    if (cls.includes("polymyxin")) return "ron-badge-depol";
     return "";
   }
 
@@ -1580,6 +1607,7 @@
 
       <!-- Quick Topics Modal -->
       ${renderTopicsModal()}
+      ${renderChaptersModal()}
     `;
 
     mountAllCard3D(mount);
@@ -1862,6 +1890,7 @@
 
       <!-- Quick Topics Modal -->
       ${renderTopicsModal()}
+      ${renderChaptersModal()}
     `;
 
     // Mount 3D molecule viewers if present
@@ -2525,7 +2554,172 @@
   // ==========================================================================
   // TOPICS DIRECTORY MODAL
   // ==========================================================================
-  function renderTopicsModal() {
+  
+  // ==========================================================================
+  // CHAPTERS HYPERLINK MODAL CONTROLLER (Mobile & Desktop Chapter Box)
+  // When a main topic (Anaesthesia, Drugs, Critical Care, Cases) is tapped on mobile,
+  // this box opens with all chapters presented as rich clickable hyperlinks!
+  // ==========================================================================
+  let activeModalDomain = "anaesthesia";
+
+  function renderChaptersModal() {
+    const allDomains = Object.values(DOMAIN_DEFS);
+    const currentDom = DOMAIN_DEFS[activeModalDomain] || DOMAIN_DEFS[activeDomain] || DOMAIN_DEFS.anaesthesia;
+
+    const domainTabsHTML = allDomains.map((d) => {
+      const isActive = d.id === currentDom.id;
+      return `
+        <button type="button" 
+                class="ron-chapters-domain-tab ${isActive ? 'active' : ''}" 
+                data-chapters-domain="${d.id}"
+                role="tab"
+                aria-selected="${isActive}">
+          <span>${d.icon}</span> ${esc(d.label)}
+        </button>
+      `;
+    }).join("");
+
+    return `
+      <div class="ron-chapters-modal" id="ronChaptersModal" hidden role="dialog" aria-modal="true" aria-label="Browse Curriculum Chapters">
+        <div class="ron-chapters-backdrop" data-close-chapters-modal></div>
+        <div class="ron-chapters-sheet">
+          <div class="ron-chapters-sheet-head">
+            <div class="ron-chapters-head-title">
+              <span class="ron-chapters-head-icon" id="ronChaptersHeadIcon">${currentDom.icon}</span>
+              <div>
+                <h2 id="ronChaptersHeadTitle">${esc(currentDom.label)} — Chapters</h2>
+                <p id="ronChaptersHeadSub" style="margin:2px 0 0; font-size:12.5px; color:var(--ron-text-empty);">Select a chapter to explore all topics and drug monographs</p>
+              </div>
+            </div>
+            <button type="button" class="ron-close-btn" id="ronCloseChaptersModalBtn" data-close-chapters-modal aria-label="Close dialog">
+              ${ICONS.close}
+            </button>
+          </div>
+
+          <div class="ron-chapters-domain-bar" id="ronChaptersDomainBar" role="tablist" aria-label="Select Study Section">
+            ${domainTabsHTML}
+          </div>
+
+          <div class="ron-chapters-search-wrap">
+            <span class="ron-chapters-search-icon">🔍</span>
+            <input type="search" id="ronChaptersFilterInput" class="ron-chapters-filter-input"
+                   placeholder="Filter chapters (e.g. Antimicrobials, General, Airway, ECG)..." autocomplete="off" aria-label="Filter chapters">
+          </div>
+
+          <div class="ron-chapters-grid" id="ronChaptersGrid" role="menu">
+            ${renderChapterLinksHTML(currentDom.id, "")}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderChapterLinksHTML(domainId, query) {
+    const dom = DOMAIN_DEFS[domainId] || DOMAIN_DEFS.anaesthesia;
+    const q = (query || "").trim().toLowerCase();
+    const cats = dom.cats.filter((c) => {
+      if (!q) return true;
+      return (c.label || "").toLowerCase().includes(q) || (c.desc || "").toLowerCase().includes(q);
+    });
+
+    if (!cats.length) {
+      return `
+        <div class="ron-chapters-empty" style="text-align:center; padding:32px 16px; color:var(--ron-text-empty);">
+          <span style="font-size:24px;">🔍</span>
+          <p style="margin:8px 0 0; font-size:14px; font-weight:700;">No chapters matching "${esc(query)}"</p>
+        </div>
+      `;
+    }
+
+    return cats.map((c) => {
+      const items = getItemsForDomainAndCat(dom.id, c.id);
+      const count = items.length;
+      const isActive = c.id === activeCat && dom.id === activeDomain;
+      const href = `study.html?domain=${encodeURIComponent(dom.id)}&cat=${encodeURIComponent(c.id)}`;
+      const countLabel = dom.id === "drugs" ? `${count} ${count === 1 ? 'Drug' : 'Drugs'}` : `${count} ${count === 1 ? 'Topic' : 'Topics'}`;
+
+      return `
+        <a href="${href}" 
+           class="ron-chapter-link-card ${isActive ? 'active' : ''}" 
+           data-chapter-domain="${dom.id}" 
+           data-chapter-cat="${c.id}"
+           role="menuitem"
+           title="Open ${esc(c.label)}">
+          <div class="ron-chapter-link-icon-wrap" aria-hidden="true">
+            <span class="ron-chapter-link-icon">${c.icon}</span>
+          </div>
+          <div class="ron-chapter-link-info">
+            <div class="ron-chapter-link-row">
+              <strong class="ron-chapter-link-title">${esc(c.label)}</strong>
+              <span class="ron-chapter-link-count">${countLabel}</span>
+            </div>
+            <p class="ron-chapter-link-desc">${esc(c.desc || '')}</p>
+          </div>
+          <div class="ron-chapter-link-arrow" aria-hidden="true">→</div>
+        </a>
+      `;
+    }).join("");
+  }
+
+  function openChaptersModal(domainId) {
+    activeModalDomain = domainId || activeDomain || "anaesthesia";
+    let modal = document.getElementById("ronChaptersModal");
+    if (!modal) {
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = renderChaptersModal();
+      modal = tempDiv.firstElementChild;
+      document.body.appendChild(modal);
+    }
+
+    const input = document.getElementById("ronChaptersFilterInput");
+    if (input) {
+      input.value = "";
+    }
+
+    updateChaptersModalContent(activeModalDomain);
+
+    modal.hidden = false;
+    modal.classList.add("ron-modal-open");
+    document.body.classList.add("ron-chapters-modal-locked");
+
+    if (input) {
+      setTimeout(() => input.focus(), 80);
+    }
+  }
+
+  function updateChaptersModalContent(domainId) {
+    activeModalDomain = domainId || "anaesthesia";
+    const dom = DOMAIN_DEFS[activeModalDomain] || DOMAIN_DEFS.anaesthesia;
+    const titleEl = document.getElementById("ronChaptersHeadTitle");
+    if (titleEl) titleEl.textContent = `${dom.label} — Chapters`;
+    const iconEl = document.getElementById("ronChaptersHeadIcon");
+    if (iconEl) iconEl.textContent = dom.icon;
+
+    document.querySelectorAll(".ron-chapters-domain-tab").forEach((tab) => {
+      const d = tab.getAttribute("data-chapters-domain");
+      const isAct = d === activeModalDomain;
+      tab.classList.toggle("active", isAct);
+      tab.setAttribute("aria-selected", isAct ? "true" : "false");
+    });
+
+    const filterInput = document.getElementById("ronChaptersFilterInput");
+    const currentQ = filterInput ? filterInput.value : "";
+    const grid = document.getElementById("ronChaptersGrid");
+    if (grid) {
+      grid.innerHTML = renderChapterLinksHTML(activeModalDomain, currentQ);
+    }
+  }
+
+  function closeChaptersModal() {
+    const modal = document.getElementById("ronChaptersModal");
+    if (modal) {
+      modal.hidden = true;
+      modal.classList.remove("ron-modal-open");
+    }
+    document.body.classList.remove("ron-chapters-modal-locked");
+  }
+
+function renderTopicsModal() {
     return `
       <div class="ron-topics-modal" id="ronTopicsModal" hidden>
         <div class="ron-topics-sheet">
@@ -2750,27 +2944,97 @@
       return;
     }
 
-    // 5. Primary Domain Tab clicked -> Switch Domain
+    // 5. Primary Domain Tab clicked -> Switch Domain & Open Chapters Box on Mobile
     const domainTab = e.target.closest("[data-ron-domain]:not([data-ron-cat])");
     if (domainTab) {
       e.preventDefault();
       e.stopPropagation();
       const targetDomain = domainTab.getAttribute("data-ron-domain");
-      if (targetDomain && targetDomain !== activeDomain) {
+      if (targetDomain) {
         triggerHapticFeedback();
-        activeDomain = targetDomain;
-        activeCat = "all";
-        activeItem = null;
-        searchFilter = "";
-        try {
-          const url = new URL(window.location.href);
-          url.searchParams.delete("item");
-          url.searchParams.delete("topic");
-          url.searchParams.set("domain", activeDomain);
-          url.searchParams.delete("cat");
-          window.history.pushState({ domain: activeDomain, cat: "all" }, "", url.toString());
-        } catch (err) {}
-        renderRonBoard();
+        const isMobile = window.innerWidth <= 820 || ("ontouchstart" in window);
+        if (targetDomain !== activeDomain) {
+          activeDomain = targetDomain;
+          activeCat = "all";
+          activeItem = null;
+          searchFilter = "";
+          try {
+            const url = new URL(window.location.href);
+            url.searchParams.delete("item");
+            url.searchParams.delete("topic");
+            url.searchParams.set("domain", activeDomain);
+            url.searchParams.delete("cat");
+            window.history.pushState({ domain: activeDomain, cat: "all" }, "", url.toString());
+          } catch (err) {}
+          renderRonBoard();
+        }
+        // In mobile view (or when tapping domain tab): open chapters modal with hyperlinks!
+        if (isMobile) {
+          openChaptersModal(targetDomain);
+        }
+      }
+      return;
+    }
+
+    // 5b. Browse Chapters Trigger Button clicked -> Open Chapters Box
+    const browseTrigger = e.target.closest("#ronBrowseChaptersTrigger, [data-open-chapters]");
+    if (browseTrigger) {
+      e.preventDefault();
+      e.stopPropagation();
+      triggerHapticFeedback();
+      const domId = browseTrigger.getAttribute("data-open-chapters") || activeDomain;
+      openChaptersModal(domId);
+      return;
+    }
+
+    // 5c. Chapters Modal Domain Tab clicked -> Switch Domain inside Modal
+    const chapDomTab = e.target.closest("[data-chapters-domain]");
+    if (chapDomTab) {
+      e.preventDefault();
+      e.stopPropagation();
+      triggerHapticFeedback();
+      const domId = chapDomTab.getAttribute("data-chapters-domain");
+      updateChaptersModalContent(domId);
+      return;
+    }
+
+    // 5d. Chapters Modal Close Triggers
+    if (e.target.closest("[data-close-chapters-modal], #ronCloseChaptersModalBtn") || (e.target.id === "ronChaptersModal")) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeChaptersModal();
+      return;
+    }
+
+    // 5e. Chapter Link Card clicked inside Chapters Modal -> Navigate to Chapter
+    const chapLink = e.target.closest(".ron-chapter-link-card");
+    if (chapLink) {
+      e.preventDefault();
+      e.stopPropagation();
+      triggerHapticFeedback();
+      const targetDom = chapLink.getAttribute("data-chapter-domain") || activeDomain;
+      const targetCat = chapLink.getAttribute("data-chapter-cat") || "all";
+      closeChaptersModal();
+      activeDomain = targetDom;
+      activeCat = targetCat;
+      activeItem = null;
+      searchFilter = "";
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("item");
+        url.searchParams.delete("topic");
+        url.searchParams.set("domain", activeDomain);
+        if (activeCat !== "all") url.searchParams.set("cat", activeCat);
+        else url.searchParams.delete("cat");
+        url.searchParams.delete("chapters");
+        url.searchParams.delete("modal");
+        url.searchParams.delete("openChapters");
+        window.history.pushState({ domain: activeDomain, cat: activeCat }, "", url.toString());
+      } catch (err) {}
+      renderRonBoard();
+      const activeNode = document.querySelector(`[data-ron-cat="${activeCat}"][data-ron-domain="${activeDomain}"]`);
+      if (activeNode) {
+        activeNode.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
       }
       return;
     }
@@ -2838,7 +3102,10 @@
 
   // Real-time search inputs
   document.addEventListener("input", (e) => {
-    if (e.target.id === "ronInlineSearchInput") {
+    if (e.target.id === "ronChaptersFilterInput") {
+      const grid = document.getElementById("ronChaptersGrid");
+      if (grid) grid.innerHTML = renderChapterLinksHTML(activeModalDomain, e.target.value);
+    } else if (e.target.id === "ronInlineSearchInput") {
       searchFilter = e.target.value;
       if (searchFilter.trim().length > 0 && activeItem) {
         activeItem = null;
@@ -3196,6 +3463,8 @@
     renderRonBoard();
   };
   window.StudyRonDesign = {
+    openChaptersModal: openChaptersModal,
+    closeChaptersModal: closeChaptersModal,
     openTopic: openTopic,
     backToCategory: backToCategory,
     selectCategory: function (catId) {

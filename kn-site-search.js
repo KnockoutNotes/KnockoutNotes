@@ -2,7 +2,7 @@
 // KnockoutNotes — Unified Sitewide Search Engine (kn-site-search.js)
 // Universal Index: Topics, Subtopics, Image Files, 37 Clinical Calculators,
 // 14 Active Recall Viva Cards, 64 Study Topics (with 277 Deep Sections),
-// 84 Drug Monographs, 44 Regional Blocks, and Guidelines with Instant Reveal.
+// 90 Drug Monographs, 44 Regional Blocks, and Guidelines with Instant Reveal.
 // ==========================================================================
 
 (function () {
@@ -3112,7 +3112,7 @@
         if (input.value.trim()) return;
         const recents = getRecentSearches();
         if (!recents.length) {
-          if (status) status.textContent = "Start typing to search 224 topics & clinical cases, 84 drugs, 37 calculators, and viva pearls.";
+          if (status) status.textContent = "Start typing to search 224 topics & clinical cases, 90 drugs, 37 calculators, and viva pearls.";
           results.innerHTML = "";
           return;
         }

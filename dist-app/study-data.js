@@ -239,6 +239,12 @@ window.KN_STUDY = {
       "label": "Pain Medicine",
       "icon": "⚡",
       "desc": "Acute perioperative pain protocols, multimodal analgesia, regional catheters, neuropathic syndromes & palliative pain management"
+    },
+    {
+      "id": "antimicrobials",
+      "label": "Antimicrobial Therapy",
+      "icon": "🦠",
+      "desc": "ICU Antimicrobials & Antibiotics — Meropenem, Piperacillin-Tazobactam (Piptaz), Gentamicin, Teicoplanin, Vancomycin & Colistin"
     }
   ],
   "topics": [
@@ -18935,6 +18941,221 @@ window.KN_STUDY = {
         "FDA Prescribing Information — Nexterone (amiodarone HCl injection), Baxter Healthcare / US FDA.",
         "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 65 (Cardiac Anesthesia).",
         "UpToDate \"Drug Information: Amiodarone\" (Wolters Kluwer, 2025/2026)."
+      ]
+    },
+    {
+      "id": "meropenem",
+      "cat": "antimicrobials",
+      "name": "Meropenem",
+      "aliases": [
+        "merrem",
+        "meropenem trihydrate",
+        "carbapenem"
+      ],
+      "brand": "Merrem",
+      "classification": "Carbapenem Beta-Lactam Antibiotic • Penicillin-Binding Protein (PBP) Inactivator",
+      "tagline": "Broad-spectrum carbapenem for severe polymicrobial sepsis, ESBL infections, and nosocomial CNS infections with low proconvulsant liability",
+      "tags": [
+        "carbapenem",
+        "beta-lactam",
+        "ICU antibiotic",
+        "ESBL",
+        "PBP-2",
+        "time-dependent",
+        "TDM"
+      ],
+      "source": "FDA Prescribing Information — Merrem (meropenem) for Injection; Sanford Guide to Antimicrobial Therapy; Surviving Sepsis Campaign (SSC) 2021/2026 Guidelines; UpToDate (2025/2026).",
+      "structure": "Meropenem (C17H25N3O5S) is a synthetic broad-spectrum carbapenem antibiotic. Structurally, it differs from penicillins by substitution of a carbon atom for the sulfur atom in the thiazolidine ring and the presence of an unsaturated bond between C-2 and C-3 of the five-membered ring. Unlike imipenem, meropenem incorporates a 1-beta-methyl group on the carbapenem nucleus, conferring high intrinsic stability against hydrolysis by renal dehydropeptidase-I (DHP-I); this eliminates the need for co-administration of a DHP-I inhibitor (cilastatin). Additionally, its dimethylcarbamoylpyrrolidinylthio side chain at C-3 enhances antimicrobial activity against Gram-negative bacilli and significantly reduces central nervous system neurotoxicity and proconvulsant liability compared to imipenem.",
+      "pd": "Meropenem exerts rapid bactericidal activity by covalently binding to multiple essential penicillin-binding proteins (PBPs) located within the inner bacterial cell membrane, specifically targeting PBP-2 and PBP-3 in Gram-negative organisms (such as Pseudomonas aeruginosa and Escherichia coli) and PBP-1a, PBP-1b, and PBP-2 in Gram-positive cocci. Covalent PBP acylation halts the transpeptidation reaction essential for peptidoglycan cross-linking, triggering autolysin activation, structural cell wall failure, and osmotic lysis. Pharmacodynamically, meropenem exhibits time-dependent bactericidal killing, where the percentage of the dosing interval during which free drug concentration exceeds the minimum inhibitory concentration (%fT > MIC) is the primary determinant of in vivo efficacy. In critically ill septic patients, achieving %fT > MIC of 40%–100% (and targeting 4–5× MIC for difficult non-fermenting Gram-negative pathogens like Pseudomonas aeruginosa or Acinetobacter) is required for optimal microbiological cure and prevention of emergence of resistant subpopulations.",
+      "pk": "Hydrophilic small molecule with a low baseline volume of distribution (Vd ≈ 0.25–0.35 L/kg) confined predominantly to the extracellular fluid compartment. In septic shock and critical illness, systemic capillary leak, endothelial breakdown, and aggressive crystalloid resuscitation frequently double Vd (up to 0.4–0.5 L/kg), resulting in rapid initial dilution and low serum concentrations. Plasma protein binding is negligible (≈ 2%), permitting extensive tissue penetration into lung epithelial lining fluid, peritoneal fluid, bile, and inflamed meninges (CSF penetration reaches 20%–30% of serum levels in active meningitis). Clearance is predominantly renal via glomerular filtration and tubular secretion, with ≈ 70% recovered unchanged in urine within 12 hours. Normal elimination half-life is approximately 1 hour, but extends up to 6–10 hours in end-stage renal disease (CrCl < 15 mL/min). Conversely, augmented renal clearance (ARC; CrCl > 130 mL/min/1.73 m²), commonly observed in young polytrauma, burn, and hyperdynamic septic ICU patients, leads to accelerated drug elimination and subtherapeutic troughs unless high-dose extended or continuous infusions are administered. Meropenem is efficiently cleared by intermittent hemodialysis and Continuous Renal Replacement Therapy (CRRT).",
+      "dosage": "FDA-approved & ICU Protocols: For severe sepsis, septic shock, complicated intra-abdominal infections, and hospital-acquired/ventilator-associated pneumonia (HAP/VAP), administer 1 g IV every 8 hours. For severe central nervous system infections (bacterial meningitis, ventriculitis) or pathogens with borderline MICs (Pseudomonas, Acinetobacter), escalate to 2 g IV every 8 hours. In septic shock, initiate therapy with an immediate 2 g IV loading dose infused over 30 minutes to rapidly achieve therapeutic free drug concentrations.\n\n• Extended & Continuous Infusion Protocols (PK/PD Optimization):\n  - Extended Infusion: 1 g to 2 g IV infused over 3 to 4 hours every 8 hours (substantially enhances %fT > MIC in critically ill patients compared to boluses).\n  - Continuous Infusion: Loading dose of 1 g to 2 g IV over 30 min, followed immediately by continuous infusion of 3 g to 6 g per 24 hours.\n\n• Renal Dose Adjustments:\n  - CrCl 26–50 mL/min: 1 g IV every 12 hours.\n  - CrCl 10–25 mL/min: 500 mg IV every 12 hours.\n  - CrCl < 10 mL/min: 500 mg IV every 24 hours.\n  - Intermittent Hemodialysis: 500 mg to 1 g IV administered post-dialysis.\n  - CRRT (CVVH/CVVHD/CVVHDF, effluent rate 20–25 mL/kg/h): Loading dose 1 g to 2 g IV, then 1 g IV every 8 hours (or 1 g IV every 12 hours; in septic shock / non-fermenting GNB, maintain 1 g IV every 8 hours).",
+      "offLabel": "Continuous infusion protocols in severe septic shock and ARDS; empiric monotherapy in high-risk febrile neutropenia; acute-phase therapy for severe melioidosis (Burkholderia pseudomallei); nosocomial bacterial meningitis and external ventricular drain (EVD) ventriculitis (2 g IV q8h extended infusion).",
+      "complications": "Neurotoxicity & Seizures: Encephalopathy, altered sensorium, myoclonus, and seizures. Although meropenem has lower neurotoxic liability (< 0.5%) than imipenem due to lower affinity for cerebral GABA-A receptor chloride channels, seizure risk increases sharply in patients with unadjusted severe renal failure, underlying CNS lesions, or compromised blood-brain barrier integrity.\n\n• SIGNIFICANT DRUG INTERACTION — VALPROIC ACID / SODIUM VALPROATE: Concomitant use of meropenem with valproic acid is generally not recommended in clinical practice and prescribing guidelines. Meropenem causes a rapid, profound 60%–90% decline in serum valproate concentrations within 24 hours via irreversible inhibition of acylpeptide hydrolase and intestinal UDP-glucuronosyltransferase, precipitating breakthrough seizures and refractory status epilepticus. Valproate levels do not respond to dose escalation while carbapenems are ongoing. If meropenem administration is essential, supplemental or alternative non-interacting anticonvulsant therapy (e.g., levetiracetam, lacosamide) should be initiated and therapeutic drug monitoring intensified.\n\n• Hypersensitivity: Urticaria, maculopapular rash, and anaphylaxis (< 1% cross-reactivity in patients with IgE-mediated penicillin allergy).\n\n• Gastrointestinal & Hematologic: Nausea, vomiting, diarrhea, transient transaminitis, and Clostridioides difficile pseudomembranous colitis. Transient leukopenia, neutropenia, thrombocytopenia, and positive direct Coombs test (rare).",
+      "references": [
+        "Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021/2026. Crit Care Med.",
+        "Sanford Guide to Antimicrobial Therapy, 54th ed., Antimicrobial Stewardship in ICU.",
+        "Roberts JA, et al. Dosing of beta-lactam antibiotics in critically ill patients: a review of the pharmacokinetics and pharmacodynamics. Clin Pharmacokinet.",
+        "Miller's Anesthesia, 10th ed., Ch. 73 (Critical Care Medicine & Antimicrobial Therapy), Elsevier."
+      ]
+    },
+    {
+      "id": "piperacillin-tazobactam",
+      "cat": "antimicrobials",
+      "name": "Piperacillin-Tazobactam (Piptaz)",
+      "aliases": [
+        "piptaz",
+        "zosyn",
+        "tazocin",
+        "piperacillin/tazobactam"
+      ],
+      "brand": "Zosyn / Tazocin",
+      "classification": "Extended-Spectrum Antipseudomonal Ureidopenicillin + Beta-Lactamase Inhibitor",
+      "tagline": "Frontline antipseudomonal beta-lactam workhorse for empiric intra-abdominal, pulmonary, and soft-tissue sepsis in the ICU",
+      "tags": [
+        "penicillin",
+        "beta-lactamase inhibitor",
+        "antipseudomonal",
+        "ICU antibiotic",
+        "time-dependent",
+        "zosyn",
+        "piptaz"
+      ],
+      "source": "FDA Prescribing Information — Zosyn (piperacillin and tazobactam); IDSA Guidelines for Hospital-Acquired and Ventilator-Associated Pneumonia; Sanford Guide to Antimicrobial Therapy; UpToDate (2025/2026).",
+      "structure": "Piperacillin-Tazobactam combines the sodium salt of piperacillin, a semisynthetic broad-spectrum ureidopenicillin (C23H27N5O7S), with tazobactam sodium, a penicillanic acid sulfone derivative (C10H12N4O5S). Piperacillin features an acylureido side chain that provides enhanced affinity for penicillin-binding proteins of Gram-negative rods, particularly Pseudomonas aeruginosa. Tazobactam contains a sulfone moiety that acts as an irreversible suicide inhibitor against broad-spectrum class A beta-lactamases. Available in fixed 8:1 ratio formulations (4.5 g containing 4 g piperacillin and 0.5 g tazobactam; 3.375 g containing 3 g piperacillin and 0.375 g tazobactam; 2.25 g containing 2 g piperacillin and 0.25 g tazobactam).",
+      "pd": "Piperacillin acts bactericidally by binding to and acylating membrane-bound penicillin-binding proteins (principally PBP-3 and PBP-1b), inhibiting cell wall peptidoglycan transpeptidation and inducing filamentation followed by bacterial cell lysis. Tazobactam functions as a mechanism-based, irreversible inhibitor that binds to the active serine site of plasmid- and chromosomally-mediated beta-lactamases (including TEM, SHV, and certain class C enzymes), protecting piperacillin from enzymatic hydrolysis. The combination provides potent broad-spectrum coverage against Pseudomonas aeruginosa, Enterobacterales (non-ESBL producing), Streptococcus pneumoniae, Enterococcus faecalis (intrinsically inactive against Enterococcus faecium), and intra-abdominal anaerobes (Bacteroides fragilis). Killing is time-dependent (%fT > MIC), requiring free serum concentrations to exceed the pathogen MIC for at least 50%–70% of the dosing interval.",
+      "pk": "Highly hydrophilic with an extracellular volume of distribution (Vd ≈ 0.20–0.25 L/kg) that expands to 0.35–0.45 L/kg in septic shock and severe capillary leak. Plasma protein binding is moderate (≈ 30% for piperacillin and 30% for tazobactam). Both molecules distribute well into interstitial and inflamed tissues, including lung tissue, bronchial secretions, and peritoneal fluid (poor CSF penetration in the absence of severe meningeal inflammation). Elimination is predominantly renal (60%–80% excreted unchanged in urine via combined glomerular filtration and active organic anion transporter tubular secretion). Terminal elimination half-life is 0.7 to 1.2 hours in healthy adults, prolonged up to 3 to 4 hours in severe renal impairment (CrCl < 20 mL/min). Both piperacillin and tazobactam are cleared by hemodialysis and CRRT.",
+      "dosage": "FDA-approved & ICU Protocols: Standard adult dosing for intra-abdominal sepsis, skin/soft tissue infections, and secondary peritonitis is 4.5 g IV every 6 hours or 4.5 g IV every 8 hours administered over 30 minutes.\n\n• ICU Extended-Infusion Protocol (OPTIMIZE / IDSA High-Yield Protocol for HAP/VAP, Septic Shock, Pseudomonas):\n  - Loading Dose: 4.5 g IV infused over 30 minutes.\n  - Maintenance Infusion: 4.5 g IV infused over 3 to 4 hours every 8 hours (or continuous infusion of 13.5 g to 18 g/24 h following loading dose). Extended infusions achieve significantly superior %fT > MIC targets (≥50%–100%) against pathogens with higher MICs (8–16 mg/L).\n\n• Renal Dosing Adjustments:\n  - CrCl 20–40 mL/min: 3.375 g IV every 6 hours (or 4.5 g IV every 8 hours infused over 4 hours).\n  - CrCl < 20 mL/min: 2.25 g IV every 6 hours for nosocomial pneumonia (or 2.25 g IV every 8 hours for other indications; alternatively 3.375 g IV every 8 hours infused over 4 hours).\n  - Intermittent Hemodialysis: 2.25 g IV every 8 hours for nosocomial pneumonia, or 2.25 g IV every 12 hours for other indications, plus a supplemental dose of 0.75 g administered immediately following each hemodialysis session on dialysis days.\n  - Continuous Renal Replacement Therapy (CRRT — CVVH / CVVHD / CVVHDF, 20–25 mL/kg/h effluent): Loading dose 4.5 g IV over 30 min, then 4.5 g IV every 8 hours (or 3.375 g IV every 6 hours) administered as extended 4-hour infusions to prevent subtherapeutic exposure in hypercatabolic sepsis.",
+      "offLabel": "Extended 4-hour infusion and continuous infusion regimens in septic shock and ventilator-associated pneumonia; empiric therapy in febrile neutropenia; severe intra-abdominal abscesses with heavy anaerobic burden.",
+      "complications": "SYNERGISTIC NEPHROTOXICITY WITH VANCOMYCIN: Co-administration of piperacillin-tazobactam with vancomycin carries a 2- to 3-fold increased incidence of Acute Kidney Injury (AKI) compared to vancomycin combined with cefepime, meropenem, or aztreonam. The mechanism involves combined oxidative proximal tubular injury and acute interstitial nephritis. Monitor serum creatinine daily and consider alternative antipseudomonal beta-lactams (cefepime or meropenem) when vancomycin is required.\n\n• Sodium Load: Each gram of piperacillin contains 2.79 mEq (64 mg) of sodium (a 4.5 g vial contains ≈ 11.2 mEq of sodium). Can exacerbate volume overload, acute pulmonary edema, and congestive heart failure in oliguric ICU patients.\n\n• Hypokalemia: Piperacillin acts as a non-reabsorbable anion in the distal renal tubules, increasing the lumen-negative electrical potential and driving heavy urinary excretion of potassium and hydrogen ions.\n\n• Hypersensitivity: Urticaria, eosinophilia, drug-induced fever, and life-threatening anaphylaxis.\n\n• Hematologic & Diagnostic: Thrombocytopenia, platelet aggregation inhibition at high prolonged doses, and neutropenia (typically after > 10–14 days of therapy). Causes false-positive results in Bio-Rad Platelia Aspergillus galactomannan enzyme immunoassays.",
+      "references": [
+        "Kalil AC, et al. Management of Adults With Hospital-acquired and Ventilator-associated Pneumonia: 2016 Clinical Practice Guidelines by the IDSA/ATS. Clin Infect Dis.",
+        "Rutter WC, et al. Vancomycin Plus Piperacillin-Tazobactam and Acute Kidney Injury in Adults: A Systematic Review and Meta-Analysis. Antimicrob Agents Chemother.",
+        "Lodise TP, et al. Extended-infusion beta-lactam therapy: a novel approach to optimizing pharmacodynamics in critically ill patients. Pharmacotherapy.",
+        "Miller's Anesthesia, 10th ed., Ch. 73 (Infection & Sepsis in the Intensive Care Unit), Elsevier."
+      ]
+    },
+    {
+      "id": "gentamicin",
+      "cat": "antimicrobials",
+      "name": "Gentamicin",
+      "aliases": [
+        "gentamicin",
+        "garamycin",
+        "genta",
+        "aminoglycoside"
+      ],
+      "brand": "Garamycin",
+      "classification": "Aminoglycoside Antibiotic • 30S Ribosomal Subunit Protein Synthesis Inhibitor",
+      "tagline": "Rapidly bactericidal concentration-dependent powerhouse for severe Gram-negative bacilli and enterococcal synergy, governed by narrow therapeutic index and strict TDM",
+      "tags": [
+        "aminoglycoside",
+        "30S inhibitor",
+        "concentration-dependent",
+        "Cmax/MIC",
+        "TDM",
+        "nephrotoxicity",
+        "ototoxicity",
+        "Hartford nomogram"
+      ],
+      "source": "FDA Prescribing Information — Gentamicin Sulfate Injection; Sanford Guide to Antimicrobial Therapy; IDSA Guidelines; British National Formulary (BNF); UpToDate (2025/2026).",
+      "structure": "Gentamicin is a naturally occurring aminoglycoside complex produced by the actinomycete Micromonospora purpurea. It consists of three major closely related components (gentamicin C1, C1a, and C2). Structurally, it features a central 2-deoxystreptamine ring linked via glycosidic bonds to two amino sugars (purpurosamine and garosamine). The molecule possesses multiple basic amino groups that are fully protonated at physiological pH, rendering it a highly polar, water-soluble polycationic compound with negligible lipid solubility.",
+      "pd": "Gentamicin enters the bacterial cell in two stages: passive diffusion across outer membrane porin channels, followed by an oxygen-dependent active electron transport process across the inner cytoplasmic membrane (consequently, gentamicin has zero antimicrobial activity against obligate anaerobes and is severely impaired in hypoxic, hyperosmolar, or acidic environments such as abscesses). Once intracellular, it binds irreversibly to the A-site of the 16S ribosomal RNA of the 30S ribosomal subunit. This causes misreading of genetic codons, insertion of incorrect amino acids into growing peptide chains, and formation of toxic aberrant proteins that insert into the cell membrane, disrupting membrane integrity and causing rapid cell lysis and death. Gentamicin displays concentration-dependent bactericidal killing, where the ratio of peak concentration to minimum inhibitory concentration (Cmax / MIC) governs bactericidal velocity; clinical target is Cmax / MIC ≥ 8–10. It also produces a prolonged post-antibiotic effect (PAE: 2–6 hours), allowing once-daily dosing regimens where serum concentrations can safely remain undetectable for several hours without loss of efficacy.",
+      "pk": "Hydrophilic polycation with negligible oral absorption (bioavailability < 1%); must be administered intravenously or intramuscularly. Volume of distribution is low (Vd ≈ 0.25–0.30 L/kg), corresponding closely to the extracellular fluid volume. In septic shock, cirrhosis with ascites, major burns, and aggressive volume resuscitation, Vd expands markedly (up to 0.40–0.50 L/kg), necessitating an increased initial loading dose based on adjusted body weight (IBW + 0.4 × [Actual - IBW] for obese patients). Protein binding is minimal (< 10%). Excreted almost exclusively via renal glomerular filtration (> 90% unchanged in urine). Terminal elimination half-life is 2 to 3 hours in patients with normal renal function, but can extend to 24–48+ hours in anuric or end-stage renal disease. Readily cleared by intermittent hemodialysis and CRRT.",
+      "dosage": "FDA-approved & ICU Protocols:\n\n• High-Dose Extended-Interval Dosing (Preferred in ICU):\n  - Regimen & Nomograms: Hartford Nomogram is calibrated specifically for a fixed 7 mg/kg IV dose (infused over 60 minutes). For 5 mg/kg IV regimens, use the Urban–Craig nomogram.\n  - Weight Selection: Use actual body weight if within normal range; in obese patients (>20% over IBW), use Adjusted Body Weight (ABW = IBW + 0.4 × [Actual Weight - IBW]).\n  - Therapeutic Drug Monitoring (Hartford 7 mg/kg): Draw a random serum level 6 to 14 hours after the start of the first infusion and plot on the Hartford Nomogram to determine whether the dosing interval should be every 24 hours, every 36 hours, or every 48 hours.\n  - TDM Targets for Extended-Interval Dosing: Peak (Cmax) 16 to 24 mcg/mL; Trough (drawn immediately before next dose) MUST be < 1.0 mcg/mL (preferably undetectable or < 0.5 mcg/mL) to allow proximal renal tubular clearance and prevent toxic accumulation.\n\n• Conventional Multiple-Daily Dosing (Endocarditis Synergy Protocol):\n  - Enterococcal / Streptococcal Endocarditis: 1 mg/kg IV every 8 hours in combination with a cell wall-active agent (ampicillin, benzylpenicillin, or vancomycin).\n  - TDM Targets for Conventional Dosing: Peak 3 to 5 mcg/mL (for synergy) or 5 to 10 mcg/mL (for monotherapy); Trough MUST be < 1 to 2 mcg/mL.\n\n• Renal Impairment & CRRT:\n  - Extended-interval dosing is generally avoided when CrCl < 30 mL/min; use conventional dosing guided by levels.\n  - CRRT (CVVH/CVVHD): Administer an initial weight-based loading dose of 2.5 mg/kg to 3.0 mg/kg IV; subsequent doses are administered ONLY when serial trough levels drop below 2 mcg/mL.\n  - Intermittent Hemodialysis: 1.5 mg/kg to 2.0 mg/kg IV administered post-dialysis.",
+      "offLabel": "Intrathecal and intraventricular administration (4 mg to 8 mg/day of preservative-free formulation) for ventriculostomy-associated Gram-negative ventriculitis and meningitis; inhaled/nebulized gentamicin (80 mg twice daily) for chronic bronchiectasis colonised by Pseudomonas; antibiotic-impregnated bone cement (PMMA) for orthopaedic prosthetic joint infections.",
+      "complications": "NEPHROTOXICITY: Concentration- and duration-dependent acute tubular necrosis (ATN), occurring in 10%–20% of patients receiving courses > 7 days. Gentamicin is taken up into renal proximal tubular epithelial cells via megalin- and cubilin-mediated receptor endocytosis, accumulating in lysosomes and triggering lysosomal rupture, oxidative stress, and apoptosis. Characteristically manifests as non-oliguric renal impairment with rising creatinine, hypomagnesemia, and urinary casts after 5–7 days; usually reversible upon early discontinuation. Trough concentration elevation is the earliest predictor of toxicity.\n\n• OTOTOXICITY (Cochlear and Vestibular): Irreversible damage to outer hair cells of the organ of Corti (causing bilateral high-frequency sensorineural hearing loss and tinnitus) and vestibular hair cells of the ampullary cristae (causing severe vertigo, ataxia, and oscillopsia / Dandy's symptom). Driven by mitochondrial free radical generation. Strongly correlated with cumulative dose, elevated trough levels, concurrent loop diuretics (furosemide), and genetic mitochondrial 12S rRNA m.1555A>G mutation.\n\n• NEUROMUSCULAR BLOCKADE POTENTIATION: Inhibits prejunctional voltage-gated calcium entry, blocking acetylcholine release at the neuromuscular junction, and reduces postjunctional motor endplate sensitivity. Can trigger sudden acute respiratory arrest when administered postoperatively or in patients recovering from neuromuscular blockers (rocuronium, vecuronium, succinylcholine).\n\n• STRICT CONTRAINDICATION IN MYASTHENIA GRAVIS: Can precipitate catastrophic myasthenic crisis; never administer to patients with Myasthenia Gravis or Lambert-Eaton syndrome.\n\n• Management of Neuromuscular Blockade: Immediate IV Calcium gluconate or Calcium chloride (1 g to 2 g) reverses presynaptic calcium blockade, accompanied by acetylcholinesterase inhibitors (neostigmine).",
+      "references": [
+        "Nicolau DP, et al. Experience with a once-daily aminoglycoside program administered to 2,184 adult patients. Antimicrob Agents Chemother (Hartford Nomogram).",
+        "Sanford Guide to Antimicrobial Therapy, 54th ed., Aminoglycoside Monitoring.",
+        "Humes HD. Aminoglycoside nephrotoxicity. Kidney Int.",
+        "Miller's Anesthesia, 10th ed., Ch. 29 & Ch. 73, Elsevier, 2025/2026."
+      ]
+    },
+    {
+      "id": "teicoplanin",
+      "cat": "antimicrobials",
+      "name": "Teicoplanin",
+      "aliases": [
+        "teicoplanin",
+        "targocid",
+        "glycopeptide"
+      ],
+      "brand": "Targocid",
+      "classification": "Lipoglycopeptide Antibiotic • Bacterial Cell Wall Peptidoglycan D-Ala-D-Ala Inhibitor",
+      "tagline": "Long-acting lipoglycopeptide with once-daily maintenance, markedly lower nephrotoxicity than vancomycin, no red man syndrome, and mandatory loading protocols for MRSA and Enterococcus",
+      "tags": [
+        "glycopeptide",
+        "MRSA",
+        "cell wall",
+        "TDM",
+        "targocid",
+        "once-daily",
+        "AUC/MIC",
+        "ICU antibiotic"
+      ],
+      "source": "British National Formulary (BNF); European Society of Clinical Microbiology and Infectious Diseases (ESCMID); Sanford Guide to Antimicrobial Therapy; UpToDate (2025/2026).",
+      "structure": "Teicoplanin is a complex of six closely related lipoglycopeptide congeners (A2-1 through A2-5 and A3-1) produced by the actinomycete Actinoplanes teichomyceticus. Like vancomycin, it contains a core aglycone composed of seven aromatic amino acids joined by peptide bonds, which form a rigid cup-shaped binding pocket. However, teicoplanin possesses distinct structural modifications: it carries a hydrophobic acyl aliphatic fatty acid side chain attached to an amino-sugar residue on the aglycone ring. This lipophilic hydrocarbon tail anchors the drug directly into the bacterial outer cytoplasmic membrane, markedly increasing local drug concentration at the site of peptidoglycan synthesis.",
+      "pd": "Teicoplanin is bactericidal against Gram-positive aerobic and anaerobic bacteria. It binds with high avidity through five hydrogen bonds to the free terminal D-alanyl-D-alanine (D-Ala-D-Ala) dipeptide of nascent cell wall peptidoglycan precursors (Lipid II). This steric blockade prevents bacterial transglycosylase from polymerizing the disaccharide-pentapeptide backbone and prevents transpeptidase from cross-linking adjacent peptidoglycan strands, causing cell wall collapse and osmotic lysis. Highly active against Methicillin-Resistant Staphylococcus aureus (MRSA), Staphylococcus epidermidis (MRSE), Enterococcus faecalis, Streptococcus pneumoniae, and Clostridioides difficile. Inactive against Gram-negative bacteria and VanA-phenotype enterococci (which substitute D-Ala-D-Lac for D-Ala-D-Ala); however, teicoplanin frequently retains activity against VanB-phenotype strains. Pharmacodynamically, efficacy correlates best with the ratio of 24-hour area under the concentration-time curve to minimum inhibitory concentration (AUC24 / MIC ≥ 400) or maintenance of target serum trough concentrations.",
+      "pk": "Highly protein-bound (90% to 95%, primarily to human serum albumin). Steady-state volume of distribution is moderate to large (Vd ≈ 0.9–1.4 L/kg), reflecting extensive tissue distribution into bone, joints, blister fluid, and pleural/peritoneal spaces (CSF penetration is low without severe inflammation). Exhibits an exceptionally long terminal elimination half-life of 100 to 170 hours (≈ 4 to 7 days), enabling once-daily or even intermittent maintenance dosing. However, due to this long half-life, therapeutic steady-state levels require 10 to 14 days to achieve unless a rigorous, front-loaded loading regimen is administered. Elimination is almost exclusively renal via glomerular filtration (> 80% recovered unchanged in urine). Minimally removed by low-flux intermittent hemodialysis.",
+      "dosage": "MANDATORY ICU LOADING DOSE REGIMEN (CRITICAL: Omission of loading doses causes early treatment failure!):\n\n• Severe Infections (Septic Shock, MRSA Bacteremia, Infective Endocarditis, Osteomyelitis, HAP/VAP):\n  - Loading Regimen: 12 mg/kg IV (based on actual weight; typical adult dose 800 mg) every 12 hours for 3 to 5 doses (administered at 0, 12, 24, 36, and 48 hours).\n  - Maintenance Regimen: 12 mg/kg IV ONCE DAILY (every 24 hours), titrated to target trough levels.\n\n• Moderate Infections (Skin and Soft Tissue, Complicated UTI):\n  - Loading Regimen: 6 mg/kg IV (≈ 400 mg) every 12 hours for 3 doses (0, 12, 24 hours).\n  - Maintenance Regimen: 6 mg/kg IV ONCE DAILY (every 24 hours).\n\n• Administration Rate: Can be safely administered as an IV bolus over 3 to 5 minutes or as an intravenous infusion over 30 minutes, or via deep intramuscular injection.\n\n• Therapeutic Drug Monitoring (TDM) Targets:\n  - Trough (Ctrough) drawn immediately prior to a maintenance dose:\n    * Standard Infections (Skin, soft tissue, UTI): Ctrough 15 to 20 mcg/mL.\n    * Severe Infections (MRSA bacteremia, Endocarditis, Septic Shock, Osteoarticular): Ctrough 20 to 30 mcg/mL (target 30 to 40 mcg/mL in enterococcal endocarditis).\n\n• Renal Dosing Adjustments (Initiated ONLY after completion of the full loading regimen!):\n  - CrCl 30–80 mL/min: Full maintenance dose every 48 hours OR reduce maintenance dose by 50% given every 24 hours.\n  - CrCl < 30 mL/min: Full maintenance dose every 72 hours OR one-third maintenance dose given every 24 hours.\n  - Intermittent Hemodialysis: Administer full loading dose; maintenance dose is 12 mg/kg given every 72 hours post-dialysis.\n  - Continuous Renal Replacement Therapy (CRRT): Loading dose 12 mg/kg q12h for 4 doses, then maintenance 12 mg/kg every 48 hours titrated to trough 20–30 mcg/mL.",
+      "offLabel": "Outpatient Parenteral Antimicrobial Therapy (OPAT) using high-dose once-weekly or thrice-weekly regimens (e.g. 15–30 mg/kg once weekly); antibiotic bone cement spacers in infected prosthetic joints; oral administration (100–200 mg PO twice daily) for refractory Clostridioides difficile infection.",
+      "complications": "Nephrotoxicity Profile: Significantly safer than vancomycin, with acute kidney injury rates of < 2%–3% (compared to 10%–15% for vancomycin). Does not induce proximal tubular oxidative stress in isolation, but nephrotoxic risk rises when combined with aminoglycosides or loop diuretics.\n\n• Infusion Reactions vs Red Man Syndrome: Teicoplanin lacks the potent, direct mast-cell degranulation trigger characteristic of vancomycin and does not typically produce classical Red Man Syndrome; it can usually be administered as a 3- to 5-minute bolus or 30-minute infusion. However, rare infusion-related pseudoallergic reactions (transient flushing, erythema, pruritus, dyspnea, and hypotension) may still occur in susceptible patients and improve promptly when the infusion rate is slowed or paused.\n\n• Ototoxicity: Rare (incidence < 1%), typically associated with extreme trough concentrations (> 60 mcg/mL) or concurrent aminoglycoside administration.\n\n• Hypersensitivity & Cutaneous: Maculopapular rash, drug fever, bronchospasm, and rarely Drug Reaction with Eosinophilia and Systemic Symptoms (DRESS) or Stevens-Johnson syndrome.\n\n• Hematologic: Reversible thrombocytopenia, neutropenia, and eosinophilia during prolonged therapy (> 3 weeks). Monitor weekly full blood counts.\n\n• Subtherapeutic Underdosing Trap: The most frequent clinical complication in the ICU is severe early underdosing resulting from failure to prescribe the mandatory 12-hourly loading doses.",
+      "references": [
+        "Tebas P, et al. Teicoplanin: a review of its pharmacology, clinical efficacy, and safety. Pharmacotherapy.",
+        "British National Formulary (BNF 87), Teicoplanin Monograph & Dosing Guidance.",
+        "Pea F, et al. Therapeutic drug monitoring of teicoplanin: what is the difference between standard and high doses? Expert Opin Pharmacother.",
+        "Sanford Guide to Antimicrobial Therapy, 54th ed."
+      ]
+    },
+    {
+      "id": "vancomycin",
+      "cat": "antimicrobials",
+      "name": "Vancomycin",
+      "aliases": [
+        "vancomycin",
+        "vancocin",
+        "vanco",
+        "glycopeptide"
+      ],
+      "brand": "Vancocin",
+      "classification": "Tricyclic Glycopeptide Antibiotic • Bacterial Cell Wall Peptidoglycan D-Ala-D-Ala Synthesis Inhibitor",
+      "tagline": "The time-tested standard of care for serious MRSA infections, requiring strict AUC/MIC monitoring and slow infusion to avoid Red Man Syndrome",
+      "tags": [
+        "glycopeptide",
+        "MRSA",
+        "AUC/MIC",
+        "TDM",
+        "red man syndrome",
+        "nephrotoxicity",
+        "ICU antibiotic"
+      ],
+      "source": "IDSA / ASHP / SIDP / PIDS 2020 Consensus Guidelines on Vancomycin Monitoring; FDA Prescribing Information — Vancocin; UpToDate (2025/2026).",
+      "structure": "Vancomycin (C66H75Cl2N9O24) is a tricyclic glycopeptide antibiotic produced by Amycolatopsis orientalis. Structurally, it features a heptapeptide core composed of aromatic amino acids bridged by ether and carbon-carbon linkages to form a rigid, bowl-shaped aglycone, decorated with vancosamine and glucose disaccharide units. The hydrophilic binding cleft contains five hydrogen-bonding sites tailored to complex with bacterial cell wall precursors.",
+      "pd": "Vancomycin inhibits bacterial cell wall synthesis by forming tight hydrogen bonds with the terminal D-alanyl-D-alanine (D-Ala-D-Ala) moiety of peptidoglycan precursors (Lipid II). This prevents transglycosylase from polymerizing the glycan chain and prevents transpeptidase from cross-linking adjacent peptide bridges, leading to osmotic cell lysis. Active against Gram-positive pathogens: Methicillin-Resistant Staphylococcus aureus (MRSA), coagulase-negative staphylococci, Enterococcus faecalis, and Streptococcus. Inactive against Gram-negative bacteria and VanA-type enterococci. Pharmacodynamic target: 24-hour Area Under the Curve to MIC ratio (AUC24 / MIC) of 400 to 600 (assuming broth microdilution MIC ≤ 1 mg/L).",
+      "pk": "Hydrophilic with an extracellular volume of distribution (Vd ≈ 0.4–0.7 L/kg; expands up to 0.7–1.0 L/kg in septic shock and edema). Serum protein binding is approximately 50%. Poor oral absorption (oral form reserved solely for C. difficile colitis). Elimination is almost entirely renal via glomerular filtration (> 80% excreted unchanged in urine). Elimination half-life is 4 to 6 hours in normal renal function, but prolongs to 100–200+ hours in ESRD. Readily removed by high-flux hemodialysis and CRRT.",
+      "dosage": "Weight-Based Dosing (Actual Body Weight):\n\n• Loading Dose in Serious Infections / Septic Shock: 25 mg/kg to 30 mg/kg IV (maximum 2,000 mg to 3,000 mg) infused over at least 60 minutes or at a rate of no more than 10 mg/min, whichever takes longer (e.g. 1 g over ≥ 100 min; 1.5 g over ≥ 150 min; 2 g over ≥ 200 min) to prevent infusion reactions.\n\n• Maintenance Dose: 15 mg/kg to 20 mg/kg IV every 8 to 12 hours, titrated using Bayesian AUC software or two-level peak-and-trough pharmacokinetic sampling.\n\n• Therapeutic Drug Monitoring (IDSA/ASHP/SIDP/PIDS 2020 Consensus): Daily AUC24 / MIC ratio of 400 to 600 (assuming broth microdilution MIC ≤ 1 mg/L) is the primary efficacy and safety target. Traditional trough-only monitoring targeting 15 to 20 mcg/mL is no longer recommended for serious MRSA infections due to poor AUC correlation and substantially higher nephrotoxicity without clinical benefit. When Bayesian AUC software is unavailable, measure two post-distribution concentrations (e.g., peak at 1–2 hours post-infusion and trough) to calculate AUC.\n\n• Renal Dosing:\n  - CrCl 30–50 mL/min: 15 mg/kg IV every 24 hours.\n  - CrCl < 30 mL/min or Hemodialysis: 15–20 mg/kg loading dose, then redose when random serum level drops < 15 mcg/mL.\n  - CRRT: Loading dose 20–25 mg/kg, then maintenance 10–15 mg/kg every 24–48 hours titrated to daily AUC 400–600.",
+      "offLabel": "Continuous infusion vancomycin (30–35 mg/kg/day post-load) targeting steady-state concentrations of 20–25 mcg/mL; intrathecal/intraventricular administration (5–20 mg/day) for shunt infections and ventriculitis; ophthalmic intravitreal injection for bacterial endophthalmitis.",
+      "complications": "RED MAN SYNDROME (Vancomycin Flushing Reaction): Non-immunologic, rate-dependent mast cell degranulation with massive histamine release caused by rapid intravenous infusion. Symptoms: intense pruritus, erythema, erythematous maculopapular rash over the face, neck, and upper torso, accompanied by hypotension and tachycardia. Prevention: Infuse at a rate ≤ 10 mg/min (e.g. 1 g over ≥ 60–120 min). Treatment: Stop infusion, administer IV H1-antihistamines (diphenhydramine) + fluids, and restart at half rate once symptoms resolve.\n\n• Nephrotoxicity: Acute tubular injury and acute interstitial nephritis (incidence 10%–20%; rises to > 30% when co-administered with piperacillin-tazobactam or aminoglycosides). Strongly associated with AUC > 600 or troughs > 20 mcg/mL.\n\n• Ototoxicity: High-frequency hearing loss and tinnitus, particularly with troughs > 30 mcg/mL or concurrent loop diuretics/aminoglycosides.\n\n• Phlebitis and Tissue Necrosis: Highly irritating to peripheral veins; use central venous access whenever possible.\n\n• DRESS Syndrome / Neutropenia (during courses > 14 days).",
+      "references": [
+        "Rybak MJ, et al. Therapeutic monitoring of vancomycin for serious methicillin-resistant Staphylococcus aureus infections: A revised consensus guideline (IDSA/ASHP/SIDP/PIDS 2020). Am J Health-Syst Pharm.",
+        "Sanford Guide to Antimicrobial Therapy, 54th ed.",
+        "Miller's Anesthesia, 10th ed., Ch. 73, Elsevier, 2025/2026."
+      ]
+    },
+    {
+      "id": "colistin",
+      "cat": "antimicrobials",
+      "name": "Colistin (Polymyxin E)",
+      "aliases": [
+        "colistin",
+        "polymyxin e",
+        "colistimethate sodium",
+        "cms"
+      ],
+      "brand": "Coly-Mycin M",
+      "classification": "Polymyxin Antibiotic • Bacterial Outer Membrane Lipopolysaccharide Disruptor",
+      "tagline": "Last-resort membrane-lytic weapon for carbapenem-resistant Gram-negative pathogens (CRKP, Acinetobacter, Pseudomonas), strictly guided by CMS loading and nephrotoxicity surveillance",
+      "tags": [
+        "polymyxin",
+        "colistin",
+        "CMS",
+        "carbapenem-resistant",
+        "MDR",
+        "nephrotoxicity",
+        "neurotoxicity",
+        "ICU antibiotic"
+      ],
+      "source": "International Consensus Guidelines for the Optimal Use of the Polymyxins (Pharmacotherapy 2019); Sanford Guide to Antimicrobial Therapy; UpToDate (2025/2026).",
+      "structure": "Colistin (Polymyxin E) is a cyclic heptapeptide linked to a tripeptide side chain acylated with a fatty acid (6-methyloctanoic or 6-methylheptanoic acid). Available therapeutically as the inactive prodrug Colistimethate Sodium (CMS), in which the five primary amine groups of colistin are sulfomethylated. Once administered parenterally, CMS undergoes slow, non-enzymatic spontaneous hydrolysis in vivo to form active colistin.",
+      "pd": "Active colistin behaves as a cationic detergent. The positively charged polycationic peptide binds electrostatically to the negatively charged lipid A moiety of lipopolysaccharide (LPS) in the outer bacterial membrane of Gram-negative bacilli, displacing divalent stabilizing cations (Ca²⁺ and Mg²⁺). This destabilizes membrane architecture, allowing entry of the hydrophobic fatty acid tail, creating pores and permeabilizing the outer membrane. Colistin then disrupts the inner cytoplasmic membrane, causing leakage of intracellular contents and rapid bactericidal lysis. Active against multi-drug resistant (MDR) and extensively drug-resistant (XDR) Pseudomonas aeruginosa, Acinetobacter baumannii, and Klebsiella pneumoniae. Intrinsically inactive against Proteus, Providencia, Morganella, Serratia, and Burkholderia.",
+      "pk": "Complex pharmacokinetics governed by conversion of CMS prodrug to active colistin. CMS has a Vd of 0.3–0.4 L/kg and is predominantly cleared by renal excretion (80%). Conversely, active colistin is highly bound to plasma proteins (50%–70%), has a larger Vd (≈ 0.6–0.9 L/kg), and undergoes extensive renal tubular reabsorption with non-renal clearance. Elimination half-life of active colistin is prolonged (9 to 18 hours in critically ill patients). Because renal clearance of CMS competes with its conversion to colistin, patients with normal or augmented renal clearance clear CMS so rapidly that active colistin concentrations are paradoxically lower, whereas in renal impairment, prolonged CMS exposure leads to higher active colistin levels and increased toxicity.",
+      "dosage": "Dosing expressed in Colistin Base Activity (CBA) or International Units (IU): 1 million IU ≈ 30 mg to 33.3 mg CBA; 3 million IU ≈ 100 mg CBA.\n\n• MANDATORY LOADING DOSE (International Consensus Guidelines 2019):\n  - Loading Dose: 9 million IU (≈ 300 mg CBA) IV infused over 1 to 2 hours. A loading dose is mandatory in critically ill patients regardless of renal function to avoid a 36–48 hour delay in reaching bactericidal levels.\n  - Maintenance Dose (Normal Renal Function): 4.5 million IU (≈ 150 mg CBA) IV every 12 hours (total 9 million IU / day).\n\n• Renal Dosing Adjustments (Maintenance):\n  - CrCl 30–50 mL/min: 2.75 million to 3.5 million IU IV every 12 hours.\n  - CrCl 10–30 mL/min: 2 million to 2.5 million IU IV every 12 hours (or 3 million to 4 million IU every 24 hours).\n  - CrCl < 10 mL/min: 1.5 million to 2 million IU IV every 24 hours.\n  - Intermittent Hemodialysis: On non-dialysis days, administer 1.5 million IU IV every 24 hours. On dialysis days, administer 1.5 million IU every 24 hours with an additional supplemental dose of 1.5 million IU (or 3 million IU on a 3-times-weekly schedule) given immediately post-dialysis.\n  - Continuous Renal Replacement Therapy (CRRT — CVVH / CVVHD / CVVHDF): Loading dose 9 million IU IV; maintenance dose is 4.5 million IU IV every 12 hours (colistin is heavily cleared by high-effluent polysulfone CRRT circuits; lower doses risk fatal therapeutic failure).",
+      "offLabel": "Inhaled/nebulized colistimethate (1 to 2 million IU q8–12h) as adjunctive therapy for ventilator-associated pneumonia caused by carbapenem-resistant Gram-negative pathogens; intrathecal/intraventricular administration (125,000 to 250,000 IU/day) for ventriculitis.",
+      "complications": "NEPHROTOXICITY: Dose-limiting acute tubular necrosis, occurring in 30%–50% of ICU patients. Colistin damages renal tubular cell membranes via increased permeability, mitochondrial swelling, and apoptosis. Usually reversible, but requires daily monitoring of serum creatinine, urea, and electrolytes.\n\n• NEUROTOXICITY: Paresthesias (circumoral, facial, extremities), dizziness, ataxia, confusion, and visual disturbances.\n\n• NEUROMUSCULAR BLOCKADE & RESPIRATORY PARALYSIS: Presynaptic blockade of acetylcholine release, potentiated by neuromuscular blockers, hypocalcemia, and aminoglycosides; can cause sudden hypoventilation or prolonged postoperative apnea.\n\n• Bronchospasm when administered via inhalation (pretreat with an inhaled beta-2 agonist).",
+      "references": [
+        "Tsuji BT, et al. International Consensus Guidelines for the Optimal Use of the Polymyxins. Pharmacotherapy (2019).",
+        "Sanford Guide to Antimicrobial Therapy, 54th ed.",
+        "Nation RL, et al. Colistin in the 21st century. Curr Opin Infect Dis."
       ]
     }
   ]
