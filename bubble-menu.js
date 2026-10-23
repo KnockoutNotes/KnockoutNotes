@@ -79,13 +79,18 @@
       var isActive = isCurHash || (!item.href.includes("#") && isCurPage);
       var authAttrs = item.isAuthLink ? ' data-auth-nav-link="true" id="knDesktopAuthNavLink"' : '';
 
+      var hasDropdown = item.label === 'Critical Care';
+      var dropdownAttrs = hasDropdown ? ' aria-haspopup="true" aria-expanded="false" id="knDesktopCriticalCareLink"' : '';
+      var labelHtml = hasDropdown ? item.label + ' <span class="kn-desktop-chevron" aria-hidden="true">▾</span>' : item.label;
+
       return [
         '<a href="' + item.href + '"',
-        '   class="kn-desktop-link' + (isActive ? ' active' : '') + (item.isAuthLink ? ' kn-auth-nav-link' : '') + '"',
+        '   class="kn-desktop-link' + (isActive ? ' active' : '') + (item.isAuthLink ? ' kn-auth-nav-link' : '') + (hasDropdown ? ' kn-has-dropdown kn-cc-has-dropdown' : '') + '"',
         authAttrs,
+        dropdownAttrs,
         '   role="menuitem"',
         '   aria-label="' + item.ariaLabel + '">',
-        '  ' + item.label,
+        '  ' + labelHtml,
         '</a>'
       ].join("");
     }).join("\n");
@@ -110,7 +115,8 @@
       '      <span class="kn-theme-icon-slot">☾</span>',
       '    </button>',
       '  </div>',
-      '</div>'
+      '</div>',
+      renderCriticalCareMegaMenuHTML()
     ].join("\n");
 
     // Insert at the top of the body
@@ -123,13 +129,148 @@
       themeBtn.addEventListener("click", toggleTheme);
     }
 
-    // Setup smooth Apple iOS sliding indicator
+    // Setup Critical Care Mega Menu & smooth Apple iOS sliding indicator
+    setupCriticalCareMegaMenu(nav);
     setupDesktopIndicator(nav);
   }
 
   // ------------------------------------------------------------------------
   // Apple iOS-Themed Smooth Shifting Indicator for Desktop
   // ------------------------------------------------------------------------
+
+  function renderCriticalCareMegaMenuHTML() {
+    return [
+      '<div class="kn-cc-mega-menu kn-cc-mega-dropdown" id="knCcMegaMenu" role="menu" aria-label="Critical Care Curriculum Topics" hidden>',
+      '  <div class="kn-cc-mega-inner">',
+      '    <div class="kn-cc-mega-header">',
+      '      <div class="kn-cc-mega-kicker">',
+      '        <span class="kn-cc-kicker-dot"></span>',
+      '        <span>CRITICAL CARE &amp; RESUSCITATION CURRICULUM</span>',
+      '      </div>',
+      '      <a href="critical-care.html" class="kn-cc-mega-all-link" role="menuitem">',
+      '        <span>Open Curriculum Hub</span>',
+      '        <span aria-hidden="true">&rarr;</span>',
+      '      </a>',
+      '    </div>',
+      '    <div class="kn-cc-mega-grid">',
+      '      <div class="kn-cc-mega-col">',
+      '        <h4 class="kn-cc-col-title"><span class="kn-cc-col-icon">💨</span> Airway &amp; Hemodynamics</h4>',
+      '        <ul class="kn-cc-col-list">',
+      '          <li><a href="study.html?cat=cc_airway" class="kn-cc-mega-link" role="menuitem">ICU Difficult Airway &amp; RSI</a></li>',
+      '          <li><a href="study.html?cat=cc_hemodynamics" class="kn-cc-mega-link" role="menuitem">Shock &amp; Vasoactive Inotropes</a></li>',
+      '          <li><a href="study.html?cat=cc_sepsis" class="kn-cc-mega-link" role="menuitem">Sepsis-3 Bundles &amp; Infections</a></li>',
+      '          <li><a href="study.html?cat=cc_cardio" class="kn-cc-mega-link" role="menuitem">Acute Coronary &amp; Tamponade</a></li>',
+      '        </ul>',
+      '      </div>',
+      '      <div class="kn-cc-mega-col">',
+      '        <h4 class="kn-cc-col-title"><span class="kn-cc-col-icon">🫁</span> Respiratory &amp; Ventilation</h4>',
+      '        <ul class="kn-cc-col-list">',
+      '          <li><a href="study.html?cat=cc_respiratory" class="kn-cc-mega-link" role="menuitem">ARDS &amp; Protective Ventilation</a></li>',
+      '          <li><a href="ventilator.html" class="kn-cc-mega-link" role="menuitem">Mechanical Ventilator Station 3D</a></li>',
+      '          <li><a href="calculators.html#tabAbg3d" class="kn-cc-mega-link" role="menuitem">Acid-Base &amp; ABG Anion Gap</a></li>',
+      '          <li><a href="study.html?cat=cc_advances" class="kn-cc-mega-link" role="menuitem">ECMO (VV vs VA) &amp; POCUS</a></li>',
+      '        </ul>',
+      '      </div>',
+      '      <div class="kn-cc-mega-col">',
+      '        <h4 class="kn-cc-col-title"><span class="kn-cc-col-icon">🧠</span> Neuro, Renal &amp; Tox</h4>',
+      '        <ul class="kn-cc-col-list">',
+      '          <li><a href="study.html?cat=cc_neuro" class="kn-cc-mega-link" role="menuitem">Raised ICP, TBI &amp; Status</a></li>',
+      '          <li><a href="study.html?cat=cc_renal" class="kn-cc-mega-link" role="menuitem">AKI (KDIGO) &amp; CRRT Modalities</a></li>',
+      '          <li><a href="study.html?cat=cc_tox" class="kn-cc-mega-link" role="menuitem">Severe Poisoning &amp; Toxidromes</a></li>',
+      '          <li><a href="study.html?cat=cc_trauma" class="kn-cc-mega-link" role="menuitem">Polytrauma Resuscitation &amp; MTP</a></li>',
+      '        </ul>',
+      '      </div>',
+      '      <div class="kn-cc-mega-col kn-cc-col-featured">',
+      '        <h4 class="kn-cc-col-title"><span class="kn-cc-col-icon">⚡</span> Fast Clinical Access</h4>',
+      '        <div class="kn-cc-featured-cards">',
+      '          <a href="resuscitation-chamber.html" class="kn-cc-feat-card kn-cc-mega-link" role="menuitem">',
+      '            <span class="kn-cc-feat-icon">🚨</span>',
+      '            <div><strong>Resuscitation Chamber</strong><p>ACLS emergency crisis protocols</p></div>',
+      '          </a>',
+      '          <a href="study.html?view=pyq" class="kn-cc-feat-card kn-cc-mega-link" role="menuitem">',
+      '            <span class="kn-cc-feat-icon">🎯</span>',
+      '            <div><strong>Critical Care PYQs</strong><p>NEET-SS / INI-SS recalls &amp; exams</p></div>',
+      '          </a>',
+      '          <a href="study.html?domain=drugs&amp;cat=antimicrobials" class="kn-cc-feat-card kn-cc-mega-link" role="menuitem">',
+      '            <span class="kn-cc-feat-icon">💊</span>',
+      '            <div><strong>ICU Antimicrobial Guide</strong><p>26 FDA monographs with renal dosing</p></div>',
+      '          </a>',
+      '        </div>',
+      '      </div>',
+      '    </div>',
+      '  </div>',
+      '</div>'
+    ].join("\n");
+  }
+
+  function setupCriticalCareMegaMenu(nav) {
+    var link = nav.querySelector("#knDesktopCriticalCareLink") || nav.querySelector('a.kn-desktop-link[href="critical-care.html"]');
+    var menu = nav.querySelector("#knCcMegaMenu");
+    if (!link || !menu) return;
+
+    var closeTimer = null;
+
+    function openMenu() {
+      if (closeTimer) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+      menu.hidden = false;
+      requestAnimationFrame(function () {
+        menu.classList.add("open");
+        link.classList.add("is-open");
+        link.setAttribute("aria-expanded", "true");
+      });
+    }
+
+    function scheduleClose() {
+      if (closeTimer) clearTimeout(closeTimer);
+      closeTimer = setTimeout(function () {
+        menu.classList.remove("open");
+        link.classList.remove("is-open");
+        link.setAttribute("aria-expanded", "false");
+        setTimeout(function () {
+          if (!menu.classList.contains("open")) {
+            menu.hidden = true;
+          }
+        }, 220);
+      }, 160);
+    }
+
+    link.addEventListener("mouseenter", openMenu);
+    link.addEventListener("focus", openMenu);
+    link.addEventListener("mouseleave", scheduleClose);
+
+    menu.addEventListener("mouseenter", function () {
+      if (closeTimer) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+    });
+    menu.addEventListener("mouseleave", scheduleClose);
+
+    menu.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        scheduleClose();
+        link.focus();
+      }
+    });
+
+    link.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        scheduleClose();
+      }
+    });
+
+    link.addEventListener("click", function (e) {
+      var hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+      if (hasTouch && !menu.classList.contains("open")) {
+        e.preventDefault();
+        openMenu();
+      }
+    });
+  }
+
   function setupDesktopIndicator(nav) {
     var linksContainer = nav.querySelector(".kn-desktop-links");
     var indicator = nav.querySelector(".kn-desktop-indicator");

@@ -1302,19 +1302,19 @@ body.dark .ron-domain-tab.active .ron-domain-tab-count {
   margin-top: 1px;
 }
 
-/* Point-Wise Clinical Typography */
+/* Point-Wise Clinical Typography - Mobile-First & High Readability */
 .ron-prose {
-  font-size: 14.5px;
+  font-size: 16px;
   color: #1e293b;
-  line-height: 1.75;
+  line-height: 1.65;
 }
 
 .ron-point-row {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  margin-bottom: 9px;
-  line-height: 1.7;
+  margin-bottom: 8px;
+  line-height: 1.62;
 }
 
 .ron-point-bullet {
@@ -1326,7 +1326,7 @@ body.dark .ron-domain-tab.active .ron-domain-tab-count {
 }
 
 .ron-point-text {
-  font-size: 14.5px;
+  font-size: 16px;
   color: #1e293b;
   flex: 1;
 }
@@ -4223,5 +4223,315 @@ body.dark .ron-chapter-link-card:hover .ron-chapter-link-arrow {
 
   .ron-chapter-link-title {
     font-size: 13.5px;
+  }
+}
+
+
+/* ============================================================
+   MOBILE READING ENHANCEMENTS & ALL TOPICS DRAWER
+   ============================================================ */
+
+/* All Topics Trigger Button (Mobile & Desktop) */
+.ron-browse-chapters-trigger.ron-all-topics-btn,
+.ron-all-topics-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #0284c7;
+  color: #ffffff !important;
+  font-weight: 750;
+  font-size: 12.5px;
+  padding: 8px 15px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ron-all-topics-btn:hover {
+  background: #0369a1;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.38);
+  transform: translateY(-1px);
+}
+
+body.dark .ron-browse-chapters-trigger.ron-all-topics-btn,
+body.dark .ron-all-topics-btn {
+  background: #38bdf8;
+  color: #0f172a !important;
+  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Background scroll lock when modal/drawer is open */
+body.ron-drawer-locked,
+body.ron-chapters-open,
+html.ron-drawer-locked {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+/* Drawer Mode Switcher (All Topics vs Domain Chapters) */
+.ron-drawer-mode-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px 4px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+  background: #fafaf9;
+}
+
+body.dark .ron-drawer-mode-bar {
+  background: #0b1120;
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.ron-drawer-mode-chip,
+.ron-drawer-mode-btn {
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.ron-drawer-mode-chip:hover,
+.ron-drawer-mode-btn:hover {
+  color: #0f172a;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+.ron-drawer-mode-chip.is-active,
+.ron-drawer-mode-btn.active {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+}
+
+body.dark .ron-drawer-mode-chip,
+body.dark .ron-drawer-mode-btn {
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+}
+
+body.dark .ron-drawer-mode-chip:hover,
+body.dark .ron-drawer-mode-btn:hover {
+  color: #f1f5f9;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+body.dark .ron-drawer-mode-chip.is-active,
+body.dark .ron-drawer-mode-btn.active {
+  background: #38bdf8;
+  color: #0f172a;
+  border-color: #38bdf8;
+  box-shadow: 0 2px 6px rgba(56, 189, 248, 0.3);
+}
+
+/* Drawer Topics Vertical List */
+.ron-drawer-topics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+  overflow-y: auto;
+  max-height: 62vh;
+}
+
+.ron-drawer-section-header {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  padding: 12px 4px 4px 4px;
+}
+
+body.dark .ron-drawer-section-header {
+  color: #94a3b8;
+}
+
+.ron-drawer-topic-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ron-drawer-topic-card:hover {
+  background: #f1f5f9;
+  border-color: rgba(2, 132, 199, 0.2);
+  transform: translateY(-1px);
+}
+
+.ron-drawer-topic-card.is-active,
+.ron-drawer-topic-card.active-topic {
+  background: #e0f2fe;
+  border-color: #0284c7;
+}
+
+body.dark .ron-drawer-topic-card {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark .ron-drawer-topic-card:hover {
+  background: #273549;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+body.dark .ron-drawer-topic-card.is-active,
+body.dark .ron-drawer-topic-card.active-topic {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #38bdf8;
+}
+
+.ron-drawer-topic-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.ron-drawer-topic-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.ron-drawer-topic-title {
+  font-size: 14px;
+  font-weight: 650;
+  color: #0f172a;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body.dark .ron-drawer-topic-title {
+  color: #f1f5f9;
+}
+
+.ron-drawer-topic-sub {
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+body.dark .ron-drawer-topic-sub {
+  color: #94a3b8;
+}
+
+.ron-drawer-topic-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.ron-active-topic-badge,
+.ron-drawer-topic-tag {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: #0284c7;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+body.dark .ron-active-topic-badge,
+body.dark .ron-drawer-topic-tag {
+  background: #38bdf8;
+  color: #0f172a;
+}
+
+/* Mobile-First Reading Layout Optimization (<= 768px) */
+@media (max-width: 768px) {
+  /* Eliminate space-wasting decorative elements above content */
+  .ron-vitals-strip,
+  .ron-avatar-wrap,
+  .ron-guideline-track,
+  .ron-profile-progress {
+    display: none !important;
+  }
+
+  /* Compact the profile meta card */
+  .ron-profile-card {
+    padding: 10px 14px;
+    border-radius: 16px;
+    min-width: auto;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  body.dark .ron-profile-card {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .ron-topic-hero-layout {
+    margin-top: 4px;
+    margin-bottom: 16px;
+    gap: 12px;
+  }
+
+  /* Screen & Container horizontal margins */
+  .ron-screen {
+    padding: 12px 10px 24px 10px !important;
+    border-radius: 18px !important;
+  }
+
+  .ron-stage-container {
+    padding: 16px 12px 20px 12px !important;
+    border-radius: 18px !important;
+  }
+
+  /* Reading Body Typography */
+  .ron-prose {
+    font-size: 16px !important;
+    line-height: 1.62 !important;
+  }
+
+  .ron-point-text {
+    font-size: 16px !important;
+    line-height: 1.62 !important;
+  }
+
+  .ron-point-row {
+    margin-bottom: 7px !important;
+    gap: 8px !important;
+  }
+
+  .ron-point-title {
+    font-size: 16.5px !important;
+  }
+
+  /* Clinical Tables: Prevent horizontal overflow */
+  .ron-table-wrap,
+  .ron-prose table {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    display: block !important;
+    -webkit-overflow-scrolling: touch;
+    margin: 12px 0 !important;
   }
 }

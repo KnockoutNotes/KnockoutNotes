@@ -1,947 +1,1195 @@
-/* ==========================================================================
-   KNOCKOUTNOTES — Responsive Apple iOS-Themed Navigation Architecture
-   Desktop & Tablet (>= 768px): Minimalist Frosted Glass Pill Capsule with Smooth Shifting Pill Indicator
-   Mobile (< 768px): Floating Glass Capsule Bar (Home, Notes, Calculator, Search, 3-Dot, Theme)
-                    + 2-Column Frosted Glass Overlay for Extended Sections
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   1. Legacy Navigation Suppression
-   -------------------------------------------------------------------------- */
-body.kn-nav-mounted .site-hud,
-body.kn-nav-mounted .mobile-menu {
-  display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-
-/* --------------------------------------------------------------------------
-   Scroll-Off Navigation Behavior (All pages except Home)
-   -------------------------------------------------------------------------- */
-body:not([data-content-page="home"]) .kn-desktop-nav,
-body:not([data-content-page="home"]) .bubble-menu {
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease;
-  will-change: transform, opacity;
-}
-
-body:not([data-content-page="home"]).kn-nav-scrolled-off .kn-desktop-nav,
-body:not([data-content-page="home"]).kn-nav-scrolled-off .bubble-menu,
-body:not([data-content-page="home"]).kn-nav-autohidden .kn-desktop-nav,
-body:not([data-content-page="home"]).kn-nav-autohidden .bubble-menu {
-  transform: translateY(-160%) !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-/* --------------------------------------------------------------------------
-   2. Desktop Minimalist Navigation Bar (>= 768px)
-   -------------------------------------------------------------------------- */
-.kn-desktop-nav {
-  position: sticky;
-  top: 12px;
-  z-index: 1000;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
-  padding: 0 16px;
-  box-sizing: border-box;
-}
-
-.kn-desktop-nav-capsule {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 5px 12px 5px 10px;
-  border-radius: 9999px;
-  background: rgba(15, 18, 28, 0.68);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45),
-              inset 0 1.5px 0 rgba(255, 255, 255, 0.22),
-              inset 0 -1.5px 2px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  pointer-events: auto;
-  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
-  max-width: 1240px;
-  box-sizing: border-box;
-}
-
-body:not(.dark) .kn-desktop-nav-capsule {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1.5px solid rgba(255, 255, 255, 0.95);
-  box-shadow:
-    0 16px 36px -4px rgba(45, 35, 25, 0.09),
-    0 4px 12px rgba(45, 35, 25, 0.04),
-    inset 0 2px 2px #ffffff,
-    inset 0 -1.5px 2px rgba(45, 35, 25, 0.02);
-}
-
-/* Brand Emblem & Wordmark */
-.kn-desktop-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  padding-right: 8px;
-  border-right: 1px solid rgba(255, 255, 255, 0.12);
-  flex-shrink: 0;
-  transition: opacity 0.2s ease;
-}
-
-body:not(.dark) .kn-desktop-brand {
-  border-right-color: rgba(0, 0, 0, 0.1);
-}
-
-.kn-desktop-brand:hover {
-  opacity: 0.9;
-}
-
-.kn-desktop-logo {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  object-fit: contain;
-  display: block;
-}
-
-.kn-desktop-brand-name {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Space Grotesk', system-ui, sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #f8fafc;
-  white-space: nowrap;
-}
-
-body:not(.dark) .kn-desktop-brand-name {
-  color: #0f172a;
-}
-
-.kn-desktop-brand-name span {
-  color: #38bdf8;
-}
-
-body:not(.dark) .kn-desktop-brand-name span {
-  color: #0284c7;
-}
-
-/* Desktop Horizontal Links Container with Sliding Indicator */
-.kn-desktop-links {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  list-style: none;
-  margin: 0;
-  padding: 3px;
-  border-radius: 9999px;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  flex-wrap: nowrap;
-}
-
-body:not(.dark) .kn-desktop-links {
-  background: #f0ebe2;
-  border: 1px solid rgba(45, 35, 25, 0.06);
-  box-shadow: inset 0 1.5px 3px rgba(45, 35, 25, 0.06);
-}
-
-/* 3D Convex Glass Sliding Pill Indicator */
-.kn-desktop-indicator {
-  position: absolute;
-  top: 3px;
-  left: 0;
-  height: calc(100% - 6px);
-  border-radius: 9999px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.08) 55%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.6),
-              inset 0 -1px 2px rgba(0, 0, 0, 0.3),
-              0 4px 14px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  pointer-events: none;
-  z-index: 1;
-  transition: transform 0.34s cubic-bezier(0.16, 1, 0.3, 1),
-              width 0.34s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.2s ease;
-  opacity: 0;
-}
-
-body:not(.dark) .kn-desktop-indicator {
-  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  box-shadow:
-    0 2px 8px rgba(45, 35, 25, 0.08),
-    inset 0 1.5px 1.5px #ffffff,
-    inset 0 -1px 2px rgba(45, 35, 25, 0.03);
-}
-
-.kn-desktop-link {
-  position: relative;
-  z-index: 2;
-  display: inline-block;
-  padding: 6px 12px;
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Space Grotesk', system-ui, sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, 0.65);
-  text-decoration: none;
-  border-radius: 9999px;
-  transition: color 0.2s ease;
-  white-space: nowrap;
-  line-height: 1.25;
-}
-
-body:not(.dark) .kn-desktop-link {
-  color: #64748b;
-}
-
-.kn-desktop-link:hover,
-.kn-desktop-link:focus-visible {
-  color: #ffffff;
-  outline: none;
-}
-
-body:not(.dark) .kn-desktop-link:hover,
-body:not(.dark) .kn-desktop-link:focus-visible {
-  color: #0f172a;
-}
-
-.kn-desktop-link.active {
-  color: #ffffff !important;
-  font-weight: 600;
-}
-
-body:not(.dark) .kn-desktop-link.active {
-  color: #0284c7 !important;
-  font-weight: 700;
-}
-
-/* Desktop Utility Actions */
-.kn-desktop-actions {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding-left: 6px;
-  border-left: 1px solid rgba(255, 255, 255, 0.12);
-  flex-shrink: 0;
-}
-
-body:not(.dark) .kn-desktop-actions {
-  border-left-color: rgba(15, 23, 42, 0.10);
-}
-
-.kn-desktop-action-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.85);
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  font-family: inherit;
-  padding: 0;
-}
-
-body:not(.dark) .kn-desktop-action-btn {
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
-  color: #334155;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
-}
-
-.kn-desktop-action-btn:hover,
-.kn-desktop-action-btn:focus-visible {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  outline: none;
-}
-
-body:not(.dark) .kn-desktop-action-btn:hover,
-body:not(.dark) .kn-desktop-action-btn:focus-visible {
-  background: #f8fafc;
-  color: #0284c7;
-  border-color: #0284c7;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
-}
-
-.kn-desktop-search-btn {
-  gap: 6px;
-  padding: 5px 10px;
-  font-size: 12px;
-  font-weight: 550;
-}
-
-.kn-desktop-search-btn .kn-icon-search {
-  font-size: 13px;
-  opacity: 0.8;
-}
-
-.kn-desktop-search-btn kbd {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.12);
-  padding: 1px 5px;
-  border-radius: 4px;
-  border: 1px solid rgba(56, 189, 248, 0.25);
-}
-
-body:not(.dark) .kn-desktop-search-btn kbd {
-  color: #0284c7;
-  background: rgba(2, 132, 199, 0.08);
-  border-color: rgba(2, 132, 199, 0.2);
-}
-
-.kn-desktop-theme-btn {
-  width: 32px;
-  height: 32px;
-  font-size: 13px;
-}
-
-/* Tablet sizing adjustments (768px - 1023px) */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .kn-desktop-nav-capsule {
-    gap: 8px;
-    padding: 4px 10px 4px 8px;
-  }
-  .kn-desktop-brand-name {
-    font-size: 13px;
-  }
-  .kn-desktop-links {
-    gap: 1px;
-    padding: 2px;
-  }
-  .kn-desktop-link {
-    padding: 5px 8px;
-    font-size: 12px;
-  }
-  .kn-desktop-search-btn .kn-search-text {
-    display: none;
-  }
-  .kn-desktop-search-btn {
-    padding: 4px 8px;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   3. Mobile-Only Navigation (< 768px): Floating Capsule Bar & 2-Col Drawer
-   -------------------------------------------------------------------------- */
-.bubble-menu {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: calc(10px + env(safe-area-inset-top, 0px));
-  display: flex;
-  justify-content: center;
-  padding: 0 10px;
-  pointer-events: none;
-  z-index: 1000;
-  box-sizing: border-box;
-}
-
-.bubble-bar-capsule {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 3px 6px 3px 5px;
-  border-radius: 9999px;
-  background: rgba(15, 18, 28, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35),
-              inset 0 1.5px 0 rgba(255, 255, 255, 0.22),
-              inset 0 -1.5px 2px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(24px) saturate(190%);
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
-  pointer-events: auto;
-  max-width: calc(100vw - 16px);
-  box-sizing: border-box;
-  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-body:not(.dark) .bubble-bar-capsule {
-  background: rgba(255, 255, 255, 0.90);
-  border: 1.5px solid rgba(255, 255, 255, 0.95);
-  box-shadow:
-    0 14px 34px -4px rgba(45, 35, 25, 0.09),
-    0 4px 12px rgba(45, 35, 25, 0.04),
-    inset 0 2px 2px #ffffff,
-    inset 0 -1.5px 2px rgba(45, 35, 25, 0.02);
-}
-
-.bubble-logo-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  padding: 2px;
-  flex-shrink: 0;
-}
-
-.bubble-logo {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  object-fit: contain;
-  display: block;
-}
-
-/* Primary Mobile Links: Home, Notes, Calculator */
-.bubble-nav-links {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  padding: 2px 3px;
-  border-radius: 9999px;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-body:not(.dark) .bubble-nav-links {
-  background: #f0ebe2;
-  border-color: rgba(45, 35, 25, 0.06);
-  box-shadow: inset 0 1.5px 3px rgba(45, 35, 25, 0.06);
-}
-
-/* 3D Convex Glass Sliding Pill Indicator for Mobile Main Menu (Home, Notes, Calc) */
-.kn-mobile-indicator {
-  position: absolute;
-  top: 2px;
-  left: 0;
-  height: calc(100% - 4px);
-  border-radius: 9999px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.08) 55%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.6),
-              inset 0 -1px 2px rgba(0, 0, 0, 0.3),
-              0 4px 14px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  pointer-events: none;
-  z-index: 1;
-  transition: transform 0.34s cubic-bezier(0.16, 1, 0.3, 1),
-              width 0.34s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.2s ease;
-  opacity: 0;
-}
-
-body:not(.dark) .kn-mobile-indicator {
-  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  box-shadow:
-    0 2px 8px rgba(45, 35, 25, 0.08),
-    inset 0 1.5px 1.5px #ffffff,
-    inset 0 -1px 2px rgba(45, 35, 25, 0.03);
-}
-
-.bubble-nav-link {
-  position: relative;
-  z-index: 2;
-  padding: 4px 8px;
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Space Grotesk', system-ui, sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.65);
-  text-decoration: none;
-  border-radius: 9999px;
-  transition: color 0.2s ease;
-  white-space: nowrap;
-  line-height: 1.25;
-}
-
-body:not(.dark) .bubble-nav-link {
-  color: #475569;
-}
-
-.bubble-nav-link:hover,
-.bubble-nav-link:active {
-  color: #ffffff;
-}
-
-body:not(.dark) .bubble-nav-link:hover,
-body:not(.dark) .bubble-nav-link:active {
-  color: #0f172a;
-}
-
-/* Active Pill Highlight - styled to let the moving 3D indicator glow through */
-.bubble-nav-link.active {
-  color: #ffffff !important;
-  font-weight: 600;
-}
-
-body:not(.dark) .bubble-nav-link.active {
-  color: #0284c7 !important;
-  font-weight: 700;
-}
-
-/* Responsive labels - mobile primary bar always shows concise labels ("Study", "Calc") */
-.nav-label-short,
-.calc-label-short {
-  display: inline !important;
-}
-.nav-label-full,
-.calc-label-full {
-  display: none !important;
-}
-
-/* Mobile Actions: Search, 3-Dot More, User/Account, Theme */
-.bubble-nav-actions {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  padding-left: 3px;
-  border-left: 1px solid rgba(255, 255, 255, 0.12);
-  flex-shrink: 0;
-}
-
-body:not(.dark) .bubble-nav-actions {
-  border-left-color: rgba(0, 0, 0, 0.1);
-}
-
-.bubble-action-btn {
-  position: relative;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  padding: 0;
-  flex-shrink: 0;
-}
-
-body:not(.dark) .bubble-action-btn {
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
-  color: #334155;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
-}
-
-.bubble-action-btn:hover,
-.bubble-action-btn:active {
-  background: rgba(255, 255, 255, 0.14);
-  color: #ffffff;
-  transform: scale(1.05);
-}
-
-body:not(.dark) .bubble-action-btn:hover,
-body:not(.dark) .bubble-action-btn:active {
-  background: #f8fafc;
-  color: #0284c7;
-  border-color: #0284c7;
-}
-
-/* 3-Dot Toggle Button & Active Dot Indicator */
-.kn-dots-icon {
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.bubble-action-btn.open .kn-dots-icon {
-  transform: rotate(90deg);
-}
-
-.kn-active-dot {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #38bdf8;
-  box-shadow: 0 0 6px #38bdf8;
-  display: none;
-}
-
-.kn-more-toggle-btn.has-active .kn-active-dot {
-  display: block;
-}
-
-/* --------------------------------------------------------------------------
-   Mobile Fullscreen 2-Column Frosted Glass Overlay
-   -------------------------------------------------------------------------- */
-.bubble-menu-items {
-  position: fixed;
-  inset: 0;
-  display: none;
-  align-items: flex-start;
-  justify-content: center;
-  background: rgba(8, 12, 20, 0.82);
-  backdrop-filter: blur(32px) saturate(200%);
-  -webkit-backdrop-filter: blur(32px) saturate(200%);
-  z-index: 999;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: calc(72px + env(safe-area-inset-top, 0px)) 14px calc(36px + env(safe-area-inset-bottom, 0px));
-  box-sizing: border-box;
-}
-
-body:not(.dark) .bubble-menu-items {
-  background: rgba(234, 237, 242, 0.96);
-}
-
-.kn-more-container {
-  width: 100%;
-  max-width: 440px;
-  margin: 0 auto;
-}
-
-.kn-more-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  padding: 0 4px;
-}
-
-.kn-more-heading {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.kn-more-title {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-  font-size: 12.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #38bdf8;
-}
-
-body:not(.dark) .kn-more-title {
-  color: #0284c7;
-}
-
-.kn-more-sub {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-body:not(.dark) .kn-more-sub {
-  color: #64748b;
-}
-
-.kn-more-close-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  padding: 0;
-}
-
-body:not(.dark) .kn-more-close-btn {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.08);
-  color: #1e293b;
-}
-
-.kn-more-close-btn:hover,
-.kn-more-close-btn:active {
-  background: rgba(255, 255, 255, 0.16);
-  color: #ffffff;
-  transform: scale(1.05);
-}
-
-/* 2-Column Grid for Mobile Drawer */
-.kn-more-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.kn-more-item {
-  width: 100%;
-  display: flex;
-  box-sizing: border-box;
-}
-
-.kn-more-card {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 96px;
-  padding: 13px 13px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  text-decoration: none;
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-              background 0.2s ease,
-              border-color 0.2s ease,
-              box-shadow 0.2s ease;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-}
-
-body:not(.dark) .kn-more-card {
-  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  box-shadow:
-    0 8px 24px -2px rgba(45, 35, 25, 0.07),
-    inset 0 1.5px 1.5px #ffffff,
-    inset 0 -1.5px 2px rgba(45, 35, 25, 0.03);
-}
-
-.kn-more-card:hover,
-.kn-more-card:active {
-  transform: translateY(-2px) scale(1.02);
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(56, 189, 248, 0.4);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
-}
-
-body:not(.dark) .kn-more-card:hover,
-body:not(.dark) .kn-more-card:active {
-  background: #ffffff;
-  border-color: #ffffff;
-  transform: translateY(-4px) scale(1.02);
-  box-shadow:
-    0 16px 32px -4px rgba(45, 35, 25, 0.12),
-    inset 0 2px 2px #ffffff;
-}
-
-.kn-more-card.active-route {
-  border-color: #38bdf8 !important;
-  background: rgba(56, 189, 248, 0.14) !important;
-  box-shadow: 0 0 0 1.5px #38bdf8, 0 8px 24px rgba(0, 0, 0, 0.4) !important;
-}
-
-body:not(.dark) .kn-more-card.active-route {
-  border-color: #0284c7 !important;
-  background: rgba(2, 132, 199, 0.1) !important;
-  box-shadow: 0 0 0 1.5px #0284c7, 0 6px 18px rgba(2, 132, 199, 0.15) !important;
-}
-
-.kn-more-card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 8px;
-}
-
-.kn-more-card-icon {
-  font-size: 22px;
-  line-height: 1;
-}
-
-.kn-more-card-arrow {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.4);
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-body:not(.dark) .kn-more-card-arrow {
-  color: rgba(0, 0, 0, 0.35);
-}
-
-.kn-more-card:hover .kn-more-card-arrow {
-  transform: translateX(2px);
-  color: #38bdf8;
-}
-
-body:not(.dark) .kn-more-card:hover .kn-more-card-arrow {
-  color: #0284c7;
-}
-
-.kn-more-card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.kn-more-card-label {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Space Grotesk', system-ui, sans-serif;
-  font-size: 13px;
-  font-weight: 650;
-  color: #ffffff;
-  letter-spacing: -0.01em;
-  line-height: 1.25;
-}
-
-body:not(.dark) .kn-more-card-label {
-  color: #0f172a;
-}
-
-.kn-more-card-desc {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1.25;
-}
-
-body:not(.dark) .kn-more-card-desc {
-  color: #64748b;
-}
-
-.bubble-menu-items .pill-close-hint {
-  width: 100%;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.45);
-  font-size: 11px;
-  font-family: 'JetBrains Mono', monospace;
-  margin-top: 18px;
-}
-
-body:not(.dark) .bubble-menu-items .pill-close-hint {
-  color: #64748b;
-}
-
-/* Compact mobile screens (<= 440px): show short labels ("Study", "Calc") */
-@media (max-width: 440px) {
-  .nav-label-full,
-  .calc-label-full {
-    display: none;
-  }
-  .nav-label-short,
-  .calc-label-short {
-    display: inline;
-  }
-  .bubble-nav-link {
-    padding: 5px 8px;
-    font-size: 12px;
-  }
-}
-
-/* Narrow mobile screens (< 360px down to 320px) */
-@media (max-width: 360px) {
-  .bubble-menu {
-    padding: 0 4px;
-  }
-  .bubble-bar-capsule {
-    gap: 3px;
-    padding: 3px 5px 3px 4px;
-  }
-  .bubble-logo {
-    width: 22px;
-    height: 22px;
-  }
-  .bubble-nav-links {
-    gap: 1px;
-    padding: 2px;
-  }
-  .bubble-nav-link {
-    padding: 4px 6px;
-    font-size: 11px;
-  }
-  .nav-label-full,
-  .calc-label-full {
-    display: none;
-  }
-  .nav-label-short,
-  .calc-label-short {
-    display: inline;
-  }
-  .bubble-action-btn,
-  .kn-bubble-user-btn {
-    width: 27px;
-    height: 27px;
-    font-size: 11px;
-  }
-  .bubble-nav-actions {
-    gap: 2.5px;
-    padding-left: 2.5px;
-  }
-  .kn-dots-icon {
-    font-size: 13px;
-  }
-  .kn-more-card {
-    min-height: 84px;
-    padding: 8px 8px;
-  }
-  .kn-more-card-icon {
-    font-size: 18px;
-  }
-  .kn-more-card-label {
-    font-size: 11.5px;
-  }
-  .kn-more-card-desc {
-    font-size: 9.5px;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   4. Strict Mutually Exclusive Viewport Visibility Rules
-   -------------------------------------------------------------------------- */
-
-/* Desktop & Tablet (>= 768px): Show Desktop Nav, Hide BubbleMenu Completely */
-@media (min-width: 768px) {
-  #knDesktopNav {
-    display: flex !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-  }
-
-  #knBubbleNav,
-  #knBubbleOverlay {
-    display: none !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-  }
-
-  body {
-    padding-top: 0 !important;
-  }
-}
-
-/* Mobile (< 768px): Show BubbleMenu, Hide Desktop Nav Completely */
-@media (max-width: 767px) {
-  #knDesktopNav {
-    display: none !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-  }
-
-  #knBubbleNav {
-    display: flex !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-  }
-
-  body {
-    padding-top: 56px !important;
-  }
-}
-
-/* Prefers Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  .kn-desktop-indicator,
-  .kn-more-card,
-  .kn-dots-icon {
-    transition: none !important;
-    transform: none !important;
-  }
-}
+/* ==========================================================================
+   KNOCKOUTNOTES — Responsive Apple iOS-Themed Navigation Architecture
+   Desktop & Tablet (>= 768px): Minimalist Frosted Glass Pill Capsule with Smooth Shifting Pill Indicator
+   Mobile (< 768px): Floating Glass Capsule Bar (Home, Notes, Calculator, Search, 3-Dot, Theme)
+                    + 2-Column Frosted Glass Overlay for Extended Sections
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Legacy Navigation Suppression
+   -------------------------------------------------------------------------- */
+body.kn-nav-mounted .site-hud,
+body.kn-nav-mounted .mobile-menu {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Scroll-Off Navigation Behavior (All pages except Home)
+   -------------------------------------------------------------------------- */
+body:not([data-content-page="home"]) .kn-desktop-nav,
+body:not([data-content-page="home"]) .bubble-menu {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease;
+  will-change: transform, opacity;
+}
+
+body:not([data-content-page="home"]).kn-nav-scrolled-off .kn-desktop-nav,
+body:not([data-content-page="home"]).kn-nav-scrolled-off .bubble-menu,
+body:not([data-content-page="home"]).kn-nav-autohidden .kn-desktop-nav,
+body:not([data-content-page="home"]).kn-nav-autohidden .bubble-menu {
+  transform: translateY(-160%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. Desktop Minimalist Navigation Bar (>= 768px)
+   -------------------------------------------------------------------------- */
+.kn-desktop-nav {
+  position: sticky;
+  top: 12px;
+  z-index: 1000;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.kn-desktop-nav-capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 12px 5px 10px;
+  border-radius: 9999px;
+  background: rgba(15, 18, 28, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45),
+              inset 0 1.5px 0 rgba(255, 255, 255, 0.22),
+              inset 0 -1.5px 2px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  pointer-events: auto;
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: 1240px;
+  box-sizing: border-box;
+}
+
+body:not(.dark) .kn-desktop-nav-capsule {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 16px 36px -4px rgba(45, 35, 25, 0.09),
+    0 4px 12px rgba(45, 35, 25, 0.04),
+    inset 0 2px 2px #ffffff,
+    inset 0 -1.5px 2px rgba(45, 35, 25, 0.02);
+}
+
+/* Brand Emblem & Wordmark */
+.kn-desktop-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  padding-right: 8px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+
+body:not(.dark) .kn-desktop-brand {
+  border-right-color: rgba(0, 0, 0, 0.1);
+}
+
+.kn-desktop-brand:hover {
+  opacity: 0.9;
+}
+
+.kn-desktop-logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: contain;
+  display: block;
+}
+
+.kn-desktop-brand-name {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Space Grotesk', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #f8fafc;
+  white-space: nowrap;
+}
+
+body:not(.dark) .kn-desktop-brand-name {
+  color: #0f172a;
+}
+
+.kn-desktop-brand-name span {
+  color: #38bdf8;
+}
+
+body:not(.dark) .kn-desktop-brand-name span {
+  color: #0284c7;
+}
+
+/* Desktop Horizontal Links Container with Sliding Indicator */
+.kn-desktop-links {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 3px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: nowrap;
+}
+
+body:not(.dark) .kn-desktop-links {
+  background: #f0ebe2;
+  border: 1px solid rgba(45, 35, 25, 0.06);
+  box-shadow: inset 0 1.5px 3px rgba(45, 35, 25, 0.06);
+}
+
+/* 3D Convex Glass Sliding Pill Indicator */
+.kn-desktop-indicator {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: calc(100% - 6px);
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.08) 55%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.6),
+              inset 0 -1px 2px rgba(0, 0, 0, 0.3),
+              0 4px 14px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+              width 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s ease;
+  opacity: 0;
+}
+
+body:not(.dark) .kn-desktop-indicator {
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 2px 8px rgba(45, 35, 25, 0.08),
+    inset 0 1.5px 1.5px #ffffff,
+    inset 0 -1px 2px rgba(45, 35, 25, 0.03);
+}
+
+.kn-desktop-link {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  padding: 6px 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Space Grotesk', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  border-radius: 9999px;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  line-height: 1.25;
+}
+
+body:not(.dark) .kn-desktop-link {
+  color: #64748b;
+}
+
+.kn-desktop-link:hover,
+.kn-desktop-link:focus-visible {
+  color: #ffffff;
+  outline: none;
+}
+
+body:not(.dark) .kn-desktop-link:hover,
+body:not(.dark) .kn-desktop-link:focus-visible {
+  color: #0f172a;
+}
+
+.kn-desktop-link.active {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+body:not(.dark) .kn-desktop-link.active {
+  color: #0284c7 !important;
+  font-weight: 700;
+}
+
+/* Desktop Utility Actions */
+.kn-desktop-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-left: 6px;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+}
+
+body:not(.dark) .kn-desktop-actions {
+  border-left-color: rgba(15, 23, 42, 0.10);
+}
+
+.kn-desktop-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: inherit;
+  padding: 0;
+}
+
+body:not(.dark) .kn-desktop-action-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.kn-desktop-action-btn:hover,
+.kn-desktop-action-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+
+body:not(.dark) .kn-desktop-action-btn:hover,
+body:not(.dark) .kn-desktop-action-btn:focus-visible {
+  background: #f8fafc;
+  color: #0284c7;
+  border-color: #0284c7;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+.kn-desktop-search-btn {
+  gap: 6px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 550;
+}
+
+.kn-desktop-search-btn .kn-icon-search {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.kn-desktop-search-btn kbd {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+body:not(.dark) .kn-desktop-search-btn kbd {
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.08);
+  border-color: rgba(2, 132, 199, 0.2);
+}
+
+.kn-desktop-theme-btn {
+  width: 32px;
+  height: 32px;
+  font-size: 13px;
+}
+
+/* Tablet sizing adjustments (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .kn-desktop-nav-capsule {
+    gap: 8px;
+    padding: 4px 10px 4px 8px;
+  }
+  .kn-desktop-brand-name {
+    font-size: 13px;
+  }
+  .kn-desktop-links {
+    gap: 1px;
+    padding: 2px;
+  }
+  .kn-desktop-link {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+  .kn-desktop-search-btn .kn-search-text {
+    display: none;
+  }
+  .kn-desktop-search-btn {
+    padding: 4px 8px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. Mobile-Only Navigation (< 768px): Floating Capsule Bar & 2-Col Drawer
+   -------------------------------------------------------------------------- */
+.bubble-menu {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: calc(10px + env(safe-area-inset-top, 0px));
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
+  pointer-events: none;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.bubble-bar-capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 6px 3px 5px;
+  border-radius: 9999px;
+  background: rgba(15, 18, 28, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35),
+              inset 0 1.5px 0 rgba(255, 255, 255, 0.22),
+              inset 0 -1.5px 2px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  pointer-events: auto;
+  max-width: calc(100vw - 16px);
+  box-sizing: border-box;
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body:not(.dark) .bubble-bar-capsule {
+  background: rgba(255, 255, 255, 0.90);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 14px 34px -4px rgba(45, 35, 25, 0.09),
+    0 4px 12px rgba(45, 35, 25, 0.04),
+    inset 0 2px 2px #ffffff,
+    inset 0 -1.5px 2px rgba(45, 35, 25, 0.02);
+}
+
+.bubble-logo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.bubble-logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Primary Mobile Links: Home, Notes, Calculator */
+.bubble-nav-links {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 3px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+body:not(.dark) .bubble-nav-links {
+  background: #f0ebe2;
+  border-color: rgba(45, 35, 25, 0.06);
+  box-shadow: inset 0 1.5px 3px rgba(45, 35, 25, 0.06);
+}
+
+/* 3D Convex Glass Sliding Pill Indicator for Mobile Main Menu (Home, Notes, Calc) */
+.kn-mobile-indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: calc(100% - 4px);
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.08) 55%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.6),
+              inset 0 -1px 2px rgba(0, 0, 0, 0.3),
+              0 4px 14px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+              width 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s ease;
+  opacity: 0;
+}
+
+body:not(.dark) .kn-mobile-indicator {
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 2px 8px rgba(45, 35, 25, 0.08),
+    inset 0 1.5px 1.5px #ffffff,
+    inset 0 -1px 2px rgba(45, 35, 25, 0.03);
+}
+
+.bubble-nav-link {
+  position: relative;
+  z-index: 2;
+  padding: 4px 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Space Grotesk', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  border-radius: 9999px;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  line-height: 1.25;
+}
+
+body:not(.dark) .bubble-nav-link {
+  color: #475569;
+}
+
+.bubble-nav-link:hover,
+.bubble-nav-link:active {
+  color: #ffffff;
+}
+
+body:not(.dark) .bubble-nav-link:hover,
+body:not(.dark) .bubble-nav-link:active {
+  color: #0f172a;
+}
+
+/* Active Pill Highlight - styled to let the moving 3D indicator glow through */
+.bubble-nav-link.active {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+body:not(.dark) .bubble-nav-link.active {
+  color: #0284c7 !important;
+  font-weight: 700;
+}
+
+/* Responsive labels - mobile primary bar always shows concise labels ("Study", "Calc") */
+.nav-label-short,
+.calc-label-short {
+  display: inline !important;
+}
+.nav-label-full,
+.calc-label-full {
+  display: none !important;
+}
+
+/* Mobile Actions: Search, 3-Dot More, User/Account, Theme */
+.bubble-nav-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding-left: 3px;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+}
+
+body:not(.dark) .bubble-nav-actions {
+  border-left-color: rgba(0, 0, 0, 0.1);
+}
+
+.bubble-action-btn {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+body:not(.dark) .bubble-action-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.bubble-action-btn:hover,
+.bubble-action-btn:active {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+body:not(.dark) .bubble-action-btn:hover,
+body:not(.dark) .bubble-action-btn:active {
+  background: #f8fafc;
+  color: #0284c7;
+  border-color: #0284c7;
+}
+
+/* 3-Dot Toggle Button & Active Dot Indicator */
+.kn-dots-icon {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bubble-action-btn.open .kn-dots-icon {
+  transform: rotate(90deg);
+}
+
+.kn-active-dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
+  display: none;
+}
+
+.kn-more-toggle-btn.has-active .kn-active-dot {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Fullscreen 2-Column Frosted Glass Overlay
+   -------------------------------------------------------------------------- */
+.bubble-menu-items {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  background: rgba(8, 12, 20, 0.82);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  z-index: 999;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: calc(72px + env(safe-area-inset-top, 0px)) 14px calc(36px + env(safe-area-inset-bottom, 0px));
+  box-sizing: border-box;
+}
+
+body:not(.dark) .bubble-menu-items {
+  background: rgba(234, 237, 242, 0.96);
+}
+
+.kn-more-container {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.kn-more-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.kn-more-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.kn-more-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+}
+
+body:not(.dark) .kn-more-title {
+  color: #0284c7;
+}
+
+.kn-more-sub {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+body:not(.dark) .kn-more-sub {
+  color: #64748b;
+}
+
+.kn-more-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+body:not(.dark) .kn-more-close-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #1e293b;
+}
+
+.kn-more-close-btn:hover,
+.kn-more-close-btn:active {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* 2-Column Grid for Mobile Drawer */
+.kn-more-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.kn-more-item {
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.kn-more-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 96px;
+  padding: 13px 13px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  text-decoration: none;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.2s ease;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body:not(.dark) .kn-more-card {
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 8px 24px -2px rgba(45, 35, 25, 0.07),
+    inset 0 1.5px 1.5px #ffffff,
+    inset 0 -1.5px 2px rgba(45, 35, 25, 0.03);
+}
+
+.kn-more-card:hover,
+.kn-more-card:active {
+  transform: translateY(-2px) scale(1.02);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+body:not(.dark) .kn-more-card:hover,
+body:not(.dark) .kn-more-card:active {
+  background: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow:
+    0 16px 32px -4px rgba(45, 35, 25, 0.12),
+    inset 0 2px 2px #ffffff;
+}
+
+.kn-more-card.active-route {
+  border-color: #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.14) !important;
+  box-shadow: 0 0 0 1.5px #38bdf8, 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+body:not(.dark) .kn-more-card.active-route {
+  border-color: #0284c7 !important;
+  background: rgba(2, 132, 199, 0.1) !important;
+  box-shadow: 0 0 0 1.5px #0284c7, 0 6px 18px rgba(2, 132, 199, 0.15) !important;
+}
+
+.kn-more-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.kn-more-card-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.kn-more-card-arrow {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+body:not(.dark) .kn-more-card-arrow {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.kn-more-card:hover .kn-more-card-arrow {
+  transform: translateX(2px);
+  color: #38bdf8;
+}
+
+body:not(.dark) .kn-more-card:hover .kn-more-card-arrow {
+  color: #0284c7;
+}
+
+.kn-more-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.kn-more-card-label {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Space Grotesk', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 650;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+body:not(.dark) .kn-more-card-label {
+  color: #0f172a;
+}
+
+.kn-more-card-desc {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.25;
+}
+
+body:not(.dark) .kn-more-card-desc {
+  color: #64748b;
+}
+
+.bubble-menu-items .pill-close-hint {
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 18px;
+}
+
+body:not(.dark) .bubble-menu-items .pill-close-hint {
+  color: #64748b;
+}
+
+/* Compact mobile screens (<= 440px): show short labels ("Study", "Calc") */
+@media (max-width: 440px) {
+  .nav-label-full,
+  .calc-label-full {
+    display: none;
+  }
+  .nav-label-short,
+  .calc-label-short {
+    display: inline;
+  }
+  .bubble-nav-link {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}
+
+/* Narrow mobile screens (< 360px down to 320px) */
+@media (max-width: 360px) {
+  .bubble-menu {
+    padding: 0 4px;
+  }
+  .bubble-bar-capsule {
+    gap: 3px;
+    padding: 3px 5px 3px 4px;
+  }
+  .bubble-logo {
+    width: 22px;
+    height: 22px;
+  }
+  .bubble-nav-links {
+    gap: 1px;
+    padding: 2px;
+  }
+  .bubble-nav-link {
+    padding: 4px 6px;
+    font-size: 11px;
+  }
+  .nav-label-full,
+  .calc-label-full {
+    display: none;
+  }
+  .nav-label-short,
+  .calc-label-short {
+    display: inline;
+  }
+  .bubble-action-btn,
+  .kn-bubble-user-btn {
+    width: 27px;
+    height: 27px;
+    font-size: 11px;
+  }
+  .bubble-nav-actions {
+    gap: 2.5px;
+    padding-left: 2.5px;
+  }
+  .kn-dots-icon {
+    font-size: 13px;
+  }
+  .kn-more-card {
+    min-height: 84px;
+    padding: 8px 8px;
+  }
+  .kn-more-card-icon {
+    font-size: 18px;
+  }
+  .kn-more-card-label {
+    font-size: 11.5px;
+  }
+  .kn-more-card-desc {
+    font-size: 9.5px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. Strict Mutually Exclusive Viewport Visibility Rules
+   -------------------------------------------------------------------------- */
+
+/* Desktop & Tablet (>= 768px): Show Desktop Nav, Hide BubbleMenu Completely */
+@media (min-width: 768px) {
+  #knDesktopNav {
+    display: flex !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  #knBubbleNav,
+  #knBubbleOverlay {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  body {
+    padding-top: 0 !important;
+  }
+}
+
+/* Mobile (< 768px): Show BubbleMenu, Hide Desktop Nav Completely */
+@media (max-width: 767px) {
+  #knDesktopNav {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  #knBubbleNav {
+    display: flex !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  body {
+    padding-top: 56px !important;
+  }
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .kn-desktop-indicator,
+  .kn-more-card,
+  .kn-dots-icon {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+
+/* ==========================================================================
+   Desktop Critical Care Mega-Menu
+   ========================================================================== */
+.kn-desktop-chevron {
+  display: inline-block;
+  font-size: 10px;
+  margin-left: 2px;
+  opacity: 0.7;
+  transition: transform 0.2s ease;
+}
+
+.kn-desktop-link.kn-has-dropdown[aria-expanded="true"] .kn-desktop-chevron {
+  transform: rotate(180deg);
+}
+
+.kn-cc-mega-menu {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  width: min(940px, 95vw);
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  padding: 22px 24px;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+  box-sizing: border-box;
+}
+
+/* Invisible hover buffer between desktop link and mega menu */
+.kn-cc-mega-menu::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+}
+
+.kn-cc-mega-menu.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+body:not(.dark) .kn-cc-mega-menu {
+  background: rgba(255, 255, 255, 0.97);
+  border-color: rgba(2, 132, 199, 0.22);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(2, 132, 199, 0.08);
+}
+
+.kn-cc-mega-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+}
+
+body:not(.dark) .kn-cc-mega-header {
+  border-bottom-color: rgba(0, 0, 0, 0.07);
+}
+
+.kn-cc-mega-kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.06em;
+}
+
+body:not(.dark) .kn-cc-mega-kicker {
+  color: #0284c7;
+}
+
+.kn-cc-kicker-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 10px #38bdf8;
+}
+
+.kn-cc-mega-all-link {
+  font-size: 12px;
+  font-weight: 700;
+  color: #38bdf8;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+body:not(.dark) .kn-cc-mega-all-link {
+  color: #0284c7;
+}
+
+.kn-cc-mega-all-link:hover {
+  opacity: 0.85;
+  transform: translateX(2px);
+}
+
+.kn-cc-mega-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.kn-cc-col-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+body:not(.dark) .kn-cc-col-title {
+  color: #0f172a;
+}
+
+.kn-cc-col-icon {
+  font-size: 15px;
+}
+
+.kn-cc-col-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kn-cc-col-list li a {
+  display: block;
+  font-size: 13px;
+  color: #94a3b8;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+body:not(.dark) .kn-cc-col-list li a {
+  color: #475569;
+}
+
+.kn-cc-col-list li a:hover,
+.kn-cc-col-list li a:focus {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  outline: none;
+}
+
+body:not(.dark) .kn-cc-col-list li a:hover,
+body:not(.dark) .kn-cc-col-list li a:focus {
+  background: rgba(2, 132, 199, 0.08);
+  color: #0284c7;
+}
+
+.kn-cc-featured-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.kn-cc-feat-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+body:not(.dark) .kn-cc-feat-card {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.kn-cc-feat-card:hover,
+.kn-cc-feat-card:focus {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.35);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+body:not(.dark) .kn-cc-feat-card:hover,
+body:not(.dark) .kn-cc-feat-card:focus {
+  background: rgba(2, 132, 199, 0.08);
+  border-color: rgba(2, 132, 199, 0.35);
+}
+
+.kn-cc-feat-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.kn-cc-feat-card strong {
+  display: block;
+  font-size: 12.5px;
+  color: #f8fafc;
+  line-height: 1.25;
+}
+
+body:not(.dark) .kn-cc-feat-card strong {
+  color: #0f172a;
+}
+
+.kn-cc-feat-card p {
+  margin: 2px 0 0 0;
+  font-size: 11px;
+  color: #94a3b8;
+  line-height: 1.3;
+}
+
+body:not(.dark) .kn-cc-feat-card p {
+  color: #64748b;
+}
+
+@media (max-width: 960px) {
+  .kn-cc-mega-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
