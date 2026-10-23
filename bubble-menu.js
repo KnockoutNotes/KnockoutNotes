@@ -504,24 +504,36 @@
           return;
         }
 
-        // On study.html: Intercept Study Mode, Drugs, and Critical Care to open Chapters box immediately
-        if (curPath === "study.html" && window.StudyRonDesign && typeof window.StudyRonDesign.openChaptersModal === "function") {
+        // On study.html: Intercept Study Mode, Drugs, and Critical Care to switch domain & overview cleanly
+        if (curPath === "study.html" && window.StudyRonDesign) {
           if (href === "drugs.html" || href.indexOf("domain=drugs") !== -1) {
             e.preventDefault();
             setMobileMenuState(false);
-            window.StudyRonDesign.openChaptersModal("drugs");
+            if (typeof window.StudyRonDesign.switchDomain === "function") {
+              window.StudyRonDesign.switchDomain("drugs");
+            } else if (typeof window.StudyRonDesign.openChaptersModal === "function") {
+              window.StudyRonDesign.openChaptersModal("drugs");
+            }
             return;
           }
           if (href === "study.html" || href.indexOf("domain=anaesthesia") !== -1) {
             e.preventDefault();
             setMobileMenuState(false);
-            window.StudyRonDesign.openChaptersModal("anaesthesia");
+            if (typeof window.StudyRonDesign.switchDomain === "function") {
+              window.StudyRonDesign.switchDomain("anaesthesia");
+            } else if (typeof window.StudyRonDesign.openChaptersModal === "function") {
+              window.StudyRonDesign.openChaptersModal("anaesthesia");
+            }
             return;
           }
           if (href === "critical-care.html" || href.indexOf("domain=critical") !== -1) {
             e.preventDefault();
             setMobileMenuState(false);
-            window.StudyRonDesign.openChaptersModal("critical");
+            if (typeof window.StudyRonDesign.switchDomain === "function") {
+              window.StudyRonDesign.switchDomain("critical");
+            } else if (typeof window.StudyRonDesign.openChaptersModal === "function") {
+              window.StudyRonDesign.openChaptersModal("critical");
+            }
             return;
           }
         }
@@ -531,14 +543,18 @@
       });
     });
 
-    // Primary mobile bar: tapping active Study Mode link on study.html opens chapters box
+    // Primary mobile bar: tapping active Study Mode link on study.html resets to Anaesthesia domain overview
     nav.querySelectorAll(".bubble-nav-link").forEach(function (link) {
       link.addEventListener("click", function (e) {
         var href = link.getAttribute("href");
         var curPath = getCurrentPath();
-        if (curPath === "study.html" && href === "study.html" && window.StudyRonDesign && typeof window.StudyRonDesign.openChaptersModal === "function") {
+        if (curPath === "study.html" && href === "study.html" && window.StudyRonDesign) {
           e.preventDefault();
-          window.StudyRonDesign.openChaptersModal();
+          if (typeof window.StudyRonDesign.switchDomain === "function") {
+            window.StudyRonDesign.switchDomain("anaesthesia");
+          } else if (typeof window.StudyRonDesign.openChaptersModal === "function") {
+            window.StudyRonDesign.openChaptersModal();
+          }
         }
       });
     });

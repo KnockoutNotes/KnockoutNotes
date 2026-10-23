@@ -20466,3 +20466,16 @@ window.KN_STUDY = {
     }
   ]
 };
+// Signal deterministic study data readiness for interactive controllers
+try {
+  window.__KN_STUDY_DATA_READY = true;
+  if (typeof window.dispatchEvent === "function") {
+    window.dispatchEvent(new CustomEvent("kn:study-data-ready", {
+      detail: {
+        categories: (window.KN_STUDY && window.KN_STUDY.categories ? window.KN_STUDY.categories.length : 0),
+        topics: (window.KN_STUDY && window.KN_STUDY.topics ? window.KN_STUDY.topics.length : 0),
+        drugs: (window.KN_STUDY && window.KN_STUDY.drugs ? window.KN_STUDY.drugs.length : 0)
+      }
+    }));
+  }
+} catch (_) {}

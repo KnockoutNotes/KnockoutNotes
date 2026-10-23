@@ -74,6 +74,99 @@
     return res;
   }
 
+  const CATEGORY_SLUG_ALIASES = {
+    "antimicrobial": "antimicrobials",
+    "antimicrobials": "antimicrobials",
+    "antimicrobial-therapy": "antimicrobials",
+    "antibiotic": "antimicrobials",
+    "antibiotics": "antimicrobials",
+    "antiarrhythmic": "antiarrhythmics",
+    "antiarrhythmics": "antiarrhythmics",
+    "cardiac": "cardiac",
+    "cardiac-drug": "cardiac",
+    "cardiac-drugs": "cardiac",
+    "cardiac_drugs": "cardiac",
+    "inotrope": "vasopressors",
+    "inotropes": "vasopressors",
+    "vasopressor": "vasopressors",
+    "vasopressors": "vasopressors",
+    "inotropes-and-vasopressors": "vasopressors",
+    "inotropes-vasopressors": "vasopressors",
+    "induction": "induction",
+    "induction-agent": "induction",
+    "induction-agents": "induction",
+    "intravenous-induction-agents": "induction",
+    "iv-induction-agents": "induction",
+    "relaxant": "relaxants",
+    "relaxants": "relaxants",
+    "neuromuscular-blocker": "relaxants",
+    "neuromuscular-blockers": "relaxants",
+    "muscle-relaxant": "relaxants",
+    "muscle-relaxants": "relaxants",
+    "reversal": "reversal",
+    "reversals": "reversal",
+    "reversal-agent": "reversal",
+    "reversal-agents": "reversal",
+    "opioid": "opioids",
+    "opioids": "opioids",
+    "opioid-agent": "opioids",
+    "opioid-agents": "opioids",
+    "nsaid": "nsaids",
+    "nsaids": "nsaids",
+    "non-opioid": "nsaids",
+    "non-opioids": "nsaids",
+    "non-opioid-analgesics": "nsaids",
+    "antihypertensive": "antihypertensives",
+    "antihypertensives": "antihypertensives",
+    "alpha2": "alpha2",
+    "alpha-2": "alpha2",
+    "sedative": "alpha2",
+    "sedatives": "alpha2",
+    "local": "local",
+    "local-anaesthetic": "local",
+    "local-anaesthetics": "local",
+    "local-anesthetic": "local",
+    "local-anesthetics": "local",
+    "steroid": "steroids",
+    "steroids": "steroids",
+    "corticosteroid": "steroids",
+    "corticosteroids": "steroids",
+    "antidiabetic": "antidiabetics",
+    "antidiabetics": "antidiabetics",
+    "anti-diabetic": "antidiabetics",
+    "anti-diabetics": "antidiabetics",
+    "pregnancy": "pregnancy",
+    "obstetric-drugs": "pregnancy",
+    "obstetric-and-pediatric-drugs": "pregnancy",
+    "emergency-drugs": "miscellaneous",
+    "resuscitation-drugs": "miscellaneous",
+    "miscellaneous": "miscellaneous"
+  };
+
+  function normalizeCategorySlug(raw) {
+    if (!raw) return "all";
+    const cleaned = String(raw).trim().toLowerCase()
+      .replace(/%20/g, "-")
+      .replace(/&/g, "and")
+      .replace(/[_\s]+/g, "-")
+      .replace(/-+/g, "-");
+    if (CATEGORY_SLUG_ALIASES[cleaned]) {
+      return CATEGORY_SLUG_ALIASES[cleaned];
+    }
+    const noHyphen = cleaned.replace(/-/g, "");
+    if (CATEGORY_SLUG_ALIASES[noHyphen]) {
+      return CATEGORY_SLUG_ALIASES[noHyphen];
+    }
+    return cleaned;
+  }
+
+  function isDataReady() {
+    return !!(window.KN_STUDY && (
+      (Array.isArray(window.KN_STUDY.topics) && window.KN_STUDY.topics.length > 0) ||
+      (Array.isArray(window.KN_STUDY.drugs) && window.KN_STUDY.drugs.length > 0)
+    ));
+  }
+
   function getData() {
     return window.KN_STUDY || { categories: [], topics: [], drugs: [] };
   }
@@ -997,9 +1090,7 @@
     } catch (e) {}
 
     renderRonBoard();
-
-    const mount = document.getElementById("ronStudyApp");
-    if (mount) mount.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Preserve scroll context: do not jump or scroll mount on back to category
   }
 
   function renderRonBoard() {
@@ -1167,18 +1258,18 @@
       if (cls.includes("class ii") || cls.includes("class 2")) return "CLASS II ANTIARRHYTHMIC";
       if (cls.includes("class iii") || cls.includes("class 3")) return "CLASS III ANTIARRHYTHMIC";
       if (cls.includes("class iv") || cls.includes("class 4")) return "CLASS IV ANTIARRHYTHMIC";
-      if (cls.includes("purinergic") || cls.includes("nucleoside") || (it.name || "").toLowerCase().includes("adenosine")) return "CLASS V • PURINERGIC";
+      if (cls.includes("purinergic") || cls.includes("nucleoside") || (item.name || "").toLowerCase().includes("adenosine")) return "CLASS V • PURINERGIC";
       return "ANTIARRHYTHMIC";
     }
 
     if (cat === "cardiac") {
-      if (cls.includes("hcn") || (it.name || "").toLowerCase().includes("ivabradine")) return "HCN CHANNEL BLOCKER";
-      if (cls.includes("loop diuretic") || (it.name || "").toLowerCase().includes("furosemide")) return "LOOP DIURETIC";
-      if (cls.includes("k-atp") || (it.name || "").toLowerCase().includes("nicorandil")) return "K-ATP OPENER / NITRATE";
-      if (cls.includes("nitrate") || (it.name || "").toLowerCase().includes("isosorbide") || (it.name || "").toLowerCase().includes("nitroglycerin") || (it.name || "").toLowerCase().includes("gtn")) return "ORGANIC NITRATE";
-      if (cls.includes("glycoside") || (it.name || "").toLowerCase().includes("digoxin")) return "CARDIAC GLYCOSIDE";
-      if (cls.includes("antiplatelet") || (it.name || "").toLowerCase().includes("antiplatelet")) return "ANTIPLATELET AGENT";
-      if (cls.includes("arni") || (it.name || "").toLowerCase().includes("sacubitril")) return "ARNI / NEPRILYSIN INHIBITOR";
+      if (cls.includes("hcn") || (item.name || "").toLowerCase().includes("ivabradine")) return "HCN CHANNEL BLOCKER";
+      if (cls.includes("loop diuretic") || (item.name || "").toLowerCase().includes("furosemide")) return "LOOP DIURETIC";
+      if (cls.includes("k-atp") || (item.name || "").toLowerCase().includes("nicorandil")) return "K-ATP OPENER / NITRATE";
+      if (cls.includes("nitrate") || (item.name || "").toLowerCase().includes("isosorbide") || (item.name || "").toLowerCase().includes("nitroglycerin") || (item.name || "").toLowerCase().includes("gtn")) return "ORGANIC NITRATE";
+      if (cls.includes("glycoside") || (item.name || "").toLowerCase().includes("digoxin")) return "CARDIAC GLYCOSIDE";
+      if (cls.includes("antiplatelet") || (item.name || "").toLowerCase().includes("antiplatelet")) return "ANTIPLATELET AGENT";
+      if (cls.includes("arni") || (item.name || "").toLowerCase().includes("sacubitril")) return "ARNI / NEPRILYSIN INHIBITOR";
       return "CARDIAC DRUG";
     }
 
@@ -1705,9 +1796,7 @@
         </div>
       </div>
 
-      <!-- Quick Topics Modal -->
-      ${renderTopicsModal()}
-      ${renderChaptersModal()}
+      <!-- Modals are mounted lazily on demand -->
     `;
 
     mountAllCard3D(mount);
@@ -1988,9 +2077,7 @@
         </div>
       </div>
 
-      <!-- Quick Topics Modal -->
-      ${renderTopicsModal()}
-      ${renderChaptersModal()}
+      <!-- Modals are mounted lazily on demand -->
     `;
 
     // Mount 3D molecule viewers if present
@@ -2761,15 +2848,9 @@
     }).join("");
   }
 
-  function openChaptersModal(domainId) {
+  function openChaptersModal(domainId, catId) {
     activeModalDomain = domainId || activeDomain || "anaesthesia";
-    let modal = document.getElementById("ronChaptersModal");
-    if (!modal) {
-      const tempDiv = document.createElement("div");
-      tempDiv.innerHTML = renderChaptersModal();
-      modal = tempDiv.firstElementChild;
-      document.body.appendChild(modal);
-    }
+    const modal = ensureChaptersModal();
 
     const input = document.getElementById("ronChaptersFilterInput");
     if (input) {
@@ -2782,7 +2863,18 @@
     modal.classList.add("ron-modal-open");
     document.body.classList.add("ron-chapters-modal-locked");
 
-    if (input) {
+    if (catId && catId !== "all") {
+      setTimeout(() => {
+        const grid = document.getElementById("ronChaptersGrid");
+        if (grid) {
+          const targetCard = grid.querySelector(`[data-chapter-cat="${catId}"]`);
+          if (targetCard) {
+            targetCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            targetCard.classList.add("active");
+          }
+        }
+      }, 80);
+    } else if (input) {
       setTimeout(() => input.focus(), 80);
     }
   }
@@ -2810,6 +2902,30 @@
     }
   }
 
+  function ensureChaptersModal() {
+    let modal = document.getElementById("ronChaptersModal");
+    if (!modal) {
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = renderChaptersModal();
+      modal = tempDiv.firstElementChild;
+      const stage = document.getElementById("stStage") || document.body;
+      stage.appendChild(modal);
+    }
+    return modal;
+  }
+
+  function ensureTopicsModal() {
+    let modal = document.getElementById("ronTopicsModal");
+    if (!modal) {
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = renderTopicsModal();
+      modal = tempDiv.firstElementChild;
+      const stage = document.getElementById("stStage") || document.body;
+      stage.appendChild(modal);
+    }
+    return modal;
+  }
+
   function closeChaptersModal() {
     const modal = document.getElementById("ronChaptersModal");
     if (modal) {
@@ -2817,6 +2933,25 @@
       modal.classList.remove("ron-modal-open");
     }
     document.body.classList.remove("ron-chapters-modal-locked");
+  }
+
+  function openTopicsModal() {
+    const modal = ensureTopicsModal();
+    modal.hidden = false;
+    modal.classList.add("ron-modal-open");
+    const input = document.getElementById("ronSheetSearchInput");
+    if (input) {
+      input.value = "";
+      setTimeout(() => input.focus(), 80);
+    }
+  }
+
+  function closeTopicsModal() {
+    const modal = document.getElementById("ronTopicsModal");
+    if (modal) {
+      modal.hidden = true;
+      modal.classList.remove("ron-modal-open");
+    }
   }
 
 function renderTopicsModal() {
@@ -2868,10 +3003,194 @@ function renderTopicsModal() {
     `).join("");
   }
 
+
+  // ==========================================================================
+  // CENTRALIZED DOMAIN & CATEGORY SELECTION CONTROLLER
+  // ==========================================================================
+  function scrollCategoryPillIntoView(domainId, catId) {
+    const container = document.getElementById("ronCategorySingleRow");
+    if (!container) return;
+
+    container.querySelectorAll(".ron-nav-pill").forEach((p) => {
+      const match = p.getAttribute("data-ron-cat") === catId && p.getAttribute("data-ron-domain") === domainId;
+      p.classList.toggle("active", match);
+      p.setAttribute("aria-selected", match ? "true" : "false");
+    });
+
+    const activeNode = container.querySelector(`[data-ron-cat="${catId}"][data-ron-domain="${domainId}"]`);
+    if (!activeNode) return;
+
+    const cRect = container.getBoundingClientRect();
+    const nRect = activeNode.getBoundingClientRect();
+
+    const isOffLeft = nRect.left < cRect.left;
+    const isOffRight = nRect.right > cRect.right;
+
+    if (isOffLeft) {
+      container.scrollTo({ left: container.scrollLeft + (nRect.left - cRect.left) - 16, behavior: "auto" });
+    } else if (isOffRight) {
+      container.scrollTo({ left: container.scrollLeft + (nRect.right - cRect.right) + 16, behavior: "auto" });
+    }
+  }
+
+  function selectDomainTab(targetDomain) {
+    if (!DOMAIN_DEFS[targetDomain]) return;
+    triggerHapticFeedback();
+    if (targetDomain !== activeDomain || activeCat !== "all" || activeItem !== null || searchFilter) {
+      activeDomain = targetDomain;
+      activeCat = "all";
+      activeItem = null;
+      searchFilter = "";
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("item");
+        url.searchParams.delete("topic");
+        url.searchParams.set("domain", activeDomain);
+        url.searchParams.delete("cat");
+        window.history.pushState({ domain: activeDomain, cat: "all" }, "", url.toString());
+      } catch (err) {}
+      renderRonBoard();
+      scrollCategoryPillIntoView(activeDomain, "all");
+    }
+  }
+
+  function selectCategoryPill(domain, cat) {
+    if (!DOMAIN_DEFS[domain]) return;
+    triggerHapticFeedback();
+    activeDomain = domain;
+    activeCat = cat || "all";
+    activeItem = null;
+    searchFilter = "";
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("item");
+      url.searchParams.delete("topic");
+      url.searchParams.set("domain", activeDomain);
+      if (activeCat !== "all") url.searchParams.set("cat", activeCat);
+      else url.searchParams.delete("cat");
+      window.history.pushState({ domain: activeDomain, cat: activeCat }, "", url.toString());
+    } catch (err) {}
+    renderRonBoard();
+    scrollCategoryPillIntoView(domain, activeCat);
+  }
+
+  function switchDomain(domainId, catId) {
+    if (catId && catId !== "all") {
+      selectCategoryPill(domainId, catId);
+    } else {
+      selectDomainTab(domainId);
+    }
+  }
+
+  // ==========================================================================
+  // MOBILE SINGLE-TAP / DOUBLE-TAP & SWIPE GESTURE CONTROLLER
+  // ==========================================================================
+  const DOUBLE_TAP_INTERVAL_MS = 380;
+  const SWIPE_THRESHOLD_PX = 8;
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchStartTime = 0;
+  let isSwiping = false;
+  let touchTarget = null;
+  let lastTouchHandledTime = 0;
+
+  let lastTapKey = null;
+  let lastTapTime = 0;
+
+  function getCategoryControlFromEvent(target) {
+    if (!target) return null;
+    const chaptersModal = document.getElementById("ronChaptersModal");
+    if (chaptersModal && !chaptersModal.hidden && chaptersModal.classList.contains("ron-modal-open")) {
+      return null;
+    }
+    const topicsModal = document.getElementById("ronTopicsModal");
+    if (topicsModal && !topicsModal.hidden) {
+      return null;
+    }
+
+    const catPill = target.closest("[data-ron-cat]");
+    if (catPill) {
+      const cat = catPill.getAttribute("data-ron-cat");
+      const domain = catPill.getAttribute("data-ron-domain") || activeDomain;
+      return { type: "cat", domain, cat, key: "cat:" + domain + ":" + cat, el: catPill };
+    }
+
+    const domainTab = target.closest("[data-ron-domain]:not([data-ron-cat])");
+    if (domainTab) {
+      const domain = domainTab.getAttribute("data-ron-domain");
+      return { type: "domain", domain, cat: "all", key: "domain:" + domain, el: domainTab };
+    }
+
+    return null;
+  }
+
+  document.addEventListener("touchstart", (e) => {
+    if (e.touches.length !== 1) {
+      isSwiping = true;
+      return;
+    }
+    const control = getCategoryControlFromEvent(e.target);
+    if (!control) {
+      touchTarget = null;
+      return;
+    }
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchStartTime = Date.now();
+    isSwiping = false;
+    touchTarget = control;
+  }, { passive: true });
+
+  document.addEventListener("touchmove", (e) => {
+    if (!touchTarget || isSwiping) return;
+    const dx = Math.abs(e.touches[0].clientX - touchStartX);
+    const dy = Math.abs(e.touches[0].clientY - touchStartY);
+    if (dx > SWIPE_THRESHOLD_PX || dy > SWIPE_THRESHOLD_PX) {
+      isSwiping = true;
+    }
+  }, { passive: true });
+
+  document.addEventListener("touchcancel", () => {
+    isSwiping = true;
+    touchTarget = null;
+  }, { passive: true });
+
+  document.addEventListener("touchend", (e) => {
+    if (!touchTarget) return;
+    const control = touchTarget;
+    touchTarget = null;
+
+    if (isSwiping) {
+      return; // Swiping across strip or scrolling page
+    }
+
+    if (Date.now() - touchStartTime > 500) {
+      return; // Long press/stall
+    }
+
+    lastTouchHandledTime = Date.now();
+    if (e.cancelable) {
+      e.preventDefault();
+    }
+
+    if (control.type === "cat") {
+      selectCategoryPill(control.domain, control.cat);
+    } else {
+      selectDomainTab(control.domain);
+    }
+  }, { passive: false });
+
   // ==========================================================================
   // GLOBAL CLICK LISTENER DELEGATION
   // ==========================================================================
   document.addEventListener("click", (e) => {
+    // Suppress synthetic clicks following a touch interaction on category controls
+    if (Date.now() - lastTouchHandledTime < 450) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
     // 00a. Clinical Figure / Flowchart Zoom Trigger (Top priority: clicking any image opens dock!)
     const figTrigger = e.target.closest(
       "[data-zoom-src], .ron-figure-wrap-float, .ron-figure-wrap-full, .ron-figure-img, figure, .st-diagram-wrap, .st-section-img, .ron-prose img, #ronMainContentBox img"
@@ -3044,34 +3363,14 @@ function renderTopicsModal() {
       return;
     }
 
-    // 5. Primary Domain Tab clicked -> Switch Domain & Open Chapters Box on Mobile
+    // 5. Primary Domain Tab clicked (Desktop mouse click fallback)
     const domainTab = e.target.closest("[data-ron-domain]:not([data-ron-cat])");
     if (domainTab) {
       e.preventDefault();
       e.stopPropagation();
       const targetDomain = domainTab.getAttribute("data-ron-domain");
       if (targetDomain) {
-        triggerHapticFeedback();
-        const isMobile = window.innerWidth <= 820 || ("ontouchstart" in window);
-        if (targetDomain !== activeDomain) {
-          activeDomain = targetDomain;
-          activeCat = "all";
-          activeItem = null;
-          searchFilter = "";
-          try {
-            const url = new URL(window.location.href);
-            url.searchParams.delete("item");
-            url.searchParams.delete("topic");
-            url.searchParams.set("domain", activeDomain);
-            url.searchParams.delete("cat");
-            window.history.pushState({ domain: activeDomain, cat: "all" }, "", url.toString());
-          } catch (err) {}
-          renderRonBoard();
-        }
-        // In mobile view (or when tapping domain tab): open chapters modal with hyperlinks!
-        if (isMobile) {
-          openChaptersModal(targetDomain);
-        }
+        selectDomainTab(targetDomain);
       }
       return;
     }
@@ -3115,31 +3414,11 @@ function renderTopicsModal() {
       const targetDom = chapLink.getAttribute("data-chapter-domain") || activeDomain;
       const targetCat = chapLink.getAttribute("data-chapter-cat") || "all";
       closeChaptersModal();
-      activeDomain = targetDom;
-      activeCat = targetCat;
-      activeItem = null;
-      searchFilter = "";
-      try {
-        const url = new URL(window.location.href);
-        url.searchParams.delete("item");
-        url.searchParams.delete("topic");
-        url.searchParams.set("domain", activeDomain);
-        if (activeCat !== "all") url.searchParams.set("cat", activeCat);
-        else url.searchParams.delete("cat");
-        url.searchParams.delete("chapters");
-        url.searchParams.delete("modal");
-        url.searchParams.delete("openChapters");
-        window.history.pushState({ domain: activeDomain, cat: activeCat }, "", url.toString());
-      } catch (err) {}
-      renderRonBoard();
-      const activeNode = document.querySelector(`[data-ron-cat="${activeCat}"][data-ron-domain="${activeDomain}"]`);
-      if (activeNode) {
-        activeNode.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-      }
+      selectCategoryPill(targetDom, targetCat);
       return;
     }
 
-    // 6. Secondary Category Pill clicked -> Switch Category
+    // 6. Secondary Category Pill clicked (Desktop mouse click fallback)
     const catPill = e.target.closest("[data-ron-cat]");
     if (catPill) {
       e.preventDefault();
@@ -3147,25 +3426,7 @@ function renderTopicsModal() {
       const cat = catPill.getAttribute("data-ron-cat");
       const domain = catPill.getAttribute("data-ron-domain") || activeDomain;
       if (cat) {
-        triggerHapticFeedback();
-        activeDomain = domain;
-        activeCat = cat;
-        activeItem = null;
-        searchFilter = "";
-        try {
-          const url = new URL(window.location.href);
-          url.searchParams.delete("item");
-          url.searchParams.delete("topic");
-          url.searchParams.set("domain", activeDomain);
-          if (cat !== "all") url.searchParams.set("cat", cat);
-          else url.searchParams.delete("cat");
-          window.history.pushState({ domain: activeDomain, cat }, "", url.toString());
-        } catch (err) {}
-        renderRonBoard();
-        const activeNode = document.querySelector(`[data-ron-cat="${cat}"][data-ron-domain="${domain}"]`);
-        if (activeNode) {
-          activeNode.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-        }
+        selectCategoryPill(domain, cat);
       }
       return;
     }
@@ -3174,19 +3435,13 @@ function renderTopicsModal() {
     if (e.target.closest("#ronPlusBtn, #ronOpenAllTopicsBtn")) {
       e.preventDefault();
       e.stopPropagation();
-      const modal = document.getElementById("ronTopicsModal");
-      if (modal) {
-        modal.hidden = false;
-        const input = document.getElementById("ronSheetSearchInput");
-        if (input) input.focus();
-      }
+      openTopicsModal();
       return;
     }
 
     // 7. Modal Close Trigger
     if (e.target.closest("#ronCloseModalBtn") || (e.target.id === "ronTopicsModal")) {
-      const modal = document.getElementById("ronTopicsModal");
-      if (modal) modal.hidden = true;
+      closeTopicsModal();
       return;
     }
 
@@ -3563,8 +3818,11 @@ function renderTopicsModal() {
     renderRonBoard();
   };
   window.StudyRonDesign = {
+    switchDomain: switchDomain,
     openChaptersModal: openChaptersModal,
     closeChaptersModal: closeChaptersModal,
+    openTopicsModal: openTopicsModal,
+    closeTopicsModal: closeTopicsModal,
     openTopic: openTopic,
     backToCategory: backToCategory,
     selectCategory: function (catId) {
@@ -3575,17 +3833,77 @@ function renderTopicsModal() {
       renderRonBoard();
     },
     renderRonBoard: renderRonBoard,
-    getData: getData
+    getData: getData,
+    isDataReady: isDataReady,
+    normalizeCategorySlug: normalizeCategorySlug
   };
+
+  // Deterministic asynchronous data initialization
+  let ronDesignBooted = false;
+
+  function bootRonDesign() {
+    if (ronDesignBooted) return;
+    ronDesignBooted = true;
+    renderRonBoard();
+    initBackToTop();
+  }
+
+  function handleDataReadyOrWait() {
+    if (isDataReady()) {
+      bootRonDesign();
+      return;
+    }
+
+    // Show clean loading indicator in mount container while data script parses
+    const mount = document.getElementById("ronStudyApp");
+    if (mount && !mount.querySelector(".ron-board-wrap")) {
+      mount.innerHTML = `
+        <div class="ron-data-loading-card" style="padding:60px 20px; text-align:center; color:var(--ron-text-empty, #94a3b8);">
+          <div style="font-size:32px; margin-bottom:12px; display:inline-block;">⏳</div>
+          <p style="font-size:16px; font-weight:600; margin:0;">Loading clinical knowledge base...</p>
+        </div>
+      `;
+    }
+
+    const onDataReady = () => {
+      window.removeEventListener("kn:study-data-ready", onDataReady);
+      bootRonDesign();
+    };
+    window.addEventListener("kn:study-data-ready", onDataReady, { once: true });
+
+    // Fallback timer polling up to 5 seconds
+    let attempts = 0;
+    const interval = setInterval(() => {
+      attempts++;
+      if (isDataReady()) {
+        clearInterval(interval);
+        window.removeEventListener("kn:study-data-ready", onDataReady);
+        bootRonDesign();
+      } else if (attempts >= 50) {
+        clearInterval(interval);
+        if (!ronDesignBooted) {
+          const m = document.getElementById("ronStudyApp");
+          if (m && !m.querySelector(".ron-board-wrap")) {
+            m.innerHTML = `
+              <div class="ron-data-error-card" style="padding:48px 20px; text-align:center; color:var(--ron-text-empty, #94a3b8);">
+                <div style="font-size:32px; margin-bottom:12px;">⚠️</div>
+                <p style="font-size:16px; font-weight:700; color:#f87171; margin:0 0 8px;">Unable to load clinical study library</p>
+                <p style="font-size:13.5px; margin:0 0 16px; color:var(--ron-text-empty, #94a3b8);">Please check your network connection and reload the page.</p>
+                <button type="button" class="ron-retry-load-btn" onclick="location.reload()" style="padding:9px 20px; border-radius:10px; background:#0284c7; color:#fff; border:none; font-weight:600; cursor:pointer;">Retry Loading</button>
+              </div>
+            `;
+          }
+        }
+      }
+    }, 100);
+  }
 
   // Initial boot
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
-      setTimeout(renderRonBoard, 50);
-      initBackToTop();
+      handleDataReadyOrWait();
     });
   } else {
-    setTimeout(renderRonBoard, 50);
-    initBackToTop();
+    handleDataReadyOrWait();
   }
 })();

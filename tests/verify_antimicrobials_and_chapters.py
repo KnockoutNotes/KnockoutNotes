@@ -6,7 +6,12 @@ def test_antimicrobial_data():
         text = f.read().strip()
     prefix = "window.KN_STUDY = "
     assert text.startswith(prefix), "study-data.js must start with window.KN_STUDY ="
-    raw = text[len(prefix):].rstrip(';')
+    if "};\n" in text:
+        raw = text[len(prefix):text.find("};\n") + 1]
+    elif "};" in text:
+        raw = text[len(prefix):text.find("};") + 1]
+    else:
+        raw = text[len(prefix):].rstrip(';')
     data = json.loads(raw)
 
     # Category check
