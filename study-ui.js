@@ -319,11 +319,20 @@
   ];
 
   const ANTIMICROBIAL_CLASSES = [
-    { label: "Carbapenems (Beta-Lactams)", desc: "Broad-spectrum bactericidal beta-lactam stability against ESBL and AmpC beta-lactamases; first-line for nosocomial sepsis.", members: ["meropenem"] },
-    { label: "Antipseudomonal Penicillins & Inhibitors", desc: "Broad-spectrum coverage for hospital-acquired pneumonia, intra-abdominal, and neutropenic sepsis.", members: ["piperacillin-tazobactam"] },
-    { label: "Aminoglycosides (30S Inhibitors)", desc: "Concentration-dependent bactericidal action with post-antibiotic effect against multidrug-resistant gram-negative bacilli.", members: ["gentamicin"] },
-    { label: "Glycopeptides & Lipoglycopeptides", desc: "Inhibits bacterial cell wall peptidoglycan synthesis; reserve agents for severe MRSA, enterococcal, and prosthetic infections.", members: ["teicoplanin", "vancomycin"] },
-    { label: "Polymyxins (Cell Membrane Disruptors)", desc: "Cationic detergent disruption of bacterial outer membrane; last-resort reserve for carbapenem-resistant gram-negative pathogens.", members: ["colistin"] }
+    { label: "Carbapenems (Beta-Lactams)", desc: "Broad-spectrum bactericidal beta-lactam stability against ESBL and AmpC beta-lactamases; first-line for nosocomial sepsis.", members: ["meropenem", "imipenem-cilastatin"] },
+    { label: "Antipseudomonal & Broad-Spectrum Penicillin Combinations", desc: "High-dose beta-lactamase inhibitor combinations for nosocomial sepsis, intra-abdominal, and Acinetobacter infections.", members: ["piperacillin-tazobactam", "ampicillin-sulbactam"] },
+    { label: "Cephalosporins & Novel Beta-Lactamase Inhibitor Combinations", desc: "First- to fourth-generation cephalosporins and novel DBO combinations for surgical prophylaxis, pneumonia, and DTR-Pseudomonas / CRE.", members: ["cefazolin", "ceftriaxone", "ceftazidime", "cefepime", "ceftazidime-avibactam", "ceftolozane-tazobactam"] },
+    { label: "Monobactams (MBL-Stable Beta-Lactams)", desc: "Aerobic Gram-negative selective beta-lactam safe in severe penicillin allergy; immune to metallo-beta-lactamases (NDM-1).", members: ["aztreonam"] },
+    { label: "Aminoglycosides (30S Ribosomal Inhibitors)", desc: "Concentration-dependent bactericidal action with post-antibiotic effect against multidrug-resistant Gram-negative bacilli.", members: ["gentamicin", "amikacin"] },
+    { label: "Glycopeptides & Lipoglycopeptides", desc: "Inhibits cell wall peptidoglycan cross-linking; first-line reserve for severe MRSA, enterococcal, and prosthetic infections.", members: ["vancomycin", "teicoplanin"] },
+    { label: "Oxazolidinones (50S Ribosomal Inhibitors)", desc: "Synthetic protein synthesis inhibitor with complete oral bioavailability and excellent lung penetration for MRSA/VRE.", members: ["linezolid"] },
+    { label: "Cyclic Lipopeptides (Membrane Depolarizers)", desc: "Rapid calcium-dependent membrane depolarizer for MRSA bacteremia and endocarditis; strictly contraindicated in pneumonia.", members: ["daptomycin"] },
+    { label: "Polymyxins (Cell Membrane Cationic Disruptors)", desc: "Cationic detergents targeting bacterial outer membrane lipopolysaccharide; last-line reserve for pan-resistant Gram-negatives.", members: ["colistin", "polymyxin-b"] },
+    { label: "Glycylcyclines (Tetracycline Derivatives)", desc: "Broad-spectrum 30S ribosomal inhibitor overcoming classic tetracycline efflux; reserved for cIAI and CRAB with black-box mortality warning.", members: ["tigecycline"] },
+    { label: "Fluoroquinolones (DNA Gyrase & Topo IV Inhibitors)", desc: "Potent bactericidal topoisomerase inhibitors for Gram-negative sepsis, atypical pneumonia, and pyelonephritis.", members: ["ciprofloxacin", "levofloxacin"] },
+    { label: "Nitroimidazoles (Anaerobic DNA Strand Disruptors)", desc: "Free-radical mediated DNA destruction for obligate anaerobes and protozoal infections; disulfiram-like ethanol reaction.", members: ["metronidazole"] },
+    { label: "Macrocyclics (RNA Polymerase Inhibitors)", desc: "Narrow-spectrum intestinal bactericidal agent preserving normal gut anaerobic microbiota; IDSA preferred for C. difficile.", members: ["fidaxomicin"] },
+    { label: "Systemic ICU Antifungals & Echinocandins", desc: "Ergosterol synthesis inhibitors and (1,3)-beta-D-glucan synthase blockers for ICU candidemia, invasive candidiasis, and aspergillosis.", members: ["fluconazole", "caspofungin"] }
   ];
 
   const MISCELLANEOUS_CLASSES = [

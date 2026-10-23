@@ -19755,6 +19755,714 @@ window.KN_STUDY = {
         "Heidenreich PA, et al. 2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure. Circulation.",
         "Miller's Anesthesia, 10th ed., Ch. 18 (Cardiovascular Drugs) & Ch. 65 (Cardiac Anesthesia)."
       ]
+    },
+    {
+      "id": "ceftriaxone",
+      "cat": "antimicrobials",
+      "name": "Ceftriaxone",
+      "aliases": [
+        "Rocephin",
+        "Ceftriaxone Sodium",
+        "CTX"
+      ],
+      "brand": "Rocephin",
+      "classification": "Third-Generation Cephalosporin • Broad-Spectrum Beta-Lactam PBP Inhibitor",
+      "tagline": "Third-generation cephalosporin for severe community-acquired pneumonia, bacterial meningitis, and spontaneous bacterial peritonitis without requiring renal dose adjustment.",
+      "tags": [
+        "ceftriaxone",
+        "rocephin",
+        "cephalosporin",
+        "meningitis",
+        "cap",
+        "sbp",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Rocephin, Genentech/Roche), IDSA Bacterial Meningitis Guidelines, Surviving Sepsis Campaign 2021",
+      "structure": "Semi-synthetic third-generation cephalosporin containing a 7-aminocephalosporanic acid nucleus, an aminothiazolyl-methoxyimino moiety at position 7 conferring high beta-lactamase stability, and an acidic triazine ring at position 3 conferring prolonged half-life. Molecular formula: C18H16N8O7S3 • 2Na • 3.5H2O (MW 661.6 g/mol as disodium hemiheptahydrate). Supplied as sterile lyophilized powder (1 g, 2 g vials). Reconstitute with sterile water or 0.9% NaCl; incompatible with calcium-containing solutions (lactated Ringer's) due to lethal particulate precipitation.",
+      "pd": "• Mechanism of Action: Bactericidal beta-lactam. Covalently binds to penicillin-binding proteins (PBPs 1a, 1b, 2, and 3) of susceptible bacteria, inhibiting peptidoglycan transpeptidation and cross-linking during active cell wall synthesis; triggers bacterial autolysins causing cell lysis.\n• Antimicrobial Spectrum:\n  - Gram-Negative Aerobes: Highly active against Enterobacterales (E. coli, Klebsiella pneumoniae, Proteus mirabilis/vulgaris, Serratia marcescens), Haemophilus influenzae, Neisseria meningitidis, Neisseria gonorrhoeae, and Moraxella catarrhalis.\n  - Gram-Positive Aerobes: Streptococcus pneumoniae (including intermediate penicillin-resistant strains), Streptococcus pyogenes, Streptococcus agalactiae, and methicillin-susceptible Staphylococcus aureus (MSSA).\n  - Inactive Against: Pseudomonas aeruginosa (lacks antipseudomonal activity!), Enterococcus faecalis/faecium, Listeria monocytogenes, Bacteroides fragilis, and MRSA.\n• Pharmacodynamic Driver: Time-dependent killing; %T > MIC is the primary PK/PD parameter (target: free drug concentration exceeding MIC for ≥ 50–70% of dosing interval).",
+      "pk": "• Absorption: 100% bioavailability following IV administration; rapid and complete absorption after deep IM injection.\n• Distribution: Volume of distribution (Vd) 0.12–0.15 L/kg in healthy adults, expanding up to 0.25–0.30 L/kg in septic shock and critical illness. High and concentration-dependent plasma protein binding (85%–95% bound to albumin; saturable at high serum concentrations).\n• CSF Penetration: Penetrates inflamed meninges effectively (15%–20% of concurrent serum levels in acute meningitis; therapeutic for S. pneumoniae and N. meningitidis).\n• Metabolism: Negligible hepatic metabolism; minimal conversion to inactive metabolites by gut microflora.\n• Elimination & Half-Life: Dual elimination pathways:\n  - Renal Excretion: 50%–60% excreted unchanged by glomerular filtration.\n  - Biliary/Fecal Excretion: 40%–50% eliminated via bile into feces as active and inactive compounds.\n  - Elimination Half-Life: 6–9 hours (longest among cephalosporins, enabling once-daily dosing in non-CNS infections).\n• Dialysis Clearance: Not significantly dialyzable by hemodialysis or peritoneal dialysis (< 5% removed); no post-dialysis booster dose needed.",
+      "dosage": "FDA-approved & ICU Protocols:\n• Severe Community-Acquired Pneumonia / Severe Intra-Abdominal Sepsis / Pyelonephritis:\n  - 2 g IV every 24 hours (infused over 30 minutes in 0.9% NaCl or D5W).\n• Acute Bacterial Meningitis (Pneumococcal / Meningococcal):\n  - 2 g IV every 12 hours (4 g/day total) combined with Vancomycin (15–20 mg/kg q8–12h) + Dexamethasone 10 mg IV q6h before or with first dose.\n• Infective Endocarditis (Viridans Streptococci / HACEK):\n  - 2 g IV every 24 hours for 4–6 weeks.\n• Spontaneous Bacterial Peritonitis (SBP) / Cirrhotic Sepsis:\n  - 2 g IV every 24 hours (combined with IV albumin 1.5 g/kg on day 1, 1 g/kg on day 3).\n• Renal Impairment Adjustments:\n  - CrCl > 10 mL/min: No dosage adjustment necessary (dual biliary compensation).\n  - CrCl < 10 mL/min / ESRD / Anuria: Maximum dose 2 g/day (monitor for encephalopathy).\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF: 2 g IV every 24 hours.\n• Administration Safety: Strictly avoid concurrent or sequential infusion with calcium-containing IV solutions (e.g., Ringer's Lactate, Hartmann's solution, parenteral nutrition) through same or different IV lines in neonates and pediatric patients due to risk of fatal calcium-ceftriaxone precipitate in lungs and kidneys.",
+      "offLabel": "• Surgical Prophylaxis: Single dose 1–2 g IV 30–60 minutes prior to colorectal, biliary, or contaminated emergency surgery.\n• Severe Lyme Neuroborreliosis: 2 g IV daily for 14–28 days.\n• Gonococcal Ophthalmia / Disseminated Gonococcal Infection: 1–2 g IV daily.",
+      "complications": "• Boxed Warnings & Contraindications:\n  - Contraindicated in hyperbilirubinemic neonates, especially premature neonates: Ceftriaxone displaces bilirubin from serum albumin, precipitating kernicterus (bilirubin encephalopathy).\n  - Strictly contraindicated with intravenous calcium in neonates (≤ 28 days old) due to fatal intravascular crystallization.\n  - Severe IgE-mediated beta-lactam anaphylaxis.\n• Adverse Reactions:\n  - Biliary Sludging & Pseudolithiasis: Reversible calcium-ceftriaxone biliary precipitation ('ceftriaxone biliary colic') after high doses (> 2 g/day); resolves spontaneously upon discontinuation.\n  - Urolithiasis & Nephrolithiasis: Rare renal precipitation in dehydrated or immobilized ICU patients.\n  - Hematologic: Immune-mediated hemolytic anemia (Coombs-positive, potentially fatal), hypoprothrombinemia, and eosinophilia.\n  - Clostridioides difficile-associated diarrhea (CDAD) / Pseudomembranous colitis: High propensity due to broad-spectrum biliary elimination disrupting normal colonic flora.\n  - Neurotoxicity: Encephalopathy, myoclonus, and seizures in severe renal insufficiency with unadjusted high-dose therapy.",
+      "references": [
+        "FDA Prescribing Information: Rocephin (ceftriaxone sodium for injection). Genentech USA, Inc., revised 2023.",
+        "Tunkel AR, et al. Practice guidelines for the management of bacterial meningitis. Clin Infect Dis. 2004;39(9):1267-1284.",
+        "Evans L, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Crit Care Med. 2021;49(11):e1063-e1143."
+      ]
+    },
+    {
+      "id": "ceftazidime",
+      "cat": "antimicrobials",
+      "name": "Ceftazidime",
+      "aliases": [
+        "Fortaz",
+        "Tazicef",
+        "CAZ"
+      ],
+      "brand": "Fortaz",
+      "classification": "Third-Generation Antipseudomonal Cephalosporin • Beta-Lactam PBP3 Inhibitor",
+      "tagline": "Potent antipseudomonal third-generation cephalosporin for nosocomial pneumonia, febrile neutropenia, and severe hospital-acquired Gram-negative infections.",
+      "tags": [
+        "ceftazidime",
+        "fortaz",
+        "cephalosporin",
+        "pseudomonas",
+        "vap",
+        "neutropenia",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Fortaz, Tazicef), IDSA HAP/VAP Guidelines 2024, Surviving Sepsis Campaign",
+      "structure": "Semi-synthetic third-generation cephalosporin with a pyridinium group at position 3 and a complex 2-carboxyprop-2-oxyimino group on the acyl side chain that confers high beta-lactamase stability and enhanced outer membrane penetration into Pseudomonas aeruginosa. Molecular formula: C22H22N6O7S2 • 5H2O (MW 636.65 g/mol as pentahydrate). Formulated with sodium carbonate to facilitate dissolution, releasing carbon dioxide during reconstitution. Reconstitute in sterile water, 0.9% NaCl, or 5% dextrose.",
+      "pd": "• Mechanism of Action: Bactericidal. Covalently binds with high affinity to essential bacterial penicillin-binding proteins, predominantly PBP3 of Gram-negative bacilli, disrupting septal peptidoglycan synthesis, triggering bacterial filamentation, osmotic lysis, and cell death.\n• Antimicrobial Spectrum:\n  - Gram-Negative Aerobes: Exceptional activity against Pseudomonas aeruginosa (classic antipseudomonal cephalosporin), Enterobacterales (E. coli, Klebsiella spp., Proteus, Serratia), and Burkholderia cepacia complex.\n  - Gram-Positive: Very weak Gram-positive activity compared to cefazolin or ceftriaxone (poor affinity for staphylococcal PBPs; virtually inactive against Streptococcus pneumoniae and MSSA).\n  - Inactive Against: MRSA, Enterococcus spp., Listeria monocytogenes, ESBL-producing organisms, and anaerobic bacteria (Bacteroides fragilis).\n• Pharmacodynamic Target: %T > MIC ≥ 60–70% of the dosing interval. Extended infusions (3–4 hours) or continuous infusions significantly enhance clinical cure and bacteriological eradication in critically ill septic patients with high-MIC P. aeruginosa.",
+      "pk": "• Distribution: Vd 0.20–0.28 L/kg in healthy adults, expanding up to 0.35–0.45 L/kg in septic shock. Low plasma protein binding (< 10%). Excellent penetration into bronchial secretions (20%–30% of serum concentration), pleural fluid, peritoneal fluid, and inflamed CSF (20%–40%).\n• Metabolism: Not metabolized by liver; biologically stable.\n• Elimination & Half-Life: Almost exclusively cleared by renal glomerular filtration (80%–90% excreted unchanged in urine within 24 hours). Elimination half-life is 1.6–2.0 hours in patients with normal renal function, prolonging up to 15–35 hours in ESRD.\n• Dialyzability: Readily removed by intermittent hemodialysis (50%–60% removed over 4-hour session; requires post-dialysis supplemental dosing) and continuous venovenous hemodiafiltration (CVVHDF).",
+      "dosage": "FDA-approved & ICU Protocols:\n• Severe Nosocomial Pneumonia / HAP / VAP / Febrile Neutropenia:\n  - 2 g IV every 8 hours as an extended infusion over 3–4 hours (or continuous infusion of 6 g/24h following a 2 g loading dose).\n• Complicated Intra-Abdominal Infection (cIAI):\n  - 2 g IV every 8 hours combined with Metronidazole 500 mg IV q8h.\n• Complicated Urinary Tract Infections (cUTI) / Pyelonephritis:\n  - 1 g to 2 g IV every 8 to 12 hours.\n• Renal Impairment Dosage Adjustments:\n  - CrCl 31–50 mL/min: 1 g IV every 12 hours.\n  - CrCl 16–30 mL/min: 1 g IV every 24 hours.\n  - CrCl 6–15 mL/min: 500 mg IV every 24 hours.\n  - CrCl < 5 mL/min (Anuria/ESRD): 500 mg IV every 48 hours.\n  - Intermittent Hemodialysis: 1 g loading dose, followed by 1 g after each hemodialysis session.\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF: 1 g to 2 g IV every 8 to 12 hours (titrate based on effluent flow rates ≥ 25 mL/kg/h; avoid underdosing for P. aeruginosa).",
+      "offLabel": "• Malignant Otitis Externa: 2 g IV q8h for 4–6 weeks.\n• Burkholderia cepacia Complex Pulmonary Exacerbations in Cystic Fibrosis: 2 g IV q8h or high-dose continuous infusion.\n• Intravitreal Injection for Bacterial Endophthalmitis: 2.25 mg/0.1 mL sterile solution.",
+      "complications": "• Warnings & Precautions:\n  - Neurotoxicity: Severe neurotoxic manifestations (encephalopathy, myoclonus, asterixis, confusion, and nonconvulsive status epilepticus [NCSE]) occur with excessive trough levels (> 35 mg/L), typically when doses are not adjusted for renal failure.\n  - Emergence of AmpC Resistance: In Enterobacter cloacae, Citrobacter freundii, and Serratia marcescens, ceftazidime can select for stably derepressed AmpC mutants during therapy, leading to rapid clinical failure.\n  - Hypersensitivity: Maculopapular rash, drug fever, eosinophilia, and rare Stevens-Johnson syndrome (SJS).\n  - CDAD: Risk of severe Clostridioides difficile colitis.\n  - Positive Direct Coombs Test: Induced in up to 5% of patients, rarely associated with clinically significant hemolysis.",
+      "references": [
+        "FDA Prescribing Information: Fortaz (ceftazidime for injection). GlaxoSmithKline / Teligent, revised 2023.",
+        "Kalil AC, et al. Management of Adults With Hospital-acquired and Ventilator-associated Pneumonia: 2016 Clinical Practice Guidelines by IDSA/ATS. Clin Infect Dis. 2016;63(5):e61-e111.",
+        "Roberts JA, et al. Individualised antibiotic dosing for patients who are critically ill: challenges and potential solutions. Lancet Infect Dis. 2014;14(6):498-509."
+      ]
+    },
+    {
+      "id": "cefepime",
+      "cat": "antimicrobials",
+      "name": "Cefepime",
+      "aliases": [
+        "Maxipime",
+        "CFP"
+      ],
+      "brand": "Maxipime",
+      "classification": "Fourth-Generation Antipseudomonal Cephalosporin • Zwitterionic PBP Inhibitor",
+      "tagline": "Fourth-generation zwitterionic cephalosporin with enhanced AmpC beta-lactamase stability, antipseudomonal and Gram-positive coverage, requiring strict renal monitoring for neurotoxicity.",
+      "tags": [
+        "cefepime",
+        "maxipime",
+        "cephalosporin",
+        "pseudomonas",
+        "neutropenia",
+        "neurotoxicity",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Maxipime, Hospira/Pfizer), FDA Drug Safety Communication on Cefepime Neurotoxicity, IDSA 2024",
+      "structure": "Semi-synthetic fourth-generation broad-spectrum cephalosporin featuring a dipolar zwitterion structure: a positively charged quaternary N-methylpyrrolidine group at position 3 and a negatively charged carboxylate at position 4. This net neutral dipolar charge enables rapid transmembrane translocation through the outer membrane porin channels (OmpF/OmpC) of Gram-negative bacteria. Formula: C19H24N6O5S2 • 2HCl • H2O (MW 571.5 g/mol as dihydrochloride monohydrate). Formulated with L-arginine buffer.",
+      "pd": "• Mechanism of Action: Rapidly bactericidal beta-lactam. Penetrates bacterial outer membrane porins rapidly due to zwitterionic properties; binds with high affinity to essential penicillin-binding proteins (PBP3 and PBP1a/1b in Gram-negative bacilli; PBP2 in S. aureus and PBP2x in S. pneumoniae), disrupting cell wall synthesis.\n• Antimicrobial Spectrum:\n  - Broad Gram-Negative: Pseudomonas aeruginosa (equivalent to ceftazidime), AmpC-producing Enterobacterales (Enterobacter cloacae, Citrobacter freundii, Serratia, Morganella, Providencia), E. coli, Klebsiella, Proteus.\n  - Stable Against AmpC Beta-Lactamases: Resistant to hydrolysis by chromosomally derepressed or plasmid-mediated AmpC beta-lactamases due to low steric affinity.\n  - Gram-Positive: Retains potent activity against MSSA (unlike ceftazidime) and Streptococcus pneumoniae (including intermediate penicillin-resistant strains).\n  - Inactive Against: MRSA, Enterococcus faecium/faecalis, Listeria, ESBLs, carbapenemases (KPC, MBL, OXA-48), and anaerobes.\n• Pharmacodynamic Driver: %T > MIC ≥ 60–70% of dosing interval. Prolonged infusion (3–4 hours) or continuous infusion significantly improves target attainment in critically ill septic patients.",
+      "pk": "• Distribution: Vd 0.25–0.30 L/kg (expands to > 0.40 L/kg in septic shock and fluid resuscitation). Low protein binding (~20%). Readily crosses blood-brain barrier into inflamed meninges (CSF levels 10%–20% of serum concentration).\n• Metabolism: Minimal hepatic metabolism (< 1% converted to N-methylpyrrolidine-N-oxide).\n• Elimination & Half-Life: Over 85% excreted unchanged by glomerular filtration into urine. Elimination half-life is 2.0–2.3 hours in normal renal function, prolonging to 13–24 hours in severe renal impairment and ESRD.\n• Dialysis Clearance: Substantially removed by intermittent hemodialysis (65%–70% cleared per 3–4 hour session; requires post-dialysis dosing) and CRRT.",
+      "dosage": "FDA-approved & ICU Protocols:\n• Severe HAP / VAP / Septic Shock / Febrile Neutropenia:\n  - 2 g IV every 8 hours administered as an extended infusion over 3–4 hours (or 2 g IV bolus loading dose followed by continuous infusion of 6 g/day).\n• Complicated Intra-Abdominal Infections:\n  - 2 g IV every 8 hours combined with Metronidazole 500 mg IV q8h.\n• Complicated UTI / Severe Pyelonephritis:\n  - 1 g to 2 g IV every 12 hours.\n• Renal Impairment Dosage Adjustments (MANDATORY TO AVOID NEUROTOXICITY):\n  - CrCl 30–50 mL/min: 2 g IV every 12 hours.\n  - CrCl 11–29 mL/min: 1 g IV every 12 hours (or 2 g IV every 24 hours).\n  - CrCl < 11 mL/min (Anuria/ESRD): 500 mg to 1 g IV every 24 hours.\n  - Intermittent Hemodialysis: 1 g loading dose on day 1, followed by 500 mg to 1 g IV once daily after dialysis session.\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF (Effluent rate 20–30 mL/kg/h): 1 g to 2 g IV every 12 hours (monitor for neurotoxicity; maintain trough < 20–30 mcg/mL).",
+      "offLabel": "• Empiric Therapy in Neutropenic Enterocolitis (Typhlitis): 2 g IV q8h + Metronidazole 500 mg IV q8h.\n• Bacterial Meningitis (Pseudomonas or Enterobacterales): 2 g IV q8h.",
+      "complications": "• FDA Safety Warning — Cefepime-Induced Neurotoxicity:\n  - Hallmark Manifestations: Depressed level of consciousness, global encephalopathy, myoclonus, asterixis, confusion, hallucinations, stupor, coma, and nonconvulsive status epilepticus (NCSE).\n  - Pathophysiology: Cefepime competitively antagonizes GABA-A receptors, lowering seizure threshold. Occurs predominantly in patients with renal impairment who receive unadjusted doses, leading to elevated trough concentrations (> 20–35 mcg/mL), but can also occur with normal renal function at high doses.\n  - EEG Findings: Triphasic waves, generalized periodic discharges (GPDs), and continuous spike-and-wave epileptiform activity.\n  - Management: Immediate drug discontinuation, benzodiazepine titration (lorazepam/midazolam), anti-seizure medications, and emergency hemodialysis (rapidly clears cefepime and resolves neurotoxicity within 24–48 hours).\n• Other Complications:\n  - Hypersensitivity, anaphylaxis, drug-induced fever.\n  - Positive Coombs test without hemolysis.\n  - Clostridioides difficile-associated diarrhea (CDAD).",
+      "references": [
+        "FDA Drug Safety Communication: FDA reminds healthcare professionals of the risk of serious neurotoxic events with Maxipime (cefepime). June 2012 / revised 2023.",
+        "Payen JF, et al. Cefepime-induced neurotoxicity: an underdiagnosed complication in ICU patients. Crit Care. 2020;24(1):501.",
+        "Tamma PD, et al. Infectious Diseases Society of America 2024 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. Clin Infect Dis. 2024."
+      ]
+    },
+    {
+      "id": "cefazolin",
+      "cat": "antimicrobials",
+      "name": "Cefazolin",
+      "aliases": [
+        "Ancef",
+        "Kefzol",
+        "CFZ"
+      ],
+      "brand": "Ancef",
+      "classification": "First-Generation Cephalosporin • Anti-Staphylococcal Beta-Lactam PBP Inhibitor",
+      "tagline": "Gold-standard first-generation cephalosporin for surgical antimicrobial prophylaxis and definitive therapy for serious methicillin-susceptible S. aureus (MSSA) infections.",
+      "tags": [
+        "cefazolin",
+        "ancef",
+        "cephalosporin",
+        "surgical-prophylaxis",
+        "mssa",
+        "endocarditis",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Ancef), ASHP/IDSA/SIS/SHEA Guidelines for Antimicrobial Prophylaxis in Surgery 2023, AHA Infective Endocarditis Guidelines",
+      "structure": "Semi-synthetic first-generation cephalosporin containing a thiadiazole ring attached via a thioether bridge at position 3 and a tetrazole ring attached at position 7. Molecular formula: C14H14N8O4S3 • Na (MW 476.5 g/mol as sodium salt). Lyophilized sterile powder; highly soluble in water and 0.9% NaCl. Does not contain the N-methylthiotetrazole (NMTT) side chain associated with disulfiram reactions or hypoprothrombinemia.",
+      "pd": "• Mechanism of Action: Bactericidal beta-lactam. Covalently binds with high avidity to penicillin-binding proteins (PBP1, PBP2, and PBP3) of susceptible Gram-positive cocci and select Gram-negative bacilli, preventing transpeptidation of peptidoglycan and stimulating autolytic enzymes.\n• Antimicrobial Spectrum:\n  - Gram-Positive: Highly potent against Methicillin-Susceptible Staphylococcus aureus (MSSA), Staphylococcus epidermidis (methicillin-susceptible strains), Streptococcus pyogenes (Group A), Streptococcus agalactiae (Group B), and Streptococcus pneumoniae (penicillin-susceptible strains).\n  - Superiority Over Vancomycin for MSSA: Faster bactericidal kill rates and significantly lower 30-day mortality and relapse rates compared to vancomycin in MSSA bacteremia and infective endocarditis.\n  - Gram-Negative: Modest activity against wild-type Escherichia coli, Klebsiella pneumoniae, and Proteus mirabilis (community strains).\n  - Inactive Against: MRSA, MRSE, Enterococcus spp., Pseudomonas aeruginosa, Serratia, Enterobacter, and anaerobes.\n• Absence of Cefazolin Inoculum Effect (CzIE) Hazards: Unlike older concerns, high-dose cefazolin (2 g q8h) remains preferred first-line for MSSA endocarditis and osteomyelitis unless blaZ hyperproducing type A strains are definitively proven with severe clinical refractory bacteremia.",
+      "pk": "• Distribution: Vd 0.13–0.20 L/kg. High plasma protein binding (80%–85% bound to albumin). High tissue concentrations in bone, synovial fluid, pericardium, pleural fluid, and bile. Poor blood-brain barrier penetration (cannot be used for CNS infections / meningitis!).\n• Metabolism: Not metabolized by hepatic cytochrome enzymes; excreted unchanged.\n• Elimination & Half-Life: Rapidly cleared by glomerular filtration and active tubular secretion (80%–90% excreted unchanged in urine in 24 hours). Elimination half-life is 1.8–2.0 hours in normal renal function, prolonging to 15–30 hours in ESRD.\n• Dialyzability: Moderately dialyzable by intermittent hemodialysis (50% removed in 4 hours; post-HD booster required).",
+      "dosage": "FDA-approved & ICU Protocols:\n• Surgical Antimicrobial Prophylaxis (SAP) — ASHP/IDSA 2023 Guidelines:\n  - Body weight < 120 kg: 2 g IV single dose administered within 60 minutes prior to surgical incision.\n  - Body weight ≥ 120 kg: 3 g IV single dose administered within 60 minutes prior to surgical incision.\n  - Intraoperative Re-dosing: Re-dose every 4 hours from initial dose if surgery is prolonged or blood loss > 1,500 mL.\n  - Postoperative Duration: Discontinue within 24 hours post-surgery (or immediately after wound closure for most procedures).\n• Severe MSSA Bacteremia / Sepsis / Bone & Joint Infection:\n  - 2 g IV every 8 hours (infused over 30 minutes).\n• MSSA Infective Endocarditis (Native or Prosthetic Valve):\n  - 2 g IV every 8 hours for 6 weeks (combined with Gentamicin for first 2 weeks in prosthetic valve endocarditis).\n• Renal Impairment Dosage Adjustments (Treatment):\n  - CrCl 35–54 mL/min: 1 g to 2 g IV every 8 to 12 hours.\n  - CrCl 11–34 mL/min: 500 mg to 1 g IV every 12 hours.\n  - CrCl < 10 mL/min / ESRD: 500 mg to 1 g IV every 24 hours.\n  - Intermittent Hemodialysis: 1 g to 2 g post-dialysis on hemodialysis days (three times weekly).\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF: 1 g to 2 g IV every 12 hours.",
+      "offLabel": "• Continuous Ambulatory Peritoneal Dialysis (CAPD) Peritonitis: 500 mg/L loading dose in dialysate, then 125 mg/L in each exchange.\n• Toxic Shock Syndrome (MSSA-mediated): 2 g IV q8h combined with Clindamycin 900 mg IV q8h (for toxin suppression).",
+      "complications": "• Contraindications & Precautions:\n  - Severe IgE-mediated cephalosporin anaphylaxis. (Note: Cross-reactivity between cefazolin and penicillins is negligible [< 1%] because cefazolin has a unique R1 side chain; safe in penicillin-allergic patients who lack history of cefazolin-specific allergy!).\n  - Ineffective for bacterial meningitis due to poor CSF penetration.\n• Adverse Drug Reactions:\n  - Hypersensitivity, pruritus, urticaria, drug rash.\n  - Transaminitis (transient AST/ALT elevation) and cholestasis.\n  - Phlebitis at peripheral injection sites.\n  - Nephrotoxicity (rare interstitial nephritis; potentiated by concomitant aminoglycosides).\n  - CDAD colitis.",
+      "references": [
+        "FDA Prescribing Information: Ancef (cefazolin for injection). GlaxoSmithKline / Pfizer, revised 2023.",
+        "Bratzler DW, et al. Clinical practice guidelines for antimicrobial prophylaxis in surgery. Am J Health-Syst Pharm. 2013;70(3):195-283.",
+        "Baddour LM, et al. Infective Endocarditis in Adults: Diagnosis, Antimicrobial Therapy, and Management of Complications. Circulation. 2015;132(15):1435-1486."
+      ]
+    },
+    {
+      "id": "ceftazidime-avibactam",
+      "cat": "antimicrobials",
+      "name": "Ceftazidime-Avibactam",
+      "aliases": [
+        "Avycaz",
+        "Zavicefta",
+        "CZA"
+      ],
+      "brand": "Avycaz",
+      "classification": "Novel Beta-Lactam / Non-Beta-Lactam Diazabicyclooctane Inhibitor Combination",
+      "tagline": "Precision targeted antibiotic for Carbapenem-Resistant Enterobacterales (CRE: KPC, OXA-48) and Difficult-to-Treat Resistant (DTR) Pseudomonas aeruginosa.",
+      "tags": [
+        "ceftazidime-avibactam",
+        "avycaz",
+        "zavicefta",
+        "cre",
+        "kpc",
+        "oxa-48",
+        "dtr-pseudomonas",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Avycaz, Allergan/AbbVie), IDSA 2024 Guidance on AMR Gram-Negative Infections",
+      "structure": "Fixed-ratio combination of ceftazidime (third-generation antipseudomonal cephalosporin) and avibactam sodium, a novel non-beta-lactam diazabicyclooctane (DBO) beta-lactamase inhibitor. Avibactam inhibits serine beta-lactamases through a covalent, reversible carbamylation of the active enzyme site without undergoing hydrolysis. Formula: Ceftazidime (MW 636.65 g/mol) + Avibactam sodium (C7H10N3NaO6S, MW 287.23 g/mol). Fixed 4:1 vial ratio (2 g ceftazidime + 0.5 g avibactam = 2.5 g single-dose vial). Reconstitute in 0.9% NaCl, D5W, or Lactated Ringer's.",
+      "pd": "• Mechanism of Action: Dual-action synergy. Ceftazidime inhibits PBP3 cell wall synthesis, while avibactam irreversibly shields ceftazidime from hydrolysis by Class A, Class C (AmpC), and select Class D serine carbapenemases.\n• Beta-Lactamase Inhibitory Spectrum of Avibactam:\n  - Class A: TEM, SHV, CTX-M extended-spectrum beta-lactamases (ESBLs) and Klebsiella pneumoniae carbapenemases (KPC-2, KPC-3).\n  - Class C: Chromosomal and plasmid AmpC cephalosporinases.\n  - Class D: OXA-48-like serine carbapenemases (highly endemic in ICU nosocomial isolates).\n  - Inactive Against: Metallo-Beta-Lactamases (Class B: NDM, VIM, IMP)! In MBL-producing CRE, Avycaz MUST be combined with Aztreonam to restore bactericidal activity.\n• Antimicrobial Spectrum:\n  - First-line preferred agent for Carbapenem-Resistant Enterobacterales (CRE) producing KPC or OXA-48.\n  - Highly effective against Difficult-to-Treat Resistant (DTR) Pseudomonas aeruginosa.\n• Pharmacodynamic Driver: Ceftazidime %T > MIC ≥ 50%; Avibactam %T > threshold concentration (1 mg/L) ≥ 50% of the dosing interval. Administer as 2-hour extended infusions.",
+      "pk": "• Distribution: Vd 0.24 L/kg for ceftazidime and 0.32 L/kg for avibactam. Low protein binding (< 10% for both compounds). Excellent penetration into epithelial lining fluid (ELF) of lungs (ELF-to-plasma ratio ~30% for ceftazidime and ~35% for avibactam), supporting efficacy in nosocomial pneumonia.\n• Metabolism: Neither drug undergoes significant hepatic metabolism. No cytochrome P450 inhibition or induction.\n• Elimination & Half-Life: Both drugs excreted primarily unchanged by renal glomerular filtration (> 80%–90%). Elimination half-life is 2.7 hours for ceftazidime and 2.5 hours for avibactam in healthy volunteers; highly synchronized elimination profile preserves 4:1 exposure ratio.\n• Dialysis Clearance: Extensively removed by intermittent hemodialysis (~55% of both compounds cleared in 4 hours; mandatory post-HD dosing).",
+      "dosage": "FDA-approved & ICU Protocols:\n• Hospital-Acquired / Ventilator-Associated Bacterial Pneumonia (HAP / VAP):\n  - 2.5 g (2 g ceftazidime / 0.5 g avibactam) IV every 8 hours infused over 2 hours.\n• Complicated Intra-Abdominal Infections (cIAI):\n  - 2.5 g IV every 8 hours infused over 2 hours + Metronidazole 500 mg IV q8h.\n• Complicated Urinary Tract Infections (cUTI) / Pyelonephritis / CRE Sepsis:\n  - 2.5 g IV every 8 hours infused over 2 hours.\n• Combination Therapy for Metallo-Beta-Lactamase (NDM-1 / VIM) CRE:\n  - Ceftazidime-Avibactam 2.5 g IV q8h (2-hour infusion) PLUS Aztreonam 2 g IV q8h (2-hour infusion, initiated simultaneously or infused sequentially).\n• Renal Impairment Dosage Adjustments (Strict adherence required to prevent underdosing/treatment failure):\n  - CrCl 31–50 mL/min: 1.25 g (1 g / 0.25 g) IV every 8 hours.\n  - CrCl 16–30 mL/min: 0.9375 g (0.75 g / 0.1875 g) IV every 12 hours.\n  - CrCl 6–15 mL/min: 0.9375 g (0.75 g / 0.1875 g) IV every 24 hours.\n  - CrCl < 6 mL/min / Intermittent Hemodialysis: 0.9375 g (0.75 g / 0.1875 g) loading dose, then 0.9375 g IV every 48 hours; on HD days, administer immediately after dialysis.\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF (Effluent rate 25–35 mL/kg/h): 1.25 g IV every 8 hours (or 2.5 g q8h in augmented renal clearance or high-MIC isolates).",
+      "offLabel": "• CRE Bloodstream Infections / Catheter-Related Bacteremia: 2.5 g IV q8h for 14 days.\n• Ventriculitis / Meningitis due to KPC-producing K. pneumoniae: 2.5 g IV q8h (often combined with intrathecal colistin/gentamicin).",
+      "complications": "• Warnings & Precautions:\n  - Emergence of KPC Resistance: Mutational amino acid substitutions in KPC omega loop (e.g., KPC-3 D179Y) can emerge during prolonged therapy, rendering the isolate resistant to ceftazidime-avibactam (while paradoxically restoring meropenem susceptibility!).\n  - Ineffective as Monotherapy in MBL Infections: Inactive against NDM, VIM, IMP unless partnered with aztreonam.\n  - Neurotoxicity: Encephalopathy, myoclonus, seizures in unadjusted renal insufficiency.\n  - Hypersensitivity & Anaphylaxis.\n  - CDAD colitis.\n  - False-Positive Direct Antiglobulin Test (DAT / Coombs test).",
+      "references": [
+        "FDA Prescribing Information: Avycaz (ceftazidime and avibactam for injection). Allergan USA / AbbVie, revised 2023.",
+        "Tamma PD, et al. Infectious Diseases Society of America 2024 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. Clin Infect Dis. 2024.",
+        "Shields RK, et al. Emergence of ceftazidime-avibactam resistance and restore of carbapenem susceptibility in KPC-3-producing Klebsiella pneumoniae. Antimicrob Agents Chemother. 2017;61(6):e02097-16."
+      ]
+    },
+    {
+      "id": "ceftolozane-tazobactam",
+      "cat": "antimicrobials",
+      "name": "Ceftolozane-Tazobactam",
+      "aliases": [
+        "Zerbaxa",
+        "C/T"
+      ],
+      "brand": "Zerbaxa",
+      "classification": "Novel Antipseudomonal Cephalosporin / Beta-Lactamase Inhibitor Combination",
+      "tagline": "Potent antipseudomonal backbone agent engineered specifically to overcome efflux pump and porin deletion resistance in Difficult-to-Treat (DTR) Pseudomonas aeruginosa.",
+      "tags": [
+        "ceftolozane-tazobactam",
+        "zerbaxa",
+        "pseudomonas",
+        "dtr-pa",
+        "hap",
+        "vap",
+        "esbl",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Zerbaxa, Merck), IDSA 2024 Guidance on AMR Gram-Negative Infections, ASPECT-NP Trial",
+      "structure": "Fixed-dose combination of ceftolozane sulfate (novel oxyimino-aminothiazolyl cephalosporin with a heavy dimethylpyrazolo-urea side chain at position 3) and tazobactam sodium. Ceftolozane possesses 2- to 8-fold higher affinity for Pseudomonas PBP1b, PBP1c, and PBP3 compared to ceftazidime, and is immune to baseline AmpC overexpression, MexAB-OprM efflux pump upregulation, and OprD porin deletion. Formula: Ceftolozane (MW 666.7 g/mol) + Tazobactam sodium (MW 322.3 g/mol). Fixed 2:1 ratio (1 g ceftolozane + 0.5 g tazobactam = 1.5 g vial). Reconstitute with 0.9% NaCl or D5W.",
+      "pd": "• Mechanism of Action: Ceftolozane inhibits peptidoglycan cross-linking by binding PBP1b, PBP1c, PBP2, and PBP3. Tazobactam inhibits Class A beta-lactamases (ESBLs), preventing ceftolozane hydrolysis in Enterobacterales.\n• Superior Antipseudomonal Activity:\n  - Retains activity against Difficult-to-Treat Resistant (DTR) and Multidrug-Resistant (MDR) Pseudomonas aeruginosa resistant to carbapenems, ceftazidime, cefepime, and piperacillin-tazobactam.\n  - Not affected by OprD loss (which causes carbapenem resistance) or Mex efflux pumps.\n• Inactive Against: Carbapenemase-producing organisms (KPC, NDM, VIM, OXA-48), Acinetobacter baumannii, Stenotrophomonas maltophilia, and MRSA.\n• Pharmacodynamic Driver: Ceftolozane %T > MIC ≥ 40–50% of the dosing interval. Administered over 1 hour.",
+      "pk": "• Distribution: Vd 13.5 L for ceftolozane and 18.2 L for tazobactam in healthy volunteers (expands significantly in ICU ventilator-associated pneumonia). Low protein binding (16% to 21% for ceftolozane; 30% for tazobactam). Excellent lung penetration (ELF-to-plasma ratio ~50%), confirmed in the ASPECT-NP registration trial.\n• Metabolism: Ceftolozane is not metabolized; tazobactam is minimally metabolized to inactive M1 metabolite.\n• Elimination & Half-Life: Both cleared predominantly by renal excretion (> 95% of ceftolozane and > 80% of tazobactam excreted unchanged in urine). Half-life is 2.5–3.0 hours in normal renal function.\n• Dialyzability: Both cleared by intermittent hemodialysis (65% removed per session; requires supplemental dosing).",
+      "dosage": "FDA-approved & ICU Protocols:\n• Hospital-Acquired & Ventilator-Associated Bacterial Pneumonia (HAP / VAP):\n  - 3 g (2 g ceftolozane / 1 g tazobactam) IV every 8 hours infused over 1 hour (Double Dose required for lung penetration!).\n• Complicated Intra-Abdominal Infection (cIAI):\n  - 1.5 g (1 g ceftolozane / 0.5 g tazobactam) IV every 8 hours over 1 hour + Metronidazole 500 mg IV q8h.\n• Complicated Urinary Tract Infection (cUTI) / Pyelonephritis:\n  - 1.5 g IV every 8 hours over 1 hour.\n• Renal Impairment Adjustments (For 1.5 g cIAI/cUTI Base Regimen):\n  - CrCl 30–50 mL/min: 750 mg (500 mg/250 mg) IV every 8 hours.\n  - CrCl 15–29 mL/min: 375 mg (250 mg/125 mg) IV every 8 hours.\n  - ESRD / Hemodialysis: Single loading dose of 750 mg, then 150 mg IV every 8 hours; on HD days, administer immediately after dialysis.\n• Renal Impairment Adjustments (For 3 g HAP/VAP High-Dose Regimen):\n  - CrCl 30–50 mL/min: 1.5 g (1 g/0.5 g) IV every 8 hours.\n  - CrCl 15–29 mL/min: 750 mg (500 mg/250 mg) IV every 8 hours.\n  - ESRD / Hemodialysis: Single loading dose of 2.25 g (1.5 g/0.75 g), then 450 mg (300 mg/150 mg) IV every 8 hours.\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF: 1.5 g IV every 8 hours (or 2.25–3.0 g q8h for severe VAP with effluent rates ≥ 30 mL/kg/h).",
+      "offLabel": "• DTR-Pseudomonas aeruginosa Osteomyelitis / Mediastinitis: 3 g IV q8h for 6 weeks.\n• Pseudomonal Sepsis in Burn ICU Patients: 3 g IV q8h.",
+      "complications": "• Warnings & Precautions:\n  - Reduced Efficacy in Renal Impairment with CrCl 30–50 mL/min: Sub-analysis in cIAI showed lower clinical cure rates when underdosed; careful eGFR/CrCl monitoring mandatory.\n  - Inactive Against Carbapenemases: Ineffective if carbapenemase (KPC, MBL) is the mechanism of resistance in Enterobacterales or Pseudomonas.\n  - Hypersensitivity and anaphylaxis.\n  - CDAD colitis.",
+      "references": [
+        "FDA Prescribing Information: Zerbaxa (ceftolozane and tazobactam for injection). Merck & Co., Inc., revised 2023.",
+        "Kollef MH, et al. Ceftolozane-tazobactam versus meropenem for treatment of hospital-acquired bacterial pneumonia and ventilator-associated bacterial pneumonia (ASPECT-NP): a randomised, double-blind, phase 3 trial. Lancet Infect Dis. 2019;19(12):1299-1311.",
+        "Tamma PD, et al. Infectious Diseases Society of America 2024 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. Clin Infect Dis. 2024."
+      ]
+    },
+    {
+      "id": "linezolid",
+      "cat": "antimicrobials",
+      "name": "Linezolid",
+      "aliases": [
+        "Zyvox",
+        "PNU-100766",
+        "LZD"
+      ],
+      "brand": "Zyvox",
+      "classification": "Synthetic Oxazolidinone • 50S Ribosomal 23S rRNA Protein Synthesis Inhibitor",
+      "tagline": "First-in-class oxazolidinone for MRSA hospital-acquired pneumonia, Vancomycin-Resistant Enterococci (VRE), and severe soft-tissue infections with excellent lung penetration.",
+      "tags": [
+        "linezolid",
+        "zyvox",
+        "mrsa",
+        "vre",
+        "hap",
+        "vap",
+        "myelosuppression",
+        "serotonin-syndrome",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Zyvox, Pfizer), IDSA MRSA Guidelines, Surviving Sepsis Campaign",
+      "structure": "Synthetic oxazolidinone antibacterial. Chemically designated as (S)-N-[[3-[3-fluoro-4-(4-morpholinyl)phenyl]-2-oxo-5-oxazolidinyl]methyl]acetamide. Molecular formula: C16H20FN3O4 (MW 337.35 g/mol). Structurally non-cross-reactive with any other antibiotic class. Possesses weak, reversible, non-selective monoamine oxidase (MAO-A and MAO-B) inhibitory properties. Supplied as ready-to-use IV infusion solution (2 mg/mL in 300 mL bags = 600 mg) and oral tablets.",
+      "pd": "• Mechanism of Action: Bacteriostatic (bactericidal against streptococci). Binds directly to domain V of the 23S ribosomal RNA on the 50S ribosomal subunit. Inhibits the formation of the functional 70S initiation complex, prematurely aborting bacterial protein synthesis at the earliest translation step.\n• Antimicrobial Spectrum:\n  - Gram-Positive Aerobes: Methicillin-Resistant Staphylococcus aureus (MRSA), Methicillin-Susceptible S. aureus (MSSA), Vancomycin-Intermediate S. aureus (VISA), Vancomycin-Resistant S. aureus (VRSA), Coagulase-Negative Staphylococci (MRSE).\n  - Enterococci: Vancomycin-Resistant Enterococcus faecium and Enterococcus faecalis (VRE bacteremia and sepsis).\n  - Streptococci: Streptococcus pneumoniae (including multi-drug resistant strains), Streptococcus pyogenes, Group B Strep.\n  - Mycobacteria & Nocardia: Mycobacterium tuberculosis (MDR-TB), Nocardia asteroides.\n  - Inactive Against: All Gram-negative bacilli (Pseudomonas, Enterobacterales, Acinetobacter) and anaerobes.\n• Toxin Suppression: Potently suppresses staphylococcal and streptococcal exotoxin production (Panton-Valentine leukocidin [PVL], toxic shock syndrome toxin-1 [TSST-1], and alpha-hemolysin) independent of bacterial lysis.",
+      "pk": "• Bioavailability: 100% oral bioavailability (IV-to-oral switch ratio is 1:1 with zero dose conversion needed).\n• Distribution: Vd 40–50 L (~0.6–0.7 L/kg). Moderate protein binding (~31%). Exceptional penetration into pulmonary epithelial lining fluid (ELF-to-plasma ratio exceeds 100% to 400%), giving it pharmacodynamic superiority over vancomycin in MRSA hospital-acquired pneumonia.\n• Metabolism: Metabolized primarily by non-enzymatic chemical oxidation into two inactive carboxylic acid metabolites (aminoethoxyacetic acid and hydroxyethyl glycine). Does not utilize cytochrome P450 enzymes.\n• Elimination & Half-Life: 30% excreted unchanged in urine, 50% as inactive metabolites in urine, and 10% in feces. Elimination half-life is 4.5–5.5 hours in healthy adults.\n• Dialyzability: Removed by intermittent hemodialysis (~30% of dose removed; administer dose AFTER hemodialysis session). Partially cleared by CRRT.",
+      "dosage": "FDA-approved & ICU Protocols:\n• Nosocomial Pneumonia (HAP / VAP) / Severe MRSA Sepsis / VRE Infections:\n  - 600 mg IV or PO every 12 hours (infuse IV over 30 to 120 minutes).\n• Complicated Skin & Soft Tissue Infections (cSSTI):\n  - 600 mg IV or PO every 12 hours.\n• Necrotizing Fasciitis / Severe Toxin-Mediated Sepsis (PVL-MRSA / Strep TSS):\n  - 600 mg IV every 12 hours combined with a broad-spectrum Gram-negative agent (e.g., Meropenem).\n• Renal & Hepatic Adjustments:\n  - Renal Impairment (CrCl < 30 mL/min / ESRD): No initial dosage adjustment needed (two metabolites accumulate, but linezolid parent drug levels remain therapeutic; monitor complete blood count closely for accelerated myelosuppression!).\n  - Hemodialysis: 600 mg IV q12h; on HD days, administer after dialysis.\n  - Hepatic Impairment (Child-Pugh A or B): No dose adjustment.\n• Continuous Renal Replacement Therapy (CRRT):\n  - 600 mg IV every 12 hours (sub-therapeutic trough concentrations can occur in high-flux CVVHDF; monitor TDM if available, targeting trough 2–8 mg/L).",
+      "offLabel": "• Central Nervous System Shunt Infections / MRSA/VRE Ventriculitis: 600 mg IV q12h (CSF penetration ~70%).\n• Multidrug-Resistant Tuberculosis (MDR-TB / XDR-TB): 600 mg PO once daily (or 300 mg daily for long-term tolerance).",
+      "complications": "• Boxed Warnings & Life-Threatening Drug Interactions:\n  - SEROTONIN SYNDROME: Linezolid is a reversible, non-selective MAO inhibitor. Strict contraindication with concurrent serotonergic psychiatric agents: Selective Serotonin Reuptake Inhibitors (SSRIs: fluoxetine, sertraline, paroxetine), SNRIs (venlafaxine, duloxetine), tricyclic antidepressants, triptans, and opioid analgesics (FENTANYL, METHADONE, MEPERIDINE/PETHIDINE, TRAMADOL). Co-administration precipitates life-threatening serotonin toxicity: hyperpyrexia, clonus, hyperreflexia, agitation, autonomic instability, and cardiovascular collapse.\n  - Vasopressor Interactions: Potentiates pressor response to indirect sympathomimetics (pseudoephedrine, ephedrine) and direct adrenergic agents (adrenaline, noradrenaline, dopamine); reduce adrenergic starting doses.\n• Myelosuppression (Reversible Bone Marrow Suppression):\n  - Thrombocytopenia (most common; platelet count drops by > 30%–50% in patients treated > 10–14 days), anemia, and leukopenia.\n  - Mandatory weekly Complete Blood Count (CBC) monitoring in all ICU patients.\n• Mitochondrial Toxicity (Prolonged Therapy > 28 Days):\n  - Lactic Acidosis (inhibition of human mitochondrial protein synthesis leading to profound Type B lactic acidosis).\n  - Irreversible Peripheral Neuropathy and Optic Neuropathy (scotoma, loss of visual acuity, optic disc edema).",
+      "references": [
+        "FDA Prescribing Information: Zyvox (linezolid injection, tablets, and oral suspension). Pharmacia & Upjohn / Pfizer, revised 2023.",
+        "Wunderink RG, et al. Linezolid in methicillin-resistant, Gram-positive healthcare-associated pneumonia: an analysis of two randomised, double-blind trials. Lancet Infect Dis. 2003;3(7):447-451.",
+        "Liu C, et al. Clinical practice guidelines by the Infectious Diseases Society of America for the treatment of methicillin-resistant Staphylococcus aureus infections in adults and children. Clin Infect Dis. 2011;52(3):e18-e55."
+      ]
+    },
+    {
+      "id": "daptomycin",
+      "cat": "antimicrobials",
+      "name": "Daptomycin",
+      "aliases": [
+        "Cubicin",
+        "Cubicin RF",
+        "DAP"
+      ],
+      "brand": "Cubicin",
+      "classification": "Cyclic Lipopeptide • Calcium-Dependent Membrane Depolarizing Bactericidal Antibiotic",
+      "tagline": "Rapidly bactericidal cyclic lipopeptide for MRSA/VRE bacteremia and right-sided endocarditis; strictly contraindicated in pneumonia due to pulmonary surfactant inactivation.",
+      "tags": [
+        "daptomycin",
+        "cubicin",
+        "lipopeptide",
+        "mrsa",
+        "vre",
+        "bacteremia",
+        "endocarditis",
+        "rhabdomyolysis",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Cubicin, Merck), AHA Infective Endocarditis Guidelines, IDSA MRSA Guidelines",
+      "structure": "Naturally derived cyclic lipopeptide antibacterial fermentation product of Streptomyces roseosporus. Consists of a 13-amino acid cyclic peptide core linked to a lipophilic n-decanoyl fatty acid side chain. Molecular formula: C72H101N17O26 (MW 1620.67 g/mol). Must be reconstituted in 0.9% NaCl or Lactated Ringer's; strictly incompatible with dextrose-containing diluents. Reconstitution with sterile water causes severe foaming.",
+      "pd": "• Mechanism of Action: Rapidly concentration-dependent bactericidal action without cell lysis. In the presence of physiological calcium ions (Ca2+), daptomycin inserts its lipophilic tail into the bacterial cytoplasmic membrane, oligomerizing into functional ion-conducting pores. This triggers rapid, massive potassium (K+) efflux and membrane depolarization, terminating intracellular macromolecular synthesis (DNA, RNA, protein) and causing rapid cell death within 30–60 minutes.\n• Antimicrobial Spectrum:\n  - Gram-Positive Aerobes: Methicillin-Resistant S. aureus (MRSA), MSSA, Coagulase-Negative Staphylococci (MRSE), Vancomycin-Intermediate S. aureus (VISA), Vancomycin-Resistant S. aureus (VRSA), Vancomycin-Resistant Enterococcus faecium and E. faecalis (VRE), and Streptococcus pyogenes/agalactiae.\n  - Completely Inactive Against: All Gram-negative bacteria (the outer membrane prevents daptomycin access to the cytoplasmic membrane).\n• CRITICAL CONTRAINDICATION IN PNEUMONIA:\n  - Daptomycin binds with high affinity to pulmonary surfactant dipalmitoylphosphatidylcholine (DPPC), sequestering the drug and completely neutralizing its antibacterial activity. It demonstrated clinical failure and increased mortality in community-acquired and nosocomial pneumonia; NEVER use for pneumonia!\n• Pharmacodynamic Driver: Peak-to-MIC ratio (Cmax/MIC) and AUC24/MIC ratio (target AUC/MIC ≥ 666 for S. aureus bacteremia).",
+      "pk": "• Distribution: Vd 0.10 L/kg in healthy subjects (confined primarily to vascular and interstitial space; expands up to 0.15–0.20 L/kg in sepsis). High, reversible protein binding (~90%–93% bound to serum albumin; independent of concentration).\n• Metabolism: Negligible hepatic metabolism; does not interact with cytochrome P450 enzymes.\n• Elimination & Half-Life: Excreted predominantly unchanged via the kidneys (78% in urine via glomerular filtration). Terminal elimination half-life is 8–9 hours in normal renal function, prolonging up to 28–30 hours in ESRD.\n• Dialyzability: Minimally removed by intermittent hemodialysis (~15% removed over 4 hours); removed by continuous renal replacement therapy.",
+      "dosage": "FDA-approved & ICU Protocols:\n• S. aureus (MRSA / MSSA) Bloodstream Infections (Bacteremia) & Right-Sided Infective Endocarditis:\n  - Standard FDA Dose: 6 mg/kg IV once daily (infused over 30 minutes in 0.9% NaCl, or as a 2-minute IV push injection).\n  - High-Dose ICU / IDSA Guideline Regimen: 8 mg/kg to 10 mg/kg (or up to 12 mg/kg) IV once daily (associated with faster clearance of refractory bacteremia, lower relapse rates, and prevention of daptomycin non-susceptibility emergence).\n• Vancomycin-Resistant Enterococcal (VRE) Sepsis / Bacteremia:\n  - 10 mg/kg to 12 mg/kg IV once every 24 hours.\n• Complicated Skin & Soft Tissue Infections (cSSTI):\n  - 4 mg/kg IV once daily.\n• Renal Impairment Dosage Adjustments (CrCl < 30 mL/min):\n  - CrCl ≥ 30 mL/min: Full dose once daily (q24h).\n  - CrCl < 30 mL/min & Intermittent Hemodialysis: Administer full weight-based dose (e.g., 6–10 mg/kg) once every 48 hours (q48h); on dialysis days, dose immediately following hemodialysis.\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF (Effluent rate 25–30 mL/kg/h): 8 mg/kg to 10 mg/kg IV every 48 hours (or 6–8 mg/kg IV every 24 hours under TDM guidance).\n• Dosing Weight Caveat: In obese patients (BMI ≥ 30 kg/m2), use Total Body Weight (TBW) for initial dosing.",
+      "offLabel": "• Prosthetic Joint Infection / Osteomyelitis due to MRSA/VRE: 8–10 mg/kg IV daily for 6–12 weeks.\n• Left-Sided Infective Endocarditis (with surgical evaluation): 10–12 mg/kg IV daily combined with ceftaroline or ampicillin.",
+      "complications": "• Boxed Warnings & Life-Threatening Toxicities:\n  - STRICTLY CONTRAINDICATED IN PNEUMONIA: Inactivated by pulmonary surfactant; high failure rates.\n  - Myopathy & Rhabdomyolysis: Dose-dependent skeletal muscle toxicity. Manifests as diffuse muscle pain, muscle weakness, elevated serum creatine phosphokinase (CPK), myoglobinuria, and acute kidney injury.\n  - Mandatory CPK Monitoring: Baseline serum CPK before therapy, then at least once weekly (and every 2–3 days in ICU patients with renal insufficiency or high-dose therapy). Discontinue daptomycin if CPK > 1,000 U/L (5x ULN) with unexplained symptoms, or if CPK > 2,000 U/L (10x ULN) in asymptomatic patients.\n  - Statin Interaction: Temporarily DISCONTINUE HMG-CoA reductase inhibitors (statins: atorvastatin, rosuvastatin) during daptomycin therapy to prevent synergistic rhabdomyolysis!\n  - Eosinophilic Pneumonia: Severe idiosyncratic hypersensitivity reaction (fever, dyspnea, diffuse pulmonary infiltrates, BAL eosinophils > 25%); requires immediate drug cessation and systemic corticosteroids.\n  - Peripheral Neuropathy: Paresthesias, numbness, sensory disturbance.\n  - False Prolongation of PT / INR: Daptomycin interacts with recombinant thromboplastin reagents in vitro; use validated clotting assays.",
+      "references": [
+        "FDA Prescribing Information: Cubicin / Cubicin RF (daptomycin for injection). Merck & Co., Inc., revised 2023.",
+        "Fowler VG Jr, et al. Daptomycin versus standard therapy for bacteremia and right-sided endocarditis caused by Staphylococcus aureus. N Engl J Med. 2006;355(7):653-665.",
+        "Silverman JA, et al. Resistance studies with daptomycin. Antimicrob Agents Chemother. 2001;45(6):1799-1802."
+      ]
+    },
+    {
+      "id": "tigecycline",
+      "cat": "antimicrobials",
+      "name": "Tigecycline",
+      "aliases": [
+        "Tygacil",
+        "GAR-936",
+        "TGC"
+      ],
+      "brand": "Tygacil",
+      "classification": "First-in-Class Glycylcycline • 30S Ribosomal Protein Synthesis Inhibitor",
+      "tagline": "Broad-spectrum glycylcycline antibiotic for complicated intra-abdominal and skin infections; carries an FDA boxed warning for increased all-cause mortality and is unsuitable for bacteremia or UTI.",
+      "tags": [
+        "tigecycline",
+        "tygacil",
+        "glycylcycline",
+        "mrsa",
+        "vre",
+        "crab",
+        "cIAI",
+        "black-box-warning",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Tygacil, Wyeth/Pfizer), FDA Boxed Warning on Tigecycline Mortality, IDSA 2024",
+      "structure": "First-in-class glycylcycline antibiotic. Chemically derived from minocycline by substituting an N-alkyl-glycylamido moiety (tert-butylglycylamido group) at the 9-position of the core four-ring naphthacene carboxamide nucleus. This bulky C-9 side chain prevents efflux mediated by the classic Tet(A-E) and Tet(K) resistance pumps and overcomes ribosomal protection proteins Tet(M) and Tet(O). Formula: C29H39N5O8 (MW 585.65 g/mol). Reconstitute in 0.9% NaCl or D5W (yellow-orange solution).",
+      "pd": "• Mechanism of Action: Bacteriostatic. Binds reversibly to the 30S ribosomal subunit with 5-fold higher affinity than tetracycline, sterically hindering the entry of aminoacyl-tRNA into the ribosomal A-site and arresting peptide chain elongation.\n• Antimicrobial Spectrum:\n  - Ultra-Broad Coverage: Active against Gram-positive, Gram-negative, anaerobic, and atypical pathogens.\n  - Resistant Gram-Positive: MRSA, VISA, VRSA, VRE (both E. faecium and E. faecalis), penicillin-resistant S. pneumoniae.\n  - Multidrug-Resistant Gram-Negative: ESBL-producing E. coli and K. pneumoniae, AmpC producers, Carbapenem-Resistant Enterobacterales (CRE), and Carbapenem-Resistant Acinetobacter baumannii (CRAB) as part of combination therapy, Stenotrophomonas maltophilia.\n  - Anaerobes: Bacteroides fragilis, Clostridium perfringens, Peptostreptococcus.\n  - Critical Spectrum Gaps (The 'Three Ps'): Completely inactive against Pseudomonas aeruginosa, Proteus spp., and Providencia spp. (due to native resistance mediated by MexXY and RND-type efflux pumps)!\n• Pharmacodynamic Driver: AUC24/MIC ratio (target: AUC/MIC ≥ 18 for cIAI).",
+      "pk": "• Extremely Large Volume of Distribution: Vd 7–10 L/kg (500–700 L in total body), reflecting massive tissue sequestration.\n• Tissue vs Serum Concentrations:\n  - High Concentrations in: Biliary tract (500x serum), gallbladder, liver, colon, lungs, and bone.\n  - Extremely LOW Serum & Urinary Concentrations: Rapidly shifts out of bloodstream into tissues; peak serum levels are only ~0.6–0.9 mcg/mL. Unacceptable for primary bacteremia, endocarditis, or urinary tract infections (only < 15% excreted in urine)!\n• Metabolism & Elimination: Primarily eliminated via biliary/fecal excretion (59% in feces and bile as glucuronide metabolites and parent drug). Only 22%–33% excreted in urine. Terminal half-life is 37–42 hours.\n• Dialyzability: Negligible removal by hemodialysis (< 2% cleared) or CRRT due to massive Vd and tissue binding; no supplemental dosing needed.",
+      "dosage": "FDA-approved & ICU Protocols:\n• Standard Approved Regimen (Complicated Intra-Abdominal Sepsis / cSSTI):\n  - Loading Dose: 100 mg IV single dose, followed by 50 mg IV every 12 hours (infused over 30 to 60 minutes).\n• High-Dose ICU / Severe Multidrug-Resistant (CRAB / CRE) Regimen:\n  - Loading Dose: 200 mg IV single dose, followed by 100 mg IV every 12 hours (Doubled dose supported by PK/PD studies and meta-analyses to overcome high MICs in critically ill septic patients).\n• Renal Impairment & Hemodialysis Adjustments:\n  - No dosage adjustment required in renal insufficiency, ESRD, or any mode of hemodialysis/CRRT.\n• Hepatic Impairment Adjustments (Severe Cirrhosis / Child-Pugh C):\n  - 100 mg IV loading dose, followed by reduced maintenance dose of 25 mg IV every 12 hours (50 mg q12h in high-dose protocol).\n  - Child-Pugh A or B: No dose adjustment.",
+      "offLabel": "• Severe Multidrug-Resistant Acinetobacter baumannii (CRAB) Sepsis: 200 mg loading, then 100 mg q12h combined with high-dose Ampicillin-Sulbactam or Polymyxin.\n• Severe Clostridioides difficile Colitis (Refractory/Fulminant): 100 mg loading, then 50 mg q12h combined with oral/rectal Vancomycin.",
+      "complications": "• FDA BLACK BOX WARNING — INCREASED ALL-CAUSE MORTALITY:\n  - Pooled meta-analysis of 13 phase 3 and 4 clinical trials demonstrated an increased risk of all-cause mortality with tigecycline compared to active comparators (4.0% vs 3.0%, risk difference 0.6%, 95% CI 0.1–1.2%).\n  - The highest mortality excess was observed in hospital-acquired pneumonia (especially ventilator-associated pneumonia, an unapproved indication) and bacteremia.\n  - Reserve tigecycline only for situations where alternative treatments are not suitable!\n• Adverse Drug Reactions:\n  - Gastrointestinal Intolerance (Extremely Common): Severe nausea (30%), vomiting (20%), and anorexia; dose-limiting in conscious patients.\n  - Acute Pancreatitis: Idiosyncratic, potentially fatal necrotizing pancreatitis reported within 1–2 weeks of initiation; monitor lipase/amylase.\n  - Coagulopathy & Hypofibrinogenemia: Marked drop in plasma fibrinogen levels and prolongation of PT/INR through vitamin K gut inhibition and direct hepatic synthesis interference.\n  - Photosensitivity, tooth discoloration in pediatrics, and hepatic dysfunction.",
+      "references": [
+        "FDA Prescribing Information: Tygacil (tigecycline for injection). Boxed Warning revised 2023. Wyeth Pharmaceuticals / Pfizer.",
+        "Yahav D, et al. Efficacy and safety of tigecycline: a systematic review and meta-analysis. J Antimicrob Chemother. 2011;66(9):1963-1971.",
+        "Tamma PD, et al. Infectious Diseases Society of America 2024 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. Clin Infect Dis. 2024."
+      ]
+    },
+    {
+      "id": "amikacin",
+      "cat": "antimicrobials",
+      "name": "Amikacin",
+      "aliases": [
+        "Amikin",
+        "AMK"
+      ],
+      "brand": "Amikin",
+      "classification": "Semi-Synthetic Aminoglycoside • 30S Ribosomal Irreversible Protein Synthesis Inhibitor",
+      "tagline": "Potent aminoglycoside with the lowest susceptibility to bacterial modifying enzymes, used for severe multidrug-resistant Gram-negative septic shock with mandatory TDM.",
+      "tags": [
+        "amikacin",
+        "amikin",
+        "aminoglycoside",
+        "gram-negative",
+        "septic-shock",
+        "nephrotoxicity",
+        "ototoxicity",
+        "tdm",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Amikin), Surviving Sepsis Campaign Guidelines 2021, Sanford Guide to Antimicrobial Therapy 2024",
+      "structure": "Semi-synthetic aminoglycoside antibiotic derived from kanamycin A. Chemically synthesized by acylation of the 1-amino group of the 2-deoxystreptamine nucleus with an L-(-)-4-amino-2-hydroxybutyryl (AHBA) moiety. This specific AHBA side chain sterically protects the amikacin molecule from attack by most aminoglycoside-modifying enzymes (acetyltransferases, phosphotransferases, nucleotidyltransferases) that inactivate gentamicin and tobramycin. Formula: C22H43N5O13 • 2H2SO4 (MW 781.76 g/mol as sulfate salt). Highly water-soluble; low lipid solubility.",
+      "pd": "• Mechanism of Action: Rapidly concentration-dependent bactericidal action. Actively transported across the bacterial inner cytoplasmic membrane via an oxygen-dependent, proton-motive-force driven transport system (strictly ineffective in anaerobic environments or acidic abscesses!). Binds irreversibly to the 16S rRNA of the 30S ribosomal subunit, causing mRNA misreading, premature termination of translation, and incorporation of aberrant nonfunctional proteins that disrupt cytoplasmic membrane integrity.\n• Antimicrobial Spectrum:\n  - Aerobic Gram-Negative Bacilli: Pseudomonas aeruginosa, Acinetobacter baumannii complex, Enterobacterales (Klebsiella, Enterobacter, Serratia, E. coli, Proteus, Citrobacter), Providencia.\n  - Retains activity against gentamicin- and tobramycin-resistant Gram-negative isolates.\n  - Mycobacteria: Mycobacterium tuberculosis, Mycobacterium avium complex (MAC), Mycobacterium abscessus.\n  - Inactive Against: Anaerobic bacteria, Burkholderia cepacia, Stenotrophomonas maltophilia, and Enterococci (unless combined with beta-lactams for synergy).\n• Post-Antibiotic Effect (PAE): Extended PAE (up to 4–8 hours), where bacterial regrowth remains suppressed even after serum drug concentrations fall below MIC.\n• Pharmacodynamic Driver: Peak-to-MIC ratio (Cmax/MIC ≥ 8–10:1 is the target for clinical cure and prevention of adaptive resistance).",
+      "pk": "• Distribution: Vd 0.25–0.30 L/kg in healthy adults, but expands dramatically to 0.40–0.60 L/kg in critically ill septic shock patients due to capillary leak, third-spacing, and aggressive fluid resuscitation. Low protein binding (< 10%). Minimal penetration into bronchial secretions (10%–20%) and uninflamed CSF.\n• Metabolism: None; excreted 100% chemically intact.\n• Elimination & Half-Life: Cleared exclusively by renal glomerular filtration (> 90%–98% recovered unchanged in urine). Terminal half-life is 2.0–2.5 hours in normal renal function, but can extend to 30–60 hours in anuria and acute tubular necrosis.\n• Dialyzability: Readily dialyzable by intermittent hemodialysis (50% removed per session; requires post-dialysis supplemental dose) and CRRT.",
+      "dosage": "FDA-approved & ICU Protocols:\n• Once-Daily Extended-Interval Dosing (Preferred Standard in ICU Sepsis):\n  - Initial Dose: 15 mg/kg to 20 mg/kg (up to 25–30 mg/kg in septic shock with expanded Vd) IV once every 24 hours, infused over 30 to 60 minutes.\n  - Dosing Weight Calculation:\n    * Actual Body Weight (ABW) if ABW < Ideal Body Weight (IBW).\n    * IBW if ABW is within 120% of IBW.\n    * Adjusted Body Weight (AdjBW = IBW + 0.4 x [ABW - IBW]) in obese patients (ABW > 120% of IBW).\n• Therapeutic Drug Monitoring (TDM) Targets (MANDATORY):\n  - Peak Concentration (drawn 30–60 min after end of 30-min infusion):\n    * Target Cmax: 60–80 mcg/mL (for once-daily 15–20 mg/kg dosing; ensures Cmax/MIC ≥ 8–10).\n  - Trough Concentration (drawn immediately before next dose, within 30 min of scheduled infusion):\n    * Target Cmin: < 4–5 mcg/mL (preferably < 1–2 mcg/mL to prevent drug accumulation in renal proximal tubular cells and inner ear hair cells).\n• Renal Impairment Adjustments:\n  - When CrCl < 50 mL/min, extend the dosing interval (q36h, q48h) rather than reducing the dose, or use nomogram-based Hartford/Barnes-Jewish protocols to maintain high Cmax/MIC while ensuring a drug-free clearance period (trough < 2 mcg/mL).\n  - Intermittent Hemodialysis: 7.5–10 mg/kg loading dose, then 5–7.5 mg/kg post-dialysis.\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF: 10 mg/kg to 15 mg/kg IV loading dose, then monitor serum levels targeting redosing when concentration drops below 5 mcg/mL.",
+      "offLabel": "• Inhaled Amikacin for Multidrug-Resistant Gram-Negative VAP: 400–500 mg nebulized q12h via specialized vibrating mesh nebulizer.\n• Intrathecal / Intraventricular Amikacin for Ventriculitis/Meningitis: 5–30 mg daily in preservative-free formulation.",
+      "complications": "• FDA Black Box Warnings:\n  - NEPHROTOXICITY: Direct non-oliguric acute tubular necrosis (ATN) caused by pinocytosis of cationic amikacin into renal proximal tubular epithelial cells, lysosomal phospholipidosis, and mitochondrial disruption. Manifests as rising serum creatinine, enzymuria, and beta-2 microglobulinuria. Risk factors: sustained trough > 5 mcg/mL, treatment > 7–10 days, concomitant nephrotoxins (vancomycin, piptaz, amphotericin B, IV contrast, loop diuretics).\n  - OTOTOXICITY (Auditory & Vestibular): Accumulates in cochlear endolymph and perilymph, causing apoptosis of outer hair cells. Results in irreversible bilateral high-frequency sensorineural hearing loss and vestibular ataxia. Cumulative dose-dependent.\n  - NEUROMUSCULAR BLOCKADE: Competitively inhibits presynaptic calcium influx and acetylcholine release at the motor endplate. Can precipitate acute respiratory paralysis; strictly contraindicated in Myasthenia Gravis and caution with concurrent neuromuscular blockers (rocuronium, vecuronium). Antidote: IV Calcium gluconate (1 g) + Neostigmine.",
+      "references": [
+        "FDA Prescribing Information: Amikin (amikacin sulfate injection). Bristol-Myers Squibb / Teva, revised 2023.",
+        "Nicolau DP, et al. Experience with a once-daily aminoglycoside program administered to 2,184 adult patients. Antimicrob Agents Chemother. 1995;39(3):650-655.",
+        "Roberts JA, et al. Dosing regimen of amikacin in critically ill patients. Antimicrob Agents Chemother. 2012;56(2):929-934."
+      ]
+    },
+    {
+      "id": "metronidazole",
+      "cat": "antimicrobials",
+      "name": "Metronidazole",
+      "aliases": [
+        "Flagyl",
+        "MTZ"
+      ],
+      "brand": "Flagyl",
+      "classification": "Synthetic 5-Nitroimidazole • Free Radical DNA Strand Scission Bactericidal Agent",
+      "tagline": "Gold-standard anti-anaerobic nitroimidazole for intra-abdominal sepsis, anaerobic abscesses, and surgical prophylaxis with complete oral bioavailability.",
+      "tags": [
+        "metronidazole",
+        "flagyl",
+        "nitroimidazole",
+        "anaerobes",
+        "cIAI",
+        "abscess",
+        "disulfiram",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Flagyl, Pfizer), IDSA Intra-Abdominal Infection Guidelines, CDC STI Guidelines",
+      "structure": "Synthetic 5-nitroimidazole compound: 2-(2-methyl-5-nitro-1H-imidazol-1-yl)ethanol. Molecular formula: C6H9N3O3 (MW 171.15 g/mol). Low molecular weight lipophilic uncharged molecule. Ready-to-use IV infusion solution contains 500 mg metronidazole in 100 mL 0.9% NaCl (5 mg/mL, pH 5.0–7.0). Must be protected from light and freezing.",
+      "pd": "• Mechanism of Action: Rapidly bactericidal against obligate anaerobes. Metronidazole diffuses passively across cell membranes into target organisms as a low-molecular-weight prodrug. In anaerobic or microaerophilic organisms, the nitro group is enzymatically reduced by electron transport proteins (pyruvate:ferredoxin oxidoreductase [PFOR] system and nitroreductases) to short-lived toxic reactive nitro radical intermediates. These free radicals attack microbial DNA, causing oxidative strand scission, destabilization of DNA helical structure, loss of function, and rapid cell lysis.\n• Antimicrobial Spectrum:\n  - Obligate Anaerobic Bacteria: Highly potent against Bacteroides fragilis group, Prevotella, Fusobacterium, Clostridium perfringens, Clostridium tetani, Clostridioides difficile, and Peptostreptococcus.\n  - Protozoa: Entamoeba histolytica, Giardia lamblia, Trichomonas vaginalis.\n  - Inactive Against: All aerobic and facultative anaerobic bacteria (E. coli, Klebsiella, Pseudomonas, Staphylococci, Streptococci lack ferredoxin-linked low-redox potential electron transfer proteins necessary to reduce the nitro group).\n• Pharmacodynamic Driver: AUC/MIC and Peak/MIC ratio (Cmax/MIC).",
+      "pk": "• Absorption: 100% oral bioavailability; IV and PO doses are interchangeable (1:1).\n• Distribution: Vd 0.6–0.9 L/kg (distributes extensively into all body tissues and fluids). Very low protein binding (< 20%). Outstanding penetration into deep abscess cavities, empyema, peritoneal fluid, bone, and cerebral tissue/CSF (crosses intact and inflamed blood-brain barrier reaching 60%–100% of concurrent serum levels).\n• Metabolism: Extensively metabolized by hepatic cytochrome P450 enzymes (CYP2A6, CYP3A4) primarily by side-chain oxidation and glucuronide conjugation into active 2-hydroxymethyl and inactive hydroxy acid metabolites.\n• Elimination & Half-Life: 60%–80% excreted in urine (20% as unchanged parent drug, remainder as metabolites) and 6%–15% in feces. Elimination half-life is 8 hours in normal hepatic function, prolonging up to 18–24 hours in severe hepatic failure / cirrhosis.\n• Dialyzability: Readily removed by intermittent hemodialysis (50%–60% cleared per 4-hour session; requires post-dialysis supplemental dose) and CRRT.",
+      "dosage": "FDA-approved & ICU Protocols:\n• Severe Intra-Abdominal Sepsis / Peritonitis / Pelvic Infections / Brain Abscess:\n  - Loading Dose: 15 mg/kg IV single dose (typically 1 g IV) infused over 30 to 60 minutes, followed by:\n  - Maintenance: 7.5 mg/kg IV every 6 hours (or 500 mg IV every 8 hours) for 7–14 days.\n• Surgical Antimicrobial Prophylaxis (Colorectal Surgery):\n  - 500 mg IV single dose infused within 60 minutes prior to surgical incision, combined with Cefazolin or Cefuroxime.\n• Hepatic Encephalopathy / SIBO / Amebic Liver Abscess:\n  - 750 mg PO or IV every 8 hours for 7–10 days.\n• Renal Impairment Dosage Adjustments:\n  - CrCl > 10 mL/min: No dosage adjustment needed.\n  - CrCl < 10 mL/min / ESRD on Hemodialysis: 500 mg IV every 12 hours, with doses administered after hemodialysis on dialysis days.\n• Hepatic Impairment Adjustments (MANDATORY IN CIRRHOSIS):\n  - Severe Hepatic Impairment (Child-Pugh C): Reduce dose by 50% (e.g., 250 mg IV q8h or 500 mg IV q12h) to avoid encephalopathy and neurotoxicity.\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF: 500 mg IV every 8 to 12 hours.",
+      "offLabel": "• Tetanus (Clostridium tetani): 500 mg IV q8h for 10 days (preferred over penicillin G due to absence of GABA antagonism).\n• Lung Abscess / Aspiration Pneumonia with Cavitation: 500 mg IV/PO q8h combined with beta-lactam.",
+      "complications": "• Boxed Warnings & Clinical Cautions:\n  - FDA Carcinogenicity Boxed Warning based on rodent studies; avoid unnecessary long-term usage.\n  - DISULFIRAM-LIKE ETHANOL REACTION: Strongly inhibits aldehyde dehydrogenase (ALDH). Ingestion of ethanol or alcohol-containing medications (e.g., elixirs, IV solutions) precipitates severe flushing, throbbing headache, diaphoresis, nausea, vomiting, hypotension, and chest tightness. Avoid alcohol for at least 48–72 hours after last dose!\n  - Neurotoxicity: Dose- and duration-dependent central and peripheral neurotoxicity: sensory peripheral neuropathy (stocking-glove paresthesias), encephalopathy, cerebellar ataxia, dysarthria, and seizures. Reversible upon prompt cessation.\n  - Warfarin Interaction: Potently inhibits CYP2C9 metabolism of (S)-warfarin, causing massive prolongation of PT/INR and catastrophic bleeding; reduce warfarin dose by 50% and monitor daily INR.\n  - Metallic taste in mouth, dark/reddish-brown urine (harmless metabolite excretion), and pancreatitis.",
+      "references": [
+        "FDA Prescribing Information: Flagyl (metronidazole injection and tablets). GD Searle / Pfizer, revised 2023.",
+        "Solomkin JS, et al. Diagnosis and management of complicated intra-abdominal infection in adults and children: guidelines by the Surgical Infection Society and IDSA. Clin Infect Dis. 2010;50(2):133-164.",
+        "Lofmark S, et al. Metronidazole is still the drug of choice for treatment of anaerobic infections. Clin Infect Dis. 2010;50 Suppl 1:S16-23."
+      ]
+    },
+    {
+      "id": "ciprofloxacin",
+      "cat": "antimicrobials",
+      "name": "Ciprofloxacin",
+      "aliases": [
+        "Cipro",
+        "CIP"
+      ],
+      "brand": "Cipro",
+      "classification": "Second-Generation Fluoroquinolone • Bacterial DNA Gyrase / Topoisomerase IV Inhibitor",
+      "tagline": "Potent broad-spectrum Gram-negative fluoroquinolone with antipseudomonal activity; carries multiple FDA black-box warnings for tendinitis, aortic dissection, and QT prolongation.",
+      "tags": [
+        "ciprofloxacin",
+        "cipro",
+        "fluoroquinolone",
+        "pseudomonas",
+        "pyelonephritis",
+        "black-box-warning",
+        "qt-prolongation",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Cipro, Bayer), FDA Drug Safety Communications on Fluoroquinolone Boxed Warnings, IDSA cUTI Guidelines",
+      "structure": "Synthetic second-generation fluoroquinolone antibacterial: 1-cyclopropyl-6-fluoro-4-oxo-7-(piperazin-1-yl)-1,4-dihydroquinoline-3-carboxylic acid. Molecular formula: C17H18FN3O3 • HCl • H2O (MW 385.8 g/mol as monohydrochloride monohydrate). Contains a fluorine atom at position 6 conferring enhanced cellular penetration and a piperazinyl ring at position 7 conferring antipseudomonal activity. Formulated in 0.2% and 1% solutions in 5% dextrose or sterile water (pH 3.3–4.6).",
+      "pd": "• Mechanism of Action: Rapidly bactericidal. Inhibits bacterial type II topoisomerases: DNA gyrase (topoisomerase II: GyrA and GyrB subunits) and Topoisomerase IV (ParC and ParE subunits). In Gram-negative bacteria, DNA gyrase is the primary target; ciprofloxacin locks the cleaved DNA-gyrase complex, generating double-stranded DNA breaks, arresting DNA replication forks, inhibiting transcription, and triggering autolytic bacterial cell death.\n• Antimicrobial Spectrum:\n  - Gram-Negative Aerobes: Enterobacterales (E. coli, Klebsiella, Proteus, Enterobacter, Citrobacter, Salmonella, Shigella), Pseudomonas aeruginosa, Haemophilus influenzae, Moraxella catarrhalis, Neisseria meningitidis.\n  - Atypical Pathogens: Legionella pneumophila, Mycoplasma pneumoniae, Chlamydia pneumoniae.\n  - Poor / Inactive Spectrum: Poor against Streptococcus pneumoniae (do NOT use for community-acquired pneumonia; levofloxacin/moxifloxacin required), MRSA, Enterococcus faecalis/faecium, and strictly inactive against anaerobes (Bacteroides fragilis).\n• Pharmacodynamic Driver: AUC24/MIC and Cmax/MIC ratio (target: AUC/MIC ≥ 125 for Gram-negative sepsis; ≥ 30 for Gram-positive).",
+      "pk": "• Bioavailability: Rapid, high oral bioavailability (~70%–80%); oral and IV dosing regimens are highly bioequivalent.\n• Distribution: Vd 2.1–2.7 L/kg (extensive intracellular tissue distribution). Low plasma protein binding (20%–40%). High concentrations in kidneys, prostate, urine, bile, lungs, and macrophages. Modest CSF penetration (10%–30% in inflamed meninges).\n• Metabolism: Partially metabolized in liver (4 metabolites: desethyleneciprofloxacin, sulfociprofloxacin, oxociprofloxacin, formylciprofloxacin; ~15% total).\n• Elimination & Half-Life: Dual elimination:\n  - Renal Excretion: 40%–50% excreted unchanged in urine by glomerular filtration and active tubular secretion.\n  - Non-Renal Clearance: Biliary and transluminal intestinal secretion accounts for remaining 20%–35%.\n  - Elimination Half-Life: 4–6 hours in normal renal function, prolonging up to 10–12 hours in severe renal impairment.\n• Dialyzability: Only minimally removed by hemodialysis (< 10%) or peritoneal dialysis.",
+      "dosage": "FDA-approved & ICU Protocols:\n• Severe Nosocomial Infections / Antipseudomonal Therapy / Septic Shock:\n  - 400 mg IV every 8 hours (infused over 60 minutes; High-Dose ICU regimen).\n• Complicated Urinary Tract Infections (cUTI) / Pyelonephritis / Sepsis:\n  - 400 mg IV every 12 hours (or 500 mg PO every 12 hours).\n• Complicated Intra-Abdominal Sepsis:\n  - 400 mg IV every 12 hours combined with Metronidazole 500 mg IV q8h.\n• Inhalational Anthrax (Post-Exposure Prophylaxis):\n  - 400 mg IV every 12 hours (or 500 mg PO q12h) for 60 days.\n• Renal Impairment Dosage Adjustments:\n  - CrCl 30–50 mL/min: 400 mg IV every 12 hours.\n  - CrCl < 30 mL/min / ESRD: 400 mg IV every 18 to 24 hours (or 250–500 mg PO q24h).\n  - Intermittent Hemodialysis: 250 mg to 500 mg PO or 400 mg IV every 24 hours administered after hemodialysis on dialysis days.\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF: 400 mg IV every 12 hours.",
+      "offLabel": "• Malignant Otitis Externa: 400 mg IV q8h for 6–12 weeks.\n• Meningococcal Prophylaxis: Single oral dose 500 mg.",
+      "complications": "• FDA BLACK BOX WARNINGS (Class-Wide Fluoroquinolone Toxicities):\n  - Tendinitis & Tendon Rupture: Involves Achilles tendon primarily; risk elevated in elderly (> 60 years), concurrent systemic corticosteroids, and organ transplant recipients. Discontinue immediately at first sign of tendon pain or inflammation!\n  - Peripheral Neuropathy: Rapid-onset, potentially irreversible sensory axonopathy.\n  - Central Nervous System Toxicities: Psychosis, hallucinations, depression, agitation, acute delirium, toxic encephalopathy, and lower seizure threshold (inhibits central GABA-A receptors).\n  - Exacerbation of Myasthenia Gravis: Can trigger life-threatening respiratory failure; strictly contraindicated in Myasthenia Gravis patients!\n  - Aortic Aneurysm & Dissection: Fluoroquinolones degrade vascular smooth muscle extracellular matrix; avoid in patients with known aortic aneurysm or Marfan/Ehlers-Danlos syndrome.\n• Other Significant Warnings:\n  - QT Prolongation & Torsades de Pointes: Prolongs QTc interval by blocking cardiac hERG potassium channels. Avoid in baseline long QT syndrome, hypokalemia, hypomagnesemia, or with concurrent QTc-prolonging drugs (amiodarone, haloperidol, ondansetron).\n  - Severe Dysglycemia: Symptomatic hypoglycemia (potentially fatal hypoglycemic coma in diabetics on oral sulfonylureas/insulin) or severe hyperglycemia.\n  - Photosensitivity, acute interstitial nephritis, and CDAD.",
+      "references": [
+        "FDA Prescribing Information: Cipro (ciprofloxacin injection and tablets). Boxed Warning revised 2023. Bayer HealthCare Pharmaceuticals.",
+        "FDA Drug Safety Communication: FDA updates warnings for oral and injectable fluoroquinolones due to disabling and potentially permanent serious side effects. Dec 2018 / 2023.",
+        "Gupta K, et al. International clinical practice guidelines for the treatment of acute uncomplicated cystitis and pyelonephritis in women: A 2010 update by IDSA/ESCMID. Clin Infect Dis. 2011;52(5):e103-e120."
+      ]
+    },
+    {
+      "id": "levofloxacin",
+      "cat": "antimicrobials",
+      "name": "Levofloxacin",
+      "aliases": [
+        "Levaquin",
+        "LVX"
+      ],
+      "brand": "Levaquin",
+      "classification": "Third-Generation 'Respiratory' Fluoroquinolone • DNA Gyrase / Topoisomerase IV Inhibitor",
+      "tagline": "Third-generation respiratory fluoroquinolone with potent activity against S. pneumoniae, atypical pathogens, and Gram-negative bacilli; carries boxed warnings for tendinitis and QT prolongation.",
+      "tags": [
+        "levofloxacin",
+        "levaquin",
+        "respiratory-fluoroquinolone",
+        "pneumonia",
+        "legionella",
+        "black-box-warning",
+        "qt-prolongation",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Levaquin, Janssen/Ortho-McNeil), ATS/IDSA Community-Acquired Pneumonia Guidelines 2019, IDSA HAP/VAP 2016",
+      "structure": "Optically active L-isomer (S-enantiomer) of the racemic fluoroquinolone ofloxacin: (S)-9-fluoro-2,3-dihydro-3-methyl-10-(4-methyl-1-piperazinyl)-7-oxo-7H-pyrido[1,2,3-de]-1,4-benzoxazine-6-carboxylic acid hemihydrate. Molecular formula: C18H20FN3O4 • 1/2 H2O (MW 370.38 g/mol). The pure S-enantiomer exhibits 8- to 128-fold higher antibacterial potency against DNA gyrase than the R-enantiomer. Available as 250 mg, 500 mg, and 750 mg IV solutions in 5% dextrose (5 mg/mL) and oral tablets.",
+      "pd": "• Mechanism of Action: Rapidly bactericidal. Inhibits bacterial DNA gyrase (topoisomerase II) and topoisomerase IV. In Gram-positive organisms (S. pneumoniae), topoisomerase IV is the primary target; in Gram-negative organisms, DNA gyrase is the primary target. Dual-targeting locks cleavage complexes, arrests DNA fork movement, causes irreversible double-strand chromosomal fragmentation, and triggers cell lysis.\n• Antimicrobial Spectrum:\n  - 'Respiratory' Gram-Positive: High potency against Streptococcus pneumoniae (including multidrug-resistant [MDRSP], penicillin-resistant, and macrolide-resistant strains), MSSA, and Streptococcus pyogenes.\n  - Atypical Pneumonia Pathogens: Outstanding activity against Legionella pneumophila (first-line agent of choice), Mycoplasma pneumoniae, Chlamydophila pneumoniae, and Coxiella burnetii.\n  - Gram-Negative Aerobes: Haemophilus influenzae, Moraxella catarrhalis, Klebsiella pneumoniae, E. coli, Proteus, and moderate activity against Pseudomonas aeruginosa (less potent than ciprofloxacin against P. aeruginosa).\n  - Mycobacteria: Active against Mycobacterium tuberculosis (second-line core agent) and non-tuberculous mycobacteria.\n  - Inactive Against: MRSA (rapid resistance emergence), Enterococcus faecium, and anaerobes.\n• Pharmacodynamic Driver: AUC24/MIC (target: AUC/MIC ≥ 30–40 for S. pneumoniae; ≥ 100–125 for Gram-negative bacilli).",
+      "pk": "• Absorption: 99%–100% oral bioavailability; IV and oral formulations are 100% interchangeable (1:1 conversion).\n• Distribution: Vd 1.1–1.3 L/kg (distributes rapidly into intracellular compartments). Low plasma protein binding (24%–38%). Superb penetration into lung tissues: concentrations in alveolar macrophages (20x serum), epithelial lining fluid (2x to 3x serum), and bronchial mucosa exceed concurrent plasma levels. Good bone and urinary penetration.\n• Metabolism: Undergoes negligible hepatic metabolism (< 5% converted to desmethyl and N-oxide metabolites).\n• Elimination & Half-Life: Cleared predominantly (> 87%) as unchanged active drug by renal glomerular filtration and active tubular secretion. Terminal elimination half-life is 6–8 hours in normal renal function, prolonging up to 28–35 hours in advanced CKD and ESRD.\n• Dialyzability: Not removed by intermittent hemodialysis (< 3%) or peritoneal dialysis.",
+      "dosage": "FDA-approved & ICU Protocols:\n• Severe Community-Acquired Pneumonia (CAP) / Severe Legionellosis:\n  - 750 mg IV or PO once daily for 5 days (High-Dose Short-Course regimen), OR 500 mg IV/PO q24h for 7–14 days.\n• Nosocomial Pneumonia (HAP / VAP) / Complicated Gram-Negative Sepsis:\n  - 750 mg IV once every 24 hours (infused over 90 minutes) for 7–14 days.\n• Complicated Urinary Tract Infections (cUTI) / Acute Pyelonephritis:\n  - 750 mg IV/PO once every 24 hours for 5 days, OR 250 mg IV/PO q24h for 10 days.\n• Renal Impairment Dosage Adjustments (STRICT ADHERENCE REQUIRED — ALMOST PURELY RENAL):\n  - For Initial 750 mg/24h Regimen:\n    * CrCl 50–79 mL/min: No adjustment needed (750 mg q24h).\n    * CrCl 20–49 mL/min: 750 mg IV/PO every 48 hours (or 500 mg initial, then 250 mg q24h).\n    * CrCl < 20 mL/min / ESRD / Hemodialysis: 750 mg initial dose, then 500 mg every 48 hours.\n  - For Initial 500 mg/24h Regimen:\n    * CrCl 20–49 mL/min: 500 mg initial dose, then 250 mg every 24 hours.\n    * CrCl < 20 mL/min / ESRD / Hemodialysis: 500 mg initial dose, then 250 mg every 48 hours.\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF (Effluent rate 25–30 mL/kg/h): 500 mg IV every 24 hours (or 750 mg every 48 hours).",
+      "offLabel": "• Multidrug-Resistant Tuberculosis (MDR-TB): 750 mg to 1,000 mg PO daily as part of combination regimen.\n• Stenotrophomonas maltophilia Sepsis (alternative to TMP-SMX): 750 mg IV q24h.",
+      "complications": "• FDA BLACK BOX WARNINGS:\n  - Tendinitis and Tendon Rupture (Achilles tendon; avoid in athletic patients, elderly, or concurrent steroids).\n  - Peripheral Neuropathy (paresthesias, burning pain, hypesthesia).\n  - CNS Toxicities (delirium, agitation, hallucinations, encephalopathy, seizure induction).\n  - Contraindicated in Myasthenia Gravis (precipitates respiratory failure).\n  - Aortic Aneurysm and Dissection (black-box warning for aortic rupture).\n• Cardiac Electrophysiology Caution:\n  - QTc Interval Prolongation & Torsades de Pointes: Blocks potassium hERG channel. Extreme caution in ICU patients on concurrent QTc-prolonging drugs (amiodarone, procainamide, haloperidol, methadone) or electrolyte deficits (K+ < 4.0 mEq/L, Mg2+ < 2.0 mg/dL).\n• Dysglycemia: Acute, severe hypoglycemia in elderly patients with type 2 diabetes mellitus receiving insulin or oral sulfonylureas.",
+      "references": [
+        "FDA Prescribing Information: Levaquin (levofloxacin injection, tablets, and oral solution). Boxed Warning revised 2023. Janssen Pharmaceuticals / Ortho-McNeil.",
+        "Metlay JP, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia. Official Clinical Practice Guideline of the ATS and IDSA. Am J Respir Crit Care Med. 2019;200(7):e45-e67.",
+        "Dunbar LM, et al. High-dose, short-course levofloxacin (750 mg q.d. for 5 days) vs. standard-dose levofloxacin (500 mg q.d. for 10 days) in community-acquired pneumonia. Clin Infect Dis. 2003;37(6):752-760."
+      ]
+    },
+    {
+      "id": "aztreonam",
+      "cat": "antimicrobials",
+      "name": "Aztreonam",
+      "aliases": [
+        "Azactam",
+        "Cayston",
+        "AZT"
+      ],
+      "brand": "Azactam",
+      "classification": "Synthetic Monocyclic Beta-Lactam (Monobactam) • PBP3 Inhibitor",
+      "tagline": "Unique monobactam antibiotic with selective aerobic Gram-negative activity, safely administered in severe IgE-mediated penicillin allergy, and synergistic with avibactam against NDM metallo-beta-lactamases.",
+      "tags": [
+        "aztreonam",
+        "azactam",
+        "monobactam",
+        "penicillin-allergy",
+        "pseudomonas",
+        "ndm-1",
+        "metallo-beta-lactamase",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Azactam, Bristol-Myers Squibb), IDSA 2024 AMR Guidance, Surviving Sepsis Campaign",
+      "structure": "Completely synthetic monocyclic beta-lactam (monobactam) antibiotic. Differs fundamentally from bicyclic beta-lactams (penicillins, cephalosporins, carbapenems) because its core 2-azetidinone ring is not fused to a second sulfur- or carbon-containing ring. Features a sulfonic acid moiety at the N-1 position (conferring beta-lactam reactivity), an aminothiazolyl oxime side chain at position 3 (identical to ceftazidime, conferring potent Gram-negative activity), and a methyl group at position 4. Molecular formula: C13H17N5O8S2 (MW 435.43 g/mol). Reconstitute in sterile water or 0.9% NaCl.",
+      "pd": "• Mechanism of Action: Bactericidal. Covalently binds with exceptionally high affinity to penicillin-binding protein 3 (PBP3) of susceptible Gram-negative aerobic bacteria, inhibiting cross-wall formation during cell division and causing filamentation, osmotic instability, and rapid cell lysis. Demonstrates virtually zero affinity for PBPs of Gram-positive organisms or anaerobes.\n• Antimicrobial Spectrum:\n  - Exclusively Aerobic Gram-Negative Bacilli: Pseudomonas aeruginosa, Enterobacterales (E. coli, Klebsiella, Proteus, Enterobacter, Serratia, Citrobacter), Haemophilus influenzae, and Neisseria.\n  - Completely Inactive Against: All Gram-positive organisms (Staphylococci, Streptococci, Enterococci) and all anaerobic bacteria (requires combination with vancomycin/clindamycin/metronidazole for empiric broad-spectrum sepsis coverage).\n• CRITICAL ADVANTAGE 1: SAFE IN SEVERE PENICILLIN / CEPHALOSPORIN ALLERGY:\n  - Because aztreonam lacks the fused bicyclic ring structure of penicillins, it does NOT cross-react with IgE antibodies directed against penicillins or carbapenems. It can be safely administered to patients with confirmed anaphylaxis, angioedema, or hives to penicillins!\n  - Caveat: Cross-reacts with CEFTAZIDIME due to an identical R1 aminothiazolyl oxime side chain; avoid in patients with documented ceftazidime anaphylaxis.\n• CRITICAL ADVANTAGE 2: INTRINSIC STABILITY AGAINST METALLO-BETA-LACTAMASES (MBL):\n  - Aztreonam is structurally immune to hydrolysis by zinc-dependent Metallo-Beta-Lactamases (Class B: NDM-1, VIM, IMP)! When partnered with Avibactam (which inhibits co-produced ESBLs and AmpC), the combination (CZA + ATM) is the gold standard for NDM-producing CRE.",
+      "pk": "• Distribution: Vd 0.18–0.24 L/kg (primarily extracellular fluid). Moderate protein binding (56%). Excellent penetration into peritoneal fluid, pericardial fluid, pleural fluid, blister fluid, and inflamed meninges (penetrates CSF to reach 15%–40% of concurrent serum levels).\n• Metabolism: Minimal hepatic metabolism (~6%–10% converted to inactive SQ26,992 open-ring metabolite).\n• Elimination & Half-Life: Cleared rapidly by the kidneys via glomerular filtration and active tubular secretion (60%–75% excreted unchanged in urine in 8 hours). Elimination half-life is 1.7–2.0 hours in normal renal function, extending to 6–8 hours in severe renal failure and ESRD.\n• Dialyzability: Extensively dialyzable by intermittent hemodialysis (35%–50% removed per session; requires post-dialysis booster dose).",
+      "dosage": "FDA-approved & ICU Protocols:\n• Severe Gram-Negative Sepsis / Pseudomonal HAP/VAP / Septic Shock:\n  - 2 g IV every 8 hours (or 2 g IV q6h in life-threatening Pseudomonas infections), infused over 30 to 60 minutes.\n• Combination Therapy for Metallo-Beta-Lactamase (NDM-1 / VIM) CRE:\n  - Aztreonam 2 g IV every 8 hours (infused over 2 hours) administered concurrently with Ceftazidime-Avibactam 2.5 g IV every 8 hours.\n• Moderate Systemic Infections / Complicated UTI:\n  - 1 g to 2 g IV every 8 to 12 hours.\n• Renal Impairment Dosage Adjustments:\n  - CrCl 30–50 mL/min: 1 g IV every 8 to 12 hours (or 2 g loading, then 1 g q8h).\n  - CrCl 10–29 mL/min: 500 mg to 1 g IV every 12 to 24 hours.\n  - CrCl < 10 mL/min / ESRD on Hemodialysis: 500 mg to 1 g initial loading dose, then 500 mg IV every 24 hours; on HD days, administer supplementary 500 mg dose after hemodialysis.\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF (Effluent rate 25–30 mL/kg/h): 1 g to 2 g IV every 8 to 12 hours.",
+      "offLabel": "• Cystic Fibrosis Pulmonary Exacerbations (Pseudomonas): 2 g IV q6–8h.\n• Aerobic Gram-Negative Surgical Prophylaxis in Severe Penicillin Allergy: 2 g IV preoperatively + Vancomycin/Metronidazole.",
+      "complications": "• Precautions & Adverse Effects:\n  - Ceftazidime Allergy Cross-Reactivity: Due to identical side chain, cross-reactivity can occur in patients with ceftazidime-specific IgE allergy.\n  - Transaminitis: Asymptomatic transient elevation of serum aminotransferases (AST/ALT) and alkaline phosphatase.\n  - Phlebitis / Local Thrombophlebitis at peripheral IV injection sites.\n  - Gastrointestinal: Nausea, vomiting, diarrhea, and rare CDAD colitis.\n  - Hematologic: Pancytopenia, neutropenia, thrombocytosis, and eosinophilia (rare).",
+      "references": [
+        "FDA Prescribing Information: Azactam (aztreonam for injection). Bristol-Myers Squibb / Sandoz, revised 2023.",
+        "Tamma PD, et al. Infectious Diseases Society of America 2024 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. Clin Infect Dis. 2024.",
+        "Saxon A, et al. Immediate hypersensitivity reactions to beta-lactam antibiotics. Ann Intern Med. 1987;107(2):204-215."
+      ]
+    },
+    {
+      "id": "polymyxin-b",
+      "cat": "antimicrobials",
+      "name": "Polymyxin B",
+      "aliases": [
+        "Poly-Rx",
+        "Aerosporin",
+        "PMB"
+      ],
+      "brand": "Poly-Rx",
+      "classification": "Cationic Lipopeptide Detergent • Bacterial Outer Membrane Disruptor",
+      "tagline": "Active non-prodrug polymyxin for Carbapenem-Resistant Gram-negative bacteremia; superior pharmacokinetic predictability and lower nephrotoxicity than colistin.",
+      "tags": [
+        "polymyxin-b",
+        "colistin-alternative",
+        "cre",
+        "crab",
+        "dtr-pseudomonas",
+        "nephrotoxicity",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Polymyxin B for Injection), International Consensus Guidelines for the Optimal Use of Polymyxins 2019",
+      "structure": "Cationic cyclic decapeptide lipopeptide mixture produced by fermentation of Paenibacillus polymyxa. Composed primarily of polymyxin B1 and polymyxin B2. Structurally consists of a cyclic heptapeptide ring containing five positive charges (from L-alpha,gamma-diaminobutyric acid [DAB] residues) linked to a linear tripeptide attached to a branched fatty acid tail (6-methyloctanoic acid for B1; 6-methylheptanoic acid for B2). Formula: C56H98N16O13 (B1, MW 1203.5 g/mol). Crucial Distinction from Colistin: Supplied as the ACTIVE parent drug sulfate, NOT an inactive prodrug; exhibits immediate bactericidal activity upon infusion.",
+      "pd": "• Mechanism of Action: Rapidly bactericidal cationic detergent. The positively charged diaminobutyric acid (DAB) amino groups of polymyxin B electrostatically bind to negatively charged lipid A phosphate moieties of lipopolysaccharide (LPS) in the Gram-negative outer membrane, competitively displacing divalent cations (Ca2+ and Mg2+). The lipophilic fatty acid tail then inserts into and solubilizes the lipid bilayer, creating pores, causing loss of membrane integrity, leakage of intracellular nucleotides/enzymes, and rapid cell lysis. Also binds and neutralizes free endotoxin (LPS).\n• Antimicrobial Spectrum:\n  - Ultra-Resistant Gram-Negative Bacilli: Carbapenem-Resistant Enterobacterales (CRE: KPC, NDM, OXA-48), Carbapenem-Resistant Acinetobacter baumannii (CRAB), and Difficult-to-Treat Resistant (DTR) Pseudomonas aeruginosa.\n  - Inactive Against: All Gram-positive organisms, anaerobes, and intrinsic polymyxin-resistant Gram-negatives: Proteus, Providencia, Morganella, Serratia marcescens, Burkholderia cepacia, and Edwardsiella.\n• Pharmacodynamic Driver: AUC24/MIC (target: total AUC/MIC ~50–100, corresponding to an average steady-state serum concentration [Css,avg] of 2–4 mg/L).",
+      "pk": "• ADVANTAGES OVER COLISTIN (CMS):\n  - Administered as active drug (no slow, erratic, variable conversion required; achieves therapeutic blood levels within 1 hour).\n  - Elimination is predominantly NON-RENAL (biliary/tissue catabolism). Renal clearance accounts for < 5% of elimination.\n  - Serum concentrations are NOT affected by renal impairment or hemodialysis; does NOT require dose adjustment in renal failure (eliminating the toxic dose-escalation or underdosing errors seen with colistin!).\n• Distribution: Vd 0.35–0.45 L/kg. Moderate to high protein binding (58%–78% bound to alpha-1-acid glycoprotein and albumin). Low penetration into lung tissue (ELF levels < 10%–20%), bone, and uninflamed CSF.\n• Elimination Half-Life: 10–14 hours in healthy and critically ill patients.",
+      "dosage": "FDA & International Consensus Guidelines 2019 Protocols:\n• Severe Multidrug-Resistant Gram-Negative Sepsis / Bacteremia (CRE / CRAB / DTR-PA):\n  - Loading Dose (MANDATORY IN ALL ICU PATIENTS): 20,000 to 25,000 units/kg (2.0–2.5 mg/kg) IV infused over 60 to 120 minutes in 0.9% NaCl or D5W.\n  - Maintenance Dose: 12,500 to 15,000 units/kg (1.25–1.5 mg/kg) IV every 12 hours (infused over 60 minutes).\n  - Unit Equivalence: 10,000 International Units (USP units) = 1 mg of pure polymyxin B base.\n• Dosing Weight Rule: Use Total Body Weight (TBW); if BMI ≥ 30 kg/m2, use Adjusted Body Weight (AdjBW).\n• RENAL IMPAIRMENT DOSAGE ADJUSTMENT RULE:\n  - DO NOT ADJUST DOSE FOR RENAL FAILURE! Non-renal clearance dominates. Reducing doses in renal insufficiency leads to subtherapeutic concentrations and treatment failure. Maintain full 12,500–15,000 units/kg q12h in CKD, ESRD, and hemodialysis.\n• Continuous Renal Replacement Therapy (CRRT):\n  - Maintain standard dosing: 20,000–25,000 units/kg loading dose, then 12,500–15,000 units/kg IV every 12 hours.\n• Combination Therapy: Monotherapy carries high risk of resistance selection; always combine with an active partner (high-dose ampicillin-sulbactam, meropenem prolonged infusion, or tigecycline).",
+      "offLabel": "• Intrathecal / Intraventricular Polymyxin B for Gram-Negative Ventriculitis: 50,000 units (5 mg) once daily in preservative-free solution.\n• Adjunctive Inhaled Polymyxin B for Ventilator-Associated Pneumonia: 250,000 to 500,000 units nebulized q12h.",
+      "complications": "• FDA Black Box Warnings:\n  - NEPHROTOXICITY: Dose-dependent acute tubular necrosis (ATN) via endocytic uptake into renal proximal tubule cells, mitochondrial depolarization, and apoptosis. Lower incidence than colistin (20%–35% vs 40%–55%), but closely monitor serum creatinine, urine output, and avoid concurrent nephrotoxins.\n  - NEUROTOXICITY: Paresthesias (perioral numbness, stocking-glove tingling), dizziness, ataxia, confusion, and fatal respiratory muscle paralysis (presynaptic neuromuscular blockade via blockade of calcium influx and acetylcholine release). Strictly contraindicated in Myasthenia Gravis; reverse with IV Calcium gluconate.\n• Hyperpigmentation: Distinctive generalized dark-brown/violaceous cutaneous hyperpigmentation over the face and neck develops in ~15% of patients (melanocyte stimulation via histamine release; resolves over months post-discontinuation).",
+      "references": [
+        "Tsuji BT, et al. International Consensus Guidelines for the Optimal Use of the Polymyxins: Endorsed by the ACCP, ESPCM, IDSA, ISAP, SCCM, and SIDP. Pharmacotherapy. 2019;39(1):10-39.",
+        "FDA Prescribing Information: Polymyxin B for Injection, USP. X-Gen Pharmaceuticals / Pfizer, revised 2023.",
+        "Zavascki AP, et al. Polymyxin B for the treatment of multidrug-resistant pathogens: a critical review. J Antimicrob Chemother. 2007;60(6):1206-1215."
+      ]
+    },
+    {
+      "id": "ampicillin-sulbactam",
+      "cat": "antimicrobials",
+      "name": "Ampicillin-Sulbactam",
+      "aliases": [
+        "Unasyn",
+        "Sultamicillin",
+        "SAM"
+      ],
+      "brand": "Unasyn",
+      "classification": "Aminopenicillin / Beta-Lactamase Inhibitor • High-Dose PBP1/PBP3 Inhibitor Backbone for CRAB",
+      "tagline": "Aminopenicillin-inhibitor combination whose sulbactam component possesses unique intrinsic bactericidal affinity for Acinetobacter PBP1a/1b and PBP3; preferred backbone for CRAB.",
+      "tags": [
+        "ampicillin-sulbactam",
+        "unasyn",
+        "crab",
+        "acinetobacter",
+        "attack-trial",
+        "cIAI",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Unasyn, Pfizer), IDSA 2024 Guidance on AMR Gram-Negative Infections, ATTACK Trial",
+      "structure": "Fixed-dose combination of ampicillin sodium (semi-synthetic aminopenicillin) and sulbactam sodium (penicillanic acid sulfone beta-lactamase inhibitor). Formula: Ampicillin sodium (MW 371.39 g/mol) + Sulbactam sodium (MW 255.22 g/mol). Standard vial ratio is 2:1 (e.g., 3 g vial contains 2 g ampicillin + 1 g sulbactam). Crucial Clinical Distinction: Sulbactam is NOT merely an inhibitor; it possesses unique, direct, intrinsic bactericidal affinity for penicillin-binding proteins (PBP1a/1b and PBP3) of Acinetobacter baumannii complex.",
+      "pd": "• Mechanism of Action: Dual pharmacological action:\n  1. Ampicillin acts as a bactericidal transpeptidase inhibitor for susceptible staphylococci, streptococci, enterococci, and wild-type Gram-negatives, with sulbactam restoring activity against Class A beta-lactamase producers.\n  2. Sulbactam Direct Activity Against Acinetobacter: Sulbactam directly binds with high affinity to PBP1a, PBP1b, and PBP3 of Acinetobacter baumannii, exerting potent concentration-dependent bactericidal killing independent of ampicillin!\n• Antimicrobial Spectrum:\n  - Acinetobacter baumannii (including Carbapenem-Resistant A. baumannii [CRAB]): Sulbactam is the IDSA 2024 preferred first-line backbone agent when administered at high doses (9 g sulbactam/day).\n  - Enterococci: Enterococcus faecalis (first-line agent; ampicillin component).\n  - Gram-Positive: MSSA, Streptococcus pneumoniae, Streptococcus pyogenes, Listeria monocytogenes.\n  - Anaerobes: Bacteroides fragilis, Peptostreptococcus, and oral anaerobes.\n  - Gram-Negative Aerobes: E. coli, Klebsiella, Proteus mirabilis (non-ESBL strains).\n• Landmark ATTACK Trial (2023): Confirmed sulbactam-based regimens (sulbactam-durlobactam or high-dose ampicillin-sulbactam) achieved statistically superior 28-day all-cause mortality reduction and reduced nephrotoxicity compared to colistin in severe CRAB infections.",
+      "pk": "• Distribution: Vd 0.2–0.3 L/kg for both compounds (synchronous distribution). Low protein binding (~28% for ampicillin, ~38% for sulbactam). Good penetration into peritoneal fluid, blister fluid, and lung tissue.\n• Elimination & Half-Life: Both drugs excreted primarily unchanged in urine via glomerular filtration and tubular secretion (75%–85% recovered intact in urine within 8 hours). Elimination half-life is 1.0–1.3 hours in normal renal function, prolonging to 10–18 hours in severe renal failure.\n• Dialyzability: Both cleared efficiently by intermittent hemodialysis (~50% removed per 4-hour session; requires post-dialysis dosing).",
+      "dosage": "FDA-approved & ICU Protocols:\n• Standard Indications (Complicated Intra-Abdominal Sepsis / Head & Neck / GYN):\n  - 3 g (2 g ampicillin / 1 g sulbactam) IV every 6 hours infused over 30 minutes in 0.9% NaCl.\n• HIGH-DOSE REGIMEN FOR CARBAPENEM-RESISTANT ACINETOBACTER BAUMANNII (CRAB) — IDSA 2024 / ATTACK Trial:\n  - Total Sulbactam Dose: 9 g sulbactam per day (corresponds to 27 g total ampicillin-sulbactam per day!):\n  - Dosing Regimen: 9 g (6 g ampicillin / 3 g sulbactam) IV every 8 hours, administered as an extended 4-hour infusion, OR continuous infusion of 27 g/day following a 9 g loading dose.\n  - Always combine with a second active in vitro agent (Minocycline, Tigecycline, Polymyxin B, or Cefiderocol).\n• Renal Impairment Dosage Adjustments (Standard Sepsis Regimen):\n  - CrCl ≥ 50 mL/min: 3 g IV every 6 hours.\n  - CrCl 30–49 mL/min: 3 g IV every 8 hours.\n  - CrCl 15–29 mL/min: 3 g IV every 12 hours.\n  - CrCl < 15 mL/min / Hemodialysis: 3 g IV every 24 hours; on HD days, dose after hemodialysis.\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF (Effluent rate 25–35 mL/kg/h): For CRAB, 6 g (4 g ampicillin / 2 g sulbactam) IV every 8 hours.",
+      "offLabel": "• Severe Aspiration Pneumonia / Lung Abscess: 3 g IV q6h.\n• Animal / Human Bite Wounds (Infected): 1.5 g to 3 g IV q6h.",
+      "complications": "• Contraindications & Precautions:\n  - Severe IgE-mediated penicillin anaphylaxis.\n  - History of ampicillin-sulbactam-associated cholestatic jaundice or hepatic dysfunction.\n• Adverse Drug Reactions:\n  - Diarrhea and Clostridioides difficile-associated colitis.\n  - Drug-induced maculopapular rash (especially in patients with viral infections, Epstein-Barr virus / Infectious Mononucleosis; non-allergic ampicillin rash).\n  - Hepatotoxicity: Transient elevations in AST, ALT, alkaline phosphatase, and cholestatic jaundice.\n  - Interstitial nephritis and hypokalemia (due to massive sodium load in high-dose therapy: 27 g ampicillin-sulbactam delivers ~115 mEq of sodium per day).",
+      "references": [
+        "FDA Prescribing Information: Unasyn (ampicillin and sulbactam for injection). Pfizer Inc., revised 2023.",
+        "Kaye KS, et al. Efficacy and safety of sulbactam-durlobactam versus colistin for the treatment of patients with serious Acinetobacter baumannii-calcoaceticus complex infections (ATTACK): a randomised, open-label, active-controlled, phase 3 trial. Lancet Infect Dis. 2023;23(9):1072-1084.",
+        "Tamma PD, et al. Infectious Diseases Society of America 2024 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. Clin Infect Dis. 2024."
+      ]
+    },
+    {
+      "id": "imipenem-cilastatin",
+      "cat": "antimicrobials",
+      "name": "Imipenem-Cilastatin",
+      "aliases": [
+        "Primaxin",
+        "IMP-CSN"
+      ],
+      "brand": "Primaxin",
+      "classification": "First-in-Class Carbapenem / Renal Dehydropeptidase-1 Inhibitor Combination",
+      "tagline": "Potent broad-spectrum carbapenem paired with cilastatin to inhibit renal dehydropeptidase-1 breakdown; effective for polymicrobial intra-abdominal sepsis with strict seizure monitoring.",
+      "tags": [
+        "imipenem",
+        "cilastatin",
+        "primaxin",
+        "carbapenem",
+        "septic-shock",
+        "seizure-risk",
+        "cIAI",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Primaxin I.V., Merck), Surviving Sepsis Campaign Guidelines 2021",
+      "structure": "Fixed-dose combination of imipenem (N-formimidoyl thienamycin, the first semi-synthetic carbapenem antibiotic derived from Streptomyces cattleya) and cilastatin sodium (a competitive, reversible inhibitor of the renal brush border enzyme dehydropeptidase-1 [DHP-1]). Formula: Imipenem (C12H17N3O4S • H2O, MW 317.36 g/mol) + Cilastatin sodium (C16H25N2NaO5S, MW 380.43 g/mol). Fixed 1:1 ratio (500 mg imipenem + 500 mg cilastatin = 1 g vial). Why Cilastatin is Required: Imipenem alone is rapidly hydrolyzed and inactivated by renal DHP-1 in proximal tubules into a nephrotoxic metabolite; cilastatin blocks DHP-1, preventing renal degradation and nephrotoxicity.",
+      "pd": "• Mechanism of Action: Rapidly bactericidal. Imipenem penetrates outer membrane porins (OprD) and binds with high affinity to essential penicillin-binding proteins (PBP2, PBP1a, and PBP1b in Gram-negative bacteria; PBP1 and PBP2 in Gram-positive bacteria). Inhibits peptidoglycan cross-linking, weakens bacterial cell wall, and triggers autolysins.\n• Antimicrobial Spectrum:\n  - Gram-Negative Aerobes: Highly active against Enterobacterales (E. coli, Klebsiella, Enterobacter, Citrobacter, Proteus, Serratia), Pseudomonas aeruginosa, and Acinetobacter baumannii (non-carbapenemase strains).\n  - Gram-Positive Aerobes: MSSA, Streptococcus pneumoniae, Enterococcus faecalis (intrinsically active against E. faecalis, unlike meropenem which has slightly lower potency).\n  - Anaerobes: Excellent broad anaerobic coverage (Bacteroides fragilis, Prevotella, Fusobacterium, Peptostreptococcus).\n  - Inactive Against: MRSA, Enterococcus faecium, Stenotrophomonas maltophilia, and carbapenemase producers (KPC, MBL, OXA-48).\n• Pharmacodynamic Driver: %T > MIC ≥ 40% of the dosing interval. Infuse over 30 to 60 minutes.",
+      "pk": "• Distribution: Vd 0.23–0.26 L/kg for both components. Low protein binding (20% for imipenem, 40% for cilastatin). Excellent tissue penetration into peritoneal fluid, lung, bone, and bile. Enters inflamed meninges, but strictly avoided in CNS infections due to epileptogenic neurotoxicity!\n• Metabolism & Elimination: In the presence of cilastatin, ~70% of imipenem and ~70%–80% of cilastatin are excreted unchanged in urine via glomerular filtration and tubular secretion. Elimination half-life is 1.0 hour in normal renal function, extending to 3–4 hours in ESRD.\n• Dialyzability: Both cleared by intermittent hemodialysis (50%–60% removed; dose after dialysis).",
+      "dosage": "FDA-approved & ICU Protocols:\n• Severe Sepsis / Septic Shock / Nosocomial Polymicrobial Infection / cIAI:\n  - 500 mg IV every 6 hours (or 1 g IV every 8 hours in severe Pseudomonal sepsis), infused over 40 to 60 minutes in 0.9% NaCl or D5W.\n• Mild to Moderate Infections:\n  - 500 mg IV every 8 hours.\n• Renal Impairment Dosage Adjustments (CRITICAL TO PREVENT SEIZURES):\n  - CrCl 60–89 mL/min: 500 mg IV every 6 to 8 hours.\n  - CrCl 30–59 mL/min: 500 mg IV every 8 to 12 hours (or 250 mg q6h).\n  - CrCl 15–29 mL/min: 250 mg to 500 mg IV every 12 hours.\n  - CrCl < 15 mL/min / Hemodialysis: 250 mg IV every 12 hours; on HD days, administer after hemodialysis.\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF (Effluent rate 25–30 mL/kg/h): 500 mg IV every 8 hours.",
+      "offLabel": "• Severe Necrotizing Pancreatitis (Infected Necrosis): 500 mg IV q6h.\n• Melioidosis (Burkholderia pseudomallei) Sepsis: 1 g IV q8h.",
+      "complications": "• Boxed Warnings & Life-Threatening Toxicities:\n  - SEIZURE RISK & NEUROTOXICITY: Imipenem has the highest neurotoxicity and epileptogenic potential among carbapenems (seizure incidence 1.5%–3.0% vs 0.1%–0.5% with meropenem). Imipenem acts as a direct, potent antagonist at central GABA-A receptors. Highest risk in patients with unadjusted renal failure, pre-existing CNS disorders (stroke, TBI, epilepsy), or concurrent ganciclovir/valproate.\n  - CONTRAINDICATED IN BACTERIAL MENINGITIS (due to seizure risk; meropenem is the carbapenem of choice for CNS infections!).\n  - LETHAL VALPROIC ACID INTERACTION: Like all carbapenems, imipenem causes rapid, irreversible 60%–95% drop in serum valproic acid levels within 24 hours, precipitating breakthrough status epilepticus. Strict co-administration contraindication.\n  - Hypersensitivity, nausea/vomiting during rapid infusion (slow infusion to 60 min to eliminate nausea), and CDAD.",
+      "references": [
+        "FDA Prescribing Information: Primaxin I.V. (imipenem and cilastatin for injection). Merck & Co., Inc., revised 2023.",
+        "Calandra GB, et al. Review of adverse experiences and safety of the carbapenem imipenem/cilastatin. Am J Med. 1987;82(4A):267-277.",
+        "Norrby SR. Neurotoxicity of carbapenem antibacterials. Drug Saf. 1996;15(2):87-90."
+      ]
+    },
+    {
+      "id": "fidaxomicin",
+      "cat": "antimicrobials",
+      "name": "Fidaxomicin",
+      "aliases": [
+        "Dificid",
+        "OPT-80",
+        "FDX"
+      ],
+      "brand": "Dificid",
+      "classification": "Narrow-Spectrum Macrocyclic Antibacterial • Bacterial RNA Polymerase Inhibitor",
+      "tagline": "IDSA preferred first-line bactericidal agent for initial and recurrent Clostridioides difficile infection with minimal systemic absorption and low recurrence rates.",
+      "tags": [
+        "fidaxomicin",
+        "dificid",
+        "c-difficile",
+        "cdad",
+        "macrocyclic",
+        "idsa-preferred",
+        "icu",
+        "antibiotics"
+      ],
+      "source": "FDA Prescribing Information (Dificid, Merck), IDSA/SHEA Clinical Practice Guidelines for Clostridioides difficile 2021 Update",
+      "structure": "Naturally derived 18-membered macrocyclic antibacterial compound obtained from fermentation of Dactylosporangium aurantiacum subsp. hamdenensis. Chemical name: 3-[[[6-deoxy-4-O-(3,5-dichloro-2-ethyl-4-hydroxy-6-methylbenzoyl)-2-O-methyl-beta-D-mannopyranosyl]oxy]methyl]-12(R)-[6-deoxy-5-C-methyl-4-O-(2-methyl-1-oxopropyl)-beta-D-lyxo-hexopyranosyloxy]-11(S)-ethyl-8(S)-hydroxy-18(S)-(1(R)-hydroxyethyl)-9,13,15-trimethyloxacyclooctadeca-3,5,9,13,15-pentaen-2-one. Formula: C52H74Cl2O18 (MW 1058.04 g/mol). Minimal systemic absorption; concentrates locally in intestinal lumen.",
+      "pd": "• Mechanism of Action: Rapidly bactericidal against Clostridioides difficile. Binds to the sigma subunit (and adjacent beta-beta' core) of bacterial DNA-dependent RNA polymerase at a distinct site from rifamycins, preventing initial open promoter complex formation and arresting mRNA transcription before initiation.\n• Antimicrobial Spectrum:\n  - Highly Narrow-Spectrum: Exclusively active against Clostridioides difficile (MIC90 0.12 mcg/mL).\n  - Preservation of Normal Gut Microbiome: Spares normal intestinal anaerobic flora (Bacteroides, Prevotella, Bifidobacterium, and Clostridium cluster XIVa/IV). Preserving colonization resistance is the primary physiological mechanism explaining its markedly lower 30-day recurrence rates (15% vs 25%–30% with vancomycin).\n  - Post-Antibiotic Effect: Prolonged PAE (> 10 hours) against C. difficile vegetative cells and inhibits toxin A/B production and spore formation.\n• IDSA / SHEA 2021 Guideline Status: PREFERRED first-line agent over oral vancomycin for an initial episode of non-severe and severe C. difficile infection (CDI) in adults, and preferred for first recurrence of CDI.",
+      "pk": "• Absorption: Minimal systemic absorption following oral administration. Plasma concentrations are in the low picogram/nanogram range (Cmax ~5 ng/mL).\n• Fecal Concentrations: Extremely high concentrations throughout the entire gastrointestinal tract (fecal levels > 1,000–1,500 mcg/g of stool, exceeding MIC90 by over 1,000-fold!).\n• Metabolism: Hydrolyzed in gastrointestinal tract by esterases to its primary active metabolite, OP-1118 (also a potent anti-C. diff agent; fecal concentrations ~800 mcg/g).\n• Elimination: > 92% excreted intact in feces; < 1% excreted in urine.\n• Dialyzability: Negligible systemic presence; hemodialysis and CRRT have zero impact on fecal drug levels.",
+      "dosage": "FDA-approved & IDSA/SHEA Guidelines Protocols:\n• Initial Episode of Clostridioides difficile Infection (Non-Severe or Severe CDI):\n  - Standard Regimen: 200 mg PO twice daily (every 12 hours) with or without food for 10 days.\n• Recurrent CDI / Extended-Pulsed Regimen (Preferred for Recurrence):\n  - 200 mg PO twice daily for Days 1 to 5, followed by 200 mg PO ONCE EVERY OTHER DAY for Days 7 to 25 (Extended-pulsed regimen restores gut microbiota diversity while killing emerging vegetative spores).\n• Renal & Hepatic Adjustments:\n  - No dosage adjustment required in renal impairment, ESRD, dialysis, or hepatic failure (acts locally in intestinal lumen with minimal systemic absorption).\n• Fulminant CDI Caveat: In fulminant CDI with toxic megacolon, septic shock, or ileus, oral/rectal Vancomycin + IV Metronidazole remains standard; fidaxomicin can be crushed and given via NG tube if ileus is absent.",
+      "offLabel": "• First-Line Recurrence CDI in Immunocompromised / Oncology Patients: 200 mg PO BID for 10 days.\n• Prophylaxis in High-Risk Hematology-Oncology Patients during broad-spectrum antibiotic therapy: 200 mg daily.",
+      "complications": "• Precautions & Adverse Effects:\n  - Hypersensitivity: Angioedema, dyspnea, and pruritus reported rarely.\n  - Gastrointestinal: Nausea (11%), vomiting (7%), abdominal pain (6%), and GI hemorrhage (rare).\n  - Drug-Drug Interactions: Fidaxomicin and OP-1118 are substrates for efflux transporter P-glycoprotein (P-gp). Strong P-gp inhibitors (cyclosporine, ketoconazole, erythromycin) can slightly increase systemic absorption, but levels remain low and clinically safe.",
+      "references": [
+        "FDA Prescribing Information: Dificid (fidaxomicin tablets and oral suspension). Merck & Co., Inc., revised 2023.",
+        "Johnson S, et al. Clinical Practice Guideline by the IDSA and SHEA: 2021 Focused Update Guidelines on Management of Clostridioides difficile Infection in Adults. Clin Infect Dis. 2021;73(5):e1029-e1044.",
+        "Louie TJ, et al. Fidaxomicin versus vancomycin for Clostridium difficile infection. N Engl J Med. 2011;364(5):422-431."
+      ]
+    },
+    {
+      "id": "fluconazole",
+      "cat": "antimicrobials",
+      "name": "Fluconazole",
+      "aliases": [
+        "Diflucan",
+        "FLU"
+      ],
+      "brand": "Diflucan",
+      "classification": "Synthetic Bis-Triazole Antifungal • Fungal Ergosterol Synthesis (CYP51) Inhibitor",
+      "tagline": "First-line triazole antifungal for ICU Candida albicans / parapsilosis candidemia, cryptococcal meningitis consolidation, and high-risk surgical ICU prophylaxis.",
+      "tags": [
+        "fluconazole",
+        "diflucan",
+        "antifungal",
+        "candidemia",
+        "candida",
+        "icu",
+        "qt-prolongation",
+        "cyp3a4-inhibitor"
+      ],
+      "source": "FDA Prescribing Information (Diflucan, Pfizer), IDSA Candidiasis Guidelines 2016, Surviving Sepsis Campaign",
+      "structure": "Synthetic fluorinated bis-triazole antifungal: 2-(2,4-difluorophenyl)-1,3-bis(1H-1,2,4-triazol-1-yl)propan-2-ol. Molecular formula: C13H12F2N6O (MW 306.27 g/mol). Low lipophilicity and low molecular weight distinguish it from older imidazoles (ketoconazole). Formulated as 2 mg/mL injection solution in 0.9% NaCl or 5% dextrose (100 mL = 200 mg; 200 mL = 400 mg).",
+      "pd": "• Mechanism of Action: Fungistatic. Selectively inhibits fungal cytochrome P450 lanosterol 14-alpha-demethylase (encoded by ERG11 gene). This halts the conversion of lanosterol to ergosterol, an essential component of the fungal cytoplasmic cell membrane. The resulting depletion of ergosterol and accumulation of toxic 14-alpha-methylated sterols disrupts membrane permeability, membrane-bound enzyme activity, and arrests fungal growth.\n• Antifungal Spectrum:\n  - Susceptible Candida Species: Candida albicans, Candida parapsilosis (preferred agent for catheter-related candidemia due to superior biofilm penetration), Candida tropicalis, Candida lusitaniae.\n  - Endemic Mycoses & Cryptococcus: Cryptococcus neoformans, Coccidioides immitis, Histoplasma capsulatum (mild/consolidation).\n  - Resistant Species (Spectrum Gaps):\n    * Candida krusei: INTRINSICALLY RESISTANT (never use fluconazole!).\n    * Candida glabrata: Dose-dependent susceptibility / high baseline resistance (~15%–30% resistant via CDR1/CDR2 efflux upregulation and ERG11 mutations; echinocandins preferred).\n    * Candida auris: High rates of fluconazole resistance (> 85%–90%).\n    * Moulds: Zero activity against Aspergillus spp., Mucorales, or Fusarium.\n• Pharmacodynamic Driver: AUC24/MIC ratio (target: AUC/MIC ≥ 100 for non-neutropenic candidemia).",
+      "pk": "• Absorption: > 90% oral bioavailability (oral and IV formulations are 1:1 interchangeable; food does not impair absorption).\n• Distribution: Vd 0.65–0.80 L/kg (distributes into total body water). Low protein binding (11%–12%). Outstanding penetration into body fluids: saliva, sputum, peritoneal fluid, urine, and eye. Exceptional CNS penetration (CSF concentrations 70%–90% of concurrent serum levels, with or without meningeal inflammation).\n• Metabolism: Only 11% metabolized by the liver into inactive glucuronide conjugates.\n• Elimination & Half-Life: Cleared predominantly (> 80%) unchanged by renal glomerular filtration. Elimination half-life is 30 hours in normal renal function, prolonging up to 98 hours in anuria and ESRD.\n• Dialyzability: Readily cleared by intermittent hemodialysis (~50% removed over 4 hours; mandatory full maintenance dose administered post-dialysis).",
+      "dosage": "FDA-approved & IDSA Guidelines Protocols:\n• ICU Candidemia / Invasive Candidiasis (Non-Neutropenic, Stable Patients):\n  - Loading Dose (MANDATORY ON DAY 1): 800 mg (12 mg/kg) IV single dose, followed by:\n  - Maintenance Dose: 400 mg (6 mg/kg) IV or PO once daily (infused at max rate of 200 mg/hour).\n  - Duration: Treat for at least 14 days AFTER the first negative blood culture and documented resolution of candidemia symptoms.\n• C. parapsilosis Catheter-Associated Candidemia: Fluconazole 400 mg daily + mandatory central line removal.\n• Cryptococcal Meningitis (Consolidation & Maintenance):\n  - Following induction with Amphotericin B + Flucytosine: Fluconazole 400 mg to 800 mg PO/IV daily for 8 weeks, then 200 mg daily maintenance.\n• Surgical ICU Prophylaxis (High-Risk Gastrointestinal Leak / Recurrent Perforations):\n  - 400 mg IV once daily.\n• Renal Impairment Dosage Adjustments:\n  - CrCl > 50 mL/min: Full standard dose (100% dose, q24h).\n  - CrCl ≤ 50 mL/min: 50% of recommended dose (e.g., 800 mg load on day 1, then 200 mg q24h).\n  - Intermittent Hemodialysis: 100% of standard dose administered AFTER each hemodialysis session.\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF (High clearance!): 800 mg loading dose, then 400 mg to 800 mg IV every 24 hours (sub-therapeutic underdosing is common; maintain ≥ 400 mg/day in CRRT!).",
+      "offLabel": "• Coccidioidal Meningitis: 800 mg to 1,200 mg PO daily life-long.\n• Candida Urinary Tract Infection (Symptomatic Cystitis): 200 mg PO daily for 14 days (unique among antifungals for high urinary active concentrations).",
+      "complications": "• Warnings & Drug Interactions:\n  - QTc Interval Prolongation & Torsades de Pointes: Dose-dependent hERG channel block. Avoid with concurrent QTc-prolonging ICU drugs (haloperidol, methadone, amiodarone, quinolones).\n  - CYTOCHROME P450 ENZYME INHIBITION: Potent inhibitor of CYP2C9, CYP2C19, and moderate inhibitor of CYP3A4. Major Drug Interactions:\n    * Warfarin: Inhibits (S)-warfarin metabolism, doubling/tripling INR and causing fatal bleeding.\n    * Phenytoin: Increases phenytoin levels by 75%–100% (toxicity, ataxia).\n    * Calcineurin Inhibitors (Tacrolimus, Cyclosporine) & mTOR Inhibitors (Sirolimus): Dramatically elevates immunosuppressant levels; requires 50% dose reduction and daily TDM.\n    * Oral Hypoglycemics: Enhances sulfonylurea levels (severe hypoglycemia).\n  - Hepatotoxicity: Transient transaminitis (AST/ALT elevation in 5%–10%); rare fatal fulminant hepatic necrosis, cholestasis, or acute liver failure. Monitor liver function tests weekly in ICU.\n  - Teratogenicity: High-dose first-trimester exposure associated with craniofacial/cardiac malformations (antley-bixler-like syndrome); contraindicated in pregnancy.",
+      "references": [
+        "FDA Prescribing Information: Diflucan (fluconazole injection and tablets). Roerig / Pfizer, revised 2023.",
+        "Pappas PG, et al. Clinical Practice Guideline for the Management of Candidiasis: 2016 Update by the Infectious Diseases Society of America. Clin Infect Dis. 2016;62(4):e1-50.",
+        "Clancy CJ, et al. Fluconazole versus an echinocandin for the treatment of candidemia: a meta-analysis. Antimicrob Agents Chemother. 2014;58(12):7385-7393."
+      ]
+    },
+    {
+      "id": "caspofungin",
+      "cat": "antimicrobials",
+      "name": "Caspofungin",
+      "aliases": [
+        "Cancidas",
+        "L-743,872",
+        "CAS"
+      ],
+      "brand": "Cancidas",
+      "classification": "First-in-Class Echinocandin • Fungal (1,3)-Beta-D-Glucan Synthase Inhibitor",
+      "tagline": "First-line bactericidal echinocandin for invasive candidiasis, candidemia in septic shock, and salvage therapy for invasive aspergillosis; safe in renal failure.",
+      "tags": [
+        "caspofungin",
+        "cancidas",
+        "echinocandin",
+        "candidemia",
+        "candida-glabrata",
+        "candida-auris",
+        "aspergillus",
+        "icu",
+        "antifungals"
+      ],
+      "source": "FDA Prescribing Information (Cancidas, Merck), IDSA Candidiasis Guidelines 2016, Surviving Sepsis Campaign 2021",
+      "structure": "Semi-synthetic lipopeptide echinocandin antifungal synthesized from a fermentation product of Glarea lozoyensis. Hexapeptide core with an N-acyl fatty acid side chain (10,12-dimethylmyristoyl). Chemical name: 1-[(4R,5S)-5-[(2-aminoethyl)amino]-N2-(10,12-dimethyl-1-oxotetradecyl)-4-hydroxy-L-ornithine]-5-[(3R)-3-hydroxy-L-glutamine]-6-[6-hydroxy-L-proline]pneumocandin B0 diacetate. Molecular formula: C52H88N10O15 • 2C2H4O2 (MW 1213.42 g/mol as diacetate salt). Lyophilized powder reconstituted with sterile water, diluted in 0.9% NaCl or Lactated Ringer's; strictly incompatible with dextrose-containing solutions.",
+      "pd": "• Mechanism of Action: Rapidly concentration-dependent fungicidal against Candida species; fungistatic against Aspergillus. Non-competitively inhibits the enzyme (1,3)-beta-D-glucan synthase (encoded by FKS1 and FKS2 genes). This prevents synthesis of (1,3)-beta-D-glucan, the major cross-linking structural polysaccharide maintaining fungal cell wall integrity. Loss of glucan weakens the cell wall, generating osmotic fragility, cell swelling, and rapid osmotic lysis.\n• Antifungal Spectrum:\n  - Preferred First-Line for All Candida Species: C. albicans, C. glabrata (including fluconazole-resistant strains), C. krusei, C. tropicalis, and Candida auris.\n  - Aspergillus Species: Active against Aspergillus fumigatus, A. flavus, and A. niger (causes hyphal blunting and lysis of growing hyphal tips; approved for salvage therapy in invasive aspergillosis refractory to voriconazole/amphotericin).\n  - Inactive Against: Cryptococcus neoformans (contains predominantly alpha-glucan in cell wall), Mucorales (Rhizopus, Mucor), Fusarium, and Scedosporium.\n• Pharmacodynamic Driver: AUC/MIC and Peak/MIC (Cmax/MIC ratio).",
+      "pk": "• Distribution: Vd 9.6 L (confined predominantly to vascular and extracellular space). High plasma protein binding (~96% bound to albumin). High tissue concentrations in liver, spleen, kidneys, and lung. Low penetration into uninflamed CSF, eye, and urine.\n• Metabolism: Slowly metabolized by spontaneous chemical degradation to an open-ring peptide derivative (M0), followed by hepatic peptide cleavage and N-acetylation.\n• Elimination & Half-Life: Triphasic elimination: alpha-phase 1–2 hours, beta-phase 9–11 hours, and prolonged terminal gamma-phase (half-life 27–50 hours, reflecting slow tissue release). Only 1.4% excreted unchanged in urine; 41% recovered in feces and 35% in urine over 27 days.\n• Dialyzability: NOT dialyzable by hemodialysis or peritoneal dialysis (< 0.5% removed); no supplemental dosing needed in any renal replacement therapy.",
+      "dosage": "FDA-approved & ICU Protocols:\n• Invasive Candidiasis / Candidemia / Septic Shock (IDSA First-Line Regimen):\n  - Day 1 Loading Dose: 70 mg IV single dose infused over 60 minutes.\n  - Maintenance (Day 2 onwards): 50 mg IV once daily (infused over 60 minutes).\n  - High Body Weight Adjustment: In patients weighing > 80 kg, increase maintenance dose to 70 mg IV once daily.\n  - Duration: Minimum 14 days after documented blood culture clearance and resolution of symptoms.\n• Empirical Antifungal Therapy in Febrile Neutropenic Patients:\n  - 70 mg IV load on Day 1, then 50 mg IV daily (continue until ANC > 500/mcL).\n• Refractory Invasive Aspergillosis:\n  - 70 mg IV load on Day 1, then 50 mg IV daily (or 70 mg daily if no clinical response).\n• Renal Impairment & Dialysis Adjustments:\n  - No dosage adjustment required in renal insufficiency, ESRD, intermittent hemodialysis, or CRRT.\n• Hepatic Impairment Dosage Adjustments (MANDATORY IN MODERATE CIRRHOSIS):\n  - Mild Hepatic Impairment (Child-Pugh 5–6): No adjustment needed (70 mg load, then 50 mg daily).\n  - Moderate Hepatic Impairment (Child-Pugh 7–9): 70 mg IV load on Day 1, then reduce maintenance to 35 mg IV once daily.\n  - Severe Hepatic Impairment (Child-Pugh > 9): No clinical data; use with extreme caution.\n• Continuous Renal Replacement Therapy (CRRT):\n  - CVVH / CVVHD / CVVHDF: Standard dosing: 70 mg load on Day 1, then 50 mg IV once daily (70 mg daily if > 80 kg).",
+      "offLabel": "• Candida Endophthalmitis (as initial systemic bridge alongside vitrectomy and intravitreal voriconazole/amphotericin): 70 mg daily.\n• Intra-Abdominal Candidiasis / Necrotizing Pancreatitis with Candida Superinfection: 70 mg daily.",
+      "complications": "• Warnings & Drug Interactions:\n  - Cyclosporine Interaction: Co-administration with cyclosporine increases caspofungin AUC by ~35% and causes transient ALT/AST transaminitis. Use together only if benefit outweighs risk, with daily liver function test monitoring.\n  - Hepatic Enzyme Inducer Interactions: Concomitant treatment with clearance inducers (rifampin, efavirenz, nevirapine, phenytoin, carbamazepine, dexamethasone) reduces caspofungin trough concentrations; increase maintenance dose to 70 mg IV daily in normal-weight adults.\n  - Histamine-Mediated Infusion Reactions: Rapid infusion can trigger histamine release: rash, facial flushing, pruritus, bronchospasm, and hypotension. Strictly adhere to ≥ 60-minute infusion rate.\n  - Phlebitis at peripheral injection site (infuse through central venous line when feasible).\n  - Hypokalemia and transaminitis.",
+      "references": [
+        "FDA Prescribing Information: Cancidas (caspofungin acetate for injection). Merck & Co., Inc., revised 2023.",
+        "Pappas PG, et al. Clinical Practice Guideline for the Management of Candidiasis: 2016 Update by the Infectious Diseases Society of America. Clin Infect Dis. 2016;62(4):e1-50.",
+        "Mora-Duarte J, et al. Comparison of caspofungin and amphotericin B for invasive candidiasis. N Engl J Med. 2002;347(25):2020-2029."
+      ]
     }
   ]
 };

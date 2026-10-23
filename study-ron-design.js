@@ -326,12 +326,12 @@
       icon: "🫁",
       desc: "Complete 16-chapter intensive care syllabus (Washington Manual & consensus guidelines)",
       cats: [
-        { id: "all", label: "All Critical Care", icon: "✦", desc: "Complete 16-chapter Critical Care master syllabus (Washington Manual & consensus guidelines)", filter: (it) => (it.cat && it.cat.startsWith("cc_")) || ["shock", "respiratory", "abg", "antibiotics", "poisoning"].includes(it.cat) || (it.cat === "pain" && it.id !== "chronic-post-surgical-pain-neuromodulation" && it.id !== "regional-neuraxial-analgesia-catheters") || (it.id && (it.id.includes("sepsis") || it.id.includes("shock") || it.id.includes("ards") || it.id.includes("ventilator"))) },
+        { id: "all", label: "All Critical Care", icon: "✦", desc: "Complete 16-chapter Critical Care master syllabus (Washington Manual & consensus guidelines)", filter: (it) => (it.cat && it.cat.startsWith("cc_")) || ["shock", "respiratory", "abg", "antibiotics", "antimicrobials", "poisoning"].includes(it.cat) || (it.cat === "pain" && it.id !== "chronic-post-surgical-pain-neuromodulation" && it.id !== "regional-neuraxial-analgesia-catheters") || (it.id && (it.id.includes("sepsis") || it.id.includes("shock") || it.id.includes("ards") || it.id.includes("ventilator"))) },
         { id: "cc_principles", label: "General Principles", icon: "🏛️", desc: "ICU organization, triage, severity scoring systems (APACHE, SOFA, NEWS2), ethics & organ donation", filter: (it) => it.cat === "cc_principles" },
         { id: "cc_airway", label: "Airway Management", icon: "🫁", desc: "Difficult airway in ICU, physiological RSI, video laryngoscopy & percutaneous tracheostomy", filter: (it) => it.cat === "cc_airway" || (it.id && it.id.includes("rsi")) || ((it.name || "").toLowerCase().includes("rsi")) },
         { id: "cc_respiratory", label: "Respiratory Critical Care", icon: "💨", desc: "ARDS, mechanical ventilation modes, APRV, waveforms, asynchrony, severe asthma & PE", filter: (it) => it.cat === "cc_respiratory" || it.cat === "respiratory" },
         { id: "cc_hemodynamics", label: "Hemodynamic Support", icon: "⚡", desc: "Shock classification, invasive monitoring, PiCCO, vasopressors, inotropes & dynamic preload", filter: (it) => it.cat === "cc_hemodynamics" || it.cat === "shock" },
-        { id: "cc_sepsis", label: "Sepsis & Infections", icon: "🛡️", desc: "Sepsis-3 1-hour bundle, MDR pathogens, PK/PD beta-lactam infusions & source control", filter: (it) => it.cat === "cc_sepsis" || it.cat === "antibiotics" || (it.id && it.id.includes("sepsis")) },
+        { id: "cc_sepsis", label: "Sepsis & Infections", icon: "🛡️", desc: "Sepsis-3 1-hour bundle, MDR pathogens, PK/PD beta-lactam infusions & source control", filter: (it) => it.cat === "cc_sepsis" || it.cat === "antibiotics" || it.cat === "antimicrobials" || (it.id && (it.id.includes("sepsis") || it.id.includes("antibiotic"))) },
         { id: "cc_neuro", label: "Neurological Critical Care", icon: "🧠", desc: "Coma, GCS/FOUR score, TBI, raised ICP, status epilepticus, stroke & EVT, GBS, CNS infections & brain death", filter: (it) => it.cat === "cc_neuro" },
         { id: "cc_cardio", label: "Cardiovascular Critical Care", icon: "❤️", desc: "Acute coronary syndromes, cardiogenic shock (SCAI), malignant arrhythmias & cardiac tamponade", filter: (it) => it.cat === "cc_cardio" },
         { id: "cc_renal", label: "Renal & Metabolic Support", icon: "🧪", desc: "AKI (KDIGO), CRRT modalities, acid-base disorders & severe electrolyte emergencies", filter: (it) => it.cat === "cc_renal" || it.cat === "abg" },
@@ -352,8 +352,8 @@
       icon: "💊",
       desc: "Pharmacological monographs, receptor dynamics, kinetics and dosing guidelines",
       cats: [
-        { id: "all", label: "All Drugs", icon: "✦", desc: "Complete library of 106 drug monographs", filter: (it) => !it.sections },
-        { id: "antimicrobials", label: "Antimicrobial Therapy", icon: "🦠", desc: "ICU antibiotics — Meropenem, Piperacillin-Tazobactam (Piptaz), Gentamicin, Teicoplanin, Vancomycin & Colistin", filter: (it) => it.cat === "antimicrobials" },
+        { id: "all", label: "All Drugs", icon: "✦", desc: "Complete library of 126 drug monographs", filter: (it) => !it.sections },
+        { id: "antimicrobials", label: "Antimicrobial Therapy", icon: "🦠", desc: "ICU antibiotics & antifungals — Carbapenems, Cephalosporins, Novel BL/BLIs, Glycopeptides, Polymyxins, Aminoglycosides, Oxazolidinones, Fluoroquinolones & Echinocandins", filter: (it) => it.cat === "antimicrobials" || it.cat === "antibiotics" },
         { id: "antiarrhythmics", label: "Antiarrhythmics", icon: "⚡", desc: "Vaughan Williams classification — Amiodarone, Lignocaine, Procainamide, Ibutilide, Adenosine & class overviews", filter: (it) => it.cat === "antiarrhythmics" },
         { id: "cardiac", label: "Cardiac Drugs", icon: "🫀", desc: "Heart failure, nitrates, anti-anginal & antiplatelet drugs — Ivabradine, Furosemide, GTN, ISDN, Nicorandil, Digoxin, Antiplatelets & ARNI", filter: (it) => it.cat === "cardiac" || it.cat === "cardiac_drugs" },
         { id: "induction", label: "Induction Agents", icon: "💉", desc: "Intravenous hypnotics (propofol, etomidate, ketamine, thiopental)", filter: (it) => it.cat === "induction" },
@@ -1182,6 +1182,44 @@
       return "CARDIAC DRUG";
     }
 
+    if (cat === "antimicrobials") {
+      if (cls.includes("carbapenem")) return "CARBAPENEM";
+      if (cls.includes("cephalosporin")) return "CEPHALOSPORIN";
+      if (cls.includes("penicillin")) return "PENICILLIN / BLI";
+      if (cls.includes("oxazolidinone")) return "OXAZOLIDINONE";
+      if (cls.includes("lipopeptide") && !cls.includes("glyco")) return "CYCLIC LIPOPEPTIDE";
+      if (cls.includes("glycylcycline")) return "GLYCYLCYCLINE";
+      if (cls.includes("aminoglycoside")) return "AMINOGLYCOSIDE";
+      if (cls.includes("glycopeptide") || cls.includes("lipoglycopeptide")) return "GLYCOPEPTIDE";
+      if (cls.includes("nitroimidazole")) return "NITROIMIDAZOLE";
+      if (cls.includes("fluoroquinolone")) return "FLUOROQUINOLONE";
+      if (cls.includes("monobactam")) return "MONOBACTAM";
+      if (cls.includes("polymyxin")) return "POLYMYXIN";
+      if (cls.includes("macrocyclic")) return "MACROCYCLIC";
+      if (cls.includes("echinocandin")) return "ECHINOCANDIN";
+      if (cls.includes("triazole") || cls.includes("antifungal")) return "SYSTEMIC ANTIFUNGAL";
+      return "ANTIMICROBIAL";
+    }
+
+    if (cat === "antimicrobials") {
+      if (cls.includes("carbapenem")) return "CARBAPENEM";
+      if (cls.includes("cephalosporin")) return "CEPHALOSPORIN";
+      if (cls.includes("penicillin")) return "PENICILLIN / BLI";
+      if (cls.includes("oxazolidinone")) return "OXAZOLIDINONE";
+      if (cls.includes("lipopeptide") && !cls.includes("glyco")) return "CYCLIC LIPOPEPTIDE";
+      if (cls.includes("glycylcycline")) return "GLYCYLCYCLINE";
+      if (cls.includes("aminoglycoside")) return "AMINOGLYCOSIDE";
+      if (cls.includes("glycopeptide") || cls.includes("lipoglycopeptide")) return "GLYCOPEPTIDE";
+      if (cls.includes("nitroimidazole")) return "NITROIMIDAZOLE";
+      if (cls.includes("fluoroquinolone")) return "FLUOROQUINOLONE";
+      if (cls.includes("monobactam")) return "MONOBACTAM";
+      if (cls.includes("polymyxin")) return "POLYMYXIN";
+      if (cls.includes("macrocyclic")) return "MACROCYCLIC";
+      if (cls.includes("echinocandin")) return "ECHINOCANDIN";
+      if (cls.includes("triazole") || cls.includes("antifungal")) return "SYSTEMIC ANTIFUNGAL";
+      return "ANTIMICROBIAL";
+    }
+
     if (cat === "antidiabetics") {
       if (cls.includes("insulin")) return "Insulins & Basal Analogues";
       if (cls.includes("biguanide")) return "Biguanides";
@@ -1217,10 +1255,19 @@
 
     if (cat === "antimicrobials") {
       if (cls.includes("carbapenem")) return "Carbapenems (Beta-Lactams)";
-      if (cls.includes("ureidopenicillin") || cls.includes("penicillin")) return "Antipseudomonal Penicillins & Beta-Lactamase Inhibitors";
+      if (cls.includes("diazabicyclooctane") || cls.includes("avibactam") || cls.includes("tazobactam") || cls.includes("cephalosporin")) return "Cephalosporins & Novel Inhibitor Combinations";
+      if (cls.includes("ureidopenicillin") || cls.includes("aminopenicillin") || cls.includes("penicillin")) return "Antipseudomonal & Broad-Spectrum Penicillin Combinations";
+      if (cls.includes("oxazolidinone")) return "Oxazolidinones (50S Ribosomal Inhibitors)";
+      if (cls.includes("lipopeptide") && !cls.includes("glyco")) return "Cyclic Lipopeptides (Membrane Depolarizers)";
+      if (cls.includes("glycylcycline")) return "Glycylcyclines (30S Ribosomal Inhibitors)";
       if (cls.includes("aminoglycoside")) return "Aminoglycosides (30S Ribosomal Inhibitors)";
       if (cls.includes("glycopeptide") || cls.includes("lipoglycopeptide")) return "Glycopeptides & Lipoglycopeptides";
-      if (cls.includes("polymyxin")) return "Polymyxins (Outer Membrane Disruptors)";
+      if (cls.includes("nitroimidazole")) return "Nitroimidazoles (Anaerobic DNA Strand Disruptors)";
+      if (cls.includes("fluoroquinolone")) return "Fluoroquinolones (DNA Gyrase / Topo IV Inhibitors)";
+      if (cls.includes("monobactam")) return "Monobactams (MBL-Stable Beta-Lactams)";
+      if (cls.includes("polymyxin")) return "Polymyxins (Outer Membrane Cationic Disruptors)";
+      if (cls.includes("macrocyclic")) return "Macrocyclic Antibacterials (RNA Polymerase Inhibitors)";
+      if (cls.includes("echinocandin") || cls.includes("triazole") || cls.includes("antifungal")) return "Systemic ICU Antifungals & Echinocandins";
       return "ICU Antimicrobials";
     }
 
