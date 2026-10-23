@@ -2584,7 +2584,7 @@
       return new Promise((resolve) => {
         if (typeof document !== "undefined") {
           const script = document.createElement("script");
-          script.src = "study-data.js";
+          script.src = "study-data.js?v=20261023_v4";
           script.async = true;
           script.onload = () => {
             memoryCatalog = null; // Invalidate memory cache so next search includes deep section text

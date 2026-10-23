@@ -31,7 +31,7 @@ mob_primary_match = re.search(r'var MOBILE_PRIMARY_LINKS\s*=\s*\[(.*?)\];', js, 
 assert mob_primary_match, "MOBILE_PRIMARY_LINKS array not found"
 mob_primary_str = mob_primary_match.group(1)
 mob_primary_labels = re.findall(r"label:\s*'([^']+)'", mob_primary_str)
-for item in ['Home', 'Notes', 'Calculator']:
+for item in ['Home', 'Study Mode', 'Calculator']:
     assert item in mob_primary_labels, f"{item} missing from MOBILE_PRIMARY_LINKS"
 print(f"[OK] MOBILE_PRIMARY_LINKS verified: {mob_primary_labels}")
 
@@ -43,7 +43,7 @@ mob_more_labels = re.findall(r"label:\s*'([^']+)'", mob_more_str)
 
 # Must NOT show Home, Notes, or Calculator
 assert "Home" not in mob_more_labels, "Home MUST NOT be in 3-dot menu"
-assert "Notes" not in mob_more_labels, "Notes MUST NOT be in 3-dot menu"
+assert "Study Mode" not in mob_more_labels, "Study Mode MUST NOT be in 3-dot menu"
 assert "Calculator" not in mob_more_labels, "Calculator MUST NOT be in 3-dot menu"
 assert "Calculators" not in mob_more_labels, "Calculators MUST NOT be in 3-dot menu"
 assert "Valve Lesions" not in mob_more_labels, "Valve Lesions must not be in 3-dot menu"

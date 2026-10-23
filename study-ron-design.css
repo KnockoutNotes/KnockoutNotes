@@ -2571,6 +2571,7 @@ body.dark .ron-domain-tab.active .ron-domain-tab-count {
   width: 100%;
   max-width: 100%;
   margin: 20px auto 0 auto;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
   display: flex;
   justify-content: center;
   position: relative;
@@ -4211,7 +4212,7 @@ body.dark .ron-chapter-link-card:hover .ron-chapter-link-arrow {
   }
 
   .ron-chapters-grid {
-    padding: 10px 16px 28px;
+    padding: 10px 16px calc(28px + env(safe-area-inset-bottom, 0px));
     gap: 6px;
   }
 

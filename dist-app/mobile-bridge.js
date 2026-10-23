@@ -11,7 +11,7 @@
 (function () {
   'use strict';
 
-  // The 8 official offline-first sections
+  // The official offline-first sections (precached in sw.js)
   const OFFLINE_SECTIONS = new Set([
     'index.html',
     '',
@@ -22,7 +22,11 @@
     'resuscitation-chamber.html',
     'crisis.html',
     'regional-anaesthesia.html',
-    'ventilator.html'
+    'ventilator.html',
+    'drugs.html',
+    'notes.html',
+    'viva.html',
+    'pearls.html'
   ]);
 
   const SECTION_TITLES = {

@@ -338,7 +338,7 @@ body:not(.dark) .kn-desktop-search-btn kbd {
   position: fixed;
   left: 0;
   right: 0;
-  top: 10px;
+  top: calc(10px + env(safe-area-inset-top, 0px));
   display: flex;
   justify-content: center;
   padding: 0 10px;
@@ -588,7 +588,7 @@ body:not(.dark) .bubble-action-btn:active {
   z-index: 999;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 72px 14px 36px;
+  padding: calc(72px + env(safe-area-inset-top, 0px)) 14px calc(36px + env(safe-area-inset-bottom, 0px));
   box-sizing: border-box;
 }
 
