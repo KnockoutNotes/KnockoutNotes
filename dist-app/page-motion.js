@@ -34,7 +34,7 @@
       return false;
     }
     // Skip mobile drawer close links or elements with explicit data-close-menu
-    if (a.hasAttribute("data-close-menu") || a.closest(".mobile-menu")) {
+    if (a.hasAttribute("data-close-menu") || a.closest(".mobile-menu") || a.closest(".kn-desktop-dropdown-wrapper") || a.closest(".bubble-menu-items")) {
       return false;
     }
     var url = resolveUrl(a.href);

@@ -1065,6 +1065,7 @@
   }
 
   function backToCategory(newCatId) {
+    teardownScrollReadingMode();
     activeItem = null;
     searchFilter = "";
     if (newCatId) {
@@ -1808,6 +1809,10 @@
   function renderSelectedTopicView(mount, item, currentCatObj) {
     const isDrug = !item.sections;
     const subsections = getItemSubsections(item);
+    const prog = getItemProgressState(item.id);
+    const mappedChapter = STUDY_ITEM_TO_CHAPTER[item.id] || CAT_TO_CHAPTER[activeCat] || CAT_TO_CHAPTER[activeDomain];
+    const showTopicMcq = hasTopicMCQs(item.id);
+    const showChapterMcq = mappedChapter && hasChapterMCQs(mappedChapter);
 
     // Fast-scroll action pills
     const subPillsHTML = subsections.map((sub, i) => `
@@ -1880,6 +1885,39 @@
     mount.innerHTML = `
       <div class="ron-device-frame">
         <div class="ron-screen">
+
+          <!-- 0. Compact Scroll-Responsive Reading Toolbar (Stage C) -->
+          <nav class="ron-reading-toolbar" id="ronReadingToolbar" aria-label="Compact Reading Navigation" aria-hidden="true">
+            <div class="ron-reading-toolbar-inner">
+              <button type="button" class="ron-reading-back-btn" id="ronReadingBackBtn" title="Back to Category View" aria-label="Back">
+                ${ICONS.back}
+              </button>
+              <div class="ron-reading-title-wrap" id="ronReadingTitleWrap" title="Click to scroll to top" role="button" tabindex="0">
+                <span class="ron-reading-domain-tag">${esc(currentCatObj.label)}</span>
+                <span class="ron-reading-topic-title">${esc(item.short || item.name)}</span>
+                <span class="ron-reading-section-sub" id="ronReadingSectionSub"></span>
+              </div>
+              <div class="ron-reading-actions">
+                <button type="button" class="ron-reading-action-btn kn-study-progress-btn kn-progress-master-btn ${prog === 'mastered' ? 'active-mastered' : ''}" data-kn-progress-target="${esc(item.id)}" data-kn-progress-action="mastered" title="Mark as Mastered" aria-label="Mark Mastered">
+                  <span>${prog === 'mastered' ? '✓' : '○'}</span>
+                </button>
+                <button type="button" class="ron-reading-action-btn kn-study-progress-btn kn-progress-revision-btn ${prog === 'revision' ? 'active-revision' : ''}" data-kn-progress-target="${esc(item.id)}" data-kn-progress-action="revision" title="Flag for Revision" aria-label="Flag Revision">
+                  <span>${prog === 'revision' ? '⚑' : '⚐'}</span>
+                </button>
+                ${(showTopicMcq || showChapterMcq) ? `
+                  <button type="button" class="ron-reading-action-btn ron-reading-mcq-btn" data-topic-mcq-target="${esc(item.id)}" data-mcq-mode="${showTopicMcq ? 'topic' : 'chapter'}" ${!showTopicMcq && mappedChapter ? `data-chapter-id="${mappedChapter}"` : ''} title="Practice High Yield MCQs" aria-label="Practice MCQs">
+                    <span>📝</span>
+                  </button>
+                ` : ''}
+                <button type="button" class="ron-reading-action-btn ron-reading-top-btn" id="ronReadingTopBtn" title="Scroll to top" aria-label="Scroll to top">
+                  <span>↑</span>
+                </button>
+              </div>
+            </div>
+            <div class="ron-reading-progress-track" aria-hidden="true">
+              <div class="ron-reading-progress-bar" id="ronReadingProgressBar"></div>
+            </div>
+          </nav>
 
           <!-- 1. Header Bar: Back Button + Scoop Tab + Search -->
           <div class="ron-header-bar">
@@ -2023,6 +2061,9 @@
 
           </div>
 
+          <!-- Content Sentinel for Stable Scroll Detection (Stage C) -->
+          <div class="ron-reading-sentinel" id="ronReadingSentinel" aria-hidden="true"></div>
+
           <!-- 3. THE MAIN CONTAINER BOX (Complete Description in Full Sequence) -->
           <div class="ron-stage-container" id="ronMainContentBox">
             
@@ -2085,6 +2126,9 @@
 
     // Setup scroll spy to highlight the corresponding button as user scrolls
     setupScrollSpy(subsections);
+
+    // Setup scroll-responsive compact reading mode (Stage C)
+    setupScrollReadingMode(mount);
   }
 
   // ==========================================================================
@@ -2682,9 +2726,13 @@
           });
 
           const titlePill = document.getElementById("ronStagePillTitle");
+          const subEl = document.getElementById("ronReadingSectionSub");
           const heading = entry.target.querySelector(".ron-card-title");
           if (titlePill && heading) {
             titlePill.textContent = heading.textContent.trim();
+          }
+          if (subEl && heading) {
+            subEl.textContent = "— " + heading.textContent.trim();
           }
         }
       });
@@ -2698,6 +2746,102 @@
       const el = document.getElementById(sub.id);
       if (el) observer.observe(el);
     });
+  }
+
+  // ==========================================================================
+  // SCROLL-RESPONSIVE COMPACT READING MODE CONTROLLER (Stage C)
+  // Smoothly transitions into compact reading toolbar on downward scroll,
+  // restores expanded navigation on upward scroll with 60px hysteresis.
+  // ==========================================================================
+  let activeReadingScrollHandler = null;
+
+  function isReducedMotion() {
+    return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+
+  function teardownScrollReadingMode() {
+    if (activeReadingScrollHandler) {
+      window.removeEventListener("scroll", activeReadingScrollHandler);
+      activeReadingScrollHandler = null;
+    }
+    const app = document.getElementById("ronStudyApp");
+    if (app) app.classList.remove("ron-reading-mode-active");
+  }
+
+  function setupScrollReadingMode(mount) {
+    teardownScrollReadingMode();
+
+    const toolbar = document.getElementById("ronReadingToolbar");
+    const sentinel = document.getElementById("ronReadingSentinel");
+    const app = document.getElementById("ronStudyApp");
+    const progressBar = document.getElementById("ronReadingProgressBar");
+    if (!toolbar || !sentinel || !app) return;
+
+    let isCompact = false;
+    let ticking = false;
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        if (!sentinel.isConnected) return;
+        const sRect = sentinel.getBoundingClientRect();
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+
+        // Enter compact reading mode when sentinel reaches top area
+        if (!isCompact && sRect.top <= 80) {
+          isCompact = true;
+          app.classList.add("ron-reading-mode-active");
+          toolbar.setAttribute("aria-hidden", "false");
+        } 
+        // Exit compact reading mode (hysteresis: requires scrolling back up past 160px or scrollY < 200)
+        else if (isCompact && (sRect.top > 160 || scrollY < 200)) {
+          isCompact = false;
+          app.classList.remove("ron-reading-mode-active");
+          toolbar.setAttribute("aria-hidden", "true");
+        }
+
+        // Reading progress bar calculation
+        if (progressBar && isCompact) {
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (docHeight > 0) {
+            const pct = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
+            progressBar.style.width = pct.toFixed(1) + "%";
+          }
+        }
+      });
+    }
+
+    activeReadingScrollHandler = onScroll;
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    // Bind back button
+    const backBtn = document.getElementById("ronReadingBackBtn");
+    if (backBtn) {
+      backBtn.addEventListener("click", () => backToCategory());
+    }
+
+    // Bind title and top button to scroll to top
+    const titleWrap = document.getElementById("ronReadingTitleWrap");
+    if (titleWrap) {
+      const scrollToTop = () => window.scrollTo({ top: 0, behavior: isReducedMotion() ? "auto" : "smooth" });
+      titleWrap.addEventListener("click", scrollToTop);
+      titleWrap.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          scrollToTop();
+        }
+      });
+    }
+
+    const topBtn = document.getElementById("ronReadingTopBtn");
+    if (topBtn) {
+      topBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: isReducedMotion() ? "auto" : "smooth" });
+      });
+    }
   }
 
   // ==========================================================================
@@ -3035,6 +3179,7 @@ function renderTopicsModal() {
 
   function selectDomainTab(targetDomain) {
     if (!DOMAIN_DEFS[targetDomain]) return;
+    teardownScrollReadingMode();
     triggerHapticFeedback();
     if (targetDomain !== activeDomain || activeCat !== "all" || activeItem !== null || searchFilter) {
       activeDomain = targetDomain;
@@ -3056,6 +3201,7 @@ function renderTopicsModal() {
 
   function selectCategoryPill(domain, cat) {
     if (!DOMAIN_DEFS[domain]) return;
+    teardownScrollReadingMode();
     triggerHapticFeedback();
     activeDomain = domain;
     activeCat = cat || "all";
@@ -3174,12 +3320,44 @@ function renderTopicsModal() {
       e.preventDefault();
     }
 
-    if (control.type === "cat") {
-      selectCategoryPill(control.domain, control.cat);
+    const now = Date.now();
+    const isDoubleTap = (lastTapKey === control.key) && (now - lastTapTime <= DOUBLE_TAP_INTERVAL_MS);
+
+    if (isDoubleTap) {
+      lastTapKey = null;
+      lastTapTime = 0;
+      if (control.type === "cat") {
+        openChaptersModal(control.domain, control.cat);
+      } else {
+        openChaptersModal(control.domain);
+      }
     } else {
-      selectDomainTab(control.domain);
+      lastTapKey = control.key;
+      lastTapTime = now;
+      if (control.type === "cat") {
+        selectCategoryPill(control.domain, control.cat);
+      } else {
+        selectDomainTab(control.domain);
+      }
     }
   }, { passive: false });
+
+  // Desktop double-click support
+  document.addEventListener("dblclick", (e) => {
+    // Suppress synthetic or overlapping dblclick events following touch interactions
+    if (Date.now() - lastTouchHandledTime < 600) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+    const control = getCategoryControlFromEvent(e.target);
+    if (!control) return;
+    if (control.type === "cat") {
+      openChaptersModal(control.domain, control.cat);
+    } else {
+      openChaptersModal(control.domain);
+    }
+  });
 
   // ==========================================================================
   // GLOBAL CLICK LISTENER DELEGATION
@@ -3345,7 +3523,7 @@ function renderTopicsModal() {
     }
 
     // 3. Back Button clicked -> Back to Category
-    if (e.target.closest("#ronBackToCatBtn")) {
+    if (e.target.closest("#ronBackToCatBtn, #ronReadingBackBtn")) {
       e.preventDefault();
       e.stopPropagation();
       backToCategory();

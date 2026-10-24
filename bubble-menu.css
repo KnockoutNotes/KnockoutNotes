@@ -945,3 +945,166 @@ body:not(.dark) .bubble-menu-items .pill-close-hint {
     transform: none !important;
   }
 }
+
+
+/* ==========================================================================
+   STAGE D: ACCESSIBLE DESKTOP CRITICAL CARE TOPICS DROPDOWN
+   ========================================================================== */
+.kn-desktop-dropdown-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.kn-desktop-caret {
+  display: inline-block;
+  font-size: 10px;
+  margin-left: 3px;
+  transition: transform 0.2s ease;
+  opacity: 0.7;
+}
+
+.kn-dropdown-open .kn-desktop-caret {
+  transform: rotate(180deg);
+}
+
+.kn-desktop-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  width: 520px;
+  max-width: 92vw;
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.55),
+              0 0 0 1px rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  z-index: 1100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+body:not(.dark) .kn-desktop-dropdown-menu {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px -8px rgba(45, 35, 25, 0.15),
+              0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.kn-dropdown-open .kn-desktop-dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Invisible hit-area bridge to prevent hover loss between capsule and dropdown */
+.kn-desktop-dropdown-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+  pointer-events: auto;
+}
+
+.kn-desktop-dropdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 8px;
+}
+
+body:not(.dark) .kn-desktop-dropdown-header {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+.kn-dropdown-header-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #38bdf8;
+  text-transform: uppercase;
+}
+
+body:not(.dark) .kn-dropdown-header-title {
+  color: #0284c7;
+}
+
+.kn-dropdown-header-all {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ron-text-primary, #f1f5f9);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+body:not(.dark) .kn-dropdown-header-all {
+  color: #0f172a;
+}
+
+.kn-dropdown-header-all:hover {
+  color: #38bdf8;
+}
+
+.kn-desktop-dropdown-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.kn-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #cbd5e1;
+  font-size: 12.5px;
+  font-weight: 500;
+  transition: all 0.14s ease;
+}
+
+body:not(.dark) .kn-dropdown-item {
+  color: #334155;
+}
+
+.kn-dropdown-item:hover,
+.kn-dropdown-item:focus {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  outline: none;
+}
+
+body:not(.dark) .kn-dropdown-item:hover,
+body:not(.dark) .kn-dropdown-item:focus {
+  background: rgba(2, 132, 199, 0.08);
+  color: #0284c7;
+}
+
+.kn-dropdown-item-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.kn-dropdown-item-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kn-desktop-dropdown-menu,
+  .kn-desktop-caret {
+    transition: none !important;
+  }
+}

@@ -322,19 +322,20 @@ class TestStudyModeReliability(unittest.TestCase):
         )
         self.assertIn("container.scrollTo", scroll_body)
 
-    def test_single_tap_domain_switch_no_modal_hijack(self):
-        """Verify touch event handler directly switches domain without double-tap modal hijack."""
+    def test_single_tap_and_double_tap_gesture_handling(self):
+        """Verify touch event handler executes single-tap immediate selection and double-tap modal open."""
         ron_js_path = os.path.join(ROOT_DIR, "study-ron-design.js")
         with open(ron_js_path, "r", encoding="utf-8") as f:
             content = f.read()
 
-        # In touchend handler, domain controls should invoke selectDomainTab directly
+        # In touchend handler, verify double tap detection and immediate single tap execution
         touchend_match = re.search(r'document\.addEventListener\("touchend",\s*\(e\)\s*=>\s*\{(.*?)\},\s*\{\s*passive:\s*false\s*\}\);', content, re.DOTALL)
         self.assertIsNotNone(touchend_match, "touchend listener not found")
         touchend_body = touchend_match.group(1)
-        self.assertNotIn("DOUBLE_TAP_INTERVAL_MS", touchend_body, "Domain switching must not be delayed or hijacked by double-tap")
-        self.assertIn("selectDomainTab", touchend_body)
-        self.assertIn("selectCategoryPill", touchend_body)
+        self.assertIn("DOUBLE_TAP_INTERVAL_MS", touchend_body, "Double tap must use configured interval")
+        self.assertIn("openChaptersModal", touchend_body, "Double tap must open chapters modal")
+        self.assertIn("selectDomainTab", touchend_body, "Single tap must execute immediate domain selection")
+        self.assertIn("selectCategoryPill", touchend_body, "Single tap must execute immediate category selection")
 
     def test_cardiac_and_antimicrobial_drug_counts(self):
         """Verify drug monographs exist for all key drug categories in study-data.js."""

@@ -58,6 +58,26 @@
     return path;
   }
 
+  // Critical Care Categories for Desktop Accessible Dropdown
+  var CRITICAL_CARE_DROPDOWN_CATEGORIES = [
+    { id: "cc_principles", label: "General Principles", icon: "🏛️" },
+    { id: "cc_airway", label: "Airway Management", icon: "🫁" },
+    { id: "cc_respiratory", label: "Respiratory Critical Care", icon: "💨" },
+    { id: "cc_hemodynamics", label: "Hemodynamic Support", icon: "⚡" },
+    { id: "cc_sepsis", label: "Sepsis & Infections", icon: "🛡️" },
+    { id: "cc_neuro", label: "Neurological Critical Care", icon: "🧠" },
+    { id: "cc_cardio", label: "Cardiovascular Critical Care", icon: "❤️" },
+    { id: "cc_renal", label: "Renal & Metabolic Support", icon: "🧪" },
+    { id: "cc_gi", label: "Gastrointestinal & Hepatic", icon: "🔬" },
+    { id: "cc_trauma", label: "Trauma & Burns", icon: "🩹" },
+    { id: "cc_tox", label: "Poisoning & Toxicology", icon: "☠️" },
+    { id: "cc_heme", label: "Hematology & Transfusion", icon: "🩸" },
+    { id: "cc_obs", label: "Obstetric Critical Care", icon: "🤰" },
+    { id: "cc_peds", label: "Pediatric Critical Care", icon: "👶" },
+    { id: "cc_pharm", label: "ICU Pharmacology", icon: "💊" },
+    { id: "cc_advances", label: "Research & Recent Advances", icon: "🚀" }
+  ];
+
   // ------------------------------------------------------------------------
   // 1. Render Minimalist Desktop Navigation (>= 768px)
   // ------------------------------------------------------------------------
@@ -78,6 +98,43 @@
       var isCurHash = item.href.indexOf("#") !== -1 && (currentPath + currentHash).indexOf(item.href) !== -1;
       var isActive = isCurHash || (!item.href.includes("#") && isCurPage);
       var authAttrs = item.isAuthLink ? ' data-auth-nav-link="true" id="knDesktopAuthNavLink"' : '';
+
+      if (item.label === "Critical Care") {
+        var dropdownItemsHtml = CRITICAL_CARE_DROPDOWN_CATEGORIES.map(function (cat) {
+          return [
+            '<a href="study.html?domain=critical&cat=' + cat.id + '"',
+            '   class="kn-dropdown-item"',
+            '   role="menuitem"',
+            '   data-cat-id="' + cat.id + '">',
+            '  <span class="kn-dropdown-item-icon" aria-hidden="true">' + cat.icon + '</span>',
+            '  <span class="kn-dropdown-item-label">' + cat.label + '</span>',
+            '</a>'
+          ].join("");
+        }).join("\n");
+
+        return [
+          '<div class="kn-desktop-dropdown-wrapper" id="knDesktopCcDropdownWrap">',
+          '  <a href="' + item.href + '"',
+          '     class="kn-desktop-link' + (isActive ? ' active' : '') + '"',
+          '     id="knDesktopCcTrigger"',
+          '     role="button"',
+          '     aria-haspopup="true"',
+          '     aria-expanded="false"',
+          '     aria-label="' + item.ariaLabel + '">',
+          '    ' + item.label + ' <span class="kn-desktop-caret" aria-hidden="true">▾</span>',
+          '  </a>',
+          '  <div class="kn-desktop-dropdown-menu" id="knDesktopCcDropdownMenu" role="menu" aria-label="Critical Care Categories" aria-hidden="true">',
+          '    <div class="kn-desktop-dropdown-header">',
+          '      <span class="kn-dropdown-header-title">Critical Care Syllabus</span>',
+          '      <a href="study.html?domain=critical&cat=all" class="kn-dropdown-header-all" role="menuitem">View All Critical Care →</a>',
+          '    </div>',
+          '    <div class="kn-desktop-dropdown-grid">',
+          dropdownItemsHtml,
+          '    </div>',
+          '  </div>',
+          '</div>'
+        ].join("");
+      }
 
       return [
         '<a href="' + item.href + '"',
@@ -125,6 +182,7 @@
 
     // Setup smooth Apple iOS sliding indicator
     setupDesktopIndicator(nav);
+    setupCriticalCareDropdown(nav);
   }
 
   // ------------------------------------------------------------------------
@@ -143,8 +201,9 @@
         indicator.style.opacity = "0";
         return;
       }
-      var left = el.offsetLeft;
-      var width = el.offsetWidth;
+      var target = el.closest(".kn-desktop-dropdown-wrapper") || el;
+      var left = target.offsetLeft;
+      var width = target.offsetWidth;
       indicator.style.transform = "translateX(" + left + "px)";
       indicator.style.width = width + "px";
       indicator.style.opacity = "1";
@@ -181,6 +240,125 @@
         setDesktopIndicatorTo(currentActiveDesktopLink);
       }
     }, { passive: true });
+  }
+
+  // ------------------------------------------------------------------------
+  // Desktop Critical Care Accessible Dropdown Controller
+  // ------------------------------------------------------------------------
+  function setupCriticalCareDropdown(nav) {
+    var wrapper = nav.querySelector("#knDesktopCcDropdownWrap");
+    var trigger = nav.querySelector("#knDesktopCcTrigger");
+    var menu = nav.querySelector("#knDesktopCcDropdownMenu");
+    if (!wrapper || !trigger || !menu) return;
+
+    var closeTimer = null;
+    var menuItems = Array.from(menu.querySelectorAll("a[role='menuitem']"));
+
+    function openMenu() {
+      if (closeTimer) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+      wrapper.classList.add("kn-dropdown-open");
+      trigger.setAttribute("aria-expanded", "true");
+      menu.setAttribute("aria-hidden", "false");
+    }
+
+    function closeMenu() {
+      if (closeTimer) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+      wrapper.classList.remove("kn-dropdown-open");
+      trigger.setAttribute("aria-expanded", "false");
+      menu.setAttribute("aria-hidden", "true");
+    }
+
+    function scheduleClose() {
+      if (closeTimer) clearTimeout(closeTimer);
+      closeTimer = setTimeout(function () {
+        closeMenu();
+      }, 180);
+    }
+
+    // Hover interactions with grace period
+    wrapper.addEventListener("mouseenter", openMenu);
+    wrapper.addEventListener("mouseleave", scheduleClose);
+
+    // Focus / focusout interactions
+    wrapper.addEventListener("focusin", openMenu);
+    wrapper.addEventListener("focusout", function (e) {
+      if (!wrapper.contains(e.relatedTarget)) {
+        closeMenu();
+      }
+    });
+
+    // Keyboard navigation
+    trigger.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openMenu();
+        if (menuItems.length > 0) {
+          menuItems[0].focus();
+        }
+      } else if (e.key === "Escape") {
+        e.preventDefault();
+        closeMenu();
+      }
+    });
+
+    menu.addEventListener("keydown", function (e) {
+      var focusedIdx = menuItems.indexOf(document.activeElement);
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeMenu();
+        trigger.focus();
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        var nextIdx = (focusedIdx + 2 < menuItems.length) ? focusedIdx + 2 : (focusedIdx + 1 < menuItems.length ? focusedIdx + 1 : 0);
+        menuItems[nextIdx].focus();
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        var prevIdx = (focusedIdx - 2 >= 0) ? focusedIdx - 2 : (focusedIdx - 1 >= 0 ? focusedIdx - 1 : menuItems.length - 1);
+        menuItems[prevIdx].focus();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        var rIdx = (focusedIdx + 1) % menuItems.length;
+        menuItems[rIdx].focus();
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        var lIdx = (focusedIdx - 1 + menuItems.length) % menuItems.length;
+        menuItems[lIdx].focus();
+      }
+    });
+
+    // Touch click support for tablet / hybrid devices in desktop layout
+    trigger.addEventListener("click", function (e) {
+      var isTouch = ("ontouchstart" in window) || (navigator.maxTouchPoints > 0);
+      if (isTouch) {
+        var isOpen = wrapper.classList.contains("kn-dropdown-open");
+        if (!isOpen) {
+          e.preventDefault();
+          openMenu();
+        }
+      }
+    });
+
+    // In-page selection on study.html
+    menuItems.forEach(function (item) {
+      item.addEventListener("click", function (e) {
+        var catId = item.getAttribute("data-cat-id") || "all";
+        var curPath = getCurrentPath();
+        if (curPath === "study.html" && window.StudyRonDesign && typeof window.StudyRonDesign.switchDomain === "function") {
+          e.preventDefault();
+          e.stopPropagation();
+          closeMenu();
+          window.StudyRonDesign.switchDomain("critical", catId);
+        } else {
+          closeMenu();
+        }
+      }, true);
+    });
   }
 
   // ------------------------------------------------------------------------
