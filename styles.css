@@ -246,8 +246,6 @@ img {
   padding: 0 16px;
   display: flex;
   justify-content: center;
-  transform-style: preserve-3d;
-  transform: translateZ(var(--z-hud));
 }
 
 .hud-capsule {
@@ -713,12 +711,20 @@ body:not([data-content-page="home"]) .menu-btn {
   background: var(--bg-surface);
   border: 1px solid var(--border-specular);
   box-shadow: var(--shadow-lg), var(--shadow-glow);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: transform var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.dark .telemetry-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+body:not(.dark) .telemetry-card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .telemetry-card:hover {
@@ -979,12 +985,9 @@ body:not(.dark) .vital-box.teal .vital-val { color: #0f766e !important; }
   background: var(--bg-surface);
   border: 1px solid var(--border-specular);
   box-shadow: var(--shadow-md);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
   position: relative;
   overflow: hidden;
   transform-style: preserve-3d;
-  transform: translateZ(var(--z-content));
 }
 
 .fastpath-section::before {
