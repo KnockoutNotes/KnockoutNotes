@@ -1046,6 +1046,7 @@
   // Navigation actions
   function openTopic(id) {
     if (!id) return;
+    exitFullScreenReadingMode();
     const item = findItem(id);
     if (!item) return;
     searchFilter = "";
@@ -1068,6 +1069,7 @@
   }
 
   function backToCategory(newCatId) {
+    exitFullScreenReadingMode();
     teardownScrollReadingMode();
     activeItem = null;
     searchFilter = "";
@@ -1943,6 +1945,7 @@
               </div>
               <button type="button" class="ron-mcq-pill-btn" id="ronOpenMcqBtn" title="High Yield MCQ Practice — NEET-SS / INI-SS" aria-label="Open High Yield MCQ Practice">📝 High Yield MCQs</button>
               <button type="button" class="ron-mcq-pill-btn ron-mcq-recall-btn" id="ronOpenRecall2025Btn" title="NEET-SS Critical Care Previous Year Questions (PYQs)" aria-label="Open NEET-SS Critical Care Previous Year Questions">🎯 PYQs</button>
+              <button type="button" class="ron-mcq-pill-btn ron-reading-mode-top-btn kn-reading-mode-trigger-btn" id="ronEnterReadingModeTopBtn" title="Enter Distraction-Free Full-Screen Reading Mode" aria-label="Enter Reading Mode">📖 Reading Mode</button>
             </div>
 
             <!-- New 3-Domain Vertical & Single Horizontal Category Track -->
@@ -2026,6 +2029,9 @@
                     }) : ''}
                     <button type="button" class="kn-action-btn kn-pen-toggle-btn" title="Toggle Stylus / Pen Annotations" onclick="if(window.KN_ANNOTATIONS)window.KN_ANNOTATIONS.showToolbar();">
                       <span>✏️</span> <span>Draw</span>
+                    </button>
+                    <button type="button" class="kn-action-btn kn-reading-mode-trigger-btn" id="ronEnterReadingModeBtn" title="Open Distraction-Free Full-Screen Reading Mode" aria-label="Enter Reading Mode">
+                      <span>📖</span> <span>Reading Mode</span>
                     </button>
                     ${(() => {
                       const mappedChapter = STUDY_ITEM_TO_CHAPTER[item.id] || CAT_TO_CHAPTER[activeCat] || CAT_TO_CHAPTER[activeDomain];
@@ -2764,6 +2770,265 @@
 
   let activeReadingObserver = null;
 
+
+  // ==========================================================================
+  // EXPLICIT FULL-SCREEN READING MODE (Distraction-Free Layout)
+  // ==========================================================================
+  let savedScrollBeforeReadingMode = 0;
+  let activeReadingTheme = "dark";
+  let activeReadingFontSize = 17;
+
+  function isFullScreenReadingModeActive() {
+    const overlay = document.getElementById("ronReadingModeOverlay");
+    return !!(overlay && !overlay.hidden && document.body.classList.contains("ron-reading-fullscreen-active"));
+  }
+
+  function getOrCreateReadingModeOverlay() {
+    let overlay = document.getElementById("ronReadingModeOverlay");
+    if (overlay) return overlay;
+
+    overlay = document.createElement("div");
+    overlay.id = "ronReadingModeOverlay";
+    overlay.className = "ron-reading-fullscreen-overlay";
+    overlay.hidden = true;
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-label", "Full-Screen Reading Mode");
+    overlay.setAttribute("data-reading-theme", "dark");
+
+    overlay.innerHTML = `
+      <nav class="ron-rm-topbar" id="ronRmTopbar">
+        <div class="ron-rm-topbar-left">
+          <button type="button" class="ron-rm-btn ron-rm-exit-btn" id="ronRmExitBtn" title="Exit Reading Mode (Esc)" aria-label="Exit Reading Mode">
+            <span aria-hidden="true">←</span>
+            <span class="ron-rm-btn-text">Exit</span>
+          </button>
+          <button type="button" class="ron-rm-btn ron-rm-toc-toggle-btn" id="ronRmTocToggleBtn" title="Table of Contents" aria-label="Table of Contents">
+            <span aria-hidden="true">📑</span>
+            <span class="ron-rm-btn-text">Sections</span>
+          </button>
+          <div class="ron-rm-title-indicator">
+            <span class="ron-rm-title-domain" id="ronRmDomainTag"></span>
+            <span class="ron-rm-title-text" id="ronRmTopicTitle"></span>
+          </div>
+        </div>
+        <div class="ron-rm-topbar-right">
+          <div class="ron-rm-font-ctrls" role="group" aria-label="Text size">
+            <button type="button" class="ron-rm-icon-btn" id="ronRmFontDecBtn" title="Decrease font size (A-)" aria-label="Decrease text size">A-</button>
+            <span class="ron-rm-font-indicator" id="ronRmFontIndicator">17px</span>
+            <button type="button" class="ron-rm-icon-btn" id="ronRmFontIncBtn" title="Increase font size (A+)" aria-label="Increase text size">A+</button>
+          </div>
+          <div class="ron-rm-theme-ctrls" role="group" aria-label="Reading theme">
+            <button type="button" class="ron-rm-theme-btn active" data-reading-theme-val="dark" title="Dark theme" aria-label="Dark theme">🌙</button>
+            <button type="button" class="ron-rm-theme-btn" data-reading-theme-val="sepia" title="Sepia eye-comfort" aria-label="Sepia theme">📜</button>
+            <button type="button" class="ron-rm-theme-btn" data-reading-theme-val="light" title="Light theme" aria-label="Light theme">☀️</button>
+          </div>
+          <button type="button" class="ron-rm-icon-btn ron-rm-top-btn" id="ronRmTopBtn" title="Scroll to top" aria-label="Scroll to top">↑</button>
+        </div>
+        <div class="ron-rm-progress-track" aria-hidden="true">
+          <div class="ron-rm-progress-bar" id="ronRmProgressBar"></div>
+        </div>
+      </nav>
+      <div class="ron-rm-toc-backdrop" id="ronRmTocBackdrop" hidden></div>
+      <aside class="ron-rm-toc-drawer" id="ronRmTocDrawer" hidden aria-label="Table of Contents">
+        <div class="ron-rm-toc-header">
+          <span class="ron-rm-toc-title">Table of Contents</span>
+          <button type="button" class="ron-rm-toc-close-btn" id="ronRmTocCloseBtn" aria-label="Close Table of Contents">✕</button>
+        </div>
+        <div class="ron-rm-toc-list" id="ronRmTocList"></div>
+      </aside>
+      <main class="ron-rm-scroll-viewport" id="ronRmScrollViewport" tabindex="0">
+        <article class="ron-rm-content-wrapper" id="ronRmContentWrapper">
+          <header class="ron-rm-article-header">
+            <div class="ron-rm-kicker" id="ronRmKicker"></div>
+            <h1 class="ron-rm-heading" id="ronRmHeading"></h1>
+            <p class="ron-rm-sub" id="ronRmSub"></p>
+          </header>
+          <div class="ron-rm-body-target" id="ronRmBodyTarget"></div>
+        </article>
+      </main>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const viewport = overlay.querySelector("#ronRmScrollViewport");
+    const progressBar = overlay.querySelector("#ronRmProgressBar");
+    if (viewport && progressBar) {
+      viewport.addEventListener("scroll", () => {
+        const maxScroll = viewport.scrollHeight - viewport.clientHeight;
+        if (maxScroll > 0) {
+          const pct = Math.min(100, Math.max(0, (viewport.scrollTop / maxScroll) * 100));
+          progressBar.style.width = pct.toFixed(1) + "%";
+        }
+      }, { passive: true });
+    }
+
+    return overlay;
+  }
+
+  function setReadingTheme(theme) {
+    if (!["dark", "sepia", "light"].includes(theme)) theme = "dark";
+    activeReadingTheme = theme;
+    try {
+      sessionStorage.setItem("kn-reading-theme", theme);
+    } catch (_) {}
+    const overlay = document.getElementById("ronReadingModeOverlay");
+    if (overlay) {
+      overlay.setAttribute("data-reading-theme", theme);
+      const themeBtns = overlay.querySelectorAll(".ron-rm-theme-btn");
+      themeBtns.forEach((btn) => {
+        if (btn.getAttribute("data-reading-theme-val") === theme) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+    }
+  }
+
+  function setReadingFontSize(size) {
+    size = Math.min(24, Math.max(14, size));
+    activeReadingFontSize = size;
+    try {
+      sessionStorage.setItem("kn-reading-font-size", String(size));
+    } catch (_) {}
+    const wrapper = document.getElementById("ronRmContentWrapper");
+    if (wrapper) {
+      wrapper.style.setProperty("--rm-font-size", size + "px");
+    }
+    const indicator = document.getElementById("ronRmFontIndicator");
+    if (indicator) {
+      indicator.textContent = size + "px";
+    }
+  }
+
+  function toggleRmToc(force) {
+    const drawer = document.getElementById("ronRmTocDrawer");
+    const backdrop = document.getElementById("ronRmTocBackdrop");
+    if (!drawer || !backdrop) return;
+    const isCurrentlyOpen = !drawer.hidden && drawer.classList.contains("open");
+    const shouldOpen = (typeof force === "boolean") ? force : !isCurrentlyOpen;
+    if (shouldOpen) {
+      drawer.hidden = false;
+      backdrop.hidden = false;
+      drawer.classList.add("open");
+    } else {
+      drawer.classList.remove("open");
+      drawer.hidden = true;
+      backdrop.hidden = true;
+    }
+  }
+
+  function openFullScreenReadingMode() {
+    if (!activeItem) return;
+    const descBox = document.getElementById("ronActiveDescriptionBox");
+    if (!descBox) return;
+
+    savedScrollBeforeReadingMode = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+    const overlay = getOrCreateReadingModeOverlay();
+    const bodyTarget = document.getElementById("ronRmBodyTarget");
+    if (!bodyTarget) return;
+
+    try {
+      const savedTheme = sessionStorage.getItem("kn-reading-theme");
+      if (savedTheme) {
+        setReadingTheme(savedTheme);
+      } else {
+        const isSiteDark = document.body.classList.contains("dark") || document.documentElement.classList.contains("dark");
+        setReadingTheme(isSiteDark ? "dark" : "light");
+      }
+      const savedSize = parseInt(sessionStorage.getItem("kn-reading-font-size") || "17", 10);
+      setReadingFontSize(savedSize);
+    } catch (_) {}
+
+    const isDrug = !activeItem.sections;
+    const catObj = (DOMAIN_DEFS[activeDomain] && DOMAIN_DEFS[activeDomain].cats.find(c => c.id === activeCat)) || { label: "Clinical Study" };
+
+    const kickerEl = document.getElementById("ronRmKicker");
+    if (kickerEl) {
+      kickerEl.textContent = `${catObj.label}${isDrug && activeItem.classification ? ' • ' + activeItem.classification : ''}`;
+    }
+    const headingEl = document.getElementById("ronRmHeading");
+    if (headingEl) {
+      headingEl.textContent = activeItem.name;
+    }
+    const subEl = document.getElementById("ronRmSub");
+    if (subEl) {
+      subEl.textContent = activeItem.tagline || activeItem.brand || activeItem.source || "";
+    }
+    const domainTag = document.getElementById("ronRmDomainTag");
+    if (domainTag) domainTag.textContent = catObj.label;
+    const topicTitle = document.getElementById("ronRmTopicTitle");
+    if (topicTitle) topicTitle.textContent = activeItem.short || activeItem.name;
+
+    const tocList = document.getElementById("ronRmTocList");
+    if (tocList) {
+      const subsections = getItemSubsections(activeItem);
+      if (subsections && subsections.length) {
+        tocList.innerHTML = subsections.map((sub) => `
+          <button type="button" class="ron-rm-toc-item" data-toc-target="${esc(sub.id)}">
+            <span class="ron-rm-toc-dot"></span>
+            <span>${esc(sub.label)}</span>
+          </button>
+        `).join("");
+      } else {
+        tocList.innerHTML = `
+          <button type="button" class="ron-rm-toc-item" data-toc-target="ronActiveDescriptionBox">
+            <span class="ron-rm-toc-dot"></span>
+            <span>Complete Overview</span>
+          </button>
+        `;
+      }
+    }
+
+    let placeholder = document.getElementById("ronActiveDescPlaceholder");
+    if (!placeholder) {
+      placeholder = document.createElement("div");
+      placeholder.id = "ronActiveDescPlaceholder";
+      placeholder.style.display = "none";
+      placeholder.setAttribute("aria-hidden", "true");
+      descBox.parentNode.insertBefore(placeholder, descBox);
+    }
+    bodyTarget.appendChild(descBox);
+
+    overlay.hidden = false;
+    document.body.classList.add("ron-reading-fullscreen-active");
+
+    const scrollToolbar = document.getElementById("ronReadingToolbar");
+    if (scrollToolbar) scrollToolbar.setAttribute("aria-hidden", "true");
+
+    const viewport = document.getElementById("ronRmScrollViewport");
+    if (viewport) {
+      viewport.scrollTop = 0;
+      viewport.focus();
+    }
+    const progressBar = document.getElementById("ronRmProgressBar");
+    if (progressBar) progressBar.style.width = "0%";
+
+    triggerHapticFeedback();
+  }
+
+  function exitFullScreenReadingMode() {
+    const overlay = document.getElementById("ronReadingModeOverlay");
+    if (!overlay || overlay.hidden) return;
+
+    const descBox = document.getElementById("ronActiveDescriptionBox");
+    const placeholder = document.getElementById("ronActiveDescPlaceholder");
+    if (descBox && placeholder && placeholder.parentNode) {
+      placeholder.parentNode.insertBefore(descBox, placeholder);
+      placeholder.remove();
+    }
+
+    overlay.hidden = true;
+    document.body.classList.remove("ron-reading-fullscreen-active");
+    toggleRmToc(false);
+
+    if (typeof savedScrollBeforeReadingMode === "number") {
+      window.scrollTo({ top: savedScrollBeforeReadingMode, behavior: "auto" });
+    }
+  }
+
   function teardownScrollReadingMode() {
     if (activeReadingScrollHandler) {
       window.removeEventListener("scroll", activeReadingScrollHandler);
@@ -3248,6 +3513,7 @@ function renderTopicsModal() {
 
   function selectDomainTab(targetDomain) {
     if (!DOMAIN_DEFS[targetDomain]) return;
+    exitFullScreenReadingMode();
     teardownScrollReadingMode();
     closeChaptersModal();
     closeTopicsModal();
@@ -3274,6 +3540,7 @@ function renderTopicsModal() {
 
   function selectCategoryPill(domain, cat) {
     if (!DOMAIN_DEFS[domain]) return;
+    exitFullScreenReadingMode();
     teardownScrollReadingMode();
     closeChaptersModal();
     closeTopicsModal();
@@ -3412,6 +3679,13 @@ function renderTopicsModal() {
     }
   });
 
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isFullScreenReadingModeActive()) {
+      e.preventDefault();
+      exitFullScreenReadingMode();
+    }
+  });
+
   // ==========================================================================
   // GLOBAL CLICK LISTENER DELEGATION
   // ==========================================================================
@@ -3422,6 +3696,75 @@ function renderTopicsModal() {
       e.stopPropagation();
       return;
     }
+// 000. Full-Screen Reading Mode Triggers & Controls
+    if (e.target.closest(".kn-reading-mode-trigger-btn, #ronEnterReadingModeTopBtn, #ronEnterReadingModeBtn")) {
+      e.preventDefault();
+      e.stopPropagation();
+      openFullScreenReadingMode();
+      return;
+    }
+    if (e.target.closest("#ronRmExitBtn")) {
+      e.preventDefault();
+      e.stopPropagation();
+      exitFullScreenReadingMode();
+      return;
+    }
+    if (e.target.closest("#ronRmTocToggleBtn")) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleRmToc();
+      return;
+    }
+    if (e.target.closest("#ronRmTocCloseBtn, #ronRmTocBackdrop")) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleRmToc(false);
+      return;
+    }
+    const rmTocItem = e.target.closest(".ron-rm-toc-item");
+    if (rmTocItem) {
+      e.preventDefault();
+      e.stopPropagation();
+      const targetId = rmTocItem.getAttribute("data-toc-target");
+      if (targetId) {
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: isReducedMotion() ? "auto" : "smooth", block: "start" });
+        }
+      }
+      toggleRmToc(false);
+      return;
+    }
+    if (e.target.closest("#ronRmFontDecBtn")) {
+      e.preventDefault();
+      e.stopPropagation();
+      setReadingFontSize(activeReadingFontSize - 1);
+      return;
+    }
+    if (e.target.closest("#ronRmFontIncBtn")) {
+      e.preventDefault();
+      e.stopPropagation();
+      setReadingFontSize(activeReadingFontSize + 1);
+      return;
+    }
+    const rmThemeBtn = e.target.closest(".ron-rm-theme-btn");
+    if (rmThemeBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const themeVal = rmThemeBtn.getAttribute("data-reading-theme-val");
+      if (themeVal) setReadingTheme(themeVal);
+      return;
+    }
+    if (e.target.closest("#ronRmTopBtn")) {
+      e.preventDefault();
+      e.stopPropagation();
+      const viewport = document.getElementById("ronRmScrollViewport");
+      if (viewport) {
+        viewport.scrollTo({ top: 0, behavior: isReducedMotion() ? "auto" : "smooth" });
+      }
+      return;
+    }
+
     // 00a. Clinical Figure / Flowchart Zoom Trigger (Top priority: clicking any image opens dock!)
     const figTrigger = e.target.closest(
       "[data-zoom-src], .ron-figure-wrap-float, .ron-figure-wrap-full, .ron-figure-img, figure, .st-diagram-wrap, .st-section-img, .ron-prose img, #ronMainContentBox img"
@@ -4049,6 +4392,9 @@ function renderTopicsModal() {
     renderRonBoard();
   };
   window.StudyRonDesign = {
+    openFullScreenReadingMode: openFullScreenReadingMode,
+    exitFullScreenReadingMode: exitFullScreenReadingMode,
+    isFullScreenReadingModeActive: isFullScreenReadingModeActive,
     switchDomain: switchDomain,
     selectDomainTab: selectDomainTab,
     selectCategoryPill: selectCategoryPill,

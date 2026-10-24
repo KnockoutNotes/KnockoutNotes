@@ -306,6 +306,188 @@ server.listen(PORT, async () => {
     assert(restoredToolbar.ariaHidden === 'true', 'Toolbar restores to aria-hidden: true when back at top');
     assert(parseFloat(restoredToolbar.opacity) < 0.1, 'Toolbar restores to opacity 0 when back at top');
 
+
+    console.log('\n--- GATE 6: Explicit Full-Screen Reading Mode (User-Controlled) ---');
+    // Open a topic (Anaesthesia domain)
+    await evaluate("window.StudyRonDesign.openTopic('anaesthetic-machine-safety')");
+    await delay(400);
+
+    // Verify Reading Mode trigger buttons exist
+    const triggerButtons = await evaluate(`
+      (function() {
+        const topBtn = document.getElementById('ronEnterReadingModeTopBtn');
+        const actionBtn = document.getElementById('ronEnterReadingModeBtn');
+        return {
+          topBtn: Boolean(topBtn),
+          actionBtn: Boolean(actionBtn)
+        };
+      })()
+    `);
+    console.log('Reading Mode trigger buttons:', triggerButtons);
+    assert(triggerButtons.topBtn, 'Top bar Reading Mode button exists');
+    assert(triggerButtons.actionBtn, 'Monograph action bar Reading Mode button exists');
+
+    // Click Reading Mode button
+    await evaluate(`
+      (function() {
+        const btn = document.getElementById('ronEnterReadingModeTopBtn');
+        btn.click();
+      })()
+    `);
+    await delay(300);
+
+    // Verify Fullscreen Reading Mode overlay is active
+    const rmState = await evaluate(`
+      (function() {
+        const overlay = document.getElementById('ronReadingModeOverlay');
+        const bodyTarget = document.getElementById('ronRmBodyTarget');
+        const descBox = document.getElementById('ronActiveDescriptionBox');
+        const placeholder = document.getElementById('ronActiveDescPlaceholder');
+        const isBodyActive = document.body.classList.contains('ron-reading-fullscreen-active');
+        return {
+          isOpen: overlay && !overlay.hidden,
+          isBodyActive,
+          hasDescInBodyTarget: bodyTarget && descBox && bodyTarget.contains(descBox),
+          hasPlaceholder: Boolean(placeholder),
+          kickerText: document.getElementById('ronRmKicker') ? document.getElementById('ronRmKicker').textContent : null,
+          headingText: document.getElementById('ronRmHeading') ? document.getElementById('ronRmHeading').textContent : null,
+          theme: overlay ? overlay.getAttribute('data-reading-theme') : null,
+          fontSize: document.getElementById('ronRmFontIndicator') ? document.getElementById('ronRmFontIndicator').textContent : null
+        };
+      })()
+    `);
+    console.log('Reading Mode active state:', rmState);
+    assert(rmState.isOpen, 'Reading Mode overlay is visible (not hidden)');
+    assert(rmState.isBodyActive, 'body has class ron-reading-fullscreen-active');
+    assert(rmState.hasDescInBodyTarget, 'Live chapter description DOM node is safely reparented into body target');
+    assert(rmState.hasPlaceholder, 'Placeholder node exists in original DOM location');
+    assert(Boolean(rmState.headingText), 'Heading text is populated');
+
+    // Test text size controls: A+
+    await evaluate(`
+      (function() {
+        const incBtn = document.getElementById('ronRmFontIncBtn');
+        incBtn.click();
+      })()
+    `);
+    await delay(100);
+    const fontStatePlus = await evaluate("document.getElementById('ronRmFontIndicator') ? document.getElementById('ronRmFontIndicator').textContent : null");
+    assert(fontStatePlus === '18px', 'Font size incremented to 18px');
+
+    // Test text size controls: A-
+    await evaluate(`
+      (function() {
+        const decBtn = document.getElementById('ronRmFontDecBtn');
+        decBtn.click();
+      })()
+    `);
+    await delay(100);
+    const fontStateMinus = await evaluate("document.getElementById('ronRmFontIndicator') ? document.getElementById('ronRmFontIndicator').textContent : null");
+    assert(fontStateMinus === '17px', 'Font size decremented back to 17px');
+
+    // Test theme switcher: Sepia
+    await evaluate(`
+      (function() {
+        const sepiaBtn = document.querySelector('.ron-rm-theme-btn[data-reading-theme-val="sepia"]');
+        sepiaBtn.click();
+      })()
+    `);
+    await delay(100);
+    const themeSepia = await evaluate("document.getElementById('ronReadingModeOverlay') ? document.getElementById('ronReadingModeOverlay').getAttribute('data-reading-theme') : null");
+    assert(themeSepia === 'sepia', 'Reading theme switched to sepia');
+
+    // Test theme switcher: Dark
+    await evaluate(`
+      (function() {
+        const darkBtn = document.querySelector('.ron-rm-theme-btn[data-reading-theme-val="dark"]');
+        darkBtn.click();
+      })()
+    `);
+    await delay(100);
+    const themeDark = await evaluate("document.getElementById('ronReadingModeOverlay') ? document.getElementById('ronReadingModeOverlay').getAttribute('data-reading-theme') : null");
+    assert(themeDark === 'dark', 'Reading theme switched to dark');
+
+    // Test TOC drawer
+    await evaluate(`
+      (function() {
+        const tocBtn = document.getElementById('ronRmTocToggleBtn');
+        tocBtn.click();
+      })()
+    `);
+    await delay(150);
+    const tocOpenState = await evaluate(`
+      (function() {
+        const drawer = document.getElementById('ronRmTocDrawer');
+        const items = document.querySelectorAll('.ron-rm-toc-item');
+        return {
+          isOpen: drawer && !drawer.hidden && drawer.classList.contains('open'),
+          itemCount: items.length
+        };
+      })()
+    `);
+    console.log('TOC drawer open state:', tocOpenState);
+    assert(tocOpenState.isOpen, 'TOC drawer is open');
+    assert(tocOpenState.itemCount > 0, 'TOC drawer contains section navigation items');
+
+    // Close TOC drawer
+    await evaluate(`
+      (function() {
+        const closeBtn = document.getElementById('ronRmTocCloseBtn');
+        closeBtn.click();
+      })()
+    `);
+    await delay(150);
+    const tocClosedState = await evaluate(`
+      (function() {
+        const drawer = document.getElementById('ronRmTocDrawer');
+        return drawer && drawer.hidden;
+      })()
+    `);
+    assert(tocClosedState, 'TOC drawer closes cleanly');
+
+    // Test Exit button
+    await evaluate(`
+      (function() {
+        const exitBtn = document.getElementById('ronRmExitBtn');
+        exitBtn.click();
+      })()
+    `);
+    await delay(300);
+
+    const exitedState = await evaluate(`
+      (function() {
+        const overlay = document.getElementById('ronReadingModeOverlay');
+        const descBox = document.getElementById('ronActiveDescriptionBox');
+        const mainBox = document.getElementById('ronMainContentBox');
+        const placeholder = document.getElementById('ronActiveDescPlaceholder');
+        const isBodyActive = document.body.classList.contains('ron-reading-fullscreen-active');
+        return {
+          isOverlayHidden: overlay && overlay.hidden,
+          isBodyActive,
+          descBoxRestoredToMain: mainBox && descBox && mainBox.contains(descBox),
+          placeholderRemoved: !placeholder
+        };
+      })()
+    `);
+    console.log('State after exiting Reading Mode:', exitedState);
+    assert(exitedState.isOverlayHidden, 'Reading Mode overlay is hidden after exit');
+    assert(!exitedState.isBodyActive, 'ron-reading-fullscreen-active class removed from body');
+    assert(exitedState.descBoxRestoredToMain, 'Live description node restored to original main content container');
+    assert(exitedState.placeholderRemoved, 'Placeholder was cleanly removed');
+
+    // Test Escape key exit
+    await evaluate("window.StudyRonDesign.openFullScreenReadingMode()");
+    await delay(200);
+    assert(await evaluate("window.StudyRonDesign.isFullScreenReadingModeActive()"), 'Re-entered Reading Mode via API');
+
+    await send('Input.dispatchKeyEvent', {
+      type: 'keyDown',
+      key: 'Escape',
+      code: 'Escape'
+    });
+    await delay(200);
+    assert(!await evaluate("window.StudyRonDesign.isFullScreenReadingModeActive()"), 'Escape key cleanly exits Reading Mode');
+
     console.log('\n--- GATE 5: Clean URL (/study) bubble-menu navigation ---');
     await send('Page.navigate', { url: `http://localhost:${PORT}/study` });
     // Wait until StudyRonDesign is initialized
@@ -332,7 +514,7 @@ server.listen(PORT, async () => {
   }
 
   if (allPassed) {
-    console.log('\n🎉 ALL 5 PRODUCTION HOTFIX GATES PASSED PERFECTLY!\n');
+    console.log('\n🎉 ALL 6 PRODUCTION HOTFIX GATES PASSED PERFECTLY!\n');
     process.exit(0);
   } else {
     console.error('\n❌ SOME GATES FAILED.\n');
