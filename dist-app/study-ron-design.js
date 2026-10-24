@@ -3215,7 +3215,7 @@
         const scrollY = viewport.scrollTop;
         const maxScroll = viewport.scrollHeight - viewport.clientHeight;
         const pct = maxScroll > 0 ? Math.min(100, Math.max(0, Math.round((scrollY / maxScroll) * 100))) : 0;
-        progressBar.style.width = pct + "%";
+        progressBar.style.transform = "scaleX(" + (pct / 100).toFixed(4) + ")";
         if (progressPct) progressPct.textContent = pct + "%";
         if (portraitPct) portraitPct.textContent = pct + "%";
 
@@ -3677,7 +3677,7 @@
       viewport.focus();
     }
     const progressBar = document.getElementById("ronRmProgressBar");
-    if (progressBar) progressBar.style.width = "0%";
+    if (progressBar) progressBar.style.transform = "scaleX(0)";
     const progressPct = document.getElementById("ronRmProgressPct");
     if (progressPct) progressPct.textContent = "0%";
     const portraitPct = document.getElementById("ronRmPortraitPct");
@@ -3787,7 +3787,7 @@
         const docHeight = (document.documentElement.scrollHeight || document.body.scrollHeight || 0) - window.innerHeight;
         if (docHeight > 0) {
           const pct = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
-          progressBar.style.width = pct.toFixed(1) + "%";
+          progressBar.style.transform = "scaleX(" + (pct / 100).toFixed(4) + ")";
         }
       }
     }

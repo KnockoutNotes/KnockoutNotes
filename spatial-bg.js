@@ -124,6 +124,19 @@
 
   let mouse = { x: width * 0.5, y: height * 0.5, targetX: width * 0.5, targetY: height * 0.5 };
   let ripples = [];
+  let isScrolling = false;
+  let scrollResumeTimer = null;
+
+  window.addEventListener("scroll", () => {
+    isScrolling = true;
+    if (scrollResumeTimer) clearTimeout(scrollResumeTimer);
+    scrollResumeTimer = setTimeout(() => {
+      isScrolling = false;
+      if (isStartupReady && !animId && !isExplicitlyPaused && isCanvasIntersecting && !document.hidden && !document.body.classList.contains("mode-lite")) {
+        animId = requestAnimationFrame(render);
+      }
+    }, 120);
+  }, { passive: true });
 
   window.addEventListener("pointermove", (e) => {
     mouse.targetX = e.clientX;
@@ -359,6 +372,11 @@
       return;
     }
 
+    if (isScrolling) {
+      animId = null;
+      return;
+    }
+
     mouse.x += (mouse.targetX - mouse.x) * 0.04;
     mouse.y += (mouse.targetY - mouse.y) * 0.04;
 
@@ -487,17 +505,10 @@
 
     // A. Lead II ECG (Green/Cyan CRT phosphor in dark, vivid cerulean in day)
     if (env.ecg) {
+      // Glow underlay stroke (zero shadowBlur penalty)
       ctx.beginPath();
-      ctx.strokeStyle = isDark ? "rgba(56, 189, 248, 0.45)" : "rgba(2, 132, 199, 0.85)";
-      ctx.lineWidth = isDark ? 1.6 : 1.8;
-      if (isDark) {
-        ctx.shadowColor = "rgba(56, 189, 248, 0.55)";
-        ctx.shadowBlur = 6;
-      } else {
-        ctx.shadowColor = "rgba(2, 132, 199, 0.4)";
-        ctx.shadowBlur = 4;
-      }
-
+      ctx.strokeStyle = isDark ? "rgba(56, 189, 248, 0.22)" : "rgba(2, 132, 199, 0.25)";
+      ctx.lineWidth = isDark ? 4.0 : 4.2;
       const ecgWaveLength = 220;
       for (let x = 0; x <= width; x += 3) {
         const progress = (x / ecgWaveLength - waveTime * 1.5);
@@ -507,31 +518,38 @@
         else ctx.lineTo(x, y);
       }
       ctx.stroke();
-      ctx.shadowBlur = 0;
+
+      // Crisp phosphor trace
+      ctx.beginPath();
+      ctx.strokeStyle = isDark ? "rgba(56, 189, 248, 0.85)" : "rgba(2, 132, 199, 0.95)";
+      ctx.lineWidth = isDark ? 1.6 : 1.8;
+      for (let x = 0; x <= width; x += 3) {
+        const progress = (x / ecgWaveLength - waveTime * 1.5);
+        const yOffset = getEcgY(progress) * 44;
+        const y = baseY - yOffset;
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
 
       // Soft glowing phosphor sweep head on ECG (Both Dark and Day Mode)
       const sweepY = baseY - getEcgY(sweepHeadX / ecgWaveLength - waveTime * 1.5) * 44;
       ctx.beginPath();
+      ctx.arc(sweepHeadX, sweepY, isDark ? 6.5 : 7, 0, Math.PI * 2);
+      ctx.fillStyle = isDark ? "rgba(56, 189, 248, 0.28)" : "rgba(2, 132, 199, 0.28)";
+      ctx.fill();
+
+      ctx.beginPath();
       ctx.arc(sweepHeadX, sweepY, isDark ? 3 : 3.5, 0, Math.PI * 2);
       ctx.fillStyle = isDark ? "#38bdf8" : "#0284c7";
-      ctx.shadowColor = isDark ? "#38bdf8" : "rgba(2, 132, 199, 0.8)";
-      ctx.shadowBlur = isDark ? 10 : 8;
       ctx.fill();
-      ctx.shadowBlur = 0;
     }
 
     // B. Arterial Blood Pressure (ABP / Invasive Arterial Line, Ruby / Coral Red)
     if (env.ecg && !isSmallScreen()) {
       ctx.beginPath();
-      ctx.strokeStyle = isDark ? "rgba(244, 63, 94, 0.35)" : "rgba(225, 29, 72, 0.78)";
+      ctx.strokeStyle = isDark ? "rgba(244, 63, 94, 0.55)" : "rgba(225, 29, 72, 0.85)";
       ctx.lineWidth = isDark ? 1.4 : 1.6;
-      if (isDark) {
-        ctx.shadowColor = "rgba(244, 63, 94, 0.45)";
-        ctx.shadowBlur = 5;
-      } else {
-        ctx.shadowColor = "rgba(225, 29, 72, 0.35)";
-        ctx.shadowBlur = 3;
-      }
 
       const abpWaveLength = 220;
       for (let x = 0; x <= width; x += 3) {
@@ -543,7 +561,6 @@
         else ctx.lineTo(x, y);
       }
       ctx.stroke();
-      ctx.shadowBlur = 0;
     }
 
     // C. Capnography Waveform (EtCO2, Amber / Yellow Plateau)
@@ -633,12 +650,7 @@
         ? `rgba(${r}, ${g}, ${b}, ${rip.alpha})`
         : `rgba(2, 132, 199, ${rip.alpha * 0.8})`;
       ctx.lineWidth = 1.5;
-      if (isDark) {
-        ctx.shadowColor = `rgba(${r}, ${g}, ${b}, 0.5)`;
-        ctx.shadowBlur = 8;
-      }
       ctx.stroke();
-      ctx.shadowBlur = 0;
 
       if (rip.alpha < 0.01 || rip.radius > rip.maxRadius) {
         ripples.splice(i, 1);

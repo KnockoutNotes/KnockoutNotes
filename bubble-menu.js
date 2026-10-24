@@ -1034,12 +1034,17 @@
       var y = Math.max(0, window.scrollY || window.pageYOffset || (document.documentElement ? document.documentElement.scrollTop : 0) || 0);
       var delta = y - lastY;
 
-      // The moment user scrolls down past the top (y > 10), scroll off immediately!
-      if (delta > 2 && y > 10) {
-        document.body.classList.add("kn-nav-scrolled-off", "kn-nav-autohidden");
+      var isHidden = document.body.classList.contains("kn-nav-scrolled-off");
+      // The moment user scrolls down past the top (y > 20), scroll off immediately!
+      if (delta > 4 && y > 20) {
+        if (!isHidden) {
+          document.body.classList.add("kn-nav-scrolled-off", "kn-nav-autohidden");
+        }
       } else if (delta < -4 || y <= 10) {
         // Scrolling up or near top reveals it smoothly
-        document.body.classList.remove("kn-nav-scrolled-off", "kn-nav-autohidden");
+        if (isHidden) {
+          document.body.classList.remove("kn-nav-scrolled-off", "kn-nav-autohidden");
+        }
       }
       lastY = y;
     }
@@ -1052,8 +1057,6 @@
     };
 
     window.addEventListener("scroll", triggerScroll, { passive: true });
-    window.addEventListener("touchmove", triggerScroll, { passive: true });
-    window.addEventListener("wheel", triggerScroll, { passive: true });
   }
 
   function initNavigation() {

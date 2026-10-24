@@ -25,17 +25,39 @@
     resources: "KN // REFERENCE SHELF"
   };
 
+  let cachedPositions = [];
+  function updateSectionOffsets() {
+    cachedPositions = [];
+    sections.forEach(sec => {
+      cachedPositions.push({
+        envState: sec.dataset.envState,
+        top: sec.offsetTop,
+        bottom: sec.offsetTop + sec.offsetHeight
+      });
+    });
+  }
+
+  window.addEventListener("resize", updateSectionOffsets, { passive: true });
+  if (typeof requestIdleCallback === "function") {
+    requestIdleCallback(updateSectionOffsets);
+  } else {
+    setTimeout(updateSectionOffsets, 100);
+  }
+  updateSectionOffsets();
+
+  let scrollTicking = false;
   function checkEnvironments() {
+    scrollTicking = false;
     const scrollMid = window.scrollY + window.innerHeight * 0.45;
     let found = null;
 
-    sections.forEach(sec => {
-      const top = sec.offsetTop;
-      const bottom = top + sec.offsetHeight;
-      if (scrollMid >= top && scrollMid <= bottom) {
-        found = sec.dataset.envState;
+    for (let i = 0; i < cachedPositions.length; i++) {
+      const pos = cachedPositions[i];
+      if (scrollMid >= pos.top && scrollMid <= pos.bottom) {
+        found = pos.envState;
+        break;
       }
-    });
+    }
 
     if (found && found !== activeState) {
       activeState = found;
@@ -50,6 +72,11 @@
     }
   }
 
-  window.addEventListener("scroll", checkEnvironments, { passive: true });
+  window.addEventListener("scroll", () => {
+    if (!scrollTicking) {
+      scrollTicking = true;
+      requestAnimationFrame(checkEnvironments);
+    }
+  }, { passive: true });
   checkEnvironments();
 })();

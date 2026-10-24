@@ -275,13 +275,18 @@
       return load3DPromise;
     }
 
+    // 3D structures and Three.js load on demand when a topic is selected or requested
     if (!isPyq) {
-      // In normal study mode, load 3D assets on idle or first user scroll/interaction
-      if ("requestIdleCallback" in window) {
-        requestIdleCallback(function () { load3DAssets(); }, { timeout: 1500 });
-      } else {
-        setTimeout(load3DAssets, 300);
-      }
+      try {
+        var sp = new URLSearchParams(window.location.search);
+        if (sp.get("topic") || window.location.hash.indexOf("topic-") !== -1) {
+          if ("requestIdleCallback" in window) {
+            requestIdleCallback(function () { load3DAssets(); }, { timeout: 1200 });
+          } else {
+            setTimeout(load3DAssets, 400);
+          }
+        }
+      } catch (_) {}
     }
 
     // If study-ron-design is active, study-ron-design.js automatically mounts cards and 3D viewers when ready

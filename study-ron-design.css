@@ -2272,6 +2272,8 @@ body.dark .ron-domain-tab.active .ron-domain-tab-count {
 
 /* ------------------------------------------------------------ Clinical Cards */
 .ron-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 240px;
   background: #ffffff;
   border-radius: 24px;
   padding: 18px 22px;
@@ -4518,9 +4520,11 @@ body:not(.dark) .ron-reading-progress-track {
 
 .ron-reading-progress-bar {
   height: 100%;
-  width: 0%;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
   background: linear-gradient(90deg, #38bdf8, #818cf8);
-  transition: width 0.1s linear;
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -4979,9 +4983,11 @@ body.ron-reading-fullscreen-active {
 
 .ron-rm-progress-bar {
   height: 100%;
-  width: 0%;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
   background: var(--rm-progress-bar);
-  transition: width 0.08s linear;
+  will-change: transform;
 }
 
 .ron-rm-progress-pct {
