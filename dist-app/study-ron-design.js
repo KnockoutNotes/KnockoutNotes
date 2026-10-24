@@ -419,24 +419,24 @@
       icon: "🫁",
       desc: "Complete 16-chapter intensive care syllabus (Washington Manual & consensus guidelines)",
       cats: [
-        { id: "all", label: "All Critical Care", icon: "✦", desc: "Complete 16-chapter Critical Care master syllabus (Washington Manual & consensus guidelines)", filter: (it) => (it.cat && it.cat.startsWith("cc_")) || ["shock", "respiratory", "abg", "antibiotics", "antimicrobials", "poisoning"].includes(it.cat) || (it.cat === "pain" && it.id !== "chronic-post-surgical-pain-neuromodulation" && it.id !== "regional-neuraxial-analgesia-catheters") || (it.id && (it.id.includes("sepsis") || it.id.includes("shock") || it.id.includes("ards") || it.id.includes("ventilator"))) },
-        { id: "cc_principles", label: "General Principles", icon: "🏛️", desc: "ICU organization, triage, severity scoring systems (APACHE, SOFA, NEWS2), ethics & organ donation", filter: (it) => it.cat === "cc_principles" },
-        { id: "cc_airway", label: "Airway Management", icon: "🫁", desc: "Difficult airway in ICU, physiological RSI, video laryngoscopy & percutaneous tracheostomy", filter: (it) => it.cat === "cc_airway" || (it.id && it.id.includes("rsi")) || ((it.name || "").toLowerCase().includes("rsi")) },
-        { id: "cc_respiratory", label: "Respiratory Critical Care", icon: "💨", desc: "ARDS, mechanical ventilation modes, APRV, waveforms, asynchrony, severe asthma & PE", filter: (it) => it.cat === "cc_respiratory" || it.cat === "respiratory" },
-        { id: "cc_hemodynamics", label: "Hemodynamic Support", icon: "⚡", desc: "Shock classification, invasive monitoring, PiCCO, vasopressors, inotropes & dynamic preload", filter: (it) => it.cat === "cc_hemodynamics" || it.cat === "shock" },
-        { id: "cc_sepsis", label: "Sepsis & Infections", icon: "🛡️", desc: "Sepsis-3 1-hour bundle, MDR pathogens, PK/PD beta-lactam infusions & source control", filter: (it) => it.cat === "cc_sepsis" || it.cat === "antibiotics" || it.cat === "antimicrobials" || (it.id && (it.id.includes("sepsis") || it.id.includes("antibiotic"))) },
-        { id: "cc_neuro", label: "Neurological Critical Care", icon: "🧠", desc: "Coma, GCS/FOUR score, TBI, raised ICP, status epilepticus, stroke & EVT, GBS, CNS infections & brain death", filter: (it) => it.cat === "cc_neuro" },
-        { id: "cc_cardio", label: "Cardiovascular Critical Care", icon: "❤️", desc: "Acute coronary syndromes, cardiogenic shock (SCAI), malignant arrhythmias & cardiac tamponade", filter: (it) => it.cat === "cc_cardio" },
-        { id: "cc_renal", label: "Renal & Metabolic Support", icon: "🧪", desc: "AKI (KDIGO), CRRT modalities, acid-base disorders & severe electrolyte emergencies", filter: (it) => it.cat === "cc_renal" || it.cat === "abg" },
-        { id: "cc_gi", label: "Gastrointestinal & Hepatic", icon: "🔬", desc: "Acute GI bleeding, severe acute pancreatitis, acute liver failure, ICU nutrition & refeeding", filter: (it) => it.cat === "cc_gi" },
-        { id: "cc_trauma", label: "Trauma & Burns", icon: "🩹", desc: "Polytrauma resuscitation, ATLS principles, damage control surgery, pelvic fractures & burn care", filter: (it) => it.cat === "cc_trauma" },
-        { id: "cc_tox", label: "Poisoning & Toxicology", icon: "☠️", desc: "Toxidromes, targeted antidotes, EXTRIP extracorporeal elimination, heatstroke & hypothermia", filter: (it) => it.cat === "cc_tox" || it.cat === "poisoning" },
-        { id: "cc_heme", label: "Hematology & Transfusion", icon: "🩸", desc: "Massive transfusion protocols (MTP), ROTEM/TEG, DIC, HIT & transfusion reactions", filter: (it) => it.cat === "cc_heme" },
-        { id: "cc_obs", label: "Obstetric Critical Care", icon: "🤰", desc: "Severe pre-eclampsia, eclampsia, HELLP syndrome, amniotic fluid embolism & obstetric hemorrhage", filter: (it) => it.cat === "cc_obs" },
-        { id: "cc_peds", label: "Pediatric Critical Care", icon: "👶", desc: "Pediatric acute respiratory failure, croup, PALS protocols, pediatric septic shock & vasoactive support", filter: (it) => it.cat === "cc_peds" },
-        { id: "cc_pharm", label: "ICU Pharmacology", icon: "💊", desc: "SCCM PADIS guidelines (pain, agitation, delirium), sedation protocols & neuromuscular blockade with TOF", filter: (it) => it.cat === "cc_pharm" },
-        { id: "cc_advances", label: "Research & Recent Advances", icon: "🚀", desc: "Extracorporeal membrane oxygenation (VV vs VA ECMO), multiorgan critical care POCUS (BLUE/RUSH/VExUS)", filter: (it) => it.cat === "cc_advances" },
-        { id: "pain", label: "Pain Medicine & Analgosedation", icon: "⚡", desc: "ICU analgosedation, PADIS guidelines, CPOT/BPS, trauma/burn pain, opioid tapering & palliative care", filter: (it) => it.cat === "pain" && it.id !== "chronic-post-surgical-pain-neuromodulation" && it.id !== "regional-neuraxial-analgesia-catheters" }
+        { id: "all", label: "All Critical Care", icon: "✦", desc: "Complete 16-chapter Critical Care master syllabus (Washington Manual & consensus guidelines)", filter: (it) => Boolean(it.sections) && ((it.cat && it.cat.startsWith("cc_")) || ["shock", "respiratory", "abg", "antibiotics", "antimicrobials", "poisoning"].includes(it.cat) || (it.cat === "pain" && it.id !== "chronic-post-surgical-pain-neuromodulation" && it.id !== "regional-neuraxial-analgesia-catheters") || (it.id && (it.id.includes("sepsis") || it.id.includes("shock") || it.id.includes("ards") || it.id.includes("ventilator")))) },
+        { id: "cc_principles", label: "General Principles", icon: "🏛️", desc: "ICU organization, triage, severity scoring systems (APACHE, SOFA, NEWS2), ethics & organ donation", filter: (it) => Boolean(it.sections) && it.cat === "cc_principles" },
+        { id: "cc_airway", label: "Airway Management", icon: "🫁", desc: "Difficult airway in ICU, physiological RSI, video laryngoscopy & percutaneous tracheostomy", filter: (it) => Boolean(it.sections) && (it.cat === "cc_airway" || (it.id && it.id.includes("rsi")) || ((it.name || "").toLowerCase().includes("rsi"))) },
+        { id: "cc_respiratory", label: "Respiratory Critical Care", icon: "💨", desc: "ARDS, mechanical ventilation modes, APRV, waveforms, asynchrony, severe asthma & PE", filter: (it) => Boolean(it.sections) && (it.cat === "cc_respiratory" || it.cat === "respiratory") },
+        { id: "cc_hemodynamics", label: "Hemodynamic Support", icon: "⚡", desc: "Shock classification, invasive monitoring, PiCCO, vasopressors, inotropes & dynamic preload", filter: (it) => Boolean(it.sections) && (it.cat === "cc_hemodynamics" || it.cat === "shock") },
+        { id: "cc_sepsis", label: "Sepsis & Infections", icon: "🛡️", desc: "Sepsis-3 1-hour bundle, MDR pathogens, PK/PD beta-lactam infusions & source control", filter: (it) => Boolean(it.sections) && (it.cat === "cc_sepsis" || it.cat === "antibiotics" || it.cat === "antimicrobials" || (it.id && (it.id.includes("sepsis") || it.id.includes("antibiotic")))) },
+        { id: "cc_neuro", label: "Neurological Critical Care", icon: "🧠", desc: "Coma, GCS/FOUR score, TBI, raised ICP, status epilepticus, stroke & EVT, GBS, CNS infections & brain death", filter: (it) => Boolean(it.sections) && it.cat === "cc_neuro" },
+        { id: "cc_cardio", label: "Cardiovascular Critical Care", icon: "❤️", desc: "Acute coronary syndromes, cardiogenic shock (SCAI), malignant arrhythmias & cardiac tamponade", filter: (it) => Boolean(it.sections) && it.cat === "cc_cardio" },
+        { id: "cc_renal", label: "Renal & Metabolic Support", icon: "🧪", desc: "AKI (KDIGO), CRRT modalities, acid-base disorders & severe electrolyte emergencies", filter: (it) => Boolean(it.sections) && (it.cat === "cc_renal" || it.cat === "abg") },
+        { id: "cc_gi", label: "Gastrointestinal & Hepatic", icon: "🔬", desc: "Acute GI bleeding, severe acute pancreatitis, acute liver failure, ICU nutrition & refeeding", filter: (it) => Boolean(it.sections) && it.cat === "cc_gi" },
+        { id: "cc_trauma", label: "Trauma & Burns", icon: "🩹", desc: "Polytrauma resuscitation, ATLS principles, damage control surgery, pelvic fractures & burn care", filter: (it) => Boolean(it.sections) && it.cat === "cc_trauma" },
+        { id: "cc_tox", label: "Poisoning & Toxicology", icon: "☠️", desc: "Toxidromes, targeted antidotes, EXTRIP extracorporeal elimination, heatstroke & hypothermia", filter: (it) => Boolean(it.sections) && (it.cat === "cc_tox" || it.cat === "poisoning") },
+        { id: "cc_heme", label: "Hematology & Transfusion", icon: "🩸", desc: "Massive transfusion protocols (MTP), ROTEM/TEG, DIC, HIT & transfusion reactions", filter: (it) => Boolean(it.sections) && it.cat === "cc_heme" },
+        { id: "cc_obs", label: "Obstetric Critical Care", icon: "🤰", desc: "Severe pre-eclampsia, eclampsia, HELLP syndrome, amniotic fluid embolism & obstetric hemorrhage", filter: (it) => Boolean(it.sections) && it.cat === "cc_obs" },
+        { id: "cc_peds", label: "Pediatric Critical Care", icon: "👶", desc: "Pediatric acute respiratory failure, croup, PALS protocols, pediatric septic shock & vasoactive support", filter: (it) => Boolean(it.sections) && it.cat === "cc_peds" },
+        { id: "cc_pharm", label: "ICU Pharmacology", icon: "💊", desc: "SCCM PADIS guidelines (pain, agitation, delirium), sedation protocols & neuromuscular blockade with TOF", filter: (it) => Boolean(it.sections) && it.cat === "cc_pharm" },
+        { id: "cc_advances", label: "Research & Recent Advances", icon: "🚀", desc: "Extracorporeal membrane oxygenation (VV vs VA ECMO), multiorgan critical care POCUS (BLUE/RUSH/VExUS)", filter: (it) => Boolean(it.sections) && it.cat === "cc_advances" },
+        { id: "pain", label: "Pain Medicine & Analgosedation", icon: "⚡", desc: "ICU analgosedation, PADIS guidelines, CPOT/BPS, trauma/burn pain, opioid tapering & palliative care", filter: (it) => Boolean(it.sections) && it.cat === "pain" && it.id !== "chronic-post-surgical-pain-neuromodulation" && it.id !== "regional-neuraxial-analgesia-catheters" }
       ]
     },
     drugs: {
@@ -446,22 +446,22 @@
       desc: "Pharmacological monographs, receptor dynamics, kinetics and dosing guidelines",
       cats: [
         { id: "all", label: "All Drugs", icon: "✦", desc: "Complete library of 126 drug monographs", filter: (it) => !it.sections },
-        { id: "antimicrobials", label: "Antimicrobial Therapy", icon: "🦠", desc: "ICU antibiotics & antifungals — Carbapenems, Cephalosporins, Novel BL/BLIs, Glycopeptides, Polymyxins, Aminoglycosides, Oxazolidinones, Fluoroquinolones & Echinocandins", filter: (it) => it.cat === "antimicrobials" || it.cat === "antibiotics" },
-        { id: "antiarrhythmics", label: "Antiarrhythmics", icon: "⚡", desc: "Vaughan Williams classification — Amiodarone, Lignocaine, Procainamide, Ibutilide, Adenosine & class overviews", filter: (it) => it.cat === "antiarrhythmics" },
-        { id: "cardiac", label: "Cardiac Drugs", icon: "🫀", desc: "Heart failure, nitrates, anti-anginal & antiplatelet drugs — Ivabradine, Furosemide, GTN, ISDN, Nicorandil, Digoxin, Antiplatelets & ARNI", filter: (it) => it.cat === "cardiac" || it.cat === "cardiac_drugs" },
-        { id: "induction", label: "Induction Agents", icon: "💉", desc: "Intravenous hypnotics (propofol, etomidate, ketamine, thiopental)", filter: (it) => it.cat === "induction" },
-        { id: "relaxants", label: "Neuromuscular Blockers", icon: "⚡", desc: "Depolarising and non-depolarising neuromuscular blockers", filter: (it) => it.cat === "relaxants" },
-        { id: "reversal", label: "Reversal Agents", icon: "🔄", desc: "Sugammadex, neostigmine, glycopyrrolate & atropine", filter: (it) => it.cat === "reversal" },
-        { id: "opioids", label: "Opioids", icon: "🌿", desc: "Analgesic opioids and pure opioid receptor antagonists", filter: (it) => it.cat === "opioids" },
-        { id: "nsaids", label: "Non-opioid Analgesics", icon: "💊", desc: "NSAIDs, paracetamol, parecoxib and adjuvant analgesics", filter: (it) => it.cat === "nsaids" },
-        { id: "vasopressors", label: "Vasopressors & Inotropes", icon: "❤️", desc: "Catecholamines, vasopressin, milrinone & inotropes", filter: (it) => it.cat === "vasopressors" },
-        { id: "antihypertensives", label: "Antihypertensives", icon: "🩸", desc: "ACE inhibitors, ARBs, calcium channel blockers & systemic antihypertensives", filter: (it) => it.cat === "antihypertensives" },
-        { id: "alpha2", label: "Sedatives (Alpha-2)", icon: "🧠", desc: "Dexmedetomidine, clonidine & neuro-sedatives", filter: (it) => it.cat === "alpha2" },
-        { id: "local", label: "Local Anaesthetics", icon: "💉", desc: "Aminoamides and aminoesters for regional anaesthesia", filter: (it) => it.cat === "local" },
-        { id: "steroids", label: "Steroids", icon: "🧬", desc: "Hydrocortisone, dexamethasone & methylprednisolone", filter: (it) => it.cat === "steroids" },
-        { id: "antidiabetics", label: "Anti-Diabetics", icon: "🩸", desc: "Insulin protocols and glycemic management", filter: (it) => it.cat === "antidiabetics" },
-        { id: "pregnancy", label: "Obstetric & Pediatric Drugs", icon: "🤰", desc: "Drugs in pregnancy, lactation and uterotonics", filter: (it) => it.cat === "pregnancy" },
-        { id: "miscellaneous", label: "Emergency Drugs", icon: "🚨", desc: "Dantrolene, intralipid, adrenaline & resuscitation drugs", filter: (it) => it.cat === "miscellaneous" }
+        { id: "antimicrobials", label: "Antimicrobial Therapy", icon: "🦠", desc: "ICU antibiotics & antifungals — Carbapenems, Cephalosporins, Novel BL/BLIs, Glycopeptides, Polymyxins, Aminoglycosides, Oxazolidinones, Fluoroquinolones & Echinocandins", filter: (it) => !it.sections && (it.cat === "antimicrobials" || it.cat === "antibiotics") },
+        { id: "antiarrhythmics", label: "Antiarrhythmics", icon: "⚡", desc: "Vaughan Williams classification — Amiodarone, Lignocaine, Procainamide, Ibutilide, Adenosine & class overviews", filter: (it) => !it.sections && it.cat === "antiarrhythmics" },
+        { id: "cardiac", label: "Cardiac Drugs", icon: "🫀", desc: "Heart failure, nitrates, anti-anginal & antiplatelet drugs — Ivabradine, Furosemide, GTN, ISDN, Nicorandil, Digoxin, Antiplatelets & ARNI", filter: (it) => !it.sections && (it.cat === "cardiac" || it.cat === "cardiac_drugs") },
+        { id: "induction", label: "Induction Agents", icon: "💉", desc: "Intravenous hypnotics (propofol, etomidate, ketamine, thiopental)", filter: (it) => !it.sections && it.cat === "induction" },
+        { id: "relaxants", label: "Neuromuscular Blockers", icon: "⚡", desc: "Depolarising and non-depolarising neuromuscular blockers", filter: (it) => !it.sections && it.cat === "relaxants" },
+        { id: "reversal", label: "Reversal Agents", icon: "🔄", desc: "Sugammadex, neostigmine, glycopyrrolate & atropine", filter: (it) => !it.sections && it.cat === "reversal" },
+        { id: "opioids", label: "Opioids", icon: "🌿", desc: "Analgesic opioids and pure opioid receptor antagonists", filter: (it) => !it.sections && it.cat === "opioids" },
+        { id: "nsaids", label: "Non-opioid Analgesics", icon: "💊", desc: "NSAIDs, paracetamol, parecoxib and adjuvant analgesics", filter: (it) => !it.sections && it.cat === "nsaids" },
+        { id: "vasopressors", label: "Vasopressors & Inotropes", icon: "❤️", desc: "Catecholamines, vasopressin, milrinone & inotropes", filter: (it) => !it.sections && it.cat === "vasopressors" },
+        { id: "antihypertensives", label: "Antihypertensives", icon: "🩸", desc: "ACE inhibitors, ARBs, calcium channel blockers & systemic antihypertensives", filter: (it) => !it.sections && it.cat === "antihypertensives" },
+        { id: "alpha2", label: "Sedatives (Alpha-2)", icon: "🧠", desc: "Dexmedetomidine, clonidine & neuro-sedatives", filter: (it) => !it.sections && it.cat === "alpha2" },
+        { id: "local", label: "Local Anaesthetics", icon: "💉", desc: "Aminoamides and aminoesters for regional anaesthesia", filter: (it) => !it.sections && it.cat === "local" },
+        { id: "steroids", label: "Steroids", icon: "🧬", desc: "Hydrocortisone, dexamethasone & methylprednisolone", filter: (it) => !it.sections && it.cat === "steroids" },
+        { id: "antidiabetics", label: "Anti-Diabetics", icon: "🩸", desc: "Insulin protocols and glycemic management", filter: (it) => !it.sections && it.cat === "antidiabetics" },
+        { id: "pregnancy", label: "Obstetric & Pediatric Drugs", icon: "🤰", desc: "Drugs in pregnancy, lactation and uterotonics", filter: (it) => !it.sections && it.cat === "pregnancy" },
+        { id: "miscellaneous", label: "Emergency Drugs", icon: "🚨", desc: "Dantrolene, intralipid, adrenaline & resuscitation drugs", filter: (it) => !it.sections && it.cat === "miscellaneous" }
       ]
     },
     cases: {
@@ -889,15 +889,18 @@
 
   function getItemsForDomainAndCat(domainId, catId) {
     const data = getData();
-    const all = [...(data.topics || []), ...(data.drugs || [])];
+    const isDrugs = (domainId === "drugs");
+    const pool = isDrugs
+      ? (data.drugs || []).filter(it => !it.sections)
+      : (data.topics || []).filter(it => Boolean(it.sections));
     const dom = DOMAIN_DEFS[domainId] || DOMAIN_DEFS.anaesthesia;
     const catObj = dom.cats.find(c => c.id === catId);
     if (!catObj) {
-      const direct = all.filter(it => it.cat === catId);
+      const direct = pool.filter(it => it.cat === catId);
       if (direct.length) return direct;
-      return all.filter(dom.cats[0].filter);
+      return pool.filter(dom.cats[0].filter);
     }
-    return all.filter(catObj.filter);
+    return pool.filter(catObj.filter);
   }
 
   function getCategoryMeta(domainId, catId) {
@@ -1946,6 +1949,9 @@
             ${renderNewDomainNavSystem(activeDomain, activeCat)}
           </div>
 
+          <!-- Content Sentinel for Stable Scroll Detection (Stage C) -->
+          <div class="ron-reading-sentinel" id="ronReadingSentinel" aria-hidden="true"></div>
+
           <!-- 2. Topic Hero Layout: Left Side (Profile + Vertical Tools) & Right Side (Header + Fast Scroll Buttons) -->
           <div class="ron-topic-hero-layout">
 
@@ -2060,9 +2066,6 @@
             </div>
 
           </div>
-
-          <!-- Content Sentinel for Stable Scroll Detection (Stage C) -->
-          <div class="ron-reading-sentinel" id="ronReadingSentinel" aria-hidden="true"></div>
 
           <!-- 3. THE MAIN CONTAINER BOX (Complete Description in Full Sequence) -->
           <div class="ron-stage-container" id="ronMainContentBox">
@@ -2759,13 +2762,23 @@
     return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }
 
+  let activeReadingObserver = null;
+
   function teardownScrollReadingMode() {
     if (activeReadingScrollHandler) {
       window.removeEventListener("scroll", activeReadingScrollHandler);
+      document.removeEventListener("scroll", activeReadingScrollHandler);
       activeReadingScrollHandler = null;
+    }
+    if (activeReadingObserver) {
+      activeReadingObserver.disconnect();
+      activeReadingObserver = null;
     }
     const app = document.getElementById("ronStudyApp");
     if (app) app.classList.remove("ron-reading-mode-active");
+    document.body.classList.remove("ron-reading-active");
+    const toolbar = document.getElementById("ronReadingToolbar");
+    if (toolbar) toolbar.setAttribute("aria-hidden", "true");
   }
 
   function setupScrollReadingMode(mount) {
@@ -2780,42 +2793,84 @@
     let isCompact = false;
     let ticking = false;
 
+    function setCompact(active) {
+      if (isCompact === active) return;
+      isCompact = active;
+      if (active) {
+        app.classList.add("ron-reading-mode-active");
+        document.body.classList.add("ron-reading-active");
+        toolbar.setAttribute("aria-hidden", "false");
+      } else {
+        app.classList.remove("ron-reading-mode-active");
+        document.body.classList.remove("ron-reading-active");
+        toolbar.setAttribute("aria-hidden", "true");
+      }
+    }
+
+    function updateReadingState() {
+      if (!sentinel.isConnected) return;
+      const sRect = sentinel.getBoundingClientRect();
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+      // Enter compact reading mode when sentinel passes top area or user scrolls down into content
+      if (!isCompact) {
+        if (sRect.top <= 60 || scrollY >= 240) {
+          setCompact(true);
+        }
+      } else {
+        // Exit compact reading mode (hysteresis: restore when scrolled back near top)
+        if (sRect.top > 80 && scrollY < 180) {
+          setCompact(false);
+        }
+      }
+
+      // Reading progress bar calculation
+      if (progressBar && isCompact) {
+        const docHeight = (document.documentElement.scrollHeight || document.body.scrollHeight || 0) - window.innerHeight;
+        if (docHeight > 0) {
+          const pct = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
+          progressBar.style.width = pct.toFixed(1) + "%";
+        }
+      }
+    }
+
     function onScroll() {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
         ticking = false;
-        if (!sentinel.isConnected) return;
-        const sRect = sentinel.getBoundingClientRect();
-        const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
-
-        // Enter compact reading mode when sentinel reaches top area
-        if (!isCompact && sRect.top <= 80) {
-          isCompact = true;
-          app.classList.add("ron-reading-mode-active");
-          toolbar.setAttribute("aria-hidden", "false");
-        } 
-        // Exit compact reading mode (hysteresis: requires scrolling back up past 160px or scrollY < 200)
-        else if (isCompact && (sRect.top > 160 || scrollY < 200)) {
-          isCompact = false;
-          app.classList.remove("ron-reading-mode-active");
-          toolbar.setAttribute("aria-hidden", "true");
-        }
-
-        // Reading progress bar calculation
-        if (progressBar && isCompact) {
-          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          if (docHeight > 0) {
-            const pct = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
-            progressBar.style.width = pct.toFixed(1) + "%";
-          }
-        }
+        updateReadingState();
       });
     }
 
+    // Modern native IntersectionObserver for robust mobile compositor performance
+    try {
+      if (typeof window.IntersectionObserver !== "undefined") {
+        activeReadingObserver = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            const isScrolledPast = entry.boundingClientRect.top <= 60;
+            if (!entry.isIntersecting && isScrolledPast) {
+              setCompact(true);
+            } else if (entry.isIntersecting || !isScrolledPast) {
+              const scrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+              if (scrollY < 180) {
+                setCompact(false);
+              }
+            }
+          }
+        }, {
+          root: null,
+          rootMargin: "-60px 0px 0px 0px",
+          threshold: [0, 1.0]
+        });
+        activeReadingObserver.observe(sentinel);
+      }
+    } catch (_) {}
+
     activeReadingScrollHandler = onScroll;
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+    document.addEventListener("scroll", onScroll, { passive: true });
+    updateReadingState();
 
     // Bind back button
     const backBtn = document.getElementById("ronReadingBackBtn");
@@ -3180,8 +3235,11 @@ function renderTopicsModal() {
   function selectDomainTab(targetDomain) {
     if (!DOMAIN_DEFS[targetDomain]) return;
     teardownScrollReadingMode();
+    closeChaptersModal();
+    closeTopicsModal();
     triggerHapticFeedback();
-    if (targetDomain !== activeDomain || activeCat !== "all" || activeItem !== null || searchFilter) {
+    const isSameDomain = (targetDomain === activeDomain);
+    if (!isSameDomain || activeCat !== "all" || activeItem !== null || searchFilter) {
       activeDomain = targetDomain;
       activeCat = "all";
       activeItem = null;
@@ -3197,11 +3255,14 @@ function renderTopicsModal() {
       renderRonBoard();
       scrollCategoryPillIntoView(activeDomain, "all");
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function selectCategoryPill(domain, cat) {
     if (!DOMAIN_DEFS[domain]) return;
     teardownScrollReadingMode();
+    closeChaptersModal();
+    closeTopicsModal();
     triggerHapticFeedback();
     activeDomain = domain;
     activeCat = cat || "all";
@@ -3229,9 +3290,12 @@ function renderTopicsModal() {
   }
 
   // ==========================================================================
-  // MOBILE SINGLE-TAP / DOUBLE-TAP & SWIPE GESTURE CONTROLLER
+  // MOBILE TOUCH & TAP GESTURE CONTROLLER
+  // Single-tap selects immediately.
+  // Tap-to-open menus is REMOVED completely.
+  // Swiping across the category strip scrolls natively without selecting.
+  // Only the dedicated Chapters button opens the chapters modal.
   // ==========================================================================
-  const DOUBLE_TAP_INTERVAL_MS = 380;
   const SWIPE_THRESHOLD_PX = 8;
 
   let touchStartX = 0;
@@ -3240,9 +3304,6 @@ function renderTopicsModal() {
   let isSwiping = false;
   let touchTarget = null;
   let lastTouchHandledTime = 0;
-
-  let lastTapKey = null;
-  let lastTapTime = 0;
 
   function getCategoryControlFromEvent(target) {
     if (!target) return null;
@@ -3320,42 +3381,20 @@ function renderTopicsModal() {
       e.preventDefault();
     }
 
-    const now = Date.now();
-    const isDoubleTap = (lastTapKey === control.key) && (now - lastTapTime <= DOUBLE_TAP_INTERVAL_MS);
-
-    if (isDoubleTap) {
-      lastTapKey = null;
-      lastTapTime = 0;
-      if (control.type === "cat") {
-        openChaptersModal(control.domain, control.cat);
-      } else {
-        openChaptersModal(control.domain);
-      }
+    // Direct selection on touch tap. Never open chapters/topics modal on category or domain tap!
+    if (control.type === "cat") {
+      selectCategoryPill(control.domain, control.cat);
     } else {
-      lastTapKey = control.key;
-      lastTapTime = now;
-      if (control.type === "cat") {
-        selectCategoryPill(control.domain, control.cat);
-      } else {
-        selectDomainTab(control.domain);
-      }
+      selectDomainTab(control.domain);
     }
   }, { passive: false });
 
-  // Desktop double-click support
+  // Suppress dblclick on category controls (never open modals on double click/tap)
   document.addEventListener("dblclick", (e) => {
-    // Suppress synthetic or overlapping dblclick events following touch interactions
-    if (Date.now() - lastTouchHandledTime < 600) {
+    const control = getCategoryControlFromEvent(e.target);
+    if (control) {
       e.preventDefault();
       e.stopPropagation();
-      return;
-    }
-    const control = getCategoryControlFromEvent(e.target);
-    if (!control) return;
-    if (control.type === "cat") {
-      openChaptersModal(control.domain, control.cat);
-    } else {
-      openChaptersModal(control.domain);
     }
   });
 
@@ -3997,6 +4036,8 @@ function renderTopicsModal() {
   };
   window.StudyRonDesign = {
     switchDomain: switchDomain,
+    selectDomainTab: selectDomainTab,
+    selectCategoryPill: selectCategoryPill,
     openChaptersModal: openChaptersModal,
     closeChaptersModal: closeChaptersModal,
     openTopicsModal: openTopicsModal,

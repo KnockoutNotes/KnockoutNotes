@@ -687,7 +687,9 @@
           if (href === "drugs.html" || href.indexOf("domain=drugs") !== -1) {
             e.preventDefault();
             setMobileMenuState(false);
-            if (typeof window.StudyRonDesign.switchDomain === "function") {
+            if (typeof window.StudyRonDesign.selectDomainTab === "function") {
+              window.StudyRonDesign.selectDomainTab("drugs");
+            } else if (typeof window.StudyRonDesign.switchDomain === "function") {
               window.StudyRonDesign.switchDomain("drugs");
             } else if (typeof window.StudyRonDesign.openChaptersModal === "function") {
               window.StudyRonDesign.openChaptersModal("drugs");
@@ -697,7 +699,9 @@
           if (href === "study.html" || href.indexOf("domain=anaesthesia") !== -1) {
             e.preventDefault();
             setMobileMenuState(false);
-            if (typeof window.StudyRonDesign.switchDomain === "function") {
+            if (typeof window.StudyRonDesign.selectDomainTab === "function") {
+              window.StudyRonDesign.selectDomainTab("anaesthesia");
+            } else if (typeof window.StudyRonDesign.switchDomain === "function") {
               window.StudyRonDesign.switchDomain("anaesthesia");
             } else if (typeof window.StudyRonDesign.openChaptersModal === "function") {
               window.StudyRonDesign.openChaptersModal("anaesthesia");
@@ -707,7 +711,9 @@
           if (href === "critical-care.html" || href.indexOf("domain=critical") !== -1) {
             e.preventDefault();
             setMobileMenuState(false);
-            if (typeof window.StudyRonDesign.switchDomain === "function") {
+            if (typeof window.StudyRonDesign.selectDomainTab === "function") {
+              window.StudyRonDesign.selectDomainTab("critical");
+            } else if (typeof window.StudyRonDesign.switchDomain === "function") {
               window.StudyRonDesign.switchDomain("critical");
             } else if (typeof window.StudyRonDesign.openChaptersModal === "function") {
               window.StudyRonDesign.openChaptersModal("critical");
@@ -728,10 +734,10 @@
         var curPath = getCurrentPath();
         if (curPath === "study.html" && href === "study.html" && window.StudyRonDesign) {
           e.preventDefault();
-          if (typeof window.StudyRonDesign.switchDomain === "function") {
+          if (typeof window.StudyRonDesign.selectDomainTab === "function") {
+            window.StudyRonDesign.selectDomainTab("anaesthesia");
+          } else if (typeof window.StudyRonDesign.switchDomain === "function") {
             window.StudyRonDesign.switchDomain("anaesthesia");
-          } else if (typeof window.StudyRonDesign.openChaptersModal === "function") {
-            window.StudyRonDesign.openChaptersModal();
           }
         }
       });

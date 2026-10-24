@@ -3797,32 +3797,70 @@ body.dark .ron-topic-mcq-desc {
    or tapping Chapters (▾), this box displays all syllabus chapters as hyperlinks!
    ========================================================================== */
 
-.ron-browse-chapters-trigger {
+.ron-browse-chapters-trigger,
+#ronBrowseChaptersTrigger {
+  -webkit-appearance: none;
+  appearance: none;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   padding: 6px 14px;
-  border-radius: 999px;
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 9999px;
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.28);
   color: #0284c7;
+  font-family: inherit;
   font-size: 12px;
   font-weight: 700;
+  line-height: 1;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+  box-sizing: border-box;
   white-space: nowrap;
   user-select: none;
   min-height: 32px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-body.dark .ron-browse-chapters-trigger {
-  background: rgba(56, 189, 248, 0.15);
-  border-color: rgba(56, 189, 248, 0.4);
+.ron-browse-chapters-trigger:hover,
+#ronBrowseChaptersTrigger:hover {
+  background: rgba(2, 132, 199, 0.16);
+  border-color: rgba(2, 132, 199, 0.45);
+  color: #0369a1;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(2, 132, 199, 0.15);
+}
+
+body.dark .ron-browse-chapters-trigger,
+body.dark #ronBrowseChaptersTrigger,
+html.dark .ron-browse-chapters-trigger,
+html.dark #ronBrowseChaptersTrigger,
+[data-theme="dark"] .ron-browse-chapters-trigger,
+[data-theme="dark"] #ronBrowseChaptersTrigger,
+.dark .ron-browse-chapters-trigger,
+.dark #ronBrowseChaptersTrigger {
+  background: rgba(24, 24, 48, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.35);
   color: #38bdf8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-.ron-browse-chapters-trigger:hover {
+body.dark .ron-browse-chapters-trigger:hover,
+body.dark #ronBrowseChaptersTrigger:hover,
+html.dark .ron-browse-chapters-trigger:hover,
+html.dark #ronBrowseChaptersTrigger:hover,
+[data-theme="dark"] .ron-browse-chapters-trigger:hover,
+[data-theme="dark"] #ronBrowseChaptersTrigger:hover,
+.dark .ron-browse-chapters-trigger:hover,
+.dark #ronBrowseChaptersTrigger:hover {
   background: rgba(56, 189, 248, 0.22);
+  border-color: #38bdf8;
+  color: #7dd3fc;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
   transform: translateY(-1px);
 }
 
@@ -4270,6 +4308,13 @@ body:not(.dark) .ron-reading-toolbar {
   transform: translateY(0);
   opacity: 1;
   pointer-events: auto;
+}
+
+body.ron-reading-active .bubble-menu {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-100%) !important;
+  transition: opacity 0.22s ease, transform 0.22s ease !important;
 }
 
 .ron-reading-toolbar-inner {

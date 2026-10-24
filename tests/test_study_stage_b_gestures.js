@@ -191,15 +191,25 @@ server.listen(PORT, async () => {
   const pass1 = test1.activeDomain === 'drugs' && test1.activeCat === 'all' && test1.cardCount === 126 && test1.isModalOpen === false;
   console.log('Test 1 Result:', pass1 ? 'PASS' : 'FAIL');
 
-  // TEST 2: Double tap on Drugs domain tab within interval (Opens chapters modal)
-  console.log('\n--- TEST 2: Double tap on Drugs domain tab within interval ---');
+  // TEST 2: Double tap / repeated taps on Drugs domain tab does NOT open modal
+  console.log('\n--- TEST 2: Double tap on Drugs domain tab (modal must remain closed) ---');
   let drugsTabPt2 = await getElementPoint('[data-ron-domain="drugs"]:not([data-ron-cat])');
   await doubleTap(drugsTabPt2);
   await new Promise(r => setTimeout(r, 400));
   const test2 = await getStudyState();
   console.log('Test 2 (Double tap Drugs):', test2);
-  const pass2 = test2.activeDomain === 'drugs' && test2.isModalOpen === true;
+  const pass2 = test2.activeDomain === 'drugs' && test2.isModalOpen === false;
   console.log('Test 2 Result:', pass2 ? 'PASS' : 'FAIL');
+
+  // TEST 2b: Dedicated Chapters button tap DOES open chapters modal
+  console.log('\n--- TEST 2b: Tapping dedicated Chapters button opens modal ---');
+  const chaptersBtnPt = await getElementPoint('#ronBrowseChaptersTrigger');
+  await tap(chaptersBtnPt.x, chaptersBtnPt.y);
+  await new Promise(r => setTimeout(r, 400));
+  const test2b = await getStudyState();
+  console.log('Test 2b (Chapters button tap):', test2b);
+  const pass2b = test2b.isModalOpen === true;
+  console.log('Test 2b Result:', pass2b ? 'PASS' : 'FAIL');
 
   // Close chapters modal
   await send('Runtime.evaluate', { expression: `window.StudyRonDesign.closeChaptersModal()` });
@@ -214,18 +224,14 @@ server.listen(PORT, async () => {
   const pass3 = test3.activeCat === 'induction' && test3.cardCount === 7 && test3.isModalOpen === false;
   console.log('Test 3 Result:', pass3 ? 'PASS' : 'FAIL');
 
-  // TEST 4: Double tap on Opioids category pill (Opens chapters modal directly on opioids)
-  console.log('\n--- TEST 4: Double tap on Opioids category pill ---');
+  // TEST 4: Double tap on Opioids category pill (Selects opioids, modal must remain closed)
+  console.log('\n--- TEST 4: Double tap on Opioids category pill (modal must remain closed) ---');
   await doubleTap('.ron-nav-pill[data-ron-cat="opioids"]');
   await new Promise(r => setTimeout(r, 400));
   const test4 = await getStudyState();
   console.log('Test 4 (Double tap Opioids):', test4);
-  const pass4 = test4.activeCat === 'opioids' && test4.cardCount === 13 && test4.isModalOpen === true;
+  const pass4 = test4.activeCat === 'opioids' && test4.cardCount === 13 && test4.isModalOpen === false;
   console.log('Test 4 Result:', pass4 ? 'PASS' : 'FAIL');
-
-  // Close modal
-  await send('Runtime.evaluate', { expression: `window.StudyRonDesign.closeChaptersModal()` });
-  await new Promise(r => setTimeout(r, 300));
 
   // TEST 5: Horizontal swipe across category strip (> 8px cancels tap recognition)
   console.log('\n--- TEST 5: Horizontal swipe across category strip ---');

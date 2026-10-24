@@ -323,17 +323,16 @@ class TestStudyModeReliability(unittest.TestCase):
         self.assertIn("container.scrollTo", scroll_body)
 
     def test_single_tap_and_double_tap_gesture_handling(self):
-        """Verify touch event handler executes single-tap immediate selection and double-tap modal open."""
+        """Verify touch event handler executes single-tap immediate selection and does NOT open modals on category tap."""
         ron_js_path = os.path.join(ROOT_DIR, "study-ron-design.js")
         with open(ron_js_path, "r", encoding="utf-8") as f:
             content = f.read()
 
-        # In touchend handler, verify double tap detection and immediate single tap execution
+        # In touchend handler, verify immediate selection and that category tap does NOT open modals
         touchend_match = re.search(r'document\.addEventListener\("touchend",\s*\(e\)\s*=>\s*\{(.*?)\},\s*\{\s*passive:\s*false\s*\}\);', content, re.DOTALL)
         self.assertIsNotNone(touchend_match, "touchend listener not found")
         touchend_body = touchend_match.group(1)
-        self.assertIn("DOUBLE_TAP_INTERVAL_MS", touchend_body, "Double tap must use configured interval")
-        self.assertIn("openChaptersModal", touchend_body, "Double tap must open chapters modal")
+        self.assertNotIn("openChaptersModal", touchend_body, "Category/domain touch tap must never open chapters modal")
         self.assertIn("selectDomainTab", touchend_body, "Single tap must execute immediate domain selection")
         self.assertIn("selectCategoryPill", touchend_body, "Single tap must execute immediate category selection")
 
