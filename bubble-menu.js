@@ -55,6 +55,17 @@
   function getCurrentPath() {
     var path = window.location.pathname.split("/").pop() || "index.html";
     if (path === "") path = "index.html";
+    if (path === "study") path = "study.html";
+    else if (path === "notes") path = "notes.html";
+    else if (path === "drugs") path = "drugs.html";
+    else if (path === "calculators") path = "calculators.html";
+    else if (path === "ventilator") path = "ventilator.html";
+    else if (path === "critical-care") path = "critical-care.html";
+    else if (path === "resources") path = "resources.html";
+    else if (path === "workspace") path = "workspace.html";
+    else if (path === "crisis") path = "crisis.html";
+    else if (path === "viva") path = "viva.html";
+    else if (path === "regional-anaesthesia") path = "regional-anaesthesia.html";
     return path;
   }
 
@@ -683,8 +694,9 @@
         }
 
         // On study.html: Intercept Study Mode, Drugs, and Critical Care to switch domain & overview cleanly
-        if (curPath === "study.html" && window.StudyRonDesign) {
-          if (href === "drugs.html" || href.indexOf("domain=drugs") !== -1) {
+        var isStudyPage = (curPath === "study.html" || curPath === "study" || (document.body && document.body.getAttribute("data-content-page") === "study"));
+        if (isStudyPage && window.StudyRonDesign) {
+          if (href === "drugs.html" || href === "drugs" || href.indexOf("domain=drugs") !== -1) {
             e.preventDefault();
             setMobileMenuState(false);
             if (typeof window.StudyRonDesign.selectDomainTab === "function") {
@@ -732,7 +744,8 @@
       link.addEventListener("click", function (e) {
         var href = link.getAttribute("href");
         var curPath = getCurrentPath();
-        if (curPath === "study.html" && href === "study.html" && window.StudyRonDesign) {
+        var isStudyPage = (curPath === "study.html" || curPath === "study" || (document.body && document.body.getAttribute("data-content-page") === "study"));
+        if (isStudyPage && (href === "study.html" || href === "study") && window.StudyRonDesign) {
           e.preventDefault();
           if (typeof window.StudyRonDesign.selectDomainTab === "function") {
             window.StudyRonDesign.selectDomainTab("anaesthesia");

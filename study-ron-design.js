@@ -2768,6 +2768,9 @@
     if (activeReadingScrollHandler) {
       window.removeEventListener("scroll", activeReadingScrollHandler);
       document.removeEventListener("scroll", activeReadingScrollHandler);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener("scroll", activeReadingScrollHandler);
+      }
       activeReadingScrollHandler = null;
     }
     if (activeReadingObserver) {
@@ -2777,8 +2780,11 @@
     const app = document.getElementById("ronStudyApp");
     if (app) app.classList.remove("ron-reading-mode-active");
     document.body.classList.remove("ron-reading-active");
-    const toolbar = document.getElementById("ronReadingToolbar");
-    if (toolbar) toolbar.setAttribute("aria-hidden", "true");
+    // Clean up any detached toolbar hanging off document.body from a previous render
+    const bodyToolbar = document.body.querySelector(":scope > #ronReadingToolbar");
+    if (bodyToolbar) {
+      bodyToolbar.remove();
+    }
   }
 
   function setupScrollReadingMode(mount) {
@@ -2789,6 +2795,11 @@
     const app = document.getElementById("ronStudyApp");
     const progressBar = document.getElementById("ronReadingProgressBar");
     if (!toolbar || !sentinel || !app) return;
+
+    // Relocate toolbar directly to document.body to ensure it is NEVER trapped by any ancestor perspective/transform containing block!
+    if (toolbar.parentElement !== document.body) {
+      document.body.appendChild(toolbar);
+    }
 
     let isCompact = false;
     let ticking = false;
@@ -2870,6 +2881,9 @@
     activeReadingScrollHandler = onScroll;
     window.addEventListener("scroll", onScroll, { passive: true });
     document.addEventListener("scroll", onScroll, { passive: true });
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("scroll", onScroll, { passive: true });
+    }
     updateReadingState();
 
     // Bind back button
