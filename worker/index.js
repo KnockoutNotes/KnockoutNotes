@@ -344,22 +344,59 @@ export default {
         headHeaders.set('X-Content-Type-Options', 'nosniff');
         return new Response(null, { status: 200, headers: headHeaders });
       }
-      if (env.ASSETS) {
-        const sitemapReq = new Request(new URL('/sitemap.xml', request.url), request);
-        const sitemapRes = await env.ASSETS.fetch(sitemapReq);
-        if (sitemapRes && sitemapRes.status === 200) {
-          let sitemapText = await sitemapRes.text();
-          const host = url.host;
-          if (host && !host.includes('workers.dev')) {
-            sitemapText = sitemapText.replaceAll('https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev', url.origin);
-          }
-          const headers = new Headers(sitemapRes.headers);
-          headers.set('Content-Type', 'application/xml; charset=utf-8');
-          headers.set('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
-          headers.set('X-Content-Type-Options', 'nosniff');
-          return new Response(sitemapText, { status: 200, headers });
-        }
+
+      if (request.method !== 'GET') {
+        return new Response('Method Not Allowed', {
+          status: 405,
+          headers: { 'Allow': 'GET, HEAD' }
+        });
       }
+
+      if (env.ASSETS) {
+        try {
+          // Unconditional internal asset fetch prevents asset 304 response on client conditional GETs
+          const sitemapReq = new Request(new URL('/sitemap.xml', request.url), {
+            method: 'GET',
+            headers: { 'Accept': 'application/xml, text/xml, */*' }
+          });
+          const sitemapRes = await env.ASSETS.fetch(sitemapReq);
+          if (sitemapRes && sitemapRes.status === 200) {
+            let sitemapText = await sitemapRes.text();
+            const host = url.host;
+            if (host && !host.includes('workers.dev')) {
+              sitemapText = sitemapText.replaceAll('https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev', url.origin);
+            }
+            const bodyBytes = new TextEncoder().encode(sitemapText);
+            const headers = new Headers();
+            headers.set('Content-Type', 'application/xml; charset=utf-8');
+            headers.set('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
+            headers.set('X-Content-Type-Options', 'nosniff');
+            headers.set('Content-Length', bodyBytes.byteLength.toString());
+            return new Response(bodyBytes, { status: 200, headers });
+          }
+        } catch (err) {
+          console.error('Failed to load sitemap.xml asset:', err);
+        }
+
+        // Safe observable XML error response; prevents fallthrough to SPA HTML catch-all
+        return new Response('<?xml version="1.0" encoding="UTF-8"?><error><code>503</code><message>Sitemap temporarily unavailable</message></error>', {
+          status: 503,
+          headers: {
+            'Content-Type': 'application/xml; charset=utf-8',
+            'Retry-After': '60',
+            'X-Content-Type-Options': 'nosniff'
+          }
+        });
+      }
+
+      return new Response('<?xml version="1.0" encoding="UTF-8"?><error><code>503</code><message>Asset store unavailable</message></error>', {
+        status: 503,
+        headers: {
+          'Content-Type': 'application/xml; charset=utf-8',
+          'Retry-After': '60',
+          'X-Content-Type-Options': 'nosniff'
+        }
+      });
     }
 
     if (pathname === '/robots.txt') {
