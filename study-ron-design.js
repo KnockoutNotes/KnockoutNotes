@@ -2814,6 +2814,7 @@
     width: "kn-reading-width",
     fontFamily: "kn-reading-font-family",
     lineHeight: "kn-reading-line-height",
+    align: "kn-reading-align",
     focus: "kn-reading-focus-mode",
     posPrefix: "kn-reading-pos-"
   };
@@ -2823,8 +2824,9 @@
   let activeReadingTheme = "light";
   let activeReadingFontSize = 17;
   let activeReadingWidth = "narrow"; // "narrow" (760px), "standard" (900px), "wide" (1100px)
-  let activeReadingFontFamily = "sans"; // "sans", "serif"
+  let activeReadingFontFamily = "sans"; // "sans", "serif", "mono"
   let activeReadingLineHeight = "comfortable"; // "comfortable" (1.65), "relaxed" (1.82)
+  let activeReadingAlign = "left"; // "left", "justify", "center", "right"
   let isFocusModeActive = false;
 
   function safeStorageGet(key, fallback) {
@@ -3004,11 +3006,24 @@
           <label class="ron-rm-setting-label">Font Family</label>
           <div class="ron-rm-segmented-control" role="radiogroup" aria-label="Font Family">
             <button type="button" class="ron-rm-segment-btn" data-rm-font-val="sans" role="radio" aria-checked="true">
-              <span style="font-family:-apple-system, sans-serif;">Sans-serif</span>
+              <span style="font-family:-apple-system, sans-serif;">Sans</span>
             </button>
             <button type="button" class="ron-rm-segment-btn" data-rm-font-val="serif" role="radio" aria-checked="false">
               <span style="font-family:Georgia, serif; font-style:italic;">Serif</span>
             </button>
+            <button type="button" class="ron-rm-segment-btn" data-rm-font-val="mono" role="radio" aria-checked="false">
+              <span style="font-family:ui-monospace, monospace;">Mono</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="ron-rm-setting-row">
+          <label class="ron-rm-setting-label">Text Alignment</label>
+          <div class="ron-rm-segmented-control" role="radiogroup" aria-label="Text Alignment">
+            <button type="button" class="ron-rm-segment-btn active" data-rm-align-val="left" role="radio" aria-checked="true" title="Left Align">Left</button>
+            <button type="button" class="ron-rm-segment-btn" data-rm-align-val="justify" role="radio" aria-checked="false" title="Justify Text">Justify</button>
+            <button type="button" class="ron-rm-segment-btn" data-rm-align-val="center" role="radio" aria-checked="false" title="Centre Align">Centre</button>
+            <button type="button" class="ron-rm-segment-btn" data-rm-align-val="right" role="radio" aria-checked="false" title="Right Align">Right</button>
           </div>
         </div>
 
@@ -3044,7 +3059,7 @@
             <span>Clean white</span>
           </button>
           <button type="button" class="ron-rm-theme-card ron-theme-card-dark" data-reading-theme-val="dark" role="radio" aria-checked="true">
-            <span class="ron-theme-preview" style="background:#171a21; color:#e6eaf0; border:1px solid #373d49;">Aa</span>
+            <span class="ron-theme-preview" style="background:#151922; color:#edf2f7; border:1px solid #2d3748;">Aa</span>
             <strong>Dark</strong>
             <span>Eye-easy charcoal</span>
           </button>
@@ -3091,6 +3106,13 @@
             <div class="ron-rm-segmented-control" style="margin-bottom:8px;">
               <button type="button" class="ron-rm-segment-btn" data-rm-font-val="sans">Sans</button>
               <button type="button" class="ron-rm-segment-btn" data-rm-font-val="serif">Serif</button>
+              <button type="button" class="ron-rm-segment-btn" data-rm-font-val="mono">Mono</button>
+            </div>
+            <div class="ron-rm-segmented-control" style="margin-bottom:8px;">
+              <button type="button" class="ron-rm-segment-btn active" data-rm-align-val="left">Left</button>
+              <button type="button" class="ron-rm-segment-btn" data-rm-align-val="justify">Justify</button>
+              <button type="button" class="ron-rm-segment-btn" data-rm-align-val="center">Centre</button>
+              <button type="button" class="ron-rm-segment-btn" data-rm-align-val="right">Right</button>
             </div>
             <div class="ron-rm-segmented-control" style="margin-bottom:8px;">
               <button type="button" class="ron-rm-segment-btn" data-rm-lh-val="comfortable">Comfortable</button>
@@ -3264,7 +3286,7 @@
   }
 
   function setReadingFontFamily(font) {
-    if (!["sans", "serif"].includes(font)) font = "sans";
+    if (!["sans", "serif", "mono"].includes(font)) font = "sans";
     activeReadingFontFamily = font;
     safeStorageSet(RM_STORAGE.fontFamily, font);
     const overlay = document.getElementById("ronReadingModeOverlay");
@@ -3321,16 +3343,50 @@
   }
 
   function setReadingFontSize(size) {
-    size = Math.min(24, Math.max(14, size));
+    size = Math.min(26, Math.max(14, size));
     activeReadingFontSize = size;
     safeStorageSet(RM_STORAGE.fontSize, String(size));
 
+    const overlay = document.getElementById("ronReadingModeOverlay");
+    if (overlay) {
+      overlay.style.setProperty("--rm-font-size", size + "px");
+    }
     const wrapper = document.getElementById("ronRmContentWrapper");
     if (wrapper) {
       wrapper.style.setProperty("--rm-font-size", size + "px");
     }
+    const bodyTarget = document.getElementById("ronRmBodyTarget");
+    if (bodyTarget) {
+      bodyTarget.style.setProperty("--rm-font-size", size + "px");
+    }
     const indicators = document.querySelectorAll("#ronRmFontIndicator, #ronRmStepperVal, #ronRmOverflowVal");
     indicators.forEach((ind) => ind.textContent = size + "px");
+  }
+
+  function setReadingAlign(align) {
+    if (!["left", "justify", "center", "right"].includes(align)) align = "left";
+    activeReadingAlign = align;
+    safeStorageSet(RM_STORAGE.align, align);
+
+    const overlay = document.getElementById("ronReadingModeOverlay");
+    if (overlay) {
+      overlay.setAttribute("data-reading-align", align);
+      overlay.style.setProperty("--rm-text-align", align);
+    }
+    const wrapper = document.getElementById("ronRmContentWrapper");
+    if (wrapper) {
+      wrapper.style.setProperty("--rm-text-align", align);
+    }
+    const bodyTarget = document.getElementById("ronRmBodyTarget");
+    if (bodyTarget) {
+      bodyTarget.style.setProperty("--rm-text-align", align);
+    }
+    const btns = document.querySelectorAll("[data-rm-align-val]");
+    btns.forEach((btn) => {
+      const match = btn.getAttribute("data-rm-align-val") === align;
+      btn.classList.toggle("active", match);
+      btn.setAttribute("aria-checked", match ? "true" : "false");
+    });
   }
 
   function toggleFocusMode(force) {
@@ -3510,6 +3566,9 @@
 
     const savedLh = safeStorageGet(RM_STORAGE.lineHeight, "comfortable");
     setReadingLineHeight(savedLh);
+
+    const savedAlign = safeStorageGet(RM_STORAGE.align, "left");
+    setReadingAlign(savedAlign);
 
     const savedFocus = safeStorageGet(RM_STORAGE.focus, "0") === "1";
     if (savedFocus) {
@@ -4444,6 +4503,15 @@ document.addEventListener("keydown", (e) => {
       return;
     }
 
+    const alignBtn = e.target.closest("[data-rm-align-val]");
+    if (alignBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const val = alignBtn.getAttribute("data-rm-align-val");
+      setReadingAlign(val);
+      return;
+    }
+
     // Stepper A- / A+
     if (e.target.closest("#ronRmStepperDec, #ronRmOverflowDec, #ronRmFontDecBtn")) {
       e.preventDefault();
@@ -5167,6 +5235,7 @@ document.addEventListener("keydown", (e) => {
     setReadingFontFamily: setReadingFontFamily,
     setReadingLineHeight: setReadingLineHeight,
     setReadingFontSize: setReadingFontSize,
+    setReadingAlign: setReadingAlign,
     setReadingTheme: setReadingTheme,
     toggleFocusMode: toggleFocusMode,
     bookmarkCurrentReadingPosition: bookmarkCurrentReadingPosition,

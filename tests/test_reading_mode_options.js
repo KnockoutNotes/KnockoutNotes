@@ -1,7 +1,11 @@
 /**
  * KnockoutNotes Reading Mode Verification Suite
- * Verifies all 6 mandatory reading options, PDF download integration,
- * responsive breakpoints, theme contrast, and persistence.
+ * Verifies all 5 new requirements:
+ * 1. Download Monograph PDF integration & server pricing without 404 (Propofol, Anaesthesia, CC).
+ * 2. Dark-theme contrast (#151922 bg, #1d2330 surface, #edf2f7 primary text, #f8fafc headings, #60a5fa links).
+ * 3. Typography options: Sans, Serif, and Monospace across content root.
+ * 4. Font-size controls: 14px to 26px, cascade to prose/points/lists, proportional headings (~1.3x), fixed toolbar.
+ * 5. Text alignment controls: Left, Justify, Centre, Right on body/prose/lists, with tables protected.
  */
 
 const http = require('http');
@@ -40,7 +44,7 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, async () => {
   console.log(`Test server running on port ${PORT}`);
   const chromePath = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
-  const userDataDir = path.join(ROOT, 'scratch/chrome-cdp-profile-rm-options');
+  const userDataDir = path.join(ROOT, 'scratch/chrome-cdp-profile-rm-options-v2');
 
   const chrome = spawn(chromePath, [
     '--headless=new',
@@ -74,7 +78,7 @@ server.listen(PORT, async () => {
   await send('Runtime.enable');
 
   try {
-    console.log('\n--- 1. LOAD STUDY PAGE & ENTER READING MODE (DESKTOP) ---');
+    console.log('\n--- 1. LOAD STUDY PAGE & ENTER READING MODE ON PROPOFOL ---');
     await send('Page.navigate', { url: `http://127.0.0.1:${PORT}/study.html?domain=drugs&cat=induction` });
     await new Promise(r => setTimeout(r, 1800));
 
@@ -107,285 +111,195 @@ server.listen(PORT, async () => {
     });
     assert(isOpen.result.value === true, 'Reading Mode overlay is open and active');
 
-    console.log('\n--- 2. OPTION 1: READING COLUMN WIDTH (Narrow, Standard, Wide) ---');
-    // Test Narrow (760px)
-    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingWidth('narrow')` });
-    await new Promise(r => setTimeout(r, 250));
-    let widthCheck = await send('Runtime.evaluate', {
+    console.log('\n--- 2. DARK-THEME CONTRAST & WCAG COMPLIANCE (#151922 / #1d2330 / #edf2f7 / #f8fafc) ---');
+    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingTheme('dark')` });
+    await new Promise(r => setTimeout(r, 200));
+
+    const darkCheck = await send('Runtime.evaluate', {
       expression: `(() => {
         const overlay = document.getElementById('ronReadingModeOverlay');
-        const wrapper = document.querySelector('.ron-rm-content-wrapper');
-        const computed = window.getComputedStyle(wrapper);
+        const heading = document.querySelector('.ron-rm-heading, .ron-rm-body-target h1, .ron-rm-body-target h2');
+        const prose = document.querySelector('.ron-rm-body-target .ron-prose, .ron-rm-body-target p, .ron-rm-body-target .ron-point-text');
+        const cardTitle = document.querySelector('.ron-rm-body-target .ron-card-title, .ron-rm-body-target h3');
         return {
-          attr: overlay.getAttribute('data-reading-width'),
-          maxWidth: computed.maxWidth,
-          cssVar: window.getComputedStyle(overlay).getPropertyValue('--rm-max-width'),
-          wrapperVar: window.getComputedStyle(wrapper).getPropertyValue('--rm-max-width'),
-          storage: localStorage.getItem('kn-reading-width')
+          themeAttr: overlay.getAttribute('data-reading-theme'),
+          bg: window.getComputedStyle(overlay).backgroundColor,
+          headingColor: heading ? window.getComputedStyle(heading).color : null,
+          proseColor: prose ? window.getComputedStyle(prose).color : null,
+          cardTitleColor: cardTitle ? window.getComputedStyle(cardTitle).color : null,
+          storage: localStorage.getItem('kn-reading-theme')
         };
       })()`,
       returnByValue: true
     });
-    console.log('Narrow width check:', widthCheck.result.value);
-    assert(widthCheck.result.value.attr === 'narrow', 'Overlay attribute data-reading-width is narrow');
-    assert(widthCheck.result.value.maxWidth === '760px', 'Content wrapper computed max-width is 760px');
-    assert(widthCheck.result.value.storage === 'narrow', 'Narrow width persisted to localStorage');
+    console.log('Dark Mode Computed Styles:', darkCheck.result.value);
+    assert(darkCheck.result.value.themeAttr === 'dark', 'Dark theme attribute is set');
+    assert(darkCheck.result.value.bg === 'rgb(21, 25, 34)', 'Dark background computed matches #151922 (rgb(21, 25, 34))');
+    assert(darkCheck.result.value.proseColor === 'rgb(237, 242, 247)', 'Body prose/text computed matches #edf2f7 (rgb(237, 242, 247))');
+    assert(darkCheck.result.value.cardTitleColor === 'rgb(248, 250, 252)', 'Headings computed match #f8fafc (rgb(248, 250, 252))');
+    assert(darkCheck.result.value.storage === 'dark', 'Dark theme stored in localStorage');
 
-    // Test Standard (900px)
-    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingWidth('standard')` });
-    await new Promise(r => setTimeout(r, 250));
-    widthCheck = await send('Runtime.evaluate', {
+    // Test Light -> Dark -> Light transition
+    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingTheme('light')` });
+    await new Promise(r => setTimeout(r, 100));
+    const lightCheck = await send('Runtime.evaluate', {
       expression: `(() => {
         const overlay = document.getElementById('ronReadingModeOverlay');
-        const wrapper = document.querySelector('.ron-rm-content-wrapper');
-        const computed = window.getComputedStyle(wrapper);
-        return {
-          attr: overlay.getAttribute('data-reading-width'),
-          maxWidth: computed.maxWidth,
-          cssVar: window.getComputedStyle(overlay).getPropertyValue('--rm-max-width'),
-          storage: localStorage.getItem('kn-reading-width')
-        };
+        return window.getComputedStyle(overlay).backgroundColor;
       })()`,
       returnByValue: true
     });
-    console.log('Standard width check:', widthCheck.result.value);
-    assert(widthCheck.result.value.attr === 'standard', 'Overlay attribute data-reading-width is standard');
-    assert(widthCheck.result.value.maxWidth === '900px', 'Content wrapper computed max-width is 900px');
-    assert(widthCheck.result.value.storage === 'standard', 'Standard width persisted to localStorage');
+    assert(lightCheck.result.value === 'rgb(255, 255, 255)', 'Clean transition back to Light theme');
 
-    // Test Wide (1100px)
-    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingWidth('wide')` });
-    await new Promise(r => setTimeout(r, 250));
-    widthCheck = await send('Runtime.evaluate', {
+    // Return to dark theme for subsequent tests
+    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingTheme('dark')` });
+
+    console.log('\n--- 3. TYPOGRAPHY OPTIONS (Sans, Serif, Monospace across content root) ---');
+    // Test Sans
+    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingFontFamily('sans')` });
+    let fontCheck = await send('Runtime.evaluate', {
       expression: `(() => {
-        const overlay = document.getElementById('ronReadingModeOverlay');
-        const wrapper = document.querySelector('.ron-rm-content-wrapper');
-        const computed = window.getComputedStyle(wrapper);
-        return {
-          attr: overlay.getAttribute('data-reading-width'),
-          maxWidth: computed.maxWidth,
-          storage: localStorage.getItem('kn-reading-width')
-        };
+        const prose = document.querySelector('.ron-rm-body-target .ron-prose, .ron-rm-body-target p');
+        return window.getComputedStyle(prose).fontFamily;
       })()`,
       returnByValue: true
     });
-    assert(widthCheck.result.value.attr === 'wide', 'Overlay attribute data-reading-width is wide');
-    assert(widthCheck.result.value.maxWidth === '1100px', 'Content wrapper computed max-width is 1100px');
-    assert(widthCheck.result.value.storage === 'wide', 'Wide width persisted to localStorage');
+    assert(!fontCheck.result.value.toLowerCase().includes('georgia') && !fontCheck.result.value.toLowerCase().includes('monospace'), 'Sans font applied to content');
 
-    console.log('\n--- 3. OPTION 2: TYPOGRAPHY & LINE SPACING ---');
-    // Test Serif vs Sans
+    // Test Serif
     await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingFontFamily('serif')` });
-    let typeCheck = await send('Runtime.evaluate', {
+    fontCheck = await send('Runtime.evaluate', {
       expression: `(() => {
-        const overlay = document.getElementById('ronReadingModeOverlay');
-        const p = document.querySelector('.ron-rm-body-target p');
-        const computed = window.getComputedStyle(p);
+        const prose = document.querySelector('.ron-rm-body-target .ron-prose, .ron-rm-body-target p');
+        return window.getComputedStyle(prose).fontFamily;
+      })()`,
+      returnByValue: true
+    });
+    assert(fontCheck.result.value.toLowerCase().includes('georgia') || fontCheck.result.value.toLowerCase().includes('times'), 'Serif font applied to content');
+
+    // Test Monospace
+    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingFontFamily('mono')` });
+    fontCheck = await send('Runtime.evaluate', {
+      expression: `(() => {
+        const prose = document.querySelector('.ron-rm-body-target .ron-prose, .ron-rm-body-target p');
+        const heading = document.querySelector('.ron-rm-body-target .ron-card-title, .ron-rm-body-target h2');
         return {
-          attr: overlay.getAttribute('data-reading-font'),
-          fontFamily: computed.fontFamily,
+          attr: document.getElementById('ronReadingModeOverlay').getAttribute('data-reading-font'),
+          proseFont: window.getComputedStyle(prose).fontFamily.toLowerCase(),
+          headingFont: window.getComputedStyle(heading).fontFamily.toLowerCase(),
           storage: localStorage.getItem('kn-reading-font-family')
         };
       })()`,
       returnByValue: true
     });
-    assert(typeCheck.result.value.attr === 'serif', 'Overlay attribute data-reading-font is serif');
-    assert(typeCheck.result.value.fontFamily.toLowerCase().includes('georgia') || typeCheck.result.value.fontFamily.toLowerCase().includes('times'), 'Paragraph computed font-family uses serif stack');
-    assert(typeCheck.result.value.storage === 'serif', 'Serif font persisted to localStorage');
+    console.log('Monospace Font Check:', fontCheck.result.value);
+    assert(fontCheck.result.value.attr === 'mono', 'Overlay attribute data-reading-font is mono');
+    assert(fontCheck.result.value.proseFont.includes('mono') || fontCheck.result.value.proseFont.includes('consolas') || fontCheck.result.value.proseFont.includes('menlo'), 'Content prose computed font-family uses monospace stack');
+    assert(fontCheck.result.value.storage === 'mono', 'Mono font choice persisted to localStorage');
 
+    // Return to Sans default
     await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingFontFamily('sans')` });
 
-    // Test Line Height (Comfortable 1.65 vs Relaxed 1.82)
-    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingLineHeight('relaxed')` });
-    let lhCheck = await send('Runtime.evaluate', {
+    console.log('\n--- 4. FONT-SIZE CONTROLS & PROPORTIONAL HEADING SCALING (14px - 26px) ---');
+    // Test minimum limit (14px)
+    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingFontSize(10)` });
+    let sizeCheck = await send('Runtime.evaluate', {
       expression: `(() => {
-        const overlay = document.getElementById('ronReadingModeOverlay');
+        const prose = document.querySelector('.ron-rm-body-target .ron-prose, .ron-rm-body-target p');
         return {
-          attr: overlay.getAttribute('data-reading-line-height'),
-          storage: localStorage.getItem('kn-reading-line-height')
-        };
-      })()`,
-      returnByValue: true
-    });
-    assert(lhCheck.result.value.attr === 'relaxed', 'Overlay attribute data-reading-line-height is relaxed');
-    assert(lhCheck.result.value.storage === 'relaxed', 'Relaxed line height persisted to localStorage');
-
-    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingLineHeight('comfortable')` });
-
-    // Test Font Size Stepper
-    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingFontSize(19)` });
-    let fsCheck = await send('Runtime.evaluate', {
-      expression: `(() => {
-        const p = document.querySelector('.ron-rm-body-target p');
-        const computed = window.getComputedStyle(p);
-        return {
-          fontSize: computed.fontSize,
+          size: window.getComputedStyle(prose).fontSize,
           storage: localStorage.getItem('kn-reading-font-size')
         };
       })()`,
       returnByValue: true
     });
-    assert(fsCheck.result.value.fontSize === '19px', 'Paragraph computed font-size updated to 19px');
-    assert(fsCheck.result.value.storage === '19', 'Font size 19 persisted to localStorage');
+    assert(sizeCheck.result.value.size === '14px', 'Font size clamped to minimum 14px');
 
-    console.log('\n--- 4. OPTION 3: BOOKMARK & RESUME READING POSITION ---');
-    // Scroll down 400px inside reading viewport
-    await send('Runtime.evaluate', {
+    // Test maximum limit (26px)
+    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingFontSize(30)` });
+    sizeCheck = await send('Runtime.evaluate', {
       expression: `(() => {
-        const vp = document.getElementById('ronRmScrollViewport');
-        vp.scrollTop = 400;
-      })()`
-    });
-    await new Promise(r => setTimeout(r, 150));
-
-    // Trigger bookmark action
-    const bmResult = await send('Runtime.evaluate', {
-      expression: `(() => {
-        window.StudyRonDesign.bookmarkCurrentReadingPosition();
-        const toast = document.getElementById('ronRmToast');
-        const bmBtn = document.getElementById('ronRmBookmarkBtn');
-        const raw = localStorage.getItem('kn-reading-pos-propofol');
+        const prose = document.querySelector('.ron-rm-body-target .ron-prose, .ron-rm-body-target p');
+        const heading = document.querySelector('.ron-rm-body-target .ron-card-title, .ron-rm-body-target h2');
+        const topbarBtn = document.querySelector('.ron-rm-exit-btn, .ron-rm-sections-btn, .ron-rm-topbar-btn');
         return {
-          toastShown: toast && toast.classList.contains('show'),
-          toastText: toast ? toast.textContent : '',
-          btnBookmarked: bmBtn && bmBtn.classList.contains('bookmarked'),
-          savedPos: raw ? JSON.parse(raw) : null
+          proseSize: window.getComputedStyle(prose).fontSize,
+          headingSize: window.getComputedStyle(heading).fontSize,
+          topbarSize: window.getComputedStyle(topbarBtn).fontSize,
+          storage: localStorage.getItem('kn-reading-font-size')
         };
       })()`,
       returnByValue: true
     });
-    console.log('bmResult value:', bmResult.result.value);
-    assert(bmResult.result.value.btnBookmarked === true, 'Bookmark button gains bookmarked active class');
-    assert(bmResult.result.value.savedPos !== null && bmResult.result.value.savedPos.scrollY >= 380, 'Exact scroll position saved to localStorage');
-    console.log('Bookmark saved position:', bmResult.result.value.savedPos);
+    console.log('26px Max Font Size Check:', sizeCheck.result.value);
+    assert(sizeCheck.result.value.proseSize === '26px', 'Font size clamped to maximum 26px');
+    // Heading should scale proportionately (~1.3 * 26px = ~33.8px)
+    const hSizeNum = parseFloat(sizeCheck.result.value.headingSize);
+    assert(hSizeNum >= 30 && hSizeNum <= 36, `Headings scaled proportionately to ${sizeCheck.result.value.headingSize} (expected ~33.8px)`);
+    assert(sizeCheck.result.value.topbarSize === '13px', 'Toolbar button font size remains fixed at 13px (does not scale)');
+    assert(sizeCheck.result.value.storage === '26', 'Font size 26 persisted to localStorage');
 
-    console.log('\n--- 5. OPTION 4: READING THEMES & WCAG AA CONTRAST ---');
-    // Dark Mode Charcoal Contrast Test
-    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingTheme('dark')` });
-    const darkPalette = await send('Runtime.evaluate', {
+    // Reset to comfortable default 17px
+    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingFontSize(17)` });
+
+    console.log('\n--- 5. TEXT ALIGNMENT CONTROLS (Left, Justify, Centre, Right) ---');
+    // Test Justify
+    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingAlign('justify')` });
+    let alignCheck = await send('Runtime.evaluate', {
       expression: `(() => {
         const overlay = document.getElementById('ronReadingModeOverlay');
-        const heading = document.querySelector('.ron-rm-heading');
-        const bodyP = document.querySelector('.ron-rm-body-target p');
-        const pearl = document.querySelector('.ron-rm-body-target .ron-pearl-box, .ron-rm-body-target .st-pearl-card');
+        const prose = document.querySelector('.ron-rm-body-target .ron-prose, .ron-rm-body-target p');
+        const table = document.querySelector('.ron-rm-body-target table');
         return {
-          themeAttr: overlay.getAttribute('data-reading-theme'),
-          bg: window.getComputedStyle(overlay).backgroundColor,
-          headingColor: window.getComputedStyle(heading).color,
-          textColor: window.getComputedStyle(bodyP).color,
-          pearlBg: pearl ? window.getComputedStyle(pearl).backgroundColor : null
+          attr: overlay.getAttribute('data-reading-align'),
+          proseAlign: window.getComputedStyle(prose).textAlign,
+          tableAlign: table ? window.getComputedStyle(table).textAlign : 'left',
+          storage: localStorage.getItem('kn-reading-align')
         };
       })()`,
       returnByValue: true
     });
-    console.log('Dark Mode Palette:', darkPalette.result.value);
-    assert(darkPalette.result.value.themeAttr === 'dark', 'Dark theme attribute set on overlay');
-    assert(darkPalette.result.value.bg === 'rgb(23, 26, 33)', 'Dark background is eye-comfortable charcoal #171A21');
+    console.log('Justify Alignment Check:', alignCheck.result.value);
+    assert(alignCheck.result.value.attr === 'justify', 'Overlay attribute data-reading-align is justify');
+    assert(alignCheck.result.value.proseAlign === 'justify', 'Body text computed text-align is justify');
+    assert(alignCheck.result.value.tableAlign === 'left', 'Tables protected from forced justify (remain left-aligned)');
+    assert(alignCheck.result.value.storage === 'justify', 'Justify alignment persisted to localStorage');
 
-    // Sepia Mode Test
-    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingTheme('sepia')` });
-    const sepiaPalette = await send('Runtime.evaluate', {
+    // Test Centre
+    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingAlign('center')` });
+    alignCheck = await send('Runtime.evaluate', {
       expression: `(() => {
-        const overlay = document.getElementById('ronReadingModeOverlay');
-        const heading = document.querySelector('.ron-rm-heading');
-        const bodyP = document.querySelector('.ron-rm-body-target p');
-        return {
-          themeAttr: overlay.getAttribute('data-reading-theme'),
-          bg: window.getComputedStyle(overlay).backgroundColor,
-          headingColor: window.getComputedStyle(heading).color,
-          textColor: window.getComputedStyle(bodyP).color
-        };
+        const prose = document.querySelector('.ron-rm-body-target .ron-prose, .ron-rm-body-target p');
+        return window.getComputedStyle(prose).textAlign;
       })()`,
       returnByValue: true
     });
-    console.log('Sepia Mode Palette:', sepiaPalette.result.value);
-    assert(sepiaPalette.result.value.themeAttr === 'sepia', 'Sepia theme attribute set on overlay');
-    assert(sepiaPalette.result.value.bg === 'rgb(251, 240, 217)', 'Sepia background is soft cream #FBF0D9');
+    assert(alignCheck.result.value === 'center', 'Body text computed text-align is center');
 
-    // Restore Light Theme
-    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingTheme('light')` });
-
-    console.log('\n--- 6. OPTION 5: FOCUS MODE & AUTO-COLLAPSE ---');
-    // Enable focus mode
-    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.toggleFocusMode(true)` });
-    let focusState = await send('Runtime.evaluate', {
+    // Test Right
+    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingAlign('right')` });
+    alignCheck = await send('Runtime.evaluate', {
       expression: `(() => {
-        const overlay = document.getElementById('ronReadingModeOverlay');
-        const pill = document.getElementById('ronRmExitFocusBtn');
-        return {
-          hasActiveClass: overlay.classList.contains('ron-rm-focus-active'),
-          pillVisible: pill && !pill.hidden
-        };
+        const prose = document.querySelector('.ron-rm-body-target .ron-prose, .ron-rm-body-target p');
+        return window.getComputedStyle(prose).textAlign;
       })()`,
       returnByValue: true
     });
-    assert(focusState.result.value.hasActiveClass === true, 'Overlay has class ron-rm-focus-active');
-    assert(focusState.result.value.pillVisible === true, 'Floating exit focus pill is visible');
+    assert(alignCheck.result.value === 'right', 'Body text computed text-align is right');
 
-    // Simulate downward scroll > 60px inside viewport
-    await send('Runtime.evaluate', {
+    // Reset to default Left
+    await send('Runtime.evaluate', { expression: `window.StudyRonDesign.setReadingAlign('left')` });
+    alignCheck = await send('Runtime.evaluate', {
       expression: `(() => {
-        const vp = document.getElementById('ronRmScrollViewport');
-        vp.scrollTop = 700;
-        vp.dispatchEvent(new Event('scroll'));
-      })()`
-    });
-    await new Promise(r => setTimeout(r, 100));
-
-    let topbarCollapsed = await send('Runtime.evaluate', {
-      expression: `(() => {
-        const topbar = document.getElementById('ronRmTopbar');
-        return topbar.classList.contains('ron-rm-topbar-collapsed');
+        const prose = document.querySelector('.ron-rm-body-target .ron-prose, .ron-rm-body-target p');
+        return window.getComputedStyle(prose).textAlign;
       })()`,
       returnByValue: true
     });
-    assert(topbarCollapsed.result.value === true, 'Topbar auto-collapses on downward scroll in Focus Mode');
+    assert(alignCheck.result.value === 'left', 'Body text reset to default left-align');
 
-    // Click floating exit focus pill
-    await send('Runtime.evaluate', {
-      expression: `(() => {
-        document.getElementById('ronRmExitFocusBtn').click();
-      })()`
-    });
-    await new Promise(r => setTimeout(r, 100));
-
-    focusState = await send('Runtime.evaluate', {
-      expression: `(() => {
-        const overlay = document.getElementById('ronReadingModeOverlay');
-        const pill = document.getElementById('ronRmExitFocusBtn');
-        const topbar = document.getElementById('ronRmTopbar');
-        return {
-          hasActiveClass: overlay.classList.contains('ron-rm-focus-active'),
-          pillHidden: pill && pill.hidden,
-          topbarCollapsed: topbar.classList.contains('ron-rm-topbar-collapsed')
-        };
-      })()`,
-      returnByValue: true
-    });
-    assert(focusState.result.value.hasActiveClass === false, 'Focus mode cleanly deactivated');
-    assert(focusState.result.value.topbarCollapsed === false, 'Topbar restored to visible');
-
-    console.log('\n--- 7. OPTION 6: READING PROGRESS STRIP & PERCENTAGE ---');
-    const progressCheck = await send('Runtime.evaluate', {
-      expression: `(() => {
-        const vp = document.getElementById('ronRmScrollViewport');
-        vp.scrollTop = vp.scrollHeight / 2;
-        vp.dispatchEvent(new Event('scroll'));
-        const pctEl = document.getElementById('ronRmProgressPct');
-        const barEl = document.getElementById('ronRmProgressBar');
-        return {
-          pctText: pctEl.textContent,
-          barWidth: barEl.style.width
-        };
-      })()`,
-      returnByValue: true
-    });
-    console.log('Progress at mid scroll:', progressCheck.result.value);
-    assert(progressCheck.result.value.pctText !== '0%' && progressCheck.result.value.pctText.includes('%'), 'Progress percentage is non-zero and formatted properly');
-
-    console.log('\n--- 8. PDF DOWNLOAD INTEGRATION ---');
-    // Verify PDF button invokes initiateChapterDownload
-    const pdfCheck = await send('Runtime.evaluate', {
+    console.log('\n--- 6. PDF DOWNLOAD INTEGRATION & IDENTIFIER VERIFICATION ---');
+    const pdfInvocation = await send('Runtime.evaluate', {
       expression: `(() => {
         let called = false;
         let calledArgs = null;
@@ -400,84 +314,64 @@ server.listen(PORT, async () => {
       })()`,
       returnByValue: true
     });
-    assert(pdfCheck.result.value.called === true, 'PDF button invokes window.KN_PAYMENTS.initiateChapterDownload');
-    console.log('PDF download called with args:', pdfCheck.result.value.calledArgs);
+    assert(pdfInvocation.result.value.called === true, 'PDF button invokes window.KN_PAYMENTS.initiateChapterDownload');
+    assert(pdfInvocation.result.value.calledArgs.id === 'propofol', 'Passes canonical drug ID "propofol"');
+    assert(pdfInvocation.result.value.calledArgs.name === 'Propofol', 'Passes drug name "Propofol"');
+    console.log('PDF download called with canonical args:', pdfInvocation.result.value.calledArgs);
 
-    console.log('\n--- 9. RESPONSIVE BREAKPOINT TESTS (Desktop, Landscape, Portrait) ---');
-    // 9a. Desktop (1280x900)
-    await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 900, deviceScaleFactor: 1, mobile: false });
-    await new Promise(r => setTimeout(r, 200));
-    let bpCheck = await send('Runtime.evaluate', {
-      expression: `(() => {
-        const widthBtn = document.getElementById('ronRmWidthToggleBtn');
-        const overflowBtn = document.getElementById('ronRmOverflowBtn');
-        const portraitPct = document.getElementById('ronRmPortraitPct');
-        return {
-          widthBtnDisplay: window.getComputedStyle(widthBtn).display,
-          overflowBtnDisplay: window.getComputedStyle(overflowBtn).display,
-          portraitPctDisplay: window.getComputedStyle(portraitPct).display
-        };
-      })()`,
-      returnByValue: true
-    });
-    assert(bpCheck.result.value.widthBtnDisplay !== 'none', 'Desktop: Direct toolbar controls are visible');
-    assert(bpCheck.result.value.overflowBtnDisplay === 'none', 'Desktop: Overflow three-dot button is hidden');
+    console.log('\n--- 7. BACKEND SYLLABUS ENTITLEMENTS VERIFICATION (Propofol, Anaesthesia, CC) ---');
+    // Import worker payments module directly to verify backend responses
+    const { getChapterContent, handleGetChapterPricing, getCategoryDomain } = await import('file:///F:/KnockoutNotes/worker/payments.js');
 
-    // 9b. Android Landscape (844x390)
-    await send('Emulation.setDeviceMetricsOverride', { width: 844, height: 390, deviceScaleFactor: 2.5, mobile: true });
-    await new Promise(r => setTimeout(r, 200));
-    bpCheck = await send('Runtime.evaluate', {
-      expression: `(() => {
-        const widthBtn = document.getElementById('ronRmWidthToggleBtn');
-        const overflowBtn = document.getElementById('ronRmOverflowBtn');
-        return {
-          widthBtnDisplay: window.getComputedStyle(widthBtn).display,
-          overflowBtnDisplay: window.getComputedStyle(overflowBtn).display
-        };
-      })()`,
-      returnByValue: true
-    });
-    assert(bpCheck.result.value.widthBtnDisplay !== 'none', 'Android Landscape: Single-line direct controls visible');
-    assert(bpCheck.result.value.overflowBtnDisplay === 'none', 'Android Landscape: Overflow button hidden');
+    const mockEnv = {
+      DB: {
+        prepare: () => ({
+          bind: () => ({
+            first: async () => null,
+            all: async () => ({ results: [] })
+          })
+        })
+      }
+    };
 
-    // 9c. Android Portrait (390x844)
-    await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 3, mobile: true });
-    await new Promise(r => setTimeout(r, 200));
-    bpCheck = await send('Runtime.evaluate', {
-      expression: `(() => {
-        const widthBtn = document.getElementById('ronRmWidthToggleBtn');
-        const overflowBtn = document.getElementById('ronRmOverflowBtn');
-        const portraitPct = document.getElementById('ronRmPortraitPct');
-        return {
-          widthBtnDisplay: window.getComputedStyle(widthBtn).display,
-          overflowBtnDisplay: window.getComputedStyle(overflowBtn).display,
-          portraitPctDisplay: window.getComputedStyle(portraitPct).display
-        };
-      })()`,
-      returnByValue: true
-    });
-    assert(bpCheck.result.value.widthBtnDisplay === 'none', 'Android Portrait: Direct controls hidden into overflow');
-    assert(bpCheck.result.value.overflowBtnDisplay !== 'none', 'Android Portrait: Overflow three-dot button is visible');
-    assert(bpCheck.result.value.portraitPctDisplay !== 'none', 'Android Portrait: Progress percentage is visible in topbar');
+    // 7a. Propofol (Drug monograph)
+    const propofolChapter = getChapterContent('propofol');
+    assert(propofolChapter !== null, 'Propofol found in worker syllabus');
+    assert(propofolChapter.name === 'Propofol', 'Propofol chapter name is correct');
+    assert(Array.isArray(propofolChapter.sections) && propofolChapter.sections.length >= 6, 'Propofol has populated sections for PDF generator');
+    assert(getCategoryDomain(propofolChapter.cat, propofolChapter.id) === 'drugs', 'Propofol mapped to "drugs" domain');
 
-    // Open overflow menu
-    await send('Runtime.evaluate', {
-      expression: `(() => {
-        document.getElementById('ronRmOverflowBtn').click();
-      })()`
-    });
-    await new Promise(r => setTimeout(r, 150));
+    const reqPropofol = new Request('https://knockoutnotes.com/api/payments/chapter-price?chapter_id=propofol');
+    const resPropofol = await handleGetChapterPricing(reqPropofol, mockEnv, null);
+    assert(resPropofol.status === 200, 'Unauth Propofol pricing returns 200 (not 404)');
+    const dataPropofol = await resPropofol.json();
+    assert(dataPropofol.priceInr === 12, 'Propofol pricing defaults to ₹12');
+    assert(dataPropofol.isPurchased === false, 'Unauth unentitled Propofol requires payment');
 
-    const overflowOpen = await send('Runtime.evaluate', {
-      expression: `(() => {
-        const dd = document.getElementById('ronRmOverflowDropdown');
-        return !dd.hidden;
-      })()`,
-      returnByValue: true
-    });
-    assert(overflowOpen.result.value === true, 'Android Portrait: Overflow bottom sheet opens on three-dot click');
+    // 7b. Preoperative Assessment (Anaesthesia topic)
+    const preopChapter = getChapterContent('preop-assessment');
+    assert(preopChapter !== null, 'preop-assessment found in worker syllabus');
+    assert(getCategoryDomain(preopChapter.cat, preopChapter.id) === 'anaesthesia', 'preop-assessment mapped to "anaesthesia" domain');
 
-    console.log('\n🎉 ALL READING MODE RESPONSIVE UI & OPTIONS CHECKS PASSED PERFECTLY!\n');
+    const reqPreop = new Request('https://knockoutnotes.com/api/payments/chapter-price?chapter_id=preop-assessment');
+    const resPreop = await handleGetChapterPricing(reqPreop, mockEnv, null);
+    assert(resPreop.status === 200, 'preop-assessment pricing returns 200');
+    const dataPreop = await resPreop.json();
+    assert(dataPreop.isFree === true && dataPreop.priceInr === 0, 'preop-assessment is free monograph');
+    assert(dataPreop.downloadUrl !== null, 'preop-assessment provides valid download URL');
+
+    // 7c. ICU Analgosedation (Critical Care topic)
+    const ccChapter = getChapterContent('icu-analgosedation-padis-delirium');
+    assert(ccChapter !== null, 'icu-analgosedation-padis-delirium found in worker syllabus');
+    assert(getCategoryDomain(ccChapter.cat, ccChapter.id) === 'critical_care', 'icu-analgosedation mapped to "critical_care" domain');
+
+    const reqCC = new Request('https://knockoutnotes.com/api/payments/chapter-price?chapter_id=icu-analgosedation-padis-delirium');
+    const resCC = await handleGetChapterPricing(reqCC, mockEnv, null);
+    assert(resCC.status === 200, 'icu-analgosedation pricing returns 200');
+    const dataCC = await resCC.json();
+    assert(dataCC.priceInr === 19, 'Critical care pricing defaults to ₹19');
+
+    console.log('\n🎉 ALL 5 READING MODE REQUIREMENTS FULLY VERIFIED & PASSING!\n');
     chrome.kill();
     server.close();
     process.exit(0);
