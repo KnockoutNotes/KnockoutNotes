@@ -296,14 +296,7 @@
   }
 
   async function toggleBookmark(item, triggerEl) {
-    if (!currentUser) {
-      localStorage.setItem(
-        STORAGE_KEYS.pendingAction,
-        JSON.stringify({ type: "bookmark", item })
-      );
-      openAuthModal("signin", "Sign in to save bookmarks to your personal workspace.");
-      return false;
-    }
+    const isGuest = !currentUser;
 
     const normId = normalizeContentId(item.content_id || item.id, item.content_type || "study");
     const existingIndex = bookmarksCache.findIndex((b) => b.content_id === normId);
@@ -328,26 +321,27 @@
       };
       bookmarksCache.unshift(newBookmark);
       bookmarked = true;
-      showToast("Bookmarked to Personal Workspace", "success");
+      showToast(isGuest ? "Bookmarked locally" : "Bookmarked to Personal Workspace", "success");
     }
 
     // Persist locally
     localStorage.setItem(STORAGE_KEYS.bookmarks, JSON.stringify(bookmarksCache));
-    enqueueSync(bookmarked ? "insert" : "delete", "user_bookmarks", { content_id: normId, ...item });
+    if (!isGuest) {
+      enqueueSync(bookmarked ? "insert" : "delete", "user_bookmarks", { content_id: normId, ...item });
+    }
 
     // Update all matching buttons on current page
     updateBookmarkButtons(normId, bookmarked);
     triggerEvent("bookmarks-change", { bookmarks: bookmarksCache });
 
-    // Push to server in background
-    apiCall("/api/user/bookmarks", "POST", {
-      content_id: normId,
-      content_type: item.content_type || "study",
-      title: item.title || item.name || "Untitled",
-      route: item.route || window.location.pathname + window.location.hash,
-      category: item.category || item.cat || "General",
-      metadata: item.metadata || {}
-    }).catch(() => {});
+    if (!isGuest) {
+      // Push to server in background
+      apiCall("/api/user/bookmarks", "POST", {
+        content_id: normId,
+        content_type: item.content_type || "study",
+        action: bookmarked ? "save" : "delete"
+      }).catch(() => {});
+    }
 
     return bookmarked;
   }

@@ -4460,6 +4460,52 @@ body:not(.dark) .ron-reading-action-btn {
   color: #fbbf24;
 }
 
+.ron-reading-action-btn.active-bookmark {
+  background: rgba(245, 158, 11, 0.2) !important;
+  border-color: rgba(245, 158, 11, 0.5) !important;
+  color: #fbbf24 !important;
+}
+
+body:not(.dark) .ron-reading-action-btn.active-bookmark {
+  background: #fef3c7 !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+  color: #d97706 !important;
+}
+
+.ron-reading-toolbar .ron-reading-action-btn.ron-reading-rm-btn,
+.ron-reading-toolbar .ron-reading-action-btn.kn-reading-mode-trigger-btn {
+  padding: 0 6px !important;
+  min-width: 30px !important;
+  height: 30px !important;
+  min-height: 30px !important;
+  font-size: 13px !important;
+  border-radius: 6px !important;
+  line-height: 1 !important;
+}
+
+.ron-reading-action-btn svg {
+  display: block;
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .ron-reading-actions {
+    gap: 4px;
+  }
+  .ron-reading-action-btn {
+    height: 28px;
+    min-width: 28px;
+    padding: 0 4px;
+    font-size: 11px;
+  }
+  .ron-reading-domain-tag {
+    display: none;
+  }
+  .ron-reading-section-sub {
+    display: none;
+  }
+}
+
 .ron-reading-progress-track {
   height: 2px;
   width: 100%;
@@ -4895,8 +4941,8 @@ body.ron-reading-fullscreen-active {
 .ron-rm-content-wrapper {
   max-width: 760px;
   margin: 0 auto;
-  padding: 20px 16px 80px 16px;
-  font-size: var(--rm-font-size, 16px);
+  padding: 24px 20px 80px 20px;
+  font-size: var(--rm-font-size, 17px);
   line-height: 1.68;
   box-sizing: border-box;
 }
@@ -4988,6 +5034,18 @@ body.ron-reading-fullscreen-active {
   font-family: inherit;
 }
 
+/* Hide duplicate decorative source-reference callout card in Reading Mode */
+.ron-rm-body-target .ron-source-callout {
+  display: none !important;
+}
+
+/* Do not wrap sections in decorative cards; plain, clean readability */
+body.dark .ron-rm-body-target .ron-card,
+body.dark .ron-rm-body-target .ron-notes-card,
+body .ron-rm-body-target .ron-card,
+body .ron-rm-body-target .ron-notes-card,
+.ron-rm-body-target .ron-card,
+.ron-rm-body-target .ron-notes-card,
 .ron-rm-body-target .st-subsection-card {
   background: transparent !important;
   border: none !important;
@@ -4997,16 +5055,33 @@ body.ron-reading-fullscreen-active {
   border-radius: 0 !important;
 }
 
+.ron-rm-body-target .ron-card-header {
+  padding: 0 !important;
+  margin: 0 0 10px 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.ron-rm-body-target .ron-card-title {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: var(--rm-heading) !important;
+  line-height: 1.3 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  margin: 26px 0 12px 0 !important;
+}
+
 .ron-rm-body-target h2,
 .ron-rm-body-target h3,
 .ron-rm-body-target .st-subheading,
 .ron-rm-body-target .ron-description-container h2 {
-  font-size: 21px !important;
-  font-weight: 800 !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
   color: var(--rm-heading) !important;
   line-height: 1.3 !important;
   letter-spacing: -0.01em !important;
-  margin: 28px 0 12px 0 !important;
+  margin: 26px 0 12px 0 !important;
   padding: 0 !important;
   background: transparent !important;
   border: none !important;
@@ -5014,10 +5089,10 @@ body.ron-reading-fullscreen-active {
 }
 
 .ron-rm-body-target p {
-  font-size: var(--rm-font-size, 16px) !important;
+  font-size: var(--rm-font-size, 17px) !important;
   line-height: 1.68 !important;
   color: var(--rm-text) !important;
-  margin: 0 0 14px 0 !important;
+  margin: 0 0 16px 0 !important;
 }
 
 .ron-rm-body-target ul,
@@ -5027,10 +5102,10 @@ body.ron-reading-fullscreen-active {
 }
 
 .ron-rm-body-target li {
-  font-size: var(--rm-font-size, 16px) !important;
+  font-size: var(--rm-font-size, 17px) !important;
   line-height: 1.68 !important;
   color: var(--rm-text) !important;
-  margin-bottom: 8px !important;
+  margin-bottom: 10px !important;
 }
 
 .ron-rm-body-target li::marker {
@@ -5104,7 +5179,7 @@ body.ron-reading-fullscreen-active {
     padding: 0 12px;
   }
   .ron-rm-content-wrapper {
-    padding: 16px 14px 80px 14px;
+    padding: 18px 20px 80px 20px;
   }
   .ron-rm-heading {
     font-size: 24px;

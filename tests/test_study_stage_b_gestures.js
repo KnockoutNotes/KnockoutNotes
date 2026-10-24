@@ -248,7 +248,7 @@ server.listen(PORT, async () => {
   console.log('\n--- TEST 6: Rapid switching between categories ---');
   const relaxantsPt = await getElementPoint('.ron-nav-pill[data-ron-cat="relaxants"]');
   await tap(relaxantsPt.x, relaxantsPt.y);
-  await new Promise(r => setTimeout(r, 100));
+  await new Promise(r => setTimeout(r, 250));
   const localPt = await getElementPoint('.ron-nav-pill[data-ron-cat="local"]');
   await tap(localPt.x, localPt.y);
   const test6 = await getStudyState(true);

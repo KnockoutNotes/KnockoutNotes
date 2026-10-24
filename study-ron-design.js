@@ -1903,6 +1903,37 @@
                 <span class="ron-reading-section-sub" id="ronReadingSectionSub"></span>
               </div>
               <div class="ron-reading-actions">
+                <button type="button" class="ron-reading-action-btn ron-reading-rm-btn kn-reading-mode-trigger-btn" id="ronTbReadingModeBtn" title="Open Full-Screen Reading Mode" aria-label="Reading Mode">
+                  <span>📖</span>
+                </button>
+                ${(() => {
+                  const normId = 'study:' + item.id;
+                  const isBm = (window.KN_WORKSPACE && typeof window.KN_WORKSPACE.isBookmarked === 'function')
+                    ? window.KN_WORKSPACE.isBookmarked(normId)
+                    : (() => {
+                        try {
+                          const raw = localStorage.getItem("kn_bookmarks");
+                          if (!raw) return false;
+                          const bms = JSON.parse(raw);
+                          return Array.isArray(bms) && bms.some(b => b.content_id === normId);
+                        } catch (_) { return false; }
+                      })();
+                  const itemPayload = JSON.stringify({
+                    content_id: normId,
+                    content_type: 'study',
+                    title: item.name,
+                    category: item.cat || (currentCatObj && currentCatObj.label) || 'Study Topics',
+                    route: 'study.html?topic=' + item.id
+                  }).replace(/'/g, "&apos;");
+                  const bmIcon = isBm
+                    ? `<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>`
+                    : `<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>`;
+                  return `
+                    <button type="button" class="ron-reading-action-btn ron-reading-bookmark-btn kn-bookmark-btn ${isBm ? 'active-bookmark' : ''}" id="ronTbBookmarkBtn" data-kn-bookmark-id="${normId}" data-kn-item='${itemPayload}' title="${isBm ? 'Bookmarked (Click to remove)' : 'Add to Bookmarks'}" aria-label="Bookmark" aria-pressed="${isBm ? 'true' : 'false'}">
+                      ${bmIcon}
+                    </button>
+                  `;
+                })()}
                 <button type="button" class="ron-reading-action-btn kn-study-progress-btn kn-progress-master-btn ${prog === 'mastered' ? 'active-mastered' : ''}" data-kn-progress-target="${esc(item.id)}" data-kn-progress-action="mastered" title="Mark as Mastered" aria-label="Mark Mastered">
                   <span>${prog === 'mastered' ? '✓' : '○'}</span>
                 </button>
@@ -3230,6 +3261,35 @@
     const backBtn = document.getElementById("ronReadingBackBtn");
     if (backBtn) {
       backBtn.addEventListener("click", () => backToCategory());
+    }
+
+    // Bind Reading Mode button in compact toolbar
+    const tbRmBtn = toolbar.querySelector("#ronTbReadingModeBtn");
+    if (tbRmBtn) {
+      tbRmBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openFullScreenReadingMode();
+      });
+    }
+
+    // Bind Bookmark button in compact toolbar (direct toggle fallback in addition to delegation)
+    const tbBmBtn = toolbar.querySelector("#ronTbBookmarkBtn");
+    if (tbBmBtn) {
+      tbBmBtn.addEventListener("click", (e) => {
+        if (window.KN_WORKSPACE && typeof window.KN_WORKSPACE.toggleBookmark === "function") {
+          e.preventDefault();
+          e.stopPropagation();
+          const normId = "study:" + activeItem.id;
+          window.KN_WORKSPACE.toggleBookmark({
+            content_id: normId,
+            content_type: "study",
+            title: activeItem.name,
+            category: activeItem.cat || "Study Topics",
+            route: "study.html?topic=" + activeItem.id
+          }, tbBmBtn);
+        }
+      });
     }
 
     // Bind title and top button to scroll to top
