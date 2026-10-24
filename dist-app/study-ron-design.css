@@ -4616,15 +4616,17 @@ body.ron-reading-fullscreen-active {
   --rm-surface-elevated: #ffffff;
   --rm-text: #1e293b;
   --rm-text-muted: #64748b;
-  --rm-heading: #0284c7;
+  --rm-heading: #0f172a;
   --rm-heading-strong: #0f172a;
+  --rm-accent: #0284c7;
+  --rm-link: #0369a1;
   --rm-border: #e2e8f0;
   --rm-border-light: #f1f5f9;
-  --rm-pearl-bg: #f0f9ff;
-  --rm-pearl-border: #bae6fd;
-  --rm-pearl-text: #0369a1;
-  --rm-source-bg: #eff6ff;
-  --rm-table-header-bg: #f8fafc;
+  --rm-pearl-bg: #f8fafc;
+  --rm-pearl-border: #cbd5e1;
+  --rm-pearl-text: #0f172a;
+  --rm-source-bg: #f8fafc;
+  --rm-table-header-bg: #f1f5f9;
   --rm-btn-border: #cbd5e1;
   --rm-btn-bg: #ffffff;
   --rm-btn-hover: #f1f5f9;
@@ -4678,8 +4680,10 @@ body.ron-reading-fullscreen-active {
   --rm-surface-elevated: #EDE3CB;
   --rm-text: #2D241E;
   --rm-text-muted: #786254;
-  --rm-heading: #8C4B18;
-  --rm-heading-strong: #451A03;
+  --rm-heading: #451A03;
+  --rm-heading-strong: #2D241E;
+  --rm-accent: #b45309;
+  --rm-link: #8c4b18;
   --rm-border: rgba(110, 88, 73, 0.22);
   --rm-border-light: rgba(110, 88, 73, 0.12);
   --rm-pearl-bg: rgba(245, 158, 11, 0.12);
@@ -5553,7 +5557,10 @@ body.ron-reading-fullscreen-active {
   line-height: 1.5;
 }
 
-/* Body Content Adaptation: Clean typography, no decorative cards */
+/* Body Content Adaptation: Complete encapsulation against outer site themes */
+.ron-reading-fullscreen-overlay .ron-rm-body-target,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target,
+body:not(.dark) .ron-reading-fullscreen-overlay .ron-rm-body-target,
 .ron-rm-body-target {
   font-family: var(--rm-font-family, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif) !important;
   font-size: var(--rm-font-size, 17px) !important;
@@ -5562,13 +5569,27 @@ body.ron-reading-fullscreen-active {
 }
 
 /* Hide duplicate decorative source-reference callout card in Reading Mode */
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-source-callout,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-source-callout,
 .ron-rm-body-target .ron-source-callout {
   display: none !important;
 }
 
-/* Do not wrap sections in decorative cards; plain, clean readability */
-body.dark .ron-rm-body-target .ron-card,
-body.dark .ron-rm-body-target .ron-notes-card,
+/* Neutralize decorative cards in Reading Mode across ALL domains */
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-card,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-notes-card,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .st-card,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .st-subsection-card,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-expanded-notes,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-expanded-notes .st-card,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-expanded-notes .ron-card,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-card,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-notes-card,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .st-card,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .st-subsection-card,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-expanded-notes,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-expanded-notes .st-card,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-expanded-notes .ron-card,
 body .ron-rm-body-target .ron-card,
 body .ron-rm-body-target .ron-notes-card,
 .ron-rm-body-target .ron-card,
@@ -5582,6 +5603,8 @@ body .ron-rm-body-target .ron-notes-card,
   border-radius: 0 !important;
 }
 
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-card-header,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-card-header,
 .ron-rm-body-target .ron-card-header {
   padding: 0 !important;
   margin: 0 0 10px 0 !important;
@@ -5589,6 +5612,8 @@ body .ron-rm-body-target .ron-notes-card,
   border: none !important;
 }
 
+.ron-reading-fullscreen-overlay .ron-rm-body-target h1,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target h1,
 .ron-rm-body-target h1 {
   font-family: var(--rm-font-family, inherit) !important;
   font-size: calc(var(--rm-font-size, 17px) * 1.55) !important;
@@ -5600,13 +5625,26 @@ body .ron-rm-body-target .ron-notes-card,
   text-align: var(--rm-text-align, left) !important;
 }
 
+.ron-reading-fullscreen-overlay .ron-rm-body-target h2,
+.ron-reading-fullscreen-overlay .ron-rm-body-target h3,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-card-title,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .st-subheading,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .st-card h3,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-notes-card h3,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-expanded-notes .st-card h3,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-description-container h2,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target h2,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target h3,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-card-title,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .st-subheading,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .st-card h3,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-notes-card h3,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-expanded-notes .st-card h3,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-description-container h2,
 body.dark .ron-rm-body-target .ron-card-title,
 body.dark .ron-rm-body-target h2,
 body.dark .ron-rm-body-target h3,
 body.dark .ron-reading-fullscreen-overlay .ron-card-title,
-.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-card-title,
-.ron-reading-fullscreen-overlay .ron-rm-body-target h2,
-.ron-reading-fullscreen-overlay .ron-rm-body-target h3,
 .ron-rm-body-target .ron-card-title,
 .ron-rm-body-target h2,
 .ron-rm-body-target h3,
@@ -5627,6 +5665,10 @@ body.dark .ron-reading-fullscreen-overlay .ron-card-title,
   text-align: var(--rm-text-align, left) !important;
 }
 
+.ron-reading-fullscreen-overlay .ron-rm-body-target h4,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-title,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target h4,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-title,
 .ron-rm-body-target h4,
 .ron-rm-body-target .ron-point-title {
   font-family: var(--rm-font-family, inherit) !important;
@@ -5638,7 +5680,29 @@ body.dark .ron-reading-fullscreen-overlay .ron-card-title,
   text-align: var(--rm-text-align, left) !important;
 }
 
-/* Comprehensive text elements binding to --rm-font-size, --rm-font-family, --rm-text, --rm-text-align */
+/* Comprehensive text elements binding to --rm-font-size, --rm-font-family, --rm-text, --rm-text-align across ALL domains */
+.ron-reading-fullscreen-overlay .ron-rm-body-target p,
+.ron-reading-fullscreen-overlay .ron-rm-body-target li,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-prose,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .st-prose,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .st-card-body p,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-notes-card p,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-expanded-notes .st-card-body p,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-expanded-notes .st-prose,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-text,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-desc,
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-source-text,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target p,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target li,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-prose,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .st-prose,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .st-card-body p,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-notes-card p,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-expanded-notes .st-card-body p,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-expanded-notes .st-prose,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-text,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-desc,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-source-text,
 .ron-rm-body-target p,
 .ron-rm-body-target li,
 .ron-rm-body-target .ron-prose,
@@ -5652,37 +5716,56 @@ body.dark .ron-reading-fullscreen-overlay .ron-card-title,
   text-align: var(--rm-text-align, left) !important;
 }
 
+.ron-reading-fullscreen-overlay .ron-rm-body-target p,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target p,
 .ron-rm-body-target p {
   margin: 0 0 16px 0 !important;
 }
 
+.ron-reading-fullscreen-overlay .ron-rm-body-target ul,
+.ron-reading-fullscreen-overlay .ron-rm-body-target ol,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target ul,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target ol,
 .ron-rm-body-target ul,
 .ron-rm-body-target ol {
   padding-left: 22px !important;
   margin: 0 0 16px 0 !important;
 }
 
+.ron-reading-fullscreen-overlay .ron-rm-body-target li,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target li,
 .ron-rm-body-target li {
   margin-bottom: 8px !important;
 }
 
+.ron-reading-fullscreen-overlay .ron-rm-body-target li::marker,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target li::marker,
 .ron-rm-body-target li::marker {
-  color: var(--rm-accent, #60a5fa) !important;
+  color: var(--rm-accent, #0284c7) !important;
 }
 
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-row,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-row,
 .ron-rm-body-target .ron-point-row {
   display: flex !important;
   align-items: flex-start !important;
   margin-bottom: 8px !important;
 }
 
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-bullet,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-bullet,
 .ron-rm-body-target .ron-point-bullet {
-  color: var(--rm-accent, #60a5fa) !important;
+  color: var(--rm-accent, #0284c7) !important;
   font-size: var(--rm-font-size, 17px) !important;
   flex-shrink: 0 !important;
   margin-right: 8px !important;
 }
 
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-keyval .ron-point-label,
+.ron-reading-fullscreen-overlay .ron-rm-body-target strong,
+.ron-reading-fullscreen-overlay .ron-rm-body-target b,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target strong,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target b,
 .ron-rm-body-target .ron-point-keyval .ron-point-label,
 .ron-rm-body-target strong,
 .ron-rm-body-target b {
@@ -5690,8 +5773,10 @@ body.dark .ron-reading-fullscreen-overlay .ron-card-title,
   color: var(--rm-heading-strong, var(--rm-text)) !important;
 }
 
+.ron-reading-fullscreen-overlay .ron-rm-body-target a,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
 .ron-rm-body-target a {
-  color: var(--rm-link, #60a5fa) !important;
+  color: var(--rm-link, #0284c7) !important;
   text-decoration: underline !important;
   text-underline-offset: 3px !important;
 }
@@ -5943,4 +6028,29 @@ body.dark .ron-reading-fullscreen-overlay .ron-card-title,
     max-width: 100% !important;
     padding: 0 !important;
   }
+}
+
+/* Guarantee workspace modals and toasts sit on top of Reading Mode overlay */
+.kn-toast-container,
+#knToastContainer {
+  z-index: 100002 !important;
+}
+.kn-toast {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+}
+.kn-payment-modal-backdrop,
+#knPaymentModal {
+  z-index: 100002 !important;
+}
+#knActiveModal,
+.kn-modal-backdrop,
+.kn-ws-modal-backdrop {
+  z-index: 100002 !important;
+}
+.kn-mobile-user-sheet {
+  z-index: 100002 !important;
+}
+.kn-mobile-sheet-backdrop {
+  z-index: 100001 !important;
 }

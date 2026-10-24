@@ -3375,10 +3375,12 @@
     }
     const wrapper = document.getElementById("ronRmContentWrapper");
     if (wrapper) {
+      wrapper.setAttribute("data-reading-align", align);
       wrapper.style.setProperty("--rm-text-align", align);
     }
     const bodyTarget = document.getElementById("ronRmBodyTarget");
     if (bodyTarget) {
+      bodyTarget.setAttribute("data-reading-align", align);
       bodyTarget.style.setProperty("--rm-text-align", align);
     }
     const btns = document.querySelectorAll("[data-rm-align-val]");
@@ -3496,12 +3498,19 @@
   }
 
   function triggerChapterPdfDownload() {
-    if (!activeItem) return;
+    const chapterId = activeItem?.id || new URLSearchParams(window.location.search).get("item") || "";
+    const chapterTitle = activeItem?.name || document.getElementById("ronRmHeading")?.textContent || "";
+    if (!chapterId) {
+      if (window.KN_WORKSPACE && typeof window.KN_WORKSPACE.showToast === "function") {
+        window.KN_WORKSPACE.showToast("Could not determine current chapter for download", "error");
+      }
+      return;
+    }
     // Canonical chapter PDF download and entitlement route
     if (window.KN_PAYMENTS && typeof window.KN_PAYMENTS.initiateChapterDownload === "function") {
-      window.KN_PAYMENTS.initiateChapterDownload(activeItem.id, activeItem.name);
+      window.KN_PAYMENTS.initiateChapterDownload(chapterId, chapterTitle);
     } else {
-      window.open("/api/study/download-pdf?chapter_id=" + encodeURIComponent(activeItem.id), "_blank");
+      window.open("/api/study/download-pdf?chapter_id=" + encodeURIComponent(chapterId), "_blank");
     }
   }
 
