@@ -363,7 +363,8 @@ server.listen(PORT, async () => {
     assert(rmState.hasPlaceholder, 'Placeholder node exists in original DOM location');
     assert(Boolean(rmState.headingText), 'Heading text is populated');
 
-    // Test text size controls: A+
+    // Test text size controls: A+ and A-
+    const baseFontSize = await evaluate("parseInt(document.getElementById('ronRmFontIndicator')?.textContent || '16', 10)");
     await evaluate(`
       (function() {
         const incBtn = document.getElementById('ronRmFontIncBtn');
@@ -371,8 +372,8 @@ server.listen(PORT, async () => {
       })()
     `);
     await delay(100);
-    const fontStatePlus = await evaluate("document.getElementById('ronRmFontIndicator') ? document.getElementById('ronRmFontIndicator').textContent : null");
-    assert(fontStatePlus === '18px', 'Font size incremented to 18px');
+    const fontStatePlus = await evaluate("parseInt(document.getElementById('ronRmFontIndicator')?.textContent || '0', 10)");
+    assert(fontStatePlus === baseFontSize + 1, `Font size incremented to ${baseFontSize + 1}px (got ${fontStatePlus}px)`);
 
     // Test text size controls: A-
     await evaluate(`
@@ -382,8 +383,8 @@ server.listen(PORT, async () => {
       })()
     `);
     await delay(100);
-    const fontStateMinus = await evaluate("document.getElementById('ronRmFontIndicator') ? document.getElementById('ronRmFontIndicator').textContent : null");
-    assert(fontStateMinus === '17px', 'Font size decremented back to 17px');
+    const fontStateMinus = await evaluate("parseInt(document.getElementById('ronRmFontIndicator')?.textContent || '0', 10)");
+    assert(fontStateMinus === baseFontSize, `Font size decremented back to ${baseFontSize}px (got ${fontStateMinus}px)`);
 
     // Test theme switcher: Sepia
     await evaluate(`
