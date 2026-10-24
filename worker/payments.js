@@ -85,7 +85,8 @@ export async function isServerAdmin(userAuth, env, request = null) {
  */
 export function getChapterContent(chapterId) {
   if (!chapterId) return null;
-  return STUDY_TOPICS.find((t) => t.id === chapterId) || null;
+  const targetId = String(chapterId).trim().toLowerCase();
+  return STUDY_TOPICS.find((t) => (t.id || '').trim().toLowerCase() === targetId) || null;
 }
 
 /**

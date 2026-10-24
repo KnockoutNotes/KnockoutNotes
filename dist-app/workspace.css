@@ -438,7 +438,7 @@ body:not(.dark) .kn-bubble-user-btn {
   align-items: center;
   justify-content: center;
   padding: 16px;
-  z-index: 99999;
+  z-index: 100002 !important;
   animation: knFadeIn 0.2s ease;
 }
 
@@ -1276,23 +1276,43 @@ body:not(.dark) .kn-bubble-user-btn {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  z-index: 100000;
+  z-index: 100002 !important;
   pointer-events: none;
 }
 
 .kn-toast {
   pointer-events: auto;
-  background: var(--kn-ws-text-primary, #0f172a);
-  color: #ffffff;
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
   padding: 10px 16px;
   border-radius: 12px;
   font-size: 13px;
-  font-weight: 500;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   gap: 8px;
   animation: knToastIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kn-toast.info {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border-left: 4px solid #0284c7 !important;
+}
+
+.kn-toast.success {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border-left: 4px solid #10b981 !important;
+}
+
+.kn-toast.error {
+  background: #1e1b1b !important;
+  color: #fecaca !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  border-left: 4px solid #ef4444 !important;
 }
 
 @keyframes knToastIn {
@@ -1317,7 +1337,7 @@ body:not(.dark) .kn-bubble-user-btn {
   background: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  z-index: 99998;
+  z-index: 100001 !important;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.26s ease;

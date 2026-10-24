@@ -271,12 +271,17 @@
     }
 
     // 2. User is logged in: Check price and existing entitlement status
+    const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+    const timeoutId = controller ? setTimeout(() => controller.abort(), 10000) : null;
+
     try {
       showToast("Checking chapter entitlement...", "info");
 
-      const res = await fetch(`/api/payments/chapter-price?chapter_id=${encodeURIComponent(chapterId)}`, {
-        credentials: "include"
-      });
+      const fetchOptions = { credentials: "include" };
+      if (controller) fetchOptions.signal = controller.signal;
+
+      const res = await fetch(`/api/payments/chapter-price?chapter_id=${encodeURIComponent(chapterId)}`, fetchOptions);
+      if (timeoutId) clearTimeout(timeoutId);
 
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
@@ -303,8 +308,10 @@
       // Non-admin, unpurchased: Display purchase confirmation modal
       renderPurchaseModal(info);
     } catch (err) {
+      if (timeoutId) clearTimeout(timeoutId);
       console.error("[Initiate Download Error]:", err);
-      showToast(err.message || "Could not retrieve chapter details", "error");
+      const isAbort = err && err.name === "AbortError";
+      showToast(isAbort ? "Entitlement check timed out. Please try again." : (err.message || "Could not retrieve chapter details"), "error");
     }
   }
 
@@ -701,8 +708,8 @@
       .kn-payment-modal-backdrop {
         position: fixed;
         inset: 0;
-        z-index: 99999;
-        background: rgba(0, 0, 0, 0.75);
+        z-index: 100002 !important;
+        background: rgba(0, 0, 0, 0.82) !important;
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
         display: flex;
