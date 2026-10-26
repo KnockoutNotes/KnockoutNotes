@@ -913,7 +913,7 @@ export default {
 
       if (!userAuth) {
         if (pathname === '/api/auth/me' && request.method === 'GET') {
-          return jsonResponse({ authenticated: false, user: null }, 200, {}, request, env);
+          return jsonResponse({ authenticated: false, user: null, isAdmin: false }, 200, {}, request, env);
         }
         return jsonResponse({ error: 'Unauthorized. Please log in.', authenticated: false }, 401, {}, request, env);
       }

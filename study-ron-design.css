@@ -5065,6 +5065,12 @@ body.ron-reading-fullscreen-active {
   right: 16px !important;
   width: 290px !important;
   max-width: calc(100vw - 32px) !important;
+  max-height: calc(100vh - 60px) !important;
+  max-height: calc(100dvh - 60px - env(safe-area-inset-bottom, 0px)) !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
+  touch-action: pan-y !important;
   background: var(--rm-surface-elevated, var(--rm-surface)) !important;
   border: 1px solid var(--rm-border) !important;
   border-radius: 14px !important;
@@ -5076,6 +5082,38 @@ body.ron-reading-fullscreen-active {
 
 .ron-rm-popover[hidden] {
   display: none !important;
+}
+
+.ron-rm-popover-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 4px !important;
+}
+
+.ron-rm-popover-close-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  padding: 0 !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--rm-border, rgba(125, 125, 125, 0.2)) !important;
+  background: transparent !important;
+  color: var(--rm-text-muted, #94a3b8) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  line-height: 1 !important;
+  transition: all 0.15s ease !important;
+}
+
+.ron-rm-popover-close-btn:hover,
+.ron-rm-popover-close-btn:focus-visible {
+  color: var(--rm-text, #f8fafc) !important;
+  background: rgba(125, 125, 125, 0.15) !important;
+  border-color: var(--rm-text-muted, #94a3b8) !important;
 }
 
 .ron-rm-popover-title {
@@ -6053,4 +6091,73 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
 }
 .kn-mobile-sheet-backdrop {
   z-index: 100001 !important;
+}
+
+/* Mobile Landscape specific Popover tuning */
+@media (orientation: landscape) and (max-height: 600px) {
+  .ron-rm-popover {
+    top: calc(44px + env(safe-area-inset-top, 0px)) !important;
+    right: calc(12px + env(safe-area-inset-right, 0px)) !important;
+    max-height: calc(100vh - 48px) !important;
+    max-height: calc(100dvh - 48px - env(safe-area-inset-bottom, 0px)) !important;
+    padding: 10px 14px 14px 14px !important;
+  }
+  .ron-rm-popover-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 8px !important;
+  }
+  .ron-rm-popover-title {
+    margin-bottom: 0 !important;
+    font-size: 13px !important;
+  }
+  .ron-rm-popover-desc {
+    display: none !important;
+  }
+  .ron-rm-setting-row {
+    margin-bottom: 8px !important;
+  }
+  .ron-rm-setting-label {
+    margin-bottom: 4px !important;
+    font-size: 10px !important;
+  }
+  .ron-rm-segment-btn {
+    padding: 4px 3px !important;
+    font-size: 11px !important;
+  }
+  .ron-rm-segment-btn span {
+    font-size: 9.5px !important;
+  }
+  .ron-rm-font-stepper {
+    padding: 2px !important;
+  }
+  .ron-rm-stepper-btn {
+    padding: 4px 12px !important;
+    font-size: 13px !important;
+  }
+  .ron-rm-stepper-val {
+    font-size: 12px !important;
+  }
+}
+
+/* Non-admin Study Mode screenshot and content deterrent styles */
+body.kn-study-protected #stDetail,
+body.kn-study-protected #stDetail *:not(input):not(textarea):not(button),
+body.kn-study-protected #ronReadingModeOverlay,
+body.kn-study-protected #ronReadingModeOverlay *:not(input):not(textarea):not(button),
+body.kn-study-protected .st-content-area,
+body.kn-study-protected .study-reading-container,
+body.kn-study-protected .ron-rm-content-wrapper {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+@media print {
+  body.kn-study-protected {
+    display: none !important;
+    visibility: hidden !important;
+  }
 }

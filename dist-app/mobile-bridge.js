@@ -351,13 +351,154 @@
   }
 
   // =========================================================================
-  // 5. INITIALIZATION
+  // 5. STUDY MODE SCREENSHOT & CONTENT SECURITY CONTROLLER
+  // =========================================================================
+  let isStudyProtectedActive = false;
+  let isServerVerifiedAdmin = false;
+
+  function isStudyMode() {
+    const p = (window.location.pathname || '').toLowerCase();
+    if (p.endsWith('study.html') || p.endsWith('/study')) return true;
+    if (document.getElementById('stStage') || document.getElementById('stDetail')) return true;
+    return false;
+  }
+
+  async function checkServerAdminStatus() {
+    try {
+      const res = await fetch('/api/auth/me', {
+        method: 'GET',
+        credentials: 'include',
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.authenticated === true && data.isAdmin === true) {
+          isServerVerifiedAdmin = true;
+          disableStudyProtection();
+          return true;
+        }
+      }
+    } catch (_) {}
+    isServerVerifiedAdmin = false;
+    if (isStudyMode()) {
+      enableStudyProtection();
+    }
+    return false;
+  }
+
+  function applyNativeSecureScreen(enable) {
+    try {
+      if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.SecureScreen) {
+        if (enable) {
+          window.Capacitor.Plugins.SecureScreen.enable().catch(() => {});
+        } else {
+          window.Capacitor.Plugins.SecureScreen.disable().catch(() => {});
+        }
+      }
+    } catch (_) {}
+  }
+
+  function handleProtectedContextMenu(e) {
+    if (isServerVerifiedAdmin) return;
+    const target = e.target;
+    if (target && target.closest && target.closest('#stDetail, #stContentArea, .st-content-area, #ronReadingModeOverlay, .ron-rm-content-wrapper, #ronActiveDescriptionBox, #stStage')) {
+      // Allow context menu only inside interactive inputs or textareas if any
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') return;
+      e.preventDefault();
+      e.stopPropagation();
+      if (window.KN_WORKSPACE && typeof window.KN_WORKSPACE.showToast === 'function') {
+        window.KN_WORKSPACE.showToast('Content copying is disabled in Study Mode', 'info');
+      }
+    }
+  }
+
+  function handleProtectedShortcuts(e) {
+    if (isServerVerifiedAdmin) return;
+    // Intercept Print shortcuts: Ctrl+P / Cmd+P
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'p' || e.key === 'P')) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (window.KN_WORKSPACE && typeof window.KN_WORKSPACE.showToast === 'function') {
+        window.KN_WORKSPACE.showToast('Printing is restricted to authenticated administrators', 'warning');
+      } else {
+        alert('Printing is restricted to authenticated administrators.');
+      }
+      return;
+    }
+    // Deter PrintScreen
+    if (e.key === 'PrintScreen') {
+      try {
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+          navigator.clipboard.writeText('').catch(() => {});
+        }
+      } catch (_) {}
+      if (window.KN_WORKSPACE && typeof window.KN_WORKSPACE.showToast === 'function') {
+        window.KN_WORKSPACE.showToast('Screenshots are restricted in Study Mode', 'warning');
+      }
+    }
+  }
+
+  function enableStudyProtection() {
+    if (isServerVerifiedAdmin) return;
+    isStudyProtectedActive = true;
+    if (document.body) {
+      document.body.classList.add('kn-study-protected');
+    }
+    applyNativeSecureScreen(true);
+    document.addEventListener('contextmenu', handleProtectedContextMenu, true);
+    document.addEventListener('keydown', handleProtectedShortcuts, true);
+  }
+
+  function disableStudyProtection(isTeardown = false) {
+    if (!isServerVerifiedAdmin && !isTeardown) return;
+    isStudyProtectedActive = false;
+    if (document.body) {
+      document.body.classList.remove('kn-study-protected');
+    }
+    applyNativeSecureScreen(false);
+    document.removeEventListener('contextmenu', handleProtectedContextMenu, true);
+    document.removeEventListener('keydown', handleProtectedShortcuts, true);
+  }
+
+  async function setupStudyProtection() {
+    if (!isStudyMode()) {
+      disableStudyProtection();
+      return;
+    }
+
+    // Fail closed immediately (protect by default for guest/student/offline)
+    enableStudyProtection();
+
+    // Verify admin identity via secure backend
+    const isAdmin = await checkServerAdminStatus();
+    if (isAdmin) {
+      // Authenticated admin: lift protection completely
+      disableStudyProtection();
+    } else {
+      // Non-admin or unauthenticated: keep protection firmly active
+      enableStudyProtection();
+    }
+  }
+
+  // Teardown / restore window state on pagehide and re-arm on pageshow (bfcache)
+  window.addEventListener('pagehide', () => {
+    disableStudyProtection(true);
+  });
+  window.addEventListener('pageshow', () => {
+    if (isStudyMode()) {
+      setupStudyProtection();
+    }
+  });
+
+  // =========================================================================
+  // 6. INITIALIZATION
   // =========================================================================
   function init() {
     setupLinkInterception();
     setupNetworkListeners();
     setupHardwareBackButton();
     setupAppOptimizations();
+    setupStudyProtection();
   }
 
   if (document.readyState === 'loading') {
@@ -370,7 +511,15 @@
     isOnline: () => isOnline,
     isOfflineSection: isOfflineRoute,
     showOfflineModal: showOfflineModal,
-    updateNetworkUI: updateNetworkUI
+    updateNetworkUI: updateNetworkUI,
+    isStudyProtected: () => isStudyProtectedActive,
+    isAdmin: () => isServerVerifiedAdmin
+  };
+
+  window.KnockoutSecurity = {
+    isProtected: () => isStudyProtectedActive,
+    isAdmin: () => isServerVerifiedAdmin,
+    checkAdmin: checkServerAdminStatus
   };
 
 })();

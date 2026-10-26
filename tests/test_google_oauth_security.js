@@ -215,7 +215,7 @@ async function runTests() {
   {
     console.log('\n[TEST 6] Protected endpoints fail closed when unauthenticated...');
     const endpoints = [
-      { url: 'https://knockoutnotes.workers.dev/api/auth/me', method: 'GET', expectedStatus: 401 },
+      { url: 'https://knockoutnotes.workers.dev/api/auth/profile', method: 'PUT', expectedStatus: 401 },
       { url: 'https://knockoutnotes.workers.dev/api/admin/payments/overview', method: 'GET', expectedStatus: 403 },
       { url: 'https://knockoutnotes.workers.dev/api/admin/payments/pricing', method: 'POST', expectedStatus: 403 },
       { url: 'https://knockoutnotes.workers.dev/api/study/download-pdf?chapter_id=preop-assessment', method: 'GET', expectedStatus: 401 }
@@ -226,6 +226,14 @@ async function runTests() {
       const res = await worker.fetch(req, env, {});
       assert.strictEqual(res.status, ep.expectedStatus, `Expected ${ep.expectedStatus} for ${ep.url}, got ${res.status}`);
     }
+
+    // Verify /api/auth/me returns 200 with authenticated: false, isAdmin: false when unauthenticated
+    const meReq = new Request('https://knockoutnotes.workers.dev/api/auth/me', { method: 'GET' });
+    const meRes = await worker.fetch(meReq, env, {});
+    assert.strictEqual(meRes.status, 200);
+    const meData = await meRes.json();
+    assert.strictEqual(meData.authenticated, false);
+    assert.strictEqual(meData.isAdmin, false);
     console.log('✓ PASS: All sensitive user and admin endpoints require authentic server sessions.');
   }
 

@@ -2852,6 +2852,15 @@
     } catch (_) {}
   }
 
+  function safeStorageRemove(key) {
+    try {
+      localStorage.removeItem(key);
+    } catch (_) {}
+    try {
+      sessionStorage.removeItem(key);
+    } catch (_) {}
+  }
+
   function isFullScreenReadingModeActive() {
     const overlay = document.getElementById("ronReadingModeOverlay");
     return !!(overlay && !overlay.hidden && document.body.classList.contains("ron-reading-fullscreen-active"));
@@ -2980,7 +2989,10 @@
 
       <!-- 1. Reading Width Popover -->
       <div class="ron-rm-popover ron-rm-width-dropdown" id="ronRmWidthDropdown" hidden role="region" aria-label="Column Width">
-        <div class="ron-rm-popover-title">Reading Width</div>
+        <div class="ron-rm-popover-header">
+          <div class="ron-rm-popover-title">Reading Width</div>
+          <button type="button" class="ron-rm-popover-close-btn" id="ronRmWidthCloseBtn" aria-label="Close reading width options" title="Close">✕</button>
+        </div>
         <div class="ron-rm-popover-desc">Choose a comfortable line length:</div>
         <div class="ron-rm-segmented-control" role="radiogroup" aria-label="Column Width">
           <button type="button" class="ron-rm-segment-btn" data-rm-width-val="narrow" role="radio" aria-checked="true">
@@ -3000,7 +3012,10 @@
 
       <!-- 2. Typography & Line Spacing Popover -->
       <div class="ron-rm-popover ron-rm-type-dropdown" id="ronRmTypeDropdown" hidden role="region" aria-label="Typography Settings">
-        <div class="ron-rm-popover-title">Typography & Spacing</div>
+        <div class="ron-rm-popover-header">
+          <div class="ron-rm-popover-title">Typography & Spacing</div>
+          <button type="button" class="ron-rm-popover-close-btn" id="ronRmTypeCloseBtn" aria-label="Close typography options" title="Close">✕</button>
+        </div>
         
         <div class="ron-rm-setting-row">
           <label class="ron-rm-setting-label">Font Family</label>
@@ -3434,45 +3449,61 @@
     const maxScroll = viewport.scrollHeight - viewport.clientHeight;
     const pct = maxScroll > 0 ? Math.min(100, Math.max(0, Math.round((scrollY / maxScroll) * 100))) : 0;
 
-    // Save scroll position for this specific chapter/drug
-    const posPayload = { scrollY, pct, timestamp: Date.now() };
-    try {
-      localStorage.setItem(RM_STORAGE.posPrefix + activeItem.id, JSON.stringify(posPayload));
-    } catch (_) {}
-
-    // Integrate with window.KN_WORKSPACE bookmarking system
+    // Integrate with window.KN_WORKSPACE bookmarking system (bidirectional ON/OFF toggle)
     const normId = "study:" + activeItem.id;
-    let isNowBookmarked = true;
+    let isNowBookmarked = false;
     if (window.KN_WORKSPACE && typeof window.KN_WORKSPACE.toggleBookmark === "function") {
-      const already = window.KN_WORKSPACE.isBookmarked(normId);
-      if (!already) {
-        isNowBookmarked = window.KN_WORKSPACE.toggleBookmark({
-          content_id: normId,
-          content_type: "study",
-          title: activeItem.name,
-          category: activeItem.cat || "Study Topics",
-          route: "study.html?topic=" + activeItem.id
-        });
+      const already = typeof window.KN_WORKSPACE.isBookmarked === "function" && window.KN_WORKSPACE.isBookmarked(normId);
+      window.KN_WORKSPACE.toggleBookmark({
+        content_id: normId,
+        content_type: "study",
+        title: activeItem.name,
+        category: activeItem.cat || "Study Topics",
+        route: "study.html?topic=" + activeItem.id
+      });
+      isNowBookmarked = !already;
+    } else {
+      const fallbackKey = "kn_rm_bookmarked_" + activeItem.id;
+      const already = safeStorageGet(fallbackKey, "0") === "1";
+      if (already) {
+        safeStorageRemove(fallbackKey);
+        safeStorageSet(fallbackKey, "0");
+        isNowBookmarked = false;
       } else {
+        safeStorageSet(fallbackKey, "1");
         isNowBookmarked = true;
       }
     }
 
-    // Update bookmark buttons
+    // Persist or clear reading position synchronously with bookmark status
+    if (isNowBookmarked) {
+      const posPayload = { scrollY, pct, timestamp: Date.now() };
+      try {
+        localStorage.setItem(RM_STORAGE.posPrefix + activeItem.id, JSON.stringify(posPayload));
+      } catch (_) {}
+    } else {
+      try {
+        localStorage.removeItem(RM_STORAGE.posPrefix + activeItem.id);
+      } catch (_) {}
+    }
+
+    // Update bookmark buttons across overlay and compact toolbar
     const bmBtns = document.querySelectorAll("#ronRmBookmarkBtn, #ronRmOverflowBookmarkBtn, #ronTbBookmarkBtn");
     bmBtns.forEach((btn) => {
-      btn.classList.add("active-bookmark", "bookmarked");
-      btn.setAttribute("aria-pressed", "true");
-      btn.title = "Bookmarked (Position saved at " + pct + "%)";
+      btn.classList.toggle("active-bookmark", isNowBookmarked);
+      btn.classList.toggle("bookmarked", isNowBookmarked);
+      btn.classList.toggle("active", isNowBookmarked);
+      btn.setAttribute("aria-pressed", isNowBookmarked ? "true" : "false");
+      btn.title = isNowBookmarked ? "Bookmarked (Position saved at " + pct + "%)" : "Add to Bookmarks";
     });
 
     const overflowBmText = document.getElementById("ronRmOverflowBmText");
     if (overflowBmText) {
-      overflowBmText.textContent = "Bookmarked (" + pct + "% saved)";
+      overflowBmText.textContent = isNowBookmarked ? "Bookmarked (" + pct + "% saved)" : "Add to Bookmarks";
     }
 
     if (window.KN_WORKSPACE && typeof window.KN_WORKSPACE.showToast === "function") {
-      window.KN_WORKSPACE.showToast("Bookmark & reading position saved (" + pct + "%)", "success");
+      window.KN_WORKSPACE.showToast(isNowBookmarked ? "Bookmark & reading position saved (" + pct + "%)" : "Bookmark removed", isNowBookmarked ? "success" : "info");
     }
     triggerHapticFeedback();
   }
@@ -3625,9 +3656,19 @@
     const normId = "study:" + activeItem.id;
     const isBm = window.KN_WORKSPACE && typeof window.KN_WORKSPACE.isBookmarked === "function"
       ? window.KN_WORKSPACE.isBookmarked(normId)
-      : false;
+      : (safeStorageGet("kn_rm_bookmarked_" + activeItem.id, "0") === "1");
     const bmBtns = overlay.querySelectorAll("#ronRmBookmarkBtn, #ronRmOverflowBookmarkBtn");
-    bmBtns.forEach((btn) => btn.classList.toggle("active-bookmark", isBm));
+    bmBtns.forEach((btn) => {
+      btn.classList.toggle("active-bookmark", isBm);
+      btn.classList.toggle("bookmarked", isBm);
+      btn.classList.toggle("active", isBm);
+      btn.setAttribute("aria-pressed", isBm ? "true" : "false");
+      btn.title = isBm ? "Bookmarked" : "Add to Bookmarks";
+    });
+    const overflowBmText = overlay.querySelector("#ronRmOverflowBmText");
+    if (overflowBmText) {
+      overflowBmText.textContent = isBm ? "Bookmarked" : "Add to Bookmarks";
+    }
 
     // Populate TOC from live subsections or section headings
     const tocList = document.getElementById("ronRmTocList");
@@ -4458,6 +4499,14 @@ document.addEventListener("keydown", (e) => {
         }
       }
       toggleRmToc(false);
+      return;
+    }
+
+    // Close button in popover header
+    if (e.target.closest(".ron-rm-popover-close-btn, #ronRmTypeCloseBtn, #ronRmWidthCloseBtn")) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeAllRmPopovers();
       return;
     }
 

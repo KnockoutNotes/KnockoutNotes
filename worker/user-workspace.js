@@ -18,6 +18,7 @@ import {
 } from './auth.js';
 import { sendEmail } from './mailersend.js';
 import { checkRateLimit, resetRateLimit, getClientIp } from './rate-limit.js';
+import { isServerAdmin } from './payments.js';
 
 function jsonResponse(data, status = 200, headers = {}) {
   return new Response(JSON.stringify(data), {
@@ -696,9 +697,10 @@ export async function handleGoogleAuth(request, env) {
 // GET /api/auth/me
 export async function handleGetMe(request, env, userAuth) {
   if (!userAuth || !userAuth.user) {
-    return jsonResponse({ authenticated: false }, 401);
+    return jsonResponse({ authenticated: false, isAdmin: false }, 401);
   }
-  return jsonResponse({ authenticated: true, user: userAuth.user });
+  const isAdmin = await isServerAdmin(userAuth, env, request);
+  return jsonResponse({ authenticated: true, user: userAuth.user, isAdmin });
 }
 
 // PUT /api/auth/profile
