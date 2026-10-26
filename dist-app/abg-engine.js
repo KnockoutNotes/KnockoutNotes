@@ -326,7 +326,16 @@
       let deltaInterp = "";
       let deltaClass = "good";
 
-      if (deltaHco3 !== 0) {
+      if (deltaHco3 < 0) {
+        if (deltaAG > 0) {
+          deltaInterp = `Delta Bicarbonate is negative (${deltaHco3} mEq/L) with elevated Anion Gap (ΔAG = +${deltaAG} mEq/L): Mixed disorder. Serum HCO₃⁻ remains above baseline despite organic acid accumulation, indicating High Anion Gap Acidosis with concurrent METABOLIC ALKALOSIS or chronic CO₂ retention compensation.`;
+        } else {
+          deltaInterp = `Delta Bicarbonate is negative (${deltaHco3} mEq/L) with normal Anion Gap: Serum HCO₃⁻ is elevated above baseline without High Anion Gap Acidosis. Consistent with primary METABOLIC ALKALOSIS or renal compensation for chronic respiratory acidosis; Delta Ratio is not applicable.`;
+        }
+        deltaClass = "alert";
+      } else if (deltaHco3 === 0) {
+        deltaInterp = "Delta Bicarbonate is zero (Normal HCO₃ level 24 mEq/L).";
+      } else {
         deltaRatio = round(deltaAG / deltaHco3, 2);
         if (deltaRatio < 0.4) {
           deltaInterp = "Delta Ratio < 0.4: Pure Normal Anion Gap Metabolic Acidosis (NAGMA / Hyperchloraemic).";
@@ -341,8 +350,6 @@
           deltaInterp = "Delta Ratio > 2.0: High Anion Gap Acidosis combined with pre-existing METABOLIC ALKALOSIS or chronic CO₂ retention compensation.";
           deltaClass = "alert";
         }
-      } else {
-        deltaInterp = "Delta Bicarbonate is zero (Normal HCO₃ level 24 mEq/L).";
       }
 
       deltaGapResult = {

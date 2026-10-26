@@ -70,6 +70,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700;800&display=optional">
   </noscript>
   <style id="kn-critical-css">
+    /* Layer Isolation & Single DOM Render Rules */
+    .view-layer-lite { display: none !important; }
+    body.mode-3d .view-layer-lite { display: none !important; }
+    body.mode-lite .view-layer-3d { display: none !important; }
+    body.mode-lite .view-layer-lite { display: block !important; }
+    body.kn-nav-mounted .site-hud,
+    body.kn-nav-mounted .mobile-menu { display: none !important; visibility: hidden !important; pointer-events: none !important; }
     :root {
       --bg-void: #f6f4ee;
       --bg-surface: #ffffff;
@@ -355,7 +362,7 @@
             <span>ONLINE</span>
           </span>
           <span class="kn-sync-group">
-            <span style="font-size:12px; color:#94a3b8;">Sync: <strong class="kn-sync-time-val" style="color:#e2e8f0;">Checking...</strong></span>
+            <span style="font-size:12px; color:#94a3b8;">Sync: <strong class="kn-sync-time-val" style="color:#e2e8f0;">Ready</strong></span>
             <button type="button" class="kn-sync-now-btn" title="Sync latest notes & guidelines from server">
               <span class="kn-sync-spinner">↻</span>
               <span>Sync Now</span>
@@ -363,7 +370,7 @@
           </span>
         </div>
         <div class="kn-app-status-right">
-          <span style="font-size:11px; color:#94a3b8; font-family:monospace;">APP v2.4.0 • 8 OFFLINE SECTIONS READY</span>
+          <span style="font-size:11px; color:#94a3b8; font-family:monospace;">APP v3.0.0 • 8 OFFLINE SECTIONS READY</span>
         </div>
       </div>
 
@@ -867,7 +874,7 @@
             <span>ONLINE</span>
           </span>
           <span class="kn-sync-group">
-            <span style="font-size:12px; color:#94a3b8;">Sync: <strong class="kn-sync-time-val" style="color:#e2e8f0;">Checking...</strong></span>
+            <span style="font-size:12px; color:#94a3b8;">Sync: <strong class="kn-sync-time-val" style="color:#e2e8f0;">Ready</strong></span>
             <button type="button" class="kn-sync-now-btn" title="Sync latest notes & guidelines from server">
               <span class="kn-sync-spinner">↻</span>
               <span>Sync Now</span>
@@ -875,7 +882,7 @@
           </span>
         </div>
         <div class="kn-app-status-right">
-          <span style="font-size:11px; color:#94a3b8; font-family:monospace;">APP v2.4.0 • 8 OFFLINE SECTIONS READY</span>
+          <span style="font-size:11px; color:#94a3b8; font-family:monospace;">APP v3.0.0 • 8 OFFLINE SECTIONS READY</span>
         </div>
       </div>
 

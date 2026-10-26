@@ -172,10 +172,16 @@
   // Update DOM elements representing sync state
   async function updateSyncUI(status, message) {
     const lastSync = await getLocalMeta('lastSyncTime');
-    const timeStr = lastSync ? formatSyncTime(lastSync) : ('caches' in window ? 'Cached / Ready' : 'Ready');
+    const timeStr = lastSync ? formatSyncTime(lastSync) : ('caches' in window ? 'Ready (Cached)' : 'Ready');
 
     document.querySelectorAll('.kn-sync-time-val').forEach(el => {
-      el.textContent = timeStr;
+      if (status === 'syncing') {
+        el.textContent = 'Syncing...';
+      } else if (status === 'success') {
+        el.textContent = 'Just now';
+      } else {
+        el.textContent = timeStr;
+      }
     });
 
     document.querySelectorAll('.kn-sync-status-msg').forEach(el => {
@@ -287,16 +293,20 @@
         results.preserved++;
       }
 
-      // Record successful sync timestamp
+      // Record sync status based on verified outcomes
       const now = Date.now();
-      await setLocalMeta('lastSyncTime', now);
-      await setLocalMeta('lastSyncStatus', 'success');
-
       updateNetworkBadges({ status: 'online', text: 'ONLINE' });
-      updateSyncUI('success', `Synchronized successfully (Just now)`);
 
-      // Notify any active views that new content is available
-      window.dispatchEvent(new CustomEvent('knockout:content-synced', { detail: { timestamp: now, trigger: triggerReason } }));
+      if (results.updated > 0) {
+        await setLocalMeta('lastSyncTime', now);
+        await setLocalMeta('lastSyncStatus', 'success');
+        updateSyncUI('success', `Synchronized successfully (Just now)`);
+        window.dispatchEvent(new CustomEvent('knockout:content-synced', { detail: { timestamp: now, trigger: triggerReason } }));
+      } else {
+        // Preserved local offline database without false claims of fresh server synchronization
+        await setLocalMeta('lastSyncStatus', 'preserved');
+        updateSyncUI('ready', 'Content up-to-date (Offline database active)');
+      }
     } catch (err) {
       console.error('[SyncEngine] Sync error:', err);
       const hasCache = ('caches' in window) || !!navigator.serviceWorker?.controller;

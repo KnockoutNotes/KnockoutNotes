@@ -188,6 +188,38 @@ assert(searchJs.includes('const combined = item._normCombined ||'), "executeSear
 
 console.log("✅ PASS: Search pre-indexing optimization and responsiveness verified!\n");
 
+// ----------------------------------------------------------------------------
+// 6. UI CONSISTENCY, STATUS INDICATORS & ANDROID PARITY
+// ----------------------------------------------------------------------------
+console.log("--- 6. Testing UI Consistency, Status Indicators & Android Parity ---");
+
+// 6A. Version Consistency
+assert(indexHtml.includes('APP v3.0.0 • 8 OFFLINE SECTIONS READY'), "index.html must display APP v3.0.0");
+assert(!indexHtml.includes('APP v2.4.0'), "index.html must NOT contain stale APP v2.4.0");
+
+const adminHtml = fs.readFileSync(path.join(__dirname, '..', 'admin', 'index.html'), 'utf8');
+assert(adminHtml.includes('KnockoutNotes Portal v3.0'), "admin/index.html must display Portal v3.0");
+
+// 6B. Transient Status Handlers
+assert(indexHtml.includes('Sync: <strong class="kn-sync-time-val" style="color:#e2e8f0;">Ready</strong>'), "index.html initial sync text must be Ready (not permanently Checking...)");
+
+const syncEngineJs = fs.readFileSync(path.join(__dirname, '..', 'sync-engine.js'), 'utf8');
+assert(syncEngineJs.includes("results.updated > 0"), "sync-engine.js must verify results.updated > 0 before claiming success");
+assert(syncEngineJs.includes("updateSyncUI('ready', 'Content up-to-date (Offline database active)')"), "sync-engine.js must handle zero-update without false success claim");
+
+const adminJs = fs.readFileSync(path.join(__dirname, '..', 'admin', 'admin.js'), 'utf8');
+assert(adminJs.includes("r2El.textContent === 'Checking...'"), "admin.js must recover statusR2 from Checking... on error");
+assert(adminJs.includes("anaEl.textContent === 'Checking...'"), "admin.js must recover statusAnalytics from Checking... on error");
+
+// 6C. Android Dist-App Binary Parity
+const coreParityFiles = ['index.html', 'sw.js', 'calculators.js', 'script.js', 'page-common.css', 'sync-engine.js'];
+for (const f of coreParityFiles) {
+  const rootBuf = fs.readFileSync(path.join(__dirname, '..', f));
+  const distBuf = fs.readFileSync(path.join(__dirname, '..', 'dist-app', f));
+  assert(rootBuf.equals(distBuf), `Binary parity failed between root and dist-app/${f}`);
+}
+console.log("✅ PASS: UI version consistency, transient status recovery & Android parity verified!\n");
+
 console.log("==================================================");
 console.log("🎉 ALL AUDIT AND FIX VERIFICATIONS PASSED 100%!");
 console.log("==================================================");

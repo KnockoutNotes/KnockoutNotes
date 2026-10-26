@@ -2060,6 +2060,21 @@ async function loadSettingsAndAudit() {
     }
   } catch (err) {
     console.error('[Settings Status Error]:', err);
+    const r2El = document.getElementById('statusR2');
+    if (r2El && r2El.textContent === 'Checking...') {
+      r2El.textContent = 'Not Configured';
+      r2El.style.color = '#fbbf24';
+    }
+    const anaEl = document.getElementById('statusAnalytics');
+    if (anaEl && anaEl.textContent === 'Checking...') {
+      anaEl.textContent = 'Unavailable';
+      anaEl.style.color = '#f87171';
+    }
+    const rumEl = document.getElementById('statusRum');
+    if (rumEl && rumEl.textContent === 'Checking...') {
+      rumEl.textContent = 'Unavailable';
+      rumEl.style.color = '#f87171';
+    }
   }
 
   // Audit table

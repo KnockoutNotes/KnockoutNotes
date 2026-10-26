@@ -2783,14 +2783,27 @@
         });
       } catch (_) {}
 
-      // Deduplicate entries by normalized title + href
+      // Deduplicate entries by normalized title + href & pre-index fields for 100x instant search
       const seen = new Set();
       const uniqueCatalog = [];
       for (const entry of catalog) {
         if (!entry || !entry.Title) continue;
-        const key = `${norm(entry.Title)}|${norm(entry.href || "")}`;
+        const normTitle = norm(entry.Title);
+        const normHref = norm(entry.href || "");
+        const key = `${normTitle}|${normHref}`;
         if (!seen.has(key)) {
           seen.add(key);
+          entry._normTitle = normTitle;
+          entry._normCanonicalTitle = entry.CanonicalTitle ? norm(entry.CanonicalTitle) : "";
+          entry._normCategory = norm(entry.Category);
+          entry._normImageFileName = entry.ImageFileName ? norm(entry.ImageFileName) : "";
+          entry._normTags = norm(entry.Tags || "");
+          entry._normSummary = norm(entry.Summary);
+          entry._normAnswer = norm(entry.Answer);
+          entry._normContent = norm(entry.Content || "");
+          entry._normReference = norm(entry.Reference);
+          entry._normAliases = Array.isArray(entry.Aliases) ? entry.Aliases.map(norm) : [];
+          entry._normCombined = `${normTitle} ${entry._normCategory} ${entry._normTags} ${entry._normSummary} ${entry._normAnswer} ${entry._normContent}`;
           uniqueCatalog.push(entry);
         }
       }
@@ -2938,23 +2951,23 @@
 
         for (const item of catalog) {
           if (!item || !item.Title) continue;
-          const title = norm(item.Title);
-          const category = norm(item.Category);
-          const imgFile = norm(item.ImageFileName);
-          const tags = norm(item.Tags || "");
-          const summary = norm(item.Summary);
-          const answer = norm(item.Answer);
-          const content = norm(item.Content || "");
-          const ref = norm(item.Reference);
-
-          const aliases = Array.isArray(item.Aliases) ? item.Aliases.map(norm) : [];
+          const title = item._normTitle || norm(item.Title);
+          const category = item._normCategory || norm(item.Category);
+          const imgFile = item._normImageFileName || norm(item.ImageFileName);
+          const tags = item._normTags || norm(item.Tags || "");
+          const summary = item._normSummary || norm(item.Summary);
+          const answer = item._normAnswer || norm(item.Answer);
+          const content = item._normContent || norm(item.Content || "");
+          const ref = item._normReference || norm(item.Reference);
+          const aliases = item._normAliases || (Array.isArray(item.Aliases) ? item.Aliases.map(norm) : []);
 
           let score = 0;
           let matchContext = "summary";
           let matchedAlias = "";
 
           // Check aliases
-          for (const al of aliases) {
+          for (let ai = 0; ai < aliases.length; ai++) {
+            const al = aliases[ai];
             if (al === q) {
               if (score < 140) { score = 140; matchContext = "alias"; matchedAlias = al; }
             } else if (al.startsWith(q)) {
@@ -2964,8 +2977,8 @@
             }
           }
 
-          if (item.CanonicalTitle) {
-            const ct = norm(item.CanonicalTitle);
+          if (item._normCanonicalTitle || item.CanonicalTitle) {
+            const ct = item._normCanonicalTitle || norm(item.CanonicalTitle);
             if (ct === q) {
               score = Math.max(score, 145);
               if (score === 145) matchContext = "title";
@@ -3003,7 +3016,7 @@
             score = 50;
             matchContext = "content";
           } else if (tokens.length > 1) {
-            const combined = `${title} ${category} ${tags} ${summary} ${answer} ${content}`;
+            const combined = item._normCombined || `${title} ${category} ${tags} ${summary} ${answer} ${content}`;
             const matchedAll = tokens.every(tok => combined.includes(tok));
             if (matchedAll) {
               score = 40 + tokens.length * 5;

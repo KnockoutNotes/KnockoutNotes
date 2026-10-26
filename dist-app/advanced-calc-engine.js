@@ -20,13 +20,13 @@
 
   // Safe number parsing
   function toNum(v) {
-    if (v === null || v === undefined) return null;
+    if (v === null || v === undefined || v === "") return null;
     const n = parseFloat(v);
-    return isNaN(n) ? null : n;
+    return (isNaN(n) || !Number.isFinite(n)) ? null : n;
   }
 
   function roundVal(v, decimals = 2) {
-    if (v === null || v === undefined || isNaN(v)) return null;
+    if (v === null || v === undefined || isNaN(v) || !Number.isFinite(v)) return null;
     const factor = Math.pow(10, decimals);
     return Math.round(v * factor) / factor;
   }
