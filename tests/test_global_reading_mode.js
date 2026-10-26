@@ -399,7 +399,7 @@ server.listen(PORT, async () => {
     { id: 'dka-perioperative-glycaemic-protocols', expectedDomain: 'anaesthesia', expectedFree: true },
     { id: 'ketamine', expectedDomain: 'drugs', expectedFree: false },
     { id: 'sugammadex', expectedDomain: 'drugs', expectedFree: false },
-    { id: 'case_cardiac', expectedDomain: 'cases', expectedFree: false }
+    { id: 'case-mitral-stenosis-phtn', expectedDomain: 'cases', expectedFree: false }
   ];
 
   for (const item of matrix) {

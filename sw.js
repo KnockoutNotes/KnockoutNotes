@@ -5,7 +5,7 @@
 // - Stale-While-Revalidate with safe response cloning for static app shell assets
 // ==========================================================================
 
-const CACHE_NAME = "knockoutnotes-cache-v113";
+const CACHE_NAME = "knockoutnotes-cache-v114";
 
 const PRECACHE_ASSETS = [
   "/",
@@ -70,6 +70,9 @@ const PRECACHE_ASSETS = [
   "/spatial-viewer.js",
   "/ventilator-scene.js",
   "/calculators.js",
+  "/advanced-calc-engine.js",
+  "/advanced-calc-ui.js",
+  "/clinical-validator.js",
   "/paeds-chart-engine.js",
   "/paeds-pdf-export.js",
   "/abg-engine.js",
@@ -108,10 +111,53 @@ const PRECACHE_ASSETS = [
   "/INI_CET_SS_2026_Critical_Care_PYQs.json"
 ];
 
+// Core App Shell assets strictly required for offline baseline operation
+const CORE_APP_SHELL = new Set([
+  "/",
+  "/index.html",
+  "/styles.css",
+  "/page-common.css",
+  "/script.js",
+  "/spa-router.js",
+  "/bubble-menu.js",
+  "/bubble-menu.css",
+  "/calculators.html",
+  "/calculators.css",
+  "/calculators.js",
+  "/advanced-calc-engine.js",
+  "/advanced-calc-ui.js",
+  "/clinical-validator.js",
+  "/manifest.json"
+]);
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(PRECACHE_ASSETS);
+    caches.open(CACHE_NAME).then(async (cache) => {
+      // 1. Precache Core App Shell assets (strictly required; failure aborts install)
+      const coreAssets = PRECACHE_ASSETS.filter(url => CORE_APP_SHELL.has(url));
+      await Promise.all(
+        coreAssets.map(async (url) => {
+          const response = await fetch(url, { credentials: "same-origin" });
+          if (!response || response.status !== 200) {
+            throw new Error(`[SW Precache] Failed to fetch essential core asset: ${url}`);
+          }
+          await cache.put(url, response);
+        })
+      );
+
+      // 2. Precache Secondary / Optional assets (resilient; non-blocking)
+      const secondaryAssets = PRECACHE_ASSETS.filter(url => !CORE_APP_SHELL.has(url));
+      const secondaryPromises = secondaryAssets.map(async (url) => {
+        try {
+          const response = await fetch(url, { credentials: "same-origin" });
+          if (response && response.status === 200) {
+            await cache.put(url, response);
+          }
+        } catch (err) {
+          console.warn("[SW Precache] Non-blocking secondary asset fetch notice:", url, err && err.message);
+        }
+      });
+      await Promise.all(secondaryPromises);
     }).then(() => self.skipWaiting())
   );
 });
@@ -127,7 +173,8 @@ self.addEventListener("activate", (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((name) => {
-          if (name !== CACHE_NAME) {
+          // Only purge older app-shell versions; never clobber dedicated user caches
+          if (name.startsWith("knockoutnotes-cache-") && name !== CACHE_NAME) {
             return caches.delete(name);
           }
         })
@@ -169,8 +216,8 @@ self.addEventListener("fetch", (event) => {
           if (networkResponse && networkResponse.status === 200) {
             const responseToCache = networkResponse.clone();
             caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, responseToCache);
-            });
+              cache.put(event.request, responseToCache).catch(() => {});
+            }).catch(() => {});
           }
           return networkResponse;
         })
@@ -203,8 +250,8 @@ self.addEventListener("fetch", (event) => {
               if (networkResponse && networkResponse.status === 200) {
                 const responseToCache = networkResponse.clone();
                 caches.open(CACHE_NAME).then((cache) => {
-                  cache.put(event.request, responseToCache);
-                });
+                  cache.put(event.request, responseToCache).catch(() => {});
+                }).catch(() => {});
               }
             })
             .catch(() => {});
@@ -219,8 +266,8 @@ self.addEventListener("fetch", (event) => {
 
         const responseToCache = networkResponse.clone();
         caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
+          cache.put(event.request, responseToCache).catch(() => {});
+        }).catch(() => {});
 
         return networkResponse;
       });

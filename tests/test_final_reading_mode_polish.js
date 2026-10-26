@@ -27,6 +27,7 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, async () => {
   const chromePath = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
   const userDataDir = path.join(ROOT, 'scratch/chrome-cdp-profile-final-reading-polish');
+  try { fs.rmSync(userDataDir, { recursive: true, force: true }); } catch (_) {}
   const chrome = spawn(chromePath, [
     '--headless=new',
     `--remote-debugging-port=${CDP_PORT}`,
@@ -277,8 +278,11 @@ server.listen(PORT, async () => {
     console.log('\n--- 7. TOOLBAR BOOKMARK TOGGLE & PERSISTENCE ---');
     const bmToggled = await evaluate(`
       (() => {
+        localStorage.removeItem('kn_bookmarks');
         const bmBtn = document.getElementById('ronTbBookmarkBtn');
         if (!bmBtn) return { error: 'No button' };
+        bmBtn.classList.remove('active-bookmark');
+        bmBtn.setAttribute('aria-pressed', 'false');
         bmBtn.click();
         const raw = localStorage.getItem('kn_bookmarks');
         return {

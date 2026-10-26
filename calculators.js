@@ -20,12 +20,13 @@
   "use strict";
 
   const num = (v) => {
+    if (v === null || v === undefined || v === "") return null;
     const n = parseFloat(v);
-    return isNaN(n) ? null : n;
+    return (isNaN(n) || !Number.isFinite(n)) ? null : n;
   };
 
   const round = (v, d = 1) => {
-    if (v === null || v === undefined || isNaN(v)) return null;
+    if (v === null || v === undefined || isNaN(v) || !Number.isFinite(v)) return null;
     const f = Math.pow(10, d);
     return Math.round(v * f) / f;
   };
@@ -282,7 +283,7 @@
       crCl *= 0.85;
     }
 
-    crCl = round(crCl, 1);
+    crCl = round(Math.max(0, crCl), 1);
 
     let stage = "";
     let riskClass = "";
@@ -456,7 +457,17 @@
     let interpretation = "";
     let riskClass = "";
 
-    if (deltaHco3 !== 0) {
+    if (deltaHco3 < 0) {
+      if (deltaAG > 0) {
+        interpretation = `Delta Bicarbonate is negative (${deltaHco3} mEq/L) with elevated Anion Gap (ΔAG = +${deltaAG} mEq/L): Mixed disorder. Serum HCO₃⁻ remains above baseline despite organic acid accumulation, indicating High Anion Gap Acidosis with concurrent METABOLIC ALKALOSIS or chronic respiratory acidosis compensation.`;
+      } else {
+        interpretation = `Delta Bicarbonate is negative (${deltaHco3} mEq/L) with normal Anion Gap: Serum HCO₃⁻ is elevated above baseline without High Anion Gap Acidosis. Consistent with primary METABOLIC ALKALOSIS or renal compensation for chronic respiratory acidosis; Delta Ratio is not applicable.`;
+      }
+      riskClass = "alert";
+    } else if (deltaHco3 === 0) {
+      interpretation = "Delta Bicarbonate is zero (Normal HCO₃ level).";
+      riskClass = "good";
+    } else {
       deltaRatio = round(deltaAG / deltaHco3, 2);
       if (deltaRatio < 0.4) {
         interpretation = "Delta Ratio < 0.4: Pure Normal Anion Gap Metabolic Acidosis (NAGMA / Hyperchloraemic Acidosis).";
@@ -471,9 +482,6 @@
         interpretation = "Delta Ratio > 2.0: High Anion Gap Acidosis combined with a preexisting METABOLIC ALKALOSIS or chronic respiratory acidosis compensation.";
         riskClass = "alert";
       }
-    } else {
-      interpretation = "Delta Bicarbonate is zero (Normal HCO₃ level).";
-      riskClass = "good";
     }
 
     return {
@@ -1189,8 +1197,10 @@
     const ca = num(calciumVal);
     const alb = num(albuminVal);
 
-    if (ca === null || alb === null) {
-      return { error: "Please enter valid calcium and albumin concentrations." };
+    const maxAlb = (unit === "mmol/L") ? 150 : 15;
+    const maxCa = (unit === "mmol/L") ? 10 : 30;
+    if (ca === null || alb === null || ca <= 0 || alb <= 0 || ca > maxCa || alb > maxAlb) {
+      return { error: "Please enter valid positive calcium and albumin concentrations." };
     }
 
     let corrected = 0;
@@ -1247,8 +1257,8 @@
     const na = num(sodiumVal);
     const gluRaw = num(glucoseVal);
 
-    if (na === null || gluRaw === null) {
-      return { error: "Please enter valid sodium and glucose concentrations." };
+    if (na === null || gluRaw === null || na <= 0 || gluRaw < 0 || na > 250 || gluRaw > 3000) {
+      return { error: "Please enter valid sodium (>0) and glucose (≥0) concentrations." };
     }
 
     // Convert glucose to mg/dL for standard calculation
@@ -1296,8 +1306,8 @@
     let cr = num(creatinineVal);
     let na = num(sodiumVal);
 
-    if (bili === null || inr === null || cr === null || na === null) {
-      return { error: "Please enter valid values for Bilirubin, INR, Creatinine, and Sodium." };
+    if (bili === null || inr === null || cr === null || na === null || bili <= 0 || inr <= 0 || cr <= 0 || na <= 0) {
+      return { error: "Please enter valid positive values for Bilirubin, INR, Creatinine, and Sodium." };
     }
 
     // Dialysis rule: If dialysis >= 2 times in past 7 days or CVVH, Cr is set to 4.0
