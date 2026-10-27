@@ -66,9 +66,9 @@ assert(gradle.includes('versionCode 302'), 'build.gradle versionCode must be 302
 assert(gradle.includes('versionName "3.0.2"'), 'build.gradle versionName must be 3.0.2');
 assert(indexHtml.includes('APP v3.0.2 • 8 OFFLINE SECTIONS READY'), 'index.html must display APP v3.0.2');
 assert(indexHtml.includes('Get Android App v3.0.2 (APK)'), 'index.html download link must reference v3.0.2');
-assert(swJs.includes('knockoutnotes-cache-v116'), 'sw.js must be bumped to knockoutnotes-cache-v116');
+assert(swJs.includes('knockoutnotes-cache-v117'), 'sw.js must be bumped to knockoutnotes-cache-v117');
 
-console.log('✅ PASS: Version consistency (3.0.2 / 302 / cache-v116) verified!\n');
+console.log('✅ PASS: Version consistency (3.0.2 / 302 / cache-v117) verified!\n');
 
 console.log('==================================================');
 console.log('🎉 ALL v3.0.2 READINESS VERIFICATIONS PASSED 100%!');

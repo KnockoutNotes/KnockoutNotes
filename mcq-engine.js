@@ -548,7 +548,7 @@
       return true;
     });
 
-    if (state.practiceIndex >= state.practiceList.length) {
+    if (state.practiceIndex < 0 || state.practiceIndex >= state.practiceList.length) {
       state.practiceIndex = 0;
     }
   }
@@ -626,8 +626,31 @@
     var accuracy = answeredCount ? Math.round((correctCount / answeredCount) * 100) : 0;
     var bookmarkedCount = Object.keys(state.bookmarks).length;
 
+    // In-progress test banner for interrupted/resumable exams
+    var resumeBannerHTML = "";
+    if (state.exam && state.exam.questions && state.exam.questions.length && !state.exam.isSubmitted) {
+      var examAnsCount = Object.keys(state.exam.userAnswers || {}).length;
+      var examTotalQ = state.exam.questions.length;
+      resumeBannerHTML = (
+        '<div class="kn-mcq-resume-banner" style="margin-bottom:20px; padding:16px 20px; background:linear-gradient(135deg, rgba(2,132,199,0.12), rgba(14,165,233,0.06)); border:1.5px solid rgba(2,132,199,0.3); border-radius:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">' +
+          '<div style="display:flex; align-items:center; gap:12px;">' +
+            '<span style="font-size:24px;">⏱️</span>' +
+            '<div>' +
+              '<div style="font-weight:800; font-size:15px; color:var(--text-primary,#0f172a);">In-Progress Mock Test Detected</div>' +
+              '<div style="font-size:13px; color:var(--text-secondary,#475569);">' + esc(state.exam.title) + ' · ' + examAnsCount + ' of ' + examTotalQ + ' answered</div>' +
+            '</div>' +
+          '</div>' +
+          '<div style="display:flex; gap:8px;">' +
+            '<button type="button" class="kn-mcq-btn kn-mcq-btn--primary" data-action="resume-exam" style="font-weight:700;">Resume Test →</button>' +
+            '<button type="button" class="kn-mcq-btn kn-mcq-btn--sm" data-action="discard-exam" style="color:var(--mcq-danger,#ef4444); background:transparent; border-color:rgba(239,68,68,0.3);">Discard</button>' +
+          '</div>' +
+        '</div>'
+      );
+    }
+
     // Hero & Stats
     var html = (
+      resumeBannerHTML +
       '<section class="kn-mcq-hero">' +
         '<div class="kn-mcq-hero-badges">' +
           '<span class="kn-mcq-badge kn-mcq-badge--ch">🏥 CRITICAL CARE</span>' +
@@ -747,6 +770,11 @@
           '<h2 class="kn-mcq-builder-title">⚡ Configure Custom NEET-SS / INI-SS Mock Test</h2>' +
           '<p class="kn-mcq-builder-sub">Select your target exam, chapters, question count, and time limits. Questions are randomized without repetition.</p>' +
         '</div>' +
+        (state.exam && state.exam.questions && state.exam.questions.length && !state.exam.isSubmitted ?
+          '<div style="margin-bottom:16px; padding:12px 16px; background:rgba(2,132,199,0.08); border:1px solid rgba(2,132,199,0.25); border-radius:8px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">' +
+            '<span style="font-size:13px; font-weight:700;">Notice: You have an in-progress test (' + esc(state.exam.title) + '). Creating a new test will replace it.</span>' +
+            '<button type="button" class="kn-mcq-btn kn-mcq-btn--sm kn-mcq-btn--primary" data-action="resume-exam">Resume Current Test →</button>' +
+          '</div>' : '') +
 
         '<div class="kn-mcq-builder-grid">' +
           // 1. Target Exam
@@ -1134,6 +1162,7 @@
           '<span style="font-weight:800; font-size:15px;">' + esc(exam.title) + '</span>' +
           '<span class="kn-mcq-badge">' + (exam.currentIndex + 1) + ' / ' + total + '</span>' +
           '<span class="kn-mcq-badge" style="background:var(--mcq-success-bg); color:var(--mcq-success);">' + answeredCount + ' Answered</span>' +
+          (exam.insufficientNotice ? '<span class="kn-mcq-badge" style="background:rgba(245,158,11,0.12); color:#d97706; font-size:11px;">' + esc(exam.insufficientNotice) + '</span>' : '') +
         '</div>' +
         '<div style="display:flex; align-items:center; gap:10px;">' +
           '<div class="kn-mcq-timer-badge">⏱ ' + timerStr + '</div>' +
@@ -1312,8 +1341,22 @@
   function renderReviewView() {
     var exam = state.exam;
     var list = exam.reviewList || exam.questions;
-    var total = list.length;
+    var total = list ? list.length : 0;
+    if (!total) {
+      return (
+        '<div class="kn-mcq-empty-box" style="margin:40px auto; max-width:540px;">' +
+          '<div class="kn-mcq-empty-icon">✅</div>' +
+          '<h3 class="kn-mcq-empty-title">No Questions in this Review Category</h3>' +
+          '<p class="kn-mcq-empty-desc">You answered all questions correctly in this section.</p>' +
+          '<div class="kn-mcq-empty-actions">' +
+            '<button type="button" class="kn-mcq-btn kn-mcq-btn--primary" data-action="go-results">← Back to Scorecard</button>' +
+            '<button type="button" class="kn-mcq-btn" data-action="review-all">Review All Questions</button>' +
+          '</div>' +
+        '</div>'
+      );
+    }
     var idx = exam.reviewIndex || 0;
+    if (idx >= total) idx = 0;
     var m = list[idx];
     var userPick = exam.userAnswers[m.id];
     var cIdx = correctIndex(m);
@@ -2388,10 +2431,15 @@
 
     clearExamTimer();
 
+    var insufficientNotice = (selectedQuestions.length < count)
+      ? ("Loaded all " + selectedQuestions.length + " MCQs available in selection (requested " + count + ").")
+      : null;
+
     state.exam = {
       id: "exam-" + Date.now(),
       title: (examTarget === "all" ? "NEET-SS & INI-SS" : examTarget) + " Mock Test (" + selectedQuestions.length + " Qs)",
       questions: selectedQuestions,
+      insufficientNotice: insufficientNotice,
       currentIndex: 0,
       userAnswers: {},
       markedForReview: {},
@@ -2403,28 +2451,41 @@
       results: null
     };
 
-    if (totalSeconds > 0) {
-      state.exam.timerInterval = setInterval(function () {
-        if (state.exam.timerRemaining > 0) {
-          state.exam.timerRemaining--;
-          var badge = container ? container.querySelector(".kn-mcq-timer-badge") : null;
-          if (badge) {
-            var mins = Math.floor(state.exam.timerRemaining / 60);
-            var secs = state.exam.timerRemaining % 60;
-            badge.textContent = "⏱ " + (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
-          }
-        } else {
-          clearInterval(state.exam.timerInterval);
-          submitExam(true);
-        }
-      }, 1000);
-    }
+    startExamTimer();
 
     state.viewMode = "exam";
     state.paletteOpen = false;
     persistExam();
     render();
     window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function startExamTimer() {
+    clearExamTimer();
+    if (!state.exam || state.exam.isSubmitted || state.exam.timerRemaining <= 0) return;
+    var lastTick = Date.now();
+    state.exam.timerInterval = setInterval(function () {
+      if (!state.exam || state.exam.isSubmitted) {
+        clearExamTimer();
+        return;
+      }
+      var now = Date.now();
+      var elapsed = Math.round((now - lastTick) / 1000);
+      if (elapsed >= 1) {
+        state.exam.timerRemaining = Math.max(0, state.exam.timerRemaining - elapsed);
+        lastTick = now;
+        var badge = container ? container.querySelector(".kn-mcq-timer-badge") : null;
+        if (badge) {
+          var mins = Math.floor(state.exam.timerRemaining / 60);
+          var secs = state.exam.timerRemaining % 60;
+          badge.textContent = "⏱ " + (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
+        }
+        if (state.exam.timerRemaining <= 0) {
+          clearExamTimer();
+          submitExam(true);
+        }
+      }
+    }, 1000);
   }
 
   function clearExamTimer() {
@@ -2739,6 +2800,30 @@
         state.viewMode = "results";
         render();
         window.scrollTo({ top: 0, behavior: "smooth" });
+      } else if (action === "resume-exam") {
+        triggerHaptic();
+        state.viewMode = "exam";
+        render();
+        startExamTimer();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else if (action === "discard-exam") {
+        triggerHaptic();
+        clearExamTimer();
+        state.exam = {
+          id: null,
+          title: "Custom Mock Test",
+          questions: [],
+          currentIndex: 0,
+          userAnswers: {},
+          markedForReview: {},
+          timerDuration: 0,
+          timerRemaining: 0,
+          timerInterval: null,
+          isSubmitted: false,
+          results: null
+        };
+        persistExam();
+        render();
       } else if (action === "practice-all") {
         triggerHaptic();
         clearExamTimer();

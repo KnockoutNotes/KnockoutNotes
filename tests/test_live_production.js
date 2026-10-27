@@ -31,7 +31,7 @@ async function verifyLive() {
     { p: '/calculators', expect: 'Calculators' },
     { p: '/page-common.css', expect: '#0369a1' },
     { p: '/script.js', expect: '_knCoreInitialized' },
-    { p: '/sw.js', expect: 'knockoutnotes-cache-v116' },
+    { p: '/sw.js', expect: 'knockoutnotes-cache-v117' },
     { p: '/calculators.js', expect: 'calculateDeltaGap' },
     { p: '/kn-site-search.js', expect: '_normCombined' },
     { p: '/sync-engine.js', expect: 'results.updated > 0' }
