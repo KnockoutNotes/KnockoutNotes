@@ -1,0 +1,261 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "KnockoutNotes Clinical Content & Question Review Register",
+  "lastUpdated": "2026-10-27",
+  "totalRecords": 23,
+  "records": [
+    {
+      "contentId": "SEPSIS-ABX-TIMING",
+      "topic": "Sepsis Antimicrobial Timing (4-tier stratification)",
+      "riskLevel": "High",
+      "sourceAndEdition": "Surviving Sepsis Campaign International Guidelines 2026; Prescott HC et al., Intensive Care Med 2026; Evans L et al., Crit Care Med 2021",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Verified 4-tier timing: immediate (<1 h) for shock/probable sepsis; <3 h for possible sepsis without shock; defer/monitor if unlikely. Clarified in study-data.js and content-config.js."
+    },
+    {
+      "contentId": "SEPSIS-BETA-LACTAM-PKPD",
+      "topic": "Beta-Lactam Extended/Continuous Infusion & PK/PD Dosing",
+      "riskLevel": "High",
+      "sourceAndEdition": "Surviving Sepsis Campaign 2026; BLING III Trial (JAMA 2024); Roberts JA et al., Lancet Infect Dis",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Verified initial loading dose followed by extended/continuous infusion to optimize fT > MIC in capillary leak and hyperdynamic states."
+    },
+    {
+      "contentId": "SEPSIS-FLUID-30ML-KG",
+      "topic": "Initial Resuscitation Fluid Volume (30 mL/kg Balanced Crystalloid)",
+      "riskLevel": "High",
+      "sourceAndEdition": "Surviving Sepsis Campaign 2026 / 2021; SMART Trial (NEJM 2018); CLOVERS Trial (NEJM 2023)",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Corrected wording: 30 mL/kg balanced crystalloid within 3 hours is a suggested starting point (conditional recommendation, low certainty of evidence), NOT a rigid universal mandate."
+    },
+    {
+      "contentId": "SEPSIS-PRESSOR-NE-VASO",
+      "topic": "Vasopressor Hierarchy (Norepinephrine, Vasopressin 0.03 U/min)",
+      "riskLevel": "High",
+      "sourceAndEdition": "Surviving Sepsis Campaign 2026 / 2021; VASST Trial (NEJM 2008); CENSER Trial (AJRCCM 2019)",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Verified Norepinephrine first-line (peripheral infusion safe in large vein pending CVC); Vasopressin 0.03 U/min fixed adjunct (not titrated); Dobutamine for myocardial dysfunction."
+    },
+    {
+      "contentId": "SEPSIS-MAP-TARGETS",
+      "topic": "Age-Stratified Perfusion Pressure Targets (Standard vs Older Adults)",
+      "riskLevel": "High",
+      "sourceAndEdition": "Surviving Sepsis Campaign 2026; 65 Trial (JAMA 2020); SEPSISPAM (NEJM 2014)",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Verified standard adult MAP target >= 65 mmHg; clarified initial conservative target 60-65 mmHg for older adults (>= 65 yrs) as a conditional recommendation with low certainty of evidence."
+    },
+    {
+      "contentId": "SEPSIS-HYDROCORTISONE",
+      "topic": "Adjunctive Corticosteroid Therapy in Refractory Septic Shock",
+      "riskLevel": "High",
+      "sourceAndEdition": "Surviving Sepsis Campaign 2026 / 2021; ADRENAL Trial (NEJM 2018); APROCCHSS Trial (NEJM 2018)",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Verified IV hydrocortisone 200 mg/day (50 mg q6h or continuous infusion) conditional for shock requiring NE >= 0.25 mcg/kg/min for >= 4h. ACTH stimulation test is not recommended."
+    },
+    {
+      "contentId": "SEPSIS-PROCALCITONIN",
+      "topic": "Biomarker Role of Procalcitonin (PCT) in Stewardship vs Initiation",
+      "riskLevel": "High",
+      "sourceAndEdition": "Surviving Sepsis Campaign 2026 / 2021; SAPS Trial (Lancet Infect Dis 2016); PRORATA Trial",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Verified recommendation AGAINST using PCT to decide whether to initiate antimicrobials; verified suggestion for PCT-guided de-escalation and cessation (drop >= 80% or < 0.25 mcg/L)."
+    },
+    {
+      "contentId": "SEPSIS-DE-RESUSCITATION",
+      "topic": "Active Fluid De-resuscitation Post-Shock Resolution",
+      "riskLevel": "High",
+      "sourceAndEdition": "Surviving Sepsis Campaign 2026; ROSE Framework; FACTT Trial (NEJM 2006)",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Verified conditional recommendation supporting active fluid removal (conservative fluid management, loop diuretics, or ultrafiltration) once hemodynamic stability is achieved."
+    },
+    {
+      "contentId": "SEPSIS-QSOFA-SCREENING",
+      "topic": "qSOFA Role in Sepsis Screening vs Diagnosis",
+      "riskLevel": "High",
+      "sourceAndEdition": "Surviving Sepsis Campaign 2026 / 2021; Sepsis-3 Consensus (Singer M et al., JAMA 2016)",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Verified recommendation AGAINST qSOFA as a single standalone screening tool due to low sensitivity; validated screening systems (NEWS, MEWS, SIRS) preferred."
+    },
+    {
+      "contentId": "SEPSIS-STRESS-ULCER",
+      "topic": "Stress Ulcer Prophylaxis (SUP) Indications in Sepsis",
+      "riskLevel": "High",
+      "sourceAndEdition": "Surviving Sepsis Campaign 2026 / 2021; PEPTIC Trial (JAMA 2020); REVISE Trial (NEJM 2024)",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Verified recommendation against routine SUP in sepsis without specific risk factors; indicated if mechanical ventilation >= 48 hours or coagulopathy is present."
+    },
+    {
+      "contentId": "SPOT-VASOPRESSOR-EXTRAVASATION",
+      "topic": "Peripheral Norepinephrine Safety & Extravasation Antidote",
+      "riskLevel": "High",
+      "sourceAndEdition": "Marino's The ICU Book 4th ed.; Surviving Sepsis Campaign 2021/2026; Loubani OM et al., Ann Pharmacother",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Verified peripheral administration safety criteria (vein >= antecubital/forearm, <= 72 h); verified extravasation rescue protocol: phentolamine 5-10 mg in 10-15 mL saline subcutaneous infiltration + topical 2% nitroglycerin paste."
+    },
+    {
+      "contentId": "SPOT-PAED-AIRWAY-EQUIPMENT",
+      "topic": "Pediatric Endotracheal Tube Sizing & Airway Anatomy",
+      "riskLevel": "High",
+      "sourceAndEdition": "A Practice of Anesthesia for Infants and Children (Cote CJ et al., 6th ed.), Table 42-6; APAGBI Guidelines",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Verified cuffed ETT formula: (Age/4) + 3.5; uncuffed Cole formula: (Age/4) + 4.0; depth formula: (Age/2) + 12 cm or ID x 3. Verified leak test at 15-25 cmH2O."
+    },
+    {
+      "contentId": "SPOT-ABG-DELTA-GAP",
+      "topic": "Arterial Blood Gas Delta-Gap & Mixed Acid-Base Interpretation",
+      "riskLevel": "High",
+      "sourceAndEdition": "Clinical Physiology of Acid-Base and Electrolyte Disorders (Rose BD 5th ed.); Marino's The ICU Book",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Verified delta-ratio [Delta AG / Delta HCO3]: < 0.4-0.8 (mixed high AG + normal AG acidosis); 0.8-1.2/1.6 (pure high AG acidosis); > 1.6-2.0 (mixed high AG acidosis + metabolic alkalosis or preexisting hyperbicarbonatemia)."
+    },
+    {
+      "contentId": "SPOT-CALC-COCKCROFT-GAULT",
+      "topic": "Cockcroft-Gault Creatinine Clearance Weight Rules",
+      "riskLevel": "Medium",
+      "sourceAndEdition": "Cockcroft DW, Gault MH, Nephron 1976; FDA Guidance for Pharmacokinetics in Patients with Impaired Renal Function",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2028-10-27",
+      "notes": "Verified weight selection logic: TBW if underweight (< IBW); IBW if normal weight; Adjusted Body Weight (ABW = IBW + 0.4*(TBW-IBW)) if obese (BMI >= 30 or TBW > 120% IBW). Female factor 0.85."
+    },
+    {
+      "contentId": "SPOT-CALC-MELD-NA-2016",
+      "topic": "MELD-Na (2016 OPTN/UNOS Consensus Revision)",
+      "riskLevel": "Medium",
+      "sourceAndEdition": "Kamath PS et al., Hepatology 2007; OPTN/UNOS Policy 9.1 Allocation of Deceased Donor Livers 2016",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2028-10-27",
+      "notes": "Verified 2016 OPTN formula: MELD(i) bounded [6, 40]; if MELD(i) > 11, MELD-Na = MELD(i) + 1.32*(137 - Na) - [0.033 * MELD(i) * (137 - Na)], with serum Na bounded [125, 137] mEq/L and final score bounded [6, 40]."
+    },
+    {
+      "contentId": "SPOT-VENT-PBW-ARDS",
+      "topic": "ARDS Lung-Protective Mechanical Ventilation & Predicted Body Weight",
+      "riskLevel": "High",
+      "sourceAndEdition": "ARDSNet (NEJM 2000); ESICM ARDS Guidelines (Intensive Care Med 2023)",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Verified tidal volume 4-8 mL/kg of PBW (never actual body weight); plateau pressure <= 30 cmH2O; driving pressure <= 14-15 cmH2O; prone positioning >= 16 h/day for PaO2/FiO2 < 150."
+    },
+    {
+      "contentId": "SPOT-PROPOFOL-PRIS",
+      "topic": "Propofol Infusion Syndrome (PRIS) Risk & Monitoring Limits",
+      "riskLevel": "High",
+      "sourceAndEdition": "Marino's The ICU Book; Krajcova A et al., Crit Care 2015; Mirrakhimov AE et al., Crit Care Res Pract",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Verified threshold warning: doses > 4-5 mg/kg/h (> 67-83 mcg/kg/min) or duration > 48 hours; monitoring markers: refractory metabolic lactic acidosis, hyperkalemia, hypertriglyceridemia, rhabdomyolysis, and Brugada-like ECG pattern."
+    },
+    {
+      "contentId": "MCQ-NEETSS-CC-2024-R029-R043",
+      "topic": "NEET-SS Critical Care 2024 Recall Shift Fix (15 Questions: R029-R043)",
+      "riskLevel": "High",
+      "sourceAndEdition": "NEET-SS Critical Care 2024 Exam Recall; Literature verified against ATS/IDSA, Miller's Anesthesia, Marino's ICU Book",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Corrected 1-index explanation displacement caused by dropped MACOCHA explanation. Replaced all 15 shifted explanations with dedicated, medically verified rationales."
+    },
+    {
+      "contentId": "MCQ-NEETSS-CC-2024-R046-R049",
+      "topic": "NEET-SS Critical Care 2024 Recall Shift Fix (4 Questions: R046-R049)",
+      "riskLevel": "High",
+      "sourceAndEdition": "NEET-SS Critical Care 2024 Exam Recall; Literature verified against SSC 2026, APACHE II (Knaus WA et al.), ARDSNet",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "Corrected 1-index explanation displacement caused by dropped Auto-PEEP explanation. Replaced all 4 shifted explanations with dedicated, medically verified rationales."
+    },
+    {
+      "contentId": "MCQ-DIRTY-OPTIONS-CLEANUP",
+      "topic": "Unparsed PDF Import Artifacts in Question Options (27 Items)",
+      "riskLevel": "Medium",
+      "sourceAndEdition": "KnockoutNotes MCQ Database (criticalCare/mcqs.json)",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "VERIFIED",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2028-10-27",
+      "notes": "Stripped unparsed text fragments ('\\nCorrect answer: ...', '\\nSubject: ...') from 27 question options, preserving correct option text, answer keys, and options array length."
+    },
+    {
+      "contentId": "PENDING-BLOOD-PURIFICATION",
+      "topic": "Extracorporeal Blood Purification & Hemoadsorption in Sepsis",
+      "riskLevel": "High",
+      "sourceAndEdition": "Surviving Sepsis Campaign 2026; CytoSorbents registry studies; EUPHAS 2 trial",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "CLINICIAN_REVIEW_PENDING",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "pending clinician review: SSC 2026 suggests against routine blood purification/hemoadsorption outside clinical trials. Topic requires subspecialist ICU clinician review of conflicting registry vs RCT data."
+    },
+    {
+      "contentId": "PENDING-PAED-SEPSIS-STEROIDS",
+      "topic": "Pediatric Sepsis Refractory Shock Hydrocortisone Dosing & Criteria",
+      "riskLevel": "High",
+      "sourceAndEdition": "Pediatric Surviving Sepsis Campaign Guidelines (Weiss SL et al., Pediatr Crit Care Med 2020)",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "CLINICIAN_REVIEW_PENDING",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2027-10-27",
+      "notes": "pending clinician review: Pediatric hydrocortisone dosing protocol (1-2 mg/kg/dose or continuous infusion in fluid/catecholamine refractory shock) flagged for pediatric critical care clinician audit."
+    },
+    {
+      "contentId": "PENDING-SELECTIVE-DECONTAMINATION",
+      "topic": "Selective Digestive Decontamination (SDD) in ICU Infection Control",
+      "riskLevel": "Medium",
+      "sourceAndEdition": "SuDDICU Trial (JAMA 2022); SSC 2026 statement on selective decontamination",
+      "lastReviewed": "2026-10-27",
+      "reviewStatus": "CLINICIAN_REVIEW_PENDING",
+      "reviewer": "Editorial Pass (Phase 1)",
+      "nextReviewDue": "2028-10-27",
+      "notes": "pending clinician review: European vs North American/Indian guidelines differ markedly regarding SDD in settings with high baseline AMR/ESBL prevalence. Pending critical care antimicrobial pharmacist review."
+    }
+  ]
+}

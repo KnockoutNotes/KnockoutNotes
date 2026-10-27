@@ -341,6 +341,30 @@
   function getItemSubsections(item) {
     const isDrug = !item.sections;
     if (isDrug) {
+      if (item.studySheet) {
+        return [
+          { id: "sec-quick-ref", label: "Quick Reference" },
+          { id: "sec-identity", label: "1. Drug Identity" },
+          { id: "sec-moa", label: "2. Mechanism of Action" },
+          { id: "sec-pd", label: "3. Pharmacodynamics" },
+          { id: "sec-pk", label: "4. Pharmacokinetics" },
+          { id: "sec-kinetics", label: "5. Half-Life & Kinetics" },
+          { id: "sec-dosage", label: "6. Dose & Administration" },
+          { id: "sec-timeProfile", label: "7. Time Profile" },
+          { id: "sec-physio", label: "8. Physiological Effects" },
+          { id: "sec-indications", label: "9. Clinical Indications" },
+          { id: "sec-adverse", label: "10. Adverse Effects" },
+          { id: "sec-interactions", label: "11. Drug Interactions" },
+          { id: "sec-specialPopulations", label: "12. Special Populations" },
+          { id: "sec-monitoring", label: "13. Clinical Monitoring" },
+          { id: "sec-chemistry", label: "14. Chemistry & Structure" },
+          { id: "sec-comparisons", label: "15. Drug Comparisons" },
+          { id: "sec-evidence", label: "16. Landmark Evidence" },
+          { id: "sec-pearls", label: "17. Exam Pearls" },
+          { id: "sec-revision", label: "18. Revision & Testing" },
+          { id: "sec-references", label: "References" }
+        ];
+      }
       return [
         { id: "sec-overview", label: "Overview & Indications" },
         { id: "sec-structure", label: "Chemical Structure" },
@@ -2319,6 +2343,164 @@
     ` : "";
 
     if (isDrug) {
+      if (item.studySheet) {
+        // --- UNIVERSAL DRUG STUDY SHEET FORMAT (18 SECTIONS + QUICK REF) ---
+        let quickRefCardHTML = "";
+        if (item.quickRef) {
+          quickRefCardHTML = `
+            <div class="ron-card ron-notes-card" id="sec-quick-ref">
+              <div class="ron-card-header">
+                <h3 class="ron-card-title" style="text-transform:uppercase; font-size:15px; letter-spacing:0.04em; color:var(--ron-accent); margin:0;">
+                  ⚡ QUICK NUMERICAL REFERENCE TABLE
+                </h3>
+                <span class="ron-card-scale-icon">${ICONS.scale}</span>
+              </div>
+              <div class="ron-prose" style="margin-top:14px;">
+                <div class="ron-table-wrap">
+                  <table class="ron-clinical-table" style="width:100%;">
+                    <thead>
+                      <tr>
+                        <th style="width:28%;">Pharmacological Parameter</th>
+                        <th>Clinical Value &amp; Specification</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><strong>Dose &amp; Route</strong></td><td>${esc(item.quickRef.doseRoute || '—')}</td></tr>
+                      <tr><td><strong>Onset, Peak &amp; Duration</strong></td><td>${esc(item.quickRef.onsetPeakDuration || '—')}</td></tr>
+                      <tr><td><strong>Elimination T½ &amp; CSHT</strong></td><td>${esc(item.quickRef.halfLifeCsht || '—')}</td></tr>
+                      <tr><td><strong>Vd &amp; Clearance</strong></td><td>${esc(item.quickRef.vdClearance || '—')}</td></tr>
+                      <tr><td><strong>Bioavailability &amp; Protein Binding</strong></td><td>${esc(item.quickRef.bioavailabilityProteinBinding || '—')}</td></tr>
+                      <tr><td><strong>Metabolism &amp; Active Metabolites</strong></td><td>${esc(item.quickRef.metabolismMetabolites || '—')}</td></tr>
+                      <tr><td><strong>Excretion &amp; Dose Adjustment</strong></td><td>${esc(item.quickRef.excretionDoseAdjustment || '—')}</td></tr>
+                      <tr><td><strong>Therapeutic Range &amp; Antidote</strong></td><td>${esc(item.quickRef.therapeuticAntidote || '—')}</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        const standardSections = [
+          { id: "sec-identity", title: "1. Drug Identity and Classification", text: item.studySheet.identity },
+          { id: "sec-moa", title: "2. Mechanism of Action & Receptor Targets", text: item.studySheet.moa },
+          { id: "sec-pd", title: "3. Pharmacodynamics & Dose-Response", text: item.studySheet.pd },
+          { id: "sec-pk", title: "4. Pharmacokinetics & Distribution", text: item.studySheet.pk },
+          { id: "sec-kinetics", title: "5. Half-Life, CSHT & Elimination Kinetics", text: item.studySheet.kinetics },
+          { id: "sec-dosage", title: "6. Dose and Administration Guidelines", text: item.studySheet.dosage },
+          { id: "sec-timeProfile", title: "7. Time Profile & Clinical Duration", text: item.studySheet.timeProfile },
+          { id: "sec-physio", title: "8. Physiological Organ-System Effects", text: item.studySheet.physio },
+          { id: "sec-indications", title: "9. Clinical Indications & Applications", text: item.studySheet.indications },
+          { id: "sec-adverse", title: "10. Adverse Effects, Toxicity & Warnings", text: item.studySheet.adverse },
+          { id: "sec-interactions", title: "11. Drug Interactions & Toxicity Management", text: item.studySheet.interactions },
+          { id: "sec-specialPopulations", title: "12. Special Populations & Organ Impairment", text: item.studySheet.specialPopulations },
+          { id: "sec-monitoring", title: "13. Clinical & Therapeutic Monitoring", text: item.studySheet.monitoring },
+          { id: "sec-chemistry", title: "14. Chemistry, Formulation & Properties", text: item.studySheet.chemistry },
+          { id: "sec-comparisons", title: "15. Drug Comparisons & Clinical Alternatives", text: item.studySheet.comparisons },
+          { id: "sec-evidence", title: "16. Landmark Evidence & Guidelines", text: item.studySheet.evidence },
+          { id: "sec-pearls", title: "17. Examination Pearls & High-Yield Traps", text: item.studySheet.pearls },
+          { id: "sec-revision", title: "18. Revision & Practice Questions", text: item.studySheet.revision }
+        ];
+
+        const stdCardsHTML = standardSections.filter(s => s.text).map(s => {
+          if (s.id === "sec-chemistry") {
+            const rec2d = window.KN_STRUCTURES && window.KN_STRUCTURES[item.id];
+            const has3d = window.KN_STRUCTURES_3D && window.KN_STRUCTURES_3D[item.id];
+            if (rec2d || has3d) {
+              return `
+                <div class="ron-card ron-notes-card" id="${s.id}">
+                  <div class="ron-card-header">
+                    <h3 class="ron-card-title" style="text-transform:uppercase; font-size:15px; letter-spacing:0.04em; color:var(--ron-accent); margin:0;">
+                      ${esc(s.title)}
+                    </h3>
+                    <span class="ron-card-scale-icon">${ICONS.scale}</span>
+                  </div>
+                  <div class="ron-prose ron-structure-tight-prose" style="margin-top:14px;">
+                    <div class="ron-structure-float-wrap">
+                      ${rec2d ? `
+                        <div class="ron-structure-tight-card">
+                          <div class="ron-structure-tight-head">
+                            <span class="ron-structure-badge">📐 2D Structure</span>
+                            ${rec2d.formula ? `<span class="ron-structure-formula-chip">${esc(rec2d.formula)}</span>` : ''}
+                          </div>
+                          <div class="ron-structure-svg-compact">
+                            ${rec2d.svg}
+                          </div>
+                        </div>
+                      ` : ''}
+                      ${has3d ? `
+                        <div class="ron-structure-tight-card">
+                          <div class="ron-structure-tight-head">
+                            <span class="ron-structure-badge">🔄 3D Conformer</span>
+                            <span class="ron-structure-3d-hint">Rotate 360°</span>
+                          </div>
+                          <div class="st-molecule-viewer ron-structure-3d-compact" data-drug="${esc(item.id)}">
+                            <div class="st-molecule-placeholder" style="display:flex;align-items:center;justify-content:center;height:100%;font-size:11px;color:var(--ron-text-hint);">Loading 3D...</div>
+                          </div>
+                        </div>
+                      ` : ''}
+                    </div>
+                    ${formatProseLines(s.text)}
+                  </div>
+                </div>
+              `;
+            }
+          }
+
+          const classificationCallout = (s.id === "sec-identity" && item.classification) ? `
+            <div class="ron-classification-box">
+              <div class="ron-classification-box-header">
+                <span class="ron-classification-box-icon">🏷️</span>
+                <span class="ron-classification-box-label">LATEST &amp; STANDARD PHARMACOLOGICAL CLASSIFICATION</span>
+              </div>
+              <div class="ron-classification-box-body">
+                <div class="ron-classification-primary">${esc(item.classification.split('•')[0].trim())}</div>
+                ${item.classification.includes('•') ? `<div class="ron-classification-secondary">${esc(item.classification.split('•').slice(1).join('•').trim())}</div>` : ''}
+              </div>
+            </div>
+          ` : "";
+
+          let monographFigureHTML = "";
+          if (s.id === "sec-identity" && (item.image || item.images)) {
+            if (Array.isArray(item.images)) {
+              monographFigureHTML = item.images.map(renderFigureItem).join("");
+            } else if (item.image) {
+              monographFigureHTML = renderFigureItem(item.image);
+            }
+          }
+
+          return `
+            <div class="ron-card ron-notes-card" id="${s.id}">
+              <div class="ron-card-header">
+                <h3 class="ron-card-title" style="text-transform:uppercase; font-size:15px; letter-spacing:0.04em; color:var(--ron-accent); margin:0;">
+                  ${esc(s.title)}
+                </h3>
+                <span class="ron-card-scale-icon">${ICONS.scale}</span>
+              </div>
+              <div class="ron-prose ron-figure-tight-prose" style="margin-top:14px;">
+                ${classificationCallout}
+                ${monographFigureHTML}
+                ${formatProseLines(s.text)}
+              </div>
+            </div>
+          `;
+        }).join("") + (item.references && item.references.length ? `
+          <div class="ron-card ron-notes-card" id="sec-references">
+            <div class="ron-card-header">
+              <h3 class="ron-card-title" style="text-transform:uppercase; font-size:15px; letter-spacing:0.04em; color:var(--ron-accent); margin:0;">
+                References &amp; Prescribing Guidelines
+              </h3>
+              <span class="ron-card-scale-icon">${ICONS.scale}</span>
+            </div>
+            <ul style="margin:14px 0 0; padding-left:22px; font-size:14px; color:var(--ron-text-body); line-height:1.8;">
+              ${item.references.map((r) => `<li style="margin-bottom:8px;">📌 ${highlightKeyValues(esc(r))}</li>`).join("")}
+            </ul>
+          </div>
+        ` : "");
+
+        return sourceCalloutHTML + quickRefCardHTML + stdCardsHTML;
+      }
+
       const drugSections = [
         { id: "sec-overview", title: "Overview & Clinical Indications", text: (item.tagline ? item.tagline + "\n\n" : "") + (item.desc || (item.brand ? `Brand: ${item.brand}\nClass: ${item.classification || ''}` : '')) },
         { id: "sec-structure", title: "Chemical Structure & Formulation", text: item.structure },
@@ -2823,7 +3005,7 @@
   let lastFocusedElementBeforeReadingMode = null;
   let activeReadingTheme = "light";
   let activeReadingFontSize = 17;
-  let activeReadingWidth = "narrow"; // "narrow" (760px), "standard" (900px), "wide" (1100px)
+  let activeReadingWidth = "wide"; // "narrow" (760px), "standard" (900px), "wide" (1200px)
   let activeReadingFontFamily = "sans"; // "sans", "serif", "mono"
   let activeReadingLineHeight = "comfortable"; // "comfortable" (1.65), "relaxed" (1.82)
   let activeReadingAlign = "left"; // "left", "justify", "center", "right"
@@ -2878,7 +3060,7 @@
     overlay.setAttribute("aria-modal", "true");
     overlay.setAttribute("aria-label", "Full-Screen Reading Mode");
     overlay.setAttribute("data-reading-theme", "light");
-    overlay.setAttribute("data-reading-width", "narrow");
+    overlay.setAttribute("data-reading-width", "wide");
     overlay.setAttribute("data-reading-font", "sans");
     overlay.setAttribute("data-reading-line-height", "comfortable");
 
@@ -3006,7 +3188,7 @@
           </button>
           <button type="button" class="ron-rm-segment-btn" data-rm-width-val="wide" role="radio" aria-checked="false">
             <strong>Wide</strong>
-            <span>1100px</span>
+            <span>1200px</span>
           </button>
         </div>
       </div>
@@ -3291,10 +3473,12 @@
     }
   }
 
-  function setReadingWidth(width) {
-    if (!["narrow", "standard", "wide"].includes(width)) width = "narrow";
+  function setReadingWidth(width, persist = true) {
+    if (!["narrow", "standard", "wide"].includes(width)) width = "wide";
     activeReadingWidth = width;
-    safeStorageSet(RM_STORAGE.width, width);
+    if (persist) {
+      safeStorageSet(RM_STORAGE.width, width);
+    }
     const overlay = document.getElementById("ronReadingModeOverlay");
     if (overlay) {
       overlay.setAttribute("data-reading-width", width);
@@ -3606,8 +3790,16 @@
     const savedSize = parseInt(safeStorageGet(RM_STORAGE.fontSize, "17"), 10);
     setReadingFontSize(savedSize);
 
-    const savedWidth = safeStorageGet(RM_STORAGE.width, "narrow");
-    setReadingWidth(savedWidth);
+    const storedWidth = safeStorageGet(RM_STORAGE.width, null);
+    let targetWidth;
+    if (storedWidth && ["narrow", "standard", "wide"].includes(storedWidth)) {
+      targetWidth = storedWidth;
+    } else {
+      const isMobileLandscape = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(orientation: landscape) and (max-height: 600px), (orientation: landscape) and (max-width: 900px)").matches;
+      const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1024;
+      targetWidth = (isDesktop || isMobileLandscape) ? "wide" : "standard";
+    }
+    setReadingWidth(targetWidth, !!storedWidth);
 
     const savedFont = safeStorageGet(RM_STORAGE.fontFamily, "sans");
     setReadingFontFamily(savedFont);
