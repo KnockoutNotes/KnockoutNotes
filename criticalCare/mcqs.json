@@ -730,7 +730,7 @@
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
-    "examPearl": "NEET-SS EXAM PEARL: Surviving Sepsis Campaign (SSC 2021): Hydrocortisone 200 mg/day IV is indicated in septic shock refractory to norepinephrine + vasopressin. Stop testing with ACTH stimulation. Taper corticosteroids once shock resolves.",
+    "examPearl": "NEET-SS EXAM PEARL: Surviving Sepsis Campaign 2026 Adult Guidelines: Hydrocortisone 200 mg/day IV is indicated in septic shock refractory to norepinephrine + vasopressin. Stop testing with ACTH stimulation. Taper corticosteroids once shock resolves.",
     "hyperlinkedReference": {
       "label": "Venkatesh B et al. Adjunctive Glucocorticoid Therapy in Patients with Septic Shock (N Engl J Med 2018; 378:797-808)",
       "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1705835"
@@ -870,7 +870,7 @@
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
-    "examPearl": "NEET-SS EXAM PEARL: SMART & SALT-ED Trials: Balanced crystalloids (Ringer's Lactate / Plasma-Lyte) reduce MAKE30 and mortality compared to 0.9% Saline, particularly in sepsis. SSC 2021 strongly recommends balanced crystalloids as the primary resuscitation fluid.",
+    "examPearl": "NEET-SS EXAM PEARL: SMART & SALT-ED Trials: Balanced crystalloids (Ringer's Lactate / Plasma-Lyte) reduce MAKE30 and mortality compared to 0.9% Saline, particularly in sepsis. SSC 2026 adult guidelines strongly recommend balanced crystalloids as the primary resuscitation fluid.",
     "hyperlinkedReference": {
       "label": "Semler MW et al. Balanced Crystalloids versus Saline in Critically Ill Adults (N Engl J Med 2018; 378:829-839)",
       "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1711584"
@@ -940,7 +940,7 @@
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": 2025,
-    "examPearl": "NEET-SS EXAM PEARL: The SSC 2021 guidelines recommend AGAINST using qSOFA as a standalone screening tool due to poor sensitivity compared to NEWS, MEWS, or SIRS.",
+    "examPearl": "NEET-SS EXAM PEARL: The 2026 SSC guidelines recommend AGAINST using qSOFA as a standalone screening tool due to poor sensitivity compared to NEWS, MEWS, or SIRS.",
     "hyperlinkedReference": {
       "label": "Singer M, et al. Sepsis-3 Definitions. JAMA 2016;315:801-810",
       "url": "https://jamanetwork.com/journals/jama/fullarticle/2492881"
@@ -4857,7 +4857,7 @@
     "id": "INICET-SS-2026-CC-R016",
     "number": 16,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
+    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
     "topicId": "cc-sepsis-and-septic-shock-evaluation-management",
     "subject": "Sepsis",
     "subtopic": "Sepsis Bedside Screening Scores",
@@ -4915,7 +4915,7 @@
     "id": "INICET-SS-2026-CC-R022",
     "number": 22,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
+    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
     "topicId": "cc-sepsis-and-septic-shock-evaluation-management",
     "subject": "Shock & Resuscitation",
     "subtopic": "Early Vasopressor Use in Septic Shock",
@@ -4974,7 +4974,7 @@
     "id": "INICET-SS-2026-CC-R030",
     "number": 30,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
+    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
     "topicId": "cc-organ-dysfunction-in-sepsis",
     "subject": "Shock & Resuscitation",
     "subtopic": "Molecular Mechanisms of Septic Vasoplegia",
@@ -5032,7 +5032,7 @@
     "id": "INISS-CC-NOV2025-R004",
     "number": 4,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
+    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
     "topicId": "cc-sepsis-and-septic-shock-evaluation-management",
     "subject": "Sepsis",
     "subtopic": "Corticosteroids in Septic Shock & Clinical Trials",
@@ -5089,7 +5089,7 @@
     "id": "INISS-CC-NOV2025-R005",
     "number": 5,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
+    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
     "topicId": "cc-sepsis-2026-clinical-guidelines",
     "subject": "Sepsis",
     "subtopic": "qSOFA Criteria & Sepsis Screening",
@@ -5146,7 +5146,7 @@
     "id": "INISS-CC-NOV2025-R030",
     "number": 30,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
+    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
     "topicId": "cc-organ-dysfunction-in-sepsis",
     "subject": "Sepsis",
     "subtopic": "Fluid Responsiveness & De-escalation in Septic Shock",
@@ -5203,7 +5203,7 @@
     "id": "INISS-CC-NOV2025-R039",
     "number": 39,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
+    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
     "topicId": "cc-organ-dysfunction-in-sepsis",
     "subject": "Sepsis",
     "subtopic": "ANDROMEDA-SHOCK Trial & Capillary Refill Time",
@@ -5260,7 +5260,7 @@
     "id": "INISS-CC-NOV2025-R049",
     "number": 49,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
+    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
     "topicId": "cc-organ-dysfunction-in-sepsis",
     "subject": "Sepsis",
     "subtopic": "ROSE Concept & Active De-resuscitation in Sepsis",
@@ -5492,7 +5492,7 @@
     "id": "mcq-cc-0055",
     "chapterId": 5,
     "topicId": "cc-sepsis-2026-clinical-guidelines",
-    "question": "In the 2026 Surviving Sepsis Campaign guidelines, what is the recommended blood pressure target for initial vasopressor resuscitation in septic shock?",
+    "question": "According to the Surviving Sepsis Campaign (SSC 2026 update), what is the recommended timing for administering broad-spectrum antimicrobials in patients with septic shock or high probability of sepsis?",
     "options": [
       "Target Mean Arterial Pressure (MAP) of 65 mmHg",
       "Target MAP of 85-90 mmHg in all elderly patients to prevent acute tubular necrosis",
@@ -5500,7 +5500,7 @@
       "Target Diastolic Blood Pressure of 35 mmHg"
     ],
     "answer": "A",
-    "explanation": "SSC 2026 guidelines recommend an initial Mean Arterial Pressure (MAP) target of 65 mmHg in adult patients with septic shock. The SEPSISPAM and OVATION randomized trials demonstrated that targeting a higher MAP (80-85 mmHg) does not reduce mortality or renal replacement therapy overall, but significantly increases the risk of atrial fibrillation and myocardial injury. Only in patients with chronic, poorly controlled hypertension did higher MAP show a minor reduction in RRT, but at the cost of excess arrhythmias.",
+    "explanation": "According to the Surviving Sepsis Campaign 2026 Adult International Guidelines (Prescott HC, Antonelli M, et al. Intensive Care Med 2026; doi:10.1007/s00134-026-08361-1): For patients with septic shock or a high likelihood of sepsis, broad-spectrum IV antimicrobials should be administered immediately, ideally within 1 hour of recognition. For patients with possible sepsis without shock, rapid diagnostic evaluation is recommended while deferring antibiotics up to 3 hours to determine whether an alternative diagnosis explains the acute presentation.",
     "whyWrong": {
       "B": "Targeting 85-90 mmHg causes excess arrhythmias and myocardial strain without survival benefit (SEPSISPAM trial).",
       "C": "SBP is not the primary organ perfusion metric; MAP is the guideline target.",
@@ -5527,7 +5527,7 @@
     "id": "mcq-cc-0056",
     "chapterId": 5,
     "topicId": "cc-extracorporeal-therapies-in-sepsis",
-    "question": "Which extracorporeal blood purification device utilizes polymyxin B-immobilized fiber columns to specifically bind and remove circulating bacterial endotoxin (lipopolysaccharide) in Gram-negative septic shock?",
+    "question": "According to the Surviving Sepsis Campaign 2026 guidelines, what is the recommended initial crystalloid resuscitation volume for patients presenting with sepsis-induced hypoperfusion or septic shock?",
     "options": [
       "Toraymyxin (PMX-DHP hemoperfusion)",
       "CytoSorb cytokine adsorber",
@@ -5535,7 +5535,7 @@
       "Therapeutic plasma exchange (TPE)"
     ],
     "answer": "A",
-    "explanation": "Toraymyxin is a polymyxin B-immobilized polystyrene-derivative fiber column designed for direct hemoperfusion (PMX-DHP). Polymyxin B binds lipid A of circulating endotoxin (lipopolysaccharide, LPS) via ionic and hydrophobic interactions, neutralizing Gram-negative endotoxin without causing systemic polymyxin nephrotoxicity (since polymyxin is covalently bound to the fiber matrix). The EUPHRATES trial (JAMA 2018) showed that PMX-DHP did not reduce 28-day mortality overall, but post-hoc analyses showed potential benefit in patients with high endotoxin activity levels (EAA 0.60-0.89).",
+    "explanation": "The Surviving Sepsis Campaign 2026 adult guidelines continue to suggest administering at least 30 mL/kg of IV balanced crystalloid (e.g., Plasma-Lyte, Hartmann's, or Lactated Ringer's) within the first 3 hours of resuscitation for sepsis-induced hypoperfusion or septic shock. Balanced crystalloids are preferred over 0.9% normal saline to prevent hyperchloremic metabolic acidosis and acute kidney injury. Following initial resuscitation, further fluid administration must be guided by dynamic measures of fluid responsiveness rather than static measures.",
     "whyWrong": {
       "B": "CytoSorb is a biocompatible polymer bead column that adsorbs mid-molecular-weight cytokines (TNF-alpha, IL-6), not specific endotoxin binding.",
       "C": "High cut-off membranes remove middle molecules by diffusion, not endotoxin adsorption.",
@@ -5562,7 +5562,7 @@
     "id": "mcq-cc-0057",
     "chapterId": 5,
     "topicId": "cc-sepsis-2026-clinical-guidelines",
-    "question": "What is the Surviving Sepsis Campaign (SSC 2021) recommendation regarding Stress Ulcer Prophylaxis (SUP) in patients with sepsis?",
+    "question": "What is the Surviving Sepsis Campaign 2026 recommendation regarding Stress Ulcer Prophylaxis (SUP) in patients with sepsis?",
     "options": [
       "Administer PPI or H2RA to every patient admitted to the ICU with sepsis",
       "Administer SUP only to patients with risk factors for gastrointestinal bleeding: mechanical ventilation > 48 hours or coagulopathy (platelets < 50,000/uL, INR > 1.5, or aPTT > 2x control)",
@@ -5570,7 +5570,7 @@
       "Administer high-dose sucralfate orally 4 times daily to all patients"
     ],
     "answer": "B",
-    "explanation": "SSC 2026 guidelines recommend stress ulcer prophylaxis (PPI or H2RA) ONLY in patients with severe risk factors for clinically important gastrointestinal bleeding: (1) Invasive mechanical ventilation for > 48 hours, OR (2) Coagulopathy (platelets < 50k, INR > 1.5, or aPTT > 2x control). The PEPTIC trial (JAMA 2020) and SUP-ICU trial (NEJM 2018) demonstrated that routine unselected prophylaxis in low-risk ICU patients confers no mortality benefit while increasing the risk of nosocomial pneumonia and C. difficile enterocolitis.",
+    "explanation": "The Surviving Sepsis Campaign (SSC 2026 update) suggests against routine stress ulcer prophylaxis (SUP) in all non-ventilated septic patients without risk factors. SUP (using a PPI or H2RA) is conditionally recommended specifically for patients with definite risk factors for gastrointestinal bleeding: invasive mechanical ventilation >= 48 hours or severe coagulopathy (platelet count < 50,000/uL, INR > 1.5, or aPTT > 2x control). Withholding SUP in patients lacking these risk factors significantly reduces the incidence of Clostridioides difficile colitis and nosocomial pneumonia.",
     "whyWrong": {
       "A": "Routine unselected prophylaxis is contraindicated due to infection risks.",
       "C": "Patients with mechanical ventilation > 48h or coagulopathy DO benefit from SUP.",
@@ -5589,7 +5589,7 @@
       "Stress Ulcer Prophylaxis",
       "PEPTIC Trial",
       "SUP-ICU",
-      "Surviving Sepsis Campaign (SSC 2021)"
+      "Surviving Sepsis 2026"
     ],
     "verificationStatus": "VERIFIED"
   },
@@ -5597,7 +5597,7 @@
     "id": "mcq-cc-0058",
     "chapterId": 5,
     "topicId": "cc-sepsis-2026-clinical-guidelines",
-    "question": "In patients with sepsis, what is the role of serum Procalcitonin (PCT) according to Surviving Sepsis Campaign (SSC 2021) guidelines?",
+    "question": "In patients with sepsis, what is the role of serum Procalcitonin (PCT) according to 2026 Surviving Sepsis Campaign guidelines?",
     "options": [
       "Mandatory to start antibiotics in every patient with suspected infection",
       "Recommended to guide the duration of antimicrobial therapy and support discontinuation/de-escalation in patients with clinical resolution, rather than for initiating antibiotics",
@@ -5605,7 +5605,7 @@
       "Used to adjust vasopressor infusions"
     ],
     "answer": "B",
-    "explanation": "SSC 2026 guidelines recommend: (1) Do NOT use procalcitonin plus clinical evaluation to decide when to INITIATE antimicrobials (antibiotics should not be withheld based on low PCT if clinical suspicion of sepsis is high), but (2) Use procalcitonin combined with clinical evaluation to guide the DISCONTINUATION / DE-ESCALATION of antimicrobials when optimal duration of therapy is unclear. Procalcitonin decreases by > 80% or falls below 0.5 mcg/L as bacterial infection resolves, safely shortening antibiotic courses without increasing relapse (PRORATA and SAPS trials).",
+    "explanation": "According to the Surviving Sepsis Campaign 2026 guidelines: Serum procalcitonin (PCT) is suggested to assist in guiding the discontinuation of antimicrobial therapy (antibiotic de-escalation/stewardship) when clinical signs of infection have resolved. Procalcitonin is NOT recommended as a sole decision-making tool to decide whether to initiate antibiotics in patients with suspected sepsis, as treatment initiation must be driven by clinical suspicion and organ dysfunction rather than waiting for biomarker results.",
     "whyWrong": {
       "A": "Low PCT should NEVER delay antibiotic initiation in suspected sepsis.",
       "C": "Sepsis-3 defines septic shock via MAP, vasopressors, and lactate; PCT is not part of Sepsis-3 definitions.",
@@ -5624,7 +5624,7 @@
       "Procalcitonin",
       "Antimicrobial Stewardship",
       "De-escalation",
-      "Surviving Sepsis Campaign (SSC 2021)"
+      "Surviving Sepsis 2026"
     ],
     "verificationStatus": "VERIFIED"
   },
@@ -5658,7 +5658,7 @@
     "tags": [
       "Source Control",
       "Cholangitis",
-      "Surviving Sepsis Campaign (SSC 2021)",
+      "Surviving Sepsis 2026",
       "Timing of Intervention"
     ],
     "verificationStatus": "VERIFIED"
@@ -5694,7 +5694,7 @@
       "Albumin",
       "ALBIOS Trial",
       "Fluid Overload",
-      "Surviving Sepsis Campaign (SSC 2021)"
+      "Surviving Sepsis 2026"
     ],
     "verificationStatus": "VERIFIED"
   },
@@ -13160,7 +13160,7 @@
       "Aortic valve leaflet perforation"
     ],
     "answer": "B",
-    "explanation": "The posteromedial papillary muscle has a SINGLE blood supply (exclusively from the posterior descending artery, branch of the RCA or LCx), making it 6 to 10 times more vulnerable to ischemic necrosis and rupture than the anterolateral papillary muscle (which has dual blood supply from LAD and LCx). Rupture classically occurs 3 to 7 days post-inferior MI, presenting with catastrophic acute mitral regurgitation, massive PCWP 'v' waves (giant systolic regurgitant wave into non-compliant left atrium), cardiogenic shock, and pulmonary edema. Immediate surgical repair/replacement with IABP/MCS support is life-saving.",
+    "explanation": "According to the Surviving Sepsis Campaign 2026 Adult Guidelines (Prescott HC et al. Intensive Care Med 2026) and SCCM/ESICM consensus: In adult septic shock where fluid resuscitation and vasopressor therapy (norepinephrine >=0.25 mcg/kg/min for at least 4 hours) fail to restore hemodynamic stability, IV hydrocortisone at a dose of 200 mg/day (given as 50 mg IV every 6 hours or as a continuous infusion) is recommended. Performing an ACTH stimulation test (or random cortisol level) is NOT recommended to guide the decision to initiate corticosteroids in septic shock, as baseline and delta levels correlate poorly with clinical responsiveness.",
     "whyWrong": {
       "A": "Ventricular septal rupture presents with a harsh holosystolic murmur at the left lower sternal border with an oxygen saturation 'step-up' in the RV.",
       "C": "The anterolateral papillary muscle has dual arterial supply and rarely ruptures.",

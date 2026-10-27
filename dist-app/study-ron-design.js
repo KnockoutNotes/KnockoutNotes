@@ -588,7 +588,7 @@
     "obstructive-shock-icu": 4,
     "vasopressors-inotropes-titration-protocols": 4,
 
-    // Ch 5: Sepsis, Septic Shock & Host Response (SSC Guidelines)
+    // Ch 5: Sepsis, Septic Shock & Host Response (2026 SSC)
     "septic-shock-resuscitation": 5,
     "sepsis3-hour1-bundle-resuscitation": 5,
 

@@ -46,8 +46,8 @@
           { label: "4 mg in 250 mL (16 mcg/mL) — Peripheral / Standard Bag", mg: 4, ml: 250, concMcgMl: 16 },
           { label: "8 mg in 250 mL (32 mcg/mL) — Concentrated Infusion Bag", mg: 8, ml: 250, concMcgMl: 32 }
         ],
-        referenceDosingRange: "Initial: 0.02 – 0.05 mcg/kg/min (or 2 – 4 mcg/min). Titrate to MAP ≥ 65 mmHg. Usual maintenance: 0.01 – 1.0 mcg/kg/min. High dose: > 0.25 mcg/kg/min (consider adjunct vasopressin / inotrope).",
-        guidelineCitation: "Surviving Sepsis Campaign (SSC) 2021; UK Intensive Care Society (ICS) Infusion Standards 2023; DailyMed FDA."
+        referenceDosingRange: "Initial: 0.02 – 0.05 mcg/kg/min (or 2 – 4 mcg/min). Titrate to MAP ≥ 65 mmHg (or 60–65 mmHg in older adults ≥65 yrs per SSC 2026). Usual maintenance: 0.01 – 1.0 mcg/kg/min. High dose: > 0.25 mcg/kg/min (consider adjunct vasopressin / inotrope / hydrocortisone).",
+        guidelineCitation: "Surviving Sepsis Campaign (SSC) Adult Guidelines 2026 (Prescott HC et al. Intensive Care Med 2026); UK Intensive Care Society (ICS) Infusion Standards 2023; DailyMed FDA."
       },
       vasopressin: {
         name: "Vasopressin (AVP / ADH)",
@@ -59,7 +59,7 @@
           { label: "40 units in 100 mL (0.4 unit/mL) — Standard Infusion Bag", units: 40, ml: 100, concUnitsMl: 0.4 }
         ],
         referenceDosingRange: "Fixed-dose adjunct in septic shock: 0.03 units/min (1.8 units/hr). Range: 0.01 – 0.04 units/min (0.6 – 2.4 units/hr). Do NOT titrate rapidly. Do NOT convert to micrograms.",
-        guidelineCitation: "Surviving Sepsis Campaign (SSC) 2021; VASST Trial (Russell JA et al. NEJM 2008; 358:877-887)."
+        guidelineCitation: "Surviving Sepsis Campaign (SSC) Adult Guidelines 2026; VASST Trial (Russell JA et al. NEJM 2008; 358:877-887)."
       },
       dobutamine: {
         name: "Dobutamine",
@@ -70,7 +70,7 @@
           { label: "250 mg in 250 mL (1000 mcg/mL = 1 mg/mL) — Standard Infusion Bag", mg: 250, ml: 250, concMcgMl: 1000 }
         ],
         referenceDosingRange: "Initial: 2.5 – 5.0 mcg/kg/min. Usual titration range: 2.5 – 20 mcg/kg/min. Monitor for tachycardia and hypotension.",
-        guidelineCitation: "Surviving Sepsis Campaign (SSC) 2021; ESC Heart Failure Guidelines 2021/2023; DailyMed FDA."
+        guidelineCitation: "Surviving Sepsis Campaign (SSC) Adult Guidelines 2026; ESC Heart Failure Guidelines 2021/2023; DailyMed FDA."
       }
     },
 

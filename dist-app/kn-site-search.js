@@ -1368,10 +1368,10 @@
     {
       Type: "Guideline",
       Category: "Updates • Critical Care",
-      Title: "Surviving Sepsis Campaign International Guidelines (SSC 2021 Consensus & Updates)",
-      Summary: "Consensus guidelines for the management of sepsis and septic shock: 1-hour resuscitation bundle, early balanced crystalloids, dynamic hemodynamic assessment, and vasopressor strategies.",
-      Content: " 1-Hour Bundle:  Measure lactate, obtain blood cultures before antibiotics, administer broad-spectrum antimicrobials within 1 hr, and initiate crystalloid fluid resuscitation.  Balanced Crystalloids over Saline:  Use buffered crystalloids (Plasma-Lyte / Ringer's) for initial fluid loading (30 mL/kg within 3 hrs).  First-Line Vasopressor:  Noradrenaline titrated to MAP ≥ 65 mmHg; add vasopressin early if high-dose noradrenaline is needed.",
-      Reference: "Evans L et al. Surviving Sepsis Campaign 2021, Critical Care Medicine 2021; 49(11):e1063-e1143.",
+      Title: "Surviving Sepsis Campaign Adult International Guidelines 2026",
+      Summary: "Official international consensus guidelines for adult sepsis and septic shock (SCCM/ESICM consensus): 129 recommendation statements across antimicrobial timing, balanced crystalloid resuscitation, age-stratified MAP targets, and active de-resuscitation.",
+      Content: " 1-Hour Bundle:  Measure lactate, obtain blood cultures before antibiotics, administer broad-spectrum antimicrobials within 1 hr, and initiate crystalloid fluid resuscitation.  Balanced Crystalloids over Saline:  Use buffered crystalloids (Plasma-Lyte / Ringer's) for initial fluid loading (30 mL/kg within 3 hrs).  First-Line Vasopressor:  Noradrenaline titrated to MAP ≥ 65 mmHg (conditional 60–65 mmHg in older adults ≥65 yrs); add vasopressin early if high-dose noradrenaline is needed.",
+      Reference: "Prescott HC, Antonelli M, et al. Surviving Sepsis Campaign 2026, Intensive Care Medicine / Critical Care Medicine (doi:10.1007/s00134-026-08361-1).",
       href: "recent-updates.html",
     },
 

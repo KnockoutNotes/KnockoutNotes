@@ -38,10 +38,10 @@
   {
     "id": 5,
     "slug": "sepsis",
-    "title": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
+    "title": "Sepsis, Septic Shock & Host Response (2026 SSC)",
     "icon": "🦠",
     "examWeight": "Must-Know Master Domain (10-12 MCQs)",
-    "description": "Sepsis-3 criteria, SOFA dynamics, Surviving Sepsis Campaign (SSC 2021) guideline recommendations, crystalloids vs albumin, vasopressor escalation, antimicrobial timing, corticosteroids, and blood purification.",
+    "description": "Sepsis-3 criteria, SOFA dynamics, 2026 Surviving Sepsis Campaign Adult International Guidelines recommendations, crystalloids vs albumin, vasopressor escalation, antimicrobial timing, corticosteroids, and blood purification.",
     "subchaptersCount": 4
   },
   {

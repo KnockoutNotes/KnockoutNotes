@@ -6,8 +6,8 @@
     "units": "mmHg",
     "normalRange": "70–105 mmHg (Target in shock ≥ 65 mmHg)",
     "hyperlinkedReference": {
-      "label": "Surviving Sepsis Campaign (SSC 2021 Guidelines)",
-      "url": "https://www.sccm.org/SurvivingSepsisCampaign/Guidelines"
+      "label": "Surviving Sepsis Campaign (SSC 2026 Adult Guidelines)",
+      "url": "https://doi.org/10.1007/s00134-026-08361-1"
     },
     "interpretation": "Determines global organ perfusion pressure. At physiological heart rates, diastole occupies ~2/3 of the cardiac cycle, hence the 2:1 weighting for DBP.",
     "workedExample": "Patient with BP 85/40 mmHg: MAP = [2(40) + 85] / 3 = 165 / 3 = 55 mmHg. Below the critical threshold of 65 mmHg; requires immediate vasopressor titration.",

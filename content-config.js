@@ -182,16 +182,16 @@ window.KNOCKOUTNOTES_PROGRAMME_UPDATES = [
     id: "surviving-sepsis-2026",
     type: "Update",
     category: "Critical Care",
-    date: "SSC 2021 / Current Evidence",
-    title: "Surviving Sepsis Campaign International Guidelines (SSC 2021 Consensus & Updates)",
-    summary: "Consensus guidelines for the management of sepsis and septic shock: 1-hour resuscitation bundle, early balanced crystalloids, dynamic hemodynamic assessment, and vasopressor strategies.",
+    date: "March 2026",
+    title: "Surviving Sepsis Campaign Adult International Guidelines 2026",
+    summary: "Official international consensus guidelines for adult sepsis and septic shock (SCCM/ESICM consensus): 129 recommendation statements including 46 new recommendations covering antimicrobial timing, balanced crystalloids, dynamic responsiveness, age-stratified MAP targets, and active de-resuscitation.",
     bullets: [
-      "<strong>1-Hour Bundle:</strong> Measure lactate, obtain blood cultures before antibiotics, administer broad-spectrum antimicrobials within 1 hr, and initiate crystalloid fluid resuscitation.",
-      "<strong>Balanced Crystalloids over Saline:</strong> Use buffered crystalloids (Plasma-Lyte / Ringer's) for initial fluid loading (30 mL/kg within 3 hrs).",
-      "<strong>First-Line Vasopressor:</strong> Noradrenaline titrated to MAP ≥ 65 mmHg; add vasopressin early if high-dose noradrenaline is needed."
+      "<strong>Antimicrobial Timing & Optimization:</strong> Administer broad-spectrum antimicrobials within 1 hr for septic shock; prioritize prolonged beta-lactam infusions and urgent source control within 6–12 hrs.",
+      "<strong>Balanced Crystalloids & De-resuscitation:</strong> Initial fluid resuscitation with at least 30 mL/kg balanced crystalloids within 3 hrs; guide further volume with dynamic measures; conditional recommendation supporting active fluid removal once shock resolves.",
+      "<strong>Hemodynamic Targets:</strong> Norepinephrine first-line (peripheral start acceptable pending CVC); standard adult MAP target ≥ 65 mmHg, with conditional initial MAP target of 60–65 mmHg suggested for older adults (≥ 65 yrs). Add vasopressin at 0.03 U/min for refractory shock."
     ],
-    reference: "Evans L, Rhodes A, Alhazzani W, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Crit Care Med 2021; 49(11):e1063-e1143.",
-    url: "https://www.sccm.org/SurvivingSepsisCampaign/Guidelines"
+    reference: "Prescott HC, Antonelli M, Alhazzani W, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Intensive Care Med 2026; doi:10.1007/s00134-026-08361-1 / Crit Care Med 2026.",
+    url: "https://doi.org/10.1007/s00134-026-08361-1"
   }
 ];
 

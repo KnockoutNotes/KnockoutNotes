@@ -83,10 +83,10 @@
   {
     "id": 5,
     "slug": "sepsis",
-    "title": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
+    "title": "Sepsis, Septic Shock & Host Response (2026 SSC)",
     "icon": "🦠",
     "examWeight": "Must-Know Master Domain (10-12 MCQs)",
-    "description": "Sepsis-3 criteria, SOFA dynamics, Surviving Sepsis Campaign (SSC 2021) guideline recommendations, crystalloids vs albumin, vasopressor escalation, antimicrobial timing, corticosteroids, and blood purification.",
+    "description": "Sepsis-3 criteria, SOFA dynamics, 2026 Surviving Sepsis Campaign Adult International Guidelines recommendations, crystalloids vs albumin, vasopressor escalation, antimicrobial timing, corticosteroids, and blood purification.",
     "subchaptersCount": 4
   },
   {
@@ -1418,7 +1418,7 @@
     "sourceIndex": 25,
     "sourceDuration": "31 Min",
     "sourceCategory": "SHOCK",
-    "title": "Sepsis: Surviving Sepsis Campaign Guidelines & Resuscitation",
+    "title": "Sepsis: 2026 Clinical Guidelines",
     "chapterId": 5,
     "subchapterId": "5.2",
     "level": "master",
@@ -2958,8 +2958,8 @@
     "units": "mmHg",
     "normalRange": "70–105 mmHg (Target in shock ≥ 65 mmHg)",
     "hyperlinkedReference": {
-      "label": "Surviving Sepsis Campaign (SSC 2021 Guidelines)",
-      "url": "https://www.sccm.org/SurvivingSepsisCampaign/Guidelines"
+      "label": "Surviving Sepsis Campaign (SSC 2026 Adult Guidelines)",
+      "url": "https://doi.org/10.1007/s00134-026-08361-1"
     },
     "interpretation": "Determines global organ perfusion pressure. At physiological heart rates, diastole occupies ~2/3 of the cardiac cycle, hence the 2:1 weighting for DBP.",
     "workedExample": "Patient with BP 85/40 mmHg: MAP = [2(40) + 85] / 3 = 165 / 3 = 55 mmHg. Below the critical threshold of 65 mmHg; requires immediate vasopressor titration.",
@@ -3438,8 +3438,8 @@
     },
     "examPearl": "NEET-SS EXAM PEARL: Norepinephrine is first-line in septic shock. Vasopressin (0.03 units/min) is the preferred second-line adjunct when norepinephrine requirements reach 0.25–0.5 mcg/kg/min.",
     "hyperlinkedReference": {
-      "label": "Surviving Sepsis Campaign Guidelines (SSC 2021)",
-      "url": "https://www.sccm.org/SurvivingSepsisCampaign/Guidelines"
+      "label": "Surviving Sepsis Campaign Adult Guidelines 2026",
+      "url": "https://doi.org/10.1007/s00134-026-08361-1"
     }
   },
   {
