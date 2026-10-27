@@ -117,7 +117,9 @@ function runTests() {
   assert(studyData.includes('odds ratio [OR] 0.91, 95% CI 0.82–1.02; p = 0.10'), 'Accurate SuDDICU statistical results documented');
   assert(!studyData.includes('STRICTLY NOT RECOMMENDED by the Indian Society'), 'No unverified universal ISCCM mandate claim');
   assert(!studyData.includes('> 50% ESBL'), 'No arbitrary unsubstantiated ESBL threshold');
-  assert(studyData.includes('settings with low baseline antimicrobial resistance'), 'SDD bounded to settings with low baseline AMR');
+  assert(studyData.includes('settings with low baseline antimicrobial resistance') || studyData.includes('low prevalence of antimicrobial resistance'), 'SDD bounded to settings with low baseline AMR');
+  assert(studyData.includes('conditional recommendation suggesting the use of SDD (moderate-certainty evidence)'), 'SDD recommendation accurately labeled with moderate-certainty evidence in SSC 2026');
+  assert(!studyData.includes('use of SDD specifically in clinical settings with low baseline antimicrobial resistance (conditional recommendation, low certainty of evidence)'), 'No incorrect low-certainty label for SDD in SSC 2026');
 
   assert(studyData.includes('Pediatric Surviving Sepsis Campaign Guidelines (pSSC 2020 / 2026)'), 'pSSC 2020/2026 pediatric sepsis steroid guidance present');
   assert(studyData.includes('evidence is insufficient to issue a recommendation for or against treatment'), 'pSSC evidence insufficiency in persistent shock documented');
@@ -125,6 +127,8 @@ function runTests() {
   assert(!studyData.includes('NEVER use adult fixed 200 mg/d in children!'), 'Categorical contraindication phrasing replaced with weight-based rationale');
 
   assert(studyData.includes('Clinical Trial Evidence & Evidence Certainty'), 'Blood purification section accurately details evidence certainty');
+  assert(studyData.includes('conditional recommendation, very-low-certainty evidence'), 'Routine blood purification preserved with very-low-certainty evidence');
+  assert(studyData.includes('conditional recommendation, low-certainty evidence'), 'Polymyxin B hemoperfusion preserved with low-certainty evidence');
   assert(studyData.includes('Evidence-Traced Clinical Safety Considerations & Potential Harms'), 'Blood purification traces harms to clinical evidence');
   assert(!studyData.includes('demonstrated zero significant benefit'), 'No colloquial "zero benefit" claim in blood purification');
 
