@@ -6,7 +6,7 @@
     "units": "mmHg",
     "normalRange": "70–105 mmHg (Target in shock ≥ 65 mmHg)",
     "hyperlinkedReference": {
-      "label": "Surviving Sepsis Campaign (SSC 2026 Guidelines)",
+      "label": "Surviving Sepsis Campaign (SSC 2021 Guidelines)",
       "url": "https://www.sccm.org/SurvivingSepsisCampaign/Guidelines"
     },
     "interpretation": "Determines global organ perfusion pressure. At physiological heart rates, diastole occupies ~2/3 of the cardiac cycle, hence the 2:1 weighting for DBP.",

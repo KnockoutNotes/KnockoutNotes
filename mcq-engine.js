@@ -60,7 +60,7 @@
     "cc-cardiogenic-shock-ii": "cardiogenic-shock-scai",
     "cc-anaphylactic-shock": "anaphylactic-neurogenic-endocrine-shock",
 
-    // Chapter 5: Sepsis, Septic Shock & Host Response (2026 SSC)
+    // Chapter 5: Sepsis, Septic Shock & Host Response (SSC Guidelines)
     "cc-sepsis-and-septic-shock-evaluation-management": "septic-shock-resuscitation",
     "cc-organ-dysfunction-in-sepsis": "sepsis3-hour1-bundle-resuscitation",
     "cc-sepsis-2026-clinical-guidelines": "sepsis3-hour1-bundle-resuscitation",

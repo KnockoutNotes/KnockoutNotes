@@ -182,15 +182,15 @@ window.KNOCKOUTNOTES_PROGRAMME_UPDATES = [
     id: "surviving-sepsis-2026",
     type: "Update",
     category: "Critical Care",
-    date: "2026 Guidelines",
-    title: "Surviving Sepsis Campaign International Guidelines 2026",
+    date: "SSC 2021 / Current Evidence",
+    title: "Surviving Sepsis Campaign International Guidelines (SSC 2021 Consensus & Updates)",
     summary: "Consensus guidelines for the management of sepsis and septic shock: 1-hour resuscitation bundle, early balanced crystalloids, dynamic hemodynamic assessment, and vasopressor strategies.",
     bullets: [
       "<strong>1-Hour Bundle:</strong> Measure lactate, obtain blood cultures before antibiotics, administer broad-spectrum antimicrobials within 1 hr, and initiate crystalloid fluid resuscitation.",
       "<strong>Balanced Crystalloids over Saline:</strong> Use buffered crystalloids (Plasma-Lyte / Ringer's) for initial fluid loading (30 mL/kg within 3 hrs).",
       "<strong>First-Line Vasopressor:</strong> Noradrenaline titrated to MAP ≥ 65 mmHg; add vasopressin early if high-dose noradrenaline is needed."
     ],
-    reference: "Surviving Sepsis Campaign 2026, Critical Care Medicine / Intensive Care Medicine.",
+    reference: "Evans L, Rhodes A, Alhazzani W, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. Crit Care Med 2021; 49(11):e1063-e1143.",
     url: "https://www.sccm.org/SurvivingSepsisCampaign/Guidelines"
   }
 ];

@@ -730,7 +730,7 @@
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
-    "examPearl": "NEET-SS EXAM PEARL: Surviving Sepsis Campaign 2026: Hydrocortisone 200 mg/day IV is indicated in septic shock refractory to norepinephrine + vasopressin. Stop testing with ACTH stimulation. Taper corticosteroids once shock resolves.",
+    "examPearl": "NEET-SS EXAM PEARL: Surviving Sepsis Campaign (SSC 2021): Hydrocortisone 200 mg/day IV is indicated in septic shock refractory to norepinephrine + vasopressin. Stop testing with ACTH stimulation. Taper corticosteroids once shock resolves.",
     "hyperlinkedReference": {
       "label": "Venkatesh B et al. Adjunctive Glucocorticoid Therapy in Patients with Septic Shock (N Engl J Med 2018; 378:797-808)",
       "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1705835"
@@ -870,7 +870,7 @@
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": null,
-    "examPearl": "NEET-SS EXAM PEARL: SMART & SALT-ED Trials: Balanced crystalloids (Ringer's Lactate / Plasma-Lyte) reduce MAKE30 and mortality compared to 0.9% Saline, particularly in sepsis. SSC 2026 strongly recommends balanced crystalloids as the primary resuscitation fluid.",
+    "examPearl": "NEET-SS EXAM PEARL: SMART & SALT-ED Trials: Balanced crystalloids (Ringer's Lactate / Plasma-Lyte) reduce MAKE30 and mortality compared to 0.9% Saline, particularly in sepsis. SSC 2021 strongly recommends balanced crystalloids as the primary resuscitation fluid.",
     "hyperlinkedReference": {
       "label": "Semler MW et al. Balanced Crystalloids versus Saline in Critically Ill Adults (N Engl J Med 2018; 378:829-839)",
       "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1711584"
@@ -940,7 +940,7 @@
     "sourceType": "neet-ss-style",
     "exam": "NEET-SS",
     "year": 2025,
-    "examPearl": "NEET-SS EXAM PEARL: The 2026 SSC guidelines recommend AGAINST using qSOFA as a standalone screening tool due to poor sensitivity compared to NEWS, MEWS, or SIRS.",
+    "examPearl": "NEET-SS EXAM PEARL: The SSC 2021 guidelines recommend AGAINST using qSOFA as a standalone screening tool due to poor sensitivity compared to NEWS, MEWS, or SIRS.",
     "hyperlinkedReference": {
       "label": "Singer M, et al. Sepsis-3 Definitions. JAMA 2016;315:801-810",
       "url": "https://jamanetwork.com/journals/jama/fullarticle/2492881"
@@ -4857,7 +4857,7 @@
     "id": "INICET-SS-2026-CC-R016",
     "number": 16,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
+    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
     "topicId": "cc-sepsis-and-septic-shock-evaluation-management",
     "subject": "Sepsis",
     "subtopic": "Sepsis Bedside Screening Scores",
@@ -4915,7 +4915,7 @@
     "id": "INICET-SS-2026-CC-R022",
     "number": 22,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
+    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
     "topicId": "cc-sepsis-and-septic-shock-evaluation-management",
     "subject": "Shock & Resuscitation",
     "subtopic": "Early Vasopressor Use in Septic Shock",
@@ -4974,7 +4974,7 @@
     "id": "INICET-SS-2026-CC-R030",
     "number": 30,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
+    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
     "topicId": "cc-organ-dysfunction-in-sepsis",
     "subject": "Shock & Resuscitation",
     "subtopic": "Molecular Mechanisms of Septic Vasoplegia",
@@ -5032,7 +5032,7 @@
     "id": "INISS-CC-NOV2025-R004",
     "number": 4,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
+    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
     "topicId": "cc-sepsis-and-septic-shock-evaluation-management",
     "subject": "Sepsis",
     "subtopic": "Corticosteroids in Septic Shock & Clinical Trials",
@@ -5089,7 +5089,7 @@
     "id": "INISS-CC-NOV2025-R005",
     "number": 5,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
+    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
     "topicId": "cc-sepsis-2026-clinical-guidelines",
     "subject": "Sepsis",
     "subtopic": "qSOFA Criteria & Sepsis Screening",
@@ -5146,7 +5146,7 @@
     "id": "INISS-CC-NOV2025-R030",
     "number": 30,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
+    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
     "topicId": "cc-organ-dysfunction-in-sepsis",
     "subject": "Sepsis",
     "subtopic": "Fluid Responsiveness & De-escalation in Septic Shock",
@@ -5203,7 +5203,7 @@
     "id": "INISS-CC-NOV2025-R039",
     "number": 39,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
+    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
     "topicId": "cc-organ-dysfunction-in-sepsis",
     "subject": "Sepsis",
     "subtopic": "ANDROMEDA-SHOCK Trial & Capillary Refill Time",
@@ -5260,7 +5260,7 @@
     "id": "INISS-CC-NOV2025-R049",
     "number": 49,
     "chapterId": 5,
-    "chapter": "Sepsis, Septic Shock & Host Response (2026 SSC)",
+    "chapter": "Sepsis, Septic Shock & Host Response (SSC Guidelines)",
     "topicId": "cc-organ-dysfunction-in-sepsis",
     "subject": "Sepsis",
     "subtopic": "ROSE Concept & Active De-resuscitation in Sepsis",
@@ -5372,11 +5372,11 @@
     "year": null,
     "examPearl": "NEET-SS EXAM PEARL: SSC 2026 Antibiotic Timing: Septic Shock or Definite Sepsis = WITHIN 1 HOUR. Possible Sepsis WITHOUT Shock = Investigate rapidly, give within 3 HOURS if infection remains likely.",
     "hyperlinkedReference": {
-      "label": "Evans L et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock (Crit Care Med 2026)",
+      "label": "Evans L et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock (Crit Care Med 2021; 49:e1063-e1143)",
       "url": "https://doi.org/10.1097/CCM.0000000000005337"
     },
     "tags": [
-      "Surviving Sepsis 2026",
+      "Surviving Sepsis Campaign (SSC 2021)",
       "1-Hour Bundle",
       "Antimicrobial Timing",
       "Septic Shock"
@@ -5562,7 +5562,7 @@
     "id": "mcq-cc-0057",
     "chapterId": 5,
     "topicId": "cc-sepsis-2026-clinical-guidelines",
-    "question": "What is the Surviving Sepsis Campaign 2026 recommendation regarding Stress Ulcer Prophylaxis (SUP) in patients with sepsis?",
+    "question": "What is the Surviving Sepsis Campaign (SSC 2021) recommendation regarding Stress Ulcer Prophylaxis (SUP) in patients with sepsis?",
     "options": [
       "Administer PPI or H2RA to every patient admitted to the ICU with sepsis",
       "Administer SUP only to patients with risk factors for gastrointestinal bleeding: mechanical ventilation > 48 hours or coagulopathy (platelets < 50,000/uL, INR > 1.5, or aPTT > 2x control)",
@@ -5589,7 +5589,7 @@
       "Stress Ulcer Prophylaxis",
       "PEPTIC Trial",
       "SUP-ICU",
-      "Surviving Sepsis 2026"
+      "Surviving Sepsis Campaign (SSC 2021)"
     ],
     "verificationStatus": "VERIFIED"
   },
@@ -5597,7 +5597,7 @@
     "id": "mcq-cc-0058",
     "chapterId": 5,
     "topicId": "cc-sepsis-2026-clinical-guidelines",
-    "question": "In patients with sepsis, what is the role of serum Procalcitonin (PCT) according to 2026 Surviving Sepsis Campaign guidelines?",
+    "question": "In patients with sepsis, what is the role of serum Procalcitonin (PCT) according to Surviving Sepsis Campaign (SSC 2021) guidelines?",
     "options": [
       "Mandatory to start antibiotics in every patient with suspected infection",
       "Recommended to guide the duration of antimicrobial therapy and support discontinuation/de-escalation in patients with clinical resolution, rather than for initiating antibiotics",
@@ -5624,7 +5624,7 @@
       "Procalcitonin",
       "Antimicrobial Stewardship",
       "De-escalation",
-      "Surviving Sepsis 2026"
+      "Surviving Sepsis Campaign (SSC 2021)"
     ],
     "verificationStatus": "VERIFIED"
   },
@@ -5658,7 +5658,7 @@
     "tags": [
       "Source Control",
       "Cholangitis",
-      "Surviving Sepsis 2026",
+      "Surviving Sepsis Campaign (SSC 2021)",
       "Timing of Intervention"
     ],
     "verificationStatus": "VERIFIED"
@@ -5694,7 +5694,7 @@
       "Albumin",
       "ALBIOS Trial",
       "Fluid Overload",
-      "Surviving Sepsis 2026"
+      "Surviving Sepsis Campaign (SSC 2021)"
     ],
     "verificationStatus": "VERIFIED"
   },
@@ -5861,7 +5861,7 @@
     "year": 2024,
     "examPearl": "NEET-SS EXAM PEARL: Vasopressin should NOT be titrated; it is administered at a fixed infusion of 0.03 units/min (up to 0.04 in select protocols) to avoid ischemic skin and mesenteric necrosis.",
     "hyperlinkedReference": {
-      "label": "Evans L, et al. Surviving Sepsis Campaign Guidelines 2021/2026. Crit Care Med 2021;49:e1063",
+      "label": "Evans L, et al. Surviving Sepsis Campaign Guidelines 2021. Crit Care Med 2021; 49:e1063-e1143",
       "url": "https://journals.lww.com/ccmjournal/fulltext/2021/11000/surviving_sepsis_campaign__international.21.aspx"
     },
     "tags": [
@@ -24703,7 +24703,7 @@
       "Administer high-dose Methylprednisolone 1 g IV daily for 3 days"
     ],
     "answer": "C",
-    "explanation": "According to the Surviving Sepsis Campaign guidelines (SSC 2021/2026 update) and SCCM/ESICM CIRCI consensus: In adult septic shock where fluid resuscitation and vasopressor therapy (norepinephrine >=0.25 mcg/kg/min) fail to restore hemodynamic stability, IV hydrocortisone at a dose of 200 mg/day (given as 50 mg IV every 6 hours or as a continuous infusion) is recommended. Performing an ACTH stimulation test (or random cortisol level) is NOT recommended to guide the decision to initiate corticosteroids in septic shock, as baseline and delta levels correlate poorly with clinical responsiveness.",
+    "explanation": "According to the Surviving Sepsis Campaign guidelines (SSC 2021 Guidelines) and SCCM/ESICM CIRCI consensus: In adult septic shock where fluid resuscitation and vasopressor therapy (norepinephrine >=0.25 mcg/kg/min) fail to restore hemodynamic stability, IV hydrocortisone at a dose of 200 mg/day (given as 50 mg IV every 6 hours or as a continuous infusion) is recommended. Performing an ACTH stimulation test (or random cortisol level) is NOT recommended to guide the decision to initiate corticosteroids in septic shock, as baseline and delta levels correlate poorly with clinical responsiveness.",
     "whyWrong": {
       "A": "ACTH stimulation testing is unreliable in critical illness (altered protein binding, cortisol clearance) and is not recommended by SSC or SCCM/ESICM guidelines to decide steroid therapy in septic shock.",
       "B": "Dexamethasone lacks mineralocorticoid activity (necessary for vascular tone and fluid balance) and has prolonged hypothalamic-pituitary suppression; hydrocortisone has balanced glucocorticoid and mineralocorticoid action.",
