@@ -164,7 +164,7 @@ console.log("✅ PASS: All clinical calculator mathematical safety bounds and ed
 console.log("--- 4. Testing Service Worker & PWA Offline Reliability ---");
 const swJs = fs.readFileSync(path.join(__dirname, '..', 'sw.js'), 'utf8');
 
-assert(swJs.includes('knockoutnotes-cache-v115'), "sw.js must be bumped to v114");
+assert(swJs.includes('knockoutnotes-cache-v116'), "sw.js must be bumped to v114");
 assert(swJs.includes('"/advanced-calc-engine.js"'), "sw.js must precache advanced-calc-engine.js");
 assert(swJs.includes('"/advanced-calc-ui.js"'), "sw.js must precache advanced-calc-ui.js");
 assert(swJs.includes('"/clinical-validator.js"'), "sw.js must precache clinical-validator.js");
@@ -194,7 +194,7 @@ console.log("✅ PASS: Search pre-indexing optimization and responsiveness verif
 console.log("--- 6. Testing UI Consistency, Status Indicators & Android Parity ---");
 
 // 6A. Version Consistency
-assert(indexHtml.includes('APP v3.0.1 • 8 OFFLINE SECTIONS READY'), "index.html must display APP v3.0.0");
+assert(indexHtml.includes('APP v3.0.2 • 8 OFFLINE SECTIONS READY'), "index.html must display APP v3.0.0");
 assert(!indexHtml.includes('APP v2.4.0'), "index.html must NOT contain stale APP v2.4.0");
 
 const adminHtml = fs.readFileSync(path.join(__dirname, '..', 'admin', 'index.html'), 'utf8');

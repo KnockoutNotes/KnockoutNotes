@@ -25,13 +25,13 @@ async function verifyLive() {
 
   const paths = [
     { p: '/', expect: '.view-layer-lite' },
-    { p: '/', expect: 'APP v3.0.1 • 8 OFFLINE SECTIONS READY' },
+    { p: '/', expect: 'APP v3.0.2 • 8 OFFLINE SECTIONS READY' },
     { p: '/', expect: 'Sync: <strong class="kn-sync-time-val" style="color:#e2e8f0;">Ready</strong>' },
     { p: '/study', expect: 'Study' },
     { p: '/calculators', expect: 'Calculators' },
     { p: '/page-common.css', expect: '#0369a1' },
     { p: '/script.js', expect: '_knCoreInitialized' },
-    { p: '/sw.js', expect: 'knockoutnotes-cache-v115' },
+    { p: '/sw.js', expect: 'knockoutnotes-cache-v116' },
     { p: '/calculators.js', expect: 'calculateDeltaGap' },
     { p: '/kn-site-search.js', expect: '_normCombined' },
     { p: '/sync-engine.js', expect: 'results.updated > 0' }

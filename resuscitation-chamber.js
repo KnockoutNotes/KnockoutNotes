@@ -98,12 +98,14 @@
     }
   }
 
-  function startMetronome() {
+  function startMetronome(preserveCount = false) {
     initAudio();
     if (!audioCtx) return;
 
     isMetronomeRunning = true;
-    metronomeCount = 1;
+    if (!preserveCount) {
+      metronomeCount = 1;
+    }
     nextBeatTime = audioCtx.currentTime + 0.05;
 
     // Start physical pendulum swing
@@ -129,6 +131,11 @@
       schedulerTimer = null;
     }
     isMetronomeRunning = false;
+
+    // Suspend audio context to power down hardware audio pipeline on mobile
+    if (audioCtx && audioCtx.state === 'running') {
+      audioCtx.suspend().catch(() => {});
+    }
 
     // Stop physical pendulum swing
     const arm = document.getElementById('metronomeArm');
@@ -170,6 +177,26 @@
   let cycleCount = 1;
   let cycleTimer = null;
   let isTimerRunning = false;
+  let lastCycleTimestamp = Date.now();
+
+  function syncCycleTimerWithWallClock() {
+    if (!isTimerRunning) return;
+    const now = Date.now();
+    const elapsedDelta = Math.floor((now - lastCycleTimestamp) / 1000);
+    if (elapsedDelta >= 1) {
+      lastCycleTimestamp += elapsedDelta * 1000;
+      totalElapsedSeconds += elapsedDelta;
+      cycleSecondsLeft -= elapsedDelta;
+
+      while (cycleSecondsLeft <= 0) {
+        playCycleAlarm();
+        cycleCount++;
+        cycleSecondsLeft += 120;
+        notifyRescuerSwitch();
+      }
+      updateCycleDisplay();
+    }
+  }
 
   function updateCycleDisplay() {
     const countdownEl = document.getElementById('cycleCountdown');
@@ -205,18 +232,7 @@
   }
 
   function tickCycleTimer() {
-    totalElapsedSeconds++;
-    cycleSecondsLeft--;
-
-    if (cycleSecondsLeft <= 0) {
-      // 2 minutes completed! Trigger audio alert & switch prompt
-      playCycleAlarm();
-      cycleCount++;
-      cycleSecondsLeft = 120;
-      notifyRescuerSwitch();
-    }
-
-    updateCycleDisplay();
+    syncCycleTimerWithWallClock();
   }
 
   function playCycleAlarm() {
@@ -252,6 +268,7 @@
 
   function startCycleTimer() {
     if (!cycleTimer) {
+      lastCycleTimestamp = Date.now();
       cycleTimer = setInterval(tickCycleTimer, 1000);
       isTimerRunning = true;
       if (window.KnockoutEmergencyWakeLock) {
@@ -1082,8 +1099,12 @@
       pill.classList.toggle("active", parseInt(pill.dataset.bpm, 10) === currentBpm);
     });
     if (isMetronomeRunning) {
-      stopMetronome();
-      startMetronome();
+      if (schedulerTimer) {
+        clearInterval(schedulerTimer);
+        schedulerTimer = null;
+      }
+      nextBeatTime = (audioCtx ? audioCtx.currentTime : 0) + 0.05;
+      schedulerTimer = setInterval(runScheduler, LOOKAHEAD_INTERVAL_MS);
     }
   }
 
@@ -1117,10 +1138,28 @@
   window.addEventListener("pagehide", cleanupEmergencyAudio);
   window.addEventListener("beforeunload", cleanupEmergencyAudio);
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden && isMetronomeRunning) {
-      stopMetronome();
+    if (document.hidden) {
+      if (isMetronomeRunning) stopMetronome();
+    } else {
+      syncCycleTimerWithWallClock();
     }
   });
+  window.addEventListener("focus", () => {
+    syncCycleTimerWithWallClock();
+  });
+
+  // Coordinate with Capacitor App Lifecycle on native Android
+  if (typeof window !== "undefined" && window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App) {
+    try {
+      window.Capacitor.Plugins.App.addListener("appStateChange", (state) => {
+        if (!state.isActive) {
+          if (isMetronomeRunning) stopMetronome();
+        } else {
+          syncCycleTimerWithWallClock();
+        }
+      });
+    } catch (_) {}
+  }
 
   // --------------------------------------------------------------------------
   // 4. Timestamped Resuscitation Event Log Engine (Documentation Aid)
@@ -1148,18 +1187,31 @@
     return `+${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`;
   }
 
+  let lastEventLogged = { text: "", time: 0 };
+
   function addResuscitationEvent(description) {
     if (!description || !description.trim()) return;
-    const now = new Date();
+    const trimmed = description.trim();
+    const nowMs = Date.now();
+
+    // Prevent accidental rapid double-tap (< 800ms for exact same action)
+    if (lastEventLogged.text === trimmed && (nowMs - lastEventLogged.time) < 800) {
+      return;
+    }
+    lastEventLogged = { text: trimmed, time: nowMs };
+
+    const now = new Date(nowMs);
     const evt = {
-      id: "evt_" + Date.now() + "_" + Math.random().toString(36).substr(2, 4),
+      id: "evt_" + nowMs + "_" + Math.random().toString(36).substr(2, 4),
       timestamp: now.toISOString(),
       clockTime: now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }),
       elapsedSeconds: totalElapsedSeconds,
       codeTime: formatCodeTime(totalElapsedSeconds),
-      description: description.trim()
+      description: trimmed
     };
     resuscitationEvents.push(evt);
+    // Guarantee strict chronological ordering
+    resuscitationEvents.sort((a, b) => (a.elapsedSeconds - b.elapsedSeconds) || (new Date(a.timestamp) - new Date(b.timestamp)));
     saveResuscitationEvents();
     renderResuscitationLog();
 

@@ -6100,12 +6100,39 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
   body.ron-reading-fullscreen-active {
     overflow: visible !important;
   }
-  .ron-reading-fullscreen-overlay {
+  .ron-reading-fullscreen-overlay,
+  .ron-reading-fullscreen-overlay[data-reading-theme="dark"],
+  .ron-reading-fullscreen-overlay[data-reading-theme="sepia"],
+  .ron-reading-fullscreen-overlay[data-reading-theme="night"],
+  .ron-reading-fullscreen-overlay[data-reading-theme="amber"] {
+    --rm-bg: #ffffff !important;
+    --rm-surface: #ffffff !important;
+    --rm-surface-elevated: #ffffff !important;
+    --rm-text: #0f172a !important;
+    --rm-text-muted: #475569 !important;
+    --rm-heading: #0f172a !important;
+    --rm-heading-strong: #0f172a !important;
+    --rm-border: #cbd5e1 !important;
+    --rm-pearl-bg: #f8fafc !important;
+    --rm-pearl-border: #cbd5e1 !important;
+    --rm-pearl-text: #0f172a !important;
     position: static !important;
     height: auto !important;
     overflow: visible !important;
     background: #ffffff !important;
-    color: #000000 !important;
+    color: #0f172a !important;
+  }
+  .ron-reading-fullscreen-overlay .ron-rm-body-target,
+  .ron-reading-fullscreen-overlay .ron-rm-body-target p,
+  .ron-reading-fullscreen-overlay .ron-rm-body-target li,
+  .ron-reading-fullscreen-overlay .ron-rm-body-target span,
+  .ron-reading-fullscreen-overlay .ron-rm-body-target h1,
+  .ron-reading-fullscreen-overlay .ron-rm-body-target h2,
+  .ron-reading-fullscreen-overlay .ron-rm-body-target h3 {
+    color: #0f172a !important;
+    background-color: transparent !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
   }
   .ron-rm-topbar,
   .ron-rm-progress-strip,

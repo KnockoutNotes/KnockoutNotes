@@ -43,8 +43,8 @@ assert.strictEqual(metadata.variantName, 'release', 'Variant must be release');
 
 const element = metadata.elements && metadata.elements[0];
 assert(element, 'Element metadata missing');
-assert.strictEqual(element.versionCode, 301, 'versionCode must be 300');
-assert.strictEqual(element.versionName, '3.0.1', 'versionName must be 3.0.0');
+assert.strictEqual(element.versionCode, 302, 'versionCode must be 300');
+assert.strictEqual(element.versionName, '3.0.2', 'versionName must be 3.0.0');
 console.log(`✅ PASS: Metadata verified: ID=${metadata.applicationId}, Version=${element.versionName} (${element.versionCode}), Variant=${metadata.variantName}\n`);
 
 // 3. Inspect badging via aapt if available
@@ -53,11 +53,11 @@ const aaptPath = 'C:\\Users\\kmane\\android-sdk\\build-tools\\34.0.0\\aapt.exe';
 if (fs.existsSync(aaptPath)) {
   const badging = execSync(`"${aaptPath}" dump badging "${ROOT_APK}"`, { encoding: 'utf8' });
   assert(badging.includes("package: name='com.knockoutnotes.app'"), 'aapt package name mismatch');
-  assert(badging.includes("versionCode='301'"), 'aapt versionCode mismatch');
-  assert(badging.includes("versionName='3.0.1'"), 'aapt versionName mismatch');
+  assert(badging.includes("versionCode='302'"), 'aapt versionCode mismatch');
+  assert(badging.includes("versionName='3.0.2'"), 'aapt versionName mismatch');
   assert(badging.includes("targetSdkVersion:'34'"), 'aapt targetSdkVersion mismatch');
   assert(badging.includes("application-label:'Knockout Notes'"), 'aapt application-label mismatch');
-  console.log('✅ PASS: aapt badging verified (com.knockoutnotes.app v3.0.1, SDK 34)!\n');
+  console.log('✅ PASS: aapt badging verified (com.knockoutnotes.app v3.0.2, SDK 34)!\n');
 } else {
   console.log('ℹ️ SKIP: aapt binary not found at standard path.\n');
 }
