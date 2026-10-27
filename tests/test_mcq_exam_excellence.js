@@ -99,9 +99,18 @@ console.log(` - INI-SS CC Nov 2025: ${iniNov2025.length} recall questions`);
 console.log(` - INI-CET SS April 2026: ${iniCet2026.length} recall questions`);
 
 assert(neet2024.length >= 100, 'NEET SS CC 2024 bank incomplete');
-assert(neet2025.length >= 70, 'NEET SS CC 2025 bank incomplete');
-assert(iniNov2025.length >= 60, 'INI-SS CC Nov 2025 bank incomplete');
+assert.strictEqual(neet2025.length, 76, `Expected exactly 76 NEET-SS CC 2025 questions, got ${neet2025.length}`);
+assert.strictEqual(iniNov2025.length, 66, `Expected exactly 66 INI-SS CC Nov 2025 questions, got ${iniNov2025.length}`);
 assert(iniCet2026.length >= 50, 'INI-CET SS April 2026 bank incomplete');
+
+// Deep provenance and integrity invariants for 2025 recall sets
+[...neet2025, ...iniNov2025].forEach(q => {
+  assert.strictEqual(q.year, 2025, `Question ${q.id} year must be 2025`);
+  assert.strictEqual(q.provenanceCategory, 'documented-recall', `Question ${q.id} provenance must be documented-recall`);
+  assert(q.question && q.question.length >= 20, `Question ${q.id} stem must be complete`);
+  assert(Array.isArray(q.options) && q.options.length >= 4, `Question ${q.id} must have >= 4 options`);
+  assert(q.explanation && q.explanation.length >= 20, `Question ${q.id} explanation must be comprehensive`);
+});
 console.log('✅ PASS: All 4 targeted examination recall collections complete and verified!\n');
 
 // --- 4. CONFIGURABLE TEST SIZES & RANDOMIZATION ---

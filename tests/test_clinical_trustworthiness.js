@@ -164,11 +164,23 @@ function runTests() {
 
     if (rec.clinicianSignOffRequired === true) {
       clinicianSignOffCount++;
+      if (rec.signOffStatus !== 'PENDING_HUMAN_REVIEW') {
+        failures++;
+        console.error(`Record ${rec.contentId} marked clinicianSignOffRequired but has invalid signOffStatus: ${rec.signOffStatus}`);
+      }
     }
   });
 
   assert(validRecords === register.records.length, `All ${register.records.length} records satisfy required schema`);
   assert(clinicianSignOffCount >= 3, `Explicit clinicianSignOffRequired items tracked transparently (found: ${clinicianSignOffCount})`);
+
+  // Verify Clinical Adjudication Brief exists and covers the 3 topics
+  const briefPath = path.join(__dirname, '..', '.planning', 'CLINICAL_ADJUDICATION_BRIEF.md');
+  assert(fs.existsSync(briefPath), '.planning/CLINICAL_ADJUDICATION_BRIEF.md exists');
+  const briefText = fs.readFileSync(briefPath, 'utf8');
+  assert(briefText.includes('PENDING-PAED-SEPSIS-STEROIDS'), 'Adjudication brief includes PENDING-PAED-SEPSIS-STEROIDS');
+  assert(briefText.includes('PENDING-SELECTIVE-DECONTAMINATION'), 'Adjudication brief includes PENDING-SELECTIVE-DECONTAMINATION');
+  assert(briefText.includes('PENDING-BLOOD-PURIFICATION'), 'Adjudication brief includes PENDING-BLOOD-PURIFICATION');
 
   // Verify dist-app mirror exists and matches
   const distRegisterPath = path.join(__dirname, '..', 'dist-app', 'content-review-register.json');

@@ -18,7 +18,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SEPSIS-BETA-LACTAM-PKPD",
@@ -34,7 +39,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SEPSIS-FLUID-30ML-KG",
@@ -50,7 +60,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SEPSIS-PRESSOR-NE-VASO",
@@ -66,7 +81,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SEPSIS-MAP-TARGETS",
@@ -82,7 +102,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SEPSIS-HYDROCORTISONE",
@@ -98,7 +123,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SEPSIS-PROCALCITONIN",
@@ -114,7 +144,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SEPSIS-DE-RESUSCITATION",
@@ -130,7 +165,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SEPSIS-QSOFA-SCREENING",
@@ -146,7 +186,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SEPSIS-STRESS-ULCER",
@@ -162,7 +207,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SPOT-VASOPRESSOR-EXTRAVASATION",
@@ -178,7 +228,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SPOT-PAED-AIRWAY-EQUIPMENT",
@@ -194,7 +249,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SPOT-ABG-DELTA-GAP",
@@ -210,7 +270,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SPOT-CALC-COCKCROFT-GAULT",
@@ -226,7 +291,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SPOT-CALC-MELD-NA-2016",
@@ -242,7 +312,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SPOT-VENT-PBW-ARDS",
@@ -258,7 +333,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "SPOT-PROPOFOL-PRIS",
@@ -274,7 +354,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "MCQ-NEETSS-CC-2024-R029-R043",
@@ -290,7 +375,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "MCQ-NEETSS-CC-2024-R046-R049",
@@ -306,7 +396,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "MCQ-DIRTY-OPTIONS-CLEANUP",
@@ -322,7 +417,12 @@
       "reviewFinding": null,
       "actionTaken": null,
       "remainingUncertainty": null,
-      "clinicianSignOffRequired": false
+      "clinicianSignOffRequired": false,
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "PENDING-BLOOD-PURIFICATION",
@@ -338,7 +438,12 @@
       "reviewFinding": "SSC 2026 explicitly distinguishes two separate conditional recommendations: against routine blood purification techniques (including hemoperfusion) with very-low-certainty evidence, and against polymyxin B hemoperfusion with low-certainty evidence. Trials show surrogate biomarker reduction without consistent mortality or organ-failure-free day benefits; sorbents risk antimicrobial adsorption (requiring TDM) and thrombocytopenia.",
       "actionTaken": "Separated and preserved the two distinct conditional recommendations with their respective evidence certainties (very-low-certainty for blood purification techniques; low-certainty for polymyxin B hemoperfusion) and maintained evidence-traced safety concerns and CRRT distinction.",
       "remainingUncertainty": "Subgroup efficacy in specific biomarker ranges (e.g. endotoxin activity) remains under investigation in ongoing trials; clinical harms from drug adsorption require clinical pharmacist and intensivist coordination.",
-      "clinicianSignOffRequired": true
+      "clinicianSignOffRequired": true,
+      "signOffStatus": "PENDING_HUMAN_REVIEW",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "PENDING-PAED-SEPSIS-STEROIDS",
@@ -354,7 +459,12 @@
       "reviewFinding": "pSSC guidelines suggest against IV hydrocortisone in responsive shock, state evidence is insufficient to recommend for or against treatment in persistent shock despite fluids and vasoactives, and support stress-dose steroids for suspected/documented adrenal insufficiency. Specific doses and taper schedules are not guideline-mandated; educational regimens derive from pediatric pharmacology references.",
       "actionTaken": "Updated curriculum and register to accurately present pSSC recommendations, remove guideline attribution from dosing/tapers, reference Harriet Lane/PALS for educational weight-based dosing, explain avoidance of adult fixed doses, and state that optimal dosing/weaning remains unsettled.",
       "remainingUncertainty": "Optimal dosing (intermittent vs continuous infusion) and weaning duration in pediatric septic shock remain unsettled; institutional PICU protocols vary.",
-      "clinicianSignOffRequired": true
+      "clinicianSignOffRequired": true,
+      "signOffStatus": "PENDING_HUMAN_REVIEW",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "PENDING-SELECTIVE-DECONTAMINATION",
@@ -370,7 +480,12 @@
       "reviewFinding": "SSC 2026 issues a conditional recommendation for SDD in mechanically ventilated adults in ICUs with low prevalence of AMR based on moderate-certainty evidence. SuDDICU trial in Australia demonstrated no statistically significant difference in in-hospital mortality (27.0% vs 29.1%, OR 0.91, 95% CI 0.82-1.02; p=0.10). In high-AMR environments, avoidance of routine enteral polymyxins/aminoglycosides is an antimicrobial stewardship consideration rather than an unverified society mandate.",
       "actionTaken": "Updated curriculum, register, and tests to correctly label SDD in low-AMR ICUs as a conditional recommendation supported by moderate-certainty evidence (correcting previous low-certainty label), while retaining AMR stewardship framing, SuDDICU findings, and modality distinctions.",
       "remainingUncertainty": "Appropriate threshold of baseline AMR at which potential benefits of SDD are outweighed by resistance risks remains undefined; local stewardship policies dictate practice.",
-      "clinicianSignOffRequired": true
+      "clinicianSignOffRequired": true,
+      "signOffStatus": "PENDING_HUMAN_REVIEW",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "MCQ-NEETSS-CC-2024-R038-FIX",
@@ -386,7 +501,12 @@
       "actionTaken": "Restored complete option strings in criticalCare/mcqs.json. Verified answer key A remains accurate.",
       "remainingUncertainty": null,
       "clinicianSignOffRequired": false,
-      "notes": "Restored full option sentences in criticalCare/mcqs.json. Question now 100% complete and verified."
+      "notes": "Restored full option sentences in criticalCare/mcqs.json. Question now 100% complete and verified.",
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     },
     {
       "contentId": "MCQ-NEETSS-CC-2024-R112-FIX",
@@ -402,7 +522,12 @@
       "actionTaken": "Replaced 'mandates minimum' with 'suggests an initial resuscitation volume of 30 mL/kg of balanced crystalloid (conditional recommendation, low certainty of evidence)'.",
       "remainingUncertainty": null,
       "clinicianSignOffRequired": false,
-      "notes": "Corrected explanation in criticalCare/mcqs.json to align with SSC 2026/2021 guideline strength."
+      "notes": "Corrected explanation in criticalCare/mcqs.json to align with SSC 2026/2021 guideline strength.",
+      "signOffStatus": "NOT_REQUIRED",
+      "reviewerRoleOrSpecialty": null,
+      "affiliatedInstitution": null,
+      "signOffDate": null,
+      "formalAdjudicationNotes": null
     }
   ]
 }
