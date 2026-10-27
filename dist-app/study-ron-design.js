@@ -1206,6 +1206,30 @@
       try {
         window.dispatchEvent(new CustomEvent("kn:study-topic-loaded", { detail: { topicId: activeItem.id, item: activeItem } }));
       } catch (_) {}
+
+      // Handle mode preservation and shared visit subscription modal
+      const modeParam = urlParams.get("mode");
+      if (modeParam === "reading") {
+        setTimeout(() => {
+          openFullScreenReadingMode();
+        }, 60);
+      }
+      const refParam = urlParams.get("ref");
+      const isSharedVisit = refParam === "share" || urlParams.get("shared") === "1";
+      if (isSharedVisit) {
+        let seen = false;
+        try {
+          seen = !!sessionStorage.getItem("kn_share_sub_modal_seen");
+        } catch (_) {}
+        if (!seen) {
+          try {
+            sessionStorage.setItem("kn_share_sub_modal_seen", "1");
+          } catch (_) {}
+          setTimeout(() => {
+            openSharedSubscriptionModal(activeItem, modeParam === "reading" ? "reading" : "study");
+          }, 350);
+        }
+      }
     } else {
       window.__ACTIVE_STUDY_ITEM = null;
       renderCategoryOverview(mount, activeCat, currentCatObj);
@@ -1972,6 +1996,9 @@
                     <span>📝</span>
                   </button>
                 ` : ''}
+                <button type="button" class="ron-reading-action-btn ron-reading-share-btn kn-share-chapter-btn" id="ronTbShareBtn" data-chapter-id="${esc(item.id)}" data-share-mode="study" title="Share Chapter" aria-label="Share Chapter">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                </button>
                 <button type="button" class="ron-reading-action-btn ron-reading-top-btn" id="ronReadingTopBtn" title="Scroll to top" aria-label="Scroll to top">
                   <span>↑</span>
                 </button>
@@ -2090,6 +2117,9 @@
                     </button>
                     <button type="button" class="kn-action-btn kn-reading-mode-trigger-btn" id="ronEnterReadingModeBtn" title="Open Distraction-Free Full-Screen Reading Mode" aria-label="Enter Reading Mode">
                       <span>📖</span> <span>Reading Mode</span>
+                    </button>
+                    <button type="button" class="kn-action-btn kn-share-chapter-btn" id="knStudyShareBtn" data-chapter-id="${esc(item.id)}" data-share-mode="study" title="Share this Chapter" aria-label="Share Chapter">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle; margin-right:4px;"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg><span>Share</span>
                     </button>
                     ${(() => {
                       const mappedChapter = STUDY_ITEM_TO_CHAPTER[item.id] || CAT_TO_CHAPTER[activeCat] || CAT_TO_CHAPTER[activeDomain];
@@ -3130,6 +3160,17 @@
             <span>PDF</span>
           </button>
 
+          <button type="button" class="ron-rm-topbar-btn ron-rm-share-btn" id="ronRmShareBtn" title="Share Chapter (Reading Mode)" aria-label="Share Chapter">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+            <span class="ron-rm-btn-label">Share</span>
+          </button>
+
           <!-- Mobile Portrait Right Controls -->
           <span class="ron-rm-portrait-pct" id="ronRmPortraitPct" aria-hidden="true">0%</span>
           <button type="button" class="ron-rm-overflow-btn" id="ronRmOverflowBtn" title="Reading options menu" aria-label="Reading Options" aria-haspopup="true" aria-expanded="false">
@@ -3369,6 +3410,20 @@
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
               <span>Download Monograph PDF</span>
+            </button>
+          </div>
+
+          <!-- 7. Share Chapter -->
+          <div class="ron-rm-overflow-section">
+            <button type="button" class="ron-rm-action-row-btn" id="ronRmOverflowShareBtn" data-share-mode="reading">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+              </svg>
+              <span>Share Chapter</span>
             </button>
           </div>
         </div>
@@ -3734,6 +3789,301 @@
       window.KN_PAYMENTS.initiateChapterDownload(chapterId, chapterTitle);
     } else {
       window.open("/api/study/download-pdf?chapter_id=" + encodeURIComponent(chapterId), "_blank");
+    }
+  }
+
+  // ==========================================================================
+  // CHAPTER SHARING & SUBSCRIPTION MODAL SYSTEM
+  // ==========================================================================
+  const PROD_CANONICAL_ORIGIN = "https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev";
+
+  function getVerifiedShareOrigin() {
+    try {
+      if (typeof window !== "undefined" && window.location && window.location.origin) {
+        const origin = window.location.origin.toLowerCase();
+        if (origin.includes("knockoutnotes.com") || origin.includes("knockoutnotes-anaesthesia.workers.dev")) {
+          return window.location.origin;
+        }
+      }
+    } catch (_) {}
+    return PROD_CANONICAL_ORIGIN;
+  }
+
+  function generateChapterShareUrl(chapterId, mode) {
+    if (!chapterId && activeItem) {
+      chapterId = activeItem.id;
+    }
+    const safeMode = (mode === "reading" || isFullScreenReadingModeActive()) ? "reading" : "study";
+    const base = getVerifiedShareOrigin();
+    const cleanId = encodeURIComponent(chapterId || "overview");
+    return `${base}/study?topic=${cleanId}&mode=${safeMode}&ref=share`;
+  }
+
+  function showShareToast(message, type) {
+    let toast = document.getElementById("knShareToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "knShareToast";
+      toast.className = "kn-share-toast";
+      toast.setAttribute("role", "status");
+      toast.setAttribute("aria-live", "polite");
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.className = "kn-share-toast" + (type ? ` kn-toast-${type}` : "") + " show";
+    clearTimeout(toast._hideTimeout);
+    toast._hideTimeout = setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2800);
+  }
+
+  function copyShareUrlToClipboard(url) {
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+      navigator.clipboard.writeText(url).then(() => {
+        showShareToast("Chapter link copied to clipboard!");
+      }).catch(() => {
+        fallbackCopyShareUrl(url);
+      });
+    } else {
+      fallbackCopyShareUrl(url);
+    }
+  }
+
+  function fallbackCopyShareUrl(url) {
+    try {
+      const tempInput = document.createElement("input");
+      tempInput.style.position = "fixed";
+      tempInput.style.opacity = "0";
+      tempInput.value = url;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      const success = document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      if (success) {
+        showShareToast("Chapter link copied to clipboard!");
+      } else {
+        prompt("Copy chapter link:", url);
+      }
+    } catch (_) {
+      prompt("Copy chapter link:", url);
+    }
+  }
+
+  function executeChapterShare(chapterId, mode) {
+    const item = (chapterId && typeof activeItem !== "undefined" && activeItem && activeItem.id === chapterId)
+      ? activeItem
+      : (activeItem || (window.__ACTIVE_STUDY_ITEM || null));
+    const targetId = chapterId || (item ? item.id : "");
+    const title = item ? (item.name || item.title || "Clinical Study Chapter") : "KnockoutNotes Chapter";
+    const shareUrl = generateChapterShareUrl(targetId, mode);
+
+    const shareData = {
+      title: `${title} | KnockoutNotes`,
+      text: `Review ${title} on KnockoutNotes for Anaesthesia & Critical Care:`,
+      url: shareUrl
+    };
+
+    if (typeof navigator !== "undefined" && navigator.share) {
+      navigator.share(shareData).catch((err) => {
+        if (err && err.name !== "AbortError") {
+          copyShareUrlToClipboard(shareUrl);
+        }
+      });
+    } else {
+      copyShareUrlToClipboard(shareUrl);
+    }
+  }
+
+  let lastFocusedBeforeSubModal = null;
+
+  function ensureSharedSubscriptionModal() {
+    let modal = document.getElementById("knSharedSubModal");
+    if (modal) return modal;
+
+    modal = document.createElement("div");
+    modal.id = "knSharedSubModal";
+    modal.className = "kn-sub-modal-backdrop";
+    modal.setAttribute("role", "dialog");
+    modal.setAttribute("aria-modal", "true");
+    modal.setAttribute("aria-labelledby", "knSubModalTitle");
+    modal.setAttribute("aria-describedby", "knSubModalDesc");
+    modal.hidden = true;
+
+    modal.innerHTML = `
+      <div class="kn-sub-modal-dialog">
+        <button type="button" class="kn-sub-modal-close" id="knSubModalCloseBtn" aria-label="Close subscription dialog">×</button>
+        <div class="kn-sub-modal-badge">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span>FREE HIGH-YIELD CLINICAL UPDATES</span>
+        </div>
+        <h2 id="knSubModalTitle" class="kn-sub-modal-title">Welcome to KnockoutNotes</h2>
+        <p id="knSubModalDesc" class="kn-sub-modal-desc">
+          A colleague shared <strong id="knSubModalChapterTitle">this chapter</strong> with you. Subscribe to our free newsletter for monthly exam-focused drug reviews, clinical algorithms, and NEET SS / INI SS updates.
+        </p>
+        <form id="knSharedSubForm" class="kn-sub-modal-form" novalidate>
+          <div class="kn-sub-modal-field">
+            <label for="knSubEmailInput" class="kn-sub-modal-label">Email Address</label>
+            <input type="email" id="knSubEmailInput" name="email" class="kn-sub-modal-input" placeholder="doctor@hospital.org" required autocomplete="email" />
+            <div id="knSubEmailError" class="kn-sub-modal-error" role="alert" aria-live="polite"></div>
+          </div>
+          <div class="kn-sub-modal-actions">
+            <button type="submit" class="kn-sub-modal-submit-btn" id="knSubSubmitBtn">
+              <span>Subscribe Free</span>
+            </button>
+            <button type="button" class="kn-sub-modal-cancel-btn" id="knSubCancelBtn">
+              <span>Cancel &amp; Continue Reading</span>
+            </button>
+          </div>
+        </form>
+        <div id="knSubSuccessView" class="kn-sub-modal-success" hidden aria-live="polite">
+          <div class="kn-sub-success-icon">✓</div>
+          <h3 class="kn-sub-success-title">You're Subscribed!</h3>
+          <p class="kn-sub-success-msg">Welcome aboard. You now have full access to study this chapter and all free resources.</p>
+          <button type="button" class="kn-sub-modal-continue-btn" id="knSubContinueBtn">Continue Reading</button>
+        </div>
+        <p class="kn-sub-modal-footer-note">No spam. Unsubscribe at any time with one click.</p>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const form = modal.querySelector("#knSharedSubForm");
+    if (form) {
+      form.addEventListener("submit", handleSharedSubscriptionSubmit);
+    }
+
+    return modal;
+  }
+
+  function openSharedSubscriptionModal(item, mode) {
+    const modal = ensureSharedSubscriptionModal();
+    const chapterTitleEl = modal.querySelector("#knSubModalChapterTitle");
+    if (chapterTitleEl) {
+      const name = item ? (item.name || item.title || "this chapter") : "this chapter";
+      chapterTitleEl.textContent = name;
+    }
+
+    // Reset form state
+    const form = modal.querySelector("#knSharedSubForm");
+    const successView = modal.querySelector("#knSubSuccessView");
+    const errorEl = modal.querySelector("#knSubEmailError");
+    const input = modal.querySelector("#knSubEmailInput");
+    const submitBtn = modal.querySelector("#knSubSubmitBtn");
+
+    if (form) form.hidden = false;
+    if (successView) successView.hidden = true;
+    if (errorEl) {
+      errorEl.textContent = "";
+      errorEl.classList.remove("visible");
+    }
+    if (input) {
+      input.value = "";
+      input.classList.remove("invalid");
+    }
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = "<span>Subscribe Free</span>";
+    }
+
+    lastFocusedBeforeSubModal = document.activeElement;
+    modal.hidden = false;
+    document.body.classList.add("kn-sub-modal-open");
+
+    // Focus email input
+    setTimeout(() => {
+      if (input) input.focus();
+    }, 80);
+  }
+
+  function closeSharedSubscriptionModal() {
+    const modal = document.getElementById("knSharedSubModal");
+    if (!modal || modal.hidden) return;
+    modal.hidden = true;
+    document.body.classList.remove("kn-sub-modal-open");
+    if (lastFocusedBeforeSubModal && typeof lastFocusedBeforeSubModal.focus === "function") {
+      lastFocusedBeforeSubModal.focus();
+    }
+  }
+
+  async function handleSharedSubscriptionSubmit(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const modal = document.getElementById("knSharedSubModal");
+    if (!modal) return;
+
+    const input = modal.querySelector("#knSubEmailInput");
+    const errorEl = modal.querySelector("#knSubEmailError");
+    const submitBtn = modal.querySelector("#knSubSubmitBtn");
+    const form = modal.querySelector("#knSharedSubForm");
+    const successView = modal.querySelector("#knSubSuccessView");
+
+    if (!input) return;
+    const email = (input.value || "").trim().toLowerCase();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email || !emailRegex.test(email)) {
+      input.classList.add("invalid");
+      if (errorEl) {
+        errorEl.textContent = "Please enter a valid email address.";
+        errorEl.classList.add("visible");
+      }
+      input.focus();
+      return;
+    }
+
+    // Clear previous error
+    input.classList.remove("invalid");
+    if (errorEl) {
+      errorEl.textContent = "";
+      errorEl.classList.remove("visible");
+    }
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = "<span>Subscribing...</span>";
+    }
+
+    const chapterId = activeItem ? activeItem.id : (window.__ACTIVE_STUDY_ITEM ? window.__ACTIVE_STUDY_ITEM.id : "study");
+
+    try {
+      const resp = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email,
+          name: "",
+          sourcePage: "shared_chapter:" + chapterId
+        })
+      });
+
+      const data = await resp.json().catch(() => ({}));
+
+      if (resp.ok && (data.success !== false)) {
+        if (form) form.hidden = true;
+        if (successView) successView.hidden = false;
+        // Auto dismiss after 2.5s
+        setTimeout(() => {
+          closeSharedSubscriptionModal();
+        }, 2500);
+      } else {
+        const errorMsg = data.message || "Subscription could not be completed. Please try again.";
+        if (errorEl) {
+          errorEl.textContent = errorMsg;
+          errorEl.classList.add("visible");
+        }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = "<span>Subscribe Free</span>";
+        }
+      }
+    } catch (err) {
+      if (errorEl) {
+        errorEl.textContent = "Network error. Please check your connection and try again.";
+        errorEl.classList.add("visible");
+      }
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = "<span>Subscribe Free</span>";
+      }
     }
   }
 
@@ -4637,18 +4987,26 @@ function renderTopicsModal() {
   });
 
 document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && isFullScreenReadingModeActive()) {
-      const zoomDock = document.getElementById("ronImageZoomDock");
-      if (zoomDock && zoomDock.classList.contains("open")) {
+    if (e.key === "Escape") {
+      const subModal = document.getElementById("knSharedSubModal");
+      if (subModal && !subModal.hidden) {
+        e.preventDefault();
+        closeSharedSubscriptionModal();
         return;
       }
-      e.preventDefault();
-      if (closeAllRmPopovers()) return;
-      if (isFocusModeActive) {
-        toggleFocusMode(false);
-        return;
+      if (isFullScreenReadingModeActive()) {
+        const zoomDock = document.getElementById("ronImageZoomDock");
+        if (zoomDock && zoomDock.classList.contains("open")) {
+          return;
+        }
+        e.preventDefault();
+        if (closeAllRmPopovers()) return;
+        if (isFocusModeActive) {
+          toggleFocusMode(false);
+          return;
+        }
+        exitFullScreenReadingMode();
       }
-      exitFullScreenReadingMode();
     }
   });
 
@@ -4833,6 +5191,34 @@ document.addEventListener("keydown", (e) => {
       e.stopPropagation();
       triggerChapterPdfDownload();
       closeAllRmPopovers();
+      return;
+    }
+
+    // Share Chapter in Reading Mode (Toolbar & Overflow)
+    if (e.target.closest("#ronRmShareBtn, #ronRmOverflowShareBtn")) {
+      e.preventDefault();
+      e.stopPropagation();
+      executeChapterShare(activeItem ? activeItem.id : null, "reading");
+      closeAllRmPopovers();
+      return;
+    }
+
+    // Share Chapter in Study Mode (Action Bar, Reading Toolbar, or generic share btn)
+    const shareBtn = e.target.closest("#knStudyShareBtn, #ronTbShareBtn, .kn-share-chapter-btn");
+    if (shareBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const targetId = shareBtn.getAttribute("data-chapter-id") || (activeItem ? activeItem.id : null);
+      const shareMode = shareBtn.getAttribute("data-share-mode") || "study";
+      executeChapterShare(targetId, shareMode);
+      return;
+    }
+
+    // Subscription Modal Close & Continue triggers
+    if (e.target.closest("#knSubModalCloseBtn, #knSubCancelBtn, #knSubContinueBtn") || e.target.classList.contains("kn-sub-modal-backdrop")) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeSharedSubscriptionModal();
       return;
     }
 
@@ -5499,6 +5885,11 @@ document.addEventListener("keydown", (e) => {
     bookmarkCurrentReadingPosition: bookmarkCurrentReadingPosition,
     triggerChapterPdfDownload: triggerChapterPdfDownload,
     exitFullScreenReadingMode: exitFullScreenReadingMode,
+    shareChapter: executeChapterShare,
+    generateShareUrl: generateChapterShareUrl,
+    openSubscriptionModal: openSharedSubscriptionModal,
+    closeSubscriptionModal: closeSharedSubscriptionModal,
+    handleSubscriptionSubmit: handleSharedSubscriptionSubmit,
     isFullScreenReadingModeActive: isFullScreenReadingModeActive,
     switchDomain: switchDomain,
     selectDomainTab: selectDomainTab,
