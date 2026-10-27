@@ -102,6 +102,37 @@ html.dark,
   --panel-tint-3: rgba(0, 0, 0, 0.32);
 }
 
+.night,
+html.night,
+html[data-theme="night"],
+body.theme-night {
+  /* Restrained Red / Amber Low-Light Night Theme */
+  --bg-void: #0a0604;
+  --bg-surface: #140d08;
+  --bg-card: #1f140d;
+  --bg-glass: rgba(20, 13, 8, 0.88);
+  --text-main: #fef3c7;
+  --text-secondary: #f59e0b;
+  --text-muted: #d97706;
+  --accent-cyan: #f59e0b;
+  --accent-blue: #fbbf24;
+  --accent-indigo: #f59e0b;
+  --accent-emerald: #10b981;
+  --accent-amber: #f59e0b;
+  --accent-rose: #ef4444;
+  --border-subtle: rgba(245, 158, 11, 0.22);
+  --border-specular: rgba(245, 158, 11, 0.35);
+  --border-glow: rgba(245, 158, 11, 0.45);
+  --soft-accent: rgba(245, 158, 11, 0.15);
+  --nav-bg: rgba(14, 9, 6, 0.92);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.7);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.8);
+  --shadow-lg: 0 10px 32px rgba(0, 0, 0, 0.9);
+  --shadow-glow: 0 0 50px rgba(245, 158, 11, 0.25);
+  --box-3d-bevel: inset 0 1px 0 rgba(245, 158, 11, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+  --box-depth-hover: translateY(-4px) scale(1.008);
+}
+
 /* ==========================================================================
    Base Reset & 3D Spatial Viewport Foundation
    ========================================================================== */

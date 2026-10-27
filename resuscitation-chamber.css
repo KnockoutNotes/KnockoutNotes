@@ -1103,3 +1103,403 @@ body:not(.dark) .btn-resuscitation:hover {
 }
 
 
+
+/* ==========================================================================
+   METRONOME RATE, VOLUME & HAPTIC CONTROLS
+   ========================================================================== */
+.metronome-rate-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px 0 8px;
+}
+
+.metronome-sublabel {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.metronome-rate-pills {
+  display: inline-flex;
+  gap: 6px;
+  background: rgba(15, 23, 42, 0.6);
+  padding: 3px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-bpm-pill {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-bpm-pill:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-bpm-pill.active {
+  background: var(--accent-cyan);
+  color: #0b1120;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
+}
+
+.metronome-audio-haptics-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 6px 10px;
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.metronome-volume-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.metronome-volume-wrap input[type="range"] {
+  flex: 1;
+  height: 4px;
+  accent-color: var(--accent-cyan);
+  cursor: pointer;
+}
+
+.metronome-haptic-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.metronome-haptic-wrap input[type="checkbox"] {
+  accent-color: var(--accent-cyan);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   4. RESUSCITATION EVENT LOG (DOCUMENTATION AID)
+   ========================================================================== */
+.resuscitation-log-box {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(8, 14, 28, 0.98));
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: var(--radius-xl);
+  padding: 16px;
+  box-shadow: var(--shadow-lg), 0 0 25px rgba(56, 189, 248, 0.08);
+  margin-top: 18px;
+}
+
+.resuscitation-log-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.log-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.log-doc-badge {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.62rem;
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.log-header-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-log-action {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-secondary);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-log-action:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+.btn-log-action.btn-log-clear:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.log-disclaimer-note {
+  font-size: 0.68rem;
+  line-height: 1.35;
+  color: var(--text-muted);
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: 6px 8px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.log-quick-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.btn-quick-log {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 7px 6px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-quick-log:hover {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: var(--accent-cyan);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-quick-log.shock:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: #ef4444;
+  color: #fee2e2;
+}
+
+.btn-quick-log.rosc:hover {
+  background: rgba(34, 197, 94, 0.25);
+  border-color: #22c55e;
+  color: #dcfce7;
+}
+
+.log-custom-entry-form {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.input-custom-log {
+  flex: 1;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-main);
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  outline: none;
+}
+
+.input-custom-log:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+.btn-custom-log-submit {
+  background: var(--accent-cyan);
+  color: #0b1120;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-custom-log-submit:hover {
+  filter: brightness(1.1);
+}
+
+.log-timeline-container {
+  max-height: 180px;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  background: rgba(10, 15, 26, 0.6);
+  padding: 8px;
+}
+
+.log-empty-state {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 18px 8px;
+  font-style: italic;
+}
+
+.log-events-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.log-event-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 6px;
+  border-radius: 4px;
+  background: rgba(30, 41, 59, 0.4);
+  border-left: 2px solid var(--accent-cyan);
+  font-size: 0.72rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.log-event-time-col {
+  display: flex;
+  flex-direction: column;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.65rem;
+  min-width: 48px;
+}
+
+.log-event-code-time {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.log-event-clock-time {
+  color: var(--text-muted);
+  font-size: 0.58rem;
+}
+
+.log-event-desc-col {
+  flex: 1;
+  color: var(--text-main);
+  word-break: break-word;
+}
+
+.btn-delete-log-item {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 2px;
+  line-height: 1;
+}
+
+.btn-delete-log-item:hover {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Light Theme Overrides for Log & Metronome Controls */
+body:not(.dark) .metronome-rate-pills,
+body:not(.dark) .metronome-audio-haptics-row {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+body:not(.dark) .btn-bpm-pill {
+  color: #475569;
+}
+
+body:not(.dark) .btn-bpm-pill.active {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+}
+
+body:not(.dark) .resuscitation-log-box {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+body:not(.dark) .log-disclaimer-note {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  color: #64748b;
+}
+
+body:not(.dark) .btn-quick-log {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+body:not(.dark) .btn-quick-log:hover {
+  background: #e0f2fe;
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+body:not(.dark) .input-custom-log {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+body:not(.dark) .log-timeline-container {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+body:not(.dark) .log-event-item {
+  background: #ffffff;
+  border-color: #0284c7;
+  color: #0f172a;
+}
+
+body:not(.dark) .log-event-desc-col {
+  color: #0f172a;
+}

@@ -1,6 +1,6 @@
 {
   "name": "knockoutnotes",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Knockout Notes — Standalone Anaesthesia & Critical Care Knowledge Engine",
   "main": "index.html",
   "scripts": {

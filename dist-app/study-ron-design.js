@@ -2967,6 +2967,7 @@
             <button type="button" class="ron-rm-theme-btn" data-reading-theme-val="dark"></button>
             <button type="button" class="ron-rm-theme-btn" data-reading-theme-val="sepia"></button>
             <button type="button" class="ron-rm-theme-btn" data-reading-theme-val="light"></button>
+            <button type="button" class="ron-rm-theme-btn" data-reading-theme-val="night"></button>
           </div>
         </div>
       </nav>
@@ -3083,6 +3084,11 @@
             <strong>Sepia</strong>
             <span>Warm parchment</span>
           </button>
+          <button type="button" class="ron-rm-theme-card ron-theme-card-night" data-reading-theme-val="night" role="radio" aria-checked="false">
+            <span class="ron-theme-preview" style="background:#0a0604; color:#f59e0b; border:1px solid rgba(245,158,11,0.4);">Aa</span>
+            <strong>Night</strong>
+            <span>Amber low-light</span>
+          </button>
         </div>
       </div>
 
@@ -3147,6 +3153,7 @@
               <button type="button" class="ron-rm-segment-btn" data-reading-theme-val="light">☀️ Light</button>
               <button type="button" class="ron-rm-segment-btn" data-reading-theme-val="dark">🌙 Dark</button>
               <button type="button" class="ron-rm-segment-btn" data-reading-theme-val="sepia">📜 Sepia</button>
+              <button type="button" class="ron-rm-segment-btn" data-reading-theme-val="night">🔥 Night</button>
             </div>
           </div>
 
@@ -3333,7 +3340,8 @@
   }
 
   function setReadingTheme(theme) {
-    if (!["dark", "sepia", "light"].includes(theme)) theme = "light";
+    if (!["dark", "sepia", "light", "night", "amber"].includes(theme)) theme = "light";
+    if (theme === "amber") theme = "night";
     activeReadingTheme = theme;
     safeStorageSet(RM_STORAGE.theme, theme);
     const overlay = document.getElementById("ronReadingModeOverlay");
@@ -3341,7 +3349,7 @@
       overlay.setAttribute("data-reading-theme", theme);
       const themeIcon = document.getElementById("ronRmThemeIcon");
       if (themeIcon) {
-        themeIcon.textContent = theme === "dark" ? "☀️" : (theme === "sepia" ? "📜" : "🌙");
+        themeIcon.textContent = theme === "dark" ? "☀️" : (theme === "sepia" ? "📜" : (theme === "night" ? "🔥" : "🌙"));
       }
       const themeBtns = document.querySelectorAll("[data-reading-theme-val]");
       themeBtns.forEach((btn) => {
@@ -3353,7 +3361,7 @@
   }
 
   function toggleReadingTheme() {
-    const nextTheme = activeReadingTheme === "dark" ? "light" : (activeReadingTheme === "light" ? "sepia" : "dark");
+    const nextTheme = activeReadingTheme === "light" ? "sepia" : (activeReadingTheme === "sepia" ? "dark" : (activeReadingTheme === "dark" ? "night" : "light"));
     setReadingTheme(nextTheme);
   }
 

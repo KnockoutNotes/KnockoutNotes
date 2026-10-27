@@ -4610,7 +4610,7 @@ body.ron-reading-fullscreen-active {
 
 /* 1. Light Theme (Default clean medical reader) */
 .ron-reading-fullscreen-overlay[data-reading-theme="light"],
-.ron-reading-fullscreen-overlay:not([data-reading-theme="dark"]):not([data-reading-theme="sepia"]) {
+.ron-reading-fullscreen-overlay:not([data-reading-theme="dark"]):not([data-reading-theme="sepia"]):not([data-reading-theme="night"]) {
   --rm-bg: #ffffff;
   --rm-surface: #ffffff;
   --rm-surface-elevated: #ffffff;
@@ -4701,6 +4701,39 @@ body.ron-reading-fullscreen-active {
   --rm-accent-pill-bg: rgba(140, 75, 24, 0.12);
   --rm-accent-pill-text: #8C4B18;
   --rm-popover-shadow: 0 14px 36px rgba(110, 88, 73, 0.22);
+  background: var(--rm-bg) !important;
+  color: var(--rm-text) !important;
+}
+
+/* 4. Night Theme (Restrained Red / Amber Palette for Low-Light Dark Environments) */
+.ron-reading-fullscreen-overlay[data-reading-theme="night"],
+.ron-reading-fullscreen-overlay[data-reading-theme="amber"] {
+  --rm-bg: #0a0604;
+  --rm-surface: #140d08;
+  --rm-surface-elevated: #1f140d;
+  --rm-text: #fef3c7;
+  --rm-text-muted: #d97706;
+  --rm-heading: #f59e0b;
+  --rm-heading-strong: #fbbf24;
+  --rm-accent: #f59e0b;
+  --rm-link: #fbbf24;
+  --rm-border: rgba(245, 158, 11, 0.28);
+  --rm-border-light: rgba(245, 158, 11, 0.14);
+  --rm-pearl-bg: rgba(239, 68, 68, 0.12);
+  --rm-pearl-border: rgba(248, 113, 113, 0.45);
+  --rm-pearl-text: #fee2e2;
+  --rm-source-bg: #140d08;
+  --rm-table-header-bg: #1f140d;
+  --rm-btn-border: rgba(245, 158, 11, 0.35);
+  --rm-btn-bg: #140d08;
+  --rm-btn-hover: #1f140d;
+  --rm-exit-bg: rgba(220, 38, 38, 0.18);
+  --rm-exit-border: rgba(239, 68, 68, 0.55);
+  --rm-exit-text: #fca5a5;
+  --rm-progress-bar: #f59e0b;
+  --rm-accent-pill-bg: rgba(245, 158, 11, 0.18);
+  --rm-accent-pill-text: #fbbf24;
+  --rm-popover-shadow: 0 16px 42px rgba(0, 0, 0, 0.85);
   background: var(--rm-bg) !important;
   color: var(--rm-text) !important;
 }
@@ -4930,6 +4963,12 @@ body.ron-reading-fullscreen-active {
 .ron-reading-fullscreen-overlay[data-reading-theme="sepia"] .ron-rm-pdf-btn {
   background: #8C4B18 !important;
   border-color: #8C4B18 !important;
+  color: #ffffff !important;
+}
+
+.ron-reading-fullscreen-overlay[data-reading-theme="night"] .ron-rm-pdf-btn {
+  background: #b45309 !important;
+  border-color: #f59e0b !important;
   color: #ffffff !important;
 }
 
@@ -5237,9 +5276,15 @@ body.ron-reading-fullscreen-active {
 /* Theme Cards Grid */
 .ron-rm-theme-grid {
   display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
+  grid-template-columns: repeat(4, 1fr) !important;
   gap: 8px !important;
   margin-top: 6px !important;
+}
+
+@media (max-width: 480px) {
+  .ron-rm-theme-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
 
 .ron-rm-theme-card {
@@ -5369,6 +5414,12 @@ body.ron-reading-fullscreen-active {
   border-color: #8C4B18 !important;
 }
 
+.ron-reading-fullscreen-overlay[data-reading-theme="night"] .ron-rm-action-row-btn.ron-rm-action-primary {
+  background: #f59e0b !important;
+  border-color: #fbbf24 !important;
+  color: #0a0604 !important;
+}
+
 /* ------------------------------------------------------------ Sections TOC Drawer */
 .ron-rm-toc-dropdown {
   position: absolute;
@@ -5492,6 +5543,13 @@ body.ron-reading-fullscreen-active {
 .ron-reading-fullscreen-overlay[data-reading-theme="sepia"] .ron-rm-toast {
   background: #2D241E !important;
   color: #FBF0D9 !important;
+}
+
+.ron-reading-fullscreen-overlay[data-reading-theme="night"] ~ .ron-rm-toast,
+.ron-reading-fullscreen-overlay[data-reading-theme="night"] .ron-rm-toast {
+  background: #140d08 !important;
+  border-color: #f59e0b !important;
+  color: #fef3c7 !important;
 }
 
 /* ------------------------------------------------------------ Main Scroll Viewport & Content */

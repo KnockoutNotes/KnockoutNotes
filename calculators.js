@@ -315,7 +315,8 @@
       ibw,
       adjbw,
       formula: "[(140 - Age) × Weight (kg)] ÷ [72 × Serum Creatinine (mg/dL)] × (0.85 if female)",
-      limitations: "Cockcroft-Gault estimates creatinine clearance, NOT standardized eGFR (CKD-EPI). It may overestimate GFR in cirrhosis or low muscle mass, and underestimate in acute kidney injury before steady state is reached."
+      limitations: "Cockcroft-Gault estimates creatinine clearance, NOT standardized eGFR (CKD-EPI). It may overestimate GFR in cirrhosis or low muscle mass, and underestimate in acute kidney injury before steady state is reached.",
+      pediatricAdvisory: age < 18 ? "Note: Cockcroft-Gault is validated for adult patients (≥18 years). In paediatric patients, use bedside Schwartz formula." : null
     };
   }
 
@@ -545,6 +546,7 @@
       next16hRate,
       fluidType: "Balanced Crystalloid (Ringer's Lactate / Hartmann's solution)",
       clinicalEndpoints: "Adult target urine output: 0.5 mL/kg/h (30–50 mL/h). Titrate hourly infusion rate strictly against urine output and haemodynamics, NOT blindly by formula.",
+      pediatricConsideration: wt < 30 ? "In children (<30 kg), add maintenance IV fluid containing dextrose (e.g. D5¼NS or D5LR) to prevent hypoglycemia, and target urine output 1.0 mL/kg/h (ABA guidelines)." : null,
       warning: "CRITICAL: The 8-hour clock begins from the TIME OF INJURY, not hospital arrival. Formula applies to 2nd and 3rd degree burns only.",
       formula: "Total 24h = 4 mL × Weight (kg) × % TBSA burned (1st half in first 8h from burn; 2nd half in subsequent 16h)",
       source: "Baxter CR, Shires T. Ann NY Acad Sci 1968;150:874-894."

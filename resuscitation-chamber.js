@@ -14,6 +14,16 @@
   let isMetronomeRunning = false;
   let currentBpm = 110; // Default adult/pals 110 bpm; neonatal 120 bpm (3:1)
   let metronomeCount = 0;
+  let metronomeVolume = 0.5;
+  try {
+    const savedVol = localStorage.getItem("kn-metronome-volume");
+    if (savedVol !== null) metronomeVolume = Math.min(1, Math.max(0, parseFloat(savedVol)));
+  } catch (_) {}
+
+  let hapticsEnabled = false;
+  try {
+    hapticsEnabled = localStorage.getItem("kn-cpr-haptics") === "true";
+  } catch (_) {}
 
   // Look-ahead Web Audio Scheduler parameters
   const LOOKAHEAD_INTERVAL_MS = 25.0; // How frequently scheduler runs (ms)
@@ -43,13 +53,13 @@
 
       // Distinct pitch every 30 beats
       osc.frequency.setValueAtTime(isAccent ? 1046.5 : 880, time);
-      gain.gain.setValueAtTime(0.3, time);
+      gain.gain.setValueAtTime(0.3 * metronomeVolume, time);
       gain.gain.exponentialRampToValueAtTime(0.001, time + 0.06);
 
       osc.start(time);
       osc.stop(time + 0.07);
 
-      // Schedule UI flash in sync with audio tick
+      // Schedule UI flash and optional haptic pulse in sync with audio tick
       const timeUntilBeat = Math.max(0, (time - audioCtx.currentTime) * 1000);
       setTimeout(() => {
         if (!isMetronomeRunning) return;
@@ -60,6 +70,13 @@
         }
         const countEl = document.getElementById('metronomeCount');
         if (countEl) countEl.textContent = beatNumber;
+
+        // Optional haptic vibration feedback for supported touch devices
+        if (hapticsEnabled && 'vibrate' in navigator) {
+          try {
+            navigator.vibrate(isAccent ? 40 : 20);
+          } catch (_) {}
+        }
       }, timeUntilBeat);
     } catch (e) {
       console.warn('Audio tick scheduling error:', e);
@@ -212,10 +229,16 @@
       gain.connect(audioCtx.destination);
       osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
       osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.15); // A5
-      gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.4 * metronomeVolume, audioCtx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
       osc.start();
       osc.stop(audioCtx.currentTime + 0.42);
+
+      if (hapticsEnabled && 'vibrate' in navigator) {
+        try {
+          navigator.vibrate([150, 50, 150]);
+        } catch (_) {}
+      }
     } catch (_) {}
   }
 
@@ -282,6 +305,7 @@
     cycleSecondsLeft = 120;
     playCycleAlarm();
     updateCycleDisplay();
+    addResuscitationEvent('Rescuer Rotation (Compressor Switched)');
     if (!isTimerRunning) {
       startCycleTimer();
     }
@@ -1042,6 +1066,204 @@
   // --------------------------------------------------------------------------
   // 6. Navigation Tabs Wiring
   // --------------------------------------------------------------------------
+
+  // --------------------------------------------------------------------------
+  // Metronome Settings & Auto-Cleanup
+  // --------------------------------------------------------------------------
+  function setBpm(newBpm) {
+    currentBpm = parseInt(newBpm, 10) || 110;
+    const bpmVal = document.querySelector(".metronome-bpm-val");
+    if (bpmVal) bpmVal.innerHTML = `${currentBpm} <span style="font-size: 0.65rem; color: var(--text-secondary);">BPM</span>`;
+    const btnTog = document.getElementById("btnToggleMetronome");
+    if (btnTog && !isMetronomeRunning) {
+      btnTog.innerHTML = `<span>▶</span> Start Metronome (${currentBpm} BPM)`;
+    }
+    document.querySelectorAll(".btn-bpm-pill").forEach(pill => {
+      pill.classList.toggle("active", parseInt(pill.dataset.bpm, 10) === currentBpm);
+    });
+    if (isMetronomeRunning) {
+      stopMetronome();
+      startMetronome();
+    }
+  }
+
+  function setMetronomeVolume(vol) {
+    metronomeVolume = Math.min(1.0, Math.max(0.0, parseFloat(vol) || 0.0));
+    try {
+      localStorage.setItem("kn-metronome-volume", String(metronomeVolume));
+    } catch (_) {}
+    const volVal = document.getElementById("volVal");
+    if (volVal) {
+      volVal.textContent = Math.round(metronomeVolume * 100) + "%";
+    }
+    const volIcon = document.getElementById("volIcon");
+    if (volIcon) {
+      volIcon.textContent = metronomeVolume === 0 ? "🔇" : (metronomeVolume < 0.4 ? "🔉" : "🔊");
+    }
+  }
+
+  function setHapticsEnabled(enabled) {
+    hapticsEnabled = !!enabled;
+    try {
+      localStorage.setItem("kn-cpr-haptics", hapticsEnabled ? "true" : "false");
+    } catch (_) {}
+  }
+
+  // Auto-cleanup audio and timers on navigation / page hide to prevent background audio leaks
+  function cleanupEmergencyAudio() {
+    stopMetronome();
+    pauseCycleTimer();
+  }
+  window.addEventListener("pagehide", cleanupEmergencyAudio);
+  window.addEventListener("beforeunload", cleanupEmergencyAudio);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden && isMetronomeRunning) {
+      stopMetronome();
+    }
+  });
+
+  // --------------------------------------------------------------------------
+  // 4. Timestamped Resuscitation Event Log Engine (Documentation Aid)
+  // --------------------------------------------------------------------------
+  let resuscitationEvents = [];
+
+  function loadResuscitationEvents() {
+    try {
+      const raw = sessionStorage.getItem("kn_resuscitation_events");
+      if (raw) resuscitationEvents = JSON.parse(raw);
+    } catch (_) {
+      resuscitationEvents = [];
+    }
+  }
+
+  function saveResuscitationEvents() {
+    try {
+      sessionStorage.setItem("kn_resuscitation_events", JSON.stringify(resuscitationEvents));
+    } catch (_) {}
+  }
+
+  function formatCodeTime(sec) {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `+${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`;
+  }
+
+  function addResuscitationEvent(description) {
+    if (!description || !description.trim()) return;
+    const now = new Date();
+    const evt = {
+      id: "evt_" + Date.now() + "_" + Math.random().toString(36).substr(2, 4),
+      timestamp: now.toISOString(),
+      clockTime: now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }),
+      elapsedSeconds: totalElapsedSeconds,
+      codeTime: formatCodeTime(totalElapsedSeconds),
+      description: description.trim()
+    };
+    resuscitationEvents.push(evt);
+    saveResuscitationEvents();
+    renderResuscitationLog();
+
+    if (hapticsEnabled && "vibrate" in navigator) {
+      try { navigator.vibrate(35); } catch (_) {}
+    }
+  }
+
+  function deleteResuscitationEvent(id) {
+    resuscitationEvents = resuscitationEvents.filter(e => e.id !== id);
+    saveResuscitationEvents();
+    renderResuscitationLog();
+  }
+
+  function clearResuscitationLog() {
+    if (resuscitationEvents.length === 0) return;
+    if (confirm("Clear all recorded events for this resuscitation session?")) {
+      resuscitationEvents = [];
+      saveResuscitationEvents();
+      renderResuscitationLog();
+    }
+  }
+
+  function exportResuscitationLog() {
+    if (resuscitationEvents.length === 0) {
+      alert("No events recorded in the current resuscitation session.");
+      return;
+    }
+    const dateStr = new Date().toISOString().split("T")[0];
+    const totalM = Math.floor(totalElapsedSeconds / 60);
+    const totalS = totalElapsedSeconds % 60;
+    const durationStr = `${totalM < 10 ? "0" : ""}${totalM}:${totalS < 10 ? "0" : ""}${totalS}`;
+
+    let out = "============================================================\n";
+    out += "KNOCKOUTNOTES // RESUSCITATION EVENT LOG (CLINICAL DOCUMENTATION AID)\n";
+    out += "============================================================\n";
+    out += `Session Date: ${dateStr}\n`;
+    out += `Total Elapsed Code Duration: ${durationStr}\n`;
+    out += `Total Recorded Events: ${resuscitationEvents.length}\n\n`;
+    out += "LEGAL & CLINICAL NOTICE:\n";
+    out += "Documentation aid only. Not a clinical treatment recommendation or substitute\n";
+    out += "for clinical judgement. No patient-identifiable data is collected or transmitted.\n";
+    out += "------------------------------------------------------------\n";
+    out += "CODE TIME | CLOCK TIME | EVENT DESCRIPTION\n";
+    out += "------------------------------------------------------------\n";
+    resuscitationEvents.forEach((e, idx) => {
+      out += `${e.codeTime}   | ${e.clockTime}   | #${idx + 1}: ${e.description}\n`;
+    });
+    out += "============================================================\n";
+    out += "Generated by KnockoutNotes Interactive Resuscitation Chamber\n";
+
+    const blob = new Blob([out], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `resuscitation_log_${dateStr}_${Date.now()}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1500);
+  }
+
+  function renderResuscitationLog() {
+    const emptyEl = document.getElementById("logEmptyState");
+    const listEl = document.getElementById("logEventsList");
+    if (!listEl || !emptyEl) return;
+
+    if (resuscitationEvents.length === 0) {
+      emptyEl.hidden = false;
+      listEl.hidden = true;
+      listEl.innerHTML = "";
+      return;
+    }
+
+    emptyEl.hidden = true;
+    listEl.hidden = false;
+    listEl.innerHTML = "";
+
+    resuscitationEvents.forEach((evt) => {
+      const li = document.createElement("li");
+      li.className = "log-event-item";
+      li.innerHTML = `
+        <div class="log-event-time-col">
+          <span class="log-event-code-time">${evt.codeTime}</span>
+          <span class="log-event-clock-time">${evt.clockTime}</span>
+        </div>
+        <div class="log-event-desc-col">
+          <span class="log-event-text">${evt.description}</span>
+        </div>
+        <button type="button" class="btn-delete-log-item" data-id="${evt.id}" title="Remove entry" aria-label="Remove entry">✕</button>
+      `;
+      listEl.appendChild(li);
+    });
+
+    listEl.querySelectorAll(".btn-delete-log-item").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        deleteResuscitationEvent(btn.dataset.id);
+      });
+    });
+
+    listEl.scrollTop = listEl.scrollHeight;
+  }
+
   function initTabs() {
     const patientTabs = document.querySelectorAll('.chamber-tab-btn');
     patientTabs.forEach(btn => {
@@ -1103,6 +1325,64 @@
     if (btnResetTimer) {
       btnResetTimer.addEventListener('click', resetCycleTimer);
     }
+
+    // Rate selection pills (100, 110, 120 BPM)
+    document.querySelectorAll('.btn-bpm-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        setBpm(pill.dataset.bpm);
+      });
+    });
+
+    // Volume slider & indicator
+    const volSlider = document.getElementById('metronomeVolSlider');
+    if (volSlider) {
+      volSlider.value = metronomeVolume;
+      setMetronomeVolume(metronomeVolume);
+      volSlider.addEventListener('input', (e) => {
+        setMetronomeVolume(e.target.value);
+      });
+    }
+
+    // Haptics checkbox
+    const chkHaptic = document.getElementById('chkMetronomeHaptic');
+    if (chkHaptic) {
+      if (!('vibrate' in navigator)) {
+        chkHaptic.disabled = true;
+        chkHaptic.parentElement.title = "Haptic feedback not supported on this device/browser";
+      } else {
+        chkHaptic.checked = hapticsEnabled;
+        chkHaptic.addEventListener('change', (e) => {
+          setHapticsEnabled(e.target.checked);
+        });
+      }
+    }
+
+    // Quick log action buttons
+    document.querySelectorAll('.btn-quick-log').forEach(btn => {
+      btn.addEventListener('click', () => {
+        addResuscitationEvent(btn.dataset.event);
+      });
+    });
+
+    // Custom note entry form
+    const formCustom = document.getElementById('formCustomLog');
+    const inputCustom = document.getElementById('inputCustomLog');
+    if (formCustom && inputCustom) {
+      formCustom.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const val = inputCustom.value.trim();
+        if (val) {
+          addResuscitationEvent(val);
+          inputCustom.value = '';
+        }
+      });
+    }
+
+    // Clear and Export log buttons
+    const btnExport = document.getElementById('btnExportLog');
+    if (btnExport) btnExport.addEventListener('click', exportResuscitationLog);
+    const btnClear = document.getElementById('btnClearLog');
+    if (btnClear) btnClear.addEventListener('click', clearResuscitationLog);
   }
 
   // --------------------------------------------------------------------------
@@ -1113,6 +1393,8 @@
     initChecklist();
     renderFlowchart();
     updateCycleDisplay();
+    loadResuscitationEvents();
+    renderResuscitationLog();
     startCycleTimer(); // Auto-start the 2-minute cycle timer for immediate emergency readiness
   });
 
@@ -1125,6 +1407,14 @@
     startCycleTimer,
     pauseCycleTimer,
     toggleCycleTimer,
-    resetCycleTimer
+    resetCycleTimer,
+    setBpm,
+    setMetronomeVolume,
+    setHapticsEnabled,
+    addResuscitationEvent,
+    deleteResuscitationEvent,
+    clearResuscitationLog,
+    exportResuscitationLog,
+    getResuscitationEvents: () => [...resuscitationEvents]
   };
 })();

@@ -5,7 +5,7 @@
 // - Stale-While-Revalidate with safe response cloning for static app shell assets
 // ==========================================================================
 
-const CACHE_NAME = "knockoutnotes-cache-v114";
+const CACHE_NAME = "knockoutnotes-cache-v115";
 
 const PRECACHE_ASSETS = [
   "/",
@@ -130,6 +130,25 @@ const CORE_APP_SHELL = new Set([
   "/manifest.json"
 ]);
 
+// Safe cache write with QuotaExceededError recovery
+async function safeCachePut(cache, request, response) {
+  try {
+    await cache.put(request, response);
+  } catch (err) {
+    if (err && (err.name === "QuotaExceededError" || err.code === 22)) {
+      console.warn("[SW] Cache storage quota exceeded; clearing older caches to preserve core storage.");
+      try {
+        const names = await caches.keys();
+        for (const name of names) {
+          if (name !== CACHE_NAME) {
+            await caches.delete(name);
+          }
+        }
+      } catch (_) {}
+    }
+  }
+}
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(async (cache) => {
@@ -141,7 +160,7 @@ self.addEventListener("install", (event) => {
           if (!response || response.status !== 200) {
             throw new Error(`[SW Precache] Failed to fetch essential core asset: ${url}`);
           }
-          await cache.put(url, response);
+          await safeCachePut(cache, url, response);
         })
       );
 
@@ -151,7 +170,7 @@ self.addEventListener("install", (event) => {
         try {
           const response = await fetch(url, { credentials: "same-origin" });
           if (response && response.status === 200) {
-            await cache.put(url, response);
+            await safeCachePut(cache, url, response);
           }
         } catch (err) {
           console.warn("[SW Precache] Non-blocking secondary asset fetch notice:", url, err && err.message);
@@ -196,9 +215,12 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Bypass API routes, Admin routes, and Verification/Unsubscribe endpoints
+  // Bypass API routes, Admin routes, SEO endpoints, and Verification/Unsubscribe endpoints
   if (requestUrl.pathname.startsWith("/api/") || 
       requestUrl.pathname.startsWith("/admin") ||
+      requestUrl.pathname === "/sitemap.xml" ||
+      requestUrl.pathname === "/sitemap_index.xml" ||
+      requestUrl.pathname === "/robots.txt" ||
       requestUrl.pathname.startsWith("/subscribe/verify") ||
       requestUrl.pathname.startsWith("/unsubscribe")) {
     return;
@@ -216,7 +238,7 @@ self.addEventListener("fetch", (event) => {
           if (networkResponse && networkResponse.status === 200) {
             const responseToCache = networkResponse.clone();
             caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, responseToCache).catch(() => {});
+              safeCachePut(cache, event.request, responseToCache);
             }).catch(() => {});
           }
           return networkResponse;
@@ -250,7 +272,7 @@ self.addEventListener("fetch", (event) => {
               if (networkResponse && networkResponse.status === 200) {
                 const responseToCache = networkResponse.clone();
                 caches.open(CACHE_NAME).then((cache) => {
-                  cache.put(event.request, responseToCache).catch(() => {});
+                  safeCachePut(cache, event.request, responseToCache);
                 }).catch(() => {});
               }
             })
@@ -266,7 +288,7 @@ self.addEventListener("fetch", (event) => {
 
         const responseToCache = networkResponse.clone();
         caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache).catch(() => {});
+          safeCachePut(cache, event.request, responseToCache);
         }).catch(() => {});
 
         return networkResponse;

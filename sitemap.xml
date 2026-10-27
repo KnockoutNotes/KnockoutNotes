@@ -2,122 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/study</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.95</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/critical-care</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/drugs</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/notes</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/calculators</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/ventilator</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/resuscitation-chamber</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/regional-anaesthesia</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/crisis</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/pearls</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/viva</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/pricing</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/resources</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/recent-updates</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.70</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/contact</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.60</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/privacy-policy</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/terms-and-conditions</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/refund-policy</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/shipping-policy</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
+    <lastmod>2026-10-27</lastmod>
   </url>
 </urlset>

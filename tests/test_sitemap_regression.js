@@ -89,7 +89,12 @@ console.log('\n[TEST 1] Standard GET /sitemap.xml...');
   assert.equal(res.status, 200, 'Must return HTTP 200');
   assert.equal(res.headers.get('content-type'), 'application/xml; charset=utf-8');
   assert.equal(res.headers.get('x-content-type-options'), 'nosniff');
-  assert.equal(res.headers.get('cache-control'), 'public, max-age=3600, stale-while-revalidate=86400');
+  assert.equal(res.headers.get('cache-control'), 'public, max-age=3600, s-maxage=3600');
+  assert.equal(res.headers.get('x-robots-tag'), 'all');
+  assert.equal(res.headers.get('access-control-allow-origin'), '*');
+  assert.equal(res.headers.get('cache-control'), 'public, max-age=3600, s-maxage=3600');
+  assert.equal(res.headers.get('x-robots-tag'), 'all');
+  assert.equal(res.headers.get('access-control-allow-origin'), '*');
   assert.equal(res.headers.has('content-encoding'), false, 'Stale content-encoding must be stripped');
 
   const text = await res.text();
@@ -154,6 +159,9 @@ console.log('\n[TEST 4] HEAD request for /sitemap.xml...');
   assert.equal(res.status, 200, 'Must return HTTP 200');
   assert.equal(res.headers.get('content-type'), 'application/xml; charset=utf-8');
   assert.equal(res.headers.get('x-content-type-options'), 'nosniff');
+  assert.equal(res.headers.get('cache-control'), 'public, max-age=3600, s-maxage=3600');
+  assert.equal(res.headers.get('x-robots-tag'), 'all');
+  assert.equal(res.headers.get('access-control-allow-origin'), '*');
   const body = await res.text();
   assert.equal(body, '', 'HEAD response must have an empty body');
   console.log('  PASS: HEAD returned 200 OK with appropriate XML headers and empty body');
@@ -255,11 +263,30 @@ console.log('\n[TEST 10] robots.txt GET and HEAD...');
   const resGet = await worker.fetch(reqGet, env, {});
   assert.equal(resGet.status, 200);
   assert.equal(resGet.headers.get('content-type'), 'text/plain; charset=utf-8');
+  assert.equal(resGet.headers.get('x-robots-tag'), 'all');
+  assert.equal(resGet.headers.get('access-control-allow-origin'), '*');
   const bodyGet = await resGet.text();
   assert.ok(bodyGet.includes('Sitemap: https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/sitemap.xml'));
+  assert.ok(bodyGet.includes('Allow: /'));
   assert.ok(bodyGet.includes('Disallow: /admin/'));
 
   console.log('  PASS: robots.txt GET works with valid Sitemap reference and directives preserved');
+}
+
+// --------------------------------------------------------------------------
+// TEST 10b: sitemap_index.xml fallback to sitemap.xml
+// --------------------------------------------------------------------------
+console.log('\n[TEST 10b] GET /sitemap_index.xml...');
+{
+  const env = { ASSETS: createMockAssets() };
+  const req = new Request('https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/sitemap_index.xml', { method: 'GET' });
+  const res = await worker.fetch(req, env, {});
+  assert.equal(res.status, 200);
+  assert.equal(res.headers.get('content-type'), 'application/xml; charset=utf-8');
+  assert.equal(res.headers.get('x-robots-tag'), 'all');
+  const text = await res.text();
+  assert.ok(text.includes('<urlset'), 'Must return valid XML sitemap body');
+  console.log('  PASS: /sitemap_index.xml returns 200 with valid sitemap XML body');
 }
 
 // --------------------------------------------------------------------------

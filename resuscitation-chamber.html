@@ -242,6 +242,29 @@
                 </div>
               </div>
 
+              <!-- Rate Selection Controls -->
+              <div class="metronome-rate-selector" role="group" aria-label="CPR Compression Rate Target">
+                <span class="metronome-sublabel">RATE:</span>
+                <div class="metronome-rate-pills">
+                  <button type="button" class="btn-bpm-pill" data-bpm="100">100</button>
+                  <button type="button" class="btn-bpm-pill active" data-bpm="110">110</button>
+                  <button type="button" class="btn-bpm-pill" data-bpm="120">120</button>
+                </div>
+              </div>
+
+              <!-- Volume & Optional Haptics Row -->
+              <div class="metronome-audio-haptics-row">
+                <div class="metronome-volume-wrap" title="Metronome Audio Volume">
+                  <span id="volIcon">🔊</span>
+                  <input type="range" id="metronomeVolSlider" min="0" max="1" step="0.05" value="0.5" aria-label="Metronome volume">
+                  <span id="volVal">50%</span>
+                </div>
+                <label class="metronome-haptic-wrap" title="Optional subtle haptic pulse on chest compression beats">
+                  <input type="checkbox" id="chkMetronomeHaptic">
+                  <span>📳 Haptic</span>
+                </label>
+              </div>
+
               <button class="btn-cinematic primary metronome-btn-toggle" id="btnToggleMetronome">
                 <span>▶</span> Start Metronome (110 BPM)
               </button>
@@ -328,6 +351,49 @@
                   <input type="checkbox">
                   <span><strong>Thrombosis (Coronary):</strong> Urgent PCI transfer</span>
                 </label>
+              </div>
+            </div>
+
+            <!-- 4. Timestamped Resuscitation Event Log (Documentation Aid) -->
+            <div class="resuscitation-log-box" id="resuscitationLogBox">
+              <div class="resuscitation-log-header">
+                <div class="log-title-wrap">
+                  <span class="checklist-title">📋 Resuscitation Event Log</span>
+                  <span class="log-doc-badge" title="Clinical documentation aid only">Documentation Aid</span>
+                </div>
+                <div class="log-header-actions">
+                  <button type="button" class="btn-log-action" id="btnExportLog" title="Export event log as text file">Export</button>
+                  <button type="button" class="btn-log-action btn-log-clear" id="btnClearLog" title="Clear recorded resuscitation events">Clear</button>
+                </div>
+              </div>
+
+              <div class="log-disclaimer-note">
+                <span class="disclaimer-icon">ℹ️</span>
+                <span>Documentation aid only. Not a treatment recommendation or substitute for clinical judgement. No patient-identifiable data is collected, stored, or transmitted.</span>
+              </div>
+
+              <!-- Quick Log Entry Buttons -->
+              <div class="log-quick-buttons" role="group" aria-label="Quick Clinical Event Buttons">
+                <button type="button" class="btn-quick-log" data-event="Epinephrine 1 mg IV/IO">💉 Epi 1mg</button>
+                <button type="button" class="btn-quick-log shock" data-event="Defibrillation / Shock 200 J">⚡ Shock 200J</button>
+                <button type="button" class="btn-quick-log" data-event="Amiodarone 300 mg IV/IO">💉 Amio 300mg</button>
+                <button type="button" class="btn-quick-log" data-event="Amiodarone 150 mg IV/IO">💉 Amio 150mg</button>
+                <button type="button" class="btn-quick-log" data-event="Advanced Airway Secured (ETT/SGA)">🫁 Airway</button>
+                <button type="button" class="btn-quick-log" data-event="Rhythm / Pulse Check">🩺 Rhythm Check</button>
+                <button type="button" class="btn-quick-log rosc" data-event="ROSC (Return of Spontaneous Circulation)">🌟 ROSC</button>
+                <button type="button" class="btn-quick-log" data-event="Rescuer Rotation (Compressor Switched)">🔄 Switch Rescuer</button>
+              </div>
+
+              <!-- Custom Note Input -->
+              <form class="log-custom-entry-form" id="formCustomLog" onsubmit="return false;">
+                <input type="text" id="inputCustomLog" class="input-custom-log" placeholder="Custom event (e.g. IO left tibia, arterial line)..." maxlength="120" autocomplete="off">
+                <button type="submit" class="btn-custom-log-submit" id="btnAddCustomLog">+ Add</button>
+              </form>
+
+              <!-- Recorded Events Timeline List -->
+              <div class="log-timeline-container" id="logTimelineContainer" role="log" aria-live="polite">
+                <div class="log-empty-state" id="logEmptyState">No events recorded yet. Tap quick action buttons above to record clinical interventions.</div>
+                <ul class="log-events-list" id="logEventsList" hidden></ul>
               </div>
             </div>
 
