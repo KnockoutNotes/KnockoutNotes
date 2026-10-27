@@ -111,11 +111,22 @@ function runTests() {
   assert(studyData.includes('Active Fluid De-resuscitation'), 'Active fluid de-resuscitation guidance present');
   assert(studyData.includes('Procalcitonin (PCT) Stewardship') || studyData.includes('Procalcitonin (PCT) Role'), 'Procalcitonin stewardship role present');
 
-  // Phase 2 Content Checks: SDD/SOD, Pediatric Sepsis Steroids, Blood Purification
+  // Phase 2 / 2.1 Content Checks: SDD/SOD, Pediatric Sepsis Steroids, Blood Purification
   assert(studyData.includes('Selective Decontamination in ICU (SDD vs SOD)'), 'Selective Decontamination in ICU (SDD vs SOD) curriculum present');
   assert(studyData.includes('SuDDICU Randomized Clinical Trial'), 'SuDDICU trial results cited in SDD section');
-  assert(studyData.includes('Pediatric Surviving Sepsis Campaign (pSSC 2020) Guidelines'), 'pSSC 2020 pediatric sepsis steroid guidance present');
-  assert(studyData.includes('Surrogate Biomarkers vs Patient-Centered Outcomes'), 'Blood purification distinguishes surrogate biomarkers from clinical outcomes');
+  assert(studyData.includes('odds ratio [OR] 0.91, 95% CI 0.82–1.02; p = 0.10'), 'Accurate SuDDICU statistical results documented');
+  assert(!studyData.includes('STRICTLY NOT RECOMMENDED by the Indian Society'), 'No unverified universal ISCCM mandate claim');
+  assert(!studyData.includes('> 50% ESBL'), 'No arbitrary unsubstantiated ESBL threshold');
+  assert(studyData.includes('settings with low baseline antimicrobial resistance'), 'SDD bounded to settings with low baseline AMR');
+
+  assert(studyData.includes('Pediatric Surviving Sepsis Campaign Guidelines (pSSC 2020 / 2026)'), 'pSSC 2020/2026 pediatric sepsis steroid guidance present');
+  assert(studyData.includes('evidence is insufficient to issue a recommendation for or against treatment'), 'pSSC evidence insufficiency in persistent shock documented');
+  assert(studyData.includes('Stress-dose corticosteroids SHOULD be administered in children with suspected or documented adrenal insufficiency'), 'Stress-dose corticosteroids indicated for adrenal insufficiency');
+  assert(!studyData.includes('NEVER use adult fixed 200 mg/d in children!'), 'Categorical contraindication phrasing replaced with weight-based rationale');
+
+  assert(studyData.includes('Clinical Trial Evidence & Evidence Certainty'), 'Blood purification section accurately details evidence certainty');
+  assert(studyData.includes('Evidence-Traced Clinical Safety Considerations & Potential Harms'), 'Blood purification traces harms to clinical evidence');
+  assert(!studyData.includes('demonstrated zero significant benefit'), 'No colloquial "zero benefit" claim in blood purification');
 
   const contentConfig = fs.readFileSync(path.join(__dirname, '..', 'content-config.js'), 'utf8');
   assert(contentConfig.includes('4-tier stratified timing'), '4-tier stratified antimicrobial timing documented in content-config.js');
