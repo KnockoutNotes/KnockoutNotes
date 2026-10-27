@@ -6575,7 +6575,7 @@
       "30 mL/kg Hydroxyethyl starch; Vasopressin monotherapy"
     ],
     "answer": "A",
-    "explanation": "Sepsis-3 bundle mandates minimum 30 mL/kg crystalloids (balanced preferred) for sepsis-induced hypoperfusion and Norepinephrine as first-choice vasopressor.",
+    "explanation": "Surviving Sepsis Campaign guidelines suggest an initial resuscitation volume of 30 mL/kg of balanced crystalloid (conditional recommendation, low certainty of evidence) within the first 3 hours for sepsis-induced hypoperfusion or septic shock, and Norepinephrine as the first-choice vasopressor (target MAP ≥ 65 mmHg; peripheral start acceptable pending CVC).",
     "whyWrong": {
       "A": "First-line recommended resuscitation bundle and target vasopressor.",
       "B": "Dopamine carries higher arrhythmia risk compared to Norepinephrine.",
@@ -21566,9 +21566,9 @@
     "subtopic": "Bronchodilator Therapy",
     "question": "Which of the following statements regarding nebulization in an intubated patient with an \nendotracheal (ET) tube is incorrect?",
     "options": [
-      "As the size of the ET tube increases from 7 to 8 mm, nebulization effectiveness",
+      "As the size of the ET tube increases from 7 to 8 mm, nebulization effectiveness reduces",
       "Particle size should be between 2-5 micrometer",
-      "Placement of the nebulizer 15 cm away from the Y-connector improves aerosol",
+      "Placement of the nebulizer 15 cm away from the Y-connector improves aerosol deposition",
       "Humidification should be removed during nebulization to improve aerosol delivery"
     ],
     "answer": "A",

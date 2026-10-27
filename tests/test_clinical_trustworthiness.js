@@ -93,6 +93,16 @@ function runTests() {
   verifyQuestionAlignment('NEETSS-CC-2024-R048', /APACHE II|worst physiological|24 hours/i, 'APACHE II 24-Hour Physiology Score');
   verifyQuestionAlignment('NEETSS-CC-2024-R049', /qSOFA|Singer|Sepsis-3/i, 'qSOFA Bedside Sepsis Screening');
 
+  // Verify R038 option completeness (no truncated phrases)
+  const q038 = qMap.get('NEETSS-CC-2024-R038');
+  assert(q038 && q038.options[0].includes('reduces'), 'NEETSS-CC-2024-R038 Option A contains complete sentence with "reduces"');
+  assert(q038 && q038.options[2].includes('deposition'), 'NEETSS-CC-2024-R038 Option C contains complete sentence with "deposition"');
+
+  // Verify R112 explanation has no rigid "mandate" phrasing
+  const q112 = qMap.get('NEETSS-CC-2024-R112');
+  assert(q112 && !q112.explanation.includes('mandates'), 'NEETSS-CC-2024-R112 explanation has no rigid "mandates" phrasing');
+  assert(q112 && q112.explanation.includes('conditional recommendation, low certainty of evidence'), 'NEETSS-CC-2024-R112 explanation cites conditional recommendation');
+
   // --- 3. Sepsis Content Verification in study-data.js & content-config.js ---
   const studyData = fs.readFileSync(path.join(__dirname, '..', 'study-data.js'), 'utf8');
   assert(!studyData.includes('Mandated for patients with hypotension'), 'No rigid "Mandated for patients with hypotension" phrasing in study-data.js');
@@ -100,6 +110,12 @@ function runTests() {
   assert(studyData.includes('60–65 mmHg') || studyData.includes('60-65 mmHg'), 'Conservative MAP target (60-65 mmHg) for older adults documented');
   assert(studyData.includes('Active Fluid De-resuscitation'), 'Active fluid de-resuscitation guidance present');
   assert(studyData.includes('Procalcitonin (PCT) Stewardship') || studyData.includes('Procalcitonin (PCT) Role'), 'Procalcitonin stewardship role present');
+
+  // Phase 2 Content Checks: SDD/SOD, Pediatric Sepsis Steroids, Blood Purification
+  assert(studyData.includes('Selective Decontamination in ICU (SDD vs SOD)'), 'Selective Decontamination in ICU (SDD vs SOD) curriculum present');
+  assert(studyData.includes('SuDDICU Randomized Clinical Trial'), 'SuDDICU trial results cited in SDD section');
+  assert(studyData.includes('Pediatric Surviving Sepsis Campaign (pSSC 2020) Guidelines'), 'pSSC 2020 pediatric sepsis steroid guidance present');
+  assert(studyData.includes('Surrogate Biomarkers vs Patient-Centered Outcomes'), 'Blood purification distinguishes surrogate biomarkers from clinical outcomes');
 
   const contentConfig = fs.readFileSync(path.join(__dirname, '..', 'content-config.js'), 'utf8');
   assert(contentConfig.includes('4-tier stratified timing'), '4-tier stratified antimicrobial timing documented in content-config.js');
@@ -112,9 +128,9 @@ function runTests() {
   assert(register.schemaVersion === '1.0.0', 'Review register schema version is 1.0.0');
   assert(Array.isArray(register.records) && register.records.length >= 20, `Review register contains >= 20 records (found: ${register.records.length})`);
 
-  const validStatuses = new Set(['VERIFIED', 'CORRECTION_REQUIRED', 'CLINICIAN_REVIEW_PENDING']);
+  const validStatuses = new Set(['VERIFIED', 'CORRECTION_REQUIRED', 'CORRECTED', 'QUALIFIED', 'CLINICIAN_REVIEW_PENDING']);
   let validRecords = 0;
-  let pendingCount = 0;
+  let clinicianSignOffCount = 0;
 
   register.records.forEach((rec, idx) => {
     const hasRequired = rec.contentId && rec.topic && rec.riskLevel && rec.sourceAndEdition &&
@@ -131,13 +147,13 @@ function runTests() {
       console.error(`Record ${rec.contentId} has invalid reviewStatus: ${rec.reviewStatus}`);
     }
 
-    if (rec.reviewStatus === 'CLINICIAN_REVIEW_PENDING') {
-      pendingCount++;
+    if (rec.clinicianSignOffRequired === true) {
+      clinicianSignOffCount++;
     }
   });
 
   assert(validRecords === register.records.length, `All ${register.records.length} records satisfy required schema`);
-  assert(pendingCount >= 3, `Explicit CLINICIAN_REVIEW_PENDING items are logged honestly (found: ${pendingCount})`);
+  assert(clinicianSignOffCount >= 3, `Explicit clinicianSignOffRequired items tracked transparently (found: ${clinicianSignOffCount})`);
 
   // Verify dist-app mirror exists and matches
   const distRegisterPath = path.join(__dirname, '..', 'dist-app', 'content-review-register.json');

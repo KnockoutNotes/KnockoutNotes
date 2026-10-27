@@ -131,7 +131,7 @@ server.listen(PORT, '127.0.0.1', async () => {
     await evaluate(`
       new Promise((resolve) => {
         function check() {
-          if (window.StudyRonDesign && window.StudyRonDesign.isDataReady()) {
+          if (window.StudyRonDesign && window.StudyRonDesign.isDataReady() && window.KN_STRUCTURES && window.KN_STRUCTURES_3D) {
             window.StudyRonDesign.openTopic('propofol');
             resolve(true);
           } else {
