@@ -104,6 +104,40 @@ assert(calcJs.includes('9.57 * Math.log'), 'MELD-Na must use 2016 logarithmic eq
 assert(calcJs.includes('Math.min(Math.max(na, 125.0), 137.0)'), 'MELD-Na must bound sodium between 125 and 137 mEq/L');
 console.log('✅ PASS: High-risk calculators spot-checked with 100% physiological and mathematical fidelity!\n');
 
-console.log('==================================================');
-console.log('🎉 ALL POST-RELEASE VERIFICATION CHECKS PASSED 100%!');
-console.log('==================================================');
+// 6. ASYNC LIVE PRODUCTION NETWORK & REMOTE APK MATCH
+async function verifyLiveProduction() {
+  console.log('--- 6. Verifying Live Cloudflare Production Endpoints & Remote APK ---');
+  const BASE = 'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev';
+  
+  // Verify live sw.js
+  const swRes = await fetch(`${BASE}/sw.js`);
+  assert.strictEqual(swRes.status, 200, 'Live sw.js must return HTTP 200');
+  const swText = await swRes.text();
+  assert(swText.includes('const CACHE_NAME = "knockoutnotes-cache-v117";'), 'Live sw.js must serve knockoutnotes-cache-v117');
+  console.log('✅ Live sw.js confirmed serving knockoutnotes-cache-v117');
+
+  // Verify live APK streaming & cryptographic SHA-256 match
+  const apkRes = await fetch(`${BASE}/knockoutnotes.apk`);
+  assert.strictEqual(apkRes.status, 200, 'Live knockoutnotes.apk must return HTTP 200');
+  const apkLen = parseInt(apkRes.headers.get('content-length'), 10);
+  assert.strictEqual(apkLen, localApkBuf.length, 'Live APK Content-Length must match local APK file size exactly');
+  
+  const chunks = [];
+  for await (const chunk of apkRes.body) {
+    chunks.push(chunk);
+  }
+  const remoteBuf = Buffer.concat(chunks);
+  const remoteHash = crypto.createHash('sha256').update(remoteBuf).digest('hex');
+  console.log(`Live Remote APK SHA256: ${remoteHash}`);
+  assert.strictEqual(remoteHash, localHash, 'Remote APK SHA-256 must match local built APK exactly');
+  console.log('✅ PASS: Live Cloudflare production sw.js and byte-for-byte APK hash match verified!\n');
+
+  console.log('==================================================');
+  console.log('🎉 ALL POST-RELEASE VERIFICATION CHECKS PASSED 100%!');
+  console.log('==================================================');
+}
+
+verifyLiveProduction().catch(err => {
+  console.error('❌ Post-release live verification failed:', err);
+  process.exit(1);
+});
