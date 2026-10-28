@@ -6553,6 +6553,11 @@ html.dark .kn-sub-modal-dialog,
   align-items: center;
   justify-content: center;
   padding: 0;
+  font-size: 18px;
+  line-height: 1;
+  text-align: center;
+  appearance: none;
+  -webkit-appearance: none;
   transition: all 0.15s ease;
 }
 
@@ -6876,6 +6881,8 @@ body.dark .kn-sub-modal-error,
   align-items: center;
   justify-content: center;
   gap: 8px;
+  appearance: none;
+  -webkit-appearance: none;
   box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
   transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
 }
@@ -6914,6 +6921,8 @@ body.dark .kn-sub-modal-error,
   display: flex;
   align-items: center;
   justify-content: center;
+  appearance: none;
+  -webkit-appearance: none;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
