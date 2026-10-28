@@ -2254,6 +2254,7 @@
       });
       return unmounted === 0;
     }
+    ensureResponsiveTables(mount);
 
     if (typeof window.KNMountTileMolecule === "function") {
       requestAnimationFrame(tryMountCards);
@@ -3597,6 +3598,7 @@
         btn.setAttribute("aria-checked", match ? "true" : "false");
       });
     }
+    syncSharedSubscriptionModalTheme();
   }
 
   function toggleReadingTheme() {
@@ -3896,6 +3898,24 @@
 
   let lastFocusedBeforeSubModal = null;
 
+  function ensureResponsiveTables(container) {
+    if (!container) return;
+    try {
+      const tables = container.querySelectorAll("table");
+      tables.forEach((tbl) => {
+        const parent = tbl.parentElement;
+        if (!parent) return;
+        if (!parent.classList.contains("ron-table-wrap") && !parent.classList.contains("st-table-wrap") && !parent.classList.contains("table-responsive")) {
+          const wrap = document.createElement("div");
+          wrap.className = "ron-table-wrap";
+          parent.insertBefore(wrap, tbl);
+          wrap.appendChild(tbl);
+        }
+      });
+    } catch (e) {
+      // Defensive pass only
+    }
+  }
   function ensureSharedSubscriptionModal() {
     let modal = document.getElementById("knSharedSubModal");
     if (modal) return modal;
@@ -3910,38 +3930,53 @@
     modal.hidden = true;
 
     modal.innerHTML = `
-      <div class="kn-sub-modal-dialog">
-        <button type="button" class="kn-sub-modal-close" id="knSubModalCloseBtn" aria-label="Close subscription dialog">×</button>
+      <div class="kn-sub-modal-dialog kn-sub-modal-card">
+        <button type="button" class="kn-sub-modal-close kn-sub-modal-close-btn" id="knSubModalCloseBtn" aria-label="Close subscription dialog">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
         <div class="kn-sub-modal-badge">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <span>FREE HIGH-YIELD CLINICAL UPDATES</span>
         </div>
         <h2 id="knSubModalTitle" class="kn-sub-modal-title">Welcome to KnockoutNotes</h2>
         <p id="knSubModalDesc" class="kn-sub-modal-desc">
           A colleague shared <strong id="knSubModalChapterTitle">this chapter</strong> with you. Subscribe to our free newsletter for monthly exam-focused drug reviews, clinical algorithms, and NEET SS / INI SS updates.
         </p>
-        <form id="knSharedSubForm" class="kn-sub-modal-form" novalidate>
-          <div class="kn-sub-modal-field">
-            <label for="knSubEmailInput" class="kn-sub-modal-label">Email Address</label>
-            <input type="email" id="knSubEmailInput" name="email" class="kn-sub-modal-input" placeholder="doctor@hospital.org" required autocomplete="email" />
-            <div id="knSubEmailError" class="kn-sub-modal-error" role="alert" aria-live="polite"></div>
+        <form id="knSharedSubForm" class="kn-sub-modal-form kn-sub-form" novalidate>
+          <div class="kn-sub-modal-field kn-sub-input-wrap">
+            <label for="knSubEmailInput" class="kn-sub-modal-label kn-sub-label">Email Address</label>
+            <div class="kn-sub-input-field">
+              <svg class="kn-sub-input-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <input type="email" id="knSubEmailInput" name="email" class="kn-sub-modal-input kn-sub-input" placeholder="doctor@hospital.org" required autocomplete="email" inputmode="email" />
+            </div>
+            <div id="knSubEmailError" class="kn-sub-modal-error kn-sub-status-msg kn-sub-status-error" role="alert" aria-live="polite" hidden></div>
           </div>
-          <div class="kn-sub-modal-actions">
-            <button type="submit" class="kn-sub-modal-submit-btn" id="knSubSubmitBtn">
+          <div class="kn-sub-modal-actions kn-sub-actions">
+            <button type="submit" class="kn-sub-modal-submit-btn kn-sub-btn-primary" id="knSubSubmitBtn">
               <span>Subscribe Free</span>
             </button>
-            <button type="button" class="kn-sub-modal-cancel-btn" id="knSubCancelBtn">
+            <button type="button" class="kn-sub-modal-cancel-btn kn-sub-btn-secondary" id="knSubCancelBtn">
               <span>Cancel &amp; Continue Reading</span>
             </button>
           </div>
         </form>
-        <div id="knSubSuccessView" class="kn-sub-modal-success" hidden aria-live="polite">
-          <div class="kn-sub-success-icon">✓</div>
+        <div id="knSubSuccessView" class="kn-sub-modal-success kn-sub-status-msg kn-sub-status-success" hidden aria-live="polite">
+          <div class="kn-sub-success-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
           <h3 class="kn-sub-success-title">You're Subscribed!</h3>
           <p class="kn-sub-success-msg">Welcome aboard. You now have full access to study this chapter and all free resources.</p>
-          <button type="button" class="kn-sub-modal-continue-btn" id="knSubContinueBtn">Continue Reading</button>
+          <button type="button" class="kn-sub-modal-continue-btn kn-sub-btn-primary" id="knSubContinueBtn">Continue Reading</button>
         </div>
-        <p class="kn-sub-modal-footer-note">No spam. Unsubscribe at any time with one click.</p>
+        <p class="kn-sub-modal-footer-note kn-sub-privacy-note">No spam. Unsubscribe at any time with one click.</p>
       </div>
     `;
 
@@ -3955,8 +3990,33 @@
     return modal;
   }
 
+  function syncSharedSubscriptionModalTheme() {
+    const modal = document.getElementById("knSharedSubModal");
+    if (!modal) return;
+    const isDark = document.body.classList.contains("dark") || document.documentElement.classList.contains("dark");
+    const rmOverlay = document.getElementById("ronReadingModeOverlay");
+    const isRmActive = rmOverlay && !rmOverlay.hidden && document.body.classList.contains("ron-reading-fullscreen-active");
+    const rmTheme = isRmActive ? (rmOverlay.getAttribute("data-reading-theme") || "light") : null;
+
+    let theme = "light";
+    if (isRmActive && rmTheme) {
+      if (rmTheme === "dark" || rmTheme === "night") {
+        theme = "dark";
+      } else if (rmTheme === "sepia") {
+        theme = "sepia";
+      } else {
+        theme = "light";
+      }
+    } else if (isDark) {
+      theme = "dark";
+    }
+    modal.setAttribute("data-modal-theme", theme);
+  }
+
   function openSharedSubscriptionModal(item, mode) {
     const modal = ensureSharedSubscriptionModal();
+    syncSharedSubscriptionModalTheme();
+
     const chapterTitleEl = modal.querySelector("#knSubModalChapterTitle");
     if (chapterTitleEl) {
       const name = item ? (item.name || item.title || "this chapter") : "this chapter";
@@ -3975,6 +4035,7 @@
     if (errorEl) {
       errorEl.textContent = "";
       errorEl.classList.remove("visible");
+      errorEl.hidden = true;
     }
     if (input) {
       input.value = "";
@@ -4025,6 +4086,7 @@
       if (errorEl) {
         errorEl.textContent = "Please enter a valid email address.";
         errorEl.classList.add("visible");
+        errorEl.hidden = false;
       }
       input.focus();
       return;
@@ -4035,6 +4097,7 @@
     if (errorEl) {
       errorEl.textContent = "";
       errorEl.classList.remove("visible");
+      errorEl.hidden = true;
     }
 
     if (submitBtn) {
@@ -4069,6 +4132,7 @@
         if (errorEl) {
           errorEl.textContent = errorMsg;
           errorEl.classList.add("visible");
+          errorEl.hidden = false;
         }
         if (submitBtn) {
           submitBtn.disabled = false;
@@ -4079,6 +4143,7 @@
       if (errorEl) {
         errorEl.textContent = "Network error. Please check your connection and try again.";
         errorEl.classList.add("visible");
+        errorEl.hidden = false;
       }
       if (submitBtn) {
         submitBtn.disabled = false;
@@ -4086,7 +4151,6 @@
       }
     }
   }
-
   function toggleRmToc(force) {
     const dropdown = document.getElementById("ronRmTocDropdown");
     const drawer = document.getElementById("ronRmTocDrawer");
@@ -4264,6 +4328,7 @@
     }
     bodyTarget.innerHTML = "";
     bodyTarget.appendChild(descBox);
+    ensureResponsiveTables(bodyTarget);
 
     overlay.hidden = false;
     document.body.classList.add("ron-reading-fullscreen-active");
@@ -5873,7 +5938,9 @@ document.addEventListener("keydown", (e) => {
   window.KN_STUDY_RETURN = function () {
     renderRonBoard();
   };
+  window.syncSharedSubscriptionModalTheme = syncSharedSubscriptionModalTheme;
   window.StudyRonDesign = {
+    syncSubscriptionModalTheme: syncSharedSubscriptionModalTheme,
     openFullScreenReadingMode: openFullScreenReadingMode,
     setReadingWidth: setReadingWidth,
     setReadingFontFamily: setReadingFontFamily,
