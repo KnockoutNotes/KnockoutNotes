@@ -4843,15 +4843,15 @@ body.ron-reading-fullscreen-active {
 
 /* ------------------------------------------------------------ Reading Width Options */
 .ron-reading-fullscreen-overlay[data-reading-width="narrow"] {
-  --rm-max-width: 680px;
+  --rm-max-width: 760px;
 }
 
 .ron-reading-fullscreen-overlay[data-reading-width="standard"] {
-  --rm-max-width: 820px;
+  --rm-max-width: 980px;
 }
 
 .ron-reading-fullscreen-overlay[data-reading-width="wide"] {
-  --rm-max-width: 960px;
+  --rm-max-width: 1440px;
 }
 
 /* ------------------------------------------------------------ Typography & Spacing Options */
@@ -5664,7 +5664,7 @@ body.ron-reading-fullscreen-active {
 }
 
 .ron-rm-content-wrapper {
-  max-width: min(var(--rm-max-width, 860px), 100%) !important;
+  max-width: min(var(--rm-max-width, 1440px), 100%) !important;
   width: 100% !important;
   margin: 0 auto !important;
   padding: 24px 28px 85px 28px !important;
@@ -5985,9 +5985,10 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target li::marker,
 
 .ron-reading-fullscreen-overlay .ron-rm-body-target .st-bullets li {
   position: relative !important;
-  padding-left: 12px !important;
+  padding-left: 11px !important;
   margin-bottom: 4px !important;
   line-height: var(--rm-line-height, 1.58) !important;
+  text-align: left !important;
 }
 
 .ron-reading-fullscreen-overlay .ron-rm-body-target .st-bullets li::before {
@@ -5995,15 +5996,15 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target li::marker,
   position: absolute !important;
   left: 0 !important;
   top: 0.58em !important;
-  width: 4.5px !important;
-  height: 4.5px !important;
+  width: 4px !important;
+  height: 4px !important;
   border-radius: 50% !important;
   background: var(--rm-accent, #0284c7) !important;
 }
 
 .ron-reading-fullscreen-overlay .ron-rm-body-target .st-bullets.st-sub-bullets {
   margin-top: 4px !important;
-  padding-left: 8px !important;
+  padding-left: 6px !important;
 }
 
 /* st-num-list override inside Reading Mode: eliminate wide 24px padding-left & 12px gap */
@@ -6012,14 +6013,15 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target li::marker,
   flex-direction: column !important;
   gap: 6px !important;
   margin: 8px 0 12px 0 !important;
-  padding-left: 18px !important;
-  padding-inline-start: 18px !important;
+  padding-left: 16px !important;
+  padding-inline-start: 16px !important;
 }
 
 .ron-reading-fullscreen-overlay .ron-rm-body-target .st-num-list li {
   margin-bottom: 4px !important;
   padding-left: 2px !important;
   line-height: var(--rm-line-height, 1.58) !important;
+  text-align: left !important;
 }
 
 .ron-reading-fullscreen-overlay .ron-rm-body-target .st-num-list li::marker {
@@ -6030,6 +6032,21 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target li::marker,
 .ron-reading-fullscreen-overlay .ron-rm-body-target .st-prose {
   margin: 0 0 10px 0 !important;
   line-height: var(--rm-line-height, 1.58) !important;
+  text-align: left !important;
+}
+
+/* Standard References in Reading Mode */
+.ron-reading-fullscreen-overlay .ron-rm-body-target #sec-references ul {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 8px 0 0 !important;
+}
+
+.ron-reading-fullscreen-overlay .ron-rm-body-target #sec-references li {
+  padding-left: 0 !important;
+  margin-bottom: 6px !important;
+  line-height: var(--rm-line-height, 1.58) !important;
+  text-align: left !important;
 }
 
 /* Point Rows (Clinical point-wise list items) */
@@ -6047,12 +6064,12 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-row,
 body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-bullet,
 .ron-rm-body-target .ron-point-bullet {
   color: var(--rm-accent, #0284c7) !important;
-  font-size: 13px !important;
+  font-size: 11px !important;
   line-height: 1 !important;
-  width: 12px !important;
-  min-width: 12px !important;
-  max-width: 12px !important;
-  margin-right: 5px !important;
+  width: 8px !important;
+  min-width: 8px !important;
+  max-width: 8px !important;
+  margin-right: 6px !important;
   margin-left: 0 !important;
   margin-top: 0 !important;
   display: inline-flex !important;
@@ -6069,6 +6086,26 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-text,
   min-width: 0 !important;
   word-break: break-word !important;
   overflow-wrap: break-word !important;
+  text-align: left !important;
+}
+
+/* In Wide Mode: keep running prose readable (~110ch) while tables, diagrams & cards use the full width */
+.ron-reading-fullscreen-overlay[data-reading-width="wide"] .ron-rm-body-target p,
+.ron-reading-fullscreen-overlay[data-reading-width="wide"] .ron-rm-body-target .ron-point-text {
+  max-width: min(100%, 1150px) !important;
+}
+
+.ron-reading-fullscreen-overlay[data-reading-width="wide"] .ron-rm-body-target table,
+.ron-reading-fullscreen-overlay[data-reading-width="wide"] .ron-rm-body-target .ron-table-wrap,
+.ron-reading-fullscreen-overlay[data-reading-width="wide"] .ron-rm-body-target .table-responsive,
+.ron-reading-fullscreen-overlay[data-reading-width="wide"] .ron-rm-body-target .ron-card,
+.ron-reading-fullscreen-overlay[data-reading-width="wide"] .ron-rm-body-target .st-card,
+.ron-reading-fullscreen-overlay[data-reading-width="wide"] .ron-rm-body-target .ron-structure-float-wrap,
+.ron-reading-fullscreen-overlay[data-reading-width="wide"] .ron-rm-body-target .st-diagram-wrap,
+.ron-reading-fullscreen-overlay[data-reading-width="wide"] .ron-rm-body-target .st-pearl-box,
+.ron-reading-fullscreen-overlay[data-reading-width="wide"] .ron-rm-body-target .ron-source-callout {
+  max-width: 100% !important;
+  width: 100% !important;
 }
 
 /* Numbered points (e.g. 1. Step / Heading points) */
@@ -6283,8 +6320,19 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
     padding: 0 24px;
   }
   .ron-rm-content-wrapper {
-    padding: 28px 32px 85px 32px !important;
-    max-width: min(var(--rm-max-width, 820px), 100%) !important;
+    padding: 28px 36px 85px 36px !important;
+    max-width: min(var(--rm-max-width, 1440px), calc(100vw - 64px)) !important;
+  }
+}
+
+/* Widescreen Displays (>= 1440px) */
+@media (min-width: 1440px) {
+  .ron-reading-fullscreen-overlay[data-reading-width="wide"] {
+    --rm-max-width: 1560px;
+  }
+  .ron-rm-content-wrapper {
+    padding: 32px 48px 90px 48px !important;
+    max-width: min(var(--rm-max-width, 1560px), calc(100vw - 80px)) !important;
   }
 }
 
@@ -6315,7 +6363,7 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
   }
   .ron-rm-content-wrapper {
     padding: 20px 24px 75px 24px !important;
-    max-width: min(var(--rm-max-width, 820px), 100%) !important;
+    max-width: min(var(--rm-max-width, 980px), calc(100vw - 32px)) !important;
   }
   .ron-table-wrap {
     overflow-x: auto !important;
@@ -6337,7 +6385,7 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
 /* Tablet Landscape specific (900px - 1366px, landscape) */
 @media (min-width: 900px) and (max-width: 1366px) and (orientation: landscape) {
   .ron-rm-content-wrapper {
-    max-width: min(var(--rm-max-width, 860px), calc(100vw - 48px)) !important;
+    max-width: min(var(--rm-max-width, 1280px), calc(100vw - 48px)) !important;
     padding: 22px 28px 80px 28px !important;
   }
   .ron-rm-topbar {
@@ -6370,7 +6418,7 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
     display: inline-block;
   }
   .ron-rm-content-wrapper {
-    max-width: min(var(--rm-max-width, 820px), 100%) !important;
+    max-width: min(var(--rm-max-width, 1100px), calc(100vw - 24px)) !important;
     padding: 12px 18px 55px 18px !important;
   }
 }
@@ -6390,7 +6438,9 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
     padding: 0 12px;
   }
   .ron-rm-content-wrapper {
-    padding: 12px 14px 75px 14px !important;
+    padding: 10px 14px 75px 14px !important;
+    max-width: 100% !important;
+    width: 100% !important;
   }
   .ron-rm-heading {
     font-size: 22px !important;
@@ -6402,8 +6452,8 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
     line-height: 1.35 !important;
   }
   .ron-rm-article-header {
-    margin-bottom: 16px !important;
-    padding-bottom: 12px !important;
+    margin-bottom: 14px !important;
+    padding-bottom: 10px !important;
   }
   .ron-rm-body-target p,
   .ron-rm-body-target ul,

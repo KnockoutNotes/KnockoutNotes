@@ -3036,7 +3036,7 @@
   let lastFocusedElementBeforeReadingMode = null;
   let activeReadingTheme = "light";
   let activeReadingFontSize = 17;
-  let activeReadingWidth = "wide"; // "narrow" (760px), "standard" (900px), "wide" (1200px)
+  let activeReadingWidth = "wide"; // "narrow" (760px), "standard" (980px), "wide" (1440px)
   let activeReadingFontFamily = "sans"; // "sans", "serif", "mono"
   let activeReadingLineHeight = "comfortable"; // "comfortable" (1.65), "relaxed" (1.82)
   let activeReadingAlign = "left"; // "left", "justify", "center", "right"
@@ -3226,11 +3226,11 @@
           </button>
           <button type="button" class="ron-rm-segment-btn" data-rm-width-val="standard" role="radio" aria-checked="false">
             <strong>Standard</strong>
-            <span>900px</span>
+            <span>980px</span>
           </button>
           <button type="button" class="ron-rm-segment-btn" data-rm-width-val="wide" role="radio" aria-checked="false">
             <strong>Wide</strong>
-            <span>1200px</span>
+            <span>1440px</span>
           </button>
         </div>
       </div>
