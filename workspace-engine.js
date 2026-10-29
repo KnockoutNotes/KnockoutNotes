@@ -929,8 +929,8 @@
         `;
       } else {
         slot.innerHTML = `
-          <button type="button" class="kn-user-signin-link" id="knDskSignIn" title="Sign In or Register">
-            <span>Sign In</span>
+          <button type="button" class="kn-user-signin-link" id="knDskSignIn" title="Sign In or Register" style="background-color: #0369a1; color: #ffffff;">
+            <span style="color: #ffffff; font-weight: 600;">Sign In</span>
           </button>
         `;
       }

@@ -1503,3 +1503,25 @@ body:not(.dark) .log-event-item {
 body:not(.dark) .log-event-desc-col {
   color: #0f172a;
 }
+
+
+/* Accessibility & Mobile Touch Target Enhancements (DEF-06 & DEF-08) */
+@media (max-width: 640px) {
+  .kn-mode-btn,
+  .chamber-tab-btn,
+  .btn-quick-log,
+  .metronome-btn-toggle {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 10px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hud-pulse-dot,
+  .metronome-arm,
+  .metronome-led {
+    animation: none !important;
+    transition: none !important;
+  }
+}

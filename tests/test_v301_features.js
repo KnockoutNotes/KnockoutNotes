@@ -106,7 +106,7 @@ console.log('✅ PASS: Red/Amber Night Mode styling, contrast, and theme selecti
 console.log('--- 4. Testing Service Worker v115 & Quota Safety ---');
 const swJs = fs.readFileSync(path.join(ROOT, 'sw.js'), 'utf8');
 
-assert(swJs.includes('knockoutnotes-cache-v120') || swJs.includes('knockoutnotes-cache-v119') || swJs.includes('knockoutnotes-cache-v118') || swJs.includes('knockoutnotes-cache-v117') || swJs.includes('knockoutnotes-cache-v116') || swJs.includes('knockoutnotes-cache-v115'), 'sw.js must be bumped to knockoutnotes-cache-v115+');
+assert(swJs.includes('knockoutnotes-cache-v121') || swJs.includes('knockoutnotes-cache-v120') || swJs.includes('knockoutnotes-cache-v119') || swJs.includes('knockoutnotes-cache-v118') || swJs.includes('knockoutnotes-cache-v117') || swJs.includes('knockoutnotes-cache-v116') || swJs.includes('knockoutnotes-cache-v115'), 'sw.js must be bumped to knockoutnotes-cache-v115+');
 assert(swJs.includes('safeCachePut'), 'sw.js must implement safeCachePut');
 assert(swJs.includes('QuotaExceededError'), 'safeCachePut must handle QuotaExceededError');
 

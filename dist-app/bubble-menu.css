@@ -986,6 +986,7 @@ body:not(.dark) .bubble-menu-items .pill-close-hint {
   z-index: 1100;
   opacity: 0;
   pointer-events: none;
+  visibility: hidden;
   transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   box-sizing: border-box;
 }
@@ -998,6 +999,7 @@ body:not(.dark) .kn-desktop-dropdown-menu {
 }
 
 .kn-dropdown-open .kn-desktop-dropdown-menu {
+  visibility: visible;
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
@@ -1107,4 +1109,28 @@ body:not(.dark) .kn-dropdown-item:focus {
   .kn-desktop-caret {
     transition: none !important;
   }
+}
+
+
+/* High-contrast accessible desktop auth button (DEF-05) */
+.kn-user-signin-link,
+#knDskSignIn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: #0284c7;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+.kn-user-signin-link span,
+#knDskSignIn span {
+  color: #ffffff !important;
+  font-weight: 600;
 }

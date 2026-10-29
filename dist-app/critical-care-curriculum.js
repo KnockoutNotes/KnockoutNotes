@@ -3509,27 +3509,27 @@
 
             <!-- View Switcher Tabs -->
             <div class="cc-nav-tabs" role="tablist">
-              <button type="button" class="cc-nav-tab ${activeTab === 'chapters' ? 'active' : ''}" data-tab="chapters">
+              <button type="button" class="cc-nav-tab ${activeTab === 'chapters' ? 'active' : ''}" role="tab" aria-selected="${activeTab === 'chapters' ? 'true' : 'false'}" data-tab="chapters">
                 <span>📚 31 Master Chapters</span>
                 <span class="cc-tab-count">${CC_DATA.chapters.length}</span>
               </button>
-              <button type="button" class="cc-nav-tab ${activeTab === 'topics' ? 'active' : ''}" data-tab="topics">
+              <button type="button" class="cc-nav-tab ${activeTab === 'topics' ? 'active' : ''}" role="tab" aria-selected="${activeTab === 'topics' ? 'true' : 'false'}" data-tab="topics">
                 <span>🎯 88 Source Topics</span>
                 <span class="cc-tab-count">${CC_DATA.topics.length}</span>
               </button>
-              <button type="button" class="cc-nav-tab ${activeTab === 'formulas' ? 'active' : ''}" data-tab="formulas">
+              <button type="button" class="cc-nav-tab ${activeTab === 'formulas' ? 'active' : ''}" role="tab" aria-selected="${activeTab === 'formulas' ? 'true' : 'false'}" data-tab="formulas">
                 <span>🧮 Formulas &amp; Cutoffs</span>
                 <span class="cc-tab-count">${CC_DATA.formulas.length}</span>
               </button>
-              <button type="button" class="cc-nav-tab ${activeTab === 'trials' ? 'active' : ''}" data-tab="trials">
+              <button type="button" class="cc-nav-tab ${activeTab === 'trials' ? 'active' : ''}" role="tab" aria-selected="${activeTab === 'trials' ? 'true' : 'false'}" data-tab="trials">
                 <span>🏆 Landmark Trials</span>
                 <span class="cc-tab-count">${CC_DATA.trials.length}</span>
               </button>
-              <button type="button" class="cc-nav-tab ${activeTab === 'guidelines' ? 'active' : ''}" data-tab="guidelines">
+              <button type="button" class="cc-nav-tab ${activeTab === 'guidelines' ? 'active' : ''}" role="tab" aria-selected="${activeTab === 'guidelines' ? 'true' : 'false'}" data-tab="guidelines">
                 <span>📜 2026 Guidelines</span>
                 <span class="cc-tab-count">${CC_DATA.guidelines.length}</span>
               </button>
-              <button type="button" class="cc-nav-tab ${activeTab === 'mcqs' ? 'active' : ''}" data-tab="mcqs">
+              <button type="button" class="cc-nav-tab ${activeTab === 'mcqs' ? 'active' : ''}" role="tab" aria-selected="${activeTab === 'mcqs' ? 'true' : 'false'}" data-tab="mcqs">
                 <span>📝 Practice MCQs</span>
                 <span class="cc-tab-count">${CC_DATA.mcqs.length}</span>
               </button>

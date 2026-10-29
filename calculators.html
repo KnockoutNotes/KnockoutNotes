@@ -6450,6 +6450,19 @@
   syncPair("parklandHrs3d", "parklandHrs", updateParkland);
   syncPair("parklandGiven3d", "parklandGiven", updateParkland);
 
+  ["btnParklandReset3d", "btnParklandReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const wt = document.getElementById("parklandWt" + s); if (wt) wt.value = "70";
+        const tbsa = document.getElementById("parklandTbsa" + s); if (tbsa) tbsa.value = "30";
+        const hrs = document.getElementById("parklandHrs" + s); if (hrs) hrs.value = "2";
+        const given = document.getElementById("parklandGiven" + s); if (given) given.value = "1000";
+      });
+      updateParkland();
+    });
+  });
+
   // ------------------------------------------------------------------------
   // BMI CONTROLLER
   // ------------------------------------------------------------------------
@@ -6491,6 +6504,17 @@
   syncPair("bmiWt3d", "bmiWt", updateBmi);
   syncPair("bmiHt3d", "bmiHt", updateBmi);
 
+  ["btnBmiReset3d", "btnBmiReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const wt = document.getElementById("bmiWt" + s); if (wt) wt.value = "70";
+        const ht = document.getElementById("bmiHt" + s); if (ht) ht.value = "175";
+      });
+      updateBmi();
+    });
+  });
+
   // ------------------------------------------------------------------------
   // METS CONTROLLER
   // ------------------------------------------------------------------------
@@ -6513,6 +6537,16 @@
   }
 
   syncPair("metsSelect3d", "metsSelect", updateMets);
+
+  ["btnMetsReset3d", "btnMetsReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const sel = document.getElementById("metsSelect" + s); if (sel) sel.value = "moderate";
+      });
+      updateMets();
+    });
+  });
 
   // ------------------------------------------------------------------------
   // DASI CONTROLLER
@@ -6683,6 +6717,22 @@
   syncPair("cgScr3d", "cgScr", updateCockcroftGault);
   syncPair("cgScrUnit3d", "cgScrUnit", updateCockcroftGault);
   syncPair("cgWeightType3d", "cgWeightType", updateCockcroftGault);
+
+  ["btnCgReset3d", "btnCgReset"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener("click", () => {
+      ["3d", ""].forEach(s => {
+        const age = document.getElementById("cgAge" + s); if (age) age.value = "65";
+        const sex = document.getElementById("cgSex" + s); if (sex) sex.value = "male";
+        const wt = document.getElementById("cgWeight" + s); if (wt) wt.value = "70";
+        const ht = document.getElementById("cgHeight" + s); if (ht) ht.value = "175";
+        const scr = document.getElementById("cgScr" + s); if (scr) scr.value = "1.0";
+        const unit = document.getElementById("cgScrUnit" + s); if (unit) unit.value = "mg/dL";
+        const wtype = document.getElementById("cgWeightType" + s); if (wtype) wtype.value = "actual";
+      });
+      updateCockcroftGault();
+    });
+  });
 
   // ------------------------------------------------------------------------
   // ARTERIAL & VENOUS BLOOD GAS (ABG/VBG) CONTROLLER

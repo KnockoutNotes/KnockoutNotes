@@ -3301,7 +3301,7 @@
   // Auto-init if on a page with #knMcqSection or query param mcq=true or view=pyq
   function checkUrlAndInit() {
     var urlParams = new URLSearchParams(window.location.search);
-    var isPyqParam = urlParams.get("view") === "pyq" || urlParams.get("pyq") === "true";
+    var isPyqParam = urlParams.get("view") === "pyq" || urlParams.get("pyq") === "true" || urlParams.get("view") === "mcq" || urlParams.get("mcq") === "true";
     if (isPyqParam) {
       var modeParam = urlParams.get("mode") || urlParams.get("pyqMode");
       if (!modeParam && (urlParams.get("faq") === "true" || urlParams.get("frequent") === "true" || urlParams.get("freq") === "true")) {

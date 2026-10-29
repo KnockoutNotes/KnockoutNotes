@@ -208,6 +208,12 @@
     }
 
     this.container.classList.add("kn-carousel");
+    if (this.container.getAttribute("role") === "list") {
+      this.container.setAttribute("role", "region");
+      if (!this.container.hasAttribute("aria-label")) {
+        this.container.setAttribute("aria-label", "Interactive Carousel");
+      }
+    }
 
     // The carousel-card class switches a card from its flat-list layout to
     // the taller vertical card layout (thumbnail + name + descriptor + CTA)

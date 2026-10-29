@@ -164,7 +164,7 @@ console.log("✅ PASS: All clinical calculator mathematical safety bounds and ed
 console.log("--- 4. Testing Service Worker & PWA Offline Reliability ---");
 const swJs = fs.readFileSync(path.join(__dirname, '..', 'sw.js'), 'utf8');
 
-assert(swJs.includes('knockoutnotes-cache-v120') || swJs.includes('knockoutnotes-cache-v119') || swJs.includes('knockoutnotes-cache-v118') || swJs.includes('knockoutnotes-cache-v117'), "sw.js must be bumped to v117+");
+assert(swJs.includes('knockoutnotes-cache-v121') || swJs.includes('knockoutnotes-cache-v120') || swJs.includes('knockoutnotes-cache-v119') || swJs.includes('knockoutnotes-cache-v118') || swJs.includes('knockoutnotes-cache-v117'), "sw.js must be bumped to v117+");
 assert(swJs.includes('"/advanced-calc-engine.js"'), "sw.js must precache advanced-calc-engine.js");
 assert(swJs.includes('"/advanced-calc-ui.js"'), "sw.js must precache advanced-calc-ui.js");
 assert(swJs.includes('"/clinical-validator.js"'), "sw.js must precache clinical-validator.js");

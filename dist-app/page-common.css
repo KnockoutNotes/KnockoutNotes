@@ -1246,3 +1246,28 @@ body:not(.dark) .kn-corner-support-link {
   box-shadow: 0 4px 14px rgba(245, 158, 11, 0.28);
   transform: translateY(-2px);
 }
+
+
+/* Accessible screen-reader-only utility (DEF-09) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Responsive Table Utility (DEF-10) */
+table {
+  max-width: 100%;
+}
+.table-responsive,
+.notes-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}

@@ -116,6 +116,7 @@
             '<a href="study.html?domain=critical&cat=' + cat.id + '"',
             '   class="kn-dropdown-item"',
             '   role="menuitem"',
+            '   tabindex="-1"',
             '   data-cat-id="' + cat.id + '">',
             '  <span class="kn-dropdown-item-icon" aria-hidden="true">' + cat.icon + '</span>',
             '  <span class="kn-dropdown-item-label">' + cat.label + '</span>',
@@ -137,7 +138,7 @@
           '  <div class="kn-desktop-dropdown-menu" id="knDesktopCcDropdownMenu" role="menu" aria-label="Critical Care Categories" aria-hidden="true">',
           '    <div class="kn-desktop-dropdown-header">',
           '      <span class="kn-dropdown-header-title">Critical Care Syllabus</span>',
-          '      <a href="study.html?domain=critical&cat=all" class="kn-dropdown-header-all" role="menuitem">View All Critical Care →</a>',
+          '      <a href="study.html?domain=critical&cat=all" class="kn-dropdown-header-all" role="menuitem" tabindex="-1">View All Critical Care →</a>',
           '    </div>',
           '    <div class="kn-desktop-dropdown-grid">',
           dropdownItemsHtml,
@@ -151,7 +152,6 @@
         '<a href="' + item.href + '"',
         '   class="kn-desktop-link' + (isActive ? ' active' : '') + (item.isAuthLink ? ' kn-auth-nav-link' : '') + '"',
         authAttrs,
-        '   role="menuitem"',
         '   aria-label="' + item.ariaLabel + '">',
         '  ' + item.label,
         '</a>'
@@ -164,7 +164,7 @@
       '    <img src="knockoutnotes_icon-72.png" alt="KnockoutNotes emblem" class="kn-desktop-logo" width="36" height="36" fetchpriority="high">',
       '    <span class="kn-desktop-brand-name">Knockout<span>Notes</span></span>',
       '  </a>',
-      '  <div class="kn-desktop-links" role="menubar">',
+      '  <div class="kn-desktop-links">',
       '    <div class="kn-desktop-indicator" aria-hidden="true"></div>',
       linksHtml,
       '  </div>',
@@ -273,6 +273,7 @@
       wrapper.classList.add("kn-dropdown-open");
       trigger.setAttribute("aria-expanded", "true");
       menu.setAttribute("aria-hidden", "false");
+      menuItems.forEach(function (el) { el.setAttribute("tabindex", "0"); });
     }
 
     function closeMenu() {
@@ -283,6 +284,7 @@
       wrapper.classList.remove("kn-dropdown-open");
       trigger.setAttribute("aria-expanded", "false");
       menu.setAttribute("aria-hidden", "true");
+      menuItems.forEach(function (el) { el.setAttribute("tabindex", "-1"); });
     }
 
     function scheduleClose() {
