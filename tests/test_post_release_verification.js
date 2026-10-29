@@ -28,7 +28,7 @@ console.log('✅ PASS: Local release APK artifact integrity verified!\n');
 // 2. VERIFY SERVICE WORKER v117 ASSET DELIVERY
 console.log('--- 2. Testing Service Worker v117 Architecture ---');
 const swJs = fs.readFileSync(path.join(ROOT, 'sw.js'), 'utf8');
-assert(swJs.includes('const CACHE_NAME = "knockoutnotes-cache-v118";') || swJs.includes('const CACHE_NAME = "knockoutnotes-cache-v117";'), 'sw.js must be configured with cache-v117+');
+assert(swJs.includes('const CACHE_NAME = "knockoutnotes-cache-v119";') || swJs.includes('const CACHE_NAME = "knockoutnotes-cache-v118";') || swJs.includes('const CACHE_NAME = "knockoutnotes-cache-v117";'), 'sw.js must be configured with cache-v117+');
 assert(swJs.includes('"/criticalCare/mcqs.json"'), 'sw.js must precache master question bank');
 assert(swJs.includes('"/criticalCare/chapters.json"'), 'sw.js must precache chapters');
 assert(swJs.includes('"/criticalCare/topics.json"'), 'sw.js must precache topics');

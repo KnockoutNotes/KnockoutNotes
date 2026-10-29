@@ -4843,15 +4843,15 @@ body.ron-reading-fullscreen-active {
 
 /* ------------------------------------------------------------ Reading Width Options */
 .ron-reading-fullscreen-overlay[data-reading-width="narrow"] {
-  --rm-max-width: 760px;
+  --rm-max-width: 680px;
 }
 
 .ron-reading-fullscreen-overlay[data-reading-width="standard"] {
-  --rm-max-width: 900px;
+  --rm-max-width: 820px;
 }
 
 .ron-reading-fullscreen-overlay[data-reading-width="wide"] {
-  --rm-max-width: 1200px;
+  --rm-max-width: 960px;
 }
 
 /* ------------------------------------------------------------ Typography & Spacing Options */
@@ -4885,11 +4885,11 @@ body.ron-reading-fullscreen-active {
 }
 
 .ron-reading-fullscreen-overlay[data-reading-line-height="comfortable"] {
-  --rm-line-height: 1.65;
+  --rm-line-height: 1.58;
 }
 
 .ron-reading-fullscreen-overlay[data-reading-line-height="relaxed"] {
-  --rm-line-height: 1.82;
+  --rm-line-height: 1.72;
 }
 
 /* ------------------------------------------------------------ Topbar */
@@ -5664,19 +5664,19 @@ body.ron-reading-fullscreen-active {
 }
 
 .ron-rm-content-wrapper {
-  max-width: min(var(--rm-max-width, 1200px), 100%) !important;
+  max-width: min(var(--rm-max-width, 860px), 100%) !important;
   width: 100% !important;
   margin: 0 auto !important;
-  padding: 28px 24px 90px 24px !important;
+  padding: 24px 28px 85px 28px !important;
   font-size: var(--rm-font-size, 17px);
-  line-height: var(--rm-line-height, 1.65);
+  line-height: var(--rm-line-height, 1.58);
   box-sizing: border-box !important;
   transition: max-width 0.2s ease;
 }
 
 /* Article Header */
 .ron-rm-article-header {
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .ron-rm-kicker {
@@ -5685,49 +5685,49 @@ body.ron-reading-fullscreen-active {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--rm-heading);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .ron-rm-heading {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 800;
   line-height: 1.22;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   color: var(--rm-heading-strong, var(--rm-text));
-  margin: 0 0 6px 0;
+  margin: 0 0 4px 0;
 }
 
 .ron-rm-sub {
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 400;
   color: var(--rm-text-muted);
-  line-height: 1.45;
-  margin: 0 0 6px 0;
+  line-height: 1.4;
+  margin: 0 0 4px 0;
 }
 
 .ron-rm-updated {
-  font-size: 12.5px;
+  font-size: 12px;
   color: var(--rm-text-muted);
-  margin: 0 0 16px 0;
+  margin: 0 0 10px 0;
 }
 
 .ron-rm-hr {
   border: none;
   border-top: 1px solid var(--rm-border);
-  margin: 16px 0;
+  margin: 10px 0;
 }
 
 /* Source Reference Box */
 .ron-rm-source-box {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  padding: 6px 0;
+  gap: 10px;
+  padding: 4px 0;
 }
 
 .ron-rm-source-icon {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 8px;
   background: var(--rm-source-bg);
   color: var(--rm-heading);
@@ -5742,18 +5742,18 @@ body.ron-reading-fullscreen-active {
 }
 
 .ron-rm-source-kicker {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--rm-heading);
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 .ron-rm-source-text {
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--rm-text);
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 /* Body Content Adaptation: Complete encapsulation against outer site themes */
@@ -5763,7 +5763,7 @@ body:not(.dark) .ron-reading-fullscreen-overlay .ron-rm-body-target,
 .ron-rm-body-target {
   font-family: var(--rm-font-family, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif) !important;
   font-size: var(--rm-font-size, 17px) !important;
-  line-height: var(--rm-line-height, 1.65) !important;
+  line-height: var(--rm-line-height, 1.58) !important;
   color: var(--rm-text) !important;
 }
 
@@ -5798,7 +5798,7 @@ body .ron-rm-body-target .ron-notes-card,
   border: none !important;
   box-shadow: none !important;
   padding: 0 !important;
-  margin: 0 0 28px 0 !important;
+  margin: 0 0 16px 0 !important;
   border-radius: 0 !important;
 }
 
@@ -5806,7 +5806,7 @@ body .ron-rm-body-target .ron-notes-card,
 body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-card-header,
 .ron-rm-body-target .ron-card-header {
   padding: 0 !important;
-  margin: 0 0 10px 0 !important;
+  margin: 0 0 6px 0 !important;
   background: transparent !important;
   border: none !important;
 }
@@ -5815,12 +5815,12 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-card-header,
 body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target h1,
 .ron-rm-body-target h1 {
   font-family: var(--rm-font-family, inherit) !important;
-  font-size: calc(var(--rm-font-size, 17px) * 1.55) !important;
+  font-size: calc(var(--rm-font-size, 17px) * 1.42) !important;
   font-weight: 800 !important;
   color: var(--rm-heading) !important;
-  line-height: 1.25 !important;
+  line-height: 1.24 !important;
   letter-spacing: -0.015em !important;
-  margin: 16px 0 12px 0 !important;
+  margin: 14px 0 8px 0 !important;
   text-align: var(--rm-text-align, left) !important;
 }
 
@@ -5850,12 +5850,12 @@ body.dark .ron-reading-fullscreen-overlay .ron-card-title,
 .ron-rm-body-target .st-subheading,
 .ron-rm-body-target .ron-description-container h2 {
   font-family: var(--rm-font-family, inherit) !important;
-  font-size: calc(var(--rm-font-size, 17px) * 1.294118) !important;
+  font-size: calc(var(--rm-font-size, 17px) * 1.2) !important;
   font-weight: 700 !important;
   color: var(--rm-heading) !important;
-  line-height: 1.3 !important;
+  line-height: 1.28 !important;
   letter-spacing: -0.01em !important;
-  margin: 28px 0 12px 0 !important;
+  margin: 18px 0 6px 0 !important;
   padding: 0 !important;
   background: transparent !important;
   border: none !important;
@@ -5871,11 +5871,11 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-title,
 .ron-rm-body-target h4,
 .ron-rm-body-target .ron-point-title {
   font-family: var(--rm-font-family, inherit) !important;
-  font-size: calc(var(--rm-font-size, 17px) * 1.08) !important;
+  font-size: calc(var(--rm-font-size, 17px) * 1.05) !important;
   font-weight: 700 !important;
   color: var(--rm-heading-strong, var(--rm-text)) !important;
-  line-height: 1.35 !important;
-  margin: 14px 0 6px 0 !important;
+  line-height: 1.32 !important;
+  margin: 9px 0 3px 0 !important;
   text-align: var(--rm-text-align, left) !important;
 }
 
@@ -5910,54 +5910,210 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-source-text,
 .ron-rm-body-target .ron-source-text {
   font-family: var(--rm-font-family, inherit) !important;
   font-size: var(--rm-font-size, 17px) !important;
-  line-height: var(--rm-line-height, 1.65) !important;
+  line-height: var(--rm-line-height, 1.58) !important;
   color: var(--rm-text) !important;
   text-align: var(--rm-text-align, left) !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
 }
 
 .ron-reading-fullscreen-overlay .ron-rm-body-target p,
 body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target p,
 .ron-rm-body-target p {
-  margin: 0 0 16px 0 !important;
+  margin: 0 0 9px 0 !important;
 }
 
+/* Unordered Lists */
 .ron-reading-fullscreen-overlay .ron-rm-body-target ul,
-.ron-reading-fullscreen-overlay .ron-rm-body-target ol,
 body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target ul,
+.ron-rm-body-target ul {
+  list-style-type: disc !important;
+  list-style-position: outside !important;
+  padding-inline-start: 16px !important;
+  padding-left: 16px !important;
+  margin: 0 0 8px 0 !important;
+}
+
+/* Ordered Lists */
+.ron-reading-fullscreen-overlay .ron-rm-body-target ol,
 body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target ol,
-.ron-rm-body-target ul,
 .ron-rm-body-target ol {
-  padding-left: 22px !important;
-  margin: 0 0 16px 0 !important;
+  list-style-type: decimal !important;
+  list-style-position: outside !important;
+  padding-inline-start: 18px !important;
+  padding-left: 18px !important;
+  margin: 0 0 8px 0 !important;
 }
 
 .ron-reading-fullscreen-overlay .ron-rm-body-target li,
 body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target li,
 .ron-rm-body-target li {
-  margin-bottom: 8px !important;
+  margin-bottom: 5px !important;
+  padding-left: 2px !important;
+  line-height: var(--rm-line-height, 1.58) !important;
 }
 
 .ron-reading-fullscreen-overlay .ron-rm-body-target li::marker,
 body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target li::marker,
 .ron-rm-body-target li::marker {
   color: var(--rm-accent, #0284c7) !important;
+  font-size: 0.85em !important;
 }
 
+/* Nested lists: Keep indentation visible without consuming excessive width */
+.ron-reading-fullscreen-overlay .ron-rm-body-target li > ul,
+.ron-reading-fullscreen-overlay .ron-rm-body-target li > ol,
+.ron-reading-fullscreen-overlay .ron-rm-body-target ul ul,
+.ron-reading-fullscreen-overlay .ron-rm-body-target ol ol,
+.ron-reading-fullscreen-overlay .ron-rm-body-target ul ol,
+.ron-reading-fullscreen-overlay .ron-rm-body-target ol ul {
+  padding-inline-start: 14px !important;
+  padding-left: 14px !important;
+  margin-top: 3px !important;
+  margin-bottom: 3px !important;
+}
+
+/* st-bullets override inside Reading Mode: eliminate wide indent & large gaps */
+.ron-reading-fullscreen-overlay .ron-rm-body-target .st-bullets {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+  margin: 0 0 8px 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.ron-reading-fullscreen-overlay .ron-rm-body-target .st-bullets li {
+  position: relative !important;
+  padding-left: 12px !important;
+  margin-bottom: 4px !important;
+  line-height: var(--rm-line-height, 1.58) !important;
+}
+
+.ron-reading-fullscreen-overlay .ron-rm-body-target .st-bullets li::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0.58em !important;
+  width: 4.5px !important;
+  height: 4.5px !important;
+  border-radius: 50% !important;
+  background: var(--rm-accent, #0284c7) !important;
+}
+
+.ron-reading-fullscreen-overlay .ron-rm-body-target .st-bullets.st-sub-bullets {
+  margin-top: 4px !important;
+  padding-left: 8px !important;
+}
+
+/* st-num-list override inside Reading Mode: eliminate wide 24px padding-left & 12px gap */
+.ron-reading-fullscreen-overlay .ron-rm-body-target .st-num-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  margin: 8px 0 12px 0 !important;
+  padding-left: 18px !important;
+  padding-inline-start: 18px !important;
+}
+
+.ron-reading-fullscreen-overlay .ron-rm-body-target .st-num-list li {
+  margin-bottom: 4px !important;
+  padding-left: 2px !important;
+  line-height: var(--rm-line-height, 1.58) !important;
+}
+
+.ron-reading-fullscreen-overlay .ron-rm-body-target .st-num-list li::marker {
+  color: var(--rm-accent, #0284c7) !important;
+  font-weight: 700 !important;
+}
+
+.ron-reading-fullscreen-overlay .ron-rm-body-target .st-prose {
+  margin: 0 0 10px 0 !important;
+  line-height: var(--rm-line-height, 1.58) !important;
+}
+
+/* Point Rows (Clinical point-wise list items) */
 .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-row,
 body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-row,
 .ron-rm-body-target .ron-point-row {
   display: flex !important;
-  align-items: flex-start !important;
-  margin-bottom: 8px !important;
+  align-items: baseline !important;
+  gap: 0 !important;
+  margin-bottom: 5px !important;
+  line-height: var(--rm-line-height, 1.58) !important;
 }
 
 .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-bullet,
 body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-bullet,
 .ron-rm-body-target .ron-point-bullet {
   color: var(--rm-accent, #0284c7) !important;
-  font-size: var(--rm-font-size, 17px) !important;
+  font-size: 13px !important;
+  line-height: 1 !important;
+  width: 12px !important;
+  min-width: 12px !important;
+  max-width: 12px !important;
+  margin-right: 5px !important;
+  margin-left: 0 !important;
+  margin-top: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
   flex-shrink: 0 !important;
-  margin-right: 8px !important;
+  user-select: none !important;
+}
+
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-text,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-text,
+.ron-rm-body-target .ron-point-text {
+  flex: 1 !important;
+  min-width: 0 !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Numbered points (e.g. 1. Step / Heading points) */
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-numbered-point,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-numbered-point,
+.ron-rm-body-target .ron-numbered-point {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+  margin: 10px 0 6px 0 !important;
+  padding-bottom: 2px !important;
+}
+
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-num-badge,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-num-badge,
+.ron-rm-body-target .ron-point-num-badge {
+  background: var(--rm-accent, #0284c7) !important;
+  color: #ffffff !important;
+  font-size: 10.5px !important;
+  font-weight: 800 !important;
+  width: 19px !important;
+  height: 19px !important;
+  min-width: 19px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  margin-top: 2px !important;
+}
+
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-num-content,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-num-content,
+.ron-rm-body-target .ron-point-num-content {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+.ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-desc,
+body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-desc,
+.ron-rm-body-target .ron-point-desc {
+  font-size: calc(var(--rm-font-size, 17px) * 0.94) !important;
+  line-height: var(--rm-line-height, 1.58) !important;
+  margin-top: 2px !important;
+  color: var(--rm-text) !important;
 }
 
 .ron-reading-fullscreen-overlay .ron-rm-body-target .ron-point-keyval .ron-point-label,
@@ -5988,9 +6144,9 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
 .ron-rm-body-target .st-pearl-box {
   background: var(--rm-pearl-bg) !important;
   border: 1px solid var(--rm-pearl-border) !important;
-  border-radius: 12px !important;
-  padding: 14px 16px !important;
-  margin: 18px 0 !important;
+  border-radius: 10px !important;
+  padding: 10px 14px !important;
+  margin: 12px 0 !important;
   box-shadow: none !important;
   color: var(--rm-pearl-text, var(--rm-text)) !important;
 }
@@ -6003,7 +6159,7 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
   letter-spacing: 0.05em !important;
   text-transform: uppercase !important;
   color: var(--rm-accent, #60a5fa) !important;
-  margin-bottom: 6px !important;
+  margin-bottom: 4px !important;
   display: flex !important;
   align-items: center !important;
   gap: 6px !important;
@@ -6127,7 +6283,8 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
     padding: 0 24px;
   }
   .ron-rm-content-wrapper {
-    padding: 32px 36px 90px 36px !important;
+    padding: 28px 32px 85px 32px !important;
+    max-width: min(var(--rm-max-width, 820px), 100%) !important;
   }
 }
 
@@ -6157,8 +6314,8 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
     display: inline-block;
   }
   .ron-rm-content-wrapper {
-    padding: 24px 28px 85px 28px !important;
-    max-width: min(var(--rm-max-width, 1200px), 100%) !important;
+    padding: 20px 24px 75px 24px !important;
+    max-width: min(var(--rm-max-width, 820px), 100%) !important;
   }
   .ron-table-wrap {
     overflow-x: auto !important;
@@ -6180,8 +6337,8 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
 /* Tablet Landscape specific (900px - 1366px, landscape) */
 @media (min-width: 900px) and (max-width: 1366px) and (orientation: landscape) {
   .ron-rm-content-wrapper {
-    max-width: min(var(--rm-max-width, 1200px), calc(100vw - 48px)) !important;
-    padding: 28px 32px 85px 32px !important;
+    max-width: min(var(--rm-max-width, 860px), calc(100vw - 48px)) !important;
+    padding: 22px 28px 80px 28px !important;
   }
   .ron-rm-topbar {
     padding-left: max(20px, env(safe-area-inset-left, 0px));
@@ -6198,11 +6355,12 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
     display: none !important;
   }
   .ron-rm-portrait-pct {
-    display: none !important;
+    display: inline-block !important;
   }
   .ron-rm-topbar {
     padding: 0 12px;
     gap: 6px;
+    height: 42px;
   }
   .ron-rm-topbar-btn {
     padding: 4px 7px !important;
@@ -6212,8 +6370,8 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
     display: inline-block;
   }
   .ron-rm-content-wrapper {
-    max-width: min(var(--rm-max-width, 1200px), 100%) !important;
-    padding: 16px 24px 70px 24px !important;
+    max-width: min(var(--rm-max-width, 820px), 100%) !important;
+    padding: 12px 18px 55px 18px !important;
   }
 }
 
@@ -6232,10 +6390,27 @@ body.dark .ron-reading-fullscreen-overlay .ron-rm-body-target a,
     padding: 0 12px;
   }
   .ron-rm-content-wrapper {
-    padding: 18px 20px 80px 20px !important;
+    padding: 12px 14px 75px 14px !important;
   }
   .ron-rm-heading {
-    font-size: 24px;
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 6px !important;
+  }
+  .ron-rm-sub {
+    font-size: 13.5px !important;
+    line-height: 1.35 !important;
+  }
+  .ron-rm-article-header {
+    margin-bottom: 16px !important;
+    padding-bottom: 12px !important;
+  }
+  .ron-rm-body-target p,
+  .ron-rm-body-target ul,
+  .ron-rm-body-target ol,
+  .ron-rm-body-target li,
+  .ron-rm-body-target .ron-point-row {
+    text-align: left !important;
   }
   /* Mobile Bottom Sheet for Overflow */
   .ron-rm-overflow-dropdown {
