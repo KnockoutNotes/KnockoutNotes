@@ -1823,21 +1823,21 @@
           ${(() => {
             const stats = getStudyProgressStats();
             return `
-              <div class="kn-study-progress-tracker" style="margin: 0 0 16px 0; padding: 12px 16px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; backdrop-filter: blur(8px);">
-                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
-                  <div style="display:flex; align-items:center; gap:12px; font-size:12.5px; font-weight:700;">
-                    <span style="color:#38bdf8;">📊 Study Mastery: ${stats.percent}%</span>
-                    <span style="color:#10b981;">✓ Mastered: ${stats.masteredCount}</span>
-                    <span style="color:#f59e0b;">⚑ Revision: ${stats.revisionCount}</span>
-                    <span style="color:#94a3b8;">○ Remaining: ${stats.remainingCount} / ${stats.total}</span>
+              <div class="kn-study-progress-tracker">
+                <div class="kn-progress-header-row">
+                  <div class="kn-progress-metrics-group">
+                    <span class="kn-progress-metric-mastery">📊 Study Mastery: ${stats.percent}%</span>
+                    <span class="kn-progress-metric-mastered">✓ Mastered: ${stats.masteredCount}</span>
+                    <span class="kn-progress-metric-revision">⚑ Revision: ${stats.revisionCount}</span>
+                    <span class="kn-progress-metric-remaining">○ Remaining: ${stats.remainingCount} / ${stats.total}</span>
                   </div>
-                  <button type="button" class="kn-reset-progress-btn" style="background:transparent; border:1px solid rgba(239, 68, 68, 0.4); color:#ef4444; font-size:11px; padding:3px 8px; border-radius:6px; cursor:pointer;" title="Reset progress records">
+                  <button type="button" class="kn-reset-progress-btn" title="Reset progress records">
                     ↺ Reset Progress
                   </button>
                 </div>
-                <div style="width:100%; height:6px; background:rgba(255,255,255,0.08); border-radius:3px; overflow:hidden; display:flex;">
-                  <div style="width:${stats.percent}%; height:100%; background:linear-gradient(90deg, #10b981, #059669); transition:width 0.3s ease;"></div>
-                  <div style="width:${stats.total > 0 ? (stats.revisionCount / stats.total) * 100 : 0}%; height:100%; background:linear-gradient(90deg, #f59e0b, #d97706); transition:width 0.3s ease;"></div>
+                <div class="kn-progress-bar-track">
+                  <div class="kn-progress-bar-fill-mastered" style="width:${stats.percent}%;"></div>
+                  <div class="kn-progress-bar-fill-revision" style="width:${stats.total > 0 ? (stats.revisionCount / stats.total) * 100 : 0}%;"></div>
                 </div>
               </div>
             `;
@@ -3853,21 +3853,22 @@
 
   function fallbackCopyShareUrl(url) {
     try {
-      const tempInput = document.createElement("input");
+      const tempInput = document.createElement("textarea");
       tempInput.style.position = "fixed";
       tempInput.style.opacity = "0";
       tempInput.value = url;
       document.body.appendChild(tempInput);
+      tempInput.focus();
       tempInput.select();
       const success = document.execCommand("copy");
       document.body.removeChild(tempInput);
       if (success) {
         showShareToast("Chapter link copied to clipboard!");
       } else {
-        prompt("Copy chapter link:", url);
+        showShareToast("Chapter link: " + url);
       }
     } catch (_) {
-      prompt("Copy chapter link:", url);
+      showShareToast("Chapter link: " + url);
     }
   }
 
@@ -4412,6 +4413,7 @@
     if (toolbar.parentElement !== document.body) {
       document.body.appendChild(toolbar);
     }
+    toolbar.querySelectorAll("button, a").forEach(el => el.setAttribute("tabindex", "-1"));
 
     let isCompact = false;
     let ticking = false;
@@ -4423,10 +4425,12 @@
         app.classList.add("ron-reading-mode-active");
         document.body.classList.add("ron-reading-active");
         toolbar.setAttribute("aria-hidden", "false");
+        toolbar.querySelectorAll("button, a").forEach(el => el.removeAttribute("tabindex"));
       } else {
         app.classList.remove("ron-reading-mode-active");
         document.body.classList.remove("ron-reading-active");
         toolbar.setAttribute("aria-hidden", "true");
+        toolbar.querySelectorAll("button, a").forEach(el => el.setAttribute("tabindex", "-1"));
       }
     }
 
