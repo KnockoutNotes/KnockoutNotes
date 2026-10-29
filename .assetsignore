@@ -21,3 +21,5 @@ package-lock.json
 capacitor.config.json
 *.ps1
 knockoutnotes-debug.apk
+.planning
+.planning/**
