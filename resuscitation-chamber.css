@@ -169,7 +169,7 @@
 
 @media (max-width: 1080px) {
   .chamber-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -183,6 +183,8 @@
   perspective: 1200px;
   position: relative;
   overflow: hidden;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .flowchart-viewport::before {
@@ -1137,12 +1139,18 @@ body:not(.dark) .btn-resuscitation:hover {
   border: 1px solid transparent;
   color: var(--text-muted);
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 4px;
+  padding: 8px 14px;
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.15s ease;
+  box-sizing: border-box;
 }
 
 .btn-bpm-pill:hover {
@@ -1523,5 +1531,28 @@ body:not(.dark) .log-event-desc-col {
   .metronome-led {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+
+@media (max-width: 360px) {
+  .container.chamber-page {
+    padding-left: 6px;
+    padding-right: 6px;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  .flowchart-viewport {
+    padding: 12px 8px;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  .flowchart-info-banner {
+    gap: 0.5rem;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .metronome-rate-selector {
+    flex-wrap: wrap;
   }
 }

@@ -290,7 +290,7 @@ img {
   box-shadow: var(--shadow-md), 0 0 30px rgba(56, 189, 248, 0.12);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  max-width: 1220px;
+  max-width: min(1220px, calc(100vw - 32px));
   width: auto;
   will-change: transform;
   transition: all var(--transition-smooth);
@@ -565,7 +565,7 @@ body:not([data-content-page="home"]) .menu-btn {
 /* Mobile Menu */
 .mobile-menu {
   display: none;
-  max-width: 1220px;
+  max-width: min(1220px, calc(100vw - 32px));
   margin: 12px auto 0;
   padding: 12px 18px;
   border-radius: var(--radius-lg);
@@ -982,9 +982,18 @@ body:not(.dark) .vital-box.teal .vital-val { color: #0f766e !important; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
   padding: 12px 22px;
   background: var(--panel-tint-1);
   border-top: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 480px) {
+  .telemetry-footer {
+    padding: 10px 12px;
+    gap: 6px;
+  }
 }
 
 .telemetry-badge {
@@ -2313,9 +2322,12 @@ html.dark .viewer-stage,
   .footer-app-row {
     padding: 6px 10px;
     border-radius: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
   }
   .footer-app-row-text {
     font-size: 11px;
+    white-space: normal;
   }
   .footer-app-row-btn {
     font-size: 11px;
@@ -2591,6 +2603,24 @@ body.is-mobile-app .footer-app-row {
   }
   .viewer-hud-status {
     display: none;
+  }
+}
+
+@media (max-width: 340px) {
+  .site-hud,
+  body:not([data-content-page="home"]) .site-hud {
+    padding: 0 2px;
+  }
+  .hud-capsule,
+  body:not([data-content-page="home"]) .hud-capsule {
+    padding: 4px 6px;
+    gap: 6px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .brand-name {
+    font-size: 14px;
+    letter-spacing: -0.2px;
   }
 }
 
@@ -3019,7 +3049,7 @@ body.is-mobile-app .footer-app-row {
 
 .view-layer-lite .hud-capsule {
   border-radius: var(--radius-md);
-  max-width: 1220px;
+  max-width: min(1220px, calc(100vw - 32px));
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   background: var(--bg-void);
@@ -4164,5 +4194,28 @@ body:not(.dark) .chamber-pill-red {
     border: 1px solid #999 !important;
     padding: 2pt 6pt !important;
     background: #fdfdfd !important;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 340px) {
+  .container {
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+  }
+  .bento-grid {
+    gap: 12px;
+  }
+  .footer-inner {
+    gap: 20px;
   }
 }

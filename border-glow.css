@@ -206,8 +206,8 @@ body:not(.dark) .border-glow-card {
   z-index: 2;
 }
 
-/* Mobile & Touch optimization (avoids expensive conic redraws, respects battery) */
-@media (hover: none), (pointer: coarse) {
+/* Mobile & Touch optimization (avoids expensive conic redraws, respects battery, eliminates narrow viewport overflow) */
+@media (hover: none), (pointer: coarse), (max-width: 640px) {
   .border-glow-card > .edge-light {
     display: none !important;
   }

@@ -307,27 +307,83 @@ body:not(.dark) .kn-desktop-search-btn kbd {
 }
 
 /* Tablet sizing adjustments (768px - 1023px) */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .kn-desktop-nav-capsule {
-    gap: 8px;
-    padding: 4px 10px 4px 8px;
+@media (min-width: 768px) and (max-width: 1180px) {
+  .kn-desktop-nav {
+    padding: 0 8px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
   }
-  .kn-desktop-brand-name {
-    font-size: 13px;
+  .kn-desktop-nav-capsule {
+    gap: 4px;
+    padding: 3px 6px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .kn-desktop-brand {
+    gap: 5px;
+    flex-shrink: 0;
+  }
+  .kn-desktop-logo {
+    width: 28px;
+    height: 28px;
   }
   .kn-desktop-links {
     gap: 1px;
     padding: 2px;
+    box-sizing: border-box;
   }
   .kn-desktop-link {
-    padding: 5px 8px;
-    font-size: 12px;
+    padding: 4px 6px;
+    font-size: 11px;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
   }
-  .kn-desktop-search-btn .kn-search-text {
-    display: none;
+  .kn-desktop-caret {
+    margin-left: 2px;
+    font-size: 9px;
+  }
+  .kn-desktop-actions {
+    gap: 4px;
+    flex-shrink: 0;
   }
   .kn-desktop-search-btn {
-    padding: 4px 8px;
+    padding: 4px 6px;
+    min-width: 28px;
+    height: 28px;
+  }
+  .kn-desktop-search-btn .kn-search-text,
+  .kn-desktop-search-btn kbd {
+    display: none !important;
+  }
+  .kn-desktop-theme-btn {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    font-size: 11px;
+  }
+}
+
+/* Tablet Narrow (768px - 920px): Icon-only brand emblem to guarantee zero horizontal overflow */
+@media (min-width: 768px) and (max-width: 920px) {
+  .kn-desktop-brand-name {
+    display: none !important;
+  }
+  .kn-desktop-link {
+    padding: 4px 5px;
+    font-size: 10.5px;
+  }
+}
+
+/* Tablet Mid (921px - 1023px): Compact brand name */
+@media (min-width: 921px) and (max-width: 1023px) {
+  .kn-desktop-brand-name {
+    display: inline-block;
+    font-size: 11.5px;
+  }
+  .kn-desktop-link {
+    padding: 4px 6px;
+    font-size: 11.5px;
   }
 }
 
@@ -840,44 +896,88 @@ body:not(.dark) .bubble-menu-items .pill-close-hint {
 @media (max-width: 360px) {
   .bubble-menu {
     padding: 0 4px;
+    max-width: 100vw;
+    box-sizing: border-box;
   }
   .bubble-bar-capsule {
-    gap: 3px;
-    padding: 3px 5px 3px 4px;
+    gap: 2.5px;
+    padding: 2px 4px;
+    max-width: calc(100vw - 8px);
+    box-sizing: border-box;
   }
   .bubble-logo {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
   }
   .bubble-nav-links {
     gap: 1px;
-    padding: 2px;
+    padding: 1px 2px;
+    box-sizing: border-box;
   }
   .bubble-nav-link {
-    padding: 4px 6px;
+    padding: 4px 5px;
     font-size: 11px;
+    letter-spacing: -0.2px;
   }
   .nav-label-full,
   .calc-label-full {
-    display: none;
+    display: none !important;
   }
   .nav-label-short,
   .calc-label-short {
-    display: inline;
+    display: inline !important;
   }
   .bubble-action-btn,
   .kn-bubble-user-btn {
-    width: 27px;
-    height: 27px;
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
     font-size: 11px;
   }
   .bubble-nav-actions {
-    gap: 2.5px;
-    padding-left: 2.5px;
+    gap: 2px;
+    padding-left: 2px;
   }
   .kn-dots-icon {
-    font-size: 13px;
+    font-size: 12px;
   }
+}
+
+/* Ultra-Narrow Mobile Screens (<= 330px down to 320px) */
+@media (max-width: 330px) {
+  .bubble-menu {
+    padding: 0 2px;
+  }
+  .bubble-bar-capsule {
+    gap: 2px;
+    padding: 2px 3px;
+    max-width: calc(100vw - 4px);
+  }
+  .bubble-logo {
+    width: 18px;
+    height: 18px;
+  }
+  .bubble-nav-links {
+    gap: 1px;
+    padding: 1px;
+  }
+  .bubble-nav-link {
+    padding: 3px 4px;
+    font-size: 10px;
+    letter-spacing: -0.3px;
+  }
+  .bubble-action-btn,
+  .kn-bubble-user-btn {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    font-size: 10px;
+  }
+  .bubble-nav-actions {
+    gap: 1.5px;
+    padding-left: 1.5px;
+  }
+}
   .kn-more-card {
     min-height: 84px;
     padding: 8px 8px;
