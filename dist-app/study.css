@@ -668,56 +668,58 @@ body[data-content-page="study"] .st-page.container {
 
 /* Numbered lists: cleanly numbered sequential items with full multi-sentence bodies */
 .st-num-list {
-  margin: 10px 0 14px;
-  padding-left: 24px;
+  margin: 8px 0 10px;
+  padding-left: 18px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px;
   color: var(--text-secondary);
 }
 .st-num-list li {
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.58;
   color: var(--text-secondary);
 }
 .st-num-list li::marker {
   color: var(--accent-cyan);
   font-weight: 700;
+  font-size: 0.9em;
 }
 .st-prose {
-  margin: 0 0 12px;
-  font-size: 17px;
-  line-height: 1.7;
+  margin: 0 0 8px;
+  font-size: 15px;
+  line-height: 1.58;
   color: var(--text-secondary);
 }
 .st-prose + .st-num-list,
 .st-prose + .st-bullets {
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 /* Bulleted lists for point-wise discrete facts */
-.st-bullets { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.st-bullets { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 5px; }
 .st-bullets li {
   position: relative;
-  padding-left: 20px;
-  font-size: 17px;
-  line-height: 1.65;
+  padding-left: 14px;
+  font-size: 15px;
+  line-height: 1.58;
   color: var(--text-secondary);
 }
 .st-bullets li::before {
   content: "";
   position: absolute;
   left: 2px;
-  top: 10px;
-  width: 6px;
-  height: 6px;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--accent-cyan);
+  transform: translateY(-50%);
 }
-.st-bullets + .st-bullets { margin-top: 14px; }
-.st-card-body .st-bullets + .st-callout { margin-top: 16px; }
-.st-callout .st-bullets { margin-top: 6px; gap: 8px; }
-.st-callout .st-bullets li { font-size: 16px; line-height: 1.6; }
+.st-bullets + .st-bullets { margin-top: 8px; }
+.st-card-body .st-bullets + .st-callout { margin-top: 10px; }
+.st-callout .st-bullets { margin-top: 4px; gap: 4px; }
+.st-callout .st-bullets li { font-size: 14.5px; line-height: 1.55; }
 
 /* ------------------------------------------------------------ Minimal Master Syllabus Index Panel (In-Flow) */
 .st-top-index-panel {

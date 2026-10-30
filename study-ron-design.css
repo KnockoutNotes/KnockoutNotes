@@ -1349,18 +1349,28 @@ body.dark .ron-domain-tab.active .ron-domain-tab-count {
   line-height: 1.75;
 }
 
+/* Optimized Point Rows & Bullets for Study Mode Sections (In-Line, Tight Spacing, High Contrast) */
 .ron-point-row {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 9px;
-  line-height: 1.7;
+  gap: 0;
+  margin-bottom: 5px;
+  line-height: 1.58;
 }
 
 .ron-point-bullet {
   color: #0284c7;
-  font-size: 16px;
-  line-height: 1.4;
+  font-size: 12px;
+  line-height: 1;
+  width: 8px;
+  min-width: 8px;
+  max-width: 8px;
+  height: 1.58em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 7px;
+  margin-left: 0;
   flex-shrink: 0;
   user-select: none;
 }
@@ -1368,7 +1378,18 @@ body.dark .ron-domain-tab.active .ron-domain-tab-count {
 .ron-point-text {
   font-size: 14.5px;
   color: #1e293b;
+  line-height: 1.58;
   flex: 1;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.ron-point-desc {
+  font-size: 14px;
+  color: #1e293b;
+  line-height: 1.58;
+  margin-top: 3px;
 }
 
 .ron-point-keyval .ron-point-label {
@@ -1377,35 +1398,204 @@ body.dark .ron-domain-tab.active .ron-domain-tab-count {
   letter-spacing: 0.01em;
 }
 
+/* Optimized Numbered Points (Accurate Baseline, Compact Badge & Gaps) */
 .ron-numbered-point {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  margin: 18px 0 10px 0;
-  padding-bottom: 4px;
+  gap: 8px;
+  margin: 12px 0 6px 0;
+  padding-bottom: 2px;
 }
 
 .ron-point-num-badge {
   background: #0284c7;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
   border-radius: 50%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 1px;
+}
+
+.ron-point-num-content {
+  flex: 1;
+  min-width: 0;
 }
 
 .ron-point-title {
   margin: 0;
-  font-size: 15.5px;
+  font-size: 15px;
   font-weight: 750;
   color: #0f172a;
-  line-height: 1.4;
+  line-height: 1.35;
+}
+
+/* Comprehensive Study Mode Section List & Bullet Overrides */
+.ron-stage-container ul:not(.ron-reading-actions):not(.hud-nav-list):not(.ron-domain-tabs),
+.ron-notes-card ul,
+.st-card-body ul {
+  list-style-type: disc;
+  list-style-position: outside;
+  padding-inline-start: 16px;
+  padding-left: 16px;
+  margin: 4px 0 8px 0;
+}
+
+.ron-stage-container ol,
+.ron-notes-card ol,
+.st-card-body ol {
+  list-style-type: decimal;
+  list-style-position: outside;
+  padding-inline-start: 18px;
+  padding-left: 18px;
+  margin: 4px 0 8px 0;
+}
+
+.ron-stage-container li,
+.ron-notes-card li,
+.st-card-body li {
+  margin-bottom: 5px;
+  line-height: 1.58;
+}
+
+.ron-stage-container li::marker,
+.ron-notes-card li::marker,
+.st-card-body li::marker {
+  color: #0284c7;
+  font-size: 0.88em;
+}
+
+/* Numbered lists (.st-num-list) & bullet lists (.st-bullets) in Study Mode */
+.st-num-list {
+  margin: 8px 0 10px 0 !important;
+  padding-left: 18px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.st-num-list li {
+  font-size: 14.5px !important;
+  line-height: 1.58 !important;
+  color: #1e293b !important;
+}
+
+.st-num-list li::marker {
+  color: #0284c7 !important;
+  font-weight: 700 !important;
+  font-size: 0.9em !important;
+}
+
+.st-bullets {
+  margin: 0 0 8px 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+}
+
+.st-bullets li {
+  position: relative !important;
+  padding-left: 14px !important;
+  font-size: 14.5px !important;
+  line-height: 1.58 !important;
+  color: #1e293b !important;
+}
+
+.st-bullets li::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 2px !important;
+  top: 0.6em !important;
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 50% !important;
+  background: #0284c7 !important;
+  transform: translateY(-50%) !important;
+}
+
+.st-bullets.st-sub-bullets {
+  margin: 4px 0 2px 14px !important;
+  gap: 4px !important;
+}
+
+.st-bullets.st-sub-bullets li {
+  font-size: 14px !important;
+  line-height: 1.55 !important;
+  padding-left: 12px !important;
+}
+
+.st-bullets.st-sub-bullets li::before {
+  width: 4px !important;
+  height: 4px !important;
+  background: #0ea5e9 !important;
+}
+
+/* Reference lists in drug monographs */
+#sec-references ul {
+  margin: 8px 0 0 !important;
+  padding-left: 16px !important;
+}
+
+#sec-references li {
+  margin-bottom: 5px !important;
+  line-height: 1.58 !important;
+}
+
+/* Callout padding & point spacing in Study Mode */
+.ron-callout {
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  margin: 10px 0 !important;
+  border: 1px solid !important;
+}
+
+.ron-callout .ron-point-row {
+  margin-bottom: 4px !important;
+}
+
+/* Dark mode overrides for Study Mode lists */
+body.dark .ron-point-text,
+body.dark .ron-point-desc,
+body.dark .st-num-list li,
+body.dark .st-bullets li,
+body.dark .ron-stage-container li,
+body.dark .ron-notes-card li,
+body.dark .st-card-body li {
+  color: #cbd5e1 !important;
+}
+
+body.dark .ron-point-bullet,
+body.dark .st-num-list li::marker,
+body.dark .ron-stage-container li::marker,
+body.dark .ron-notes-card li::marker,
+body.dark .st-card-body li::marker {
+  color: #38bdf8 !important;
+}
+
+body.dark .st-bullets li::before {
+  background: #38bdf8 !important;
+}
+
+body.dark .st-bullets.st-sub-bullets li::before {
+  background: #7dd3fc !important;
+}
+
+body.dark .ron-point-num-badge {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+body.dark .ron-point-title,
+body.dark .ron-point-keyval .ron-point-label {
+  color: #f1f5f9 !important;
 }
 
 /* Clinical Callout Boxes (Pearl, Pitfall, Example) */
