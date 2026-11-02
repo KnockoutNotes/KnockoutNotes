@@ -2462,12 +2462,20 @@
     const pkPoints = parsePoints(ss.pk || ss.kinetics).slice(0, 1);
     const physioPoints = parsePoints(ss.physio).slice(0, 3);
     const indPoints = parsePoints(ss.indications).slice(0, 2);
-    const advPoints = parsePoints(ss.adverse).slice(0, 2);
+    
+    // 8. Adverse Effects & Boxed Warnings (Prioritize high-acuity syndromes/boxed warnings e.g. PRIS)
+    const allAdv = parsePoints(ss.adverse);
+    const criticalAdv = allAdv.filter(p => /PRIS|syndrome|boxed|warning|black box|fatal|cardiac arrest|rhabdomyolysis|malignant|delirium|adrenal/i.test(p));
+    const nonCritAdv = allAdv.filter(p => !/PRIS|syndrome|boxed|warning|black box|fatal|cardiac arrest|rhabdomyolysis|malignant|delirium|adrenal/i.test(p));
+    const advPoints = [...criticalAdv, ...nonCritAdv].slice(0, 3);
     
     // 9. Contraindications & Precautions
     let contraPoints = [];
     if (item.complications) {
-      contraPoints = parsePoints(item.complications).slice(0, 2);
+      const allComp = parsePoints(item.complications);
+      const critComp = allComp.filter(p => /contraindicat|avoid|caution|warning|box|lethal|fatal|PRIS|syndrome/i.test(p));
+      const nonCritComp = allComp.filter(p => !/contraindicat|avoid|caution|warning|box|lethal|fatal|PRIS|syndrome/i.test(p));
+      contraPoints = [...critComp, ...nonCritComp].slice(0, 2);
     } else if (ss.adverse) {
       const advAll = parsePoints(ss.adverse);
       contraPoints = advAll.filter(p => /contraindicat|avoid|caution|warning|box|lethal|fatal/i.test(p)).slice(0, 2);
