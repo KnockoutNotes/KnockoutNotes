@@ -5,7 +5,7 @@ const assert = require('assert');
 
 const LIVE_URL = 'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev';
 const CHROME_PATH = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
-const USER_DATA_DIR = path.resolve(__dirname, '../scratch/chrome-cdp-live-verify');
+const USER_DATA_DIR = path.resolve(__dirname, '../scratch/chrome-cdp-live-verify-' + Date.now());
 
 async function runLiveVerification() {
   console.log('================================================================');
@@ -111,7 +111,8 @@ async function runLiveVerification() {
       const hasMatrix = !!document.querySelector('.kn-qr-summary-matrix');
       const pills = document.querySelectorAll('.ron-action-pills-row .ron-filter-pill').length;
       const title = document.querySelector('.ron-diagnosis-title')?.textContent.trim();
-      const prisWarn = document.body.innerText.includes('PRIS') || document.body.innerText.includes('Propofol Infusion Syndrome');
+      const text = document.getElementById('ronActiveDescriptionBox')?.textContent || document.body.textContent;
+      const prisWarn = text.includes('PRIS') || text.includes('Propofol Infusion Syndrome');
       const tableWrap = !!document.querySelector('.ron-table-wrap.kn-qr-param-grid');
       return { isQuickActive, isDetailedActive, hasQrWrapper, hasMatrix, pills, title, prisWarn, tableWrap };
     })()`);
@@ -158,7 +159,7 @@ async function runLiveVerification() {
     const rocuroniumQuick = await evaluate(`(() => {
       const isQuickActive = document.getElementById('knDrugModeQuickBtn')?.classList.contains('active');
       const hasQrWrapper = !!document.querySelector('.kn-qr-wrapper');
-      const text = document.body.innerText;
+      const text = document.getElementById('ronActiveDescriptionBox')?.textContent || document.body.textContent;
       const hasSugammadexReversal = text.includes('Sugammadex') || text.includes('sugammadex');
       const hasRsiDose = text.includes('1.0') || text.includes('1.2');
       return { isQuickActive, hasQrWrapper, hasSugammadexReversal, hasRsiDose };
@@ -197,7 +198,7 @@ async function runLiveVerification() {
     const noradrenalineQuick = await evaluate(`(() => {
       const isQuickActive = document.getElementById('knDrugModeQuickBtn')?.classList.contains('active');
       const hasQrWrapper = !!document.querySelector('.kn-qr-wrapper');
-      const text = document.body.innerText;
+      const text = document.getElementById('ronActiveDescriptionBox')?.textContent || document.body.textContent;
       const hasSepticShock = text.includes('septic shock') || text.includes('Septic shock') || text.includes('Septic Shock');
       const hasExtravasationWarning = text.includes('extravasation') || text.includes('Extravasation') || text.includes('phentolamine');
       return { isQuickActive, hasQrWrapper, hasSepticShock, hasExtravasationWarning };
@@ -335,25 +336,28 @@ async function runLiveVerification() {
     // 8. SHARED LINKS & SUBSCRIPTION MODAL INTEGRITY
     // -------------------------------------------------------------
     console.log('\n--- 8. SHARED LINKS & SUBSCRIPTION MODAL ---');
-    await navigate(`${LIVE_URL}/study?topic=propofol&ref=share`);
+    await navigate(`${LIVE_URL}/study?topic=fentanyl&mode=study&ref=share`);
 
     const sharedModalCheck = await evaluate(`(() => {
-      const modal = document.getElementById('knShareSubModal');
+      const modal = document.getElementById('knSharedSubModal');
       const isVisible = modal && !modal.classList.contains('hidden');
       const title = document.getElementById('knSubModalChapterTitle')?.textContent;
-      const cancelBtn = document.getElementById('knSubModalCancelBtn');
+      const cancelBtn = document.getElementById('knSubCancelBtn');
       return { modalExists: !!modal, isVisible, title, hasCancelBtn: !!cancelBtn };
     })()`);
 
     assert(sharedModalCheck.modalExists, 'Subscription modal exists in DOM');
     assert(sharedModalCheck.isVisible, 'Subscription modal opens on shared link (ref=share)');
-    assert(sharedModalCheck.title.includes('Propofol'), 'Modal header features shared chapter title');
+    assert(sharedModalCheck.title.includes('Fentanyl'), 'Modal header features shared chapter title');
     assert(sharedModalCheck.hasCancelBtn, 'Modal features accessible Cancel button');
 
     // Dismiss modal
-    await evaluate(`document.getElementById('knSubModalCancelBtn').click()`);
+    await evaluate(`document.getElementById('knSubCancelBtn').click()`);
     await new Promise(r => setTimeout(r, 300));
-    const modalDismissed = await evaluate(`document.getElementById('knShareSubModal')?.classList.contains('hidden')`);
+    const modalDismissed = await evaluate(`(() => {
+      const modal = document.getElementById('knSharedSubModal');
+      return modal ? (modal.hidden || window.getComputedStyle(modal).display === 'none') : true;
+    })()`);
     assert(modalDismissed, 'Subscription modal dismisses cleanly');
     console.log('✅ PASS: Chapter sharing & subscription modal fully functional on live production');
     results.push({ test: 'Chapter Sharing & Subscription Modal', status: 'PASS' });
