@@ -7770,3 +7770,389 @@ body.dark .ron-card-cls-text {
 body.dark .ron-card-footer-row {
   border-top-color: rgba(255, 255, 255, 0.06);
 }
+
+
+/* ==========================================================================
+   KNOCKOUTNOTES — UNIVERSAL DRUG QUICK REVIEW MODE STYLING
+   Optimized for rapid 2-4 minute medical revision, NEET-SS/INI-SS high-yield
+   scannability, responsive layout across all devices, and light/dark/sepia themes.
+   ========================================================================== */
+
+/* 1. Monograph Mode Toggle Capsule (Quick Review <-> Detailed Notes) */
+.kn-drug-mode-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 24px 0;
+  width: 100%;
+}
+
+.kn-drug-mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px;
+  background: var(--ron-bg-subtle, rgba(255, 255, 255, 0.06));
+  border: 1px solid var(--ron-border, rgba(255, 255, 255, 0.14));
+  border-radius: 999px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.kn-drug-mode-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ron-text-secondary, #94a3b8);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  outline: none;
+  user-select: none;
+}
+
+.kn-drug-mode-btn:hover {
+  color: var(--ron-text-primary, #f8fafc);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.kn-drug-mode-btn:focus-visible {
+  outline: 2px solid var(--ron-accent, #38bdf8);
+  outline-offset: 2px;
+}
+
+.kn-drug-mode-btn.active {
+  background: var(--ron-accent, #0284c7);
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.38);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.kn-drug-mode-icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.kn-drug-mode-label {
+  letter-spacing: 0.01em;
+}
+
+.kn-drug-mode-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  color: inherit;
+  letter-spacing: 0.02em;
+}
+
+.kn-drug-mode-btn:not(.active) .kn-drug-mode-badge {
+  background: var(--ron-badge-bg, rgba(255, 255, 255, 0.08));
+  color: var(--ron-text-muted, #64748b);
+}
+
+/* 2. Quick Review 4-Tile Numerical Summary Matrix */
+.kn-qr-summary-matrix {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.kn-qr-matrix-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  background: var(--ron-card-bg, #111827);
+  border: 1px solid var(--ron-border, rgba(255, 255, 255, 0.1));
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.kn-qr-matrix-card:hover {
+  border-color: var(--ron-accent, #38bdf8);
+}
+
+.kn-qr-matrix-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ron-accent, #38bdf8);
+}
+
+.kn-qr-matrix-value {
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--ron-text-primary, #f8fafc);
+  word-break: break-word;
+}
+
+.kn-qr-matrix-antidote {
+  border-left: 3px solid #10b981;
+}
+
+.kn-qr-matrix-antidote .kn-qr-matrix-label {
+  color: #10b981;
+}
+
+/* 3. Section Cards & Badges */
+.kn-qr-card {
+  margin-bottom: 18px;
+}
+
+.kn-qr-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--ron-accent, #0284c7);
+  color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 700;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.kn-qr-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(2, 132, 199, 0.16);
+  color: var(--ron-accent, #38bdf8);
+  border: 1px solid rgba(2, 132, 199, 0.3);
+  letter-spacing: 0.04em;
+}
+
+.kn-qr-badge-pearl {
+  background: rgba(245, 158, 11, 0.16);
+  color: #f59e0b;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+/* 4. Identity Strip */
+.kn-qr-identity-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--ron-border, rgba(255, 255, 255, 0.08));
+}
+
+.kn-qr-id-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--ron-bg-subtle, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--ron-border, rgba(255, 255, 255, 0.1));
+  font-size: 13px;
+  color: var(--ron-text-secondary, #cbd5e1);
+}
+
+.kn-qr-id-pill strong {
+  color: var(--ron-text-primary, #f8fafc);
+}
+
+/* 5. Parameter Grid for PK & Clinical Data */
+.kn-qr-param-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.kn-qr-param-box {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--ron-bg-subtle, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--ron-border, rgba(255, 255, 255, 0.08));
+}
+
+.kn-qr-param-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ron-text-muted, #94a3b8);
+}
+
+.kn-qr-param-text {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ron-text-primary, #f8fafc);
+}
+
+/* 6. Callout Cards */
+.kn-qr-callout-info {
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  background: rgba(2, 132, 199, 0.08);
+  border-left: 3.5px solid var(--ron-accent, #0284c7);
+  font-size: 13.5px;
+  color: var(--ron-text-primary, #f8fafc);
+  line-height: 1.5;
+}
+
+.kn-qr-antidote-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: rgba(16, 185, 129, 0.08);
+  border-left: 4px solid #10b981;
+}
+
+.kn-qr-antidote-icon {
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.kn-qr-antidote-text {
+  flex: 1;
+}
+
+/* 7. Theme Adaptations: Light & Sepia */
+body:not(.dark) .kn-drug-mode-toggle,
+[data-reading-theme="light"] .kn-drug-mode-toggle {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+body:not(.dark) .kn-drug-mode-btn,
+[data-reading-theme="light"] .kn-drug-mode-btn {
+  color: #475569;
+}
+
+body:not(.dark) .kn-drug-mode-btn:hover,
+[data-reading-theme="light"] .kn-drug-mode-btn:hover {
+  color: #0f172a;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+body:not(.dark) .kn-drug-mode-btn.active,
+[data-reading-theme="light"] .kn-drug-mode-btn.active {
+  background: #0284c7;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+}
+
+body:not(.dark) .kn-qr-matrix-card,
+[data-reading-theme="light"] .kn-qr-matrix-card {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+body:not(.dark) .kn-qr-matrix-value,
+[data-reading-theme="light"] .kn-qr-matrix-value {
+  color: #0f172a;
+}
+
+body:not(.dark) .kn-qr-param-box,
+[data-reading-theme="light"] .kn-qr-param-box {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+body:not(.dark) .kn-qr-param-text,
+[data-reading-theme="light"] .kn-qr-param-text {
+  color: #0f172a;
+}
+
+/* Sepia Theme */
+[data-reading-theme="sepia"] .kn-drug-mode-toggle {
+  background: #ede3cc;
+  border-color: #d6c8aa;
+}
+
+[data-reading-theme="sepia"] .kn-drug-mode-btn {
+  color: #63533e;
+}
+
+[data-reading-theme="sepia"] .kn-drug-mode-btn:hover {
+  color: #2b2114;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+[data-reading-theme="sepia"] .kn-drug-mode-btn.active {
+  background: #8b5cf6;
+  background: #875529;
+  color: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(135, 85, 41, 0.35);
+}
+
+[data-reading-theme="sepia"] .kn-qr-matrix-card {
+  background: #fbf7ed;
+  border-color: #ded1b8;
+}
+
+[data-reading-theme="sepia"] .kn-qr-matrix-value {
+  color: #2b2114;
+}
+
+[data-reading-theme="sepia"] .kn-qr-param-box {
+  background: #f3ecd9;
+  border-color: #ded1b8;
+}
+
+[data-reading-theme="sepia"] .kn-qr-param-text {
+  color: #2b2114;
+}
+
+/* 8. Mobile & Responsive Layout Adjustments */
+@media (max-width: 640px) {
+  .kn-drug-mode-container {
+    margin-bottom: 16px;
+  }
+  
+  .kn-drug-mode-toggle {
+    width: 100%;
+    display: flex;
+  }
+  
+  .kn-drug-mode-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 7px 10px;
+    font-size: 12.5px;
+    gap: 5px;
+  }
+  
+  .kn-drug-mode-badge {
+    display: none; /* Hide minute/section chips on very narrow screens for clean pill layout */
+  }
+  
+  .kn-qr-summary-matrix {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .kn-qr-param-grid {
+    grid-template-columns: 1fr;
+  }
+}

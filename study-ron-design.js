@@ -36,6 +36,14 @@
       .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
 
+  function triggerHapticFeedback(pattern = 10) {
+    try {
+      if (typeof navigator !== "undefined" && typeof navigator.vibrate === "function") {
+        navigator.vibrate(pattern);
+      }
+    } catch (_) {}
+  }
+
   const HIGHLIGHT_RE = new RegExp(
     "\\b\\d+(?:\\.\\d+)?(?:\\s?[\\u2013-]\\s?\\d+(?:\\.\\d+)?)?\\s*" +
       "(?:mg\\/kg\\/min|mcg\\/kg\\/min|mg\\/kg\\/h(?:r)?|mcg\\/kg\\/h(?:r)?|units?\\/kg\\/h(?:r)?|" +
@@ -337,10 +345,95 @@
     });
   }
 
-  // Get list of subsections for fast scroll navigation
-  function getItemSubsections(item) {
+  
+  // ==========================================================================
+  // UNIVERSAL DRUG QUICK REVIEW MODE CONTROLLER & PREFERENCES
+  // ==========================================================================
+  const DRUG_MODE_STORAGE_KEY = "kn_drug_mode_pref";
+
+  function getDrugReviewMode() {
+    try {
+      if (typeof window !== "undefined" && window.location) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const modeParam = urlParams.get("mode") || urlParams.get("review");
+        if (modeParam === "detailed") return "detailed";
+        if (modeParam === "quick") return "quick";
+      }
+    } catch (_) {}
+    const saved = safeStorageGet(DRUG_MODE_STORAGE_KEY, "quick");
+    return saved === "detailed" ? "detailed" : "quick";
+  }
+
+  function setDrugReviewMode(mode) {
+    if (mode !== "detailed" && mode !== "quick") mode = "quick";
+    safeStorageSet(DRUG_MODE_STORAGE_KEY, mode);
+    try {
+      if (typeof window !== "undefined" && window.location && window.history && window.history.replaceState) {
+        const url = new URL(window.location.href);
+        url.searchParams.set("mode", mode);
+        window.history.replaceState({}, "", url.toString());
+      }
+    } catch (_) {}
+  }
+
+  function renderDrugModeToggle(activeMode) {
+    const isQuick = activeMode === "quick";
+    return `
+      <div class="kn-drug-mode-container" role="region" aria-label="Monograph reading mode selection">
+        <div class="kn-drug-mode-toggle" role="tablist" aria-label="Reading mode options">
+          <button type="button" 
+            class="kn-drug-mode-btn kn-mode-quick ${isQuick ? 'active' : ''}" 
+            role="tab" 
+            id="knDrugModeQuickBtn" 
+            data-drug-mode="quick" 
+            aria-selected="${isQuick ? 'true' : 'false'}" 
+            tabindex="${isQuick ? '0' : '-1'}"
+            title="Switch to concise 2–4 min Quick Review">
+            <span class="kn-drug-mode-icon">⚡</span>
+            <span class="kn-drug-mode-label">Quick Review</span>
+            <span class="kn-drug-mode-badge">2–4 min</span>
+          </button>
+          <button type="button" 
+            class="kn-drug-mode-btn kn-mode-detailed ${!isQuick ? 'active' : ''}" 
+            role="tab" 
+            id="knDrugModeDetailedBtn" 
+            data-drug-mode="detailed" 
+            aria-selected="${!isQuick ? 'true' : 'false'}" 
+            tabindex="${!isQuick ? '0' : '-1'}"
+            title="Switch to complete 18-section Detailed Notes">
+            <span class="kn-drug-mode-icon">📖</span>
+            <span class="kn-drug-mode-label">Detailed Notes</span>
+            <span class="kn-drug-mode-badge">18 sections</span>
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  // Get list of subsections for fast scroll navigation (Supports Quick Review & Detailed Notes)
+  function getItemSubsections(item, mode) {
     const isDrug = !item.sections;
     if (isDrug) {
+      const activeMode = mode || getDrugReviewMode();
+      if (activeMode === "quick") {
+        return [
+          { id: "qr-sec-identity", label: "1. Identity & Class" },
+          { id: "qr-sec-moa", label: "2. MOA & Targets" },
+          { id: "qr-sec-dosage", label: "3. Dose & Admin" },
+          { id: "qr-sec-time-profile", label: "4. Time Profile" },
+          { id: "qr-sec-pk", label: "5. Pharmacokinetics" },
+          { id: "qr-sec-physio", label: "6. Organ Effects" },
+          { id: "qr-sec-indications", label: "7. Indications" },
+          { id: "qr-sec-adverse", label: "8. Adverse & Warnings" },
+          { id: "qr-sec-contraindications", label: "9. Contraindications" },
+          { id: "qr-sec-renal-hepatic", label: "10. Renal & Hepatic" },
+          { id: "qr-sec-interactions", label: "11. Drug Interactions" },
+          { id: "qr-sec-monitoring", label: "12. Monitoring" },
+          { id: "qr-sec-antidote", label: "13. Reversal & Antidote" },
+          { id: "qr-sec-exam-pearls", label: "14. Exam Pearls" },
+          { id: "qr-sec-clinical-pearls", label: "15. Clinical Pearls" }
+        ];
+      }
       if (item.studySheet) {
         return [
           { id: "sec-quick-ref", label: "Quick Reference" },
@@ -383,16 +476,7 @@
         label: s.h ? s.h.replace(/^[0-9.]+\s*/, '') : `Section ${idx + 1}`
       }));
     }
-
-    return [{ id: "sec-0", label: "Clinical Overview" }];
-  }
-
-  function triggerHapticFeedback() {
-    if (typeof navigator !== "undefined" && typeof navigator.vibrate === "function") {
-      try {
-        navigator.vibrate(8);
-      } catch (err) {}
-    }
+    return [];
   }
 
   // ==========================================================================
@@ -1171,10 +1255,11 @@
 
     if (searchFilter.trim().length > 0) {
       activeItem = null;
+    } else if (activeItem && (!itemParam || activeItem.id === itemParam)) {
+      activeCat = activeItem.cat;
+      activeDomain = inferDomainFromCat(activeItem.cat, activeItem);
     } else if (itemParam) {
-      if (!activeItem || activeItem.id !== itemParam) {
-        activeItem = findItem(itemParam);
-      }
+      activeItem = findItem(itemParam);
       if (activeItem) {
         activeCat = activeItem.cat;
         activeDomain = inferDomainFromCat(activeItem.cat, activeItem);
@@ -2346,6 +2431,347 @@
   // ==========================================================================
   // COMPLETE DESCRIPTION RENDERER (ALL SUBSECTIONS IN FULL POINT-WISE APPROACH)
   // ==========================================================================
+  
+  // ==========================================================================
+  // UNIVERSAL DRUG QUICK REVIEW TEMPLATE RENDERER (15 STRUCTURED HIGH-YIELD SECTIONS)
+  // Streamlined for rapid 2-4 minute clinical reference & NEET-SS/INI-SS revision
+  // ==========================================================================
+  function renderDrugQuickReview(item) {
+    const ss = item.studySheet || {};
+    const qr = item.quickRef || {};
+
+    const cleanBullet = (str) => str.replace(/^[•\-\*]\s*/, '').trim();
+
+    const parsePoints = (text) => {
+      if (!text) return [];
+      if (text.includes('•')) {
+        return text.split('•').map(s => s.trim()).filter(Boolean);
+      }
+      const lines = text.split('\n').map(s => s.trim()).filter(Boolean);
+      if (lines.length > 1) {
+        return lines.map(cleanBullet);
+      }
+      return text.split(/(?<=[.!?])\s+/).map(s => s.trim()).filter(Boolean);
+    };
+
+    // Extract top 1-2 concise, high-yield points per section (top 3 for multi-system physiology)
+    const identityPoints = parsePoints(ss.identity).slice(0, 2);
+    const moaPoints = parsePoints(ss.moa).slice(0, 2);
+    const dosePoints = parsePoints(ss.dosage).slice(0, 2);
+    const timePoints = parsePoints(ss.timeProfile).slice(0, 2);
+    const pkPoints = parsePoints(ss.pk || ss.kinetics).slice(0, 1);
+    const physioPoints = parsePoints(ss.physio).slice(0, 3);
+    const indPoints = parsePoints(ss.indications).slice(0, 2);
+    const advPoints = parsePoints(ss.adverse).slice(0, 2);
+    
+    // 9. Contraindications & Precautions
+    let contraPoints = [];
+    if (item.complications) {
+      contraPoints = parsePoints(item.complications).slice(0, 2);
+    } else if (ss.adverse) {
+      const advAll = parsePoints(ss.adverse);
+      contraPoints = advAll.filter(p => /contraindicat|avoid|caution|warning|box|lethal|fatal/i.test(p)).slice(0, 2);
+      if (!contraPoints.length) contraPoints = advAll.slice(-2);
+    }
+    
+    // 10. Renal & Hepatic Considerations
+    let renalHepaticPoints = [];
+    if (ss.specialPopulations) {
+      const spPoints = parsePoints(ss.specialPopulations);
+      renalHepaticPoints = spPoints.filter(p => /renal|kidney|hepatic|liver|cirrhosis|crcl|esrd|dialysis/i.test(p)).slice(0, 2);
+      if (!renalHepaticPoints.length) renalHepaticPoints = spPoints.slice(0, 2);
+    }
+    
+    const interPoints = parsePoints(ss.interactions).slice(0, 2);
+    const monPoints = parsePoints(ss.monitoring).slice(0, 2);
+    const antidoteVal = qr.therapeuticAntidote || 'No specific pharmacological antidote; support organ systems and provide symptomatic care.';
+    const examPearls = parsePoints(ss.pearls).slice(0, 2);
+    const clinicalPearls = parsePoints(ss.revision || ss.comparisons).slice(0, 2);
+
+    const renderPointsHTML = (pts) => {
+      if (!pts || !pts.length) return '';
+      return formatProseLines(pts.map(p => '• ' + p).join('\n'));
+    };
+
+    return `
+      <div class="kn-qr-wrapper" data-drug-id="${esc(item.id)}">
+        <!-- High-Yield 4-Quadrant Numerical Summary Matrix -->
+        <div class="kn-qr-summary-matrix">
+          <div class="kn-qr-matrix-card">
+            <span class="kn-qr-matrix-label">DOSE &amp; ROUTE</span>
+            <span class="kn-qr-matrix-value">${esc(qr.doseRoute || 'Refer to protocol')}</span>
+          </div>
+          <div class="kn-qr-matrix-card">
+            <span class="kn-qr-matrix-label">ONSET / DURATION</span>
+            <span class="kn-qr-matrix-value">${esc(qr.onsetPeakDuration || 'Rapid onset')}</span>
+          </div>
+          <div class="kn-qr-matrix-card">
+            <span class="kn-qr-matrix-label">ELIMINATION T½ / CSHT</span>
+            <span class="kn-qr-matrix-value">${esc(qr.halfLifeCsht || 'Short half-life')}</span>
+          </div>
+          <div class="kn-qr-matrix-card kn-qr-matrix-antidote">
+            <span class="kn-qr-matrix-label">ANTIDOTE / RESCUE</span>
+            <span class="kn-qr-matrix-value">${esc(antidoteVal.split('.')[0])}</span>
+          </div>
+        </div>
+
+        <!-- 1. Drug Identity and Classification -->
+        <div class="ron-card ron-notes-card kn-qr-card" id="qr-sec-identity">
+          <div class="ron-card-header">
+            <h3 class="ron-card-title"><span class="kn-qr-num">1</span> DRUG IDENTITY &amp; CLASSIFICATION</h3>
+            <span class="kn-qr-badge">HIGH YIELD</span>
+          </div>
+          <div class="ron-prose kn-qr-card-body">
+            <div class="kn-qr-identity-strip">
+              <span class="kn-qr-id-pill"><strong>Generic:</strong> ${esc(item.name)}</span>
+              ${item.classification ? `<span class="kn-qr-id-pill"><strong>Class:</strong> ${esc(item.classification.split('•')[0].trim())}</span>` : ''}
+              ${item.brand ? `<span class="kn-qr-id-pill"><strong>Brand:</strong> ${esc(item.brand)}</span>` : ''}
+            </div>
+            ${renderPointsHTML(identityPoints)}
+          </div>
+        </div>
+
+        <!-- 2. Mechanism of Action & Receptor Targets -->
+        <div class="ron-card ron-notes-card kn-qr-card" id="qr-sec-moa">
+          <div class="ron-card-header">
+            <h3 class="ron-card-title"><span class="kn-qr-num">2</span> MECHANISM OF ACTION &amp; RECEPTOR TARGETS</h3>
+            <span class="ron-card-scale-icon">${ICONS.scale}</span>
+          </div>
+          <div class="ron-prose kn-qr-card-body">
+            ${renderPointsHTML(moaPoints)}
+          </div>
+        </div>
+
+        <!-- 3. Dose and Administration Guidelines -->
+        <div class="ron-card ron-notes-card kn-qr-card" id="qr-sec-dosage">
+          <div class="ron-card-header">
+            <h3 class="ron-card-title"><span class="kn-qr-num">3</span> DOSE &amp; ADMINISTRATION GUIDELINES</h3>
+            <span class="ron-card-scale-icon">${ICONS.scale}</span>
+          </div>
+          <div class="ron-prose kn-qr-card-body">
+            <div class="kn-qr-callout-info">
+              <strong>Clinical Standard:</strong> ${esc(qr.doseRoute || 'See protocol')}
+            </div>
+            ${renderPointsHTML(dosePoints)}
+          </div>
+        </div>
+
+        <!-- 4. Onset, Peak Effect and Clinical Duration -->
+        <div class="ron-card ron-notes-card kn-qr-card" id="qr-sec-time-profile">
+          <div class="ron-card-header">
+            <h3 class="ron-card-title"><span class="kn-qr-num">4</span> ONSET, PEAK EFFECT &amp; CLINICAL DURATION</h3>
+            <span class="ron-card-scale-icon">${ICONS.scale}</span>
+          </div>
+          <div class="ron-prose kn-qr-card-body">
+            <div class="kn-qr-callout-info">
+              <strong>Time Landmarks:</strong> ${esc(qr.onsetPeakDuration || 'Rapid profile')}
+            </div>
+            ${renderPointsHTML(timePoints)}
+          </div>
+        </div>
+
+        <!-- 5. Pharmacokinetics (Distribution, Metabolism, Elimination, CSHT) -->
+        <div class="ron-card ron-notes-card kn-qr-card" id="qr-sec-pk">
+          <div class="ron-card-header">
+            <h3 class="ron-card-title"><span class="kn-qr-num">5</span> PHARMACOKINETICS &amp; DISTRIBUTION PROFILE</h3>
+            <span class="ron-card-scale-icon">${ICONS.scale}</span>
+          </div>
+          <div class="ron-prose kn-qr-card-body">
+            <div class="ron-table-wrap kn-qr-param-grid" style="margin:6px 0 14px;">
+              <table class="ron-clinical-table" style="width:100%;">
+                <thead>
+                  <tr>
+                    <th style="width:32%;">Pharmacokinetic Parameter</th>
+                    <th>Clinical Specification &amp; Values</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Vd &amp; Clearance</strong></td><td>${esc(qr.vdClearance || '—')}</td></tr>
+                  <tr><td><strong>Bioavailability &amp; Protein Binding</strong></td><td>${esc(qr.bioavailabilityProteinBinding || '—')}</td></tr>
+                  <tr><td><strong>Metabolism &amp; Metabolites</strong></td><td>${esc(qr.metabolismMetabolites || '—')}</td></tr>
+                  <tr><td><strong>Elimination T½ &amp; CSHT</strong></td><td>${esc(qr.halfLifeCsht || '—')}</td></tr>
+                  <tr><td><strong>Excretion &amp; Adjustments</strong></td><td>${esc(qr.excretionDoseAdjustment || '—')}</td></tr>
+                </tbody>
+              </table>
+            </div>
+            ${renderPointsHTML(pkPoints)}
+          </div>
+        </div>
+
+        <!-- 6. Important Physiological Effects (CVS, Resp, CNS, Other) -->
+        <div class="ron-card ron-notes-card kn-qr-card" id="qr-sec-physio">
+          <div class="ron-card-header">
+            <h3 class="ron-card-title"><span class="kn-qr-num">6</span> IMPORTANT PHYSIOLOGICAL ORGAN-SYSTEM EFFECTS</h3>
+            <span class="ron-card-scale-icon">${ICONS.scale}</span>
+          </div>
+          <div class="ron-prose kn-qr-card-body">
+            ${renderPointsHTML(physioPoints)}
+          </div>
+        </div>
+
+        <!-- 7. Major Indications -->
+        <div class="ron-card ron-notes-card kn-qr-card" id="qr-sec-indications">
+          <div class="ron-card-header">
+            <h3 class="ron-card-title"><span class="kn-qr-num">7</span> MAJOR CLINICAL INDICATIONS</h3>
+            <span class="ron-card-scale-icon">${ICONS.scale}</span>
+          </div>
+          <div class="ron-prose kn-qr-card-body">
+            ${renderPointsHTML(indPoints)}
+          </div>
+        </div>
+
+        <!-- 8. Important Adverse Effects & Boxed Warnings -->
+        <div class="ron-card ron-notes-card kn-qr-card" id="qr-sec-adverse">
+          <div class="ron-card-header">
+            <h3 class="ron-card-title" style="color:var(--ron-color-warning);"><span class="kn-qr-num">8</span> IMPORTANT ADVERSE EFFECTS &amp; BOXED WARNINGS</h3>
+            <span class="ron-card-scale-icon">⚠️</span>
+          </div>
+          <div class="ron-prose kn-qr-card-body">
+            ${renderPointsHTML(advPoints)}
+          </div>
+        </div>
+
+        <!-- 9. Contraindications and Precautions -->
+        <div class="ron-card ron-notes-card kn-qr-card" id="qr-sec-contraindications">
+          <div class="ron-card-header">
+            <h3 class="ron-card-title"><span class="kn-qr-num">9</span> CONTRAINDICATIONS &amp; SAFETY PRECAUTIONS</h3>
+            <span class="ron-card-scale-icon">${ICONS.scale}</span>
+          </div>
+          <div class="ron-prose kn-qr-card-body">
+            ${renderPointsHTML(contraPoints)}
+          </div>
+        </div>
+
+        <!-- 10. Renal and Hepatic Considerations -->
+        <div class="ron-card ron-notes-card kn-qr-card" id="qr-sec-renal-hepatic">
+          <div class="ron-card-header">
+            <h3 class="ron-card-title"><span class="kn-qr-num">10</span> RENAL &amp; HEPATIC CONSIDERATIONS</h3>
+            <span class="ron-card-scale-icon">${ICONS.scale}</span>
+          </div>
+          <div class="ron-prose kn-qr-card-body">
+            <div class="kn-qr-callout-info">
+              <strong>Excretion &amp; Dose Adjustment:</strong> ${esc(qr.excretionDoseAdjustment || 'Titrate with clinical monitoring')}
+            </div>
+            ${renderPointsHTML(renalHepaticPoints)}
+          </div>
+        </div>
+
+        <!-- 11. Drug Interactions -->
+        <div class="ron-card ron-notes-card kn-qr-card" id="qr-sec-interactions">
+          <div class="ron-card-header">
+            <h3 class="ron-card-title"><span class="kn-qr-num">11</span> CRITICAL DRUG INTERACTIONS</h3>
+            <span class="ron-card-scale-icon">${ICONS.scale}</span>
+          </div>
+          <div class="ron-prose kn-qr-card-body">
+            ${renderPointsHTML(interPoints)}
+          </div>
+        </div>
+
+        <!-- 12. Monitoring -->
+        <div class="ron-card ron-notes-card kn-qr-card" id="qr-sec-monitoring">
+          <div class="ron-card-header">
+            <h3 class="ron-card-title"><span class="kn-qr-num">12</span> CLINICAL &amp; THERAPEUTIC MONITORING</h3>
+            <span class="ron-card-scale-icon">${ICONS.scale}</span>
+          </div>
+          <div class="ron-prose kn-qr-card-body">
+            ${renderPointsHTML(monPoints)}
+          </div>
+        </div>
+
+        <!-- 13. Reversal Agent or Antidote -->
+        <div class="ron-card ron-notes-card kn-qr-card" id="qr-sec-antidote">
+          <div class="ron-card-header">
+            <h3 class="ron-card-title"><span class="kn-qr-num">13</span> REVERSAL AGENT, ANTIDOTE &amp; TOXICITY MANAGEMENT</h3>
+            <span class="ron-card-scale-icon">🛡️</span>
+          </div>
+          <div class="ron-prose kn-qr-card-body">
+            <div class="kn-qr-antidote-box">
+              <span class="kn-qr-antidote-icon">🛡️</span>
+              <div class="kn-qr-antidote-text">
+                <strong style="color:var(--ron-text-primary); font-size:14px;">Specific Antidote / Rescue Strategy:</strong>
+                <p style="margin:4px 0 0; color:var(--ron-text-body); font-size:13.5px; line-height:1.6;">${esc(antidoteVal)}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. High-Yield Examination Pearls -->
+        <div class="ron-card ron-notes-card kn-qr-card" id="qr-sec-exam-pearls">
+          <div class="ron-card-header">
+            <h3 class="ron-card-title"><span class="kn-qr-num">14</span> HIGH-YIELD EXAMINATION PEARLS &amp; NUMBERS</h3>
+            <span class="kn-qr-badge kn-qr-badge-pearl">NEET-SS / INI-SS</span>
+          </div>
+          <div class="ron-prose kn-qr-card-body">
+            ${renderPointsHTML(examPearls)}
+          </div>
+        </div>
+
+        <!-- 15. Practical Anaesthesia and Critical Care Pearls -->
+        <div class="ron-card ron-notes-card kn-qr-card" id="qr-sec-clinical-pearls">
+          <div class="ron-card-header">
+            <h3 class="ron-card-title"><span class="kn-qr-num">15</span> PRACTICAL ANAESTHESIA &amp; CRITICAL CARE PEARLS</h3>
+            <span class="ron-card-scale-icon">💡</span>
+          </div>
+          <div class="ron-prose kn-qr-card-body">
+            ${renderPointsHTML(clinicalPearls)}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Switch drug reading mode dynamically (Quick Review <-> Detailed Notes)
+  function handleDrugModeSwitch(targetMode) {
+    if (!activeItem || activeItem.sections) return;
+    const currentMode = getDrugReviewMode();
+    if (currentMode === targetMode) return;
+    setDrugReviewMode(targetMode);
+
+    // 1. Re-render description box in Study Mode (or Reading Mode if open)
+    const descBox = document.getElementById("ronActiveDescriptionBox");
+    if (descBox) {
+      descBox.innerHTML = renderCompleteDescription(activeItem, true);
+      ensureResponsiveTables(descBox);
+    }
+
+    // 2. Update fast-scroll subsection pills in Study Mode
+    const pillsRow = document.querySelector(".ron-action-pills-row");
+    if (pillsRow) {
+      const newSubsections = getItemSubsections(activeItem, targetMode);
+      const slidersBtn = pillsRow.querySelector("#ronOpenAllTopicsBtn");
+      const slidersHTML = slidersBtn ? slidersBtn.outerHTML : '';
+      pillsRow.innerHTML = slidersHTML + newSubsections.map((sub, i) => `
+        <button type="button" class="ron-filter-pill ${i === 0 ? 'active' : ''}" data-target-id="${sub.id}">
+          ${esc(sub.label)}
+        </button>
+      `).join("");
+      const stagePill = document.getElementById("ronStagePillTitle");
+      if (stagePill && newSubsections[0]) {
+        stagePill.textContent = newSubsections[0].label;
+      }
+    }
+
+    // 3. Update TOC in Reading Mode (if open)
+    const tocList = document.getElementById("ronRmTocList");
+    if (tocList) {
+      const newSubsections = getItemSubsections(activeItem, targetMode);
+      tocList.innerHTML = newSubsections.map((sub) => `
+        <button type="button" class="ron-rm-toc-item" data-toc-target="${esc(sub.id)}">
+          <span class="ron-rm-toc-bullet">•</span>
+          <span>${esc(sub.label)}</span>
+        </button>
+      `).join("");
+    }
+
+    // 4. Update aria-selected and active classes on toggle buttons
+    document.querySelectorAll("[data-drug-mode]").forEach(btn => {
+      const isMatch = btn.getAttribute("data-drug-mode") === targetMode;
+      btn.classList.toggle("active", isMatch);
+      btn.setAttribute("aria-selected", isMatch ? "true" : "false");
+      btn.setAttribute("tabindex", isMatch ? "0" : "-1");
+    });
+  }
+
   function renderCompleteDescription(item, isDrug) {
     const renderFigureItem = (img) => {
       if (!img || !img.src) return "";
@@ -2374,6 +2800,13 @@
     ` : "";
 
     if (isDrug) {
+      const activeDrugMode = getDrugReviewMode();
+      const modeToggleHTML = renderDrugModeToggle(activeDrugMode);
+
+      if (activeDrugMode === "quick") {
+        return modeToggleHTML + renderDrugQuickReview(item);
+      }
+
       if (item.studySheet) {
         // --- UNIVERSAL DRUG STUDY SHEET FORMAT (18 SECTIONS + QUICK REF) ---
         let quickRefCardHTML = "";
@@ -2529,7 +2962,7 @@
           </div>
         ` : "");
 
-        return sourceCalloutHTML + quickRefCardHTML + stdCardsHTML;
+        return modeToggleHTML + sourceCalloutHTML + quickRefCardHTML + stdCardsHTML;
       }
 
       const drugSections = [
@@ -5089,7 +5522,20 @@ document.addEventListener("keydown", (e) => {
       e.stopPropagation();
       return;
     }
-// 000. Full-Screen Reading Mode Triggers & Controls
+
+    // Drug Reading Mode Toggle (Quick Review <-> Detailed Notes)
+    const drugModeBtn = e.target.closest("[data-drug-mode]");
+    if (drugModeBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const targetMode = drugModeBtn.getAttribute("data-drug-mode");
+      if (targetMode) {
+        handleDrugModeSwitch(targetMode);
+      }
+      return;
+    }
+
+    // 000. Full-Screen Reading Mode Triggers & Controls
     if (e.target.closest(".kn-reading-mode-trigger-btn, #ronEnterReadingModeTopBtn, #ronEnterReadingModeBtn")) {
       e.preventDefault();
       e.stopPropagation();
@@ -6043,6 +6489,16 @@ document.addEventListener("keydown", (e) => {
       }
     }, 100);
   }
+
+  // Expose Universal Drug Quick Review API
+  window.KN_DRUG_REVIEW = {
+    getDrugReviewMode,
+    setDrugReviewMode,
+    getItemSubsections,
+    renderDrugQuickReview,
+    renderDrugModeToggle,
+    handleDrugModeSwitch
+  };
 
   // Initial boot
   if (document.readyState === "loading") {
