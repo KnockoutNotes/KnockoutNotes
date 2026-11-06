@@ -13,3 +13,4 @@ Disallow: /unsubscribe-confirmed
 
 # Production Sitemaps
 Sitemap: https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/sitemap.xml
+Sitemap: https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/sitemap2.xml

@@ -24,6 +24,9 @@ console.log('--- STARTING SITEMAP & SEO REGRESSION SUITE ---');
 const sitemapDiskPath = path.resolve(process.cwd(), 'sitemap.xml');
 const realSitemapText = fs.readFileSync(sitemapDiskPath, 'utf8');
 
+const sitemap2DiskPath = path.resolve(process.cwd(), 'sitemap2.xml');
+const realSitemap2Text = fs.readFileSync(sitemap2DiskPath, 'utf8');
+
 const robotsDiskPath = path.resolve(process.cwd(), 'robots.txt');
 const realRobotsText = fs.readFileSync(robotsDiskPath, 'utf8');
 
@@ -39,14 +42,15 @@ function createMockAssets(options = {}) {
         return new Response(options.assetBody || '', { status: options.assetStatus });
       }
 
-      if (url.pathname === '/sitemap.xml') {
+      if (url.pathname === '/sitemap.xml' || url.pathname === '/sitemap2.xml') {
+        const targetBody = url.pathname === '/sitemap2.xml' ? realSitemap2Text : realSitemapText;
         // If conditional headers are sent to the asset store, it would return 304
         if (req.headers.has('if-none-match') || req.headers.has('if-modified-since')) {
           if (options.failOnConditionalHeader) {
             return new Response('', { status: 304 });
           }
         }
-        return new Response(realSitemapText, {
+        return new Response(targetBody, {
           status: 200,
           headers: {
             'content-type': 'application/xml',
@@ -267,6 +271,7 @@ console.log('\n[TEST 10] robots.txt GET and HEAD...');
   assert.equal(resGet.headers.get('access-control-allow-origin'), '*');
   const bodyGet = await resGet.text();
   assert.ok(bodyGet.includes('Sitemap: https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/sitemap.xml'));
+  assert.ok(bodyGet.includes('Sitemap: https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/sitemap2.xml'));
   assert.ok(bodyGet.includes('Allow: /'));
   assert.ok(bodyGet.includes('Disallow: /admin/'));
 
@@ -328,4 +333,109 @@ console.log('\n[TEST 11] XML parsing and 20 URL inventory verification...');
   console.log('  PASS: sitemap.xml parsed successfully with all 20 canonical URLs accounted for');
 }
 
-console.log('\n--- ALL SITEMAP & SEO REGRESSION TESTS PASSED (11/11) ---');
+// --------------------------------------------------------------------------
+// TEST 12: Standard GET /sitemap2.xml
+// --------------------------------------------------------------------------
+console.log('\n[TEST 12] Standard GET /sitemap2.xml...');
+{
+  const env = { ASSETS: createMockAssets() };
+  const req = new Request('https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/sitemap2.xml', {
+    method: 'GET'
+  });
+  const res = await worker.fetch(req, env, {});
+  assert.equal(res.status, 200, 'Must return HTTP 200');
+  assert.equal(res.headers.get('content-type'), 'application/xml; charset=utf-8');
+  assert.equal(res.headers.get('x-content-type-options'), 'nosniff');
+  assert.equal(res.headers.get('cache-control'), 'public, max-age=3600, s-maxage=3600');
+  assert.equal(res.headers.get('x-robots-tag'), 'all');
+  assert.equal(res.headers.get('access-control-allow-origin'), '*');
+
+  const text = await res.text();
+  assert.equal(text, realSitemap2Text, 'Response body must match sitemap2.xml exactly');
+  const expectedLength = new TextEncoder().encode(realSitemap2Text).byteLength;
+  assert.equal(res.headers.get('content-length'), expectedLength.toString());
+  console.log(`  PASS: Standard GET /sitemap2.xml returned 200 OK (${expectedLength} bytes)`);
+}
+
+// --------------------------------------------------------------------------
+// TEST 13: Conditional GET /sitemap2.xml (If-None-Match & If-Modified-Since)
+// --------------------------------------------------------------------------
+console.log('\n[TEST 13] Conditional GET /sitemap2.xml...');
+{
+  const env = { ASSETS: createMockAssets({ failOnConditionalHeader: true }) };
+  const reqInm = new Request('https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/sitemap2.xml', {
+    method: 'GET',
+    headers: { 'If-None-Match': '"mock-etag"' }
+  });
+  const resInm = await worker.fetch(reqInm, env, {});
+  assert.equal(resInm.status, 200, 'Must return HTTP 200 on conditional GET with If-None-Match');
+  assert.equal(await resInm.text(), realSitemap2Text);
+
+  const reqIms = new Request('https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/sitemap2.xml', {
+    method: 'GET',
+    headers: { 'If-Modified-Since': 'Wed, 21 Oct 2026 07:28:00 GMT' }
+  });
+  const resIms = await worker.fetch(reqIms, env, {});
+  assert.equal(resIms.status, 200, 'Must return HTTP 200 on conditional GET with If-Modified-Since');
+  assert.equal(await resIms.text(), realSitemap2Text);
+  console.log('  PASS: Conditional GET /sitemap2.xml returned complete 200 OK XML body');
+}
+
+// --------------------------------------------------------------------------
+// TEST 14: HEAD request for /sitemap2.xml
+// --------------------------------------------------------------------------
+console.log('\n[TEST 14] HEAD request for /sitemap2.xml...');
+{
+  const env = { ASSETS: createMockAssets() };
+  const req = new Request('https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/sitemap2.xml', {
+    method: 'HEAD'
+  });
+  const res = await worker.fetch(req, env, {});
+  assert.equal(res.status, 200, 'HEAD must return 200 OK');
+  assert.equal(res.headers.get('content-type'), 'application/xml; charset=utf-8');
+  assert.equal(res.headers.get('x-robots-tag'), 'all');
+  const body = await res.text();
+  assert.equal(body, '', 'HEAD body must be empty');
+  console.log('  PASS: HEAD /sitemap2.xml returned 200 OK with XML headers and empty body');
+}
+
+// --------------------------------------------------------------------------
+// TEST 15: XML parsing and 20 URL integrity of sitemap2.xml on disk
+// --------------------------------------------------------------------------
+console.log('\n[TEST 15] XML parsing and 20 URL integrity of sitemap2.xml...');
+{
+  const urlMatches = realSitemap2Text.match(/<loc>(https:\/\/[^<]+)<\/loc>/g);
+  assert.ok(urlMatches, 'Must contain loc elements');
+  const urls = urlMatches.map(m => m.replace(/<\/?loc>/g, ''));
+  assert.equal(urls.length, 20, 'sitemap2.xml must contain exactly 20 URL entries');
+
+  const expectedUrls = [
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/study',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/critical-care',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/drugs',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/notes',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/calculators',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/ventilator',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/resuscitation-chamber',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/regional-anaesthesia',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/crisis',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/pearls',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/viva',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/pricing',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/resources',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/recent-updates',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/contact',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/privacy-policy',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/terms-and-conditions',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/refund-policy',
+    'https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/shipping-policy'
+  ];
+
+  for (let i = 0; i < expectedUrls.length; i++) {
+    assert.equal(urls[i], expectedUrls[i], `sitemap2.xml URL index ${i} must match ${expectedUrls[i]}`);
+  }
+  console.log('  PASS: sitemap2.xml parsed successfully with all 20 canonical URLs accounted for');
+}
+
+console.log('\n--- ALL SITEMAP & SEO REGRESSION TESTS PASSED (15/15) ---');

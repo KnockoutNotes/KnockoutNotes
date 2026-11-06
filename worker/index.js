@@ -271,7 +271,7 @@ export default {
     // ==========================================
     // SEO: XML SITEMAP & ROBOTS (TOP-LEVEL PRIORITY DELIVERY)
     // ==========================================
-    if (pathname === '/sitemap.xml' || pathname === '/sitemap_index.xml') {
+    if (pathname === '/sitemap.xml' || pathname === '/sitemap2.xml' || pathname === '/sitemap_index.xml') {
       const sitemapHeaders = new Headers();
       sitemapHeaders.set('Content-Type', 'application/xml; charset=utf-8');
       sitemapHeaders.set('Cache-Control', 'public, max-age=3600, s-maxage=3600');
@@ -293,7 +293,8 @@ export default {
       if (env.ASSETS) {
         try {
           // Unconditional internal asset fetch prevents asset 304 response on client conditional GETs
-          const sitemapReq = new Request(new URL('/sitemap.xml', request.url), {
+          const targetAsset = pathname === '/sitemap2.xml' ? '/sitemap2.xml' : '/sitemap.xml';
+          const sitemapReq = new Request(new URL(targetAsset, request.url), {
             method: 'GET',
             headers: { 'Accept': 'application/xml, text/xml, */*' }
           });
@@ -309,7 +310,7 @@ export default {
             return new Response(bodyBytes, { status: 200, headers: sitemapHeaders });
           }
         } catch (err) {
-          console.error('Failed to load sitemap.xml asset:', err);
+          console.error(`Failed to load ${pathname} asset:`, err);
         }
 
         // Safe observable XML error response; prevents fallthrough to SPA HTML catch-all
@@ -358,7 +359,7 @@ export default {
         }
       }
 
-      const fallbackRobots = `User-agent: *\nAllow: /\n\nSitemap: https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/sitemap.xml\n`;
+      const fallbackRobots = `User-agent: *\nAllow: /\n\nSitemap: https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/sitemap.xml\nSitemap: https://knockoutnotes.knockoutnotes-anaesthesia.workers.dev/sitemap2.xml\n`;
       return new Response(fallbackRobots, { status: 200, headers: robotsHeaders });
     }
     // ==========================================

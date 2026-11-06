@@ -219,6 +219,7 @@ self.addEventListener("fetch", (event) => {
   if (requestUrl.pathname.startsWith("/api/") || 
       requestUrl.pathname.startsWith("/admin") ||
       requestUrl.pathname === "/sitemap.xml" ||
+      requestUrl.pathname === "/sitemap2.xml" ||
       requestUrl.pathname === "/sitemap_index.xml" ||
       requestUrl.pathname === "/robots.txt" ||
       requestUrl.pathname.startsWith("/subscribe/verify") ||

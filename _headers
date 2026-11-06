@@ -4,6 +4,12 @@
   X-Robots-Tag: all
   Access-Control-Allow-Origin: *
 
+/sitemap2.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600, s-maxage=3600
+  X-Robots-Tag: all
+  Access-Control-Allow-Origin: *
+
 /sitemap_index.xml
   Content-Type: application/xml; charset=utf-8
   Cache-Control: public, max-age=3600, s-maxage=3600
